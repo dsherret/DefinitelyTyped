@@ -1,9 +1,13 @@
 export class Engine extends MessageDispatcher {
     constructor(
         containerElementId: string,
-        gameClass: new() => GameObject,
-        videoDriverClass: new(arg1: HTMLElement, arg2: number, arg3: number) => VideoNullDriver,
-        systemClasses?: Array<new() => System>,
+        gameClass: new () => GameObject,
+        videoDriverClass: new (
+            arg1: HTMLElement,
+            arg2: number,
+            arg3: number,
+        ) => VideoNullDriver,
+        systemClasses?: Array<new () => System>,
     );
     id: number;
     private mContainerElementId;
@@ -58,7 +62,11 @@ export class Engine extends MessageDispatcher {
     private __internalUpdate;
     private __internalSystemPostUpdate;
     private __internalSystemRender;
-    protected onTagUpdated(child: GameObject, oldTag: string | null, newTag: string | null): void;
+    protected onTagUpdated(
+        child: GameObject,
+        oldTag: string | null,
+        newTag: string | null,
+    ): void;
     protected onChildrenAdded(child: GameObject, parent: any): void;
     protected onChildrenChanged(child: GameObject): void;
     protected onChildrenRemoved(child: GameObject): void;

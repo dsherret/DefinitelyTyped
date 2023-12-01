@@ -79,9 +79,24 @@ interface GiftCardPurchase {
 interface InitialOptions {
     Currency?: "CZK" | "EUR" | "HUF" | "USD";
     Environment?: "test" | "prod";
-    FundingSources?: Array<"All" | "Balance" | "BankCard" | "GooglePay" | "ApplePay" | "BankTransfer">;
+    FundingSources?: Array<
+        | "All"
+        | "Balance"
+        | "BankCard"
+        | "GooglePay"
+        | "ApplePay"
+        | "BankTransfer"
+    >;
     GuestCheckOut?: boolean;
-    Locale?: "cs-CZ" | "de-DE" | "en-US" | "es-ES" | "fr-FR" | "hu-HU" | "sk-SK" | "sl-SI";
+    Locale?:
+        | "cs-CZ"
+        | "de-DE"
+        | "en-US"
+        | "es-ES"
+        | "fr-FR"
+        | "hu-HU"
+        | "sk-SK"
+        | "sl-SI";
     POSKey: string;
     Secure?: boolean;
 }
@@ -135,8 +150,14 @@ interface PayerAccountInformation {
     ProvisionAttempts?: number;
     PurchasesInTheLast6Months?: number;
     ShippingAddressAdded?: Date;
-    ShippingAddressUsageIndicator?: "ThisTransaction" | "LessThan30Days" | "Between30And60Days" | "MoreThan60Days";
-    SuspiciousActivityIndicator?: "NoSuspiciousActivityObserved" | "SuspiciousActivityObserved";
+    ShippingAddressUsageIndicator?:
+        | "ThisTransaction"
+        | "LessThan30Days"
+        | "Between30And60Days"
+        | "MoreThan60Days";
+    SuspiciousActivityIndicator?:
+        | "NoSuspiciousActivityObserved"
+        | "SuspiciousActivityObserved";
     TransactionalActivityPerDay?: number;
     TransactionalActivityPerYear?: number;
 }
@@ -159,7 +180,11 @@ interface PaymentTransaction {
 interface PurchaseInformation {
     AvailabilityIndicator?: "MerchandiseAvailable" | "FutureAvailability";
     DeliveryEmailAddress?: string;
-    DeliveryTimeframe?: "ElectronicDelivery" | "SameDayShipping" | "OvernightShipping" | "TwoDayOrMoreShipping";
+    DeliveryTimeframe?:
+        | "ElectronicDelivery"
+        | "SameDayShipping"
+        | "OvernightShipping"
+        | "TwoDayOrMoreShipping";
     GiftCardPurchase?: GiftCardPurchase;
     PreOrderDate?: Date;
     PurchaseDate?: Date;
@@ -197,13 +222,31 @@ interface StartPaymentRequest {
     BillingAddress?: BillingAddress;
     CallbackUrl: string;
     CardHolderNameHint?: string;
-    ChallengePreference?: "NoPreference" | "ChallengeRequired" | "NoChallengeNeeded";
+    ChallengePreference?:
+        | "NoPreference"
+        | "ChallengeRequired"
+        | "NoChallengeNeeded";
     Currency: "CZK" | "EUR" | "HUF" | "USD";
     DelayedCapturePeriod?: string;
-    FundingSources: Array<"All" | "Balance" | "BankCard" | "GooglePay" | "ApplePay" | "BankTransfer">;
+    FundingSources: Array<
+        | "All"
+        | "Balance"
+        | "BankCard"
+        | "GooglePay"
+        | "ApplePay"
+        | "BankTransfer"
+    >;
     GuestCheckOut: boolean;
     InitiateRecurrence?: boolean;
-    Locale: "cs-CZ" | "de-DE" | "en-US" | "es-ES" | "fr-FR" | "hu-HU" | "sk-SK" | "sl-SI";
+    Locale:
+        | "cs-CZ"
+        | "de-DE"
+        | "en-US"
+        | "es-ES"
+        | "fr-FR"
+        | "hu-HU"
+        | "sk-SK"
+        | "sl-SI";
     OrderNumber?: string;
     POSKey: string;
     PayerAccount?: PayerAccountInformation;
@@ -216,7 +259,10 @@ interface StartPaymentRequest {
     PaymentWindow?: string;
     PurchaseInformation?: PurchaseInformation;
     RecurrenceId?: string;
-    RecurrenceType?: "OneClickPayment" | "MerchantInitiatedPayment" | "RecurringPayment";
+    RecurrenceType?:
+        | "OneClickPayment"
+        | "MerchantInitiatedPayment"
+        | "RecurringPayment";
     RedirectUrl: string;
     ReservationPeriod?: string;
     ShippingAddress?: ShippingAddress;
@@ -251,39 +297,73 @@ interface TransactionToRefund {
 declare class Barion {
     constructor(options: InitialOptions);
 
-    bankTransfer(options: Partial<BankTransferRequest>, callback: (err: Error, data: any) => void): void;
+    bankTransfer(
+        options: Partial<BankTransferRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
     bankTransfer(options: Partial<BankTransferRequest>): Promise<any>;
 
     cancelAuthorizedPayment(
         options: Partial<CancelAuthorizationRequest>,
         callback: (err: Error, data: any) => void,
     ): void;
-    cancelAuthorizedPayment(options: Partial<CancelAuthorizationRequest>): Promise<any>;
+    cancelAuthorizedPayment(
+        options: Partial<CancelAuthorizationRequest>,
+    ): Promise<any>;
 
-    captureAuthorizedPayment(options: Partial<CapturePaymentRequest>, callback: (err: Error, data: any) => void): void;
-    captureAuthorizedPayment(options: Partial<CapturePaymentRequest>): Promise<any>;
+    captureAuthorizedPayment(
+        options: Partial<CapturePaymentRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
+    captureAuthorizedPayment(
+        options: Partial<CapturePaymentRequest>,
+    ): Promise<any>;
 
-    completePayment(options: Partial<CompletePaymentRequest>, callback: (err: Error, data: any) => void): void;
+    completePayment(
+        options: Partial<CompletePaymentRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
     completePayment(options: Partial<CompletePaymentRequest>): Promise<any>;
 
-    downloadStatement(options: Partial<StatementDownloadRequest>, callback: (err: Error, data: any) => void): void;
+    downloadStatement(
+        options: Partial<StatementDownloadRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
     downloadStatement(options: Partial<StatementDownloadRequest>): Promise<any>;
 
-    emailTransfer(options: Partial<EmailTransferRequest>, callback: (err: Error, data: any) => void): void;
+    emailTransfer(
+        options: Partial<EmailTransferRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
     emailTransfer(options: Partial<EmailTransferRequest>): Promise<any>;
 
-    finishReservation(options: Partial<FinishReservationRequest>, callback: (err: Error, data: any) => void): void;
+    finishReservation(
+        options: Partial<FinishReservationRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
     finishReservation(options: Partial<FinishReservationRequest>): Promise<any>;
 
-    getAccounts(options: Partial<GetAccountsRequest>, callback: (err: Error, data: any) => void): void;
+    getAccounts(
+        options: Partial<GetAccountsRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
     getAccounts(options: Partial<GetAccountsRequest>): Promise<any>;
 
-    getPaymentState(options: Partial<GetPaymentStateRequest>, callback: (err: Error, data: any) => void): void;
+    getPaymentState(
+        options: Partial<GetPaymentStateRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
     getPaymentState(options: Partial<GetPaymentStateRequest>): Promise<any>;
 
-    refundPayment(options: Partial<PaymentRefundRequest>, callback: (err: Error, data: any) => void): void;
+    refundPayment(
+        options: Partial<PaymentRefundRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
     refundPayment(options: Partial<PaymentRefundRequest>): Promise<any>;
 
-    startPayment(options: Partial<StartPaymentRequest>, callback: (err: Error, data: any) => void): void;
+    startPayment(
+        options: Partial<StartPaymentRequest>,
+        callback: (err: Error, data: any) => void,
+    ): void;
     startPayment(options: Partial<StartPaymentRequest>): Promise<any>;
 }

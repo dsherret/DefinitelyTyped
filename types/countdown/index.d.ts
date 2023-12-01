@@ -33,7 +33,13 @@ declare namespace countdown {
     }
 
     interface CountdownStatic {
-        (start: DateTime, end?: DateTime, units?: number, max?: number, digits?: number): Timespan | number;
+        (
+            start: DateTime,
+            end?: DateTime,
+            units?: number,
+            max?: number,
+            digits?: number,
+        ): Timespan | number;
         MILLENNIA: number;
         CENTURIES: number;
         DECADES: number;

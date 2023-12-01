@@ -20,7 +20,12 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
      * });
      */
     class AuthorityKeyIdentifier extends Extension {
-        constructor(params?: { critical?: boolean | undefined; kid: HexParam; issuer: StringParam; sn: HexParam });
+        constructor(params?: {
+            critical?: boolean | undefined;
+            kid: HexParam;
+            issuer: StringParam;
+            sn: HexParam;
+        });
 
         getExtnValueHex(): string;
 
@@ -31,7 +36,9 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
          * NOTE: Automatic keyIdentifier value calculation by an issuer
          * public key will be supported in future version.
          */
-        setKIDByParam(param: Array<IntegerParam | BigIntegerParam | HexParam | number>): void;
+        setKIDByParam(
+            param: Array<IntegerParam | BigIntegerParam | HexParam | number>,
+        ): void;
 
         /**
          * set authorityCertIssuer value by X500Name parameter
@@ -49,6 +56,8 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
          * NOTE: Automatic authorityCertSerialNumber setting by an issuer
          * certificate will be supported in future version.
          */
-        setCertSNByParam(param?: Array<IntegerParam | BigIntegerParam | HexParam | number>): void;
+        setCertSNByParam(
+            param?: Array<IntegerParam | BigIntegerParam | HexParam | number>,
+        ): void;
     }
 }

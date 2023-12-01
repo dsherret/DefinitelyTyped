@@ -1,12 +1,24 @@
 interface SpectrogramOptions {
-    canvas?: {
-        width?: HTMLCanvasElement["width"] | (() => HTMLCanvasElement["width"]) | undefined;
-        height?: HTMLCanvasElement["height"] | (() => HTMLCanvasElement["height"]) | undefined;
-    } | undefined;
-    audio?: {
-        enable?: boolean | undefined;
-    } | undefined;
-    colors?: ((steps: number) => Array<CanvasRenderingContext2D["fillStyle"]>) | undefined;
+    canvas?:
+        | {
+              width?:
+                  | HTMLCanvasElement["width"]
+                  | (() => HTMLCanvasElement["width"])
+                  | undefined;
+              height?:
+                  | HTMLCanvasElement["height"]
+                  | (() => HTMLCanvasElement["height"])
+                  | undefined;
+          }
+        | undefined;
+    audio?:
+        | {
+              enable?: boolean | undefined;
+          }
+        | undefined;
+    colors?:
+        | ((steps: number) => Array<CanvasRenderingContext2D["fillStyle"]>)
+        | undefined;
 }
 
 interface Spectrogram {
@@ -21,7 +33,7 @@ interface Spectrogram {
 
 interface SpectrogramConstructor {
     (canvas: HTMLCanvasElement, options: SpectrogramOptions): Spectrogram;
-    new(canvas: HTMLCanvasElement, options: SpectrogramOptions): Spectrogram;
+    new (canvas: HTMLCanvasElement, options: SpectrogramOptions): Spectrogram;
 }
 
 declare var Spectrogram: SpectrogramConstructor;

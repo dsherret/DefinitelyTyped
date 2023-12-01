@@ -12,7 +12,9 @@ export type MerchantOrderUpdateResponse = MercadoPagoResponse<
     ExecOptions<DefaultConfigurationOmitQs, UpdateMerchantOrderPayload>
 >;
 
-export type MerchantOrderGetResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, any>>;
+export type MerchantOrderGetResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, any>
+>;
 
 export interface MercadoPagoMerchantOrder {
     create(

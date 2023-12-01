@@ -2,7 +2,7 @@ import Future = require("fibers/future");
 
 const futureWaitTest = () => {
     const meaningOfLife = Future.fromPromise(
-        new Promise<number>(resolve => resolve(42)).then(
+        new Promise<number>((resolve) => resolve(42)).then(
             (value: number) => `3½ years = ${value} months`,
         ),
     );
@@ -24,7 +24,7 @@ const futureSleepTest = () => {
     };
 
     // tslint:disable-next-line:only-arrow-functions
-    const calcTimerDelta = function(ms: number) {
+    const calcTimerDelta = function (ms: number) {
         const start = new Date();
         sleep(ms);
         return Date.now() - start.getTime();
@@ -47,7 +47,8 @@ const futureWrapTest = () => {
     }).detach();
 
     const a = {
-        b: (x: number, cb: (err?: Error, result?: number) => void) => cb(undefined, x + 5),
+        b: (x: number, cb: (err?: Error, result?: number) => void) =>
+            cb(undefined, x + 5),
     };
     const b = Future.wrap(a).bFuture;
     const c: Future<number> = b(10);

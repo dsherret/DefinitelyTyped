@@ -1,6 +1,6 @@
 import karma = require("karma");
 
-export default function(config: karma.Config): void {
+export default function (config: karma.Config): void {
     config.set({
         files: ["src/index.spec.ts"],
         browsers: ["ChromeHeadless"],

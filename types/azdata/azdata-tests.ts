@@ -7,7 +7,10 @@ class StubDisposable {
 
 azdata.dataprotocol.registerConnectionProvider({
     providerId: "MyProvider",
-    connect(connectionUri: string, connectionInfo: azdata.ConnectionInfo): Thenable<boolean> {
+    connect(
+        connectionUri: string,
+        connectionInfo: azdata.ConnectionInfo,
+    ): Thenable<boolean> {
         return Promise.resolve(true);
     },
     disconnect(connectionUri: string): Thenable<boolean> {
@@ -19,54 +22,85 @@ azdata.dataprotocol.registerConnectionProvider({
     listDatabases(connectionUri: string): Thenable<azdata.ListDatabasesResult> {
         return Promise.resolve({ databaseNames: [] });
     },
-    changeDatabase(connectionUri: string, newDatabase: string): Thenable<boolean> {
+    changeDatabase(
+        connectionUri: string,
+        newDatabase: string,
+    ): Thenable<boolean> {
         return Promise.resolve(true);
     },
     rebuildIntelliSenseCache(connectionUri: string): Thenable<void> {
         return Promise.resolve();
     },
-    getConnectionString(connectionUri: string, includePassword: boolean): Thenable<string> {
+    getConnectionString(
+        connectionUri: string,
+        includePassword: boolean,
+    ): Thenable<string> {
         return Promise.resolve("");
     },
-    buildConnectionInfo(connectionString: string): Thenable<azdata.ConnectionInfo> {
+    buildConnectionInfo(
+        connectionString: string,
+    ): Thenable<azdata.ConnectionInfo> {
         return Promise.resolve({ options: {} });
     },
-    registerOnConnectionComplete(handler: (connSummary: azdata.ConnectionInfoSummary) => any): vscode.Disposable {
+    registerOnConnectionComplete(
+        handler: (connSummary: azdata.ConnectionInfoSummary) => any,
+    ): vscode.Disposable {
         return new StubDisposable();
     },
-    registerOnIntelliSenseCacheComplete(handler: (connectionUri: string) => any): vscode.Disposable {
+    registerOnIntelliSenseCacheComplete(
+        handler: (connectionUri: string) => any,
+    ): vscode.Disposable {
         return new StubDisposable();
     },
-    registerOnConnectionChanged(handler: (changedConnInfo: azdata.ChangedConnectionInfo) => any): vscode.Disposable {
+    registerOnConnectionChanged(
+        handler: (changedConnInfo: azdata.ChangedConnectionInfo) => any,
+    ): vscode.Disposable {
         return new StubDisposable();
     },
 });
 
-const connectionProvider = azdata.dataprotocol.getProvider<azdata.ConnectionProvider>(
-    "MyProvider",
-    azdata.DataProviderType.ConnectionProvider,
-);
-const onConnectionChangedDisposable = connectionProvider.registerOnConnectionChanged(params => {});
+const connectionProvider =
+    azdata.dataprotocol.getProvider<azdata.ConnectionProvider>(
+        "MyProvider",
+        azdata.DataProviderType.ConnectionProvider,
+    );
+const onConnectionChangedDisposable =
+    connectionProvider.registerOnConnectionChanged((params) => {});
 onConnectionChangedDisposable.dispose();
 
-const testComponentBuilder: azdata.ComponentBuilder<azdata.InputBoxComponent, azdata.InputBoxProperties> = {
-    component: () => <any> {},
+const testComponentBuilder: azdata.ComponentBuilder<
+    azdata.InputBoxComponent,
+    azdata.InputBoxProperties
+> = {
+    component: () => <any>{},
     withProperties: (
         properties: azdata.InputBoxProperties,
-    ): azdata.ComponentBuilder<azdata.InputBoxComponent, azdata.InputBoxProperties> => {
+    ): azdata.ComponentBuilder<
+        azdata.InputBoxComponent,
+        azdata.InputBoxProperties
+    > => {
         throw new Error("Function not implemented.");
     },
     withProps: (properties: azdata.InputBoxProperties) => {
         throw new Error("Function not implemented.");
     },
-    withValidation: (validation: (component: azdata.InputBoxComponent) => boolean | Thenable<boolean>) => {
+    withValidation: (
+        validation: (
+            component: azdata.InputBoxComponent,
+        ) => boolean | Thenable<boolean>,
+    ) => {
         throw new Error("Function not implemented.");
     },
 };
 testComponentBuilder.component();
 
-const testContainerBuilder: azdata.ContainerBuilder<azdata.DivContainer, any, any, azdata.DivContainerProperties> = {
-    component: () => <any> {},
+const testContainerBuilder: azdata.ContainerBuilder<
+    azdata.DivContainer,
+    any,
+    any,
+    azdata.DivContainerProperties
+> = {
+    component: () => <any>{},
     withItems: (component: azdata.Component[]) => {
         throw new Error("Not implemented");
     },
@@ -79,7 +113,11 @@ const testContainerBuilder: azdata.ContainerBuilder<azdata.DivContainer, any, an
     withProps: (properties: azdata.DivContainerProperties) => {
         throw new Error("Not implemented");
     },
-    withValidation: (validation: (component: azdata.DivContainer) => boolean | Thenable<boolean>) => {
+    withValidation: (
+        validation: (
+            component: azdata.DivContainer,
+        ) => boolean | Thenable<boolean>,
+    ) => {
         throw new Error("Not implemented");
     },
 };
@@ -113,13 +151,25 @@ const testLoadingComponent: azdata.LoadingComponent = {
 testLoadingComponent.validate();
 
 azdata.window.createModelViewDialog("MyTitle", "MyDialog", "narrow");
-azdata.window.createModelViewDialog("MyTitle2", "MyDialog2", "narrow", "callout", "below", true, true, {
-    xPos: 0,
-    yPos: 0,
-    width: 100,
-    height: 100,
+azdata.window.createModelViewDialog(
+    "MyTitle2",
+    "MyDialog2",
+    "narrow",
+    "callout",
+    "below",
+    true,
+    true,
+    {
+        xPos: 0,
+        yPos: 0,
+        width: 100,
+        height: 100,
+    },
+);
+azdata.window.createModelViewDashboard("MyDashboardTitle", "MyDashboard", {
+    showIcon: true,
+    alwaysShowTabs: false,
 });
-azdata.window.createModelViewDashboard("MyDashboardTitle", "MyDashboard", { showIcon: true, alwaysShowTabs: false });
 azdata.workspace.createModelViewEditor("MyEditorTitle", {}, "MyEditorName");
 
 const testCard: azdata.CardProperties = {
@@ -145,15 +195,16 @@ const connectionResult: azdata.ConnectionResult = {
     connected: true,
 };
 
-const disposable: vscode.Disposable = azdata.queryeditor.registerQueryEventListener({
-    onQueryEvent(
-        type: azdata.queryeditor.QueryEventType,
-        document: azdata.queryeditor.QueryDocument,
-        args: azdata.ResultSetSummary | string | undefined,
-    ) {
-        return;
-    },
-});
+const disposable: vscode.Disposable =
+    azdata.queryeditor.registerQueryEventListener({
+        onQueryEvent(
+            type: azdata.queryeditor.QueryEventType,
+            document: azdata.queryeditor.QueryDocument,
+            args: azdata.ResultSetSummary | string | undefined,
+        ) {
+            return;
+        },
+    });
 
 const firewallRuleInfo: azdata.FirewallRuleInfo = {
     serverName: "mytestserver",
@@ -180,7 +231,11 @@ const account: azdata.Account = {
     isStale: false,
 };
 
-azdata.accounts.getAccountSecurityToken(account, "tenant-id", azdata.AzureResource.Custom);
+azdata.accounts.getAccountSecurityToken(
+    account,
+    "tenant-id",
+    azdata.AzureResource.Custom,
+);
 
 const connectionProfile: azdata.connection.ConnectionProfile = {
     providerId: "MyProvider",
@@ -198,7 +253,7 @@ const connectionProfile: azdata.connection.ConnectionProfile = {
     options: {},
 };
 
-azdata.nb.showNotebookDocument(<any> {}, {
+azdata.nb.showNotebookDocument(<any>{}, {
     defaultKernel: { name: "MSSQL" },
 });
 

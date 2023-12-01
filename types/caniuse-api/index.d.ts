@@ -21,8 +21,6 @@ export function find(query: string): string[];
 
 export function getLatestStableBrowsers(): string[];
 
-export function setBrowserScope(
-    browserscope: string | readonly string[],
-): void;
+export function setBrowserScope(browserscope: string | readonly string[]): void;
 
 export function getBrowserScope(): string[];

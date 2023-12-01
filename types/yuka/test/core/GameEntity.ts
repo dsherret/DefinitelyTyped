@@ -33,9 +33,15 @@ gameEntity.rotateTo(new Vector3(), 0); // $ExpectType boolean
 gameEntity.rotateTo(new Vector3(), 0, 0); // $ExpectType boolean
 gameEntity.getWorldDirection(new Vector3()); // $ExpectType Vector3
 gameEntity.getWorldPosition(new Vector3()); // $ExpectType Vector3
-gameEntity.setRenderComponent({}, (entity: GameEntity, renderComponent: object) => {}); // $ExpectType GameEntity
+gameEntity.setRenderComponent(
+    {},
+    (entity: GameEntity, renderComponent: object) => {},
+); // $ExpectType GameEntity
 gameEntity.handleMessage(new Telegram(gameEntity, gameEntity, "", 0, {})); // $ExpectType boolean
-gameEntity.lineOfSightTest(new Ray(new Vector3(), new Vector3()), new Vector3()); // $ExpectType Vector3 | null
+gameEntity.lineOfSightTest(
+    new Ray(new Vector3(), new Vector3()),
+    new Vector3(),
+); // $ExpectType Vector3 | null
 gameEntity.sendMessage(gameEntity, ""); // $ExpectType GameEntity
 gameEntity.sendMessage(gameEntity, "", 10); // $ExpectType GameEntity
 gameEntity.sendMessage(gameEntity, "", 10, null); // $ExpectType GameEntity

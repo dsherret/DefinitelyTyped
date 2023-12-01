@@ -30,7 +30,10 @@ import { readFileSync } from "fs";
         auto_parse: (value: string, context: CastingContext): void => {},
     };
 
-    const castingDateFunction: CastingDateFunction = (value: string, context: CastingContext): Date => new Date(value);
+    const castingDateFunction: CastingDateFunction = (
+        value: string,
+        context: CastingContext,
+    ): Date => new Date(value);
 
     const autoParseCastingDateFunction: CsvParseOptions = {
         auto_parse_date: castingDateFunction,
@@ -106,7 +109,7 @@ import { readFileSync } from "fs";
         ltrim: true,
         max_record_size: 8192,
         objname: "o",
-        quote: "\"",
+        quote: '"',
         raw: true,
         relax: true,
         relax_column_count: true,
@@ -233,10 +236,16 @@ import { readFileSync } from "fs";
 
     const stringifyOptions: CsvStringifyOptions = {
         cast: {
-            boolean: (value: boolean, context: CastingContext): string => (value ? "yes" : "no"),
-            date: (value: Date, context: CastingContext): string => value.toISOString(),
-            number: (value: number, context: CastingContext): string => value.toString(),
-            object: (value: Record<string, any>, context: CastingContext): string => JSON.stringify(value),
+            boolean: (value: boolean, context: CastingContext): string =>
+                value ? "yes" : "no",
+            date: (value: Date, context: CastingContext): string =>
+                value.toISOString(),
+            number: (value: number, context: CastingContext): string =>
+                value.toString(),
+            object: (
+                value: Record<string, any>,
+                context: CastingContext,
+            ): string => JSON.stringify(value),
             string: (value: string, context: CastingContext): string => value,
         },
         columns: [],
@@ -255,22 +264,38 @@ import { readFileSync } from "fs";
     const resultGenerateWithoutOptions = await generate();
     const resultGenerateWithOptions = await generate(generateOptions);
 
-    const resultParseWithoutOptions: string[][] = (await parse(csvString)) as string[][];
-    const resultParseWithOptions: string[][] = (await parse(csvString, allParseOptions)) as string[][];
+    const resultParseWithoutOptions: string[][] = (await parse(
+        csvString,
+    )) as string[][];
+    const resultParseWithOptions: string[][] = (await parse(
+        csvString,
+        allParseOptions,
+    )) as string[][];
 
     const cb = (err?: Error | null, record?: unknown): void => {};
 
-    const resultTransformWithoutOptions: number[][] = await transform<string[], number[]>(
+    const resultTransformWithoutOptions: number[][] = await transform<
+        string[],
+        number[]
+    >(
         resultParseWithOptions,
         (row: string[], cb, transformOptions): number[] => [42],
     );
 
-    const resultTransformWithOptions: number[][] = await transform<string[], number[]>(
+    const resultTransformWithOptions: number[][] = await transform<
+        string[],
+        number[]
+    >(
         resultParseWithOptions,
         (row: string[], cb, transformOptions): number[] => [42],
         transformOptions,
     );
 
-    const resultStringifyWithoutOptions: Promise<string> = stringify(resultParseWithOptions);
-    const resultStringifyWithOptions: Promise<string> = stringify(resultParseWithOptions, stringifyOptions);
+    const resultStringifyWithoutOptions: Promise<string> = stringify(
+        resultParseWithOptions,
+    );
+    const resultStringifyWithOptions: Promise<string> = stringify(
+        resultParseWithOptions,
+        stringifyOptions,
+    );
 })();

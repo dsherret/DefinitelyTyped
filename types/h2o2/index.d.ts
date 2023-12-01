@@ -3,7 +3,14 @@
 import http = require("http");
 import Boom = require("boom");
 
-import { Lifecycle, Plugin, Request, ResponseObject, ResponseToolkit, RouteOptions } from "hapi";
+import {
+    Lifecycle,
+    Plugin,
+    Request,
+    ResponseObject,
+    ResponseToolkit,
+    RouteOptions,
+} from "hapi";
 
 declare namespace h2o2 {
     /** `mapURI` return value */
@@ -42,7 +49,12 @@ declare namespace h2o2 {
         /** mapUri - a function used to map the request URI to the target `uri` and optional `headers` with which to make that request. Cannot be used together with `host`, `port`, `protocol`, or `uri`.
          * @param request - is the incoming request object.
          */
-        mapUri?: ((this: ProxyHandlerOptions, request: Request) => Promise<ProxyTarget>) | undefined;
+        mapUri?:
+            | ((
+                  this: ProxyHandlerOptions,
+                  request: Request,
+              ) => Promise<ProxyTarget>)
+            | undefined;
         /**
          * onResponse - a custom function for processing the response from the upstream service before sending to the client. Useful for custom error handling of responses from the proxied endpoint or other payload manipulation.
          * @param err - internal or upstream error returned from attempting to contact the upstream proxy.  TODO: check this is of type BoomError or just Error.
@@ -54,14 +66,14 @@ declare namespace h2o2 {
          */
         onResponse?:
             | ((
-                this: RouteOptions,
-                err: null | Boom,
-                res: http.IncomingMessage,
-                req: Request,
-                h: ResponseToolkit,
-                settings: ProxyHandlerOptions,
-                ttl: number,
-            ) => Lifecycle.ReturnValue)
+                  this: RouteOptions,
+                  err: null | Boom,
+                  res: http.IncomingMessage,
+                  req: Request,
+                  h: ResponseToolkit,
+                  settings: ProxyHandlerOptions,
+                  ttl: number,
+              ) => Lifecycle.ReturnValue)
             | undefined;
         /** ttl - if set to 'upstream', applies the upstream response caching policy to the response using the response.ttl() method (or passed as an argument to the onResponse method if provided). */
         ttl?: "upstream" | undefined;

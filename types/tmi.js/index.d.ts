@@ -5,7 +5,11 @@ import { StrictEventEmitter } from "./strict-event-emitter-types";
 
 export interface Actions {
     action(channel: string, message: string): Promise<[string]>;
-    ban(channel: string, username: string, reason?: string): Promise<[string, string, string]>;
+    ban(
+        channel: string,
+        username: string,
+        reason?: string,
+    ): Promise<[string, string, string]>;
     clear(channel: string): Promise<[string]>;
     color(color: string): Promise<[string]>;
     commercial(channel: string, seconds: number): Promise<[string, number]>;
@@ -46,8 +50,17 @@ export interface Actions {
 }
 
 export interface Events {
-    action(channel: string, userstate: ChatUserstate, message: string, self: boolean): void;
-    anongiftpaidupgrade(channel: string, username: string, userstate: AnonSubGiftUpgradeUserstate): void;
+    action(
+        channel: string,
+        userstate: ChatUserstate,
+        message: string,
+        self: boolean,
+    ): void;
+    anongiftpaidupgrade(
+        channel: string,
+        username: string,
+        userstate: AnonSubGiftUpgradeUserstate,
+    ): void;
     anonsubmysterygift(
         channel: string,
         numbOfSubs: number,
@@ -61,9 +74,23 @@ export interface Events {
         methods: SubMethods,
         userstate: AnonSubGiftUserstate,
     ): void;
-    automod(channel: string, msgID: "msg_rejected" | "msg_rejected_mandatory", message: string): void;
-    ban(channel: string, username: string, reason: string, userstate: BanUserstate): void;
-    chat(channel: string, userstate: ChatUserstate, message: string, self: boolean): void;
+    automod(
+        channel: string,
+        msgID: "msg_rejected" | "msg_rejected_mandatory",
+        message: string,
+    ): void;
+    ban(
+        channel: string,
+        username: string,
+        reason: string,
+        userstate: BanUserstate,
+    ): void;
+    chat(
+        channel: string,
+        userstate: ChatUserstate,
+        message: string,
+        self: boolean,
+    ): void;
     cheer(channel: string, userstate: ChatUserstate, message: string): void;
     clearchat(channel: string): void;
     connected(address: string, port: number): void;
@@ -72,23 +99,51 @@ export interface Events {
     emoteonly(channel: string, enabled: boolean): void;
     emotesets(sets: string, obj: EmoteObj): void;
     followersonly(channel: string, enabled: boolean, length: number): void;
-    giftpaidupgrade(channel: string, username: string, sender: string, userstate: SubGiftUpgradeUserstate): void;
-    hosted(channel: string, username: string, viewers: number, autohost: boolean): void;
+    giftpaidupgrade(
+        channel: string,
+        username: string,
+        sender: string,
+        userstate: SubGiftUpgradeUserstate,
+    ): void;
+    hosted(
+        channel: string,
+        username: string,
+        viewers: number,
+        autohost: boolean,
+    ): void;
     hosting(channel: string, target: string, viewers: number): void;
     join(channel: string, username: string, self: boolean): void;
     logon(): void;
-    message(channel: string, userstate: ChatUserstate, message: string, self: boolean): void;
-    messagedeleted(channel: string, username: string, deletedMessage: string, userstate: DeleteUserstate): void;
+    message(
+        channel: string,
+        userstate: ChatUserstate,
+        message: string,
+        self: boolean,
+    ): void;
+    messagedeleted(
+        channel: string,
+        username: string,
+        deletedMessage: string,
+        userstate: DeleteUserstate,
+    ): void;
     mod(channel: string, username: string): void;
     mods(channel: string, mods: string[]): void;
     notice(channel: string, msgid: MsgID, message: string): void;
     part(channel: string, username: string, self: boolean): void;
     ping(): void;
     pong(latency: number): void;
-    primepaidupgrade(channel: string, username: string, methods: SubMethods, userstate: PrimeUpgradeUserstate): void;
+    primepaidupgrade(
+        channel: string,
+        username: string,
+        methods: SubMethods,
+        userstate: PrimeUpgradeUserstate,
+    ): void;
     r9kbeta(channel: string, enabled: boolean): void;
     raided(channel: string, username: string, viewers: number): void;
-    "raw_message": (messageCloned: { [property: string]: any }, message: { [property: string]: any }) => void;
+    raw_message: (
+        messageCloned: { [property: string]: any },
+        message: { [property: string]: any },
+    ) => void;
     reconnect(): void;
     // additional string literals for autocomplete
     redeem(
@@ -131,11 +186,22 @@ export interface Events {
         message: string,
         userstate: SubUserstate,
     ): void;
-    timeout(channel: string, username: string, reason: string, duration: number, userstate: TimeoutUserstate): void;
+    timeout(
+        channel: string,
+        username: string,
+        reason: string,
+        duration: number,
+        userstate: TimeoutUserstate,
+    ): void;
     unhost(channel: string, viewers: number): void;
     unmod(channel: string, username: string): void;
     vips(channel: string, vips: string[]): void;
-    whisper(from: string, userstate: ChatUserstate, message: string, self: boolean): void;
+    whisper(
+        from: string,
+        userstate: ChatUserstate,
+        message: string,
+        self: boolean,
+    ): void;
 }
 
 export interface ClientBase {
@@ -312,10 +378,12 @@ export type Userstate =
     | TimeoutUserstate;
 
 export interface EmoteObj {
-    [id: string]: [{
-        code: string;
-        id: number;
-    }];
+    [id: string]: [
+        {
+            code: string;
+            id: number;
+        },
+    ];
 }
 
 export type MsgID =
@@ -402,53 +470,61 @@ export interface RoomState {
     "broadcaster-lang"?: string | undefined;
     "emote-only"?: boolean | undefined;
     "followers-only"?: string | boolean | undefined;
-    "r9k"?: boolean | undefined;
-    "rituals"?: boolean | undefined;
+    r9k?: boolean | undefined;
+    rituals?: boolean | undefined;
     "room-id"?: string | undefined;
-    "slow"?: string | boolean | undefined;
+    slow?: string | boolean | undefined;
     "subs-only"?: boolean | undefined;
-    "channel"?: string | undefined;
+    channel?: string | undefined;
 }
 
 export type Client = StrictEventEmitter<ClientBase, Events> & Actions;
 
 export interface Options {
-    options?: {
-        clientId?: string | undefined;
-        debug?: boolean | undefined;
-        joinInterval?: number | undefined;
-        globalDefaultChannel?: string | undefined;
-        messagesLogLevel?: string | undefined;
-        skipMembership?: boolean | undefined;
-        skipUpdatingEmotesets?: boolean | undefined;
-        updateEmotesetsTimer?: number | undefined;
-    } | undefined;
-    connection?: {
-        server?: string | undefined;
-        port?: number | undefined;
-        reconnect?: boolean | undefined;
-        maxReconnectAttempts?: number | undefined;
-        maxReconnectInterval?: number | undefined;
-        reconnectDecay?: number | undefined;
-        reconnectInterval?: number | undefined;
-        secure?: boolean | undefined;
-        timeout?: number | undefined;
-    } | undefined;
-    identity?: {
-        username?: string | undefined;
-        password?: string | (() => string | Promise<string>) | undefined;
-    } | undefined;
+    options?:
+        | {
+              clientId?: string | undefined;
+              debug?: boolean | undefined;
+              joinInterval?: number | undefined;
+              globalDefaultChannel?: string | undefined;
+              messagesLogLevel?: string | undefined;
+              skipMembership?: boolean | undefined;
+              skipUpdatingEmotesets?: boolean | undefined;
+              updateEmotesetsTimer?: number | undefined;
+          }
+        | undefined;
+    connection?:
+        | {
+              server?: string | undefined;
+              port?: number | undefined;
+              reconnect?: boolean | undefined;
+              maxReconnectAttempts?: number | undefined;
+              maxReconnectInterval?: number | undefined;
+              reconnectDecay?: number | undefined;
+              reconnectInterval?: number | undefined;
+              secure?: boolean | undefined;
+              timeout?: number | undefined;
+          }
+        | undefined;
+    identity?:
+        | {
+              username?: string | undefined;
+              password?: string | (() => string | Promise<string>) | undefined;
+          }
+        | undefined;
     channels?: string[] | undefined;
-    logger?: {
-        info: (message: string) => any;
-        warn: (message: string) => any;
-        error: (message: string) => any;
-    } | undefined;
+    logger?:
+        | {
+              info: (message: string) => any;
+              warn: (message: string) => any;
+              error: (message: string) => any;
+          }
+        | undefined;
 }
 
 export interface ClientConstructor {
     (opts: Options): Client;
-    new(opts: Options): Client;
+    new (opts: Options): Client;
 }
 
 export const client: ClientConstructor;

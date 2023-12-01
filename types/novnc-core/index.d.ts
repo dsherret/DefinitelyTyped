@@ -25,8 +25,18 @@ export default class RFB {
     set_repeaterID(repeaterID: string): void;
     get_viewportDrag(): boolean;
     set_viewportDrag(viewportDrag: boolean): void;
-    get_onUpdateState(): (rfb: this, state: NvConnectionState, oldstate: NvConnectionState) => void;
-    set_onUpdateState(handler: (rfb: this, state: NvConnectionState, oldstate: NvConnectionState) => void): void;
+    get_onUpdateState(): (
+        rfb: this,
+        state: NvConnectionState,
+        oldstate: NvConnectionState,
+    ) => void;
+    set_onUpdateState(
+        handler: (
+            rfb: this,
+            state: NvConnectionState,
+            oldstate: NvConnectionState,
+        ) => void,
+    ): void;
     get_onNotification(): (
         rfb: this,
         msg: string,
@@ -34,7 +44,12 @@ export default class RFB {
         options?: { [key: string]: any },
     ) => void;
     set_onNotification(
-        handler: (rfb: this, msg: string, level: "normal" | "warn" | "error", options?: { [key: string]: any }) => void,
+        handler: (
+            rfb: this,
+            msg: string,
+            level: "normal" | "warn" | "error",
+            options?: { [key: string]: any },
+        ) => void,
     ): void;
     get_onDisconnected(): (rfb: this, reason?: string) => void;
     set_onDisconnected(handler: (rfb: this, reason?: string) => void): void;
@@ -49,7 +64,9 @@ export default class RFB {
     get_onFBUComplete(): (rfb: this, fbu: NvFBU) => void;
     set_onFBUComplete(handler: (rfb: this, fbu: NvFBU) => void): void;
     get_onFBResize(): (rfb: this, width: number, height: number) => void;
-    set_onFBResize(handler: (rfb: this, width: number, height: number) => void): void;
+    set_onFBResize(
+        handler: (rfb: this, width: number, height: number) => void,
+    ): void;
     get_onDesktopName(): (rfb: this, name: string) => void;
     set_onDesktopName(handler: (rfb: this, name: string) => void): void;
     get_onXvpInit(): (version: number) => void;
@@ -57,7 +74,12 @@ export default class RFB {
     get_display(): Display;
     get_keyboard(): Keyboard;
     get_mouse(): Mouse;
-    connect(host: string, port: number, password?: string, path?: string): boolean;
+    connect(
+        host: string,
+        port: number,
+        password?: string,
+        path?: string,
+    ): boolean;
     disconnect(): void;
     sendPassword(passwd: string): void;
     sendCtrlAltDel(): boolean;
@@ -82,8 +104,17 @@ export interface NvRFBDefaults {
     wsProtocols?: string[] | undefined;
     repeaterID?: string | undefined;
     viewportDrag?: boolean | undefined;
-    onUpdateState?(rfb: RFB, state: NvConnectionState, oldstate: NvConnectionState): void;
-    onNotification?(rfb: RFB, msg: string, level: "normal" | "warn" | "error", options?: { [key: string]: any }): void;
+    onUpdateState?(
+        rfb: RFB,
+        state: NvConnectionState,
+        oldstate: NvConnectionState,
+    ): void;
+    onNotification?(
+        rfb: RFB,
+        msg: string,
+        level: "normal" | "warn" | "error",
+        options?: { [key: string]: any },
+    ): void;
     onDisconnected?(rfb: RFB, reason?: string): void;
     onPasswordRequired?(rfb: RFB, msg?: string): void;
     onClipboard?(rfb: RFB, text: string): void;
@@ -104,7 +135,11 @@ export interface NvFBU {
     encodingName: string;
 }
 
-export type NvConnectionState = "connecting" | "connected" | "disconnecting" | "disconnected";
+export type NvConnectionState =
+    | "connecting"
+    | "connected"
+    | "disconnecting"
+    | "disconnected";
 
 export const enum NvXvpOperation {
     shutdown = 2,

@@ -48,9 +48,15 @@ export type VerifyFunctionWithRequest = (
 
 export class Strategy extends passport.Strategy {
     constructor(options: StrategyOption, verify: VerifyFunction);
-    constructor(options: StrategyOptionWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: StrategyOptionWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
 
     authenticate(req: express.Request, options?: any): void;
     authorizationParams: (options: any) => any;
-    userProfile: (accessToken: string, done: (error: any, user?: any) => void) => void;
+    userProfile: (
+        accessToken: string,
+        done: (error: any, user?: any) => void,
+    ) => void;
 }

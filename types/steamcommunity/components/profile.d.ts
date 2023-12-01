@@ -1,4 +1,10 @@
-import { appid, Callback, CallbackError, EditProfileSettings, ProfileSetting } from "../index";
+import {
+    appid,
+    Callback,
+    CallbackError,
+    EditProfileSettings,
+    ProfileSetting,
+} from "../index";
 
 export interface Profile {
     /**

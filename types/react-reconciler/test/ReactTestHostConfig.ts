@@ -41,7 +41,9 @@ export interface TextInstance {
     tag: "TEXT";
 }
 export type HydratableInstance = Instance | TextInstance;
-export type PublicInstance = (Instance | TextInstance) & { kind: "PublicInstance" };
+export type PublicInstance = (Instance | TextInstance) & {
+    kind: "PublicInstance";
+};
 export interface HostContext {
     [key: string]: any;
 }
@@ -55,12 +57,12 @@ export type EventResponder = any;
 export type OpaqueIDType =
     | string
     | {
-        $$typeof: number | symbol;
-        // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        toString: () => string | void;
-        // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        valueOf: () => string | void;
-    };
+          $$typeof: number | symbol;
+          // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+          toString: () => string | void;
+          // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+          valueOf: () => string | void;
+      };
 
 export type RendererInspectionConfig = Readonly<{}>;
 
@@ -92,7 +94,10 @@ export function getPublicInstance(inst: Instance | TextInstance): any {
     }
 }
 
-export function appendChild(parentInstance: Instance | Container, child: Instance | TextInstance): void {
+export function appendChild(
+    parentInstance: Instance | Container,
+    child: Instance | TextInstance,
+): void {
     const index = parentInstance.children.indexOf(child);
     if (index !== -1) {
         parentInstance.children.splice(index, 1);
@@ -113,7 +118,10 @@ export function insertBefore(
     parentInstance.children.splice(beforeIndex, 0, child);
 }
 
-export function removeChild(parentInstance: Instance | Container, child: Instance | TextInstance): void {
+export function removeChild(
+    parentInstance: Instance | Container,
+    child: Instance | TextInstance,
+): void {
     const index = parentInstance.children.indexOf(child);
     parentInstance.children.splice(index, 1);
 }
@@ -122,7 +130,9 @@ export function clearContainer(container: Container): void {
     container.children.splice(0);
 }
 
-export function getRootHostContext(rootContainerInstance: Container): HostContext {
+export function getRootHostContext(
+    rootContainerInstance: Container,
+): HostContext {
     return NO_CONTEXT;
 }
 
@@ -167,7 +177,10 @@ export function createInstance(
     };
 }
 
-export function appendInitialChild(parentInstance: Instance, child: Instance | TextInstance): void {
+export function appendInitialChild(
+    parentInstance: Instance,
+    child: Instance | TextInstance,
+): void {
     const index = parentInstance.children.indexOf(child);
     if (index !== -1) {
         parentInstance.children.splice(index, 1);
@@ -228,7 +241,8 @@ export function getCurrentEventPriority() {
 export const isPrimaryRenderer = false;
 export const warnsIfNotActing = true;
 
-export const scheduleTimeout = (_fn: () => void, _timeout: number): TimeoutID => noTimeout;
+export const scheduleTimeout = (_fn: () => void, _timeout: number): TimeoutID =>
+    noTimeout;
 export const cancelTimeout = (_id: TimeoutID) => {};
 
 export const noTimeout = -1;
@@ -264,7 +278,11 @@ export function commitMount(
     // noop
 }
 
-export function commitTextUpdate(textInstance: TextInstance, oldText: string, newText: string): void {
+export function commitTextUpdate(
+    textInstance: TextInstance,
+    oldText: string,
+    newText: string,
+): void {
     textInstance.text = newText;
 }
 
@@ -288,7 +306,10 @@ export function unhideInstance(instance: Instance, props?: Props): void {
     instance.isHidden = false;
 }
 
-export function unhideTextInstance(textInstance: TextInstance, text?: string): void {
+export function unhideTextInstance(
+    textInstance: TextInstance,
+    text?: string,
+): void {
     textInstance.isHidden = false;
 }
 
@@ -323,7 +344,9 @@ export function prepareScopeUpdate(
     nodeToInstanceMap.set(scopeInstance, inst);
 }
 
-export function getInstanceFromScope(scopeInstance: { [key: string]: any }): null | Instance {
+export function getInstanceFromScope(scopeInstance: {
+    [key: string]: any;
+}): null | Instance {
     return nodeToInstanceMap.get(scopeInstance) || null;
 }
 

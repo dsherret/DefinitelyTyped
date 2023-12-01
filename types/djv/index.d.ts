@@ -1,7 +1,10 @@
 interface DjvStatic {
     (options?: DjvStatic.DjvConfig): DjvStatic.djv;
-    new(options?: DjvStatic.DjvConfig): DjvStatic.djv;
-    expression(strings: string[], ...keys: string[]): (...values: string[]) => string;
+    new (options?: DjvStatic.DjvConfig): DjvStatic.djv;
+    expression(
+        strings: string[],
+        ...keys: string[]
+    ): (...values: string[]) => string;
 }
 
 declare namespace DjvStatic {
@@ -31,7 +34,10 @@ declare namespace DjvStatic {
     interface djv {
         resolved: Resolved;
 
-        addFormat(name: string, formatter: string | ((schema: object, tpl: any) => void)): void;
+        addFormat(
+            name: string,
+            formatter: string | ((schema: object, tpl: any) => void),
+        ): void;
 
         addSchema(nameOrSchema: string | object, schema?: object): Resolved;
 
@@ -39,7 +45,9 @@ declare namespace DjvStatic {
         import(config: object): void;
         removeSchema(name: string): void;
         resolve(name: string | object): Resolved;
-        setErrorHandler(errorHandler: (errorType: string, property: any) => string): void;
+        setErrorHandler(
+            errorHandler: (errorType: string, property: any) => string,
+        ): void;
         useVersion(version: string, configure?: any): void;
         validate(name: string, object: object): string | undefined;
     }

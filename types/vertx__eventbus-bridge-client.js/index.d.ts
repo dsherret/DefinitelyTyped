@@ -1,5 +1,5 @@
 declare namespace EventBus {
-    type EventBusStatic = new(url: string, options?: any) => EventBus;
+    type EventBusStatic = new (url: string, options?: any) => EventBus;
 
     interface EventBus {
         url: string;
@@ -7,9 +7,22 @@ declare namespace EventBus {
         onopen(): void;
         onerror(error: EventBusError): void;
         onclose(): void;
-        registerHandler(address: string, headers?: object, callback?: (error: Error, message: any) => void): void;
-        unregisterHandler(address: string, headers?: object, callback?: (error: Error, message: any) => void): void;
-        send(address: string, message: any, headers?: object, callback?: (error: Error, message: any) => void): void;
+        registerHandler(
+            address: string,
+            headers?: object,
+            callback?: (error: Error, message: any) => void,
+        ): void;
+        unregisterHandler(
+            address: string,
+            headers?: object,
+            callback?: (error: Error, message: any) => void,
+        ): void;
+        send(
+            address: string,
+            message: any,
+            headers?: object,
+            callback?: (error: Error, message: any) => void,
+        ): void;
         publish(address: string, message: any, headers?: any): void;
         enableReconnect(enable: boolean): void;
         enablePing(enable: boolean): void;

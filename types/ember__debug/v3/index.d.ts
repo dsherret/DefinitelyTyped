@@ -24,7 +24,10 @@ export function registerDeprecationHandler(
     handler: (
         message: string,
         options: { id: string; until: string } | undefined,
-        next: (message: string, options?: { id: string; until: string }) => void,
+        next: (
+            message: string,
+            options?: { id: string; until: string },
+        ) => void,
     ) => void,
 ): void;
 /**
@@ -49,16 +52,27 @@ export function runInDebug(func: () => any): void;
 /**
  * Display a warning with the provided message.
  */
-export function warn(message: string, test: boolean, options: { id: string }): void;
+export function warn(
+    message: string,
+    test: boolean,
+    options: { id: string },
+): void;
 export function warn(message: string, options: { id: string }): void;
 /**
  * @deprecated Missing deprecation options: https://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options
  */
-export function warn(message: string, test: boolean, options?: { id?: string | undefined }): void;
+export function warn(
+    message: string,
+    test: boolean,
+    options?: { id?: string | undefined },
+): void;
 /**
  * @deprecated Missing deprecation options: https://emberjs.com/deprecations/v2.x/#toc_ember-debug-function-options
  */
-export function warn(message: string, options?: { id?: string | undefined }): void;
+export function warn(
+    message: string,
+    options?: { id?: string | undefined },
+): void;
 
 /**
  * Display a deprecation warning with the provided message and a stack trace

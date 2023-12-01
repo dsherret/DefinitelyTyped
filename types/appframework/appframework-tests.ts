@@ -67,14 +67,25 @@ $.jsonP({});
     return $.post("", (data: any, status?: string, xhr?: XMLHttpRequest) => {});
 })();
 ((): XMLHttpRequest => {
-    return $.post("", {}, (data: any, status?: string, xhr?: XMLHttpRequest) => {});
+    return $.post(
+        "",
+        {},
+        (data: any, status?: string, xhr?: XMLHttpRequest) => {},
+    );
 })();
 
 ((): XMLHttpRequest => {
-    return $.getJSON("", (data: any, status?: string, xhr?: XMLHttpRequest) => {});
+    return $.getJSON(
+        "",
+        (data: any, status?: string, xhr?: XMLHttpRequest) => {},
+    );
 })();
 ((): XMLHttpRequest => {
-    return $.getJSON("", {}, (data: any, status?: string, xhr?: XMLHttpRequest) => {});
+    return $.getJSON(
+        "",
+        {},
+        (data: any, status?: string, xhr?: XMLHttpRequest) => {},
+    );
 })();
 
 ((): string => {

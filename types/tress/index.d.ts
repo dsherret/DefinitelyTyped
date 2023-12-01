@@ -1,6 +1,9 @@
 declare namespace tress {
     export type TressJobCallback = (this: TressJobData, ...args: any[]) => void;
-    export type TressWorkerDoneCallback = (err: boolean | Error | null | undefined, ...args: any[]) => void;
+    export type TressWorkerDoneCallback = (
+        err: boolean | Error | null | undefined,
+        ...args: any[]
+    ) => void;
 
     export interface TressJobData {
         [name: string]: {};
@@ -105,14 +108,19 @@ declare namespace tress {
         /**
          * Returns the status of job ("waiting", "running", "finished", "pending" or "missing")
          */
-        status(job: TressJob): "active" | "failed" | "finished" | "missing" | "waiting";
+        status(
+            job: TressJob,
+        ): "active" | "failed" | "finished" | "missing" | "waiting";
         /**
          * Adds a new job to the front of the queue.
          * Instead of a single job, a jobs array can be submitted.
          * Note, that if you pass callback as second argument,
          * tress calls this callback once the worker has finished processing the job
          */
-        unshift(job: TressJobData | TressJobData[], done?: TressJobCallback): void;
+        unshift(
+            job: TressJobData | TressJobData[],
+            done?: TressJobCallback,
+        ): void;
         /**
          * Returns the array of items currently being processed
          */
@@ -132,7 +140,12 @@ declare namespace tress {
          * A callback that is called when job failed (worker call done with error as first argument).
          * Note, that this callback is called after job has been moved from active to failed/finished and after job callback (from push/unshift) was called
          */
-        error(this: TressJobData, err: Error, job: TressJobData, ...args: any[]): void;
+        error(
+            this: TressJobData,
+            err: Error,
+            job: TressJobData,
+            ...args: any[]
+        ): void;
         /**
          * A  callback that is called when job returned to queue (worker call done with boolean as first argument)
          */
@@ -168,7 +181,10 @@ declare namespace tress {
  * If negative - no parallel and delay between worker functions (concurrency -1,000 sets 1 second delay)
  */
 declare function tress(
-    worker: (job: tress.TressJobData, done: tress.TressWorkerDoneCallback) => void,
+    worker: (
+        job: tress.TressJobData,
+        done: tress.TressWorkerDoneCallback,
+    ) => void,
     concurrency?: number,
 ): tress.TressStatic;
 

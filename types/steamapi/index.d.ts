@@ -56,7 +56,11 @@ declare class SteamAPI {
      * @param [region=us] Store region
      * @returns App details for ID
      */
-    getGameDetails(app: string, force?: boolean, region?: string): Promise<Record<string, unknown>>;
+    getGameDetails(
+        app: string,
+        force?: boolean,
+        region?: string,
+    ): Promise<Record<string, unknown>>;
 
     /**
      * Get news for app id.
@@ -92,7 +96,10 @@ declare class SteamAPI {
      * @param app App ID
      * @returns Achievements
      */
-    getUserAchievements(id: string, app: string): Promise<SteamAPI.PlayerAchievements>;
+    getUserAchievements(
+        id: string,
+        app: string,
+    ): Promise<SteamAPI.PlayerAchievements>;
 
     /**
      * Get users badges.
@@ -156,7 +163,10 @@ declare class SteamAPI {
      * @param [key=this.key] Key
      * @returns Servers
      */
-    getUserServers(hide?: boolean, key?: string): Promise<SteamAPI.PlayerServers>;
+    getUserServers(
+        hide?: boolean,
+        key?: string,
+    ): Promise<SteamAPI.PlayerServers>;
 
     /**
      * Get users stats for app id.

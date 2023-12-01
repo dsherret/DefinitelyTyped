@@ -6,7 +6,7 @@ var route = {} as Hapi.RoutePublicInterface;
 
 var a: string = route.method;
 var a: string = route.path;
-if (typeof (route.vhost) == "string") {
+if (typeof route.vhost == "string") {
     var a: string = route.vhost;
 } else {
     var b: string[] = route.vhost!;

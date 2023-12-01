@@ -1331,7 +1331,10 @@ interface JQuery {
      * @param handler A function to execute each time the event is triggered.
      * @return JQuery
      */
-    bind(eventType: string | ChUIEventInterface, handler: (eventObject: JQueryEventObject) => any): JQuery;
+    bind(
+        eventType: string | ChUIEventInterface,
+        handler: (eventObject: JQueryEventObject) => any,
+    ): JQuery;
     /**
      * Attach a handler to an event for the elements.
      *
@@ -1340,7 +1343,11 @@ interface JQuery {
      * @param preventBubble Setting the third argument to false will attach a function that prevents the default action from occurring and stops the event from bubbling. The default is true.
      * @return JQuery
      */
-    bind(eventType: string | ChUIEventInterface, eventData: any, preventBubble: boolean): JQuery;
+    bind(
+        eventType: string | ChUIEventInterface,
+        eventData: any,
+        preventBubble: boolean,
+    ): JQuery;
     /**
      * Attach a handler to an event for the elements.
      *
@@ -1348,7 +1355,10 @@ interface JQuery {
      * @param preventBubble Setting the third argument to false will attach a function that prevents the default action from occurring and stops the event from bubbling. The default is true.
      * @return JQuery
      */
-    bind(eventType: string | ChUIEventInterface, preventBubble: boolean): JQuery;
+    bind(
+        eventType: string | ChUIEventInterface,
+        preventBubble: boolean,
+    ): JQuery;
 
     delegate(
         selector: any,
@@ -1382,7 +1392,10 @@ interface JQuery {
      * @param handler A handler function previously attached for the event(s), or the special value false.
      * @return JQuery
      */
-    off(events: string | ChUIEventInterface, handler: (eventObject: JQueryEventObject) => any): JQuery;
+    off(
+        events: string | ChUIEventInterface,
+        handler: (eventObject: JQueryEventObject) => any,
+    ): JQuery;
 
     /**
      * Attach an event handler function for one or more events to the selected elements.
@@ -1391,7 +1404,10 @@ interface JQuery {
      * @param handler A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false. Rest parameter args is for optional parameters passed to jQuery.trigger(). Note that the actual parameters on the event handler function must be marked as optional (? syntax).
      * @return JQuery
      */
-    on(events: string | ChUIEventInterface, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): JQuery;
+    on(
+        events: string | ChUIEventInterface,
+        handler: (eventObject: JQueryEventObject, ...args: any[]) => any,
+    ): JQuery;
     /**
      * Attach an event handler function for one or more events to the selected elements.
      *
@@ -1441,7 +1457,10 @@ interface JQuery {
      * @param handler A function to execute at the time the event is triggered.
      * @return JQuery
      */
-    one(events: string | ChUIEventInterface, handler: (eventObject: JQueryEventObject) => any): JQuery;
+    one(
+        events: string | ChUIEventInterface,
+        handler: (eventObject: JQueryEventObject) => any,
+    ): JQuery;
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
      *
@@ -1450,7 +1469,11 @@ interface JQuery {
      * @param handler A function to execute at the time the event is triggered.
      * @return JQuery
      */
-    one(events: string | ChUIEventInterface, data: Object, handler: (eventObject: JQueryEventObject) => any): JQuery;
+    one(
+        events: string | ChUIEventInterface,
+        data: Object,
+        handler: (eventObject: JQueryEventObject) => any,
+    ): JQuery;
 
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
@@ -1488,7 +1511,10 @@ interface JQuery {
      * @param extraParameters Additional parameters to pass along to the event handler.
      * @return JQuery
      */
-    trigger(eventType: string | ChUIEventInterface, extraParameters?: any[] | Object): JQuery;
+    trigger(
+        eventType: string | ChUIEventInterface,
+        extraParameters?: any[] | Object,
+    ): JQuery;
 
     /**
      * Execute all handlers attached to an element for an event.
@@ -1497,7 +1523,10 @@ interface JQuery {
      * @param extraParameters An array of additional parameters to pass along to the event handler.
      * @return Object
      */
-    triggerHandler(eventType: string | ChUIEventInterface, ...extraParameters: any[]): Object;
+    triggerHandler(
+        eventType: string | ChUIEventInterface,
+        ...extraParameters: any[]
+    ): Object;
 
     /**
      * Remove a previously-attached event handler from the elements.
@@ -1506,7 +1535,10 @@ interface JQuery {
      * @param handler The function that is to be no longer executed.
      * @return JQuery
      */
-    unbind(eventType?: string | ChUIEventInterface, handler?: (eventObject: JQueryEventObject) => any): JQuery;
+    unbind(
+        eventType?: string | ChUIEventInterface,
+        handler?: (eventObject: JQueryEventObject) => any,
+    ): JQuery;
     /**
      * Remove a previously-attached event handler from the elements.
      *
@@ -1563,7 +1595,7 @@ interface ChUIEventInterface {
  */
 interface JQueryEventConstructor {
     (name: string, eventProperties?: any): JQueryEventObject;
-    new(name: string, eventProperties?: any): JQueryEventObject;
+    new (name: string, eventProperties?: any): JQueryEventObject;
 }
 
 interface JQueryEventInterface {
@@ -1573,29 +1605,26 @@ interface JQueryEventInterface {
 /**
  * Interface of the JQuery extension of the W3C event object
  */
-interface BaseJQueryEventObject extends Event {
-}
+interface BaseJQueryEventObject extends Event {}
 interface JQueryEventObject
-    extends BaseJQueryEventObject, JQueryInputEventObject, JQueryMouseEventObject, JQueryKeyEventObject
-{
-}
+    extends BaseJQueryEventObject,
+        JQueryInputEventObject,
+        JQueryMouseEventObject,
+        JQueryKeyEventObject {}
 
 /**
  * Interface of the JQuery extension of the W3C event object
  */
-interface BaseJQueryEventObject extends Event {
-}
+interface BaseJQueryEventObject extends Event {}
 
-interface JQueryInputEventObject extends BaseJQueryEventObject {
-}
+interface JQueryInputEventObject extends BaseJQueryEventObject {}
 
-interface JQueryMouseEventObject extends JQueryInputEventObject {
-}
+interface JQueryMouseEventObject extends JQueryInputEventObject {}
 
-interface JQueryKeyEventObject extends JQueryInputEventObject {
-}
+interface JQueryKeyEventObject extends JQueryInputEventObject {}
 
 interface JQueryEventObject
-    extends BaseJQueryEventObject, JQueryInputEventObject, JQueryMouseEventObject, JQueryKeyEventObject
-{
-}
+    extends BaseJQueryEventObject,
+        JQueryInputEventObject,
+        JQueryMouseEventObject,
+        JQueryKeyEventObject {}

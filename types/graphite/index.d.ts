@@ -12,7 +12,12 @@ declare class GraphiteClient {
     write(metrics: any, callback?: Callback): void;
     write(metrics: any, timestamp?: number, callback?: Callback): void;
     writeTagged(metrics: any, tags: any, callback?: Callback): void;
-    writeTagged(metrics: any, tags: any, timestamp?: number, callback?: Callback): void;
+    writeTagged(
+        metrics: any,
+        tags: any,
+        timestamp?: number,
+        callback?: Callback,
+    ): void;
     end(): void;
 }
 

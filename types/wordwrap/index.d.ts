@@ -4,13 +4,20 @@ type Wrap = (text: string) => string;
  * Wrap lines until column `stop`. If a word is longer than `stop` characters
  * it will overflow.
  */
-declare function wordwrap(stop: number, params?: { mode?: wordwrap.Mode | undefined }): Wrap;
+declare function wordwrap(
+    stop: number,
+    params?: { mode?: wordwrap.Mode | undefined },
+): Wrap;
 
 /**
  * Pad out lines with spaces out to column `start` and then wrap until column
  * `stop`. If a word is longer than `stop - start` characters it will overflow.
  */
-declare function wordwrap(start: number, stop: number, params?: { mode?: wordwrap.Mode | undefined }): Wrap;
+declare function wordwrap(
+    start: number,
+    stop: number,
+    params?: { mode?: wordwrap.Mode | undefined },
+): Wrap;
 
 /**
  * Pad out lines with spaces out to column `start` and then wrap until column

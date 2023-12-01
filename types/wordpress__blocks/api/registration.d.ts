@@ -18,20 +18,29 @@ import {
  *
  * @returns Block support value.
  */
-export function getBlockSupport(nameOrType: string | Block<any>, feature: keyof BlockSupports): unknown | undefined;
+export function getBlockSupport(
+    nameOrType: string | Block<any>,
+    feature: keyof BlockSupports,
+): unknown | undefined;
 export function getBlockSupport<T>(
     nameOrType: string | Block<any>,
     feature: keyof BlockSupports,
     defaultSupports: T,
-): T extends string ? string : T extends number ? number : T extends boolean ? boolean : T;
+): T extends string
+    ? string
+    : T extends number
+      ? number
+      : T extends boolean
+        ? boolean
+        : T;
 
 /**
  * Returns a registered block type.
  */
 /* eslint-disable @definitelytyped/no-unnecessary-generics */
-export function getBlockType<T extends Record<string, any> = Record<string, any>>(
-    name: string | undefined,
-): Block<T> | undefined;
+export function getBlockType<
+    T extends Record<string, any> = Record<string, any>,
+>(name: string | undefined): Block<T> | undefined;
 
 /**
  * Returns all registered blocks.
@@ -99,7 +108,9 @@ export function hasChildBlocksWithInserterSupport(blockName: string): boolean;
  *
  * @param blockOrType - Block or Block Type to test.
  */
-export function isReusableBlock(blockOrType: Block<any> | BlockInstance): boolean;
+export function isReusableBlock(
+    blockOrType: Block<any> | BlockInstance,
+): boolean;
 
 /**
  * Registers a new block collection to group blocks in the same namespace in the inserter.
@@ -121,7 +132,10 @@ export function registerBlockCollection(
  *                         applied to the block and `label` which identifies
  *                         the variation to the user.
  */
-export function registerBlockStyle(blockName: string, styleVariation: BlockStyle): void;
+export function registerBlockStyle(
+    blockName: string,
+    styleVariation: BlockStyle,
+): void;
 
 /**
  * Registers a new block provided a unique name and an object defining its
@@ -168,7 +182,10 @@ export function setUnregisteredTypeHandlerName(blockName: string): void;
  * @param blockName - Name of block (example: 'core/paragraph').
  * @param styleVariationName - Name of class applied to the block.
  */
-export function unregisterBlockStyle(blockName: string, styleVariationName: string): void;
+export function unregisterBlockStyle(
+    blockName: string,
+    styleVariationName: string,
+): void;
 
 /**
  * Unregisters a block.
@@ -187,7 +204,10 @@ export function unregisterBlockType(name: string): Block<any> | undefined;
  *
  * @returns Block variations.
  */
-export function getBlockVariations(blockName: string, scope?: BlockVariationScope): BlockVariation[] | undefined;
+export function getBlockVariations(
+    blockName: string,
+    scope?: BlockVariationScope,
+): BlockVariation[] | undefined;
 
 /**
  * Registers one or more new block variations for the given block type.
@@ -195,7 +215,10 @@ export function getBlockVariations(blockName: string, scope?: BlockVariationScop
  * @param blockName - Name of the block (example: “core/columns”).
  * @param variation - Variation configuration object (or array of if more than one).
  */
-export function registerBlockVariation(blockName: string, variation: BlockVariation | BlockVariation[]): void;
+export function registerBlockVariation(
+    blockName: string,
+    variation: BlockVariation | BlockVariation[],
+): void;
 
 /**
  * Unregisters one or more variations defined for the given block type.
@@ -203,4 +226,7 @@ export function registerBlockVariation(blockName: string, variation: BlockVariat
  * @param blockName - Name of the block (example: “core/columns”).
  * @param variationName - Name of variation to be unregistered (or array if unregistering multiple variations)
  */
-export function unregisterBlockVariation(blockName: string, variationName: string | string[]): void;
+export function unregisterBlockVariation(
+    blockName: string,
+    variationName: string | string[],
+): void;

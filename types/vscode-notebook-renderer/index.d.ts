@@ -118,7 +118,11 @@ export interface RendererApi {
      *
      * @return If rendering is asynchronous, a promise that resolves when rendering has finished.
      */
-    renderOutputItem(outputItem: OutputItem, element: HTMLElement, signal: AbortSignal): void | Promise<void>;
+    renderOutputItem(
+        outputItem: OutputItem,
+        element: HTMLElement,
+        signal: AbortSignal,
+    ): void | Promise<void>;
 
     /**
      * Called by the editor when a previously-rendered output item is being disposed of.
@@ -152,5 +156,7 @@ export interface ActivationFunction<TState = any> {
      *
      * @return The renderer for your API or undefined if your renderer extends another and will not be called directly.
      */
-    (context: RendererContext<TState>): Promise<RendererApi | undefined> | RendererApi | undefined;
+    (
+        context: RendererContext<TState>,
+    ): Promise<RendererApi | undefined> | RendererApi | undefined;
 }

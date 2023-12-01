@@ -1,6 +1,10 @@
 import { Action, applyMiddleware, createStore } from "redux";
 import { createLogger } from "redux-logger";
-import { combineReducers, routerReducer, stateTransformer } from "redux-seamless-immutable";
+import {
+    combineReducers,
+    routerReducer,
+    stateTransformer,
+} from "redux-seamless-immutable";
 
 interface State {
     prop1: boolean;
@@ -34,9 +38,4 @@ const loggerMiddleware = createLogger({
 });
 
 // Test integration with `createStore`
-const store = createStore(
-    combined,
-    applyMiddleware(
-        loggerMiddleware,
-    ),
-);
+const store = createStore(combined, applyMiddleware(loggerMiddleware));

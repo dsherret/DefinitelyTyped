@@ -9,19 +9,22 @@ popup1.close();
 
 const popup2 = new PopupWindow();
 // Test common use-case with passing opened, blocked and closed callbacks.
-popup2.opened(win => {
-    // The callback argument should be an instance of PopupWindow.
-    console.log(win.url);
-    console.log(win.name);
-}).blocked(win => {
-    // The callback argument should be an instance of PopupWindow.
-    console.log(win.url);
-    console.log(win.name);
-}).closed(win => {
-    // The callback argument should be an instance of PopupWindow.
-    console.log(win.url);
-    console.log(win.name);
-});
+popup2
+    .opened((win) => {
+        // The callback argument should be an instance of PopupWindow.
+        console.log(win.url);
+        console.log(win.name);
+    })
+    .blocked((win) => {
+        // The callback argument should be an instance of PopupWindow.
+        console.log(win.url);
+        console.log(win.name);
+    })
+    .closed((win) => {
+        // The callback argument should be an instance of PopupWindow.
+        console.log(win.url);
+        console.log(win.name);
+    });
 
 // PopupWindow class should accept URL contructor argument.
 const popup3 = new PopupWindow("http://example.com");

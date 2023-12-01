@@ -13,9 +13,18 @@ declare namespace autobahn {
         subscriptions: ISubscription[][];
         registrations: IRegistration[];
 
-        constructor(transport: ITransport, defer: DeferFactory, challenge: OnChallengeHandler);
+        constructor(
+            transport: ITransport,
+            defer: DeferFactory,
+            challenge: OnChallengeHandler,
+        );
 
-        join(realm: string, authmethods: string[], authid: string, authextra?: object): void;
+        join(
+            realm: string,
+            authmethods: string[],
+            authid: string,
+            authextra?: object,
+        ): void;
 
         leave(reason: string, message: string): void;
 
@@ -45,7 +54,9 @@ declare namespace autobahn {
             options?: IRegisterOptions,
         ): When.Promise<IRegistration<TResult, TArgs, TKWArgs, TName>>;
 
-        unsubscribe<TArgs, TKWArgs>(subscription: ISubscription<TArgs, TKWArgs>): When.Promise<any>;
+        unsubscribe<TArgs, TKWArgs>(
+            subscription: ISubscription<TArgs, TKWArgs>,
+        ): When.Promise<any>;
 
         unregister<TResult, TArgs, TKWArgs, TName>(
             registration: IRegistration<TResult, TArgs, TKWArgs, TName>,
@@ -126,7 +137,9 @@ declare namespace autobahn {
         unsubscribe(): When.Promise<any>;
     }
 
-    class Subscription<TArgs = any[], TKWArgs = any, TName = string> implements ISubscription<TArgs, TKWArgs, TName> {
+    class Subscription<TArgs = any[], TKWArgs = any, TName = string>
+        implements ISubscription<TArgs, TKWArgs, TName>
+    {
         constructor(
             topic?: TName,
             handler?: SubscribeHandler<TArgs, TKWArgs>,
@@ -152,7 +165,12 @@ declare namespace autobahn {
         details?: IInvocation,
     ) => TResult;
 
-    interface IRegistration<TResult = any, TArgs = any[], TKWArgs = any, TName = string> {
+    interface IRegistration<
+        TResult = any,
+        TArgs = any[],
+        TKWArgs = any,
+        TName = string,
+    > {
         procedure: TName;
         endpoint: RegisterEndpoint<TResult, TArgs, TKWArgs>;
         options: IRegisterOptions;
@@ -162,8 +180,12 @@ declare namespace autobahn {
         unregister(): When.Promise<any>;
     }
 
-    class Registration<TResult = any, TArgs = any[], TKWArgs = any, TName = string>
-        implements IRegistration<TResult, TArgs, TKWArgs, TName>
+    class Registration<
+        TResult = any,
+        TArgs = any[],
+        TKWArgs = any,
+        TName = string,
+    > implements IRegistration<TResult, TArgs, TKWArgs, TName>
     {
         constructor(
             procedure?: TName,
@@ -220,7 +242,13 @@ declare namespace autobahn {
 
     interface IRegisterOptions {
         disclose_caller?: boolean | undefined;
-        invoke?: "single" | "roundrobin" | "random" | "first" | "last" | undefined;
+        invoke?:
+            | "single"
+            | "roundrobin"
+            | "random"
+            | "first"
+            | "last"
+            | undefined;
     }
 
     export class Connection {
@@ -260,8 +288,14 @@ declare namespace autobahn {
         method: string,
         extra: any,
     ) => string | [string, any] | When.Promise<string | [string, any]>;
-    type OnInternalErrorHandler = (error: object | Error, error_message?: string) => void;
-    type OnUserErrorHandler = (error: object | Error, error_message?: string) => void;
+    type OnInternalErrorHandler = (
+        error: object | Error,
+        error_message?: string,
+    ) => void;
+    type OnUserErrorHandler = (
+        error: object | Error,
+        error_message?: string,
+    ) => void;
 
     interface IConnectionOptions {
         use_es6_promises?: boolean | undefined;
@@ -325,7 +359,7 @@ declare namespace autobahn {
     }
 
     interface ITransportFactoryFactory {
-        new(options: any): ITransportFactory;
+        new (options: any): ITransportFactory;
     }
 
     interface ITransports {
@@ -344,7 +378,12 @@ declare namespace autobahn {
     }
 
     interface IAuthCra {
-        derive_key(secret: string, salt: string, iterations: number, keylen: number): string;
+        derive_key(
+            secret: string,
+            salt: string,
+            iterations: number,
+            keylen: number,
+        ): string;
         sign(key: string, challenge: string): string;
     }
 

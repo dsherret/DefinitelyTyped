@@ -6,34 +6,39 @@ TRTC.Logger.disableUploadLog();
 
 const version = TRTC.VERSION;
 
-TRTC.checkSystemRequirements().then(checkResult => {
+TRTC.checkSystemRequirements().then((checkResult) => {
     if (!checkResult.result) {
-        console.log("checkResult", checkResult.result, "checkDetail", checkResult.detail);
+        console.log(
+            "checkResult",
+            checkResult.result,
+            "checkDetail",
+            checkResult.detail,
+        );
     }
 });
 
 TRTC.isScreenShareSupported();
 
-TRTC.getDevices().then(devices => {
-    devices.forEach(device => {
+TRTC.getDevices().then((devices) => {
+    devices.forEach((device) => {
         console.log(device.deviceId, device.kind);
     });
 });
 
-TRTC.getCameras().then(devices => {
-    devices.forEach(device => {
+TRTC.getCameras().then((devices) => {
+    devices.forEach((device) => {
         console.log(device.deviceId, device.kind);
     });
 });
 
-TRTC.getMicrophones().then(devices => {
-    devices.forEach(device => {
+TRTC.getMicrophones().then((devices) => {
+    devices.forEach((device) => {
         console.log(device.deviceId, device.kind);
     });
 });
 
-TRTC.getSpeakers().then(devices => {
-    devices.forEach(device => {
+TRTC.getSpeakers().then((devices) => {
+    devices.forEach((device) => {
         console.log(device.deviceId, device.kind);
     });
 });
@@ -73,7 +78,7 @@ stream
             // 本地流发布成功
         });
     })
-    .catch(error => {
+    .catch((error) => {
         console.error("failed initialize localStream " + error);
     });
 
@@ -90,7 +95,7 @@ client
     .then(() => {
         // join room success
     })
-    .catch(error => {
+    .catch((error) => {
         console.error("Join room failed: " + error);
     });
 
@@ -103,7 +108,7 @@ client
     .then(() => {
         // leaving room success
     })
-    .catch(error => {
+    .catch((error) => {
         console.error("leaving room failed: " + error);
     });
 
@@ -114,7 +119,7 @@ client.switchRole("anchor").then(() => {
 client.on("stream-added", ({ stream }) => {
     stream.getType();
 
-    client.subscribe(stream, { audio: true, video: true }).catch(e => {
+    client.subscribe(stream, { audio: true, video: true }).catch((e) => {
         console.error("failed to unsubscribe remoteStream");
     });
 });
@@ -159,17 +164,20 @@ client.on("unmute-video", ({ userId }) => {
     console.log(userId);
 });
 
-client.on("client-banned", error => {
+client.on("client-banned", (error) => {
     console.error("client-banned observed: " + error);
 });
 
-client.on("network-quality", ({ uplinkNetworkQuality, downlinkNetworkQuality }) => {
-    console.log(
-        `network-quality, uplinkNetworkQuality:${uplinkNetworkQuality}, downlinkNetworkQuality: ${downlinkNetworkQuality}`,
-    );
-});
+client.on(
+    "network-quality",
+    ({ uplinkNetworkQuality, downlinkNetworkQuality }) => {
+        console.log(
+            `network-quality, uplinkNetworkQuality:${uplinkNetworkQuality}, downlinkNetworkQuality: ${downlinkNetworkQuality}`,
+        );
+    },
+);
 
-client.on("error", error => {
+client.on("error", (error) => {
     console.error("client error observed: " + error);
 });
 
@@ -181,13 +189,13 @@ client.getTransportStats().then(({ rtt }) => {
     console.log("RTT: " + rtt);
 });
 
-client.getLocalAudioStats().then(stats => {
+client.getLocalAudioStats().then((stats) => {
     for (const userId in stats) {
         console.log(stats[userId].bytesSent, stats[userId].packetsSent);
     }
 });
 
-client.getLocalVideoStats().then(stats => {
+client.getLocalVideoStats().then((stats) => {
     for (const userId in stats) {
         console.log(
             stats[userId].bytesSent,
@@ -200,13 +208,17 @@ client.getLocalVideoStats().then(stats => {
     }
 });
 
-client.getRemoteAudioStats().then(stats => {
+client.getRemoteAudioStats().then((stats) => {
     for (const userId in stats) {
-        console.log(stats[userId].bytesReceived, stats[userId].packetsReceived, stats[userId].packetsLost);
+        console.log(
+            stats[userId].bytesReceived,
+            stats[userId].packetsReceived,
+            stats[userId].packetsLost,
+        );
     }
 });
 
-client.getRemoteVideoStats().then(stats => {
+client.getRemoteVideoStats().then((stats) => {
     for (const userId in stats) {
         console.log(
             stats[userId].bytesReceived,
@@ -251,7 +263,7 @@ client
     .then(() => {
         console.log("开始混流转码");
     })
-    .catch(error => {
+    .catch((error) => {
         console.error("startMixTranscode fail", error);
     });
 
@@ -260,7 +272,7 @@ client
     .then(() => {
         console.log("停止混流转码");
     })
-    .catch(error => {
+    .catch((error) => {
         console.error("stopMixTranscode fail", error);
     });
 
@@ -269,7 +281,7 @@ stream
     .then(() => {
         // autoplay success
     })
-    .catch(error => {
+    .catch((error) => {
         const errorCode = error.getCode();
         if (errorCode === 0x4043) {
             // PLAY_NOT_ALLOWED,引导用户手势操作恢复音视频播放

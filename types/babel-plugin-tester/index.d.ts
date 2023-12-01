@@ -86,7 +86,13 @@ export interface TestObject {
      * }
      * ```
      */
-    error?: boolean | string | RegExp | Error | ((error: unknown) => boolean) | undefined;
+    error?:
+        | boolean
+        | string
+        | RegExp
+        | Error
+        | ((error: unknown) => boolean)
+        | undefined;
 
     /**
      * If you need something set up before a particular test is run, you can do
@@ -97,10 +103,10 @@ export interface TestObject {
      */
     setup?:
         | (() => // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        | void
-        | NonNullable<TestObject["teardown"]>
-        | Promise<void>
-        | Promise<NonNullable<TestObject["teardown"]>>)
+          | void
+              | NonNullable<TestObject["teardown"]>
+              | Promise<void>
+              | Promise<NonNullable<TestObject["teardown"]>>)
         | undefined;
 
     /**
@@ -128,7 +134,9 @@ export interface TestObject {
      * The use case for this originally was for testing codemods and formatting
      * their result with prettier-eslint.
      */
-    formatResult?: ((code: string, options: { filename: string }) => string) | undefined;
+    formatResult?:
+        | ((code: string, options: { filename: string }) => string)
+        | undefined;
 
     /**
      * To use `babel.config.js` instead of `.babelrc`, set babelOptions to the
@@ -156,7 +164,9 @@ export interface TestObject {
 
 export type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
 
-export interface PluginTesterOptions extends TestObject, Omit<Babel.TransformOptions, "code" | "only"> {
+export interface PluginTesterOptions
+    extends TestObject,
+        Omit<Babel.TransformOptions, "code" | "only"> {
     /**
      * Your babel plugin. For example:
      *
@@ -267,7 +277,10 @@ export interface PluginTesterOptions extends TestObject, Omit<Babel.TransformOpt
      *
      * Read more about test objects below.
      */
-    tests?: Array<TestObject | string> | Record<string, TestObject | string> | undefined;
+    tests?:
+        | Array<TestObject | string>
+        | Record<string, TestObject | string>
+        | undefined;
 
     /**
      * Use this to provide your own implementation of babel. This is
@@ -284,7 +297,11 @@ export default function pluginTester(options: PluginTesterOptions): void;
  */
 export function prettierFormatter(
     code: string,
-    options?: { cwd?: string | undefined; filename?: string | undefined; config?: Options | undefined },
+    options?: {
+        cwd?: string | undefined;
+        filename?: string | undefined;
+        config?: Options | undefined;
+    },
 ): string;
 
 export const unstringSnapshotSerializer: {

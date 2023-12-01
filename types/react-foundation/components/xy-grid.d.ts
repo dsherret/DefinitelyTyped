@@ -9,7 +9,9 @@ import { FlexboxPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const GridContainer: React.FunctionComponent<GridContainerProps>;
-export interface GridContainerProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface GridContainerProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     fluid?: boolean | undefined;
     full?: boolean | undefined;
 }
@@ -20,7 +22,9 @@ export interface GridContainerProps extends FlexboxPropTypes, React.HTMLAttribut
  * @returns {Object}
  */
 export declare const Grid: React.FunctionComponent<GridProps>;
-export interface GridProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface GridProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     vertical?: boolean | undefined;
     gutters?: GutterTypes | undefined;
     upOnSmall?: number | undefined;
@@ -38,7 +42,9 @@ export interface GridProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDi
  * @returns {Object}
  */
 export declare const Cell: React.FunctionComponent<CellProps>;
-export interface CellProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface CellProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     small?: number | undefined;
     medium?: number | undefined;
     large?: number | undefined;

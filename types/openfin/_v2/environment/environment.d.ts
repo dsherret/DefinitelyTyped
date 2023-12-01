@@ -13,4 +13,5 @@ export interface Environment {
     getCurrentEntityType(): EntityType;
     raiseEvent(eventName: string, eventArgs: any): void;
 }
-export declare const notImplementedEnvErrorMsg = "Not implemented in this environment";
+export declare const notImplementedEnvErrorMsg =
+    "Not implemented in this environment";

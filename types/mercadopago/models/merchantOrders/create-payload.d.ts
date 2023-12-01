@@ -10,7 +10,15 @@ export interface MerchantOrderItem extends Item {
     /** Id do anúncio. */
     id?: number | undefined;
     /** Identificador da moeda utilizada no preço do item. */
-    currency_id?: "ARS" | "BRL" | "CLP" | "MXN" | "COP" | "PEN" | "UYU" | undefined;
+    currency_id?:
+        | "ARS"
+        | "BRL"
+        | "CLP"
+        | "MXN"
+        | "COP"
+        | "PEN"
+        | "UYU"
+        | undefined;
 }
 
 export interface CreateMerchantOrderPayload {

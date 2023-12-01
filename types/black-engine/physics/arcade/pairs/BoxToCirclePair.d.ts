@@ -4,7 +4,12 @@ export class BoxToCirclePair extends Pair {
     private mBoxHalfHeight;
     private mBoxRotate;
     private mCircleCenter;
-    set(a: BoxCollider, b: CircleCollider, bodyA: RigidBody, bodyB: RigidBody): Pair;
+    set(
+        a: BoxCollider,
+        b: CircleCollider,
+        bodyA: RigidBody,
+        bodyB: RigidBody,
+    ): Pair;
     private __rotate;
 }
 import { BoxCollider } from "../../../colliders/BoxCollider";

@@ -19,7 +19,10 @@ export function compareTwoStrings(string1: string, string2: string): number;
  *          a `bestMatch` property, which specifies which target string was most similar to the main string,
  *          and a `bestMatchIndex` property, which specifies the index of the `bestMatch` in the `targetStrings` array.
  */
-export function findBestMatch(mainString: string, targetStrings: string[]): BestMatch;
+export function findBestMatch(
+    mainString: string,
+    targetStrings: string[],
+): BestMatch;
 
 export interface Rating {
     target: string;

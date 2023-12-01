@@ -31,11 +31,47 @@ gdal.open("C:\\datasets\\ogr.shp", "r+");
 gdal.open("C:\\datasets\\ogr.shp", "r+", "ESRI Shapefile");
 gdal.open("C:\\datasets\\ogr.shp", "r+", ["ESRI Shapefile"]);
 gdal.open("C:\\datasets\\raster.vrt", "w", "VRT");
-gdal.open("C:\\datasets\\raster.vrt", "w", "VRT", 512, 512, 3, 1, creationOptionsArray);
-gdal.open("C:\\datasets\\raster.vrt", "w", "VRT", 512, 512, 3, 1, creationOptionsObject);
+gdal.open(
+    "C:\\datasets\\raster.vrt",
+    "w",
+    "VRT",
+    512,
+    512,
+    3,
+    1,
+    creationOptionsArray,
+);
+gdal.open(
+    "C:\\datasets\\raster.vrt",
+    "w",
+    "VRT",
+    512,
+    512,
+    3,
+    1,
+    creationOptionsObject,
+);
 gdal.open("C:\\datasets\\raster.vrt", "w", ["VRT"]);
-gdal.open("C:\\datasets\\raster.vrt", "w", ["VRT"], 512, 512, 3, 1, creationOptionsArray);
-gdal.open("C:\\datasets\\raster.vrt", "w", ["VRT"], 512, 512, 3, 1, creationOptionsObject);
+gdal.open(
+    "C:\\datasets\\raster.vrt",
+    "w",
+    ["VRT"],
+    512,
+    512,
+    3,
+    1,
+    creationOptionsArray,
+);
+gdal.open(
+    "C:\\datasets\\raster.vrt",
+    "w",
+    ["VRT"],
+    512,
+    512,
+    3,
+    1,
+    creationOptionsObject,
+);
 
 /*let polygonizeOptions: gdal.PolygonizeOptions;
 polygonizeOptions = {

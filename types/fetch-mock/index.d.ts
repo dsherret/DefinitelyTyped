@@ -108,7 +108,10 @@ declare namespace fetchMock {
     /**
      * Mock response function
      */
-    type MockResponseFunction = (url: string, opts: MockRequest) => MockResponse;
+    type MockResponseFunction = (
+        url: string,
+        opts: MockRequest,
+    ) => MockResponse;
 
     /**
      * Mock options object
@@ -237,7 +240,11 @@ declare namespace fetchMock {
          * @param response Configures the http response returned by the mock
          * @param [options] Additional properties defining the route to mock
          */
-        mock(matcher: MockMatcher, response: MockResponse | MockResponseFunction, options?: MockOptions): this;
+        mock(
+            matcher: MockMatcher,
+            response: MockResponse | MockResponseFunction,
+            options?: MockOptions,
+        ): this;
 
         /**
          * Replaces fetch() with a stub which records its calls, grouped by
@@ -264,7 +271,11 @@ declare namespace fetchMock {
          * @param response Configures the http response returned by the mock
          * @param [options] Optional additional properties defining the route to mock
          */
-        once(matcher: MockMatcher, response: MockResponse | MockResponseFunction, options?: MockOptions): this;
+        once(
+            matcher: MockMatcher,
+            response: MockResponse | MockResponseFunction,
+            options?: MockOptions,
+        ): this;
 
         /**
          * Replaces fetch() with a stub which records its calls, grouped by
@@ -275,7 +286,11 @@ declare namespace fetchMock {
          * @param response Configures the http response returned by the mock
          * @param [options] Additional properties defining the route to mock
          */
-        get(matcher: MockMatcher, response: MockResponse | MockResponseFunction, options?: MockOptionsMethodGet): this;
+        get(
+            matcher: MockMatcher,
+            response: MockResponse | MockResponseFunction,
+            options?: MockOptionsMethodGet,
+        ): this;
 
         /**
          * Replaces fetch() with a stub which records its calls, grouped by
@@ -333,7 +348,11 @@ declare namespace fetchMock {
          * @param response Configures the http response returned by the mock
          * @param [options] Additional properties defining the route to mock
          */
-        put(matcher: MockMatcher, response: MockResponse | MockResponseFunction, options?: MockOptionsMethodPut): this;
+        put(
+            matcher: MockMatcher,
+            response: MockResponse | MockResponseFunction,
+            options?: MockOptionsMethodPut,
+        ): this;
 
         /**
          * Replaces fetch() with a stub which records its calls, grouped by
@@ -505,7 +524,10 @@ declare namespace fetchMock {
          * a string specifying a http method to filter by. This will be used to
          * filter the list of calls further.
          */
-        calls(filter?: InspectionFilter, options?: InspectionOptions): MockCall[];
+        calls(
+            filter?: InspectionFilter,
+            options?: InspectionOptions,
+        ): MockCall[];
 
         /**
          * Returns a Boolean indicating whether any calls to fetch matched the
@@ -616,7 +638,7 @@ declare namespace fetchMock {
              * Reference to the Promise constructor of a custom Promise
              * implementation.
              */
-            Promise?: new(
+            Promise?: new (
                 executor: (
                     resolve: (value: Response | PromiseLike<Response>) => void,
                     reject: (reason?: any) => void,
@@ -628,28 +650,33 @@ declare namespace fetchMock {
              */
             fetch?:
                 | ((
-                    input?: string | Request,
-                    init?: RequestInit,
-                ) => Promise<Response>)
+                      input?: string | Request,
+                      init?: RequestInit,
+                  ) => Promise<Response>)
                 | undefined;
 
             /**
              * Reference to the Headers constructor of a custom fetch
              * implementation.
              */
-            Headers?: (new() => Headers | undefined) | undefined;
+            Headers?: (new () => Headers | undefined) | undefined;
 
             /**
              * Reference to the Request constructor of a custom fetch
              * implementation.
              */
-            Request?: (new(input: string | Request, init?: RequestInit) => Request | undefined) | undefined;
+            Request?:
+                | (new (
+                      input: string | Request,
+                      init?: RequestInit,
+                  ) => Request | undefined)
+                | undefined;
 
             /**
              * Reference to the Response constructor of a custom fetch
              * implementation.
              */
-            Response?: (new() => Response | undefined) | undefined;
+            Response?: (new () => Response | undefined) | undefined;
         };
     }
 

@@ -17,15 +17,24 @@ declare namespace AMap {
         }
 
         class MeshAcceptLights extends Mesh {
-            readonly geometry: Geometry3D.Mesh & { readonly vertexNormals: number[] };
+            readonly geometry: Geometry3D.Mesh & {
+                readonly vertexNormals: number[];
+            };
         }
 
         namespace Prism {
             interface Options {
-                path: LngLat[] | Pixel[] | Array<LngLat[] | Pixel[] | Array<[number, number]>>;
+                path:
+                    | LngLat[]
+                    | Pixel[]
+                    | Array<LngLat[] | Pixel[] | Array<[number, number]>>;
                 color: string | number[] | Array<string | number[]>;
                 height?: number | undefined;
-                color2?: string | number[] | Array<string | number[]> | undefined;
+                color2?:
+                    | string
+                    | number[]
+                    | Array<string | number[]>
+                    | undefined;
             }
         }
         class Prism extends MeshAcceptLights {
@@ -61,19 +70,20 @@ declare namespace AMap {
         }
 
         namespace MeshLine {
-            type Options =
-                & {
-                    width?: number | undefined;
-                    height?: number | number[] | undefined;
-                    color?: string | number[] | undefined;
-                }
-                & ({
-                    unit?: "meter" | undefined;
-                    path: Array<[number, number]> | LngLat[];
-                } | {
-                    unit: "px";
-                    path: Array<[number, number]> | Pixel[];
-                });
+            type Options = {
+                width?: number | undefined;
+                height?: number | number[] | undefined;
+                color?: string | number[] | undefined;
+            } & (
+                | {
+                      unit?: "meter" | undefined;
+                      path: Array<[number, number]> | LngLat[];
+                  }
+                | {
+                      unit: "px";
+                      path: Array<[number, number]> | Pixel[];
+                  }
+            );
         }
         // inherit from WideLine
         class MeshLine extends Object3D {

@@ -10,12 +10,20 @@ export function openDoc(
 ): void;
 
 export function openDocb64(
-    files: Array<{ base64: string; fileName?: string | undefined; fileType?: string | undefined }>,
+    files: Array<{
+        base64: string;
+        fileName?: string | undefined;
+        fileType?: string | undefined;
+    }>,
     callback: (error: string, url: string) => void,
 ): void;
 
 export function openDocBinaryinUrl(
-    files: Array<{ url: string; fileName?: string | undefined; fileType?: string | undefined }>,
+    files: Array<{
+        url: string;
+        fileName?: string | undefined;
+        fileType?: string | undefined;
+    }>,
     callback: (error: string, url: string) => void,
 ): void;
 

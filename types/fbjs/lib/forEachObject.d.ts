@@ -12,7 +12,11 @@
  * visits them. Properties that are deleted before being visited are not
  * visited.
  */
-declare function forEachObject(object: object | null, callback: any, context?: any): void;
+declare function forEachObject(
+    object: object | null,
+    callback: any,
+    context?: any,
+): void;
 
 declare namespace forEachObject {}
 

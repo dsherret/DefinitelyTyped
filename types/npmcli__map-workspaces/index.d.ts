@@ -4,7 +4,9 @@ import { IOptions as GlobOptions } from "glob";
 
 export = mapWorkspaces;
 
-declare function mapWorkspaces(opts: mapWorkspaces.Options): Promise<Map<string, string>>;
+declare function mapWorkspaces(
+    opts: mapWorkspaces.Options,
+): Promise<Map<string, string>>;
 
 declare namespace mapWorkspaces {
     interface Options extends GlobOptions {

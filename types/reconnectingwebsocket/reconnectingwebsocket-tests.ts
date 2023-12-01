@@ -11,8 +11,14 @@ const options: ReconnectingWebSocket.Options = {
     timeoutInterval: 1000,
 };
 
-const ws1: ReconnectingWebSocket = new ReconnectingWebSocket("url", ["protocol"], options);
-const ws2: ReconnectingWebSocket = new ReconnectingWebSocket("url", ["protocol"]);
+const ws1: ReconnectingWebSocket = new ReconnectingWebSocket(
+    "url",
+    ["protocol"],
+    options,
+);
+const ws2: ReconnectingWebSocket = new ReconnectingWebSocket("url", [
+    "protocol",
+]);
 const ws3: ReconnectingWebSocket = new ReconnectingWebSocket("url");
 
 ReconnectingWebSocket.debugAll = true;

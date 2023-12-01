@@ -22,8 +22,18 @@ export interface ImageSelectOptions {
 export class CroppedImageControl extends MediaControl {
     onSelect(): void;
     onCropped(croppedImage: any): void; // TODO
-    calculateImageSelectOptions(attachment: Attachment, controller: Cropper): ImageSelectOptions;
-    mustBeCropped(flexW: boolean, flexH: boolean, dstW: number, dstH: number, imgW: number, imgH: number): boolean;
+    calculateImageSelectOptions(
+        attachment: Attachment,
+        controller: Cropper,
+    ): ImageSelectOptions;
+    mustBeCropped(
+        flexW: boolean,
+        flexH: boolean,
+        dstW: number,
+        dstH: number,
+        imgW: number,
+        imgH: number,
+    ): boolean;
     onSkippedCrop(): void;
     setImageFromAttachment(attachment: any): void; // TODO
 }

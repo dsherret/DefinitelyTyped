@@ -11,6 +11,11 @@ export namespace Revparse {
 }
 
 export class Revparse {
-    static ext(objectOut: Object, referenceOut: Reference, repo: Repository, spec: string): number;
+    static ext(
+        objectOut: Object,
+        referenceOut: Reference,
+        repo: Repository,
+        spec: string,
+    ): number;
     static single(repo: Repository, spec: string): Promise<Object>;
 }

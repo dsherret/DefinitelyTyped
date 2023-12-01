@@ -37,7 +37,9 @@ export interface RetryOptions {
     interval?: number | undefined;
 }
 
-export function createClient(options: CreateClientOptionsWithPromise): GoogleMapsClientWithPromise;
+export function createClient(
+    options: CreateClientOptionsWithPromise,
+): GoogleMapsClientWithPromise;
 export function createClient(options: CreateClientOptions): GoogleMapsClient;
 
 /**
@@ -51,7 +53,10 @@ export function createClient(options: CreateClientOptions): GoogleMapsClient;
  *
  * API methods don't require a callback function, if you use the Promise API.
  */
-export type ResponseCallback<T> = (err: "timeout" | ClientResponse<T>, response: ClientResponse<T>) => void;
+export type ResponseCallback<T> = (
+    err: "timeout" | ClientResponse<T>,
+    response: ClientResponse<T>,
+) => void;
 
 /**
  * The object given to the ResponseCallback, containing the HTTP status and headers, as well as the response JSON.
@@ -112,7 +117,11 @@ export interface LatLngLiteralVerbose {
  *  - an object with 'lat', 'lng' properties; or
  *  - an object with 'latitude', 'longitude' properties.
  */
-export type LatLng = LatLngArray | LatLngString | LatLngLiteral | LatLngLiteralVerbose;
+export type LatLng =
+    | LatLngArray
+    | LatLngString
+    | LatLngLiteral
+    | LatLngLiteralVerbose;
 
 /** The bounds parameter defines the latitude/longitude coordinates of the southwest and northeast corners of this bounding box. */
 export interface LatLngBounds {
@@ -235,7 +244,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/maps/documentation/distance-matrix/intro
      */
-    distanceMatrix: GoogleMapsClientEndpoint<DistanceMatrixRequest, DistanceMatrixResponse>;
+    distanceMatrix: GoogleMapsClientEndpoint<
+        DistanceMatrixRequest,
+        DistanceMatrixResponse
+    >;
     /**
      * The Elevation API provides a simple interface to query locations on the earth for elevation data. With the Elevation API,
      * you can develop hiking and biking applications, positioning applications, or low resolution surveying applications.
@@ -259,7 +271,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/maps/documentation/elevation/intro
      */
-    elevationAlongPath: GoogleMapsClientEndpoint<ElevationAlongPathRequest, ElevationResponse>;
+    elevationAlongPath: GoogleMapsClientEndpoint<
+        ElevationAlongPathRequest,
+        ElevationResponse
+    >;
     /**
      * The Places API allows you to query for place information on a variety of categories, such as: establishments,
      * prominent points of interest, geographic locations, and more. You can search for places either by proximity or a text string.
@@ -271,7 +286,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/places/web-service/search#FindPlaceRequests
      */
-    findPlace: GoogleMapsClientEndpoint<FindPlaceRequest, FindPlaceFromTextResponse>;
+    findPlace: GoogleMapsClientEndpoint<
+        FindPlaceRequest,
+        FindPlaceFromTextResponse
+    >;
     /**
      * **Geocoding** is the process of converting addresses (like "1600 Amphitheatre Parkway, Mountain View, CA")
      * into geographic coordinates (like latitude 37.423021 and longitude -122.083739),
@@ -298,7 +316,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/maps/documentation/geolocation/intro
      */
-    geolocate: GoogleMapsClientEndpoint<GeolocationRequest, GeolocationResponse>;
+    geolocate: GoogleMapsClientEndpoint<
+        GeolocationRequest,
+        GeolocationResponse
+    >;
     /**
      * The Roads API takes up to 100 independent coordinates, and returns the closest road segment for each point.
      * The points passed do not need to be part of a continuous path.
@@ -307,7 +328,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/maps/documentation/roads/nearest
      */
-    nearestRoads: GoogleMapsClientEndpoint<NearestRoadsRequest, NearestRoadsResponse>;
+    nearestRoads: GoogleMapsClientEndpoint<
+        NearestRoadsRequest,
+        NearestRoadsResponse
+    >;
     /**
      * Once you have a `place_id` from a Place Search, you can request more details about a particular establishment
      * or point of interest by initiating a Place Details request. A Place Details request returns more comprehensive
@@ -341,14 +365,20 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/places/web-service/autocomplete
      */
-    placesAutoComplete: GoogleMapsClientEndpoint<PlaceAutocompleteRequest, PlaceAutocompleteResponse>;
+    placesAutoComplete: GoogleMapsClientEndpoint<
+        PlaceAutocompleteRequest,
+        PlaceAutocompleteResponse
+    >;
     /**
      * A Nearby Search lets you search for places within a specified area.
      * You can refine your search request by supplying keywords or specifying the type of place you are searching for.
      *
      * @see https://developers.google.com/places/web-service/search#PlaceSearchRequests
      */
-    placesNearby: GoogleMapsClientEndpoint<PlacesNearbyRequest, PlaceSearchResponse>;
+    placesNearby: GoogleMapsClientEndpoint<
+        PlacesNearbyRequest,
+        PlaceSearchResponse
+    >;
     /**
      * The Place Photo service, part of the Places API, is a read- only API that allows you to add high quality photographic content
      * to your application. The Place Photo service gives you access to the millions of photos stored in the Places database.
@@ -358,7 +388,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/places/web-service/photos
      */
-    placesPhoto: GoogleMapsClientEndpoint<PlacePhotoRequest, PlacePhotoResponse>;
+    placesPhoto: GoogleMapsClientEndpoint<
+        PlacePhotoRequest,
+        PlacePhotoResponse
+    >;
     /**
      * The Query Autocomplete service can be used to provide a query prediction for text-based geographic searches,
      * by returning suggested queries as you type.
@@ -370,7 +403,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/places/web-service/query
      */
-    placesQueryAutoComplete: GoogleMapsClientEndpoint<QueryAutocompleteRequest, QueryAutocompleteResponse>;
+    placesQueryAutoComplete: GoogleMapsClientEndpoint<
+        QueryAutocompleteRequest,
+        QueryAutocompleteResponse
+    >;
     /**
      * The Google Places API Radar Search Service allows you to search for up to 200 places at once,
      * but with less detail than is typically returned from a Text Search or Nearby Search request.
@@ -384,13 +420,19 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/places/web-service/search#RadarSearchRequests
      */
-    placesRadar: GoogleMapsClientEndpoint<PlaceRadarRequest, PlaceSearchResponse>;
+    placesRadar: GoogleMapsClientEndpoint<
+        PlaceRadarRequest,
+        PlaceSearchResponse
+    >;
     /**
      * Reverse geocoding is the process of converting geographic coordinates into a human-readable address.
      *
      * @see https://developers.google.com/maps/documentation/geocoding/intro#ReverseGeocoding
      */
-    reverseGeocode: GoogleMapsClientEndpoint<ReverseGeocodingRequest, ReverseGeocodingResponse>;
+    reverseGeocode: GoogleMapsClientEndpoint<
+        ReverseGeocodingRequest,
+        ReverseGeocodingResponse
+    >;
     /**
      * The Roads API returns the posted speed limit for a given road segment.
      * In the case of road segments with variable speed limits, the default speed limit for the segment is returned.
@@ -402,7 +444,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/maps/documentation/roads/speed-limits
      */
-    snappedSpeedLimits: GoogleMapsClientEndpoint<SnappedSpeedLimitsRequest, SpeedLimitsResponse>;
+    snappedSpeedLimits: GoogleMapsClientEndpoint<
+        SnappedSpeedLimitsRequest,
+        SpeedLimitsResponse
+    >;
     /**
      * The Roads API takes up to 100 GPS points collected along a route, and returns a similar set of data,
      * with the points snapped to the most likely roads the vehicle was traveling along.
@@ -410,7 +455,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/maps/documentation/roads/snap
      */
-    snapToRoads: GoogleMapsClientEndpoint<SnapToRoadsRequest, SnapToRoadsResponse>;
+    snapToRoads: GoogleMapsClientEndpoint<
+        SnapToRoadsRequest,
+        SnapToRoadsResponse
+    >;
     /**
      * The Roads API returns the posted speed limit for a given road segment.
      * In the case of road segments with variable speed limits, the default speed limit for the segment is returned.
@@ -422,7 +470,10 @@ export interface GoogleMapsClient {
      *
      * @see https://developers.google.com/maps/documentation/roads/speed-limits
      */
-    speedLimits: GoogleMapsClientEndpoint<SpeedLimitsRequest, SpeedLimitsResponse>;
+    speedLimits: GoogleMapsClientEndpoint<
+        SpeedLimitsRequest,
+        SpeedLimitsResponse
+    >;
     /**
      * The Time Zone API provides a simple interface to request the time zone for locations on the surface of the earth,
      * as well as the time offset from UTC for each of those locations. You request the time zone information for
@@ -462,7 +513,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/directions/intro
      */
-    directions: GoogleMapsClientEndpointWithPromise<DirectionsRequest, DirectionsResponse>;
+    directions: GoogleMapsClientEndpointWithPromise<
+        DirectionsRequest,
+        DirectionsResponse
+    >;
     /**
      * The Distance Matrix API is a service that provides travel distance and time for a matrix of origins and destinations.
      * The API returns information based on the recommended route between start and end points, as calculated by the Google Maps API,
@@ -470,7 +524,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/distance-matrix/intro
      */
-    distanceMatrix: GoogleMapsClientEndpointWithPromise<DistanceMatrixRequest, DistanceMatrixResponse>;
+    distanceMatrix: GoogleMapsClientEndpointWithPromise<
+        DistanceMatrixRequest,
+        DistanceMatrixResponse
+    >;
     /**
      * The Elevation API provides a simple interface to query locations on the earth for elevation data. With the Elevation API,
      * you can develop hiking and biking applications, positioning applications, or low resolution surveying applications.
@@ -486,7 +543,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/elevation/intro
      */
-    elevation: GoogleMapsClientEndpointWithPromise<ElevationRequest, ElevationResponse>;
+    elevation: GoogleMapsClientEndpointWithPromise<
+        ElevationRequest,
+        ElevationResponse
+    >;
     /**
      * You may request sampled elevation data along paths, allowing you to calculate elevation changes along routes.
      * With the Elevation API, you can develop hiking and biking applications, positioning applications,
@@ -494,7 +554,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/elevation/intro
      */
-    elevationAlongPath: GoogleMapsClientEndpointWithPromise<ElevationAlongPathRequest, ElevationResponse>;
+    elevationAlongPath: GoogleMapsClientEndpointWithPromise<
+        ElevationAlongPathRequest,
+        ElevationResponse
+    >;
     /**
      * The Places API allows you to query for place information on a variety of categories, such as: establishments,
      * prominent points of interest, geographic locations, and more. You can search for places either by proximity or a text string.
@@ -506,7 +569,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/places/web-service/search#FindPlaceRequests
      */
-    findPlace: GoogleMapsClientEndpointWithPromise<FindPlaceRequest, FindPlaceFromTextResponse>;
+    findPlace: GoogleMapsClientEndpointWithPromise<
+        FindPlaceRequest,
+        FindPlaceFromTextResponse
+    >;
     /**
      * **Geocoding** is the process of converting addresses (like "1600 Amphitheatre Parkway, Mountain View, CA")
      * into geographic coordinates (like latitude 37.423021 and longitude -122.083739),
@@ -525,7 +591,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/geocoding/intro#GeocodingRequests
      */
-    geocode: GoogleMapsClientEndpointWithPromise<GeocodingRequest, GeocodingResponse>;
+    geocode: GoogleMapsClientEndpointWithPromise<
+        GeocodingRequest,
+        GeocodingResponse
+    >;
     /**
      * The Geolocation API returns a location and accuracy radius based on information about cell towers and WiFi nodes
      * that the mobile client can detect. This document describes the protocol used to send this data to the server and
@@ -533,7 +602,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/geolocation/intro
      */
-    geolocate: GoogleMapsClientEndpointWithPromise<GeolocationRequest, GeolocationResponse>;
+    geolocate: GoogleMapsClientEndpointWithPromise<
+        GeolocationRequest,
+        GeolocationResponse
+    >;
     /**
      * The Roads API takes up to 100 independent coordinates, and returns the closest road segment for each point.
      * The points passed do not need to be part of a continuous path.
@@ -542,7 +614,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/roads/nearest
      */
-    nearestRoads: GoogleMapsClientEndpointWithPromise<NearestRoadsRequest, NearestRoadsResponse>;
+    nearestRoads: GoogleMapsClientEndpointWithPromise<
+        NearestRoadsRequest,
+        NearestRoadsResponse
+    >;
     /**
      * Once you have a `place_id` from a Place Search, you can request more details about a particular establishment
      * or point of interest by initiating a Place Details request. A Place Details request returns more comprehensive
@@ -550,7 +625,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/places/web-service/details
      */
-    place: GoogleMapsClientEndpointWithPromise<PlaceDetailsRequest, PlaceDetailsResponse>;
+    place: GoogleMapsClientEndpointWithPromise<
+        PlaceDetailsRequest,
+        PlaceDetailsResponse
+    >;
     /**
      * The Google Places API Text Search Service is a web service that returns information about a set of places
      * based on a string — for example "pizza in New York" or "shoe stores near Ottawa" or "123 Main Street".
@@ -567,7 +645,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/places/web-service/search#TextSearchRequests
      */
-    places: GoogleMapsClientEndpointWithPromise<PlacesRequest, PlaceSearchResponse>;
+    places: GoogleMapsClientEndpointWithPromise<
+        PlacesRequest,
+        PlaceSearchResponse
+    >;
     /**
      * The Place Autocomplete service is a web service that returns place predictions in response to an HTTP request.
      * The request specifies a textual search string and optional geographic bounds.
@@ -576,14 +657,20 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/places/web-service/autocomplete
      */
-    placesAutoComplete: GoogleMapsClientEndpointWithPromise<PlaceAutocompleteRequest, PlaceAutocompleteResponse>;
+    placesAutoComplete: GoogleMapsClientEndpointWithPromise<
+        PlaceAutocompleteRequest,
+        PlaceAutocompleteResponse
+    >;
     /**
      * A Nearby Search lets you search for places within a specified area.
      * You can refine your search request by supplying keywords or specifying the type of place you are searching for.
      *
      * @see https://developers.google.com/places/web-service/search#PlaceSearchRequests
      */
-    placesNearby: GoogleMapsClientEndpointWithPromise<PlacesNearbyRequest, PlaceSearchResponse>;
+    placesNearby: GoogleMapsClientEndpointWithPromise<
+        PlacesNearbyRequest,
+        PlaceSearchResponse
+    >;
     /**
      * The Place Photo service, part of the Places API, is a read- only API that allows you to add high quality photographic content
      * to your application. The Place Photo service gives you access to the millions of photos stored in the Places database.
@@ -593,7 +680,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/places/web-service/photos
      */
-    placesPhoto: GoogleMapsClientEndpointWithPromise<PlacePhotoRequest, PlacePhotoResponse>;
+    placesPhoto: GoogleMapsClientEndpointWithPromise<
+        PlacePhotoRequest,
+        PlacePhotoResponse
+    >;
     /**
      * The Query Autocomplete service can be used to provide a query prediction for text-based geographic searches,
      * by returning suggested queries as you type.
@@ -605,7 +695,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/places/web-service/query
      */
-    placesQueryAutoComplete: GoogleMapsClientEndpointWithPromise<QueryAutocompleteRequest, QueryAutocompleteResponse>;
+    placesQueryAutoComplete: GoogleMapsClientEndpointWithPromise<
+        QueryAutocompleteRequest,
+        QueryAutocompleteResponse
+    >;
     /**
      * The Google Places API Radar Search Service allows you to search for up to 200 places at once,
      * but with less detail than is typically returned from a Text Search or Nearby Search request.
@@ -619,13 +712,19 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/places/web-service/search#RadarSearchRequests
      */
-    placesRadar: GoogleMapsClientEndpointWithPromise<PlaceRadarRequest, PlaceSearchResponse>;
+    placesRadar: GoogleMapsClientEndpointWithPromise<
+        PlaceRadarRequest,
+        PlaceSearchResponse
+    >;
     /**
      * Reverse geocoding is the process of converting geographic coordinates into a human-readable address.
      *
      * @see https://developers.google.com/maps/documentation/geocoding/intro#ReverseGeocoding
      */
-    reverseGeocode: GoogleMapsClientEndpointWithPromise<ReverseGeocodingRequest, ReverseGeocodingResponse>;
+    reverseGeocode: GoogleMapsClientEndpointWithPromise<
+        ReverseGeocodingRequest,
+        ReverseGeocodingResponse
+    >;
     /**
      * The Roads API returns the posted speed limit for a given road segment.
      * In the case of road segments with variable speed limits, the default speed limit for the segment is returned.
@@ -637,7 +736,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/roads/speed-limits
      */
-    snappedSpeedLimits: GoogleMapsClientEndpointWithPromise<SnappedSpeedLimitsRequest, SpeedLimitsResponse>;
+    snappedSpeedLimits: GoogleMapsClientEndpointWithPromise<
+        SnappedSpeedLimitsRequest,
+        SpeedLimitsResponse
+    >;
     /**
      * The Roads API takes up to 100 GPS points collected along a route, and returns a similar set of data,
      * with the points snapped to the most likely roads the vehicle was traveling along.
@@ -645,7 +747,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/roads/snap
      */
-    snapToRoads: GoogleMapsClientEndpointWithPromise<SnapToRoadsRequest, SnapToRoadsResponse>;
+    snapToRoads: GoogleMapsClientEndpointWithPromise<
+        SnapToRoadsRequest,
+        SnapToRoadsResponse
+    >;
     /**
      * The Roads API returns the posted speed limit for a given road segment.
      * In the case of road segments with variable speed limits, the default speed limit for the segment is returned.
@@ -657,7 +762,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/roads/speed-limits
      */
-    speedLimits: GoogleMapsClientEndpointWithPromise<SpeedLimitsRequest, SpeedLimitsResponse>;
+    speedLimits: GoogleMapsClientEndpointWithPromise<
+        SpeedLimitsRequest,
+        SpeedLimitsResponse
+    >;
     /**
      * The Time Zone API provides a simple interface to request the time zone for locations on the surface of the earth,
      * as well as the time offset from UTC for each of those locations. You request the time zone information for
@@ -666,7 +774,10 @@ export interface GoogleMapsClientWithPromise {
      *
      * @see https://developers.google.com/maps/documentation/timezone/intro
      */
-    timezone: GoogleMapsClientEndpointWithPromise<TimeZoneRequest, TimeZoneResponse>;
+    timezone: GoogleMapsClientEndpointWithPromise<
+        TimeZoneRequest,
+        TimeZoneResponse
+    >;
 }
 
 export interface DirectionsRequest {
@@ -1869,7 +1980,8 @@ export type PlaceIdScope =
      * The place ID is recognised by your application only.
      * This is because your application added the place, and the place has not yet passed the moderation process.
      */
-    "APP" | /** The place ID is available to other applications and on Google Maps. */ "GOOGLE";
+    | "APP"
+    | /** The place ID is available to other applications and on Google Maps. */ "GOOGLE";
 
 export interface AlternativePlaceId {
     /**
@@ -2185,7 +2297,9 @@ export interface GeocodingResult {
      *    over time for the same address. A component can change position in the array.
      *    The type of the component can change. A particular component may be missing in a later response.
      */
-    address_components: Array<AddressComponent<AddressType | GeocodingAddressComponentType>>;
+    address_components: Array<
+        AddressComponent<AddressType | GeocodingAddressComponentType>
+    >;
     /**
      * is an array denoting all the localities contained in a postal code.
      * This is only present when the result is a postal code that contains multiple localities.
@@ -2569,7 +2683,9 @@ export interface PlaceDetailsResult {
      *    and can change over time for the same address. A component can change position in the array.
      *    The type of the component can change. A particular component may be missing in a later response.
      */
-    address_components: Array<AddressComponent<AddressType | PlaceDetailsAddressComponentType>>;
+    address_components: Array<
+        AddressComponent<AddressType | PlaceDetailsAddressComponentType>
+    >;
     /**
      * is a string containing the human-readable address of this place.
      *
@@ -3304,7 +3420,8 @@ export type ReverseGeocodingLocationType =
     | /** returns only geometric centers of a location such as a polyline (for example, a street) or polygon (region). */ "GEOMETRIC_CENTER"
     | /** returns only the addresses that are characterized as approximate. */ "APPROXIMATE";
 
-export type ReverseGeocodingResponse = GeocodingResponse<ReverseGeocodingResponseStatus>;
+export type ReverseGeocodingResponse =
+    GeocodingResponse<ReverseGeocodingResponseStatus>;
 
 /**
  * The `"status"` field within the Geocoding response object contains the status of the request,

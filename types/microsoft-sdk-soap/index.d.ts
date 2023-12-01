@@ -26,8 +26,8 @@ declare global {
             Name: string;
         }
 
-        interface IEntityReferenceCollectionView extends Array<IEntityReferenceView> {
-        }
+        interface IEntityReferenceCollectionView
+            extends Array<IEntityReferenceView> {}
 
         class Q {
             /**
@@ -74,7 +74,9 @@ declare global {
              * Executes a SOAP Request using the SOAPAction Execute.
              * @param request A request object.
              */
-            static execute(request: Sdk.OrganizationRequest): Q.Promise<OrganizationResponse>;
+            static execute(
+                request: Sdk.OrganizationRequest,
+            ): Q.Promise<OrganizationResponse>;
 
             /**
              * Retrieves an entity instance.
@@ -82,25 +84,35 @@ declare global {
              * @param id The id of the entity to retrieve.
              * @param columnSet The columns of the entities to retrieve.
              */
-            static retrieve(entityName: string, id: string, columnSet: Sdk.ColumnSet): Q.Promise<Entity>;
+            static retrieve(
+                entityName: string,
+                id: string,
+                columnSet: Sdk.ColumnSet,
+            ): Q.Promise<Entity>;
 
             /**
              * Retrieves the results of a query
              * @param query An Sdk.Query.QueryByAttribute query.
              */
-            static retrieveMultiple(query: Sdk.Query.QueryByAttribute): Q.Promise<Sdk.EntityCollection>;
+            static retrieveMultiple(
+                query: Sdk.Query.QueryByAttribute,
+            ): Q.Promise<Sdk.EntityCollection>;
 
             /**
              * Retrieves the results of a query
              * @param query An Sdk.Query.QueryExpression query.
              */
-            static retrieveMultiple(query: Sdk.Query.QueryExpression): Q.Promise<Sdk.EntityCollection>;
+            static retrieveMultiple(
+                query: Sdk.Query.QueryExpression,
+            ): Q.Promise<Sdk.EntityCollection>;
 
             /**
              * Retrieves the results of a query
              * @param query An Sdk.Query.FetchExpression query.
              */
-            static retrieveMultiple(query: Sdk.Query.FetchExpression): Q.Promise<Sdk.EntityCollection>;
+            static retrieveMultiple(
+                query: Sdk.Query.FetchExpression,
+            ): Q.Promise<Sdk.EntityCollection>;
 
             /**
              * Updates an entity instance.
@@ -182,8 +194,7 @@ declare global {
             toValueXml(): string;
         }
 
-        class ValueType {
-        }
+        class ValueType {}
 
         class Collection<T> {
             /**
@@ -370,7 +381,9 @@ declare global {
              * Sets whether the results of the query exceeds the total record count.
              * @param totalRecordCountLimitExceeded Whether the results of the query exceeds the total record count.
              */
-            setTotalRecordCountLimitExceeded(totalRecordCountLimitExceeded: boolean): void;
+            setTotalRecordCountLimitExceeded(
+                totalRecordCountLimitExceeded: boolean,
+            ): void;
 
             /**
              * XML definition of an the child nodes of an entity.
@@ -399,7 +412,9 @@ declare global {
              * Sets the collection of entity references.
              * @param entityReferences The entity references
              */
-            setEntityReferences(entityReferences: Sdk.Collection<EntityReference>): void;
+            setEntityReferences(
+                entityReferences: Sdk.Collection<EntityReference>,
+            ): void;
 
             /// prototype methods
 
@@ -420,8 +435,7 @@ declare global {
             toValueXml(): string;
         }
 
-        class RelatedEntityCollection extends EntityCollection {
-        }
+        class RelatedEntityCollection extends EntityCollection {}
 
         class AttributeCollection extends Collection<AttributeBase> {
             constructor();
@@ -485,11 +499,9 @@ declare global {
             toXml(action: string): string;
         }
 
-        class FormattedValueCollection {
-        }
+        class FormattedValueCollection {}
 
-        class RelatedEntitiesCollection {
-        }
+        class RelatedEntitiesCollection {}
 
         class AttributeBase {
             /**
@@ -789,8 +801,7 @@ declare global {
             setValue(value: string): void;
         }
 
-        class EntityState {
-        }
+        class EntityState {}
 
         class Entity {
             /**
@@ -820,7 +831,9 @@ declare global {
              * Checks whether the entity has an attribute that satisfies the specified predicate.
              * @param A comparer function that takes an Sdk.AttributeBase as argument and returns a boolean.
              */
-            containsAttribute(predicate: (attribute: Sdk.AttributeBase) => boolean): boolean;
+            containsAttribute(
+                predicate: (attribute: Sdk.AttributeBase) => boolean,
+            ): boolean;
 
             /**
              * Checks whether the entity has an attribute with the specified name.
@@ -888,21 +901,29 @@ declare global {
              * Sets a collection of related entities.
              * @param relatedEntities A collection of related entities.
              */
-            setRelatedEntities(relatedEntities: Sdk.RelatedEntitiesCollection): void;
+            setRelatedEntities(
+                relatedEntities: Sdk.RelatedEntitiesCollection,
+            ): void;
 
             /**
              * Adds an attribute with an optional value to a newly instantiated Sdk.Entity
              * @param attribute The attribute to add
              * @param isChanged Whether the attribute should be considered changed, the default is true.
              */
-            addAttribute(attribute: Sdk.AttributeBase, isChanged?: boolean): void;
+            addAttribute(
+                attribute: Sdk.AttributeBase,
+                isChanged?: boolean,
+            ): void;
 
             /**
              * Adds an entity to the related entities.
              * @param relationshipSchemaName The relationship SchemaName.
              * @param entity The entity to add.
              */
-            addRelatedEntity(relationshipSchemaName: string, entity: Sdk.Entity): void;
+            addRelatedEntity(
+                relationshipSchemaName: string,
+                entity: Sdk.Entity,
+            ): void;
 
             /**
              * Gets the value to indicate whether data for the entity has changed.
@@ -1044,8 +1065,7 @@ declare global {
             getResponseType(): OrganizationResponse;
         }
 
-        class OrganizationResponse {
-        }
+        class OrganizationResponse {}
 
         /**
          * Contains the data that is needed to convert a query in FetchXML to a QueryExpression.
@@ -1145,7 +1165,11 @@ declare global {
          * @param status Sets the status that corresponds to the State property.
          */
         class SetStateRequest extends Sdk.OrganizationRequest {
-            constructor(entityMoniker: EntityReference, state: number, status: number);
+            constructor(
+                entityMoniker: EntityReference,
+                state: number,
+                status: number,
+            );
 
             /**
              * Sets the entity.
@@ -1307,7 +1331,10 @@ declare global {
              * @param attributeValue One of the classes that inherit from Sdk.AttributeBase including the value to use as criteria.
              * @param errorIfNotFound Whether to throw an error when the attribute to remove is not found. The default is false.
              */
-            removeAttributeValue(attributeValue: Sdk.AttributeBase, errorIfNotFound?: boolean): void;
+            removeAttributeValue(
+                attributeValue: Sdk.AttributeBase,
+                errorIfNotFound?: boolean,
+            ): void;
         }
 
         class QueryExpression extends QueryBase {
@@ -1407,11 +1434,13 @@ declare global {
              * @param attributeName The name of the attribute.
              * @param orderType The order, ascending or descending. Ascending is the default if not specified.
              */
-            addOrder(attributeName: string, orderType: Sdk.Query.OrderType): void;
+            addOrder(
+                attributeName: string,
+                orderType: Sdk.Query.OrderType,
+            ): void;
         }
 
-        class OrderExpression {
-        }
+        class OrderExpression {}
 
         class ConditionExpression {
             /**
@@ -1434,7 +1463,12 @@ declare global {
              *  - Sdk.Query.OptionSets </para>
              *  - Sdk.Query.Strings </para>
              */
-            constructor(entityName: string, attributeName: string, operator: ConditionOperator, values?: ValueBase);
+            constructor(
+                entityName: string,
+                attributeName: string,
+                operator: ConditionOperator,
+                values?: ValueBase,
+            );
 
             /**
              * Returns the logical name of the entity in the condition expression.
@@ -2209,8 +2243,7 @@ declare global {
         function createEntityFromNode(node: string): void;
     }
 
-    namespace Sdk.Xml {
-    }
+    namespace Sdk.Xml {}
 
     namespace Sdk.Mdq {
         /**
@@ -2299,7 +2332,10 @@ declare global {
          * @param properties The properties to be returned by the query.
          */
         export class AttributeQueryExpression {
-            constructor(criteria: MetadataFilterExpression, properties: Sdk.Mdq.MetadataPropertiesExpression);
+            constructor(
+                criteria: MetadataFilterExpression,
+                properties: Sdk.Mdq.MetadataPropertiesExpression,
+            );
         }
 
         /**
@@ -2308,7 +2344,10 @@ declare global {
          * @param properties The properties to be returned by the query.
          */
         export class RelationshipQueryExpression {
-            constructor(criteria: MetadataFilterExpression, properties: Mdq.MetadataPropertiesExpression);
+            constructor(
+                criteria: MetadataFilterExpression,
+                properties: Mdq.MetadataPropertiesExpression,
+            );
         }
 
         /**
@@ -2336,7 +2375,10 @@ declare global {
             constructor(
                 allProperties: boolean,
                 propertyNames?: Array<
-                    EntityMetadataProperties | AttributeMetadataProperties | RelationshipMetadataProperties | any
+                    | EntityMetadataProperties
+                    | AttributeMetadataProperties
+                    | RelationshipMetadataProperties
+                    | any
                 >,
             );
         }
@@ -2679,7 +2721,16 @@ declare global {
             ExtensionData: boolean;
             Name: string;
             PrivilegeId: string;
-            PrivilegeType: "Append" | "AppendTo" | "Assign" | "Create" | "Delete" | "None" | "Read" | "Share" | "Write";
+            PrivilegeType:
+                | "Append"
+                | "AppendTo"
+                | "Assign"
+                | "Create"
+                | "Delete"
+                | "None"
+                | "Read"
+                | "Share"
+                | "Write";
         }
 
         export interface OneToManyRelationshipMetadata {
@@ -2712,7 +2763,11 @@ declare global {
             Unshare: CascadeType;
         }
 
-        export type CascadeType = "Active" | "Cascade" | "NoCascade" | "UserOwned";
+        export type CascadeType =
+            | "Active"
+            | "Cascade"
+            | "NoCascade"
+            | "UserOwned";
 
         export interface ManyToManyRelationshipMetadata {
             Entity1AssociatedMenuConfiguration: AssociatedMenuConfiguration;
@@ -2741,13 +2796,28 @@ declare global {
             Order: number;
         }
 
-        export type AssociatedMenuBehavior = "DoNotDisplay" | "UseCollectionName" | "UseLabel";
+        export type AssociatedMenuBehavior =
+            | "DoNotDisplay"
+            | "UseCollectionName"
+            | "UseLabel";
 
-        export type AssociatedMenuGroup = "Details" | "Marketing" | "Sales" | "Service";
+        export type AssociatedMenuGroup =
+            | "Details"
+            | "Marketing"
+            | "Sales"
+            | "Service";
 
-        export type RelationshipType = "Default" | "ManyToManyRelationship" | "OneToManyRelationship";
+        export type RelationshipType =
+            | "Default"
+            | "ManyToManyRelationship"
+            | "OneToManyRelationship";
 
-        export type SecurityType = "Append" | "Inheritance" | "None" | "ParentChild" | "Pointer";
+        export type SecurityType =
+            | "Append"
+            | "Inheritance"
+            | "None"
+            | "ParentChild"
+            | "Pointer";
 
         export interface IAttributeMetadata {
             AttributeOf: string;

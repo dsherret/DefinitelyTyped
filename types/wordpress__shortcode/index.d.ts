@@ -65,7 +65,11 @@ export function fromMatch(match: RegExpExecArray): Shortcode;
  * @param text - Text to search.
  * @param [index=0] - Index to start search from.
  */
-export function next(tag: string, text: string, index?: number): ShortcodeMatch | undefined;
+export function next(
+    tag: string,
+    text: string,
+    index?: number,
+): ShortcodeMatch | undefined;
 
 /**
  * Generate a RegExp to identify a shortcode.
@@ -99,7 +103,11 @@ export function regexp(tag: string): RegExp;
  *
  * @returns Text with shortcodes replaced.
  */
-export function replace(tag: string, text: string, callback: (shortcode: Shortcode) => string): string;
+export function replace(
+    tag: string,
+    text: string,
+    callback: (shortcode: Shortcode) => string,
+): string;
 
 /**
  * Generate a string from shortcode parameters.

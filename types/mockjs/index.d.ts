@@ -68,7 +68,15 @@ declare namespace mockjs {
 
     // Mockjs.Random - Date
     // see https://github.com/nuysoft/Mock/wiki/Date
-    type RandomDateUtilString = "year" | "month" | "week" | "day" | "hour" | "minute" | "second" | "week";
+    type RandomDateUtilString =
+        | "year"
+        | "month"
+        | "week"
+        | "day"
+        | "hour"
+        | "minute"
+        | "second"
+        | "week";
     interface MockjsRandomDate {
         // Random.date
         date(format?: S): S;
@@ -89,7 +97,13 @@ declare namespace mockjs {
     type RandomImageFormatString = "png" | "gif" | "jpg";
     interface MockjsRandomImage {
         // Random.image
-        image(size?: S, background?: S, foreground?: S, format?: RandomImageFormatString | S, text?: S): S;
+        image(
+            size?: S,
+            background?: S,
+            foreground?: S,
+            format?: RandomImageFormatString | S,
+            text?: S,
+        ): S;
 
         // Random.dataImage
         dataImage(size?: S, text?: S): S;
@@ -258,8 +272,7 @@ declare namespace mockjs {
     // Mockjs.Random
     // see https://github.com/nuysoft/Mock/wiki/Mock.Random
     interface MockjsRandom
-        extends
-            MockjsRandomBasic,
+        extends MockjsRandomBasic,
             MockjsRandomDate,
             MockjsRandomImage,
             MockjsRandomColor,
@@ -269,8 +282,7 @@ declare namespace mockjs {
             MockjsRandomName,
             MockjsRandomText,
             MockjsRandomWeb,
-            MockjsRandomExtendOption
-    {
+            MockjsRandomExtendOption {
         // Random.extend
         extend(extendOption: MockjsRandomExtendOption): MockjsRandom;
     }

@@ -56,10 +56,12 @@ export class Master extends EventEmitter {
             statsInterval?: number | undefined;
             name?: string | undefined;
             guildsPerShard?: number | undefined;
-            webhooks?: {
-                cluster?: any;
-                shard?: any;
-            } | undefined;
+            webhooks?:
+                | {
+                      cluster?: any;
+                      shard?: any;
+                  }
+                | undefined;
             debug?: boolean | undefined;
         },
     );

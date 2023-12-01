@@ -14,7 +14,11 @@ declare namespace LazyJS {
         ): GeneratedSequence<T>;
 
         range(to: number): GeneratedSequence<number>;
-        range(from: number, to: number, step?: number): GeneratedSequence<number>;
+        range(
+            from: number,
+            to: number,
+            step?: number,
+        ): GeneratedSequence<number>;
 
         repeat<T>(value: T, count?: number): GeneratedSequence<T>;
 
@@ -76,15 +80,16 @@ declare namespace LazyJS {
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     interface Iterator<T> {
-        new(sequence: Sequence<T>): Iterator<T>;
+        new (sequence: Sequence<T>): Iterator<T>;
         current(): T;
         moveNext(): boolean;
     }
 
     interface GeneratedSequence<T> extends Sequence<T> {
-        new(generatorFn: GeneratorCallback<T>, length: number): GeneratedSequence<
-            T
-        >;
+        new (
+            generatorFn: GeneratorCallback<T>,
+            length: number,
+        ): GeneratedSequence<T>;
         length(): number;
     }
 
@@ -120,19 +125,33 @@ declare namespace LazyJS {
         reverse(): Sequence<T>;
     }
 
-    type Flatten<T, Shallow extends boolean> = Shallow extends true ? T extends Sequence<infer U> ? U
-        : T
-        // workaround for https://github.com/microsoft/TypeScript/issues/26980
-        : {
-            0: T extends Sequence<infer U> ? Flatten<U, Shallow>
-                : T extends Array<infer U> ? Flatten<U, Shallow>
-                : T extends ReadonlyArray<infer U> ? Flatten<U, Shallow>
-                : never;
-            1: T;
-        }[T extends Sequence<any> ? 0 : T extends any[] ? 0 : T extends readonly any[] ? 0 : 1];
+    type Flatten<T, Shallow extends boolean> = Shallow extends true
+        ? T extends Sequence<infer U>
+            ? U
+            : T
+        : // workaround for https://github.com/microsoft/TypeScript/issues/26980
+          {
+              0: T extends Sequence<infer U>
+                  ? Flatten<U, Shallow>
+                  : T extends Array<infer U>
+                    ? Flatten<U, Shallow>
+                    : T extends ReadonlyArray<infer U>
+                      ? Flatten<U, Shallow>
+                      : never;
+              1: T;
+          }[T extends Sequence<any>
+              ? 0
+              : T extends any[]
+                ? 0
+                : T extends readonly any[]
+                  ? 0
+                  : 1];
 
-    type PushFront<TailT extends any[], FrontT> = ((front: FrontT, ...rest: TailT) => any) extends
-        ((...tuple: infer TupleT) => any) ? TupleT
+    type PushFront<TailT extends any[], FrontT> = ((
+        front: FrontT,
+        ...rest: TailT
+    ) => any) extends (...tuple: infer TupleT) => any
+        ? TupleT
         : never;
 
     type Tuple<ElementT, LengthT extends number, OutputT extends any[] = []> = {
@@ -140,16 +159,16 @@ declare namespace LazyJS {
         1: unknown;
         2: OutputT;
         3: Tuple<ElementT, LengthT, PushFront<OutputT, ElementT>>;
-    }[
-        // LengthT is not compile-time constant
-        number extends LengthT ? 0
-            // LengthT is 0 constant, forbidden
-            : LengthT extends 0 ? 1
-            // LengthT = OutputT["length']
-            : OutputT["length"] extends LengthT ? 2
-            // we need to go deeper
-            : 3
-    ];
+    }[number extends LengthT // LengthT is not compile-time constant
+        ? 0
+        : // LengthT is 0 constant, forbidden
+          LengthT extends 0
+          ? 1
+          : // LengthT = OutputT["length']
+            OutputT["length"] extends LengthT
+            ? 2
+            : // we need to go deeper
+              3];
 
     interface SequenceBaser<T> {
         // TODO improve define() (needs ugly overload)
@@ -249,14 +268,19 @@ declare namespace LazyJS {
         get(property: string): any;
         invert(): ObjectLikeSequence<T>;
         keys(): Sequence<string>;
-        merge(others: any | ObjectLikeSequence<T>, mergeFn?: Function): ObjectLikeSequence<T>;
+        merge(
+            others: any | ObjectLikeSequence<T>,
+            mergeFn?: Function,
+        ): ObjectLikeSequence<T>;
         omit(properties: string[]): ObjectLikeSequence<T>;
         pairs(): Sequence<T>;
         pick(properties: string[]): ObjectLikeSequence<T>;
         toArray(): T[];
         toObject(): any;
         values(): Sequence<T>;
-        watch(propertyNames: string | string[]): Sequence<{ property: string; value: any }>;
+        watch(
+            propertyNames: string | string[],
+        ): Sequence<{ property: string; value: any }>;
 
         dropWhile(predicateFn: TestCallback<T, string>): Sequence<T>;
         every(predicateFn: TestCallback<T, string>): boolean;

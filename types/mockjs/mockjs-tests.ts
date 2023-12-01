@@ -2,16 +2,18 @@ import Mock = require("mockjs");
 
 Mock.mock("/test", "get", {
     name: "mockjs",
-}).mock("/login", "post", {
-    status: 0,
-}).mock("/test", "get", (config) => {
-    console.log(config.url);
-    console.log(config.type);
-    console.log(config.body);
-    return {
-        name: "mockjs",
-    };
-});
+})
+    .mock("/login", "post", {
+        status: 0,
+    })
+    .mock("/test", "get", (config) => {
+        console.log(config.url);
+        console.log(config.type);
+        console.log(config.body);
+        return {
+            name: "mockjs",
+        };
+    });
 // When request '/test' will response {name: 'mockjs'}
 // When request '/login' will response {status: 0}
 

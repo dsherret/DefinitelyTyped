@@ -139,11 +139,17 @@ declare class SecurePassword {
      * bug where a user trying to login multiple times, successfully, in quick succession
      * makes your server do unnecessary work.
      */
-    verify(passwordBuffer: Buffer, hashBuffer: Buffer): Promise<SecurePassword.VerificationResult>;
     verify(
         passwordBuffer: Buffer,
         hashBuffer: Buffer,
-        cb: (err: Error | null, result: SecurePassword.VerificationResult) => void,
+    ): Promise<SecurePassword.VerificationResult>;
+    verify(
+        passwordBuffer: Buffer,
+        hashBuffer: Buffer,
+        cb: (
+            err: Error | null,
+            result: SecurePassword.VerificationResult,
+        ) => void,
     ): void;
 
     /**
@@ -161,7 +167,10 @@ declare class SecurePassword {
      * bug where a user trying to login multiple times, successfully, in quick succession
      * makes your server do unnecessary work.
      */
-    verifySync(passwordBuffer: Buffer, hashBuffer: Buffer): SecurePassword.VerificationResult;
+    verifySync(
+        passwordBuffer: Buffer,
+        hashBuffer: Buffer,
+    ): SecurePassword.VerificationResult;
 
     /**
      * Size of the `hashBuffer` buffer returned by `hash()` and `hashSync()` and used by

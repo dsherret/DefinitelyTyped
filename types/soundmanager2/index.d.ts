@@ -106,7 +106,11 @@ declare namespace soundmanager {
         canPlayLink(domElement: HTMLElement): boolean;
         canPlayMIME(MIMEtype: string): boolean;
         canPlayURL(mediaURL: string): boolean;
-        clearOnPosition(id: string, msecOffset: number, callback?: () => void): SMSound;
+        clearOnPosition(
+            id: string,
+            msecOffset: number,
+            callback?: () => void,
+        ): SMSound;
         /**
          * Creates a sound object, supporting an arbitrary number of optional arguments. Returns a SMSound object instance. At minimum, a url parameter is required.
          */
@@ -117,7 +121,11 @@ declare namespace soundmanager {
         load(id: string, options?: object): SMSound;
         mute(id?: string): SMSound;
         ok(): boolean;
-        onPosition(id: string, msecOffset: number, callback: (eventPosition: any) => void): SMSound;
+        onPosition(
+            id: string,
+            msecOffset: number,
+            callback: (eventPosition: any) => void,
+        ): SMSound;
         pause(id: string): SMSound;
         pauseAll(): void;
         play(id?: string, options?: DefaultOptions | Flash9Options): SMSound;
@@ -141,7 +149,9 @@ declare namespace soundmanager {
         togglePause(id: string): SMSound;
         unload(id: string): SMSound;
         unmute(id?: string): SMSound;
-        audioFormats?: { [audioFormat: string]: SoundManagerAudioFormat } | undefined;
+        audioFormats?:
+            | { [audioFormat: string]: SoundManagerAudioFormat }
+            | undefined;
     }
 
     class SMSound {

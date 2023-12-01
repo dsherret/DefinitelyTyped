@@ -25,7 +25,10 @@ declare class OpenIDConnectStrategy extends PassportStrategy {
      * @param options - constructor {@link OpenIDConnectStrategy.StrategyOptions | options}.
      * @param verify - {@link OpenIDConnectStrategy.VerifyFunction | callback} to verify response from OIDC provider.
      */
-    constructor(options: OpenIDConnectStrategy.StrategyOptions, verify: OpenIDConnectStrategy.VerifyFunction);
+    constructor(
+        options: OpenIDConnectStrategy.StrategyOptions,
+        verify: OpenIDConnectStrategy.VerifyFunction,
+    );
 
     /**
      * Authenticate request by delegating to OpenID Connect provider.
@@ -33,7 +36,10 @@ declare class OpenIDConnectStrategy extends PassportStrategy {
      * @param req - request object of the incoming http message
      * @param options - additional options
      */
-    authenticate(req: Request, options?: OpenIDConnectStrategy.AuthenticateOptions): any;
+    authenticate(
+        req: Request,
+        options?: OpenIDConnectStrategy.AuthenticateOptions,
+    ): any;
 
     /**
      * Return extra parameters to be included in the authorization request.
@@ -62,7 +68,11 @@ declare namespace OpenIDConnectStrategy {
 
     type SessionStoreCallback = (err: Error | null, handle?: string) => void;
 
-    type SessionVerifyCallback = (err: Error | null, ctx?: false | SessionStoreContext, state?: any) => void;
+    type SessionVerifyCallback = (
+        err: Error | null,
+        ctx?: false | SessionStoreContext,
+        state?: any,
+    ) => void;
 
     /**
      * This is the state store implementation for the OIDCStrategy used when
@@ -164,87 +174,113 @@ declare namespace OpenIDConnectStrategy {
         skipUserProfile?: boolean | undefined;
     }
 
-    type VerifyCallback = (err?: Error | null, user?: Express.User, info?: any) => void;
+    type VerifyCallback = (
+        err?: Error | null,
+        user?: Express.User,
+        info?: any,
+    ) => void;
 
     type Profile = passportProfile;
 
     type VerifyFunction =
         | ((issuer: string, profile: Profile, done: VerifyCallback) => void)
-        | ((issuer: string, profile: Profile, context: object, done: VerifyCallback) => void)
-        | ((issuer: string, profile: Profile, context: object, idToken: string | object, done: VerifyCallback) => void)
         | ((
-            issuer: string,
-            profile: Profile,
-            context: object,
-            idToken: string | object,
-            accessToken: string | object,
-            refreshToken: string,
-            done: VerifyCallback,
-        ) => void)
+              issuer: string,
+              profile: Profile,
+              context: object,
+              done: VerifyCallback,
+          ) => void)
         | ((
-            issuer: string,
-            profile: Profile,
-            context: object,
-            idToken: string | object,
-            accessToken: string | object,
-            refreshToken: string,
-            params: any,
-            done: VerifyCallback,
-        ) => void)
+              issuer: string,
+              profile: Profile,
+              context: object,
+              idToken: string | object,
+              done: VerifyCallback,
+          ) => void)
         | ((
-            issuer: string,
-            uiProfile: object,
-            idProfile: object,
-            context: object,
-            idToken: string | object,
-            accessToken: string | object,
-            refreshToken: string,
-            params: any,
-            done: VerifyCallback,
-        ) => void)
-        | ((req: Request, issuer: string, profile: Profile, done: VerifyCallback) => void)
-        | ((req: Request, issuer: string, profile: Profile, context: object, done: VerifyCallback) => void)
+              issuer: string,
+              profile: Profile,
+              context: object,
+              idToken: string | object,
+              accessToken: string | object,
+              refreshToken: string,
+              done: VerifyCallback,
+          ) => void)
         | ((
-            req: Request,
-            issuer: string,
-            profile: Profile,
-            context: object,
-            idToken: string | object,
-            done: VerifyCallback,
-        ) => void)
+              issuer: string,
+              profile: Profile,
+              context: object,
+              idToken: string | object,
+              accessToken: string | object,
+              refreshToken: string,
+              params: any,
+              done: VerifyCallback,
+          ) => void)
         | ((
-            req: Request,
-            issuer: string,
-            profile: Profile,
-            context: object,
-            idToken: string | object,
-            accessToken: string | object,
-            refreshToken: string,
-            done: VerifyCallback,
-        ) => void)
+              issuer: string,
+              uiProfile: object,
+              idProfile: object,
+              context: object,
+              idToken: string | object,
+              accessToken: string | object,
+              refreshToken: string,
+              params: any,
+              done: VerifyCallback,
+          ) => void)
         | ((
-            req: Request,
-            issuer: string,
-            profile: Profile,
-            context: object,
-            idToken: string | object,
-            accessToken: string | object,
-            refreshToken: string,
-            params: any,
-            done: VerifyCallback,
-        ) => void)
+              req: Request,
+              issuer: string,
+              profile: Profile,
+              done: VerifyCallback,
+          ) => void)
         | ((
-            req: Request,
-            issuer: string,
-            uiProfile: object,
-            idProfile: object,
-            context: object,
-            idToken: string | object,
-            accessToken: string | object,
-            refreshToken: string,
-            params: any,
-            done: VerifyCallback,
-        ) => void);
+              req: Request,
+              issuer: string,
+              profile: Profile,
+              context: object,
+              done: VerifyCallback,
+          ) => void)
+        | ((
+              req: Request,
+              issuer: string,
+              profile: Profile,
+              context: object,
+              idToken: string | object,
+              done: VerifyCallback,
+          ) => void)
+        | ((
+              req: Request,
+              issuer: string,
+              profile: Profile,
+              context: object,
+              idToken: string | object,
+              accessToken: string | object,
+              refreshToken: string,
+              done: VerifyCallback,
+          ) => void)
+        | ((
+              req: Request,
+              issuer: string,
+              profile: Profile,
+              context: object,
+              idToken: string | object,
+              accessToken: string | object,
+              refreshToken: string,
+              params: any,
+              done: VerifyCallback,
+          ) => void)
+        | ((
+              req: Request,
+              issuer: string,
+              uiProfile: object,
+              idProfile: object,
+              context: object,
+              idToken: string | object,
+              accessToken: string | object,
+              refreshToken: string,
+              params: any,
+              done: VerifyCallback,
+          ) => void);
 
     interface AuthenticateOptions {
         callbackURL?: string | undefined;
@@ -275,7 +311,12 @@ declare namespace OpenIDConnectStrategy {
          * @param uri - error uri
          * @param status - error status code
          */
-        constructor(message: string, code: string, uri?: string, status?: number);
+        constructor(
+            message: string,
+            code: string,
+            uri?: string,
+            status?: number,
+        );
     }
 
     /**
@@ -298,7 +339,12 @@ declare namespace OpenIDConnectStrategy {
          * @param uri - error uri
          * @param status - error status code
          */
-        constructor(message: string, code?: string, uri?: string, status?: number);
+        constructor(
+            message: string,
+            code?: string,
+            uri?: string,
+            status?: number,
+        );
     }
 
     /**

@@ -32,14 +32,24 @@ declare namespace KoaPassport {
         initialize(options?: { userProperty: string }): Middleware;
         session(options?: { pauseStream: boolean }): Middleware;
 
-        authenticate(strategy: string | string[], callback?: (...args: any[]) => any): Middleware;
+        authenticate(
+            strategy: string | string[],
+            callback?: (...args: any[]) => any,
+        ): Middleware;
         authenticate(
             strategy: string | string[],
             options: passport.AuthenticateOptions | object,
             callback?: (...args: any[]) => any,
         ): Middleware;
-        authorize(strategy: string | string[], callback?: (...args: any[]) => any): Middleware;
-        authorize(strategy: string | string[], options: any, callback?: (...args: any[]) => any): Middleware;
+        authorize(
+            strategy: string | string[],
+            callback?: (...args: any[]) => any,
+        ): Middleware;
+        authorize(
+            strategy: string | string[],
+            options: any,
+            callback?: (...args: any[]) => any,
+        ): Middleware;
 
         serializeUser: passport.Authenticator["serializeUser"];
         deserializeUser: passport.Authenticator["deserializeUser"];

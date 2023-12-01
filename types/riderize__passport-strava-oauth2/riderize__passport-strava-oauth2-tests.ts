@@ -5,7 +5,11 @@ import passport = require("passport");
 
 // just some test model
 const User = {
-    findOrCreate(id: string, provider: string, callback: (err: any, user: any) => void): void {
+    findOrCreate(
+        id: string,
+        provider: string,
+        callback: (err: any, user: any) => void,
+    ): void {
         callback(null, { username: "james" });
     },
 };
@@ -17,7 +21,12 @@ passport.use(
             clientSecret: process.env.PASSPORT_STRAVA_CLIENT_SECRET as string,
             callbackURL: process.env.PASSPORT_STRAVA_CALLBACK_URL as string,
         },
-        (accessToken: string, refreshToken: string, profile: Profile, done: (error: any, user?: any) => void) => {
+        (
+            accessToken: string,
+            refreshToken: string,
+            profile: Profile,
+            done: (error: any, user?: any) => void,
+        ) => {
             User.findOrCreate(profile.id, profile.provider, (err, user) => {
                 if (err) done(err);
                 else done(null, user);

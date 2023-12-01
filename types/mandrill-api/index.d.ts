@@ -34,7 +34,12 @@ export declare class Mandrill {
     metadata: Metadata;
     onerror: IErrorCallback;
     constructor(apikey: string, debug?: boolean);
-    call(uri: string, params: any, onresult?: ICallback, onerror?: ICallback): void;
+    call(
+        uri: string,
+        params: any,
+        onresult?: ICallback,
+        onerror?: ICallback,
+    ): void;
 }
 
 export declare class Templates {
@@ -426,7 +431,11 @@ export declare class Tags {
      * @param {Function} onsuccess an optional callback to execute when the API call is successfully made
      * @param {Function} onerror an optional callback to execute when the API call errors out - defaults to throwing the error as an exception
      */
-    allTimeSeries(params: any, onsuccess?: ICallback, onerror?: ICallback): void;
+    allTimeSeries(
+        params: any,
+        onsuccess?: ICallback,
+        onerror?: ICallback,
+    ): void;
 }
 
 export declare class Messages {
@@ -601,7 +610,11 @@ export declare class Messages {
      * @param {Function} onsuccess an optional callback to execute when the API call is successfully made
      * @param {Function} onerror an optional callback to execute when the API call errors out - defaults to throwing the error as an exception
      */
-    searchTimeSeries(params: any, onsuccess?: ICallback, onerror?: ICallback): void;
+    searchTimeSeries(
+        params: any,
+        onsuccess?: ICallback,
+        onerror?: ICallback,
+    ): void;
 
     /**
      * Get the information for a single recently sent message
@@ -654,7 +667,11 @@ export declare class Messages {
      * @param {Function} onsuccess an optional callback to execute when the API call is successfully made
      * @param {Function} onerror an optional callback to execute when the API call errors out - defaults to throwing the error as an exception
      */
-    listScheduled(params: any, onsuccess?: ICallback, onerror?: ICallback): void;
+    listScheduled(
+        params: any,
+        onsuccess?: ICallback,
+        onerror?: ICallback,
+    ): void;
 
     /**
      * Cancels a scheduled email.
@@ -663,7 +680,11 @@ export declare class Messages {
      * @param {Function} onsuccess an optional callback to execute when the API call is successfully made
      * @param {Function} onerror an optional callback to execute when the API call errors out - defaults to throwing the error as an exception
      */
-    cancelScheduled(params: any, onsuccess?: ICallback, onerror?: ICallback): void;
+    cancelScheduled(
+        params: any,
+        onsuccess?: ICallback,
+        onerror?: ICallback,
+    ): void;
 
     /**
      * Reschedules a scheduled email.
@@ -829,7 +850,11 @@ export declare class Ips {
      * @param {Function} onsuccess an optional callback to execute when the API call is successfully made
      * @param {Function} onerror an optional callback to execute when the API call errors out - defaults to throwing the error as an exception
      */
-    checkCustomDns(params: any, onsuccess?: ICallback, onerror?: ICallback): void;
+    checkCustomDns(
+        params: any,
+        onsuccess?: ICallback,
+        onerror?: ICallback,
+    ): void;
 
     /**
      * Configures the custom DNS name for a dedicated IP.
@@ -954,7 +979,11 @@ export declare class Urls {
      * @param {Function} onsuccess an optional callback to execute when the API call is successfully made
      * @param {Function} onerror an optional callback to execute when the API call errors out - defaults to throwing the error as an exception
      */
-    trackingDomains(params: any, onsuccess?: ICallback, onerror?: ICallback): void;
+    trackingDomains(
+        params: any,
+        onsuccess?: ICallback,
+        onerror?: ICallback,
+    ): void;
 
     /**
      * Add a tracking domain to your account
@@ -963,7 +992,11 @@ export declare class Urls {
      * @param {Function} onsuccess an optional callback to execute when the API call is successfully made
      * @param {Function} onerror an optional callback to execute when the API call errors out - defaults to throwing the error as an exception
      */
-    addTrackingDomain(params: any, onsuccess?: ICallback, onerror?: ICallback): void;
+    addTrackingDomain(
+        params: any,
+        onsuccess?: ICallback,
+        onerror?: ICallback,
+    ): void;
 
     /**
      * Checks the CNAME settings for a tracking domain. The domain must have been added already with the add-tracking-domain call
@@ -972,7 +1005,11 @@ export declare class Urls {
      * @param {Function} onsuccess an optional callback to execute when the API call is successfully made
      * @param {Function} onerror an optional callback to execute when the API call errors out - defaults to throwing the error as an exception
      */
-    checkTrackingDomain(params: any, onsuccess?: ICallback, onerror?: ICallback): void;
+    checkTrackingDomain(
+        params: any,
+        onsuccess?: ICallback,
+        onerror?: ICallback,
+    ): void;
 }
 
 export declare class Webhooks {
@@ -1027,7 +1064,11 @@ export declare class Webhooks {
      * @param {Function} onsuccess an optional callback to execute when the API call is successfully made
      * @param {Function} onerror an optional callback to execute when the API call errors out - defaults to throwing the error as an exception
      */
-    delete(params: { id: number }, onsuccess?: ICallback, onerror?: ICallback): void;
+    delete(
+        params: { id: number },
+        onsuccess?: ICallback,
+        onerror?: ICallback,
+    ): void;
 }
 
 export declare class Senders {

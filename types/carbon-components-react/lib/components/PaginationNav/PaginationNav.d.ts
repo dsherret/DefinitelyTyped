@@ -1,4 +1,8 @@
-import { ForwardRefReturn, InternationalProps, ReactAttr } from "../../../typings/shared";
+import {
+    ForwardRefReturn,
+    InternationalProps,
+    ReactAttr,
+} from "../../../typings/shared";
 
 export type PaginationNavTranslationKey =
     | "carbon.pagination-nav.next"
@@ -8,8 +12,8 @@ export type PaginationNavTranslationKey =
     | "carbon.pagination-nav.of";
 
 export interface PaginationNavProps
-    extends Omit<ReactAttr, "onChange">, InternationalProps<PaginationNavTranslationKey>
-{
+    extends Omit<ReactAttr, "onChange">,
+        InternationalProps<PaginationNavTranslationKey> {
     onChange?(page: number): void;
     itemsShown?: number | undefined;
     loop?: boolean | undefined;

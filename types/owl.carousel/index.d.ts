@@ -127,7 +127,10 @@ declare namespace OwlCarousel {
 interface JQuery {
     owlCarousel(options?: OwlCarousel.Options | "destroy"): JQuery;
 
-    on(event: OwlCarousel.OnEvent, handler: OwlCarousel.HandlerCallback): JQuery;
+    on(
+        event: OwlCarousel.OnEvent,
+        handler: OwlCarousel.HandlerCallback,
+    ): JQuery;
 
     trigger(event: OwlCarousel.TriggerEvent): JQuery;
 }

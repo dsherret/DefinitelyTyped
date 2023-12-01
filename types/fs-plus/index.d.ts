@@ -145,7 +145,11 @@ export function writeFileSync(
     filePath: string,
     content: string,
     options?:
-        | { encoding?: string | null | undefined; mode?: number | string | undefined; flag?: string | undefined }
+        | {
+              encoding?: string | null | undefined;
+              mode?: number | string | undefined;
+              flag?: string | undefined;
+          }
         | string
         | null,
 ): void;
@@ -166,7 +170,11 @@ export function writeFile(
     filePath: string,
     content: any,
     options:
-        | { encoding?: string | null | undefined; mode?: number | string | undefined; flag?: string | undefined }
+        | {
+              encoding?: string | null | undefined;
+              mode?: number | string | undefined;
+              flag?: string | undefined;
+          }
         | string
         | undefined
         | null,

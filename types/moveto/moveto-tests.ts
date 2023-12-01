@@ -8,7 +8,7 @@ const options: MoveTo.MoveToOptions = {
 
 const easeFunctions: MoveTo.MoveToEaseFunctionsObject = {
     fun1: () => 123,
-    fun2: t => t,
+    fun2: (t) => t,
     fun3: (t, b) => t + b,
     fun4: (t, b, c) => t + b + c,
     fun5: (t, b, c, d) => t + b + c + d,

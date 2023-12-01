@@ -222,10 +222,9 @@ declare namespace WechatMiniprogram.App {
     }
 
     type Instance<T extends IAnyObject> = Option & T;
-    type Options<T extends IAnyObject> =
-        & Partial<Option>
-        & T
-        & ThisType<Instance<T>>;
+    type Options<T extends IAnyObject> = Partial<Option> &
+        T &
+        ThisType<Instance<T>>;
     type TrivialInstance = Instance<IAnyObject>;
 
     interface Constructor {

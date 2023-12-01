@@ -7,7 +7,7 @@ export type Readable = import("stream").Readable;
 export class ImapFlow extends EventEmitter {
     constructor(options: ImapFlowOptions);
     authenticated: string | boolean;
-    capabilities: Map<string, (boolean | number)>;
+    capabilities: Map<string, boolean | number>;
     emitLogs: boolean;
     enabled: Set<string>;
     id: string;
@@ -33,7 +33,10 @@ export class ImapFlow extends EventEmitter {
         options?: { uid?: boolean; maxBytes?: number; chunkSize?: number },
     ): Promise<DownloadObject>;
 
-    getMailboxLock(path: string, options?: null | { readonly?: boolean }): Promise<MailboxLockObject>;
+    getMailboxLock(
+        path: string,
+        options?: null | { readonly?: boolean },
+    ): Promise<MailboxLockObject>;
 
     getQuota(path: string): Promise<QuotaResponse | boolean>;
 
@@ -55,9 +58,15 @@ export class ImapFlow extends EventEmitter {
 
     mailboxDelete(path: string | any[]): Promise<MailboxDeleteResponse>;
 
-    mailboxOpen(path: string | any[], options?: { readOnly?: boolean }): Promise<MailboxObject>;
+    mailboxOpen(
+        path: string | any[],
+        options?: { readOnly?: boolean },
+    ): Promise<MailboxObject>;
 
-    mailboxRename(path: string | any[], newPath: string | any[]): Promise<MailboxRenameResponse>;
+    mailboxRename(
+        path: string | any[],
+        newPath: string | any[],
+    ): Promise<MailboxRenameResponse>;
 
     mailboxSubscribe(path: string | any[]): Promise<boolean>;
 
@@ -69,24 +78,39 @@ export class ImapFlow extends EventEmitter {
         options?: { uid?: boolean },
     ): Promise<CopyResponseObject>;
 
-    messageDelete(range: SequenceString | number[] | SearchObject, options?: { uid?: boolean }): Promise<boolean>;
+    messageDelete(
+        range: SequenceString | number[] | SearchObject,
+        options?: { uid?: boolean },
+    ): Promise<boolean>;
 
     messageFlagsAdd(
         range: SequenceString | number[] | SearchObject,
         Array: string[],
-        options?: { uid?: boolean; unchangedSince?: bigint; useLabels?: boolean },
+        options?: {
+            uid?: boolean;
+            unchangedSince?: bigint;
+            useLabels?: boolean;
+        },
     ): Promise<boolean>;
 
     messageFlagsRemove(
         range: SequenceString | number[] | SearchObject,
         Array: string[],
-        options?: { uid?: boolean; unchangedSince?: bigint; useLabels?: boolean },
+        options?: {
+            uid?: boolean;
+            unchangedSince?: bigint;
+            useLabels?: boolean;
+        },
     ): Promise<boolean>;
 
     messageFlagsSet(
         range: SequenceString | number[] | SearchObject,
         Array: string[],
-        options?: { uid?: boolean; unchangedSince?: bigint; useLabels?: boolean },
+        options?: {
+            uid?: boolean;
+            unchangedSince?: bigint;
+            useLabels?: boolean;
+        },
     ): Promise<boolean>;
 
     messageMove(

@@ -35,7 +35,11 @@ declare namespace jest {
     /** Disables automatic mocking in the module loader. */
     function disableAutomock(): typeof jest;
     /** Mocks a module with an auto-mocked version when it is being required. */
-    function doMock(moduleName: string, factory?: () => any, options?: MockOptions): typeof jest;
+    function doMock(
+        moduleName: string,
+        factory?: () => any,
+        options?: MockOptions,
+    ): typeof jest;
     /** Indicates that the module system should never return a mocked version of the specified module from require() (e.g. that it should always return the real module). */
     function dontMock(moduleName: string): typeof jest;
     /** Enables automatic mocking in the module loader. */
@@ -47,7 +51,11 @@ declare namespace jest {
     /** Returns whether the given function is a mock function. */
     function isMockFunction(fn: any): fn is Mock<any>;
     /** Mocks a module with an auto-mocked version when it is being required. */
-    function mock(moduleName: string, factory?: () => any, options?: MockOptions): typeof jest;
+    function mock(
+        moduleName: string,
+        factory?: () => any,
+        options?: MockOptions,
+    ): typeof jest;
     /** Resets the module registry - the cache of all required modules. This is useful to isolate modules where local state might conflict between tests. */
     function resetModuleRegistry(): typeof jest;
     /** Resets the module registry - the cache of all required modules. This is useful to isolate modules where local state might conflict between tests. */
@@ -139,11 +147,11 @@ declare namespace jest {
     }
 
     interface Constructable {
-        new(...args: any[]): any;
+        new (...args: any[]): any;
     }
 
     interface Mock<T> extends Function {
-        new(): T;
+        new (): T;
         (...args: any[]): any;
         mock: MockContext<T>;
         mockClear(): void;
@@ -180,7 +188,9 @@ declare namespace jasmine {
     function createSpyObj(baseName: string, methodNames: any[]): any;
     function createSpyObj<T>(baseName: string, methodNames: any[]): T;
     function pp(value: any): string;
-    function addCustomEqualityTester(equalityTester: CustomEqualityTester): void;
+    function addCustomEqualityTester(
+        equalityTester: CustomEqualityTester,
+    ): void;
     function addMatchers(matchers: CustomMatcherFactories): void;
     function stringMatching(value: string | RegExp): Any;
 
@@ -193,20 +203,24 @@ declare namespace jasmine {
     }
 
     interface Any {
-        new(expectedClass: any): any;
+        new (expectedClass: any): any;
         jasmineMatches(other: any): boolean;
         jasmineToString(): string;
     }
 
     interface ArrayContaining {
-        new(sample: any[]): any;
+        new (sample: any[]): any;
         asymmetricMatch(other: any): boolean;
         jasmineToString(): string;
     }
 
     interface ObjectContaining {
-        new(sample: any): any;
-        jasmineMatches(other: any, mismatchKeys: any[], mismatchValues: any[]): boolean;
+        new (sample: any): any;
+        jasmineMatches(
+            other: any,
+            mismatchKeys: any[],
+            mismatchValues: any[],
+        ): boolean;
         jasmineToString(): string;
     }
 
@@ -268,13 +282,25 @@ declare namespace jasmine {
     }
 
     interface CustomMatcherFactory {
-        (util: MatchersUtil, customEqualityTesters: CustomEqualityTester[]): CustomMatcher;
+        (
+            util: MatchersUtil,
+            customEqualityTesters: CustomEqualityTester[],
+        ): CustomMatcher;
     }
 
     interface MatchersUtil {
         equals(a: any, b: any, customTesters?: CustomEqualityTester[]): boolean;
-        contains<T>(haystack: ArrayLike<T> | string, needle: any, customTesters?: CustomEqualityTester[]): boolean;
-        buildFailureMessage(matcherName: string, isNot: boolean, actual: any, ...expected: any[]): string;
+        contains<T>(
+            haystack: ArrayLike<T> | string,
+            needle: any,
+            customTesters?: CustomEqualityTester[],
+        ): boolean;
+        buildFailureMessage(
+            matcherName: string,
+            isNot: boolean,
+            actual: any,
+            ...expected: any[]
+        ): string;
     }
 
     interface CustomEqualityTester {

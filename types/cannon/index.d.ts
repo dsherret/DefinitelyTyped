@@ -13,9 +13,23 @@ declare namespace CANNON {
         clone(): AABB;
         copy(aabb: AABB): void;
         extend(aabb: AABB): void;
-        getCorners(a: Vec3, b: Vec3, c: Vec3, d: Vec3, e: Vec3, f: Vec3, g: Vec3, h: Vec3): void;
+        getCorners(
+            a: Vec3,
+            b: Vec3,
+            c: Vec3,
+            d: Vec3,
+            e: Vec3,
+            f: Vec3,
+            g: Vec3,
+            h: Vec3,
+        ): void;
         overlaps(aabb: AABB): boolean;
-        setFromPoints(points: Vec3[], position?: Vec3, quaternion?: Quaternion, skinSize?: number): AABB;
+        setFromPoints(
+            points: Vec3[],
+            position?: Vec3,
+            quaternion?: Quaternion,
+            skinSize?: number,
+        ): AABB;
         toLocalFrame(frame: Transform, target: AABB): AABB;
         toWorldFrame(frame: Transform, target: AABB): AABB;
     }
@@ -36,9 +50,24 @@ declare namespace CANNON {
 
         collisionPairs(world: World, p1: Body[], p2: Body[]): void;
         needBroadphaseCollision(bodyA: Body, bodyB: Body): boolean;
-        intersectionTest(bodyA: Body, bodyB: Body, pairs1: Body[], pairs2: Body[]): void;
-        doBoundingSphereBroadphase(bodyA: Body, bodyB: Body, pairs1: Body[], pairs2: Body[]): void;
-        doBoundingBoxBroadphase(bodyA: Body, bodyB: Body, pairs1: Body[], pairs2: Body[]): void;
+        intersectionTest(
+            bodyA: Body,
+            bodyB: Body,
+            pairs1: Body[],
+            pairs2: Body[],
+        ): void;
+        doBoundingSphereBroadphase(
+            bodyA: Body,
+            bodyB: Body,
+            pairs1: Body[],
+            pairs2: Body[],
+        ): void;
+        doBoundingBoxBroadphase(
+            bodyA: Body,
+            bodyB: Body,
+            pairs1: Body[],
+            pairs2: Body[],
+        ): void;
         makePairsUnique(pairs1: Body[], pairs2: Body[]): void;
         setWorld(world: World): void;
         boundingSphereCheck(bodyA: Body, bodyB: Body): boolean;
@@ -53,11 +82,16 @@ declare namespace CANNON {
         aabbMax: Vec3;
         bins: any[];
 
-        constructor(aabbMin?: Vec3, aabbMax?: Vec3, nx?: number, ny?: number, nz?: number);
+        constructor(
+            aabbMin?: Vec3,
+            aabbMax?: Vec3,
+            nx?: number,
+            ny?: number,
+            nz?: number,
+        );
     }
 
-    export class NaiveBroadphase extends BroadPhase {
-    }
+    export class NaiveBroadphase extends BroadPhase {}
 
     export class ObjectCollisionMatrix {
         matrix: number[];
@@ -137,7 +171,12 @@ declare namespace CANNON {
     }
 
     export class DistanceConstraint extends Constraint {
-        constructor(bodyA: Body, bodyB: Body, distance: number, maxForce?: number);
+        constructor(
+            bodyA: Body,
+            bodyB: Body,
+            distance: number,
+            maxForce?: number,
+        );
     }
 
     export interface IHingeConstraintOptions {
@@ -157,7 +196,11 @@ declare namespace CANNON {
         axisA: Vec3;
         axisB: Vec3;
 
-        constructor(bodyA: Body, bodyB: Body, options?: IHingeConstraintOptions);
+        constructor(
+            bodyA: Body,
+            bodyB: Body,
+            options?: IHingeConstraintOptions,
+        );
 
         enableMotor(): void;
         disableMotor(): void;
@@ -165,7 +208,13 @@ declare namespace CANNON {
     }
 
     export class PointToPointConstraint extends Constraint {
-        constructor(bodyA: Body, pivotA: Vec3, bodyB: Body, pivotB: Vec3, maxForce?: number);
+        constructor(
+            bodyA: Body,
+            pivotA: Vec3,
+            bodyB: Body,
+            pivotB: Vec3,
+            maxForce?: number,
+        );
     }
 
     export interface ILockConstraintOptions {
@@ -185,7 +234,11 @@ declare namespace CANNON {
     }
 
     export class ConeTwistConstraint extends Constraint {
-        constructor(bodyA: Body, bodyB: Body, options?: IConeTwistConstraintOptions);
+        constructor(
+            bodyA: Body,
+            bodyB: Body,
+            options?: IConeTwistConstraintOptions,
+        );
     }
 
     export class Equation {
@@ -203,7 +256,11 @@ declare namespace CANNON {
 
         constructor(bi: Body, bj: Body, minForce?: number, maxForce?: number);
 
-        setSpookParams(stiffness: number, relaxation: number, timeStep: number): void;
+        setSpookParams(
+            stiffness: number,
+            relaxation: number,
+            timeStep: number,
+        ): void;
         computeB(a: number, b: number, h: number): number;
         computeGq(): number;
         computeGW(): number;
@@ -276,7 +333,11 @@ declare namespace CANNON {
         frictionEquationStiffness: number;
         frictionEquationRelaxation: number;
 
-        constructor(m1: Material, m2: Material, options?: IContactMaterialOptions);
+        constructor(
+            m1: Material,
+            m2: Material,
+            options?: IContactMaterialOptions,
+        );
     }
 
     export class Material {
@@ -338,19 +399,39 @@ declare namespace CANNON {
         vmult(v: Vec3, target?: Vec3): Vec3;
         copy(source: Quaternion): Quaternion;
         toEuler(target: Vec3, order?: string): void;
-        setFromEuler(x: number, y: number, z: number, order?: string): Quaternion;
+        setFromEuler(
+            x: number,
+            y: number,
+            z: number,
+            order?: string,
+        ): Quaternion;
         clone(): Quaternion;
     }
 
     export class Transform {
-        static pointToLocalFrame(position: Vec3, quaternion: Quaternion, worldPoint: Vec3, result?: Vec3): Vec3;
-        static pointToWorldFrame(position: Vec3, quaternion: Quaternion, localPoint: Vec3, result?: Vec3): Vec3;
+        static pointToLocalFrame(
+            position: Vec3,
+            quaternion: Quaternion,
+            worldPoint: Vec3,
+            result?: Vec3,
+        ): Vec3;
+        static pointToWorldFrame(
+            position: Vec3,
+            quaternion: Quaternion,
+            localPoint: Vec3,
+            result?: Vec3,
+        ): Vec3;
 
         position: Vec3;
         quaternion: Quaternion;
 
         vectorToWorldFrame(localVector: Vec3, result?: Vec3): Vec3;
-        vectorToLocalFrame(position: Vec3, quaternion: Quaternion, worldVector: Vec3, result?: Vec3): Vec3;
+        vectorToLocalFrame(
+            position: Vec3,
+            quaternion: Quaternion,
+            worldVector: Vec3,
+            result?: Vec3,
+        ): Vec3;
     }
 
     export class Vec3 {
@@ -665,7 +746,11 @@ declare namespace CANNON {
     }
 
     export class Box extends Shape {
-        static calculateInertia(halfExtents: Vec3, mass: number, target: Vec3): void;
+        static calculateInertia(
+            halfExtents: Vec3,
+            mass: number,
+            target: Vec3,
+        ): void;
 
         boundingSphereRadius: number;
         collisionResponse: boolean;
@@ -679,12 +764,22 @@ declare namespace CANNON {
         getSideNormals(sixTargetVectors: boolean, quat?: Quaternion): Vec3[];
         updateBoundingSphereRadius(): number;
         volume(): number;
-        forEachWorldCorner(pos: Vec3, quat: Quaternion, callback: Function): void;
+        forEachWorldCorner(
+            pos: Vec3,
+            quat: Quaternion,
+            callback: Function,
+        ): void;
     }
 
     export class ConvexPolyhedron extends Shape {
         static computeNormal(va: Vec3, vb: Vec3, vc: Vec3, target: Vec3): void;
-        static project(hull: ConvexPolyhedron, axis: Vec3, pos: Vec3, quat: Quaternion, result: number[]): void;
+        static project(
+            hull: ConvexPolyhedron,
+            axis: Vec3,
+            pos: Vec3,
+            quat: Quaternion,
+            result: number[],
+        ): void;
 
         vertices: Vec3[];
         worldVertices: Vec3[];
@@ -736,18 +831,33 @@ declare namespace CANNON {
             maxDist: number,
             result: any[],
         ): void;
-        clipFaceAgainstPlane(inVertices: Vec3[], outVertices: Vec3[], planeNormal: Vec3, planeConstant: number): Vec3;
+        clipFaceAgainstPlane(
+            inVertices: Vec3[],
+            outVertices: Vec3[],
+            planeNormal: Vec3,
+            planeConstant: number,
+        ): Vec3;
         computeWorldVertices(position: Vec3, quat: Quaternion): void;
         computeLocalAABB(aabbmin: Vec3, aabbmax: Vec3): void;
         computeWorldFaceNormals(quat: Quaternion): void;
-        calculateWorldAABB(pos: Vec3, quat: Quaternion, min: Vec3, max: Vec3): void;
+        calculateWorldAABB(
+            pos: Vec3,
+            quat: Quaternion,
+            min: Vec3,
+            max: Vec3,
+        ): void;
         getAveragePointLocal(target: Vec3): Vec3;
         transformAllPoints(offset: Vec3, quat: Quaternion): void;
         pointIsInside(p: Vec3): boolean;
     }
 
     export class Cylinder extends Shape {
-        constructor(radiusTop: number, radiusBottom: number, height: number, numSegments: number);
+        constructor(
+            radiusTop: number,
+            radiusBottom: number,
+            height: number,
+            numSegments: number,
+        );
     }
 
     export interface IHightfield {
@@ -772,13 +882,27 @@ declare namespace CANNON {
         updateMinValue(): void;
         updateMaxValue(): void;
         setHeightValueAtIndex(xi: number, yi: number, value: number): void;
-        getRectMinMax(iMinX: number, iMinY: number, iMaxX: number, iMaxY: number, result: any[]): void;
-        getIndexOfPosition(x: number, y: number, result: any[], clamp: boolean): boolean;
-        getConvexTrianglePillar(xi: number, yi: number, getUpperTriangle: boolean): void;
+        getRectMinMax(
+            iMinX: number,
+            iMinY: number,
+            iMaxX: number,
+            iMaxY: number,
+            result: any[],
+        ): void;
+        getIndexOfPosition(
+            x: number,
+            y: number,
+            result: any[],
+            clamp: boolean,
+        ): boolean;
+        getConvexTrianglePillar(
+            xi: number,
+            yi: number,
+            getUpperTriangle: boolean,
+        ): void;
     }
 
-    export class Particle extends Shape {
-    }
+    export class Particle extends Shape {}
 
     export class Plane extends Shape {
         worldNormal: Vec3;
@@ -786,7 +910,12 @@ declare namespace CANNON {
         boundingSphereRadius: number;
 
         computeWorldNormal(quat: Quaternion): void;
-        calculateWorldAABB(pos: Vec3, quat: Quaternion, min: number, max: number): void;
+        calculateWorldAABB(
+            pos: Vec3,
+            quat: Quaternion,
+            min: number,
+            max: number,
+        ): void;
     }
 
     export class Trimesh extends Shape {
@@ -801,7 +930,11 @@ declare namespace CANNON {
         setScale(scale: Vec3): void;
         updateNormals(): void;
         updateEdges(): void;
-        getEdgeVertex(edgeIndex: number, firstOrSecond: 0 | 1, vertexStore: Vec3): void;
+        getEdgeVertex(
+            edgeIndex: number,
+            firstOrSecond: 0 | 1,
+            vertexStore: Vec3,
+        ): void;
         getEdgeVector(edgeIndex: number, vectorStore: Vec3): void;
         static computeNormal(va: Vec3, vb: Vec3, vc: Vec3, target: Vec3): void;
         getVertex(i: number, out: Vec3): Vec3;
@@ -812,7 +945,12 @@ declare namespace CANNON {
         computeLocalAABB(aabb: Vec3): void;
         updateAABB(): void;
         updateBoundingSphereRadius(): number;
-        calculateWorldAABB(pos: Vec3, quat: Quaternion, min: Vec3, max: Vec3): void;
+        calculateWorldAABB(
+            pos: Vec3,
+            quat: Quaternion,
+            min: Vec3,
+            max: Vec3,
+        ): void;
         volume(): number;
         createTorus(
             radius: number,
@@ -965,7 +1103,11 @@ declare namespace CANNON {
         remove(body: Body): void;
         addMaterial(m: Material): void;
         addContactMaterial(cmat: ContactMaterial): void;
-        step(dy: number, timeSinceLastCalled?: number, maxSubSteps?: number): void;
+        step(
+            dy: number,
+            timeSinceLastCalled?: number,
+            maxSubSteps?: number,
+        ): void;
     }
 
     export interface IEvent {

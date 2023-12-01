@@ -11,7 +11,11 @@ declare class Sonar {
 
     constructor(window: Window);
 
-    ping(range: number, bottomFoundCallback?: Sonar.SonarCallback, bottomLostCallback?: Sonar.SonarCallback): void;
+    ping(
+        range: number,
+        bottomFoundCallback?: Sonar.SonarCallback,
+        bottomLostCallback?: Sonar.SonarCallback,
+    ): void;
 
     stop(): void;
 }

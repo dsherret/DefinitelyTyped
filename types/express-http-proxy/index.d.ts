@@ -1,5 +1,11 @@
 import { NextFunction, Request, RequestHandler, Response } from "express";
-import { ClientRequest, IncomingHttpHeaders, IncomingMessage, OutgoingHttpHeaders, RequestOptions } from "http";
+import {
+    ClientRequest,
+    IncomingHttpHeaders,
+    IncomingMessage,
+    OutgoingHttpHeaders,
+    RequestOptions,
+} from "http";
 
 declare namespace proxy {
     interface ProxyOptions {
@@ -10,43 +16,47 @@ declare namespace proxy {
          */
         limit?: number | string | undefined;
         proxyErrorHandler?:
-            | ((
-                err: any,
-                res: Response,
-                next: NextFunction,
-            ) => any)
+            | ((err: any, res: Response, next: NextFunction) => any)
             | undefined;
-        proxyReqPathResolver?: ((req: Request) => string | Promise<string>) | undefined;
+        proxyReqPathResolver?:
+            | ((req: Request) => string | Promise<string>)
+            | undefined;
         proxyReqOptDecorator?:
             | ((
-                proxyReqOpts: RequestOptions,
-                srcReq: Request,
-            ) => RequestOptions | Promise<RequestOptions>)
+                  proxyReqOpts: RequestOptions,
+                  srcReq: Request,
+              ) => RequestOptions | Promise<RequestOptions>)
             | undefined;
         userResHeaderDecorator?:
             | ((
-                headers: IncomingHttpHeaders,
-                userReq: Request,
-                userRes: Response,
-                proxyReq: ClientRequest,
-                proxyRes: IncomingMessage,
-            ) => OutgoingHttpHeaders)
+                  headers: IncomingHttpHeaders,
+                  userReq: Request,
+                  userRes: Response,
+                  proxyReq: ClientRequest,
+                  proxyRes: IncomingMessage,
+              ) => OutgoingHttpHeaders)
             | undefined;
         userResDecorator?:
             | ((
-                proxyRes: IncomingMessage,
-                proxyResData: any,
-                userReq: Request,
-                userRes: Response,
-            ) => Buffer | string | Promise<Buffer | string>)
+                  proxyRes: IncomingMessage,
+                  proxyResData: any,
+                  userReq: Request,
+                  userRes: Response,
+              ) => Buffer | string | Promise<Buffer | string>)
             | undefined;
         /**
          * The filter option can be used to limit what requests are proxied.
          * Return true to continue to execute proxy; return false-y to skip proxy for this request.
          */
-        filter?: ((req: Request, res: Response) => boolean | Promise<boolean>) | undefined;
-        skipToNextHandlerFilter?: ((proxyRes: IncomingMessage) => boolean) | undefined;
-        proxyReqBodyDecorator?: ((bodyContent: any, srcReq: Request) => any) | undefined;
+        filter?:
+            | ((req: Request, res: Response) => boolean | Promise<boolean>)
+            | undefined;
+        skipToNextHandlerFilter?:
+            | ((proxyRes: IncomingMessage) => boolean)
+            | undefined;
+        proxyReqBodyDecorator?:
+            | ((bodyContent: any, srcReq: Request) => any)
+            | undefined;
         preserveHostHdr?: boolean | undefined;
         parseReqBody?: boolean | undefined;
         memoizeHost?: boolean | undefined;

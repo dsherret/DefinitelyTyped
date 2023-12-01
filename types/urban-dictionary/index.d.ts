@@ -20,7 +20,10 @@ export interface AutocompleteExtraObject {
 /**
  * Use this to retrieve an array up to 20 search suggested strings.
  */
-export function autocomplete(term: string, callback: (error: Error, results: string[]) => void): void;
+export function autocomplete(
+    term: string,
+    callback: (error: Error, results: string[]) => void,
+): void;
 export function autocomplete(term: string): Promise<string[]>;
 
 /**
@@ -31,28 +34,40 @@ export function autocompleteExtra(
     term: string,
     callback: (error: Error, results: AutocompleteExtraObject[]) => void,
 ): void;
-export function autocompleteExtra(term: string): Promise<AutocompleteExtraObject[]>;
+export function autocompleteExtra(
+    term: string,
+): Promise<AutocompleteExtraObject[]>;
 
 /**
  * Use this to retrieve an array up to 10 DefinitionObject.
  */
-export function define(term: string, callback: (error: Error, results: DefinitionObject[]) => void): void;
+export function define(
+    term: string,
+    callback: (error: Error, results: DefinitionObject[]) => void,
+): void;
 export function define(term: string): Promise<DefinitionObject[]>;
 
 /**
  * Use this to retrieve a specific DefinitionObject by its defid.
  */
-export function getDefinitionByDefid(id: number, callback: (error: Error, results: DefinitionObject) => void): void;
+export function getDefinitionByDefid(
+    id: number,
+    callback: (error: Error, results: DefinitionObject) => void,
+): void;
 export function getDefinitionByDefid(id: number): Promise<DefinitionObject>;
 
 /**
  * Use this to retrieve an array up to 10 random DefinitionObject.
  */
-export function random(callback: (error: Error, results: DefinitionObject[]) => void): void;
+export function random(
+    callback: (error: Error, results: DefinitionObject[]) => void,
+): void;
 export function random(): Promise<DefinitionObject[]>;
 
 /**
  * Use this to retrieve an array with 10 Words of the Day DefinitionObject.
  */
-export function wordsOfTheDay(callback: (error: Error, results: DefinitionObject[]) => void): void;
+export function wordsOfTheDay(
+    callback: (error: Error, results: DefinitionObject[]) => void,
+): void;
 export function wordsOfTheDay(): Promise<DefinitionObject[]>;

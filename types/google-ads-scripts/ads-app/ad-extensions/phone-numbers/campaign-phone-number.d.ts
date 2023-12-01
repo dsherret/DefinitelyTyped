@@ -6,15 +6,14 @@ declare namespace GoogleAdsScripts {
             getCampaign(): Campaign;
         }
 
-        interface CampaignPhoneNumberIterator extends Base.Iterator<CampaignPhoneNumber> {}
+        interface CampaignPhoneNumberIterator
+            extends Base.Iterator<CampaignPhoneNumber> {}
 
         interface CampaignPhoneNumberSelector
-            extends
-                Base.Selector<CampaignPhoneNumberIterator>,
+            extends Base.Selector<CampaignPhoneNumberIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

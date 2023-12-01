@@ -21,6 +21,10 @@ interface SubsetFontOptions {
  * @param text A string of characters to subset the original font to.
  * @param options Additional options to configure the subsetter with.
  */
-declare function subsetFont(buffer: Buffer, text: string, options?: SubsetFontOptions): Promise<Buffer>;
+declare function subsetFont(
+    buffer: Buffer,
+    text: string,
+    options?: SubsetFontOptions,
+): Promise<Buffer>;
 
 export = subsetFont;

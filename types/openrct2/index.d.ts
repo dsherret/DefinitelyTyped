@@ -206,8 +206,16 @@ declare global {
          * @param args The action parameters.
          * @param callback The function to be called with the result of the action.
          */
-        queryAction(action: ActionType, args: object, callback: (result: GameActionResult) => void): void;
-        queryAction(action: string, args: object, callback: (result: GameActionResult) => void): void;
+        queryAction(
+            action: ActionType,
+            args: object,
+            callback: (result: GameActionResult) => void,
+        ): void;
+        queryAction(
+            action: string,
+            args: object,
+            callback: (result: GameActionResult) => void,
+        ): void;
 
         /**
          * Executes a game action. In a network game, this will send a request to the server and wait
@@ -216,24 +224,56 @@ declare global {
          * @param args The action parameters.
          * @param callback The function to be called with the result of the action.
          */
-        executeAction(action: ActionType, args: object, callback: (result: GameActionResult) => void): void;
-        executeAction(action: string, args: object, callback: (result: GameActionResult) => void): void;
+        executeAction(
+            action: ActionType,
+            args: object,
+            callback: (result: GameActionResult) => void,
+        ): void;
+        executeAction(
+            action: string,
+            args: object,
+            callback: (result: GameActionResult) => void,
+        ): void;
 
         /**
          * Subscribes to the given hook.
          */
         subscribe(hook: HookType, callback: Function): IDisposable;
 
-        subscribe(hook: "action.query", callback: (e: GameActionEventArgs) => void): IDisposable;
-        subscribe(hook: "action.execute", callback: (e: GameActionEventArgs) => void): IDisposable;
+        subscribe(
+            hook: "action.query",
+            callback: (e: GameActionEventArgs) => void,
+        ): IDisposable;
+        subscribe(
+            hook: "action.execute",
+            callback: (e: GameActionEventArgs) => void,
+        ): IDisposable;
         subscribe(hook: "interval.tick", callback: () => void): IDisposable;
         subscribe(hook: "interval.day", callback: () => void): IDisposable;
-        subscribe(hook: "network.chat", callback: (e: NetworkChatEventArgs) => void): IDisposable;
-        subscribe(hook: "network.authenticate", callback: (e: NetworkAuthenticateEventArgs) => void): IDisposable;
-        subscribe(hook: "network.join", callback: (e: NetworkEventArgs) => void): IDisposable;
-        subscribe(hook: "network.leave", callback: (e: NetworkEventArgs) => void): IDisposable;
-        subscribe(hook: "ride.ratings.calculate", callback: (e: RideRatingsCalculateArgs) => void): IDisposable;
-        subscribe(hook: "action.location", callback: (e: ActionLocationArgs) => void): IDisposable;
+        subscribe(
+            hook: "network.chat",
+            callback: (e: NetworkChatEventArgs) => void,
+        ): IDisposable;
+        subscribe(
+            hook: "network.authenticate",
+            callback: (e: NetworkAuthenticateEventArgs) => void,
+        ): IDisposable;
+        subscribe(
+            hook: "network.join",
+            callback: (e: NetworkEventArgs) => void,
+        ): IDisposable;
+        subscribe(
+            hook: "network.leave",
+            callback: (e: NetworkEventArgs) => void,
+        ): IDisposable;
+        subscribe(
+            hook: "ride.ratings.calculate",
+            callback: (e: RideRatingsCalculateArgs) => void,
+        ): IDisposable;
+        subscribe(
+            hook: "action.location",
+            callback: (e: ActionLocationArgs) => void,
+        ): IDisposable;
 
         /**
          * Registers a function to be called every so often in realtime, specified by the given delay.
@@ -559,8 +599,7 @@ declare global {
         clearanceZ: number;
         occupiedQuadrants: number;
         isGhost: boolean;
-        isHidden:
-            boolean; /** Take caution when changing this field, it may invalidate TileElements you have stored in your script. */
+        isHidden: boolean /** Take caution when changing this field, it may invalidate TileElements you have stored in your script. */;
     }
 
     interface SurfaceElement extends BaseTileElement {
@@ -656,8 +695,7 @@ declare global {
         bannerIndex: number;
     }
 
-    interface CorruptElement extends BaseTileElement {
-    }
+    interface CorruptElement extends BaseTileElement {}
 
     /**
      * Represents a tile containing tile elements on the map. This is a fixed handle
@@ -1896,8 +1934,23 @@ declare global {
      */
     interface ScenarioFile {
         id: number;
-        category: "beginner" | "challenging" | "expert" | "real" | "other" | "dlc" | "build_your_own";
-        sourceGame: "rct1" | "rct1_aa" | "rct1_ll" | "rct2" | "rct2_ww" | "rct2_tt" | "real" | "other";
+        category:
+            | "beginner"
+            | "challenging"
+            | "expert"
+            | "real"
+            | "other"
+            | "dlc"
+            | "build_your_own";
+        sourceGame:
+            | "rct1"
+            | "rct1_aa"
+            | "rct1_ll"
+            | "rct2"
+            | "rct2_ww"
+            | "rct2_tt"
+            | "real"
+            | "other";
         path: string;
         internalName: string;
         name: string;

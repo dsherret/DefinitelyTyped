@@ -18,8 +18,29 @@ const localesOptions: DataFormatter.LocalesOptions = {
         "november",
         "december",
     ],
-    monthsShort: ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"],
-    days: ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"],
+    monthsShort: [
+        "jan",
+        "feb",
+        "mar",
+        "apr",
+        "may",
+        "jun",
+        "jul",
+        "aug",
+        "sep",
+        "oct",
+        "nov",
+        "dec",
+    ],
+    days: [
+        "sunday",
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+    ],
     daysShort: ["su", "mo", "tu", "we", "th", "fr", "sa"],
     thousandSeparator: ",",
     decimalSeparator: ".",
@@ -43,4 +64,8 @@ dataFormatter2.defineLocales([enLocales, ruLocales]);
 dataFormatter2.setLocale("ru");
 dataFormatter2.setUTCOffset(null);
 dataFormatter2.setUTCOffset(100);
-const result: DataFormatter.FormatResult = dataFormatter2.format("testValue", "testType", "testFormat");
+const result: DataFormatter.FormatResult = dataFormatter2.format(
+    "testValue",
+    "testType",
+    "testFormat",
+);

@@ -16,13 +16,13 @@ export default class extends withComponent<Props>(withLitHtml()) {
     // this may look strange, but state is under the hood property of props :)
     render({ state }: Props) {
         return html`
-      <input
-        name="email"
-        on-change="${link(this)}"
-        type="email"
-        value="${state.email}"
-      >
-    `;
+            <input
+                name="email"
+                on-change="${link(this)}"
+                type="email"
+                value="${state.email}"
+            />
+        `;
     }
     private otherLinkUsage() {
         link(this, "state.customName");

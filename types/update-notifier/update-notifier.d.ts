@@ -62,7 +62,13 @@ interface UpdateInfo {
     /** Current version */
     readonly current: string;
     /** Type of current update */
-    readonly type: "latest" | "major" | "minor" | "patch" | "prerelease" | "build";
+    readonly type:
+        | "latest"
+        | "major"
+        | "minor"
+        | "patch"
+        | "prerelease"
+        | "build";
     /** Package name */
     name: string;
 }

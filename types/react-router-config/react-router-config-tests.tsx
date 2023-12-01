@@ -1,5 +1,11 @@
 import * as React from "react";
-import { MatchedRoute, matchRoutes, renderRoutes, RouteConfig, RouteConfigComponentProps } from "react-router-config";
+import {
+    MatchedRoute,
+    matchRoutes,
+    renderRoutes,
+    RouteConfig,
+    RouteConfigComponentProps,
+} from "react-router-config";
 
 const Root = ({ route }: RouteConfigComponentProps) => (
     <div>

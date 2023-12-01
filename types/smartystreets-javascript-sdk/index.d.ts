@@ -49,19 +49,42 @@ export namespace core {
         withMaxTimeout(timeout: number): ClientBuilder<T, R>;
         withSender(sender: any): ClientBuilder<T, R>;
         withBaseUrl(url: string): ClientBuilder<T, R>;
-        withProxy(host: string, port: number, username?: string, password?: string): ClientBuilder<T, R>;
+        withProxy(
+            host: string,
+            port: number,
+            username?: string,
+            password?: string,
+        ): ClientBuilder<T, R>;
         withCustomHeaders(customHeaders: any): ClientBuilder<T, R>;
         withDebug(): ClientBuilder<T, R>;
         withLicenses(licenses: string[]): ClientBuilder<T, R>;
         buildSender(): any;
         buildClient(baseUrl: string, Client: Client<T, R>): Client<T, R>;
-        buildUsStreetApiClient(): Client<usStreet.Lookup | Batch<usStreet.Lookup>, Batch<usStreet.Lookup>>;
-        buildUsZipcodeClient(): Client<usZipcode.Lookup | Batch<usZipcode.Lookup>, Batch<usZipcode.Lookup>>;
-        buildUsAutocompleteClient(): Client<usAutocomplete.Lookup, usAutocomplete.Lookup>;
-        buildUsAutocompleteProClient(): Client<usAutocompletePro.Lookup, usAutocompletePro.Lookup>;
+        buildUsStreetApiClient(): Client<
+            usStreet.Lookup | Batch<usStreet.Lookup>,
+            Batch<usStreet.Lookup>
+        >;
+        buildUsZipcodeClient(): Client<
+            usZipcode.Lookup | Batch<usZipcode.Lookup>,
+            Batch<usZipcode.Lookup>
+        >;
+        buildUsAutocompleteClient(): Client<
+            usAutocomplete.Lookup,
+            usAutocomplete.Lookup
+        >;
+        buildUsAutocompleteProClient(): Client<
+            usAutocompletePro.Lookup,
+            usAutocompletePro.Lookup
+        >;
         buildUsExtractClient(): Client<usExtract.Lookup, usExtract.Lookup>;
-        buildInternationalStreetClient(): Client<internationalStreet.Lookup, internationalStreet.Lookup>;
-        buildUsReverseGeoClient(): Client<usReverseGeo.Lookup, usReverseGeo.Lookup>;
+        buildInternationalStreetClient(): Client<
+            internationalStreet.Lookup,
+            internationalStreet.Lookup
+        >;
+        buildUsReverseGeoClient(): Client<
+            usReverseGeo.Lookup,
+            usReverseGeo.Lookup
+        >;
         buildInternationalAddressAutocompleteClient(): Client<
             internationalAddressAutocomplete.Lookup,
             internationalAddressAutocomplete.Lookup
@@ -71,7 +94,10 @@ export namespace core {
     namespace buildClient {
         function usStreet(
             credentials: StaticCredentials | SharedCredentials,
-        ): Client<usStreet.Lookup | Batch<usStreet.Lookup>, Batch<usStreet.Lookup>>;
+        ): Client<
+            usStreet.Lookup | Batch<usStreet.Lookup>,
+            Batch<usStreet.Lookup>
+        >;
         function usAutocomplete(
             credentials: StaticCredentials | SharedCredentials,
         ): Client<usAutocomplete.Lookup, usAutocomplete.Lookup>;
@@ -83,7 +109,10 @@ export namespace core {
         ): Client<usExtract.Lookup, usExtract.Lookup>;
         function usZipcode(
             credentials: StaticCredentials | SharedCredentials,
-        ): Client<usZipcode.Lookup | Batch<usZipcode.Lookup>, Batch<usZipcode.Lookup>>;
+        ): Client<
+            usZipcode.Lookup | Batch<usZipcode.Lookup>,
+            Batch<usZipcode.Lookup>
+        >;
         function internationalStreet(
             credentials: StaticCredentials | SharedCredentials,
         ): Client<internationalStreet.Lookup, internationalStreet.Lookup>;
@@ -92,7 +121,10 @@ export namespace core {
         ): Client<usReverseGeo.Lookup, usReverseGeo.Lookup>;
         function internationalAddressAutocomplete(
             credentials: StaticCredentials | SharedCredentials,
-        ): Client<internationalAddressAutocomplete.Lookup, internationalAddressAutocomplete.Lookup>;
+        ): Client<
+            internationalAddressAutocomplete.Lookup,
+            internationalAddressAutocomplete.Lookup
+        >;
     }
 
     namespace Errors {

@@ -84,11 +84,21 @@ declare namespace IRC {
 
         join(channel: string, key?: string): void;
         part(channel: string, msg?: string): void;
-        names(channel: string, callback: (error: Error, names: Array<{ name: string; mode: string }>) => void): void;
+        names(
+            channel: string,
+            callback: (
+                error: Error,
+                names: Array<{ name: string; mode: string }>,
+            ) => void,
+        ): void;
 
         away(message: string): void;
         topic(channel: string, topic: string): void;
-        kick(channels: string | string[], nicks: string | string[], msg: string): void;
+        kick(
+            channels: string | string[],
+            nicks: string | string[],
+            msg: string,
+        ): void;
         oper(name: string, password: string): void;
         mode(target: string, flags: string, params: string): void;
         quit(msg: string): void;

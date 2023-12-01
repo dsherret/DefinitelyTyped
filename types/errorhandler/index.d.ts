@@ -3,11 +3,18 @@ import express = require("express");
 /**
  * Create new middleware to handle errors and respond with content negotiation.
  */
-declare function errorHandler(options?: errorHandler.Options): express.ErrorRequestHandler;
+declare function errorHandler(
+    options?: errorHandler.Options,
+): express.ErrorRequestHandler;
 
 declare namespace errorHandler {
     interface LoggingCallback {
-        (err: Error, str: string, req: express.Request, res: express.Response): void;
+        (
+            err: Error,
+            str: string,
+            req: express.Request,
+            res: express.Response,
+        ): void;
     }
 
     interface Options {

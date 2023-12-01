@@ -19,16 +19,24 @@ fileExists(Buffer.from("/tmp"), { root: "" }, (err, exists) => {
 });
 
 // $ExpectType void
-fileExists(Buffer.from("/tmp"), { anotherKey: "this is fine" }, (err, exists) => {
-    err; // $ExpectType Error | null
-    exists; // $ExpectType boolean
-});
+fileExists(
+    Buffer.from("/tmp"),
+    { anotherKey: "this is fine" },
+    (err, exists) => {
+        err; // $ExpectType Error | null
+        exists; // $ExpectType boolean
+    },
+);
 
 // $ExpectType void
-fileExists(new URL("file:///etc/fstab"), { anotherKey: "this is fine" }, (err, exists) => {
-    err; // $ExpectType Error | null
-    exists; // $ExpectType boolean
-});
+fileExists(
+    new URL("file:///etc/fstab"),
+    { anotherKey: "this is fine" },
+    (err, exists) => {
+        err; // $ExpectType Error | null
+        exists; // $ExpectType boolean
+    },
+);
 
 // $ExpectType void
 fileExists("tmp", { root: "/" }, (err, exists) => {

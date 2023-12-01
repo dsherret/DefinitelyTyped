@@ -19,7 +19,13 @@ const groups1: TimelineGroupBase[] = [
 ];
 
 const items1: Array<TimelineItemBase<Moment>> = [
-    { id: 1, group: 1, title: "item 1", start_time: moment(), end_time: moment().add(1, "hour") },
+    {
+        id: 1,
+        group: 1,
+        title: "item 1",
+        start_time: moment(),
+        end_time: moment().add(1, "hour"),
+    },
     {
         id: 2,
         group: "two",
@@ -27,7 +33,13 @@ const items1: Array<TimelineItemBase<Moment>> = [
         start_time: moment().add(-0.5, "hour"),
         end_time: moment().add(0.5, "hour"),
     },
-    { id: "three", group: 1, title: "item 3", start_time: moment().add(2, "hour"), end_time: moment().add(3, "hour") },
+    {
+        id: "three",
+        group: 1,
+        title: "item 3",
+        start_time: moment().add(2, "hour"),
+        end_time: moment().add(3, "hour"),
+    },
 ];
 
 class ExampleOfUsingReactCalendarTimeline extends React.Component {
@@ -55,7 +67,14 @@ const groups2: TimelineGroupCustom[] = [
 ];
 
 const items2: TimelineItemCustom[] = [
-    { id: "1", group: "1", title: "item 1", start_time: moment(), end_time: moment().add(1, "hour"), data: "1" },
+    {
+        id: "1",
+        group: "1",
+        title: "item 1",
+        start_time: moment(),
+        end_time: moment().add(1, "hour"),
+        data: "1",
+    },
     {
         id: "2",
         group: "two",
@@ -101,11 +120,21 @@ const Example: React.FC = () => (
             </SidebarHeader>
             <DateHeader unit="primaryHeader" />
             <DateHeader />
-            <CustomHeader height={50} headerData={{ someData: "data" }} unit="year">
-                {({ headerContext: { intervals }, getRootProps, getIntervalProps, showPeriod, data }) => {
+            <CustomHeader
+                height={50}
+                headerData={{ someData: "data" }}
+                unit="year"
+            >
+                {({
+                    headerContext: { intervals },
+                    getRootProps,
+                    getIntervalProps,
+                    showPeriod,
+                    data,
+                }) => {
                     return (
                         <div {...getRootProps()}>
-                            {intervals.map(interval => {
+                            {intervals.map((interval) => {
                                 const intervalStyle = {
                                     lineHeight: "30px",
                                     textAlign: "center",
@@ -117,14 +146,19 @@ const Example: React.FC = () => (
                                 return (
                                     <div
                                         onClick={() => {
-                                            showPeriod(interval.startTime, interval.endTime);
+                                            showPeriod(
+                                                interval.startTime,
+                                                interval.endTime,
+                                            );
                                         }}
                                         {...getIntervalProps({
                                             interval,
                                             style: intervalStyle,
                                         })}
                                     >
-                                        <div className="sticky">{interval.startTime.format("YYYY")}</div>
+                                        <div className="sticky">
+                                            {interval.startTime.format("YYYY")}
+                                        </div>
                                     </div>
                                 );
                             })}
@@ -168,17 +202,19 @@ const Resize = () => {
                 const group = groups[newGroupOrder];
 
                 setItems(
-                    itemsState.map(item =>
+                    itemsState.map((item) =>
                         item.id === itemId
                             ? {
-                                ...item,
-                                ...{
-                                    start_time: dragTime,
-                                    end_time: dragTime + (item.end_time - item.start_time),
-                                    group: group.id,
-                                },
-                            }
-                            : item
+                                  ...item,
+                                  ...{
+                                      start_time: dragTime,
+                                      end_time:
+                                          dragTime +
+                                          (item.end_time - item.start_time),
+                                      group: group.id,
+                                  },
+                              }
+                            : item,
                     ),
                 );
 
@@ -186,16 +222,22 @@ const Resize = () => {
             }}
             onItemResize={(itemId, time, edge) => {
                 setItems(
-                    itemsState.map(item =>
+                    itemsState.map((item) =>
                         item.id === itemId
                             ? {
-                                ...item,
-                                ...{
-                                    start_time: edge === "left" ? time : item.start_time,
-                                    end_time: edge === "left" ? item.end_time : time,
-                                },
-                            }
-                            : item
+                                  ...item,
+                                  ...{
+                                      start_time:
+                                          edge === "left"
+                                              ? time
+                                              : item.start_time,
+                                      end_time:
+                                          edge === "left"
+                                              ? item.end_time
+                                              : time,
+                                  },
+                              }
+                            : item,
                     ),
                 );
 
@@ -208,7 +250,12 @@ const Resize = () => {
 const TimelineDragTest = () => {
     const [itemsState, setItems] = useState(items);
     const [draggedItem, setDraggedItem] = useState<
-        { item: TimelineItemBase<number>; group: TimelineGroupBase; time: number } | undefined
+        | {
+              item: TimelineItemBase<number>;
+              group: TimelineGroupBase;
+              time: number;
+          }
+        | undefined
     >(undefined);
 
     return (
@@ -227,17 +274,19 @@ const TimelineDragTest = () => {
                     const group = groups[newGroupOrder];
 
                     setItems(
-                        itemsState.map(item =>
+                        itemsState.map((item) =>
                             item.id === itemId
                                 ? {
-                                    ...item,
-                                    ...{
-                                        start_time: dragTime,
-                                        end_time: dragTime + (item.end_time - item.start_time),
-                                        group: group.id,
-                                    },
-                                }
-                                : item
+                                      ...item,
+                                      ...{
+                                          start_time: dragTime,
+                                          end_time:
+                                              dragTime +
+                                              (item.end_time - item.start_time),
+                                          group: group.id,
+                                      },
+                                  }
+                                : item,
                         ),
                     );
                     setDraggedItem(undefined);
@@ -245,30 +294,40 @@ const TimelineDragTest = () => {
                 }}
                 onItemResize={(itemId, time, edge) => {
                     setItems(
-                        itemsState.map(item =>
+                        itemsState.map((item) =>
                             item.id === itemId
                                 ? {
-                                    ...item,
-                                    ...{
-                                        start_time: edge === "left" ? time : item.start_time,
-                                        end_time: edge === "left" ? item.end_time : time,
-                                    },
-                                }
-                                : item
+                                      ...item,
+                                      ...{
+                                          start_time:
+                                              edge === "left"
+                                                  ? time
+                                                  : item.start_time,
+                                          end_time:
+                                              edge === "left"
+                                                  ? item.end_time
+                                                  : time,
+                                      },
+                                  }
+                                : item,
                         ),
                     );
                     setDraggedItem(undefined);
 
                     console.log("Resized", itemId, time, edge);
                 }}
-                onItemDrag={itemDragObject => {
+                onItemDrag={(itemDragObject) => {
                     if (itemDragObject.eventType === "move") {
                         const { itemId, newGroupOrder, time } = itemDragObject;
                         let item = draggedItem ? draggedItem.item : undefined;
                         if (!item) {
-                            item = itemsState.find(i => i.id === itemId);
+                            item = itemsState.find((i) => i.id === itemId);
                         }
-                        setDraggedItem({ item: item, group: groups[newGroupOrder], time });
+                        setDraggedItem({
+                            item: item,
+                            group: groups[newGroupOrder],
+                            time,
+                        });
                     }
                 }}
             />
@@ -287,7 +346,9 @@ const TimelineDragTest = () => {
                         zIndex: 85,
                     }}
                 >
-                    {`${moment(draggedItem.time).format("LLL")}, ${draggedItem.group ? draggedItem.group.title : ""}`}
+                    {`${moment(draggedItem.time).format("LLL")}, ${
+                        draggedItem.group ? draggedItem.group.title : ""
+                    }`}
                 </div>
             )}
         </React.Fragment>

@@ -9,6 +9,9 @@ export default capture;
  * @param [customOptions] - User options for this single request
  * @returns Response promise
  */
-declare function capture(epcisDocument: EPCISDocument, customOptions?: Settings): Promise<any>;
+declare function capture(
+    epcisDocument: EPCISDocument,
+    customOptions?: Settings,
+): Promise<any>;
 import EPCISDocument from "../entity/epcis/EPCISDocument";
 import { Settings } from "../settings";

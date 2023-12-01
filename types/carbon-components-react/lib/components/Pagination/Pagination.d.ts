@@ -8,7 +8,8 @@ export interface PaginationPageSize {
     value: string;
 }
 
-export interface PaginationProps extends Omit<ReactDivAttr, ExcludedAttributes> {
+export interface PaginationProps
+    extends Omit<ReactDivAttr, ExcludedAttributes> {
     backwardText?: string | undefined;
     forwardedRef?: React.ForwardedRef<HTMLDivElement>;
     forwardText?: string | undefined;

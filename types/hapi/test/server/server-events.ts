@@ -13,8 +13,15 @@ const server = new Server({
     port: 8000,
 });
 
-server.events.on("route", route => {
-    console.log(route.path, route.vhost, route.realm, route.method, route.settings, route.fingerprint);
+server.events.on("route", (route) => {
+    console.log(
+        route.path,
+        route.vhost,
+        route.realm,
+        route.method,
+        route.settings,
+        route.fingerprint,
+    );
 });
 
 server.event("test");

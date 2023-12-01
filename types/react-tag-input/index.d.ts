@@ -14,8 +14,16 @@ export interface ReactTagsProps {
 
     handleAddition: (tag: { id: string; text: string }) => void;
     handleDelete: (i: number) => void;
-    handleDrag?: ((tag: { id: string; text: string }, currPos: number, newPos: number) => void) | undefined;
-    handleFilterSuggestions?: ((textInputValue: string, possibleSuggestionsArray: Tag[]) => Tag[]) | undefined;
+    handleDrag?:
+        | ((
+              tag: { id: string; text: string },
+              currPos: number,
+              newPos: number,
+          ) => void)
+        | undefined;
+    handleFilterSuggestions?:
+        | ((textInputValue: string, possibleSuggestionsArray: Tag[]) => Tag[])
+        | undefined;
     handleTagClick?: ((i: number) => void) | undefined;
 
     autofocus?: boolean | undefined;
@@ -43,16 +51,18 @@ export interface ReactTagsProps {
     renderSuggestion?(tag: Tag, query: string): React.ReactChild | void;
     shouldRenderSuggestions?: ((query: string) => boolean) | undefined;
 
-    classNames?: {
-        tags?: string | undefined;
-        tagInput?: string | undefined;
-        tagInputField?: string | undefined;
-        selected?: string | undefined;
-        tag?: string | undefined;
-        remove?: string | undefined;
-        suggestions?: string | undefined;
-        activeSuggestion?: string | undefined;
-    } | undefined;
+    classNames?:
+        | {
+              tags?: string | undefined;
+              tagInput?: string | undefined;
+              tagInputField?: string | undefined;
+              selected?: string | undefined;
+              tag?: string | undefined;
+              remove?: string | undefined;
+              suggestions?: string | undefined;
+              activeSuggestion?: string | undefined;
+          }
+        | undefined;
 }
 
 export class WithContext extends React.Component<ReactTagsProps> {}

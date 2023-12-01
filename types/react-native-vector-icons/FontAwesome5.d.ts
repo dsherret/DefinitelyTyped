@@ -16,7 +16,9 @@ export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 
 export type FontAwesome5IconVariants = keyof Omit<typeof FA5Style, "regular">;
 
-export type FontAwesome5IconProps = { [K in FontAwesome5IconVariants]?: boolean } & IconProps;
+export type FontAwesome5IconProps = {
+    [K in FontAwesome5IconVariants]?: boolean;
+} & IconProps;
 
 export class FontAwesome5IconButton extends Component<
     { [K in FontAwesome5IconVariants]?: boolean } & IconButtonProps,

@@ -1,6 +1,10 @@
 import { BlockInstance } from "../";
 
-export type Template = readonly [string, Readonly<Record<string, any>>?, TemplateArray?];
+export type Template = readonly [
+    string,
+    Readonly<Record<string, any>>?,
+    TemplateArray?,
+];
 export interface TemplateArray extends ReadonlyArray<Template> {}
 
 /**
@@ -9,7 +13,10 @@ export interface TemplateArray extends ReadonlyArray<Template> {}
  * @param blocks - Block list.
  * @param template - Block template.
  */
-export function doBlocksMatchTemplate(blocks?: BlockInstance[], template?: TemplateArray): boolean;
+export function doBlocksMatchTemplate(
+    blocks?: BlockInstance[],
+    template?: TemplateArray,
+): boolean;
 
 /**
  * Synchronize a block list with a block template.
@@ -22,4 +29,7 @@ export function doBlocksMatchTemplate(blocks?: BlockInstance[], template?: Templ
  * @param blocks   - Block list.
  * @param template - Block template.
  */
-export function synchronizeBlocksWithTemplate(blocks?: BlockInstance[], template?: TemplateArray): BlockInstance[];
+export function synchronizeBlocksWithTemplate(
+    blocks?: BlockInstance[],
+    template?: TemplateArray,
+): BlockInstance[];

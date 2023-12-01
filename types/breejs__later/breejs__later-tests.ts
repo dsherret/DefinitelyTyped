@@ -128,8 +128,29 @@ later.parse.recur().every(6).hour().before("09:00").time(); // $ExpectType Recur
 later.parse.recur().after("09:00").time().before("18:00").time(); // $ExpectType RecurrenceBuilder
 later.parse.recur().after(9).hour().before(18).hour(); // $ExpectType RecurrenceBuilder
 later.parse.recur().every(15).minute().startingOn(10); // $ExpectType RecurrenceBuilder
-later.parse.recur().every(2).hour().first().dayOfMonth().and().on(8, 20).hour().last().dayOfMonth(); // $ExpectType RecurrenceBuilder
-later.parse.recur().every().minute().except().every(2).minute().between(2, 59).and().every(3).minute().between(3, 59); // $ExpectType RecurrenceBuilder
+later.parse
+    .recur()
+    .every(2)
+    .hour()
+    .first()
+    .dayOfMonth()
+    .and()
+    .on(8, 20)
+    .hour()
+    .last()
+    .dayOfMonth(); // $ExpectType RecurrenceBuilder
+later.parse
+    .recur()
+    .every()
+    .minute()
+    .except()
+    .every(2)
+    .minute()
+    .between(2, 59)
+    .and()
+    .every(3)
+    .minute()
+    .between(3, 59); // $ExpectType RecurrenceBuilder
 
 const schedule = later.parse.text("every 5 min"); // $ExpectType ScheduleData
 

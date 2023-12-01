@@ -10,7 +10,14 @@ new Awesomplete(input, {
 });
 
 const awesomplete = new Awesomplete(input);
-awesomplete.list = ["Ada", "Java", "JavaScript", "LOLCODE", "Node.js", "Ruby on Rails"];
+awesomplete.list = [
+    "Ada",
+    "Java",
+    "JavaScript",
+    "LOLCODE",
+    "Node.js",
+    "Ruby on Rails",
+];
 awesomplete.destroy();
 
 new Awesomplete(input, {
@@ -30,7 +37,7 @@ new Awesomplete(input, {
     ],
 });
 
-new Awesomplete("input[type=\"email\"]", {
+new Awesomplete('input[type="email"]', {
     list: [
         "aol.com",
         "att.net",
@@ -80,9 +87,16 @@ ajax.send();
 new Awesomplete(input, {
     list: ["Ada", "Java", "JavaScript", "LOLCODE", "Node.js", "Ruby on Rails"],
     item: (text: string, inputText: string, itemId: number) => {
-        const innerHTML = inputText.trim() === ""
-            ? text
-            : text.replace(RegExp(Awesomplete.$.regExpEscape(inputText.trim()), "gi"), "<mark>$&</mark>");
+        const innerHTML =
+            inputText.trim() === ""
+                ? text
+                : text.replace(
+                      RegExp(
+                          Awesomplete.$.regExpEscape(inputText.trim()),
+                          "gi",
+                      ),
+                      "<mark>$&</mark>",
+                  );
 
         return Awesomplete.$.create("li", {
             innerHTML,

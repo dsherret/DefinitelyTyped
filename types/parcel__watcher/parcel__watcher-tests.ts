@@ -9,7 +9,10 @@ import {
 } from "@parcel/watcher";
 import * as path from "path";
 
-const handler: ParcelWatcherCallback = (err?: Error, events?: ParcelWatcherEvent[]) => {
+const handler: ParcelWatcherCallback = (
+    err?: Error,
+    events?: ParcelWatcherEvent[],
+) => {
     if (err) {
         throw err;
     }
@@ -26,8 +29,10 @@ unsubscribe(process.cwd(), handler);
 
 const snapshotPath = path.join(process.cwd(), "snapshot.txt");
 
-getEventsSince(process.cwd(), snapshotPath).then((events: ParcelWatcherEvent[]) => {
-    console.log;
-});
+getEventsSince(process.cwd(), snapshotPath).then(
+    (events: ParcelWatcherEvent[]) => {
+        console.log;
+    },
+);
 
 writeSnapshot(process.cwd(), snapshotPath, { backend: "inotify" });

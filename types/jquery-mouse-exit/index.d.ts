@@ -14,7 +14,10 @@ declare global {
         mouseExit(options?: Options): JQuery;
         on(
             event: "mouseExit",
-            handler: (event: JQuery.TriggeredEvent<HTMLElement>, data: FocusElements) => void,
+            handler: (
+                event: JQuery.TriggeredEvent<HTMLElement>,
+                data: FocusElements,
+            ) => void,
         ): JQuery;
     }
 }

@@ -27,7 +27,9 @@ export type RouteObject<TKeys = {}, TState = any> = TKeys & {
     meta?: Meta | undefined;
 };
 
-export type Route<TKeys = {}, TState = any> = RouteString | RouteObject<TKeys, TState>;
+export type Route<TKeys = {}, TState = any> =
+    | RouteString
+    | RouteObject<TKeys, TState>;
 
 export interface RoutesMap<TKeys = {}, TState = any> {
     [key: string]: Route<TKeys, TState>;
@@ -70,7 +72,15 @@ export interface Location {
     search?: string | undefined;
 }
 
-export type LocationKind = "load" | "back" | "next" | "pop" | "stealth" | "push" | "replace" | "redirect";
+export type LocationKind =
+    | "load"
+    | "back"
+    | "next"
+    | "pop"
+    | "stealth"
+    | "push"
+    | "replace"
+    | "redirect";
 
 export interface LocationState<TKeys = {}, TState = any> {
     pathname: string;
@@ -126,14 +136,26 @@ export interface HistoryLocation {
 
 export type HistoryAction = string;
 
-export type Listener = (location: HistoryLocation, action: HistoryAction) => void;
+export type Listener = (
+    location: HistoryLocation,
+    action: HistoryAction,
+) => void;
 
 export type ScrollBehavior = object;
 
 export interface Router<TState = any> {
-    getStateForActionOriginal(action: object, state: Nullable<TState>): Nullable<TState>;
-    getStateForAction(action: object, state: Nullable<TState>): Nullable<TState>;
-    getPathAndParamsForState(state: TState): { path: Nullable<string>; params: Nullable<Params> };
+    getStateForActionOriginal(
+        action: object,
+        state: Nullable<TState>,
+    ): Nullable<TState>;
+    getStateForAction(
+        action: object,
+        state: Nullable<TState>,
+    ): Nullable<TState>;
+    getPathAndParamsForState(state: TState): {
+        path: Nullable<string>;
+        params: Nullable<Params>;
+    };
     getActionForPathAndParams(path: string): Nullable<object>;
 }
 
@@ -145,7 +167,9 @@ export interface Navigators<TState = any> {
     [key: string]: Navigator<TState>;
 }
 
-export type SelectLocationState<TKeys = {}, TState = any> = (state: TState) => LocationState<TKeys, TState>;
+export type SelectLocationState<TKeys = {}, TState = any> = (
+    state: TState,
+) => LocationState<TKeys, TState>;
 export type SelectTitleState<TState = any> = (state: TState) => string;
 
 export interface QuerySerializer {
@@ -232,20 +256,32 @@ export interface Options<TKeys = {}, TState = any> {
      * It's passed your standard `dispatch` and `getState` arguments like a thunk,
      * as well as the `bag` object as a third parameter, which contains the dispatched `action` and the configured `extra` value.
      */
-    onBeforeChange?(dispatch: Dispatch<any>, getState: StateGetter<TState>, bag: Bag): void;
+    onBeforeChange?(
+        dispatch: Dispatch<any>,
+        getState: StateGetter<TState>,
+        bag: Bag,
+    ): void;
     /**
      * A simple function that will be called after the routes change.
      * It's passed your standard `dispatch` and `getState` arguments like a thunk,
      * as well as the `bag` object as a third parameter, which contains the dispatched `action` and the configured `extra` value.
      */
-    onAfterChange?(dispatch: Dispatch<any>, getState: StateGetter<TState>, bag: Bag): void;
+    onAfterChange?(
+        dispatch: Dispatch<any>,
+        getState: StateGetter<TState>,
+        bag: Bag,
+    ): void;
     /**
      * A simple function that will be called whenever the user uses the browser back/next buttons.
      * It's passed your standard `dispatch` and `getState` arguments like a thunk,
      * as well as the `bag` object as a third parameter, which contains the dispatched `action`
      * and the configured `extra` value. Actions with kinds `back`, `next`, and `pop` trigger this.
      */
-    onBackNext?(dispatch: Dispatch<any>, getState: StateGetter<TState>, bag: Bag): void;
+    onBackNext?(
+        dispatch: Dispatch<any>,
+        getState: StateGetter<TState>,
+        bag: Bag,
+    ): void;
     /**
      * A function receiving `message` and `callback` when navigation is blocked with `confirmLeave`.
      * The message is the return value from `confirmLeave`.
@@ -283,7 +319,10 @@ export interface Payload {
     [key: string]: any;
 }
 
-export type DisplayConfirmLeave = (message: string, callback: (unblock: boolean) => void) => void;
+export type DisplayConfirmLeave = (
+    message: string,
+    callback: (unblock: boolean) => void,
+) => void;
 
 export type ScrollUpdater = (performedByUser: boolean) => void;
 

@@ -4,13 +4,20 @@ import ReactDOMClient = require("react-dom/client");
 
 function preloadTest() {
     function Component() {
-        ReactDOM.preload("foo", { as: "style", fetchPriority: "high", integrity: "sad" });
+        ReactDOM.preload("foo", {
+            as: "style",
+            fetchPriority: "high",
+            integrity: "sad",
+        });
         ReactDOM.preload("bar", {
             as: "font",
             // @ts-expect-error Unknown fetch priority
             fetchPriority: "unknown",
         });
-        ReactDOM.preload("baz", { as: "script", crossOrigin: "use-credentials" });
+        ReactDOM.preload("baz", {
+            as: "script",
+            crossOrigin: "use-credentials",
+        });
         ReactDOM.preload("baz", {
             // @ts-expect-error
             as: "title",
@@ -94,7 +101,11 @@ function preloadTest() {
         // @ts-expect-error
         ReactDOM.preinitModule();
         ReactDOM.preinitModule("browserdefault");
-        ReactDOM.preinitModule("browserdefault", { as: "script", crossOrigin: "use-credentials", integrity: "0xeac1" });
+        ReactDOM.preinitModule("browserdefault", {
+            as: "script",
+            crossOrigin: "use-credentials",
+            integrity: "0xeac1",
+        });
         ReactDOM.preinitModule("data", {
             // @ts-expect-error Not supported (yet)
             as: "json",
@@ -154,8 +165,8 @@ function formTest() {
         useFormState(
             async (
                 prevState: // only needed in TypeScript 4.9
-                    // 5.0 infers `number` whereas 4.9 infers `0`
-                    number,
+                // 5.0 infers `number` whereas 4.9 infers `0`
+                number,
             ) => prevState + 1,
             0,
         )[0];
@@ -237,6 +248,11 @@ function formTest() {
         );
     }
 
-    const formState = [1, "", "", 0] as unknown as ReactDOMClient.ReactFormState;
+    const formState = [
+        1,
+        "",
+        "",
+        0,
+    ] as unknown as ReactDOMClient.ReactFormState;
     ReactDOMClient.hydrateRoot(document.body, <Page1 />, { formState });
 }

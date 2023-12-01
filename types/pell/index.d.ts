@@ -23,7 +23,10 @@ export interface pellClasses {
     selected?: string | undefined;
 }
 
-export type pellAction = pellBuiltinAction | pellActionConfig | pellCustomActionConfig;
+export type pellAction =
+    | pellBuiltinAction
+    | pellActionConfig
+    | pellCustomActionConfig;
 export interface pellActionConfig {
     name: pellAction;
     icon?: string | undefined;

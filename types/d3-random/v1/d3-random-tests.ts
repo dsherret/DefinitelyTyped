@@ -48,7 +48,9 @@ randomNumberGenerator = prngNormal(3, 4);
 let prngLogNormal: d3Random.RandomLogNormal;
 
 prngLogNormal = d3Random.randomLogNormal;
-prngLogNormal = d3Random.randomLogNormal.source(seedrandom("Schroedinger's flea."));
+prngLogNormal = d3Random.randomLogNormal.source(
+    seedrandom("Schroedinger's flea."),
+);
 
 randomNumberGenerator = prngLogNormal();
 randomNumberGenerator = prngLogNormal(3);
@@ -72,7 +74,9 @@ randomNumberGenerator = prngBates(3);
 let prngIrwinHall: d3Random.RandomIrwinHall;
 
 prngIrwinHall = d3Random.randomIrwinHall;
-prngIrwinHall = d3Random.randomIrwinHall.source(seedrandom("Schroedinger's flea."));
+prngIrwinHall = d3Random.randomIrwinHall.source(
+    seedrandom("Schroedinger's flea."),
+);
 
 randomNumberGenerator = prngIrwinHall(3);
 
@@ -83,6 +87,8 @@ randomNumberGenerator = prngIrwinHall(3);
 let prngExponential: d3Random.RandomExponential;
 
 prngExponential = d3Random.randomExponential;
-prngExponential = d3Random.randomExponential.source(seedrandom("Schroedinger's flea."));
+prngExponential = d3Random.randomExponential.source(
+    seedrandom("Schroedinger's flea."),
+);
 
 randomNumberGenerator = prngExponential(1 / 40);

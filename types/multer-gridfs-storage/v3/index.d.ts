@@ -24,18 +24,27 @@ interface MulterGfsOptions {
     file?(req: Express.Request, file: Express.Multer.File): any;
 }
 
-declare class MulterGridfsStorage extends EventEmitter implements Multer.StorageEngine {
+declare class MulterGridfsStorage
+    extends EventEmitter
+    implements Multer.StorageEngine
+{
     db: Db;
     client: MongoClient;
     connected: boolean;
     connecting: boolean;
-    configuration: MulterGridfsStorage.UrlStorageOptions | MulterGridfsStorage.DbStorageOptions;
+    configuration:
+        | MulterGridfsStorage.UrlStorageOptions
+        | MulterGridfsStorage.DbStorageOptions;
     error: Error;
     caching: boolean;
     cacheName: string;
     cacheIndex: object;
 
-    constructor(configuration: MulterGridfsStorage.UrlStorageOptions | MulterGridfsStorage.DbStorageOptions);
+    constructor(
+        configuration:
+            | MulterGridfsStorage.UrlStorageOptions
+            | MulterGridfsStorage.DbStorageOptions,
+    );
 
     _handleFile(
         req: Express.Request,
@@ -43,7 +52,11 @@ declare class MulterGridfsStorage extends EventEmitter implements Multer.Storage
         callback: (error?: any, info?: Express.Multer.File) => void,
     ): void;
 
-    _removeFile(req: Express.Request, file: Express.Multer.File, callback: (error: Error) => void): void;
+    _removeFile(
+        req: Express.Request,
+        file: Express.Multer.File,
+        callback: (error: Error) => void,
+    ): void;
 
     ready: Promise<Db>;
 

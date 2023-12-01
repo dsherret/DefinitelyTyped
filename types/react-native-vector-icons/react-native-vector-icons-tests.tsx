@@ -38,13 +38,29 @@ class Example extends React.Component {
                 <FontAwesome5Icon size={10} name="handshake" solid />
                 <FontAwesome6Icon size={10} name="handshake" />
                 <FontAwesome6Icon size={10} name="handshake" sharpSolid />
-                <FontAwesome5ProIcon size={10} name="parachute-box" light={true} solid={false} />
-                <FontAwesome6ProIcon size={10} name="parachute-box" light={true} sharpSolid={false} />
+                <FontAwesome5ProIcon
+                    size={10}
+                    name="parachute-box"
+                    light={true}
+                    solid={false}
+                />
+                <FontAwesome6ProIcon
+                    size={10}
+                    name="parachute-box"
+                    light={true}
+                    sharpSolid={false}
+                />
                 <Fontisto size={10} name="fontisto" />
 
                 {/* Icon button  */}
-                <FontAwesomeIcon.Button backgroundColor="#3b5998" name="facebook" onPress={() => this.handleButton()}>
-                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>Login with Facebook</Text>
+                <FontAwesomeIcon.Button
+                    backgroundColor="#3b5998"
+                    name="facebook"
+                    onPress={() => this.handleButton()}
+                >
+                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>
+                        Login with Facebook
+                    </Text>
                 </FontAwesomeIcon.Button>
 
                 {/* FA5 Icon button with solid  */}
@@ -54,7 +70,9 @@ class Example extends React.Component {
                     onPress={() => this.handleButton()}
                     solid
                 >
-                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>Login with Facebook</Text>
+                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>
+                        Login with Facebook
+                    </Text>
                 </FontAwesome5Icon.Button>
 
                 {/* FA6 Icon button with sharpSolid  */}
@@ -64,7 +82,9 @@ class Example extends React.Component {
                     onPress={() => this.handleButton()}
                     sharpSolid
                 >
-                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>Login with Facebook</Text>
+                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>
+                        Login with Facebook
+                    </Text>
                 </FontAwesome6Icon.Button>
             </View>
         );
@@ -123,8 +143,14 @@ class TestCustomIcon extends React.Component {
                 <CustomIcon size={30} color="blue" name="custom" />
 
                 {/* Custom Icon button  */}
-                <CustomIcon.Button backgroundColor="#3b5998" name="facebook" onPress={() => this.handleButton()}>
-                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>Hello CustomIcon!</Text>
+                <CustomIcon.Button
+                    backgroundColor="#3b5998"
+                    name="facebook"
+                    onPress={() => this.handleButton()}
+                >
+                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>
+                        Hello CustomIcon!
+                    </Text>
                 </CustomIcon.Button>
             </View>
         );
@@ -137,18 +163,46 @@ class OpaqueColorTest extends React.Component {
     }
 
     render() {
-        const opaqueColor = PlatformColor(Platform.OS === "ios" ? "systemBlue" : "?android:attr/colorBackground");
+        const opaqueColor = PlatformColor(
+            Platform.OS === "ios"
+                ? "systemBlue"
+                : "?android:attr/colorBackground",
+        );
 
         return (
             <View>
                 {/* Normal Icon */}
                 <AntDesign size={10} color={opaqueColor} name="user" />
                 <MaterialIcon size={30} color={opaqueColor} name="exit" />
-                <FontAwesome5Icon size={10} color={opaqueColor} name="handshake" />
-                <FontAwesome5Icon size={10} color={opaqueColor} name="handshake" solid />
-                <FontAwesome5ProIcon size={10} color={opaqueColor} name="parachute-box" light={true} solid={false} />
-                <FontAwesome6Icon size={10} color={opaqueColor} name="handshake" />
-                <FontAwesome6Icon size={10} color={opaqueColor} name="handshake" sharpSolid />
+                <FontAwesome5Icon
+                    size={10}
+                    color={opaqueColor}
+                    name="handshake"
+                />
+                <FontAwesome5Icon
+                    size={10}
+                    color={opaqueColor}
+                    name="handshake"
+                    solid
+                />
+                <FontAwesome5ProIcon
+                    size={10}
+                    color={opaqueColor}
+                    name="parachute-box"
+                    light={true}
+                    solid={false}
+                />
+                <FontAwesome6Icon
+                    size={10}
+                    color={opaqueColor}
+                    name="handshake"
+                />
+                <FontAwesome6Icon
+                    size={10}
+                    color={opaqueColor}
+                    name="handshake"
+                    sharpSolid
+                />
                 <FontAwesome6ProIcon
                     size={10}
                     color={opaqueColor}
@@ -164,7 +218,9 @@ class OpaqueColorTest extends React.Component {
                     name="facebook"
                     onPress={() => this.handleButton()}
                 >
-                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>Login with Facebook</Text>
+                    <Text style={{ fontFamily: "Arial", fontSize: 15 }}>
+                        Login with Facebook
+                    </Text>
                 </FontAwesomeIcon.Button>
             </View>
         );

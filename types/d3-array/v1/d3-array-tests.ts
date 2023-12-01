@@ -52,10 +52,9 @@ let numOrUndefinedExtent: [number, number] | [undefined, undefined];
 let strOrUndefinedExtent: [string, string] | [undefined, undefined];
 let numericOrUndefinedExtent: [NumCoercible, NumCoercible] | [undefined, undefined];
 let dateMixedOrUndefined: [Date, Date] | [undefined, undefined];
-let mixedOrUndefinedExtent: [d3Array.Primitive | NumCoercible, d3Array.Primitive | NumCoercible] | [
-    undefined,
-    undefined,
-];
+let mixedOrUndefinedExtent:
+    | [d3Array.Primitive | NumCoercible, d3Array.Primitive | NumCoercible]
+    | [undefined, undefined];
 let dateOrUndefinedExtent: [Date, Date] | [undefined, undefined];
 
 let numbersArray = [10, 20, 30, 40, 50];
@@ -501,7 +500,7 @@ mixedObjectArray.sort((a, b) => a.date.valueOf() - b.date.valueOf());
 let mixedObjectDateBisectorObject: d3Array.Bisector<MixedObject, Date>;
 
 // define using accessor
-mixedObjectDateBisectorObject = d3Array.bisector<MixedObject, Date>(el => el.date);
+mixedObjectDateBisectorObject = d3Array.bisector<MixedObject, Date>((el) => el.date);
 
 // define using comparator
 mixedObjectDateBisectorObject = d3Array.bisector<MixedObject, Date>((el, x) => el.date.valueOf() - x.valueOf());
@@ -552,10 +551,7 @@ const testArray1 = [
     new MixedObject(50, new Date(2017, 4, 15)),
 ];
 
-const testArray2 = [
-    new MixedObject(40, new Date(2016, 3, 1)),
-    new MixedObject(50, new Date(2016, 9, 30)),
-];
+const testArray2 = [new MixedObject(40, new Date(2016, 3, 1)), new MixedObject(50, new Date(2016, 9, 30))];
 
 let testArrays: MixedObject[][] = [testArray1, testArray2];
 
@@ -568,7 +564,10 @@ let mergedArray: MixedObject[];
 mergedArray = d3Array.merge(testArrays); // inferred type
 mergedArray = d3Array.merge<MixedObject>(testArrays); // explicit type
 // @ts-expect-error
-mergedArray = d3Array.merge<MixedObject>([[10, 40, 30], [15, 30]]); // fails, type mismatch
+mergedArray = d3Array.merge<MixedObject>([
+    [10, 40, 30],
+    [15, 30],
+]); // fails, type mismatch
 // @ts-expect-error
 mergedArray = d3Array.merge([testArray1, [15, 30]]); // fails, type mismatch
 
@@ -585,11 +584,11 @@ const nums = [1, 2];
 crossed = d3Array.cross(chars, nums);
 crossed = d3Array.cross<string, number>(chars, nums);
 
-let strArray: string[] = d3Array.cross<number, number, string>([2, 3], [5, 6], (a, b) => (a + b) + "px");
+let strArray: string[] = d3Array.cross<number, number, string>([2, 3], [5, 6], (a, b) => a + b + "px");
 strArray = d3Array.cross([2, 3], [5, 6], (a, b) => {
     const aa: number = a;
     const bb: number = b;
-    return (aa + bb) + "px";
+    return aa + bb + "px";
 });
 
 const readonlyChars = chars as readonly string[];
@@ -601,12 +600,12 @@ crossed = d3Array.cross<string, number>(readonlyChars, readonlyNums);
 strArray = d3Array.cross<number, number, string>(
     [2, 3] as readonly number[],
     new Uint8ClampedArray([5, 6]),
-    (a, b) => (a + b) + "px",
+    (a, b) => a + b + "px",
 );
 strArray = d3Array.cross([2, 3] as readonly number[], new Uint8ClampedArray([5, 6]), (a, b) => {
     const aa: number = a;
     const bb: number = b;
-    return (aa + bb) + "px";
+    return aa + bb + "px";
 });
 
 d3Array.cross(new Uint8Array([1, 2, 3, 4, 5]), new Uint8Array([10, 20, 30, 40, 50]));
@@ -775,8 +774,8 @@ histoMixedOrUndefined_NumberOrUndefined = histoMixedOrUndefined_NumberOrUndefine
 );
 
 // MixedObject | undefined - number
-const valueFnMixedOrUndefined_Number: valueAccessor<MixedObject | undefined, number> = histoMixedOrUndefined_Number
-    .value();
+const valueFnMixedOrUndefined_Number: valueAccessor<MixedObject | undefined, number> =
+    histoMixedOrUndefined_Number.value();
 histoMixedOrUndefined_Number = histoMixedOrUndefined_Number.value(
     (d: MixedObject | undefined, i: number, data: ArrayLike<MixedObject | undefined>) => {
         return d ? d.num : 0;
@@ -840,9 +839,10 @@ histoMixedObject_DateOrUndefined = histoMixedObject_DateOrUndefined.domain([
     new Date(2017, 4, 15),
 ]);
 histoMixedObject_DateOrUndefined = histoMixedObject_DateOrUndefined.domain([domain[0], domain[domain.length]]);
-histoMixedObject_DateOrUndefined = histoMixedObject_DateOrUndefined.domain((
-    values,
-) => [values[0]!, values[values.length]!]);
+histoMixedObject_DateOrUndefined = histoMixedObject_DateOrUndefined.domain((values) => [
+    values[0]!,
+    values[values.length]!,
+]);
 
 // thresholds(...) -------------------------------------------------------------
 
@@ -889,9 +889,11 @@ histoMixedObject_Date = histoMixedObject_Date.thresholds([
     new Date(2016, 8, 30),
 ]);
 histoMixedObject_Date = histoMixedObject_Date.thresholds(timeScale.ticks(timeYear));
-histoMixedObject_Date = histoMixedObject_Date.thresholds((
-    values: ArrayLike<Date>,
-) => [new Date(2015, 11, 15), new Date(2016, 6, 1), new Date(2016, 8, 30)]);
+histoMixedObject_Date = histoMixedObject_Date.thresholds((values: ArrayLike<Date>) => [
+    new Date(2015, 11, 15),
+    new Date(2016, 6, 1),
+    new Date(2016, 8, 30),
+]);
 histoMixedObject_Date = histoMixedObject_Date.thresholds((values: ArrayLike<Date>, min: Date, max: Date) => {
     const thresholds: Date[] = [values[0], values[2], values[4]];
     return thresholds;

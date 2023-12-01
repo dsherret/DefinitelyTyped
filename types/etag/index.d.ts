@@ -1,7 +1,10 @@
 /// <reference types="node" />
 export = etag;
 
-declare function etag(entity: string | Buffer | etag.StatsLike, options?: etag.Options): string;
+declare function etag(
+    entity: string | Buffer | etag.StatsLike,
+    options?: etag.Options,
+): string;
 
 declare namespace etag {
     interface Options {

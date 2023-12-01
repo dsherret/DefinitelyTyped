@@ -80,7 +80,10 @@ export function posterize(
 
 export class Posterizer {
     constructor(options?: PosterizerOptions);
-    loadImage(image: string | Buffer | Jimp, callback: (posterizer: Posterizer, error: Error | null) => void): void;
+    loadImage(
+        image: string | Buffer | Jimp,
+        callback: (posterizer: Posterizer, error: Error | null) => void,
+    ): void;
     setParameters(params: PotraceOptions): void;
     getSVG(): string;
     getSymbol(id: string): string;
@@ -88,7 +91,10 @@ export class Posterizer {
 
 export class Potrace {
     constructor(options?: PotraceOptions);
-    loadImage(image: string | Buffer | Jimp, callback: (potrace: Potrace, error: Error | null) => void): void;
+    loadImage(
+        image: string | Buffer | Jimp,
+        callback: (potrace: Potrace, error: Error | null) => void,
+    ): void;
     setParameters(params: PotraceOptions): void;
     getSVG(): string;
     getSymbol(id: string): string;

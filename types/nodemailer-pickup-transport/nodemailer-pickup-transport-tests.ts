@@ -16,6 +16,9 @@ var mailOptions: nodemailer.SendMailOptions = {
     text: "Hello world ✔", // plaintext body
     html: "<b>Hello world ✔</b>", // html body
 };
-transporter.sendMail(mailOptions, (error: Error, info: nodemailer.SentMessageInfo): void => {
-    // nothing
-});
+transporter.sendMail(
+    mailOptions,
+    (error: Error, info: nodemailer.SentMessageInfo): void => {
+        // nothing
+    },
+);

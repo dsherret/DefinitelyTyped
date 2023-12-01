@@ -10,8 +10,14 @@ declare function colorPalette(
     typeOrOptions: string | colorPalette.Options,
     callback: colorPalette.Callback,
 ): void;
-declare function colorPalette(input: Buffer | string, typeOrOptions?: string | colorPalette.Options): Promise<Color[]>;
-declare function colorPalette(input: Buffer | string, callback: colorPalette.Callback): void;
+declare function colorPalette(
+    input: Buffer | string,
+    typeOrOptions?: string | colorPalette.Options,
+): Promise<Color[]>;
+declare function colorPalette(
+    input: Buffer | string,
+    callback: colorPalette.Callback,
+): void;
 
 declare namespace colorPalette {
     interface Options {

@@ -21,8 +21,8 @@ let Format = wNumb({
 
 Format = wNumb({
     thousand: ".",
-    encoder: a => a * 1E7,
-    decoder: a => a / 1E7,
+    encoder: (a) => a * 1e7,
+    decoder: (a) => a / 1e7,
 });
 
 Format = wNumb({

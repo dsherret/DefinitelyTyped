@@ -19,13 +19,17 @@ export namespace DateRestrictionValidator {
     };
     // eslint-disable-next-line @typescript-eslint/consistent-type-definitions
     type ValidatorOptions = {
-        dayFormatter?: ((param0: DayFormatterInput) => DayFormatterOutput | null | "all") | undefined;
+        dayFormatter?:
+            | ((param0: DayFormatterInput) => DayFormatterOutput | null | "all")
+            | undefined;
         messageSummary?: string | undefined;
         messageDetail?: string | undefined;
     };
 }
 export interface DateRestrictionValidatorFactory {
-    createValidator(options?: DateRestrictionValidator.ValidatorOptions): DateRestrictionValidator;
+    createValidator(
+        options?: DateRestrictionValidator.ValidatorOptions,
+    ): DateRestrictionValidator;
 }
 export abstract class DateTimeConverter implements Converter<string> {
     abstract calculateWeek(value: string): number | undefined;
@@ -44,7 +48,9 @@ export abstract class DateTimeConverter implements Converter<string> {
     parse(value: string): string | null;
 }
 export interface DateTimeConverterFactory {
-    createConverter(options?: IntlDateTimeConverter.ConverterOptions): IntlDateTimeConverter;
+    createConverter(
+        options?: IntlDateTimeConverter.ConverterOptions,
+    ): IntlDateTimeConverter;
 }
 export class DateTimeRangeValidator implements Validator<string> {
     constructor(options?: DateTimeRangeValidator.ValidatorOptions);
@@ -57,37 +63,48 @@ export namespace DateTimeRangeValidator {
         converter: DateTimeConverter;
         min?: string | undefined;
         max?: string | undefined;
-        hint?: {
-            max?: string | undefined;
-            min?: string | undefined;
-            inRange?: string | undefined;
-        } | undefined;
+        hint?:
+            | {
+                  max?: string | undefined;
+                  min?: string | undefined;
+                  inRange?: string | undefined;
+              }
+            | undefined;
         translationKey?: string | undefined;
-        messageDetail?: {
-            rangeUnderflow?: string | undefined;
-            rangeOverflow?: string | undefined;
-        } | undefined;
-        messageSummary?: {
-            rangeUnderflow?: string | undefined;
-            rangeOverflow?: string | undefined;
-        } | undefined;
+        messageDetail?:
+            | {
+                  rangeUnderflow?: string | undefined;
+                  rangeOverflow?: string | undefined;
+              }
+            | undefined;
+        messageSummary?:
+            | {
+                  rangeUnderflow?: string | undefined;
+                  rangeOverflow?: string | undefined;
+              }
+            | undefined;
     };
 }
 export interface DateTimeRangeValidatorFactory {
-    createValidator(options?: DateTimeRangeValidator.ValidatorOptions): DateTimeRangeValidator;
+    createValidator(
+        options?: DateTimeRangeValidator.ValidatorOptions,
+    ): DateTimeRangeValidator;
 }
 export class IntlDateTimeConverter extends DateTimeConverter {
     constructor(options?: IntlDateTimeConverter.ConverterOptions);
     calculateWeek(value: string): number;
     compareISODates(isoStr: string, isoStr2: string): number;
     format(value: string): string | null;
-    formatRelative(value: string, relativeOptions?: {
-        formatUsing?: string | undefined;
-        dateField?: string | undefined;
-        relativeTime?: string | undefined;
-        dateOnly?: boolean | undefined;
-        timeZone?: string | undefined;
-    }): string | null;
+    formatRelative(
+        value: string,
+        relativeOptions?: {
+            formatUsing?: string | undefined;
+            dateField?: string | undefined;
+            relativeTime?: string | undefined;
+            dateOnly?: boolean | undefined;
+            timeZone?: string | undefined;
+        },
+    ): string | null;
     getAvailableTimeZones(): any[];
     getHint(): null;
     getOptions(): IntlDateTimeConverter.ConverterOptions;

@@ -44,11 +44,8 @@ timer.isStopped();
 timer.start();
 timer.isStopped();
 
-timer.on("start", () => {
-});
+timer.on("start", () => {});
 
-timer.on("stop", () => {
-});
+timer.on("stop", () => {});
 
-timer.on("time", () => {
-});
+timer.on("time", () => {});

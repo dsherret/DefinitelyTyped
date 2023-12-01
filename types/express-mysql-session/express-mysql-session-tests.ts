@@ -52,7 +52,7 @@ sessionStore.get("session-id", (error, session) => {});
 
 // $ExpectType Promise<void>
 sessionStore.set("session-id", { key: "value" });
-sessionStore.set("session-id", { key: "value" }, error => {});
+sessionStore.set("session-id", { key: "value" }, (error) => {});
 
 // $ExpectType Promise<void>
 sessionStore.close();

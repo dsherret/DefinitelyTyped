@@ -21,7 +21,9 @@ declare global {
  *
  * @see {@link https://github.com/expressjs/compression#compressionoptions|`compression([options]) documentation`}
  */
-declare function compression(options?: compression.CompressionOptions): express.RequestHandler;
+declare function compression(
+    options?: compression.CompressionOptions,
+): express.RequestHandler;
 
 declare namespace compression {
     /**

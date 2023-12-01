@@ -28,6 +28,5 @@ barion.emailTransfer(transfer, (err, data) => {
 async function sendOrder() {
     try {
         const data = await barion.emailTransfer(transfer);
-    } catch (err) {
-    }
+    } catch (err) {}
 }

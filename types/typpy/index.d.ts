@@ -3,10 +3,8 @@ export = Typpy;
 declare const Typpy: Typpy.TyppyFn;
 
 declare namespace Typpy {
-    type TyppyFn =
-        & IsFn
-        & CompareFn
-        & {
+    type TyppyFn = IsFn &
+        CompareFn & {
             is: CompareFn;
             get: GetFn;
         };
@@ -31,7 +29,10 @@ declare namespace Typpy {
         (input: any[], compareTo: "array" | ArrayConstructor): true;
         (input: RegExp, compareTo: "regexp" | RegExpConstructor): true;
         (input: Function, compareTo: "function" | FunctionConstructor): true; // eslint-disable-line @typescript-eslint/ban-types
-        (input: number, compareTo: "number" | "nan" | NumberConstructor | number): boolean;
+        (
+            input: number,
+            compareTo: "number" | "nan" | NumberConstructor | number,
+        ): boolean;
         (input: object, compareTo: "object" | ObjectConstructor): boolean;
         (input: any, compareTo: any): boolean;
     }
@@ -59,6 +60,6 @@ declare namespace Typpy {
     }
 
     interface ConstructorFn {
-        new(...args: any[]): any;
+        new (...args: any[]): any;
     }
 }

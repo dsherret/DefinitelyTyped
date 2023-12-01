@@ -1,20 +1,20 @@
 {
-    "private": true,
-    "name": "@types/bootstrap-menu",
-    "version": "1.0.9999",
-    "projects": [
-        "https://github.com/dgoguerra/bootstrap-menu"
-    ],
-    "dependencies": {
-        "@types/jquery": "*"
-    },
-    "devDependencies": {
-        "@types/bootstrap-menu": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Alexandre Paré",
-            "githubUsername": "superheri"
-        }
-    ]
+  "private": true,
+  "name": "@types/bootstrap-menu",
+  "version": "1.0.9999",
+  "projects": [
+    "https://github.com/dgoguerra/bootstrap-menu"
+  ],
+  "dependencies": {
+    "@types/jquery": "*"
+  },
+  "devDependencies": {
+    "@types/bootstrap-menu": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Alexandre Paré",
+      "githubUsername": "superheri"
+    }
+  ]
 }

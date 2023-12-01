@@ -4,7 +4,12 @@
 // Apache Cordova core
 // ----------------------------------------------------------------------
 
-console.log("cordova.version: " + cordova.version + ", cordova.platformId: " + cordova.platformId);
+console.log(
+    "cordova.version: " +
+        cordova.version +
+        ", cordova.platformId: " +
+        cordova.platformId,
+);
 
 console.log(typeof window.cordova);
 
@@ -21,8 +26,13 @@ cordova.define("mymodule", (req, exp, mod) => {
 var myModule = cordova.require("mymodule");
 myModule.dummy();
 
-var argsCheck: ArgsCheck = <ArgsCheck> cordova.require("cordova/argcheck");
-argsCheck.checkArgs("ssA", "cordova.exec", [() => {}, () => {}, "window", "openDatabase"]);
+var argsCheck: ArgsCheck = <ArgsCheck>cordova.require("cordova/argcheck");
+argsCheck.checkArgs("ssA", "cordova.exec", [
+    () => {},
+    () => {},
+    "window",
+    "openDatabase",
+]);
 
 class Application {
     start() {

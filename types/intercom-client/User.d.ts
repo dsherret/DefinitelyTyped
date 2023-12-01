@@ -91,5 +91,10 @@ export interface List {
     type: "user.list";
     total_count: number;
     users: User[];
-    pages: { next?: string | undefined; page: number; per_page: number; total_pages: number };
+    pages: {
+        next?: string | undefined;
+        page: number;
+        per_page: number;
+        total_pages: number;
+    };
 }

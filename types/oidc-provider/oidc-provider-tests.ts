@@ -315,25 +315,35 @@ const provider = new Provider("https://op.example.com", {
         policy: [
             new interactionPolicy.Prompt(
                 { name: "foo", requestable: true },
-                new interactionPolicy.Check("foo", "bar", "baz", ctx => false),
                 new interactionPolicy.Check(
                     "foo",
                     "bar",
                     "baz",
-                    async ctx => true,
-                    async ctx => ({ foo: "bar" }),
+                    (ctx) => false,
+                ),
+                new interactionPolicy.Check(
+                    "foo",
+                    "bar",
+                    "baz",
+                    async (ctx) => true,
+                    async (ctx) => ({ foo: "bar" }),
                 ),
             ),
             new interactionPolicy.Prompt(
                 { name: "foo", requestable: true },
-                ctx => ({ foo: "bar" }),
-                new interactionPolicy.Check("foo", "bar", "baz", ctx => false),
+                (ctx) => ({ foo: "bar" }),
                 new interactionPolicy.Check(
                     "foo",
                     "bar",
                     "baz",
-                    async ctx => true,
-                    async ctx => ({ foo: "bar" }),
+                    (ctx) => false,
+                ),
+                new interactionPolicy.Check(
+                    "foo",
+                    "bar",
+                    "baz",
+                    async (ctx) => true,
+                    async (ctx) => ({ foo: "bar" }),
                 ),
             ),
         ],
@@ -477,7 +487,13 @@ const provider = new Provider("https://op.example.com", {
                     err.message.substring(0);
                 }
             },
-            async userCodeConfirmSource(ctx, form, client, deviceInfo, userCode) {
+            async userCodeConfirmSource(
+                ctx,
+                form,
+                client,
+                deviceInfo,
+                userCode,
+            ) {
                 ctx.oidc.issuer.substring(0);
                 form.substring(0);
                 client.clientId.substring(0);
@@ -510,13 +526,44 @@ const provider = new Provider("https://op.example.com", {
         },
     },
     enabledJWA: {
-        clientAuthSigningAlgValues: ["HS256", "RS256", "PS256", "ES256", "EdDSA"],
+        clientAuthSigningAlgValues: [
+            "HS256",
+            "RS256",
+            "PS256",
+            "ES256",
+            "EdDSA",
+        ],
         idTokenSigningAlgValues: ["HS256", "RS256", "PS256", "ES256", "EdDSA"],
-        requestObjectSigningAlgValues: ["HS256", "RS256", "PS256", "ES256", "EdDSA"],
+        requestObjectSigningAlgValues: [
+            "HS256",
+            "RS256",
+            "PS256",
+            "ES256",
+            "EdDSA",
+        ],
         userinfoSigningAlgValues: ["HS256", "RS256", "PS256", "ES256", "EdDSA"],
-        introspectionSigningAlgValues: ["HS256", "RS256", "PS256", "ES256", "EdDSA"],
-        authorizationSigningAlgValues: ["HS256", "RS256", "PS256", "ES256", "EdDSA"],
-        idTokenEncryptionAlgValues: ["A128KW", "A256KW", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A256KW", "RSA-OAEP"],
+        introspectionSigningAlgValues: [
+            "HS256",
+            "RS256",
+            "PS256",
+            "ES256",
+            "EdDSA",
+        ],
+        authorizationSigningAlgValues: [
+            "HS256",
+            "RS256",
+            "PS256",
+            "ES256",
+            "EdDSA",
+        ],
+        idTokenEncryptionAlgValues: [
+            "A128KW",
+            "A256KW",
+            "ECDH-ES",
+            "ECDH-ES+A128KW",
+            "ECDH-ES+A256KW",
+            "RSA-OAEP",
+        ],
         requestObjectEncryptionAlgValues: [
             "A128KW",
             "A256KW",
@@ -525,7 +572,14 @@ const provider = new Provider("https://op.example.com", {
             "ECDH-ES+A256KW",
             "RSA-OAEP",
         ],
-        userinfoEncryptionAlgValues: ["A128KW", "A256KW", "ECDH-ES", "ECDH-ES+A128KW", "ECDH-ES+A256KW", "RSA-OAEP"],
+        userinfoEncryptionAlgValues: [
+            "A128KW",
+            "A256KW",
+            "ECDH-ES",
+            "ECDH-ES+A128KW",
+            "ECDH-ES+A256KW",
+            "RSA-OAEP",
+        ],
         introspectionEncryptionAlgValues: [
             "A128KW",
             "A256KW",
@@ -542,16 +596,41 @@ const provider = new Provider("https://op.example.com", {
             "ECDH-ES+A256KW",
             "RSA-OAEP",
         ],
-        idTokenEncryptionEncValues: ["A128CBC-HS256", "A128GCM", "A256CBC-HS512", "A256GCM"],
-        requestObjectEncryptionEncValues: ["A128CBC-HS256", "A128GCM", "A256CBC-HS512", "A256GCM"],
-        userinfoEncryptionEncValues: ["A128CBC-HS256", "A128GCM", "A256CBC-HS512", "A256GCM"],
-        introspectionEncryptionEncValues: ["A128CBC-HS256", "A128GCM", "A256CBC-HS512", "A256GCM"],
-        authorizationEncryptionEncValues: ["A128CBC-HS256", "A128GCM", "A256CBC-HS512", "A256GCM"],
+        idTokenEncryptionEncValues: [
+            "A128CBC-HS256",
+            "A128GCM",
+            "A256CBC-HS512",
+            "A256GCM",
+        ],
+        requestObjectEncryptionEncValues: [
+            "A128CBC-HS256",
+            "A128GCM",
+            "A256CBC-HS512",
+            "A256GCM",
+        ],
+        userinfoEncryptionEncValues: [
+            "A128CBC-HS256",
+            "A128GCM",
+            "A256CBC-HS512",
+            "A256GCM",
+        ],
+        introspectionEncryptionEncValues: [
+            "A128CBC-HS256",
+            "A128GCM",
+            "A256CBC-HS512",
+            "A256GCM",
+        ],
+        authorizationEncryptionEncValues: [
+            "A128CBC-HS256",
+            "A128GCM",
+            "A256CBC-HS512",
+            "A256GCM",
+        ],
         dPoPSigningAlgValues: ["RS256", "PS256", "ES256", "EdDSA"],
     },
 });
 
-provider.on("access_token.saved", accessToken => {
+provider.on("access_token.saved", (accessToken) => {
     accessToken.jti.substring(0);
 });
 
@@ -565,7 +644,7 @@ provider.registerGrantType(
     ["foo"],
 );
 
-provider.on("authorization.accepted", ctx => {
+provider.on("authorization.accepted", (ctx) => {
     const value = ctx.oidc.cookies.get("key");
     if (value !== undefined) {
         value.substring(0);
@@ -592,23 +671,42 @@ provider.use(async (ctx, next) => {
 });
 
 provider.backchannelResult("foo", "bar").then(console.log);
-provider.backchannelResult(new provider.BackchannelAuthenticationRequest({ accountId: "foo", clientId: "bar" }), "bar")
+provider
+    .backchannelResult(
+        new provider.BackchannelAuthenticationRequest({
+            accountId: "foo",
+            clientId: "bar",
+        }),
+        "bar",
+    )
     .then(console.log);
-provider.backchannelResult("foo", new provider.Grant({ clientId: "foo", accountId: "bar" })).then(console.log);
+provider
+    .backchannelResult(
+        "foo",
+        new provider.Grant({ clientId: "foo", accountId: "bar" }),
+    )
+    .then(console.log);
 provider.backchannelResult("foo", new errors.AccessDenied()).then(console.log);
 
-const _clientJwtAuthExpectedAudience = provider.OIDCContext.prototype.clientJwtAuthExpectedAudience;
-provider.OIDCContext.prototype.clientJwtAuthExpectedAudience = function clientJwtAuthExpectedAudience() {
-    const acceptedAudiences = _clientJwtAuthExpectedAudience.call(this);
-    acceptedAudiences.add("https://as.example.com/token");
-    return acceptedAudiences;
-};
+const _clientJwtAuthExpectedAudience =
+    provider.OIDCContext.prototype.clientJwtAuthExpectedAudience;
+provider.OIDCContext.prototype.clientJwtAuthExpectedAudience =
+    function clientJwtAuthExpectedAudience() {
+        const acceptedAudiences = _clientJwtAuthExpectedAudience.call(this);
+        acceptedAudiences.add("https://as.example.com/token");
+        return acceptedAudiences;
+    };
 
 (async () => {
     const client = await provider.Client.find("foo");
     if (client !== undefined) {
         client.clientId.substring(0);
-        client.backchannelPing(new provider.BackchannelAuthenticationRequest({ accountId: "foo", clientId: "bar" }));
+        client.backchannelPing(
+            new provider.BackchannelAuthenticationRequest({
+                accountId: "foo",
+                clientId: "bar",
+            }),
+        );
     }
     const accessToken = await provider.AccessToken.find("foo");
     if (accessToken !== undefined) {
@@ -621,7 +719,9 @@ provider.OIDCContext.prototype.clientJwtAuthExpectedAudience = function clientJw
             provider.AuthorizationCode.revokeByGrantId("grantId"),
             provider.DeviceCode.revokeByGrantId("grantId"),
             provider.RefreshToken.revokeByGrantId("grantId"),
-            provider.BackchannelAuthenticationRequest.revokeByGrantId("grantId"),
+            provider.BackchannelAuthenticationRequest.revokeByGrantId(
+                "grantId",
+            ),
         ]);
     } catch (e) {}
 })();

@@ -17,7 +17,7 @@ const out0 = snapShot.core({
     what: 42,
     file: "file",
     specName: "my test",
-    store: x => x,
+    store: (x) => x,
     ext: ".test",
     opts,
 });
@@ -29,7 +29,7 @@ const out1 = snapShot.core({
     what: 42,
     file: "file",
     specName: "my test",
-    store: x => ({ mapped: x }),
+    store: (x) => ({ mapped: x }),
 });
 out1.key; // $ExpectType string
 out1.value; // $ExpectType { mapped: number; }
@@ -47,17 +47,28 @@ snapShot.restore({ file: "file", specName: "spec" });
 // prune()
 
 snapShot.prune({ tests: [] });
-snapShot.prune({ tests: [{ specFile: "file", key: "key" }], ext: ".snapshot.js" }, { sortSnapshots: true });
+snapShot.prune(
+    { tests: [{ specFile: "file", key: "key" }], ext: ".snapshot.js" },
+    { sortSnapshots: true },
+);
 
 // throwCannotSaveOnCI()
 // (the tests are wrapped in functions to get rid of the "unreachable code" warning)
 
-(() => {
-    snapShot.throwCannotSaveOnCI({ fileParameter: "file", exactSpecName: "spec" }); // $ExpectType never
-});
-(() => {
-    snapShot.throwCannotSaveOnCI({ fileParameter: "file", specName: "spec", index: 0, value: 42 }); // $ExpectType never
-});
+() => {
+    snapShot.throwCannotSaveOnCI({
+        fileParameter: "file",
+        exactSpecName: "spec",
+    }); // $ExpectType never
+};
+() => {
+    snapShot.throwCannotSaveOnCI({
+        fileParameter: "file",
+        specName: "spec",
+        index: 0,
+        value: 42,
+    }); // $ExpectType never
+};
 
 // savedSnapshotName()
 

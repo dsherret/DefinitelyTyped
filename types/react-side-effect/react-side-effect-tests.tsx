@@ -33,10 +33,11 @@ const DocumentTitleWithServerMapState = withSideEffect(
 )(DocumentTitle);
 
 const testWithServerMapState = () => {
-    const testComponent = () => <DocumentTitleWithServerMapState title="Title" />;
-    const peekedState:
-        | ServerState
-        | State = DocumentTitleWithServerMapState.peek();
+    const testComponent = () => (
+        <DocumentTitleWithServerMapState title="Title" />
+    );
+    const peekedState: ServerState | State =
+        DocumentTitleWithServerMapState.peek();
     const rewindedState: ServerState = DocumentTitleWithServerMapState.rewind();
 };
 

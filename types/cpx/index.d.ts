@@ -38,8 +38,20 @@ export function copy(
     options?: AsyncOptions,
     callback?: (error: Error | null) => void,
 ): void;
-export function copy(source: string, dest: string, callback?: (error: Error | null) => void): void;
+export function copy(
+    source: string,
+    dest: string,
+    callback?: (error: Error | null) => void,
+): void;
 
-export function copySync(source: string, dest: string, options?: SyncOptions): void;
+export function copySync(
+    source: string,
+    dest: string,
+    options?: SyncOptions,
+): void;
 
-export function watch(source: string, dest: string, options?: WatchOptions): Watcher;
+export function watch(
+    source: string,
+    dest: string,
+    options?: WatchOptions,
+): Watcher;

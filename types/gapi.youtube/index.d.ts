@@ -56,7 +56,9 @@ declare namespace gapi.client.youtube {
              * The regionCode parameter instructs the API to return results for the specified country. The parameter value is an ISO 3166-1 alpha-2 country code.
              */
             regionCode?: string | undefined;
-        }): HttpRequest<GoogleApiYouTubePaginationInfo<GoogleApiYouTubeActivityResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePaginationInfo<GoogleApiYouTubeActivityResource>
+        >;
     }
 
     export interface channelBanners {
@@ -120,7 +122,9 @@ declare namespace gapi.client.youtube {
              * The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.
              */
             pageToken?: string | undefined;
-        }): HttpRequest<GoogleApiYouTubePaginationInfo<GoogleApiYouTubeChannelResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePaginationInfo<GoogleApiYouTubeChannelResource>
+        >;
 
         /**
          * Updates a channel's metadata.
@@ -162,7 +166,9 @@ declare namespace gapi.client.youtube {
              * The regionCode parameter instructs the API to return the list of guide categories available in the specified country. The parameter value is an ISO 3166-1 alpha-2 country code.
              */
             regionCode?: string | undefined;
-        }): HttpRequest<GoogleApiYouTubePageInfo<GoogleApiYouTubeGuideCategoryResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePageInfo<GoogleApiYouTubeGuideCategoryResource>
+        >;
     }
 
     export interface playlistItems {
@@ -218,7 +224,9 @@ declare namespace gapi.client.youtube {
              * The videoId parameter specifies that the request should return only the playlist items that contain the specified video.
              */
             videoId?: string | undefined;
-        }): HttpRequest<GoogleApiYouTubePaginationInfo<GoogleApiYouTubePlaylistItemResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePaginationInfo<GoogleApiYouTubePlaylistItemResource>
+        >;
 
         /**
          * Modifies a playlist item. For example, you could update the item's position in the playlist.
@@ -288,7 +296,9 @@ declare namespace gapi.client.youtube {
              * The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.
              */
             pagetoken: string;
-        }): HttpRequest<GoogleApiYouTubePaginationInfo<GoogleApiYouTubePlaylistResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePaginationInfo<GoogleApiYouTubePlaylistResource>
+        >;
 
         /**
          * Modifies a playlist. For example, you could change a playlist's title, description, or privacy status.
@@ -414,7 +424,9 @@ declare namespace gapi.client.youtube {
              * The videoType parameter lets you restrict a search to a particular type of videos.
              */
             videoType?: string | undefined;
-        }): HttpRequest<GoogleApiYouTubePaginationInfo<GoogleApiYouTubeSearchResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePaginationInfo<GoogleApiYouTubeSearchResource>
+        >;
     }
 
     export interface subscriptions {
@@ -482,7 +494,9 @@ declare namespace gapi.client.youtube {
              * The pageToken parameter identifies a specific page in the result set that should be returned. In an API response, the nextPageToken and prevPageToken properties identify other pages that could be retrieved.
              */
             pageToken?: string | undefined;
-        }): HttpRequest<GoogleApiYouTubePaginationInfo<GoogleApiYouTubeSubscriptionResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePaginationInfo<GoogleApiYouTubeSubscriptionResource>
+        >;
     }
 
     export interface thumbnails {
@@ -494,7 +508,9 @@ declare namespace gapi.client.youtube {
              * The videoId parameter specifies a YouTube video ID for which the custom video thumbnail is being provided.
              */
             videoId: string;
-        }): HttpRequest<GoogleApiYouTubePageInfo<GoogleApiYouTubeThumbnailResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePageInfo<GoogleApiYouTubeThumbnailResource>
+        >;
     }
 
     export interface videoCategories {
@@ -518,7 +534,9 @@ declare namespace gapi.client.youtube {
              * The regionCode parameter instructs the API to return the list of video categories available in the specified country. The parameter value is an ISO 3166-1 alpha-2 country code.
              */
             regionCode?: string | undefined;
-        }): HttpRequest<GoogleApiYouTubePageInfo<GoogleApiYouTubeVideoCategoryResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePageInfo<GoogleApiYouTubeVideoCategoryResource>
+        >;
     }
 
     export interface videos {
@@ -620,7 +638,9 @@ declare namespace gapi.client.youtube {
              * The videoCategoryId parameter selects a video chart based on the category. If using this parameter, chart must also be set.
              */
             videoCategoryId: string;
-        }): HttpRequest<GoogleApiYouTubePaginationInfo<GoogleApiYouTubeVideoResource>>;
+        }): HttpRequest<
+            GoogleApiYouTubePaginationInfo<GoogleApiYouTubeVideoResource>
+        >;
 
         /**
          * Like, dislike, or remove rating from a video.

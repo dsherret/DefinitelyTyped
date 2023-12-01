@@ -8,7 +8,10 @@ humanizeDuration(3000, { language: "es" }); // '3 segundos'
 humanizeDuration(5000, { language: "ko" }); // '5 초'
 
 humanizeDuration(3000, { language: "en", fallbacks: ["en"] }); // '3 seconds'
-humanizeDuration(3000, { language: "bad language", fallbacks: ["bad language", "es"] }); // '3 segundos'
+humanizeDuration(3000, {
+    language: "bad language",
+    fallbacks: ["bad language", "es"],
+}); // '3 segundos'
 
 humanizeDuration(22140000, { delimiter: " and " }); // '6 hours and 9 minutes'
 humanizeDuration(22140000, { delimiter: "--" }); // '6 hours--9 minutes'
@@ -72,8 +75,8 @@ const shortEnglishHumanizer = humanizeDuration.humanizer({
     languages: {
         shortEn: {
             d: () => "d",
-            h: count => (count === 1 ? "hour" : "hours"),
-            m: count => (count === 1 ? "minute" : "minutes"),
+            h: (count) => (count === 1 ? "hour" : "hours"),
+            m: (count) => (count === 1 ? "minute" : "minutes"),
             mo: () => "mo",
             ms: () => "ms",
             s: () => "s",

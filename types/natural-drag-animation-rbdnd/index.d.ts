@@ -1,5 +1,9 @@
 import * as React from "react";
-import { DraggableStateSnapshot, DraggingStyle, NotDraggingStyle } from "react-beautiful-dnd";
+import {
+    DraggableStateSnapshot,
+    DraggingStyle,
+    NotDraggingStyle,
+} from "react-beautiful-dnd";
 
 export default NaturalDragAnimation;
 

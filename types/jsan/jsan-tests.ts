@@ -17,14 +17,6 @@ const options: jsan.Options = {
 
 declare const data: unknown;
 
-const stringified = jsan.stringify(
-    data,
-    undefined,
-    undefined,
-    options,
-);
+const stringified = jsan.stringify(data, undefined, undefined, options);
 
-const parsed = jsan.parse(
-    stringified,
-    undefined,
-);
+const parsed = jsan.parse(stringified, undefined);

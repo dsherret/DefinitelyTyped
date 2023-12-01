@@ -22,8 +22,12 @@ const nodeMenu = cy.cxtmenu({
         {
             fillColor: "rgba(255, 200, 250, 1)",
             content: "A",
-            contentStyle: { borderRadius: "10px", border: "1px solid black", backgroundColor: "lime" },
-            select: element => console.log(`Definitely Node ${element.id()}`),
+            contentStyle: {
+                borderRadius: "10px",
+                border: "1px solid black",
+                backgroundColor: "lime",
+            },
+            select: (element) => console.log(`Definitely Node ${element.id()}`),
             enabled: true,
         },
         {
@@ -54,12 +58,12 @@ cy.cxtmenu({
     commands: [
         {
             content: "A",
-            select: element => console.log(`Definitely Edge ${element.id()}`),
+            select: (element) => console.log(`Definitely Edge ${element.id()}`),
             enabled: false,
         },
         {
             content: "B",
-            select: element => console.log(`Definitely Edge ${element.id()}`),
+            select: (element) => console.log(`Definitely Edge ${element.id()}`),
         },
     ],
     itemTextShadowColor: "black",

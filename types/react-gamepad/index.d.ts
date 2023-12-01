@@ -18,7 +18,13 @@ export type Button =
     | "DPadLeft"
     | "DPadRight";
 
-export type Axis = "LeftStickX" | "LeftStickY" | "RightStickX" | "RightStickY" | "LeftTrigger" | "RightTrigger";
+export type Axis =
+    | "LeftStickX"
+    | "LeftStickY"
+    | "RightStickX"
+    | "RightStickY"
+    | "LeftTrigger"
+    | "RightTrigger";
 
 export type InvertedAxis =
     | "-LeftStickX"

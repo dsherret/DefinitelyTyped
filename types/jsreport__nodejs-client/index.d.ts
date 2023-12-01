@@ -8,10 +8,17 @@ declare namespace createJsReportClient {
 
     interface Client {
         /** @async */
-        render(req: Partial<JsReport.Request>, options?: object): Promise<ClientRenderResponse>;
+        render(
+            req: Partial<JsReport.Request>,
+            options?: object,
+        ): Promise<ClientRenderResponse>;
     }
 }
 
-declare function createJsReportClient(url: string, username: string, password: string): createJsReportClient.Client;
+declare function createJsReportClient(
+    url: string,
+    username: string,
+    password: string,
+): createJsReportClient.Client;
 declare function createJsReportClient(url: string): createJsReportClient.Client;
 export = createJsReportClient;

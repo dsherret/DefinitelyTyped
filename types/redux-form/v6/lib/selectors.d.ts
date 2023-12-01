@@ -4,7 +4,10 @@ import { DataShape, FormErrors, FormMeta } from "../index";
  * A "selector" API to make it easier to connect() to form values. Creates a selector
  * function for your form that can be used with your field names.
  */
-export function formValueSelector<State>(form: string, getFormState?: () => State): Selector<State>;
+export function formValueSelector<State>(
+    form: string,
+    getFormState?: () => State,
+): Selector<State>;
 
 export interface Selector<State> {
     (state: State, ...field: string[]): any;
@@ -14,7 +17,9 @@ export interface Selector<State> {
  * Gets form data.
  */
 export interface DataSelector {
-    <FormData extends DataShape, State>(formName: string): (state: State) => FormData;
+    <FormData extends DataShape, State>(
+        formName: string,
+    ): (state: State) => FormData;
     <FormData extends DataShape>(formName: string): (state: any) => FormData;
 }
 
@@ -22,16 +27,24 @@ export interface DataSelector {
  * Gets form errors.
  */
 export interface ErrorSelector {
-    <FormData extends DataShape, State>(formName: string): (state: State) => FormErrors<FormData>;
-    <FormData extends DataShape>(formName: string): (state: any) => FormErrors<FormData>;
+    <FormData extends DataShape, State>(
+        formName: string,
+    ): (state: State) => FormErrors<FormData>;
+    <FormData extends DataShape>(
+        formName: string,
+    ): (state: any) => FormErrors<FormData>;
 }
 
 /**
  * Get form field meta
  */
 export interface MetaSelector {
-    <FormData extends DataShape, State>(formName: string): (state: State) => FormMeta<FormData>;
-    <FormData extends DataShape>(formName: string): (state: any) => FormMeta<FormData>;
+    <FormData extends DataShape, State>(
+        formName: string,
+    ): (state: State) => FormMeta<FormData>;
+    <FormData extends DataShape>(
+        formName: string,
+    ): (state: any) => FormMeta<FormData>;
 }
 
 /**

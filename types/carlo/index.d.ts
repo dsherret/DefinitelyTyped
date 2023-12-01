@@ -145,7 +145,10 @@ export interface Window {
      * @param name Name of the function on the window object.
      * @param carloFunction Callback function which will be called in Carlo's context.
      */
-    exposeFunction(name: string, carloFunction: (...args: any[]) => any): Promise<void>;
+    exposeFunction(
+        name: string,
+        carloFunction: (...args: any[]) => any,
+    ): Promise<void>;
 
     /**
      * Turns the window into the full screen mode. Behavior is platform specific.
@@ -314,7 +317,10 @@ export interface App {
      * @param name
      * @param carloFunction
      */
-    exposeFunction(name: string, carloFunction: (...args: any[]) => any): Promise<void>;
+    exposeFunction(
+        name: string,
+        carloFunction: (...args: any[]) => any,
+    ): Promise<void>;
 
     /**
      * Shortcut to the main window's Window.load

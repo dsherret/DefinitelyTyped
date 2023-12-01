@@ -21,6 +21,9 @@ declare namespace githubUrlFromGit {
  * @param opts options for URL parser
  * @returns GitHub URL
  */
-declare function githubUrlFromGit(url: string, opts?: githubUrlFromGit.githubUrlFromGitOptions): string;
+declare function githubUrlFromGit(
+    url: string,
+    opts?: githubUrlFromGit.githubUrlFromGitOptions,
+): string;
 
 export = githubUrlFromGit;

@@ -107,7 +107,11 @@ export declare class PathItem {
      * `operation`, by default, is `SelectionType.REPLACE`
      * @minVersion 23.3
      */
-    makeSelection(feather?: number, antiAlias?: boolean, operation?: Constants.SelectionType): Promise<void>;
+    makeSelection(
+        feather?: number,
+        antiAlias?: boolean,
+        operation?: Constants.SelectionType,
+    ): Promise<void>;
     /**
      * Deletes this object.
      * @minVersion 23.3
@@ -130,8 +134,13 @@ export declare class PathItem {
      * is optional, and by default will use the active layer in the document.
      * @minVersion 23.3
      */
-    strokePath(tool?: Constants.ToolType, simulatePressure?: boolean, sourceOrigin?: {
-        x: number;
-        y: number;
-    }, sourceLayer?: Layer): Promise<void>;
+    strokePath(
+        tool?: Constants.ToolType,
+        simulatePressure?: boolean,
+        sourceOrigin?: {
+            x: number;
+            y: number;
+        },
+        sourceLayer?: Layer,
+    ): Promise<void>;
 }

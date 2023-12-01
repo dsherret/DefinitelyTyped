@@ -1,16 +1,14 @@
-class User extends Giraffe.Model {
-}
+class User extends Giraffe.Model {}
 
 class MainView extends Giraffe.View<User> {
     constructor(options?) {
         super(options);
         this.appEvents = {
-            "startup": "app_onStartup",
+            startup: "app_onStartup",
         };
     }
 
-    app_onStartup() {
-    }
+    app_onStartup() {}
 }
 
 class MyApp extends Giraffe.App {

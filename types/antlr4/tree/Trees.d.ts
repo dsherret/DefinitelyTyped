@@ -11,7 +11,11 @@ declare namespace Trees {
      *
      * Detect parse trees and extract data appropriately.
      */
-    function toStringTree(t: Tree, ruleNames?: string[], recog?: Parser): string;
+    function toStringTree(
+        t: Tree,
+        ruleNames?: string[],
+        recog?: Parser,
+    ): string;
 
     function getNodeText(t: Tree, ruleNames?: string[], recog?: Parser): string;
 
@@ -30,7 +34,11 @@ declare namespace Trees {
 
     function findAllRuleNodes(t: ParseTree, ruleIndex: number): ParseTree[];
 
-    function findAllNodes(t: ParseTree, index: number, findTokens: boolean): ParseTree[];
+    function findAllNodes(
+        t: ParseTree,
+        index: number,
+        findTokens: boolean,
+    ): ParseTree[];
 
     function descendants(t: ParseTree): ParseTree[];
 }

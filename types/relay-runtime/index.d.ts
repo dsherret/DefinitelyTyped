@@ -1,9 +1,15 @@
 import ConnectionInterface from "./lib/handlers/connection/ConnectionInterface";
 export { ConnectionInterface };
 export { ConnectionMetadata } from "./lib/handlers/connection/ConnectionHandler";
-export { EdgeRecord, PageInfo } from "./lib/handlers/connection/ConnectionInterface";
+export {
+    EdgeRecord,
+    PageInfo,
+} from "./lib/handlers/connection/ConnectionInterface";
 export { OptimisticMutationConfig } from "./lib/mutations/applyOptimisticMutation";
-export { MutationConfig, MutationParameters } from "./lib/mutations/commitMutation";
+export {
+    MutationConfig,
+    MutationParameters,
+} from "./lib/mutations/commitMutation";
 export {
     DeclarativeMutationConfig,
     MutationTypes,
@@ -32,7 +38,12 @@ export {
     Uploadable,
     UploadableMap,
 } from "./lib/network/RelayNetworkTypes";
-export { ObservableFromValue, Observer, Subscribable, Subscription } from "./lib/network/RelayObservable";
+export {
+    ObservableFromValue,
+    Observer,
+    Subscribable,
+    Subscription,
+} from "./lib/network/RelayObservable";
 export {
     getFragment,
     getInlineDataFragment,
@@ -46,7 +57,11 @@ export {
     isInlineDataFragment,
     isRequest,
 } from "./lib/query/RelayModernGraphQLTag";
-export { generateClientID, generateUniqueClientID, isClientID } from "./lib/store/ClientID";
+export {
+    generateClientID,
+    generateUniqueClientID,
+    isClientID,
+} from "./lib/store/ClientID";
 export { TaskScheduler } from "./lib/store/RelayModernQueryExecutor";
 export { RecordState } from "./lib/store/RelayRecordState";
 export {
@@ -142,7 +157,10 @@ export * from "./lib/util/RelayRuntimeTypes";
 // Core API
 export { RelayNetwork as Network } from "./lib/network/RelayNetwork";
 export { RelayObservable as Observable } from "./lib/network/RelayObservable";
-export { default as Environment, EnvironmentConfig } from "./lib/store/RelayModernEnvironment";
+export {
+    default as Environment,
+    EnvironmentConfig,
+} from "./lib/store/RelayModernEnvironment";
 import QueryResponseCache from "./lib/network/RelayQueryResponseCache";
 export { QueryResponseCache };
 export { RelayModernRecord as Record } from "./lib/store/RelayModernRecord";
@@ -151,7 +169,10 @@ export { RelayRecordSource as RecordSource } from "./lib/store/RelayRecordSource
 
 export { createFragmentSpecResolver } from "./lib/store/createFragmentSpecResolver";
 export { readInlineData } from "./lib/store/readInlineData";
-export { createOperationDescriptor, createRequestDescriptor } from "./lib/store/RelayModernOperationDescriptor";
+export {
+    createOperationDescriptor,
+    createRequestDescriptor,
+} from "./lib/store/RelayModernOperationDescriptor";
 export {
     areEqualSelectors,
     createNormalizationSelector,
@@ -260,4 +281,6 @@ export type FragmentRefs<Refs extends string> = {
 };
 
 // This is a utility type for converting from a data type to a fragment reference that will resolve to that data type.
-export type FragmentRef<Fragment> = Fragment extends _RefType<infer U> ? _FragmentRefs<U> : never;
+export type FragmentRef<Fragment> = Fragment extends _RefType<infer U>
+    ? _FragmentRefs<U>
+    : never;

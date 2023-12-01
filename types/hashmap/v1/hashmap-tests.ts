@@ -14,7 +14,7 @@ var values: number[] = map.values();
 
 var count: number = map.count();
 
-map.forEach(function(value: number, key: string): void {
+map.forEach(function (value: number, key: string): void {
     console.log(key);
     console.log(value);
 });

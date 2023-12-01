@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/mark.js",
-    "version": "8.11.9999",
-    "projects": [
-        "https://markjs.io/"
-    ],
-    "dependencies": {
-        "@types/jquery": "*"
+  "private": true,
+  "name": "@types/mark.js",
+  "version": "8.11.9999",
+  "projects": [
+    "https://markjs.io/"
+  ],
+  "dependencies": {
+    "@types/jquery": "*"
+  },
+  "devDependencies": {
+    "@types/mark.js": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Soner Köksal",
+      "githubUsername": "renjfk"
     },
-    "devDependencies": {
-        "@types/mark.js": "workspace:."
+    {
+      "name": "Lucian Buzzo",
+      "githubUsername": "LucianBuzzo"
     },
-    "owners": [
-        {
-            "name": "Soner Köksal",
-            "githubUsername": "renjfk"
-        },
-        {
-            "name": "Lucian Buzzo",
-            "githubUsername": "LucianBuzzo"
-        },
-        {
-            "name": "Joao Lourenco",
-            "githubUsername": "blackstarzes"
-        }
-    ]
+    {
+      "name": "Joao Lourenco",
+      "githubUsername": "blackstarzes"
+    }
+  ]
 }

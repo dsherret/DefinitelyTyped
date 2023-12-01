@@ -39,7 +39,10 @@ const URL = `192.168.99.100:27017`;
 // "jest" dependency
 declare function describe(description: string, callback: () => void): void;
 
-declare function it(description: string, callback: (() => void) | (() => Promise<void>)): void;
+declare function it(
+    description: string,
+    callback: (() => void) | (() => Promise<void>),
+): void;
 
 declare function expect(obj: any): any;
 
@@ -112,15 +115,24 @@ function expectToBeACollection(obj: Collection) {
 
 describe("mongorito", () => {
     const plugin1: Plugin =
-        (modelClass: ModelClass) => (store: PluginStore) => (next: PluginNext) => (action: Action) => {
+        (modelClass: ModelClass) =>
+        (store: PluginStore) =>
+        (next: PluginNext) =>
+        (action: Action) => {
             // next(action);
         };
     const plugin2: Plugin =
-        (modelClass: ModelClass) => (store: PluginStore) => (next: PluginNext) => (action: Action) => {
+        (modelClass: ModelClass) =>
+        (store: PluginStore) =>
+        (next: PluginNext) =>
+        (action: Action) => {
             // next(action);
         };
     const plugin3: Plugin =
-        (modelClass: ModelClass) => (store: PluginStore) => (next: PluginNext) => (action: Action) => {
+        (modelClass: ModelClass) =>
+        (store: PluginStore) =>
+        (next: PluginNext) =>
+        (action: Action) => {
             // next(action);
         };
 
@@ -142,8 +154,7 @@ describe("mongorito", () => {
         const database = new Database(URL);
         await database.connect();
 
-        class PluggedModel extends Model {
-        }
+        class PluggedModel extends Model {}
 
         database.register(PluggedModel);
         PluggedModel.use(plugin);
@@ -234,16 +245,19 @@ describe("mongorito", () => {
 
             // ----- getConnection -----
 
-            const getConnectionResultPromise: Promise<Db> = Sample.getConnection();
+            const getConnectionResultPromise: Promise<Db> =
+                Sample.getConnection();
             expect(getConnectionResultPromise).toBeInstanceOf(Promise);
             const getConnectionResult: Db = await getConnectionResultPromise;
             expect(getConnectionResult).toBeInstanceOf(Db);
 
             // ----- getCollection -----
 
-            const getCollectionResultPromise: Promise<Collection<any>> = Sample.getCollection();
+            const getCollectionResultPromise: Promise<Collection<any>> =
+                Sample.getCollection();
             expect(getCollectionResultPromise).toBeInstanceOf(Promise);
-            const getCollectionResult: Collection<any> = await getCollectionResultPromise;
+            const getCollectionResult: Collection<any> =
+                await getCollectionResultPromise;
             expectToBeACollection(getCollectionResult);
 
             // ----- use -----
@@ -270,38 +284,43 @@ describe("mongorito", () => {
                 ["where", { attr: { $exists: true } }],
                 ["limit", 5],
             ];
-            const queryResultPromise: Promise<object[]> = Sample.query(method, query);
+            const queryResultPromise: Promise<object[]> = Sample.query(
+                method,
+                query,
+            );
             expect(queryResultPromise).toBeInstanceOf(Promise);
             const queryResult: object[] = await queryResultPromise;
             expect(Array.isArray(queryResult)).toBe(true);
             expect(queryResult.length).toBeGreaterThan(0);
-            queryResult.forEach(x => expect(x).toBeInstanceOf(Object));
+            queryResult.forEach((x) => expect(x).toBeInstanceOf(Object));
 
             // ----- listIndexes -----
 
-            const listIndexesResultPromise: Promise<any[]> = Sample.listIndexes();
+            const listIndexesResultPromise: Promise<any[]> =
+                Sample.listIndexes();
             expect(listIndexesResultPromise).toBeInstanceOf(Promise);
             const listIndexesResult: any[] = await listIndexesResultPromise;
             expect(Array.isArray(listIndexesResult)).toBe(true);
-            listIndexesResult.forEach(x => expect(x).not.toBeUndefined());
+            listIndexesResult.forEach((x) => expect(x).not.toBeUndefined());
 
             // ----- createIndex -----
 
-            const createIndexResultPromise: Promise<string> = Sample.createIndex(fieldOrSpec);
+            const createIndexResultPromise: Promise<string> =
+                Sample.createIndex(fieldOrSpec);
             expect(createIndexResultPromise).toBeInstanceOf(Promise);
             const createIndexResult: string = await createIndexResultPromise;
             expect(typeof createIndexResult).toBe("string");
 
             // ----- dropIndex -----
 
-            const dropIndexResultPromise: Promise<object> = Sample.dropIndex(createIndexResult);
+            const dropIndexResultPromise: Promise<object> =
+                Sample.dropIndex(createIndexResult);
             expect(dropIndexResultPromise).toBeInstanceOf(Promise);
             const dropIndexResult: object = await dropIndexResultPromise;
             expect(dropIndexResult).not.toBeUndefined();
 
             // ----- embeds -----
-            class EmbeddedModel extends Model {
-            }
+            class EmbeddedModel extends Model {}
 
             const key = "any";
             const model: ModelClass = EmbeddedModel;
@@ -335,16 +354,19 @@ describe("mongorito", () => {
 
             // ----- getConnection -----
 
-            const getConnectionResultPromise: Promise<Db> = model.getConnection();
+            const getConnectionResultPromise: Promise<Db> =
+                model.getConnection();
             expect(getConnectionResultPromise).toBeInstanceOf(Promise);
             const getConnectionResult: Db = await getConnectionResultPromise;
             expect(getConnectionResult).toBeInstanceOf(Db);
 
             // ----- getCollection -----
 
-            const getCollectionResultPromise: Promise<Collection<any>> = model.getCollection();
+            const getCollectionResultPromise: Promise<Collection<any>> =
+                model.getCollection();
             expect(getCollectionResultPromise).toBeInstanceOf(Promise);
-            const getCollectionResult: Collection<any> = await getCollectionResultPromise;
+            const getCollectionResult: Collection<any> =
+                await getCollectionResultPromise;
             expectToBeACollection(getCollectionResult);
 
             // ----- set -----
@@ -386,36 +408,48 @@ describe("mongorito", () => {
 
             // ----- save -----
 
-            const save1ResultPromise: Promise<CreatedAction | UpdatedAction> = model.save();
+            const save1ResultPromise: Promise<CreatedAction | UpdatedAction> =
+                model.save();
             expect(save1ResultPromise).toBeInstanceOf(Promise);
-            const save1Result: CreatedAction | UpdatedAction = await save1ResultPromise;
+            const save1Result: CreatedAction | UpdatedAction =
+                await save1ResultPromise;
             expectToBeACreatedAction(save1Result);
 
-            const save2ResultPromise: Promise<CreatedAction | UpdatedAction> = model.save();
+            const save2ResultPromise: Promise<CreatedAction | UpdatedAction> =
+                model.save();
             expect(save2ResultPromise).toBeInstanceOf(Promise);
-            const save2Result: CreatedAction | UpdatedAction = await save2ResultPromise;
+            const save2Result: CreatedAction | UpdatedAction =
+                await save2ResultPromise;
             expectToBeAUpdatedAction(save2Result);
 
             // ----- increment -----
 
-            const incrementResultPromise1: Promise<any> = model.increment("views");
+            const incrementResultPromise1: Promise<any> =
+                model.increment("views");
             expect(incrementResultPromise1).toBeInstanceOf(Promise);
             const incrementResult1: any = await incrementResultPromise1;
             expectToBeARefreshedAction(incrementResult1);
 
-            const incrementResultPromise2: Promise<any> = model.increment("views", 2);
+            const incrementResultPromise2: Promise<any> = model.increment(
+                "views",
+                2,
+            );
             expect(incrementResultPromise2).toBeInstanceOf(Promise);
             const incrementResult2: any = await incrementResultPromise2;
             expectToBeARefreshedAction(incrementResult2);
 
-            const incrementResultPromise3: Promise<any> = model.increment({ views: 10, comments: 3 });
+            const incrementResultPromise3: Promise<any> = model.increment({
+                views: 10,
+                comments: 3,
+            });
             expect(incrementResultPromise3).toBeInstanceOf(Promise);
             const incrementResult3: any = await incrementResultPromise3;
             expectToBeARefreshedAction(incrementResult3);
 
             // ----- refresh -----
 
-            const refreshResultPromise: Promise<RefreshedAction> = model.refresh();
+            const refreshResultPromise: Promise<RefreshedAction> =
+                model.refresh();
             expect(refreshResultPromise).toBeInstanceOf(Promise);
             const refreshResult: RefreshedAction = await refreshResultPromise;
             expectToBeARefreshedAction(refreshResult);
@@ -462,19 +496,22 @@ describe("mongorito", () => {
 
             // ----- findOne -----
 
-            const findOneResultPromise1: Promise<Sample | null> = Sample.findOne();
+            const findOneResultPromise1: Promise<Sample | null> =
+                Sample.findOne();
             expect(findOneResultPromise1).toBeInstanceOf(Promise);
             const findOneResult1: Sample | null = await findOneResultPromise1;
             expect(findOneResult1).toBeInstanceOf(Sample);
 
-            const findOneResultPromise2: Promise<Sample | null> = Sample.findOne(query);
+            const findOneResultPromise2: Promise<Sample | null> =
+                Sample.findOne(query);
             expect(findOneResultPromise2).toBeInstanceOf(Promise);
             const findOneResult2: Sample | null = await findOneResultPromise2;
             expect(findOneResult2).toBeInstanceOf(Sample);
 
             // ----- findById -----
 
-            const findByIdResultPromise: Promise<Sample | null> = Sample.findById(ID);
+            const findByIdResultPromise: Promise<Sample | null> =
+                Sample.findById(ID);
             expect(findByIdResultPromise).toBeInstanceOf(Promise);
             const findByIdResult: Sample | null = await findByIdResultPromise;
             expect(findByIdResult).toBeInstanceOf(Sample);
@@ -503,7 +540,10 @@ describe("mongorito", () => {
             const includeResult1: Query = Sample.include("field-test");
             expectToBeAQuery(includeResult1);
 
-            const includeResult2: Query = Sample.include({ field: 1, test: -1 });
+            const includeResult2: Query = Sample.include({
+                field: 1,
+                test: -1,
+            });
             expectToBeAQuery(includeResult2);
 
             // ----- exclude -----
@@ -511,7 +551,10 @@ describe("mongorito", () => {
             const excludeResult1: Query = Sample.exclude("field-test");
             expectToBeAQuery(excludeResult1);
 
-            const excludeResult2: Query = Sample.exclude({ field: 1, test: -1 });
+            const excludeResult2: Query = Sample.exclude({
+                field: 1,
+                test: -1,
+            });
             expectToBeAQuery(excludeResult2);
 
             // ----- remove -----

@@ -63,7 +63,7 @@ declare namespace simpleheat {
         draw(minOpacity?: number): this;
     }
     interface Static {
-        new(canvas: HTMLCanvasElement): Instance;
+        new (canvas: HTMLCanvasElement): Instance;
         (canvas: HTMLCanvasElement): Instance;
     }
 }

@@ -289,7 +289,10 @@ interface RaygunStatic {
      * Track Single Page Application route events.
      */
     trackEvent(type: "pageView", options: { path: string }): void;
-    trackEvent(type: "customTiming", options: { name: string; duration: number }): void;
+    trackEvent(
+        type: "customTiming",
+        options: { name: string; duration: number },
+    ): void;
 
     /**
      * Records a manual breadcrumb with the given message and metadata passed.
@@ -372,7 +375,12 @@ interface RaygunV2 {
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         ) => string | void,
     ): void;
-    (key: "trackEvent", value: { type: string; path: string } | { type: string; name: string; duration: number }): void;
+    (
+        key: "trackEvent",
+        value:
+            | { type: string; path: string }
+            | { type: string; name: string; duration: number },
+    ): void;
     (key: "apiKey" | "setVersion" | "setFilterScope", value: string): void;
     (
         key:
@@ -385,10 +393,7 @@ interface RaygunV2 {
         value: boolean,
     ): void;
     (key: "filterSensitiveData", values: Array<string | RegExp>): void;
-    (
-        key: "whitelistCrossOriginDomains" | "withTags",
-        values: string[],
-    ): void;
+    (key: "whitelistCrossOriginDomains" | "withTags", values: string[]): void;
     (key: "send" | "withCustomData", value: any): void;
     (key: "getRaygunInstance"): RaygunStatic;
     (
@@ -414,11 +419,11 @@ interface RaygunV2 {
         message:
             | string
             | {
-                message: string;
-                metadata: any;
-                level: BreadcrumbLevel;
-                location: string;
-            },
+                  message: string;
+                  metadata: any;
+                  level: BreadcrumbLevel;
+                  location: string;
+              },
         metadata: object,
     ): void;
 }
@@ -429,6 +434,14 @@ interface Window {
     Raygun: RaygunStatic;
 }
 
-export { BreadcrumbLevel, RaygunOptions, RaygunPayload, RaygunStackTrace, RaygunStatic, RaygunV2, RaygunV2UserDetails };
+export {
+    BreadcrumbLevel,
+    RaygunOptions,
+    RaygunPayload,
+    RaygunStackTrace,
+    RaygunStatic,
+    RaygunV2,
+    RaygunV2UserDetails,
+};
 
 export default rg4js;

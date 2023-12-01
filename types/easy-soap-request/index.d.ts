@@ -1,4 +1,9 @@
-import { AxiosError, AxiosProxyConfig, AxiosRequestConfig, AxiosResponse } from "axios";
+import {
+    AxiosError,
+    AxiosProxyConfig,
+    AxiosRequestConfig,
+    AxiosResponse,
+} from "axios";
 
 interface Options {
     /**

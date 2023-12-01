@@ -6,8 +6,16 @@ interface CordovaPluginEmailComposer {
     /** Determine if the device is capable to send emails */
     isAvailable(callback: (isAvailable: boolean) => void, scope?: any): void;
     /** Open a pre-filled email draft */
-    open(options?: ICordovaPluginEmailComposerOpenOptions, callback?: () => void, scope?: any): void;
-    openDraft(options?: ICordovaPluginEmailComposerOpenOptions, callback?: () => void, scope?: any): void;
+    open(
+        options?: ICordovaPluginEmailComposerOpenOptions,
+        callback?: () => void,
+        scope?: any,
+    ): void;
+    openDraft(
+        options?: ICordovaPluginEmailComposerOpenOptions,
+        callback?: () => void,
+        scope?: any,
+    ): void;
 }
 
 interface ICordovaPluginEmailComposerOpenOptions {

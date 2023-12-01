@@ -22,5 +22,8 @@ import { KeyType, KeyTypeData } from "react-relay/relay-hooks/helpers";
  */
 export function testResolver<TKey extends KeyType, Ret>(
     resolver: (arg: TKey) => Ret,
-    fragmentData: Omit<KeyTypeData<TKey>, " $fragmentSpreads" | " $fragmentType">,
+    fragmentData: Omit<
+        KeyTypeData<TKey>,
+        " $fragmentSpreads" | " $fragmentType"
+    >,
 ): Ret;

@@ -50,7 +50,11 @@ export class SchedulerData {
     setEvents(events: Event[]): void;
     prev(): void;
     next(): void;
-    setViewType(viewType?: ViewTypes, showAgenda?: boolean, isEventPerspective?: boolean): void;
+    setViewType(
+        viewType?: ViewTypes,
+        showAgenda?: boolean,
+        isEventPerspective?: boolean,
+    ): void;
     setDate(date?: string): void;
 }
 

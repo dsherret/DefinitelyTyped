@@ -10,11 +10,15 @@ var b = browserify({
 });
 b.add("./browser/main.js");
 b.transform("deamdify")
-    .transform(function(file) {
+    .transform(function (file) {
         return new stream.Transform();
-    }).plugin((b, opts) => {
-        return opts.l;
-    }, { l: 3 })
+    })
+    .plugin(
+        (b, opts) => {
+            return opts.l;
+        },
+        { l: 3 },
+    )
     .require("foo", { expose: "bar" })
     .exclude("baz")
     .ignore("bat")
@@ -26,14 +30,16 @@ b.on("file", (file) => {
 
 b.external(bNoArg);
 
-var b2 = new browserify(["/some/File", { file: "/some/file" }, fs.createReadStream("/somewhere")], {
-    builtins: ["buffer"],
-})
-    .reset({
-        builtins: {
-            "buffer": "./customBuffer",
-        },
-    });
+var b2 = new browserify(
+    ["/some/File", { file: "/some/file" }, fs.createReadStream("/somewhere")],
+    {
+        builtins: ["buffer"],
+    },
+).reset({
+    builtins: {
+        buffer: "./customBuffer",
+    },
+});
 
 var customBrowsify = require("browserify");
 customBrowsify({ entries: [] });
@@ -44,7 +50,7 @@ var b = browserify("./browser/main.js", {
     foo: "bar",
 });
 b.add("./browser/other.js");
-b.transform(function(file: string): NodeJS.ReadWriteStream {
+b.transform(function (file: string): NodeJS.ReadWriteStream {
     return new stream.PassThrough();
 });
 

@@ -2,9 +2,21 @@ type ByteSource = ArrayBuffer | Uint8Array | number[] | string;
 type ScalarFieldType = boolean | number | string;
 type RepeatedFieldType = ScalarFieldType[] | Uint8Array[];
 type AnyFieldType = ScalarFieldType | RepeatedFieldType | Uint8Array;
-type FieldValue = string | number | boolean | Uint8Array | FieldValueArray | undefined;
+type FieldValue =
+    | string
+    | number
+    | boolean
+    | Uint8Array
+    | FieldValueArray
+    | undefined;
 interface FieldValueArray extends Array<FieldValue> {}
-type ReadonlyFieldValue = string | number | boolean | Uint8Array | ReadonlyFieldValueArray | undefined;
+type ReadonlyFieldValue =
+    | string
+    | number
+    | boolean
+    | Uint8Array
+    | ReadonlyFieldValueArray
+    | undefined;
 interface ReadonlyFieldValueArray extends ReadonlyArray<FieldValue> {}
 
 export abstract class Message {
@@ -42,13 +54,23 @@ export abstract class Message {
         setExtensionFn: <T>(fieldInfo: ExtensionFieldInfo<T>, val: T) => void,
     ): void;
     static getField(msg: Message, fieldNumber: number): FieldValue | null;
-    static getOptionalFloatingPointField(msg: Message, fieldNumber: number): number | undefined;
-    static getRepeatedFloatingPointField(msg: Message, fieldNumber: number): number[];
+    static getOptionalFloatingPointField(
+        msg: Message,
+        fieldNumber: number,
+    ): number | undefined;
+    static getRepeatedFloatingPointField(
+        msg: Message,
+        fieldNumber: number,
+    ): number[];
     static bytesAsB64(bytes: Uint8Array): string;
     static bytesAsU8(str: string): Uint8Array;
     static bytesListAsB64(bytesList: Uint8Array[]): string[];
     static bytesListAsU8(strList: string[]): Uint8Array[];
-    static getFieldWithDefault<T>(msg: Message, fieldNumber: number, defaultValue: T): T;
+    static getFieldWithDefault<T>(
+        msg: Message,
+        fieldNumber: number,
+        defaultValue: T,
+    ): T;
     static getMapField(
         msg: Message,
         fieldNumber: number,
@@ -75,13 +97,13 @@ export abstract class Message {
     static computeOneofCase(msg: Message, oneof: number[]): number;
     static getWrapperField<T extends Message>(
         msg: Message,
-        ctor: { new(): T },
+        ctor: { new (): T },
         fieldNumber: number,
         required?: number,
     ): T;
     static getRepeatedWrapperField<T extends Message>(
         msg: Message,
-        ctor: { new(): T },
+        ctor: { new (): T },
         fieldNumber: number,
     ): T[];
     static setWrapperField<T extends Message>(
@@ -104,7 +126,7 @@ export abstract class Message {
         msg: Message,
         fieldNumber: number,
         value: T | undefined,
-        ctor: { new(): T },
+        ctor: { new (): T },
         index?: number,
     ): T;
     static toMap(
@@ -134,11 +156,19 @@ export abstract class Message {
     // These are `abstract static`, but that isn't allowed. Subclasses of Message will have these methods and properties
     // and not having them on Message makes using this class for its intended purpose quite difficult.
     static deserializeBinary(bytes: Uint8Array): Message;
-    static deserializeBinaryFromReader(message: Message, reader: BinaryReader): Message;
-    static serializeBinaryToWriter(message: Message, writer: BinaryWriter): void;
+    static deserializeBinaryFromReader(
+        message: Message,
+        reader: BinaryReader,
+    ): Message;
+    static serializeBinaryToWriter(
+        message: Message,
+        writer: BinaryWriter,
+    ): void;
     static toObject(includeInstance: boolean, msg: Message): {};
     static extensions: { [key: number]: ExtensionFieldInfo<Message> };
-    static extensionsBinary: { [key: number]: ExtensionFieldBinaryInfo<Message> };
+    static extensionsBinary: {
+        [key: number]: ExtensionFieldBinaryInfo<Message>;
+    };
 }
 
 export namespace Message {
@@ -167,23 +197,29 @@ export class ExtensionFieldBinaryInfo<T> {
     binaryReaderFn: BinaryRead;
     binaryWriterFn: BinaryWrite;
     opt_binaryMessageSerializeFn: (msg: Message, writer: BinaryWriter) => void;
-    opt_binaryMessageDeserializeFn: (msg: Message, reader: BinaryReader) => Message;
+    opt_binaryMessageDeserializeFn: (
+        msg: Message,
+        reader: BinaryReader,
+    ) => Message;
     opt_isPacked: boolean;
     constructor(
         fieldInfo: ExtensionFieldInfo<T>,
         binaryReaderFn: BinaryRead,
         binaryWriterFn: BinaryWrite,
-        opt_binaryMessageSerializeFn: (msg: Message, writer: BinaryWriter) => void,
-        opt_binaryMessageDeserializeFn: (msg: Message, reader: BinaryReader) => Message,
+        opt_binaryMessageSerializeFn: (
+            msg: Message,
+            writer: BinaryWriter,
+        ) => void,
+        opt_binaryMessageDeserializeFn: (
+            msg: Message,
+            reader: BinaryReader,
+        ) => Message,
         opt_isPacked: boolean,
     );
 }
 
 export class Map<K, V> {
-    constructor(
-        arr: Array<[K, V]>,
-        valueCtor?: { new(init: any): V },
-    );
+    constructor(arr: Array<[K, V]>, valueCtor?: { new (init: any): V });
     toArray(): Array<[K, V]>;
     toObject(includeInstance?: boolean): Array<[K, V]>;
     toObject<VO>(
@@ -202,10 +238,7 @@ export class Map<K, V> {
     entries(): Map.Iterator<[K, V]>;
     keys(): Map.Iterator<K>;
     values(): Map.Iterator<V>;
-    forEach(
-        callback: (entry: V, key: K) => void,
-        thisArg?: {},
-    ): void;
+    forEach(callback: (entry: V, key: K) => void, thisArg?: {}): void;
     set(key: K, value: V): this;
     get(key: K): V | undefined;
     has(key: K): boolean;
@@ -213,14 +246,22 @@ export class Map<K, V> {
         fieldNumber: number,
         writer: BinaryWriter,
         keyWriterFn: (field: number, key: K) => void,
-        valueWriterFn: (field: number, value: V, writerCallback: BinaryWriteCallback) => void,
+        valueWriterFn: (
+            field: number,
+            value: V,
+            writerCallback: BinaryWriteCallback,
+        ) => void,
         writeCallback?: BinaryWriteCallback,
     ): void;
     static deserializeBinary<K, V>(
         map: Map<K, V>,
         reader: BinaryReader,
         keyReaderFn: (reader: BinaryReader) => K,
-        valueReaderFn: (reader: BinaryReader, value: any, readerCallback: BinaryReadCallback) => V,
+        valueReaderFn: (
+            reader: BinaryReader,
+            value: any,
+            readerCallback: BinaryReadCallback,
+        ) => V,
         readCallback?: BinaryReadCallback,
         defaultKey?: K,
         defaultValue?: V,
@@ -247,11 +288,19 @@ type BinaryReadCallback = (value: any, binaryReader: BinaryReader) => void;
 
 type BinaryWriteCallback = (value: any, binaryWriter: BinaryWriter) => void;
 
-type BinaryWrite = (fieldNumber: number, value: any, writerCallback: BinaryWriteCallback) => void;
+type BinaryWrite = (
+    fieldNumber: number,
+    value: any,
+    writerCallback: BinaryWriteCallback,
+) => void;
 
 export class BinaryReader {
     constructor(bytes?: ByteSource, start?: number, length?: number);
-    static alloc(bytes?: ByteSource, start?: number, length?: number): BinaryReader;
+    static alloc(
+        bytes?: ByteSource,
+        start?: number,
+        length?: number,
+    ): BinaryReader;
     alloc(bytes?: ByteSource, start?: number, length?: number): BinaryReader;
     free(): void;
     getFieldCursor(): number;
@@ -274,7 +323,10 @@ export class BinaryReader {
     skipFixed64Field(): void;
     skipGroup(): void;
     skipField(): void;
-    registerReadCallback(callbackName: string, callback: (binaryReader: BinaryReader) => any): void;
+    registerReadCallback(
+        callbackName: string,
+        callback: (binaryReader: BinaryReader) => any,
+    ): void;
     runReadCallback(callbackName: string): any;
     readAny(fieldType: BinaryConstants.FieldType): AnyFieldType;
     readMessage: BinaryRead;
@@ -334,13 +386,21 @@ export class BinaryReader {
 export class BinaryWriter {
     constructor();
     writeSerializedMessage(bytes: Uint8Array, start: number, end: number): void;
-    maybeWriteSerializedMessage(bytes?: Uint8Array, start?: number, end?: number): void;
+    maybeWriteSerializedMessage(
+        bytes?: Uint8Array,
+        start?: number,
+        end?: number,
+    ): void;
     reset(): void;
     getResultBuffer(): Uint8Array;
     getResultBase64String(): string;
     beginSubMessage(field: number): void;
     endSubMessage(field: number): void;
-    writeAny(fieldType: BinaryConstants.FieldType, field: number, value: AnyFieldType): void;
+    writeAny(
+        fieldType: BinaryConstants.FieldType,
+        field: number,
+        value: AnyFieldType,
+    ): void;
     writeInt32(field: number, value?: number): void;
     writeInt32String(field: number, value?: string): void;
     writeInt64(field: number, value?: number): void;
@@ -365,7 +425,11 @@ export class BinaryWriter {
     writeString(field: number, value?: string): void;
     writeBytes(field: number, value?: ByteSource): void;
     writeMessage: BinaryWrite;
-    writeGroup(field: number, value: any, writeCallback: BinaryWriteCallback): void;
+    writeGroup(
+        field: number,
+        value: any,
+        writeCallback: BinaryWriteCallback,
+    ): void;
     writeFixedHash64(field: number, value?: string): void;
     writeVarintHash64(field: number, value?: string): void;
     writeRepeatedInt32(field: number, value?: readonly number[]): void;
@@ -391,8 +455,16 @@ export class BinaryWriter {
     writeRepeatedEnum(field: number, value?: readonly number[]): void;
     writeRepeatedString(field: number, value?: readonly string[]): void;
     writeRepeatedBytes(field: number, value?: readonly ByteSource[]): void;
-    writeRepeatedMessage(field: number, value: readonly Message[], writerCallback: BinaryWriteCallback): void;
-    writeRepeatedGroup(field: number, value: readonly Message[], writerCallback: BinaryWriteCallback): void;
+    writeRepeatedMessage(
+        field: number,
+        value: readonly Message[],
+        writerCallback: BinaryWriteCallback,
+    ): void;
+    writeRepeatedGroup(
+        field: number,
+        value: readonly Message[],
+        writerCallback: BinaryWriteCallback,
+    ): void;
     writeRepeatedFixedHash64(field: number, value?: readonly string[]): void;
     writeRepeatedVarintHash64(field: number, value?: readonly string[]): void;
     writePackedInt32(field: number, value?: readonly number[]): void;
@@ -454,7 +526,11 @@ export class BinaryEncoder {
 
 export class BinaryDecoder {
     constructor(bytes?: ByteSource, start?: number, length?: number);
-    static alloc(bytes?: ByteSource, start?: number, length?: number): BinaryDecoder;
+    static alloc(
+        bytes?: ByteSource,
+        start?: number,
+        length?: number,
+    ): BinaryDecoder;
     free(): void;
     clone(): BinaryDecoder;
     clear(): void;

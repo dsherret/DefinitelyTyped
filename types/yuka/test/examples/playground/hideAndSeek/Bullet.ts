@@ -27,7 +27,7 @@ export class Bullet extends MovingEntity {
         this.position.copy(ray.origin);
         this.velocity.copy(ray.direction).multiplyScalar(this.maxSpeed);
 
-        const s = 1 + (Math.random() * 3); // scale the shot line a bit
+        const s = 1 + Math.random() * 3; // scale the shot line a bit
 
         this.scale.set(s, s, s);
 
@@ -49,8 +49,11 @@ export class Bullet extends MovingEntity {
 
             if (obstacle !== null) {
                 // calculate distance from origin to intersection point
-                const distanceToIntersection = ray.origin.squaredDistanceTo(intersectionPoint);
-                const validDistance = ray.origin.squaredDistanceTo(this.position);
+                const distanceToIntersection =
+                    ray.origin.squaredDistanceTo(intersectionPoint);
+                const validDistance = ray.origin.squaredDistanceTo(
+                    this.position,
+                );
                 if (distanceToIntersection <= validDistance) {
                     // inform game entity about hit
                     this.owner.sendMessage(obstacle, "hit");

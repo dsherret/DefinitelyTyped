@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/angular-mocks",
-    "version": "1.7.9999",
-    "projects": [
-        "http://angularjs.org"
-    ],
-    "dependencies": {
-        "@types/angular": "*"
+  "private": true,
+  "name": "@types/angular-mocks",
+  "version": "1.7.9999",
+  "projects": [
+    "http://angularjs.org"
+  ],
+  "dependencies": {
+    "@types/angular": "*"
+  },
+  "devDependencies": {
+    "@types/angular-mocks": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Diego Vilar",
+      "githubUsername": "diegovilar"
     },
-    "devDependencies": {
-        "@types/angular-mocks": "workspace:."
+    {
+      "name": "Tony Curtis",
+      "githubUsername": "daltin"
     },
-    "owners": [
-        {
-            "name": "Diego Vilar",
-            "githubUsername": "diegovilar"
-        },
-        {
-            "name": "Tony Curtis",
-            "githubUsername": "daltin"
-        },
-        {
-            "name": "Georgii Dolzhykov",
-            "githubUsername": "thorn0"
-        }
-    ]
+    {
+      "name": "Georgii Dolzhykov",
+      "githubUsername": "thorn0"
+    }
+  ]
 }

@@ -17,7 +17,9 @@ export interface ZoneOffsetOptions {
  */
 export type ZoneOffsetFormat = "narrow" | "short" | "techie";
 
-export type ZoneMaybeValid = CanBeInvalid extends true ? Zone<true> | Zone<false> : Zone;
+export type ZoneMaybeValid = CanBeInvalid extends true
+    ? Zone<true> | Zone<false>
+    : Zone;
 
 export abstract class Zone<IsValid extends boolean = DefaultValidity> {
     /**
@@ -43,7 +45,10 @@ export abstract class Zone<IsValid extends boolean = DefaultValidity> {
      * @param options.format - What style of offset to return.
      * @param options.locale - What locale to return the offset name in.
      */
-    offsetName(ts: number, options: ZoneOffsetOptions): IfValid<string, null, IsValid>;
+    offsetName(
+        ts: number,
+        options: ZoneOffsetOptions,
+    ): IfValid<string, null, IsValid>;
 
     /**
      * Returns the offset's value as a string
@@ -52,7 +57,10 @@ export abstract class Zone<IsValid extends boolean = DefaultValidity> {
      * @param format - What style of offset to return.
      *                 Accepts 'narrow', 'short', or 'techie'. Returning '+6', '+06:00', or '+0600' respectively
      */
-    formatOffset(ts: number, format: ZoneOffsetFormat): IfValid<string, "", IsValid>;
+    formatOffset(
+        ts: number,
+        format: ZoneOffsetFormat,
+    ): IfValid<string, "", IsValid>;
 
     /**
      * Return the offset in minutes for this zone at the specified timestamp.
@@ -77,11 +85,15 @@ export abstract class Zone<IsValid extends boolean = DefaultValidity> {
 /**
  * A zone identified by an IANA identifier, like America/New_York
  */
-export class IANAZone<IsValid extends boolean = DefaultValidity> extends Zone<IsValid> {
+export class IANAZone<
+    IsValid extends boolean = DefaultValidity,
+> extends Zone<IsValid> {
     /**
      * Same as constructor but has caching.
      */
-    static create(name: string): CanBeInvalid extends true ? (IANAZone<true> | IANAZone<false>) : IANAZone;
+    static create(
+        name: string,
+    ): CanBeInvalid extends true ? IANAZone<true> | IANAZone<false> : IANAZone;
 
     /**
      * Reset local caches. Should only be necessary in testing scenarios.

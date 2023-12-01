@@ -1,6 +1,10 @@
 import { ButtonStyle, Environment } from "./configuration";
 
-import { AuthorizationData, AuthorizationResponse, CancellationData } from "./callback-data";
+import {
+    AuthorizationData,
+    AuthorizationResponse,
+    CancellationData,
+} from "./callback-data";
 
 export enum FundingOption {
     CREDIT,
@@ -18,8 +22,13 @@ export interface ButtonRenderer {
             locale?: string | undefined;
 
             payment?: (() => Promise<string>) | undefined;
-            onAuthorize: (data: AuthorizationData, actions: object) => Promise<AuthorizationResponse>;
-            onCancel?: ((data: CancellationData, actions: object) => void) | undefined;
+            onAuthorize: (
+                data: AuthorizationData,
+                actions: object,
+            ) => Promise<AuthorizationResponse>;
+            onCancel?:
+                | ((data: CancellationData, actions: object) => void)
+                | undefined;
             onError?: ((error: string) => void) | undefined;
             onShippingChange?: (() => void) | undefined;
             onAuth?: ((data: string | object) => object) | undefined;
@@ -28,9 +37,9 @@ export interface ButtonRenderer {
 
             funding?:
                 | {
-                    allowed?: FundingOption[] | undefined;
-                    disallowed?: FundingOption[] | undefined;
-                }
+                      allowed?: FundingOption[] | undefined;
+                      disallowed?: FundingOption[] | undefined;
+                  }
                 | undefined;
 
             sessionID?: string | undefined;
@@ -59,8 +68,13 @@ export interface ButtonsRenderer {
         fundingSource?: string | undefined;
         createOrder?: (() => Promise<string>) | undefined;
         createBillingAgreement?: (() => Promise<string>) | undefined;
-        onApprove: (data: AuthorizationData, actions: object) => Promise<AuthorizationResponse>;
-        onCancel?: ((data: CancellationData, actions: object) => void) | undefined;
+        onApprove: (
+            data: AuthorizationData,
+            actions: object,
+        ) => Promise<AuthorizationResponse>;
+        onCancel?:
+            | ((data: CancellationData, actions: object) => void)
+            | undefined;
         onError?: ((error: string) => void) | undefined;
         onInit?: (data: AuthorizationData, actions: object) => void;
         onClick?: () => void;

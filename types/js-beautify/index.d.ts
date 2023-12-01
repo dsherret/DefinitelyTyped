@@ -15,7 +15,13 @@ declare namespace js_beautify {
     }
 
     interface JSBeautifyOptions extends CoreBeautifyOptions {
-        brace_style?: "collapse" | "expand" | "end-expand" | "none" | "preserve-inline" | undefined;
+        brace_style?:
+            | "collapse"
+            | "expand"
+            | "end-expand"
+            | "none"
+            | "preserve-inline"
+            | undefined;
         unindent_chained_methods?: boolean | undefined;
         break_chained_methods?: boolean | undefined;
         space_in_paren?: boolean | undefined;
@@ -28,7 +34,11 @@ declare namespace js_beautify {
         unescape_strings?: boolean | undefined;
         e4x?: boolean | undefined;
         comma_first?: boolean | undefined;
-        operator_position?: "before-newline" | "after-newline" | "preserve-newline" | undefined;
+        operator_position?:
+            | "before-newline"
+            | "after-newline"
+            | "preserve-newline"
+            | undefined;
         test_output_raw?: boolean | undefined;
     }
 
@@ -68,14 +78,32 @@ declare namespace js_beautify {
 
 declare var js_beautify: {
     (js_source_text: string, options?: js_beautify.JSBeautifyOptions): string;
-    js: (js_source_text: string, options?: js_beautify.JSBeautifyOptions) => string;
-    js_beautify: (js_source_text: string, options?: js_beautify.JSBeautifyOptions) => string;
+    js: (
+        js_source_text: string,
+        options?: js_beautify.JSBeautifyOptions,
+    ) => string;
+    js_beautify: (
+        js_source_text: string,
+        options?: js_beautify.JSBeautifyOptions,
+    ) => string;
 
-    css: (js_source_text: string, options?: js_beautify.CSSBeautifyOptions) => string;
-    css_beautify: (js_source_text: string, options?: js_beautify.CSSBeautifyOptions) => string;
+    css: (
+        js_source_text: string,
+        options?: js_beautify.CSSBeautifyOptions,
+    ) => string;
+    css_beautify: (
+        js_source_text: string,
+        options?: js_beautify.CSSBeautifyOptions,
+    ) => string;
 
-    html: (js_source_text: string, options?: js_beautify.HTMLBeautifyOptions) => string;
-    html_beautify: (js_source_text: string, options?: js_beautify.HTMLBeautifyOptions) => string;
+    html: (
+        js_source_text: string,
+        options?: js_beautify.HTMLBeautifyOptions,
+    ) => string;
+    html_beautify: (
+        js_source_text: string,
+        options?: js_beautify.HTMLBeautifyOptions,
+    ) => string;
 };
 
 export as namespace js_beautify;

@@ -19,7 +19,10 @@ interface ProgressIndicatorOptions {
 
 declare const ProgressIndicator_base: any;
 declare class ProgressIndicator extends ProgressIndicator_base {
-    constructor(element: HTMLElement, options?: Partial<ProgressIndicatorOptions>);
+    constructor(
+        element: HTMLElement,
+        options?: Partial<ProgressIndicatorOptions>,
+    );
     getSteps(): Array<{
         element: HTMLElement;
         index: number;
@@ -29,7 +32,11 @@ declare class ProgressIndicator extends ProgressIndicator_base {
         index: number;
     };
     setCurrent(newCurrentStep?: number): void;
-    _updateStep(args: { element: HTMLElement; className: string; html: string }): void;
+    _updateStep(args: {
+        element: HTMLElement;
+        className: string;
+        html: string;
+    }): void;
     _getSVGComplete(): string;
     _getCurrentSVG(): string;
     _getIncompleteSVG(): string;

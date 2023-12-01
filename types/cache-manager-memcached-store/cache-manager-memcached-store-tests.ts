@@ -18,6 +18,10 @@ const memcachedCache = cacheManager.caching({
     ttl: 3600,
 });
 
-const memoryCache = cacheManager.caching({ store: "memory", max: 100, ttl: 60 });
+const memoryCache = cacheManager.caching({
+    store: "memory",
+    max: 100,
+    ttl: 60,
+});
 
 cacheManager.multiCaching([memcachedCache, memoryCache]);

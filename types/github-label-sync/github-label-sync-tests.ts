@@ -21,13 +21,13 @@ githubLabelSync({
     dryRun: true,
     endpoint: "abc",
     format: {
-        diff: s => s + "a",
-        success: s => s + "b",
-        warning: s => s + "c",
+        diff: (s) => s + "a",
+        success: (s) => s + "b",
+        warning: (s) => s + "c",
     },
     log: {
-        info: _s => {},
-        warn: _s => {},
+        info: (_s) => {},
+        warn: (_s) => {},
     },
 });
 
@@ -42,7 +42,7 @@ githubLabelSync({
     accessToken: "abc",
     repo: "owner/name",
     labels: [],
-}).then(value => {
+}).then((value) => {
     value[0].name;
     value[0].type;
     value[0].actual;

@@ -13,13 +13,23 @@ export interface EditorOptions {
 
 export function parse(text: string): Properties;
 export function read(path: fs.PathLike): Properties;
-export function read(path: fs.PathLike, callback: (err: Error | null, data: Properties) => void): void;
+export function read(
+    path: fs.PathLike,
+    callback: (err: Error | null, data: Properties) => void,
+): void;
 
 export const createEditor: {
     (options?: EditorOptions): Editor;
     (path: fs.PathLike, options?: EditorOptions): Editor;
-    (path: fs.PathLike, options?: EditorOptions, callback?: (err: Error | null, editor: Editor) => void): void;
-    [promisify.custom]: (path: fs.PathLike, options?: EditorOptions) => Promise<Editor>;
+    (
+        path: fs.PathLike,
+        options?: EditorOptions,
+        callback?: (err: Error | null, editor: Editor) => void,
+    ): void;
+    [promisify.custom]: (
+        path: fs.PathLike,
+        options?: EditorOptions,
+    ) => Promise<Editor>;
 };
 
 export interface Editor {

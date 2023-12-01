@@ -1,3 +1,7 @@
-declare function nearestPeriodicValue(point: number, value: number, period: number): number;
+declare function nearestPeriodicValue(
+    point: number,
+    value: number,
+    period: number,
+): number;
 
 export = nearestPeriodicValue;

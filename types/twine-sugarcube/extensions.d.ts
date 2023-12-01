@@ -5,7 +5,12 @@ declare global {
      * @param index The index of member being processed.
      * @param array The array being processed.
      */
-    type ArrayPredicate<T, ThisType> = (this: ThisType, value: T, index: number, array: T[]) => boolean;
+    type ArrayPredicate<T, ThisType> = (
+        this: ThisType,
+        value: T,
+        index: number,
+        array: T[],
+    ) => boolean;
 
     interface ReadonlyArray<T> {
         /**
@@ -32,7 +37,10 @@ declare global {
          * // Given: $fruits = ["Apples", "Oranges", "Plums", "Oranges"]
          * $fruits.countWith(function (fruit) { return fruit === "Oranges"; })  → Returns 2
          */
-        countWith<PredicateThisArg>(predicate: ArrayPredicate<T, PredicateThisArg>, thisArg: PredicateThisArg): number;
+        countWith<PredicateThisArg>(
+            predicate: ArrayPredicate<T, PredicateThisArg>,
+            thisArg: PredicateThisArg,
+        ): number;
         countWith(predicate: ArrayPredicate<T, undefined>): number;
 
         /**
@@ -151,7 +159,10 @@ declare global {
          * // Given: $fruits = ["Apples", "Oranges", "Plums", "Oranges"]
          * $fruits.countWith(function (fruit) { return fruit === "Oranges"; })  → Returns 2
          */
-        countWith<PredicateThisArg>(predicate: ArrayPredicate<T, PredicateThisArg>, thisArg: PredicateThisArg): number;
+        countWith<PredicateThisArg>(
+            predicate: ArrayPredicate<T, PredicateThisArg>,
+            thisArg: PredicateThisArg,
+        ): number;
         countWith(predicate: ArrayPredicate<T, undefined>): number;
 
         /**
@@ -209,7 +220,10 @@ declare global {
          * }) // Returns [{ name : "Apples" }, { name : "Apricots" }];
          * // and now $fruits is [{ name : "Oranges" }]
          */
-        deleteWith<PredicateThisArg>(predicate: ArrayPredicate<T, PredicateThisArg>, thisArg: PredicateThisArg): T[];
+        deleteWith<PredicateThisArg>(
+            predicate: ArrayPredicate<T, PredicateThisArg>,
+            thisArg: PredicateThisArg,
+        ): T[];
         deleteWith(predicate: ArrayPredicate<T, undefined>): T[];
 
         /**
@@ -568,7 +582,10 @@ declare global {
          *         })
          * .appendTo(output);
          */
-        ariaClick(options: JQueryAriaClickOptions, handler: (event: JQuery.Event) => void): this;
+        ariaClick(
+            options: JQueryAriaClickOptions,
+            handler: (event: JQuery.Event) => void,
+        ): this;
         /**
          * Changes the disabled state of the target WAI-ARIA-compatible clickable element(s). Returns a reference to the current
          * jQuery object for chaining.

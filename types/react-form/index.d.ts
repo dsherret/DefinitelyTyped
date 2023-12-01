@@ -18,15 +18,28 @@ export interface FieldScopeSpecificMethods<
         options: { isTouched: boolean },
     ): void;
 
-    setFieldMeta(fieldPath: string, updater: ((prev: FieldMetaType) => FieldMetaType) | Partial<FieldMetaType>): void;
+    setFieldMeta(
+        fieldPath: string,
+        updater:
+            | ((prev: FieldMetaType) => FieldMetaType)
+            | Partial<FieldMetaType>,
+    ): void;
 
     pushFieldValue(fieldPath: string, newValue: ValueType): void;
 
-    insertFieldValue(fieldPath: string, insertIndex: number, value: ValueType): void;
+    insertFieldValue(
+        fieldPath: string,
+        insertIndex: number,
+        value: ValueType,
+    ): void;
 
     removeFieldValue(fieldPath: string, removalIndex: number): void;
 
-    swapFieldValues(fieldPath: string, firstIndex: number, secondIndex: number): void;
+    swapFieldValues(
+        fieldPath: string,
+        firstIndex: number,
+        secondIndex: number,
+    ): void;
 }
 
 export interface UseFormOptions<
@@ -40,12 +53,24 @@ export interface UseFormOptions<
 
     onSubmit?(
         values: UseFormValues<ValueType>,
-        instance: UseFormInstance<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType>,
+        instance: UseFormInstance<
+            ValueType,
+            ErrorType,
+            EventType,
+            FieldMetaType,
+            FormMetaType
+        >,
     ): Promise<void> | void;
 
     validate?(
         values: UseFormValues<ValueType>,
-        instance: UseFormInstance<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType>,
+        instance: UseFormInstance<
+            ValueType,
+            ErrorType,
+            EventType,
+            FieldMetaType,
+            FormMetaType
+        >,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): Promise<ValidateResult> | ValidateResult | void;
 
@@ -71,22 +96,39 @@ export interface UseFormInstance<
     EventType,
     FieldMetaType extends UseFieldInstanceMeta<ErrorType>,
     FormMetaType extends UseFormInstanceMeta<ErrorType>,
-> extends FieldScopeSpecificMethods<ValueType, ErrorType, EventType, FieldMetaType> {
+> extends FieldScopeSpecificMethods<
+        ValueType,
+        ErrorType,
+        EventType,
+        FieldMetaType
+    > {
     Form: typeof React.Component;
     values: UseFormValues<ValueType>;
     meta: FormMetaType;
-    formContext: UseFormInstance<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType>;
+    formContext: UseFormInstance<
+        ValueType,
+        ErrorType,
+        EventType,
+        FieldMetaType,
+        FormMetaType
+    >;
 
     reset(): void;
 
-    setMeta(updater: ((prev: FormMetaType) => FormMetaType) | Partial<FormMetaType>): void;
+    setMeta(
+        updater: ((prev: FormMetaType) => FormMetaType) | Partial<FormMetaType>,
+    ): void;
 
     handleSubmit(event: React.SyntheticEvent<EventType>): void;
 
     debounce(f: () => void, wait: number): Promise<void> | void;
 
     setValues(
-        updater: ((previousValues: UseFormValues<ValueType>) => UseFormValues<ValueType>) | UseFormValues<ValueType>,
+        updater:
+            | ((
+                  previousValues: UseFormValues<ValueType>,
+              ) => UseFormValues<ValueType>)
+            | UseFormValues<ValueType>,
     ): void;
 
     runValidation(): void;
@@ -111,13 +153,27 @@ export interface UseFieldOptions<
 
     validate?(
         value: ValueType,
-        instance: UseFieldInstance<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType, InputPropsType>,
+        instance: UseFieldInstance<
+            ValueType,
+            ErrorType,
+            EventType,
+            FieldMetaType,
+            FormMetaType,
+            InputPropsType
+        >,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): Promise<ValidateResult> | ValidateResult | void;
 
     filterValue?(
         value: ValueType,
-        instance: UseFieldInstance<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType, InputPropsType>,
+        instance: UseFieldInstance<
+            ValueType,
+            ErrorType,
+            EventType,
+            FieldMetaType,
+            FormMetaType,
+            InputPropsType
+        >,
     ): ValueType;
 
     validatePristine?: boolean | undefined;
@@ -142,8 +198,19 @@ export interface UseFieldInstance<
     FieldMetaType extends UseFieldInstanceMeta<ErrorType>,
     FormMetaType extends UseFormInstanceMeta<ErrorType>,
     InputPropsType extends UseFieldInstancePropsType<ValueType>,
-> extends FieldScopeSpecificMethods<ValueType, ErrorType, EventType, FieldMetaType> {
-    form: UseFormInstance<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType>;
+> extends FieldScopeSpecificMethods<
+        ValueType,
+        ErrorType,
+        EventType,
+        FieldMetaType
+    > {
+    form: UseFormInstance<
+        ValueType,
+        ErrorType,
+        EventType,
+        FieldMetaType,
+        FormMetaType
+    >;
     fieldName: string;
     value: ValueType;
     meta: FieldMetaType;
@@ -155,9 +222,16 @@ export interface UseFieldInstance<
 
     getInputProps(props?: Partial<InputPropsType>): InputPropsType;
 
-    setValue(updater: ((prev: ValueType) => ValueType) | ValueType, options?: { isTouched: boolean }): void;
+    setValue(
+        updater: ((prev: ValueType) => ValueType) | ValueType,
+        options?: { isTouched: boolean },
+    ): void;
 
-    setMeta(updater: ((prev: FieldMetaType) => FieldMetaType) | Partial<FieldMetaType>): void;
+    setMeta(
+        updater:
+            | ((prev: FieldMetaType) => FieldMetaType)
+            | Partial<FieldMetaType>,
+    ): void;
 
     pushValue(newValue: ValueType): void;
 
@@ -172,24 +246,57 @@ export function useForm<
     ValueType = string,
     ErrorType = string,
     EventType = unknown,
-    FieldMetaType extends UseFieldInstanceMeta<ErrorType> = UseFieldInstanceMeta<ErrorType>,
-    FormMetaType extends UseFormInstanceMeta<ErrorType> = UseFormInstanceMeta<ErrorType>,
+    FieldMetaType extends
+        UseFieldInstanceMeta<ErrorType> = UseFieldInstanceMeta<ErrorType>,
+    FormMetaType extends
+        UseFormInstanceMeta<ErrorType> = UseFormInstanceMeta<ErrorType>,
 >(
-    props: UseFormOptions<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType>,
-): UseFormInstance<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType>;
+    props: UseFormOptions<
+        ValueType,
+        ErrorType,
+        EventType,
+        FieldMetaType,
+        FormMetaType
+    >,
+): UseFormInstance<
+    ValueType,
+    ErrorType,
+    EventType,
+    FieldMetaType,
+    FormMetaType
+>;
 
 export function useField<
     ValueType = string,
     ErrorType = string,
     EventType = unknown,
-    FieldMetaType extends UseFieldInstanceMeta<ErrorType> = UseFieldInstanceMeta<ErrorType>,
-    FormMetaType extends UseFormInstanceMeta<ErrorType> = UseFormInstanceMeta<ErrorType>,
-    InputPropsType extends UseFieldInstancePropsType<ValueType> = UseFieldInstancePropsType<ValueType>,
+    FieldMetaType extends
+        UseFieldInstanceMeta<ErrorType> = UseFieldInstanceMeta<ErrorType>,
+    FormMetaType extends
+        UseFormInstanceMeta<ErrorType> = UseFormInstanceMeta<ErrorType>,
+    InputPropsType extends
+        UseFieldInstancePropsType<ValueType> = UseFieldInstancePropsType<ValueType>,
 >(
     fieldPath: string,
-    props: UseFieldOptions<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType, InputPropsType>,
-): UseFieldInstance<ValueType, ErrorType, EventType, FieldMetaType, FormMetaType, InputPropsType>;
+    props: UseFieldOptions<
+        ValueType,
+        ErrorType,
+        EventType,
+        FieldMetaType,
+        FormMetaType,
+        InputPropsType
+    >,
+): UseFieldInstance<
+    ValueType,
+    ErrorType,
+    EventType,
+    FieldMetaType,
+    FormMetaType,
+    InputPropsType
+>;
 
-export function splitFormProps(props: any): [string, UseFieldOptions<any, any, any, any, any, any>, any];
+export function splitFormProps(
+    props: any,
+): [string, UseFieldOptions<any, any, any, any, any, any>, any];
 
 export function useFormContext(): UseFormInstance<any, any, any, any, any>;

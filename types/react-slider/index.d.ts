@@ -4,7 +4,9 @@ interface HTMLPropsWithRefCallback<T> extends HTMLProps<T> {
     ref: RefCallback<T>;
 }
 
-export interface ReactSliderProps<T extends number | readonly number[] = number> {
+export interface ReactSliderProps<
+    T extends number | readonly number[] = number,
+> {
     // Disallow children
     children?: never | undefined;
 
@@ -37,7 +39,10 @@ export interface ReactSliderProps<T extends number | readonly number[] = number>
      * - `state.value` - the current value state
      * - `state.valueNow` - the value of the thumb (i.e. aria-valuenow)
      */
-    ariaValuetext?: string | ((value: { index: number; value: T; valueNow: number }) => string) | undefined;
+    ariaValuetext?:
+        | string
+        | ((value: { index: number; value: T; valueNow: number }) => string)
+        | undefined;
 
     /**
      * The css class set on the slider node.
@@ -179,7 +184,11 @@ export interface ReactSliderProps<T extends number | readonly number[] = number>
      *
      * @default props => <div {...props} />
      */
-    renderMark?: ((props: HTMLPropsWithRefCallback<HTMLSpanElement>) => JSX.Element | null) | undefined;
+    renderMark?:
+        | ((
+              props: HTMLPropsWithRefCallback<HTMLSpanElement>,
+          ) => JSX.Element | null)
+        | undefined;
 
     /**
      * Provide a custom render function for dynamic thumb content.
@@ -196,9 +205,9 @@ export interface ReactSliderProps<T extends number | readonly number[] = number>
      */
     renderThumb?:
         | ((
-            props: HTMLPropsWithRefCallback<HTMLDivElement>,
-            state: { index: number; value: T; valueNow: number },
-        ) => JSX.Element | null)
+              props: HTMLPropsWithRefCallback<HTMLDivElement>,
+              state: { index: number; value: T; valueNow: number },
+          ) => JSX.Element | null)
         | undefined;
 
     /**
@@ -215,9 +224,9 @@ export interface ReactSliderProps<T extends number | readonly number[] = number>
      */
     renderTrack?:
         | ((
-            props: HTMLPropsWithRefCallback<HTMLDivElement>,
-            state: { index: number; value: T },
-        ) => JSX.Element | null)
+              props: HTMLPropsWithRefCallback<HTMLDivElement>,
+              state: { index: number; value: T },
+          ) => JSX.Element | null)
         | undefined;
 
     /**
@@ -273,7 +282,9 @@ export interface ReactSliderProps<T extends number | readonly number[] = number>
     withTracks?: boolean | undefined;
 }
 
-declare class ReactSlider<T extends number | readonly number[] = number> extends Component<ReactSliderProps<T>> {
+declare class ReactSlider<
+    T extends number | readonly number[] = number,
+> extends Component<ReactSliderProps<T>> {
     /**
      * Tell the slider to resize, for example if the parent container has resized
      * independently of the window.

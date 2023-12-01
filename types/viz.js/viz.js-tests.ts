@@ -8,12 +8,25 @@ promise = viz.renderString("graph a { b }", { format: "svg" });
 promise = viz.renderString("digraph a { b }");
 
 // This won't necessarily work, but shouldn't violate typing rules
-new Viz({ Module, render: (instance: Module, src: string, options: Options) => "string" });
-new Viz({ Module, render: (instance: Module, src: string, options: { format?: string | undefined }) => "string" });
 new Viz({
     Module,
-    render: (instance: Module, src: string, options: { format?: string | undefined; garbage?: number | undefined }) =>
-        "string",
+    render: (instance: Module, src: string, options: Options) => "string",
+});
+new Viz({
+    Module,
+    render: (
+        instance: Module,
+        src: string,
+        options: { format?: string | undefined },
+    ) => "string",
+});
+new Viz({
+    Module,
+    render: (
+        instance: Module,
+        src: string,
+        options: { format?: string | undefined; garbage?: number | undefined },
+    ) => "string",
 });
 viz.renderString("string", { files: [] });
 viz.renderString("string", { images: ["totally a file"] });
@@ -40,13 +53,26 @@ new Viz({ Module: 1, render });
 // @ts-expect-error
 new Viz({ Module: {}, render });
 // @ts-expect-error
-new Viz({ Module, render: (instance: Module, src: string, options: Options) => 1 });
+new Viz({
+    Module,
+    render: (instance: Module, src: string, options: Options) => 1,
+});
 // @ts-expect-error
-new Viz({ Module, render: (instance: string, src: string, options: Options) => "hello" });
+new Viz({
+    Module,
+    render: (instance: string, src: string, options: Options) => "hello",
+});
 // @ts-expect-error
-new Viz({ Module, render: (instance: Module, src: number, options: Options) => "string" });
+new Viz({
+    Module,
+    render: (instance: Module, src: number, options: Options) => "string",
+});
 // @ts-expect-error
-new Viz({ Module, render: (instance: Module, src: string, options: { format: string }) => "string" });
+new Viz({
+    Module,
+    render: (instance: Module, src: string, options: { format: string }) =>
+        "string",
+});
 // @ts-expect-error
 viz.renderString(1, {});
 // @ts-expect-error

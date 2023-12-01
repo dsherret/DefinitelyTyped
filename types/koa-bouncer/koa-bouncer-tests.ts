@@ -5,11 +5,8 @@ const app = new Koa();
 
 app.use(bouncer.middleware());
 
-app.use(async ctx => {
-    ctx.validateBody("uname")
-        .required("Username required")
-        .isString()
-        .trim();
+app.use(async (ctx) => {
+    ctx.validateBody("uname").required("Username required").isString().trim();
 
     ctx.validateBody("email")
         .optional()

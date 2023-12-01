@@ -4,7 +4,11 @@ import { NdArray } from "ndarray";
 declare function cwise(a: string | cwise.UserArgs): cwise.Return;
 
 declare namespace cwise {
-    type Arg = NdArray | ((row: number, col: number) => number) | number[] | any;
+    type Arg =
+        | NdArray
+        | ((row: number, col: number) => number)
+        | number[]
+        | any;
     type Return = (a: NdArray, ...b: Arg[]) => void;
     interface UserArgs {
         args: ArgType[];

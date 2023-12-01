@@ -11,13 +11,20 @@ declare namespace ReactCodeMirror {
         /** Adds a custom CSS class to the editor */
         className?: string | undefined;
         /** Provides a specific CodeMirror instance (defaults to `require('codemirror')`) */
-        codeMirrorInstance?: ((host: any, options?: CodeMirror.EditorConfiguration) => CodeMirror.Editor) | undefined;
+        codeMirrorInstance?:
+            | ((
+                  host: any,
+                  options?: CodeMirror.EditorConfiguration,
+              ) => CodeMirror.Editor)
+            | undefined;
         /** Provides the default (not changed tracked) value to the editor */
         defaultValue?: string | undefined;
         /** Set the name of the editor input field */
         name?: string | undefined;
         /** Called when a change is made */
-        onChange?: ((newValue: string, change: CodeMirror.EditorChange) => any) | undefined;
+        onChange?:
+            | ((newValue: string, change: CodeMirror.EditorChange) => any)
+            | undefined;
         /** Called when the cursor is moved */
         onCursorActivity?: ((codemirror: CodeMirror.Editor) => any) | undefined;
         /** Called when the editor is focused or loses focus */

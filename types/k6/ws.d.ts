@@ -31,7 +31,11 @@ export function connect(url: string, callback: Executor): Response;
  *   });
  * });
  */
-export function connect(url: string, params: Params | null, callback: Executor): Response;
+export function connect(
+    url: string,
+    params: Params | null,
+    callback: Executor,
+): Response;
 
 // === Parameters ===
 // ------------------
@@ -190,7 +194,14 @@ export abstract class Socket {
 /**
  * Event type.
  */
-export type EventType = "close" | "error" | "message" | "open" | "ping" | "pong" | "binaryMessage";
+export type EventType =
+    | "close"
+    | "error"
+    | "message"
+    | "open"
+    | "ping"
+    | "pong"
+    | "binaryMessage";
 
 /**
  * Timer handler.
@@ -205,14 +216,21 @@ export interface TimerHandler {
 /**
  * Event handler. Signature varies with event type.
  */
-export type EventHandler<ET extends EventType> = ET extends "close" ? CloseEventHandler
-    : ET extends "error" ? ErrorEventHandler
-    : ET extends "message" ? MessageEventHandler
-    : ET extends "binaryMessage" ? BinaryMessageEventHandler
-    : ET extends "open" ? OpenEventHandler
-    : ET extends "ping" ? PingEventHandler
-    : ET extends "pong" ? PongEventHandler
-    : never;
+export type EventHandler<ET extends EventType> = ET extends "close"
+    ? CloseEventHandler
+    : ET extends "error"
+      ? ErrorEventHandler
+      : ET extends "message"
+        ? MessageEventHandler
+        : ET extends "binaryMessage"
+          ? BinaryMessageEventHandler
+          : ET extends "open"
+            ? OpenEventHandler
+            : ET extends "ping"
+              ? PingEventHandler
+              : ET extends "pong"
+                ? PongEventHandler
+                : never;
 
 /**
  * Close event handler.
@@ -316,7 +334,11 @@ declare namespace ws {
      *   });
      * });
      */
-    function connect(url: string, params: Params | null, callback: Executor): Response;
+    function connect(
+        url: string,
+        params: Params | null,
+        callback: Executor,
+    ): Response;
 }
 
 export default ws;

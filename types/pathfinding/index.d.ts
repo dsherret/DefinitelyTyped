@@ -53,15 +53,18 @@ declare module "pathfinding" {
         }
 
         interface Grid {
-            new(width: number, height: number): Grid;
-            new(matrix: number[][]): Grid;
+            new (width: number, height: number): Grid;
+            new (matrix: number[][]): Grid;
 
             setWalkableAt(x: number, y: number, walkable: boolean): void;
 
             clone(): Grid;
 
             getNodeAt(x: number, y: number): Pathfinding.Node;
-            getNeighbors(node: Pathfinding.Node, diagonalMovement: DiagonalMovement): Pathfinding.Node[];
+            getNeighbors(
+                node: Pathfinding.Node,
+                diagonalMovement: DiagonalMovement,
+            ): Pathfinding.Node[];
             isWalkableAt(x: number, y: number): boolean;
             isInside(x: number, y: number): boolean;
 
@@ -70,77 +73,88 @@ declare module "pathfinding" {
         }
 
         interface Finder {
-            findPath(startX: number, startY: number, endX: number, endY: number, matrix: Grid): number[][];
+            findPath(
+                startX: number,
+                startY: number,
+                endX: number,
+                endY: number,
+                matrix: Grid,
+            ): number[][];
         }
 
         interface AStarFinder extends Finder {
-            new(): AStarFinder;
-            new(opt: FinderOptions): AStarFinder;
+            new (): AStarFinder;
+            new (opt: FinderOptions): AStarFinder;
         }
 
         interface BestFirstFinder extends AStarFinder {
-            new(): BestFirstFinder;
-            new(opt: JumpPointFinderOptions): BestFirstFinder;
+            new (): BestFirstFinder;
+            new (opt: JumpPointFinderOptions): BestFirstFinder;
         }
 
         interface BiAStarFinder extends Finder {
-            new(): BiAStarFinder;
-            new(opt: JumpPointFinderOptions): BiAStarFinder;
+            new (): BiAStarFinder;
+            new (opt: JumpPointFinderOptions): BiAStarFinder;
         }
 
         interface BiBestFirstFinder extends BiAStarFinder {
-            new(): BiBestFirstFinder;
-            new(opt: JumpPointFinderOptions): BiBestFirstFinder;
+            new (): BiBestFirstFinder;
+            new (opt: JumpPointFinderOptions): BiBestFirstFinder;
         }
 
         interface BiBreadthFirstFinder extends Finder {
-            new(): BiBreadthFirstFinder;
-            new(opt: BiBreadthFirstFinderOptions): BiBreadthFirstFinder;
+            new (): BiBreadthFirstFinder;
+            new (opt: BiBreadthFirstFinderOptions): BiBreadthFirstFinder;
         }
 
         interface BiDijkstraFinder extends BiAStarFinder {
-            new(): BiDijkstraFinder;
-            new(opt: BiBreadthFirstFinderOptions): BiDijkstraFinder;
+            new (): BiDijkstraFinder;
+            new (opt: BiBreadthFirstFinderOptions): BiDijkstraFinder;
         }
 
         interface BreadthFirstFinder extends Finder {
-            new(): BreadthFirstFinder;
-            new(opt: BiBreadthFirstFinderOptions): BreadthFirstFinder;
+            new (): BreadthFirstFinder;
+            new (opt: BiBreadthFirstFinderOptions): BreadthFirstFinder;
         }
 
         interface DijkstraFinder extends AStarFinder {
-            new(): DijkstraFinder;
-            new(opt: BiBreadthFirstFinderOptions): DijkstraFinder;
+            new (): DijkstraFinder;
+            new (opt: BiBreadthFirstFinderOptions): DijkstraFinder;
         }
 
         interface IDAStarFinder extends Finder {
-            new(): IDAStarFinder;
-            new(opt: IDAStarFinderOptions): IDAStarFinder;
+            new (): IDAStarFinder;
+            new (opt: IDAStarFinderOptions): IDAStarFinder;
         }
 
         interface JumpPointFinderBase extends Finder {
-            new(): JumpPointFinderBase;
-            new(opt: JumpPointFinderBaseOptions): JumpPointFinderBase;
+            new (): JumpPointFinderBase;
+            new (opt: JumpPointFinderBaseOptions): JumpPointFinderBase;
         }
 
         interface JPFAlwaysMoveDiagonally extends JumpPointFinderBase {
-            new(): JPFAlwaysMoveDiagonally;
-            new(opt: JumpPointFinderBaseOptions): JPFAlwaysMoveDiagonally;
+            new (): JPFAlwaysMoveDiagonally;
+            new (opt: JumpPointFinderBaseOptions): JPFAlwaysMoveDiagonally;
         }
 
-        interface JPFMoveDiagonallyIfAtMostOneObstacle extends JumpPointFinderBase {
-            new(): JPFMoveDiagonallyIfAtMostOneObstacle;
-            new(opt: JumpPointFinderBaseOptions): JPFMoveDiagonallyIfAtMostOneObstacle;
+        interface JPFMoveDiagonallyIfAtMostOneObstacle
+            extends JumpPointFinderBase {
+            new (): JPFMoveDiagonallyIfAtMostOneObstacle;
+            new (
+                opt: JumpPointFinderBaseOptions,
+            ): JPFMoveDiagonallyIfAtMostOneObstacle;
         }
 
         interface JPFMoveDiagonallyIfNoObstacles extends JumpPointFinderBase {
-            new(): JPFMoveDiagonallyIfNoObstacles;
-            new(opt: JumpPointFinderBaseOptions): JPFMoveDiagonallyIfNoObstacles;
+            new (): JPFMoveDiagonallyIfNoObstacles;
+            new (
+                opt: JumpPointFinderBaseOptions,
+            ): JPFMoveDiagonallyIfNoObstacles;
         }
 
         interface JPFNeverMoveDiagonally extends JumpPointFinderBase {
-            new(): JPFNeverMoveDiagonally;
-            new(opt: JumpPointFinderBaseOptions): JPFNeverMoveDiagonally;
+            new (): JPFNeverMoveDiagonally;
+            new (opt: JumpPointFinderBaseOptions): JPFNeverMoveDiagonally;
         }
 
         interface JumpPointFinder {

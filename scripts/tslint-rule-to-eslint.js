@@ -11,7 +11,7 @@ const emptyObject = {};
  * @param {string} filePath
  * @returns {any}
  */
-const parseAndReadFileContents = filePath => {
+const parseAndReadFileContents = (filePath) => {
     try {
         return parse(fs.readFileSync(filePath).toString());
     } catch {
@@ -40,13 +40,15 @@ function formatFile(contents) {
  * @param {unknown} contents
  */
 const writeFileFormatted = (filePath, contents) => {
-    fs.writeFileSync(
-        filePath,
-        formatFile(JSON.stringify(contents, null, 4)),
-    );
+    fs.writeFileSync(filePath, formatFile(JSON.stringify(contents, null, 4)));
 };
 
-const [, , tslintRuleName, eslintRuleName = "@definitelytyped/" + tslintRuleName] = process.argv;
+const [
+    ,
+    ,
+    tslintRuleName,
+    eslintRuleName = "@definitelytyped/" + tslintRuleName,
+] = process.argv;
 
 sh.exec(
     `find types -path '*/node_modules' -prune -o -iname '*.ts' -type f -print | xargs sed -i 's_tslint:disable-next-line[: ]${tslintRuleName}_eslint-disable-next-line ${eslintRuleName}_'`,
@@ -62,9 +64,12 @@ const typeNames = fs.readdirSync("types");
 for (const typeName of typeNames) {
     const typeDirectory = path.join("types", typeName);
     typeNames.push(
-        ...(fs.readdirSync(typeDirectory))
-            .filter(childDirectory => /^(ts|v)(\d+|\.)+$/.test(childDirectory))
-            .map(childDirectory => path.join(typeName, childDirectory)),
+        ...fs
+            .readdirSync(typeDirectory)
+            .filter((childDirectory) =>
+                /^(ts|v)(\d+|\.)+$/.test(childDirectory),
+            )
+            .map((childDirectory) => path.join(typeName, childDirectory)),
     );
 
     const tslintFilePath = path.join(typeDirectory, "tslint.json");
@@ -78,7 +83,9 @@ for (const typeName of typeNames) {
 
     delete tslintData.rules[tslintRuleName];
     if (Object.keys(tslintData.rules).length === 0) {
-        console.log(`\t${tslintFilePath} has no remaining rules; deleting rules property.`);
+        console.log(
+            `\t${tslintFilePath} has no remaining rules; deleting rules property.`,
+        );
         delete tslintData.rules;
     } else {
         console.log(`\t${tslintFilePath} has remaining rules.`);

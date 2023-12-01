@@ -6,7 +6,9 @@ export interface StickyHeaderProps {
     onScroll?: ((e: Partial<UIEvent>) => void) | undefined;
 }
 
-export class Header extends React.Component<StickyHeaderProps & Table.HeaderProps> {
+export class Header extends React.Component<
+    StickyHeaderProps & Table.HeaderProps
+> {
     ref: HTMLElement;
     container: HTMLElement;
 }

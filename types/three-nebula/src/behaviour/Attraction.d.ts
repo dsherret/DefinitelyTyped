@@ -54,7 +54,13 @@ export default class Attraction extends Behaviour {
     /**
      * Resets the behaviour properties.
      */
-    reset(targetPosition: Vector3D, force?: number, radius?: number, life?: number, easing?: EasingFunction): void;
+    reset(
+        targetPosition: Vector3D,
+        force?: number,
+        radius?: number,
+        life?: number,
+        easing?: EasingFunction,
+    ): void;
     reset(life?: number, easing?: EasingFunction): void;
     /**
      * Mutates particle acceleration.

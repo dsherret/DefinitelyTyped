@@ -12,9 +12,11 @@ interface Configuration {
     entry: string[];
     watch?: boolean | undefined;
     plugins?: object[] | undefined;
-    output?: {
-        publicPath?: string | undefined;
-    } | undefined;
+    output?:
+        | {
+              publicPath?: string | undefined;
+          }
+        | undefined;
 }
 
 const usage = (config: Configuration) => {
@@ -33,7 +35,10 @@ const usage = (config: Configuration) => {
                 app.use(async (ctx: any, next: any) => {
                     await next();
                     ctx.set("Access-Control-Allow-Headers", "*");
-                    ctx.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+                    ctx.set(
+                        "Access-Control-Allow-Methods",
+                        "GET, POST, OPTIONS",
+                    );
                     ctx.set("Access-Control-Allow-Origin", "*");
                 }),
             static: "/",

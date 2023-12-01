@@ -20,19 +20,27 @@ declare namespace jasmine {
          * Checks element attributes.
          * `attributeValue` is optional, if omitted, will check that the attribute exists.
          */
-        toHaveAttr(attributeName: string, attributeValue?: string | number | RegExp): boolean;
+        toHaveAttr(
+            attributeName: string,
+            attributeValue?: string | number | RegExp,
+        ): boolean;
 
         /**
          * Checks element properties.
          * `propertyValue` is optional, if omitted, will check that the property exists.
          */
-        toHaveProp(propertyName: string, propertyValue?: string | number | RegExp): boolean;
+        toHaveProp(
+            propertyName: string,
+            propertyValue?: string | number | RegExp,
+        ): boolean;
 
         /**
          * Checks if all styles are present.
          * `styles` is an object, all styles given in that object will be checked.
          */
-        toHaveCss(styles: { [cssProperty: string]: string | number | RegExp }): boolean;
+        toHaveCss(styles: {
+            [cssProperty: string]: string | number | RegExp;
+        }): boolean;
 
         /**
          * Checks the `value` of eligible elements (like inputs).

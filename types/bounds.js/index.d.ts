@@ -70,7 +70,11 @@ declare namespace bounds {
          * When the specified element leaves your boundary, the `onLeave` callback will be executed.
          * Each callback is passed 1 argument, `ratio`, which represents the ratio of the element's bounding box that is inside the boundary.
          */
-        watch(el: Element | null, onEnter?: WatchCallback, onLeave?: WatchCallback): WatchOptions;
+        watch(
+            el: Element | null,
+            onEnter?: WatchCallback,
+            onLeave?: WatchCallback,
+        ): WatchOptions;
 
         /**
          * The `unWatch` method will instruct your boundary to stop watching a certain element.

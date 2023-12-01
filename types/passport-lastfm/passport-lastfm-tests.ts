@@ -1,5 +1,11 @@
 import type { Request } from "express";
-import { Profile, Strategy, StrategyOptions, VerifyCallback, VerifyFunction } from "passport-lastfm";
+import {
+    Profile,
+    Strategy,
+    StrategyOptions,
+    VerifyCallback,
+    VerifyFunction,
+} from "passport-lastfm";
 
 const strategyOptions: StrategyOptions = {
     api_key: "api-key",

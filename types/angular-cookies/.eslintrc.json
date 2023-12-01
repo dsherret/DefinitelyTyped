@@ -1,6 +1,6 @@
 {
-    "rules": {
-        "@definitelytyped/no-unnecessary-generics": "off",
-        "@typescript-eslint/naming-convention": "off"
-    }
+  "rules": {
+    "@definitelytyped/no-unnecessary-generics": "off",
+    "@typescript-eslint/naming-convention": "off"
+  }
 }

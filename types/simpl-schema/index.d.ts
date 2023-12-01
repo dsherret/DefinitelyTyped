@@ -82,7 +82,9 @@ export interface AutoValueContext {
     value?: FieldInfo["value"] | undefined;
 }
 
-type Validator = (this: CustomValidationContext) => undefined | string | SimpleSchemaValidationError;
+type Validator = (
+    this: CustomValidationContext,
+) => undefined | string | SimpleSchemaValidationError;
 
 export interface SchemaDefinition {
     type: any;
@@ -140,25 +142,30 @@ interface SimpleSchemaValidationError {
 
 type IntegerSchema = "SimpleSchema.Integer";
 
-export type SimpleSchemaDefinition = {
-    [key: string]:
-        | SchemaDefinition
-        | BooleanConstructor
-        | StringConstructor
-        | NumberConstructor
-        | DateConstructor
-        | ArrayConstructor
-        | IntegerSchema
-        | [StringConstructor]
-        | [NumberConstructor]
-        | [IntegerSchema]
-        | [SimpleSchema]
-        | string
-        | RegExp
-        | SimpleSchema;
-} | any[];
+export type SimpleSchemaDefinition =
+    | {
+          [key: string]:
+              | SchemaDefinition
+              | BooleanConstructor
+              | StringConstructor
+              | NumberConstructor
+              | DateConstructor
+              | ArrayConstructor
+              | IntegerSchema
+              | [StringConstructor]
+              | [NumberConstructor]
+              | [IntegerSchema]
+              | [SimpleSchema]
+              | string
+              | RegExp
+              | SimpleSchema;
+      }
+    | any[];
 
-type SimpleSchemaCreateFunc = (options: { label: string; regExp: string }) => string;
+type SimpleSchemaCreateFunc = (options: {
+    label: string;
+    regExp: string;
+}) => string;
 
 interface SimpleSchemaMessageType {
     [key: string]: string | SimpleSchemaCreateFunc;
@@ -176,16 +183,14 @@ export class SimpleSchema {
     omit(...fields: string[]): SimpleSchema;
     static oneOf(
         ...types: Array<
-            (
-                | RegExp
-                | SchemaDefinition
-                | BooleanConstructor
-                | StringConstructor
-                | NumberConstructor
-                | DateConstructor
-                | ArrayConstructor
-                | IntegerSchema
-            )
+            | RegExp
+            | SchemaDefinition
+            | BooleanConstructor
+            | StringConstructor
+            | NumberConstructor
+            | DateConstructor
+            | ArrayConstructor
+            | IntegerSchema
         >
     ): SimpleSchema;
     clean(doc: any, options?: CleanOption): any;
@@ -202,7 +207,11 @@ export class SimpleSchema {
     newContext(): ValidationContext;
     objectKeys(keyPrefix?: any): any[];
     validate(obj: any, options?: ValidationOption): void;
-    static validate(obj: any, schema: SimpleSchema, options?: ValidationOption): void;
+    static validate(
+        obj: any,
+        schema: SimpleSchema,
+        options?: ValidationOption,
+    ): void;
     validator(options?: ValidatorOption): (obj: any) => boolean;
     extend(otherSchema: SimpleSchema | SimpleSchemaDefinition): SimpleSchema;
     static extendOptions(options: readonly string[]): void;
@@ -238,7 +247,9 @@ export class SimpleSchema {
         FAILED_REGULAR_EXPRESSION: string;
         KEY_NOT_IN_SCHEMA: string;
     };
-    static setDefaultMessages(messages: { messages: SimpleSchemaMessagesDict }): void;
+    static setDefaultMessages(messages: {
+        messages: SimpleSchemaMessagesDict;
+    }): void;
     getObjectSchema(key: string): typeof SimpleSchema | undefined;
 }
 

@@ -1,4 +1,11 @@
-import { Component, ComponentType, createElement, FC, ReactNode, StyleHTMLAttributes } from "react";
+import {
+    Component,
+    ComponentType,
+    createElement,
+    FC,
+    ReactNode,
+    StyleHTMLAttributes,
+} from "react";
 
 interface MDXProviderComponents {
     /**
@@ -115,7 +122,9 @@ interface MDXProviderComponents {
     [key: string]: ComponentType<any> | undefined;
 }
 
-type MDXProviderComponentsProp = MDXProviderComponents | ((components: MDXProviderComponents) => MDXProviderComponents);
+type MDXProviderComponentsProp =
+    | MDXProviderComponents
+    | ((components: MDXProviderComponents) => MDXProviderComponents);
 
 interface MDXProviderProps {
     children: React.ReactNode;
@@ -124,14 +133,19 @@ interface MDXProviderProps {
 
 declare const MDXProvider: FC<MDXProviderProps>;
 
-declare function useMDXComponents(components?: MDXProviderComponentsProp): MDXProviderComponents;
+declare function useMDXComponents(
+    components?: MDXProviderComponentsProp,
+): MDXProviderComponents;
 
 interface InjectedMDXProviderProps {
     components: MDXProviderComponents;
 }
 
 // Taken from https://github.com/sindresorhus/type-fest/blob/794de74c6e0d1650fe07b91d22d970b68c1d3e37/source/except.d.ts#L1-L22
-type Except<ObjectType, KeysType extends keyof ObjectType> = Pick<ObjectType, Exclude<keyof ObjectType, KeysType>>;
+type Except<ObjectType, KeysType extends keyof ObjectType> = Pick<
+    ObjectType,
+    Exclude<keyof ObjectType, KeysType>
+>;
 
 declare function withMDXComponents<GProps extends InjectedMDXProviderProps>(
     Component: ComponentType<GProps>,

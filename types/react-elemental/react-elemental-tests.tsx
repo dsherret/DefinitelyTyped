@@ -24,7 +24,8 @@ import {
 } from "react-elemental";
 
 class App extends React.Component {
-    handleChange = (key: string) => (value: any) => this.setState({ [key]: value });
+    handleChange = (key: string) => (value: any) =>
+        this.setState({ [key]: value });
     onClick: React.MouseEventHandler = (evt) => evt.preventDefault();
 
     render() {
@@ -35,13 +36,24 @@ class App extends React.Component {
                     secondary: { regular: "", bold: "" },
                 }}
             >
-                <Spacing size="huge" style={{ maxWidth: "900px" }} top bottom right left>
+                <Spacing
+                    size="huge"
+                    style={{ maxWidth: "900px" }}
+                    top
+                    bottom
+                    right
+                    left
+                >
                     <RadioGroup
                         options={[
                             { value: "s", label: "Small" },
                             { value: "m", label: "Medium" },
                             { value: "l", label: "Large" },
-                            { value: "xl", label: "Extra large (out of stock)", disabled: true },
+                            {
+                                value: "xl",
+                                label: "Extra large (out of stock)",
+                                disabled: true,
+                            },
                         ]}
                         value="s"
                         accentColor={colors.blue}
@@ -71,11 +83,11 @@ class App extends React.Component {
                     />
                     <Toast>
                         <Text>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit.
                         </Text>
                     </Toast>
-                    <Modal size="beta">
-                    </Modal>
+                    <Modal size="beta"></Modal>
                     <Tooltip
                         contents={
                             <Text color="gray10" size="kilo" center>
@@ -84,13 +96,21 @@ class App extends React.Component {
                         }
                         bottom
                     >
-                        <Text>
-                            Text
-                        </Text>
+                        <Text>Text</Text>
                     </Tooltip>
                     <Pulsator size="delta" color={colors.purple} transparent />
-                    <Spinner size="alpha" accentColor={colors.orange} duration={1.2} thickness={5} />
-                    <Link type="plain" href="" activeColor={colors.black} onClick={this.onClick}>
+                    <Spinner
+                        size="alpha"
+                        accentColor={colors.orange}
+                        duration={1.2}
+                        thickness={5}
+                    />
+                    <Link
+                        type="plain"
+                        href=""
+                        activeColor={colors.black}
+                        onClick={this.onClick}
+                    >
                         Use plain links to disable the underline on hover
                     </Link>
                     <TextArea
@@ -115,7 +135,12 @@ class App extends React.Component {
                         checked={false}
                         disabled
                     />
-                    <LoadingBar color={colors.red} thickness={4} duration={500} delay={50} />
+                    <LoadingBar
+                        color={colors.red}
+                        thickness={4}
+                        duration={500}
+                        delay={50}
+                    />
                     <Tag
                         text="Dismiss me again"
                         outlineColor={colors.green}
@@ -126,7 +151,10 @@ class App extends React.Component {
                         placeholder="Placeholder"
                         width={200}
                         options={[
-                            { label: "Some obnoxiously long label name", value: "first-item" },
+                            {
+                                label: "Some obnoxiously long label name",
+                                value: "first-item",
+                            },
                             { label: "Second item", value: "second-item" },
                             { label: "Third item", value: "third-item" },
                         ]}
@@ -139,7 +167,12 @@ class App extends React.Component {
                         onChange={() => {}}
                         secondary
                     />
-                    <Button color={colors.green} size="gamma" text="Colors!" secondary />
+                    <Button
+                        color={colors.green}
+                        size="gamma"
+                        text="Colors!"
+                        secondary
+                    />
                 </Spacing>
             </Elemental>
         );

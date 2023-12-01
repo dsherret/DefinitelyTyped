@@ -1,24 +1,24 @@
 {
-    "private": true,
-    "name": "@types/packery",
-    "version": "1.4.9999",
-    "projects": [
-        "http://packery.metafizzy.co"
-    ],
-    "dependencies": {
-        "@types/jquery": "*"
+  "private": true,
+  "name": "@types/packery",
+  "version": "1.4.9999",
+  "projects": [
+    "http://packery.metafizzy.co"
+  ],
+  "dependencies": {
+    "@types/jquery": "*"
+  },
+  "devDependencies": {
+    "@types/packery": "workspace:."
+  },
+  "owners": [
+    {
+      "name": " Piraveen Kamalathas from Kilix",
+      "githubUsername": "piraveen"
     },
-    "devDependencies": {
-        "@types/packery": "workspace:."
-    },
-    "owners": [
-        {
-            "name": " Piraveen Kamalathas from Kilix",
-            "githubUsername": "piraveen"
-        },
-        {
-            "name": "Juliën Hanssens",
-            "githubUsername": "hanssens"
-        }
-    ]
+    {
+      "name": "Juliën Hanssens",
+      "githubUsername": "hanssens"
+    }
+  ]
 }

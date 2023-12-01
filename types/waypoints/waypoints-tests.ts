@@ -55,13 +55,16 @@ const waypoints10 = $("#options-only").waypoint({
     },
 });
 
-const waypoints11 = $("#handler-first").waypoint(function() {
-    notify(this.element.id + " hit 25% from top of window");
-}, {
-    offset: "25%",
-});
+const waypoints11 = $("#handler-first").waypoint(
+    function () {
+        notify(this.element.id + " hit 25% from top of window");
+    },
+    {
+        offset: "25%",
+    },
+);
 
-const waypoints12 = $("#handler-only").waypoint(function() {
+const waypoints12 = $("#handler-only").waypoint(function () {
     notify(this.element.id + " hit");
 });
 

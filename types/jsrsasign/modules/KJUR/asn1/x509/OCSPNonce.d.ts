@@ -32,6 +32,11 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
      *                               hex: '12ab...'})
      */
     class OCSPNonce extends Extension {
-        constructor(params?: { extname?: string; hex?: string; int?: number; critical?: boolean });
+        constructor(params?: {
+            extname?: string;
+            hex?: string;
+            int?: number;
+            critical?: boolean;
+        });
     }
 }

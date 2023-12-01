@@ -15,10 +15,13 @@ import {
 } from "./wire";
 export declare type MessageHandler = (data: any) => boolean;
 declare class Transport extends EventEmitter {
-    protected wireListeners: Map<number, {
-        resolve: Function;
-        reject: Function;
-    }>;
+    protected wireListeners: Map<
+        number,
+        {
+            resolve: Function;
+            reject: Function;
+        }
+    >;
     protected uncorrelatedListener: Function;
     me: Identity & EntityTypeHelpers;
     environment: Environment;
@@ -35,7 +38,12 @@ declare class Transport extends EventEmitter {
     READY_STATE: typeof READY_STATE;
     ferryAction(data: any): Promise<Message<any>>;
     registerMessageHandler(handler: MessageHandler): void;
-    protected addWireListener(id: number, resolve: Function, reject: Function, uncorrelated: boolean): void;
+    protected addWireListener(
+        id: number,
+        resolve: Function,
+        reject: Function,
+        uncorrelated: boolean,
+    ): void;
     protected onmessage(data: Message<Payload>): void;
     protected handleMessage(data: Message<Payload>): boolean;
 }
@@ -46,7 +54,11 @@ interface Transport {
         payload: {},
         uncorrelated: true,
     ): Promise<Message<AuthorizationPayload>>;
-    sendAction(action: string, payload: {}, uncorrelated: boolean): Promise<Message<Payload>>;
+    sendAction(
+        action: string,
+        payload: {},
+        uncorrelated: boolean,
+    ): Promise<Message<Payload>>;
     topicRefMap: Map<string, number>;
 }
 export interface Message<T> {

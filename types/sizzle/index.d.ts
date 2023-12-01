@@ -10,7 +10,10 @@ interface SizzleStatic {
         context: Element | Document | DocumentFragment,
         results: TArrayLike,
     ): TArrayLike;
-    (selector: string, context?: Element | Document | DocumentFragment): Element[];
+    (
+        selector: string,
+        context?: Element | Document | DocumentFragment,
+    ): Element[];
     // eslint-disable-next-line @typescript-eslint/ban-types
     compile(selector: string): Function;
     matchesSelector(element: Element, selector: string): boolean;
@@ -27,7 +30,9 @@ declare namespace Sizzle {
         attrHandle: Selectors.AttrHandleFunctions;
         pseudos: Selectors.PseudoFunctions;
         setFilters: Selectors.SetFilterFunctions;
-        createPseudo(fn: Selectors.CreatePseudoFunction): Selectors.PseudoFunction;
+        createPseudo(
+            fn: Selectors.CreatePseudoFunction,
+        ): Selectors.PseudoFunction;
     }
 
     namespace Selectors {
@@ -37,7 +42,11 @@ declare namespace Sizzle {
 
         interface FindFunction {
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            (match: RegExpMatchArray, context: Element | Document, isXML: boolean): Element[] | void;
+            (
+                match: RegExpMatchArray,
+                context: Element | Document,
+                isXML: boolean,
+            ): Element[] | void;
         }
 
         interface FindFunctions {

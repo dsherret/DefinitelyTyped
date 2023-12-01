@@ -1,7 +1,8 @@
 import { TextFieldProps } from "@material-ui/core";
 import * as React from "react";
 
-export interface MaterialUiPhoneNumberProps extends Omit<TextFieldProps, "onChange"> {
+export interface MaterialUiPhoneNumberProps
+    extends Omit<TextFieldProps, "onChange"> {
     ref?: any;
     autoFormat?: boolean | undefined;
     classes?: Record<string, any> | undefined;

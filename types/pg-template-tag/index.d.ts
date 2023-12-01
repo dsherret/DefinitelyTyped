@@ -3,7 +3,10 @@ export interface SqlLiteral {
     values: unknown[];
 }
 
-export default function SQLTag(parts: TemplateStringsArray, ...values: readonly unknown[]): SqlLiteral;
+export default function SQLTag(
+    parts: TemplateStringsArray,
+    ...values: readonly unknown[]
+): SqlLiteral;
 
 export function sqlLiteral(value: string): SqlLiteral;
 

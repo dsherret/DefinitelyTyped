@@ -106,7 +106,11 @@ export const sys: {
      * @param cb.error Error or `null` if no error.
      * @param config Ping configuration.
      */
-    probe(addr: string, cb: (isAlive: boolean | null, error: unknown) => void, config?: PingConfig): void;
+    probe(
+        addr: string,
+        cb: (isAlive: boolean | null, error: unknown) => void,
+        config?: PingConfig,
+    ): void;
 };
 
 export const promise: {

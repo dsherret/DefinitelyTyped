@@ -13,7 +13,7 @@ fuzzyset.get("some string", "no match");
 fuzzyset.get("some string", { value: "not found" });
 
 // $ExpectType [number, string][] | undefined
-fuzzyset.get("some string", undefined, .5);
+fuzzyset.get("some string", undefined, 0.5);
 
 // $ExpectType false | undefined
 fuzzyset.add("another string");

@@ -30,25 +30,28 @@ router.route({
 });
 
 generator.addJoiRouter(router);
-const spec = generator.generateSpec({
-    info: {
-        title: "Awesome API",
-        description: "API for creating and editing examples.",
-        version: "0.0.1",
-    },
-    basePath: "/",
-    tags: [
-        {
-            name: "greetings",
-            description: "Group of API methods ",
+const spec = generator.generateSpec(
+    {
+        info: {
+            title: "Awesome API",
+            description: "API for creating and editing examples.",
+            version: "0.0.1",
         },
-    ],
-}, {
-    defaultResponses: {},
-    warnFunc: () => {
-        console.log("Something happen...");
+        basePath: "/",
+        tags: [
+            {
+                name: "greetings",
+                description: "Group of API methods ",
+            },
+        ],
     },
-});
+    {
+        defaultResponses: {},
+        warnFunc: () => {
+            console.log("Something happen...");
+        },
+    },
+);
 
 router.get("/api.json", async (ctx) => {
     ctx.body = JSON.stringify(spec, null, "  ");

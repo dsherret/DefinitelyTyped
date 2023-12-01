@@ -14,7 +14,9 @@ declare namespace ReduxPromiseListener {
         start: string;
         resolve: string | ActionMatcher;
         reject: string | ActionMatcher;
-        setPayload?: ((action: StartAction, payload: any) => AnyAction) | undefined;
+        setPayload?:
+            | ((action: StartAction, payload: any) => AnyAction)
+            | undefined;
         getPayload?: ((action: ResolveAction) => TReturn) | undefined;
         getError?: ((action: RejectAction) => any) | undefined;
     }

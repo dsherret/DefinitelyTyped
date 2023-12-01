@@ -67,7 +67,7 @@ Polymorphic.eachRelatedType(() => "");
 // $ExpectType void
 Polymorphic.eachRelatedType(() => "", {});
 // $ExpectType void
-Polymorphic.eachRelatedType(name => {
+Polymorphic.eachRelatedType((name) => {
     assertType<string>(name);
 });
 
@@ -96,7 +96,7 @@ declare module "ember-data/types/registries/model" {
 }
 
 let blogPost = store.peekRecord("relational-post", 1);
-blogPost!.get("comments").then(comments => {
+blogPost!.get("comments").then((comments) => {
     // now we can work with the comments
     let author: string = comments.get("firstObject")!.get("author");
 });

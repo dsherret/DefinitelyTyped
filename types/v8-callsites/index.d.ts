@@ -23,6 +23,9 @@ declare function stack(origin?: (...args: any[]) => any): CallSite[];
  * @returns
  * The captured callstack.
  */
-declare function stack(frames: number, origin: (...args: any[]) => any): CallSite[];
+declare function stack(
+    frames: number,
+    origin: (...args: any[]) => any,
+): CallSite[];
 
 export = stack;

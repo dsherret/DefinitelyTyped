@@ -92,7 +92,8 @@ const chargeResponseExample: ChargeResource = {
     payments: [
         {
             network: "ethereum",
-            transaction_id: "0xe02fead885c3e4019945428ed54d094247bada2d0ac41b08fce7ce137bf29587",
+            transaction_id:
+                "0xe02fead885c3e4019945428ed54d094247bada2d0ac41b08fce7ce137bf29587",
             status: "COMPLETED",
             value: {
                 local: { amount: "100.0", currency: "USD" },
@@ -115,12 +116,14 @@ const chargeResponseExample: ChargeResource = {
 /**
  * Create an example charge and fetch the same charge by its ID.
  */
-Charge.create(chargeCreateExample).then((response: Resource.Charge) => {
-    return Charge.retrieve(response.id);
-}).then((response) => {
-    const id: string = response.id;
-    const resource: "charge" = response.resource;
-});
+Charge.create(chargeCreateExample)
+    .then((response: Resource.Charge) => {
+        return Charge.retrieve(response.id);
+    })
+    .then((response) => {
+        const id: string = response.id;
+        const resource: "charge" = response.resource;
+    });
 
 /**
  * List out all available charges.
@@ -147,23 +150,28 @@ Charge.all({}).then((list) => {
 /**
  * insert, save, update and delete a Charge resource.
  */
-new Charge(chargeCreateExample).insert().then((charge) => {
-    const resource: "charge" = charge.resource;
-    charge.name = "some-new-name";
+new Charge(chargeCreateExample)
+    .insert()
+    .then((charge) => {
+        const resource: "charge" = charge.resource;
+        charge.name = "some-new-name";
 
-    return charge.save();
-}).then((charge) => {
-    const resource: "charge" = charge.resource;
-    charge.description = "some-new-description";
+        return charge.save();
+    })
+    .then((charge) => {
+        const resource: "charge" = charge.resource;
+        charge.description = "some-new-description";
 
-    return charge.update();
-}).then((charge) => {
-    const resource: "charge" = charge.resource;
+        return charge.update();
+    })
+    .then((charge) => {
+        const resource: "charge" = charge.resource;
 
-    return charge.delete();
-}).then((charge) => {
-    const resource: "charge" = charge.resource;
-});
+        return charge.delete();
+    })
+    .then((charge) => {
+        const resource: "charge" = charge.resource;
+    });
 
 /**
  * Checkout create example.
@@ -203,34 +211,45 @@ const checkoutResponseExample: CheckoutResource = {
 /**
  * Create, get and update and delete a Checkout resource.
  */
-Checkout.create(checkoutCreateExample).then((response: Resource.Checkout) => {
-    return Checkout.retrieve(response.id);
-}).then((response) => {
-    return Checkout.updateById(response.id, { name: "some-name", description: "some-description" });
-}).then((response) => {
-    return Checkout.deleteById(response.id);
-});
+Checkout.create(checkoutCreateExample)
+    .then((response: Resource.Checkout) => {
+        return Checkout.retrieve(response.id);
+    })
+    .then((response) => {
+        return Checkout.updateById(response.id, {
+            name: "some-name",
+            description: "some-description",
+        });
+    })
+    .then((response) => {
+        return Checkout.deleteById(response.id);
+    });
 
 /**
  * insert, save, update and delete a Checkout resource.
  */
-new Checkout(checkoutCreateExample).insert().then((checkout) => {
-    const resource: "checkout" = checkout.resource;
-    checkout.name = "some-new-name";
+new Checkout(checkoutCreateExample)
+    .insert()
+    .then((checkout) => {
+        const resource: "checkout" = checkout.resource;
+        checkout.name = "some-new-name";
 
-    return checkout.save();
-}).then((checkout) => {
-    const resource: "checkout" = checkout.resource;
-    checkout.description = "some-new-description";
+        return checkout.save();
+    })
+    .then((checkout) => {
+        const resource: "checkout" = checkout.resource;
+        checkout.description = "some-new-description";
 
-    return checkout.update();
-}).then((checkout) => {
-    const resource: "checkout" = checkout.resource;
+        return checkout.update();
+    })
+    .then((checkout) => {
+        const resource: "checkout" = checkout.resource;
 
-    return checkout.delete();
-}).then((checkout) => {
-    const resource: "checkout" = checkout.resource;
-});
+        return checkout.delete();
+    })
+    .then((checkout) => {
+        const resource: "checkout" = checkout.resource;
+    });
 
 /**
  * List out all available checkouts.
@@ -329,7 +348,10 @@ const paginationExample: Pagination = {
     previous_uri: null,
     next_uri:
         "https://api.commerce.coinbase.com/checkouts?limit=20&starting_after=fb6721f2-1622-48f0-b713-aac6c819b67a",
-    cursor_range: ["a76721f2-1611-48fb-a513-aac6c819a9d6", "fb6721f2-1622-48f0-b713-aac6c819b67a"],
+    cursor_range: [
+        "a76721f2-1611-48fb-a513-aac6c819a9d6",
+        "fb6721f2-1622-48f0-b713-aac6c819b67a",
+    ],
 };
 
 /**
@@ -338,11 +360,19 @@ const paginationExample: Pagination = {
  * @link https://github.com/coinbase/coinbase-commerce-node#verify-signature-header
  */
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-const shouldBeVoid: void = Webhook.verifySigHeader(JSON.stringify(eventResponseExample), "some-signature", "my-secret");
+const shouldBeVoid: void = Webhook.verifySigHeader(
+    JSON.stringify(eventResponseExample),
+    "some-signature",
+    "my-secret",
+);
 
 /**
  * Verify event body.
  *
  * @link https://github.com/coinbase/coinbase-commerce-node/blob/v1.0.4/lib/Webhook.js#L10
  */
-Webhook.verifyEventBody(JSON.stringify(eventResponseExample), "some-signature", "my-secret");
+Webhook.verifyEventBody(
+    JSON.stringify(eventResponseExample),
+    "some-signature",
+    "my-secret",
+);

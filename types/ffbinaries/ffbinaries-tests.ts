@@ -47,7 +47,10 @@ ffbinaries.downloadBinaries(
     },
 );
 
-const ffmpegLocated = ffbinaries.locateBinariesSync(["ffmpeg"], { ensureExecutable: true, paths: ["."] });
+const ffmpegLocated = ffbinaries.locateBinariesSync(["ffmpeg"], {
+    ensureExecutable: true,
+    paths: ["."],
+});
 // @ts-expect-error
 ffmpegLocated.ffprobe;
 if (ffmpegLocated.ffmpeg.found) {

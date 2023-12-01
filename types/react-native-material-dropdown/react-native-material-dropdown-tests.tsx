@@ -1,6 +1,10 @@
 import * as React from "react";
 import { LayoutChangeEvent, LayoutRectangle, Text, View } from "react-native";
-import { Dropdown, DropDownData, RenderBaseProps } from "react-native-material-dropdown";
+import {
+    Dropdown,
+    DropDownData,
+    RenderBaseProps,
+} from "react-native-material-dropdown";
 
 interface DropdownTestProps {
     title: string;
@@ -35,17 +39,23 @@ class DropdownTest extends React.Component<DropdownTestProps> {
                     data={dropdownData}
                     value={"orange"}
                     label="Fruits"
-                    propsExtractor={(item, index) => item.props ? item.props : {}}
-                    onLayout={(event: LayoutChangeEvent) => this.layout = event.nativeEvent.layout}
-                    onFocus={() => this.isFocused = true}
-                    onBlur={() => this.isFocused = false}
-                    onChangeText={(value: string) => this.curText = value}
+                    propsExtractor={(item, index) =>
+                        item.props ? item.props : {}
+                    }
+                    onLayout={(event: LayoutChangeEvent) =>
+                        (this.layout = event.nativeEvent.layout)
+                    }
+                    onFocus={() => (this.isFocused = true)}
+                    onBlur={() => (this.isFocused = false)}
+                    onChangeText={(value: string) => (this.curText = value)}
                 />
 
                 <Dropdown
                     data={dropdownData}
                     containerStyle={{ backgroundColor: "#fff" }}
-                    renderBase={(props: RenderBaseProps) => <Text>{props.title}</Text>}
+                    renderBase={(props: RenderBaseProps) => (
+                        <Text>{props.title}</Text>
+                    )}
                 />
             </div>
         );

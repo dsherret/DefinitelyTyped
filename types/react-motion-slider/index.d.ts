@@ -55,7 +55,9 @@ declare module "react-motion-slider" {
          * @param currentIndex
          * @param nextIndex
          */
-        beforeSlide?: ((currentIndex: number, nextIndex: number) => void) | undefined;
+        beforeSlide?:
+            | ((currentIndex: number, nextIndex: number) => void)
+            | undefined;
         /**
          * Prop callback fired after slide change.
          * @param currentIndex

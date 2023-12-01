@@ -19,22 +19,23 @@ async function start() {
         const client = await connect();
         console.log("Connected");
 
-        const queue = client.queue("perth-now", {
-            autoDelete: false,
-            durable: true,
-        }, q => {
-            console.log("Queue opened");
-            console.log("Name: %s Channel: %s", q.name, q.channel);
+        const queue = client.queue(
+            "perth-now",
+            {
+                autoDelete: false,
+                durable: true,
+            },
+            (q) => {
+                console.log("Queue opened");
+                console.log("Name: %s Channel: %s", q.name, q.channel);
 
-            queue.bind("amq.fanout", "#", () => {
-                queue.subscribe(
-                    { ack: true },
-                    (msg, _, __, ack) => {
+                queue.bind("amq.fanout", "#", () => {
+                    queue.subscribe({ ack: true }, (msg, _, __, ack) => {
                         ack.acknowledge(true);
-                    },
-                );
-            });
-        });
+                    });
+                });
+            },
+        );
 
         const exchange = client.exchange("amq.fanout", { confirm: true });
 

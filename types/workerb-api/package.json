@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/workerb-api",
-    "version": "1.0.9999",
-    "projects": [
-        "https://workerb.io/"
-    ],
-    "devDependencies": {
-        "@types/workerb-api": "workspace:."
+  "private": true,
+  "name": "@types/workerb-api",
+  "version": "1.0.9999",
+  "projects": [
+    "https://workerb.io/"
+  ],
+  "devDependencies": {
+    "@types/workerb-api": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "workerB",
+      "githubUsername": "workerb-io"
     },
-    "owners": [
-        {
-            "name": "workerB",
-            "githubUsername": "workerb-io"
-        },
-        {
-            "name": "Saurabh Garg",
-            "githubUsername": "s-garg"
-        }
-    ]
+    {
+      "name": "Saurabh Garg",
+      "githubUsername": "s-garg"
+    }
+  ]
 }

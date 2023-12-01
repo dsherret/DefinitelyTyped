@@ -1,6 +1,7 @@
 import nexpect = require("nexpect");
 
-nexpect.spawn("echo", ["hello"])
+nexpect
+    .spawn("echo", ["hello"])
     .expect("hello")
     .run((err, stdout, exitcode) => {
         if (!err) {
@@ -8,7 +9,8 @@ nexpect.spawn("echo", ["hello"])
         }
     });
 
-nexpect.spawn("ls -la /tmp/undefined", { stream: "stderr" })
+nexpect
+    .spawn("ls -la /tmp/undefined", { stream: "stderr" })
     .expect("No such file or directory")
     .run((err) => {
         if (!err) {
@@ -16,7 +18,8 @@ nexpect.spawn("ls -la /tmp/undefined", { stream: "stderr" })
         }
     });
 
-nexpect.spawn("node --interactive")
+nexpect
+    .spawn("node --interactive")
     .expect(">")
     .sendline("console.log('testing')")
     .expect("testing")

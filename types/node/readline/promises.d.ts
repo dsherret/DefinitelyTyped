@@ -3,7 +3,13 @@
  * @experimental
  */
 declare module "readline/promises" {
-    import { AsyncCompleter, Completer, Direction, Interface as _Interface, ReadLineOptions } from "node:readline";
+    import {
+        AsyncCompleter,
+        Completer,
+        Direction,
+        Interface as _Interface,
+        ReadLineOptions,
+    } from "node:readline";
     import { Abortable } from "node:events";
     /**
      * Instances of the `readlinePromises.Interface` class are constructed using the`readlinePromises.createInterface()` method. Every instance is associated with a

@@ -12,7 +12,10 @@ type RouteModel = object | string | number;
  * The `Ember.Route` class is used to define individual routes. Refer to
  * the [routing guide](http://emberjs.com/guides/routing/) for documentation.
  */
-export default class Route<Model = unknown> extends EmberObject.extend(ActionHandler, Evented) {
+export default class Route<Model = unknown> extends EmberObject.extend(
+    ActionHandler,
+    Evented,
+) {
     // methods
     /**
      * This hook is called after this route's model has resolved.
@@ -60,7 +63,11 @@ export default class Route<Model = unknown> extends EmberObject.extend(ActionHan
     /**
      * Disconnects a view that has been rendered into an outlet.
      */
-    disconnectOutlet(options: string | { outlet?: string | undefined; parentView?: string | undefined }): void;
+    disconnectOutlet(
+        options:
+            | string
+            | { outlet?: string | undefined; parentView?: string | undefined },
+    ): void;
 
     /**
      * A hook you can implement to convert the URL into the model for
@@ -156,7 +163,11 @@ export default class Route<Model = unknown> extends EmberObject.extend(ActionHan
      * A hook you can use to reset controller values either when the model
      * changes or the route is exiting.
      */
-    resetController(controller: Controller, isExiting: boolean, transition: Transition): void;
+    resetController(
+        controller: Controller,
+        isExiting: boolean,
+        transition: Transition,
+    ): void;
 
     /**
      * Sends an action to the router, which will delegate it to the currently active
@@ -188,7 +199,11 @@ export default class Route<Model = unknown> extends EmberObject.extend(ActionHan
      * when implementing your `setupController` function, make sure to call
      * `_super`
      */
-    setupController(controller: Controller, model: Model, transition: Transition): void;
+    setupController(
+        controller: Controller,
+        model: Model,
+        transition: Transition,
+    ): void;
 
     /**
      * Transition the application into another route. The route may
@@ -381,8 +396,17 @@ export default class Route<Model = unknown> extends EmberObject.extend(ActionHan
      *                transition
      */
     transitionTo(name: string, options?: { queryParams: object }): Transition;
-    transitionTo(name: string, modelsA: RouteModel, options?: { queryParams: object }): Transition;
-    transitionTo(name: string, modelsA: RouteModel, modelsB: RouteModel, options?: { queryParams: object }): Transition;
+    transitionTo(
+        name: string,
+        modelsA: RouteModel,
+        options?: { queryParams: object },
+    ): Transition;
+    transitionTo(
+        name: string,
+        modelsA: RouteModel,
+        modelsB: RouteModel,
+        options?: { queryParams: object },
+    ): Transition;
     transitionTo(
         name: string,
         modelsA: RouteModel,

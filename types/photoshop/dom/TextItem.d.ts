@@ -88,10 +88,7 @@ export declare class TextItem {
         x: number;
         y: number;
     };
-    set textClickPoint(point: {
-        x: number;
-        y: number;
-    });
+    set textClickPoint(point: { x: number; y: number });
     /**
      * The text orientation.
      * @default HORIZONTAL

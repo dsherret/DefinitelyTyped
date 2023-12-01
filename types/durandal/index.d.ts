@@ -318,7 +318,11 @@ interface DurandalViewEngineModule {
      * @param {Error} requirePath The error that was returned from the attempt to locate the default view.
      * @returns {Promise} A promise for the fallback view.
      */
-    createFallbackView(viewId: string, requirePath: string, err: Error): DurandalPromise<HTMLElement>;
+    createFallbackView(
+        viewId: string,
+        requirePath: string,
+        err: Error,
+    ): DurandalPromise<HTMLElement>;
 }
 
 /**
@@ -347,7 +351,11 @@ declare module "durandal/binder" {
      * @param {DOMElement} view The view that is about to be bound.
      * @param {object} instruction The object that carries the binding instructions.
      */
-    export var binding: (data: any, view: HTMLElement, instruction: BindingInstruction) => void;
+    export var binding: (
+        data: any,
+        view: HTMLElement,
+        instruction: BindingInstruction,
+    ) => void;
 
     /**
      * Called after every binding operation. Does nothing by default.
@@ -355,7 +363,11 @@ declare module "durandal/binder" {
      * @param {DOMElement} view The view that has just been bound.
      * @param {object} instruction The object that carries the binding instructions.
      */
-    export var bindingComplete: (data: any, view: HTMLElement, instruction: BindingInstruction) => void;
+    export var bindingComplete: (
+        data: any,
+        view: HTMLElement,
+        instruction: BindingInstruction,
+    ) => void;
 
     /**
      * Indicates whether or not the binding system should throw errors or not.
@@ -368,7 +380,9 @@ declare module "durandal/binder" {
      * @param {DOMElement} view The view that was previously bound.
      * @returns {object} The object that carries the binding instructions.
      */
-    export function getBindingInstruction(view: HTMLElement): BindingInstruction;
+    export function getBindingInstruction(
+        view: HTMLElement,
+    ): BindingInstruction;
 
     /**
      * Binds the view, preserving the existing binding context. Optionally, a new context can be created, parented to the previous context.
@@ -413,7 +427,10 @@ declare module "durandal/activator" {
      * @param {ActivatorSettings} [settings] Per activator overrides of the default activator settings.
      * @returns {Activator} The created activator.
      */
-    export function create<T>(initialActiveItem?: T, settings?: DurandalActivatorSettings): DurandalActivator<T>;
+    export function create<T>(
+        initialActiveItem?: T,
+        settings?: DurandalActivatorSettings,
+    ): DurandalActivator<T>;
 
     /**
      * Determines whether or not the provided object is an activator or not.
@@ -441,7 +458,11 @@ interface DurandalViewLocatorModule {
      * @param {string} [viewsPath] The replacement for the modulesPath. If not specified, the replacement is 'views'.
      * @param {string} [areasPath] Partial views are mapped to the "views" folder if not specified. Use this parameter to change their location.
      */
-    useConvention(modulesPath?: string, viewsPath?: string, areasPath?: string): void;
+    useConvention(
+        modulesPath?: string,
+        viewsPath?: string,
+        areasPath?: string,
+    ): void;
 
     /**
      * Maps an object instance to a view instance.
@@ -450,7 +471,11 @@ interface DurandalViewLocatorModule {
      * @param {DOMElement[]} [elementsToSearch] An existing set of elements to search first.
      * @returns {Promise} A promise of the view.
      */
-    locateViewForObject(obj: any, area: string, elementsToSearch?: HTMLElement[]): DurandalPromise<HTMLElement>;
+    locateViewForObject(
+        obj: any,
+        area: string,
+        elementsToSearch?: HTMLElement[],
+    ): DurandalPromise<HTMLElement>;
 
     /**
      * Converts a module id into a view id. By default the ids are the same.
@@ -481,7 +506,11 @@ interface DurandalViewLocatorModule {
      * @param {DOMElement[]} [elementsToSearch] An existing set of elements to search first.
      * @returns {Promise} A promise of the view.
      */
-    locateView(view: HTMLElement, area?: string, elementsToSearch?: HTMLElement[]): DurandalPromise<HTMLElement>;
+    locateView(
+        view: HTMLElement,
+        area?: string,
+        elementsToSearch?: HTMLElement[],
+    ): DurandalPromise<HTMLElement>;
 
     /**
      * Locates the specified view.
@@ -490,7 +519,11 @@ interface DurandalViewLocatorModule {
      * @param {DOMElement[]} [elementsToSearch] An existing set of elements to search first.
      * @returns {Promise} A promise of the view.
      */
-    locateView(viewUrlOrId: string, area?: string, elementsToSearch?: HTMLElement[]): DurandalPromise<HTMLElement>;
+    locateView(
+        viewUrlOrId: string,
+        area?: string,
+        elementsToSearch?: HTMLElement[],
+    ): DurandalPromise<HTMLElement>;
 }
 
 /**
@@ -525,13 +558,31 @@ declare module "durandal/composition" {
         area?: string | undefined;
         preserveContext?: boolean | undefined;
         activate?: boolean | undefined;
-        strategy?: ((context: CompositionContext) => DurandalPromise<HTMLElement>) | undefined;
+        strategy?:
+            | ((context: CompositionContext) => DurandalPromise<HTMLElement>)
+            | undefined;
         composingNewView: boolean;
         child: HTMLElement;
-        binding?: ((child: HTMLElement, parent: HTMLElement, context: CompositionContext) => void) | undefined;
-        attached?: ((child: HTMLElement, parent: HTMLElement, context: CompositionContext) => void) | undefined;
+        binding?:
+            | ((
+                  child: HTMLElement,
+                  parent: HTMLElement,
+                  context: CompositionContext,
+              ) => void)
+            | undefined;
+        attached?:
+            | ((
+                  child: HTMLElement,
+                  parent: HTMLElement,
+                  context: CompositionContext,
+              ) => void)
+            | undefined;
         compositionComplete?:
-            | ((child: HTMLElement, parent: HTMLElement, context: CompositionContext) => void)
+            | ((
+                  child: HTMLElement,
+                  parent: HTMLElement,
+                  context: CompositionContext,
+              ) => void)
             | undefined;
         transition?: string | undefined;
     }
@@ -591,7 +642,9 @@ declare module "durandal/composition" {
      * @param {object} context The composition context containing the model and possibly existing viewElements.
      * @returns {promise} A promise for the view.
      */
-    export var defaultStrategy: (context: CompositionContext) => DurandalPromise<HTMLElement>;
+    export var defaultStrategy: (
+        context: CompositionContext,
+    ) => DurandalPromise<HTMLElement>;
 
     /**
      * Initiates a composition.
@@ -636,7 +689,13 @@ declare module "plugins/dialog" {
      * Models a message box's message, title and options.
      */
     class Box {
-        constructor(message: string, title?: string, options?: string[], autoclose?: boolean, settings?: Object);
+        constructor(
+            message: string,
+            title?: string,
+            options?: string[],
+            autoclose?: boolean,
+            settings?: Object,
+        );
 
         /**
          * Selects an option and closes the message box, returning the selected option through the dialog system's promise.
@@ -703,7 +762,11 @@ declare module "plugins/dialog" {
          * @param {DOMElement} parent The parent view.
          * @param {object} context The composition context.
          */
-        compositionComplete(child: HTMLElement, parent: HTMLElement, context: composition.CompositionContext): void;
+        compositionComplete(
+            child: HTMLElement,
+            parent: HTMLElement,
+            context: composition.CompositionContext,
+        ): void;
 
         /**
          * Opacity of the blockout. The default is 0.6.
@@ -777,7 +840,11 @@ declare module "plugins/dialog" {
      * @param {string} [context] The name of the dialog context to use. Uses the default context if none is specified.
      * @returns {Promise} A promise that resolves when the dialog is closed and returns any data passed at the time of closing.
      */
-    export function show(obj: any, activationData?: any, context?: string): DurandalPromise<any>;
+    export function show(
+        obj: any,
+        activationData?: any,
+        context?: string,
+    ): DurandalPromise<any>;
 
     /**
      * Shows a message box.
@@ -850,7 +917,10 @@ declare module "plugins/history" {
      * @param {boolean} forcePushState Should we force push state?
      * @returns {string} The fragment.
      */
-    export function getFragment(fragment: string, forcePushState: boolean): string;
+    export function getFragment(
+        fragment: string,
+        forcePushState: boolean,
+    ): string;
 
     /**
      * Activate the hash change handling, returning `true` if the current URL matches an existing route, and `false` otherwise.
@@ -900,7 +970,10 @@ declare module "plugins/history" {
      * @param {object|boolean} options An options object with optional trigger and replace flags. You can also pass a boolean directly to set the trigger option. Trigger is `true` by default.
      * @return {boolean} Returns true/false from loading the url.
      */
-    export function navigate(fragment: string, options: DurandalNavigationOptions): boolean;
+    export function navigate(
+        fragment: string,
+        options: DurandalNavigationOptions,
+    ): boolean;
 
     /**
      * Navigates back in the browser history.
@@ -934,7 +1007,11 @@ declare module "plugins/http" {
      * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
      * @returns {Promise} A promise of the get response data.
      */
-    export function get(url: string, query?: Object, headers?: Object): DurandalPromise<any>;
+    export function get(
+        url: string,
+        query?: Object,
+        headers?: Object,
+    ): DurandalPromise<any>;
 
     /**
      * Makes an JSONP request.
@@ -944,7 +1021,12 @@ declare module "plugins/http" {
      * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
      * @returns {Promise} A promise of the response data.
      */
-    export function jsonp(url: string, query?: Object, callbackParam?: string, headers?: Object): DurandalPromise<any>;
+    export function jsonp(
+        url: string,
+        query?: Object,
+        callbackParam?: string,
+        headers?: Object,
+    ): DurandalPromise<any>;
 
     /**
      * Makes an HTTP POST request.
@@ -953,7 +1035,11 @@ declare module "plugins/http" {
      * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
      * @returns {Promise} A promise of the response data.
      */
-    export function post(url: string, data: Object, headers?: Object): DurandalPromise<any>;
+    export function post(
+        url: string,
+        data: Object,
+        headers?: Object,
+    ): DurandalPromise<any>;
 
     /**
      * Makes an HTTP PUT request.
@@ -963,7 +1049,11 @@ declare module "plugins/http" {
      * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
      * @return {Promise} A promise of the response data.
      */
-    export function put(url: string, data: Object, headers?: Object): DurandalPromise<any>;
+    export function put(
+        url: string,
+        data: Object,
+        headers?: Object,
+    ): DurandalPromise<any>;
 
     /**
      * Makes an HTTP DELETE request.
@@ -973,7 +1063,11 @@ declare module "plugins/http" {
      * @param {object} [headers] The data to add to the request header.  It will be converted to JSON. If the data contains Knockout observables, they will be converted into normal properties before serialization.
      * @return {Promise} A promise of the get response data.
      */
-    export function remove(url: string, query?: Object, headers?: Object): DurandalPromise<any>;
+    export function remove(
+        url: string,
+        query?: Object,
+        headers?: Object,
+    ): DurandalPromise<any>;
 }
 
 /**
@@ -999,7 +1093,11 @@ declare module "plugins/observable" {
          * @param {object} [original] The original value of the property. If not specified, it will be retrieved from the object.
          * @returns {KnockoutObservable} The underlying observable.
          */
-        export function convertProperty(obj: any, propertyName: string, original?: any): KnockoutObservable<any>;
+        export function convertProperty(
+            obj: any,
+            propertyName: string,
+            original?: any,
+        ): KnockoutObservable<any>;
 
         /**
          * Defines a computed property using ES5 getters and setters.
@@ -1110,7 +1208,10 @@ declare module "plugins/serializer" {
      * @param {object} [settings] Settings can specify a replacer or space to override the serializer defaults.
      * @returns {string} The JSON string.
      */
-    export function serialize(object: any, settings?: SerializerOptions): string;
+    export function serialize(
+        object: any,
+        settings?: SerializerOptions,
+    ): string;
 
     /**
      * Gets the type id for an object instance, using the configured `typeAttribute`.
@@ -1152,7 +1253,10 @@ declare module "plugins/serializer" {
      * @param {DeserializerOptions} settings Settings can specify a reviver, getTypeId function or getConstructor function.
      * @returns {object} The deserialized object.
      */
-    export function deserialize<T>(text: string, settings?: DeserializerOptions): T;
+    export function deserialize<T>(
+        text: string,
+        settings?: DeserializerOptions,
+    ): T;
 
     /**
      * Clone the object.
@@ -1189,7 +1293,11 @@ declare module "plugins/widget" {
      * @param {string} [viewId] The unconventional view id to map the kind to.
      * @param {string} [moduleId] The unconventional module id to map the kind to.
      */
-    export function mapKind(kind: string, viewId?: string, moduleId?: string): void;
+    export function mapKind(
+        kind: string,
+        viewId?: string,
+        moduleId?: string,
+    ): void;
 
     /**
      * Maps a kind name to it's module id. First it looks up a custom mapped kind, then falls back to `convertKindToModulePath`.
@@ -1314,7 +1422,7 @@ interface DurandalEventSupport<T> {
 }
 
 interface DurandalEventModule {
-    new(): DurandalEventSupport<Object>;
+    new (): DurandalEventSupport<Object>;
     includeIn(targetObject: any): void;
 }
 
@@ -1336,7 +1444,11 @@ interface DurandalAppModule extends DurandalEventSupport<DurandalAppModule> {
      * @param {string} [context] The name of the dialog context to use. Uses the default context if none is specified.
      * @returns {Promise} A promise that resolves when the dialog is closed and returns any data passed at the time of closing.
      */
-    showDialog(obj: any, activationData?: any, context?: string): DurandalPromise<any>;
+    showDialog(
+        obj: any,
+        activationData?: any,
+        context?: string,
+    ): DurandalPromise<any>;
 
     /**
      * Closes the dialog associated with the specified object. via the dialog plugin.
@@ -1407,7 +1519,11 @@ interface DurandalAppModule extends DurandalEventSupport<DurandalAppModule> {
      * @param {string} [transition] The transition to use from the previous root (or splash screen) into the new root.
      * @param {string} [applicationHost] The application host element. By default the id 'applicationHost' will be used.
      */
-    setRoot(root: any, transition?: string, applicationHost?: HTMLElement): void;
+    setRoot(
+        root: any,
+        transition?: string,
+        applicationHost?: HTMLElement,
+    ): void;
 }
 
 interface DurandalActivatorSettings {
@@ -1438,7 +1554,12 @@ interface DurandalActivatorSettings {
      * @param {object} newActivationData
      * @returns {boolean}
      */
-    areSameItem(currentItem: any, newItem: any, currentActivationData: any, newActivationData: any): boolean;
+    areSameItem(
+        currentItem: any,
+        newItem: any,
+        currentActivationData: any,
+        newActivationData: any,
+    ): boolean;
 
     /**
      * Called immediately before the new item is activated.
@@ -1605,7 +1726,10 @@ interface DurandalRouterBase<T> extends DurandalEventSupport<T> {
     /**
      * The route handlers that are registered. Each handler consists of a `routePattern` and a `callback`.
      */
-    handlers: Array<{ routePattern: RegExp; callback: (fragment: string) => void }>;
+    handlers: Array<{
+        routePattern: RegExp;
+        callback: (fragment: string) => void;
+    }>;
 
     /**
      * The route configs that are registered.
@@ -1659,7 +1783,10 @@ interface DurandalRouterBase<T> extends DurandalEventSupport<T> {
      * @param {object} instance The activated module.
      * @param {object} instruction The routing instruction associated with the action. It has a `config` property that references the original route mapping config.
      */
-    updateDocumentTitle(instance: Object, instruction: DurandalRouteInstruction): void;
+    updateDocumentTitle(
+        instance: Object,
+        instruction: DurandalRouteInstruction,
+    ): void;
 
     /**
      * Save a fragment into the hash history, or replace the URL state if the
@@ -1794,7 +1921,9 @@ interface DurandalRouterBase<T> extends DurandalEventSupport<T> {
      * @param {function} callback Called back with the route instruction containing the route info. The function can then modify the instruction by adding a moduleId and the router will take over from there.
      * @chainable
      */
-    mapUnknownRoutes(callback: (instruction: DurandalRouteInstruction) => void): T;
+    mapUnknownRoutes(
+        callback: (instruction: DurandalRouteInstruction) => void,
+    ): T;
 
     /**
      * Configures how the router will handle unknown routes.
@@ -1837,9 +1966,9 @@ interface DurandalRouterBase<T> extends DurandalEventSupport<T> {
      */
     guardRoute?:
         | ((
-            instance: Object,
-            instruction: DurandalRouteInstruction,
-        ) => DurandalPromise<boolean | string> | boolean | string)
+              instance: Object,
+              instruction: DurandalRouteInstruction,
+          ) => DurandalPromise<boolean | string> | boolean | string)
         | undefined;
 
     /**

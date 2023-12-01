@@ -2,7 +2,11 @@
 
 import BnetStrategy = require("passport-bnet");
 import { Request } from "express";
-import { Strategy, StrategyOptions, StrategyOptionsWithRequest } from "passport-bnet";
+import {
+    Strategy,
+    StrategyOptions,
+    StrategyOptionsWithRequest,
+} from "passport-bnet";
 import { Strategy as OAuth2Strategy, VerifyCallback } from "passport-oauth2";
 
 const strategyOptions1: StrategyOptions = {
@@ -15,7 +19,12 @@ const strategyOptions1: StrategyOptions = {
     customHeaders: {},
 };
 
-function verifyFunction1(_accessToken: string, _refreshToken: string, _profile: any, verifyCallback: VerifyCallback) {
+function verifyFunction1(
+    _accessToken: string,
+    _refreshToken: string,
+    _profile: any,
+    verifyCallback: VerifyCallback,
+) {
     verifyCallback(new Error("unimplemented"));
 }
 
@@ -29,7 +38,10 @@ function verifyFunction2(
     verifyCallback(new Error("unimplemented"));
 }
 
-const strategy1: BnetStrategy = new BnetStrategy(strategyOptions1, verifyFunction1);
+const strategy1: BnetStrategy = new BnetStrategy(
+    strategyOptions1,
+    verifyFunction1,
+);
 
 const strategy2: Strategy = new BnetStrategy(strategyOptions1, verifyFunction2);
 
@@ -67,14 +79,29 @@ const strategyOptions2: StrategyOptionsWithRequest = {
     passReqToCallback: true,
 };
 
-const strategy3: OAuth2Strategy = new BnetStrategy(strategyOptions2, verifyFunction3);
+const strategy3: OAuth2Strategy = new BnetStrategy(
+    strategyOptions2,
+    verifyFunction3,
+);
 
 const strategy4: Strategy = new Strategy(strategyOptions2, verifyFunction4);
 
 class MyStrategy extends BnetStrategy {
     useProtectedProperty() {
-        this._oauth2.get("http://www.example.com/profile", "token", err => err.statusCode);
-        this._oauth2.get("http://www.example.com/profile", "token", (err, result) => result);
-        this._oauth2.get("http://www.example.com/profile", "token", (err, result, response) => response);
+        this._oauth2.get(
+            "http://www.example.com/profile",
+            "token",
+            (err) => err.statusCode,
+        );
+        this._oauth2.get(
+            "http://www.example.com/profile",
+            "token",
+            (err, result) => result,
+        );
+        this._oauth2.get(
+            "http://www.example.com/profile",
+            "token",
+            (err, result, response) => response,
+        );
     }
 }

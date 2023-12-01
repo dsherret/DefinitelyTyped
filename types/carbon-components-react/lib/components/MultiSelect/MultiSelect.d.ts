@@ -14,10 +14,10 @@ import FilterableMultiSelect from "./FilterableMultiSelect";
 import { MultiSelectSortingProps } from "./MultiSelectPropTypes";
 
 export interface MultiSelectProps<T extends ListBoxBaseItemType = string>
-    extends
-        MultiSelectSortingProps<T>,
-        InternationalProps<ListBoxMenuIconTranslationKey | ListBoxSelectionTranslationKey>
-{
+    extends MultiSelectSortingProps<T>,
+        InternationalProps<
+            ListBoxMenuIconTranslationKey | ListBoxSelectionTranslationKey
+        > {
     clearSelectionDescription?: string | undefined;
     clearSelectionText?: string | undefined;
     direction?: VerticalDirection | undefined;
@@ -50,7 +50,9 @@ export interface MultiSelectProps<T extends ListBoxBaseItemType = string>
 }
 
 interface MultiSelect {
-    <T extends ListBoxBaseItemType = string>(props: ForwardRefProps<HTMLButtonElement, MultiSelectProps<T>>): FCReturn;
+    <T extends ListBoxBaseItemType = string>(
+        props: ForwardRefProps<HTMLButtonElement, MultiSelectProps<T>>,
+    ): FCReturn;
     readonly Filterable: typeof FilterableMultiSelect;
 }
 

@@ -3,7 +3,10 @@ import { CoreOptions as RequestOptions } from "request";
 
 export function getProxies(options?: Partial<Options>): GetProxiesEventEmitter;
 
-export function getProxiesFromSource(name: string, options?: Options): GetProxiesEventEmitter;
+export function getProxiesFromSource(
+    name: string,
+    options?: Options,
+): GetProxiesEventEmitter;
 
 export function addSource(name: string, source: AddSource): void;
 

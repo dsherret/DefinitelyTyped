@@ -22,11 +22,7 @@ function TestCtrl($scope: IScope, $q: ng.IQService, MyService: IMyService) {
         alert("Could not load data: " + reason);
     }
 
-    $q
-        .all([
-            MyService.getFirstname(),
-            MyService.getLastname(),
-        ])
+    $q.all([MyService.getFirstname(), MyService.getLastname()])
         .spread(firstCallback)
         .then(anotherCallback)
         .catch(failureCallback);

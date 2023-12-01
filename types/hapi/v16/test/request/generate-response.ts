@@ -7,7 +7,7 @@ function promiseMethod() {
     return Promise.resolve(true);
 }
 
-const handler: Hapi.ServerExtRequestHandler = function(request, reply) {
+const handler: Hapi.ServerExtRequestHandler = function (request, reply) {
     const result = promiseMethod().then((thing: boolean) => {
         if (!thing) {
             return request.generateResponse().code(214);

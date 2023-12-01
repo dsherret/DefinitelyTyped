@@ -25,29 +25,38 @@ let instance: jspreadsheet.JSpreadsheetElement = jspreadsheet(
     },
 );
 
-instance = jspreadsheet(document.getElementById("my-spreadsheet") as HTMLDivElement, {
-    url: "data.json",
-    columns: [
-        { title: "Model", width: 300 },
-        { title: "Price", width: 80 },
-        { title: "Model", width: 100 },
-    ],
-});
+instance = jspreadsheet(
+    document.getElementById("my-spreadsheet") as HTMLDivElement,
+    {
+        url: "data.json",
+        columns: [
+            { title: "Model", width: 300 },
+            { title: "Price", width: 80 },
+            { title: "Model", width: 100 },
+        ],
+    },
+);
 
-instance = jspreadsheet(document.getElementById("my-spreadsheet") as HTMLDivElement, {
-    csv: "demo.csv",
-    csvHeaders: true,
-    columns: [{ width: 300 }, { width: 80 }, { width: 100 }],
-});
+instance = jspreadsheet(
+    document.getElementById("my-spreadsheet") as HTMLDivElement,
+    {
+        csv: "demo.csv",
+        csvHeaders: true,
+        columns: [{ width: 300 }, { width: 80 }, { width: 100 }],
+    },
+);
 
 /**
  * Destroying a table
  */
-instance = jspreadsheet(document.getElementById("my-spreadsheet") as HTMLDivElement, {
-    csv: "demo.csv",
-    csvHeaders: true,
-    columns: [{ width: 300 }, { width: 80 }, { width: 100 }],
-});
+instance = jspreadsheet(
+    document.getElementById("my-spreadsheet") as HTMLDivElement,
+    {
+        csv: "demo.csv",
+        csvHeaders: true,
+        columns: [{ width: 300 }, { width: 80 }, { width: 100 }],
+    },
+);
 
 // If second argument is true will destroy all handlers and you can't create any other instance.
 jspreadsheet.destroy(document.getElementById("my-spreadsheet"), true);
@@ -60,26 +69,34 @@ instance = jspreadsheet(document.getElementById("myTable") as HTMLDivElement, {
     columns: [{ title: "Model" }, { title: "Price" }, { title: "Model" }],
 });
 
-instance = jspreadsheet(document.getElementById("spreadsheet") as HTMLDivElement, {
-    data,
-    columns: [
-        { type: "autocomplete", title: "Country", width: 300, url: "/jexcel/countries" },
-        {
-            type: "dropdown",
-            title: "Food",
-            width: 150,
-            source: ["Apples", "Bananas", "Carrots", "Oranges", "Cheese"],
-        },
-        { type: "checkbox", title: "Stock", width: 100 },
-    ],
-    nestedHeaders: [
-        [{ title: "Supermarket information", colspan: 3 }],
-        [
-            { title: "Location", colspan: 1 },
-            { title: " Other Information", colspan: 2 },
+instance = jspreadsheet(
+    document.getElementById("spreadsheet") as HTMLDivElement,
+    {
+        data,
+        columns: [
+            {
+                type: "autocomplete",
+                title: "Country",
+                width: 300,
+                url: "/jexcel/countries",
+            },
+            {
+                type: "dropdown",
+                title: "Food",
+                width: 150,
+                source: ["Apples", "Bananas", "Carrots", "Oranges", "Cheese"],
+            },
+            { type: "checkbox", title: "Stock", width: 100 },
         ],
-    ],
-});
+        nestedHeaders: [
+            [{ title: "Supermarket information", colspan: 3 }],
+            [
+                { title: "Location", colspan: 1 },
+                { title: " Other Information", colspan: 2 },
+            ],
+        ],
+    },
+);
 
 /**
  * Column width
@@ -110,9 +127,19 @@ instance = jspreadsheet(document.getElementById("myTable") as HTMLDivElement, {
     columns: [
         { title: "Model", width: 300, type: "text" },
         { title: "Price", width: 80, type: "numeric" },
-        { title: "Date", width: 100, type: "calendar", options: { format: "DD/MM/YYYY" } },
+        {
+            title: "Date",
+            width: 100,
+            type: "calendar",
+            options: { format: "DD/MM/YYYY" },
+        },
         { title: "Photo", width: 150, type: "image" },
-        { title: "Condition", width: 150, type: "dropdown", source: ["New", "Used"] },
+        {
+            title: "Condition",
+            width: 150,
+            type: "dropdown",
+            source: ["New", "Used"],
+        },
         { title: "Color", width: 80, type: "color" },
         { title: "Available", width: 80, type: "checkbox" },
     ],
@@ -132,8 +159,29 @@ const options: jspreadsheet.CalendarOptions = {
     // Placeholder
     placeholder: "",
     // Translations can be done here
-    months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    weekdays: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    months: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ],
+    weekdays: [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+    ],
     weekdays_short: ["S", "M", "T", "W", "T", "F", "S"],
     // Value
     value: undefined,
@@ -204,10 +252,13 @@ const data3 = [
     ["Honda CRV", 2010, 6000],
 ];
 
-instance = jspreadsheet(document.getElementById("minExample") as HTMLDivElement, {
-    data: data3,
-    minDimensions: [10, 5],
-});
+instance = jspreadsheet(
+    document.getElementById("minExample") as HTMLDivElement,
+    {
+        data: data3,
+        minDimensions: [10, 5],
+    },
+);
 
 jspreadsheet.tabs(document.getElementById("minExample") as HTMLDivElement, [
     {
@@ -220,7 +271,10 @@ jspreadsheet.tabs(document.getElementById("minExample") as HTMLDivElement, [
 /**
  * Freeze columns
  */
-instance = jspreadsheet(document.getElementById("spreadsheet") as HTMLDivElement, {
-    minDimensions: [10, 5],
-    freezeColumns: 2,
-});
+instance = jspreadsheet(
+    document.getElementById("spreadsheet") as HTMLDivElement,
+    {
+        minDimensions: [10, 5],
+        freezeColumns: 2,
+    },
+);

@@ -11,7 +11,7 @@ createClient({
         shouldRetry: false,
         parameters: { someData: "abc123" },
         onConnectionSuccess: () => {},
-        onConnectionError: err => {},
+        onConnectionError: (err) => {},
         onConnectionKeepAlive: () => {},
     },
 });

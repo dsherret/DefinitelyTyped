@@ -131,7 +131,11 @@ qsAnyModel.setGlobalChangeHandler((model: string) => {});
 qsTestModel.setGlobalChangeHandler((model: TestModel) => {}); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
 // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
 qsTestModel.setGlobalChangeHandler(
-    (model: { testNumber: number; testBoolean: boolean; testDate: string | Date }) => {},
+    (model: {
+        testNumber: number;
+        testBoolean: boolean;
+        testDate: string | Date;
+    }) => {},
 );
 // @ts-expect-error
 qsTestModel.setGlobalChangeHandler((model: { foo: string }) => {});
@@ -158,9 +162,9 @@ qsTestModel.getValuesAsJSON(false); // $ExpectType TestModel
 qsTestModel.getValuesAsJSON(); // $ExpectType TestModel
 
 // QuickSettingsPanel.setValuesFromJSON
-qsAnyModel.setValuesFromJSON("{ \"foo\": \"bar\" }"); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
+qsAnyModel.setValuesFromJSON('{ "foo": "bar" }'); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
 qsAnyModel.setValuesFromJSON({ foo: "bar" }); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
-qsTestModel.setValuesFromJSON("{ \"foo\": \"bar\" }"); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
+qsTestModel.setValuesFromJSON('{ "foo": "bar" }'); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
 // @ts-expect-error
 qsTestModel.setValuesFromJSON({ foo: "bar" });
 qsTestModel.setValuesFromJSON(testModelFull); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
@@ -459,7 +463,11 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
 // QuickSettingsPanel.addDate
 {
     qsAnyModel.addDate("myDateProperty", "2019-12-30", (value: string) => {}); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
-    qsAnyModel.addDate("myDateProperty", new Date("2019-12-30"), (value: Date) => {}); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
+    qsAnyModel.addDate(
+        "myDateProperty",
+        new Date("2019-12-30"),
+        (value: Date) => {},
+    ); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
     // @ts-expect-error
     qsAnyModel.addDate("myDateProperty", "2019-12-30", (value: Date) => {});
     // @ts-expect-error
@@ -474,15 +482,35 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     const qsTestModelDate = QuickSettings.create<TestModelDate>();
     qsTestModelDate.addDate("testString", "2019-12-30", (value: string) => {}); // $ExpectType QuickSettingsPanel<TestModelDate, string>
     // @ts-expect-error
-    qsTestModelDate.addDate("testString", new Date("2019-12-30"), (value: Date) => {});
+    qsTestModelDate.addDate(
+        "testString",
+        new Date("2019-12-30"),
+        (value: Date) => {},
+    );
     // @ts-expect-error
     qsTestModelDate.addDate("testDate", "2019-12-30", (value: string) => {});
-    qsTestModelDate.addDate("testDateOrString", "2019-12-30", (value: string) => {});
-    qsTestModelDate.addDate("testDateOrString", new Date("2019-12-30"), (value: Date) => {});
+    qsTestModelDate.addDate(
+        "testDateOrString",
+        "2019-12-30",
+        (value: string) => {},
+    );
+    qsTestModelDate.addDate(
+        "testDateOrString",
+        new Date("2019-12-30"),
+        (value: Date) => {},
+    );
     // @ts-expect-error
-    qsTestModelDate.addDate("testDateOrString", new Date("2019-12-30"), (value: string) => {});
+    qsTestModelDate.addDate(
+        "testDateOrString",
+        new Date("2019-12-30"),
+        (value: string) => {},
+    );
     // @ts-expect-error
-    qsTestModelDate.addDate("testDateOrString", "2019-12-31", (value: Date) => {});
+    qsTestModelDate.addDate(
+        "testDateOrString",
+        "2019-12-31",
+        (value: Date) => {},
+    );
 }
 
 // QuickSettingsPanel.bindDate
@@ -498,10 +526,14 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     });
 
     // @ts-expect-error
-    qsAnyModel.bindDate("myDateProperty", "2019-12-30", { myDateProperty: new Date() });
+    qsAnyModel.bindDate("myDateProperty", "2019-12-30", {
+        myDateProperty: new Date(),
+    });
 
     // @ts-expect-error
-    qsAnyModel.bindDate("myDateProperty", new Date(), { myDateProperty: "2019-12-31" });
+    qsAnyModel.bindDate("myDateProperty", new Date(), {
+        myDateProperty: "2019-12-31",
+    });
 
     // @ts-expect-error
     qsAnyModel.bindDate("myDateProperty", new Date(), { foo: new Date() });
@@ -518,28 +550,44 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     });
 
     // @ts-expect-error
-    qsTestModelDate.bindDate("testString", new Date("2019-12-30"), { testString: new Date() });
+    qsTestModelDate.bindDate("testString", new Date("2019-12-30"), {
+        testString: new Date(),
+    });
 
     // @ts-expect-error
-    qsTestModelDate.bindDate("testDate", "2019-12-30", { testDate: "2019-12-30" });
+    qsTestModelDate.bindDate("testDate", "2019-12-30", {
+        testDate: "2019-12-30",
+    });
 
     // $ExpectType QuickSettingsPanel<TestModelDate, string>
-    qsTestModelDate.bindDate("testDateOrString", "2019-12-30", { testDateOrString: "2019-12-31" });
+    qsTestModelDate.bindDate("testDateOrString", "2019-12-30", {
+        testDateOrString: "2019-12-31",
+    });
 
     // $ExpectType QuickSettingsPanel<TestModelDate, string>
-    qsTestModelDate.bindDate("testDateOrString", new Date("2019-12-30"), { testDateOrString: new Date() });
+    qsTestModelDate.bindDate("testDateOrString", new Date("2019-12-30"), {
+        testDateOrString: new Date(),
+    });
 
     // @ts-expect-error
-    qsTestModelDate.bindDate("testDateOrString", new Date("2019-12-30"), { testDateOrString: "2019-12-31" });
+    qsTestModelDate.bindDate("testDateOrString", new Date("2019-12-30"), {
+        testDateOrString: "2019-12-31",
+    });
 
     // @ts-expect-error
-    qsTestModelDate.bindDate("testDateOrString", "2019-12-31", { testDateOrString: new Date() });
+    qsTestModelDate.bindDate("testDateOrString", "2019-12-31", {
+        testDateOrString: new Date(),
+    });
 }
 
 // QuickSettingsPanel.addTime
 {
     qsAnyModel.addTime("myDateProperty", "01:00:00", (value: string) => {}); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
-    qsAnyModel.addTime("myDateProperty", new Date("01:00:00"), (value: Date) => {}); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
+    qsAnyModel.addTime(
+        "myDateProperty",
+        new Date("01:00:00"),
+        (value: Date) => {},
+    ); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
     // @ts-expect-error
     qsAnyModel.addTime("myDateProperty", "01:00:00", (value: Date) => {});
     // @ts-expect-error
@@ -554,15 +602,35 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     const qsTestModelDate = QuickSettings.create<TestModelDate>();
     qsTestModelDate.addTime("testString", "01:00:00", (value: string) => {}); // $ExpectType QuickSettingsPanel<TestModelDate, string>
     // @ts-expect-error
-    qsTestModelDate.addTime("testString", new Date("01:00:00"), (value: Date) => {});
+    qsTestModelDate.addTime(
+        "testString",
+        new Date("01:00:00"),
+        (value: Date) => {},
+    );
     // @ts-expect-error
     qsTestModelDate.addTime("testDate", "01:00:00", (value: string) => {});
-    qsTestModelDate.addTime("testDateOrString", "01:00:00", (value: string) => {});
-    qsTestModelDate.addTime("testDateOrString", new Date("01:00:00"), (value: Date) => {});
+    qsTestModelDate.addTime(
+        "testDateOrString",
+        "01:00:00",
+        (value: string) => {},
+    );
+    qsTestModelDate.addTime(
+        "testDateOrString",
+        new Date("01:00:00"),
+        (value: Date) => {},
+    );
     // @ts-expect-error
-    qsTestModelDate.addTime("testDateOrString", new Date("01:00:00"), (value: string) => {});
+    qsTestModelDate.addTime(
+        "testDateOrString",
+        new Date("01:00:00"),
+        (value: string) => {},
+    );
     // @ts-expect-error
-    qsTestModelDate.addTime("testDateOrString", "02:00:00", (value: Date) => {});
+    qsTestModelDate.addTime(
+        "testDateOrString",
+        "02:00:00",
+        (value: Date) => {},
+    );
 }
 
 // QuickSettingsPanel.bindTime
@@ -578,10 +646,14 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     });
 
     // @ts-expect-error
-    qsAnyModel.bindTime("myDateProperty", "01:00:00", { myDateProperty: new Date() });
+    qsAnyModel.bindTime("myDateProperty", "01:00:00", {
+        myDateProperty: new Date(),
+    });
 
     // @ts-expect-error
-    qsAnyModel.bindTime("myDateProperty", new Date(), { myDateProperty: "02:00:00" });
+    qsAnyModel.bindTime("myDateProperty", new Date(), {
+        myDateProperty: "02:00:00",
+    });
 
     // @ts-expect-error
     qsAnyModel.bindTime("myDateProperty", new Date(), { foo: new Date() });
@@ -598,22 +670,32 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     });
 
     // @ts-expect-error
-    qsTestModelDate.bindTime("testString", new Date("01:00:00"), { testString: new Date() });
+    qsTestModelDate.bindTime("testString", new Date("01:00:00"), {
+        testString: new Date(),
+    });
 
     // @ts-expect-error
     qsTestModelDate.bindTime("testDate", "01:00:00", { testDate: "01:00:00" });
 
     // $ExpectType QuickSettingsPanel<TestModelDate, string>
-    qsTestModelDate.bindTime("testDateOrString", "01:00:00", { testDateOrString: "02:00:00" });
+    qsTestModelDate.bindTime("testDateOrString", "01:00:00", {
+        testDateOrString: "02:00:00",
+    });
 
     // $ExpectType QuickSettingsPanel<TestModelDate, string>
-    qsTestModelDate.bindTime("testDateOrString", new Date("01:00:00"), { testDateOrString: new Date() });
+    qsTestModelDate.bindTime("testDateOrString", new Date("01:00:00"), {
+        testDateOrString: new Date(),
+    });
 
     // @ts-expect-error
-    qsTestModelDate.bindTime("testDateOrString", new Date("01:00:00"), { testDateOrString: "02:00:00" });
+    qsTestModelDate.bindTime("testDateOrString", new Date("01:00:00"), {
+        testDateOrString: "02:00:00",
+    });
 
     // @ts-expect-error
-    qsTestModelDate.bindTime("testDateOrString", "02:00:00", { testDateOrString: new Date() });
+    qsTestModelDate.bindTime("testDateOrString", "02:00:00", {
+        testDateOrString: new Date(),
+    });
 }
 
 // QuickSettingsPanel.addDropDown
@@ -630,7 +712,11 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     const qsDropDown = QuickSettings.create<TestModelDropDown>();
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
-    qsDropDown.addDropDown("testString", ["one", "two", "three"], (value: DropDownSelection<string>) => {});
+    qsDropDown.addDropDown(
+        "testString",
+        ["one", "two", "three"],
+        (value: DropDownSelection<string>) => {},
+    );
     qsDropDown.addDropDown(
         "testString",
         [
@@ -642,7 +728,11 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     );
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
-    qsDropDown.addDropDown("testNumber", [1, 2, 3], (value: DropDownSelection<number>) => {});
+    qsDropDown.addDropDown(
+        "testNumber",
+        [1, 2, 3],
+        (value: DropDownSelection<number>) => {},
+    );
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
     qsDropDown.addDropDown(
@@ -656,7 +746,11 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     );
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
-    qsDropDown.addDropDown("testStringOrNumber", [1, "two", 3], (value: DropDownSelection<string | number>) => {});
+    qsDropDown.addDropDown(
+        "testStringOrNumber",
+        [1, "two", 3],
+        (value: DropDownSelection<string | number>) => {},
+    );
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
     qsDropDown.addDropDown(
@@ -688,11 +782,23 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     );
 
     // @ts-expect-error
-    qsDropDown.addDropDown("testString", [1, 2, 3], (value: DropDownSelection<number>) => {});
+    qsDropDown.addDropDown(
+        "testString",
+        [1, 2, 3],
+        (value: DropDownSelection<number>) => {},
+    );
     // @ts-expect-error
-    qsDropDown.addDropDown("testNumber", ["one", "two", "three"], (value: DropDownSelection<string>) => {});
+    qsDropDown.addDropDown(
+        "testNumber",
+        ["one", "two", "three"],
+        (value: DropDownSelection<string>) => {},
+    );
     // @ts-expect-error
-    qsDropDown.addDropDown("testString", [1, "two", 3], (value: DropDownSelection<string | number>) => {});
+    qsDropDown.addDropDown(
+        "testString",
+        [1, "two", 3],
+        (value: DropDownSelection<string | number>) => {},
+    );
     // prettier-ignore
     qsDropDown.addDropDown(
         "testComplex",
@@ -723,7 +829,9 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     const qsDropDown = QuickSettings.create<TestModelDropDown>();
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
-    qsDropDown.bindDropDown("testString", ["one", "two", "three"], { testString: "one" });
+    qsDropDown.bindDropDown("testString", ["one", "two", "three"], {
+        testString: "one",
+    });
     qsDropDown.bindDropDown(
         "testString",
         [
@@ -756,10 +864,14 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     );
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
-    qsDropDown.bindDropDown("testStringOrNumber", [1, "two", 3], { testStringOrNumber: 1 });
+    qsDropDown.bindDropDown("testStringOrNumber", [1, "two", 3], {
+        testStringOrNumber: 1,
+    });
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
-    qsDropDown.bindDropDown("testStringOrNumber", [1, "two", 3], { testStringOrNumber: "two" });
+    qsDropDown.bindDropDown("testStringOrNumber", [1, "two", 3], {
+        testStringOrNumber: "two",
+    });
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
     qsDropDown.bindDropDown(
@@ -784,20 +896,34 @@ qsTestModel.setRangeParameters("foo", 0, 100, 1);
     );
 
     // $ExpectType QuickSettingsPanel<TestModelDropDown, string>
-    qsDropDown.bindDropDown("testString", ["one", { label: "Opt 2", value: "two" }, "three"], { testString: "foo" });
+    qsDropDown.bindDropDown(
+        "testString",
+        ["one", { label: "Opt 2", value: "two" }, "three"],
+        { testString: "foo" },
+    );
 
     // @ts-expect-error
     qsDropDown.bindDropDown("testString", [1, 2, 3], { testString: "foo" });
     // @ts-expect-error
-    qsDropDown.bindDropDown("testNumber", ["one", "two", "three"], { testNumber: 10 });
+    qsDropDown.bindDropDown("testNumber", ["one", "two", "three"], {
+        testNumber: 10,
+    });
     // @ts-expect-error
     qsDropDown.bindDropDown("testString", [1, "two", 3], { testString: "foo" });
     // @ts-expect-error
-    qsDropDown.bindDropDown("testComplex", [{ foo: "one" }, { foo: "two" }, { foo: "three" }], {
-        testComplex: { foo: "bar" },
-    });
+    qsDropDown.bindDropDown(
+        "testComplex",
+        [{ foo: "one" }, { foo: "two" }, { foo: "three" }],
+        {
+            testComplex: { foo: "bar" },
+        },
+    );
     // @ts-expect-error
-    qsDropDown.bindDropDown("testString", ["one", { label: "Opt 2", value: 2 }, "three"], { testString: "foo" });
+    qsDropDown.bindDropDown(
+        "testString",
+        ["one", { label: "Opt 2", value: 2 }, "three"],
+        { testString: "foo" },
+    );
 }
 
 // QuickSettingsPanel.addHTML
@@ -809,21 +935,42 @@ qsTestModel.addHTML("foo", "<div></div>");
 qsTestModel.addHTML("testNumber", "<div></div>");
 
 // QuickSettingsPanel.addImage
-qsAnyModel.addImage("foo", "https://static.com/my-image.png", (url: string) => {}); // $ExpectType QuickSettingsPanel<Record<string, any>, string>
+qsAnyModel.addImage(
+    "foo",
+    "https://static.com/my-image.png",
+    (url: string) => {},
+); // $ExpectType QuickSettingsPanel<Record<string, any>, string>
 qsAnyModel.addImage("foo", "https://static.com/my-image.png"); // $ExpectType QuickSettingsPanel<Record<string, any>, string>
-qsTestModel.addImage("testString", "https://static.com/my-image.png", (url: string) => {}); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
+qsTestModel.addImage(
+    "testString",
+    "https://static.com/my-image.png",
+    (url: string) => {},
+); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
 qsTestModel.addImage("testString", "https://static.com/my-image.png"); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
 
 // @ts-expect-error
-qsTestModel.addImage("foo", "https://static.com/my-image.png", (url: string) => {});
+qsTestModel.addImage(
+    "foo",
+    "https://static.com/my-image.png",
+    (url: string) => {},
+);
 
 // @ts-expect-error
-qsTestModel.addImage("testNumber", "https://static.com/my-image.png", (url: string) => {});
+qsTestModel.addImage(
+    "testNumber",
+    "https://static.com/my-image.png",
+    (url: string) => {},
+);
 
 // QuickSettingsPanel.addFileChooser
 qsAnyModel.addFileChooser("foo", "Upload", "image/*", (value: File) => {}); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
 qsAnyModel.addFileChooser("foo", "Upload", "image/*"); // $ExpectType QuickSettingsPanel<Record<string, any>, string> || QuickSettingsPanel<AnyModel, string>
-qsTestModel.addFileChooser("testFile", "Upload", "image/*", (value: File) => {}); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
+qsTestModel.addFileChooser(
+    "testFile",
+    "Upload",
+    "image/*",
+    (value: File) => {},
+); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
 qsTestModel.addFileChooser("testFile", "Upload", "image/*"); // $ExpectType QuickSettingsPanel<TestModel, "testStatic">
 // @ts-expect-error
 qsTestModel.addFileChooser("testString", "Upload", "image/*");

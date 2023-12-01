@@ -9,11 +9,26 @@ declare function merger<T extends JSONSchema>(
     rootSchema: T,
     options: merger.Options<T> & { ignoreAdditionalProperties: true },
 ): T;
-declare function merger(rootSchema: JSONSchema4, options?: merger.Options<JSONSchema4>): JSONSchema4;
-declare function merger(rootSchema: JSONSchema6, options?: merger.Options<JSONSchema6>): JSONSchema6;
-declare function merger(rootSchema: JSONSchema7, options?: merger.Options<JSONSchema7>): JSONSchema7;
-declare function merger(rootSchema: JSONSchema46, options?: merger.Options<JSONSchema46>): JSONSchema46;
-declare function merger(rootSchema: JSONSchema, options?: merger.Options): JSONSchema;
+declare function merger(
+    rootSchema: JSONSchema4,
+    options?: merger.Options<JSONSchema4>,
+): JSONSchema4;
+declare function merger(
+    rootSchema: JSONSchema6,
+    options?: merger.Options<JSONSchema6>,
+): JSONSchema6;
+declare function merger(
+    rootSchema: JSONSchema7,
+    options?: merger.Options<JSONSchema7>,
+): JSONSchema7;
+declare function merger(
+    rootSchema: JSONSchema46,
+    options?: merger.Options<JSONSchema46>,
+): JSONSchema46;
+declare function merger(
+    rootSchema: JSONSchema,
+    options?: merger.Options,
+): JSONSchema;
 
 declare namespace merger {
     interface Options<Schema extends JSONSchema = JSONSchema> {
@@ -59,35 +74,38 @@ declare namespace merger {
          * - **options** the options mergeAllOf was called with
          */
         resolvers?:
-            | Partial<Resolvers<Schema>> & {
-                /**
-                 * ### Default resolver
-                 * You can set a default resolver that catches any unknown keyword.
-                 * Let's say you want to use the same strategy as the ones for the
-                 * meta keywords, to use the first value found. You can accomplish
-                 * that like this:
-                 *
-                 * ```js
-                 * mergeJsonSchema({
-                 *   ...
-                 * }, {
-                 *   resolvers: {
-                 *       defaultResolver: mergeJsonSchema.options.resolvers.title
-                 *   }
-                 * })
-                 * ```
-                 */
-                defaultResolver?(
-                    values: any[],
-                    path: string[],
-                    mergeSchemas: MergeSchemas,
-                    options: Options<Schema>,
-                ): any;
-            }
+            | (Partial<Resolvers<Schema>> & {
+                  /**
+                   * ### Default resolver
+                   * You can set a default resolver that catches any unknown keyword.
+                   * Let's say you want to use the same strategy as the ones for the
+                   * meta keywords, to use the first value found. You can accomplish
+                   * that like this:
+                   *
+                   * ```js
+                   * mergeJsonSchema({
+                   *   ...
+                   * }, {
+                   *   resolvers: {
+                   *       defaultResolver: mergeJsonSchema.options.resolvers.title
+                   *   }
+                   * })
+                   * ```
+                   */
+                  defaultResolver?(
+                      values: any[],
+                      path: string[],
+                      mergeSchemas: MergeSchemas,
+                      options: Options<Schema>,
+                  ): any;
+              })
             | undefined;
     }
     type MergeSchemas = <T extends JSONSchema>(schemas: readonly T[]) => T;
-    type MergeChildSchemas = <T extends JSONSchema>(schemas: readonly T[], childSchemaName: string) => T;
+    type MergeChildSchemas = <T extends JSONSchema>(
+        schemas: readonly T[],
+        childSchemaName: string,
+    ) => T;
 
     interface Resolvers<Schema extends JSONSchema = JSONSchema> {
         $id(
@@ -304,13 +322,20 @@ declare namespace merger {
                 additionalProperties: MergeSchemas;
             },
             options: Options<Schema>,
-        ): Pick<Schema, "properties" | "patternProperties" | "additionalProperties">;
+        ): Pick<
+            Schema,
+            "properties" | "patternProperties" | "additionalProperties"
+        >;
         propertyNames(
-            values: Array<Extract<Schema, { propertyNames?: any }>["propertyNames"]>,
+            values: Array<
+                Extract<Schema, { propertyNames?: any }>["propertyNames"]
+            >,
             path: string[],
             mergeSchemas: MergeSchemas,
             options: Options<Schema>,
-        ): NonNullable<Extract<Schema, { propertyNames?: any }>["propertyNames"]>;
+        ): NonNullable<
+            Extract<Schema, { propertyNames?: any }>["propertyNames"]
+        >;
         required(
             values: Array<Schema["required"]>,
             path: string[],

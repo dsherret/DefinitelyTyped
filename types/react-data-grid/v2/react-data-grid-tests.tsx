@@ -21,13 +21,18 @@ class CustomFilterHeaderCell extends React.Component<any, any> {
     render() {
         return (
             <div>
-                <input type="text" value={this.state.filterTerm} onChange={(e) => this.handleChange(e)} />
+                <input
+                    type="text"
+                    value={this.state.filterTerm}
+                    onChange={(e) => this.handleChange(e)}
+                />
             </div>
         );
     }
 }
 
-class CustomRowSelectorCell extends ReactDataGridPlugins.Editors.CheckboxEditor {
+class CustomRowSelectorCell extends ReactDataGridPlugins.Editors
+    .CheckboxEditor {
     render() {
         return super.render();
     }
@@ -50,7 +55,10 @@ class CustomSelectAll extends React.Component<ICustomSelectAllProps> {
                     ref={this.props.inputRef}
                     onChange={this.props.onChange}
                 />
-                <label htmlFor="select-all-checkbox" className="react-grid-checkbox-label"></label>
+                <label
+                    htmlFor="select-all-checkbox"
+                    className="react-grid-checkbox-label"
+                ></label>
             </div>
         );
     }
@@ -144,7 +152,11 @@ var columns: ReactDataGrid.Column[] = [
         width: 60,
         formatter: ReactDataGridPlugins.Formatters.ImageFormatter,
         resizable: true,
-        headerRenderer: <ReactDataGridPlugins.Formatters.ImageFormatter value={faker.image.cats()} />,
+        headerRenderer: (
+            <ReactDataGridPlugins.Formatters.ImageFormatter
+                value={faker.image.cats()}
+            />
+        ),
     },
     {
         key: "county",
@@ -163,7 +175,7 @@ var columns: ReactDataGrid.Column[] = [
         width: 200,
         resizable: true,
         events: {
-            onDoubleClick: function() {
+            onDoubleClick: function () {
                 console.log("The user double clicked on title column");
             },
         },
@@ -252,7 +264,10 @@ class Example extends React.Component<any, any> {
     getColumns() {
         var clonedColumns = columns.slice();
         clonedColumns[2].events = {
-            onClick: (ev: React.SyntheticEvent<any>, args: { idx: number; rowIdx: number }) => {
+            onClick: (
+                ev: React.SyntheticEvent<any>,
+                args: { idx: number; rowIdx: number },
+            ) => {
                 var idx = args.idx;
                 var rowIdx = args.rowIdx;
                 (this.refs.grid as ReactDataGrid).openCellEditor(rowIdx, idx);
@@ -267,16 +282,27 @@ class Example extends React.Component<any, any> {
 
         for (var i = updatedRowData.fromRow; i <= updatedRowData.toRow; i++) {
             var rowToUpdate = rows[i];
-            var updatedRow = Object.assign({}, rowToUpdate, updatedRowData.updated);
+            var updatedRow = Object.assign(
+                {},
+                rowToUpdate,
+                updatedRowData.updated,
+            );
             rows[i] = updatedRow;
         }
 
         this.setState({ rows: rows });
     }
 
-    onRowExpandToggle = ({ columnGroupName, name, shouldExpand }: ReactDataGrid.OnRowExpandToggle) => {
+    onRowExpandToggle = ({
+        columnGroupName,
+        name,
+        shouldExpand,
+    }: ReactDataGrid.OnRowExpandToggle) => {
         let expandedRows = Object.assign({}, this.state.expandedRows);
-        expandedRows[columnGroupName] = Object.assign({}, expandedRows[columnGroupName]);
+        expandedRows[columnGroupName] = Object.assign(
+            {},
+            expandedRows[columnGroupName],
+        );
         expandedRows[columnGroupName][name] = { isExpanded: shouldExpand };
         this.setState({ expandedRows: expandedRows });
     };
@@ -321,12 +347,18 @@ class Example extends React.Component<any, any> {
     onRowsSelected(rows: ReactDataGrid.SelectionParams[]) {
         var selectedIndexes = this.state.selectedIndexes as number[];
 
-        this.setState({ selectedIndexes: selectedIndexes.concat(rows.map(r => r.rowIdx)) });
+        this.setState({
+            selectedIndexes: selectedIndexes.concat(rows.map((r) => r.rowIdx)),
+        });
     }
     onRowsDeselected(rows: ReactDataGrid.SelectionParams[]) {
-        var rowIndexes = rows.map(r => r.rowIdx);
+        var rowIndexes = rows.map((r) => r.rowIdx);
         var selectedIndexes = this.state.selectedIndexes as number[];
-        this.setState({ selectedIndexes: selectedIndexes.filter(i => rowIndexes.indexOf(i) === -1) });
+        this.setState({
+            selectedIndexes: selectedIndexes.filter(
+                (i) => rowIndexes.indexOf(i) === -1,
+            ),
+        });
     }
 
     render() {

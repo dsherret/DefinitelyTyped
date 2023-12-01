@@ -20,7 +20,9 @@ export = rateLimiterFactory;
  *     // ok
  *   });
  */
-declare function rateLimiterFactory(options?: rateLimiterFactory.Options): rateLimiterFactory.RateLimiter;
+declare function rateLimiterFactory(
+    options?: rateLimiterFactory.Options,
+): rateLimiterFactory.RateLimiter;
 
 declare namespace rateLimiterFactory {
     interface Options {

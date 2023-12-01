@@ -65,7 +65,22 @@ wshn.RemovePrinterConnection("\\\\PRN-CORP1\\B41-4523-A", true, true);
 const wshs = new ActiveXObject("WScript.Shell");
 {
     wshs.Popup("Stop Mark", 1, "test", IWshRuntimeLibrary.IconType.Stop);
-    wshs.Popup("Question Mark", 1, "test", IWshRuntimeLibrary.IconType.QuestionMark);
-    wshs.Popup("Exclamation Mark", 1, "test", IWshRuntimeLibrary.IconType.ExclamationMark);
-    wshs.Popup("Information Mark", 1, "test", IWshRuntimeLibrary.IconType.InformationMark);
+    wshs.Popup(
+        "Question Mark",
+        1,
+        "test",
+        IWshRuntimeLibrary.IconType.QuestionMark,
+    );
+    wshs.Popup(
+        "Exclamation Mark",
+        1,
+        "test",
+        IWshRuntimeLibrary.IconType.ExclamationMark,
+    );
+    wshs.Popup(
+        "Information Mark",
+        1,
+        "test",
+        IWshRuntimeLibrary.IconType.InformationMark,
+    );
 }

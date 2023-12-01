@@ -1,6 +1,9 @@
 export = cssesc;
 
-declare function cssesc(string: string, options?: Readonly<Partial<cssesc.Options>>): string;
+declare function cssesc(
+    string: string,
+    options?: Readonly<Partial<cssesc.Options>>,
+): string;
 
 declare namespace cssesc {
     interface Options {

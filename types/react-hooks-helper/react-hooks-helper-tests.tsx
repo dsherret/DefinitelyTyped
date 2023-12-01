@@ -32,7 +32,9 @@ export const UseStepReturnNumber = (): number => {
 
 // $ExpectedType string
 export const UseStepReturnObject = (): string => {
-    const { step, navigation } = useStep({ steps: [{ id: "Step1" }, { id: "Step2" }, { id: "Step3" }] });
+    const { step, navigation } = useStep({
+        steps: [{ id: "Step1" }, { id: "Step2" }, { id: "Step3" }],
+    });
     const [formData, setForm] = useForm({ name: "", city: "" });
     const { id } = step as Step;
 

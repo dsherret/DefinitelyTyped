@@ -9,9 +9,12 @@ export interface EditableInputStyles {
     wrap?: CSSProperties | undefined;
 }
 
-export type EditableInputColorResult<T> = [T] extends [string] ? { [key in T]: string } : string;
+export type EditableInputColorResult<T> = [T] extends [string]
+    ? { [key in T]: string }
+    : string;
 
-export interface EditableInputProps<A = string | undefined> extends Remove<CustomPickerInjectedProps, "onChange"> {
+export interface EditableInputProps<A = string | undefined>
+    extends Remove<CustomPickerInjectedProps, "onChange"> {
     label?: A | undefined;
     arrowOffset?: number | undefined;
     placeholder?: string | undefined;
@@ -22,4 +25,6 @@ export interface EditableInputProps<A = string | undefined> extends Remove<Custo
     onChange?: ((change: EditableInputColorResult<A>) => void) | undefined;
 }
 
-export default class EditableInput<A extends string | undefined> extends Component<EditableInputProps<A>> {}
+export default class EditableInput<
+    A extends string | undefined,
+> extends Component<EditableInputProps<A>> {}

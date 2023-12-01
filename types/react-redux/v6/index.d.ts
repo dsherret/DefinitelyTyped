@@ -10,7 +10,13 @@
 // to update this type definitions for redux@4.x from redux@3.x.
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/25321
 
-import { Component, ComponentClass, ComponentType, FunctionComponent, ReactNode } from "react";
+import {
+    Component,
+    ComponentClass,
+    ComponentType,
+    FunctionComponent,
+    ReactNode,
+} from "react";
 
 import { Action, ActionCreator, AnyAction, Dispatch, Store } from "redux";
 
@@ -39,8 +45,9 @@ export type AdvancedComponentDecorator<TProps, TOwnProps> = (
  */
 export type Matching<InjectedProps, DecorationTargetProps> = {
     [P in keyof DecorationTargetProps]: P extends keyof InjectedProps
-        ? InjectedProps[P] extends DecorationTargetProps[P] ? DecorationTargetProps[P]
-        : InjectedProps[P]
+        ? InjectedProps[P] extends DecorationTargetProps[P]
+            ? DecorationTargetProps[P]
+            : InjectedProps[P]
         : DecorationTargetProps[P];
 };
 
@@ -54,11 +61,11 @@ export type Matching<InjectedProps, DecorationTargetProps> = {
  * required by the decorated (right hand side) component.
  * But any property required by the decorated component must be satisfied by the injected property.
  */
-export type Shared<
-    InjectedProps,
-    DecorationTargetProps,
-> = {
-    [P in Extract<keyof InjectedProps, keyof DecorationTargetProps>]?: InjectedProps[P] extends DecorationTargetProps[P]
+export type Shared<InjectedProps, DecorationTargetProps> = {
+    [P in Extract<
+        keyof InjectedProps,
+        keyof DecorationTargetProps
+    >]?: InjectedProps[P] extends DecorationTargetProps[P]
         ? DecorationTargetProps[P]
         : never;
 };
@@ -68,7 +75,10 @@ export type GetProps<C> = C extends ComponentType<infer P> ? P : never;
 
 // Applies LibraryManagedAttributes (proper handling of defaultProps
 // and propTypes).
-export type GetLibraryManagedProps<C> = JSX.LibraryManagedAttributes<C, GetProps<C>>;
+export type GetLibraryManagedProps<C> = JSX.LibraryManagedAttributes<
+    C,
+    GetProps<C>
+>;
 
 // Defines WrappedComponent.
 export type ConnectedComponentClass<C, P> = ComponentClass<P> & {
@@ -84,27 +94,43 @@ export type InferableComponentEnhancerWithProps<TInjectedProps, TNeedsProps> = <
     component: C,
 ) => ConnectedComponentClass<
     C,
-    Omit<GetLibraryManagedProps<C>, keyof Shared<TInjectedProps, GetLibraryManagedProps<C>>> & TNeedsProps
+    Omit<
+        GetLibraryManagedProps<C>,
+        keyof Shared<TInjectedProps, GetLibraryManagedProps<C>>
+    > &
+        TNeedsProps
 >;
 
 // Injects props and removes them from the prop requirements.
 // Will not pass through the injected props if they are passed in during
 // render.
-export type InferableComponentEnhancer<TInjectedProps> = InferableComponentEnhancerWithProps<TInjectedProps, {}>;
+export type InferableComponentEnhancer<TInjectedProps> =
+    InferableComponentEnhancerWithProps<TInjectedProps, {}>;
 
-export type InferThunkActionCreatorType<TActionCreator extends (...args: any[]) => any> = TActionCreator extends
-    (...args: infer TParams) => (...args: any[]) => infer TReturn ? (...args: TParams) => TReturn
+export type InferThunkActionCreatorType<
+    TActionCreator extends (...args: any[]) => any,
+> = TActionCreator extends (
+    ...args: infer TParams
+) => (...args: any[]) => infer TReturn
+    ? (...args: TParams) => TReturn
     : TActionCreator;
 
-export type HandleThunkActionCreator<TActionCreator> = TActionCreator extends (...args: any[]) => any
+export type HandleThunkActionCreator<TActionCreator> = TActionCreator extends (
+    ...args: any[]
+) => any
     ? InferThunkActionCreatorType<TActionCreator>
     : TActionCreator;
 
 // redux-thunk middleware returns thunk's return value from dispatch call
 // https://github.com/reduxjs/redux-thunk#composition
-export type ResolveThunks<TDispatchProps> = TDispatchProps extends { [key: string]: any } ? {
-        [C in keyof TDispatchProps]: HandleThunkActionCreator<TDispatchProps[C]>;
-    }
+export type ResolveThunks<TDispatchProps> = TDispatchProps extends {
+    [key: string]: any;
+}
+    ? {
+          [C in keyof TDispatchProps]: HandleThunkActionCreator<
+              TDispatchProps[C]
+          >;
+      }
     : TDispatchProps;
 
 /**
@@ -132,11 +158,17 @@ export interface Connect {
 
     <TStateProps = {}, no_dispatch = {}, TOwnProps = {}, State = {}>(
         mapStateToProps: MapStateToPropsParam<TStateProps, TOwnProps, State>,
-    ): InferableComponentEnhancerWithProps<TStateProps & DispatchProp, TOwnProps>;
+    ): InferableComponentEnhancerWithProps<
+        TStateProps & DispatchProp,
+        TOwnProps
+    >;
 
     <no_state = {}, TDispatchProps = {}, TOwnProps = {}>(
         mapStateToProps: null | undefined,
-        mapDispatchToProps: MapDispatchToPropsNonObject<TDispatchProps, TOwnProps>,
+        mapDispatchToProps: MapDispatchToPropsNonObject<
+            TDispatchProps,
+            TOwnProps
+        >,
     ): InferableComponentEnhancerWithProps<TDispatchProps, TOwnProps>;
 
     <no_state = {}, TDispatchProps = {}, TOwnProps = {}>(
@@ -149,8 +181,14 @@ export interface Connect {
 
     <TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = {}>(
         mapStateToProps: MapStateToPropsParam<TStateProps, TOwnProps, State>,
-        mapDispatchToProps: MapDispatchToPropsNonObject<TDispatchProps, TOwnProps>,
-    ): InferableComponentEnhancerWithProps<TStateProps & TDispatchProps, TOwnProps>;
+        mapDispatchToProps: MapDispatchToPropsNonObject<
+            TDispatchProps,
+            TOwnProps
+        >,
+    ): InferableComponentEnhancerWithProps<
+        TStateProps & TDispatchProps,
+        TOwnProps
+    >;
 
     <TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = {}>(
         mapStateToProps: MapStateToPropsParam<TStateProps, TOwnProps, State>,
@@ -160,7 +198,13 @@ export interface Connect {
         TOwnProps
     >;
 
-    <TStateProps = {}, no_dispatch = {}, TOwnProps = {}, TMergedProps = {}, State = {}>(
+    <
+        TStateProps = {},
+        no_dispatch = {},
+        TOwnProps = {},
+        TMergedProps = {},
+        State = {},
+    >(
         mapStateToProps: MapStateToPropsParam<TStateProps, TOwnProps, State>,
         mapDispatchToProps: null | undefined,
         mergeProps: MergeProps<TStateProps, undefined, TOwnProps, TMergedProps>,
@@ -169,7 +213,12 @@ export interface Connect {
     <no_state = {}, TDispatchProps = {}, TOwnProps = {}, TMergedProps = {}>(
         mapStateToProps: null | undefined,
         mapDispatchToProps: MapDispatchToPropsParam<TDispatchProps, TOwnProps>,
-        mergeProps: MergeProps<undefined, TDispatchProps, TOwnProps, TMergedProps>,
+        mergeProps: MergeProps<
+            undefined,
+            TDispatchProps,
+            TOwnProps,
+            TMergedProps
+        >,
     ): InferableComponentEnhancerWithProps<TMergedProps, TOwnProps>;
 
     <no_state = {}, no_dispatch = {}, TOwnProps = {}, TMergedProps = {}>(
@@ -178,10 +227,21 @@ export interface Connect {
         mergeProps: MergeProps<undefined, undefined, TOwnProps, TMergedProps>,
     ): InferableComponentEnhancerWithProps<TMergedProps, TOwnProps>;
 
-    <TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, TMergedProps = {}, State = {}>(
+    <
+        TStateProps = {},
+        TDispatchProps = {},
+        TOwnProps = {},
+        TMergedProps = {},
+        State = {},
+    >(
         mapStateToProps: MapStateToPropsParam<TStateProps, TOwnProps, State>,
         mapDispatchToProps: MapDispatchToPropsParam<TDispatchProps, TOwnProps>,
-        mergeProps: MergeProps<TStateProps, TDispatchProps, TOwnProps, TMergedProps>,
+        mergeProps: MergeProps<
+            TStateProps,
+            TDispatchProps,
+            TOwnProps,
+            TMergedProps
+        >,
         options?: Options<State, TStateProps, TOwnProps, TMergedProps>,
     ): InferableComponentEnhancerWithProps<TMergedProps, TOwnProps>;
 
@@ -190,11 +250,17 @@ export interface Connect {
         mapDispatchToProps: null | undefined,
         mergeProps: null | undefined,
         options: Options<State, TStateProps, TOwnProps>,
-    ): InferableComponentEnhancerWithProps<DispatchProp & TStateProps, TOwnProps>;
+    ): InferableComponentEnhancerWithProps<
+        DispatchProp & TStateProps,
+        TOwnProps
+    >;
 
     <TStateProps = {}, TDispatchProps = {}, TOwnProps = {}>(
         mapStateToProps: null | undefined,
-        mapDispatchToProps: MapDispatchToPropsNonObject<TDispatchProps, TOwnProps>,
+        mapDispatchToProps: MapDispatchToPropsNonObject<
+            TDispatchProps,
+            TOwnProps
+        >,
         mergeProps: null | undefined,
         options: Options<{}, TStateProps, TOwnProps>,
     ): InferableComponentEnhancerWithProps<TDispatchProps, TOwnProps>;
@@ -211,10 +277,16 @@ export interface Connect {
 
     <TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = {}>(
         mapStateToProps: MapStateToPropsParam<TStateProps, TOwnProps, State>,
-        mapDispatchToProps: MapDispatchToPropsNonObject<TDispatchProps, TOwnProps>,
+        mapDispatchToProps: MapDispatchToPropsNonObject<
+            TDispatchProps,
+            TOwnProps
+        >,
         mergeProps: null | undefined,
         options: Options<State, TStateProps, TOwnProps>,
-    ): InferableComponentEnhancerWithProps<TStateProps & TDispatchProps, TOwnProps>;
+    ): InferableComponentEnhancerWithProps<
+        TStateProps & TDispatchProps,
+        TOwnProps
+    >;
 
     <TStateProps = {}, TDispatchProps = {}, TOwnProps = {}, State = {}>(
         mapStateToProps: MapStateToPropsParam<TStateProps, TOwnProps, State>,
@@ -233,7 +305,10 @@ export interface Connect {
  */
 export const connect: Connect;
 
-export type MapStateToProps<TStateProps, TOwnProps, State> = (state: State, ownProps: TOwnProps) => TStateProps;
+export type MapStateToProps<TStateProps, TOwnProps, State> = (
+    state: State,
+    ownProps: TOwnProps,
+) => TStateProps;
 
 export type MapStateToPropsFactory<TStateProps, TOwnProps, State> = (
     initialState: State,
@@ -274,7 +349,12 @@ export type MergeProps<TStateProps, TDispatchProps, TOwnProps, TMergedProps> = (
     ownProps: TOwnProps,
 ) => TMergedProps;
 
-export interface Options<State = {}, TStateProps = {}, TOwnProps = {}, TMergedProps = {}> extends ConnectOptions {
+export interface Options<
+    State = {},
+    TStateProps = {},
+    TOwnProps = {},
+    TMergedProps = {},
+> extends ConnectOptions {
     /**
      * If true, implements shouldComponentUpdate and shallowly compares the result of mergeProps,
      * preventing unnecessary updates, assuming that the component is a “pure” component
@@ -288,25 +368,39 @@ export interface Options<State = {}, TStateProps = {}, TOwnProps = {}, TMergedPr
      * When pure, compares incoming store state to its previous value.
      * @default strictEqual
      */
-    areStatesEqual?: ((nextState: State, prevState: State) => boolean) | undefined;
+    areStatesEqual?:
+        | ((nextState: State, prevState: State) => boolean)
+        | undefined;
 
     /**
      * When pure, compares incoming props to its previous value.
      * @default shallowEqual
      */
-    areOwnPropsEqual?: ((nextOwnProps: TOwnProps, prevOwnProps: TOwnProps) => boolean) | undefined;
+    areOwnPropsEqual?:
+        | ((nextOwnProps: TOwnProps, prevOwnProps: TOwnProps) => boolean)
+        | undefined;
 
     /**
      * When pure, compares the result of mapStateToProps to its previous value.
      * @default shallowEqual
      */
-    areStatePropsEqual?: ((nextStateProps: TStateProps, prevStateProps: TStateProps) => boolean) | undefined;
+    areStatePropsEqual?:
+        | ((
+              nextStateProps: TStateProps,
+              prevStateProps: TStateProps,
+          ) => boolean)
+        | undefined;
 
     /**
      * When pure, compares the result of mergeProps to its previous value.
      * @default shallowEqual
      */
-    areMergedPropsEqual?: ((nextMergedProps: TMergedProps, prevMergedProps: TMergedProps) => boolean) | undefined;
+    areMergedPropsEqual?:
+        | ((
+              nextMergedProps: TMergedProps,
+              prevMergedProps: TMergedProps,
+          ) => boolean)
+        | undefined;
 }
 
 /**
@@ -338,7 +432,10 @@ export type SelectorFactory<S, TProps, TOwnProps, TFactoryOptions> = (
     factoryOptions: TFactoryOptions,
 ) => Selector<S, TProps, TOwnProps>;
 
-export type Selector<S, TProps, TOwnProps> = (state: S, ownProps: TOwnProps) => TProps;
+export type Selector<S, TProps, TOwnProps> = (
+    state: S,
+    ownProps: TOwnProps,
+) => TProps;
 
 export interface ConnectOptions {
     /**
@@ -396,7 +493,9 @@ export interface ProviderProps<A extends Action = AnyAction> {
 /**
  * Makes the Redux store available to the connect() calls in the component hierarchy below.
  */
-export class Provider<A extends Action = AnyAction> extends Component<ProviderProps<A>> {}
+export class Provider<A extends Action = AnyAction> extends Component<
+    ProviderProps<A>
+> {}
 
 /**
  * Creates a new <Provider> which will set the Redux Store on the passed key of the context. You probably only need this

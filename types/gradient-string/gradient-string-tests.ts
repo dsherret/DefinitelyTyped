@@ -22,17 +22,16 @@ gradient([
 gradient.rainbow("I love gradient-strings!");
 
 // $ExpectType string
-gradient("orange", "yellow").multiline([
-    "  __",
-    "<(o )___",
-    " ( ._> /",
-    "  `---'",
-].join("\n"));
+gradient("orange", "yellow").multiline(
+    ["  __", "<(o )___", " ( ._> /", "  `---'"].join("\n"),
+);
 
 // $ExpectType string
 gradient.atlas.multiline("Multi line\nstring");
 // $ExpectType string
-gradient("cyan", "pink").multiline("Multi line\nstring", { interpolation: "hsv" });
+gradient("cyan", "pink").multiline("Multi line\nstring", {
+    interpolation: "hsv",
+});
 
 // $ExpectType Gradient
 gradient([

@@ -7,4 +7,7 @@ export interface ApplyDevToolsOptions {
 /**
  * Wraps the EditorView instance in the applyDevTools.
  */
-export default function applyDevTools(view: EditorView, options?: ApplyDevToolsOptions): void;
+export default function applyDevTools(
+    view: EditorView,
+    options?: ApplyDevToolsOptions,
+): void;

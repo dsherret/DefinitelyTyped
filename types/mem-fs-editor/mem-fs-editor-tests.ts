@@ -28,20 +28,32 @@ namespace Editor.read {
 
         contents = EDITOR.read(FILE_PATH);
         contents = EDITOR.read(FILE_PATH, { raw: false });
-        contents = EDITOR.read(FILE_PATH, { raw: false, defaults: STRING_DEFAULTS });
+        contents = EDITOR.read(FILE_PATH, {
+            raw: false,
+            defaults: STRING_DEFAULTS,
+        });
         // @ts-expect-error
         contents = EDITOR.read(FILE_PATH, { defaults: RAW_DEFAULTS });
         // @ts-expect-error
-        contents = EDITOR.read(FILE_PATH, { raw: false, defaults: RAW_DEFAULTS });
+        contents = EDITOR.read(FILE_PATH, {
+            raw: false,
+            defaults: RAW_DEFAULTS,
+        });
     }
 
     {
         let contents: Buffer | NodeJS.ReadableStream;
 
         contents = EDITOR.read(FILE_PATH, { raw: true });
-        contents = EDITOR.read(FILE_PATH, { raw: true, defaults: RAW_DEFAULTS });
+        contents = EDITOR.read(FILE_PATH, {
+            raw: true,
+            defaults: RAW_DEFAULTS,
+        });
         // @ts-expect-error
-        contents = EDITOR.read(FILE_PATH, { raw: true, defaults: STRING_DEFAULTS });
+        contents = EDITOR.read(FILE_PATH, {
+            raw: true,
+            defaults: STRING_DEFAULTS,
+        });
     }
 }
 
@@ -71,7 +83,9 @@ namespace Editor.write {
 // Tests for `MemFsEditor.Editor#writeJSON`
 namespace Editor.writeJSON {
     declare const CONTENTS: JSONSchema7Type;
-    declare const REPLACER: ((key: string, value: any) => any) | Array<string | number>;
+    declare const REPLACER:
+        | ((key: string, value: any) => any)
+        | Array<string | number>;
     declare const SPACE: number | string;
 
     let contents: string;
@@ -96,7 +110,9 @@ namespace Editor.append {
 // Tests for `MemFsEditor.Editor#extendJSON`
 namespace Editor.extendJSON {
     declare const CONTENTS: JSONSchema7Type;
-    declare const REPLACER: ((key: string, value: any) => any) | Array<string | number>;
+    declare const REPLACER:
+        | ((key: string, value: any) => any)
+        | Array<string | number>;
     declare const SPACE: number | string;
 
     EDITOR.extendJSON(FILE_PATH, CONTENTS);
@@ -134,7 +150,13 @@ namespace Editor.copyTpl {
     EDITOR.copyTpl(FILE_PATHS, FILE_PATH);
     EDITOR.copyTpl(FILE_PATHS, FILE_PATH, CONTEXT);
     EDITOR.copyTpl(FILE_PATHS, FILE_PATH, CONTEXT, TEMPLATE_OPTIONS);
-    EDITOR.copyTpl(FILE_PATHS, FILE_PATH, CONTEXT, TEMPLATE_OPTIONS, COPY_OPTIONS);
+    EDITOR.copyTpl(
+        FILE_PATHS,
+        FILE_PATH,
+        CONTEXT,
+        TEMPLATE_OPTIONS,
+        COPY_OPTIONS,
+    );
 }
 
 // Tests for `MemFsEditor.Editor#move`

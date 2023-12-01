@@ -3,7 +3,7 @@ import VueJsonCompare from "vue-json-compare";
 
 // excerpt from vue-class-component/src/declarations.ts
 type VueClass<V> = {
-    new(...args: any[]): V & Vue;
+    new (...args: any[]): V & Vue;
 } & typeof Vue;
 
 // excerpt from vue-class-component/src/index.ts
@@ -24,8 +24,14 @@ new Vue({
     `,
     data() {
         return {
-            oldData: [{ prop1: "A", prop2: "B" }, { prop1: "C", prop2: "D" }],
-            newData: [{ prop1: "A", prop2: "B" }, { prop1: "C", prop2: "E" }],
+            oldData: [
+                { prop1: "A", prop2: "B" },
+                { prop1: "C", prop2: "D" },
+            ],
+            newData: [
+                { prop1: "A", prop2: "B" },
+                { prop1: "C", prop2: "E" },
+            ],
         };
     },
 });
@@ -34,12 +40,7 @@ new Vue({
     components: {
         VueJsonCompare,
     },
-    template: `
-        <vue-json-compare
-          :old-data="oldData"
-          :new-data="newData"
-        />
-    `,
+    template: ` <vue-json-compare :old-data="oldData" :new-data="newData" /> `,
 })
 class App extends Vue {
     oldData = { prop1: "A", prop2: "B" };

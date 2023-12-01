@@ -3,7 +3,7 @@ import DatePicker from "vue2-datepicker";
 
 // excerpt from vue-class-component/src/declarations.ts
 type VueClass<V> = {
-    new(...args: any[]): V & Vue;
+    new (...args: any[]): V & Vue;
 } & typeof Vue;
 
 // excerpt from vue-class-component/src/index.ts
@@ -41,7 +41,8 @@ new Vue({
             :placeholder="placeholder"
             v-model="dateOfBirth"
             format="YYYY-MM-DD"
-            lang="en">
+            lang="en"
+        >
             <template slot="calendar-icon">
                 <span class="input-datepicker__icon"></span>
             </template>

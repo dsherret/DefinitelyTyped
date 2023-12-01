@@ -188,7 +188,10 @@ let str: string;
 let size: [number, number];
 let extent: [[number, number], [number, number]];
 
-const svgLinkPaths = select<SVGSVGElement, undefined>("svg").selectAll<SVGPathElement, SLink>(".linkPath"); // assume mock DOM
+const svgLinkPaths = select<SVGSVGElement, undefined>("svg").selectAll<
+    SVGPathElement,
+    SLink
+>(".linkPath"); // assume mock DOM
 
 let sGraph: d3Sankey.SankeyGraph<SNodeExtra, SLinkExtra>;
 
@@ -196,13 +199,18 @@ let sGraph: d3Sankey.SankeyGraph<SNodeExtra, SLinkExtra>;
 // Obtain SankeyLayout Generator
 // ---------------------------------------------------------------------------
 
-const slgDefault: d3Sankey.SankeyLayout<d3Sankey.SankeyGraph<{}, {}>, {}, {}> = d3Sankey.sankey();
-let slgDAG: d3Sankey.SankeyLayout<DAG, SNodeExtra, SLinkExtra> = d3Sankey.sankey<DAG, SNodeExtra, SLinkExtra>();
-let slgDAGCustomId: d3Sankey.SankeyLayout<DAGCustomId, SNodeExtraCustomId, SLinkExtra> = d3Sankey.sankey<
+const slgDefault: d3Sankey.SankeyLayout<
+    d3Sankey.SankeyGraph<{}, {}>,
+    {},
+    {}
+> = d3Sankey.sankey();
+let slgDAG: d3Sankey.SankeyLayout<DAG, SNodeExtra, SLinkExtra> =
+    d3Sankey.sankey<DAG, SNodeExtra, SLinkExtra>();
+let slgDAGCustomId: d3Sankey.SankeyLayout<
     DAGCustomId,
     SNodeExtraCustomId,
     SLinkExtra
->();
+> = d3Sankey.sankey<DAGCustomId, SNodeExtraCustomId, SLinkExtra>();
 
 // ---------------------------------------------------------------------------
 // NodeWidth
@@ -279,7 +287,9 @@ num = slgDAG.iterations();
 // test multiple definitions
 slgDAG = slgDAG.nodeSort((node: SNode) => (node.index === 0 ? 1 : -1));
 slgDAG = slgDAG.nodeSort(() => undefined);
-slgDAG = slgDAG.nodeSort((node: SNode) => (node.name === "test" ? null : undefined));
+slgDAG = slgDAG.nodeSort((node: SNode) =>
+    node.name === "test" ? null : undefined,
+);
 
 // ---------------------------------------------------------------------------
 // LinkSort
@@ -288,7 +298,9 @@ slgDAG = slgDAG.nodeSort((node: SNode) => (node.name === "test" ? null : undefin
 // test multiple definitions
 slgDAG = slgDAG.linkSort((link: SLink) => (link.index === 0 ? 1 : -1));
 slgDAG = slgDAG.linkSort(() => undefined);
-slgDAG = slgDAG.linkSort((link: SLink) => (link.source > link.target ? null : undefined));
+slgDAG = slgDAG.linkSort((link: SLink) =>
+    link.source > link.target ? null : undefined,
+);
 
 // ---------------------------------------------------------------------------
 // Node Id
@@ -296,7 +308,7 @@ slgDAG = slgDAG.linkSort((link: SLink) => (link.source > link.target ? null : un
 
 // Set -----------------------------------------------------------------------
 
-slgDAGCustomId = slgDAGCustomId.nodeId(d => {
+slgDAGCustomId = slgDAGCustomId.nodeId((d) => {
     const node: SNodeCustomId = d;
     return d.nodeId;
 });
@@ -348,7 +360,7 @@ nodeAlignmentFn = slgDAG.nodeAlign();
 slgDAG = slgDAG.nodes(graphDefault.customNodes);
 
 // Use accessor function and test return type for chainability
-slgDAG = slgDAG.nodes(d => d.customNodes);
+slgDAG = slgDAG.nodes((d) => d.customNodes);
 
 // Get -----------------------------------------------------------------------
 
@@ -364,7 +376,7 @@ const nodesAccessor: (d: DAG) => SNode[] = slgDAG.nodes();
 slgDAG = slgDAG.links(graphDefault.customLinks);
 
 // Use accessor function and test return type for chainability
-slgDAG = slgDAG.links(d => d.customLinks);
+slgDAG = slgDAG.links((d) => d.customLinks);
 
 // Get -----------------------------------------------------------------------
 

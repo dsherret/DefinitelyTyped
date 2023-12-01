@@ -146,12 +146,12 @@ declare namespace EleventyImage {
          */
         filenameFormat?:
             | ((
-                id: string,
-                src: string,
-                width: number,
-                format: string,
-                options: Required<ImageOptions>,
-            ) => string | null | undefined)
+                  id: string,
+                  src: string,
+                  width: number,
+                  format: string,
+                  options: Required<ImageOptions>,
+              ) => string | null | undefined)
             | null
             | undefined;
 
@@ -173,14 +173,14 @@ declare namespace EleventyImage {
          */
         urlFormat?:
             | ((
-                format: {
-                    hash: string;
-                    src: string;
-                    width: number;
-                    format: string;
-                },
-                options: Required<ImageOptions>,
-            ) => string)
+                  format: {
+                      hash: string;
+                      src: string;
+                      width: number;
+                      format: string;
+                  },
+                  options: Required<ImageOptions>,
+              ) => string)
             | null;
 
         /**
@@ -265,8 +265,19 @@ declare namespace EleventyImage {
     };
 
     const ImagePath: {
-        filenameFormat: (id: string, src: unknown, width: number, format: string) => string;
-        getFilename: (id: string, src: unknown, width: number, format: string, options?: ImageOptions) => string;
+        filenameFormat: (
+            id: string,
+            src: unknown,
+            width: number,
+            format: string,
+        ) => string;
+        getFilename: (
+            id: string,
+            src: unknown,
+            width: number,
+            format: string,
+            options?: ImageOptions,
+        ) => string;
         convertFilePathToUrl: (dir: string, filename: string) => string;
     };
 
@@ -281,7 +292,12 @@ declare namespace EleventyImage {
      */
     function statsSync(src: ImageSource, opts?: ImageOptions): Metadata;
 
-    function statsByDimensionsSync(src: ImageSource, width: number, height: number, opts?: ImageOptions): Metadata;
+    function statsByDimensionsSync(
+        src: ImageSource,
+        width: number,
+        height: number,
+        opts?: ImageOptions,
+    ): Metadata;
 
     function getFormats(
         formats: string | ReadonlyArray<ImageFormatWithAliases | null | "auto">,
@@ -319,7 +335,11 @@ declare namespace EleventyImage {
 
         getHash(): string;
 
-        getStat(outputFormat: ImageFormat, width: number, height: number): Stats;
+        getStat(
+            outputFormat: ImageFormat,
+            width: number,
+            height: number,
+        ): Stats;
 
         needsRotation(orientation: number): boolean;
 

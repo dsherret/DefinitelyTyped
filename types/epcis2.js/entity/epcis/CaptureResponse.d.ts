@@ -40,5 +40,9 @@ export default class CaptureResponse {
      * @param delay - the delay between each call, in ms (2000 by default)
      * @param options - the request options
      */
-    pollForTheCaptureToFinish(nbRetry?: number, delay?: number, options?: any): Promise<void>;
+    pollForTheCaptureToFinish(
+        nbRetry?: number,
+        delay?: number,
+        options?: any,
+    ): Promise<void>;
 }

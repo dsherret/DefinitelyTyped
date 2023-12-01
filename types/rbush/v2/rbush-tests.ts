@@ -7,15 +7,13 @@ interface IndexedRect extends rbush.BBox {
 function test_rbush() {
     const index = rbush<IndexedRect>();
 
-    index
-        .clear()
-        .insert({
-            minX: 0,
-            minY: 0,
-            maxX: 10,
-            maxY: 10,
-            index: 0,
-        });
+    index.clear().insert({
+        minX: 0,
+        minY: 0,
+        maxX: 10,
+        maxY: 10,
+        index: 0,
+    });
 
     index.all();
     index.fromJSON(index.toJSON());

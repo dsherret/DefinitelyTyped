@@ -71,8 +71,16 @@ interface SafariEventListener extends Function {
 }
 
 interface SafariEventTarget {
-    addEventListener(type: string, listener: SafariEventListener, useCapture?: boolean): void;
-    removeEventListener(type: string, listener: SafariEventListener, useCapture?: boolean): void;
+    addEventListener(
+        type: string,
+        listener: SafariEventListener,
+        useCapture?: boolean,
+    ): void;
+    removeEventListener(
+        type: string,
+        listener: SafariEventListener,
+        useCapture?: boolean,
+    ): void;
 }
 
 interface SafariBrowserWindow extends SafariEventTarget {
@@ -152,9 +160,18 @@ interface SafariExtensionMenu {
     menuItems: SafariExtensionMenuItem[];
     visible: boolean;
 
-    appendMenuItem(identifier: string, title: string, command?: string): SafariExtensionMenuItem;
+    appendMenuItem(
+        identifier: string,
+        title: string,
+        command?: string,
+    ): SafariExtensionMenuItem;
     appendSeparator(identifier: string): SafariExtensionMenuItem;
-    insertMenuItem(index: number, identifier: string, title: string, command?: string): SafariExtensionMenuItem;
+    insertMenuItem(
+        index: number,
+        identifier: string,
+        title: string,
+        command?: string,
+    ): SafariExtensionMenuItem;
     insertSeparator(index: number, identifier: string): SafariExtensionMenuItem;
     removeMenuItem(index: number): void;
 }
@@ -257,13 +274,36 @@ interface SafariExtension {
     removeMenu(identifier: string): void;
 
     popovers: SafariExtensionPopover[];
-    createPopover(identifier: string, url: string, width?: number, height?: number): SafariExtensionPopover;
+    createPopover(
+        identifier: string,
+        url: string,
+        width?: number,
+        height?: number,
+    ): SafariExtensionPopover;
     removePopover(identifier: string): void;
 
-    addContentScript(source: string, whitelist: string[], blacklist: string[], runAtEnd: boolean): string;
-    addContentScriptFromURL(url: string, whitelist: string[], blacklist: string[], runAtEnd: boolean): string;
-    addContentStyleSheet(source: string, whitelist: string[], blacklist: string[]): string;
-    addContentStyleSheetFromURL(url: string, whitelist: string[], blacklist: string[]): string;
+    addContentScript(
+        source: string,
+        whitelist: string[],
+        blacklist: string[],
+        runAtEnd: boolean,
+    ): string;
+    addContentScriptFromURL(
+        url: string,
+        whitelist: string[],
+        blacklist: string[],
+        runAtEnd: boolean,
+    ): string;
+    addContentStyleSheet(
+        source: string,
+        whitelist: string[],
+        blacklist: string[],
+    ): string;
+    addContentStyleSheetFromURL(
+        url: string,
+        whitelist: string[],
+        blacklist: string[],
+    ): string;
     removeContentScript(url: string): void;
     removeContentScripts(): void;
     removeContentStyleSheet(url: string): void;
@@ -319,7 +359,11 @@ interface SafariExtensionContextMenu {
      * @param command The command identifier that the context menu item sends when activated.
      * @returns The context menu item that was appended.
      */
-    appendContextMenuItem(identifier: string, title: string, command?: string): SafariExtensionContextMenuItem;
+    appendContextMenuItem(
+        identifier: string,
+        title: string,
+        command?: string,
+    ): SafariExtensionContextMenuItem;
 
     /**
      * Inserts a menu item at a specific index in the contextual menu.
@@ -395,7 +439,8 @@ interface SafariCommandEvent extends SafariEvent {
     command: string;
 }
 
-interface SafariExtensionContextMenuItemCommandEvent extends SafariCommandEvent {
+interface SafariExtensionContextMenuItemCommandEvent
+    extends SafariCommandEvent {
     /**
      * The target of the event.
      * This attribute stays the same as the event moves through the event-dispatch hierarchy. Its value is the same as the object that the event is sent to during the targeting phase.

@@ -2,7 +2,7 @@ import osmtogeojson from "osmtogeojson";
 import { GeoJSON, OsmJSON } from "osmtogeojson";
 import * as xmldom from "xmldom";
 
-let xml: Document = (new xmldom.DOMParser()).parseFromString(
+let xml: Document = new xmldom.DOMParser().parseFromString(
     "<osm><node id='1' lat='1.234' lon='4.321' /></osm>",
     "text/xml",
 );
@@ -48,7 +48,7 @@ let json: OsmJSON.OsmJSONObject = {
         },
         {
             type: "relation",
-            tags: { "type": "multipolygon" },
+            tags: { type: "multipolygon" },
             id: 1,
             members: [
                 {

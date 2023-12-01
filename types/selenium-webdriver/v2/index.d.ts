@@ -359,7 +359,12 @@ export namespace logging {
          *     current time will be used.
          * @param {string=} opt_type The log type, if known.
          */
-        constructor(level: Level | string | number, message: string, opt_timestamp?: number, opt_type?: string | IType);
+        constructor(
+            level: Level | string | number,
+            message: string,
+            opt_timestamp?: number,
+            opt_type?: string | IType,
+        );
 
         level: Level;
 
@@ -736,7 +741,11 @@ export namespace promise {
      *     generator's final result.
      * @throws {TypeError} If the given function is not a generator.
      */
-    function consume<T>(generatorFn: (...args: any[]) => T, opt_self?: any, ...var_args: any[]): Promise<T>;
+    function consume<T>(
+        generatorFn: (...args: any[]) => T,
+        opt_self?: any,
+        ...var_args: any[]
+    ): Promise<T>;
 
     /**
      * Registers an observer on a promised {@code value}, returning a new promise
@@ -1005,7 +1014,10 @@ export namespace promise {
          *     this instance was created under. Defaults to the currently active flow.
          */
         constructor(
-            resolver: (resolve: IFulfilledCallback<T>, reject: IRejectedCallback) => void,
+            resolver: (
+                resolve: IFulfilledCallback<T>,
+                reject: IRejectedCallback,
+            ) => void,
             opt_flow?: ControlFlow,
         );
 
@@ -1036,7 +1048,10 @@ export namespace promise {
          * @return A new promise which will be resolved
          *     with the result of the invoked callback.
          */
-        then<R>(opt_callback?: ((value: T) => IThenable<R> | R) | null, opt_errback?: (error: any) => any): Promise<R>;
+        then<R>(
+            opt_callback?: ((value: T) => IThenable<R> | R) | null,
+            opt_errback?: (error: any) => any,
+        ): Promise<R>;
 
         /**
          * Registers a listener for when this promise is rejected. This is synonymous
@@ -1306,7 +1321,10 @@ export namespace promise {
          *     with the result of the action.
          * @template T
          */
-        execute<T>(fn: () => T | Promise<T>, opt_description?: string): Promise<T>;
+        execute<T>(
+            fn: () => T | Promise<T>,
+            opt_description?: string,
+        ): Promise<T>;
 
         /**
          * Inserts a {@code setTimeout} into the command queue. This is equivalent to
@@ -1355,7 +1373,11 @@ export namespace promise {
          *     is not a number >= 0.
          * @template T
          */
-        wait<T>(condition: Promise<T> | Function, opt_timeout?: number, opt_message?: string): Promise<T>;
+        wait<T>(
+            condition: Promise<T> | Function,
+            opt_timeout?: number,
+            opt_message?: string,
+        ): Promise<T>;
     }
 }
 
@@ -1399,7 +1421,11 @@ export namespace until {
      * @return {!Condition<boolean>} A new condition.
      */
     function ableToSwitchToFrame(
-        frame: number | WebElement | By | ((webdriver: WebDriver) => WebElement),
+        frame:
+            | number
+            | WebElement
+            | By
+            | ((webdriver: WebDriver) => WebElement),
     ): Condition<boolean>;
 
     /**
@@ -1483,7 +1509,10 @@ export namespace until {
      * @return {!until.Condition.<boolean>} The new condition.
      * @see WebDriver#getText
      */
-    function elementTextContains(element: WebElement, substr: string): Condition<boolean>;
+    function elementTextContains(
+        element: WebElement,
+        substr: string,
+    ): Condition<boolean>;
 
     /**
      * Creates a condition that will wait for the given element's
@@ -1495,7 +1524,10 @@ export namespace until {
      * @return {!until.Condition.<boolean>} The new condition.
      * @see WebDriver#getText
      */
-    function elementTextIs(element: WebElement, text: string): Condition<boolean>;
+    function elementTextIs(
+        element: WebElement,
+        text: string,
+    ): Condition<boolean>;
 
     /**
      * Creates a condition that will wait for the given element's
@@ -1507,7 +1539,10 @@ export namespace until {
      * @return {!until.Condition<boolean>} The new condition.
      * @see WebDriver#getText
      */
-    function elementTextMatches(element: WebElement, regex: RegExp): Condition<boolean>;
+    function elementTextMatches(
+        element: WebElement,
+        regex: RegExp,
+    ): Condition<boolean>;
 
     /**
      * Creates a condition that will loop until at least one element is
@@ -1717,7 +1752,10 @@ export class ActionSequence {
      *     omitted, the element's center will be used as the target offset.
      * @return {!ActionSequence} A self reference.
      */
-    mouseMove(location: WebElement | ILocation, opt_offset?: ILocation): ActionSequence;
+    mouseMove(
+        location: WebElement | ILocation,
+        opt_offset?: ILocation,
+    ): ActionSequence;
 
     /**
      * Presses a mouse button. The mouse button will not be released until
@@ -1742,7 +1780,10 @@ export class ActionSequence {
      *     first argument.
      * @return {!ActionSequence} A self reference.
      */
-    mouseDown(opt_elementOrButton?: WebElement | string, opt_button?: string): ActionSequence;
+    mouseDown(
+        opt_elementOrButton?: WebElement | string,
+        opt_button?: string,
+    ): ActionSequence;
 
     /**
      * Releases a mouse button. Behavior is undefined for calling this function
@@ -1765,7 +1806,10 @@ export class ActionSequence {
      *     first argument.
      * @return {!ActionSequence} A self reference.
      */
-    mouseUp(opt_elementOrButton?: WebElement | string, opt_button?: string): ActionSequence;
+    mouseUp(
+        opt_elementOrButton?: WebElement | string,
+        opt_button?: string,
+    ): ActionSequence;
 
     /**
      * Convenience function for performing a 'drag and drop' manuever. The target
@@ -1778,7 +1822,10 @@ export class ActionSequence {
      *     pixels.
      * @return {!ActionSequence} A self reference.
      */
-    dragAndDrop(element: WebElement, location: WebElement | ILocation): ActionSequence;
+    dragAndDrop(
+        element: WebElement,
+        location: WebElement | ILocation,
+    ): ActionSequence;
 
     /**
      * Clicks a mouse button.
@@ -1797,7 +1844,10 @@ export class ActionSequence {
      *     first argument.
      * @return {!ActionSequence} A self reference.
      */
-    click(opt_elementOrButton?: WebElement | string, opt_button?: string): ActionSequence;
+    click(
+        opt_elementOrButton?: WebElement | string,
+        opt_button?: string,
+    ): ActionSequence;
 
     /**
      * Double-clicks a mouse button.
@@ -1819,7 +1869,10 @@ export class ActionSequence {
      *     first argument.
      * @return {!ActionSequence} A self reference.
      */
-    doubleClick(opt_elementOrButton?: WebElement | string, opt_button?: string): ActionSequence;
+    doubleClick(
+        opt_elementOrButton?: WebElement | string,
+        opt_button?: string,
+    ): ActionSequence;
 
     /**
      * Performs a modifier key press. The modifier key is <em>not released</em>
@@ -1852,7 +1905,9 @@ export class ActionSequence {
      * @return {!ActionSequence} A self reference.
      * @throws {Error} If the key is not a valid modifier key.
      */
-    sendKeys(...var_args: Array<string | promise.Promise<string>>): ActionSequence;
+    sendKeys(
+        ...var_args: Array<string | promise.Promise<string>>
+    ): ActionSequence;
 
     // endregion
 }
@@ -1966,7 +2021,11 @@ export class TouchSequence {
      * @param {number} speed The speed to flick at in pixels per second.
      * @return {!TouchSequence} A self reference.
      */
-    flickElement(elem: WebElement, offset: IOffset, speed: number): TouchSequence;
+    flickElement(
+        elem: WebElement,
+        offset: IOffset,
+        speed: number,
+    ): TouchSequence;
 }
 
 interface IOffset {
@@ -2091,7 +2150,10 @@ export class AlertPromise extends Alert implements promise.IThenable<Alert> {
      * @return A new promise which will be resolved
      *     with the result of the invoked callback.
      */
-    then(opt_callback?: Function | null, opt_errback?: Function): promise.Promise<any>;
+    then(
+        opt_callback?: Function | null,
+        opt_errback?: Function,
+    ): promise.Promise<any>;
 
     /**
      * Registers a listener for when this promise is rejected. This is synonymous
@@ -2322,7 +2384,11 @@ export class Builder {
      *     version may be used.
      * @return {!Builder} A self reference.
      */
-    forBrowser(name: string, opt_version?: string, opt_platform?: string): Builder;
+    forBrowser(
+        name: string,
+        opt_version?: string,
+        opt_platform?: string,
+    ): Builder;
 
     /**
      * Returns the base set of capabilities this instance is currently configured
@@ -2553,7 +2619,10 @@ export class By {
      * @return {function(!./WebDriver): !./promise.Promise}
      *     A new JavaScript-based locator function.
      */
-    static js(script: string | Function, ...var_args: any[]): (webdriver: WebDriver) => promise.Promise<any>;
+    static js(
+        script: string | Function,
+        ...var_args: any[]
+    ): (webdriver: WebDriver) => promise.Promise<any>;
 
     /**
      * Locates elements whose `name` attribute has the given value.
@@ -3132,7 +3201,12 @@ export class EventEmitter {
      *    the first event is fired.
      * @return {!EventEmitter} A self reference.
      */
-    addListener(type: string, fn: Function, opt_scope?: any, opt_oneshot?: boolean): EventEmitter;
+    addListener(
+        type: string,
+        fn: Function,
+        opt_scope?: any,
+        opt_oneshot?: boolean,
+    ): EventEmitter;
 
     /**
      * Registers a one-time listener which will be called only the first time an
@@ -3637,7 +3711,11 @@ export class WebDriver {
      * @param {promise.ControlFlow=} opt_flow The flow to
      *     schedule commands through. Defaults to the active flow object.
      */
-    constructor(session: Session | promise.Promise<Session>, executor: Executor, opt_flow?: promise.ControlFlow);
+    constructor(
+        session: Session | promise.Promise<Session>,
+        executor: Executor,
+        opt_flow?: promise.ControlFlow,
+    );
 
     // endregion
 
@@ -3653,7 +3731,11 @@ export class WebDriver {
      *     {@link promise.controlFlow() currently active}  control flow.
      * @return {!WebDriver} A new client for the specified session.
      */
-    static attachToSession(executor: Executor, sessionId: string, opt_flow?: promise.ControlFlow): WebDriver;
+    static attachToSession(
+        executor: Executor,
+        sessionId: string,
+        opt_flow?: promise.ControlFlow,
+    ): WebDriver;
 
     /**
      * Creates a new WebDriver session.
@@ -3789,7 +3871,10 @@ export class WebDriver {
      *    scripts return value.
      * @template T
      */
-    executeScript<T>(script: string | Function, ...var_args: any[]): promise.Promise<T>;
+    executeScript<T>(
+        script: string | Function,
+        ...var_args: any[]
+    ): promise.Promise<T>;
 
     /**
      * Schedules a command to execute asynchronous JavaScript in the context of the
@@ -3867,7 +3952,10 @@ export class WebDriver {
      *    scripts return value.
      * @template T
      */
-    executeAsyncScript<T>(script: string | Function, ...var_args: any[]): promise.Promise<T>;
+    executeAsyncScript<T>(
+        script: string | Function,
+        ...var_args: any[]
+    ): promise.Promise<T>;
 
     /**
      * Schedules a command to execute a custom function.
@@ -3932,7 +4020,11 @@ export class WebDriver {
      * @template T
      */
     wait<T>(
-        condition: promise.Promise<T> | until.Condition<T> | ((driver: WebDriver) => T) | Function,
+        condition:
+            | promise.Promise<T>
+            | until.Condition<T>
+            | ((driver: WebDriver) => T)
+            | Function,
         timeout?: number,
         opt_message?: string,
     ): promise.Promise<T>;
@@ -4191,7 +4283,9 @@ interface IWebElement {
      * @return {!promise.Promise} A promise that will be resolved when all
      *     keys have been typed.
      */
-    sendKeys(...var_args: Array<number | string | promise.Promise<string | number>>): promise.Promise<void>;
+    sendKeys(
+        ...var_args: Array<number | string | promise.Promise<string | number>>
+    ): promise.Promise<void>;
 
     /**
      * Schedules a command to query for the tag/node name of this element.
@@ -4623,7 +4717,9 @@ export class WebElement implements Serializable<IWebElementId> {
      * @return {!promise.Promise.<void>} A promise that will be resolved
      *     when all keys have been typed.
      */
-    sendKeys(...var_args: Array<string | number | promise.Promise<string | number>>): promise.Promise<void>;
+    sendKeys(
+        ...var_args: Array<string | number | promise.Promise<string | number>>
+    ): promise.Promise<void>;
 
     /**
      * Schedules a command to query for the tag/node name of this element.
@@ -4794,7 +4890,10 @@ export class WebElement implements Serializable<IWebElementId> {
  *     that will resolve to the promised element.
  * @final
  */
-export class WebElementPromise extends WebElement implements promise.IThenable<WebElement> {
+export class WebElementPromise
+    extends WebElement
+    implements promise.IThenable<WebElement>
+{
     /**
      * @param {!WebDriver} driver The parent WebDriver instance for this
      *     element.
@@ -4843,7 +4942,10 @@ export class WebElementPromise extends WebElement implements promise.IThenable<W
      * @return A new promise which will be
      *     resolved with the result of the invoked callback.
      */
-    then<R>(opt_callback?: (value: WebElement) => R, opt_errback?: (error: any) => any): promise.Promise<R>;
+    then<R>(
+        opt_callback?: (value: WebElement) => R,
+        opt_errback?: (error: any) => any,
+    ): promise.Promise<R>;
 
     /**
      * Registers a listener for when this promise is rejected. This is synonymous

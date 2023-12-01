@@ -3,11 +3,22 @@ declare namespace GoogleAppsScript {
         namespace Collection {
             interface ActivitiesCollection {
                 // Retrieves a list of activities for a specific customer and application.
-                list(userKey: string, applicationName: string): AdminReports.Schema.Activities;
+                list(
+                    userKey: string,
+                    applicationName: string,
+                ): AdminReports.Schema.Activities;
                 // Retrieves a list of activities for a specific customer and application.
-                list(userKey: string, applicationName: string, optionalArgs: object): AdminReports.Schema.Activities;
+                list(
+                    userKey: string,
+                    applicationName: string,
+                    optionalArgs: object,
+                ): AdminReports.Schema.Activities;
                 // Push changes to activities
-                watch(resource: Schema.Channel, userKey: string, applicationName: string): AdminReports.Schema.Channel;
+                watch(
+                    resource: Schema.Channel,
+                    userKey: string,
+                    applicationName: string,
+                ): AdminReports.Schema.Channel;
                 // Push changes to activities
                 watch(
                     resource: Schema.Channel,
@@ -24,11 +35,18 @@ declare namespace GoogleAppsScript {
                 // Retrieves a report which is a collection of properties / statistics for a specific customer.
                 get(date: string): AdminReports.Schema.UsageReports;
                 // Retrieves a report which is a collection of properties / statistics for a specific customer.
-                get(date: string, optionalArgs: object): AdminReports.Schema.UsageReports;
+                get(
+                    date: string,
+                    optionalArgs: object,
+                ): AdminReports.Schema.UsageReports;
             }
             interface EntityUsageReportsCollection {
                 // Retrieves a report which is a collection of properties / statistics for a set of objects.
-                get(entityType: string, entityKey: string, date: string): AdminReports.Schema.UsageReports;
+                get(
+                    entityType: string,
+                    entityKey: string,
+                    date: string,
+                ): AdminReports.Schema.UsageReports;
                 // Retrieves a report which is a collection of properties / statistics for a set of objects.
                 get(
                     entityType: string,
@@ -39,9 +57,16 @@ declare namespace GoogleAppsScript {
             }
             interface UserUsageReportCollection {
                 // Retrieves a report which is a collection of properties / statistics for a set of users.
-                get(userKey: string, date: string): AdminReports.Schema.UsageReports;
+                get(
+                    userKey: string,
+                    date: string,
+                ): AdminReports.Schema.UsageReports;
                 // Retrieves a report which is a collection of properties / statistics for a set of users.
-                get(userKey: string, date: string, optionalArgs: object): AdminReports.Schema.UsageReports;
+                get(
+                    userKey: string,
+                    date: string,
+                    optionalArgs: object,
+                ): AdminReports.Schema.UsageReports;
             }
         }
         namespace Schema {
@@ -68,7 +93,9 @@ declare namespace GoogleAppsScript {
             }
             interface ActivityEvents {
                 name?: string | undefined;
-                parameters?: AdminReports.Schema.ActivityEventsParameters[] | undefined;
+                parameters?:
+                    | AdminReports.Schema.ActivityEventsParameters[]
+                    | undefined;
                 type?: string | undefined;
             }
             interface ActivityEventsParameters {
@@ -102,7 +129,9 @@ declare namespace GoogleAppsScript {
                 entity?: AdminReports.Schema.UsageReportEntity | undefined;
                 etag?: string | undefined;
                 kind?: string | undefined;
-                parameters?: AdminReports.Schema.UsageReportParameters[] | undefined;
+                parameters?:
+                    | AdminReports.Schema.UsageReportParameters[]
+                    | undefined;
             }
             interface UsageReportEntity {
                 customerId?: string | undefined;
@@ -124,11 +153,15 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
                 usageReports?: AdminReports.Schema.UsageReport[] | undefined;
-                warnings?: AdminReports.Schema.UsageReportsWarnings[] | undefined;
+                warnings?:
+                    | AdminReports.Schema.UsageReportsWarnings[]
+                    | undefined;
             }
             interface UsageReportsWarnings {
                 code?: string | undefined;
-                data?: AdminReports.Schema.UsageReportsWarningsData[] | undefined;
+                data?:
+                    | AdminReports.Schema.UsageReportsWarningsData[]
+                    | undefined;
                 message?: string | undefined;
             }
             interface UsageReportsWarningsData {
@@ -140,9 +173,15 @@ declare namespace GoogleAppsScript {
     interface AdminReports {
         Activities?: AdminReports.Collection.ActivitiesCollection | undefined;
         Channels?: AdminReports.Collection.ChannelsCollection | undefined;
-        CustomerUsageReports?: AdminReports.Collection.CustomerUsageReportsCollection | undefined;
-        EntityUsageReports?: AdminReports.Collection.EntityUsageReportsCollection | undefined;
-        UserUsageReport?: AdminReports.Collection.UserUsageReportCollection | undefined;
+        CustomerUsageReports?:
+            | AdminReports.Collection.CustomerUsageReportsCollection
+            | undefined;
+        EntityUsageReports?:
+            | AdminReports.Collection.EntityUsageReportsCollection
+            | undefined;
+        UserUsageReport?:
+            | AdminReports.Collection.UserUsageReportCollection
+            | undefined;
         // Create a new instance of Channel
         newChannel(): AdminReports.Schema.Channel;
     }

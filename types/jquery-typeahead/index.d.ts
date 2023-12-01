@@ -125,12 +125,12 @@ declare namespace RunningCoder.Typeahead {
             | "desc"
             | string[]
             | ((
-                node?: JQuery,
-                query?: string,
-                result?: any,
-                resultCount?: number,
-                resultCountPerGroup?: number,
-            ) => any[])
+                  node?: JQuery,
+                  query?: string,
+                  result?: any,
+                  resultCount?: number,
+                  resultCountPerGroup?: number,
+              ) => any[])
             | undefined;
 
         /** Set a maximum results per group if `group: true` configuration is enabled */
@@ -234,13 +234,19 @@ declare namespace RunningCoder.Typeahead {
          * If you need to print the item values inside HTML data attributes, it is possible to use `{{variable|raw}}`.
          * That optional modifier will make sure to get the unmodified value.
          */
-        template?: string | ((query?: string, item?: any) => string) | undefined;
+        template?:
+            | string
+            | ((query?: string, item?: any) => string)
+            | undefined;
 
         /**
          * In case there are no results to be displayed, a row will be displayed containing this template.
          * It is possible to display the query using `{{query}}` string.
          */
-        emptyTemplate?: string | ((query?: string) => string | JQuery) | undefined;
+        emptyTemplate?:
+            | string
+            | ((query?: string) => string | JQuery)
+            | undefined;
 
         /**
          * When an item is selected / clicked, by default the `"Matched key"` will go inside the input.
@@ -257,7 +263,10 @@ declare namespace RunningCoder.Typeahead {
         /**
          * If set to function, every element will be filtered using this custom rule AFTER the regular Typeahead filters have been applied.
          */
-        filter?: boolean | ((item?: any, displayKey?: string) => boolean) | undefined;
+        filter?:
+            | boolean
+            | ((item?: any, displayKey?: string) => boolean)
+            | undefined;
 
         /**
          * By default, search text matching is reserved to `display` keys. A searched text can't match multiple keys.
@@ -316,7 +325,10 @@ declare namespace RunningCoder.Typeahead {
         dynamic?: boolean | undefined;
 
         /** Overrides the default configuration for the specified group. */
-        filter?: boolean | ((item?: any, displayKey?: string) => boolean) | undefined;
+        filter?:
+            | boolean
+            | ((item?: any, displayKey?: string) => boolean)
+            | undefined;
 
         /** Overrides the default configuration for the specified group. */
         matcher?: ((item?: any, displayKey?: string) => boolean) | undefined;
@@ -334,7 +346,10 @@ declare namespace RunningCoder.Typeahead {
         data?: any[] | (() => any[]) | undefined;
 
         /** Overrides the default configuration for the specified group. */
-        template?: string | ((query?: string, item?: any) => string) | undefined;
+        template?:
+            | string
+            | ((query?: string, item?: any) => string)
+            | undefined;
 
         /** Overrides the default configuration for the specified group. */
         display?: string | string[] | undefined;
@@ -345,9 +360,19 @@ declare namespace RunningCoder.Typeahead {
 
     interface AJaxSettings extends JQueryAjaxSettings {
         path?: string | undefined;
-        done?: ((data?: JQuery, textStatus?: string, jqXHR?: JQueryXHR) => void) | undefined;
-        fail?: ((jqXHR?: JQueryXHR, textStatus?: string, errorThrown?: any) => void) | undefined;
-        always?: ((data?: JQuery, textStatus?: string, jqXHR?: JQueryXHR) => void) | undefined;
+        done?:
+            | ((data?: JQuery, textStatus?: string, jqXHR?: JQueryXHR) => void)
+            | undefined;
+        fail?:
+            | ((
+                  jqXHR?: JQueryXHR,
+                  textStatus?: string,
+                  errorThrown?: any,
+              ) => void)
+            | undefined;
+        always?:
+            | ((data?: JQuery, textStatus?: string, jqXHR?: JQueryXHR) => void)
+            | undefined;
         then?: ((jqXHR?: JQueryXHR, textStatus?: string) => void) | undefined;
     }
 
@@ -405,10 +430,14 @@ declare namespace RunningCoder.Typeahead {
 
     interface MultiSelectSettingsCallback {
         /** Triggered when a multiselect item is clicked */
-        onClick?: ((node?: JQuery, item?: any, event?: JQueryEventObject) => void) | undefined;
+        onClick?:
+            | ((node?: JQuery, item?: any, event?: JQueryEventObject) => void)
+            | undefined;
 
         /** Triggered when a multiselect item is canceled */
-        onCancel?: ((node?: JQuery, item?: any, event?: JQueryEventObject) => void) | undefined;
+        onCancel?:
+            | ((node?: JQuery, item?: any, event?: JQueryEventObject) => void)
+            | undefined;
     }
 
     interface Callback {
@@ -428,7 +457,14 @@ declare namespace RunningCoder.Typeahead {
         onSearch?: ((node?: JQuery, query?: string) => void) | undefined;
 
         /** Whenever the result changes, this callback will be triggered. */
-        onResult?: ((node?: JQuery, query?: string, result?: any, resultCount?: number) => void) | undefined;
+        onResult?:
+            | ((
+                  node?: JQuery,
+                  query?: string,
+                  result?: any,
+                  resultCount?: number,
+              ) => void)
+            | undefined;
 
         /**
          * When the result HTML is build, modify it before it get showed.
@@ -436,55 +472,119 @@ declare namespace RunningCoder.Typeahead {
          * * If you are using this callback, the resultHtmlList param needs to be returned at the end of your function.
          */
         onLayoutBuiltBefore?:
-            | ((node?: JQuery, query?: string, result?: any, resultHtmlList?: JQuery) => JQuery)
+            | ((
+                  node?: JQuery,
+                  query?: string,
+                  result?: any,
+                  resultHtmlList?: JQuery,
+              ) => JQuery)
             | undefined;
 
         /** Perform an action right after the result HTML gets inserted into Typeahead's DOM. */
-        onLayoutBuiltAfter?: ((node?: JQuery, query?: string, result?: any) => void) | undefined;
+        onLayoutBuiltAfter?:
+            | ((node?: JQuery, query?: string, result?: any) => void)
+            | undefined;
 
         /**
          * When a key is pressed to navigate the results. It is possible to disable the input text change
          * when using up and down arrows when `event.preventInputChange` is set to true
          */
-        onNavigateBefore?: ((node?: JQuery, query?: string, event?: JQueryEventObject) => void) | undefined;
+        onNavigateBefore?:
+            | ((
+                  node?: JQuery,
+                  query?: string,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
 
         /** Called at the end of Navigate (once the `.active` class and other operations are completed). */
         onNavigateAfter?:
-            | ((node?: JQuery, lis?: JQuery, a?: JQuery, item?: any, query?: string, event?: JQueryEventObject) => void)
+            | ((
+                  node?: JQuery,
+                  lis?: JQuery,
+                  a?: JQuery,
+                  item?: any,
+                  query?: string,
+                  event?: JQueryEventObject,
+              ) => void)
             | undefined;
 
         /** Will be executed when a item is hovered inside the result list. */
-        onMouseEnter?: ((node?: JQuery, a?: JQuery, item?: any, event?: JQueryEventObject) => void) | undefined;
+        onMouseEnter?:
+            | ((
+                  node?: JQuery,
+                  a?: JQuery,
+                  item?: any,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
 
         /** Will be executed when a result item is hovered out. */
-        onMouseLeave?: ((node?: JQuery, a?: JQuery, item?: any, event?: JQueryEventObject) => void) | undefined;
+        onMouseLeave?:
+            | ((
+                  node?: JQuery,
+                  a?: JQuery,
+                  item?: any,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
 
         /**
          * Will be executed when a result item is clicked or the right arrow is pressed when an item is selected from
          * the results list. This function will trigger before the regular behaviors.
          */
-        onClick?: ((node?: JQuery, a?: JQuery, item?: any, event?: JQueryEventObject) => void) | undefined;
+        onClick?:
+            | ((
+                  node?: JQuery,
+                  a?: JQuery,
+                  item?: any,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
 
         /**
          * Will be executed when a result item is clicked or the right arrow is pressed when an item is selected from
          * the results list. This function will trigger before the regular behaviors.
          */
-        onClickBefore?: ((node?: JQuery, a?: JQuery, item?: any, event?: JQueryEventObject) => void) | undefined;
+        onClickBefore?:
+            | ((
+                  node?: JQuery,
+                  a?: JQuery,
+                  item?: any,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
 
         /**
          * Will be executed when a result item is clicked or the right arrow is pressed when an item is selected from
          * the results list. This function will trigger after the regular behaviors.
          */
-        onClickAfter?: ((node?: JQuery, a?: JQuery, item?: any, event?: JQueryEventObject) => void) | undefined;
+        onClickAfter?:
+            | ((
+                  node?: JQuery,
+                  a?: JQuery,
+                  item?: any,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
 
         /** Will be executed when a dropdown filter is selected. Requires `dropdownFilter: true`. */
-        onDropdownFilter?: ((node?: JQuery, a?: JQuery, item?: any, event?: JQueryEventObject) => void) | undefined;
+        onDropdownFilter?:
+            | ((
+                  node?: JQuery,
+                  a?: JQuery,
+                  item?: any,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
 
         /** Gets called when the Ajax request(s) are sent. Either on initial requests or on every dynamic requests. */
         onSendRequest?: ((node?: JQuery, query?: string) => void) | undefined;
 
         /** Gets called when the Ajax request(s) are all received */
-        onReceiveRequest?: ((node?: JQuery, query?: string) => void) | undefined;
+        onReceiveRequest?:
+            | ((node?: JQuery, query?: string) => void)
+            | undefined;
 
         /**
          * Gets called after the Ajax requests are all received and the data is populated inside Typeahead.
@@ -492,29 +592,56 @@ declare namespace RunningCoder.Typeahead {
          * For example, the Backend sends the "display" key separated by underscores "_" instead of spaces " ".
          * * The `data` parameter HAS to be returned after it's transformed.
          */
-        onPopulateSource?: ((node?: JQuery, data?: any[], group?: any, path?: any) => any[]) | undefined;
+        onPopulateSource?:
+            | ((node?: JQuery, data?: any[], group?: any, path?: any) => any[])
+            | undefined;
 
         /** Perform operation on the source data before it gets in Typeahead cache */
-        onCacheSave?: ((node?: JQuery, data?: any, group?: any, path?: any) => void) | undefined;
+        onCacheSave?:
+            | ((node?: JQuery, data?: any, group?: any, path?: any) => void)
+            | undefined;
 
         /**
          * Override the native onSubmit function by your own.
          * If after performing a set of action(s) you want to submit the form, simply do `form.submit()`.
          * * The item parameter is not always defined. An item object will be sent if the submit happens after an item from the list has been selected.
          */
-        onSubmit?: ((node?: JQuery, form?: any, item?: any, event?: JQueryEventObject) => void) | undefined;
+        onSubmit?:
+            | ((
+                  node?: JQuery,
+                  form?: any,
+                  item?: any,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
 
         /**
          * Any time there is text inside the input and it gets cleared (Backspace, Esc, Cancel button, etc).
          * It is possible to track back the event that cleared the input using event.originalEvent
          */
-        onCancel?: ((node?: JQuery, event?: JQueryEventObject) => void) | undefined;
+        onCancel?:
+            | ((node?: JQuery, event?: JQueryEventObject) => void)
+            | undefined;
 
         /** When an item in the result list is focused */
-        onEnter?: ((node?: JQuery, item?: any, result?: any, event?: JQueryEventObject) => void) | undefined;
+        onEnter?:
+            | ((
+                  node?: JQuery,
+                  item?: any,
+                  result?: any,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
 
         /** When an item in the result list is blurred */
-        onLeave?: ((node?: JQuery, item?: any, result?: any, event?: JQueryEventObject) => void) | undefined;
+        onLeave?:
+            | ((
+                  node?: JQuery,
+                  item?: any,
+                  result?: any,
+                  event?: JQueryEventObject,
+              ) => void)
+            | undefined;
     }
 
     interface Selector {

@@ -24,7 +24,11 @@ declare namespace google.accounts {
         /**
          * Checks if the user granted any of the specified scope or scopes.
          */
-        function hasGrantedAnyScope(tokenResponse: TokenResponse, firstScope: string, ...restScopes: string[]): boolean;
+        function hasGrantedAnyScope(
+            tokenResponse: TokenResponse,
+            firstScope: string,
+            ...restScopes: string[]
+        ): boolean;
 
         /**
          * Revokes all of the scopes that the user granted to the app. A valid
@@ -118,7 +122,9 @@ declare namespace google.accounts {
             /**
              * starts the OAuth 2.0 Token UX flow
              */
-            requestAccessToken: (overrideConfig?: OverridableTokenClientConfig) => void;
+            requestAccessToken: (
+                overrideConfig?: OverridableTokenClientConfig,
+            ) => void;
         }
 
         interface CodeClient {
@@ -493,12 +499,19 @@ declare namespace google.accounts {
          * Displays the One Tap prompt or the browser native credential manager
          * after the initialize() method is invoked.
          */
-        function prompt(momentListener?: (promptMomentNotification: PromptMomentNotification) => void): void;
+        function prompt(
+            momentListener?: (
+                promptMomentNotification: PromptMomentNotification,
+            ) => void,
+        ): void;
 
         /**
          * Renders a Sign In With Google button in your web pages.
          */
-        function renderButton(parent: HTMLElement, options: GsiButtonConfiguration): void;
+        function renderButton(
+            parent: HTMLElement,
+            options: GsiButtonConfiguration,
+        ): void;
 
         /**
          * When the user signs out of your website, you need to call the method
@@ -512,7 +525,10 @@ declare namespace google.accounts {
          * credential manager API. Therefore, it can only be used to store a
          * password credential.
          */
-        function storeCredential(credential: Credential, callback?: () => void): void;
+        function storeCredential(
+            credential: Credential,
+            callback?: () => void,
+        ): void;
 
         /**
          * Cancel the One Tap flow if you remove the prompt from the relying
@@ -525,7 +541,10 @@ declare namespace google.accounts {
          * Revokes the OAuth grant used to share the ID token for the specified
          * user.
          */
-        function revoke(hint: string, callback?: (response: RevocationResponse) => void): void;
+        function revoke(
+            hint: string,
+            callback?: (response: RevocationResponse) => void,
+        ): void;
 
         interface RevocationResponse {
             /**
@@ -696,7 +715,11 @@ declare namespace google.accounts {
             /**
              * The detailed reason for the skipped moment.
              */
-            getSkippedReason(): "auto_cancel" | "user_cancel" | "tap_outside" | "issuing_failed";
+            getSkippedReason():
+                | "auto_cancel"
+                | "user_cancel"
+                | "tap_outside"
+                | "issuing_failed";
 
             /**
              * Is this notification for a dismissed moment?
@@ -706,7 +729,10 @@ declare namespace google.accounts {
             /**
              * The detailed reason for the dismissal.
              */
-            getDismissedReason(): "credential_returned" | "cancel_called" | "flow_restarted";
+            getDismissedReason():
+                | "credential_returned"
+                | "cancel_called"
+                | "flow_restarted";
 
             /**
              * Return a string for the moment type.

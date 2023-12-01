@@ -14,10 +14,16 @@ new AggregateError([]); // $ExpectType AggregateError
 new AggregateError([oneError, otherError]); // $ExpectType AggregateError
 
 // $ExpectType AggregateError
-const implicitError = new AggregateError([oneError, otherError], "this is two kinds of errors");
+const implicitError = new AggregateError(
+    [oneError, otherError],
+    "this is two kinds of errors",
+);
 
 // $ExpectType AggregateError
-const explicitError: AggregateError = new AggregateError([oneError, otherError], "this is two kinds of errors");
+const explicitError: AggregateError = new AggregateError(
+    [oneError, otherError],
+    "this is two kinds of errors",
+);
 
 AggregateError.prototype; // $ExpectType AggregateError
 AggregateError.shim; // $ExpectType () => typeof AggregateError

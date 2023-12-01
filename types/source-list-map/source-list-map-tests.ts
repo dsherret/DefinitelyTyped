@@ -5,8 +5,9 @@ const node = new slm.CodeNode("hello");
 node.addGeneratedCode("world");
 node.getGeneratedCode();
 node.getMappings();
-node.mapGeneratedCode(function(code) {
-    if (typeof code === "string") {}
+node.mapGeneratedCode(function (code) {
+    if (typeof code === "string") {
+    }
 
     return code;
 });

@@ -1,9 +1,12 @@
 /// <reference types="node" />
 
-type RequireAtLeastOne<T, Keys extends keyof T = keyof T> =
-    & Pick<T, Exclude<keyof T, Keys>>
-    & {
-        [K in Keys]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<Keys, K>>>;
+type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<
+    T,
+    Exclude<keyof T, Keys>
+> &
+    {
+        [K in Keys]-?: Required<Pick<T, K>> &
+            Partial<Pick<T, Exclude<Keys, K>>>;
     }[Keys];
 
 interface Opts {
@@ -17,7 +20,8 @@ interface Opts {
 type Options = RequireAtLeastOne<Opts, keyof Opts>;
 
 export const HASH_LENGTH = 6;
-export const CHARSET = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
+export const CHARSET =
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-_";
 
 export function RNG(size: number): Buffer;
 
@@ -52,7 +56,11 @@ export class Entropy {
     sessionID(charset?: CharSet): string;
     token(charset?: CharSet): string;
     string(bitLen?: number, charset?: CharSet): string;
-    stringWithBytes(bytes: ArrayBuffer, bitLen?: number, charset?: CharSet): string;
+    stringWithBytes(
+        bytes: ArrayBuffer,
+        bitLen?: number,
+        charset?: CharSet,
+    ): string;
     bytesNeeded(bitLen?: number, charset?: CharSet): number;
     chars(): string;
     bits(): number;

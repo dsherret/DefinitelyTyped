@@ -41,16 +41,31 @@ declare namespace i18nextNodeFsBackEnd {
 declare module "i18next-node-fs-backend" {
     import * as i18next from "i18next";
 
-    class Backend implements i18next.BackendModule<i18nextNodeFsBackEnd.i18nextNodeFsBackEndOptions> {
+    class Backend
+        implements
+            i18next.BackendModule<i18nextNodeFsBackEnd.i18nextNodeFsBackEndOptions>
+    {
         type: "backend";
-        constructor(services?: any, options?: i18nextNodeFsBackEnd.i18nextNodeFsBackEndOptions);
+        constructor(
+            services?: any,
+            options?: i18nextNodeFsBackEnd.i18nextNodeFsBackEndOptions,
+        );
         init(
             services: i18next.Services,
             backendOptions?: i18nextNodeFsBackEnd.i18nextNodeFsBackEndOptions,
             i18nextOptions?: i18next.InitOptions,
         ): void;
-        read(language: string, namespace: string, callback: i18next.ReadCallback): void;
-        create(languages: string[], namespace: string, key: string, fallbackValue: string): void;
+        read(
+            language: string,
+            namespace: string,
+            callback: i18next.ReadCallback,
+        ): void;
+        create(
+            languages: string[],
+            namespace: string,
+            key: string,
+            fallbackValue: string,
+        ): void;
     }
 
     const module: typeof Backend;

@@ -1,5 +1,9 @@
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-type WalkerCallback = (node: Child, index: number, nodes: Child[]) => boolean | void;
+type WalkerCallback = (
+    node: Child,
+    index: number,
+    nodes: Child[],
+) => boolean | void;
 
 export interface Node {
     type: string;
@@ -14,7 +18,14 @@ export interface Node {
 }
 
 export interface Child extends Node {
-    type: "media-query" | "media-feature-expression" | "media-feature" | "media-type" | "colon" | "value" | "keyword";
+    type:
+        | "media-query"
+        | "media-feature-expression"
+        | "media-feature"
+        | "media-type"
+        | "colon"
+        | "value"
+        | "keyword";
     parent: Node;
 }
 

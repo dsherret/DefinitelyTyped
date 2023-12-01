@@ -207,7 +207,7 @@ export interface Parse extends ParseStream {
 }
 
 export const Parse: {
-    new(opt?: ParseOptions): Parse;
+    new (opt?: ParseOptions): Parse;
 };
 // #endregion
 
@@ -617,7 +617,9 @@ export interface ExtractOptions {
      * falsey value is provided, then the entry is written to disk as normal.
      * (To exclude items from extraction, use the filter option described above.)
      */
-    transform?(entry: ReadEntry): NodeJS.WritableStream | undefined | false | null;
+    transform?(
+        entry: ReadEntry,
+    ): NodeJS.WritableStream | undefined | false | null;
 
     /**
      * A function that gets called with (entry) for each entry that passes the
@@ -793,17 +795,19 @@ export interface FileOptions {
     f?: string | undefined;
 }
 
-export type RequiredFileOptions = {
-    /**
-     * Uses the given file as the input or output of this function.
-     */
-    file: string;
-} | {
-    /**
-     * Alias for file.
-     */
-    f: string;
-};
+export type RequiredFileOptions =
+    | {
+          /**
+           * Uses the given file as the input or output of this function.
+           */
+          file: string;
+      }
+    | {
+          /**
+           * Alias for file.
+           */
+          f: string;
+      };
 
 /**
  * Create a tarball archive. The fileList is an array of paths to add to the
@@ -825,8 +829,14 @@ export function create(
  * fileList that starts with an @ symbol is a tar archive whose entries will
  * be added. To add a file that starts with @, prepend it with `./`.
  */
-export function create(options: CreateOptions & FileOptions, fileList: readonly string[]): Promise<void>;
-export function create(options: CreateOptions & FileOptions & { sync: true }, fileList: readonly string[]): void;
+export function create(
+    options: CreateOptions & FileOptions,
+    fileList: readonly string[],
+): Promise<void>;
+export function create(
+    options: CreateOptions & FileOptions & { sync: true },
+    fileList: readonly string[],
+): void;
 export function create(
     options: CreateOptions & FileOptions,
     fileList: readonly string[],
@@ -866,8 +876,14 @@ export function extract(
  * extraction errors will cause a warn event to be emitted. If the cwd is
  * missing, or not a directory, then the extraction will fail completely.
  */
-export function extract(options: ExtractOptions & FileOptions, fileList?: readonly string[]): Promise<void>;
-export function extract(options: ExtractOptions & FileOptions & { sync: true }, fileList?: readonly string[]): void;
+export function extract(
+    options: ExtractOptions & FileOptions,
+    fileList?: readonly string[],
+): Promise<void>;
+export function extract(
+    options: ExtractOptions & FileOptions & { sync: true },
+    fileList?: readonly string[],
+): void;
 export function extract(
     options: ExtractOptions & FileOptions,
     fileList: readonly string[] | undefined,
@@ -885,14 +901,24 @@ export const x: typeof extract;
  * are listed. If the archive is gzipped, then tar will detect this and unzip
  * it.
  */
-export function list(options: ListOptions & RequiredFileOptions, fileList?: readonly string[]): Promise<void>;
+export function list(
+    options: ListOptions & RequiredFileOptions,
+    fileList?: readonly string[],
+): Promise<void>;
 export function list(
     options: ListOptions & RequiredFileOptions & { sync: true },
     fileList?: readonly string[],
 ): void;
 export function list(callback?: (err?: Error) => void): Parse;
-export function list(optionsOrFileList: ListOptions | readonly string[], callback?: (err?: Error) => void): Parse;
-export function list(options: ListOptions, fileList: readonly string[], callback?: (err?: Error) => void): Parse;
+export function list(
+    optionsOrFileList: ListOptions | readonly string[],
+    callback?: (err?: Error) => void,
+): Parse;
+export function list(
+    options: ListOptions,
+    fileList: readonly string[],
+    callback?: (err?: Error) => void,
+): Parse;
 
 /**
  * Alias for list
@@ -907,7 +933,10 @@ export const t: typeof list;
  * a tar archive whose entries will be added. To add a file that
  * starts with @, prepend it with ./.
  */
-export function replace(options: ReplaceOptions, fileList?: readonly string[]): Promise<void>;
+export function replace(
+    options: ReplaceOptions,
+    fileList?: readonly string[],
+): Promise<void>;
 export function replace(
     options: ReplaceOptions,
     fileList: readonly string[] | undefined,
@@ -926,7 +955,10 @@ export const r: typeof replace;
  * that starts with an @ symbol is a tar archive whose entries will be added.
  * To add a file that starts with @, prepend it with ./.
  */
-export function update(options: ReplaceOptions, fileList?: readonly string[]): Promise<void>;
+export function update(
+    options: ReplaceOptions,
+    fileList?: readonly string[],
+): Promise<void>;
 export function update(
     options: ReplaceOptions,
     fileList: readonly string[] | undefined,

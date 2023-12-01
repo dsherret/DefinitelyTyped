@@ -22,7 +22,10 @@ type Callback<T> = (err: Error, res: T) => void;
 export namespace Options {
     interface DocLoader {
         documentLoader?:
-            | ((url: Url, callback: (err: Error, remoteDoc: RemoteDocument) => void) => Promise<RemoteDocument>)
+            | ((
+                  url: Url,
+                  callback: (err: Error, remoteDoc: RemoteDocument) => void,
+              ) => Promise<RemoteDocument>)
             | undefined;
     }
 
@@ -117,12 +120,30 @@ export function compact(
     options: Options.Compact,
     callback: Callback<JsonLdObj>,
 ): void;
-export function compact(input: JsonLdDocument, ctx: ContextDefinition, callback: Callback<JsonLdObj>): void;
-export function compact(input: JsonLdDocument, ctx?: ContextDefinition, options?: Options.Compact): Promise<JsonLdObj>;
+export function compact(
+    input: JsonLdDocument,
+    ctx: ContextDefinition,
+    callback: Callback<JsonLdObj>,
+): void;
+export function compact(
+    input: JsonLdDocument,
+    ctx?: ContextDefinition,
+    options?: Options.Compact,
+): Promise<JsonLdObj>;
 
-export function expand(input: JsonLdDocument, options: Options.Expand, callback: Callback<JsonLdArray>): void;
-export function expand(input: JsonLdDocument, callback: Callback<JsonLdArray>): void;
-export function expand(input: JsonLdDocument, options?: Options.Expand): Promise<JsonLdArray>;
+export function expand(
+    input: JsonLdDocument,
+    options: Options.Expand,
+    callback: Callback<JsonLdArray>,
+): void;
+export function expand(
+    input: JsonLdDocument,
+    callback: Callback<JsonLdArray>,
+): void;
+export function expand(
+    input: JsonLdDocument,
+    options?: Options.Expand,
+): Promise<JsonLdArray>;
 
 export function flatten(
     input: JsonLdDocument,
@@ -130,26 +151,77 @@ export function flatten(
     options: Options.Flatten,
     callback: Callback<JsonLdObj>,
 ): void;
-export function flatten(input: JsonLdDocument, ctx: ContextDefinition | null, callback: Callback<JsonLdObj>): void;
-export function flatten(input: JsonLdDocument, ctx?: ContextDefinition, options?: Options.Flatten): Promise<JsonLdObj>;
+export function flatten(
+    input: JsonLdDocument,
+    ctx: ContextDefinition | null,
+    callback: Callback<JsonLdObj>,
+): void;
+export function flatten(
+    input: JsonLdDocument,
+    ctx?: ContextDefinition,
+    options?: Options.Flatten,
+): Promise<JsonLdObj>;
 
-export function frame(input: JsonLdDocument, frame: Frame, options: Options.Frame, callback: Callback<JsonLdObj>): void;
-export function frame(input: JsonLdDocument, frame: Frame, callback: Callback<JsonLdObj>): void;
-export function frame(input: JsonLdDocument, frame: Frame, options?: Options.Frame): Promise<JsonLdObj>;
+export function frame(
+    input: JsonLdDocument,
+    frame: Frame,
+    options: Options.Frame,
+    callback: Callback<JsonLdObj>,
+): void;
+export function frame(
+    input: JsonLdDocument,
+    frame: Frame,
+    callback: Callback<JsonLdObj>,
+): void;
+export function frame(
+    input: JsonLdDocument,
+    frame: Frame,
+    options?: Options.Frame,
+): Promise<JsonLdObj>;
 
-export function normalize(input: JsonLdDocument, options: Options.Normalize, callback: Callback<string>): void;
-export function normalize(input: JsonLdDocument, callback: Callback<string>): void;
-export function normalize(input: JsonLdDocument, options?: Options.Normalize): Promise<string>;
+export function normalize(
+    input: JsonLdDocument,
+    options: Options.Normalize,
+    callback: Callback<string>,
+): void;
+export function normalize(
+    input: JsonLdDocument,
+    callback: Callback<string>,
+): void;
+export function normalize(
+    input: JsonLdDocument,
+    options?: Options.Normalize,
+): Promise<string>;
 
 export const canonize: typeof normalize;
 
-export function fromRDF(dataset: RdfDataSet, options: Options.FromRdf, callback: Callback<JsonLdArray>): void;
-export function fromRDF(dataset: RdfDataSet, callback: Callback<JsonLdArray>): void;
-export function fromRDF(dataset: RdfDataSet, options?: Options.FromRdf): Promise<JsonLdArray>;
+export function fromRDF(
+    dataset: RdfDataSet,
+    options: Options.FromRdf,
+    callback: Callback<JsonLdArray>,
+): void;
+export function fromRDF(
+    dataset: RdfDataSet,
+    callback: Callback<JsonLdArray>,
+): void;
+export function fromRDF(
+    dataset: RdfDataSet,
+    options?: Options.FromRdf,
+): Promise<JsonLdArray>;
 
-export function toRDF(input: JsonLdDocument, callback: Callback<RdfDataSet>): void;
-export function toRDF(input: JsonLdDocument, options: Options.ToRdf, callback: Callback<RdfDataSet>): void;
-export function toRDF(input: JsonLdDocument, options?: Options.ToRdf): Promise<RdfDataSet>;
+export function toRDF(
+    input: JsonLdDocument,
+    callback: Callback<RdfDataSet>,
+): void;
+export function toRDF(
+    input: JsonLdDocument,
+    options: Options.ToRdf,
+    callback: Callback<RdfDataSet>,
+): void;
+export function toRDF(
+    input: JsonLdDocument,
+    options?: Options.ToRdf,
+): Promise<RdfDataSet>;
 
 export let JsonLdProcessor: JsonLdProcessorInterface;
 

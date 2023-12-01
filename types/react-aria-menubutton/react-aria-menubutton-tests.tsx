@@ -1,7 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Button, closeMenu, Menu, MenuItem, openMenu, Wrapper } from "react-aria-menubutton";
+import {
+    Button,
+    closeMenu,
+    Menu,
+    MenuItem,
+    openMenu,
+    Wrapper,
+} from "react-aria-menubutton";
 
 const menuItemWords = ["foo", "bar", "baz"];
 
@@ -24,9 +31,7 @@ class MyMenuButton extends React.Component {
             >
                 <Button className="MyMenuButton-button">click me</Button>
                 <Menu className="MyMenuButton-menu">
-                    <ul>
-                        {menuItems}
-                    </ul>
+                    <ul>{menuItems}</ul>
                 </Menu>
             </Wrapper>
         );
@@ -66,8 +71,9 @@ class DemoOne extends React.Component<{}, DemoOneState> {
         if (noMenu) {
             return (
                 <div>
-                    [You decided to "destroy this menu," so the menu has been destroyed, according to your wishes.
-                    Refresh the page to see it again.]
+                    [You decided to "destroy this menu," so the menu has been
+                    destroyed, according to your wishes. Refresh the page to see
+                    it again.]
                 </div>
             );
         }
@@ -93,7 +99,9 @@ class DemoOne extends React.Component<{}, DemoOneState> {
                     className="AriaMenuButton"
                     onSelection={this.handleSelection.bind(this)}
                 >
-                    <Button className="AriaMenuButton-trigger">Select a word</Button>
+                    <Button className="AriaMenuButton-trigger">
+                        Select a word
+                    </Button>
                     <Menu>
                         <ul className="AriaMenuButton-menu">
                             {menuItemElements}

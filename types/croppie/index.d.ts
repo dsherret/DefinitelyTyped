@@ -13,10 +13,16 @@ declare class Croppie {
         useCanvas?: boolean | undefined;
     }): Promise<void>;
 
-    result(options: Croppie.ResultOptions & { type: "base64" | "canvas" }): Promise<string>;
-    result(options: Croppie.ResultOptions & { type: "html" }): Promise<HTMLElement>;
+    result(
+        options: Croppie.ResultOptions & { type: "base64" | "canvas" },
+    ): Promise<string>;
+    result(
+        options: Croppie.ResultOptions & { type: "html" },
+    ): Promise<HTMLElement>;
     result(options: Croppie.ResultOptions & { type: "blob" }): Promise<Blob>;
-    result(options: Croppie.ResultOptions & { type: "rawcanvas" }): Promise<HTMLCanvasElement>;
+    result(
+        options: Croppie.ResultOptions & { type: "rawcanvas" },
+    ): Promise<HTMLCanvasElement>;
     result(options?: Croppie.ResultOptions): Promise<HTMLCanvasElement>;
 
     get(): Croppie.CropData;
@@ -37,7 +43,11 @@ declare namespace Croppie {
 
     interface ResultOptions {
         type?: Type | undefined;
-        size?: "viewport" | "original" | { width: number; height: number } | undefined;
+        size?:
+            | "viewport"
+            | "original"
+            | { width: number; height: number }
+            | undefined;
         format?: Format | undefined;
         quality?: number | undefined;
         circle?: boolean | undefined;
@@ -57,7 +67,9 @@ declare namespace Croppie {
         minZoom?: number | undefined;
         mouseWheelZoom?: boolean | "ctrl" | undefined;
         showZoomer?: boolean | undefined;
-        viewport?: { width: number; height: number; type?: CropType | undefined } | undefined;
+        viewport?:
+            | { width: number; height: number; type?: CropType | undefined }
+            | undefined;
     }
 
     interface CropData {

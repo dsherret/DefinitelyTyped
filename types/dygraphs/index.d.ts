@@ -33,7 +33,11 @@ export namespace dygraphs {
          * general data array. It must return the series in the unified data format. It may or may not
          * add extras for later usage.
          */
-        extractSeries(dygraph: Readonly<Dygraph>, rawData: any, seriesIndex: any): any;
+        extractSeries(
+            dygraph: Readonly<Dygraph>,
+            rawData: any,
+            seriesIndex: any,
+        ): any;
 
         /**
          * The rolling average method is called if the rollPeriod is larger than
@@ -41,7 +45,11 @@ export namespace dygraphs {
          *    must return an array that is again compliant with the unified data format. Extras may be
          *    used if needed.
          */
-        rollingAverage(dygraph: Readonly<Dygraph>, unifiedData: any, rollPeriod: any): any;
+        rollingAverage(
+            dygraph: Readonly<Dygraph>,
+            unifiedData: any,
+            rollPeriod: any,
+        ): any;
 
         /**
          * This method computes the extremes of the supplied rolledData. It may be pruned compared to
@@ -49,7 +57,11 @@ export namespace dygraphs {
          * returned from it. The given dateWindow must be considered for the computation of the
          * extreme values. Extras may be used if needed.
          */
-        getExtremeYValues(dygraph: Readonly<Dygraph>, unifiedData: any, dateWindow: any): any;
+        getExtremeYValues(
+            dygraph: Readonly<Dygraph>,
+            unifiedData: any,
+            dateWindow: any,
+        ): any;
 
         /**
          * Based on the provided x and y values, seriesPoints for each sample of a series are created.
@@ -58,7 +70,11 @@ export namespace dygraphs {
          * seriesPoint. (e.g. the DataHandlers for bars add y_top and y_bottom here which is needed to
          * draw the error bars.)
          */
-        onPointCreated(dygraph: Readonly<Dygraph>, seriesPoint: any, unifiedDataSample: any): any;
+        onPointCreated(
+            dygraph: Readonly<Dygraph>,
+            seriesPoint: any,
+            unifiedDataSample: any,
+        ): any;
 
         /**
          * Because of performance reasons, the onPointCreated callback was replaced by this method.
@@ -66,7 +82,12 @@ export namespace dygraphs {
          * point of the series. This saves us several method calls as well as several option reads
          * that are done in the onPointCreated.
          */
-        onLineEvaluated(dygraph: Readonly<Dygraph>, seriesPoints: any, dataset: any, setName: any): any;
+        onLineEvaluated(
+            dygraph: Readonly<Dygraph>,
+            seriesPoints: any,
+            dataset: any,
+            setName: any,
+        ): any;
     }
 
     interface PerSeriesOptions {
@@ -190,11 +211,11 @@ export namespace dygraphs {
          */
         axisLabelFormatter?:
             | ((
-                v: number | Date,
-                granularity: number,
-                opts: (name: string) => any,
-                dygraph: Readonly<Dygraph>,
-            ) => string)
+                  v: number | Date,
+                  granularity: number,
+                  opts: (name: string) => any,
+                  dygraph: Readonly<Dygraph>,
+              ) => string)
             | null
             | undefined;
 
@@ -325,13 +346,13 @@ export namespace dygraphs {
          */
         valueFormatter?:
             | ((
-                v: number,
-                opts: (name: string) => any,
-                seriesName: string,
-                dygraph: Readonly<Dygraph>,
-                row: number,
-                col: number,
-            ) => string)
+                  v: number,
+                  opts: (name: string) => any,
+                  seriesName: string,
+                  dygraph: Readonly<Dygraph>,
+                  row: number,
+                  col: number,
+              ) => string)
             | null
             | undefined;
 
@@ -439,19 +460,28 @@ export namespace dygraphs {
          * If provided, this function is called whenever the user double-clicks on an annotation.
          * @default null
          */
-        annotationDblClickHandler?: AnnotationDblClickHandler | null | undefined;
+        annotationDblClickHandler?:
+            | AnnotationDblClickHandler
+            | null
+            | undefined;
 
         /**
          * If provided, this function is called whenever the user mouses out of an annotation.
          * @default null
          */
-        annotationMouseOutHandler?: AnnotationMouseOutHandler | null | undefined;
+        annotationMouseOutHandler?:
+            | AnnotationMouseOutHandler
+            | null
+            | undefined;
 
         /**
          * If provided, this function is called whenever the user mouses over an annotation.
          * @default null
          */
-        annotationMouseOverHandler?: AnnotationMouseOverHandler | null | undefined;
+        annotationMouseOverHandler?:
+            | AnnotationMouseOverHandler
+            | null
+            | undefined;
 
         /**
          * Defines per-axis options. Valid keys are 'x', 'y' and 'y2'. Only some options may be set
@@ -465,7 +495,14 @@ export namespace dygraphs {
          * A function to call when the canvas is clicked.
          * @default null
          */
-        clickCallback?: ((event: MouseEvent, xval: number, points: readonly Point[]) => void) | null | undefined;
+        clickCallback?:
+            | ((
+                  event: MouseEvent,
+                  xval: number,
+                  points: readonly Point[],
+              ) => void)
+            | null
+            | undefined;
 
         /**
          * If colors is not specified, saturation of the automatically-generated
@@ -559,7 +596,10 @@ export namespace dygraphs {
          * initial draw, after zooming and repeatedly while panning.
          * @default null
          */
-        drawCallback?: ((dygraph: Readonly<Dygraph>, is_initial: boolean) => void) | null | undefined;
+        drawCallback?:
+            | ((dygraph: Readonly<Dygraph>, is_initial: boolean) => void)
+            | null
+            | undefined;
 
         /**
          * Draw points at the edges of gaps in the data. This improves visibility of small data
@@ -576,15 +616,15 @@ export namespace dygraphs {
          */
         drawHighlightPointCallback?:
             | ((
-                this: Readonly<Dygraph>,
-                dygraph: Readonly<Dygraph>,
-                seriesName: string,
-                canvasContext: CanvasRenderingContext2D,
-                cx: number,
-                cy: number,
-                color: string,
-                pointSize: number,
-            ) => void)
+                  this: Readonly<Dygraph>,
+                  dygraph: Readonly<Dygraph>,
+                  seriesName: string,
+                  canvasContext: CanvasRenderingContext2D,
+                  cx: number,
+                  cy: number,
+                  color: string,
+                  pointSize: number,
+              ) => void)
             | null
             | undefined;
 
@@ -596,15 +636,15 @@ export namespace dygraphs {
          */
         drawPointCallback?:
             | ((
-                this: Readonly<Dygraph>,
-                dygraph: Readonly<Dygraph>,
-                seriesName: string,
-                canvasContext: CanvasRenderingContext2D,
-                cx: number,
-                cy: number,
-                color: string,
-                pointSize: number,
-            ) => void)
+                  this: Readonly<Dygraph>,
+                  dygraph: Readonly<Dygraph>,
+                  seriesName: string,
+                  canvasContext: CanvasRenderingContext2D,
+                  cx: number,
+                  cy: number,
+                  color: string,
+                  pointSize: number,
+              ) => void)
             | null
             | undefined;
 
@@ -648,7 +688,13 @@ export namespace dygraphs {
          * @default null
          */
         highlightCallback?:
-            | ((event: MouseEvent, xval: number, points: readonly Point[], row: number, seriesName: string) => void)
+            | ((
+                  event: MouseEvent,
+                  xval: number,
+                  points: readonly Point[],
+                  row: number,
+                  seriesName: string,
+              ) => void)
             | null
             | undefined;
 
@@ -727,7 +773,13 @@ export namespace dygraphs {
          * follows highlighted points. If set to 'never' then it will not appear at all.
          * @default onmouseover
          */
-        legend?: "always" | "follow" | "onmouseover" | "never" | null | undefined;
+        legend?:
+            | "always"
+            | "follow"
+            | "onmouseover"
+            | "never"
+            | null
+            | undefined;
 
         /**
          * Set this to supply a custom formatter for the legend. See this comment and the
@@ -754,7 +806,10 @@ export namespace dygraphs {
          * A function to call when a data point is clicked. and the point that was clicked.
          * @default null
          */
-        pointClickCallback?: ((event: MouseEvent, point: Readonly<Point>) => void) | null | undefined;
+        pointClickCallback?:
+            | ((event: MouseEvent, point: Readonly<Point>) => void)
+            | null
+            | undefined;
 
         /**
          * Height, in pixels, of the range selector widget. This option can only be specified at
@@ -861,7 +916,11 @@ export namespace dygraphs {
          * @default null
          */
         underlayCallback?:
-            | ((context: CanvasRenderingContext2D, area: Readonly<Area>, dygraph: Readonly<Dygraph>) => void)
+            | ((
+                  context: CanvasRenderingContext2D,
+                  area: Readonly<Area>,
+                  dygraph: Readonly<Dygraph>,
+              ) => void)
             | null
             | undefined;
 
@@ -978,7 +1037,11 @@ export namespace dygraphs {
          * @default null
          */
         zoomCallback?:
-            | ((minDate: number, maxDate: number, yRanges: ReadonlyArray<[number, number]>) => void)
+            | ((
+                  minDate: number,
+                  maxDate: number,
+                  yRanges: ReadonlyArray<[number, number]>,
+              ) => void)
             | null
             | undefined;
 
@@ -1265,7 +1328,9 @@ export default class Dygraph {
      * Returns a single value or null if x is null.
      * {@link https://dygraphs.com/jsdoc/symbols/Dygraph.html#toDomXCoord}
      */
-    toDomXCoord<T extends number | null>(x: T): T extends number ? number : null;
+    toDomXCoord<T extends number | null>(
+        x: T,
+    ): T extends number ? number : null;
 
     /**
      * Convert from data x coordinates to canvas/div Y coordinate and optional
@@ -1274,7 +1339,10 @@ export default class Dygraph {
      * Returns a single value or null if y is null.
      * {@link https://dygraphs.com/jsdoc/symbols/Dygraph.html#toDomYCoord}
      */
-    toDomYCoord<T extends number | null>(y: T, axis?: number): T extends number ? number : null;
+    toDomYCoord<T extends number | null>(
+        y: T,
+        axis?: number,
+    ): T extends number ? number : null;
 
     /**
      * Convert from canvas/div coords to data coordinates.
@@ -1298,7 +1366,9 @@ export default class Dygraph {
      * If x is null, this returns null.
      * {@link https://dygraphs.com/jsdoc/symbols/Dygraph.html#toDataXCoord}
      */
-    toDataXCoord<T extends number | null>(x: T): T extends number ? number : null;
+    toDataXCoord<T extends number | null>(
+        x: T,
+    ): T extends number ? number : null;
 
     /**
      * Convert from canvas/div y coord to value.
@@ -1307,7 +1377,10 @@ export default class Dygraph {
      * if axis is null, this uses the first axis.
      * {@link https://dygraphs.com/jsdoc/symbols/Dygraph.html#toDataYCoord}
      */
-    toDataYCoord<T extends number | null>(y: T, axis?: number): T extends number ? number : null;
+    toDataYCoord<T extends number | null>(
+        y: T,
+        axis?: number,
+    ): T extends number ? number : null;
 
     /**
      * Converts a y for an axis to a percentage from the top to the
@@ -1326,7 +1399,10 @@ export default class Dygraph {
      * @param [axis] The axis number on which the data coordinate lives.
      * @return A fraction in [0, 1] where 0 = the top edge.
      */
-    toPercentYCoord<T extends number | null>(y: T, axis?: number): T extends null ? null : number;
+    toPercentYCoord<T extends number | null>(
+        y: T,
+        axis?: number,
+    ): T extends null ? null : number;
 
     /**
      * Converts an x value to a percentage from the left to the right of
@@ -1343,7 +1419,9 @@ export default class Dygraph {
      * @param x The data x-coordinate.
      * @return A fraction in [0, 1] where 0 = the left edge.
      */
-    toPercentXCoord<T extends number | null>(x: T): T extends null ? null : number;
+    toPercentXCoord<T extends number | null>(
+        x: T,
+    ): T extends null ? null : number;
 
     /**
      * Returns the number of columns (including the independent variable).
@@ -1395,7 +1473,9 @@ export default class Dygraph {
      * values for this series.
      * {@link https://dygraphs.com/jsdoc/symbols/Dygraph.html#getPropertiesForSeries}
      */
-    getPropertiesForSeries(seriesName: string): dygraphs.SeriesProperties | null;
+    getPropertiesForSeries(
+        seriesName: string,
+    ): dygraphs.SeriesProperties | null;
 
     /**
      * Reset the zoom to the original view coordinates. This is the same as
@@ -1433,7 +1513,11 @@ export default class Dygraph {
      * over the graph, disabling closest-series highlighting. Call clearSelection()
      * to unlock it.
      */
-    setSelection(row: number | false, seriesName?: string, locked?: boolean): void;
+    setSelection(
+        row: number | false,
+        seriesName?: string,
+        locked?: boolean,
+    ): void;
 
     /**
      * Clears the current selection (i.e. points that were highlighted by moving

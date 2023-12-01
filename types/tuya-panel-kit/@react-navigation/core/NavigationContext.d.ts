@@ -5,6 +5,7 @@ import type { NavigationProp } from "./types";
  */
 declare const NavigationContext: React.Context<
     // tslint:disable-next-line use-default-type-parameter
-    NavigationProp<Record<string, object | undefined>, string, any, any, {}> | undefined
+    | NavigationProp<Record<string, object | undefined>, string, any, any, {}>
+    | undefined
 >;
 export default NavigationContext;

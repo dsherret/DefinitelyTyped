@@ -7,7 +7,10 @@
  * @param ...children - Child nodes
  * @returns A new VNode object
  */
-export function h<T extends keyof ElementTagNameMap, E extends ElementTagNameMap[T]>(
+export function h<
+    T extends keyof ElementTagNameMap,
+    E extends ElementTagNameMap[T],
+>(
     type: T,
     props?: PetitDom.Props<E> | null,
     ...children: PetitDom.Content[]
@@ -73,7 +76,11 @@ export function mount(vnode: PetitDom.VNode): Element;
  * @param parent - The parent DOM element. Used internally by PetitDom to recursively patch child nodes
  * @returns The updated DOM element. This element is also moved from oldVNode to newVNode
  */
-export function patch(newVNode: PetitDom.VNode, oldVNode: PetitDom.VNode, parent?: Element): Element;
+export function patch(
+    newVNode: PetitDom.VNode,
+    oldVNode: PetitDom.VNode,
+    parent?: Element,
+): Element;
 
 /**
  * Removes the given VNode from the actual DOM
@@ -96,7 +103,8 @@ export namespace PetitDom {
         key?: Key | undefined;
     }
 
-    type Props<E extends Element = Element> = IntrinsicProps & DOMElementProps<E>;
+    type Props<E extends Element = Element> = IntrinsicProps &
+        DOMElementProps<E>;
 
     type ShouldUpdate<P extends ComponentProps> = (
         newProps: P,
@@ -111,7 +119,7 @@ export namespace PetitDom {
     }
 
     interface ComponentClass<P extends ComponentProps> {
-        new(props: P, content: readonly Content[]): Component<P>;
+        new (props: P, content: readonly Content[]): Component<P>;
     }
 
     interface Component<P extends ComponentProps> {
@@ -134,7 +142,8 @@ export namespace PetitDom {
         readonly content: readonly VNode[];
     }
 
-    interface ElementNode<T extends keyof DomElements, E extends DomElements[T]> extends VNode {
+    interface ElementNode<T extends keyof DomElements, E extends DomElements[T]>
+        extends VNode {
         readonly type: T;
         readonly props: Props<E>;
     }
@@ -155,11 +164,15 @@ export namespace PetitDom {
     }
 
     interface DomElements
-        extends
-            HTMLElementTagNameMap,
-            Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, "a" | "script" | "style" | "title">>
-    {
-        "main": HTMLElement;
+        extends HTMLElementTagNameMap,
+            Pick<
+                SVGElementTagNameMap,
+                Exclude<
+                    keyof SVGElementTagNameMap,
+                    "a" | "script" | "style" | "title"
+                >
+            > {
+        main: HTMLElement;
     }
 }
 
@@ -168,7 +181,8 @@ declare global {
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
         interface Element extends PetitDom.VNode {}
 
-        interface ElementClass extends PetitDom.Component<PetitDom.ComponentProps> {}
+        interface ElementClass
+            extends PetitDom.Component<PetitDom.ComponentProps> {}
 
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
         interface IntrinsicClassAttributes<T> extends PetitDom.Props {}
@@ -185,11 +199,14 @@ declare global {
         }
 
         type IntrinsicElements = {
-            [P in keyof PetitDom.DomElements]:
-                & PetitDom.Props<PetitDom.DomElements[P]>
-                & {
-                    content?: PetitDom.Content | readonly PetitDom.Content[] | undefined;
-                };
+            [P in keyof PetitDom.DomElements]: PetitDom.Props<
+                PetitDom.DomElements[P]
+            > & {
+                content?:
+                    | PetitDom.Content
+                    | readonly PetitDom.Content[]
+                    | undefined;
+            };
         };
     }
 }

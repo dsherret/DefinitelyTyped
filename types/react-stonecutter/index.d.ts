@@ -85,9 +85,21 @@ export interface CommonGridProps {
      * Supply functions that return objects with the opacity and transform values for an item's start and end states.
      * By default the item's scale and opacity go from 0 to 1 and back to 0 on exit
      */
-    enter?(itemProps: unknown[], gridProps: unknown[], gridState: unknown): unknown;
-    entered?(itemProps: unknown[], gridProps: unknown[], gridState: unknown): unknown;
-    exit?(itemProps: unknown[], gridProps: unknown[], gridState: unknown): unknown;
+    enter?(
+        itemProps: unknown[],
+        gridProps: unknown[],
+        gridState: unknown,
+    ): unknown;
+    entered?(
+        itemProps: unknown[],
+        gridProps: unknown[],
+        gridState: unknown,
+    ): unknown;
+    exit?(
+        itemProps: unknown[],
+        gridProps: unknown[],
+        gridState: unknown,
+    ): unknown;
 
     /**
      * The perspective distance used for 3D transforms.
@@ -174,7 +186,10 @@ export interface MakeResponsiveOptions {
 
 export function makeResponsive<T>(grid: T, options: MakeResponsiveOptions): T;
 
-export type LayoutFunction = (itemProps: unknown[], gridProps: unknown[]) => Layout;
+export type LayoutFunction = (
+    itemProps: unknown[],
+    gridProps: unknown[],
+) => Layout;
 export const layout: {
     pinterest: LayoutFunction;
     simple: LayoutFunction;

@@ -100,9 +100,11 @@ const hotspot: Flow.Layer = {
         h: 42,
         w: 370,
     },
-    connections: [{
-        nodeID: "cjo45mq7500002a5p8n8u1bfz",
-    }],
+    connections: [
+        {
+            nodeID: "cjo45mq7500002a5p8n8u1bfz",
+        },
+    ],
 };
 hotspot.type = TYPES.HOTSPOT;
 

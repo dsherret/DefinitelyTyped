@@ -6,8 +6,8 @@ const router = new NetgearRouter();
 // discover a netgear router, including IP address and SOAP port. The discovered address and SOAP port will override previous settings
 router
     .discover()
-    .then(discovered => console.log(discovered))
-    .catch(error => console.log(error));
+    .then((discovered) => console.log(discovered))
+    .catch((error) => console.log(error));
 
 // function to get various information
 async function getRouterInfo() {
@@ -34,7 +34,8 @@ async function getRouterInfo() {
         console.log(supportFeatures);
 
         // Get the parental control status.
-        const parentalControlEnabled = await router.getParentalControlEnableStatus();
+        const parentalControlEnabled =
+            await router.getParentalControlEnableStatus();
         console.log(`Parental Controls enabled: ${parentalControlEnabled}`);
 
         // Get the qosEnableStatus.
@@ -144,7 +145,8 @@ async function doQosStuff() {
         await router.setBandwidthControlOptions(60.5, 50.5); // in MB/s
         // Get the getBandwidthControlOptions.
         console.log("trying to get Qos Bandwidth options...");
-        const bandwidthControlOptions = await router.getBandwidthControlOptions();
+        const bandwidthControlOptions =
+            await router.getBandwidthControlOptions();
         console.log(bandwidthControlOptions);
     } catch (error) {
         console.log(error);

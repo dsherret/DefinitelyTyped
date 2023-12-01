@@ -16,13 +16,27 @@ const el = document.querySelector<HTMLElement>(".deck")!;
 // use two arguments
 // $ExpectType Api
 new Reveal(el, {
-    plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealSearch, RevealMath, RevealZoom],
+    plugins: [
+        RevealMarkdown,
+        RevealHighlight,
+        RevealNotes,
+        RevealSearch,
+        RevealMath,
+        RevealZoom,
+    ],
 });
 
 // use one arguments
 // $ExpectType Api
 new Reveal({
-    plugins: [RevealMarkdown, RevealHighlight, RevealNotes, RevealSearch, RevealMath, RevealZoom],
+    plugins: [
+        RevealMarkdown,
+        RevealHighlight,
+        RevealNotes,
+        RevealSearch,
+        RevealMath,
+        RevealZoom,
+    ],
 });
 
 // math sub-plugins
@@ -428,19 +442,33 @@ deck.initialize({
     slideNumber: true,
     width: 20,
     height: 20,
-    plugins: [RevealHighlight, RevealMarkdown, RevealSearch, RevealNotes, RevealMath, RevealZoom],
+    plugins: [
+        RevealHighlight,
+        RevealMarkdown,
+        RevealSearch,
+        RevealNotes,
+        RevealMath,
+        RevealZoom,
+    ],
 }).then(() => {});
 
 // use await
 // $ExpectType () => Promise<void>
-(async () => {
+async () => {
     await deck.initialize({
         slideNumber: true,
         width: 20,
         height: 20,
-        plugins: [RevealHighlight, RevealMarkdown, RevealSearch, RevealNotes, RevealMath, RevealZoom],
+        plugins: [
+            RevealHighlight,
+            RevealMarkdown,
+            RevealSearch,
+            RevealNotes,
+            RevealMath,
+            RevealZoom,
+        ],
     });
-});
+};
 
 // Config can be empty (example in https://revealjs.com/markup/)
 // $ExpectType Promise<Api>
@@ -568,11 +596,11 @@ deck.nextFragment();
 deck.on("click", el.click, false);
 
 // $ExpectType void
-deck.on("slidetransitionend", event => {
+deck.on("slidetransitionend", (event) => {
     console.log(event);
 });
 // $ExpectType void
-Reveal.on("slidetransitionend", event => {
+Reveal.on("slidetransitionend", (event) => {
     console.log(event);
 });
 
@@ -792,7 +820,10 @@ deck.hasNavigatedVertically();
 deck.addKeyBinding("enter", () => {});
 
 // $ExpectType void
-deck.addKeyBinding({ keyCode: 1, key: "enter", description: "description" }, () => {});
+deck.addKeyBinding(
+    { keyCode: 1, key: "enter", description: "description" },
+    () => {},
+);
 
 // $ExpectType void
 deck.removeKeyBinding(1);

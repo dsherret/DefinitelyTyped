@@ -142,7 +142,7 @@ encrypted = AES.encrypt("Message", "Secret Passphrase", {
 
 // The Cipher Output
 var JsonFormatter = {
-    stringify: function(cipherParams: Core.lib.CipherParams) {
+    stringify: function (cipherParams: Core.lib.CipherParams) {
         // create json object with ciphertext
         var jsonObj: any = { ct: cipherParams.ciphertext.toString(EncBase64) };
         // optionally add iv or salt
@@ -155,7 +155,7 @@ var JsonFormatter = {
         // stringify json object
         return JSON.stringify(jsonObj);
     },
-    parse: function(jsonStr: string) {
+    parse: function (jsonStr: string) {
         // parse json string
         var jsonObj = JSON.parse(jsonStr);
         // extract ciphertext from json object, and create cipher params object

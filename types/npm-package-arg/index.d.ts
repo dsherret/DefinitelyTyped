@@ -15,12 +15,11 @@ declare namespace npa {
      * Something like: 1.2, ^1.7.17, http://x.com/foo.tgz, git+https://github.com/user/foo, bitbucket:user/foo, file:foo.tar.gz or file:../foo/bar/. If not included then the default is latest.
      * @param where Optionally the path to resolve file paths relative to. Defaults to process.cwd()
      */
-    function resolve(name: string, spec: string, where?: string):
-        | FileResult
-        | HostedGitResult
-        | URLResult
-        | AliasResult
-        | RegistryResult;
+    function resolve(
+        name: string,
+        spec: string,
+        where?: string,
+    ): FileResult | HostedGitResult | URLResult | AliasResult | RegistryResult;
 
     class Result {
         /**

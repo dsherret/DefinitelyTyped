@@ -4,7 +4,11 @@ const testDate = new Date(Date.UTC(2012, 11, 14, 13, 6, 43, 152));
 const testArray = ["abc", 1, true, null, testDate];
 const testIdentArray = ["abc", "AbC", 1, true, testDate];
 const testObject = { a: 1, b: 2 };
-const testNestedArray = [[1, 2], [3, 4], [5, 6]];
+const testNestedArray = [
+    [1, 2],
+    [3, 4],
+    [5, 6],
+];
 
 format.config({
     pattern: {

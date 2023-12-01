@@ -30,7 +30,11 @@ export interface TwoFactor {
      * @param activationCode
      * @param callback
      */
-    finalizeTwoFactor(secret: Buffer | string, activationCode: any, callback: Callback): void;
+    finalizeTwoFactor(
+        secret: Buffer | string,
+        activationCode: any,
+        callback: Callback,
+    ): void;
 
     /**
      * Disables two-factor authentication on your account given a revocation code.

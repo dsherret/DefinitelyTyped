@@ -12,7 +12,10 @@ export interface DotenvListFilesOptions {
  * @param options - `.env*` files listing options
  * @return a list of filenames for a given environment
  */
-export function listFiles(dirname: string, options?: DotenvListFilesOptions): string[];
+export function listFiles(
+    dirname: string,
+    options?: DotenvListFilesOptions,
+): string[];
 
 /**
  * Alias for `#listFiles` for backward compatibility.
@@ -21,7 +24,10 @@ export function listFiles(dirname: string, options?: DotenvListFilesOptions): st
  * @param options - `.env*` files listing options
  * @return a list of filenames for a given environment
  */
-export function listDotenvFiles(dirname: string, options?: DotenvListFilesOptions): string[];
+export function listDotenvFiles(
+    dirname: string,
+    options?: DotenvListFilesOptions,
+): string[];
 
 export interface DotenvReadFileOptions {
     /**
@@ -42,7 +48,10 @@ export interface DotenvParseOutput {
  * @param options - `fs.readFileSync` options
  * @return the resulting map of `{ env_var: value }` as an object
  */
-export function parse(filenames: string | string[], options?: DotenvReadFileOptions): DotenvParseOutput;
+export function parse(
+    filenames: string | string[],
+    options?: DotenvReadFileOptions,
+): DotenvParseOutput;
 
 export interface DotenvLoadOptions extends DotenvReadFileOptions {
     silent?: boolean;
@@ -60,7 +69,10 @@ export interface DotenvLoadOutput {
  * @param options - `fs.readFileSync` options
  * @return an object with a `parsed` key containing the loaded content or an `error` key with an error that is occurred
  */
-export function load(filenames: string | string[], options?: DotenvLoadOptions): DotenvLoadOutput;
+export function load(
+    filenames: string | string[],
+    options?: DotenvLoadOptions,
+): DotenvLoadOutput;
 
 /**
  * Unload variables defined in a given file(s) from `process.env`.
@@ -68,7 +80,10 @@ export function load(filenames: string | string[], options?: DotenvLoadOptions):
  * @param filenames - filename or a list of filenames to unload
  * @param options - `fs.readFileSync` options
  */
-export function unload(filenames: string | string[], options?: DotenvReadFileOptions): void;
+export function unload(
+    filenames: string | string[],
+    options?: DotenvReadFileOptions,
+): void;
 
 export interface DotenvConfigOptions {
     /**

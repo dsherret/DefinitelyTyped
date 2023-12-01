@@ -94,8 +94,14 @@ declare global {
      * @param packageFiles The files to include in the package
      * @param definition A function that creates the package definition
      */
-    function npmPublishTask(name: string, packageFiles: string[]): jake.NpmPublishTask;
-    function npmPublishTask(name: string, definition?: () => void): jake.NpmPublishTask;
+    function npmPublishTask(
+        name: string,
+        packageFiles: string[],
+    ): jake.NpmPublishTask;
+    function npmPublishTask(
+        name: string,
+        definition?: () => void,
+    ): jake.NpmPublishTask;
 
     namespace jake {
         ////////////////////////////////////////////////////////////////////////////////////
@@ -110,8 +116,15 @@ declare global {
          * The jake.mkdirP utility recursively creates a set of nested directories. It will not throw an error if any of the directories already exists.
          * https://github.com/substack/node-mkdirp
          */
-        export function mkdirP(name: string, mode?: string, f?: (er: Error, made: any) => void): void;
-        export function mkdirP(name: string, f?: (er: Error, made: any) => void): void;
+        export function mkdirP(
+            name: string,
+            mode?: string,
+            f?: (er: Error, made: any) => void,
+        ): void;
+        export function mkdirP(
+            name: string,
+            f?: (er: Error, made: any) => void,
+        ): void;
 
         /**
          * The jake.cpR utility does a recursive copy of a file or directory.
@@ -119,8 +132,17 @@ declare global {
          * @param path the file/directory to copy,
          * @param destination the destination.
          */
-        export function cpR(path: string, destination: string, opts?: UtilOptions, callback?: () => void): void;
-        export function cpR(path: string, destination: string, callback?: (err: Error) => void): void;
+        export function cpR(
+            path: string,
+            destination: string,
+            opts?: UtilOptions,
+            callback?: () => void,
+        ): void;
+        export function cpR(
+            path: string,
+            destination: string,
+            callback?: (err: Error) => void,
+        ): void;
 
         /**
          * The jake.readdirR utility gives you a recursive directory listing, giving you output somewhat similar to the Unix find command. It only works with a directory name, and does not perform filtering or globbing.
@@ -156,7 +178,11 @@ declare global {
             /** */
             windowsVerbatimArguments?: boolean | undefined;
         }
-        export function exec(cmds: string[], callback?: () => void, opts?: ExecOptions): void;
+        export function exec(
+            cmds: string[],
+            callback?: () => void,
+            opts?: ExecOptions,
+        ): void;
 
         /**
          * @event cmdStart When a new command begins to run. Passes one arg, the command being run.
@@ -170,10 +196,26 @@ declare global {
             run(): void;
         }
 
-        export function createExec(cmds: string[], callback?: () => void, opts?: ExecOptions): Exec;
-        export function createExec(cmds: string[], opts?: ExecOptions, callback?: () => void): Exec;
-        export function createExec(cmds: string, callback?: () => void, opts?: ExecOptions): Exec;
-        export function createExec(cmds: string, opts?: ExecOptions, callback?: () => void): Exec;
+        export function createExec(
+            cmds: string[],
+            callback?: () => void,
+            opts?: ExecOptions,
+        ): Exec;
+        export function createExec(
+            cmds: string[],
+            opts?: ExecOptions,
+            callback?: () => void,
+        ): Exec;
+        export function createExec(
+            cmds: string,
+            callback?: () => void,
+            opts?: ExecOptions,
+        ): Exec;
+        export function createExec(
+            cmds: string,
+            opts?: ExecOptions,
+            callback?: () => void,
+        ): Exec;
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Logging and output ////////////////////////////////////////////////////////////////////////////////////////
@@ -229,7 +271,12 @@ declare global {
              * @param action The action to perform for this task
              * @param opts Perform this task asynchronously. If you flag a task with this option, you must call the global `complete` method inside the task's action, for execution to proceed to the next task.
              */
-            constructor(name: string, prereqs?: string[], action?: (this: Task) => void, opts?: TaskOptions);
+            constructor(
+                name: string,
+                prereqs?: string[],
+                action?: (this: Task) => void,
+                opts?: TaskOptions,
+            );
 
             /**
              * Runs prerequisites, then this task. If the task has already been run, will not run the task again.
@@ -285,7 +332,12 @@ declare global {
              * @param action The action to perform to create this file
              * @param opts Perform this task asynchronously. If you flag a task with this option, you must call the global `complete` method inside the task's action, for execution to proceed to the next task.
              */
-            constructor(name: string, prereqs?: string[], action?: (this: FileTask) => void, opts?: FileTaskOptions);
+            constructor(
+                name: string,
+                prereqs?: string[],
+                action?: (this: FileTask) => void,
+                opts?: FileTaskOptions,
+            );
         }
 
         interface FileFilter {
@@ -426,10 +478,22 @@ declare global {
             constructor(name: string, definition?: () => void);
         }
 
-        export function addListener(event: string, listener: Function): NodeJS.EventEmitter;
-        export function on(event: string, listener: Function): NodeJS.EventEmitter;
-        export function once(event: string, listener: Function): NodeJS.EventEmitter;
-        export function removeListener(event: string, listener: Function): NodeJS.EventEmitter;
+        export function addListener(
+            event: string,
+            listener: Function,
+        ): NodeJS.EventEmitter;
+        export function on(
+            event: string,
+            listener: Function,
+        ): NodeJS.EventEmitter;
+        export function once(
+            event: string,
+            listener: Function,
+        ): NodeJS.EventEmitter;
+        export function removeListener(
+            event: string,
+            listener: Function,
+        ): NodeJS.EventEmitter;
         export function removeAllListener(event: string): NodeJS.EventEmitter;
         export function setMaxListeners(n: number): void;
         export function listeners(event: string): Function[];

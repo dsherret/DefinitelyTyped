@@ -17,13 +17,13 @@ function isString(str: string): null {
 }
 
 const link = LinkHeader.parse(
-    "<example.com>; rel=\"example\"; title=\"Example Website\", "
-        + "<example-twice.com>; rel=\"example\"; title=\"Example Website Twice\", "
-        + "<example-01.com>; rel=\"alternate\"; title=\"Alternate Example Domain\"",
+    '<example.com>; rel="example"; title="Example Website", ' +
+        '<example-twice.com>; rel="example"; title="Example Website Twice", ' +
+        '<example-01.com>; rel="alternate"; title="Alternate Example Domain"',
 );
 isReferenceArray(link.refs);
 
-const offsetLink = LinkHeader.parse(" <example.com>; rel=\"example\"", 1);
+const offsetLink = LinkHeader.parse(' <example.com>; rel="example"', 1);
 
 const has = link.has("rel", "alternate");
 isBool(has);
@@ -45,7 +45,7 @@ const constructedLink = new LinkHeader();
 LinkHeader.isCompatibleEncoding("utf-8"); // $ExpectType boolean
 LinkHeader.isSingleOccurenceAttr("src"); // $ExpectType boolean
 LinkHeader.isTokenAttr("rel"); // $ExpectType boolean
-LinkHeader.escapeQuotes("\"Quote text\""); // $ExpectType string
+LinkHeader.escapeQuotes('"Quote text"'); // $ExpectType string
 LinkHeader.formatExtendedAttribute("title", {
     value: Buffer.from("Unicode value"),
     encoding: "utf-8",

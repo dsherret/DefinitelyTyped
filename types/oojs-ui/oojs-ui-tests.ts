@@ -665,7 +665,7 @@
         showPendingRequest: true,
     });
 
-    instance.getRequestData().then(data => {
+    instance.getRequestData().then((data) => {
         data; // $ExpectType unknown
     });
 }
@@ -851,17 +851,17 @@
     // $ExpectType ActionSet
     instance.remove([widget]);
 
-    instance.on("add", added => {
+    instance.on("add", (added) => {
         added; // $ExpectType ActionWidget[]
     }).on;
 
     instance.on("change", () => {});
 
-    instance.on("click", action => {
+    instance.on("click", (action) => {
         action; // $ExpectType ActionWidget
     });
 
-    instance.on("remove", removed => {
+    instance.on("remove", (removed) => {
         removed; // $ExpectType ActionWidget[]
     });
 }
@@ -901,7 +901,10 @@
 
 // #region OO.ui.BarToolGroup
 {
-    const toolbar = new OO.ui.Toolbar(new OO.ui.ToolFactory(), new OO.ui.ToolGroupFactory());
+    const toolbar = new OO.ui.Toolbar(
+        new OO.ui.ToolFactory(),
+        new OO.ui.ToolGroupFactory(),
+    );
 
     // $ExpectType ToolGroup
     new OO.ui.BarToolGroup.super(toolbar);
@@ -986,7 +989,7 @@
 
     instance.focus(); // $ExpectType ButtonGroupWidget
 
-    instance.on("toggle", visible => {
+    instance.on("toggle", (visible) => {
         visible; // $ExpectType boolean
     });
 }
@@ -1148,17 +1151,17 @@
     // $ExpectType ButtonWidget
     instance.on("click", () => {});
 
-    instance.on("disable", disabled => {
+    instance.on("disable", (disabled) => {
         disabled; // $ExpectType boolean
     });
 
-    instance.on("flag", changes => {
+    instance.on("flag", (changes) => {
         changes; // $ExpectType Record<string, boolean>
     });
 
     instance.on("labelChange", () => {});
 
-    instance.on("toggle", visible => {
+    instance.on("toggle", (visible) => {
         visible; // $ExpectType boolean
     });
 
@@ -1167,10 +1170,10 @@
         click() {
             this; // $ExpectType ButtonWidget
         },
-        toggle: disabled => {
+        toggle: (disabled) => {
             disabled; // $ExpectType boolean
         },
-        nonExist: arg => {
+        nonExist: (arg) => {
             arg; // $ExpectType any
         },
     });
@@ -1197,9 +1200,18 @@
         label: "Checkboxes",
     });
     fieldset.addItems([
-        new OO.ui.FieldLayout(instance, { label: "Selected checkbox", align: "inline" }),
-        new OO.ui.FieldLayout(instance1, { label: "Unselected checkbox", align: "inline" }),
-        new OO.ui.FieldLayout(instance2, { label: "Disabled checkbox", align: "inline" }),
+        new OO.ui.FieldLayout(instance, {
+            label: "Selected checkbox",
+            align: "inline",
+        }),
+        new OO.ui.FieldLayout(instance1, {
+            label: "Unselected checkbox",
+            align: "inline",
+        }),
+        new OO.ui.FieldLayout(instance2, {
+            label: "Disabled checkbox",
+            align: "inline",
+        }),
     ]);
 
     // $ExpectType CheckboxInputWidget
@@ -1293,7 +1305,11 @@
 
     const instance = new OO.ui.ComboBoxInputWidget({
         value: "Option 1",
-        options: [{ data: "Option 1" }, { data: "Option 2" }, { data: "Option 3" }],
+        options: [
+            { data: "Option 1" },
+            { data: "Option 2" },
+            { data: "Option 3" },
+        ],
         menu: {
             classes: ["class1"],
         },
@@ -1311,7 +1327,11 @@
     instance.getInput(); // $ExpectType TextInputWidget
 
     // $ExpectType ComboBoxInputWidget
-    instance.setOptions([{ data: "Option 1" }, { data: "Option 2" }, { data: "Option 3" }]);
+    instance.setOptions([
+        { data: "Option 1" },
+        { data: "Option 2" },
+        { data: "Option 3" },
+    ]);
 
     // @ts-expect-error
     OO.ui.ComboBoxInputWidget.prototype.$overlay;
@@ -1399,7 +1419,7 @@
 
     instance.executeAction("continue").then(
         () => {},
-        err => {
+        (err) => {
             err; // $ExpectType [] | [Error]
         },
     );
@@ -1425,7 +1445,10 @@
     });
 
     // $ExpectType DropdownInputWidget
-    instance.setOptions([{ optgroup: "Group label" }, { data: "a", label: "First" }]);
+    instance.setOptions([
+        { optgroup: "Group label" },
+        { data: "a", label: "First" },
+    ]);
 }
 // #endregion
 
@@ -1615,7 +1638,7 @@
                     scrollContainer: el,
                 },
             )
-            .then(function() {});
+            .then(function () {});
     }
 
     {
@@ -1636,7 +1659,11 @@
             $element: $("<div>"),
             $content: $("<div>"),
             classes: ["class1", "class2"],
-            content: ["<div>Escaped!</div>", new OO.ui.HtmlSnippet("<div>HTML!</div>"), new OO.ui.Element()],
+            content: [
+                "<div>Escaped!</div>",
+                new OO.ui.HtmlSnippet("<div>HTML!</div>"),
+                new OO.ui.Element(),
+            ],
             data: 123,
             id: "header",
             text: "Some nice words",
@@ -1696,7 +1723,7 @@
                     padding: { top: 0, right: 0, bottom: 0, left: 0 },
                     scrollContainer: el,
                 })
-                .then(function() {});
+                .then(function () {});
         }
     }
 
@@ -1772,7 +1799,10 @@
     instance.setErrors(["Text 1", new OO.ui.HtmlSnippet("<div>Text 2</div>")]);
 
     // $ExpectType FieldLayout<ButtonWidget>
-    instance.setWarnings(["Text 1", new OO.ui.HtmlSnippet("<div>Text 2</div>")]);
+    instance.setWarnings([
+        "Text 1",
+        new OO.ui.HtmlSnippet("<div>Text 2</div>"),
+    ]);
 
     // $ExpectType FieldLayout<ButtonWidget>
     instance.setSuccess(["Text 1", new OO.ui.HtmlSnippet("<div>Text 2</div>")]);
@@ -1838,7 +1868,7 @@
             items; // $ExpectType EventEmitter
             index; // $ExpectType number
         })
-        .on("change", items => {
+        .on("change", (items) => {
             items; // $ExpectType Element[]
         })
         .on("clear", () => {})
@@ -1909,10 +1939,13 @@
     new OO.ui.HorizontalLayout.super();
 
     const instance = new OO.ui.HorizontalLayout({
-        items: [new OO.ui.PanelLayout(), new OO.ui.TextInputWidget({ value: "Text" })],
+        items: [
+            new OO.ui.PanelLayout(),
+            new OO.ui.TextInputWidget({ value: "Text" }),
+        ],
     });
 
-    instance.on("change", items => {
+    instance.on("change", (items) => {
         items; // $ExpectType Element[]
     });
 }
@@ -1937,7 +1970,7 @@
         title: "Help",
     });
 
-    instance.on("disable", disabled => {
+    instance.on("disable", (disabled) => {
         disabled; // $ExpectType boolean
     });
 }
@@ -1988,10 +2021,10 @@
             tabPanels; // $ExpectType TabPanelLayout[]
             index; // $ExpectType number
         })
-        .once("remove", tabPanels => {
+        .once("remove", (tabPanels) => {
             tabPanels; // $ExpectType TabPanelLayout[]
         })
-        .off("set", tabPanel => {
+        .off("set", (tabPanel) => {
             tabPanel; // $ExpectType TabPanelLayout
         });
 }
@@ -2020,7 +2053,7 @@
         value: "initial value",
         dir: "ltr",
         inputId: "input1",
-        inputFilter: value => `value: ${value}`,
+        inputFilter: (value) => `value: ${value}`,
     });
 
     // $ExpectType JQuery<HTMLElement>
@@ -2038,15 +2071,15 @@
     // $ExpectType InputWidget
     instance.setInputId("input2");
 
-    instance.on("change", value => {
+    instance.on("change", (value) => {
         value; // $ExpectType string
     });
 
-    instance.on("disable", disabled => {
+    instance.on("disable", (disabled) => {
         disabled; // $ExpectType boolean
     });
 
-    instance.on("toggle", visible => {
+    instance.on("toggle", (visible) => {
         visible; // $ExpectType boolean
     });
 
@@ -2088,7 +2121,10 @@
 
 // #region OO.ui.ListToolGroup
 {
-    const toolbar = new OO.ui.Toolbar(new OO.ui.ToolFactory(), new OO.ui.ToolGroupFactory());
+    const toolbar = new OO.ui.Toolbar(
+        new OO.ui.ToolFactory(),
+        new OO.ui.ToolGroupFactory(),
+    );
 
     const instance = new OO.ui.ListToolGroup(toolbar, {
         allowCollapse: ["1", "2", "3"],
@@ -2143,12 +2179,15 @@
         contentPanel,
     });
 
-    instance.$menu.append(menuPanel.$element.append("<b>Menu panel</b>", select.$element));
+    instance.$menu.append(
+        menuPanel.$element.append("<b>Menu panel</b>", select.$element),
+    );
 
     instance.$content.append(
         contentPanel.$element.append(
             "<b>Content panel</b>",
-            "<p>Note that the menu is positioned relative to the content panel: " + "top, bottom, after, before.</p>",
+            "<p>Note that the menu is positioned relative to the content panel: " +
+                "top, bottom, after, before.</p>",
         ),
     );
 
@@ -2300,7 +2339,10 @@
 
 // #region OO.ui.MenuToolGroup
 {
-    const toolbar = new OO.ui.Toolbar(new OO.ui.ToolFactory(), new OO.ui.ToolGroupFactory());
+    const toolbar = new OO.ui.Toolbar(
+        new OO.ui.ToolFactory(),
+        new OO.ui.ToolGroupFactory(),
+    );
 
     // $ExpectType PopupToolGroup
     new OO.ui.MenuToolGroup.super(toolbar);
@@ -2416,7 +2458,7 @@
 
     instance.setSelected(true); // $ExpectType MultioptionWidget
 
-    instance.on("change", selected => {
+    instance.on("change", (selected) => {
         selected; // $ExpectType boolean
     });
 }
@@ -2602,18 +2644,18 @@
     instance.$movers;
 
     instance
-        .on("move", places => {
+        .on("move", (places) => {
             places; // $ExpectType number
         })
         .on("remove", () => {})
-        .on("change", items => {
+        .on("change", (items) => {
             items; // $ExpectType Element[]
         })
         .once("add", (items, index) => {
             items; // $ExpectType EventEmitter
             index; // $ExpectType number
         })
-        .off("change", items => {
+        .off("change", (items) => {
             items; // $ExpectType Element[]
         })
         .off("clear", () => {});
@@ -2684,7 +2726,7 @@
 
     instance.setActive(true); // $ExpectType void
 
-    instance.on("active", active => {
+    instance.on("active", (active) => {
         active; // $ExpectType boolean
     });
 }
@@ -2752,7 +2794,12 @@
 
 // #region OO.ui.PopupTool
 {
-    const toolGroup = new OO.ui.ToolGroup(new OO.ui.Toolbar(new OO.ui.ToolFactory(), new OO.ui.ToolGroupFactory()));
+    const toolGroup = new OO.ui.ToolGroup(
+        new OO.ui.Toolbar(
+            new OO.ui.ToolFactory(),
+            new OO.ui.ToolGroupFactory(),
+        ),
+    );
 
     // $ExpectType Tool
     new OO.ui.PopupTool.super(toolGroup);
@@ -2766,7 +2813,10 @@
 
 // #region OO.ui.PopupToolGroup
 {
-    const toolbar = new OO.ui.Toolbar(new OO.ui.ToolFactory(), new OO.ui.ToolGroupFactory());
+    const toolbar = new OO.ui.Toolbar(
+        new OO.ui.ToolFactory(),
+        new OO.ui.ToolGroupFactory(),
+    );
 
     // $ExpectType ToolGroup
     new OO.ui.PopupToolGroup.super(toolbar);
@@ -2879,11 +2929,11 @@
 
     instance.on("labelChange", () => {});
 
-    instance.on("disable", disabled => {
+    instance.on("disable", (disabled) => {
         disabled; // $ExpectType boolean
     });
 
-    instance.on("toggle", visible => {
+    instance.on("toggle", (visible) => {
         visible; // $ExpectType boolean
     });
 
@@ -2905,100 +2955,100 @@
 {
     const instance = new OO.ui.Process(1);
     const instance1 = new OO.ui.Process($.Deferred().promise());
-    const instance2 = new OO.ui.Process(function() {
+    const instance2 = new OO.ui.Process(function () {
         this; // $ExpectType number
         return 1;
     }, 1);
-    const instance3 = new OO.ui.Process(function() {
+    const instance3 = new OO.ui.Process(function () {
         this; // $ExpectType number
         return false;
     }, 1);
-    const instance4 = new OO.ui.Process(function() {
+    const instance4 = new OO.ui.Process(function () {
         this; // $ExpectType number
         return $.Deferred().promise();
     }, 1);
-    const instance5 = new OO.ui.Process(function() {
+    const instance5 = new OO.ui.Process(function () {
         this; // $ExpectType number
         return error;
     }, 1);
-    const instance6 = new OO.ui.Process(function() {
+    const instance6 = new OO.ui.Process(function () {
         this; // $ExpectType number
         return [error];
     }, 1);
-    const instance7 = new OO.ui.Process(function() {
+    const instance7 = new OO.ui.Process(function () {
         this; // $ExpectType number
     }, 1);
 
     const error = new OO.ui.Error("Error!");
 
     instance.execute().then(
-        val => {
+        (val) => {
             val; // $ExpectType void
         },
-        reason => {
+        (reason) => {
             reason; // $ExpectType [] | [Error]
         },
     );
 
     {
         // $ExpectType Process
-        instance.first(function() {
+        instance.first(function () {
             this; // $ExpectType number
             return false;
         }, 1);
 
-        instance.first(function() {
+        instance.first(function () {
             this; // $ExpectType number
             return $.Deferred().promise();
         }, 1);
 
-        instance.first(function() {
+        instance.first(function () {
             this; // $ExpectType number
             return 1000;
         }, 1);
 
-        instance.first(function() {
+        instance.first(function () {
             this; // $ExpectType number
             return error;
         }, 1);
 
-        instance.first(function() {
+        instance.first(function () {
             this; // $ExpectType number
             return [error];
         }, 1);
 
-        instance.first(function() {
+        instance.first(function () {
             this; // $ExpectType number
         }, 1);
     }
 
     {
-        instance.next(function() {
+        instance.next(function () {
             this; // $ExpectType number
             return false;
         }, 1);
 
-        instance.next(function() {
+        instance.next(function () {
             this; // $ExpectType number
             return $.Deferred().promise();
         }, 1);
 
-        instance.next(function() {
+        instance.next(function () {
             this; // $ExpectType number
             return 1000;
         }, 1);
 
-        instance.next(function() {
+        instance.next(function () {
             this; // $ExpectType number
             return error;
         }, 1);
 
-        instance.next(function() {
+        instance.next(function () {
             this; // $ExpectType number
             return [error];
         }, 1);
 
-        instance.next(function() {
+        instance.next(function () {
             this; // $ExpectType number
         }, 1);
     }
@@ -3205,7 +3255,7 @@
 
     instance.setValue(null); // $ExpectType void
 
-    instance.loadAndGetImageUrl(file).then(url => {
+    instance.loadAndGetImageUrl(file).then((url) => {
         url; // $ExpectType string
     });
 }
@@ -3307,7 +3357,7 @@
     instance.findRelativeSelectableItem(null, 1);
 
     // $ExpectType OptionWidget | null
-    instance.findRelativeSelectableItem(option1, 1, item => true, true);
+    instance.findRelativeSelectableItem(option1, 1, (item) => true, true);
 
     // $ExpectType OptionWidget | null
     instance.findFirstSelectableItem();
@@ -3322,13 +3372,13 @@
     instance.clearItems();
 
     instance
-        .on("highlight", item => {
+        .on("highlight", (item) => {
             item; // $ExpectType OptionWidget | null
         })
-        .on("press", item => {
+        .on("press", (item) => {
             item; // $ExpectType OptionWidget | null
         })
-        .on("select", items => {
+        .on("select", (items) => {
             items; // $ExpectType OptionWidget | OptionWidget[] | null
         })
         .once("choose", (item, selected) => {
@@ -3343,7 +3393,7 @@
             items; // $ExpectType OptionWidget | OptionWidget[]
             index; // $ExpectType number
         })
-        .off("change", items => {
+        .off("change", (items) => {
             items; // $ExpectType Element[]
         })
         .off("clear", () => {})
@@ -3393,7 +3443,7 @@
 
     instance.isContinuous(); // $ExpectType boolean
 
-    instance.on("set", item => {
+    instance.on("set", (item) => {
         item; // $ExpectType Layout | null
     });
 }
@@ -3438,7 +3488,7 @@
 
     instance.setActive(true); // $ExpectType void
 
-    instance.on("active", active => {
+    instance.on("active", (active) => {
         active; // $ExpectType boolean
     });
 }
@@ -3491,14 +3541,14 @@
 
     instance
         .on("remove", () => {})
-        .on("navigate", direction => {
+        .on("navigate", (direction) => {
             direction; // $ExpectType Direction
         })
         .on("select", () => {})
-        .on("valid", isValid => {
+        .on("valid", (isValid) => {
             isValid; // $ExpectType boolean
         })
-        .on("fixed", isFixed => {
+        .on("fixed", (isFixed) => {
             isFixed; // $ExpectType boolean
         });
 }
@@ -3604,7 +3654,7 @@
 
     instance.isValid(); // $ExpectType boolean
 
-    instance.on("disable", disabled => {
+    instance.on("disable", (disabled) => {
         disabled; // $ExpectType boolean
     });
 
@@ -3731,7 +3781,7 @@
         value: true,
     });
 
-    instance.on("change", value => {
+    instance.on("change", (value) => {
         value; // $ExpectType boolean
     });
 }
@@ -3774,7 +3824,7 @@
 
     instance.setValue(false); // $ExpectType ToggleWidget
 
-    instance.on("change", value => {
+    instance.on("change", (value) => {
         value; // $ExpectType boolean
     });
 }
@@ -3822,7 +3872,12 @@
     }
 
     const instance = new OO.ui.Tool(
-        new OO.ui.ToolGroup(new OO.ui.Toolbar(new OO.ui.ToolFactory(), new OO.ui.ToolGroupFactory())),
+        new OO.ui.ToolGroup(
+            new OO.ui.Toolbar(
+                new OO.ui.ToolFactory(),
+                new OO.ui.ToolGroupFactory(),
+            ),
+        ),
         {
             title: () => "title",
             displayBothIconAndLabel: false,
@@ -3851,7 +3906,7 @@
 
     instance.destroy();
 
-    instance.on("flag", changes => {
+    instance.on("flag", (changes) => {
         changes; // $ExpectType Record<string, boolean>
     });
 }
@@ -3862,10 +3917,14 @@
     // $ExpectType Element
     new OO.ui.Toolbar.super();
 
-    const instance = new OO.ui.Toolbar(new OO.ui.ToolFactory(), new OO.ui.ToolGroupFactory(), {
-        position: "top",
-        $overlay: OO.ui.getDefaultOverlay(),
-    });
+    const instance = new OO.ui.Toolbar(
+        new OO.ui.ToolFactory(),
+        new OO.ui.ToolGroupFactory(),
+        {
+            position: "top",
+            $overlay: OO.ui.getDefaultOverlay(),
+        },
+    );
 
     // $ExpectType JQuery<HTMLElement>
     instance.$bar;
@@ -3919,10 +3978,10 @@
     instance.setNarrow(true); // $ExpectType void
 
     instance
-        .on("updateState", data => {
+        .on("updateState", (data) => {
             data; // $ExpectType unknown
         })
-        .on("active", hasActive => {
+        .on("active", (hasActive) => {
             hasActive; // $ExpectType boolean
         })
         .off("resize", () => {});
@@ -3952,9 +4011,14 @@
     const instance = new OO.ui.ToolFactory();
 
     // $ExpectType string[]
-    instance.getTools("*", ["tool1"], ["tool1", { name: "tool-name" }, { group: "group-name" }], {
-        group: "group-name",
-    });
+    instance.getTools(
+        "*",
+        ["tool1"],
+        ["tool1", { name: "tool-name" }, { group: "group-name" }],
+        {
+            group: "group-name",
+        },
+    );
 }
 // #endregion
 
@@ -3975,7 +4039,10 @@
     // $ExpectType string
     OO.ui.ToolGroup.static.name;
 
-    const toolBar = new OO.ui.Toolbar(new OO.ui.ToolFactory(), new OO.ui.ToolGroupFactory());
+    const toolBar = new OO.ui.Toolbar(
+        new OO.ui.ToolFactory(),
+        new OO.ui.ToolGroupFactory(),
+    );
 
     const instance = new OO.ui.ToolGroup(toolBar, {
         include: "*",
@@ -3992,7 +4059,7 @@
 
     instance
         .on("update", () => {})
-        .once("active", visible => {
+        .once("active", (visible) => {
             visible; // $ExpectType boolean
         });
 }
@@ -4012,7 +4079,12 @@
 
 // #region OO.ui.ToolGroupTool
 {
-    const toolGroup = new OO.ui.ToolGroup(new OO.ui.Toolbar(new OO.ui.ToolFactory(), new OO.ui.ToolGroupFactory()));
+    const toolGroup = new OO.ui.ToolGroup(
+        new OO.ui.Toolbar(
+            new OO.ui.ToolFactory(),
+            new OO.ui.ToolGroupFactory(),
+        ),
+    );
 
     // $ExpectType ConfigOptions
     OO.ui.ToolGroupTool.static.groupConfig;
@@ -4065,11 +4137,11 @@
     // $ExpectType Element
     new OO.ui.Widget.super();
 
-    instance.on("disable", function(disabled) {
+    instance.on("disable", function (disabled) {
         disabled; // $ExpectType boolean
     });
 
-    instance.on("toggle", function(visible) {
+    instance.on("toggle", function (visible) {
         visible; // $ExpectType boolean
     });
 }
@@ -4289,10 +4361,10 @@
     instance.getTeardownDelay(window, 1);
 
     instance.getWindow("window").then(
-        window => {
+        (window) => {
             window; // $ExpectType Window
         },
-        err => {
+        (err) => {
             err; // $ExpectType Error
         },
     );
@@ -4323,10 +4395,10 @@
                 promise; // $ExpectType Promise<void, any, any>
                 data; // $ExpectType unknown
             },
-            err => {
+            (err) => {
                 err; // $ExpectType Error | undefined
             },
-            state => {
+            (state) => {
                 state; // $ExpectType WindowOpeningState
             },
         );
@@ -4340,13 +4412,13 @@
         instance.closeWindow(window, "123");
 
         instance.closeWindow("window", 1).then(
-            data => {
+            (data) => {
                 data; // $ExpectType unknown
             },
-            err => {
+            (err) => {
                 err; // $ExpectType Error
             },
-            state => {
+            (state) => {
                 state; // $ExpectType WindowClosingState
             },
         );
@@ -4370,7 +4442,7 @@
     // $ExpectType void
     instance.destroy();
 
-    instance.once("opening", function(win, opened, data) {
+    instance.once("opening", function (win, opened, data) {
         win; // $ExpectType Window
         // $ExpectType Promise2<Promise<void, any, any>, Error | undefined, WindowOpeningState, unknown, never, never>
         opened;
@@ -4378,14 +4450,14 @@
         this; // $ExpectType null
     });
 
-    instance.on("closing", function(win, closed, data) {
+    instance.on("closing", function (win, closed, data) {
         win; // $ExpectType Window
         closed; // $ExpectType Promise<unknown, Error, WindowClosingState>
         data; // $ExpectType unknown
         this; // $ExpectType null
     });
 
-    instance.off("resize", function(win) {
+    instance.off("resize", function (win) {
         win; // $ExpectType Window
         this; // $ExpectType null
     });

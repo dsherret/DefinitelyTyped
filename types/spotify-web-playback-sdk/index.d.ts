@@ -20,7 +20,11 @@ declare namespace Spotify {
         message: string;
     }
 
-    type ErrorTypes = "account_error" | "authentication_error" | "initialization_error" | "playback_error";
+    type ErrorTypes =
+        | "account_error"
+        | "authentication_error"
+        | "initialization_error"
+        | "playback_error";
 
     interface Image {
         height?: number | null | undefined;
@@ -135,11 +139,13 @@ declare namespace Spotify {
     type PlaybackStateListener = (s: PlaybackState) => void;
     type EmptyListener = () => void;
 
-    type AddListenerFn =
-        & ((event: "ready" | "not_ready", cb: PlaybackInstanceListener) => void)
-        & ((event: "autoplay_failed", cb: EmptyListener) => void)
-        & ((event: "player_state_changed", cb: PlaybackStateListener) => void)
-        & ((event: ErrorTypes, cb: ErrorListener) => void);
+    type AddListenerFn = ((
+        event: "ready" | "not_ready",
+        cb: PlaybackInstanceListener,
+    ) => void) &
+        ((event: "autoplay_failed", cb: EmptyListener) => void) &
+        ((event: "player_state_changed", cb: PlaybackStateListener) => void) &
+        ((event: ErrorTypes, cb: ErrorListener) => void);
 
     class Player {
         readonly _options: PlayerInit & { id: string };
@@ -156,7 +162,10 @@ declare namespace Spotify {
 
         removeListener(
             event: "ready" | "not_ready" | "player_state_changed" | ErrorTypes,
-            cb?: ErrorListener | PlaybackInstanceListener | PlaybackStateListener,
+            cb?:
+                | ErrorListener
+                | PlaybackInstanceListener
+                | PlaybackStateListener,
         ): void;
 
         pause(): Promise<void>;

@@ -15,7 +15,7 @@ declare namespace VoilabPdfTablePluginRowShader {
 
 interface VoilabPdfTablePluginRowShader {
     // eslint-disable-next-line @typescript-eslint/no-misused-new no-unnecessary-generics
-    new<T>(
+    new <T>(
         conf: VoilabPdfTablePluginRowShader.VoilabPdfTablePluginRowShaderConf,
         // eslint-disable-next-line @typescript-eslint/no-misused-new no-unnecessary-generics
     ): VoilabPdfTable.VoilabPdfTablePlugin<T>;

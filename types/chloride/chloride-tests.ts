@@ -30,8 +30,18 @@ let key: Buffer = Buffer.alloc(32);
 // *** Box ***
 keyPair = ch.crypto_box_keypair();
 keyPair = ch.crypto_box_seed_keypair(seed);
-encrypted = ch.crypto_box_easy(data, nonce, keyPair.publicKey, keyPair.secretKey);
-unencrypted = ch.crypto_box_open_easy(encrypted, nonce, keyPair.publicKey, keyPair.secretKey);
+encrypted = ch.crypto_box_easy(
+    data,
+    nonce,
+    keyPair.publicKey,
+    keyPair.secretKey,
+);
+unencrypted = ch.crypto_box_open_easy(
+    encrypted,
+    nonce,
+    keyPair.publicKey,
+    keyPair.secretKey,
+);
 
 // *** SecretBox ***
 encrypted = ch.crypto_secretbox_easy(data, nonce, key);

@@ -8,20 +8,22 @@ export = _;
 declare module "angular" {
     namespace ui {
         export interface IState {
-            ncyBreadcrumb?: {
-                /**
-                 * Contains the label for the step in the breadcrumb. The state name is used if not defined.
-                 */
-                label?: string | undefined;
-                /**
-                 * Override the parent state (only for the breadcrumb)
-                 */
-                parent?: string | Function | undefined;
-                /**
-                 * When defined to true, the state is never included in the chain of states and never appears in the breadcrumb
-                 */
-                skip?: boolean | undefined;
-            } | undefined;
+            ncyBreadcrumb?:
+                | {
+                      /**
+                       * Contains the label for the step in the breadcrumb. The state name is used if not defined.
+                       */
+                      label?: string | undefined;
+                      /**
+                       * Override the parent state (only for the breadcrumb)
+                       */
+                      parent?: string | Function | undefined;
+                      /**
+                       * When defined to true, the state is never included in the chain of states and never appears in the breadcrumb
+                       */
+                      skip?: boolean | undefined;
+                  }
+                | undefined;
             ncyBreadcrumbLabel?: string | undefined;
             ncyBreadcrumbLink?: string | undefined;
         }

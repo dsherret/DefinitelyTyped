@@ -1,4 +1,12 @@
-export type Unit = "now" | "second" | "minute" | "hour" | "day" | "week" | "month" | "year";
+export type Unit =
+    | "now"
+    | "second"
+    | "minute"
+    | "hour"
+    | "day"
+    | "week"
+    | "month"
+    | "year";
 
 export interface Gradation {
     unit?: Unit | undefined;

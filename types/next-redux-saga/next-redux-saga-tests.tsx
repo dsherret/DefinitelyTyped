@@ -11,7 +11,10 @@ interface InitialState {
     foo: string;
 }
 
-const reducer: Reducer<InitialState> = (state: InitialState = { foo: "" }, action: AnyAction): InitialState => {
+const reducer: Reducer<InitialState> = (
+    state: InitialState = { foo: "" },
+    action: AnyAction,
+): InitialState => {
     switch (action.type) {
         case "FOO":
             return { ...state, foo: action.payload };
@@ -54,14 +57,18 @@ type MergedProps = Props;
 
 // Test various typings
 
-const Com1 = withRedux<InitialState, ConnectStateProps, DispatchProps, OwnProps, MergedProps>(
-    (initialState: InitialState, options) => {
-        if (options.isServer || options.req || options.query || options.res) {
-            const a = 1;
-        }
-        return createStore(reducer, initialState);
-    },
-)(withReduxSaga<OwnProps & Props>({ async: true })(Page));
+const Com1 = withRedux<
+    InitialState,
+    ConnectStateProps,
+    DispatchProps,
+    OwnProps,
+    MergedProps
+>((initialState: InitialState, options) => {
+    if (options.isServer || options.req || options.query || options.res) {
+        const a = 1;
+    }
+    return createStore(reducer, initialState);
+})(withReduxSaga<OwnProps & Props>({ async: true })(Page));
 
 const Com2 = withRedux(makeStore)(withReduxSaga(Page));
 

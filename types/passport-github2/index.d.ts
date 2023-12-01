@@ -29,7 +29,8 @@ export type OAuth2StrategyOptionsWithoutRequiredURLs = Pick<
     Exclude<keyof oauth2._StrategyOptionsBase, "authorizationURL" | "tokenURL">
 >;
 
-export interface _StrategyOptionsBase extends OAuth2StrategyOptionsWithoutRequiredURLs {
+export interface _StrategyOptionsBase
+    extends OAuth2StrategyOptionsWithoutRequiredURLs {
     clientID: string;
     clientSecret: string;
     callbackURL: string;
@@ -56,9 +57,18 @@ export interface StrategyOptionsWithRequest extends _StrategyOptionsBase {
 
 export class Strategy extends oauth2.Strategy {
     constructor(options: StrategyOptions, verify: oauth2.VerifyFunction);
-    constructor(options: StrategyOptionsWithRequest, verify: oauth2.VerifyFunctionWithRequest);
-    userProfile(accessToken: string, done: (err?: Error | null, profile?: any) => void): void;
+    constructor(
+        options: StrategyOptionsWithRequest,
+        verify: oauth2.VerifyFunctionWithRequest,
+    );
+    userProfile(
+        accessToken: string,
+        done: (err?: Error | null, profile?: any) => void,
+    ): void;
 
     name: string;
-    authenticate(req: express.Request, options?: passport.AuthenticateOptions): void;
+    authenticate(
+        req: express.Request,
+        options?: passport.AuthenticateOptions,
+    ): void;
 }

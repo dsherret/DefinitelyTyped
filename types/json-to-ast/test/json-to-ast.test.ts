@@ -4,7 +4,7 @@ import parse = require("json-to-ast");
 jsonToAst;
 
 // $ExpectType ValueNode
-const ast = parse("{\"a\": 1}");
+const ast = parse('{"a": 1}');
 processValueNode(ast);
 
 function logPos(node: parse.ASTNode) {
@@ -24,7 +24,7 @@ function processValueNode(ast: parse.ValueNode) {
         case "Object":
             ast; // $ExpectType ObjectNode
 
-            ast.children.forEach(child => {
+            ast.children.forEach((child) => {
                 child; // $ExpectType PropertyNode
                 child.key; // $ExpectType IdentifierNode
 
@@ -34,7 +34,7 @@ function processValueNode(ast: parse.ValueNode) {
         case "Array":
             ast; // $ExpectType ArrayNode
 
-            ast.children.forEach(child => {
+            ast.children.forEach((child) => {
                 child; // $ExpectType ValueNode
 
                 processValueNode(child);

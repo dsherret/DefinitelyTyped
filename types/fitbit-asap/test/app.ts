@@ -4,7 +4,7 @@ asap.send("See you later, alligator.");
 
 asap.send("See you later, alligator.", { timeout: 1000 });
 
-asap.onmessage = message => {
+asap.onmessage = (message) => {
     const m: string = message;
 };
 

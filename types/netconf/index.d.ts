@@ -31,7 +31,13 @@ export class Client {
     facts(
         callback: (
             err: any,
-            facts: { hostname: string; version: string; module: string; uptime: string; serial: string },
+            facts: {
+                hostname: string;
+                version: string;
+                module: string;
+                uptime: string;
+                serial: string;
+            },
         ) => void,
     ): void;
 
@@ -39,11 +45,19 @@ export class Client {
      * Loads configuration data into candidate-config using NETCONF. Default options are equivalent to "load merge" and would expect configuration data in JunOS curly-brace format
      */
     load(
-        args: string | {
-            config: any;
-            action?: "merge" | "replace" | "override" | "update" | "set" | undefined;
-            format?: "text" | "xml" | undefined;
-        },
+        args:
+            | string
+            | {
+                  config: any;
+                  action?:
+                      | "merge"
+                      | "replace"
+                      | "override"
+                      | "update"
+                      | "set"
+                      | undefined;
+                  format?: "text" | "xml" | undefined;
+              },
         callback: (err: any, reply: any) => void,
     ): void;
 

@@ -16,9 +16,17 @@ const result2 = encoder
     .text("简体中文")
     .encode();
 
-const result3 = encoder.line("The is the first line").line("And this is the second").encode();
+const result3 = encoder
+    .line("The is the first line")
+    .line("And this is the second")
+    .encode();
 
-const result4 = encoder.text("This is ").underline().text("underlined").underline().encode();
+const result4 = encoder
+    .text("This is ")
+    .underline()
+    .text("underlined")
+    .underline()
+    .encode();
 
 const result5 = encoder
     .align("right")
@@ -67,7 +75,7 @@ const result13 = encoder
     .encode();
 
 const result14 = encoder
-    .box({ style: "double" }, encoder => encoder.text("This is a box"))
+    .box({ style: "double" }, (encoder) => encoder.text("This is a box"))
     .table(
         [
             {
@@ -84,7 +92,10 @@ const result14 = encoder
         ],
         [
             ["first column", "2nd column"],
-            [encoder => encoder.text("something"), encoder => encoder.text("else").bold()],
+            [
+                (encoder) => encoder.text("something"),
+                (encoder) => encoder.text("else").bold(),
+            ],
         ],
     )
     .rule({ style: "double", width: 2 })

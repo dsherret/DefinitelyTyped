@@ -1,8 +1,20 @@
 import aabUtilsMethods, { ApkCreationOptions } from "./aab-utils";
-import methods, { LogcatOpts, ResolveActivityOptions, ScreenrecordOptions, SetPropOptions } from "./adb-commands";
-import emuMethods, { EmuInfo, EmuVersionInfo, ExecTelnetOptions } from "./adb-emu-commands";
+import methods, {
+    LogcatOpts,
+    ResolveActivityOptions,
+    ScreenrecordOptions,
+    SetPropOptions,
+} from "./adb-commands";
+import emuMethods, {
+    EmuInfo,
+    EmuVersionInfo,
+    ExecTelnetOptions,
+} from "./adb-emu-commands";
 import manifestMethods, { APKInfo } from "./android-manifest";
-import apkSigningMethods, { CertCheckOptions, KeystoreHash } from "./apk-signing";
+import apkSigningMethods, {
+    CertCheckOptions,
+    KeystoreHash,
+} from "./apk-signing";
 import apkUtilsMethods, {
     AppInfo,
     CachingOptions,
@@ -39,18 +51,17 @@ import systemCallMethods, {
     Version,
 } from "./system-calls";
 
-export type AdbMethods =
-    & typeof methods
-    & typeof manifestMethods
-    & typeof systemCallMethods
-    & typeof apkSigningMethods
-    & typeof apkUtilsMethods
-    & typeof apksUtilsMethods
-    & typeof aabUtilsMethods
-    & typeof emuMethods
-    & typeof settingsClientCommands
-    & typeof lockManagementCommands
-    & typeof keyboardCommands;
+export type AdbMethods = typeof methods &
+    typeof manifestMethods &
+    typeof systemCallMethods &
+    typeof apkSigningMethods &
+    typeof apkUtilsMethods &
+    typeof apksUtilsMethods &
+    typeof aabUtilsMethods &
+    typeof emuMethods &
+    typeof settingsClientCommands &
+    typeof lockManagementCommands &
+    typeof keyboardCommands;
 
 declare const adbMethods: AdbMethods;
 export default adbMethods;

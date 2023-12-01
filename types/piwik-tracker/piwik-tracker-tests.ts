@@ -6,7 +6,7 @@ var PiwikTracker = require("piwik-tracker");
 var piwik = new PiwikTracker(1, "http://mywebsite.com/piwik.php");
 
 // Optional: Respond to tracking errors
-piwik.on("error", function(err: Error) {
+piwik.on("error", function (err: Error) {
     console.log("error tracking request: ", err);
 });
 

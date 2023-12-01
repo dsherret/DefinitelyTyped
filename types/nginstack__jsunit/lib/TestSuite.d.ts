@@ -1,5 +1,8 @@
 export = TestSuite;
-declare function TestSuite(fileId: number | string, opt_sourceEncoding?: string): void;
+declare function TestSuite(
+    fileId: number | string,
+    opt_sourceEncoding?: string,
+): void;
 declare class TestSuite {
     constructor(fileId: number | string, opt_sourceEncoding?: string);
     key: number | null;
@@ -38,7 +41,12 @@ declare class TestSuite {
     checkEquals(expected: any, actual: any, msg: any): void;
     checkNotEquals(expected: any, actual: any, msg: any): void;
     checkEqualNumbers(expected: any, actual: any, delta: any, msg: any): void;
-    checkNotEqualNumbers(expected: any, actual: any, delta: any, msg: any): void;
+    checkNotEqualNumbers(
+        expected: any,
+        actual: any,
+        delta: any,
+        msg: any,
+    ): void;
     removeTime(dt: Date): Date;
     checkEqualDates(expected: any, actual: any, msg: any): void;
     checkNotEqualDates(expected: any, actual: any, msg: any): void;

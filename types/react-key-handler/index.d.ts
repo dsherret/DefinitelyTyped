@@ -4,7 +4,10 @@ type _KEYDOWN = "keydown";
 type _KEYPRESS = "keypress";
 type _KEYUP = "keyup";
 
-export type Matcher = (event: KeyboardEvent, ref: ReactKeyHandlerIntrinsicProps) => boolean;
+export type Matcher = (
+    event: KeyboardEvent,
+    ref: ReactKeyHandlerIntrinsicProps,
+) => boolean;
 
 interface ReactKeyHandlerIntrinsicProps {
     /**
@@ -42,7 +45,9 @@ export default function KeyHandler(props: ReactKeyHandlerProps): JSX.Element;
 
 export function keyHandleDecorator(
     matcher?: Matcher,
-): (props: ReactKeyHandlerProps) => (Component: JSX.Element) => (...args: any[]) => JSX.Element;
+): (
+    props: ReactKeyHandlerProps,
+) => (Component: JSX.Element) => (...args: any[]) => JSX.Element;
 
 export function keyToggleHandler(
     props: ReactKeyHandlerIntrinsicProps,

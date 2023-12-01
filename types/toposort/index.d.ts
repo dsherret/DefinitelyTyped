@@ -5,7 +5,9 @@
  * @returns a list of vertices, sorted from "start" to "end"
  * @throws if there are any cycles in the graph
  */
-declare function toposort<T = string>(edges: ReadonlyArray<[T, T | undefined]>): T[];
+declare function toposort<T = string>(
+    edges: ReadonlyArray<[T, T | undefined]>,
+): T[];
 declare namespace toposort {
     /**
      * This is a convenience method that allows you to define nodes that may or

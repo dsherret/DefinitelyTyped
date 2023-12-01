@@ -12,28 +12,25 @@ interface LayoutDirectionBaseProps {
     children?: React.ReactNode | undefined;
 }
 
-export type LayoutDirectionDefaultProps =
-    & LayoutDirectionBaseProps
-    & ReactDivAttr
-    & {
+export type LayoutDirectionDefaultProps = LayoutDirectionBaseProps &
+    ReactDivAttr & {
         as?: undefined;
     };
 
-export type LayoutDirectionIntrinsicProps<K extends keyof JSX.IntrinsicElements> =
-    & LayoutDirectionBaseProps
-    & JSXIntrinsicElementProps<K>
-    & {
+export type LayoutDirectionIntrinsicProps<
+    K extends keyof JSX.IntrinsicElements,
+> = LayoutDirectionBaseProps &
+    JSXIntrinsicElementProps<K> & {
         as: K;
     };
 
 export type LayoutDirectionCustomComponentProps<
     C extends ReactComponentConstructor<never>,
-> = C extends ReactComponentConstructor<infer P> ?
-        & LayoutDirectionBaseProps
-        & P
-        & {
-            as: C;
-        }
+> = C extends ReactComponentConstructor<infer P>
+    ? LayoutDirectionBaseProps &
+          P & {
+              as: C;
+          }
     : never;
 
 declare function LayoutDirection(props: LayoutDirectionDefaultProps): FCReturn;

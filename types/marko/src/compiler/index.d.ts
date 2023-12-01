@@ -11,13 +11,31 @@ export const config: Config;
 
 export function createBuilder(options: any): any;
 
-export function compileFile(filename: string, optionsOrCallback?: any, callback?: any): any;
+export function compileFile(
+    filename: string,
+    optionsOrCallback?: any,
+    callback?: any,
+): any;
 
-export function compile(src: any, filename: string, optionsOrCallback: any, callback?: any): any;
+export function compile(
+    src: any,
+    filename: string,
+    optionsOrCallback: any,
+    callback?: any,
+): any;
 
-export function compileForBrowser(src: any, filename: string, optionsOrCallback: any, callback?: any): any;
+export function compileForBrowser(
+    src: any,
+    filename: string,
+    optionsOrCallback: any,
+    callback?: any,
+): any;
 
-export function compileFileForBrowser(filename: string, optionsOrCallback?: any, callback?: any): any;
+export function compileFileForBrowser(
+    filename: string,
+    optionsOrCallback?: any,
+    callback?: any,
+): any;
 
 export function parseRaw(templateSrc: any, filename: string): any;
 
@@ -25,7 +43,11 @@ export function createInlineCompiler(filename: string, userOptions?: any): any;
 
 export function checkUpToDate(templateFile: any, templateJsFile: any): boolean;
 
-export function getLastModified(path: string, optionsOrCallback: any, callback: any): void;
+export function getLastModified(
+    path: string,
+    optionsOrCallback: any,
+    callback: any,
+): void;
 
 export function createWalker(options: any): any;
 

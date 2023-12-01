@@ -22,7 +22,11 @@ declare class Anchor {
     private index;
     parent: any;
     process: Process;
-    config(nextInteractionNameOrFunction: any, nextProcessKey: any, createNewTab: any): void;
+    config(
+        nextInteractionNameOrFunction: any,
+        nextProcessKey: any,
+        createNewTab: any,
+    ): void;
     createNewTab: boolean;
     nextInteractionName: string;
     nextProcessKey: number;

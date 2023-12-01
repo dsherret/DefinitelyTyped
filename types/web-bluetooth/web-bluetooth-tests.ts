@@ -6,28 +6,34 @@ navigator.bluetooth.getAvailability();
 
 // $ExpectType Promise<BluetoothDevice>
 navigator.bluetooth.requestDevice({
-    filters: [{
-        services: ["heart_rate"],
-        name: "some-name",
-        namePrefix: "prefix",
-        manufacturerData: [{
-            companyIdentifier: 0x0858,
-        }],
-        serviceData: [{
-            service: "heart_rate",
-        }],
-    }],
+    filters: [
+        {
+            services: ["heart_rate"],
+            name: "some-name",
+            namePrefix: "prefix",
+            manufacturerData: [
+                {
+                    companyIdentifier: 0x0858,
+                },
+            ],
+            serviceData: [
+                {
+                    service: "heart_rate",
+                },
+            ],
+        },
+    ],
 });
 // $ExpectType Promise<BluetoothLEScan>
 navigator.bluetooth.requestLEScan({ acceptAllAdvertisements: true });
 
-navigator.bluetooth.addEventListener("advertisementreceived", event => {
+navigator.bluetooth.addEventListener("advertisementreceived", (event) => {
     event; // $ExpectType BluetoothAdvertisingEvent
 });
 
-BluetoothUUID.getService(0x180D); // $ExpectType string
+BluetoothUUID.getService(0x180d); // $ExpectType string
 
-BluetoothUUID.getCharacteristic(0x2A37); // $ExpectType string
+BluetoothUUID.getCharacteristic(0x2a37); // $ExpectType string
 
 BluetoothUUID.getDescriptor(0x2902); // $ExpectType string
 
@@ -36,23 +42,33 @@ BluetoothUUID.canonicalUUID("0x180D"); // $ExpectType string
 // Example 1 (from the spec):
 let chosenHeartRateService: BluetoothRemoteGATTService = null;
 
-navigator.bluetooth.requestDevice({
-    filters: [{
-        services: ["heart_rate"],
-    }],
-}).then((device: BluetoothDevice) => device.gatt.connect())
-    .then((server: BluetoothRemoteGATTServer) => server.getPrimaryService("heart_rate"))
+navigator.bluetooth
+    .requestDevice({
+        filters: [
+            {
+                services: ["heart_rate"],
+            },
+        ],
+    })
+    .then((device: BluetoothDevice) => device.gatt.connect())
+    .then((server: BluetoothRemoteGATTServer) =>
+        server.getPrimaryService("heart_rate"),
+    )
     .then((service: BluetoothRemoteGATTService) => {
         chosenHeartRateService = service;
         return Promise.all([
-            service.getCharacteristic("body_sensor_location")
+            service
+                .getCharacteristic("body_sensor_location")
                 .then(handleBodySensorLocationCharacteristic),
-            service.getCharacteristic("heart_rate_measurement")
+            service
+                .getCharacteristic("heart_rate_measurement")
                 .then(handleHeartRateMeasurementCharacteristic),
         ]);
     });
 
-function handleBodySensorLocationCharacteristic(characteristic: BluetoothRemoteGATTCharacteristic) {
+function handleBodySensorLocationCharacteristic(
+    characteristic: BluetoothRemoteGATTCharacteristic,
+) {
     if (characteristic === null) {
         console.log("Unknown sensor location.");
         return Promise.resolve();
@@ -64,8 +80,9 @@ function handleBodySensorLocationCharacteristic(characteristic: BluetoothRemoteG
     characteristic.writeValueWithResponse(buffer);
     characteristic.writeValueWithoutResponse(buffer);
 
-    return characteristic.readValue()
-        .then(sensorLocationData => {
+    return characteristic
+        .readValue()
+        .then((sensorLocationData) => {
             let sensorLocation = sensorLocationData.getUint8(0);
             switch (sensorLocation) {
                 case 0:
@@ -85,14 +102,19 @@ function handleBodySensorLocationCharacteristic(characteristic: BluetoothRemoteG
                 default:
                     return "Unknown";
             }
-        }).then(location => console.log(location));
+        })
+        .then((location) => console.log(location));
 }
 
-function handleHeartRateMeasurementCharacteristic(characteristic: BluetoothRemoteGATTCharacteristic) {
-    return characteristic.startNotifications()
-        .then(char => {
-            characteristic.addEventListener("characteristicvaluechanged", onHeartRateChanged);
-        });
+function handleHeartRateMeasurementCharacteristic(
+    characteristic: BluetoothRemoteGATTCharacteristic,
+) {
+    return characteristic.startNotifications().then((char) => {
+        characteristic.addEventListener(
+            "characteristicvaluechanged",
+            onHeartRateChanged,
+        );
+    });
 }
 
 function onHeartRateChanged(event: Event) {
@@ -134,47 +156,60 @@ function parseHeartRate(data: DataView) {
 }
 
 // Example from the scanning spec
-navigator.bluetooth.requestLEScan({
-    acceptAllAdvertisements: true,
-}).then((scan: BluetoothLEScan) => {
-    console.log("Scan started with:");
-    console.log(" acceptAllAdvertisements: " + scan.acceptAllAdvertisements);
-    console.log(" active: " + scan.active);
-    console.log(" keepRepeatedDevices: " + scan.keepRepeatedDevices);
-    console.log(" filters: " + JSON.stringify(scan.filters));
+navigator.bluetooth
+    .requestLEScan({
+        acceptAllAdvertisements: true,
+    })
+    .then((scan: BluetoothLEScan) => {
+        console.log("Scan started with:");
+        console.log(
+            " acceptAllAdvertisements: " + scan.acceptAllAdvertisements,
+        );
+        console.log(" active: " + scan.active);
+        console.log(" keepRepeatedDevices: " + scan.keepRepeatedDevices);
+        console.log(" filters: " + JSON.stringify(scan.filters));
 
-    navigator.bluetooth.addEventListener("advertisementreceived", (event: BluetoothAdvertisingEvent) => {
-        console.log("Advertisement received.");
-        console.log("  Advertisement name: " + event.name);
-        console.log("  Advertisement UUIDs: " + event.uuids);
-        console.log("  Advertisement appearance: " + event.appearance);
-        console.log("  Advertisement RSSI: " + event.rssi);
-        console.log("  Advertisement TX Power: " + event.txPower);
-        console.log("  Device Name: " + event.device.name);
-        console.log("  Device ID: " + event.device.id);
+        navigator.bluetooth.addEventListener(
+            "advertisementreceived",
+            (event: BluetoothAdvertisingEvent) => {
+                console.log("Advertisement received.");
+                console.log("  Advertisement name: " + event.name);
+                console.log("  Advertisement UUIDs: " + event.uuids);
+                console.log("  Advertisement appearance: " + event.appearance);
+                console.log("  Advertisement RSSI: " + event.rssi);
+                console.log("  Advertisement TX Power: " + event.txPower);
+                console.log("  Device Name: " + event.device.name);
+                console.log("  Device ID: " + event.device.id);
 
-        event.manufacturerData.forEach((valueDataView, key) => {
-            logDataView("Manufacturer", key, valueDataView);
-        });
-        event.serviceData.forEach((valueDataView, key) => {
-            logDataView("Service", key, valueDataView);
-        });
+                event.manufacturerData.forEach((valueDataView, key) => {
+                    logDataView("Manufacturer", key, valueDataView);
+                });
+                event.serviceData.forEach((valueDataView, key) => {
+                    logDataView("Service", key, valueDataView);
+                });
+            },
+        );
+
+        setTimeout(stopScan, 10000);
+        function stopScan() {
+            console.log("Stopping scan...");
+            scan.stop();
+            console.log("Stopped.  scan.active = " + scan.active);
+        }
     });
 
-    setTimeout(stopScan, 10000);
-    function stopScan() {
-        console.log("Stopping scan...");
-        scan.stop();
-        console.log("Stopped.  scan.active = " + scan.active);
-    }
-});
-
 /* Utils */
-const logDataView = (labelOfDataSource: string, key: string | number, valueDataView: DataView) => {
+const logDataView = (
+    labelOfDataSource: string,
+    key: string | number,
+    valueDataView: DataView,
+) => {
     const array = new Uint8Array(valueDataView.buffer);
-    const hexString = Array(array.length).map((_, index) => {
-        return `0${array[index].toString(16)}`.slice(-2);
-    }).join(" ");
+    const hexString = Array(array.length)
+        .map((_, index) => {
+            return `0${array[index].toString(16)}`.slice(-2);
+        })
+        .join(" ");
     const textDecoder = new TextDecoder("ascii");
     const asciiString = textDecoder.decode(valueDataView.buffer);
     console.log(`  ${labelOfDataSource} Data: ${key}

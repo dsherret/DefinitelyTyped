@@ -2,8 +2,15 @@
 
 interface GulpHash {
     (options?: GulpHash.Options): NodeJS.ReadWriteStream;
-    manifest(manifestPath: string, options?: GulpHash.ManifestOptions): NodeJS.ReadWriteStream;
-    manifest(manifestPath: string, append?: boolean, space?: string): NodeJS.ReadWriteStream;
+    manifest(
+        manifestPath: string,
+        options?: GulpHash.ManifestOptions,
+    ): NodeJS.ReadWriteStream;
+    manifest(
+        manifestPath: string,
+        append?: boolean,
+        space?: string,
+    ): NodeJS.ReadWriteStream;
 }
 
 declare namespace GulpHash {

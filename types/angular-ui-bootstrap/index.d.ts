@@ -230,11 +230,13 @@ declare module "angular" {
             /**
              * Allows overriding of the default format for html5 date inputs.
              */
-            html5Types?: {
-                date?: string | undefined;
-                "datetime-local"?: string | undefined;
-                month?: string | undefined;
-            } | undefined;
+            html5Types?:
+                | {
+                      date?: string | undefined;
+                      "datetime-local"?: string | undefined;
+                      month?: string | undefined;
+                  }
+                | undefined;
 
             /**
              * The text to display for the current day button.
@@ -400,7 +402,11 @@ declare module "angular" {
              * A controller can be injected with `$modalInstance`
              * If value is an array, it must be in Inline Array Annotation format for injection (strings followed by factory method)
              */
-            controller?: string | Function | Array<string | Function> | undefined;
+            controller?:
+                | string
+                | Function
+                | Array<string | Function>
+                | undefined;
 
             /**
              *  an alternative to the controller-as syntax, matching the API of directive definitions.
@@ -419,7 +425,15 @@ declare module "angular" {
              * members that will be resolved and passed to the controller as locals; it is equivalent of the `resolve` property for AngularJS routes
              * If property value is an array, it must be in Inline Array Annotation format for injection (strings followed by factory method)
              */
-            resolve?: { [key: string]: string | Function | Array<string | Function> | Object } | undefined;
+            resolve?:
+                | {
+                      [key: string]:
+                          | string
+                          | Function
+                          | Array<string | Function>
+                          | Object;
+                  }
+                | undefined;
 
             /**
              * Set to false to disable animations on new modal/backdrop. Does not toggle animations for modals/backdrops that are already displayed.

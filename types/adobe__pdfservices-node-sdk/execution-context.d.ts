@@ -30,5 +30,8 @@ export class ExecutionContext {
     /**
      * Creates a context instance using the provided {@link Credentials} and {@link ClientConfig}.
      */
-    static create(credentials: Credentials, clientConfig?: ClientConfig): ExecutionContext;
+    static create(
+        credentials: Credentials,
+        clientConfig?: ClientConfig,
+    ): ExecutionContext;
 }

@@ -50,11 +50,11 @@ export interface MatchImageSnapshotOptions {
      */
     customSnapshotIdentifier?:
         | ((parameters: {
-            testPath: string;
-            currentTestName: string;
-            counter: number;
-            defaultIdentifier: string;
-        }) => string)
+              testPath: string;
+              currentTestName: string;
+              counter: number;
+              defaultIdentifier: string;
+          }) => string)
         | string
         | undefined;
     /**
@@ -129,7 +129,10 @@ export interface MatchImageSnapshotOptions {
  *   import { toMatchImageSnapshot } from 'jest-image-snapshot';
  *   expect.extend({ toMatchImageSnapshot });
  */
-export function toMatchImageSnapshot(options?: MatchImageSnapshotOptions): { message(): string; pass: boolean };
+export function toMatchImageSnapshot(options?: MatchImageSnapshotOptions): {
+    message(): string;
+    pass: boolean;
+};
 
 /**
  * Configurable function that can be passed to jest's expect.extend.

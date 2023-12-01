@@ -10,11 +10,15 @@ GlobEntriesPlugin.getEntries([""], {
 });
 
 // $ExpectType EntryFunc
-GlobEntriesPlugin.getEntries([""], {
-    ignore: "",
-}, {
-    basename_as_entry_name: true,
-});
+GlobEntriesPlugin.getEntries(
+    [""],
+    {
+        ignore: "",
+    },
+    {
+        basename_as_entry_name: true,
+    },
+);
 
 GlobEntriesPlugin.getFiles(""); // $ExpectType Record<string, string>
 
@@ -24,6 +28,10 @@ GlobEntriesPlugin.getFiles("", {
 });
 
 // $ExpectType Record<string, string>
-GlobEntriesPlugin.getFiles("", {
-    ignore: "",
-}, true);
+GlobEntriesPlugin.getFiles(
+    "",
+    {
+        ignore: "",
+    },
+    true,
+);

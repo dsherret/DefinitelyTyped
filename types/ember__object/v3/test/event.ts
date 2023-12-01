@@ -47,9 +47,15 @@ function testEvented() {
         })
         .off("event", {}, () => {});
 
-    person.on("greet", target, "hi").one("greet", target, "hi").off("event", target, "hi");
+    person
+        .on("greet", target, "hi")
+        .one("greet", target, "hi")
+        .off("event", target, "hi");
 
-    person.on("greet", target, target.hi).one("greet", target, target.hi).off("event", target, target.hi);
+    person
+        .on("greet", target, target.hi)
+        .one("greet", target, target.hi)
+        .off("event", target, target.hi);
 
     person.greet();
 }
@@ -69,7 +75,13 @@ function testListener() {
             addListener(this, "willDestroy", this, "willDestroyListener");
             addListener(this, "willDestroy", this, "willDestroyListener", true);
             addListener(this, "willDestroy", this, this.willDestroyListener);
-            addListener(this, "willDestroy", this, this.willDestroyListener, true);
+            addListener(
+                this,
+                "willDestroy",
+                this,
+                this.willDestroyListener,
+                true,
+            );
             removeListener(this, "willDestroy", this, "willDestroyListener");
             removeListener(this, "willDestroy", this, this.willDestroyListener);
         },

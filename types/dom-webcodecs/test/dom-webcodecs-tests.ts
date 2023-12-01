@@ -16,7 +16,9 @@ const audioFrame = new AudioData({
 
 declare const imageBitmap: ImageBitmap;
 
-function genericCodec(codec: AudioDecoder | AudioEncoder | VideoDecoder | VideoEncoder) {
+function genericCodec(
+    codec: AudioDecoder | AudioEncoder | VideoDecoder | VideoEncoder,
+) {
     const state: CodecState = codec.state;
 
     // $ExpectType void
@@ -72,12 +74,14 @@ AudioDecoder.isConfigSupported({
     sampleRate: 48000,
 });
 
-AudioDecoder.isConfigSupported(audioDecoderConfig).then((result: AudioDecoderSupport) => {
-    // $ExpectType boolean
-    result.supported;
-    // $ExpectType AudioDecoderConfig
-    result.config;
-});
+AudioDecoder.isConfigSupported(audioDecoderConfig).then(
+    (result: AudioDecoderSupport) => {
+        // $ExpectType boolean
+        result.supported;
+        // $ExpectType AudioDecoderConfig
+        result.config;
+    },
+);
 
 function audioOutput(output: AudioData): void {
     // $ExpectType void
@@ -168,12 +172,14 @@ AudioEncoder.isConfigSupported({
     sampleRate: 48000,
 });
 
-AudioEncoder.isConfigSupported(audioEncoderConfig).then((result: AudioEncoderSupport) => {
-    // $ExpectType boolean
-    result.supported;
-    // $ExpectType AudioEncoderConfig
-    result.config;
-});
+AudioEncoder.isConfigSupported(audioEncoderConfig).then(
+    (result: AudioEncoderSupport) => {
+        // $ExpectType boolean
+        result.supported;
+        // $ExpectType AudioEncoderConfig
+        result.config;
+    },
+);
 
 // additional properties are allowed
 const futureAudioEncoderConfig = {
@@ -189,7 +195,10 @@ AudioEncoder.isConfigSupported(futureAudioEncoderConfig);
 //////////////////////////////////////////////////
 // audio-encoder.any.js
 
-function encodedAudioOutput(output: EncodedAudioChunk, metadata?: EncodedAudioChunkMetadata): void {
+function encodedAudioOutput(
+    output: EncodedAudioChunk,
+    metadata?: EncodedAudioChunkMetadata,
+): void {
     if (metadata?.decoderConfig !== undefined) {
         audioDecoder.configure(metadata.decoderConfig);
     }
@@ -264,7 +273,10 @@ audioFrame.clone();
 //////////////////////////////////////////////////
 // image-decoder-utils.js
 
-const imageDecoderInit: ImageDecoderInit = { data: new Uint8Array(0), type: "image/jpeg" };
+const imageDecoderInit: ImageDecoderInit = {
+    data: new Uint8Array(0),
+    type: "image/jpeg",
+};
 
 // @ts-expect-error
 new ImageDecoder();
@@ -292,7 +304,11 @@ imageDecoder.decode().then((result: ImageDecodeResult) => {
 // image-decoder.any.js
 
 // $ExpectType ImageDecoder
-new ImageDecoder({ data: new ArrayBuffer(0), type: "image/jpeg", preferAnimation: true });
+new ImageDecoder({
+    data: new ArrayBuffer(0),
+    type: "image/jpeg",
+    preferAnimation: true,
+});
 
 // $ExpectType Promise<ImageDecodeResult>
 imageDecoder.decode({ frameIndex: 1 });
@@ -361,12 +377,14 @@ VideoDecoder.isConfigSupported();
 // @ts-expect-error
 VideoDecoder.isConfigSupported({ description: new Uint8Array(0) });
 
-VideoDecoder.isConfigSupported(videoDecoderConfig).then((result: VideoDecoderSupport) => {
-    // $ExpectType boolean | undefined
-    result.supported;
-    // $ExpectType VideoDecoderConfig | undefined
-    result.config;
-});
+VideoDecoder.isConfigSupported(videoDecoderConfig).then(
+    (result: VideoDecoderSupport) => {
+        // $ExpectType boolean | undefined
+        result.supported;
+        // $ExpectType VideoDecoderConfig | undefined
+        result.config;
+    },
+);
 
 function videoOutput(output: VideoFrame): void {
     // $ExpectType number | undefined
@@ -480,12 +498,14 @@ VideoEncoder.isConfigSupported({
     width: 640,
 });
 
-VideoEncoder.isConfigSupported(videoEncoderConfig).then((result: VideoEncoderSupport) => {
-    // $ExpectType boolean | undefined
-    result.supported;
-    // $ExpectType VideoEncoderConfig | undefined
-    result.config;
-});
+VideoEncoder.isConfigSupported(videoEncoderConfig).then(
+    (result: VideoEncoderSupport) => {
+        // $ExpectType boolean | undefined
+        result.supported;
+        // $ExpectType VideoEncoderConfig | undefined
+        result.config;
+    },
+);
 
 // additional properties are allowed
 const futureVideoEncoderConfig = {
@@ -502,7 +522,10 @@ VideoEncoder.isConfigSupported(futureVideoEncoderConfig);
 
 const videoFrame = new VideoFrame(imageBitmap, { timestamp: 1000000 });
 
-function encodedVideoOutput(output: EncodedVideoChunk, metadata?: EncodedVideoChunkMetadata): void {
+function encodedVideoOutput(
+    output: EncodedVideoChunk,
+    metadata?: EncodedVideoChunkMetadata,
+): void {
     if (metadata?.decoderConfig !== undefined) {
         videoDecoder.configure(metadata.decoderConfig);
     }

@@ -39,19 +39,28 @@ interface Parser {
 type AuthorizationHandler = (
     req: http.IncomingMessage,
     done: (
-        err?: string | Error | {
-            statusCode?: number | undefined;
-            authenticate?: string | undefined;
-            message?: string | undefined;
-        },
+        err?:
+            | string
+            | Error
+            | {
+                  statusCode?: number | undefined;
+                  authenticate?: string | undefined;
+                  message?: string | undefined;
+              },
     ) => void,
 ) => void;
 
 type Middleware = (req: http.IncomingMessage, res: http.ServerResponse) => void;
 
 declare class Primus extends EventEmitter {
-    on(event: "plugin" | "plugout", cb: (name: string, energon: unknown) => void): this;
-    on(event: "connection" | "disconnection", cb: (spark: Primus.Spark) => void): this;
+    on(
+        event: "plugin" | "plugout",
+        cb: (name: string, energon: unknown) => void,
+    ): this;
+    on(
+        event: "connection" | "disconnection",
+        cb: (spark: Primus.Spark) => void,
+    ): this;
 
     constructor(server: http.Server, options?: PrimusOptions);
 
@@ -59,7 +68,10 @@ declare class Primus extends EventEmitter {
 
     forEach(cb: (spark: Primus.Spark) => boolean): this;
     forEach(
-        cb: (spark: Primus.Spark, next: (err: Error | null, forward: boolean) => void) => void,
+        cb: (
+            spark: Primus.Spark,
+            next: (err: Error | null, forward: boolean) => void,
+        ) => void,
         done: (err: Error | null) => void,
     ): this;
 
@@ -68,7 +80,10 @@ declare class Primus extends EventEmitter {
 
     write(data: any): void;
 
-    transform(type: "incoming" | "outgoing", fn: (packet: PrimusPacket) => void): this;
+    transform(
+        type: "incoming" | "outgoing",
+        fn: (packet: PrimusPacket) => void,
+    ): this;
 
     // This is marked as private in the source code, but documented in the readme
     spark(id: string): Primus.Spark;
@@ -83,14 +98,30 @@ declare class Primus extends EventEmitter {
 
     plugout(name: string): this;
 
-    use(fn: () => Middleware | Middleware, options?: object, level?: number): this;
-    use(name: string, fn: () => Middleware | Middleware, options?: object, level?: number): this;
+    use(
+        fn: () => Middleware | Middleware,
+        options?: object,
+        level?: number,
+    ): this;
+    use(
+        name: string,
+        fn: () => Middleware | Middleware,
+        options?: object,
+        level?: number,
+    ): this;
 
     remove(name: string): this;
     enable(name: string): this;
     disable(name: string): this;
 
-    destroy(options: { close?: boolean | undefined; reconnect: boolean; timeout: number }, fn: () => void): this;
+    destroy(
+        options: {
+            close?: boolean | undefined;
+            reconnect: boolean;
+            timeout: number;
+        },
+        fn: () => void,
+    ): this;
     end(data?: any, options?: { reconnect?: boolean | undefined }): void;
 
     reserved(name: string): boolean;
@@ -104,7 +135,14 @@ interface PrimusOptions {
     authorization?: AuthorizationHandler | undefined;
     pathname?: string | undefined;
     parser?: string | Parser | undefined;
-    transformer?: "websockets" | "engine.io" | "browserchannel" | "sockjs" | "faye" | "uws" | undefined;
+    transformer?:
+        | "websockets"
+        | "engine.io"
+        | "browserchannel"
+        | "sockjs"
+        | "faye"
+        | "uws"
+        | undefined;
     plugin?: string | object | undefined;
     pingInterval?: number | undefined;
     global?: string | undefined;
@@ -126,7 +164,10 @@ declare namespace Primus {
     function createSocket(options?: SocketOptions): typeof Socket;
 
     function createServer(options?: PrimusOptions): Primus;
-    function createServer(fn: (spark: Spark) => void, options?: PrimusOptions): Primus;
+    function createServer(
+        fn: (spark: Spark) => void,
+        options?: PrimusOptions,
+    ): Primus;
 
     interface Spark extends Stream {
         headers: http.IncomingHttpHeaders;
@@ -164,16 +205,21 @@ declare namespace Primus {
     }
     interface SocketOptions {
         // https://github.com/unshiftio/recovery
-        reconnect?: {
-            max?: number | undefined;
-            min?: number | undefined;
-            retries?: number | undefined;
-            "reconnect timeout"?: number | undefined;
-            factor?: number | undefined;
-        } | undefined;
+        reconnect?:
+            | {
+                  max?: number | undefined;
+                  min?: number | undefined;
+                  retries?: number | undefined;
+                  "reconnect timeout"?: number | undefined;
+                  factor?: number | undefined;
+              }
+            | undefined;
         timeout?: number | undefined;
         pingTimeout?: number | undefined;
-        strategy?: string | Array<"disconnect" | "online" | "timeout"> | undefined;
+        strategy?:
+            | string
+            | Array<"disconnect" | "online" | "timeout">
+            | undefined;
         manual?: boolean | undefined;
         websockets?: boolean | undefined;
         network?: boolean | undefined;

@@ -14,7 +14,10 @@ export interface DKIMSignOptions {
 }
 
 /** Sign an email with provided DKIM key, uses RSA-SHA256. */
-export function DKIMSign(email: Buffer | string, options: DKIMSignOptions): string;
+export function DKIMSign(
+    email: Buffer | string,
+    options: DKIMSignOptions,
+): string;
 
 /** Generates a DKIM-Signature header field without the signature part ('b=' is empty) */
 export function generateDKIMHeader(
@@ -26,7 +29,10 @@ export function generateDKIMHeader(
 ): string;
 
 /** Generates a SHA-256 hash */
-export function sha256(str: string, encoding?: crypto.BinaryToTextEncoding): string;
+export function sha256(
+    str: string,
+    encoding?: crypto.BinaryToTextEncoding,
+): string;
 
 /** DKIM canonicalization functions */
 export namespace DKIMCanonicalizer {
@@ -35,7 +41,10 @@ export namespace DKIMCanonicalizer {
     /** Relaxed body canonicalization by rfc4871 #3.4.4 */
     function relaxedBody(body: string): string;
     /** Relaxed headers canonicalization by rfc4871 #3.4.2 with filtering */
-    function relaxedHeaders(headers: string, fieldNames?: string): { headers: string; fieldNames: string };
+    function relaxedHeaders(
+        headers: string,
+        fieldNames?: string,
+    ): { headers: string; fieldNames: string };
     /** Relaxed header canonicalization for single header line */
     function relaxedHeaderLine(line: string): { key: string; value: string };
 }

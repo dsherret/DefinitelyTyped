@@ -4,7 +4,11 @@ import OBB from "../../Renderer/OBB";
 import C3DTilesTypes from "./C3DTilesTypes";
 
 declare class C3DTBoundingVolume {
-    constructor(json: any, inverseTileTransform: any, registeredExtensions: any); // TODO
+    constructor(
+        json: any,
+        inverseTileTransform: any,
+        registeredExtensions: any,
+    ); // TODO
 
     type: C3DTilesTypes;
     region?: OBB;

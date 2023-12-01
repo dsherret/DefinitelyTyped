@@ -31,7 +31,10 @@ declare namespace AMap {
          * @param array 数组
          * @param index 索引
          */
-        function deleteItemFromArrayByIndex<T = any>(array: T[], index: number): T[];
+        function deleteItemFromArrayByIndex<T = any>(
+            array: T[],
+            index: number,
+        ): T[];
         /**
          * 返回元素索引
          * @param array 数组
@@ -68,11 +71,16 @@ declare namespace AMap {
 
         function cancelIdleCallback(handle: number): void;
 
-        function requestAnimFrame<C = undefined>(callback: (this: C, ...args: any[]) => any, context?: C): number;
+        function requestAnimFrame<C = undefined>(
+            callback: (this: C, ...args: any[]) => any,
+            context?: C,
+        ): number;
 
         function cancelAnimFrame(handle: number): void;
 
-        function color2RgbaArray(color: string | number[]): [number, number, number, number];
+        function color2RgbaArray(
+            color: string | number[],
+        ): [number, number, number, number];
 
         function color2Rgba(color: string | number[]): string;
     }

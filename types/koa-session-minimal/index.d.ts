@@ -27,7 +27,10 @@ declare function session(opts?: {
     /**
      * cookie options
      */
-    cookie?: cookies.IOptions | { (ctx?: Koa.Context): cookies.IOptions } | undefined;
+    cookie?:
+        | cookies.IOptions
+        | { (ctx?: Koa.Context): cookies.IOptions }
+        | undefined;
 
     /**
      * session store

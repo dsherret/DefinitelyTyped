@@ -6,7 +6,14 @@ export namespace ReactStripeElements {
     type ElementChangeResponse = stripe.elements.ElementChangeResponse;
     type ElementsOptions = stripe.elements.ElementsOptions;
     // From https://stripe.com/docs/stripe-js/reference#element-types
-    type TokenType = "card" | "cardNumber" | "cardExpiry" | "cardCvc" | "paymentRequestButton" | "iban" | "idealBank";
+    type TokenType =
+        | "card"
+        | "cardNumber"
+        | "cardExpiry"
+        | "cardCvc"
+        | "paymentRequestButton"
+        | "iban"
+        | "idealBank";
     type TokenOptions = stripe.TokenOptions & { type?: TokenType | undefined };
     type TokenResponse = stripe.TokenResponse;
     type SourceResponse = stripe.SourceResponse;
@@ -17,9 +24,16 @@ export namespace ReactStripeElements {
         stripeAccount?: string | undefined;
     }
     type StripeProviderProps =
-        | { children?: React.ReactNode; apiKey: string; stripe?: never | undefined } & StripeProviderOptions
-        | { children?: React.ReactNode; apiKey?: never | undefined; stripe: stripe.Stripe | null }
-            & StripeProviderOptions;
+        | ({
+              children?: React.ReactNode;
+              apiKey: string;
+              stripe?: never | undefined;
+          } & StripeProviderOptions)
+        | ({
+              children?: React.ReactNode;
+              apiKey?: never | undefined;
+              stripe: stripe.Stripe | null;
+          } & StripeProviderOptions);
 
     interface StripeOverrideProps {
         /*
@@ -27,7 +41,9 @@ export namespace ReactStripeElements {
          * with either credit card or bank account options
          * which one to choose depends solely on the inferred elements and can't be expressed in TypeScript
          */
-        createToken(options?: TokenOptions | BankAccountTokenOptions): Promise<TokenResponse>;
+        createToken(
+            options?: TokenOptions | BankAccountTokenOptions,
+        ): Promise<TokenResponse>;
         createSource(sourceData?: SourceOptions): Promise<SourceResponse>;
         createPaymentMethod(
             paymentMethodType: stripe.paymentMethod.paymentMethodType,
@@ -38,7 +54,9 @@ export namespace ReactStripeElements {
             element: HTMLStripeElement,
             data?: stripe.CreatePaymentMethodOptions,
         ): Promise<stripe.PaymentMethodResponse>;
-        createPaymentMethod(data: stripe.PaymentMethodData): Promise<stripe.PaymentMethodResponse>;
+        createPaymentMethod(
+            data: stripe.PaymentMethodData,
+        ): Promise<stripe.PaymentMethodResponse>;
         handleCardPayment(
             clientSecret: string,
             options?: stripe.HandleCardPaymentWithoutElementsOptions,
@@ -49,8 +67,9 @@ export namespace ReactStripeElements {
         ): Promise<stripe.SetupIntentResponse>;
     }
 
-    interface StripeProps extends Omit<stripe.Stripe, keyof StripeOverrideProps>, StripeOverrideProps {
-    }
+    interface StripeProps
+        extends Omit<stripe.Stripe, keyof StripeOverrideProps>,
+            StripeOverrideProps {}
 
     interface InjectOptions {
         withRef?: boolean | undefined;
@@ -84,10 +103,14 @@ export namespace ReactStripeElements {
 
 export class StripeProvider extends React.Component<ReactStripeElements.StripeProviderProps> {}
 
-export class Elements extends React.Component<stripe.elements.ElementsCreateOptions & { children?: React.ReactNode }> {}
+export class Elements extends React.Component<
+    stripe.elements.ElementsCreateOptions & { children?: React.ReactNode }
+> {}
 
 export function injectStripe<P extends object>(
-    WrappedComponent: React.ComponentType<P & ReactStripeElements.InjectedStripeProps>,
+    WrappedComponent: React.ComponentType<
+        P & ReactStripeElements.InjectedStripeProps
+    >,
     componentOptions?: ReactStripeElements.InjectOptions,
 ): React.ComponentType<P>;
 
@@ -104,9 +127,7 @@ export class CardCVCElement extends CardCvcElement {}
 
 export class PostalCodeElement extends React.Component<ReactStripeElements.ElementProps> {}
 
-export class PaymentRequestButtonElement
-    extends React.Component<ReactStripeElements.PaymentRequestButtonElementProps>
-{}
+export class PaymentRequestButtonElement extends React.Component<ReactStripeElements.PaymentRequestButtonElementProps> {}
 
 export class IbanElement extends React.Component<ReactStripeElements.ElementProps> {}
 

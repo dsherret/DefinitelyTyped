@@ -29,7 +29,7 @@ editor.set("test");
 editor.set("test", "hello");
 
 editor.save();
-editor.save(err => {
+editor.save((err) => {
     // $ExpectType Error | null
     err;
 });

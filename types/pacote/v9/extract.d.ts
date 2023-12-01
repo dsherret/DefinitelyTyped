@@ -8,5 +8,9 @@ import { Options } from "./index";
  * cache, `extract` will bypass most of its operations and go straight to
  * extracting the tarball.
  */
-declare function extract(spec: string, destination?: string, opts?: Options): Promise<void>;
+declare function extract(
+    spec: string,
+    destination?: string,
+    opts?: Options,
+): Promise<void>;
 export = extract;

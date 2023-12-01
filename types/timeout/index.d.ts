@@ -1,1 +1,5 @@
-export function timeout(name?: string, ms?: number, callback?: () => void): string;
+export function timeout(
+    name?: string,
+    ms?: number,
+    callback?: () => void,
+): string;

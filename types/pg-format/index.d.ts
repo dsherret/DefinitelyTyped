@@ -11,7 +11,27 @@ declare namespace format {
         };
     }): void;
     function ident(val: string | number | boolean | any[] | Date): string;
-    function literal(val: string | number | boolean | any[] | Date | object | null | undefined): string;
-    function string(val: string | number | boolean | any[] | Date | object | null | undefined): string;
+    function literal(
+        val:
+            | string
+            | number
+            | boolean
+            | any[]
+            | Date
+            | object
+            | null
+            | undefined,
+    ): string;
+    function string(
+        val:
+            | string
+            | number
+            | boolean
+            | any[]
+            | Date
+            | object
+            | null
+            | undefined,
+    ): string;
     function withArray(fmt: string, array: any[]): string;
 }

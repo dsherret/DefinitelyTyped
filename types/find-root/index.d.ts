@@ -7,6 +7,9 @@ type FindRootCheckFn = (dir: string) => boolean;
  * @param check The check predicate
  * @throws {Error} if package.json cannot be found or if the function never returns true
  */
-declare function findRoot(startingPath: string, check?: FindRootCheckFn): string;
+declare function findRoot(
+    startingPath: string,
+    check?: FindRootCheckFn,
+): string;
 
 export = findRoot;

@@ -16,7 +16,12 @@ const FixedSizeListTestRequiredProps: React.FC = () => (
 );
 
 const VariableSizeListTestRequiredProps: React.FC = () => (
-    <VariableSizeList itemSize={index => 0} height={0} itemCount={0} width={0}>
+    <VariableSizeList
+        itemSize={(index) => 0}
+        height={0}
+        itemCount={0}
+        width={0}
+    >
         {({ style, index }) => <div style={style}>Test {index}</div>}
     </VariableSizeList>
 );
@@ -41,9 +46,9 @@ const FixedSizeGridTestRequiredProps: React.FC = () => (
 const VariableSizeGridTestRequiredProps: React.FC = () => (
     <VariableSizeGrid
         columnCount={0}
-        columnWidth={index => 0}
+        columnWidth={(index) => 0}
         rowCount={0}
-        rowHeight={index => 0}
+        rowHeight={(index) => 0}
         height={0}
         width={0}
     >
@@ -71,7 +76,7 @@ const FixedSizeListTestOptionalProps: React.FC<{ testBool: boolean }> = ({
         innerRef={anyRef}
         innerElementType="div"
         itemData={{ foo: "bar" }}
-        itemKey={index => "foo" + index.toString()}
+        itemKey={(index) => "foo" + index.toString()}
         layout={testBool ? "vertical" : "horizontal"}
         onItemsRendered={({
             overscanStartIndex,
@@ -79,10 +84,11 @@ const FixedSizeListTestOptionalProps: React.FC<{ testBool: boolean }> = ({
             visibleStartIndex,
             visibleStopIndex,
         }) =>
-            overscanStartIndex
-            + overscanStopIndex
-            + visibleStartIndex
-            + visibleStopIndex}
+            overscanStartIndex +
+            overscanStopIndex +
+            visibleStartIndex +
+            visibleStopIndex
+        }
         useIsScrolling={true}
         outerElementType="div"
         style={{ color: "cyan" }}
@@ -96,7 +102,8 @@ const FixedSizeListTestOptionalProps: React.FC<{ testBool: boolean }> = ({
         }) =>
             scrollDirection === "forward"
                 ? scrollUpdateWasRequested
-                : scrollOffset}
+                : scrollOffset
+        }
     >
         {({ style, index }) => <div style={style}>Test {index}</div>}
     </FixedSizeList>
@@ -116,7 +123,7 @@ const VariableSizeListTestOptionalProps: React.FC<{ testBool: boolean }> = ({
         innerRef={anyRef}
         innerElementType="div"
         itemData={{ foo: "bar" }}
-        itemKey={index => "foo" + index.toString()}
+        itemKey={(index) => "foo" + index.toString()}
         layout={testBool ? "vertical" : "horizontal"}
         onItemsRendered={({
             overscanStartIndex,
@@ -124,10 +131,11 @@ const VariableSizeListTestOptionalProps: React.FC<{ testBool: boolean }> = ({
             visibleStartIndex,
             visibleStopIndex,
         }) =>
-            overscanStartIndex
-            + overscanStopIndex
-            + visibleStartIndex
-            + visibleStopIndex}
+            overscanStartIndex +
+            overscanStopIndex +
+            visibleStartIndex +
+            visibleStopIndex
+        }
         useIsScrolling={true}
         outerElementType="div"
         style={{ color: "cyan" }}
@@ -141,7 +149,8 @@ const VariableSizeListTestOptionalProps: React.FC<{ testBool: boolean }> = ({
         }) =>
             scrollDirection === "forward"
                 ? scrollUpdateWasRequested
-                : scrollOffset}
+                : scrollOffset
+        }
         estimatedItemSize={0}
     >
         {({ style, index }) => <div style={style}>Test {index}</div>}
@@ -153,9 +162,9 @@ const VariableSizeGridTestOptionalProps: React.FC<{ testBool: boolean }> = ({
 }) => (
     <VariableSizeGrid
         columnCount={0}
-        columnWidth={index => 0}
+        columnWidth={(index) => 0}
         rowCount={0}
-        rowHeight={index => 0}
+        rowHeight={(index) => 0}
         height={0}
         width={0}
         className=""
@@ -167,7 +176,9 @@ const VariableSizeGridTestOptionalProps: React.FC<{ testBool: boolean }> = ({
         innerRef={anyRef}
         innerElementType="div"
         itemData={{ foo: "bar" }}
-        itemKey={({ columnIndex, rowIndex }) => columnIndex.toString() + rowIndex.toString()}
+        itemKey={({ columnIndex, rowIndex }) =>
+            columnIndex.toString() + rowIndex.toString()
+        }
         onItemsRendered={({
             overscanColumnStartIndex,
             overscanColumnStopIndex,
@@ -206,9 +217,7 @@ const RowWithAreEqual = React.memo((props: ListChildComponentProps) => {
     return <div style={style}>Row {index}</div>;
 }, areEqual);
 
-class RowWithShouldComponentUpdate extends React.Component<
-    ListChildComponentProps
-> {
+class RowWithShouldComponentUpdate extends React.Component<ListChildComponentProps> {
     shouldComponentUpdate(...args: any[]) {
         return shouldComponentUpdate.call(this, ...args);
     }
@@ -247,17 +256,21 @@ if (fixedRef.current) {
     fixedRef.current.scrollToItem({ rowIndex: 0 });
     fixedRef.current.scrollToItem({ columnIndex: 0 });
     fixedRef.current.scrollToItem({ rowIndex: 0, columnIndex: 0 });
-    fixedRef.current.scrollToItem({ align: "start", rowIndex: 0, columnIndex: 0 });
+    fixedRef.current.scrollToItem({
+        align: "start",
+        rowIndex: 0,
+        columnIndex: 0,
+    });
 }
 
 const variableRef = React.createRef<VariableSizeGrid>();
 const VariableSizeGridTestRefs: React.FC = () => (
     <VariableSizeGrid
         columnCount={0}
-        columnWidth={index => 0}
+        columnWidth={(index) => 0}
         ref={variableRef}
         rowCount={0}
-        rowHeight={index => 0}
+        rowHeight={(index) => 0}
         height={0}
         width={0}
     >
@@ -279,13 +292,21 @@ if (variableRef.current) {
     variableRef.current.scrollToItem({ rowIndex: 0 });
     variableRef.current.scrollToItem({ columnIndex: 0 });
     variableRef.current.scrollToItem({ rowIndex: 0, columnIndex: 0 });
-    variableRef.current.scrollToItem({ align: "start", rowIndex: 0, columnIndex: 0 });
+    variableRef.current.scrollToItem({
+        align: "start",
+        rowIndex: 0,
+        columnIndex: 0,
+    });
     variableRef.current.resetAfterColumnIndex(0);
     variableRef.current.resetAfterColumnIndex(0, true);
     variableRef.current.resetAfterRowIndex(0);
     variableRef.current.resetAfterRowIndex(0, false);
     variableRef.current.resetAfterIndices({ columnIndex: 0, rowIndex: 0 });
-    variableRef.current.resetAfterIndices({ columnIndex: 0, rowIndex: 0, shouldForceUpdate: true });
+    variableRef.current.resetAfterIndices({
+        columnIndex: 0,
+        rowIndex: 0,
+        shouldForceUpdate: true,
+    });
 }
 
 /**
@@ -303,7 +324,12 @@ const FixedSizeListTestRequiredPropsV2: React.FC = () => (
 );
 
 const VariableSizeListTestRequiredPropsV2: React.FC = () => (
-    <VariableSizeList itemSize={index => 0} height={0} itemCount={0} width={0}>
+    <VariableSizeList
+        itemSize={(index) => 0}
+        height={0}
+        itemCount={0}
+        width={0}
+    >
         {({ style, index }) => <div style={style}>Test {index}</div>}
     </VariableSizeList>
 );
@@ -328,9 +354,9 @@ const FixedSizeGridTestRequiredPropsV2: React.FC = () => (
 const VariableSizeGridTestRequiredPropsV2: React.FC = () => (
     <VariableSizeGrid
         columnCount={0}
-        columnWidth={index => 0}
+        columnWidth={(index) => 0}
         rowCount={0}
-        rowHeight={index => 0}
+        rowHeight={(index) => 0}
         height={0}
         width={0}
     >
@@ -358,7 +384,7 @@ const FixedSizeListTestOptionalPropsV2: React.FC<{ testBool: boolean }> = ({
         innerRef={anyRef}
         innerElementType="div"
         itemData={{ foo: "bar" }}
-        itemKey={index => "foo" + index.toString()}
+        itemKey={(index) => "foo" + index.toString()}
         layout={testBool ? "vertical" : "horizontal"}
         onItemsRendered={({
             overscanStartIndex,
@@ -366,10 +392,11 @@ const FixedSizeListTestOptionalPropsV2: React.FC<{ testBool: boolean }> = ({
             visibleStartIndex,
             visibleStopIndex,
         }) =>
-            overscanStartIndex
-            + overscanStopIndex
-            + visibleStartIndex
-            + visibleStopIndex}
+            overscanStartIndex +
+            overscanStopIndex +
+            visibleStartIndex +
+            visibleStopIndex
+        }
         useIsScrolling={true}
         outerElementType="div"
         style={{ color: "cyan" }}
@@ -383,9 +410,14 @@ const FixedSizeListTestOptionalPropsV2: React.FC<{ testBool: boolean }> = ({
         }) =>
             scrollDirection === "forward"
                 ? scrollUpdateWasRequested
-                : scrollOffset}
+                : scrollOffset
+        }
     >
-        {({ style, index, data }) => <div style={style}>Test {index} {data.foo}</div>}
+        {({ style, index, data }) => (
+            <div style={style}>
+                Test {index} {data.foo}
+            </div>
+        )}
     </FixedSizeList>
 );
 
@@ -403,7 +435,7 @@ const VariableSizeListTestOptionalPropsV2: React.FC<{ testBool: boolean }> = ({
         innerRef={anyRef}
         innerElementType="div"
         itemData={{ foo: "bar" }}
-        itemKey={index => "foo" + index.toString()}
+        itemKey={(index) => "foo" + index.toString()}
         layout={testBool ? "vertical" : "horizontal"}
         onItemsRendered={({
             overscanStartIndex,
@@ -411,10 +443,11 @@ const VariableSizeListTestOptionalPropsV2: React.FC<{ testBool: boolean }> = ({
             visibleStartIndex,
             visibleStopIndex,
         }) =>
-            overscanStartIndex
-            + overscanStopIndex
-            + visibleStartIndex
-            + visibleStopIndex}
+            overscanStartIndex +
+            overscanStopIndex +
+            visibleStartIndex +
+            visibleStopIndex
+        }
         useIsScrolling={true}
         outerElementType="div"
         style={{ color: "cyan" }}
@@ -428,10 +461,15 @@ const VariableSizeListTestOptionalPropsV2: React.FC<{ testBool: boolean }> = ({
         }) =>
             scrollDirection === "forward"
                 ? scrollUpdateWasRequested
-                : scrollOffset}
+                : scrollOffset
+        }
         estimatedItemSize={0}
     >
-        {({ style, index, data }) => <div style={style}>Test {index} {data.foo}</div>}
+        {({ style, index, data }) => (
+            <div style={style}>
+                Test {index} {data.foo}
+            </div>
+        )}
     </VariableSizeList>
 );
 
@@ -440,9 +478,9 @@ const VariableSizeGridTestOptionalPropsV2: React.FC<{ testBool: boolean }> = ({
 }) => (
     <VariableSizeGrid
         columnCount={0}
-        columnWidth={index => 0}
+        columnWidth={(index) => 0}
         rowCount={0}
-        rowHeight={index => 0}
+        rowHeight={(index) => 0}
         height={0}
         width={0}
         className=""
@@ -454,7 +492,9 @@ const VariableSizeGridTestOptionalPropsV2: React.FC<{ testBool: boolean }> = ({
         innerRef={anyRef}
         innerElementType="div"
         itemData={{ foo: "bar" }}
-        itemKey={({ columnIndex, rowIndex }) => columnIndex.toString() + rowIndex.toString()}
+        itemKey={({ columnIndex, rowIndex }) =>
+            columnIndex.toString() + rowIndex.toString()
+        }
         onItemsRendered={({
             overscanColumnStartIndex,
             overscanColumnStopIndex,
@@ -488,10 +528,17 @@ const VariableSizeGridTestOptionalPropsV2: React.FC<{ testBool: boolean }> = ({
     </VariableSizeGrid>
 );
 
-const RowWithAreEqualV2 = React.memo((props: ListChildComponentProps<ExampleItemData>) => {
-    const { index, style, data } = props;
-    return <div style={style}>Row `${index}-${data.foo}`</div>;
-}, areEqual);
+const RowWithAreEqualV2 = React.memo(
+    (props: ListChildComponentProps<ExampleItemData>) => {
+        const { index, style, data } = props;
+        return (
+            <div style={style}>
+                Row `${index}-${data.foo}`
+            </div>
+        );
+    },
+    areEqual,
+);
 
 class RowWithShouldComponentUpdateV2 extends React.Component<
     ListChildComponentProps<ExampleItemData>
@@ -501,7 +548,11 @@ class RowWithShouldComponentUpdateV2 extends React.Component<
     }
     render() {
         const { index, style, data } = this.props;
-        return <div style={style}>Row {index} {data.foo}</div>;
+        return (
+            <div style={style}>
+                Row {index} {data.foo}
+            </div>
+        );
     }
 }
 
@@ -534,17 +585,21 @@ if (fixedRef.current) {
     fixedRef.current.scrollToItem({ rowIndex: 0 });
     fixedRef.current.scrollToItem({ columnIndex: 0 });
     fixedRef.current.scrollToItem({ rowIndex: 0, columnIndex: 0 });
-    fixedRef.current.scrollToItem({ align: "start", rowIndex: 0, columnIndex: 0 });
+    fixedRef.current.scrollToItem({
+        align: "start",
+        rowIndex: 0,
+        columnIndex: 0,
+    });
 }
 
 const variableRefV2 = React.createRef<VariableSizeGrid<ExampleItemData>>();
 const VariableSizeGridTestRefsV2: React.FC = () => (
     <VariableSizeGrid
         columnCount={0}
-        columnWidth={index => 0}
+        columnWidth={(index) => 0}
         ref={variableRef}
         rowCount={0}
-        rowHeight={index => 0}
+        rowHeight={(index) => 0}
         height={0}
         width={0}
     >
@@ -566,11 +621,19 @@ if (variableRef.current) {
     variableRef.current.scrollToItem({ rowIndex: 0 });
     variableRef.current.scrollToItem({ columnIndex: 0 });
     variableRef.current.scrollToItem({ rowIndex: 0, columnIndex: 0 });
-    variableRef.current.scrollToItem({ align: "start", rowIndex: 0, columnIndex: 0 });
+    variableRef.current.scrollToItem({
+        align: "start",
+        rowIndex: 0,
+        columnIndex: 0,
+    });
     variableRef.current.resetAfterColumnIndex(0);
     variableRef.current.resetAfterColumnIndex(0, true);
     variableRef.current.resetAfterRowIndex(0);
     variableRef.current.resetAfterRowIndex(0, false);
     variableRef.current.resetAfterIndices({ columnIndex: 0, rowIndex: 0 });
-    variableRef.current.resetAfterIndices({ columnIndex: 0, rowIndex: 0, shouldForceUpdate: true });
+    variableRef.current.resetAfterIndices({
+        columnIndex: 0,
+        rowIndex: 0,
+        shouldForceUpdate: true,
+    });
 }

@@ -9,13 +9,16 @@ client.connect();
 
 client.on("online", () => {});
 
-client.on("stanza", stanza => {
+client.on("stanza", (stanza) => {
     const _ = stanza;
 });
 
 const stanza = new Client.Stanza("chat", {})
-    .c("show").t("chat").up()
-    .c("status").t("message");
+    .c("show")
+    .t("chat")
+    .up()
+    .c("status")
+    .t("message");
 client.send(stanza);
 
 client.disconnect();

@@ -10,9 +10,9 @@ var result1: any = jQuery.colorbox({ href: "thankyou.html" });
 var result2: any = jQuery.colorbox({ html: "<h1>Welcome</h1>" });
 var result3: any = $("a.gallery").colorbox({
     rel: "gal",
-    title: function() {
+    title: function () {
         var url = $(this).attr("href");
-        return "<a href=\"" + url + "\" target=\"_blank\">Open In New Window</a>";
+        return '<a href="' + url + '" target="_blank">Open In New Window</a>';
     },
 });
 

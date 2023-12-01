@@ -8,7 +8,7 @@ function testConfig(): void {
         host: "http://example.com",
         enable: true,
         timeout: 1000,
-        errorHandler: err => console.error(err),
+        errorHandler: (err) => console.error(err),
     });
 }
 
@@ -19,7 +19,7 @@ function testConfigWithStringTimeout(): void {
         host: "http://example.com",
         enable: true,
         timeout: "1000",
-        errorHandler: err => console.error(err),
+        errorHandler: (err) => console.error(err),
     });
 }
 
@@ -31,7 +31,7 @@ function testConfigWithFlushedSet(): void {
         enable: true,
         timeout: 1000,
         flushed: true,
-        errorHandler: err => console.error(err),
+        errorHandler: (err) => console.error(err),
     });
 }
 
@@ -56,7 +56,7 @@ function testIdentify(): void {
                 friends: 42,
             },
         },
-        err => {
+        (err) => {
             if (err) {
                 console.error(err);
             }
@@ -102,7 +102,7 @@ function testTrack(): void {
                 shippingMethod: "2-day",
             },
         },
-        err => {
+        (err) => {
             if (err) {
                 console.error(err);
             }
@@ -135,7 +135,7 @@ function testPage(): void {
                 referrer: "https://github.com/segmentio/analytics-node",
             },
         },
-        err => {
+        (err) => {
             if (err) {
                 console.error(err);
             }
@@ -166,7 +166,7 @@ function testScreen(): void {
                 referrer: "https://github.com/segmentio/analytics-node",
             },
         },
-        err => {
+        (err) => {
             if (err) {
                 console.error(err);
             }
@@ -178,11 +178,20 @@ function testAlias(): void {
     // the anonymous user does actions ...
     analytics.track({ userId: "anonymous_user", event: "Anonymous Event" });
     // the anonymous user signs up and is aliased
-    analytics.alias({ previousId: "anonymous_user", userId: "identified@gmail.com" });
+    analytics.alias({
+        previousId: "anonymous_user",
+        userId: "identified@gmail.com",
+    });
     // the identified user is identified
-    analytics.identify({ userId: "identified@gmail.com", traits: { plan: "Free" } });
+    analytics.identify({
+        userId: "identified@gmail.com",
+        traits: { plan: "Free" },
+    });
     // the identified user does actions ...
-    analytics.track({ userId: "identified@gmail.com", event: "Identified Action" });
+    analytics.track({
+        userId: "identified@gmail.com",
+        event: "Identified Action",
+    });
 }
 
 function testGroup(): void {
@@ -204,7 +213,7 @@ function testGroup(): void {
                 description: "Accounting Software",
             },
         },
-        err => {
+        (err) => {
             if (err) {
                 console.error(err);
             }
@@ -239,7 +248,7 @@ function testIntegrations(): void {
                 },
             },
         },
-        err => {
+        (err) => {
             if (err) {
                 console.error(err);
             }

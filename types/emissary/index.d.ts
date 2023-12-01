@@ -3,7 +3,7 @@
 export as namespace Emissary;
 
 export interface IEmitterStatic extends Mixto.IMixinStatic {
-    new(): IEmitter;
+    new (): IEmitter;
 }
 
 export interface IEmitter {
@@ -22,11 +22,15 @@ export interface IEmitter {
 }
 
 export interface ISubscriberStatic extends Mixto.IMixinStatic {
-    new(): ISubscriber;
+    new (): ISubscriber;
 }
 
 export interface ISubscriber {
-    subscribeWith(eventEmitter: any, methodName: string, args: any): ISubscription;
+    subscribeWith(
+        eventEmitter: any,
+        methodName: string,
+        args: any,
+    ): ISubscription;
 
     addSubscription(subscription: any): ISubscription;
 
@@ -38,7 +42,7 @@ export interface ISubscriber {
 }
 
 export interface ISubscriptionStatic {
-    new(emitter: any, eventNames: string, handler: Function): ISubscription;
+    new (emitter: any, eventNames: string, handler: Function): ISubscription;
 }
 
 export interface ISubscription extends IEmitter {

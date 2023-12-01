@@ -7,7 +7,10 @@
  * @return The formatted ANSI color code.
  * @throws A Format Error.
  */
-export function RgbToAnsi(hex: string | number, extendedColor?: boolean): number;
+export function RgbToAnsi(
+    hex: string | number,
+    extendedColor?: boolean,
+): number;
 
 /**
  * A class to work with syslog messages using UDP, TCP, or TLS transport.

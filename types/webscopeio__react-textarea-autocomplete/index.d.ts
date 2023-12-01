@@ -3,7 +3,9 @@ export as namespace ReactTextareaAutocomplete;
 
 import * as React from "react";
 
-type Component<P extends {}> = React.FunctionComponent<P> | React.ComponentClass<P>;
+type Component<P extends {}> =
+    | React.FunctionComponent<P>
+    | React.ComponentClass<P>;
 
 export type CaretPositionType = "start" | "end" | "next" | number;
 
@@ -13,7 +15,9 @@ export interface TextToReplaceType {
     key?: string | undefined;
 }
 
-export type DataProviderType<TItem> = (token: string) => Promise<TItem[]> | TItem[];
+export type DataProviderType<TItem> = (
+    token: string,
+) => Promise<TItem[]> | TItem[];
 
 export interface ItemComponentProps<TItem> {
     selected: boolean;
@@ -59,7 +63,9 @@ export interface SettingType<TItem> {
      * return a unique string, otherwise, you have to use object notation and specify your own key or return object
      * from dataProvider with key property.
      */
-    output?: ((item: TItem, trigger?: string) => TextToReplaceType | string) | undefined;
+    output?:
+        | ((item: TItem, trigger?: string) => TextToReplaceType | string)
+        | undefined;
 }
 
 export interface TriggerType<TItem> {
@@ -68,7 +74,8 @@ export interface TriggerType<TItem> {
 
 export type TextareaProps<
     TItem,
-    CustomTextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+    CustomTextAreaProps extends
+        React.TextareaHTMLAttributes<HTMLTextAreaElement>,
 > = CustomTextAreaProps & {
     /**
      * Define triggers and their corresponding behavior.
@@ -89,7 +96,10 @@ export type TextareaProps<
      * With default implementation it will scroll the dropdown every time when the item gets out of the view.
      * @default true
      */
-    scrollToItem?: boolean | ((container: HTMLDivElement, item: HTMLDivElement) => void) | undefined;
+    scrollToItem?:
+        | boolean
+        | ((container: HTMLDivElement, item: HTMLDivElement) => void)
+        | undefined;
 
     /**
      * Number of characters that user should type for trigger a suggestion.
@@ -131,12 +141,16 @@ export type TextareaProps<
     /**
      * Callback get called everytime item is highlighted in the list
      */
-    onItemHighlighted?: ((event: { currentTrigger: string; item: TItem | null }) => void) | undefined;
+    onItemHighlighted?:
+        | ((event: { currentTrigger: string; item: TItem | null }) => void)
+        | undefined;
 
     /**
      * Callback get called everytime item is selected
      */
-    onItemSelected?: ((event: { currentTrigger: string; item: TItem }) => void) | undefined;
+    onItemSelected?:
+        | ((event: { currentTrigger: string; item: TItem }) => void)
+        | undefined;
 
     /**
      * Styles of textarea
@@ -214,10 +228,12 @@ export interface TextareaState<TItem> {
 
 declare class ReactTextareaAutocomplete<
     TItem extends string | object,
-    CustomTextAreaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> = React.TextareaHTMLAttributes<
-        HTMLTextAreaElement
-    >,
-> extends React.Component<TextareaProps<TItem, CustomTextAreaProps>, TextareaState<TItem>> {
+    CustomTextAreaProps extends
+        React.TextareaHTMLAttributes<HTMLTextAreaElement> = React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+> extends React.Component<
+    TextareaProps<TItem, CustomTextAreaProps>,
+    TextareaState<TItem>
+> {
     /**
      * Gets the current caret position in the textarea.
      */

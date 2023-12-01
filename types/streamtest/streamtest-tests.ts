@@ -79,7 +79,9 @@ function runTest() {
 
         StreamTest[version].syncReadableObjects(); // $ExpectType PassThrough
 
-        StreamTest[version].syncWrite(StreamTest[version].writable(), ["a chunk"]);
+        StreamTest[version].syncWrite(StreamTest[version].writable(), [
+            "a chunk",
+        ]);
 
         try {
             StreamTest[version].syncError(

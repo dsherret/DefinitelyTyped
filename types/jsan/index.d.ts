@@ -15,7 +15,10 @@ export interface Options {
 
 export function stringify(
     value: unknown,
-    replacer?: (key: string, value: unknown) => unknown | Array<number | string> | null,
+    replacer?: (
+        key: string,
+        value: unknown,
+    ) => unknown | Array<number | string> | null,
     space?: string | number,
     _options?: Options | boolean,
 ): string;

@@ -12,12 +12,17 @@ export class ConfigBase extends ConfigurationOptions {
      * Loads credentials from the configuration object.
      */
     getCredentials(
-        callback: (err: AWSError | null, credentials: Credentials | CredentialsOptions | null) => void,
+        callback: (
+            err: AWSError | null,
+            credentials: Credentials | CredentialsOptions | null,
+        ) => void,
     ): void;
     /**
      * Loads token from the token object.
      */
-    getToken(callback: (err: AWSError | null, token: Token | null) => void): void;
+    getToken(
+        callback: (err: AWSError | null, token: Token | null) => void,
+    ): void;
     /**
      * Loads configuration data from a JSON file into this config object.
      * Loading configuration will reset all existing configuration on the object.
@@ -32,7 +37,10 @@ export class ConfigBase extends ConfigurationOptions {
      * @param {ConfigurationOptions} options - a map of option keys and values.
      * @param {boolean} allowUnknownKeys - Whether unknown keys can be set on the configuration object.
      */
-    update(options: ConfigurationOptions & { [key: string]: any }, allowUnknownKeys: true): void;
+    update(
+        options: ConfigurationOptions & { [key: string]: any },
+        allowUnknownKeys: true,
+    ): void;
     /**
      * Updates the current configuration object with new options.
      *

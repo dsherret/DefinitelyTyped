@@ -18,11 +18,17 @@ declare module "yayson" {
     class Presenter {
         static adapter: string;
 
-        static render<T>(instanceOrCollection: PromiseLike<T>, options?: y.JsonOptions): PromiseLike<T>;
+        static render<T>(
+            instanceOrCollection: PromiseLike<T>,
+            options?: y.JsonOptions,
+        ): PromiseLike<T>;
         static render(instanceOrCollection: {}, options?: y.JsonOptions): any;
         static toJSON(instanceOrCollection: {}, options?: y.JsonOptions): any;
 
-        render<T>(instanceOrCollection: PromiseLike<T>, options?: y.JsonOptions): PromiseLike<T>;
+        render<T>(
+            instanceOrCollection: PromiseLike<T>,
+            options?: y.JsonOptions,
+        ): PromiseLike<T>;
         render(instanceOrCollection: {}, options?: y.JsonOptions): any;
         toJSON(instanceOrCollection: {}, options?: y.JsonOptions): any;
         id(instance: {}): string;

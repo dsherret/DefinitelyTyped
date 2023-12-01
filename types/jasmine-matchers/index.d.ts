@@ -20,7 +20,10 @@ declare namespace jasmine {
     interface Matchers<T> {
         // toBe
         toBeArray(): boolean;
-        toBeCloseToOneOf(values: any[], isCloseToFunction: (actual: number, expected: number) => boolean): boolean;
+        toBeCloseToOneOf(
+            values: any[],
+            isCloseToFunction: (actual: number, expected: number) => boolean,
+        ): boolean;
         toBeInstanceOf(Constructor: Function): boolean;
         toBeInRange(min: number, max: number): boolean;
         toBeNan(): boolean;

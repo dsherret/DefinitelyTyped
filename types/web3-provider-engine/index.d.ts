@@ -1,4 +1,8 @@
-import { JSONRPCRequestPayload, JSONRPCResponsePayload, Provider } from "ethereum-protocol";
+import {
+    JSONRPCRequestPayload,
+    JSONRPCResponsePayload,
+    Provider,
+} from "ethereum-protocol";
 interface Web3ProviderEngineOptions {
     pollingInterval?: number | undefined;
     blockTracker?: any;

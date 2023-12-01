@@ -47,7 +47,7 @@ const output = minify(code, {
     expression: true,
 });
 if (output.warnings) {
-    output.warnings.filter(x => x === "Dropping unused variable");
+    output.warnings.filter((x) => x === "Dropping unused variable");
 }
 
 const compressOptions: CompressOptions = {

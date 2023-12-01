@@ -24,4 +24,7 @@ export interface WhoIsOptions {
     proxy?: HttpProxy | undefined;
 }
 
-export function lookup(domainName: string, whoIsOptions?: WhoIsOptions): Promise<WhoIsResult>;
+export function lookup(
+    domainName: string,
+    whoIsOptions?: WhoIsOptions,
+): Promise<WhoIsResult>;

@@ -5,7 +5,11 @@
  * @param count
  * @param inclusive
  */
-declare function pluralize(word: string, count?: number, inclusive?: boolean): string;
+declare function pluralize(
+    word: string,
+    count?: number,
+    inclusive?: boolean,
+): string;
 
 declare namespace pluralize {
     /**

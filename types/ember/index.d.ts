@@ -93,7 +93,8 @@ export namespace Ember {
     const setOwner: typeof EmberApplicationNs.setOwner;
     class EventDispatcher extends EmberEventDispatcher {}
     class Registry extends EmberRegistry {}
-    interface ArrayPrototypeExtensions<T> extends EmberArrayProtoExtensions<T> {}
+    interface ArrayPrototypeExtensions<T>
+        extends EmberArrayProtoExtensions<T> {}
 
     /**
      * Implements some standard methods for comparing objects. Add this mixin to
@@ -103,7 +104,10 @@ export namespace Ember {
         compare(a: unknown, b: unknown): number;
     }
     const Comparable: EmberMixin<Comparable>;
-    class ComputedProperty<Get, Set = Get> extends EmberObjectComputedNs.default<Get, Set> {}
+    class ComputedProperty<
+        Get,
+        Set = Get,
+    > extends EmberObjectComputedNs.default<Get, Set> {}
     /**
      * A container used to instantiate and cache objects.
      */
@@ -187,7 +191,10 @@ export namespace Ember {
          * callback in the last chained then.
          */
         function promise<T>(
-            resolver: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: unknown) => void) => void,
+            resolver: (
+                resolve: (value?: T | PromiseLike<T>) => void,
+                reject: (reason?: unknown) => void,
+            ) => void,
             label?: string,
         ): Promise<T>;
         /**
@@ -195,7 +202,10 @@ export namespace Ember {
          * The only difference is this uses
          * an instance of `Ember.Test.Promise`
          */
-        function resolve<T>(value?: T | PromiseLike<T>, label?: string): Promise<T>;
+        function resolve<T>(
+            value?: T | PromiseLike<T>,
+            label?: string,
+        ): Promise<T>;
 
         /**
          * Iterates through each registered test waiter, and invokes
@@ -216,7 +226,10 @@ export namespace Ember {
         class QUnitAdapter extends EmberTestAdapter {}
         class Promise<T> extends Rsvp.Promise<T> {
             constructor(
-                executor: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: unknown) => void) => void,
+                executor: (
+                    resolve: (value?: T | PromiseLike<T>) => void,
+                    reject: (reason?: unknown) => void,
+                ) => void,
             );
         }
     }
@@ -229,7 +242,9 @@ export namespace Ember {
          * Can only be used when defining another controller.
          */
         function controller(): ComputedProperty<Controller>;
-        function controller<K extends keyof ControllerRegistry>(name: K): ComputedProperty<ControllerRegistry[K]>;
+        function controller<K extends keyof ControllerRegistry>(
+            name: K,
+        ): ComputedProperty<ControllerRegistry[K]>;
         const service: typeof EmberServiceNs.inject;
     }
     namespace ENV {
@@ -246,7 +261,12 @@ export namespace Ember {
     }
     namespace Handlebars {
         function compile(string: string): (...args: any[]) => any;
-        function compile(environment: any, options?: any, context?: any, asObject?: any): any;
+        function compile(
+            environment: any,
+            options?: any,
+            context?: any,
+            asObject?: any,
+        ): any;
         function precompile(string: string, options: any): void;
         class Compiler {}
         class JavaScriptCompiler {}
@@ -275,7 +295,8 @@ export namespace Ember {
         const htmlSafe: typeof EmberTemplateNs.htmlSafe;
         const isHTMLSafe: typeof EmberTemplateNs.isHTMLSafe;
     }
-    const computed: typeof EmberObjectNs.computed & typeof EmberObjectComputedNs;
+    const computed: typeof EmberObjectNs.computed &
+        typeof EmberObjectComputedNs;
 
     // Shenanigans to make `run` both callable and a namespace safely, while not
     // making the `run.bind` call resolve to `Function.prototype.bind`. (Yes,

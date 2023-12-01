@@ -8,6 +8,9 @@ export interface ParsingOptions {
 }
 
 declare namespace _default {
-    function parse(json: string, options?: ParsingOptions): Promise<FeatureCollection>;
+    function parse(
+        json: string,
+        options?: ParsingOptions,
+    ): Promise<FeatureCollection>;
 }
 export default _default;

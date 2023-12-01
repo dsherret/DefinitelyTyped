@@ -120,8 +120,12 @@ export namespace v1 {
         attestation?: KeyOperationAttestation | undefined;
         createTime: google_protobuf_timestamp_pb.Timestamp.AsObject;
         generateTime: google_protobuf_timestamp_pb.Timestamp.AsObject;
-        destroyTime?: google_protobuf_timestamp_pb.Timestamp.AsObject | undefined;
-        destroyEventTime?: google_protobuf_timestamp_pb.Timestamp.AsObject | undefined;
+        destroyTime?:
+            | google_protobuf_timestamp_pb.Timestamp.AsObject
+            | undefined;
+        destroyEventTime?:
+            | google_protobuf_timestamp_pb.Timestamp.AsObject
+            | undefined;
     }
 
     interface CryptoKeyVersionTemplate {
@@ -154,7 +158,9 @@ export namespace v1 {
         primary: CryptoKeyVersion;
         purpose: CryptoKeyPurpose;
         createTime: google_protobuf_timestamp_pb.Timestamp.AsObject;
-        nextRotationTime?: google_protobuf_timestamp_pb.Timestamp.AsObject | undefined;
+        nextRotationTime?:
+            | google_protobuf_timestamp_pb.Timestamp.AsObject
+            | undefined;
         versionTemplate: CryptoKeyVersionTemplate;
         labels: { [s: string]: string };
     }
@@ -166,10 +172,12 @@ export namespace v1 {
 
     namespace KeyManagementServiceClient {
         interface ConfigurationObject {
-            credentials?: {
-                client_email?: string | undefined;
-                private_key?: string | undefined;
-            } | undefined;
+            credentials?:
+                | {
+                      client_email?: string | undefined;
+                      private_key?: string | undefined;
+                  }
+                | undefined;
             email?: string | undefined;
             keyFilename?: string | undefined;
             port?: number | undefined;
@@ -187,7 +195,10 @@ export namespace v1 {
             name: string;
             ciphertext: Buffer;
         }
-        type EncryptCallback = (err: Error | null, apiResponse: [EncryptResponse, any, any]) => void;
+        type EncryptCallback = (
+            err: Error | null,
+            apiResponse: [EncryptResponse, any, any],
+        ) => void;
 
         interface DecryptRequest {
             name: string;
@@ -197,21 +208,30 @@ export namespace v1 {
         interface DecryptResponse {
             plaintext: Buffer;
         }
-        type DecryptCallback = (err: Error | null, apiResponse: [DecryptResponse, any, any]) => void;
+        type DecryptCallback = (
+            err: Error | null,
+            apiResponse: [DecryptResponse, any, any],
+        ) => void;
 
         interface CreateKeyRingRequest {
             parent: string;
             keyRingId: string;
             keyRing?: Partial<KeyRing> | undefined;
         }
-        type CreateKeyRingCallback = (err: Error | null, apiResponse: [KeyRing, any, any]) => void;
+        type CreateKeyRingCallback = (
+            err: Error | null,
+            apiResponse: [KeyRing, any, any],
+        ) => void;
 
         interface ListKeyRingsRequest {
             parent: string;
             page_size?: number | undefined;
             page_token?: string | undefined;
         }
-        type ListKeyRingsCallback = (err: Error | null, apiResponse: [KeyRing[], any, any]) => void;
+        type ListKeyRingsCallback = (
+            err: Error | null,
+            apiResponse: [KeyRing[], any, any],
+        ) => void;
 
         interface CreateCryptoKeyRequest {
             parent: string;
@@ -221,14 +241,20 @@ export namespace v1 {
             };
             skipInitialVersionCreation?: boolean | undefined;
         }
-        type CreateCryptoKeyCallback = (err: Error | null, apiResponse: [CryptoKey, any, any]) => void;
+        type CreateCryptoKeyCallback = (
+            err: Error | null,
+            apiResponse: [CryptoKey, any, any],
+        ) => void;
 
         interface ListCryptoKeysRequest {
             parent: string;
             page_size?: number | undefined;
             page_token?: string | undefined;
         }
-        type ListCryptoKeysCallback = (err: Error | null, apiResponse: [CryptoKey[], any, any]) => void;
+        type ListCryptoKeysCallback = (
+            err: Error | null,
+            apiResponse: [CryptoKey[], any, any],
+        ) => void;
 
         interface AsymmetricSignRequest {
             name: string;
@@ -237,16 +263,29 @@ export namespace v1 {
         interface AsymmetricSignResponse {
             signature: Buffer;
         }
-        type AsymmetricSignCallback = (err: Error | null, apiResponse: [AsymmetricSignResponse, any, any]) => void;
+        type AsymmetricSignCallback = (
+            err: Error | null,
+            apiResponse: [AsymmetricSignResponse, any, any],
+        ) => void;
     }
 
     class KeyManagementServiceClient {
         constructor(options?: KeyManagementServiceClient.ConfigurationObject);
 
         keyRingPath(project: string, location: string, keyRing: string): string;
-        cryptoKeyPathPath(project: string, location: string, keyRing: string, cryptoKeyPath: string): string;
+        cryptoKeyPathPath(
+            project: string,
+            location: string,
+            keyRing: string,
+            cryptoKeyPath: string,
+        ): string;
         locationPath(project: string, location: string): string;
-        cryptoKeyPath(project: string, location: string, keyRing: string, cryptoKey: string): string;
+        cryptoKeyPath(
+            project: string,
+            location: string,
+            keyRing: string,
+            cryptoKey: string,
+        ): string;
         cryptoKeyVersionPath(
             project: string,
             location: string,
@@ -344,7 +383,9 @@ export namespace v1 {
         asymmetricSign(
             request: KeyManagementServiceClient.AsymmetricSignRequest,
             gaxOpts?: GAX.CallOptions,
-        ): Promise<[KeyManagementServiceClient.AsymmetricSignResponse, any, any]>;
+        ): Promise<
+            [KeyManagementServiceClient.AsymmetricSignResponse, any, any]
+        >;
         asymmetricSign(
             request: KeyManagementServiceClient.AsymmetricSignRequest,
             callback: KeyManagementServiceClient.AsymmetricSignCallback,

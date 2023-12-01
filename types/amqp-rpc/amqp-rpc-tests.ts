@@ -5,19 +5,19 @@ interface Name {
     name?: string | undefined;
 }
 
-rpc.on<number>("inc", function(param, cb) {
+rpc.on<number>("inc", function (param, cb) {
     var prevVal = param;
     var nextVal = param + 2;
     cb(++param, prevVal, nextVal);
 });
 
-rpc.on<Name>("say.*", function(param, cb, inf) {
+rpc.on<Name>("say.*", function (param, cb, inf) {
     var arr = inf.cmd.split(".");
-    var name = (param && param.name) ? param.name : "world";
+    var name = param && param.name ? param.name : "world";
     cb(arr[1] + " " + name + "!");
 });
 
-rpc.on("withoutCB", function(param, cb, inf) {
+rpc.on("withoutCB", function (param, cb, inf) {
     if (cb) {
         cb("please run function without cb parameter");
     } else {
@@ -25,15 +25,15 @@ rpc.on("withoutCB", function(param, cb, inf) {
     }
 });
 
-rpc.call<number>("inc", 5, function(param1, param2, param3) {
+rpc.call<number>("inc", 5, function (param1, param2, param3) {
     console.log(param1, param2, param3);
 });
 
-rpc.call<Name>("say.Hello", { name: "John" }, function(msg) {
+rpc.call<Name>("say.Hello", { name: "John" }, function (msg) {
     console.log("results of say.Hello:", msg); // output: Hello John!
 });
 
-rpc.call<any>("withoutCB", {}, function(msg) {
+rpc.call<any>("withoutCB", {}, function (msg) {
     console.log("withoutCB results:", msg); // output: please run function without cb parameter
 });
 
@@ -45,7 +45,7 @@ interface State {
 }
 
 var counter = 0;
-rpc.onBroadcast<State>("getWorkerStat", function(params, cb) {
+rpc.onBroadcast<State>("getWorkerStat", function (params, cb) {
     if (params && params.type == "fullStat") {
         cb(null, {
             pid: process.pid,
@@ -62,16 +62,27 @@ var all_stats: any = {};
 rpc.callBroadcast<State>(
     "getWorkerStat",
     { type: "fullStat" }, // request parameters
-    { // call options
+    {
+        // call options
         ttl: 1000, // wait response time  (1 seconds), after run onComplete
-        onResponse: function(err: any, stat: any) { // callback on each worker response
+        onResponse: function (err: any, stat: any) {
+            // callback on each worker response
             all_stats[stat.hostname + ":" + stat.pid] = stat;
         },
-        onComplete: function() { // callback on ttl expired
-            console.log("----------------------- WORKER STATISTICS ----------------------------------------");
+        onComplete: function () {
+            // callback on ttl expired
+            console.log(
+                "----------------------- WORKER STATISTICS ----------------------------------------",
+            );
             for (var worker in all_stats) {
                 var s: any = all_stats[worker];
-                console.log(worker, "\tuptime=", s.uptime.toFixed(2) + " seconds", "\tcounter=", s.counter);
+                console.log(
+                    worker,
+                    "\tuptime=",
+                    s.uptime.toFixed(2) + " seconds",
+                    "\tcounter=",
+                    s.counter,
+                );
             }
         },
     },

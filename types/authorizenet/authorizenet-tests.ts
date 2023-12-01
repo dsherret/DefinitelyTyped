@@ -16,9 +16,12 @@ const params = {
     companyName: "",
 };
 
-const merchantAuthenticationType = new APIContracts.MerchantAuthenticationType();
+const merchantAuthenticationType =
+    new APIContracts.MerchantAuthenticationType();
 merchantAuthenticationType.setName("process.env.ANET_LOGIN_KEY");
-merchantAuthenticationType.setTransactionKey("process.env.ANET_TRANSACTION_KEY");
+merchantAuthenticationType.setTransactionKey(
+    "process.env.ANET_TRANSACTION_KEY",
+);
 
 const interval = new APIContracts.PaymentScheduleType.Interval();
 interval.setLength(1);
@@ -65,24 +68,34 @@ arbSubscription.setCustomer(customer);
 arbSubscription.setBillTo(billTo);
 arbSubscription.setShipTo(billTo);
 
-const cardType = APIContracts.ARBGetSubscriptionListOrderFieldEnum.ACCOUNTNUMBER;
+const cardType =
+    APIContracts.ARBGetSubscriptionListOrderFieldEnum.ACCOUNTNUMBER;
 
 const createRequest = new APIContracts.ARBCreateSubscriptionRequest();
 createRequest.setMerchantAuthentication(merchantAuthenticationType);
 createRequest.setSubscription(arbSubscription);
 
-const ctrl = new APIControllers.ARBCreateSubscriptionController(createRequest.getJSON());
+const ctrl = new APIControllers.ARBCreateSubscriptionController(
+    createRequest.getJSON(),
+);
 ctrl.setEnvironment(Constants.endpoint.production);
 
 new Promise((resolve, reject) => {
     ctrl.execute(() => {
         const apiResponse = ctrl.getResponse();
-        const response = new APIContracts.ARBUpdateSubscriptionResponse(apiResponse);
+        const response = new APIContracts.ARBUpdateSubscriptionResponse(
+            apiResponse,
+        );
         if (response !== null) {
-            if (response.getMessages().getResultCode() === APIContracts.MessageTypeEnum.OK) {
+            if (
+                response.getMessages().getResultCode() ===
+                APIContracts.MessageTypeEnum.OK
+            ) {
                 resolve(response.getMessages().getResultCode());
             } else {
-                reject(new Error(response.getMessages().getMessage()[0].getText()));
+                reject(
+                    new Error(response.getMessages().getMessage()[0].getText()),
+                );
             }
         } else {
             reject(new Error("Null response"));

@@ -1,4 +1,7 @@
-declare function isGitClean(dir?: string, options?: isGitClean.Options): Promise<boolean>;
+declare function isGitClean(
+    dir?: string,
+    options?: isGitClean.Options,
+): Promise<boolean>;
 
 declare namespace isGitClean {
     interface Options {

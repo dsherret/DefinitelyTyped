@@ -1,7 +1,7 @@
 import { ReactElement } from "react";
 
 export type VideoRecorderMimeTypes =
-    | "video/webm;codecs=\"vp8|opus\""
+    | 'video/webm;codecs="vp8|opus"'
     | "video/webm;codecs=h264"
     | "video/webm;codecs=vp9"
     | "video/webm"

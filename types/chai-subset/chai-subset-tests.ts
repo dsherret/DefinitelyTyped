@@ -47,7 +47,10 @@ function test_notContainSubset() {
 }
 
 function test_arrayContainSubset() {
-    const list = [{ a: "a", b: "b" }, { v: "f", d: { z: "g" } }];
+    const list = [
+        { a: "a", b: "b" },
+        { v: "f", d: { z: "g" } },
+    ];
 
     expect(list).to.containSubset([{ a: "a", b: "b" }]);
     list.should.containSubset([{ a: "a", b: "b" }]);
@@ -55,7 +58,10 @@ function test_arrayContainSubset() {
 }
 
 function test_arrayNotContainSubset() {
-    const list = [{ a: "a", b: "b" }, { v: "f", d: { z: "g" } }];
+    const list = [
+        { a: "a", b: "b" },
+        { v: "f", d: { z: "g" } },
+    ];
 
     expect(list).not.to.containSubset([{ a: "a", b: "bd" }]);
     list.should.not.containSubset([{ a: "a", b: "bd" }]);

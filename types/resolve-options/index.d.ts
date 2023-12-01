@@ -7,7 +7,11 @@ interface Options {
     passthrough?: boolean | ((...args: any[]) => boolean) | undefined;
     allowEmpty?: boolean | ((...args: any[]) => boolean) | undefined;
     mode?: string | number | ((...args: any[]) => string | number) | undefined;
-    dirMode?: string | number | ((...args: any[]) => string | number) | undefined;
+    dirMode?:
+        | string
+        | number
+        | ((...args: any[]) => string | number)
+        | undefined;
     overwrite?: boolean | ((...args: any[]) => boolean) | undefined;
     deep?: boolean | ((...args: any[]) => boolean) | undefined;
 }
@@ -18,7 +22,9 @@ interface ConfigItem {
 }
 
 interface Resolver {
-    resolve: (key: string) => number | string | boolean | Date | undefined | null;
+    resolve: (
+        key: string,
+    ) => number | string | boolean | Date | undefined | null;
 }
 
 interface Config {

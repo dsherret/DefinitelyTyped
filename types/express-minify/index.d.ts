@@ -99,6 +99,8 @@ declare namespace ExpressMinifyInterfaces {
 declare module "express-minify" {
     import express = require("express");
 
-    function minify(options?: ExpressMinifyInterfaces.ExpressMinifyOptions): express.RequestHandler;
+    function minify(
+        options?: ExpressMinifyInterfaces.ExpressMinifyOptions,
+    ): express.RequestHandler;
     export = minify;
 }

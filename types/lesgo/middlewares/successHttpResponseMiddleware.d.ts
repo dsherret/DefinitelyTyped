@@ -18,6 +18,10 @@ export function successHttpResponseAfterHandler(
     opts?: SuccessHttpMiddlewareOptions,
 ): void;
 
-export function successHttpResponseHandler(opts?: SuccessHttpMiddlewareOptions): any;
+export function successHttpResponseHandler(
+    opts?: SuccessHttpMiddlewareOptions,
+): any;
 
-export default function successHttpResponseMiddleware(opts?: SuccessHttpMiddlewareOptions): SuccessHttpMiddleware;
+export default function successHttpResponseMiddleware(
+    opts?: SuccessHttpMiddlewareOptions,
+): SuccessHttpMiddleware;

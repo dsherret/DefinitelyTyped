@@ -20,7 +20,7 @@ export interface Codec {
     valueAsBuffer(opts?: CodecOptions): any;
 }
 export interface CodecConstructor {
-    new(options?: CodecOptions): Codec;
+    new (options?: CodecOptions): Codec;
     (options?: CodecOptions): Codec;
 }
 

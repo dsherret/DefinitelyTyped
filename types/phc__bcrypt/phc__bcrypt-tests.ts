@@ -2,7 +2,8 @@ import { hash, identifiers, verify } from "@phc/bcrypt";
 
 function test_hash() {
     hash("keep-it-secret").then<string>(
-        (hashedStringWithDefaultOption: string): string => hashedStringWithDefaultOption,
+        (hashedStringWithDefaultOption: string): string =>
+            hashedStringWithDefaultOption,
     );
 
     hash("keep-it-secret", {

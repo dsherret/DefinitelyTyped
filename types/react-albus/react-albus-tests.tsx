@@ -10,18 +10,18 @@ declare module "react-albus" {
 const Example = () => (
     <Wizard
         basename="path"
-        onNext={wiz => {
+        onNext={(wiz) => {
             wiz.go(0);
             const location = wiz.history.location;
             wiz.next();
             wiz.previous();
             wiz.push("merlin");
             wiz.replace(wiz.step.id);
-            wiz.steps.map(step => {
+            wiz.steps.map((step) => {
                 wiz.push(step.id);
             });
         }}
-        render={wiz => (
+        render={(wiz) => (
             <Steps>
                 <Step
                     id="merlin"
@@ -36,7 +36,7 @@ const Example = () => (
                 <Step
                     id="gandalf"
                     quote="A wizard is never late, nor is he early. He arrives precisely when he means to."
-                    render={stepWiz => (
+                    render={(stepWiz) => (
                         <div>
                             <h1>Gandalf</h1>
                             <button onClick={() => stepWiz.next()}>Next</button>
@@ -71,7 +71,7 @@ const Example = () => (
     />
 );
 
-export const NextButton = withWizard<{ label: string }>(props => {
+export const NextButton = withWizard<{ label: string }>((props) => {
     const { wizard, label } = props;
     return <button onClick={() => wizard.next()}>{label}</button>;
 });

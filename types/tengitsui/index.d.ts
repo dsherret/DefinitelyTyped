@@ -46,15 +46,15 @@ export interface FunApi {
 }
 export type Api =
     | {
-        url?: string;
-        name: string;
-        confirm?: string;
-        action?: actionGen;
-        onClick?: clickFn;
-        mode?: string;
-        readonly?: string;
-        reorganizeSchema?: (schema: AdvancedSchema) => AdvancedSchema;
-    }
+          url?: string;
+          name: string;
+          confirm?: string;
+          action?: actionGen;
+          onClick?: clickFn;
+          mode?: string;
+          readonly?: string;
+          reorganizeSchema?: (schema: AdvancedSchema) => AdvancedSchema;
+      }
     | FunApi;
 export interface AdvancedApi {
     add?: string | Api;
@@ -146,7 +146,11 @@ export interface ChartProps {
     props: {};
 }
 
-export type selectFn = (itor: Iterable<Element>, slen: number, dlen: number) => Element[];
+export type selectFn = (
+    itor: Iterable<Element>,
+    slen: number,
+    dlen: number,
+) => Element[];
 export interface CombineProps {
     source: Element[];
     children: Element[];
@@ -272,8 +276,8 @@ export interface ProgressProps {
 export type RangePickerProps =
     | BaseProps
     | {
-        value: undefined | null | null[] | string[];
-    };
+          value: undefined | null | null[] | string[];
+      };
 
 export interface TableEditorRef {
     getValue: () => [];
@@ -287,7 +291,10 @@ export interface Record {
     [key: string]: any;
 }
 export type editableFnc = (record: Record) => boolean;
-export type OptionComputeFnc = (record: Record, options: Option[]) => Option[] | Promise<Option[]>;
+export type OptionComputeFnc = (
+    record: Record,
+    options: Option[],
+) => Option[] | Promise<Option[]>;
 export type ComputeFnc = (record: Record, field: string) => any;
 export interface RenderProps {
     value: any;

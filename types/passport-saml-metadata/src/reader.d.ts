@@ -3,8 +3,17 @@ export interface MetadataConstructorOptions {
     throwExceptions: boolean;
 }
 export class MetadataReader {
-    constructor(metadata: string, options?: Partial<MetadataConstructorOptions>);
-    get claimSchema(): { [name: string]: { camelCase: string; description: string; name: string } };
+    constructor(
+        metadata: string,
+        options?: Partial<MetadataConstructorOptions>,
+    );
+    get claimSchema(): {
+        [name: string]: {
+            camelCase: string;
+            description: string;
+            name: string;
+        };
+    };
     get encryptionCert(): string | undefined;
     get encryptionCerts(): string[];
     get identifierFormat(): string | undefined;

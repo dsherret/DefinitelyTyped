@@ -24,7 +24,11 @@ declare namespace oboe {
         path(listeners: any): Oboe;
 
         removeListener(eventPattern: string, callback: CallbackSignature): Oboe;
-        removeListener(event: string, pattern: string, callback: CallbackSignature): Oboe;
+        removeListener(
+            event: string,
+            pattern: string,
+            callback: CallbackSignature,
+        ): Oboe;
 
         start(callback: (status: number, headers: Object) => void): Oboe;
 

@@ -9,7 +9,10 @@ export class Type {
     construct(data: any, type?: string): any;
     instanceOf: object | null;
     predicate: ((data: object) => boolean) | null;
-    represent: ((data: object) => any) | { [x: string]: (data: object) => any } | null;
+    represent:
+        | ((data: object) => any)
+        | { [x: string]: (data: object) => any }
+        | null;
     representName: ((data: object) => any) | null;
     defaultStyle: string | null;
     multi: boolean;
@@ -21,8 +24,16 @@ export class Schema {
     extend(types: SchemaDefinition | Type[] | Type): Schema;
 }
 
-export function loadAll(str: string, iterator?: null, opts?: LoadOptions): unknown[];
-export function loadAll(str: string, iterator: (doc: unknown) => void, opts?: LoadOptions): void;
+export function loadAll(
+    str: string,
+    iterator?: null,
+    opts?: LoadOptions,
+): unknown[];
+export function loadAll(
+    str: string,
+    iterator: (doc: unknown) => void,
+    opts?: LoadOptions,
+): void;
 
 export function dump(obj: any, opts?: DumpOptions): string;
 
@@ -86,7 +97,7 @@ export interface DumpOptions {
      */
     condenseFlow?: boolean | undefined;
     /** strings will be quoted using this quoting style. If you specify single quotes, double quotes will still be used for non-printable characters. (default: `'`) */
-    quotingType?: "'" | "\"" | undefined;
+    quotingType?: "'" | '"' | undefined;
     /** if true, all non-key strings will be quoted even if they normally don't need to. (default: false) */
     forceQuotes?: boolean | undefined;
     /** callback `function (key, value)` called recursively on each key/value in source object (see `replacer` docs for `JSON.stringify`). */
@@ -99,7 +110,10 @@ export interface TypeConstructorOptions {
     construct?: ((data: any, type?: string) => any) | undefined;
     instanceOf?: object | undefined;
     predicate?: ((data: object) => boolean) | undefined;
-    represent?: ((data: object) => any) | { [x: string]: (data: object) => any } | undefined;
+    represent?:
+        | ((data: object) => any)
+        | { [x: string]: (data: object) => any }
+        | undefined;
     representName?: ((data: object) => any) | undefined;
     defaultStyle?: string | undefined;
     multi?: boolean | undefined;

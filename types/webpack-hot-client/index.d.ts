@@ -47,7 +47,14 @@ declare namespace WebpackHotClient {
         /** Enable HTTPS */
         https?: boolean | undefined;
         /** Level of information for webpack-hot-client to output */
-        logLevel?: "trace" | "debug" | "info" | "warn" | "error" | "silent" | undefined;
+        logLevel?:
+            | "trace"
+            | "debug"
+            | "info"
+            | "warn"
+            | "error"
+            | "silent"
+            | undefined;
         /** Prepend timestamp to each log line */
         logTime?: boolean | undefined;
         /** Port that the WebSocket listens on */

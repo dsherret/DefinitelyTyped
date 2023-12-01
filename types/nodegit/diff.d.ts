@@ -143,12 +143,39 @@ export class Diff {
         lineCb?: Function,
     ): Promise<any>;
     static fromBuffer(content: string, contentLen: number): Promise<Diff>;
-    static indexToWorkdir(repo: Repository, index?: Index, opts?: DiffOptions): Promise<Diff>;
-    static indexToIndex(repo: Repository, oldIndex: Index, newIndex: Index, opts?: DiffOptions): Promise<Diff>;
-    static treeToIndex(repo: Repository, oldTree?: Tree, index?: Index, opts?: DiffOptions): Promise<Diff>;
-    static treeToTree(repo: Repository, oldTree?: Tree, new_tree?: Tree, opts?: DiffOptions): Promise<Diff>;
-    static treeToWorkdir(repo: Repository, oldTree?: Tree, opts?: DiffOptions): Promise<Diff>;
-    static treeToWorkdirWithIndex(repo: Repository, oldTree?: Tree, opts?: DiffOptions): Promise<Diff>;
+    static indexToWorkdir(
+        repo: Repository,
+        index?: Index,
+        opts?: DiffOptions,
+    ): Promise<Diff>;
+    static indexToIndex(
+        repo: Repository,
+        oldIndex: Index,
+        newIndex: Index,
+        opts?: DiffOptions,
+    ): Promise<Diff>;
+    static treeToIndex(
+        repo: Repository,
+        oldTree?: Tree,
+        index?: Index,
+        opts?: DiffOptions,
+    ): Promise<Diff>;
+    static treeToTree(
+        repo: Repository,
+        oldTree?: Tree,
+        new_tree?: Tree,
+        opts?: DiffOptions,
+    ): Promise<Diff>;
+    static treeToWorkdir(
+        repo: Repository,
+        oldTree?: Tree,
+        opts?: DiffOptions,
+    ): Promise<Diff>;
+    static treeToWorkdirWithIndex(
+        repo: Repository,
+        oldTree?: Tree,
+        opts?: DiffOptions,
+    ): Promise<Diff>;
 
     findSimilar(options?: DiffFindOptions): Promise<number>;
     getDelta(idx: number): DiffDelta;

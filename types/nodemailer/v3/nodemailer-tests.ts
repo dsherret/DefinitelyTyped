@@ -11,43 +11,54 @@ var transporter: nodemailer.Transporter = nodemailer.createTransport({
 });
 
 // create reusable transporter object using SMTP connection url using default options
-transporter = nodemailer.createTransport("smtps://gmail.user@gmail.com:userpass@gmail/?pool=true");
+transporter = nodemailer.createTransport(
+    "smtps://gmail.user@gmail.com:userpass@gmail/?pool=true",
+);
 
 // create reusable transporter object using SMTP connection url and specify some options
-transporter = nodemailer.createTransport("smtps://gmail.user@gmail.com:userpass@gmail/?pool=true", {
-    from: "sender@address",
-    headers: {
-        "My-Awesome-Header": "123",
+transporter = nodemailer.createTransport(
+    "smtps://gmail.user@gmail.com:userpass@gmail/?pool=true",
+    {
+        from: "sender@address",
+        headers: {
+            "My-Awesome-Header": "123",
+        },
     },
-});
+);
 
 // create reusable transporter object using SES transport and set default values for mail options.
 transporter = nodemailer.createTransport({
     SES: new AWS.SES(),
 });
 // create reusable transporter object using SMTP transport and set default values for mail options.
-transporter = nodemailer.createTransport({
-    SES: new AWS.SES(),
-}, {
-    from: "sender@address",
-    headers: {
-        "My-Awesome-Header": "123",
+transporter = nodemailer.createTransport(
+    {
+        SES: new AWS.SES(),
     },
-});
+    {
+        from: "sender@address",
+        headers: {
+            "My-Awesome-Header": "123",
+        },
+    },
+);
 
 // create reusable transporter object using SMTP transport and set default values for mail options.
-transporter = nodemailer.createTransport({
-    service: "Gmail",
-    auth: {
-        user: "gmail.user@gmail.com",
-        pass: "userpass",
+transporter = nodemailer.createTransport(
+    {
+        service: "Gmail",
+        auth: {
+            user: "gmail.user@gmail.com",
+            pass: "userpass",
+        },
     },
-}, {
-    from: "sender@address",
-    headers: {
-        "My-Awesome-Header": "123",
+    {
+        from: "sender@address",
+        headers: {
+            "My-Awesome-Header": "123",
+        },
     },
-});
+);
 
 // setup e-mail data with unicode symbols
 var mailOptions: nodemailer.SendMailOptions = {
@@ -60,12 +71,15 @@ var mailOptions: nodemailer.SendMailOptions = {
 };
 
 // send mail with defined transport object
-transporter.sendMail(mailOptions, (error: Error, info: nodemailer.SentMessageInfo): void => {
-    // nothing
-});
+transporter.sendMail(
+    mailOptions,
+    (error: Error, info: nodemailer.SentMessageInfo): void => {
+        // nothing
+    },
+);
 
 // promise send mail without callback
 transporter
     .sendMail(mailOptions)
-    .then(info => info.messageId)
-    .catch(err => {});
+    .then((info) => info.messageId)
+    .catch((err) => {});

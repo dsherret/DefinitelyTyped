@@ -105,9 +105,8 @@ declare namespace Carousel {
      * @see {@link https://github.com/yifaneye/react-gallery-carousel#props}
      */
 
-    type CarouselProps =
-        & (CarouselWithChildren | CarouselWithImages)
-        & Partial<{
+    type CarouselProps = (CarouselWithChildren | CarouselWithImages) &
+        Partial<{
             thumbnails: React.ReactNode;
             index: number;
             isRTL: boolean;
@@ -153,7 +152,13 @@ declare namespace Carousel {
             shouldMaximizeOnClick: boolean;
             shouldMinimizeOnClick: boolean;
             shouldMinimizeOnSwipeDown: boolean;
-            onIndexChange({ curIndex, curIndexForDisplay }: { curIndex: number; curIndexForDisplay: number }): void;
+            onIndexChange({
+                curIndex,
+                curIndexForDisplay,
+            }: {
+                curIndex: number;
+                curIndexForDisplay: number;
+            }): void;
             onSwipeMoveX(displacementX: number): void;
             onSwipeMoveY(displacementY: number): void;
             onSwipeEndDown(): void;

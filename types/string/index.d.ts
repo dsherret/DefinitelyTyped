@@ -59,7 +59,12 @@ interface StringJS {
 
     padRight(len: number, char?: string | number): StringJS;
 
-    parseCSV(delimiter?: string, qualifier?: string, escape?: string, lineDelimiter?: string): string[];
+    parseCSV(
+        delimiter?: string,
+        qualifier?: string,
+        escape?: string,
+        lineDelimiter?: string,
+    ): string[];
 
     repeat(n: number): StringJS;
 

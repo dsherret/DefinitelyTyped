@@ -97,12 +97,20 @@ declare var importExpression: ESTree.ImportExpression;
 
 declare var toplevelStatement: ESTree.Statement | ESTree.ModuleDeclaration;
 declare var expressionOrPattern: ESTree.Expression | ESTree.Pattern;
-declare var variableDeclaratorOrExpression: ESTree.VariableDeclaration | ESTree.Expression;
-declare var variableDeclaratorOrPattern: ESTree.VariableDeclaration | ESTree.Pattern;
+declare var variableDeclaratorOrExpression:
+    | ESTree.VariableDeclaration
+    | ESTree.Expression;
+declare var variableDeclaratorOrPattern:
+    | ESTree.VariableDeclaration
+    | ESTree.Pattern;
 declare var literalOrIdentifier: ESTree.Literal | ESTree.Identifier;
-declare var blockStatementOrExpression: ESTree.BlockStatement | ESTree.Expression;
+declare var blockStatementOrExpression:
+    | ESTree.BlockStatement
+    | ESTree.Expression;
 declare var identifierOrExpression: ESTree.Identifier | ESTree.Expression;
-declare var privateIdentifierOrExpression: ESTree.PrivateIdentifier | ESTree.Expression;
+declare var privateIdentifierOrExpression:
+    | ESTree.PrivateIdentifier
+    | ESTree.Expression;
 declare var any: any;
 declare var string: string;
 declare var boolean: boolean;
@@ -148,7 +156,8 @@ var patternOrNull: ESTree.Pattern | null;
 var ifStatement: ESTree.IfStatement;
 expression = ifStatement.test;
 statement = ifStatement.consequent;
-var statementOrNull: ESTree.Statement | null | undefined = ifStatement.alternate;
+var statementOrNull: ESTree.Statement | null | undefined =
+    ifStatement.alternate;
 
 // LabeledStatement
 var labeledStatement: ESTree.LabeledStatement;
@@ -166,17 +175,23 @@ switchCase = switchStatement.cases[0];
 
 // ReturnStatement
 var returnStatement: ESTree.ReturnStatement;
-var expressionMaybe: ESTree.Expression | null | undefined = returnStatement.argument;
+var expressionMaybe: ESTree.Expression | null | undefined =
+    returnStatement.argument;
 
 // TryStatement
 var tryStatement: ESTree.TryStatement;
 blockStatement = tryStatement.block;
-var catchClauseMaybe: ESTree.CatchClause | null | undefined = tryStatement.handler;
-var blockStatementMaybe: ESTree.BlockStatement | null | undefined = tryStatement.finalizer;
+var catchClauseMaybe: ESTree.CatchClause | null | undefined =
+    tryStatement.handler;
+var blockStatementMaybe: ESTree.BlockStatement | null | undefined =
+    tryStatement.finalizer;
 
 // ForStatement
 var forStatement: ESTree.ForStatement;
-var variableDeclaratorOrExpressionMaybe: typeof variableDeclaratorOrExpression | null | undefined = forStatement.init;
+var variableDeclaratorOrExpressionMaybe:
+    | typeof variableDeclaratorOrExpression
+    | null
+    | undefined = forStatement.init;
 var expressionMaybe: ESTree.Expression | null | undefined = forStatement.update;
 
 // ForInStatement
@@ -188,11 +203,13 @@ expression = forInStatement.right;
 // ArrayExpression
 var arrayExpression: ESTree.ArrayExpression;
 string = arrayExpression.type;
-var expressionOrSpread: ESTree.Expression | ESTree.SpreadElement | null = arrayExpression.elements[0];
+var expressionOrSpread: ESTree.Expression | ESTree.SpreadElement | null =
+    arrayExpression.elements[0];
 
 // ObjectExpression
 var objectExpression: ESTree.ObjectExpression;
-var propertyOrSpread: ESTree.Property | ESTree.SpreadElement = objectExpression.properties[0];
+var propertyOrSpread: ESTree.Property | ESTree.SpreadElement =
+    objectExpression.properties[0];
 
 string = property.type;
 if (property.type === "Property") {
@@ -203,7 +220,8 @@ if (property.type === "Property") {
 
 // FunctionExpression
 var functionExpression: ESTree.FunctionExpression;
-var identifierMaybe: ESTree.Identifier | null | undefined = functionExpression.id;
+var identifierMaybe: ESTree.Identifier | null | undefined =
+    functionExpression.id;
 pattern = functionExpression.params[0];
 pattern = assignmentPattern.left;
 expression = assignmentPattern.right;
@@ -271,7 +289,8 @@ booleanMaybe = functionDeclaration.generator;
 booleanMaybe = functionDeclaration.async;
 
 var variableDeclaration: ESTree.VariableDeclaration;
-var declarations: ESTree.VariableDeclarator[] = variableDeclaration.declarations;
+var declarations: ESTree.VariableDeclarator[] =
+    variableDeclaration.declarations;
 string = variableDeclaration.kind; // "var" | "let" | "const"
 
 var variableDeclarator: ESTree.VariableDeclarator;

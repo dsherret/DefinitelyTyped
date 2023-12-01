@@ -1,4 +1,9 @@
-import { Message, MessageStreamDefinition, MessageStreamInfo, ReadMessagesOptions } from "./data";
+import {
+    Message,
+    MessageStreamDefinition,
+    MessageStreamInfo,
+    ReadMessagesOptions,
+} from "./data";
 import * as util from "./util";
 
 export * from "./data";
@@ -101,7 +106,10 @@ export class StreamManagerClient {
      * </p>
      * @returns  List of one or more messages.
      */
-    readMessages(streamName: string, options?: ReadMessagesOptions | null): Promise<Message[]>;
+    readMessages(
+        streamName: string,
+        options?: ReadMessagesOptions | null,
+    ): Promise<Message[]>;
 
     /**
      * List the streams in StreamManager. Returns a list of their names.

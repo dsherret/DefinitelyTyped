@@ -4,15 +4,20 @@ import XRay = require("x-ray");
 const x: XRay.Instance = XRay();
 
 // README Examples
-x("https://blog.ycombinator.com/", ".post", [{
-    title: "h1 a",
-    link: ".article-title@href",
-}])
+x("https://blog.ycombinator.com/", ".post", [
+    {
+        title: "h1 a",
+        link: ".article-title@href",
+    },
+])
     .paginate(".nav-previous a@href")
     .limit(3)
     .write("results.json");
 
-x("http://google.com", "title")((err: Error, title: string) => {
+x(
+    "http://google.com",
+    "title",
+)((err: Error, title: string) => {
     console.log(title); // Google
 });
 
@@ -24,7 +29,11 @@ x("http://techcrunch.com", "img.logo@src")(fn);
 x("http://news.ycombinator.com", "body@html")(fn);
 
 const html = "<body><h2>Pear</h2></body>";
-x(html, "body", "h2")((err: Error, header: string) => {
+x(
+    html,
+    "body",
+    "h2",
+)((err: Error, header: string) => {
     console.log(header); // => Pear
 });
 
@@ -34,10 +43,12 @@ app.get("/", (req: express.Request, res: express.Response) => {
     stream.pipe(res);
 });
 
-x("https://dribbble.com", "li.group", [{
-    title: ".dribbble-img strong",
-    image: ".dribbble-img [data-src]@data-src",
-}])
+x("https://dribbble.com", "li.group", [
+    {
+        title: ".dribbble-img strong",
+        image: ".dribbble-img [data-src]@data-src",
+    },
+])
     .paginate(".next_page@href")
     .limit(3)
     .then((res: Array<{ title: string; image: string }>) => {
@@ -54,10 +65,12 @@ x("http://google.com", {
 
 x("http://mat.io", {
     title: "title",
-    items: x(".item", [{
-        title: ".item-content h2",
-        description: ".item-content section",
-    }]),
+    items: x(".item", [
+        {
+            title: ".item-content h2",
+            description: ".item-content section",
+        },
+    ]),
 })(fn);
 
 const x2 = XRay({
@@ -66,10 +79,14 @@ const x2 = XRay({
             return typeof value === "string" ? value.trim() : value;
         },
         reverse: (value: string): string => {
-            return typeof value === "string" ? value.split("").reverse().join("") : value;
+            return typeof value === "string"
+                ? value.split("").reverse().join("")
+                : value;
         },
         slice: (value: string, start: string, end: string): string => {
-            return typeof value === "string" ? value.slice(+start, +end) : value;
+            return typeof value === "string"
+                ? value.slice(+start, +end)
+                : value;
         },
     },
 });
@@ -88,10 +105,12 @@ x(html, {
 
 x(html, ["a"])(console.log);
 
-x(html, ".item", [{
-    title: "h2",
-    tags: x(".tags", ["li"]),
-}])(console.log);
+x(html, ".item", [
+    {
+        title: "h2",
+        tags: x(".tags", ["li"]),
+    },
+])(console.log);
 
 x(html, ".tags", [["li"]])(console.log);
 
@@ -111,7 +130,8 @@ x({
     }),
 })(fn);
 
-const pagedUrl = "https://github.com/matthewmueller/x-ray/issues?q=is%3Aissue%20sort%3Acreated-asc%20";
+const pagedUrl =
+    "https://github.com/matthewmueller/x-ray/issues?q=is%3Aissue%20sort%3Acreated-asc%20";
 
 x(pagedUrl, ".js-issue-row", [{ id: "@id", title: "a.h4" }])
     .paginate(".next_page@href")
@@ -128,8 +148,8 @@ const hasStringId = (obj: any): obj is { id: string } => {
 x(pagedUrl, ".js-issue-row", [{ id: "@id", title: "a.h4" }])
     .paginate(".next_page@href")
     .abort((results) =>
-        results.some(result => {
+        results.some((result) => {
             if (hasStringId(result) && result.id === "issue_40") return true;
             return false;
-        })
+        }),
     );

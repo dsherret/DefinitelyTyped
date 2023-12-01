@@ -16,7 +16,11 @@ export function encode(prefix: string, type: string, hash: Uint8Array): string;
  * @param address Address to decode. E.g.: 'bitcoincash:qpm2qsznhks23z7629mms6s4cwef74vcwvy22gdx6a'.
  * @throws {ValidationError}
  */
-export function decode(address: string): { prefix: string; type: string; hash: Uint8Array };
+export function decode(address: string): {
+    prefix: string;
+    type: string;
+    hash: Uint8Array;
+};
 
 /**
  * Error thrown when encoding or decoding fail due to invalid input.

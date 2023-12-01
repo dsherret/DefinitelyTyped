@@ -94,7 +94,12 @@ declare namespace PageJS {
         /**
          * Replace `path` with optional `state` object.
          */
-        replace(path: string, state?: any, init?: boolean, dispatch?: boolean): Context;
+        replace(
+            path: string,
+            state?: any,
+            init?: boolean,
+            dispatch?: boolean,
+        ): Context;
         /**
          *  Navigate to the given path.
          *
@@ -159,7 +164,11 @@ declare namespace PageJS {
          *       next()
          *     })
          */
-        exit(path: string, callback: Callback, moreCallbacks?: Callback[]): void;
+        exit(
+            path: string,
+            callback: Callback,
+            moreCallbacks?: Callback[],
+        ): void;
         /**
          * Equivalent to page.exit('*', callback).
          */
@@ -187,7 +196,7 @@ declare namespace PageJS {
          * @param {string}  path    path
          * @param {Options} options Options
          */
-        new(path: string, options?: RouteOptions): Route;
+        new (path: string, options?: RouteOptions): Route;
         /**
          * Return route middleware with the given callback `fn()`.
          * @param {Callback} callback Callback
@@ -253,7 +262,7 @@ declare namespace PageJS {
          * @param {string} path  path
          * @param {any}    state state
          */
-        new(path: string, state?: any): Context;
+        new (path: string, state?: any): Context;
         [idx: string]: any;
         /**
          * Saves the context using replaceState(). For example this is useful for caching HTML or other resources that were loaded for when a user presses "back".

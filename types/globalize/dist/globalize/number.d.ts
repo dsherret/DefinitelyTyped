@@ -1,7 +1,9 @@
 import * as Globalize from "../globalize";
 
 declare module "../globalize" {
-    interface NumberFormatterOptions extends CommonNumberFormatterOptions, NumberParserOptions {}
+    interface NumberFormatterOptions
+        extends CommonNumberFormatterOptions,
+            NumberParserOptions {}
     interface NumberParserOptions {
         /**
          * decimal (default), or percent.
@@ -36,7 +38,9 @@ declare module "../globalize" {
          * useGrouping Optional Boolean (default is true) value indicating whether a grouping separator should be used.
          * @returns {Function} Return a function that formats a number according to the given options.
          */
-        numberFormatter(options?: NumberFormatterOptions): (value: number) => string;
+        numberFormatter(
+            options?: NumberFormatterOptions,
+        ): (value: number) => string;
         /**
          * Return a function that parses a string representing a number according to the given options or locale's defaults.
          * @param {NumberParserOptions} options A JSON object including none or any of the following options.
@@ -55,7 +59,9 @@ declare module "../globalize" {
          * useGrouping Optional Boolean (default is true) value indicating whether a grouping separator should be used.
          * @returns {Function} Return a function that formats a number into parts tokens according to the given options.
          */
-        numberToPartsFormatter(options?: NumberFormatterOptions): (value: number) => NumberFormatPart[];
+        numberToPartsFormatter(
+            options?: NumberFormatterOptions,
+        ): (value: number) => NumberFormatPart[];
         /**
          * Return a number formatted according to the given options or locale's defaults.
          * @param {number} value The number to format
@@ -79,7 +85,10 @@ declare module "../globalize" {
          */
         parseNumber(value: string, options?: NumberParserOptions): number;
         // Alias for .numberToPartsFormatter( [options] )( value ).
-        formatNumberToParts(value: number, options?: NumberFormatterOptions): NumberFormatPart[];
+        formatNumberToParts(
+            value: number,
+            options?: NumberFormatterOptions,
+        ): NumberFormatPart[];
     }
 }
 

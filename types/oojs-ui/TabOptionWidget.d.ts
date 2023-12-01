@@ -10,7 +10,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.TabOptionWidget
      */
-    interface TabOptionWidget extends TabOptionWidget.Props, TabOptionWidget.Prototype {}
+    interface TabOptionWidget
+        extends TabOptionWidget.Props,
+            TabOptionWidget.Prototype {}
 
     namespace TabOptionWidget {
         interface ConfigOptions extends OptionWidget.ConfigOptions {
@@ -26,7 +28,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): TabOptionWidget;
+            new (config?: ConfigOptions): TabOptionWidget;
             prototype: Prototype;
             static: Static;
             super: OptionWidget.Constructor;

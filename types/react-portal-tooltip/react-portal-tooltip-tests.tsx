@@ -16,10 +16,19 @@ class ToolTipTest extends React.Component {
     render() {
         return (
             <div>
-                <p id="text" onMouseEnter={this.showTooltip.bind(this)} onMouseLeave={this.hideTooltip.bind(this)}>
+                <p
+                    id="text"
+                    onMouseEnter={this.showTooltip.bind(this)}
+                    onMouseLeave={this.hideTooltip.bind(this)}
+                >
                     This is a cool component
                 </p>
-                <ToolTip active={this.state.isTooltipActive} position="top" arrow="center" parent="#text">
+                <ToolTip
+                    active={this.state.isTooltipActive}
+                    position="top"
+                    arrow="center"
+                    parent="#text"
+                >
                     <div>
                         <p>This is the content of the tooltip</p>
                         <img src="image.png" />
@@ -45,10 +54,19 @@ class ToolTipTestParentProp1 extends React.Component {
     render() {
         return (
             <div>
-                <div id="hoverMe" onMouseEnter={this.showTooltip} onMouseLeave={this.hideTooltip}>
+                <div
+                    id="hoverMe"
+                    onMouseEnter={this.showTooltip}
+                    onMouseLeave={this.hideTooltip}
+                >
                     Hover me!!!
                 </div>
-                <ToolTip active={this.state.isTooltipActive} position="top" arrow="center" parent="#hoverMe">
+                <ToolTip
+                    active={this.state.isTooltipActive}
+                    position="top"
+                    arrow="center"
+                    parent="#hoverMe"
+                >
                     <div>
                         <p>This is the content of the tooltip</p>
                     </div>
@@ -76,10 +94,19 @@ class ToolTipTestParentProp2 extends React.Component {
     render() {
         return (
             <div>
-                <div ref={this.element} onMouseEnter={this.showTooltip} onMouseLeave={this.hideTooltip}>
+                <div
+                    ref={this.element}
+                    onMouseEnter={this.showTooltip}
+                    onMouseLeave={this.hideTooltip}
+                >
                     Hover me!!!
                 </div>
-                <ToolTip active={this.state.isTooltipActive} position="top" arrow="center" parent={this.element}>
+                <ToolTip
+                    active={this.state.isTooltipActive}
+                    position="top"
+                    arrow="center"
+                    parent={this.element}
+                >
                     <div>
                         <p>This is the content of the tooltip</p>
                     </div>
@@ -94,5 +121,9 @@ class ToolTipTestParentProp2 extends React.Component {
 const StatefulToolTipTest = () => {
     const button = <span>Hover me to display the tooltip</span>;
 
-    return <StatefulToolTip parent={button}>Stateful Tooltip content here!</StatefulToolTip>;
+    return (
+        <StatefulToolTip parent={button}>
+            Stateful Tooltip content here!
+        </StatefulToolTip>
+    );
 };

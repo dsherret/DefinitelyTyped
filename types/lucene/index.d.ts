@@ -31,11 +31,15 @@ export interface NodeRangedTerm extends NodeField {
     term_min: string;
 }
 
-export type Node =
-    | NodeTerm
-    | NodeRangedTerm;
+export type Node = NodeTerm | NodeRangedTerm;
 
-export type Operator = "<implicit>" | "NOT" | "OR" | "AND" | "AND NOT" | "OR NOT";
+export type Operator =
+    | "<implicit>"
+    | "NOT"
+    | "OR"
+    | "AND"
+    | "AND NOT"
+    | "OR NOT";
 
 export interface ASTField {
     field?: string;

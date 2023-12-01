@@ -47,24 +47,45 @@ export { default as blend } from "./src/blend";
 export { default as colorsNamed } from "./src/colors/named";
 export { default as random } from "./src/random";
 
-export { fixupHueDecreasing, fixupHueIncreasing, fixupHueLonger, fixupHueShorter } from "./src/fixup/hue";
+export {
+    fixupHueDecreasing,
+    fixupHueIncreasing,
+    fixupHueLonger,
+    fixupHueShorter,
+} from "./src/fixup/hue";
 
 export { fixupAlpha } from "./src/fixup/alpha";
 
-export { mapAlphaDivide, mapAlphaMultiply, mapper, mapTransferGamma, mapTransferLinear } from "./src/map";
+export {
+    mapAlphaDivide,
+    mapAlphaMultiply,
+    mapper,
+    mapTransferGamma,
+    mapTransferLinear,
+} from "./src/map";
 
 export { average, averageAngle, averageNumber } from "./src/average";
 
-export { interpolate, interpolateWith, interpolateWithPremultipliedAlpha } from "./src/interpolate/interpolate";
+export {
+    interpolate,
+    interpolateWith,
+    interpolateWithPremultipliedAlpha,
+} from "./src/interpolate/interpolate";
 export { default as round } from "./src/round";
 
 export { interpolatorLinear } from "./src/interpolate/linear";
 
 export { interpolatorPiecewise } from "./src/interpolate/piecewise";
 
-export { interpolatorSplineBasis, interpolatorSplineBasisClosed } from "./src/interpolate/splineBasis";
+export {
+    interpolatorSplineBasis,
+    interpolatorSplineBasisClosed,
+} from "./src/interpolate/splineBasis";
 
-export { interpolatorSplineNatural, interpolatorSplineNaturalClosed } from "./src/interpolate/splineNatural";
+export {
+    interpolatorSplineNatural,
+    interpolatorSplineNaturalClosed,
+} from "./src/interpolate/splineNatural";
 
 export {
     interpolatorSplineMonotone,
@@ -103,7 +124,11 @@ export {
     filterSepia,
 } from "./src/filter";
 
-export { filterDeficiencyDeuter, filterDeficiencyProt, filterDeficiencyTrit } from "./src/deficiency";
+export {
+    filterDeficiencyDeuter,
+    filterDeficiencyProt,
+    filterDeficiencyTrit,
+} from "./src/deficiency";
 
 export { default as easingGamma } from "./src/easing/gamma";
 export { default as easingInOutSine } from "./src/easing/inOutSine";
@@ -111,7 +136,10 @@ export { default as easingMidpoint } from "./src/easing/midpoint";
 export { default as easingSmootherstep } from "./src/easing/smootherstep";
 export { default as easingSmoothstep } from "./src/easing/smoothstep";
 
-export { contrast as wcagContrast, luminance as wcagLuminance } from "./src/wcag";
+export {
+    contrast as wcagContrast,
+    luminance as wcagLuminance,
+} from "./src/wcag";
 
 export { default as parseHsl } from "./src/hsl/parseHsl";
 export { default as parseHwb } from "./src/hwb/parseHwb";

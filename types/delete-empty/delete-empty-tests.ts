@@ -1,6 +1,6 @@
 import deleteEmpty = require("delete-empty");
 
-deleteEmpty("foo").then(f => f[0].toLowerCase());
+deleteEmpty("foo").then((f) => f[0].toLowerCase());
 deleteEmpty("foo", {}, (err, f) => {
     if (err) {
         err.message;

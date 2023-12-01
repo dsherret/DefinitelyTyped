@@ -7,7 +7,7 @@ const getToken = async (): Promise<tokenProvider.Token> => ({
 });
 
 const cache = tokenProvider.tokenCache(getToken, {
-    getMaxAge: token => token.expires_in,
+    getMaxAge: (token) => token.expires_in,
 });
 
 cache().then((token: tokenProvider.Token) => {

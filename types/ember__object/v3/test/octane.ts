@@ -58,7 +58,7 @@ class Foo extends EmberObject {
     @computed("firstName", "lastName")
     badFullName: string;
 
-    @computed("fullName", function(this: Foo) {
+    @computed("fullName", function (this: Foo) {
         return this.fullName.toUpperCase();
     })
     bigFullName: string;
@@ -153,12 +153,12 @@ class Bar extends EmberObject {
     // @ts-expect-error
     @filter("firstName")
     filterTest3: string[];
-    @filter("firstName", x => x)
+    @filter("firstName", (x) => x)
     filterTest4: string[];
     // @ts-expect-error
-    @filter("firstName", "secondName", x => x)
+    @filter("firstName", "secondName", (x) => x)
     filterTest5: string[];
-    @filter("firstName", ["secondName"], x => x)
+    @filter("firstName", ["secondName"], (x) => x)
     filterTest6: string[];
 
     // @ts-expect-error
@@ -240,7 +240,7 @@ class Bar extends EmberObject {
     // @ts-expect-error
     @map("firstName")
     mapTest3: string[];
-    @map("firstName", x => x)
+    @map("firstName", (x) => x)
     mapTest4: string[];
 
     // @ts-expect-error

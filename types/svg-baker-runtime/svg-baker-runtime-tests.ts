@@ -9,7 +9,7 @@ const symbolConfig = {
     useId: "image-with-urls-usage",
     viewBox: "0 0 600 600",
     content:
-        "<symbol viewBox=\"0 0 400 400\" id=\"path-1\"><path d=\"M 100 100 L 300 100 L 200 300 z\" fill=\"orange\" stroke=\"black\" stroke-width=\"3\" /></symbol>",
+        '<symbol viewBox="0 0 400 400" id="path-1"><path d="M 100 100 L 300 100 L 200 300 z" fill="orange" stroke="black" stroke-width="3" /></symbol>',
 };
 
 // add symbol

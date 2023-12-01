@@ -17,11 +17,15 @@ declare namespace prettyQuick {
         check?: boolean | undefined;
         ignorePath?: string | undefined;
         verbose?: boolean | undefined;
-        onFoundSinceRevision?: ((name: string, revision: string) => void) | undefined;
+        onFoundSinceRevision?:
+            | ((name: string, revision: string) => void)
+            | undefined;
         onFoundChangedFiles?: ((changedFiles: string[]) => void) | undefined;
         onPartiallyStagedFile?: ((file: string) => void) | undefined;
         onExamineFile?: ((file: string) => void) | undefined;
-        onCheckFile?: ((file: string, isFormatted: boolean) => void) | undefined;
+        onCheckFile?:
+            | ((file: string, isFormatted: boolean) => void)
+            | undefined;
         onWriteFile?: ((file: string) => void) | undefined;
         // ...args support
         [key: string]: any;
@@ -39,6 +43,9 @@ declare namespace prettyQuick {
  * * Git
  * * Mercurial
  */
-declare function prettyQuick(currentDirectory: string, options?: prettyQuick.Options): prettyQuick.Results;
+declare function prettyQuick(
+    currentDirectory: string,
+    options?: prettyQuick.Options,
+): prettyQuick.Results;
 
 export = prettyQuick;

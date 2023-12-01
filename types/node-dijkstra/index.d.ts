@@ -42,7 +42,11 @@ declare class Graph {
      *
      * const route = new Graph(g)
      */
-    constructor(nodes?: { [key: string]: { [key: string]: number } } | Map<string, Map<string, number>>);
+    constructor(
+        nodes?:
+            | { [key: string]: { [key: string]: number } }
+            | Map<string, Map<string, number>>,
+    );
 
     /**
      * Adds a node to the graph

@@ -10,8 +10,8 @@ const fileStream = streamSaver.createWriteStream("filename.txt", {
     readableStrategy: new ByteLengthQueuingStrategy({ highWaterMark: 120 }),
 });
 
-const body = new Response("StreamSaver is awesome").body as ReadableStream<Uint8Array>;
-body.pipeTo(fileStream).catch(() => {
-});
+const body = new Response("StreamSaver is awesome")
+    .body as ReadableStream<Uint8Array>;
+body.pipeTo(fileStream).catch(() => {});
 
 console.log(streamSaver.version.full);

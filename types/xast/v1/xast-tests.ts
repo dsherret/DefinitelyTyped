@@ -1,5 +1,16 @@
 import { Data, Node, Point, Position } from "unist";
-import { Attributes, Cdata, Comment, Doctype, Element, Instruction, Literal, Parent, Root, Text } from "xast";
+import {
+    Attributes,
+    Cdata,
+    Comment,
+    Doctype,
+    Element,
+    Instruction,
+    Literal,
+    Parent,
+    Root,
+    Text,
+} from "xast";
 
 const data: Data = {
     string: "string",

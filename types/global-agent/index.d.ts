@@ -10,7 +10,9 @@ export interface ProxyAgentConfigurationType {
     readonly NO_PROXY: string | null;
 }
 
-export function bootstrap(configurationInput?: ProxyAgentConfigurationInputType): boolean;
+export function bootstrap(
+    configurationInput?: ProxyAgentConfigurationInputType,
+): boolean;
 export function createGlobalProxyAgent(
     configurationInput: ProxyAgentConfigurationInputType,
 ): ProxyAgentConfigurationType;

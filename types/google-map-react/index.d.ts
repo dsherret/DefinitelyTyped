@@ -335,9 +335,17 @@ declare namespace googleMapReact {
         onZoomAnimationStart?(args: any): void;
         onZoomAnimationEnd?(args: any): void;
         onMapTypeIdChange?(args: any): void;
-        distanceToMouse?(pt: Point, mousePos: Point, markerProps?: object): number;
+        distanceToMouse?(
+            pt: Point,
+            mousePos: Point,
+            markerProps?: object,
+        ): number;
         googleMapLoader?(bootstrapURLKeys: any): void;
-        onGoogleApiLoaded?(maps: { map: any; maps: any; ref: Element | null }): void;
+        onGoogleApiLoaded?(maps: {
+            map: any;
+            maps: any;
+            ref: Element | null;
+        }): void;
         onTilesLoaded?(): void;
         yesIWantToUseGoogleMapApiInternals?: boolean | undefined;
         style?: React.CSSProperties | undefined;
@@ -353,9 +361,15 @@ declare namespace googleMapReact {
         zoom: number;
     }
 
-    function convertNeSwToNwSe(boundCorder: { ne: Coords; sw: Coords }): { nw: Coords; se: Coords };
+    function convertNeSwToNwSe(boundCorder: { ne: Coords; sw: Coords }): {
+        nw: Coords;
+        se: Coords;
+    };
 
-    function convertNwSeToNeSw(boundCorder: { nw: Coords; se: Coords }): { ne: Coords; sw: Coords };
+    function convertNwSeToNeSw(boundCorder: { nw: Coords; se: Coords }): {
+        ne: Coords;
+        sw: Coords;
+    };
 
     function fitBounds(
         bounds: NESWBounds,
@@ -366,13 +380,20 @@ declare namespace googleMapReact {
         newBounds: Bounds;
     };
 
-    function meters2ScreenPixels(meters: number, coords: Coords, zoom: number): { w: number; h: number };
+    function meters2ScreenPixels(
+        meters: number,
+        coords: Coords,
+        zoom: number,
+    ): { w: number; h: number };
 
     function tile2LatLng(point: Point, zoom: number): { coords: Coords };
 
     function latLng2Tile(coords: Coords, zoom: number): { point: Point };
 
-    function getTilesIds(start: { from: number; to: number }, zoom: number): Tile[];
+    function getTilesIds(
+        start: { from: number; to: number },
+        zoom: number,
+    ): Tile[];
 }
 
 export = googleMapReact;

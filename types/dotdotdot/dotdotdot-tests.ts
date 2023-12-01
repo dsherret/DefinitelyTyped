@@ -10,7 +10,9 @@ $("span").dotdotdot({ height: 42 });
 $("span").dotdotdot({ tolerance: 69 });
 $("span").dotdotdot({ callback: () => {} });
 $("span").dotdotdot({ callback: (isTruncated: boolean) => {} });
-$("span").dotdotdot({ callback: (isTruncated: boolean, orgContent: any) => {} });
+$("span").dotdotdot({
+    callback: (isTruncated: boolean, orgContent: any) => {},
+});
 $("span").dotdotdot({ lastCharacter: {} });
 $("span").dotdotdot({ lastCharacter: { remove: [","] } });
 $("span").dotdotdot({ lastCharacter: { noEllipsis: [".", "."] } });
@@ -40,7 +42,7 @@ $("#wrapper").dotdotdot({
 
     /*    Callback function that is fired after the ellipsis is added,
         receives two parameters: isTruncated(boolean), orgContent(string). */
-    callback: function(isTruncated, orgContent) {},
+    callback: function (isTruncated, orgContent) {},
 
     lastCharacter: {
         /*    Remove these characters from the end of the truncated text. */

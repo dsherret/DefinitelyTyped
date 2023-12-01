@@ -9,7 +9,10 @@ import { EventEmitter } from "events";
 
 declare class BetterQueue<T = any, K = any> extends EventEmitter {
     constructor(options: BetterQueue.QueueOptions<T, K>);
-    constructor(process: BetterQueue.ProcessFunction<T, K>, options?: Partial<BetterQueue.QueueOptions<T, K>>);
+    constructor(
+        process: BetterQueue.ProcessFunction<T, K>,
+        options?: Partial<BetterQueue.QueueOptions<T, K>>,
+    );
 
     push(task: T, cb?: (err: any, result: K) => void): BetterQueue.Ticket;
 
@@ -28,8 +31,14 @@ declare class BetterQueue<T = any, K = any> extends EventEmitter {
     resetStats(): void;
 
     on(event: "task_finish", listener: (taskId: any, result: K) => void): this;
-    on(event: "task_failed", listener: (taskId: any, errorMessage: string) => void): this;
-    on(event: "task_progress", listener: (taskId: any, completed: number, total: number) => void): this;
+    on(
+        event: "task_failed",
+        listener: (taskId: any, errorMessage: string) => void,
+    ): this;
+    on(
+        event: "task_progress",
+        listener: (taskId: any, completed: number, total: number) => void,
+    ): this;
     on(event: BetterQueue.QueueEvent, listener: (...args: any[]) => void): this;
 }
 
@@ -37,10 +46,17 @@ declare namespace BetterQueue {
     interface QueueOptions<T, K> {
         process: ProcessFunction<T, K>;
         filter?(task: T, cb: (error: any, task: T) => void): void;
-        merge?(oldTask: T, newTask: T, cb: (error: any, mergedTask: T) => void): void;
+        merge?(
+            oldTask: T,
+            newTask: T,
+            cb: (error: any, mergedTask: T) => void,
+        ): void;
         priority?(task: T, cb: (error: any, priority: number) => void): void;
         precondition?(cb: (error: any, passOrFail: boolean) => void): void;
-        id?: keyof T | ((task: T, cb: (error: any, id: keyof T) => void) => void) | undefined;
+        id?:
+            | keyof T
+            | ((task: T, cb: (error: any, id: keyof T) => void) => void)
+            | undefined;
         cancelIfRunning?: boolean | undefined;
         autoResume?: boolean | undefined;
         failTaskOnProcessException?: boolean | undefined;
@@ -94,13 +110,21 @@ declare namespace BetterQueue {
 
         deleteTask(taskId: any, cb: () => void): void;
 
-        putTask(taskId: any, task: T, priority: number, cb: (error: any) => void): void;
+        putTask(
+            taskId: any,
+            task: T,
+            priority: number,
+            cb: (error: any) => void,
+        ): void;
 
         takeFirstN(n: number, cb: (error: any, lockId: string) => void): void;
 
         takeLastN(n: number, cb: (error: any, lockId: string) => void): void;
 
-        getLock(lockId: string, cb: (error: any, tasks: { [taskId: string]: T }) => void): void;
+        getLock(
+            lockId: string,
+            cb: (error: any, tasks: { [taskId: string]: T }) => void,
+        ): void;
 
         releaseLock(lockId: string, cb: (error: any) => void): void;
     }

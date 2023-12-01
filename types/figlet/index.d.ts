@@ -292,7 +292,12 @@ declare namespace figlet {
         | "Whimsy"
         | "Wow";
 
-    type KerningMethods = "default" | "full" | "fitted" | "controlled smushing" | "universal smushing";
+    type KerningMethods =
+        | "default"
+        | "full"
+        | "fitted"
+        | "controlled smushing"
+        | "universal smushing";
     type PrintDirection = number;
 
     interface FittingRules {
@@ -347,14 +352,25 @@ declare namespace figlet {
         fontPath: string;
     }
 
-    function text(txt: string, cb: (error: Error | null, result?: string) => void): void;
-    function text(txt: string, font: Fonts, cb: (error: Error | null, result?: string) => void): void;
+    function text(
+        txt: string,
+        cb: (error: Error | null, result?: string) => void,
+    ): void;
+    function text(
+        txt: string,
+        font: Fonts,
+        cb: (error: Error | null, result?: string) => void,
+    ): void;
     /**
      * @description
      * This `unified-signatures` is disabled because `Fonts` type is too long
      */
     // tslint:disable-next-line: unified-signatures
-    function text(txt: string, options: Options | undefined, cb: (error: Error | null, result?: string) => void): void;
+    function text(
+        txt: string,
+        options: Options | undefined,
+        cb: (error: Error | null, result?: string) => void,
+    ): void;
 
     function textSync(txt: string, font?: Fonts): string;
     /**
@@ -365,12 +381,19 @@ declare namespace figlet {
 
     function metadata(
         font: Fonts,
-        cb: (error: Error | null, fontOptions?: FontOptions, headerComment?: string) => void,
+        cb: (
+            error: Error | null,
+            fontOptions?: FontOptions,
+            headerComment?: string,
+        ) => void,
     ): void;
 
     function defaults(opt?: Partial<Defaults>): Defaults;
 
-    function loadFont(font: Fonts, cb: (error: Error | null, fontOptions?: FontOptions) => void): void;
+    function loadFont(
+        font: Fonts,
+        cb: (error: Error | null, fontOptions?: FontOptions) => void,
+    ): void;
     /**
      * @todo
      * Use 'node' namespace to add following methods only in node environment.
@@ -406,8 +429,15 @@ declare namespace figlet {
     function parseFont(fontName: string, fontFile: string): void;
 }
 
-declare function figlet(txt: string, cb: (error: Error | null, result?: string) => void): void;
-declare function figlet(txt: string, font: figlet.Fonts, cb: (error: Error | null, result?: string) => void): void;
+declare function figlet(
+    txt: string,
+    cb: (error: Error | null, result?: string) => void,
+): void;
+declare function figlet(
+    txt: string,
+    font: figlet.Fonts,
+    cb: (error: Error | null, result?: string) => void,
+): void;
 
 declare function figlet(
     txt: string,

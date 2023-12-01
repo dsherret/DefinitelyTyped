@@ -37,6 +37,9 @@ declare module "leaflet" {
         /**
          * Creates a feature subgroup, optionally given an initial parent group and a set of layers.
          */
-        function subGroup(parentGroup?: LayerGroup, layers?: Layer[]): FeatureGroup.SubGroup;
+        function subGroup(
+            parentGroup?: LayerGroup,
+            layers?: Layer[],
+        ): FeatureGroup.SubGroup;
     }
 }

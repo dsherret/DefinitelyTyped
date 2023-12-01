@@ -45,8 +45,12 @@ interface GridsterResizable {
     max_size?: number[] | undefined;
     min_size?: number[] | undefined;
     resize?: ((event: Event, ui: GridsterUi, $el: JQuery) => void) | undefined;
-    start?: ((event: Event, ui: { helper: JQuery }, $el: JQuery) => void) | undefined;
-    stop?: ((event: Event, ui: { helper: JQuery }, $el: JQuery) => void) | undefined;
+    start?:
+        | ((event: Event, ui: { helper: JQuery }, $el: JQuery) => void)
+        | undefined;
+    stop?:
+        | ((event: Event, ui: { helper: JQuery }, $el: JQuery) => void)
+        | undefined;
 }
 
 interface GridsterUi {
@@ -197,17 +201,35 @@ interface Gridster {
      * @param row The row the widget should start in.
      * @return Returns the jQuery wrapped HTMLElement representing the widget that was just created.
      */
-    add_widget(html: string, size_x?: number, size_y?: number, col?: number, row?: number): JQuery;
+    add_widget(
+        html: string,
+        size_x?: number,
+        size_y?: number,
+        col?: number,
+        row?: number,
+    ): JQuery;
 
     /**
      * @see add_widget
      */
-    add_widget(html: HTMLElement, size_x?: number, size_y?: number, col?: number, row?: number): JQuery;
+    add_widget(
+        html: HTMLElement,
+        size_x?: number,
+        size_y?: number,
+        col?: number,
+        row?: number,
+    ): JQuery;
 
     /**
      * @see add_widget
      */
-    add_widget(html: JQuery, size_x?: number, size_y?: number, col?: number, row?: number): JQuery;
+    add_widget(
+        html: JQuery,
+        size_x?: number,
+        size_y?: number,
+        col?: number,
+        row?: number,
+    ): JQuery;
 
     /**
      * Get the highest occupied cell.
@@ -244,17 +266,28 @@ interface Gridster {
      * @param callback Callback function executed when the widget is removed.
      * @return Returns the instance of the Gridster class.
      */
-    remove_widget(el: HTMLElement, silent?: boolean, callback?: (el: HTMLElement) => void): Gridster;
+    remove_widget(
+        el: HTMLElement,
+        silent?: boolean,
+        callback?: (el: HTMLElement) => void,
+    ): Gridster;
 
     /**
      * @see remove_widget
      */
-    remove_widget(el: HTMLElement, callback: (el: HTMLElement) => void): Gridster;
+    remove_widget(
+        el: HTMLElement,
+        callback: (el: HTMLElement) => void,
+    ): Gridster;
 
     /**
      * @see remove_widget
      */
-    remove_widget(el: JQuery, silent?: boolean, callback?: (el: HTMLElement) => void): Gridster;
+    remove_widget(
+        el: JQuery,
+        silent?: boolean,
+        callback?: (el: HTMLElement) => void,
+    ): Gridster;
 
     /**
      * @see remove_widget

@@ -50,7 +50,11 @@ function react_component(): void {
     result = $(Person, ["hello", $("span", "world")]); // mixed array of children
 
     // with component props
-    const props: PersonProps = { firstName: "Bob", lastName: "Garfield", age: 72 };
+    const props: PersonProps = {
+        firstName: "Bob",
+        lastName: "Garfield",
+        age: 72,
+    };
     result = $(Person, props); // no children
     result = $(Person, props, "hello"); // one string child
     result = $(Person, props, $("span", "world")); // one element child

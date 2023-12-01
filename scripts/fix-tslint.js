@@ -6,7 +6,11 @@ import * as fs from "node:fs";
 const home = new URL("../types/", import.meta.url);
 
 for (const dirName of fs.readdirSync(home)) {
-    if (dirName.startsWith(".") || dirName === "node_modules" || dirName === "scripts") {
+    if (
+        dirName.startsWith(".") ||
+        dirName === "node_modules" ||
+        dirName === "scripts"
+    ) {
         continue;
     }
 
@@ -32,9 +36,10 @@ function fixTslint(dir) {
     /** @type {any} */
     const json = JSON.parse(fs.readFileSync(target, "utf-8"));
     json.rules = fixRules(json.rules);
-    const text = Object.keys(json).length === 1
-        ? "{ \"extends\": \"@definitelytyped/dtslint/dt.json\" }"
-        : JSON.stringify(json, undefined, 4);
+    const text =
+        Object.keys(json).length === 1
+            ? '{ "extends": "@definitelytyped/dtslint/dt.json" }'
+            : JSON.stringify(json, undefined, 4);
     fs.writeFileSync(target, text + "\n", "utf-8");
 }
 
@@ -42,5 +47,7 @@ function fixTslint(dir) {
  * @param {{}} rules
  */
 function fixRules(rules) {
-    return Object.fromEntries(Object.entries(rules).map(([key, value]) => [key, value]));
+    return Object.fromEntries(
+        Object.entries(rules).map(([key, value]) => [key, value]),
+    );
 }

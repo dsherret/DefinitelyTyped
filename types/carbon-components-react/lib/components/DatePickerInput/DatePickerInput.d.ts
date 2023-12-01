@@ -2,7 +2,8 @@ import * as React from "react";
 import { CarbonInputSize, ReactInputAttr } from "../../../typings/shared";
 
 type ExcludedAttributes = "className" | "id" | "size";
-export interface DatePickerInputProps extends Omit<ReactInputAttr, ExcludedAttributes> {
+export interface DatePickerInputProps
+    extends Omit<ReactInputAttr, ExcludedAttributes> {
     datePickerType?: "range" | "simple" | "single" | undefined;
     helperText?: React.ReactNode | undefined;
     hideLabel?: boolean | undefined;

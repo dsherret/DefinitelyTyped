@@ -9,7 +9,7 @@ app.use(
     query({
         delimiter: "string",
         depth: 123,
-        decoder: str => str.toLowerCase(),
+        decoder: (str) => str.toLowerCase(),
         arrayLimit: 123,
         parseArrays: true,
         allowDots: true,

@@ -5,9 +5,15 @@ declare namespace GoogleAppsScript {
                 // Gets one resource by id.
                 get(groupUniqueId: string): AdminGroupsSettings.Schema.Groups;
                 // Updates an existing resource. This method supports patch semantics.
-                patch(resource: Schema.Groups, groupUniqueId: string): AdminGroupsSettings.Schema.Groups;
+                patch(
+                    resource: Schema.Groups,
+                    groupUniqueId: string,
+                ): AdminGroupsSettings.Schema.Groups;
                 // Updates an existing resource.
-                update(resource: Schema.Groups, groupUniqueId: string): AdminGroupsSettings.Schema.Groups;
+                update(
+                    resource: Schema.Groups,
+                    groupUniqueId: string,
+                ): AdminGroupsSettings.Schema.Groups;
             }
         }
         namespace Schema {

@@ -1,5 +1,9 @@
 import * as React from "react";
-import { ForwardRefReturn, TooltipAlignment, TooltipPosition } from "../../../typings/shared";
+import {
+    ForwardRefReturn,
+    TooltipAlignment,
+    TooltipPosition,
+} from "../../../typings/shared";
 import { TextInputSharedProps } from "./props";
 
 export interface PasswordInputProps extends TextInputSharedProps {
@@ -14,6 +18,9 @@ export interface PasswordInputProps extends TextInputSharedProps {
     warnText?: React.ReactNode | undefined;
 }
 
-declare const PasswordInput: ForwardRefReturn<HTMLInputElement, PasswordInputProps>;
+declare const PasswordInput: ForwardRefReturn<
+    HTMLInputElement,
+    PasswordInputProps
+>;
 
 export default PasswordInput;

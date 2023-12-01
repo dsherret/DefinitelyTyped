@@ -27,7 +27,11 @@ export function createIconSet(
  *
  * @see http://fontello.com
  */
-export function createIconSetFromFontello(config: {}, fontName?: string, fontFile?: string): typeof Icon;
+export function createIconSetFromFontello(
+    config: {},
+    fontName?: string,
+    fontFile?: string,
+): typeof Icon;
 
 /**
  * Convenience method to create a custom font from IcoMoon
@@ -42,4 +46,8 @@ export function createIconSetFromFontello(config: {}, fontName?: string, fontFil
  *
  * @see https://icomoon.io/app
  */
-export function createIconSetFromIcoMoon(config: {}, fontName?: string, fontFile?: string): typeof Icon;
+export function createIconSetFromIcoMoon(
+    config: {},
+    fontName?: string,
+    fontFile?: string,
+): typeof Icon;

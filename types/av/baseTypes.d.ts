@@ -28,6 +28,5 @@ declare namespace AV {
 
     type Encoding = "ascii" | "utf8" | "utf16-be" | "utf16-le" | "utf16-bom";
 
-    class UnderflowError extends Error {
-    }
+    class UnderflowError extends Error {}
 }

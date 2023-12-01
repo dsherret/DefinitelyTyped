@@ -31,6 +31,8 @@ declare namespace logrotateStream {
  * Create a rotating log stream.
  * @returns a writable stream to a rotating log file
  */
-declare function logrotateStream(opts: logrotateStream.Options): stream.Writable;
+declare function logrotateStream(
+    opts: logrotateStream.Options,
+): stream.Writable;
 
 export = logrotateStream;

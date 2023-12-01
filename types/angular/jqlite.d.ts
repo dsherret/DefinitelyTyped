@@ -45,14 +45,19 @@ interface JQuery {
      * @param content2 One or more additional DOM elements, arrays of elements, HTML strings, or jQuery objects to insert after each element in the set of matched elements.
      * @see {@link https://api.jquery.com/after/#after-content-content}
      */
-    after(content1: JQuery | any[] | Element | DocumentFragment | Text | string, ...content2: any[]): this;
+    after(
+        content1: JQuery | any[] | Element | DocumentFragment | Text | string,
+        ...content2: any[]
+    ): this;
     /**
      * Insert content, specified by the parameter, after each element in the set of matched elements.
      *
      * @param func A function that returns an HTML string, DOM element(s), or jQuery object to insert after each element in the set of matched elements. Receives the index position of the element in the set as an argument. Within the function, this refers to the current element in the set.
      * @see {@link https://api.jquery.com/after/#after-function}
      */
-    after(func: (index: number, html: string) => string | Element | JQuery): this;
+    after(
+        func: (index: number, html: string) => string | Element | JQuery,
+    ): this;
 
     /**
      * Insert content, specified by the parameter, to the end of each element in the set of matched elements.
@@ -61,14 +66,19 @@ interface JQuery {
      * @param content2 One or more additional DOM elements, arrays of elements, HTML strings, or jQuery objects to insert at the end of each element in the set of matched elements.
      * @see {@link https://api.jquery.com/append/#append-content-content}
      */
-    append(content1: JQuery | any[] | Element | DocumentFragment | Text | string, ...content2: any[]): this;
+    append(
+        content1: JQuery | any[] | Element | DocumentFragment | Text | string,
+        ...content2: any[]
+    ): this;
     /**
      * Insert content, specified by the parameter, to the end of each element in the set of matched elements.
      *
      * @param func A function that returns an HTML string, DOM element(s), or jQuery object to insert at the end of each element in the set of matched elements. Receives the index position of the element in the set and the old HTML value of the element as arguments. Within the function, this refers to the current element in the set.
      * @see {@link https://api.jquery.com/append/#append-function}
      */
-    append(func: (index: number, html: string) => string | Element | JQuery): this;
+    append(
+        func: (index: number, html: string) => string | Element | JQuery,
+    ): this;
 
     /**
      * Get the value of an attribute for the first element in the set of matched elements.
@@ -100,7 +110,10 @@ interface JQuery {
      * @param handler A function to execute each time the event is triggered.
      * @see {@link https://api.jquery.com/bind/#bind-eventType-eventData-handler}
      */
-    bind(eventType: string, handler: (eventObject: JQueryEventObject) => any): this;
+    bind(
+        eventType: string,
+        handler: (eventObject: JQueryEventObject) => any,
+    ): this;
     /**
      * Attach a handler to an event for the elements.
      *
@@ -169,7 +182,10 @@ interface JQuery {
      * @param value A function returning the value to set. this is the current element. Receives the index position of the element in the set and the old value as arguments.
      * @see {@link https://api.jquery.com/css/#css-propertyName-function}
      */
-    css(propertyName: string, value: (index: number, value: string) => string | number): this;
+    css(
+        propertyName: string,
+        value: (index: number, value: string) => string | number,
+    ): this;
     /**
      * Set one or more CSS properties for the set of matched elements.
      *
@@ -280,7 +296,10 @@ interface JQuery {
      * @param handler A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false. Rest parameter args is for optional parameters passed to jQuery.trigger(). Note that the actual parameters on the event handler function must be marked as optional (? syntax).
      * @see {@link https://api.jquery.com/on/#on-events-selector-data-handler}
      */
-    on(events: string, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): this;
+    on(
+        events: string,
+        handler: (eventObject: JQueryEventObject, ...args: any[]) => any,
+    ): this;
     /**
      * Attach an event handler function for one or more events to the selected elements.
      *
@@ -289,7 +308,11 @@ interface JQuery {
      * @param handler A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false.
      * @see {@link https://api.jquery.com/on/#on-events-selector-data-handler}
      */
-    on(events: string, data: any, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): this;
+    on(
+        events: string,
+        data: any,
+        handler: (eventObject: JQueryEventObject, ...args: any[]) => any,
+    ): this;
     /**
      * Attach an event handler function for one or more events to the selected elements.
      *
@@ -298,7 +321,11 @@ interface JQuery {
      * @param handler A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false.
      * @see {@link https://api.jquery.com/on/#on-events-selector-data-handler}
      */
-    on(events: string, selector: string, handler: (eventObject: JQueryEventObject, ...eventData: any[]) => any): this;
+    on(
+        events: string,
+        selector: string,
+        handler: (eventObject: JQueryEventObject, ...eventData: any[]) => any,
+    ): this;
     /**
      * Attach an event handler function for one or more events to the selected elements.
      *
@@ -323,7 +350,12 @@ interface JQuery {
      * @see {@link https://api.jquery.com/on/#on-events-selector-data}
      */
     on(
-        events: { [key: string]: (eventObject: JQueryEventObject, ...args: any[]) => any },
+        events: {
+            [key: string]: (
+                eventObject: JQueryEventObject,
+                ...args: any[]
+            ) => any;
+        },
         selector?: string,
         data?: any,
     ): this;
@@ -334,7 +366,15 @@ interface JQuery {
      * @param data Data to be passed to the handler in event.data when an event occurs.
      * @see {@link https://api.jquery.com/on/#on-events-selector-data}
      */
-    on(events: { [key: string]: (eventObject: JQueryEventObject, ...args: any[]) => any }, data?: any): this;
+    on(
+        events: {
+            [key: string]: (
+                eventObject: JQueryEventObject,
+                ...args: any[]
+            ) => any;
+        },
+        data?: any,
+    ): this;
 
     /**
      * Remove an event handler.
@@ -349,7 +389,11 @@ interface JQuery {
      * @param handler A handler function previously attached for the event(s), or the special value false.
      * @see {@link https://api.jquery.com/off/#off-events-selector-handler}
      */
-    off(events: string, selector?: string, handler?: (eventObject: JQueryEventObject) => any): this;
+    off(
+        events: string,
+        selector?: string,
+        handler?: (eventObject: JQueryEventObject) => any,
+    ): this;
     /**
      * Remove an event handler.
      *
@@ -357,7 +401,10 @@ interface JQuery {
      * @param handler A handler function previously attached for the event(s), or the special value false. Takes handler with extra args that can be attached with on().
      * @see {@link https://api.jquery.com/off/#off-events-selector-handler}
      */
-    off(events: string, handler: (eventObject: JQueryEventObject, ...args: any[]) => any): this;
+    off(
+        events: string,
+        handler: (eventObject: JQueryEventObject, ...args: any[]) => any,
+    ): this;
     /**
      * Remove an event handler.
      *
@@ -391,7 +438,11 @@ interface JQuery {
      * @param handler A function to execute at the time the event is triggered.
      * @see {@link https://api.jquery.com/one/#one-events-data-handler}
      */
-    one(events: string, data: Object, handler: (eventObject: JQueryEventObject) => any): this;
+    one(
+        events: string,
+        data: Object,
+        handler: (eventObject: JQueryEventObject) => any,
+    ): this;
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
      *
@@ -400,7 +451,11 @@ interface JQuery {
      * @param handler A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false.
      * @see {@link https://api.jquery.com/one/#one-events-selector-data-handler}
      */
-    one(events: string, selector: string, handler: (eventObject: JQueryEventObject) => any): this;
+    one(
+        events: string,
+        selector: string,
+        handler: (eventObject: JQueryEventObject) => any,
+    ): this;
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
      *
@@ -410,7 +465,12 @@ interface JQuery {
      * @param handler A function to execute when the event is triggered. The value false is also allowed as a shorthand for a function that simply does return false.
      * @see {@link https://api.jquery.com/one/#one-events-selector-data-handler}
      */
-    one(events: string, selector: string, data: any, handler: (eventObject: JQueryEventObject) => any): this;
+    one(
+        events: string,
+        selector: string,
+        data: any,
+        handler: (eventObject: JQueryEventObject) => any,
+    ): this;
     /**
      * Attach a handler to an event for the elements. The handler is executed at most once per element per event type.
      *
@@ -443,14 +503,19 @@ interface JQuery {
      * @param content2 One or more additional DOM elements, arrays of elements, HTML strings, or jQuery objects to insert at the beginning of each element in the set of matched elements.
      * @see {@link https://api.jquery.com/prepend/#prepend-content-content}
      */
-    prepend(content1: JQuery | any[] | Element | DocumentFragment | Text | string, ...content2: any[]): this;
+    prepend(
+        content1: JQuery | any[] | Element | DocumentFragment | Text | string,
+        ...content2: any[]
+    ): this;
     /**
      * Insert content, specified by the parameter, to the beginning of each element in the set of matched elements.
      *
      * @param func A function that returns an HTML string, DOM element(s), or jQuery object to insert at the beginning of each element in the set of matched elements. Receives the index position of the element in the set and the old HTML value of the element as arguments. Within the function, this refers to the current element in the set.
      * @see {@link https://api.jquery.com/prepend/#prepend-function}
      */
-    prepend(func: (index: number, html: string) => string | Element | JQuery): this;
+    prepend(
+        func: (index: number, html: string) => string | Element | JQuery,
+    ): this;
 
     /**
      * Get the value of a property for the first element in the set of matched elements.
@@ -481,7 +546,10 @@ interface JQuery {
      * @param func A function returning the value to set. Receives the index position of the element in the set and the old property value as arguments. Within the function, the keyword this refers to the current element.
      * @see {@link https://api.jquery.com/prop/#prop-propertyName-function}
      */
-    prop(propertyName: string, func: (index: number, oldPropertyValue: any) => any): this;
+    prop(
+        propertyName: string,
+        func: (index: number, oldPropertyValue: any) => any,
+    ): this;
 
     /**
      * Specify a function to execute when the DOM is fully loaded.
@@ -610,7 +678,10 @@ interface JQuery {
      * @param handler The function that is to be no longer executed.
      * @see {@link https://api.jquery.com/unbind/#unbind-eventType-handler}
      */
-    unbind(eventType?: string, handler?: (eventObject: JQueryEventObject) => any): this;
+    unbind(
+        eventType?: string,
+        handler?: (eventObject: JQueryEventObject) => any,
+    ): this;
     /**
      * Remove a previously-attached event handler from the elements.
      *
@@ -693,7 +764,16 @@ interface JQuery {
 }
 
 interface JQueryStatic {
-    (element: string | Element | Document | Window | JQuery | ArrayLike<Element> | (() => void)): JQLite;
+    (
+        element:
+            | string
+            | Element
+            | Document
+            | Window
+            | JQuery
+            | ArrayLike<Element>
+            | (() => void),
+    ): JQLite;
 }
 
 /**
@@ -831,14 +911,11 @@ interface JQueryKeyEventObject extends JQueryInputEventObject {
 }
 
 interface JQueryEventObject
-    extends
-        BaseJQueryEventObject,
+    extends BaseJQueryEventObject,
         JQueryCustomEventObject,
         JQueryInputEventObject,
         JQueryMouseEventObject,
-        JQueryKeyEventObject
-{
-}
+        JQueryKeyEventObject {}
 
 /**
  * The interface used to specify the properties parameter in css()

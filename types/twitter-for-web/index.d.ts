@@ -197,30 +197,36 @@ interface TwitterTweetWidgetOptions extends TwitterWidgetOptions {
     theme?: "dark" | "light" | undefined;
 }
 
-type TwitterTimelineWidgetProfileDataSource = {
-    sourceType: "profile";
-    screenName: string;
-} | {
-    sourceType: "profile";
-    userId: string;
-};
+type TwitterTimelineWidgetProfileDataSource =
+    | {
+          sourceType: "profile";
+          screenName: string;
+      }
+    | {
+          sourceType: "profile";
+          userId: string;
+      };
 
-type TwitterTimelineWidgetLikesDataSource = {
-    sourceType: "likes";
-    screenName: string;
-} | {
-    sourceType: "likes";
-    userId: string;
-};
+type TwitterTimelineWidgetLikesDataSource =
+    | {
+          sourceType: "likes";
+          screenName: string;
+      }
+    | {
+          sourceType: "likes";
+          userId: string;
+      };
 
-type TwitterTimelineWidgetListDataSource = {
-    sourceType: "list";
-    ownerScreenName: string;
-    slug: string;
-} | {
-    sourceType: "list";
-    id: string;
-};
+type TwitterTimelineWidgetListDataSource =
+    | {
+          sourceType: "list";
+          ownerScreenName: string;
+          slug: string;
+      }
+    | {
+          sourceType: "list";
+          id: string;
+      };
 
 interface TwitterTimelineWidgetCollectionDataSource {
     sourceType: "collection";
@@ -244,9 +250,8 @@ type TwitterTimelineWidgetDataSource =
  * Base type for TwitterTimelineWidgetOptions. TwitterTimelineWidgetOptions can
  * use all options of tweet widgets and button widgets
  */
-type TwitterTimelineWidgetBaseOptions =
-    & TwitterTweetWidgetOptions
-    & TwitterButtonWidgetOptions;
+type TwitterTimelineWidgetBaseOptions = TwitterTweetWidgetOptions &
+    TwitterButtonWidgetOptions;
 /**
  * The interface for additional options for embedded Timelines.
  */

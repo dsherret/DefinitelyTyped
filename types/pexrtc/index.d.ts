@@ -283,14 +283,7 @@ declare namespace PexRTC {
     type PinStatus = "none" | "required" | "optional";
     type YesNo = "YES" | "NO";
     type ParticipantRole = "chair" | "guest";
-    type LayoutTypes =
-        | "1:0"
-        | "1:7"
-        | "1:21"
-        | "2:21"
-        | "4:0"
-        | "5:7"
-        | "ac";
+    type LayoutTypes = "1:0" | "1:7" | "1:21" | "2:21" | "4:0" | "5:7" | "ac";
 
     type ServiceType =
         | "connecting"
@@ -388,7 +381,5 @@ declare namespace PexRTC {
         readonly role: "chair";
     }
 
-    type AnyParticipant =
-        | GuestParticipant
-        | HostParticipant;
+    type AnyParticipant = GuestParticipant | HostParticipant;
 }

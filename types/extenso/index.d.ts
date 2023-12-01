@@ -7,22 +7,29 @@ declare namespace Extenso {
 
     interface NumberModeOptions extends BaseOptions {
         mode?: "number" | undefined;
-        number?: {
-            gender?: "m" | "f" | undefined;
-            decimal?: "formal" | "informal" | undefined;
-        } | undefined;
+        number?:
+            | {
+                  gender?: "m" | "f" | undefined;
+                  decimal?: "formal" | "informal" | undefined;
+              }
+            | undefined;
     }
 
     interface CurrencyModeOptions extends BaseOptions {
         mode: "currency";
-        currency?: {
-            type?: "BRL" | "EUR" | undefined;
-        } | undefined;
+        currency?:
+            | {
+                  type?: "BRL" | "EUR" | undefined;
+              }
+            | undefined;
     }
 
     type Options = NumberModeOptions | CurrencyModeOptions;
 }
 
-declare function extenso(number: number | string, options?: Extenso.Options): string;
+declare function extenso(
+    number: number | string,
+    options?: Extenso.Options,
+): string;
 
 export = extenso;

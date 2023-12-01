@@ -29,9 +29,13 @@ if (comment) {
     assertType<string>(comment.get("text"));
 }
 
-assertType<DS.PromiseArray<BlogComment>>(blogPost.get("commentsAsync").reload());
+assertType<DS.PromiseArray<BlogComment>>(
+    blogPost.get("commentsAsync").reload(),
+);
 assertType<BlogComment>(blogPost.get("commentsAsync").createRecord());
-assertType<BlogComment | undefined>(blogPost.get("commentsAsync").get("firstObject"));
+assertType<BlogComment | undefined>(
+    blogPost.get("commentsAsync").get("firstObject"),
+);
 
 const commentAsync = blogPost.get("commentsAsync").get("firstObject");
 assertType<BlogComment | undefined>(commentAsync);
@@ -40,7 +44,7 @@ if (commentAsync) {
 }
 assertType<boolean>(blogPost.get("commentsAsync").get("isFulfilled"));
 
-blogPost.get("commentsAsync").then(comments => {
+blogPost.get("commentsAsync").then((comments) => {
     assertType<BlogComment | undefined>(comments.get("firstObject"));
     assertType<string>(comments.get("firstObject")!.get("text"));
 });

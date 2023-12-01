@@ -60,7 +60,12 @@ interface DateFormatI18n {
  * https://github.com/felixge/node-dateformat/blob/master/lib/dateformat.js#L18
  */
 interface DateFormatStatic {
-    (date?: Date | string | number, mask?: string, utc?: boolean, gmt?: boolean): string;
+    (
+        date?: Date | string | number,
+        mask?: string,
+        utc?: boolean,
+        gmt?: boolean,
+    ): string;
     (mask?: string, utc?: boolean, gmt?: boolean): string;
     masks: DateFormatMasks;
     i18n: DateFormatI18n;

@@ -32,7 +32,9 @@ const cm4 = CodeMirror(document.body, {
 
 const cm5 = CodeMirror(document.body, {
     // @ts-expect-error
-    rulers: [{
-        color: "green",
-    }],
+    rulers: [
+        {
+            color: "green",
+        },
+    ],
 });

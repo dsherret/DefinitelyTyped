@@ -14,7 +14,9 @@ interface Options {
     chunkSize?: number | undefined;
     transmissionDelay?: number | undefined;
     overwrite?: boolean | undefined;
-    rename?: ((fileName: string, fileInfo: FileInfo) => string | string) | undefined;
+    rename?:
+        | ((fileName: string, fileInfo: FileInfo) => string | string)
+        | undefined;
     resume?: boolean | undefined;
 }
 

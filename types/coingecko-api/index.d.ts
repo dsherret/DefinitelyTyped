@@ -228,7 +228,10 @@ interface CoinsFetchHistoryData {
         closed_issues: number;
         pull_requests_merged: number;
         pull_request_contributors: number;
-        code_additions_deletions_4_weeks: { additions: number; deletions: number };
+        code_additions_deletions_4_weeks: {
+            additions: number;
+            deletions: number;
+        };
         commit_count_4_weeks: number;
     };
     public_interest_stats: { alexa_rank: number; bing_matches: null };
@@ -334,7 +337,10 @@ interface CoinsFetchData {
         closed_issues: number;
         pull_requests_merged: number;
         pull_request_contributors: number;
-        code_additions_deletions_4_weeks: { additions: number; deletions: number };
+        code_additions_deletions_4_weeks: {
+            additions: number;
+            deletions: number;
+        };
         commit_count_4_weeks: number;
     };
     public_interest_stats: { alexa_rank: number; bing_matches: null };
@@ -478,14 +484,20 @@ declare class CoinGecko {
          * @param coinId - The coin id (can be obtained from coins.list()) eg. bitcoin.
          * @param params - Parameters to pass through to the request.
          */
-        fetchMarketChartRange(coinId: string, params: CoinsFetchMarketChartRangeParams): Promise<Response>;
+        fetchMarketChartRange(
+            coinId: string,
+            params: CoinsFetchMarketChartRangeParams,
+        ): Promise<Response>;
 
         /**
          * Get historical market data include price, market cap, and 24h volume (granularity auto).
          * @param coinId - The coin id (can be obtained from coins.list()) eg. bitcoin.
          * @param params - Parameters to pass through to the request.
          */
-        fetchMarketChart(coinId: string, params: CoinsFetchMarketChartParams): Promise<Response<CoinsFetchMarketChart>>;
+        fetchMarketChart(
+            coinId: string,
+            params: CoinsFetchMarketChartParams,
+        ): Promise<Response<CoinsFetchMarketChart>>;
 
         /**
          * List all coins with data (name, price, market, developer, community, etc) - paginated by 50
@@ -498,14 +510,20 @@ declare class CoinGecko {
          * @param coinId - (Required) The coin id (can be obtained from coins.all()) eg. bitcoin
          * @param params - Parameters to pass through to the request
          */
-        fetchHistory(coinId: string, params: CoinsFetchHistoryParams): Promise<Response<CoinsFetchHistoryData>>;
+        fetchHistory(
+            coinId: string,
+            params: CoinsFetchHistoryParams,
+        ): Promise<Response<CoinsFetchHistoryData>>;
 
         /**
          * Get current data (name, price, market, … including exchange tickers) for a coin.
          * @param coinId - (Required) The coin id (can be obtained from coins.all()) eg. bitcoin
          * @param params - Parameters to pass through to the request
          */
-        fetch(coinId: string, params: CoinsFetchParams): Promise<Response<CoinsFetchData>>;
+        fetch(
+            coinId: string,
+            params: CoinsFetchParams,
+        ): Promise<Response<CoinsFetchData>>;
     };
 
     simple: {

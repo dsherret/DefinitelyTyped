@@ -31,7 +31,8 @@ const S3ObjectAccessTierChangedNotificationEventHandler: S3NotificationEventBrid
 > = async (event, context, callback) => {
     eventBridgeEventSource = event.source;
     const detailType: "Object Access Tier Changed" = event["detail-type"];
-    const detail: S3ObjectAccessTierChangedNotificationEventDetail = event.detail;
+    const detail: S3ObjectAccessTierChangedNotificationEventDetail =
+        event.detail;
 
     const exampleEvent: S3ObjectAccessTierChangedNotificationEvent = {
         version: "0",
@@ -212,7 +213,8 @@ const S3ObjectDeletedNotificationEventHandler: S3NotificationEventBridgeHandler<
             "deletion-type": "Delete Marker Created",
         },
     };
-    lifecycleExpirationExampleEvent2.detail["deletion-type"] = "Permanently Deleted";
+    lifecycleExpirationExampleEvent2.detail["deletion-type"] =
+        "Permanently Deleted";
 
     const result: undefined = undefined;
     callback(new Error());
@@ -225,7 +227,8 @@ const S3ObjectRestoreCompletedNotificationEventHandler: S3NotificationEventBridg
 > = async (event, context, callback) => {
     eventBridgeEventSource = event.source;
     const detailType: "Object Restore Completed" = event["detail-type"];
-    const detail: S3ObjectRestoreCompletedNotificationEventDetail = event.detail;
+    const detail: S3ObjectRestoreCompletedNotificationEventDetail =
+        event.detail;
 
     const exampleEvent: S3ObjectRestoreCompletedNotificationEvent = {
         version: "0",
@@ -311,7 +314,8 @@ const S3ObjectRestoreInitiatedNotificationEventHandler: S3NotificationEventBridg
 > = async (event, context, callback) => {
     eventBridgeEventSource = event.source;
     const detailType: "Object Restore Initiated" = event["detail-type"];
-    const detail: S3ObjectRestoreInitiatedNotificationEventDetail = event.detail;
+    const detail: S3ObjectRestoreInitiatedNotificationEventDetail =
+        event.detail;
 
     const exampleEvent: S3ObjectRestoreInitiatedNotificationEvent = {
         version: "0",
@@ -360,7 +364,8 @@ const S3ObjectStorageClassChangedNotificationEventHandler: S3NotificationEventBr
 > = async (event, context, callback) => {
     eventBridgeEventSource = event.source;
     const detailType: "Object Storage Class Changed" = event["detail-type"];
-    const detail: S3ObjectStorageClassChangedNotificationEventDetail = event.detail;
+    const detail: S3ObjectStorageClassChangedNotificationEventDetail =
+        event.detail;
 
     const exampleEvent: S3ObjectStorageClassChangedNotificationEvent = {
         version: "0",

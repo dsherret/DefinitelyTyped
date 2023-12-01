@@ -7,19 +7,19 @@ tags.subtags(["de", "fr"]); // $ExpectType Subtag[]
 tags.filter(["it", "jp"]); // $ExpectType string[]
 
 // dtslint doesn’t work for these, as the order of actual types is random
-tags.search("English").forEach(t => {
+tags.search("English").forEach((t) => {
     const tag = t as tags.Tag;
     const subtag = t as tags.Subtag;
 });
-tags.search(/Klingon/).forEach(t => {
+tags.search(/Klingon/).forEach((t) => {
     const tag = t as tags.Tag;
     const subtag = t as tags.Subtag;
 });
-tags.search("Latin", true).forEach(t => {
+tags.search("Latin", true).forEach((t) => {
     const tag = t as tags.Tag;
     const subtag = t as tags.Subtag;
 });
-tags.search(/Greek/, true).forEach(t => {
+tags.search(/Greek/, true).forEach((t) => {
     const tag = t as tags.Tag;
     const subtag = t as tags.Subtag;
 });

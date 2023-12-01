@@ -1,4 +1,6 @@
-import Environment, { Environment as IEnvironment } from "@rdfjs/environment/Environment";
+import Environment, {
+    Environment as IEnvironment,
+} from "@rdfjs/environment/Environment";
 import Traverser from "@rdfjs/traverser/Traverser";
 import {
     BlankNode,
@@ -184,37 +186,37 @@ function Quad_withBlankSubject(): Quad {
 }
 
 function static_Quad_fromBaseTerms(): Quad {
-    const subject: NamedNode = <any> {};
-    const predicate: NamedNode = <any> {};
-    const object: NamedNode = <any> {};
-    const graph: NamedNode = <any> {};
+    const subject: NamedNode = <any>{};
+    const predicate: NamedNode = <any>{};
+    const object: NamedNode = <any>{};
+    const graph: NamedNode = <any>{};
 
     return rdf.quad(subject, predicate, object, graph);
 }
 
 function static_Triple_fromBaseTerms(): Quad {
-    const subject: NamedNode = <any> {};
-    const predicate: NamedNode = <any> {};
-    const object: NamedNode = <any> {};
+    const subject: NamedNode = <any>{};
+    const predicate: NamedNode = <any>{};
+    const object: NamedNode = <any>{};
 
     return rdf.quad(subject, predicate, object);
 }
 
 function instance_Quad_fromBaseTerms(): Quad {
-    const factory: DataFactoryExt = <any> {};
-    const subject: NamedNode = <any> {};
-    const predicate: NamedNode = <any> {};
-    const object: NamedNode = <any> {};
-    const graph: NamedNode = <any> {};
+    const factory: DataFactoryExt = <any>{};
+    const subject: NamedNode = <any>{};
+    const predicate: NamedNode = <any>{};
+    const object: NamedNode = <any>{};
+    const graph: NamedNode = <any>{};
 
     return factory.quad(subject, predicate, object, graph);
 }
 
 function instance_Triple_fromBaseTerms(): Quad {
-    const factory: DataFactoryExt = <any> {};
-    const subject: NamedNode = <any> {};
-    const predicate: NamedNode = <any> {};
-    const object: NamedNode = <any> {};
+    const factory: DataFactoryExt = <any>{};
+    const subject: NamedNode = <any>{};
+    const predicate: NamedNode = <any>{};
+    const object: NamedNode = <any>{};
 
     return factory.quad(subject, predicate, object);
 }
@@ -228,10 +230,12 @@ function Quad_toJSON(): boolean {
 
     const json = quad.toJSON();
 
-    return json.subject.termType === "BlankNode"
-        && json.predicate.value === "predicate"
-        && json.object.termType === "Literal"
-        && json.graph !== null;
+    return (
+        json.subject.termType === "BlankNode" &&
+        json.predicate.value === "predicate" &&
+        json.object.termType === "Literal" &&
+        json.graph !== null
+    );
 }
 
 function dataset_empty(): boolean {
@@ -239,18 +243,18 @@ function dataset_empty(): boolean {
 }
 
 function dataset_merge(): DatasetExt {
-    const other: DatasetExt = <any> {};
+    const other: DatasetExt = <any>{};
     return rdf.dataset().merge(other);
 }
 
 function dataset_map(): DatasetExt {
-    const other: DatasetExt = <any> {};
-    return rdf.dataset().map((q: QuadExt): Quad => <any> {});
+    const other: DatasetExt = <any>{};
+    return rdf.dataset().map((q: QuadExt): Quad => <any>{});
 }
 
 function dataset_match() {
     let matched: DatasetExt;
-    const term: Term = <any> {};
+    const term: Term = <any>{};
     matched = rdf.dataset().match(null, null, null, null);
     matched = rdf.dataset().match(term);
     matched = rdf.dataset().match(null, term);
@@ -259,19 +263,29 @@ function dataset_match() {
 }
 
 function test_reduce() {
-    const quad: QuadExt = <any> {};
-    const dataset: DatasetExt = <any> {};
+    const quad: QuadExt = <any>{};
+    const dataset: DatasetExt = <any>{};
 
     // $ExpectType QuadExt
     const reduced = dataset.reduce(
-        (previousValue: QuadExt, currentValue: QuadExt, currentIndex: number, self: DatasetExt) => {
+        (
+            previousValue: QuadExt,
+            currentValue: QuadExt,
+            currentIndex: number,
+            self: DatasetExt,
+        ) => {
             return previousValue;
         },
     );
 
     // $ExpectType QuadExt
     const reducedWithInitial = dataset.reduce(
-        (previousValue: QuadExt, currentValue: QuadExt, currentIndex: number, self: DatasetExt) => {
+        (
+            previousValue: QuadExt,
+            currentValue: QuadExt,
+            currentIndex: number,
+            self: DatasetExt,
+        ) => {
             return previousValue;
         },
         quad,
@@ -279,7 +293,12 @@ function test_reduce() {
 
     // $ExpectType string
     const reducedToOther = dataset.reduce(
-        (previousValue: string, currentValue: QuadExt, currentIndex: number, self: DatasetExt) => {
+        (
+            previousValue: string,
+            currentValue: QuadExt,
+            currentIndex: number,
+            self: DatasetExt,
+        ) => {
             return previousValue;
         },
         "",
@@ -287,7 +306,12 @@ function test_reduce() {
 
     // $ExpectType number
     const reducedToExplicit = dataset.reduce<number>(
-        (previousValue: number, currentValue: QuadExt, currentIndex: number, self: DatasetExt) => {
+        (
+            previousValue: number,
+            currentValue: QuadExt,
+            currentIndex: number,
+            self: DatasetExt,
+        ) => {
             return previousValue;
         },
         0,
@@ -295,7 +319,7 @@ function test_reduce() {
 }
 
 function dataset_merge_array(): DatasetExt {
-    const other: Quad[] = <any> {};
+    const other: Quad[] = <any>{};
     return rdf.dataset().merge(other);
 }
 
@@ -345,18 +369,18 @@ function Dataset_toJSON() {
 
     const json = dataset.toJSON();
 
-    json.forEach(quad => {
-        quad.subject.termType === "NamedNode"
-            && quad.predicate.value === "predicate"
-            && quad.object.termType === "Literal"
-            && quad.graph !== null;
+    json.forEach((quad) => {
+        quad.subject.termType === "NamedNode" &&
+            quad.predicate.value === "predicate" &&
+            quad.object.termType === "Literal" &&
+            quad.graph !== null;
     });
 }
 
 async function dataset_parserImport() {
-    const dataset: DatasetExt = <any> {};
-    const parserSink: Sink<EventEmitter, Stream> = <any> {};
-    const stream: Readable = <any> {};
+    const dataset: DatasetExt = <any>{};
+    const parserSink: Sink<EventEmitter, Stream> = <any>{};
+    const stream: Readable = <any>{};
 
     const promise: DatasetExt = await dataset.import(parserSink.import(stream));
 }
@@ -385,40 +409,40 @@ function constructedTerms() {
 }
 
 function dataset_addAll() {
-    const quad: Quad = <any> {};
-    let dataset: DatasetExt = <any> {};
+    const quad: Quad = <any>{};
+    let dataset: DatasetExt = <any>{};
     dataset = dataset.addAll([quad, quad]);
 }
 
 function dataset_deleteMatches() {
-    const term: NamedNode = <any> {};
-    const graph: NamedNode | DefaultGraph = <any> {};
-    let dataset: DatasetExt = <any> {};
+    const term: NamedNode = <any>{};
+    const graph: NamedNode | DefaultGraph = <any>{};
+    let dataset: DatasetExt = <any>{};
     dataset = dataset.deleteMatches(null, null, term, graph);
 }
 
 function dataset_difference() {
-    const dataset: DatasetExt = <any> {};
-    const datasetCore: DatasetCore = <any> {};
+    const dataset: DatasetExt = <any>{};
+    const datasetCore: DatasetCore = <any>{};
     const diff: DatasetExt = dataset.difference(datasetCore);
 }
 
 function dataset_every() {
-    const dataset: DatasetExt = <any> {};
+    const dataset: DatasetExt = <any>{};
     const result: boolean = dataset.every((quad: QuadExt) => {
         return true;
     });
 }
 
 function dataset_forEach() {
-    const dataset: DatasetExt = <any> {};
+    const dataset: DatasetExt = <any>{};
     dataset.forEach((quad: QuadExt) => {
         //
     });
 }
 
 function dataset_toStream() {
-    const dataset: DatasetExt = <any> {};
+    const dataset: DatasetExt = <any>{};
     // $ExpectType Stream<QuadExt>
     const stream = dataset.toStream();
 }
@@ -431,20 +455,23 @@ function testDataFactory() {
     blankNode = rdf.blankNode("b1");
     const quad = rdf.quad(blankNode, namedNode, literal); // $ExpectType QuadExt
 
-    const originalNamedNode: NamedNode = <any> {};
+    const originalNamedNode: NamedNode = <any>{};
     const fromNamed: NamedNodeExt = rdf.fromTerm(originalNamedNode);
-    const originalQuad: Quad = <any> {};
+    const originalQuad: Quad = <any>{};
     const fromQuad: QuadExt = rdf.fromQuad(originalQuad);
 }
 
 function testDatasetFactory() {
     const emptyDataset: DatasetExt = rdf.dataset();
 
-    const quad: Quad = <any> {};
+    const quad: Quad = <any>{};
     const datasetWithQuads: DatasetExt = rdf.dataset([quad, quad, quad]);
 
-    const graph: NamedNode | DefaultGraph = <any> {};
-    const datasetWithQuadsInGraph: DatasetExt = rdf.dataset([quad, quad, quad], graph);
+    const graph: NamedNode | DefaultGraph = <any>{};
+    const datasetWithQuadsInGraph: DatasetExt = rdf.dataset(
+        [quad, quad, quad],
+        graph,
+    );
 }
 
 type DatasetFoo = DatasetCore & {
@@ -455,23 +482,27 @@ function testClownface() {
     const anyPointer = rdf.clownface();
     anyPointer.dataset; // $ExpectType DatasetExt
 
-    const dataset: DatasetFoo = <any> {};
+    const dataset: DatasetFoo = <any>{};
     const anyPointerExistingDataset = rdf.clownface({ dataset });
     anyPointerExistingDataset.dataset; // $ExpectType DatasetFoo
 
     const namedNode = rdf.clownface({ term: rdf.namedNode("foo") });
     namedNode.dataset; // $ExpectType DatasetExt
 
-    const namedNodes = rdf.clownface({ term: [rdf.namedNode("foo"), rdf.namedNode("bar")] });
+    const namedNodes = rdf.clownface({
+        term: [rdf.namedNode("foo"), rdf.namedNode("bar")],
+    });
     namedNodes.dataset; // $ExpectType DatasetExt
 
-    const other: clownface.MultiPointer<NamedNode | BlankNode, DatasetFoo> = <any> {};
+    const other: clownface.MultiPointer<NamedNode | BlankNode, DatasetFoo> = <
+        any
+    >{};
     const fromOther = rdf.clownface(other);
     fromOther.dataset; // $ExpectType DatasetFoo
 }
 
 async function testFetch() {
-    const formats: any = <any> {};
+    const formats: any = <any>{};
     const res = await rdf.fetch("foo");
     const stream: Stream = await res.quadStream();
     const dataset: DatasetCore = await res.dataset();
@@ -534,11 +565,7 @@ function testBundledFactories() {
         DataFactory,
     ]);
 
-    const {
-        dataset,
-        quad,
-        clownface,
-    } = env;
+    const { dataset, quad, clownface } = env;
 }
 
 function testEnvironmentAssignable() {

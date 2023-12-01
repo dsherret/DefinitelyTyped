@@ -1,5 +1,9 @@
 import * as React from "react";
-import { InternationalProps, ReactAttr, ReactButtonAttr } from "../../../typings/shared";
+import {
+    InternationalProps,
+    ReactAttr,
+    ReactButtonAttr,
+} from "../../../typings/shared";
 
 // ProgressStep
 
@@ -14,8 +18,8 @@ export interface RenderLabelProps {
 }
 
 export interface ProgressStepProps
-    extends Omit<ReactButtonAttr, "onClick">, InternationalProps<ProgressStepTranslationKey>
-{
+    extends Omit<ReactButtonAttr, "onClick">,
+        InternationalProps<ProgressStepTranslationKey> {
     complete?: boolean | undefined; // provided by parent
     current?: boolean | undefined;
     description?: string | undefined;
@@ -33,7 +37,8 @@ export declare const ProgressStep: React.FC<ProgressStepProps>;
 
 // ProgressIndicator
 
-export interface ProgressIndicatorProps extends Omit<ReactAttr<HTMLUListElement>, "onChange"> {
+export interface ProgressIndicatorProps
+    extends Omit<ReactAttr<HTMLUListElement>, "onChange"> {
     currentIndex?: number | undefined;
     onChange?(index: number): void;
     vertical?: boolean | undefined;

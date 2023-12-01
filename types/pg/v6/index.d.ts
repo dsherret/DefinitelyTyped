@@ -72,7 +72,9 @@ export declare class Pool extends events.EventEmitter {
     constructor(config?: PoolConfig);
 
     connect(): Promise<Client>;
-    connect(callback: (err: Error, client: Client, done: () => void) => void): void;
+    connect(
+        callback: (err: Error, client: Client, done: () => void) => void,
+    ): void;
 
     end(callback?: () => void): Promise<void>;
 
@@ -80,8 +82,15 @@ export declare class Pool extends events.EventEmitter {
     query(queryTextOrConfig: string | QueryConfig): Promise<QueryResult>;
     query(queryText: string, values: any[]): Promise<QueryResult>;
 
-    query(queryTextOrConfig: string | QueryConfig, callback: (err: Error, result: QueryResult) => void): Query;
-    query(queryText: string, values: any[], callback: (err: Error, result: QueryResult) => void): Query;
+    query(
+        queryTextOrConfig: string | QueryConfig,
+        callback: (err: Error, result: QueryResult) => void,
+    ): Query;
+    query(
+        queryText: string,
+        values: any[],
+        callback: (err: Error, result: QueryResult) => void,
+    ): Query;
 
     on(event: "error", listener: (err: Error, client: Client) => void): this;
     on(event: "connect" | "acquire", listener: (client: Client) => void): this;
@@ -99,8 +108,15 @@ export declare class Client extends events.EventEmitter {
     query(queryTextOrConfig: string | QueryConfig): Promise<QueryResult>;
     query(queryText: string, values: any[]): Promise<QueryResult>;
 
-    query(queryTextOrConfig: string | QueryConfig, callback: (err: Error, result: QueryResult) => void): Query;
-    query(queryText: string, values: any[], callback: (err: Error, result: QueryResult) => void): Query;
+    query(
+        queryTextOrConfig: string | QueryConfig,
+        callback: (err: Error, result: QueryResult) => void,
+    ): Query;
+    query(
+        queryText: string,
+        values: any[],
+        callback: (err: Error, result: QueryResult) => void,
+    ): Query;
 
     copyFrom(queryText: string): stream.Writable;
     copyTo(queryText: string): stream.Readable;
@@ -110,12 +126,18 @@ export declare class Client extends events.EventEmitter {
 
     on(event: "drain", listener: () => void): this;
     on(event: "error", listener: (err: Error) => void): this;
-    on(event: "notification" | "notice", listener: (message: any) => void): this;
+    on(
+        event: "notification" | "notice",
+        listener: (message: any) => void,
+    ): this;
     on(event: "end", listener: () => void): this;
 }
 
 export declare class Query extends events.EventEmitter {
-    on(event: "row", listener: (row: any, result?: ResultBuilder) => void): this;
+    on(
+        event: "row",
+        listener: (row: any, result?: ResultBuilder) => void,
+    ): this;
     on(event: "error", listener: (err: Error) => void): this;
     on(event: "end", listener: (result: ResultBuilder) => void): this;
 }

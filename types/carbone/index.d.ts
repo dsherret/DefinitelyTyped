@@ -9,7 +9,12 @@ export interface ConversionFormat {
 export interface CurrencyRates {
     [currency: string]: number;
 }
-export type DocumentType = "document" | "web" | "graphics" | "spreadsheet" | "presentation";
+export type DocumentType =
+    | "document"
+    | "web"
+    | "graphics"
+    | "spreadsheet"
+    | "presentation";
 export interface Enums {
     [type: string]: string[] | { [key: string]: string };
 }
@@ -24,7 +29,11 @@ export interface FormatterContext {
     lang: string;
     stopPropagation: boolean;
 }
-export type Formatter = (this: FormatterContext, data: any, ...params: any[]) => void;
+export type Formatter = (
+    this: FormatterContext,
+    data: any,
+    ...params: any[]
+) => void;
 export interface Formatters {
     [name: string]: Formatter;
 }
@@ -56,9 +65,15 @@ export interface Options {
 export function set(options: Options): void;
 export function reset(): void;
 export function addFormatters(customFormatters: Formatters): void;
-export function addTemplate(fileId: string, data: string | Buffer, callback: VoidCallback): void;
+export function addTemplate(
+    fileId: string,
+    data: string | Buffer,
+    callback: VoidCallback,
+): void;
 export function removeTemplate(fileId: string, callback: VoidCallback): void;
-export function listConversionFormats(documentType: DocumentType): ConversionFormat[];
+export function listConversionFormats(
+    documentType: DocumentType,
+): ConversionFormat[];
 
 export interface RenderXMLOptions {
     complement?: object | undefined;
@@ -69,9 +84,21 @@ export interface RenderXMLOptions {
     existingVariables?: Variable[] | undefined;
     extension?: string | undefined;
 }
-export type RenderXMLCallback = (err: NodeJS.ErrnoException | null, xmlResult: string) => void;
-export function renderXML(xml: string, data: object, options: RenderXMLOptions, callback: RenderXMLCallback): void;
-export function renderXML(xml: string, data: object, callback: RenderXMLCallback): void;
+export type RenderXMLCallback = (
+    err: NodeJS.ErrnoException | null,
+    xmlResult: string,
+) => void;
+export function renderXML(
+    xml: string,
+    data: object,
+    options: RenderXMLOptions,
+    callback: RenderXMLCallback,
+): void;
+export function renderXML(
+    xml: string,
+    data: object,
+    callback: RenderXMLCallback,
+): void;
 
 export interface RenderOptions {
     complement?: object | undefined;
@@ -85,18 +112,47 @@ export interface RenderOptions {
     currencyTarget?: string | undefined;
     currencyRates?: CurrencyRates | undefined;
 }
-export type RenderCallback = (err: NodeJS.ErrnoException | null, result: Buffer | string, reportName: string) => void;
-export function render(templatePath: string, data: object, options: RenderOptions, callback: RenderCallback): void;
-export function render(templatePath: string, data: object, callback: RenderCallback): void;
+export type RenderCallback = (
+    err: NodeJS.ErrnoException | null,
+    result: Buffer | string,
+    reportName: string,
+) => void;
+export function render(
+    templatePath: string,
+    data: object,
+    options: RenderOptions,
+    callback: RenderCallback,
+): void;
+export function render(
+    templatePath: string,
+    data: object,
+    callback: RenderCallback,
+): void;
 
-export type ConvertCallback = (err: NodeJS.ErrnoException | null, result: Buffer) => void;
-export function convert(data: Buffer, options: RenderOptions & { extension: string }, callback: ConvertCallback): void;
+export type ConvertCallback = (
+    err: NodeJS.ErrnoException | null,
+    result: Buffer,
+) => void;
+export function convert(
+    data: Buffer,
+    options: RenderOptions & { extension: string },
+    callback: ConvertCallback,
+): void;
 
 export interface DecodedFilenameResult {
     reportName: string;
     extension: string;
 }
-export function decodeRenderedFilename(pathOrFilename: string, prefixLength?: number): DecodedFilenameResult;
+export function decodeRenderedFilename(
+    pathOrFilename: string,
+    prefixLength?: number,
+): DecodedFilenameResult;
 
-export type GetFileExtensionCallback = (err: NodeJS.ErrnoException | null, extension: string) => void;
-export function getFileExtension(filePath: string, callback: GetFileExtensionCallback): void;
+export type GetFileExtensionCallback = (
+    err: NodeJS.ErrnoException | null,
+    extension: string,
+) => void;
+export function getFileExtension(
+    filePath: string,
+    callback: GetFileExtensionCallback,
+): void;

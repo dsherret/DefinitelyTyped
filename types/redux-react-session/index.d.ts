@@ -26,7 +26,10 @@ export interface SessionServiceOptions {
 export class sessionService /*implements Reducer<SessionState, Action>*/ {
     constructor(store: Store, options?: SessionServiceOptions);
     static setOptions(store: Store, options?: SessionServiceOptions): void;
-    static initSessionService(store: Store, options?: SessionServiceOptions): Promise<any>;
+    static initSessionService(
+        store: Store,
+        options?: SessionServiceOptions,
+    ): Promise<any>;
     static saveFromClient(cookies: any): any;
     static invalidateSession(): void;
     static attemptLoadUser(): Promise<any>;

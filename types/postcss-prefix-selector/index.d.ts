@@ -7,14 +7,16 @@ interface Options {
     includeFiles?: ReadonlyArray<string | RegExp> | undefined;
     transform?:
         | ((
-            prefix: Readonly<string>,
-            selector: Readonly<string>,
-            prefixedSelector: Readonly<string>,
-            file: Readonly<string>,
-        ) => string)
+              prefix: Readonly<string>,
+              selector: Readonly<string>,
+              prefixedSelector: Readonly<string>,
+              file: Readonly<string>,
+          ) => string)
         | undefined;
 }
 
-declare function postcssPrefixSelector(options: Readonly<Options>): (root: Root) => void;
+declare function postcssPrefixSelector(
+    options: Readonly<Options>,
+): (root: Root) => void;
 
 export = postcssPrefixSelector;

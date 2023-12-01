@@ -202,7 +202,10 @@ declare namespace Ffmpeg {
 
     class FfmpegCommand extends events.EventEmitter {
         constructor(options?: FfmpegCommandOptions);
-        constructor(input?: string | stream.Readable, options?: FfmpegCommandOptions);
+        constructor(
+            input?: string | stream.Readable,
+            options?: FfmpegCommandOptions,
+        );
 
         // options/inputs
         mergeAdd(source: string | stream.Readable): FfmpegCommand;
@@ -239,22 +242,44 @@ declare namespace Ffmpeg {
         audioFrequency(freq: number): FfmpegCommand;
         withAudioQuality(quality: number): FfmpegCommand;
         audioQuality(quality: number): FfmpegCommand;
-        withAudioFilter(filters: string | string[] | AudioVideoFilter[]): FfmpegCommand;
-        withAudioFilters(filters: string | string[] | AudioVideoFilter[]): FfmpegCommand;
-        audioFilter(filters: string | string[] | AudioVideoFilter[]): FfmpegCommand;
-        audioFilters(filters: string | string[] | AudioVideoFilter[]): FfmpegCommand;
+        withAudioFilter(
+            filters: string | string[] | AudioVideoFilter[],
+        ): FfmpegCommand;
+        withAudioFilters(
+            filters: string | string[] | AudioVideoFilter[],
+        ): FfmpegCommand;
+        audioFilter(
+            filters: string | string[] | AudioVideoFilter[],
+        ): FfmpegCommand;
+        audioFilters(
+            filters: string | string[] | AudioVideoFilter[],
+        ): FfmpegCommand;
 
         // options/video;
         withNoVideo(): FfmpegCommand;
         noVideo(): FfmpegCommand;
         withVideoCodec(codec: string): FfmpegCommand;
         videoCodec(codec: string): FfmpegCommand;
-        withVideoBitrate(bitrate: string | number, constant?: boolean): FfmpegCommand;
-        videoBitrate(bitrate: string | number, constant?: boolean): FfmpegCommand;
-        withVideoFilter(filters: string | string[] | AudioVideoFilter[]): FfmpegCommand;
-        withVideoFilters(filters: string | string[] | AudioVideoFilter[]): FfmpegCommand;
-        videoFilter(filters: string | string[] | AudioVideoFilter[]): FfmpegCommand;
-        videoFilters(filters: string | string[] | AudioVideoFilter[]): FfmpegCommand;
+        withVideoBitrate(
+            bitrate: string | number,
+            constant?: boolean,
+        ): FfmpegCommand;
+        videoBitrate(
+            bitrate: string | number,
+            constant?: boolean,
+        ): FfmpegCommand;
+        withVideoFilter(
+            filters: string | string[] | AudioVideoFilter[],
+        ): FfmpegCommand;
+        withVideoFilters(
+            filters: string | string[] | AudioVideoFilter[],
+        ): FfmpegCommand;
+        videoFilter(
+            filters: string | string[] | AudioVideoFilter[],
+        ): FfmpegCommand;
+        videoFilters(
+            filters: string | string[] | AudioVideoFilter[],
+        ): FfmpegCommand;
         withOutputFps(fps: number): FfmpegCommand;
         withOutputFPS(fps: number): FfmpegCommand;
         withFpsOutput(fps: number): FfmpegCommand;
@@ -297,8 +322,14 @@ declare namespace Ffmpeg {
         autopad(pad?: boolean, color?: string): FfmpegCommand;
 
         // options/output
-        addOutput(target: string | stream.Writable, pipeopts?: { end?: boolean | undefined }): FfmpegCommand;
-        output(target: string | stream.Writable, pipeopts?: { end?: boolean | undefined }): FfmpegCommand;
+        addOutput(
+            target: string | stream.Writable,
+            pipeopts?: { end?: boolean | undefined },
+        ): FfmpegCommand;
+        output(
+            target: string | stream.Writable,
+            pipeopts?: { end?: boolean | undefined },
+        ): FfmpegCommand;
         seekOutput(seek: string | number): FfmpegCommand;
         seek(seek: string | number): FfmpegCommand;
         withDuration(duration: string | number): FfmpegCommand;
@@ -346,11 +377,17 @@ declare namespace Ffmpeg {
         outputOptions(options: string[]): FfmpegCommand;
         outputOptions(...options: string[]): FfmpegCommand;
         filterGraph(
-            spec: string | FilterSpecification | Array<string | FilterSpecification>,
+            spec:
+                | string
+                | FilterSpecification
+                | Array<string | FilterSpecification>,
             map?: string[] | string,
         ): FfmpegCommand;
         complexFilter(
-            spec: string | FilterSpecification | Array<string | FilterSpecification>,
+            spec:
+                | string
+                | FilterSpecification
+                | Array<string | FilterSpecification>,
             map?: string[] | string,
         ): FfmpegCommand;
 
@@ -378,31 +415,85 @@ declare namespace Ffmpeg {
 
         // ffprobe
         ffprobe(callback: (err: any, data: FfprobeData) => void): void;
-        ffprobe(index: number, callback: (err: any, data: FfprobeData) => void): void;
-        ffprobe(options: string[], callback: (err: any, data: FfprobeData) => void): void; // tslint:disable-line unified-signatures
-        ffprobe(index: number, options: string[], callback: (err: any, data: FfprobeData) => void): void;
+        ffprobe(
+            index: number,
+            callback: (err: any, data: FfprobeData) => void,
+        ): void;
+        ffprobe(
+            options: string[],
+            callback: (err: any, data: FfprobeData) => void,
+        ): void; // tslint:disable-line unified-signatures
+        ffprobe(
+            index: number,
+            options: string[],
+            callback: (err: any, data: FfprobeData) => void,
+        ): void;
 
         // recipes
         saveToFile(output: string): FfmpegCommand;
         save(output: string): FfmpegCommand;
-        writeToStream(stream: stream.Writable, options?: { end?: boolean | undefined }): stream.Writable;
-        pipe(stream?: stream.Writable, options?: { end?: boolean | undefined }): stream.Writable | stream.PassThrough;
-        stream(stream: stream.Writable, options?: { end?: boolean | undefined }): stream.Writable;
-        takeScreenshots(config: number | ScreenshotsConfig, folder?: string): FfmpegCommand;
-        thumbnail(config: number | ScreenshotsConfig, folder?: string): FfmpegCommand;
-        thumbnails(config: number | ScreenshotsConfig, folder?: string): FfmpegCommand;
-        screenshot(config: number | ScreenshotsConfig, folder?: string): FfmpegCommand;
-        screenshots(config: number | ScreenshotsConfig, folder?: string): FfmpegCommand;
-        mergeToFile(target: string | stream.Writable, tmpFolder: string): FfmpegCommand;
-        concatenate(target: string | stream.Writable, options?: { end?: boolean | undefined }): FfmpegCommand;
-        concat(target: string | stream.Writable, options?: { end?: boolean | undefined }): FfmpegCommand;
+        writeToStream(
+            stream: stream.Writable,
+            options?: { end?: boolean | undefined },
+        ): stream.Writable;
+        pipe(
+            stream?: stream.Writable,
+            options?: { end?: boolean | undefined },
+        ): stream.Writable | stream.PassThrough;
+        stream(
+            stream: stream.Writable,
+            options?: { end?: boolean | undefined },
+        ): stream.Writable;
+        takeScreenshots(
+            config: number | ScreenshotsConfig,
+            folder?: string,
+        ): FfmpegCommand;
+        thumbnail(
+            config: number | ScreenshotsConfig,
+            folder?: string,
+        ): FfmpegCommand;
+        thumbnails(
+            config: number | ScreenshotsConfig,
+            folder?: string,
+        ): FfmpegCommand;
+        screenshot(
+            config: number | ScreenshotsConfig,
+            folder?: string,
+        ): FfmpegCommand;
+        screenshots(
+            config: number | ScreenshotsConfig,
+            folder?: string,
+        ): FfmpegCommand;
+        mergeToFile(
+            target: string | stream.Writable,
+            tmpFolder: string,
+        ): FfmpegCommand;
+        concatenate(
+            target: string | stream.Writable,
+            options?: { end?: boolean | undefined },
+        ): FfmpegCommand;
+        concat(
+            target: string | stream.Writable,
+            options?: { end?: boolean | undefined },
+        ): FfmpegCommand;
         clone(): FfmpegCommand;
         run(): void;
     }
 
-    function ffprobe(file: string, callback: (err: any, data: FfprobeData) => void): void;
-    function ffprobe(file: string, index: number, callback: (err: any, data: FfprobeData) => void): void;
-    function ffprobe(file: string, options: string[], callback: (err: any, data: FfprobeData) => void): void; // tslint:disable-line unified-signatures
+    function ffprobe(
+        file: string,
+        callback: (err: any, data: FfprobeData) => void,
+    ): void;
+    function ffprobe(
+        file: string,
+        index: number,
+        callback: (err: any, data: FfprobeData) => void,
+    ): void;
+    function ffprobe(
+        file: string,
+        options: string[],
+        callback: (err: any, data: FfprobeData) => void,
+    ): void; // tslint:disable-line unified-signatures
     function ffprobe(
         file: string,
         index: number,
@@ -410,7 +501,12 @@ declare namespace Ffmpeg {
         callback: (err: any, data: FfprobeData) => void,
     ): void;
 }
-declare function Ffmpeg(options?: Ffmpeg.FfmpegCommandOptions): Ffmpeg.FfmpegCommand;
-declare function Ffmpeg(input?: string | stream.Readable, options?: Ffmpeg.FfmpegCommandOptions): Ffmpeg.FfmpegCommand;
+declare function Ffmpeg(
+    options?: Ffmpeg.FfmpegCommandOptions,
+): Ffmpeg.FfmpegCommand;
+declare function Ffmpeg(
+    input?: string | stream.Readable,
+    options?: Ffmpeg.FfmpegCommandOptions,
+): Ffmpeg.FfmpegCommand;
 
 export = Ffmpeg;

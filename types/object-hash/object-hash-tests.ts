@@ -33,7 +33,11 @@ hash([{ objectInArray: true }]); // $ExpectType string
 hash(obj, options); // $ExpectType string
 hash(obj, { ...options, algorithm: "sha256" }); // $ExpectType string
 hash(obj, { ...options, encoding: "buffer" }); // $ExpectType Buffer
-hash({ name: "Peter", stapler: false, friends: ["Joanna", "Michael", "Samir"] }); // $ExpectType string
+hash({
+    name: "Peter",
+    stapler: false,
+    friends: ["Joanna", "Michael", "Samir"],
+}); // $ExpectType string
 
 hash.sha1(obj); // $ExpectType string
 hash.keys(obj); // $ExpectType string

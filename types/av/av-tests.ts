@@ -63,8 +63,7 @@ class MyAudioDevice extends AV.EventEmitter implements AV.Device {
         return 0;
     }
 
-    destroy() {
-    }
+    destroy() {}
 }
 AV.AudioDevice.register(MyAudioDevice);
 
@@ -88,8 +87,7 @@ console.log(bitstream.read(1));
 console.log(bitstream.read(1, true));
 
 class MyDecoder extends AV.Decoder {
-    init() {
-    }
+    init() {}
 
     readChunk() {
         return typedArray;
@@ -108,8 +106,7 @@ class MyDemuxer extends AV.Demuxer {
         return true;
     }
 
-    readChunk() {
-    }
+    readChunk() {}
 }
 AV.Demuxer.register(MyDemuxer);
 const demuxer: AV.Demuxer | null = AV.Demuxer.find(buffer);
@@ -130,5 +127,8 @@ filter = new AV.VolumeFilter({}, "volume");
 filter = new AV.BalanceFilter([], "balance");
 
 const eventEmitter = new AV.EventEmitter();
-eventEmitter.on("test", (param1: string, param2: number, param3: boolean) => {});
+eventEmitter.on(
+    "test",
+    (param1: string, param2: number, param3: boolean) => {},
+);
 eventEmitter.emit("test", "test", 2, "test");

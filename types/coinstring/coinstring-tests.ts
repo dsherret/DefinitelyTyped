@@ -1,6 +1,7 @@
 import cs = require("coinstring");
 
-let privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+let privateKeyHex =
+    "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
 let privateKeyHexBuf = new Buffer(privateKeyHex, "hex");
 let version = 0x80; // Bitcoin private key
 
@@ -14,7 +15,8 @@ version = 0x00; // Bitcoin public address
 console.log(cs.encode(hash160Buf, version));
 // => 16UjcYNBG9GTK4uq2f7yYEbuifqCzoLMGS
 
-privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+privateKeyHex =
+    "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
 
 // for compressed, append "01"
 privateKeyHex += "01";
@@ -27,7 +29,7 @@ console.log(cs.encode(privateKeyHexBuf, version));
 
 hash160 = "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8"; // hash representing uncompressed
 hash160Buf = new Buffer(hash160, "hex");
-version = 0x1E; // Dogecoin public address
+version = 0x1e; // Dogecoin public address
 
 console.log(cs.encode(hash160Buf, version));
 // => DAcq9oJpZZAjr56RmF7Y5zmWboZWQ4HAsW
@@ -40,7 +42,8 @@ const versionBuffer = new Buffer("0488ade4", "hex"); // 0488ade4 is a consant li
 console.log(cs.encode(buffer, versionBuffer));
 // => xprv9s21ZrQH143K3QTDL4LXw2F7HEK3wJUD2nW2nRk4stbPy6cq3jPPqjiChkVvvNKmPGJxWUtg6LnF5kejMRNNU3TGtRBeJgk33yuGBxrMPHi
 
-privateKeyHex = "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
+privateKeyHex =
+    "1184cd2cdd640ca42cfc3a091c51d549b2f016d454b2774019c2b2d2e08529fd";
 privateKeyHexBuf = new Buffer(privateKeyHex, "hex");
 version = 0x80; // Bitcoin private key
 
@@ -57,7 +60,7 @@ const fromBtcWif = cs.createDecoder(version);
 
 hash160 = "3c176e659bea0f29a3e9bf7880c112b1b31b4dc8"; // hash representing uncompressed
 hash160Buf = new Buffer(hash160, "hex");
-version = 0x6F; // Bitcoin Testnet Address
+version = 0x6f; // Bitcoin Testnet Address
 
 const testnetAddressValidator = cs.createValidator(version);
 console.log(testnetAddressValidator("mkzgubTA5Ahi6BPSkE6MN9pEafRutznkMe")); // => true

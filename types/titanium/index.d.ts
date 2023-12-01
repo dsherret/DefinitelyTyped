@@ -12,8 +12,7 @@ interface ProxyEventMap {}
 /**
  * An extension of the [NSURLConnectionDelegate](https://developer.apple.com/library/mac/documentation/Foundation/Reference/NSURLConnectionDelegate_Protocol/Reference/Reference.html#//apple_ref/occ/intf/NSURLConnectionDelegate) protocol to allow users to participate in authentication and resource management for this HTTPClient.
  */
-interface APSConnectionDelegate {
-}
+interface APSConnectionDelegate {}
 /**
  * Options object for the [accept](Titanium.Network.Socket.TCP.accept) method.
  */
@@ -468,8 +467,7 @@ interface ConnectedCallbackArgs {
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
-interface ContactsAuthorizationResponse extends ErrorResponse {
-}
+interface ContactsAuthorizationResponse extends ErrorResponse {}
 /**
  * Simple object for defining a single image in a cover flow view.
  */
@@ -1329,8 +1327,7 @@ interface LocationAccuracyAuthorizationResponse extends ErrorResponse {
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
-interface LocationAuthorizationResponse extends ErrorResponse {
-}
+interface LocationAuthorizationResponse extends ErrorResponse {}
 /**
  * Simple object holding the data for a location update.
  */
@@ -1485,8 +1482,7 @@ interface MatrixCreationDict {
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
-interface MediaAuthorizationResponse extends ErrorResponse {
-}
+interface MediaAuthorizationResponse extends ErrorResponse {}
 /**
  * A full query descriptor for a filtering predicate.
  */
@@ -2061,7 +2057,9 @@ interface PhotoGalleryOptionsType {
     /**
      * Function to call when the photo gallery is closed after a successful selection.
      */
-    success?: ((param0: CameraMediaItemType) => void) | ((param0: CameraMediaMultipleItemsType) => void);
+    success?:
+        | ((param0: CameraMediaItemType) => void)
+        | ((param0: CameraMediaMultipleItemsType) => void);
 }
 /**
  * A pair of coordinates used to describe the location of a <Titanium.UI.View>.
@@ -2304,28 +2302,23 @@ interface ReadyStatePayload {
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
-interface RequestCameraAccessResult extends ErrorResponse {
-}
+interface RequestCameraAccessResult extends ErrorResponse {}
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
-interface RequestMusicLibraryAccessResult extends ErrorResponse {
-}
+interface RequestMusicLibraryAccessResult extends ErrorResponse {}
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
-interface RequestPermissionAccessResult extends ErrorResponse {
-}
+interface RequestPermissionAccessResult extends ErrorResponse {}
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
-interface RequestPhotoGalleryAccessResult extends ErrorResponse {
-}
+interface RequestPhotoGalleryAccessResult extends ErrorResponse {}
 /**
  * Argument passed to the callback when a request finishes successfully or erroneously.
  */
-interface RequestStorageAccessResult extends ErrorResponse {
-}
+interface RequestStorageAccessResult extends ErrorResponse {}
 /**
  * Simple object returned in the callback from the
  * [reverseGeocoder](Titanium.Geolocation.reverseGeocoder) method.
@@ -2804,7 +2797,10 @@ declare namespace Titanium {
     /**
      * Adds the specified callback as an event listener for the named event.
      */
-    function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+    function addEventListener(
+        name: string,
+        callback: (param0: Titanium.Event) => void,
+    ): void;
 
     /**
      * Creates a new buffer based on the params.
@@ -2819,7 +2815,10 @@ declare namespace Titanium {
     /**
      * Removes the specified callback as an event listener for the named event.
      */
-    function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+    function removeEventListener(
+        name: string,
+        callback: (param0: Titanium.Event) => void,
+    ): void;
 
     /**
      * The top-level Android module.
@@ -4095,7 +4094,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -4110,7 +4112,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Shows or hides the action bar home icon
@@ -4157,13 +4162,11 @@ declare namespace Titanium {
         /**
          * Fired when the activity is about to go into the background as a result of user choice.
          */
-        interface Activity_userleavehint_Event extends ActivityBaseEvent {
-        }
+        interface Activity_userleavehint_Event extends ActivityBaseEvent {}
         /**
          * Called whenever a key, touch, or trackball event is dispatched to the activity.
          */
-        interface Activity_userinteraction_Event extends ActivityBaseEvent {
-        }
+        interface Activity_userinteraction_Event extends ActivityBaseEvent {}
         interface ActivityEventMap extends ProxyEventMap {
             newintent: Activity_newintent_Event;
 
@@ -4249,13 +4252,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ActivityEventMap>(
                 name: K,
-                callback: (this: Titanium.Android.Activity, event: ActivityEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Android.Activity,
+                    event: ActivityEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Closes this activity.
@@ -4265,7 +4274,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ActivityEventMap>(name: K, event?: ActivityEventMap[K]): void;
+            fireEvent<K extends keyof ActivityEventMap>(
+                name: K,
+                event?: ActivityEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -4292,13 +4304,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ActivityEventMap>(
                 name: K,
-                callback: (this: Titanium.Android.Activity, event: ActivityEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Android.Activity,
+                    event: ActivityEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Broadcast the passed in `Intent` to all `BroadcastReceiver`s.
@@ -4308,7 +4326,10 @@ declare namespace Titanium {
             /**
              * Broadcast the passed in `Intent` to all `BroadcastReceiver`s with an optional permission.
              */
-            sendBroadcastWithPermission(intent: Titanium.Android.Intent, receiverPermission?: string): void;
+            sendBroadcastWithPermission(
+                intent: Titanium.Android.Intent,
+                receiverPermission?: string,
+            ): void;
 
             /**
              * Sets the requested Activity orientation.
@@ -4319,7 +4340,10 @@ declare namespace Titanium {
             /**
              * Sets the result of this activity using an `Intent`.
              */
-            setResult(resultCode: number, intent?: Titanium.Android.Intent): void;
+            setResult(
+                resultCode: number,
+                intent?: Titanium.Android.Intent,
+            ): void;
 
             /**
              * Sets a toolbar instance to be used as an ActionBar.
@@ -4334,7 +4358,10 @@ declare namespace Titanium {
             /**
              * The same as `startActivity`, but also accepts a callback function for handling the result of the started Activity.
              */
-            startActivityForResult(intent: Titanium.Android.Intent, callback: (param0: ActivityResult) => void): void;
+            startActivityForResult(
+                intent: Titanium.Android.Intent,
+                callback: (param0: ActivityResult) => void,
+            ): void;
         }
         /**
          * Helper object for generating large-format notifications that include a large image attachment.
@@ -4353,7 +4380,11 @@ declare namespace Titanium {
             /**
              * Provide the bitmap to be used as the payload for the BigPicture notification.
              */
-            bigPicture: number | string | Titanium.Blob | Titanium.Filesystem.File;
+            bigPicture:
+                | number
+                | string
+                | Titanium.Blob
+                | Titanium.Filesystem.File;
 
             /**
              * Number of times to retry decoding the bitmap at bigPicture URL.
@@ -4368,7 +4399,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -4378,7 +4412,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Helper object for generating large-format notifications that include a lot of text.
@@ -4402,7 +4439,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -4412,7 +4452,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Monitor and handle Android system broadcasts.
@@ -4431,7 +4474,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -4441,7 +4487,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Message objects passed between Android application components.
@@ -4491,7 +4540,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds to the existing flags on the `Intent`.
@@ -4557,7 +4609,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * The Titanium binding of an Android Options Menu.
@@ -4576,7 +4631,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Clears all items from this menu.
@@ -4591,7 +4649,9 @@ declare namespace Titanium {
             /**
              * Locates a [MenuItem](Titanium.Android.MenuItem) in this menu, by item ID or reference.
              */
-            findItem(item: number | Titanium.Android.MenuItem): Titanium.Android.MenuItem;
+            findItem(
+                item: number | Titanium.Android.MenuItem,
+            ): Titanium.Android.MenuItem;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -4611,7 +4671,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Removes all menu items with the specified
@@ -4654,18 +4717,15 @@ declare namespace Titanium {
         /**
          * Fired when the user clicks the menu item.
          */
-        interface MenuItem_click_Event extends MenuItemBaseEvent {
-        }
+        interface MenuItem_click_Event extends MenuItemBaseEvent {}
         /**
          * Fired when the action view has been expanded.
          */
-        interface MenuItem_expand_Event extends MenuItemBaseEvent {
-        }
+        interface MenuItem_expand_Event extends MenuItemBaseEvent {}
         /**
          * Fired when the action view has been collapsed.
          */
-        interface MenuItem_collapse_Event extends MenuItemBaseEvent {
-        }
+        interface MenuItem_collapse_Event extends MenuItemBaseEvent {}
         interface MenuItemEventMap extends ProxyEventMap {
             click: MenuItem_click_Event;
 
@@ -4762,13 +4822,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof MenuItemEventMap>(
                 name: K,
-                callback: (this: Titanium.Android.MenuItem, event: MenuItemEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Android.MenuItem,
+                    event: MenuItemEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Collapse the action view associated with this menu item.
@@ -4783,7 +4849,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof MenuItemEventMap>(name: K, event?: MenuItemEventMap[K]): void;
+            fireEvent<K extends keyof MenuItemEventMap>(
+                name: K,
+                event?: MenuItemEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -4825,13 +4894,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof MenuItemEventMap>(
                 name: K,
-                callback: (this: Titanium.Android.MenuItem, event: MenuItemEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Android.MenuItem,
+                    event: MenuItemEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Sets the [checkable](Titanium.Android.MenuItem.checkable) state of the menu item.
@@ -4969,7 +5044,9 @@ declare namespace Titanium {
             /**
              * Style object that can apply a rich notification style.
              */
-            style: Titanium.Android.BigTextStyle | Titanium.Android.BigPictureStyle;
+            style:
+                | Titanium.Android.BigTextStyle
+                | Titanium.Android.BigPictureStyle;
 
             /**
              * Text to scroll across the screen when this item is added to the status bar.
@@ -5005,12 +5082,19 @@ declare namespace Titanium {
             /**
              * Add an action button to the notification
              */
-            addAction(icon: number | string, title: string, intent: Titanium.Android.PendingIntent): void;
+            addAction(
+                icon: number | string,
+                title: string,
+                intent: Titanium.Android.PendingIntent,
+            ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -5020,7 +5104,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Sets the latest event info using the built-in notification view for this notification.
@@ -5034,7 +5121,11 @@ declare namespace Titanium {
             /**
              * Set the progress this notification represents.
              */
-            setProgress(max: number, progress: number, indeterminate: boolean): void;
+            setProgress(
+                max: number,
+                progress: number,
+                indeterminate: boolean,
+            ): void;
         }
         /**
          * Module for notification channels.
@@ -5109,7 +5200,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -5119,7 +5213,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Module for managing notifications.
@@ -5193,12 +5290,17 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -5240,12 +5342,18 @@ declare namespace Titanium {
             /**
              * Adds a persistent notification to the status bar.
              */
-            static notify(id: number, notification: Titanium.Android.Notification): void;
+            static notify(
+                id: number,
+                notification: Titanium.Android.Notification,
+            ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * The Titanium binding of an Android `PendingIntent`.
@@ -5270,7 +5378,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -5280,7 +5391,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.Android.QuickSettingsService
@@ -5295,7 +5409,8 @@ declare namespace Titanium {
          * For Javascript-based services that you create, `pause` fires after each time the JavaScript
          * code executes.
          */
-        interface QuickSettingsService_pause_Event extends QuickSettingsServiceBaseEvent {
+        interface QuickSettingsService_pause_Event
+            extends QuickSettingsServiceBaseEvent {
             /**
              * Incrementing integer indicating which iteration of an interval-based Service is pausing.
              * For example, if you have an interval-based Service running every 10 seconds, iteration
@@ -5308,7 +5423,8 @@ declare namespace Titanium {
          * For JavaScript-based Services which you create, `resume` fires each time the JavaScript
          * code executes.
          */
-        interface QuickSettingsService_resume_Event extends QuickSettingsServiceBaseEvent {
+        interface QuickSettingsService_resume_Event
+            extends QuickSettingsServiceBaseEvent {
             /**
              * Incrementing integer indicating which iteration of an interval-based Service is pausing.
              * For example, if you have an interval-based Service running every 10 seconds, iteration
@@ -5320,42 +5436,43 @@ declare namespace Titanium {
         /**
          * Fired when the bound service instance starts.
          */
-        interface QuickSettingsService_start_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_start_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * Fired when the bound service instance stops.
          */
-        interface QuickSettingsService_stop_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_stop_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * Fired when the task that comes from the service's application has been removed.
          */
-        interface QuickSettingsService_taskremoved_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_taskremoved_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * Tile is listening for events.
          */
-        interface QuickSettingsService_startlistening_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_startlistening_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * Tile has stopped listening for events.
          */
-        interface QuickSettingsService_stoplistening_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_stoplistening_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * The Tile has been added in the quick menu.
          */
-        interface QuickSettingsService_tileadded_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_tileadded_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * The Tile has been removed from the quick menu.
          */
-        interface QuickSettingsService_tileremoved_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_tileremoved_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * An item from the signle choice menu has been selected.
          */
-        interface QuickSettingsService_tiledialogoptionselected_Event extends QuickSettingsServiceBaseEvent {
+        interface QuickSettingsService_tiledialogoptionselected_Event
+            extends QuickSettingsServiceBaseEvent {
             /**
              * Index of the selected item from the single choice menu in the dialog.
              */
@@ -5364,23 +5481,23 @@ declare namespace Titanium {
         /**
          * Dispatched when the alert dialog has been cancelled.
          */
-        interface QuickSettingsService_tiledialogcancelled_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_tiledialogcancelled_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * Dispatched when the positive (index 0) button has been clicked.
          */
-        interface QuickSettingsService_tiledialogpositive_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_tiledialogpositive_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * Dispatched when the neutral (index 1) button has been clicked.
          */
-        interface QuickSettingsService_tiledialogneutral_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_tiledialogneutral_Event
+            extends QuickSettingsServiceBaseEvent {}
         /**
          * Dispatched when the negative (index 2) button has been clicked.
          */
-        interface QuickSettingsService_tiledialognegative_Event extends QuickSettingsServiceBaseEvent {
-        }
+        interface QuickSettingsService_tiledialognegative_Event
+            extends QuickSettingsServiceBaseEvent {}
         interface QuickSettingsServiceEventMap extends ProxyEventMap {
             pause: QuickSettingsService_pause_Event;
 
@@ -5434,13 +5551,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof QuickSettingsServiceEventMap>(
                 name: K,
-                callback: (this: Titanium.Android.QuickSettingsService, event: QuickSettingsServiceEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Android.QuickSettingsService,
+                    event: QuickSettingsServiceEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -5488,19 +5611,27 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof QuickSettingsServiceEventMap>(
                 name: K,
-                callback: (this: Titanium.Android.QuickSettingsService, event: QuickSettingsServiceEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Android.QuickSettingsService,
+                    event: QuickSettingsServiceEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Changes the Tile's icon.
              * @deprecated Please use the [icon](Titanium.Android.QuickSettingsService.icon) property to get/set the value.
              */
-            setIcon(icon: string | Titanium.Blob | Titanium.Filesystem.File): void;
+            setIcon(
+                icon: string | Titanium.Blob | Titanium.Filesystem.File,
+            ): void;
 
             /**
              * Changes the Tile's label.
@@ -5695,7 +5826,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -5705,7 +5839,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * The Titanium binding of [Android RemoteViews](https://developer.android.com/reference/android/widget/RemoteViews.html).
@@ -5724,7 +5861,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -5734,20 +5874,32 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Calls a method taking a single `boolean` argument on a view in the remote view
              * hierarchy.  See Android's documentation for
              * [setBoolean](https://developer.android.com/reference/android/widget/RemoteViews.html#setBoolean(int, java.lang.String, boolean)).
              */
-            setBoolean(viewId: number, methodName: string, value: boolean): void;
+            setBoolean(
+                viewId: number,
+                methodName: string,
+                value: boolean,
+            ): void;
 
             /**
              * Sets the base time, format string, and started flag for a chronometer
              * in the remote view hierarchy.
              */
-            setChronometer(viewId: number, base: Date, format: string, started: boolean): void;
+            setChronometer(
+                viewId: number,
+                base: Date,
+                format: string,
+                started: boolean,
+            ): void;
 
             /**
              * Calls a method taking a single `double` argument on a view in the remote view
@@ -5773,13 +5925,21 @@ declare namespace Titanium {
             /**
              * Launches a <Titanium.Android.PendingIntent> when the specified view is clicked.
              */
-            setOnClickPendingIntent(viewId: number, pendingIntent: Titanium.Android.PendingIntent): void;
+            setOnClickPendingIntent(
+                viewId: number,
+                pendingIntent: Titanium.Android.PendingIntent,
+            ): void;
 
             /**
              * Sets the progress, max value, and indeterminate flag of a progress bar in the
              * remote view hierarchy.
              */
-            setProgressBar(viewId: number, max: number, progress: number, indeterminate: boolean): void;
+            setProgressBar(
+                viewId: number,
+                max: number,
+                progress: number,
+                indeterminate: boolean,
+            ): void;
 
             /**
              * Calls a method taking a single String argument on a view in the remote view
@@ -5845,18 +6005,15 @@ declare namespace Titanium {
         /**
          * Fired when the bound service instance starts.
          */
-        interface Service_start_Event extends ServiceBaseEvent {
-        }
+        interface Service_start_Event extends ServiceBaseEvent {}
         /**
          * Fired when the bound service instance stops.
          */
-        interface Service_stop_Event extends ServiceBaseEvent {
-        }
+        interface Service_stop_Event extends ServiceBaseEvent {}
         /**
          * Fired when the task that comes from the service's application has been removed.
          */
-        interface Service_taskremoved_Event extends ServiceBaseEvent {
-        }
+        interface Service_taskremoved_Event extends ServiceBaseEvent {}
         interface ServiceEventMap extends ProxyEventMap {
             pause: Service_pause_Event;
 
@@ -5888,18 +6045,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ServiceEventMap>(
                 name: K,
-                callback: (this: Titanium.Android.Service, event: ServiceEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Android.Service,
+                    event: ServiceEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ServiceEventMap>(name: K, event?: ServiceEventMap[K]): void;
+            fireEvent<K extends keyof ServiceEventMap>(
+                name: K,
+                event?: ServiceEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -5925,13 +6091,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ServiceEventMap>(
                 name: K,
-                callback: (this: Titanium.Android.Service, event: ServiceEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Android.Service,
+                    event: ServiceEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Starts the Service.
@@ -6331,7 +6503,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -6341,7 +6516,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Stops the service from running during the current background session to conserve resources.
@@ -6360,7 +6538,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Cancels the pending notification.
@@ -6376,7 +6557,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.App.iOS.SearchQuery
@@ -6390,7 +6574,8 @@ declare namespace Titanium {
             /**
              * Fired when the query finds a new batch of matching items.
              */
-            interface SearchQuery_founditems_Event extends SearchQueryBaseEvent {
+            interface SearchQuery_founditems_Event
+                extends SearchQueryBaseEvent {
                 /**
                  * The number of items that are currently fetched.
                  */
@@ -6441,13 +6626,19 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof SearchQueryEventMap>(
                     name: K,
-                    callback: (this: Titanium.App.iOS.SearchQuery, event: SearchQueryEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.App.iOS.SearchQuery,
+                        event: SearchQueryEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Cancels a query operation.
@@ -6457,7 +6648,10 @@ declare namespace Titanium {
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof SearchQueryEventMap>(name: K, event?: SearchQueryEventMap[K]): void;
+                fireEvent<K extends keyof SearchQueryEventMap>(
+                    name: K,
+                    event?: SearchQueryEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -6474,13 +6668,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof SearchQueryEventMap>(
                     name: K,
-                    callback: (this: Titanium.App.iOS.SearchQuery, event: SearchQueryEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.App.iOS.SearchQuery,
+                        event: SearchQueryEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Asynchronously queries the index for items that match the query object's specifications.
@@ -6494,7 +6694,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Adds an array of Titanium.App.iOS.SearchableItem objects to the default search index.
@@ -6520,7 +6723,10 @@ declare namespace Titanium {
                 /**
                  * Removes search items based on an array of identifiers.
                  */
-                deleteSearchableItemsByIdentifiers(Array: readonly string[], callback: (param0: any) => void): void;
+                deleteSearchableItemsByIdentifiers(
+                    Array: readonly string[],
+                    callback: (param0: any) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -6535,7 +6741,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Used to create a unique object containing all of the search information that will appear in the device search index.
@@ -6564,7 +6773,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -6574,7 +6786,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * The SearchableItemAttributeSet module defines metadata properties for SearchItem and UserActivity objects.
@@ -7053,7 +7268,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -7063,7 +7281,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.App.iOS.UserActivity
@@ -7080,7 +7301,8 @@ declare namespace Titanium {
              * The receiver should update the activity with current activity state.
              * After the event is fired, iOS will reset the `needsSave` property to false.
              */
-            interface UserActivity_useractivitywillsave_Event extends UserActivityBaseEvent {
+            interface UserActivity_useractivitywillsave_Event
+                extends UserActivityBaseEvent {
                 /**
                  * The activityType of the User Activity triggering the event.
                  */
@@ -7104,7 +7326,8 @@ declare namespace Titanium {
             /**
              * Fired when the user activity was continued on another device.
              */
-            interface UserActivity_useractivitywascontinued_Event extends UserActivityBaseEvent {
+            interface UserActivity_useractivitywascontinued_Event
+                extends UserActivityBaseEvent {
                 /**
                  * The activityType of the User Activity triggering the event.
                  */
@@ -7129,8 +7352,8 @@ declare namespace Titanium {
              * Fired when the user activity get deleted using the <Titanium.App.iOS.UserActivity.deleteAllSavedUserActivities> or
              * <Titanium.App.iOS.UserActivity.deleteSavedUserActivitiesForPersistentIdentifiers> methods.
              */
-            interface UserActivity_useractivitydeleted_Event extends UserActivityBaseEvent {
-            }
+            interface UserActivity_useractivitydeleted_Event
+                extends UserActivityBaseEvent {}
             interface UserActivityEventMap extends ProxyEventMap {
                 useractivitydeleted: UserActivity_useractivitydeleted_Event;
 
@@ -7217,20 +7440,28 @@ declare namespace Titanium {
                 /**
                  * Adds a Titanium.App.iOS.SearchableItemAttributeSet to the user activity.
                  */
-                addContentAttributeSet(contentAttributeSet: Titanium.App.iOS.SearchableItemAttributeSet): void;
+                addContentAttributeSet(
+                    contentAttributeSet: Titanium.App.iOS.SearchableItemAttributeSet,
+                ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
                 addEventListener<K extends keyof UserActivityEventMap>(
                     name: K,
-                    callback: (this: Titanium.App.iOS.UserActivity, event: UserActivityEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.App.iOS.UserActivity,
+                        event: UserActivityEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Marks the activity as currently in use by the user.
@@ -7245,12 +7476,17 @@ declare namespace Titanium {
                 /**
                  * Deletes user activities created by your app that have the specified persistent identifiers.
                  */
-                deleteSavedUserActivitiesForPersistentIdentifiers(persistentIdentifiers: readonly string[]): void;
+                deleteSavedUserActivitiesForPersistentIdentifiers(
+                    persistentIdentifiers: readonly string[],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof UserActivityEventMap>(name: K, event?: UserActivityEventMap[K]): void;
+                fireEvent<K extends keyof UserActivityEventMap>(
+                    name: K,
+                    event?: UserActivityEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -7272,13 +7508,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof UserActivityEventMap>(
                     name: K,
-                    callback: (this: Titanium.App.iOS.UserActivity, event: UserActivityEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.App.iOS.UserActivity,
+                        event: UserActivityEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Marks the activity as currently **not** in use and ineligible to be continued.
@@ -7297,8 +7539,7 @@ declare namespace Titanium {
             /**
              * Fired when a property is changed.
              */
-            interface UserDefaults_change_Event extends UserDefaultsBaseEvent {
-            }
+            interface UserDefaults_change_Event extends UserDefaultsBaseEvent {}
             interface UserDefaultsEventMap extends ProxyEventMap {
                 change: UserDefaults_change_Event;
             }
@@ -7318,18 +7559,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof UserDefaultsEventMap>(
                     name: K,
-                    callback: (this: Titanium.App.iOS.UserDefaults, event: UserDefaultsEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.App.iOS.UserDefaults,
+                        event: UserDefaultsEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof UserDefaultsEventMap>(name: K, event?: UserDefaultsEventMap[K]): void;
+                fireEvent<K extends keyof UserDefaultsEventMap>(
+                    name: K,
+                    event?: UserDefaultsEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -7341,13 +7591,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof UserDefaultsEventMap>(
                     name: K,
-                    callback: (this: Titanium.App.iOS.UserDefaults, event: UserDefaultsEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.App.iOS.UserDefaults,
+                        event: UserDefaultsEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * An action the user selects in response to an interactive notification.
@@ -7505,18 +7761,28 @@ declare namespace Titanium {
                 /**
                  * Fetches the delivered notifications asynchronously.
                  */
-                static getDeliveredNotifications(callback: (param0: UserNotificationCallbackResponse) => void): void;
+                static getDeliveredNotifications(
+                    callback: (
+                        param0: UserNotificationCallbackResponse,
+                    ) => void,
+                ): void;
 
                 /**
                  * Fetches the pending notifications asynchronously.
                  */
-                static getPendingNotifications(callback: (param0: UserNotificationCallbackResponse) => void): void;
+                static getPendingNotifications(
+                    callback: (
+                        param0: UserNotificationCallbackResponse,
+                    ) => void,
+                ): void;
 
                 /**
                  * Removes the specified delivered notifications from the notification-center.
                  * If no notifications are specified, all delivered notifications will be removed.
                  */
-                static removeDeliveredNotifications(notifications: readonly UserNotificationDictionary[]): void;
+                static removeDeliveredNotifications(
+                    notifications: readonly UserNotificationDictionary[],
+                ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
@@ -7527,12 +7793,16 @@ declare namespace Titanium {
                  * Removes the specified pending notifications to prevent them from being triggered.
                  * If no notifications are specified, all pending notifications will be removed.
                  */
-                static removePendingNotifications(notifications: readonly UserNotificationDictionary[]): void;
+                static removePendingNotifications(
+                    notifications: readonly UserNotificationDictionary[],
+                ): void;
 
                 /**
                  * Notification types and user notification categories the application is registered to use.
                  */
-                static requestUserNotificationSettings(callback: (param0: GetUserNotificationSettings) => void): void;
+                static requestUserNotificationSettings(
+                    callback: (param0: GetUserNotificationSettings) => void,
+                ): void;
             }
         }
         /**
@@ -7593,20 +7863,28 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
             static addEventListener<K extends keyof AndroidEventMap>(
                 name: K,
-                callback: (this: Titanium.App.Android, event: AndroidEventMap[K]) => void,
+                callback: (
+                    this: Titanium.App.Android,
+                    event: AndroidEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -7616,7 +7894,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            static fireEvent<K extends keyof AndroidEventMap>(name: K, event?: AndroidEventMap[K]): void;
+            static fireEvent<K extends keyof AndroidEventMap>(
+                name: K,
+                event?: AndroidEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -7628,13 +7909,19 @@ declare namespace Titanium {
              */
             static removeEventListener<K extends keyof AndroidEventMap>(
                 name: K,
-                callback: (this: Titanium.App.Android, event: AndroidEventMap[K]) => void,
+                callback: (
+                    this: Titanium.App.Android,
+                    event: AndroidEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.App.Properties
@@ -7648,8 +7935,7 @@ declare namespace Titanium {
         /**
          * Fired when a property is changed.
          */
-        interface Properties_change_Event extends PropertiesBaseEvent {
-        }
+        interface Properties_change_Event extends PropertiesBaseEvent {}
         interface PropertiesEventMap extends ProxyEventMap {
             change: Properties_change_Event;
         }
@@ -7671,20 +7957,28 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
             static addEventListener<K extends keyof PropertiesEventMap>(
                 name: K,
-                callback: (this: Titanium.App.Properties, event: PropertiesEventMap[K]) => void,
+                callback: (
+                    this: Titanium.App.Properties,
+                    event: PropertiesEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -7694,7 +7988,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            static fireEvent<K extends keyof PropertiesEventMap>(name: K, event?: PropertiesEventMap[K]): void;
+            static fireEvent<K extends keyof PropertiesEventMap>(
+                name: K,
+                event?: PropertiesEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -7719,7 +8016,10 @@ declare namespace Titanium {
             /**
              * Returns the value of a property as an array data type.
              */
-            static getList(property: string, defaultValue?: readonly any[]): any[];
+            static getList(
+                property: string,
+                defaultValue?: readonly any[],
+            ): any[];
 
             /**
              * Returns the value of a property as an object.
@@ -7751,13 +8051,19 @@ declare namespace Titanium {
              */
             static removeEventListener<K extends keyof PropertiesEventMap>(
                 name: K,
-                callback: (this: Titanium.App.Properties, event: PropertiesEventMap[K]) => void,
+                callback: (
+                    this: Titanium.App.Properties,
+                    event: PropertiesEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Removes a property if it exists, or does nothing otherwise.
@@ -8234,13 +8540,11 @@ declare namespace Titanium {
         /**
          * Fired when the trait collection of the device changes, e.g. the user interface style.
          */
-        interface iOS_traitcollectionchange_Event extends iOSBaseEvent {
-        }
+        interface iOS_traitcollectionchange_Event extends iOSBaseEvent {}
         /**
          * Fired after the user takes a screenshot, e.g. by pressing both the home and lock screen buttons.
          */
-        interface iOS_screenshotcaptured_Event extends iOSBaseEvent {
-        }
+        interface iOS_screenshotcaptured_Event extends iOSBaseEvent {}
         interface iOSEventMap extends ProxyEventMap {
             backgroundfetch: iOS_backgroundfetch_Event;
 
@@ -8320,13 +8624,19 @@ declare namespace Titanium {
              */
             static addEventListener<K extends keyof iOSEventMap>(
                 name: K,
-                callback: (this: Titanium.App.iOS, event: iOSEventMap[K]) => void,
+                callback: (
+                    this: Titanium.App.iOS,
+                    event: iOSEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -8374,7 +8684,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            static fireEvent<K extends keyof iOSEventMap>(name: K, event?: iOSEventMap[K]): void;
+            static fireEvent<K extends keyof iOSEventMap>(
+                name: K,
+                event?: iOSEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -8384,42 +8697,59 @@ declare namespace Titanium {
             /**
              * Registers a service to run when the application is placed in the background.
              */
-            static registerBackgroundService(params: any): Titanium.App.iOS.BackgroundService;
+            static registerBackgroundService(
+                params: any,
+            ): Titanium.App.iOS.BackgroundService;
 
             /**
              * Registers the application to use the requested notification types and categories.
              */
-            static registerUserNotificationSettings(params: UserNotificationSettings): void;
+            static registerUserNotificationSettings(
+                params: UserNotificationSettings,
+            ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
             static removeEventListener<K extends keyof iOSEventMap>(
                 name: K,
-                callback: (this: Titanium.App.iOS, event: iOSEventMap[K]) => void,
+                callback: (
+                    this: Titanium.App.iOS,
+                    event: iOSEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Schedule a local notification.
              */
-            static scheduleLocalNotification(params: NotificationParams): Titanium.App.iOS.LocalNotification;
+            static scheduleLocalNotification(
+                params: NotificationParams,
+            ): Titanium.App.iOS.LocalNotification;
 
             /**
              * Marks the end of an `openParentApplication:reply` execution by a WatchKit extension.
              * @deprecated Use [Titanium.WatchSession](Titanium.WatchSession) instead, which is supported on iOS 9 and later.
              */
-            static sendWatchExtensionReply(handlerId: string, userInfo: any): void;
+            static sendWatchExtensionReply(
+                handlerId: string,
+                userInfo: any,
+            ): void;
 
             /**
              * Specifies the minimum amount of time that must elapse between background fetch operations.
              * Available only on iOS 7 and later.
              */
-            static setMinimumBackgroundFetchInterval(fetchInterval: number): void;
+            static setMinimumBackgroundFetchInterval(
+                fetchInterval: number,
+            ): void;
         }
     }
     /**
@@ -8801,7 +9131,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -8811,7 +9144,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * An object that represents a single attendee of an event.
@@ -8850,7 +9186,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -8860,7 +9199,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * An object that represents a single calendar.
@@ -8904,12 +9246,17 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Creates an event in this calendar.
              */
-            createEvent(properties: Dictionary<Titanium.Calendar.Event>): Titanium.Calendar.Event;
+            createEvent(
+                properties: Dictionary<Titanium.Calendar.Event>,
+            ): Titanium.Calendar.Event;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -8924,19 +9271,29 @@ declare namespace Titanium {
             /**
              * Gets events that occur between two dates.
              */
-            getEventsBetweenDates(date1: Date | string, date2: Date | string): Titanium.Calendar.Event[];
+            getEventsBetweenDates(
+                date1: Date | string,
+                date2: Date | string,
+            ): Titanium.Calendar.Event[];
 
             /**
              * Gets events that occur on a specified date.
              * @deprecated Use [Titanium.Calendar.Calendar.getEventsBetweenDates](Titanium.Calendar.Calendar.getEventsBetweenDates) instead.
              */
-            getEventsInDate(year: number, month: number, day: number): Titanium.Calendar.Event[];
+            getEventsInDate(
+                year: number,
+                month: number,
+                day: number,
+            ): Titanium.Calendar.Event[];
 
             /**
              * Gets events that occur during a specified month.
              * @deprecated Use [Titanium.Calendar.Calendar.getEventsBetweenDates](Titanium.Calendar.Calendar.getEventsBetweenDates) instead.
              */
-            getEventsInMonth(year: number, month: number): Titanium.Calendar.Event[];
+            getEventsInMonth(
+                year: number,
+                month: number,
+            ): Titanium.Calendar.Event[];
 
             /**
              * Gets all events that occur during a specified year.
@@ -8947,7 +9304,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * An object that represents a single event in a calendar.
@@ -9047,7 +9407,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds a recurrence rule to the recurrence rule array.
@@ -9057,19 +9420,25 @@ declare namespace Titanium {
             /**
              * Creates an alert for this event.
              */
-            createAlert(data: Dictionary<Titanium.Calendar.Alert>): Titanium.Calendar.Alert;
+            createAlert(
+                data: Dictionary<Titanium.Calendar.Alert>,
+            ): Titanium.Calendar.Alert;
 
             /**
              * Creates an recurrence pattern for a recurring event.
              * All of the properties for the recurrence rule must be set during creation.
              * The recurrence rule properties cannot be modified.
              */
-            createRecurrenceRule(data: Dictionary<Titanium.Calendar.RecurrenceRule>): Titanium.Calendar.RecurrenceRule;
+            createRecurrenceRule(
+                data: Dictionary<Titanium.Calendar.RecurrenceRule>,
+            ): Titanium.Calendar.RecurrenceRule;
 
             /**
              * Creates a reminder for this event.
              */
-            createReminder(data: Dictionary<Titanium.Calendar.Reminder>): Titanium.Calendar.Reminder;
+            createReminder(
+                data: Dictionary<Titanium.Calendar.Reminder>,
+            ): Titanium.Calendar.Reminder;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -9094,7 +9463,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Removes a recurrence rule to the recurrence rule array.
@@ -9182,7 +9554,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -9192,7 +9567,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * An object that represents a single reminder for an event in a calendar.
@@ -9217,7 +9595,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -9227,7 +9608,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
     }
     /**
@@ -9294,7 +9678,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -9315,7 +9702,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Gets people that are members of this group, sorted in the specified order.
@@ -9476,7 +9866,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -9486,7 +9879,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
     }
     /**
@@ -9542,7 +9938,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Closes the database and releases resources from memory. Once closed, this instance is no
@@ -9554,12 +9953,18 @@ declare namespace Titanium {
             /**
              * Executes an SQL statement against the database and returns a `ResultSet`.
              */
-            execute(sql: string, ...vararg: string[]): Titanium.Database.ResultSet;
+            execute(
+                sql: string,
+                ...vararg: string[]
+            ): Titanium.Database.ResultSet;
 
             /**
              * Executes an SQL statement against the database and returns a `ResultSet`.
              */
-            execute(sql: string, vararg?: readonly string[]): Titanium.Database.ResultSet;
+            execute(
+                sql: string,
+                vararg?: readonly string[],
+            ): Titanium.Database.ResultSet;
 
             /**
              * Executes an SQL statement against the database and returns a `ResultSet`.
@@ -9569,13 +9974,18 @@ declare namespace Titanium {
             /**
              * Executes an SQL statement against the database and returns a `ResultSet`.
              */
-            execute(sql: string, vararg?: readonly any[]): Titanium.Database.ResultSet;
+            execute(
+                sql: string,
+                vararg?: readonly any[],
+            ): Titanium.Database.ResultSet;
 
             /**
              * Synchronously executes an array of SQL statements against the database and returns an array of `ResultSet`.
              * On failure, this will throw an [Error](BatchQueryError) that reports the failed index and partial results
              */
-            executeAll(queries: readonly string[]): Titanium.Database.ResultSet[];
+            executeAll(
+                queries: readonly string[],
+            ): Titanium.Database.ResultSet[];
 
             /**
              * Asynchronously executes an array of SQL statements against the database and fires a callback with a possible Error, and an array of `ResultSet`.
@@ -9583,7 +9993,10 @@ declare namespace Titanium {
              */
             executeAllAsync(
                 queries: readonly string[],
-                callback?: (param0: PossibleBatchQueryError, param1: Titanium.Database.ResultSet[]) => void,
+                callback?: (
+                    param0: PossibleBatchQueryError,
+                    param1: Titanium.Database.ResultSet[],
+                ) => void,
             ): Promise<Titanium.Database.ResultSet[]>;
 
             /**
@@ -9592,7 +10005,10 @@ declare namespace Titanium {
             executeAsync(
                 query: string,
                 vararg?: any,
-                callback?: (param0: any, param1: Titanium.Database.ResultSet) => void,
+                callback?: (
+                    param0: any,
+                    param1: Titanium.Database.ResultSet,
+                ) => void,
             ): Promise<Titanium.Database.ResultSet>;
 
             /**
@@ -9609,7 +10025,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * The ResultSet instance returned by <Titanium.Database.DB.execute>.
@@ -9633,7 +10052,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Closes this result set and release resources. Once closed, the result set must no longer
@@ -9645,13 +10067,19 @@ declare namespace Titanium {
              * Retrieves the value for the specified field in the current row,
              * and casts it to the specified type (String, Integer, Float or Double.)
              */
-            field(index: number, type?: number): string | number | Titanium.Blob;
+            field(
+                index: number,
+                type?: number,
+            ): string | number | Titanium.Blob;
 
             /**
              * Retrieves the value for the specified field in the current row,
              * and casts it to the specified type (String, Integer, Float or Double.)
              */
-            fieldByName(name: string, type?: number): string | number | Titanium.Blob;
+            fieldByName(
+                name: string,
+                type?: number,
+            ): string | number | Titanium.Blob;
 
             /**
              * Returns the field name for the specified field index.
@@ -9682,7 +10110,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
     }
     /**
@@ -9781,12 +10212,17 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Appends data to the file identified by this file object.
              */
-            append(data: string | Titanium.Blob | Titanium.Filesystem.File): boolean;
+            append(
+                data: string | Titanium.Blob | Titanium.Filesystem.File,
+            ): boolean;
 
             /**
              * Copies the file identified by this file object to a new path.
@@ -9899,7 +10335,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Renames the file identified by this file object.
@@ -9924,7 +10363,10 @@ declare namespace Titanium {
             /**
              * Writes the specified data to the file identified by this file object.
              */
-            write(data: string | Titanium.Filesystem.File | Titanium.Blob, append?: boolean): boolean;
+            write(
+                data: string | Titanium.Filesystem.File | Titanium.Blob,
+                append?: boolean,
+            ): boolean;
         }
         /**
          * Wrapper around `Titanium.Filesystem.File` that implements the `Titanium.IOStream` interface
@@ -9933,7 +10375,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * closes file stream, exception is thrown on error
@@ -9948,7 +10393,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
     }
     /**
@@ -10158,7 +10606,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -10168,7 +10619,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A location rule to filter the results returned by location providers.
@@ -10199,7 +10653,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -10209,7 +10666,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
         }
         /**
@@ -10229,7 +10689,9 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * Set to `true` to enable manual configuration of location updates through this module.
@@ -10239,17 +10701,24 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds and enables the specified location provider, possibly replacing an existing one.
              */
-            static addLocationProvider(provider: Titanium.Geolocation.Android.LocationProvider): void;
+            static addLocationProvider(
+                provider: Titanium.Geolocation.Android.LocationProvider,
+            ): void;
 
             /**
              * Adds and enables the specified location rule.
              */
-            static addLocationRule(rule: Titanium.Geolocation.Android.LocationRule): void;
+            static addLocationRule(
+                rule: Titanium.Geolocation.Android.LocationRule,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -10278,17 +10747,24 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Disables and removes the specified location provider.
              */
-            static removeLocationProvider(provider: Titanium.Geolocation.Android.LocationProvider): void;
+            static removeLocationProvider(
+                provider: Titanium.Geolocation.Android.LocationProvider,
+            ): void;
 
             /**
              * Disables and removes the specified location rule.
              */
-            static removeLocationRule(rule: Titanium.Geolocation.Android.LocationRule): void;
+            static removeLocationRule(
+                rule: Titanium.Geolocation.Android.LocationRule,
+            ): void;
         }
     }
     /**
@@ -11014,12 +11490,17 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -11034,7 +11515,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Scans newly created or downloaded media files to make them available to other
@@ -11049,7 +11533,10 @@ declare namespace Titanium {
             /**
              * Set the system homescreen wallpaper.
              */
-            static setSystemWallpaper(image: Titanium.Blob, scale: boolean): void;
+            static setSystemWallpaper(
+                image: Titanium.Blob,
+                scale: boolean,
+            ): void;
         }
         /**
          * Base event for class Titanium.Media.AudioPlayer
@@ -11351,18 +11838,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof AudioPlayerEventMap>(
                 name: K,
-                callback: (this: Titanium.Media.AudioPlayer, event: AudioPlayerEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Media.AudioPlayer,
+                    event: AudioPlayerEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof AudioPlayerEventMap>(name: K, event?: AudioPlayerEventMap[K]): void;
+            fireEvent<K extends keyof AudioPlayerEventMap>(
+                name: K,
+                event?: AudioPlayerEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -11420,13 +11916,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof AudioPlayerEventMap>(
                 name: K,
-                callback: (this: Titanium.Media.AudioPlayer, event: AudioPlayerEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Media.AudioPlayer,
+                    event: AudioPlayerEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Restarts (stops and stars) audio playback.
@@ -11493,7 +11995,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -11508,7 +12013,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Resumes a paused recording.
@@ -11716,7 +12224,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -11726,7 +12237,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.Media.MusicPlayer
@@ -11740,13 +12254,12 @@ declare namespace Titanium {
         /**
          * Fired when the currently playing media item changes.
          */
-        interface MusicPlayer_playingchange_Event extends MusicPlayerBaseEvent {
-        }
+        interface MusicPlayer_playingchange_Event
+            extends MusicPlayerBaseEvent {}
         /**
          * Fired when the music player's playback state changes.
          */
-        interface MusicPlayer_statechange_Event extends MusicPlayerBaseEvent {
-        }
+        interface MusicPlayer_statechange_Event extends MusicPlayerBaseEvent {}
         interface MusicPlayerEventMap extends ProxyEventMap {
             playingchange: MusicPlayer_playingchange_Event;
 
@@ -11786,18 +12299,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof MusicPlayerEventMap>(
                 name: K,
-                callback: (this: Titanium.Media.MusicPlayer, event: MusicPlayerEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Media.MusicPlayer,
+                    event: MusicPlayerEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof MusicPlayerEventMap>(name: K, event?: MusicPlayerEventMap[K]): void;
+            fireEvent<K extends keyof MusicPlayerEventMap>(
+                name: K,
+                event?: MusicPlayerEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -11819,13 +12341,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof MusicPlayerEventMap>(
                 name: K,
-                callback: (this: Titanium.Media.MusicPlayer, event: MusicPlayerEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Media.MusicPlayer,
+                    event: MusicPlayerEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Begins seeking backward in the currently playing media.
@@ -11840,7 +12368,9 @@ declare namespace Titanium {
             /**
              * Sets the media queue.
              */
-            setQueue(queue: Titanium.Media.Item | Titanium.Media.Item[] | string): void;
+            setQueue(
+                queue: Titanium.Media.Item | Titanium.Media.Item[] | string,
+            ): void;
 
             /**
              * Skips to the beginning of the currently playing media item.
@@ -11945,8 +12475,7 @@ declare namespace Titanium {
         /**
          * Fired  when audio playback is interrupted by the device.
          */
-        interface Sound_interrupted_Event extends SoundBaseEvent {
-        }
+        interface Sound_interrupted_Event extends SoundBaseEvent {}
         /**
          * Fired when audio playback is resumed after an interruption.
          */
@@ -12096,18 +12625,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof SoundEventMap>(
                 name: K,
-                callback: (this: Titanium.Media.Sound, event: SoundEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Media.Sound,
+                    event: SoundEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof SoundEventMap>(name: K, event?: SoundEventMap[K]): void;
+            fireEvent<K extends keyof SoundEventMap>(
+                name: K,
+                event?: SoundEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -12152,13 +12690,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof SoundEventMap>(
                 name: K,
-                callback: (this: Titanium.Media.Sound, event: SoundEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Media.Sound,
+                    event: SoundEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Resets the audio playback position to the beginning.
@@ -12196,7 +12740,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -12211,7 +12758,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.Media.VideoPlayer
@@ -12283,8 +12833,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface VideoPlayer_focus_Event extends VideoPlayerBaseEvent {
-        }
+        interface VideoPlayer_focus_Event extends VideoPlayerBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -12297,8 +12846,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface VideoPlayer_longclick_Event extends VideoPlayerBaseEvent {
-        }
+        interface VideoPlayer_longclick_Event extends VideoPlayerBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -12400,8 +12948,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface VideoPlayer_postlayout_Event extends VideoPlayerBaseEvent {
-        }
+        interface VideoPlayer_postlayout_Event extends VideoPlayerBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -12604,7 +13151,8 @@ declare namespace Titanium {
         /**
          * Fired when the video duration is available.
          */
-        interface VideoPlayer_durationavailable_Event extends VideoPlayerBaseEvent {
+        interface VideoPlayer_durationavailable_Event
+            extends VideoPlayerBaseEvent {
             /**
              * Video duration, in milliseconds.
              */
@@ -12640,8 +13188,7 @@ declare namespace Titanium {
         /**
          * Fired when the movie play loads.
          */
-        interface VideoPlayer_load_Event extends VideoPlayerBaseEvent {
-        }
+        interface VideoPlayer_load_Event extends VideoPlayerBaseEvent {}
         /**
          * Fired when the network [loadState](Titanium.Media.VideoPlayer.loadState) changes.
          */
@@ -12654,7 +13201,8 @@ declare namespace Titanium {
         /**
          * Fired when the natural size of the current movie is determined.
          */
-        interface VideoPlayer_naturalsizeavailable_Event extends VideoPlayerBaseEvent {
+        interface VideoPlayer_naturalsizeavailable_Event
+            extends VideoPlayerBaseEvent {
             /**
              * Current value of the [naturalSize](Titanium.Media.VideoPlayer.naturalSize) property.
              */
@@ -12681,13 +13229,11 @@ declare namespace Titanium {
         /**
          * Fired when the movie has preloaded and is ready to play.
          */
-        interface VideoPlayer_preload_Event extends VideoPlayerBaseEvent {
-        }
+        interface VideoPlayer_preload_Event extends VideoPlayerBaseEvent {}
         /**
          * Fired when the movie player is resized.
          */
-        interface VideoPlayer_resize_Event extends VideoPlayerBaseEvent {
-        }
+        interface VideoPlayer_resize_Event extends VideoPlayerBaseEvent {}
         interface VideoPlayerEventMap extends ProxyEventMap {
             click: VideoPlayer_click_Event;
 
@@ -12875,13 +13421,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof VideoPlayerEventMap>(
                 name: K,
-                callback: (this: Titanium.Media.VideoPlayer, event: VideoPlayerEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Media.VideoPlayer,
+                    event: VideoPlayerEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Cancels all pending asynchronous thumbnail requests.
@@ -12891,7 +13443,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof VideoPlayerEventMap>(name: K, event?: VideoPlayerEventMap[K]): void;
+            fireEvent<K extends keyof VideoPlayerEventMap>(
+                name: K,
+                event?: VideoPlayerEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -12918,13 +13473,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof VideoPlayerEventMap>(
                 name: K,
-                callback: (this: Titanium.Media.VideoPlayer, event: VideoPlayerEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Media.VideoPlayer,
+                    event: VideoPlayerEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Asynchronously request thumbnail images for one or more points in time in the video.
@@ -13101,7 +13662,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Closes a socket.
@@ -13126,7 +13690,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
         }
         /**
@@ -13141,7 +13708,8 @@ declare namespace Titanium {
         /**
          * Fired when the discovered services list is updated
          */
-        interface BonjourBrowser_updatedservices_Event extends BonjourBrowserBaseEvent {
+        interface BonjourBrowser_updatedservices_Event
+            extends BonjourBrowserBaseEvent {
             /**
              * An array of BonjourService objects corresponding to currently available services.  If you cache this value, including using it as table data, be aware that it could become out of date at any time due to the asynchronous nature of Bonjour service discovery.
              */
@@ -13174,18 +13742,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof BonjourBrowserEventMap>(
                 name: K,
-                callback: (this: Titanium.Network.BonjourBrowser, event: BonjourBrowserEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Network.BonjourBrowser,
+                    event: BonjourBrowserEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof BonjourBrowserEventMap>(name: K, event?: BonjourBrowserEventMap[K]): void;
+            fireEvent<K extends keyof BonjourBrowserEventMap>(
+                name: K,
+                event?: BonjourBrowserEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -13197,13 +13774,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof BonjourBrowserEventMap>(
                 name: K,
-                callback: (this: Titanium.Network.BonjourBrowser, event: BonjourBrowserEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Network.BonjourBrowser,
+                    event: BonjourBrowserEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Conduct a search for Bonjour services matching the type and domain specified during creation
@@ -13322,18 +13905,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof BonjourServiceEventMap>(
                 name: K,
-                callback: (this: Titanium.Network.BonjourService, event: BonjourServiceEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Network.BonjourService,
+                    event: BonjourServiceEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof BonjourServiceEventMap>(name: K, event?: BonjourServiceEventMap[K]): void;
+            fireEvent<K extends keyof BonjourServiceEventMap>(
+                name: K,
+                event?: BonjourServiceEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -13343,25 +13935,37 @@ declare namespace Titanium {
             /**
              * Asynchronously publish a Bonjour service to the network.  Only works if isLocal is TRUE
              */
-            publish(socket: Titanium.Network.Socket.TCP, callback?: (param0: Error, param1: boolean) => void): void;
+            publish(
+                socket: Titanium.Network.Socket.TCP,
+                callback?: (param0: Error, param1: boolean) => void,
+            ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
             removeEventListener<K extends keyof BonjourServiceEventMap>(
                 name: K,
-                callback: (this: Titanium.Network.BonjourService, event: BonjourServiceEventMap[K]) => void,
+                callback: (
+                    this: Titanium.Network.BonjourService,
+                    event: BonjourServiceEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Asynchronously resolve a Bonjour service from the network.  Must be done before attempting to access the service's socket information, if a remote service.  You cannot resolve a locally published service.
              */
-            resolve(timeout?: number, callback?: (param0: Error, param1: boolean) => void): void;
+            resolve(
+                timeout?: number,
+                callback?: (param0: Error, param1: boolean) => void,
+            ): void;
 
             /**
              * Asynchronously halts a currently running attempt to publish or resolve a service.
@@ -13430,7 +14034,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -13445,7 +14052,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * HTTP client object that (mostly) implements the XMLHttpRequest specification.
@@ -13635,7 +14245,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Clears any cookies stored for the host.
@@ -13665,7 +14278,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Sends the request.
@@ -13700,12 +14316,17 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -13715,7 +14336,9 @@ declare namespace Titanium {
             /**
              * Returns a new TCP socket object.
              */
-            static createTCP(params?: Dictionary<Titanium.Network.Socket.TCP>): Titanium.Network.Socket.TCP;
+            static createTCP(
+                params?: Dictionary<Titanium.Network.Socket.TCP>,
+            ): Titanium.Network.Socket.TCP;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -13725,7 +14348,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * The TCPSocket instance returned from <Titanium.Network.createTCPSocket>.  This object
@@ -13807,7 +14433,9 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * The physical size category of the Android device or emulator.
@@ -13817,7 +14445,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -13832,7 +14463,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * The Display Caps object returned by the <Titanium.Platform.displayCaps> property.
@@ -13879,7 +14513,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -13889,7 +14526,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
     }
     /**
@@ -15774,8 +16414,7 @@ declare namespace Titanium {
             /**
              * Fired when the view element gains focus.
              */
-            interface CardView_focus_Event extends CardViewBaseEvent {
-            }
+            interface CardView_focus_Event extends CardViewBaseEvent {}
             /**
              * Fired when a hardware key is pressed in the view.
              */
@@ -15788,8 +16427,7 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a long click.
              */
-            interface CardView_longclick_Event extends CardViewBaseEvent {
-            }
+            interface CardView_longclick_Event extends CardViewBaseEvent {}
             /**
              * Fired when the device detects a long press.
              */
@@ -15891,8 +16529,7 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface CardView_postlayout_Event extends CardViewBaseEvent {
-            }
+            interface CardView_postlayout_Event extends CardViewBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
@@ -16338,18 +16975,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof CardViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.Android.CardView, event: CardViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.Android.CardView,
+                        event: CardViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof CardViewEventMap>(name: K, event?: CardViewEventMap[K]): void;
+                fireEvent<K extends keyof CardViewEventMap>(
+                    name: K,
+                    event?: CardViewEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -16361,13 +17007,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof CardViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.Android.CardView, event: CardViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.Android.CardView,
+                        event: CardViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.UI.Android.DrawerLayout
@@ -16403,7 +17055,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a double click against the view.
              */
-            interface DrawerLayout_dblclick_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_dblclick_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * Returns `true` if the double click passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -16425,7 +17078,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a double tap against the view.
              */
-            interface DrawerLayout_doubletap_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_doubletap_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * Returns `true` if the double tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -16447,12 +17101,12 @@ declare namespace Titanium {
             /**
              * Fired when the view element gains focus.
              */
-            interface DrawerLayout_focus_Event extends DrawerLayoutBaseEvent {
-            }
+            interface DrawerLayout_focus_Event extends DrawerLayoutBaseEvent {}
             /**
              * Fired when a hardware key is pressed in the view.
              */
-            interface DrawerLayout_keypressed_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_keypressed_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * The code for the physical key that was pressed. For more details, see [KeyEvent](https://developer.android.com/reference/android/view/KeyEvent.html). This API is experimental and subject to change.
                  */
@@ -16461,12 +17115,13 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a long click.
              */
-            interface DrawerLayout_longclick_Event extends DrawerLayoutBaseEvent {
-            }
+            interface DrawerLayout_longclick_Event
+                extends DrawerLayoutBaseEvent {}
             /**
              * Fired when the device detects a long press.
              */
-            interface DrawerLayout_longpress_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_longpress_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * Returns `true` if the long press passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -16564,12 +17219,13 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface DrawerLayout_postlayout_Event extends DrawerLayoutBaseEvent {
-            }
+            interface DrawerLayout_postlayout_Event
+                extends DrawerLayoutBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
-            interface DrawerLayout_singletap_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_singletap_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * Returns `true` if the single tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -16618,7 +17274,8 @@ declare namespace Titanium {
             /**
              * Fired when a touch event is interrupted by the device.
              */
-            interface DrawerLayout_touchcancel_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_touchcancel_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -16682,7 +17339,8 @@ declare namespace Titanium {
             /**
              * Fired when a touch event is completed.
              */
-            interface DrawerLayout_touchend_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_touchend_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -16746,7 +17404,8 @@ declare namespace Titanium {
             /**
              * Fired as soon as the device detects movement of a touch.
              */
-            interface DrawerLayout_touchmove_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_touchmove_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -16810,7 +17469,8 @@ declare namespace Titanium {
             /**
              * Fired as soon as the device detects a touch gesture.
              */
-            interface DrawerLayout_touchstart_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_touchstart_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -16874,7 +17534,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a two-finger tap against the view.
              */
-            interface DrawerLayout_twofingertap_Event extends DrawerLayoutBaseEvent {
+            interface DrawerLayout_twofingertap_Event
+                extends DrawerLayoutBaseEvent {
                 /**
                  * Returns `true` if the tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -17099,13 +17760,19 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof DrawerLayoutEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.Android.DrawerLayout, event: DrawerLayoutEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.Android.DrawerLayout,
+                        event: DrawerLayoutEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Close the left view.
@@ -17120,7 +17787,10 @@ declare namespace Titanium {
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof DrawerLayoutEventMap>(name: K, event?: DrawerLayoutEventMap[K]): void;
+                fireEvent<K extends keyof DrawerLayoutEventMap>(
+                    name: K,
+                    event?: DrawerLayoutEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -17130,7 +17800,10 @@ declare namespace Titanium {
                 /**
                  * Disallow touch events on a specific view.
                  */
-                interceptTouchEvent(view: Titanium.UI.View, disallowIntercept: boolean): void;
+                interceptTouchEvent(
+                    view: Titanium.UI.View,
+                    disallowIntercept: boolean,
+                ): void;
 
                 /**
                  * Open the left view.
@@ -17147,13 +17820,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof DrawerLayoutEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.Android.DrawerLayout, event: DrawerLayoutEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.Android.DrawerLayout,
+                        event: DrawerLayoutEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Toggle the visibility of the left view.
@@ -17177,7 +17856,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a click against the view.
              */
-            interface ProgressIndicator_click_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_click_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * Returns `true` if the click passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -17199,7 +17879,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a double click against the view.
              */
-            interface ProgressIndicator_dblclick_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_dblclick_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * Returns `true` if the double click passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -17221,7 +17902,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a double tap against the view.
              */
-            interface ProgressIndicator_doubletap_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_doubletap_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * Returns `true` if the double tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -17243,12 +17925,13 @@ declare namespace Titanium {
             /**
              * Fired when the view element gains focus.
              */
-            interface ProgressIndicator_focus_Event extends ProgressIndicatorBaseEvent {
-            }
+            interface ProgressIndicator_focus_Event
+                extends ProgressIndicatorBaseEvent {}
             /**
              * Fired when a hardware key is pressed in the view.
              */
-            interface ProgressIndicator_keypressed_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_keypressed_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * The code for the physical key that was pressed. For more details, see [KeyEvent](https://developer.android.com/reference/android/view/KeyEvent.html). This API is experimental and subject to change.
                  */
@@ -17257,12 +17940,13 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a long click.
              */
-            interface ProgressIndicator_longclick_Event extends ProgressIndicatorBaseEvent {
-            }
+            interface ProgressIndicator_longclick_Event
+                extends ProgressIndicatorBaseEvent {}
             /**
              * Fired when the device detects a long press.
              */
-            interface ProgressIndicator_longpress_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_longpress_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * Returns `true` if the long press passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -17284,7 +17968,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a pinch gesture.
              */
-            interface ProgressIndicator_pinch_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_pinch_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * The average distance between each of the pointers forming the gesture in progress through
                  * the focal point.
@@ -17360,12 +18045,13 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface ProgressIndicator_postlayout_Event extends ProgressIndicatorBaseEvent {
-            }
+            interface ProgressIndicator_postlayout_Event
+                extends ProgressIndicatorBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
-            interface ProgressIndicator_singletap_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_singletap_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * Returns `true` if the single tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -17387,7 +18073,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a swipe gesture against the view.
              */
-            interface ProgressIndicator_swipe_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_swipe_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * Direction of the swipe--either 'left', 'right', 'up', or 'down'.
                  */
@@ -17414,7 +18101,8 @@ declare namespace Titanium {
             /**
              * Fired when a touch event is interrupted by the device.
              */
-            interface ProgressIndicator_touchcancel_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_touchcancel_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -17478,7 +18166,8 @@ declare namespace Titanium {
             /**
              * Fired when a touch event is completed.
              */
-            interface ProgressIndicator_touchend_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_touchend_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -17542,7 +18231,8 @@ declare namespace Titanium {
             /**
              * Fired as soon as the device detects movement of a touch.
              */
-            interface ProgressIndicator_touchmove_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_touchmove_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -17606,7 +18296,8 @@ declare namespace Titanium {
             /**
              * Fired as soon as the device detects a touch gesture.
              */
-            interface ProgressIndicator_touchstart_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_touchstart_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -17670,7 +18361,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a two-finger tap against the view.
              */
-            interface ProgressIndicator_twofingertap_Event extends ProgressIndicatorBaseEvent {
+            interface ProgressIndicator_twofingertap_Event
+                extends ProgressIndicatorBaseEvent {
                 /**
                  * Returns `true` if the tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -17692,8 +18384,8 @@ declare namespace Titanium {
             /**
              * Fired when the user has canceled the progress indicator dialog.
              */
-            interface ProgressIndicator_cancel_Event extends ProgressIndicatorBaseEvent {
-            }
+            interface ProgressIndicator_cancel_Event
+                extends ProgressIndicatorBaseEvent {}
             interface ProgressIndicatorEventMap extends ProxyEventMap {
                 cancel: ProgressIndicator_cancel_Event;
 
@@ -17993,7 +18685,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Animates this view.
@@ -18047,7 +18742,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Shows the progress indicator and starts the animation.
@@ -18137,8 +18835,7 @@ declare namespace Titanium {
             /**
              * Fired when the search view gains focus.
              */
-            interface SearchView_focus_Event extends SearchViewBaseEvent {
-            }
+            interface SearchView_focus_Event extends SearchViewBaseEvent {}
             /**
              * Fired when a hardware key is pressed in the view.
              */
@@ -18151,8 +18848,7 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a long click.
              */
-            interface SearchView_longclick_Event extends SearchViewBaseEvent {
-            }
+            interface SearchView_longclick_Event extends SearchViewBaseEvent {}
             /**
              * Fired when the device detects a long press.
              */
@@ -18254,8 +18950,7 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface SearchView_postlayout_Event extends SearchViewBaseEvent {
-            }
+            interface SearchView_postlayout_Event extends SearchViewBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
@@ -18564,7 +19259,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a two-finger tap against the view.
              */
-            interface SearchView_twofingertap_Event extends SearchViewBaseEvent {
+            interface SearchView_twofingertap_Event
+                extends SearchViewBaseEvent {
                 /**
                  * Returns `true` if the tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -18586,23 +19282,19 @@ declare namespace Titanium {
             /**
              * Fired when the search view loses focus.
              */
-            interface SearchView_blur_Event extends SearchViewBaseEvent {
-            }
+            interface SearchView_blur_Event extends SearchViewBaseEvent {}
             /**
              * Fired when the cancel button is pressed.
              */
-            interface SearchView_cancel_Event extends SearchViewBaseEvent {
-            }
+            interface SearchView_cancel_Event extends SearchViewBaseEvent {}
             /**
              * Fired when the value of the search view changes.
              */
-            interface SearchView_change_Event extends SearchViewBaseEvent {
-            }
+            interface SearchView_change_Event extends SearchViewBaseEvent {}
             /**
              * If the search query is not empty, fired when the search button is clicked on soft keyboard
              */
-            interface SearchView_submit_Event extends SearchViewBaseEvent {
-            }
+            interface SearchView_submit_Event extends SearchViewBaseEvent {}
             interface SearchViewEventMap extends ProxyEventMap {
                 blur: SearchView_blur_Event;
 
@@ -18693,13 +19385,19 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof SearchViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.Android.SearchView, event: SearchViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.Android.SearchView,
+                        event: SearchViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Causes the search view to lose focus.
@@ -18709,7 +19407,10 @@ declare namespace Titanium {
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof SearchViewEventMap>(name: K, event?: SearchViewEventMap[K]): void;
+                fireEvent<K extends keyof SearchViewEventMap>(
+                    name: K,
+                    event?: SearchViewEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -18726,13 +19427,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof SearchViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.Android.SearchView, event: SearchViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.Android.SearchView,
+                        event: SearchViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.UI.Android.Snackbar
@@ -18799,8 +19506,7 @@ declare namespace Titanium {
             /**
              * Fired when the view element gains focus.
              */
-            interface Snackbar_focus_Event extends SnackbarBaseEvent {
-            }
+            interface Snackbar_focus_Event extends SnackbarBaseEvent {}
             /**
              * Fired when a hardware key is pressed in the view.
              */
@@ -18813,8 +19519,7 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a long click.
              */
-            interface Snackbar_longclick_Event extends SnackbarBaseEvent {
-            }
+            interface Snackbar_longclick_Event extends SnackbarBaseEvent {}
             /**
              * Fired when the device detects a long press.
              */
@@ -18916,8 +19621,7 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface Snackbar_postlayout_Event extends SnackbarBaseEvent {
-            }
+            interface Snackbar_postlayout_Event extends SnackbarBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
@@ -19523,13 +20227,19 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof SnackbarEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.Android.Snackbar, event: SnackbarEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.Android.Snackbar,
+                        event: SnackbarEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Animates this view.
@@ -19544,7 +20254,10 @@ declare namespace Titanium {
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof SnackbarEventMap>(name: K, event?: SnackbarEventMap[K]): void;
+                fireEvent<K extends keyof SnackbarEventMap>(
+                    name: K,
+                    event?: SnackbarEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -19566,13 +20279,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof SnackbarEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.Android.Snackbar, event: SnackbarEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.Android.Snackbar,
+                        event: SnackbarEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Show the Snackbar
@@ -19641,7 +20360,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            function addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -19651,7 +20373,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            function removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Apple iOS specific UI capabilities.  All properties, methods and events in this namespace will
@@ -20346,7 +21071,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -20356,7 +21084,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for the animation styles used for view transitions.
@@ -20414,7 +21145,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -20424,7 +21158,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for the style that can be used for the `selectionStyle` property of a
@@ -20520,7 +21257,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -20530,7 +21270,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for the Animation Styles used for transition on table view rows.
@@ -20573,7 +21316,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -20583,7 +21329,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for the styles available for scrollbars used with <Titanium.UI.ScrollView.scrollIndicatorStyle> and <Titanium.UI.TableView.scrollIndicatorStyle> properties.
@@ -20610,7 +21359,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -20620,7 +21372,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for the status bar style.
@@ -20671,7 +21426,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -20681,7 +21439,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for creating standard iOS system buttons.
@@ -20846,7 +21607,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -20856,7 +21620,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for the system icon styles that can be used on a tab group tab.
@@ -20925,7 +21692,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -20935,7 +21705,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for the style that can be used for the `selectionStyle` property of
@@ -20960,7 +21733,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -20970,7 +21746,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for the position value that can be used for the `position` property of
@@ -21000,7 +21779,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -21010,7 +21792,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A set of constants for the style that can be used for the `style` property of
@@ -21038,7 +21823,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -21048,7 +21836,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                function removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Dynamic behavior to support connections between an anchor point and an item.
@@ -21087,7 +21878,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -21097,7 +21891,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.UI.iOS.Animator
@@ -21111,13 +21908,11 @@ declare namespace Titanium {
             /**
              * Fired when the animator paused its animations.
              */
-            interface Animator_pause_Event extends AnimatorBaseEvent {
-            }
+            interface Animator_pause_Event extends AnimatorBaseEvent {}
             /**
              * Fired when the animator resumes its animations.
              */
-            interface Animator_resume_Event extends AnimatorBaseEvent {
-            }
+            interface Animator_resume_Event extends AnimatorBaseEvent {}
             interface AnimatorEventMap extends ProxyEventMap {
                 pause: Animator_pause_Event;
 
@@ -21152,18 +21947,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof AnimatorEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.Animator, event: AnimatorEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.Animator,
+                        event: AnimatorEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof AnimatorEventMap>(name: K, event?: AnimatorEventMap[K]): void;
+                fireEvent<K extends keyof AnimatorEventMap>(
+                    name: K,
+                    event?: AnimatorEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -21185,13 +21989,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof AnimatorEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.Animator, event: AnimatorEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.Animator,
+                        event: AnimatorEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Starts the animation behaviors.
@@ -21222,7 +22032,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Returns true or false depending if the provided shortcut object already exists.
@@ -21262,7 +22075,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.UI.iOS.BlurView
@@ -21449,8 +22265,7 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface BlurView_postlayout_Event extends BlurViewBaseEvent {
-            }
+            interface BlurView_postlayout_Event extends BlurViewBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
@@ -21826,18 +22641,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof BlurViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.BlurView, event: BlurViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.BlurView,
+                        event: BlurViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof BlurViewEventMap>(name: K, event?: BlurViewEventMap[K]): void;
+                fireEvent<K extends keyof BlurViewEventMap>(
+                    name: K,
+                    event?: BlurViewEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -21849,13 +22673,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof BlurViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.BlurView, event: BlurViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.BlurView,
+                        event: BlurViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.UI.iOS.CollisionBehavior
@@ -21869,7 +22699,8 @@ declare namespace Titanium {
             /**
              * Fired when an item collides with a boundary.
              */
-            interface CollisionBehavior_boundarycollision_Event extends CollisionBehaviorBaseEvent {
+            interface CollisionBehavior_boundarycollision_Event
+                extends CollisionBehaviorBaseEvent {
                 /**
                  * Identifier of the boundary the item collided with.
                  */
@@ -21893,7 +22724,8 @@ declare namespace Titanium {
             /**
              * Fired when two items collide.
              */
-            interface CollisionBehavior_itemcollision_Event extends CollisionBehaviorBaseEvent {
+            interface CollisionBehavior_itemcollision_Event
+                extends CollisionBehaviorBaseEvent {
                 /**
                  * Item that collided with `item2`.
                  */
@@ -21958,13 +22790,19 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof CollisionBehaviorEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.CollisionBehavior, event: CollisionBehaviorEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.CollisionBehavior,
+                        event: CollisionBehaviorEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Adds an item to this behavior.
@@ -21999,13 +22837,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof CollisionBehaviorEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.CollisionBehavior, event: CollisionBehaviorEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.CollisionBehavior,
+                        event: CollisionBehaviorEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Removes the specified item from this behavior.
@@ -22038,7 +22882,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a double click against the view.
              */
-            interface CoverFlowView_dblclick_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_dblclick_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * Returns `true` if the double click passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -22060,7 +22905,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a double tap against the view.
              */
-            interface CoverFlowView_doubletap_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_doubletap_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * Returns `true` if the double tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -22082,7 +22928,8 @@ declare namespace Titanium {
             /**
              * Fired when a hardware key is pressed in the view.
              */
-            interface CoverFlowView_keypressed_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_keypressed_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * The code for the physical key that was pressed. For more details, see [KeyEvent](https://developer.android.com/reference/android/view/KeyEvent.html). This API is experimental and subject to change.
                  */
@@ -22091,7 +22938,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a long press.
              */
-            interface CoverFlowView_longpress_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_longpress_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * Returns `true` if the long press passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -22189,12 +23037,13 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface CoverFlowView_postlayout_Event extends CoverFlowViewBaseEvent {
-            }
+            interface CoverFlowView_postlayout_Event
+                extends CoverFlowViewBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
-            interface CoverFlowView_singletap_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_singletap_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * Returns `true` if the single tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -22243,7 +23092,8 @@ declare namespace Titanium {
             /**
              * Fired when a touch event is interrupted by the device.
              */
-            interface CoverFlowView_touchcancel_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_touchcancel_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -22307,7 +23157,8 @@ declare namespace Titanium {
             /**
              * Fired when a touch event is completed.
              */
-            interface CoverFlowView_touchend_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_touchend_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -22371,7 +23222,8 @@ declare namespace Titanium {
             /**
              * Fired as soon as the device detects movement of a touch.
              */
-            interface CoverFlowView_touchmove_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_touchmove_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -22435,7 +23287,8 @@ declare namespace Titanium {
             /**
              * Fired as soon as the device detects a touch gesture.
              */
-            interface CoverFlowView_touchstart_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_touchstart_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -22499,7 +23352,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a two-finger tap against the view.
              */
-            interface CoverFlowView_twofingertap_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_twofingertap_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * Returns `true` if the tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -22521,7 +23375,8 @@ declare namespace Titanium {
             /**
              * Fired when the user changes the image using a gesture.
              */
-            interface CoverFlowView_change_Event extends CoverFlowViewBaseEvent {
+            interface CoverFlowView_change_Event
+                extends CoverFlowViewBaseEvent {
                 /**
                  * Index of the image that is now visible.
                  */
@@ -22576,7 +23431,11 @@ declare namespace Titanium {
                 /**
                  * Images to display in the view.
                  */
-                images: string[] | Titanium.Blob[] | Titanium.Filesystem.File[] | CoverFlowImageType[];
+                images:
+                    | string[]
+                    | Titanium.Blob[]
+                    | Titanium.Filesystem.File[]
+                    | CoverFlowImageType[];
 
                 /**
                  * Index to make selected.
@@ -22593,18 +23452,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof CoverFlowViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.CoverFlowView, event: CoverFlowViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.CoverFlowView,
+                        event: CoverFlowViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof CoverFlowViewEventMap>(name: K, event?: CoverFlowViewEventMap[K]): void;
+                fireEvent<K extends keyof CoverFlowViewEventMap>(
+                    name: K,
+                    event?: CoverFlowViewEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -22626,13 +23494,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof CoverFlowViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.CoverFlowView, event: CoverFlowViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.CoverFlowView,
+                        event: CoverFlowViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -22644,7 +23518,11 @@ declare namespace Titanium {
                  */
                 setImage(
                     index: number,
-                    image: string | Titanium.Blob | Titanium.Filesystem.File | CoverFlowImageType,
+                    image:
+                        | string
+                        | Titanium.Blob
+                        | Titanium.Filesystem.File
+                        | CoverFlowImageType,
                 ): void;
             }
             /**
@@ -22659,18 +23537,18 @@ declare namespace Titanium {
             /**
              * Fires when the document is previewed.
              */
-            interface DocumentViewer_load_Event extends DocumentViewerBaseEvent {
-            }
+            interface DocumentViewer_load_Event
+                extends DocumentViewerBaseEvent {}
             /**
              * Fires when the options menu appears before the document is previewed.
              */
-            interface DocumentViewer_menu_Event extends DocumentViewerBaseEvent {
-            }
+            interface DocumentViewer_menu_Event
+                extends DocumentViewerBaseEvent {}
             /**
              * Fires when the document is dismissed.
              */
-            interface DocumentViewer_unload_Event extends DocumentViewerBaseEvent {
-            }
+            interface DocumentViewer_unload_Event
+                extends DocumentViewerBaseEvent {}
             interface DocumentViewerEventMap extends ProxyEventMap {
                 load: DocumentViewer_load_Event;
 
@@ -22703,18 +23581,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof DocumentViewerEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.DocumentViewer, event: DocumentViewerEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.DocumentViewer,
+                        event: DocumentViewerEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof DocumentViewerEventMap>(name: K, event?: DocumentViewerEventMap[K]): void;
+                fireEvent<K extends keyof DocumentViewerEventMap>(
+                    name: K,
+                    event?: DocumentViewerEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -22731,13 +23618,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof DocumentViewerEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.DocumentViewer, event: DocumentViewerEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.DocumentViewer,
+                        event: DocumentViewerEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Displays the document viewer over the current view.
@@ -22786,12 +23679,18 @@ declare namespace Titanium {
                 /**
                  * Adds a specified angular velocity for the item.
                  */
-                addAngularVelocityForItem(item: Titanium.UI.View, velocity: number): void;
+                addAngularVelocityForItem(
+                    item: Titanium.UI.View,
+                    velocity: number,
+                ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Adds an item to this behavior.
@@ -22801,7 +23700,10 @@ declare namespace Titanium {
                 /**
                  * Adds a specified linear velocity for the item.
                  */
-                addLinearVelocityForItem(item: Titanium.UI.View, velocity: Point): void;
+                addLinearVelocityForItem(
+                    item: Titanium.UI.View,
+                    velocity: Point,
+                ): void;
 
                 /**
                  * Returns the angular velocity of the item.
@@ -22821,7 +23723,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Removes the specified item from this behavior.
@@ -22846,7 +23751,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -22871,7 +23779,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Used to trigger a haptic feedback after a selection has been made.
@@ -22905,7 +23816,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Adds an item to this behavior.
@@ -22920,7 +23834,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Removes the specified item from this behavior.
@@ -22934,7 +23851,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -22944,7 +23864,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.UI.iOS.LivePhotoView
@@ -22980,7 +23903,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a double click against the view.
              */
-            interface LivePhotoView_dblclick_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_dblclick_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * Returns `true` if the double click passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -23002,7 +23926,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a double tap against the view.
              */
-            interface LivePhotoView_doubletap_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_doubletap_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * Returns `true` if the double tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -23024,7 +23949,8 @@ declare namespace Titanium {
             /**
              * Fired when a hardware key is pressed in the view.
              */
-            interface LivePhotoView_keypressed_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_keypressed_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * The code for the physical key that was pressed. For more details, see [KeyEvent](https://developer.android.com/reference/android/view/KeyEvent.html). This API is experimental and subject to change.
                  */
@@ -23033,7 +23959,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a long press.
              */
-            interface LivePhotoView_longpress_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_longpress_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * Returns `true` if the long press passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -23131,12 +24058,13 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface LivePhotoView_postlayout_Event extends LivePhotoViewBaseEvent {
-            }
+            interface LivePhotoView_postlayout_Event
+                extends LivePhotoViewBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
-            interface LivePhotoView_singletap_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_singletap_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * Returns `true` if the single tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -23185,7 +24113,8 @@ declare namespace Titanium {
             /**
              * Fired when a touch event is interrupted by the device.
              */
-            interface LivePhotoView_touchcancel_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_touchcancel_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -23249,7 +24178,8 @@ declare namespace Titanium {
             /**
              * Fired when a touch event is completed.
              */
-            interface LivePhotoView_touchend_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_touchend_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -23313,7 +24243,8 @@ declare namespace Titanium {
             /**
              * Fired as soon as the device detects movement of a touch.
              */
-            interface LivePhotoView_touchmove_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_touchmove_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -23377,7 +24308,8 @@ declare namespace Titanium {
             /**
              * Fired as soon as the device detects a touch gesture.
              */
-            interface LivePhotoView_touchstart_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_touchstart_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -23441,7 +24373,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a two-finger tap against the view.
              */
-            interface LivePhotoView_twofingertap_Event extends LivePhotoViewBaseEvent {
+            interface LivePhotoView_twofingertap_Event
+                extends LivePhotoViewBaseEvent {
                 /**
                  * Returns `true` if the tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -23530,18 +24463,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof LivePhotoViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.LivePhotoView, event: LivePhotoViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.LivePhotoView,
+                        event: LivePhotoViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof LivePhotoViewEventMap>(name: K, event?: LivePhotoViewEventMap[K]): void;
+                fireEvent<K extends keyof LivePhotoViewEventMap>(
+                    name: K,
+                    event?: LivePhotoViewEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -23553,13 +24495,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof LivePhotoViewEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.LivePhotoView, event: LivePhotoViewEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.LivePhotoView,
+                        event: LivePhotoViewEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Begins playback of Live Photo content in the view.
@@ -23614,18 +24562,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof MenuPopupEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.MenuPopup, event: MenuPopupEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.MenuPopup,
+                        event: MenuPopupEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof MenuPopupEventMap>(name: K, event?: MenuPopupEventMap[K]): void;
+                fireEvent<K extends keyof MenuPopupEventMap>(
+                    name: K,
+                    event?: MenuPopupEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -23647,13 +24604,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof MenuPopupEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.MenuPopup, event: MenuPopupEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.MenuPopup,
+                        event: MenuPopupEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Shows the menu popup.
@@ -23725,18 +24688,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof PreviewActionEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.PreviewAction, event: PreviewActionEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.PreviewAction,
+                        event: PreviewActionEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof PreviewActionEventMap>(name: K, event?: PreviewActionEventMap[K]): void;
+                fireEvent<K extends keyof PreviewActionEventMap>(
+                    name: K,
+                    event?: PreviewActionEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -23748,13 +24720,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof PreviewActionEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.PreviewAction, event: PreviewActionEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.PreviewAction,
+                        event: PreviewActionEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A PreviewActionGroup provides options to configure a group of actions used by the iOS9 3D-Touch
@@ -23779,7 +24757,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -23789,7 +24770,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.UI.iOS.PreviewContext
@@ -23803,7 +24787,8 @@ declare namespace Titanium {
             /**
              * Fired when the user peeks the preview. You can configure the preview
              */
-            interface PreviewContext_peek_Event extends PreviewContextBaseEvent {
+            interface PreviewContext_peek_Event
+                extends PreviewContextBaseEvent {
                 /**
                  * The item ID bound to the list item that generated the event.
                  */
@@ -23881,18 +24866,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof PreviewContextEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.PreviewContext, event: PreviewContextEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.PreviewContext,
+                        event: PreviewContextEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof PreviewContextEventMap>(name: K, event?: PreviewContextEventMap[K]): void;
+                fireEvent<K extends keyof PreviewContextEventMap>(
+                    name: K,
+                    event?: PreviewContextEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -23904,13 +24898,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof PreviewContextEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.PreviewContext, event: PreviewContextEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.PreviewContext,
+                        event: PreviewContextEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Continuous or instantaneous force to apply to an item.
@@ -23949,7 +24949,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Adds an item to this behavior.
@@ -23964,7 +24967,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Removes the specified item from this behavior.
@@ -23993,7 +24999,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -24003,7 +25012,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Base event for class Titanium.UI.iOS.SplitWindow
@@ -24083,12 +25095,12 @@ declare namespace Titanium {
             /**
              * Fired when the window gains focus.
              */
-            interface SplitWindow_focus_Event extends SplitWindowBaseEvent {
-            }
+            interface SplitWindow_focus_Event extends SplitWindowBaseEvent {}
             /**
              * Fired when a hardware key is pressed in the view.
              */
-            interface SplitWindow_keypressed_Event extends SplitWindowBaseEvent {
+            interface SplitWindow_keypressed_Event
+                extends SplitWindowBaseEvent {
                 /**
                  * The code for the physical key that was pressed. For more details, see [KeyEvent](https://developer.android.com/reference/android/view/KeyEvent.html). This API is experimental and subject to change.
                  */
@@ -24195,8 +25207,8 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface SplitWindow_postlayout_Event extends SplitWindowBaseEvent {
-            }
+            interface SplitWindow_postlayout_Event
+                extends SplitWindowBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
@@ -24249,7 +25261,8 @@ declare namespace Titanium {
             /**
              * Fired when a touch event is interrupted by the device.
              */
-            interface SplitWindow_touchcancel_Event extends SplitWindowBaseEvent {
+            interface SplitWindow_touchcancel_Event
+                extends SplitWindowBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -24441,7 +25454,8 @@ declare namespace Titanium {
             /**
              * Fired as soon as the device detects a touch gesture.
              */
-            interface SplitWindow_touchstart_Event extends SplitWindowBaseEvent {
+            interface SplitWindow_touchstart_Event
+                extends SplitWindowBaseEvent {
                 /**
                  * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
                  * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -24505,7 +25519,8 @@ declare namespace Titanium {
             /**
              * Fired when the device detects a two-finger tap against the view.
              */
-            interface SplitWindow_twofingertap_Event extends SplitWindowBaseEvent {
+            interface SplitWindow_twofingertap_Event
+                extends SplitWindowBaseEvent {
                 /**
                  * Returns `true` if the tap passed through an overlapping window belonging to another app.
                  * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -24527,18 +25542,15 @@ declare namespace Titanium {
             /**
              * Fired when the window loses focus.
              */
-            interface SplitWindow_blur_Event extends SplitWindowBaseEvent {
-            }
+            interface SplitWindow_blur_Event extends SplitWindowBaseEvent {}
             /**
              * Fired when the window is closed.
              */
-            interface SplitWindow_close_Event extends SplitWindowBaseEvent {
-            }
+            interface SplitWindow_close_Event extends SplitWindowBaseEvent {}
             /**
              * Fired when the window is opened.
              */
-            interface SplitWindow_open_Event extends SplitWindowBaseEvent {
-            }
+            interface SplitWindow_open_Event extends SplitWindowBaseEvent {}
             interface SplitWindowEventMap extends ProxyEventMap {
                 blur: SplitWindow_blur_Event;
 
@@ -24632,18 +25644,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof SplitWindowEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.SplitWindow, event: SplitWindowEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.SplitWindow,
+                        event: SplitWindowEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof SplitWindowEventMap>(name: K, event?: SplitWindowEventMap[K]): void;
+                fireEvent<K extends keyof SplitWindowEventMap>(
+                    name: K,
+                    event?: SplitWindowEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -24655,23 +25676,35 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof SplitWindowEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.SplitWindow, event: SplitWindowEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.SplitWindow,
+                        event: SplitWindowEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Sets the value of the [masterIsOverlayed](Titanium.UI.iOS.SplitWindow.masterIsOverlayed) property.
                  */
-                setMasterIsOverlayed(masterIsOverlayed: boolean, options?: AnimatedOptions): void;
+                setMasterIsOverlayed(
+                    masterIsOverlayed: boolean,
+                    options?: AnimatedOptions,
+                ): void;
 
                 /**
                  * Sets the value of the [showMasterInPortrait](Titanium.UI.iOS.SplitWindow.showMasterInPortrait) property.
                  */
-                setShowMasterInPortrait(showMasterInPortrait: boolean, options?: AnimatedOptions): void;
+                setShowMasterInPortrait(
+                    showMasterInPortrait: boolean,
+                    options?: AnimatedOptions,
+                ): void;
 
                 /**
                  * Sets the array of items to show in the window's toolbar.
@@ -24863,8 +25896,7 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface Stepper_postlayout_Event extends StepperBaseEvent {
-            }
+            interface Stepper_postlayout_Event extends StepperBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
@@ -25348,18 +26380,27 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof StepperEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.Stepper, event: StepperEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.Stepper,
+                        event: StepperEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof StepperEventMap>(name: K, event?: StepperEventMap[K]): void;
+                fireEvent<K extends keyof StepperEventMap>(
+                    name: K,
+                    event?: StepperEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -25381,13 +26422,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof StepperEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iOS.Stepper, event: StepperEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iOS.Stepper,
+                        event: StepperEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -25401,7 +26448,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -25411,7 +26461,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A button bar that maintains a selected state.
@@ -25448,7 +26501,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -25458,7 +26514,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * Dynamic behavior to support connections between two items.
@@ -25502,7 +26561,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -25512,7 +26574,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * A collection of properties used to initialize a web view.
@@ -25562,7 +26627,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -25572,7 +26640,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * It represents the decision handler to tell to webview, whether allow or cancel the navigation.
@@ -25581,7 +26652,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -25596,7 +26670,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
             /**
              * It represents a pool of Web Content processes.
@@ -25605,7 +26682,10 @@ declare namespace Titanium {
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -25615,7 +26695,10 @@ declare namespace Titanium {
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
             }
         }
         /**
@@ -25837,8 +26920,7 @@ declare namespace Titanium {
             /**
              * Fired when a layout cycle is finished.
              */
-            interface Popover_postlayout_Event extends PopoverBaseEvent {
-            }
+            interface Popover_postlayout_Event extends PopoverBaseEvent {}
             /**
              * Fired when the device detects a single tap against the view.
              */
@@ -26169,8 +27251,7 @@ declare namespace Titanium {
             /**
              * Fired when the popover is hidden.
              */
-            interface Popover_hide_Event extends PopoverBaseEvent {
-            }
+            interface Popover_hide_Event extends PopoverBaseEvent {}
             interface PopoverEventMap extends ProxyEventMap {
                 click: Popover_click_Event;
 
@@ -26413,13 +27494,19 @@ declare namespace Titanium {
                  */
                 addEventListener<K extends keyof PopoverEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iPad.Popover, event: PopoverEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iPad.Popover,
+                        event: PopoverEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Adds the specified callback as an event listener for the named event.
                  */
-                addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                addEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Animates this view.
@@ -26434,7 +27521,10 @@ declare namespace Titanium {
                 /**
                  * Fires a synthesized event to any registered listeners.
                  */
-                fireEvent<K extends keyof PopoverEventMap>(name: K, event?: PopoverEventMap[K]): void;
+                fireEvent<K extends keyof PopoverEventMap>(
+                    name: K,
+                    event?: PopoverEventMap[K],
+                ): void;
 
                 /**
                  * Fires a synthesized event to any registered listeners.
@@ -26461,13 +27551,19 @@ declare namespace Titanium {
                  */
                 removeEventListener<K extends keyof PopoverEventMap>(
                     name: K,
-                    callback: (this: Titanium.UI.iPad.Popover, event: PopoverEventMap[K]) => void,
+                    callback: (
+                        this: Titanium.UI.iPad.Popover,
+                        event: PopoverEventMap[K],
+                    ) => void,
                 ): void;
 
                 /**
                  * Removes the specified callback as an event listener for the named event.
                  */
-                removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+                removeEventListener(
+                    name: string,
+                    callback: (param0: Titanium.Event) => void,
+                ): void;
 
                 /**
                  * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -26497,7 +27593,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a click against the view.
          */
-        interface ActivityIndicator_click_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_click_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * Returns `true` if the click passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -26519,7 +27616,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a double click against the view.
          */
-        interface ActivityIndicator_dblclick_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_dblclick_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * Returns `true` if the double click passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -26541,7 +27639,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a double tap against the view.
          */
-        interface ActivityIndicator_doubletap_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_doubletap_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * Returns `true` if the double tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -26563,12 +27662,13 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface ActivityIndicator_focus_Event extends ActivityIndicatorBaseEvent {
-        }
+        interface ActivityIndicator_focus_Event
+            extends ActivityIndicatorBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
-        interface ActivityIndicator_keypressed_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_keypressed_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * The code for the physical key that was pressed. For more details, see [KeyEvent](https://developer.android.com/reference/android/view/KeyEvent.html). This API is experimental and subject to change.
              */
@@ -26577,12 +27677,13 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface ActivityIndicator_longclick_Event extends ActivityIndicatorBaseEvent {
-        }
+        interface ActivityIndicator_longclick_Event
+            extends ActivityIndicatorBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
-        interface ActivityIndicator_longpress_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_longpress_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * Returns `true` if the long press passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -26604,7 +27705,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a pinch gesture.
          */
-        interface ActivityIndicator_pinch_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_pinch_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * The average distance between each of the pointers forming the gesture in progress through
              * the focal point.
@@ -26680,12 +27782,13 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface ActivityIndicator_postlayout_Event extends ActivityIndicatorBaseEvent {
-        }
+        interface ActivityIndicator_postlayout_Event
+            extends ActivityIndicatorBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
-        interface ActivityIndicator_singletap_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_singletap_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * Returns `true` if the single tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -26707,7 +27810,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a swipe gesture against the view.
          */
-        interface ActivityIndicator_swipe_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_swipe_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * Direction of the swipe--either 'left', 'right', 'up', or 'down'.
              */
@@ -26734,7 +27838,8 @@ declare namespace Titanium {
         /**
          * Fired when a touch event is interrupted by the device.
          */
-        interface ActivityIndicator_touchcancel_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_touchcancel_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -26798,7 +27903,8 @@ declare namespace Titanium {
         /**
          * Fired when a touch event is completed.
          */
-        interface ActivityIndicator_touchend_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_touchend_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -26862,7 +27968,8 @@ declare namespace Titanium {
         /**
          * Fired as soon as the device detects movement of a touch.
          */
-        interface ActivityIndicator_touchmove_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_touchmove_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -26926,7 +28033,8 @@ declare namespace Titanium {
         /**
          * Fired as soon as the device detects a touch gesture.
          */
-        interface ActivityIndicator_touchstart_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_touchstart_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -26990,7 +28098,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a two-finger tap against the view.
          */
-        interface ActivityIndicator_twofingertap_Event extends ActivityIndicatorBaseEvent {
+        interface ActivityIndicator_twofingertap_Event
+            extends ActivityIndicatorBaseEvent {
             /**
              * Returns `true` if the tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -27330,13 +28439,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ActivityIndicatorEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ActivityIndicator, event: ActivityIndicatorEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ActivityIndicator,
+                    event: ActivityIndicatorEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Animates this view.
@@ -27351,7 +28466,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ActivityIndicatorEventMap>(name: K, event?: ActivityIndicatorEventMap[K]): void;
+            fireEvent<K extends keyof ActivityIndicatorEventMap>(
+                name: K,
+                event?: ActivityIndicatorEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -27378,13 +28496,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ActivityIndicatorEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ActivityIndicator, event: ActivityIndicatorEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ActivityIndicator,
+                    event: ActivityIndicatorEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -27438,12 +28562,17 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -27458,7 +28587,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.UI.AlertDialog
@@ -27557,8 +28689,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface AlertDialog_focus_Event extends AlertDialogBaseEvent {
-        }
+        interface AlertDialog_focus_Event extends AlertDialogBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -27571,8 +28702,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface AlertDialog_longclick_Event extends AlertDialogBaseEvent {
-        }
+        interface AlertDialog_longclick_Event extends AlertDialogBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -27674,8 +28804,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface AlertDialog_postlayout_Event extends AlertDialogBaseEvent {
-        }
+        interface AlertDialog_postlayout_Event extends AlertDialogBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -28474,13 +29603,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof AlertDialogEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.AlertDialog, event: AlertDialogEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.AlertDialog,
+                    event: AlertDialogEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Animates this view.
@@ -28495,7 +29630,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof AlertDialogEventMap>(name: K, event?: AlertDialogEventMap[K]): void;
+            fireEvent<K extends keyof AlertDialogEventMap>(
+                name: K,
+                event?: AlertDialogEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -28522,13 +29660,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof AlertDialogEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.AlertDialog, event: AlertDialogEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.AlertDialog,
+                    event: AlertDialogEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Shows this dialog.
@@ -28564,12 +29708,17 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -28579,7 +29728,9 @@ declare namespace Titanium {
             /**
              * Creates and returns an instance of <Titanium.UI.Android.CardView>.
              */
-            static createCardView(parameters?: Dictionary<Titanium.UI.Android.CardView>): Titanium.UI.Android.CardView;
+            static createCardView(
+                parameters?: Dictionary<Titanium.UI.Android.CardView>,
+            ): Titanium.UI.Android.CardView;
 
             /**
              * Creates and returns an instance of <Titanium.UI.Android.DrawerLayout>.
@@ -28605,7 +29756,9 @@ declare namespace Titanium {
             /**
              * Creates and returns an instance of <Titanium.UI.Android.Snackbar>.
              */
-            static createSnackbar(parameters?: Dictionary<Titanium.UI.Android.Snackbar>): Titanium.UI.Android.Snackbar;
+            static createSnackbar(
+                parameters?: Dictionary<Titanium.UI.Android.Snackbar>,
+            ): Titanium.UI.Android.Snackbar;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -28615,7 +29768,9 @@ declare namespace Titanium {
             /**
              * Returns a <Ti.Color> instance for a color defined by the system or user resources (colors.xml)
              */
-            static getColorResource(resourceIdOrColorName: number | string): Titanium.UI.Color;
+            static getColorResource(
+                resourceIdOrColorName: number | string,
+            ): Titanium.UI.Color;
 
             /**
              * Creates a harmonizing color
@@ -28636,7 +29791,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.UI.Animation
@@ -28650,13 +29808,11 @@ declare namespace Titanium {
         /**
          * Fired when the animation completes.
          */
-        interface Animation_complete_Event extends AnimationBaseEvent {
-        }
+        interface Animation_complete_Event extends AnimationBaseEvent {}
         /**
          * Fired when the animation starts.
          */
-        interface Animation_start_Event extends AnimationBaseEvent {
-        }
+        interface Animation_start_Event extends AnimationBaseEvent {}
         interface AnimationEventMap extends ProxyEventMap {
             complete: Animation_complete_Event;
 
@@ -28797,18 +29953,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof AnimationEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Animation, event: AnimationEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Animation,
+                    event: AnimationEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof AnimationEventMap>(name: K, event?: AnimationEventMap[K]): void;
+            fireEvent<K extends keyof AnimationEventMap>(
+                name: K,
+                event?: AnimationEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -28820,13 +29985,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof AnimationEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Animation, event: AnimationEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Animation,
+                    event: AnimationEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * An attributed string proxy manages character strings and associated sets of attributes (for example,
@@ -28851,7 +30022,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -28861,7 +30035,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.UI.Button
@@ -28941,8 +30118,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface Button_focus_Event extends ButtonBaseEvent {
-        }
+        interface Button_focus_Event extends ButtonBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -28955,8 +30131,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface Button_longclick_Event extends ButtonBaseEvent {
-        }
+        interface Button_longclick_Event extends ButtonBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -29058,8 +30233,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface Button_postlayout_Event extends ButtonBaseEvent {
-        }
+        interface Button_postlayout_Event extends ButtonBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -29579,18 +30753,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ButtonEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Button, event: ButtonEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Button,
+                    event: ButtonEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ButtonEventMap>(name: K, event?: ButtonEventMap[K]): void;
+            fireEvent<K extends keyof ButtonEventMap>(
+                name: K,
+                event?: ButtonEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -29612,13 +30795,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ButtonEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Button, event: ButtonEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Button,
+                    event: ButtonEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -29690,8 +30879,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface ButtonBar_focus_Event extends ButtonBarBaseEvent {
-        }
+        interface ButtonBar_focus_Event extends ButtonBarBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -29704,8 +30892,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface ButtonBar_longclick_Event extends ButtonBarBaseEvent {
-        }
+        interface ButtonBar_longclick_Event extends ButtonBarBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -29807,8 +30994,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface ButtonBar_postlayout_Event extends ButtonBarBaseEvent {
-        }
+        interface ButtonBar_postlayout_Event extends ButtonBarBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -30215,18 +31401,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ButtonBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ButtonBar, event: ButtonBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ButtonBar,
+                    event: ButtonBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ButtonBarEventMap>(name: K, event?: ButtonBarEventMap[K]): void;
+            fireEvent<K extends keyof ButtonBarEventMap>(
+                name: K,
+                event?: ButtonBarEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -30248,13 +31443,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ButtonBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ButtonBar, event: ButtonBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ButtonBar,
+                    event: ButtonBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -30283,7 +31484,9 @@ declare namespace Titanium {
             /**
              * The Window or TabGroup whose Activity lifecycle should be triggered on the proxy.
              */
-            static lifecycleContainer: Titanium.UI.Window | Titanium.UI.TabGroup;
+            static lifecycleContainer:
+                | Titanium.UI.Window
+                | Titanium.UI.TabGroup;
 
             /**
              * Create a new named clipboard.
@@ -30298,7 +31501,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -30369,7 +31575,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Stores data of the specified MIME type in the clipboard.
@@ -30393,7 +31602,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -30403,7 +31615,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Returns a hex string representation of the color (in the RRGGBB or AARRGGBB formats)
@@ -30492,18 +31707,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof DashboardItemEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.DashboardItem, event: DashboardItemEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.DashboardItem,
+                    event: DashboardItemEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof DashboardItemEventMap>(name: K, event?: DashboardItemEventMap[K]): void;
+            fireEvent<K extends keyof DashboardItemEventMap>(
+                name: K,
+                event?: DashboardItemEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -30515,13 +31739,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof DashboardItemEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.DashboardItem, event: DashboardItemEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.DashboardItem,
+                    event: DashboardItemEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.UI.DashboardView
@@ -30593,7 +31823,8 @@ declare namespace Titanium {
         /**
          * Fired when a hardware key is pressed in the view.
          */
-        interface DashboardView_keypressed_Event extends DashboardViewBaseEvent {
+        interface DashboardView_keypressed_Event
+            extends DashboardViewBaseEvent {
             /**
              * The code for the physical key that was pressed. For more details, see [KeyEvent](https://developer.android.com/reference/android/view/KeyEvent.html). This API is experimental and subject to change.
              */
@@ -30700,8 +31931,8 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface DashboardView_postlayout_Event extends DashboardViewBaseEvent {
-        }
+        interface DashboardView_postlayout_Event
+            extends DashboardViewBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -30754,7 +31985,8 @@ declare namespace Titanium {
         /**
          * Fired when a touch event is interrupted by the device.
          */
-        interface DashboardView_touchcancel_Event extends DashboardViewBaseEvent {
+        interface DashboardView_touchcancel_Event
+            extends DashboardViewBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -30946,7 +32178,8 @@ declare namespace Titanium {
         /**
          * Fired as soon as the device detects a touch gesture.
          */
-        interface DashboardView_touchstart_Event extends DashboardViewBaseEvent {
+        interface DashboardView_touchstart_Event
+            extends DashboardViewBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -31010,7 +32243,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a two-finger tap against the view.
          */
-        interface DashboardView_twofingertap_Event extends DashboardViewBaseEvent {
+        interface DashboardView_twofingertap_Event
+            extends DashboardViewBaseEvent {
             /**
              * Returns `true` if the tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -31032,8 +32266,7 @@ declare namespace Titanium {
         /**
          * Fired when edit mode ends.
          */
-        interface DashboardView_commit_Event extends DashboardViewBaseEvent {
-        }
+        interface DashboardView_commit_Event extends DashboardViewBaseEvent {}
         /**
          * Fired when an item is deleted in edit mode.
          */
@@ -31064,8 +32297,7 @@ declare namespace Titanium {
         /**
          * Fired when edit mode starts.
          */
-        interface DashboardView_edit_Event extends DashboardViewBaseEvent {
-        }
+        interface DashboardView_edit_Event extends DashboardViewBaseEvent {}
         /**
          * Fired when an item is moved in edit mode.
          */
@@ -31083,7 +32315,8 @@ declare namespace Titanium {
         /**
          * Fired when the current page of the dashboard view changes.
          */
-        interface DashboardView_pagechanged_Event extends DashboardViewBaseEvent {
+        interface DashboardView_pagechanged_Event
+            extends DashboardViewBaseEvent {
             /**
              * The current page number.
              */
@@ -31172,18 +32405,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof DashboardViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.DashboardView, event: DashboardViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.DashboardView,
+                    event: DashboardViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof DashboardViewEventMap>(name: K, event?: DashboardViewEventMap[K]): void;
+            fireEvent<K extends keyof DashboardViewEventMap>(
+                name: K,
+                event?: DashboardViewEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -31205,13 +32447,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof DashboardViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.DashboardView, event: DashboardViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.DashboardView,
+                    event: DashboardViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -31306,8 +32554,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface EmailDialog_focus_Event extends EmailDialogBaseEvent {
-        }
+        interface EmailDialog_focus_Event extends EmailDialogBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -31320,8 +32567,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface EmailDialog_longclick_Event extends EmailDialogBaseEvent {
-        }
+        interface EmailDialog_longclick_Event extends EmailDialogBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -31423,8 +32669,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface EmailDialog_postlayout_Event extends EmailDialogBaseEvent {
-        }
+        interface EmailDialog_postlayout_Event extends EmailDialogBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -32130,20 +33375,28 @@ declare namespace Titanium {
             /**
              * Adds an attachment.
              */
-            addAttachment(attachment: Titanium.Blob | Titanium.Filesystem.File): void;
+            addAttachment(
+                attachment: Titanium.Blob | Titanium.Filesystem.File,
+            ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
             addEventListener<K extends keyof EmailDialogEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.EmailDialog, event: EmailDialogEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.EmailDialog,
+                    event: EmailDialogEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Animates this view.
@@ -32158,7 +33411,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof EmailDialogEventMap>(name: K, event?: EmailDialogEventMap[K]): void;
+            fireEvent<K extends keyof EmailDialogEventMap>(
+                name: K,
+                event?: EmailDialogEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -32190,13 +33446,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof EmailDialogEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.EmailDialog, event: EmailDialogEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.EmailDialog,
+                    event: EmailDialogEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Returns an image of the rendered view, as a Blob.
@@ -32281,8 +33543,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface ImageView_focus_Event extends ImageViewBaseEvent {
-        }
+        interface ImageView_focus_Event extends ImageViewBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -32295,8 +33556,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface ImageView_longclick_Event extends ImageViewBaseEvent {
-        }
+        interface ImageView_longclick_Event extends ImageViewBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -32398,8 +33658,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface ImageView_postlayout_Event extends ImageViewBaseEvent {
-        }
+        interface ImageView_postlayout_Event extends ImageViewBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -32750,13 +34009,11 @@ declare namespace Titanium {
         /**
          * Fired when the animation starts.
          */
-        interface ImageView_start_Event extends ImageViewBaseEvent {
-        }
+        interface ImageView_start_Event extends ImageViewBaseEvent {}
         /**
          * Fired when the animation stops.
          */
-        interface ImageView_stop_Event extends ImageViewBaseEvent {
-        }
+        interface ImageView_stop_Event extends ImageViewBaseEvent {}
         /**
          * Fired when an image fails to load.
          */
@@ -32786,8 +34043,7 @@ declare namespace Titanium {
         /**
          * Fired when the animation pauses.
          */
-        interface ImageView_pause_Event extends ImageViewBaseEvent {
-        }
+        interface ImageView_pause_Event extends ImageViewBaseEvent {}
         interface ImageViewEventMap extends ProxyEventMap {
             change: ImageView_change_Event;
 
@@ -32943,18 +34199,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ImageViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ImageView, event: ImageViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ImageView,
+                    event: ImageViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ImageViewEventMap>(name: K, event?: ImageViewEventMap[K]): void;
+            fireEvent<K extends keyof ImageViewEventMap>(
+                name: K,
+                event?: ImageViewEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -32981,13 +34246,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ImageViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ImageView, event: ImageViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ImageView,
+                    event: ImageViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -33092,8 +34363,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface Label_focus_Event extends LabelBaseEvent {
-        }
+        interface Label_focus_Event extends LabelBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -33106,8 +34376,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface Label_longclick_Event extends LabelBaseEvent {
-        }
+        interface Label_longclick_Event extends LabelBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -33209,8 +34478,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface Label_postlayout_Event extends LabelBaseEvent {
-        }
+        interface Label_postlayout_Event extends LabelBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -33738,18 +35006,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof LabelEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Label, event: LabelEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Label,
+                    event: LabelEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof LabelEventMap>(name: K, event?: LabelEventMap[K]): void;
+            fireEvent<K extends keyof LabelEventMap>(
+                name: K,
+                event?: LabelEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -33771,13 +35048,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof LabelEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Label, event: LabelEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Label,
+                    event: LabelEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -33998,12 +35281,19 @@ declare namespace Titanium {
             /**
              * Appends the data entries to the end of the list section.
              */
-            appendItems(dataItems: readonly ListDataItem[], animation?: ListViewAnimationProperties): void;
+            appendItems(
+                dataItems: readonly ListDataItem[],
+                animation?: ListViewAnimationProperties,
+            ): void;
 
             /**
              * Removes count entries from the list section at the specified index.
              */
-            deleteItemsAt(itemIndex: number, count: number, animation?: ListViewAnimationProperties): void;
+            deleteItemsAt(
+                itemIndex: number,
+                count: number,
+                animation?: ListViewAnimationProperties,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -34043,12 +35333,19 @@ declare namespace Titanium {
             /**
              * Sets the data entries in the list section.
              */
-            setItems(dataItems: readonly ListDataItem[], animation?: ListViewAnimationProperties): void;
+            setItems(
+                dataItems: readonly ListDataItem[],
+                animation?: ListViewAnimationProperties,
+            ): void;
 
             /**
              * Updates an item at the specified index.
              */
-            updateItemAt(index: number, dataItem: ListDataItem, animation?: ListViewAnimationProperties): void;
+            updateItemAt(
+                index: number,
+                dataItem: ListDataItem,
+                animation?: ListViewAnimationProperties,
+            ): void;
         }
         /**
          * Base event for class Titanium.UI.ListView
@@ -34128,8 +35425,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface ListView_focus_Event extends ListViewBaseEvent {
-        }
+        interface ListView_focus_Event extends ListViewBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -34142,8 +35438,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface ListView_longclick_Event extends ListViewBaseEvent {
-        }
+        interface ListView_longclick_Event extends ListViewBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -34245,8 +35540,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface ListView_postlayout_Event extends ListViewBaseEvent {
-        }
+        interface ListView_postlayout_Event extends ListViewBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -34757,8 +36051,7 @@ declare namespace Titanium {
         /**
          * Fired when a list row has ended moving.
          */
-        interface ListView_moveend_Event extends ListViewBaseEvent {
-        }
+        interface ListView_moveend_Event extends ListViewBaseEvent {}
         /**
          * Fired when a list row is moved to a different location by the user.
          */
@@ -35350,13 +36643,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ListViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ListView, event: ListViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ListView,
+                    event: ListViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds a reference item in the list view.
@@ -35374,7 +36673,10 @@ declare namespace Titanium {
             /**
              * Deletes an existing section.
              */
-            deleteSectionAt(sectionIndex: number, animation?: ListViewAnimationProperties): void;
+            deleteSectionAt(
+                sectionIndex: number,
+                animation?: ListViewAnimationProperties,
+            ): void;
 
             /**
              * Deselects a specific item.
@@ -35384,7 +36686,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ListViewEventMap>(name: K, event?: ListViewEventMap[K]): void;
+            fireEvent<K extends keyof ListViewEventMap>(
+                name: K,
+                event?: ListViewEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -35415,13 +36720,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ListViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ListView, event: ListViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ListView,
+                    event: ListViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -35440,7 +36751,11 @@ declare namespace Titanium {
             /**
              * Scrolls to a specific item.
              */
-            scrollToItem(sectionIndex: number, itemIndex: number, animation?: ListViewAnimationProperties): void;
+            scrollToItem(
+                sectionIndex: number,
+                itemIndex: number,
+                animation?: ListViewAnimationProperties,
+            ): void;
 
             /**
              * Selects an item in the list using the specified item and section indices.
@@ -35450,12 +36765,18 @@ declare namespace Titanium {
             /**
              * Sets this list view's content insets.
              */
-            setContentInsets(edgeInsets: Padding, options?: AnimatedWithDurationOptions): void;
+            setContentInsets(
+                edgeInsets: Padding,
+                options?: AnimatedWithDurationOptions,
+            ): void;
 
             /**
              * Sets the value of the content offset of the list view without animation by default.
              */
-            setContentOffset(contentOffset: Point, options?: AnimatedOptions): void;
+            setContentOffset(
+                contentOffset: Point,
+                options?: AnimatedOptions,
+            ): void;
 
             /**
              * Sets a reference item in the list view.
@@ -35540,8 +36861,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface MaskedImage_focus_Event extends MaskedImageBaseEvent {
-        }
+        interface MaskedImage_focus_Event extends MaskedImageBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -35554,8 +36874,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface MaskedImage_longclick_Event extends MaskedImageBaseEvent {
-        }
+        interface MaskedImage_longclick_Event extends MaskedImageBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -35657,8 +36976,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface MaskedImage_postlayout_Event extends MaskedImageBaseEvent {
-        }
+        interface MaskedImage_postlayout_Event extends MaskedImageBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -36058,18 +37376,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof MaskedImageEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.MaskedImage, event: MaskedImageEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.MaskedImage,
+                    event: MaskedImageEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof MaskedImageEventMap>(name: K, event?: MaskedImageEventMap[K]): void;
+            fireEvent<K extends keyof MaskedImageEventMap>(
+                name: K,
+                event?: MaskedImageEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -36091,13 +37418,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof MaskedImageEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.MaskedImage, event: MaskedImageEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.MaskedImage,
+                    event: MaskedImageEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -36141,7 +37474,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -36161,7 +37497,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Returns a matrix constructed by rotating this matrix.
@@ -36171,7 +37510,12 @@ declare namespace Titanium {
             /**
              * Returns a `Matrix2D` object that specifies a scaling animation from one scale to another.
              */
-            scale(sx: number, sy: number, toSx?: number, toSy?: number): Titanium.UI.Matrix2D;
+            scale(
+                sx: number,
+                sy: number,
+                toSx?: number,
+                toSy?: number,
+            ): Titanium.UI.Matrix2D;
 
             /**
              * Returns a matrix constructed by applying a translation transform to this matrix.
@@ -36265,7 +37609,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -36285,12 +37632,20 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Returns a matrix constructed by rotating this matrix.
              */
-            rotate(angle: number, x: number, y: number, z: number): Titanium.UI.Matrix3D;
+            rotate(
+                angle: number,
+                x: number,
+                y: number,
+                z: number,
+            ): Titanium.UI.Matrix3D;
 
             /**
              * Returns a matrix constructed by scaling this matrix.
@@ -36314,7 +37669,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a click against the view.
          */
-        interface NavigationWindow_click_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_click_Event
+            extends NavigationWindowBaseEvent {
             /**
              * Returns `true` if the click passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -36336,7 +37692,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a double click against the view.
          */
-        interface NavigationWindow_dblclick_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_dblclick_Event
+            extends NavigationWindowBaseEvent {
             /**
              * Returns `true` if the double click passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -36358,7 +37715,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a double tap against the view.
          */
-        interface NavigationWindow_doubletap_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_doubletap_Event
+            extends NavigationWindowBaseEvent {
             /**
              * Returns `true` if the double tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -36380,12 +37738,13 @@ declare namespace Titanium {
         /**
          * Fired when the window gains focus.
          */
-        interface NavigationWindow_focus_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_focus_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
-        interface NavigationWindow_keypressed_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_keypressed_Event
+            extends NavigationWindowBaseEvent {
             /**
              * The code for the physical key that was pressed. For more details, see [KeyEvent](https://developer.android.com/reference/android/view/KeyEvent.html). This API is experimental and subject to change.
              */
@@ -36394,12 +37753,13 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface NavigationWindow_longclick_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_longclick_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
-        interface NavigationWindow_longpress_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_longpress_Event
+            extends NavigationWindowBaseEvent {
             /**
              * Returns `true` if the long press passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -36421,7 +37781,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a pinch gesture.
          */
-        interface NavigationWindow_pinch_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_pinch_Event
+            extends NavigationWindowBaseEvent {
             /**
              * The average distance between each of the pointers forming the gesture in progress through
              * the focal point.
@@ -36497,12 +37858,13 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface NavigationWindow_postlayout_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_postlayout_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
-        interface NavigationWindow_singletap_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_singletap_Event
+            extends NavigationWindowBaseEvent {
             /**
              * Returns `true` if the single tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -36524,7 +37886,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a swipe gesture against the view.
          */
-        interface NavigationWindow_swipe_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_swipe_Event
+            extends NavigationWindowBaseEvent {
             /**
              * Direction of the swipe--either 'left', 'right', 'up', or 'down'.
              */
@@ -36551,7 +37914,8 @@ declare namespace Titanium {
         /**
          * Fired when a touch event is interrupted by the device.
          */
-        interface NavigationWindow_touchcancel_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_touchcancel_Event
+            extends NavigationWindowBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -36615,7 +37979,8 @@ declare namespace Titanium {
         /**
          * Fired when a touch event is completed.
          */
-        interface NavigationWindow_touchend_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_touchend_Event
+            extends NavigationWindowBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -36679,7 +38044,8 @@ declare namespace Titanium {
         /**
          * Fired as soon as the device detects movement of a touch.
          */
-        interface NavigationWindow_touchmove_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_touchmove_Event
+            extends NavigationWindowBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -36743,7 +38109,8 @@ declare namespace Titanium {
         /**
          * Fired as soon as the device detects a touch gesture.
          */
-        interface NavigationWindow_touchstart_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_touchstart_Event
+            extends NavigationWindowBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -36807,7 +38174,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a two-finger tap against the view.
          */
-        interface NavigationWindow_twofingertap_Event extends NavigationWindowBaseEvent {
+        interface NavigationWindow_twofingertap_Event
+            extends NavigationWindowBaseEvent {
             /**
              * Returns `true` if the tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -36829,48 +38197,48 @@ declare namespace Titanium {
         /**
          * Fired when the back button is pressed by the user.
          */
-        interface NavigationWindow_androidback_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_androidback_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the Camera button is released.
          */
-        interface NavigationWindow_androidcamera_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_androidcamera_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the Camera button is half-pressed then released.
          */
-        interface NavigationWindow_androidfocus_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_androidfocus_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the Search button is released.
          */
-        interface NavigationWindow_androidsearch_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_androidsearch_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the volume down button is released.
          */
-        interface NavigationWindow_androidvoldown_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_androidvoldown_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the volume up button is released.
          */
-        interface NavigationWindow_androidvolup_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_androidvolup_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the window loses focus.
          */
-        interface NavigationWindow_blur_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_blur_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the window is closed.
          */
-        interface NavigationWindow_close_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_close_Event
+            extends NavigationWindowBaseEvent {}
         /**
          * Fired when the window is opened.
          */
-        interface NavigationWindow_open_Event extends NavigationWindowBaseEvent {
-        }
+        interface NavigationWindow_open_Event
+            extends NavigationWindowBaseEvent {}
         interface NavigationWindowEventMap extends ProxyEventMap {
             androidback: NavigationWindow_androidback_Event;
 
@@ -37043,13 +38411,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof NavigationWindowEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.NavigationWindow, event: NavigationWindowEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.NavigationWindow,
+                    event: NavigationWindowEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Closes a window and removes it from the navigation window.
@@ -37059,7 +38433,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof NavigationWindowEventMap>(name: K, event?: NavigationWindowEventMap[K]): void;
+            fireEvent<K extends keyof NavigationWindowEventMap>(
+                name: K,
+                event?: NavigationWindowEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -37074,7 +38451,10 @@ declare namespace Titanium {
             /**
              * Opens a window within the navigation window.
              */
-            openWindow(window: Titanium.UI.Window, options?: AnimatedOptions): void;
+            openWindow(
+                window: Titanium.UI.Window,
+                options?: AnimatedOptions,
+            ): void;
 
             /**
              * Closes all windows that are currently opened inside the navigation window.
@@ -37091,13 +38471,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof NavigationWindowEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.NavigationWindow, event: NavigationWindowEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.NavigationWindow,
+                    event: NavigationWindowEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Sets the array of items to show in the window's toolbar.
@@ -37146,7 +38532,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -37156,7 +38545,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Show the notification.
@@ -37228,8 +38620,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface OptionBar_focus_Event extends OptionBarBaseEvent {
-        }
+        interface OptionBar_focus_Event extends OptionBarBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -37242,8 +38633,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface OptionBar_longclick_Event extends OptionBarBaseEvent {
-        }
+        interface OptionBar_longclick_Event extends OptionBarBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -37345,8 +38735,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface OptionBar_postlayout_Event extends OptionBarBaseEvent {
-        }
+        interface OptionBar_postlayout_Event extends OptionBarBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -37741,18 +39130,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof OptionBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.OptionBar, event: OptionBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.OptionBar,
+                    event: OptionBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof OptionBarEventMap>(name: K, event?: OptionBarEventMap[K]): void;
+            fireEvent<K extends keyof OptionBarEventMap>(
+                name: K,
+                event?: OptionBarEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -37774,13 +39172,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof OptionBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.OptionBar, event: OptionBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.OptionBar,
+                    event: OptionBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -37874,8 +39278,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface OptionDialog_focus_Event extends OptionDialogBaseEvent {
-        }
+        interface OptionDialog_focus_Event extends OptionDialogBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -37888,8 +39291,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface OptionDialog_longclick_Event extends OptionDialogBaseEvent {
-        }
+        interface OptionDialog_longclick_Event extends OptionDialogBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -37991,8 +39393,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface OptionDialog_postlayout_Event extends OptionDialogBaseEvent {
-        }
+        interface OptionDialog_postlayout_Event extends OptionDialogBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -38301,7 +39702,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a two-finger tap against the view.
          */
-        interface OptionDialog_twofingertap_Event extends OptionDialogBaseEvent {
+        interface OptionDialog_twofingertap_Event
+            extends OptionDialogBaseEvent {
             /**
              * Returns `true` if the tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -38656,13 +40058,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof OptionDialogEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.OptionDialog, event: OptionDialogEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.OptionDialog,
+                    event: OptionDialogEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Animates this view.
@@ -38677,7 +40085,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof OptionDialogEventMap>(name: K, event?: OptionDialogEventMap[K]): void;
+            fireEvent<K extends keyof OptionDialogEventMap>(
+                name: K,
+                event?: OptionDialogEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -38704,13 +40115,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof OptionDialogEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.OptionDialog, event: OptionDialogEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.OptionDialog,
+                    event: OptionDialogEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -38797,8 +40214,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface Picker_focus_Event extends PickerBaseEvent {
-        }
+        interface Picker_focus_Event extends PickerBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -38811,8 +40227,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface Picker_longclick_Event extends PickerBaseEvent {
-        }
+        interface Picker_longclick_Event extends PickerBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -38914,8 +40329,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface Picker_postlayout_Event extends PickerBaseEvent {
-        }
+        interface Picker_postlayout_Event extends PickerBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -39541,18 +40955,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof PickerEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Picker, event: PickerEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Picker,
+                    event: PickerEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof PickerEventMap>(name: K, event?: PickerEventMap[K]): void;
+            fireEvent<K extends keyof PickerEventMap>(
+                name: K,
+                event?: PickerEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -39584,13 +41007,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof PickerEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Picker, event: PickerEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Picker,
+                    event: PickerEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -39600,7 +41029,11 @@ declare namespace Titanium {
             /**
              * Selects a column's row.
              */
-            setSelectedRow(column: number, row: number, animated?: boolean): void;
+            setSelectedRow(
+                column: number,
+                row: number,
+                animated?: boolean,
+            ): void;
 
             /**
              * Sets the date and time value property for Date pickers.
@@ -39696,8 +41129,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface PickerColumn_focus_Event extends PickerColumnBaseEvent {
-        }
+        interface PickerColumn_focus_Event extends PickerColumnBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -39710,8 +41142,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface PickerColumn_longclick_Event extends PickerColumnBaseEvent {
-        }
+        interface PickerColumn_longclick_Event extends PickerColumnBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -39813,8 +41244,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface PickerColumn_postlayout_Event extends PickerColumnBaseEvent {
-        }
+        interface PickerColumn_postlayout_Event extends PickerColumnBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -40123,7 +41553,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a two-finger tap against the view.
          */
-        interface PickerColumn_twofingertap_Event extends PickerColumnBaseEvent {
+        interface PickerColumn_twofingertap_Event
+            extends PickerColumnBaseEvent {
             /**
              * Returns `true` if the tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -40526,13 +41957,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof PickerColumnEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.PickerColumn, event: PickerColumnEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.PickerColumn,
+                    event: PickerColumnEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds a row to this column.
@@ -40557,7 +41994,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof PickerColumnEventMap>(name: K, event?: PickerColumnEventMap[K]): void;
+            fireEvent<K extends keyof PickerColumnEventMap>(
+                name: K,
+                event?: PickerColumnEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -40594,13 +42034,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof PickerColumnEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.PickerColumn, event: PickerColumnEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.PickerColumn,
+                    event: PickerColumnEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Removes a row from this column.
@@ -40713,8 +42159,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface PickerRow_focus_Event extends PickerRowBaseEvent {
-        }
+        interface PickerRow_focus_Event extends PickerRowBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -40727,8 +42172,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface PickerRow_longclick_Event extends PickerRowBaseEvent {
-        }
+        interface PickerRow_longclick_Event extends PickerRowBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -40830,8 +42274,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface PickerRow_postlayout_Event extends PickerRowBaseEvent {
-        }
+        interface PickerRow_postlayout_Event extends PickerRowBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -41221,18 +42664,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof PickerRowEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.PickerRow, event: PickerRowEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.PickerRow,
+                    event: PickerRowEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof PickerRowEventMap>(name: K, event?: PickerRowEventMap[K]): void;
+            fireEvent<K extends keyof PickerRowEventMap>(
+                name: K,
+                event?: PickerRowEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -41244,13 +42696,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof PickerRowEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.PickerRow, event: PickerRowEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.PickerRow,
+                    event: PickerRowEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.UI.ProgressBar
@@ -41330,8 +42788,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface ProgressBar_focus_Event extends ProgressBarBaseEvent {
-        }
+        interface ProgressBar_focus_Event extends ProgressBarBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -41344,8 +42801,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface ProgressBar_longclick_Event extends ProgressBarBaseEvent {
-        }
+        interface ProgressBar_longclick_Event extends ProgressBarBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -41447,8 +42903,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface ProgressBar_postlayout_Event extends ProgressBarBaseEvent {
-        }
+        interface ProgressBar_postlayout_Event extends ProgressBarBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -41878,18 +43333,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ProgressBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ProgressBar, event: ProgressBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ProgressBar,
+                    event: ProgressBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ProgressBarEventMap>(name: K, event?: ProgressBarEventMap[K]): void;
+            fireEvent<K extends keyof ProgressBarEventMap>(
+                name: K,
+                event?: ProgressBarEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -41911,13 +43375,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ProgressBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ProgressBar, event: ProgressBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ProgressBar,
+                    event: ProgressBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -41937,7 +43407,8 @@ declare namespace Titanium {
          * Fired in response to a user initiated an action to refresh the contents of the
          * table view, list view or scroll view.
          */
-        interface RefreshControl_refreshstart_Event extends RefreshControlBaseEvent {
+        interface RefreshControl_refreshstart_Event
+            extends RefreshControlBaseEvent {
             /**
              * This is false. This event does not bubble
              */
@@ -41947,7 +43418,8 @@ declare namespace Titanium {
          * Fired in response to a user finished action to refresh the contents of the
          * table view, list view or scroll view.
          */
-        interface RefreshControl_refreshend_Event extends RefreshControlBaseEvent {
+        interface RefreshControl_refreshend_Event
+            extends RefreshControlBaseEvent {
             /**
              * This is false. This event does not bubble
              */
@@ -41979,13 +43451,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof RefreshControlEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.RefreshControl, event: RefreshControlEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.RefreshControl,
+                    event: RefreshControlEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Tells the control that a refresh operation was started programmatically.
@@ -42000,7 +43478,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof RefreshControlEventMap>(name: K, event?: RefreshControlEventMap[K]): void;
+            fireEvent<K extends keyof RefreshControlEventMap>(
+                name: K,
+                event?: RefreshControlEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -42012,13 +43493,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof RefreshControlEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.RefreshControl, event: RefreshControlEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.RefreshControl,
+                    event: RefreshControlEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Base event for class Titanium.UI.ScrollView
@@ -42098,8 +43585,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface ScrollView_focus_Event extends ScrollViewBaseEvent {
-        }
+        interface ScrollView_focus_Event extends ScrollViewBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -42112,8 +43598,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface ScrollView_longclick_Event extends ScrollViewBaseEvent {
-        }
+        interface ScrollView_longclick_Event extends ScrollViewBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -42215,8 +43700,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface ScrollView_postlayout_Event extends ScrollViewBaseEvent {
-        }
+        interface ScrollView_postlayout_Event extends ScrollViewBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -42600,8 +44084,7 @@ declare namespace Titanium {
         /**
          * Fired when the scrollable region starts being dragged.
          */
-        interface ScrollView_dragStart_Event extends ScrollViewBaseEvent {
-        }
+        interface ScrollView_dragStart_Event extends ScrollViewBaseEvent {}
         /**
          * Fired when the scrollable region stops being dragged.
          */
@@ -42615,8 +44098,7 @@ declare namespace Titanium {
         /**
          * Fired when the scrollable region starts being dragged.
          */
-        interface ScrollView_dragstart_Event extends ScrollViewBaseEvent {
-        }
+        interface ScrollView_dragstart_Event extends ScrollViewBaseEvent {}
         /**
          * Fired when the scrollable region stops being dragged.
          */
@@ -42783,18 +44265,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ScrollViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ScrollView, event: ScrollViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ScrollView,
+                    event: ScrollViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ScrollViewEventMap>(name: K, event?: ScrollViewEventMap[K]): void;
+            fireEvent<K extends keyof ScrollViewEventMap>(
+                name: K,
+                event?: ScrollViewEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -42806,13 +44297,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ScrollViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ScrollView, event: ScrollViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ScrollView,
+                    event: ScrollViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Moves the specified coordinate of the scrollable region into the viewable area.
@@ -42832,7 +44329,10 @@ declare namespace Titanium {
             /**
              * Sets the value of the [contentOffset](Titanium.UI.ScrollView.contentOffset) property.
              */
-            setContentOffset(contentOffsetXY: Point, animated?: AnimatedOptions): void;
+            setContentOffset(
+                contentOffsetXY: Point,
+                animated?: AnimatedOptions,
+            ): void;
 
             /**
              * Sets the value of the [zoomScale](Titanium.UI.ScrollView.zoomScale) property.
@@ -42873,7 +44373,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a double click against the view.
          */
-        interface ScrollableView_dblclick_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_dblclick_Event
+            extends ScrollableViewBaseEvent {
             /**
              * X coordinate of the event from the `source` view's coordinate system.
              */
@@ -42887,7 +44388,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a double tap against this page.
          */
-        interface ScrollableView_doubletap_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_doubletap_Event
+            extends ScrollableViewBaseEvent {
             /**
              * X coordinate of the event from the `source` view's coordinate system.
              */
@@ -42901,12 +44403,12 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface ScrollableView_focus_Event extends ScrollableViewBaseEvent {
-        }
+        interface ScrollableView_focus_Event extends ScrollableViewBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
-        interface ScrollableView_keypressed_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_keypressed_Event
+            extends ScrollableViewBaseEvent {
             /**
              * The code for the physical key that was pressed. For more details, see [KeyEvent](https://developer.android.com/reference/android/view/KeyEvent.html). This API is experimental and subject to change.
              */
@@ -42915,12 +44417,13 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface ScrollableView_longclick_Event extends ScrollableViewBaseEvent {
-        }
+        interface ScrollableView_longclick_Event
+            extends ScrollableViewBaseEvent {}
         /**
          * Fired when the device detects a long press against this view.
          */
-        interface ScrollableView_longpress_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_longpress_Event
+            extends ScrollableViewBaseEvent {
             /**
              * X coordinate of the event from the `source` view's coordinate system.
              */
@@ -43010,12 +44513,13 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface ScrollableView_postlayout_Event extends ScrollableViewBaseEvent {
-        }
+        interface ScrollableView_postlayout_Event
+            extends ScrollableViewBaseEvent {}
         /**
          * Fired when the device detects a single tap against this view.
          */
-        interface ScrollableView_singletap_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_singletap_Event
+            extends ScrollableViewBaseEvent {
             /**
              * X coordinate of the event from the `source` view's coordinate system.
              */
@@ -43056,7 +44560,8 @@ declare namespace Titanium {
         /**
          * Fired when a touch gesture is interrupted by the device.
          */
-        interface ScrollableView_touchcancel_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_touchcancel_Event
+            extends ScrollableViewBaseEvent {
             /**
              * X coordinate of the event from the `source` view's coordinate system.
              */
@@ -43070,7 +44575,8 @@ declare namespace Titanium {
         /**
          * Fired when a touch event is completed.
          */
-        interface ScrollableView_touchend_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_touchend_Event
+            extends ScrollableViewBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -43134,7 +44640,8 @@ declare namespace Titanium {
         /**
          * Fired as soon as the device detects movement of a touch.
          */
-        interface ScrollableView_touchmove_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_touchmove_Event
+            extends ScrollableViewBaseEvent {
             /**
              * A value which indicates the stylus angle on the screen. If the stylus is perpendicular to the screen or no stylus is
              * being used, the value will be Pi/2. If the stylus is parallel to the screen, the value will be 0.
@@ -43198,7 +44705,8 @@ declare namespace Titanium {
         /**
          * Fired as soon as the device detects a touch gesture against this view.
          */
-        interface ScrollableView_touchstart_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_touchstart_Event
+            extends ScrollableViewBaseEvent {
             /**
              * X coordinate of the event from the `source` view's coordinate system.
              */
@@ -43212,7 +44720,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a two-finger tap against the view.
          */
-        interface ScrollableView_twofingertap_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_twofingertap_Event
+            extends ScrollableViewBaseEvent {
             /**
              * X coordinate of the event from the `source` view's coordinate system.
              */
@@ -43247,7 +44756,8 @@ declare namespace Titanium {
         /**
          * Fired when the view has stopped moving completely.
          */
-        interface ScrollableView_scrollend_Event extends ScrollableViewBaseEvent {
+        interface ScrollableView_scrollend_Event
+            extends ScrollableViewBaseEvent {
             /**
              * Index of the currently visible view of <Titanium.UI.ScrollableView.views>.
              */
@@ -43427,13 +44937,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ScrollableViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ScrollableView, event: ScrollableViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ScrollableView,
+                    event: ScrollableViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds a new page to this Scrollable View.
@@ -43443,7 +44959,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ScrollableViewEventMap>(name: K, event?: ScrollableViewEventMap[K]): void;
+            fireEvent<K extends keyof ScrollableViewEventMap>(
+                name: K,
+                event?: ScrollableViewEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -43453,7 +44972,10 @@ declare namespace Titanium {
             /**
              * Inserts views at the specified position in the [views](Titanium.UI.ScrollableView.views) array.
              */
-            insertViewsAt(position: number, views: readonly Titanium.UI.View[]): void;
+            insertViewsAt(
+                position: number,
+                views: readonly Titanium.UI.View[],
+            ): void;
 
             /**
              * Sets the current page to the next consecutive page in <Titanium.UI.ScrollableView.views>.
@@ -43480,13 +45002,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ScrollableViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.ScrollableView, event: ScrollableViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.ScrollableView,
+                    event: ScrollableViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Removes an existing page from this Scrollable View.
@@ -43506,7 +45034,10 @@ declare namespace Titanium {
             /**
              * Sets the indicator image for the specified page.
              */
-            setIndicatorImageForPage(image: string | Titanium.Blob, pageNo: number): void;
+            setIndicatorImageForPage(
+                image: string | Titanium.Blob,
+                pageNo: number,
+            ): void;
         }
         /**
          * Base event for class Titanium.UI.SearchBar
@@ -43604,8 +45135,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface SearchBar_longclick_Event extends SearchBarBaseEvent {
-        }
+        interface SearchBar_longclick_Event extends SearchBarBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -43707,8 +45237,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface SearchBar_postlayout_Event extends SearchBarBaseEvent {
-        }
+        interface SearchBar_postlayout_Event extends SearchBarBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -44255,13 +45784,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof SearchBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.SearchBar, event: SearchBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.SearchBar,
+                    event: SearchBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Causes the search bar to lose focus.
@@ -44271,7 +45806,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof SearchBarEventMap>(name: K, event?: SearchBarEventMap[K]): void;
+            fireEvent<K extends keyof SearchBarEventMap>(
+                name: K,
+                event?: SearchBarEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -44303,13 +45841,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof SearchBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.SearchBar, event: SearchBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.SearchBar,
+                    event: SearchBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Removes an existing token at the specified index.
@@ -44371,18 +45915,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ShortcutEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Shortcut, event: ShortcutEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Shortcut,
+                    event: ShortcutEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ShortcutEventMap>(name: K, event?: ShortcutEventMap[K]): void;
+            fireEvent<K extends keyof ShortcutEventMap>(
+                name: K,
+                event?: ShortcutEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -44409,13 +45962,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ShortcutEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Shortcut, event: ShortcutEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Shortcut,
+                    event: ShortcutEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * An application shortcut item.
@@ -44455,7 +46014,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -44476,7 +46038,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Allow the shortcut to show.
@@ -44554,8 +46119,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface Slider_focus_Event extends SliderBaseEvent {
-        }
+        interface Slider_focus_Event extends SliderBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -44568,8 +46132,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface Slider_longclick_Event extends SliderBaseEvent {
-        }
+        interface Slider_longclick_Event extends SliderBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -44671,8 +46234,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface Slider_postlayout_Event extends SliderBaseEvent {
-        }
+        interface Slider_postlayout_Event extends SliderBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -45242,18 +46804,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof SliderEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Slider, event: SliderEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Slider,
+                    event: SliderEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof SliderEventMap>(name: K, event?: SliderEventMap[K]): void;
+            fireEvent<K extends keyof SliderEventMap>(
+                name: K,
+                event?: SliderEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -45275,13 +46846,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof SliderEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Slider, event: SliderEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Slider,
+                    event: SliderEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -45363,8 +46940,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface Switch_focus_Event extends SwitchBaseEvent {
-        }
+        interface Switch_focus_Event extends SwitchBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -45377,8 +46953,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface Switch_longclick_Event extends SwitchBaseEvent {
-        }
+        interface Switch_longclick_Event extends SwitchBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -45480,8 +47055,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface Switch_postlayout_Event extends SwitchBaseEvent {
-        }
+        interface Switch_postlayout_Event extends SwitchBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -45943,18 +47517,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof SwitchEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Switch, event: SwitchEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Switch,
+                    event: SwitchEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof SwitchEventMap>(name: K, event?: SwitchEventMap[K]): void;
+            fireEvent<K extends keyof SwitchEventMap>(
+                name: K,
+                event?: SwitchEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -45976,13 +47559,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof SwitchEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Switch, event: SwitchEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Switch,
+                    event: SwitchEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -46076,8 +47665,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface Tab_longclick_Event extends TabBaseEvent {
-        }
+        interface Tab_longclick_Event extends TabBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -46179,8 +47767,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface Tab_postlayout_Event extends TabBaseEvent {
-        }
+        interface Tab_postlayout_Event extends TabBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -46852,13 +48439,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof TabEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Tab, event: TabEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Tab,
+                    event: TabEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Animates this view.
@@ -46873,7 +48466,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof TabEventMap>(name: K, event?: TabEventMap[K]): void;
+            fireEvent<K extends keyof TabEventMap>(
+                name: K,
+                event?: TabEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -46910,13 +48506,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof TabEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Tab, event: TabEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Tab,
+                    event: TabEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -47046,8 +48648,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface TabGroup_longclick_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_longclick_Event extends TabGroupBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -47149,8 +48750,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface TabGroup_postlayout_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_postlayout_Event extends TabGroupBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -47481,33 +49081,27 @@ declare namespace Titanium {
         /**
          * Fired when the back button is pressed by the user.
          */
-        interface TabGroup_androidback_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_androidback_Event extends TabGroupBaseEvent {}
         /**
          * Fired when the Camera button is released.
          */
-        interface TabGroup_androidcamera_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_androidcamera_Event extends TabGroupBaseEvent {}
         /**
          * Fired when the Camera button is half-pressed then released.
          */
-        interface TabGroup_androidfocus_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_androidfocus_Event extends TabGroupBaseEvent {}
         /**
          * Fired when the Search button is released.
          */
-        interface TabGroup_androidsearch_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_androidsearch_Event extends TabGroupBaseEvent {}
         /**
          * Fired when the volume down button is released.
          */
-        interface TabGroup_androidvoldown_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_androidvoldown_Event extends TabGroupBaseEvent {}
         /**
          * Fired when the volume up button is released.
          */
-        interface TabGroup_androidvolup_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_androidvolup_Event extends TabGroupBaseEvent {}
         /**
          * Fired when this tab group loses focus. On Android, fired when a tab in this tab group
          * loses focus.
@@ -47539,13 +49133,11 @@ declare namespace Titanium {
         /**
          * Fired when the tab group is closed.
          */
-        interface TabGroup_close_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_close_Event extends TabGroupBaseEvent {}
         /**
          * Fired when the tab group is opened.
          */
-        interface TabGroup_open_Event extends TabGroupBaseEvent {
-        }
+        interface TabGroup_open_Event extends TabGroupBaseEvent {}
         interface TabGroupEventMap extends ProxyEventMap {
             androidback: TabGroup_androidback_Event;
 
@@ -47954,13 +49546,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof TabGroupEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TabGroup, event: TabGroupEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TabGroup,
+                    event: TabGroupEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds a tab to the tab group.
@@ -47970,7 +49568,12 @@ declare namespace Titanium {
             /**
              * Closes the tab group and removes it from the UI.
              */
-            close(params?: Titanium.UI.Animation | Dictionary<Titanium.UI.Animation> | closeWindowParams): Promise<any>;
+            close(
+                params?:
+                    | Titanium.UI.Animation
+                    | Dictionary<Titanium.UI.Animation>
+                    | closeWindowParams,
+            ): Promise<any>;
 
             /**
              * Disable (or re-enable) tab navigation. If tab navigation is disabled, the tabs are hidden and
@@ -47981,7 +49584,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof TabGroupEventMap>(name: K, event?: TabGroupEventMap[K]): void;
+            fireEvent<K extends keyof TabGroupEventMap>(
+                name: K,
+                event?: TabGroupEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -48020,13 +49626,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof TabGroupEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TabGroup, event: TabGroupEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TabGroup,
+                    event: TabGroupEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Removes a tab from the tab group.
@@ -48114,8 +49726,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface TabbedBar_focus_Event extends TabbedBarBaseEvent {
-        }
+        interface TabbedBar_focus_Event extends TabbedBarBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -48128,8 +49739,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface TabbedBar_longclick_Event extends TabbedBarBaseEvent {
-        }
+        interface TabbedBar_longclick_Event extends TabbedBarBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -48231,8 +49841,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface TabbedBar_postlayout_Event extends TabbedBarBaseEvent {
-        }
+        interface TabbedBar_postlayout_Event extends TabbedBarBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -48637,18 +50246,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof TabbedBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TabbedBar, event: TabbedBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TabbedBar,
+                    event: TabbedBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof TabbedBarEventMap>(name: K, event?: TabbedBarEventMap[K]): void;
+            fireEvent<K extends keyof TabbedBarEventMap>(
+                name: K,
+                event?: TabbedBarEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -48670,13 +50288,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof TabbedBarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TabbedBar, event: TabbedBarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TabbedBar,
+                    event: TabbedBarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -48805,8 +50429,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface TableView_focus_Event extends TableViewBaseEvent {
-        }
+        interface TableView_focus_Event extends TableViewBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -48819,8 +50442,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface TableView_longclick_Event extends TableViewBaseEvent {
-        }
+        interface TableView_longclick_Event extends TableViewBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -48936,8 +50558,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface TableView_postlayout_Event extends TableViewBaseEvent {
-        }
+        interface TableView_postlayout_Event extends TableViewBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -49441,8 +51062,7 @@ declare namespace Titanium {
         /**
          * Fired when the scrollable region starts being dragged.
          */
-        interface TableView_dragstart_Event extends TableViewBaseEvent {
-        }
+        interface TableView_dragstart_Event extends TableViewBaseEvent {}
         /**
          * Fired when the scrollable region stops being dragged.
          */
@@ -49803,13 +51423,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof TableViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TableView, event: TableViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TableView,
+                    event: TableViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Appends a single row or an array of rows to the end of the table.
@@ -49838,12 +51464,18 @@ declare namespace Titanium {
             /**
              * Deletes an existing row.
              */
-            deleteRow(row: number | Titanium.UI.TableViewRow, animation?: TableViewAnimationProperties): void;
+            deleteRow(
+                row: number | Titanium.UI.TableViewRow,
+                animation?: TableViewAnimationProperties,
+            ): void;
 
             /**
              * Deletes an existing section.
              */
-            deleteSection(section: number, animation?: TableViewAnimationProperties): void;
+            deleteSection(
+                section: number,
+                animation?: TableViewAnimationProperties,
+            ): void;
 
             /**
              * Programmatically deselects a row.
@@ -49853,7 +51485,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof TableViewEventMap>(name: K, event?: TableViewEventMap[K]): void;
+            fireEvent<K extends keyof TableViewEventMap>(
+                name: K,
+                event?: TableViewEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -49865,7 +51500,9 @@ declare namespace Titanium {
              */
             insertRowAfter(
                 index: number,
-                row: Titanium.UI.TableViewRow | Dictionary<Titanium.UI.TableViewRow>,
+                row:
+                    | Titanium.UI.TableViewRow
+                    | Dictionary<Titanium.UI.TableViewRow>,
                 animation?: TableViewAnimationProperties,
             ): void;
 
@@ -49874,7 +51511,9 @@ declare namespace Titanium {
              */
             insertRowBefore(
                 index: number,
-                row: Titanium.UI.TableViewRow | Dictionary<Titanium.UI.TableViewRow>,
+                row:
+                    | Titanium.UI.TableViewRow
+                    | Dictionary<Titanium.UI.TableViewRow>,
                 animation?: TableViewAnimationProperties,
             ): void;
 
@@ -49883,7 +51522,9 @@ declare namespace Titanium {
              */
             insertSectionAfter(
                 index: number,
-                section: Titanium.UI.TableViewSection | Dictionary<Titanium.UI.TableViewSection>,
+                section:
+                    | Titanium.UI.TableViewSection
+                    | Dictionary<Titanium.UI.TableViewSection>,
                 animation?: TableViewAnimationProperties,
             ): void;
 
@@ -49892,7 +51533,9 @@ declare namespace Titanium {
              */
             insertSectionBefore(
                 index: number,
-                section: Titanium.UI.TableViewSection | Dictionary<Titanium.UI.TableViewSection>,
+                section:
+                    | Titanium.UI.TableViewSection
+                    | Dictionary<Titanium.UI.TableViewSection>,
                 animation?: TableViewAnimationProperties,
             ): void;
 
@@ -49911,13 +51554,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof TableViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TableView, event: TableViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TableView,
+                    event: TableViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -49927,13 +51576,19 @@ declare namespace Titanium {
             /**
              * Scrolls the table view to ensure that the specified row is on screen.
              */
-            scrollToIndex(index: number, animation?: TableViewAnimationProperties): void;
+            scrollToIndex(
+                index: number,
+                animation?: TableViewAnimationProperties,
+            ): void;
 
             /**
              * Scrolls the table to a specific top position where 0 is the topmost y position in the
              * table view.
              */
-            scrollToTop(top: number, animation?: TableViewAnimationProperties): void;
+            scrollToTop(
+                top: number,
+                animation?: TableViewAnimationProperties,
+            ): void;
 
             /**
              * Programmatically selects a row. In Android, it sets the currently selected item. If in touch mode,
@@ -49945,12 +51600,18 @@ declare namespace Titanium {
             /**
              * Sets this tableview's content insets.
              */
-            setContentInsets(edgeInsets: Padding, options?: AnimatedWithDurationOptions): void;
+            setContentInsets(
+                edgeInsets: Padding,
+                options?: AnimatedWithDurationOptions,
+            ): void;
 
             /**
              * Sets the value of the content offset of the table view without animation by default.
              */
-            setContentOffset(contentOffset: Point, options?: AnimatedOptions): void;
+            setContentOffset(
+                contentOffset: Point,
+                options?: AnimatedOptions,
+            ): void;
 
             /**
              * Sets the data in the table.
@@ -49972,7 +51633,11 @@ declare namespace Titanium {
             /**
              * Updates an existing row, optionally with animation.
              */
-            updateRow(index: number, row: Titanium.UI.TableViewRow, animation: TableViewAnimationProperties): void;
+            updateRow(
+                index: number,
+                row: Titanium.UI.TableViewRow,
+                animation: TableViewAnimationProperties,
+            ): void;
 
             /**
              * Updates an existing section, optionally with animation.
@@ -50084,8 +51749,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface TableViewRow_focus_Event extends TableViewRowBaseEvent {
-        }
+        interface TableViewRow_focus_Event extends TableViewRowBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -50098,8 +51762,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface TableViewRow_longclick_Event extends TableViewRowBaseEvent {
-        }
+        interface TableViewRow_longclick_Event extends TableViewRowBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -50201,8 +51864,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface TableViewRow_postlayout_Event extends TableViewRowBaseEvent {
-        }
+        interface TableViewRow_postlayout_Event extends TableViewRowBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -50311,7 +51973,8 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a two-finger tap against the view.
          */
-        interface TableViewRow_twofingertap_Event extends TableViewRowBaseEvent {
+        interface TableViewRow_twofingertap_Event
+            extends TableViewRowBaseEvent {
             /**
              * Returns `true` if the tap passed through an overlapping window belonging to another app.
              * This is a security feature to protect an app from "tapjacking", where a malicious app can use a
@@ -50505,13 +52168,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof TableViewRowEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TableViewRow, event: TableViewRowEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TableViewRow,
+                    event: TableViewRowEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Animates this view.
@@ -50521,7 +52190,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof TableViewRowEventMap>(name: K, event?: TableViewRowEventMap[K]): void;
+            fireEvent<K extends keyof TableViewRowEventMap>(
+                name: K,
+                event?: TableViewRowEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -50533,13 +52205,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof TableViewRowEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TableViewRow, event: TableViewRowEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TableViewRow,
+                    event: TableViewRowEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * A table view section is a container within a table used to organize table view rows.
@@ -50583,7 +52261,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -50598,7 +52279,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Returns a row in this section.
@@ -50701,8 +52385,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface TextArea_longclick_Event extends TextAreaBaseEvent {
-        }
+        interface TextArea_longclick_Event extends TextAreaBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -50804,8 +52487,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface TextArea_postlayout_Event extends TextAreaBaseEvent {
-        }
+        interface TextArea_postlayout_Event extends TextAreaBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -51448,13 +53130,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof TextAreaEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TextArea, event: TextAreaEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TextArea,
+                    event: TextAreaEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Forces this text area to lose focus.
@@ -51464,7 +53152,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof TextAreaEventMap>(name: K, event?: TextAreaEventMap[K]): void;
+            fireEvent<K extends keyof TextAreaEventMap>(
+                name: K,
+                event?: TextAreaEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -51496,13 +53187,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof TextAreaEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TextArea, event: TextAreaEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TextArea,
+                    event: TextAreaEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -51610,8 +53307,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface TextField_longclick_Event extends TextFieldBaseEvent {
-        }
+        interface TextField_longclick_Event extends TextFieldBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -51713,8 +53409,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface TextField_postlayout_Event extends TextFieldBaseEvent {
-        }
+        interface TextField_postlayout_Event extends TextFieldBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -52357,13 +54052,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof TextFieldEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TextField, event: TextFieldEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TextField,
+                    event: TextFieldEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Forces the field to lose focus.
@@ -52373,7 +54074,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof TextFieldEventMap>(name: K, event?: TextFieldEventMap[K]): void;
+            fireEvent<K extends keyof TextFieldEventMap>(
+                name: K,
+                event?: TextFieldEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -52405,13 +54109,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof TextFieldEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.TextField, event: TextFieldEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.TextField,
+                    event: TextFieldEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -52501,8 +54211,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface Toolbar_focus_Event extends ToolbarBaseEvent {
-        }
+        interface Toolbar_focus_Event extends ToolbarBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -52515,8 +54224,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface Toolbar_longclick_Event extends ToolbarBaseEvent {
-        }
+        interface Toolbar_longclick_Event extends ToolbarBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -52618,8 +54326,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface Toolbar_postlayout_Event extends ToolbarBaseEvent {
-        }
+        interface Toolbar_postlayout_Event extends ToolbarBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -53125,13 +54832,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ToolbarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Toolbar, event: ToolbarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Toolbar,
+                    event: ToolbarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Collapses expanded ActionViews if there is any
@@ -53146,7 +54859,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ToolbarEventMap>(name: K, event?: ToolbarEventMap[K]): void;
+            fireEvent<K extends keyof ToolbarEventMap>(
+                name: K,
+                event?: ToolbarEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -53223,13 +54939,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ToolbarEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Toolbar, event: ToolbarEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Toolbar,
+                    event: ToolbarEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -53239,12 +54961,18 @@ declare namespace Titanium {
             /**
              * Sets the content margins of the toolbar
              */
-            setContentInsetsAbsolute(insetLeft: number, insetRight: number): void;
+            setContentInsetsAbsolute(
+                insetLeft: number,
+                insetRight: number,
+            ): void;
 
             /**
              * Sets the content margins relative to the layout direction
              */
-            setContentInsetsRelative(insetStart: number, insetEnd: number): void;
+            setContentInsetsRelative(
+                insetStart: number,
+                insetEnd: number,
+            ): void;
 
             /**
              * Shows the overflow menu if there is one
@@ -53329,8 +55057,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface View_focus_Event extends ViewBaseEvent {
-        }
+        interface View_focus_Event extends ViewBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -53343,8 +55070,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface View_longclick_Event extends ViewBaseEvent {
-        }
+        interface View_longclick_Event extends ViewBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -53446,8 +55172,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface View_postlayout_Event extends ViewBaseEvent {
-        }
+        interface View_postlayout_Event extends ViewBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -54154,19 +55879,27 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof ViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.View, event: ViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.View,
+                    event: ViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Animates this view.
              */
             animate(
-                animation: Titanium.UI.Animation | Dictionary<Titanium.UI.Animation>,
+                animation:
+                    | Titanium.UI.Animation
+                    | Dictionary<Titanium.UI.Animation>,
                 callback?: (param0: any) => void,
             ): void;
 
@@ -54178,12 +55911,18 @@ declare namespace Titanium {
             /**
              * Translates a point from this view's coordinate system to another view's coordinate system.
              */
-            convertPointToView(point: Point, destinationView: Titanium.UI.View): Point;
+            convertPointToView(
+                point: Point,
+                destinationView: Titanium.UI.View,
+            ): Point;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof ViewEventMap>(name: K, event?: ViewEventMap[K]): void;
+            fireEvent<K extends keyof ViewEventMap>(
+                name: K,
+                event?: ViewEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -54220,13 +55959,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof ViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.View, event: ViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.View,
+                    event: ViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces a view at the specified position in the [children](Titanium.UI.View.children) array.
@@ -54247,7 +55992,10 @@ declare namespace Titanium {
             /**
              * Returns an image of the rendered view, as a Blob.
              */
-            toImage(callback?: (param0: Titanium.Blob) => void, honorScaleFactor?: boolean): Titanium.Blob;
+            toImage(
+                callback?: (param0: Titanium.Blob) => void,
+                honorScaleFactor?: boolean,
+            ): Titanium.Blob;
 
             /**
              * Performs a batch update of all supplied layout properties and schedules a layout pass after
@@ -54334,8 +56082,7 @@ declare namespace Titanium {
         /**
          * Fired when the view element gains focus.
          */
-        interface WebView_focus_Event extends WebViewBaseEvent {
-        }
+        interface WebView_focus_Event extends WebViewBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -54348,8 +56095,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface WebView_longclick_Event extends WebViewBaseEvent {
-        }
+        interface WebView_longclick_Event extends WebViewBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -54451,8 +56197,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface WebView_postlayout_Event extends WebViewBaseEvent {
-        }
+        interface WebView_postlayout_Event extends WebViewBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -55207,13 +56952,19 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof WebViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.WebView, event: WebViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.WebView,
+                    event: WebViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds a script message handler.
@@ -55248,7 +56999,9 @@ declare namespace Titanium {
             /**
              * Create WebKit web archive data representing the current web content of the WebView.
              */
-            createWebArchive(callback: (param0: DataCreationResult) => void): void;
+            createWebArchive(
+                callback: (param0: DataCreationResult) => void,
+            ): void;
 
             /**
              * Evaluates a JavaScript expression inside the context of the web view and
@@ -55269,7 +57022,10 @@ declare namespace Titanium {
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof WebViewEventMap>(name: K, event?: WebViewEventMap[K]): void;
+            fireEvent<K extends keyof WebViewEventMap>(
+                name: K,
+                event?: WebViewEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -55321,13 +57077,19 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof WebViewEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.WebView, event: WebViewEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.WebView,
+                    event: WebViewEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Removes a script message handler.
@@ -55352,7 +57114,11 @@ declare namespace Titanium {
             /**
              * Sets the basic authentication for this web view to use on subsequent URL requests.
              */
-            setBasicAuthentication(username: string, password: string, persistence: number): void;
+            setBasicAuthentication(
+                username: string,
+                password: string,
+                persistence: number,
+            ): void;
 
             /**
              * Sets the value of [html](Titanium.UI.WebView.html) property.
@@ -55457,8 +57223,7 @@ declare namespace Titanium {
         /**
          * Fired when the window gains focus.
          */
-        interface Window_focus_Event extends WindowBaseEvent {
-        }
+        interface Window_focus_Event extends WindowBaseEvent {}
         /**
          * Fired when a hardware key is pressed in the view.
          */
@@ -55471,8 +57236,7 @@ declare namespace Titanium {
         /**
          * Fired when the device detects a long click.
          */
-        interface Window_longclick_Event extends WindowBaseEvent {
-        }
+        interface Window_longclick_Event extends WindowBaseEvent {}
         /**
          * Fired when the device detects a long press.
          */
@@ -55574,8 +57338,7 @@ declare namespace Titanium {
         /**
          * Fired when a layout cycle is finished.
          */
-        interface Window_postlayout_Event extends WindowBaseEvent {
-        }
+        interface Window_postlayout_Event extends WindowBaseEvent {}
         /**
          * Fired when the device detects a single tap against the view.
          */
@@ -55906,48 +57669,39 @@ declare namespace Titanium {
         /**
          * Fired when the back button is pressed by the user.
          */
-        interface Window_androidback_Event extends WindowBaseEvent {
-        }
+        interface Window_androidback_Event extends WindowBaseEvent {}
         /**
          * Fired when the Camera button is released.
          */
-        interface Window_androidcamera_Event extends WindowBaseEvent {
-        }
+        interface Window_androidcamera_Event extends WindowBaseEvent {}
         /**
          * Fired when the Camera button is half-pressed then released.
          */
-        interface Window_androidfocus_Event extends WindowBaseEvent {
-        }
+        interface Window_androidfocus_Event extends WindowBaseEvent {}
         /**
          * Fired when the Search button is released.
          */
-        interface Window_androidsearch_Event extends WindowBaseEvent {
-        }
+        interface Window_androidsearch_Event extends WindowBaseEvent {}
         /**
          * Fired when the volume down button is released.
          */
-        interface Window_androidvoldown_Event extends WindowBaseEvent {
-        }
+        interface Window_androidvoldown_Event extends WindowBaseEvent {}
         /**
          * Fired when the volume up button is released.
          */
-        interface Window_androidvolup_Event extends WindowBaseEvent {
-        }
+        interface Window_androidvolup_Event extends WindowBaseEvent {}
         /**
          * Fired when the window loses focus.
          */
-        interface Window_blur_Event extends WindowBaseEvent {
-        }
+        interface Window_blur_Event extends WindowBaseEvent {}
         /**
          * Fired when the window is closed.
          */
-        interface Window_close_Event extends WindowBaseEvent {
-        }
+        interface Window_close_Event extends WindowBaseEvent {}
         /**
          * Fired when the window is opened.
          */
-        interface Window_open_Event extends WindowBaseEvent {
-        }
+        interface Window_open_Event extends WindowBaseEvent {}
         interface WindowEventMap extends ProxyEventMap {
             androidback: Window_androidback_Event;
 
@@ -56361,28 +58115,45 @@ declare namespace Titanium {
              */
             addEventListener<K extends keyof WindowEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Window, event: WindowEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Window,
+                    event: WindowEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds a common UI element to participate in window transition animation.
              */
-            addSharedElement(view: Titanium.UI.View, transitionName: string): void;
+            addSharedElement(
+                view: Titanium.UI.View,
+                transitionName: string,
+            ): void;
 
             /**
              * Closes the window.
              */
-            close(params?: Titanium.UI.Animation | Dictionary<Titanium.UI.Animation> | closeWindowParams): Promise<any>;
+            close(
+                params?:
+                    | Titanium.UI.Animation
+                    | Dictionary<Titanium.UI.Animation>
+                    | closeWindowParams,
+            ): Promise<any>;
 
             /**
              * Fires a synthesized event to any registered listeners.
              */
-            fireEvent<K extends keyof WindowEventMap>(name: K, event?: WindowEventMap[K]): void;
+            fireEvent<K extends keyof WindowEventMap>(
+                name: K,
+                event?: WindowEventMap[K],
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -56424,18 +58195,27 @@ declare namespace Titanium {
              */
             removeEventListener<K extends keyof WindowEventMap>(
                 name: K,
-                callback: (this: Titanium.UI.Window, event: WindowEventMap[K]) => void,
+                callback: (
+                    this: Titanium.UI.Window,
+                    event: WindowEventMap[K],
+                ) => void,
             ): void;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Sets the array of items to show in the window's toolbar.
              */
-            setToolbar(items: readonly any[], params?: windowToolbarParam): void;
+            setToolbar(
+                items: readonly any[],
+                params?: windowToolbarParam,
+            ): void;
 
             /**
              * Makes the navigation bar visible.
@@ -56485,7 +58265,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -56502,12 +58285,16 @@ declare namespace Titanium {
             /**
              * Creates and returns an instance of <Titanium.UI.iOS.Animator>.
              */
-            static createAnimator(parameters?: Dictionary<Titanium.UI.iOS.Animator>): Titanium.UI.iOS.Animator;
+            static createAnimator(
+                parameters?: Dictionary<Titanium.UI.iOS.Animator>,
+            ): Titanium.UI.iOS.Animator;
 
             /**
              * Creates and returns an instance of <Titanium.UI.iOS.BlurView>.
              */
-            static createBlurView(parameters?: Dictionary<Titanium.UI.iOS.BlurView>): Titanium.UI.iOS.BlurView;
+            static createBlurView(
+                parameters?: Dictionary<Titanium.UI.iOS.BlurView>,
+            ): Titanium.UI.iOS.BlurView;
 
             /**
              * Creates and returns an instance of <Titanium.UI.iOS.CollisionBehavior>.
@@ -56560,7 +58347,9 @@ declare namespace Titanium {
             /**
              * Creates and returns an instance of <Titanium.UI.iOS.MenuPopup>.
              */
-            static createMenuPopup(parameters?: Dictionary<Titanium.UI.iOS.MenuPopup>): Titanium.UI.iOS.MenuPopup;
+            static createMenuPopup(
+                parameters?: Dictionary<Titanium.UI.iOS.MenuPopup>,
+            ): Titanium.UI.iOS.MenuPopup;
 
             /**
              * Creates and returns an instance of <Titanium.UI.iOS.NavigationWindow>.
@@ -56606,12 +58395,16 @@ declare namespace Titanium {
             /**
              * Creates and returns an instance of <Titanium.UI.iOS.SplitWindow>.
              */
-            static createSplitWindow(parameters?: Dictionary<Titanium.UI.iOS.SplitWindow>): Titanium.UI.iOS.SplitWindow;
+            static createSplitWindow(
+                parameters?: Dictionary<Titanium.UI.iOS.SplitWindow>,
+            ): Titanium.UI.iOS.SplitWindow;
 
             /**
              * Creates and returns an instance of <Titanium.UI.iOS.Stepper>.
              */
-            static createStepper(parameters?: Dictionary<Titanium.UI.iOS.Stepper>): Titanium.UI.iOS.Stepper;
+            static createStepper(
+                parameters?: Dictionary<Titanium.UI.iOS.Stepper>,
+            ): Titanium.UI.iOS.Stepper;
 
             /**
              * Creates and returns an instance of <Titanium.UI.iOS.SystemButton>.
@@ -56675,12 +58468,18 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Get image from SF Symbols provided by Apple.
              */
-            static systemImage(name: string, parameters?: SystemImageParameters): Titanium.Blob;
+            static systemImage(
+                name: string,
+                parameters?: SystemImageParameters,
+            ): Titanium.Blob;
         }
         /**
          * iPad specific UI capabilities.
@@ -56699,7 +58498,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Applies the properties to the proxy.
@@ -56709,7 +58511,9 @@ declare namespace Titanium {
             /**
              * Creates and returns an instance of <Titanium.UI.iPad.Popover>.
              */
-            static createPopover(parameters?: Dictionary<Titanium.UI.iPad.Popover>): Titanium.UI.iPad.Popover;
+            static createPopover(
+                parameters?: Dictionary<Titanium.UI.iPad.Popover>,
+            ): Titanium.UI.iPad.Popover;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -56719,7 +58523,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            static removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
     }
     /**
@@ -56749,7 +58556,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            function addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -56759,7 +58569,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            function removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Represents a notation declared in the DTD.  Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-5431D1B9) on Android and iOS.
@@ -56778,7 +58591,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            function addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            function addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -56788,7 +58604,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            function removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            function removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Represents an attribute of an [Element](Titanium.XML.Element).
@@ -56817,7 +58636,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -56827,7 +58649,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Used to include blocks of literal text containing characters that would otherwise need
@@ -56837,7 +58662,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -56847,7 +58675,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * An interface extending <Titanium.XML.Node> with a set of attributes and methods for accessing character data in the DOM.
@@ -56867,7 +58698,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Append the string to the end of the character data of the node. Upon success, data provides access to the concatenation of data and the string specified. Throws an exception if this node is readonly.
@@ -56892,7 +58726,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replace the characters starting at the specified offset with the specified string. Throws an exception if this node is readonly, if offset is negative, offset is beyond the data's length, or if count is negative.
@@ -56911,7 +58748,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -56921,7 +58761,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * The <Titanium.XML.DOMImplementation> interface provides a number of methods for performing operations that are independent of any particular instance of the document object model.Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-102161490) on Android and iOS.
@@ -56930,7 +58773,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Creates an <Titanium.XML.Document> object of the specified type with its document element. Raises an exception if qualifiedName is malformed, contains an illegal character, or is inconsistent with namespaceURI. Also raises an exception if doctype has already been used with a different document.
@@ -56944,7 +58790,11 @@ declare namespace Titanium {
             /**
              * Creates an empty <Titanium.XML.DocumentType> node. Entity declarations and notations are not made available. Entity reference expansions and default attribute additions do not occur. Raises an exception if qualifiedName is malformed or contains an illegal character.
              */
-            createDocumentType(qualifiedName: string, publicId: string, systemId: string): Titanium.XML.DocumentType;
+            createDocumentType(
+                qualifiedName: string,
+                publicId: string,
+                systemId: string,
+            ): Titanium.XML.DocumentType;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -56959,7 +58809,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * The DOM Document returned from <Titanium.XML.parseString>.
@@ -56984,7 +58837,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Creates an attribute with the given name.
@@ -56994,7 +58850,10 @@ declare namespace Titanium {
             /**
              * Creates an attribute with the given name and namespace.
              */
-            createAttributeNS(namespaceURI: string, name: string): Titanium.XML.Attr;
+            createAttributeNS(
+                namespaceURI: string,
+                name: string,
+            ): Titanium.XML.Attr;
 
             /**
              * Creates and returns a [CDATASection](Titanium.XML.CDATASection).
@@ -57019,7 +58878,10 @@ declare namespace Titanium {
             /**
              * Create a new element with the given namespace and name.
              */
-            createElementNS(namespaceURI: string, name: string): Titanium.XML.Element;
+            createElementNS(
+                namespaceURI: string,
+                name: string,
+            ): Titanium.XML.Element;
 
             /**
              * Creates an [EntityReference](Titanium.XML.EntityReference) with the given name.
@@ -57029,7 +58891,10 @@ declare namespace Titanium {
             /**
              * Creates a processing instruction for inserting into the DOM tree.
              */
-            createProcessingInstruction(target: string, data: string): Titanium.XML.ProcessingInstruction;
+            createProcessingInstruction(
+                target: string,
+                data: string,
+            ): Titanium.XML.ProcessingInstruction;
 
             /**
              * Creates a text node.
@@ -57054,18 +58919,27 @@ declare namespace Titanium {
             /**
              * Returns a node list of elements in the document which belong to the given namespace and have the given tag name.
              */
-            getElementsByTagNameNS(namespaceURI: string, localname: string): Titanium.XML.NodeList;
+            getElementsByTagNameNS(
+                namespaceURI: string,
+                localname: string,
+            ): Titanium.XML.NodeList;
 
             /**
              * Imports a node from another document to this document,
              * without altering or removing the source node from the original document.
              */
-            importNode(importedNode: Titanium.XML.Node, deep: boolean): Titanium.XML.Node;
+            importNode(
+                importedNode: Titanium.XML.Node,
+                deep: boolean,
+            ): Titanium.XML.Node;
 
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * A lightweight document object used as a container for a group of nodes.
@@ -57074,7 +58948,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -57084,7 +58961,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Each <Titanium.XML.Document> has a `doctype` attribute whose value is either 'null' or a <Titanium.XML.DocumentType> object.
@@ -57123,7 +59003,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -57133,7 +59016,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Represents an element in a DOM document, a <Titanium.XML.Node> defined by a start-tag and end-tag (or an empty tag). Elements may have [attributes](Titanium.XML.Attr) associated with them.
@@ -57159,7 +59045,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -57184,7 +59073,10 @@ declare namespace Titanium {
             /**
              * Retrieves an attribute value by local name and namespace URI, returning it as a <Titanium.XML.Attr> object.
              */
-            getAttributeNodeNS(namespaceURI: string, localName: string): Titanium.XML.Attr;
+            getAttributeNodeNS(
+                namespaceURI: string,
+                localName: string,
+            ): Titanium.XML.Attr;
 
             /**
              * Retrieves a <Titanium.XML.NodeList> of all descendant elements with a given tag name, in preorder traversal.
@@ -57194,7 +59086,10 @@ declare namespace Titanium {
             /**
              * Retrieves a <Titanium.XML.NodeList> of all descendant elements with a given local name and namespace URI, in preorder traversal.
              */
-            getElementsByTagNameNS(namespaceURI: string, localName: string): Titanium.XML.NodeList;
+            getElementsByTagNameNS(
+                namespaceURI: string,
+                localName: string,
+            ): Titanium.XML.NodeList;
 
             /**
              * Determines whether or not an attribute with the given name is available in the element, or has a default value.
@@ -57224,7 +59119,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Adds a new attribute. Any attribute with the same name is replaced. Throws an exception if the element is read-only, or if the name contains an illegal character.
@@ -57234,7 +59132,11 @@ declare namespace Titanium {
             /**
              * Adds a new attribute. Any attribute with the same local name and namespace URI is present on the element is replaced, with its prefix changed to that of the `qualifiedName` parameter. Throws an exception if the element is read-only, if the name contains an illegal character, or if the qualified name contains an error.
              */
-            setAttributeNS(namespaceURI: string, qualifiedName: string, value: string): void;
+            setAttributeNS(
+                namespaceURI: string,
+                qualifiedName: string,
+                value: string,
+            ): void;
 
             /**
              * Adds a new attribute. Any attribute with the same `nodeName` as the argument is replaced. Throws an exception if the element is read-only, if `newAttr` is from a different document, or if `newAttr` is already an attribute of another element.
@@ -57253,7 +59155,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -57263,7 +59168,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * A key-value paired map that maps String objects to <Titanium.XML.Node> objects.
@@ -57278,7 +59186,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -57293,7 +59204,10 @@ declare namespace Titanium {
             /**
              * Retrieves a node specified by name and namespace. Returns `null` if no matching node is in the map.
              */
-            getNamedItemNS(namespaceURI: string, localName: string): Titanium.XML.Node;
+            getNamedItemNS(
+                namespaceURI: string,
+                localName: string,
+            ): Titanium.XML.Node;
 
             /**
              * Retrieves the node at the specified index of the map. Note that NamedNodeMaps are not ordered.
@@ -57303,7 +59217,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Removes a node from the map specified by name. When this map contains attributes attached to an element, if the removed attribtue is known to have a default, it is replaced with that value.
@@ -57313,7 +59230,10 @@ declare namespace Titanium {
             /**
              * Removes a node from the map specified by local name and namespace URI. When this map contains attributes attached to an element, if the removed attribtue is known to have a default, it is replaced with that value. Returns the node removed from the map, or `null` if there is no corresponding node.
              */
-            removeNamedItemNS(namespaceURI: string, localName: string): Titanium.XML.Node;
+            removeNamedItemNS(
+                namespaceURI: string,
+                localName: string,
+            ): Titanium.XML.Node;
 
             /**
              * Adds a node using its `nodeName` attribute. If a node with that name is already present, it is replaced. Throws an exception if the argument is from a different document, the map is read-only, or the argument is an attribute of another element.
@@ -57487,7 +59407,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Appends the node `newChild` as a child of this node.
@@ -57517,7 +59440,10 @@ declare namespace Titanium {
             /**
              * Inserts the node `newChild` before the node `refChild`.
              */
-            insertBefore(newChild: Titanium.XML.Node, refChild: Titanium.XML.Node): Titanium.XML.Node;
+            insertBefore(
+                newChild: Titanium.XML.Node,
+                refChild: Titanium.XML.Node,
+            ): Titanium.XML.Node;
 
             /**
              * Tests whether the DOM implementation supports a specific feature.
@@ -57537,12 +59463,18 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Replaces the node `oldChild` with the node `newChild`.
              */
-            replaceChild(newChild: Titanium.XML.Node, oldChild: Titanium.XML.Node): Titanium.XML.Node;
+            replaceChild(
+                newChild: Titanium.XML.Node,
+                oldChild: Titanium.XML.Node,
+            ): Titanium.XML.Node;
         }
         /**
          * A list of <Titanium.XML.Node> objects. Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-536297177) on Android and iOS.
@@ -57556,7 +59488,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -57571,7 +59506,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * A way to keep processor-specific information in the text of the document. Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1004215813) on Android and iOS.
@@ -57590,7 +59528,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -57600,7 +59541,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
         }
         /**
          * Represents the textual content of an <Titanium.XML.Element> or <Titanium.XML.Attr> Implements the [DOM Level 2 API](https://www.w3.org/TR/DOM-Level-2-Core/core.html#ID-1312295772) on Android and iOS.
@@ -57614,7 +59558,10 @@ declare namespace Titanium {
             /**
              * Adds the specified callback as an event listener for the named event.
              */
-            addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            addEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Fires a synthesized event to any registered listeners.
@@ -57624,7 +59571,10 @@ declare namespace Titanium {
             /**
              * Removes the specified callback as an event listener for the named event.
              */
-            removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+            removeEventListener(
+                name: string,
+                callback: (param0: Titanium.Event) => void,
+            ): void;
 
             /**
              * Breaks this node into two nodes at the specified by offset, and returns a new node of the same type, which contains all the content at and after the offset point. Throws an exception if the specified offset is negative or if this node is read only.
@@ -57654,7 +59604,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -57689,7 +59642,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Logs messages with a `timestamp` severity-level, prefixed with a timestamp float number
@@ -57768,13 +59724,19 @@ declare namespace Titanium {
          */
         static addEventListener<K extends keyof AccelerometerEventMap>(
             name: K,
-            callback: (this: Titanium.Accelerometer, event: AccelerometerEventMap[K]) => void,
+            callback: (
+                this: Titanium.Accelerometer,
+                event: AccelerometerEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -57784,7 +59746,10 @@ declare namespace Titanium {
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof AccelerometerEventMap>(name: K, event?: AccelerometerEventMap[K]): void;
+        static fireEvent<K extends keyof AccelerometerEventMap>(
+            name: K,
+            event?: AccelerometerEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -57796,13 +59761,19 @@ declare namespace Titanium {
          */
         static removeEventListener<K extends keyof AccelerometerEventMap>(
             name: K,
-            callback: (this: Titanium.Accelerometer, event: AccelerometerEventMap[K]) => void,
+            callback: (
+                this: Titanium.Accelerometer,
+                event: AccelerometerEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * The top-level Android module.
@@ -57841,7 +59812,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -57865,7 +59839,9 @@ declare namespace Titanium {
         /**
          * Create an `Intent` to be used in a broadcast.
          */
-        static createBroadcastIntent(parameters?: Dictionary<Titanium.Android.Intent>): Titanium.Android.Intent;
+        static createBroadcastIntent(
+            parameters?: Dictionary<Titanium.Android.Intent>,
+        ): Titanium.Android.Intent;
 
         /**
          * Creates and returns an instance of <Titanium.Android.BroadcastReceiver>.
@@ -57877,13 +59853,18 @@ declare namespace Titanium {
         /**
          * Creates and returns an instance of <Titanium.Android.Intent>.
          */
-        static createIntent(parameters?: Dictionary<Titanium.Android.Intent>): Titanium.Android.Intent;
+        static createIntent(
+            parameters?: Dictionary<Titanium.Android.Intent>,
+        ): Titanium.Android.Intent;
 
         /**
          * Creates an activity chooser intent, used to allow the user to select a target activity
          * for an intent.
          */
-        static createIntentChooser(intent: Titanium.Android.Intent, title: string): Titanium.Android.Intent;
+        static createIntentChooser(
+            intent: Titanium.Android.Intent,
+            title: string,
+        ): Titanium.Android.Intent;
 
         /**
          * Creates and returns an instance of <Titanium.Android.Notification>.
@@ -57917,17 +59898,23 @@ declare namespace Titanium {
         /**
          * Creates and returns an instance of <Titanium.Android.RemoteViews>.
          */
-        static createRemoteViews(parameters?: Dictionary<Titanium.Android.RemoteViews>): Titanium.Android.RemoteViews;
+        static createRemoteViews(
+            parameters?: Dictionary<Titanium.Android.RemoteViews>,
+        ): Titanium.Android.RemoteViews;
 
         /**
          * Create a <Titanium.Android.Service> so you can start/stop it and listen for events from it.
          */
-        static createService(intent: Titanium.Android.Intent): Titanium.Android.Service;
+        static createService(
+            intent: Titanium.Android.Intent,
+        ): Titanium.Android.Service;
 
         /**
          * Create an `Intent` to be used to start a service.
          */
-        static createServiceIntent(options: ServiceIntentOptions): Titanium.Android.Intent;
+        static createServiceIntent(
+            options: ServiceIntentOptions,
+        ): Titanium.Android.Intent;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -57955,7 +59942,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Request for permission access.
@@ -57978,7 +59968,9 @@ declare namespace Titanium {
         /**
          * Unregisters a broadcast receiver.
          */
-        static unregisterBroadcastReceiver(broadcastReceiver: Titanium.Android.BroadcastReceiver): void;
+        static unregisterBroadcastReceiver(
+            broadcastReceiver: Titanium.Android.BroadcastReceiver,
+        ): void;
     }
     /**
      * Base event for class Titanium.App
@@ -58001,23 +59993,19 @@ declare namespace Titanium {
     /**
      * Fired by the system when the application is about to be terminated.
      */
-    interface App_close_Event extends AppBaseEvent {
-    }
+    interface App_close_Event extends AppBaseEvent {}
     /**
      * Fired when the app receives a warning from the operating system about low memory availability.
      */
-    interface App_memorywarning_Event extends AppBaseEvent {
-    }
+    interface App_memorywarning_Event extends AppBaseEvent {}
     /**
      * Fired when the application transitions from active to inactive state on a multitasked system.
      */
-    interface App_pause_Event extends AppBaseEvent {
-    }
+    interface App_pause_Event extends AppBaseEvent {}
     /**
      * Fired when the application transitions to the background on a multitasked system.
      */
-    interface App_paused_Event extends AppBaseEvent {
-    }
+    interface App_paused_Event extends AppBaseEvent {}
     /**
      * Fired when the proximity sensor changes state.
      */
@@ -58107,18 +60095,15 @@ declare namespace Titanium {
     /**
      * Fired when the application returns to the foreground on a multitasked system.
      */
-    interface App_resume_Event extends AppBaseEvent {
-    }
+    interface App_resume_Event extends AppBaseEvent {}
     /**
      * Fired when the application returns to the foreground.
      */
-    interface App_resumed_Event extends AppBaseEvent {
-    }
+    interface App_resumed_Event extends AppBaseEvent {}
     /**
      * Fired after the "app.js" or "alloy.js" gets executed during application startup.
      */
-    interface App_started_Event extends AppBaseEvent {
-    }
+    interface App_started_Event extends AppBaseEvent {}
     /**
      * Fired when the soft keyboard is presented, on and off the screen.
      */
@@ -58136,8 +60121,7 @@ declare namespace Titanium {
     /**
      * Fired when there is a significant change in the time.
      */
-    interface App_significanttimechange_Event extends AppBaseEvent {
-    }
+    interface App_significanttimechange_Event extends AppBaseEvent {}
     /**
      * Fired when a <Titanium.UI.ShortcutItem> is clicked.
      */
@@ -58150,8 +60134,7 @@ declare namespace Titanium {
     /**
      * Called whenever an interaction with the window occurred. To be used together with the <Titanium.App.trackUserInteraction> property.
      */
-    interface App_userinteraction_Event extends AppBaseEvent {
-    }
+    interface App_userinteraction_Event extends AppBaseEvent {}
     interface AppEventMap extends ProxyEventMap {
         accessibilitychanged: App_accessibilitychanged_Event;
 
@@ -58322,7 +60305,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -58332,7 +60318,10 @@ declare namespace Titanium {
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof AppEventMap>(name: K, event?: AppEventMap[K]): void;
+        static fireEvent<K extends keyof AppEventMap>(
+            name: K,
+            event?: AppEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -58361,7 +60350,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * A container for binary data.
@@ -58422,7 +60414,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Appends the data from another blob to this blob.
@@ -58457,7 +60452,11 @@ declare namespace Titanium {
         /**
          * Returns a thumbnail version of the underlying image, optionally with a border and rounded corners.
          */
-        imageAsThumbnail(size: number, borderSize?: number, cornerRadius?: number): Titanium.Blob;
+        imageAsThumbnail(
+            size: number,
+            borderSize?: number,
+            cornerRadius?: number,
+        ): Titanium.Blob;
 
         /**
          * Returns a copy of the underlying image with an added alpha channel.
@@ -58467,7 +60466,10 @@ declare namespace Titanium {
         /**
          * Returns a copy of the underlying image with rounded corners added.
          */
-        imageWithRoundedCorner(cornerSize: number, borderSize?: number): Titanium.Blob;
+        imageWithRoundedCorner(
+            cornerSize: number,
+            borderSize?: number,
+        ): Titanium.Blob;
 
         /**
          * Returns a copy of the underlying image with an added transparent border.
@@ -58477,7 +60479,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Returns an `ArrayBuffer` representation of this blob.
@@ -58496,7 +60501,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -58506,7 +60514,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * Buffer is a mutable, resizable container for raw data.
@@ -58535,12 +60546,19 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Appends `sourceBuffer` to the this buffer.
          */
-        append(sourceBuffer: Titanium.Buffer, sourceOffset?: number, sourceLength?: number): number;
+        append(
+            sourceBuffer: Titanium.Buffer,
+            sourceOffset?: number,
+            sourceLength?: number,
+        ): number;
 
         /**
          * Clears this buffer's contents but does not change the size of the buffer.
@@ -58555,7 +60573,12 @@ declare namespace Titanium {
         /**
          * Copies data from `sourceBuffer` into the current buffer at `offset`.
          */
-        copy(sourceBuffer: Titanium.Buffer, offset: number, sourceOffset?: number, sourceLength?: number): number;
+        copy(
+            sourceBuffer: Titanium.Buffer,
+            offset: number,
+            sourceOffset?: number,
+            sourceLength?: number,
+        ): number;
 
         /**
          * Fills this buffer with the specified byte value.
@@ -58570,7 +60593,12 @@ declare namespace Titanium {
         /**
          * Inserts data from `sourceBuffer` into this buffer at `offset`.
          */
-        insert(sourceBuffer: Titanium.Buffer, offset: number, sourceOffset?: number, sourceLength?: number): number;
+        insert(
+            sourceBuffer: Titanium.Buffer,
+            offset: number,
+            sourceOffset?: number,
+            sourceLength?: number,
+        ): number;
 
         /**
          * Releases the space allocated to the buffer, and sets its length to 0.
@@ -58580,7 +60608,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Converts this buffer to a <Titanium.Blob>.
@@ -58599,7 +60630,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -58609,7 +60643,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * Base event for class Titanium.Calendar
@@ -58623,8 +60660,7 @@ declare namespace Titanium {
     /**
      * Fired when the database backing the EventKit module is modified.
      */
-    interface Calendar_change_Event extends CalendarBaseEvent {
-    }
+    interface Calendar_change_Event extends CalendarBaseEvent {}
     interface CalendarEventMap extends ProxyEventMap {
         change: Calendar_change_Event;
     }
@@ -58683,13 +60719,19 @@ declare namespace Titanium {
          */
         static addEventListener<K extends keyof CalendarEventMap>(
             name: K,
-            callback: (this: Titanium.Calendar, event: CalendarEventMap[K]) => void,
+            callback: (
+                this: Titanium.Calendar,
+                event: CalendarEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -58699,7 +60741,10 @@ declare namespace Titanium {
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof CalendarEventMap>(name: K, event?: CalendarEventMap[K]): void;
+        static fireEvent<K extends keyof CalendarEventMap>(
+            name: K,
+            event?: CalendarEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -58721,13 +60766,19 @@ declare namespace Titanium {
          */
         static removeEventListener<K extends keyof CalendarEventMap>(
             name: K,
-            callback: (this: Titanium.Calendar, event: CalendarEventMap[K]) => void,
+            callback: (
+                this: Titanium.Calendar,
+                event: CalendarEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Requests for calendar access.
@@ -58828,7 +60879,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -58869,7 +60923,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * Base event for class Titanium.Contacts
@@ -58883,8 +60940,7 @@ declare namespace Titanium {
     /**
      * Fired when the database backing the contacts module is modified externally.
      */
-    interface Contacts_reload_Event extends ContactsBaseEvent {
-    }
+    interface Contacts_reload_Event extends ContactsBaseEvent {}
     interface ContactsEventMap extends ProxyEventMap {
         reload: Contacts_reload_Event;
     }
@@ -58922,13 +60978,19 @@ declare namespace Titanium {
          */
         static addEventListener<K extends keyof ContactsEventMap>(
             name: K,
-            callback: (this: Titanium.Contacts, event: ContactsEventMap[K]) => void,
+            callback: (
+                this: Titanium.Contacts,
+                event: ContactsEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -58938,18 +61000,25 @@ declare namespace Titanium {
         /**
          * Creates and returns an instance of <Titanium.Contacts.Group>.
          */
-        static createGroup(parameters?: Dictionary<Titanium.Contacts.Group>): Titanium.Contacts.Group;
+        static createGroup(
+            parameters?: Dictionary<Titanium.Contacts.Group>,
+        ): Titanium.Contacts.Group;
 
         /**
          * Creates and returns an instance of <Titanium.Contacts.Person>, and commits all pending
          * changes to the underlying contacts database.
          */
-        static createPerson(parameters?: Dictionary<Titanium.Contacts.Person>): Titanium.Contacts.Person;
+        static createPerson(
+            parameters?: Dictionary<Titanium.Contacts.Person>,
+        ): Titanium.Contacts.Person;
 
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof ContactsEventMap>(name: K, event?: ContactsEventMap[K]): void;
+        static fireEvent<K extends keyof ContactsEventMap>(
+            name: K,
+            event?: ContactsEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -58992,13 +61061,19 @@ declare namespace Titanium {
          */
         static removeEventListener<K extends keyof ContactsEventMap>(
             name: K,
-            callback: (this: Titanium.Contacts, event: ContactsEventMap[K]) => void,
+            callback: (
+                this: Titanium.Contacts,
+                event: ContactsEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Removes a group from the address book.
@@ -59050,7 +61125,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -59075,7 +61153,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * The base type for all Titanium events.
@@ -59178,7 +61259,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -59233,12 +61317,18 @@ declare namespace Titanium {
         /**
          * Opens file using the <Titanium.IOStream> interface.
          */
-        static openStream(mode: number, path: string): Titanium.Filesystem.FileStream;
+        static openStream(
+            mode: number,
+            path: string,
+        ): Titanium.Filesystem.FileStream;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Requests for storage permissions
@@ -59259,8 +61349,7 @@ declare namespace Titanium {
     /**
      * Fired when the device detects interface and requires calibration.
      */
-    interface Geolocation_calibration_Event extends GeolocationBaseEvent {
-    }
+    interface Geolocation_calibration_Event extends GeolocationBaseEvent {}
     /**
      * Fired when an heading update is received.
      */
@@ -59317,13 +61406,13 @@ declare namespace Titanium {
     /**
      * Fired when location updates are paused by the OS.
      */
-    interface Geolocation_locationupdatepaused_Event extends GeolocationBaseEvent {
-    }
+    interface Geolocation_locationupdatepaused_Event
+        extends GeolocationBaseEvent {}
     /**
      * Fired when location manager is resumed by the OS.
      */
-    interface Geolocation_locationupdateresumed_Event extends GeolocationBaseEvent {
-    }
+    interface Geolocation_locationupdateresumed_Event
+        extends GeolocationBaseEvent {}
     /**
      * Fired when changes are made to the authorization status for location services.
      */
@@ -59447,13 +61536,19 @@ declare namespace Titanium {
          */
         static addEventListener<K extends keyof GeolocationEventMap>(
             name: K,
-            callback: (this: Titanium.Geolocation, event: GeolocationEventMap[K]) => void,
+            callback: (
+                this: Titanium.Geolocation,
+                event: GeolocationEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -59463,7 +61558,10 @@ declare namespace Titanium {
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof GeolocationEventMap>(name: K, event?: GeolocationEventMap[K]): void;
+        static fireEvent<K extends keyof GeolocationEventMap>(
+            name: K,
+            event?: GeolocationEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -59481,12 +61579,16 @@ declare namespace Titanium {
         /**
          * Retrieves the current compass heading.
          */
-        static getCurrentHeading(callback?: (param0: HeadingResponse) => void): Promise<HeadingResponse>;
+        static getCurrentHeading(
+            callback?: (param0: HeadingResponse) => void,
+        ): Promise<HeadingResponse>;
 
         /**
          * Retrieves the last known location from the device.
          */
-        static getCurrentPosition(callback?: (param0: LocationResults) => void): Promise<LocationResults>;
+        static getCurrentPosition(
+            callback?: (param0: LocationResults) => void,
+        ): Promise<LocationResults>;
 
         /**
          * Returns `true` if the app has location access.
@@ -59498,13 +61600,19 @@ declare namespace Titanium {
          */
         static removeEventListener<K extends keyof GeolocationEventMap>(
             name: K,
-            callback: (this: Titanium.Geolocation, event: GeolocationEventMap[K]) => void,
+            callback: (
+                this: Titanium.Geolocation,
+                event: GeolocationEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Requests for location access.
@@ -59619,13 +61727,19 @@ declare namespace Titanium {
          */
         static addEventListener<K extends keyof GestureEventMap>(
             name: K,
-            callback: (this: Titanium.Gesture, event: GestureEventMap[K]) => void,
+            callback: (
+                this: Titanium.Gesture,
+                event: GestureEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -59635,7 +61749,10 @@ declare namespace Titanium {
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof GestureEventMap>(name: K, event?: GestureEventMap[K]): void;
+        static fireEvent<K extends keyof GestureEventMap>(
+            name: K,
+            event?: GestureEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -59647,13 +61764,19 @@ declare namespace Titanium {
          */
         static removeEventListener<K extends keyof GestureEventMap>(
             name: K,
-            callback: (this: Titanium.Gesture, event: GestureEventMap[K]) => void,
+            callback: (
+                this: Titanium.Gesture,
+                event: GestureEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * IOStream is the interface that all stream types implement.
@@ -59663,7 +61786,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Closes this stream.
@@ -59698,7 +61824,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Writes data from a buffer to this stream.
@@ -59722,8 +61851,7 @@ declare namespace Titanium {
     /**
      * Fired when the device locale changes.
      */
-    interface Locale_change_Event extends LocaleBaseEvent {
-    }
+    interface Locale_change_Event extends LocaleBaseEvent {}
     interface LocaleEventMap extends ProxyEventMap {
         change: Locale_change_Event;
     }
@@ -59772,7 +61900,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -59782,7 +61913,10 @@ declare namespace Titanium {
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof LocaleEventMap>(name: K, event?: LocaleEventMap[K]): void;
+        static fireEvent<K extends keyof LocaleEventMap>(
+            name: K,
+            event?: LocaleEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -59831,7 +61965,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Sets the current language of the application.
@@ -59850,8 +61987,7 @@ declare namespace Titanium {
     /**
      * Fires when the camera overlay is ready to take pictures.
      */
-    interface Media_cameraready_Event extends MediaBaseEvent {
-    }
+    interface Media_cameraready_Event extends MediaBaseEvent {}
     /**
      * Fired when an audio line type change is detected.
      */
@@ -60012,7 +62148,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -60027,33 +62166,46 @@ declare namespace Titanium {
         /**
          * Creates and returns an instance of <Titanium.Media.AudioPlayer>.
          */
-        static createAudioPlayer(parameters?: Dictionary<Titanium.Media.AudioPlayer>): Titanium.Media.AudioPlayer;
+        static createAudioPlayer(
+            parameters?: Dictionary<Titanium.Media.AudioPlayer>,
+        ): Titanium.Media.AudioPlayer;
 
         /**
          * Creates and returns an instance of <Titanium.Media.AudioRecorder>.
          */
-        static createAudioRecorder(parameters?: Dictionary<Titanium.Media.AudioRecorder>): Titanium.Media.AudioRecorder;
+        static createAudioRecorder(
+            parameters?: Dictionary<Titanium.Media.AudioRecorder>,
+        ): Titanium.Media.AudioRecorder;
 
         /**
          * Creates and returns an instance of <Titanium.Media.Sound>.
          */
-        static createSound(parameters?: Dictionary<Titanium.Media.Sound>): Titanium.Media.Sound;
+        static createSound(
+            parameters?: Dictionary<Titanium.Media.Sound>,
+        ): Titanium.Media.Sound;
 
         /**
          * Creates and returns an instance of <Titanium.Media.SystemAlert>.
          * @deprecated This iOS-only API has been deprecated and moved to the [Ti.SystemAlert](https://github.com/appcelerator-modules/ti.systemalert) module in 8.0.0.
          */
-        static createSystemAlert(parameters?: Dictionary<Titanium.Media.SystemAlert>): Titanium.Media.SystemAlert;
+        static createSystemAlert(
+            parameters?: Dictionary<Titanium.Media.SystemAlert>,
+        ): Titanium.Media.SystemAlert;
 
         /**
          * Creates and returns an instance of <Titanium.Media.VideoPlayer>.
          */
-        static createVideoPlayer(parameters?: Dictionary<Titanium.Media.VideoPlayer>): Titanium.Media.VideoPlayer;
+        static createVideoPlayer(
+            parameters?: Dictionary<Titanium.Media.VideoPlayer>,
+        ): Titanium.Media.VideoPlayer;
 
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof MediaEventMap>(name: K, event?: MediaEventMap[K]): void;
+        static fireEvent<K extends keyof MediaEventMap>(
+            name: K,
+            event?: MediaEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -60132,7 +62284,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Request the user's permission for audio recording.
@@ -60151,7 +62306,9 @@ declare namespace Titanium {
         /**
          * Request permissions for the native music-library.
          */
-        static requestMusicLibraryPermissions(callback: (param0: RequestMusicLibraryAccessResult) => void): void;
+        static requestMusicLibraryPermissions(
+            callback: (param0: RequestMusicLibraryAccessResult) => void,
+        ): void;
 
         /**
          * Requests for photo gallery permissions.
@@ -60163,7 +62320,10 @@ declare namespace Titanium {
         /**
          * Saves media to the device's photo gallery / camera roll.
          */
-        static saveToPhotoGallery(media: Titanium.Blob | Titanium.Filesystem.File, callbacks: any): void;
+        static saveToPhotoGallery(
+            media: Titanium.Blob | Titanium.Filesystem.File,
+            callbacks: any,
+        ): void;
 
         /**
          * Overrides the default audio route when using the <Titanium.Media.AUDIO_SESSION_CATEGORY_PLAY_AND_RECORD> session mode.
@@ -60209,7 +62369,9 @@ declare namespace Titanium {
         /**
          * Takes a screen shot of the visible UI on the device.
          */
-        static takeScreenshot(callback: (param0: ScreenshotResult) => void): void;
+        static takeScreenshot(
+            callback: (param0: ScreenshotResult) => void,
+        ): void;
 
         /**
          * Makes the device vibrate.
@@ -60238,7 +62400,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -60253,7 +62418,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * Base event for class Titanium.Network
@@ -60352,13 +62520,19 @@ declare namespace Titanium {
          */
         static addEventListener<K extends keyof NetworkEventMap>(
             name: K,
-            callback: (this: Titanium.Network, event: NetworkEventMap[K]) => void,
+            callback: (
+                this: Titanium.Network,
+                event: NetworkEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Adds a cookie to the HTTP client cookie store.
@@ -60397,12 +62571,16 @@ declare namespace Titanium {
         /**
          * Creates and returns an instance of <Titanium.Network.Cookie>.
          */
-        static createCookie(parameters?: Dictionary<Titanium.Network.Cookie>): Titanium.Network.Cookie;
+        static createCookie(
+            parameters?: Dictionary<Titanium.Network.Cookie>,
+        ): Titanium.Network.Cookie;
 
         /**
          * Creates and returns an instance of <Titanium.Network.HTTPClient>.
          */
-        static createHTTPClient(parameters?: Dictionary<Titanium.Network.HTTPClient>): Titanium.Network.HTTPClient;
+        static createHTTPClient(
+            parameters?: Dictionary<Titanium.Network.HTTPClient>,
+        ): Titanium.Network.HTTPClient;
 
         /**
          * Creates and returns an instance of <Titanium.Network.TCPSocket>.
@@ -60423,7 +62601,10 @@ declare namespace Titanium {
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof NetworkEventMap>(name: K, event?: NetworkEventMap[K]): void;
+        static fireEvent<K extends keyof NetworkEventMap>(
+            name: K,
+            event?: NetworkEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -60433,22 +62614,34 @@ declare namespace Titanium {
         /**
          * Gets all the cookies with the domain, path and name matched with the given values from the HTTP client cookie store.
          */
-        static getHTTPCookies(domain: string, path: string, name: string): Titanium.Network.Cookie[];
+        static getHTTPCookies(
+            domain: string,
+            path: string,
+            name: string,
+        ): Titanium.Network.Cookie[];
 
         /**
          * Gets all the cookies with the domain matched with the given values from the HTTP client cookie store.
          */
-        static getHTTPCookiesForDomain(domain: string): Titanium.Network.Cookie[];
+        static getHTTPCookiesForDomain(
+            domain: string,
+        ): Titanium.Network.Cookie[];
 
         /**
          * Gets all the cookies with the domain, path and name matched with the given values from the system cookie store.
          */
-        static getSystemCookies(domain: string, path: string, name: string): Titanium.Network.Cookie[];
+        static getSystemCookies(
+            domain: string,
+            path: string,
+            name: string,
+        ): Titanium.Network.Cookie[];
 
         /**
          * Registers for push notifications with the Apple Push Notification Service.
          */
-        static registerForPushNotifications(config: PushNotificationConfig): void;
+        static registerForPushNotifications(
+            config: PushNotificationConfig,
+        ): void;
 
         /**
          * Removes all the cookies from the HTTP client cookie store.
@@ -60465,18 +62658,28 @@ declare namespace Titanium {
          */
         static removeEventListener<K extends keyof NetworkEventMap>(
             name: K,
-            callback: (this: Titanium.Network, event: NetworkEventMap[K]) => void,
+            callback: (
+                this: Titanium.Network,
+                event: NetworkEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Removes the cookie with the domain, path and name exactly the same as the given values from the HTTP client cookie store.
          */
-        static removeHTTPCookie(domain: string, path: string, name: string): void;
+        static removeHTTPCookie(
+            domain: string,
+            path: string,
+            name: string,
+        ): void;
 
         /**
          * Removes the cookies with the domain matched with the given values from the HTTP client cookie store.
@@ -60486,7 +62689,11 @@ declare namespace Titanium {
         /**
          * Removes the cookie with the domain, path and name exactly the same as the given values from the system cookie store.
          */
-        static removeSystemCookie(domain: string, path: string, name: string): void;
+        static removeSystemCookie(
+            domain: string,
+            path: string,
+            name: string,
+        ): void;
 
         /**
          * Unregisters the application for push notifications.
@@ -60698,13 +62905,19 @@ declare namespace Titanium {
          */
         static addEventListener<K extends keyof PlatformEventMap>(
             name: K,
-            callback: (this: Titanium.Platform, event: PlatformEventMap[K]) => void,
+            callback: (
+                this: Titanium.Platform,
+                event: PlatformEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -60729,7 +62942,10 @@ declare namespace Titanium {
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof PlatformEventMap>(name: K, event?: PlatformEventMap[K]): void;
+        static fireEvent<K extends keyof PlatformEventMap>(
+            name: K,
+            event?: PlatformEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -60744,20 +62960,30 @@ declare namespace Titanium {
         /**
          * Opens this URL using the system's default application for its protocol/scheme.
          */
-        static openURL(url: string, options?: OpenURLOptions, callback?: (...args: any[]) => void): boolean;
+        static openURL(
+            url: string,
+            options?: OpenURLOptions,
+            callback?: (...args: any[]) => void,
+        ): boolean;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
         static removeEventListener<K extends keyof PlatformEventMap>(
             name: K,
-            callback: (this: Titanium.Platform, event: PlatformEventMap[K]) => void,
+            callback: (
+                this: Titanium.Platform,
+                event: PlatformEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * The base for all Titanium objects.
@@ -60786,7 +63012,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -60801,7 +63030,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * Stream module containing stream utility methods.
@@ -60843,7 +63075,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -60887,14 +63122,16 @@ declare namespace Titanium {
         static readAll(
             sourceStream: Titanium.IOStream,
             buffer?: Titanium.Buffer,
-            resultsCallback?: (param0: ReadCallbackArgs) => void,
-            // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+            resultsCallback?: (param0: ReadCallbackArgs) => void, // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         ): Titanium.Buffer | void;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Asynchronously writes data from a buffer to an [IOStream](Titanium.IOStream).
@@ -61002,7 +63239,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -61012,19 +63252,26 @@ declare namespace Titanium {
         /**
          * Converts one type of unit to another using the metrics of the main display.
          */
-        static convertUnits(convertFromValue: string, convertToUnits: number): number;
+        static convertUnits(
+            convertFromValue: string,
+            convertToUnits: number,
+        ): number;
 
         /**
          * Creates and returns an instance of <Titanium.UI.2DMatrix>.
          * @deprecated Use [Titanium.UI.createMatrix2D](Titanium.UI.createMatrix2D) instead.
          */
-        static create2DMatrix(parameters?: Matrix2DCreationDict): Titanium.UI.Matrix2D;
+        static create2DMatrix(
+            parameters?: Matrix2DCreationDict,
+        ): Titanium.UI.Matrix2D;
 
         /**
          * Creates and returns an instance of <Titanium.UI.3DMatrix>.
          * @deprecated Use [Titanium.UI.createMatrix3D](Titanium.UI.createMatrix3D) instead.
          */
-        static create3DMatrix(parameters?: Matrix3DCreationDict): Titanium.UI.Matrix3D;
+        static create3DMatrix(
+            parameters?: Matrix3DCreationDict,
+        ): Titanium.UI.Matrix3D;
 
         /**
          * Creates and returns an instance of <Titanium.UI.ActivityIndicator>.
@@ -61036,12 +63283,16 @@ declare namespace Titanium {
         /**
          * Creates and returns an instance of <Titanium.UI.AlertDialog>.
          */
-        static createAlertDialog(parameters?: Dictionary<Titanium.UI.AlertDialog>): Titanium.UI.AlertDialog;
+        static createAlertDialog(
+            parameters?: Dictionary<Titanium.UI.AlertDialog>,
+        ): Titanium.UI.AlertDialog;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Animation>.
          */
-        static createAnimation(parameters?: Dictionary<Titanium.UI.Animation>): Titanium.UI.Animation;
+        static createAnimation(
+            parameters?: Dictionary<Titanium.UI.Animation>,
+        ): Titanium.UI.Animation;
 
         /**
          * Creates and returns an instance of <Titanium.UI.AttributedString>.
@@ -61053,67 +63304,93 @@ declare namespace Titanium {
         /**
          * Creates and returns an instance of <Titanium.UI.Button>.
          */
-        static createButton(parameters?: Dictionary<Titanium.UI.Button>): Titanium.UI.Button;
+        static createButton(
+            parameters?: Dictionary<Titanium.UI.Button>,
+        ): Titanium.UI.Button;
 
         /**
          * Creates and returns an instance of <Titanium.UI.ButtonBar>.
          */
-        static createButtonBar(parameters?: Dictionary<Titanium.UI.ButtonBar>): Titanium.UI.ButtonBar;
+        static createButtonBar(
+            parameters?: Dictionary<Titanium.UI.ButtonBar>,
+        ): Titanium.UI.ButtonBar;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Color>.
          */
-        static createColor(parameters?: Dictionary<Titanium.UI.Color>): Titanium.UI.Color;
+        static createColor(
+            parameters?: Dictionary<Titanium.UI.Color>,
+        ): Titanium.UI.Color;
 
         /**
          * Creates and returns an instance of <Titanium.UI.DashboardItem>.
          */
-        static createDashboardItem(parameters?: Dictionary<Titanium.UI.DashboardItem>): Titanium.UI.DashboardItem;
+        static createDashboardItem(
+            parameters?: Dictionary<Titanium.UI.DashboardItem>,
+        ): Titanium.UI.DashboardItem;
 
         /**
          * Creates and returns an instance of <Titanium.UI.DashboardView>.
          */
-        static createDashboardView(parameters?: Dictionary<Titanium.UI.DashboardView>): Titanium.UI.DashboardView;
+        static createDashboardView(
+            parameters?: Dictionary<Titanium.UI.DashboardView>,
+        ): Titanium.UI.DashboardView;
 
         /**
          * Creates and returns an instance of <Titanium.UI.EmailDialog>.
          */
-        static createEmailDialog(parameters?: Dictionary<Titanium.UI.EmailDialog>): Titanium.UI.EmailDialog;
+        static createEmailDialog(
+            parameters?: Dictionary<Titanium.UI.EmailDialog>,
+        ): Titanium.UI.EmailDialog;
 
         /**
          * Creates and returns an instance of <Titanium.UI.ImageView>.
          */
-        static createImageView(parameters?: Dictionary<Titanium.UI.ImageView>): Titanium.UI.ImageView;
+        static createImageView(
+            parameters?: Dictionary<Titanium.UI.ImageView>,
+        ): Titanium.UI.ImageView;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Label>.
          */
-        static createLabel(parameters?: Dictionary<Titanium.UI.Label>): Titanium.UI.Label;
+        static createLabel(
+            parameters?: Dictionary<Titanium.UI.Label>,
+        ): Titanium.UI.Label;
 
         /**
          * Creates and returns an instance of <Titanium.UI.ListSection>.
          */
-        static createListSection(parameters?: Dictionary<Titanium.UI.ListSection>): Titanium.UI.ListSection;
+        static createListSection(
+            parameters?: Dictionary<Titanium.UI.ListSection>,
+        ): Titanium.UI.ListSection;
 
         /**
          * Creates and returns an instance of <Titanium.UI.ListView>.
          */
-        static createListView(parameters?: Dictionary<Titanium.UI.ListView>): Titanium.UI.ListView;
+        static createListView(
+            parameters?: Dictionary<Titanium.UI.ListView>,
+        ): Titanium.UI.ListView;
 
         /**
          * Creates and returns an instance of <Titanium.UI.MaskedImage>.
          */
-        static createMaskedImage(parameters?: Dictionary<Titanium.UI.MaskedImage>): Titanium.UI.MaskedImage;
+        static createMaskedImage(
+            parameters?: Dictionary<Titanium.UI.MaskedImage>,
+        ): Titanium.UI.MaskedImage;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Matrix2D>.
          */
-        static createMatrix2D(parameters?: Matrix2DCreationDict): Titanium.UI.Matrix2D;
+        static createMatrix2D(
+            parameters?: Matrix2DCreationDict,
+        ): Titanium.UI.Matrix2D;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Matrix3D>.
          */
-        static createMatrix3D(parameters?: Matrix3DCreationDict): Titanium.UI.Matrix3D;
+        static createMatrix3D(
+            parameters?: Matrix3DCreationDict,
+        ): Titanium.UI.Matrix3D;
 
         /**
          * Creates and returns an instance of <Titanium.UI.NavigationWindow>.
@@ -61125,102 +63402,142 @@ declare namespace Titanium {
         /**
          * Creates and returns an instance of <Titanium.UI.Notification>.
          */
-        static createNotification(parameters?: Dictionary<Titanium.UI.Notification>): Titanium.UI.Notification;
+        static createNotification(
+            parameters?: Dictionary<Titanium.UI.Notification>,
+        ): Titanium.UI.Notification;
 
         /**
          * Creates and returns an instance of <Titanium.UI.OptionBar>.
          */
-        static createOptionBar(parameters?: Dictionary<Titanium.UI.OptionBar>): Titanium.UI.OptionBar;
+        static createOptionBar(
+            parameters?: Dictionary<Titanium.UI.OptionBar>,
+        ): Titanium.UI.OptionBar;
 
         /**
          * Creates and returns an instance of <Titanium.UI.OptionDialog>.
          */
-        static createOptionDialog(parameters?: Dictionary<Titanium.UI.OptionDialog>): Titanium.UI.OptionDialog;
+        static createOptionDialog(
+            parameters?: Dictionary<Titanium.UI.OptionDialog>,
+        ): Titanium.UI.OptionDialog;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Picker>.
          */
-        static createPicker(parameters?: Dictionary<Titanium.UI.Picker>): Titanium.UI.Picker;
+        static createPicker(
+            parameters?: Dictionary<Titanium.UI.Picker>,
+        ): Titanium.UI.Picker;
 
         /**
          * Creates and returns an instance of <Titanium.UI.PickerColumn>.
          */
-        static createPickerColumn(parameters?: Dictionary<Titanium.UI.PickerColumn>): Titanium.UI.PickerColumn;
+        static createPickerColumn(
+            parameters?: Dictionary<Titanium.UI.PickerColumn>,
+        ): Titanium.UI.PickerColumn;
 
         /**
          * Creates and returns an instance of <Titanium.UI.PickerRow>.
          */
-        static createPickerRow(parameters?: Dictionary<Titanium.UI.PickerRow>): Titanium.UI.PickerRow;
+        static createPickerRow(
+            parameters?: Dictionary<Titanium.UI.PickerRow>,
+        ): Titanium.UI.PickerRow;
 
         /**
          * Creates and returns an instance of <Titanium.UI.ProgressBar>.
          */
-        static createProgressBar(parameters?: Dictionary<Titanium.UI.ProgressBar>): Titanium.UI.ProgressBar;
+        static createProgressBar(
+            parameters?: Dictionary<Titanium.UI.ProgressBar>,
+        ): Titanium.UI.ProgressBar;
 
         /**
          * Creates and returns an instance of <Titanium.UI.RefreshControl>.
          */
-        static createRefreshControl(parameters?: Dictionary<Titanium.UI.RefreshControl>): Titanium.UI.RefreshControl;
+        static createRefreshControl(
+            parameters?: Dictionary<Titanium.UI.RefreshControl>,
+        ): Titanium.UI.RefreshControl;
 
         /**
          * Creates and returns an instance of <Titanium.UI.ScrollView>.
          */
-        static createScrollView(parameters?: Dictionary<Titanium.UI.ScrollView>): Titanium.UI.ScrollView;
+        static createScrollView(
+            parameters?: Dictionary<Titanium.UI.ScrollView>,
+        ): Titanium.UI.ScrollView;
 
         /**
          * Creates and returns an instance of <Titanium.UI.ScrollableView>.
          */
-        static createScrollableView(parameters?: Dictionary<Titanium.UI.ScrollableView>): Titanium.UI.ScrollableView;
+        static createScrollableView(
+            parameters?: Dictionary<Titanium.UI.ScrollableView>,
+        ): Titanium.UI.ScrollableView;
 
         /**
          * Creates and returns an instance of <Titanium.UI.SearchBar>.
          */
-        static createSearchBar(parameters?: Dictionary<Titanium.UI.SearchBar>): Titanium.UI.SearchBar;
+        static createSearchBar(
+            parameters?: Dictionary<Titanium.UI.SearchBar>,
+        ): Titanium.UI.SearchBar;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Shortcut>.
          */
-        static createShortcut(parameters?: Dictionary<Titanium.UI.Shortcut>): Titanium.UI.Shortcut;
+        static createShortcut(
+            parameters?: Dictionary<Titanium.UI.Shortcut>,
+        ): Titanium.UI.Shortcut;
 
         /**
          * Creates and returns an instance of <Titanium.UI.ShortcutItem>.
          */
-        static createShortcutItem(parameters?: Dictionary<Titanium.UI.ShortcutItem>): Titanium.UI.ShortcutItem;
+        static createShortcutItem(
+            parameters?: Dictionary<Titanium.UI.ShortcutItem>,
+        ): Titanium.UI.ShortcutItem;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Slider>.
          */
-        static createSlider(parameters?: Dictionary<Titanium.UI.Slider>): Titanium.UI.Slider;
+        static createSlider(
+            parameters?: Dictionary<Titanium.UI.Slider>,
+        ): Titanium.UI.Slider;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Switch>.
          */
-        static createSwitch(parameters?: Dictionary<Titanium.UI.Switch>): Titanium.UI.Switch;
+        static createSwitch(
+            parameters?: Dictionary<Titanium.UI.Switch>,
+        ): Titanium.UI.Switch;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Tab>.
          */
-        static createTab(parameters?: Dictionary<Titanium.UI.Tab>): Titanium.UI.Tab;
+        static createTab(
+            parameters?: Dictionary<Titanium.UI.Tab>,
+        ): Titanium.UI.Tab;
 
         /**
          * Creates and returns an instance of <Titanium.UI.TabGroup>.
          */
-        static createTabGroup(parameters?: Dictionary<Titanium.UI.TabGroup>): Titanium.UI.TabGroup;
+        static createTabGroup(
+            parameters?: Dictionary<Titanium.UI.TabGroup>,
+        ): Titanium.UI.TabGroup;
 
         /**
          * Creates and returns an instance of <Titanium.UI.TabbedBar>.
          */
-        static createTabbedBar(parameters?: Dictionary<Titanium.UI.TabbedBar>): Titanium.UI.TabbedBar;
+        static createTabbedBar(
+            parameters?: Dictionary<Titanium.UI.TabbedBar>,
+        ): Titanium.UI.TabbedBar;
 
         /**
          * Creates and returns an instance of <Titanium.UI.TableView>.
          */
-        static createTableView(parameters?: Dictionary<Titanium.UI.TableView>): Titanium.UI.TableView;
+        static createTableView(
+            parameters?: Dictionary<Titanium.UI.TableView>,
+        ): Titanium.UI.TableView;
 
         /**
          * Creates and returns an instance of <Titanium.UI.TableViewRow>.
          */
-        static createTableViewRow(parameters?: Dictionary<Titanium.UI.TableViewRow>): Titanium.UI.TableViewRow;
+        static createTableViewRow(
+            parameters?: Dictionary<Titanium.UI.TableViewRow>,
+        ): Titanium.UI.TableViewRow;
 
         /**
          * Creates and returns an instance of <Titanium.UI.TableViewSection>.
@@ -61232,43 +63549,60 @@ declare namespace Titanium {
         /**
          * Creates and returns an instance of <Titanium.UI.TextArea>.
          */
-        static createTextArea(parameters?: Dictionary<Titanium.UI.TextArea>): Titanium.UI.TextArea;
+        static createTextArea(
+            parameters?: Dictionary<Titanium.UI.TextArea>,
+        ): Titanium.UI.TextArea;
 
         /**
          * Creates and returns an instance of <Titanium.UI.TextField>.
          */
-        static createTextField(parameters?: Dictionary<Titanium.UI.TextField>): Titanium.UI.TextField;
+        static createTextField(
+            parameters?: Dictionary<Titanium.UI.TextField>,
+        ): Titanium.UI.TextField;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Toolbar>.
          */
-        static createToolbar(parameters?: Dictionary<Titanium.UI.Toolbar>): Titanium.UI.Toolbar;
+        static createToolbar(
+            parameters?: Dictionary<Titanium.UI.Toolbar>,
+        ): Titanium.UI.Toolbar;
 
         /**
          * Creates and returns an instance of <Titanium.UI.View>.
          */
-        static createView(parameters?: Dictionary<Titanium.UI.View>): Titanium.UI.View;
+        static createView(
+            parameters?: Dictionary<Titanium.UI.View>,
+        ): Titanium.UI.View;
 
         /**
          * Creates and returns an instance of <Titanium.UI.WebView>.
          */
-        static createWebView(parameters?: Dictionary<Titanium.UI.WebView>): Titanium.UI.WebView;
+        static createWebView(
+            parameters?: Dictionary<Titanium.UI.WebView>,
+        ): Titanium.UI.WebView;
 
         /**
          * Creates and returns an instance of <Titanium.UI.Window>.
          */
-        static createWindow(parameters?: Dictionary<Titanium.UI.Window>): Titanium.UI.Window;
+        static createWindow(
+            parameters?: Dictionary<Titanium.UI.Window>,
+        ): Titanium.UI.Window;
 
         /**
          * Fetches the correct color to be used with a UI element dependent on the users current dark mode setting on iOS 13 and above, or the [Titanium.UI.semanticColorType](Titanium.UI.semanticColorType) setting in other instances.
          * Will return a valid string value to be used for color properties on Android. This may be a hex string or an `rgba()` function.
          */
-        static fetchSemanticColor(colorName: string): Titanium.UI.Color | string;
+        static fetchSemanticColor(
+            colorName: string,
+        ): Titanium.UI.Color | string;
 
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof UIEventMap>(name: K, event?: UIEventMap[K]): void;
+        static fireEvent<K extends keyof UIEventMap>(
+            name: K,
+            event?: UIEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -61286,7 +63620,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
     }
     /**
      * The top-level Utils module, containing a set of JavaScript methods that are often useful when
@@ -61311,7 +63648,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -61321,12 +63661,16 @@ declare namespace Titanium {
         /**
          * Returns the specified data decoded from Base64.
          */
-        static base64decode(obj: string | Titanium.Blob | Titanium.Filesystem.File): Titanium.Blob;
+        static base64decode(
+            obj: string | Titanium.Blob | Titanium.Filesystem.File,
+        ): Titanium.Blob;
 
         /**
          * Returns the specified data encoded to Base64.
          */
-        static base64encode(obj: string | Titanium.Blob | Titanium.Filesystem.File): Titanium.Blob;
+        static base64encode(
+            obj: string | Titanium.Blob | Titanium.Filesystem.File,
+        ): Titanium.Blob;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -61341,7 +63685,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Returns a SHA-1 hash of the specified data as a hex-based String.
@@ -61375,7 +63722,8 @@ declare namespace Titanium {
     /**
      * App received app context from apple watch. Will be called on startup if an applicationContext is available.
      */
-    interface WatchSession_receiveapplicationcontext_Event extends WatchSessionBaseEvent {
+    interface WatchSession_receiveapplicationcontext_Event
+        extends WatchSessionBaseEvent {
         /**
          * The application Context
          */
@@ -61423,7 +63771,8 @@ declare namespace Titanium {
     /**
      * The watch state has changed.
      */
-    interface WatchSession_watchstatechanged_Event extends WatchSessionBaseEvent {
+    interface WatchSession_watchstatechanged_Event
+        extends WatchSessionBaseEvent {
         /**
          * Returns the current activation state of the watch.  Only available on iOS 9.3
          * and later. See <Titanium.WatchSession.activationState> for more infos.
@@ -61459,7 +63808,8 @@ declare namespace Titanium {
     /**
      * The watch reachability state has changed.
      */
-    interface WatchSession_reachabilitychanged_Event extends WatchSessionBaseEvent {
+    interface WatchSession_reachabilitychanged_Event
+        extends WatchSessionBaseEvent {
         /**
          * Returns the current activation state of the watch.  Only available on iOS 9.3
          * and later. See <Titanium.WatchSession.activationState> for more infos.
@@ -61495,7 +63845,8 @@ declare namespace Titanium {
     /**
      * Fired when the application completed user info transfer to the watch app.
      */
-    interface WatchSession_finishuserinfotransfer_Event extends WatchSessionBaseEvent {
+    interface WatchSession_finishuserinfotransfer_Event
+        extends WatchSessionBaseEvent {
         /**
          * Error code if transfer failed.
          */
@@ -61519,7 +63870,8 @@ declare namespace Titanium {
     /**
      * App completed file transfer to watch app.
      */
-    interface WatchSession_finishfiletransfer_Event extends WatchSessionBaseEvent {
+    interface WatchSession_finishfiletransfer_Event
+        extends WatchSessionBaseEvent {
         /**
          * Error code if transfer failed.
          */
@@ -61637,7 +63989,8 @@ declare namespace Titanium {
      * <Titanium.WatchSession.ACTIVATION_STATE_NOT_ACTIVATED> there will be an error
      * with more details.
      */
-    interface WatchSession_activationCompleted_Event extends WatchSessionBaseEvent {
+    interface WatchSession_activationCompleted_Event
+        extends WatchSessionBaseEvent {
         /**
          * Returns the current activation state of the watch.  Only available on iOS 9.3
          * and later. See <Titanium.WatchSession.activationState> for more infos.
@@ -61783,13 +64136,19 @@ declare namespace Titanium {
          */
         static addEventListener<K extends keyof WatchSessionEventMap>(
             name: K,
-            callback: (this: Titanium.WatchSession, event: WatchSessionEventMap[K]) => void,
+            callback: (
+                this: Titanium.WatchSession,
+                event: WatchSessionEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -61814,7 +64173,10 @@ declare namespace Titanium {
         /**
          * Fires a synthesized event to any registered listeners.
          */
-        static fireEvent<K extends keyof WatchSessionEventMap>(name: K, event?: WatchSessionEventMap[K]): void;
+        static fireEvent<K extends keyof WatchSessionEventMap>(
+            name: K,
+            event?: WatchSessionEventMap[K],
+        ): void;
 
         /**
          * Fires a synthesized event to any registered listeners.
@@ -61826,18 +64188,27 @@ declare namespace Titanium {
          */
         static removeEventListener<K extends keyof WatchSessionEventMap>(
             name: K,
-            callback: (this: Titanium.WatchSession, event: WatchSessionEventMap[K]) => void,
+            callback: (
+                this: Titanium.WatchSession,
+                event: WatchSessionEventMap[K],
+            ) => void,
         ): void;
 
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Sends a message to the apple watch.
          */
-        static sendMessage(message: any, reply?: (param0: MessageReply) => void): void;
+        static sendMessage(
+            message: any,
+            reply?: (param0: MessageReply) => void,
+        ): void;
 
         /**
          * Transfers complication data to the watch application.
@@ -61881,7 +64252,10 @@ declare namespace Titanium {
         /**
          * Adds the specified callback as an event listener for the named event.
          */
-        static addEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static addEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Applies the properties to the proxy.
@@ -61901,7 +64275,10 @@ declare namespace Titanium {
         /**
          * Removes the specified callback as an event listener for the named event.
          */
-        static removeEventListener(name: string, callback: (param0: Titanium.Event) => void): void;
+        static removeEventListener(
+            name: string,
+            callback: (param0: Titanium.Event) => void,
+        ): void;
 
         /**
          * Serializes a [Node](Titanium.XML.Node) object into a string.

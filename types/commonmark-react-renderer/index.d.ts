@@ -79,7 +79,12 @@ declare namespace ReactRenderer {
         disallowedTypes?: string[] | undefined;
         unwrapDisallowed?: boolean | undefined;
         allowNode?:
-            | ((node: { type: string; renderer: string; props: unknown; children: unknown[] }) => unknown)
+            | ((node: {
+                  type: string;
+                  renderer: string;
+                  props: unknown;
+                  children: unknown[];
+              }) => unknown)
             | undefined;
         renderers?: Partial<Renderers> | undefined;
         transformLinkUri?: ((uri: string) => string) | null | undefined;
@@ -96,7 +101,12 @@ declare namespace ReactRenderer {
         transformLinUri: ((uri: string) => string) | null;
         transformImageUri: ((uri: string) => string) | null;
         allowNode:
-            | ((node: { type: string; renderer: string; props: unknown; children: React.ReactNode[] }) => unknown)
+            | ((node: {
+                  type: string;
+                  renderer: string;
+                  props: unknown;
+                  children: React.ReactNode[];
+              }) => unknown)
             | undefined;
         allowedTypes: string[];
         unwrapDisallowed: boolean;
@@ -106,7 +116,7 @@ declare namespace ReactRenderer {
 }
 
 interface ReactRenderer {
-    new(options?: ReactRenderer.Options): ReactRenderer.Renderer;
+    new (options?: ReactRenderer.Options): ReactRenderer.Renderer;
     uriTransformer: (uri: string) => string;
     types: string[];
     renderers: ReactRenderer.Renderers;

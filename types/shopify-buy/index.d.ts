@@ -359,8 +359,7 @@ declare namespace ShopifyBuy {
         BAD_DOMAIN = "BAD_DOMAIN",
         BLANK = "BLANK",
         CART_DOES_NOT_MEET_DISCOUNT_REQUIREMENTS_NOTICE = "CART_DOES_NOT_MEET_DISCOUNT_REQUIREMENTS_NOTICE",
-        CUSTOMER_ALREADY_USED_ONCE_PER_CUSTOMER_DISCOUNT_NOTICE =
-            "CUSTOMER_ALREADY_USED_ONCE_PER_CUSTOMER_DISCOUNT_NOTICE",
+        CUSTOMER_ALREADY_USED_ONCE_PER_CUSTOMER_DISCOUNT_NOTICE = "CUSTOMER_ALREADY_USED_ONCE_PER_CUSTOMER_DISCOUNT_NOTICE",
         DISCOUNT_ALREADY_APPLIED = "DISCOUNT_ALREADY_APPLIED",
         DISCOUNT_DISABLED = "DISCOUNT_DISABLED",
         DISCOUNT_EXPIRED = "DISCOUNT_EXPIRED",
@@ -574,7 +573,9 @@ declare namespace ShopifyBuy {
         | ProductVariant
         | Video;
     type PricingValue = MoneyV2 | PricingPercentageValue;
-    type SellingPlanCheckoutChargeValue = MoneyV2 | SellingPlanCheckoutChargePercentageValue;
+    type SellingPlanCheckoutChargeValue =
+        | MoneyV2
+        | SellingPlanCheckoutChargePercentageValue;
     type SellingPlanPriceAdjustmentValue =
         | SellingPlanFixedAmountPriceAdjustment
         | SellingPlanFixedPriceAdjustment
@@ -1502,7 +1503,10 @@ declare namespace ShopifyBuy {
         /**
          * Fetches all collections on the shop, including products.
          */
-        fetchAllWithProducts(options?: { first?: number; productsFirst?: number }): Promise<Collection[]>;
+        fetchAllWithProducts(options?: {
+            first?: number;
+            productsFirst?: number;
+        }): Promise<Collection[]>;
 
         /**
          * Fetches a single collection by ID on the shop, not including products.
@@ -1513,7 +1517,10 @@ declare namespace ShopifyBuy {
         /**
          * Fetches a single collection by ID on the shop, including products.
          */
-        fetchWithProducts(id: ID, options?: { productsFirst?: number }): Promise<Collection>;
+        fetchWithProducts(
+            id: ID,
+            options?: { productsFirst?: number },
+        ): Promise<Collection>;
 
         /**
          * Fetches a collection by handle on the shop.
@@ -1573,7 +1580,10 @@ declare namespace ShopifyBuy {
         /**
          * Adds line items to an existing checkout.
          */
-        addLineItems(checkoutId: ID, lineItems: CheckoutLineItemInput[]): Promise<Checkout>;
+        addLineItems(
+            checkoutId: ID,
+            lineItems: CheckoutLineItemInput[],
+        ): Promise<Checkout>;
 
         /**
          * Applies a discount to an existing checkout using a discount code.
@@ -1593,27 +1603,42 @@ declare namespace ShopifyBuy {
         /**
          * Remove a gift card from an existing checkout
          */
-        removeGiftCard(checkoutId: ID, appliedGiftCardId: ID): Promise<Checkout>;
+        removeGiftCard(
+            checkoutId: ID,
+            appliedGiftCardId: ID,
+        ): Promise<Checkout>;
 
         /**
          * Removes line items from an existing checkout.
          */
-        removeLineItems(checkoutId: ID, lineItemIds: string[]): Promise<Checkout>;
+        removeLineItems(
+            checkoutId: ID,
+            lineItemIds: string[],
+        ): Promise<Checkout>;
 
         /**
          * Replace line items on an existing checkout.
          */
-        replaceLineItems(checkoutId: ID, lineItems: CheckoutLineItemInput[]): Promise<Checkout>;
+        replaceLineItems(
+            checkoutId: ID,
+            lineItems: CheckoutLineItemInput[],
+        ): Promise<Checkout>;
 
         /**
          * Updates line items on an existing checkout.
          */
-        updateLineItems(checkoutId: ID, lineItems: CheckoutLineItemUpdateInput[]): Promise<Checkout>;
+        updateLineItems(
+            checkoutId: ID,
+            lineItems: CheckoutLineItemUpdateInput[],
+        ): Promise<Checkout>;
 
         /**
          * Updates shipping address on an existing checkout.
          */
-        updateShippingAddress(checkoutId: ID, shippingAddress: MailingAddressInput): Promise<Checkout>;
+        updateShippingAddress(
+            checkoutId: ID,
+            shippingAddress: MailingAddressInput,
+        ): Promise<Checkout>;
     }
 
     /**
@@ -1627,7 +1652,10 @@ declare namespace ShopifyBuy {
              * Generates the image src for a resized image with maximum dimensions `maxWidth` and `maxHeight`.
              * Images do not scale up.
              */
-            imageForSize(image: Image, options: { maxWidth: number; maxHeight: number }): string;
+            imageForSize(
+                image: Image,
+                options: { maxWidth: number; maxHeight: number },
+            ): string;
         };
     }
 
@@ -1725,7 +1753,10 @@ declare class ShopifyBuy {
     /**
      * Primary entry point for building a new Client.
      */
-    static buildClient(config: ShopifyBuy.Config, fetchFunction?: FetchFunction): ShopifyBuy;
+    static buildClient(
+        config: ShopifyBuy.Config,
+        fetchFunction?: FetchFunction,
+    ): ShopifyBuy;
 
     constructor(
         config: ShopifyBuy.Config,

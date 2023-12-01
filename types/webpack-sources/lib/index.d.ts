@@ -50,7 +50,12 @@ export interface Replacement {
     readonly name: string;
 }
 
-export type SourceLike = Partial<Pick<Source, "source" | "buffer" | "size" | "map" | "sourceAndMap" | "updateHash">>;
+export type SourceLike = Partial<
+    Pick<
+        Source,
+        "source" | "buffer" | "size" | "map" | "sourceAndMap" | "updateHash"
+    >
+>;
 
 export interface CachedData {
     buffer?: Buffer | undefined;

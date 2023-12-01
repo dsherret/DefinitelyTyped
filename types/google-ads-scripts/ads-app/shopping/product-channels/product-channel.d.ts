@@ -39,7 +39,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** Builder for ProductChannel objects. */
-        interface ProductChannelBuilder extends Base.Builder<ProductChannelOperation> {
+        interface ProductChannelBuilder
+            extends Base.Builder<ProductChannelOperation> {
             /** Specifies the bid of the product channel. */
             withBid(bid: number): this;
             /** Specifies the channel of the new product channel. */
@@ -49,6 +50,7 @@ declare namespace GoogleAdsScripts {
         }
 
         /** An operation representing creation of a new product channel. */
-        interface ProductChannelOperation extends Base.Operation<ProductChannel> {}
+        interface ProductChannelOperation
+            extends Base.Operation<ProductChannel> {}
     }
 }

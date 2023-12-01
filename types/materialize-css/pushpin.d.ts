@@ -15,7 +15,10 @@ declare namespace M {
         /**
          * Init Pushpins
          */
-        static init(els: MElements, options?: Partial<PushpinOptions>): Pushpin[];
+        static init(
+            els: MElements,
+            options?: Partial<PushpinOptions>,
+        ): Pushpin[];
 
         /**
          * Original offsetTop of element
@@ -46,7 +49,10 @@ declare namespace M {
          * Callback function called when pushpin position changes. You are provided with a position string
          * @default null
          */
-        onPositionChange: (this: Pushpin, position: "pinned" | "pin-top" | "pin-bottom") => void;
+        onPositionChange: (
+            this: Pushpin,
+            position: "pinned" | "pin-top" | "pin-bottom",
+        ) => void;
     }
 }
 

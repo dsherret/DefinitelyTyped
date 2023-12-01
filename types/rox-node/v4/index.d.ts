@@ -28,7 +28,10 @@ export function setContext(globalContext: unknown): void;
  *
  * https://docs.cloudbees.com/docs/cloudbees-feature-flags-api/4.9/api-reference/nodejs-api#_setup
  */
-export function setup(apiKey: string, options?: RoxSetupOptions): Promise<unknown>;
+export function setup(
+    apiKey: string,
+    options?: RoxSetupOptions,
+): Promise<unknown>;
 
 export interface RoxSetupOptions {
     version?: string | undefined;
@@ -36,7 +39,11 @@ export interface RoxSetupOptions {
     configurationFetchedHandler?(fetcherResult: RoxFetcherResult): void;
     debugLevel?: "verbose" | undefined;
     // https://docs.cloudbees.com/docs/cloudbees-feature-flags-api/4.9/api-reference/nodejs-api#_using_the_impressionhandler_option
-    impressionHandler?(reporting: RoxReporting, experiment: RoxExperiment, context: unknown): void;
+    impressionHandler?(
+        reporting: RoxReporting,
+        experiment: RoxExperiment,
+        context: unknown,
+    ): void;
     platform?: string | undefined;
     fetchIntervalInSec?: number | undefined;
     disableNetworkFetch?: boolean | undefined;
@@ -78,9 +85,18 @@ export interface RoxExperiment {
 /**
  * https://docs.cloudbees.com/docs/cloudbees-feature-flags/latest/feature-releases/custom-properties
  */
-export function setCustomNumberProperty(name: string, value: number | ((context?: unknown) => number)): void;
-export function setCustomStringProperty(name: string, value: string | ((context?: unknown) => string)): void;
-export function setCustomBooleanProperty(name: string, value: boolean | ((context?: unknown) => boolean)): void;
+export function setCustomNumberProperty(
+    name: string,
+    value: number | ((context?: unknown) => number),
+): void;
+export function setCustomStringProperty(
+    name: string,
+    value: string | ((context?: unknown) => string),
+): void;
+export function setCustomBooleanProperty(
+    name: string,
+    value: boolean | ((context?: unknown) => boolean),
+): void;
 export function setDynamicCustomPropertyRule(
     handler: (propName: string, context: unknown) => number | string | boolean,
 ): void;
@@ -150,7 +166,13 @@ export class Configuration<T extends number | boolean | string> {
  * Ensure that TypeScript properly types things with a basic type.
  * For example, if T is true, returnedtype shall be boolean, not true
  */
-export type BasicType<T> = T extends boolean ? boolean : T extends number ? number : T extends string ? string : never;
+export type BasicType<T> = T extends boolean
+    ? boolean
+    : T extends number
+      ? number
+      : T extends string
+        ? string
+        : never;
 
 /**
  * Override: Should only be used for development purposes (QA - Feature dev - e2e)
@@ -208,12 +230,20 @@ export namespace dynamicApi {
     /**
      * Getting boolean value of a flag
      */
-    function isEnabled(nameSpacedFlagName: string, defaultValue: boolean, context?: unknown): boolean;
+    function isEnabled(
+        nameSpacedFlagName: string,
+        defaultValue: boolean,
+        context?: unknown,
+    ): boolean;
 
     /**
      * Getting string value of a Variant flag
      */
-    function value(nameSpacedFlagName: string, defaultValue: string, context?: unknown): string;
+    function value(
+        nameSpacedFlagName: string,
+        defaultValue: string,
+        context?: unknown,
+    ): string;
 }
 
 export const flags: readonly Flag[];

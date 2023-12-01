@@ -51,7 +51,10 @@ export let mitm: string;
  */
 export let WritableStream: {
     prototype: WritableStream;
-    new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStream<W>;
+    new <W = any>(
+        underlyingSink?: UnderlyingSink<W>,
+        strategy?: QueuingStrategy<W>,
+    ): WritableStream<W>;
 };
 
 /**
@@ -60,7 +63,7 @@ export let WritableStream: {
  */
 export let TransformStream: {
     prototype: TransformStream;
-    new<I = any, O = any>(
+    new <I = any, O = any>(
         transformer: Transformer<I, O>,
         writableStrategy: QueuingStrategy<I>,
         readableStrategy: QueuingStrategy<O>,

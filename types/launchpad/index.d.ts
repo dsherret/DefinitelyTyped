@@ -40,7 +40,13 @@ interface BrowserPlatformDetails {
     args?: string[] | undefined;
     opensTab?: boolean | undefined;
     multi?: boolean | undefined;
-    getCommand?: ((browser: BrowserPlatformDetails, url: string, args: string[]) => string) | undefined;
+    getCommand?:
+        | ((
+              browser: BrowserPlatformDetails,
+              url: string,
+              args: string[],
+          ) => string)
+        | undefined;
     cwd?: string | undefined;
     imageName?: string | undefined;
 }
@@ -51,7 +57,11 @@ interface LaunchOptions {
 }
 
 interface Launcher {
-    (url: string, options: LaunchOptions, callback: (err: any, instance: Instance) => void): void;
+    (
+        url: string,
+        options: LaunchOptions,
+        callback: (err: any, instance: Instance) => void,
+    ): void;
     browsers(cb: (error: any, browsers?: Browser[]) => void): void;
 
     chrome: BrowserFunction;

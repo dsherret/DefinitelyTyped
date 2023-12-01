@@ -11,19 +11,19 @@ Tab.getInstance(element);
 // $ExpectType Tab
 Tab.getOrCreateInstance(element);
 
-element.addEventListener(Tab.Events.hidden, event => {
+element.addEventListener(Tab.Events.hidden, (event) => {
     // do something…
 });
 
-element.addEventListener(Tab.Events.hide, event => {
+element.addEventListener(Tab.Events.hide, (event) => {
     // do something…
 });
 
-element.addEventListener(Tab.Events.show, event => {
+element.addEventListener(Tab.Events.show, (event) => {
     // do something…
 });
 
-element.addEventListener(Tab.Events.shown, event => {
+element.addEventListener(Tab.Events.shown, (event) => {
     // do something…
 });
 

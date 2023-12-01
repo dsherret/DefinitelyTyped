@@ -14,20 +14,22 @@ interface DeferredPaymentRequest {
 interface PaymentRequestData {
     supportedNetworks: AllowedNetworks[];
     supportedMethods: string[];
-    options?: {
-        requestPayerEmail: boolean;
-        requestPayerName: boolean;
-        requestPayerPhone: boolean;
-        requestShipping: boolean;
-        shippingType: "shipping" | "delivery" | "pickup";
-    } | undefined;
+    options?:
+        | {
+              requestPayerEmail: boolean;
+              requestPayerName: boolean;
+              requestPayerPhone: boolean;
+              requestShipping: boolean;
+              shippingType: "shipping" | "delivery" | "pickup";
+          }
+        | undefined;
     shippingOptions?:
         | Array<
-            PaymentRequestAmount & {
-                id: string;
-                detail: string;
-            }
-        >
+              PaymentRequestAmount & {
+                  id: string;
+                  detail: string;
+              }
+          >
         | undefined;
     displayItems: PaymentRequestAmount[];
     total: PaymentRequestAmount & DeferredPaymentRequest;
@@ -63,25 +65,26 @@ interface PaymentRequestApi {
 
     getPrime(
         callback: (
-            result: BaseResult & MerchantReferenceInfo & {
-                prime_expiry_millis: number;
-                total_amount: string;
-                payer: {
-                    name: string;
-                    email: string;
-                    phone: string;
-                };
-                billingAddress: Address;
-                shippingAddress: Address;
-                shippingOption: string;
-                methodName: string;
-                requestId: string;
-                card_info: CardInfoV1;
-                /**
-                 * Real Card Info
-                 */
-                card: Card;
-            },
+            result: BaseResult &
+                MerchantReferenceInfo & {
+                    prime_expiry_millis: number;
+                    total_amount: string;
+                    payer: {
+                        name: string;
+                        email: string;
+                        phone: string;
+                    };
+                    billingAddress: Address;
+                    shippingAddress: Address;
+                    shippingOption: string;
+                    methodName: string;
+                    requestId: string;
+                    card_info: CardInfoV1;
+                    /**
+                     * Real Card Info
+                     */
+                    card: Card;
+                },
         ) => void,
     ): void;
 }

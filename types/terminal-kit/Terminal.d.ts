@@ -84,7 +84,9 @@ declare namespace Terminal {
 
         saveCursor: Terminal;
         restoreCursor: Terminal;
-        up: ((n: number) => Terminal) | ((n: number, ...args: any[]) => Terminal);
+        up:
+            | ((n: number) => Terminal)
+            | ((n: number, ...args: any[]) => Terminal);
         down: (n: number) => Terminal;
         right: (n: number) => Terminal;
         left: (n: number) => Terminal;
@@ -166,9 +168,9 @@ declare namespace Terminal {
             options:
                 | boolean
                 | {
-                    mouse?: "button" | "drag" | "motion" | undefined;
-                    safe?: boolean | undefined;
-                },
+                      mouse?: "button" | "drag" | "motion" | undefined;
+                      safe?: boolean | undefined;
+                  },
             safeCallback?: boolean,
         ): void;
 
@@ -194,7 +196,10 @@ declare namespace Terminal {
         getPalette(register: number, callback?: Callback<Palette>): void;
         setPalette(palette: string | Palette): void;
 
-        table(tableCells: ReadonlyArray<readonly string[]>, options?: TextTableOptions): void;
+        table(
+            tableCells: ReadonlyArray<readonly string[]>,
+            options?: TextTableOptions,
+        ): void;
 
         spinner(options?: AnimatedTextOptions): Promise<AnimatedText>;
 
@@ -209,14 +214,15 @@ declare namespace Terminal {
 
         yesOrNo(options: YesOrNoOptions, callback: Callback<boolean>): void;
 
-        yesOrNo(
-            options?: YesOrNoOptions,
-        ): {
+        yesOrNo(options?: YesOrNoOptions): {
             abort: () => void;
             promise?: Promise<boolean> | undefined;
         };
 
-        inputField(options?: InputFieldOptions, callback?: Callback<string | undefined>): {
+        inputField(
+            options?: InputFieldOptions,
+            callback?: Callback<string | undefined>,
+        ): {
             abort: () => void;
             promise: Promise<string | undefined>;
         };
@@ -304,7 +310,10 @@ declare namespace Terminal {
 
         bar(
             value: number,
-            options?: { innerSize?: number | undefined; barStyle?: CTerminal | undefined },
+            options?: {
+                innerSize?: number | undefined;
+                barStyle?: CTerminal | undefined;
+            },
         ): void;
 
         slowTyping(
@@ -332,10 +341,12 @@ declare namespace Terminal {
         drawImage(
             url: string,
             options: {
-                shrink?: {
-                    width: number;
-                    height: number;
-                } | undefined;
+                shrink?:
+                    | {
+                          width: number;
+                          height: number;
+                      }
+                    | undefined;
             },
             callback: Callback<void>,
         ): void;
@@ -345,10 +356,12 @@ declare namespace Terminal {
         drawImage(
             url: string,
             options?: {
-                shrink?: {
-                    width: number;
-                    height: number;
-                } | undefined;
+                shrink?:
+                    | {
+                          width: number;
+                          height: number;
+                      }
+                    | undefined;
             },
         ): Promise<void>;
     }
@@ -378,10 +391,12 @@ declare namespace Terminal {
 
     type Autocompletion =
         | ((
-            inputString: string,
-            callback: Callback<string | AutocompletionArray<string>>,
-        ) => void)
-        | ((inputString: string) => Promise<string | AutocompletionArray<string>>);
+              inputString: string,
+              callback: Callback<string | AutocompletionArray<string>>,
+          ) => void)
+        | ((
+              inputString: string,
+          ) => Promise<string | AutocompletionArray<string>>);
 
     interface CreateOptions {
         stdin?: NodeJS.Process | undefined;
@@ -428,19 +443,16 @@ declare namespace Terminal {
         keyBindings?: { [key: string]: string } | undefined;
         tokenHook?:
             | ((
-                token: string,
-                isEndOfInput: boolean,
-                previousTokens: readonly string[],
-                term: Terminal,
-                config: HookConfig,
-                // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            ) => string | CTerminal | null | void)
+                  token: string,
+                  isEndOfInput: boolean,
+                  previousTokens: readonly string[],
+                  term: Terminal,
+                  config: HookConfig,
+                  // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+              ) => string | CTerminal | null | void)
             | undefined;
         tokenResetHook?:
-            | ((
-                term: Terminal,
-                config?: HookConfig,
-            ) => string | CTerminal)
+            | ((term: Terminal, config?: HookConfig) => string | CTerminal)
             | undefined;
         tokenRegExp?: RegExp | undefined;
     }
@@ -545,7 +557,11 @@ declare namespace Terminal {
         update: (
             updateObject:
                 | number
-                | { progress: number | null; items?: number | undefined; title?: string | undefined },
+                | {
+                      progress: number | null;
+                      items?: number | undefined;
+                      title?: string | undefined;
+                  },
         ) => void;
         startItem: (name: string) => void;
         itemDone: (name: string) => void;
@@ -600,7 +616,15 @@ declare namespace Terminal {
         | "unboxing"
         | "unboxing-color";
 
-    type BuiltinBorder = "plain" | "empty" | "ascii" | "light" | "lightRounded" | "heavy" | "double" | "dotted";
+    type BuiltinBorder =
+        | "plain"
+        | "empty"
+        | "ascii"
+        | "light"
+        | "lightRounded"
+        | "heavy"
+        | "double"
+        | "dotted";
 
     type AnimationArray = string[];
     interface CustomBorderObject {

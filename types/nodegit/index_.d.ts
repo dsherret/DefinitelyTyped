@@ -26,12 +26,20 @@ export class Index {
     static open(indexPath: string): Promise<Index>;
 
     add(sourceEntry: IndexEntry): number;
-    addAll(pathspec?: Strarray | string | string[], flags?: number, callback?: Function): Promise<number>;
+    addAll(
+        pathspec?: Strarray | string | string[],
+        flags?: number,
+        callback?: Function,
+    ): Promise<number>;
     addByPath(path: string): Promise<number>;
     caps(): number;
     checksum(): Oid;
     clear(): number;
-    conflictAdd(ancestorEntry: IndexEntry, ourEntry: IndexEntry, theirEntry: IndexEntry): number;
+    conflictAdd(
+        ancestorEntry: IndexEntry,
+        ourEntry: IndexEntry,
+        theirEntry: IndexEntry,
+    ): number;
     conflictCleanup(): number;
     conflictGet(path: string): Promise<IndexEntry>;
     conflictRemove(path: string): number;
@@ -44,11 +52,17 @@ export class Index {
     read(force: number): number;
     readTree(tree: Tree): number;
     remove(path: string, stage: number): number;
-    removeAll(pathspec: Strarray | string | string[], callback?: Function): Promise<number>;
+    removeAll(
+        pathspec: Strarray | string | string[],
+        callback?: Function,
+    ): Promise<number>;
     removeByPath(path: string): Promise<number>;
     removeDirectory(dir: string, stage: number): number;
     setCaps(caps: number): number;
-    updateAll(pathspec: Strarray | string | string[], callback?: Function): Promise<number>;
+    updateAll(
+        pathspec: Strarray | string | string[],
+        callback?: Function,
+    ): Promise<number>;
     write(): Promise<number>;
     writeTree(): Promise<Oid>;
     writeTreeTo(repo: Repository): Promise<Oid>;

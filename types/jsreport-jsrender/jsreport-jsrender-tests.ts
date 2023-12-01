@@ -18,7 +18,9 @@ jsreport.use(JsRender());
 
 (async () => {
     await jsreport.init();
-    await jsreport.documentStore.collection("settings").update({}, { $set: { foo: 1 } });
+    await jsreport.documentStore
+        .collection("settings")
+        .update({}, { $set: { foo: 1 } });
     const res = await jsreport.render({
         template: {
             content: "<h1>{{:foo}}</h1>",

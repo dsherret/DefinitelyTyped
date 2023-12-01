@@ -1,4 +1,8 @@
-import { NormalizationArgument, NormalizationField, NormalizationHandle } from "../util/NormalizationNode";
+import {
+    NormalizationArgument,
+    NormalizationField,
+    NormalizationHandle,
+} from "../util/NormalizationNode";
 import { ReaderArgument, ReaderField } from "../util/ReaderNode";
 import { Variables } from "../util/RelayRuntimeTypes";
 
@@ -24,7 +28,10 @@ export function getArgumentValues(
  * name was used in previous implementations of Relay internals and is also
  * used here for consistency.
  */
-export function getHandleStorageKey(handleField: NormalizationHandle, variables: Variables): string;
+export function getHandleStorageKey(
+    handleField: NormalizationHandle,
+    variables: Variables,
+): string;
 
 /**
  * Given a field and variable values, returns a key that can be used to
@@ -62,7 +69,10 @@ export function formatStorageKey(name: string, argValues: Arguments): string;
  * Given Variables and a variable name, return a variable value with
  * all values in a stable order.
  */
-export function getStableVariableValue(name: string, variables: Variables): unknown;
+export function getStableVariableValue(
+    name: string,
+    variables: Variables,
+): unknown;
 
 export function getModuleComponentKey(documentName: string): string;
 export function getModuleOperationKey(documentName: string): string;

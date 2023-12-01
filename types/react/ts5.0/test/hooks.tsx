@@ -21,39 +21,39 @@ export interface FancyButtonProps {
 export interface FancyButtonMethod {
     fancyClick(): void;
 }
-export const FancyButton = React.forwardRef((props: FancyButtonProps, ref: React.Ref<FancyButtonMethod>) => {
-    const buttonRef = React.useRef<HTMLButtonElement | null>(null);
-    const [count, setCount] = React.useState(0);
+export const FancyButton = React.forwardRef(
+    (props: FancyButtonProps, ref: React.Ref<FancyButtonMethod>) => {
+        const buttonRef = React.useRef<HTMLButtonElement | null>(null);
+        const [count, setCount] = React.useState(0);
 
-    React.useImperativeHandle(ref, () => ({
-        fancyClick() {
-            buttonRef.current!; // $ExpectType HTMLButtonElement
-        },
-        getClickCount() {
-            return count;
-        },
-    }));
+        React.useImperativeHandle(ref, () => ({
+            fancyClick() {
+                buttonRef.current!; // $ExpectType HTMLButtonElement
+            },
+            getClickCount() {
+                return count;
+            },
+        }));
 
-    return (
-        <button
-            onClick={() => {
-                setCount(count + 1);
-                props.onClick();
-            }}
-        >
-            {props.children}
-        </button>
-    );
-});
+        return (
+            <button
+                onClick={() => {
+                    setCount(count + 1);
+                    props.onClick();
+                }}
+            >
+                {props.children}
+            </button>
+        );
+    },
+);
 
 interface AppState {
     name: string;
     age: number;
 }
 
-type AppActions =
-    | { type: "getOlder" }
-    | { type: "resetAge" };
+type AppActions = { type: "getOlder" } | { type: "resetAge" };
 
 function reducer(s: AppState, action: AppActions): AppState {
     switch (action.type) {
@@ -71,7 +71,8 @@ const initialState = {
 
 export function App() {
     const [state, dispatch] = React.useReducer(reducer, initialState);
-    const birthdayRef = React.useRef<React.ComponentRef<typeof FancyButton>>(null);
+    const birthdayRef =
+        React.useRef<React.ComponentRef<typeof FancyButton>>(null);
 
     React.useLayoutEffect(() => {
         if (birthdayRef.current !== null) {
@@ -101,7 +102,9 @@ interface Context {
 }
 const context = React.createContext<Context>({ test: true });
 
-function useEveryHook(ref: React.Ref<{ id: number }> | undefined): () => boolean {
+function useEveryHook(
+    ref: React.Ref<{ id: number }> | undefined,
+): () => boolean {
     const value: Context = React.useContext(context);
     const [, setState] = React.useState(() => 0);
     // Bonus typescript@next version
@@ -114,14 +117,14 @@ function useEveryHook(ref: React.Ref<{ id: number }> | undefined): () => boolean
         (arg: true): AppState => arg && initialState,
     );
 
-    const [, simpleDispatch] = React.useReducer(v => v + 1, 0);
+    const [, simpleDispatch] = React.useReducer((v) => v + 1, 0);
 
     // inline object, to (manually) check if autocomplete works
     React.useReducer(reducer, { age: 42, name: "The Answer" });
 
     // Implicit any
     // @ts-expect-error
-    const anyCallback = React.useCallback(value => {
+    const anyCallback = React.useCallback((value) => {
         // $ExpectType any
         return value;
     }, []);
@@ -138,11 +141,13 @@ function useEveryHook(ref: React.Ref<{ id: number }> | undefined): () => boolean
     typedCallback({});
 
     function useContextuallyTypedCallback(fn: (event: Event) => string) {}
-    useContextuallyTypedCallback(React.useCallback(event => {
-        // $ExpectType Event
-        event;
-        return String(event);
-    }, []));
+    useContextuallyTypedCallback(
+        React.useCallback((event) => {
+            // $ExpectType Event
+            event;
+            return String(event);
+        }, []),
+    );
 
     // test useRef and its convenience overloads
     // $ExpectType MutableRefObject<number>
@@ -180,7 +185,8 @@ function useEveryHook(ref: React.Ref<{ id: number }> | undefined): () => boolean
     React.useRef<number | undefined>(1);
 
     // should be contextually typed
-    const a: React.MutableRefObject<number | undefined> = React.useRef(undefined);
+    const a: React.MutableRefObject<number | undefined> =
+        React.useRef(undefined);
     const b: React.MutableRefObject<number | undefined> = React.useRef();
     const c: React.MutableRefObject<number | null> = React.useRef(null);
     const d: React.RefObject<number> = React.useRef(null);
@@ -197,7 +203,7 @@ function useEveryHook(ref: React.Ref<{ id: number }> | undefined): () => boolean
 
     React.useLayoutEffect(() => {
         setState(1);
-        setState(prevState => prevState - 1);
+        setState((prevState) => prevState - 1);
         didLayout.current = true;
     }, []);
     React.useEffect(() => {
@@ -216,17 +222,17 @@ function useEveryHook(ref: React.Ref<{ id: number }> | undefined): () => boolean
     // @ts-expect-error
     React.useEffect(() => null);
     // @ts-expect-error
-    React.useEffect(() => Math.random() ? null : undefined);
+    React.useEffect(() => (Math.random() ? null : undefined));
     // @ts-expect-error
     React.useEffect(() => () => null);
     // @ts-expect-error
-    React.useEffect(() => () => Math.random() ? null : undefined);
+    React.useEffect(() => () => (Math.random() ? null : undefined));
     // @ts-expect-error
     React.useEffect(() => async () => {});
     // @ts-expect-error
     React.useEffect(async () => () => {});
 
-    React.useDebugValue(id, value => value.toFixed());
+    React.useDebugValue(id, (value) => value.toFixed());
     React.useDebugValue(id);
 
     // allow passing an explicit undefined
@@ -254,7 +260,7 @@ function useEveryHook(ref: React.Ref<{ id: number }> | undefined): () => boolean
     // $ExpectType boolean
     toggle;
     // make sure setState accepts a function
-    setToggle(r => !r);
+    setToggle((r) => !r);
 
     // Undesired
     // Should not type-check since `number` will be `number` at runtime but `() => number` in the type-checker
@@ -302,19 +308,20 @@ function useEveryHook(ref: React.Ref<{ id: number }> | undefined): () => boolean
     return React.useCallback(() => didLayout.current, []);
 }
 
-const UsesEveryHook = React.forwardRef(
-    function UsesEveryHook(props: {}, ref?: React.Ref<{ id: number }>) {
-        // $ExpectType boolean
-        useEveryHook(ref)();
+const UsesEveryHook = React.forwardRef(function UsesEveryHook(
+    props: {},
+    ref?: React.Ref<{ id: number }>,
+) {
+    // $ExpectType boolean
+    useEveryHook(ref)();
 
-        return null;
-    },
-);
+    return null;
+});
 const everyHookRef = React.createRef<{ id: number }>();
 <UsesEveryHook ref={everyHookRef} />;
 
 <UsesEveryHook
-    ref={ref => {
+    ref={(ref) => {
         // $ExpectType { id: number; } | null
         ref;
     }}
@@ -352,7 +359,7 @@ function useConcurrentHooks() {
 
     return () => {
         startTransition(() => {
-            setToggle(toggle => !toggle);
+            setToggle((toggle) => !toggle);
         });
 
         // The function must be synchronous, even if it can start an asynchronous update
@@ -387,7 +394,11 @@ function Dialog() {
     const descriptionId = `${id}-description`;
 
     return (
-        <div role="dialog" aria-labelledby={nameId} aria-describedby={descriptionId}>
+        <div
+            role="dialog"
+            aria-labelledby={nameId}
+            aria-describedby={descriptionId}
+        >
             <h2 id={nameId}>Name</h2>
             <p id={descriptionId}>Description</p>
         </div>
@@ -424,7 +435,10 @@ function useStoreWrong() {
     );
 }
 
-declare const objectStore: Store<{ version: { major: number; minor: number }; users: string[] }>;
+declare const objectStore: Store<{
+    version: { major: number; minor: number };
+    users: string[];
+}>;
 function useUsers(): string[] {
     return useSyncExternalStore(
         objectStore.subscribe,

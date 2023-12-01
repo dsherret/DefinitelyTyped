@@ -8,5 +8,11 @@ export interface options {
     gz?: zlib.ZlibOptions | undefined;
 }
 
-export function compress(opts?: options, callback?: (error: Error | string | null) => void): void;
-export function decompress(opts?: options, callback?: (error: Error | string | null) => void): void;
+export function compress(
+    opts?: options,
+    callback?: (error: Error | string | null) => void,
+): void;
+export function decompress(
+    opts?: options,
+    callback?: (error: Error | string | null) => void,
+): void;

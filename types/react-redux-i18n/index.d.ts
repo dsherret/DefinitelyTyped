@@ -11,7 +11,9 @@ declare module "react-redux-i18n" {
     }
     export var I18n: I18n;
 
-    type SubTranslationObject = string | { [key: string]: SubTranslationObject };
+    type SubTranslationObject =
+        | string
+        | { [key: string]: SubTranslationObject };
 
     type TranslationObjects = { [lang: string]: SubTranslationObject };
 
@@ -52,7 +54,10 @@ declare module "react-redux-i18n" {
     /**
      * Reducer
      */
-    export function i18nReducer(state?: any, options?: any): redux.Reducer<I18nState>;
+    export function i18nReducer(
+        state?: any,
+        options?: any,
+    ): redux.Reducer<I18nState>;
 
     /**
      * Reducer init
@@ -62,7 +67,9 @@ declare module "react-redux-i18n" {
     /**
      *  Redux Actions
      */
-    export function loadTranslations(translationsObject: TranslationObjects): DispatchCallback<any>;
+    export function loadTranslations(
+        translationsObject: TranslationObjects,
+    ): DispatchCallback<any>;
 
     export function setLocale(locale: string): DispatchCallback<any>;
 }

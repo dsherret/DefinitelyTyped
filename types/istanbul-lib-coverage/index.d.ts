@@ -23,7 +23,9 @@ export interface CoverageMapData {
 
 export class CoverageMap {
     constructor(data: CoverageMapData | CoverageMap);
-    addFileCoverage(pathOrObject: string | FileCoverage | FileCoverageData): void;
+    addFileCoverage(
+        pathOrObject: string | FileCoverage | FileCoverageData,
+    ): void;
     files(): string[];
     fileCoverageFor(filename: string): FileCoverage;
     filter(callback: (key: string) => boolean): void;
@@ -106,6 +108,12 @@ export const classes: {
     FileCoverage: FileCoverage;
 };
 
-export function createCoverageMap(data?: CoverageMap | CoverageMapData): CoverageMap;
-export function createCoverageSummary(obj?: CoverageSummary | CoverageSummaryData): CoverageSummary;
-export function createFileCoverage(pathOrObject: string | FileCoverage | FileCoverageData): FileCoverage;
+export function createCoverageMap(
+    data?: CoverageMap | CoverageMapData,
+): CoverageMap;
+export function createCoverageSummary(
+    obj?: CoverageSummary | CoverageSummaryData,
+): CoverageSummary;
+export function createFileCoverage(
+    pathOrObject: string | FileCoverage | FileCoverageData,
+): FileCoverage;

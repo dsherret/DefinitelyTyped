@@ -20,7 +20,14 @@ resultFactory.attr("name", ["id"], (id: number) => {
 resultFactory.attr(
     "name",
     ["id", "id2", "id3", "id4", "id5", "id6"],
-    (id: number, id2: number, id3: number, id4: number, id5: number, id6: number) => {
+    (
+        id: number,
+        id2: number,
+        id3: number,
+        id4: number,
+        id5: number,
+        id6: number,
+    ) => {
         return "Name " + id.toString();
     },
 );
@@ -53,7 +60,9 @@ interface Person {
     id: number;
 }
 
-const personFactory = Factory.define<Person>("Person").attr("firstName", "John").sequence("id");
+const personFactory = Factory.define<Person>("Person")
+    .attr("firstName", "John")
+    .sequence("id");
 // building a list with a type definition returns that type
 Factory.buildList<Person>("Person", 420, { age: 69 });
 
@@ -68,17 +77,32 @@ personFactory.buildList(3, { firstName: "John" });
 personFactory.attributes({ firstName: "John" });
 
 // It will automatically type up to five dependencies
-personFactory.attr("fullName", ["firstName"], firstName => firstName);
-personFactory.attr("fullName", ["firstName", "lastName"], (firstName, lastName) => lastName);
-personFactory.attr("secretNumber", ["firstName", "lastName", "age"], (firstName, lastName, age) => age + 1);
-personFactory.attr("secretCode", ["firstName", "lastName", "age", "age"], (firstName, lastName, age1, age2) => ({
-    name: `${firstName} + ${lastName}`,
-    value: age1 + age2,
-}));
+personFactory.attr("fullName", ["firstName"], (firstName) => firstName);
+personFactory.attr(
+    "fullName",
+    ["firstName", "lastName"],
+    (firstName, lastName) => lastName,
+);
+personFactory.attr(
+    "secretNumber",
+    ["firstName", "lastName", "age"],
+    (firstName, lastName, age) => age + 1,
+);
+personFactory.attr(
+    "secretCode",
+    ["firstName", "lastName", "age", "age"],
+    (firstName, lastName, age1, age2) => ({
+        name: `${firstName} + ${lastName}`,
+        value: age1 + age2,
+    }),
+);
 personFactory.attr(
     "secretCode",
     ["firstName", "lastName", "age", "age", "firstName"],
-    (firstName, lastName, age1, age2, firstNameAgain) => ({ name: firstNameAgain, value: age1 + age2 }),
+    (firstName, lastName, age1, age2, firstNameAgain) => ({
+        name: firstNameAgain,
+        value: age1 + age2,
+    }),
 );
 
 // You can go past five dependencies, but you need to specify types
@@ -111,14 +135,21 @@ const personWithNicknameFactory = new Factory<Person>()
     .attr("firstName", "Frances")
     .attr("lastName", "Parker")
     .option("nickname", null)
-    .attr("fullName", ["firstName", "lastName", "nickname"], (firstName, lastName, nickname) => {
-        if (nickname) {
-            return `${firstName} "${nickname}" ${lastName}`;
-        }
-        return `${firstName} ${lastName}`;
-    });
+    .attr(
+        "fullName",
+        ["firstName", "lastName", "nickname"],
+        (firstName, lastName, nickname) => {
+            if (nickname) {
+                return `${firstName} "${nickname}" ${lastName}`;
+            }
+            return `${firstName} ${lastName}`;
+        },
+    );
 // $ExpectType Person
-const personWithNickname = personWithNicknameFactory.build({}, { nickname: "Franny" });
+const personWithNickname = personWithNicknameFactory.build(
+    {},
+    { nickname: "Franny" },
+);
 
 // Unregistered factories
 const unregisteredPersonFactory = new Factory<Person>();
@@ -126,14 +157,24 @@ const unregisteredPersonFactory = new Factory<Person>();
 unregisteredPersonFactory.attr("firstName", "John").sequence("id");
 
 // Sequence with dependencies
-unregisteredPersonFactory.sequence("lastName", ["age"], (i: number, age: number) => `Doe ${i} ${age}`);
+unregisteredPersonFactory.sequence(
+    "lastName",
+    ["age"],
+    (i: number, age: number) => `Doe ${i} ${age}`,
+);
 
 // Unregistered extended factories
 
-const unregisteredExtendedPersonFactory = new Factory().extend(unregisteredPersonFactory);
+const unregisteredExtendedPersonFactory = new Factory().extend(
+    unregisteredPersonFactory,
+);
 
 unregisteredExtendedPersonFactory.attr("firstName", "John2");
-unregisteredExtendedPersonFactory.sequence("lastName", ["age"], (i: number) => `Doe2 ${i}`);
+unregisteredExtendedPersonFactory.sequence(
+    "lastName",
+    ["age"],
+    (i: number) => `Doe2 ${i}`,
+);
 
 // Define Humanoid as extended person
 const humanoidFactory = Factory.define<Person>("Humanoid").extend("Person");
@@ -142,7 +183,8 @@ humanoidFactory.attr("firstName", "Beep");
 humanoidFactory.attr("lastName", "Bop");
 
 // Define Humanoid as extended person
-const anotherHumanoidFactory = Factory.define<Person>("AnotherHumanoid").extend(personFactory);
+const anotherHumanoidFactory =
+    Factory.define<Person>("AnotherHumanoid").extend(personFactory);
 
 humanoidFactory.attr("firstName", "Beep");
 humanoidFactory.attr("lastName", "Bop");
@@ -152,13 +194,15 @@ interface Toddler extends Person {
     useDiaper: boolean;
 }
 
-const toddlerFactory = Factory.define<Toddler>("Toddler").extend<Person>("Person");
+const toddlerFactory =
+    Factory.define<Toddler>("Toddler").extend<Person>("Person");
 
 toddlerFactory.attr("firstName", "XÆA-12");
 toddlerFactory.attr("lastName", "Musk");
 toddlerFactory.attr("useDiaper", true);
 
-const miniMuskFactory = Factory.define<Toddler>("MiniMusk").extend(personFactory);
+const miniMuskFactory =
+    Factory.define<Toddler>("MiniMusk").extend(personFactory);
 
 miniMuskFactory.attr("firstName", "XÆA-12");
 miniMuskFactory.attr("lastName", "Musk");
@@ -198,7 +242,10 @@ class CustomClassWithoutConstructor {
     }
 }
 
-Factory.define<CustomClassWithoutConstructor>("CustomClassWithoutConstructor", CustomClassWithoutConstructor);
+Factory.define<CustomClassWithoutConstructor>(
+    "CustomClassWithoutConstructor",
+    CustomClassWithoutConstructor,
+);
 
 import rosie = require("rosie");
 

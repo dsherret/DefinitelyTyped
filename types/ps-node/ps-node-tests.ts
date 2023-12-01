@@ -2,7 +2,9 @@ import * as ps from "ps-node";
 
 ps.lookup({ command: "myProg" }, (err, list) => {
     if (err) throw err;
-    list.filter(p => ~p.arguments.indexOf("--my-arg")).forEach(({ pid }) => ps.kill(pid));
+    list.filter((p) => ~p.arguments.indexOf("--my-arg")).forEach(({ pid }) =>
+        ps.kill(pid),
+    );
 });
 
 // these are from the README
@@ -16,7 +18,12 @@ ps.lookup({ pid: 12345 }, (err, resultList) => {
     const process = resultList[0];
 
     if (process) {
-        console.log("PID: %s, COMMAND: %s, ARGUMENTS: %s", process.pid, process.command, process.arguments);
+        console.log(
+            "PID: %s, COMMAND: %s, ARGUMENTS: %s",
+            process.pid,
+            process.command,
+            process.arguments,
+        );
     } else {
         console.log("No such process found!");
     }
@@ -33,16 +40,21 @@ ps.lookup(
             throw err;
         }
 
-        resultList.forEach(process => {
+        resultList.forEach((process) => {
             if (process) {
-                console.log("PID: %s, COMMAND: %s, ARGUMENTS: %s", process.pid, process.command, process.arguments);
+                console.log(
+                    "PID: %s, COMMAND: %s, ARGUMENTS: %s",
+                    process.pid,
+                    process.command,
+                    process.arguments,
+                );
             }
         });
     },
 );
 
 // A simple pid lookup
-ps.kill("12345", err => {
+ps.kill("12345", (err) => {
     if (err) {
         throw err;
     } else {
@@ -51,7 +63,7 @@ ps.kill("12345", err => {
 });
 
 // Pass signal SIGKILL for killing the process without allowing it to clean up
-ps.kill("12345", "SIGKILL", err => {
+ps.kill("12345", "SIGKILL", (err) => {
     if (err) {
         throw err;
     } else {
@@ -79,9 +91,14 @@ ps.lookup(
             throw err;
         }
 
-        resultList.forEach(process => {
+        resultList.forEach((process) => {
             if (process) {
-                console.log("PID: %s, COMMAND: %s, ARGUMENTS: %s", process.pid, process.command, process.arguments);
+                console.log(
+                    "PID: %s, COMMAND: %s, ARGUMENTS: %s",
+                    process.pid,
+                    process.command,
+                    process.arguments,
+                );
             }
         });
     },
@@ -99,9 +116,14 @@ ps.lookup(
             throw err;
         }
 
-        resultList.forEach(process => {
+        resultList.forEach((process) => {
             if (process) {
-                console.log("PID: %s, COMMAND: %s, ARGUMENTS: %s", process.pid, process.command, process.arguments);
+                console.log(
+                    "PID: %s, COMMAND: %s, ARGUMENTS: %s",
+                    process.pid,
+                    process.command,
+                    process.arguments,
+                );
             }
         });
     },

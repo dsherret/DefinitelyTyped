@@ -32,7 +32,10 @@ export class ComSocket extends EventEmitter {
     prependListener(event: string, listener: (...args: any[]) => void): this;
     prependListener(event: "error", listener: (err: Error) => void): this;
 
-    prependOnceListener(event: string, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string,
+        listener: (...args: any[]) => void,
+    ): this;
     prependOnceListener(event: "error", listener: (err: Error) => void): this;
 
     removeListener(event: string, listener: (...args: any[]) => void): this;
@@ -76,9 +79,15 @@ export class ComServer extends EventEmitter {
     prependListener(event: "error", listener: (err: Error) => void): this;
     prependListener(event: "connection", listener: ConnectionListener): this;
 
-    prependOnceListener(event: string, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string,
+        listener: (...args: any[]) => void,
+    ): this;
     prependOnceListener(event: "error", listener: (err: Error) => void): this;
-    prependOnceListener(event: "connection", listener: ConnectionListener): this;
+    prependOnceListener(
+        event: "connection",
+        listener: ConnectionListener,
+    ): this;
 
     removeListener(event: string, listener: (...args: any[]) => void): this;
     removeListener(event: "error", listener: (err: Error) => void): this;
@@ -88,11 +97,28 @@ export class ComServer extends EventEmitter {
      * Forwards to net.Server.listen()
      */
     // tslint:disable:unified-signatures Copied from net.d.ts, where the rule is disabled
-    listen(port?: number, hostname?: string, backlog?: number, listeningListener?: () => void): this;
-    listen(port?: number, hostname?: string, listeningListener?: () => void): this;
-    listen(port?: number, backlog?: number, listeningListener?: () => void): this;
+    listen(
+        port?: number,
+        hostname?: string,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): this;
+    listen(
+        port?: number,
+        hostname?: string,
+        listeningListener?: () => void,
+    ): this;
+    listen(
+        port?: number,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): this;
     listen(port?: number, listeningListener?: () => void): this;
-    listen(path: string, backlog?: number, listeningListener?: () => void): this;
+    listen(
+        path: string,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): this;
     listen(path: string, listeningListener?: () => void): this;
     listen(options: ListenOptions, listeningListener?: () => void): this;
     listen(handle: any, backlog?: number, listeningListener?: () => void): this;
@@ -106,8 +132,14 @@ export class ComServer extends EventEmitter {
     close(callback?: (err?: Error) => void): this;
 }
 
-export function createServer(options?: ComServerOptions, listener?: ConnectionListener): ComServer;
-export function createServer(options: SecureComServerOptions, listener?: ConnectionListener): ComServer;
+export function createServer(
+    options?: ComServerOptions,
+    listener?: ConnectionListener,
+): ComServer;
+export function createServer(
+    options: SecureComServerOptions,
+    listener?: ConnectionListener,
+): ComServer;
 export function createServer(listener?: ConnectionListener): ComServer;
 
 export interface WriteOptions {

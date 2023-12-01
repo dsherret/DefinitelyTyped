@@ -134,7 +134,13 @@ interface FullPageJsOptions {
      * fingersonly: enables the feature for touch devices only.
      * mouseonly: enables the feature for desktop devices only (mouse and trackpad).
      */
-    dragAndMove?: boolean | "vertical" | "horizontal" | "fingersonly" | "mouseonly" | undefined;
+    dragAndMove?:
+        | boolean
+        | "vertical"
+        | "horizontal"
+        | "fingersonly"
+        | "mouseonly"
+        | undefined;
 
     /**
      * (default false)Extension of fullpage.js. Provides a way to use non full screen sections based on percentage. Ideal to show visitors there's more content in the site by showing part of the next or previous section. Requires fullPage.js >= 2.8.8 To define the percentage of each section the attribute data-percentage must be used. The centering of the section in the viewport can be determined by using a boolean value in the attribute data-centered (default to true if not specified). For example:
@@ -259,11 +265,13 @@ interface FullPageJsOptions {
     /**
      * Allows to configure the parameters for the parallax backgrounds effect when using the option parallax:true.
      */
-    parallaxOptions?: {
-        type?: "cover" | "reveal" | undefined;
-        percentage?: number | undefined;
-        property?: string | undefined;
-    } | undefined;
+    parallaxOptions?:
+        | {
+              type?: "cover" | "reveal" | undefined;
+              percentage?: number | undefined;
+              property?: string | undefined;
+          }
+        | undefined;
 
     /**
      * Extension of fullpage.js. Defines whether or not to use the cards effect on sections/slides
@@ -274,20 +282,22 @@ interface FullPageJsOptions {
     /**
      * Allows you to configure the parameters for the cards effect when using the option `cards:true`
      */
-    cardsOptions?: {
-        /**
-         * @default 100
-         */
-        perspective?: number | undefined;
-        /**
-         * @default true
-         */
-        fadeContent?: boolean | undefined;
-        /**
-         * @default true
-         */
-        fadeBackground?: boolean | undefined;
-    } | undefined;
+    cardsOptions?:
+        | {
+              /**
+               * @default 100
+               */
+              perspective?: number | undefined;
+              /**
+               * @default true
+               */
+              fadeContent?: boolean | undefined;
+              /**
+               * @default true
+               */
+              fadeBackground?: boolean | undefined;
+          }
+        | undefined;
 
     /**
      * Lazy loading is active by default which means it will lazy load any media element containing the attribute data-src as detailed in the Lazy Loading docs . If you want to use any other lazy loading library you can disable this fullpage.js feature.
@@ -313,7 +323,9 @@ interface FullPageJsOptions {
      * @param nextIndex index of the destination section. Starting from 1.
      * @param direction it will take the values up or down depending on the scrolling direction.
      */
-    onLeave?: ((index: number, nextIndex: number, direction: string) => void) | undefined;
+    onLeave?:
+        | ((index: number, nextIndex: number, direction: string) => void)
+        | undefined;
 
     /**
      * Callback fired once the sections have been loaded, after the scrolling has ended.
@@ -350,7 +362,14 @@ interface FullPageJsOptions {
      * @param slideAnchor anchor corresponding to the slide (in case there is)
      * @param slideIndex index of the slide. Starting from 1. (the default slide doesn't count as slide, but as a section)
      */
-    afterSlideLoad?: ((anchorLink: string, index: number, slideAnchor: string, slideIndex: number) => void) | undefined;
+    afterSlideLoad?:
+        | ((
+              anchorLink: string,
+              index: number,
+              slideAnchor: string,
+              slideIndex: number,
+          ) => void)
+        | undefined;
 
     /**
      * This callback is fired once the user leaves an slide to go to another, in the transition to the new slide. Returning false will cancel the move before it takes place.
@@ -361,7 +380,13 @@ interface FullPageJsOptions {
      * @param nextSlideIndex index of the destination slide. Starting from 0.
      */
     onSlideLeave?:
-        | ((anchorLink: string, index: number, slideIndex: number, direction: string, nextSlideIndex: number) => void)
+        | ((
+              anchorLink: string,
+              index: number,
+              slideIndex: number,
+              direction: string,
+              nextSlideIndex: number,
+          ) => void)
         | undefined;
 }
 
@@ -436,7 +461,10 @@ interface FullPageJsMethods {
      * Moves the page to the given section and slide with no animation.
      * Anchors or index positions can be used as params.
      */
-    silentMoveTo(sectionAnchor: number | string, slideAnchor?: number | string): void;
+    silentMoveTo(
+        sectionAnchor: number | string,
+        slideAnchor?: number | string,
+    ): void;
 
     /**
      * Scrolls the page to the given section and slide.

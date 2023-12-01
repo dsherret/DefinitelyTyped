@@ -10,7 +10,13 @@ export interface IOptions {
     useExtensionBonus?: boolean | undefined;
     pathSeparator?: "/" | "\\" | string | undefined;
     optCharRegEx?: RegExp | undefined;
-    wrap?: { tagOpen?: string | undefined; tagClass?: string | undefined; tagClose?: string | undefined } | undefined;
+    wrap?:
+        | {
+              tagOpen?: string | undefined;
+              tagClass?: string | undefined;
+              tagClose?: string | undefined;
+          }
+        | undefined;
     preparedQuery?: Query | undefined;
 }
 

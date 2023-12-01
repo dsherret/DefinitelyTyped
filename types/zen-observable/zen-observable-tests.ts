@@ -35,7 +35,7 @@ Observable.from([1, 2, 3]);
 // $ExpectType Observable<number>
 Observable.from({
     subscribe(observer: ZenObservable.SubscriptionObserver<number>) {
-        [1, 2, 3].forEach(one => observer.next(one));
+        [1, 2, 3].forEach((one) => observer.next(one));
         observer.complete();
     },
     [Symbol.observable](this: ZenObservable.ObservableLike<number>) {
@@ -66,10 +66,12 @@ Observable.of(1, 2, 3).forEach(
  */
 
 // $ExpectType Observable<string>
-Observable.of(1, 2, 3).map((
-    // $ExpectType number
-    val,
-) => val.toString());
+Observable.of(1, 2, 3).map(
+    (
+        // $ExpectType number
+        val,
+    ) => val.toString(),
+);
 
 /**
  * observable.filter
@@ -111,10 +113,12 @@ Observable.of(1, 2, 3).reduce(
  */
 
 // $ExpectType Observable<string>
-Observable.of(1, 2, 3).flatMap((
-    // $ExpectType number
-    val,
-) => Observable.of(val.toString()));
+Observable.of(1, 2, 3).flatMap(
+    (
+        // $ExpectType number
+        val,
+    ) => Observable.of(val.toString()),
+);
 
 /**
  * observable.concat

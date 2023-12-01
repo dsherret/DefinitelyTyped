@@ -4,7 +4,7 @@ import { Client, Server } from "node-ssdp";
 
 const client = new Client({
     interfaces: [],
-    customLogger: format => {},
+    customLogger: (format) => {},
     explicitSocketBind: true,
     reuseAddr: true,
     ssdpPort: 0,
@@ -30,7 +30,7 @@ client.search("ssdp:all");
 
 const server = new Server({
     interfaces: [],
-    customLogger: format => {},
+    customLogger: (format) => {},
     explicitSocketBind: true,
     reuseAddr: true,
     ssdpPort: 0,

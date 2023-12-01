@@ -1,5 +1,10 @@
 import { FluentBundle, ftl } from "fluent";
-import { GetString, LocalizationProvider, Localized, withLocalization } from "fluent-react";
+import {
+    GetString,
+    LocalizationProvider,
+    Localized,
+    withLocalization,
+} from "fluent-react";
 import * as ReactDOM from "react-dom";
 
 // Localized examples:
@@ -34,11 +39,7 @@ interface Props {
 function HelloButton(props: Props) {
     const { getString } = props;
 
-    return (
-        <button onClick={() => alert(getString("hello"))}>
-            👋
-        </button>
-    );
+    return <button onClick={() => alert(getString("hello"))}>👋</button>;
 }
 
 const LocalizedHelloButton = withLocalization(HelloButton);
@@ -48,7 +49,11 @@ const Test2 = () => <LocalizedHelloButton otherProp={2} someOtherProp="abc" />;
 // Should not allow `getString` prop:
 const Test3 = () => (
     // @ts-expect-error
-    <LocalizedHelloButton otherProp={2} someOtherProp="abc" getString={() => {}} />
+    <LocalizedHelloButton
+        otherProp={2}
+        someOtherProp="abc"
+        getString={() => {}}
+    />
 );
 
 // Should not allow any other props to be omitted:

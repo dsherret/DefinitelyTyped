@@ -1,7 +1,9 @@
 import { RequestHandler } from "express";
 
 export function abide(options?: AbideOptions): RequestHandler;
-export function parseAcceptLanguage(header?: string): Array<{ lang: string; quality: number }>;
+export function parseAcceptLanguage(
+    header?: string,
+): Array<{ lang: string; quality: number }>;
 export function bestLanguage(
     languages: Array<{ lang: string; quality: number }>,
     supported_languages: string[],

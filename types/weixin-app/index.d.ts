@@ -278,7 +278,9 @@ declare namespace wx {
      * 需要用户授权 scope.writePhotosAlbum
      * @version 1.2.0
      */
-    function saveImageToPhotosAlbum(options: SaveImageToPhotosAlbumOptions): void;
+    function saveImageToPhotosAlbum(
+        options: SaveImageToPhotosAlbumOptions,
+    ): void;
     interface compressImageOptions extends BaseOptions {
         /**
          * 图片的路径，可以是相对路径，临时文件路径，存储文件路径，网络图片路径
@@ -387,9 +389,13 @@ declare namespace wx {
         /** 录音恢复事件 */
         onResume(callback?: () => void): void;
         /** 录音停止事件，会回调文件地址 */
-        onStop(callback?: (options: OnRecorderManagerStopOptions) => void): void;
+        onStop(
+            callback?: (options: OnRecorderManagerStopOptions) => void,
+        ): void;
         /** 已录制完指定帧大小的文件，会回调录音分片结果数据。如果设置了 frameSize ，则会回调此事件 */
-        onFrameRecorded(callback?: (options: OnFrameRecordedOptions) => void): void;
+        onFrameRecorded(
+            callback?: (options: OnFrameRecordedOptions) => void,
+        ): void;
         /** 录音错误事件, 会回调错误信息 */
         onError(callback?: (err: ErrMsgResponse) => void): void;
     }
@@ -870,7 +876,11 @@ declare namespace wx {
         access(options: AccessOptions): void;
         accessSync(path: string): void;
         appendFile(options: AppendFileOptions): void;
-        appendFileSync(filePath: string, data: string | ArrayBuffer, encoding?: string): void;
+        appendFileSync(
+            filePath: string,
+            data: string | ArrayBuffer,
+            encoding?: string,
+        ): void;
         saveFile(options: FsSaveFileOptions): void;
         saveFileSync(tempFilePath: string, filePath?: string): SavedFileData;
         getSavedFileList(options: GetSavedFileListOptions): void;
@@ -895,7 +905,11 @@ declare namespace wx {
         unzip(options: UnzipOptions): void;
         unzipSync(options: UnzipOptions): void;
         writeFile(options: WriteFileOptions): void;
-        writeFileSync(filePath: string, data: string | ArrayBuffer, encoding?: string): void;
+        writeFileSync(
+            filePath: string,
+            data: string | ArrayBuffer,
+            encoding?: string,
+        ): void;
     }
     function getFileSystemManager(): FileSystemManager;
 
@@ -1002,7 +1016,15 @@ declare namespace wx {
         /**
          * 文件类型，指定文件类型打开文件，有效值 doc, xls, ppt, pdf, docx, xlsx, pptx
          */
-        fileType?: "doc" | "xls" | "ppt" | "pdf" | "docx" | "xlsx" | "pptx" | undefined;
+        fileType?:
+            | "doc"
+            | "xls"
+            | "ppt"
+            | "pdf"
+            | "docx"
+            | "xlsx"
+            | "pptx"
+            | undefined;
     }
     /**
      * 新开页面打开文档，支持格式：doc, xls, ppt, pdf, docx, xlsx, pptx
@@ -1166,7 +1188,9 @@ declare namespace wx {
         /**
          * 获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 wx.openLocation
          */
-        getCenterLocation(options: GetCenterLocationOptions): OpenLocationOptions;
+        getCenterLocation(
+            options: GetCenterLocationOptions,
+        ): OpenLocationOptions;
         /**
          * 将地图中心移动到当前定位点，需要配合map组件的show-location使用
          */
@@ -1253,7 +1277,10 @@ declare namespace wx {
      * @version 1.1.0
      */
     function onNetworkStatusChange(
-        callback: (res: { isConnected: boolean; networkType: networkType }) => void,
+        callback: (res: {
+            isConnected: boolean;
+            networkType: networkType;
+        }) => void,
     ): void;
     // 设备-----加速度计
     interface AccelerometerData {
@@ -2158,20 +2185,27 @@ declare namespace wx {
         /**
          * 动画效果
          */
-        animation?: {
-            // 动画变化时间，默认0，单位：毫秒
-            duration?: number | undefined;
-            /**
-             * 动画变化方式，默认 linear
-             * 值    说明
-             * 有效值：
-             * linear    动画从头到尾的速度是相同的。
-             * easeIn    动画以低速开始
-             * easeOut    动画以低速结束。
-             * easeInOut    动画以低速开始和结束。
-             */
-            timingFunc?: "linear" | "easeIn" | "easeOut" | "easeInOut" | undefined;
-        } | undefined;
+        animation?:
+            | {
+                  // 动画变化时间，默认0，单位：毫秒
+                  duration?: number | undefined;
+                  /**
+                   * 动画变化方式，默认 linear
+                   * 值    说明
+                   * 有效值：
+                   * linear    动画从头到尾的速度是相同的。
+                   * easeIn    动画以低速开始
+                   * easeOut    动画以低速结束。
+                   * easeInOut    动画以低速开始和结束。
+                   */
+                  timingFunc?:
+                      | "linear"
+                      | "easeIn"
+                      | "easeOut"
+                      | "easeInOut"
+                      | undefined;
+              }
+            | undefined;
     }
 
     /**
@@ -3087,14 +3121,30 @@ declare namespace wx {
         /** 字体资源的地址。建议格式为 TTF 和 WOFF，WOFF2 在低版本的iOS上会不兼容 */
         source: string;
         /** 可选的字体描述符 */
-        desc?: {
-            /** 字体样式，可选值为 normal / italic / oblique */
-            style?: ["normal", "italic", "oblique"] | undefined;
-            /** 字体粗细，可选值为 normal / bold / 100 / 200../ 900 */
-            weight?: ["normal", "bold", "100", "200", "300", "400", "500", "600", "700", "800", "900"] | undefined;
-            /** 设置小型大写字母的字体显示文本，可选值为 normal / small-caps / inherit */
-            variant?: ["normal", "small-caps", "inherit"] | undefined;
-        } | undefined;
+        desc?:
+            | {
+                  /** 字体样式，可选值为 normal / italic / oblique */
+                  style?: ["normal", "italic", "oblique"] | undefined;
+                  /** 字体粗细，可选值为 normal / bold / 100 / 200../ 900 */
+                  weight?:
+                      | [
+                            "normal",
+                            "bold",
+                            "100",
+                            "200",
+                            "300",
+                            "400",
+                            "500",
+                            "600",
+                            "700",
+                            "800",
+                            "900",
+                        ]
+                      | undefined;
+                  /** 设置小型大写字母的字体显示文本，可选值为 normal / small-caps / inherit */
+                  variant?: ["normal", "small-caps", "inherit"] | undefined;
+              }
+            | undefined;
         /** 字体作用范围，可选值为 webview / native，默认 webview，设置 native 可在 Canvas 2D 下使用 */
         scopes?: Array<"webview" | "native"> | undefined;
     }
@@ -3624,32 +3674,32 @@ declare namespace wx {
         detail: Detail;
     }
 
-    interface BuiltInEvent<T extends EventType, Detail> extends BaseEvent<T, Detail> {}
+    interface BuiltInEvent<T extends EventType, Detail>
+        extends BaseEvent<T, Detail> {}
 
-    interface CustomEvent<T extends string, Detail> extends BaseEvent<T, Detail> {}
+    interface CustomEvent<T extends string, Detail>
+        extends BaseEvent<T, Detail> {}
 
     /**
      * 指定focus时的光标位置
      * @version 1.5.0
      */
-    interface InputEvent extends
-        BuiltInEvent<
+    interface InputEvent
+        extends BuiltInEvent<
             "input",
             {
                 value: string;
                 cursor: number;
             }
-        >
-    {}
+        > {}
 
-    interface FormEvent extends
-        BuiltInEvent<
+    interface FormEvent
+        extends BuiltInEvent<
             "form",
             {
                 value: { [name: string]: string | boolean | number };
             }
-        >
-    {}
+        > {}
 
     interface ScrollEvent extends BuiltInEvent<"scroll", {}> {}
 
@@ -3661,15 +3711,14 @@ declare namespace wx {
         clientY: number;
     }
 
-    interface TouchEvent<T extends TouchEventType> extends
-        BuiltInEvent<
+    interface TouchEvent<T extends TouchEventType>
+        extends BuiltInEvent<
             T,
             {
                 x: number;
                 y: number;
             }
-        >
-    {
+        > {
         touches: Touch[];
         changedTouches: Touch[];
     }
@@ -3769,12 +3818,14 @@ declare namespace wx {
             appId: string;
         };
         /* 插件账号信息（仅在插件中调用时包含这一项）     */
-        plugin?: {
-            /* 插件 appId     */
-            appId: string;
-            /* 插件版本号     */
-            version: string;
-        } | undefined;
+        plugin?:
+            | {
+                  /* 插件 appId     */
+                  appId: string;
+                  /* 插件版本号     */
+                  version: string;
+              }
+            | undefined;
     }
 
     /**
@@ -3836,8 +3887,10 @@ declare namespace wx {
 
     type DefaultProps = object | Record<string, any>;
 
-    type UnionToIntersection<U> = (U extends any ? (k: U) => void
-        : never) extends ((k: infer I) => void) ? I
+    type UnionToIntersection<U> = (
+        U extends any ? (k: U) => void : never
+    ) extends (k: infer I) => void
+        ? I
         : never;
 
     type ArrayType<T extends any[]> = T extends Array<infer R> ? R : never;
@@ -3848,11 +3901,14 @@ declare namespace wx {
         __DO_NOT_USE_INTERNAL_FIELD_METHODS: Methods;
     }
 
-    type UnboxBehaviorData<T> = T extends Behavior<{}, {}, {}> ? T["__DO_NOT_USE_INTERNAL_FIELD_DATA"]
+    type UnboxBehaviorData<T> = T extends Behavior<{}, {}, {}>
+        ? T["__DO_NOT_USE_INTERNAL_FIELD_DATA"]
         : {};
-    type UnboxBehaviorProps<T> = T extends Behavior<{}, {}, {}> ? T["__DO_NOT_USE_INTERNAL_FIELD_PROPS"]
+    type UnboxBehaviorProps<T> = T extends Behavior<{}, {}, {}>
+        ? T["__DO_NOT_USE_INTERNAL_FIELD_PROPS"]
         : {};
-    type UnboxBehaviorMethods<T> = T extends Behavior<{}, {}, {}> ? T["__DO_NOT_USE_INTERNAL_FIELD_METHODS"]
+    type UnboxBehaviorMethods<T> = T extends Behavior<{}, {}, {}>
+        ? T["__DO_NOT_USE_INTERNAL_FIELD_METHODS"]
         : {};
 
     type UnboxBehaviorsMethods<
@@ -3876,7 +3932,7 @@ declare namespace wx {
         Behaviors extends Array<Behavior<{}, {}, {}> | string>,
     > = Methods & Instance & UnboxBehaviorsMethods<Behaviors>;
 
-    type Prop<T> = (() => T) | { new(...args: any[]): T & object };
+    type Prop<T> = (() => T) | { new (...args: any[]): T & object };
 
     type PropValidator<T> = PropOptions<T> | Prop<T> | Array<Prop<T>>;
 
@@ -3897,7 +3953,9 @@ declare namespace wx {
 
     type ArrayPropsDefinition<T> = Array<keyof T>;
 
-    type PropsDefinition<T> = ArrayPropsDefinition<T> | RecordPropsDefinition<T>;
+    type PropsDefinition<T> =
+        | ArrayPropsDefinition<T>
+        | RecordPropsDefinition<T>;
 
     /**
      * https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/observer.html
@@ -3924,10 +3982,11 @@ declare namespace wx {
         Methods,
         Props,
         Behaviors extends Array<Behavior<{}, {}, {}> | string>,
-    > =
-        & object
-        & ComponentOptions<V, Data, Methods, Props, Behaviors>
-        & ThisType<CombinedInstance<V, Data, Methods, Readonly<Props>, Behaviors>>;
+    > = object &
+        ComponentOptions<V, Data, Methods, Props, Behaviors> &
+        ThisType<
+            CombinedInstance<V, Data, Methods, Readonly<Props>, Behaviors>
+        >;
 
     interface ComponentRelation<D = any, P = any> {
         /** 目标组件的相对关系，可选的值为 parent 、 child 、 ancestor 、 descendant */
@@ -4020,19 +4079,19 @@ declare namespace wx {
          */
         options?:
             | Partial<{
-                /**
-                 * 使用外部样式类可以让组件使用指定的组件外样式类，如果希望组件外样式类能够完全影响组件内部，
-                 * 可以将组件构造器中的options.addGlobalClass字段置为true。这个特性从小程序基础库版本 2.2.3 开始支持。
-                 *
-                 * @version 2.2.3
-                 */
-                addGlobalClass: boolean;
-                /**
-                 * 在组件的wxml中可以包含 slot 节点，用于承载组件使用者提供的wxml结构。
-                 * 默认情况下，一个组件的wxml中只能有一个slot。需要使用多slot时，可以在组件js中声明启用。
-                 */
-                multipleSlots: boolean;
-            }>
+                  /**
+                   * 使用外部样式类可以让组件使用指定的组件外样式类，如果希望组件外样式类能够完全影响组件内部，
+                   * 可以将组件构造器中的options.addGlobalClass字段置为true。这个特性从小程序基础库版本 2.2.3 开始支持。
+                   *
+                   * @version 2.2.3
+                   */
+                  addGlobalClass: boolean;
+                  /**
+                   * 在组件的wxml中可以包含 slot 节点，用于承载组件使用者提供的wxml结构。
+                   * 默认情况下，一个组件的wxml中只能有一个slot。需要使用多slot时，可以在组件js中声明启用。
+                   */
+                  multipleSlots: boolean;
+              }>
             | undefined;
 
         /**
@@ -4080,9 +4139,11 @@ declare namespace wx {
     type PropValueType<Def> = Def extends {
         type: (...args: any[]) => infer T;
         value?: infer T | undefined;
-    } ? T
-        : Def extends (...args: any[]) => infer T ? T
-        : never;
+    }
+        ? T
+        : Def extends (...args: any[]) => infer T
+          ? T
+          : never;
 
     /**
      * Component实例方法
@@ -4107,10 +4168,8 @@ declare namespace wx {
         /**
          * 组件数据，包括内部数据和属性值
          */
-        data:
-            & D
-            & UnboxBehaviorsData<B>
-            & {
+        data: D &
+            UnboxBehaviorsData<B> & {
                 [key in keyof (P & UnboxBehaviorsProps<B>)]: PropValueType<
                     (P & UnboxBehaviorsProps<B>)[key]
                 >;
@@ -4119,10 +4178,8 @@ declare namespace wx {
         /**
          * 组件数据，包括内部数据和属性值（与 data 一致）
          */
-        properties:
-            & D
-            & UnboxBehaviorsData<B>
-            & {
+        properties: D &
+            UnboxBehaviorsData<B> & {
                 [key in keyof (P & UnboxBehaviorsProps<B>)]: PropValueType<
                     (P & UnboxBehaviorsProps<B>)[key]
                 >;
@@ -4249,9 +4306,7 @@ declare namespace wx {
          * + 此事件需要 return 一个 Object，用于自定义转发内容
          */
         onShareAppMessage?:
-            | ((
-                options?: PageShareAppMessageOptions,
-            ) => ShareAppMessage)
+            | ((options?: PageShareAppMessageOptions) => ShareAppMessage)
             | undefined;
         /**
          * 页面滚动触发事件的处理函数

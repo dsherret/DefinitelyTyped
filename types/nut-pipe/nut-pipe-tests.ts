@@ -1,4 +1,8 @@
-import { APIGatewayProxyEventV2, APIGatewayProxyStructuredResultV2, Context } from "aws-lambda";
+import {
+    APIGatewayProxyEventV2,
+    APIGatewayProxyStructuredResultV2,
+    Context,
+} from "aws-lambda";
 import {
     AsyncBasicHandler,
     AsyncBasicMiddleware,
@@ -10,11 +14,17 @@ import {
 } from "nut-pipe";
 
 const test1 = async () => {
-    const basicMiddleware1: AsyncBasicMiddleware = (context: any, next: AsyncBasicHandler) => {
+    const basicMiddleware1: AsyncBasicMiddleware = (
+        context: any,
+        next: AsyncBasicHandler,
+    ) => {
         return next(context);
     };
 
-    const basicMiddleware2: AsyncBasicMiddleware = (context: any, next: AsyncBasicHandler) => {
+    const basicMiddleware2: AsyncBasicMiddleware = (
+        context: any,
+        next: AsyncBasicHandler,
+    ) => {
         return next(context);
     };
 
@@ -39,11 +49,19 @@ const test1 = async () => {
 };
 
 const test2 = async () => {
-    const basicMiddleware1: AsyncBasicMiddlewareWithServices = async (context, services, next) => {
+    const basicMiddleware1: AsyncBasicMiddlewareWithServices = async (
+        context,
+        services,
+        next,
+    ) => {
         return next(context);
     };
 
-    const basicMiddleware2: AsyncBasicMiddlewareWithServices = async (context, services, next) => {
+    const basicMiddleware2: AsyncBasicMiddlewareWithServices = async (
+        context,
+        services,
+        next,
+    ) => {
         return next(context);
     };
 
@@ -51,8 +69,14 @@ const test2 = async () => {
         return next(context);
     };
 
-    const basicMiddleware4: AsyncBasicMiddlewareWithServices = async (context, services) => {
-        return services.greetingService.sayHello(context.firstName, context.lastName);
+    const basicMiddleware4: AsyncBasicMiddlewareWithServices = async (
+        context,
+        services,
+    ) => {
+        return services.greetingService.sayHello(
+            context.firstName,
+            context.lastName,
+        );
     };
 
     const services = {
@@ -63,12 +87,15 @@ const test2 = async () => {
         },
     };
 
-    const pipelineInvoker: AsyncHandler = buildPipeline([
-        basicMiddleware1,
-        basicMiddleware2,
-        basicMiddleware3,
-        basicMiddleware4,
-    ], services);
+    const pipelineInvoker: AsyncHandler = buildPipeline(
+        [
+            basicMiddleware1,
+            basicMiddleware2,
+            basicMiddleware3,
+            basicMiddleware4,
+        ],
+        services,
+    );
 
     const person = { firstName: "kenan", lastName: "hancer" };
 
@@ -143,12 +170,20 @@ const test3 = async () => {
     };
 
     const middleware4: AsyncLambdaMiddleware = async (event, context, next) => {
-        const result: APIGatewayProxyStructuredResultV2 = { statusCode: 200, body: event.body };
+        const result: APIGatewayProxyStructuredResultV2 = {
+            statusCode: 200,
+            body: event.body,
+        };
 
         return result;
     };
 
-    const lambdaFunc: AsyncHandler = buildPipeline([middleware1, middleware2, middleware3, middleware4]);
+    const lambdaFunc: AsyncHandler = buildPipeline([
+        middleware1,
+        middleware2,
+        middleware3,
+        middleware4,
+    ]);
 
     const person: Person = { firstName: "kenan", lastName: "hancer" };
 

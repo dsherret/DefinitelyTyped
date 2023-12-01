@@ -6,7 +6,9 @@ export = ConnectionTLS;
 
 declare class ConnectionTLS extends ConnectionTCP {
     Socket: ConnectionTCP.SocketConstructor;
-    socketParameters(service: string): ConnectionTLS.SocketParameters | undefined;
+    socketParameters(
+        service: string,
+    ): ConnectionTLS.SocketParameters | undefined;
 }
 
 declare namespace ConnectionTLS {
@@ -16,6 +18,6 @@ declare namespace ConnectionTLS {
     }
 
     interface SocketConstructor extends Connection.SocketConstructor {
-        new(): Socket;
+        new (): Socket;
     }
 }

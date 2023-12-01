@@ -16,7 +16,7 @@ var options: GridsterOptions = {
 };
 
 var gridster: Gridster = $(".gridster ul").gridster(options).data("gridster");
-gridster.add_widget("<li class=\"new\">The HTML of the widget...</li>", 2, 1);
+gridster.add_widget('<li class="new">The HTML of the widget...</li>', 2, 1);
 gridster.remove_widget($("gridster li").eq(3).get(0)!);
 var json = gridster.serialize<SerializeData>();
 
@@ -52,29 +52,39 @@ function widgetSelectorString() {
 }
 
 function withNamespace() {
-    var grid: Gridster = $(".gridster ul").gridster({
-        namespace: "custom-gridster",
-    }).data("gridster");
+    var grid: Gridster = $(".gridster ul")
+        .gridster({
+            namespace: "custom-gridster",
+        })
+        .data("gridster");
 }
 
 function withStylesheet() {
-    var grid: Gridster = $(".gridster ul").gridster({
-        autogenerate_stylesheet: false,
-    }).data("gridster");
+    var grid: Gridster = $(".gridster ul")
+        .gridster({
+            autogenerate_stylesheet: false,
+        })
+        .data("gridster");
 }
 
 function withResize() {
-    var grid: Gridster = $(".gridster ul").gridster({
-        resize: {
-            enabled: true,
-            axes: ["both"],
-            handle_append_to: "li .handle-container",
-            handle_class: ".handle",
-            max_size: [5, 5],
-            min_size: [1, 1],
-            resize: (event: Event, ui: GridsterUi, $el: JQuery) => {},
-            start: (event: Event, ui: { helper: JQuery }, $el: JQuery) => {},
-            stop: (event: Event, ui: { helper: JQuery }, $el: JQuery) => {},
-        },
-    }).data("gridster");
+    var grid: Gridster = $(".gridster ul")
+        .gridster({
+            resize: {
+                enabled: true,
+                axes: ["both"],
+                handle_append_to: "li .handle-container",
+                handle_class: ".handle",
+                max_size: [5, 5],
+                min_size: [1, 1],
+                resize: (event: Event, ui: GridsterUi, $el: JQuery) => {},
+                start: (
+                    event: Event,
+                    ui: { helper: JQuery },
+                    $el: JQuery,
+                ) => {},
+                stop: (event: Event, ui: { helper: JQuery }, $el: JQuery) => {},
+            },
+        })
+        .data("gridster");
 }

@@ -1,5 +1,10 @@
 import * as React from "react";
-import Measure, { ContentRect, MeasuredComponentProps, MeasurementType, withContentRect } from "react-measure";
+import Measure, {
+    ContentRect,
+    MeasuredComponentProps,
+    MeasurementType,
+    withContentRect,
+} from "react-measure";
 
 class Test extends React.Component {
     render() {
@@ -55,29 +60,28 @@ class Test extends React.Component {
 class Test2 extends React.Component {
     render() {
         return (
-            <Measure
-                client={true}
-                offset={false}
-                onResize={this.onResize}
-            >
+            <Measure client={true} offset={false} onResize={this.onResize}>
                 {({ measureRef }) => <div ref={measureRef}></div>}
             </Measure>
         );
     }
 
-    onResize(contentRect: ContentRect): void {
-    }
+    onResize(contentRect: ContentRect): void {}
 }
 
 interface Props {
     a: string;
 }
 
-const TestFunctionalComponentWithProps: React.FC<Props & MeasuredComponentProps> = ({ a, contentRect, measureRef }) => {
+const TestFunctionalComponentWithProps: React.FC<
+    Props & MeasuredComponentProps
+> = ({ a, contentRect, measureRef }) => {
     return <div ref={measureRef}>{a}</div>;
 };
 
-class TestClassComponentWithProps extends React.Component<Props & MeasuredComponentProps> {
+class TestClassComponentWithProps extends React.Component<
+    Props & MeasuredComponentProps
+> {
     render() {
         const { a, contentRect, measureRef } = this.props;
         return <div ref={measureRef}>{a}</div>;
@@ -88,26 +92,28 @@ function testHocComponent() {
     return withContentRect("bounds")(({ measureRef, measure, contentRect }) => (
         <div ref={measureRef}>
             Some content here
-            <pre>
-              {JSON.stringify(contentRect, null, 2)}
-            </pre>
+            <pre>{JSON.stringify(contentRect, null, 2)}</pre>
         </div>
     ));
 }
 
 function testHocComponent2<T>() {
-    return withContentRect(["scroll", "margin"] as readonly MeasurementType[])(({ measureRef }) => (
-        <div ref={measureRef}>Some content here</div>
-    ));
+    return withContentRect(["scroll", "margin"] as readonly MeasurementType[])(
+        ({ measureRef }) => <div ref={measureRef}>Some content here</div>,
+    );
 }
 
 const HocComponent = testHocComponent();
 const el = <HocComponent />;
 
-const MeasuredFunctionalComponent = withContentRect("bounds")<Props>(TestFunctionalComponentWithProps);
+const MeasuredFunctionalComponent = withContentRect("bounds")<Props>(
+    TestFunctionalComponentWithProps,
+);
 const funcEl = <MeasuredFunctionalComponent a="test" />;
 
-const MeasuredClassComponent = withContentRect("bounds")<Props>(TestClassComponentWithProps);
+const MeasuredClassComponent = withContentRect("bounds")<Props>(
+    TestClassComponentWithProps,
+);
 const classEl = <MeasuredClassComponent a="test" />;
 
 function testInnerRefHook() {

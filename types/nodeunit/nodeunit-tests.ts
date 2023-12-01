@@ -16,7 +16,7 @@ export var testGroup: nodeunit.ITestGroup = {
     tearDown: (callback) => {
         callback();
     },
-    test1: function(test: nodeunit.Test) {
+    test1: function (test: nodeunit.Test) {
         test.expect(num);
 
         test.fail(actual, expected, message, operator);
@@ -63,14 +63,14 @@ export var testGroup: nodeunit.ITestGroup = {
 var testCase = nodeunit.testCase;
 
 export var testCaseGroup = testCase({
-    "Test 0.1": function(test: nodeunit.Test) {
+    "Test 0.1": function (test: nodeunit.Test) {
         test.ok(true);
         test.done();
     },
 
     "TC 1": testCase({
         "TC 1.1": testCase({
-            "Test 1.1.1": function(test: nodeunit.Test) {
+            "Test 1.1.1": function (test: nodeunit.Test) {
                 test.ok(true);
                 test.done();
             },
@@ -80,31 +80,31 @@ export var testCaseGroup = testCase({
     "TC 2": testCase({
         "TC 2.1": testCase({
             "TC 2.1.1": testCase({
-                "Test 2.1.1.1": function(test: nodeunit.Test) {
+                "Test 2.1.1.1": function (test: nodeunit.Test) {
                     test.ok(true);
                     test.done();
                 },
 
-                "Test 2.1.1.2": function(test: nodeunit.Test) {
+                "Test 2.1.1.2": function (test: nodeunit.Test) {
                     test.ok(true);
                     test.done();
                 },
             }),
 
             "TC 2.2.1": testCase({
-                "Test 2.2.1.1": function(test: nodeunit.Test) {
+                "Test 2.2.1.1": function (test: nodeunit.Test) {
                     test.ok(true);
                     test.done();
                 },
 
                 "TC 2.2.1.1": testCase({
-                    "Test 2.2.1.1.1": function(test: nodeunit.Test) {
+                    "Test 2.2.1.1.1": function (test: nodeunit.Test) {
                         test.ok(true);
                         test.done();
                     },
                 }),
 
-                "Test 2.2.1.2": function(test: nodeunit.Test) {
+                "Test 2.2.1.2": function (test: nodeunit.Test) {
                     test.ok(true);
                     test.done();
                 },
@@ -115,7 +115,7 @@ export var testCaseGroup = testCase({
     "TC 3": testCase({
         "TC 3.1": testCase({
             "TC 3.1.1": testCase({
-                "Test 3.1.1.1 (should fail)": function(test: nodeunit.Test) {
+                "Test 3.1.1.1 (should fail)": function (test: nodeunit.Test) {
                     test.ok(false);
                     test.done();
                 },

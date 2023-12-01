@@ -502,7 +502,10 @@ export class CognitoAuth {
      * @param url the url string
      * @returns xhr
      */
-    createCORSRequest(method: string, url: string): XMLHttpRequest | XDomainRequest;
+    createCORSRequest(
+        method: string,
+        url: string,
+    ): XMLHttpRequest | XDomainRequest;
 
     /**
      * The http POST request onFailure callback.

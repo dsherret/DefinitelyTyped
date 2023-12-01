@@ -197,7 +197,12 @@ export interface PermissionPage extends Page {
     permissions: Permission[];
 }
 
-export type Grant = "authorization_code" | "client_credentials" | "implicit" | "password" | "refresh_token";
+export type Grant =
+    | "authorization_code"
+    | "client_credentials"
+    | "implicit"
+    | "password"
+    | "refresh_token";
 
 export interface Client {
     /**
@@ -247,12 +252,12 @@ export interface Client {
     allowed_logout_urls?: string[] | undefined;
     jwt_configuration?:
         | {
-            // The amount of time (in seconds) that the token will be valid after being issued
-            lifetime_in_seconds?: number | undefined;
-            scopes?: {} | undefined;
-            // The algorithm used to sign the JsonWebToken
-            alg?: "HS256" | "RS256" | undefined;
-        }
+              // The amount of time (in seconds) that the token will be valid after being issued
+              lifetime_in_seconds?: number | undefined;
+              scopes?: {} | undefined;
+              // The algorithm used to sign the JsonWebToken
+              alg?: "HS256" | "RS256" | undefined;
+          }
         | undefined;
     /**
      * A set of grant types that the client is authorized to use
@@ -264,10 +269,10 @@ export interface Client {
     signing_keys?: string[] | undefined;
     encryption_key?:
         | {
-            pub?: string | undefined;
-            cert?: string | undefined;
-            subject?: string | undefined;
-        }
+              pub?: string | undefined;
+              cert?: string | undefined;
+              subject?: string | undefined;
+          }
         | undefined;
     sso?: boolean | undefined;
     /**
@@ -614,13 +619,13 @@ export interface Identity {
     access_token?: string | undefined;
     profileData?:
         | {
-            email?: string | undefined;
-            email_verified?: boolean | undefined;
-            name?: string | undefined;
-            phone_number?: string | undefined;
-            phone_verified?: boolean | undefined;
-            request_language?: string | undefined;
-        }
+              email?: string | undefined;
+              email_verified?: boolean | undefined;
+              name?: string | undefined;
+              phone_number?: string | undefined;
+              phone_verified?: boolean | undefined;
+              request_language?: string | undefined;
+          }
         | undefined;
 }
 
@@ -740,7 +745,9 @@ export interface ClientParams {
     client_id: string;
 }
 
-export type DeleteDeleteMultifactorParamsProvider = "duo" | "google-authenticator";
+export type DeleteDeleteMultifactorParamsProvider =
+    | "duo"
+    | "google-authenticator";
 
 export interface DeleteMultifactorParams {
     id: string;
@@ -887,7 +894,11 @@ export interface VerificationEmailJob {
 
 export type CustomDomainVerificationMethod = "txt";
 
-export type CustomDomainStatus = "disabled" | "pending" | "pending_verification" | "ready";
+export type CustomDomainStatus =
+    | "disabled"
+    | "pending"
+    | "pending_verification"
+    | "ready";
 
 export type CustomDomainType = "auth0_managed_certs" | "self_managed_certs";
 
@@ -932,7 +943,9 @@ export interface ImportUsersFromJsonOptions extends BaseImportUsersOptions {
     users_json: string;
 }
 
-export type ImportUsersOptions = ImportUsersFromFileOptions | ImportUsersFromJsonOptions;
+export type ImportUsersOptions =
+    | ImportUsersFromFileOptions
+    | ImportUsersFromJsonOptions;
 
 export interface ExportUsersOptions {
     connection_id?: string | undefined;
@@ -970,9 +983,9 @@ export interface EmailVerificationTicketOptions {
     organization_id?: string | undefined;
     identity?:
         | {
-            user_id: string;
-            provider: string;
-        }
+              user_id: string;
+              provider: string;
+          }
         | undefined;
     ttl_sec?: number | undefined;
     includeEmailInRedirect?: boolean | undefined;
@@ -1156,33 +1169,64 @@ export class AuthenticationClient {
     getClientInfo(): ClientInfo;
 
     requestMagicLink(data: RequestEmailOptions): Promise<any>;
-    requestMagicLink(data: RequestEmailOptions, cb: (err: Error, message: string) => void): void;
+    requestMagicLink(
+        data: RequestEmailOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
     requestEmailCode(data: RequestEmailOptions): Promise<any>;
-    requestEmailCode(data: RequestEmailOptions, cb: (err: Error, message: string) => void): void;
+    requestEmailCode(
+        data: RequestEmailOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
     requestSMSCode(data: RequestSMSOptions): Promise<any>;
-    requestSMSCode(data: RequestSMSOptions, cb: (err: Error, message: string) => void): void;
+    requestSMSCode(
+        data: RequestSMSOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
     verifyEmailCode(data: VerifyEmailOptions): Promise<any>;
-    verifyEmailCode(data: VerifyEmailOptions, cb: (err: Error, message: string) => void): void;
+    verifyEmailCode(
+        data: VerifyEmailOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
-    verifySMSCode(data: VerifySMSOptions | VerifySMSOptionsDeprecated): Promise<any>;
-    verifySMSCode(data: VerifySMSOptions | VerifySMSOptionsDeprecated, cb: (err: Error, message: string) => void): void;
+    verifySMSCode(
+        data: VerifySMSOptions | VerifySMSOptionsDeprecated,
+    ): Promise<any>;
+    verifySMSCode(
+        data: VerifySMSOptions | VerifySMSOptionsDeprecated,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
     getDelegationToken(data: DelegationTokenOptions): Promise<any>;
-    getDelegationToken(data: DelegationTokenOptions, cb: (err: Error, message: string) => void): void;
+    getDelegationToken(
+        data: DelegationTokenOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
     changePassword(data: ResetPasswordOptions): Promise<any>;
-    changePassword(data: ResetPasswordOptions, cb: (err: Error, message: string) => void): void;
+    changePassword(
+        data: ResetPasswordOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
     requestChangePasswordEmail(data: ResetPasswordEmailOptions): Promise<any>;
-    requestChangePasswordEmail(data: ResetPasswordEmailOptions, cb: (err: Error, message: string) => void): void;
+    requestChangePasswordEmail(
+        data: ResetPasswordEmailOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
     getProfile(accessToken: string): Promise<any>;
-    getProfile(accessToken: string, cb: (err: Error, message: string) => void): void;
+    getProfile(
+        accessToken: string,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
-    clientCredentialsGrant(options: ClientCredentialsGrantOptions): Promise<TokenResponse>;
+    clientCredentialsGrant(
+        options: ClientCredentialsGrantOptions,
+    ): Promise<TokenResponse>;
     clientCredentialsGrant(
         options: ClientCredentialsGrantOptions,
         cb: (err: Error, response: TokenResponse) => void,
@@ -1193,14 +1237,19 @@ export class AuthenticationClient {
         options: PasswordGrantOptions,
         additionalOptions: PasswordGrantAdditionalOptions,
     ): Promise<TokenResponse>;
-    passwordGrant(options: PasswordGrantOptions, cb: (err: Error, response: TokenResponse) => void): void;
+    passwordGrant(
+        options: PasswordGrantOptions,
+        cb: (err: Error, response: TokenResponse) => void,
+    ): void;
     passwordGrant(
         options: PasswordGrantOptions,
         additionalOptions: PasswordGrantAdditionalOptions,
         cb: (err: Error, response: TokenResponse) => void,
     ): void;
 
-    refreshToken(options: AuthenticationClientRefreshTokenOptions): Promise<TokenResponse>;
+    refreshToken(
+        options: AuthenticationClientRefreshTokenOptions,
+    ): Promise<TokenResponse>;
     refreshToken(
         options: AuthenticationClientRefreshTokenOptions,
         cb: (err: Error, response: TokenResponse) => void,
@@ -1213,14 +1262,14 @@ export interface Organization {
     display_name?: string | undefined;
     branding?:
         | {
-            logo_url?: string | undefined;
-            colors?:
-                | {
-                    primary: string;
-                    page_background: string;
-                }
-                | undefined;
-        }
+              logo_url?: string | undefined;
+              colors?:
+                  | {
+                        primary: string;
+                        page_background: string;
+                    }
+                  | undefined;
+          }
         | undefined;
     metadata?: any;
 }
@@ -1234,14 +1283,14 @@ export interface CreateOrganization {
     display_name?: string | undefined;
     branding?:
         | {
-            logo_url?: string | undefined;
-            colors?:
-                | {
-                    primary: string;
-                    page_background: string;
-                }
-                | undefined;
-        }
+              logo_url?: string | undefined;
+              colors?:
+                  | {
+                        primary: string;
+                        page_background: string;
+                    }
+                  | undefined;
+          }
         | undefined;
     metadata?: any;
     enabled_connections?: AddOrganizationEnabledConnection[] | undefined;
@@ -1252,12 +1301,12 @@ export interface UpdateOrganization {
     display_name?: string | undefined;
     branding?:
         | {
-            logo_url?: string | undefined;
-            colors?: {
-                primary: string;
-                page_background: string;
-            };
-        }
+              logo_url?: string | undefined;
+              colors?: {
+                  primary: string;
+                  page_background: string;
+              };
+          }
         | undefined;
     metadata?: any;
 }
@@ -1353,9 +1402,9 @@ export interface VerifyEmail {
     client_id?: string | undefined;
     identity?:
         | {
-            user_id: string;
-            provider: string;
-        }
+              user_id: string;
+              provider: string;
+          }
         | undefined;
 }
 
@@ -1679,12 +1728,19 @@ export interface GuardianFactor {
 
 export class OrganizationsManager {
     create(data: CreateOrganization): Promise<Organization>;
-    create(data: CreateOrganization, cb: (err: Error, organization: Organization) => void): void;
+    create(
+        data: CreateOrganization,
+        cb: (err: Error, organization: Organization) => void,
+    ): void;
 
     getAll(): Promise<Organization[]>;
     getAll(cb: (err: Error, organizations: Organization[]) => void): void;
-    getAll(params: PagingOptions & { include_totals?: false }): Promise<Organization[]>;
-    getAll(params: PagingOptions & { include_totals: true }): Promise<OrganizationsPaged>;
+    getAll(
+        params: PagingOptions & { include_totals?: false },
+    ): Promise<Organization[]>;
+    getAll(
+        params: PagingOptions & { include_totals: true },
+    ): Promise<OrganizationsPaged>;
     getAll(
         params: PagingOptions & { include_totals?: false },
         cb: (err: Error, organizations: Organization[]) => void,
@@ -1694,41 +1750,69 @@ export class OrganizationsManager {
         cb: (err: Error, pagedOrganizations: OrganizationsPaged) => void,
     ): void;
     getAll(params: CheckpointPagingOptions): Promise<Organization[]>;
-    getAll(params: CheckpointPagingOptions, cb: (err: Error, organizations: Organization[]) => void): void;
+    getAll(
+        params: CheckpointPagingOptions,
+        cb: (err: Error, organizations: Organization[]) => void,
+    ): void;
 
     getByID(params: ObjectWithId): Promise<Organization>;
-    getByID(params: ObjectWithId, cb: (err: Error, organization: Organization) => void): void;
+    getByID(
+        params: ObjectWithId,
+        cb: (err: Error, organization: Organization) => void,
+    ): void;
 
     getByName(params: { name: string }): Promise<Organization>;
-    getByName(params: { name: string }, cb: (err: Error, organization: Organization) => void): void;
+    getByName(
+        params: { name: string },
+        cb: (err: Error, organization: Organization) => void,
+    ): void;
 
-    update(params: ObjectWithId, data: UpdateOrganization): Promise<Organization>;
-    update(params: ObjectWithId, data: UpdateOrganization, cb: (err: Error, organization: Organization) => void): void;
+    update(
+        params: ObjectWithId,
+        data: UpdateOrganization,
+    ): Promise<Organization>;
+    update(
+        params: ObjectWithId,
+        data: UpdateOrganization,
+        cb: (err: Error, organization: Organization) => void,
+    ): void;
 
     delete(params: ObjectWithId): Promise<void>;
     delete(params: ObjectWithId, cb: (err: Error) => void): void;
 
-    getEnabledConnections(params: ObjectWithId & PagingOptions): Promise<OrganizationConnection[]>;
+    getEnabledConnections(
+        params: ObjectWithId & PagingOptions,
+    ): Promise<OrganizationConnection[]>;
     getEnabledConnections(
         params: ObjectWithId & PagingOptions,
         cb: (err: Error, connections: OrganizationConnection[]) => void,
     ): void;
 
-    getEnabledConnection(params: ObjectWithId & { connection_id: string }): Promise<OrganizationConnection>;
+    getEnabledConnection(
+        params: ObjectWithId & { connection_id: string },
+    ): Promise<OrganizationConnection>;
     getEnabledConnection(
         params: ObjectWithId & { connection_id: string },
         cb: (err: Error, connection: OrganizationConnection) => void,
     ): void;
 
-    addEnabledConnection(params: ObjectWithId, data: AddOrganizationEnabledConnection): Promise<OrganizationConnection>;
+    addEnabledConnection(
+        params: ObjectWithId,
+        data: AddOrganizationEnabledConnection,
+    ): Promise<OrganizationConnection>;
     addEnabledConnection(
         params: ObjectWithId,
         data: AddOrganizationEnabledConnection,
         cb: (err: Error, connection: OrganizationConnection) => void,
     ): void;
 
-    removeEnabledConnection(params: ObjectWithId & { connection_id: string }): Promise<void>;
-    removeEnabledConnection(params: ObjectWithId & { connection_id: string }, cb: (err: Error) => void): void;
+    removeEnabledConnection(
+        params: ObjectWithId & { connection_id: string },
+    ): Promise<void>;
+    removeEnabledConnection(
+        params: ObjectWithId & { connection_id: string },
+        cb: (err: Error) => void,
+    ): void;
 
     updateEnabledConnection(
         params: ObjectWithId & { connection_id: string },
@@ -1740,8 +1824,12 @@ export class OrganizationsManager {
         cb: (err: Error, connection: OrganizationConnection) => void,
     ): void;
 
-    getMembers(params: ObjectWithId & PagingOptions & { include_totals?: false }): Promise<OrganizationMember[]>;
-    getMembers(params: ObjectWithId & PagingOptions & { include_totals: true }): Promise<OrganizationMembersPaged>;
+    getMembers(
+        params: ObjectWithId & PagingOptions & { include_totals?: false },
+    ): Promise<OrganizationMember[]>;
+    getMembers(
+        params: ObjectWithId & PagingOptions & { include_totals: true },
+    ): Promise<OrganizationMembersPaged>;
     getMembers(
         params: ObjectWithId & PagingOptions & { include_totals?: false },
         cb: (err: Error, members: OrganizationMember[]) => void,
@@ -1750,84 +1838,143 @@ export class OrganizationsManager {
         params: ObjectWithId & PagingOptions & { include_totals: true },
         cb: (err: Error, pagedMembers: OrganizationMembersPaged) => void,
     ): void;
-    getMembers(params: ObjectWithId & CheckpointPagingOptions): Promise<OrganizationMember[]>;
+    getMembers(
+        params: ObjectWithId & CheckpointPagingOptions,
+    ): Promise<OrganizationMember[]>;
     getMembers(
         params: ObjectWithId & CheckpointPagingOptions,
         cb: (err: Error, members: OrganizationMember[]) => void,
     ): void;
 
-    addMembers(params: ObjectWithId, data: AddOrganizationMembers): Promise<void>;
-    addMembers(params: ObjectWithId, data: AddOrganizationMembers, cb: (err: Error) => void): void;
+    addMembers(
+        params: ObjectWithId,
+        data: AddOrganizationMembers,
+    ): Promise<void>;
+    addMembers(
+        params: ObjectWithId,
+        data: AddOrganizationMembers,
+        cb: (err: Error) => void,
+    ): void;
 
-    removeMembers(params: ObjectWithId, data: RemoveOrganizationMembers): Promise<void>;
-    removeMembers(params: ObjectWithId, data: RemoveOrganizationMembers, cb: (err: Error) => void): void;
+    removeMembers(
+        params: ObjectWithId,
+        data: RemoveOrganizationMembers,
+    ): Promise<void>;
+    removeMembers(
+        params: ObjectWithId,
+        data: RemoveOrganizationMembers,
+        cb: (err: Error) => void,
+    ): void;
 
     getInvitations(
-        params:
-            & ObjectWithId
-            & PagingOptions
-            & { fields?: string; include_fields?: boolean; sort?: string; include_totals?: false },
+        params: ObjectWithId &
+            PagingOptions & {
+                fields?: string;
+                include_fields?: boolean;
+                sort?: string;
+                include_totals?: false;
+            },
     ): Promise<OrganizationInvitation[]>;
     getInvitations(
-        params:
-            & ObjectWithId
-            & PagingOptions
-            & { fields?: string; include_fields?: boolean; sort?: string; include_totals: true },
+        params: ObjectWithId &
+            PagingOptions & {
+                fields?: string;
+                include_fields?: boolean;
+                sort?: string;
+                include_totals: true;
+            },
     ): Promise<OrganizationInvitationsPaged>;
     getInvitations(
-        params:
-            & ObjectWithId
-            & PagingOptions
-            & { fields?: string; include_fields?: boolean; sort?: string; include_totals?: false },
+        params: ObjectWithId &
+            PagingOptions & {
+                fields?: string;
+                include_fields?: boolean;
+                sort?: string;
+                include_totals?: false;
+            },
         cb: (err: Error, invitations: OrganizationInvitation[]) => void,
     ): void;
     getInvitations(
-        params:
-            & ObjectWithId
-            & PagingOptions
-            & { fields?: string; include_fields?: boolean; sort?: string; include_totals: true },
-        cb: (err: Error, pagedInvitations: OrganizationInvitationsPaged) => void,
+        params: ObjectWithId &
+            PagingOptions & {
+                fields?: string;
+                include_fields?: boolean;
+                sort?: string;
+                include_totals: true;
+            },
+        cb: (
+            err: Error,
+            pagedInvitations: OrganizationInvitationsPaged,
+        ) => void,
     ): void;
 
     getInvitation(
-        params: ObjectWithId & { invitation_id: string; fields?: string; include_fields?: boolean },
+        params: ObjectWithId & {
+            invitation_id: string;
+            fields?: string;
+            include_fields?: boolean;
+        },
     ): Promise<OrganizationInvitation>;
     getInvitation(
-        params: ObjectWithId & { invitation_id: string; fields?: string; include_fields?: boolean },
+        params: ObjectWithId & {
+            invitation_id: string;
+            fields?: string;
+            include_fields?: boolean;
+        },
         cb: (err: Error, invitation: OrganizationInvitation) => void,
     ): void;
 
-    createInvitation(params: ObjectWithId, data: CreateOrganizationInvitation): Promise<OrganizationInvitation>;
+    createInvitation(
+        params: ObjectWithId,
+        data: CreateOrganizationInvitation,
+    ): Promise<OrganizationInvitation>;
     createInvitation(
         params: ObjectWithId,
         data: CreateOrganizationInvitation,
         cb: (err: Error, invitation: OrganizationInvitation) => void,
     ): void;
 
-    deleteInvitation(params: ObjectWithId & { invitation_id: string }): Promise<void>;
-    deleteInvitation(params: ObjectWithId & { invitation_id: string }, cb: (err: Error) => void): void;
+    deleteInvitation(
+        params: ObjectWithId & { invitation_id: string },
+    ): Promise<void>;
+    deleteInvitation(
+        params: ObjectWithId & { invitation_id: string },
+        cb: (err: Error) => void,
+    ): void;
 
-    getMemberRoles(params: ObjectWithId & PagingOptions & { user_id: string; include_totals?: false }): Promise<Role[]>;
     getMemberRoles(
-        params: ObjectWithId & PagingOptions & { user_id: string; include_totals: true },
+        params: ObjectWithId &
+            PagingOptions & { user_id: string; include_totals?: false },
+    ): Promise<Role[]>;
+    getMemberRoles(
+        params: ObjectWithId &
+            PagingOptions & { user_id: string; include_totals: true },
     ): Promise<Omit<RolePage, "length">>;
     getMemberRoles(
-        params: ObjectWithId & PagingOptions & { user_id: string; include_totals?: false },
+        params: ObjectWithId &
+            PagingOptions & { user_id: string; include_totals?: false },
         cb: (err: Error, roles: Role[]) => void,
     ): void;
     getMemberRoles(
-        params: ObjectWithId & PagingOptions & { user_id: string; include_totals: true },
+        params: ObjectWithId &
+            PagingOptions & { user_id: string; include_totals: true },
         cb: (err: Error, roles: Omit<RolePage, "length">) => void,
     ): void;
 
-    addMemberRoles(params: ObjectWithId & { user_id: string }, data: AddOrganizationMemberRoles): Promise<void>;
+    addMemberRoles(
+        params: ObjectWithId & { user_id: string },
+        data: AddOrganizationMemberRoles,
+    ): Promise<void>;
     addMemberRoles(
         params: ObjectWithId & { user_id: string },
         data: AddOrganizationMemberRoles,
         cb: (err: Error) => void,
     ): void;
 
-    removeMemberRoles(params: ObjectWithId & { user_id: string }, data: RemoveOrganizationMemberRoles): Promise<void>;
+    removeMemberRoles(
+        params: ObjectWithId & { user_id: string },
+        data: RemoveOrganizationMemberRoles,
+    ): Promise<void>;
     removeMemberRoles(
         params: ObjectWithId & { user_id: string },
         data: RemoveOrganizationMemberRoles,
@@ -1849,9 +1996,15 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
     getConnections(cb: (err: Error, connections: Connection[]) => void): void;
 
     createConnection(data: CreateConnection): Promise<Connection>;
-    createConnection(data: CreateConnection, cb: (err: Error, connection: Connection) => void): void;
+    createConnection(
+        data: CreateConnection,
+        cb: (err: Error, connection: Connection) => void,
+    ): void;
 
-    getConnection(params: ObjectWithId, cb: (err: Error, connection: Connection) => void): void;
+    getConnection(
+        params: ObjectWithId,
+        cb: (err: Error, connection: Connection) => void,
+    ): void;
     getConnection(params: ObjectWithId): Promise<Connection>;
 
     deleteConnection(params: ObjectWithId, cb: (err: Error) => void): void;
@@ -1862,13 +2015,20 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
         data: UpdateConnection,
         cb: (err: Error, connection: Connection) => void,
     ): void;
-    updateConnection(params: ObjectWithId, data: UpdateConnection): Promise<Connection>;
+    updateConnection(
+        params: ObjectWithId,
+        data: UpdateConnection,
+    ): Promise<Connection>;
 
     // Clients
     getClients(): Promise<Client[]>;
     getClients(cb: (err: Error, clients: Client[]) => void): void;
-    getClients(params: GetClientsOptions & { include_totals?: false }): Promise<Client[]>;
-    getClients(params: GetClientsOptions & { include_totals: true }): Promise<ClientsPaged>;
+    getClients(
+        params: GetClientsOptions & { include_totals?: false },
+    ): Promise<Client[]>;
+    getClients(
+        params: GetClientsOptions & { include_totals: true },
+    ): Promise<ClientsPaged>;
     getClients(
         params: GetClientsOptions & { include_totals?: false },
         cb: (err: Error, clients: Client[]) => void,
@@ -1879,13 +2039,20 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
     ): void;
 
     getClient(params: ClientParams): Promise<Client>;
-    getClient(params: ClientParams, cb: (err: Error, client: Client) => void): void;
+    getClient(
+        params: ClientParams,
+        cb: (err: Error, client: Client) => void,
+    ): void;
 
     createClient(data: Data): Promise<Client>;
     createClient(data: Data, cb: (err: Error, client: Client) => void): void;
 
     updateClient(params: ClientParams, data: Data): Promise<Client>;
-    updateClient(params: ClientParams, data: Data, cb: (err: Error, client: Client) => void): void;
+    updateClient(
+        params: ClientParams,
+        data: Data,
+        cb: (err: Error, client: Client) => void,
+    ): void;
 
     deleteClient(params: ClientParams): Promise<void>;
     deleteClient(params: ClientParams, cb: (err: Error) => void): void;
@@ -1894,39 +2061,77 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
     getClientGrants(): Promise<ClientGrant[]>;
     getClientGrants(cb: (err: Error, data: ClientGrant[]) => void): void;
     getClientGrants(params: GetClientGrantsOptions): Promise<ClientGrant[]>;
-    getClientGrants(params: GetClientGrantsOptions, cb: (err: Error, data: ClientGrant[]) => void): void;
-    getClientGrants(params: GetClientGrantsOptionsPaged): Promise<ClientGrantPage>;
-    getClientGrants(params: GetClientGrantsOptionsPaged, cb: (err: Error, data: ClientGrantPage) => void): void;
+    getClientGrants(
+        params: GetClientGrantsOptions,
+        cb: (err: Error, data: ClientGrant[]) => void,
+    ): void;
+    getClientGrants(
+        params: GetClientGrantsOptionsPaged,
+    ): Promise<ClientGrantPage>;
+    getClientGrants(
+        params: GetClientGrantsOptionsPaged,
+        cb: (err: Error, data: ClientGrantPage) => void,
+    ): void;
 
     createClientGrant(data: CreateClientGrant): Promise<ClientGrant>;
-    createClientGrant(data: CreateClientGrant, cb: (err: Error, data: ClientGrant) => void): void;
+    createClientGrant(
+        data: CreateClientGrant,
+        cb: (err: Error, data: ClientGrant) => void,
+    ): void;
 
-    updateClientGrant(params: ObjectWithId, data: UpdateClientGrant): Promise<ClientGrant>;
-    updateClientGrant(params: ObjectWithId, data: UpdateClientGrant, cb: (err: Error, data: ClientGrant) => void): void;
+    updateClientGrant(
+        params: ObjectWithId,
+        data: UpdateClientGrant,
+    ): Promise<ClientGrant>;
+    updateClientGrant(
+        params: ObjectWithId,
+        data: UpdateClientGrant,
+        cb: (err: Error, data: ClientGrant) => void,
+    ): void;
 
     deleteClientGrant(params: ObjectWithId): Promise<void>;
     deleteClientGrant(params: ObjectWithId, cb: (err: Error) => void): void;
 
     // Device Keys
-    getDeviceCredentials(params: GetDeviceCredentialsParams): Promise<DeviceCredential[]>;
-    getDeviceCredentials(params: GetDeviceCredentialsParams, cb: (err: Error, data: DeviceCredential[]) => void): void;
+    getDeviceCredentials(
+        params: GetDeviceCredentialsParams,
+    ): Promise<DeviceCredential[]>;
+    getDeviceCredentials(
+        params: GetDeviceCredentialsParams,
+        cb: (err: Error, data: DeviceCredential[]) => void,
+    ): void;
 
     createDevicePublicKey(data: Data): Promise<User<A, U>>;
-    createDevicePublicKey(data: Data, cb: (err: Error, data: any) => void): void;
+    createDevicePublicKey(
+        data: Data,
+        cb: (err: Error, data: any) => void,
+    ): void;
 
     deleteDeviceCredential(params: ObjectWithId): Promise<void>;
-    deleteDeviceCredential(params: ObjectWithId, cb: (err: Error) => void): void;
+    deleteDeviceCredential(
+        params: ObjectWithId,
+        cb: (err: Error) => void,
+    ): void;
 
     // Roles
     getRoles(): Promise<Role[]>;
     getRoles(cb: (err: Error, roles: Role[]) => void): void;
     getRoles(params: GetRolesData): Promise<Role[]>;
-    getRoles(params: GetRolesData, cb: (err: Error, roles: Role[]) => void): void;
+    getRoles(
+        params: GetRolesData,
+        cb: (err: Error, roles: Role[]) => void,
+    ): void;
     getRoles(params: GetRolesDataPaged): Promise<RolePage>;
-    getRoles(params: GetRolesDataPaged, cb: (err: Error, rolePage: RolePage) => void): void;
+    getRoles(
+        params: GetRolesDataPaged,
+        cb: (err: Error, rolePage: RolePage) => void,
+    ): void;
 
     createRole(data: CreateRoleData): Promise<Role>;
-    createRole(data: CreateRoleData, cb: (err: Error, role: Role) => void): void;
+    createRole(
+        data: CreateRoleData,
+        cb: (err: Error, role: Role) => void,
+    ): void;
 
     getRole(params: ObjectWithId): Promise<Role>;
     getRole(params: ObjectWithId, cb: (err: Error, role: Role) => void): void;
@@ -1935,30 +2140,65 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
     deleteRole(params: ObjectWithId, cb: (err: Error) => void): void;
 
     updateRole(params: ObjectWithId, data: UpdateRoleData): Promise<Role>;
-    updateRole(params: ObjectWithId, data: UpdateRoleData, cb: (err: Error, role: Role) => void): void;
+    updateRole(
+        params: ObjectWithId,
+        data: UpdateRoleData,
+        cb: (err: Error, role: Role) => void,
+    ): void;
 
     getPermissionsInRole(params: ObjectWithId): Promise<Permission[]>;
-    getPermissionsInRole(params: ObjectWithId, cb: (err: Error, permissions: Permission[]) => void): void;
+    getPermissionsInRole(
+        params: ObjectWithId,
+        cb: (err: Error, permissions: Permission[]) => void,
+    ): void;
     getPermissionsInRole(params: GetRolePermissionsData): Promise<Permission[]>;
-    getPermissionsInRole(params: GetRolePermissionsData, cb: (err: Error, permissions: Permission[]) => void): void;
-    getPermissionsInRole(params: GetRolePermissionsDataPaged): Promise<PermissionPage>;
+    getPermissionsInRole(
+        params: GetRolePermissionsData,
+        cb: (err: Error, permissions: Permission[]) => void,
+    ): void;
+    getPermissionsInRole(
+        params: GetRolePermissionsDataPaged,
+    ): Promise<PermissionPage>;
     getPermissionsInRole(
         params: GetRolePermissionsDataPaged,
         cb: (err: Error, permissionPage: PermissionPage) => void,
     ): void;
 
-    removePermissionsFromRole(params: ObjectWithId, data: PermissionsData): Promise<void>;
-    removePermissionsFromRole(params: ObjectWithId, data: PermissionsData, cb: (err: Error) => void): void;
+    removePermissionsFromRole(
+        params: ObjectWithId,
+        data: PermissionsData,
+    ): Promise<void>;
+    removePermissionsFromRole(
+        params: ObjectWithId,
+        data: PermissionsData,
+        cb: (err: Error) => void,
+    ): void;
 
-    addPermissionsInRole(params: ObjectWithId, data: PermissionsData): Promise<void>;
-    addPermissionsInRole(params: ObjectWithId, data: PermissionsData, cb: (err: Error) => void): void;
+    addPermissionsInRole(
+        params: ObjectWithId,
+        data: PermissionsData,
+    ): Promise<void>;
+    addPermissionsInRole(
+        params: ObjectWithId,
+        data: PermissionsData,
+        cb: (err: Error) => void,
+    ): void;
 
     getUsersInRole(params: GetRoleUsersDataPaged): Promise<UserPage<A, U>>;
-    getUsersInRole(params: GetRoleUsersDataPaged, cb: (err: Error, userPage: UserPage<A, U>) => void): void;
+    getUsersInRole(
+        params: GetRoleUsersDataPaged,
+        cb: (err: Error, userPage: UserPage<A, U>) => void,
+    ): void;
     getUsersInRole(params: GetRoleUsersData): Promise<Array<User<A, U>>>;
-    getUsersInRole(params: GetRoleUsersData, cb: (err: Error, users: Array<User<A, U>>) => void): void;
+    getUsersInRole(
+        params: GetRoleUsersData,
+        cb: (err: Error, users: Array<User<A, U>>) => void,
+    ): void;
     getUsersInRole(params: ObjectWithId): Promise<Array<User<A, U>>>;
-    getUsersInRole(params: ObjectWithId, cb: (err: Error, users: Array<User<A, U>>) => void): void;
+    getUsersInRole(
+        params: ObjectWithId,
+        cb: (err: Error, users: Array<User<A, U>>) => void,
+    ): void;
 
     // Rules
     getRules(params: PagingOptions): Promise<Rule[]>;
@@ -1972,16 +2212,25 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
     createRule(data: Data, cb: (err: Error, rule: Rule) => void): void;
 
     updateRule(params: ObjectWithId, data: Data): Promise<Rule>;
-    updateRule(params: ObjectWithId, data: Data, cb: (err: Error, rule: Rule) => void): void;
+    updateRule(
+        params: ObjectWithId,
+        data: Data,
+        cb: (err: Error, rule: Rule) => void,
+    ): void;
 
     deleteRule(params: ObjectWithId): Promise<void>;
     deleteRule(params: ObjectWithId, cb: (err: Error) => void): void;
 
     // Rules Configurations
     getRulesConfigs(): Promise<RulesConfig[]>;
-    getRulesConfigs(cb: (err: Error, rulesConfigs: RulesConfig[]) => void): void;
+    getRulesConfigs(
+        cb: (err: Error, rulesConfigs: RulesConfig[]) => void,
+    ): void;
 
-    setRulesConfig(params: RulesConfig, data: RulesConfigData): Promise<RulesConfig & RulesConfigData>;
+    setRulesConfig(
+        params: RulesConfig,
+        data: RulesConfigData,
+    ): Promise<RulesConfig & RulesConfigData>;
     setRulesConfig(
         params: RulesConfig,
         data: RulesConfigData,
@@ -1993,25 +2242,48 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
 
     // Users
     getUsers(params: GetUsersDataPaged): Promise<UserPage<A, U>>;
-    getUsers(params: GetUsersDataPaged, cb: (err: Error, userPage: UserPage<A, U>) => void): void;
+    getUsers(
+        params: GetUsersDataPaged,
+        cb: (err: Error, userPage: UserPage<A, U>) => void,
+    ): void;
     getUsers(params?: GetUsersData): Promise<Array<User<A, U>>>;
     getUsers(cb: (err: Error, users: Array<User<A, U>>) => void): void;
-    getUsers(params?: GetUsersData, cb?: (err: Error, users: Array<User<A, U>>) => void): void;
+    getUsers(
+        params?: GetUsersData,
+        cb?: (err: Error, users: Array<User<A, U>>) => void,
+    ): void;
 
     getUser(params: ObjectWithId): Promise<User<A, U>>;
-    getUser(params: ObjectWithId, cb?: (err: Error, user: User<A, U>) => void): void;
+    getUser(
+        params: ObjectWithId,
+        cb?: (err: Error, user: User<A, U>) => void,
+    ): void;
 
     getUsersByEmail(email: string): Promise<Array<User<A, U>>>;
-    getUsersByEmail(email: string, cb?: (err: Error, users: Array<User<A, U>>) => void): void;
+    getUsersByEmail(
+        email: string,
+        cb?: (err: Error, users: Array<User<A, U>>) => void,
+    ): void;
 
     createUser(data: CreateUserData): Promise<User<A, U>>;
-    createUser(data: CreateUserData, cb: (err: Error, user: User<A, U>) => void): void;
+    createUser(
+        data: CreateUserData,
+        cb: (err: Error, user: User<A, U>) => void,
+    ): void;
 
     updateUser(params: ObjectWithId, data: UpdateUserData): Promise<User<A, U>>;
-    updateUser(params: ObjectWithId, data: UpdateUserData, cb: (err: Error, data: User<A, U>) => void): void;
+    updateUser(
+        params: ObjectWithId,
+        data: UpdateUserData,
+        cb: (err: Error, data: User<A, U>) => void,
+    ): void;
 
     updateUserMetadata(params: ObjectWithId, data: U): Promise<User<A, U>>;
-    updateUserMetadata(params: ObjectWithId, data: U, cb: (err: Error, data: User<A, U>) => void): void;
+    updateUserMetadata(
+        params: ObjectWithId,
+        data: U,
+        cb: (err: Error, data: User<A, U>) => void,
+    ): void;
 
     // Should be removed from auth0 also. Doesn't exist in api.
     deleteAllUsers(): Promise<User<A, U>>;
@@ -2021,62 +2293,132 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
     deleteUser(params: ObjectWithId, cb?: (err: Error) => void): void;
 
     updateAppMetadata(params: ObjectWithId, data: A): Promise<User<A, U>>;
-    updateAppMetadata(params: ObjectWithId, data: A, cb: (err: Error, data: User<A, U>) => void): void;
+    updateAppMetadata(
+        params: ObjectWithId,
+        data: A,
+        cb: (err: Error, data: User<A, U>) => void,
+    ): void;
 
     deleteUserMultifactor(params: DeleteMultifactorParams): Promise<void>;
-    deleteUserMultifactor(params: DeleteMultifactorParams, cb: (err: Error) => void): void;
+    deleteUserMultifactor(
+        params: DeleteMultifactorParams,
+        cb: (err: Error) => void,
+    ): void;
 
     unlinkUsers(params: UnlinkAccountsParams): Promise<UnlinkAccountsResponse>;
-    unlinkUsers(params: UnlinkAccountsParams, cb: (err: Error, data: UnlinkAccountsResponse) => void): void;
+    unlinkUsers(
+        params: UnlinkAccountsParams,
+        cb: (err: Error, data: UnlinkAccountsResponse) => void,
+    ): void;
 
     linkUsers(userId: string, params: LinkAccountsParams): Promise<any>;
-    linkUsers(userId: string, params: LinkAccountsParams, cb: (err: Error, data: any) => void): void;
+    linkUsers(
+        userId: string,
+        params: LinkAccountsParams,
+        cb: (err: Error, data: any) => void,
+    ): void;
 
     // User Logs
     getUserLogs(params: UsersLogsQuery): Promise<LogEvent[]>;
-    getUserLogs(params: UsersLogsQuery, cb: (err: Error, data: LogEvent[]) => void): void;
+    getUserLogs(
+        params: UsersLogsQuery,
+        cb: (err: Error, data: LogEvent[]) => void,
+    ): void;
 
     // User roles
     getUserRoles(params: ObjectWithId): Promise<Role[]>;
-    getUserRoles(params: ObjectWithId, cb: (err: Error, roles: Role[]) => void): void;
+    getUserRoles(
+        params: ObjectWithId,
+        cb: (err: Error, roles: Role[]) => void,
+    ): void;
     getUserRoles(params: GetUserRolesData): Promise<Role[]>;
-    getUserRoles(params: GetUserRolesData, cb: (err: Error, roles: Role[]) => void): void;
+    getUserRoles(
+        params: GetUserRolesData,
+        cb: (err: Error, roles: Role[]) => void,
+    ): void;
     getUserRoles(params: GetUserRolesDataPaged): Promise<RolePage>;
-    getUserRoles(params: GetUserRolesDataPaged, cb: (err: Error, rolePage: RolePage) => void): void;
+    getUserRoles(
+        params: GetUserRolesDataPaged,
+        cb: (err: Error, rolePage: RolePage) => void,
+    ): void;
 
     removeRolesFromUser(params: ObjectWithId, data: RolesData): Promise<void>;
-    removeRolesFromUser(params: ObjectWithId, data: RolesData, cb: (err: Error) => void): void;
+    removeRolesFromUser(
+        params: ObjectWithId,
+        data: RolesData,
+        cb: (err: Error) => void,
+    ): void;
 
     // The lowercase 't' is like this in the auth0 sdk
     assignRolestoUser(params: ObjectWithId, data: RolesData): Promise<void>;
-    assignRolestoUser(params: ObjectWithId, data: RolesData, cb: (err: Error) => void): void;
+    assignRolestoUser(
+        params: ObjectWithId,
+        data: RolesData,
+        cb: (err: Error) => void,
+    ): void;
 
     // User permissions
     getUserPermissions(params: ObjectWithId): Promise<Permission[]>;
-    getUserPermissions(params: ObjectWithId, cb: (err: Error, permissions: Permission[]) => void): void;
+    getUserPermissions(
+        params: ObjectWithId,
+        cb: (err: Error, permissions: Permission[]) => void,
+    ): void;
     getUserPermissions(params: GetUserPermissionsData): Promise<Permission[]>;
-    getUserPermissions(params: GetUserPermissionsData, cb: (err: Error, permissions: Permission[]) => void): void;
-    getUserPermissions(params: GetUserPermissionsDataPaged): Promise<PermissionPage>;
+    getUserPermissions(
+        params: GetUserPermissionsData,
+        cb: (err: Error, permissions: Permission[]) => void,
+    ): void;
+    getUserPermissions(
+        params: GetUserPermissionsDataPaged,
+    ): Promise<PermissionPage>;
     getUserPermissions(
         params: GetUserPermissionsDataPaged,
         cb: (err: Error, permissionPage: PermissionPage) => void,
     ): void;
 
-    removePermissionsFromUser(params: ObjectWithId, data: PermissionsData): Promise<void>;
-    removePermissionsFromUser(params: ObjectWithId, data: PermissionsData, cb: (err: Error) => void): void;
+    removePermissionsFromUser(
+        params: ObjectWithId,
+        data: PermissionsData,
+    ): Promise<void>;
+    removePermissionsFromUser(
+        params: ObjectWithId,
+        data: PermissionsData,
+        cb: (err: Error) => void,
+    ): void;
 
-    assignPermissionsToUser(params: ObjectWithId, data: PermissionsData): Promise<void>;
-    assignPermissionsToUser(params: ObjectWithId, data: PermissionsData, cb: (err: Error) => void): void;
+    assignPermissionsToUser(
+        params: ObjectWithId,
+        data: PermissionsData,
+    ): Promise<void>;
+    assignPermissionsToUser(
+        params: ObjectWithId,
+        data: PermissionsData,
+        cb: (err: Error) => void,
+    ): void;
 
     // User Blocks
     getUserBlocks(params: ObjectWithId): Promise<UserBlocks>;
-    getUserBlocks(params: ObjectWithId, cb: (err: Error, response: UserBlocks) => void): void;
-    getUserBlocksByIdentifier(params: ObjectWithIdentifier): Promise<UserBlocks>;
-    getUserBlocksByIdentifier(params: ObjectWithIdentifier, cb: (err: Error, response: UserBlocks) => void): void;
+    getUserBlocks(
+        params: ObjectWithId,
+        cb: (err: Error, response: UserBlocks) => void,
+    ): void;
+    getUserBlocksByIdentifier(
+        params: ObjectWithIdentifier,
+    ): Promise<UserBlocks>;
+    getUserBlocksByIdentifier(
+        params: ObjectWithIdentifier,
+        cb: (err: Error, response: UserBlocks) => void,
+    ): void;
     unblockUser(params: ObjectWithId): Promise<string>;
-    unblockUser(params: ObjectWithId, cb: (err: Error, response: string) => void): void;
+    unblockUser(
+        params: ObjectWithId,
+        cb: (err: Error, response: string) => void,
+    ): void;
     unblockUserByIdentifier(params: ObjectWithIdentifier): Promise<string>;
-    unblockUserByIdentifier(params: ObjectWithIdentifier, cb: (err: Error, response: string) => void): void;
+    unblockUserByIdentifier(
+        params: ObjectWithIdentifier,
+        cb: (err: Error, response: string) => void,
+    ): void;
 
     // Tokens
     getAccessToken(): Promise<string>;
@@ -2095,20 +2437,31 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
     getEmailTemplate(data: Data, cb?: (err: Error, data: any) => void): void;
 
     updateEmailTemplate(params: {}, data: Data): Promise<any>;
-    updateEmailTemplate(params: {}, data: Data, cb?: (err: Error, data: any) => void): void;
+    updateEmailTemplate(
+        params: {},
+        data: Data,
+        cb?: (err: Error, data: any) => void,
+    ): void;
 
     // Providers
     getEmailProvider(): Promise<any>;
     getEmailProvider(cb?: (err: Error, data: any) => void): void;
 
     configureEmailProvider(data: Data): Promise<any>;
-    configureEmailProvider(data: Data, cb: (err: Error, data: any) => void): void;
+    configureEmailProvider(
+        data: Data,
+        cb: (err: Error, data: any) => void,
+    ): void;
 
     deleteEmailProvider(): Promise<any>;
     deleteEmailProvider(cb?: (err: Error, data: any) => void): void;
 
     updateEmailProvider(params: {}, data: Data): Promise<any>;
-    updateEmailProvider(params: {}, data: Data, cb?: (err: Error, data: any) => void): void;
+    updateEmailProvider(
+        params: {},
+        data: Data,
+        cb?: (err: Error, data: any) => void,
+    ): void;
 
     // Statistics
     getActiveUsersCount(): Promise<any>;
@@ -2122,7 +2475,10 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
     getTenantSettings(cb?: (err: Error, data: any) => void): void;
 
     updateTenantSettings(data: Data): Promise<any>;
-    updateTenantSettings(data: Data, cb?: (err: Error, data: any) => void): void;
+    updateTenantSettings(
+        data: Data,
+        cb?: (err: Error, data: any) => void,
+    ): void;
 
     // Jobs
     getJob(params: ObjectWithId): Promise<Job>;
@@ -2132,34 +2488,59 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
      * @deprecated use @see importUsersJob instead
      */
     importUsers(data: ImportUsersOptions): Promise<ImportUsersJob>;
-    importUsers(data: ImportUsersOptions, cb?: (err: Error, data: ImportUsersJob) => void): void;
+    importUsers(
+        data: ImportUsersOptions,
+        cb?: (err: Error, data: ImportUsersJob) => void,
+    ): void;
 
     importUsersJob(data: ImportUsersOptions): Promise<ImportUsersJob>;
-    importUsersJob(data: ImportUsersOptions, cb?: (err: Error, data: ImportUsersJob) => void): void;
+    importUsersJob(
+        data: ImportUsersOptions,
+        cb?: (err: Error, data: ImportUsersJob) => void,
+    ): void;
 
     exportUsers(data: ExportUsersOptions): Promise<ExportUsersJob>;
-    exportUsers(data: ExportUsersOptions, cb?: (err: Error, data: ExportUsersJob) => void): void;
+    exportUsers(
+        data: ExportUsersOptions,
+        cb?: (err: Error, data: ExportUsersJob) => void,
+    ): void;
 
     sendEmailVerification(data: VerifyEmail): Promise<VerificationEmailJob>;
-    sendEmailVerification(data: VerifyEmail, cb?: (err: Error, data: VerificationEmailJob) => void): void;
+    sendEmailVerification(
+        data: VerifyEmail,
+        cb?: (err: Error, data: VerificationEmailJob) => void,
+    ): void;
 
     // Tickets
-    createPasswordChangeTicket(params: PasswordChangeTicketParams): Promise<PasswordChangeTicketResponse>;
+    createPasswordChangeTicket(
+        params: PasswordChangeTicketParams,
+    ): Promise<PasswordChangeTicketResponse>;
     createPasswordChangeTicket(
         params: PasswordChangeTicketParams,
         cb?: (err: Error, data: PasswordChangeTicketResponse) => void,
     ): void;
 
-    createEmailVerificationTicket(data: EmailVerificationTicketOptions): Promise<any>;
-    createEmailVerificationTicket(data: EmailVerificationTicketOptions, cb?: (err: Error, data: any) => void): void;
+    createEmailVerificationTicket(
+        data: EmailVerificationTicketOptions,
+    ): Promise<any>;
+    createEmailVerificationTicket(
+        data: EmailVerificationTicketOptions,
+        cb?: (err: Error, data: any) => void,
+    ): void;
 
     // Logs
     getLog(params: ObjectWithId): Promise<LogEvent>;
-    getLog(params: ObjectWithId, cb?: (err: Error, data: LogEvent) => void): void;
+    getLog(
+        params: ObjectWithId,
+        cb?: (err: Error, data: LogEvent) => void,
+    ): void;
 
     getLogs(query?: LogsQuery): Promise<LogEvent[]>;
     getLogs(cb?: (err: Error, data: LogEvent[]) => void): void;
-    getLogs(query?: LogsQuery, cb?: (err: Error, data: LogEvent[]) => void): void;
+    getLogs(
+        query?: LogsQuery,
+        cb?: (err: Error, data: LogEvent[]) => void,
+    ): void;
 
     // Log streams
     getLogStreams(): Promise<LogStream[]>;
@@ -2167,19 +2548,28 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
 
     // Resource Server
     createResourceServer(data: CreateResourceServer): Promise<ResourceServer>;
-    createResourceServer(data: CreateResourceServer, cb?: (err: Error, data: ResourceServer) => void): void;
+    createResourceServer(
+        data: CreateResourceServer,
+        cb?: (err: Error, data: ResourceServer) => void,
+    ): void;
 
     getResourceServers(params: PagingOptions): Promise<ResourceServer[]>;
     getResourceServers(): Promise<ResourceServer[]>;
     getResourceServers(cb?: (err: Error, data: ResourceServer[]) => void): void;
 
     getResourceServer(data: ObjectWithId): Promise<ResourceServer>;
-    getResourceServer(data: ObjectWithId, cb?: (err: Error, data: ResourceServer) => void): void;
+    getResourceServer(
+        data: ObjectWithId,
+        cb?: (err: Error, data: ResourceServer) => void,
+    ): void;
 
     deleteResourceServer(params: ObjectWithId): Promise<void>;
     deleteResourceServer(params: ObjectWithId, cb?: (err: Error) => void): void;
 
-    updateResourceServer(params: ObjectWithId, data: ResourceServer): Promise<ResourceServer>;
+    updateResourceServer(
+        params: ObjectWithId,
+        data: ResourceServer,
+    ): Promise<ResourceServer>;
     updateResourceServer(
         params: ObjectWithId,
         data: ResourceServer,
@@ -2188,31 +2578,51 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
 
     // Custom Domains
     createCustomDomain(data: CreateDomainData): Promise<Domain>;
-    createCustomDomain(data: CreateDomainData, cb: (err: Error, domain: Domain) => void): void;
+    createCustomDomain(
+        data: CreateDomainData,
+        cb: (err: Error, domain: Domain) => void,
+    ): void;
 
     getCustomDomains(): Promise<Domain[]>;
     getCustomDomains(cb: (err: Error, data: Domain[]) => void): void;
 
     getCustomDomain(params: ObjectWithId): Promise<Domain>;
-    getCustomDomain(params: ObjectWithId, cb: (err: Error, data: Domain) => void): void;
+    getCustomDomain(
+        params: ObjectWithId,
+        cb: (err: Error, data: Domain) => void,
+    ): void;
 
     verifyCustomDomain(params: ObjectWithId): Promise<DomainVerification>;
-    verifyCustomDomain(params: ObjectWithId, cb: (err: Error, data: DomainVerification) => void): void;
+    verifyCustomDomain(
+        params: ObjectWithId,
+        cb: (err: Error, data: DomainVerification) => void,
+    ): void;
 
     deleteCustomDomain(params: ObjectWithId): Promise<void>;
     deleteCustomDomain(params: ObjectWithId, cb: (err: Error) => void): void;
 
     // User enrollment
     getGuardianEnrollment(params: ObjectWithId): Promise<Enrollment>;
-    getGuardianEnrollment(params: ObjectWithId, cb: (err: Error, response: Enrollment) => void): void;
+    getGuardianEnrollment(
+        params: ObjectWithId,
+        cb: (err: Error, response: Enrollment) => void,
+    ): void;
 
     getGuardianEnrollments(params: ObjectWithId): Promise<Enrollment[]>;
-    getGuardianEnrollments(params: ObjectWithId, cb: (err: Error, response: Enrollment[]) => void): void;
+    getGuardianEnrollments(
+        params: ObjectWithId,
+        cb: (err: Error, response: Enrollment[]) => void,
+    ): void;
 
     deleteGuardianEnrollment(params: ObjectWithId): Promise<void>;
-    deleteGuardianEnrollment(params: ObjectWithId, cb?: (err: Error) => void): void;
+    deleteGuardianEnrollment(
+        params: ObjectWithId,
+        cb?: (err: Error) => void,
+    ): void;
 
-    createGuardianEnrollmentTicket(data: SendEnrollmentTicketData): Promise<SendEnrollmentTicketResponse>;
+    createGuardianEnrollmentTicket(
+        data: SendEnrollmentTicketData,
+    ): Promise<SendEnrollmentTicketResponse>;
     createGuardianEnrollmentTicket(
         data: SendEnrollmentTicketData,
         cb: (err: Error, data: SendEnrollmentTicketResponse) => void,
@@ -2220,31 +2630,51 @@ export class ManagementClient<A = AppMetadata, U = UserMetadata> {
 
     // MFA invalidate remember browser
     invalidateRememberBrowser(params: ObjectWithId): Promise<void>;
-    invalidateRememberBrowser(params: ObjectWithId, cb?: (err: Error) => void): void;
+    invalidateRememberBrowser(
+        params: ObjectWithId,
+        cb?: (err: Error) => void,
+    ): void;
 
     // Grants
     getGrants(params: GetGrantsParams): Promise<GrantResponse[]>;
-    getGrants(params: GetGrantsParams, cb?: (err: Error, grants: GrantResponse[]) => void): void;
+    getGrants(
+        params: GetGrantsParams,
+        cb?: (err: Error, grants: GrantResponse[]) => void,
+    ): void;
 
     deleteGrant(params: ObjectWithId & { user_id: string }): Promise<void>;
-    deleteGrant(params: ObjectWithId & { user_id: string }, cb?: (err: Error) => void): void;
+    deleteGrant(
+        params: ObjectWithId & { user_id: string },
+        cb?: (err: Error) => void,
+    ): void;
 
     // Guardian Factors
     getGuardianFactors(): Promise<GuardianFactor[]>;
-    getGuardianFactors(cb?: (err: Error, guardianFactor: GuardianFactor[]) => void): void;
+    getGuardianFactors(
+        cb?: (err: Error, guardianFactor: GuardianFactor[]) => void,
+    ): void;
 }
 
 export class DatabaseAuthenticator<A = AppMetadata, U = UserMetadata> {
     constructor(options: DatabaseClientOptions, oauth: OAuthAuthenticator);
 
     changePassword(data: ResetPasswordOptions): Promise<any>;
-    changePassword(data: ResetPasswordOptions, cb: (err: Error, message: string) => void): void;
+    changePassword(
+        data: ResetPasswordOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
     requestChangePasswordEmail(data: ResetPasswordEmailOptions): Promise<any>;
-    requestChangePasswordEmail(data: ResetPasswordEmailOptions, cb: (err: Error, message: string) => void): void;
+    requestChangePasswordEmail(
+        data: ResetPasswordEmailOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
 
     signIn(data: SignInOptions): Promise<SignInToken>;
-    signIn(data: SignInOptions, cb: (err: Error, data: SignInToken) => void): void;
+    signIn(
+        data: SignInOptions,
+        cb: (err: Error, data: SignInToken) => void,
+    ): void;
 
     signUp(data: SignUpUserData): Promise<User<A, U>>;
     signUp(data: SignUpUserData, cb: (err: Error, data: User) => void): void;
@@ -2258,7 +2688,10 @@ export class OAuthAuthenticator {
         options: PasswordGrantOptions,
         additionalOptions: PasswordGrantAdditionalOptions,
     ): Promise<SignInToken>;
-    passwordGrant(options: PasswordGrantOptions, cb: (err: Error, response: SignInToken) => void): void;
+    passwordGrant(
+        options: PasswordGrantOptions,
+        cb: (err: Error, response: SignInToken) => void,
+    ): void;
     passwordGrant(
         options: PasswordGrantOptions,
         additionalOptions: PasswordGrantAdditionalOptions,
@@ -2266,35 +2699,71 @@ export class OAuthAuthenticator {
     ): void;
 
     signIn(data: SignInOptions): Promise<SignInToken>;
-    signIn(data: SignInOptions, cb: (err: Error, data: SignInToken) => void): void;
+    signIn(
+        data: SignInOptions,
+        cb: (err: Error, data: SignInToken) => void,
+    ): void;
 
     socialSignIn(data: SocialSignInOptions): Promise<SignInToken>;
-    socialSignIn(data: SocialSignInOptions, cb: (err: Error, data: SignInToken) => void): void;
+    socialSignIn(
+        data: SocialSignInOptions,
+        cb: (err: Error, data: SignInToken) => void,
+    ): void;
 
-    authorizationCodeGrant(data: AuthorizationCodeGrantOptions): Promise<SignInToken>;
-    authorizationCodeGrant(data: AuthorizationCodeGrantOptions, cb: (err: Error, data: SignInToken) => void): void;
+    authorizationCodeGrant(
+        data: AuthorizationCodeGrantOptions,
+    ): Promise<SignInToken>;
+    authorizationCodeGrant(
+        data: AuthorizationCodeGrantOptions,
+        cb: (err: Error, data: SignInToken) => void,
+    ): void;
 
     refreshToken(options: RefreshTokenOptions): Promise<TokenResponse>;
-    refreshToken(options: RefreshTokenOptions, cb: (err: Error, response: TokenResponse) => void): void;
+    refreshToken(
+        options: RefreshTokenOptions,
+        cb: (err: Error, response: TokenResponse) => void,
+    ): void;
 }
 
 export class PasswordlessAuthenticator {
     constructor(options: PasswordLessClientOptions, oauth: OAuthAuthenticator);
 
-    signIn(userData: SignInOptions, options?: PasswordlessOptions): Promise<SignInToken>;
-    signIn(userData: SignInOptions, cb: (err: Error, data: SignInToken) => void): void;
-    signIn(userData: SignInOptions, options: PasswordlessOptions, cb: (err: Error, data: SignInToken) => void): void;
+    signIn(
+        userData: SignInOptions,
+        options?: PasswordlessOptions,
+    ): Promise<SignInToken>;
+    signIn(
+        userData: SignInOptions,
+        cb: (err: Error, data: SignInToken) => void,
+    ): void;
+    signIn(
+        userData: SignInOptions,
+        options: PasswordlessOptions,
+        cb: (err: Error, data: SignInToken) => void,
+    ): void;
 
-    sendEmail(userData: RequestEmailCodeOrLinkOptions, options?: PasswordlessOptions): Promise<any>;
-    sendEmail(userData: RequestEmailCodeOrLinkOptions, cb: (err: Error, message: string) => void): void;
+    sendEmail(
+        userData: RequestEmailCodeOrLinkOptions,
+        options?: PasswordlessOptions,
+    ): Promise<any>;
+    sendEmail(
+        userData: RequestEmailCodeOrLinkOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
     sendEmail(
         userData: RequestEmailCodeOrLinkOptions,
         options: PasswordlessOptions,
         cb: (err: Error, message: string) => void,
     ): void;
 
-    sendSMS(userData: RequestSMSCodeOptions, options?: PasswordlessOptions): Promise<any>;
-    sendSMS(userData: RequestSMSCodeOptions, cb: (err: Error, message: string) => void): void;
+    sendSMS(
+        userData: RequestSMSCodeOptions,
+        options?: PasswordlessOptions,
+    ): Promise<any>;
+    sendSMS(
+        userData: RequestSMSCodeOptions,
+        cb: (err: Error, message: string) => void,
+    ): void;
     sendSMS(
         userData: RequestSMSCodeOptions,
         options: PasswordlessOptions,
@@ -2312,39 +2781,72 @@ export class TokensManager {
     constructor(options: TokensManagerOptions);
 
     revokeRefreshToken(data: RevokeRefreshTokenOptions): Promise<void>;
-    revokeRefreshToken(data: RevokeRefreshTokenOptions, cb: (err: Error) => void): void;
+    revokeRefreshToken(
+        data: RevokeRefreshTokenOptions,
+        cb: (err: Error) => void,
+    ): void;
 }
 
 export class UsersManager<A = AppMetadata, U = UserMetadata> {
     constructor(options: UsersOptions);
 
     getInfo(accessToken: string): Promise<User<A, U>>;
-    getInfo(accessToken: string, cb: (err: Error, user: User<A, U>) => void): void;
+    getInfo(
+        accessToken: string,
+        cb: (err: Error, user: User<A, U>) => void,
+    ): void;
 
-    impersonate(userId: string, settings: ImpersonateSettingOptions): Promise<any>;
-    impersonate(userId: string, settings: ImpersonateSettingOptions, cb: (err: Error, data: any) => void): void;
+    impersonate(
+        userId: string,
+        settings: ImpersonateSettingOptions,
+    ): Promise<any>;
+    impersonate(
+        userId: string,
+        settings: ImpersonateSettingOptions,
+        cb: (err: Error, data: any) => void,
+    ): void;
 
     getUserOrganizations(data: ObjectWithId): Promise<Organization[]>;
-    getUserOrganizations(data: ObjectWithId, cb: (err: Error, orgs: Organization[]) => void): void;
+    getUserOrganizations(
+        data: ObjectWithId,
+        cb: (err: Error, orgs: Organization[]) => void,
+    ): void;
 
-    getAuthenticationMethods(data: ObjectWithId): Promise<AuthenticationMethod[]>;
+    getAuthenticationMethods(
+        data: ObjectWithId,
+    ): Promise<AuthenticationMethod[]>;
     getAuthenticationMethods(
         data: ObjectWithId,
         cb: (err: Error, authenticationMethods: AuthenticationMethod[]) => void,
     ): void;
 
-    getAuthenticationMethodById(data: AuthenticationMethodByIdOptions): Promise<AuthenticationMethod>;
+    getAuthenticationMethodById(
+        data: AuthenticationMethodByIdOptions,
+    ): Promise<AuthenticationMethod>;
     getAuthenticationMethodById(
         data: AuthenticationMethodByIdOptions,
         cb: (err: Error, authenticationMethod: AuthenticationMethod) => void,
     ): void;
 
     deleteAuthenticationMethods(data: ObjectWithId): Promise<void>;
-    deleteAuthenticationMethods(data: ObjectWithId, cb: (err: Error) => void): void;
+    deleteAuthenticationMethods(
+        data: ObjectWithId,
+        cb: (err: Error) => void,
+    ): void;
 
-    deleteAuthenticationMethodById(data: AuthenticationMethodByIdOptions): Promise<void>;
-    deleteAuthenticationMethodById(data: AuthenticationMethodByIdOptions, cb: (err: Error) => void): void;
+    deleteAuthenticationMethodById(
+        data: AuthenticationMethodByIdOptions,
+    ): Promise<void>;
+    deleteAuthenticationMethodById(
+        data: AuthenticationMethodByIdOptions,
+        cb: (err: Error) => void,
+    ): void;
 
-    regenerateRecoveryCode(data: ObjectWithId): Promise<{ recovery_code: string }>;
-    regenerateRecoveryCode(data: ObjectWithId, cb: (err: Error, res: { recovery_code: string }) => void): void;
+    regenerateRecoveryCode(
+        data: ObjectWithId,
+    ): Promise<{ recovery_code: string }>;
+    regenerateRecoveryCode(
+        data: ObjectWithId,
+        cb: (err: Error, res: { recovery_code: string }) => void,
+    ): void;
 }

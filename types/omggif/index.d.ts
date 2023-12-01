@@ -42,9 +42,21 @@ export class GifWriter {
      * @param buf - Uint8Array is a common choice.
      * Can be any type that supports the bracket accessor: Array, Uint8Array, Node Buffer, etc.
      */
-    constructor(buf: GifBinary, width: number, height: number, gopts?: GifOptions);
+    constructor(
+        buf: GifBinary,
+        width: number,
+        height: number,
+        gopts?: GifOptions,
+    );
 
-    addFrame(x: number, y: number, w: number, h: number, indexed_pixels: number[], opts?: FrameOptions): number;
+    addFrame(
+        x: number,
+        y: number,
+        w: number,
+        h: number,
+        indexed_pixels: number[],
+        opts?: FrameOptions,
+    ): number;
     end(): number;
     getOutputBuffer(): GifBinary;
     getOutputBufferPosition(): number;
@@ -62,8 +74,14 @@ export class GifReader {
      */
     constructor(buf: GifBinary);
 
-    decodeAndBlitFrameBGRA(frame_num: number, pixels: number[] | Uint8Array | Uint8ClampedArray): void;
-    decodeAndBlitFrameRGBA(frame_num: number, pixels: number[] | Uint8Array | Uint8ClampedArray): void;
+    decodeAndBlitFrameBGRA(
+        frame_num: number,
+        pixels: number[] | Uint8Array | Uint8ClampedArray,
+    ): void;
+    decodeAndBlitFrameRGBA(
+        frame_num: number,
+        pixels: number[] | Uint8Array | Uint8ClampedArray,
+    ): void;
     frameInfo(frame_num: number): Frame;
     loopCount(): number;
     numFrames(): number;

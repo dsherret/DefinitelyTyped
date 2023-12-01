@@ -158,7 +158,13 @@ declare namespace cytoscapeKlay {
          * - BALANCED Creates a balanced layout from the four possible candidates.
          * @default 'NONE'
          */
-        fixedAlignment?: "NONE" | "LEFTUP" | "RIGHTUP" | "LEFTDOWN" | "RIGHTDOWN" | "BALANCED";
+        fixedAlignment?:
+            | "NONE"
+            | "LEFTUP"
+            | "RIGHTUP"
+            | "LEFTDOWN"
+            | "RIGHTDOWN"
+            | "BALANCED";
 
         /**
          * Factor by which the usual spacing is multiplied to determine the in-layer spacing between objects.
@@ -212,7 +218,11 @@ declare namespace cytoscapeKlay {
          * - SIMPLE Minimizes the area at the expense of... well, pretty much everything else.
          * @default 'BRANDES_KOEPF'
          */
-        nodePlacement?: "BRANDES_KOEPF" | "LINEAR_SEGMENTS" | "INTERACTIVE" | "SIMPLE";
+        nodePlacement?:
+            | "BRANDES_KOEPF"
+            | "LINEAR_SEGMENTS"
+            | "INTERACTIVE"
+            | "SIMPLE";
 
         /**
          * Seed used for pseudo-random number generators to control the layout algorithm; 0 means a new seed is generated

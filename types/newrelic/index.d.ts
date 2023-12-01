@@ -59,14 +59,19 @@ export function setControllerName(name: string, action: string): void;
  *
  * Most recently set value wins.
  */
-export function addCustomAttribute(key: string, value: string | number | boolean): void;
+export function addCustomAttribute(
+    key: string,
+    value: string | number | boolean,
+): void;
 
 /**
  * Adds all custom attributes in an object to the current transaction.
  *
  * See documentation for `addCustomAttribute` for more information on setting custom attributes.
  */
-export function addCustomAttributes(atts: { [key: string]: string | number | boolean }): void;
+export function addCustomAttributes(atts: {
+    [key: string]: string | number | boolean;
+}): void;
 
 /**
  * Add a custom attribute to the the currently executing span.
@@ -76,14 +81,19 @@ export function addCustomAttributes(atts: { [key: string]: string | number | boo
  *
  * Most recently set value wins.
  */
-export function addCustomSpanAttribute(key: string, value: string | number | boolean): void;
+export function addCustomSpanAttribute(
+    key: string,
+    value: string | number | boolean,
+): void;
 
 /**
  * Adds all custom attributes in an object to the the currently executing span.
  *
  * See documentation for `addCustomSpanAttribute` for more information on setting custom attributes.
  */
-export function addCustomSpanAttributes(atts: { [key: string]: string | number | boolean }): void;
+export function addCustomSpanAttributes(atts: {
+    [key: string]: string | number | boolean;
+}): void;
 
 /**
  * Send errors to New Relic that you've already handled yourself.
@@ -193,7 +203,10 @@ export function addIgnoringRule(pattern: RegExp | string): void;
  *
  * Do *not* reuse the headers between users, or even between requests.
  */
-export function getBrowserTimingHeader(options?: { nonce?: string; hasToRemoveScriptWrapper?: boolean }): string;
+export function getBrowserTimingHeader(options?: {
+    nonce?: string;
+    hasToRemoveScriptWrapper?: boolean;
+}): string;
 
 /**
  * Instrument a particular method to improve visibility into a transaction,
@@ -229,7 +242,10 @@ export function startSegment<T, C extends (...args: any[]) => any>(
  *
  * This method has been deprecated in favor of newrelic.startSegment()
  */
-export function createTracer<T extends (...args: any[]) => any>(name: string, handle: T): T;
+export function createTracer<T extends (...args: any[]) => any>(
+    name: string,
+    handle: T,
+): T;
 
 /**
  * Creates and starts a web transaction to record work done in the handle supplied.
@@ -255,8 +271,14 @@ export function createTracer<T extends (...args: any[]) => any>(name: string, ha
  * The `url` is used to name and group related transactions in APM,
  * so it should be a generic name and not include any variable parameters.
  */
-export function startWebTransaction<T>(url: string, handle: Promise<T>): Promise<T>;
-export function startWebTransaction<T>(url: string, handle: (...args: any[]) => T): T;
+export function startWebTransaction<T>(
+    url: string,
+    handle: Promise<T>,
+): Promise<T>;
+export function startWebTransaction<T>(
+    url: string,
+    handle: (...args: any[]) => T,
+): T;
 
 /**
  * Creates and starts a background transaction to record work done in the handle supplied.
@@ -286,10 +308,24 @@ export function startWebTransaction<T>(url: string, handle: (...args: any[]) => 
  * For more information see:
  *  https://docs.newrelic.com/docs/apm/applications-menu/monitoring/transactions-page#txn-type-dropdown
  */
-export function startBackgroundTransaction<T>(name: string, handle: Promise<T>): Promise<T>;
-export function startBackgroundTransaction<T>(name: string, handle: (...args: any[]) => T): T;
-export function startBackgroundTransaction<T>(name: string, group: string, handle: Promise<T>): Promise<T>;
-export function startBackgroundTransaction<T>(name: string, group: string, handle: (...args: any[]) => T): T;
+export function startBackgroundTransaction<T>(
+    name: string,
+    handle: Promise<T>,
+): Promise<T>;
+export function startBackgroundTransaction<T>(
+    name: string,
+    handle: (...args: any[]) => T,
+): T;
+export function startBackgroundTransaction<T>(
+    name: string,
+    group: string,
+    handle: Promise<T>,
+): Promise<T>;
+export function startBackgroundTransaction<T>(
+    name: string,
+    group: string,
+    handle: (...args: any[]) => T,
+): T;
 
 /**
  * End the current web or background custom transaction.
@@ -326,7 +362,10 @@ export function incrementMetric(name: string, value?: number): void;
  * `eventType` must be an alphanumeric string less than 255 characters.
  * The keys of `attributes` must be shorter than 255 characters.
  */
-export function recordCustomEvent(eventType: string, attributes: { [keys: string]: boolean | number | string }): void;
+export function recordCustomEvent(
+    eventType: string,
+    attributes: { [keys: string]: boolean | number | string },
+): void;
 
 /**
  * Registers an instrumentation function.
@@ -356,7 +395,10 @@ export const instrumentDatastore: Instrument;
  * The instrumentLoadedModule method allows you to add stock instrumentation to specific modules
  * in situations where it's impossible to have require('newrelic'); as the first line of your app's main module.
  */
-export function instrumentLoadedModule(moduleName: string, moduleInstance: any): boolean;
+export function instrumentLoadedModule(
+    moduleName: string,
+    moduleInstance: any,
+): boolean;
 
 /**
  * Sets an instrumentation callback for a web framework module.
@@ -400,7 +442,9 @@ export function shutdown(
  * It will only contain items with meaningful values. For instance, if distributed tracing is disabled,
  * trace.id will not be included.
  */
-export function getLinkingMetadata(omitSupportability?: boolean): LinkingMetadata;
+export function getLinkingMetadata(
+    omitSupportability?: boolean,
+): LinkingMetadata;
 
 /**
  * Returns and object containing the current trace ID and span ID.
@@ -414,16 +458,29 @@ export function getTraceMetadata(): TraceMetadata;
  * The handler should be an AWS Lambda handler function.
  * Returns a function with identical signature to the provided handler function.
  */
-export function setLambdaHandler<T extends (...args: any[]) => any>(handler: T): T;
+export function setLambdaHandler<T extends (...args: any[]) => any>(
+    handler: T,
+): T;
 
 /**
  * Obfuscates SQL for a given database engine.
  */
-export function obfuscateSql(sql: string, dialect?: "mysql" | "postgres" | "cassandra" | "oracle"): string;
+export function obfuscateSql(
+    sql: string,
+    dialect?: "mysql" | "postgres" | "cassandra" | "oracle",
+): string;
 
 export interface Instrument {
-    (opts: { moduleName: string; onRequire: () => void; onError?: ((err: Error) => void) | undefined }): void;
-    (moduleName: string, onRequire: () => void, onError?: (err: Error) => void): void;
+    (opts: {
+        moduleName: string;
+        onRequire: () => void;
+        onError?: ((err: Error) => void) | undefined;
+    }): void;
+    (
+        moduleName: string,
+        onRequire: () => void,
+        onError?: (err: Error) => void,
+    ): void;
 }
 
 export interface Metric {
@@ -446,7 +503,10 @@ export interface DistributedTracePayload {
     httpSafe(): string;
 }
 
-export type DistributedTraceHeaders = Record<string, number | string | string[] | undefined>;
+export type DistributedTraceHeaders = Record<
+    string,
+    number | string | string[] | undefined
+>;
 
 export interface TransactionHandle {
     /**
@@ -475,7 +535,10 @@ export interface TransactionHandle {
      *
      * Check the docs for valid transport types. If an invalid type is provided, it will fall back to "Unknown".
      */
-    acceptDistributedTraceHeaders(transportType: string, headers: DistributedTraceHeaders): void;
+    acceptDistributedTraceHeaders(
+        transportType: string,
+        headers: DistributedTraceHeaders,
+    ): void;
 
     /**
      * Return whether this Transaction is being sampled

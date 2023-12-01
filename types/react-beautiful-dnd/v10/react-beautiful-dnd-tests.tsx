@@ -17,12 +17,10 @@ interface Item {
 }
 
 const getItems = (count: number): Item[] => {
-    return Array
-        .from({ length: count }, (v, k) => k)
-        .map(k => ({
-            id: `item-${k}`,
-            content: `item ${k}`,
-        }));
+    return Array.from({ length: count }, (v, k) => k).map((k) => ({
+        id: `item-${k}`,
+        content: `item ${k}`,
+    }));
 };
 
 const reorder = (list: any[], startIndex: number, endIndex: number) => {
@@ -40,7 +38,11 @@ const getItemStyle = (isDragging: boolean, draggableStyle: any) => ({
 });
 
 const getListStyle = (snapshot: DroppableStateSnapshot) => ({
-    background: snapshot.draggingFromThisWith ? "lightpink" : snapshot.isDraggingOver ? "lightblue" : "lightgrey",
+    background: snapshot.draggingFromThisWith
+        ? "lightpink"
+        : snapshot.isDraggingOver
+          ? "lightblue"
+          : "lightgrey",
     width: 250,
 });
 
@@ -99,9 +101,17 @@ class App extends React.Component<{}, AppState> {
                 onDragUpdate={this.onDragUpdate}
                 onDragEnd={this.onDragEnd}
             >
-                <Droppable droppableId="droppable" ignoreContainerClipping={false} isCombineEnabled={true}>
+                <Droppable
+                    droppableId="droppable"
+                    ignoreContainerClipping={false}
+                    isCombineEnabled={true}
+                >
                     {(provided, snapshot) => (
-                        <div ref={provided.innerRef} style={getListStyle(snapshot)} {...provided.droppableProps}>
+                        <div
+                            ref={provided.innerRef}
+                            style={getListStyle(snapshot)}
+                            {...provided.droppableProps}
+                        >
                             {this.state.items.map((item, index) => (
                                 <Draggable
                                     key={item.id}
@@ -115,7 +125,11 @@ class App extends React.Component<{}, AppState> {
                                                 ref={provided.innerRef}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
-                                                style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}
+                                                style={getItemStyle(
+                                                    snapshot.isDragging,
+                                                    provided.draggableProps
+                                                        .style,
+                                                )}
                                             >
                                                 {item.content}
                                             </div>

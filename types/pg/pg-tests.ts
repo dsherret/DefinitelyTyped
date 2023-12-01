@@ -1,11 +1,20 @@
 import { connect } from "net";
-import { Client, Connection, CustomTypesConfig, DatabaseError, defaults, Pool, QueryArrayConfig, types } from "pg";
+import {
+    Client,
+    Connection,
+    CustomTypesConfig,
+    DatabaseError,
+    defaults,
+    Pool,
+    QueryArrayConfig,
+    types,
+} from "pg";
 import TypeOverrides = require("pg/lib/type-overrides");
 import { NoticeMessage } from "pg-protocol/dist/messages";
 
 // https://github.com/brianc/node-pg-types
 // tslint:disable-next-line no-unnecessary-callback-wrapper
-types.setTypeParser(20, val => Number(val));
+types.setTypeParser(20, (val) => Number(val));
 
 const poolSize: number | undefined = defaults.poolSize;
 const poolIdleTimeout: number | undefined = defaults.poolIdleTimeout;
@@ -30,8 +39,10 @@ const host: string = client.host;
 const password: string | undefined = client.password;
 const ssl: boolean = client.ssl;
 
-client.on("notice", (notice: NoticeMessage) => console.warn(`${notice.severity}: ${notice.message}`));
-client.connect(err => {
+client.on("notice", (notice: NoticeMessage) =>
+    console.warn(`${notice.severity}: ${notice.message}`),
+);
+client.connect((err) => {
     if (err) {
         console.error("Could not connect to postgres", err);
         return;
@@ -53,7 +64,7 @@ client.on("end", () => console.log("Client was disconnected."));
 client
     .connect()
     .then(() => console.log("connected"))
-    .catch(e => console.error("connection error", e.stack));
+    .catch((e) => console.error("connection error", e.stack));
 
 client.query("SELECT NOW()", (err, res) => {
     if (err) throw err;
@@ -71,11 +82,15 @@ interface Person {
     name: string;
 }
 
-client.query<Person, [string]>("SELECT $1::text as name", ["brianc"], (err, res) => {
-    if (err) throw err;
-    console.log(res.rows[0].name);
-    client.end();
-});
+client.query<Person, [string]>(
+    "SELECT $1::text as name",
+    ["brianc"],
+    (err, res) => {
+        if (err) throw err;
+        console.log(res.rows[0].name);
+        client.end();
+    },
+);
 
 const query = {
     name: "get-name",
@@ -87,25 +102,25 @@ client.query(query, (err, res) => {
         console.error(err.stack);
     } else {
         console.log(res.rows);
-        console.log(res.fields.map(f => f.name));
+        console.log(res.fields.map((f) => f.name));
     }
 });
 client
     .query(query)
-    .then(res => {
+    .then((res) => {
         console.log(res.rows);
-        console.log(res.fields.map(f => f.name));
+        console.log(res.fields.map((f) => f.name));
     })
-    .catch(e => {
+    .catch((e) => {
         console.error(e.stack);
     });
 client
     .query(query, ["brianc"])
-    .then(res => {
+    .then((res) => {
         console.log(res.rows);
-        console.log(res.fields.map(f => f.name));
+        console.log(res.fields.map((f) => f.name));
     })
-    .catch(e => {
+    .catch((e) => {
         console.error(e.stack);
     });
 
@@ -120,16 +135,16 @@ client.query(queryArrMode, (err, res) => {
         console.error(err.stack);
     } else {
         console.log(res.rows);
-        console.log(res.fields.map(f => f.name));
+        console.log(res.fields.map((f) => f.name));
     }
 });
 client
     .query(queryArrMode)
-    .then(res => {
+    .then((res) => {
         console.log(res.rows);
-        console.log(res.fields.map(f => f.name));
+        console.log(res.fields.map((f) => f.name));
     })
-    .catch(e => {
+    .catch((e) => {
         console.error(e.stack);
     });
 client
@@ -137,7 +152,7 @@ client
         text: "select 1",
         rowMode: "array",
     })
-    .then(res => console.log(res.fields[0]));
+    .then((res) => console.log(res.fields[0]));
 
 const customTypes: CustomTypesConfig = {
     getTypeParser: () => () => "aCustomTypeParser!",
@@ -154,11 +169,11 @@ client.query(queryCustomTypes, (err, res) => {
         console.error(err.stack);
     } else {
         console.log(res.rows);
-        console.log(res.fields.map(f => f.name));
+        console.log(res.fields.map((f) => f.name));
     }
 });
 
-client.end(err => {
+client.end((err) => {
     console.log("client has disconnected");
     if (err) {
         console.log("error during disconnection", err.stack);
@@ -168,7 +183,7 @@ client.end(err => {
 client
     .end()
     .then(() => console.log("client has disconnected"))
-    .catch(err => console.error("error during disconnection", err.stack));
+    .catch((err) => console.error("error during disconnection", err.stack));
 
 const clientCustomQueryTypes = new Client({
     host: "my.database-server.com",
@@ -185,14 +200,14 @@ clientCustomQueryTypes.query(query, (err, res) => {
         console.error(err.stack);
     } else {
         console.log(res.rows);
-        console.log(res.fields.map(f => f.name));
+        console.log(res.fields.map((f) => f.name));
     }
 });
 
 clientCustomQueryTypes
     .end()
     .then(() => console.log("client has disconnected"))
-    .catch(err => console.error("error during disconnection", err.stack));
+    .catch((err) => console.error("error during disconnection", err.stack));
 
 const customTypeOverrides = new TypeOverrides();
 customTypeOverrides.setTypeParser(types.builtins.INT8, BigInt);
@@ -207,7 +222,8 @@ customTypeOverrides.setTypeParser(types.builtins.INT8, BigInt);
 const poolParameterlessCtor = new Pool();
 
 const poolOne = new Pool({
-    connectionString: "postgresql://dbuser:secretpassword@database.server.com:3211/mydb",
+    connectionString:
+        "postgresql://dbuser:secretpassword@database.server.com:3211/mydb",
 });
 
 const pool = new Pool({
@@ -242,15 +258,23 @@ pool.connect((err, client, done) => {
     });
 });
 
-pool.connect().then(client => {
+pool.connect().then((client) => {
     client
-        .query({ text: "SELECT $1::int AS number", values: ["1"], rowMode: "array" })
-        .then(result => {
-            console.log(result.rowCount, result.rows[0][0], result.fields[0].name);
+        .query({
+            text: "SELECT $1::int AS number",
+            values: ["1"],
+            rowMode: "array",
+        })
+        .then((result) => {
+            console.log(
+                result.rowCount,
+                result.rows[0][0],
+                result.fields[0].name,
+            );
         })
         .then(
             () => client.release(),
-            e => client.release(e),
+            (e) => client.release(e),
         );
 });
 
@@ -294,11 +318,11 @@ pool.query("SELECT $1::text as name", ["brianc"], (err, result) => {
 });
 
 pool.query("SELECT $1::text as name", ["brianc"])
-    .then(res => console.log(res.rows[0].name))
-    .catch(err => console.error("Error executing query", err.stack));
+    .then((res) => console.log(res.rows[0].name))
+    .catch((err) => console.error("Error executing query", err.stack));
 pool.query({ text: "SELECT $1::text as name" }, ["brianc"])
-    .then(res => console.log(res.rows[0].name))
-    .catch(err => console.error("Error executing query", err.stack));
+    .then((res) => console.log(res.rows[0].name))
+    .catch((err) => console.error("Error executing query", err.stack));
 
 pool.end(() => {
     console.log("pool has ended");

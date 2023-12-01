@@ -73,7 +73,11 @@ interface JQueryAddressStatic {
     /**
      * Sets a query parameter value. Appending is disabled by default but can be enabled for array values.
      */
-    parameter(name: string, value: string, append: boolean): JQueryAddressStatic;
+    parameter(
+        name: string,
+        value: string,
+        append: boolean,
+    ): JQueryAddressStatic;
     /**
      * Provides a list of all the query parameter names.
      */

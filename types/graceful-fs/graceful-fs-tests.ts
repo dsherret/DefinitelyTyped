@@ -17,7 +17,7 @@ const _fs: typeof fs = gracefulified;
 gracefulified.lutimes; // $ExpectType typeof lutimes
 promisify(gracefulified.lutimes); // $ExpectType (path: PathLike, atime: TimeLike, mtime: TimeLike) => Promise<void>
 
-fs.lutimes(buf, str, str, err => {
+fs.lutimes(buf, str, str, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.lutimesSync(buf, str, str);

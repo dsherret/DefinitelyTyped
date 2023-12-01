@@ -133,7 +133,9 @@ declare const container: HTMLElement;
 }
 
 {
-    const validData: ReadonlyArray<h337.DataPoint<"count", "xPos", "yPos">> = [{ xPos: 1, yPos: 2, count: 1 }];
+    const validData: ReadonlyArray<h337.DataPoint<"count", "xPos", "yPos">> = [
+        { xPos: 1, yPos: 2, count: 1 },
+    ];
 
     const heatmap = h337.create<"count", "xPos", "yPos">({ container });
     // @ts-expect-error
@@ -235,7 +237,7 @@ declare const container: HTMLElement;
         "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
         {
             attribution:
-                "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://cloudmade.com\">CloudMade</a>",
+                'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>',
             maxZoom: 18,
         },
     );
@@ -259,7 +261,7 @@ declare const container: HTMLElement;
 
     const config: h337.HeatmapOverlayConfiguration<"count"> = {
         radius: 2,
-        maxOpacity: .8,
+        maxOpacity: 0.8,
         scaleRadius: true,
         useLocalExtrema: true,
         latField: "lat",

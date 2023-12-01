@@ -33,8 +33,8 @@ declare namespace intercom {
         bind(socket: any, options?: intercom.SocketBindingOptions): void;
     }
     interface SocketBindingOptions {
-        send?: any; /* boolean | (name: string, message: any)=>any */
-        receive?: any; /* boolean | (name: string, message: any)=>any */
+        send?: any /* boolean | (name: string, message: any)=>any */;
+        receive?: any /* boolean | (name: string, message: any)=>any */;
     }
 }
 

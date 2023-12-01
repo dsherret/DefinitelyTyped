@@ -3,7 +3,7 @@ import * as AsObjects from "stream-csv-as-json/AsObjects";
 import * as Parser from "stream-csv-as-json/Parser";
 import * as Stringer from "stream-csv-as-json/Stringer";
 
-const used = (array: any[]) => array.forEach(value => console.log(!!value));
+const used = (array: any[]) => array.forEach((value) => console.log(!!value));
 
 {
     // creating parser with the main module
@@ -29,8 +29,15 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     const p1: Parser = new Parser({ packValues: false });
     const p2: Parser = Parser.make({ separator: "/" });
     const p3: Parser = Parser.parser({ streamValues: false });
-    const p4: Parser.make.Constructor = Parser.make({ packValues: false, packStrings: true });
-    const p5: Parser.parser.Constructor = Parser.parser({ packValues: false, packStrings: true, streamStrings: false });
+    const p4: Parser.make.Constructor = Parser.make({
+        packValues: false,
+        packStrings: true,
+    });
+    const p5: Parser.parser.Constructor = Parser.parser({
+        packValues: false,
+        packStrings: true,
+        streamStrings: false,
+    });
 
     used([p1, p2, p3, p4, p5]);
 }

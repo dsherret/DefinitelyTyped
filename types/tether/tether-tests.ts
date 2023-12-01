@@ -11,8 +11,8 @@ new Tether({
     offset: "-15px 0",
     targetOffset: "0 0",
     classes: {
-        "element": false,
-        "target": "someClassName",
+        element: false,
+        target: "someClassName",
     },
 });
 

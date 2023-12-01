@@ -597,78 +597,78 @@ declare namespace Tee {
 
     var Line: {
         prototype: ILine;
-        new(values?: number[]): ILine;
+        new (values?: number[]): ILine;
     };
 
     var PointXY: {
         prototype: ICustomSeries;
-        new(values?: number[]): ICustomSeries;
+        new (values?: number[]): ICustomSeries;
     };
 
     var Area: {
         prototype: IArea;
-        new(values?: number[]): IArea;
+        new (values?: number[]): IArea;
     };
 
     var HorizArea: {
         prototype: IArea;
-        new(values?: number[]): IArea;
+        new (values?: number[]): IArea;
     };
 
     var Bar: {
         prototype: ICustomBar;
-        new(values?: number[]): ICustomBar;
+        new (values?: number[]): ICustomBar;
     };
 
     var HorizBar: {
         prototype: ICustomBar;
-        new(values?: number[]): ICustomBar;
+        new (values?: number[]): ICustomBar;
     };
 
     var Pie: {
         prototype: IPie;
-        new(values?: number[]): IPie;
+        new (values?: number[]): IPie;
     };
 
     var Donut: {
         prototype: IPie;
-        new(values?: number[]): IPie;
+        new (values?: number[]): IPie;
     };
 
     var Bubble: {
         prototype: IBubble;
-        new(values?: number[]): IBubble;
+        new (values?: number[]): IBubble;
     };
 
     var Gantt: {
         prototype: IGantt;
-        new(values?: number[]): IGantt;
+        new (values?: number[]): IGantt;
     };
 
     var Volume: {
         prototype: ICustomBar;
-        new(values?: number[]): ICustomBar;
+        new (values?: number[]): ICustomBar;
     };
 
     var Candle: {
         prototype: ICandle;
-        new(values?: number[]): ICandle;
+        new (values?: number[]): ICandle;
     };
 
     // TOOLS
 
     var CursorTool: {
         prototype: ICursorTool;
-        new(chart?: Chart): ICursorTool;
+        new (chart?: Chart): ICursorTool;
     };
 
     var DragTool: {
         prototype: IDragTool;
-        new(chart?: Chart): IDragTool;
+        new (chart?: Chart): IDragTool;
     };
 
     var ToolTip: {
         prototype: IToolTip;
-        new(chart?: Chart): IToolTip;
+        new (chart?: Chart): IToolTip;
     };
 }

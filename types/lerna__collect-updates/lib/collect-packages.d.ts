@@ -11,4 +11,7 @@ export interface PackageCollectorOptions {
 /**
  * Build a list of graph nodes, possibly including dependents, using predicate if available.
  */
-export function collectPackages(packages: PackageGraphNode, options: PackageCollectorOptions): PackageGraphNode[];
+export function collectPackages(
+    packages: PackageGraphNode,
+    options: PackageCollectorOptions,
+): PackageGraphNode[];

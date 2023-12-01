@@ -44,11 +44,19 @@ declare module "durandal/app" {
     /**
      *  simple helper function that wraps a call to modalDialog.show()
      */
-    export var showModal: (obj, activationData?, context?) => JQueryPromise<any>;
+    export var showModal: (
+        obj,
+        activationData?,
+        context?,
+    ) => JQueryPromise<any>;
     /**
      * A simple helper function that translates to return modalDialog.show(new MessageBox(message, title, options));
      */
-    export var showMessage: (message: string, title?: string, options?: any) => JQueryPromise<any>;
+    export var showMessage: (
+        message: string,
+        title?: string,
+        options?: any,
+    ) => JQueryPromise<any>;
     /**
      * Call this function to bootstrap the Durandal framework. It returns a promise which is resolved when the framework is configured and the dom is ready. At that point you are ready to set your root.
      */
@@ -59,7 +67,11 @@ declare module "durandal/app" {
      * @param transition If you have a splash screen, you may want to specify an optional transition to animate from the splash to your main shell.
      * @param applicationHost parameter is optional. If provided it should be an element id for the node into which the UI should be composed. If it is not provided the default is to look for an element with an id of "applicationHost".
      */
-    export var setRoot: (root: any, transition?: string, applicationHost?: string) => void;
+    export var setRoot: (
+        root: any,
+        transition?: string,
+        applicationHost?: string,
+    ) => void;
     /**
      * If you intend to run on mobile, you should also call app.adaptToDevice() before setting the root.
      */
@@ -67,7 +79,11 @@ declare module "durandal/app" {
     /**
      * The events parameter is a space delimited string containing one or more event identifiers. When one of these events is triggered, the callback is called and passed the event data provided by the trigger. The special events value of "all" binds all events on the object to the callback. If a context is provided, it will be bound to this for the callback. If the callback is omitted, then a promise-like object is returned from on. This object represents a subscription and has a then function used to register callbacks.
      */
-    export var on: (events: string, callback: Function, context?) => IEventSubscription;
+    export var on: (
+        events: string,
+        callback: Function,
+        context?,
+    ) => IEventSubscription;
     /**
      * Unwires callbacks from events. If no context is specified, all callbacks with different contexts will be removed. If no callback is specified, all callbacks for the event will be removed. If no event is specified, all event callbacks on the object will be removed.
      */
@@ -98,11 +114,19 @@ declare module "durandal/composition" {
     /**
      * the default implementation for switching the content during composition
      */
-    export var switchContent: (parent: HTMLElement, newChild: HTMLElement, settings: any) => void;
+    export var switchContent: (
+        parent: HTMLElement,
+        newChild: HTMLElement,
+        settings: any,
+    ) => void;
     /**
      * the default implementation on binding and showing content during composition
      */
-    export var bindAndShow: (element: HTMLElement, view: HTMLElement, settings: any) => void;
+    export var bindAndShow: (
+        element: HTMLElement,
+        view: HTMLElement,
+        settings: any,
+    ) => void;
     /**
      * the default strategy which is: return viewLocator.locateViewForObject(settings.model, settings.viewElements);
      */
@@ -122,7 +146,11 @@ declare module "durandal/composition" {
     /**
      * the default method for composing
      */
-    export var compose: (element: HTMLElement, settings: any, bindingContext: any) => void;
+    export var compose: (
+        element: HTMLElement,
+        settings: any,
+        bindingContext: any,
+    ) => void;
 }
 
 declare module "durandal/http" {
@@ -137,7 +165,11 @@ declare module "durandal/http" {
     /**
      * Performs a JSONP request to the specified url. You can optionally include a query object whose properties will be used to construct the query string. Also, you can pass the name of the API's callback parameter. If none is specified, it defaults to "callback". This api returns a promise. If you are using a callback parameter other than "callback" consistently throughout your application, then you may want to set the http module's defaultJSONPCallbackParam so that you don't need to specify it on every request.
      */
-    export var jsonp: (url: string, query: Object, callbackParam: string) => JQueryPromise<any>;
+    export var jsonp: (
+        url: string,
+        query: Object,
+        callbackParam: string,
+    ) => JQueryPromise<any>;
     /**
      * Performs an HTTP POST request on the specified URL with the supplied data. The data object is converted to JSON and the request is sent with an application/json content type. Thie function returns a promise which resolves with the returned response data.
      */
@@ -164,7 +196,10 @@ declare module "durandal/modalDialog" {
     /**
      * Pass a name and an object which defines the proper modal display pipeline via the functions described in the next section. This creates a new modal context or "modal style."
      */
-    export var addContext: (name: string, modalContext: any) => JQueryPromise<any>;
+    export var addContext: (
+        name: string,
+        modalContext: any,
+    ) => JQueryPromise<any>;
     /**
      * creates a settings obj from the supplied params
      */
@@ -172,7 +207,11 @@ declare module "durandal/modalDialog" {
     /**
      * This API uses the composition module to compose your obj into a modal popover. It also uses the viewModel module to check and enforce any screen lifecycle needs that obj may have. A promise is returned which will be resolved when the modal dialog is dismissed. The obj is the view model for your modal dialog, or a moduleId for the view model to load. Your view model instance will have a single property added to it by this mechanism called modal which represents the dialog infrastructure itself. This modal object has a single function called close which can be invoked to close the modal. You may also pass data to close which will be returned via the promise mechanism. The modal object also references it's owner, activator, the composition settings it was created with and its display context. Speaking of context, this parameter represents the display context or modal style. By default, there is one context registered with the system, named 'default'. If no context is specified, the default context with be used to display the modal. You can also specify activationData which is an arbitrary object that will be passed to your modal's activate function, if it has one.
      */
-    export var show: (obj: any, activationData: any, context: any) => JQueryPromise<any>;
+    export var show: (
+        obj: any,
+        activationData: any,
+        context: any,
+    ) => JQueryPromise<any>;
 }
 
 declare module "durandal/viewEngine" {
@@ -210,11 +249,18 @@ declare module "durandal/viewLocator" {
     /**
      * Allows you to set up a convention for mapping module folders to view folders. modulesPath is a string in the path that will be replaced by viewsPath. Partial views will be mapped to the "views" folder unless an areasPath is specified. All parameters are optional. If none are specified, the convention will map modules in a "viewmodels" folder to views in a "views" folder.
      */
-    export var useConvention: (modulesPath?: string, viewsPath?: string, areasPath?: string) => string;
+    export var useConvention: (
+        modulesPath?: string,
+        viewsPath?: string,
+        areasPath?: string,
+    ) => string;
     /**
      * This function takes in an object instance, which it then maps to a view id. That id is then passed to the locateView function and it is processed as above. If elementsToSearch are provided, those are passed along to locateView. Following is a description of how locateViewForObject determines the view for a given object instance.
      */
-    export var locateViewForObject: (obj: {}, elementsToSearch: HTMLElement[]) => JQueryPromise<any>;
+    export var locateViewForObject: (
+        obj: {},
+        elementsToSearch: HTMLElement[],
+    ) => JQueryPromise<any>;
     /**
      * This function does nothing by default which is why editCustomer.js is mapped to editCustomer.html (both have the same underlying id of editCustomer). Replace this function with your own implementation to easily create your own mapping logic based on moduleId.
      */
@@ -230,7 +276,11 @@ declare module "durandal/viewLocator" {
     /**
      * The viewOrUrlOrId parameter represents a url/id for the view. The file extension is not necessary (ie. .html). When this function is called, the viewEngine will be used to construct the view. The viewEngine is passed the finalized id and returns a constructed DOM sub-tree, which is returned from this function. If the viewOrUrlOrId is not a string but is actually a DOM node, then the DOM node will be immediately returned. Optionally, you can pass an area string and it along with the url will be passed to the view locator's translateViewIdToArea before constructing the final id to pass to the view engine. If you provide an array of DOM elements for elementsToSearch, before we call the view engine, we will search the existing array for a match and return it if found.
      */
-    export var locateView: (viewOrUrlOrId: any, area: string, elementsToSearch: HTMLElement[]) => JQueryPromise<any>;
+    export var locateView: (
+        viewOrUrlOrId: any,
+        area: string,
+        elementsToSearch: HTMLElement[],
+    ) => JQueryPromise<any>;
 }
 
 declare module "durandal/viewModel" {
@@ -243,7 +293,10 @@ declare module "durandal/viewModel" {
      */
     export var activator: {
         (): IDurandalViewModelActiveItem;
-        (initialActiveItem: any, settings?: IViewModelDefaults): IDurandalViewModelActiveItem;
+        (
+            initialActiveItem: any,
+            settings?: IViewModelDefaults,
+        ): IDurandalViewModelActiveItem;
     };
 }
 
@@ -251,7 +304,11 @@ declare module "durandal/viewModelBinder" {
     /**
      * Applies bindings to a view using a pre-existing bindingContext. This is used by the composition module when a view is supplied without a model. It allows the parent binding context to be preserved. If the optional obj parameter is supplied, a new binding context will be created that is a child of bindingContext with its model set to obj. This is used by the widget framework to provide the widget binding while allowing templated parts to access their surrounding scope.
      */
-    export var bindContext: (bindingContext: KnockoutBindingContext, view: HTMLElement, obj?: any) => void;
+    export var bindContext: (
+        bindingContext: KnockoutBindingContext,
+        view: HTMLElement,
+        obj?: any,
+    ) => void;
     /**
      * Databinds obj, which can be an arbitrary object, to view which is a dom sub-tree. If obj has a function called setView, then, following binding, this function will be called, providing obj with an opportunity to interact directly with the dom fragment that it is bound to.
      */
@@ -412,7 +469,11 @@ declare module "durandal/plugins/router" {
     /**
      * Returns the activatable instance from the supplied module.
      */
-    export var getActivatableInstance: (routeInfo: IRouteInfo, params: any, module: any) => any;
+    export var getActivatableInstance: (
+        routeInfo: IRouteInfo,
+        params: any,
+        module: any,
+    ) => any;
     /**
      * Causes the router to move backwards in page history.
      */
@@ -456,13 +517,22 @@ declare module "durandal/plugins/router" {
     /**
      * Works the same as mapRoute except that routes are automatically added to the visibleRoutes array.
      */
-    export var mapNav: (url: string, moduleId?: string, name?: string) => IRouteInfo;
+    export var mapNav: (
+        url: string,
+        moduleId?: string,
+        name?: string,
+    ) => IRouteInfo;
     /**
      * You can pass a single routeInfo to this function, or you can pass the basic configuration parameters. url is your url pattern, moduleId is the module path this pattern will map to, name is used as the document title and visible determines whether or not to include it in the router's visibleRoutes array for easy navigation UI binding.
      */
     export var mapRoute: {
         (route: IRouteInfoParameters): IRouteInfo;
-        (url: string, moduleId?: string, name?: string, visible?: boolean): IRouteInfo;
+        (
+            url: string,
+            moduleId?: string,
+            name?: string,
+            visible?: boolean,
+        ): IRouteInfo;
     };
     /**
      * This function takes an array of routeInfo objects or a single routeInfo object and uses it to configure the router. The finalized routeInfo (or array of infos) is returned.
@@ -478,7 +548,11 @@ declare module "durandal/plugins/router" {
     /**
      * Before any route is activated, the guardRoute funtion is called. You can plug into this function to add custom logic to allow, deny or redirect based on the requested route. To allow, return true. To deny, return false. To redirect, return a string with the hash or url. You may also return a promise for any of these values.
      */
-    export var guardRoute: (routeInfo: IRouteInfo, params: any, instance: any) => any;
+    export var guardRoute: (
+        routeInfo: IRouteInfo,
+        params: any,
+        instance: any,
+    ) => any;
 }
 
 declare module "durandal/widget" {

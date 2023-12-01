@@ -37,7 +37,9 @@ export class Viewport {
     unproject(xyz: CoordinatesZ, opts?: UnprojectOptions): CoordinatesZ;
 }
 
-export type Padding = number | { top: number; right: number; bottom: number; left: number };
+export type Padding =
+    | number
+    | { top: number; right: number; bottom: number; left: number };
 
 export type Bounds = [Coordinates, Coordinates];
 
@@ -67,10 +69,16 @@ export class WebMercatorViewport extends Viewport {
 
     projectFlat(lngLat: Coordinates, scale?: number): Coordinates;
     unprojectFlat(xy: Coordinates, scale?: number): Coordinates;
-    getMapCenterByLngLatPosition(opts: { lngLat: Coordinates; pos: Coordinates }): Coordinates;
+    getMapCenterByLngLatPosition(opts: {
+        lngLat: Coordinates;
+        pos: Coordinates;
+    }): Coordinates;
     fitBounds(
         bounds: Bounds,
-        opts?: { padding?: Padding | undefined; offset?: Coordinates | undefined },
+        opts?: {
+            padding?: Padding | undefined;
+            offset?: Coordinates | undefined;
+        },
     ): WebMercatorViewport;
 }
 
@@ -82,15 +90,13 @@ export interface FittedBounds {
     zoom: number;
 }
 
-export function fitBounds(
-    options: {
-        width: number;
-        height: number;
-        bounds: Bounds;
-        padding?: Padding | undefined;
-        offset?: Coordinates | undefined;
-    },
-): FittedBounds;
+export function fitBounds(options: {
+    width: number;
+    height: number;
+    bounds: Bounds;
+    padding?: Padding | undefined;
+    offset?: Coordinates | undefined;
+}): FittedBounds;
 
 export interface TransitionViewport {
     longitude: number;
@@ -113,7 +119,9 @@ export interface NormalizedViewportProps extends FlyToViewportProps {
     bearing: number;
 }
 
-export function normalizeViewportProps(props: ViewportProps): NormalizedViewportProps;
+export function normalizeViewportProps(
+    props: ViewportProps,
+): NormalizedViewportProps;
 
 export function flyToViewport(
     startProps: FlyToViewportProps,
@@ -125,7 +133,10 @@ export function lngLatToWorld(lngLat: Coordinates, scale: number): Coordinates;
 
 export function worldToLngLat(point: Coordinates, scale: number): Coordinates;
 
-export function worldToPixels(coordinates: Coordinates | CoordinatesZ, pixelProjectionMatrix: mat4): CoordinatesZ;
+export function worldToPixels(
+    coordinates: Coordinates | CoordinatesZ,
+    pixelProjectionMatrix: mat4,
+): CoordinatesZ;
 
 export function pixelsToWorld(
     pixels: Coordinates | CoordinatesZ,
@@ -153,33 +164,40 @@ export interface BaseDistanceScalesInput {
 }
 
 export type DistanceScalesInput =
-    | BaseDistanceScalesInput & { zoom: number }
-    | BaseDistanceScalesInput & { scale: number };
+    | (BaseDistanceScalesInput & { zoom: number })
+    | (BaseDistanceScalesInput & { scale: number });
 
-export interface BaseHighPrecisionDistanceScalesInput extends BaseDistanceScalesInput {
+export interface BaseHighPrecisionDistanceScalesInput
+    extends BaseDistanceScalesInput {
     highPrecision: true;
 }
 
 export type HighPrecisionDistanceScalesInput =
-    | BaseHighPrecisionDistanceScalesInput & { zoom: number }
-    | BaseHighPrecisionDistanceScalesInput & { scale: number };
+    | (BaseHighPrecisionDistanceScalesInput & { zoom: number })
+    | (BaseHighPrecisionDistanceScalesInput & { scale: number });
 
 export function getDistanceScales(input: DistanceScalesInput): DistanceScales;
-export function getDistanceScales(input: HighPrecisionDistanceScalesInput): HighPrecisionDistanceScales;
+export function getDistanceScales(
+    input: HighPrecisionDistanceScalesInput,
+): HighPrecisionDistanceScales;
 
-export function addMetersToLngLat(lngLat: Coordinates, xy: Coordinates): Coordinates;
-export function addMetersToLngLat(lngLatZ: CoordinatesZ, xyz: CoordinatesZ): CoordinatesZ;
+export function addMetersToLngLat(
+    lngLat: Coordinates,
+    xy: Coordinates,
+): Coordinates;
+export function addMetersToLngLat(
+    lngLatZ: CoordinatesZ,
+    xyz: CoordinatesZ,
+): CoordinatesZ;
 
-export function getViewMatrix(
-    input: {
-        height: number;
-        pitch: number;
-        bearing: number;
-        altitude: number;
-        center?: CoordinatesZ | undefined;
-        flipY?: boolean | undefined;
-    },
-): ViewMatrix;
+export function getViewMatrix(input: {
+    height: number;
+    pitch: number;
+    bearing: number;
+    altitude: number;
+    center?: CoordinatesZ | undefined;
+    flipY?: boolean | undefined;
+}): ViewMatrix;
 
 export interface ProjectionParametersInput {
     width: number;
@@ -198,6 +216,8 @@ export interface ProjectionParameters {
     far: number;
 }
 
-export function getProjectionParameters(input: ProjectionParametersInput): ProjectionParameters;
+export function getProjectionParameters(
+    input: ProjectionParametersInput,
+): ProjectionParameters;
 
 export function getProjectionMatrix(input: ProjectionParametersInput): mat4;

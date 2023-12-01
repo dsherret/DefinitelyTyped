@@ -4,7 +4,10 @@ import { Tag, WithContext as ReactTags } from "react-tag-input";
 
 const tags = Array({ id: "0", text: "test" }, { id: "1", text: "testing" });
 
-const suggestions = Array({ id: "0", text: "test" }, { id: "1", text: "testing" });
+const suggestions = Array(
+    { id: "0", text: "test" },
+    { id: "1", text: "testing" },
+);
 
 ReactDOM.render(
     <ReactTags
@@ -15,12 +18,12 @@ ReactDOM.render(
         labelField="Some label"
         handleAddition={(tag: Tag) => console.log("Add: " + tag.text)}
         handleDelete={(i: number) => console.log("Delete: " + i)}
-        handleDrag={(
-            tag: Tag,
-            currPos: number,
-            newPos: number,
-        ) => console.log("Drag: " + tag.text)}
-        handleInputChange={(value: string) => console.log("Changed to: ", value)}
+        handleDrag={(tag: Tag, currPos: number, newPos: number) =>
+            console.log("Drag: " + tag.text)
+        }
+        handleInputChange={(value: string) =>
+            console.log("Changed to: ", value)
+        }
         handleFilterSuggestions={(
             textInputValue: string,
             possibleSuggestionsArray: Tag[],
@@ -37,8 +40,10 @@ ReactDOM.render(
         inputValue="Some input value"
         inputFieldPosition="top"
         inputProps={{ disabled: false }}
-        renderSuggestion={({ id, text }: Tag, query: string) => console.log("tag" + id, text)}
-        shouldRenderSuggestions={q => q !== "ignore_query"}
+        renderSuggestion={({ id, text }: Tag, query: string) =>
+            console.log("tag" + id, text)
+        }
+        shouldRenderSuggestions={(q) => q !== "ignore_query"}
         name="react-tags-field"
         id="react-tags-field"
         classNames={{

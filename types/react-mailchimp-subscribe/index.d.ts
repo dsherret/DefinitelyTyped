@@ -39,11 +39,14 @@ export interface SubscribeArg<FormFields> {
     subscribe: (data: FormFields) => void;
 }
 
-export type FormHooks<FormFields> = SubscribeArg<FormFields> & (ErrorResponseArgs | SuccessResponseArgs | PendingArgs);
+export type FormHooks<FormFields> = SubscribeArg<FormFields> &
+    (ErrorResponseArgs | SuccessResponseArgs | PendingArgs);
 
 export interface Props<FormFields> {
     render?: ((hooks: FormHooks<FormFields>) => ReactNode) | undefined;
     url: string;
 }
 
-export default class MailchimpSubscribe<FormFields = DefaultFormFields> extends Component<Props<FormFields>> {}
+export default class MailchimpSubscribe<
+    FormFields = DefaultFormFields,
+> extends Component<Props<FormFields>> {}

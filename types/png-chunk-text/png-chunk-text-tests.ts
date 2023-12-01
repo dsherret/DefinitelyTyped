@@ -11,7 +11,7 @@ const sourceBuffer = fs.readFileSync(path.join(__dirname, "test.png"));
 const chunks = extract(sourceBuffer);
 
 // Print a text chunk if there is one
-const textChunk = chunks.find(c => c.name === "tEXt");
+const textChunk = chunks.find((c) => c.name === "tEXt");
 if (textChunk) {
     const textData = text.decode(textChunk.data);
     console.log(textData);

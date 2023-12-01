@@ -17,11 +17,17 @@ export interface NewmanRunOptions {
     /** An environment JSON / file path for the current collection run. */
     environment?: VariableScope | VariableScopeDefinition | string | undefined;
     /** An override to environment variables.  See: https://github.com/postmanlabs/newman/blob/develop/lib/run/options.js */
-    envVar?: { key: string; value: string } | Array<{ key: string; value: string }> | undefined;
+    envVar?:
+        | { key: string; value: string }
+        | Array<{ key: string; value: string }>
+        | undefined;
     /** A globals JSON / file path for the current collection run. */
     globals?: VariableScope | VariableScopeDefinition | string | undefined;
     /** An override to global variables.  See: https://github.com/postmanlabs/newman/blob/develop/lib/run/options.js */
-    globalVar?: { key: string; value: string } | Array<{ key: string; value: string }> | undefined;
+    globalVar?:
+        | { key: string; value: string }
+        | Array<{ key: string; value: string }>
+        | undefined;
     /** The relative path to export the globals file from the current run to  */
     exportGlobals?: string | undefined;
     /** The relative path to export the environment file from the current run to */
@@ -153,10 +159,12 @@ export interface NewmanRunOptions {
     /**
      * Custom HTTP(S) agents which will be used for making the requests. This allows for use of various proxies (e.g. socks)
      */
-    requestAgents?: {
-        http?: http.Agent | undefined;
-        https?: http.Agent | undefined;
-    } | undefined;
+    requestAgents?:
+        | {
+              http?: http.Agent | undefined;
+              https?: http.Agent | undefined;
+          }
+        | undefined;
     /**
      * A tough-cookie cookieJar / file path for the current collection run.
      */

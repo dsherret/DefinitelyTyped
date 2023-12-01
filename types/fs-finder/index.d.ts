@@ -31,7 +31,12 @@ declare namespace FsFinder {
         filter(fn: Function): Finder;
 
         getPathsSync(type?: Type, mask?: Mask, dir?: Directory): string[];
-        getPathsAsync(fn: AsyncFunction, type?: Type, mask?: Mask, dir?: Directory): void;
+        getPathsAsync(
+            fn: AsyncFunction,
+            type?: Type,
+            mask?: Mask,
+            dir?: Directory,
+        ): void;
 
         checkExcludes(path: string): boolean;
         checkSystemFiles(path: string): boolean;
@@ -39,7 +44,11 @@ declare namespace FsFinder {
         checkFile(path: string, stats: any, mask: Mask, type: Type): number;
 
         getPathsFromParentsSync(mask?: Mask, type?: Type): string[];
-        getPathsFromParentsAsync(fn: AsyncFunction, mask?: Mask, type?: Type): void;
+        getPathsFromParentsAsync(
+            fn: AsyncFunction,
+            mask?: Mask,
+            type?: Type,
+        ): void;
     }
 }
 

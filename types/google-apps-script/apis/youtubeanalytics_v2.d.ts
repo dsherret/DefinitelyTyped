@@ -3,23 +3,35 @@ declare namespace GoogleAppsScript {
         namespace Collection {
             interface GroupItemsCollection {
                 // Creates a group item.
-                insert(resource: Schema.GroupItem): YouTubeAnalytics.Schema.GroupItem;
+                insert(
+                    resource: Schema.GroupItem,
+                ): YouTubeAnalytics.Schema.GroupItem;
                 // Creates a group item.
-                insert(resource: Schema.GroupItem, optionalArgs: object): YouTubeAnalytics.Schema.GroupItem;
+                insert(
+                    resource: Schema.GroupItem,
+                    optionalArgs: object,
+                ): YouTubeAnalytics.Schema.GroupItem;
                 // Returns a collection of group items that match the API request parameters.
                 list(): YouTubeAnalytics.Schema.ListGroupItemsResponse;
                 // Returns a collection of group items that match the API request parameters.
-                list(optionalArgs: object): YouTubeAnalytics.Schema.ListGroupItemsResponse;
+                list(
+                    optionalArgs: object,
+                ): YouTubeAnalytics.Schema.ListGroupItemsResponse;
                 // Removes an item from a group.
                 remove(): YouTubeAnalytics.Schema.EmptyResponse;
                 // Removes an item from a group.
-                remove(optionalArgs: object): YouTubeAnalytics.Schema.EmptyResponse;
+                remove(
+                    optionalArgs: object,
+                ): YouTubeAnalytics.Schema.EmptyResponse;
             }
             interface GroupsCollection {
                 // Creates a group.
                 insert(resource: Schema.Group): YouTubeAnalytics.Schema.Group;
                 // Creates a group.
-                insert(resource: Schema.Group, optionalArgs: object): YouTubeAnalytics.Schema.Group;
+                insert(
+                    resource: Schema.Group,
+                    optionalArgs: object,
+                ): YouTubeAnalytics.Schema.Group;
                 // Returns a collection of groups that match the API request parameters. For
                 // example, you can retrieve all groups that the authenticated user owns,
                 // or you can retrieve one or more groups by their unique IDs.
@@ -27,21 +39,30 @@ declare namespace GoogleAppsScript {
                 // Returns a collection of groups that match the API request parameters. For
                 // example, you can retrieve all groups that the authenticated user owns,
                 // or you can retrieve one or more groups by their unique IDs.
-                list(optionalArgs: object): YouTubeAnalytics.Schema.ListGroupsResponse;
+                list(
+                    optionalArgs: object,
+                ): YouTubeAnalytics.Schema.ListGroupsResponse;
                 // Deletes a group.
                 remove(): YouTubeAnalytics.Schema.EmptyResponse;
                 // Deletes a group.
-                remove(optionalArgs: object): YouTubeAnalytics.Schema.EmptyResponse;
+                remove(
+                    optionalArgs: object,
+                ): YouTubeAnalytics.Schema.EmptyResponse;
                 // Modifies a group. For example, you could change a group's title.
                 update(resource: Schema.Group): YouTubeAnalytics.Schema.Group;
                 // Modifies a group. For example, you could change a group's title.
-                update(resource: Schema.Group, optionalArgs: object): YouTubeAnalytics.Schema.Group;
+                update(
+                    resource: Schema.Group,
+                    optionalArgs: object,
+                ): YouTubeAnalytics.Schema.Group;
             }
             interface ReportsCollection {
                 // Retrieve your YouTube Analytics reports.
                 query(): YouTubeAnalytics.Schema.QueryResponse;
                 // Retrieve your YouTube Analytics reports.
-                query(optionalArgs: object): YouTubeAnalytics.Schema.QueryResponse;
+                query(
+                    optionalArgs: object,
+                ): YouTubeAnalytics.Schema.QueryResponse;
             }
         }
         namespace Schema {
@@ -63,7 +84,9 @@ declare namespace GoogleAppsScript {
                 requestId?: string | undefined;
             }
             interface Group {
-                contentDetails?: YouTubeAnalytics.Schema.GroupContentDetails | undefined;
+                contentDetails?:
+                    | YouTubeAnalytics.Schema.GroupContentDetails
+                    | undefined;
                 errors?: YouTubeAnalytics.Schema.Errors | undefined;
                 etag?: string | undefined;
                 id?: string | undefined;
@@ -80,7 +103,9 @@ declare namespace GoogleAppsScript {
                 groupId?: string | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
-                resource?: YouTubeAnalytics.Schema.GroupItemResource | undefined;
+                resource?:
+                    | YouTubeAnalytics.Schema.GroupItemResource
+                    | undefined;
             }
             interface GroupItemResource {
                 id?: string | undefined;
@@ -104,7 +129,9 @@ declare namespace GoogleAppsScript {
                 nextPageToken?: string | undefined;
             }
             interface QueryResponse {
-                columnHeaders?: YouTubeAnalytics.Schema.ResultTableColumnHeader[] | undefined;
+                columnHeaders?:
+                    | YouTubeAnalytics.Schema.ResultTableColumnHeader[]
+                    | undefined;
                 errors?: YouTubeAnalytics.Schema.Errors | undefined;
                 kind?: string | undefined;
                 rows?: any[][] | undefined;
@@ -117,7 +144,9 @@ declare namespace GoogleAppsScript {
         }
     }
     interface YouTubeAnalytics {
-        GroupItems?: YouTubeAnalytics.Collection.GroupItemsCollection | undefined;
+        GroupItems?:
+            | YouTubeAnalytics.Collection.GroupItemsCollection
+            | undefined;
         Groups?: YouTubeAnalytics.Collection.GroupsCollection | undefined;
         Reports?: YouTubeAnalytics.Collection.ReportsCollection | undefined;
         // Create a new instance of ErrorProto

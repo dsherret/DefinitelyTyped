@@ -7,10 +7,12 @@ declare namespace Muri {
         db: string;
         hosts: Host[];
         options: any;
-        auth?: {
-            user: string;
-            pass?: string | undefined;
-        } | undefined;
+        auth?:
+            | {
+                  user: string;
+                  pass?: string | undefined;
+              }
+            | undefined;
     }
 
     interface DefaultHost {

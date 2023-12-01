@@ -9,14 +9,18 @@ import {
  * `Ember.ObjectProxy` forwards all properties not defined by the proxy itself
  * to a proxied `content` object.
  */
-export default class ObjectProxy<T extends object = object> extends EmberObject {
+export default class ObjectProxy<
+    T extends object = object,
+> extends EmberObject {
     /**
      * The object whose properties will be forwarded.
      */
     content: T | undefined;
 
     get<K extends keyof this>(key: K): UnwrapComputedPropertyGetter<this[K]>;
-    get<K extends keyof T>(key: K): UnwrapComputedPropertyGetter<T[K]> | undefined;
+    get<K extends keyof T>(
+        key: K,
+    ): UnwrapComputedPropertyGetter<T[K]> | undefined;
 
     getProperties<K extends keyof this>(
         list: K[],
@@ -35,9 +39,12 @@ export default class ObjectProxy<T extends object = object> extends EmberObject 
         key: K,
         value: UnwrapComputedPropertySetters<this>[K],
     ): UnwrapComputedPropertySetters<this>[K];
-    set<K extends keyof T>(key: K, value: UnwrapComputedPropertySetters<T>[K]): UnwrapComputedPropertySetters<T>[K];
+    set<K extends keyof T>(
+        key: K,
+        value: UnwrapComputedPropertySetters<T>[K],
+    ): UnwrapComputedPropertySetters<T>[K];
 
-    setProperties<K extends (keyof this | keyof T)>(
+    setProperties<K extends keyof this | keyof T>(
         hash: Pick<UnwrapComputedPropertySetters<this & T>, K>,
     ): Pick<UnwrapComputedPropertySetters<this & T>, K>;
 }

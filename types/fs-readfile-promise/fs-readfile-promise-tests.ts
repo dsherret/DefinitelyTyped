@@ -18,15 +18,7 @@ async function testPathOption() {
     return readFile(path, options);
 }
 
-testPathOnly()
-    .then(console.log)
-    .catch(console.log);
-testPathEncoding()
-    .then(console.log)
-    .catch(console.log);
-testPathNull()
-    .then(console.log)
-    .catch(console.log);
-testPathOption()
-    .then(console.log)
-    .catch(console.log);
+testPathOnly().then(console.log).catch(console.log);
+testPathEncoding().then(console.log).catch(console.log);
+testPathNull().then(console.log).catch(console.log);
+testPathOption().then(console.log).catch(console.log);

@@ -19,16 +19,22 @@ server.register(Inert, () => {});
 
 // added in addition to code from docs
 const options: Inert.OptionalRegistrationOptions = { etagsCacheMaxSize: 400 };
-server.register({
-    register: Inert,
-    options,
-}, (err) => {});
+server.register(
+    {
+        register: Inert,
+        options,
+    },
+    (err) => {},
+);
 
 // added in addition to code from docs
-server.register({
-    register: Inert,
-    once: true,
-}, (err) => {});
+server.register(
+    {
+        register: Inert,
+        once: true,
+    },
+    (err) => {},
+);
 
 server.route({
     method: "GET",
@@ -65,7 +71,7 @@ server.route({
 server.route({
     method: "GET",
     path: "/file",
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         let path = "plain.txt";
         if (request.headers["x-magic"] === "sekret") {
             path = "awesome.png";
@@ -75,12 +81,9 @@ server.route({
     },
 });
 
-const handler: Hapi.ServerExtRequestHandler = function(request, reply) {
+const handler: Hapi.ServerExtRequestHandler = function (request, reply) {
     const response = request.response!;
-    if (
-        response.isBoom
-        && response.output!.statusCode === 404
-    ) {
+    if (response.isBoom && response.output!.statusCode === 404) {
         return reply.file("404.html").code(404);
     }
 
@@ -111,7 +114,7 @@ server.route({
     handler: {
         file,
         directory: {
-            path: function() {
+            path: function () {
                 if (Math.random() > 0.5) {
                     return "";
                 } else if (Math.random() > 0) {

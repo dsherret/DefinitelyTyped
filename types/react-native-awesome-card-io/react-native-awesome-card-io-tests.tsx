@@ -1,6 +1,11 @@
 import * as React from "react";
 import { Platform } from "react-native";
-import { CardDetails, CardIOModule, CardIOUtilities, CardIOView } from "react-native-awesome-card-io";
+import {
+    CardDetails,
+    CardIOModule,
+    CardIOUtilities,
+    CardIOView,
+} from "react-native-awesome-card-io";
 
 export default class CardIOExample extends React.Component {
     componentWillMount() {

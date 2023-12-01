@@ -49,7 +49,8 @@ const oauth2 = oauth2lib.create(credentials);
 
     // Promises
     // Save the access token
-    oauth2.authorizationCode.getToken(tokenConfig)
+    oauth2.authorizationCode
+        .getToken(tokenConfig)
         .then((result) => {
             const token = oauth2.accessToken.create(result);
         })
@@ -79,7 +80,8 @@ const oauth2 = oauth2lib.create(credentials);
 
     // Promises
     // Save the access token
-    oauth2.ownerPassword.getToken(tokenConfig)
+    oauth2.ownerPassword
+        .getToken(tokenConfig)
         .then((result) => {
             const token = oauth2.accessToken.create(result);
         })
@@ -105,7 +107,8 @@ const oauth2 = oauth2lib.create(credentials);
 
     // Promises
     // Get the access token object for the client
-    oauth2.clientCredentials.getToken(tokenConfig)
+    oauth2.clientCredentials
+        .getToken(tokenConfig)
         .then((result) => {
             const token = oauth2.accessToken.create(result);
         })
@@ -134,10 +137,9 @@ const oauth2 = oauth2lib.create(credentials);
         });
 
         // Promises
-        accessToken.refresh()
-            .then((result) => {
-                accessToken = result;
-            });
+        accessToken.refresh().then((result) => {
+            accessToken = result;
+        });
     }
 
     // Callbacks
@@ -153,7 +155,8 @@ const oauth2 = oauth2lib.create(credentials);
 
     // Promises
     // Revoke only the access token
-    accessToken.revoke("access_token")
+    accessToken
+        .revoke("access_token")
         .then(() => {
             // Revoke the refresh token
             return accessToken.revoke("refresh_token");

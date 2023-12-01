@@ -4,9 +4,7 @@
  * These methods each accepts a single filename and determines whether
  * they are acceptable or unacceptable according to the `.gitignore` definition.
  */
-export function compile(
-    content: string,
-): {
+export function compile(content: string): {
     accepts(input: string): boolean;
     denies(input: string): boolean;
     maybe(input: string): boolean;
@@ -18,6 +16,8 @@ export function compile(
  * Each of these two arrays in turn contains two regexps, one
  * strict and one for 'maybe'.
  */
-export function parse(content: string): [GitignoreParseResultSet, GitignoreParseResultSet];
+export function parse(
+    content: string,
+): [GitignoreParseResultSet, GitignoreParseResultSet];
 
 export type GitignoreParseResultSet = [RegExp, RegExp]; // [strict, maybe]

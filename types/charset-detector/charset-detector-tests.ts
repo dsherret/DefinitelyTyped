@@ -11,7 +11,10 @@ r = detect([], detect.DEFAULT_CS_RECOGNIZERS);
 r = detect(
     [],
     [
-        (input: ArrayLike<number>, stats: detect.InputStats): detect.CharsetMatch => {
+        (
+            input: ArrayLike<number>,
+            stats: detect.InputStats,
+        ): detect.CharsetMatch => {
             return {
                 confidence: 10,
                 lang: "zh",

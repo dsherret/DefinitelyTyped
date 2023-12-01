@@ -25,12 +25,16 @@ declare namespace BootstrapMenu {
         /**
          * Obtain specific data about the currently opened element, to pass it to the rest of user-defined functions of an action.
          */
-        fetchElementData?: ((jqueryElement: JQuery) => BootstrapMenuRowElement) | undefined;
+        fetchElementData?:
+            | ((jqueryElement: JQuery) => BootstrapMenuRowElement)
+            | undefined;
 
         /**
          * Array or object containing the list of actions to be rendered in the context menu.
          */
-        actions: { [key: string]: BootstrapMenuActions } | readonly BootstrapMenuActions[];
+        actions:
+            | { [key: string]: BootstrapMenuActions }
+            | readonly BootstrapMenuActions[];
 
         /**
          * Array to group actions to render them next to each other, with a separator between each group.
@@ -85,17 +89,25 @@ declare namespace BootstrapMenu {
         /**
          * Optional, decides if the action should be shown or hidden in the context menu.
          */
-        isShown?: ((rowElement: BootstrapMenuRowElement) => boolean) | undefined;
+        isShown?:
+            | ((rowElement: BootstrapMenuRowElement) => boolean)
+            | undefined;
 
         /**
          * Optional, decides if the action should appear enabled or disabled in the context menu.
          */
-        isEnabled?: ((rowElement: BootstrapMenuRowElement) => boolean) | undefined;
+        isEnabled?:
+            | ((rowElement: BootstrapMenuRowElement) => boolean)
+            | undefined;
     }
 
     type BootstrapMenuSource = "mouse" | "element";
 
-    type BootstrapMenuPosition = "aboveLeft" | "aboveRight" | "belowLeft" | "belowRight";
+    type BootstrapMenuPosition =
+        | "aboveLeft"
+        | "aboveRight"
+        | "belowLeft"
+        | "belowRight";
 
     type BootstrapMenuEvent = "click" | "right-click" | "hover";
 

@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/steamid",
-    "version": "2.0.9999",
-    "projects": [
-        "https://github.com/DoctorMcKay/node-steamid"
-    ],
-    "devDependencies": {
-        "@types/steamid": "workspace:."
+  "private": true,
+  "name": "@types/steamid",
+  "version": "2.0.9999",
+  "projects": [
+    "https://github.com/DoctorMcKay/node-steamid"
+  ],
+  "devDependencies": {
+    "@types/steamid": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Edward Sammut Alessi",
+      "githubUsername": "Slessi"
     },
-    "owners": [
-        {
-            "name": "Edward Sammut Alessi",
-            "githubUsername": "Slessi"
-        },
-        {
-            "name": "joshuajeschek",
-            "githubUsername": "joshuajeschek"
-        }
-    ]
+    {
+      "name": "joshuajeschek",
+      "githubUsername": "joshuajeschek"
+    }
+  ]
 }

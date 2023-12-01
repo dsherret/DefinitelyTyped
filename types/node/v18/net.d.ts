@@ -19,7 +19,11 @@ declare module "net" {
     type LookupFunction = (
         hostname: string,
         options: dns.LookupOneOptions,
-        callback: (err: NodeJS.ErrnoException | null, address: string, family: number) => void,
+        callback: (
+            err: NodeJS.ErrnoException | null,
+            address: string,
+            family: number,
+        ) => void,
     ) => void;
     interface AddressInfo {
         address: string;
@@ -74,7 +78,12 @@ declare module "net" {
         path: string;
     }
     type SocketConnectOpts = TcpSocketConnectOpts | IpcSocketConnectOpts;
-    type SocketReadyState = "opening" | "open" | "readOnly" | "writeOnly" | "closed";
+    type SocketReadyState =
+        | "opening"
+        | "open"
+        | "readOnly"
+        | "writeOnly"
+        | "closed";
     /**
      * This class is an abstraction of a TCP socket or a streaming `IPC` endpoint
      * (uses named pipes on Windows, and Unix domain sockets otherwise). It is also
@@ -113,7 +122,11 @@ declare module "net" {
          * @param [encoding='utf8'] Only used when data is `string`.
          */
         write(buffer: Uint8Array | string, cb?: (err?: Error) => void): boolean;
-        write(str: Uint8Array | string, encoding?: BufferEncoding, cb?: (err?: Error) => void): boolean;
+        write(
+            str: Uint8Array | string,
+            encoding?: BufferEncoding,
+            cb?: (err?: Error) => void,
+        ): boolean;
         /**
          * Initiate a connection on a given socket.
          *
@@ -133,8 +146,15 @@ declare module "net" {
          * This function should only be used for reconnecting a socket after`'close'` has been emitted or otherwise it may lead to undefined
          * behavior.
          */
-        connect(options: SocketConnectOpts, connectionListener?: () => void): this;
-        connect(port: number, host: string, connectionListener?: () => void): this;
+        connect(
+            options: SocketConnectOpts,
+            connectionListener?: () => void,
+        ): this;
+        connect(
+            port: number,
+            host: string,
+            connectionListener?: () => void,
+        ): this;
         connect(port: number, connectionListener?: () => void): this;
         connect(path: string, connectionListener?: () => void): this;
         /**
@@ -345,7 +365,11 @@ declare module "net" {
          */
         end(callback?: () => void): this;
         end(buffer: Uint8Array | string, callback?: () => void): this;
-        end(str: Uint8Array | string, encoding?: BufferEncoding, callback?: () => void): this;
+        end(
+            str: Uint8Array | string,
+            encoding?: BufferEncoding,
+            callback?: () => void,
+        ): this;
         /**
          * events.EventEmitter
          *   1. close
@@ -359,7 +383,10 @@ declare module "net" {
          *   9. timeout
          */
         addListener(event: string, listener: (...args: any[]) => void): this;
-        addListener(event: "close", listener: (hadError: boolean) => void): this;
+        addListener(
+            event: "close",
+            listener: (hadError: boolean) => void,
+        ): this;
         addListener(event: "connect", listener: () => void): this;
         addListener(event: "data", listener: (data: Buffer) => void): this;
         addListener(event: "drain", listener: () => void): this;
@@ -367,7 +394,12 @@ declare module "net" {
         addListener(event: "error", listener: (err: Error) => void): this;
         addListener(
             event: "lookup",
-            listener: (err: Error, address: string, family: string | number, host: string) => void,
+            listener: (
+                err: Error,
+                address: string,
+                family: string | number,
+                host: string,
+            ) => void,
         ): this;
         addListener(event: "ready", listener: () => void): this;
         addListener(event: "timeout", listener: () => void): this;
@@ -378,7 +410,13 @@ declare module "net" {
         emit(event: "drain"): boolean;
         emit(event: "end"): boolean;
         emit(event: "error", err: Error): boolean;
-        emit(event: "lookup", err: Error, address: string, family: string | number, host: string): boolean;
+        emit(
+            event: "lookup",
+            err: Error,
+            address: string,
+            family: string | number,
+            host: string,
+        ): boolean;
         emit(event: "ready"): boolean;
         emit(event: "timeout"): boolean;
         on(event: string, listener: (...args: any[]) => void): this;
@@ -390,7 +428,12 @@ declare module "net" {
         on(event: "error", listener: (err: Error) => void): this;
         on(
             event: "lookup",
-            listener: (err: Error, address: string, family: string | number, host: string) => void,
+            listener: (
+                err: Error,
+                address: string,
+                family: string | number,
+                host: string,
+            ) => void,
         ): this;
         on(event: "ready", listener: () => void): this;
         on(event: "timeout", listener: () => void): this;
@@ -403,12 +446,23 @@ declare module "net" {
         once(event: "error", listener: (err: Error) => void): this;
         once(
             event: "lookup",
-            listener: (err: Error, address: string, family: string | number, host: string) => void,
+            listener: (
+                err: Error,
+                address: string,
+                family: string | number,
+                host: string,
+            ) => void,
         ): this;
         once(event: "ready", listener: () => void): this;
         once(event: "timeout", listener: () => void): this;
-        prependListener(event: string, listener: (...args: any[]) => void): this;
-        prependListener(event: "close", listener: (hadError: boolean) => void): this;
+        prependListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
+        prependListener(
+            event: "close",
+            listener: (hadError: boolean) => void,
+        ): this;
         prependListener(event: "connect", listener: () => void): this;
         prependListener(event: "data", listener: (data: Buffer) => void): this;
         prependListener(event: "drain", listener: () => void): this;
@@ -416,20 +470,42 @@ declare module "net" {
         prependListener(event: "error", listener: (err: Error) => void): this;
         prependListener(
             event: "lookup",
-            listener: (err: Error, address: string, family: string | number, host: string) => void,
+            listener: (
+                err: Error,
+                address: string,
+                family: string | number,
+                host: string,
+            ) => void,
         ): this;
         prependListener(event: "ready", listener: () => void): this;
         prependListener(event: "timeout", listener: () => void): this;
-        prependOnceListener(event: string, listener: (...args: any[]) => void): this;
-        prependOnceListener(event: "close", listener: (hadError: boolean) => void): this;
+        prependOnceListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
+        prependOnceListener(
+            event: "close",
+            listener: (hadError: boolean) => void,
+        ): this;
         prependOnceListener(event: "connect", listener: () => void): this;
-        prependOnceListener(event: "data", listener: (data: Buffer) => void): this;
+        prependOnceListener(
+            event: "data",
+            listener: (data: Buffer) => void,
+        ): this;
         prependOnceListener(event: "drain", listener: () => void): this;
         prependOnceListener(event: "end", listener: () => void): this;
-        prependOnceListener(event: "error", listener: (err: Error) => void): this;
+        prependOnceListener(
+            event: "error",
+            listener: (err: Error) => void,
+        ): this;
         prependOnceListener(
             event: "lookup",
-            listener: (err: Error, address: string, family: string | number, host: string) => void,
+            listener: (
+                err: Error,
+                address: string,
+                family: string | number,
+                host: string,
+            ) => void,
         ): this;
         prependOnceListener(event: "ready", listener: () => void): this;
         prependOnceListener(event: "timeout", listener: () => void): this;
@@ -492,7 +568,10 @@ declare module "net" {
      */
     class Server extends EventEmitter {
         constructor(connectionListener?: (socket: Socket) => void);
-        constructor(options?: ServerOpts, connectionListener?: (socket: Socket) => void);
+        constructor(
+            options?: ServerOpts,
+            connectionListener?: (socket: Socket) => void,
+        );
         /**
          * Start a server listening for connections. A `net.Server` can be a TCP or
          * an `IPC` server depending on what it listens to.
@@ -534,14 +613,35 @@ declare module "net" {
          * });
          * ```
          */
-        listen(port?: number, hostname?: string, backlog?: number, listeningListener?: () => void): this;
-        listen(port?: number, hostname?: string, listeningListener?: () => void): this;
-        listen(port?: number, backlog?: number, listeningListener?: () => void): this;
+        listen(
+            port?: number,
+            hostname?: string,
+            backlog?: number,
+            listeningListener?: () => void,
+        ): this;
+        listen(
+            port?: number,
+            hostname?: string,
+            listeningListener?: () => void,
+        ): this;
+        listen(
+            port?: number,
+            backlog?: number,
+            listeningListener?: () => void,
+        ): this;
         listen(port?: number, listeningListener?: () => void): this;
-        listen(path: string, backlog?: number, listeningListener?: () => void): this;
+        listen(
+            path: string,
+            backlog?: number,
+            listeningListener?: () => void,
+        ): this;
         listen(path: string, listeningListener?: () => void): this;
         listen(options: ListenOptions, listeningListener?: () => void): this;
-        listen(handle: any, backlog?: number, listeningListener?: () => void): this;
+        listen(
+            handle: any,
+            backlog?: number,
+            listeningListener?: () => void,
+        ): this;
         listen(handle: any, listeningListener?: () => void): this;
         /**
          * Stops the server from accepting new connections and keeps existing
@@ -626,10 +726,16 @@ declare module "net" {
          */
         addListener(event: string, listener: (...args: any[]) => void): this;
         addListener(event: "close", listener: () => void): this;
-        addListener(event: "connection", listener: (socket: Socket) => void): this;
+        addListener(
+            event: "connection",
+            listener: (socket: Socket) => void,
+        ): this;
         addListener(event: "error", listener: (err: Error) => void): this;
         addListener(event: "listening", listener: () => void): this;
-        addListener(event: "drop", listener: (data?: DropArgument) => void): this;
+        addListener(
+            event: "drop",
+            listener: (data?: DropArgument) => void,
+        ): this;
         emit(event: string | symbol, ...args: any[]): boolean;
         emit(event: "close"): boolean;
         emit(event: "connection", socket: Socket): boolean;
@@ -648,18 +754,39 @@ declare module "net" {
         once(event: "error", listener: (err: Error) => void): this;
         once(event: "listening", listener: () => void): this;
         once(event: "drop", listener: (data?: DropArgument) => void): this;
-        prependListener(event: string, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
         prependListener(event: "close", listener: () => void): this;
-        prependListener(event: "connection", listener: (socket: Socket) => void): this;
+        prependListener(
+            event: "connection",
+            listener: (socket: Socket) => void,
+        ): this;
         prependListener(event: "error", listener: (err: Error) => void): this;
         prependListener(event: "listening", listener: () => void): this;
-        prependListener(event: "drop", listener: (data?: DropArgument) => void): this;
-        prependOnceListener(event: string, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: "drop",
+            listener: (data?: DropArgument) => void,
+        ): this;
+        prependOnceListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
         prependOnceListener(event: "close", listener: () => void): this;
-        prependOnceListener(event: "connection", listener: (socket: Socket) => void): this;
-        prependOnceListener(event: "error", listener: (err: Error) => void): this;
+        prependOnceListener(
+            event: "connection",
+            listener: (socket: Socket) => void,
+        ): this;
+        prependOnceListener(
+            event: "error",
+            listener: (err: Error) => void,
+        ): this;
         prependOnceListener(event: "listening", listener: () => void): this;
-        prependOnceListener(event: "drop", listener: (data?: DropArgument) => void): this;
+        prependOnceListener(
+            event: "drop",
+            listener: (data?: DropArgument) => void,
+        ): this;
         /**
          * Calls {@link Server.close()} and returns a promise that fulfills when the server has closed.
          * @since v18.18.0
@@ -724,10 +851,14 @@ declare module "net" {
         check(address: SocketAddress): boolean;
         check(address: string, type?: IPVersion): boolean;
     }
-    interface TcpNetConnectOpts extends TcpSocketConnectOpts, SocketConstructorOpts {
+    interface TcpNetConnectOpts
+        extends TcpSocketConnectOpts,
+            SocketConstructorOpts {
         timeout?: number | undefined;
     }
-    interface IpcNetConnectOpts extends IpcSocketConnectOpts, SocketConstructorOpts {
+    interface IpcNetConnectOpts
+        extends IpcSocketConnectOpts,
+            SocketConstructorOpts {
         timeout?: number | undefined;
     }
     type NetConnectOpts = TcpNetConnectOpts | IpcNetConnectOpts;
@@ -792,8 +923,13 @@ declare module "net" {
      * @since v0.5.0
      * @param connectionListener Automatically set as a listener for the {@link 'connection'} event.
      */
-    function createServer(connectionListener?: (socket: Socket) => void): Server;
-    function createServer(options?: ServerOpts, connectionListener?: (socket: Socket) => void): Server;
+    function createServer(
+        connectionListener?: (socket: Socket) => void,
+    ): Server;
+    function createServer(
+        options?: ServerOpts,
+        connectionListener?: (socket: Socket) => void,
+    ): Server;
     /**
      * Aliases to {@link createConnection}.
      *
@@ -803,8 +939,15 @@ declare module "net" {
      * * {@link connect} for `IPC` connections.
      * * {@link connect} for TCP connections.
      */
-    function connect(options: NetConnectOpts, connectionListener?: () => void): Socket;
-    function connect(port: number, host?: string, connectionListener?: () => void): Socket;
+    function connect(
+        options: NetConnectOpts,
+        connectionListener?: () => void,
+    ): Socket;
+    function connect(
+        port: number,
+        host?: string,
+        connectionListener?: () => void,
+    ): Socket;
     function connect(path: string, connectionListener?: () => void): Socket;
     /**
      * A factory function, which creates a new {@link Socket},
@@ -823,9 +966,19 @@ declare module "net" {
      *
      * The {@link connect} function is an alias to this function.
      */
-    function createConnection(options: NetConnectOpts, connectionListener?: () => void): Socket;
-    function createConnection(port: number, host?: string, connectionListener?: () => void): Socket;
-    function createConnection(path: string, connectionListener?: () => void): Socket;
+    function createConnection(
+        options: NetConnectOpts,
+        connectionListener?: () => void,
+    ): Socket;
+    function createConnection(
+        port: number,
+        host?: string,
+        connectionListener?: () => void,
+    ): Socket;
+    function createConnection(
+        path: string,
+        connectionListener?: () => void,
+    ): Socket;
     /**
      * Returns `6` if `input` is an IPv6 address. Returns `4` if `input` is an IPv4
      * address in [dot-decimal notation](https://en.wikipedia.org/wiki/Dot-decimal_notation) with no leading zeroes. Otherwise, returns`0`.

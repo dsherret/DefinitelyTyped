@@ -5,8 +5,8 @@ Macro.add("if", {
         try {
             for (let i = 0, len = this.payload.length; i < len; ++i) {
                 if (
-                    this.payload[i].name === "else"
-                    || !!Scripting.evalJavaScript(this.payload[i].args.full)
+                    this.payload[i].name === "else" ||
+                    !!Scripting.evalJavaScript(this.payload[i].args.full)
                 ) {
                     jQuery(this.output).wiki(this.payload[i].contents);
                     break;

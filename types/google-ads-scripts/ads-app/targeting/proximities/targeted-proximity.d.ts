@@ -43,7 +43,8 @@ declare namespace GoogleAdsScripts {
          *        var targetedProximity = targetedProximityIterator.next();
          *      }
          */
-        interface TargetedProximityIterator extends Base.Iterator<TargetedProximity> {}
+        interface TargetedProximityIterator
+            extends Base.Iterator<TargetedProximity> {}
 
         /** Plain JavaScript objects describing a proximity. */
         interface TargetedProximityObject {
@@ -56,7 +57,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** An operation representing creation of a new targeted proximity. */
-        interface TargetedProximityOperation extends Base.Operation<TargetedProximity> {}
+        interface TargetedProximityOperation
+            extends Base.Operation<TargetedProximity> {}
 
         /**
          * Fetches targeted proximities. Supports filtering and sorting.
@@ -75,13 +77,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface TargetedProximitySelector
-            extends
-                Base.Selector<TargetedProximityIterator>,
+            extends Base.Selector<TargetedProximityIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

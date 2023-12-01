@@ -148,7 +148,10 @@ declare class Supercluster<
      * @param bbox Bounding box (`[westLng, southLat, eastLng, northLat]`).
      * @param zoom Zoom level.
      */
-    getClusters(bbox: GeoJSON.BBox, zoom: number): Array<Supercluster.ClusterFeature<C> | Supercluster.PointFeature<P>>;
+    getClusters(
+        bbox: GeoJSON.BBox,
+        zoom: number,
+    ): Array<Supercluster.ClusterFeature<C> | Supercluster.PointFeature<P>>;
 
     /**
      * For a given zoom and x/y coordinates, returns a
@@ -163,7 +166,9 @@ declare class Supercluster<
      * @param clusterId Cluster ID (`cluster_id` value from feature properties).
      * @throws {Error} If `clusterId` does not exist.
      */
-    getChildren(clusterId: number): Array<Supercluster.ClusterFeature<C> | Supercluster.PointFeature<P>>;
+    getChildren(
+        clusterId: number,
+    ): Array<Supercluster.ClusterFeature<C> | Supercluster.PointFeature<P>>;
 
     /**
      * Returns all the points of a cluster (with pagination support).
@@ -172,7 +177,11 @@ declare class Supercluster<
      * @param limit The number of points to return (set to `Infinity` for all points).
      * @param offset The amount of points to skip (for pagination).
      */
-    getLeaves(clusterId: number, limit?: number, offset?: number): Array<Supercluster.PointFeature<P>>;
+    getLeaves(
+        clusterId: number,
+        limit?: number,
+        offset?: number,
+    ): Array<Supercluster.PointFeature<P>>;
 
     /**
      * Returns the zoom level on which the cluster expands into several

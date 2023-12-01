@@ -23,15 +23,18 @@ new Hapi.Server({
     },
 });
 new Hapi.Server({
-    cache: [{
-        engine: require("catbox-redis"),
-        name: "unique 1",
-    }, {
-        engine: require("catbox-redis"),
-        name: "unique 2",
-        shared: true,
-        otherOptions: "will be passed to the catbox strategy",
-    }],
+    cache: [
+        {
+            engine: require("catbox-redis"),
+            name: "unique 1",
+        },
+        {
+            engine: require("catbox-redis"),
+            name: "unique 2",
+            shared: true,
+            otherOptions: "will be passed to the catbox strategy",
+        },
+    ],
 });
 new Hapi.Server({
     cache: [

@@ -1,7 +1,12 @@
 import parse = require("./parse");
 import Parser = require("./Parser");
 import { ParserOptions } from "../src/Parser";
-import { escapeXML, escapeXMLText, unescapeXML, unescapeXMLText } from "./escape";
+import {
+    escapeXML,
+    escapeXMLText,
+    unescapeXML,
+    unescapeXMLText,
+} from "./escape";
 import Element = require("./Element");
 import { Node } from "../src/Element";
 import equal, { attrsEqual, childrenEqual, nameEqual } from "./equal";

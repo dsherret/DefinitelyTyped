@@ -17,17 +17,30 @@ declare namespace wu {
     function values<T>(obj: { [i: string]: T }): WuIterable<T>;
     function repeat<T>(obj: T, times?: number): WuIterable<T>;
     // also copied to WuIterable
-    function asyncEach(fn: Consumer<any>, maxBlock?: number, timeout?: number): void;
+    function asyncEach(
+        fn: Consumer<any>,
+        maxBlock?: number,
+        timeout?: number,
+    ): void;
     function drop<T>(n: number, iter: Iterable<T>): WuIterable<T>;
     function dropWhile<T>(fn: Filter<T>, iter: Iterable<T>): WuIterable<T>;
     function cycle<T>(iter: Iterable<T>): WuIterable<T>;
     function chunk<T>(n: number, iter: Iterable<T>): WuIterable<T[]>;
-    function concatMap<T, U>(fn: (t: T) => Iterable<U>, iter: Iterable<T>): WuIterable<U>;
+    function concatMap<T, U>(
+        fn: (t: T) => Iterable<U>,
+        iter: Iterable<T>,
+    ): WuIterable<U>;
     function enumerate<T>(iter: Iterable<T>): WuIterable<[T, number]>;
     function every<T>(fn: Filter<T>, iter: Iterable<T>): boolean;
-    function filter<T, S extends T>(fn: TypeGuardFilter<T, S>, iter: Iterable<T>): WuIterable<S>;
+    function filter<T, S extends T>(
+        fn: TypeGuardFilter<T, S>,
+        iter: Iterable<T>,
+    ): WuIterable<S>;
     function filter<T>(fn: Filter<T>, iter: Iterable<T>): WuIterable<T>;
-    function find<T, S extends T>(fn: TypeGuardFilter<T, S>, iter: Iterable<T>): S | undefined;
+    function find<T, S extends T>(
+        fn: TypeGuardFilter<T, S>,
+        iter: Iterable<T>,
+    ): S | undefined;
     function find<T>(fn: Filter<T>, iter: Iterable<T>): T | undefined;
     function flatten(iter: Iterable<any>): WuIterable<any>;
     function flatten(shallow: boolean, iter: Iterable<any>): WuIterable<any>;
@@ -41,24 +54,55 @@ declare namespace wu {
     function reduce<T>(fn: (a: T, b: T) => T, iter: Iterable<T>): T;
     function reduce<T>(fn: (a: T, b: T) => T, initial: T, iter: Iterable<T>): T;
     function reduce<T, U>(fn: (a: U, b: T) => U, iter: Iterable<T>): U;
-    function reduce<T, U>(fn: (a: U, b: T) => U, initial: U, iter: Iterable<T>): U;
-    function reductions<T>(fn: (a: T, b: T) => T, iter: Iterable<T>): WuIterable<T>;
-    function reductions<T>(fn: (a: T, b: T) => T, initial: T, iter: Iterable<T>): WuIterable<T>;
-    function reductions<T, U>(fn: (a: U, b: T) => U, iter: Iterable<T>): WuIterable<U>;
-    function reductions<T, U>(fn: (a: U, b: T) => U, initial: U, iter: Iterable<T>): WuIterable<U>;
+    function reduce<T, U>(
+        fn: (a: U, b: T) => U,
+        initial: U,
+        iter: Iterable<T>,
+    ): U;
+    function reductions<T>(
+        fn: (a: T, b: T) => T,
+        iter: Iterable<T>,
+    ): WuIterable<T>;
+    function reductions<T>(
+        fn: (a: T, b: T) => T,
+        initial: T,
+        iter: Iterable<T>,
+    ): WuIterable<T>;
+    function reductions<T, U>(
+        fn: (a: U, b: T) => U,
+        iter: Iterable<T>,
+    ): WuIterable<U>;
+    function reductions<T, U>(
+        fn: (a: U, b: T) => U,
+        initial: U,
+        iter: Iterable<T>,
+    ): WuIterable<U>;
     function reject<T>(fn: Filter<T>, iter: Iterable<T>): WuIterable<T>;
     function slice<T>(iter: Iterable<T>): WuIterable<T>;
     function slice<T>(start: number, iter: Iterable<T>): WuIterable<T>;
-    function slice<T>(start: number, stop: number, iter: Iterable<T>): WuIterable<T>;
+    function slice<T>(
+        start: number,
+        stop: number,
+        iter: Iterable<T>,
+    ): WuIterable<T>;
     function some<T>(fn: Filter<T>, iter: Iterable<T>): boolean;
-    function spreadMap<T>(fn: (...x: any[]) => T, iter: Iterable<any[]>): WuIterable<T>;
+    function spreadMap<T>(
+        fn: (...x: any[]) => T,
+        iter: Iterable<any[]>,
+    ): WuIterable<T>;
     function take<T>(n: number, iter: Iterable<T>): WuIterable<T>;
     function takeWhile<T>(fn: Filter<T>, iter: Iterable<T>): WuIterable<T>;
     function tap<T>(fn: Consumer<T>, iter: Iterable<T>): WuIterable<T>;
     function toArray<T>(iter: Iterable<T>): T[];
     function unique<T>(iter: Iterable<T>): WuIterable<T>;
-    function zip<T, U>(iter2: Iterable<T>, iter: Iterable<U>): WuIterable<[T, U]>;
-    function zipLongest<T, U>(iter2: Iterable<T>, iter: Iterable<U>): WuIterable<[T, U]>;
+    function zip<T, U>(
+        iter2: Iterable<T>,
+        iter: Iterable<U>,
+    ): WuIterable<[T, U]>;
+    function zipLongest<T, U>(
+        iter2: Iterable<T>,
+        iter: Iterable<U>,
+    ): WuIterable<[T, U]>;
     const zipWith: any;
     const unzip: any;
     function tee<T>(iter: Iterable<T>): Array<WuIterable<T>>;

@@ -36,7 +36,7 @@ transition.abort();
 
 // $ExpectType Promise<unknown>
 transition.catch();
-transition.catch(err => console.log(err), "label");
+transition.catch((err) => console.log(err), "label");
 
 // $ExpectType Promise<unknown>
 transition.finally();
@@ -56,8 +56,8 @@ transition.retry();
 // $ExpectType Promise<unknown>
 transition.then();
 transition.then(
-    result => console.log(result),
-    err => console.log(err),
+    (result) => console.log(result),
+    (err) => console.log(err),
     "label",
 );
 
@@ -106,7 +106,9 @@ router.transitionTo("someRoute", 1, { queryParams: { areSupported: true } });
 // $ExpectType Transition<unknown>
 router.transitionTo("someRoute", 1, "13");
 // $ExpectType Transition<unknown>
-router.transitionTo("someRoute", 1, "13", { queryParams: { areSupported: true } });
+router.transitionTo("someRoute", 1, "13", {
+    queryParams: { areSupported: true },
+});
 
 router.recognize("foo/bar"); // $ExpectType RouteInfo
 

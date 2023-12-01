@@ -52,7 +52,10 @@ let outputNumber: number | undefined;
 let outputString: string | undefined;
 
 let domainNumbers: number[] = [1, 100];
-const domainNumeric: NumCoercible[] = [new NumCoercible(0), new NumCoercible(100)];
+const domainNumeric: NumCoercible[] = [
+    new NumCoercible(0),
+    new NumCoercible(100),
+];
 let domainStrings: string[];
 let domainDates: Date[] = [new Date(2016, 0, 15), new Date(2016, 5, 15)];
 
@@ -138,17 +141,19 @@ const linearScaleNumberUnknownValue = linearScaleNumber.unknown();
 
 // interpolate(...) -----------------------------------------------------------------
 
-linearScaleString = linearScaleString.interpolate(interpolateCubehelix.gamma(3));
+linearScaleString = linearScaleString.interpolate(
+    interpolateCubehelix.gamma(3),
+);
 
 linearScaleNumString = linearScaleNumString.interpolate((a, b) => {
     // take two numbers
-    return (t: number) => (a * (1 - t) + b * t) + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
+    return (t: number) => a * (1 - t) + b * t + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
 });
 
 // Changes scale output type (inferred generic)
 linearScaleNumString = linearScaleNumber.interpolate((a, b) => {
     // take two numbers
-    return (t: number) => (a * (1 - t) + b * t) + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
+    return (t: number) => a * (1 - t) + b * t + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
 });
 
 // nice(...) -----------------------------------------------------------------------
@@ -178,7 +183,8 @@ outputString = linearScaleNumString(10);
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedLinearScale: d3Scale.ScaleLinear<number, string> = linearScaleNumString.copy();
+const copiedLinearScale: d3Scale.ScaleLinear<number, string> =
+    linearScaleNumString.copy();
 
 // -------------------------------------------------------------------------------
 // Power Scale Factories
@@ -260,7 +266,7 @@ powerScaleString = powerScaleString.interpolate(interpolateCubehelix.gamma(3));
 
 powerScaleNumString = powerScaleNumString.interpolate((a, b) => {
     // take two numbers
-    return (t: number) => (a * (1 - t) + b * t) + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
+    return (t: number) => a * (1 - t) + b * t + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
 });
 
 // nice(...) -----------------------------------------------------------------------
@@ -290,7 +296,8 @@ outputString = powerScaleNumString(10);
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedPowerScale: d3Scale.ScalePower<number, string> = powerScaleNumString.copy();
+const copiedPowerScale: d3Scale.ScalePower<number, string> =
+    powerScaleNumString.copy();
 
 // -------------------------------------------------------------------------------
 // Logarithmic Scale Factory
@@ -363,7 +370,7 @@ logScaleString = logScaleString.interpolate(interpolateCubehelix.gamma(3));
 
 logScaleNumString = logScaleNumString.interpolate((a, b) => {
     // take two numbers
-    return (t: number) => (a * (1 - t) + b * t) + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
+    return (t: number) => a * (1 - t) + b * t + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
 });
 
 // nice(...) -----------------------------------------------------------------------
@@ -394,7 +401,8 @@ outputString = logScaleNumString(10);
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedLogScale: d3Scale.ScaleLogarithmic<number, string> = logScaleNumString.copy();
+const copiedLogScale: d3Scale.ScaleLogarithmic<number, string> =
+    logScaleNumString.copy();
 
 // -------------------------------------------------------------------------------
 // SymLog Scale Factory
@@ -508,7 +516,10 @@ localTimeScaleNumber = localTimeScaleNumber.domain(domainDates);
 
 domainDates = localTimeScaleNumber.domain();
 
-localTimeScaleString = localTimeScaleString.domain([new Date(2016, 6, 1), Date.now()]);
+localTimeScaleString = localTimeScaleString.domain([
+    new Date(2016, 6, 1),
+    Date.now(),
+]);
 domainDates = localTimeScaleString.domain();
 
 localTimeScaleNumString = localTimeScaleNumString.domain(domainDates);
@@ -544,11 +555,13 @@ clampFlag = localTimeScaleNumber.clamp();
 
 // interpolate(...) -----------------------------------------------------------------
 
-localTimeScaleString = localTimeScaleString.interpolate(interpolateCubehelix.gamma(3));
+localTimeScaleString = localTimeScaleString.interpolate(
+    interpolateCubehelix.gamma(3),
+);
 
 localTimeScaleNumString = localTimeScaleNumString.interpolate((a, b) => {
     // take two numbers
-    return (t: number) => (a * (1 - t) + b * t) + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
+    return (t: number) => a * (1 - t) + b * t + "px"; // a and b are numbers based on Range Type, return value of interpolator is string based on Output type
 });
 
 // nice(...) -----------------------------------------------------------------------
@@ -591,7 +604,8 @@ outputString = localTimeScaleNumString(new Date(2016, 6, 4));
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedTimeScale: d3Scale.ScaleTime<number, string> = localTimeScaleNumString.copy();
+const copiedTimeScale: d3Scale.ScaleTime<number, string> =
+    localTimeScaleNumString.copy();
 
 // -------------------------------------------------------------------------------
 // Sequential Scale Factory
@@ -607,16 +621,23 @@ sequentialScaleColorString = d3Scale.scaleSequentialPow<string>();
 sequentialScaleColorString = d3Scale.scaleSequentialSqrt<string>();
 sequentialScaleColorString = d3Scale.scaleSequentialSymlog<string>();
 sequentialScaleColorString = d3Scale.scaleSequentialQuantile<string>();
-sequentialScaleColorString = d3Scale.scaleSequential<string>(interpolateRainbow);
+sequentialScaleColorString =
+    d3Scale.scaleSequential<string>(interpolateRainbow);
 sequentialScaleColorString = d3Scale.scaleSequential(interpolateCool); // inferred Output type string
-sequentialScaleColorString = d3Scale.scaleSequential([0, 5], interpolateRainbow);
+sequentialScaleColorString = d3Scale.scaleSequential(
+    [0, 5],
+    interpolateRainbow,
+);
 
 // ScaleSequential Interface ========================================================
 
 // domain(...) -----------------------------------------------------------------
 
 sequentialScaleColorString = sequentialScaleColorString.domain([0, 1]);
-sequentialScaleColorString = sequentialScaleColorString.domain([new NumCoercible(0), new NumCoercible(100)]);
+sequentialScaleColorString = sequentialScaleColorString.domain([
+    new NumCoercible(0),
+    new NumCoercible(100),
+]);
 const domainSequential: [number, number] = sequentialScaleColorString.domain();
 
 // clamp(...) -----------------------------------------------------------------
@@ -626,7 +647,8 @@ clampFlag = sequentialScaleColorString.clamp();
 
 // interpolate(...) -----------------------------------------------------------------
 
-sequentialScaleColorString = sequentialScaleColorString.interpolator(interpolateInferno);
+sequentialScaleColorString =
+    sequentialScaleColorString.interpolator(interpolateInferno);
 
 let sequentialInterpolator: (t: number) => string;
 sequentialInterpolator = sequentialScaleColorString.interpolator();
@@ -637,7 +659,8 @@ outputString = sequentialScaleColorString(10);
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedSequentialScale: d3Scale.ScaleSequential<string> = sequentialScaleColorString.copy();
+const copiedSequentialScale: d3Scale.ScaleSequential<string> =
+    sequentialScaleColorString.copy();
 
 // -------------------------------------------------------------------------------
 // Diverging Scale Factory
@@ -657,7 +680,10 @@ divergingScaleNumber = d3Scale.scaleDivergingSymlog();
 divergingScaleNumber = d3Scale.scaleDiverging(interpolateRound(0, 1));
 divergingScaleNumber = d3Scale.scaleDiverging(interpolateDouble);
 divergingScaleString = d3Scale.scaleDiverging<string>(interpolateSpectral);
-divergingScaleNumber = d3Scale.scaleDiverging<number>([0, 5, 10], interpolateRound(0, 1));
+divergingScaleNumber = d3Scale.scaleDiverging<number>(
+    [0, 5, 10],
+    interpolateRound(0, 1),
+);
 
 // ScaleDiverging Interface =======================================================
 
@@ -671,7 +697,11 @@ outputString = divergingScaleString(1);
 let domainDivergingScale: [number, number, number];
 
 divergingScaleNumber = divergingScaleNumber.domain([0, 0.5, 1]);
-divergingScaleNumber = divergingScaleNumber.domain([new NumCoercible(0), 0.5, new NumCoercible(1)]);
+divergingScaleNumber = divergingScaleNumber.domain([
+    new NumCoercible(0),
+    0.5,
+    new NumCoercible(1),
+]);
 domainDivergingScale = divergingScaleNumber.domain();
 
 // @ts-expect-error
@@ -680,7 +710,11 @@ divergingScaleNumber.domain([0, 1]);
 divergingScaleNumber.domain([new NumCoercible(0), new NumCoercible(0.5)]);
 
 divergingScaleString = divergingScaleString.domain([0, 0.5, 1]);
-divergingScaleString = divergingScaleString.domain([new NumCoercible(0), 0.5, new NumCoercible(1)]);
+divergingScaleString = divergingScaleString.domain([
+    new NumCoercible(0),
+    0.5,
+    new NumCoercible(1),
+]);
 domainDivergingScale = divergingScaleString.domain();
 
 // @ts-expect-error
@@ -702,13 +736,19 @@ const inum: (t: number) => number = divergingScaleNumber.interpolator();
 const istr: (t: number) => string = divergingScaleString.interpolator();
 
 divergingScaleNumber = divergingScaleNumber.interpolator((t) => t + 2);
-divergingScaleNumber = divergingScaleNumber.interpolator(interpolateRound(2, 3));
-divergingScaleString = divergingScaleString.interpolator(sequentialInterpolator);
+divergingScaleNumber = divergingScaleNumber.interpolator(
+    interpolateRound(2, 3),
+);
+divergingScaleString = divergingScaleString.interpolator(
+    sequentialInterpolator,
+);
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedDivergingScaleNumber: d3Scale.ScaleDiverging<number> = divergingScaleNumber.copy();
-const copiedDivergingScaleString: d3Scale.ScaleDiverging<string> = divergingScaleString.copy();
+const copiedDivergingScaleNumber: d3Scale.ScaleDiverging<number> =
+    divergingScaleNumber.copy();
+const copiedDivergingScaleString: d3Scale.ScaleDiverging<string> =
+    divergingScaleString.copy();
 
 // -------------------------------------------------------------------------------
 // Quantize Scale Factory
@@ -728,7 +768,10 @@ quantizeScaleNumber = d3Scale.scaleQuantize([0, 5], [0, 5]);
 // domain(...) -----------------------------------------------------------------
 
 quantizeScaleNumber = quantizeScaleNumber.domain([0, 1]);
-quantizeScaleNumber = quantizeScaleNumber.domain([new NumCoercible(0), new NumCoercible(100)]);
+quantizeScaleNumber = quantizeScaleNumber.domain([
+    new NumCoercible(0),
+    new NumCoercible(100),
+]);
 const domainQuantize: [number, number] = quantizeScaleNumber.domain();
 
 // range(...) -----------------------------------------------------------------
@@ -768,7 +811,8 @@ outputNumber = quantizeScaleNumber(0.51);
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedQuantizeScale: d3Scale.ScaleQuantize<number> = quantizeScaleNumber.copy();
+const copiedQuantizeScale: d3Scale.ScaleQuantize<number> =
+    quantizeScaleNumber.copy();
 
 // -------------------------------------------------------------------------------
 // Quantile Scale Factory
@@ -817,7 +861,8 @@ outputNumber = quantileScaleNumber(0.51);
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedQuantileScale: d3Scale.ScaleQuantile<number> = quantileScaleNumber.copy();
+const copiedQuantileScale: d3Scale.ScaleQuantile<number> =
+    quantileScaleNumber.copy();
 
 // -------------------------------------------------------------------------------
 // Threshold Scale Factory
@@ -830,7 +875,10 @@ let thresholdScaleNumberString: d3Scale.ScaleThreshold<number, string>;
 
 thresholdScaleNumberNumber = d3Scale.scaleThreshold();
 thresholdScaleNumberString = d3Scale.scaleThreshold<number, string>();
-thresholdScaleNumberString = d3Scale.scaleThreshold<number, string>([0, 5], ["test"]);
+thresholdScaleNumberString = d3Scale.scaleThreshold<number, string>(
+    [0, 5],
+    ["test"],
+);
 
 // ScaleThreshold Interface ========================================================
 
@@ -846,7 +894,11 @@ thresholdScaleNumberString = thresholdScaleNumberString.domain([0.2, 0.8]);
 thresholdScaleNumberNumber = thresholdScaleNumberNumber.range([100, 200]);
 rangeNumbers = thresholdScaleNumberNumber.range();
 
-thresholdScaleNumberString = thresholdScaleNumberString.range(["steelblue", "seagreen", "brown"]);
+thresholdScaleNumberString = thresholdScaleNumberString.range([
+    "steelblue",
+    "seagreen",
+    "brown",
+]);
 rangeStrings = thresholdScaleNumberString.range();
 
 // invertExtent(...) -----------------------------------------------------------------
@@ -863,7 +915,8 @@ outputString = thresholdScaleNumberString(0.9);
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedThresholdScale: d3Scale.ScaleThreshold<number, string> = thresholdScaleNumberString.copy();
+const copiedThresholdScale: d3Scale.ScaleThreshold<number, string> =
+    thresholdScaleNumberString.copy();
 
 // -------------------------------------------------------------------------------
 // Ordinal Scale Factory
@@ -884,14 +937,26 @@ ordinalScaleStringString = d3Scale.scaleOrdinal(schemePuRd[3], schemePuRd[3]);
 
 // domain(...) -----------------------------------------------------------------
 
-ordinalScaleStringString = ordinalScaleStringString.domain(["negative", "neutral", "positive"]);
+ordinalScaleStringString = ordinalScaleStringString.domain([
+    "negative",
+    "neutral",
+    "positive",
+]);
 domainStrings = ordinalScaleStringString.domain();
 
-ordinalScaleStringNumber = ordinalScaleStringNumber.domain(["negative", "neutral", "positive"]);
+ordinalScaleStringNumber = ordinalScaleStringNumber.domain([
+    "negative",
+    "neutral",
+    "positive",
+]);
 
 // range(...) -----------------------------------------------------------------
 
-ordinalScaleStringString = ordinalScaleStringString.range(["crimson", "midnightblue", "seagreen"]);
+ordinalScaleStringString = ordinalScaleStringString.range([
+    "crimson",
+    "midnightblue",
+    "seagreen",
+]);
 ordinalScaleStringString = ordinalScaleStringString.range(schemePuRd[3]);
 rangeStrings = ordinalScaleStringString.range();
 
@@ -902,11 +967,14 @@ rangeNumbers = ordinalScaleStringNumber.range();
 
 const implicit: { name: "implicit" } = d3Scale.scaleImplicit;
 
-ordinalScaleStringString = ordinalScaleStringString.unknown(d3Scale.scaleImplicit);
+ordinalScaleStringString = ordinalScaleStringString.unknown(
+    d3Scale.scaleImplicit,
+);
 
 ordinalScaleStringNumber = ordinalScaleStringNumber.unknown(0);
 
-const unknownValue: string | { name: "implicit" } = ordinalScaleStringString.unknown();
+const unknownValue: string | { name: "implicit" } =
+    ordinalScaleStringString.unknown();
 
 if (typeof unknownValue === "string") {
     console.log(unknownValue);
@@ -922,7 +990,8 @@ outputNumber = ordinalScaleStringNumber("negative");
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedOrdinalScale: d3Scale.ScaleOrdinal<string, number> = ordinalScaleStringNumber.copy();
+const copiedOrdinalScale: d3Scale.ScaleOrdinal<string, number> =
+    ordinalScaleStringNumber.copy();
 
 // -------------------------------------------------------------------------------
 // Band Scale Factory
@@ -1003,7 +1072,8 @@ outputNumberMaybe = bandScaleCoercible(new StringCoercible("negative"));
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedBandScale: d3Scale.ScaleBand<StringCoercible> = bandScaleCoercible.copy();
+const copiedBandScale: d3Scale.ScaleBand<StringCoercible> =
+    bandScaleCoercible.copy();
 
 // -------------------------------------------------------------------------------
 // Point Scale Factory
@@ -1074,4 +1144,5 @@ outputNumberMaybe = pointScaleCoercible(new StringCoercible("negative"));
 
 // copy(...) -----------------------------------------------------------------
 
-const copiedPointScale: d3Scale.ScalePoint<StringCoercible> = pointScaleCoercible.copy();
+const copiedPointScale: d3Scale.ScalePoint<StringCoercible> =
+    pointScaleCoercible.copy();

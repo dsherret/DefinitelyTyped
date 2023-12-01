@@ -1,10 +1,10 @@
 var editor = new EpicEditor().load();
 
-editor.load(function() {
+editor.load(function () {
     console.log("Editor loaded.");
 });
 
-editor.unload(function() {
+editor.unload(function () {
     console.log("Editor unloaded.");
 });
 
@@ -25,7 +25,7 @@ editor.save();
 editor.remove("example.md");
 var files = editor.getFiles();
 
-editor.on("unload", function() {
+editor.on("unload", function () {
     console.log("Editor was removed");
 });
 
@@ -47,7 +47,7 @@ editor.reflow("height");
 var marked: any;
 var opts = {
     container: "epiceditor",
-    textarea: <any> null,
+    textarea: <any>null,
     basePath: "epiceditor",
     clientSideStorage: true,
     localStorageName: "epiceditor",

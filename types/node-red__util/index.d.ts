@@ -111,7 +111,11 @@ declare namespace util {
         /**
          * Register a message catalog with i18n.
          */
-        registerMessageCatalog(namespace: string, dir: string, file: string): Promise<void>;
+        registerMessageCatalog(
+            namespace: string,
+            dir: string,
+            file: string,
+        ): Promise<void>;
 
         /**
          * Gets a message catalog.
@@ -153,7 +157,9 @@ declare namespace util {
          * @param msg - the message object to clone
          * @returns the cloned message
          */
-        cloneMessage<TNodeMessage extends registry.NodeMessage>(msg: TNodeMessage): TNodeMessage;
+        cloneMessage<TNodeMessage extends registry.NodeMessage>(
+            msg: TNodeMessage,
+        ): TNodeMessage;
         /**
          * Compares two objects, handling various JavaScript types.
          *
@@ -182,8 +188,16 @@ declare namespace util {
          * @param toString - whether to convert the returned array to a string
          * @returns the normalised expression
          */
-        normalisePropertyExpression(str: string, msg?: registry.NodeMessage, toString?: false): Array<string | number>;
-        normalisePropertyExpression(str: string, msg: registry.NodeMessage, toString: true): string;
+        normalisePropertyExpression(
+            str: string,
+            msg?: registry.NodeMessage,
+            toString?: false,
+        ): Array<string | number>;
+        normalisePropertyExpression(
+            str: string,
+            msg: registry.NodeMessage,
+            toString: true,
+        ): string;
         /**
          * Gets a property of a message object.
          *
@@ -214,7 +228,12 @@ declare namespace util {
          * @param  value         - the value to set
          * @param  createMissing - whether to create missing parent properties
          */
-        setMessageProperty(msg: registry.NodeMessage, prop: string, value: any, createMissing?: boolean): boolean;
+        setMessageProperty(
+            msg: registry.NodeMessage,
+            prop: string,
+            value: any,
+            createMissing?: boolean,
+        ): boolean;
         /**
          * Sets a property of an object.
          *
@@ -223,7 +242,12 @@ declare namespace util {
          * @param  value         - the value to set
          * @param  createMissing - whether to create missing parent properties
          */
-        setObjectProperty(msg: registry.NodeMessage, prop: string, value: any, createMissing?: boolean): boolean;
+        setObjectProperty(
+            msg: registry.NodeMessage,
+            prop: string,
+            value: any,
+            createMissing?: boolean,
+        ): boolean;
         /**
          * Get value of environment variable.
          * @param node - accessing node
@@ -251,7 +275,10 @@ declare namespace util {
          * @param key - the context property string to parse
          * @returns The parsed property
          */
-        parseContextStore(key: string): { store?: string | undefined; key: string };
+        parseContextStore(key: string): {
+            store?: string | undefined;
+            key: string;
+        };
         /**
          * Evaluates a property value according to its type.
          *
@@ -262,7 +289,12 @@ declare namespace util {
          * @param   callback - (optional) called when the property is evaluated
          * @returns The evaluted property, if no `callback` is provided
          */
-        evaluateNodeProperty(value: string, type: string, node: registry.Node, msg: registry.NodeMessage): any;
+        evaluateNodeProperty(
+            value: string,
+            type: string,
+            node: registry.Node,
+            msg: registry.NodeMessage,
+        ): any;
         evaluateNodeProperty(
             value: string,
             type: string,
@@ -278,7 +310,10 @@ declare namespace util {
          * @param node  - the node evaluating the property
          * @returns The JSONata expression that can be evaluated
          */
-        prepareJSONataExpression(value: string, node: registry.Node): JsonataExpression;
+        prepareJSONataExpression(
+            value: string,
+            node: registry.Node,
+        ): JsonataExpression;
         /**
          * Evaluates a JSONata expression.
          * The expression must have been prepared with `prepareJSONataExpression`
@@ -289,7 +324,10 @@ declare namespace util {
          * @param   callback - (optional) called when the expression is evaluated
          * @returns If no callback was provided, the result of the expression
          */
-        evaluateJSONataExpression(expr: JsonataExpression, msg: registry.NodeMessage): any;
+        evaluateJSONataExpression(
+            expr: JsonataExpression,
+            msg: registry.NodeMessage,
+        ): any;
         evaluateJSONataExpression(
             expr: JsonataExpression,
             msg: registry.NodeMessage,
@@ -314,11 +352,17 @@ declare namespace util {
          * @param opts
          * @returns the encoded object
          */
-        encodeObject(msg: { msg: any }, opts?: { maxLength?: number | undefined }): { format: string; msg: string };
+        encodeObject(
+            msg: { msg: any },
+            opts?: { maxLength?: number | undefined },
+        ): { format: string; msg: string };
     }
 
     // Used `boolean` in PromiseLike instead of `false` because it caused problems with `async` functions
-    type HandlerFunction<T> = (payload: T, callback: (err?: any) => void) => void | false | PromiseLike<void | boolean>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
+    type HandlerFunction<T> = (
+        payload: T,
+        callback: (err?: any) => void,
+    ) => void | false | PromiseLike<void | boolean>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
 
     interface Hooks {
         /**
@@ -335,7 +379,10 @@ declare namespace util {
          *
          * If the hook returns `false`, the messages will not proceed any further.
          */
-        add(hookName: "onSend", hookHandler: HandlerFunction<SendEvent[]>): void;
+        add(
+            hookName: "onSend",
+            hookHandler: HandlerFunction<SendEvent[]>,
+        ): void;
 
         /**
          * A message is about to be routed to its destination.
@@ -350,7 +397,10 @@ declare namespace util {
          *
          * If the hook returns `false`, the message will not proceed any further.
          */
-        add(hookName: "preRoute", handlerFunction: HandlerFunction<SendEvent>): void;
+        add(
+            hookName: "preRoute",
+            handlerFunction: HandlerFunction<SendEvent>,
+        ): void;
 
         /**
          * A message is about to be delivered
@@ -362,14 +412,20 @@ declare namespace util {
          *
          * If the hook returns `false`, the messages will not proceed any further.
          */
-        add(hookName: "preDeliver", handlerFunction: HandlerFunction<SendEvent>): void; // tslint:disable-line:unified-signatures
+        add(
+            hookName: "preDeliver",
+            handlerFunction: HandlerFunction<SendEvent>,
+        ): void; // tslint:disable-line:unified-signatures
 
         /**
          * A message has been dispatched to its destination.
          *
          * The hook is passed a single `SendEvent`. The message is delivered asynchronously to the hooks execution.
          */
-        add(hookName: "postDeliver", handlerFunction: HandlerFunction<SendEvent>): void; // tslint:disable-line:unified-signatures
+        add(
+            hookName: "postDeliver",
+            handlerFunction: HandlerFunction<SendEvent>,
+        ): void; // tslint:disable-line:unified-signatures
 
         /**
          * A message is about to be received by a node.
@@ -378,21 +434,30 @@ declare namespace util {
          *
          * If the hook returns `false`, the messages will not proceed any further.
          */
-        add(hookName: "onReceive", handlerFunction: HandlerFunction<ReceiveEvent>): void;
+        add(
+            hookName: "onReceive",
+            handlerFunction: HandlerFunction<ReceiveEvent>,
+        ): void;
 
         /**
          * A message has been received by a node.
          *
          * The hook is passed `ReceiveEvent` when the message has been given to the node’s `input` handler.
          */
-        add(hookName: "postReceive", handlerFunction: HandlerFunction<ReceiveEvent>): void; // tslint:disable-line:unified-signatures
+        add(
+            hookName: "postReceive",
+            handlerFunction: HandlerFunction<ReceiveEvent>,
+        ): void; // tslint:disable-line:unified-signatures
 
         /**
          * A node has completed with a message or logged an error for it.
          *
          * The hook is passed a `CompleteEvent`.
          */
-        add(hookName: "onComplete", handlerFunction: HandlerFunction<CompleteEvent>): void;
+        add(
+            hookName: "onComplete",
+            handlerFunction: HandlerFunction<CompleteEvent>,
+        ): void;
 
         /**
          * Called before running `npm install` to install an npm module.
@@ -407,7 +472,10 @@ declare namespace util {
          *
          * If the hook throws an error, the install will be cleanly failed.
          */
-        add(hookName: "preInstall", handlerFunction: HandlerFunction<InstallEvent>): void;
+        add(
+            hookName: "preInstall",
+            handlerFunction: HandlerFunction<InstallEvent>,
+        ): void;
 
         /**
          * Called after `npm install` finishes installing an npm module.
@@ -420,7 +488,10 @@ declare namespace util {
          *
          * If the preceding `npm install` returned an error, this hook will not be invoked.
          */
-        add(hookName: "postInstall", handlerFunction: HandlerFunction<InstallEvent>): void; // tslint:disable-line:unified-signatures
+        add(
+            hookName: "postInstall",
+            handlerFunction: HandlerFunction<InstallEvent>,
+        ): void; // tslint:disable-line:unified-signatures
 
         /**
          * Called before running `npm remove` to uninstall an npm module.
@@ -435,7 +506,10 @@ declare namespace util {
          *
          * If the hook throws an error, the uninstall will be cleanly failed.
          */
-        add(hookName: "preUninstall", handlerFunction: HandlerFunction<UninstallEvent>): void;
+        add(
+            hookName: "preUninstall",
+            handlerFunction: HandlerFunction<UninstallEvent>,
+        ): void;
 
         /**
          * Called after `npm remove` finishes removing an npm module.
@@ -446,7 +520,10 @@ declare namespace util {
          *
          * If the hook throws an error, it will be logged, but the uninstall will complete cleanly as we cannot rollback an `npm remove` after it has completed.
          */
-        add(hookName: "postUninstall", handlerFunction: HandlerFunction<UninstallEvent>): void; // tslint:disable-line:unified-signatures
+        add(
+            hookName: "postUninstall",
+            handlerFunction: HandlerFunction<UninstallEvent>,
+        ): void; // tslint:disable-line:unified-signatures
 
         /**
          * Register a new hook handler.

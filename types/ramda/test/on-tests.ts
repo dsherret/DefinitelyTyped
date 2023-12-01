@@ -1,6 +1,6 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     // $ExpectType { (a: string): (b: string) => boolean; (a: string, b: string): boolean; }
     const containsInsensitive = R.on(R.includes, R.toLower);
     // $ExpectType boolean
@@ -54,4 +54,4 @@ import * as R from "ramda";
     R.on<number, string>((a, b) => String(a + b))(Number)("1", "2");
     // $ExpectType string
     R.on<number, string>((a, b) => String(a + b))(Number)("1")("2");
-});
+};

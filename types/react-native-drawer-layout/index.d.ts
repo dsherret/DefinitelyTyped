@@ -11,7 +11,9 @@ export interface DrawerLayoutSlideEvent {
     };
 }
 
-export type DrawerLayoutSlideEventHandler = (event: DrawerLayoutSlideEvent) => void;
+export type DrawerLayoutSlideEventHandler = (
+    event: DrawerLayoutSlideEvent,
+) => void;
 
 export type DrawerLayoutStateChangeEventHandler = (state: string) => void;
 

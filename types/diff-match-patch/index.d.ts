@@ -19,13 +19,28 @@ declare class diff_match_patch {
     Patch_Margin: number;
     Match_MaxBits: number;
 
-    diff_main(text1: string, text2: string, opt_checklines?: boolean, opt_deadline?: number): diff_match_patch.Diff[];
+    diff_main(
+        text1: string,
+        text2: string,
+        opt_checklines?: boolean,
+        opt_deadline?: number,
+    ): diff_match_patch.Diff[];
 
-    diff_bisect_(text1: string, text2: string, deadline: number): diff_match_patch.Diff[];
+    diff_bisect_(
+        text1: string,
+        text2: string,
+        deadline: number,
+    ): diff_match_patch.Diff[];
 
-    diff_linesToChars_(text1: string, text2: string): { chars1: string; chars2: string; lineArray: string[] };
+    diff_linesToChars_(
+        text1: string,
+        text2: string,
+    ): { chars1: string; chars2: string; lineArray: string[] };
 
-    diff_charsToLines_(diffs: diff_match_patch.Diff[], lineArray: string[]): void;
+    diff_charsToLines_(
+        diffs: diff_match_patch.Diff[],
+        lineArray: string[],
+    ): void;
 
     diff_commonPrefix(text1: string, text2: string): number;
 
@@ -63,15 +78,32 @@ declare class diff_match_patch {
 
     match_alphabet_(pattern: string): { [char: string]: number };
 
-    patch_addContext_(patch: typeof diff_match_patch.patch_obj, text: string): void;
+    patch_addContext_(
+        patch: typeof diff_match_patch.patch_obj,
+        text: string,
+    ): void;
 
-    patch_make(a: string, opt_b: string | diff_match_patch.Diff[]): Array<typeof diff_match_patch.patch_obj>;
-    patch_make(a: diff_match_patch.Diff[]): Array<typeof diff_match_patch.patch_obj>;
-    patch_make(a: string, opt_b: string, opt_c: diff_match_patch.Diff[]): Array<typeof diff_match_patch.patch_obj>;
+    patch_make(
+        a: string,
+        opt_b: string | diff_match_patch.Diff[],
+    ): Array<typeof diff_match_patch.patch_obj>;
+    patch_make(
+        a: diff_match_patch.Diff[],
+    ): Array<typeof diff_match_patch.patch_obj>;
+    patch_make(
+        a: string,
+        opt_b: string,
+        opt_c: diff_match_patch.Diff[],
+    ): Array<typeof diff_match_patch.patch_obj>;
 
-    patch_deepCopy(patches: Array<typeof diff_match_patch.patch_obj>): Array<typeof diff_match_patch.patch_obj>;
+    patch_deepCopy(
+        patches: Array<typeof diff_match_patch.patch_obj>,
+    ): Array<typeof diff_match_patch.patch_obj>;
 
-    patch_apply(patches: Array<typeof diff_match_patch.patch_obj>, text: string): [string, boolean[]];
+    patch_apply(
+        patches: Array<typeof diff_match_patch.patch_obj>,
+        text: string,
+    ): [string, boolean[]];
 
     patch_addPadding(patches: Array<typeof diff_match_patch.patch_obj>): string;
 
@@ -82,7 +114,7 @@ declare class diff_match_patch {
     patch_toText(patches: Array<typeof diff_match_patch.patch_obj>): string;
 
     static patch_obj: {
-        new(): diff_match_patch.patch_obj;
+        new (): diff_match_patch.patch_obj;
     };
 
     static diff_match_patch: typeof diff_match_patch;

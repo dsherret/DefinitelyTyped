@@ -18,7 +18,10 @@ declare namespace koaLog {
 
         function status(ctx: Koa.BaseContext): number;
 
-        function token(name: string, fn: (ctx: Koa.ParameterizedContext) => string): void;
+        function token(
+            name: string,
+            fn: (ctx: Koa.ParameterizedContext) => string,
+        ): void;
 
         function url(ctx: Koa.BaseContext): string;
     }

@@ -47,6 +47,8 @@ converter = new ConvertTiff(options);
 const location = "/srv/www/mysite/public/documents";
 converter.convertOne("/home/tiffs/document_one.tif", location);
 
-converter.convertOne("myFile.tiff", "/path/to/location").then(({ converted, errors }) => {
-    // Do the business on complete
-});
+converter
+    .convertOne("myFile.tiff", "/path/to/location")
+    .then(({ converted, errors }) => {
+        // Do the business on complete
+    });

@@ -1,6 +1,9 @@
 export {};
 
-export type CycloneDXBom = CycloneDXBomV1_2 | CycloneDXBomV1_3 | CycloneDXBomV1_4;
+export type CycloneDXBom =
+    | CycloneDXBomV1_2
+    | CycloneDXBomV1_3
+    | CycloneDXBomV1_4;
 
 interface CycloneDXBase<C> {
     bomFormat: "CycloneDX";
@@ -214,11 +217,11 @@ export interface Committer {
 
 export type Signature =
     | {
-        signers?: SingleSignature[];
-    }
+          signers?: SingleSignature[];
+      }
     | {
-        chain?: SingleSignature[];
-    }
+          chain?: SingleSignature[];
+      }
     | SingleSignature;
 
 export interface SingleSignature {
@@ -232,21 +235,21 @@ export interface SingleSignature {
 
 export type PublicKey =
     | {
-        kty: "EC";
-        crv: "P-256" | "P-384" | "P-521";
-        x: string;
-        y: string;
-    }
+          kty: "EC";
+          crv: "P-256" | "P-384" | "P-521";
+          x: string;
+          y: string;
+      }
     | {
-        kty: "OKP";
-        crv: "Ed25519" | "Ed448";
-        x: string;
-    }
+          kty: "OKP";
+          crv: "Ed25519" | "Ed448";
+          x: string;
+      }
     | {
-        kty: "RSA";
-        n: string;
-        e: string;
-    };
+          kty: "RSA";
+          n: string;
+          e: string;
+      };
 
 export interface ReleaseNotes {
     type: "major" | "minor" | "patch" | "pre-release" | "internal";
@@ -305,9 +308,21 @@ export interface Vulnerability {
     };
     tools?: Tool[];
     analysis?: {
-        state?: "resolved" | "resolved_with_pedigree" | "exploitable" | "in_triage" | "false_positive" | "not_affected";
+        state?:
+            | "resolved"
+            | "resolved_with_pedigree"
+            | "exploitable"
+            | "in_triage"
+            | "false_positive"
+            | "not_affected";
         justification?: Justification;
-        response?: Array<"can_not_fix" | "will_not_fix" | "update" | "rollback" | "workaround_available">;
+        response?: Array<
+            | "can_not_fix"
+            | "will_not_fix"
+            | "update"
+            | "rollback"
+            | "workaround_available"
+        >;
         detail?: string;
     };
     affects?: Array<{
@@ -340,13 +355,13 @@ export interface Contact {
 
 export type VersionRange =
     | {
-        version: string;
-        range?: string;
-    }
+          version: string;
+          range?: string;
+      }
     | {
-        version?: string;
-        range: string;
-    };
+          version?: string;
+          range: string;
+      };
 
 export interface Source {
     url?: URL;
@@ -378,7 +393,14 @@ export interface Tool {
     externalReferences?: ExternalReference[];
 }
 
-export type Severity = "critical" | "high" | "medium" | "low" | "info" | "none" | "unknown";
+export type Severity =
+    | "critical"
+    | "high"
+    | "medium"
+    | "low"
+    | "info"
+    | "none"
+    | "unknown";
 export type RatingMethod = "CVSSv2" | "CVSSv3" | "CVSSv31" | "OWASP" | "other";
 
 export type HashAlgoritm =
@@ -443,31 +465,29 @@ export interface ContactPerson {
 
 export type Scope = "required" | "optional" | "excluded";
 
-export type License =
-    & (
-        | {
-            id: LicenseId;
-            name?: string;
-        }
-        | {
-            id?: LicenseId;
-            name: string;
-        }
-    )
-    & {
-        text?: MimeText;
-        url?: URL;
-    };
+export type License = (
+    | {
+          id: LicenseId;
+          name?: string;
+      }
+    | {
+          id?: LicenseId;
+          name: string;
+      }
+) & {
+    text?: MimeText;
+    url?: URL;
+};
 
 export type LicenseOrExpression =
     | {
-        license: License;
-        expression?: string;
-    }
+          license: License;
+          expression?: string;
+      }
     | {
-        license?: License;
-        expression: string;
-    };
+          license?: License;
+          expression: string;
+      };
 
 export type URL = string;
 

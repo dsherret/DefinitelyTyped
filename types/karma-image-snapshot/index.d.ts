@@ -37,11 +37,11 @@ export interface MatchImageSnapshotOptions {
      */
     customSnapshotIdentifier?:
         | ((parameters: {
-            testPath: string;
-            currentTestName: string;
-            counter: number;
-            defaultIdentifier: string;
-        }) => string)
+              testPath: string;
+              currentTestName: string;
+              counter: number;
+              defaultIdentifier: string;
+          }) => string)
         | string
         | undefined;
     /**
@@ -102,12 +102,16 @@ declare global {
         /** @async */
         screenshot(): Promise<string | Buffer>;
         setViewport(options: { width: number; height: number }): Promise<void>;
-        toMatchImageSnapshot(options?: MatchImageSnapshotOptions): Promise<void>;
+        toMatchImageSnapshot(
+            options?: MatchImageSnapshotOptions,
+        ): Promise<void>;
     }
 
     namespace jasmine {
         interface AsyncMatchers<T, U> {
-            toMatchImageSnapshot(options?: MatchImageSnapshotOptions): Promise<void>;
+            toMatchImageSnapshot(
+                options?: MatchImageSnapshotOptions,
+            ): Promise<void>;
         }
     }
 }

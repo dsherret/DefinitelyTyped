@@ -2,7 +2,9 @@
 
 declare namespace gapi.client.calendar {
     export class freebusy {
-        static query(parameters: FreeBusyQueryParameters): HttpRequest<FreeBusy>;
+        static query(
+            parameters: FreeBusyQueryParameters,
+        ): HttpRequest<FreeBusy>;
     }
 
     interface FreeBusyQueryParameters {
@@ -22,9 +24,9 @@ declare namespace gapi.client.calendar {
             [key: string]: {
                 errors?:
                     | Array<{
-                        domain: string;
-                        reason: string;
-                    }>
+                          domain: string;
+                          reason: string;
+                      }>
                     | undefined;
                 calendars: string[];
             };
@@ -33,9 +35,9 @@ declare namespace gapi.client.calendar {
             [key: string]: {
                 errors?:
                     | Array<{
-                        domain: string;
-                        reason: string;
-                    }>
+                          domain: string;
+                          reason: string;
+                      }>
                     | undefined;
                 busy: Array<{
                     start: datetime;
@@ -56,13 +58,10 @@ declare namespace gapi.client.calendar {
     type ScopeType =
         // The public scope. This is the default value.
         // Note: The permissions granted to the "default", or public, scope apply to any user, authenticated or not.
-        | "default"
-        | // Limits the scope to a single user.
-        "user"
-        | // Limits the scope to a group.
-        "group"
-        | // Limits the scope to a domain.
-        "domain";
+        | "default" // Limits the scope to a single user.
+        | "user" // Limits the scope to a group.
+        | "group" // Limits the scope to a domain.
+        | "domain";
 
     interface Acl {
         kind: "calendar#aclRule";
@@ -95,29 +94,28 @@ declare namespace gapi.client.calendar {
         ruleId: string;
     }
 
-    interface AclDeleteParameters extends AclGetParameters {
-    }
+    interface AclDeleteParameters extends AclGetParameters {}
 
     export class calendarList {
-        static list(parameters?: CalendarListListParameters): HttpRequest<CalendarList>;
-        static insert(parameters: CalendarListInsertParameters): HttpRequest<CalendarListEntry>;
+        static list(
+            parameters?: CalendarListListParameters,
+        ): HttpRequest<CalendarList>;
+        static insert(
+            parameters: CalendarListInsertParameters,
+        ): HttpRequest<CalendarListEntry>;
     }
 
     type AccessRoleWithoutNone =
         // The user has read access to free/busy information.
-        | "freeBusyReader"
-        | // The user has read access to the calendar. Private events will appear to users with reader access, but event details will be hidden.
-        "reader"
-        | // The user has read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible.
-        "writer"
-        | // The user has ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs.
-        "owner";
+        | "freeBusyReader" // The user has read access to the calendar. Private events will appear to users with reader access, but event details will be hidden.
+        | "reader" // The user has read and write access to the calendar. Private events will appear to users with writer access, and event details will be visible.
+        | "writer" // The user has ownership of the calendar. This role has all of the permissions of the writer role with the additional ability to see and manipulate ACLs.
+        | "owner";
 
     // The user's access role for this calendar. Read-only. Possible values are:
     type AccessRole =
         // The user has no access.
-        | "none"
-        | AccessRoleWithoutNone;
+        "none" | AccessRoleWithoutNone;
 
     interface CalendarListListParameters {
         maxResults?: integer | undefined;
@@ -147,18 +145,20 @@ declare namespace gapi.client.calendar {
         colorId?: string | undefined;
         defaultReminders?:
             | Array<{
-                method: ReminderMethod;
-                minutes: integer;
-            }>
+                  method: ReminderMethod;
+                  minutes: integer;
+              }>
             | undefined;
         foregroundColor?: string | undefined;
         hidden?: boolean | undefined;
-        notificationSettings?: {
-            notifications: Array<{
-                type: NotificationType;
-                method: string;
-            }>;
-        } | undefined;
+        notificationSettings?:
+            | {
+                  notifications: Array<{
+                      type: NotificationType;
+                      method: string;
+                  }>;
+              }
+            | undefined;
         selected?: boolean | undefined;
         summaryOverride?: string | undefined;
     }
@@ -185,15 +185,11 @@ declare namespace gapi.client.calendar {
     // The type of notification. Possible values are:
     type NotificationType =
         // Notification sent when a new event is put on the calendar.
-        | "eventCreation"
-        | // Notification sent when an event is changed.
-        "eventChange"
-        | // Notification sent when an event is cancelled.
-        "eventCancellation"
-        | // Notification sent when an event is changed.
-        "eventResponse"
-        | // An agenda with the events of the day (sent out in the morning).
-        "agenda";
+        | "eventCreation" // Notification sent when an event is changed.
+        | "eventChange" // Notification sent when an event is cancelled.
+        | "eventCancellation" // Notification sent when an event is changed.
+        | "eventResponse" // An agenda with the events of the day (sent out in the morning).
+        | "agenda";
 
     interface CalendarListEntry {
         kind: "calendar#calendarListEntry";
@@ -215,19 +211,25 @@ declare namespace gapi.client.calendar {
             method: ReminderMethod;
             minutes: integer;
         }>;
-        notificationSettings?: {
-            notifications: Array<{
-                type: NotificationType;
-                method: string;
-            }>;
-        } | undefined;
+        notificationSettings?:
+            | {
+                  notifications: Array<{
+                      type: NotificationType;
+                      method: string;
+                  }>;
+              }
+            | undefined;
         primary?: boolean | undefined;
         deleted?: boolean | undefined;
     }
 
     export class calendars {
-        static insert(parameters: CalendarsInsertParameters): HttpRequest<Calendar>;
-        static update(parameters: CalendarsUpdateParameters): HttpRequest<Calendar>;
+        static insert(
+            parameters: CalendarsInsertParameters,
+        ): HttpRequest<Calendar>;
+        static update(
+            parameters: CalendarsUpdateParameters,
+        ): HttpRequest<Calendar>;
         static delete(parameters: CalendarsDeleteParameters): HttpRequest<void>;
     }
 
@@ -322,31 +324,33 @@ declare namespace gapi.client.calendar {
         // Required Properties
         attachments?:
             | Array<{
-                fileUrl: string;
-            }>
+                  fileUrl: string;
+              }>
             | undefined;
         attendees?:
             | Array<{
-                email: string;
-                displayName?: string | undefined;
-                optional?: boolean | undefined;
-                responseStatus?: AttendeeResponseStatus | undefined;
-                comment?: string | undefined;
-                additionalGuests?: integer | undefined;
-            }>
+                  email: string;
+                  displayName?: string | undefined;
+                  optional?: boolean | undefined;
+                  responseStatus?: AttendeeResponseStatus | undefined;
+                  comment?: string | undefined;
+                  additionalGuests?: integer | undefined;
+              }>
             | undefined;
         end: {
             date?: date | undefined;
             dateTime?: datetime | undefined;
             timeZone?: string | undefined;
         };
-        reminders?: {
-            overrides: Array<{
-                method: string;
-                minutes: integer;
-            }>;
-            useDefault: boolean;
-        } | undefined;
+        reminders?:
+            | {
+                  overrides: Array<{
+                      method: string;
+                      minutes: integer;
+                  }>;
+                  useDefault: boolean;
+              }
+            | undefined;
         start: {
             date?: date | undefined;
             dateTime?: datetime | undefined;
@@ -357,41 +361,49 @@ declare namespace gapi.client.calendar {
         anyoneCanAddSelf?: boolean | undefined;
         colorId?: string | undefined;
         description?: string | undefined;
-        extendedProperties?: {
-            private: {
-                [key: string]: string;
-            };
-            shared: {
-                [key: string]: string;
-            };
-        } | undefined;
-        gadget?: {
-            display?: GadgetDisplayMode | undefined;
-            height: integer;
-            iconLink: string;
-            link: string;
-            preferences: {
-                [key: string]: string;
-            };
-            title: string;
-            type: string;
-            width: integer;
-        } | undefined;
+        extendedProperties?:
+            | {
+                  private: {
+                      [key: string]: string;
+                  };
+                  shared: {
+                      [key: string]: string;
+                  };
+              }
+            | undefined;
+        gadget?:
+            | {
+                  display?: GadgetDisplayMode | undefined;
+                  height: integer;
+                  iconLink: string;
+                  link: string;
+                  preferences: {
+                      [key: string]: string;
+                  };
+                  title: string;
+                  type: string;
+                  width: integer;
+              }
+            | undefined;
         guestsCanInviteOthers?: boolean | undefined;
         guestsCanSeeOtherGuests?: boolean | undefined;
         id?: string | undefined;
         location?: string | undefined;
-        originalStartTime?: {
-            date: date;
-            dateTime: datetime;
-            timeZone: string;
-        } | undefined;
+        originalStartTime?:
+            | {
+                  date: date;
+                  dateTime: datetime;
+                  timeZone: string;
+              }
+            | undefined;
         recurrence?: string[] | undefined;
         sequence?: integer | undefined;
-        source?: {
-            url: string;
-            title: string;
-        } | undefined;
+        source?:
+            | {
+                  url: string;
+                  title: string;
+              }
+            | undefined;
         status?: EventStatus | undefined;
         summary?: string | undefined;
         transparency?: EventTransparency | undefined;
@@ -402,9 +414,8 @@ declare namespace gapi.client.calendar {
     // Acceptable values are:
     type EventsOrder =
         // Order by the start date/time (ascending). This is only available when querying single events (i.e. the parameter singleEvents is True)
-        | "startTime"
-        | // Order by last modification time (ascending).
-        "updated";
+        | "startTime" // Order by last modification time (ascending).
+        | "updated";
 
     // Token obtained from the nextSyncToken field returned on the last page of results from the previous list request.
     // It makes the result of this list request contain only entries that have changed since then.
@@ -468,56 +479,44 @@ declare namespace gapi.client.calendar {
     // The attendee's response status. Possible values are:
     type AttendeeResponseStatus =
         // The attendee has not responded to the invitation.
-        | "needsAction"
-        | // The attendee has declined the invitation.
-        "declined"
-        | // The attendee has tentatively accepted the invitation.
-        "tentative"
-        | // The attendee has accepted the invitation.
-        "accepted";
+        | "needsAction" // The attendee has declined the invitation.
+        | "declined" // The attendee has tentatively accepted the invitation.
+        | "tentative" // The attendee has accepted the invitation.
+        | "accepted";
 
     // The gadget's display mode. Optional. Possible values are:
     type GadgetDisplayMode =
         // The gadget displays next to the event's title in the calendar view.
-        | "icon"
-        | // The gadget displays when the event is clicked.
-        "chip";
+        | "icon" // The gadget displays when the event is clicked.
+        | "chip";
 
     // The method used by this reminder. Possible values are:
     type ReminderMethod =
         // Reminders are sent via email.
-        | "email"
-        | // Reminders are sent via SMS. These are only available for Google Apps for Work, Education, and Government customers. Requests to set SMS reminders for other account types are ignored.
-        "sms"
-        | // Reminders are sent via a UI popup.
-        "popup";
+        | "email" // Reminders are sent via SMS. These are only available for Google Apps for Work, Education, and Government customers. Requests to set SMS reminders for other account types are ignored.
+        | "sms" // Reminders are sent via a UI popup.
+        | "popup";
 
     // Status of the event. Optional. Possible values are:
     type EventStatus =
         // The event is confirmed. This is the default status.
-        | "confirmed"
-        | // The event is tentatively confirmed.
-        "tentative"
-        | // The event is cancelled.
-        "cancelled";
+        | "confirmed" // The event is tentatively confirmed.
+        | "tentative" // The event is cancelled.
+        | "cancelled";
 
     // Whether the event blocks time on the calendar. Optional. Possible values are:
     type EventTransparency =
         // The event blocks time on the calendar. This is the default value.
-        | "opaque"
-        | // The event does not block time on the calendar.
-        "transparent";
+        | "opaque" // The event does not block time on the calendar.
+        | "transparent";
 
     // Visibility of the event. Optional. Possible values are:
     type EventVisibility =
         // Uses the default visibility for events on the calendar. This is the default value.
-        | "default"
-        | // The event is public and event details are visible to all readers of the calendar.
-        "public"
-        | // The event is private and only event attendees may view event details.
-        "private"
-        | // The event is private. This value is provided for compatibility reasons.
-        "confidential";
+        | "default" // The event is public and event details are visible to all readers of the calendar.
+        | "public" // The event is private and only event attendees may view event details.
+        | "private" // The event is private. This value is provided for compatibility reasons.
+        | "confidential";
 
     class Event {
         kind: "calendar#event";
@@ -602,11 +601,13 @@ declare namespace gapi.client.calendar {
         recurringEventId?: string | undefined;
 
         // Whether the organizer corresponds to the calendar on which this copy of the event appears. Read-only. The default is False.
-        originalStartTime?: {
-            date: date;
-            dateTime: datetime;
-            timeZone?: string | undefined;
-        } | undefined;
+        originalStartTime?:
+            | {
+                  date: date;
+                  dateTime: datetime;
+                  timeZone?: string | undefined;
+              }
+            | undefined;
 
         transparency?: EventTransparency | undefined;
         visibility?: EventVisibility | undefined;
@@ -616,47 +617,51 @@ declare namespace gapi.client.calendar {
         // The attendees of the event.
         attendees?:
             | Array<{
-                id: string;
-                email: string;
-                displayName?: string | undefined;
-                organizer: boolean;
-                self: boolean;
-                resource: boolean;
-                optional?: boolean | undefined;
-                responseStatus: AttendeeResponseStatus;
-                comment?: string | undefined;
-                additionalGuests?: integer | undefined;
-            }>
+                  id: string;
+                  email: string;
+                  displayName?: string | undefined;
+                  organizer: boolean;
+                  self: boolean;
+                  resource: boolean;
+                  optional?: boolean | undefined;
+                  responseStatus: AttendeeResponseStatus;
+                  comment?: string | undefined;
+                  additionalGuests?: integer | undefined;
+              }>
             | undefined;
 
         attendeesOmitted?: boolean | undefined;
 
         // Extended properties of the event.
-        extendedProperties?: {
-            private: {
-                [key: string]: string;
-            };
-            shared: {
-                [key: string]: string;
-            };
-        } | undefined;
+        extendedProperties?:
+            | {
+                  private: {
+                      [key: string]: string;
+                  };
+                  shared: {
+                      [key: string]: string;
+                  };
+              }
+            | undefined;
 
         // An absolute link to the Google+ hangout associated with this event. Read-only.
         hangoutLink?: string | undefined;
 
         // A gadget that extends this event.
-        gadget?: {
-            type: string;
-            title: string;
-            link: string;
-            iconLink: string;
-            width?: integer | undefined;
-            height?: integer | undefined;
-            display?: GadgetDisplayMode | undefined;
-            preferences: {
-                [key: string]: string;
-            };
-        } | undefined;
+        gadget?:
+            | {
+                  type: string;
+                  title: string;
+                  link: string;
+                  iconLink: string;
+                  width?: integer | undefined;
+                  height?: integer | undefined;
+                  display?: GadgetDisplayMode | undefined;
+                  preferences: {
+                      [key: string]: string;
+                  };
+              }
+            | undefined;
 
         anyoneCanAddSelf?: boolean | undefined;
         guestsCanInviteOthers?: boolean | undefined;
@@ -671,28 +676,30 @@ declare namespace gapi.client.calendar {
             useDefault: boolean;
             overrides?:
                 | Array<{
-                    method: ReminderMethod;
-                    minutes: integer;
-                }>
+                      method: ReminderMethod;
+                      minutes: integer;
+                  }>
                 | undefined;
         };
 
         // Source from which the event was created. For example, a web page, an email message or any document identifiable by an URL with HTTP or HTTPS scheme.
         // Can only be seen or modified by the creator of the event.
-        source?: {
-            url: string;
-            title: string;
-        } | undefined;
+        source?:
+            | {
+                  url: string;
+                  title: string;
+              }
+            | undefined;
 
         // File attachments for the event. Currently only Google Drive attachments are supported.
         attachments?:
             | Array<{
-                fileUrl: string;
-                title: string;
-                mimeType: string;
-                iconLink: string;
-                fileId: string;
-            }>
+                  fileUrl: string;
+                  title: string;
+                  mimeType: string;
+                  iconLink: string;
+                  fileId: string;
+              }>
             | undefined;
     }
 }

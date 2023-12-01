@@ -1,6 +1,9 @@
 interface Quixote {
     // Create a test iframe. This is a slow operation, so once you have a frame, it's best to use QFrame.reset() on it rather than creating a new frame for each test
-    createFrame(options: QuixoteFrameOptions, callback: (err: Error, loadedFrame: QFrame) => void): QFrame;
+    createFrame(
+        options: QuixoteFrameOptions,
+        callback: (err: Error, loadedFrame: QFrame) => void,
+    ): QFrame;
 }
 
 interface QFrame {
@@ -220,7 +223,10 @@ declare module "quixote" {
     class Quixote {
         constructor();
 
-        createFrame(options: QuixoteFrameOptions, callback: (err: Error, loadedFrame: QFrame) => void): QFrame;
+        createFrame(
+            options: QuixoteFrameOptions,
+            callback: (err: Error, loadedFrame: QFrame) => void,
+        ): QFrame;
     }
 
     export = Quixote;

@@ -3,7 +3,11 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 
 ReactDOM.render(
-    <Tooltip placement="left" trigger={["click"]} overlay={<span>tooltip</span>}>
+    <Tooltip
+        placement="left"
+        trigger={["click"]}
+        overlay={<span>tooltip</span>}
+    >
         <a href="#">hover</a>
     </Tooltip>,
     document.querySelector(".app"),

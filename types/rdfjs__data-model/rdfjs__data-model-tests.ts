@@ -69,6 +69,6 @@ factory.fromQuad(factory.variable("?o"));
 // $ExpectType Variable
 const fromTermValue = factory.fromTerm(factory.variable("?o"));
 
-const baseQuad: RDF.BaseQuad = <any> {};
+const baseQuad: RDF.BaseQuad = <any>{};
 // $ExpectType BaseQuad
 const fromTermBaseQuad = factory.fromTerm(baseQuad);

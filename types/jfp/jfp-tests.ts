@@ -102,7 +102,7 @@ j.shortCircuit("foo", testFn, "bar");
 j.slice(0, [1, 2, 3]);
 j.slice(0, [1, 2, 3], 1);
 j.some(j.isEven, [1, 2, 3]);
-j.sort([1, 2, 3, 4], function() {
+j.sort([1, 2, 3, 4], function () {
     return 0;
 });
 j.splitPartial(testFn, [], [])();

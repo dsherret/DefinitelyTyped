@@ -9,13 +9,19 @@ declare namespace gapi.client {
             delete: (parameters: DeleteParameters) => HttpRequest<any>;
             emptyTrash: () => HttpRequest<any>;
             export: (parameters: ExportParameters) => HttpRequest<FileResource>;
-            generateIds: (parameters: GenerateIdsParameters) => HttpRequest<IdsResource>;
+            generateIds: (
+                parameters: GenerateIdsParameters,
+            ) => HttpRequest<IdsResource>;
             insert: (parameters: InsertParameters) => HttpRequest<FileResource>;
             list: (parameters: ListParameters) => HttpRequest<FileListResource>;
             touch: (parameters: TouchParameters) => HttpRequest<FileResource>;
             trash: (parameters: TrashParameters) => HttpRequest<FileResource>;
-            untrash: (parameters: UntrashParameters) => HttpRequest<FileResource>;
-            watch: (parameters: WatchParameters) => HttpRequest<ChannelResource>;
+            untrash: (
+                parameters: UntrashParameters,
+            ) => HttpRequest<FileResource>;
+            watch: (
+                parameters: WatchParameters,
+            ) => HttpRequest<ChannelResource>;
         };
 
         interface GetParameters {

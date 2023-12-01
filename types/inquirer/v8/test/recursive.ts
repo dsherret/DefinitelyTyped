@@ -15,13 +15,14 @@ const questions: inquirer.QuestionCollection = [
     {
         type: "confirm",
         name: "askAgain",
-        message: "Want to enter another TV show favorite (just hit enter for YES)?",
+        message:
+            "Want to enter another TV show favorite (just hit enter for YES)?",
         default: true,
     },
 ];
 
 function ask() {
-    inquirer.prompt(questions).then(answers => {
+    inquirer.prompt(questions).then((answers) => {
         output.push(answers.tvShow);
         if (answers.askAgain) {
             ask();

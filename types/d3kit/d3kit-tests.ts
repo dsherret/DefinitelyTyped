@@ -13,7 +13,12 @@ function test_base() {
     // create examples of margins, offsets, options
     margins = { top: 20, right: 20, bottom: 20, left: 20 };
     offsets = [0.5, 0.5];
-    options = { initialWidth: 400, initialHeight: 300, margin: margins, offset: offsets };
+    options = {
+        initialWidth: 400,
+        initialHeight: 300,
+        margin: margins,
+        offset: offsets,
+    };
 
     /**
      * Test constructor
@@ -69,7 +74,12 @@ function test_abstract_plate() {
     // create example of options
     margins = { top: 20, right: 20, bottom: 20, left: 20 };
     offsets = [0.5, 0.5];
-    options = { initialWidth: 400, initialHeight: 300, margin: margins, offset: offsets };
+    options = {
+        initialWidth: 400,
+        initialHeight: 300,
+        margin: margins,
+        offset: offsets,
+    };
 
     /**
      * Test constructor
@@ -96,7 +106,12 @@ function test_canvas_plate() {
     // create example of options
     margins = { top: 20, right: 20, bottom: 20, left: 20 };
     offsets = [0.5, 0.5];
-    options = { initialWidth: 400, initialHeight: 300, margin: margins, offset: offsets };
+    options = {
+        initialWidth: 400,
+        initialHeight: 300,
+        margin: margins,
+        offset: offsets,
+    };
 
     /**
      * Test constructor
@@ -124,7 +139,12 @@ function test_div_plate() {
     // create example of options
     margins = { top: 20, right: 20, bottom: 20, left: 20 };
     offsets = [0.5, 0.5];
-    options = { initialWidth: 400, initialHeight: 300, margin: margins, offset: offsets };
+    options = {
+        initialWidth: 400,
+        initialHeight: 300,
+        margin: margins,
+        offset: offsets,
+    };
 
     /**
      * Test constructor
@@ -152,7 +172,12 @@ function test_svg_plate() {
     // create example of options
     margins = { top: 20, right: 20, bottom: 20, left: 20 };
     offsets = [0.5, 0.5];
-    options = { initialWidth: 400, initialHeight: 300, margin: margins, offset: offsets };
+    options = {
+        initialWidth: 400,
+        initialHeight: 300,
+        margin: margins,
+        offset: offsets,
+    };
 
     /**
      * Test constructor
@@ -198,7 +223,12 @@ function test_abstract_chart() {
     // create examples of margins, offsets, options, fit options, watch options
     margins = { top: 20, right: 20, bottom: 20, left: 20 };
     offsets = [0.5, 0.5];
-    options = { initialWidth: 400, initialHeight: 300, margin: margins, offset: offsets };
+    options = {
+        initialWidth: 400,
+        initialHeight: 300,
+        margin: margins,
+        offset: offsets,
+    };
     fitopts = { mode: "basic", width: "90%", ratio: 4 / 3 };
     watchop = { mode: "window", target: null, interval: 500 };
     plate = new d3kit.AbstractPlate(el);
@@ -292,7 +322,12 @@ function test_svg_chart() {
     // create examples of margins, offsets, options, fit options, watch options
     margins = { top: 20, right: 20, bottom: 20, left: 20 };
     offsets = [0.5, 0.5];
-    options = { initialWidth: 400, initialHeight: 300, margin: margins, offset: offsets };
+    options = {
+        initialWidth: 400,
+        initialHeight: 300,
+        margin: margins,
+        offset: offsets,
+    };
 
     /**
      * Test constructor
@@ -333,7 +368,13 @@ function test_canvas_chart() {
     // create examples of margins, offsets, options, fit options, watch options
     margins = { top: 20, right: 20, bottom: 20, left: 20 };
     offsets = [0.5, 0.5];
-    options = { initialWidth: 400, initialHeight: 300, margin: margins, offset: offsets, pixelRatio: 1 };
+    options = {
+        initialWidth: 400,
+        initialHeight: 300,
+        margin: margins,
+        offset: offsets,
+        pixelRatio: 1,
+    };
 
     /**
      * Test constructor
@@ -369,7 +410,12 @@ function test_hybrid_chart() {
     // create examples of margins, offsets, options, fit options, watch options
     margins = { top: 20, right: 20, bottom: 20, left: 20 };
     offsets = [0.5, 0.5];
-    options = { initialWidth: 400, initialHeight: 300, margin: margins, offset: offsets };
+    options = {
+        initialWidth: 400,
+        initialHeight: 300,
+        margin: margins,
+        offset: offsets,
+    };
 
     /**
      * Test constructor
@@ -422,8 +468,16 @@ function test_layer_organizer() {
      */
     layers.create("graph");
     layers.create(["graph", "highlight"]);
-    layers.create({ graph: [{ axes: ["x-axis", "y-axis"] }, { labels: ["x-label", "y-label", "title"] }] });
-    layers.create([{ axes: ["x-axis", "y-axis"] }, { labels: ["x-label", "y-label", "title"] }]);
+    layers.create({
+        graph: [
+            { axes: ["x-axis", "y-axis"] },
+            { labels: ["x-label", "y-label", "title"] },
+        ],
+    });
+    layers.create([
+        { axes: ["x-axis", "y-axis"] },
+        { labels: ["x-label", "y-label", "title"] },
+    ]);
 
     /**
      * Test other layer organizer functions
@@ -435,7 +489,10 @@ function test_layer_organizer() {
 function test_helper() {
     const simple1: {} = { one: 1 };
     const simple2: {} = { two: 2 };
-    const complex: {} = { fruit: ["apple", "pear", "grape"], prez: { fn: "Barack", ln: "Obama" } };
+    const complex: {} = {
+        fruit: ["apple", "pear", "grape"],
+        prez: { fn: "Barack", ln: "Obama" },
+    };
     const anObject: {} = { this: "isanobject" };
     let merged1: {};
     let merged2: {};

@@ -1,5 +1,9 @@
 import * as React from "react";
-import Inspector, { DOMInspector, ObjectInspector, TableInspector } from "react-inspector";
+import Inspector, {
+    DOMInspector,
+    ObjectInspector,
+    TableInspector,
+} from "react-inspector";
 
 class TestInspector extends React.Component {
     render() {

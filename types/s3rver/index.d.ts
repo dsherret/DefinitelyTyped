@@ -10,8 +10,14 @@ declare class S3rver {
     run(callback: (error: Error | null, address: AddressInfo) => void): this;
     close(): Promise<void>;
     close(callback: (error?: Error) => void): this;
-    callback(): (req: IncomingMessage | Http2ServerRequest, res: ServerResponse | Http2ServerResponse) => void;
-    getMiddleware(): (req: IncomingMessage | Http2ServerRequest, res: ServerResponse | Http2ServerResponse) => void;
+    callback(): (
+        req: IncomingMessage | Http2ServerRequest,
+        res: ServerResponse | Http2ServerResponse,
+    ) => void;
+    getMiddleware(): (
+        req: IncomingMessage | Http2ServerRequest,
+        res: ServerResponse | Http2ServerResponse,
+    ) => void;
     configureBuckets(): Promise<void>;
     reset(): void;
 }

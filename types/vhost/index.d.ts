@@ -12,10 +12,17 @@ declare namespace vhost {
     }
 
     interface Handler {
-        (req: Request, res: http.ServerResponse, next: connect.NextFunction): void;
+        (
+            req: Request,
+            res: http.ServerResponse,
+            next: connect.NextFunction,
+        ): void;
     }
 }
 
-declare function vhost(hostname: string | RegExp, handler: vhost.Handler): connect.NextHandleFunction;
+declare function vhost(
+    hostname: string | RegExp,
+    handler: vhost.Handler,
+): connect.NextHandleFunction;
 
 export = vhost;

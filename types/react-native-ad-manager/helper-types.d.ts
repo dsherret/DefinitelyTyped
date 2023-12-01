@@ -1,6 +1,11 @@
 type ViewProps = import("react-native").ViewProps;
 
-export type InterstialEventType = "adLoaded" | "adFailedToLoad" | "adOpened" | "adClosed" | "adLeftApplication";
+export type InterstialEventType =
+    | "adLoaded"
+    | "adFailedToLoad"
+    | "adOpened"
+    | "adClosed"
+    | "adLeftApplication";
 
 export interface BannerProps extends ViewProps {
     /**
@@ -44,7 +49,9 @@ export interface BannerProps extends ViewProps {
      * The ad manager targeting
      */
     targeting?: Targeting | undefined;
-    onSizeChange?: ((event: { type: string; width: number; height: number }) => void) | undefined;
+    onSizeChange?:
+        | ((event: { type: string; width: number; height: number }) => void)
+        | undefined;
     onAppEvent?: ((event: { name: string; info: string }) => void) | undefined;
     onAdLoaded?: ((event: AdLoadedEvent) => void) | undefined;
     onAdFailedToLoad?: ((error: any) => void) | undefined;

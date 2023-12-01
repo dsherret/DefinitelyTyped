@@ -17,7 +17,9 @@ let privateKeyPem = forge.pki.privateKeyToPem(keypair.privateKey);
 let publicKeyPem = forge.pki.publicKeyToPem(keypair.publicKey);
 let privateKeyAsn1 = forge.pki.privateKeyToAsn1(keypair.privateKey);
 let publicKeyAsn1 = forge.pki.publicKeyToAsn1(keypair.publicKey);
-let publicKeyRSAPem: forge.pki.PEM = forge.pki.publicKeyToRSAPublicKeyPem(keypair.publicKey);
+let publicKeyRSAPem: forge.pki.PEM = forge.pki.publicKeyToRSAPublicKeyPem(
+    keypair.publicKey,
+);
 let key = forge.pki.decryptRsaPrivateKey(privateKeyPem);
 let x: string = forge.ssh.privateKeyToOpenSSH(key);
 let pemKey: forge.pki.PEM = publicKeyPem;
@@ -35,15 +37,20 @@ let certPem = forge.pki.certificateToPem(cert);
 let csr = forge.pki.createCertificationRequest();
 csr.publicKey = keypair.publicKey;
 csr.sign(keypair.privateKey);
-forge.pki.certificationRequestFromAsn1(forge.pki.certificationRequestToAsn1(csr));
+forge.pki.certificationRequestFromAsn1(
+    forge.pki.certificationRequestToAsn1(csr),
+);
 
 // From https://github.com/digitalbazaar/forge#rsakem
 {
     // generate an RSA key pair asynchronously (uses web workers if available)
     // use workers: -1 to run a fast core estimator to optimize # of workers
-    forge.pki.rsa.generateKeyPair({ bits: 2048, workers: -1 }, (err, keypair) => {
-        // keypair.privateKey, keypair.publicKey
-    });
+    forge.pki.rsa.generateKeyPair(
+        { bits: 2048, workers: -1 },
+        (err, keypair) => {
+            // keypair.privateKey, keypair.publicKey
+        },
+    );
 
     // generate and encapsulate a 16-byte secret key
     var kdf1 = new forge.kem.kdf1(forge.md.sha1.create());
@@ -76,7 +83,8 @@ forge.pki.certificationRequestFromAsn1(forge.pki.certificationRequestToAsn1(csr)
 
     // pass is false if there was a failure (eg: authentication tag didn't match)
     if (pass) {
-        if (decipher.output.getBytes() !== someBytes) throw Error("forge.util.binary.raw.encode / decode fail");
+        if (decipher.output.getBytes() !== someBytes)
+            throw Error("forge.util.binary.raw.encode / decode fail");
     } else {
         throw Error("forge.util.binary.raw.encode / decode fail");
     }
@@ -112,23 +120,60 @@ forge.pki.certificationRequestFromAsn1(forge.pki.certificationRequestToAsn1(csr)
 }
 
 {
-    let subjectPublicKeyInfo = forge.asn1.create(forge.asn1.Class.UNIVERSAL, forge.asn1.Type.SEQUENCE, true, [
-        forge.asn1.create(forge.asn1.Class.UNIVERSAL, forge.asn1.Type.SEQUENCE, true, [
+    let subjectPublicKeyInfo = forge.asn1.create(
+        forge.asn1.Class.UNIVERSAL,
+        forge.asn1.Type.SEQUENCE,
+        true,
+        [
             forge.asn1.create(
                 forge.asn1.Class.UNIVERSAL,
-                forge.asn1.Type.OID,
-                false,
-                forge.asn1.oidToDer(forge.pki.oids["rsaEncryption"]).getBytes(),
+                forge.asn1.Type.SEQUENCE,
+                true,
+                [
+                    forge.asn1.create(
+                        forge.asn1.Class.UNIVERSAL,
+                        forge.asn1.Type.OID,
+                        false,
+                        forge.asn1
+                            .oidToDer(forge.pki.oids["rsaEncryption"])
+                            .getBytes(),
+                    ),
+                    forge.asn1.create(
+                        forge.asn1.Class.UNIVERSAL,
+                        forge.asn1.Type.NULL,
+                        false,
+                        "",
+                    ),
+                ],
             ),
-            forge.asn1.create(forge.asn1.Class.UNIVERSAL, forge.asn1.Type.NULL, false, ""),
-        ]),
-        forge.asn1.create(forge.asn1.Class.UNIVERSAL, forge.asn1.Type.BITSTRING, false, [
-            forge.asn1.create(forge.asn1.Class.UNIVERSAL, forge.asn1.Type.SEQUENCE, true, [
-                forge.asn1.create(forge.asn1.Class.UNIVERSAL, forge.asn1.Type.INTEGER, false, []),
-                forge.asn1.create(forge.asn1.Class.UNIVERSAL, forge.asn1.Type.INTEGER, false, []),
-            ]),
-        ]),
-    ]);
+            forge.asn1.create(
+                forge.asn1.Class.UNIVERSAL,
+                forge.asn1.Type.BITSTRING,
+                false,
+                [
+                    forge.asn1.create(
+                        forge.asn1.Class.UNIVERSAL,
+                        forge.asn1.Type.SEQUENCE,
+                        true,
+                        [
+                            forge.asn1.create(
+                                forge.asn1.Class.UNIVERSAL,
+                                forge.asn1.Type.INTEGER,
+                                false,
+                                [],
+                            ),
+                            forge.asn1.create(
+                                forge.asn1.Class.UNIVERSAL,
+                                forge.asn1.Type.INTEGER,
+                                false,
+                                [],
+                            ),
+                        ],
+                    ),
+                ],
+            ),
+        ],
+    );
     let derBuffer = forge.asn1.toDer(subjectPublicKeyInfo);
     let object = forge.asn1.fromDer(derBuffer);
 }
@@ -137,21 +182,25 @@ forge.pki.certificationRequestFromAsn1(forge.pki.certificationRequestToAsn1(csr)
     let oidSrc = "1.2.840.113549.1.1.5";
     let derOidBuffer = forge.asn1.oidToDer(oidSrc);
     let oidResult = forge.asn1.derToOid(derOidBuffer);
-    if (oidSrc !== oidResult) throw Error("forge.asn1.oidToDer / derToOid fail");
+    if (oidSrc !== oidResult)
+        throw Error("forge.asn1.oidToDer / derToOid fail");
     // "derToOid" can also be given the bytes as a string
     let derOidString = derOidBuffer.data;
     let oidFromString = forge.asn1.derToOid(derOidString);
-    if (oidSrc !== oidFromString) throw Error("forge.asn1.oidToDer / derToOid fail (from string)");
+    if (oidSrc !== oidFromString)
+        throw Error("forge.asn1.oidToDer / derToOid fail (from string)");
 }
 
 {
     let intSrc = 42;
     let derIntBuffer = forge.asn1.integerToDer(intSrc);
     let intResult = forge.asn1.derToInteger(derIntBuffer);
-    if (intSrc !== intResult) throw Error("forge.asn1.integerToDer / derToInteger fail");
+    if (intSrc !== intResult)
+        throw Error("forge.asn1.integerToDer / derToInteger fail");
     // "derToInteger" can also be given the bytes as a string
     let fromString = forge.asn1.derToInteger(derIntBuffer.data);
-    if (intSrc !== fromString) throw Error("forge.asn1.integerToDer / derToInteger (from string)");
+    if (intSrc !== fromString)
+        throw Error("forge.asn1.integerToDer / derToInteger (from string)");
 }
 
 {
@@ -159,20 +208,28 @@ forge.pki.certificationRequestFromAsn1(forge.pki.certificationRequestToAsn1(csr)
     let dateSrc = new Date("1995-12-04T12:30:00Z");
     let derUtcTimeBuffer = forge.asn1.dateToUtcTime(dateSrc);
     let fromUtc = forge.asn1.utcTimeToDate(derUtcTimeBuffer);
-    if (dateSrc !== fromUtc) throw Error("forge.asn1.dateToUtcTime / utcTimeToDate fail");
+    if (dateSrc !== fromUtc)
+        throw Error("forge.asn1.dateToUtcTime / utcTimeToDate fail");
     // also in GeneralizedTime
     let derGeneralizedTimeBuffer = forge.asn1.dateToGeneralizedTime(dateSrc);
-    let fromGeneralized = forge.asn1.generalizedTimeToDate(derGeneralizedTimeBuffer);
-    if (dateSrc !== fromGeneralized) throw Error("forge.asn1.dateToGeneralizedTime / generalizedTimeToDate fail");
+    let fromGeneralized = forge.asn1.generalizedTimeToDate(
+        derGeneralizedTimeBuffer,
+    );
+    if (dateSrc !== fromGeneralized)
+        throw Error(
+            "forge.asn1.dateToGeneralizedTime / generalizedTimeToDate fail",
+        );
 }
 
-if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillString fail");
+if (forge.util.fillString("1", 5) !== "11111")
+    throw Error("forge.util.fillString fail");
 
 {
     let hex: string = "61";
     let bytes: string = forge.util.hexToBytes(hex);
     let result: string = forge.util.bytesToHex(bytes);
-    if (bytes !== "a" || result !== hex) throw Error("forge.util.hexToBytes / bytesToHex fail");
+    if (bytes !== "a" || result !== hex)
+        throw Error("forge.util.hexToBytes / bytesToHex fail");
 }
 
 {
@@ -197,7 +254,8 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     src = new Uint8Array(10);
     encode = forge.util.binary.raw.encode(src);
     decode = forge.util.binary.raw.decode(encode);
-    if (src.byteLength !== decode.byteLength) throw Error("forge.util.binary.raw.encode / decode fail");
+    if (src.byteLength !== decode.byteLength)
+        throw Error("forge.util.binary.raw.encode / decode fail");
 }
 
 {
@@ -233,11 +291,13 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     src = "Test";
     encode = forge.util.text.utf8.encode(src);
     decode = forge.util.text.utf8.decode(encode);
-    if (src !== decode) throw Error("forge.util.text.utf8.encode / decode fail");
+    if (src !== decode)
+        throw Error("forge.util.text.utf8.encode / decode fail");
     src = "Test";
     encode = forge.util.text.utf16.encode(src);
     decode = forge.util.text.utf16.decode(encode);
-    if (src !== decode) throw Error("forge.util.text.utf8.encode / decode fail");
+    if (src !== decode)
+        throw Error("forge.util.text.utf8.encode / decode fail");
 }
 
 {
@@ -277,13 +337,15 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     md = md.update("Test");
     hex = md.digest().toHex();
 
-    if (hex.length !== 64) throw Error("forge.md.MessageDigest.update / digest fail");
+    if (hex.length !== 64)
+        throw Error("forge.md.MessageDigest.update / digest fail");
 
     md = forge.md.sha1.create();
     md = md.update("Test");
     hex = md.digest().toHex();
 
-    if (hex.length !== 40) throw Error("forge.md.MessageDigest.update / digest fail");
+    if (hex.length !== 40)
+        throw Error("forge.md.MessageDigest.update / digest fail");
 
     const md5digest = forge.md5.create(); // $ExpectType MessageDigest
     md5digest.algorithm; // $ExpectType "md5"
@@ -371,27 +433,35 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     md = md.update("Test");
     hex = md.digest().toHex();
 
-    if (hex.length !== 32) throw Error("forge.md.MessageDigest.update / digest fail");
+    if (hex.length !== 32)
+        throw Error("forge.md.MessageDigest.update / digest fail");
 }
 
 {
     let key = forge.random.getBytesSync(24);
     let payload = { asd: "asd" };
-    let cipher = forge.cipher.createCipher("3DES-ECB", forge.util.createBuffer(key, "raw"));
+    let cipher = forge.cipher.createCipher(
+        "3DES-ECB",
+        forge.util.createBuffer(key, "raw"),
+    );
     cipher.start();
     cipher.update(forge.util.createBuffer(JSON.stringify(payload), "raw"));
     cipher.finish();
     let encrypted = cipher.output;
     let token = forge.util.encode64(encrypted.getBytes());
 
-    let decipher = forge.cipher.createDecipher("3DES-ECB", forge.util.createBuffer(key, "raw"));
+    let decipher = forge.cipher.createDecipher(
+        "3DES-ECB",
+        forge.util.createBuffer(key, "raw"),
+    );
     decipher.start();
     decipher.update(forge.util.createBuffer(forge.util.decode64(token), "raw"));
     decipher.finish();
     let decrypted = decipher.output as forge.util.ByteStringBuffer;
     let content = JSON.parse(forge.util.encodeUtf8(decrypted.getBytes()));
 
-    if (content.asd !== payload.asd) throw Error("forge.cipher.createCipher failed");
+    if (content.asd !== payload.asd)
+        throw Error("forge.cipher.createCipher failed");
 }
 
 {
@@ -411,7 +481,9 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     cert.serialNumber = new Date().getTime() + "";
     cert.validity.notBefore = new Date();
     cert.validity.notAfter = new Date();
-    cert.validity.notAfter.setFullYear(cert.validity.notAfter.getFullYear() + 20);
+    cert.validity.notAfter.setFullYear(
+        cert.validity.notAfter.getFullYear() + 20,
+    );
     const attrs = [
         {
             name: "commonName",
@@ -456,12 +528,14 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
         },
     ]);
 
-    const attr: forge.pki.Attribute | undefined = csr.getAttribute({ name: "challengePassword" });
+    const attr: forge.pki.Attribute | undefined = csr.getAttribute({
+        name: "challengePassword",
+    });
 
     // self-sign certificate
     cert.sign(keypair.privateKey, forge.md.sha256.create());
 
-    cert.issuer.attributes.map(attr => attr.name);
+    cert.issuer.attributes.map((attr) => attr.name);
 }
 
 {
@@ -493,9 +567,13 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
 
     caStore.removeCertificate(certificate);
 
-    forge.pki.verifyCertificateChain(caStore, [certificate], (verified, depth, chain) => {
-        return true;
-    });
+    forge.pki.verifyCertificateChain(
+        caStore,
+        [certificate],
+        (verified, depth, chain) => {
+            return true;
+        },
+    );
 
     forge.pki.verifyCertificateChain(caStore, [certificate], {
         verify: (verified, depth, chain) => {
@@ -516,18 +594,37 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     const key2: string = forge.pkcs5.pbkdf2("password", "salt", 1000, 32, md);
 
     let key3: string;
-    forge.pkcs5.pbkdf2("password", "salt", 1000, 32, (err: Error | null, dk: null | string) => {
-        if (err === null) key3 = dk;
-        else throw Error("pbkdf2 key derivation fail");
-    });
+    forge.pkcs5.pbkdf2(
+        "password",
+        "salt",
+        1000,
+        32,
+        (err: Error | null, dk: null | string) => {
+            if (err === null) key3 = dk;
+            else throw Error("pbkdf2 key derivation fail");
+        },
+    );
 
     let key4: string;
-    forge.pkcs5.pbkdf2("password", "salt", 1000, 32, md, (err: Error | null, dk: null | string) => {
-        if (err === null) key4 = dk;
-        else throw Error("pbkdf2 key derivation fail");
-    });
+    forge.pkcs5.pbkdf2(
+        "password",
+        "salt",
+        1000,
+        32,
+        md,
+        (err: Error | null, dk: null | string) => {
+            if (err === null) key4 = dk;
+            else throw Error("pbkdf2 key derivation fail");
+        },
+    );
 
-    const key5: string = forge.pkcs5.pbkdf2("password", "salt", 1000, 32, "sha256");
+    const key5: string = forge.pkcs5.pbkdf2(
+        "password",
+        "salt",
+        1000,
+        32,
+        "sha256",
+    );
 }
 
 {
@@ -547,15 +644,15 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
         virtualHost: "server",
         verify: (c, verified, depth, certs) => {
             console.log(
-                "TLS Client verifying certificate w/CN: \""
-                    + certs[0].subject.getField("CN").value
-                    + "\", verified: "
-                    + verified
-                    + "...",
+                'TLS Client verifying certificate w/CN: "' +
+                    certs[0].subject.getField("CN").value +
+                    '", verified: ' +
+                    verified +
+                    "...",
             );
             return verified;
         },
-        connected: c => {
+        connected: (c) => {
             console.log("Client connected...");
 
             // send message to server
@@ -571,20 +668,20 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
         getPrivateKey: (c, cert) => {
             return privateKeyPem;
         },
-        tlsDataReady: c => {
+        tlsDataReady: (c) => {
             // send TLS data to server
             server.process(c.tlsData.getBytes());
         },
-        dataReady: c => {
+        dataReady: (c) => {
             var response = c.data.getBytes();
-            console.log("Client received \"" + response + "\"");
+            console.log('Client received "' + response + '"');
             success = response === "Hello Client";
             c.close();
         },
         heartbeatReceived: (c, payload) => {
             console.log("Client received heartbeat: " + payload.getBytes());
         },
-        closed: c => {
+        closed: (c) => {
             console.log("Client disconnected.");
             if (success) {
                 console.log("PASS");
@@ -607,34 +704,38 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
             forge.tls.CipherSuites.TLS_RSA_WITH_AES_128_CBC_SHA,
             forge.tls.CipherSuites.TLS_RSA_WITH_AES_256_CBC_SHA,
         ],
-        connected: c => {
+        connected: (c) => {
             console.log("Server connected");
             c.prepareHeartbeatRequest("heartbeat");
         },
         verifyClient: true,
         verify: (c, verified, depth, certs) => {
             console.log(
-                "Server verifying certificate w/CN: \""
-                    + certs[0].subject.getField("CN").value
-                    + "\", verified: "
-                    + verified
-                    + "...",
+                'Server verifying certificate w/CN: "' +
+                    certs[0].subject.getField("CN").value +
+                    '", verified: ' +
+                    verified +
+                    "...",
             );
             return verified;
         },
         getCertificate: (c, hint) => {
-            console.log("Server getting certificate for \"" + (hint as string[])[0] + "\"...");
+            console.log(
+                'Server getting certificate for "' +
+                    (hint as string[])[0] +
+                    '"...',
+            );
             return forge.pki.certificateToPem(cert);
         },
         getPrivateKey: (c, cert) => {
             return privateKeyPem;
         },
-        tlsDataReady: c => {
+        tlsDataReady: (c) => {
             // send TLS data to client
             client.process(c.tlsData.getBytes());
         },
-        dataReady: c => {
-            console.log("Server received \"" + c.data.getBytes() + "\"");
+        dataReady: (c) => {
+            console.log('Server received "' + c.data.getBytes() + '"');
 
             // send response
             c.prepare("Hello Client");
@@ -643,7 +744,7 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
         heartbeatReceived: (c, payload) => {
             console.log("Server received heartbeat: " + payload.getBytes());
         },
-        closed: c => {
+        closed: (c) => {
             console.log("Server disconnected.");
         },
         error: (c, error) => {
@@ -685,7 +786,9 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
         "MHICAQEwBQYDK2VwBCIEINTuctv5E1hK1bbY8fdp+K06/nwoy/HU++CXqI9EdVhCoB8wHQYKKoZIhvcNAQkJFDEPDA1DdXJkbGUgQ2hhaXJzgSEAGb9ECWmEzf6FQbrBZ9w7lshQhqowtrbLDFw4rXAxZuE=",
         "base64",
     ).toString("binary");
-    const ecAsn1 = forge.asn1.fromDer(forge.util.createBuffer().putBytes(ecBytes));
+    const ecAsn1 = forge.asn1.fromDer(
+        forge.util.createBuffer().putBytes(ecBytes),
+    );
     forge.pki.ed25519.privateKeyFromAsn1(ecAsn1);
     forge.pki.ed25519.publicKeyFromAsn1(ecAsn1);
 }
@@ -696,24 +799,32 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
         "   MC4CAQAwBQYDK2VwBCIEINTuctv5E1hK1bbY8fdp+K06/nwoy/HU++CXqI9EdVhC",
         "base64",
     ).toString("binary");
-    const ecAsn1 = forge.asn1.fromDer(forge.util.createBuffer().putBytes(ecBytes));
+    const ecAsn1 = forge.asn1.fromDer(
+        forge.util.createBuffer().putBytes(ecBytes),
+    );
     forge.pki.ed25519.privateKeyFromAsn1(ecAsn1);
 }
 
 {
     // public key from https://datatracker.ietf.org/doc/html/rfc8410#section-10.1
-    const ecBytes = Buffer.from("MCowBQYDK2VwAyEAGb9ECWmEzf6FQbrBZ9w7lshQhqowtrbLDFw4rXAxZuE=", "base64").toString(
-        "binary",
+    const ecBytes = Buffer.from(
+        "MCowBQYDK2VwAyEAGb9ECWmEzf6FQbrBZ9w7lshQhqowtrbLDFw4rXAxZuE=",
+        "base64",
+    ).toString("binary");
+    const ecAsn1 = forge.asn1.fromDer(
+        forge.util.createBuffer().putBytes(ecBytes),
     );
-    const ecAsn1 = forge.asn1.fromDer(forge.util.createBuffer().putBytes(ecBytes));
     forge.pki.ed25519.publicKeyFromAsn1(ecAsn1);
 }
 
 {
-    let byteBuffer: forge.util.ByteBuffer = forge.pki.getPublicKeyFingerprint(cert.publicKey, {
-        type: "SubjectPublicKeyInfo",
-        md: forge.md.sha256.create(),
-    });
+    let byteBuffer: forge.util.ByteBuffer = forge.pki.getPublicKeyFingerprint(
+        cert.publicKey,
+        {
+            type: "SubjectPublicKeyInfo",
+            md: forge.md.sha256.create(),
+        },
+    );
 
     let hex: forge.Hex = forge.pki.getPublicKeyFingerprint(cert.publicKey, {
         type: "SubjectPublicKeyInfo",
@@ -738,7 +849,9 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     let asn1: forge.asn1.Asn1 = p7.toAsn1();
 
     // parse and decrypt the result
-    let encP7 = forge.pkcs7.messageFromAsn1(asn1) as forge.pkcs7.PkcsEnvelopedData;
+    let encP7 = forge.pkcs7.messageFromAsn1(
+        asn1,
+    ) as forge.pkcs7.PkcsEnvelopedData;
     let recipient = encP7.findRecipient(cert);
     encP7.decrypt(recipient, privateKeyRsa);
     if (p7.content !== encP7.content) {
@@ -753,7 +866,9 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     p7.content = forge.util.createBuffer("cleartext");
     // let's define a key suitable for AES-128 (key length: 16 bytes)
     let symmetricCipher = forge.pki.oids["aes128-CBC"];
-    let predefinedKey = forge.util.hexToBytes("b5d36c67837faa95d02455ec162588ed");
+    let predefinedKey = forge.util.hexToBytes(
+        "b5d36c67837faa95d02455ec162588ed",
+    );
     p7.encrypt(forge.util.createBuffer(predefinedKey), symmetricCipher);
 
     let recipient = p7.findRecipient(cert);
@@ -821,7 +936,8 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     }
 }
 {
-    let decrypedRsa: forge.pki.rsa.PrivateKey = forge.pki.decryptRsaPrivateKey(privateKeyPem);
+    let decrypedRsa: forge.pki.rsa.PrivateKey =
+        forge.pki.decryptRsaPrivateKey(privateKeyPem);
 }
 
 {
@@ -859,7 +975,9 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
 {
     // constructor tests
     const bn = new forge.jsbn.BigInteger("AABB", 16);
-    const bn2 = new forge.jsbn.BigInteger("75643564363473453456342378564387956906736546456235345");
+    const bn2 = new forge.jsbn.BigInteger(
+        "75643564363473453456342378564387956906736546456235345",
+    );
 }
 
 {
@@ -871,7 +989,9 @@ if (forge.util.fillString("1", 5) !== "11111") throw Error("forge.util.fillStrin
     let isDivmod: forge.jsbn.BigInteger[];
     let isByteArray: number[];
 
-    const bn = new forge.jsbn.BigInteger("75643564363473453456342378564387956906736546456235345");
+    const bn = new forge.jsbn.BigInteger(
+        "75643564363473453456342378564387956906736546456235345",
+    );
 
     isString = bn.toString();
     isString = bn.toString(16);

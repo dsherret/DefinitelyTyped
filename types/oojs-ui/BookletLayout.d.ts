@@ -43,7 +43,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.BookletLayout
      */
-    interface BookletLayout extends BookletLayout.Props, BookletLayout.Prototype {}
+    interface BookletLayout
+        extends BookletLayout.Props,
+            BookletLayout.Prototype {}
 
     namespace BookletLayout {
         interface EventMap {
@@ -209,7 +211,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): BookletLayout;
+            new (config?: ConfigOptions): BookletLayout;
             prototype: Prototype;
             static: Static;
             super: MenuLayout.Constructor;

@@ -47,7 +47,12 @@ export class Image {
      * Creates an image from a Buffer object, that contains the PNG/JPG encoded image.
      */
     constructor(type: "png" | "jpg", buffer: Buffer);
-    constructor(type: "rgba" | "rgb" | "gray", buffer: Buffer, width: number, height: number);
+    constructor(
+        type: "rgba" | "rgb" | "gray",
+        buffer: Buffer,
+        width: number,
+        height: number,
+    );
 
     readonly width: number;
     readonly height: number;
@@ -121,7 +126,14 @@ export class Image {
      * ∧ lower2 ≤ pixel2 ≤ upper2
      * ∧ lower3 ≤ pixel3 ≤ upper3
      */
-    inRange(lower1: number, lower2: number, lower3: number, upper1: number, upper2: number, upper3: number): Image;
+    inRange(
+        lower1: number,
+        lower2: number,
+        lower3: number,
+        upper1: number,
+        upper2: number,
+        upper3: number,
+    ): Image;
     /**
      * Only available for grayscale images. Returns the histogram in an array of length 256, where each entry represents the fraction (0.0 to 1.0) of that color in the image.
      * The mask parameter is optional and must be a monochrome image of same width and height; only pixels where mask is 0 will be counted.
@@ -237,7 +249,11 @@ export class Image {
     /**
      * Detects Line Segments with the specified accuracy (3 is a good start). The number of found line segments can be limited using maxLineSegments (0 is unlimited).
      */
-    lineSegments(accuracy: number, maxLineSegments: number, useWeightedMeanShift: boolean): Segment[];
+    lineSegments(
+        accuracy: number,
+        maxLineSegments: number,
+        useWeightedMeanShift: boolean,
+    ): Segment[];
     /**
      * Only available for monochrome images. Tries to find the skew of this image. The resulting angle is in degree. The confidence is between 0.0 and 1.0.
      */
@@ -261,7 +277,13 @@ export class Image {
      * Draws a filled rectangle to this image with the specified value. Works for 8bpp and 1bpp images.
      */
     fillBox(box: Box, value: number): this;
-    fillBox(x: number, y: number, width: number, height: number, value: number): this;
+    fillBox(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        value: number,
+    ): this;
     /**
      * !!! Note: this function actually changes the image!
      * Draws a filled rectangle to this image in the specified color with an optional blending parameter (0.0: transparent; 1.0: no transparency).
@@ -281,7 +303,11 @@ export class Image {
      * !!! Note: this function actually changes the image!
      * Draws a rectangle to this image with the specified border. The possible pixel manipulating operations are set, clear and flip.
      */
-    drawBox(box: Box, borderWidth: number, operation: "set" | "clear" | "flip"): this;
+    drawBox(
+        box: Box,
+        borderWidth: number,
+        operation: "set" | "clear" | "flip",
+    ): this;
     drawBox(
         x: number,
         y: number,
@@ -294,7 +320,14 @@ export class Image {
      * !!! Note: this function actually changes the image!
      * Draws a rectangle to this image with the specified border in the specified color with an optional blending parameter (0.0: transparent; 1.0: no transparency).
      */
-    drawBox(box: Box, borderWidth: number, red: number, green: number, blue: number, frac?: number): this;
+    drawBox(
+        box: Box,
+        borderWidth: number,
+        red: number,
+        green: number,
+        blue: number,
+        frac?: number,
+    ): this;
     drawBox(
         x: number,
         y: number,
@@ -310,18 +343,37 @@ export class Image {
      * !!! Note: this function actually changes the image!
      * Draws a line between p1 and p2 to this image with the specified line width. The possible pixel manipulating operations are set, clear and flip.
      */
-    drawLine(p1: Point, p2: Point, width: number, operation: "set" | "clear" | "flip"): this;
+    drawLine(
+        p1: Point,
+        p2: Point,
+        width: number,
+        operation: "set" | "clear" | "flip",
+    ): this;
     /**
      * !!! Note: this function actually changes the image!
      * Draws a line between p1 and p2 to this image with the specified line width in the specified color with an optional blending parameter (0.0: transparent; 1.0: no transparency).
      */
-    drawLine(p1: Point, p2: Point, width: number, red: number, green: number, blue: number, frac?: number): this;
+    drawLine(
+        p1: Point,
+        p2: Point,
+        width: number,
+        red: number,
+        green: number,
+        blue: number,
+        frac?: number,
+    ): this;
     /**
      * !!! Note: this function actually changes the image!
      * Draws an image to this image with the specified destination box.
      */
     drawImage(image: Image, box: Box): this;
-    drawImage(image: Image, x: number, y: number, width: number, height: number): this;
+    drawImage(
+        image: Image,
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+    ): this;
     /**
      * Converts the Image in the specified format to a buffer.
      * Specifying raw returns the raw image data as buffer.

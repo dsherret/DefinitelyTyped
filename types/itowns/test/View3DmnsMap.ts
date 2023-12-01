@@ -37,7 +37,9 @@ function addElevationLayerFromConfig(json: IgnMNTHighres) {
     };
     view.addLayer(new itowns.ElevationLayer(config.id, config));
 }
-itowns.Fetcher.json("./layers/JSONLayers/IGN_MNS_HIGHRES.json").then(addElevationLayerFromConfig);
+itowns.Fetcher.json("./layers/JSONLayers/IGN_MNS_HIGHRES.json").then(
+    addElevationLayerFromConfig,
+);
 
 // ---------- DISPLAY ATMOSPHERIC LIGHTING : ----------
 

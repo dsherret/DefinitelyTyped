@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Animated, LayoutChangeEvent, ScrollViewProps, StyleProp, TextStyle, ViewStyle } from "react-native";
+import {
+    Animated,
+    LayoutChangeEvent,
+    ScrollViewProps,
+    StyleProp,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
 
 export interface ScrollableTabViewProperties {
     children?: React.ReactNode;
@@ -18,7 +25,12 @@ export interface ScrollableTabViewProperties {
      * "overlayTop" or "overlayBottom" for a semitransparent tab bar that overlays content. Custom
      * tab bars must consume a style prop on their outer element to support this feature: style={this.props.style}.
      */
-    tabBarPosition?: "top" | "bottom" | "overlayTop" | "overlayBottom" | undefined;
+    tabBarPosition?:
+        | "top"
+        | "bottom"
+        | "overlayTop"
+        | "overlayBottom"
+        | undefined;
 
     /**
      * function to call when tab changes, should accept 1 argument which is
@@ -114,8 +126,7 @@ export interface ChangeTabProperties {
     from: number;
 }
 
-export default class ScrollableTabView extends React.Component<ScrollableTabViewProperties> {
-}
+export default class ScrollableTabView extends React.Component<ScrollableTabViewProperties> {}
 
 // Each top-level child component should have a tabLabel prop
 // that can be used by the tab bar component to render out the labels.
@@ -142,8 +153,9 @@ export type RenderTabProperties = (
     onLayoutHandler?: (event: LayoutChangeEvent) => void,
 ) => JSX.Element;
 
-export class DefaultTabBar extends React.Component<TabBarProps<DefaultTabBarProps>> {
-}
+export class DefaultTabBar extends React.Component<
+    TabBarProps<DefaultTabBarProps>
+> {}
 
 export interface ScrollableTabBarProps extends DefaultTabBarProps {
     scrollOffset?: number | undefined;
@@ -151,5 +163,6 @@ export interface ScrollableTabBarProps extends DefaultTabBarProps {
     tabsContainerStyle?: ViewStyle | undefined;
 }
 
-export class ScrollableTabBar extends React.Component<TabBarProps<ScrollableTabBarProps>> {
-}
+export class ScrollableTabBar extends React.Component<
+    TabBarProps<ScrollableTabBarProps>
+> {}

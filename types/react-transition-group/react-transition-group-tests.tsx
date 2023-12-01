@@ -8,14 +8,22 @@ import {
     TransitionStatus,
 } from "react-transition-group";
 import { modes } from "react-transition-group/SwitchTransition";
-import { ENTERED, ENTERING, EXITED, EXITING, UNMOUNTED } from "react-transition-group/Transition";
+import {
+    ENTERED,
+    ENTERING,
+    EXITED,
+    EXITING,
+    UNMOUNTED,
+} from "react-transition-group/Transition";
 
 interface ContainerProps {
     theme: string;
     children?: React.ReactElement[] | undefined;
 }
 
-const Container: React.FunctionComponent<ContainerProps> = (props: ContainerProps) => {
+const Container: React.FunctionComponent<ContainerProps> = (
+    props: ContainerProps,
+) => {
     return <div data-theme={props.theme}>{props.children}</div>;
 };
 
@@ -153,7 +161,7 @@ const Test: React.FunctionComponent = () => {
                     <div>{"test"}</div>
                 </Transition>
                 <Transition in timeout={500}>
-                    {status => {
+                    {(status) => {
                         switch (status) {
                             case ENTERING:
                             case ENTERED:
@@ -220,7 +228,11 @@ const Test: React.FunctionComponent = () => {
                     <div ref={nodeRef}>{"test"}</div>
                 </CSSTransition>
 
-                <CSSTransition timeout={500} nodeRef={nodeRef} onEnter={handleEnterNoNode}>
+                <CSSTransition
+                    timeout={500}
+                    nodeRef={nodeRef}
+                    onEnter={handleEnterNoNode}
+                >
                     <div ref={nodeRef}>{"test"}</div>
                 </CSSTransition>
             </TransitionGroup>

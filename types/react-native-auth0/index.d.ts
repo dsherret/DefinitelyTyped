@@ -151,22 +151,30 @@ export class Auth {
     /* eslint-disable-next-line @definitelytyped/no-unnecessary-generics */
     createUser<T>(user: CreateUserParams<T>): Promise<CreateUserResponse>;
     exchange(params: ExchangeParams): Promise<Credentials>;
-    exchangeNativeSocial(params: ExchangeNativeSocialParams): Promise<Credentials>;
+    exchangeNativeSocial(
+        params: ExchangeNativeSocialParams,
+    ): Promise<Credentials>;
     logoutUrl(params: LogoutParams): string;
     passwordRealm(params: PasswordRealmParams): Promise<Credentials>;
     refreshToken(params: RefreshTokenParams): Promise<Credentials>;
     resetPassword(params: ResetPasswordParams): Promise<any>;
     revoke(params: RevokeParams): Promise<any>;
     /* eslint-disable-next-line @definitelytyped/no-unnecessary-generics */
-    userInfo<CustomClaims = {}>(params: UserInfoParams): Promise<UserInfo<CustomClaims>>;
+    userInfo<CustomClaims = {}>(
+        params: UserInfoParams,
+    ): Promise<UserInfo<CustomClaims>>;
     passwordlessWithEmail(params: PasswordlessWithEmailParams): Promise<any>;
     passwordlessWithSMS(params: PasswordlessWithSMSParams): Promise<any>;
     loginWithEmail(params: LoginWithEmailParams): Promise<Credentials>;
     loginWithSMS(params: LoginWithSMSParams): Promise<Credentials>;
     loginWithOTP(params: LoginWithOTPParams): Promise<Credentials>;
     loginWithOOB(params: LoginWithOOBParams): Promise<Credentials>;
-    loginWithRecoveryCode(params: LoginWithRecoveryCodeParams): Promise<Credentials>;
-    multifactorChallenge(params: MultiFactorChallengeParams): Promise<MultiFactorChallengeResponse>;
+    loginWithRecoveryCode(
+        params: LoginWithRecoveryCodeParams,
+    ): Promise<Credentials>;
+    multifactorChallenge(
+        params: MultiFactorChallengeParams,
+    ): Promise<MultiFactorChallengeResponse>;
 }
 
 /**
@@ -249,8 +257,14 @@ export interface Credentials {
 }
 
 export class WebAuth {
-    authorize(parameters: AuthorizeParams, options?: AuthorizeOptions): Promise<Credentials>;
-    clearSession(parameters?: ClearSessionParams, options?: ClearSessionOptions): Promise<any>;
+    authorize(
+        parameters: AuthorizeParams,
+        options?: AuthorizeOptions,
+    ): Promise<Credentials>;
+    clearSession(
+        parameters?: ClearSessionParams,
+        options?: ClearSessionOptions,
+    ): Promise<any>;
 }
 
 export interface UsersOptions {
@@ -279,7 +293,11 @@ export interface SaveCredentialsParams {
 export class CredentialsManager {
     constructor(domain: string, clientId: string);
     saveCredentials(params: SaveCredentialsParams): Promise<boolean>;
-    getCredentials(scope?: string, minTtl?: number, parameters?: any): Promise<Credentials>;
+    getCredentials(
+        scope?: string,
+        minTtl?: number,
+        parameters?: any,
+    ): Promise<Credentials>;
     requireLocalAuthentication(
         title?: string,
         description?: string,
@@ -341,21 +359,29 @@ export interface PhoneClaims {
     phone_number: string;
     phone_number_verified: boolean;
 }
-export type User =
-    & {
-        // for custom claim
-        [key: string]: unknown;
-    }
-    & OpenIdClaims
-    & Partial<ProfileClaims & EmailClaims & AddressClaims & PhoneClaims>;
+export type User = {
+    // for custom claim
+    [key: string]: unknown;
+} & OpenIdClaims &
+    Partial<ProfileClaims & EmailClaims & AddressClaims & PhoneClaims>;
 
 export class Auth0ContextInterface {
     user: User | null;
     error: BaseError | null;
     isLoading: boolean;
-    authorize: (parameters?: AuthorizeParams, options?: AuthorizeOptions) => Promise<void>;
-    clearSession: (parameters?: ClearSessionParams, options?: ClearSessionOptions) => Promise<void>;
-    getCredentials: (scope?: string, minTtl?: number, parameters?: any) => Promise<Credentials>;
+    authorize: (
+        parameters?: AuthorizeParams,
+        options?: AuthorizeOptions,
+    ) => Promise<void>;
+    clearSession: (
+        parameters?: ClearSessionParams,
+        options?: ClearSessionOptions,
+    ) => Promise<void>;
+    getCredentials: (
+        scope?: string,
+        minTtl?: number,
+        parameters?: any,
+    ) => Promise<Credentials>;
     clearCredentials: () => Promise<void>;
     requireLocalAuthentication: (
         title?: string,

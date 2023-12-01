@@ -61,7 +61,10 @@ declare class Reddit {
      *
      * const type = (await reddit.get<AboutResponse>("/r/typescript/about.json")).type;
      */
-    get<T = unknown, D = Record<string, never>>(url: string, data?: D): Promise<T>;
+    get<T = unknown, D = Record<string, never>>(
+        url: string,
+        data?: D,
+    ): Promise<T>;
 
     /**
      * Invoke the Reddit API using the POST HTTP method.
@@ -83,7 +86,10 @@ declare class Reddit {
      *
      * await reddit.post<void,ParamType>("/api/save", params);
      */
-    post<T = unknown, D = Record<string, never>>(url: string, data?: D): Promise<T>;
+    post<T = unknown, D = Record<string, never>>(
+        url: string,
+        data?: D,
+    ): Promise<T>;
 
     /**
      * Invoke the Reddit API using the PATCH HTTP method.
@@ -105,7 +111,10 @@ declare class Reddit {
      *
      * await reddit.patch<void,ParamType>("/api/v1/me/prefs", params);
      */
-    patch<T = unknown, D = Record<string, never>>(url: string, data?: D): Promise<T>;
+    patch<T = unknown, D = Record<string, never>>(
+        url: string,
+        data?: D,
+    ): Promise<T>;
 
     /**
      * Invoke the Reddit API using the PUT HTTP method.
@@ -127,7 +136,10 @@ declare class Reddit {
      *
      * await reddit.put<void,ParamType>("/api/v1/me/friends/username", params);
      */
-    put<T = unknown, D = Record<string, never>>(url: string, data?: D): Promise<T>;
+    put<T = unknown, D = Record<string, never>>(
+        url: string,
+        data?: D,
+    ): Promise<T>;
 
     /**
      * Invoke the Reddit API using the DELETE HTTP method.
@@ -149,7 +161,10 @@ declare class Reddit {
      *
      * await reddit.delete<void,ParamType>("/api/mod/notes", params);
      */
-    delete<T = unknown, D = Record<string, never>>(url: string, data?: D): Promise<T>;
+    delete<T = unknown, D = Record<string, never>>(
+        url: string,
+        data?: D,
+    ): Promise<T>;
 }
 
 declare namespace Reddit {

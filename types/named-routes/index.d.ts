@@ -7,7 +7,11 @@ declare module "express-serve-static-core" {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     interface IRouterMatcher<T> {
         (path: PathParams, name: string, ...handlers: RequestHandler[]): T;
-        (path: PathParams, name: string, ...handlers: RequestHandlerParams[]): T;
+        (
+            path: PathParams,
+            name: string,
+            ...handlers: RequestHandlerParams[]
+        ): T;
     }
 }
 
@@ -23,7 +27,14 @@ interface RouteOptions {
 }
 
 interface RouteParams {
-    [key: string]: string | string[] | number | number[] | boolean | boolean[] | null;
+    [key: string]:
+        | string
+        | string[]
+        | number
+        | number[]
+        | boolean
+        | boolean[]
+        | null;
 }
 
 declare class NamedRouter {
@@ -39,7 +50,11 @@ declare class NamedRouter {
     registerAppHelpers(app: express.Express): NamedRouter;
     param(name: string, callback: express.RequestHandler): NamedRouter;
     param(callback: express.RequestHandler): NamedRouter;
-    dispatch(req: express.Request, res?: express.Response, next?: express.NextFunction): void;
+    dispatch(
+        req: express.Request,
+        res?: express.Response,
+        next?: express.NextFunction,
+    ): void;
     extendExpress(app: express.Express | express.Router): NamedRouter;
 }
 

@@ -21,10 +21,18 @@ const temp: twig.Template = twig.twig(params);
 
 const result: string = temp.render();
 
-const async_result: string | Promise<string> = temp.render(undefined, undefined, true);
+const async_result: string | Promise<string> = temp.render(
+    undefined,
+    undefined,
+    true,
+);
 
 function twig_async_param(b: boolean) {
-    const maybe_async_result: string | Promise<string> = temp.render(undefined, undefined, b);
+    const maybe_async_result: string | Promise<string> = temp.render(
+        undefined,
+        undefined,
+        b,
+    );
 }
 
 twig_async_param(true);
@@ -38,7 +46,7 @@ const compOpts: twig.CompileOptions = {
     },
 };
 
-twig.extendFilter("backwords", value => {
+twig.extendFilter("backwords", (value) => {
     return value.split(" ").reverse().join(" ");
 });
 
@@ -68,7 +76,7 @@ twig.__express(str, compOpts, (err, result) => {});
 twig.cache(bool);
 
 // expose the internal Twig object for extension
-twig.extend(Twig => {
+twig.extend((Twig) => {
     Twig.exports.extendTag({
         // unique name for tag type
         type: "flag",
@@ -84,7 +92,10 @@ twig.extend(Twig => {
 
             // compile returns the raw token, mutating it before returning
             // by adding "stack" and deleting the "value" property
-            const compiled = Twig.expression.compile({ value: expression, type: "my-type" });
+            const compiled = Twig.expression.compile({
+                value: expression,
+                type: "my-type",
+            });
 
             compiled.type; // $ExpectType string
 
@@ -100,7 +111,10 @@ twig.extend(Twig => {
         // Runs when the template is rendered
         parse(token, context, chain) {
             // parse the tokens into a value with the render context
-            const name = Twig.expression.parse.apply(this, [token.stack, context]);
+            const name = Twig.expression.parse.apply(this, [
+                token.stack,
+                context,
+            ]);
             const output = "";
 
             return {

@@ -3,7 +3,7 @@ import { exec, init } from "pell";
 const element = document.getElementById("editor") as HTMLDivElement;
 const editor = init({
     element,
-    onChange: html => {
+    onChange: (html) => {
         console.log(html);
     },
     defaultParagraphSeparator: "p",
@@ -17,7 +17,7 @@ const editor = init({
         },
         {
             name: "backColor",
-            icon: "<div style=\"background-color:pink;\">A</div>",
+            icon: '<div style="background-color:pink;">A</div>',
             title: "Highlight Color",
             result: () => exec("backColor", "pink"),
         },

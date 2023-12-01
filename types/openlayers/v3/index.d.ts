@@ -25,7 +25,9 @@ declare namespace ol {
          * @return {ol.PreRenderFunction} Pre-render function.
          * @api
          */
-        function bounce(options: olx.animation.BounceOptions): ol.PreRenderFunction;
+        function bounce(
+            options: olx.animation.BounceOptions,
+        ): ol.PreRenderFunction;
 
         /**
          * Generate an animated transition while updating the view center.
@@ -41,7 +43,9 @@ declare namespace ol {
          * @return {ol.PreRenderFunction} Pre-render function.
          * @api
          */
-        function rotate(options: olx.animation.RotateOptions): ol.PreRenderFunction;
+        function rotate(
+            options: olx.animation.RotateOptions,
+        ): ol.PreRenderFunction;
 
         /**
          * Generate an animated transition while updating the view resolution.
@@ -181,7 +185,10 @@ declare namespace ol {
          * @template S
          * @api stable
          */
-        forEach<S>(f: (item: T, index: number, array: T[]) => any, opt_this?: S): void;
+        forEach<S>(
+            f: (item: T, index: number, array: T[]) => any,
+            opt_this?: S,
+        ): void;
 
         /**
          * Get a reference to the underlying Array object. Warning: if the array
@@ -523,7 +530,9 @@ declare namespace ol {
          * @return {ol.Collection.<ol.control.Control>} Controls.
          * @api stable
          */
-        function defaults(opt_options?: olx.control.DefaultsOptions): ol.Collection<ol.control.Control>;
+        function defaults(
+            opt_options?: olx.control.DefaultsOptions,
+        ): ol.Collection<ol.control.Control>;
 
         /**
          * @classdesc
@@ -846,7 +855,10 @@ declare namespace ol {
          * @return {ol.Coordinate} The input coordinate adjusted by the given delta.
          * @api stable
          */
-        function add(coordinate: ol.Coordinate, delta: ol.Coordinate): ol.Coordinate;
+        function add(
+            coordinate: ol.Coordinate,
+            delta: ol.Coordinate,
+        ): ol.Coordinate;
 
         /**
          * Returns a {@link ol.CoordinateFormatType} function that can be used to format
@@ -871,7 +883,9 @@ declare namespace ol {
          * @return {ol.CoordinateFormatType} Coordinate format.
          * @api stable
          */
-        function createStringXY(opt_fractionDigits?: number): ol.CoordinateFormatType;
+        function createStringXY(
+            opt_fractionDigits?: number,
+        ): ol.CoordinateFormatType;
 
         /**
          * Transforms the given {@link ol.Coordinate} to a string using the given string
@@ -900,7 +914,11 @@ declare namespace ol {
          * @return {string} Formatted coordinate.
          * @api stable
          */
-        function format(coordinate: ol.Coordinate, template: string, opt_fractionDigits?: number): string;
+        function format(
+            coordinate: ol.Coordinate,
+            template: string,
+            opt_fractionDigits?: number,
+        ): string;
 
         /**
          * Rotate `coordinate` by `angle`. `coordinate` is modified in place and
@@ -918,7 +936,10 @@ declare namespace ol {
          * @return {ol.Coordinate} Coordinate.
          * @api stable
          */
-        function rotate(coordinate: ol.Coordinate, angle: number): ol.Coordinate;
+        function rotate(
+            coordinate: ol.Coordinate,
+            angle: number,
+        ): ol.Coordinate;
 
         /**
          * Format a geographic coordinate with the hemisphere, degrees, minutes, and
@@ -942,7 +963,10 @@ declare namespace ol {
          * @return {string} Hemisphere, degrees, minutes and seconds.
          * @api stable
          */
-        function toStringHDMS(coordinate?: ol.Coordinate, opt_fractionDigits?: number): string;
+        function toStringHDMS(
+            coordinate?: ol.Coordinate,
+            opt_fractionDigits?: number,
+        ): string;
 
         /**
          * Format a coordinate as a comma delimited string.
@@ -965,7 +989,10 @@ declare namespace ol {
          * @return {string} XY.
          * @api stable
          */
-        function toStringXY(coordinate?: ol.Coordinate, opt_fractionDigits?: number): string;
+        function toStringXY(
+            coordinate?: ol.Coordinate,
+            opt_fractionDigits?: number,
+        ): string;
     }
 
     /**
@@ -1226,7 +1253,9 @@ declare namespace ol {
              * @return {boolean} True if only the alt and shift keys are pressed.
              * @api stable
              */
-            function altShiftKeysOnly(mapBrowserEvent: ol.MapBrowserEvent): boolean;
+            function altShiftKeysOnly(
+                mapBrowserEvent: ol.MapBrowserEvent,
+            ): boolean;
 
             /**
              * Return always true.
@@ -1293,7 +1322,9 @@ declare namespace ol {
              * @return {boolean} True only if there no modifier keys are pressed.
              * @api stable
              */
-            function noModifierKeys(mapBrowserEvent: ol.MapBrowserEvent): boolean;
+            function noModifierKeys(
+                mapBrowserEvent: ol.MapBrowserEvent,
+            ): boolean;
 
             /**
              * Return `true` if only the platform-modifier-key (the meta-key on Mac,
@@ -1304,7 +1335,9 @@ declare namespace ol {
              * @return {boolean} True if only the platform modifier key is pressed.
              * @api stable
              */
-            function platformModifierKeyOnly(mapBrowserEvent: ol.MapBrowserEvent): boolean;
+            function platformModifierKeyOnly(
+                mapBrowserEvent: ol.MapBrowserEvent,
+            ): boolean;
 
             /**
              * Return `true` if only the shift-key is pressed, `false` otherwise (e.g. when
@@ -1324,7 +1357,9 @@ declare namespace ol {
              * @return {boolean} True only if the target element is not editable.
              * @api
              */
-            function targetNotEditable(mapBrowserEvent: ol.MapBrowserEvent): boolean;
+            function targetNotEditable(
+                mapBrowserEvent: ol.MapBrowserEvent,
+            ): boolean;
 
             /**
              * Return `true` if the event originates from a mouse device.
@@ -1344,7 +1379,9 @@ declare namespace ol {
              * @return {boolean} True if the event originates from a primary pointer.
              * @api
              */
-            function primaryAction(mapBrowserEvent: ol.MapBrowserEvent): boolean;
+            function primaryAction(
+                mapBrowserEvent: ol.MapBrowserEvent,
+            ): boolean;
         }
 
         /**
@@ -1457,7 +1494,11 @@ declare namespace ol {
          * @return {ol.Extent} Extent.
          * @api stable
          */
-        function buffer(extent: ol.Extent, value: number, opt_extent?: ol.Extent): ol.Extent;
+        function buffer(
+            extent: ol.Extent,
+            value: number,
+            opt_extent?: ol.Extent,
+        ): ol.Extent;
 
         /**
          * Check if the passed coordinate is contained or on the edge of the extent.
@@ -1467,7 +1508,10 @@ declare namespace ol {
          * @return {boolean} The coordinate is contained in the extent.
          * @api stable
          */
-        function containsCoordinate(extent: ol.Extent, coordinate: ol.Coordinate): boolean;
+        function containsCoordinate(
+            extent: ol.Extent,
+            coordinate: ol.Coordinate,
+        ): boolean;
 
         /**
          * Check if one extent contains another.
@@ -1481,7 +1525,10 @@ declare namespace ol {
          *     first.
          * @api stable
          */
-        function containsExtent(extent1: ol.Extent, extent2: ol.Extent): boolean;
+        function containsExtent(
+            extent1: ol.Extent,
+            extent2: ol.Extent,
+        ): boolean;
 
         /**
          * Check if the passed coordinate is contained or on the edge of the extent.
@@ -1559,7 +1606,11 @@ declare namespace ol {
          * @return {ol.Extent} Intersecting extent.
          * @api stable
          */
-        function getIntersection(extent1: ol.Extent, extent2: ol.Extent, opt_extent?: ol.Extent): ol.Extent;
+        function getIntersection(
+            extent1: ol.Extent,
+            extent2: ol.Extent,
+            opt_extent?: ol.Extent,
+        ): ol.Extent;
 
         /**
          * Get the size (width, height) of an extent.
@@ -1713,7 +1764,9 @@ declare namespace ol {
          *     include a Geometry associated with a `geometry` key.
          * @api stable
          */
-        constructor(opt_geometryOrProperties?: ol.geom.Geometry | { [k: string]: any });
+        constructor(
+            opt_geometryOrProperties?: ol.geom.Geometry | { [k: string]: any },
+        );
 
         /**
          * Clone this feature. If the original feature has a geometry it
@@ -1788,7 +1841,9 @@ declare namespace ol {
          * @api stable
          * @observable
          */
-        setStyle(style: ol.style.Style | ol.style.Style[] | ol.FeatureStyleFunction): void;
+        setStyle(
+            style: ol.style.Style | ol.style.Style[] | ol.FeatureStyleFunction,
+        ): void;
 
         /**
          * Set the feature id.  The feature id is considered stable and may be used when
@@ -1825,7 +1880,10 @@ declare namespace ol {
          * @return {ol.FeatureLoader} The feature loader.
          * @api
          */
-        function tile(url: string | ol.FeatureUrlFunction, format: ol.format.Feature): ol.FeatureLoader;
+        function tile(
+            url: string | ol.FeatureUrlFunction,
+            format: ol.format.Feature,
+        ): ol.FeatureLoader;
 
         /**
          * Create an XHR feature loader for a `url` and `format`. The feature loader
@@ -1836,7 +1894,10 @@ declare namespace ol {
          * @return {ol.FeatureLoader} The feature loader.
          * @api
          */
-        function xhr(url: string | ol.FeatureUrlFunction, format: ol.format.Feature): ol.FeatureLoader;
+        function xhr(
+            url: string | ol.FeatureUrlFunction,
+            format: ol.format.Feature,
+        ): ol.FeatureLoader;
     }
 
     /**
@@ -1912,7 +1973,9 @@ declare namespace ol {
              * @return {ol.proj.Projection} Projection.
              * @api
              */
-            readProjection(source: ArrayBuffer | Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                source: ArrayBuffer | Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
 
             /**
              * Encode a geometry as a EsriJSON string.
@@ -1923,7 +1986,10 @@ declare namespace ol {
              * @return {string} EsriJSON.
              * @api
              */
-            writeGeometry(geometry: ol.geom.Geometry, opt_options?: olx.format.WriteOptions): string;
+            writeGeometry(
+                geometry: ol.geom.Geometry,
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode a geometry as a EsriJSON object.
@@ -1933,7 +1999,10 @@ declare namespace ol {
              * @return {EsriJSONGeometry} Object.
              * @api
              */
-            writeGeometryObject(geometry: ol.geom.Geometry, opt_options?: olx.format.WriteOptions): EsriJSONGeometry;
+            writeGeometryObject(
+                geometry: ol.geom.Geometry,
+                opt_options?: olx.format.WriteOptions,
+            ): EsriJSONGeometry;
 
             /**
              * Encode a feature as a EsriJSON Feature string.
@@ -1944,7 +2013,10 @@ declare namespace ol {
              * @return {string} EsriJSON.
              * @api
              */
-            writeFeature(feature: ol.Feature, opt_options?: olx.format.WriteOptions): string;
+            writeFeature(
+                feature: ol.Feature,
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode a feature as a esriJSON Feature object.
@@ -1954,7 +2026,10 @@ declare namespace ol {
              * @return {Object} Object.
              * @api
              */
-            writeFeatureObject(feature: ol.Feature, opt_options?: olx.format.WriteOptions): GlobalObject;
+            writeFeatureObject(
+                feature: ol.Feature,
+                opt_options?: olx.format.WriteOptions,
+            ): GlobalObject;
 
             /**
              * Encode an array of features as EsriJSON.
@@ -1965,7 +2040,10 @@ declare namespace ol {
              * @return {string} EsriJSON.
              * @api
              */
-            writeFeatures(features: ol.Feature[], opt_options?: olx.format.WriteOptions): string;
+            writeFeatures(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode an array of features as a EsriJSON object.
@@ -1975,7 +2053,10 @@ declare namespace ol {
              * @return {Object} EsriJSON Object.
              * @api
              */
-            writeFeaturesObject(features: ol.Feature[], opt_options?: olx.format.WriteOptions): GlobalObject;
+            writeFeaturesObject(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): GlobalObject;
         }
 
         type EsriJSONGeometry = JSON;
@@ -2080,7 +2161,9 @@ declare namespace ol {
              * @return {ol.proj.Projection} Projection.
              * @api stable
              */
-            readProjection(source: Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                source: Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
 
             /**
              * Encode a feature as a GeoJSON Feature string.
@@ -2091,7 +2174,10 @@ declare namespace ol {
              * @return {string} GeoJSON.
              * @api stable
              */
-            writeFeature(feature: ol.Feature, opt_options?: olx.format.WriteOptions): string;
+            writeFeature(
+                feature: ol.Feature,
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode a feature as a GeoJSON Feature object.
@@ -2101,7 +2187,10 @@ declare namespace ol {
              * @return {GeoJSONFeature} Object.
              * @api stable
              */
-            writeFeatureObject(feature: ol.Feature, opt_options?: olx.format.WriteOptions): GeoJSONFeature;
+            writeFeatureObject(
+                feature: ol.Feature,
+                opt_options?: olx.format.WriteOptions,
+            ): GeoJSONFeature;
 
             /**
              * Encode an array of features as GeoJSON.
@@ -2112,7 +2201,10 @@ declare namespace ol {
              * @return {string} GeoJSON.
              * @api stable
              */
-            writeFeatures(features: ol.Feature[], opt_options?: olx.format.WriteOptions): string;
+            writeFeatures(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode an array of features as a GeoJSON object.
@@ -2136,7 +2228,10 @@ declare namespace ol {
              * @return {string} GeoJSON.
              * @api stable
              */
-            writeGeometry(geometry: ol.geom.Geometry, opt_options?: olx.format.WriteOptions): string;
+            writeGeometry(
+                geometry: ol.geom.Geometry,
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode a geometry as a GeoJSON object.
@@ -2184,7 +2279,10 @@ declare namespace ol {
              * @return {string} Result.
              * @api stable
              */
-            writeFeatures(features: ol.Feature[], opt_options?: olx.format.WriteOptions): string;
+            writeFeatures(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode an array of features in the GML 3.1.1 format as an XML node.
@@ -2195,7 +2293,10 @@ declare namespace ol {
              * @return {Node} Node.
              * @api
              */
-            writeFeaturesNode(features: ol.Feature[], opt_options?: olx.format.WriteOptions): Node;
+            writeFeaturesNode(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): Node;
         }
 
         /**
@@ -2249,7 +2350,10 @@ declare namespace ol {
              * @return {Node} Node.
              * @api
              */
-            writeGeometryNode(geometry: ol.geom.Geometry, opt_options?: olx.format.WriteOptions): Node;
+            writeGeometryNode(
+                geometry: ol.geom.Geometry,
+                opt_options?: olx.format.WriteOptions,
+            ): Node;
 
             /**
              * Encode an array of features in GML 3.1.1 Simple Features.
@@ -2260,7 +2364,10 @@ declare namespace ol {
              * @return {string} Result.
              * @api stable
              */
-            writeFeatures(features: ol.Feature[], opt_options?: olx.format.WriteOptions): string;
+            writeFeatures(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode an array of features in the GML 3.1.1 format as an XML node.
@@ -2270,7 +2377,10 @@ declare namespace ol {
              * @return {Node} Node.
              * @api
              */
-            writeFeaturesNode(features: ol.Feature[], opt_options?: olx.format.WriteOptions): Node;
+            writeFeaturesNode(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): Node;
         }
 
         /**
@@ -2372,7 +2482,9 @@ declare namespace ol {
              * @return {ol.proj.Projection} Projection.
              * @api stable
              */
-            readProjection(source: Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                source: Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
 
             /**
              * Encode an array of features in the GPX format.
@@ -2385,7 +2497,10 @@ declare namespace ol {
              * @return {string} Result.
              * @api stable
              */
-            writeFeatures(features: ol.Feature[], opt_options?: olx.format.WriteOptions): string;
+            writeFeatures(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode an array of features in the GPX format as an XML node.
@@ -2397,7 +2512,10 @@ declare namespace ol {
              * @return {Node} Node.
              * @api
              */
-            writeFeaturesNode(features: ol.Feature[], opt_options?: olx.format.WriteOptions): Node;
+            writeFeaturesNode(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): Node;
         }
 
         /**
@@ -2459,7 +2577,9 @@ declare namespace ol {
              * @return {ol.proj.Projection} Projection.
              * @api
              */
-            readProjection(source: Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                source: Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
         }
 
         /**
@@ -2559,7 +2679,9 @@ declare namespace ol {
              * @return {ol.proj.Projection} Projection.
              * @api stable
              */
-            readProjection(source: Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                source: Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
 
             /**
              * Encode an array of features in the KML format. GeometryCollections, MultiPoints,
@@ -2571,7 +2693,10 @@ declare namespace ol {
              * @return {string} Result.
              * @api stable
              */
-            writeFeatures(features: ol.Feature[], opt_options?: olx.format.WriteOptions): string;
+            writeFeatures(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode an array of features in the KML format as an XML node. GeometryCollections,
@@ -2582,7 +2707,10 @@ declare namespace ol {
              * @return {Node} Node.
              * @api
              */
-            writeFeaturesNode(features: ol.Feature[], opt_options?: olx.format.WriteOptions): Node;
+            writeFeaturesNode(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): Node;
         }
 
         /**
@@ -2615,7 +2743,9 @@ declare namespace ol {
              * @inheritDoc
              * @api
              */
-            readProjection(source: Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                source: Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
 
             /**
              * Sets the layers that features will be read from.
@@ -2668,7 +2798,9 @@ declare namespace ol {
              * @return {ol.proj.Projection} Projection.
              * @api stable
              */
-            readProjection(source: Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                source: Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
         }
 
         /**
@@ -2705,7 +2837,11 @@ declare namespace ol {
              * @return {string} The encoded string.
              * @api
              */
-            static encodeDeltas(numbers: number[], stride: number, opt_factor?: number): string;
+            static encodeDeltas(
+                numbers: number[],
+                stride: number,
+                opt_factor?: number,
+            ): string;
 
             /**
              * Decode a list of n-dimensional points from an encoded string
@@ -2718,7 +2854,11 @@ declare namespace ol {
              * @return {Array.<number>} A list of n-dimensional points.
              * @api
              */
-            static decodeDeltas(encoded: string, stride: number, opt_factor?: number): number[];
+            static decodeDeltas(
+                encoded: string,
+                stride: number,
+                opt_factor?: number,
+            ): number[];
 
             /**
              * Encode a list of floating point numbers and return an encoded string
@@ -2797,7 +2937,9 @@ declare namespace ol {
              * @return {ol.proj.Projection} Projection.
              * @api stable
              */
-            readProjection(source: Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                source: Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
 
             /**
              * Write a single geometry in Polyline format.
@@ -2808,7 +2950,10 @@ declare namespace ol {
              * @return {string} Geometry.
              * @api stable
              */
-            writeGeometry(geometry: ol.geom.Geometry, opt_options?: olx.format.WriteOptions): string;
+            writeGeometry(
+                geometry: ol.geom.Geometry,
+                opt_options?: olx.format.WriteOptions,
+            ): string;
         }
 
         /**
@@ -2852,7 +2997,9 @@ declare namespace ol {
              * @return {Array.<ol.Feature>} Features.
              * @api stable
              */
-            readFeatures(source: Document | Node | GlobalObject | string): ol.Feature[];
+            readFeatures(
+                source: Document | Node | GlobalObject | string,
+            ): ol.Feature[];
 
             /**
              * Read the projection from a TopoJSON source.
@@ -2862,7 +3009,9 @@ declare namespace ol {
              * @return {ol.proj.Projection} Projection.
              * @api stable
              */
-            readProjection(object: Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                object: Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
         }
 
         /**
@@ -2911,7 +3060,9 @@ declare namespace ol {
              * @return {ol.WFSTransactionResponse|undefined} Transaction response.
              * @api stable
              */
-            readTransactionResponse(source: Document | Node | GlobalObject | string): ol.WFSTransactionResponse;
+            readTransactionResponse(
+                source: Document | Node | GlobalObject | string,
+            ): ol.WFSTransactionResponse;
 
             /**
              * Read feature collection metadata of the source.
@@ -2932,7 +3083,9 @@ declare namespace ol {
              * @return {Node} Result.
              * @api stable
              */
-            writeGetFeature(options: olx.format.WFSWriteGetFeatureOptions): Node;
+            writeGetFeature(
+                options: olx.format.WFSWriteGetFeatureOptions,
+            ): Node;
 
             /**
              * Encode format as WFS `Transaction` and return the Node.
@@ -2959,7 +3112,9 @@ declare namespace ol {
              * @return {?ol.proj.Projection} Projection.
              * @api stable
              */
-            readProjection(source: Document | Node | GlobalObject | string): ol.proj.Projection;
+            readProjection(
+                source: Document | Node | GlobalObject | string,
+            ): ol.proj.Projection;
         }
 
         /**
@@ -3032,7 +3187,10 @@ declare namespace ol {
              * @return {string} WKT string.
              * @api stable
              */
-            writeFeature(feature: ol.Feature, opt_options?: olx.format.WriteOptions): string;
+            writeFeature(
+                feature: ol.Feature,
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Encode an array of features as a WKT string.
@@ -3043,7 +3201,10 @@ declare namespace ol {
              * @return {string} WKT string.
              * @api stable
              */
-            writeFeatures(features: ol.Feature[], opt_options?: olx.format.WriteOptions): string;
+            writeFeatures(
+                features: ol.Feature[],
+                opt_options?: olx.format.WriteOptions,
+            ): string;
 
             /**
              * Write a single geometry as a WKT string.
@@ -3367,7 +3528,11 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api
              */
-            constructor(center: ol.Coordinate, opt_radius?: number, opt_layout?: ol.geom.GeometryLayout);
+            constructor(
+                center: ol.Coordinate,
+                opt_radius?: number,
+                opt_layout?: ol.geom.GeometryLayout,
+            );
 
             /**
              * Make a complete copy of the geometry.
@@ -3417,7 +3582,11 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api
              */
-            setCenterAndRadius(center: ol.Coordinate, radius: number, opt_layout?: ol.geom.GeometryLayout): void;
+            setCenterAndRadius(
+                center: ol.Coordinate,
+                radius: number,
+                opt_layout?: ol.geom.GeometryLayout,
+            ): void;
 
             /**
              * Set the radius of the circle. The radius is in the units of the projection.
@@ -3483,7 +3652,10 @@ declare namespace ol {
              * @return {ol.Coordinate} Closest point.
              * @api stable
              */
-            getClosestPoint(point: ol.Coordinate, opt_closestPoint?: ol.Coordinate): ol.Coordinate;
+            getClosestPoint(
+                point: ol.Coordinate,
+                opt_closestPoint?: ol.Coordinate,
+            ): ol.Coordinate;
 
             /**
              * Returns true if this geometry includes the specified coordinate. If the
@@ -3523,7 +3695,11 @@ declare namespace ol {
              *     of the geometry extent).
              * @api
              */
-            scale(sx: number, opt_sy?: number, opt_anchor?: ol.Coordinate): void;
+            scale(
+                sx: number,
+                opt_sy?: number,
+                opt_anchor?: ol.Coordinate,
+            ): void;
 
             /**
              * Create a simplified version of this geometry.  For linestrings, this uses
@@ -3554,7 +3730,10 @@ declare namespace ol {
              *     modified in place.
              * @api stable
              */
-            transform(source: ol.ProjectionLike, destination: ol.ProjectionLike): ol.geom.Geometry;
+            transform(
+                source: ol.ProjectionLike,
+                destination: ol.ProjectionLike,
+            ): ol.geom.Geometry;
 
             /**
              * Get the type of this geometry.
@@ -3648,7 +3827,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            constructor(coordinates: ol.Coordinate[], opt_layout?: ol.geom.GeometryLayout);
+            constructor(
+                coordinates: ol.Coordinate[],
+                opt_layout?: ol.geom.GeometryLayout,
+            );
 
             /**
              * Make a complete copy of the geometry.
@@ -3683,7 +3865,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            setCoordinates(coordinates: ol.Coordinate[], opt_layout?: ol.geom.GeometryLayout): void;
+            setCoordinates(
+                coordinates: ol.Coordinate[],
+                opt_layout?: ol.geom.GeometryLayout,
+            ): void;
         }
 
         /**
@@ -3703,7 +3888,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            constructor(coordinates: ol.Coordinate[], opt_layout?: ol.geom.GeometryLayout);
+            constructor(
+                coordinates: ol.Coordinate[],
+                opt_layout?: ol.geom.GeometryLayout,
+            );
 
             /**
              * Append the passed coordinate to the coordinates of the linestring.
@@ -3748,7 +3936,10 @@ declare namespace ol {
              * @return {ol.Coordinate} Coordinate.
              * @api stable
              */
-            getCoordinateAtM(m: number, opt_extrapolate?: boolean): ol.Coordinate;
+            getCoordinateAtM(
+                m: number,
+                opt_extrapolate?: boolean,
+            ): ol.Coordinate;
 
             /**
              * Return the coordinates of the linestring.
@@ -3767,7 +3958,10 @@ declare namespace ol {
              * @return {ol.Coordinate} Coordinate of the interpolated point.
              * @api
              */
-            getCoordinateAt(fraction: number, opt_dest?: ol.Coordinate): ol.Coordinate;
+            getCoordinateAt(
+                fraction: number,
+                opt_dest?: ol.Coordinate,
+            ): ol.Coordinate;
 
             /**
              * Return the length of the linestring on projected plane.
@@ -3794,7 +3988,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            setCoordinates(coordinates: ol.Coordinate[], opt_layout?: ol.geom.GeometryLayout): void;
+            setCoordinates(
+                coordinates: ol.Coordinate[],
+                opt_layout?: ol.geom.GeometryLayout,
+            ): void;
         }
 
         /**
@@ -3814,7 +4011,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            constructor(coordinates: ol.Coordinate[][], opt_layout?: ol.geom.GeometryLayout);
+            constructor(
+                coordinates: ol.Coordinate[][],
+                opt_layout?: ol.geom.GeometryLayout,
+            );
 
             /**
              * Append the passed linestring to the multilinestring.
@@ -3852,7 +4052,11 @@ declare namespace ol {
              * @return {ol.Coordinate} Coordinate.
              * @api stable
              */
-            getCoordinateAtM(m: number, opt_extrapolate?: boolean, opt_interpolate?: boolean): ol.Coordinate;
+            getCoordinateAtM(
+                m: number,
+                opt_extrapolate?: boolean,
+                opt_interpolate?: boolean,
+            ): ol.Coordinate;
 
             /**
              * Return the coordinates of the multilinestring.
@@ -3894,7 +4098,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            setCoordinates(coordinates: ol.Coordinate[][], opt_layout?: ol.geom.GeometryLayout): void;
+            setCoordinates(
+                coordinates: ol.Coordinate[][],
+                opt_layout?: ol.geom.GeometryLayout,
+            ): void;
         }
 
         /**
@@ -3914,7 +4121,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            constructor(coordinates: ol.Coordinate[], opt_layout?: ol.geom.GeometryLayout);
+            constructor(
+                coordinates: ol.Coordinate[],
+                opt_layout?: ol.geom.GeometryLayout,
+            );
 
             /**
              * Append the passed point to this multipoint.
@@ -3970,7 +4180,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            setCoordinates(coordinates: ol.Coordinate[], opt_layout?: ol.geom.GeometryLayout): void;
+            setCoordinates(
+                coordinates: ol.Coordinate[],
+                opt_layout?: ol.geom.GeometryLayout,
+            ): void;
         }
 
         /**
@@ -3990,7 +4203,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            constructor(coordinates: ol.Coordinate[][][], opt_layout?: ol.geom.GeometryLayout);
+            constructor(
+                coordinates: ol.Coordinate[][][],
+                opt_layout?: ol.geom.GeometryLayout,
+            );
 
             /**
              * Append the passed polygon to this multipolygon.
@@ -4068,7 +4284,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            setCoordinates(coordinates: ol.Coordinate[][][], opt_layout?: ol.geom.GeometryLayout): void;
+            setCoordinates(
+                coordinates: ol.Coordinate[][][],
+                opt_layout?: ol.geom.GeometryLayout,
+            ): void;
         }
 
         /**
@@ -4088,7 +4307,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            constructor(coordinates: ol.Coordinate, opt_layout?: ol.geom.GeometryLayout);
+            constructor(
+                coordinates: ol.Coordinate,
+                opt_layout?: ol.geom.GeometryLayout,
+            );
 
             /**
              * Make a complete copy of the geometry.
@@ -4122,7 +4344,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            setCoordinates(coordinates: ol.Coordinate, opt_layout?: ol.geom.GeometryLayout): void;
+            setCoordinates(
+                coordinates: ol.Coordinate,
+                opt_layout?: ol.geom.GeometryLayout,
+            ): void;
         }
 
         /**
@@ -4142,7 +4367,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            constructor(coordinates: ol.Coordinate[][], opt_layout?: ol.geom.GeometryLayout);
+            constructor(
+                coordinates: ol.Coordinate[][],
+                opt_layout?: ol.geom.GeometryLayout,
+            );
 
             /**
              * Append the passed linear ring to this polygon.
@@ -4233,7 +4461,10 @@ declare namespace ol {
              * @param {ol.geom.GeometryLayout=} opt_layout Layout.
              * @api stable
              */
-            setCoordinates(coordinates: ol.Coordinate[][], opt_layout?: ol.geom.GeometryLayout): void;
+            setCoordinates(
+                coordinates: ol.Coordinate[][],
+                opt_layout?: ol.geom.GeometryLayout,
+            ): void;
 
             /**
              * Create an approximation of a circle on the surface of a sphere.
@@ -4246,7 +4477,12 @@ declare namespace ol {
              * @return {ol.geom.Polygon} The "circular" polygon.
              * @api stable
              */
-            static circular(sphere: ol.Sphere, center: ol.Coordinate, radius: number, opt_n?: number): ol.geom.Polygon;
+            static circular(
+                sphere: ol.Sphere,
+                center: ol.Coordinate,
+                radius: number,
+                opt_n?: number,
+            ): ol.geom.Polygon;
 
             /**
              * Create a polygon from an extent. The layout used is `XY`.
@@ -4265,7 +4501,11 @@ declare namespace ol {
              * @return {ol.geom.Polygon} Polygon geometry.
              * @api
              */
-            static fromCircle(circle: ol.geom.Circle, opt_sides?: number, opt_angle?: number): ol.geom.Polygon;
+            static fromCircle(
+                circle: ol.geom.Circle,
+                opt_sides?: number,
+                opt_angle?: number,
+            ): ol.geom.Polygon;
         }
 
         /**
@@ -4448,7 +4688,9 @@ declare namespace ol {
          * @return {HTMLCanvasElement|Image|HTMLVideoElement} Image.
          * @api
          */
-        getImage(opt_context?: GlobalObject): HTMLCanvasElement | Image | HTMLVideoElement;
+        getImage(
+            opt_context?: GlobalObject,
+        ): HTMLCanvasElement | Image | HTMLVideoElement;
 
         /**
          * Load the image or retry if loading previously failed.
@@ -4513,7 +4755,9 @@ declare namespace ol {
          * @inheritDoc
          * @api
          */
-        getImage(opt_context?: GlobalObject): HTMLCanvasElement | HTMLImageElement | HTMLVideoElement;
+        getImage(
+            opt_context?: GlobalObject,
+        ): HTMLCanvasElement | HTMLImageElement | HTMLVideoElement;
     }
 
     /**
@@ -4718,7 +4962,11 @@ declare namespace ol {
                  * @param {ol.Coordinate} coordinate The event coordinate.
                  * @param {ol.MapBrowserEvent} mapBrowserEvent Originating event.
                  */
-                constructor(type: string, coordinate: ol.Coordinate, mapBrowserEvent: ol.MapBrowserEvent);
+                constructor(
+                    type: string,
+                    coordinate: ol.Coordinate,
+                    mapBrowserEvent: ol.MapBrowserEvent,
+                );
 
                 /**
                  * The coordinate of the drag event.
@@ -4860,7 +5108,10 @@ declare namespace ol {
                  * @param {ol.interaction.DrawEventType} type Type.
                  * @param {ol.Feature} feature The feature drawn.
                  */
-                constructor(type: ol.interaction.DrawEventType, feature: ol.Feature);
+                constructor(
+                    type: ol.interaction.DrawEventType,
+                    feature: ol.Feature,
+                );
 
                 /**
                  * The feature being drawn.
@@ -4927,7 +5178,10 @@ declare namespace ol {
              *     polygon.
              * @api
              */
-            static createRegularPolygon(opt_sides?: number, opt_angle?: number): ol.DrawGeometryFunctionType;
+            static createRegularPolygon(
+                opt_sides?: number,
+                opt_angle?: number,
+            ): ol.DrawGeometryFunctionType;
         }
 
         /**
@@ -4953,7 +5207,9 @@ declare namespace ol {
          * interactions to be used with the ol.Map constructor's interactions option.
          * @api stable
          */
-        function defaults(opt_options?: olx.interaction.DefaultsOptions): ol.Collection<ol.interaction.Interaction>;
+        function defaults(
+            opt_options?: olx.interaction.DefaultsOptions,
+        ): ol.Collection<ol.interaction.Interaction>;
 
         /**
          * @classdesc
@@ -6040,7 +6296,9 @@ declare namespace ol {
              *     style Layer style.
              * @api stable
              */
-            setStyle(style: ol.style.Style | ol.style.Style[] | ol.StyleFunction): void;
+            setStyle(
+                style: ol.style.Style | ol.style.Style[] | ol.StyleFunction,
+            ): void;
         }
 
         /**
@@ -6144,7 +6402,9 @@ declare namespace ol {
          * @return {function(ol.Extent, number): Array.<ol.Extent>} Loading strategy.
          * @api
          */
-        function tile(tileGrid: ol.tilegrid.TileGrid): (extent: ol.Extent, i: number) => ol.Extent[];
+        function tile(
+            tileGrid: ol.tilegrid.TileGrid,
+        ): (extent: ol.Extent, i: number) => ol.Extent[];
     }
 
     /**
@@ -6309,7 +6569,10 @@ declare namespace ol {
          */
         forEachFeatureAtPixel<T>(
             pixel: ol.Pixel,
-            callback: (feature: ol.Feature | ol.render.Feature, layer: ol.layer.Layer) => T,
+            callback: (
+                feature: ol.Feature | ol.render.Feature,
+                layer: ol.layer.Layer,
+            ) => T,
             opt_layerFilter?: (layer: ol.layer.Layer) => boolean,
         ): T;
 
@@ -6519,7 +6782,9 @@ declare namespace ol {
          *     undefined if the interaction was not found).
          * @api stable
          */
-        removeInteraction(interaction: ol.interaction.Interaction): ol.interaction.Interaction;
+        removeInteraction(
+            interaction: ol.interaction.Interaction,
+        ): ol.interaction.Interaction;
 
         /**
          * Removes the given layer from the map.
@@ -6943,7 +7208,11 @@ declare namespace ol {
          *     will be an array of keys.
          * @api stable
          */
-        on(type: string | string[], listener: Function, opt_this?: GlobalObject): ol.EventsKey | ol.EventsKey[];
+        on(
+            type: string | string[],
+            listener: Function,
+            opt_this?: GlobalObject,
+        ): ol.EventsKey | ol.EventsKey[];
 
         /**
          * Listen once for a certain type of event.
@@ -6955,7 +7224,11 @@ declare namespace ol {
          *     will be an array of keys.
          * @api stable
          */
-        once(type: string | string[], listener: Function, opt_this?: GlobalObject): ol.EventsKey | ol.EventsKey[];
+        once(
+            type: string | string[],
+            listener: Function,
+            opt_this?: GlobalObject,
+        ): ol.EventsKey | ol.EventsKey[];
 
         /**
          * Unlisten for a certain type of event.
@@ -6965,7 +7238,11 @@ declare namespace ol {
          * `listener`.
          * @api stable
          */
-        un(type: string | string[], listener: Function, opt_this?: GlobalObject): void;
+        un(
+            type: string | string[],
+            listener: Function,
+            opt_this?: GlobalObject,
+        ): void;
 
         /**
          * Removes an event listener using the key returned by `on()` or `once()`.
@@ -7142,8 +7419,7 @@ declare namespace ol {
          * @param {Object.<string, ?>=} opt_eventDict An optional dictionary of
          *    initial event properties.
          */
-        class PointerEvent {
-        }
+        class PointerEvent {}
     }
 
     /**
@@ -7205,7 +7481,13 @@ declare namespace ol {
          * Projection units: `'degrees'`, `'ft'`, `'m'`, `'pixels'`, `'tile-pixels'` or
          * `'us-ft'`.
          */
-        type Units = "degress" | "ft" | "m" | "pixels" | "tile-pixels" | "us-ft";
+        type Units =
+            | "degress"
+            | "ft"
+            | "m"
+            | "pixels"
+            | "tile-pixels"
+            | "us-ft";
 
         /**
          * Meters per unit lookup table.
@@ -7346,7 +7628,9 @@ declare namespace ol {
              * @param {function(number, ol.Coordinate):number} func Function
              * @api
              */
-            setGetPointResolution(func: (resolution: number, coords: ol.Coordinate) => number): void;
+            setGetPointResolution(
+                func: (resolution: number, coords: ol.Coordinate) => number,
+            ): void;
 
             /**
              * Get the resolution of the point in degrees or distance units.
@@ -7363,7 +7647,10 @@ declare namespace ol {
              * @return {number} Point resolution in projection units.
              * @api
              */
-            getPointResolution(resolution: number, point: ol.Coordinate): number;
+            getPointResolution(
+                resolution: number,
+                point: ol.Coordinate,
+            ): number;
         }
 
         /**
@@ -7387,7 +7674,9 @@ declare namespace ol {
          * @param {Array.<ol.proj.Projection>} projections Projections.
          * @api
          */
-        function addEquivalentProjections(projections: ol.proj.Projection[]): void;
+        function addEquivalentProjections(
+            projections: ol.proj.Projection[],
+        ): void;
 
         /**
          * Add a Projection object to the list of supported projections that can be
@@ -7433,7 +7722,10 @@ declare namespace ol {
          * @return {ol.Coordinate} Coordinate projected to the target projection.
          * @api stable
          */
-        function fromLonLat(coordinate: ol.Coordinate, opt_projection?: ol.ProjectionLike): ol.Coordinate;
+        function fromLonLat(
+            coordinate: ol.Coordinate,
+            opt_projection?: ol.ProjectionLike,
+        ): ol.Coordinate;
 
         /**
          * Transforms a coordinate to longitude/latitude.
@@ -7444,7 +7736,10 @@ declare namespace ol {
          *     with longitude as 1st and latitude as 2nd element.
          * @api stable
          */
-        function toLonLat(coordinate: ol.Coordinate, opt_projection?: ol.ProjectionLike): ol.Coordinate;
+        function toLonLat(
+            coordinate: ol.Coordinate,
+            opt_projection?: ol.ProjectionLike,
+        ): ol.Coordinate;
 
         /**
          * Fetches a Projection object for the code specified.
@@ -7467,7 +7762,10 @@ declare namespace ol {
          * @return {boolean} Equivalent.
          * @api
          */
-        function equivalent(projection1: ol.proj.Projection, projection2: ol.proj.Projection): boolean;
+        function equivalent(
+            projection1: ol.proj.Projection,
+            projection2: ol.proj.Projection,
+        ): boolean;
 
         /**
          * Given the projection-like objects, searches for a transformation
@@ -7479,7 +7777,10 @@ declare namespace ol {
          * @return {ol.TransformFunction} Transform function.
          * @api stable
          */
-        function getTransform(source: ol.ProjectionLike, destination: ol.ProjectionLike): ol.TransformFunction;
+        function getTransform(
+            source: ol.ProjectionLike,
+            destination: ol.ProjectionLike,
+        ): ol.TransformFunction;
 
         /**
          * Transforms a coordinate from source projection to destination projection.
@@ -7608,7 +7909,9 @@ declare namespace ol {
                  * @param {ol.geom.Geometry|ol.render.Feature} geometry The geometry to render.
                  * @api
                  */
-                drawGeometry(geometry: ol.geom.Geometry | ol.render.Feature): void;
+                drawGeometry(
+                    geometry: ol.geom.Geometry | ol.render.Feature,
+                ): void;
 
                 /**
                  * Render a feature into the canvas.  Note that any `zIndex` on the provided
@@ -8007,7 +8310,9 @@ declare namespace ol {
              * @param {ol.ImageLoadFunctionType} imageLoadFunction Image load function.
              * @api
              */
-            setImageLoadFunction(imageLoadFunction: ol.ImageLoadFunctionType): void;
+            setImageLoadFunction(
+                imageLoadFunction: ol.ImageLoadFunctionType,
+            ): void;
 
             /**
              * Set the URL to use for requests.
@@ -8088,7 +8393,9 @@ declare namespace ol {
              * @param {ol.ImageLoadFunctionType} imageLoadFunction Image load function.
              * @api
              */
-            setImageLoadFunction(imageLoadFunction: ol.ImageLoadFunctionType): void;
+            setImageLoadFunction(
+                imageLoadFunction: ol.ImageLoadFunctionType,
+            ): void;
         }
 
         /**
@@ -8176,7 +8483,9 @@ declare namespace ol {
              *     style Layer style.
              * @api stable
              */
-            setStyle(style: ol.style.Style | ol.style.Style[] | ol.StyleFunction): void;
+            setStyle(
+                style: ol.style.Style | ol.style.Style[] | ol.StyleFunction,
+            ): void;
         }
 
         /**
@@ -8246,7 +8555,9 @@ declare namespace ol {
              * @param {ol.ImageLoadFunctionType} imageLoadFunction Image load function.
              * @api
              */
-            setImageLoadFunction(imageLoadFunction: ol.ImageLoadFunctionType): void;
+            setImageLoadFunction(
+                imageLoadFunction: ol.ImageLoadFunctionType,
+            ): void;
 
             /**
              * Set the URL to use for requests.
@@ -8319,7 +8630,10 @@ declare namespace ol {
              *     in a worker.
              * @api
              */
-            setOperation(operation: ol.RasterOperation, opt_lib?: GlobalObject): void;
+            setOperation(
+                operation: ol.RasterOperation,
+                opt_lib?: GlobalObject,
+            ): void;
         }
 
         /**
@@ -8341,7 +8655,11 @@ declare namespace ol {
              * @param {olx.FrameState} frameState The frame state.
              * @param {Object} data An object made available to operations.
              */
-            constructor(type: string, frameState: olx.FrameState, data: GlobalObject);
+            constructor(
+                type: string,
+                frameState: olx.FrameState,
+                data: GlobalObject,
+            );
 
             /**
              * The raster extent.
@@ -8617,7 +8935,10 @@ declare namespace ol {
              * @param {ol.tilegrid.TileGrid} tilegrid Tile grid to use for the projection.
              * @api
              */
-            setTileGridForProjection(projection: ol.ProjectionLike, tilegrid: ol.tilegrid.TileGrid): void;
+            setTileGridForProjection(
+                projection: ol.ProjectionLike,
+                tilegrid: ol.tilegrid.TileGrid,
+            ): void;
         }
 
         /**
@@ -8789,7 +9110,9 @@ declare namespace ol {
              * @param {ol.TileLoadFunctionType} tileLoadFunction Tile load function.
              * @api
              */
-            setTileLoadFunction(tileLoadFunction: ol.TileLoadFunctionType): void;
+            setTileLoadFunction(
+                tileLoadFunction: ol.TileLoadFunctionType,
+            ): void;
 
             /**
              * Set the tile URL function of the source.
@@ -8797,7 +9120,10 @@ declare namespace ol {
              * @param {string=} opt_key Optional new tile key for the source.
              * @api
              */
-            setTileUrlFunction(tileUrlFunction: ol.TileUrlFunctionType, opt_key?: string): void;
+            setTileUrlFunction(
+                tileUrlFunction: ol.TileUrlFunctionType,
+                opt_key?: string,
+            ): void;
 
             /**
              * Set the URL to use for requests.
@@ -8872,7 +9198,10 @@ declare namespace ol {
              * @template T,S
              * @api stable
              */
-            forEachFeature<T, S>(callback: (feature: ol.Feature) => S, opt_this?: T): S;
+            forEachFeature<T, S>(
+                callback: (feature: ol.Feature) => S,
+                opt_this?: T,
+            ): S;
 
             /**
              * Iterate through all features whose bounding box intersects the provided
@@ -8895,7 +9224,11 @@ declare namespace ol {
              * @template T,S
              * @api
              */
-            forEachFeatureInExtent<T, S>(extent: ol.Extent, callback: (feature: ol.Feature) => S, opt_this?: T): S;
+            forEachFeatureInExtent<T, S>(
+                extent: ol.Extent,
+                callback: (feature: ol.Feature) => S,
+                opt_this?: T,
+            ): S;
 
             /**
              * Iterate through all features whose geometry intersects the provided extent,
@@ -9088,7 +9421,11 @@ declare namespace ol {
              *     `'qgis'`. These are servers that have vendor parameters beyond the WMS
              *     specification that OpenLayers can make use of.
              */
-            type ServerType = "carmentaserver" | "geoserver" | "mapserver" | "qgis";
+            type ServerType =
+                | "carmentaserver"
+                | "geoserver"
+                | "mapserver"
+                | "qgis";
         }
 
         /**
@@ -9194,7 +9531,10 @@ declare namespace ol {
              * @return {olx.source.WMTSOptions} WMTS source options object.
              * @api
              */
-            static optionsFromCapabilities(wmtsCap: GlobalObject, config: GlobalObject): olx.source.WMTSOptions;
+            static optionsFromCapabilities(
+                wmtsCap: GlobalObject,
+                config: GlobalObject,
+            ): olx.source.WMTSOptions;
         }
 
         /**
@@ -9531,7 +9871,11 @@ declare namespace ol {
         /**
          * Icon origin. One of 'bottom-left', 'bottom-right', 'top-left', 'top-right'.
          */
-        type IconOrigin = "bottom-left" | "bottom-right" | "top-left" | "top-right";
+        type IconOrigin =
+            | "bottom-left"
+            | "bottom-right"
+            | "top-left"
+            | "top-right";
 
         /**
          * @classdesc
@@ -9719,7 +10063,9 @@ declare namespace ol {
              * @inheritDoc
              * @api
              */
-            getImage(pixelRatio: number): HTMLCanvasElement | HTMLVideoElement | Image;
+            getImage(
+                pixelRatio: number,
+            ): HTMLCanvasElement | HTMLVideoElement | Image;
 
             /**
              * @inheritDoc
@@ -9972,7 +10318,9 @@ declare namespace ol {
              *     for this style.
              * @api
              */
-            setGeometry(geometry: string | ol.geom.Geometry | ol.StyleGeometryFunction): void;
+            setGeometry(
+                geometry: string | ol.geom.Geometry | ol.StyleGeometryFunction,
+            ): void;
 
             /**
              * Set the image style.
@@ -10228,7 +10576,9 @@ declare namespace ol {
          * @return {ol.tilegrid.TileGrid} Tile grid instance.
          * @api
          */
-        function createXYZ(opt_options?: olx.tilegrid.XYZOptions): ol.tilegrid.TileGrid;
+        function createXYZ(
+            opt_options?: olx.tilegrid.XYZOptions,
+        ): ol.tilegrid.TileGrid;
 
         /**
          * @classdesc
@@ -10259,7 +10609,11 @@ declare namespace ol {
              * @param {function(ol.TileCoord)} callback Function called with each tile coordinate.
              * @api
              */
-            forEachTileCoord(extent: ol.Extent, zoom: number, callback: (coords: ol.TileCoord) => any): void;
+            forEachTileCoord(
+                extent: ol.Extent,
+                zoom: number,
+                callback: (coords: ol.TileCoord) => any,
+            ): void;
 
             /**
              * Get the maximum zoom level for the grid.
@@ -10306,7 +10660,10 @@ declare namespace ol {
              * @return {ol.Extent} Extent.
              * @api
              */
-            getTileCoordExtent(tileCoord: ol.TileCoord, opt_extent?: ol.Extent): ol.Extent;
+            getTileCoordExtent(
+                tileCoord: ol.TileCoord,
+                opt_extent?: ol.Extent,
+            ): ol.Extent;
 
             /**
              * Get the tile coordinate for the given map coordinate and resolution.  This
@@ -10333,7 +10690,11 @@ declare namespace ol {
              * @return {ol.TileCoord} Tile coordinate.
              * @api
              */
-            getTileCoordForCoordAndZ(coordinate: ol.Coordinate, z: number, opt_tileCoord?: ol.TileCoord): ol.TileCoord;
+            getTileCoordForCoordAndZ(
+                coordinate: ol.Coordinate,
+                z: number,
+                opt_tileCoord?: ol.TileCoord,
+            ): ol.TileCoord;
 
             /**
              * Get the tile size for a zoom level. The type of the return value matches the
@@ -10353,7 +10714,10 @@ declare namespace ol {
              * @return {number} Z.
              * @api
              */
-            getZForResolution(resolution: number, opt_direction?: number): number;
+            getZForResolution(
+                resolution: number,
+                opt_direction?: number,
+            ): number;
         }
 
         /**
@@ -10391,12 +10755,19 @@ declare namespace ol {
              * @return {ol.tilegrid.WMTS} WMTS tileGrid instance.
              * @api
              */
-            static createFromCapabilitiesMatrixSet(matrixSet: GlobalObject, opt_extent?: ol.Extent): ol.tilegrid.WMTS;
+            static createFromCapabilitiesMatrixSet(
+                matrixSet: GlobalObject,
+                opt_extent?: ol.Extent,
+            ): ol.tilegrid.WMTS;
         }
     }
 
     /** */
-    type AttributionLike = string | string[] | ol.Attribution | ol.Attribution[];
+    type AttributionLike =
+        | string
+        | string[]
+        | ol.Attribution
+        | ol.Attribution[];
 
     /**
      * A function returning the canvas element (`{HTMLCanvasElement}`)
@@ -10421,7 +10792,10 @@ declare namespace ol {
      * alpha should be a float in the range 0..1 inclusive. If no alpha value is
      * given then `1` will be used.
      */
-    type Color = [number, number, number, number] | Uint8Array | Uint8ClampedArray;
+    type Color =
+        | [number, number, number, number]
+        | Uint8Array
+        | Uint8ClampedArray;
 
     /**
      * A type accepted by CanvasRenderingContext2D.fillStyle.
@@ -10445,7 +10819,11 @@ declare namespace ol {
      * {@link ol.Pixel}s and returns a `{boolean}`. If the condition is met,
      * true should be returned.
      */
-    type DragBoxEndConditionType = (event: ol.MapBrowserEvent, pixel1: ol.Pixel, pixel2: ol.Pixel) => boolean;
+    type DragBoxEndConditionType = (
+        event: ol.MapBrowserEvent,
+        pixel1: ol.Pixel,
+        pixel2: ol.Pixel,
+    ) => boolean;
 
     /**
      * Function that takes coordinates and an optional existing geometry as
@@ -10486,14 +10864,20 @@ declare namespace ol {
      * The function is responsible for loading the features and adding them to the
      * source.
      */
-    type FeatureLoader = (extent: ol.Extent, resolution: number, proj: ol.proj.Projection) => void;
+    type FeatureLoader = (
+        extent: ol.Extent,
+        resolution: number,
+        proj: ol.proj.Projection,
+    ) => void;
 
     /**
      * A function that returns an array of {@link ol.style.Style styles} given a
      * resolution. The `this` keyword inside the function references the
      * {@link ol.Feature} to be styled.
      */
-    type FeatureStyleFunction = (resolution: number) => ol.style.Style | ol.style.Style[];
+    type FeatureStyleFunction = (
+        resolution: number,
+    ) => ol.style.Style | ol.style.Style[];
 
     /**
      * {@link ol.source.Vector} sources use a function of this type to get the url
@@ -10504,7 +10888,11 @@ declare namespace ol {
      * {@link ol.proj.Projection} for the projection  as arguments and returns a
      * `{string}` representing the URL.
      */
-    type FeatureUrlFunction = (extent: ol.Extent, resolution: number, proj: ol.proj.Projection) => string;
+    type FeatureUrlFunction = (
+        extent: ol.Extent,
+        resolution: number,
+        proj: ol.proj.Projection,
+    ) => string;
 
     /**
      * A function that takes an {@link ol.Image} for the image and a `{string}` for
@@ -10527,7 +10915,10 @@ declare namespace ol {
      * returns an array of {@link ol.Extent} with the extents to load. Usually this
      * is one of the standard {@link ol.loadingstrategy} strategies.
      */
-    type LoadingStrategy = (extent: ol.Extent, resolution: number) => ol.Extent[];
+    type LoadingStrategy = (
+        extent: ol.Extent,
+        resolution: number,
+    ) => ol.Extent[];
 
     type ModifyEventType = string;
 
@@ -10565,14 +10956,20 @@ declare namespace ol {
      * data object is accessible from raster events, where it can be initialized in
      * "beforeoperations" and accessed again in "afteroperations".
      */
-    type RasterOperation = (data: number[][] | ImageData[], obj: GlobalObject) => number[] | ImageData;
+    type RasterOperation = (
+        data: number[][] | ImageData[],
+        obj: GlobalObject,
+    ) => number[] | ImageData;
 
     /**
      * A function that takes an {@link ol.Feature} or {@link ol.render.Feature} and
      * an {@link ol.layer.Layer} and returns `true` if the feature may be selected
      * or `false` otherwise.
      */
-    type SelectFilterFunction = (feature: ol.Feature | ol.render.Feature, layer: ol.layer.Layer) => boolean;
+    type SelectFilterFunction = (
+        feature: ol.Feature | ol.render.Feature,
+        layer: ol.layer.Layer,
+    ) => boolean;
 
     /**
      * An array of numbers representing a size: `[width, height]`.
@@ -10582,7 +10979,7 @@ declare namespace ol {
     /** */
     interface SourceImageOptions {
         attributions?: ol.AttributionLike | undefined;
-        extent?: (ol.Extent) | undefined;
+        extent?: ol.Extent | undefined;
         logo?: (string | olx.LogoOptions) | undefined;
         projection: ol.ProjectionLike;
         resolutions?: number[] | undefined;
@@ -10653,7 +11050,9 @@ declare namespace ol {
      * A function that takes an {@link ol.Feature} as argument and returns an
      * {@link ol.geom.Geometry} that will be rendered and styled for the feature.
      */
-    type StyleGeometryFunction = (feature: ol.Feature | ol.render.Feature) => ol.geom.Geometry | ol.render.Feature;
+    type StyleGeometryFunction = (
+        feature: ol.Feature | ol.render.Feature,
+    ) => ol.geom.Geometry | ol.render.Feature;
 
     /**
      * An array of three numbers representing the location of a tile in a tile
@@ -10677,7 +11076,11 @@ declare namespace ol {
      * URL, or undefined if no tile should be requested for the passed tile
      * coordinate.
      */
-    type TileUrlFunctionType = (coords: ol.TileCoord, pixelRatio: number, proj: ol.proj.Projection) => string;
+    type TileUrlFunctionType = (
+        coords: ol.TileCoord,
+        pixelRatio: number,
+        proj: ol.proj.Projection,
+    ) => string;
 
     /**
      * A transform function accepts an array of input coordinate values, an optional
@@ -10685,7 +11088,11 @@ declare namespace ol {
      * transforms the input coordinate values, populates the output array, and
      * returns the output array.
      */
-    type TransformFunction = (array: number[], out?: number[], dimension?: number) => number[];
+    type TransformFunction = (
+        array: number[],
+        out?: number[],
+        dimension?: number,
+    ) => number[];
 
     /**
      * Number of features; bounds/extent.
@@ -10877,7 +11284,11 @@ declare namespace ol {
          * @return {number|undefined} Constrained resolution.
          * @api
          */
-        constrainResolution(resolution: number, opt_delta?: number, opt_direction?: number): number;
+        constrainResolution(
+            resolution: number,
+            opt_delta?: number,
+            opt_direction?: number,
+        ): number;
 
         /**
          * Get the constrained rotation of this view.
@@ -10970,7 +11381,11 @@ declare namespace ol {
          * @param {olx.view.FitOptions=} opt_options Options.
          * @api
          */
-        fit(geometry: ol.geom.SimpleGeometry | ol.Extent, size: ol.Size, opt_options?: olx.view.FitOptions): void;
+        fit(
+            geometry: ol.geom.SimpleGeometry | ol.Extent,
+            size: ol.Size,
+            opt_options?: olx.view.FitOptions,
+        ): void;
 
         /**
          * Center on coordinate and view position.
@@ -10979,7 +11394,11 @@ declare namespace ol {
          * @param {ol.Pixel} position Position on the view to center on.
          * @api
          */
-        centerOn(coordinate: ol.Coordinate, size: ol.Size, position: ol.Pixel): void;
+        centerOn(
+            coordinate: ol.Coordinate,
+            size: ol.Size,
+            position: ol.Pixel,
+        ): void;
 
         /**
          * Rotate the view around a given coordinate.
@@ -11027,7 +11446,11 @@ declare namespace ol {
          * @param {olx.AnimateOptions | (completed: boolean) => void } restArgs
          * @api experimental
          */
-        animate(...var_args: Array<olx.animation.AnimateOptions | olx.animation.AnimateCallback>): void;
+        animate(
+            ...var_args: Array<
+                olx.animation.AnimateOptions | olx.animation.AnimateCallback
+            >
+        ): void;
     }
 }
 
@@ -11152,7 +11575,9 @@ declare namespace olx {
             collapseLabel?: (string | Node) | undefined;
             collapsible?: boolean | undefined;
             label?: (string | Node) | undefined;
-            layers?: (ol.layer.Layer[] | ol.Collection<ol.layer.Layer>) | undefined;
+            layers?:
+                | (ol.layer.Layer[] | ol.Collection<ol.layer.Layer>)
+                | undefined;
             render?: ((event: ol.MapEvent) => any) | undefined;
             target?: Element | undefined;
             tipLabel?: string | undefined;
@@ -11245,14 +11670,14 @@ declare namespace olx {
         interface MVTOptions {
             featureClass?:
                 | (
-                    | ((geom: ol.geom.Geometry | { [k: string]: any }) => any)
-                    | ((
-                        geom: ol.geom.GeometryType,
-                        arg2: number[],
-                        arg3: number[] | number[][],
-                        arg4: { [k: string]: any },
-                    ) => any)
-                )
+                      | ((geom: ol.geom.Geometry | { [k: string]: any }) => any)
+                      | ((
+                            geom: ol.geom.GeometryType,
+                            arg2: number[],
+                            arg3: number[] | number[][],
+                            arg4: { [k: string]: any },
+                        ) => any)
+                  )
                 | undefined;
             geometryName?: string | undefined;
             layerName?: string | undefined;
@@ -11297,7 +11722,9 @@ declare namespace olx {
 
         /** */
         interface GPXOptions {
-            readExtensions?: ((feature: ol.Feature, node: Node) => any) | undefined;
+            readExtensions?:
+                | ((feature: ol.Feature, node: Node) => any)
+                | undefined;
         }
 
         /** */
@@ -11383,7 +11810,9 @@ declare namespace olx {
 
         /** */
         interface DragAndDropOptions {
-            formatConstructors?: Array<(n: ol.format.Feature) => any> | undefined;
+            formatConstructors?:
+                | Array<(n: ol.format.Feature) => any>
+                | undefined;
             projection: ol.ProjectionLike;
             target?: Element | undefined;
         }
@@ -11431,7 +11860,9 @@ declare namespace olx {
             maxPoints?: number | undefined;
             minPoints?: number | undefined;
             finishCondition?: ol.EventsConditionType | undefined;
-            style?: (ol.style.Style | ol.style.Style[] | ol.StyleFunction) | undefined;
+            style?:
+                | (ol.style.Style | ol.style.Style[] | ol.StyleFunction)
+                | undefined;
             geometryFunction?: ol.DrawGeometryFunctionType | undefined;
             geometryName?: string | undefined;
             condition?: ol.EventsConditionType | undefined;
@@ -11442,7 +11873,9 @@ declare namespace olx {
         /** */
         interface TranslateOptions {
             features?: ol.Collection<ol.Feature> | undefined;
-            layers?: (ol.layer.Layer[] | ((layer: ol.layer.Layer) => boolean)) | undefined;
+            layers?:
+                | (ol.layer.Layer[] | ((layer: ol.layer.Layer) => boolean))
+                | undefined;
             hitTolerance?: number | undefined;
         }
 
@@ -11465,7 +11898,9 @@ declare namespace olx {
             condition?: ol.EventsConditionType | undefined;
             deleteCondition?: ol.EventsConditionType | undefined;
             pixelTolerance?: number | undefined;
-            style?: (ol.style.Style | ol.style.Style[] | ol.StyleFunction) | undefined;
+            style?:
+                | (ol.style.Style | ol.style.Style[] | ol.StyleFunction)
+                | undefined;
             features: ol.Collection<ol.Feature>;
             wrapX?: boolean | undefined;
         }
@@ -11489,19 +11924,33 @@ declare namespace olx {
 
         /** */
         interface PointerOptions {
-            handleDownEvent?: ((event: ol.MapBrowserPointerEvent) => boolean) | undefined;
-            handleDragEvent?: ((event: ol.MapBrowserPointerEvent) => boolean) | undefined;
-            handleEvent?: ((event: ol.MapBrowserPointerEvent) => boolean) | undefined;
-            handleMoveEvent?: ((event: ol.MapBrowserPointerEvent) => boolean) | undefined;
-            handleUpEvent?: ((event: ol.MapBrowserPointerEvent) => boolean) | undefined;
+            handleDownEvent?:
+                | ((event: ol.MapBrowserPointerEvent) => boolean)
+                | undefined;
+            handleDragEvent?:
+                | ((event: ol.MapBrowserPointerEvent) => boolean)
+                | undefined;
+            handleEvent?:
+                | ((event: ol.MapBrowserPointerEvent) => boolean)
+                | undefined;
+            handleMoveEvent?:
+                | ((event: ol.MapBrowserPointerEvent) => boolean)
+                | undefined;
+            handleUpEvent?:
+                | ((event: ol.MapBrowserPointerEvent) => boolean)
+                | undefined;
         }
 
         /** */
         interface SelectOptions {
             addCondition?: ol.EventsConditionType | undefined;
             condition?: ol.EventsConditionType | undefined;
-            layers?: (ol.layer.Layer[] | ((layer: ol.layer.Layer) => boolean)) | undefined;
-            style?: (ol.style.Style | ol.style.Style[] | ol.StyleFunction) | undefined;
+            layers?:
+                | (ol.layer.Layer[] | ((layer: ol.layer.Layer) => boolean))
+                | undefined;
+            style?:
+                | (ol.style.Style | ol.style.Style[] | ol.StyleFunction)
+                | undefined;
             removeCondition?: ol.EventsConditionType | undefined;
             toggleCondition?: ol.EventsConditionType | undefined;
             multi?: boolean | undefined;
@@ -11555,7 +12004,9 @@ declare namespace olx {
             zIndex?: number | undefined;
             minResolution?: number | undefined;
             maxResolution?: number | undefined;
-            layers?: (ol.layer.Base[] | ol.Collection<ol.layer.Base>) | undefined;
+            layers?:
+                | (ol.layer.Base[] | ol.Collection<ol.layer.Base>)
+                | undefined;
         }
 
         /** */
@@ -11599,7 +12050,9 @@ declare namespace olx {
 
         /** */
         interface VectorOptions {
-            renderOrder?: ((feature1: ol.Feature, feature2: ol.Feature) => number) | undefined;
+            renderOrder?:
+                | ((feature1: ol.Feature, feature2: ol.Feature) => number)
+                | undefined;
             map?: ol.Map | undefined;
             extent?: ol.Extent | undefined;
             minResolution?: number | undefined;
@@ -11607,7 +12060,9 @@ declare namespace olx {
             opacity?: number | undefined;
             renderBuffer?: number | undefined;
             source: ol.source.Vector;
-            style?: (ol.style.Style | ol.style.Style[] | ol.StyleFunction) | undefined;
+            style?:
+                | (ol.style.Style | ol.style.Style[] | ol.StyleFunction)
+                | undefined;
             updateWhileAnimating?: boolean | undefined;
             updateWhileInteracting?: boolean | undefined;
             visible?: boolean | undefined;
@@ -11624,7 +12079,9 @@ declare namespace olx {
             maxResolution?: number | undefined;
             opacity?: number | undefined;
             source?: ol.source.VectorTile | undefined;
-            style?: (ol.style.Style | ol.style.Style[] | ol.StyleFunction) | undefined;
+            style?:
+                | (ol.style.Style | ol.style.Style[] | ol.StyleFunction)
+                | undefined;
             updateWhileAnimating?: boolean | undefined;
             updateWhileInteracting?: boolean | undefined;
             visible?: boolean | undefined;
@@ -11634,8 +12091,7 @@ declare namespace olx {
     /**
      * @namespace olx.parser
      */
-    namespace parser {
-    }
+    namespace parser {}
 
     /**
      * @namespace olx.render
@@ -11669,7 +12125,9 @@ declare namespace olx {
             attributions?: ol.AttributionLike | undefined;
             distance?: number | undefined;
             extent?: ol.Extent | undefined;
-            geometryFunction?: ((feature: ol.Feature) => ol.geom.Point) | undefined;
+            geometryFunction?:
+                | ((feature: ol.Feature) => ol.geom.Point)
+                | undefined;
             format?: ol.format.Feature | undefined;
             logo?: string | undefined;
             projection?: ol.ProjectionLike | undefined;
@@ -11691,7 +12149,7 @@ declare namespace olx {
         interface TileImageOptions {
             attributions?: ol.AttributionLike | undefined;
             cacheSize?: number | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             logo?: (string | olx.LogoOptions) | undefined;
             opaque?: boolean | undefined;
             projection: ol.ProjectionLike;
@@ -11699,13 +12157,13 @@ declare namespace olx {
             state?: ol.source.State | undefined;
             tileClass?:
                 | ((
-                    n: ol.ImageTile,
-                    coords: ol.TileCoord,
-                    state: ol.Tile.State,
-                    s1: string,
-                    s2: string,
-                    type: ol.TileLoadFunctionType,
-                ) => any)
+                      n: ol.ImageTile,
+                      coords: ol.TileCoord,
+                      state: ol.Tile.State,
+                      s1: string,
+                      s2: string,
+                      type: ol.TileLoadFunctionType,
+                  ) => any)
                 | undefined;
             tileGrid?: ol.tilegrid.TileGrid | undefined;
             tileLoadFunction?: ol.TileLoadFunctionType | undefined;
@@ -11727,13 +12185,13 @@ declare namespace olx {
             state?: ol.source.State | undefined;
             tileClass?:
                 | ((
-                    n: ol.VectorTile,
-                    coords: ol.TileCoord,
-                    state: ol.Tile.State,
-                    s: string,
-                    feature: ol.format.Feature,
-                    type: ol.TileLoadFunctionType,
-                ) => any)
+                      n: ol.VectorTile,
+                      coords: ol.TileCoord,
+                      state: ol.Tile.State,
+                      s: string,
+                      feature: ol.format.Feature,
+                      type: ol.TileLoadFunctionType,
+                  ) => any)
                 | undefined;
             tileGrid?: ol.tilegrid.TileGrid | undefined;
             tileLoadFunction?: ol.TileLoadFunctionType | undefined;
@@ -11778,7 +12236,7 @@ declare namespace olx {
         interface OSMOptions {
             attributions?: ol.AttributionLike | undefined;
             cacheSize?: number | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             maxZoom?: number | undefined;
             opaque?: boolean | undefined;
             reprojectionErrorThreshold?: number | undefined;
@@ -11790,7 +12248,7 @@ declare namespace olx {
         /** */
         interface ImageArcGISRestOptions {
             attributions?: ol.Attribution[] | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             logo?: (string | olx.LogoOptions) | undefined;
             imageLoadFunction?: ol.ImageLoadFunctionType | undefined;
             params?: { [k: string]: any } | undefined;
@@ -11820,7 +12278,9 @@ declare namespace olx {
             renderBuffer?: number | undefined;
             resolutions?: number[] | undefined;
             source: ol.source.Vector;
-            style?: (ol.style.Style | ol.style.Style[] | ol.StyleFunction) | undefined;
+            style?:
+                | (ol.style.Style | ol.style.Style[] | ol.StyleFunction)
+                | undefined;
         }
 
         /**
@@ -11837,7 +12297,7 @@ declare namespace olx {
         /** */
         interface ImageWMSOptions {
             attributions?: ol.AttributionLike | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             hidpi?: boolean | undefined;
             serverType?: (ol.source.wms.ServerType | string) | undefined;
             imageLoadFunction?: ol.ImageLoadFunctionType | undefined;
@@ -11864,7 +12324,7 @@ declare namespace olx {
         /** */
         interface ImageStaticOptions {
             attributions?: ol.AttributionLike | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             imageExtent: ol.Extent;
             imageLoadFunction?: ol.ImageLoadFunctionType | undefined;
             logo?: (string | olx.LogoOptions) | undefined;
@@ -11877,7 +12337,7 @@ declare namespace olx {
         interface TileArcGISRestOptions {
             attributions?: ol.AttributionLike | undefined;
             cacheSize?: number | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             params?: { [k: string]: any } | undefined;
             logo?: (string | olx.LogoOptions) | undefined;
             tileGrid?: ol.tilegrid.TileGrid | undefined;
@@ -11893,7 +12353,7 @@ declare namespace olx {
         interface TileJSONOptions {
             attributions?: ol.AttributionLike | undefined;
             cacheSize?: number | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             jsonp?: boolean | undefined;
             reprojectionErrorThreshold?: number | undefined;
             tileLoadFunction?: ol.TileLoadFunctionType | undefined;
@@ -11906,7 +12366,7 @@ declare namespace olx {
             attributions?: ol.AttributionLike | undefined;
             cacheSize?: number | undefined;
             params: { [k: string]: any };
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             gutter?: number | undefined;
             hidpi?: boolean | undefined;
             logo?: (string | olx.LogoOptions) | undefined;
@@ -11938,23 +12398,25 @@ declare namespace olx {
         interface WMTSOptions {
             attributions?: ol.AttributionLike | undefined;
             cacheSize?: number | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             logo?: (string | olx.LogoOptions) | undefined;
             tileGrid: ol.tilegrid.WMTS;
             projection: ol.ProjectionLike;
             reprojectionErrorThreshold?: number | undefined;
-            requestEncoding?: (ol.source.WMTSRequestEncoding | string) | undefined;
+            requestEncoding?:
+                | (ol.source.WMTSRequestEncoding | string)
+                | undefined;
             layer: string;
             style: string;
             tileClass?:
                 | ((
-                    n: ol.ImageTile,
-                    coords: ol.TileCoord,
-                    state: ol.Tile.State,
-                    s1: string,
-                    s2: string,
-                    type: ol.TileLoadFunctionType,
-                ) => any)
+                      n: ol.ImageTile,
+                      coords: ol.TileCoord,
+                      state: ol.Tile.State,
+                      s1: string,
+                      s2: string,
+                      type: ol.TileLoadFunctionType,
+                  ) => any)
                 | undefined;
             tilePixelRatio?: number | undefined;
             version?: string | undefined;
@@ -11971,7 +12433,7 @@ declare namespace olx {
         interface XYZOptions {
             attributions?: ol.AttributionLike | undefined;
             cacheSize?: number | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             logo?: (string | olx.LogoOptions) | undefined;
             opaque?: boolean | undefined;
             projection?: ol.ProjectionLike | undefined;
@@ -11992,7 +12454,7 @@ declare namespace olx {
         interface CartoDBOptions {
             attributions?: ol.AttributionLike | undefined;
             cacheSize?: number | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             logo?: (string | olx.LogoOptions) | undefined;
             projection: ol.ProjectionLike;
             maxZoom?: number | undefined;
@@ -12007,7 +12469,7 @@ declare namespace olx {
         interface ZoomifyOptions {
             attributions?: ol.AttributionLike | undefined;
             cacheSize?: number | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             logo?: (string | olx.LogoOptions) | undefined;
             reprojectionErrorThreshold?: number | undefined;
             url: string;
@@ -12041,7 +12503,7 @@ declare namespace olx {
             anchorXUnits?: ol.style.IconAnchorUnits | undefined;
             anchorYUnits?: ol.style.IconAnchorUnits | undefined;
             color?: (ol.Color | string) | undefined;
-            crossOrigin?: (string) | undefined;
+            crossOrigin?: string | undefined;
             img?: (any | HTMLCanvasElement) | undefined;
             offset?: number[] | undefined;
             offsetOrigin?: ol.style.IconOrigin | undefined;
@@ -12095,7 +12557,9 @@ declare namespace olx {
 
         /** */
         interface StyleOptions {
-            geometry?: (string | ol.geom.Geometry | ol.StyleGeometryFunction) | undefined;
+            geometry?:
+                | (string | ol.geom.Geometry | ol.StyleGeometryFunction)
+                | undefined;
             fill?: ol.style.Fill | undefined;
             image?: ol.style.Image | undefined;
             stroke?: ol.style.Stroke | undefined;
@@ -12123,7 +12587,7 @@ declare namespace olx {
             origins?: ol.Coordinate[] | undefined;
             resolutions: number[];
             tileSize?: (number | ol.Size) | undefined;
-            tileSizes?: (Array<number | ol.Size>) | undefined;
+            tileSizes?: Array<number | ol.Size> | undefined;
         }
 
         /** */
@@ -12135,7 +12599,7 @@ declare namespace olx {
             matrixIds: string[];
             sizes?: ol.Size[] | undefined;
             tileSize?: (number | ol.Size) | undefined;
-            tileSizes?: (Array<number | ol.Size>) | undefined;
+            tileSizes?: Array<number | ol.Size> | undefined;
             widths?: number[] | undefined;
         }
 
@@ -12185,16 +12649,25 @@ declare namespace olx {
      * Object literal with config options for the map.
      */
     interface MapOptions {
-        controls?: (ol.Collection<ol.control.Control> | ol.control.Control[]) | undefined;
+        controls?:
+            | (ol.Collection<ol.control.Control> | ol.control.Control[])
+            | undefined;
         pixelRatio?: number | undefined;
-        interactions?: (ol.Collection<ol.interaction.Interaction> | ol.interaction.Interaction[]) | undefined;
+        interactions?:
+            | (
+                  | ol.Collection<ol.interaction.Interaction>
+                  | ol.interaction.Interaction[]
+              )
+            | undefined;
         keyboardEventTarget?: (Element | Document | string) | undefined;
         layers?: (ol.layer.Base[] | ol.Collection<ol.layer.Base>) | undefined;
         loadTilesWhileAnimating?: boolean | undefined;
         loadTilesWhileInteracting?: boolean | undefined;
         logo?: (boolean | string | olx.LogoOptions | Element) | undefined;
         overlays?: (ol.Collection<ol.Overlay> | ol.Overlay[]) | undefined;
-        renderer?: (ol.RendererType | Array<ol.RendererType | string> | string) | undefined;
+        renderer?:
+            | (ol.RendererType | Array<ol.RendererType | string> | string)
+            | undefined;
         target?: (Element | string) | undefined;
         view?: ol.View | undefined;
     }
@@ -12226,7 +12699,9 @@ declare namespace olx {
         global?: boolean | undefined;
         metersPerUnit?: number | undefined;
         worldExtent?: ol.Extent | undefined;
-        getPointResolution?: ((resolution: number, coords: ol.Coordinate) => number) | undefined;
+        getPointResolution?:
+            | ((resolution: number, coords: ol.Coordinate) => number)
+            | undefined;
     }
 
     namespace view {

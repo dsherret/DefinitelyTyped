@@ -65,10 +65,13 @@ class MyApplication extends Marionette.Application {
         this.layoutView.addRegion("main", this.mainRegion);
         this.layoutView.render();
         this.layoutView.showChildView("main", new MyView(new MyModel()));
-        const view: Backbone.View<Backbone.Model> = this.layoutView.getChildView("main");
-        const regions: { [key: string]: Marionette.Region } = this.layoutView.getRegions();
+        const view: Backbone.View<Backbone.Model> =
+            this.layoutView.getChildView("main");
+        const regions: { [key: string]: Marionette.Region } =
+            this.layoutView.getRegions();
         const region: Marionette.Region = this.layoutView.removeRegion("main");
-        const layout: Marionette.View<Backbone.Model> = this.layoutView.destroy();
+        const layout: Marionette.View<Backbone.Model> =
+            this.layoutView.destroy();
 
         if (typeof this.layoutView.childViewEventPrefix === "string") {
             this.layoutView.childViewEventPrefix;
@@ -82,7 +85,7 @@ class AppLayoutView extends Marionette.View<Backbone.Model> {
     }
 
     template() {
-        return "<div id=\"main\"></div>";
+        return '<div id="main"></div>';
     }
 
     initialize(options?: any) {
@@ -195,7 +198,10 @@ class MyHtmlElRegion extends Marionette.Region {
 
 type MyCollectionViewChildViews = MyView | MyOtherView;
 
-class MyCollectionView extends Marionette.CollectionView<MyModel, MyCollectionViewChildViews> {
+class MyCollectionView extends Marionette.CollectionView<
+    MyModel,
+    MyCollectionViewChildViews
+> {
     constructor(options?: Marionette.CollectionViewOptions<MyModel>) {
         super(options);
 
@@ -228,8 +234,7 @@ class MyCollectionView extends Marionette.CollectionView<MyModel, MyCollectionVi
 
         this.childViewEventPrefix = "some:prefix";
 
-        this.on("some:prefix:render", () => {
-        });
+        this.on("some:prefix:render", () => {});
     }
 }
 
@@ -300,13 +305,17 @@ function ViewTests() {
 function CollectionViewTests() {
     const cvWithoutOptions = new MyCollectionView();
     const cv = new MyCollectionView({
-        viewFilter: (_view?: MyCollectionViewChildViews, _index?: number, children?: MyCollectionViewChildViews[]) =>
-            true,
+        viewFilter: (
+            _view?: MyCollectionViewChildViews,
+            _index?: number,
+            children?: MyCollectionViewChildViews[],
+        ) => true,
     });
     cv.collection.add(new MyModel());
     app.mainRegion.show(cv);
     cv.emptyView = MyView;
-    const view: Marionette.CollectionView<MyModel, MyCollectionViewChildViews> = cv.destroy();
+    const view: Marionette.CollectionView<MyModel, MyCollectionViewChildViews> =
+        cv.destroy();
 }
 
 class MyController {

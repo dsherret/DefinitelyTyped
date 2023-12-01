@@ -60,18 +60,31 @@ export interface ListSelectionProps {
     checkBoxAriaLabel: string;
     className?: string | undefined;
     selected?: boolean | undefined;
-    onChange?: ((event: React.SyntheticEvent<HTMLInputElement>, checkedState: boolean) => void) | undefined;
+    onChange?:
+        | ((
+              event: React.SyntheticEvent<HTMLInputElement>,
+              checkedState: boolean,
+          ) => void)
+        | undefined;
 }
 
 declare const List: React.FunctionComponent<ListProps> & {
     displayName: "List";
-    Footer: React.FunctionComponent<ListFooterProps> & { displayName: "List.Footer" };
-    Header: React.FunctionComponent<ListHeaderProps> & { displayName: "List.Header" };
-    Selection: React.FunctionComponent<ListSelectionProps> & { displayName: "List.Selection" };
+    Footer: React.FunctionComponent<ListFooterProps> & {
+        displayName: "List.Footer";
+    };
+    Header: React.FunctionComponent<ListHeaderProps> & {
+        displayName: "List.Header";
+    };
+    Selection: React.FunctionComponent<ListSelectionProps> & {
+        displayName: "List.Selection";
+    };
     Icon: React.FunctionComponent<ListIconProps> & { displayName: "List.Icon" };
     Item: React.FunctionComponent<ListItemProps> & { displayName: "List.Item" };
     Text: React.FunctionComponent<ListTextProps> & { displayName: "List.Text" };
-    Byline: React.FunctionComponent<ListBylineProps> & { displayName: "List.Byline" };
+    Byline: React.FunctionComponent<ListBylineProps> & {
+        displayName: "List.Byline";
+    };
 };
 
 export default List;

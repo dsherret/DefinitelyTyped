@@ -15,7 +15,10 @@ combineReducers<State>({});
  * Combine reducers support reducer with custom action
  */
 combineReducers<State, { type: string; payload: number | string }>({
-    reducerNumber: (state: number, action: { type: string; payload: number }) => {
+    reducerNumber: (
+        state: number,
+        action: { type: string; payload: number },
+    ) => {
         switch (action.type) {
             case "multiply":
                 return state * action.payload;
@@ -23,7 +26,10 @@ combineReducers<State, { type: string; payload: number | string }>({
                 return state;
         }
     },
-    reducerString: (state: string, action: { type: string; payload: string }) => {
+    reducerString: (
+        state: string,
+        action: { type: string; payload: string },
+    ) => {
         switch (action.type) {
             case "concat":
                 return state.concat(action.payload);

@@ -33,7 +33,11 @@ boolResult = mm.every(["foo.js", "bar.js"], "*.js");
 
 // .any
 boolResult = mm.any("foo.js", ["foo.js"]);
-boolResult = mm.any(["foo.js", "bar.js"], ["*.js", "!foo.js"], micromatchOptions);
+boolResult = mm.any(
+    ["foo.js", "bar.js"],
+    ["*.js", "!foo.js"],
+    micromatchOptions,
+);
 boolResult = mm.any(["foo.js", "bar.js"], "*.js");
 
 // .all
@@ -56,7 +60,10 @@ const partialObj: Partial<typeof obj> = mm.matchKeys(obj, "*b");
 const matcherFn: (str: string) => boolean = mm.matcher("*.!(*a)");
 
 // .capture
-const strArrResultNullable: string[] | null = mm.capture("test/*.js", "test/foo.js");
+const strArrResultNullable: string[] | null = mm.capture(
+    "test/*.js",
+    "test/foo.js",
+);
 
 // .makeRe
 const regex: RegExp = mm.makeRe("*.js");

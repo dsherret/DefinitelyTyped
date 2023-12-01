@@ -6,7 +6,9 @@ function createAndSendDocument() {
     var doc = DocumentApp.create("Hello, world!");
 
     // Access the body of the document, then add a paragraph.
-    doc.getBody().appendParagraph("This document was created by Google Apps Script.");
+    doc.getBody().appendParagraph(
+        "This document was created by Google Apps Script.",
+    );
 
     // Get the URL of the document.
     var url = doc.getUrl();
@@ -59,7 +61,10 @@ const createEvent = (): void => {
         end: {
             dateTime: end.toISOString(),
         },
-        attendees: [{ email: "alice@example.com" }, { email: "bob@example.com" }],
+        attendees: [
+            { email: "alice@example.com" },
+            { email: "bob@example.com" },
+        ],
         // Red background. Use Calendar.Colors.get() for the full list.
         colorId: "11",
         eventType: "default",
@@ -252,14 +257,20 @@ const colorObjRgb = SpreadsheetApp.newColor().setRgbColor("red").build();
 
 // Build a Theme color object
 // $ExpectType Color
-const colorObjTheme = SpreadsheetApp.newColor().setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT1).build();
+const colorObjTheme = SpreadsheetApp.newColor()
+    .setThemeColor(SpreadsheetApp.ThemeColorType.ACCENT1)
+    .build();
 
 // Build TextStyle objects for Rgb, Theme, and null
 // $ExpectType TextStyle
-const rgbTextStyle = SpreadsheetApp.newTextStyle().setForegroundColorObject(colorObjRgb).build();
+const rgbTextStyle = SpreadsheetApp.newTextStyle()
+    .setForegroundColorObject(colorObjRgb)
+    .build();
 
 // $ExpectType TextStyle
-const themeTextStyle = SpreadsheetApp.newTextStyle().setForegroundColorObject(colorObjTheme).build();
+const themeTextStyle = SpreadsheetApp.newTextStyle()
+    .setForegroundColorObject(colorObjTheme)
+    .build();
 
 // $ExpectType TextStyle
 const nullTextStyle = SpreadsheetApp.newTextStyle().build();
@@ -335,15 +346,22 @@ function timeDriven(e: GoogleAppsScript.Events.TimeDriven) {
 }
 
 CardService.newDecoratedText(); // $ExpectType DecoratedText
-CardService.newDecoratedText().setAuthorizationAction(CardService.newAuthorizationAction()); // $ExpectType DecoratedText
+CardService.newDecoratedText().setAuthorizationAction(
+    CardService.newAuthorizationAction(),
+); // $ExpectType DecoratedText
 CardService.newDecoratedText().setBottomLabel(""); // $ExpectType DecoratedText
 CardService.newDecoratedText().setButton(CardService.newTextButton()); // $ExpectType DecoratedText
-CardService.newDecoratedText().setComposeAction(CardService.newAction(), CardService.ComposedEmailType.REPLY_AS_DRAFT); // $ExpectType DecoratedText
+CardService.newDecoratedText().setComposeAction(
+    CardService.newAction(),
+    CardService.ComposedEmailType.REPLY_AS_DRAFT,
+); // $ExpectType DecoratedText
 CardService.newDecoratedText().setIcon(CardService.Icon.AIRPLANE); // $ExpectType DecoratedText
 CardService.newDecoratedText().setIconAltText(""); // $ExpectType DecoratedText
 CardService.newDecoratedText().setIconUrl(""); // $ExpectType DecoratedText
 CardService.newDecoratedText().setOnClickAction(CardService.newAction()); // $ExpectType DecoratedText
-CardService.newDecoratedText().setOnClickOpenLinkAction(CardService.newAction()); // $ExpectType DecoratedText
+CardService.newDecoratedText().setOnClickOpenLinkAction(
+    CardService.newAction(),
+); // $ExpectType DecoratedText
 CardService.newDecoratedText().setOpenLink(CardService.newOpenLink()); // $ExpectType DecoratedText
 CardService.newDecoratedText().setSwitchControl(CardService.newSwitch()); // $ExpectType DecoratedText
 CardService.newDecoratedText().setText(""); // $ExpectType DecoratedText
@@ -380,7 +398,9 @@ const handleCalendarAction = (e: GoogleAppsScript.Addons.EventObject) => {
     const ev = cal.getEventById(recurringEventId);
 
     // $ExpectType string[]
-    const attends: Array<(typeof attendees)[number]["displayName"]> = ev.getGuestList().map((guest) => guest.getName());
+    const attends: Array<(typeof attendees)[number]["displayName"]> = ev
+        .getGuestList()
+        .map((guest) => guest.getName());
 
     console.log({ attends });
 
@@ -461,21 +481,34 @@ const handleDriveAction = (e: GoogleAppsScript.Addons.EventObject) => {
     const includeHash: { [title: string]: 0 | 1 } = { myTitle: 1 };
 
     // $ExpectType DriveItemObject[]
-    [activeCursorItem, ...selectedItems].filter(({ addonHasFileScopePermission, iconUrl, id, mimeType, title }) => {
-        // $ExpectType File
-        const file = DriveApp.getFileById(id);
+    [activeCursorItem, ...selectedItems].filter(
+        ({ addonHasFileScopePermission, iconUrl, id, mimeType, title }) => {
+            // $ExpectType File
+            const file = DriveApp.getFileById(id);
 
-        const mimeOk = file.getMimeType() === mimeType;
+            const mimeOk = file.getMimeType() === mimeType;
 
-        const hasIcon = iconUrl !== "";
+            const hasIcon = iconUrl !== "";
 
-        return mimeOk && hasIcon && addonHasFileScopePermission && includeHash[title];
-    });
+            return (
+                mimeOk &&
+                hasIcon &&
+                addonHasFileScopePermission &&
+                includeHash[title]
+            );
+        },
+    );
 };
 
 const handleGmailAction = (e: GoogleAppsScript.Addons.EventObject) => {
     const {
-        gmail: { messageId, threadId, bccRecipients = [], ccRecipients = [], toRecipients = [] },
+        gmail: {
+            messageId,
+            threadId,
+            bccRecipients = [],
+            ccRecipients = [],
+            toRecipients = [],
+        },
     } = e;
 
     GmailApp.getMessageById(messageId);
@@ -525,7 +558,14 @@ const handleSlidesAction = (e: GoogleAppsScript.Addons.EventObject) => {
 
 const handleCommonAction = (e: GoogleAppsScript.Addons.EventObject) => {
     const {
-        commonEventObject: { formInputs, hostApp, parameters, platform, timeZone, userLocale },
+        commonEventObject: {
+            formInputs,
+            hostApp,
+            parameters,
+            platform,
+            timeZone,
+            userLocale,
+        },
     } = e;
 
     const plaformMap: { [P in GoogleAppsScript.Addons.Platform]: string } = {
@@ -535,7 +575,9 @@ const handleCommonAction = (e: GoogleAppsScript.Addons.EventObject) => {
     };
 
     const hostMap: {
-        [P in GoogleAppsScript.Addons.HostApplication]: (e: GoogleAppsScript.Addons.EventObject) => void;
+        [P in GoogleAppsScript.Addons.HostApplication]: (
+            e: GoogleAppsScript.Addons.EventObject,
+        ) => void;
     } = {
         CALENDAR: handleCalendarAction,
         DOCS: handleDocsAction,
@@ -549,7 +591,11 @@ const handleCommonAction = (e: GoogleAppsScript.Addons.EventObject) => {
         hostMap[hostApp](e);
 
         const now = new Date();
-        const formattedDate = Utilities.formatDate(now, timeZone.id, "MM/dd/yyyy");
+        const formattedDate = Utilities.formatDate(
+            now,
+            timeZone.id,
+            "MM/dd/yyyy",
+        );
         const formattedTime = Utilities.formatDate(now, timeZone.id, "hh:mm a");
 
         Object.keys(formInputs).forEach((id) => {
@@ -569,15 +615,20 @@ const handleCommonAction = (e: GoogleAppsScript.Addons.EventObject) => {
             } = formInputs[id];
 
             if (dateInput || dateInputRhino) {
-                parameters.modifiedAt = dateInput?.msSinceEpoch || dateInputRhino?.msSinceEpoch;
+                parameters.modifiedAt =
+                    dateInput?.msSinceEpoch || dateInputRhino?.msSinceEpoch;
             }
 
             if (dateTimeInput || dateTimeInputRhino) {
-                parameters.modifiedAt = dateTimeInput?.msSinceEpoch || dateTimeInputRhino?.msSinceEpoch;
+                parameters.modifiedAt =
+                    dateTimeInput?.msSinceEpoch ||
+                    dateTimeInputRhino?.msSinceEpoch;
             }
 
             if (stringInputs || stringInputsRhino) {
-                parameters.emails = JSON.stringify(stringInputs?.value || stringInputsRhino?.value);
+                parameters.emails = JSON.stringify(
+                    stringInputs?.value || stringInputsRhino?.value,
+                );
             }
 
             if (timeInput || timeInputRhino) {
@@ -589,7 +640,9 @@ const handleCommonAction = (e: GoogleAppsScript.Addons.EventObject) => {
         const props = PropertiesService.getUserProperties();
         props.setProperties(parameters);
 
-        console.log(`Processed on ${formattedDate} at ${formattedTime} | ${userLocale}`);
+        console.log(
+            `Processed on ${formattedDate} at ${formattedTime} | ${userLocale}`,
+        );
     } catch ({ name, message }) {
         const type = plaformMap[platform];
         console.warn(`Platform: ${type}
@@ -617,7 +670,10 @@ const folderSecurityUpdateInfo = () => {
     Logger.log(folder.getResourceKey());
 
     // update flag for update enabled
-    if (folder.getSecurityUpdateEligible() && !folder.getSecurityUpdateEnabled()) {
+    if (
+        folder.getSecurityUpdateEligible() &&
+        !folder.getSecurityUpdateEnabled()
+    ) {
         folder.setSecurityUpdateEnabled(true);
     }
 };
@@ -645,7 +701,10 @@ interface GridOptions extends BorderStyleOptions {
 const makeBorderStyle = ({ color, radius }: BorderStyleOptions) => {
     // $ExpectType BorderStyle
     const style = CardService.newBorderStyle();
-    style.setCornerRadius(radius).setStrokeColor(color).setType(CardService.BorderType.STROKE);
+    style
+        .setCornerRadius(radius)
+        .setStrokeColor(color)
+        .setType(CardService.BorderType.STROKE);
 
     return style;
 };
@@ -653,15 +712,24 @@ const makeBorderStyle = ({ color, radius }: BorderStyleOptions) => {
 const makeImageCropStyle = (ratio: number) => {
     // $ExpectType ImageCropStyle
     const style = CardService.newImageCropStyle();
-    style.setAspectRatio(ratio).setImageCropType(CardService.ImageCropType.CIRCLE);
+    style
+        .setAspectRatio(ratio)
+        .setImageCropType(CardService.ImageCropType.CIRCLE);
 
     return style;
 };
 
-const makeImageComponent = ({ alt, src, ...options }: ImageComponentOptions) => {
+const makeImageComponent = ({
+    alt,
+    src,
+    ...options
+}: ImageComponentOptions) => {
     // $ExpectType ImageComponent
     const img = CardService.newImageComponent();
-    img.setAltText(alt).setBorderStyle(makeBorderStyle(options)).setCropStyle(makeImageCropStyle(42)).setImageUrl(src);
+    img.setAltText(alt)
+        .setBorderStyle(makeBorderStyle(options))
+        .setCropStyle(makeImageCropStyle(42))
+        .setImageUrl(src);
 
     return img;
 };
@@ -687,7 +755,10 @@ const makeGrid = ({ items, ...options }: GridOptions) => {
     const action = CardService.newAction();
     action.setFunctionName("somefunc");
 
-    grid.setOnClickAction(action).setBorderStyle(makeBorderStyle(options)).setNumColumns(2).setTitle("My Grid");
+    grid.setOnClickAction(action)
+        .setBorderStyle(makeBorderStyle(options))
+        .setNumColumns(2)
+        .setTitle("My Grid");
 
     return grid;
 };
@@ -708,9 +779,15 @@ const handleScopeAction = () => {
 
 // Analytics Test
 const requestAnalyticsData = (): string => {
-    const gaData = Analytics.Data.Ga.get("An Id", "2022-01-18", "2022-01-18", "Some metrics", {
-        dimensions: "Some dimensions",
-    });
+    const gaData = Analytics.Data.Ga.get(
+        "An Id",
+        "2022-01-18",
+        "2022-01-18",
+        "Some metrics",
+        {
+            dimensions: "Some dimensions",
+        },
+    );
 
     const totalsForAllResults = gaData.totalsForAllResults;
     const totalSessions = totalsForAllResults["ga:sessions"];
@@ -728,7 +805,9 @@ const onItemSelected = () => {
         .setIconUrl("https://example.com/icon.png");
 
     // $ExpectType CalendarEventActionResponseBuilder
-    CardService.newCalendarEventActionResponseBuilder().addAttachments([attachment]);
+    CardService.newCalendarEventActionResponseBuilder().addAttachments([
+        attachment,
+    ]);
 };
 
 SlidesApp.getActivePresentation().getSlides()[0].setSkipped(true);
@@ -822,7 +901,9 @@ const sheetDrawing = () => {
 const sheetFontColorObjects = () => {
     const sheet = SpreadsheetApp.getActiveSheet();
     // Test for a single cell
-    const singleBuilder = SpreadsheetApp.newColor().setRgbColor("#808080").build();
+    const singleBuilder = SpreadsheetApp.newColor()
+        .setRgbColor("#808080")
+        .build();
     sheet.getRange("A1").setFontColorObject(singleBuilder);
     // Test for multiple cells
     const multipleBuilders = [
@@ -882,7 +963,10 @@ const sheetDataSource = () => {
     const dss = sheet.asDataSourceSheet();
 
     // methods
-    dss.addFilter("column1", {} as unknown as GoogleAppsScript.Spreadsheet.FilterCriteria);
+    dss.addFilter(
+        "column1",
+        {} as unknown as GoogleAppsScript.Spreadsheet.FilterCriteria,
+    );
     dss.asSheet();
     dss.autoResizeColumn("column1");
     dss.autoResizeColumns(["column1"]);
@@ -905,9 +989,13 @@ const sheetDataSource = () => {
 
 // Drive Activity (Advanced service)
 const driveActivity = () => {
-    const response = DriveActivity.Activity.query({ pageSize: 10, filter: "time > 1452409200000" });
+    const response = DriveActivity.Activity.query({
+        pageSize: 10,
+        filter: "time > 1452409200000",
+    });
     for (const activity of response.activities) {
-        const originalObject = activity.primaryActionDetail.create?.copy?.originalObject;
+        const originalObject =
+            activity.primaryActionDetail.create?.copy?.originalObject;
         if (originalObject) {
             console.log(originalObject.driveItem.file); // DriveFileReference.file is deprecated
             console.log(originalObject.driveItem.driveFile);

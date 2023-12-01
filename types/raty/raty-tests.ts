@@ -22,7 +22,7 @@ $element.raty({
     path: undefined,
     precision: false,
     readOnly: false,
-    round: { down: .25, full: .6, up: .76 },
+    round: { down: 0.25, full: 0.6, up: 0.76 },
     score: undefined,
     scoreName: "score",
     single: false,

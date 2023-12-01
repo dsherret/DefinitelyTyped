@@ -1,9 +1,17 @@
 import { PureComponent } from "react";
 import { Alignment, IndexRange, OverscanIndexRange } from "../../index";
 import { CellPosition } from "./CellMeasurer";
-import { Grid, GridCellProps, GridCoreProps, OverscanIndicesGetter } from "./Grid";
+import {
+    Grid,
+    GridCellProps,
+    GridCoreProps,
+    OverscanIndicesGetter,
+} from "./Grid";
 
-export type ListRowProps = Pick<GridCellProps, Exclude<keyof GridCellProps, "rowIndex">> & {
+export type ListRowProps = Pick<
+    GridCellProps,
+    Exclude<keyof GridCellProps, "rowIndex">
+> & {
     index: GridCellProps["rowIndex"];
 };
 
@@ -51,10 +59,16 @@ export class List extends PureComponent<ListProps> {
     forceUpdateGrid(): void;
 
     /** See Grid#getOffsetForCell */
-    getOffsetForRow(params: { alignment?: Alignment | undefined; index?: number | undefined }): number;
+    getOffsetForRow(params: {
+        alignment?: Alignment | undefined;
+        index?: number | undefined;
+    }): number;
 
     /** CellMeasurer compatibility */
-    invalidateCellSizeAfterRender({ columnIndex, rowIndex }: CellPosition): void;
+    invalidateCellSizeAfterRender({
+        columnIndex,
+        rowIndex,
+    }: CellPosition): void;
 
     /** See Grid#measureAllCells */
     measureAllRows(): void;

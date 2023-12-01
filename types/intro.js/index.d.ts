@@ -100,7 +100,13 @@ declare namespace introJs {
         removeHints(): IntroJs;
 
         onhintsadded(callback: Function): IntroJs;
-        onhintclick(callback: (hintElement: HTMLElement, item: Step, stepId: number) => any): IntroJs;
+        onhintclick(
+            callback: (
+                hintElement: HTMLElement,
+                item: Step,
+                stepId: number,
+            ) => any,
+        ): IntroJs;
         onhintclose(callback: (stepId: number) => any): IntroJs;
     }
 }

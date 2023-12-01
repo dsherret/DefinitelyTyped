@@ -18,7 +18,10 @@ async function testParse() {
         const comment: string | undefined = item.comment;
 
         if (item.isDirectory()) {
-            const itemContents: Record<string, nodeHrx.Directory | nodeHrx.File> = item.contents;
+            const itemContents: Record<
+                string,
+                nodeHrx.Directory | nodeHrx.File
+            > = item.contents;
         } else {
             const body: string = item.body;
         }

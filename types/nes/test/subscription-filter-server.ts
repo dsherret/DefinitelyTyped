@@ -20,7 +20,8 @@ server.register([Basic, Nes]).then(() => {
     const users: { [index: string]: User } = {
         john: {
             username: "john",
-            password: "$2a$10$iqJSHD.BGr0E2IxQwYgJmeP3NvhPrXAeLSaGCj6IR/XU5QtjVu5Tm", // 'secret'
+            password:
+                "$2a$10$iqJSHD.BGr0E2IxQwYgJmeP3NvhPrXAeLSaGCj6IR/XU5QtjVu5Tm", // 'secret'
             name: "John Doe",
             id: "2133d32a",
         },
@@ -34,7 +35,14 @@ server.register([Basic, Nes]).then(() => {
 
         let isValid = await Bcrypt.compare(password, user.password);
 
-        return { isValid, credentials: { id: user.id, name: user.name, username: user.username } };
+        return {
+            isValid,
+            credentials: {
+                id: user.id,
+                name: user.name,
+                username: user.username,
+            },
+        };
     };
 
     server.auth.strategy("simple", "basic", { validate });
@@ -49,7 +57,15 @@ server.register([Basic, Nes]).then(() => {
     });
 
     server.start().then(() => {
-        server.publish("/items", { id: 5, status: "complete", updater: "john" });
-        server.publish("/items", { id: 6, status: "initial", updater: "steve" });
+        server.publish("/items", {
+            id: 5,
+            status: "complete",
+            updater: "john",
+        });
+        server.publish("/items", {
+            id: 6,
+            status: "initial",
+            updater: "steve",
+        });
     });
 });

@@ -14,7 +14,11 @@ declare namespace jsrsasign.KJUR.crypto {
      * - secp384r1, NIST P-384, P-384 (*)
      */
     class ECDSA {
-        constructor(publicKey?: { curve?: string | undefined; pub?: string | undefined; prv?: string | undefined });
+        constructor(publicKey?: {
+            curve?: string | undefined;
+            pub?: string | undefined;
+            prv?: string | undefined;
+        });
 
         getBigRandom(limit: number): BigInteger;
         setNamedCurve(curveName: string): void;
@@ -116,7 +120,11 @@ declare namespace jsrsasign.KJUR.crypto {
          */
         parseSig(sig: string): { r: BigInteger; s: BigInteger };
 
-        parseSigCompact(sig: string): { r: BigInteger; s: BigInteger; i: number };
+        parseSigCompact(sig: string): {
+            r: BigInteger;
+            s: BigInteger;
+            i: number;
+        };
 
         /**
          * read an ASN.1 hexadecimal string of PKCS#1/5 plain ECC private key

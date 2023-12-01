@@ -1,4 +1,9 @@
-import { WithComponent, withComponent, WithContext, withContext } from "skatejs";
+import {
+    WithComponent,
+    withComponent,
+    WithContext,
+    withContext,
+} from "skatejs";
 
 type Context = {
     background: string;

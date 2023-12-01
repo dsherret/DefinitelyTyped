@@ -8,6 +8,9 @@ declare function sheetify(
     options?: { [prop: string]: any },
     done?: (err: Error, css: string, prefix: string) => void,
 ): string;
-declare function sheetify(src: string | TemplateStringsArray, options: { [prop: string]: any }): void;
+declare function sheetify(
+    src: string | TemplateStringsArray,
+    options: { [prop: string]: any },
+): void;
 
 export = sheetify;

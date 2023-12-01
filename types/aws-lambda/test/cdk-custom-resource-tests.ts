@@ -51,7 +51,10 @@ const onEventHandler: CdkCustomResourceHandler = async (event, context) => {
     return validEmptyResponse;
 };
 
-const onIsCompleteHandler: CdkCustomResourceIsCompleteHandler = async (event, context) => {
+const onIsCompleteHandler: CdkCustomResourceIsCompleteHandler = async (
+    event,
+    context,
+) => {
     switch (event.RequestType) {
         case "Create":
             str = event.LogicalResourceId;

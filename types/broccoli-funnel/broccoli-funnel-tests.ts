@@ -8,10 +8,10 @@ broccoliFunnel(["public", "scripts"], {
 
 // $ExpectType Funnel
 broccoliFunnel("public", {
-    exclude: [relativePath => true],
-    include: [relativePath => true],
+    exclude: [(relativePath) => true],
+    include: [(relativePath) => true],
     files: () => ["files"],
-    getDestinationPath: relativePath => "path",
+    getDestinationPath: (relativePath) => "path",
 });
 
 // $ExpectType Funnel
@@ -33,10 +33,10 @@ new broccoliFunnel.Funnel(["public", "scripts"], {
 
 // $ExpectType Funnel
 new broccoliFunnel.Funnel("public", {
-    exclude: [relativePath => true],
-    include: [relativePath => true],
+    exclude: [(relativePath) => true],
+    include: [(relativePath) => true],
     files: () => ["files"],
-    getDestinationPath: relativePath => "path",
+    getDestinationPath: (relativePath) => "path",
 });
 
 // $ExpectType Funnel

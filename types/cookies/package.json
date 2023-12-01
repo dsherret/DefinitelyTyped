@@ -1,31 +1,31 @@
 {
-    "private": true,
-    "name": "@types/cookies",
-    "version": "0.7.9999",
-    "projects": [
-        "https://github.com/pillarjs/cookies"
-    ],
-    "dependencies": {
-        "@types/connect": "*",
-        "@types/express": "*",
-        "@types/keygrip": "*",
-        "@types/node": "*"
+  "private": true,
+  "name": "@types/cookies",
+  "version": "0.7.9999",
+  "projects": [
+    "https://github.com/pillarjs/cookies"
+  ],
+  "dependencies": {
+    "@types/connect": "*",
+    "@types/express": "*",
+    "@types/keygrip": "*",
+    "@types/node": "*"
+  },
+  "devDependencies": {
+    "@types/cookies": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Wang Zishi",
+      "githubUsername": "WangZishi"
     },
-    "devDependencies": {
-        "@types/cookies": "workspace:."
+    {
+      "name": "jKey Lu",
+      "githubUsername": "jkeylu"
     },
-    "owners": [
-        {
-            "name": "Wang Zishi",
-            "githubUsername": "WangZishi"
-        },
-        {
-            "name": "jKey Lu",
-            "githubUsername": "jkeylu"
-        },
-        {
-            "name": "BendingBender",
-            "githubUsername": "BendingBender"
-        }
-    ]
+    {
+      "name": "BendingBender",
+      "githubUsername": "BendingBender"
+    }
+  ]
 }

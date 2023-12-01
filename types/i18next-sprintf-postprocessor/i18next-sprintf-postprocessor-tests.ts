@@ -4,14 +4,15 @@ import sprintfB from "i18next-sprintf-postprocessor/dist/commonjs";
 
 function initTest() {
     const i18nextOptions = {};
-    i18next
-        .use(sprintfA)
-        .use(sprintfB)
-        .init(i18nextOptions);
-    i18next
-        .init({ overloadTranslationOptionHandler: sprintfA.overloadTranslationOptionHandler });
-    i18next
-        .init({ overloadTranslationOptionHandler: sprintfB.overloadTranslationOptionHandler });
+    i18next.use(sprintfA).use(sprintfB).init(i18nextOptions);
+    i18next.init({
+        overloadTranslationOptionHandler:
+            sprintfA.overloadTranslationOptionHandler,
+    });
+    i18next.init({
+        overloadTranslationOptionHandler:
+            sprintfB.overloadTranslationOptionHandler,
+    });
 }
 
 function tTest() {

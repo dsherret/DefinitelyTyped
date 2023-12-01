@@ -17,7 +17,13 @@ declare namespace Redlock {
         value: string | null;
         expiration: number;
         attempts: number;
-        constructor(redlock: Redlock, resource: string, value: string | null, expiration: number, attempts: number);
+        constructor(
+            redlock: Redlock,
+            resource: string,
+            value: string | null,
+            expiration: number,
+            attempts: number,
+        );
         unlock(callback?: Callback<void>): Promise<void>;
         extend(ttl: number, callback?: Callback<Lock>): Promise<Lock>;
     }
@@ -113,7 +119,10 @@ declare namespace Redlock {
     type EvalArg = string | number;
 
     interface CompatibleRedisClient {
-        eval(args: EvalArg[], callback?: (err: Error | null, res: any) => void): any;
+        eval(
+            args: EvalArg[],
+            callback?: (err: Error | null, res: any) => void,
+        ): any;
     }
 }
 
@@ -143,7 +152,10 @@ declare class Redlock extends EventEmitter {
      * @param clients - you should have one client for each independent redis node
      * @param options - optionally customize settings (advanced use only)
      */
-    constructor(clients: Redlock.CompatibleRedisClient[], options?: Redlock.Options);
+    constructor(
+        clients: Redlock.CompatibleRedisClient[],
+        options?: Redlock.Options,
+    );
 
     /**
      * This method runs `.quit()` on all client connections.
@@ -166,7 +178,11 @@ declare class Redlock extends EventEmitter {
      * @param resource - one or more resources to lock
      * @param ttl - how long to keep the lock (milliseconds)
      */
-    acquire(resource: string | string[], ttl: number, callback?: Redlock.Callback<Redlock.Lock>): Promise<Redlock.Lock>;
+    acquire(
+        resource: string | string[],
+        ttl: number,
+        callback?: Redlock.Callback<Redlock.Lock>,
+    ): Promise<Redlock.Lock>;
 
     /**
      * This method locks a resource using the redlock algorithm.
@@ -184,7 +200,11 @@ declare class Redlock extends EventEmitter {
      * @param resource - one or more resources to lock
      * @param ttl - how long to keep the lock (milliseconds)
      */
-    lock(resource: string | string[], ttl: number, callback?: Redlock.Callback<Redlock.Lock>): Promise<Redlock.Lock>;
+    lock(
+        resource: string | string[],
+        ttl: number,
+        callback?: Redlock.Callback<Redlock.Lock>,
+    ): Promise<Redlock.Lock>;
 
     /**
      * This method locks a resource using the redlock algorithm,
@@ -206,7 +226,11 @@ declare class Redlock extends EventEmitter {
      * @param ttl - how long to keep the lock (milliseconds)
      * @param errorHandler -- handle any errors when disposer tries to unlock the resource
      */
-    disposer(resource: string, ttl: number, errorHandler?: Redlock.Callback<void>): Promise.Disposer<Redlock.Lock>;
+    disposer(
+        resource: string,
+        ttl: number,
+        errorHandler?: Redlock.Callback<void>,
+    ): Promise.Disposer<Redlock.Lock>;
 
     /**
      * This method unlocks the provided lock from all servers still persisting it. It will fail
@@ -217,7 +241,10 @@ declare class Redlock extends EventEmitter {
      * @param lock - the lock to release
      * @param callback - be notified once lock has been released by the clients
      */
-    release(lock: Redlock.Lock, callback?: Redlock.Callback<void>): Promise<void>;
+    release(
+        lock: Redlock.Lock,
+        callback?: Redlock.Callback<void>,
+    ): Promise<void>;
 
     /**
      * This method unlocks the provided lock from all servers still persisting it. It will fail
@@ -228,7 +255,10 @@ declare class Redlock extends EventEmitter {
      * @param lock - the lock to release
      * @param callback - be notified once lock has been released by the clients
      */
-    unlock(lock: Redlock.Lock, callback?: Redlock.Callback<void>): Promise<void>;
+    unlock(
+        lock: Redlock.Lock,
+        callback?: Redlock.Callback<void>,
+    ): Promise<void>;
 
     /**
      * This method extends a valid lock by the provided `ttl`.
@@ -237,7 +267,11 @@ declare class Redlock extends EventEmitter {
      * @param ttl - the new time to live value (milliseconds) from now
      * @param callback - be notified when lock's lease is extended
      */
-    extend(lock: Redlock.Lock, ttl: number, callback?: Redlock.Callback<Redlock.Lock>): Promise<Redlock.Lock>;
+    extend(
+        lock: Redlock.Lock,
+        ttl: number,
+        callback?: Redlock.Callback<Redlock.Lock>,
+    ): Promise<Redlock.Lock>;
 
     /*
      * Functions inherited from EventEmitter

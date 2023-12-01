@@ -2,62 +2,64 @@ import { SourceMap } from "magic-string";
 
 export interface TransformOptions {
     // source: https://github.com/Rich-Harris/buble/blob/master/src/support.js
-    target?: {
-        chrome?:
-            | 48
-            | 49
-            | 50
-            | 51
-            | 52
-            | 53
-            | 54
-            | 55
-            | 56
-            | 57
-            | 58
-            | 59
-            | 60
-            | 61
-            | 62
-            | 63
-            | 64
-            | 65
-            | 66
-            | 67
-            | 68
-            | 69
-            | 70
-            | 71
-            | undefined;
-        firefox?:
-            | 43
-            | 44
-            | 45
-            | 46
-            | 47
-            | 48
-            | 49
-            | 50
-            | 51
-            | 52
-            | 53
-            | 54
-            | 55
-            | 56
-            | 57
-            | 58
-            | 59
-            | 60
-            | 61
-            | 62
-            | 63
-            | 64
-            | undefined;
-        safari?: 8 | 9 | 10 | 10.1 | 11 | 11.1 | 12 | undefined;
-        ie?: 8 | 9 | 10 | 11 | undefined;
-        edge?: 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | undefined;
-        node?: 0.10 | 0.12 | 4 | 5 | 6 | 8 | 8.3 | 8.7 | 8.10 | undefined;
-    } | undefined;
+    target?:
+        | {
+              chrome?:
+                  | 48
+                  | 49
+                  | 50
+                  | 51
+                  | 52
+                  | 53
+                  | 54
+                  | 55
+                  | 56
+                  | 57
+                  | 58
+                  | 59
+                  | 60
+                  | 61
+                  | 62
+                  | 63
+                  | 64
+                  | 65
+                  | 66
+                  | 67
+                  | 68
+                  | 69
+                  | 70
+                  | 71
+                  | undefined;
+              firefox?:
+                  | 43
+                  | 44
+                  | 45
+                  | 46
+                  | 47
+                  | 48
+                  | 49
+                  | 50
+                  | 51
+                  | 52
+                  | 53
+                  | 54
+                  | 55
+                  | 56
+                  | 57
+                  | 58
+                  | 59
+                  | 60
+                  | 61
+                  | 62
+                  | 63
+                  | 64
+                  | undefined;
+              safari?: 8 | 9 | 10 | 10.1 | 11 | 11.1 | 12 | undefined;
+              ie?: 8 | 9 | 10 | 11 | undefined;
+              edge?: 12 | 13 | 14 | 15 | 16 | 17 | 18 | 19 | undefined;
+              node?: 0.1 | 0.12 | 4 | 5 | 6 | 8 | 8.3 | 8.7 | 8.1 | undefined;
+          }
+        | undefined;
 
     // used for sourcemaps
     source?: string | undefined; // input
@@ -71,29 +73,31 @@ export interface TransformOptions {
     objectAssign?: string | boolean | undefined;
 
     // transforms
-    transforms?: {
-        arrow?: boolean | undefined;
-        classes?: boolean | undefined;
-        computedProperty?: boolean | undefined;
-        conciseMethodProperty?: boolean | undefined;
-        dangerousForOf?: boolean | undefined;
-        dangerousTaggedTemplateString?: boolean | undefined;
-        defaultParameter?: boolean | undefined;
-        destructuring?: boolean | undefined;
-        exponentiation?: boolean | undefined;
-        forOf?: boolean | undefined;
-        generator?: boolean | undefined;
-        letConst?: boolean | undefined;
-        modules?: boolean | undefined;
-        numericLiteral?: boolean | undefined;
-        objectRestSpread?: boolean | undefined;
-        parameterDestructuring?: boolean | undefined;
-        reservedProperties?: boolean | undefined;
-        spreadRest?: boolean | undefined;
-        templateString?: boolean | undefined;
-        trailingFunctionCommas?: boolean | undefined;
-        unicodeRegExp?: boolean | undefined;
-    } | undefined;
+    transforms?:
+        | {
+              arrow?: boolean | undefined;
+              classes?: boolean | undefined;
+              computedProperty?: boolean | undefined;
+              conciseMethodProperty?: boolean | undefined;
+              dangerousForOf?: boolean | undefined;
+              dangerousTaggedTemplateString?: boolean | undefined;
+              defaultParameter?: boolean | undefined;
+              destructuring?: boolean | undefined;
+              exponentiation?: boolean | undefined;
+              forOf?: boolean | undefined;
+              generator?: boolean | undefined;
+              letConst?: boolean | undefined;
+              modules?: boolean | undefined;
+              numericLiteral?: boolean | undefined;
+              objectRestSpread?: boolean | undefined;
+              parameterDestructuring?: boolean | undefined;
+              reservedProperties?: boolean | undefined;
+              spreadRest?: boolean | undefined;
+              templateString?: boolean | undefined;
+              trailingFunctionCommas?: boolean | undefined;
+              unicodeRegExp?: boolean | undefined;
+          }
+        | undefined;
 
     // others
     namedFunctionExpressions?: boolean | undefined;
@@ -104,4 +108,7 @@ export interface TransformOutput {
     map: SourceMap;
 }
 
-export function transform(content: string, options?: TransformOptions): TransformOutput;
+export function transform(
+    content: string,
+    options?: TransformOptions,
+): TransformOutput;

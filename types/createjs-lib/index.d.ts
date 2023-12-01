@@ -60,8 +60,16 @@ declare namespace createjs {
         constructor();
 
         // methods
-        addEventListener(type: string, listener: (eventObj: Object) => boolean, useCapture?: boolean): Function;
-        addEventListener(type: string, listener: (eventObj: Object) => void, useCapture?: boolean): Function;
+        addEventListener(
+            type: string,
+            listener: (eventObj: Object) => boolean,
+            useCapture?: boolean,
+        ): Function;
+        addEventListener(
+            type: string,
+            listener: (eventObj: Object) => void,
+            useCapture?: boolean,
+        ): Function;
         addEventListener(
             type: string,
             listener: { handleEvent: (eventObj: Object) => boolean },
@@ -77,10 +85,26 @@ declare namespace createjs {
         dispatchEvent(eventObj: Event, target?: Object): boolean;
         hasEventListener(type: string): boolean;
         static initialize(target: Object): void;
-        off(type: string, listener: (eventObj: Object) => boolean, useCapture?: boolean): void;
-        off(type: string, listener: (eventObj: Object) => void, useCapture?: boolean): void;
-        off(type: string, listener: { handleEvent: (eventObj: Object) => boolean }, useCapture?: boolean): void;
-        off(type: string, listener: { handleEvent: (eventObj: Object) => void }, useCapture?: boolean): void;
+        off(
+            type: string,
+            listener: (eventObj: Object) => boolean,
+            useCapture?: boolean,
+        ): void;
+        off(
+            type: string,
+            listener: (eventObj: Object) => void,
+            useCapture?: boolean,
+        ): void;
+        off(
+            type: string,
+            listener: { handleEvent: (eventObj: Object) => boolean },
+            useCapture?: boolean,
+        ): void;
+        off(
+            type: string,
+            listener: { handleEvent: (eventObj: Object) => void },
+            useCapture?: boolean,
+        ): void;
         off(type: string, listener: Function, useCapture?: boolean): void; // It is necessary for "arguments.callee"
         on(
             type: string,
@@ -115,8 +139,16 @@ declare namespace createjs {
             useCapture?: boolean,
         ): Object;
         removeAllEventListeners(type?: string): void;
-        removeEventListener(type: string, listener: (eventObj: Object) => boolean, useCapture?: boolean): void;
-        removeEventListener(type: string, listener: (eventObj: Object) => void, useCapture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: (eventObj: Object) => boolean,
+            useCapture?: boolean,
+        ): void;
+        removeEventListener(
+            type: string,
+            listener: (eventObj: Object) => void,
+            useCapture?: boolean,
+        ): void;
         removeEventListener(
             type: string,
             listener: { handleEvent: (eventObj: Object) => boolean },
@@ -127,12 +159,19 @@ declare namespace createjs {
             listener: { handleEvent: (eventObj: Object) => void },
             useCapture?: boolean,
         ): void;
-        removeEventListener(type: string, listener: Function, useCapture?: boolean): void; // It is necessary for "arguments.callee"
+        removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void; // It is necessary for "arguments.callee"
         toString(): string;
         willTrigger(type: string): boolean;
     }
 
-    export function extend(subclass: () => any, superclass: () => any): () => any; // returns the subclass prototype
+    export function extend(
+        subclass: () => any,
+        superclass: () => any,
+    ): () => any; // returns the subclass prototype
     export function indexOf(array: any[], searchElement: Object): number;
     export function promote(subclass: () => any, prefix: string): () => any;
 
@@ -141,7 +180,11 @@ declare namespace createjs {
         scope: Object,
         ...arg: any[]
     ): (eventObj: Object) => any;
-    export function proxy(method: (eventObj: Object) => void, scope: Object, ...arg: any[]): (eventObj: Object) => any;
+    export function proxy(
+        method: (eventObj: Object) => void,
+        scope: Object,
+        ...arg: any[]
+    ): (eventObj: Object) => any;
     export function proxy(
         method: { handleEvent: (eventObj: Object) => boolean },
         scope: Object,

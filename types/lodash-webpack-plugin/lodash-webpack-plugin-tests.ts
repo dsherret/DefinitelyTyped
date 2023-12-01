@@ -27,5 +27,6 @@ const optionsArray: LodashModuleReplacementPlugin.Options[] = [
     },
 ];
 
-const plugins: LodashModuleReplacementPlugin[] = optionsArray
-    .map(options => new LodashModuleReplacementPlugin(options));
+const plugins: LodashModuleReplacementPlugin[] = optionsArray.map(
+    (options) => new LodashModuleReplacementPlugin(options),
+);

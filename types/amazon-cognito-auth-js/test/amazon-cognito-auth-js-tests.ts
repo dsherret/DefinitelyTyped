@@ -6,23 +6,32 @@ idToken.setJwtToken("fak3T0ken2=="); // $ExpectType void
 idToken.getJwtToken(); // $ExpectType string
 idToken.getExpiration(); // $ExpectType number
 
-const refreshToken: lib.CognitoRefreshToken = new lib.CognitoRefreshToken("refreshplease==");
+const refreshToken: lib.CognitoRefreshToken = new lib.CognitoRefreshToken(
+    "refreshplease==",
+);
 refreshToken.setToken("refreshagainplease=="); // $ExpectType void
 refreshToken.getToken(); // $ExpectType string
 
-const accessToken: lib.CognitoAccessToken = new lib.CognitoAccessToken("fak3T0ken3==");
+const accessToken: lib.CognitoAccessToken = new lib.CognitoAccessToken(
+    "fak3T0ken3==",
+);
 accessToken.decodePayload(); // $ExpectType object
 accessToken.setJwtToken("fak3T0ken4=="); // $ExpectType void
 accessToken.getJwtToken(); // $ExpectType string
 accessToken.getExpiration(); // $ExpectType number
 accessToken.getUsername(); // $ExpectType string
 
-const tokenScopes: lib.CognitoTokenScopes = new lib.CognitoTokenScopes(["email", "custom1"]);
+const tokenScopes: lib.CognitoTokenScopes = new lib.CognitoTokenScopes([
+    "email",
+    "custom1",
+]);
 tokenScopes.setTokenScopes(["openid"]); // $ExpectType void
 tokenScopes.getScopes(); // $ExpectType string[]
 
 let sessionData: lib.CognitoSessionData = {};
-let authSession: lib.CognitoAuthSession = new lib.CognitoAuthSession(sessionData);
+let authSession: lib.CognitoAuthSession = new lib.CognitoAuthSession(
+    sessionData,
+);
 
 sessionData = {
     IdToken: idToken,
@@ -56,7 +65,9 @@ const cookieStorageOptions: lib.CookieStorageOptions = {
     domain: "https://myapp.com",
 };
 
-const cookieStorage: lib.CookieStorage = new lib.CookieStorage(cookieStorageOptions);
+const cookieStorage: lib.CookieStorage = new lib.CookieStorage(
+    cookieStorageOptions,
+);
 cookieStorage.setItem("example", "hello"); // $ExpectType string
 cookieStorage.getItem("example"); // $ExpectType string | undefined
 cookieStorage.removeItem("example"); // $ExpectType void
@@ -110,8 +121,8 @@ auth.makePOSTRequest(
 );
 auth.createCORSRequest("POST", "/myapp/login"); // $ExpectType XMLHttpRequest | XDomainRequest || XDomainRequest | XMLHttpRequest
 auth.onFailure("request failed"); // $ExpectType void
-auth.onSuccessRefreshToken("{\"name\":\"John\", \"age\":31}"); // $ExpectType void
-auth.onSuccessExchangeForToken("{\"name\":\"Jane\", \"age\":30}"); // $ExpectType void
+auth.onSuccessRefreshToken('{"name":"John", "age":31}'); // $ExpectType void
+auth.onSuccessExchangeForToken('{"name":"Jane", "age":30}'); // $ExpectType void
 auth.launchUri("https://auth.com/login"); // $ExpectType void
 auth.getSpaceSeperatedScopeString(); // $ExpectType string
 auth.getFQDNSignIn(); // $ExpectType string
@@ -121,7 +132,8 @@ auth.getUserContextData(); // $ExpectType string
 auth.isUserSignedIn(); // $ExpectType boolean
 
 const userHandler: lib.CognitoAuthUserHandler = {
-    onSuccess: (authSession: lib.CognitoAuthSession) => console.log(authSession),
+    onSuccess: (authSession: lib.CognitoAuthSession) =>
+        console.log(authSession),
     onFailure: (error: any) => console.log(error),
 };
 auth.userhandler = userHandler;

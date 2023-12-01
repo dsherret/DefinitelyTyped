@@ -28,7 +28,9 @@ declare module "game/prototypes" {
         remove(): ERR_NOT_OWNER | OK;
     }
 
-    interface ConstructionSiteConstructor extends _Constructor<ConstructionSite>, _ConstructorById<ConstructionSite> {}
+    interface ConstructionSiteConstructor
+        extends _Constructor<ConstructionSite>,
+            _ConstructorById<ConstructionSite> {}
 
     export const ConstructionSite: ConstructionSiteConstructor;
 }

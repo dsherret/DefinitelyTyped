@@ -7,7 +7,11 @@ import {
 } from "scheduler";
 
 // $ExpectType CallbackNode
-const callbackNode = unstable_scheduleCallback(unstable_NormalPriority, () => {}, { timeout: 100 });
+const callbackNode = unstable_scheduleCallback(
+    unstable_NormalPriority,
+    () => {},
+    { timeout: 100 },
+);
 unstable_cancelCallback(callbackNode);
 unstable_scheduleCallback(unstable_NormalPriority, () => {}, { delay: 100 });
 

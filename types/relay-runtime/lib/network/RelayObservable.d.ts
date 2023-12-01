@@ -38,7 +38,9 @@ export interface Sink<T> {
  * when composing Observables).
  */
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export type Source<T> = (sink: Sink<T>) => void | Subscription | (() => unknown);
+export type Source<T> = (
+    sink: Sink<T>,
+) => void | Subscription | (() => unknown);
 
 /**
  * A Subscribable is an interface describing any object which can be subscribed.
@@ -94,7 +96,9 @@ export class RelayObservable<T> implements Subscribable<T> {
      *    application flow such as network failure, and may not have useful
      *    stack traces.
      */
-    static onUnhandledError(callback: (error: Error, isUncaughtThrownError: boolean) => void): void;
+    static onUnhandledError(
+        callback: (error: Error, isUncaughtThrownError: boolean) => void,
+    ): void;
 
     /**
      * Accepts various kinds of data sources, and always returns a RelayObservable

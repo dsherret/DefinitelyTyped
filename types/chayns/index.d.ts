@@ -18,9 +18,14 @@ declare namespace chayns {
 
     function getUser(config: GetUserConfig): Promise<User>;
 
-    function getUacGroups(siteId: number, updateCache?: boolean): Promise<UacGroup[]>;
+    function getUacGroups(
+        siteId: number,
+        updateCache?: boolean,
+    ): Promise<UacGroup[]>;
 
-    function startInteractionIdentification(config: InteractionIdentificationConfig): Promise<any>;
+    function startInteractionIdentification(
+        config: InteractionIdentificationConfig,
+    ): Promise<any>;
 
     function stopInteractionIdentification(): Promise<any>;
 
@@ -32,9 +37,14 @@ declare namespace chayns {
 
     function hideTitleImage(): Promise<any>;
 
-    function setOnActivateCallback(callback: (tappEvent: number) => any): Promise<any>;
+    function setOnActivateCallback(
+        callback: (tappEvent: number) => any,
+    ): Promise<any>;
 
-    function setNetworkChangeCallback(callback: (result: NetworkChangeResult) => any, ongoing: boolean): Promise<any>;
+    function setNetworkChangeCallback(
+        callback: (result: NetworkChangeResult) => any,
+        ongoing: boolean,
+    ): Promise<any>;
 
     function setNfcCallback(callback: (rfid: string) => any): Promise<any>;
 
@@ -54,7 +64,10 @@ declare namespace chayns {
 
     function showFinetradingQRCode(): Promise<any>;
 
-    function selectTapp(tapp: SelectTappConfig, parameter?: string[]): Promise<any>;
+    function selectTapp(
+        tapp: SelectTappConfig,
+        parameter?: string[],
+    ): Promise<any>;
 
     function openUrl(config: OpenUrlConfig): void;
 
@@ -64,7 +77,9 @@ declare namespace chayns {
 
     function getGeoLocation(): Promise<GeoLocationResult>;
 
-    function getLocationBeacons(forceReload: boolean): Promise<LocationBeacon[]>;
+    function getLocationBeacons(
+        forceReload: boolean,
+    ): Promise<LocationBeacon[]>;
 
     function getBeaconHistory(subNumber?: number): Promise<BeaconHistory[]>;
 
@@ -76,13 +91,19 @@ declare namespace chayns {
 
     function navigateBack(): Promise<any>;
 
-    function updateNavigation(tappId?: number, config?: UpdateNavigationConfig): Promise<any>;
+    function updateNavigation(
+        tappId?: number,
+        config?: UpdateNavigationConfig,
+    ): Promise<any>;
 
     function enableDisplayTimeout(): Promise<any>;
 
     function disableDisplayTimeout(): Promise<any>;
 
-    function setSpeechToText(callback: (result: SpeechToTextResult) => any, title?: string): Promise<any>;
+    function setSpeechToText(
+        callback: (result: SpeechToTextResult) => any,
+        title?: string,
+    ): Promise<any>;
 
     function createTappShortcut(name: string, imageUrl: string): Promise<any>;
 
@@ -98,11 +119,18 @@ declare namespace chayns {
 
     function addToWallet(passbook: string): Promise<any>; // TODO check passbock parameter
 
-    function addScrollListener(callback: (data: any) => any, throttle?: number): Promise<any>; // TODO interface for callback data
+    function addScrollListener(
+        callback: (data: any) => any,
+        throttle?: number,
+    ): Promise<any>; // TODO interface for callback data
 
     function setScreenOrientation(orientation: number): Promise<any>;
 
-    function findSite(name: string, skip?: number, take?: number): Promise<Site[]>;
+    function findSite(
+        name: string,
+        skip?: number,
+        take?: number,
+    ): Promise<Site[]>;
 
     function uploadCloudImage(): Promise<UploadCloudImageResult>;
 
@@ -120,7 +148,10 @@ declare namespace chayns {
      * Floating Button
      * chayns
      */
-    function showFloatingButton(config: FloatingConfig, callback: () => any): void;
+    function showFloatingButton(
+        config: FloatingConfig,
+        callback: () => any,
+    ): void;
 
     function hideFloatingButton(): void;
 
@@ -144,7 +175,10 @@ declare namespace chayns {
 
     function playSound(url: string, playOnMute?: boolean): Promise<any>;
 
-    function addErrorListener(logFn: (error: any) => Promise<{}>, appName: string): void;
+    function addErrorListener(
+        logFn: (error: any) => Promise<{}>,
+        appName: string,
+    ): void;
 
     function getGlobalData(): GlobalData;
 
@@ -158,9 +192,15 @@ declare namespace chayns {
      * chayns.intercom
      */
     namespace intercom {
-        function sendMessageToUser(userId: number, config: IntercomConfig): Promise<any>; // TODO set interface for promise result
+        function sendMessageToUser(
+            userId: number,
+            config: IntercomConfig,
+        ): Promise<any>; // TODO set interface for promise result
 
-        function sendMessageToGroup(groupId: number, config: IntercomConfig): Promise<any>; // TODO set interface for promise result
+        function sendMessageToGroup(
+            groupId: number,
+            config: IntercomConfig,
+        ): Promise<any>; // TODO set interface for promise result
 
         function sendMessageToPage(config: IntercomConfig): Promise<any>; // TODO set interface for promise result
     }
@@ -394,15 +434,23 @@ declare namespace chayns {
 
         function alert(title: string, message?: string): Promise<buttonType>;
 
-        function confirm(title: string, message?: string, buttons?: DialogButton[]): Promise<buttonType>;
+        function confirm(
+            title: string,
+            message?: string,
+            buttons?: DialogButton[],
+        ): Promise<buttonType>;
 
         function date(config: DialogDateConfig): Promise<DialogDateResult>;
 
-        function select(config: DialogSelectConfig): Promise<DialogSelectResult>;
+        function select(
+            config: DialogSelectConfig,
+        ): Promise<DialogSelectResult>;
 
         function input(config: DialogInputConfig): Promise<DialogInputResult>;
 
-        function facebook(options: DialogFacebookOptions): Promise<DialogFacebookResult>;
+        function facebook(
+            options: DialogFacebookOptions,
+        ): Promise<DialogFacebookResult>;
 
         /**
          * This dialog allows the user to select a date, a time or both.
@@ -419,7 +467,9 @@ declare namespace chayns {
          *  - selection of year and month to make it easier to select a date which is far away.
          * @param config
          */
-        function advancedDate(config: AdvancedDateDialogConfig): Promise<AdvancedDateDialogResult>;
+        function advancedDate(
+            config: AdvancedDateDialogConfig,
+        ): Promise<AdvancedDateDialogResult>;
     }
 
     /**
@@ -462,7 +512,10 @@ declare namespace chayns {
          * chayns.ui.tooltip
          */
         namespace tooltip {
-            function init(config: UiTooltipInitConfig, rootElement: any): Promise<boolean>;
+            function init(
+                config: UiTooltipInitConfig,
+                rootElement: any,
+            ): Promise<boolean>;
         }
 
         /**
@@ -534,7 +587,11 @@ declare namespace chayns {
 
         function replacePlaceholder(text: string, parameters: any[]): string; // TODO set interface for parameters
 
-        function mixColor(color1: string, color2: string, saturation: number): string;
+        function mixColor(
+            color1: string,
+            color2: string,
+            saturation: number,
+        ): string;
 
         function isPresent(parameter: any): boolean;
 
@@ -576,7 +633,12 @@ declare namespace chayns {
             PRIVATE,
         }
 
-        function set(key: string, value: any, accessMode?: accessMode, tappIds?: number[]): Promise<any>;
+        function set(
+            key: string,
+            value: any,
+            accessMode?: accessMode,
+            tappIds?: number[],
+        ): Promise<any>;
 
         function get(key: string, accessMode?: accessMode): any;
 

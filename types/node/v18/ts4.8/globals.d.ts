@@ -8,7 +8,9 @@ interface ErrorConstructor {
      *
      * @see https://v8.dev/docs/stack-trace-api#customizing-stack-traces
      */
-    prepareStackTrace?: ((err: Error, stackTraces: NodeJS.CallSite[]) => any) | undefined;
+    prepareStackTrace?:
+        | ((err: Error, stackTraces: NodeJS.CallSite[]) => any)
+        | undefined;
 
     stackTraceLimit: number;
 }
@@ -67,19 +69,27 @@ interface AbortSignal extends EventTarget {
     throwIfAborted(): void;
 }
 
-declare var AbortController: typeof globalThis extends { onmessage: any; AbortController: infer T } ? T
+declare var AbortController: typeof globalThis extends {
+    onmessage: any;
+    AbortController: infer T;
+}
+    ? T
     : {
-        prototype: AbortController;
-        new(): AbortController;
-    };
+          prototype: AbortController;
+          new (): AbortController;
+      };
 
-declare var AbortSignal: typeof globalThis extends { onmessage: any; AbortSignal: infer T } ? T
+declare var AbortSignal: typeof globalThis extends {
+    onmessage: any;
+    AbortSignal: infer T;
+}
+    ? T
     : {
-        prototype: AbortSignal;
-        new(): AbortSignal;
-        abort(reason?: any): AbortSignal;
-        timeout(milliseconds: number): AbortSignal;
-    };
+          prototype: AbortSignal;
+          new (): AbortSignal;
+          abort(reason?: any): AbortSignal;
+          timeout(milliseconds: number): AbortSignal;
+      };
 // #endregion borrowed
 
 // #region Disposable
@@ -136,14 +146,16 @@ interface BigUint64Array extends RelativeIndexable<bigint> {}
  */
 declare function structuredClone<T>(
     value: T,
-    transfer?: { transfer: ReadonlyArray<import("worker_threads").TransferListItem> },
+    transfer?: {
+        transfer: ReadonlyArray<import("worker_threads").TransferListItem>;
+    },
 ): T;
 
 /*----------------------------------------------*
-*                                               *
-*               GLOBAL INTERFACES               *
-*                                               *
-*-----------------------------------------------*/
+ *                                               *
+ *               GLOBAL INTERFACES               *
+ *                                               *
+ *-----------------------------------------------*/
 declare namespace NodeJS {
     interface CallSite {
         /**
@@ -233,7 +245,10 @@ declare namespace NodeJS {
         pause(): this;
         resume(): this;
         isPaused(): boolean;
-        pipe<T extends WritableStream>(destination: T, options?: { end?: boolean | undefined }): T;
+        pipe<T extends WritableStream>(
+            destination: T,
+            options?: { end?: boolean | undefined },
+        ): T;
         unpipe(destination?: WritableStream): this;
         unshift(chunk: string | Uint8Array, encoding?: BufferEncoding): void;
         wrap(oldStream: ReadableStream): this;
@@ -242,8 +257,15 @@ declare namespace NodeJS {
 
     interface WritableStream extends EventEmitter {
         writable: boolean;
-        write(buffer: Uint8Array | string, cb?: (err?: Error | null) => void): boolean;
-        write(str: string, encoding?: BufferEncoding, cb?: (err?: Error | null) => void): boolean;
+        write(
+            buffer: Uint8Array | string,
+            cb?: (err?: Error | null) => void,
+        ): boolean;
+        write(
+            str: string,
+            encoding?: BufferEncoding,
+            cb?: (err?: Error | null) => void,
+        ): boolean;
         end(cb?: () => void): this;
         end(data: string | Uint8Array, cb?: () => void): this;
         end(str: string, encoding?: BufferEncoding, cb?: () => void): this;
@@ -286,7 +308,8 @@ declare namespace NodeJS {
         paths(request: string): string[] | null;
     }
 
-    interface RequireExtensions extends Dict<(m: Module, filename: string) => any> {
+    interface RequireExtensions
+        extends Dict<(m: Module, filename: string) => any> {
         ".js": (m: Module, filename: string) => any;
         ".json": (m: Module, filename: string) => any;
         ".node": (m: Module, filename: string) => any;
@@ -322,11 +345,20 @@ declare namespace NodeJS {
     }
 
     namespace fetch {
-        type _Request = typeof globalThis extends { onmessage: any } ? {} : import("undici-types").Request;
-        type _Response = typeof globalThis extends { onmessage: any } ? {} : import("undici-types").Response;
-        type _FormData = typeof globalThis extends { onmessage: any } ? {} : import("undici-types").FormData;
-        type _Headers = typeof globalThis extends { onmessage: any } ? {} : import("undici-types").Headers;
-        type _RequestInit = typeof globalThis extends { onmessage: any } ? {}
+        type _Request = typeof globalThis extends { onmessage: any }
+            ? {}
+            : import("undici-types").Request;
+        type _Response = typeof globalThis extends { onmessage: any }
+            ? {}
+            : import("undici-types").Response;
+        type _FormData = typeof globalThis extends { onmessage: any }
+            ? {}
+            : import("undici-types").FormData;
+        type _Headers = typeof globalThis extends { onmessage: any }
+            ? {}
+            : import("undici-types").Headers;
+        type _RequestInit = typeof globalThis extends { onmessage: any }
+            ? {}
             : import("undici-types").RequestInit;
         type Request = globalThis.Request;
         type Response = globalThis.Response;
@@ -356,26 +388,30 @@ interface Request extends NodeJS.fetch._Request {}
 declare var Request: typeof globalThis extends {
     onmessage: any;
     Request: infer T;
-} ? T
+}
+    ? T
     : typeof import("undici-types").Request;
 
 interface Response extends NodeJS.fetch._Response {}
 declare var Response: typeof globalThis extends {
     onmessage: any;
     Response: infer T;
-} ? T
+}
+    ? T
     : typeof import("undici-types").Response;
 
 interface FormData extends NodeJS.fetch._FormData {}
 declare var FormData: typeof globalThis extends {
     onmessage: any;
     FormData: infer T;
-} ? T
+}
+    ? T
     : typeof import("undici-types").FormData;
 
 interface Headers extends NodeJS.fetch._Headers {}
 declare var Headers: typeof globalThis extends {
     onmessage: any;
     Headers: infer T;
-} ? T
+}
+    ? T
     : typeof import("undici-types").Headers;

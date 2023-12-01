@@ -74,9 +74,22 @@ interface YouTubePlayerOptions {
     host?: string | undefined;
 }
 
-type YouTubePlayerState = "unstarted" | "ended" | "playing" | "paused" | "buffering" | "cued";
+type YouTubePlayerState =
+    | "unstarted"
+    | "ended"
+    | "playing"
+    | "paused"
+    | "buffering"
+    | "cued";
 
-type YouTubePlayerQuality = "small" | "medium" | "large" | "hd720" | "hd1080" | "highres" | "default";
+type YouTubePlayerQuality =
+    | "small"
+    | "medium"
+    | "large"
+    | "hd720"
+    | "hd1080"
+    | "highres"
+    | "default";
 
 /**
  * Simple, robust, blazing-fast YouTube Player API
@@ -215,9 +228,15 @@ declare class YouTubePlayer extends EventEmitter {
      * This event fires whenever the video playback quality changes. Possible
      * values are: 'small', 'medium', 'large', 'hd720', 'hd1080', 'highres'.
      */
-    on(event: "playbackQualityChange", callback: (quality: YouTubePlayerQuality) => void): this;
+    on(
+        event: "playbackQualityChange",
+        callback: (quality: YouTubePlayerQuality) => void,
+    ): this;
     /** This event fires whenever the video playback rate changes. */
-    on(event: "playbackRateChange", callback: (playbackRate: number) => void): this;
+    on(
+        event: "playbackRateChange",
+        callback: (playbackRate: number) => void,
+    ): this;
     /**
      * These events fire when the player enters the respective state. These
      * event names are the same as the possible return values from

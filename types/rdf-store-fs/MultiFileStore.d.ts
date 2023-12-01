@@ -8,7 +8,12 @@ declare class MultiFileStore {
 
     constructor(arg: { factory?: DataFactory; resolver: FlatFilenameResolver });
 
-    match(subject?: Term | null, predicate?: Term | null, object?: Term | null, graph?: Term | null): Stream;
+    match(
+        subject?: Term | null,
+        predicate?: Term | null,
+        object?: Term | null,
+        graph?: Term | null,
+    ): Stream;
 
     import(stream: Stream, opt?: { truncate?: boolean }): EventEmitter;
 

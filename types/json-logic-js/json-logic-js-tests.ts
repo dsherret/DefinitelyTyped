@@ -20,7 +20,12 @@ jsonLogic.apply(
 jsonLogic.apply({ var: 1 }, ["zero", "one", "two"]); // $ExpectType any
 // $ExpectType any
 jsonLogic.apply(
-    { and: [{ "<": [{ var: "temp" }, 110] }, { "==": [{ var: "pie.filling" }, "apple"] }] },
+    {
+        and: [
+            { "<": [{ var: "temp" }, 110] },
+            { "==": [{ var: "pie.filling" }, "apple"] },
+        ],
+    },
     {
         temp: 100,
         pie: { filling: "apple" },
@@ -32,10 +37,18 @@ jsonLogic.apply({ cat: ["Hello, ", { var: "" }] }, "Dolly");
 // $ExpectType any
 jsonLogic.apply({ missing: ["a", "b"] }, { a: "apple", c: "carrot" });
 // $ExpectType any
-jsonLogic.apply({ if: [{ missing: ["a", "b"] }, "Not enough fruit", "OK to proceed"] }, { a: "apple", b: "banana" });
+jsonLogic.apply(
+    { if: [{ missing: ["a", "b"] }, "Not enough fruit", "OK to proceed"] },
+    { a: "apple", b: "banana" },
+);
 jsonLogic.apply(
     // @ts-expect-error
-    { if: [{ missing: ["a", "b"] }, "Need three or more (odd total) elements for \"if\""] },
+    {
+        if: [
+            { missing: ["a", "b"] },
+            'Need three or more (odd total) elements for "if"',
+        ],
+    },
     { a: "apple", b: "banana" },
 );
 
@@ -47,7 +60,12 @@ jsonLogic.apply({ missing_some: [2, ["a", "b", "c"]] }, { a: "apple" });
 jsonLogic.apply(
     {
         if: [
-            { merge: [{ missing: ["first_name", "last_name"] }, { missing_some: [1, ["cell_phone", "home_phone"]] }] },
+            {
+                merge: [
+                    { missing: ["first_name", "last_name"] },
+                    { missing_some: [1, ["cell_phone", "home_phone"]] },
+                ],
+            },
             "We require first name, last name, and one phone number.",
             "OK to proceed",
         ],
@@ -61,7 +79,15 @@ jsonLogic.apply({ if: [true, "yes", "no"] });
 jsonLogic.apply({ if: [false, "yes", "no"] });
 // $ExpectType any
 jsonLogic.apply(
-    { if: [{ "<": [{ var: "temp" }, 0] }, "freezing", { "<": [{ var: "temp" }, 100] }, "liquid", "gas"] },
+    {
+        if: [
+            { "<": [{ var: "temp" }, 0] },
+            "freezing",
+            { "<": [{ var: "temp" }, 100] },
+            "liquid",
+            "gas",
+        ],
+    },
     { temp: 55 },
 );
 // $ExpectType any
@@ -162,12 +188,24 @@ jsonLogic.apply({ "+": "3.14" });
 jsonLogic.apply({ "%": [101, 2] });
 
 // $ExpectType any
-jsonLogic.apply({ map: [{ var: "integers" }, { "*": [{ var: "" }, 2] }] }, { integers: [1, 2, 3, 4, 5] });
-// $ExpectType any
-jsonLogic.apply({ filter: [{ var: "integers" }, { "%": [{ var: "" }, 2] }] }, { integers: [1, 2, 3, 4, 5] });
+jsonLogic.apply(
+    { map: [{ var: "integers" }, { "*": [{ var: "" }, 2] }] },
+    { integers: [1, 2, 3, 4, 5] },
+);
 // $ExpectType any
 jsonLogic.apply(
-    { reduce: [{ var: "integers" }, { "+": [{ var: "current" }, { var: "accumulator" }] }, 0] },
+    { filter: [{ var: "integers" }, { "%": [{ var: "" }, 2] }] },
+    { integers: [1, 2, 3, 4, 5] },
+);
+// $ExpectType any
+jsonLogic.apply(
+    {
+        reduce: [
+            { var: "integers" },
+            { "+": [{ var: "current" }, { var: "accumulator" }] },
+            0,
+        ],
+    },
     { integers: [1, 2, 3, 4, 5] },
 );
 
@@ -200,12 +238,20 @@ jsonLogic.apply({
 jsonLogic.apply({ merge: [1, 2, [3, 4]] });
 // $ExpectType any
 jsonLogic.apply(
-    { missing: { merge: ["vin", { if: [{ var: "financing" }, ["apr", "term"], []] }] } },
+    {
+        missing: {
+            merge: ["vin", { if: [{ var: "financing" }, ["apr", "term"], []] }],
+        },
+    },
     { financing: true },
 );
 // $ExpectType any
 jsonLogic.apply(
-    { missing: { merge: ["vin", { if: [{ var: "financing" }, ["apr", "term"], []] }] } },
+    {
+        missing: {
+            merge: ["vin", { if: [{ var: "financing" }, ["apr", "term"], []] }],
+        },
+    },
     { financing: false },
 );
 // $ExpectType any
@@ -216,7 +262,10 @@ jsonLogic.apply({ in: ["Spring", "Springfield"] });
 // $ExpectType any
 jsonLogic.apply({ cat: ["I love", " pie"] });
 // $ExpectType any
-jsonLogic.apply({ cat: ["I love ", { var: "filling" }, " pie"] }, { filling: "apple", temp: 110 });
+jsonLogic.apply(
+    { cat: ["I love ", { var: "filling" }, " pie"] },
+    { filling: "apple", temp: 110 },
+);
 // $ExpectType any
 jsonLogic.apply({ substr: ["jsonlogic", 4] });
 // $ExpectType any
@@ -264,16 +313,32 @@ if (jsonLogic.is_logic(test)) {
 // Test the extensibility of the RulesLogic type
 
 type StartsWithAndEndsWith =
-    | { startsWith: [JsonLogicWithAdditionalOperations, JsonLogicWithAdditionalOperations] }
-    | { endsWith: [JsonLogicWithAdditionalOperations, JsonLogicWithAdditionalOperations] };
-type JsonLogicWithAdditionalOperations = jsonLogic.RulesLogic<StartsWithAndEndsWith>;
+    | {
+          startsWith: [
+              JsonLogicWithAdditionalOperations,
+              JsonLogicWithAdditionalOperations,
+          ];
+      }
+    | {
+          endsWith: [
+              JsonLogicWithAdditionalOperations,
+              JsonLogicWithAdditionalOperations,
+          ];
+      };
+type JsonLogicWithAdditionalOperations =
+    jsonLogic.RulesLogic<StartsWithAndEndsWith>;
 const jsonExtendedLogic: JsonLogicWithAdditionalOperations = {
-    and: [{ startsWith: ["Springfield", "Spring"] }, { endsWith: ["Springfield", "field"] }],
+    and: [
+        { startsWith: ["Springfield", "Spring"] },
+        { endsWith: ["Springfield", "field"] },
+    ],
 };
 // $ExpectType any
 jsonLogic.apply(jsonExtendedLogic);
 // @ts-expect-error
-const invalidExtendedLogic: JsonLogicWithAdditionalOperations = { invalidOperator: ["Springfield", "Spring"] };
+const invalidExtendedLogic: JsonLogicWithAdditionalOperations = {
+    invalidOperator: ["Springfield", "Spring"],
+};
 
 // Test prevention of overriding reserved operations
 

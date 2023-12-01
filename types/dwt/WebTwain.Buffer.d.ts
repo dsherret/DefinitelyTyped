@@ -64,7 +64,10 @@ export interface WebTwainBuffer extends WebTwainIO {
      * @param index Specify the image.
      * @param type Sepcify the expected file type.
      */
-    GetImageSizeWithSpecifiedType(index: number, type: Dynamsoft.EnumDWT_ImageType | number): number;
+    GetImageSizeWithSpecifiedType(
+        index: number,
+        type: Dynamsoft.EnumDWT_ImageType | number,
+    ): number;
     /**
      * Return the direct URL of the specified image, if width or height is set to -1,
      * you get the original image, otherwise you get the image with specified width or
@@ -111,13 +114,8 @@ export interface WebTwainBuffer extends WebTwainIO {
      */
     GetSkewAngle(
         index: number,
-        successCallback?: (
-            angle: number,
-        ) => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        successCallback?: (angle: number) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): number | void;
     /**
@@ -139,13 +137,8 @@ export interface WebTwainBuffer extends WebTwainIO {
         top: number,
         right: number,
         bottom: number,
-        successCallback?: (
-            angle: number,
-        ) => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        successCallback?: (angle: number) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): number | void;
     /**

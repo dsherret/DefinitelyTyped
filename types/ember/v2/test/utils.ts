@@ -12,7 +12,9 @@ function testIsNoneType() {
 }
 
 function testMerge() {
-    assertType<{ first: string; last: string }>(Ember.merge({ first: "Tom" }, { last: "Dale" }));
+    assertType<{ first: string; last: string }>(
+        Ember.merge({ first: "Tom" }, { last: "Dale" }),
+    );
 }
 
 function testAssign() {
@@ -22,7 +24,7 @@ function testAssign() {
 }
 
 function testOnError() {
-    Ember.onerror = function(error) {
+    Ember.onerror = function (error) {
         Ember.$.post("/report-error", {
             stack: error.stack,
             otherInformation: "whatever app state you want to provide",
@@ -43,7 +45,11 @@ function testDeprecateFunc() {
         return "";
     }
 
-    let oldMethod = Ember.deprecateFunc("Please use the new method", { id: "deprecated.id", until: "6.0" }, newMethod);
+    let oldMethod = Ember.deprecateFunc(
+        "Please use the new method",
+        { id: "deprecated.id", until: "6.0" },
+        newMethod,
+    );
     assertType<string>(newMethod("first", 123));
     assertType<string>(oldMethod("first", 123));
 }
@@ -74,7 +80,7 @@ function testDefineProperty() {
     Ember.defineProperty(
         contact,
         "fullName",
-        Ember.computed("firstName", "lastName", function() {
+        Ember.computed("firstName", "lastName", function () {
             return `${this.firstName} ${this.lastName}`;
         }),
     );

@@ -25,7 +25,10 @@ declare namespace PhonegapFacebookPlugin {
          * @param successCallback The callback to be executed when the call completes successfully.
          * @param failureCallback The callback to be executed when the call fails.
          */
-        getAccessToken: (successCallback?: (token: string) => void, failureCallback?: (error: string) => void) => void;
+        getAccessToken: (
+            successCallback?: (token: string) => void,
+            failureCallback?: (error: string) => void,
+        ) => void;
 
         /**
          * Used to get the login status for the current user.
@@ -92,7 +95,10 @@ declare namespace PhonegapFacebookPlugin {
          * @param successCallback The callback to be executed when the call completes successfully.
          * @param failureCallback The callback to be executed when the call fails.
          */
-        logout: (successCallback?: () => void, failureCallback?: (error: string) => void) => void;
+        logout: (
+            successCallback?: () => void,
+            failureCallback?: (error: string) => void,
+        ) => void;
 
         /**
          * Used to open a Facebook dialog.
@@ -285,8 +291,7 @@ declare namespace PhonegapFacebookPlugin {
     /**
      * The response object returned from a success callback for showDialog() of type 'send'.
      */
-    interface SendDialogResult extends BaseDialogResult {
-    }
+    interface SendDialogResult extends BaseDialogResult {}
 
     /**
      * The response object returned from a success callback for showDialog() of type 'share' or 'share_open_graph'.

@@ -21,13 +21,22 @@ expectType<typeof RemovedKeysActual>(RemovedKeys);
 
 declare const ExpectedKeys: ExpectedKeys;
 
-declare const AddedKeysActual: Exclude<keyof ES2016Operations, keyof ES2015Operations | keyof ES2016>;
+declare const AddedKeysActual: Exclude<
+    keyof ES2016Operations,
+    keyof ES2015Operations | keyof ES2016
+>;
 export declare const AddedKeys: AddedKeys;
 
-declare const AllAddedKeysActual: Exclude<keyof ES2016Operations, keyof ES2015Operations>;
+declare const AllAddedKeysActual: Exclude<
+    keyof ES2016Operations,
+    keyof ES2015Operations
+>;
 export declare const AllAddedKeys: AllAddedKeys;
 
-declare const RemovedKeysActual: Exclude<keyof ES2015Operations, keyof ES2016Operations>;
+declare const RemovedKeysActual: Exclude<
+    keyof ES2015Operations,
+    keyof ES2016Operations
+>;
 export declare const RemovedKeys: RemovedKeys;
 
 // ## Long types:

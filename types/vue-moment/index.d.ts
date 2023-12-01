@@ -1,4 +1,11 @@
-import { Duration, DurationInputArg1, DurationInputArg2, Moment, MomentFormatSpecification, MomentInput } from "moment";
+import {
+    Duration,
+    DurationInputArg1,
+    DurationInputArg2,
+    Moment,
+    MomentFormatSpecification,
+    MomentInput,
+} from "moment";
 import { PluginObject } from "vue";
 
 declare namespace VueMomentPlugin {
@@ -9,8 +16,17 @@ declare namespace VueMomentPlugin {
 
     interface VueStatic extends Moment {
         (options: Options): void;
-        (inp?: MomentInput, format?: MomentFormatSpecification, strict?: boolean): Moment;
-        (inp?: MomentInput, format?: MomentFormatSpecification, language?: string, strict?: boolean): Moment;
+        (
+            inp?: MomentInput,
+            format?: MomentFormatSpecification,
+            strict?: boolean,
+        ): Moment;
+        (
+            inp?: MomentInput,
+            format?: MomentFormatSpecification,
+            language?: string,
+            strict?: boolean,
+        ): Moment;
         duration(inp?: DurationInputArg1, unit?: DurationInputArg2): Duration;
     }
 }

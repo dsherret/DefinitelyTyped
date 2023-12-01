@@ -10,11 +10,11 @@ const memoryCache: cacheManager.Cache = cacheManager.caching({
     max: 20,
     maxSize: 100,
     sizeCalculation: (value: any, key: any) => JSON.stringify(value).length,
-    ttl: 10, /*seconds*/
+    ttl: 10 /*seconds*/,
 });
 const ttl = 5;
 
-memoryCache.set("foo", "bar", { ttl: ttl }, err => {
+memoryCache.set("foo", "bar", { ttl: ttl }, (err) => {
     if (err) {
         throw err;
     }
@@ -22,7 +22,7 @@ memoryCache.set("foo", "bar", { ttl: ttl }, err => {
     memoryCache.get("foo", (err, result) => {
         // console.log(result);
 
-        memoryCache.del("foo", err => {});
+        memoryCache.del("foo", (err) => {});
     });
 });
 
@@ -59,7 +59,7 @@ memoryCache.wrap<{ id: number; name: string }>(
 );
 
 if (memoryCache.store.keys) {
-    memoryCache.store.keys().then(result => {
+    memoryCache.store.keys().then((result) => {
         // console.log(result);
     });
 }
@@ -81,8 +81,18 @@ async function promiseMemoryCache(cache: cacheManager.Cache) {
     const stringWrap: string = await cache.wrap(KEY, () => VALUE);
     const stringWrapAsync: string = await cache.wrap(KEY, async () => VALUE);
 
-    const stringWrapWithCacheConfig: string = await cache.wrap(KEY, () => VALUE, { ttl: 10 });
-    const stringWrapWithCacheConfigAsync: string = await cache.wrap(KEY, async () => VALUE, { ttl: 10 });
+    const stringWrapWithCacheConfig: string = await cache.wrap(
+        KEY,
+        () => VALUE,
+        {
+            ttl: 10,
+        },
+    );
+    const stringWrapWithCacheConfigAsync: string = await cache.wrap(
+        KEY,
+        async () => VALUE,
+        { ttl: 10 },
+    );
 
     const setWithoutOptional = await cache.set(KEY, VALUE);
     const setWitOptional = await cache.set(KEY, VALUE, { ttl: 10 });
@@ -105,7 +115,7 @@ async function promiseMemoryCache(cache: cacheManager.Cache) {
 
 const multiCache = cacheManager.multiCaching([memoryCache]);
 
-multiCache.set("foo", "bar", { ttl: ttl }, err => {
+multiCache.set("foo", "bar", { ttl: ttl }, (err) => {
     if (err) {
         throw err;
     }
@@ -113,7 +123,7 @@ multiCache.set("foo", "bar", { ttl: ttl }, err => {
     multiCache.get("foo", (err, result) => {
         // console.log(result);
 
-        multiCache.del("foo", err => {});
+        multiCache.del("foo", (err) => {});
     });
 });
 

@@ -10,9 +10,6 @@ declare function loader(
     context?: any,
 ): void;
 
-declare function loader(
-    module: string,
-    options?: Options,
-): void;
+declare function loader(module: string, options?: Options): void;
 
 export = loader;

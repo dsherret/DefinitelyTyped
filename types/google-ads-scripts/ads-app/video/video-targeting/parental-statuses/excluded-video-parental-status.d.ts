@@ -25,10 +25,12 @@ declare namespace GoogleAdsScripts {
          *        var excludedVideoParentalStatus = excludedVideoParentalStatusIterator.next();
          *      }
          */
-        interface ExcludedVideoParentalStatusIterator extends Base.Iterator<ExcludedVideoParentalStatus> {}
+        interface ExcludedVideoParentalStatusIterator
+            extends Base.Iterator<ExcludedVideoParentalStatus> {}
 
         /** An operation representing creation of a new excluded video parental status. */
-        interface ExcludedVideoParentalStatusOperation extends Base.Operation<ExcludedVideoParentalStatus> {}
+        interface ExcludedVideoParentalStatusOperation
+            extends Base.Operation<ExcludedVideoParentalStatus> {}
 
         /**
          * Fetches excluded video parental statuses. Supports filtering and sorting.
@@ -46,11 +48,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedVideoParentalStatusSelector
-            extends
-                Base.Selector<ExcludedVideoParentalStatusIterator>,
+            extends Base.Selector<ExcludedVideoParentalStatusIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

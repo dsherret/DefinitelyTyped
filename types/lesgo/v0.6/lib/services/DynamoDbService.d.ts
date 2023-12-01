@@ -36,7 +36,10 @@ export default class DynamoDb {
         expressionAttributeValues: ExpressionAttributeValueMap,
     ): Promise<Integer>;
 
-    put(tableName: TableName, item: PutItemInputAttributeMap): Promise<DocumentClient.PutItemOutput>;
+    put(
+        tableName: TableName,
+        item: PutItemInputAttributeMap,
+    ): Promise<DocumentClient.PutItemOutput>;
 
     update(
         tableName: TableName,

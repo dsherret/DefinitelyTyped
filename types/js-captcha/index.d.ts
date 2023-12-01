@@ -22,7 +22,13 @@ declare namespace jCaptcha {
             textBaseline?: string | undefined;
         };
 
-        callback?: ((response: "success" | "error", captcha: Element, numberOfTries: number) => void) | undefined;
+        callback?:
+            | ((
+                  response: "success" | "error",
+                  captcha: Element,
+                  numberOfTries: number,
+              ) => void)
+            | undefined;
     }
 }
 

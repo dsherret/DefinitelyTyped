@@ -30,7 +30,9 @@ declare namespace Calendar {
          * Callback fired when the Calendar navigates between views, or forward and backwards in
          * time.
          */
-        onNavigate?: ((date: Date, direction: string, view: string) => void) | undefined;
+        onNavigate?:
+            | ((date: Date, direction: string, view: string) => void)
+            | undefined;
         /**
          * A callback fired when the view changes.
          */

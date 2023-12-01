@@ -27,9 +27,13 @@ lang.get("test-key");
 lang.get("test-key", {
     param: "value",
 });
-lang.get("test-key", {
-    param: "value",
-}, "en");
+lang.get(
+    "test-key",
+    {
+        param: "value",
+    },
+    "en",
+);
 
 lang.trans("test-key");
 lang.trans("test-key", {
@@ -40,9 +44,14 @@ lang.choice("test.key", 2);
 lang.choice("test.key", 2, {
     param: "value",
 });
-lang.choice("test.key", 2, {
-    param: "value",
-}, "en");
+lang.choice(
+    "test.key",
+    2,
+    {
+        param: "value",
+    },
+    "en",
+);
 
 lang.transChoice("test.key", 2);
 lang.transChoice("test.key", 2, {

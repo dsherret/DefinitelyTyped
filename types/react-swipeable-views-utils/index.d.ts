@@ -1,6 +1,10 @@
 import { PropInjector } from "@material-ui/types";
 import * as React from "react";
-import { OnChangeIndexCallback, OnSwitchingCallback, OnTransitionEndCallback } from "react-swipeable-views";
+import {
+    OnChangeIndexCallback,
+    OnSwitchingCallback,
+    OnTransitionEndCallback,
+} from "react-swipeable-views";
 
 export interface WithIndex {
     index?: number;
@@ -41,6 +45,11 @@ export interface WithBindKeyboardProps extends WithIndex {
 }
 
 export const autoPlay: PropInjector<WithAutoPlay, WithAutoPlayProps>;
-export type SlideRendererCallback = (render: SlideRenderProps) => React.ReactNode;
+export type SlideRendererCallback = (
+    render: SlideRenderProps,
+) => React.ReactNode;
 export const virtualize: PropInjector<WithVirtualize, WithVirtualizeProps>;
-export const bindKeyboard: PropInjector<WithBindKeyboard, WithBindKeyboardProps>;
+export const bindKeyboard: PropInjector<
+    WithBindKeyboard,
+    WithBindKeyboardProps
+>;

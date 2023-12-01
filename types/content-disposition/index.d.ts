@@ -42,6 +42,9 @@ declare namespace contentDisposition {
  * Create an attachment `Content-Disposition` header value using the given file name, if supplied.
  * The `filename` is optional and if no file name is desired, but you want to specify options, set `filename` to undefined.
  */
-declare function contentDisposition(filename?: string, options?: contentDisposition.Options): string;
+declare function contentDisposition(
+    filename?: string,
+    options?: contentDisposition.Options,
+): string;
 
 export = contentDisposition;

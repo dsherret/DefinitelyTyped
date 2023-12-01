@@ -1,6 +1,7 @@
 # @types/rax [![npm](https://img.shields.io/npm/v/@types/rax.svg)](https://www.npmjs.com/package/@types/rax)
 
 # Installation
+
 ```
 npm install --save @types/rax
 ```
@@ -8,12 +9,11 @@ npm install --save @types/rax
 # Config
 
 Add `node_modules/@types/rax` to your tsconifg.json file, like so:
+
 ```json
 {
   "compilerOptions": {
-    "typeRoots": [
-      "types",
-    ],
+    "typeRoots": ["types"],
     "paths": {
       "rax": ["node_modules/@types/rax"]
     }
@@ -26,7 +26,7 @@ Add `node_modules/@types/rax` to your tsconifg.json file, like so:
 ## Hooks
 
 ```tsx
-import * as Rax from 'rax';
+import * as Rax from "rax";
 
 const createElement = Rax.createElement;
 
@@ -51,46 +51,48 @@ export interface FancyButtonProps {
 export interface FancyButton {
   getClickCount(): number;
 }
-export const FancyButton = Rax.forwardRef((props: FancyButtonProps, ref: Rax.Ref<FancyButton>) => {
-  const [count, setCount] = Rax.useState(0);
+export const FancyButton = Rax.forwardRef(
+  (props: FancyButtonProps, ref: Rax.Ref<FancyButton>) => {
+    const [count, setCount] = Rax.useState(0);
 
-  Rax.useImperativeHandle(ref, () => ({
-    getClickCount() {
-      return count;
-    }
-  }));
+    Rax.useImperativeHandle(ref, () => ({
+      getClickCount() {
+        return count;
+      },
+    }));
 
-  return (
-    <div
-      onClick={() => {
-        setCount(count + 1);
-        props.onClick();
-      }}
-    >
-      {props.children}
-    </div>
-  );
-});
+    return (
+      <div
+        onClick={() => {
+          setCount(count + 1);
+          props.onClick();
+        }}
+      >
+        {props.children}
+      </div>
+    );
+  },
+);
 
 interface AppState {
   name: string;
   age: number;
 }
 
-type AppActions = { type: 'getOlder' } | { type: 'resetAge' };
+type AppActions = { type: "getOlder" } | { type: "resetAge" };
 
 function reducer(s: AppState, action: AppActions): AppState {
   switch (action.type) {
-    case 'getOlder':
+    case "getOlder":
       return { ...s, age: s.age + 1 };
-    case 'resetAge':
+    case "resetAge":
       return { ...s, age: 0 };
   }
 }
 
 const initialState = {
-  name: 'Rax',
-  age: 18
+  name: "Rax",
+  age: 18,
 };
 
 export function App() {
@@ -115,13 +117,15 @@ export function App() {
           if (birthdayRef.current !== null) {
             console.log(birthdayRef.current.getClickCount());
           }
-          dispatch({ type: 'getOlder' });
+          dispatch({ type: "getOlder" });
         }}
         ref={birthdayRef}
       >
         Birthday time!
       </FancyButton>
-      <FancyButton onClick={() => dispatch({ type: 'resetAge' })}>Let's start over.</FancyButton>
+      <FancyButton onClick={() => dispatch({ type: "resetAge" })}>
+        Let's start over.
+      </FancyButton>
     </Rax.Fragment>
   );
 }

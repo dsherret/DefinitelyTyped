@@ -611,13 +611,25 @@ declare class mat4 {
     static makeBasis(x: vec3, y: vec3, z: vec3): mat4;
 
     /** Returns a new matrix generated using the provided arguments. */
-    static orthographic(left: number, right: number, bottom: number, top: number, zNear: number, zFar: number): mat4;
+    static orthographic(
+        left: number,
+        right: number,
+        bottom: number,
+        top: number,
+        zNear: number,
+        zFar: number,
+    ): mat4;
 
     /** Returns the outer product of the two matrices. */
     static outerProduct(arg1: vec4, arg2: vec4): mat4;
 
     /** Returns a new matrix generated using the provided arguments. */
-    static perspective(fovY: number, aspect: number, zNear: number, zFar: number): mat4;
+    static perspective(
+        fovY: number,
+        aspect: number,
+        zNear: number,
+        zFar: number,
+    ): mat4;
 
     /** Returns a matrix with all zero values. */
     static zero(): mat4;
@@ -1042,7 +1054,10 @@ declare namespace Component {
          * top-left of the screen and (1,1) being the bottom-right. The returned world space position will be the point absoluteDepth units away from the Camera’s near plane at the point specified
          * in screen space.
          */
-        screenSpaceToWorldSpace(normalizedScreenSpacePoint: vec2, absoluteDepth: number): vec3;
+        screenSpaceToWorldSpace(
+            normalizedScreenSpacePoint: vec2,
+            absoluteDepth: number,
+        ): vec3;
 
         /**
          * Converts a raw screen space position to a world space position. clipSpacePoint should be a vec3 returned from a previous project() call, since the z value represents a raw depth value not
@@ -1501,10 +1516,16 @@ declare namespace Component {
         isTracking(): boolean;
 
         /** Registers a callback to be executed when the passed in descriptor ends for this tracked object. */
-        registerDescriptorEnd(descriptor: string, callback: (descriptor: string) => void): void;
+        registerDescriptorEnd(
+            descriptor: string,
+            callback: (descriptor: string) => void,
+        ): void;
 
         /** Registers a callback to be executed when the passed in descriptor starts for this tracked object. */
-        registerDescriptorStart(descriptor: string, callback: (descriptor: string) => void): void;
+        registerDescriptorStart(
+            descriptor: string,
+            callback: (descriptor: string) => void,
+        ): void;
     }
 
     /** Attaches the SceneObject to the mesh surface of a different SceneObject. See the Pin To Mesh guide for more information. */
@@ -1558,7 +1579,10 @@ declare namespace Component {
         removeAnimationLayerByName(layerName: string): void;
 
         /** Adds an AnimationLayer under the name layerName. */
-        setAnimationLayerByName(layerName: string, animationLayer: Asset.AnimationLayer): void;
+        setAnimationLayerByName(
+            layerName: string,
+            animationLayer: Asset.AnimationLayer,
+        ): void;
     }
 
     /** Controls playback of animations on the attached SceneObject and its child objects. Please refer to the Playing 3D Animation Guide for setting up and playing animations. */
@@ -1613,7 +1637,10 @@ declare namespace Component {
             name: string,
             offset: number,
             cycles: number,
-            eventCallback: (name: string, animationMixer: AnimationMixer) => void,
+            eventCallback: (
+                name: string,
+                animationMixer: AnimationMixer,
+            ) => void,
         ): void;
 
         /** Stops any animation layer with name name, or all layers if name is empty. */
@@ -1659,7 +1686,9 @@ declare namespace Component {
         resume(): boolean;
 
         /** Sets the callback function to be called whenever this sound stops playing. */
-        setOnFinish(eventCallback: (audioComponent: AudioComponent) => void): void;
+        setOnFinish(
+            eventCallback: (audioComponent: AudioComponent) => void,
+        ): void;
 
         /** Stops the current sound if already playing. */
         stop(fade: boolean): void;
@@ -1809,7 +1838,10 @@ declare namespace Component {
         worldTrackingCapabilities: WorldTrackingCapabilities;
 
         /** Calculates a histogram of world mesh surfaces within a sphere at the given world position and radius. Only available when world mesh tracking is supported and enabled. */
-        calculateWorldMeshHistogram(center: vec3, radius: number): TrackedMeshHistogramResult;
+        calculateWorldMeshHistogram(
+            center: vec3,
+            radius: number,
+        ): TrackedMeshHistogramResult;
 
         /** Returns the actual DeviceTrackingMode being used. This may be different from the requested DeviceTrackingMode. */
         getActualDeviceTrackingMode(): DeviceTrackingMode;
@@ -1904,14 +1936,25 @@ declare namespace Component {
                 | `look_${"around" | "down" | "left" | "right" | "up"}`
                 | "make_some_noise"
                 | "nod_your_head"
-                | `now_${"kiss" | "open_your_mouth" | "raise_your_eyebrows" | "smile"}`
+                | `now_${
+                      | "kiss"
+                      | "open_your_mouth"
+                      | "raise_your_eyebrows"
+                      | "smile"}`
                 | `open_your_${"mouth" | "mouth_again"}`
-                | `raise_${"eyebrows_or_open_mouth" | "your_eyebrows" | "your_eyebrows_again"}`
+                | `raise_${
+                      | "eyebrows_or_open_mouth"
+                      | "your_eyebrows"
+                      | "your_eyebrows_again"}`
                 | "smile"
                 | "smile_again"
                 | "swap_camera"
                 | "tap"
-                | `tap_${"a_surface" | "ground" | "ground_to_place" | "surface_to_place"}`
+                | `tap_${
+                      | "a_surface"
+                      | "ground"
+                      | "ground_to_place"
+                      | "surface_to_place"}`
                 | `try_${"friend" | "rear_camera"}`
                 | "turn_around"
                 | "walk_through_the_door"}`,
@@ -2043,7 +2086,9 @@ declare namespace Component {
          * Checks for an intersection point between the manipulation plane and a line extending from the camera through the specified screen space point. The screen point is passed in as (x, y) with
          * both values ranging from ([0-1], [0-1]), (0,0) being left-top and (1,1) being right-bottom. The result is returned as a ManipulateFrameIntersectResult object.
          */
-        intersectManipulateFrame(screenSpacePoint: vec2): ManipulateFrameIntersectResult;
+        intersectManipulateFrame(
+            screenSpacePoint: vec2,
+        ): ManipulateFrameIntersectResult;
 
         /** Returns whether the specified ManipulateType is enabled for this ManipulateComponent. */
         isManipulateTypeEnabled(type: ManipulateType): boolean;
@@ -2102,19 +2147,19 @@ declare namespace Component {
     type ScriptComponent<
         Inputs extends object = SnapchatLensStudio.ScriptInputs,
         Api extends object = SnapchatLensStudio.ScriptApi,
-    > =
-        & {
-            /** Adds a new SceneEvent, triggered by eventType events, to the ScriptComponent. */
-            createEvent<T extends keyof EventMapping>(eventType: T): EventMapping[T];
+    > = {
+        /** Adds a new SceneEvent, triggered by eventType events, to the ScriptComponent. */
+        createEvent<T extends keyof EventMapping>(
+            eventType: T,
+        ): EventMapping[T];
 
-            /** Removes a previously added SceneEvent from the ScriptComponent. */
-            removeEvent(event: SceneEvent): void;
+        /** Removes a previously added SceneEvent from the ScriptComponent. */
+        removeEvent(event: SceneEvent): void;
 
-            /** Generic object accessible by other instances of ScriptComponent. Use this object to store references to properties and methods that need to be accessible from other ScriptComponents. */
-            api: Api;
-        }
-        & Component
-        & Inputs;
+        /** Generic object accessible by other instances of ScriptComponent. Use this object to store references to properties and methods that need to be accessible from other ScriptComponents. */
+        api: Api;
+    } & Component &
+        Inputs;
 }
 
 /**
@@ -2188,7 +2233,10 @@ interface AnimationMixerLayer extends ScriptObject {
     startWithCallback(
         offset: number,
         cycles: number,
-        eventCallback: (name: string, animationMixer: Component.AnimationMixer) => void,
+        eventCallback: (
+            name: string,
+            animationMixer: Component.AnimationMixer,
+        ) => void,
     ): void;
 
     /** Stops the animation from playing and jumps to the animation’s end. */
@@ -3162,20 +3210,26 @@ interface FaceRenderObjectProvider extends RenderObjectProvider {
  * ```
  */
 type Expressions = {
-    [
-        E in
-            | `Brows${`Down${"Left" | "Right"}` | `Up${"Center" | "Left" | "Right"}`}`
-            | `CheekSquint${"Left" | "Right"}`
-            | `Eye${"Blink" | "Down" | "In" | "Open" | "Out" | "Squint" | "Up"}${"Left" | "Right"}`
-            | `Jaw${"Forward" | "Left" | "Right" | "Open"}`
-            | `${
-                | `Lips${"Funnel" | "Pucker"}`
-                | `LowerLip${`Down${"Left" | "Right"}` | "Raise"}`
-                | `UpperLip${"Close" | "Raise" | `Up${"Left" | "Right"}`}`}`
-            | `Mouth${`Close` | `${"Dimple" | "Frown" | "" | "Smile" | "Stretch" | "Up"}${"Left" | "Right"}`}`
-            | "Puff"
-            | `Sneer${"Left" | "Right"}`
-    ]: E;
+    [E in
+        | `Brows${
+              | `Down${"Left" | "Right"}`
+              | `Up${"Center" | "Left" | "Right"}`}`
+        | `CheekSquint${"Left" | "Right"}`
+        | `Eye${"Blink" | "Down" | "In" | "Open" | "Out" | "Squint" | "Up"}${
+              | "Left"
+              | "Right"}`
+        | `Jaw${"Forward" | "Left" | "Right" | "Open"}`
+        | `${
+              | `Lips${"Funnel" | "Pucker"}`
+              | `LowerLip${`Down${"Left" | "Right"}` | "Raise"}`
+              | `UpperLip${"Close" | "Raise" | `Up${"Left" | "Right"}`}`}`
+        | `Mouth${
+              | `Close`
+              | `${"Dimple" | "Frown" | "" | "Smile" | "Stretch" | "Up"}${
+                    | "Left"
+                    | "Right"}`}`
+        | "Puff"
+        | `Sneer${"Left" | "Right"}`]: E;
 };
 
 /** RenderObjectProvider for mesh objects generated procedurally. */
@@ -3268,7 +3322,9 @@ interface AnimatedTextureFileProvider extends TextureProvider {
     resume(): void;
 
     /** Sets the callback function to be called whenever the animation stops playing. */
-    setOnFinish(eventCallback: (animatedTexture: AnimatedTextureFileProvider) => void): void;
+    setOnFinish(
+        eventCallback: (animatedTexture: AnimatedTextureFileProvider) => void,
+    ): void;
 
     /** Stops the animation. */
     stop(): void;
@@ -3339,7 +3395,12 @@ interface Rect extends ScriptObject {
 
 declare namespace Rect {
     /** Creates a new Rect with the given properties. */
-    function create(left: number, right: number, bottom: number, top: number): Rect;
+    function create(
+        left: number,
+        right: number,
+        bottom: number,
+        top: number,
+    ): Rect;
 }
 
 /**
@@ -3405,18 +3466,34 @@ interface ProceduralTextureProvider extends TextureProvider {
      * Returns a Uint8 array containing the pixel values in a region of the texture. The region starts at the pixel coordinates x, y, and extends rightward by width and upward by height. Values
      * returned are integers ranging from 0 to 255.
      */
-    getPixels(x: number, y: number, width: number, height: number, data: Uint8Array): void;
+    getPixels(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        data: Uint8Array,
+    ): void;
 
     /**
      * Sets a region of pixels on the texture. The region starts at the pixel coordinates x, y, and extends rightward by width and upward by height. Uses the values of the passed in Uint8Array data,
      * which should be integer values ranging from 0 to 255.
      */
-    setPixels(x: number, y: number, width: number, height: number, data: Uint8Array): void;
+    setPixels(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        data: Uint8Array,
+    ): void;
 }
 
 declare namespace ProceduralTextureProvider {
     /** Creates a new, blank Texture Provider using the passed in dimensions and Colorspace. The ProceduralTextureProvider can be accessed through the control property on the returned texture. */
-    function create(width: number, height: number, colorspace: Colorspace): Asset.Texture;
+    function create(
+        width: number,
+        height: number,
+        colorspace: Colorspace,
+    ): Asset.Texture;
 
     /** Creates a new Procedural Texture based on the passed in texture. The ProceduralTextureProvider can be accessed through the control property on the returned texture. */
     function createFromTexture(texture: Asset.Texture): Asset.Texture;
@@ -3647,7 +3724,8 @@ type TouchMoveEvent = _TouchEvent;
 type TouchStartEvent = _TouchEvent;
 
 /** If a DeviceTracking component is present in the scene, this event is triggered when the tracking is restarted (typically when the Lens starts, or if the user taps the ground). */
-interface SurfaceTrackingResetEvent extends SceneEvent<SurfaceTrackingResetEvent> {}
+interface SurfaceTrackingResetEvent
+    extends SceneEvent<SurfaceTrackingResetEvent> {}
 
 /** Triggered when the lens turns off. */
 interface TurnOffEvent extends SceneEvent<TurnOffEvent> {}
@@ -3662,7 +3740,8 @@ interface UpdateEvent extends SceneEvent<UpdateEvent> {
 }
 
 /** Triggered when new world tracking meshes are detected. Only available when a Device Tracking component is in the scene, and world mesh tracking is supported and enabled. */
-interface WorldTrackingMeshesAddedEvent extends SceneEvent<WorldTrackingMeshesAddedEvent> {
+interface WorldTrackingMeshesAddedEvent
+    extends SceneEvent<WorldTrackingMeshesAddedEvent> {
     /** Returns an array of newly added Tracked Meshes. */
     getMeshes(): TrackedMesh[];
 }
@@ -3677,13 +3756,15 @@ interface TrackedMesh extends ScriptObject {
 }
 
 /** Triggered when some world tracking meshes are no longer detected. Only available when a Device Tracking component is in the scene, and world mesh tracking is supported and enabled. */
-interface WorldTrackingMeshesRemovedEvent extends SceneEvent<WorldTrackingMeshesRemovedEvent> {
+interface WorldTrackingMeshesRemovedEvent
+    extends SceneEvent<WorldTrackingMeshesRemovedEvent> {
     /** Returns an array of TrackedMeshes that are no longer detected. */
     getMeshes(): TrackedMesh[];
 }
 
 /** Triggered when world tracking meshes are updated. Only available when a Device Tracking component is in the scene, and world mesh tracking is supported and enabled. */
-interface WorldTrackingMeshesUpdatedEvent extends SceneEvent<WorldTrackingMeshesUpdatedEvent> {
+interface WorldTrackingMeshesUpdatedEvent
+    extends SceneEvent<WorldTrackingMeshesUpdatedEvent> {
     /** Returns an array of TrackedMeshes that were updated. */
     getMeshes(): TrackedMesh[];
 }
@@ -4022,7 +4103,9 @@ interface UserContextSystem extends ScriptObject {
     requestTemperatureFahrenheit(callback: (data: number) => void): void;
 
     /** Provides the user’s current temperature as a localized string. */
-    requestTemperatureFormatted(callback: (formattedData: string) => void): void;
+    requestTemperatureFormatted(
+        callback: (formattedData: string) => void,
+    ): void;
 
     /** Provides the user’s current weather condition. */
     requestWeatherCondition(callback: (data: WeatherCondition) => void): void;
@@ -4088,10 +4171,16 @@ interface TouchDataProvider extends ScriptObject {
     touchBlockingExceptionMask: number;
 
     /** Returns a copy of currentMask with the newException flag set to true. */
-    composeTouchBlockingExceptionMask(currentMask: number, newException: TouchTypeException): number;
+    composeTouchBlockingExceptionMask(
+        currentMask: number,
+        newException: TouchTypeException,
+    ): number;
 
     /** Allow or stop allowing a certain TouchType to pass through your lens. Useful for allowing Snapchat to handle certain TouchType, e.g. allowing TouchTypeDoubleTap to flip the camera. */
-    enableTouchBlockingException(exception: TouchTypeException, enable: boolean): void;
+    enableTouchBlockingException(
+        exception: TouchTypeException,
+        enable: boolean,
+    ): void;
 }
 
 /** Settings for rendering the background on a Text component. Accessible through the Text component’s backgroundSettings property. */
@@ -4193,7 +4282,14 @@ interface OutlineSettings extends ScriptObject {
     size: number;
 }
 
-type TouchTypeException = `TouchType${"None" | "Touch" | "Tap" | "DoubleTap" | "Scale" | "Pan" | "Swipe"}`;
+type TouchTypeException = `TouchType${
+    | "None"
+    | "Touch"
+    | "Tap"
+    | "DoubleTap"
+    | "Scale"
+    | "Pan"
+    | "Swipe"}`;
 
 declare namespace SnapchatLensStudio {
     interface Global {

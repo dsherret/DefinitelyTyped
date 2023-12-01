@@ -129,13 +129,13 @@ el.getChildrenByAttr("my", "attr"); // $ExpectType Element[]
 el.getChildrenByAttr("my", "attr", "ns"); // $ExpectType Element[]
 el.getChildrenByAttr("my", "attr", "ns", true); // $ExpectType Element[]
 // $ExpectType Element[]
-el.getChildrenByFilter(child => {
+el.getChildrenByFilter((child) => {
     // $ExpectType Node
     child;
     return true;
 });
 // $ExpectType Element[]
-el.getChildrenByFilter(child => {
+el.getChildrenByFilter((child) => {
     // $ExpectType Node
     child;
     return true;
@@ -154,7 +154,7 @@ el.prepend(el, el, el); // $ExpectType void
 
 el.toString(); // $ExpectType string
 // $ExpectType void
-el.write(part => {
+el.write((part) => {
     part; // $ExpectType string
 });
 

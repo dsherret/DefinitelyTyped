@@ -20,7 +20,10 @@ declare class CrowdClient extends CrowdApi {
         remove: (username: string) => Promise<void>;
         attributes: {
             list: (username: string) => Promise<Attributes>;
-            set: (username: string, attributes: Attributes) => Promise<Attributes>;
+            set: (
+                username: string,
+                attributes: Attributes,
+            ) => Promise<Attributes>;
             remove: (username: string, attributename: string) => Promise<void>;
             password: {
                 set: (username: string, password: string) => Promise<void>;
@@ -31,8 +34,17 @@ declare class CrowdClient extends CrowdApi {
             };
         };
         groups: {
-            get: (username: string, groupname: string, nested?: boolean) => Promise<string>;
-            list: (username: string, nested?: boolean, startIndex?: number, maxResults?: number) => Promise<string[]>;
+            get: (
+                username: string,
+                groupname: string,
+                nested?: boolean,
+            ) => Promise<string>;
+            list: (
+                username: string,
+                nested?: boolean,
+                startIndex?: number,
+                maxResults?: number,
+            ) => Promise<string[]>;
             add: (username: string, groupname: string) => Promise<void>;
             remove: (username: string, groupname: string) => Promise<void>;
         };
@@ -44,11 +56,18 @@ declare class CrowdClient extends CrowdApi {
         remove: (groupname: string) => Promise<void>;
         attributes: {
             list: (groupname: string) => Promise<Attributes>;
-            set: (groupname: string, attributes: Attributes) => Promise<Attributes>;
+            set: (
+                groupname: string,
+                attributes: Attributes,
+            ) => Promise<Attributes>;
             remove: (groupname: string, attributename: string) => Promise<void>;
         };
         users: {
-            get: (groupname: string, username: string, nested?: boolean) => Promise<string>;
+            get: (
+                groupname: string,
+                username: string,
+                nested?: boolean,
+            ) => Promise<string>;
             list: (
                 groupname: string,
                 nested?: boolean,
@@ -60,13 +79,31 @@ declare class CrowdClient extends CrowdApi {
             remove: (groupname: string, username: string) => Promise<void>;
         };
         parents: {
-            get: (groupname: string, parentname: string, nested?: boolean) => Promise<string>;
-            list: (groupname: string, nested?: boolean, startIndex?: number, maxResults?: number) => Promise<string[]>;
+            get: (
+                groupname: string,
+                parentname: string,
+                nested?: boolean,
+            ) => Promise<string>;
+            list: (
+                groupname: string,
+                nested?: boolean,
+                startIndex?: number,
+                maxResults?: number,
+            ) => Promise<string[]>;
             add: (groupname: string, parentname: string) => Promise<void>;
         };
         children: {
-            get: (groupname: string, childname: string, nested?: boolean) => Promise<string>;
-            list: (groupname: string, nested?: boolean, startIndex?: number, maxResults?: number) => Promise<string[]>;
+            get: (
+                groupname: string,
+                childname: string,
+                nested?: boolean,
+            ) => Promise<string>;
+            list: (
+                groupname: string,
+                nested?: boolean,
+                startIndex?: number,
+                maxResults?: number,
+            ) => Promise<string[]>;
             add: (groupname: string, childname: string) => Promise<void>;
             remove: (groupname: string, childname: string) => Promise<void>;
         };
@@ -91,7 +128,10 @@ declare class CrowdClient extends CrowdApi {
     };
     session: {
         getUser: (token: string) => Promise<User>;
-        validate: (token: string, validationFactors?: ValidationFactors) => Promise<Session>;
+        validate: (
+            token: string,
+            validationFactors?: ValidationFactors,
+        ) => Promise<Session>;
         create: (
             username: string,
             password: string,

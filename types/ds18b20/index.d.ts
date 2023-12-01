@@ -34,7 +34,10 @@ export function sensors(callback: SensorsCallback): void;
  * @param sensorId The sensor ID
  * @param callback callback(err, value)
  */
-export function temperature(sensorId: string, callback: TemperatureCallback): void;
+export function temperature(
+    sensorId: string,
+    callback: TemperatureCallback,
+): void;
 
 /**
  * Get the temperature of a given sensor
@@ -42,7 +45,11 @@ export function temperature(sensorId: string, callback: TemperatureCallback): vo
  * @param options  The options
  * @param callback callback(err, value)
  */
-export function temperature(sensorId: string, options: TemperatureOptions, callback: TemperatureCallback): void;
+export function temperature(
+    sensorId: string,
+    options: TemperatureOptions,
+    callback: TemperatureCallback,
+): void;
 
 /**
  * Get the temperature of a given sensor sync
@@ -50,4 +57,7 @@ export function temperature(sensorId: string, options: TemperatureOptions, callb
  * @param options  The options
  * @return The temperature
  */
-export function temperatureSync(sensorId: string, options?: TemperatureOptions): number;
+export function temperatureSync(
+    sensorId: string,
+    options?: TemperatureOptions,
+): number;

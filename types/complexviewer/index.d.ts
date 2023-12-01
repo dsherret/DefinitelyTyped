@@ -96,7 +96,7 @@ export interface App {
 }
 
 export interface AppConstructor {
-    new(networkDiv: HTMLElement, maxCountInitiallyExpanded?: number): App;
+    new (networkDiv: HTMLElement, maxCountInitiallyExpanded?: number): App;
 
     readonly prototype: App;
 }

@@ -5,13 +5,13 @@ declare function mockProperty(
     prop: PropertyKey,
     options?:
         | { delete: true }
-        | (
-            & { nonEnumerable?: boolean; delete?: false }
-            & (
-                | { nonWritable?: boolean; value?: unknown }
-                | { get?: (() => unknown) | undefined; set?: ((v: unknown) => void) | undefined }
-            )
-        ),
+        | ({ nonEnumerable?: boolean; delete?: false } & (
+              | { nonWritable?: boolean; value?: unknown }
+              | {
+                    get?: (() => unknown) | undefined;
+                    set?: ((v: unknown) => void) | undefined;
+                }
+          )),
 ): RestoreFunction;
 
 export = mockProperty;

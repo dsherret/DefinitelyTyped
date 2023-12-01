@@ -1,18 +1,28 @@
-type TypedArray = Float32Array | Uint32Array | Uint16Array | Uint8Array | Int16Array | Int8Array;
+type TypedArray =
+    | Float32Array
+    | Uint32Array
+    | Uint16Array
+    | Uint8Array
+    | Int16Array
+    | Int8Array;
 
-export function createDecoderModule(object?: Record<string, unknown>): Promise<DecoderModule>;
-export function createEncoderModule(object?: Record<string, unknown>): Promise<EncoderModule>;
+export function createDecoderModule(
+    object?: Record<string, unknown>,
+): Promise<DecoderModule>;
+export function createEncoderModule(
+    object?: Record<string, unknown>,
+): Promise<EncoderModule>;
 
 export interface BaseModule {
-    Mesh: new() => Mesh;
+    Mesh: new () => Mesh;
 
-    DracoFloat32Array: new() => DracoFloat32Array;
-    DracoInt8Array: new() => DracoInt8Array;
-    DracoInt16Array: new() => DracoInt16Array;
-    DracoInt32Array: new() => DracoInt32Array;
-    DracoUInt8Array: new() => DracoUInt8Array;
-    DracoUInt16Array: new() => DracoUInt16Array;
-    DracoUInt32Array: new() => DracoUInt32Array;
+    DracoFloat32Array: new () => DracoFloat32Array;
+    DracoInt8Array: new () => DracoInt8Array;
+    DracoInt16Array: new () => DracoInt16Array;
+    DracoInt32Array: new () => DracoInt32Array;
+    DracoUInt8Array: new () => DracoUInt8Array;
+    DracoUInt16Array: new () => DracoUInt16Array;
+    DracoUInt32Array: new () => DracoUInt32Array;
 
     POSITION: GeometryAttributeType;
     NORMAL: GeometryAttributeType;
@@ -36,9 +46,9 @@ export interface BaseModule {
 }
 
 export interface EncoderModule extends BaseModule {
-    Encoder: new() => Encoder;
-    ExpertEncoder: new(pc: PointCloud) => ExpertEncoder;
-    MeshBuilder: new() => MeshBuilder;
+    Encoder: new () => Encoder;
+    ExpertEncoder: new (pc: PointCloud) => ExpertEncoder;
+    MeshBuilder: new () => MeshBuilder;
 
     MESH_SEQUENTIAL_ENCODING: number;
     MESH_EDGEBREAKER_ENCODING: number;
@@ -49,12 +59,14 @@ export interface DracoDecoderModuleProps {
     onModuleLoaded?: (draco: DecoderModule) => void;
 }
 
-export type DracoDecoderModule = (props: DracoDecoderModuleProps) => Promise<DecoderModule>;
+export type DracoDecoderModule = (
+    props: DracoDecoderModuleProps,
+) => Promise<DecoderModule>;
 
 export interface DecoderModule extends BaseModule {
-    Decoder: new() => Decoder;
-    DecoderBuffer: new() => DecoderBuffer;
-    PointCloud: new() => PointCloud;
+    Decoder: new () => Decoder;
+    DecoderBuffer: new () => DecoderBuffer;
+    PointCloud: new () => PointCloud;
 
     // GeometryType.
     TRIANGULAR_MESH: GeometryType;
@@ -79,7 +91,10 @@ interface EncoderBase {
 }
 
 export interface Encoder extends EncoderBase {
-    SetAttributeQuantization(attributeType: GeometryAttributeType, bits: number): void;
+    SetAttributeQuantization(
+        attributeType: GeometryAttributeType,
+        bits: number,
+    ): void;
     SetAttributeExplicitQuantization(
         attributeType: GeometryAttributeType,
         bits: number,
@@ -99,16 +114,30 @@ export interface ExpertEncoder extends EncoderBase {
         origin: [number, number, number],
         range: number,
     ): void;
-    EncodeToDracoBuffer(deduplicateValues: boolean, array: DracoInt8Array): number;
+    EncodeToDracoBuffer(
+        deduplicateValues: boolean,
+        array: DracoInt8Array,
+    ): number;
 }
 
 export interface Decoder {
     DecodeBufferToMesh(buffer: DecoderBuffer, mesh: Mesh): Status;
-    DecodeBufferToPointCloud(buffer: DecoderBuffer, pointCloud: PointCloud): Status;
+    DecodeBufferToPointCloud(
+        buffer: DecoderBuffer,
+        pointCloud: PointCloud,
+    ): Status;
     GetAttributeByUniqueId: (pointCloud: PointCloud, id: number) => Attribute;
     GetFaceFromMesh: (mesh: Mesh, index: number, array: DracoArray) => number;
-    GetTrianglesUInt16Array: (mesh: Mesh, byteLength: number, ptr: number) => void;
-    GetTrianglesUInt32Array: (mesh: Mesh, byteLength: number, ptr: number) => void;
+    GetTrianglesUInt16Array: (
+        mesh: Mesh,
+        byteLength: number,
+        ptr: number,
+    ) => void;
+    GetTrianglesUInt32Array: (
+        mesh: Mesh,
+        byteLength: number,
+        ptr: number,
+    ) => void;
     GetAttributeDataArrayForAllPoints: (
         pointCloud: PointCloud,
         attribute: Attribute,
@@ -116,13 +145,41 @@ export interface Decoder {
         byteLength: number,
         ptr: number,
     ) => void;
-    GetAttributeFloatForAllPoints: (pointCloud: PointCloud, attribute: Attribute, array: DracoArray) => void;
-    GetAttributeInt8ForAllPoints: (pointCloud: PointCloud, attribute: Attribute, array: DracoArray) => void;
-    GetAttributeInt16ForAllPoints: (pointCloud: PointCloud, attribute: Attribute, array: DracoArray) => void;
-    GetAttributeInt32ForAllPoints: (pointCloud: PointCloud, attribute: Attribute, array: DracoArray) => void;
-    GetAttributeUInt8ForAllPoints: (pointCloud: PointCloud, attribute: Attribute, array: DracoArray) => void;
-    GetAttributeUInt16ForAllPoints: (pointCloud: PointCloud, attribute: Attribute, array: DracoArray) => void;
-    GetAttributeUInt32ForAllPoints: (pointCloud: PointCloud, attribute: Attribute, array: DracoArray) => void;
+    GetAttributeFloatForAllPoints: (
+        pointCloud: PointCloud,
+        attribute: Attribute,
+        array: DracoArray,
+    ) => void;
+    GetAttributeInt8ForAllPoints: (
+        pointCloud: PointCloud,
+        attribute: Attribute,
+        array: DracoArray,
+    ) => void;
+    GetAttributeInt16ForAllPoints: (
+        pointCloud: PointCloud,
+        attribute: Attribute,
+        array: DracoArray,
+    ) => void;
+    GetAttributeInt32ForAllPoints: (
+        pointCloud: PointCloud,
+        attribute: Attribute,
+        array: DracoArray,
+    ) => void;
+    GetAttributeUInt8ForAllPoints: (
+        pointCloud: PointCloud,
+        attribute: Attribute,
+        array: DracoArray,
+    ) => void;
+    GetAttributeUInt16ForAllPoints: (
+        pointCloud: PointCloud,
+        attribute: Attribute,
+        array: DracoArray,
+    ) => void;
+    GetAttributeUInt32ForAllPoints: (
+        pointCloud: PointCloud,
+        attribute: Attribute,
+        array: DracoArray,
+    ) => void;
     GetEncodedGeometryType: (buffer: DecoderBuffer) => GeometryType;
     GetAttributeId: (pointCloud: PointCloud, attributeType: number) => number;
     GetAttribute: (pointCloud: PointCloud, id: number) => Attribute;
@@ -232,7 +289,11 @@ export interface PointCloudBuilder {
 }
 
 export interface MeshBuilder extends PointCloudBuilder {
-    AddFacesToMesh(mesh: Mesh, numFaces: number, faces: Uint16Array | Uint32Array): void;
+    AddFacesToMesh(
+        mesh: Mesh,
+        numFaces: number,
+        faces: Uint16Array | Uint32Array,
+    ): void;
 }
 
 export {};

@@ -1,11 +1,28 @@
 export class GameObject extends MessageDispatcher {
-    static getBoundsWithPoints(points: number[], worldTransformation: Matrix, outRect?: Rectangle): Rectangle;
+    static getBoundsWithPoints(
+        points: number[],
+        worldTransformation: Matrix,
+        outRect?: Rectangle,
+    ): Rectangle;
     static intersects(gameObject: GameObject, point: Vector): boolean;
-    static intersectsAt(gameObject: GameObject, point: Vector, outVector?: Vector): boolean;
-    static intersectsWith(gameObject: GameObject, point: Vector): GameObject | null;
+    static intersectsAt(
+        gameObject: GameObject,
+        point: Vector,
+        outVector?: Vector,
+    ): boolean;
+    static intersectsWith(
+        gameObject: GameObject,
+        point: Vector,
+    ): GameObject | null;
     static findWithTag(tag: string): GameObject[] | null;
-    static findComponents(gameObject: GameObject, type: new() => Component): Component[];
-    static forEach(gameObject: GameObject, action: (arg0: GameObject) => any): void;
+    static findComponents(
+        gameObject: GameObject,
+        type: new () => Component,
+    ): Component[];
+    static forEach(
+        gameObject: GameObject,
+        action: (arg0: GameObject) => any,
+    ): void;
     static find(name: string, node?: GameObject): GameObject;
     static findById(id: number, node?: GameObject): GameObject;
     constructor();
@@ -47,7 +64,9 @@ export class GameObject extends MessageDispatcher {
     checkStatic(includeChildren?: boolean): boolean;
     onAdded(): void;
     onRemoved(): void;
-    add(...gameObjectsAndOrComponents: Array<GameObject | Component>): GameObject;
+    add(
+        ...gameObjectsAndOrComponents: Array<GameObject | Component>
+    ): GameObject;
     addChild(child: GameObject): GameObject;
     addChildAt(child: GameObject, index?: number): GameObject;
     private __setParent;
@@ -73,7 +92,11 @@ export class GameObject extends MessageDispatcher {
     private __update;
     protected onUpdate(): void;
     protected onGetLocalBounds(outRect?: Rectangle): Rectangle;
-    getBounds(space?: GameObject, includeChildren?: boolean, outRect?: Rectangle): Rectangle;
+    getBounds(
+        space?: GameObject,
+        includeChildren?: boolean,
+        outRect?: Rectangle,
+    ): Rectangle;
     getStageBounds(outRect?: Rectangle): Rectangle;
     hitTest(localPoint: Vector): GameObject | null;
     protected onHitTest(localPoint: Vector): boolean;
@@ -114,7 +137,11 @@ export class GameObject extends MessageDispatcher {
     get pivotY(): number;
     alignAnchor(ax?: number, ay?: number): GameObject;
     alignPivot(ax?: number, ay?: number): GameObject;
-    alignPivotOffset(ax?: number, ay?: number, includeChildren?: boolean): GameObject;
+    alignPivotOffset(
+        ax?: number,
+        ay?: number,
+        includeChildren?: boolean,
+    ): GameObject;
     set scaleX(arg: number);
     get scaleX(): number;
     set scaleY(arg: number);

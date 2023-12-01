@@ -6,7 +6,10 @@ import * as ng from "angular";
 // Diff / Omit taken from https://github.com/Microsoft/TypeScript/issues/12215#issuecomment-311923766
 type Omit<T, K extends keyof T> = Pick<
     T,
-    ({ [P in keyof T]: P } & { [P in K]: never } & { [x: string]: never; [x: number]: never })[keyof T]
+    ({ [P in keyof T]: P } & { [P in K]: never } & {
+        [x: string]: never;
+        [x: number]: never;
+    })[keyof T]
 >;
 
 declare module "angular" {
@@ -79,7 +82,8 @@ declare module "angular" {
             isCustomHelperUsed(): Boolean;
         }
 
-        interface UISortableUIItem<T> extends Omit<ng.IAugmentedJQuery, "sortable"> {
+        interface UISortableUIItem<T>
+            extends Omit<ng.IAugmentedJQuery, "sortable"> {
             sortable: UISortableProperties<T>;
         }
 

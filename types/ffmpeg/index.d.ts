@@ -220,7 +220,12 @@ interface Video {
      * video.setVideoSize('640x480', true, false)
      * ```
      */
-    setVideoSize(size: string, keepPixelAspectRatio: boolean, keepAspectRatio: boolean, paddingColor?: string): Video;
+    setVideoSize(
+        size: string,
+        keepPixelAspectRatio: boolean,
+        keepAspectRatio: boolean,
+        paddingColor?: string,
+    ): Video;
 
     /**
      * Sets the new audio codec.
@@ -292,7 +297,10 @@ interface Video {
      * @returns The path to the newly created file, or void if the callback was defined
      */
     save(destinationFileName: string): Promise<string>;
-    save(destinationFileName: string, cb: (err: Error, file: string) => void): void;
+    save(
+        destinationFileName: string,
+        cb: (err: Error, file: string) => void,
+    ): void;
 
     /**
      * This function extracts the audio stream of a video into an mp3 file.
@@ -301,7 +309,10 @@ interface Video {
      * @returns The path to the newly created file, or void if the callback was defined
      */
     fnExtractSoundToMP3(destinationFileName: string): Promise<string>;
-    fnExtractSoundToMP3(destinationFileName: string, cb: (err: Error, file: string) => void): void;
+    fnExtractSoundToMP3(
+        destinationFileName: string,
+        cb: (err: Error, file: string) => void,
+    ): void;
 
     /**
      * This function takes care of extracting one or more frames from the video that is being developed.
@@ -310,7 +321,10 @@ interface Video {
      * @param cb A callback function for an array of paths to the created frames
      * @returns A promise for an array of paths to the created frames, or void if the callback was defined
      */
-    fnExtractFrameToJPG(destinationFolder: string, settings?: FrameToJPGSettings): Promise<string[]>;
+    fnExtractFrameToJPG(
+        destinationFolder: string,
+        settings?: FrameToJPGSettings,
+    ): Promise<string[]>;
     fnExtractFrameToJPG(
         destinationFolder: string,
         settings?: FrameToJPGSettings,
@@ -326,7 +340,11 @@ interface Video {
      * @param cb A callback function for the path of the new video containing the watermark
      * @returns The path to the newly created video, or void if the callback was defined
      */
-    fnAddWatermark(watermarkPath: string, newPilePath?: string, settings?: WatermarkSettings): Promise<string>;
+    fnAddWatermark(
+        watermarkPath: string,
+        newPilePath?: string,
+        settings?: WatermarkSettings,
+    ): Promise<string>;
     fnAddWatermark(
         watermarkPath: string,
         newPilePath?: string,
@@ -338,7 +356,10 @@ interface Video {
 }
 
 interface Iffmpeg {
-    new(filePath: string, cb?: (err: Error, video: Video) => void): Promise<Video>;
+    new (
+        filePath: string,
+        cb?: (err: Error, video: Video) => void,
+    ): Promise<Video>;
 }
 
 declare var ffmpeg: Iffmpeg;

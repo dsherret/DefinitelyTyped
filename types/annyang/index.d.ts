@@ -146,11 +146,22 @@ export interface Annyang {
 
     addCallback(
         event: Events,
-        callback: (userSaid?: string, commandText?: string, results?: string[]) => void,
+        callback: (
+            userSaid?: string,
+            commandText?: string,
+            results?: string[],
+        ) => void,
         context?: any,
     ): void;
 
-    removeCallback(event?: Events, callback?: (userSaid: string, commandText: string, results: string[]) => void): void;
+    removeCallback(
+        event?: Events,
+        callback?: (
+            userSaid: string,
+            commandText: string,
+            results: string[],
+        ) => void,
+    ): void;
 
     /**
      * Returns true if speech recognition is currently on.

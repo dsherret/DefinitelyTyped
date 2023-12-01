@@ -22,10 +22,12 @@ const version = "";
 const versions: string[] = [];
 const loose = true;
 // $ExpectType SemVer | null
-let sem: semver.SemVer | null = Math.random() < 0.5 ? new semver.SemVer(str, {}) : null;
+let sem: semver.SemVer | null =
+    Math.random() < 0.5 ? new semver.SemVer(str, {}) : null;
 
 // $ExpectType string | SemVer | null | undefined
-const anyVersion = Math.random() < 0.5 ? undefined : Math.random() < 0.5 ? strn : sem;
+const anyVersion =
+    Math.random() < 0.5 ? undefined : Math.random() < 0.5 ? strn : sem;
 
 sem = new semver.SemVer(str, { includePrerelease: false });
 sem = new semver.SemVer(str, { loose: true });

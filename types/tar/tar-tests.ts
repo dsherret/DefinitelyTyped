@@ -59,7 +59,7 @@ extract.on("entry", (entry: any) => undefined);
         .end("")
         .end("one-byte.txt")
         .on("data", () => {})
-        .on("data", c => {
+        .on("data", (c) => {
             // $ExpectType Buffer
             c;
         })
@@ -108,12 +108,10 @@ tar.c(
     ["some", "files", "and", "folders"],
 ).pipe(fs.createWriteStream("my-tarball.tgz"));
 
-tar.x(
-    {
-        file: "my-tarball.tgz",
-        noChmod: true,
-    },
-).then(() => undefined);
+tar.x({
+    file: "my-tarball.tgz",
+    noChmod: true,
+}).then(() => undefined);
 
 fs.createReadStream("my-tarball.tgz").pipe(
     tar.x({
@@ -129,11 +127,11 @@ tar.t({
 
 fs.createReadStream("my-tarball.tgz")
     .pipe(tar.t())
-    .on("entry", entry => console.log(entry.size));
+    .on("entry", (entry) => console.log(entry.size));
 
 fs.createReadStream("my-tarball.tgz")
     .pipe(new tar.Parse())
-    .on("entry", entry => entry.on("data", data => console.log(data)));
+    .on("entry", (entry) => entry.on("data", (data) => console.log(data)));
 
 tar.list({
     file: "my-tarball.tgz",

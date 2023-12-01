@@ -15,16 +15,18 @@ declare namespace auth {
          * An npmrc configuration object used when searching for tokens. If no object is provided,
          * the `.npmrc` file at the base of the project is used.
          */
-        npmrc?: {
-            /**
-             * A registry url used for matching
-             */
-            registry?: string | undefined;
-            /**
-             * Registry url's with token information
-             */
-            [registryUrls: string]: string | undefined;
-        } | undefined;
+        npmrc?:
+            | {
+                  /**
+                   * A registry url used for matching
+                   */
+                  registry?: string | undefined;
+                  /**
+                   * Registry url's with token information
+                   */
+                  [registryUrls: string]: string | undefined;
+              }
+            | undefined;
     }
     /**
      * The generated authentication information

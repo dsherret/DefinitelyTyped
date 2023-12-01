@@ -66,7 +66,12 @@ export { default as ResponsiveWrapper } from "./responsive-wrapper";
 export { default as SandBox } from "./sandbox";
 export { default as ScrollLock } from "./scroll-lock";
 export { default as SelectControl } from "./select-control";
-export { createSlotFill, Fill, Provider as SlotFillProvider, Slot } from "./slot-fill";
+export {
+    createSlotFill,
+    Fill,
+    Provider as SlotFillProvider,
+    Slot,
+} from "./slot-fill";
 export { default as Snackbar } from "./snackbar";
 export { default as SnackbarList } from "./snackbar/list";
 export { default as Spinner } from "./spinner";
@@ -88,6 +93,9 @@ export { default as withConstrainedTabbing } from "./higher-order/with-constrain
 export { default as withFallbackStyles } from "./higher-order/with-fallback-styles";
 export { default as withFilters } from "./higher-order/with-filters";
 export { default as withFocusOutside } from "./higher-order/with-focus-outside";
-export { default as withFocusReturn, Provider as FocusReturnProvider } from "./higher-order/with-focus-return";
+export {
+    default as withFocusReturn,
+    Provider as FocusReturnProvider,
+} from "./higher-order/with-focus-return";
 export { default as withNotices } from "./higher-order/with-notices";
 export { default as withSpokenMessages } from "./higher-order/with-spoken-messages";

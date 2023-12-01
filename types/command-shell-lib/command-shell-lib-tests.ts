@@ -20,13 +20,26 @@ showHelp({});
 // @ts-expect-error
 showHelp({ invalid: {} });
 // @ts-expect-error
-showHelp({ invalid: { description: "This command is invalid, parameters missing", handler: () => {} } });
+showHelp({
+    invalid: {
+        description: "This command is invalid, parameters missing",
+        handler: () => {},
+    },
+});
 // @ts-expect-error
-showHelp({ invalid: { parameters: ["missing", "description"], handler: () => {} } });
+showHelp({
+    invalid: { parameters: ["missing", "description"], handler: () => {} },
+});
 // @ts-expect-error
 showHelp({ invalid: { parameters: ["missing", "handler"], description: "" } });
 // $ExpectType void
-showHelp({ valid: { parameters: ["valid"], description: "This command is valid", handler: () => {} } });
+showHelp({
+    valid: {
+        parameters: ["valid"],
+        description: "This command is valid",
+        handler: () => {},
+    },
+});
 
 // $ExpectType void
 executeCommander(["some", "command"], {});
@@ -41,7 +54,10 @@ initialize({}, "This is a prompt string");
 // @ts-expect-error
 initialize({}, null);
 // @ts-expect-error
-initialize({ invalid: { parameters: ["missing", "description"], handler: () => {} } }, "invalid");
+initialize(
+    { invalid: { parameters: ["missing", "description"], handler: () => {} } },
+    "invalid",
+);
 
 // $ExpectType void
 destroy();

@@ -6,5 +6,7 @@ declare namespace PickupTransport {
     }
 }
 
-declare function PickupTransport(options: PickupTransport.Options): nodemailer.Transport;
+declare function PickupTransport(
+    options: PickupTransport.Options,
+): nodemailer.Transport;
 export = PickupTransport;

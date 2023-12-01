@@ -12,7 +12,7 @@ amplify.subscribe("nodataexample", () => {
 
 amplify.publish("nodataexample");
 
-amplify.subscribe("dataexample", data => {
+amplify.subscribe("dataexample", (data) => {
     alert(data.foo); // bar
 });
 
@@ -28,7 +28,7 @@ amplify.publish("dataexample2", "bar", "baz");
 
 // Subscribe and publish with context and data
 
-amplify.subscribe("datacontextexample", $("p:first"), function(data) {
+amplify.subscribe("datacontextexample", $("p:first"), function (data) {
     this.text(data.exampleText); // first p element would have "foo bar baz" as text
 });
 
@@ -36,15 +36,19 @@ amplify.publish("datacontextexample", { exampleText: "foo bar baz" });
 
 // Subscribe to a topic with high priority
 
-amplify.subscribe("priorityexample", data => {
+amplify.subscribe("priorityexample", (data) => {
     alert(data.foo);
 });
 
-amplify.subscribe("priorityexample", data => {
-    if (data.foo === "oops") {
-        return false;
-    }
-}, 1);
+amplify.subscribe(
+    "priorityexample",
+    (data) => {
+        if (data.foo === "oops") {
+            return false;
+        }
+    },
+    1,
+);
 
 // Store data with amplify storage picking the default storage technology:
 
@@ -80,7 +84,7 @@ amplify.request.define("ajaxExample1", "ajax", {
 });
 
 // later in code
-amplify.request("ajaxExample1", data => {
+amplify.request("ajaxExample1", (data) => {
     data.foo; // bar
 });
 
@@ -94,12 +98,12 @@ amplify.request.define("ajaxExample2", "ajax", {
 });
 
 // later in code
-amplify.request("ajaxExample2", data => {
+amplify.request("ajaxExample2", (data) => {
     data.foo; // bar
 });
 
 // a second call will result in pulling from the cache
-amplify.request("ajaxExample2", data => {
+amplify.request("ajaxExample2", (data) => {
     data.baz; // qux
 });
 
@@ -111,13 +115,17 @@ amplify.request.define("ajaxRESTFulExample", "ajax", {
 });
 
 // later in code
-amplify.request("ajaxRESTFulExample", {
-    type: "foo",
-    id: "bar",
-}, data => {
-    // /myRESTFulApi/foo/bar was the URL used
-    data.foo; // bar
-});
+amplify.request(
+    "ajaxRESTFulExample",
+    {
+        type: "foo",
+        id: "bar",
+    },
+    (data) => {
+        // /myRESTFulApi/foo/bar was the URL used
+        data.foo; // bar
+    },
+);
 
 // POST data with Ajax
 
@@ -127,12 +135,16 @@ amplify.request.define("ajaxPostExample", "ajax", {
 });
 
 // later in code
-amplify.request("ajaxPostExample", {
-    type: "foo",
-    id: "bar",
-}, data => {
-    data.foo; // bar
-});
+amplify.request(
+    "ajaxPostExample",
+    {
+        type: "foo",
+        id: "bar",
+    },
+    (data) => {
+        data.foo; // bar
+    },
+);
 // Using data maps
 
 //  When searching Twitter, the key for the search phrase is q.If we want a more descriptive name, such as term, we can use a data map:
@@ -152,7 +164,7 @@ amplify.request("twitter-search", { term: "amplifyjs" });
 amplify.request.define("twitter-mentions", "ajax", {
     url: "http://search.twitter.com/search.json",
     dataType: "jsonp",
-    dataMap: data => ({ q: "@" + data.user }),
+    dataMap: (data) => ({ q: "@" + data.user }),
 });
 
 amplify.request("twitter-mentions", { user: "amplifyjs" });
@@ -161,7 +173,13 @@ amplify.request("twitter-mentions", { user: "amplifyjs" });
 
 // Example:
 
-const appEnvelopeDecoder: amplify.Decoder = (data, status, xhr, success, error) => {
+const appEnvelopeDecoder: amplify.Decoder = (
+    data,
+    status,
+    xhr,
+    success,
+    error,
+) => {
     switch (data.status) {
         case "success":
             success(data.data);
@@ -229,7 +247,7 @@ amplify.request.define("decoderSingleExample", "ajax", {
 
 amplify.request({
     resourceId: "decoderSingleExample",
-    success: data => {
+    success: (data) => {
         data.foo; // bar
     },
     error: (message, level) => {
@@ -248,8 +266,6 @@ amplify.request.define("statusExample1", "ajax", {
 
 amplify.request({
     resourceId: "statusExample1",
-    success: (data, status) => {
-    },
-    error: (data, status) => {
-    },
+    success: (data, status) => {},
+    error: (data, status) => {},
 });

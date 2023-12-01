@@ -12,10 +12,28 @@ keythereum.encrypt("plaintext", "key", "iv", "aes-256-gcm");
 keythereum.decrypt("ciphertext", "key", "iv", "aes-256-gcm");
 keythereum.privateKeyToAddress("private key");
 keythereum.getMAC("derivedKey", "ciphertext");
-keythereum.deriveKey("password", "salt", { cipher: "aes-256-gcm", kdf: "scrypt" });
-keythereum.deriveKey("password", "salt", { cipher: "aes-256-gcm", kdf: "scrypt" }, result => {});
+keythereum.deriveKey("password", "salt", {
+    cipher: "aes-256-gcm",
+    kdf: "scrypt",
+});
+keythereum.deriveKey(
+    "password",
+    "salt",
+    { cipher: "aes-256-gcm", kdf: "scrypt" },
+    (result) => {},
+);
 keythereum.create({ ivBytes: 32, keyBytes: 32 });
-keythereum.create({ ivBytes: 32, keyBytes: 32 }, result => {});
-keythereum.marshal(Buffer.from(""), Buffer.from(""), Buffer.from(""), Buffer.from(""));
-keythereum.dump(Buffer.from(""), Buffer.from(""), Buffer.from(""), Buffer.from(""));
+keythereum.create({ ivBytes: 32, keyBytes: 32 }, (result) => {});
+keythereum.marshal(
+    Buffer.from(""),
+    Buffer.from(""),
+    Buffer.from(""),
+    Buffer.from(""),
+);
+keythereum.dump(
+    Buffer.from(""),
+    Buffer.from(""),
+    Buffer.from(""),
+    Buffer.from(""),
+);
 keythereum.generateKeystoreFilename("0xaaaa");

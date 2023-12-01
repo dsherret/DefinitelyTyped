@@ -1,7 +1,9 @@
-let data = [{
-    label: "2010-5-1",
-    value: 15,
-}];
+let data = [
+    {
+        label: "2010-5-1",
+        value: 15,
+    },
+];
 
 let donutChart = Morris.Donut({
     element: "donutChartId",

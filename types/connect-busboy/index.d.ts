@@ -4,7 +4,9 @@ import { Busboy, BusboyConfig } from "busboy";
 import { RequestHandler } from "express";
 import * as http from "http";
 
-declare function connectBusboy(options?: connectBusboy.ConnectBusboyOptions): RequestHandler;
+declare function connectBusboy(
+    options?: connectBusboy.ConnectBusboyOptions,
+): RequestHandler;
 
 declare namespace connectBusboy {
     interface ConnectBusboyOptions extends BusboyConfig {

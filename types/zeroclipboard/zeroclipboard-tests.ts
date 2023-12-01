@@ -4,15 +4,17 @@ import ZeroClipboard = require("zeroclipboard");
 // import * as ZeroClipboard from "zeroclipboard";
 
 namespace SimpleExample {
-    ZeroClipboard.config({ swfPath: "http://YOURSERVER/path/ZeroClipboard.swf" });
+    ZeroClipboard.config({
+        swfPath: "http://YOURSERVER/path/ZeroClipboard.swf",
+    });
 
     let client = new ZeroClipboard(document.getElementById("copy-button"));
     let client2 = new ZeroClipboard(jQuery(".copy-button"));
 
-    client.on("ready", function(readyEvent) {
+    client.on("ready", function (readyEvent) {
         // alert( "ZeroClipboard SWF is ready!" );
 
-        client.on("aftercopy", function(event) {
+        client.on("aftercopy", function (event) {
             this === client;
             event.target === document.getElementById("el");
             event.target.style.display = "none";
@@ -20,7 +22,7 @@ namespace SimpleExample {
         });
     });
 
-    client.on("copy", function(event) {
+    client.on("copy", function (event) {
         var clipboard = event.clipboardData;
         clipboard.setData("text/plain", "Copy me!");
         clipboard.setData("text/html", "<b>Copy me!</b>");
@@ -38,19 +40,24 @@ namespace SimpleExample {
     function example() {
         var client = new ZeroClipboard($(".clip_button"));
 
-        client.on("ready", function(event) {
+        client.on("ready", function (event) {
             // console.log( 'movie is loaded' );
 
-            client.on("copy", function(event) {
-                event.clipboardData.setData("text/plain", event.target.innerHTML);
+            client.on("copy", function (event) {
+                event.clipboardData.setData(
+                    "text/plain",
+                    event.target.innerHTML,
+                );
             });
 
-            client.on("aftercopy", function(event) {
-                console.log("Copied text to clipboard: " + event.data["text/plain"]);
+            client.on("aftercopy", function (event) {
+                console.log(
+                    "Copied text to clipboard: " + event.data["text/plain"],
+                );
             });
         });
 
-        client.on("error", function(event) {
+        client.on("error", function (event) {
             // console.log( 'ZeroClipboard error of type "' + event.name + '": ' + event.message );
             ZeroClipboard.destroy();
         });
@@ -102,23 +109,29 @@ namespace Static {
 
     let b: boolean = ZeroClipboard.isFlashUnusable();
 
-    var listenerFn = function(e: Object) {
+    var listenerFn = function (e: Object) {
         var ZeroClipboard = this; /* ... */
     };
     ZeroClipboard.on("ready", listenerFn);
 
     var listenerObj = {
-        handleEvent: function(e: Object) {
+        handleEvent: function (e: Object) {
             var listenerObj = this; /* ... */
         },
     };
     ZeroClipboard.on("error", listenerObj);
 
-    ZeroClipboard.on("ready error", function(e) {/* ... */});
+    ZeroClipboard.on("ready error", function (e) {
+        /* ... */
+    });
 
     ZeroClipboard.on({
-        "ready": function(e) {/* ... */},
-        "error": function(e) {/* ... */},
+        ready: function (e) {
+            /* ... */
+        },
+        error: function (e) {
+            /* ... */
+        },
     });
 
     ZeroClipboard.off("ready", listenerFn);
@@ -127,8 +140,12 @@ namespace Static {
     ZeroClipboard.off("ready error", listenerFn);
 
     ZeroClipboard.off({
-        "ready": function(e) {/* ... */},
-        "error": function(e) {/* ... */},
+        ready: function (e) {
+            /* ... */
+        },
+        error: function (e) {
+            /* ... */
+        },
     });
 
     ZeroClipboard.off("ready");
@@ -147,41 +164,49 @@ namespace Static {
 
     var listeners = ZeroClipboard.handlers();
 
-    var currentlyActivatedElementOrNull = document.getElementById("currentlyActivatedElementOrNull");
-    var dataClipboardElementTargetOfCurrentlyActivatedElementOrNull = document.getElementById(
-        "dataClipboardElementTargetOfCurrentlyActivatedElementOrNull",
+    var currentlyActivatedElementOrNull = document.getElementById(
+        "currentlyActivatedElementOrNull",
     );
-    var flashSwfObjectRef = document.getElementById("flashSwfObjectRef") as HTMLObjectElement;
+    var dataClipboardElementTargetOfCurrentlyActivatedElementOrNull =
+        document.getElementById(
+            "dataClipboardElementTargetOfCurrentlyActivatedElementOrNull",
+        );
+    var flashSwfObjectRef = document.getElementById(
+        "flashSwfObjectRef",
+    ) as HTMLObjectElement;
 
-    ZeroClipboard.on("ready", function(e) {
+    ZeroClipboard.on("ready", function (e) {
         e = {
             type: "ready",
             message: "Flash communication is established",
             target: currentlyActivatedElementOrNull,
-            relatedTarget: dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
+            relatedTarget:
+                dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
             currentTarget: flashSwfObjectRef,
             version: "11.2.202",
             timeStamp: Date.now(),
         };
     });
 
-    ZeroClipboard.on("beforecopy", function(e) {
+    ZeroClipboard.on("beforecopy", function (e) {
         e = {
             type: "beforecopy",
             target: currentlyActivatedElementOrNull,
-            relatedTarget: dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
+            relatedTarget:
+                dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
             currentTarget: flashSwfObjectRef,
             timeStamp: Date.now(),
         };
     });
 
-    ZeroClipboard.on("copy", function(e) {
+    ZeroClipboard.on("copy", function (e) {
         e.clipboardData.setData("text/html", "<br>");
         e.clipboardData.setData({ "text/html": "<br>" });
         e = {
             type: "copy",
             target: currentlyActivatedElementOrNull,
-            relatedTarget: dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
+            relatedTarget:
+                dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
             currentTarget: flashSwfObjectRef,
             timeStamp: Date.now(),
             clipboardData: {
@@ -191,11 +216,12 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("aftercopy", function(e) {
+    ZeroClipboard.on("aftercopy", function (e) {
         e = {
             type: "aftercopy",
             target: currentlyActivatedElementOrNull,
-            relatedTarget: dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
+            relatedTarget:
+                dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
             currentTarget: flashSwfObjectRef,
             timeStamp: Date.now(),
             success: {
@@ -221,7 +247,7 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("destroy", function(e) {
+    ZeroClipboard.on("destroy", function (e) {
         e = {
             type: "destroy",
             target: null,
@@ -241,7 +267,7 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "flash-disabled",
@@ -255,11 +281,12 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "flash-sandboxed",
-            message: "Attempting to run Flash in a sandboxed iframe, which is impossible",
+            message:
+                "Attempting to run Flash in a sandboxed iframe, which is impossible",
             target: null,
             relatedTarget: null,
             currentTarget: flashSwfObjectRef,
@@ -269,11 +296,12 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "flash-unavailable",
-            message: "Flash is unable to communicate bidirectionally with JavaScript",
+            message:
+                "Flash is unable to communicate bidirectionally with JavaScript",
             target: null,
             relatedTarget: null,
             currentTarget: flashSwfObjectRef,
@@ -283,11 +311,12 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "flash-degraded",
-            message: "Flash is unable to preserve data fidelity when communicating with JavaScript",
+            message:
+                "Flash is unable to preserve data fidelity when communicating with JavaScript",
             target: null,
             relatedTarget: null,
             currentTarget: flashSwfObjectRef,
@@ -297,7 +326,7 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "flash-deactivated",
@@ -312,11 +341,12 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "flash-overdue",
-            message: "Flash communication was established but NOT within the acceptable time limit",
+            message:
+                "Flash communication was established but NOT within the acceptable time limit",
             target: null,
             relatedTarget: null,
             currentTarget: flashSwfObjectRef,
@@ -326,11 +356,12 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "version-mismatch",
-            message: "ZeroClipboard JS version number does not match ZeroClipboard SWF version number",
+            message:
+                "ZeroClipboard JS version number does not match ZeroClipboard SWF version number",
             target: null,
             relatedTarget: null,
             currentTarget: flashSwfObjectRef,
@@ -340,14 +371,15 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "clipboard-error",
             message:
                 "At least one error was thrown while ZeroClipboard was attempting to inject your data into the clipboard",
             target: currentlyActivatedElementOrNull,
-            relatedTarget: dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
+            relatedTarget:
+                dataClipboardElementTargetOfCurrentlyActivatedElementOrNull,
             currentTarget: flashSwfObjectRef,
             timeStamp: Date.now(),
             data: {
@@ -368,11 +400,12 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "config-mismatch",
-            message: "ZeroClipboard configuration does not match Flash's reality",
+            message:
+                "ZeroClipboard configuration does not match Flash's reality",
             target: null,
             relatedTarget: null,
             currentTarget: flashSwfObjectRef,
@@ -383,7 +416,7 @@ namespace Static {
         };
     });
 
-    ZeroClipboard.on("error", function(e) {
+    ZeroClipboard.on("error", function (e) {
         e = {
             type: "error",
             name: "swf-not-found",
@@ -430,23 +463,29 @@ namespace Instance {
 
     var els: HTMLElement[] = client.elements();
 
-    var listenerFn = function(e: Object) {
+    var listenerFn = function (e: Object) {
         var client = this; /* ... */
     };
     client.on("ready", listenerFn);
 
     var listenerObj = {
-        handleEvent: function(e: Object) {
+        handleEvent: function (e: Object) {
             var listenerObj = this; /* ... */
         },
     };
     client.on("error", listenerObj);
 
-    client.on("ready error", function(e) {/* ... */});
+    client.on("ready error", function (e) {
+        /* ... */
+    });
 
     client.on({
-        "ready": function(e) {/* ... */},
-        "error": function(e) {/* ... */},
+        ready: function (e) {
+            /* ... */
+        },
+        error: function (e) {
+            /* ... */
+        },
     });
 
     client.off("ready", listenerFn);
@@ -455,8 +494,12 @@ namespace Instance {
     client.off("ready error", listenerFn);
 
     client.off({
-        "ready": function(e) {/* ... */},
-        "error": function(e) {/* ... */},
+        ready: function (e) {
+            /* ... */
+        },
+        error: function (e) {
+            /* ... */
+        },
     });
 
     client.off("ready");
@@ -474,7 +517,7 @@ namespace Instance {
     var listeners = client.handlers();
 
     var client = new ZeroClipboard();
-    client.on("ready", function(e) {
+    client.on("ready", function (e) {
         if (e.client === client && client === this) {
             console.log("This client instance is ready!");
         }

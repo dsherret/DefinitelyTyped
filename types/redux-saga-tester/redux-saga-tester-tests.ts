@@ -9,12 +9,14 @@ new SagaTester({
         orders: (state, action) => state,
     },
     middlewares: [
-        ({ dispatch, getState }) => next => action => {
-            dispatch({ type: "BLA" });
-            getState();
+        ({ dispatch, getState }) =>
+            (next) =>
+            (action) => {
+                dispatch({ type: "BLA" });
+                getState();
 
-            return next(action);
-        },
+                return next(action);
+            },
     ],
     ignoreReduxActions: false,
     options: {
@@ -41,7 +43,9 @@ interface MockStateType {
     orders: Array<{ name: string }>;
 }
 
-const sagaTester = new SagaTester<MockStateType>({ initialState: { orders: [] } });
+const sagaTester = new SagaTester<MockStateType>({
+    initialState: { orders: [] },
+});
 
 // store
 const store = sagaTester.store;

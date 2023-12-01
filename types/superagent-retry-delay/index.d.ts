@@ -1,6 +1,11 @@
 import * as cookiejar from "cookiejar";
 import * as stream from "stream";
-import { Request, Response, SuperAgentRequest, SuperAgentStatic } from "superagent";
+import {
+    Request,
+    Response,
+    SuperAgentRequest,
+    SuperAgentStatic,
+} from "superagent";
 
 // these types should be exported by `superagent` but are not -------
 
@@ -10,7 +15,10 @@ type Serializer = (obj: any) => string;
 
 type BrowserParser = (str: string) => any;
 
-type NodeParser = (res: Response, callback: (err: Error | null, body: any) => void) => void;
+type NodeParser = (
+    res: Response,
+    callback: (err: Error | null, body: any) => void,
+) => void;
 
 type Parser = BrowserParser | NodeParser;
 
@@ -20,7 +28,8 @@ type EnhancedSuperAgentRequest = Omit<SuperAgentRequest, "retry"> & {
     retry(count?: number, delay?: number): SuperAgentRequest;
 };
 
-interface EnhancedSuperAgent<Req extends EnhancedSuperAgentRequest> extends stream.Stream {
+interface EnhancedSuperAgent<Req extends EnhancedSuperAgentRequest>
+    extends stream.Stream {
     jar: cookiejar.CookieJar;
     attachCookies(req: Req): void;
     checkout(url: string, callback?: CallbackHandler): Req;
@@ -52,7 +61,8 @@ interface EnhancedSuperAgent<Req extends EnhancedSuperAgentRequest> extends stre
     unsubscribe(url: string, callback?: CallbackHandler): Req;
 }
 
-interface EnhancedSuperAgentStatic extends EnhancedSuperAgent<EnhancedSuperAgentRequest> {
+interface EnhancedSuperAgentStatic
+    extends EnhancedSuperAgent<EnhancedSuperAgentRequest> {
     (url: string): EnhancedSuperAgentRequest;
     // tslint:disable-next-line:unified-signatures
     (method: string, url: string): EnhancedSuperAgentRequest;
@@ -61,6 +71,8 @@ interface EnhancedSuperAgentStatic extends EnhancedSuperAgent<EnhancedSuperAgent
     parse: { [type: string]: Parser };
 }
 
-declare function wrapSuperagent(request: SuperAgentStatic): EnhancedSuperAgentStatic;
+declare function wrapSuperagent(
+    request: SuperAgentStatic,
+): EnhancedSuperAgentStatic;
 
 export = wrapSuperagent;

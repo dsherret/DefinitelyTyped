@@ -8,7 +8,10 @@ import { OperationOptions } from "retry";
  * @param attempt The number of the attempt.
  * @returns A Promise for anything (eg. a HTTP response).
  */
-type RetryableFn<ResolutionType> = (retry: (error: any) => never, attempt: number) => Promise<ResolutionType>;
+type RetryableFn<ResolutionType> = (
+    retry: (error: any) => never,
+    attempt: number,
+) => Promise<ResolutionType>;
 /**
  * Wrap all functions of the object with retry. The params can be entered in either order, just like in the original library.
  *

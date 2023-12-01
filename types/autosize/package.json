@@ -1,26 +1,26 @@
 {
-    "private": true,
-    "name": "@types/autosize",
-    "version": "4.0.9999",
-    "projects": [
-        "http://www.jacklmoore.com/autosize/"
-    ],
-    "devDependencies": {
-        "@types/autosize": "workspace:.",
-        "@types/jquery": "*"
+  "private": true,
+  "name": "@types/autosize",
+  "version": "4.0.9999",
+  "projects": [
+    "http://www.jacklmoore.com/autosize/"
+  ],
+  "devDependencies": {
+    "@types/autosize": "workspace:.",
+    "@types/jquery": "*"
+  },
+  "owners": [
+    {
+      "name": "Aaron T. King",
+      "githubUsername": "kingdango"
     },
-    "owners": [
-        {
-            "name": "Aaron T. King",
-            "githubUsername": "kingdango"
-        },
-        {
-            "name": "NeekSandhu",
-            "githubUsername": "NeekSandhu"
-        },
-        {
-            "name": "BendingBender",
-            "githubUsername": "BendingBender"
-        }
-    ]
+    {
+      "name": "NeekSandhu",
+      "githubUsername": "NeekSandhu"
+    },
+    {
+      "name": "BendingBender",
+      "githubUsername": "BendingBender"
+    }
+  ]
 }

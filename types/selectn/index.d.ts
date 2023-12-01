@@ -15,10 +15,7 @@
  *
  * Returns `undefined` if path does not exist.
  */
-declare function selectn(
-    path: string | readonly string[],
-    object: any,
-): any;
+declare function selectn(path: string | readonly string[], object: any): any;
 
 declare function selectn(
     path: string | readonly string[],

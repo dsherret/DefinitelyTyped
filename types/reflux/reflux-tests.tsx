@@ -59,7 +59,10 @@ action = Reflux.createAction({
     },
 });
 
-let actions = Reflux.createActions([{ actionName: "fireBall" }, { actionName: "magicMissile", sync: false }]);
+let actions = Reflux.createActions([
+    { actionName: "fireBall" },
+    { actionName: "magicMissile", sync: false },
+]);
 actions = Reflux.createActions({ fireBall: { sync: false } });
 actions = Reflux.createActions({
     load: { children: ["completed", "failed"] },
@@ -106,7 +109,10 @@ class ES6Store1 extends Reflux.Store {
     }
 
     onLoadData(recordId: number) {
-        this.setState({ error: false, store1Data: "Test Data from Store1: " + recordId.toString() });
+        this.setState({
+            error: false,
+            store1Data: "Test Data from Store1: " + recordId.toString(),
+        });
     }
 }
 
@@ -123,7 +129,10 @@ class ES6Store2 extends Reflux.Store {
     }
 
     onLoadData(recordId: number) {
-        this.setState({ error: false, store2Data: "Test Data from Store2: " + recordId.toString() });
+        this.setState({
+            error: false,
+            store2Data: "Test Data from Store2: " + recordId.toString(),
+        });
     }
 }
 
@@ -190,6 +199,8 @@ class MyComponentWithMapStoreToState extends Reflux.Component {
     }
 
     render() {
-        return <p className={this.state.class}>The color is: {this.state.color}</p>;
+        return (
+            <p className={this.state.class}>The color is: {this.state.color}</p>
+        );
     }
 }

@@ -143,7 +143,9 @@ encrypted = AES.encrypt("Message", "Secret Passphrase", {
 const JsonFormatter = {
     stringify(cipherParams: Core.lib.CipherParams) {
         // create json object with ciphertext
-        const jsonObj: any = { ct: cipherParams.ciphertext.toString(EncBase64) };
+        const jsonObj: any = {
+            ct: cipherParams.ciphertext.toString(EncBase64),
+        };
         // optionally add iv or salt
         if (cipherParams.iv) {
             jsonObj.iv = cipherParams.iv.toString();

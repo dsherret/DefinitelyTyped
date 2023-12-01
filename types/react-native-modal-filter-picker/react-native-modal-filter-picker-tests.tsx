@@ -1,6 +1,8 @@
 import * as React from "react";
 import { Button, Text, View } from "react-native";
-import ModalFilterPicker, { ModalFilterPickerOption } from "react-native-modal-filter-picker";
+import ModalFilterPicker, {
+    ModalFilterPickerOption,
+} from "react-native-modal-filter-picker";
 
 interface MyModalFilterPickerOption extends ModalFilterPickerOption {
     customField: string;
@@ -22,7 +24,7 @@ const modalFilterPickerOptions: MyModalFilterPickerOption[] = [
 const renderPicker = () => (
     <ModalFilterPicker
         options={modalFilterPickerOptions}
-        onSelect={key => {
+        onSelect={(key) => {
             console.log(key);
         }}
         onCancel={() => {}}
@@ -54,7 +56,7 @@ const renderPicker = () => (
 const renderPickerWithRequiredPropsOnly = () => (
     <ModalFilterPicker
         options={modalFilterPickerOptions}
-        onSelect={key => {
+        onSelect={(key) => {
             console.log(key);
         }}
         onCancel={() => {}}

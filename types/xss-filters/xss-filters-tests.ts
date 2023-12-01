@@ -1,6 +1,6 @@
 import xssFilters = require("xss-filters");
 
-var s = "<script>alert(\"hello\")</script>";
+var s = '<script>alert("hello")</script>';
 
 xssFilters.inHTMLComment(s);
 xssFilters.inHTMLData(s);

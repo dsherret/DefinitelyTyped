@@ -60,7 +60,10 @@ declare namespace GoldenLayout {
          * @param config A GoldenLayout configuration object
          * @param container The DOM element the layout will be initialised in. Default: document.body
          */
-        constructor(configuration: Config, container?: Element | HTMLElement | JQuery);
+        constructor(
+            configuration: Config,
+            container?: Element | HTMLElement | JQuery,
+        );
 
         /*
          * @param name     The name of the component, as referred to by componentName in the component configuration.
@@ -106,7 +109,10 @@ declare namespace GoldenLayout {
          * @param itemConfiguration An item configuration (can be an entire tree of items)
          * @param parent A parent item
          */
-        createContentItem(itemConfiguration?: ItemConfigType, parent?: ContentItem): ContentItem;
+        createContentItem(
+            itemConfiguration?: ItemConfigType,
+            parent?: ContentItem,
+        ): ContentItem;
 
         /**
          * Creates a new popout window with configOrContentItem as contents at the position specified in dimensions
@@ -139,7 +145,10 @@ declare namespace GoldenLayout {
          * @return the dragSource that was created. This can be used to remove the
          *         dragSource from the layout later.
          */
-        createDragSource(element: HTMLElement | JQuery, itemConfiguration: ItemConfigType): object;
+        createDragSource(
+            element: HTMLElement | JQuery,
+            itemConfiguration: ItemConfigType,
+        ): object;
 
         /**
          * Removes a dragSource from the layout.
@@ -184,7 +193,12 @@ declare namespace GoldenLayout {
         /**
          * Alias for emit
          */
-        trigger(eventName: string, arg1?: any, arg2?: any, ...argN: any[]): void;
+        trigger(
+            eventName: string,
+            arg1?: any,
+            arg2?: any,
+            ...argN: any[]
+        ): void;
 
         /**
          * Unsubscribes either all listeners if just an eventName is provided, just a specific callback if invoked with
@@ -202,7 +216,10 @@ declare namespace GoldenLayout {
         off(eventName: string, callback?: Function, context?: any): void;
     }
 
-    export type ItemConfigType = ItemConfig | ComponentConfig | ReactComponentConfig;
+    export type ItemConfigType =
+        | ItemConfig
+        | ComponentConfig
+        | ReactComponentConfig;
 
     export interface Settings {
         /**
@@ -496,7 +513,10 @@ declare namespace GoldenLayout {
          * @param itemOrItemConfig A content item (or tree of content items) or an ItemConfiguration to create the item from
          * @param index last index  An optional index that determines at which position the new item should be added. Default: last index.
          */
-        addChild(itemOrItemConfig: ContentItem | ItemConfigType, index?: number): void;
+        addChild(
+            itemOrItemConfig: ContentItem | ItemConfigType,
+            index?: number,
+        ): void;
 
         /**
          * Destroys the item and all it's children
@@ -510,7 +530,10 @@ declare namespace GoldenLayout {
          * @param oldChild    ContentItem The contentItem that should be removed
          * @param newChild A content item (or tree of content items) or an ItemConfiguration to create the item from
          */
-        replaceChild(oldChild: ContentItem, newChild: ContentItem | ItemConfigType): void;
+        replaceChild(
+            oldChild: ContentItem,
+            newChild: ContentItem | ItemConfigType,
+        ): void;
 
         /**
          * Updates the items size. To actually assign a new size from within a component, use container.setSize( width, height )
@@ -531,7 +554,12 @@ declare namespace GoldenLayout {
          * @param bottomUp If true, the method is invoked on the lowest parts of the tree first and then bubbles upwards. Default: false
          * @param skipSelf If true, the method will only be invoked on the item's children, but not on the item itself. Default: false
          */
-        callDownwards(functionName: string, functionArguments?: any[], bottomUp?: boolean, skipSelf?: boolean): void;
+        callDownwards(
+            functionName: string,
+            functionArguments?: any[],
+            bottomUp?: boolean,
+            skipSelf?: boolean,
+        ): void;
 
         /**
          * Emits an event that bubbles up the item tree until it reaches the root element (and after a delay the layout manager). Useful e.g. for indicating state changes.
@@ -596,7 +624,9 @@ declare namespace GoldenLayout {
          * Calls filterFunction recursively for every item in the tree. If the function returns true the item is added to the resulting array
          * @param filterFunction A function that determines whether an item matches certain criteria
          */
-        getItemsByFilter(filterFunction: (contentItem: ContentItem) => boolean): ContentItem[];
+        getItemsByFilter(
+            filterFunction: (contentItem: ContentItem) => boolean,
+        ): ContentItem[];
 
         /**
          * Returns all items with the specified id.
@@ -870,7 +900,12 @@ declare namespace GoldenLayout {
         /**
          * Alias for emit
          */
-        trigger(eventName: string, arg1?: any, arg2?: any, ...argN: any[]): void;
+        trigger(
+            eventName: string,
+            arg1?: any,
+            arg2?: any,
+            ...argN: any[]
+        ): void;
 
         /**
          * Unsubscribes either all listeners if just an eventName is provided, just a specific callback if invoked with

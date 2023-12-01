@@ -16,8 +16,8 @@ declare namespace SmtpApi {
     }
 
     interface Constructor {
-        new(): Instance;
-        new(header: Header): Instance;
+        new (): Instance;
+        new (header: Header): Instance;
     }
 
     interface Instance {

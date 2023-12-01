@@ -1,5 +1,10 @@
 import { Observable } from "rxjs";
-import { Answers, DistinctQuestion, KeyUnion, UnionToIntersection } from "../../index.js";
+import {
+    Answers,
+    DistinctQuestion,
+    KeyUnion,
+    UnionToIntersection,
+} from "../../index.js";
 
 /**
  * Represents a property-name of any question-type.

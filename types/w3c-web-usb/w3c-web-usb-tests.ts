@@ -14,21 +14,27 @@ if (button) {
         let device: USBDevice | undefined;
         try {
             device = await navigator.usb.requestDevice({
-                filters: [{
-                    vendorId: 0xABCD,
-                    classCode: 0xFF, // vendor-specific
-                    protocolCode: 0x01,
-                }],
+                filters: [
+                    {
+                        vendorId: 0xabcd,
+                        classCode: 0xff, // vendor-specific
+                        protocolCode: 0x01,
+                    },
+                ],
             });
             device = await navigator.usb.requestDevice({
-                filters: [{
-                    vendorId: 0xABCD,
-                    classCode: 0xFF, // vendor-specific
-                    protocolCode: 0x01,
-                }],
-                exclusionFilters: [{
-                    serialNumber: "12345678",
-                }],
+                filters: [
+                    {
+                        vendorId: 0xabcd,
+                        classCode: 0xff, // vendor-specific
+                        protocolCode: 0x01,
+                    },
+                ],
+                exclusionFilters: [
+                    {
+                        serialNumber: "12345678",
+                    },
+                ],
             });
         } catch (e) {
             // No device was selected.
@@ -41,12 +47,12 @@ if (button) {
     });
 }
 
-navigator.usb.addEventListener("connect", evt => {
+navigator.usb.addEventListener("connect", (evt) => {
     // Add |device| to the UI.
     handleConnectedDevice(evt.device);
 });
 
-navigator.usb.addEventListener("disconnect", evt => {
+navigator.usb.addEventListener("disconnect", (evt) => {
     // Remove |device| from the UI.
     const i = connectedDevices.indexOf(evt.device);
     if (i >= 0) {

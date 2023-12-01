@@ -34,7 +34,10 @@ declare class AccedoClient {
      * @param params
      */
 
-    getEntryById(id: string, params?: Pick<AccedoEntryParams, "preview" | "at" | "locale">): Promise<any>;
+    getEntryById(
+        id: string,
+        params?: Pick<AccedoEntryParams, "preview" | "at" | "locale">,
+    ): Promise<any>;
 
     /**
      * Get one content entry, based on the given parameters.
@@ -43,7 +46,10 @@ declare class AccedoClient {
      * @param params
      */
 
-    getEntryByAlias<A>(alias: A, params?: Pick<AccedoEntryParams, "preview" | "at" | "locale">): Promise<A>;
+    getEntryByAlias<A>(
+        alias: A,
+        params?: Pick<AccedoEntryParams, "preview" | "at" | "locale">,
+    ): Promise<A>;
 
     /**
      * Create a session and store it for reuse in this client instance.
@@ -79,7 +85,11 @@ declare class AccedoClient {
      * @param metadata extra metadata (will go through JSON.stringify). Can be passed as any number of trailing arguments.
      */
 
-    sendLog(level: AccedoLog.Level, details: Readonly<AccedoLog.Details>, metadata?: any): Promise<boolean>;
+    sendLog(
+        level: AccedoLog.Level,
+        details: Readonly<AccedoLog.Details>,
+        metadata?: any,
+    ): Promise<boolean>;
 
     /**
      * Returns the currently stored sessionKey for this client instance
@@ -120,7 +130,9 @@ declare class AccedoClient {
      * @returns A promise denoting the success of the operation
      */
 
-    sendUsageStopEvent(retentionTimeInSeconds?: number | string): Promise<boolean>;
+    sendUsageStopEvent(
+        retentionTimeInSeconds?: number | string,
+    ): Promise<boolean>;
 
     /**
      * Get all the enabled plugins
@@ -189,7 +201,10 @@ declare class AccedoClient {
      * @param key a key to specify what data to obtain
      */
 
-    getApplicationScopeDataByUserAndKey(userName: string, key: string): Promise<any>;
+    getApplicationScopeDataByUserAndKey(
+        userName: string,
+        key: string,
+    ): Promise<any>;
 
     /**
      * Get all the application-group-scope data for a given user
@@ -199,7 +214,10 @@ declare class AccedoClient {
      * @returns A promise of the requested data
      */
 
-    getApplicationGroupScopeDataByUserAndKey(userName: string, key: string): Promise<any>;
+    getApplicationGroupScopeDataByUserAndKey(
+        userName: string,
+        key: string,
+    ): Promise<any>;
 
     /**
      * Set the application-scope data for a given user
@@ -209,7 +227,10 @@ declare class AccedoClient {
      * @returns A promise of the requested data
      */
 
-    setApplicationScopeUserData<D extends object>(userName: string, data: D): Promise<D>;
+    setApplicationScopeUserData<D extends object>(
+        userName: string,
+        data: D,
+    ): Promise<D>;
 
     /**
      * Set the application-group-scope data for a given user
@@ -219,7 +240,10 @@ declare class AccedoClient {
      * @returns A promise of the requested data
      */
 
-    setApplicationGroupScopeUserData<D extends object>(userName: string, data: D): Promise<D>;
+    setApplicationGroupScopeUserData<D extends object>(
+        userName: string,
+        data: D,
+    ): Promise<D>;
 
     /**
      * Set the application-scope data for a given user
@@ -230,7 +254,11 @@ declare class AccedoClient {
      * @returns A promise of the requested data
      */
 
-    setApplicationScopeUserDataByKey<D extends object>(userName: string, key: string, data: D): Promise<D>;
+    setApplicationScopeUserDataByKey<D extends object>(
+        userName: string,
+        key: string,
+        data: D,
+    ): Promise<D>;
 
     /**
      * Set the application-group-scope data for a given user
@@ -241,7 +269,11 @@ declare class AccedoClient {
      * @returns A promise of the requested data
      */
 
-    setApplicationGroupScopeUserDataByKey<D extends object>(userName: string, key: string, data: D): Promise<D>;
+    setApplicationGroupScopeUserDataByKey<D extends object>(
+        userName: string,
+        key: string,
+        data: D,
+    ): Promise<D>;
 
     /**
      * Get all the available locales
@@ -363,9 +395,9 @@ interface AccedoConfig {
 
     browserInfoProvider?:
         | (() => {
-            deviceId: string;
-            sessionKey: string;
-        })
+              deviceId: string;
+              sessionKey: string;
+          })
         | undefined;
 
     /** The application Key */

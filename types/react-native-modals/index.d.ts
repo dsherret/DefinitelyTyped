@@ -70,7 +70,11 @@ export interface ModalProps {
     overlayBackgroundColor?: string | undefined;
     overlayOpacity?: number | undefined;
     modalTitle?: React.ReactNode | undefined;
-    modalAnimation?: FadeAnimation | ScaleAnimation | SlideAnimation | undefined;
+    modalAnimation?:
+        | FadeAnimation
+        | ScaleAnimation
+        | SlideAnimation
+        | undefined;
     modalStyle?: StyleProp<ViewStyle> | undefined;
     style?: StyleProp<ViewStyle> | undefined;
     animationDuration?: number | undefined;
@@ -101,7 +105,10 @@ export interface DraggableViewProps {
 }
 
 export class Animation {
-    constructor(params: { animationDuration?: number | undefined; useNativeDriver?: boolean | undefined });
+    constructor(params: {
+        animationDuration?: number | undefined;
+        useNativeDriver?: boolean | undefined;
+    });
     in(onFinised?: boolean): void;
     out(onFinised?: boolean): void;
     getAnimations(): object;

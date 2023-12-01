@@ -21,4 +21,6 @@ export interface GooglePickerProps {
     disabled?: boolean;
 }
 
-export default class GooglePicker extends React.Component<React.PropsWithChildren<GooglePickerProps>> {}
+export default class GooglePicker extends React.Component<
+    React.PropsWithChildren<GooglePickerProps>
+> {}

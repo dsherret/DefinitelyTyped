@@ -1,5 +1,8 @@
 import { Reply } from "../base";
-export default class BoundsChangedReply extends Reply<"window", "bounds-changed"> {
+export default class BoundsChangedReply extends Reply<
+    "window",
+    "bounds-changed"
+> {
     changeType: BoundsChangeType;
     deferred: boolean;
     height: number;

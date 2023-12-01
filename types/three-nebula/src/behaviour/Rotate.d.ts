@@ -33,7 +33,13 @@ export default class Rotate extends Behaviour {
     /**
      * Resets the behaviour properties.
      */
-    reset(x?: number, y?: number, z?: number, life?: number, easing?: EasingFunction): void;
+    reset(
+        x?: number,
+        y?: number,
+        z?: number,
+        life?: number,
+        easing?: EasingFunction,
+    ): void;
     reset(life?: number, easing?: EasingFunction): void;
 
     /**
@@ -52,7 +58,10 @@ export default class Rotate extends Behaviour {
      *
      * rotation is randomised
      */
-    protected _setRotation(particleRotation: Vector3D, value: string | number): void;
+    protected _setRotation(
+        particleRotation: Vector3D,
+        value: string | number,
+    ): void;
 
     /**
      * Mutates the particle.rotation property.

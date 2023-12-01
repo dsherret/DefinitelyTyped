@@ -11,7 +11,13 @@ export interface Http {
      * @param source Optional (but highly encouraged). A string which is passed to hooks as the source value.
      * @param args
      */
-    httpRequest(uri?: string, options?: any, callback?: Callback, source?: string, ...args: any[]): void;
+    httpRequest(
+        uri?: string,
+        options?: any,
+        callback?: Callback,
+        source?: string,
+        ...args: any[]
+    ): void;
 
     /**
      * Convenience method which performs a GET request.

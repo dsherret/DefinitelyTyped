@@ -23,5 +23,7 @@ declare namespace StubTransportStatic {
  * @param {Options} [options] Options.
  * @return {Transport} The stub transport.
  */
-declare function stubTransport(options?: StubTransportStatic.Options): nodemailer.Transport;
+declare function stubTransport(
+    options?: StubTransportStatic.Options,
+): nodemailer.Transport;
 export = stubTransport;

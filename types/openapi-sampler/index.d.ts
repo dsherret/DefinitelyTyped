@@ -30,4 +30,8 @@ export interface Options {
  * @param options Options
  * @param spec whole specification where the schema is taken from. Required only when schema may contain `$ref`. `spec` must not contain any external references.
  */
-export function sample(schema: OpenApiSchema, options?: Options, spec?: OpenApiSpec): unknown;
+export function sample(
+    schema: OpenApiSchema,
+    options?: Options,
+    spec?: OpenApiSpec,
+): unknown;

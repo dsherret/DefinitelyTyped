@@ -15,7 +15,10 @@ function suspenseTest() {
 
     function FlameChart() {
         return (
-            <React.Suspense fallback="computing..." unstable_expectedLoadTime={2000}>
+            <React.Suspense
+                fallback="computing..."
+                unstable_expectedLoadTime={2000}
+            >
                 <DisplayData />
             </React.Suspense>
         );
@@ -46,7 +49,7 @@ function suspenseTest() {
 function useEvent() {
     // Implicit any
     // @ts-expect-error
-    const anyEvent = React.experimental_useEffectEvent(value => {
+    const anyEvent = React.experimental_useEffectEvent((value) => {
         // $ExpectType any
         return value;
     });
@@ -64,7 +67,7 @@ function useEvent() {
 
     function useContextuallyTypedEvent(fn: (event: Event) => string) {}
     useContextuallyTypedEvent(
-        React.experimental_useEffectEvent(event => {
+        React.experimental_useEffectEvent((event) => {
             // $ExpectType Event
             event;
             return String(event);
@@ -117,13 +120,14 @@ function taintTests() {
         name: "Sebbie",
     };
 
-    taintUniqueValue("Cannot pass a secret token to the client", process, process.env.SECRET);
+    taintUniqueValue(
+        "Cannot pass a secret token to the client",
+        process,
+        process.env.SECRET,
+    );
     taintUniqueValue(undefined, process, process.env.SECRET);
     // @ts-expect-error Probably meant `taintObjectReference`
-    taintUniqueValue(
-        undefined,
-        user,
-    );
+    taintUniqueValue(undefined, user);
     taintUniqueValue(
         undefined,
         process,

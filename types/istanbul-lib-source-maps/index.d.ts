@@ -1,7 +1,9 @@
 import { CoverageMap } from "istanbul-lib-coverage";
 import { RawSourceMap } from "source-map";
 
-export function createSourceMapStore(options?: Partial<MapStoreOptions>): MapStore;
+export function createSourceMapStore(
+    options?: Partial<MapStoreOptions>,
+): MapStore;
 
 export interface MapStoreOptions {
     verbose: boolean;

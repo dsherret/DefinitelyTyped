@@ -27,9 +27,16 @@ import zlib = require("zlib");
 import domain = require("domain");
 
 import * as Boom from "boom";
-import { Schema as JoiSchema, SchemaMap as JoiSchemaMap, ValidationOptions as JoiValidationOptions } from "joi";
+import {
+    Schema as JoiSchema,
+    SchemaMap as JoiSchemaMap,
+    ValidationOptions as JoiValidationOptions,
+} from "joi";
 // TODO check JoiValidationObject is correct for "a Joi validation object"
-type JoiValidationObject = JoiSchema | JoiSchemaMap | Array<JoiSchema | JoiSchemaMap>;
+type JoiValidationObject =
+    | JoiSchema
+    | JoiSchemaMap
+    | Array<JoiSchema | JoiSchemaMap>;
 
 import * as Catbox from "catbox";
 import { MimosOptions } from "mimos";
@@ -40,8 +47,7 @@ export interface Dictionary<T> {
     [key: string]: T;
 }
 
-export interface ServerMethods extends Dictionary<ServerMethod> {
-}
+export interface ServerMethods extends Dictionary<ServerMethod> {}
 
 /**
  * Server
@@ -173,7 +179,10 @@ export class Server extends Podium {
      * @param encoding  the decoder name string.
      * @param decoder  a function using the signature function(options) where options are the encoding specific options configured in the route payload.compression configuration option, and the return value is an object compatible with the output of node's zlib.createGunzip().
      */
-    decoder(encoding: string, decoder: (options: CompressionDecoderSettings) => zlib.Gunzip): void;
+    decoder(
+        encoding: string,
+        decoder: (options: CompressionDecoderSettings) => zlib.Gunzip,
+    ): void;
     /**
      * Extends various framework interfaces with custom methods
      * Note that decorations apply to the entire server and all its connections regardless of current selection.
@@ -195,9 +204,23 @@ export class Server extends Podium {
      * @param options  if the type is 'request', supports the following optional settings:
      *      * apply - if true, the method function is invoked using the signature function(request) where request is the current request object and the returned value is assigned as the decoration.
      */
-    decorate(type: "request" | "reply" | "server", property: string, method: Function): void;
-    decorate(type: "request", property: string, method: Function, options?: { apply: false }): void;
-    decorate(type: "request", property: string, method: (request: Request) => Function, options: { apply: true }): void;
+    decorate(
+        type: "request" | "reply" | "server",
+        property: string,
+        method: Function,
+    ): void;
+    decorate(
+        type: "request",
+        property: string,
+        method: Function,
+        options?: { apply: false },
+    ): void;
+    decorate(
+        type: "request",
+        property: string,
+        method: (request: Request) => Function,
+        options: { apply: true },
+    ): void;
     /**
      * The server.decorate('server', ...) method can modify this prototype/interface.
      * Have disabled these typings as there is a better alternative, see example in: tests/server/decorate.ts
@@ -212,7 +235,10 @@ export class Server extends Podium {
      * @param dependencies  a single string or array of plugin name strings which must be registered in order for this plugin to operate. Plugins listed must be registered before the server is initialized or started. Does not provide version dependency which should be implemented using npm peer dependencies.
      * @param after  an optional function called after all the specified dependencies have been registered and before the server starts. The function is only called if the server is initialized or started. If a circular dependency is detected, an exception is thrown (e.g. two plugins each has an after function to be called after the other). The function signature is function(server, next)
      */
-    dependency(dependencies: string | string[], after?: AfterDependencyLoadCallback): void;
+    dependency(
+        dependencies: string | string[],
+        after?: AfterDependencyLoadCallback,
+    ): void;
     /**
      * Emits a custom application event update to all the subscribed listeners
      * Note that events must be registered before they can be emitted or subscribed to by calling server.event(events). This is done to detect event name misspelling and invalid event activities.
@@ -225,7 +251,13 @@ export class Server extends Podium {
      * @param callback  an optional callback method invoked when all subscribers have been notified using the signature function(). The callback is called only after all the listeners have been notified, including any event updates emitted earlier (the order of event updates are guaranteed to be in the order they were emitted).
      */
     emit(
-        criteria: string | { name: string; channel?: string | undefined; tags?: string | string[] | undefined },
+        criteria:
+            | string
+            | {
+                  name: string;
+                  channel?: string | undefined;
+                  tags?: string | string[] | undefined;
+              },
         data: any,
         callback?: () => void,
     ): void;
@@ -235,7 +267,10 @@ export class Server extends Podium {
      * @param encoding  the encoder name string.
      * @param encoder  a function using the signature function(options) where options are the encoding specific options configured in the route compression configuration option, and the return value is an object compatible with the output of node's zlib.createGzip().
      */
-    encoder(encoding: string, encoder: (options: CompressionEncoderSettings) => zlib.Gzip): void;
+    encoder(
+        encoding: string,
+        encoder: (options: CompressionEncoderSettings) => zlib.Gzip,
+    ): void;
     /**
      * Register custom application events
      * [See docs](https://hapijs.com/api/16.1.1#servereventevents)
@@ -273,10 +308,26 @@ export class Server extends Podium {
      * @param method  a function or an array of functions to be executed at a specified point during request processing.
      * @param options
      */
-    ext(event: ServerStartExtPoints, method: ServerExtFunction[], options?: ServerExtOptions): void;
-    ext(event: ServerStartExtPoints, method: ServerExtFunction, options?: ServerExtOptions): void;
-    ext(event: ServerRequestExtPoints, method: ServerExtRequestHandler[], options?: ServerExtOptions): void;
-    ext(event: ServerRequestExtPoints, method: ServerExtRequestHandler, options?: ServerExtOptions): void;
+    ext(
+        event: ServerStartExtPoints,
+        method: ServerExtFunction[],
+        options?: ServerExtOptions,
+    ): void;
+    ext(
+        event: ServerStartExtPoints,
+        method: ServerExtFunction,
+        options?: ServerExtOptions,
+    ): void;
+    ext(
+        event: ServerRequestExtPoints,
+        method: ServerExtRequestHandler[],
+        options?: ServerExtOptions,
+    ): void;
+    ext(
+        event: ServerRequestExtPoints,
+        method: ServerExtRequestHandler,
+        options?: ServerExtOptions,
+    ): void;
     /**
      * Registers a new handler type to be used in routes
      * The method function can have a defaults object or function property. If the property is set to an object, that object is used as the default route config for routes using this handler. If the property is set to a function, the function uses the signature function(method) and returns the route default configuration.
@@ -303,8 +354,13 @@ export class Server extends Podium {
      * @param options  can be assigned a string with the requested URI, or an object
      * @param callback  the callback function with signature function(res)
      */
-    inject(options: string | InjectedRequestOptions, callback: (res: InjectedResponseObject) => void): void;
-    inject(options: string | InjectedRequestOptions): Promise<InjectedResponseObject>;
+    inject(
+        options: string | InjectedRequestOptions,
+        callback: (res: InjectedResponseObject) => void,
+    ): void;
+    inject(
+        options: string | InjectedRequestOptions,
+    ): Promise<InjectedResponseObject>;
     /**
      * Logs server events that cannot be associated with a specific request. When called the server emits a 'log' event which can be used by other listeners or plugins to record the information or output to the console.
      * [See docs](https://hapijs.com/api/16.1.1#serverlogtags-data-timestamp)
@@ -312,7 +368,11 @@ export class Server extends Podium {
      * @param data  an optional message string or object with the application data being logged. If data is a function, the function signature is function() and it called once to generate (return value) the actual data emitted to the listeners. If no listeners match the event, the data function is not invoked.
      * @param timestamp  an optional timestamp expressed in milliseconds. Defaults to Date.now() (now).
      */
-    log(tags: string | string[], data?: string | Object | Function, timestamp?: number): void;
+    log(
+        tags: string | string[],
+        data?: string | Object | Function,
+        timestamp?: number,
+    ): void;
     /**
      * When the server contains exactly one connection, looks up a route configuration.
      * When the server contains more than one connection, each server.connections array member provides its own connection.lookup() method.
@@ -330,7 +390,11 @@ export class Server extends Podium {
      * @param host  optional hostname (to match against routes with vhost).
      * @return  the route public interface object if found, otherwise null.
      */
-    match(method: HTTP_METHODS, path: string, host?: string): RoutePublicInterface | null;
+    match(
+        method: HTTP_METHODS,
+        path: string,
+        host?: string,
+    ): RoutePublicInterface | null;
     /**
      * Registers a server method. Server methods are functions registered with the server and used throughout the application as a common utility. Their advantage is in the ability to configure them to use the built-in cache and share across multiple request handlers without having to create a common module.
      * [See docs](https://hapijs.com/api/16.1.1#servermethodname-method-options)
@@ -338,7 +402,11 @@ export class Server extends Podium {
      * @param method  the method function
      * @param options  optional configuration
      */
-    method(name: string, method: ServerMethod, options?: ServerMethodOptions): void;
+    method(
+        name: string,
+        method: ServerMethod,
+        options?: ServerMethodOptions,
+    ): void;
     /**
      * Registers a server method function as described in server.method() using a configuration object
      * [See docs](https://hapijs.com/api/16.1.1#servermethodmethods)
@@ -354,12 +422,18 @@ export class Server extends Podium {
      * If 'stop' - emitted when the server is stopped using server.stop().
      * @param listener
      */
-    on(criteria: "start" | "stop" | string | ServerEventCriteria, listener: Function): void;
+    on(
+        criteria: "start" | "stop" | string | ServerEventCriteria,
+        listener: Function,
+    ): void;
     /**
      * The 'log' event includes the event object and a tags object (where each tag is a key with the value true)
      * [See docs](https://hapijs.com/api/16.1.1#server-events)
      */
-    on(criteria: "log", listener: (event: ServerEventObject, tags: Podium.Tags) => void): void;
+    on(
+        criteria: "log",
+        listener: (event: ServerEventObject, tags: Podium.Tags) => void,
+    ): void;
     /**
      * The 'request' and 'request-internal' events include the request object, the event object, and a tags object (where each tag is a key with the value true)
      * [See docs](https://hapijs.com/api/16.1.1#server-events)
@@ -367,16 +441,30 @@ export class Server extends Podium {
      * interference when using code like: `server.on('request', (request, event, tags) => {...}`
      * Same for 'response' | 'tail'.
      */
-    on(criteria: "request", listener: (request: Request, event: ServerEventObject, tags: Podium.Tags) => void): void;
+    on(
+        criteria: "request",
+        listener: (
+            request: Request,
+            event: ServerEventObject,
+            tags: Podium.Tags,
+        ) => void,
+    ): void;
     on(
         criteria: "request-internal",
-        listener: (request: Request, event: ServerEventObject, tags: Podium.Tags) => void,
+        listener: (
+            request: Request,
+            event: ServerEventObject,
+            tags: Podium.Tags,
+        ) => void,
     ): void;
     /**
      * The 'request-error' event includes the request object and the causing error err object
      * [See docs](https://hapijs.com/api/16.1.1#server-events)
      */
-    on(criteria: "request-error", listener: (request: Request, err: Error) => void): void;
+    on(
+        criteria: "request-error",
+        listener: (request: Request, err: Error) => void,
+    ): void;
     /**
      * The 'response' and 'tail' events include the request object
      * [See docs](https://hapijs.com/api/16.1.1#server-events)
@@ -390,7 +478,11 @@ export class Server extends Podium {
      */
     on(
         criteria: "route",
-        listener: (route: RoutePublicInterface, connection: ServerConnection, server: Server) => void,
+        listener: (
+            route: RoutePublicInterface,
+            connection: ServerConnection,
+            server: Server,
+        ) => void,
     ): void;
     /**
      * Same as calling server.on() with the count option set to 1.
@@ -423,35 +515,55 @@ export class Server extends Podium {
      *     register(Plugin, (err: Error) => {// do more stuff})
      */
     register<OptionsPassedToPlugin>(
-        plugins: Array<(PluginFunction<OptionsPassedToPlugin> | PluginRegistrationObject<OptionsPassedToPlugin>)>,
+        plugins: Array<
+            | PluginFunction<OptionsPassedToPlugin>
+            | PluginRegistrationObject<OptionsPassedToPlugin>
+        >,
         callback: (err: Error | null) => void,
     ): void;
     register<OptionsPassedToPlugin>(
-        plugins: Array<(PluginFunction<OptionsPassedToPlugin> | PluginRegistrationObject<OptionsPassedToPlugin>)>,
+        plugins: Array<
+            | PluginFunction<OptionsPassedToPlugin>
+            | PluginRegistrationObject<OptionsPassedToPlugin>
+        >,
     ): Promise<Error | null>;
     register<OptionsPassedToPlugin>(
-        plugins: PluginFunction<OptionsPassedToPlugin> | PluginRegistrationObject<OptionsPassedToPlugin>,
+        plugins:
+            | PluginFunction<OptionsPassedToPlugin>
+            | PluginRegistrationObject<OptionsPassedToPlugin>,
         callback: (err: Error | null) => void,
     ): void;
     register<OptionsPassedToPlugin>(
-        plugins: PluginFunction<OptionsPassedToPlugin> | PluginRegistrationObject<OptionsPassedToPlugin>,
+        plugins:
+            | PluginFunction<OptionsPassedToPlugin>
+            | PluginRegistrationObject<OptionsPassedToPlugin>,
     ): Promise<Error | null>;
     register<OptionsPassedToPlugin>(
-        plugins: Array<(PluginFunction<OptionsPassedToPlugin> | PluginRegistrationObject<OptionsPassedToPlugin>)>,
+        plugins: Array<
+            | PluginFunction<OptionsPassedToPlugin>
+            | PluginRegistrationObject<OptionsPassedToPlugin>
+        >,
         options: PluginRegistrationOptions,
         callback: (err: Error | null) => void,
     ): void;
     register<OptionsPassedToPlugin>(
-        plugins: Array<(PluginFunction<OptionsPassedToPlugin> | PluginRegistrationObject<OptionsPassedToPlugin>)>,
+        plugins: Array<
+            | PluginFunction<OptionsPassedToPlugin>
+            | PluginRegistrationObject<OptionsPassedToPlugin>
+        >,
         options: PluginRegistrationOptions,
     ): Promise<Error | null>;
     register<OptionsPassedToPlugin>(
-        plugins: PluginFunction<OptionsPassedToPlugin> | PluginRegistrationObject<OptionsPassedToPlugin>,
+        plugins:
+            | PluginFunction<OptionsPassedToPlugin>
+            | PluginRegistrationObject<OptionsPassedToPlugin>,
         options: PluginRegistrationOptions,
         callback: (err: Error | null) => void,
     ): void;
     register<OptionsPassedToPlugin>(
-        plugins: PluginFunction<OptionsPassedToPlugin> | PluginRegistrationObject<OptionsPassedToPlugin>,
+        plugins:
+            | PluginFunction<OptionsPassedToPlugin>
+            | PluginRegistrationObject<OptionsPassedToPlugin>,
         options: PluginRegistrationOptions,
     ): Promise<Error | null>;
     /**
@@ -495,7 +607,10 @@ export class Server extends Podium {
      * @param callback  optional callback method which is called once all the connections have ended and it is safe to exit the process with signature function(err) where:
      *      * err - any termination error condition.
      */
-    stop(options: { timeout: number } | null, callback: (err?: Error) => void): void;
+    stop(
+        options: { timeout: number } | null,
+        callback: (err?: Error) => void,
+    ): void;
     stop(options?: { timeout: number }): Promise<Error | null>;
     /**
      * Returns a copy of the routing table
@@ -531,17 +646,22 @@ export interface ServerOptions {
     /** sets the default connections configuration which can be overridden by each connection */
     connections?: ConnectionConfigurationServerDefaults | undefined;
     /** determines which logged events are sent to the console (this should only be used for development and does not affect which events are actually logged internally and recorded). Set to false to disable all console logging, or to an object with: */
-    debug?: false | {
-        /** a string array of server log tags to be displayed via console.error() when the events are logged via server.log() as well as internally generated server logs. For example, to display all errors, set the option to ['error']. To turn off all console debug messages set it to false. Defaults to uncaught errors thrown in external code (these errors are handled automatically and result in an Internal Server Error response) or runtime errors due to developer error. */
-        log?: string[] | false | undefined;
-        /** a string array of request log tags to be displayed via console.error() when the events are logged via request.log() as well as internally generated request logs. For example, to display all errors, set the option to ['error']. To turn off all console debug messages set it to false. Defaults to uncaught errors thrown in external code (these errors are handled automatically and result in an Internal Server Error response) or runtime errors due to developer error. */
-        request?: string[] | false | undefined;
-    } | undefined;
+    debug?:
+        | false
+        | {
+              /** a string array of server log tags to be displayed via console.error() when the events are logged via server.log() as well as internally generated server logs. For example, to display all errors, set the option to ['error']. To turn off all console debug messages set it to false. Defaults to uncaught errors thrown in external code (these errors are handled automatically and result in an Internal Server Error response) or runtime errors due to developer error. */
+              log?: string[] | false | undefined;
+              /** a string array of request log tags to be displayed via console.error() when the events are logged via request.log() as well as internally generated request logs. For example, to display all errors, set the option to ['error']. To turn off all console debug messages set it to false. Defaults to uncaught errors thrown in external code (these errors are handled automatically and result in an Internal Server Error response) or runtime errors due to developer error. */
+              request?: string[] | false | undefined;
+          }
+        | undefined;
     /** process load monitoring */
-    load?: {
-        /** the frequency of sampling in milliseconds. Defaults to 0 (no sampling). */
-        sampleInterval?: number | undefined;
-    } | undefined;
+    load?:
+        | {
+              /** the frequency of sampling in milliseconds. Defaults to 0 (no sampling). */
+              sampleInterval?: number | undefined;
+          }
+        | undefined;
     /** options passed to the mimos module (https://github.com/hapijs/mimos) when generating the mime database used by the server and accessed via server.mime. */
     mime?: MimosOptions | undefined;
     /** plugin-specific configuration which can later be accessed via server.settings.plugins. plugins is an object where each key is a plugin name and the value is the configuration. Note the difference between server.settings.plugins which is used to store static configuration values and server.plugins which is meant for storing run-time state. Defaults to {}. */
@@ -589,7 +709,11 @@ export interface ServerEventCriteria {
      *  * tags - a tag string or array of tag strings.
      *  * all - if true, all tags must be present for the event update to match the subscription. Defaults to false (at least one matching tag).
      */
-    filter?: string | string[] | { tags: string | string[]; all?: boolean | undefined } | undefined;
+    filter?:
+        | string
+        | string[]
+        | { tags: string | string[]; all?: boolean | undefined }
+        | undefined;
     /** if true, and the data object passed to server.emit() is an array, the listener method is called with each array element passed as a separate argument. This should only be used when the emitted data structure is known and predictable. Defaults to the event registration option (which defaults to false). */
     spread?: boolean | undefined;
     /** if true and the criteria object passed to server.emit() includes tags, the tags are mapped to an object (where each tag string is the key and the value is true) which is appended to the arguments list at the end (but before the callback argument if block is set). Defaults to the event registration option (which defaults to false). */
@@ -683,7 +807,8 @@ export interface ServerMethodConfigurationObject {
  *        shared?: boolean;
  *    }
  */
-export type CatboxServerOptionsCacheConfiguration = CatboxServerCacheConfiguration;
+export type CatboxServerOptionsCacheConfiguration =
+    CatboxServerCacheConfiguration;
 
 /**
  * Server cache method configuration for Catbox cache
@@ -753,23 +878,27 @@ export interface ConnectionConfigurationServerDefaults {
     /** if false, response content encoding is disabled. Defaults to true */
     compression?: boolean | undefined;
     /** connection load limits configuration where:  */
-    load?: {
-        /** maximum V8 heap size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
-        maxHeapUsedBytes?: number | undefined;
-        /** maximum process RSS size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
-        maxRssBytes?: number | undefined;
-        /** maximum event loop delay duration in milliseconds over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
-        maxEventLoopDelay?: number | undefined;
-    } | undefined;
+    load?:
+        | {
+              /** maximum V8 heap size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
+              maxHeapUsedBytes?: number | undefined;
+              /** maximum process RSS size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
+              maxRssBytes?: number | undefined;
+              /** maximum event loop delay duration in milliseconds over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).  */
+              maxEventLoopDelay?: number | undefined;
+          }
+        | undefined;
     /** plugin-specific configuration which can later be accessed via connection.settings.plugins. Provides a place to store and pass connection-specific plugin configuration. plugins is an object where each key is a plugin name and the value is the configuration. Note the difference between connection.settings.plugins which is used to store configuration values and connection.plugins which is meant for storing run-time state. */
     plugins?: PluginSpecificConfiguration | undefined;
     /** controls how incoming request URIs are matched against the routing table: */
-    router?: {
-        /** determines whether the paths '/example' and '/EXAMPLE' are considered different resources. Defaults to true.  */
-        isCaseSensitive?: boolean | undefined;
-        /** removes trailing slashes on incoming paths. Defaults to false.  */
-        stripTrailingSlash?: boolean | undefined;
-    } | undefined;
+    router?:
+        | {
+              /** determines whether the paths '/example' and '/EXAMPLE' are considered different resources. Defaults to true.  */
+              isCaseSensitive?: boolean | undefined;
+              /** removes trailing slashes on incoming paths. Defaults to false.  */
+              stripTrailingSlash?: boolean | undefined;
+          }
+        | undefined;
     /** a route options object used to set the default configuration for every route. */
     routes?: RouteAdditionalConfigurationOptions | undefined;
     /** sets the default configuration for every state (cookie) set explicitly via server.state() or implicitly (without definition) using the [state configuration object](https://hapijs.com/api/16.1.1#serverstatename-options). */
@@ -781,7 +910,8 @@ export interface ConnectionConfigurationServerDefaults {
  * Any connections configuration server defaults can be included to override and customize the individual connection.
  * [See docs](https://hapijs.com/api/16.1.1#serverconnectionoptions)
  */
-export interface ServerConnectionOptions extends ConnectionConfigurationServerDefaults {
+export interface ServerConnectionOptions
+    extends ConnectionConfigurationServerDefaults {
     /** host - the public hostname or IP address. Used only to set server.info.host and server.info.uri. If not configured, defaults to the operating system hostname and if not available, to 'localhost'. */
     host?: string | undefined;
     /** address - sets the host name or IP address the connection will listen on. If not configured, defaults to host if present, otherwise to all available network interfaces (i.e. '0.0.0.0'). Set to 127.0.0.1 or localhost to restrict connection to only those coming from the same machine. */
@@ -844,7 +974,10 @@ export interface AuthOptions {
      */
     payload?: false | "required" | "optional" | undefined;
     /** specifying the route access rules. */
-    access?: RouteAuthAccessConfiguationObject | RouteAuthAccessConfiguationObject[] | undefined;
+    access?:
+        | RouteAuthAccessConfiguationObject
+        | RouteAuthAccessConfiguationObject[]
+        | undefined;
     /** (undocumented) Convenience way of setting access.scope, will over write all values in `access` */
     scope?: false | string | string[] | undefined;
     /** (undocumented) Convenience way of setting access.entity, will over write all values in `access` */
@@ -870,36 +1003,38 @@ export interface RouteAuthAccessConfiguationObject {
 /**
  * For context see RouteAdditionalConfigurationOptions > cache
  */
-export type RouteCacheOptions =
-    & {
-        /**
-         * determines the privacy flag included in client-side caching using the 'Cache-Control' header. Values are:
-         *  * 'default' - no privacy flag. This is the default setting.
-         *  * 'public' - mark the response as suitable for public caching.
-         *  * 'private' - mark the response as suitable only for private caching.
-         */
-        privacy?: "default" | "public" | "private" | undefined;
-        /** an array of HTTP response status codes (e.g. 200) which are allowed to include a valid caching directive. Defaults to [200]. */
-        statuses?: number[] | undefined;
-        /** a string with the value of the 'Cache-Control' header when caching is disabled. Defaults to 'no-cache'. */
-        otherwise?: string | undefined;
-    }
-    & ({
-        /** relative expiration expressed in the number of milliseconds since the item was saved in the cache. Cannot be used together with expiresAt. */
-        expiresIn?: number | undefined;
-        /** time of day expressed in 24h notation using the 'HH:MM' format, at which point all cache records for the route expire. Cannot be used together with expiresIn. */
-        expiresAt?: undefined;
-    } | {
-        /** relative expiration expressed in the number of milliseconds since the item was saved in the cache. Cannot be used together with expiresAt. */
-        expiresIn?: undefined;
-        /** time of day expressed in 24h notation using the 'HH:MM' format, at which point all cache records for the route expire. Cannot be used together with expiresIn. */
-        expiresAt?: string | undefined;
-    } | {
-        /** relative expiration expressed in the number of milliseconds since the item was saved in the cache. Cannot be used together with expiresAt. */
-        expiresIn?: undefined;
-        /** time of day expressed in 24h notation using the 'HH:MM' format, at which point all cache records for the route expire. Cannot be used together with expiresIn. */
-        expiresAt?: undefined;
-    });
+export type RouteCacheOptions = {
+    /**
+     * determines the privacy flag included in client-side caching using the 'Cache-Control' header. Values are:
+     *  * 'default' - no privacy flag. This is the default setting.
+     *  * 'public' - mark the response as suitable for public caching.
+     *  * 'private' - mark the response as suitable only for private caching.
+     */
+    privacy?: "default" | "public" | "private" | undefined;
+    /** an array of HTTP response status codes (e.g. 200) which are allowed to include a valid caching directive. Defaults to [200]. */
+    statuses?: number[] | undefined;
+    /** a string with the value of the 'Cache-Control' header when caching is disabled. Defaults to 'no-cache'. */
+    otherwise?: string | undefined;
+} & (
+    | {
+          /** relative expiration expressed in the number of milliseconds since the item was saved in the cache. Cannot be used together with expiresAt. */
+          expiresIn?: number | undefined;
+          /** time of day expressed in 24h notation using the 'HH:MM' format, at which point all cache records for the route expire. Cannot be used together with expiresIn. */
+          expiresAt?: undefined;
+      }
+    | {
+          /** relative expiration expressed in the number of milliseconds since the item was saved in the cache. Cannot be used together with expiresAt. */
+          expiresIn?: undefined;
+          /** time of day expressed in 24h notation using the 'HH:MM' format, at which point all cache records for the route expire. Cannot be used together with expiresIn. */
+          expiresAt?: string | undefined;
+      }
+    | {
+          /** relative expiration expressed in the number of milliseconds since the item was saved in the cache. Cannot be used together with expiresAt. */
+          expiresIn?: undefined;
+          /** time of day expressed in 24h notation using the 'HH:MM' format, at which point all cache records for the route expire. Cannot be used together with expiresIn. */
+          expiresAt?: undefined;
+      }
+);
 
 /**
  * For context see RouteAdditionalConfigurationOptions > cors
@@ -969,7 +1104,9 @@ export interface ServerRequestExtConfigurationObjectWithRequest {
 /**
  * [See docs](https://hapijs.com/api/16.1.1#route-configuration) > ext
  */
-export type RouteExtConfigurationObject = ServerStartExtConfigurationObject | ServerRequestExtConfigurationObject;
+export type RouteExtConfigurationObject =
+    | ServerStartExtConfigurationObject
+    | ServerRequestExtConfigurationObject;
 
 /**
  * [See docs](https://hapijs.com/api/16.1.1#serverextevents) > events > method
@@ -997,7 +1134,11 @@ export interface ServerExtOptions {
  *  * 'onPreStop' - called before the connection listeners are stopped.
  *  * 'onPostStop' - called after the connection listeners are stopped.
  */
-export type ServerStartExtPoints = "onPreStart" | "onPostStart" | "onPreStop" | "onPostStop";
+export type ServerStartExtPoints =
+    | "onPreStart"
+    | "onPostStart"
+    | "onPreStop"
+    | "onPostStop";
 /**
  * [See docs](https://hapijs.com/api/16.1.1#request-lifecycle)
  *  * The available extension points include the request extension points as well as the following server extension points:
@@ -1054,9 +1195,12 @@ export interface RoutePayloadConfigurationObject {
      *              * filename - the part file name.
      *              * payload - the processed part payload.
      */
-    multipart?: false | {
-        output: PayLoadOutputOption | "annotated";
-    } | undefined;
+    multipart?:
+        | false
+        | {
+              output: PayLoadOutputOption | "annotated";
+          }
+        | undefined;
     /** a string or an array of strings with the allowed mime types for the endpoint. Defaults to any of the supported mime types listed above. Note that allowing other mime types not listed will not enable them to be parsed, and that if parsing mode is 'parse', the request will result in an error response. */
     allow?: string | string[] | undefined;
     /** a mime type string overriding the 'Content-Type' header value received. Defaults to no override. */
@@ -1174,12 +1318,17 @@ export interface RouteAdditionalConfigurationOptions {
     /** the Cross-Origin Resource Sharing protocol allows browsers to make cross-origin API calls. CORS is required by web applications running inside a browser which are loaded from a different domain than the API server. CORS headers are disabled by default (false). To enable, set cors to true, or to an object */
     cors?: boolean | CorsConfigurationObject | undefined;
     /** defined a route-level request extension points by setting the option to an object with a key for each of the desired extension points ('onRequest' is not allowed), and the value is the same as the [server.ext(events)](https://hapijs.com/api/16.1.1#serverextevents) event argument. */
-    ext?: RouteExtConfigurationObject | RouteExtConfigurationObject[] | undefined;
+    ext?:
+        | RouteExtConfigurationObject
+        | RouteExtConfigurationObject[]
+        | undefined;
     /** defines the behavior for accessing files: */
-    files?: {
-        /** determines the folder relative paths are resolved against. */
-        relativeTo: string;
-    } | undefined;
+    files?:
+        | {
+              /** determines the folder relative paths are resolved against. */
+              relativeTo: string;
+          }
+        | undefined;
     /** an alternative location for the route.handler option. */
     handler?: string | RouteHandler | undefined;
     /** an optional unique identifier used to look up the route using server.lookup(). Cannot be assigned to routes with an array of methods. */
@@ -1188,10 +1337,10 @@ export interface RouteAdditionalConfigurationOptions {
     isInternal?: boolean | undefined;
     /** optional arguments passed to JSON.stringify() when converting an object or error response to a string payload. Supports the following: */
     json?:
-        | Json.StringifyArguments & {
-            /** string suffix added after conversion to JSON string. Defaults to no suffix. */
-            suffix?: string | undefined;
-        }
+        | (Json.StringifyArguments & {
+              /** string suffix added after conversion to JSON string. Defaults to no suffix. */
+              suffix?: string | undefined;
+          })
         | undefined;
     /** enables JSONP support by setting the value to the query parameter name containing the function name used to wrap the response payload. For example, if the value is 'callback', a request comes in with 'callback=me', and the JSON response is '{ "a":"b" }', the payload will be 'me({ "a":"b" });'. Does not work with stream responses. Headers content-type and x-content-type-options are set to text/javascript and nosniff respectively, and will override those headers even if explicitly set by response.type() */
     jsonp?: string | undefined;
@@ -1211,26 +1360,30 @@ export interface RouteAdditionalConfigurationOptions {
     /** sets common security headers (disabled by default). To enable set security to true or to an object with the following options: See RouteSecurityConfigurationObject */
     security?: boolean | RouteSecurityConfigurationObject | undefined;
     /** HTTP state management (cookies) allows the server to store information on the client which is sent back to the server with every request (as defined in RFC 6265). state supports the following options: */
-    state?: {
-        /** determines if incoming 'Cookie' headers are parsed and stored in the request.state object. Defaults to true. */
-        parse?: boolean | undefined;
-        /**
-         * determines how to handle cookie parsing errors. Allowed values are:
-         *  * 'error' - return a Bad Request (400) error response. This is the default value.
-         *  * 'log' - report the error but continue processing the request.
-         *  * 'ignore' - take no action.
-         */
-        failAction: "error" | "log" | "ignore";
-    } | undefined;
+    state?:
+        | {
+              /** determines if incoming 'Cookie' headers are parsed and stored in the request.state object. Defaults to true. */
+              parse?: boolean | undefined;
+              /**
+               * determines how to handle cookie parsing errors. Allowed values are:
+               *  * 'error' - return a Bad Request (400) error response. This is the default value.
+               *  * 'log' - report the error but continue processing the request.
+               *  * 'ignore' - take no action.
+               */
+              failAction: "error" | "log" | "ignore";
+          }
+        | undefined;
     /** request input validation rules for various request components. When using a Joi validation object, the values of the other inputs (i.e. headers, query, params, payload, and auth) are made available under the validation context (accessible in rules as Joi.ref('$query.key')). Note that validation is performed in order (i.e. headers, params, query, payload) and if type casting is used (converting a string to number), the value of inputs not yet validated will reflect the raw, unvalidated and unmodified values. If the validation rules for headers, params, query, and payload are defined at both the routes defaults level and an individual route, the individual route settings override the routes defaults (the rules are not merged). The validate object supports: */
     validate?: RouteValidationConfigurationObject | undefined;
     /** define timeouts for processing durations: */
-    timeout?: {
-        /** response timeout in milliseconds. Sets the maximum time allowed for the server to respond to an incoming client request before giving up and responding with a Service Unavailable (503) error response. Disabled by default (false). */
-        server?: boolean | number | undefined;
-        /** by default, node sockets automatically timeout after 2 minutes. Use this option to override this behavior. Defaults to undefined which leaves the node default unchanged. Set to false to disable socket timeouts. */
-        socket?: boolean | number | undefined;
-    } | undefined;
+    timeout?:
+        | {
+              /** response timeout in milliseconds. Sets the maximum time allowed for the server to respond to an incoming client request before giving up and responding with a Service Unavailable (503) error response. Disabled by default (false). */
+              server?: boolean | number | undefined;
+              /** by default, node sockets automatically timeout after 2 minutes. Use this option to override this behavior. Defaults to undefined which leaves the node default unchanged. Set to false to disable socket timeouts. */
+              socket?: boolean | number | undefined;
+          }
+        | undefined;
 
     /**
      * TODO decide on moving these to an extended interface of RouteAdditionalConfigurationOptions
@@ -1287,7 +1440,10 @@ export type RouteHandlerConfig = any;
  */
 export interface MakeRouteHandler {
     (route: RoutePublicInterface, options: RouteHandlerConfig): RouteHandler;
-    defaults?: RouteHandlerConfig | ((method: HTTP_METHODS_PARTIAL_lowercase) => RouteHandlerConfig) | undefined;
+    defaults?:
+        | RouteHandlerConfig
+        | ((method: HTTP_METHODS_PARTIAL_lowercase) => RouteHandlerConfig)
+        | undefined;
 }
 
 /**
@@ -1351,7 +1507,10 @@ export interface Route {
 export type RoutePrerequisitesArray =
     | RoutePrerequisitesPart[]
     | Array<RoutePrerequisitesPart[] | RoutePrerequisitesPart>;
-export type RoutePrerequisitesPart = RoutePrerequisiteObjects | RoutePrerequisiteRequestHandler | string;
+export type RoutePrerequisitesPart =
+    | RoutePrerequisiteObjects
+    | RoutePrerequisiteRequestHandler
+    | string;
 
 /**
  * see RoutePrerequisites > objects
@@ -1373,7 +1532,9 @@ export interface RoutePrerequisiteObjects {
 /**
  * For context see RouteAdditionalConfigurationOptions > response
  */
-export interface RouteResponseConfigurationObject<ValidationOptions = JoiValidationOptions> {
+export interface RouteResponseConfigurationObject<
+    ValidationOptions = JoiValidationOptions,
+> {
     /** the default HTTP status code when the payload is empty. Value can be 200 or 204. Note that a 200 status code is converted to a 204 only at the time or response transmission (the response status code will remain 200 throughout the request lifecycle unless manually set). Defaults to 200. */
     emptyStatusCode?: number | undefined;
     /**
@@ -1389,7 +1550,12 @@ export interface RouteResponseConfigurationObject<ValidationOptions = JoiValidat
     failAction?:
         | "error"
         | "log"
-        | ((request: Request, reply: ReplyWithContinue, source: string, error: Boom.BoomError) => void)
+        | ((
+              request: Request,
+              reply: ReplyWithContinue,
+              source: string,
+              error: Boom.BoomError,
+          ) => void)
         | undefined;
     /** if true, applies the validation rule changes to the response payload. Defaults to false. */
     modify?: boolean | undefined;
@@ -1406,7 +1572,9 @@ export interface RouteResponseConfigurationObject<ValidationOptions = JoiValidat
     /** the default response payload validation rules (for all non-error responses) */
     schema?: RouteResponseConfigurationScheme<ValidationOptions> | undefined;
     /** HTTP status-code-specific payload validation rules. The status key is set to an object where each key is a 3 digit HTTP status code and the value has the same definition as schema. If a response status code is not present in the status object, the schema definition is used, except for errors which are not validated by default. */
-    status?: Dictionary<RouteResponseConfigurationScheme<ValidationOptions>> | undefined;
+    status?:
+        | Dictionary<RouteResponseConfigurationScheme<ValidationOptions>>
+        | undefined;
 }
 
 /**
@@ -1436,7 +1604,11 @@ export type RouteResponseConfigurationScheme<ValidationOptions> =
  *  * next([err, [value]]) - the callback function called when validation is completed.  `value` will be used as the response value when `err` is falsy, when `value` is not `undefined`, and when `route.settings.response.modify` is `true`.   If the response is already a `Boom` error it will be set as its `message` value.
  */
 export interface ValidationFunctionForRouteResponse<ValidationOptions = {}> {
-    (value: any, options: RouteResponseValidationContext & ValidationOptions, next: ContinuationValueFunction): void;
+    (
+        value: any,
+        options: RouteResponseValidationContext & ValidationOptions,
+        next: ContinuationValueFunction,
+    ): void;
 }
 
 /**
@@ -1472,21 +1644,30 @@ export interface RouteResponseValidationContext {
  */
 export interface RouteSecurityConfigurationObject {
     /** controls the 'Strict-Transport-Security' header. If set to true the header will be set to max-age=15768000, if specified as a number the maxAge parameter will be set to that number. Defaults to true. You may also specify an object with the following fields: */
-    hsts?: boolean | number | {
-        /** the max-age portion of the header, as a number. Default is 15768000. */
-        maxAge?: number | undefined;
-        /** a boolean specifying whether to add the includeSubDomains flag to the header. */
-        includeSubdomains?: boolean | undefined;
-        /** a boolean specifying whether to add the 'preload' flag (used to submit domains inclusion in Chrome's HTTP Strict Transport Security (HSTS) preload list) to the header. */
-        preload?: boolean | undefined;
-    } | undefined;
+    hsts?:
+        | boolean
+        | number
+        | {
+              /** the max-age portion of the header, as a number. Default is 15768000. */
+              maxAge?: number | undefined;
+              /** a boolean specifying whether to add the includeSubDomains flag to the header. */
+              includeSubdomains?: boolean | undefined;
+              /** a boolean specifying whether to add the 'preload' flag (used to submit domains inclusion in Chrome's HTTP Strict Transport Security (HSTS) preload list) to the header. */
+              preload?: boolean | undefined;
+          }
+        | undefined;
     /** controls the 'X-Frame-Options' header. When set to true the header will be set to DENY, you may also specify a string value of 'deny' or 'sameorigin'. Defaults to true. To use the 'allow-from' rule, you must set this to an object with the following fields: */
-    xframe?: true | "deny" | "sameorigin" | {
-        /** may also be 'deny' or 'sameorigin' but set directly as a string for xframe */
-        rule: "allow-from";
-        /** when rule is 'allow-from' this is used to form the rest of the header, otherwise this field is ignored. If rule is 'allow-from' but source is unset, the rule will be automatically changed to 'sameorigin'. */
-        source: string;
-    } | undefined;
+    xframe?:
+        | true
+        | "deny"
+        | "sameorigin"
+        | {
+              /** may also be 'deny' or 'sameorigin' but set directly as a string for xframe */
+              rule: "allow-from";
+              /** when rule is 'allow-from' this is used to form the rest of the header, otherwise this field is ignored. If rule is 'allow-from' but source is unset, the rule will be automatically changed to 'sameorigin'. */
+              source: string;
+          }
+        | undefined;
     /** boolean that controls the 'X-XSS-PROTECTION' header for IE. Defaults to true which sets the header to equal '1; mode=block'. NOTE: This setting can create a security vulnerability in versions of IE below 8, as well as unpatched versions of IE8. See [here](https://hackademix.net/2009/11/21/ies-xss-filter-creates-xss-vulnerabilities/) and [here](https://technet.microsoft.com/library/security/ms10-002) for more information. If you actively support old versions of IE, it may be wise to explicitly set this flag to false. [Kept typing non optional to force this security related documentation to be read.] */
     xss: boolean;
     /** boolean controlling the 'X-Download-Options' header for IE, preventing downloads from executing in your context. Defaults to true setting the header to 'noopen'. */
@@ -1500,7 +1681,9 @@ export interface RouteSecurityConfigurationObject {
  * For context see RouteAdditionalConfigurationOptions > validate
  * TODO check JoiValidationObject is correct for "a Joi validation object"
  */
-export interface RouteValidationConfigurationObject<ValidationOptions = JoiValidationOptions> {
+export interface RouteValidationConfigurationObject<
+    ValidationOptions = JoiValidationOptions,
+> {
     /**
      * validation rules for incoming request headers (note that all header field names must be in lowercase to match the headers normalized by node). Values allowed:
      *  * true - any headers allowed (no validation performed). This is the default.
@@ -1511,23 +1694,39 @@ export interface RouteValidationConfigurationObject<ValidationOptions = JoiValid
      *      * options - the server validation options.
      *      * next(err, value) - the callback function called when validation is completed.  `value` will be used as the `headers` value when `err` is falsy.  If `next` is called with `undefined` or no arguments then the original value of `value` will be used.
      */
-    headers?: boolean | JoiValidationObject | ValidationFunctionForRouteInput<ValidationOptions> | undefined;
+    headers?:
+        | boolean
+        | JoiValidationObject
+        | ValidationFunctionForRouteInput<ValidationOptions>
+        | undefined;
     /**
      * validation rules for incoming request path parameters, after matching the path against the route and extracting any parameters then stored in request.params. Values allowed:
      * Same as `headers`, see above.
      */
-    params?: boolean | JoiValidationObject | ValidationFunctionForRouteInput<ValidationOptions> | undefined;
+    params?:
+        | boolean
+        | JoiValidationObject
+        | ValidationFunctionForRouteInput<ValidationOptions>
+        | undefined;
     /**
      * validation rules for an incoming request URI query component (the key-value part of the URI between '?' and '#'). The query is parsed into its individual key-value pairs and stored in request.query prior to validation. Values allowed:
      * Same as `headers`, see above.
      */
-    query?: boolean | JoiValidationObject | ValidationFunctionForRouteInput<ValidationOptions> | undefined;
+    query?:
+        | boolean
+        | JoiValidationObject
+        | ValidationFunctionForRouteInput<ValidationOptions>
+        | undefined;
     /**
      * validation rules for an incoming request payload (request body). Values allowed:
      * Same as `headers`, see above, with the addition that:
      *  * a Joi validation object. Note that empty payloads are represented by a null value. If a validation schema is provided and empty payload are supported, it must be explicitly defined by setting the payload value to a joi schema with null allowed (e.g. Joi.object({ /* keys here  * / }).allow(null)).
      */
-    payload?: boolean | JoiValidationObject | ValidationFunctionForRouteInput<ValidationOptions> | undefined;
+    payload?:
+        | boolean
+        | JoiValidationObject
+        | ValidationFunctionForRouteInput<ValidationOptions>
+        | undefined;
     /** an optional object with error fields copied into every validation error response. */
     errorFields?: any;
     /**
@@ -1556,7 +1755,11 @@ export interface RouteValidationConfigurationObject<ValidationOptions = JoiValid
  * @param next([err, [value]]) - the callback function called when validation is completed.
  */
 export interface ValidationFunctionForRouteInput<ValidationOptions = {}> {
-    (value: any, options: RouteInputValidationContext & ValidationOptions, next: ContinuationValueFunction): void;
+    (
+        value: any,
+        options: RouteInputValidationContext & ValidationOptions,
+        next: ContinuationValueFunction,
+    ): void;
 }
 
 /**
@@ -1588,7 +1791,12 @@ export interface RouteInputValidationContext {
  * @param error - the error object prepared for the client response (including the validation function error under error.data).
  */
 export interface RouteFailFunction {
-    (request: Request, reply: ReplyWithContinue, source: string, error: any): void;
+    (
+        request: Request,
+        reply: ReplyWithContinue,
+        source: string,
+        error: any,
+    ): void;
 }
 
 /**
@@ -1634,10 +1842,12 @@ export interface ServerStateCookieConfiguationObject {
      *  * integrity - algorithm options. Defaults to require('iron').defaults.integrity.
      *  * password - password used for HMAC key generation (must be at least 32 characters long).
      */
-    sign?: {
-        integrity?: any; // TODO make iron definitions and getting typing from iron
-        password: string;
-    } | undefined;
+    sign?:
+        | {
+              integrity?: any; // TODO make iron definitions and getting typing from iron
+              password: string;
+          }
+        | undefined;
     /** password used for 'iron' encoding (must be at least 32 characters long). */
     password?: string | undefined;
     /** options for 'iron' encoding. Defaults to require('iron').defaults. */
@@ -1686,14 +1896,23 @@ export interface ServerConnection {
     /** Described in server.info [See docs](https://hapijs.com/api/16.1.1#serverinfo) */
     info: ServerConnectionInfo;
     /** Described in server.inject [See docs](https://hapijs.com/api/16.1.1#serverinjectoptions-callback) */
-    inject(options: string | InjectedRequestOptions, callback: (res: InjectedResponseObject) => void): void;
-    inject(options: string | InjectedRequestOptions): Promise<InjectedResponseObject>;
+    inject(
+        options: string | InjectedRequestOptions,
+        callback: (res: InjectedResponseObject) => void,
+    ): void;
+    inject(
+        options: string | InjectedRequestOptions,
+    ): Promise<InjectedResponseObject>;
     /** Mentioned but not documented under server.connections [See docs](https://hapijs.com/api/16.1.1#serverconnections) */
     table(host?: string): Route[];
     /** Described in server.table [See docs](https://hapijs.com/api/16.1.1#serverlookupid) */
     lookup(id: string): RoutePublicInterface | null;
     /** Described in server.table [See docs](https://hapijs.com/api/16.1.1#servermatchmethod-path-host) */
-    match(method: HTTP_METHODS, path: string, host?: string): RoutePublicInterface | null;
+    match(
+        method: HTTP_METHODS,
+        path: string,
+        host?: string,
+    ): RoutePublicInterface | null;
 }
 
 /**
@@ -1817,7 +2036,12 @@ export interface ServerAuth {
      * @param options  scheme options based on the scheme requirements.
      */
     strategy(name: string, scheme: string, options?: any): void;
-    strategy(name: string, scheme: string, mode: boolean | "required" | "optional" | "try", options?: any): void;
+    strategy(
+        name: string,
+        scheme: string,
+        mode: boolean | "required" | "optional" | "try",
+        options?: any,
+    ): void;
     /**
      * Tests a request against an authentication strategy
      * Note that the test() method does not take into account the route authentication configuration. It also does not perform payload authentication. It is limited to the basic strategy authentication execution. It does not include verifying scope, entity, or other route properties.
@@ -1831,7 +2055,10 @@ export interface ServerAuth {
     test(
         strategy: string,
         request: Request,
-        next: (err: Error | null, credentials: AuthenticatedCredentials) => void,
+        next: (
+            err: Error | null,
+            credentials: AuthenticatedCredentials,
+        ) => void,
     ): void;
 }
 
@@ -1876,10 +2103,12 @@ export interface SchemeMethodResult {
      */
     response?(request: Request, reply: ReplySchemeAuthDecorateResponse): void;
     /** an optional object with the following keys: */
-    options?: {
-        /** if true, requires payload validation as part of the scheme and forbids routes from disabling payload auth validation. Defaults to false. */
-        payload?: boolean | undefined;
-    } | undefined;
+    options?:
+        | {
+              /** if true, requires payload validation as part of the scheme and forbids routes from disabling payload auth validation. Defaults to false. */
+              payload?: boolean | undefined;
+          }
+        | undefined;
 }
 
 export interface ServerCacheMethod {
@@ -1898,7 +2127,10 @@ export interface ServerCacheMethod {
      *      * err - any cache startup error condition.
      */
     provision(options: CatboxServerCacheConfiguration): Promise<any>;
-    provision(options: CatboxServerCacheConfiguration, callback: (err?: Error) => void): void;
+    provision(
+        options: CatboxServerCacheConfiguration,
+        callback: (err?: Error) => void,
+    ): void;
 }
 
 /* + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
@@ -2053,7 +2285,11 @@ export class Request extends Podium {
      * @param data  an optional message string or object with the application data being logged. If data is a function, the function signature is function() and it called once to generate (return value) the actual data emitted to the listeners.
      * @param timestamp  an optional timestamp expressed in milliseconds. Defaults to Date.now() (now).
      */
-    log(tags: string | string[], data?: string | Object | (() => string | Object), timestamp?: number): void;
+    log(
+        tags: string | string[],
+        data?: string | Object | (() => string | Object),
+        timestamp?: number,
+    ): void;
     /**
      * request.getLog([tags], [internal])
      * Always available.
@@ -2097,7 +2333,13 @@ export interface RequestAuthenticationInformation {
     error: Error;
 }
 
-export type HTTP_METHODS_PARTIAL_lowercase = "get" | "post" | "put" | "patch" | "delete" | "options";
+export type HTTP_METHODS_PARTIAL_lowercase =
+    | "get"
+    | "post"
+    | "put"
+    | "patch"
+    | "delete"
+    | "options";
 export type HTTP_METHODS_PARTIAL =
     | "GET"
     | "POST"
@@ -2142,8 +2384,7 @@ export type RequestEventTypes = "peek" | "finish" | "disconnect";
  *        interface RouteHandlerPlugins {
  *          proxy?: ...
  */
-export interface RouteHandlerPlugins {
-}
+export interface RouteHandlerPlugins {}
 /**
  * The route handler function uses the signature function(request, reply) (NOTE: do not use a fat arrow style function for route handlers as they do not allow context binding and will cause problems when used in conjunction with server.bind) where:
  *  * request - is the incoming request object (this is not the node.js request object).
@@ -2222,7 +2463,16 @@ export interface ContinuationValueFunction {
  * Typings also described in part here [See docs](https://hapijs.com/api/16.1.1#response-object)
  */
 export type ReplyValue = _ReplyValue | Promise<_ReplyValue>;
-export type _ReplyValue = null | undefined | string | number | boolean | Buffer | Error | stream.Stream | Object; // | array;
+export type _ReplyValue =
+    | null
+    | undefined
+    | string
+    | number
+    | boolean
+    | Buffer
+    | Error
+    | stream.Stream
+    | Object; // | array;
 
 /**
  * Reply interface
@@ -2253,9 +2503,11 @@ export interface Base_Reply {
      *      * modified - the Last-Modified header value. Required if etag is not present. Defaults to no header.
      *      * vary - same as the response.etag() option. Defaults to true.
      */
-    entity(
-        options: { etag?: string | undefined; modified?: string | undefined; vary?: boolean | undefined },
-    ): Response | null;
+    entity(options: {
+        etag?: string | undefined;
+        modified?: string | undefined;
+        vary?: boolean | undefined;
+    }): Response | null;
     /**
      * reply.close([options])
      * Concludes the handler activity by returning control over to the router and informing the router that a response has already been sent back directly via request.raw.res and that no further response action is needed. Supports the following optional options:
@@ -2327,7 +2579,11 @@ export interface ReplySchemeAuth extends Base_Reply {
      *      * credentials  the authenticated credentials.
      *      * artifacts  optional authentication artifacts.
      */
-    (err: Error | null, response: AnyAuthenticationResponseAction | null, result: AuthenticationResult): void;
+    (
+        err: Error | null,
+        response: AnyAuthenticationResponseAction | null,
+        result: AuthenticationResult,
+    ): void;
     /**
      * is called if authentication succeeded
      * @param result  same object as result above.
@@ -2526,7 +2782,17 @@ export interface Response extends Podium {
      *  * 'binary' - Alias for 'latin1'.
      *  * 'hex' - Encode each byte as two hexadecimal characters.
      */
-    encoding(encoding: "ascii" | "utf8" | "utf16le" | "ucs2" | "base64" | "latin1" | "binary" | "hex"): Response;
+    encoding(
+        encoding:
+            | "ascii"
+            | "utf8"
+            | "utf16le"
+            | "ucs2"
+            | "base64"
+            | "latin1"
+            | "binary"
+            | "hex",
+    ): Response;
     /**
      * sets the representation entity tag
      * @param tag  the entity tag string without the double-quote.
@@ -2540,7 +2806,11 @@ export interface Response extends Podium {
      * @param name  the header name.
      * @param value  the header value.
      */
-    header(name: string, value: string, options?: ResponseHeaderOptionsObject): Response;
+    header(
+        name: string,
+        value: string,
+        options?: ResponseHeaderOptionsObject,
+    ): Response;
     /**
      * sets the HTTP 'Location' header
      * @param uri  an absolute or relative URI used as the 'Location' header value.
@@ -2567,7 +2837,11 @@ export interface Response extends Podium {
      * @param value  the cookie value. If no encoding is defined, must be a string.
      * @param options  optional configuration. If the state was previously registered with the server using server.state(), the specified keys in options override those same keys in the server definition (but not others).
      */
-    state(name: string, value: string | Object | any[], options?: ServerStateCookieConfiguationObject): Response;
+    state(
+        name: string,
+        value: string | Object | any[],
+        options?: ServerStateCookieConfiguationObject,
+    ): Response;
     /**
      * sets a string suffix when the response is process via JSON.stringify().
      */
@@ -2587,7 +2861,10 @@ export interface Response extends Podium {
      * @param name  the cookie name.
      * @param options  optional configuration for expiring cookie. If the state was previously registered with the server using server.state(), the specified keys in options override those same keys in the server definition (but not others).
      */
-    unstate(name: string, options?: ServerStateCookieConfiguationObject): Response;
+    unstate(
+        name: string,
+        options?: ServerStateCookieConfiguationObject,
+    ): Response;
     /**
      * adds the provided header to the list of inputs affected the response generation via the HTTP 'Vary' header
      * @param header  the HTTP request header name.
@@ -2680,7 +2957,11 @@ export interface ResponseHeaderOptionsObject {
  * @param next  a callback method the function must call to return control back to the framework to complete the registration process with signature function(err)
  */
 export interface PluginFunction<OptionsPassedToPlugin> {
-    (server: Server, options: OptionsPassedToPlugin, next: (err?: Error) => void): void;
+    (
+        server: Server,
+        options: OptionsPassedToPlugin,
+        next: (err?: Error) => void,
+    ): void;
     /**
      * Note attributes is NOT optional but this type is easier to use.
      */
@@ -2724,7 +3005,8 @@ export interface PluginsStates {
  * once, select, routes - optional plugin-specific registration options as defined see PluginRegistrationOptions
  * [See docs](https://hapijs.com/api/16.1.1#serverregisterplugins-options-callback)
  */
-export interface PluginRegistrationObject<OptionsPassedToPlugin> extends PluginRegistrationOptions {
+export interface PluginRegistrationObject<OptionsPassedToPlugin>
+    extends PluginRegistrationOptions {
     /** the plugin registration function. */
     register: PluginFunction<OptionsPassedToPlugin>;
     /** optional options passed to the registration function when called. */
@@ -2742,7 +3024,9 @@ export interface PluginRegistrationObject<OptionsPassedToPlugin> extends PluginR
  */
 export interface PluginRegistrationOptions {
     once?: boolean | undefined;
-    routes?: { prefix?: string | undefined; vhost?: string | string[] | undefined } | undefined;
+    routes?:
+        | { prefix?: string | undefined; vhost?: string | string[] | undefined }
+        | undefined;
     select?: string | string[] | undefined;
 }
 
@@ -2774,7 +3058,10 @@ export namespace Json {
     /**
      * @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter}
      */
-    export type StringifyReplacer = ((key: string, value: any) => any) | Array<string | number> | undefined;
+    export type StringifyReplacer =
+        | ((key: string, value: any) => any)
+        | Array<string | number>
+        | undefined;
 
     /**
      * Any value greater than 10 is truncated.

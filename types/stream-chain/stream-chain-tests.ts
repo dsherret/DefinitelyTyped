@@ -27,10 +27,8 @@ const streamToArray = (array: number[]): Writable =>
     const out1: number[] = [];
     const out2: number[] = [];
 
-    streamFromArray([1, 2, 3])
-        .pipe(chain)
-        .pipe(streamToArray(out1));
-    chain.on("data", value => out2.push(+value));
+    streamFromArray([1, 2, 3]).pipe(chain).pipe(streamToArray(out1));
+    chain.on("data", (value) => out2.push(+value));
 }
 
 {
@@ -46,10 +44,8 @@ const streamToArray = (array: number[]): Writable =>
     const out1: number[] = [];
     const out2: number[] = [];
 
-    streamFromArray([1, 2, 3])
-        .pipe(chain)
-        .pipe(streamToArray(out1));
-    chain.on("data", value => out2.push(+value));
+    streamFromArray([1, 2, 3]).pipe(chain).pipe(streamToArray(out1));
+    chain.on("data", (value) => out2.push(+value));
 }
 
 {
@@ -61,10 +57,8 @@ const streamToArray = (array: number[]): Writable =>
     const out1: number[] = [];
     const out2: number[] = [];
 
-    streamFromArray([1, 2, 3])
-        .pipe(chain)
-        .pipe(streamToArray(out1));
-    chain.on("data", value => out2.push(+value));
+    streamFromArray([1, 2, 3]).pipe(chain).pipe(streamToArray(out1));
+    chain.on("data", (value) => out2.push(+value));
 }
 
 {
@@ -74,10 +68,8 @@ const streamToArray = (array: number[]): Writable =>
     const out1: number[] = [];
     const out2: number[] = [];
 
-    streamFromArray([1, 2, 3])
-        .pipe(chain)
-        .pipe(streamToArray(out1));
-    chain.on("data", value => out2.push(+value));
+    streamFromArray([1, 2, 3]).pipe(chain).pipe(streamToArray(out1));
+    chain.on("data", (value) => out2.push(+value));
 }
 
 {
@@ -87,10 +79,8 @@ const streamToArray = (array: number[]): Writable =>
     const out1: number[] = [];
     const out2: number[] = [];
 
-    streamFromArray([1, 2, 3])
-        .pipe(chain)
-        .pipe(streamToArray(out1));
-    chain.on("data", value => out2.push(+value));
+    streamFromArray([1, 2, 3]).pipe(chain).pipe(streamToArray(out1));
+    chain.on("data", (value) => out2.push(+value));
 }
 
 {
@@ -99,7 +89,11 @@ const streamToArray = (array: number[]): Writable =>
     const chain = new Chain([
         new Transform({
             objectMode: true,
-            transform(x: number, _: string | undefined, callback: (error: Error | undefined, chunk: any) => void) {
+            transform(
+                x: number,
+                _: string | undefined,
+                callback: (error: Error | undefined, chunk: any) => void,
+            ) {
                 callback(undefined, x * x);
             },
         }),
@@ -108,10 +102,8 @@ const streamToArray = (array: number[]): Writable =>
     const out1: number[] = [];
     const out2: number[] = [];
 
-    streamFromArray([1, 2, 3])
-        .pipe(chain)
-        .pipe(streamToArray(out1));
-    chain.on("data", value => out2.push(+value));
+    streamFromArray([1, 2, 3]).pipe(chain).pipe(streamToArray(out1));
+    chain.on("data", (value) => out2.push(+value));
 }
 
 {
@@ -121,10 +113,8 @@ const streamToArray = (array: number[]): Writable =>
     const out1: number[] = [];
     const out2: number[] = [];
 
-    streamFromArray([1, 2, 3])
-        .pipe(chain)
-        .pipe(streamToArray(out1));
-    chain.on("data", value => out2.push(+value));
+    streamFromArray([1, 2, 3]).pipe(chain).pipe(streamToArray(out1));
+    chain.on("data", (value) => out2.push(+value));
 }
 
 {
@@ -135,7 +125,7 @@ const streamToArray = (array: number[]): Writable =>
     const out2: number[] = [];
 
     chain.pipe(streamToArray(out1));
-    chain.on("data", value => out2.push(+value));
+    chain.on("data", (value) => out2.push(+value));
 }
 
 {
@@ -146,15 +136,19 @@ const streamToArray = (array: number[]): Writable =>
     const out2: number[] = [];
 
     streamFromArray([1, 2, 3]).pipe(chain);
-    chain.on("data", value => out2.push(+value));
+    chain.on("data", (value) => out2.push(+value));
 }
 
 {
     // include Readable and Writable
 
     const out1: number[] = [];
-    const chain = new Chain([streamFromArray([1, 2, 3]), (x: number) => 2 * x, streamToArray(out1)]);
+    const chain = new Chain([
+        streamFromArray([1, 2, 3]),
+        (x: number) => 2 * x,
+        streamToArray(out1),
+    ]);
     const out2: number[] = [];
 
-    chain.on("data", value => out2.push(+value));
+    chain.on("data", (value) => out2.push(+value));
 }

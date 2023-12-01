@@ -4,7 +4,8 @@ const baseUrl = "https://example.com";
 const config: generateFeed.Config = {
     title: "bret.io log",
     url: "https://bret.io",
-    description: "A running log of announcements, projects and accomplishments.",
+    description:
+        "A running log of announcements, projects and accomplishments.",
     icon: "/icon-512x512.png",
     favicon: "/favicon-64x64.png",
     author: "Bret Comnes <bcomnes@gmail.com> (https://bret.io)",

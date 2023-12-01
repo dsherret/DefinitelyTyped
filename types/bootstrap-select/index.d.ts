@@ -3,7 +3,9 @@
 interface BootstrapSelectOptions {
     actionsBox: boolean;
     container: string | false;
-    countSelectedText: string | ((numSelected: number, numTotal: number) => string);
+    countSelectedText:
+        | string
+        | ((numSelected: number, numTotal: number) => string);
     deselectAllText: string;
     dropdownAlignRight: "auto" | boolean;
     dropupAuto: boolean;
@@ -15,13 +17,18 @@ interface BootstrapSelectOptions {
     liveSearchPlaceholder: string | null;
     liveSearchStyle: string;
     maxOptions: number | false;
-    maxOptionsText: string | any[] | ((numAll: number, numGroup: number) => [string, string]);
+    maxOptionsText:
+        | string
+        | any[]
+        | ((numAll: number, numGroup: number) => [string, string]);
     mobile: boolean;
     multipleSeparator: string;
     noneResultsText: string;
     noneSelectedText: string;
     sanitize: boolean;
-    sanitizeFn: null | ((unsafeElements: Array<HTMLElement | ChildNode | Node>) => void);
+    sanitizeFn:
+        | null
+        | ((unsafeElements: Array<HTMLElement | ChildNode | Node>) => void);
     selectAllText: string;
     selectedTextFormat: string;
     selectOnTab: boolean;
@@ -85,14 +92,30 @@ interface BootstrapSelect<T = HTMLElement> {
      * @see {@link https://developer.snapappointments.com/bootstrap-select/methods/}
      */
     (method: "val", value: string | string[]): JQuery<T>;
-    (method: "setStyle", className?: string, action?: "add" | "remove"): JQuery<T>;
     (
-        method: "selectAll" | "deselectAll" | "render" | "mobile" | "refresh" | "toggle" | "hide" | "show" | "destroy",
+        method: "setStyle",
+        className?: string,
+        action?: "add" | "remove",
+    ): JQuery<T>;
+    (
+        method:
+            | "selectAll"
+            | "deselectAll"
+            | "render"
+            | "mobile"
+            | "refresh"
+            | "toggle"
+            | "hide"
+            | "show"
+            | "destroy",
     ): JQuery<T>;
 }
 
 interface JQuery<TElement = HTMLElement> {
     selectpicker: BootstrapSelect<TElement>;
 
-    on<K extends keyof BootstrapSelectEvents>(eventName: K, handler: BootstrapSelectEvents[K]): this;
+    on<K extends keyof BootstrapSelectEvents>(
+        eventName: K,
+        handler: BootstrapSelectEvents[K],
+    ): this;
 }

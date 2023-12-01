@@ -1,4 +1,10 @@
-export function formatTimeForDisplay({ time, clockMode }: { time: string; clockMode: number }): string;
+export function formatTimeForDisplay({
+    time,
+    clockMode,
+}: {
+    time: string;
+    clockMode: number;
+}): string;
 
 export function parseInputChange({
     newValue,

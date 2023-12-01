@@ -33,6 +33,8 @@ interface StackError<T> {
     error: any;
 }
 
-declare function parallelProcessing<T>(params: ParallelProcessingParams<T>): Promise<Array<StackError<T>>> | undefined;
+declare function parallelProcessing<T>(
+    params: ParallelProcessingParams<T>,
+): Promise<Array<StackError<T>>> | undefined;
 
 export = parallelProcessing;

@@ -65,9 +65,17 @@ declare class Mpesa {
         passKey?: string,
     ): AxiosPromise;
 
-    lipaNaMpesaQuery(checkoutRequestId: string, shortCode?: string, passKey?: string): AxiosPromise;
+    lipaNaMpesaQuery(
+        checkoutRequestId: string,
+        shortCode?: string,
+        passKey?: string,
+    ): AxiosPromise;
 
-    oAuth(consumerKey: string, consumerSecret: string, baseURL?: string): AxiosPromise;
+    oAuth(
+        consumerKey: string,
+        consumerSecret: string,
+        baseURL?: string,
+    ): AxiosPromise;
 
     reversal(
         transactionId: string,

@@ -3,7 +3,9 @@
  * @see {@link https://www.npmjs.com/package/validate-npm-package-name#naming-rules}
  * @see {@link https://www.npmjs.com/package/validate-npm-package-license}
  */
-declare function isValidPkg(pck: object): isValidPkg.ValidNames | isValidPkg.InvalidNames | isValidPkg.LegacyNames;
+declare function isValidPkg(
+    pck: object,
+): isValidPkg.ValidNames | isValidPkg.InvalidNames | isValidPkg.LegacyNames;
 
 declare namespace isValidPkg {
     interface ValidNames {

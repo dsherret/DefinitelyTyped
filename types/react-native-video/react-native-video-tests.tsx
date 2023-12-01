@@ -5,10 +5,20 @@ const playerRef = React.useRef<Video>(null);
 
 <Video
     ref={playerRef}
-    source={{ uri: "//:example.com/test.mp4", headers: { accept: "*/*" }, type: "mp4" }}
-    onProgress={data => console.log(data.currentTime, data.playableDuration, data.seekableDuration)}
-    onError={error => console.log(error.error[""], error.error.errorString)}
-    onLoad={data => {
+    source={{
+        uri: "//:example.com/test.mp4",
+        headers: { accept: "*/*" },
+        type: "mp4",
+    }}
+    onProgress={(data) =>
+        console.log(
+            data.currentTime,
+            data.playableDuration,
+            data.seekableDuration,
+        )
+    }
+    onError={(error) => console.log(error.error[""], error.error.errorString)}
+    onLoad={(data) => {
         console.log(
             data.canPlayFastForward,
             data.canPlayReverse,
@@ -29,12 +39,14 @@ const playerRef = React.useRef<Video>(null);
     }}
     onPlaybackRateChange={({ playbackRate }) => console.log(playbackRate)}
     posterResizeMode={"cover"}
-    onPictureInPictureStatusChanged={data => {
+    onPictureInPictureStatusChanged={(data) => {
         console.log(data.isActive);
     }}
     onRestoreUserInterfaceForPictureInPictureStop={() => {
         if (playerRef.current) {
-            playerRef.current.restoreUserInterfaceForPictureInPictureStopCompleted(true);
+            playerRef.current.restoreUserInterfaceForPictureInPictureStopCompleted(
+                true,
+            );
         }
     }}
     filterEnabled={true}

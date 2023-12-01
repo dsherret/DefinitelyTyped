@@ -1,7 +1,7 @@
 import styleSearch = require("style-search");
 
 const options: styleSearch.Options = {
-    source: "abc \"var(--cba)\"",
+    source: 'abc "var(--cba)"',
     target: ["a"],
     comments: "check",
     functionArguments: "check",

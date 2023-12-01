@@ -28,7 +28,9 @@ import * as viewport from "@wordpress/viewport";
             {isMobile && <span>On mobile</span>}
         </div>
     );
-    const Enhanced = viewport.withViewportMatch({ isMobile: "< small" })(Original);
+    const Enhanced = viewport.withViewportMatch({ isMobile: "< small" })(
+        Original,
+    );
 
     <Enhanced foo="bar" />;
 })();

@@ -23,19 +23,39 @@ export default class TaglibLookup {
 
     forEachTag(callback: (tag: Tag) => void | boolean): void;
 
-    forEachAttribute(tagName: string, callback: (attrDef: Attribute, tag: Tag) => void): void;
+    forEachAttribute(
+        tagName: string,
+        callback: (attrDef: Attribute, tag: Tag) => void,
+    ): void;
 
     getTag(element: string | Element): Tag | undefined;
 
-    getAttribute(element: string | Element, attr: string | { name: string }): Attribute | undefined;
+    getAttribute(
+        element: string | Element,
+        attr: string | { name: string },
+    ): Attribute | undefined;
 
-    forEachTemplateTransformer(callback: (trans: Transformer) => any, thisObj?: any): void;
+    forEachTemplateTransformer(
+        callback: (trans: Transformer) => any,
+        thisObj?: any,
+    ): void;
 
-    forEachNodeTransformer(node: any, callback: (trans: Transformer) => any, thisObj?: any): void;
+    forEachNodeTransformer(
+        node: any,
+        callback: (trans: Transformer) => any,
+        thisObj?: any,
+    ): void;
 
-    forEachTagTransformer(element: string | Element, callback: (trans: Transformer) => any, thisObj?: any): void;
+    forEachTagTransformer(
+        element: string | Element,
+        callback: (trans: Transformer) => any,
+        thisObj?: any,
+    ): void;
 
-    forEachTextTransformer(callback: (trans: Transformer) => any, thisObj?: any): void;
+    forEachTextTransformer(
+        callback: (trans: Transformer) => any,
+        thisObj?: any,
+    ): void;
 
     getInputFiles(): string[];
 }

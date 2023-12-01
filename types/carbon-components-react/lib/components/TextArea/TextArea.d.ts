@@ -1,9 +1,18 @@
 import * as React from "react";
 import { ForwardRefReturn } from "../../../typings/shared";
 
-type ExcludedAttributes = "aria-invalid" | "aria-placeholder" | "aria-describedby" | "defaultValue" | "value";
+type ExcludedAttributes =
+    | "aria-invalid"
+    | "aria-placeholder"
+    | "aria-describedby"
+    | "defaultValue"
+    | "value";
 
-export interface TextAreaProps extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, ExcludedAttributes> {
+export interface TextAreaProps
+    extends Omit<
+        React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+        ExcludedAttributes
+    > {
     defaultValue?: string | number | undefined;
     enableCounter?: boolean | undefined;
     helperText?: React.ReactNode | undefined;

@@ -23,7 +23,10 @@ declare namespace fetch {
      * response as JSON, and returns it as its final value. This is a utility
      * shorthand for `fetch(url).then(res => res.json())`.
      */
-    function json(url: string, opts?: Options): Promise<Record<string, unknown>>;
+    function json(
+        url: string,
+        opts?: Options,
+    ): Promise<Record<string, unknown>>;
 
     namespace json {
         /**
@@ -34,7 +37,11 @@ declare namespace fetch {
          * stream (unlike default `JSONStreams`), has a valid `Symbol.asyncIterator`
          * implementation.
          */
-        function stream(url: string, jsonPath: string, opts?: Options): NodeJS.ReadWriteStream;
+        function stream(
+            url: string,
+            jsonPath: string,
+            opts?: Options,
+        ): NodeJS.ReadWriteStream;
     }
 
     type Options = FetchOptions & FetchRetryOptions & AuthOptions;

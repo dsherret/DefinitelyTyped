@@ -16,12 +16,7 @@ const poly = bezier.outline(1);
 // $ExpectType Shape
 const shape = utils.makeshape(bezier, bezier);
 // $ExpectType Bezier
-Bezier.quadraticFromPoints(
-    { x: 0, y: 0 },
-    { x: 1, y: 1 },
-    { x: 2, y: 2 },
-    0.5,
-);
+Bezier.quadraticFromPoints({ x: 0, y: 0 }, { x: 1, y: 1 }, { x: 2, y: 2 }, 0.5);
 // $ExpectType Bezier
 Bezier.quadraticFromPoints({ x: 0, y: 0 }, { x: 1, y: 1 }, { x: 2, y: 2 });
 // $ExpectType Bezier
@@ -115,7 +110,7 @@ utils.angle(point, point, point);
 // $ExpectType boolean
 utils.approximately(5, 7, 0.001);
 // $ExpectType number
-utils.arcfn(1, function() {});
+utils.arcfn(1, function () {});
 // $ExpectType boolean
 utils.bboxoverlap(bbox, bbox);
 // $ExpectType boolean
@@ -137,7 +132,7 @@ utils.getccenter(point, point, point);
 // $ExpectType MinMax
 utils.getminmax(bezier, "x", [0]);
 // $ExpectType number
-utils.length(function() {});
+utils.length(function () {});
 // $ExpectType Point
 utils.lerp(1, point, point);
 // $ExpectType Point

@@ -1,17 +1,17 @@
 {
-    "private": true,
-    "name": "@types/boolify-string",
-    "version": "0.0.9999",
-    "projects": [
-        "https://github.com/sanemat/node-boolify-string"
-    ],
-    "devDependencies": {
-        "@types/boolify-string": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Tobias Henöckl",
-            "url": "http://www.sisyphus.de/"
-        }
-    ]
+  "private": true,
+  "name": "@types/boolify-string",
+  "version": "0.0.9999",
+  "projects": [
+    "https://github.com/sanemat/node-boolify-string"
+  ],
+  "devDependencies": {
+    "@types/boolify-string": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Tobias Henöckl",
+      "url": "http://www.sisyphus.de/"
+    }
+  ]
 }

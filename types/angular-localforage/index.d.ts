@@ -41,18 +41,27 @@ declare module "angular" {
 
             length(): angular.IPromise<number>;
 
-            iterate<T>(iteratorCallback: (value: string | number, key: string) => T): angular.IPromise<T>;
+            iterate<T>(
+                iteratorCallback: (value: string | number, key: string) => T,
+            ): angular.IPromise<T>;
 
             bind($scope: angular.IScope, key: string): angular.IPromise<any>;
 
-            bind($scope: angular.IScope, config: {
-                key: string;
-                defaultValue?: any;
-                scopeKey?: string | undefined;
-                name?: string | undefined;
-            }): angular.IPromise<any>;
+            bind(
+                $scope: angular.IScope,
+                config: {
+                    key: string;
+                    defaultValue?: any;
+                    scopeKey?: string | undefined;
+                    name?: string | undefined;
+                },
+            ): angular.IPromise<any>;
 
-            unbind($scope: angular.IScope, key: string, scopeKey?: string): void;
+            unbind(
+                $scope: angular.IScope,
+                key: string,
+                scopeKey?: string,
+            ): void;
 
             createInstance(config: LocalForageConfig): ILocalForageService;
             instance(name: string): ILocalForageService;

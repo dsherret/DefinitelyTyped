@@ -1,7 +1,9 @@
 import ES2015Operations = require("./2015");
 import ES2016 = require("../es2016");
 
-interface ES2016Operations extends Record<keyof ES2016, string>, ES2015Operations {
+interface ES2016Operations
+    extends Record<keyof ES2016, string>,
+        ES2015Operations {
     // Unimplemented operations:
     abs: string;
     AddRestrictedFunctionProperties: string;

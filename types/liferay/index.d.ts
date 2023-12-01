@@ -12,7 +12,11 @@ declare const Liferay: {
     /**
      * Call a Liferay service
      */
-    Service: (service: string, params?: unknown, callback?: (obj: unknown) => void) => Promise<unknown>;
+    Service: (
+        service: string,
+        params?: unknown,
+        callback?: (obj: unknown) => void,
+    ) => Promise<unknown>;
 };
 
 interface LiferayLanguage {
@@ -178,5 +182,9 @@ interface LiferayLoader {
      * @param callback the callback function
      * @param error the error function
      */
-    require: (module: string, callback?: (module: unknown) => void, error?: (error: unknown) => void) => void;
+    require: (
+        module: string,
+        callback?: (module: unknown) => void,
+        error?: (error: unknown) => void,
+    ) => void;
 }

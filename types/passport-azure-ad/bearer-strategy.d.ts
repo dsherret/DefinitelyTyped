@@ -2,7 +2,10 @@ import { Request } from "express";
 import * as passport from "passport";
 import { IBaseStrategyOption, ITokenPayload, VerifyCallback } from "./common";
 
-export type VerifyBearerFunction = (token: ITokenPayload, done: VerifyCallback) => void;
+export type VerifyBearerFunction = (
+    token: ITokenPayload,
+    done: VerifyCallback,
+) => void;
 
 export type VerifyBearerFunctionWithReq = (
     req: Request,
@@ -17,7 +20,8 @@ export interface IBearerStrategyOption extends IBaseStrategyOption {
     scope?: string[] | undefined;
 }
 
-export interface IBearerStrategyOptionWithRequest extends IBearerStrategyOption {
+export interface IBearerStrategyOptionWithRequest
+    extends IBearerStrategyOption {
     passReqToCallback: boolean;
 }
 

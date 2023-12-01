@@ -39,7 +39,7 @@ import * as url from "node:url";
         return false;
     }
     const urlUrl = url.parse("http://example.com/?hello=world", getBoolean());
-    if (typeof (urlUrl.query) === "string") {
+    if (typeof urlUrl.query === "string") {
         queryStr = urlUrl.query;
     } else if (urlUrl.query) {
         helloQuery = urlUrl.query["hello"];
@@ -52,11 +52,16 @@ import * as url from "node:url";
 }
 
 {
-    let myURL = new url.URL("https://theuser:thepwd@example.org:81/foo/path?query=string#bar");
+    let myURL = new url.URL(
+        "https://theuser:thepwd@example.org:81/foo/path?query=string#bar",
+    );
     assert.equal(myURL.hash, "#bar");
     assert.equal(myURL.host, "example.org:81");
     assert.equal(myURL.hostname, "example.org");
-    assert.equal(myURL.href, "https://theuser:thepwd@example.org:81/foo/path?query=string#bar");
+    assert.equal(
+        myURL.href,
+        "https://theuser:thepwd@example.org:81/foo/path?query=string#bar",
+    );
     assert.equal(myURL.origin, "https://example.org:81");
     assert.equal(myURL.password, "thepwd");
     assert.equal(myURL.username, "theuser");
@@ -64,7 +69,10 @@ import * as url from "node:url";
     assert.equal(myURL.port, "81");
     assert.equal(myURL.protocol, "https:");
     assert.equal(myURL.search, "?query=string");
-    assert.equal(myURL.toString(), "https://theuser:thepwd@example.org:81/foo/path?query=string#bar");
+    assert.equal(
+        myURL.toString(),
+        "https://theuser:thepwd@example.org:81/foo/path?query=string#bar",
+    );
     assert(myURL.searchParams instanceof url.URLSearchParams);
 
     myURL.host = "example.org:82";
@@ -77,7 +85,10 @@ import * as url from "node:url";
     myURL.port = "82";
     myURL.protocol = "http";
     myURL.search = "a=b";
-    assert.equal(myURL.href, "http://otheruser:otherpwd@other.com:82/otherPath?a=b#baz");
+    assert.equal(
+        myURL.href,
+        "http://otheruser:otherpwd@other.com:82/otherPath?a=b#baz",
+    );
 
     myURL = new url.URL("/foo", "https://example.org/");
     assert.equal(myURL.href, "https://example.org/foo");
@@ -88,13 +99,15 @@ import * as url from "node:url";
     const searchParams = new url.URLSearchParams("abc=123");
 
     assert.equal(searchParams.toString(), "abc=123");
-    searchParams.forEach((value: string, name: string, me: url.URLSearchParams): void => {
-        assert.equal(name, "abc");
-        assert.equal(value, "123");
-        assert.equal(me, searchParams);
-    });
+    searchParams.forEach(
+        (value: string, name: string, me: url.URLSearchParams): void => {
+            assert.equal(name, "abc");
+            assert.equal(value, "123");
+            assert.equal(me, searchParams);
+        },
+    );
 
-    searchParams.forEach(function() {
+    searchParams.forEach(function () {
         this; // $ExpectType number
     }, 1);
 

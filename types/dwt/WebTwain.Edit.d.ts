@@ -8,11 +8,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
      * @param width Specify the width of the editor.
      * @param height Specify the height of the editor.
      */
-    ShowImageEditor(
-        divId?: string,
-        width?: number,
-        height?: number,
-    ): boolean;
+    ShowImageEditor(divId?: string, width?: number, height?: number): boolean;
     /**
      * Change the bit depth of the specified image.
      * @param index Specify the image.
@@ -41,10 +37,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
         height: number,
         method: Dynamsoft.EnumDWT_InterpolationMethod | number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -66,10 +59,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
         resample: boolean,
         method: Dynamsoft.EnumDWT_InterpolationMethod | number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -83,10 +73,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
     ConvertToBW(
         index: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -100,10 +87,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
     ConvertToGrayScale(
         index: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -117,10 +101,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
     Invert(
         index: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -136,10 +117,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
         index: number,
         width: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -153,10 +131,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
     Flip(
         index: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -170,10 +145,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
     Mirror(
         index: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -187,10 +159,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
     RotateLeft(
         index: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -204,10 +173,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
     RotateRight(
         index: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -225,10 +191,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
         angle: number,
         keepSize: boolean,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -248,10 +211,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
         keepSize: boolean,
         method: Dynamsoft.EnumDWT_InterpolationMethod | number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -273,10 +233,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
         right: number,
         bottom: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -298,10 +255,7 @@ export interface WebTwainEdit extends WebTwainBuffer {
         right: number,
         bottom: number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**

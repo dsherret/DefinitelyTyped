@@ -55,12 +55,16 @@ export class ExtractPDFOptionsBuilder {
     /**
      * Sets the elements to extract - like text and/or tables.
      */
-    addElementsToExtract(elements: ExtractElementType[]): ExtractPDFOptionsBuilder;
+    addElementsToExtract(
+        elements: ExtractElementType[],
+    ): ExtractPDFOptionsBuilder;
 
     /**
      * Sets the renditions to extract - like tables and/or figures.
      */
-    addElementsToExtractRenditions(elements: ExtractElementType[]): ExtractPDFOptionsBuilder;
+    addElementsToExtractRenditions(
+        elements: ExtractElementType[],
+    ): ExtractPDFOptionsBuilder;
 
     /**
      * Boolean specifying whether to add character level bounding boxes to output json
@@ -70,7 +74,9 @@ export class ExtractPDFOptionsBuilder {
     /**
      * Adds the table structure format (currently csv only) for extracting structured information.
      */
-    addTableStructureFormat(element: TableStructureType): ExtractPDFOptionsBuilder;
+    addTableStructureFormat(
+        element: TableStructureType,
+    ): ExtractPDFOptionsBuilder;
 
     /**
      * Boolean specifying whether to get styling info of text

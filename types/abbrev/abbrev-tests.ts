@@ -13,4 +13,4 @@ abbrev.monkeyPatch();
 abbrs = [].abbrev();
 const roArr: readonly string[] = [];
 abbrs = roArr.abbrev();
-abbrs = ({}).abbrev();
+abbrs = {}.abbrev();

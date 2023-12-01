@@ -38,9 +38,7 @@ splunkStream.setEventFormatter((message, severity) => {
 // Note: splunkStream must be set to an element in the streams array
 const Logger = createLogger({
     name: "my logger",
-    streams: [
-        splunkStream,
-    ],
+    streams: [splunkStream],
 });
 
 // Fully-specified config

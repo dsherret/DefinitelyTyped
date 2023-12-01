@@ -67,10 +67,26 @@ export class GUI {
         max?: number,
         step?: number,
     ): GUIController;
-    add<T extends object>(target: T, propName: keyof T, status: boolean): GUIController;
-    add<T extends object>(target: T, propName: keyof T, items: string[]): GUIController;
-    add<T extends object>(target: T, propName: keyof T, items: number[]): GUIController;
-    add<T extends object>(target: T, propName: keyof T, items: Object): GUIController;
+    add<T extends object>(
+        target: T,
+        propName: keyof T,
+        status: boolean,
+    ): GUIController;
+    add<T extends object>(
+        target: T,
+        propName: keyof T,
+        items: string[],
+    ): GUIController;
+    add<T extends object>(
+        target: T,
+        propName: keyof T,
+        items: number[],
+    ): GUIController;
+    add<T extends object>(
+        target: T,
+        propName: keyof T,
+        items: Object,
+    ): GUIController;
 
     addColor(target: Object, propName: string): GUIController;
 

@@ -14,7 +14,11 @@ declare global {
 
         handleTabCompletion(): void;
 
-        genPostData(channel: ChatChannels, storageHash: chatStorage, getOlderMsgs: boolean): any;
+        genPostData(
+            channel: ChatChannels,
+            storageHash: chatStorage,
+            getOlderMsgs: boolean,
+        ): any;
 
         // faction
         _faction: chatStorage;
@@ -41,7 +45,12 @@ declare global {
         nicknameClicked(event: MouseEvent, nickname: string): void;
 
         /** store incoming data */
-        writeDataToHash(newData: any, storageHash: chatStorage, isPublicChannel: boolean, isOlderMsgs: boolean): void;
+        writeDataToHash(
+            newData: any,
+            storageHash: chatStorage,
+            isPublicChannel: boolean,
+            isOlderMsgs: boolean,
+        ): void;
 
         /** Override portal names that are used over and over, such as 'US Post Office' */
         getChatPortalName(markup: Intel.MarkUpPortalType): string;
@@ -51,7 +60,11 @@ declare global {
          * ID. Set 3rd argument to true if it is likely that old data has been
          * added. Latter is only required for scrolling.
          */
-        renderData(data: any, element: "chatfaction" | "chatall" | "chatalerts", likelyWereOldMsgs: boolean): void;
+        renderData(
+            data: any,
+            element: "chatfaction" | "chatall" | "chatalerts",
+            likelyWereOldMsgs: boolean,
+        ): void;
 
         renderDivider(text: string): string;
 
@@ -75,7 +88,11 @@ declare global {
          * channel: either 'all', 'faction' or (soon) 'alerts' - others possible in the future
          * flag: true for data wanted, false for not wanted
          */
-        backgroundChannelData(instance: string, channel: ChatChannels, flag: boolean): void;
+        backgroundChannelData(
+            instance: string,
+            channel: ChatChannels,
+            flag: boolean,
+        ): void;
 
         backgroundInstanceChannel: {}; // [instance][channel] = flag;
 
@@ -96,7 +113,11 @@ declare global {
         chooser(event: MouseEvent): void;
 
         /** contains the logic to keep the correct scroll position. */
-        keepScrollPosition(box: JQuery, scrollBefore: number, isOldMsgs: boolean): void;
+        keepScrollPosition(
+            box: JQuery,
+            scrollBefore: number,
+            isOldMsgs: boolean,
+        ): void;
 
         /** init */
         setup(): void;

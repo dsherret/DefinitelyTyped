@@ -96,6 +96,9 @@ declare namespace prompt {
     }
 }
 
-declare function prompt(options?: prompt.Options, parentBrowserWindow?: BrowserWindow): Promise<string | null>;
+declare function prompt(
+    options?: prompt.Options,
+    parentBrowserWindow?: BrowserWindow,
+): Promise<string | null>;
 
 export = prompt;

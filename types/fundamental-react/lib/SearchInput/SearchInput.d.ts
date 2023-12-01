@@ -15,15 +15,19 @@ export type SearchInputProps = {
     searchBtnProps?: any;
     searchList?:
         | Array<{
-            text: string;
-            callback?: ((...args: any[]) => any) | undefined;
-        }>
+              text: string;
+              callback?: ((...args: any[]) => any) | undefined;
+          }>
         | undefined;
-    validationState?: {
-        state?: any;
-        text?: string | undefined;
-    } | undefined;
-    onChange?: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
+    validationState?:
+        | {
+              state?: any;
+              text?: string | undefined;
+          }
+        | undefined;
+    onChange?:
+        | ((event: React.ChangeEvent<HTMLInputElement>) => void)
+        | undefined;
     onEnter?: ((value?: string | number | string[]) => void) | undefined;
 } & { [x: string]: any };
 

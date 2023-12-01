@@ -127,64 +127,74 @@ export interface Slide {
  */
 
 export interface SRLWrapperOptions {
-    settings?: {
-        autoplaySpeed?: number | undefined;
-        boxShadow?: string | undefined;
-        disableKeyboardControls?: boolean | undefined;
-        disablePanzoom?: boolean | undefined;
-        disableWheelControls?: boolean | undefined;
-        downloadedFileName?: string | undefined;
-        hideControlsAfter?: number | boolean | undefined;
-        lightboxTransitionSpeed?: number | undefined;
-        lightboxTransitionTimingFunction?: string | undefined;
-        overlayColor?: string | undefined;
-        slideAnimationType?: string | undefined;
-        slideSpringValues?: number[] | undefined;
-        slideTransitionSpeed?: number | undefined;
-        slideTransitionTimingFunction?: string | undefined;
-        usingPreact?: boolean | undefined;
-    } | undefined;
-    buttons?: {
-        backgroundColor?: string | undefined;
-        iconColor?: string | undefined;
-        iconPadding?: string | undefined;
-        showAutoplayButton?: boolean | undefined;
-        showCloseButton?: boolean | undefined;
-        showDownloadButton?: boolean | undefined;
-        showFullscreenButton?: boolean | undefined;
-        showNextButton?: boolean | undefined;
-        showPrevButton?: boolean | undefined;
-        showThumbnailsButton?: boolean | undefined;
-        size?: string | undefined;
-    } | undefined;
-    caption?: {
-        captionColor?: string | undefined;
-        captionAlignment?: string | undefined;
-        captionFontFamily?: string | undefined;
-        captionFontSize?: string | undefined;
-        captionFontStyle?: string | undefined;
-        captionFontWeight?: number | string | undefined;
-        captionContainerPadding?: string | undefined;
-        captionTextTransform?: string | undefined;
-        showCaption?: boolean | undefined;
-    } | undefined;
-    thumbnails?: {
-        showThumbnails?: boolean | undefined;
-        thumbnailsAlignment?: string | undefined;
-        thumbnailsContainerPadding?: string | undefined;
-        thumbnailsContainerBackgroundColor?: string | undefined;
-        thumbnailsGap?: string | undefined;
-        thumbnailsIconColor?: string | undefined;
-        thumbnailsOpacity?: number | undefined;
-        thumbnailsPosition?: string | undefined;
-        thumbnailsSize?: string[] | undefined;
-    } | undefined;
-    progressBar?: {
-        backgroundColor?: string | undefined;
-        fillColor?: string | undefined;
-        height?: string | undefined;
-        showProgressBar?: boolean | undefined;
-    } | undefined;
+    settings?:
+        | {
+              autoplaySpeed?: number | undefined;
+              boxShadow?: string | undefined;
+              disableKeyboardControls?: boolean | undefined;
+              disablePanzoom?: boolean | undefined;
+              disableWheelControls?: boolean | undefined;
+              downloadedFileName?: string | undefined;
+              hideControlsAfter?: number | boolean | undefined;
+              lightboxTransitionSpeed?: number | undefined;
+              lightboxTransitionTimingFunction?: string | undefined;
+              overlayColor?: string | undefined;
+              slideAnimationType?: string | undefined;
+              slideSpringValues?: number[] | undefined;
+              slideTransitionSpeed?: number | undefined;
+              slideTransitionTimingFunction?: string | undefined;
+              usingPreact?: boolean | undefined;
+          }
+        | undefined;
+    buttons?:
+        | {
+              backgroundColor?: string | undefined;
+              iconColor?: string | undefined;
+              iconPadding?: string | undefined;
+              showAutoplayButton?: boolean | undefined;
+              showCloseButton?: boolean | undefined;
+              showDownloadButton?: boolean | undefined;
+              showFullscreenButton?: boolean | undefined;
+              showNextButton?: boolean | undefined;
+              showPrevButton?: boolean | undefined;
+              showThumbnailsButton?: boolean | undefined;
+              size?: string | undefined;
+          }
+        | undefined;
+    caption?:
+        | {
+              captionColor?: string | undefined;
+              captionAlignment?: string | undefined;
+              captionFontFamily?: string | undefined;
+              captionFontSize?: string | undefined;
+              captionFontStyle?: string | undefined;
+              captionFontWeight?: number | string | undefined;
+              captionContainerPadding?: string | undefined;
+              captionTextTransform?: string | undefined;
+              showCaption?: boolean | undefined;
+          }
+        | undefined;
+    thumbnails?:
+        | {
+              showThumbnails?: boolean | undefined;
+              thumbnailsAlignment?: string | undefined;
+              thumbnailsContainerPadding?: string | undefined;
+              thumbnailsContainerBackgroundColor?: string | undefined;
+              thumbnailsGap?: string | undefined;
+              thumbnailsIconColor?: string | undefined;
+              thumbnailsOpacity?: number | undefined;
+              thumbnailsPosition?: string | undefined;
+              thumbnailsSize?: string[] | undefined;
+          }
+        | undefined;
+    progressBar?:
+        | {
+              backgroundColor?: string | undefined;
+              fillColor?: string | undefined;
+              height?: string | undefined;
+              showProgressBar?: boolean | undefined;
+          }
+        | undefined;
 }
 
 /**
@@ -200,7 +210,11 @@ export interface SRLWrapperOptions {
  *  document.getElementById("root")
  */
 
-export default function SimpleReactLightbox({ children }: { children: ReactNode }): JSX.Element;
+export default function SimpleReactLightbox({
+    children,
+}: {
+    children: ReactNode;
+}): JSX.Element;
 
 /**
  * The hook function containing two methods, openLightbox and closeLightbox.
@@ -209,7 +223,10 @@ export default function SimpleReactLightbox({ children }: { children: ReactNode 
  * @see https://github.com/michelecocuccio/simple-react-lightbox#hooks
  */
 
-export function useLightbox(): { openLightbox(index?: number): void; closeLightbox(): void };
+export function useLightbox(): {
+    openLightbox(index?: number): void;
+    closeLightbox(): void;
+};
 
 // If the user provide the elements prop, don't let him to also use children, and vice-versa.
 
@@ -251,7 +268,11 @@ export interface Callbacks {
     onCountSlides?({ totalSlide }: Readonly<CallbackCountSlides>): void;
     onLightboxClosed?({ currentSlide, opened }: Readonly<CallbackOpen>): void;
     onLightboxOpened?({ currentSlide, opened }: Readonly<CallbackOpen>): void;
-    onSlideChange?({ index, action, slides: { previous, next, current } }: Readonly<CallbackSlideChange>): void;
+    onSlideChange?({
+        index,
+        action,
+        slides: { previous, next, current },
+    }: Readonly<CallbackSlideChange>): void;
 }
 
 export type SRLWrapperProps = (WrapperWithElements | WrapperWithChildren) & {
@@ -271,4 +292,9 @@ export type SRLWrapperProps = (WrapperWithElements | WrapperWithChildren) & {
  * @see https://github.com/michelecocuccio/simple-react-lightbox#using-the-lightbox-with-props
  */
 
-export function SRLWrapper({ options, callbacks, elements, children }: SRLWrapperProps): JSX.Element;
+export function SRLWrapper({
+    options,
+    callbacks,
+    elements,
+    children,
+}: SRLWrapperProps): JSX.Element;

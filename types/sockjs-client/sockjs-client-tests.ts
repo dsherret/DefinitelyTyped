@@ -35,7 +35,11 @@ sockJs.onmessage = (e: any) => console.log(e.data);
 sockJs.onclose = (e: any) => console.log(e.code, e.reason, e.wasClean);
 
 const num = -1 as number;
-const testStates = SockJS.CONNECTING !== num && SockJS.OPEN !== num && SockJS.CLOSING !== num && SockJS.CLOSED !== num;
+const testStates =
+    SockJS.CONNECTING !== num &&
+    SockJS.OPEN !== num &&
+    SockJS.CLOSING !== num &&
+    SockJS.CLOSED !== num;
 
 sockJs.send("send");
 sockJs.send({ x: 1 });

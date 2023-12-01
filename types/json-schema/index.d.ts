@@ -145,9 +145,11 @@ export interface JSONSchema4 {
      */
     additionalProperties?: boolean | JSONSchema4 | undefined;
 
-    definitions?: {
-        [k: string]: JSONSchema4;
-    } | undefined;
+    definitions?:
+        | {
+              [k: string]: JSONSchema4;
+          }
+        | undefined;
 
     /**
      * This attribute is an object with property definitions that define the
@@ -162,9 +164,11 @@ export interface JSONSchema4 {
      *
      * @see https://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.2
      */
-    properties?: {
-        [k: string]: JSONSchema4;
-    } | undefined;
+    properties?:
+        | {
+              [k: string]: JSONSchema4;
+          }
+        | undefined;
 
     /**
      * This attribute is an object that defines the schema for a set of
@@ -177,12 +181,16 @@ export interface JSONSchema4 {
      *
      * @see https://tools.ietf.org/html/draft-zyp-json-schema-03#section-5.3
      */
-    patternProperties?: {
-        [k: string]: JSONSchema4;
-    } | undefined;
-    dependencies?: {
-        [k: string]: JSONSchema4 | string[];
-    } | undefined;
+    patternProperties?:
+        | {
+              [k: string]: JSONSchema4;
+          }
+        | undefined;
+    dependencies?:
+        | {
+              [k: string]: JSONSchema4 | string[];
+          }
+        | undefined;
 
     /**
      * This provides an enumeration of all possible values that are valid
@@ -420,9 +428,11 @@ export interface JSONSchema6 {
      * Omitting this keyword has the same behavior as an empty object.
      * @see https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-6.18
      */
-    properties?: {
-        [k: string]: JSONSchema6Definition;
-    } | undefined;
+    properties?:
+        | {
+              [k: string]: JSONSchema6Definition;
+          }
+        | undefined;
 
     /**
      * This attribute is an object that defines the schema for a set of property names of an object instance.
@@ -432,9 +442,11 @@ export interface JSONSchema6 {
      * Omitting this keyword has the same behavior as an empty object.
      * @see https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-6.19
      */
-    patternProperties?: {
-        [k: string]: JSONSchema6Definition;
-    } | undefined;
+    patternProperties?:
+        | {
+              [k: string]: JSONSchema6Definition;
+          }
+        | undefined;
 
     /**
      * This attribute defines a schema for all properties that are not explicitly defined in an object type definition.
@@ -452,9 +464,11 @@ export interface JSONSchema6 {
      * Omitting this keyword has the same behavior as an empty object.
      * @see https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-6.21
      */
-    dependencies?: {
-        [k: string]: JSONSchema6Definition | string[];
-    } | undefined;
+    dependencies?:
+        | {
+              [k: string]: JSONSchema6Definition | string[];
+          }
+        | undefined;
 
     /**
      * Takes a schema which validates the names of all properties rather than their values.
@@ -510,9 +524,11 @@ export interface JSONSchema6 {
     /**
      * @see https://tools.ietf.org/html/draft-wright-json-schema-validation-01#section-7.1
      */
-    definitions?: {
-        [k: string]: JSONSchema6Definition;
-    } | undefined;
+    definitions?:
+        | {
+              [k: string]: JSONSchema6Definition;
+          }
+        | undefined;
 
     /**
      * This attribute is a string that provides a short description of the instance property.
@@ -615,9 +631,11 @@ export interface JSONSchema7 {
      * @see https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-00#section-8.2.4
      * @see https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-validation-00#appendix-A
      */
-    $defs?: {
-        [key: string]: JSONSchema7Definition;
-    } | undefined;
+    $defs?:
+        | {
+              [key: string]: JSONSchema7Definition;
+          }
+        | undefined;
 
     /**
      * @see https://tools.ietf.org/html/draft-handrews-json-schema-validation-01#section-6.1
@@ -658,16 +676,22 @@ export interface JSONSchema7 {
     maxProperties?: number | undefined;
     minProperties?: number | undefined;
     required?: string[] | undefined;
-    properties?: {
-        [key: string]: JSONSchema7Definition;
-    } | undefined;
-    patternProperties?: {
-        [key: string]: JSONSchema7Definition;
-    } | undefined;
+    properties?:
+        | {
+              [key: string]: JSONSchema7Definition;
+          }
+        | undefined;
+    patternProperties?:
+        | {
+              [key: string]: JSONSchema7Definition;
+          }
+        | undefined;
     additionalProperties?: JSONSchema7Definition | undefined;
-    dependencies?: {
-        [key: string]: JSONSchema7Definition | string[];
-    } | undefined;
+    dependencies?:
+        | {
+              [key: string]: JSONSchema7Definition | string[];
+          }
+        | undefined;
     propertyNames?: JSONSchema7Definition | undefined;
 
     /**
@@ -699,9 +723,11 @@ export interface JSONSchema7 {
     /**
      * @see https://tools.ietf.org/html/draft-handrews-json-schema-validation-01#section-9
      */
-    definitions?: {
-        [key: string]: JSONSchema7Definition;
-    } | undefined;
+    definitions?:
+        | {
+              [key: string]: JSONSchema7Definition;
+          }
+        | undefined;
 
     /**
      * @see https://tools.ietf.org/html/draft-handrews-json-schema-validation-01#section-10
@@ -730,7 +756,10 @@ export interface ValidationError {
  * that schema will be used to validate and the schema parameter is not necessary (if both exist,
  * both validations will occur).
  */
-export function validate(instance: {}, schema: JSONSchema4 | JSONSchema6 | JSONSchema7): ValidationResult;
+export function validate(
+    instance: {},
+    schema: JSONSchema4 | JSONSchema6 | JSONSchema7,
+): ValidationResult;
 
 /**
  * The checkPropertyChange method will check to see if an value can legally be in property with the given schema

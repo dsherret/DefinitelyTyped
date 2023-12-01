@@ -9,7 +9,9 @@ import Cropper from "react-cropper";
 class Demo extends React.Component {
     crop() {
         // image in dataUrl
-        console.log((this.refs["cropper"] as any).getCroppedCanvas().toDataURL());
+        console.log(
+            (this.refs["cropper"] as any).getCroppedCanvas().toDataURL(),
+        );
     }
 
     render() {

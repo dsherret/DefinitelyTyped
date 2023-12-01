@@ -56,6 +56,8 @@ Ints([2, 1, 3, 7, 10, 4, 20, 6, 11, 8, 23]).getPrimeNumbers(); // $ExpectType nu
 Ints([2, 1, 3, 7, 10, 4, 20, 6, 11, 8, 23]).getPrimeNumbersLessThan(23); // $ExpectType number[]
 Ints([2, 1, 3, 7, 10, 4, 20, 6, 11, 8, 23]).getPrimeNumbersLessOrEqualThan(23); // $ExpectType number[]
 Ints([2, 1, 3, 7, 10, 4, 20, 6, 11, 8, 23]).getPrimeNumbersGreaterThan(7); // $ExpectType number[]
-Ints([2, 1, 3, 7, 10, 4, 20, 6, 11, 8, 23]).getPrimeNumbersGreaterOrEqualThan(7); // $ExpectType number[]
+Ints([2, 1, 3, 7, 10, 4, 20, 6, 11, 8, 23]).getPrimeNumbersGreaterOrEqualThan(
+    7,
+); // $ExpectType number[]
 Ints(2).isPrimeNumber(); // $ExpectType boolean
 Ints(4).isPrimeNumber(); // $ExpectType boolean

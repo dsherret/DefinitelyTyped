@@ -45,7 +45,4 @@ class TestApp extends React.Component {
     }
 }
 
-ReactDOM.render(
-    <TestApp />,
-    document.getElementById("test-app"),
-);
+ReactDOM.render(<TestApp />, document.getElementById("test-app"));

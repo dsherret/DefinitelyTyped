@@ -36,7 +36,11 @@ declare module "SyntheticsTracing" {
          * canaryArn - required
          * canaryRunId - required
          */
-        createXRaySDKClient(canaryName: any, canaryArn: any, canaryRunId: any): Promise<void>;
+        createXRaySDKClient(
+            canaryName: any,
+            canaryArn: any,
+            canaryRunId: any,
+        ): Promise<void>;
         setLogger(logger: AWSXRaySDKClient.Logger): void;
         setCaptureAWSAllowlist(source: string | object): void;
         appendCaptureAWSAllowlist(source: string | object): void;
@@ -116,7 +120,11 @@ declare module "SyntheticsTracing" {
          *
          * returns - AWS.XRay client configured as specified
          */
-        createAWSXRayClient(roleArn?: string, region?: string, endpoint?: string): Promise<any>;
+        createAWSXRayClient(
+            roleArn?: string,
+            region?: string,
+            endpoint?: string,
+        ): Promise<any>;
         activeTracing(): boolean;
         setActiveTracing(activeTracing: boolean): Promise<void>;
         /**
@@ -126,7 +134,11 @@ declare module "SyntheticsTracing" {
          * canaryArn: "arn:aws:accountId:region:synthetics:canary:canary-name",
          * canaryRunId: "98203495-6546-2343-230203020102",
          */
-        configureTracing(canaryName: string, canaryArn: string, canaryRunId: string): void;
+        configureTracing(
+            canaryName: string,
+            canaryArn: string,
+            canaryRunId: string,
+        ): void;
         /**
          * Set the AWS X-Ray client configuration for role arn, region, and endpoint.
          * Useful for sending traces to a different account.
@@ -143,7 +155,11 @@ declare module "SyntheticsTracing" {
          *     If endpoint is not specified, the default endpoint for the region
          *     will be used
          */
-        setXRayClientConfiguration(roleArn?: string, region?: string, endpoint?: string): Promise<void>;
+        setXRayClientConfiguration(
+            roleArn?: string,
+            region?: string,
+            endpoint?: string,
+        ): Promise<void>;
         /**
          * Creates a new Segment and SubSegment that could be used for tracing a request/response
          * Keeps track of subsegments and segments created to be closed later.
@@ -167,7 +183,10 @@ declare module "SyntheticsTracing" {
         closeSubSegment(subsegment: AWSXRaySDKClient.Subsegment): void;
         setExecutionError(err: any): void;
         getExecutionError(): any;
-        sendTraceSegment(xRayClient: any, segment: AWSXRaySDKClient.Segment): void;
+        sendTraceSegment(
+            xRayClient: any,
+            segment: AWSXRaySDKClient.Segment,
+        ): void;
         /**
          * Returns an Amazon Trace Id (X-AMZN-TRACE-ID) formatted header for an existing segment
          * Sampled is set to true.

@@ -9,8 +9,16 @@ declare namespace Ix {
     }
 
     export interface EnumeratorStatic {
-        new<T>(moveNext: () => boolean, getCurrent: () => T, dispose: () => void): Enumerator<T>;
-        create<T>(moveNext: () => boolean, getCurrent: () => T, dispose?: () => void): Enumerator<T>;
+        new <T>(
+            moveNext: () => boolean,
+            getCurrent: () => T,
+            dispose: () => void,
+        ): Enumerator<T>;
+        create<T>(
+            moveNext: () => boolean,
+            getCurrent: () => T,
+            dispose?: () => void,
+        ): Enumerator<T>;
     }
 
     var Enumerator: EnumeratorStatic;
@@ -18,7 +26,8 @@ declare namespace Ix {
     export interface EnumerableFunc<T, TResult> {
         (item: T, index: number, self: Enumerable<T>): TResult;
     }
-    export interface EnumerablePredicate<T> extends EnumerableFunc<T, boolean> {}
+    export interface EnumerablePredicate<T>
+        extends EnumerableFunc<T, boolean> {}
     export interface Predicate<T> {
         (item: T): boolean;
     }
@@ -37,18 +46,47 @@ declare namespace Ix {
 
         aggregate<TAccumulate, TResult>(
             seed: TAccumulate,
-            func: (accumulate: TAccumulate, current: T, index: number, self: Enumerable<T>) => TAccumulate,
+            func: (
+                accumulate: TAccumulate,
+                current: T,
+                index: number,
+                self: Enumerable<T>,
+            ) => TAccumulate,
             resultSelector: (accumulate: TAccumulate) => TResult,
         ): TResult;
         aggregate<TAccumulate>(
             seed: TAccumulate,
-            func: (accumulate: TAccumulate, current: T, index: number, self: Enumerable<T>) => TAccumulate,
+            func: (
+                accumulate: TAccumulate,
+                current: T,
+                index: number,
+                self: Enumerable<T>,
+            ) => TAccumulate,
         ): TAccumulate;
-        aggregate(func: (accumulate: T, current: T, index: number, self: Enumerable<T>) => T): T;
+        aggregate(
+            func: (
+                accumulate: T,
+                current: T,
+                index: number,
+                self: Enumerable<T>,
+            ) => T,
+        ): T;
 
-        reduce(func: (accumulate: T, current: T, index: number, self: Enumerable<T>) => T): T;
+        reduce(
+            func: (
+                accumulate: T,
+                current: T,
+                index: number,
+                self: Enumerable<T>,
+            ) => T,
+        ): T;
         reduce<TAccumulate>(
-            func: (accumulate: TAccumulate, current: T, index: number, self: Enumerable<T>) => TAccumulate,
+            func: (
+                accumulate: TAccumulate,
+                current: T,
+                index: number,
+                self: Enumerable<T>,
+            ) => TAccumulate,
             seed: TAccumulate,
         ): TAccumulate;
 
@@ -67,7 +105,10 @@ declare namespace Ix {
 
         concat<T>(...sources: Array<Enumerable<T>>): Enumerable<T>;
 
-        contains<TValue>(value: TValue, comparer: EqualityComparer<T, TValue>): boolean;
+        contains<TValue>(
+            value: TValue,
+            comparer: EqualityComparer<T, TValue>,
+        ): boolean;
         contains(value: T): boolean;
 
         count(predicate?: EnumerablePredicate<T>, thisArg?: any): number;
@@ -79,7 +120,10 @@ declare namespace Ix {
         elementAt(index: number): T;
         elementAtOrDefault(index: number): T;
 
-        except<TOther>(second: Enumerable<TOther>, comparer: EqualityComparer<T, TOther>): Enumerable<T>;
+        except<TOther>(
+            second: Enumerable<TOther>,
+            comparer: EqualityComparer<T, TOther>,
+        ): Enumerable<T>;
         except(second: Enumerable<T>): Enumerable<T>;
 
         first(predicate?: Predicate<T>): T;
@@ -94,7 +138,10 @@ declare namespace Ix {
         groupBy<TKey, TElement, TResult>(
             keySelector: (item: T) => TKey,
             elementSelector: (item: T) => TElement,
-            resultSelector: (key: TKey, values: Enumerable<TElement>) => TResult,
+            resultSelector: (
+                key: TKey,
+                values: Enumerable<TElement>,
+            ) => TResult,
             comparer?: EqualityComparer<TKey, TKey>,
         ): Enumerable<TResult>;
         groupBy<TKey, TElement>(
@@ -131,14 +178,20 @@ declare namespace Ix {
             inner: Enumerable<TInner>,
             outerKeySelector: (item: T) => TOuterKey,
             innerKeySelector: (item: TInner) => TInnerKey,
-            resultSelector: (outer: T, innerSequence: Enumerable<TInner>) => TResult,
+            resultSelector: (
+                outer: T,
+                innerSequence: Enumerable<TInner>,
+            ) => TResult,
             comparer: EqualityComparer<TOuterKey, TInnerKey>,
         ): Enumerable<TResult>;
         groupJoin<TInner, TKey, TResult>(
             inner: Enumerable<TInner>,
             outerKeySelector: (item: T) => TKey,
             innerKeySelector: (item: TInner) => TKey,
-            resultSelector: (outer: T, innerSequence: Enumerable<TInner>) => TResult,
+            resultSelector: (
+                outer: T,
+                innerSequence: Enumerable<TInner>,
+            ) => TResult,
         ): Enumerable<TResult>;
 
         join<TInner, TOuterKey, TInnerKey, TResult>(
@@ -155,33 +208,66 @@ declare namespace Ix {
             resultSelector: (outer: T, inner: TInner) => TResult,
         ): Enumerable<TResult>;
 
-        intersect<TSecond>(second: Enumerable<TSecond>, comparer: EqualityComparer<T, TSecond>): Enumerable<T>;
+        intersect<TSecond>(
+            second: Enumerable<TSecond>,
+            comparer: EqualityComparer<T, TSecond>,
+        ): Enumerable<T>;
         intersect(second: Enumerable<T>): Enumerable<T>;
-        union(second: Enumerable<T>, comparer?: EqualityComparer<T, T>): Enumerable<T>;
+        union(
+            second: Enumerable<T>,
+            comparer?: EqualityComparer<T, T>,
+        ): Enumerable<T>;
 
-        orderBy<TKey>(keySelector: (item: T) => TKey, comparer?: Comparer<TKey, TKey>): OrderedEnumerable<T>;
-        orderByDescending<TKey>(keySelector: (item: T) => TKey, comparer?: Comparer<TKey, TKey>): OrderedEnumerable<T>;
+        orderBy<TKey>(
+            keySelector: (item: T) => TKey,
+            comparer?: Comparer<TKey, TKey>,
+        ): OrderedEnumerable<T>;
+        orderByDescending<TKey>(
+            keySelector: (item: T) => TKey,
+            comparer?: Comparer<TKey, TKey>,
+        ): OrderedEnumerable<T>;
 
         reverse(): Enumerable<T>;
 
-        select<TResult>(selector: EnumerableFunc<T, TResult>, thisArg?: any): Enumerable<TResult>;
-        map<TResult>(selector: EnumerableFunc<T, TResult>, thisArg?: any): Enumerable<TResult>;
+        select<TResult>(
+            selector: EnumerableFunc<T, TResult>,
+            thisArg?: any,
+        ): Enumerable<TResult>;
+        map<TResult>(
+            selector: EnumerableFunc<T, TResult>,
+            thisArg?: any,
+        ): Enumerable<TResult>;
 
         selectMany<TCollection, TResult>(
-            collectionSelector: (item: T, index: number) => Enumerable<TCollection>,
+            collectionSelector: (
+                item: T,
+                index: number,
+            ) => Enumerable<TCollection>,
             resultSelector: (outer: T, inner: TCollection) => TResult,
         ): Enumerable<TResult>;
         selectMany<TCollection>(
-            collectionSelector: (item: T, index: number) => Enumerable<TCollection>,
+            collectionSelector: (
+                item: T,
+                index: number,
+            ) => Enumerable<TCollection>,
         ): Enumerable<TCollection>;
 
-        sequenceEqual<TSecond>(second: Enumerable<TSecond>, comparer: EqualityComparer<T, TSecond>): boolean;
+        sequenceEqual<TSecond>(
+            second: Enumerable<TSecond>,
+            comparer: EqualityComparer<T, TSecond>,
+        ): boolean;
         sequenceEqual(second: Enumerable<T>): boolean;
 
         skip(count: number): Enumerable<T>;
-        skipWhile(selector: EnumerablePredicate<T>, thisArg?: any): Enumerable<T>;
+        skipWhile(
+            selector: EnumerablePredicate<T>,
+            thisArg?: any,
+        ): Enumerable<T>;
         take(count: number): Enumerable<T>;
-        takeWhile(selector: EnumerablePredicate<T>, thisArg?: any): Enumerable<T>;
+        takeWhile(
+            selector: EnumerablePredicate<T>,
+            thisArg?: any,
+        ): Enumerable<T>;
 
         toArray(): T[];
 
@@ -190,9 +276,7 @@ declare namespace Ix {
             elementSelector: (item: T) => TValue,
             comparer?: EqualityComparer<TKey, TKey>,
         ): Dictionary<TKey, TValue>;
-        toDictionary<TKey>(
-            keySelector: (item: T) => TKey,
-        ): Dictionary<TKey, T>;
+        toDictionary<TKey>(keySelector: (item: T) => TKey): Dictionary<TKey, T>;
         // if need to set comparer without elementSelector
         toDictionary<TKey>(
             keySelector: (item: T) => TKey,
@@ -205,9 +289,7 @@ declare namespace Ix {
             elementSelector: (item: T) => TValue,
             comparer?: EqualityComparer<TKey, TKey>,
         ): Lookup<TKey, TValue>;
-        toLookup<TKey>(
-            keySelector: (item: T) => TKey,
-        ): Lookup<TKey, T>;
+        toLookup<TKey>(keySelector: (item: T) => TKey): Lookup<TKey, T>;
         // if need to set comparer without elementSelector
         toLookup<TKey>(
             keySelector: (item: T) => TKey,
@@ -229,8 +311,14 @@ declare namespace Ix {
     }
 
     export interface OrderedEnumerable<T> extends Enumerable<T> {
-        thenBy<TKey>(keySelector: (item: T) => TKey, comparer?: Comparer<TKey, TKey>): OrderedEnumerable<T>;
-        thenByDescending<TKey>(keySelector: (item: T) => TKey, comparer?: Comparer<TKey, TKey>): OrderedEnumerable<T>;
+        thenBy<TKey>(
+            keySelector: (item: T) => TKey,
+            comparer?: Comparer<TKey, TKey>,
+        ): OrderedEnumerable<T>;
+        thenByDescending<TKey>(
+            keySelector: (item: T) => TKey,
+            comparer?: Comparer<TKey, TKey>,
+        ): OrderedEnumerable<T>;
     }
 
     class Dictionary<TKey, TValue> {
@@ -262,7 +350,7 @@ declare namespace Ix {
     }
 
     export interface EnumerableStatic {
-        new<T>(getEnumerator: () => Enumerator<T>): Enumerable<T>;
+        new <T>(getEnumerator: () => Enumerator<T>): Enumerable<T>;
         create<T>(getEnumerator: () => Enumerator<T>): Enumerable<T>;
 
         concat<T>(...sources: Array<Enumerable<T>>): Enumerable<T>;

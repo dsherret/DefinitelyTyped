@@ -50,11 +50,17 @@ function linkTargetGroupAttributes() {
 
     Rox.setCustomBooleanProperty("thisIsATest", true);
     Rox.setCustomBooleanProperty("thisIsATest", () => true);
-    Rox.setCustomBooleanProperty("thisIsATest", (context: any): boolean => context.value);
+    Rox.setCustomBooleanProperty(
+        "thisIsATest",
+        (context: any): boolean => context.value,
+    );
 
     Rox.setCustomNumberProperty("aNumberProperty", 17);
     Rox.setCustomNumberProperty("aNumberProperty", () => 17);
-    Rox.setCustomNumberProperty("aNumberProperty", (context: any): number => context.value);
+    Rox.setCustomNumberProperty(
+        "aNumberProperty",
+        (context: any): number => context.value,
+    );
 
     Rox.setDynamicCustomPropertyRule((propName: string, _context: unknown) => {
         return propName === "myPropName";
@@ -71,8 +77,8 @@ function impressionHandler(
 
 function configurationFetchedHandler(fetcherResult: Rox.RoxFetcherResult) {
     if (
-        fetcherResult.hasChanges
-        && fetcherResult.fetcherStatus === Rox.RoxFetcherStatus.AppliedFromCache
+        fetcherResult.hasChanges &&
+        fetcherResult.fetcherStatus === Rox.RoxFetcherStatus.AppliedFromCache
     ) {
     }
 }

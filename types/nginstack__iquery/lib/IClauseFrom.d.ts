@@ -1,5 +1,9 @@
 export = IClauseFrom;
-declare function IClauseFrom(iQuery: IQuery, classKey: number, alias: string): void;
+declare function IClauseFrom(
+    iQuery: IQuery,
+    classKey: number,
+    alias: string,
+): void;
 declare class IClauseFrom {
     constructor(iQuery: IQuery, classKey: number, alias: string);
     private _classKey;

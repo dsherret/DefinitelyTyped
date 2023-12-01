@@ -34,7 +34,11 @@ declare namespace LineNavigator {
         isEof: boolean | undefined,
         progress: number | undefined,
     ) => void;
-    type FindCallback = (err: any, index: number | undefined, match: FindMatch | undefined) => void;
+    type FindCallback = (
+        err: any,
+        index: number | undefined,
+        match: FindMatch | undefined,
+    ) => void;
     type FindAllCallback = (
         err: any,
         index: number,
@@ -51,11 +55,27 @@ declare class LineNavigator {
      */
     constructor(file: File | string, options?: LineNavigator.Options);
 
-    readSomeLines(indexToStartWith: number, callback: LineNavigator.ReadLinesCallback): void;
-    readLines(indexToStartWith: number, numberOfLines: number, callback: LineNavigator.ReadLinesCallback): void;
+    readSomeLines(
+        indexToStartWith: number,
+        callback: LineNavigator.ReadLinesCallback,
+    ): void;
+    readLines(
+        indexToStartWith: number,
+        numberOfLines: number,
+        callback: LineNavigator.ReadLinesCallback,
+    ): void;
 
-    find(regex: RegExp, indexToStartWith: number, callback: LineNavigator.FindCallback): void;
-    findAll(regex: RegExp, indexToStartWith: number, limit: number, callback: LineNavigator.FindAllCallback): void;
+    find(
+        regex: RegExp,
+        indexToStartWith: number,
+        callback: LineNavigator.FindCallback,
+    ): void;
+    findAll(
+        regex: RegExp,
+        indexToStartWith: number,
+        limit: number,
+        callback: LineNavigator.FindAllCallback,
+    ): void;
 }
 
 export as namespace LineNavigator;

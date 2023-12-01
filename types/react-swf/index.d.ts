@@ -4,8 +4,7 @@ declare const self: typeof rswf.ReactSWF;
 export = self;
 
 declare namespace rswf {
-    interface State {
-    }
+    interface State {}
     interface Props {
         /**
          * Specifies the source location (URL) of the SWF file to load.

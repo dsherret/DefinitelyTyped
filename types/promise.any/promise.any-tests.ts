@@ -12,22 +12,22 @@ any();
 
 any([]); // $ExpectType Promise<never>
 
-any([resolved, rejected, alsoRejected]).then(result => {
+any([resolved, rejected, alsoRejected]).then((result) => {
     strictEqual(result, 42);
 });
 
-any([rejected, alsoRejected]).catch(error => {
+any([rejected, alsoRejected]).catch((error) => {
     ok(error instanceof AggregateError);
     strictEqual(error.errors, [-1, Infinity]);
 });
 
 any.shim();
 
-Promise.any([resolved, rejected, alsoRejected]).then(result => {
+Promise.any([resolved, rejected, alsoRejected]).then((result) => {
     strictEqual(result, 42);
 });
 
-Promise.any([rejected, alsoRejected]).catch(error => {
+Promise.any([rejected, alsoRejected]).catch((error) => {
     ok(error instanceof AggregateError);
     strictEqual(error.errors, [-1, Infinity]);
 });

@@ -31,7 +31,9 @@ bot.start();
 bot.on(["/start", "/hello"], (msg) => msg.reply.text("Welcome!"));
 
 bot.on("sticker", (msg) => {
-    return msg.reply.sticker("http://i.imgur.com/VRYdhuD.png", { asReply: true });
+    return msg.reply.sticker("http://i.imgur.com/VRYdhuD.png", {
+        asReply: true,
+    });
 });
 
 bot.on(/(show\s)?kitty*/, (msg) => {
@@ -40,7 +42,9 @@ bot.on(/(show\s)?kitty*/, (msg) => {
 
 bot.on(/^\/say (.+)$/, (msg, props) => {
     const text = props.match[1];
-    return bot.sendMessage(msg.from.id, text, { replyToMessage: msg.message_id });
+    return bot.sendMessage(msg.from.id, text, {
+        replyToMessage: msg.message_id,
+    });
 });
 
 bot.on("edit", (msg) => {
@@ -51,7 +55,7 @@ bot.on("/hello", (msg) => {
     return bot.sendMessage(msg.from.id, `Hello, ${msg.from.first_name}!`);
 });
 
-bot.on(["/start", "audio", "sticker"], msg => {
+bot.on(["/start", "audio", "sticker"], (msg) => {
     return bot.sendMessage(msg.from.id, "Bam!");
 });
 
@@ -66,8 +70,7 @@ bot.modRun("text", {});
 bot.plug({
     id: "id",
     defaultConfig: {},
-    plugin: () => {
-    },
+    plugin: () => {},
 });
 
 bot.keyboard([[]], {});
@@ -143,29 +146,26 @@ bot.getUserProfilePhotos(1231, {
 
 bot.getFile("file_id");
 
-bot.sendInvoice(
-    123,
-    {
-        title: "e",
-        description: "d",
-        payload: "c",
-        providerToken: "b",
-        startParameter: "a",
-        currency: "EUR",
-        prices: [1, 2],
-        photo: {
-            url: "http",
-            width: 33,
-            height: 3,
-        },
-        need: {
-            name: true,
-        },
-        isFlexible: true,
-        notification: false,
-        replyToMessage: 33,
+bot.sendInvoice(123, {
+    title: "e",
+    description: "d",
+    payload: "c",
+    providerToken: "b",
+    startParameter: "a",
+    currency: "EUR",
+    prices: [1, 2],
+    photo: {
+        url: "http",
+        width: 33,
+        height: 3,
     },
-);
+    need: {
+        name: true,
+    },
+    isFlexible: true,
+    notification: false,
+    replyToMessage: 33,
+});
 
 bot.getChat(1);
 
@@ -181,9 +181,12 @@ bot.kickChatMember("33", 33);
 
 bot.unbanChatMember(33, 99);
 
-bot.editMessageText({
-    inlineMsgId: 9999,
-}, "text");
+bot.editMessageText(
+    {
+        inlineMsgId: 9999,
+    },
+    "text",
+);
 
 bot.editMessageText(
     {
@@ -195,20 +198,28 @@ bot.editMessageText(
     },
 );
 
-bot.editMessageCaption({
-    inlineMsgId: 9999,
-}, "caption");
+bot.editMessageCaption(
+    {
+        inlineMsgId: 9999,
+    },
+    "caption",
+);
 
-bot.editMessageReplyMarkup({
-    chatId: 33,
-    messageId: 2,
-}, {});
+bot.editMessageReplyMarkup(
+    {
+        chatId: 33,
+        messageId: 2,
+    },
+    {},
+);
 
 bot.answerCallbackQuery("callback_query_id");
 
 bot.answerShippingQuery("shipping_query_id", false);
 
-bot.answerPreCheckoutQuery("pre_checkout_query_id", true, { errorMessage: "string" });
+bot.answerPreCheckoutQuery("pre_checkout_query_id", true, {
+    errorMessage: "string",
+});
 
 bot.setWebhook("string", {}, ["1", "2"], 33);
 

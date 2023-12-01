@@ -73,7 +73,12 @@ export interface Controllers {
 
 export namespace Errors {
     class EpilogueError extends Error {
-        constructor(status: number | EpilogueError, message?: string, errors?: string[], cause?: Error);
+        constructor(
+            status: number | EpilogueError,
+            message?: string,
+            errors?: string[],
+            cause?: Error,
+        );
 
         name: string;
         message: string;
@@ -137,7 +142,12 @@ export interface Context {
     continue: () => void;
     skip: () => void;
     stop: () => void;
-    error: (status: number | Errors.EpilogueError, message?: string, errorList?: string[], cause?: Error) => void;
+    error: (
+        status: number | Errors.EpilogueError,
+        message?: string,
+        errorList?: string[],
+        cause?: Error,
+    ) => void;
 }
 
 export class BaseController {
@@ -147,25 +157,53 @@ export class BaseController {
 }
 
 export class CreateController extends BaseController {
-    write: (req: Request, res: Response, context: Context) => Promise<() => void>;
+    write: (
+        req: Request,
+        res: Response,
+        context: Context,
+    ) => Promise<() => void>;
 }
 
 export class ReadController extends BaseController {
-    fetch: (req: Request, res: Response, context: Context) => Promise<() => void>;
+    fetch: (
+        req: Request,
+        res: Response,
+        context: Context,
+    ) => Promise<() => void>;
 }
 
 export class UpdateController extends BaseController {
-    fetch: (req: Request, res: Response, context: Context) => Promise<() => void>;
-    write: (req: Request, res: Response, context: Context) => Promise<() => void>;
+    fetch: (
+        req: Request,
+        res: Response,
+        context: Context,
+    ) => Promise<() => void>;
+    write: (
+        req: Request,
+        res: Response,
+        context: Context,
+    ) => Promise<() => void>;
 }
 
 export class DeleteController extends BaseController {
-    fetch: (req: Request, res: Response, context: Context) => Promise<() => void>;
-    write: (req: Request, res: Response, context: Context) => Promise<() => void>;
+    fetch: (
+        req: Request,
+        res: Response,
+        context: Context,
+    ) => Promise<() => void>;
+    write: (
+        req: Request,
+        res: Response,
+        context: Context,
+    ) => Promise<() => void>;
 }
 
 export class ListController extends BaseController {
-    fetch: (req: Request, res: Response, context: Context) => Promise<() => void>;
+    fetch: (
+        req: Request,
+        res: Response,
+        context: Context,
+    ) => Promise<() => void>;
     _safeishParse: (
         value: any,
         type:

@@ -12,7 +12,9 @@ import HTML5ToTouchEsm from "react-dnd-multi-backend/dist/esm/HTML5toTouch";
 import TouchBackend from "react-dnd-touch-backend";
 
 // Legacy versions of `react-dnd` rely on implicit children of `React.FC` which was removed in `@types/react@18`
-declare const DndProvider: React.FC<React.PropsWithChildren<DndProviderProps<any, any>>>;
+declare const DndProvider: React.FC<
+    React.PropsWithChildren<DndProviderProps<any, any>>
+>;
 
 const context = {};
 
@@ -60,9 +62,7 @@ const multiCustomBackendsComponent = (
  */
 class App extends React.Component {
     generator: PreviewGenerator = ({ item, itemType, style }) =>
-        (itemType === "card")
-            ? <div style={style}>{item.label}</div>
-            : <div />;
+        itemType === "card" ? <div style={style}>{item.label}</div> : <div />;
 
     render() {
         return (

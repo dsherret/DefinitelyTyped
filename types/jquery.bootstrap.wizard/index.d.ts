@@ -6,14 +6,30 @@ interface WizardOptions {
     previousSelector?: string | undefined;
     firstSelector?: string | undefined;
     lastSelector?: string | undefined;
-    onShow?: ((activeTab: any, navigation: any, nextIndex: number) => void) | undefined;
-    onInit?: ((activeTab: any, navigation: any, currentIndex: number) => void) | undefined;
-    onNext?: ((activeTab: any, navigation: any, nextIndex: number) => boolean) | undefined;
-    onPrevious?: ((activeTab: any, navigation: any, previousIndex: number) => boolean) | undefined;
-    onLast?: ((activeTab: any, navigation: any, lastIndex: number) => boolean) | undefined;
-    onFirst?: ((activeTab: any, navigation: any, firstIndex: number) => boolean) | undefined;
-    onTabClick?: ((activeTab: any, navigation: any, currentIndex: number) => boolean) | undefined;
-    onTabShow?: ((activeTab: any, navigation: any, currentIndex: number) => boolean) | undefined;
+    onShow?:
+        | ((activeTab: any, navigation: any, nextIndex: number) => void)
+        | undefined;
+    onInit?:
+        | ((activeTab: any, navigation: any, currentIndex: number) => void)
+        | undefined;
+    onNext?:
+        | ((activeTab: any, navigation: any, nextIndex: number) => boolean)
+        | undefined;
+    onPrevious?:
+        | ((activeTab: any, navigation: any, previousIndex: number) => boolean)
+        | undefined;
+    onLast?:
+        | ((activeTab: any, navigation: any, lastIndex: number) => boolean)
+        | undefined;
+    onFirst?:
+        | ((activeTab: any, navigation: any, firstIndex: number) => boolean)
+        | undefined;
+    onTabClick?:
+        | ((activeTab: any, navigation: any, currentIndex: number) => boolean)
+        | undefined;
+    onTabShow?:
+        | ((activeTab: any, navigation: any, currentIndex: number) => boolean)
+        | undefined;
 }
 
 interface Wizard {
@@ -35,11 +51,20 @@ interface Wizard {
 }
 
 interface JQuery {
-    bootstrapWizard(method: "next" | "previous" | "first" | "last" | "back" | "finish"): void;
+    bootstrapWizard(
+        method: "next" | "previous" | "first" | "last" | "back" | "finish",
+    ): void;
     bootstrapWizard(method: "currentIndex" | "navigationLength"): number;
     bootstrapWizard(method: "show", indexOrId: number | string): void;
-    bootstrapWizard(method: "enable" | "disable" | "display" | "hide", index: number): void;
-    bootstrapWizard(method: "remove", index: number, removeTabPane?: boolean): void;
+    bootstrapWizard(
+        method: "enable" | "disable" | "display" | "hide",
+        index: number,
+    ): void;
+    bootstrapWizard(
+        method: "remove",
+        index: number,
+        removeTabPane?: boolean,
+    ): void;
     bootstrapWizard(options?: WizardOptions): Wizard;
 }
 

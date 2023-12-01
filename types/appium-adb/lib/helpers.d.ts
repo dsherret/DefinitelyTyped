@@ -42,7 +42,9 @@ export interface PlatformInfo {
  *
  * @return The resulting path to the newest installed platform.
  */
-export function getAndroidPlatformAndPath(sdkRoot: string): Promise<PlatformInfo>;
+export function getAndroidPlatformAndPath(
+    sdkRoot: string,
+): Promise<PlatformInfo>;
 
 export function unzipFile(zipPath: string, dstRoot?: string): Promise<void>;
 
@@ -73,7 +75,9 @@ export function getOpenSslForOs(): Promise<string>;
  * @returns An absolute path to apksigner tool.
  * @throws If the tool is not present on the local file system.
  */
-export function getApksignerForOs(sysHelpers: Pick<typeof systemCallMethods, "getBinaryFromSdkRoot">): Promise<string>;
+export function getApksignerForOs(
+    sysHelpers: Pick<typeof systemCallMethods, "getBinaryFromSdkRoot">,
+): Promise<string>;
 
 /**
  * Get the absolute path to apkanalyzer tool.
@@ -129,9 +133,16 @@ export function isScreenOnFully(dumpsys: string): boolean;
  * @param apiLevel - The actual OS API level
  * @returns The actual command line array
  */
-export function buildStartCmd(startAppOptions: StartAppOptions, apiLevel: number): string[];
+export function buildStartCmd(
+    startAppOptions: StartAppOptions,
+    apiLevel: number,
+): string[];
 
-export function getSdkToolsVersion(): Promise<{ major: number; minor: number; build: number }>;
+export function getSdkToolsVersion(): Promise<{
+    major: number;
+    minor: number;
+    build: number;
+}>;
 
 /**
  * Retrieves full paths to all 'build-tools' subfolders under the particular
@@ -199,7 +210,10 @@ export interface InstallOptions {
  * @param options - The options mapping to transform
  * @returns The array of arguments
  */
-export function buildInstallArgs(apiLevel: number, options?: InstallOptions): string[];
+export function buildInstallArgs(
+    apiLevel: number,
+    options?: InstallOptions,
+): string[];
 
 export interface ManifestInfo {
     /**
@@ -239,7 +253,10 @@ export function parseManifest(manifest: object): ManifestInfo;
  * values are represented as arrays. If no config found for the
  * given marker then an empty mapping is returned.
  */
-export function parseAaptStrings(rawOutput: string, configMarker: string): Record<string, string | string[]>;
+export function parseAaptStrings(
+    rawOutput: string,
+    configMarker: string,
+): Record<string, string | string[]>;
 
 /**
  * Parses apk strings from aapt2 tool output
@@ -251,7 +268,10 @@ export function parseAaptStrings(rawOutput: string, configMarker: string): Recor
  * values are represented as arrays. If no config found for the
  * given marker then an empty mapping is returned.
  */
-export function parseAapt2Strings(rawOutput: string, configMarker: string): Record<string, string | string[]>;
+export function parseAapt2Strings(
+    rawOutput: string,
+    configMarker: string,
+): Record<string, string | string[]>;
 
 /**
  * Formats the config marker, which is then passed to parse.. methods

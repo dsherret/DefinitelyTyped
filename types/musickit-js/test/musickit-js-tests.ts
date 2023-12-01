@@ -81,7 +81,12 @@ const test = async () => {
         playlists: chartPlaylists,
         // $ExpectType SearchChartResult<Songs>[]
         songs: chartSongs,
-    } = await player.api.charts(["albums", "music-videos", "playlists", "songs"]);
+    } = await player.api.charts([
+        "albums",
+        "music-videos",
+        "playlists",
+        "songs",
+    ]);
 
     const {
         // $ExpectType SearchResult<Activities> | undefined
@@ -110,16 +115,24 @@ const test = async () => {
     } = await player.api.searchHints("james+brown");
 };
 
-player.addEventListener("playbackStateDidChange", ({ oldState, state }) => ({ oldState, state }));
-player.addEventListener("playbackProgressDidChange", ({ progress }) => ({ progress }));
-player.addEventListener("authorizationStatusDidChange", ({ authorizationStatus }) => {
-    switch (authorizationStatus) {
-        case 0:
-        case 1:
-        case 2:
-        case 3:
-    }
-});
+player.addEventListener("playbackStateDidChange", ({ oldState, state }) => ({
+    oldState,
+    state,
+}));
+player.addEventListener("playbackProgressDidChange", ({ progress }) => ({
+    progress,
+}));
+player.addEventListener(
+    "authorizationStatusDidChange",
+    ({ authorizationStatus }) => {
+        switch (authorizationStatus) {
+            case 0:
+            case 1:
+            case 2:
+            case 3:
+        }
+    },
+);
 
 player.removeEventListener("playbackStateDidChange");
 

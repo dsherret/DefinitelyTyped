@@ -3,7 +3,7 @@ import { RenderCallback, RenderOptions } from "..";
 import stylus = require("..");
 
 // TODO: rewrite this to proper import in futures
-declare type Node = typeof stylus["nodes"]["Node"];
+declare type Node = (typeof stylus)["nodes"]["Node"];
 
 declare class Renderer extends EventEmitter {
     options: RenderOptions;

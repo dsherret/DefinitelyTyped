@@ -24,7 +24,10 @@ e.store.name;
 // DocumentOutline
 //
 <e.DocumentOutline onSelect={() => console.log("selected")} />;
-<e.DocumentOutline onSelect={() => console.log("selected")} hasOutlineItemsDisabled />;
+<e.DocumentOutline
+    onSelect={() => console.log("selected")}
+    hasOutlineItemsDisabled
+/>;
 
 //
 // DocumentOutlineCheck
@@ -54,7 +57,9 @@ e.store.name;
 //
 // ErrorBoundary
 //
-<e.ErrorBoundary onError={() => console.log("error!")}>Hello world</e.ErrorBoundary>;
+<e.ErrorBoundary onError={() => console.log("error!")}>
+    Hello world
+</e.ErrorBoundary>;
 
 //
 // PageAttributesCheck
@@ -101,7 +106,9 @@ e.store.name;
 //
 <e.PostExcerptCheck>Hello world</e.PostExcerptCheck>;
 <e.PostExcerptCheck supportKeys="author">Hello world</e.PostExcerptCheck>;
-<e.PostExcerptCheck supportKeys={["author", "thumbnail"]}>Hello world</e.PostExcerptCheck>;
+<e.PostExcerptCheck supportKeys={["author", "thumbnail"]}>
+    Hello world
+</e.PostExcerptCheck>;
 
 //
 // PostFeaturedImage
@@ -112,8 +119,12 @@ e.store.name;
 // PostFeaturedImageCheck
 //
 <e.PostFeaturedImageCheck>Hello world</e.PostFeaturedImageCheck>;
-<e.PostFeaturedImageCheck supportKeys="author">Hello world</e.PostFeaturedImageCheck>;
-<e.PostFeaturedImageCheck supportKeys={["author", "thumbnail"]}>Hello world</e.PostFeaturedImageCheck>;
+<e.PostFeaturedImageCheck supportKeys="author">
+    Hello world
+</e.PostFeaturedImageCheck>;
+<e.PostFeaturedImageCheck supportKeys={["author", "thumbnail"]}>
+    Hello world
+</e.PostFeaturedImageCheck>;
 
 //
 // PostFormat
@@ -125,7 +136,9 @@ e.store.name;
 //
 <e.PostFormatCheck>Hello world</e.PostFormatCheck>;
 <e.PostFormatCheck supportKeys="author">Hello world</e.PostFormatCheck>;
-<e.PostFormatCheck supportKeys={["author", "thumbnail"]}>Hello world</e.PostFormatCheck>;
+<e.PostFormatCheck supportKeys={["author", "thumbnail"]}>
+    Hello world
+</e.PostFormatCheck>;
 
 //
 // PostLastRevision
@@ -168,8 +181,19 @@ e.store.name;
 //
 // PostPublishButton
 //
-<e.PostPublishButton focusOnMount={true} onSubmit={() => console.log("submitted")} forceIsDirty forceIsSaving />;
-<e.PostPublishButton forceIsDirty forceIsSaving={false} isOpen isToggle onToggle={() => console.log("toggled")} />;
+<e.PostPublishButton
+    focusOnMount={true}
+    onSubmit={() => console.log("submitted")}
+    forceIsDirty
+    forceIsSaving
+/>;
+<e.PostPublishButton
+    forceIsDirty
+    forceIsSaving={false}
+    isOpen
+    isToggle
+    onToggle={() => console.log("toggled")}
+/>;
 
 //
 // PostPublishButtonLabel
@@ -249,12 +273,16 @@ e.store.name;
 //
 // PostTaxonomiesFlatTermSelector
 //
-<e.PostTaxonomiesFlatTermSelector>Hello world</e.PostTaxonomiesFlatTermSelector>;
+<e.PostTaxonomiesFlatTermSelector>
+    Hello world
+</e.PostTaxonomiesFlatTermSelector>;
 
 //
 // PostTaxonomiesHierarchicalTermSelector
 //
-<e.PostTaxonomiesHierarchicalTermSelector>Hello world</e.PostTaxonomiesHierarchicalTermSelector>;
+<e.PostTaxonomiesHierarchicalTermSelector>
+    Hello world
+</e.PostTaxonomiesHierarchicalTermSelector>;
 
 //
 // PostTextEditor
@@ -279,8 +307,12 @@ e.store.name;
 //
 // PostTypeSupportCheck
 //
-<e.PostTypeSupportCheck supportKeys="author">Hello world</e.PostTypeSupportCheck>;
-<e.PostTypeSupportCheck supportKeys={["author", "thumbnail"]}>Hello world</e.PostTypeSupportCheck>;
+<e.PostTypeSupportCheck supportKeys="author">
+    Hello world
+</e.PostTypeSupportCheck>;
+<e.PostTypeSupportCheck supportKeys={["author", "thumbnail"]}>
+    Hello world
+</e.PostTypeSupportCheck>;
 
 //
 // PostVisibility
@@ -336,7 +368,7 @@ e.store.name;
     Hello World
 </e.EditorProvider>;
 
-<e.AlignmentToolbar value="adf" onChange={t => t && console.log(t)} />;
+<e.AlignmentToolbar value="adf" onChange={(t) => t && console.log(t)} />;
 
 //
 // Store
@@ -405,7 +437,7 @@ select("core/editor").getPostEdits().author;
 select("core/editor").getPostEdits().foo;
 
 // $ExpectType boolean
-select("core/editor").inSomeHistory(state => state.foo === true);
+select("core/editor").inSomeHistory((state) => state.foo === true);
 
 //
 // Utils

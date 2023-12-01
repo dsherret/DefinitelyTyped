@@ -12,9 +12,9 @@ declare namespace markdownItExternalLinks {
         internalRel?: string | undefined;
     }
 }
-declare const markdownItExternalLinks:
-    & PluginWithOptions<markdownItExternalLinks.Config | markdownItExternalLinks.Config[]>
-    & {
-        readonly defaultRender: RenderRule;
-    };
+declare const markdownItExternalLinks: PluginWithOptions<
+    markdownItExternalLinks.Config | markdownItExternalLinks.Config[]
+> & {
+    readonly defaultRender: RenderRule;
+};
 export = markdownItExternalLinks;

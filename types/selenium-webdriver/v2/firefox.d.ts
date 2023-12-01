@@ -133,7 +133,9 @@ export class Profile {
      * @return {!promise.Promise.<string>} A promise for the path to the new
      *     profile directory.
      */
-    writeToDisk(opt_excludeWebDriverExt?: boolean): webdriver.promise.Promise<string>;
+    writeToDisk(
+        opt_excludeWebDriverExt?: boolean,
+    ): webdriver.promise.Promise<string>;
 
     /**
      * Encodes this profile as a zipped, base64 encoded directory.
@@ -226,7 +228,10 @@ export class Driver extends webdriver.WebDriver {
      * @param {promise.ControlFlow=} opt_flow The flow to
      *     schedule commands through. Defaults to the active flow object.
      */
-    constructor(opt_config?: Options | webdriver.Capabilities | Object, opt_flow?: webdriver.promise.ControlFlow);
+    constructor(
+        opt_config?: Options | webdriver.Capabilities | Object,
+        opt_flow?: webdriver.promise.ControlFlow,
+    );
 
     /**
      * This function is a no-op as file detectors are not supported by this

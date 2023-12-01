@@ -5,10 +5,15 @@ import { ValidationError } from "meteor/mdg:validation-error";
 // @ts-expect-error
 new ValidationError([{ name: "name" }]);
 
-const error = new ValidationError([{
-    name: "name",
-    type: "required",
-}], "Name is required");
+const error = new ValidationError(
+    [
+        {
+            name: "name",
+            type: "required",
+        },
+    ],
+    "Name is required",
+);
 
 // $ExpectType string | number
 error.error;

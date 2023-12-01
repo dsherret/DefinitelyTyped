@@ -14,7 +14,8 @@ declare namespace gulpStylelint {
         save?: string;
     }
 
-    interface Options extends Omit<stylelint.LinterOptions, "files" | "formatter"> {
+    interface Options
+        extends Omit<stylelint.LinterOptions, "files" | "formatter"> {
         /**
          * When set to true, the process will end with non-zero error code if any error-level warnings were raised.
          *

@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/elm",
-    "version": "0.19.9999",
-    "projects": [
-        "http://elm-lang.org"
-    ],
-    "devDependencies": {
-        "@types/elm": "workspace:."
+  "private": true,
+  "name": "@types/elm",
+  "version": "0.19.9999",
+  "projects": [
+    "http://elm-lang.org"
+  ],
+  "devDependencies": {
+    "@types/elm": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Dénes Harmath",
+      "githubUsername": "thSoft"
     },
-    "owners": [
-        {
-            "name": "Dénes Harmath",
-            "githubUsername": "thSoft"
-        },
-        {
-            "name": "Renan Vaz ",
-            "githubUsername": "renanpvaz"
-        }
-    ]
+    {
+      "name": "Renan Vaz ",
+      "githubUsername": "renanpvaz"
+    }
+  ]
 }

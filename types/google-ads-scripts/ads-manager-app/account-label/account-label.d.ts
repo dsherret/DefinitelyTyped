@@ -41,7 +41,8 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface AccountLabelSelector
-            extends Base.Selector<AccountLabelIterator>, Base.SelectorWithCondition, Base.SelectorWithIds
-        {}
+            extends Base.Selector<AccountLabelIterator>,
+                Base.SelectorWithCondition,
+                Base.SelectorWithIds {}
     }
 }

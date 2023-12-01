@@ -55,21 +55,27 @@ const BlogPost1 = dynogels.define("BlogPost", {
 // Create Tables
 dynogels.createTables((err) => {});
 
-dynogels.createTables({
-    BlogPost: { readCapacity: 5, writeCapacity: 10 },
-    Account: {
-        readCapacity: 20,
-        writeCapacity: 4,
-        streamSpecification: {
-            streamEnabled: true,
-            streamViewType: "NEW_IMAGE",
+dynogels.createTables(
+    {
+        BlogPost: { readCapacity: 5, writeCapacity: 10 },
+        Account: {
+            readCapacity: 20,
+            writeCapacity: 4,
+            streamSpecification: {
+                streamEnabled: true,
+                streamViewType: "NEW_IMAGE",
+            },
         },
     },
-}, (err) => {});
+    (err) => {},
+);
 
-dynogels.createTables({
-    $dynogels: { pollingInterval: 100 },
-}, (err) => {});
+dynogels.createTables(
+    {
+        $dynogels: { pollingInterval: 100 },
+    },
+    (err) => {},
+);
 
 // Delete Table
 BlogPost.deleteTable((err) => {});
@@ -147,10 +153,13 @@ Account.config({ dynamodb });
 dynogels.dynamoDriver(dynamodb);
 
 // Saving Models To DynamoDB
-Account.create({ email: "foo@example.com", name: "Foo Bar", age: 21 }, (err, acc) => {
-    const email = acc.get("email") as string;
-    console.log(`Created account ${email}`);
-});
+Account.create(
+    { email: "foo@example.com", name: "Foo Bar", age: 21 },
+    (err, acc) => {
+        const email = acc.get("email") as string;
+        console.log(`Created account ${email}`);
+    },
+);
 
 const acc = new Account({ email: "test@example.com", name: "Test Example" });
 acc.save((err) => {
@@ -158,11 +167,14 @@ acc.save((err) => {
     console.log(`Created account ${email}`);
 });
 
-BlogPost.create({
-    email: "werner@example.com",
-    title: "Expanding the Cloud",
-    content: "Today, we are excited to announce the limited preview...",
-}, (err, post) => {});
+BlogPost.create(
+    {
+        email: "werner@example.com",
+        title: "Expanding the Cloud",
+        content: "Today, we are excited to announce the limited preview...",
+    },
+    (err, post) => {},
+);
 
 const item1 = { email: "foo1@example.com", name: "Foo 1", age: 10 };
 const item2 = { email: "foo2@example.com", name: "Foo 2", age: 20 };
@@ -180,15 +192,30 @@ Account.create({ id: 123, name: "Kurt Warner" }, params, (error, acc) => {});
 
 // setting overwrite to false will generate
 // the same Condition Expression as in the previous example
-Account.create({ id: 123, name: "Kurt Warner" }, { overwrite: false }, (error, acc) => {});
+Account.create(
+    { id: 123, name: "Kurt Warner" },
+    { overwrite: false },
+    (error, acc) => {},
+);
 
 // Updating
-Account.update({ email: "foo@example.com", name: "Bar Tester" }, (err, acc) => {});
+Account.update(
+    { email: "foo@example.com", name: "Bar Tester" },
+    (err, acc) => {},
+);
 
-Account.update({ email: "foo@example.com", name: "Bar Tester" }, { ReturnValues: "ALL_OLD" }, (err, acc) => {});
+Account.update(
+    { email: "foo@example.com", name: "Bar Tester" },
+    { ReturnValues: "ALL_OLD" },
+    (err, acc) => {},
+);
 
 // Only update the account if the current age of the account is 22
-Account.update({ email: "foo@example.com", name: "Bar Tester" }, { expected: { age: 22 } }, (err, acc) => {});
+Account.update(
+    { email: "foo@example.com", name: "Bar Tester" },
+    { expected: { age: 22 } },
+    (err, acc) => {},
+);
 
 // setting an attribute to null will delete the attribute from DynamoDB
 Account.update({ email: "foo@example.com", age: null }, (err, acc) => {});
@@ -205,31 +232,46 @@ Account.update(
     (err, acc) => {},
 );
 
-Account.update({ email: "foo@example.com", age: { $add: 1 } }, (err, acc) => {});
+Account.update(
+    { email: "foo@example.com", age: { $add: 1 } },
+    (err, acc) => {},
+);
 
-BlogPost.update({
-    email: "werner@example.com",
-    title: "Expanding the Cloud",
-    tags: { $add: "cloud" },
-}, (err, post) => {});
+BlogPost.update(
+    {
+        email: "werner@example.com",
+        title: "Expanding the Cloud",
+        tags: { $add: "cloud" },
+    },
+    (err, post) => {},
+);
 
-BlogPost.update({
-    email: "werner@example.com",
-    title: "Expanding the Cloud",
-    tags: { $add: ["cloud", "dynamodb"] },
-}, (err, post) => {});
+BlogPost.update(
+    {
+        email: "werner@example.com",
+        title: "Expanding the Cloud",
+        tags: { $add: ["cloud", "dynamodb"] },
+    },
+    (err, post) => {},
+);
 
-BlogPost.update({
-    email: "werner@example.com",
-    title: "Expanding the Cloud",
-    tags: { $del: "cloud" },
-}, (err, post) => {});
+BlogPost.update(
+    {
+        email: "werner@example.com",
+        title: "Expanding the Cloud",
+        tags: { $del: "cloud" },
+    },
+    (err, post) => {},
+);
 
-BlogPost.update({
-    email: "werner@example.com",
-    title: "Expanding the Cloud",
-    tags: { $del: ["aws", "node"] },
-}, (err, post) => {});
+BlogPost.update(
+    {
+        email: "werner@example.com",
+        title: "Expanding the Cloud",
+        tags: { $del: ["aws", "node"] },
+    },
+    (err, post) => {},
+);
 
 const params1: dynogels.UpdateItemOptions = {};
 params1.UpdateExpression =
@@ -249,7 +291,11 @@ params1.ExpressionAttributeValues = {
     ":tag": dynogels.Set(["Sports", "Horror"], "S"),
 };
 
-BlogPost.update({ title: "Movie 0", description: "This is a description" }, params1, (err, mov) => {});
+BlogPost.update(
+    { title: "Movie 0", description: "This is a description" },
+    params1,
+    (err, mov) => {},
+);
 
 // Deleting
 Account.destroy("foo@example.com", (err) => {});
@@ -257,9 +303,16 @@ Account.destroy("foo@example.com", (err) => {});
 // Destroy model using hash and range key
 BlogPost.destroy("foo@example.com", "Hello World!", (err) => {});
 
-BlogPost.destroy({ email: "foo@example.com", title: "Another Post" }, (err) => {});
+BlogPost.destroy(
+    { email: "foo@example.com", title: "Another Post" },
+    (err) => {},
+);
 
-Account.destroy("foo@example.com", { ReturnValues: "ALL_OLD" }, (err, acc) => {});
+Account.destroy(
+    "foo@example.com",
+    { ReturnValues: "ALL_OLD" },
+    (err, acc) => {},
+);
 
 Account.destroy("foo@example.com", { expected: { age: 22 } }, (err) => {});
 
@@ -277,73 +330,74 @@ Account.get("test@example.com", (err, acc) => {
 
 Account.get("test@example.com", { ConsistentRead: true }, (err, acc) => {});
 
-Account.get("test@example.com", { ConsistentRead: true, AttributesToGet: ["name", "age"] }, (err, acc) => {});
+Account.get(
+    "test@example.com",
+    { ConsistentRead: true, AttributesToGet: ["name", "age"] },
+    (err, acc) => {},
+);
 
-BlogPost.get("werner@example.com", "dynamodb-keeps-getting-better-and-cheaper", (err, post) => {});
+BlogPost.get(
+    "werner@example.com",
+    "dynamodb-keeps-getting-better-and-cheaper",
+    (err, post) => {},
+);
 
-BlogPost.get({ email: "werner@example.com", title: "Expanding the Cloud" }, (err, post) => {});
+BlogPost.get(
+    { email: "werner@example.com", title: "Expanding the Cloud" },
+    (err, post) => {},
+);
 
-BlogPost.get({ id: "123456789" }, { ProjectionExpression: "email, age, settings.nickname" }, (err, acc) => {});
+BlogPost.get(
+    { id: "123456789" },
+    { ProjectionExpression: "email, age, settings.nickname" },
+    (err, acc) => {},
+);
 
 // Query
 
 const callback = () => {};
 // query for blog posts by werner@example.com
-BlogPost
-    .query("werner@example.com")
-    .exec(callback);
+BlogPost.query("werner@example.com").exec(callback);
 
 // same as above, but load all results
-BlogPost
-    .query("werner@example.com")
-    .loadAll()
-    .exec(callback);
+BlogPost.query("werner@example.com").loadAll().exec(callback);
 
 // only load the first 5 posts by werner
-BlogPost
-    .query("werner@example.com")
-    .limit(5)
-    .exec(callback);
+BlogPost.query("werner@example.com").limit(5).exec(callback);
 
 // query for posts by werner where the tile begins with 'Expanding'
-BlogPost
-    .query("werner@example.com")
-    .where("title").beginsWith("Expanding")
+BlogPost.query("werner@example.com")
+    .where("title")
+    .beginsWith("Expanding")
     .exec(callback);
 
 // return only the count of documents that begin with the title Expanding
-BlogPost
-    .query("werner@example.com")
-    .where("title").beginsWith("Expanding")
+BlogPost.query("werner@example.com")
+    .where("title")
+    .beginsWith("Expanding")
     .select("COUNT")
     .exec(callback);
 
 // query the first 10 posts by werner@example.com but only return
 // the title and content from posts where the title starts with 'Expanding'
 // WARNING: See notes below on the implementation of limit in DynamoDB
-BlogPost
-    .query("werner@example.com")
-    .where("title").beginsWith("Expanding")
+BlogPost.query("werner@example.com")
+    .where("title")
+    .beginsWith("Expanding")
     .attributes(["title", "content"])
     .limit(10)
     .exec(callback);
 
 // sorting by title ascending
-BlogPost
-    .query("werner@example.com")
-    .ascending()
-    .exec(callback);
+BlogPost.query("werner@example.com").ascending().exec(callback);
 
 // sorting by title descending
-BlogPost
-    .query("werner@example.com")
-    .descending()
-    .exec(callback);
+BlogPost.query("werner@example.com").descending().exec(callback);
 
 // All query options are chainable
-BlogPost
-    .query("werner@example.com")
-    .where("title").gt("Expanding")
+BlogPost.query("werner@example.com")
+    .where("title")
+    .gt("Expanding")
     .attributes(["title", "content"])
     .limit(10)
     .ascending()
@@ -351,70 +405,49 @@ BlogPost
     .exec(callback);
 
 // Traversing Map Data Types
-Account
-    .query("werner@example.com")
-    .filter("settings.acceptedTerms").equals(true)
+Account.query("werner@example.com")
+    .filter("settings.acceptedTerms")
+    .equals(true)
     .exec(callback);
 
-BlogPost
-    .query("werner@example.com")
-    .where("title").equals("Expanding")
-    .exec();
+BlogPost.query("werner@example.com").where("title").equals("Expanding").exec();
 
 // less than equals
-BlogPost
-    .query("werner@example.com")
-    .where("title").lte("Expanding")
-    .exec();
+BlogPost.query("werner@example.com").where("title").lte("Expanding").exec();
 
 // less than
-BlogPost
-    .query("werner@example.com")
-    .where("title").lt("Expanding")
-    .exec();
+BlogPost.query("werner@example.com").where("title").lt("Expanding").exec();
 
 // greater than
-BlogPost
-    .query("werner@example.com")
-    .where("title").gt("Expanding")
-    .exec();
+BlogPost.query("werner@example.com").where("title").gt("Expanding").exec();
 
 // greater than equals
-BlogPost
-    .query("werner@example.com")
-    .where("title").gte("Expanding")
-    .exec();
+BlogPost.query("werner@example.com").where("title").gte("Expanding").exec();
 
 // attribute doesn't exist
-BlogPost
-    .query("werner@example.com")
-    .where("title").null()
-    .exec();
+BlogPost.query("werner@example.com").where("title").null().exec();
 
 // attribute exists
-BlogPost
-    .query("werner@example.com")
-    .where("title").exists()
+BlogPost.query("werner@example.com").where("title").exists().exec();
+
+BlogPost.query("werner@example.com")
+    .where("title")
+    .beginsWith("Expanding")
     .exec();
 
-BlogPost
-    .query("werner@example.com")
-    .where("title").beginsWith("Expanding")
+BlogPost.query("werner@example.com")
+    .where("title")
+    .between("foo@example.com", "test@example.com")
     .exec();
 
-BlogPost
-    .query("werner@example.com")
-    .where("title").between("foo@example.com", "test@example.com")
+BlogPost.query("werner@example.com")
+    .where("title")
+    .equals("Expanding")
+    .filter("tags")
+    .contains("cloud")
     .exec();
 
-BlogPost
-    .query("werner@example.com")
-    .where("title").equals("Expanding")
-    .filter("tags").contains("cloud")
-    .exec();
-
-BlogPost
-    .query("werner@example.com")
+BlogPost.query("werner@example.com")
     .filterExpression("#title < :t")
     .expressionAttributeValues({ ":t": "Expanding" })
     .expressionAttributeNames({ "#title": "title" })
@@ -432,16 +465,17 @@ const GameScore = dynogels.define("GameScore", {
         wins: Joi.number(),
         losses: Joi.number(),
     },
-    indexes: [{
-        hashKey: "gameTitle",
-        rangeKey: "topScore",
-        name: "GameTitleIndex",
-        type: "global",
-    }],
+    indexes: [
+        {
+            hashKey: "gameTitle",
+            rangeKey: "topScore",
+            name: "GameTitleIndex",
+            type: "global",
+        },
+    ],
 });
 
-GameScore
-    .query("Galaxy Invaders")
+GameScore.query("Galaxy Invaders")
     .usingIndex("GameTitleIndex")
     .descending()
     .exec(callback);
@@ -457,19 +491,24 @@ const GameScore1 = dynogels.define("GameScore", {
         wins: Joi.number(),
         losses: Joi.number(),
     },
-    indexes: [{
-        hashKey: "gameTitle",
-        rangeKey: "topScore",
-        name: "GameTitleIndex",
-        type: "global",
-        projection: { NonKeyAttributes: ["wins"], ProjectionType: "INCLUDE" }, // optional, defaults to ALL
-    }],
+    indexes: [
+        {
+            hashKey: "gameTitle",
+            rangeKey: "topScore",
+            name: "GameTitleIndex",
+            type: "global",
+            projection: {
+                NonKeyAttributes: ["wins"],
+                ProjectionType: "INCLUDE",
+            }, // optional, defaults to ALL
+        },
+    ],
 });
 
-GameScore
-    .query("Galaxy Invaders")
+GameScore.query("Galaxy Invaders")
     .usingIndex("GameTitleIndex")
-    .where("topScore").gt(1000)
+    .where("topScore")
+    .gt(1000)
     .descending()
     .exec((err, data) => {});
 
@@ -483,28 +522,27 @@ const BlogPost5 = dynogels.define("Account", {
         PublishedDateTime: Joi.date(),
     },
 
-    indexes: [{
-        hashKey: "email",
-        rangeKey: "PublishedDateTime",
-        type: "local",
-        name: "PublishedIndex",
-    }],
+    indexes: [
+        {
+            hashKey: "email",
+            rangeKey: "PublishedDateTime",
+            type: "local",
+            name: "PublishedIndex",
+        },
+    ],
 });
 
-BlogPost
-    .query("werner@example.com")
+BlogPost.query("werner@example.com")
     .usingIndex("PublishedIndex")
     .descending()
     .exec(callback);
 
-BlogPost
-    .query("werner@example.com")
+BlogPost.query("werner@example.com")
     .usingIndex("PublishedIndex")
     .ascending()
     .exec(callback);
 
-BlogPost
-    .query("werner@example.com")
+BlogPost.query("werner@example.com")
     .usingIndex("PublishedIndex")
     .descending()
     .loadAll()
@@ -516,138 +554,74 @@ Account.scan().exec(callback);
 // scan all accounts, this time loading all results
 // note this will potentially make several calls to DynamoDB
 // in order to load all results
-Account
-    .scan()
-    .loadAll()
-    .exec(callback);
+Account.scan().loadAll().exec(callback);
 
 // Load 20 accounts
-Account
-    .scan()
-    .limit(20)
-    .exec();
+Account.scan().limit(20).exec();
 
 // Load All accounts, 20 at a time per request
-Account
-    .scan()
-    .limit(20)
-    .loadAll()
-    .exec();
+Account.scan().limit(20).loadAll().exec();
 
 // Load accounts which match a filter
 // only return email and created attributes
 // and return back the consumed capacity the request took
-Account
-    .scan()
-    .where("email").gte("f@example.com")
+Account.scan()
+    .where("email")
+    .gte("f@example.com")
     .attributes(["email", "created"])
     .returnConsumedCapacity()
     .exec();
 
 // Load All accounts, if settings.acceptedTerms is true
-Account
-    .scan()
-    .where("settings.acceptedTerms").equals(true)
-    .exec();
+Account.scan().where("settings.acceptedTerms").equals(true).exec();
 
 // Returns number of matching accounts, rather than the matching accounts themselves
-Account
-    .scan()
-    .where("age").gte(21)
-    .select("COUNT")
-    .exec();
+Account.scan().where("age").gte(21).select("COUNT").exec();
 
 // Start scan using start key
-Account
-    .scan()
-    .where("age").notNull()
-    .startKey("foo@example.com")
-    .exec();
+Account.scan().where("age").notNull().startKey("foo@example.com").exec();
 
 // equals
-Account
-    .scan()
-    .where("name").equals("Werner")
-    .exec();
+Account.scan().where("name").equals("Werner").exec();
 
 // not equals
-Account
-    .scan()
-    .where("name").ne("Werner")
-    .exec();
+Account.scan().where("name").ne("Werner").exec();
 
 // less than equals
-Account
-    .scan()
-    .where("name").lte("Werner")
-    .exec();
+Account.scan().where("name").lte("Werner").exec();
 
 // less than
-Account
-    .scan()
-    .where("name").lt("Werner")
-    .exec();
+Account.scan().where("name").lt("Werner").exec();
 
 // greater than equals
-Account
-    .scan()
-    .where("name").gte("Werner")
-    .exec();
+Account.scan().where("name").gte("Werner").exec();
 
 // greater than
-Account
-    .scan()
-    .where("name").gt("Werner")
-    .exec();
+Account.scan().where("name").gt("Werner").exec();
 
 // name attribute doesn't exist
-Account
-    .scan()
-    .where("name").null()
-    .exec();
+Account.scan().where("name").null().exec();
 
 // name attribute exists
-Account
-    .scan()
-    .where("name").notNull()
-    .exec();
+Account.scan().where("name").notNull().exec();
 
 // contains
-Account
-    .scan()
-    .where("name").contains("ner")
-    .exec();
+Account.scan().where("name").contains("ner").exec();
 
 // not contains
-Account
-    .scan()
-    .where("name").notContains("ner")
-    .exec();
+Account.scan().where("name").notContains("ner").exec();
 
 // in
-Account
-    .scan()
-    .where("name").in(["foo@example.com", "bar@example.com"])
-    .exec();
+Account.scan().where("name").in(["foo@example.com", "bar@example.com"]).exec();
 
 // begins with
-Account
-    .scan()
-    .where("name").beginsWith("Werner")
-    .exec();
+Account.scan().where("name").beginsWith("Werner").exec();
 
 // between
-Account
-    .scan()
-    .where("name").between("Bar", "Foo")
-    .exec();
+Account.scan().where("name").between("Bar", "Foo").exec();
 
 // multiple filters
-Account
-    .scan()
-    .where("name").equals("Werner")
-    .where("age").notNull()
-    .exec();
+Account.scan().where("name").equals("Werner").where("age").notNull().exec();
 
 Account.scan()
     .filterExpression("#age BETWEEN :low AND :high AND begins_with(#email, :e)")
@@ -659,23 +633,29 @@ Account.scan()
 const totalSegments = 8;
 
 Account.parallelScan(totalSegments)
-    .where("age").gte(18)
+    .where("age")
+    .gte(18)
     .attributes("age")
     .exec(callback);
 
 // Load All accounts
-Account
-    .parallelScan(totalSegments)
-    .exec();
+Account.parallelScan(totalSegments).exec();
 
-Account.getItems(["foo@example.com", "bar@example.com", "test@example.com"], (err, accounts) => {
-    console.log(`loaded ${accounts.length} accounts`); // prints loaded 3 accounts
-});
+Account.getItems(
+    ["foo@example.com", "bar@example.com", "test@example.com"],
+    (err, accounts) => {
+        console.log(`loaded ${accounts.length} accounts`); // prints loaded 3 accounts
+    },
+);
 
 // Get both accounts, using a consistent read
-Account.getItems(["foo@example.com", "bar@example.com"], { ConsistentRead: true }, (err, accounts) => {
-    console.log(`loaded ${accounts.length} accounts`); // prints loaded 2 accounts
-});
+Account.getItems(
+    ["foo@example.com", "bar@example.com"],
+    { ConsistentRead: true },
+    (err, accounts) => {
+        console.log(`loaded ${accounts.length} accounts`); // prints loaded 2 accounts
+    },
+);
 
 // Streaming API
 
@@ -742,15 +722,18 @@ const Account4 = dynogels.define("Account", {
     },
 });
 
-Account.create({ email: "test@example.com", name: "Test Account" }, (err, acc) => {
-    console.log("created account at", acc.get("created")); // prints created Date
+Account.create(
+    { email: "test@example.com", name: "Test Account" },
+    (err, acc) => {
+        console.log("created account at", acc.get("created")); // prints created Date
 
-    acc.set({ age: 22 });
+        acc.set({ age: 22 });
 
-    acc.update((err) => {
-        console.log("updated account age");
-    });
-});
+        acc.update((err) => {
+            console.log("updated account age");
+        });
+    },
+);
 
 // For models with range keys you must pass in objects of hash and range key attributes
 const postKey1 = { email: "test@example.com", title: "Hello World!" };
@@ -777,19 +760,19 @@ Account.before("update", (data, next) => {
     next(null, data);
 });
 
-Account.after("create", item => {
+Account.after("create", (item) => {
     console.log("Account created", item.get());
 });
 
-Account.after("update", item => {
+Account.after("update", (item) => {
     console.log("Account updated", item.get());
 });
 
-Account.after("destroy", item => {
+Account.after("destroy", (item) => {
     console.log("Account destroyed", item.get());
 });
 
-dynogels.createTables(err => {
+dynogels.createTables((err) => {
     if (err) {
         process.exit(1);
     }

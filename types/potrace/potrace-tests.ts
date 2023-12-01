@@ -1,4 +1,11 @@
-import { posterize, Posterizer, PosterizerOptions, Potrace, PotraceOptions, trace } from "potrace";
+import {
+    posterize,
+    Posterizer,
+    PosterizerOptions,
+    Potrace,
+    PotraceOptions,
+    trace,
+} from "potrace";
 
 // Potrace
 const potraceOpts: PotraceOptions = { turdPolicy: "black", alphaMax: 2 };

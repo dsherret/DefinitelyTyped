@@ -222,7 +222,12 @@ declare namespace JQuery {
          * }
          * ```
          */
-        "change.spectrum": ChangeEvent<TDelegateTarget, TData, TCurrentTarget, TTarget>;
+        "change.spectrum": ChangeEvent<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        >;
 
         /**
          * Called as the user moves around within the color picker.
@@ -238,7 +243,12 @@ declare namespace JQuery {
          * }
          * ```
          */
-        "move.spectrum": Spectrum.MoveEvent<TDelegateTarget, TData, TCurrentTarget, TTarget>;
+        "move.spectrum": Spectrum.MoveEvent<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        >;
 
         /**
          * Called after the color picker is opened. This is ignored on a flat
@@ -258,7 +268,12 @@ declare namespace JQuery {
          * }
          * ```
          */
-        "show.spectrum": Spectrum.ShowEvent<TDelegateTarget, TData, TCurrentTarget, TTarget>;
+        "show.spectrum": Spectrum.ShowEvent<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        >;
 
         /**
          * Called after the color picker is hidden.
@@ -282,7 +297,12 @@ declare namespace JQuery {
          * }
          * ```
          */
-        "hide.spectrum": Spectrum.HideEvent<TDelegateTarget, TData, TCurrentTarget, TTarget>;
+        "hide.spectrum": Spectrum.HideEvent<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        >;
 
         /**
          * You can prevent the color picker from showing up if you return
@@ -302,7 +322,12 @@ declare namespace JQuery {
          * }
          * ```
          */
-        "beforeShow.spectrum": Spectrum.BeforeShowEvent<TDelegateTarget, TData, TCurrentTarget, TTarget>;
+        "beforeShow.spectrum": Spectrum.BeforeShowEvent<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        >;
 
         /**
          * Called at the beginning of a drag event on either hue slider, alpha
@@ -317,7 +342,12 @@ declare namespace JQuery {
          * });
          * ```
          */
-        "dragstart.spectrum": Spectrum.DragstartEvent<TDelegateTarget, TData, TCurrentTarget, TTarget>;
+        "dragstart.spectrum": Spectrum.DragstartEvent<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        >;
 
         /**
          * Called at the end of a drag event on either hue slider, alpha slider, or
@@ -331,7 +361,12 @@ declare namespace JQuery {
          * });
          * ```
          */
-        "dragstop.spectrum": Spectrum.DragstopEvent<TDelegateTarget, TData, TCurrentTarget, TTarget>;
+        "dragstop.spectrum": Spectrum.DragstopEvent<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        >;
     }
 }
 
@@ -895,7 +930,9 @@ declare namespace Spectrum {
          * @return `false` to prevent the color picker from showing up.
          */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        beforeShow?: ((color: tinycolor.Instance) => boolean | void) | undefined;
+        beforeShow?:
+            | ((color: tinycolor.Instance) => boolean | void)
+            | undefined;
     }
 
     /**
@@ -926,7 +963,12 @@ declare namespace Spectrum {
         TData = any,
         TCurrentTarget = any,
         TTarget = any,
-    > extends JQuery.EventBase<TDelegateTarget, TData, TCurrentTarget, TTarget> {
+    > extends JQuery.EventBase<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        > {
         type: "beforeShow";
     }
 
@@ -953,7 +995,12 @@ declare namespace Spectrum {
         TData = any,
         TCurrentTarget = any,
         TTarget = any,
-    > extends JQuery.EventBase<TDelegateTarget, TData, TCurrentTarget, TTarget> {
+    > extends JQuery.EventBase<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        > {
         type: "show";
     }
 
@@ -984,7 +1031,12 @@ declare namespace Spectrum {
         TData = any,
         TCurrentTarget = any,
         TTarget = any,
-    > extends JQuery.EventBase<TDelegateTarget, TData, TCurrentTarget, TTarget> {
+    > extends JQuery.EventBase<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        > {
         type: "hide";
     }
 
@@ -1007,7 +1059,12 @@ declare namespace Spectrum {
         TData = any,
         TCurrentTarget = any,
         TTarget = any,
-    > extends JQuery.EventBase<TDelegateTarget, TData, TCurrentTarget, TTarget> {
+    > extends JQuery.EventBase<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        > {
         type: "move";
     }
 
@@ -1029,7 +1086,12 @@ declare namespace Spectrum {
         TData = any,
         TCurrentTarget = any,
         TTarget = any,
-    > extends JQuery.EventBase<TDelegateTarget, TData, TCurrentTarget, TTarget> {
+    > extends JQuery.EventBase<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        > {
         type: "dragstart";
     }
 
@@ -1051,7 +1113,12 @@ declare namespace Spectrum {
         TData = any,
         TCurrentTarget = any,
         TTarget = any,
-    > extends JQuery.EventBase<TDelegateTarget, TData, TCurrentTarget, TTarget> {
+    > extends JQuery.EventBase<
+            TDelegateTarget,
+            TData,
+            TCurrentTarget,
+            TTarget
+        > {
         type: "dragstop";
     }
 }

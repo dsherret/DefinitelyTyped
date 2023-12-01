@@ -22,7 +22,10 @@ async function testToSvg() {
 }
 
 async function testToPng() {
-    const png = await DomToImage.toPng(node, { bgcolor: "#24292e", style: { width: "100px" } });
+    const png = await DomToImage.toPng(node, {
+        bgcolor: "#24292e",
+        style: { width: "100px" },
+    });
 }
 
 async function testToJpeg() {

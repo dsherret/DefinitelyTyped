@@ -39,6 +39,9 @@ declare namespace editJsonFile {
 }
 
 /** Create a JSON file editor. */
-declare function editJsonFile(path: string, options?: editJsonFile.Options): editJsonFile.JsonEditor;
+declare function editJsonFile(
+    path: string,
+    options?: editJsonFile.Options,
+): editJsonFile.JsonEditor;
 
 export = editJsonFile;

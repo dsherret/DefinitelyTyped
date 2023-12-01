@@ -1,4 +1,4 @@
-type ObjectConstructor = new(...args: any[]) => any;
+type ObjectConstructor = new (...args: any[]) => any;
 
 declare namespace o {
     type AssertionDescriber = (description: string) => void;
@@ -25,13 +25,22 @@ declare namespace o {
         notDeepEquals(value: T): AssertionDescriber;
 
         /** Asserts that the function throws an error of a given type */
-        throws(this: Assertion<() => any>, error: string | ObjectConstructor): AssertionDescriber;
+        throws(
+            this: Assertion<() => any>,
+            error: string | ObjectConstructor,
+        ): AssertionDescriber;
         /** Asserts that the function does **not** throw an error of given type */
-        notThrows(this: Assertion<() => any>, error: string | ObjectConstructor): AssertionDescriber; // See above
+        notThrows(
+            this: Assertion<() => any>,
+            error: string | ObjectConstructor,
+        ): AssertionDescriber; // See above
     }
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    type Definer = (done: (error?: Error | null) => void, timeout: (delay: number) => void) => void | PromiseLike<any>;
+    type Definer = (
+        done: (error?: Error | null) => void,
+        timeout: (delay: number) => void,
+    ) => void | PromiseLike<any>;
 
     interface Result {
         pass: boolean | null;

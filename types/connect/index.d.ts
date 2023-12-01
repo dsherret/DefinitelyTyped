@@ -16,15 +16,25 @@ declare namespace createServer {
 
     type NextFunction = (err?: any) => void;
 
-    export type SimpleHandleFunction = (req: IncomingMessage, res: http.ServerResponse) => void;
-    export type NextHandleFunction = (req: IncomingMessage, res: http.ServerResponse, next: NextFunction) => void;
+    export type SimpleHandleFunction = (
+        req: IncomingMessage,
+        res: http.ServerResponse,
+    ) => void;
+    export type NextHandleFunction = (
+        req: IncomingMessage,
+        res: http.ServerResponse,
+        next: NextFunction,
+    ) => void;
     export type ErrorHandleFunction = (
         err: any,
         req: IncomingMessage,
         res: http.ServerResponse,
         next: NextFunction,
     ) => void;
-    export type HandleFunction = SimpleHandleFunction | NextHandleFunction | ErrorHandleFunction;
+    export type HandleFunction =
+        | SimpleHandleFunction
+        | NextHandleFunction
+        | ErrorHandleFunction;
 
     export interface ServerStackItem {
         route: string;
@@ -32,7 +42,11 @@ declare namespace createServer {
     }
 
     export interface Server extends NodeJS.EventEmitter {
-        (req: http.IncomingMessage, res: http.ServerResponse, next?: Function): void;
+        (
+            req: http.IncomingMessage,
+            res: http.ServerResponse,
+            next?: Function,
+        ): void;
 
         route: string;
         stack: ServerStackItem[];
@@ -57,7 +71,11 @@ declare namespace createServer {
          * Handle server requests, punting them down
          * the middleware stack.
          */
-        handle(req: http.IncomingMessage, res: http.ServerResponse, next: Function): void;
+        handle(
+            req: http.IncomingMessage,
+            res: http.ServerResponse,
+            next: Function,
+        ): void;
 
         /**
          * Listen for connections.
@@ -81,8 +99,17 @@ declare namespace createServer {
          *      http.createServer(app).listen(80);
          *      https.createServer(options, app).listen(443);
          */
-        listen(port: number, hostname?: string, backlog?: number, callback?: Function): http.Server;
-        listen(port: number, hostname?: string, callback?: Function): http.Server;
+        listen(
+            port: number,
+            hostname?: string,
+            backlog?: number,
+            callback?: Function,
+        ): http.Server;
+        listen(
+            port: number,
+            hostname?: string,
+            callback?: Function,
+        ): http.Server;
         listen(path: string, callback?: Function): http.Server;
         listen(handle: any, listeningListener?: Function): http.Server;
     }

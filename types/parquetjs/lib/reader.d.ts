@@ -1,6 +1,9 @@
 import Int64 = require("node-int64");
 
-import { MetadataInterface, MetadataRowGroupsInterface } from "./metadata.interface";
+import {
+    MetadataInterface,
+    MetadataRowGroupsInterface,
+} from "./metadata.interface";
 import { RowInterface } from "./row.interface";
 import { RowBufferInterface } from "./rowBuffer.interface";
 import { ParquetSchema } from "./schema";
@@ -39,7 +42,10 @@ export class ParquetReader {
 
     static openFile(filePath: string): Promise<ParquetReader>;
 
-    constructor(metadata: MetadataInterface, envelopeReader: ParquetEnvelopeReader);
+    constructor(
+        metadata: MetadataInterface,
+        envelopeReader: ParquetEnvelopeReader,
+    );
 
     getCursor(columnList?: string[][] | string[]): ParquetCursor;
 
@@ -55,14 +61,22 @@ export class ParquetReader {
 }
 
 export class ParquetEnvelopeReader {
-    read: (fd: number, position: number, length: number) => Promise<Buffer | Error>;
+    read: (
+        fd: number,
+        position: number,
+        length: number,
+    ) => Promise<Buffer | Error>;
 
     close: (fd: number) => Promise<Error>;
 
     fileSize: number;
 
     constructor(
-        readFn: (fd: number, position: number, length: number) => Promise<Buffer | Error>,
+        readFn: (
+            fd: number,
+            position: number,
+            length: number,
+        ) => Promise<Buffer | Error>,
         closeFn: (fd: number) => Promise<Error>,
         fileSize: number,
     );

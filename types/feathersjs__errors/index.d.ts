@@ -12,7 +12,13 @@ export class FeathersError extends Error {
     readonly className: string;
     readonly data: any;
     readonly errors: any;
-    constructor(msg: string | Error, name: string, code: number, className: string, data: any);
+    constructor(
+        msg: string | Error,
+        name: string,
+        code: number,
+        className: string,
+        data: any,
+    );
     toJSON(): FeathersErrorJSON;
 }
 

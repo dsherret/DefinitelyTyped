@@ -8,7 +8,9 @@ import { DuplexConnection } from "rsocket-types";
 export interface ServerOptions {
     host?: string | undefined;
     port: number;
-    serverFactory?: ((onConnect: (socket: net.Socket) => void) => net.Server) | undefined;
+    serverFactory?:
+        | ((onConnect: (socket: net.Socket) => void) => net.Server)
+        | undefined;
 }
 
 /**

@@ -12,10 +12,7 @@ export interface OCR {
     Download(
         path: string,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Return whether the OCR engine has been installed.
@@ -32,10 +29,7 @@ export interface OCR {
     DownloadLangData(
         path: string,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Return whether the output uses the fonts detected by the OCR system or the default/provided ones. Only valid when the result format is PDF.
@@ -73,7 +67,9 @@ export interface OCR {
      * Configure the OCR operation.
      * @param format Specify the output format.
      */
-    SetOutputFormat(format: Dynamsoft.EnumDWT_OCROutputFormat | number): boolean;
+    SetOutputFormat(
+        format: Dynamsoft.EnumDWT_OCROutputFormat | number,
+    ): boolean;
     /**
      * Configure the OCR operation.
      * @param mode Specify the OCR page layout analysis mode.
@@ -91,14 +87,8 @@ export interface OCR {
      */
     Recognize(
         index: number,
-        successCallback: (
-            imageId: number,
-            result: OCRResult,
-        ) => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        successCallback: (imageId: number, result: OCRResult) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Perform OCR on the specified local file.
@@ -112,14 +102,8 @@ export interface OCR {
      */
     RecognizeFile(
         path: string,
-        successCallback: (
-            path: string,
-            result: OCRResult,
-        ) => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        successCallback: (path: string, result: OCRResult) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Perform OCR on the specified rectangular area on the image.
@@ -149,10 +133,7 @@ export interface OCR {
             bottom: number,
             result: OCRResult,
         ) => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Perform OCR on the selected images in the buffer.
@@ -164,13 +145,8 @@ export interface OCR {
      * @argument errorString The error string.
      */
     RecognizeSelectedImages(
-        successCallback: (
-            result: OCRResult,
-        ) => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        successCallback: (result: OCRResult) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
 }
 export interface OCRResult {

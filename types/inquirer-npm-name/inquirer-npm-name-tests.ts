@@ -13,11 +13,10 @@ askName(
     inquirer,
 );
 
-askName(
-    "",
-    {
-        prompt<T extends inquirer.Answers>(questions: inquirer.QuestionCollection<T>): Promise<T> {
-            return null as any;
-        },
+askName("", {
+    prompt<T extends inquirer.Answers>(
+        questions: inquirer.QuestionCollection<T>,
+    ): Promise<T> {
+        return null as any;
     },
-);
+});

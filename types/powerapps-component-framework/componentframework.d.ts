@@ -46,7 +46,8 @@ declare namespace ComponentFramework {
     /**
      * Interface for Power Apps React controls
      */
-    interface ReactControl<TInputs, TOutputs> extends StandardControl<TInputs, TOutputs> {
+    interface ReactControl<TInputs, TOutputs>
+        extends StandardControl<TInputs, TOutputs> {
         /**
          * Called when any value in the property bag has changed. This includes field values, data-sets, global values such as container height and width,
          * offline status, control metadata values such as label, visible, etc.
@@ -119,7 +120,9 @@ declare namespace ComponentFramework {
         /**
          * Invokes the device camera to capture an image.
          */
-        captureImage(options?: DeviceApi.CaptureImageOptions): Promise<FileObject>;
+        captureImage(
+            options?: DeviceApi.CaptureImageOptions,
+        ): Promise<FileObject>;
 
         /**
          * Invokes the device camera to record video.
@@ -167,7 +170,11 @@ declare namespace ComponentFramework {
          * @param precision The number of digits after decimal point.
          * @param symbol The currency symbol/code to be added with currency value.
          */
-        formatCurrency(value: number, precision?: number, symbol?: string): string;
+        formatCurrency(
+            value: number,
+            precision?: number,
+            symbol?: string,
+        ): string;
 
         /**
          * Returns a formatted string that represents the decimal value after being formatted.
@@ -182,7 +189,10 @@ declare namespace ComponentFramework {
          * @param value The date to be formatted.
          * @param includeTime If time component should be included in the return value.
          */
-        formatDateAsFilterStringInUTC(value: Date, includeTime?: boolean): string;
+        formatDateAsFilterStringInUTC(
+            value: Date,
+            includeTime?: boolean,
+        ): string;
 
         /**
          * Returns a formatted string that represents a date in the long form.
@@ -233,7 +243,10 @@ declare namespace ComponentFramework {
          * UserLocal = 1,
          * TimeZoneIndependent = 3
          */
-        formatTime(value: Date, behavior: FormattingApi.Types.DateTimeFieldBehavior): string;
+        formatTime(
+            value: Date,
+            behavior: FormattingApi.Types.DateTimeFieldBehavior,
+        ): string;
 
         /**
          * Gets the ISO week number of the year for a given date. Range 1-53
@@ -320,7 +333,9 @@ declare namespace ComponentFramework {
          * @param options Error Dialog options.
          * @returns promise defining success or failure of operation.
          */
-        openErrorDialog(options: NavigationApi.ErrorDialogOptions): Promise<void>;
+        openErrorDialog(
+            options: NavigationApi.ErrorDialogOptions,
+        ): Promise<void>;
 
         /**
          * Open a file
@@ -328,7 +343,10 @@ declare namespace ComponentFramework {
          * @param options Options for openFile. OpenMode field in the options allows to save file instead opening.
          * @returns promise defining success or failure of operation.
          */
-        openFile(file: FileObject, options?: NavigationApi.OpenFileOptions): Promise<void>;
+        openFile(
+            file: FileObject,
+            options?: NavigationApi.OpenFileOptions,
+        ): Promise<void>;
 
         /**
          * Opens an entity form or quick create form.
@@ -354,7 +372,11 @@ declare namespace ComponentFramework {
          * @param options Window options for the web resource.
          * @param data Data to be passed into the data parameter.
          */
-        openWebResource(name: string, options?: NavigationApi.OpenWebResourceOptions, data?: string): void;
+        openWebResource(
+            name: string,
+            options?: NavigationApi.OpenWebResourceOptions,
+            data?: string,
+        ): void;
     }
 
     /**
@@ -367,7 +389,11 @@ declare namespace ComponentFramework {
          * @param success The success callback. Resource data is returned in base 64 encoded format.
          * @param failure The failure callback.
          */
-        getResource(id: string, success: (data: string) => void, failure: () => void): void;
+        getResource(
+            id: string,
+            success: (data: string) => void,
+            failure: () => void,
+        ): void;
 
         /**
          * Get the localized string for the given identifier.
@@ -431,7 +457,10 @@ declare namespace ComponentFramework {
          * @param entityType The logical name of the entity.
          * @param attributes The attributes to get metadata for.
          */
-        getEntityMetadata(entityName: string, attributes?: string[]): Promise<PropertyHelper.EntityMetadata>;
+        getEntityMetadata(
+            entityName: string,
+            attributes?: string[],
+        ): Promise<PropertyHelper.EntityMetadata>;
 
         /**
          * Function to return if the user has Privilege for one specific entity
@@ -449,7 +478,9 @@ declare namespace ComponentFramework {
          * Opens a lookup dialog allowing the user to select one or more entities.
          * @param lookupOptions Options for opening the lookup dialog.
          */
-        lookupObjects(lookupOptions: UtilityApi.LookupOptions): Promise<LookupValue[]>;
+        lookupObjects(
+            lookupOptions: UtilityApi.LookupOptions,
+        ): Promise<LookupValue[]>;
     }
 
     /**
@@ -462,7 +493,10 @@ declare namespace ComponentFramework {
          * @param data dictionary with attribute schema name and value
          * @returns The deferred object for the result of the operation. The created record object will be resolved if successful.
          */
-        createRecord(entityType: string, data: WebApi.Entity): Promise<LookupValue>;
+        createRecord(
+            entityType: string,
+            data: WebApi.Entity,
+        ): Promise<LookupValue>;
 
         /**
          * Deletes an entity record.
@@ -479,7 +513,11 @@ declare namespace ComponentFramework {
          * @param data dictionary containing to-change attributes with schema name and value
          * @returns The deferred object for the result of the operation. The updated record object will be resolved if successful.
          */
-        updateRecord(entityType: string, id: string, data: WebApi.Entity): Promise<LookupValue>;
+        updateRecord(
+            entityType: string,
+            id: string,
+            data: WebApi.Entity,
+        ): Promise<LookupValue>;
 
         /**
          * Retrieves a collection of entity records.
@@ -503,7 +541,11 @@ declare namespace ComponentFramework {
          * For support options, please refer to https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/reference/xrm-webapi/retrieverecord
          * @returns The deferred object for the result of the operation. A JSON object with the retrieved properties and values will be resolved if successful.
          */
-        retrieveRecord(entityType: string, id: string, options?: string): Promise<WebApi.Entity>;
+        retrieveRecord(
+            entityType: string,
+            id: string,
+            options?: string,
+        ): Promise<WebApi.Entity>;
     }
 
     //////////////// Define namespace of each context first-level child interface's helper ////////////////
@@ -1371,7 +1413,9 @@ declare namespace ComponentFramework {
             security?: PropertyHelper.SecurityValues | undefined;
             raw: any;
             type: string;
-            attributes?: PropertyHelper.FieldPropertyMetadata.Metadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.Metadata
+                | undefined;
         }
 
         /**
@@ -1379,28 +1423,36 @@ declare namespace ComponentFramework {
          */
         interface NumberProperty extends Property {
             raw: number | null;
-            attributes?: PropertyHelper.FieldPropertyMetadata.NumberMetadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.NumberMetadata
+                | undefined;
         }
 
         /**
          * Property Interface for context.parameters.[property_key], when property manifest type is Decimal
          */
         interface DecimalNumberProperty extends NumberProperty {
-            attributes?: PropertyHelper.FieldPropertyMetadata.DecimalNumberMetadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.DecimalNumberMetadata
+                | undefined;
         }
 
         /**
          * Property Interface for context.parameters.[property_key], when property manifest type is FP
          */
         interface FloatingNumberProperty extends NumberProperty {
-            attributes?: PropertyHelper.FieldPropertyMetadata.FloatingNumberMetadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.FloatingNumberMetadata
+                | undefined;
         }
 
         /**
          * Property Interface for context.parameters.[property_key], when property manifest type is Whole.None
          */
         interface WholeNumberProperty extends NumberProperty {
-            attributes?: PropertyHelper.FieldPropertyMetadata.WholeNumberMetadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.WholeNumberMetadata
+                | undefined;
         }
 
         /**
@@ -1408,7 +1460,9 @@ declare namespace ComponentFramework {
          */
         interface DateTimeProperty extends Property {
             raw: Date | null;
-            attributes?: PropertyHelper.FieldPropertyMetadata.DateTimeMetadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.DateTimeMetadata
+                | undefined;
         }
 
         /**
@@ -1416,7 +1470,9 @@ declare namespace ComponentFramework {
          */
         interface StringProperty extends Property {
             raw: string | null;
-            attributes?: PropertyHelper.FieldPropertyMetadata.StringMetadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.StringMetadata
+                | undefined;
         }
 
         /**
@@ -1432,7 +1488,9 @@ declare namespace ComponentFramework {
          */
         interface OptionSetProperty extends Property {
             raw: number | null;
-            attributes?: PropertyHelper.FieldPropertyMetadata.OptionSetMetadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.OptionSetMetadata
+                | undefined;
         }
 
         /**
@@ -1440,7 +1498,9 @@ declare namespace ComponentFramework {
          */
         interface MultiSelectOptionSetProperty extends Property {
             raw: number[] | null;
-            attributes?: PropertyHelper.FieldPropertyMetadata.OptionSetMetadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.OptionSetMetadata
+                | undefined;
         }
 
         /**
@@ -1448,7 +1508,9 @@ declare namespace ComponentFramework {
          */
         interface TwoOptionsProperty extends Property {
             raw: boolean;
-            attributes?: PropertyHelper.FieldPropertyMetadata.TwoOptionMetadata | undefined;
+            attributes?:
+                | PropertyHelper.FieldPropertyMetadata.TwoOptionMetadata
+                | undefined;
         }
 
         /**
@@ -1493,7 +1555,9 @@ declare namespace ComponentFramework {
              * @param name column name to be added to the columnset
              * @param entityAlias entity alias for which the column name needs to be added
              */
-            addColumn?: ((name: string, entityAlias?: string) => void) | undefined;
+            addColumn?:
+                | ((name: string, entityAlias?: string) => void)
+                | undefined;
 
             /**
              * Set of columns available in this dataset.

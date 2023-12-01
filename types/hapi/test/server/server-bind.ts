@@ -1,5 +1,12 @@
 // https://github.com/hapijs/hapi/blob/master/API.md#-serverbindcontext
-import { Lifecycle, Plugin, Request, ResponseToolkit, Server, ServerRegisterOptions } from "hapi";
+import {
+    Lifecycle,
+    Plugin,
+    Request,
+    ResponseToolkit,
+    Server,
+    ServerRegisterOptions,
+} from "hapi";
 
 const server = new Server({
     port: 8000,

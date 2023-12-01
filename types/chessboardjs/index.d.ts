@@ -133,7 +133,10 @@ export interface ChessBoardInstance {
 
 export interface ChessBoardFactory {
     (containerElOrId: any, config?: BoardConfig): ChessBoardInstance;
-    (containerElOrId: any, position: string | BoardPositionType): ChessBoardInstance;
+    (
+        containerElOrId: any,
+        position: string | BoardPositionType,
+    ): ChessBoardInstance;
     fenToObj(fen: string): boolean | BoardPositionType;
     objToFen(obj: BoardPositionType): boolean | string;
 }

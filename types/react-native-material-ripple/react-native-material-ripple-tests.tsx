@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Animated, Easing, Insets, StyleSheet, View, ViewStyle } from "react-native";
+import {
+    Animated,
+    Easing,
+    Insets,
+    StyleSheet,
+    View,
+    ViewStyle,
+} from "react-native";
 import Ripple from "react-native-material-ripple";
 
 const RippleTestOptionalProps: React.FC = () => {
@@ -121,5 +128,5 @@ const RippleTest: React.FC = () => {
 };
 
 const styles = StyleSheet.create({
-    wrapper: ({} as any) as ViewStyle,
+    wrapper: {} as any as ViewStyle,
 });

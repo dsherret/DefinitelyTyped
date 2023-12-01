@@ -33,9 +33,9 @@ declare namespace SwaggerUI {
          */
         urls?:
             | Array<{
-                url: string;
-                name: string;
-            }>
+                  url: string;
+                  name: string;
+              }>
             | undefined;
 
         // Plugin system
@@ -150,15 +150,23 @@ declare namespace SwaggerUI {
         syntaxHighlight?:
             | false
             | {
-                /**
-                 * Whether syntax highlighting should be activated or not.
-                 */
-                activate?: boolean | undefined;
-                /**
-                 * Highlight.js syntax coloring theme to use. (Only these 6 styles are available.)
-                 */
-                theme?: "agate" | "arta" | "idea" | "monokai" | "nord" | "obsidian" | "tomorrow-night" | undefined;
-            }
+                  /**
+                   * Whether syntax highlighting should be activated or not.
+                   */
+                  activate?: boolean | undefined;
+                  /**
+                   * Highlight.js syntax coloring theme to use. (Only these 6 styles are available.)
+                   */
+                  theme?:
+                      | "agate"
+                      | "arta"
+                      | "idea"
+                      | "monokai"
+                      | "nord"
+                      | "obsidian"
+                      | "tomorrow-night"
+                      | undefined;
+              }
             | undefined;
         /**
          * Controls whether the "Try it out" section should be enabled by default.
@@ -167,19 +175,23 @@ declare namespace SwaggerUI {
         /**
          * This is the default configuration section for the the requestSnippets plugin.
          */
-        requestSnippets?: {
-            generators?: {
-                [genName: string]: {
-                    title: string;
-                    syntax: string;
-                };
-            } | undefined;
-            defaultExpanded?: boolean | undefined;
-            /**
-             * e.g. only show curl bash = ["curl_bash"]
-             */
-            languagesMask?: string[] | undefined;
-        } | undefined;
+        requestSnippets?:
+            | {
+                  generators?:
+                      | {
+                            [genName: string]: {
+                                title: string;
+                                syntax: string;
+                            };
+                        }
+                      | undefined;
+                  defaultExpanded?: boolean | undefined;
+                  /**
+                   * e.g. only show curl bash = ["curl_bash"]
+                   */
+                  languagesMask?: string[] | undefined;
+              }
+            | undefined;
 
         // Network
 
@@ -193,14 +205,18 @@ declare namespace SwaggerUI {
          * Accepts one argument requestInterceptor(request) and must return the modified request,
          * or a Promise that resolves to the modified request.
          */
-        requestInterceptor?: ((a: Request) => Request | Promise<Request>) | undefined;
+        requestInterceptor?:
+            | ((a: Request) => Request | Promise<Request>)
+            | undefined;
         /**
          * MUST be a function. Function to intercept remote definition,
          * "Try it out", and OAuth 2.0 responses.
          * Accepts one argument responseInterceptor(response) and must return the modified response,
          * or a Promise that resolves to the modified response.
          */
-        responseInterceptor?: ((a: Response) => Response | Promise<Response>) | undefined;
+        responseInterceptor?:
+            | ((a: Response) => Response | Promise<Response>)
+            | undefined;
         /**
          * If set to true, uses the mutated request returned from a requestInterceptor
          * to produce the curl command in the UI, otherwise the request
@@ -241,7 +257,9 @@ declare namespace SwaggerUI {
          * Accepts two arguments parameterMacro(operation, parameter).
          * Operation and parameter are objects passed for context, both remain immutable
          */
-        parameterMacro?: ((operation: Readonly<any>, parameter: Readonly<any>) => any) | undefined;
+        parameterMacro?:
+            | ((operation: Readonly<any>, parameter: Readonly<any>) => any)
+            | undefined;
 
         // Authorization
 
@@ -264,14 +282,22 @@ declare namespace SwaggerUI {
 
     type PluginLoadType = "legacy" | "chain";
 
-    type SupportedHTTPMethods = "get" | "put" | "post" | "delete" | "options" | "head" | "patch" | "trace";
+    type SupportedHTTPMethods =
+        | "get"
+        | "put"
+        | "post"
+        | "delete"
+        | "options"
+        | "head"
+        | "patch"
+        | "trace";
 
     type SorterLike =
         | "alpha"
         | "method"
         | {
-            (name1: string, name2: string): number;
-        };
+              (name1: string, name2: string): number;
+          };
 
     interface Request {
         [prop: string]: any;
@@ -286,15 +312,17 @@ declare namespace SwaggerUI {
      */
     interface SwaggerUIPlugin {
         (system: any): {
-            statePlugins?: {
-                [stateKey: string]: {
-                    actions?: Indexable | undefined;
-                    reducers?: Indexable | undefined;
-                    selectors?: Indexable | undefined;
-                    wrapActions?: Indexable | undefined;
-                    wrapSelectors?: Indexable | undefined;
-                };
-            } | undefined;
+            statePlugins?:
+                | {
+                      [stateKey: string]: {
+                          actions?: Indexable | undefined;
+                          reducers?: Indexable | undefined;
+                          selectors?: Indexable | undefined;
+                          wrapActions?: Indexable | undefined;
+                          wrapSelectors?: Indexable | undefined;
+                      };
+                  }
+                | undefined;
             components?: Indexable | undefined;
             wrapComponents?: Indexable | undefined;
             rootInjects?: Indexable | undefined;
@@ -324,7 +352,11 @@ interface SwaggerUI {
      * @param username
      * @param password
      */
-    preauthorizeBasic(authDefinitionKey: any, username: any, password: any): any;
+    preauthorizeBasic(
+        authDefinitionKey: any,
+        username: any,
+        password: any,
+    ): any;
 
     /**
      * Programmatically set values for an API key or Bearer authorization scheme.

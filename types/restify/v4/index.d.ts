@@ -21,10 +21,12 @@ export interface requestFileInterface {
 export interface requestAuthorization {
     scheme: string;
     credentials: string;
-    basic?: {
-        username: string;
-        password: string;
-    } | undefined;
+    basic?:
+        | {
+              username: string;
+              password: string;
+          }
+        | undefined;
 }
 
 export interface Request extends http.IncomingMessage {
@@ -309,33 +311,99 @@ export interface Router {
      * @param    res      the response object
      * @param    callback operation callback
      */
-    find(req: Request, res: Response, callback: (err: Error, route: Route) => void): void;
+    find(
+        req: Request,
+        res: Response,
+        callback: (err: Error, route: Route) => void,
+    ): void;
 }
 
 export interface Server extends http.Server {
-    use(handler: RequestHandler | RequestHandler[], ...handlers: RequestHandler[]): Server;
-    use(handler: RequestHandler | RequestHandler[], ...handlers: RequestHandler[][]): Server;
+    use(
+        handler: RequestHandler | RequestHandler[],
+        ...handlers: RequestHandler[]
+    ): Server;
+    use(
+        handler: RequestHandler | RequestHandler[],
+        ...handlers: RequestHandler[][]
+    ): Server;
 
-    post(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[]): string;
-    post(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[][]): string;
+    post(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[]
+    ): string;
+    post(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[][]
+    ): string;
 
-    patch(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[]): string;
-    patch(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[][]): string;
+    patch(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[]
+    ): string;
+    patch(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[][]
+    ): string;
 
-    put(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[]): string;
-    put(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[][]): string;
+    put(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[]
+    ): string;
+    put(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[][]
+    ): string;
 
-    del(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[]): string;
-    del(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[][]): string;
+    del(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[]
+    ): string;
+    del(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[][]
+    ): string;
 
-    get(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[]): string;
-    get(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[][]): string;
+    get(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[]
+    ): string;
+    get(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[][]
+    ): string;
 
-    head(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[]): string;
-    head(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[][]): string;
+    head(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[]
+    ): string;
+    head(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[][]
+    ): string;
 
-    opts(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[]): string;
-    opts(route: any, routeCallBack: RequestHandler | RequestHandler[], ...routeCallBacks: RequestHandler[][]): string;
+    opts(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[]
+    ): string;
+    opts(
+        route: any,
+        routeCallBack: RequestHandler | RequestHandler[],
+        ...routeCallBacks: RequestHandler[][]
+    ): string;
 
     name: string;
     version: string;
@@ -545,7 +613,9 @@ export function requestLogger(options?: any): RequestHandler;
 export function serveStatic(options?: any): RequestHandler;
 export function throttle(options?: ThrottleOptions): RequestHandler;
 export function conditionalRequest(): RequestHandler[];
-export function auditLogger(options: { log: any }): (req: Request, res: Response, route: Route, err: any) => void;
+export function auditLogger(options: {
+    log: any;
+}): (req: Request, res: Response, route: Route, err: any) => void;
 export function fullResponse(): RequestHandler;
 export var defaultResponseHeaders: any;
 

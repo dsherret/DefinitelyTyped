@@ -8,12 +8,17 @@ let optionDefinitions: getUsage.OptionDefinition[] = [];
 usage = getUsage([
     {
         header: "A typical app",
-        content: "Generates something \\{very important\\}, also retaining `backticks`.",
+        content:
+            "Generates something \\{very important\\}, also retaining `backticks`.",
     },
     {
         header: "Options",
         optionList: [
-            { name: "files", typeLabel: "\\{something\\}", description: "This is not \\{red red\\}." },
+            {
+                name: "files",
+                typeLabel: "\\{something\\}",
+                description: "This is not \\{red red\\}.",
+            },
         ],
     },
 ]);
@@ -23,13 +28,17 @@ usage = getUsage([
     {
         header: "A typical app",
         content:
-            "Generates something {italic.keyword(\"orange\") very {rgb(255,231,0).bold important}}. This is a rather long, but {hex(\"#1ef\").underline ultimately} inconsequential "
-            + "description intended {yellow.bgRed.bold solely {bgBlue to}} demonstrate description appearance. ",
+            'Generates something {italic.keyword("orange") very {rgb(255,231,0).bold important}}. This is a rather long, but {hex("#1ef").underline ultimately} inconsequential ' +
+            "description intended {yellow.bgRed.bold solely {bgBlue to}} demonstrate description appearance. ",
     },
     {
         header: "Options",
         optionList: [
-            { name: "files", typeLabel: "{magenta {underline files}}", description: "This is {red red}." },
+            {
+                name: "files",
+                typeLabel: "{magenta {underline files}}",
+                description: "This is {red red}.",
+            },
         ],
     },
     {
@@ -122,8 +131,7 @@ sections = [
                 example: "$ example --timeout 100 --src lib/*.js",
             },
             {
-                desc:
-                    "3. This example will scan space for unknown things. Take cure when scanning space, it could take some time. ",
+                desc: "3. This example will scan space for unknown things. Take cure when scanning space, it could take some time. ",
                 example:
                     "$ example --src galaxy1.facts galaxy1.facts galaxy2.facts galaxy3.facts galaxy4.facts galaxy5.facts",
             },

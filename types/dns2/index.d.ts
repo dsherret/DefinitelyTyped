@@ -90,7 +90,7 @@ declare namespace DNS {
         remoteInfo: udp.RemoteInfo,
     ) => void;
 
-    type PacketClass = typeof Packet.CLASS[keyof typeof Packet.CLASS];
+    type PacketClass = (typeof Packet.CLASS)[keyof typeof Packet.CLASS];
     type PacketQuestion = keyof typeof Packet.TYPE;
 }
 
@@ -127,13 +127,22 @@ declare class DNS {
 
     static Packet: typeof Packet;
 
-    static createUDPServer: (...options: ConstructorParameters<typeof UdpDnsServer>) => UdpDnsServer;
+    static createUDPServer: (
+        ...options: ConstructorParameters<typeof UdpDnsServer>
+    ) => UdpDnsServer;
     static UDPServer: typeof UdpDnsServer;
 
-    static createTCPServer: (...options: ConstructorParameters<typeof TcpDnsServer>) => TcpDnsServer;
+    static createTCPServer: (
+        ...options: ConstructorParameters<typeof TcpDnsServer>
+    ) => TcpDnsServer;
     static TCPServer: typeof TcpDnsServer;
 
-    query(name: string, type: DNS.PacketQuestion, cls?: DNS.PacketClass, clientIp?: string): Promise<DNS.DnsResponse>;
+    query(
+        name: string,
+        type: DNS.PacketQuestion,
+        cls?: DNS.PacketClass,
+        clientIp?: string,
+    ): Promise<DNS.DnsResponse>;
     resolve(
         domain: string,
         type?: DNS.PacketQuestion,

@@ -1,4 +1,7 @@
-import { SocketProtocolErrorStatuses, SocketProtocolIgnoreStatuses } from "sc-errors";
+import {
+    SocketProtocolErrorStatuses,
+    SocketProtocolIgnoreStatuses,
+} from "sc-errors";
 import WebSocket = require("ws");
 import AsyncStreamEmitter = require("async-stream-emitter");
 import AGChannel = require("ag-channel");
@@ -10,7 +13,10 @@ import ConsumableStream = require("consumable-stream");
 import AuthEngine = require("./auth");
 import AGTransport = require("./transport");
 
-declare class AGClientSocket extends AsyncStreamEmitter<any> implements AGChannel.Client {
+declare class AGClientSocket
+    extends AsyncStreamEmitter<any>
+    implements AGChannel.Client
+{
     readonly CONNECTING: "connecting";
     readonly OPEN: "open";
     readonly CLOSED: "closed";
@@ -71,33 +77,79 @@ declare class AGClientSocket extends AsyncStreamEmitter<any> implements AGChanne
 
     constructor(opts: AGClientSocket.ClientOptions);
 
-    emit(eventName: "removeAuthToken", data: { oldAuthToken: AuthEngine.AuthToken }): void;
+    emit(
+        eventName: "removeAuthToken",
+        data: { oldAuthToken: AuthEngine.AuthToken },
+    ): void;
     emit(eventName: "connect", data: AGClientSocket.ConnectData): void;
     emit(eventName: "connecting", data: {}): void;
-    emit(eventName: "authStateChange", data: AGClientSocket.AuthStateChangeData): void;
-    emit(eventName: "authenticate", data: AGClientSocket.AuthenticateData): void;
-    emit(eventName: "deauthenticate", data: AGClientSocket.DeauthenticateData): void;
+    emit(
+        eventName: "authStateChange",
+        data: AGClientSocket.AuthStateChangeData,
+    ): void;
+    emit(
+        eventName: "authenticate",
+        data: AGClientSocket.AuthenticateData,
+    ): void;
+    emit(
+        eventName: "deauthenticate",
+        data: AGClientSocket.DeauthenticateData,
+    ): void;
     emit(eventName: "error", data: { error: Error }): void;
-    emit(eventName: "connectAbort" | "disconnect" | "close", data: AGClientSocket.CloseData): void;
-    emit(eventName: "subscribeStateChange", data: AGClientSocket.SubscribeStateChangeData): void;
-    emit(eventName: "subscribe" | "subscribeRequest", data: AGClientSocket.SubscribeData): void;
-    emit(eventName: "subscribeFail", data: AGClientSocket.SubscribeFailData): void;
+    emit(
+        eventName: "connectAbort" | "disconnect" | "close",
+        data: AGClientSocket.CloseData,
+    ): void;
+    emit(
+        eventName: "subscribeStateChange",
+        data: AGClientSocket.SubscribeStateChangeData,
+    ): void;
+    emit(
+        eventName: "subscribe" | "subscribeRequest",
+        data: AGClientSocket.SubscribeData,
+    ): void;
+    emit(
+        eventName: "subscribeFail",
+        data: AGClientSocket.SubscribeFailData,
+    ): void;
     emit(eventName: "unsubscribe", data: AGClientSocket.UnsubscribeData): void;
     emit(eventName: "kickOut", data: AGClientSocket.KickOutData): void;
 
-    listener(eventName: "removeAuthToken"): ConsumableStream<{ oldAuthToken: AuthEngine.AuthToken }>;
-    listener(eventName: "connect"): ConsumableStream<AGClientSocket.ConnectData>;
+    listener(
+        eventName: "removeAuthToken",
+    ): ConsumableStream<{ oldAuthToken: AuthEngine.AuthToken }>;
+    listener(
+        eventName: "connect",
+    ): ConsumableStream<AGClientSocket.ConnectData>;
     listener(eventName: "connecting"): ConsumableStream<{}>;
-    listener(eventName: "authStateChange"): ConsumableStream<AGClientSocket.AuthStateChangeData>;
-    listener(eventName: "authenticate"): ConsumableStream<AGClientSocket.AuthenticateData>;
-    listener(eventName: "deauthenticate"): ConsumableStream<AGClientSocket.DeauthenticateData>;
+    listener(
+        eventName: "authStateChange",
+    ): ConsumableStream<AGClientSocket.AuthStateChangeData>;
+    listener(
+        eventName: "authenticate",
+    ): ConsumableStream<AGClientSocket.AuthenticateData>;
+    listener(
+        eventName: "deauthenticate",
+    ): ConsumableStream<AGClientSocket.DeauthenticateData>;
     listener(eventName: "error"): ConsumableStream<{ error: Error }>;
-    listener(eventName: "connectAbort" | "disconnect" | "close"): ConsumableStream<AGClientSocket.CloseData>;
-    listener(eventName: "subscribeStateChange"): ConsumableStream<AGClientSocket.SubscribeStateChangeData>;
-    listener(eventName: "subscribe" | "subscribeRequest"): ConsumableStream<AGClientSocket.SubscribeData>;
-    listener(eventName: "subscribeFail"): ConsumableStream<AGClientSocket.SubscribeFailData>;
-    listener(eventName: "unsubscribe"): ConsumableStream<AGClientSocket.UnsubscribeData>;
-    listener(eventName: "kickOut"): ConsumableStream<AGClientSocket.KickOutData>;
+    listener(
+        eventName: "connectAbort" | "disconnect" | "close",
+    ): ConsumableStream<AGClientSocket.CloseData>;
+    listener(
+        eventName: "subscribeStateChange",
+    ): ConsumableStream<AGClientSocket.SubscribeStateChangeData>;
+    listener(
+        eventName: "subscribe" | "subscribeRequest",
+    ): ConsumableStream<AGClientSocket.SubscribeData>;
+    listener(
+        eventName: "subscribeFail",
+    ): ConsumableStream<AGClientSocket.SubscribeFailData>;
+    listener(
+        eventName: "unsubscribe",
+    ): ConsumableStream<AGClientSocket.UnsubscribeData>;
+    listener(
+        eventName: "kickOut",
+    ): ConsumableStream<AGClientSocket.KickOutData>;
 
     /* AGChannel.Client start */
 
@@ -124,27 +176,50 @@ declare class AGClientSocket extends AsyncStreamEmitter<any> implements AGChanne
     channelKillListener(channelName: string, eventName: string): void;
     channelKillAllListeners(channelName: string): void;
 
-    channelGetOutputConsumerStatsList(channelName: string): Consumer.ConsumerStats[];
-    channelGetListenerConsumerStatsList(channelName: string, eventName: string): Consumer.ConsumerStats[];
-    channelGetAllListenersConsumerStatsList(channelName: string): Consumer.ConsumerStats[];
+    channelGetOutputConsumerStatsList(
+        channelName: string,
+    ): Consumer.ConsumerStats[];
+    channelGetListenerConsumerStatsList(
+        channelName: string,
+        eventName: string,
+    ): Consumer.ConsumerStats[];
+    channelGetAllListenersConsumerStatsList(
+        channelName: string,
+    ): Consumer.ConsumerStats[];
 
     channelGetOutputBackpressure(channelName: string): number;
-    channelGetListenerBackpressure(channelName: string, eventName: string): number;
+    channelGetListenerBackpressure(
+        channelName: string,
+        eventName: string,
+    ): number;
     channelGetAllListenersBackpressure(channelName: string): number;
 
     channelHasOutputConsumer(channelName: string, consumerId: number): boolean;
-    channelHasListenerConsumer(channelName: string, eventName: string, consumerId: number): boolean;
-    channelHasAnyListenerConsumer(channelName: string, consumerId: number): boolean;
+    channelHasListenerConsumer(
+        channelName: string,
+        eventName: string,
+        consumerId: number,
+    ): boolean;
+    channelHasAnyListenerConsumer(
+        channelName: string,
+        consumerId: number,
+    ): boolean;
 
     getChannelState(channelName: string): AGChannel.ChannelState;
     getChannelOptions(channelName: string): object;
 
-    subscribe(channelName: string, options?: AGClientSocket.SubscribeOptions): AGChannel<any>;
+    subscribe(
+        channelName: string,
+        options?: AGClientSocket.SubscribeOptions,
+    ): AGChannel<any>;
     unsubscribe(channelName: string): Promise<void>;
     isSubscribed(channelName: string, includePending?: boolean): boolean;
 
     transmitPublish(channelName: string, data: any): Promise<void>;
-    invokePublish(channelName: string, data: any): Promise<{ channel: string; data: any }>;
+    invokePublish(
+        channelName: string,
+        data: any,
+    ): Promise<{ channel: string; data: any }>;
 
     /* AGChannel.Client end */
 
@@ -174,8 +249,16 @@ declare class AGClientSocket extends AsyncStreamEmitter<any> implements AGChanne
 
     send(data: any): void;
 
-    transmit(event: string, data: any, options?: { ackTimeout?: number | undefined }): Promise<void>;
-    invoke(event: string, data: any, options?: { ackTimeout?: number | undefined }): Promise<any>;
+    transmit(
+        event: string,
+        data: any,
+        options?: { ackTimeout?: number | undefined },
+    ): Promise<void>;
+    invoke(
+        event: string,
+        data: any,
+        options?: { ackTimeout?: number | undefined },
+    ): Promise<any>;
 
     startBatch(): void;
     flushBatch(): void;
@@ -197,7 +280,9 @@ declare class AGClientSocket extends AsyncStreamEmitter<any> implements AGChanne
     killReceiverConsumer(consumerId: number): void;
 
     getReceiverConsumerStats(consumerId: number): Consumer.ConsumerStats;
-    getReceiverConsumerStatsList(receiverName: string): Consumer.ConsumerStats[];
+    getReceiverConsumerStatsList(
+        receiverName: string,
+    ): Consumer.ConsumerStats[];
     getAllReceiversConsumerStatsList(): Consumer.ConsumerStats[];
 
     getReceiverBackpressure(receiverName: string): number;
@@ -219,7 +304,9 @@ declare class AGClientSocket extends AsyncStreamEmitter<any> implements AGChanne
     killProcedureConsumer(consumerId: number): void;
 
     getProcedureConsumerStats(consumerId: number): Consumer.ConsumerStats;
-    getProcedureConsumerStatsList(procedureName: string): Consumer.ConsumerStats[];
+    getProcedureConsumerStatsList(
+        procedureName: string,
+    ): Consumer.ConsumerStats[];
     getAllProceduresConsumerStatsList(): Consumer.ConsumerStats[];
 
     getProcedureBackpressure(procedureName: string): number;

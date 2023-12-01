@@ -35,11 +35,11 @@ const stickyAlert = {
 };
 halfmoon.initStickyAlert(stickyAlert); // $ExpectType void
 
-halfmoon.clickHandler = event => {
+halfmoon.clickHandler = (event) => {
     event.preventDefault();
 };
 
-halfmoon.keydownHandler = event => {
+halfmoon.keydownHandler = (event) => {
     event.preventDefault();
 };
 

@@ -15,7 +15,14 @@ declare namespace TorrentStream {
         // Events
         on(event: "ready" | "torrent" | "idle", callback: Function): void;
         on(event: "download", callback: (pieceIndex: number) => void): void;
-        on(event: "upload", callback: (pieceIndex: number, offset: number, length: number) => void): void;
+        on(
+            event: "upload",
+            callback: (
+                pieceIndex: number,
+                offset: number,
+                length: number,
+            ) => void,
+        ): void;
         on(event: string, callback: Function): void;
     }
     interface TorrentEngineOptions {
@@ -48,7 +55,10 @@ declare namespace TorrentStream {
 }
 
 declare module "torrent-stream" {
-    function s(magnet: string | Buffer, options?: TorrentStream.TorrentEngineOptions): TorrentStream.TorrentEngine;
+    function s(
+        magnet: string | Buffer,
+        options?: TorrentStream.TorrentEngineOptions,
+    ): TorrentStream.TorrentEngine;
 
     namespace s {
         // Here

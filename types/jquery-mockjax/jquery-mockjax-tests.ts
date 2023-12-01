@@ -1,7 +1,11 @@
 /// <reference types="qunit" />
 
 class Tests {
-    private _noErrorCallbackExpected: (jqXHR: JQueryXHR, textStatus: string, errorThrown: string) => any;
+    private _noErrorCallbackExpected: (
+        jqXHR: JQueryXHR,
+        textStatus: string,
+        errorThrown: string,
+    ) => any;
     private _defaultMockjaxSettings: MockJaxSettings;
 
     run(): void {
@@ -10,7 +14,11 @@ class Tests {
         let t = QUnit.test;
 
         QUnit.begin(() => {
-            self._noErrorCallbackExpected = (jqXHR: JQueryXHR, textStatus: string, errorThrown: string): any => {
+            self._noErrorCallbackExpected = (
+                jqXHR: JQueryXHR,
+                textStatus: string,
+                errorThrown: string,
+            ): any => {
                 QUnit.assert.ok(false, "Error callback executed");
             };
 
@@ -46,22 +54,28 @@ class Tests {
             assert.ok(xhr.done && xhr.fail, "Got Promise methods");
         });
 
-        t("Intercept synchronized proxy calls and return synchronously", (assert) => {
-            $.mockjax({
-                url: "/proxy",
-                proxy: "test_proxy.json",
-            });
+        t(
+            "Intercept synchronized proxy calls and return synchronously",
+            (assert) => {
+                $.mockjax({
+                    url: "/proxy",
+                    proxy: "test_proxy.json",
+                });
 
-            $.ajax({
-                url: "/proxy",
-                dataType: "json",
-                async: false,
-                success: (json) => {
-                    assert.ok(json && json.proxy, "Proxy callback request succeeded");
-                },
-                error: self._noErrorCallbackExpected,
-            });
-        });
+                $.ajax({
+                    url: "/proxy",
+                    dataType: "json",
+                    async: false,
+                    success: (json) => {
+                        assert.ok(
+                            json && json.proxy,
+                            "Proxy callback request succeeded",
+                        );
+                    },
+                    error: self._noErrorCallbackExpected,
+                });
+            },
+        );
 
         t("Intercept asynchronized proxy calls", (assert) => {
             let done = assert.async();
@@ -74,7 +88,10 @@ class Tests {
                 url: "/proxy",
                 dataType: "json",
                 success: (json) => {
-                    assert.ok(json && json.proxy, "Proxy callback request succeeded");
+                    assert.ok(
+                        json && json.proxy,
+                        "Proxy callback request succeeded",
+                    );
                     done();
                 },
                 error: self._noErrorCallbackExpected,
@@ -157,7 +174,11 @@ class Tests {
                 },
                 error: self._noErrorCallbackExpected,
                 complete: (xhr) => {
-                    assert.equal(xhr.responseText, "Hello world 2", "Response Text matches");
+                    assert.equal(
+                        xhr.responseText,
+                        "Hello world 2",
+                        "Response Text matches",
+                    );
                     done();
                 },
             });
@@ -186,7 +207,11 @@ class Tests {
                 },
                 error: self._noErrorCallbackExpected,
                 complete: (xhr) => {
-                    assert.equal(xhr.responseText, "Hello world 3", "Response Text matches");
+                    assert.equal(
+                        xhr.responseText,
+                        "Hello world 3",
+                        "Response Text matches",
+                    );
                     done();
                 },
             });
@@ -196,7 +221,7 @@ class Tests {
             let done = assert.async();
             let wasLoggerCalled = false;
 
-            let logFunction = () => wasLoggerCalled = true;
+            let logFunction = () => (wasLoggerCalled = true);
 
             let settings: MockJaxSettings = {
                 url: "/custom-logging-function",
@@ -216,7 +241,11 @@ class Tests {
                 url: "/custom-logging-function",
                 error: self._noErrorCallbackExpected,
                 complete: (xhr) => {
-                    assert.equal(wasLoggerCalled, true, "Standard logger was called");
+                    assert.equal(
+                        wasLoggerCalled,
+                        true,
+                        "Standard logger was called",
+                    );
                     done();
                 },
             });
@@ -226,7 +255,7 @@ class Tests {
             let done = assert.async();
             let wasLoggerCalled = false;
 
-            let logFunction = () => wasLoggerCalled = true;
+            let logFunction = () => (wasLoggerCalled = true);
 
             let settings: MockJaxSettings = {
                 url: "/custom-logging-function",
@@ -234,7 +263,13 @@ class Tests {
                 logger: {
                     customName: logFunction,
                 },
-                logLevelMethods: ["customName", "customName", "customName", "customName", "customName"],
+                logLevelMethods: [
+                    "customName",
+                    "customName",
+                    "customName",
+                    "customName",
+                    "customName",
+                ],
             };
 
             $.mockjax(settings);
@@ -243,7 +278,11 @@ class Tests {
                 url: "/custom-logging-function",
                 error: self._noErrorCallbackExpected,
                 complete: (xhr) => {
-                    assert.equal(wasLoggerCalled, true, "Custom logger was called");
+                    assert.equal(
+                        wasLoggerCalled,
+                        true,
+                        "Custom logger was called",
+                    );
                     done();
                 },
             });
@@ -257,7 +296,10 @@ class Tests {
             $.ajax({
                 url: "/unmocked-ajax-call",
                 error: (error) => {
-                    assert.ok(error, "Expected the call to fail because it was not mocked");
+                    assert.ok(
+                        error,
+                        "Expected the call to fail because it was not mocked",
+                    );
                     done();
                 },
                 complete: (xhr) => {

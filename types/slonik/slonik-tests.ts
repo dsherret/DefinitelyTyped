@@ -41,7 +41,7 @@ const VALUE = "foo";
 const pool = createPool("postgres://localhost");
 
 // $ExpectType Promise<{ connectResult: string; }>
-pool.connect(async connection => {
+pool.connect(async (connection) => {
     const result = await connection.query(sql`SELECT 1`);
     // $ExpectType QueryResultType<QueryResultRowType<string>>
     result;
@@ -70,27 +70,31 @@ pool.connect(async connection => {
     await connection.query(`SELECT foo`);
 
     // $ExpectType { transactionResult: string; }
-    await connection.transaction(async transactionConnection => {
-        await transactionConnection.query(sql`INSERT INTO foo (bar) VALUES ('baz')`);
-        await transactionConnection.query(sql`INSERT INTO qux (quux) VALUES ('corge')`);
+    await connection.transaction(async (transactionConnection) => {
+        await transactionConnection.query(
+            sql`INSERT INTO foo (bar) VALUES ('baz')`,
+        );
+        await transactionConnection.query(
+            sql`INSERT INTO qux (quux) VALUES ('corge')`,
+        );
         return { transactionResult: "foo" };
     });
 
     // $ExpectType QueryResultType<QueryResultRowType<string>>
-    await connection.transaction(async t1 => {
+    await connection.transaction(async (t1) => {
         await t1.query(sql`INSERT INTO foo (bar) VALUES ('baz')`);
 
-        return t1.transaction(t2 => {
+        return t1.transaction((t2) => {
             return t2.query(sql`INSERT INTO qux (quux) VALUES ('corge')`);
         });
     });
 
     // $ExpectType void
-    await connection.transaction(async t1 => {
+    await connection.transaction(async (t1) => {
         await t1.query(sql`INSERT INTO foo (bar) VALUES ('baz')`);
 
         try {
-            await t1.transaction(async t2 => {
+            await t1.transaction(async (t2) => {
                 await t2.query(sql`INSERT INTO qux (quux) VALUES ('corge')`);
 
                 return Promise.reject(new Error("foo"));
@@ -110,9 +114,11 @@ const typedQuery = async () => {
     interface FooBar extends Foo {
         bar: number;
     }
-    const getFooQuery = (limit: number) => sql<Foo>`select foo from foobartable limit ${limit}`;
+    const getFooQuery = (limit: number) =>
+        sql<Foo>`select foo from foobartable limit ${limit}`;
 
-    const getFooBarQuery = (limit: number) => sql<FooBar>`select foo, bar from foobartable limit ${limit}`;
+    const getFooBarQuery = (limit: number) =>
+        sql<FooBar>`select foo, bar from foobartable limit ${limit}`;
 
     // $ExpectType QueryResultType<FooBar>
     await pool.query(getFooBarQuery(10));
@@ -143,7 +149,9 @@ createPool("postgres://localhost", {
                 await connection.query(sql`LOAD 'auto_explain'`);
                 await connection.query(sql`SET auto_explain.log_analyze=true`);
                 await connection.query(sql`SET auto_explain.log_format=json`);
-                await connection.query(sql`SET auto_explain.log_min_duration=0`);
+                await connection.query(
+                    sql`SET auto_explain.log_min_duration=0`,
+                );
                 await connection.query(sql`SET auto_explain.log_timing=true`);
                 await connection.query(sql`SET client_min_messages=log`);
 
@@ -178,7 +186,7 @@ const interceptors: InterceptorType[] = [
         format: "CAMEL_CASE",
     }),
     {
-        afterQueryExecution: queryContext => {
+        afterQueryExecution: (queryContext) => {
             // $ExpectType QueryContextType
             queryContext;
 
@@ -209,7 +217,7 @@ connection.any(sql`
 // ----------------------------------------------------------------------
 const typeParser: TypeParserType<number> = {
     name: "int8",
-    parse: value => {
+    parse: (value) => {
         // $ExpectType string
         value;
         return parseInt(value, 10);
@@ -235,15 +243,13 @@ createTimestampWithTimeZoneTypeParser();
     await connection.query(sql`
         INSERT INTO (foo, bar, baz)
         SELECT *
-        FROM ${
-        sql.unnest(
+        FROM ${sql.unnest(
             [
                 [1, 2, 3],
                 [4, 5, 6],
             ],
             ["int4", "int4", "int4"],
-        )
-    }
+        )}
     `);
 })();
 
@@ -256,9 +262,9 @@ createTimestampWithTimeZoneTypeParser();
     let placeholderIndex = 1;
 
     const whereConditionSql = uniquePairs
-        .map(needleColumns => {
+        .map((needleColumns) => {
             return needleColumns
-                .map(column => {
+                .map((column) => {
                     return `${column} = $${placeholderIndex++}`;
                 })
                 .join(" AND ");
@@ -286,7 +292,13 @@ createTimestampWithTimeZoneTypeParser();
     FROM (
       VALUES
       (
-        ${sql.join([sql.join(["a1", "b1", "c1"], sql`, `), sql.join(["a2", "b2", "c2"], sql`, `)], sql`), (`)}
+        ${sql.join(
+            [
+                sql.join(["a1", "b1", "c1"], sql`, `),
+                sql.join(["a2", "b2", "c2"], sql`, `),
+            ],
+            sql`), (`,
+        )}
       )
     ) foo(a, b, c)
     WHERE foo.b IN (${sql.join(["c1", "a2"], sql`, `)})
@@ -309,13 +321,11 @@ createTimestampWithTimeZoneTypeParser();
   `);
 
     await connection.query(sql`
-      SELECT (${
-        sql.json({
-            nested: {
-                object: { is: { this: "test", other: 12, and: new Date("123") } },
-            },
-        })
-    })
+      SELECT (${sql.json({
+          nested: {
+              object: { is: { this: "test", other: 12, and: new Date("123") } },
+          },
+      })})
   `);
 
     // @ts-expect-error
@@ -323,15 +333,13 @@ createTimestampWithTimeZoneTypeParser();
 
     await connection.query(sql`
       SELECT bar, baz
-      FROM ${
-        sql.unnest(
-            [
-                [1, "foo"],
-                [2, "bar"],
-            ],
-            ["int4", "text"],
-        )
-    } AS foo(bar, baz)
+      FROM ${sql.unnest(
+          [
+              [1, "foo"],
+              [2, "bar"],
+          ],
+          ["int4", "text"],
+      )} AS foo(bar, baz)
   `);
 
     sql`
@@ -343,7 +351,7 @@ createTimestampWithTimeZoneTypeParser();
 //
 // createSQLTag
 // ----------------------------------------------------------------------
-(() => {
+() => {
     let sql: SqlTaggedTemplateType;
 
     sql = createSqlTag();
@@ -361,7 +369,7 @@ createTimestampWithTimeZoneTypeParser();
     });
 
     sql = createSqlTag({});
-});
+};
 
 //
 // ERRORS
@@ -373,9 +381,18 @@ new InvalidConfigurationError();
 new StatementCancelledError(new Error("Foo"));
 new StatementTimeoutError(new Error("Foo"));
 new IntegrityConstraintViolationError(new Error("Foo"), "some-constraint");
-new NotNullIntegrityConstraintViolationError(new Error("Foo"), "some-constraint");
-new ForeignKeyIntegrityConstraintViolationError(new Error("Foo"), "some-constraint");
-new UniqueIntegrityConstraintViolationError(new Error("Foo"), "some-constraint");
+new NotNullIntegrityConstraintViolationError(
+    new Error("Foo"),
+    "some-constraint",
+);
+new ForeignKeyIntegrityConstraintViolationError(
+    new Error("Foo"),
+    "some-constraint",
+);
+new UniqueIntegrityConstraintViolationError(
+    new Error("Foo"),
+    "some-constraint",
+);
 new CheckIntegrityConstraintViolationError(new Error("Foo"), "some-constraint");
 
 const samplesFromDocs = async () => {
@@ -385,15 +402,13 @@ const samplesFromDocs = async () => {
         await connection.query(sql`
       INSERT INTO (foo, bar, baz)
       SELECT *
-      FROM ${
-            sql.unnest(
-                [
-                    [1, 2, 3],
-                    [4, 5, 6],
-                ],
-                ["int4", "int4", "int4"],
-            )
-        }
+      FROM ${sql.unnest(
+          [
+              [1, 2, 3],
+              [4, 5, 6],
+          ],
+          ["int4", "int4", "int4"],
+      )}
     `);
     };
 
@@ -409,21 +424,22 @@ const samplesFromDocs = async () => {
 
     const sample3 = async () => {
         sql`SELECT id FROM foo WHERE id = ANY(${sql.array([1, 2, 3], "int4")})`;
-        sql`SELECT id FROM foo WHERE id != ALL(${sql.array([1, 2, 3], "int4")})`;
+        sql`SELECT id FROM foo WHERE id != ALL(${sql.array(
+            [1, 2, 3],
+            "int4",
+        )})`;
     };
 
     const sample4 = async () => {
         await connection.query(sql`
       SELECT bar, baz
-      FROM ${
-            sql.unnest(
-                [
-                    [1, "foo"],
-                    [2, "bar"],
-                ],
-                ["int4", "text"],
-            )
-        } AS foo(bar, baz)
+      FROM ${sql.unnest(
+          [
+              [1, "foo"],
+              [2, "bar"],
+          ],
+          ["int4", "text"],
+      )} AS foo(bar, baz)
     `);
     };
 

@@ -3,7 +3,10 @@ import * as AWS from "aws-sdk2-types";
 
 declare class AmazonDaxClient {
     constructor(options: AmazonDaxClientOptions);
-    createCluster(params?: object, callback?: (err: any, data: object) => void): AWS.Request<object, any>;
+    createCluster(
+        params?: object,
+        callback?: (err: any, data: object) => void,
+    ): AWS.Request<object, any>;
 }
 
 interface AmazonDaxClientOptions {

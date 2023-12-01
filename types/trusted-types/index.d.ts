@@ -24,7 +24,8 @@ declare global {
 }
 
 // These are the available exports when using the polyfill as npm package (e.g. in nodejs)
-interface InternalTrustedTypePolicyFactory extends lib.TrustedTypePolicyFactory {
+interface InternalTrustedTypePolicyFactory
+    extends lib.TrustedTypePolicyFactory {
     TrustedHTML: typeof lib.TrustedHTML;
     TrustedScript: typeof lib.TrustedScript;
     TrustedScriptURL: typeof lib.TrustedScriptURL;
@@ -50,4 +51,10 @@ declare class TrustedTypeConfig {
     );
 }
 
-export { TrustedTypeConfig, TrustedTypePolicy, TrustedTypePolicyFactory, trustedTypes, TrustedTypesEnforcer };
+export {
+    TrustedTypeConfig,
+    TrustedTypePolicy,
+    TrustedTypePolicyFactory,
+    trustedTypes,
+    TrustedTypesEnforcer,
+};

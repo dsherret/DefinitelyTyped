@@ -82,7 +82,7 @@ parameter.addRule("typeD", /test/, true, "number");
 parameter.addRule("typeD", /test/, true, "string");
 parameter.addRule("typeD", /test/, true, "bool");
 parameter.addRule("typeD", /test/, true, "boolean");
-parameter.addRule("typeD", /test/, true, value => value);
+parameter.addRule("typeD", /test/, true, (value) => value);
 Parameter.addRule("typeE", /test/);
 
 // #addRule(type, check, convertType)

@@ -8,8 +8,8 @@ const D = window.dynmap;
 const WesterosNew = dynmap.worlds.WesterosNew;
 
 if (
-    window.dynmap.worlds.WesterosNew
-    && window.dynmap.worlds.WesterosNew.maps.flat
+    window.dynmap.worlds.WesterosNew &&
+    window.dynmap.worlds.WesterosNew.maps.flat
 ) {
     // $ExpectType void
     window.dynmap.selectWorld(window.dynmap.worlds.WesterosNew, () => {});
@@ -34,4 +34,6 @@ const tileUrl = window.config.url.tiles;
 const isChatEnabled = window.dynmap.options.allowwebchat;
 
 // $ExpectType ComponentConfiguration | undefined
-const chatboxComponent = window.dynmap.options.components?.filter(c => c.type === "chatbox")[0];
+const chatboxComponent = window.dynmap.options.components?.filter(
+    (c) => c.type === "chatbox",
+)[0];

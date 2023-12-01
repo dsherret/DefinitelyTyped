@@ -36,7 +36,9 @@ declare namespace StreamTransport {
     }
 }
 
-declare class StreamTransport implements Transport<StreamTransport.SentMessageInfo> {
+declare class StreamTransport
+    implements Transport<StreamTransport.SentMessageInfo>
+{
     options: StreamTransport.Options;
 
     logger: shared.Logger;
@@ -52,7 +54,10 @@ declare class StreamTransport implements Transport<StreamTransport.SentMessageIn
     /** Compiles a mailcomposer message and forwards it to handler that sends it */
     send(
         mail: MailMessage<StreamTransport.SentMessageInfo>,
-        callback: (err: Error | null, info: StreamTransport.SentMessageInfo) => void,
+        callback: (
+            err: Error | null,
+            info: StreamTransport.SentMessageInfo,
+        ) => void,
     ): void;
 }
 

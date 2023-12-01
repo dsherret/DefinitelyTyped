@@ -2,7 +2,9 @@
 "use strict";
 
 import type conventionalCommitsParser from "conventional-commits-parser";
-import conventionalRecommendedBump, { type Recommendation } from "conventional-recommended-bump";
+import conventionalRecommendedBump, {
+    type Recommendation,
+} from "conventional-recommended-bump";
 
 namespace Module {
     declare const options: conventionalRecommendedBump.Options;

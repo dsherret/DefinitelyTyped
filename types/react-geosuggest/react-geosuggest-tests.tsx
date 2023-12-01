@@ -2,7 +2,10 @@ import * as React from "react";
 import Geosuggest, { Styles, Suggest } from "react-geosuggest";
 
 const fixtures = [
-    { label: "New York", location: new google.maps.LatLng(40.7033127, -73.979681) },
+    {
+        label: "New York",
+        location: new google.maps.LatLng(40.7033127, -73.979681),
+    },
     { label: "Rio", location: new google.maps.LatLng(-22.066452, -42.9232368) },
     { label: "Tokyo", location: new google.maps.LatLng(35.673343, 139.710388) },
 ];
@@ -69,7 +72,7 @@ class ReactGeosuggest extends React.Component {
                     queryDelay={250}
                     minLength={2}
                     radius={20}
-                    ref={el => this.geosuggest = el}
+                    ref={(el) => (this.geosuggest = el)}
                     renderSuggestItem={renderSuggestItem}
                     skipSuggest={skipSuggest}
                     style={styles}
@@ -81,7 +84,9 @@ class ReactGeosuggest extends React.Component {
                 />
 
                 <button onClick={this.geosuggest.focus}>Focus</button>
-                <button onClick={this.geosuggest.update("New Zealand")}>Update</button>
+                <button onClick={this.geosuggest.update("New Zealand")}>
+                    Update
+                </button>
                 <button onClick={this.geosuggest.clear}>Clear</button>
             </div>
         );

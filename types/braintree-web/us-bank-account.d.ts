@@ -64,7 +64,10 @@ export interface USBankAccount {
      *   });
      * });
      */
-    tokenize(options: { mandateText: string; bankDetails: any; bankLogin: any }, callback: callback): void;
+    tokenize(
+        options: { mandateText: string; bankDetails: any; bankLogin: any },
+        callback: callback,
+    ): void;
 
     /**
      * Cleanly tear down anything set up by {@link module:braintree-web/us-bank-account.create|create}.
@@ -73,4 +76,7 @@ export interface USBankAccount {
 }
 
 export function create(options: { client: Client }): Promise<USBankAccount>;
-export function create(options: { client: Client }, callback: callback<USBankAccount>): void;
+export function create(
+    options: { client: Client },
+    callback: callback<USBankAccount>,
+): void;

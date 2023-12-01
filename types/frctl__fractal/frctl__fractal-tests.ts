@@ -106,34 +106,43 @@ fractal.web.set("static.mount", "project-assets");
         description: "Lists components in the project",
     };
 
-    fractal.cli.command("list-components", function(args, done) {
-        const app = this.fractal;
-        for (const item of app.components.flatten()) {
-            this.log(`${item.handle} - ${item.status.label}`);
-        }
-        done();
-    }, config);
+    fractal.cli.command(
+        "list-components",
+        function (args, done) {
+            const app = this.fractal;
+            for (const item of app.components.flatten()) {
+                this.log(`${item.handle} - ${item.status.label}`);
+            }
+            done();
+        },
+        config,
+    );
 }
 
 fractal.cli.exec("list-components");
 
-fractal.cli.command("foo <requiredArg> [optionalArg] [anotherOptionalArg]", (args, done) => {
-    console.log(args.requiredArg);
-    done();
-});
+fractal.cli.command(
+    "foo <requiredArg> [optionalArg] [anotherOptionalArg]",
+    (args, done) => {
+        console.log(args.requiredArg);
+        done();
+    },
+);
 
 {
     const config = {
-        options: [
-            ["-p, --port <number>", "The port to use."],
-        ],
+        options: [["-p, --port <number>", "The port to use."]],
     };
 
-    fractal.cli.command("foo", (args, done) => {
-        // do something
-        console.log(`Something was started on port ${args.options.port}`);
-        done();
-    }, config);
+    fractal.cli.command(
+        "foo",
+        (args, done) => {
+            // do something
+            console.log(`Something was started on port ${args.options.port}`);
+            done();
+        },
+        config,
+    );
 }
 
 // Source: https://fractal.build/guide/integration/build-tools
@@ -171,7 +180,7 @@ import * as gulp from "gulp";
         const server = fractal.web.server({
             sync: true,
         });
-        server.on("error", err => logger.error(err.message));
+        server.on("error", (err) => logger.error(err.message));
         return server.start().then(() => {
             logger.success(`Fractal server is now running at ${server.url}`);
         });
@@ -189,8 +198,10 @@ import * as gulp from "gulp";
 
     gulp.task("fractal:build", () => {
         const builder = fractal.web.builder();
-        builder.on("progress", (completed, total) => logger.update(`Exported ${completed} of ${total} items`, "info"));
-        builder.on("error", err => logger.error(err.message));
+        builder.on("progress", (completed, total) =>
+            logger.update(`Exported ${completed} of ${total} items`, "info"),
+        );
+        builder.on("error", (err) => logger.error(err.message));
         return builder.build().then(() => {
             logger.success("Fractal build completed!");
         });

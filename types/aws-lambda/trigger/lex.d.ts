@@ -44,7 +44,13 @@ export interface LexSlotResolution {
 
 export interface LexSlotDetail {
     // "at least 1 but no more than 5 items"
-    resolutions: [LexSlotResolution, LexSlotResolution?, LexSlotResolution?, LexSlotResolution?, LexSlotResolution?];
+    resolutions: [
+        LexSlotResolution,
+        LexSlotResolution?,
+        LexSlotResolution?,
+        LexSlotResolution?,
+        LexSlotResolution?,
+    ];
     originalValue: string;
 }
 
@@ -67,16 +73,16 @@ export interface LexDialogActionBase {
     type: "Close" | "ElicitIntent" | "ElicitSlot" | "ConfirmIntent";
     message?:
         | {
-            contentType: "PlainText" | "SSML" | "CustomPayload";
-            content: string;
-        }
+              contentType: "PlainText" | "SSML" | "CustomPayload";
+              content: string;
+          }
         | undefined;
     responseCard?:
         | {
-            version: number;
-            contentType: "application/vnd.amazonaws.card.generic";
-            genericAttachments: LexGenericAttachment[];
-        }
+              version: number;
+              contentType: "application/vnd.amazonaws.card.generic";
+              genericAttachments: LexGenericAttachment[];
+          }
         | undefined;
 }
 

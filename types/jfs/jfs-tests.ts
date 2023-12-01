@@ -36,7 +36,7 @@ db.all((err, objs) => {
 const objs = db.allSync();
 
 // delete by ID
-db.delete("foo", err => {
+db.delete("foo", (err) => {
     // the file data/myId.json was removed
 });
 

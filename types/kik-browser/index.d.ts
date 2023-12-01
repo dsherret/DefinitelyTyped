@@ -14,11 +14,20 @@ interface Kik {
     linkData: string;
     getUser(callback: (user: KikUser) => void): void;
     getAnonymousUser(callback: (token: string) => void): void;
-    sign(data: string, callback: (signedData: string, username: string, host: string) => void): void;
-    anonymousSign(data: string, callback: (signedData: string, anonToken: string, host: string) => void): void;
+    sign(
+        data: string,
+        callback: (signedData: string, username: string, host: string) => void,
+    ): void;
+    anonymousSign(
+        data: string,
+        callback: (signedData: string, anonToken: string, host: string) => void,
+    ): void;
     openConversation(username: string): void;
     showProfile(username: string): void;
-    pickUsers(options: KikPickUsersOptions, callback: (users: KikUser[]) => void): void;
+    pickUsers(
+        options: KikPickUsersOptions,
+        callback: (users: KikUser[]) => void,
+    ): void;
     pickUsers(callback: (users: KikUser[]) => void): void;
 
     formHelpers: {
@@ -29,15 +38,25 @@ interface Kik {
 
     metrics: {
         enableGoogleAnalytics(): void;
-        enableGoogleAnalytics(trackingId: string, domain: string, oldApi?: boolean): void;
+        enableGoogleAnalytics(
+            trackingId: string,
+            domain: string,
+            oldApi?: boolean,
+        ): void;
     };
 
     photo: {
         get(options: KikGetOptions, callback: (photos: string[]) => void): void;
         getFromCamera(callbacks: KikGetFromCameraCallbacks): void;
-        getFromCamera(options: KikGetFromCameraOptions, callbacks: KikGetFromCameraCallbacks): void;
+        getFromCamera(
+            options: KikGetFromCameraOptions,
+            callbacks: KikGetFromCameraCallbacks,
+        ): void;
         getFromGallery(callback: (photos: string[]) => void): void;
-        getFromGallery(options: KikGetOptions, callback: (photos: string[]) => void): void;
+        getFromGallery(
+            options: KikGetOptions,
+            callback: (photos: string[]) => void,
+        ): void;
         saveToGallery(url: string, callback: (status: boolean) => void): void;
         get(callback: (photos: string[]) => void): void;
     };

@@ -2,26 +2,42 @@
 
 declare namespace PDFKit {
     interface PDFGradient {
-        new(document: any): PDFGradient;
-        stop(pos: number, color?: string | PDFKit.PDFGradient, opacity?: number): PDFGradient;
+        new (document: any): PDFGradient;
+        stop(
+            pos: number,
+            color?: string | PDFKit.PDFGradient,
+            opacity?: number,
+        ): PDFGradient;
         embed(): void;
         apply(): void;
     }
 
     interface PDFLinearGradient extends PDFGradient {
-        new(document: any, x1: number, y1: number, x2: number, y2: number): PDFLinearGradient;
+        new (
+            document: any,
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+        ): PDFLinearGradient;
         shader(fn: () => any): any;
         opacityGradient(): PDFLinearGradient;
     }
 
     interface PDFRadialGradient extends PDFGradient {
-        new(document: any, x1: number, y1: number, x2: number, y2: number): PDFRadialGradient;
+        new (
+            document: any,
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+        ): PDFRadialGradient;
         shader(fn: () => any): any;
         opacityGradient(): PDFRadialGradient;
     }
 
     interface PDFTilingPattern {
-        new(
+        new (
             document: any,
             bbox: PDFKit.Mixins.BoundingBox,
             xStep: number,
@@ -32,7 +48,10 @@ declare namespace PDFKit {
         embedPatternColorSpaces(): void;
         getPatternColorSpaceId(underlyingColorspace: string): string;
         embed(): void;
-        apply(stroke: boolean, patternColor: PDFKit.Mixins.TilingPatternColorValue): PDFKit.PDFDocument;
+        apply(
+            stroke: boolean,
+            patternColor: PDFKit.Mixins.TilingPatternColorValue,
+        ): PDFKit.PDFDocument;
     }
 }
 
@@ -55,17 +74,87 @@ declare namespace PDFKit.Mixins {
     }
 
     interface PDFAnnotation {
-        annotate(x: number, y: number, w: number, h: number, option: AnnotationOption): this;
-        note(x: number, y: number, w: number, h: number, content: string, option?: AnnotationOption): this;
-        goTo(x: number, y: number, w: number, h: number, name: string, options?: AnnotationOption): this;
-        link(x: number, y: number, w: number, h: number, url: string, option?: AnnotationOption): this;
-        highlight(x: number, y: number, w: number, h: number, option?: AnnotationOption): this;
-        underline(x: number, y: number, w: number, h: number, option?: AnnotationOption): this;
-        strike(x: number, y: number, w: number, h: number, option?: AnnotationOption): this;
-        lineAnnotation(x1: number, y1: number, x2: number, y2: number, option?: AnnotationOption): this;
-        rectAnnotation(x: number, y: number, w: number, h: number, option?: AnnotationOption): this;
-        ellipseAnnotation(x: number, y: number, w: number, h: number, option?: AnnotationOption): this;
-        textAnnotation(x: number, y: number, w: number, h: number, text: string, option?: AnnotationOption): this;
+        annotate(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            option: AnnotationOption,
+        ): this;
+        note(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            content: string,
+            option?: AnnotationOption,
+        ): this;
+        goTo(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            name: string,
+            options?: AnnotationOption,
+        ): this;
+        link(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            url: string,
+            option?: AnnotationOption,
+        ): this;
+        highlight(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            option?: AnnotationOption,
+        ): this;
+        underline(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            option?: AnnotationOption,
+        ): this;
+        strike(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            option?: AnnotationOption,
+        ): this;
+        lineAnnotation(
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+            option?: AnnotationOption,
+        ): this;
+        rectAnnotation(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            option?: AnnotationOption,
+        ): this;
+        ellipseAnnotation(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            option?: AnnotationOption,
+        ): this;
+        textAnnotation(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            text: string,
+            option?: AnnotationOption,
+        ): this;
     }
 
     interface PDFAttachmentOptions {
@@ -81,21 +170,28 @@ declare namespace PDFKit.Mixins {
         /**
          * Embed content of `src` in PDF
          */
-        file(src: Buffer | ArrayBuffer | string, options?: PDFAttachmentOptions): this;
+        file(
+            src: Buffer | ArrayBuffer | string,
+            options?: PDFAttachmentOptions,
+        ): this;
     }
 
     // The color forms accepted by PDFKit:
     //     example:   "red"                  [R, G, B]                  [C, M, Y, K]
-    type ColorValue = string | PDFGradient | [PDFTilingPattern, TilingPatternColorValue] | [number, number, number] | [
-        number,
-        number,
-        number,
-        number,
-    ];
+    type ColorValue =
+        | string
+        | PDFGradient
+        | [PDFTilingPattern, TilingPatternColorValue]
+        | [number, number, number]
+        | [number, number, number, number];
 
     // The color forms accepted by PDFKit Tiling Pattern:
     //     example:   "red"                  [R, G, B]                  [C, M, Y, K]
-    type TilingPatternColorValue = string | PDFGradient | [number, number, number] | [number, number, number, number];
+    type TilingPatternColorValue =
+        | string
+        | PDFGradient
+        | [number, number, number]
+        | [number, number, number, number];
 
     // The winding / filling rule accepted by PDFKit:
     type RuleValue = "even-odd" | "evenodd" | "non-zero" | "nonzero";
@@ -350,9 +446,26 @@ declare namespace PDFKit.Mixins {
         opacity(opacity: number): this;
         fillOpacity(opacity: number): this;
         strokeOpacity(opacity: number): this;
-        linearGradient(x1: number, y1: number, x2: number, y2: number): PDFLinearGradient;
-        radialGradient(x1: number, y1: number, r1: number, x2: number, y2: number, r2: number): PDFRadialGradient;
-        pattern(bbox: BoundingBox, xStep: number, yStep: number, stream: string): PDFTilingPattern;
+        linearGradient(
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+        ): PDFLinearGradient;
+        radialGradient(
+            x1: number,
+            y1: number,
+            r1: number,
+            x2: number,
+            y2: number,
+            r2: number,
+        ): PDFRadialGradient;
+        pattern(
+            bbox: BoundingBox,
+            xStep: number,
+            yStep: number,
+            stream: string,
+        ): PDFTilingPattern;
     }
 
     type PDFFontSource = string | Buffer | Uint8Array | ArrayBuffer;
@@ -394,7 +507,12 @@ declare namespace PDFKit.Mixins {
          *
          * Warning: If string 'src' is provided, the file will be loaded synchronously using `fs.readFileSync(src)`!
          */
-        image(src: ImageSrc, x?: number, y?: number, options?: ImageOption): this;
+        image(
+            src: ImageSrc,
+            x?: number,
+            y?: number,
+            options?: ImageOption,
+        ): this;
         image(src: ImageSrc, options?: ImageOption): this;
     }
 
@@ -478,7 +596,12 @@ declare namespace PDFKit.Mixins {
         text(text: string, options?: TextOptions): this;
         widthOfString(text: string, options?: TextOptions): number;
         heightOfString(text: string, options?: TextOptions): number;
-        list(list: Array<string | any>, x?: number, y?: number, options?: TextOptions): this;
+        list(
+            list: Array<string | any>,
+            x?: number,
+            y?: number,
+            options?: TextOptions,
+        ): this;
         list(list: Array<string | any>, options?: TextOptions): this;
     }
 
@@ -494,10 +617,23 @@ declare namespace PDFKit.Mixins {
         undash(): this;
         moveTo(x: number, y: number): this;
         lineTo(x: number, y: number): this;
-        bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): this;
+        bezierCurveTo(
+            cp1x: number,
+            cp1y: number,
+            cp2x: number,
+            cp2y: number,
+            x: number,
+            y: number,
+        ): this;
         quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): this;
         rect(x: number, y: number, w: number, h: number): this;
-        roundedRect(x: number, y: number, w: number, h: number, r?: number): this;
+        roundedRect(
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            r?: number,
+        ): this;
         ellipse(x: number, y: number, r1: number, r2?: number): this;
         circle(x: number, y: number, radius: number): this;
         polygon(...points: number[][]): this;
@@ -505,14 +641,32 @@ declare namespace PDFKit.Mixins {
         fill(color?: ColorValue, rule?: RuleValue): this;
         fill(rule: RuleValue): this;
         stroke(color?: ColorValue): this;
-        fillAndStroke(fillColor?: ColorValue, strokeColor?: ColorValue, rule?: RuleValue): this;
+        fillAndStroke(
+            fillColor?: ColorValue,
+            strokeColor?: ColorValue,
+            rule?: RuleValue,
+        ): this;
         fillAndStroke(fillColor: ColorValue, rule?: RuleValue): this;
         fillAndStroke(rule: RuleValue): this;
         clip(rule?: RuleValue): this;
-        transform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): this;
+        transform(
+            m11: number,
+            m12: number,
+            m21: number,
+            m22: number,
+            dx: number,
+            dy: number,
+        ): this;
         translate(x: number, y: number): this;
-        rotate(angle: number, options?: { origin?: number[] | undefined }): this;
-        scale(xFactor: number, yFactor?: number, options?: { origin?: number[] | undefined }): this;
+        rotate(
+            angle: number,
+            options?: { origin?: number[] | undefined },
+        ): this;
+        scale(
+            xFactor: number,
+            yFactor?: number,
+            options?: { origin?: number[] | undefined },
+        ): this;
     }
 
     interface PDFAcroForm {
@@ -542,14 +696,64 @@ declare namespace PDFKit.Mixins {
          * @param name - form field name (T attribute of widget annotation
          * dictionary)
          */
-        formAnnotation(name: string, type: string, x: number, y: number, w: number, h: number, options?: object): this;
+        formAnnotation(
+            name: string,
+            type: string,
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            options?: object,
+        ): this;
 
-        formText(name: string, x: number, y: number, w: number, h: number, options?: object): this;
-        formPushButton(name: string, x: number, y: number, w: number, h: number, options?: object): this;
-        formCombo(name: string, x: number, y: number, w: number, h: number, options?: object): this;
-        formList(name: string, x: number, y: number, w: number, h: number, options?: object): this;
-        formRadioButton(name: string, x: number, y: number, w: number, h: number, options?: object): this;
-        formCheckbox(name: string, x: number, y: number, w: number, h: number, options?: object): this;
+        formText(
+            name: string,
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            options?: object,
+        ): this;
+        formPushButton(
+            name: string,
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            options?: object,
+        ): this;
+        formCombo(
+            name: string,
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            options?: object,
+        ): this;
+        formList(
+            name: string,
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            options?: object,
+        ): this;
+        formRadioButton(
+            name: string,
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            options?: object,
+        ): this;
+        formCheckbox(
+            name: string,
+            x: number,
+            y: number,
+            w: number,
+            h: number,
+            options?: object,
+        ): this;
     }
 
     interface PDFMarking {
@@ -564,7 +768,10 @@ declare namespace PDFKit.Mixins {
         initMarkings(options?: { tagged?: boolean }): void;
         initPageMarkings(pageMarkings: PageMarking[]): void;
         endPageMarkings(page: PDFPage): PageMarking[];
-        markStructureContent(tag: string, options?: MarkingOptions): PDFStructureContent;
+        markStructureContent(
+            tag: string,
+            options?: MarkingOptions,
+        ): PDFStructureContent;
         getMarkingsDictionary(): PDFKitReference;
         getStructTreeRoot(): PDFKitReference;
         createStructParentTreeNextKey(): number;
@@ -600,7 +807,10 @@ declare namespace PDFKit.Mixins {
         endMetadata(): void;
     }
 
-    type PDFSubsets = `PDF/A-1${"" | "a" | "b"}` | `PDF/A-2${"" | "a" | "b"}` | `PDF/A-3${"" | "a" | "b"}`;
+    type PDFSubsets =
+        | `PDF/A-1${"" | "a" | "b"}`
+        | `PDF/A-2${"" | "a" | "b"}`
+        | `PDF/A-3${"" | "a" | "b"}`;
     interface PDFSubset {
         // TODO: Add more types if needed. I do not understand this enought...
         initSubset(options: { subset: PDFSubsets }): void;
@@ -613,7 +823,7 @@ declare namespace PDFKit {
      * PDFKit data
      */
     interface PDFData {
-        new(data: any[]): PDFData;
+        new (data: any[]): PDFData;
         readByte(): any;
         writeByte(byte: any): void;
         byteAt(index: number): any;
@@ -675,11 +885,20 @@ declare namespace PDFKit {
         userPassword?: string | undefined;
         ownerPassword?: string | undefined;
         permissions?: DocumentPermissions | undefined;
-        pdfVersion?: "1.3" | "1.4" | "1.5" | "1.6" | "1.7" | "1.7ext3" | undefined;
+        pdfVersion?:
+            | "1.3"
+            | "1.4"
+            | "1.5"
+            | "1.6"
+            | "1.7"
+            | "1.7ext3"
+            | undefined;
         autoFirstPage?: boolean | undefined;
         size?: number[] | string | undefined;
         margin?: number | undefined;
-        margins?: { top: number; left: number; bottom: number; right: number } | undefined;
+        margins?:
+            | { top: number; left: number; bottom: number; right: number }
+            | undefined;
         layout?: "portrait" | "landscape" | undefined;
         font?: string | undefined;
 
@@ -691,8 +910,7 @@ declare namespace PDFKit {
     }
 
     interface PDFDocument
-        extends
-            NodeJS.ReadableStream,
+        extends NodeJS.ReadableStream,
             Mixins.PDFMetadata,
             Mixins.PDFAnnotation,
             Mixins.PDFColor,
@@ -704,8 +922,7 @@ declare namespace PDFKit {
             Mixins.PDFMarking,
             Mixins.PDFAttachment,
             Mixins.PDFMetadata,
-            Mixins.PDFSubset
-    {
+            Mixins.PDFSubset {
         /**
          * PDF Version
          */
@@ -730,7 +947,7 @@ declare namespace PDFKit {
         x: number;
         y: number;
 
-        new(options?: PDFDocumentOptions): PDFDocument;
+        new (options?: PDFDocumentOptions): PDFDocument;
 
         addPage(options?: PDFDocumentOptions): PDFDocument;
         bufferedPageRange(): { start: number; count: number };
@@ -819,7 +1036,13 @@ declare namespace PDFKit {
         compress: boolean;
         uncompressedLength: number;
         chunks: any[];
-        data: { Font?: any; XObject?: any; ExtGState?: any; Pattern: any; Annots: any };
+        data: {
+            Font?: any;
+            XObject?: any;
+            ExtGState?: any;
+            Pattern: any;
+            Annots: any;
+        };
         document: PDFDocument;
 
         constructor(document: PDFDocument, id: number, data: {});
@@ -860,7 +1083,13 @@ declare namespace PDFKit {
         constructor(
             document: PDFDocument,
             type: string,
-            options?: { title?: string; lang?: string; alt?: string; expanded?: string; actual?: string },
+            options?: {
+                title?: string;
+                lang?: string;
+                alt?: string;
+                expanded?: string;
+                actual?: string;
+            },
             children?: PDFStructureElementChild | PDFStructureElementChild[],
         );
         constructor(

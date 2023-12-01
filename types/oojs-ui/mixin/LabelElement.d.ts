@@ -103,7 +103,9 @@ declare namespace OO.ui.mixin {
              *  returns nodes or text; or null for no label
              * @return The element, for chaining
              */
-            setLabel(label: Deferrable<string> | JQuery | HtmlSnippet | null): this;
+            setLabel(
+                label: Deferrable<string> | JQuery | HtmlSnippet | null,
+            ): this;
 
             /**
              * Set whether the label should be visually hidden (but still accessible to screen-readers).
@@ -142,7 +144,7 @@ declare namespace OO.ui.mixin {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): LabelElement;
+            new (config?: ConfigOptions): LabelElement;
             prototype: Prototype;
             static: Static;
         }

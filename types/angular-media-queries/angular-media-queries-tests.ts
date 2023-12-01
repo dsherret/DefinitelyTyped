@@ -2,7 +2,11 @@ var myApp = angular.module("testModule", ["matchMedia"]);
 
 myApp.controller(
     "TestController",
-    ($log: angular.ILogService, $scope: angular.IScope, screenSize: angular.matchmedia.IScreenSize) => {
+    (
+        $log: angular.ILogService,
+        $scope: angular.IScope,
+        screenSize: angular.matchmedia.IScreenSize,
+    ) => {
         var fnCallback = (result: boolean) => {
             $log.info(`Result: ${result}`);
         };

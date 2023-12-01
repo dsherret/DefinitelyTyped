@@ -12,7 +12,11 @@ declare namespace PkgInfo {
     }
 
     interface PkgInfo {
-        (pmodule: NodeModule, options?: Options | string[] | string, ...properties: string[]): PkgInfo;
+        (
+            pmodule: NodeModule,
+            options?: Options | string[] | string,
+            ...properties: string[]
+        ): PkgInfo;
 
         //
         // ### function find (dir)
@@ -21,15 +25,9 @@ declare namespace PkgInfo {
         // Searches up the directory tree from `dir` until it finds a directory
         // which contains a `package.json` file.
         //
-        read(
-            pmodule: NodeModule,
-            dir?: string,
-        ): FindResults;
+        read(pmodule: NodeModule, dir?: string): FindResults;
 
-        find(
-            pmodule: NodeModule,
-            dir?: string,
-        ): Record<string, any>;
+        find(pmodule: NodeModule, dir?: string): Record<string, any>;
     }
 }
 

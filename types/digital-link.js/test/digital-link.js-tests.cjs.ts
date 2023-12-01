@@ -53,7 +53,9 @@ const dl4 = DigitalLink()
     .setAttribute("thngId", "UMwxDXBdUbxgtyRaR2HBrc4r");
 
 // $ExpectType DigitalLink
-const dl5 = DigitalLink("https://dlnkd.tn.gg/01/00860080001300/10/12345/21/43786");
+const dl5 = DigitalLink(
+    "https://dlnkd.tn.gg/01/00860080001300/10/12345/21/43786",
+);
 
 const uri = dl5.toWebUriString(); // $ExpectType string
 const jsonString = dl5.toJsonString(); // $ExpectType string
@@ -67,7 +69,11 @@ const compressedUriFromUtils = Utils.compressWebUri(uri); // $ExpectType string
 // Compress without optimisations or compressing other key-value pairs
 const useOptimisations = false;
 const compressOtherKeyValuePairs = false;
-const semiCompressedUri = Utils.compressWebUri(uri, useOptimisations, compressOtherKeyValuePairs); // $ExpectType string
+const semiCompressedUri = Utils.compressWebUri(
+    uri,
+    useOptimisations,
+    compressOtherKeyValuePairs,
+); // $ExpectType string
 
 // Decompress a compressed URI
 const decompressedUri = Utils.decompressWebUri(compressedUri); // $ExpectType string

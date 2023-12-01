@@ -11,7 +11,10 @@ export interface IotCallbackData {
     payload: Buffer | Blob | string | ArrayLike<any>;
 }
 
-export type IotCallback = (error: Error | null, data: IotCallbackData | null) => void;
+export type IotCallback = (
+    error: Error | null,
+    data: IotCallbackData | null,
+) => void;
 
 export class IotData {
     constructor();

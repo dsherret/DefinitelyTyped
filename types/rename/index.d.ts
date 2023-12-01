@@ -1,6 +1,9 @@
 export = rename;
 
-declare function rename(filepath: string | rename.FileObject, transformer: rename.Transformer): rename.FilePath;
+declare function rename(
+    filepath: string | rename.FileObject,
+    transformer: rename.Transformer,
+): rename.FilePath;
 
 declare namespace rename {
     interface FileObject {
@@ -21,13 +24,9 @@ declare namespace rename {
         extname?: string | undefined;
     }
 
-    type FilePath =
-        | string
-        | Specification;
+    type FilePath = string | Specification;
 
-    type Transformer =
-        | ((spec: FileObject) => FilePath)
-        | FilePath;
+    type Transformer = ((spec: FileObject) => FilePath) | FilePath;
 
     interface ParsedFileObject {
         dirname: string;
@@ -36,7 +35,9 @@ declare namespace rename {
         origin: string;
     }
 
-    function parse(filename: string | Partial<ParsedFileObject>): ParsedFileObject;
+    function parse(
+        filename: string | Partial<ParsedFileObject>,
+    ): ParsedFileObject;
 
     function stringify(obj: FileObject): string;
 }

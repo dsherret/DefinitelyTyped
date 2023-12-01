@@ -13,13 +13,13 @@ const choices = ["choice1", "choice2", "choice3", "xyz"];
 
 const search = (input: string | undefined, list: string[]) => {
     if (input === undefined) {
-        return new Promise<string[]>(resolve => resolve(list));
+        return new Promise<string[]>((resolve) => resolve(list));
     }
 
     const matches = list
-        .map(item => (item.includes(input) ? item : undefined))
+        .map((item) => (item.includes(input) ? item : undefined))
         .filter((item): item is string => !!item);
-    return new Promise<string[]>(resolve => resolve(matches));
+    return new Promise<string[]>((resolve) => resolve(matches));
 };
 
 inquirer.prompt([
@@ -27,6 +27,7 @@ inquirer.prompt([
         type: "autocomplete",
         name: "test autocomplete",
         message: "Test question",
-        source: (answersSoFar: Answers, input: string | undefined) => search(input, choices),
+        source: (answersSoFar: Answers, input: string | undefined) =>
+            search(input, choices),
     },
 ]);

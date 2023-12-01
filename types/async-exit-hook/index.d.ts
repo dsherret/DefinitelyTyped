@@ -53,7 +53,11 @@ declare namespace AsyncExitHook {
      * @param code The exit code emitted to listen to (`process.emit(event, code)`).
      * @param filter A custom filter function which takes all parameters passed to `process.emit` excluding the event name (`process.emit(event, *parameters*)`).
      */
-    function hookEvent(event: string | symbol, code: number, filter?: EventFilterFunction): void;
+    function hookEvent(
+        event: string | symbol,
+        code: number,
+        filter?: EventFilterFunction,
+    ): void;
 
     /**
      * Overwrites the internal asynchronous hook method timeout time.

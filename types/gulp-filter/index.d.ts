@@ -19,6 +19,9 @@ declare namespace filter {
     }
 }
 
-declare function filter(pattern: string | string[] | filter.FileFunction, options?: filter.Options): filter.Filter;
+declare function filter(
+    pattern: string | string[] | filter.FileFunction,
+    options?: filter.Options,
+): filter.Filter;
 
 export = filter;

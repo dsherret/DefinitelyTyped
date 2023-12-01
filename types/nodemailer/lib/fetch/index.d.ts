@@ -33,6 +33,9 @@ declare namespace fetch {
     }
 }
 
-declare function fetch(url: string, options?: fetch.Options): fetch.WritableResponse;
+declare function fetch(
+    url: string,
+    options?: fetch.Options,
+): fetch.WritableResponse;
 
 export = fetch;

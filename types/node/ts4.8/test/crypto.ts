@@ -10,13 +10,22 @@ import { promisify } from "node:util";
 
 {
     // crypto_hash_string_test
-    let hashResult: string = crypto.createHash("md5").update("world").digest("hex");
-    hashResult = crypto.createHash("shake256", { outputLength: 16 }).update("world").digest("hex");
+    let hashResult: string = crypto
+        .createHash("md5")
+        .update("world")
+        .digest("hex");
+    hashResult = crypto
+        .createHash("shake256", { outputLength: 16 })
+        .update("world")
+        .digest("hex");
 }
 
 {
     // crypto_hash_buffer_test
-    const hashResult: string = crypto.createHash("md5").update(new Buffer("world")).digest("hex");
+    const hashResult: string = crypto
+        .createHash("md5")
+        .update(new Buffer("world"))
+        .digest("hex");
 }
 
 {
@@ -37,12 +46,18 @@ import { promisify } from "node:util";
 
 {
     // crypto_hmac_string_test
-    const hmacResult: string = crypto.createHmac("md5", "hello").update("world").digest("hex");
+    const hmacResult: string = crypto
+        .createHmac("md5", "hello")
+        .update("world")
+        .digest("hex");
 }
 
 {
     // crypto_hmac_buffer_test
-    const hmacResult: string = crypto.createHmac("md5", "hello").update(new Buffer("world")).digest("hex");
+    const hmacResult: string = crypto
+        .createHmac("md5", "hello")
+        .update(new Buffer("world"))
+        .digest("hex");
 }
 
 {
@@ -63,9 +78,11 @@ import { promisify } from "node:util";
 
 {
     let hmac: crypto.Hmac;
-    (hmac = crypto.createHmac("md5", "hello")).end("world", "utf8", () => {
-        const hash: Buffer | string = hmac.read();
-    }).end();
+    (hmac = crypto.createHmac("md5", "hello"))
+        .end("world", "utf8", () => {
+            const hash: Buffer | string = hmac.read();
+        })
+        .end();
 }
 
 {
@@ -82,7 +99,9 @@ import { promisify } from "node:util";
 
 {
     // crypto_cipher_decipher_string_test
-    const key: Buffer = new Buffer([1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7]);
+    const key: Buffer = new Buffer([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+    ]);
     const clearText = "This is the clear text.";
     const cipher: crypto.Cipher = crypto.createCipher("aes-128-ecb", key);
     let cipherText: string = cipher.update(clearText, "utf8", "hex");
@@ -97,8 +116,12 @@ import { promisify } from "node:util";
 
 {
     // crypto_cipher_decipher_buffer_test
-    const key: Buffer = new Buffer([1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7]);
-    const clearText: Buffer = new Buffer([1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4]);
+    const key: Buffer = new Buffer([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+    ]);
+    const clearText: Buffer = new Buffer([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4,
+    ]);
     const cipher: crypto.Cipher = crypto.createCipher("aes-128-ecb", key);
     const cipherBuffers: Buffer[] = [];
     cipherBuffers.push(cipher.update(clearText));
@@ -118,14 +141,20 @@ import { promisify } from "node:util";
 
 {
     // crypto_cipher_decipher_dataview_test
-    const key: Buffer = new Buffer([1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7]);
-    const clearText: DataView = new DataView(new Buffer([1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4]).buffer);
+    const key: Buffer = new Buffer([
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 1, 2, 3, 4, 5, 6, 7,
+    ]);
+    const clearText: DataView = new DataView(
+        new Buffer([1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4]).buffer,
+    );
     const cipher: crypto.Cipher = crypto.createCipher("aes-128-ecb", key);
     const cipherBuffers: Buffer[] = [];
     cipherBuffers.push(cipher.update(clearText));
     cipherBuffers.push(cipher.final());
 
-    const cipherText: DataView = new DataView(Buffer.concat(cipherBuffers).buffer);
+    const cipherText: DataView = new DataView(
+        Buffer.concat(cipherBuffers).buffer,
+    );
 
     const decipher: crypto.Decipher = crypto.createDecipher("aes-128-ecb", key);
     const decipherBuffers: Buffer[] = [];
@@ -161,7 +190,11 @@ import { promisify } from "node:util";
     decipher.setAAD(aad, {
         plaintextLength: ciphertext.length,
     });
-    const receivedPlaintext: string = decipher.update(ciphertext, undefined, "utf8");
+    const receivedPlaintext: string = decipher.update(
+        ciphertext,
+        undefined,
+        "utf8",
+    );
     decipher.final();
 }
 
@@ -185,7 +218,11 @@ import { promisify } from "node:util";
     decipher.setAAD(aad, {
         plaintextLength: ciphertext.length,
     });
-    const receivedPlaintext: string = decipher.update(ciphertext, undefined, "utf8");
+    const receivedPlaintext: string = decipher.update(
+        ciphertext,
+        undefined,
+        "utf8",
+    );
     decipher.final();
 }
 
@@ -195,7 +232,9 @@ import { promisify } from "node:util";
     const iv = crypto.randomBytes(12);
     const aad = Buffer.from("0123456789", "hex");
 
-    const cipher = crypto.createCipheriv("aes-192-ocb", key, iv, { authTagLength: 16 });
+    const cipher = crypto.createCipheriv("aes-192-ocb", key, iv, {
+        authTagLength: 16,
+    });
     const plaintext = "Hello world";
     cipher.setAAD(aad, {
         plaintextLength: Buffer.byteLength(plaintext),
@@ -206,7 +245,9 @@ import { promisify } from "node:util";
     ]);
     const tag = cipher.getAuthTag();
 
-    const decipher = crypto.createDecipheriv("aes-192-ocb", key, iv, { authTagLength: 16 });
+    const decipher = crypto.createDecipheriv("aes-192-ocb", key, iv, {
+        authTagLength: 16,
+    });
     decipher.setAuthTag(tag);
     decipher.setAAD(aad, {
         plaintextLength: ciphertext.length,
@@ -302,7 +343,18 @@ import { promisify } from "node:util";
     // crypto_timingsafeequal_safe_int8array_variant_test
     const arr1: Int8Array = Int8Array.of(1, 2, 3, 4, 5, ~0, ~1, ~2, ~3, ~4);
     const arr2: Uint8Array = Uint8Array.of(1, 2, 3, 4, 5, ~0, ~1, ~2, ~3, ~4);
-    const arr3: Uint8ClampedArray = Uint8ClampedArray.of(1, 2, 3, 4, 5, ~0, ~1, ~2, ~3, ~4);
+    const arr3: Uint8ClampedArray = Uint8ClampedArray.of(
+        1,
+        2,
+        3,
+        4,
+        5,
+        ~0,
+        ~1,
+        ~2,
+        ~3,
+        ~4,
+    );
 
     assert(crypto.timingSafeEqual(arr1, arr2)); // binary same
     assert(!crypto.timingSafeEqual(arr1, arr3)); // binary differ
@@ -334,10 +386,26 @@ import { promisify } from "node:util";
     const dv2B: Int8Array = Int8Array.of(1, 2, 3, 4, 5);
     const dv3B: Buffer = Buffer.of(5, 4, 3, 2, 1);
     const dv4B: Uint8ClampedArray = Uint8ClampedArray.of(5, 4, 3, 2, 1);
-    const dv1: DataView = new DataView(dv1B.buffer, dv1B.byteOffset, dv1B.byteLength);
-    const dv2: DataView = new DataView(dv2B.buffer, dv2B.byteOffset, dv2B.byteLength);
-    const dv3: DataView = new DataView(dv3B.buffer, dv3B.byteOffset, dv3B.byteLength);
-    const dv4: DataView = new DataView(dv4B.buffer, dv4B.byteOffset, dv4B.byteLength);
+    const dv1: DataView = new DataView(
+        dv1B.buffer,
+        dv1B.byteOffset,
+        dv1B.byteLength,
+    );
+    const dv2: DataView = new DataView(
+        dv2B.buffer,
+        dv2B.byteOffset,
+        dv2B.byteLength,
+    );
+    const dv3: DataView = new DataView(
+        dv3B.buffer,
+        dv3B.byteOffset,
+        dv3B.byteLength,
+    );
+    const dv4: DataView = new DataView(
+        dv4B.buffer,
+        dv4B.byteOffset,
+        dv4B.byteLength,
+    );
 
     assert(crypto.timingSafeEqual(dv1, dv2));
     assert(crypto.timingSafeEqual(dv1, dv1B));
@@ -369,7 +437,12 @@ import { promisify } from "node:util";
 
     crypto.randomFill(buffer, (err: Error | null, buf: Buffer) => void {});
     crypto.randomFill(buffer, 2, (err: Error | null, buf: Buffer) => void {});
-    crypto.randomFill(buffer, 2, 3, (err: Error | null, buf: Buffer) => void {});
+    crypto.randomFill(
+        buffer,
+        2,
+        3,
+        (err: Error | null, buf: Buffer) => void {},
+    );
 
     // crypto_randomfill_uint8array_test
     const ui8arr: Uint8Array = new Uint8Array(10);
@@ -378,8 +451,17 @@ import { promisify } from "node:util";
     crypto.randomFillSync(ui8arr, 2, 3);
 
     crypto.randomFill(ui8arr, (err: Error | null, buf: Uint8Array) => void {});
-    crypto.randomFill(ui8arr, 2, (err: Error | null, buf: Uint8Array) => void {});
-    crypto.randomFill(ui8arr, 2, 3, (err: Error | null, buf: Uint8Array) => void {});
+    crypto.randomFill(
+        ui8arr,
+        2,
+        (err: Error | null, buf: Uint8Array) => void {},
+    );
+    crypto.randomFill(
+        ui8arr,
+        2,
+        3,
+        (err: Error | null, buf: Uint8Array) => void {},
+    );
 
     // crypto_randomfill_int32array_test
     const i32arr: Int32Array = new Int32Array(10);
@@ -388,23 +470,49 @@ import { promisify } from "node:util";
     crypto.randomFillSync(i32arr, 2, 3);
 
     crypto.randomFill(i32arr, (err: Error | null, buf: Int32Array) => void {});
-    crypto.randomFill(i32arr, 2, (err: Error | null, buf: Int32Array) => void {});
-    crypto.randomFill(i32arr, 2, 3, (err: Error | null, buf: Int32Array) => void {});
+    crypto.randomFill(
+        i32arr,
+        2,
+        (err: Error | null, buf: Int32Array) => void {},
+    );
+    crypto.randomFill(
+        i32arr,
+        2,
+        3,
+        (err: Error | null, buf: Int32Array) => void {},
+    );
 }
 
 {
     // scrypt
     const pwd: string | Buffer | Int32Array | DataView = Buffer.alloc(16);
     const salt: string | Buffer | Int32Array | DataView = Buffer.alloc(16);
-    crypto.scrypt(pwd, salt, 64, (err: Error | null, derivedKey: Buffer): void => {});
+    crypto.scrypt(
+        pwd,
+        salt,
+        64,
+        (err: Error | null, derivedKey: Buffer): void => {},
+    );
     const opts: crypto.ScryptOptions = {
         cost: 16384,
         blockSize: 8,
         parallelization: 1,
         maxmem: 32 * 1024 * 1024,
     };
-    crypto.scrypt(pwd, salt, 64, opts, (err: Error | null, derivedKey: Buffer): void => {});
-    crypto.scrypt(pwd, salt, 64, { maxmem: 16 * 1024 * 1024 }, (err: Error | null, derivedKey: Buffer): void => {});
+    crypto.scrypt(
+        pwd,
+        salt,
+        64,
+        opts,
+        (err: Error | null, derivedKey: Buffer): void => {},
+    );
+    crypto.scrypt(
+        pwd,
+        salt,
+        64,
+        { maxmem: 16 * 1024 * 1024 },
+        (err: Error | null, derivedKey: Buffer): void => {},
+    );
     crypto.scryptSync(pwd, salt, 64);
     crypto.scryptSync(pwd, salt, 64, opts);
     crypto.scryptSync(pwd, salt, 64, { N: 1024 });
@@ -414,7 +522,13 @@ import { promisify } from "node:util";
         p: opts.parallelization,
         maxmem: opts.maxmem,
     };
-    crypto.scrypt(pwd, salt, 64, optsWithAliases, (err: Error | null, derivedKey: Buffer): void => {});
+    crypto.scrypt(
+        pwd,
+        salt,
+        64,
+        optsWithAliases,
+        (err: Error | null, derivedKey: Buffer): void => {},
+    );
     crypto.scryptSync(pwd, salt, 64, optsWithAliases);
 }
 
@@ -468,33 +582,21 @@ import { promisify } from "node:util";
 {
     const generateKeyPromisified = promisify(crypto.generateKey);
 
-    const resHmac: Promise<crypto.KeyObject> = generateKeyPromisified(
-        "hmac",
-        {
-            length: 123,
-        },
-    );
+    const resHmac: Promise<crypto.KeyObject> = generateKeyPromisified("hmac", {
+        length: 123,
+    });
 
-    const resAes128: Promise<crypto.KeyObject> = generateKeyPromisified(
-        "aes",
-        {
-            length: 128,
-        },
-    );
+    const resAes128: Promise<crypto.KeyObject> = generateKeyPromisified("aes", {
+        length: 128,
+    });
 
-    const resAes192: Promise<crypto.KeyObject> = generateKeyPromisified(
-        "aes",
-        {
-            length: 192,
-        },
-    );
+    const resAes192: Promise<crypto.KeyObject> = generateKeyPromisified("aes", {
+        length: 192,
+    });
 
-    const resAes256: Promise<crypto.KeyObject> = generateKeyPromisified(
-        "aes",
-        {
-            length: 256,
-        },
-    );
+    const resAes256: Promise<crypto.KeyObject> = generateKeyPromisified("aes", {
+        length: 256,
+    });
 }
 
 {
@@ -645,7 +747,11 @@ import { promisify } from "node:util";
                 type: "pkcs8",
             },
         },
-        (err: NodeJS.ErrnoException | null, publicKey: Buffer, privateKey: string) => {},
+        (
+            err: NodeJS.ErrnoException | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => {},
     );
 
     crypto.generateKeyPair(
@@ -663,7 +769,11 @@ import { promisify } from "node:util";
                 type: "pkcs8",
             },
         },
-        (err: NodeJS.ErrnoException | null, publicKey: Buffer, privateKey: string) => {},
+        (
+            err: NodeJS.ErrnoException | null,
+            publicKey: Buffer,
+            privateKey: string,
+        ) => {},
     );
 
     crypto.generateKeyPair(
@@ -682,7 +792,11 @@ import { promisify } from "node:util";
                 type: "pkcs8",
             },
         },
-        (err: NodeJS.ErrnoException | null, publicKey: string, privateKey: Buffer) => {},
+        (
+            err: NodeJS.ErrnoException | null,
+            publicKey: string,
+            privateKey: Buffer,
+        ) => {},
     );
 
     crypto.generateKeyPair(
@@ -700,7 +814,11 @@ import { promisify } from "node:util";
                 type: "pkcs8",
             },
         },
-        (err: NodeJS.ErrnoException | null, publicKey: string, privateKey: string) => {},
+        (
+            err: NodeJS.ErrnoException | null,
+            publicKey: string,
+            privateKey: string,
+        ) => {},
     );
 
     crypto.generateKeyPair(
@@ -715,7 +833,11 @@ import { promisify } from "node:util";
                 type: "pkcs8",
             },
         },
-        (err: NodeJS.ErrnoException | null, publicKey: string, privateKey: string) => {},
+        (
+            err: NodeJS.ErrnoException | null,
+            publicKey: string,
+            privateKey: string,
+        ) => {},
     );
 
     crypto.generateKeyPair(
@@ -730,7 +852,11 @@ import { promisify } from "node:util";
                 type: "pkcs8",
             },
         },
-        (err: NodeJS.ErrnoException | null, publicKey: string, privateKey: string) => {},
+        (
+            err: NodeJS.ErrnoException | null,
+            publicKey: string,
+            privateKey: string,
+        ) => {},
     );
 }
 
@@ -918,8 +1044,12 @@ import { promisify } from "node:util";
             format: "pem",
         },
     });
-    const privateKeyObject1 = crypto.createPrivateKey({ key: x25519Keys1.privateKey });
-    const publicKeyObject1 = crypto.createPublicKey({ key: x25519Keys1.publicKey });
+    const privateKeyObject1 = crypto.createPrivateKey({
+        key: x25519Keys1.privateKey,
+    });
+    const publicKeyObject1 = crypto.createPublicKey({
+        key: x25519Keys1.publicKey,
+    });
 
     const x25519Keys2 = crypto.generateKeyPairSync("x25519", {
         publicKeyEncoding: {
@@ -931,11 +1061,21 @@ import { promisify } from "node:util";
             format: "pem",
         },
     });
-    const privateKeyObject2 = crypto.createPrivateKey({ key: x25519Keys2.privateKey });
-    const publicKeyObject2 = crypto.createPublicKey({ key: x25519Keys2.publicKey });
+    const privateKeyObject2 = crypto.createPrivateKey({
+        key: x25519Keys2.privateKey,
+    });
+    const publicKeyObject2 = crypto.createPublicKey({
+        key: x25519Keys2.publicKey,
+    });
 
-    const sharedSecret1 = crypto.diffieHellman({ privateKey: privateKeyObject1, publicKey: publicKeyObject2 });
-    const sharedSecret2 = crypto.diffieHellman({ privateKey: privateKeyObject2, publicKey: publicKeyObject1 });
+    const sharedSecret1 = crypto.diffieHellman({
+        privateKey: privateKeyObject1,
+        publicKey: publicKeyObject2,
+    });
+    const sharedSecret2 = crypto.diffieHellman({
+        privateKey: privateKeyObject2,
+        publicKey: publicKeyObject1,
+    });
     assert.equal(sharedSecret1, sharedSecret2);
 }
 
@@ -998,10 +1138,21 @@ import { promisify } from "node:util";
 {
     const sig: Buffer = crypto.sign("md5", Buffer.from(""), "mykey");
 
-    crypto.sign("md5", Buffer.from(""), "mykey", (error: Error | null, data: Buffer) => {});
+    crypto.sign(
+        "md5",
+        Buffer.from(""),
+        "mykey",
+        (error: Error | null, data: Buffer) => {},
+    );
 
     const correct: boolean = crypto.verify("md5", sig, "mykey", sig);
-    crypto.verify("md5", sig, "mykey", sig, (error: Error | null, result: boolean) => {});
+    crypto.verify(
+        "md5",
+        sig,
+        "mykey",
+        sig,
+        (error: Error | null, result: boolean) => {},
+    );
 }
 
 {
@@ -1045,10 +1196,15 @@ import { promisify } from "node:util";
         key,
         dsaEncoding: "der",
     });
-    crypto.sign("sha256", Buffer.from("asd"), {
-        key,
-        dsaEncoding: "der",
-    }, callback);
+    crypto.sign(
+        "sha256",
+        Buffer.from("asd"),
+        {
+            key,
+            dsaEncoding: "der",
+        },
+        callback,
+    );
     promisify(crypto.sign)("sha256", Buffer.from("asd"), {
         key,
         dsaEncoding: "der",
@@ -1119,7 +1275,12 @@ import { promisify } from "node:util";
 }
 
 {
-    const cipher = crypto.createCipheriv("aes-256-gcm", Buffer.from("key"), Buffer.from("iv"), { authTagLength: 16 });
+    const cipher = crypto.createCipheriv(
+        "aes-256-gcm",
+        Buffer.from("key"),
+        Buffer.from("iv"),
+        { authTagLength: 16 },
+    );
     cipher.setAAD(Buffer.from("iv"));
     cipher.setAAD(new Uint8Array());
 }
@@ -1130,7 +1291,7 @@ import { promisify } from "node:util";
     crypto.generateKeyPairSync("ed25519").privateKey; // $ExpectType KeyObject
     crypto.generateKeyPairSync("ed448").privateKey; // $ExpectType KeyObject
 
-    [undefined, {}].forEach(opts => {
+    [undefined, {}].forEach((opts) => {
         crypto.generateKeyPair("x25519", opts, (err, publicKey, privateKey) => {
             privateKey; // $ExpectType KeyObject
             publicKey; // $ExpectType KeyObject
@@ -1139,10 +1300,14 @@ import { promisify } from "node:util";
             privateKey; // $ExpectType KeyObject
             publicKey; // $ExpectType KeyObject
         });
-        crypto.generateKeyPair("ed25519", opts, (err, publicKey, privateKey) => {
-            privateKey; // $ExpectType KeyObject
-            publicKey; // $ExpectType KeyObject
-        });
+        crypto.generateKeyPair(
+            "ed25519",
+            opts,
+            (err, publicKey, privateKey) => {
+                privateKey; // $ExpectType KeyObject
+                publicKey; // $ExpectType KeyObject
+            },
+        );
         crypto.generateKeyPair("ed448", opts, (err, publicKey, privateKey) => {
             privateKey; // $ExpectType KeyObject
             publicKey; // $ExpectType KeyObject
@@ -1150,7 +1315,7 @@ import { promisify } from "node:util";
     });
 
     const pGenerateKeyPair = promisify(crypto.generateKeyPair);
-    [undefined, {}].forEach(async opts => {
+    [undefined, {}].forEach(async (opts) => {
         (await pGenerateKeyPair("x25519", opts)).privateKey; // $ExpectType KeyObject
         (await pGenerateKeyPair("x448", opts)).privateKey; // $ExpectType KeyObject
         (await pGenerateKeyPair("ed25519", opts)).privateKey; // $ExpectType KeyObject
@@ -1163,11 +1328,24 @@ import { promisify } from "node:util";
 }
 
 {
-    crypto.hkdf("sha256", Buffer.alloc(32, 0xFF), Buffer.alloc(16, 0x00), "SomeInfo", 42, (err, derivedKey) => {});
+    crypto.hkdf(
+        "sha256",
+        Buffer.alloc(32, 0xff),
+        Buffer.alloc(16, 0x00),
+        "SomeInfo",
+        42,
+        (err, derivedKey) => {},
+    );
 }
 
 {
-    const derivedKey = crypto.hkdfSync("sha256", Buffer.alloc(32, 0xFF), Buffer.alloc(16, 0x00), "SomeInfo", 42);
+    const derivedKey = crypto.hkdfSync(
+        "sha256",
+        Buffer.alloc(32, 0xff),
+        Buffer.alloc(16, 0x00),
+        "SomeInfo",
+        42,
+    );
 }
 
 {
@@ -1223,9 +1401,21 @@ import { promisify } from "node:util";
 
 {
     crypto.generatePrime(123, (err: Error | null, prime: ArrayBuffer) => {});
-    crypto.generatePrime(123, { rem: 123n, add: 123n }, (err: Error | null, prime: ArrayBuffer) => {});
-    crypto.generatePrime(123, { bigint: true }, (err: Error | null, prime: bigint) => {});
-    crypto.generatePrime(123, { bigint: Math.random() > 0 }, (err: Error | null, prime: ArrayBuffer | bigint) => {});
+    crypto.generatePrime(
+        123,
+        { rem: 123n, add: 123n },
+        (err: Error | null, prime: ArrayBuffer) => {},
+    );
+    crypto.generatePrime(
+        123,
+        { bigint: true },
+        (err: Error | null, prime: bigint) => {},
+    );
+    crypto.generatePrime(
+        123,
+        { bigint: Math.random() > 0 },
+        (err: Error | null, prime: ArrayBuffer | bigint) => {},
+    );
 
     crypto.generatePrimeSync(123); // $ExpectType ArrayBuffer
     crypto.generatePrimeSync(123, { rem: 123n, add: 123n }); // $ExpectType ArrayBuffer
@@ -1233,61 +1423,80 @@ import { promisify } from "node:util";
     crypto.generatePrimeSync(123, { bigint: Math.random() > 0 }); // $ExpectType bigint | ArrayBuffer
 
     crypto.checkPrime(123n, (err: Error | null, result: boolean) => {});
-    crypto.checkPrime(123n, { checks: 123 }, (err: Error | null, result: boolean) => {});
+    crypto.checkPrime(
+        123n,
+        { checks: 123 },
+        (err: Error | null, result: boolean) => {},
+    );
 
     crypto.checkPrimeSync(123n); // $ExpectType boolean
     crypto.checkPrimeSync(123n, { checks: 123 }); // $ExpectType boolean
 }
 
 {
-    crypto.generateKeyPair("ec", { namedCurve: "P-256" }, (err, publicKey, privateKey) => {
-        for (const keyObject of [publicKey, privateKey]) {
-            if (keyObject.asymmetricKeyDetails) {
-                if (keyObject.asymmetricKeyDetails.modulusLength) {
-                    const modulusLength: number = keyObject.asymmetricKeyDetails.modulusLength;
-                }
-                if (keyObject.asymmetricKeyDetails.publicExponent) {
-                    const publicExponent: bigint = keyObject.asymmetricKeyDetails.publicExponent;
-                }
-                if (keyObject.asymmetricKeyDetails.divisorLength) {
-                    const divisorLength: number = keyObject.asymmetricKeyDetails.divisorLength;
-                }
-                if (keyObject.asymmetricKeyDetails.namedCurve) {
-                    const namedCurve: string = keyObject.asymmetricKeyDetails.namedCurve;
-                }
-                if (keyObject.asymmetricKeyDetails.mgf1HashAlgorithm) {
-                    const mgf1HashAlgorithm: string = keyObject.asymmetricKeyDetails.mgf1HashAlgorithm;
-                }
-                if (keyObject.asymmetricKeyDetails.hashAlgorithm) {
-                    const hashAlgorithm: string = keyObject.asymmetricKeyDetails.hashAlgorithm;
-                }
-                if (keyObject.asymmetricKeyDetails.saltLength) {
-                    const saltLength: number = keyObject.asymmetricKeyDetails.saltLength;
+    crypto.generateKeyPair(
+        "ec",
+        { namedCurve: "P-256" },
+        (err, publicKey, privateKey) => {
+            for (const keyObject of [publicKey, privateKey]) {
+                if (keyObject.asymmetricKeyDetails) {
+                    if (keyObject.asymmetricKeyDetails.modulusLength) {
+                        const modulusLength: number =
+                            keyObject.asymmetricKeyDetails.modulusLength;
+                    }
+                    if (keyObject.asymmetricKeyDetails.publicExponent) {
+                        const publicExponent: bigint =
+                            keyObject.asymmetricKeyDetails.publicExponent;
+                    }
+                    if (keyObject.asymmetricKeyDetails.divisorLength) {
+                        const divisorLength: number =
+                            keyObject.asymmetricKeyDetails.divisorLength;
+                    }
+                    if (keyObject.asymmetricKeyDetails.namedCurve) {
+                        const namedCurve: string =
+                            keyObject.asymmetricKeyDetails.namedCurve;
+                    }
+                    if (keyObject.asymmetricKeyDetails.mgf1HashAlgorithm) {
+                        const mgf1HashAlgorithm: string =
+                            keyObject.asymmetricKeyDetails.mgf1HashAlgorithm;
+                    }
+                    if (keyObject.asymmetricKeyDetails.hashAlgorithm) {
+                        const hashAlgorithm: string =
+                            keyObject.asymmetricKeyDetails.hashAlgorithm;
+                    }
+                    if (keyObject.asymmetricKeyDetails.saltLength) {
+                        const saltLength: number =
+                            keyObject.asymmetricKeyDetails.saltLength;
+                    }
                 }
             }
-        }
-    });
+        },
+    );
     const secretKeyObject = crypto.createSecretKey(Buffer.from("secret"));
-    crypto.generateKeyPair("ec", { namedCurve: "P-256" }, (err, publicKey, privateKey) => {
-        for (const keyObject of [publicKey, privateKey, secretKeyObject]) {
-            const jwk = keyObject.export({ format: "jwk" });
-            jwk.crv;
-            jwk.d;
-            jwk.dp;
-            jwk.dq;
-            jwk.e;
-            jwk.k;
-            jwk.kty;
-            jwk.n;
-            jwk.p;
-            jwk.q;
-            jwk.qi;
-            jwk.x;
-            jwk.y;
-            crypto.createPublicKey({ key: jwk, format: "jwk" });
-            crypto.createPrivateKey({ key: jwk, format: "jwk" });
-        }
-    });
+    crypto.generateKeyPair(
+        "ec",
+        { namedCurve: "P-256" },
+        (err, publicKey, privateKey) => {
+            for (const keyObject of [publicKey, privateKey, secretKeyObject]) {
+                const jwk = keyObject.export({ format: "jwk" });
+                jwk.crv;
+                jwk.d;
+                jwk.dp;
+                jwk.dq;
+                jwk.e;
+                jwk.k;
+                jwk.kty;
+                jwk.n;
+                jwk.p;
+                jwk.q;
+                jwk.qi;
+                jwk.x;
+                jwk.y;
+                crypto.createPublicKey({ key: jwk, format: "jwk" });
+                crypto.createPrivateKey({ key: jwk, format: "jwk" });
+            }
+        },
+    );
 }
 
 {
@@ -1330,7 +1539,8 @@ import { promisify } from "node:util";
     new crypto.DiffieHellmanGroup("modp14");
 
     const alice: crypto.DiffieHellmanGroup = crypto.getDiffieHellman("modp14");
-    const bob: crypto.DiffieHellmanGroup = crypto.createDiffieHellmanGroup("modp14");
+    const bob: crypto.DiffieHellmanGroup =
+        crypto.createDiffieHellmanGroup("modp14");
 
     // Check that DiffieHellman still has setPublicKey/setPrivateKey:
     crypto.createDiffieHellman(2).setPublicKey("abcd", "hex");
@@ -1426,13 +1636,17 @@ import { promisify } from "node:util";
     // @ts-expect-error
     new crypto.webcrypto.CryptoKey(); // Illegal constructor
 
-    crypto.webcrypto.subtle.generateKey({ name: "HMAC", hash: "SHA-1" }, true, ["sign", "decrypt", "deriveBits"]).then(
-        (out) => {
+    crypto.webcrypto.subtle
+        .generateKey({ name: "HMAC", hash: "SHA-1" }, true, [
+            "sign",
+            "decrypt",
+            "deriveBits",
+        ])
+        .then((out) => {
             out.algorithm; // $ExpectType KeyAlgorithm
             out.extractable; // $ExpectType boolean
             out.usages; // $ExpectType KeyUsage[]
-        },
-    );
+        });
 }
 
 {
@@ -1444,9 +1658,26 @@ import { promisify } from "node:util";
     // Oops, test relied on DOM `globalThis.length` before
     const length = 123;
 
-    subtle.encrypt({ name: "AES-CBC", iv: new Uint8Array(16) }, key, new TextEncoder().encode("hello")); // $ExpectType Promise<ArrayBuffer>
-    subtle.decrypt({ name: "AES-CBC", iv: new Uint8Array(16) }, key, new ArrayBuffer(8)); // $ExpectType Promise<ArrayBuffer>
-    subtle.deriveBits({ name: "PBKDF2", hash: "SHA-512", salt: new ArrayBuffer(8), iterations: 1000 }, key, length); // $ExpectType Promise<ArrayBuffer>
+    subtle.encrypt(
+        { name: "AES-CBC", iv: new Uint8Array(16) },
+        key,
+        new TextEncoder().encode("hello"),
+    ); // $ExpectType Promise<ArrayBuffer>
+    subtle.decrypt(
+        { name: "AES-CBC", iv: new Uint8Array(16) },
+        key,
+        new ArrayBuffer(8),
+    ); // $ExpectType Promise<ArrayBuffer>
+    subtle.deriveBits(
+        {
+            name: "PBKDF2",
+            hash: "SHA-512",
+            salt: new ArrayBuffer(8),
+            iterations: 1000,
+        },
+        key,
+        length,
+    ); // $ExpectType Promise<ArrayBuffer>
     subtle.deriveBits({ name: "ECDH", public: key }, key, null); // $ExpectType Promise<ArrayBuffer>
     subtle.deriveKey(
         {
@@ -1465,8 +1696,17 @@ import { promisify } from "node:util";
     );
     subtle.digest("SHA-384", buf); // $ExpectType Promise<ArrayBuffer>
     subtle.exportKey("jwk", key); // $ExpectType Promise<JsonWebKey>
-    subtle.importKey("pkcs8", buf, { name: "RSA-PSS", hash: "SHA-1" }, false, []); // $ExpectType Promise<CryptoKey>
-    subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, false, ["deriveKey", "deriveBits"]); // $ExpectType Promise<CryptoKeyPair>
+    subtle.importKey(
+        "pkcs8",
+        buf,
+        { name: "RSA-PSS", hash: "SHA-1" },
+        false,
+        [],
+    ); // $ExpectType Promise<CryptoKey>
+    subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, false, [
+        "deriveKey",
+        "deriveBits",
+    ]); // $ExpectType Promise<CryptoKeyPair>
     subtle.sign({ name: "RSA-PSS", saltLength: 64 }, key, buf); // $ExpectType Promise<ArrayBuffer>
     subtle.unwrapKey(
         "raw",
@@ -1478,5 +1718,9 @@ import { promisify } from "node:util";
         [],
     );
     subtle.verify({ name: "RSASSA-PKCS1-v1_5" }, key, buf, buf); // $ExpectType Promise<boolean>
-    subtle.wrapKey("spki", key, key, { name: "AES-GCM", tagLength: 104, iv: buf }); // $ExpectType Promise<ArrayBuffer>
+    subtle.wrapKey("spki", key, key, {
+        name: "AES-GCM",
+        tagLength: 104,
+        iv: buf,
+    }); // $ExpectType Promise<ArrayBuffer>
 }

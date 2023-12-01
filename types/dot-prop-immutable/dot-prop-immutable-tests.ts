@@ -5,7 +5,11 @@ dotProp.get<string>(undefined, "foo.bar", "default value"); // $ExpectType strin
 
 dotProp.get({ foo: { bar: "unicorn" } }, "foo.bar"); // $ExpectType any
 dotProp.get({ foo: { bar: "a" } }, "foo.notDefined.deep"); // $ExpectType any
-dotProp.get<string>({ foo: { bar: "a" } }, "foo.notDefined.deep", "default value"); // $ExpectType string
+dotProp.get<string>(
+    { foo: { bar: "a" } },
+    "foo.notDefined.deep",
+    "default value",
+); // $ExpectType string
 dotProp.get({ foo: { "dot.dot": "unicorn" } }, "foo.dot\\.dot"); // $ExpectType any
 dotProp.get({ foo: { "dot.dot": "unicorn" } }, ["foo", "dot.dot"]); // $ExpectType any
 

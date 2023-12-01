@@ -24,7 +24,14 @@ declare namespace BwipJs {
         textgaps?: number | undefined;
         alttext?: string | undefined;
 
-        textxalign?: "offleft" | "left" | "center" | "right" | "offright" | "justify" | undefined;
+        textxalign?:
+            | "offleft"
+            | "left"
+            | "center"
+            | "right"
+            | "offright"
+            | "justify"
+            | undefined;
         textyalign?: "below" | "center" | "above" | undefined;
         textxoffset?: number | undefined;
         textyoffset?: number | undefined;
@@ -90,10 +97,31 @@ declare namespace BwipJs {
             fheight: number,
         ): { width: number; ascent: number; descent: number };
         init(width: number, height: number): void;
-        line(x0: number, y0: number, x1: number, y1: number, lw: number, rgb: string): void;
+        line(
+            x0: number,
+            y0: number,
+            x1: number,
+            y1: number,
+            lw: number,
+            rgb: string,
+        ): void;
         polygon(pts: Array<[number, number]>): void;
-        hexagon(pts: [[number, number], [number, number], [number, number], [number, number], [number, number]]): void;
-        ellipse(x: number, y: number, rx: number, ry: number, ccw: boolean): void;
+        hexagon(
+            pts: [
+                [number, number],
+                [number, number],
+                [number, number],
+                [number, number],
+                [number, number],
+            ],
+        ): void;
+        ellipse(
+            x: number,
+            y: number,
+            rx: number,
+            ry: number,
+            ccw: boolean,
+        ): void;
         fill(rgb: string): void;
         text(
             x: number,
@@ -104,47 +132,92 @@ declare namespace BwipJs {
         ): void;
         end(): T;
     }
-    export function loadFont(fontName: string, sizeMulti: number, fontFile: string | Uint8Array): void;
-    export function toBuffer(opts: RenderOptions, callback: (err: string | Error, png: Buffer) => void): void;
+    export function loadFont(
+        fontName: string,
+        sizeMulti: number,
+        fontFile: string | Uint8Array,
+    ): void;
+    export function toBuffer(
+        opts: RenderOptions,
+        callback: (err: string | Error, png: Buffer) => void,
+    ): void;
     export function toBuffer(opts: RenderOptions): Promise<Buffer>;
-    export function toCanvas(canvas: string | HTMLCanvasElement, opts: RenderOptions): HTMLCanvasElement;
+    export function toCanvas(
+        canvas: string | HTMLCanvasElement,
+        opts: RenderOptions,
+    ): HTMLCanvasElement;
     export function toDataURL(
         opts: RenderOptions,
-        callback: (err: string | Error, png: { width: number; height: number; uri: string }) => void,
+        callback: (
+            err: string | Error,
+            png: { width: number; height: number; uri: string },
+        ) => void,
     ): void;
-    export function toDataURL(opts: RenderOptions): Promise<{ width: number; height: number; uri: string }>;
+    export function toDataURL(
+        opts: RenderOptions,
+    ): Promise<{ width: number; height: number; uri: string }>;
     export function fixupOptions(opts: RenderOptions): RenderOptions;
-    export function render<T>(params: RenderOptions, drawing: DrawingOption<T>): T;
-    export function raw(
-        options: RawOptions,
-    ):
+    export function render<T>(
+        params: RenderOptions,
+        drawing: DrawingOption<T>,
+    ): T;
+    export function raw(options: RawOptions):
         | Array<{ bbs: number[]; bhs: number[]; sbs: number[] }>
-        | Array<{ pixs: number[]; pixx: number; pixy: number; height: number; width: number }>;
+        | Array<{
+              pixs: number[];
+              pixx: number;
+              pixy: number;
+              height: number;
+              width: number;
+          }>;
     export function raw(
         bcid: string,
         text: string,
         opts: string,
     ):
         | Array<{ bbs: number[]; bhs: number[]; sbs: number[] }>
-        | Array<{ pixs: number[]; pixx: number; pixy: number; height: number; width: number }>;
+        | Array<{
+              pixs: number[];
+              pixx: number;
+              pixy: number;
+              height: number;
+              width: number;
+          }>;
     export function raw(
         bcid: string,
         text: string,
         opts?: BwippOptions,
     ):
         | Array<{ bbs: number[]; bhs: number[]; sbs: number[] }>
-        | Array<{ pixs: number[]; pixx: number; pixy: number; height: number; width: number }>;
-    export function request(req: Request, res: Response, opts?: RenderOptions): void;
+        | Array<{
+              pixs: number[];
+              pixx: number;
+              pixy: number;
+              height: number;
+              width: number;
+          }>;
+    export function request(
+        req: Request,
+        res: Response,
+        opts?: RenderOptions,
+    ): void;
 
     export namespace FontLib {
-        export interface PathData extends
-            Array<
+        export interface PathData
+            extends Array<
                 | { type: "M"; x: number; y: number }
                 | { type: "L"; x: number; y: number }
                 | { type: "Q"; x: number; y: number; cx: number; cy: number }
-                | { type: "C"; x: number; y: number; cx1: number; cy1: number; cx2: number; cy2: number }
-            >
-        {
+                | {
+                      type: "C";
+                      x: number;
+                      y: number;
+                      cx1: number;
+                      cy1: number;
+                      cx2: number;
+                      cy2: number;
+                  }
+            > {
             ascent: number;
             descent: number;
             advance: number;
@@ -168,14 +241,32 @@ declare namespace BwipJs {
             cachekey: string;
             offset: number;
         };
-        export function getpaths(fontid: number, charcode: number, width: number, height: number): PathData;
+        export function getpaths(
+            fontid: number,
+            charcode: number,
+            width: number,
+            height: number,
+        ): PathData;
         export function loadFont(name: string, data: string | Uint8Array): void;
-        export function loadFont(name: string, mult: number, data: string | Uint8Array): void;
-        export function loadFont(name: string, multy: number, multx: number, data: string | Uint8Array): void;
+        export function loadFont(
+            name: string,
+            mult: number,
+            data: string | Uint8Array,
+        ): void;
+        export function loadFont(
+            name: string,
+            multy: number,
+            multx: number,
+            data: string | Uint8Array,
+        ): void;
     }
 }
 
-declare function BwipJs(req: Request, res: Response, opts?: BwipJs.RenderOptions): void;
+declare function BwipJs(
+    req: Request,
+    res: Response,
+    opts?: BwipJs.RenderOptions,
+): void;
 
 /**
  * The Browser version of the library's functionality, which makes use of an HTMLCanvasElement for rendering.
@@ -186,7 +277,10 @@ declare function BwipJs(req: Request, res: Response, opts?: BwipJs.RenderOptions
 declare function BwipJs(
     canvas: string | HTMLCanvasElement,
     opts: BwipJs.ToBufferOptions,
-    callback: (err: undefined | string | Error, canvas?: HTMLCanvasElement) => void,
+    callback: (
+        err: undefined | string | Error,
+        canvas?: HTMLCanvasElement,
+    ) => void,
 ): void;
 
 export = BwipJs;

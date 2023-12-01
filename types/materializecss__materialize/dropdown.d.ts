@@ -15,7 +15,10 @@ declare namespace M {
         /**
          * Init Dropdowns.
          */
-        static init(els: MElements, options?: Partial<DropdownOptions>): Dropdown[];
+        static init(
+            els: MElements,
+            options?: Partial<DropdownOptions>,
+        ): Dropdown[];
 
         /**
          * ID of the dropdown element.
@@ -140,6 +143,11 @@ declare namespace M {
 }
 
 interface JQuery {
-    dropdown(method: keyof Pick<M.Dropdown, "recalculateDimensions" | "open" | "close" | "destroy">): JQuery;
+    dropdown(
+        method: keyof Pick<
+            M.Dropdown,
+            "recalculateDimensions" | "open" | "close" | "destroy"
+        >,
+    ): JQuery;
     dropdown(options?: Partial<M.DropdownOptions>): JQuery;
 }

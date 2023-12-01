@@ -12,11 +12,11 @@ imageList.push({
     caption: "caption",
 });
 
-var lightBox: angular.bootstrap.lightbox.ILightbox = <any> {};
+var lightBox: angular.bootstrap.lightbox.ILightbox = <any>{};
 lightBox.openModal(imageList, 0);
 lightBox.openModal(imageList, 0, {});
 
-var provider: angular.bootstrap.lightbox.ILightBoxProvider = <any> {};
+var provider: angular.bootstrap.lightbox.ILightBoxProvider = <any>{};
 provider.templateUrl = "templateUrl";
 provider.calculateImageDimensionLimits = (
     dimensions: angular.bootstrap.lightbox.IImageDimensionParameter,

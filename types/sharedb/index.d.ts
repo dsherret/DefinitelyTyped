@@ -64,7 +64,11 @@ declare class sharedb extends EventEmitter {
      * @param collection name of the backing collection
      * @param fields field whitelist for the projection
      */
-    addProjection(name: string, collection: string, fields: ProjectionFields): void;
+    addProjection(
+        name: string,
+        collection: string,
+        fields: ProjectionFields,
+    ): void;
     /**
      * Registers a new `Duplex` stream with the backend. This should be called when the server
      * receives a new connection from a client.
@@ -84,17 +88,26 @@ declare class sharedb extends EventEmitter {
      */
     use<A extends keyof sharedb.middleware.ActionContextMap>(
         action: A,
-        fn: (context: sharedb.middleware.ActionContextMap[A], callback: (err?: any) => void) => void,
+        fn: (
+            context: sharedb.middleware.ActionContextMap[A],
+            callback: (err?: any) => void,
+        ) => void,
     ): void;
 
-    on<E extends keyof sharedb.BackendEventListenerMap>(event: E, callback: sharedb.BackendEventListenerMap[E]): this;
+    on<E extends keyof sharedb.BackendEventListenerMap>(
+        event: E,
+        callback: sharedb.BackendEventListenerMap[E],
+    ): this;
     on(eventName: string | symbol, listener: (...args: any[]) => void): this;
 
     addListener<E extends keyof sharedb.BackendEventListenerMap>(
         event: E,
         callback: sharedb.BackendEventListenerMap[E],
     ): this;
-    addListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+    addListener(
+        eventName: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     getOps(
         agent: Agent,
@@ -132,7 +145,13 @@ declare namespace sharedb {
             options: any,
             callback: (...args: any[]) => any,
         ): void;
-        getSnapshot(collection: string, id: string, fields: any, options: any, callback: (...args: any[]) => any): void;
+        getSnapshot(
+            collection: string,
+            id: string,
+            fields: any,
+            options: any,
+            callback: (...args: any[]) => any,
+        ): void;
         getSnapshotBulk(
             collection: string,
             ids: string[],
@@ -156,7 +175,13 @@ declare namespace sharedb {
             options: any,
             callback: (...args: any[]) => any,
         ): void;
-        getOpsBulk(collection: string, fromMap: any, toMap: any, options: any, callback: (...args: any[]) => any): void;
+        getOpsBulk(
+            collection: string,
+            fromMap: any,
+            toMap: any,
+            options: any,
+            callback: (...args: any[]) => any,
+        ): void;
         getCommittedOpVersion(
             collection: string,
             id: string,
@@ -166,8 +191,19 @@ declare namespace sharedb {
             callback: (...args: any[]) => any,
         ): void;
         query: DBQueryMethod;
-        queryPoll(collection: string, query: any, options: any, callback: (...args: any[]) => any): void;
-        queryPollDoc(collection: string, id: string, query: any, options: any, callback: (...args: any[]) => any): void;
+        queryPoll(
+            collection: string,
+            query: any,
+            options: any,
+            callback: (...args: any[]) => any,
+        ): void;
+        queryPollDoc(
+            collection: string,
+            id: string,
+            query: any,
+            options: any,
+            callback: (...args: any[]) => any,
+        ): void;
         canPollDoc(): boolean;
         skipPoll(): boolean;
     }
@@ -187,11 +223,20 @@ declare namespace sharedb {
         options: any,
         callback: DBQueryCallback,
     ) => void;
-    type DBQueryCallback = (err: Error | null, snapshots: Snapshot[], extra?: any) => void;
+    type DBQueryCallback = (
+        err: Error | null,
+        snapshots: Snapshot[],
+        extra?: any,
+    ) => void;
 
     interface BackendEventListenerMap {
         error: (err: Error) => void;
-        send: (agent: Agent, response: ShareDB.ServerResponseSuccess | ShareDB.ServerResponseError) => void;
+        send: (
+            agent: Agent,
+            response:
+                | ShareDB.ServerResponseSuccess
+                | ShareDB.ServerResponseError,
+        ) => void;
         submitRequestEnd: (error: Error, request: SubmitRequest) => void;
         timing: (type: string, time: number, request: any) => void;
     }
@@ -209,11 +254,28 @@ declare namespace sharedb {
         };
         protected constructor(options?: PubSubOptions);
         close(callback?: (err: Error | null) => void): void;
-        publish(channels: string[], data: { [k: string]: any }, callback: (err: Error | null) => void): void;
-        subscribe(channel: string, callback: (err: Error | null, stream?: Stream) => void): void;
-        protected abstract _subscribe(channel: string, callback: (err: Error | null) => void): void;
-        protected abstract _unsubscribe(channel: string, callback: (err: Error | null) => void): void;
-        protected abstract _publish(channels: string[], data: any, callback: (err: Error | null) => void): void;
+        publish(
+            channels: string[],
+            data: { [k: string]: any },
+            callback: (err: Error | null) => void,
+        ): void;
+        subscribe(
+            channel: string,
+            callback: (err: Error | null, stream?: Stream) => void,
+        ): void;
+        protected abstract _subscribe(
+            channel: string,
+            callback: (err: Error | null) => void,
+        ): void;
+        protected abstract _unsubscribe(
+            channel: string,
+            callback: (err: Error | null) => void,
+        ): void;
+        protected abstract _publish(
+            channels: string[],
+            data: any,
+            callback: (err: Error | null) => void,
+        ): void;
         protected _emit(channel: string, data: { [k: string]: any }): void;
         private _createStream(channel): void;
         private _removeStream(channel, stream): void;
@@ -221,8 +283,17 @@ declare namespace sharedb {
 
     abstract class MilestoneDB {
         close(callback?: BasicCallback): void;
-        getMilestoneSnapshot(collection: string, id: string, version: number, callback?: BasicCallback): void;
-        saveMilestoneSnapshot(collection: string, snapshot: Snapshot, callback?: BasicCallback): void;
+        getMilestoneSnapshot(
+            collection: string,
+            id: string,
+            version: number,
+            callback?: BasicCallback,
+        ): void;
+        saveMilestoneSnapshot(
+            collection: string,
+            snapshot: Snapshot,
+            callback?: BasicCallback,
+        ): void;
         getMilestoneSnapshotAtOrBeforeTime(
             collection: string,
             id: string,
@@ -315,8 +386,7 @@ declare namespace sharedb {
             $fixup: (op: any) => void;
         }
 
-        interface CommitContext extends BaseContext, SubmitRequest {
-        }
+        interface CommitContext extends BaseContext, SubmitRequest {}
 
         interface ConnectContext extends BaseContext {
             stream: any;
@@ -373,8 +443,7 @@ declare namespace sharedb {
 
         type SnapshotType = "current" | "byVersion" | "byTimestamp";
 
-        interface SubmitContext extends BaseContext, SubmitRequest {
-        }
+        interface SubmitContext extends BaseContext, SubmitRequest {}
     }
 }
 

@@ -8,7 +8,7 @@ var term: pty.Terminal = pty.spawn("bash", [], {
     env: process.env,
 });
 
-term.on("data", function(data: any) {
+term.on("data", function (data: any) {
     console.log(data);
 });
 

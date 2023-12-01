@@ -37,9 +37,7 @@ configuration = {
         ],
     },
     // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
-    plugins: [
-        new ExtractTextPlugin("[name].css"),
-    ],
+    plugins: [new ExtractTextPlugin("[name].css")],
 };
 
 configuration = {
@@ -65,14 +63,16 @@ configuration = {
             },
         ],
     },
-    plugins: [
-        new ExtractTextPlugin("styles.css"),
-    ],
+    plugins: [new ExtractTextPlugin("styles.css")],
 };
 
 // multiple extract instances
-const extractCSS: ExtractTextPlugin = new ExtractTextPlugin("stylesheets/[name].css");
-const extractLESS: ExtractTextPlugin = new ExtractTextPlugin("stylesheets/[name].less");
+const extractCSS: ExtractTextPlugin = new ExtractTextPlugin(
+    "stylesheets/[name].css",
+);
+const extractLESS: ExtractTextPlugin = new ExtractTextPlugin(
+    "stylesheets/[name].less",
+);
 
 configuration = {
     // ...
@@ -82,8 +82,5 @@ configuration = {
             { test: /\.less$/i, use: extractLESS.extract(["css", "less"]) },
         ],
     },
-    plugins: [
-        extractCSS,
-        extractLESS,
-    ],
+    plugins: [extractCSS, extractLESS],
 };

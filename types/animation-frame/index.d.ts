@@ -1,5 +1,5 @@
 interface AnimationFrame {
-    new(): AnimationFrame;
+    new (): AnimationFrame;
     request(callback: () => void): void;
 }
 

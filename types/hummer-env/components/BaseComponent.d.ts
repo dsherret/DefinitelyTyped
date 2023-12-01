@@ -28,25 +28,36 @@ interface HummerComponent {
      * @param type 事件类型
      * @param listener 触发事件后的回调
      */
-    addEventListener<K extends keyof import("../interface/event").EventHandlersEventMap>(
+    addEventListener<
+        K extends keyof import("../interface/event").EventHandlersEventMap,
+    >(
         type: K,
-        listener: (ev: import("../interface/event").EventHandlersEventMap[K]) => void,
+        listener: (
+            ev: import("../interface/event").EventHandlersEventMap[K],
+        ) => void,
     ): void;
     /**
      * @summary 移除组件事件
      * @param type 事件类型
      * @param listener 移除的事件
      */
-    removeEventListener<K extends keyof import("../interface/event").EventHandlersEventMap>(
+    removeEventListener<
+        K extends keyof import("../interface/event").EventHandlersEventMap,
+    >(
         type: K,
-        listener: (ev: import("../interface/event").EventHandlersEventMap[K]) => void,
+        listener: (
+            ev: import("../interface/event").EventHandlersEventMap[K],
+        ) => void,
     ): void;
     /**
      * @summary 为组件添加动画
      * @param animation : 添加的动画, 通过 KeyframeAnimation | BasicAnimation 生成的实例;
      * @param key: 动画对应的唯一key, 之后可以通过 removeAnimationForKey 删除对应的动画
      */
-    addAnimation(animation: KeyframeAnimation | BasicAnimation, key: string): void;
+    addAnimation(
+        animation: KeyframeAnimation | BasicAnimation,
+        key: string,
+    ): void;
     /**
      * @summary 删除key对应的动画
      * @param key addAnimation时添加的key

@@ -36,7 +36,9 @@ declare module "backbone" {
     interface PageableSetSortingOptions<TModel extends Model> {
         side?: string | undefined;
         full?: boolean | undefined;
-        sortValue?: ((model: TModel, sortKey: string) => any | string) | undefined;
+        sortValue?:
+            | ((model: TModel, sortKey: string) => any | string)
+            | undefined;
     }
 
     interface PageableSwitchModeOptions {
@@ -56,17 +58,31 @@ declare module "backbone" {
 
         fetch(options?: CollectionFetchOptions): JQueryXHR;
 
-        getFirstPage(options?: PageableGetPageOptions): JQueryXHR | PageableCollection<TModel>;
+        getFirstPage(
+            options?: PageableGetPageOptions,
+        ): JQueryXHR | PageableCollection<TModel>;
 
-        getLastPage(options?: PageableGetPageOptions): JQueryXHR | PageableCollection<TModel>;
+        getLastPage(
+            options?: PageableGetPageOptions,
+        ): JQueryXHR | PageableCollection<TModel>;
 
-        getNextPage(options?: PageableGetPageOptions): JQueryXHR | PageableCollection<TModel>;
+        getNextPage(
+            options?: PageableGetPageOptions,
+        ): JQueryXHR | PageableCollection<TModel>;
 
-        getPage(index: number | string, options?: PageableGetPageOptions): JQueryXHR | PageableCollection<TModel>;
+        getPage(
+            index: number | string,
+            options?: PageableGetPageOptions,
+        ): JQueryXHR | PageableCollection<TModel>;
 
-        getPageByOffset(offset: number, options?: PageableGetPageOptions): JQueryXHR | PageableCollection<TModel>;
+        getPageByOffset(
+            offset: number,
+            options?: PageableGetPageOptions,
+        ): JQueryXHR | PageableCollection<TModel>;
 
-        getPreviousPage(options?: PageableGetPageOptions): JQueryXHR | PageableCollection<TModel>;
+        getPreviousPage(
+            options?: PageableGetPageOptions,
+        ): JQueryXHR | PageableCollection<TModel>;
 
         hasNextPage(): boolean;
 
@@ -78,9 +94,17 @@ declare module "backbone" {
 
         parseRecords(resp: any, options?: any): any[];
 
-        parseState(resp: any, queryParams: PageableQueryParams, state: PageableState, options?: any): PageableState;
+        parseState(
+            resp: any,
+            queryParams: PageableQueryParams,
+            state: PageableState,
+            options?: any,
+        ): PageableState;
 
-        setPageSize(pageSize: number, options?: CollectionFetchOptions): JQueryXHR | PageableCollection<TModel>;
+        setPageSize(
+            pageSize: number,
+            options?: CollectionFetchOptions,
+        ): JQueryXHR | PageableCollection<TModel>;
 
         setSorting(
             sortKey: string,
@@ -88,9 +112,16 @@ declare module "backbone" {
             options?: PageableSetSortingOptions<TModel>,
         ): PageableCollection<TModel>;
 
-        switchMode(mode?: string, options?: PageableSwitchModeOptions): JQueryXHR | PageableCollection<TModel>;
+        switchMode(
+            mode?: string,
+            options?: PageableSwitchModeOptions,
+        ): JQueryXHR | PageableCollection<TModel>;
 
-        sync(method: string, model: TModel | Collection<TModel>, options?: any): JQueryXHR;
+        sync(
+            method: string,
+            model: TModel | Collection<TModel>,
+            options?: any,
+        ): JQueryXHR;
 
         static noConflict(): typeof PageableCollection;
     }

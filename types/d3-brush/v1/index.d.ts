@@ -7,7 +7,9 @@ import { Selection, TransitionLike, ValueFn } from "d3-selection";
  * where x0 is the minimum x-value, y0 is the minimum y-value, x1 is the maximum x-value, and y1 is the maximum y-value.
  * For an x-brush, it must be defined as [x0, x1]; for a y-brush, it must be defined as [y0, y1].
  */
-export type BrushSelection = [[number, number], [number, number]] | [number, number];
+export type BrushSelection =
+    | [[number, number], [number, number]]
+    | [number, number];
 
 /**
  * A D3 brush behavior
@@ -42,7 +44,10 @@ export interface BrushBehavior<Datum> {
      * x1 is the maximum x-value, and y1 is the maximum y-value. For an x-brush, it must be defined as [x0, x1];
      * for a y-brush, it must be defined as [y0, y1].
      */
-    move(group: Selection<SVGGElement, Datum, any, any>, selection: BrushSelection): void;
+    move(
+        group: Selection<SVGGElement, Datum, any, any>,
+        selection: BrushSelection,
+    ): void;
     /**
      * Sets the active selection of the brush on the specified SVG G element(s) selection
      * based on the array returned by a value function invoked for each selection element.
@@ -55,7 +60,10 @@ export interface BrushBehavior<Datum> {
      * x1 is the maximum x-value, and y1 is the maximum y-value. For an x-brush, it must be defined as [x0, x1];
      * for a y-brush, it must be defined as [y0, y1].
      */
-    move(group: Selection<SVGGElement, Datum, any, any>, selection: ValueFn<SVGGElement, Datum, BrushSelection>): void;
+    move(
+        group: Selection<SVGGElement, Datum, any, any>,
+        selection: ValueFn<SVGGElement, Datum, BrushSelection>,
+    ): void;
     /**
      * Clear the active selection of the brush on the specified SVG G element(s) transition.
      *
@@ -73,7 +81,10 @@ export interface BrushBehavior<Datum> {
      * x1 is the maximum x-value, and y1 is the maximum y-value. For an x-brush, it must be defined as [x0, x1];
      * for a y-brush, it must be defined as [y0, y1].
      */
-    move(group: TransitionLike<SVGGElement, Datum>, selection: BrushSelection): void;
+    move(
+        group: TransitionLike<SVGGElement, Datum>,
+        selection: BrushSelection,
+    ): void;
     /**
      * Sets the active selection of the brush on the specified SVG G element(s) transition
      * based on the array returned by a value function invoked for each transitioning element.
@@ -86,7 +97,10 @@ export interface BrushBehavior<Datum> {
      * x1 is the maximum x-value, and y1 is the maximum y-value. For an x-brush, it must be defined as [x0, x1];
      * for a y-brush, it must be defined as [y0, y1].
      */
-    move(group: TransitionLike<SVGGElement, Datum>, selection: ValueFn<SVGGElement, Datum, BrushSelection>): void;
+    move(
+        group: TransitionLike<SVGGElement, Datum>,
+        selection: ValueFn<SVGGElement, Datum, BrushSelection>,
+    ): void;
 
     /**
      * Clear the active selection of the brush on the specified SVG G element(s) selection.
@@ -121,7 +135,13 @@ export interface BrushBehavior<Datum> {
      * with this as the current DOM element. The function returns an array of points [[x0, y0], [x1, y1]],
      * where [x0, y0] is the top-left corner and [x1, y1] is the bottom-right corner.
      */
-    extent(extent: ValueFn<SVGGElement, Datum, [[number, number], [number, number]]>): this;
+    extent(
+        extent: ValueFn<
+            SVGGElement,
+            Datum,
+            [[number, number], [number, number]]
+        >,
+    ): this;
 
     /**
      * Returns the current filter function.

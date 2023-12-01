@@ -519,7 +519,9 @@ jest.requireActual("./thisReturnsTheActualModule").default;
 
 // https://jestjs.io/docs/en/jest-object#jestrequireactualmodulename
 // $ExpectType any
-const spreadRequireActual = { ...jest.requireActual("./thisReturnsTheActualModule") };
+const spreadRequireActual = {
+    ...jest.requireActual("./thisReturnsTheActualModule"),
+};
 
 // https://jestjs.io/docs/en/jest-object#jestrequiremockmodulename
 // $ExpectType any
@@ -556,8 +558,14 @@ const mock7 = jest.fn((arg: number) => arg);
 // $ExpectType Mock<number, [number], any> || Mock<number, [arg: number], any>
 const mock8: jest.Mock = jest.fn((arg: number) => arg);
 // $ExpectType Mock<Promise<boolean>, [number, string, {}, [], boolean], any> || Mock<Promise<boolean>, [a: number, _b: string, _c: {}, _iReallyDontCare: [], _makeItStop: boolean], any>
-const mock9 = jest.fn((a: number, _b: string, _c: {}, _iReallyDontCare: [], _makeItStop: boolean) =>
-    Promise.resolve(_makeItStop)
+const mock9 = jest.fn(
+    (
+        a: number,
+        _b: string,
+        _c: {},
+        _iReallyDontCare: [],
+        _makeItStop: boolean,
+    ) => Promise.resolve(_makeItStop),
 );
 // $ExpectType Mock<never, [], any>
 const mock10 = jest.fn(() => {
@@ -569,13 +577,16 @@ interface TestApi {
     test(x: number): string;
 }
 // $ExpectType Mock<string, [number], any> || Mock<string, [x: number], any>
-const mock12 = jest.fn<ReturnType<TestApi["test"]>, jest.ArgsType<TestApi["test"]>>();
+const mock12 = jest.fn<
+    ReturnType<TestApi["test"]>,
+    jest.ArgsType<TestApi["test"]>
+>();
 interface TestMockContext {
     mock: boolean;
     test?: number;
 }
 // $ExpectType Mock<0, [string], TestMockContext> || Mock<0, [check: string], TestMockContext>
-const mock13 = jest.fn(function(this: TestMockContext, check: string) {
+const mock13 = jest.fn(function (this: TestMockContext, check: string) {
     return 0 as const;
 });
 // $ExpectType TestMockContext[]
@@ -597,10 +608,14 @@ mock8.mockImplementation((arg: string) => 1);
 mock9.mockImplementation((a: number) => Promise.resolve(a === 0));
 
 const createMockFromModule1: {} = jest.createMockFromModule("moduleName");
-const createMockFromModule2: { a: "b" } = jest.createMockFromModule<{ a: "b" }>("moduleName");
+const createMockFromModule2: { a: "b" } = jest.createMockFromModule<{ a: "b" }>(
+    "moduleName",
+);
 
 const genMockModule1: {} = jest.genMockFromModule("moduleName");
-const genMockModule2: { a: "b" } = jest.genMockFromModule<{ a: "b" }>("moduleName");
+const genMockModule2: { a: "b" } = jest.genMockFromModule<{ a: "b" }>(
+    "moduleName",
+);
 
 const isStringMock: boolean = jest.isMockFunction("foo");
 const isMockMock: boolean = jest.isMockFunction(mock1);
@@ -919,12 +934,15 @@ if (mockedModule.TestClass.prototype.testClassMethod.mock.lastCall) {
     mockedModule.TestClass.prototype.testClassMethod.mock.lastCall[0]; // $ExpectType string
     mockedModule.TestClass.prototype.testClassMethod.mock.lastCall[1]; // $ExpectType number
 }
-const TestClass_testClassMethod_0_ret = mockedModule.TestClass.prototype.testClassMethod.mock.results[0];
+const TestClass_testClassMethod_0_ret =
+    mockedModule.TestClass.prototype.testClassMethod.mock.results[0];
 if (TestClass_testClassMethod_0_ret.type === "return") {
     TestClass_testClassMethod_0_ret.value; // $ExpectType boolean
 }
 
-const mockedTestFunction = module.testFunction as jest.MockedFunction<typeof module.testFunction>;
+const mockedTestFunction = module.testFunction as jest.MockedFunction<
+    typeof module.testFunction
+>;
 mockedTestFunction.mock.calls[0][0]; // $ExpectType number
 mockedTestFunction.mock.calls[0][1]; // $ExpectType string
 mockedTestFunction.mock.contexts[0]; // $ExpectType unknown
@@ -937,7 +955,10 @@ if (mockedTestFunction_0_ret.type === "return") {
     mockedTestFunction_0_ret.value; // $ExpectType boolean
 }
 
-const mockedTestLambdaFunction = module.testLambdaFunction as jest.MockedFunction<typeof module.testLambdaFunction>;
+const mockedTestLambdaFunction =
+    module.testLambdaFunction as jest.MockedFunction<
+        typeof module.testLambdaFunction
+    >;
 mockedTestLambdaFunction.mock.calls[0][0]; // $ExpectType number
 mockedTestLambdaFunction.mock.calls[0][1]; // $ExpectType string
 mockedTestLambdaFunction.mock.contexts[0]; // $ExpectType unknown
@@ -950,7 +971,9 @@ if (mockedTestLambdaFunction_0_ret.type === "return") {
     mockedTestLambdaFunction_0_ret.value; // $ExpectType boolean
 }
 
-const MockedTestClass = module.TestClass as jest.MockedClass<typeof module.TestClass>;
+const MockedTestClass = module.TestClass as jest.MockedClass<
+    typeof module.TestClass
+>;
 MockedTestClass.prototype.testClassMethod.mock.calls[0][0]; // $ExpectType string
 MockedTestClass.prototype.testClassMethod.mock.calls[0][1]; // $ExpectType number
 MockedTestClass.prototype.testClassMethod.mock.contexts[0]; // $ExpectType unknown
@@ -958,7 +981,8 @@ if (MockedTestClass.prototype.testClassMethod.mock.lastCall) {
     MockedTestClass.prototype.testClassMethod.mock.lastCall[0]; // $ExpectType string
     MockedTestClass.prototype.testClassMethod.mock.lastCall[1]; // $ExpectType number
 }
-const MockedTestClass_testClassMethod_0_ret = mockedModule.TestClass.prototype.testClassMethod.mock.results[0];
+const MockedTestClass_testClassMethod_0_ret =
+    mockedModule.TestClass.prototype.testClassMethod.mock.results[0];
 if (MockedTestClass_testClassMethod_0_ret.type === "return") {
     MockedTestClass_testClassMethod_0_ret.value; // $ExpectType boolean
 }
@@ -1013,7 +1037,12 @@ expect.addSnapshotSerializer({
 });
 
 expect.addSnapshotSerializer({
-    print: (value: unknown, serialize: (val: {}) => string, indent: (str: string) => string, opts: {}) => "",
+    print: (
+        value: unknown,
+        serialize: (val: {}) => string,
+        indent: (str: string) => string,
+        opts: {},
+    ) => "",
     test: (value: {}) => value === value,
 });
 
@@ -1050,7 +1079,10 @@ expect.addSnapshotSerializer({
             }
         }
 
-        if (config.printFunctionName !== undefined && config.printFunctionName) {
+        if (
+            config.printFunctionName !== undefined &&
+            config.printFunctionName
+        ) {
             result += " ";
         }
 
@@ -1071,7 +1103,13 @@ expect.addSnapshotSerializer({
             result += " ";
         }
 
-        for (const color of [colors.comment, colors.content, colors.prop, colors.tag, colors.value]) {
+        for (const color of [
+            colors.comment,
+            colors.content,
+            colors.prop,
+            colors.tag,
+            colors.value,
+        ]) {
             result += color.open;
             result += color.close;
         }
@@ -1145,7 +1183,11 @@ expect.extend({
 
         const receivedPrinted: string = this.utils.printReceived({});
 
-        const printedWithType: string = this.utils.printWithType("name", {}, value => "");
+        const printedWithType: string = this.utils.printWithType(
+            "name",
+            {},
+            (value) => "",
+        );
 
         const stringified: string = this.utils.stringify({});
         const stringifiedWithMaxDepth: string = this.utils.stringify({}, 3);
@@ -1309,16 +1351,21 @@ describe("", () => {
         expect({}).toMatchObject({});
         expect({ abc: "def" }).toMatchObject({ abc: "def" });
         expect({}).toMatchObject([{}, {}]);
-        expect({ abc: "def" }).toMatchObject([{ abc: "def" }, { invalid: "property" }]);
-        expect({ abc: "def" }).toMatchObject<{ abc: string }>({ abc: "def" });
-        expect([{ abc: "def" }, { abc: "def" }]).toMatchObject<[{ abc: string }, { abc: string }]>([
+        expect({ abc: "def" }).toMatchObject([
             { abc: "def" },
-            { abc: "def" },
+            { invalid: "property" },
         ]);
+        expect({ abc: "def" }).toMatchObject<{ abc: string }>({ abc: "def" });
+        expect([{ abc: "def" }, { abc: "def" }]).toMatchObject<
+            [{ abc: string }, { abc: string }]
+        >([{ abc: "def" }, { abc: "def" }]);
 
         expect({}).toMatchSnapshot();
         expect({}).toMatchSnapshot("snapshotName");
-        expect({ abc: "def" }).toMatchSnapshot({ abc: expect.any(String) }, "snapshotName");
+        expect({ abc: "def" }).toMatchSnapshot(
+            { abc: expect.any(String) },
+            "snapshotName",
+        );
         expect({
             one: 1,
             two: "2",
@@ -1337,7 +1384,10 @@ describe("", () => {
 
         expect({}).toMatchInlineSnapshot();
         expect({}).toMatchInlineSnapshot("snapshot");
-        expect({ abc: "def" }).toMatchInlineSnapshot({ abc: expect.any(String) }, "snapshot");
+        expect({ abc: "def" }).toMatchInlineSnapshot(
+            { abc: expect.any(String) },
+            "snapshot",
+        );
         expect({
             one: 1,
             two: "2",
@@ -1402,7 +1452,9 @@ describe("", () => {
         expect(jest.fn()).toThrowErrorMatchingInlineSnapshot();
         expect(jest.fn()).toThrowErrorMatchingInlineSnapshot("Error Message");
         expect(jest.fn(willThrow)).toThrowErrorMatchingInlineSnapshot();
-        expect(jest.fn(willThrow)).toThrowErrorMatchingInlineSnapshot("Error Message");
+        expect(jest.fn(willThrow)).toThrowErrorMatchingInlineSnapshot(
+            "Error Message",
+        );
 
         /* not */
 
@@ -1455,11 +1507,21 @@ describe("", () => {
 
         /* Inverse type matchers */
 
-        expect("How are you?").toEqual(expect.not.stringContaining("Hello world!"));
-        expect("How are you?").toEqual(expect.not.stringMatching(/Hello world!/));
-        expect({ bar: "baz" }).toEqual(expect.not.objectContaining({ foo: "bar" }));
-        expect(["Alice", "Bob", "Eve"]).toEqual(expect.not.arrayContaining(["Samantha"]));
-        expect(["Alice", "Bob", "Eve"]).toEqual(expect.not.arrayContaining(["Samantha"] as const));
+        expect("How are you?").toEqual(
+            expect.not.stringContaining("Hello world!"),
+        );
+        expect("How are you?").toEqual(
+            expect.not.stringMatching(/Hello world!/),
+        );
+        expect({ bar: "baz" }).toEqual(
+            expect.not.objectContaining({ foo: "bar" }),
+        );
+        expect(["Alice", "Bob", "Eve"]).toEqual(
+            expect.not.arrayContaining(["Samantha"]),
+        );
+        expect(["Alice", "Bob", "Eve"]).toEqual(
+            expect.not.arrayContaining(["Samantha"] as const),
+        );
 
         /* Miscellaneous */
 
@@ -1472,7 +1534,11 @@ describe("", () => {
 /* Custom matchers and CustomExpect */
 describe("", () => {
     it("", () => {
-        const customMatcher = (expected: any, actual: { prop: string }, option1: boolean) => {
+        const customMatcher = (
+            expected: any,
+            actual: { prop: string },
+            option1: boolean,
+        ) => {
             return { pass: true, message: () => "" };
         };
         const asyncMatcher = () => {
@@ -1481,21 +1547,28 @@ describe("", () => {
 
         const customMatchers = { customMatcher, asyncMatcher };
         expect.extend(customMatchers);
-        const extendedExpect: jest.ExtendedExpect<typeof customMatchers> = expect as any;
+        const extendedExpect: jest.ExtendedExpect<typeof customMatchers> =
+            expect as any;
 
         // extracting matcher types
         const matchers = extendedExpect({ thing: true });
-        let nonPromiseMatchers: jest.NonPromiseMatchers<typeof matchers> = matchers;
+        let nonPromiseMatchers: jest.NonPromiseMatchers<typeof matchers> =
+            matchers;
         const isNot = true;
         if (isNot) {
             nonPromiseMatchers = matchers.not;
         }
         // retains U from <U>(actual: U) => JestExtendedMatchers<T, U>; - BUT CANNOT DO THAT WITH CUSTOM...
-        nonPromiseMatchers.toMatchInlineSnapshot({ thing: extendedExpect.any(Boolean) });
+        nonPromiseMatchers.toMatchInlineSnapshot({
+            thing: extendedExpect.any(Boolean),
+        });
         // @ts-expect-error
-        nonPromiseMatchers.toMatchInlineSnapshot({ notthing: extendedExpect.any(Boolean) });
+        nonPromiseMatchers.toMatchInlineSnapshot({
+            notthing: extendedExpect.any(Boolean),
+        });
 
-        let promiseMatchers: jest.PromiseMatchers<typeof matchers> = matchers.rejects;
+        let promiseMatchers: jest.PromiseMatchers<typeof matchers> =
+            matchers.rejects;
         if (isNot) {
             promiseMatchers = matchers.rejects.not;
         }
@@ -1505,13 +1578,22 @@ describe("", () => {
         // retains built in asymmetric matcher
         extendedExpect.not.arrayContaining;
 
-        extendedExpect.customMatcher({ prop: "good" }, false).asymmetricMatch({}).valueOf();
+        extendedExpect
+            .customMatcher({ prop: "good" }, false)
+            .asymmetricMatch({})
+            .valueOf();
         // @ts-expect-error
         extendedExpect.customMatcher({ prop: { not: "good" } }, false);
 
-        extendedExpect.not.customMatcher({ prop: "good" }, false).asymmetricMatch({}).valueOf();
+        extendedExpect.not
+            .customMatcher({ prop: "good" }, false)
+            .asymmetricMatch({})
+            .valueOf();
         // @ts-expect-error
-        extendedExpect.not.customMatcher({ prop: "good" }, "bad").asymmetricMatch({}).valueOf();
+        extendedExpect.not
+            .customMatcher({ prop: "good" }, "bad")
+            .asymmetricMatch({})
+            .valueOf();
 
         // @ts-expect-error
         const asynMatcherExcluded = extendedExpect.asyncMatcher;
@@ -1613,18 +1695,28 @@ expect(["abc"]).toBe(jasmine.arrayContaining(["a", "b"] as const));
 jasmine.arrayContaining([]);
 new (jasmine.arrayContaining([]))([]);
 const arrayContained: boolean = jasmine.arrayContaining([]).asymmetricMatch([]);
-const arrayContainedName: string = jasmine.arrayContaining([]).jasmineToString();
+const arrayContainedName: string = jasmine
+    .arrayContaining([])
+    .jasmineToString();
 
 jasmine.objectContaining({});
 new (jasmine.objectContaining({}))({});
-const objectContained: boolean = jasmine.objectContaining({}).jasmineMatches({}, ["abc"], ["def"]);
-const objectContainedName: string = jasmine.objectContaining({}).jasmineToString();
+const objectContained: boolean = jasmine
+    .objectContaining({})
+    .jasmineMatches({}, ["abc"], ["def"]);
+const objectContainedName: string = jasmine
+    .objectContaining({})
+    .jasmineToString();
 
 jasmine.stringMatching("foo");
 jasmine.stringMatching(/foo/);
 new (jasmine.stringMatching("foo"))({});
-const stringContained: boolean = jasmine.stringMatching(/foo/).jasmineMatches({});
-const stringContainedName: string = jasmine.stringMatching("foo").jasmineToString();
+const stringContained: boolean = jasmine
+    .stringMatching(/foo/)
+    .jasmineMatches({});
+const stringContainedName: string = jasmine
+    .stringMatching("foo")
+    .jasmineToString();
 
 expect({ abc: "def" }).toBe(
     jasmine.objectContaining({
@@ -1672,7 +1764,11 @@ describe("", () => {
 
         const wasCalled: boolean = spy.wasCalled;
 
-        for (const call of [...spy.calls.all(), spy.calls.first(), spy.calls.mostRecent()]) {
+        for (const call of [
+            ...spy.calls.all(),
+            spy.calls.first(),
+            spy.calls.mostRecent(),
+        ]) {
             const callType: jasmine.CallInfo = call;
             const callArgs: any[] = call.args;
             const { object, returnValue } = call;
@@ -1694,7 +1790,9 @@ describe("", () => {
         spyObject = jasmine.createSpyObj("baseName", ["abc"]);
         spyObject = jasmine.createSpyObj<typeof spyObject>("baseName", ["abc"]);
 
-        const newSpyObject: typeof spyObject = jasmine.createSpyObj<typeof spyObject>("baseName", ["abc"]);
+        const newSpyObject: typeof spyObject = jasmine.createSpyObj<
+            typeof spyObject
+        >("baseName", ["abc"]);
     });
 });
 
@@ -1705,7 +1803,10 @@ const pp: string = jasmine.pp({});
 /* Jasmine equality testers */
 
 const equalityTesterObject = (first: {}, second: {}) => false;
-const equalityTesterString: jasmine.CustomEqualityTester = (first: string, second: string) => first === second;
+const equalityTesterString: jasmine.CustomEqualityTester = (
+    first: string,
+    second: string,
+) => first === second;
 
 jasmine.addCustomEqualityTester(equalityTesterObject);
 jasmine.addCustomEqualityTester(equalityTesterObject);
@@ -1713,7 +1814,9 @@ jasmine.addCustomEqualityTester(equalityTesterObject);
 /* Jasmine matchers */
 
 const customMatcherFactoriesNone = {};
-const customMatcherFactoriesIndex: { [i: string]: jasmine.CustomMatcherFactory } = {};
+const customMatcherFactoriesIndex: {
+    [i: string]: jasmine.CustomMatcherFactory;
+} = {};
 const customMatcherFactoriesManual = {
     abc: () => ({
         compare: (actual: "", expected: "", ...args: Array<{}>) => ({
@@ -1721,8 +1824,14 @@ const customMatcherFactoriesManual = {
             message: "",
         }),
     }),
-    def: (util: jasmine.MatchersUtil, customEqualityTestesr: jasmine.CustomEqualityTester): jasmine.CustomMatcher => ({
-        compare<T extends string>(actual: T, expected: T): jasmine.CustomMatcherResult {
+    def: (
+        util: jasmine.MatchersUtil,
+        customEqualityTestesr: jasmine.CustomEqualityTester,
+    ): jasmine.CustomMatcher => ({
+        compare<T extends string>(
+            actual: T,
+            expected: T,
+        ): jasmine.CustomMatcherResult {
             return {
                 pass: actual === expected,
                 message: () => "foo",
@@ -1733,18 +1842,31 @@ const customMatcherFactoriesManual = {
 
 const matchersUtil1 = {
     buildFailureMessage: () => "",
-    contains: (haystack: string, needle: string) => haystack.indexOf(needle) !== -1,
+    contains: (haystack: string, needle: string) =>
+        haystack.indexOf(needle) !== -1,
     equals: (a: {}, b: {}) => false,
 };
 
 const matchersUtil2: jasmine.MatchersUtil = {
-    buildFailureMessage(matcherName: string, isNot: boolean, actual: any, ...expected: any[]): string {
-        return `${matcherName}${isNot ? "1" : "0"}${actual}${expected.join("")}`;
+    buildFailureMessage(
+        matcherName: string,
+        isNot: boolean,
+        actual: any,
+        ...expected: any[]
+    ): string {
+        return `${matcherName}${isNot ? "1" : "0"}${actual}${expected.join(
+            "",
+        )}`;
     },
-    contains<T>(haystack: T[], needle: T, customTesters?: jasmine.CustomEqualityTester[]) {
+    contains<T>(
+        haystack: T[],
+        needle: T,
+        customTesters?: jasmine.CustomEqualityTester[],
+    ) {
         return true;
     },
-    equals: (a: {}, b: {}, customTesters?: jasmine.CustomEqualityTester[]) => false,
+    equals: (a: {}, b: {}, customTesters?: jasmine.CustomEqualityTester[]) =>
+        false,
 };
 
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/26368
@@ -1765,7 +1887,9 @@ it.each<number>([1, 2, 3])("dummy: %d", (num, done) => {
     done();
 });
 
-const casesReadonlyArray = [[1, 2, 3] as readonly number[]] as ReadonlyArray<readonly number[]>;
+const casesReadonlyArray = [[1, 2, 3] as readonly number[]] as ReadonlyArray<
+    readonly number[]
+>;
 it.each(casesReadonlyArray)("%d", (a, b, c) => {
     expect(a + b).toBe(c);
 });
@@ -1878,11 +2002,14 @@ declare const constCasesWithMoreThanTen: [
     [91, 92, 93, 94, 95, 96, 97, 98, 99, 910, 911],
 ];
 
-test.each(constCasesWithMoreThanTen)("should fall back with more than 10 args", (...args) => {
-    // following assertion is skipped because of flaky testing
-    // _$ExpectType [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] | [91, 92, 93, 94, 95, 96, 97, 98, 99, 910, 911]
-    args;
-});
+test.each(constCasesWithMoreThanTen)(
+    "should fall back with more than 10 args",
+    (...args) => {
+        // following assertion is skipped because of flaky testing
+        // _$ExpectType [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11] | [91, 92, 93, 94, 95, 96, 97, 98, 99, 910, 911]
+        args;
+    },
+);
 
 test.each`
     a    | b    | expected
@@ -1914,12 +2041,10 @@ test.each([
     b; // $ExpectType string
 });
 
-test.each(
-    [
-        [1, "1"],
-        [2, "2"],
-    ] as const,
-)("", (a, b) => {
+test.each([
+    [1, "1"],
+    [2, "2"],
+] as const)("", (a, b) => {
     // following assertion is skipped because of flaky testing
     a; // _$ExpectType 1 | 2
     b; // $ExpectType "1" | "2"
@@ -1961,7 +2086,7 @@ test(`returns a Promise<any>`, () => {
 
 /* Test function can take and call the done callback function */
 
-test(`uses done`, done => {
+test(`uses done`, (done) => {
     done();
 });
 
@@ -1993,22 +2118,22 @@ test(`returns an object`, () => {
 /* Test function should not return promise and takes done callback function */
 
 // @ts-expect-error
-test(`returns a Promise<boolean> and takes done`, done => {
+test(`returns a Promise<boolean> and takes done`, (done) => {
     return Promise.resolve(true);
 });
 
 // @ts-expect-error
-test(`returns a Promise<{ isAnObject: boolean }> and takes done`, done => {
+test(`returns a Promise<{ isAnObject: boolean }> and takes done`, (done) => {
     return Promise.resolve({ isAnObject: true });
 });
 
 // @ts-expect-error
-test(`returns a Promise<any> and takes done`, done => {
+test(`returns a Promise<any> and takes done`, (done) => {
     return Promise.resolve("any" as any);
 });
 
 // @ts-expect-error
-test(`async function takes done`, async done => {
+test(`async function takes done`, async (done) => {
     done();
 });
 

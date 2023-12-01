@@ -84,7 +84,12 @@ declare class Lang {
      *
      * @return The translation message according to an integer value.
      */
-    choice(key: string, count: number, replacements?: Lang.Replacements, locale?: string): string;
+    choice(
+        key: string,
+        count: number,
+        replacements?: Lang.Replacements,
+        locale?: string,
+    ): string;
 
     /**
      * Gets the plural or singular form of the message specified based on an integer value.
@@ -97,7 +102,11 @@ declare class Lang {
      *
      * @return The translation message according to an integer value.
      */
-    transChoice(key: string, count: number, replacements?: Lang.Replacements): string;
+    transChoice(
+        key: string,
+        count: number,
+        replacements?: Lang.Replacements,
+    ): string;
 }
 
 declare namespace Lang {

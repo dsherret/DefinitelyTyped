@@ -4,7 +4,11 @@
  * @param newString New string to diff
  * @param options Optional git-diff options
  */
-declare function gitDiff(oldString: string, newString: string, options?: gitDiff.GitDiffOptions): undefined | string;
+declare function gitDiff(
+    oldString: string,
+    newString: string,
+    options?: gitDiff.GitDiffOptions,
+): undefined | string;
 
 declare namespace gitDiff {
     interface GitDiffOptions {

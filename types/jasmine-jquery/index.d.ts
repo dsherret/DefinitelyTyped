@@ -19,7 +19,10 @@ declare function appendSetStyleFixtures(html: string): void;
 declare function loadJSONFixtures(...uls: string[]): jasmine.JSONFixtures;
 declare function getJSONFixture(url: string): any;
 
-declare function spyOnEvent(selector: string, eventName: string): jasmine.JQueryEventSpy;
+declare function spyOnEvent(
+    selector: string,
+    eventName: string,
+): jasmine.JQueryEventSpy;
 
 declare namespace jasmine {
     function spiedEventsKey(selector: JQuery, eventName: string): string;
@@ -371,7 +374,12 @@ declare namespace jasmine {
         spyOn(selector: string, eventName: string): JQueryEventSpy;
         args(selector: string, eventName: string): any;
         wasTriggered(selector: string, eventName: string): boolean;
-        wasTriggeredWith(selector: string, eventName: string, expectedArgs: any, env: jasmine.Env): boolean;
+        wasTriggeredWith(
+            selector: string,
+            eventName: string,
+            expectedArgs: any,
+            env: jasmine.Env,
+        ): boolean;
         wasPrevented(selector: string, eventName: string): boolean;
         wasStopped(selector: string, eventName: string): boolean;
         cleanUp(): void;

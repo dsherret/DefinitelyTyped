@@ -8,10 +8,19 @@ const db = new LevelDOWN("/tmp/db");
 
 db.open(() => {
     db.put("key", "value", (err: Error | undefined) => {});
-    db.put(Buffer.from([1]), "value", { something: true }, (err: Error | undefined) => {});
+    db.put(
+        Buffer.from([1]),
+        "value",
+        { something: true },
+        (err: Error | undefined) => {},
+    );
 
     db.get("key", (err: Error | undefined) => {});
-    db.get(Buffer.from([1]), { something: true }, (err: Error | undefined, value: Bytes) => {});
+    db.get(
+        Buffer.from([1]),
+        { something: true },
+        (err: Error | undefined, value: Bytes) => {},
+    );
 
     db.close((err: Error | undefined) => {});
 });

@@ -80,11 +80,19 @@ declare namespace OO {
          * @param fallback Fallback code, used if no matching language can be found
          * @return Local value
          */
-        function getLocalValue<T extends Record<string, any>, K1 extends string | null, K2 extends string>(
+        function getLocalValue<
+            T extends Record<string, any>,
+            K1 extends string | null,
+            K2 extends string,
+        >(
             obj: T,
             lang?: K1,
             fallback?: K2,
-        ): K1 extends keyof T ? T[K1] : K2 extends keyof T ? T[K2] : T[keyof T] | undefined;
+        ): K1 extends keyof T
+            ? T[K1]
+            : K2 extends keyof T
+              ? T[K2]
+              : T[keyof T] | undefined;
 
         /**
          * Check if a node is contained within another node.
@@ -117,7 +125,11 @@ declare namespace OO {
          * @param immediate Trigger on leading edge
          * @return Debounced function
          */
-        function debounce<T extends (...args: any[]) => any>(func: T, wait?: number, immediate?: boolean): T;
+        function debounce<T extends (...args: any[]) => any>(
+            func: T,
+            wait?: number,
+            immediate?: boolean,
+        ): T;
 
         /**
          * Puts a console warning with provided message.
@@ -139,7 +151,10 @@ declare namespace OO {
          * @param wait Throttle window length, in milliseconds
          * @return Throttled function
          */
-        function throttle<T extends (...args: any[]) => any>(func: T, wait: number): T;
+        function throttle<T extends (...args: any[]) => any>(
+            func: T,
+            wait: number,
+        ): T;
 
         /**
          * Reconstitute a JavaScript object corresponding to a widget created by
@@ -315,7 +330,10 @@ declare namespace OO {
          * @param options Additional options, see {@link OO.ui.MessageDialog.getSetupProcess}
          * @return Promise resolved when the user closes the dialog
          */
-        function alert(text: JQuery | string, options?: MessageDialog.SetupDataMap): JQuery.Promise<void>;
+        function alert(
+            text: JQuery | string,
+            options?: MessageDialog.SetupDataMap,
+        ): JQuery.Promise<void>;
 
         /**
          * Display a quick modal confirmation dialog, using a OO.ui.MessageDialog. While the dialog
@@ -341,7 +359,10 @@ declare namespace OO {
          *  confirm, the promise will resolve to boolean `true`; otherwise, it will resolve to
          *  boolean `false`.
          */
-        function confirm(text: JQuery | string, options?: MessageDialog.SetupDataMap): JQuery.Promise<boolean>;
+        function confirm(
+            text: JQuery | string,
+            options?: MessageDialog.SetupDataMap,
+        ): JQuery.Promise<boolean>;
 
         interface PromptOptions extends MessageDialog.SetupDataMap {
             /** Additional options for text input widget, see {@link OO.ui.TextInputWidget} */
@@ -374,6 +395,9 @@ declare namespace OO {
          *  confirm, the promise will resolve with the value of the text input widget; otherwise,
          *  it will resolve to `null`.
          */
-        function prompt(text: JQuery | string, options?: PromptOptions): JQuery.Promise<string | null>;
+        function prompt(
+            text: JQuery | string,
+            options?: PromptOptions,
+        ): JQuery.Promise<string | null>;
     }
 }

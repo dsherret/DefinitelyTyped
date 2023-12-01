@@ -1,7 +1,12 @@
 /// <reference types="node" />
 
 import { Single } from "rsocket-flowable";
-import { DuplexConnection, Payload, ReactiveSocket, Responder } from "rsocket-types";
+import {
+    DuplexConnection,
+    Payload,
+    ReactiveSocket,
+    Responder,
+} from "rsocket-types";
 import { Leases } from "./RSocketLease";
 import { PayloadSerializers } from "./RSocketSerialization";
 

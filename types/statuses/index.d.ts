@@ -3,7 +3,8 @@ type NonNumericAscii<S> = S extends `${NumericAscii}` ? never : any;
 
 type IsNumericString<S extends string> = S extends `${number}` ? any : never;
 
-type IsNonNumericString<S extends string> = S extends `${NonNumericAscii<S>}${infer _}` ? any : never;
+type IsNonNumericString<S extends string> =
+    S extends `${NonNumericAscii<S>}${infer _}` ? any : never;
 
 export = status;
 
@@ -22,7 +23,9 @@ interface status {
 }
 
 declare namespace status {
-    type Result<S extends string> = S extends IsNumericString<S> ? string
-        : S extends IsNonNumericString<S> ? number
-        : string | number;
+    type Result<S extends string> = S extends IsNumericString<S>
+        ? string
+        : S extends IsNonNumericString<S>
+          ? number
+          : string | number;
 }

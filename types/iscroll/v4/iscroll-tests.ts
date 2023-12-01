@@ -1,5 +1,8 @@
 var myScroll1 = new iScroll("wrapper");
-var myScroll2 = new iScroll("wrapper", { hScrollbar: false, vScrollbar: false });
+var myScroll2 = new iScroll("wrapper", {
+    hScrollbar: false,
+    vScrollbar: false,
+});
 var myScroll3 = new iScroll("wrapper", {
     snap: true,
     momentum: false,
@@ -26,4 +29,6 @@ myScroll1.scrollToElement(document.getElementById("selectedElement"));
 myScroll1.scrollToElement(document.getElementById("selectedElement"), 250);
 
 var myScroll7 = new iScroll(document.getElementById("wrapper"));
-var myScroll8 = new iScroll(document.getElementById("wrapper"), { scrollbarClass: "myScrollbar" });
+var myScroll8 = new iScroll(document.getElementById("wrapper"), {
+    scrollbarClass: "myScrollbar",
+});

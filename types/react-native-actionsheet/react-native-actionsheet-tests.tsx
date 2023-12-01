@@ -7,7 +7,7 @@ class Example extends React.Component {
         return (
             <ActionSheet
                 options={["1", "2", "3"]}
-                onPress={index => {}}
+                onPress={(index) => {}}
                 title="Test"
                 message="Test"
                 tintColor="white"
@@ -29,8 +29,12 @@ class CustomSheetExample extends React.Component {
                     "Watermelon",
                     <Text style={{ color: "red" }}>Durian</Text>,
                 ]}
-                onPress={index => {}}
-                title={<Text style={{ color: "#000", fontSize: 18 }}>Which one do you like?</Text>}
+                onPress={(index) => {}}
+                title={
+                    <Text style={{ color: "#000", fontSize: 18 }}>
+                        Which one do you like?
+                    </Text>
+                }
                 message="Test"
                 tintColor="white"
                 buttonUnderlayColor="rebeccapurple"

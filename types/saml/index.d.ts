@@ -68,7 +68,10 @@ export interface SamlUnassignedOpts {
     xpathToNodeBeforeSignature?: string | undefined;
 }
 export namespace Saml11 {
-    function create(opts: SamlSignedOpts, cb?: (err: Error | null, result: any[], proofSecret: Buffer) => void): any;
+    function create(
+        opts: SamlSignedOpts,
+        cb?: (err: Error | null, result: any[], proofSecret: Buffer) => void,
+    ): any;
     function createUnsignedAssertion(
         opts: SamlUnassignedOpts,
         cb?: (err: Error | null, result: any[], proofSecret: Buffer) => void,
@@ -76,6 +79,12 @@ export namespace Saml11 {
 }
 
 export namespace Saml20 {
-    function create(opts: SamlUnassignedOpts, cb?: (err: Error | null, signed: string) => void): any;
-    function createUnsignedAssertion(opts: SamlUnassignedOpts, cb?: (err: Error | null, signed: string) => void): any;
+    function create(
+        opts: SamlUnassignedOpts,
+        cb?: (err: Error | null, signed: string) => void,
+    ): any;
+    function createUnsignedAssertion(
+        opts: SamlUnassignedOpts,
+        cb?: (err: Error | null, signed: string) => void,
+    ): any;
 }

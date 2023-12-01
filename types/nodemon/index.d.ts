@@ -7,40 +7,99 @@ declare function nodemon(options: nodemon.Settings | string): typeof nodemon;
 declare namespace nodemon {
     function restart(): void;
 
-    function addListener(event: string | symbol, listener: (...args: any[]) => void): typeof nodemon;
+    function addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): typeof nodemon;
     function addListener(
         event: "start" | "exit" | "crash" | "config:update" | "readable",
         listener: () => void,
     ): typeof nodemon;
-    function addListener(event: "restart", listener: (files?: string[]) => void): typeof nodemon;
-    function addListener(event: "quit", listener: (code?: number) => void): typeof nodemon;
-    function addListener(event: "watching", listener: (file: string) => void): typeof nodemon;
-    function addListener(event: "log", listener: (msg: LogMessage) => void): typeof nodemon;
-    function addListener(event: "stdout" | "stderr", listener: (data: Buffer) => void): typeof nodemon;
+    function addListener(
+        event: "restart",
+        listener: (files?: string[]) => void,
+    ): typeof nodemon;
+    function addListener(
+        event: "quit",
+        listener: (code?: number) => void,
+    ): typeof nodemon;
+    function addListener(
+        event: "watching",
+        listener: (file: string) => void,
+    ): typeof nodemon;
+    function addListener(
+        event: "log",
+        listener: (msg: LogMessage) => void,
+    ): typeof nodemon;
+    function addListener(
+        event: "stdout" | "stderr",
+        listener: (data: Buffer) => void,
+    ): typeof nodemon;
 
-    function on(event: string | symbol, listener: (...args: any[]) => void): typeof nodemon;
-    function on(event: "start" | "exit" | "crash" | "config:update" | "readable", listener: () => void): typeof nodemon;
-    function on(event: "restart", listener: (files?: string[]) => void): typeof nodemon;
-    function on(event: "quit", listener: (code?: number) => void): typeof nodemon;
-    function on(event: "watching", listener: (file: string) => void): typeof nodemon;
-    function on(event: "log", listener: (msg: LogMessage) => void): typeof nodemon;
-    function on(event: "stdout" | "stderr", listener: (data: Buffer) => void): typeof nodemon;
+    function on(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): typeof nodemon;
+    function on(
+        event: "start" | "exit" | "crash" | "config:update" | "readable",
+        listener: () => void,
+    ): typeof nodemon;
+    function on(
+        event: "restart",
+        listener: (files?: string[]) => void,
+    ): typeof nodemon;
+    function on(
+        event: "quit",
+        listener: (code?: number) => void,
+    ): typeof nodemon;
+    function on(
+        event: "watching",
+        listener: (file: string) => void,
+    ): typeof nodemon;
+    function on(
+        event: "log",
+        listener: (msg: LogMessage) => void,
+    ): typeof nodemon;
+    function on(
+        event: "stdout" | "stderr",
+        listener: (data: Buffer) => void,
+    ): typeof nodemon;
 
-    function once(event: string | symbol, listener: (...args: any[]) => void): typeof nodemon;
+    function once(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): typeof nodemon;
     function once(
         event: "start" | "exit" | "crash" | "config:update" | "readable",
         listener: () => void,
     ): typeof nodemon;
-    function once(event: "quit", listener: (code?: number) => void): typeof nodemon;
-    function once(event: "restart", listener: (files?: string[]) => void): typeof nodemon;
-    function once(event: "watching", listener: (file: string) => void): typeof nodemon;
-    function once(event: "log", listener: (msg: LogMessage) => void): typeof nodemon;
-    function once(event: "stdout" | "stderr", listener: (data: Buffer) => void): typeof nodemon;
+    function once(
+        event: "quit",
+        listener: (code?: number) => void,
+    ): typeof nodemon;
+    function once(
+        event: "restart",
+        listener: (files?: string[]) => void,
+    ): typeof nodemon;
+    function once(
+        event: "watching",
+        listener: (file: string) => void,
+    ): typeof nodemon;
+    function once(
+        event: "log",
+        listener: (msg: LogMessage) => void,
+    ): typeof nodemon;
+    function once(
+        event: "stdout" | "stderr",
+        listener: (data: Buffer) => void,
+    ): typeof nodemon;
 
     function removeAllListeners(event?: string | symbol): typeof nodemon;
 
     function emit(event: string | symbol, ...args: any[]): boolean;
-    function emit(event: "start" | "exit" | "crash" | "config:update" | "readable"): boolean;
+    function emit(
+        event: "start" | "exit" | "crash" | "config:update" | "readable",
+    ): boolean;
     function emit(event: "quit", code?: number): boolean;
     function emit(event: "restart", files?: string[]): boolean;
     function emit(event: "watching", listener: (file: string) => void): boolean;
@@ -102,9 +161,11 @@ declare namespace nodemon {
         /**
          * The global config file is useful for setting up default executables
          */
-        execMap?: {
-            [k: string]: any;
-        } | undefined;
+        execMap?:
+            | {
+                  [k: string]: any;
+              }
+            | undefined;
         events?: { [key: string]: string } | undefined;
         restartable?: string | undefined;
         args?: readonly string[] | undefined;

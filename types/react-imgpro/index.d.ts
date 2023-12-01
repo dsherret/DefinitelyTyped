@@ -32,45 +32,55 @@ declare namespace ReactImgpro {
         sepia?: boolean | undefined;
         dither565?: boolean | undefined;
         scale?: boolean | undefined;
-        scaleToFitImage?: {
-            width: number;
-            height: number;
-        } | undefined;
-        flip?: {
-            horizontal?: boolean | undefined;
-            vertical?: boolean | undefined;
-        } | undefined;
-        rotate?: {
-            degree: number;
-            mode: Mode;
-        } | undefined;
-        brightness?: number | undefined; /* should be -1 to 1 */
-        contrast?: number | undefined; /* should be -1 to 1 */
-        fade?: number | undefined; /* should be 0 - 1 */
-        opacity?: number | undefined; /* should be 0 - 1 */
-        blur?: number | undefined; /* should be 0 - 100 */
-        posterize?: number | undefined; /* should be 0 - 100 */
+        scaleToFitImage?:
+            | {
+                  width: number;
+                  height: number;
+              }
+            | undefined;
+        flip?:
+            | {
+                  horizontal?: boolean | undefined;
+                  vertical?: boolean | undefined;
+              }
+            | undefined;
+        rotate?:
+            | {
+                  degree: number;
+                  mode: Mode;
+              }
+            | undefined;
+        brightness?: number | undefined /* should be -1 to 1 */;
+        contrast?: number | undefined /* should be -1 to 1 */;
+        fade?: number | undefined /* should be 0 - 1 */;
+        opacity?: number | undefined /* should be 0 - 1 */;
+        blur?: number | undefined /* should be 0 - 100 */;
+        posterize?: number | undefined /* should be 0 - 100 */;
         cover?: Size | undefined;
         contain?: Size | undefined;
-        colors?: {
-            lighten?: number | undefined;
-            brighten?: number | undefined;
-            darken?: number | undefined;
-            desaturate?: number | undefined;
-            saturate?: number | undefined;
-            greyscale?: number | undefined;
-            spin?: number | undefined;
-            mix?: {
-                color?: string | undefined;
-                amount?: number | undefined;
-            } | undefined;
-            tint?: number | undefined;
-            xor?: number | undefined;
-            shade?: number | undefined;
-            red?: number | undefined;
-            green?: number | undefined;
-            blue?: number | undefined;
-        } | undefined;
+        colors?:
+            | {
+                  lighten?: number | undefined;
+                  brighten?: number | undefined;
+                  darken?: number | undefined;
+                  desaturate?: number | undefined;
+                  saturate?: number | undefined;
+                  greyscale?: number | undefined;
+                  spin?: number | undefined;
+                  mix?:
+                      | {
+                            color?: string | undefined;
+                            amount?: number | undefined;
+                        }
+                      | undefined;
+                  tint?: number | undefined;
+                  xor?: number | undefined;
+                  shade?: number | undefined;
+                  red?: number | undefined;
+                  green?: number | undefined;
+                  blue?: number | undefined;
+              }
+            | undefined;
         storage?: boolean | undefined;
         disableWebWorker?: boolean | undefined;
         disableRerender?: boolean | undefined;

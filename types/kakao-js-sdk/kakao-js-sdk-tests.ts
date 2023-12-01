@@ -200,7 +200,8 @@ function test_linkCreateDefaultButtonTypeFeed() {
         content: {
             title: "디저트 사진",
             description: "아메리카노, 빵, 케익",
-            imageUrl: "http://mud-kage.kakao.co.kr/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
+            imageUrl:
+                "http://mud-kage.kakao.co.kr/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
             link: {
                 mobileWebUrl: "https://developers.kakao.com",
                 androidExecParams: "test",
@@ -241,7 +242,8 @@ function test_linkCreateDefaultButtonTypeList() {
             {
                 title: "취미의 특징, 탁구",
                 description: "스포츠",
-                imageUrl: "http://k.kakaocdn.net/dn/bDPMIb/btqgeoTRQvd/49BuF1gNo6UXkdbKecx600/kakaolink40_original.png",
+                imageUrl:
+                    "http://k.kakaocdn.net/dn/bDPMIb/btqgeoTRQvd/49BuF1gNo6UXkdbKecx600/kakaolink40_original.png",
                 link: {
                     mobileWebUrl: "https://developers.kakao.com",
                     webUrl: "https://developers.kakao.com",
@@ -250,7 +252,8 @@ function test_linkCreateDefaultButtonTypeList() {
             {
                 title: "크림으로 이해하는 커피이야기",
                 description: "음식",
-                imageUrl: "http://k.kakaocdn.net/dn/QPeNt/btqgeSfSsCR/0QJIRuWTtkg4cYc57n8H80/kakaolink40_original.png",
+                imageUrl:
+                    "http://k.kakaocdn.net/dn/QPeNt/btqgeSfSsCR/0QJIRuWTtkg4cYc57n8H80/kakaolink40_original.png",
                 link: {
                     mobileWebUrl: "https://developers.kakao.com",
                     webUrl: "https://developers.kakao.com",
@@ -259,7 +262,8 @@ function test_linkCreateDefaultButtonTypeList() {
             {
                 title: "감성이 가득한 분위기",
                 description: "사진",
-                imageUrl: "http://k.kakaocdn.net/dn/c7MBX4/btqgeRgWhBy/ZMLnndJFAqyUAnqu4sQHS0/kakaolink40_original.png",
+                imageUrl:
+                    "http://k.kakaocdn.net/dn/c7MBX4/btqgeRgWhBy/ZMLnndJFAqyUAnqu4sQHS0/kakaolink40_original.png",
                 link: {
                     mobileWebUrl: "https://developers.kakao.com",
                     webUrl: "https://developers.kakao.com",
@@ -294,7 +298,8 @@ function test_linkCreateDefaultButtonTypeLocation() {
         content: {
             title: "신메뉴 출시♥︎ 체리블라썸라떼",
             description: "이번 주는 체리블라썸라떼 1+1",
-            imageUrl: "http://k.kakaocdn.net/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png",
+            imageUrl:
+                "http://k.kakaocdn.net/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png",
             link: {
                 mobileWebUrl: "https://developers.kakao.com",
                 webUrl: "https://developers.kakao.com",
@@ -323,7 +328,8 @@ function test_linkCreateDefaultButtonTypeCommerce() {
         objectType: "commerce",
         content: {
             title: "언제 어디든, 더 쉽고 편하게 당신의 일상을 더 즐겁게, 헤이 라이언의 이야기를 들려드릴게요.",
-            imageUrl: "http://k.kakaocdn.net/dn/dScJiJ/btqB3cwK1Hi/pv5qHVwetz5RZfPZR3C5K1/kakaolink40_original.png",
+            imageUrl:
+                "http://k.kakaocdn.net/dn/dScJiJ/btqB3cwK1Hi/pv5qHVwetz5RZfPZR3C5K1/kakaolink40_original.png",
             link: {
                 mobileWebUrl: "https://developers.kakao.com",
                 webUrl: "https://developers.kakao.com",
@@ -358,8 +364,7 @@ function test_linkCreateDefaultButtonTypeText() {
     Kakao.Link.createDefaultButton({
         container: "#create-kakao-link-btn",
         objectType: "text",
-        text:
-            "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
+        text: "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
         link: {
             mobileWebUrl: "https://developers.kakao.com",
             webUrl: "https://developers.kakao.com",
@@ -373,7 +378,8 @@ function test_linkSendDefaultTypeFeed() {
         content: {
             title: "디저트 사진",
             description: "아메리카노, 빵, 케익",
-            imageUrl: "http://mud-kage.kakao.co.kr/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
+            imageUrl:
+                "http://mud-kage.kakao.co.kr/dn/NTmhS/btqfEUdFAUf/FjKzkZsnoeE4o19klTOVI1/openlink_640x640s.jpg",
             link: {
                 mobileWebUrl: "https://developers.kakao.com",
                 androidExecParams: "test",
@@ -413,7 +419,8 @@ function test_linkSendDefaultTypeList() {
             {
                 title: "취미의 특징, 탁구",
                 description: "스포츠",
-                imageUrl: "http://k.kakaocdn.net/dn/bDPMIb/btqgeoTRQvd/49BuF1gNo6UXkdbKecx600/kakaolink40_original.png",
+                imageUrl:
+                    "http://k.kakaocdn.net/dn/bDPMIb/btqgeoTRQvd/49BuF1gNo6UXkdbKecx600/kakaolink40_original.png",
                 link: {
                     mobileWebUrl: "https://developers.kakao.com",
                     webUrl: "https://developers.kakao.com",
@@ -422,7 +429,8 @@ function test_linkSendDefaultTypeList() {
             {
                 title: "크림으로 이해하는 커피이야기",
                 description: "음식",
-                imageUrl: "http://k.kakaocdn.net/dn/QPeNt/btqgeSfSsCR/0QJIRuWTtkg4cYc57n8H80/kakaolink40_original.png",
+                imageUrl:
+                    "http://k.kakaocdn.net/dn/QPeNt/btqgeSfSsCR/0QJIRuWTtkg4cYc57n8H80/kakaolink40_original.png",
                 link: {
                     mobileWebUrl: "https://developers.kakao.com",
                     webUrl: "https://developers.kakao.com",
@@ -431,7 +439,8 @@ function test_linkSendDefaultTypeList() {
             {
                 title: "감성이 가득한 분위기",
                 description: "사진",
-                imageUrl: "http://k.kakaocdn.net/dn/c7MBX4/btqgeRgWhBy/ZMLnndJFAqyUAnqu4sQHS0/kakaolink40_original.png",
+                imageUrl:
+                    "http://k.kakaocdn.net/dn/c7MBX4/btqgeRgWhBy/ZMLnndJFAqyUAnqu4sQHS0/kakaolink40_original.png",
                 link: {
                     mobileWebUrl: "https://developers.kakao.com",
                     webUrl: "https://developers.kakao.com",
@@ -465,7 +474,8 @@ function test_linkSendDefaultTypeLocation() {
         content: {
             title: "신메뉴 출시♥︎ 체리블라썸라떼",
             description: "이번 주는 체리블라썸라떼 1+1",
-            imageUrl: "http://k.kakaocdn.net/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png",
+            imageUrl:
+                "http://k.kakaocdn.net/dn/bSbH9w/btqgegaEDfW/vD9KKV0hEintg6bZT4v4WK/kakaolink40_original.png",
             link: {
                 mobileWebUrl: "https://developers.kakao.com",
                 webUrl: "https://developers.kakao.com",
@@ -493,7 +503,8 @@ function test_linkSendDefaultTypeCommerce() {
         objectType: "commerce",
         content: {
             title: "언제 어디든, 더 쉽고 편하게 당신의 일상을 더 즐겁게, 헤이 라이언의 이야기를 들려드릴게요.",
-            imageUrl: "http://k.kakaocdn.net/dn/dScJiJ/btqB3cwK1Hi/pv5qHVwetz5RZfPZR3C5K1/kakaolink40_original.png",
+            imageUrl:
+                "http://k.kakaocdn.net/dn/dScJiJ/btqB3cwK1Hi/pv5qHVwetz5RZfPZR3C5K1/kakaolink40_original.png",
             link: {
                 mobileWebUrl: "https://developers.kakao.com",
                 webUrl: "https://developers.kakao.com",
@@ -527,8 +538,7 @@ function test_linkSendDefaultTypeCommerce() {
 function test_linkSendDefaultTypeText() {
     Kakao.Link.sendDefault({
         objectType: "text",
-        text:
-            "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
+        text: "기본 템플릿으로 제공되는 텍스트 템플릿은 텍스트를 최대 200자까지 표시할 수 있습니다. 텍스트 템플릿은 텍스트 영역과 하나의 기본 버튼을 가집니다. 임의의 버튼을 설정할 수도 있습니다. 여러 장의 이미지, 프로필 정보 등 보다 확장된 형태의 카카오링크는 다른 템플릿을 이용해 보낼 수 있습니다.",
         link: {
             mobileWebUrl: "https://developers.kakao.com",
             webUrl: "https://developers.kakao.com",
@@ -607,7 +617,7 @@ function test_linkImageUpload() {
 
     Kakao.Link.uploadImage({
         file: files,
-    }).then(res => {
+    }).then((res) => {
         console.log(res);
     });
 }
@@ -617,7 +627,7 @@ function test_linkImageScrap() {
 
     Kakao.Link.scrapImage({
         imageUrl: url,
-    }).then(res => {
+    }).then((res) => {
         console.log(res);
     });
 }

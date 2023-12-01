@@ -15,4 +15,6 @@ export interface CopyStaticFilesPluginInstance {
     setup(build: any): void;
 }
 
-export default function(options?: Partial<CopyStaticFilesOptions>): CopyStaticFilesPluginInstance;
+export default function (
+    options?: Partial<CopyStaticFilesOptions>,
+): CopyStaticFilesPluginInstance;

@@ -27,7 +27,9 @@ config = {
     ],
 };
 
-const customStrategy: WebpackErrorNotificationPlugin.Strategy = (msg: string) => {
+const customStrategy: WebpackErrorNotificationPlugin.Strategy = (
+    msg: string,
+) => {
     // todo
 };
 

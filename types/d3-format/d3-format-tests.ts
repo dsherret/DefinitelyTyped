@@ -66,7 +66,22 @@ const width: number | undefined = specifier.width;
 const comma: boolean = specifier.comma;
 const precision: number | undefined = specifier.precision;
 const trim: boolean = specifier.trim;
-const type: "e" | "f" | "g" | "r" | "s" | "%" | "p" | "b" | "o" | "d" | "x" | "X" | "c" | "" | "n" = specifier.type;
+const type:
+    | "e"
+    | "f"
+    | "g"
+    | "r"
+    | "s"
+    | "%"
+    | "p"
+    | "b"
+    | "o"
+    | "d"
+    | "x"
+    | "X"
+    | "c"
+    | ""
+    | "n" = specifier.type;
 
 const formatString: string = specifier.toString();
 
@@ -96,7 +111,18 @@ localeDef = {
     thousands: "\u066c",
     grouping: [3],
     currency: ["", ""],
-    numerals: ["\u0660", "\u0661", "\u0662", "\u0663", "\u0664", "\u0665", "\u0666", "\u0667", "\u0668", "\u0669"],
+    numerals: [
+        "\u0660",
+        "\u0661",
+        "\u0662",
+        "\u0663",
+        "\u0664",
+        "\u0665",
+        "\u0666",
+        "\u0667",
+        "\u0668",
+        "\u0669",
+    ],
 };
 
 localeDef = {
@@ -120,5 +146,9 @@ localeObj = d3Format.formatLocale(localeDef);
 
 localeObj = d3Format.formatDefaultLocale(localeDef);
 
-const formatFactory: (specifier: string) => (n: number) => string = localeObj.format;
-const formatPrefixFactory: (specifier: string, value: number) => (n: number) => string = localeObj.formatPrefix;
+const formatFactory: (specifier: string) => (n: number) => string =
+    localeObj.format;
+const formatPrefixFactory: (
+    specifier: string,
+    value: number,
+) => (n: number) => string = localeObj.formatPrefix;

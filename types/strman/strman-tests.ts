@@ -67,5 +67,7 @@ strman.toUpperCase("hello world"); // $ExpectType string
 strman.transliterate("value"); // $ExpectType string
 strman.trim("  hello  "); // $ExpectType string
 strman.truncate("hello world", 8, "..."); // $ExpectType string
-strman.urlDecode("https://github.com/dleitee/strman/&name=%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA"); // $ExpectType string
+strman.urlDecode(
+    "https://github.com/dleitee/strman/&name=%C3%A1%C3%A9%C3%AD%C3%B3%C3%BA",
+); // $ExpectType string
 strman.urlEncode("https://github.com/dleitee/strman/&name=áéíóú"); // $ExpectType string

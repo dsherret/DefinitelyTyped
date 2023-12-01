@@ -45,7 +45,11 @@ declare namespace domtagger {
          * }
          * ```
          */
-        attribute(element: Element, name: string, attribute: Attr): (value: any) => void;
+        attribute(
+            element: Element,
+            name: string,
+            attribute: Attr,
+        ): (value: any) => void;
 
         /**
          * How to handle cases where content can only be some text.
@@ -77,7 +81,11 @@ declare namespace domtagger {
     }
 }
 
-declare function domtagger(opts: domtagger.SVGOptions): (template: TemplateStringsArray, ...args: any[]) => SVGElement;
-declare function domtagger(opts: domtagger.Options): (template: TemplateStringsArray, ...args: any[]) => HTMLElement;
+declare function domtagger(
+    opts: domtagger.SVGOptions,
+): (template: TemplateStringsArray, ...args: any[]) => SVGElement;
+declare function domtagger(
+    opts: domtagger.Options,
+): (template: TemplateStringsArray, ...args: any[]) => HTMLElement;
 
 export = domtagger;

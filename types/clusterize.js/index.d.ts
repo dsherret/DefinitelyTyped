@@ -12,7 +12,9 @@ declare class Clusterize {
 }
 
 declare namespace Clusterize {
-    type Setup = { scrollId: string; contentId: string } | { scrollElem: HTMLElement; contentElem: HTMLElement };
+    type Setup =
+        | { scrollId: string; contentId: string }
+        | { scrollElem: HTMLElement; contentElem: HTMLElement };
 
     type Options = Setup & {
         rows?: string[] | undefined;

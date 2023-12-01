@@ -62,7 +62,9 @@ new myErrorDefaultMessage(); // $ExpectType CustomError<DefaultData>
 new myErrorDefaultMessage().data; // $ExpectType DataObject<DefaultData>
 
 makeError("MyError", "abc", { answer: 42 }); // $ExpectType CustomErrorConstructor<{ answer: number; }>
-const myErrorDefaultMessageDefaultData = makeError("MyError", "abc", { answer: 42 }); // $ExpectType CustomErrorConstructor<{ answer: number; }>
+const myErrorDefaultMessageDefaultData = makeError("MyError", "abc", {
+    answer: 42,
+}); // $ExpectType CustomErrorConstructor<{ answer: number; }>
 myErrorDefaultMessageDefaultData(); // $ExpectType CustomError<{ answer: number; }>
 myErrorDefaultMessageDefaultData().data; // $ExpectType DataObject<{ answer: number; }>
 myErrorDefaultMessageDefaultData().data.answer; // $ExpectType number
@@ -102,8 +104,14 @@ new myErrorDefaultMessageDefaultData({ aaa: "aaa" }, { bbb: "bbb" }).data.bbb; /
 // @ts-expect-error
 new myErrorDefaultMessageDefaultData({ aaa: "aaa" }, { bbb: "bbb" }).data.aaa;
 
-makeError("MyError", "abc", { answer: 42, proto: myErrorDefaultMessageDefaultData() }); // $ExpectType CustomErrorConstructor<{ answer: number; proto: CustomError<Record<string, unknown>>; }>
-const myErrorProto = makeError("MyError", "abc", { answer: 42, proto: myErrorDefaultMessageDefaultData() }); // $ExpectType CustomErrorConstructor<{ answer: number; proto: CustomError<Record<string, unknown>>; }>
+makeError("MyError", "abc", {
+    answer: 42,
+    proto: myErrorDefaultMessageDefaultData(),
+}); // $ExpectType CustomErrorConstructor<{ answer: number; proto: CustomError<Record<string, unknown>>; }>
+const myErrorProto = makeError("MyError", "abc", {
+    answer: 42,
+    proto: myErrorDefaultMessageDefaultData(),
+}); // $ExpectType CustomErrorConstructor<{ answer: number; proto: CustomError<Record<string, unknown>>; }>
 myErrorProto(); // $ExpectType CustomError<{ answer: number; proto: CustomError<Record<string, unknown>>; }>
 myErrorProto().data; // $ExpectType DataObject<{ answer: number; proto: CustomError<Record<string, unknown>>; }>
 myErrorProto().data.answer; // $ExpectType number
@@ -127,11 +135,9 @@ new myErrorVal(); // $ExpectType CustomError<{}>
 new myErrorVal("abc", { answer: 42 }); // $ExpectType CustomError<{ answer: number; }>
 
 // $ExpectType CustomErrorConstructor<{ answer: number; }>
-const myErrorValDefaultMessageDefaultData: makeError.CustomErrorConstructor<{ answer: number }> = makeError(
-    "MyError",
-    "abc",
-    { answer: 42 },
-);
+const myErrorValDefaultMessageDefaultData: makeError.CustomErrorConstructor<{
+    answer: number;
+}> = makeError("MyError", "abc", { answer: 42 });
 myErrorValDefaultMessageDefaultData(); // $ExpectType CustomError<{ answer: number; }>
 myErrorValDefaultMessageDefaultData().data; // $ExpectType DataObject<{ answer: number; }>
 new myErrorValDefaultMessageDefaultData(); // $ExpectType CustomError<{ answer: number; }>
@@ -143,10 +149,16 @@ const CutomErrorNew: makeError.CustomError<{}> = new myErrorVal(); // $ExpectTyp
 CutomErrorNew.data; // $ExpectType DataObject<{}>
 
 const data = { answer: 42 };
-const CustomErrorData: makeError.CustomError<typeof data> = myErrorVal("abc", data); // $ExpectType CustomError<{ answer: number; }>
+const CustomErrorData: makeError.CustomError<typeof data> = myErrorVal(
+    "abc",
+    data,
+); // $ExpectType CustomError<{ answer: number; }>
 CustomErrorData.data; // $ExpectType DataObject<{ answer: number; }>
 CustomErrorData.data.answer; // $ExpectType number
-const CustomErrorDataNew: makeError.CustomError<typeof data> = new myErrorVal("abc", data); // $ExpectType CustomError<{ answer: number; }>
+const CustomErrorDataNew: makeError.CustomError<typeof data> = new myErrorVal(
+    "abc",
+    data,
+); // $ExpectType CustomError<{ answer: number; }>
 CustomErrorDataNew.data; // $ExpectType DataObject<{ answer: number; }>
 CustomErrorDataNew.data.answer; // $ExpectType number
 

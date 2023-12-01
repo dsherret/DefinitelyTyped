@@ -1,6 +1,6 @@
 function test_deviceInfo() {
     // $ExpectType void
-    window.webOS.deviceInfo(deviceInfo => {
+    window.webOS.deviceInfo((deviceInfo) => {
         deviceInfo; // $ExpectType DeviceInfo
         deviceInfo.modelName; // $ExpectType string
         deviceInfo.modelNameAscii; // $ExpectType string
@@ -26,7 +26,7 @@ function test_fetchAppId() {
 
 function test_fetchAppInfo() {
     // $ExpectType void
-    window.webOS.fetchAppInfo(appInfo => {
+    window.webOS.fetchAppInfo((appInfo) => {
         appInfo; // $ExpectType AppInfo | undefined
 
         if (appInfo) {
@@ -89,18 +89,21 @@ function test_systemInfo() {
 }
 
 function test_service_request() {
-    const returnedValue = window.webOS.service.request("luna://com.palm.systemservice", {
-        method: "time/getSystemTime",
-        parameters: { subscribe: true },
-        onSuccess({ returnValue }) {
-            returnValue; // $ExpectType true
+    const returnedValue = window.webOS.service.request(
+        "luna://com.palm.systemservice",
+        {
+            method: "time/getSystemTime",
+            parameters: { subscribe: true },
+            onSuccess({ returnValue }) {
+                returnValue; // $ExpectType true
+            },
+            onFailure({ returnValue, errorCode, errorText }) {
+                returnValue; // $ExpectType false
+                errorCode; // $ExpectType string
+                errorText; // $ExpectType string
+            },
         },
-        onFailure({ returnValue, errorCode, errorText }) {
-            returnValue; // $ExpectType false
-            errorCode; // $ExpectType string
-            errorText; // $ExpectType string
-        },
-    });
+    );
 
     window.webOS.service.request("luna://com.palm.systemservice", {
         method: "time/getSystemTime",

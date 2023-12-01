@@ -19,19 +19,21 @@ declare class ScreenBufferHD extends ScreenBuffer {
     ): void;
 
     draw(
-        options?: ScreenBuffer.DrawOptions | { blending: ScreenBufferHD.IsBlending },
+        options?:
+            | ScreenBuffer.DrawOptions
+            | { blending: ScreenBufferHD.IsBlending },
     ): void;
 
     fill(
         options?:
             | {
-                attr: ScreenBuffer.Attributes | number;
-                char?: string | undefined;
-            }
+                  attr: ScreenBuffer.Attributes | number;
+                  char?: string | undefined;
+              }
             | {
-                attr: ScreenBufferHD.Attributes | number;
-                char?: string | undefined;
-            },
+                  attr: ScreenBufferHD.Attributes | number;
+                  char?: string | undefined;
+              },
     ): void;
 }
 

@@ -1,7 +1,8 @@
 import * as React from "react";
 import { ReactAttr } from "../../../typings/shared";
 
-export interface FileUploaderDropContainerProps extends ReactAttr<HTMLLabelElement> {
+export interface FileUploaderDropContainerProps
+    extends ReactAttr<HTMLLabelElement> {
     /**
      * Specify the types of files that this input should be able to receive
      */
@@ -43,7 +44,12 @@ export interface FileUploaderDropContainerProps extends ReactAttr<HTMLLabelEleme
      * Event handler that is called after files are added to the uploader
      * The event handler signature looks like `onAddFiles(evt, { addedFiles })`
      */
-    onAddFiles?: ((event: React.DragEvent<HTMLElement>, content: { addedFiles: File[] }) => void) | undefined;
+    onAddFiles?:
+        | ((
+              event: React.DragEvent<HTMLElement>,
+              content: { addedFiles: File[] },
+          ) => void)
+        | undefined;
 
     /**
      * Provide a custom regex pattern for the acceptedTypes

@@ -1,23 +1,30 @@
 import { Component, ElementType, ReactElement } from "react";
 import { TransitionActions, TransitionProps } from "./Transition";
 
-export interface IntrinsicTransitionGroupProps<T extends keyof JSX.IntrinsicElements = "div">
-    extends TransitionActions
-{
+export interface IntrinsicTransitionGroupProps<
+    T extends keyof JSX.IntrinsicElements = "div",
+> extends TransitionActions {
     component?: T | null | undefined;
 }
 
-export interface ComponentTransitionGroupProps<T extends ElementType> extends TransitionActions {
+export interface ComponentTransitionGroupProps<T extends ElementType>
+    extends TransitionActions {
     component: T;
 }
 
-export type TransitionGroupProps<T extends keyof JSX.IntrinsicElements = "div", V extends ElementType = any> =
+export type TransitionGroupProps<
+    T extends keyof JSX.IntrinsicElements = "div",
+    V extends ElementType = any,
+> =
     | (IntrinsicTransitionGroupProps<T> & JSX.IntrinsicElements[T])
-    | (ComponentTransitionGroupProps<V>) & {
-        children?: ReactElement<TransitionProps<any>> | Array<ReactElement<TransitionProps<any>>> | undefined;
-        childFactory?(child: ReactElement): ReactElement;
-        [prop: string]: any;
-    };
+    | (ComponentTransitionGroupProps<V> & {
+          children?:
+              | ReactElement<TransitionProps<any>>
+              | Array<ReactElement<TransitionProps<any>>>
+              | undefined;
+          childFactory?(child: ReactElement): ReactElement;
+          [prop: string]: any;
+      });
 
 /**
  * The `<TransitionGroup>` component manages a set of `<Transition>` components

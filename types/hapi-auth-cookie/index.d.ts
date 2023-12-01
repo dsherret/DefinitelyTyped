@@ -1,14 +1,27 @@
-import { AuthCredentials, Plugin, Request, ResponseObject, ResponseToolkit, ServerStateCookieOptions } from "hapi";
+import {
+    AuthCredentials,
+    Plugin,
+    Request,
+    ResponseObject,
+    ResponseToolkit,
+    ServerStateCookieOptions,
+} from "hapi";
 
 declare module "hapi" {
     interface ServerAuth {
-        strategy(name: string, scheme: "cookie", options?: hapiAuthCookie.Options): void;
+        strategy(
+            name: string,
+            scheme: "cookie",
+            options?: hapiAuthCookie.Options,
+        ): void;
     }
 
     interface PluginSpecificConfiguration {
-        "hapi-auth-cookie"?: {
-            redirectTo?: boolean | undefined;
-        } | undefined;
+        "hapi-auth-cookie"?:
+            | {
+                  redirectTo?: boolean | undefined;
+              }
+            | undefined;
     }
 
     interface Request {
@@ -26,7 +39,10 @@ declare namespace hapiAuthCookie {
         valid: boolean;
         credentials?: AuthCredentials | undefined;
     }
-    type ValidateFunction = (request?: Request, session?: object) => Promise<ValidateResponse>;
+    type ValidateFunction = (
+        request?: Request,
+        session?: object,
+    ) => Promise<ValidateResponse>;
     type RedirectToFunction = (request?: Request) => string;
 
     /**
@@ -38,7 +54,7 @@ declare namespace hapiAuthCookie {
          *
          * @default { name: 'sid', clearInvalid: false, isSameSite: 'Strict', isSecure: true, isHttpOnly: true }
          */
-        cookie?: ServerStateCookieOptions & { name: string } | undefined;
+        cookie?: (ServerStateCookieOptions & { name: string }) | undefined;
 
         /**
          * Automatically sets the session cookie after validation to extend the current session for a new TTL duration.

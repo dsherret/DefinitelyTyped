@@ -1,14 +1,12 @@
 declare namespace Ext {
     export interface IAbstractComponent
-        extends
-            Ext.IBase,
+        extends Ext.IBase,
             Ext.util.IPositionable,
             Ext.util.IObservable,
             Ext.util.IAnimate,
             Ext.util.IElementContainer,
             Ext.util.IRenderable,
-            Ext.state.IStateful
-    {
+            Ext.state.IStateful {
         /** [Config Option] (String/Object) */
         autoEl?: any;
         /** [Config Option] (Ext.ComponentLoader/Object/String/Boolean) */
@@ -139,7 +137,12 @@ declare namespace Ext {
          * @param options Object
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(element?: any, listeners?: any, scope?: any, options?: any): any;
+        addListener?(
+            element?: any,
+            listeners?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -148,14 +151,24 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Save a property to the given state object if it is not its default or configured value
          * @param state Object The state object.
          * @param propName String The name of the property on this object to save.
          * @param value String The value of the state property (defaults to this[propName]).
          * @returns Boolean The state object or a new object if state was null and the property was saved.
          */
-        addPropertyToState?(state?: any, propName?: string, value?: string): boolean;
+        addPropertyToState?(
+            state?: any,
+            propName?: string,
+            value?: string,
+        ): boolean;
         /** [Method] Add events that will trigger the state to be saved
          * @param events String/String[] The event name or an array of event names.
          */
@@ -170,7 +183,12 @@ declare namespace Ext {
          * @param oldWidth Number/undefined The old width, or undefined if this was the initial layout.
          * @param oldHeight Number/undefined The old height, or undefined if this was the initial layout.
          */
-        afterComponentLayout?(width?: number, height?: number, oldWidth?: any, oldHeight?: any): void;
+        afterComponentLayout?(
+            width?: number,
+            height?: number,
+            oldWidth?: any,
+            oldHeight?: any,
+        ): void;
         /** [Method] Allows addition of behavior after rendering is complete  */
         afterRender?(): void;
         /** [Method] Template method called after a Component has been positioned
@@ -185,7 +203,12 @@ declare namespace Ext {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.util.Positionable this
          */
-        alignTo?(element?: any, position?: string, offsets?: number[], animate?: any): Ext.util.IPositionable;
+        alignTo?(
+            element?: any,
+            position?: string,
+            offsets?: number[],
+            animate?: any,
+        ): Ext.util.IPositionable;
         /** [Method] Anchors an element to another element and realigns it when the window is resized
          * @param element Ext.util.Positionable/HTMLElement/String The Positionable, HTMLElement, or id of the element to align to.
          * @param position String The position to align to
@@ -296,7 +319,11 @@ declare namespace Ext {
          * @param offsets Number[] Offset the positioning by [x, y]
          * @returns Number[] [x, y]
          */
-        getAlignToXY?(element?: any, position?: string, offsets?: number[]): number[];
+        getAlignToXY?(
+            element?: any,
+            position?: string,
+            offsets?: number[],
+        ): number[];
         /** [Method] Gets the x y coordinates specified by the anchor position on the element
          * @param anchor String The specified anchor position. See alignTo for details on supported anchor positions.
          * @param local Boolean True to get the local (element top/left-relative) anchor position instead of page coordinates
@@ -320,7 +347,11 @@ declare namespace Ext {
          * @param proposedSize Number[] A proposed [width, height] size to constrain instead of using the element's current size
          * @returns Number[]/Boolean If the element needs to be translated, an [X, Y] vector by which this element must be translated. Otherwise, false.
          */
-        getConstrainVector?(constrainTo?: any, proposedPosition?: number[], proposedSize?: number[]): any;
+        getConstrainVector?(
+            constrainTo?: any,
+            proposedPosition?: number[],
+            proposedSize?: number[],
+        ): any;
         /** [Method] Retrieves the top level element representing this component
          * @returns Ext.dom.Element
          */
@@ -488,7 +519,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Move the element relative to its current position
          * @param direction String Possible values are:  "l" (or "left") "r" (or "right") "t" (or "top", or "up") "b" (or "bottom", or "down")
          * @param distance Number How far to move the element in pixels
@@ -549,7 +586,12 @@ declare namespace Ext {
          * @param oldWidth Object
          * @param oldHeight Object
          */
-        onResize?(width?: any, height?: any, oldWidth?: any, oldHeight?: any): void;
+        onResize?(
+            width?: any,
+            height?: any,
+            oldWidth?: any,
+            oldHeight?: any,
+        ): void;
         /** [Method] Template method to do any post blur processing
          * @param e Ext.EventObject The event object
          */
@@ -604,7 +646,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Method which removes a specified UI  uiCls from the components element
          * @param ui String The UI to add to the element.
          */
@@ -626,7 +673,11 @@ declare namespace Ext {
          * @param stateName String The name to use for the property in state.
          * @returns Boolean True if the property was saved, false if not.
          */
-        savePropToState?(propName?: string, state?: any, stateName?: string): boolean;
+        savePropToState?(
+            propName?: string,
+            state?: any,
+            stateName?: string,
+        ): boolean;
         /** [Method] Gathers additional named properties of the instance and adds their current values to the passed state object
          * @param propNames String/String[] The name (or array of names) of the property to save.
          * @param state Object The state object in to which to save the property values.
@@ -689,7 +740,10 @@ declare namespace Ext {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.util.Positionable this
          */
-        setRegion?(region?: Ext.util.IRegion, animate?: any): Ext.util.IPositionable;
+        setRegion?(
+            region?: Ext.util.IRegion,
+            animate?: any,
+        ): Ext.util.IPositionable;
         /** [Method] Sets the width and height of this Component
          * @param width Number/String/Object The new width to set. This may be one of:  A Number specifying the new width in the Element's Ext.Element.defaultUnits (by default, pixels). A String used to set the CSS width style. A size object in the format {width: widthValue, height: heightValue}. undefined to leave the width unchanged.
          * @param height Number/String The new height to set (not required if a size object is passed as the first arg). This may be one of:  A Number specifying the new height in the Element's Ext.Element.defaultUnits (by default, pixels). A String used to set the CSS height style. Animation may not be used. undefined to leave the height unchanged.
@@ -971,8 +1025,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IAjax extends Ext.data.IConnection {
-    }
+    export interface IAjax extends Ext.data.IConnection {}
     export class Ajax {
         /** [Property] (Boolean) */
         static autoAbort: boolean;
@@ -1011,7 +1064,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -1020,7 +1078,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Call the original method that was previously overridden with override Ext define My Cat  constructor functi
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -1084,7 +1148,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -1111,7 +1181,11 @@ declare namespace Ext {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Removes an event handler
          * @param eventName String The type of event the handler was associated with.
          * @param fn Function The handler to remove. This must be a reference to the function passed into the Ext.util.Observable.addListener call.
@@ -1124,7 +1198,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sends an HTTP request to a remote server
          * @param options Object An object which may contain the following properties: (The options object may also contain any other property which might be needed to perform postprocessing in a callback because it is passed to callback functions.)
          * @returns Object The request object. This may be used to cancel the request.
@@ -1166,7 +1245,12 @@ declare namespace Ext {
          * @param params String Any extra parameters to pass
          * @param options Object The initial options
          */
-        static upload(form?: any, url?: string, params?: string, options?: any): void;
+        static upload(
+            form?: any,
+            url?: string,
+            params?: string,
+            options?: any,
+        ): void;
     }
 }
 declare namespace Ext.app {
@@ -1230,7 +1314,12 @@ declare namespace Ext.app {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -1239,7 +1328,13 @@ declare namespace Ext.app {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Registers one or more references
          * @param refs Object/Object[]
          */
@@ -1319,7 +1414,13 @@ declare namespace Ext.app {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -1358,7 +1459,12 @@ declare namespace Ext.app {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -1382,8 +1488,7 @@ declare namespace Ext.app {
     }
 }
 declare namespace Ext.app.domain {
-    export interface IComponent extends Ext.app.IEventDomain {
-    }
+    export interface IComponent extends Ext.app.IEventDomain {}
     export class Component {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -1429,8 +1534,7 @@ declare namespace Ext.app.domain {
     }
 }
 declare namespace Ext.app.domain {
-    export interface IController extends Ext.app.IEventDomain {
-    }
+    export interface IController extends Ext.app.IEventDomain {}
     export class Controller {
         /** [Config Option] (String) */
         static idProperty: string;
@@ -1478,8 +1582,7 @@ declare namespace Ext.app.domain {
     }
 }
 declare namespace Ext.app.domain {
-    export interface IDirect extends Ext.app.IEventDomain {
-    }
+    export interface IDirect extends Ext.app.IEventDomain {}
     export class Direct {
         /** [Config Option] (String) */
         static idProperty: string;
@@ -1527,8 +1630,7 @@ declare namespace Ext.app.domain {
     }
 }
 declare namespace Ext.app.domain {
-    export interface IGlobal extends Ext.app.IEventDomain {
-    }
+    export interface IGlobal extends Ext.app.IEventDomain {}
     export class Global {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -1572,8 +1674,7 @@ declare namespace Ext.app.domain {
     }
 }
 declare namespace Ext.app.domain {
-    export interface IStore extends Ext.app.IEventDomain {
-    }
+    export interface IStore extends Ext.app.IEventDomain {}
     export class Store {
         /** [Config Option] (String) */
         static idProperty: string;
@@ -1621,8 +1722,7 @@ declare namespace Ext.app.domain {
     }
 }
 declare namespace Ext.app {
-    export interface IEventBus extends Ext.IBase {
-    }
+    export interface IEventBus extends Ext.IBase {}
     export class EventBus {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -1690,8 +1790,7 @@ declare namespace Ext.app {
     }
 }
 declare namespace Ext {
-    export interface IArray {
-    }
+    export interface IArray {}
     export class Array {
         /** [Method] Filter through an array and remove empty item as defined in Ext isEmpty See filter
          * @param array Array
@@ -1722,7 +1821,12 @@ declare namespace Ext {
          * @param reverse Boolean Reverse the iteration order (loop from the end to the beginning) Defaults false
          * @returns Boolean See description for the fn parameter.
          */
-        static each(iterable?: any, fn?: any, scope?: any, reverse?: boolean): boolean;
+        static each(
+            iterable?: any,
+            fn?: any,
+            scope?: any,
+            reverse?: boolean,
+        ): boolean;
         /** [Method] Shallow compares the contents of 2 arrays using strict equality
          * @param array1 Array
          * @param array2 Array
@@ -1735,7 +1839,11 @@ declare namespace Ext {
          * @param removeCount Number The number of items to remove at index.
          * @returns Array The array passed.
          */
-        static erase(array?: any[], index?: number, removeCount?: number): any[];
+        static erase(
+            array?: any[],
+            index?: number,
+            removeCount?: number,
+        ): any[];
         /** [Method] Executes the specified function for each array element until the function returns a falsy value
          * @param array Array
          * @param fn Function Callback function for each item
@@ -1856,7 +1964,12 @@ declare namespace Ext {
          * @param insert Array An array of items to insert at index.
          * @returns Array The array passed.
          */
-        static replace(array?: any[], index?: number, removeCount?: number, insert?: any[]): any[];
+        static replace(
+            array?: any[],
+            index?: number,
+            removeCount?: number,
+            insert?: any[],
+        ): any[];
         /** [Method] Returns a shallow copy of a part of an array
          * @param array Array The array (or arguments object).
          * @param begin Number The index at which to begin. Negative values are offsets from the end of the array.
@@ -1884,7 +1997,12 @@ declare namespace Ext {
          * @param elements Object... The elements to add to the array. If you don't specify any elements, splice simply removes elements from the array.
          * @returns Array An array containing the removed items.
          */
-        static splice(array: any[], index: number, removeCount: number, ...elements: any[]): any[];
+        static splice(
+            array: any[],
+            index: number,
+            removeCount: number,
+            ...elements: any[]
+        ): any[];
         /** [Method] Calculates the sum of all items in the given array
          * @param array Array The Array to calculate the sum value of.
          * @returns Number The sum.
@@ -2437,7 +2555,10 @@ declare namespace Ext.button {
          * @param item Ext.menu.CheckItem The item to activate
          * @param suppressEvent Boolean True to prevent the button's change event from firing.
          */
-        setActiveItem?(item?: Ext.menu.ICheckItem, suppressEvent?: boolean): void;
+        setActiveItem?(
+            item?: Ext.menu.ICheckItem,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] This is normally called internally on button click but can be called externally to advance the button s active item */
         toggleSelected?(): void;
     }
@@ -2466,14 +2587,16 @@ declare namespace Ext {
          * @param item Ext.menu.CheckItem The item to activate
          * @param suppressEvent Boolean True to prevent the button's change event from firing.
          */
-        setActiveItem?(item?: Ext.menu.ICheckItem, suppressEvent?: boolean): void;
+        setActiveItem?(
+            item?: Ext.menu.ICheckItem,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] This is normally called internally on button click but can be called externally to advance the button s active item */
         toggleSelected?(): void;
     }
 }
 declare namespace Ext.button {
-    export interface IManager extends Ext.IBase {
-    }
+    export interface IManager extends Ext.IBase {}
     export class Manager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -2509,8 +2632,7 @@ declare namespace Ext.button {
     }
 }
 declare namespace Ext {
-    export interface IButtonToggleManager extends Ext.IBase {
-    }
+    export interface IButtonToggleManager extends Ext.IBase {}
     export class ButtonToggleManager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -2762,19 +2884,16 @@ declare namespace Ext.chart {
     }
 }
 declare namespace Ext.chart {
-    export interface ICallout extends Ext.IBase {
-    }
+    export interface ICallout extends Ext.IBase {}
 }
 declare namespace Ext.chart {
     export interface IChart
-        extends
-            Ext.draw.IComponent,
+        extends Ext.draw.IComponent,
             Ext.chart.theme.ITheme,
             Ext.chart.IMask,
             Ext.chart.INavigation,
             Ext.util.IBindable,
-            Ext.util.IObservable
-    {
+            Ext.util.IObservable {
         /** [Config Option] (Boolean/Object) */
         animate?: any;
         /** [Config Option] (Ext.chart.axis.Axis[]) */
@@ -2804,7 +2923,12 @@ declare namespace Ext.chart {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -2813,7 +2937,13 @@ declare namespace Ext.chart {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Binds a store to this instance
          * @param store Object
          * @param initial Object
@@ -2866,7 +2996,13 @@ declare namespace Ext.chart {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -2893,7 +3029,10 @@ declare namespace Ext.chart {
          * @param store Ext.data.AbstractStore The store being unbound
          * @param initial Boolean True if this store is being bound as initialization of the instance.
          */
-        onUnbindStore?(store?: Ext.data.IAbstractStore, initial?: boolean): void;
+        onUnbindStore?(
+            store?: Ext.data.IAbstractStore,
+            initial?: boolean,
+        ): void;
         /** [Method] Redraws the chart
          * @param resize Boolean flag which changes the default origin points of the chart for animations.
          */
@@ -2917,7 +3056,12 @@ declare namespace Ext.chart {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Restores the zoom to the original value  */
         restoreZoom?(): void;
         /** [Method] Resumes firing of the named event s
@@ -2980,7 +3124,12 @@ declare namespace Ext.chart {
          * @param display String The label.display type. May be false if the label is hidden
          * @returns Ext.draw.Sprite The created sprite that will draw the label.
          */
-        onCreateLabel?(storeItem?: Ext.data.IModel, item?: any, i?: number, display?: string): Ext.draw.ISprite;
+        onCreateLabel?(
+            storeItem?: Ext.data.IModel,
+            item?: any,
+            i?: number,
+            display?: string,
+        ): Ext.draw.ISprite;
         /** [Method] Called for updating the position of the label
          * @param label Ext.draw.Sprite The sprite that draws the label.
          * @param storeItem Ext.data.Model The element of the store that is related to the sprite.
@@ -3617,14 +3766,12 @@ declare namespace Ext.chart.series {
 }
 declare namespace Ext.chart.series {
     export interface ISeries
-        extends
-            Ext.IBase,
+        extends Ext.IBase,
             Ext.util.IObservable,
             Ext.chart.ILabel,
             Ext.chart.IHighlight,
             Ext.chart.ITip,
-            Ext.chart.ICallout
-    {
+            Ext.chart.ICallout {
         /** [Config Option] (Boolean/Object) */
         highlight?: any;
         /** [Config Option] (Object) */
@@ -3652,7 +3799,12 @@ declare namespace Ext.chart.series {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -3661,7 +3813,13 @@ declare namespace Ext.chart.series {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -3722,7 +3880,13 @@ declare namespace Ext.chart.series {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -3745,7 +3909,12 @@ declare namespace Ext.chart.series {
          * @param display String The label.display type. May be false if the label is hidden
          * @returns Ext.draw.Sprite The created sprite that will draw the label.
          */
-        onCreateLabel?(storeItem?: Ext.data.IModel, item?: any, i?: number, display?: string): Ext.draw.ISprite;
+        onCreateLabel?(
+            storeItem?: Ext.data.IModel,
+            item?: any,
+            i?: number,
+            display?: string,
+        ): Ext.draw.ISprite;
         /** [Method] Called for updating the position of the label
          * @param label Ext.draw.Sprite The sprite that draws the label.
          * @param storeItem Ext.data.Model The element of the store that is related to the sprite.
@@ -3783,7 +3952,12 @@ declare namespace Ext.chart.series {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -3816,8 +3990,7 @@ declare namespace Ext.chart.series {
     }
 }
 declare namespace Ext.chart {
-    export interface IShape extends Ext.IBase {
-    }
+    export interface IShape extends Ext.IBase {}
     export class Shape {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -3853,20 +4026,16 @@ declare namespace Ext.chart {
     }
 }
 declare namespace Ext.chart.theme {
-    export interface IBase extends Ext.IBase {
-    }
+    export interface IBase extends Ext.IBase {}
 }
 declare namespace Ext.chart.theme {
-    export interface ITheme {
-    }
+    export interface ITheme {}
 }
 declare namespace Ext.chart {
-    export interface ITip extends Ext.IBase {
-    }
+    export interface ITip extends Ext.IBase {}
 }
 declare namespace Ext.chart {
-    export interface ITipSurface extends Ext.draw.IComponent {
-    }
+    export interface ITipSurface extends Ext.draw.IComponent {}
 }
 declare namespace Ext {
     export interface IClass {
@@ -3893,8 +4062,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IClassManager {
-    }
+    export interface IClassManager {}
     export class ClassManager {
         /** [Method] Adds a batch of class name to alias mappings
          * @param aliases Object The set of mappings of the form className : [values...]
@@ -3988,7 +4156,9 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IComponent extends Ext.IAbstractComponent, Ext.util.IFloating {
+    export interface IComponent
+        extends Ext.IAbstractComponent,
+            Ext.util.IFloating {
         /** [Config Option] (Boolean) */
         autoScroll?: boolean | undefined;
         /** [Config Option] (Number/String) */
@@ -4086,7 +4256,12 @@ declare namespace Ext {
          * @param scope Function Only needed if the delay parameter is used. The scope (this reference) in which to execute the callback.
          * @returns Ext.Component The focused Component. Usually this Component. Some Containers may delegate focus to a descendant Component (Windows can do this through their defaultFocus config option.
          */
-        focus?(selectText?: boolean, delay?: any, callback?: any, scope?: any): Ext.IComponent;
+        focus?(
+            selectText?: boolean,
+            delay?: any,
+            callback?: any,
+            scope?: any,
+        ): Ext.IComponent;
         /** [Method] Retrieves the top level element representing this component
          * @returns Ext.dom.Element
          */
@@ -4206,7 +4381,11 @@ declare namespace Ext {
          * @param offsets Number[] Alignment offsets as used by Ext.util.Positionable.getAlignToXY.
          * @returns Ext.Component this
          */
-        showBy?(component?: any, position?: string, offsets?: number[]): Ext.IComponent;
+        showBy?(
+            component?: any,
+            position?: string,
+            offsets?: number[],
+        ): Ext.IComponent;
         /** [Method] Sends this Component to the back of lower z index than any other visible windows
          * @returns Ext.Component this
          */
@@ -4238,8 +4417,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IComponentManager extends Ext.IAbstractManager {
-    }
+    export interface IComponentManager extends Ext.IAbstractManager {}
     export class ComponentManager {
         /** [Property] (Ext.util.HashMap) */
         static all: Ext.util.IHashMap;
@@ -4321,8 +4499,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IComponentMgr extends Ext.IAbstractManager {
-    }
+    export interface IComponentMgr extends Ext.IAbstractManager {}
     export class ComponentMgr {
         /** [Property] (Ext.util.HashMap) */
         static all: Ext.util.IHashMap;
@@ -4404,8 +4581,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IComponentQuery extends Ext.IBase {
-    }
+    export interface IComponentQuery extends Ext.IBase {}
     export class ComponentQuery {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -4445,7 +4621,10 @@ declare namespace Ext {
          * @param root Ext.container.Container The Container within which to perform the query. If omitted, all Components within the document are included in the search. This parameter may also be an array of Components to filter according to the selector.
          * @returns Ext.Component[] The matched Components.
          */
-        static query(selector?: string, root?: Ext.container.IContainer): Ext.IComponent[];
+        static query(
+            selector?: string,
+            root?: Ext.container.IContainer,
+        ): Ext.IComponent[];
         /** [Method] Get the reference to the class from which this object was instantiated
          * @returns Ext.Class
          */
@@ -4682,7 +4861,10 @@ declare namespace Ext.container {
          * @param beforeBody Boolean An optional flag to limit the set of items to only those before the body (true) or after the body (false). All components are returned by default.
          * @returns Ext.Component[] The array of docked components meeting the specified criteria.
          */
-        getDockedItems?(selector?: string, beforeBody?: boolean): Ext.IComponent[];
+        getDockedItems?(
+            selector?: string,
+            beforeBody?: boolean,
+        ): Ext.IComponent[];
         /** [Method] Inserts docked item s to the panel at the indicated position
          * @param pos Number The index at which the Component will be inserted
          * @param component Object/Object[] The Component or array of components to add. The components must include a 'dock' paramater on each component to indicate where it should be docked ('top', 'right', 'bottom', 'left').
@@ -4704,8 +4886,7 @@ declare namespace Ext.container {
     }
 }
 declare namespace Ext.container {
-    export interface IMonitor extends Ext.IBase {
-    }
+    export interface IMonitor extends Ext.IBase {}
 }
 declare namespace Ext.container {
     export interface IViewport extends Ext.container.IContainer {
@@ -4724,7 +4905,10 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.data {
-    export interface IAbstractStore extends Ext.IBase, Ext.util.IObservable, Ext.util.ISortable {
+    export interface IAbstractStore
+        extends Ext.IBase,
+            Ext.util.IObservable,
+            Ext.util.ISortable {
         /** [Config Option] (Boolean/Object) */
         autoLoad?: any;
         /** [Config Option] (Boolean) */
@@ -4770,7 +4954,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -4779,7 +4968,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -4850,7 +5045,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -4891,7 +5092,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes automatically syncing the Store with its Proxy  */
         resumeAutoSync?(): void;
         /** [Method] Resumes firing of the named event s
@@ -5038,7 +5244,8 @@ declare namespace Ext.data.association {
     }
 }
 declare namespace Ext.data {
-    export interface IBelongsToAssociation extends Ext.data.association.IAssociation {
+    export interface IBelongsToAssociation
+        extends Ext.data.association.IAssociation {
         /** [Config Option] (String) */
         foreignKey?: string | undefined;
         /** [Config Option] (String) */
@@ -5066,7 +5273,8 @@ declare namespace Ext.data.association {
     }
 }
 declare namespace Ext.data {
-    export interface IHasManyAssociation extends Ext.data.association.IAssociation {
+    export interface IHasManyAssociation
+        extends Ext.data.association.IAssociation {
         /** [Config Option] (Boolean) */
         autoLoad?: boolean | undefined;
         /** [Config Option] (String) */
@@ -5094,7 +5302,8 @@ declare namespace Ext.data.association {
     }
 }
 declare namespace Ext.data {
-    export interface IHasOneAssociation extends Ext.data.association.IAssociation {
+    export interface IHasOneAssociation
+        extends Ext.data.association.IAssociation {
         /** [Config Option] (String) */
         foreignKey?: string | undefined;
         /** [Config Option] (String) */
@@ -5141,7 +5350,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -5150,7 +5364,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -5184,7 +5404,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -5223,7 +5449,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -5307,7 +5538,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -5316,7 +5552,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -5355,7 +5597,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -5395,7 +5643,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sends an HTTP request to a remote server
          * @param options Object An object which may contain the following properties: (The options object may also contain any other property which might be needed to perform postprocessing in a callback because it is passed to callback functions.)
          * @returns Object The request object. This may be used to cancel the request.
@@ -5437,8 +5690,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface IDirectStore extends Ext.data.IStore {
-    }
+    export interface IDirectStore extends Ext.data.IStore {}
 }
 declare namespace Ext.data {
     export interface IErrors extends Ext.util.IMixedCollection {
@@ -5510,7 +5762,13 @@ declare namespace Ext.data.flash {
          * @param user Object
          * @param password Object
          */
-        open?(method?: any, url?: any, async?: any, user?: any, password?: any): void;
+        open?(
+            method?: any,
+            url?: any,
+            async?: any,
+            user?: any,
+            password?: any,
+        ): void;
         /** [Method] As in XMLHttpRequest
          * @param mimeType Object
          */
@@ -5527,8 +5785,7 @@ declare namespace Ext.data.flash {
     }
 }
 declare namespace Ext.data {
-    export interface IGroup extends Ext.util.IObservable {
-    }
+    export interface IGroup extends Ext.util.IObservable {}
 }
 declare namespace Ext.data {
     export interface IIdGenerator extends Ext.IBase {
@@ -5578,8 +5835,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface IJsonP extends Ext.IBase {
-    }
+    export interface IJsonP extends Ext.IBase {}
     export class JsonP {
         /** [Property] (String) */
         static callbackKey: string;
@@ -5632,12 +5888,10 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface IJsonPStore extends Ext.data.IStore {
-    }
+    export interface IJsonPStore extends Ext.data.IStore {}
 }
 declare namespace Ext.data {
-    export interface IJsonStore extends Ext.data.IStore {
-    }
+    export interface IJsonStore extends Ext.data.IStore {}
 }
 declare namespace Ext.data {
     export interface IModel extends Ext.IBase, Ext.util.IObservable {
@@ -5696,7 +5950,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -5705,7 +5964,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Begins an edit  */
         beginEdit?(): void;
         /** [Method] Cancels all changes made in the current edit operation  */
@@ -5802,7 +6067,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -5841,7 +6112,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -5946,7 +6222,11 @@ declare namespace Ext.data {
          * @param idProperty Object
          * @param clientIdProperty Object
          */
-        static setFields(fields?: any, idProperty?: any, clientIdProperty?: any): void;
+        static setFields(
+            fields?: any,
+            idProperty?: any,
+            clientIdProperty?: any,
+        ): void;
         /** [Method] Sets the Proxy to use for this model
          * @param proxy String/Object/Ext.data.proxy.Proxy The proxy
          * @returns Ext.data.proxy.Proxy
@@ -6011,7 +6291,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -6020,7 +6305,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Begins an edit  */
         beginEdit?(): void;
         /** [Method] Cancels all changes made in the current edit operation  */
@@ -6117,7 +6408,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -6156,7 +6453,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -6261,7 +6563,11 @@ declare namespace Ext.data {
          * @param idProperty Object
          * @param clientIdProperty Object
          */
-        static setFields(fields?: any, idProperty?: any, clientIdProperty?: any): void;
+        static setFields(
+            fields?: any,
+            idProperty?: any,
+            clientIdProperty?: any,
+        ): void;
         /** [Method] Sets the Proxy to use for this model
          * @param proxy String/Object/Ext.data.proxy.Proxy The proxy
          * @returns Ext.data.proxy.Proxy
@@ -6339,7 +6645,11 @@ declare namespace Ext.data {
          * @param commit Boolean
          * @returns Ext.data.NodeInterface The appended node if single append, or null if an array was passed
          */
-        appendChild?(node?: any, suppressEvents?: boolean, commit?: boolean): Ext.data.INodeInterface;
+        appendChild?(
+            node?: any,
+            suppressEvents?: boolean,
+            commit?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Bubbles up the tree from this node calling the specified function with each node
          * @param fn Function The function to call
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to the current Node.
@@ -6408,14 +6718,22 @@ declare namespace Ext.data {
          * @param deep Boolean True to search through nodes deeper than the immediate children
          * @returns Ext.data.NodeInterface The found child or null if none was found
          */
-        findChild?(attribute?: string, value?: any, deep?: boolean): Ext.data.INodeInterface;
+        findChild?(
+            attribute?: string,
+            value?: any,
+            deep?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Finds the first child by a custom function
          * @param fn Function A function which must return true if the passed Node is the required Node.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to the Node being tested.
          * @param deep Boolean True to search through nodes deeper than the immediate children
          * @returns Ext.data.NodeInterface The found child or null if none was found
          */
-        findChildBy?(fn?: any, scope?: any, deep?: boolean): Ext.data.INodeInterface;
+        findChildBy?(
+            fn?: any,
+            scope?: any,
+            deep?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Returns the child node at the specified index
          * @param index Number
          * @returns Ext.data.NodeInterface
@@ -6454,13 +6772,19 @@ declare namespace Ext.data {
          * @param refNode Ext.data.NodeInterface The node to insert before (if null the node is appended)
          * @returns Ext.data.NodeInterface The inserted node
          */
-        insertBefore?(node?: Ext.data.INodeInterface, refNode?: Ext.data.INodeInterface): Ext.data.INodeInterface;
+        insertBefore?(
+            node?: Ext.data.INodeInterface,
+            refNode?: Ext.data.INodeInterface,
+        ): Ext.data.INodeInterface;
         /** [Method] Inserts a node into this node
          * @param index Number The zero-based index to insert the node at
          * @param node Ext.data.NodeInterface The node to insert
          * @returns Ext.data.NodeInterface The node you just inserted
          */
-        insertChild?(index?: number, node?: Ext.data.INodeInterface): Ext.data.INodeInterface;
+        insertChild?(
+            index?: number,
+            node?: Ext.data.INodeInterface,
+        ): Ext.data.INodeInterface;
         /** [Method] Returns true if the passed node is an ancestor at any point of this node
          * @param node Ext.data.NodeInterface
          * @returns Boolean
@@ -6509,13 +6833,19 @@ declare namespace Ext.data {
          * @param destroy Boolean True to destroy the node upon removal.
          * @returns Ext.data.NodeInterface The removed node
          */
-        removeChild?(node?: Ext.data.INodeInterface, destroy?: boolean): Ext.data.INodeInterface;
+        removeChild?(
+            node?: Ext.data.INodeInterface,
+            destroy?: boolean,
+        ): Ext.data.INodeInterface;
         /** [Method] Replaces one child node in this node with another
          * @param newChild Ext.data.NodeInterface The replacement node
          * @param oldChild Ext.data.NodeInterface The node to replace
          * @returns Ext.data.NodeInterface The replaced node
          */
-        replaceChild?(newChild?: Ext.data.INodeInterface, oldChild?: Ext.data.INodeInterface): Ext.data.INodeInterface;
+        replaceChild?(
+            newChild?: Ext.data.INodeInterface,
+            oldChild?: Ext.data.INodeInterface,
+        ): Ext.data.INodeInterface;
         /** [Method] Creates an object representation of this node including its children  */
         serialize?(): void;
         /** [Method] Sorts this nodes children using the supplied sort function
@@ -6849,12 +7179,10 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data.proxy {
-    export interface ILocalStorage extends Ext.data.proxy.IWebStorage {
-    }
+    export interface ILocalStorage extends Ext.data.proxy.IWebStorage {}
 }
 declare namespace Ext.data {
-    export interface ILocalStorageProxy extends Ext.data.proxy.IWebStorage {
-    }
+    export interface ILocalStorageProxy extends Ext.data.proxy.IWebStorage {}
 }
 declare namespace Ext.data.proxy {
     export interface IMemory extends Ext.data.proxy.IClient {
@@ -6869,25 +7197,41 @@ declare namespace Ext.data.proxy {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Currently this is a hard coded method that simply commits any records and sets the operation to successful then call
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Reads data from the configured data object
          * @param operation Ext.data.Operation The read Operation
          * @param callback Function The callback to call when reading has completed
          * @param scope Object The scope to call the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Currently this is a hard coded method that simply commits any records and sets the operation to successful then call
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data {
@@ -6903,25 +7247,41 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Currently this is a hard coded method that simply commits any records and sets the operation to successful then call
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Reads data from the configured data object
          * @param operation Ext.data.Operation The read Operation
          * @param callback Function The callback to call when reading has completed
          * @param scope Object The scope to call the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Currently this is a hard coded method that simply commits any records and sets the operation to successful then call
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data.proxy {
@@ -6951,7 +7311,12 @@ declare namespace Ext.data.proxy {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -6960,7 +7325,13 @@ declare namespace Ext.data.proxy {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Performs a batch of Operations in the order specified by batchOrder
          * @param options Object Object containing one or more properties supported by the batch method:
          * @returns Ext.data.Batch The newly created Batch
@@ -6975,13 +7346,21 @@ declare namespace Ext.data.proxy {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Performs the given destroy operation
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
          * @param eventNames String/String[] The event name to bubble, or an Array of event names.
          */
@@ -7023,7 +7402,13 @@ declare namespace Ext.data.proxy {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -7044,7 +7429,11 @@ declare namespace Ext.data.proxy {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Relays selected events from the specified Observable as if the events were fired by this
          * @param origin Object The Observable whose events this object is to relay.
          * @param events String[] Array of event names to relay.
@@ -7064,7 +7453,12 @@ declare namespace Ext.data.proxy {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -7105,7 +7499,11 @@ declare namespace Ext.data.proxy {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data {
@@ -7135,7 +7533,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -7144,7 +7547,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Performs a batch of Operations in the order specified by batchOrder
          * @param options Object Object containing one or more properties supported by the batch method:
          * @returns Ext.data.Batch The newly created Batch
@@ -7159,13 +7568,21 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Performs the given destroy operation
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
          * @param eventNames String/String[] The event name to bubble, or an Array of event names.
          */
@@ -7207,7 +7624,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -7228,7 +7651,11 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Relays selected events from the specified Observable as if the events were fired by this
          * @param origin Object The Observable whose events this object is to relay.
          * @param events String[] Array of event names to relay.
@@ -7248,7 +7675,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -7289,7 +7721,11 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data {
@@ -7319,7 +7755,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -7328,7 +7769,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Performs a batch of Operations in the order specified by batchOrder
          * @param options Object Object containing one or more properties supported by the batch method:
          * @returns Ext.data.Batch The newly created Batch
@@ -7343,13 +7790,21 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        create?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        create?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Performs the given destroy operation
          * @param operation Ext.data.Operation The Operation to perform
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        destroy?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        destroy?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Enables events fired by this Observable to bubble up an owner hierarchy by calling this getBubbleTarget  if present
          * @param eventNames String/String[] The event name to bubble, or an Array of event names.
          */
@@ -7391,7 +7846,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -7412,7 +7873,11 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        read?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        read?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Relays selected events from the specified Observable as if the events were fired by this
          * @param origin Object The Observable whose events this object is to relay.
          * @param events String[] Array of event names to relay.
@@ -7432,7 +7897,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -7473,7 +7943,11 @@ declare namespace Ext.data {
          * @param callback Function Callback function to be called when the Operation has completed (whether successful or not)
          * @param scope Object Scope to execute the callback function in
          */
-        update?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        update?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.data.proxy {
@@ -7560,7 +8034,11 @@ declare namespace Ext.data.proxy {
          * @param callback Function The callback function to call when the Operation has completed
          * @param scope Object The scope in which to execute the callback
          */
-        doRequest?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        doRequest?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Encodes the array of Ext util Filter objects into a string to be sent in the request url
          * @param filters Ext.util.Filter[] The array of Filter objects
          * @returns String The encoded filters
@@ -7642,7 +8120,11 @@ declare namespace Ext.data {
          * @param callback Function The callback function to call when the Operation has completed
          * @param scope Object The scope in which to execute the callback
          */
-        doRequest?(operation?: Ext.data.IOperation, callback?: any, scope?: any): void;
+        doRequest?(
+            operation?: Ext.data.IOperation,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Encodes the array of Ext util Filter objects into a string to be sent in the request url
          * @param filters Ext.util.Filter[] The array of Filter objects
          * @returns String The encoded filters
@@ -7665,12 +8147,10 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data.proxy {
-    export interface ISessionStorage extends Ext.data.proxy.IWebStorage {
-    }
+    export interface ISessionStorage extends Ext.data.proxy.IWebStorage {}
 }
 declare namespace Ext.data {
-    export interface ISessionStorageProxy extends Ext.data.proxy.IWebStorage {
-    }
+    export interface ISessionStorageProxy extends Ext.data.proxy.IWebStorage {}
 }
 declare namespace Ext.data.proxy {
     export interface IWebStorage extends Ext.data.proxy.IClient {
@@ -7845,7 +8325,12 @@ declare namespace Ext.data.reader {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -7854,7 +8339,13 @@ declare namespace Ext.data.reader {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -7893,7 +8384,13 @@ declare namespace Ext.data.reader {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -7938,7 +8435,12 @@ declare namespace Ext.data.reader {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -7992,7 +8494,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -8001,7 +8508,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -8040,7 +8553,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -8085,7 +8604,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -8139,7 +8663,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -8148,7 +8677,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -8187,7 +8722,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -8232,7 +8773,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -8346,8 +8892,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface ISortTypes extends Ext.IBase {
-    }
+    export interface ISortTypes extends Ext.IBase {}
     export class SortTypes {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -8499,7 +9044,11 @@ declare namespace Ext.data {
          * @param bypassFilter Boolean Pass true to collect from all records, even ones which are filtered.
          * @returns Object[] An array of the unique values
          */
-        collect?(dataIndex?: string, allowNull?: boolean, bypassFilter?: boolean): any[];
+        collect?(
+            dataIndex?: string,
+            allowNull?: boolean,
+            bypassFilter?: boolean,
+        ): any[];
         /** [Method] Commits all Records with outstanding changes  */
         commitChanges?(): void;
         /** [Method] Gets the count of items in the store
@@ -8552,7 +9101,11 @@ declare namespace Ext.data {
          * @param startIndex Number The index to start searching at
          * @returns Number The matched index or -1
          */
-        findExact?(fieldName?: string, value?: any, startIndex?: number): number;
+        findExact?(
+            fieldName?: string,
+            value?: any,
+            startIndex?: number,
+        ): number;
         /** [Method] Finds the first matching Record in this store by a specific field value
          * @param fieldName String The name of the Record field to test.
          * @param value String/RegExp Either a string that the field value should begin with, or a RegExp to test against the field.
@@ -8614,7 +9167,11 @@ declare namespace Ext.data {
          * @param options Object Used when the Store is {@link buffered] and the range may not be available synchronously.
          * @returns Ext.data.Model[] An array of records if the records are immediately available. For buffered stores, you should pass the callback option unless you know that the range will be present - see rangeCached.
          */
-        getRange?(start?: number, end?: number, options?: any): Ext.data.IModel[];
+        getRange?(
+            start?: number,
+            end?: number,
+            options?: any,
+        ): Ext.data.IModel[];
         /** [Method] Returns the total number of Model instances that the Proxy indicates exist
          * @returns Number The total number of Model instances available via the Proxy. 0 returned if no value has been set via the reader.
          */
@@ -8635,7 +9192,13 @@ declare namespace Ext.data {
          * @param scope Object
          * @param options Object
          */
-        guaranteeRange?(start?: any, end?: any, callback?: any, scope?: any, options?: any): void;
+        guaranteeRange?(
+            start?: any,
+            end?: any,
+            callback?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Get the index of the record within the store
          * @param record Ext.data.Model The Ext.data.Model object to find.
          * @returns Number The index of the passed Record. Returns -1 if not found.
@@ -8786,8 +9349,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface IStoreManager extends Ext.util.IMixedCollection {
-    }
+    export interface IStoreManager extends Ext.util.IMixedCollection {}
     export class StoreManager {
         /** [Property] (Object) */
         static hasListeners: any;
@@ -8822,7 +9384,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -8831,7 +9398,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Call the original method that was previously overridden with override Ext define My Cat  constructor functi
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -8863,7 +9436,11 @@ declare namespace Ext.data {
          * @param allowBlank Boolean Pass true to allow null, undefined or empty string values
          * @returns Array The unique values
          */
-        static collect(property?: string, root?: string, allowBlank?: boolean): any[];
+        static collect(
+            property?: string,
+            root?: string,
+            allowBlank?: boolean,
+        ): any[];
         /** [Method] Returns true if the collection contains the passed Object as an item
          * @param o Object The Object to look for in the collection.
          * @returns Boolean True if the collection contains the Object as an item.
@@ -9046,7 +9623,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -9072,7 +9655,11 @@ declare namespace Ext.data {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Remove an item from the collection
          * @param o Object The item to remove.
          * @returns Object The item removed or false if no item was removed.
@@ -9105,7 +9692,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Remove a range of items starting at a specified index in the collection
          * @param index Number The index within the collection of the item to remove.
          * @param removeCount Number The nuber of items to remove beginning at the specified index.
@@ -9154,7 +9746,12 @@ declare namespace Ext.data {
          * @param end Number The record index to end at
          * @returns Number The total
          */
-        static sum(property?: string, root?: string, start?: number, end?: number): number;
+        static sum(
+            property?: string,
+            root?: string,
+            start?: number,
+            end?: number,
+        ): number;
         /** [Method] Suspends firing of the named event s
          * @param eventName String... Multiple event names to suspend.
          */
@@ -9181,8 +9778,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext {
-    export interface IStoreMgr extends Ext.util.IMixedCollection {
-    }
+    export interface IStoreMgr extends Ext.util.IMixedCollection {}
     export class StoreMgr {
         /** [Property] (Object) */
         static hasListeners: any;
@@ -9217,7 +9813,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -9226,7 +9827,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Call the original method that was previously overridden with override Ext define My Cat  constructor functi
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -9258,7 +9865,11 @@ declare namespace Ext {
          * @param allowBlank Boolean Pass true to allow null, undefined or empty string values
          * @returns Array The unique values
          */
-        static collect(property?: string, root?: string, allowBlank?: boolean): any[];
+        static collect(
+            property?: string,
+            root?: string,
+            allowBlank?: boolean,
+        ): any[];
         /** [Method] Returns true if the collection contains the passed Object as an item
          * @param o Object The Object to look for in the collection.
          * @returns Boolean True if the collection contains the Object as an item.
@@ -9441,7 +10052,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -9467,7 +10084,11 @@ declare namespace Ext {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Remove an item from the collection
          * @param o Object The item to remove.
          * @returns Object The item removed or false if no item was removed.
@@ -9500,7 +10121,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Remove a range of items starting at a specified index in the collection
          * @param index Number The index within the collection of the item to remove.
          * @param removeCount Number The nuber of items to remove beginning at the specified index.
@@ -9549,7 +10175,12 @@ declare namespace Ext {
          * @param end Number The record index to end at
          * @returns Number The total
          */
-        static sum(property?: string, root?: string, start?: number, end?: number): number;
+        static sum(
+            property?: string,
+            root?: string,
+            start?: number,
+            end?: number,
+        ): number;
         /** [Method] Suspends firing of the named event s
          * @param eventName String... Multiple event names to suspend.
          */
@@ -9576,8 +10207,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.data {
-    export interface IStoreMgr extends Ext.util.IMixedCollection {
-    }
+    export interface IStoreMgr extends Ext.util.IMixedCollection {}
     export class StoreMgr {
         /** [Property] (Object) */
         static hasListeners: any;
@@ -9612,7 +10242,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -9621,7 +10256,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Call the original method that was previously overridden with override Ext define My Cat  constructor functi
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -9653,7 +10294,11 @@ declare namespace Ext.data {
          * @param allowBlank Boolean Pass true to allow null, undefined or empty string values
          * @returns Array The unique values
          */
-        static collect(property?: string, root?: string, allowBlank?: boolean): any[];
+        static collect(
+            property?: string,
+            root?: string,
+            allowBlank?: boolean,
+        ): any[];
         /** [Method] Returns true if the collection contains the passed Object as an item
          * @param o Object The Object to look for in the collection.
          * @returns Boolean True if the collection contains the Object as an item.
@@ -9836,7 +10481,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -9862,7 +10513,11 @@ declare namespace Ext.data {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Remove an item from the collection
          * @param o Object The item to remove.
          * @returns Object The item removed or false if no item was removed.
@@ -9895,7 +10550,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Remove a range of items starting at a specified index in the collection
          * @param index Number The index within the collection of the item to remove.
          * @param removeCount Number The nuber of items to remove beginning at the specified index.
@@ -9944,7 +10604,12 @@ declare namespace Ext.data {
          * @param end Number The record index to end at
          * @returns Number The total
          */
-        static sum(property?: string, root?: string, start?: number, end?: number): number;
+        static sum(
+            property?: string,
+            root?: string,
+            start?: number,
+            end?: number,
+        ): number;
         /** [Method] Suspends firing of the named event s
          * @param eventName String... Multiple event names to suspend.
          */
@@ -9971,8 +10636,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext {
-    export interface IStoreManager extends Ext.util.IMixedCollection {
-    }
+    export interface IStoreManager extends Ext.util.IMixedCollection {}
     export class StoreManager {
         /** [Property] (Object) */
         static hasListeners: any;
@@ -10007,7 +10671,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -10016,7 +10685,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Call the original method that was previously overridden with override Ext define My Cat  constructor functi
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -10048,7 +10723,11 @@ declare namespace Ext {
          * @param allowBlank Boolean Pass true to allow null, undefined or empty string values
          * @returns Array The unique values
          */
-        static collect(property?: string, root?: string, allowBlank?: boolean): any[];
+        static collect(
+            property?: string,
+            root?: string,
+            allowBlank?: boolean,
+        ): any[];
         /** [Method] Returns true if the collection contains the passed Object as an item
          * @param o Object The Object to look for in the collection.
          * @returns Boolean True if the collection contains the Object as an item.
@@ -10231,7 +10910,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -10257,7 +10942,11 @@ declare namespace Ext {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Remove an item from the collection
          * @param o Object The item to remove.
          * @returns Object The item removed or false if no item was removed.
@@ -10290,7 +10979,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Remove a range of items starting at a specified index in the collection
          * @param index Number The index within the collection of the item to remove.
          * @param removeCount Number The nuber of items to remove beginning at the specified index.
@@ -10339,7 +11033,12 @@ declare namespace Ext {
          * @param end Number The record index to end at
          * @returns Number The total
          */
-        static sum(property?: string, root?: string, start?: number, end?: number): number;
+        static sum(
+            property?: string,
+            root?: string,
+            start?: number,
+            end?: number,
+        ): number;
         /** [Method] Suspends firing of the named event s
          * @param eventName String... Multiple event names to suspend.
          */
@@ -10380,7 +11079,12 @@ declare namespace Ext.data {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -10389,7 +11093,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -10432,7 +11142,13 @@ declare namespace Ext.data {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -10467,7 +11183,12 @@ declare namespace Ext.data {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes the root node from this tree
          * @returns Ext.data.NodeInterface The root node
          */
@@ -10500,8 +11221,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface ITreeModel extends Ext.data.IModel {
-    }
+    export interface ITreeModel extends Ext.data.IModel {}
 }
 declare namespace Ext.data {
     export interface ITreeStore extends Ext.data.IAbstractStore {
@@ -10557,8 +11277,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface ITypes extends Ext.IBase {
-    }
+    export interface ITypes extends Ext.IBase {}
     export class Types {
         /** [Property] (Object) */
         static AUTO: any;
@@ -10628,8 +11347,7 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface IValidations extends Ext.IBase {
-    }
+    export interface IValidations extends Ext.IBase {}
     export class Validations {
         /** [Property] (String) */
         static emailMessage: string;
@@ -10761,7 +11479,10 @@ declare namespace Ext.data.writer {
          * @param operation Ext.data.Operation An operation object.
          * @returns Object An object literal of name/value keys to be written to the server. By default this method returns the data property on the record.
          */
-        getRecordData?(record?: Ext.data.IModel, operation?: Ext.data.IOperation): any;
+        getRecordData?(
+            record?: Ext.data.IModel,
+            operation?: Ext.data.IOperation,
+        ): any;
         /** [Method] Prepares a Proxy s Ext data Request object
          * @param request Ext.data.Request The request object
          * @returns Ext.data.Request The modified request object
@@ -10784,7 +11505,10 @@ declare namespace Ext.data {
          * @param operation Ext.data.Operation An operation object.
          * @returns Object An object literal of name/value keys to be written to the server. By default this method returns the data property on the record.
          */
-        getRecordData?(record?: Ext.data.IModel, operation?: Ext.data.IOperation): any;
+        getRecordData?(
+            record?: Ext.data.IModel,
+            operation?: Ext.data.IOperation,
+        ): any;
         /** [Method] Prepares a Proxy s Ext data Request object
          * @param request Ext.data.Request The request object
          * @returns Ext.data.Request The modified request object
@@ -10807,7 +11531,10 @@ declare namespace Ext.data {
          * @param operation Ext.data.Operation An operation object.
          * @returns Object An object literal of name/value keys to be written to the server. By default this method returns the data property on the record.
          */
-        getRecordData?(record?: Ext.data.IModel, operation?: Ext.data.IOperation): any;
+        getRecordData?(
+            record?: Ext.data.IModel,
+            operation?: Ext.data.IOperation,
+        ): any;
         /** [Method] Prepares a Proxy s Ext data Request object
          * @param request Ext.data.Request The request object
          * @returns Ext.data.Request The modified request object
@@ -10840,12 +11567,10 @@ declare namespace Ext.data {
     }
 }
 declare namespace Ext.data {
-    export interface IXmlStore extends Ext.data.IStore {
-    }
+    export interface IXmlStore extends Ext.data.IStore {}
 }
 declare namespace Ext {
-    export interface IDate {
-    }
+    export interface IDate {}
     export class Date {
         /** [Property] (String) */
         static DAY: string;
@@ -11061,7 +11786,11 @@ declare namespace Ext.dd {
          * @param iPageX Number the X coordinate of the mousedown or drag event
          * @param iPageY Number the Y coordinate of the mousedown or drag event
          */
-        alignElWithMouse?(el?: HTMLElement, iPageX?: number, iPageY?: number): void;
+        alignElWithMouse?(
+            el?: HTMLElement,
+            iPageX?: number,
+            iPageY?: number,
+        ): void;
         /** [Method] Sets up config options specific to this class  */
         applyConfig?(): void;
         /** [Method] Sets the pointer offset to the distance between the linked element s top left corner and the location the element was
@@ -11316,13 +12045,22 @@ declare namespace Ext.dd {
          * @param iBot Number Bot pad
          * @param iLeft Number Left pad
          */
-        setPadding?(iTop?: number, iRight?: number, iBot?: number, iLeft?: number): void;
+        setPadding?(
+            iTop?: number,
+            iRight?: number,
+            iBot?: number,
+            iLeft?: number,
+        ): void;
         /** [Method] By default the element can be dragged any place on the screen
          * @param iLeft Number the number of pixels the element can move to the left
          * @param iRight Number the number of pixels the element can move to the right
          * @param iTickSize Number parameter for specifying that the element should move iTickSize pixels at a time.
          */
-        setXConstraint?(iLeft?: number, iRight?: number, iTickSize?: number): void;
+        setXConstraint?(
+            iLeft?: number,
+            iRight?: number,
+            iTickSize?: number,
+        ): void;
         /** [Method] By default the element can be dragged any place on the screen
          * @param iUp Number the number of pixels the element can move up
          * @param iDown Number the number of pixels the element can move down
@@ -11403,8 +12141,7 @@ declare namespace Ext.dd.dragdropmanager {
     }
 }
 declare namespace Ext.dd {
-    export interface IDragDropManager extends Ext.IBase {
-    }
+    export interface IDragDropManager extends Ext.IBase {}
     export class DragDropManager {
         /** [Property] (Number) */
         static INTERSECT: number;
@@ -11478,7 +12215,10 @@ declare namespace Ext.dd {
          * @param bTargetsOnly Boolean if true, only return targetable objs
          * @returns Ext.dd.DragDrop[] the related instances
          */
-        static getRelated(p_oDD?: Ext.dd.IDragDrop, bTargetsOnly?: boolean): Ext.dd.IDragDrop[];
+        static getRelated(
+            p_oDD?: Ext.dd.IDragDrop,
+            bTargetsOnly?: boolean,
+        ): Ext.dd.IDragDrop[];
         /** [Method] Initialize configuration for this class
          * @param config Object
          * @returns Ext.Base this
@@ -11499,7 +12239,10 @@ declare namespace Ext.dd {
          * @param oTargetDD Ext.dd.DragDrop the target
          * @returns Boolean true if the target is a legal target for the dd obj
          */
-        static isLegalTarget(oDD?: Ext.dd.IDragDrop, oTargetDD?: Ext.dd.IDragDrop): boolean;
+        static isLegalTarget(
+            oDD?: Ext.dd.IDragDrop,
+            oTargetDD?: Ext.dd.IDragDrop,
+        ): boolean;
         /** [Method] Is drag and drop locked
          * @returns Boolean True if drag and drop is locked, false otherwise.
          */
@@ -11548,8 +12291,7 @@ declare namespace Ext.dd {
     }
 }
 declare namespace Ext.dd {
-    export interface IDragDropMgr extends Ext.IBase {
-    }
+    export interface IDragDropMgr extends Ext.IBase {}
     export class DragDropMgr {
         /** [Property] (Number) */
         static INTERSECT: number;
@@ -11623,7 +12365,10 @@ declare namespace Ext.dd {
          * @param bTargetsOnly Boolean if true, only return targetable objs
          * @returns Ext.dd.DragDrop[] the related instances
          */
-        static getRelated(p_oDD?: Ext.dd.IDragDrop, bTargetsOnly?: boolean): Ext.dd.IDragDrop[];
+        static getRelated(
+            p_oDD?: Ext.dd.IDragDrop,
+            bTargetsOnly?: boolean,
+        ): Ext.dd.IDragDrop[];
         /** [Method] Initialize configuration for this class
          * @param config Object
          * @returns Ext.Base this
@@ -11644,7 +12389,10 @@ declare namespace Ext.dd {
          * @param oTargetDD Ext.dd.DragDrop the target
          * @returns Boolean true if the target is a legal target for the dd obj
          */
-        static isLegalTarget(oDD?: Ext.dd.IDragDrop, oTargetDD?: Ext.dd.IDragDrop): boolean;
+        static isLegalTarget(
+            oDD?: Ext.dd.IDragDrop,
+            oTargetDD?: Ext.dd.IDragDrop,
+        ): boolean;
         /** [Method] Is drag and drop locked
          * @returns Boolean True if drag and drop is locked, false otherwise.
          */
@@ -11693,8 +12441,7 @@ declare namespace Ext.dd {
     }
 }
 declare namespace Ext.dd {
-    export interface IDDM extends Ext.IBase {
-    }
+    export interface IDDM extends Ext.IBase {}
     export class DDM {
         /** [Property] (Number) */
         static INTERSECT: number;
@@ -11768,7 +12515,10 @@ declare namespace Ext.dd {
          * @param bTargetsOnly Boolean if true, only return targetable objs
          * @returns Ext.dd.DragDrop[] the related instances
          */
-        static getRelated(p_oDD?: Ext.dd.IDragDrop, bTargetsOnly?: boolean): Ext.dd.IDragDrop[];
+        static getRelated(
+            p_oDD?: Ext.dd.IDragDrop,
+            bTargetsOnly?: boolean,
+        ): Ext.dd.IDragDrop[];
         /** [Method] Initialize configuration for this class
          * @param config Object
          * @returns Ext.Base this
@@ -11789,7 +12539,10 @@ declare namespace Ext.dd {
          * @param oTargetDD Ext.dd.DragDrop the target
          * @returns Boolean true if the target is a legal target for the dd obj
          */
-        static isLegalTarget(oDD?: Ext.dd.IDragDrop, oTargetDD?: Ext.dd.IDragDrop): boolean;
+        static isLegalTarget(
+            oDD?: Ext.dd.IDragDrop,
+            oTargetDD?: Ext.dd.IDragDrop,
+        ): boolean;
         /** [Method] Is drag and drop locked
          * @returns Boolean True if drag and drop is locked, false otherwise.
          */
@@ -11862,7 +12615,11 @@ declare namespace Ext.dd {
          * @param e Event The event object
          * @param id String The id of the dragged element
          */
-        afterDragEnter?(target?: Ext.dd.IDragDrop, e?: Event, id?: string): void;
+        afterDragEnter?(
+            target?: Ext.dd.IDragDrop,
+            e?: Event,
+            id?: string,
+        ): void;
         /** [Method] An empty function by default but provided so that you can perform a custom action after the dragged item is dragged
          * @param target Ext.dd.DragDrop The drop target
          * @param e Event The event object
@@ -11894,35 +12651,55 @@ declare namespace Ext.dd {
          * @param id String The id of the dragged element
          * @returns Boolean isValid True if the drag drop event is valid, else false to cancel
          */
-        beforeDragDrop?(target?: Ext.dd.IDragDrop, e?: Event, id?: string): boolean;
+        beforeDragDrop?(
+            target?: Ext.dd.IDragDrop,
+            e?: Event,
+            id?: string,
+        ): boolean;
         /** [Method] An empty function by default but provided so that you can perform a custom action before the dragged item enters the
          * @param target Ext.dd.DragDrop The drop target
          * @param e Event The event object
          * @param id String The id of the dragged element
          * @returns Boolean isValid True if the drag event is valid, else false to cancel
          */
-        beforeDragEnter?(target?: Ext.dd.IDragDrop, e?: Event, id?: string): boolean;
+        beforeDragEnter?(
+            target?: Ext.dd.IDragDrop,
+            e?: Event,
+            id?: string,
+        ): boolean;
         /** [Method] An empty function by default but provided so that you can perform a custom action before the dragged item is dragged
          * @param target Ext.dd.DragDrop The drop target
          * @param e Event The event object
          * @param id String The id of the dragged element
          * @returns Boolean isValid True if the drag event is valid, else false to cancel
          */
-        beforeDragOut?(target?: Ext.dd.IDragDrop, e?: Event, id?: string): boolean;
+        beforeDragOut?(
+            target?: Ext.dd.IDragDrop,
+            e?: Event,
+            id?: string,
+        ): boolean;
         /** [Method] An empty function by default but provided so that you can perform a custom action while the dragged item is over the
          * @param target Ext.dd.DragDrop The drop target
          * @param e Event The event object
          * @param id String The id of the dragged element
          * @returns Boolean isValid True if the drag event is valid, else false to cancel
          */
-        beforeDragOver?(target?: Ext.dd.IDragDrop, e?: Event, id?: string): boolean;
+        beforeDragOver?(
+            target?: Ext.dd.IDragDrop,
+            e?: Event,
+            id?: string,
+        ): boolean;
         /** [Method] An empty function by default but provided so that you can perform a custom action after an invalid drop has occurred
          * @param target Ext.dd.DragDrop The drop target
          * @param e Event The event object
          * @param id String The id of the dragged element
          * @returns Boolean isValid True if the invalid drop should proceed, else false to cancel
          */
-        beforeInvalidDrop?(target?: Ext.dd.IDragDrop, e?: Event, id?: string): boolean;
+        beforeInvalidDrop?(
+            target?: Ext.dd.IDragDrop,
+            e?: Event,
+            id?: string,
+        ): boolean;
         /** [Method] Destroy this DragDrop instance */
         destroy?(): void;
         /** [Method] Returns the data object associated with this drag source
@@ -11982,7 +12759,12 @@ declare namespace Ext.dd {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -11991,7 +12773,13 @@ declare namespace Ext.dd {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -12038,7 +12826,13 @@ declare namespace Ext.dd {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -12089,7 +12883,12 @@ declare namespace Ext.dd {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -12158,14 +12957,22 @@ declare namespace Ext.dd {
          * @param data Object An object containing arbitrary data supplied by the drag source
          * @returns Boolean False if the drop was invalid.
          */
-        notifyDrop?(source?: Ext.dd.IDragSource, e?: Event, data?: any): boolean;
+        notifyDrop?(
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): boolean;
         /** [Method] The function a Ext dd DragSource calls once to notify this drop target that the source is now over the target
          * @param source Ext.dd.DragSource The drag source that was dragged over this drop target
          * @param e Event The event
          * @param data Object An object containing arbitrary data supplied by the drag source
          * @returns String status The CSS class that communicates the drop status back to the source so that the underlying Ext.dd.StatusProxy can be updated
          */
-        notifyEnter?(source?: Ext.dd.IDragSource, e?: Event, data?: any): string;
+        notifyEnter?(
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): string;
         /** [Method] The function a Ext dd DragSource calls once to notify this drop target that the source has been dragged out of the ta
          * @param source Ext.dd.DragSource The drag source that was dragged over this drop target
          * @param e Event The event
@@ -12194,14 +13001,22 @@ declare namespace Ext.dd {
          * @param data Object An object containing arbitrary data supplied by the drag source
          * @returns Boolean False if the drop was invalid.
          */
-        notifyDrop?(source?: Ext.dd.IDragSource, e?: Event, data?: any): boolean;
+        notifyDrop?(
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): boolean;
         /** [Method] The function a Ext dd DragSource calls once to notify this drop zone that the source is now over the zone
          * @param source Ext.dd.DragSource The drag source that was dragged over this drop zone
          * @param e Event The event
          * @param data Object An object containing arbitrary data supplied by the drag source
          * @returns String status The CSS class that communicates the drop status back to the source so that the underlying Ext.dd.StatusProxy can be updated
          */
-        notifyEnter?(source?: Ext.dd.IDragSource, e?: Event, data?: any): string;
+        notifyEnter?(
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): string;
         /** [Method] The function a Ext dd DragSource calls once to notify this drop zone that the source has been dragged out of the zone
          * @param source Ext.dd.DragSource The drag source that was dragged over this drop target
          * @param e Event The event
@@ -12221,14 +13036,22 @@ declare namespace Ext.dd {
          * @param data Object An object containing arbitrary data supplied by the drag source
          * @returns Boolean True if the drop was valid, else false
          */
-        onContainerDrop?(source?: Ext.dd.IDragSource, e?: Event, data?: any): boolean;
+        onContainerDrop?(
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): boolean;
         /** [Method] Called while the DropZone determines that a Ext dd DragSource is being dragged over it but not over any of its regis
          * @param source Ext.dd.DragSource The drag source that was dragged over this drop zone
          * @param e Event The event
          * @param data Object An object containing arbitrary data supplied by the drag source
          * @returns String status The CSS class that communicates the drop status back to the source so that the underlying Ext.dd.StatusProxy can be updated
          */
-        onContainerOver?(source?: Ext.dd.IDragSource, e?: Event, data?: any): string;
+        onContainerOver?(
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): string;
         /** [Method] Called when the DropZone determines that a Ext dd DragSource has been dropped onto the drop node
          * @param nodeData Object The custom data associated with the drop node (this is the same value returned from getTargetFromEvent for this node)
          * @param source Ext.dd.DragSource The drag source that was dragged over this drop zone
@@ -12236,21 +13059,36 @@ declare namespace Ext.dd {
          * @param data Object An object containing arbitrary data supplied by the drag source
          * @returns Boolean True if the drop was valid, else false
          */
-        onNodeDrop?(nodeData?: any, source?: Ext.dd.IDragSource, e?: Event, data?: any): boolean;
+        onNodeDrop?(
+            nodeData?: any,
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): boolean;
         /** [Method] Called when the DropZone determines that a Ext dd DragSource has entered a drop node that has either been registered
          * @param nodeData Object The custom data associated with the drop node (this is the same value returned from getTargetFromEvent for this node)
          * @param source Ext.dd.DragSource The drag source that was dragged over this drop zone
          * @param e Event The event
          * @param data Object An object containing arbitrary data supplied by the drag source
          */
-        onNodeEnter?(nodeData?: any, source?: Ext.dd.IDragSource, e?: Event, data?: any): void;
+        onNodeEnter?(
+            nodeData?: any,
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): void;
         /** [Method] Called when the DropZone determines that a Ext dd DragSource has been dragged out of the drop node without dropping
          * @param nodeData Object The custom data associated with the drop node (this is the same value returned from getTargetFromEvent for this node)
          * @param source Ext.dd.DragSource The drag source that was dragged over this drop zone
          * @param e Event The event
          * @param data Object An object containing arbitrary data supplied by the drag source
          */
-        onNodeOut?(nodeData?: any, source?: Ext.dd.IDragSource, e?: Event, data?: any): void;
+        onNodeOut?(
+            nodeData?: any,
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): void;
         /** [Method] Called while the DropZone determines that a Ext dd DragSource is over a drop node that has either been registered or
          * @param nodeData Object The custom data associated with the drop node (this is the same value returned from getTargetFromEvent for this node)
          * @param source Ext.dd.DragSource The drag source that was dragged over this drop zone
@@ -12258,12 +13096,16 @@ declare namespace Ext.dd {
          * @param data Object An object containing arbitrary data supplied by the drag source
          * @returns String status The CSS class that communicates the drop status back to the source so that the underlying Ext.dd.StatusProxy can be updated
          */
-        onNodeOver?(nodeData?: any, source?: Ext.dd.IDragSource, e?: Event, data?: any): string;
+        onNodeOver?(
+            nodeData?: any,
+            source?: Ext.dd.IDragSource,
+            e?: Event,
+            data?: any,
+        ): string;
     }
 }
 declare namespace Ext.dd {
-    export interface IRegistry extends Ext.IBase {
-    }
+    export interface IRegistry extends Ext.IBase {}
     export class Registry {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -12328,8 +13170,7 @@ declare namespace Ext.dd {
     }
 }
 declare namespace Ext.dd {
-    export interface IScrollManager extends Ext.IBase {
-    }
+    export interface IScrollManager extends Ext.IBase {}
     export class ScrollManager {
         /** [Property] (Number) */
         static animDuration: number;
@@ -12437,8 +13278,7 @@ declare namespace Ext.direct {
     }
 }
 declare namespace Ext.direct {
-    export interface IExceptionEvent extends Ext.direct.IRemotingEvent {
-    }
+    export interface IExceptionEvent extends Ext.direct.IRemotingEvent {}
 }
 declare namespace Ext.direct {
     export interface IJsonProvider extends Ext.direct.IProvider {
@@ -12455,8 +13295,7 @@ declare namespace Ext.direct {
     }
 }
 declare namespace Ext.direct {
-    export interface IManager extends Ext.IBase, Ext.util.IObservable {
-    }
+    export interface IManager extends Ext.IBase, Ext.util.IObservable {}
     export class Manager {
         /** [Property] (Object) */
         static exceptions: any;
@@ -12477,7 +13316,12 @@ declare namespace Ext.direct {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -12486,7 +13330,13 @@ declare namespace Ext.direct {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds an Ext Direct Provider and creates the proxy or stub methods to execute server side methods
          * @param provider Ext.direct.Provider/Object... Accepts any number of Provider descriptions (an instance or config object for a Provider). Each Provider description instructs Ext.Direct how to create client-side stub methods.
          */
@@ -12553,7 +13403,13 @@ declare namespace Ext.direct {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -12580,7 +13436,11 @@ declare namespace Ext.direct {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Removes an event handler
          * @param eventName String The type of event the handler was associated with.
          * @param fn Function The handler to remove. This must be a reference to the function passed into the Ext.util.Observable.addListener call.
@@ -12593,7 +13453,12 @@ declare namespace Ext.direct {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes the provider
          * @param provider String/Ext.direct.Provider The provider instance or the id of the provider.
          * @returns Ext.direct.Provider The provider, null if not found.
@@ -12626,8 +13491,7 @@ declare namespace Ext.direct {
     }
 }
 declare namespace Ext {
-    export interface IDirect extends Ext.IBase, Ext.util.IObservable {
-    }
+    export interface IDirect extends Ext.IBase, Ext.util.IObservable {}
     export class Direct {
         /** [Property] (Object) */
         static exceptions: any;
@@ -12648,7 +13512,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -12657,7 +13526,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds an Ext Direct Provider and creates the proxy or stub methods to execute server side methods
          * @param provider Ext.direct.Provider/Object... Accepts any number of Provider descriptions (an instance or config object for a Provider). Each Provider description instructs Ext.Direct how to create client-side stub methods.
          */
@@ -12724,7 +13599,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -12751,7 +13632,11 @@ declare namespace Ext {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Removes an event handler
          * @param eventName String The type of event the handler was associated with.
          * @param fn Function The handler to remove. This must be a reference to the function passed into the Ext.util.Observable.addListener call.
@@ -12764,7 +13649,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes the provider
          * @param provider String/Ext.direct.Provider The provider instance or the id of the provider.
          * @returns Ext.direct.Provider The provider, null if not found.
@@ -12829,7 +13719,12 @@ declare namespace Ext.direct {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -12838,7 +13733,13 @@ declare namespace Ext.direct {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -12878,7 +13779,13 @@ declare namespace Ext.direct {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -12913,7 +13820,12 @@ declare namespace Ext.direct {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -13039,7 +13951,11 @@ declare namespace Ext.dom {
          * @param returnDom Boolean true to return the dom node instead of creating an Element
          * @returns Ext.dom.AbstractElement The new child element
          */
-        createChild?(config?: any, insertBefore?: HTMLElement, returnDom?: boolean): Ext.dom.IAbstractElement;
+        createChild?(
+            config?: any,
+            insertBefore?: HTMLElement,
+            returnDom?: boolean,
+        ): Ext.dom.IAbstractElement;
         /** [Method] Alias to remove  */
         destroy?(): void;
         /** [Method] Selects a single child at any depth below this element based on the passed CSS selector the selector should not cont
@@ -13054,14 +13970,22 @@ declare namespace Ext.dom {
          * @param returnEl Boolean True to return a Ext.Element object instead of DOM node
          * @returns HTMLElement The matching DOM node (or null if no match was found)
          */
-        findParent?(selector?: string, limit?: any, returnEl?: boolean): HTMLElement;
+        findParent?(
+            selector?: string,
+            limit?: any,
+            returnEl?: boolean,
+        ): HTMLElement;
         /** [Method] Looks at parent nodes for a match of the passed simple selector e g
          * @param selector String The simple selector to test
          * @param limit Number/String/HTMLElement/Ext.Element The max depth to search as a number or an element which causes the upward traversal to stop and is not considered for inclusion as the result. (defaults to 50 || document.documentElement)
          * @param returnEl Boolean True to return a Ext.Element object instead of DOM node
          * @returns HTMLElement The matching DOM node (or null if no match was found)
          */
-        findParentNode?(selector?: string, limit?: any, returnEl?: boolean): HTMLElement;
+        findParentNode?(
+            selector?: string,
+            limit?: any,
+            returnEl?: boolean,
+        ): HTMLElement;
         /** [Method] Gets the first child skipping text nodes Defined in override Ext dom AbstractElement_traversal
          * @param selector String Find the next sibling that matches the passed simple selector
          * @param returnDom Boolean True to return a raw dom node instead of an Ext.dom.Element
@@ -13168,7 +14092,11 @@ declare namespace Ext.dom {
          * @param returnDom Boolean True to return the raw DOM element instead of Ext.dom.AbstractElement
          * @returns Ext.dom.AbstractElement The inserted Element. If an array is passed, the last inserted element is returned.
          */
-        insertSibling?(el?: any, where?: string, returnDom?: boolean): Ext.dom.IAbstractElement;
+        insertSibling?(
+            el?: any,
+            where?: string,
+            returnDom?: boolean,
+        ): Ext.dom.IAbstractElement;
         /** [Method] Returns true if this element matches the passed simple selector e g
          * @param selector String The simple selector to test
          * @returns Boolean True if this element matches the selector, else false
@@ -13245,7 +14173,10 @@ declare namespace Ext.dom {
          * @param newClassName String The replacement CSS class
          * @returns Ext.dom.Element this
          */
-        replaceCls?(oldClassName?: string, newClassName?: string): Ext.dom.IElement;
+        replaceCls?(
+            oldClassName?: string,
+            newClassName?: string,
+        ): Ext.dom.IElement;
         /** [Method] Replaces this element with the passed element Defined in override Ext dom AbstractElement_insertion
          * @param el String/HTMLElement/Ext.dom.AbstractElement/Object The new element (id of the node, a DOM Node or an existing Element) or a DomHelper config of an element to create
          * @returns Ext.dom.AbstractElement This element
@@ -13529,12 +14460,10 @@ declare namespace Ext.dom {
     }
 }
 declare namespace Ext.dom {
-    export interface ICompositeElement extends Ext.dom.ICompositeElementLite {
-    }
+    export interface ICompositeElement extends Ext.dom.ICompositeElementLite {}
 }
 declare namespace Ext {
-    export interface ICompositeElement extends Ext.dom.ICompositeElementLite {
-    }
+    export interface ICompositeElement extends Ext.dom.ICompositeElementLite {}
 }
 declare namespace Ext.dom {
     export interface ICompositeElementLite extends Ext.IBase {
@@ -13599,14 +14528,21 @@ declare namespace Ext.dom {
          * @param removeDom Boolean True to also remove the element from the document.
          * @returns Ext.dom.CompositeElement this
          */
-        removeElement?(el?: any, removeDom?: boolean): Ext.dom.ICompositeElement;
+        removeElement?(
+            el?: any,
+            removeDom?: boolean,
+        ): Ext.dom.ICompositeElement;
         /** [Method] Replaces the specified element with the passed element
          * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite to replace.
          * @param replacement String/Ext.Element The id of an element or the Element itself.
          * @param domReplace Boolean True to remove and replace the element in the document too.
          * @returns Ext.dom.CompositeElement this
          */
-        replaceElement?(el?: any, replacement?: any, domReplace?: boolean): Ext.dom.ICompositeElement;
+        replaceElement?(
+            el?: any,
+            replacement?: any,
+            domReplace?: boolean,
+        ): Ext.dom.ICompositeElement;
         /** [Method] Gets a range nodes
          * @param start Number The index of the first node in the range
          * @param end Number The index of the last node in the range
@@ -13678,14 +14614,21 @@ declare namespace Ext {
          * @param removeDom Boolean True to also remove the element from the document.
          * @returns Ext.dom.CompositeElement this
          */
-        removeElement?(el?: any, removeDom?: boolean): Ext.dom.ICompositeElement;
+        removeElement?(
+            el?: any,
+            removeDom?: boolean,
+        ): Ext.dom.ICompositeElement;
         /** [Method] Replaces the specified element with the passed element
          * @param el String/HTMLElement/Ext.Element/Number The id of an element, the Element itself, the index of the element in this composite to replace.
          * @param replacement String/Ext.Element The id of an element or the Element itself.
          * @param domReplace Boolean True to remove and replace the element in the document too.
          * @returns Ext.dom.CompositeElement this
          */
-        replaceElement?(el?: any, replacement?: any, domReplace?: boolean): Ext.dom.ICompositeElement;
+        replaceElement?(
+            el?: any,
+            replacement?: any,
+            domReplace?: boolean,
+        ): Ext.dom.ICompositeElement;
         /** [Method] Gets a range nodes
          * @param start Number The index of the first node in the range
          * @param end Number The index of the last node in the range
@@ -13718,21 +14661,33 @@ declare namespace Ext.dom {
          * @param scope Object The scope to execute the testFn in.
          * @returns Ext.dom.Element this
          */
-        addClsOnClick?(className?: string, testFn?: any, scope?: any): Ext.dom.IElement;
+        addClsOnClick?(
+            className?: string,
+            testFn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets up event handlers to add and remove a css class when this element has the focus Defined in override Ext dom Ele
          * @param className String The class to add
          * @param testFn Function A test function to execute before adding the class. The passed parameter will be the Element instance. If this functions returns false, the class will not be added.
          * @param scope Object The scope to execute the testFn in.
          * @returns Ext.dom.Element this
          */
-        addClsOnFocus?(className?: string, testFn?: any, scope?: any): Ext.dom.IElement;
+        addClsOnFocus?(
+            className?: string,
+            testFn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets up event handlers to add and remove a css class when the mouse is over this element Defined in override Ext dom
          * @param className String The class to add
          * @param testFn Function A test function to execute before adding the class. The passed parameter will be the Element instance. If this functions returns false, the class will not be added.
          * @param scope Object The scope to execute the testFn in.
          * @returns Ext.dom.Element this
          */
-        addClsOnOver?(className?: string, testFn?: any, scope?: any): Ext.dom.IElement;
+        addClsOnOver?(
+            className?: string,
+            testFn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Convenience method for constructing a KeyMap
          * @param key String/Number/Number[]/Object Either a string with the keys to listen for, the numeric key code, array of key codes or an object with the following options:
          * @param fn Function The function to call
@@ -13752,7 +14707,12 @@ declare namespace Ext.dom {
          * @param options Object An object containing handler configuration properties. This may contain any of the following properties: scope Object : The scope (this reference) in which the handler function is executed. If omitted, defaults to this Element. delegate String: A simple selector to filter the target or look for a descendant of the target. See below for additional details. stopEvent Boolean: True to stop the event. That is stop propagation, and prevent the default action. preventDefault Boolean: True to prevent the default action stopPropagation Boolean: True to prevent event propagation normalized Boolean: False to pass a browser event to the handler function instead of an Ext.EventObject target Ext.dom.Element: Only call the handler if the event was fired on the target Element, not if the event was bubbled up from a child node. delay Number: The number of milliseconds to delay the invocation of the handler after the event fires. single Boolean: True to add a handler to handle just the next firing of the event, and then remove itself. buffer Number: Causes the handler to be scheduled to run in an Ext.util.DelayedTask delayed by the specified number of milliseconds. If the event fires again within that time, the original handler is not invoked, but the new handler is scheduled in its place. Combining Options  Using the options argument, it is possible to combine different types of listeners:  A delayed, one-time listener that auto stops the event and adds a custom argument (forumId) to the options object. The options object is available as the third parameter in the handler function.  Code:  el.on('click', this.onClick, this, {  single: true,  delay: 100,  stopEvent : true,  forumId: 4 }); Attaching multiple handlers in 1 call  The method also allows for a single argument to be passed which is a config object containing properties which specify multiple handlers.  Code:  el.on({  'click' : {  fn: this.onClick,  scope: this,  delay: 100  },  'mouseover' : {  fn: this.onMouseOver,  scope: this  },  'mouseout' : {  fn: this.onMouseOut,  scope: this  } }); Or a shorthand syntax:  Code:  el.on({  'click' : this.onClick,  'mouseover' : this.onMouseOver,  'mouseout' : this.onMouseOut,  scope: this }); delegate  This is a configuration option that you can pass along when registering a handler for an event to assist with event delegation. Event delegation is a technique that is used to reduce memory consumption and prevent exposure to memory-leaks. By registering an event for a container element as opposed to each element within a container. By setting this configuration option to a simple selector, the target element will be filtered to look for a descendant of the target. For example:  // using this markup: &lt;div id='elId'&gt;  &lt;p id='p1'&gt;paragraph one&lt;/p&gt;  &lt;p id='p2' class='clickable'&gt;paragraph two&lt;/p&gt;  &lt;p id='p3'&gt;paragraph three&lt;/p&gt; &lt;/div&gt; // utilize event delegation to registering just one handler on the container element: el = Ext.get('elId'); el.on(  'click',  function(e,t) {  // handle click  console.info(t.id); // 'p2'  },  this,  {  // filter the target element to be a descendant with the class 'clickable'  delegate: '.clickable'  } );
          * @returns Ext.dom.Element this
          */
-        addListener?(eventName?: string, fn?: any, scope?: any, options?: any): Ext.dom.IElement;
+        addListener?(
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): Ext.dom.IElement;
         /** [Method] Performs custom animation on this Element
          * @param config Object Configuration for Ext.fx.Anim. Note that the to config is required.
          * @returns Ext.dom.Element this
@@ -13802,7 +14762,11 @@ declare namespace Ext.dom {
          * @param matchBox Boolean True to align and size the proxy to this element now.
          * @returns Ext.dom.Element The new proxy element
          */
-        createProxy?(config?: any, renderTo?: any, matchBox?: boolean): Ext.dom.IElement;
+        createProxy?(
+            config?: any,
+            renderTo?: any,
+            matchBox?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Creates an iframe shim for this element to keep selects and other windowed objects from showing through
          * @returns Ext.dom.Element The new shim element
          */
@@ -13972,7 +14936,12 @@ declare namespace Ext.dom {
          * @param options Object Options for the listener. See the options parameter.
          * @returns Ext.dom.Element this
          */
-        hover?(overFn?: any, outFn?: any, scope?: any, options?: any): Ext.dom.IElement;
+        hover?(
+            overFn?: any,
+            outFn?: any,
+            scope?: any,
+            options?: any,
+        ): Ext.dom.IElement;
         /** [Method] Initializes a Ext dd DD drag drop object for this element
          * @param group String The group the DD object is member of
          * @param config Object The DD config object
@@ -13986,14 +14955,22 @@ declare namespace Ext.dom {
          * @param overrides Object An object containing methods to override/implement on the DDProxy object
          * @returns Ext.dd.DDProxy The DDProxy object
          */
-        initDDProxy?(group?: string, config?: any, overrides?: any): Ext.dd.IDDProxy;
+        initDDProxy?(
+            group?: string,
+            config?: any,
+            overrides?: any,
+        ): Ext.dd.IDDProxy;
         /** [Method] Initializes a Ext dd DDTarget object for this element
          * @param group String The group the DDTarget object is member of
          * @param config Object The DDTarget config object
          * @param overrides Object An object containing methods to override/implement on the DDTarget object
          * @returns Ext.dd.DDTarget The DDTarget object
          */
-        initDDTarget?(group?: string, config?: any, overrides?: any): Ext.dd.IDDTarget;
+        initDDTarget?(
+            group?: string,
+            config?: any,
+            overrides?: any,
+        ): Ext.dd.IDDTarget;
         /** [Method] Tests various css rules browsers to determine if this element uses a border box
          * @returns Boolean
          */
@@ -14054,7 +15031,12 @@ declare namespace Ext.dom {
          * @param options Object An object containing handler configuration properties. This may contain any of the following properties: scope Object : The scope (this reference) in which the handler function is executed. If omitted, defaults to this Element. delegate String: A simple selector to filter the target or look for a descendant of the target. See below for additional details. stopEvent Boolean: True to stop the event. That is stop propagation, and prevent the default action. preventDefault Boolean: True to prevent the default action stopPropagation Boolean: True to prevent event propagation normalized Boolean: False to pass a browser event to the handler function instead of an Ext.EventObject target Ext.dom.Element: Only call the handler if the event was fired on the target Element, not if the event was bubbled up from a child node. delay Number: The number of milliseconds to delay the invocation of the handler after the event fires. single Boolean: True to add a handler to handle just the next firing of the event, and then remove itself. buffer Number: Causes the handler to be scheduled to run in an Ext.util.DelayedTask delayed by the specified number of milliseconds. If the event fires again within that time, the original handler is not invoked, but the new handler is scheduled in its place. Combining Options  Using the options argument, it is possible to combine different types of listeners:  A delayed, one-time listener that auto stops the event and adds a custom argument (forumId) to the options object. The options object is available as the third parameter in the handler function.  Code:  el.on('click', this.onClick, this, {  single: true,  delay: 100,  stopEvent : true,  forumId: 4 }); Attaching multiple handlers in 1 call  The method also allows for a single argument to be passed which is a config object containing properties which specify multiple handlers.  Code:  el.on({  'click' : {  fn: this.onClick,  scope: this,  delay: 100  },  'mouseover' : {  fn: this.onMouseOver,  scope: this  },  'mouseout' : {  fn: this.onMouseOut,  scope: this  } }); Or a shorthand syntax:  Code:  el.on({  'click' : this.onClick,  'mouseover' : this.onMouseOver,  'mouseout' : this.onMouseOut,  scope: this }); delegate  This is a configuration option that you can pass along when registering a handler for an event to assist with event delegation. Event delegation is a technique that is used to reduce memory consumption and prevent exposure to memory-leaks. By registering an event for a container element as opposed to each element within a container. By setting this configuration option to a simple selector, the target element will be filtered to look for a descendant of the target. For example:  // using this markup: &lt;div id='elId'&gt;  &lt;p id='p1'&gt;paragraph one&lt;/p&gt;  &lt;p id='p2' class='clickable'&gt;paragraph two&lt;/p&gt;  &lt;p id='p3'&gt;paragraph three&lt;/p&gt; &lt;/div&gt; // utilize event delegation to registering just one handler on the container element: el = Ext.get('elId'); el.on(  'click',  function(e,t) {  // handle click  console.info(t.id); // 'p2'  },  this,  {  // filter the target element to be a descendant with the class 'clickable'  delegate: '.clickable'  } );
          * @returns Ext.dom.Element this
          */
-        on?(eventName?: string, fn?: any, scope?: any, options?: any): Ext.dom.IElement;
+        on?(
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): Ext.dom.IElement;
         /** [Method] Creates a pause before any subsequent queued effects begin
          * @param seconds Number The length of time to pause (in seconds)
          * @returns Ext.Element The Element
@@ -14091,7 +15073,11 @@ declare namespace Ext.dom {
          * @param scope Object If a scope (this reference) was specified when the listener was added, then this must refer to the same object.
          * @returns Ext.dom.Element this
          */
-        removeListener?(eventName?: string, fn?: any, scope?: any): Ext.dom.IElement;
+        removeListener?(
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Animates the transition of an element s dimensions from a starting height width to an ending height width
          * @param width Number The new width (pass undefined to keep the original width)
          * @param height Number The new height (pass undefined to keep the original height)
@@ -14120,7 +15106,12 @@ declare namespace Ext.dom {
          * @param highlight Boolean true to highlight the element when it is in view. animation config object
          * @returns Ext.dom.Element this
          */
-        scrollIntoView?(container?: any, hscroll?: boolean, animate?: any, highlight?: boolean): Ext.dom.IElement;
+        scrollIntoView?(
+            container?: any,
+            hscroll?: boolean,
+            animate?: any,
+            highlight?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Scrolls this element the specified scroll point
          * @param side String Either "left" for scrollLeft values or "top" for scrollTop values.
          * @param value Number The new scroll value
@@ -14145,7 +15136,13 @@ declare namespace Ext.dom {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.dom.Element this
          */
-        setBounds?(x?: number, y?: number, width?: any, height?: any, animate?: any): Ext.dom.IElement;
+        setBounds?(
+            x?: number,
+            y?: number,
+            width?: any,
+            height?: any,
+            animate?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets the CSS display property
          * @param value Boolean/String Boolean value to display the element using its default display, or a string to set the display directly.
          * @returns Ext.dom.Element this
@@ -14233,7 +15230,10 @@ declare namespace Ext.dom {
          * @param preventDefault Boolean true to prevent the default action too
          * @returns Ext.dom.Element this
          */
-        swallowEvent?(eventName?: any, preventDefault?: boolean): Ext.dom.IElement;
+        swallowEvent?(
+            eventName?: any,
+            preventDefault?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Blinks the element as if it was clicked and then collapses on its center similar to switching off a television
          * @param options Object Object literal with any of the Ext.fx.Anim config options
          * @returns Ext.dom.Element The Element
@@ -14267,7 +15267,11 @@ declare namespace Ext.dom {
          * @param callback Function For async script loading you can be notified when the update completes
          * @returns Ext.dom.Element this
          */
-        update?(html?: string, loadScripts?: boolean, callback?: any): Ext.dom.IElement;
+        update?(
+            html?: string,
+            loadScripts?: boolean,
+            callback?: any,
+        ): Ext.dom.IElement;
     }
     export class Element {
         /** [Method] Add methods  properties to the prototype of this class
@@ -14388,21 +15392,33 @@ declare namespace Ext {
          * @param scope Object The scope to execute the testFn in.
          * @returns Ext.dom.Element this
          */
-        addClsOnClick?(className?: string, testFn?: any, scope?: any): Ext.dom.IElement;
+        addClsOnClick?(
+            className?: string,
+            testFn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets up event handlers to add and remove a css class when this element has the focus Defined in override Ext dom Ele
          * @param className String The class to add
          * @param testFn Function A test function to execute before adding the class. The passed parameter will be the Element instance. If this functions returns false, the class will not be added.
          * @param scope Object The scope to execute the testFn in.
          * @returns Ext.dom.Element this
          */
-        addClsOnFocus?(className?: string, testFn?: any, scope?: any): Ext.dom.IElement;
+        addClsOnFocus?(
+            className?: string,
+            testFn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets up event handlers to add and remove a css class when the mouse is over this element Defined in override Ext dom
          * @param className String The class to add
          * @param testFn Function A test function to execute before adding the class. The passed parameter will be the Element instance. If this functions returns false, the class will not be added.
          * @param scope Object The scope to execute the testFn in.
          * @returns Ext.dom.Element this
          */
-        addClsOnOver?(className?: string, testFn?: any, scope?: any): Ext.dom.IElement;
+        addClsOnOver?(
+            className?: string,
+            testFn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Convenience method for constructing a KeyMap
          * @param key String/Number/Number[]/Object Either a string with the keys to listen for, the numeric key code, array of key codes or an object with the following options:
          * @param fn Function The function to call
@@ -14422,7 +15438,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration properties. This may contain any of the following properties: scope Object : The scope (this reference) in which the handler function is executed. If omitted, defaults to this Element. delegate String: A simple selector to filter the target or look for a descendant of the target. See below for additional details. stopEvent Boolean: True to stop the event. That is stop propagation, and prevent the default action. preventDefault Boolean: True to prevent the default action stopPropagation Boolean: True to prevent event propagation normalized Boolean: False to pass a browser event to the handler function instead of an Ext.EventObject target Ext.dom.Element: Only call the handler if the event was fired on the target Element, not if the event was bubbled up from a child node. delay Number: The number of milliseconds to delay the invocation of the handler after the event fires. single Boolean: True to add a handler to handle just the next firing of the event, and then remove itself. buffer Number: Causes the handler to be scheduled to run in an Ext.util.DelayedTask delayed by the specified number of milliseconds. If the event fires again within that time, the original handler is not invoked, but the new handler is scheduled in its place. Combining Options  Using the options argument, it is possible to combine different types of listeners:  A delayed, one-time listener that auto stops the event and adds a custom argument (forumId) to the options object. The options object is available as the third parameter in the handler function.  Code:  el.on('click', this.onClick, this, {  single: true,  delay: 100,  stopEvent : true,  forumId: 4 }); Attaching multiple handlers in 1 call  The method also allows for a single argument to be passed which is a config object containing properties which specify multiple handlers.  Code:  el.on({  'click' : {  fn: this.onClick,  scope: this,  delay: 100  },  'mouseover' : {  fn: this.onMouseOver,  scope: this  },  'mouseout' : {  fn: this.onMouseOut,  scope: this  } }); Or a shorthand syntax:  Code:  el.on({  'click' : this.onClick,  'mouseover' : this.onMouseOver,  'mouseout' : this.onMouseOut,  scope: this }); delegate  This is a configuration option that you can pass along when registering a handler for an event to assist with event delegation. Event delegation is a technique that is used to reduce memory consumption and prevent exposure to memory-leaks. By registering an event for a container element as opposed to each element within a container. By setting this configuration option to a simple selector, the target element will be filtered to look for a descendant of the target. For example:  // using this markup: &lt;div id='elId'&gt;  &lt;p id='p1'&gt;paragraph one&lt;/p&gt;  &lt;p id='p2' class='clickable'&gt;paragraph two&lt;/p&gt;  &lt;p id='p3'&gt;paragraph three&lt;/p&gt; &lt;/div&gt; // utilize event delegation to registering just one handler on the container element: el = Ext.get('elId'); el.on(  'click',  function(e,t) {  // handle click  console.info(t.id); // 'p2'  },  this,  {  // filter the target element to be a descendant with the class 'clickable'  delegate: '.clickable'  } );
          * @returns Ext.dom.Element this
          */
-        addListener?(eventName?: string, fn?: any, scope?: any, options?: any): Ext.dom.IElement;
+        addListener?(
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): Ext.dom.IElement;
         /** [Method] Performs custom animation on this Element
          * @param config Object Configuration for Ext.fx.Anim. Note that the to config is required.
          * @returns Ext.dom.Element this
@@ -14472,7 +15493,11 @@ declare namespace Ext {
          * @param matchBox Boolean True to align and size the proxy to this element now.
          * @returns Ext.dom.Element The new proxy element
          */
-        createProxy?(config?: any, renderTo?: any, matchBox?: boolean): Ext.dom.IElement;
+        createProxy?(
+            config?: any,
+            renderTo?: any,
+            matchBox?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Creates an iframe shim for this element to keep selects and other windowed objects from showing through
          * @returns Ext.dom.Element The new shim element
          */
@@ -14642,7 +15667,12 @@ declare namespace Ext {
          * @param options Object Options for the listener. See the options parameter.
          * @returns Ext.dom.Element this
          */
-        hover?(overFn?: any, outFn?: any, scope?: any, options?: any): Ext.dom.IElement;
+        hover?(
+            overFn?: any,
+            outFn?: any,
+            scope?: any,
+            options?: any,
+        ): Ext.dom.IElement;
         /** [Method] Initializes a Ext dd DD drag drop object for this element
          * @param group String The group the DD object is member of
          * @param config Object The DD config object
@@ -14656,14 +15686,22 @@ declare namespace Ext {
          * @param overrides Object An object containing methods to override/implement on the DDProxy object
          * @returns Ext.dd.DDProxy The DDProxy object
          */
-        initDDProxy?(group?: string, config?: any, overrides?: any): Ext.dd.IDDProxy;
+        initDDProxy?(
+            group?: string,
+            config?: any,
+            overrides?: any,
+        ): Ext.dd.IDDProxy;
         /** [Method] Initializes a Ext dd DDTarget object for this element
          * @param group String The group the DDTarget object is member of
          * @param config Object The DDTarget config object
          * @param overrides Object An object containing methods to override/implement on the DDTarget object
          * @returns Ext.dd.DDTarget The DDTarget object
          */
-        initDDTarget?(group?: string, config?: any, overrides?: any): Ext.dd.IDDTarget;
+        initDDTarget?(
+            group?: string,
+            config?: any,
+            overrides?: any,
+        ): Ext.dd.IDDTarget;
         /** [Method] Tests various css rules browsers to determine if this element uses a border box
          * @returns Boolean
          */
@@ -14724,7 +15762,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration properties. This may contain any of the following properties: scope Object : The scope (this reference) in which the handler function is executed. If omitted, defaults to this Element. delegate String: A simple selector to filter the target or look for a descendant of the target. See below for additional details. stopEvent Boolean: True to stop the event. That is stop propagation, and prevent the default action. preventDefault Boolean: True to prevent the default action stopPropagation Boolean: True to prevent event propagation normalized Boolean: False to pass a browser event to the handler function instead of an Ext.EventObject target Ext.dom.Element: Only call the handler if the event was fired on the target Element, not if the event was bubbled up from a child node. delay Number: The number of milliseconds to delay the invocation of the handler after the event fires. single Boolean: True to add a handler to handle just the next firing of the event, and then remove itself. buffer Number: Causes the handler to be scheduled to run in an Ext.util.DelayedTask delayed by the specified number of milliseconds. If the event fires again within that time, the original handler is not invoked, but the new handler is scheduled in its place. Combining Options  Using the options argument, it is possible to combine different types of listeners:  A delayed, one-time listener that auto stops the event and adds a custom argument (forumId) to the options object. The options object is available as the third parameter in the handler function.  Code:  el.on('click', this.onClick, this, {  single: true,  delay: 100,  stopEvent : true,  forumId: 4 }); Attaching multiple handlers in 1 call  The method also allows for a single argument to be passed which is a config object containing properties which specify multiple handlers.  Code:  el.on({  'click' : {  fn: this.onClick,  scope: this,  delay: 100  },  'mouseover' : {  fn: this.onMouseOver,  scope: this  },  'mouseout' : {  fn: this.onMouseOut,  scope: this  } }); Or a shorthand syntax:  Code:  el.on({  'click' : this.onClick,  'mouseover' : this.onMouseOver,  'mouseout' : this.onMouseOut,  scope: this }); delegate  This is a configuration option that you can pass along when registering a handler for an event to assist with event delegation. Event delegation is a technique that is used to reduce memory consumption and prevent exposure to memory-leaks. By registering an event for a container element as opposed to each element within a container. By setting this configuration option to a simple selector, the target element will be filtered to look for a descendant of the target. For example:  // using this markup: &lt;div id='elId'&gt;  &lt;p id='p1'&gt;paragraph one&lt;/p&gt;  &lt;p id='p2' class='clickable'&gt;paragraph two&lt;/p&gt;  &lt;p id='p3'&gt;paragraph three&lt;/p&gt; &lt;/div&gt; // utilize event delegation to registering just one handler on the container element: el = Ext.get('elId'); el.on(  'click',  function(e,t) {  // handle click  console.info(t.id); // 'p2'  },  this,  {  // filter the target element to be a descendant with the class 'clickable'  delegate: '.clickable'  } );
          * @returns Ext.dom.Element this
          */
-        on?(eventName?: string, fn?: any, scope?: any, options?: any): Ext.dom.IElement;
+        on?(
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): Ext.dom.IElement;
         /** [Method] Creates a pause before any subsequent queued effects begin
          * @param seconds Number The length of time to pause (in seconds)
          * @returns Ext.Element The Element
@@ -14761,7 +15804,11 @@ declare namespace Ext {
          * @param scope Object If a scope (this reference) was specified when the listener was added, then this must refer to the same object.
          * @returns Ext.dom.Element this
          */
-        removeListener?(eventName?: string, fn?: any, scope?: any): Ext.dom.IElement;
+        removeListener?(
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Animates the transition of an element s dimensions from a starting height width to an ending height width
          * @param width Number The new width (pass undefined to keep the original width)
          * @param height Number The new height (pass undefined to keep the original height)
@@ -14790,7 +15837,12 @@ declare namespace Ext {
          * @param highlight Boolean true to highlight the element when it is in view. animation config object
          * @returns Ext.dom.Element this
          */
-        scrollIntoView?(container?: any, hscroll?: boolean, animate?: any, highlight?: boolean): Ext.dom.IElement;
+        scrollIntoView?(
+            container?: any,
+            hscroll?: boolean,
+            animate?: any,
+            highlight?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Scrolls this element the specified scroll point
          * @param side String Either "left" for scrollLeft values or "top" for scrollTop values.
          * @param value Number The new scroll value
@@ -14815,7 +15867,13 @@ declare namespace Ext {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.dom.Element this
          */
-        setBounds?(x?: number, y?: number, width?: any, height?: any, animate?: any): Ext.dom.IElement;
+        setBounds?(
+            x?: number,
+            y?: number,
+            width?: any,
+            height?: any,
+            animate?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets the CSS display property
          * @param value Boolean/String Boolean value to display the element using its default display, or a string to set the display directly.
          * @returns Ext.dom.Element this
@@ -14903,7 +15961,10 @@ declare namespace Ext {
          * @param preventDefault Boolean true to prevent the default action too
          * @returns Ext.dom.Element this
          */
-        swallowEvent?(eventName?: any, preventDefault?: boolean): Ext.dom.IElement;
+        swallowEvent?(
+            eventName?: any,
+            preventDefault?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Blinks the element as if it was clicked and then collapses on its center similar to switching off a television
          * @param options Object Object literal with any of the Ext.fx.Anim config options
          * @returns Ext.dom.Element The Element
@@ -14937,7 +15998,11 @@ declare namespace Ext {
          * @param callback Function For async script loading you can be notified when the update completes
          * @returns Ext.dom.Element this
          */
-        update?(html?: string, loadScripts?: boolean, callback?: any): Ext.dom.IElement;
+        update?(
+            html?: string,
+            loadScripts?: boolean,
+            callback?: any,
+        ): Ext.dom.IElement;
     }
     export class Element {
         /** [Method] Add methods  properties to the prototype of this class
@@ -15058,21 +16123,33 @@ declare namespace Ext.core {
          * @param scope Object The scope to execute the testFn in.
          * @returns Ext.dom.Element this
          */
-        addClsOnClick?(className?: string, testFn?: any, scope?: any): Ext.dom.IElement;
+        addClsOnClick?(
+            className?: string,
+            testFn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets up event handlers to add and remove a css class when this element has the focus Defined in override Ext dom Ele
          * @param className String The class to add
          * @param testFn Function A test function to execute before adding the class. The passed parameter will be the Element instance. If this functions returns false, the class will not be added.
          * @param scope Object The scope to execute the testFn in.
          * @returns Ext.dom.Element this
          */
-        addClsOnFocus?(className?: string, testFn?: any, scope?: any): Ext.dom.IElement;
+        addClsOnFocus?(
+            className?: string,
+            testFn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets up event handlers to add and remove a css class when the mouse is over this element Defined in override Ext dom
          * @param className String The class to add
          * @param testFn Function A test function to execute before adding the class. The passed parameter will be the Element instance. If this functions returns false, the class will not be added.
          * @param scope Object The scope to execute the testFn in.
          * @returns Ext.dom.Element this
          */
-        addClsOnOver?(className?: string, testFn?: any, scope?: any): Ext.dom.IElement;
+        addClsOnOver?(
+            className?: string,
+            testFn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Convenience method for constructing a KeyMap
          * @param key String/Number/Number[]/Object Either a string with the keys to listen for, the numeric key code, array of key codes or an object with the following options:
          * @param fn Function The function to call
@@ -15092,7 +16169,12 @@ declare namespace Ext.core {
          * @param options Object An object containing handler configuration properties. This may contain any of the following properties: scope Object : The scope (this reference) in which the handler function is executed. If omitted, defaults to this Element. delegate String: A simple selector to filter the target or look for a descendant of the target. See below for additional details. stopEvent Boolean: True to stop the event. That is stop propagation, and prevent the default action. preventDefault Boolean: True to prevent the default action stopPropagation Boolean: True to prevent event propagation normalized Boolean: False to pass a browser event to the handler function instead of an Ext.EventObject target Ext.dom.Element: Only call the handler if the event was fired on the target Element, not if the event was bubbled up from a child node. delay Number: The number of milliseconds to delay the invocation of the handler after the event fires. single Boolean: True to add a handler to handle just the next firing of the event, and then remove itself. buffer Number: Causes the handler to be scheduled to run in an Ext.util.DelayedTask delayed by the specified number of milliseconds. If the event fires again within that time, the original handler is not invoked, but the new handler is scheduled in its place. Combining Options  Using the options argument, it is possible to combine different types of listeners:  A delayed, one-time listener that auto stops the event and adds a custom argument (forumId) to the options object. The options object is available as the third parameter in the handler function.  Code:  el.on('click', this.onClick, this, {  single: true,  delay: 100,  stopEvent : true,  forumId: 4 }); Attaching multiple handlers in 1 call  The method also allows for a single argument to be passed which is a config object containing properties which specify multiple handlers.  Code:  el.on({  'click' : {  fn: this.onClick,  scope: this,  delay: 100  },  'mouseover' : {  fn: this.onMouseOver,  scope: this  },  'mouseout' : {  fn: this.onMouseOut,  scope: this  } }); Or a shorthand syntax:  Code:  el.on({  'click' : this.onClick,  'mouseover' : this.onMouseOver,  'mouseout' : this.onMouseOut,  scope: this }); delegate  This is a configuration option that you can pass along when registering a handler for an event to assist with event delegation. Event delegation is a technique that is used to reduce memory consumption and prevent exposure to memory-leaks. By registering an event for a container element as opposed to each element within a container. By setting this configuration option to a simple selector, the target element will be filtered to look for a descendant of the target. For example:  // using this markup: &lt;div id='elId'&gt;  &lt;p id='p1'&gt;paragraph one&lt;/p&gt;  &lt;p id='p2' class='clickable'&gt;paragraph two&lt;/p&gt;  &lt;p id='p3'&gt;paragraph three&lt;/p&gt; &lt;/div&gt; // utilize event delegation to registering just one handler on the container element: el = Ext.get('elId'); el.on(  'click',  function(e,t) {  // handle click  console.info(t.id); // 'p2'  },  this,  {  // filter the target element to be a descendant with the class 'clickable'  delegate: '.clickable'  } );
          * @returns Ext.dom.Element this
          */
-        addListener?(eventName?: string, fn?: any, scope?: any, options?: any): Ext.dom.IElement;
+        addListener?(
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): Ext.dom.IElement;
         /** [Method] Performs custom animation on this Element
          * @param config Object Configuration for Ext.fx.Anim. Note that the to config is required.
          * @returns Ext.dom.Element this
@@ -15142,7 +16224,11 @@ declare namespace Ext.core {
          * @param matchBox Boolean True to align and size the proxy to this element now.
          * @returns Ext.dom.Element The new proxy element
          */
-        createProxy?(config?: any, renderTo?: any, matchBox?: boolean): Ext.dom.IElement;
+        createProxy?(
+            config?: any,
+            renderTo?: any,
+            matchBox?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Creates an iframe shim for this element to keep selects and other windowed objects from showing through
          * @returns Ext.dom.Element The new shim element
          */
@@ -15312,7 +16398,12 @@ declare namespace Ext.core {
          * @param options Object Options for the listener. See the options parameter.
          * @returns Ext.dom.Element this
          */
-        hover?(overFn?: any, outFn?: any, scope?: any, options?: any): Ext.dom.IElement;
+        hover?(
+            overFn?: any,
+            outFn?: any,
+            scope?: any,
+            options?: any,
+        ): Ext.dom.IElement;
         /** [Method] Initializes a Ext dd DD drag drop object for this element
          * @param group String The group the DD object is member of
          * @param config Object The DD config object
@@ -15326,14 +16417,22 @@ declare namespace Ext.core {
          * @param overrides Object An object containing methods to override/implement on the DDProxy object
          * @returns Ext.dd.DDProxy The DDProxy object
          */
-        initDDProxy?(group?: string, config?: any, overrides?: any): Ext.dd.IDDProxy;
+        initDDProxy?(
+            group?: string,
+            config?: any,
+            overrides?: any,
+        ): Ext.dd.IDDProxy;
         /** [Method] Initializes a Ext dd DDTarget object for this element
          * @param group String The group the DDTarget object is member of
          * @param config Object The DDTarget config object
          * @param overrides Object An object containing methods to override/implement on the DDTarget object
          * @returns Ext.dd.DDTarget The DDTarget object
          */
-        initDDTarget?(group?: string, config?: any, overrides?: any): Ext.dd.IDDTarget;
+        initDDTarget?(
+            group?: string,
+            config?: any,
+            overrides?: any,
+        ): Ext.dd.IDDTarget;
         /** [Method] Tests various css rules browsers to determine if this element uses a border box
          * @returns Boolean
          */
@@ -15394,7 +16493,12 @@ declare namespace Ext.core {
          * @param options Object An object containing handler configuration properties. This may contain any of the following properties: scope Object : The scope (this reference) in which the handler function is executed. If omitted, defaults to this Element. delegate String: A simple selector to filter the target or look for a descendant of the target. See below for additional details. stopEvent Boolean: True to stop the event. That is stop propagation, and prevent the default action. preventDefault Boolean: True to prevent the default action stopPropagation Boolean: True to prevent event propagation normalized Boolean: False to pass a browser event to the handler function instead of an Ext.EventObject target Ext.dom.Element: Only call the handler if the event was fired on the target Element, not if the event was bubbled up from a child node. delay Number: The number of milliseconds to delay the invocation of the handler after the event fires. single Boolean: True to add a handler to handle just the next firing of the event, and then remove itself. buffer Number: Causes the handler to be scheduled to run in an Ext.util.DelayedTask delayed by the specified number of milliseconds. If the event fires again within that time, the original handler is not invoked, but the new handler is scheduled in its place. Combining Options  Using the options argument, it is possible to combine different types of listeners:  A delayed, one-time listener that auto stops the event and adds a custom argument (forumId) to the options object. The options object is available as the third parameter in the handler function.  Code:  el.on('click', this.onClick, this, {  single: true,  delay: 100,  stopEvent : true,  forumId: 4 }); Attaching multiple handlers in 1 call  The method also allows for a single argument to be passed which is a config object containing properties which specify multiple handlers.  Code:  el.on({  'click' : {  fn: this.onClick,  scope: this,  delay: 100  },  'mouseover' : {  fn: this.onMouseOver,  scope: this  },  'mouseout' : {  fn: this.onMouseOut,  scope: this  } }); Or a shorthand syntax:  Code:  el.on({  'click' : this.onClick,  'mouseover' : this.onMouseOver,  'mouseout' : this.onMouseOut,  scope: this }); delegate  This is a configuration option that you can pass along when registering a handler for an event to assist with event delegation. Event delegation is a technique that is used to reduce memory consumption and prevent exposure to memory-leaks. By registering an event for a container element as opposed to each element within a container. By setting this configuration option to a simple selector, the target element will be filtered to look for a descendant of the target. For example:  // using this markup: &lt;div id='elId'&gt;  &lt;p id='p1'&gt;paragraph one&lt;/p&gt;  &lt;p id='p2' class='clickable'&gt;paragraph two&lt;/p&gt;  &lt;p id='p3'&gt;paragraph three&lt;/p&gt; &lt;/div&gt; // utilize event delegation to registering just one handler on the container element: el = Ext.get('elId'); el.on(  'click',  function(e,t) {  // handle click  console.info(t.id); // 'p2'  },  this,  {  // filter the target element to be a descendant with the class 'clickable'  delegate: '.clickable'  } );
          * @returns Ext.dom.Element this
          */
-        on?(eventName?: string, fn?: any, scope?: any, options?: any): Ext.dom.IElement;
+        on?(
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): Ext.dom.IElement;
         /** [Method] Creates a pause before any subsequent queued effects begin
          * @param seconds Number The length of time to pause (in seconds)
          * @returns Ext.Element The Element
@@ -15431,7 +16535,11 @@ declare namespace Ext.core {
          * @param scope Object If a scope (this reference) was specified when the listener was added, then this must refer to the same object.
          * @returns Ext.dom.Element this
          */
-        removeListener?(eventName?: string, fn?: any, scope?: any): Ext.dom.IElement;
+        removeListener?(
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.dom.IElement;
         /** [Method] Animates the transition of an element s dimensions from a starting height width to an ending height width
          * @param width Number The new width (pass undefined to keep the original width)
          * @param height Number The new height (pass undefined to keep the original height)
@@ -15460,7 +16568,12 @@ declare namespace Ext.core {
          * @param highlight Boolean true to highlight the element when it is in view. animation config object
          * @returns Ext.dom.Element this
          */
-        scrollIntoView?(container?: any, hscroll?: boolean, animate?: any, highlight?: boolean): Ext.dom.IElement;
+        scrollIntoView?(
+            container?: any,
+            hscroll?: boolean,
+            animate?: any,
+            highlight?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Scrolls this element the specified scroll point
          * @param side String Either "left" for scrollLeft values or "top" for scrollTop values.
          * @param value Number The new scroll value
@@ -15485,7 +16598,13 @@ declare namespace Ext.core {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.dom.Element this
          */
-        setBounds?(x?: number, y?: number, width?: any, height?: any, animate?: any): Ext.dom.IElement;
+        setBounds?(
+            x?: number,
+            y?: number,
+            width?: any,
+            height?: any,
+            animate?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets the CSS display property
          * @param value Boolean/String Boolean value to display the element using its default display, or a string to set the display directly.
          * @returns Ext.dom.Element this
@@ -15573,7 +16692,10 @@ declare namespace Ext.core {
          * @param preventDefault Boolean true to prevent the default action too
          * @returns Ext.dom.Element this
          */
-        swallowEvent?(eventName?: any, preventDefault?: boolean): Ext.dom.IElement;
+        swallowEvent?(
+            eventName?: any,
+            preventDefault?: boolean,
+        ): Ext.dom.IElement;
         /** [Method] Blinks the element as if it was clicked and then collapses on its center similar to switching off a television
          * @param options Object Object literal with any of the Ext.fx.Anim config options
          * @returns Ext.dom.Element The Element
@@ -15607,7 +16729,11 @@ declare namespace Ext.core {
          * @param callback Function For async script loading you can be notified when the update completes
          * @returns Ext.dom.Element this
          */
-        update?(html?: string, loadScripts?: boolean, callback?: any): Ext.dom.IElement;
+        update?(
+            html?: string,
+            loadScripts?: boolean,
+            callback?: any,
+        ): Ext.dom.IElement;
     }
     export class Element {
         /** [Method] Add methods  properties to the prototype of this class
@@ -15797,7 +16923,13 @@ declare namespace Ext.dom {
          * @param easing Object
          * @returns Ext.dom.Element this
          */
-        setHeight?(h?: any, animate?: any, duration?: any, callback?: any, easing?: any): Ext.dom.IElement;
+        setHeight?(
+            h?: any,
+            animate?: any,
+            duration?: any,
+            callback?: any,
+            easing?: any,
+        ): Ext.dom.IElement;
         /** [Method] overridden Element method
          * @param left Object
          * @returns Ext.dom.Element this
@@ -15818,7 +16950,14 @@ declare namespace Ext.dom {
          * @param easing Object
          * @returns Ext.dom.Element this
          */
-        setSize?(w?: any, h?: any, animate?: any, duration?: any, callback?: any, easing?: any): Ext.dom.IElement;
+        setSize?(
+            w?: any,
+            h?: any,
+            animate?: any,
+            duration?: any,
+            callback?: any,
+            easing?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets the element s top position directly using CSS style instead of setY
          * @param top Object
          * @returns Ext.dom.Element this
@@ -15832,7 +16971,13 @@ declare namespace Ext.dom {
          * @param easing Object
          * @returns Ext.dom.Element this
          */
-        setVisible?(visible?: any, animate?: any, duration?: any, callback?: any, easing?: any): Ext.dom.IElement;
+        setVisible?(
+            visible?: any,
+            animate?: any,
+            duration?: any,
+            callback?: any,
+            easing?: any,
+        ): Ext.dom.IElement;
         /** [Method] overridden Element method
          * @param w Object
          * @param animate Object
@@ -15841,7 +16986,13 @@ declare namespace Ext.dom {
          * @param easing Object
          * @returns Ext.dom.Element this
          */
-        setWidth?(w?: any, animate?: any, duration?: any, callback?: any, easing?: any): Ext.dom.IElement;
+        setWidth?(
+            w?: any,
+            animate?: any,
+            duration?: any,
+            callback?: any,
+            easing?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets the z index of this layer and adjusts any shadow and shim z indexes
          * @param zindex Number The new z-index to set
          * @returns Ext.Layer The Layer
@@ -15902,7 +17053,13 @@ declare namespace Ext {
          * @param easing Object
          * @returns Ext.dom.Element this
          */
-        setHeight?(h?: any, animate?: any, duration?: any, callback?: any, easing?: any): Ext.dom.IElement;
+        setHeight?(
+            h?: any,
+            animate?: any,
+            duration?: any,
+            callback?: any,
+            easing?: any,
+        ): Ext.dom.IElement;
         /** [Method] overridden Element method
          * @param left Object
          * @returns Ext.dom.Element this
@@ -15923,7 +17080,14 @@ declare namespace Ext {
          * @param easing Object
          * @returns Ext.dom.Element this
          */
-        setSize?(w?: any, h?: any, animate?: any, duration?: any, callback?: any, easing?: any): Ext.dom.IElement;
+        setSize?(
+            w?: any,
+            h?: any,
+            animate?: any,
+            duration?: any,
+            callback?: any,
+            easing?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets the element s top position directly using CSS style instead of setY
          * @param top Object
          * @returns Ext.dom.Element this
@@ -15937,7 +17101,13 @@ declare namespace Ext {
          * @param easing Object
          * @returns Ext.dom.Element this
          */
-        setVisible?(visible?: any, animate?: any, duration?: any, callback?: any, easing?: any): Ext.dom.IElement;
+        setVisible?(
+            visible?: any,
+            animate?: any,
+            duration?: any,
+            callback?: any,
+            easing?: any,
+        ): Ext.dom.IElement;
         /** [Method] overridden Element method
          * @param w Object
          * @param animate Object
@@ -15946,7 +17116,13 @@ declare namespace Ext {
          * @param easing Object
          * @returns Ext.dom.Element this
          */
-        setWidth?(w?: any, animate?: any, duration?: any, callback?: any, easing?: any): Ext.dom.IElement;
+        setWidth?(
+            w?: any,
+            animate?: any,
+            duration?: any,
+            callback?: any,
+            easing?: any,
+        ): Ext.dom.IElement;
         /** [Method] Sets the z index of this layer and adjusts any shadow and shim z indexes
          * @param zindex Number The new z-index to set
          * @returns Ext.Layer The Layer
@@ -15955,8 +17131,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.dom {
-    export interface IQuery {
-    }
+    export interface IQuery {}
     export class Query {
         /** [Property] (Object) */
         static matchers: any;
@@ -15976,7 +17151,11 @@ declare namespace Ext.dom {
          * @param nonMatches Boolean If true, it returns the elements that DON'T match the selector instead of the ones that match
          * @returns HTMLElement[] An Array of DOM elements which match the selector. If there are no matches, and empty Array is returned.
          */
-        static filter(el?: HTMLElement[], selector?: string, nonMatches?: boolean): HTMLElement[];
+        static filter(
+            el?: HTMLElement[],
+            selector?: string,
+            nonMatches?: boolean,
+        ): HTMLElement[];
         /** [Method] Returns true if the passed element s match the passed simple selector e g
          * @param el String/HTMLElement/HTMLElement[] An element id, element or array of elements
          * @param selector String The simple selector to test
@@ -15996,7 +17175,12 @@ declare namespace Ext.dom {
          * @param single Boolean Pass true to select only the first matching node using document.querySelector (where available)
          * @returns HTMLElement[] An array of DOM elements (not a NodeList as returned by querySelectorAll).
          */
-        static select(path?: string, root?: HTMLElement, type?: string, single?: boolean): HTMLElement[];
+        static select(
+            path?: string,
+            root?: HTMLElement,
+            type?: string,
+            single?: boolean,
+        ): HTMLElement[];
         /** [Method] Selects a single element
          * @param selector String The selector/xpath query
          * @param root HTMLElement The start of the query.
@@ -16009,19 +17193,26 @@ declare namespace Ext.dom {
          * @param defaultValue Number When specified, this is return as empty value.
          * @returns Number
          */
-        static selectNumber(selector?: string, root?: HTMLElement, defaultValue?: number): number;
+        static selectNumber(
+            selector?: string,
+            root?: HTMLElement,
+            defaultValue?: number,
+        ): number;
         /** [Method] Selects the value of a node optionally replacing null with the defaultValue
          * @param selector String The selector/xpath query
          * @param root HTMLElement The start of the query.
          * @param defaultValue String When specified, this is return as empty value.
          * @returns String
          */
-        static selectValue(selector?: string, root?: HTMLElement, defaultValue?: string): string;
+        static selectValue(
+            selector?: string,
+            root?: HTMLElement,
+            defaultValue?: string,
+        ): string;
     }
 }
 declare namespace Ext {
-    export interface IDomQuery {
-    }
+    export interface IDomQuery {}
     export class DomQuery {
         /** [Property] (Object) */
         static matchers: any;
@@ -16041,7 +17232,11 @@ declare namespace Ext {
          * @param nonMatches Boolean If true, it returns the elements that DON'T match the selector instead of the ones that match
          * @returns HTMLElement[] An Array of DOM elements which match the selector. If there are no matches, and empty Array is returned.
          */
-        static filter(el?: HTMLElement[], selector?: string, nonMatches?: boolean): HTMLElement[];
+        static filter(
+            el?: HTMLElement[],
+            selector?: string,
+            nonMatches?: boolean,
+        ): HTMLElement[];
         /** [Method] Returns true if the passed element s match the passed simple selector e g
          * @param el String/HTMLElement/HTMLElement[] An element id, element or array of elements
          * @param selector String The simple selector to test
@@ -16061,7 +17256,12 @@ declare namespace Ext {
          * @param single Boolean Pass true to select only the first matching node using document.querySelector (where available)
          * @returns HTMLElement[] An array of DOM elements (not a NodeList as returned by querySelectorAll).
          */
-        static select(path?: string, root?: HTMLElement, type?: string, single?: boolean): HTMLElement[];
+        static select(
+            path?: string,
+            root?: HTMLElement,
+            type?: string,
+            single?: boolean,
+        ): HTMLElement[];
         /** [Method] Selects a single element
          * @param selector String The selector/xpath query
          * @param root HTMLElement The start of the query.
@@ -16074,19 +17274,26 @@ declare namespace Ext {
          * @param defaultValue Number When specified, this is return as empty value.
          * @returns Number
          */
-        static selectNumber(selector?: string, root?: HTMLElement, defaultValue?: number): number;
+        static selectNumber(
+            selector?: string,
+            root?: HTMLElement,
+            defaultValue?: number,
+        ): number;
         /** [Method] Selects the value of a node optionally replacing null with the defaultValue
          * @param selector String The selector/xpath query
          * @param root HTMLElement The start of the query.
          * @param defaultValue String When specified, this is return as empty value.
          * @returns String
          */
-        static selectValue(selector?: string, root?: HTMLElement, defaultValue?: string): string;
+        static selectValue(
+            selector?: string,
+            root?: HTMLElement,
+            defaultValue?: string,
+        ): string;
     }
 }
 declare namespace Ext.core {
-    export interface IDomQuery {
-    }
+    export interface IDomQuery {}
     export class DomQuery {
         /** [Property] (Object) */
         static matchers: any;
@@ -16106,7 +17313,11 @@ declare namespace Ext.core {
          * @param nonMatches Boolean If true, it returns the elements that DON'T match the selector instead of the ones that match
          * @returns HTMLElement[] An Array of DOM elements which match the selector. If there are no matches, and empty Array is returned.
          */
-        static filter(el?: HTMLElement[], selector?: string, nonMatches?: boolean): HTMLElement[];
+        static filter(
+            el?: HTMLElement[],
+            selector?: string,
+            nonMatches?: boolean,
+        ): HTMLElement[];
         /** [Method] Returns true if the passed element s match the passed simple selector e g
          * @param el String/HTMLElement/HTMLElement[] An element id, element or array of elements
          * @param selector String The simple selector to test
@@ -16126,7 +17337,12 @@ declare namespace Ext.core {
          * @param single Boolean Pass true to select only the first matching node using document.querySelector (where available)
          * @returns HTMLElement[] An array of DOM elements (not a NodeList as returned by querySelectorAll).
          */
-        static select(path?: string, root?: HTMLElement, type?: string, single?: boolean): HTMLElement[];
+        static select(
+            path?: string,
+            root?: HTMLElement,
+            type?: string,
+            single?: boolean,
+        ): HTMLElement[];
         /** [Method] Selects a single element
          * @param selector String The selector/xpath query
          * @param root HTMLElement The start of the query.
@@ -16139,19 +17355,26 @@ declare namespace Ext.core {
          * @param defaultValue Number When specified, this is return as empty value.
          * @returns Number
          */
-        static selectNumber(selector?: string, root?: HTMLElement, defaultValue?: number): number;
+        static selectNumber(
+            selector?: string,
+            root?: HTMLElement,
+            defaultValue?: number,
+        ): number;
         /** [Method] Selects the value of a node optionally replacing null with the defaultValue
          * @param selector String The selector/xpath query
          * @param root HTMLElement The start of the query.
          * @param defaultValue String When specified, this is return as empty value.
          * @returns String
          */
-        static selectValue(selector?: string, root?: HTMLElement, defaultValue?: string): string;
+        static selectValue(
+            selector?: string,
+            root?: HTMLElement,
+            defaultValue?: string,
+        ): string;
     }
 }
 declare namespace Ext {
-    export interface IDomHelper extends Ext.dom.IHelper {
-    }
+    export interface IDomHelper extends Ext.dom.IHelper {}
     export class DomHelper {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -16262,8 +17485,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.core {
-    export interface IDomHelper extends Ext.dom.IHelper {
-    }
+    export interface IDomHelper extends Ext.dom.IHelper {}
     export class DomHelper {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -16488,7 +17710,9 @@ declare namespace Ext.draw {
     }
 }
 declare namespace Ext.draw {
-    export interface ICompositeSprite extends Ext.util.IMixedCollection, Ext.util.IAnimate {
+    export interface ICompositeSprite
+        extends Ext.util.IMixedCollection,
+            Ext.util.IAnimate {
         /** [Method] Inherit docs from MixedCollection
          * @param key Object
          * @param o Object
@@ -16550,7 +17774,10 @@ declare namespace Ext.draw {
          * @param redraw Boolean Flag to immediately draw the change.
          * @returns Ext.draw.CompositeSprite this
          */
-        setAttributes?(attrs?: any, redraw?: boolean): Ext.draw.ICompositeSprite;
+        setAttributes?(
+            attrs?: any,
+            redraw?: boolean,
+        ): Ext.draw.ICompositeSprite;
         /** [Method] Sets style for all sprites
          * @param style String CSS Style definition.
          */
@@ -16575,8 +17802,7 @@ declare namespace Ext.draw {
     }
 }
 declare namespace Ext.draw {
-    export interface IDraw extends Ext.IBase {
-    }
+    export interface IDraw extends Ext.IBase {}
     export class Draw {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -16612,7 +17838,12 @@ declare namespace Ext.draw {
          * @param lockEnds Boolean If true, the 'from' and 'to' parameters will be used as fixed end values and will not be adjusted
          * @returns Object The calculated step and ends info; properties are: - from: The result start value, which may be lower than the original start value - to: The result end value, which may be higher than the original end value - step: The fixed value size of each step, or undefined if the steps are not fixed. - steps: The number of steps if the steps are fixed, or an array of step values. NOTE: Even when the steps have a fixed value, they may not divide the from/to range perfectly evenly; there may be a smaller distance between the last step and the end value than between prior steps, particularly when the endsLocked param is true. Therefore it is best to not use the steps result when finding the axis tick points, instead use the step, to, and from to find the correct point for each tick.
          */
-        static snapEndsByDate(from?: any, to?: any, stepsMax?: number, lockEnds?: boolean): any;
+        static snapEndsByDate(
+            from?: any,
+            to?: any,
+            stepsMax?: number,
+            lockEnds?: boolean,
+        ): any;
         /** [Method] snapEndsByDateAndStep is a utility method to deduce an appropriate tick configuration for the data set of given featu
          * @param from Date The minimum value in the data
          * @param to Date The maximum value in the data
@@ -16620,7 +17851,12 @@ declare namespace Ext.draw {
          * @param lockEnds Boolean If true, the 'from' and 'to' parameters will be used as fixed end values  and will not be adjusted
          * @returns Object The calculated step and ends info; properties are: - from: The result start value, which may be lower than the original start value - to: The result end value, which may be higher than the original end value - step: The fixed value size of each step, or undefined if the steps are not fixed. - steps: The number of steps if the steps are fixed, or an array of step values. NOTE: Even when the steps have a fixed value, they may not divide the from/to range perfectly evenly; there may be a smaller distance between the last step and the end value than between prior steps, particularly when the endsLocked param is true. Therefore it is best to not use the steps result when finding the axis tick points, instead use the step, to, and from to find the correct point for each tick.
          */
-        static snapEndsByDateAndStep(from?: any, to?: any, step?: any[], lockEnds?: boolean): any;
+        static snapEndsByDateAndStep(
+            from?: any,
+            to?: any,
+            step?: any[],
+            lockEnds?: boolean,
+        ): any;
         /** [Method] Get the reference to the class from which this object was instantiated
          * @returns Ext.Class
          */
@@ -16628,8 +17864,7 @@ declare namespace Ext.draw {
     }
 }
 declare namespace Ext.draw.engine {
-    export interface IImageExporter extends Ext.IBase {
-    }
+    export interface IImageExporter extends Ext.IBase {}
     export class ImageExporter {
         /** [Property] (String) */
         static defaultUrl: string;
@@ -16727,8 +17962,7 @@ declare namespace Ext.draw.engine {
     }
 }
 declare namespace Ext.draw.engine {
-    export interface ISvgExporter extends Ext.IBase {
-    }
+    export interface ISvgExporter extends Ext.IBase {}
     export class SvgExporter {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -16800,11 +18034,13 @@ declare namespace Ext.draw.engine {
     }
 }
 declare namespace Ext.draw {
-    export interface IMatrix extends Ext.IBase {
-    }
+    export interface IMatrix extends Ext.IBase {}
 }
 declare namespace Ext.draw {
-    export interface ISprite extends Ext.IBase, Ext.util.IObservable, Ext.util.IAnimate {
+    export interface ISprite
+        extends Ext.IBase,
+            Ext.util.IObservable,
+            Ext.util.IAnimate {
         /** [Config Option] (Boolean) */
         draggable?: boolean | undefined;
         /** [Config Option] (String) */
@@ -16861,7 +18097,12 @@ declare namespace Ext.draw {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -16870,7 +18111,13 @@ declare namespace Ext.draw {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Performs custom animation on this object
          * @param config Object Configuration for Ext.fx.Anim. Note that the to config is required.
          * @returns Object this
@@ -16928,7 +18175,13 @@ declare namespace Ext.draw {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -16976,7 +18229,12 @@ declare namespace Ext.draw {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -17082,7 +18340,12 @@ declare namespace Ext.draw {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -17091,7 +18354,13 @@ declare namespace Ext.draw {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -17134,7 +18403,13 @@ declare namespace Ext.draw {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -17183,7 +18458,12 @@ declare namespace Ext.draw {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -17407,7 +18687,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -17416,7 +18701,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -17464,7 +18755,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -17499,7 +18796,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -17830,8 +19132,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IEventManager {
-    }
+    export interface IEventManager {}
     export class EventManager {
         /** [Property] (Object) */
         static idleEvent: any;
@@ -17842,7 +19143,13 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the handler function is executed. Defaults to the Element.
          * @param options Object An object containing handler configuration properties. This may contain any of the following properties (See Ext.Element.addListener for examples of how to use these options.):
          */
-        static addListener(el?: any, eventName?: string, handler?: any, scope?: any, options?: any): void;
+        static addListener(
+            el?: any,
+            eventName?: string,
+            handler?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Get the id of the element
          * @param element HTMLElement/Ext.Element The element to get the id for.
          * @returns String id
@@ -17884,7 +19191,13 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the handler function is executed. Defaults to the Element.
          * @param options Object An object containing handler configuration properties. This may contain any of the following properties (See Ext.Element.addListener for examples of how to use these options.):
          */
-        static on(el?: any, eventName?: string, handler?: any, scope?: any, options?: any): void;
+        static on(
+            el?: any,
+            eventName?: string,
+            handler?: any,
+            scope?: any,
+            options?: any,
+        ): void;
         /** [Method] Adds a listener to be notified when the document is ready before onload and before images are loaded
          * @param fn Function The method the event invokes.
          * @param scope Object The scope (this reference) in which the handler function executes. Defaults to the browser window.
@@ -17924,7 +19237,12 @@ declare namespace Ext {
          * @param fn Function The handler function to remove. This must be a reference to the function passed into the addListener call.
          * @param scope Object If a scope (this reference) was specified when the listener was added, then this must refer to the same object.
          */
-        static removeListener(el?: any, eventName?: string, fn?: any, scope?: any): void;
+        static removeListener(
+            el?: any,
+            eventName?: string,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes the passed window resize listener
          * @param fn Function The method the event invokes
          * @param scope Object The scope of handler
@@ -17953,8 +19271,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IEventObject {
-    }
+    export interface IEventObject {}
     export class EventObject {
         /** [Property] (Number) */
         static A: number;
@@ -18168,14 +19485,22 @@ declare namespace Ext {
          * @param returnEl Boolean True to return a Ext.Element object instead of DOM node
          * @returns HTMLElement
          */
-        static getRelatedTarget(selector?: string, maxDepth?: any, returnEl?: boolean): HTMLElement;
+        static getRelatedTarget(
+            selector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): HTMLElement;
         /** [Method] Gets the target for the event
          * @param selector String A simple selector to filter the target or look for an ancestor of the target
          * @param maxDepth Number/HTMLElement The max depth to search as a number or element (defaults to 10 || document.body)
          * @param returnEl Boolean True to return a Ext.Element object instead of DOM node
          * @returns HTMLElement
          */
-        static getTarget(selector?: string, maxDepth?: any, returnEl?: boolean): HTMLElement;
+        static getTarget(
+            selector?: string,
+            maxDepth?: any,
+            returnEl?: boolean,
+        ): HTMLElement;
         /** [Method] Normalizes mouse wheel y delta across browsers
          * @returns Number The mouse wheel y-delta
          */
@@ -18304,8 +19629,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IFocusManager extends Ext.IBase, Ext.util.IObservable {
-    }
+    export interface IFocusManager extends Ext.IBase, Ext.util.IObservable {}
     export class FocusManager {
         /** [Property] (Boolean) */
         static enabled: boolean;
@@ -18330,7 +19654,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -18339,7 +19668,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds the specified xtype to the whitelist
          * @param xtype String/String[] Adds the xtype(s) to the whitelist.
          */
@@ -18408,7 +19743,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -18430,7 +19771,11 @@ declare namespace Ext {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Removes an event handler
          * @param eventName String The type of event the handler was associated with.
          * @param fn Function The handler to remove. This must be a reference to the function passed into the Ext.util.Observable.addListener call.
@@ -18443,7 +19788,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes the specified xtype from the whitelist
          * @param xtype String/String[] Removes the xtype(s) from the whitelist.
          */
@@ -18475,8 +19825,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IFocusMgr extends Ext.IBase, Ext.util.IObservable {
-    }
+    export interface IFocusMgr extends Ext.IBase, Ext.util.IObservable {}
     export class FocusMgr {
         /** [Property] (Boolean) */
         static enabled: boolean;
@@ -18501,7 +19850,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -18510,7 +19864,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds the specified xtype to the whitelist
          * @param xtype String/String[] Adds the xtype(s) to the whitelist.
          */
@@ -18579,7 +19939,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -18601,7 +19967,11 @@ declare namespace Ext {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Removes an event handler
          * @param eventName String The type of event the handler was associated with.
          * @param fn Function The handler to remove. This must be a reference to the function passed into the Ext.util.Observable.addListener call.
@@ -18614,7 +19984,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Removes the specified xtype from the whitelist
          * @param xtype String/String[] Removes the xtype(s) from the whitelist.
          */
@@ -18858,7 +20233,12 @@ declare namespace Ext.form {
          * @param useDataValues Boolean If true, the getModelData method is used to retrieve values from fields, otherwise the getSubmitData method is used.
          * @returns String/Object
          */
-        getValues?(asString?: boolean, dirtyOnly?: boolean, includeEmptyText?: boolean, useDataValues?: boolean): any;
+        getValues?(
+            asString?: boolean,
+            dirtyOnly?: boolean,
+            includeEmptyText?: boolean,
+            useDataValues?: boolean,
+        ): any;
         /** [Method] Returns true if the form contains any invalid fields  */
         hasInvalidField?(): void;
         /** [Method] Returns true if the form contains a file upload field
@@ -18993,7 +20373,12 @@ declare namespace Ext.form {
          * @param useDataValues Boolean If true, the getModelData method is used to retrieve values from fields, otherwise the getSubmitData method is used.
          * @returns String/Object
          */
-        getValues?(asString?: boolean, dirtyOnly?: boolean, includeEmptyText?: boolean, useDataValues?: boolean): any;
+        getValues?(
+            asString?: boolean,
+            dirtyOnly?: boolean,
+            includeEmptyText?: boolean,
+            useDataValues?: boolean,
+        ): any;
         /** [Method] Returns true if the form contains any invalid fields  */
         hasInvalidField?(): void;
         /** [Method] Returns true if the form contains a file upload field
@@ -19046,7 +20431,9 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.form {
-    export interface ICheckboxGroup extends Ext.form.IFieldContainer, Ext.form.field.IField {
+    export interface ICheckboxGroup
+        extends Ext.form.IFieldContainer,
+            Ext.form.field.IField {
         /** [Config Option] (Boolean) */
         allowBlank?: boolean | undefined;
         /** [Config Option] (String) */
@@ -19156,8 +20543,7 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.form {
-    export interface ICheckboxManager extends Ext.util.IMixedCollection {
-    }
+    export interface ICheckboxManager extends Ext.util.IMixedCollection {}
     export class CheckboxManager {
         /** [Property] (Object) */
         static hasListeners: any;
@@ -19192,7 +20578,12 @@ declare namespace Ext.form {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -19201,7 +20592,13 @@ declare namespace Ext.form {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Call the original method that was previously overridden with override Ext define My Cat  constructor functi
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -19233,7 +20630,11 @@ declare namespace Ext.form {
          * @param allowBlank Boolean Pass true to allow null, undefined or empty string values
          * @returns Array The unique values
          */
-        static collect(property?: string, root?: string, allowBlank?: boolean): any[];
+        static collect(
+            property?: string,
+            root?: string,
+            allowBlank?: boolean,
+        ): any[];
         /** [Method] Returns true if the collection contains the passed Object as an item
          * @param o Object The Object to look for in the collection.
          * @returns Boolean True if the collection contains the Object as an item.
@@ -19411,7 +20812,13 @@ declare namespace Ext.form {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -19433,7 +20840,11 @@ declare namespace Ext.form {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Remove an item from the collection
          * @param o Object The item to remove.
          * @returns Object The item removed or false if no item was removed.
@@ -19466,7 +20877,12 @@ declare namespace Ext.form {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Remove a range of items starting at a specified index in the collection
          * @param index Number The index within the collection of the item to remove.
          * @param removeCount Number The nuber of items to remove beginning at the specified index.
@@ -19515,7 +20931,12 @@ declare namespace Ext.form {
          * @param end Number The record index to end at
          * @returns Number The total
          */
-        static sum(property?: string, root?: string, start?: number, end?: number): number;
+        static sum(
+            property?: string,
+            root?: string,
+            start?: number,
+            end?: number,
+        ): number;
         /** [Method] Suspends firing of the named event s
          * @param eventName String... Multiple event names to suspend.
          */
@@ -19538,7 +20959,10 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.form.field {
-    export interface IBase extends Ext.IComponent, Ext.form.ILabelable, Ext.form.field.IField {
+    export interface IBase
+        extends Ext.IComponent,
+            Ext.form.ILabelable,
+            Ext.form.field.IField {
         /** [Config Option] (String) */
         baseCls?: string | undefined;
         /** [Config Option] (Number) */
@@ -19781,7 +21205,10 @@ declare namespace Ext.form.field {
     }
 }
 declare namespace Ext.form {
-    export interface IField extends Ext.IComponent, Ext.form.ILabelable, Ext.form.field.IField {
+    export interface IField
+        extends Ext.IComponent,
+            Ext.form.ILabelable,
+            Ext.form.field.IField {
         /** [Config Option] (String) */
         baseCls?: string | undefined;
         /** [Config Option] (Number) */
@@ -20024,7 +21451,10 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.form {
-    export interface IBaseField extends Ext.IComponent, Ext.form.ILabelable, Ext.form.field.IField {
+    export interface IBaseField
+        extends Ext.IComponent,
+            Ext.form.ILabelable,
+            Ext.form.field.IField {
         /** [Config Option] (String) */
         baseCls?: string | undefined;
         /** [Config Option] (Number) */
@@ -20465,7 +21895,9 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.form.field {
-    export interface IComboBox extends Ext.form.field.IPicker, Ext.util.IBindable {
+    export interface IComboBox
+        extends Ext.form.field.IPicker,
+            Ext.util.IBindable {
         /** [Config Option] (String) */
         allQuery?: string | undefined;
         /** [Config Option] (Boolean) */
@@ -20562,7 +21994,11 @@ declare namespace Ext.form.field {
          * @param rawQuery Boolean Pass as true if the raw typed value is being used as the query string. This causes the resulting store load to leave the raw value undisturbed.
          * @returns Boolean true if the query was permitted to run, false if it was cancelled by a beforequery handler.
          */
-        doQuery?(queryString?: string, forceAll?: boolean, rawQuery?: boolean): boolean;
+        doQuery?(
+            queryString?: string,
+            forceAll?: boolean,
+            rawQuery?: boolean,
+        ): boolean;
         /** [Method] Finds the record by searching for a specific field value combination
          * @param field String The name of the field to test.
          * @param value Object The value to match the field against.
@@ -20632,7 +22068,9 @@ declare namespace Ext.form.field {
     }
 }
 declare namespace Ext.form {
-    export interface IComboBox extends Ext.form.field.IPicker, Ext.util.IBindable {
+    export interface IComboBox
+        extends Ext.form.field.IPicker,
+            Ext.util.IBindable {
         /** [Config Option] (String) */
         allQuery?: string | undefined;
         /** [Config Option] (Boolean) */
@@ -20729,7 +22167,11 @@ declare namespace Ext.form {
          * @param rawQuery Boolean Pass as true if the raw typed value is being used as the query string. This causes the resulting store load to leave the raw value undisturbed.
          * @returns Boolean true if the query was permitted to run, false if it was cancelled by a beforequery handler.
          */
-        doQuery?(queryString?: string, forceAll?: boolean, rawQuery?: boolean): boolean;
+        doQuery?(
+            queryString?: string,
+            forceAll?: boolean,
+            rawQuery?: boolean,
+        ): boolean;
         /** [Method] Finds the record by searching for a specific field value combination
          * @param field String The name of the field to test.
          * @param value Object The value to match the field against.
@@ -21551,7 +22993,9 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.form.field {
-    export interface IHtmlEditor extends Ext.form.IFieldContainer, Ext.form.field.IField {
+    export interface IHtmlEditor
+        extends Ext.form.IFieldContainer,
+            Ext.form.field.IField {
         /** [Config Option] (String/Array/Ext.XTemplate) */
         afterIFrameTpl?: any;
         /** [Config Option] (String/Array/Ext.XTemplate) */
@@ -21719,7 +23163,9 @@ declare namespace Ext.form.field {
     }
 }
 declare namespace Ext.form {
-    export interface IHtmlEditor extends Ext.form.IFieldContainer, Ext.form.field.IField {
+    export interface IHtmlEditor
+        extends Ext.form.IFieldContainer,
+            Ext.form.field.IField {
         /** [Config Option] (String/Array/Ext.XTemplate) */
         afterIFrameTpl?: any;
         /** [Config Option] (String/Array/Ext.XTemplate) */
@@ -23215,8 +24661,7 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.form.field {
-    export interface IVTypes extends Ext.IBase {
-    }
+    export interface IVTypes extends Ext.IBase {}
     export class VTypes {
         /** [Property] (RegExp) */
         static alphaMask: RegExp;
@@ -23286,8 +24731,7 @@ declare namespace Ext.form.field {
     }
 }
 declare namespace Ext.form {
-    export interface IVTypes extends Ext.IBase {
-    }
+    export interface IVTypes extends Ext.IBase {}
     export class VTypes {
         /** [Property] (RegExp) */
         static alphaMask: RegExp;
@@ -23371,11 +24815,17 @@ declare namespace Ext.form {
          * @param field Ext.form.field.Field The sub-field whose validity changed
          * @param valid Boolean The new validity state
          */
-        onFieldValidityChange?(field?: Ext.form.field.IField, valid?: boolean): void;
+        onFieldValidityChange?(
+            field?: Ext.form.field.IField,
+            valid?: boolean,
+        ): void;
     }
 }
 declare namespace Ext.form {
-    export interface IFieldContainer extends Ext.container.IContainer, Ext.form.ILabelable, Ext.form.IFieldAncestor {
+    export interface IFieldContainer
+        extends Ext.container.IContainer,
+            Ext.form.ILabelable,
+            Ext.form.IFieldAncestor {
         /** [Config Option] (Boolean) */
         combineErrors?: boolean | undefined;
         /** [Config Option] (Boolean) */
@@ -23447,7 +24897,10 @@ declare namespace Ext.form {
          * @param field Ext.form.field.Field The sub-field whose validity changed
          * @param valid Boolean The new validity state
          */
-        onFieldValidityChange?(field?: Ext.form.field.IField, valid?: boolean): void;
+        onFieldValidityChange?(
+            field?: Ext.form.field.IField,
+            valid?: boolean,
+        ): void;
         /** [Method] Called when a Ext form Labelable instance is removed from the container s subtree
          * @param labelable Ext.form.Labelable The instance that was removed
          */
@@ -23477,7 +24930,9 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.form {
-    export interface IFieldSet extends Ext.container.IContainer, Ext.form.IFieldAncestor {
+    export interface IFieldSet
+        extends Ext.container.IContainer,
+            Ext.form.IFieldAncestor {
         /** [Config Option] (String/Object) */
         autoEl?: any;
         /** [Config Option] (String) */
@@ -23549,7 +25004,10 @@ declare namespace Ext.form {
          * @param field Ext.form.field.Field The sub-field whose validity changed
          * @param valid Boolean The new validity state
          */
-        onFieldValidityChange?(field?: Ext.form.field.IField, valid?: boolean): void;
+        onFieldValidityChange?(
+            field?: Ext.form.field.IField,
+            valid?: boolean,
+        ): void;
         /** [Method] Sets the title of this fieldset
          * @param title String The new title.
          * @returns Ext.form.FieldSet this
@@ -23736,7 +25194,12 @@ declare namespace Ext.form {
          * @param useDataValues Boolean If true, the getModelData method is used to retrieve values from fields, otherwise the getSubmitData method is used.
          * @returns String/Object
          */
-        getValues?(asString?: boolean, dirtyOnly?: boolean, includeEmptyText?: boolean, useDataValues?: boolean): any;
+        getValues?(
+            asString?: boolean,
+            dirtyOnly?: boolean,
+            includeEmptyText?: boolean,
+            useDataValues?: boolean,
+        ): any;
         /** [Method] Convenience function to check if the form has any invalid fields  */
         hasInvalidField?(): void;
         /** [Method] Initializes the FieldAncestor s state this must be called from the initComponent method of any components importing */
@@ -23767,7 +25230,10 @@ declare namespace Ext.form {
          * @param field Ext.form.field.Field The sub-field whose validity changed
          * @param valid Boolean The new validity state
          */
-        onFieldValidityChange?(field?: Ext.form.field.IField, valid?: boolean): void;
+        onFieldValidityChange?(
+            field?: Ext.form.field.IField,
+            valid?: boolean,
+        ): void;
         /** [Method] Start an interval task to continuously poll all the fields in the form for changes in their values
          * @param interval Number The interval in milliseconds at which the check should run.
          */
@@ -23786,7 +25252,9 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext {
-    export interface IFormPanel extends Ext.panel.IPanel, Ext.form.IFieldAncestor {
+    export interface IFormPanel
+        extends Ext.panel.IPanel,
+            Ext.form.IFieldAncestor {
         /** [Config Option] (Ext.enums.Layout/Object) */
         layout?: any;
         /** [Config Option] (Boolean) */
@@ -23810,7 +25278,12 @@ declare namespace Ext {
          * @param useDataValues Boolean If true, the getModelData method is used to retrieve values from fields, otherwise the getSubmitData method is used.
          * @returns String/Object
          */
-        getValues?(asString?: boolean, dirtyOnly?: boolean, includeEmptyText?: boolean, useDataValues?: boolean): any;
+        getValues?(
+            asString?: boolean,
+            dirtyOnly?: boolean,
+            includeEmptyText?: boolean,
+            useDataValues?: boolean,
+        ): any;
         /** [Method] Convenience function to check if the form has any invalid fields  */
         hasInvalidField?(): void;
         /** [Method] Initializes the FieldAncestor s state this must be called from the initComponent method of any components importing */
@@ -23841,7 +25314,10 @@ declare namespace Ext {
          * @param field Ext.form.field.Field The sub-field whose validity changed
          * @param valid Boolean The new validity state
          */
-        onFieldValidityChange?(field?: Ext.form.field.IField, valid?: boolean): void;
+        onFieldValidityChange?(
+            field?: Ext.form.field.IField,
+            valid?: boolean,
+        ): void;
         /** [Method] Start an interval task to continuously poll all the fields in the form for changes in their values
          * @param interval Number The interval in milliseconds at which the check should run.
          */
@@ -23860,7 +25336,9 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.form {
-    export interface IFormPanel extends Ext.panel.IPanel, Ext.form.IFieldAncestor {
+    export interface IFormPanel
+        extends Ext.panel.IPanel,
+            Ext.form.IFieldAncestor {
         /** [Config Option] (Ext.enums.Layout/Object) */
         layout?: any;
         /** [Config Option] (Boolean) */
@@ -23884,7 +25362,12 @@ declare namespace Ext.form {
          * @param useDataValues Boolean If true, the getModelData method is used to retrieve values from fields, otherwise the getSubmitData method is used.
          * @returns String/Object
          */
-        getValues?(asString?: boolean, dirtyOnly?: boolean, includeEmptyText?: boolean, useDataValues?: boolean): any;
+        getValues?(
+            asString?: boolean,
+            dirtyOnly?: boolean,
+            includeEmptyText?: boolean,
+            useDataValues?: boolean,
+        ): any;
         /** [Method] Convenience function to check if the form has any invalid fields  */
         hasInvalidField?(): void;
         /** [Method] Initializes the FieldAncestor s state this must be called from the initComponent method of any components importing */
@@ -23915,7 +25398,10 @@ declare namespace Ext.form {
          * @param field Ext.form.field.Field The sub-field whose validity changed
          * @param valid Boolean The new validity state
          */
-        onFieldValidityChange?(field?: Ext.form.field.IField, valid?: boolean): void;
+        onFieldValidityChange?(
+            field?: Ext.form.field.IField,
+            valid?: boolean,
+        ): void;
         /** [Method] Start an interval task to continuously poll all the fields in the form for changes in their values
          * @param interval Number The interval in milliseconds at which the check should run.
          */
@@ -23953,8 +25439,7 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext.form {
-    export interface IRadioManager extends Ext.util.IMixedCollection {
-    }
+    export interface IRadioManager extends Ext.util.IMixedCollection {}
     export class RadioManager {
         /** [Property] (Object) */
         static hasListeners: any;
@@ -23989,7 +25474,12 @@ declare namespace Ext.form {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -23998,7 +25488,13 @@ declare namespace Ext.form {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Call the original method that was previously overridden with override Ext define My Cat  constructor functi
          * @param args Array/Arguments The arguments, either an array or the arguments object from the current method, for example: this.callOverridden(arguments)
          * @returns Object Returns the result of calling the overridden method
@@ -24030,7 +25526,11 @@ declare namespace Ext.form {
          * @param allowBlank Boolean Pass true to allow null, undefined or empty string values
          * @returns Array The unique values
          */
-        static collect(property?: string, root?: string, allowBlank?: boolean): any[];
+        static collect(
+            property?: string,
+            root?: string,
+            allowBlank?: boolean,
+        ): any[];
         /** [Method] Returns true if the collection contains the passed Object as an item
          * @param o Object The Object to look for in the collection.
          * @returns Boolean True if the collection contains the Object as an item.
@@ -24208,7 +25708,13 @@ declare namespace Ext.form {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -24230,7 +25736,11 @@ declare namespace Ext.form {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Remove an item from the collection
          * @param o Object The item to remove.
          * @returns Object The item removed or false if no item was removed.
@@ -24263,7 +25773,12 @@ declare namespace Ext.form {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Remove a range of items starting at a specified index in the collection
          * @param index Number The index within the collection of the item to remove.
          * @param removeCount Number The nuber of items to remove beginning at the specified index.
@@ -24312,7 +25827,12 @@ declare namespace Ext.form {
          * @param end Number The record index to end at
          * @returns Number The total
          */
-        static sum(property?: string, root?: string, start?: number, end?: number): number;
+        static sum(
+            property?: string,
+            root?: string,
+            start?: number,
+            end?: number,
+        ): number;
         /** [Method] Suspends firing of the named event s
          * @param eventName String... Multiple event names to suspend.
          */
@@ -24335,8 +25855,7 @@ declare namespace Ext.form {
     }
 }
 declare namespace Ext {
-    export interface IFunction {
-    }
+    export interface IFunction {}
     export class Function {
         /** [Method] Create an alias to the provided method property with name methodName of object
          * @param object Object/Function
@@ -24364,7 +25883,12 @@ declare namespace Ext {
          * @param args Array Override arguments for the call. Defaults to the arguments passed by the caller.
          * @returns Function A function which invokes the passed function after buffering for the specified time.
          */
-        static createBuffered(fn?: any, buffer?: number, scope?: any, args?: any[]): any;
+        static createBuffered(
+            fn?: any,
+            buffer?: number,
+            scope?: any,
+            args?: any[],
+        ): any;
         /** [Method] Creates a delegate callback which when called executes after a specific delay
          * @param fn Function The function which will be called on a delay when the returned function is called. Optionally, a replacement (or additional) argument list may be specified.
          * @param delay Number The number of milliseconds to defer execution by whenever called.
@@ -24373,7 +25897,13 @@ declare namespace Ext {
          * @param appendArgs Boolean/Number if True args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
          * @returns Function A function which, when called, executes the original function after the specified delay.
          */
-        static createDelayed(fn?: any, delay?: number, scope?: any, args?: any[], appendArgs?: any): any;
+        static createDelayed(
+            fn?: any,
+            delay?: number,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): any;
         /** [Method] Creates an interceptor function
          * @param origFn Function The original function.
          * @param newFn Function The function to call before the original
@@ -24381,7 +25911,12 @@ declare namespace Ext {
          * @param returnValue Object The value to return if the passed function return false.
          * @returns Function The new function
          */
-        static createInterceptor(origFn?: any, newFn?: any, scope?: any, returnValue?: any): any;
+        static createInterceptor(
+            origFn?: any,
+            newFn?: any,
+            scope?: any,
+            returnValue?: any,
+        ): any;
         /** [Method] Create a combined function call sequence of the original function  the passed function
          * @param originalFn Function The original function.
          * @param newFn Function The function to sequence
@@ -24404,7 +25939,13 @@ declare namespace Ext {
          * @param appendArgs Boolean/Number if True args are appended to call args instead of overriding, if a number the args are inserted at the specified position
          * @returns Number The timeout id that can be used with clearTimeout
          */
-        static defer(fn?: any, millis?: number, scope?: any, args?: any[], appendArgs?: any): number;
+        static defer(
+            fn?: any,
+            millis?: number,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): number;
         /** [Method] A very commonly used method throughout the framework
          * @param setter Function
          * @returns Function flexSetter
@@ -24417,7 +25958,12 @@ declare namespace Ext {
          * @param scope Object The scope to execute the interceptor function. Defaults to the object.
          * @returns Function The new function just created.
          */
-        static interceptAfter(object?: any, methodName?: string, fn?: any, scope?: any): any;
+        static interceptAfter(
+            object?: any,
+            methodName?: string,
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Adds behavior to an existing method that is executed before the original behavior of the function
          * @param object Object The target object
          * @param methodName String Name of the method to override
@@ -24425,7 +25971,12 @@ declare namespace Ext {
          * @param scope Object The scope to execute the interceptor function. Defaults to the object.
          * @returns Function The new function just created.
          */
-        static interceptBefore(object?: any, methodName?: string, fn?: any, scope?: any): any;
+        static interceptBefore(
+            object?: any,
+            methodName?: string,
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Create a new function from the provided fn the arguments of which are pre set to args
          * @param fn Function The original function
          * @param args Array The arguments to pass to new callback
@@ -24436,8 +25987,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.util {
-    export interface IFunctions {
-    }
+    export interface IFunctions {}
     export class Functions {
         /** [Method] Create an alias to the provided method property with name methodName of object
          * @param object Object/Function
@@ -24465,7 +26015,12 @@ declare namespace Ext.util {
          * @param args Array Override arguments for the call. Defaults to the arguments passed by the caller.
          * @returns Function A function which invokes the passed function after buffering for the specified time.
          */
-        static createBuffered(fn?: any, buffer?: number, scope?: any, args?: any[]): any;
+        static createBuffered(
+            fn?: any,
+            buffer?: number,
+            scope?: any,
+            args?: any[],
+        ): any;
         /** [Method] Creates a delegate callback which when called executes after a specific delay
          * @param fn Function The function which will be called on a delay when the returned function is called. Optionally, a replacement (or additional) argument list may be specified.
          * @param delay Number The number of milliseconds to defer execution by whenever called.
@@ -24474,7 +26029,13 @@ declare namespace Ext.util {
          * @param appendArgs Boolean/Number if True args are appended to call args instead of overriding, if a number the args are inserted at the specified position.
          * @returns Function A function which, when called, executes the original function after the specified delay.
          */
-        static createDelayed(fn?: any, delay?: number, scope?: any, args?: any[], appendArgs?: any): any;
+        static createDelayed(
+            fn?: any,
+            delay?: number,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): any;
         /** [Method] Creates an interceptor function
          * @param origFn Function The original function.
          * @param newFn Function The function to call before the original
@@ -24482,7 +26043,12 @@ declare namespace Ext.util {
          * @param returnValue Object The value to return if the passed function return false.
          * @returns Function The new function
          */
-        static createInterceptor(origFn?: any, newFn?: any, scope?: any, returnValue?: any): any;
+        static createInterceptor(
+            origFn?: any,
+            newFn?: any,
+            scope?: any,
+            returnValue?: any,
+        ): any;
         /** [Method] Create a combined function call sequence of the original function  the passed function
          * @param originalFn Function The original function.
          * @param newFn Function The function to sequence
@@ -24505,7 +26071,13 @@ declare namespace Ext.util {
          * @param appendArgs Boolean/Number if True args are appended to call args instead of overriding, if a number the args are inserted at the specified position
          * @returns Number The timeout id that can be used with clearTimeout
          */
-        static defer(fn?: any, millis?: number, scope?: any, args?: any[], appendArgs?: any): number;
+        static defer(
+            fn?: any,
+            millis?: number,
+            scope?: any,
+            args?: any[],
+            appendArgs?: any,
+        ): number;
         /** [Method] A very commonly used method throughout the framework
          * @param setter Function
          * @returns Function flexSetter
@@ -24518,7 +26090,12 @@ declare namespace Ext.util {
          * @param scope Object The scope to execute the interceptor function. Defaults to the object.
          * @returns Function The new function just created.
          */
-        static interceptAfter(object?: any, methodName?: string, fn?: any, scope?: any): any;
+        static interceptAfter(
+            object?: any,
+            methodName?: string,
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Adds behavior to an existing method that is executed before the original behavior of the function
          * @param object Object The target object
          * @param methodName String Name of the method to override
@@ -24526,7 +26103,12 @@ declare namespace Ext.util {
          * @param scope Object The scope to execute the interceptor function. Defaults to the object.
          * @returns Function The new function just created.
          */
-        static interceptBefore(object?: any, methodName?: string, fn?: any, scope?: any): any;
+        static interceptBefore(
+            object?: any,
+            methodName?: string,
+            fn?: any,
+            scope?: any,
+        ): any;
         /** [Method] Create a new function from the provided fn the arguments of which are pre set to args
          * @param fn Function The original function
          * @param args Array The arguments to pass to new callback
@@ -24585,7 +26167,12 @@ declare namespace Ext.fx {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -24594,7 +26181,13 @@ declare namespace Ext.fx {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -24630,7 +26223,13 @@ declare namespace Ext.fx {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -24665,7 +26264,12 @@ declare namespace Ext.fx {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -24725,7 +26329,12 @@ declare namespace Ext.fx {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -24734,7 +26343,13 @@ declare namespace Ext.fx {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -24770,7 +26385,13 @@ declare namespace Ext.fx {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -24805,7 +26426,12 @@ declare namespace Ext.fx {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -24829,8 +26455,7 @@ declare namespace Ext.fx {
     }
 }
 declare namespace Ext.fx {
-    export interface ICubicBezier extends Ext.IBase {
-    }
+    export interface ICubicBezier extends Ext.IBase {}
     export class CubicBezier {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -24866,14 +26491,11 @@ declare namespace Ext.fx {
     }
 }
 declare namespace Ext.fx {
-    export interface IEasing {
-    }
-    export class Easing {
-    }
+    export interface IEasing {}
+    export class Easing {}
 }
 declare namespace Ext.fx {
-    export interface IManager extends Ext.IBase, Ext.fx.IQueue {
-    }
+    export interface IManager extends Ext.IBase, Ext.fx.IQueue {}
     export class Manager {
         /** [Config Option] (Boolean) */
         static forceJS: boolean;
@@ -24921,16 +26543,13 @@ declare namespace Ext.fx {
     }
 }
 declare namespace Ext.fx {
-    export interface IPropertyHandler extends Ext.IBase {
-    }
+    export interface IPropertyHandler extends Ext.IBase {}
 }
 declare namespace Ext.fx {
-    export interface IQueue extends Ext.IBase {
-    }
+    export interface IQueue extends Ext.IBase {}
 }
 declare namespace Ext.fx.target {
-    export interface IComponent extends Ext.fx.target.ITarget {
-    }
+    export interface IComponent extends Ext.fx.target.ITarget {}
 }
 declare namespace Ext.fx.target {
     export interface ICompositeElement extends Ext.fx.target.IElement {
@@ -24939,28 +26558,23 @@ declare namespace Ext.fx.target {
     }
 }
 declare namespace Ext.fx.target {
-    export interface ICompositeElementCSS extends Ext.fx.target.ICompositeElement {
-    }
+    export interface ICompositeElementCSS
+        extends Ext.fx.target.ICompositeElement {}
 }
 declare namespace Ext.fx.target {
-    export interface ICompositeSprite extends Ext.fx.target.ISprite {
-    }
+    export interface ICompositeSprite extends Ext.fx.target.ISprite {}
 }
 declare namespace Ext.fx.target {
-    export interface IElement extends Ext.fx.target.ITarget {
-    }
+    export interface IElement extends Ext.fx.target.ITarget {}
 }
 declare namespace Ext.fx.target {
-    export interface IElementCSS extends Ext.fx.target.IElement {
-    }
+    export interface IElementCSS extends Ext.fx.target.IElement {}
 }
 declare namespace Ext.fx.target {
-    export interface ISprite extends Ext.fx.target.ITarget {
-    }
+    export interface ISprite extends Ext.fx.target.ITarget {}
 }
 declare namespace Ext.fx.target {
-    export interface ITarget extends Ext.IBase {
-    }
+    export interface ITarget extends Ext.IBase {}
 }
 declare namespace Ext.grid {
     export interface ICellContext extends Ext.IBase {
@@ -25023,7 +26637,15 @@ declare namespace Ext.grid.column {
          * @param store Object
          * @param view Object
          */
-        defaultRenderer?(v?: any, meta?: any, record?: any, rowIdx?: any, colIdx?: any, store?: any, view?: any): void;
+        defaultRenderer?(
+            v?: any,
+            meta?: any,
+            record?: any,
+            rowIdx?: any,
+            colIdx?: any,
+            store?: any,
+            view?: any,
+        ): void;
         /** [Method] Disables this ActionColumn s action at the specified index
          * @param index Number/Ext.grid.column.Action
          * @param silent Boolean
@@ -25081,7 +26703,15 @@ declare namespace Ext.grid {
          * @param store Object
          * @param view Object
          */
-        defaultRenderer?(v?: any, meta?: any, record?: any, rowIdx?: any, colIdx?: any, store?: any, view?: any): void;
+        defaultRenderer?(
+            v?: any,
+            meta?: any,
+            record?: any,
+            rowIdx?: any,
+            colIdx?: any,
+            store?: any,
+            view?: any,
+        ): void;
         /** [Method] Disables this ActionColumn s action at the specified index
          * @param index Number/Ext.grid.column.Action
          * @param silent Boolean
@@ -25222,7 +26852,12 @@ declare namespace Ext.grid.column {
          * @param oldWidth Object
          * @param oldHeight Object
          */
-        afterComponentLayout?(width?: any, height?: any, oldWidth?: any, oldHeight?: any): void;
+        afterComponentLayout?(
+            width?: any,
+            height?: any,
+            oldWidth?: any,
+            oldHeight?: any,
+        ): void;
         /** [Method] Allows addition of behavior after rendering is complete  */
         afterRender?(): void;
         /** [Method] Sizes this Column to fit the max content width
@@ -25362,7 +26997,12 @@ declare namespace Ext.grid {
          * @param oldWidth Object
          * @param oldHeight Object
          */
-        afterComponentLayout?(width?: any, height?: any, oldWidth?: any, oldHeight?: any): void;
+        afterComponentLayout?(
+            width?: any,
+            height?: any,
+            oldWidth?: any,
+            oldHeight?: any,
+        ): void;
         /** [Method] Allows addition of behavior after rendering is complete  */
         afterRender?(): void;
         /** [Method] Sizes this Column to fit the max content width
@@ -25650,11 +27290,18 @@ declare namespace Ext.grid.feature {
          * @param featureTarget Object
          * @param e Object
          */
-        getFireEventArgs?(eventName?: any, view?: any, featureTarget?: any, e?: any): void;
+        getFireEventArgs?(
+            eventName?: any,
+            view?: any,
+            featureTarget?: any,
+            e?: any,
+        ): void;
     }
 }
 declare namespace Ext.grid.feature {
-    export interface IGrouping extends Ext.grid.feature.IFeature, Ext.grid.feature.IAbstractSummary {
+    export interface IGrouping
+        extends Ext.grid.feature.IFeature,
+            Ext.grid.feature.IAbstractSummary {
         /** [Config Option] (Boolean) */
         collapsible?: boolean | undefined;
         /** [Config Option] (Number) */
@@ -25703,7 +27350,12 @@ declare namespace Ext.grid.feature {
          * @param targetEl Object
          * @param e Object
          */
-        getFireEventArgs?(type?: any, view?: any, targetEl?: any, e?: any): void;
+        getFireEventArgs?(
+            type?: any,
+            view?: any,
+            targetEl?: any,
+            e?: any,
+        ): void;
         /** [Method] Returns the group data object for the group to which the passed record belongs if the Store is grouped
          * @param record Ext.data.Model The record for which to return group information.
          * @returns Object A single group data block as returned from Store.getGroups. Returns undefined if the Store is not grouped.
@@ -25747,7 +27399,12 @@ declare namespace Ext.grid.feature {
          * @param record Ext.data.Model The record instance
          * @param orig Object The original result from the prepareData call to massage.
          */
-        getAdditionalData?(data?: any, idx?: number, record?: Ext.data.IModel, orig?: any): void;
+        getAdditionalData?(
+            data?: any,
+            idx?: number,
+            record?: Ext.data.IModel,
+            orig?: any,
+        ): void;
     }
 }
 declare namespace Ext.grid.feature {
@@ -25948,7 +27605,12 @@ declare namespace Ext.grid.locking {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -25957,7 +27619,13 @@ declare namespace Ext.grid.locking {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -25991,7 +27659,13 @@ declare namespace Ext.grid.locking {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -26026,7 +27700,12 @@ declare namespace Ext.grid.locking {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -26064,7 +27743,12 @@ declare namespace Ext.grid {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -26073,7 +27757,13 @@ declare namespace Ext.grid {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -26107,7 +27797,13 @@ declare namespace Ext.grid {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -26142,7 +27838,12 @@ declare namespace Ext.grid {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -26255,7 +27956,12 @@ declare namespace Ext.grid.plugin {
          * @param callback Function A function to call when the row has been scrolled to.
          * @param scope Object The scope (this reference) in which to execute the callback. Defaults to this BufferedRenderer.
          */
-        scrollTo?(recordIdx?: number, doSelect?: boolean, callback?: any, scope?: any): void;
+        scrollTo?(
+            recordIdx?: number,
+            doSelect?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.grid.plugin {
@@ -26303,7 +28009,9 @@ declare namespace Ext.grid.plugin {
     }
 }
 declare namespace Ext.grid.plugin {
-    export interface IEditing extends Ext.IAbstractPlugin, Ext.util.IObservable {
+    export interface IEditing
+        extends Ext.IAbstractPlugin,
+            Ext.util.IObservable {
         /** [Config Option] (Number) */
         clicksToEdit?: number | undefined;
         /** [Config Option] (String) */
@@ -26321,7 +28029,12 @@ declare namespace Ext.grid.plugin {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -26330,7 +28043,13 @@ declare namespace Ext.grid.plugin {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Cancels any active edit that is in progress  */
         cancelEdit?(): void;
         /** [Method] Removes all listeners for this object including the managed listeners */
@@ -26368,7 +28087,13 @@ declare namespace Ext.grid.plugin {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -26403,7 +28128,12 @@ declare namespace Ext.grid.plugin {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -26478,7 +28208,10 @@ declare namespace Ext.grid.plugin {
          * @param columnHeader Ext.data.Model The Column object defining the column to be edited.
          * @returns Boolean true if editing was started, false otherwise.
          */
-        startEdit?(record?: Ext.data.IModel, columnHeader?: Ext.data.IModel): boolean;
+        startEdit?(
+            record?: Ext.data.IModel,
+            columnHeader?: Ext.data.IModel,
+        ): boolean;
     }
 }
 declare namespace Ext.grid.plugin {
@@ -26586,12 +28319,10 @@ declare namespace Ext.grid {
     }
 }
 declare namespace Ext.grid.property {
-    export interface IHeaderContainer extends Ext.grid.header.IContainer {
-    }
+    export interface IHeaderContainer extends Ext.grid.header.IContainer {}
 }
 declare namespace Ext.grid {
-    export interface IPropertyColumnModel extends Ext.grid.header.IContainer {
-    }
+    export interface IPropertyColumnModel extends Ext.grid.header.IContainer {}
 }
 declare namespace Ext.grid.property {
     export interface IProperty extends Ext.data.IModel {
@@ -26656,7 +28387,10 @@ declare namespace Ext.grid {
          * @param record Ext.data.Model The Store data record which backs the row to be edited.
          * @param columnHeader Ext.data.Model The Column object defining the column to be edited.
          */
-        startEdit?(record?: Ext.data.IModel, columnHeader?: Ext.data.IModel): void;
+        startEdit?(
+            record?: Ext.data.IModel,
+            columnHeader?: Ext.data.IModel,
+        ): void;
     }
 }
 declare namespace Ext.grid {
@@ -26676,8 +28410,7 @@ declare namespace Ext.grid {
     }
 }
 declare namespace Ext.grid {
-    export interface IViewDropZone extends Ext.view.IDropZone {
-    }
+    export interface IViewDropZone extends Ext.view.IDropZone {}
 }
 declare namespace Ext {
     export interface IImg extends Ext.IComponent {
@@ -26706,8 +28439,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IIs {
-    }
+    export interface IIs {}
     export class Is {
         /** [Property] (Boolean) */
         static Android: boolean;
@@ -26893,7 +28625,12 @@ declare namespace Ext {
      * @param appendArgs Boolean/Number if True args are appended to call args instead of overriding, if a number the args are inserted at the specified position
      * @returns Function The new function
      */
-    export function bind(fn?: any, scope?: any, args?: any[], appendArgs?: any): any;
+    export function bind(
+        fn?: any,
+        scope?: any,
+        args?: any[],
+        appendArgs?: any,
+    ): any;
     /** [Method] Execute a callback function in a particular scope
      * @param callback Function The callback to execute
      * @param scope Object The scope to execute in
@@ -26901,7 +28638,12 @@ declare namespace Ext {
      * @param delay Number Pass a number to delay the call by a number of milliseconds.
      * @returns Object The value returned by the callback or undefined (if there is a delay or if the callback is not a function).
      */
-    export function callback(callback?: any, scope?: any, args?: any[], delay?: number): any;
+    export function callback(
+        callback?: any,
+        scope?: any,
+        args?: any[],
+        delay?: number,
+    ): any;
     /** [Method] Old alias to Ext Array clean
      * @param array Array
      * @returns Array results
@@ -26925,7 +28667,12 @@ declare namespace Ext {
      * @param usePrototypeKeys Boolean Defaults to false. Pass true to copy keys off of the prototype as well as the instance.
      * @returns Object The modified object.
      */
-    export function copyTo(dest?: any, source?: any, names?: any, usePrototypeKeys?: boolean): any;
+    export function copyTo(
+        dest?: any,
+        source?: any,
+        names?: any,
+        usePrototypeKeys?: boolean,
+    ): any;
     /** [Method] Instantiate a class by either full name alias or alternate name
      * @param name String The class name or alias. Can be specified as xclass property if only one object parameter is specified.
      * @param args Object... Additional arguments after the name will be passed to the class' constructor.
@@ -26954,21 +28701,36 @@ declare namespace Ext {
      * @param appendArgs Boolean/Number if True args are appended to call args instead of overriding, if a number the args are inserted at the specified position
      * @returns Number The timeout id that can be used with clearTimeout
      */
-    export function defer(fn?: any, millis?: number, scope?: any, args?: any[], appendArgs?: any): number;
+    export function defer(
+        fn?: any,
+        millis?: number,
+        scope?: any,
+        args?: any[],
+        appendArgs?: any,
+    ): number;
     /** [Method] Defines a class or override
      * @param className String The class name to create in string dot-namespaced format, for example: 'My.very.awesome.Class', 'FeedViewer.plugin.CoolPager' It is highly recommended to follow this simple convention: - The root and the class name are 'CamelCased' - Everything else is lower-cased Pass null to create an anonymous class.
      * @param data Object The key - value pairs of properties to apply to this class. Property names can be of any valid strings, except those in the reserved listed below: - mixins - statics - config - alias - self - singleton - alternateClassName - override
      * @param createdFn Function Optional callback to execute after the class is created, the execution scope of which (this) will be the newly created class itself.
      * @returns Ext.Base
      */
-    export function define(className?: string, data?: any, createdFn?: any): Ext.IBase;
+    export function define(
+        className?: string,
+        data?: any,
+        createdFn?: any,
+    ): Ext.IBase;
     /** [Method] Create a closure for deprecated code
      * @param packageName String The package name
      * @param since String The last version before it's deprecated
      * @param closure Function The callback function to be executed with the specified version is less than the current version
      * @param scope Object The execution scope (this) if the closure
      */
-    export function deprecate(packageName?: string, since?: string, closure?: any, scope?: any): void;
+    export function deprecate(
+        packageName?: string,
+        since?: string,
+        closure?: any,
+        scope?: any,
+    ): void;
     /** [Method] Attempts to destroy any objects passed to it by removing all event listeners removing them from the DOM if applicab
      * @param args Ext.dom.Element/Ext.util.Observable/Ext.dom.Element[]/Ext.util.Observable[]... Any number of elements or components, or an Array of either of these to destroy.
      */
@@ -26985,7 +28747,12 @@ declare namespace Ext {
      * @param reverse Boolean Reverse the iteration order (loop from the end to the beginning) Defaults false
      * @returns Boolean See description for the fn parameter.
      */
-    export function each(iterable?: any, fn?: any, scope?: any, reverse?: boolean): boolean;
+    export function each(
+        iterable?: any,
+        fn?: any,
+        scope?: any,
+        reverse?: boolean,
+    ): boolean;
     /** [Method] Shorthand for Ext JSON encode
      * @param o Object The variable to encode
      * @returns String The JSON string
@@ -27239,7 +29006,12 @@ declare namespace Ext {
      * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
      * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
      */
-    export function on(eventName?: any, fn?: any, scope?: any, options?: any): any;
+    export function on(
+        eventName?: any,
+        fn?: any,
+        scope?: any,
+        options?: any,
+    ): any;
     /** [Method] Adds a listener to be notified when the document is ready before onload and before images are loaded
      * @param fn Function The method the event invokes.
      * @param scope Object The scope (this reference) in which the handler function executes. Defaults to the browser window.
@@ -27288,7 +29060,12 @@ declare namespace Ext {
      * @param single Boolean Pass true to select only the first matching node using document.querySelector (where available)
      * @returns HTMLElement[] An array of DOM elements (not a NodeList as returned by querySelectorAll).
      */
-    export function query(path?: string, root?: HTMLElement, type?: string, single?: boolean): HTMLElement[];
+    export function query(
+        path?: string,
+        root?: HTMLElement,
+        type?: string,
+        single?: boolean,
+    ): HTMLElement[];
     /** [Method] Old way for creating Model classes
      * @param name String Name of the Model class.
      * @param config Object A configuration object for the Model you wish to create.
@@ -27310,7 +29087,12 @@ declare namespace Ext {
      * @param scope Object The execution scope (this) of the callback function
      * @param excludes String/Array Classes to be excluded, useful when being used with expressions
      */
-    export function require(expressions?: any, fn?: any, scope?: any, excludes?: any): void;
+    export function require(
+        expressions?: any,
+        fn?: any,
+        scope?: any,
+        excludes?: any,
+    ): void;
     /** [Method]
      * @param flush Object
      */
@@ -27320,7 +29102,10 @@ declare namespace Ext {
      * @param unique Boolean True to create a unique Ext.Element for each element. Defaults to a shared flyweight object.
      * @returns Ext.CompositeElement The composite element
      */
-    export function select(selector?: string, unique?: boolean): Ext.ICompositeElement;
+    export function select(
+        selector?: string,
+        unique?: boolean,
+    ): Ext.ICompositeElement;
     /** [Method] Sets the default font family to use for components that support a glyph config
      * @param fontFamily String The name of the font-family
      */
@@ -27344,14 +29129,23 @@ declare namespace Ext {
      * @param scope Object The execution scope (this) of the callback function
      * @param excludes String/Array Classes to be excluded, useful when being used with expressions
      */
-    export function syncRequire(expressions?: any, fn?: any, scope?: any, excludes?: any): void;
+    export function syncRequire(
+        expressions?: any,
+        fn?: any,
+        scope?: any,
+        excludes?: any,
+    ): void;
     /** [Method] Converts any iterable numeric indices and a length property into a true array
      * @param iterable Object the iterable object to be turned into a true Array.
      * @param start Number a zero-based index that specifies the start of extraction. Defaults to 0
      * @param end Number a 1-based index that specifies the end of extraction. Defaults to the last index of the iterable value
      * @returns Array array
      */
-    export function toArray(iterable?: any, start?: number, end?: number): any[];
+    export function toArray(
+        iterable?: any,
+        start?: number,
+        end?: number,
+    ): any[];
     /** [Method] Turns an array into a sentence joined by a specified connector  e g Ext toSentence  Adama Tigh Roslin
      * @param items String[] The array to create a sentence from
      * @param connector String The string to use to connect the last two words. Usually 'and' or 'or' - defaults to 'and'.
@@ -27403,14 +29197,22 @@ declare namespace Ext {
      * @param allowBlank Boolean true to allow zero length strings to qualify as non-empty.
      * @returns Object value, if non-empty, else defaultValue
      */
-    export function value(value?: any, defaultValue?: any, allowBlank?: boolean): any;
+    export function value(
+        value?: any,
+        defaultValue?: any,
+        allowBlank?: boolean,
+    ): any;
     /** [Method] Returns the given value itself if it s not empty as described in isEmpty returns the default value second argument
      * @param value Object The value to test
      * @param defaultValue Object The value to return if the original value is empty
      * @param allowBlank Boolean true to allow zero length strings to qualify as non-empty (defaults to false)
      * @returns Object value, if non-empty, else defaultValue
      */
-    export function valueFrom(value?: any, defaultValue?: any, allowBlank?: boolean): any;
+    export function valueFrom(
+        value?: any,
+        defaultValue?: any,
+        allowBlank?: boolean,
+    ): any;
     /** [Method] Convenient shorthand to create a widget by its xtype or a config object
      * @param name String The xtype of the widget to create.
      * @param config Object The configuration object for the widget constructor.
@@ -27425,8 +29227,7 @@ declare namespace Ext {
     export function zip(arr?: any, zipper?: any): any[];
 }
 declare namespace Ext {
-    export interface IJSON {
-    }
+    export interface IJSON {}
     export class JSON {
         /** [Method] Decodes parses a JSON string to an object
          * @param json String The JSON string
@@ -27604,7 +29405,10 @@ declare namespace Ext.layout.component {
          * @param ownerSizeModel Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
          */
-        getItemSizePolicy?(item?: any, ownerSizeModel?: any): Ext.layout.ISizePolicy;
+        getItemSizePolicy?(
+            item?: any,
+            ownerSizeModel?: any,
+        ): Ext.layout.ISizePolicy;
         /** [Method] Returns an array containing all the visible docked items inside this layout s owner Panel
          * @returns Array An array containing all the visible docked items of the Panel
          */
@@ -27659,7 +29463,10 @@ declare namespace Ext.layout.component {
          * @param ownerSizeModel Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
          */
-        getItemSizePolicy?(item?: any, ownerSizeModel?: any): Ext.layout.ISizePolicy;
+        getItemSizePolicy?(
+            item?: any,
+            ownerSizeModel?: any,
+        ): Ext.layout.ISizePolicy;
         /** [Method] Returns an array containing all the visible docked items inside this layout s owner Panel
          * @returns Array An array containing all the visible docked items of the Panel
          */
@@ -27690,8 +29497,7 @@ declare namespace Ext.layout.component {
     }
 }
 declare namespace Ext.layout.component.field {
-    export interface IComboBox extends Ext.layout.component.field.ITrigger {
-    }
+    export interface IComboBox extends Ext.layout.component.field.ITrigger {}
 }
 declare namespace Ext.layout.component.field {
     export interface IField extends Ext.layout.component.IAuto {
@@ -27773,7 +29579,8 @@ declare namespace Ext.layout.component.field {
     }
 }
 declare namespace Ext.layout.component.field {
-    export interface IHtmlEditor extends Ext.layout.component.field.IFieldContainer {
+    export interface IHtmlEditor
+        extends Ext.layout.component.field.IFieldContainer {
         /** [Method] Called before any calculation cycles to prepare for layout
          * @param ownerContext Object
          */
@@ -28037,7 +29844,10 @@ declare namespace Ext.layout.container {
          * @param inDom Boolean True if the container size must be in the DOM.
          * @returns Object The size
          */
-        getContainerSize?(ownerContext?: Ext.layout.IContextItem, inDom?: boolean): any;
+        getContainerSize?(
+            ownerContext?: Ext.layout.IContextItem,
+            inDom?: boolean,
+        ): any;
         /** [Method] Overridden method from Ext layout container Container
          * @returns Ext.Element
          */
@@ -28062,7 +29872,10 @@ declare namespace Ext.layout.container {
          * @param ownerContext Ext.layout.ContextItem
          * @param containerSize Object
          */
-        setCtSizeIfNeeded?(ownerContext?: Ext.layout.IContextItem, containerSize?: any): void;
+        setCtSizeIfNeeded?(
+            ownerContext?: Ext.layout.IContextItem,
+            containerSize?: any,
+        ): void;
     }
 }
 declare namespace Ext.layout.container {
@@ -28175,7 +29988,10 @@ declare namespace Ext.layout.container {
          * @param ownerSizeModel Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
          */
-        getItemSizePolicy?(item?: any, ownerSizeModel?: any): Ext.layout.ISizePolicy;
+        getItemSizePolicy?(
+            item?: any,
+            ownerSizeModel?: any,
+        ): Ext.layout.ISizePolicy;
         /** [Method] Overridden method from Ext layout container Container
          * @returns Ext.Element
          */
@@ -28230,7 +30046,10 @@ declare namespace Ext.layout {
          * @param ownerSizeModel Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
          */
-        getItemSizePolicy?(item?: any, ownerSizeModel?: any): Ext.layout.ISizePolicy;
+        getItemSizePolicy?(
+            item?: any,
+            ownerSizeModel?: any,
+        ): Ext.layout.ISizePolicy;
         /** [Method] Overridden method from Ext layout container Container
          * @returns Ext.Element
          */
@@ -28258,15 +30077,15 @@ declare namespace Ext.layout.boxoverflow {
     }
 }
 declare namespace Ext.layout.container.boxoverflow {
-    export interface INone extends Ext.IBase {
-    }
+    export interface INone extends Ext.IBase {}
 }
 declare namespace Ext.layout.boxoverflow {
-    export interface INone extends Ext.IBase {
-    }
+    export interface INone extends Ext.IBase {}
 }
 declare namespace Ext.layout.container.boxoverflow {
-    export interface IScroller extends Ext.layout.container.boxoverflow.INone, Ext.util.IObservable {
+    export interface IScroller
+        extends Ext.layout.container.boxoverflow.INone,
+            Ext.util.IObservable {
         /** [Config Option] (String) */
         afterCtCls?: string | undefined;
         /** [Config Option] (String) */
@@ -28298,7 +30117,12 @@ declare namespace Ext.layout.container.boxoverflow {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -28307,7 +30131,13 @@ declare namespace Ext.layout.container.boxoverflow {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -28345,7 +30175,13 @@ declare namespace Ext.layout.container.boxoverflow {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -28380,7 +30216,12 @@ declare namespace Ext.layout.container.boxoverflow {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -28409,7 +30250,9 @@ declare namespace Ext.layout.container.boxoverflow {
     }
 }
 declare namespace Ext.layout.boxoverflow {
-    export interface IScroller extends Ext.layout.container.boxoverflow.INone, Ext.util.IObservable {
+    export interface IScroller
+        extends Ext.layout.container.boxoverflow.INone,
+            Ext.util.IObservable {
         /** [Config Option] (String) */
         afterCtCls?: string | undefined;
         /** [Config Option] (String) */
@@ -28441,7 +30284,12 @@ declare namespace Ext.layout.boxoverflow {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -28450,7 +30298,13 @@ declare namespace Ext.layout.boxoverflow {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -28488,7 +30342,13 @@ declare namespace Ext.layout.boxoverflow {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -28523,7 +30383,12 @@ declare namespace Ext.layout.boxoverflow {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -28663,7 +30528,10 @@ declare namespace Ext.layout.container {
          * @param ownerSizeModel Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
          */
-        getItemSizePolicy?(item?: any, ownerSizeModel?: any): Ext.layout.ISizePolicy;
+        getItemSizePolicy?(
+            item?: any,
+            ownerSizeModel?: any,
+        ): Ext.layout.ISizePolicy;
         /** [Method] This method sets the height and or width of the outerCt innerCt to adjust for the following browser specific issues
          * @param ownerContext Object
          * @param containerSize Object
@@ -28682,7 +30550,10 @@ declare namespace Ext.layout {
          * @param ownerSizeModel Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
          */
-        getItemSizePolicy?(item?: any, ownerSizeModel?: any): Ext.layout.ISizePolicy;
+        getItemSizePolicy?(
+            item?: any,
+            ownerSizeModel?: any,
+        ): Ext.layout.ISizePolicy;
         /** [Method] This method sets the height and or width of the outerCt innerCt to adjust for the following browser specific issues
          * @param ownerContext Object
          * @param containerSize Object
@@ -28691,7 +30562,9 @@ declare namespace Ext.layout {
     }
 }
 declare namespace Ext.layout.container {
-    export interface IContainer extends Ext.layout.ILayout, Ext.util.IElementContainer {
+    export interface IContainer
+        extends Ext.layout.ILayout,
+            Ext.util.IElementContainer {
         /** [Config Option] (String) */
         itemCls?: string | undefined;
         /** [Property] (Ext.Element) */
@@ -28716,7 +30589,10 @@ declare namespace Ext.layout.container {
          * @param inDom Boolean True if the container size must be in the DOM.
          * @returns Object The size
          */
-        getContainerSize?(ownerContext?: Ext.layout.IContextItem, inDom?: boolean): any;
+        getContainerSize?(
+            ownerContext?: Ext.layout.IContextItem,
+            inDom?: boolean,
+        ): any;
         /** [Method] Returns the element into which extra functional DOM elements can be inserted
          * @returns Ext.Element
          */
@@ -28748,7 +30624,9 @@ declare namespace Ext.layout.container {
     }
 }
 declare namespace Ext.layout {
-    export interface IContainerLayout extends Ext.layout.ILayout, Ext.util.IElementContainer {
+    export interface IContainerLayout
+        extends Ext.layout.ILayout,
+            Ext.util.IElementContainer {
         /** [Config Option] (String) */
         itemCls?: string | undefined;
         /** [Property] (Ext.Element) */
@@ -28773,7 +30651,10 @@ declare namespace Ext.layout {
          * @param inDom Boolean True if the container size must be in the DOM.
          * @returns Object The size
          */
-        getContainerSize?(ownerContext?: Ext.layout.IContextItem, inDom?: boolean): any;
+        getContainerSize?(
+            ownerContext?: Ext.layout.IContextItem,
+            inDom?: boolean,
+        ): any;
         /** [Method] Returns the element into which extra functional DOM elements can be inserted
          * @returns Ext.Element
          */
@@ -28837,7 +30718,10 @@ declare namespace Ext.layout.container {
          * @param ownerSizeModel Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
          */
-        getItemSizePolicy?(item?: any, ownerSizeModel?: any): Ext.layout.ISizePolicy;
+        getItemSizePolicy?(
+            item?: any,
+            ownerSizeModel?: any,
+        ): Ext.layout.ISizePolicy;
     }
 }
 declare namespace Ext.layout {
@@ -28860,7 +30744,10 @@ declare namespace Ext.layout {
          * @param ownerSizeModel Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
          */
-        getItemSizePolicy?(item?: any, ownerSizeModel?: any): Ext.layout.ISizePolicy;
+        getItemSizePolicy?(
+            item?: any,
+            ownerSizeModel?: any,
+        ): Ext.layout.ISizePolicy;
     }
 }
 declare namespace Ext.layout.container {
@@ -28881,7 +30768,11 @@ declare namespace Ext.layout.container {
          * @param containerSize Object
          * @param dimensions Number A bit mask for the overflow managed dimensions. The 0-bit is for width and the 1-bit is for height. In other words, a value of 1 would be only width, 2 would be only height and 3 would be both.
          */
-        calculateOverflow?(ownerContext?: Ext.layout.IContextItem, containerSize?: any, dimensions?: number): void;
+        calculateOverflow?(
+            ownerContext?: Ext.layout.IContextItem,
+            containerSize?: any,
+            dimensions?: number,
+        ): void;
         /** [Method] This method if implemented is called at the end of the cycle in which this layout completes by not setting done to
          * @param ownerContext Object
          */
@@ -28897,7 +30788,11 @@ declare namespace Ext.layout.container {
          * @param ignoreOverflow Boolean if true scrollbar size will not be subtracted from container size.
          * @returns Object The size
          */
-        getContainerSize?(ownerContext?: Ext.layout.IContextItem, inDom?: boolean, ignoreOverflow?: boolean): any;
+        getContainerSize?(
+            ownerContext?: Ext.layout.IContextItem,
+            inDom?: boolean,
+            ignoreOverflow?: boolean,
+        ): any;
         /** [Method] Returns an object describing how this layout manages the size of the given component
          * @param item Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
@@ -28945,7 +30840,11 @@ declare namespace Ext.layout {
          * @param containerSize Object
          * @param dimensions Number A bit mask for the overflow managed dimensions. The 0-bit is for width and the 1-bit is for height. In other words, a value of 1 would be only width, 2 would be only height and 3 would be both.
          */
-        calculateOverflow?(ownerContext?: Ext.layout.IContextItem, containerSize?: any, dimensions?: number): void;
+        calculateOverflow?(
+            ownerContext?: Ext.layout.IContextItem,
+            containerSize?: any,
+            dimensions?: number,
+        ): void;
         /** [Method] This method if implemented is called at the end of the cycle in which this layout completes by not setting done to
          * @param ownerContext Object
          */
@@ -28961,7 +30860,11 @@ declare namespace Ext.layout {
          * @param ignoreOverflow Boolean if true scrollbar size will not be subtracted from container size.
          * @returns Object The size
          */
-        getContainerSize?(ownerContext?: Ext.layout.IContextItem, inDom?: boolean, ignoreOverflow?: boolean): any;
+        getContainerSize?(
+            ownerContext?: Ext.layout.IContextItem,
+            inDom?: boolean,
+            ignoreOverflow?: boolean,
+        ): any;
         /** [Method] Returns an object describing how this layout manages the size of the given component
          * @param item Object
          * @returns Ext.layout.SizePolicy An object describing the sizing done by the layout for this item.
@@ -29037,7 +30940,12 @@ declare namespace Ext.layout.container {
          * @param rowIdx Object
          * @param cellIdx Object
          */
-        isValidParent?(item?: any, target?: any, rowIdx?: any, cellIdx?: any): void;
+        isValidParent?(
+            item?: any,
+            target?: any,
+            rowIdx?: any,
+            cellIdx?: any,
+        ): void;
     }
 }
 declare namespace Ext.layout {
@@ -29066,7 +30974,12 @@ declare namespace Ext.layout {
          * @param rowIdx Object
          * @param cellIdx Object
          */
-        isValidParent?(item?: any, target?: any, rowIdx?: any, cellIdx?: any): void;
+        isValidParent?(
+            item?: any,
+            target?: any,
+            rowIdx?: any,
+            cellIdx?: any,
+        ): void;
     }
 }
 declare namespace Ext.layout.container {
@@ -29115,7 +31028,10 @@ declare namespace Ext.layout {
          * @param parent Ext.layout.ContextItem
          * @param el Ext.dom.Element
          */
-        removeEl?(parent?: Ext.layout.IContextItem, el?: Ext.dom.IElement): void;
+        removeEl?(
+            parent?: Ext.layout.IContextItem,
+            el?: Ext.dom.IElement,
+        ): void;
         /** [Method] Resets the given layout object
          * @param layout Object
          * @param ownerContext Object
@@ -29396,8 +31312,7 @@ declare namespace Ext.layout {
     }
 }
 declare namespace Ext {
-    export interface ILoader {
-    }
+    export interface ILoader {}
     export class Loader {
         /** [Config Option] (Boolean) */
         static disableCaching: boolean;
@@ -29453,7 +31368,12 @@ declare namespace Ext {
          * @param scope Object The execution scope (this) of the callback function
          * @param excludes String/Array Classes to be excluded, useful when being used with expressions
          */
-        static require(expressions?: any, fn?: any, scope?: any, excludes?: any): void;
+        static require(
+            expressions?: any,
+            fn?: any,
+            scope?: any,
+            excludes?: any,
+        ): void;
         /** [Method] Set the configuration for the loader
          * @param config Object The config object to override the default values
          * @returns Ext.Loader this
@@ -29471,11 +31391,19 @@ declare namespace Ext {
          * @param scope Object The execution scope (this) of the callback function
          * @param excludes String/Array Classes to be excluded, useful when being used with expressions
          */
-        static syncRequire(expressions?: any, fn?: any, scope?: any, excludes?: any): void;
+        static syncRequire(
+            expressions?: any,
+            fn?: any,
+            scope?: any,
+            excludes?: any,
+        ): void;
     }
 }
 declare namespace Ext {
-    export interface ILoadMask extends Ext.IComponent, Ext.util.IFloating, Ext.util.IBindable {
+    export interface ILoadMask
+        extends Ext.IComponent,
+            Ext.util.IFloating,
+            Ext.util.IBindable {
         /** [Config Option] (String) */
         baseCls?: string | undefined;
         /** [Config Option] (String) */
@@ -29544,7 +31472,10 @@ declare namespace Ext {
          * @param store Ext.data.AbstractStore The store being unbound
          * @param initial Boolean True if this store is being bound as initialization of the instance.
          */
-        onUnbindStore?(store?: Ext.data.IAbstractStore, initial?: boolean): void;
+        onUnbindStore?(
+            store?: Ext.data.IAbstractStore,
+            initial?: boolean,
+        ): void;
         /** [Method] This method is called internally by Ext ZIndexManager to signal that a floating Component has either been moved to th
          * @param active Boolean True to activate the Component, false to deactivate it.
          * @param newActive Ext.Component The newly active Component which is taking over topmost zIndex position.
@@ -29855,12 +31786,10 @@ declare namespace Ext.menu {
     }
 }
 declare namespace Ext.menu {
-    export interface IKeyNav extends Ext.util.IKeyNav {
-    }
+    export interface IKeyNav extends Ext.util.IKeyNav {}
 }
 declare namespace Ext.menu {
-    export interface IManager extends Ext.IBase {
-    }
+    export interface IManager extends Ext.IBase {}
     export class Manager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -29905,8 +31834,7 @@ declare namespace Ext.menu {
     }
 }
 declare namespace Ext.menu {
-    export interface IMenuMgr extends Ext.IBase {
-    }
+    export interface IMenuMgr extends Ext.IBase {}
     export class MenuMgr {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -30013,8 +31941,7 @@ declare namespace Ext.menu {
     }
 }
 declare namespace Ext {
-    export interface IMessageBox extends Ext.window.IMessageBox {
-    }
+    export interface IMessageBox extends Ext.window.IMessageBox {}
     export class MessageBox {
         /** [Property] (Number) */
         static CANCEL: number;
@@ -30130,7 +32057,12 @@ declare namespace Ext {
          * @param options Object
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(element?: any, listeners?: any, scope?: any, options?: any): any;
+        static addListener(
+            element?: any,
+            listeners?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -30139,14 +32071,24 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Save a property to the given state object if it is not its default or configured value
          * @param state Object The state object.
          * @param propName String The name of the property on this object to save.
          * @param value String The value of the state property (defaults to this[propName]).
          * @returns Boolean The state object or a new object if state was null and the property was saved.
          */
-        static addPropertyToState(state?: any, propName?: string, value?: string): boolean;
+        static addPropertyToState(
+            state?: any,
+            propName?: string,
+            value?: string,
+        ): boolean;
         /** [Method] Add events that will trigger the state to be saved
          * @param events String/String[] The event name or an array of event names.
          */
@@ -30179,7 +32121,11 @@ declare namespace Ext {
          * @param callback Function
          * @param scope Object
          */
-        static afterShow(animateTarget?: any, callback?: any, scope?: any): void;
+        static afterShow(
+            animateTarget?: any,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Displays a standard read only message box with an OK button comparable to the basic JavaScript alert prompt
          * @param title String The title bar text
          * @param msg String The message box body text
@@ -30187,7 +32133,12 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the callback is executed.
          * @returns Ext.window.MessageBox this
          */
-        static alert(title?: string, msg?: string, fn?: any, scope?: any): Ext.window.IMessageBox;
+        static alert(
+            title?: string,
+            msg?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.window.IMessageBox;
         /** [Method] Aligns the element with another element relative to the specified anchor points
          * @param element Ext.util.Positionable/HTMLElement/String The Positionable, HTMLElement, or id of the element to align to.
          * @param position String The position to align to
@@ -30195,7 +32146,12 @@ declare namespace Ext {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.util.Positionable this
          */
-        static alignTo(element?: any, position?: string, offsets?: number[], animate?: any): Ext.util.IPositionable;
+        static alignTo(
+            element?: any,
+            position?: string,
+            offsets?: number[],
+            animate?: any,
+        ): Ext.util.IPositionable;
         /** [Method] Anchors an element to another element and realigns it when the window is resized
          * @param element Ext.util.Positionable/HTMLElement/String The Positionable, HTMLElement, or id of the element to align to.
          * @param position String The position to align to
@@ -30230,7 +32186,10 @@ declare namespace Ext {
          * @param adjWidth Number The box-adjusted width that was set.
          * @param adjHeight Number The box-adjusted height that was set.
          */
-        static beforeComponentLayout(adjWidth?: number, adjHeight?: number): void;
+        static beforeComponentLayout(
+            adjWidth?: number,
+            adjHeight?: number,
+        ): void;
         /** [Method] Template method to do any pre focus processing
          * @param e Ext.EventObject The event object
          */
@@ -30308,7 +32267,10 @@ declare namespace Ext {
          * @param animate Boolean True to animate the transition, else false (defaults to the value of the animCollapse panel config). May also be specified as the animation duration in milliseconds.
          * @returns Ext.panel.Panel this
          */
-        static collapse(direction?: string, animate?: boolean): Ext.panel.IPanel;
+        static collapse(
+            direction?: string,
+            animate?: boolean,
+        ): Ext.panel.IPanel;
         /** [Method] Displays a confirmation message box with Yes and No buttons comparable to JavaScript s confirm
          * @param title String The title bar text
          * @param msg String The message box body text
@@ -30316,7 +32278,12 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the callback is executed.
          * @returns Ext.window.MessageBox this
          */
-        static confirm(title?: string, msg?: string, fn?: any, scope?: any): Ext.window.IMessageBox;
+        static confirm(
+            title?: string,
+            msg?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.window.IMessageBox;
         /** [Method] Determines whether the passed Component is either an immediate child of this Container or whether it is a descendant
          * @param comp Ext.Component The Component to test.
          * @param deep Boolean Pass true to test for the Component being a descendant at any level.
@@ -30397,7 +32364,12 @@ declare namespace Ext {
          * @param scope Function Only needed if the delay parameter is used. The scope (this reference) in which to execute the callback.
          * @returns Ext.Component The focused Component. Usually this Component. Some Containers may delegate focus to a descendant Component (Windows can do this through their defaultFocus config option.
          */
-        static focus(selectText?: boolean, delay?: any, callback?: any, scope?: any): Ext.IComponent;
+        static focus(
+            selectText?: boolean,
+            delay?: any,
+            callback?: any,
+            scope?: any,
+        ): Ext.IComponent;
         /** [Method] Forces this component to redo its componentLayout  */
         static forceComponentLayout(): void;
         /** [Method] Returns the current animation if this object has any effects actively running or queued else returns false
@@ -30410,14 +32382,22 @@ declare namespace Ext {
          * @param offsets Number[] Offset the positioning by [x, y]
          * @returns Number[] [x, y]
          */
-        static getAlignToXY(element?: any, position?: string, offsets?: number[]): number[];
+        static getAlignToXY(
+            element?: any,
+            position?: string,
+            offsets?: number[],
+        ): number[];
         /** [Method] Gets the x y coordinates specified by the anchor position on the element
          * @param anchor String The specified anchor position. See alignTo for details on supported anchor positions.
          * @param local Boolean True to get the local (element top/left-relative) anchor position instead of page coordinates
          * @param size Object An object containing the size to use for calculating anchor position {width: (target width), height: (target height)} (defaults to the element's current size)
          * @returns Number[] [x, y] An array containing the element's x and y coordinates
          */
-        static getAnchorXY(anchor?: string, local?: boolean, size?: any): number[];
+        static getAnchorXY(
+            anchor?: string,
+            local?: boolean,
+            size?: any,
+        ): number[];
         /** [Method] Return an object defining the area of this Element which can be passed to setBox to set another Element s size locati
          * @param contentBox Boolean If true a box for the content of the element is returned.
          * @param local Boolean If true the element's left and top relative to its offsetParent are returned instead of page x/y.
@@ -30447,7 +32427,11 @@ declare namespace Ext {
          * @param proposedSize Number[] A proposed [width, height] size to constrain instead of using the element's current size
          * @returns Number[]/Boolean If the element needs to be translated, an [X, Y] vector by which this element must be translated. Otherwise, false.
          */
-        static getConstrainVector(constrainTo?: any, proposedPosition?: number[], proposedSize?: number[]): any;
+        static getConstrainVector(
+            constrainTo?: any,
+            proposedPosition?: number[],
+            proposedSize?: number[],
+        ): any;
         /** [Method] Gets the configured default focus item  */
         static getDefaultFocus(): void;
         /** [Method] Finds a docked component by id itemId or position
@@ -30460,7 +32444,10 @@ declare namespace Ext {
          * @param beforeBody Boolean An optional flag to limit the set of items to only those before the body (true) or after the body (false). All components are returned by default.
          * @returns Ext.Component[] The array of docked components meeting the specified criteria.
          */
-        static getDockedItems(selector?: string, beforeBody?: boolean): Ext.IComponent[];
+        static getDockedItems(
+            selector?: string,
+            beforeBody?: boolean,
+        ): Ext.IComponent[];
         /** [Method] Retrieves the top level element representing this component
          * @returns Ext.dom.Element
          */
@@ -30677,7 +32664,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Moves a Component within the Container
          * @param fromIdx Number/Ext.Component The index/component to move.
          * @param toIdx Number The new index for the Component.
@@ -30742,7 +32735,10 @@ declare namespace Ext {
          * @param component Ext.Component
          * @param autoDestroy Boolean
          */
-        static onRemove(component?: Ext.IComponent, autoDestroy?: boolean): void;
+        static onRemove(
+            component?: Ext.IComponent,
+            autoDestroy?: boolean,
+        ): void;
         /** [Method] Method to manage awareness of when components are removed from their respective Container firing a removed event
          * @param destroying Object
          */
@@ -30776,7 +32772,11 @@ declare namespace Ext {
          * @param progressText String The text to display inside the progress bar
          * @returns Ext.window.MessageBox this
          */
-        static progress(title?: string, msg?: string, progressText?: string): Ext.window.IMessageBox;
+        static progress(
+            title?: string,
+            msg?: string,
+            progressText?: string,
+        ): Ext.window.IMessageBox;
         /** [Method] Displays a message box with OK and Cancel buttons prompting the user to enter some text comparable to JavaScript s p
          * @param title String The title bar text
          * @param msg String The message box body text
@@ -30820,7 +32820,11 @@ declare namespace Ext {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Removes a component from this container
          * @param component Ext.Component/String The component reference or id to remove.
          * @param autoDestroy Boolean True to automatically invoke the removed Component's Ext.Component.destroy function. Defaults to the value of this Container's autoDestroy config.
@@ -30871,7 +32875,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] inherit docs
          * @param cls Object
          */
@@ -30898,7 +32907,11 @@ declare namespace Ext {
          * @param stateName String The name to use for the property in state.
          * @returns Boolean True if the property was saved, false if not.
          */
-        static savePropToState(propName?: string, state?: any, stateName?: string): boolean;
+        static savePropToState(
+            propName?: string,
+            state?: any,
+            stateName?: string,
+        ): boolean;
         /** [Method] Gathers additional named properties of the instance and adds their current values to the passed state object
          * @param propNames String/String[] The name (or array of names) of the property to save.
          * @param state Object The state object in to which to save the property values.
@@ -30974,7 +32987,11 @@ declare namespace Ext {
          * @param height Number The height of the icon. If not specified, the default is used
          * @returns Ext.window.MessageBox this
          */
-        static setIcon(icon?: string, width?: number, height?: number): Ext.window.IMessageBox;
+        static setIcon(
+            icon?: string,
+            width?: number,
+            height?: number,
+        ): Ext.window.IMessageBox;
         /** [Method] Set the iconCls for the panel s header
          * @param newIconCls String The new CSS class name
          */
@@ -31010,14 +33027,21 @@ declare namespace Ext {
          * @param overflowY String The overflow-y value.
          * @returns Ext.Component this
          */
-        static setOverflowXY(overflowX?: string, overflowY?: string): Ext.IComponent;
+        static setOverflowXY(
+            overflowX?: string,
+            overflowY?: string,
+        ): Ext.IComponent;
         /** [Method] Sets the page XY position of the component
          * @param x Number/Number[] The new x position or an array of [x,y].
          * @param y Number The new y position.
          * @param animate Boolean/Object True to animate the Component into its new position. You may also pass an animation configuration.
          * @returns Ext.Component this
          */
-        static setPagePosition(x?: any, y?: number, animate?: any): Ext.IComponent;
+        static setPagePosition(
+            x?: any,
+            y?: number,
+            animate?: any,
+        ): Ext.IComponent;
         /** [Method] Sets the left and top of the component
          * @param x Number/Number[]/Object The new left, an array of [x,y], or animation config object containing x and y properties.
          * @param y Number The new top.
@@ -31030,7 +33054,10 @@ declare namespace Ext {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.util.Positionable this
          */
-        static setRegion(region?: Ext.util.IRegion, animate?: any): Ext.util.IPositionable;
+        static setRegion(
+            region?: Ext.util.IRegion,
+            animate?: any,
+        ): Ext.util.IPositionable;
         /** [Method] Sets the weight config property for this component
          * @param weight Number The new weight value.
          * @returns Number The previous value of the weight property.
@@ -31096,7 +33123,11 @@ declare namespace Ext {
          * @param offsets Number[] Alignment offsets as used by Ext.util.Positionable.getAlignToXY.
          * @returns Ext.Component this
          */
-        static showBy(component?: any, position?: string, offsets?: number[]): Ext.IComponent;
+        static showBy(
+            component?: any,
+            position?: string,
+            offsets?: number[],
+        ): Ext.IComponent;
         /** [Method] Get the reference to the class from which this object was instantiated
          * @returns Ext.Class
          */
@@ -31161,7 +33192,11 @@ declare namespace Ext {
          * @param loadScripts Boolean Only legitimate when using the html configuration.
          * @param callback Function Only legitimate when using the html configuration. Callback to execute when scripts have finished loading.
          */
-        static update(htmlOrData?: any, loadScripts?: boolean, callback?: any): void;
+        static update(
+            htmlOrData?: any,
+            loadScripts?: boolean,
+            callback?: any,
+        ): void;
         /** [Method] Sets the current box measurements of the component s underlying element
          * @param box Object An object in the format {x, y, width, height}
          * @returns Ext.Component this
@@ -31177,19 +33212,26 @@ declare namespace Ext {
          * @param msg String The message box's body text is replaced with the specified string (defaults to undefined so that any existing body text will not get overwritten by default unless a new value is passed in)
          * @returns Ext.window.MessageBox this
          */
-        static updateProgress(value?: number, progressText?: string, msg?: string): Ext.window.IMessageBox;
+        static updateProgress(
+            value?: number,
+            progressText?: string,
+            msg?: string,
+        ): Ext.window.IMessageBox;
         /** [Method] Displays a message box with an infinitely auto updating progress bar
          * @param msg String The message box body text
          * @param title String The title bar text
          * @param config Object A Ext.ProgressBar.wait config object
          * @returns Ext.window.MessageBox this
          */
-        static wait(msg?: string, title?: string, config?: any): Ext.window.IMessageBox;
+        static wait(
+            msg?: string,
+            title?: string,
+            config?: any,
+        ): Ext.window.IMessageBox;
     }
 }
 declare namespace Ext {
-    export interface IMsg extends Ext.window.IMessageBox {
-    }
+    export interface IMsg extends Ext.window.IMessageBox {}
     export class Msg {
         /** [Property] (Number) */
         static CANCEL: number;
@@ -31305,7 +33347,12 @@ declare namespace Ext {
          * @param options Object
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(element?: any, listeners?: any, scope?: any, options?: any): any;
+        static addListener(
+            element?: any,
+            listeners?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -31314,14 +33361,24 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Save a property to the given state object if it is not its default or configured value
          * @param state Object The state object.
          * @param propName String The name of the property on this object to save.
          * @param value String The value of the state property (defaults to this[propName]).
          * @returns Boolean The state object or a new object if state was null and the property was saved.
          */
-        static addPropertyToState(state?: any, propName?: string, value?: string): boolean;
+        static addPropertyToState(
+            state?: any,
+            propName?: string,
+            value?: string,
+        ): boolean;
         /** [Method] Add events that will trigger the state to be saved
          * @param events String/String[] The event name or an array of event names.
          */
@@ -31354,7 +33411,11 @@ declare namespace Ext {
          * @param callback Function
          * @param scope Object
          */
-        static afterShow(animateTarget?: any, callback?: any, scope?: any): void;
+        static afterShow(
+            animateTarget?: any,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Displays a standard read only message box with an OK button comparable to the basic JavaScript alert prompt
          * @param title String The title bar text
          * @param msg String The message box body text
@@ -31362,7 +33423,12 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the callback is executed.
          * @returns Ext.window.MessageBox this
          */
-        static alert(title?: string, msg?: string, fn?: any, scope?: any): Ext.window.IMessageBox;
+        static alert(
+            title?: string,
+            msg?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.window.IMessageBox;
         /** [Method] Aligns the element with another element relative to the specified anchor points
          * @param element Ext.util.Positionable/HTMLElement/String The Positionable, HTMLElement, or id of the element to align to.
          * @param position String The position to align to
@@ -31370,7 +33436,12 @@ declare namespace Ext {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.util.Positionable this
          */
-        static alignTo(element?: any, position?: string, offsets?: number[], animate?: any): Ext.util.IPositionable;
+        static alignTo(
+            element?: any,
+            position?: string,
+            offsets?: number[],
+            animate?: any,
+        ): Ext.util.IPositionable;
         /** [Method] Anchors an element to another element and realigns it when the window is resized
          * @param element Ext.util.Positionable/HTMLElement/String The Positionable, HTMLElement, or id of the element to align to.
          * @param position String The position to align to
@@ -31405,7 +33476,10 @@ declare namespace Ext {
          * @param adjWidth Number The box-adjusted width that was set.
          * @param adjHeight Number The box-adjusted height that was set.
          */
-        static beforeComponentLayout(adjWidth?: number, adjHeight?: number): void;
+        static beforeComponentLayout(
+            adjWidth?: number,
+            adjHeight?: number,
+        ): void;
         /** [Method] Template method to do any pre focus processing
          * @param e Ext.EventObject The event object
          */
@@ -31483,7 +33557,10 @@ declare namespace Ext {
          * @param animate Boolean True to animate the transition, else false (defaults to the value of the animCollapse panel config). May also be specified as the animation duration in milliseconds.
          * @returns Ext.panel.Panel this
          */
-        static collapse(direction?: string, animate?: boolean): Ext.panel.IPanel;
+        static collapse(
+            direction?: string,
+            animate?: boolean,
+        ): Ext.panel.IPanel;
         /** [Method] Displays a confirmation message box with Yes and No buttons comparable to JavaScript s confirm
          * @param title String The title bar text
          * @param msg String The message box body text
@@ -31491,7 +33568,12 @@ declare namespace Ext {
          * @param scope Object The scope (this reference) in which the callback is executed.
          * @returns Ext.window.MessageBox this
          */
-        static confirm(title?: string, msg?: string, fn?: any, scope?: any): Ext.window.IMessageBox;
+        static confirm(
+            title?: string,
+            msg?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.window.IMessageBox;
         /** [Method] Determines whether the passed Component is either an immediate child of this Container or whether it is a descendant
          * @param comp Ext.Component The Component to test.
          * @param deep Boolean Pass true to test for the Component being a descendant at any level.
@@ -31572,7 +33654,12 @@ declare namespace Ext {
          * @param scope Function Only needed if the delay parameter is used. The scope (this reference) in which to execute the callback.
          * @returns Ext.Component The focused Component. Usually this Component. Some Containers may delegate focus to a descendant Component (Windows can do this through their defaultFocus config option.
          */
-        static focus(selectText?: boolean, delay?: any, callback?: any, scope?: any): Ext.IComponent;
+        static focus(
+            selectText?: boolean,
+            delay?: any,
+            callback?: any,
+            scope?: any,
+        ): Ext.IComponent;
         /** [Method] Forces this component to redo its componentLayout  */
         static forceComponentLayout(): void;
         /** [Method] Returns the current animation if this object has any effects actively running or queued else returns false
@@ -31585,14 +33672,22 @@ declare namespace Ext {
          * @param offsets Number[] Offset the positioning by [x, y]
          * @returns Number[] [x, y]
          */
-        static getAlignToXY(element?: any, position?: string, offsets?: number[]): number[];
+        static getAlignToXY(
+            element?: any,
+            position?: string,
+            offsets?: number[],
+        ): number[];
         /** [Method] Gets the x y coordinates specified by the anchor position on the element
          * @param anchor String The specified anchor position. See alignTo for details on supported anchor positions.
          * @param local Boolean True to get the local (element top/left-relative) anchor position instead of page coordinates
          * @param size Object An object containing the size to use for calculating anchor position {width: (target width), height: (target height)} (defaults to the element's current size)
          * @returns Number[] [x, y] An array containing the element's x and y coordinates
          */
-        static getAnchorXY(anchor?: string, local?: boolean, size?: any): number[];
+        static getAnchorXY(
+            anchor?: string,
+            local?: boolean,
+            size?: any,
+        ): number[];
         /** [Method] Return an object defining the area of this Element which can be passed to setBox to set another Element s size locati
          * @param contentBox Boolean If true a box for the content of the element is returned.
          * @param local Boolean If true the element's left and top relative to its offsetParent are returned instead of page x/y.
@@ -31622,7 +33717,11 @@ declare namespace Ext {
          * @param proposedSize Number[] A proposed [width, height] size to constrain instead of using the element's current size
          * @returns Number[]/Boolean If the element needs to be translated, an [X, Y] vector by which this element must be translated. Otherwise, false.
          */
-        static getConstrainVector(constrainTo?: any, proposedPosition?: number[], proposedSize?: number[]): any;
+        static getConstrainVector(
+            constrainTo?: any,
+            proposedPosition?: number[],
+            proposedSize?: number[],
+        ): any;
         /** [Method] Gets the configured default focus item  */
         static getDefaultFocus(): void;
         /** [Method] Finds a docked component by id itemId or position
@@ -31635,7 +33734,10 @@ declare namespace Ext {
          * @param beforeBody Boolean An optional flag to limit the set of items to only those before the body (true) or after the body (false). All components are returned by default.
          * @returns Ext.Component[] The array of docked components meeting the specified criteria.
          */
-        static getDockedItems(selector?: string, beforeBody?: boolean): Ext.IComponent[];
+        static getDockedItems(
+            selector?: string,
+            beforeBody?: boolean,
+        ): Ext.IComponent[];
         /** [Method] Retrieves the top level element representing this component
          * @returns Ext.dom.Element
          */
@@ -31852,7 +33954,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Moves a Component within the Container
          * @param fromIdx Number/Ext.Component The index/component to move.
          * @param toIdx Number The new index for the Component.
@@ -31917,7 +34025,10 @@ declare namespace Ext {
          * @param component Ext.Component
          * @param autoDestroy Boolean
          */
-        static onRemove(component?: Ext.IComponent, autoDestroy?: boolean): void;
+        static onRemove(
+            component?: Ext.IComponent,
+            autoDestroy?: boolean,
+        ): void;
         /** [Method] Method to manage awareness of when components are removed from their respective Container firing a removed event
          * @param destroying Object
          */
@@ -31951,7 +34062,11 @@ declare namespace Ext {
          * @param progressText String The text to display inside the progress bar
          * @returns Ext.window.MessageBox this
          */
-        static progress(title?: string, msg?: string, progressText?: string): Ext.window.IMessageBox;
+        static progress(
+            title?: string,
+            msg?: string,
+            progressText?: string,
+        ): Ext.window.IMessageBox;
         /** [Method] Displays a message box with OK and Cancel buttons prompting the user to enter some text comparable to JavaScript s p
          * @param title String The title bar text
          * @param msg String The message box body text
@@ -31995,7 +34110,11 @@ declare namespace Ext {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Removes a component from this container
          * @param component Ext.Component/String The component reference or id to remove.
          * @param autoDestroy Boolean True to automatically invoke the removed Component's Ext.Component.destroy function. Defaults to the value of this Container's autoDestroy config.
@@ -32046,7 +34165,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] inherit docs
          * @param cls Object
          */
@@ -32073,7 +34197,11 @@ declare namespace Ext {
          * @param stateName String The name to use for the property in state.
          * @returns Boolean True if the property was saved, false if not.
          */
-        static savePropToState(propName?: string, state?: any, stateName?: string): boolean;
+        static savePropToState(
+            propName?: string,
+            state?: any,
+            stateName?: string,
+        ): boolean;
         /** [Method] Gathers additional named properties of the instance and adds their current values to the passed state object
          * @param propNames String/String[] The name (or array of names) of the property to save.
          * @param state Object The state object in to which to save the property values.
@@ -32149,7 +34277,11 @@ declare namespace Ext {
          * @param height Number The height of the icon. If not specified, the default is used
          * @returns Ext.window.MessageBox this
          */
-        static setIcon(icon?: string, width?: number, height?: number): Ext.window.IMessageBox;
+        static setIcon(
+            icon?: string,
+            width?: number,
+            height?: number,
+        ): Ext.window.IMessageBox;
         /** [Method] Set the iconCls for the panel s header
          * @param newIconCls String The new CSS class name
          */
@@ -32185,14 +34317,21 @@ declare namespace Ext {
          * @param overflowY String The overflow-y value.
          * @returns Ext.Component this
          */
-        static setOverflowXY(overflowX?: string, overflowY?: string): Ext.IComponent;
+        static setOverflowXY(
+            overflowX?: string,
+            overflowY?: string,
+        ): Ext.IComponent;
         /** [Method] Sets the page XY position of the component
          * @param x Number/Number[] The new x position or an array of [x,y].
          * @param y Number The new y position.
          * @param animate Boolean/Object True to animate the Component into its new position. You may also pass an animation configuration.
          * @returns Ext.Component this
          */
-        static setPagePosition(x?: any, y?: number, animate?: any): Ext.IComponent;
+        static setPagePosition(
+            x?: any,
+            y?: number,
+            animate?: any,
+        ): Ext.IComponent;
         /** [Method] Sets the left and top of the component
          * @param x Number/Number[]/Object The new left, an array of [x,y], or animation config object containing x and y properties.
          * @param y Number The new top.
@@ -32205,7 +34344,10 @@ declare namespace Ext {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.util.Positionable this
          */
-        static setRegion(region?: Ext.util.IRegion, animate?: any): Ext.util.IPositionable;
+        static setRegion(
+            region?: Ext.util.IRegion,
+            animate?: any,
+        ): Ext.util.IPositionable;
         /** [Method] Sets the weight config property for this component
          * @param weight Number The new weight value.
          * @returns Number The previous value of the weight property.
@@ -32271,7 +34413,11 @@ declare namespace Ext {
          * @param offsets Number[] Alignment offsets as used by Ext.util.Positionable.getAlignToXY.
          * @returns Ext.Component this
          */
-        static showBy(component?: any, position?: string, offsets?: number[]): Ext.IComponent;
+        static showBy(
+            component?: any,
+            position?: string,
+            offsets?: number[],
+        ): Ext.IComponent;
         /** [Method] Get the reference to the class from which this object was instantiated
          * @returns Ext.Class
          */
@@ -32336,7 +34482,11 @@ declare namespace Ext {
          * @param loadScripts Boolean Only legitimate when using the html configuration.
          * @param callback Function Only legitimate when using the html configuration. Callback to execute when scripts have finished loading.
          */
-        static update(htmlOrData?: any, loadScripts?: boolean, callback?: any): void;
+        static update(
+            htmlOrData?: any,
+            loadScripts?: boolean,
+            callback?: any,
+        ): void;
         /** [Method] Sets the current box measurements of the component s underlying element
          * @param box Object An object in the format {x, y, width, height}
          * @returns Ext.Component this
@@ -32352,19 +34502,26 @@ declare namespace Ext {
          * @param msg String The message box's body text is replaced with the specified string (defaults to undefined so that any existing body text will not get overwritten by default unless a new value is passed in)
          * @returns Ext.window.MessageBox this
          */
-        static updateProgress(value?: number, progressText?: string, msg?: string): Ext.window.IMessageBox;
+        static updateProgress(
+            value?: number,
+            progressText?: string,
+            msg?: string,
+        ): Ext.window.IMessageBox;
         /** [Method] Displays a message box with an infinitely auto updating progress bar
          * @param msg String The message box body text
          * @param title String The title bar text
          * @param config Object A Ext.ProgressBar.wait config object
          * @returns Ext.window.MessageBox this
          */
-        static wait(msg?: string, title?: string, config?: any): Ext.window.IMessageBox;
+        static wait(
+            msg?: string,
+            title?: string,
+            config?: any,
+        ): Ext.window.IMessageBox;
     }
 }
 declare namespace Ext {
-    export interface IModelManager extends Ext.IAbstractManager {
-    }
+    export interface IModelManager extends Ext.IAbstractManager {}
     export class ModelManager {
         /** [Property] (Ext.util.HashMap) */
         static all: Ext.util.IHashMap;
@@ -32448,8 +34605,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IModelMgr extends Ext.IAbstractManager {
-    }
+    export interface IModelMgr extends Ext.IAbstractManager {}
     export class ModelMgr {
         /** [Property] (Ext.util.HashMap) */
         static all: Ext.util.IHashMap;
@@ -32533,8 +34689,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface INumber {
-    }
+    export interface INumber {}
     export class Number {
         /** [Method] Checks whether or not the passed number is within a desired range
          * @param number Number The number to check
@@ -32567,7 +34722,12 @@ declare namespace Ext {
          * @param maxValue Number The maximum value to which the returned value must be constrained. Overrides the increment.
          * @returns Number The value of the nearest snap target.
          */
-        static snap(value?: number, increment?: number, minValue?: number, maxValue?: number): number;
+        static snap(
+            value?: number,
+            increment?: number,
+            minValue?: number,
+            maxValue?: number,
+        ): number;
         /** [Method] Snaps the passed number between stopping points based upon a passed increment value
          * @param value Number The unsnapped value.
          * @param increment Number The increment by which the value must move.
@@ -32575,7 +34735,12 @@ declare namespace Ext {
          * @param maxValue Number The maximum value to which the returned value must be constrained.
          * @returns Number The value of the nearest snap target.
          */
-        static snapInRange(value?: number, increment?: number, minValue?: number, maxValue?: number): number;
+        static snapInRange(
+            value?: number,
+            increment?: number,
+            minValue?: number,
+            maxValue?: number,
+        ): number;
         /** [Method] Formats a number using fixed point notation
          * @param value Number The number to format
          * @param precision Number The number of digits to show after the decimal point
@@ -32584,8 +34749,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IObject {
-    }
+    export interface IObject {}
     export class Object {
         /** [Method] Returns a new object with the given object as the prototype chain
          * @param object Object The prototype chain for the new object.
@@ -32646,7 +34810,11 @@ declare namespace Ext {
          * @param recursive Boolean True to traverse object recursively
          * @returns Array
          */
-        static toQueryObjects(name?: string, value?: any, recursive?: boolean): any[];
+        static toQueryObjects(
+            name?: string,
+            value?: any,
+            recursive?: boolean,
+        ): any[];
         /** [Method] Takes an object and converts it to an encoded query string
          * @param object Object The object to encode
          * @param recursive Boolean Whether or not to interpret the object in recursive format. (PHP / Ruby on Rails servers and similar).
@@ -32656,7 +34824,9 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.panel {
-    export interface IAbstractPanel extends Ext.container.IContainer, Ext.container.IDockingContainer {
+    export interface IAbstractPanel
+        extends Ext.container.IContainer,
+            Ext.container.IDockingContainer {
         /** [Config Option] (String) */
         baseCls?: string | undefined;
         /** [Config Option] (Boolean) */
@@ -32713,7 +34883,10 @@ declare namespace Ext.panel {
          * @param beforeBody Boolean An optional flag to limit the set of items to only those before the body (true) or after the body (false). All components are returned by default.
          * @returns Ext.Component[] The array of docked components meeting the specified criteria.
          */
-        getDockedItems?(selector?: string, beforeBody?: boolean): Ext.IComponent[];
+        getDockedItems?(
+            selector?: string,
+            beforeBody?: boolean,
+        ): Ext.IComponent[];
         /** [Method] Used by ComponentQuery child and down to retrieve all of the items which can potentially be considered a child of th
          * @param deep Object
          */
@@ -33241,7 +35414,9 @@ declare namespace Ext.dd {
     }
 }
 declare namespace Ext.panel {
-    export interface ITable extends Ext.panel.IPanel, Ext.grid.locking.ILockable {
+    export interface ITable
+        extends Ext.panel.IPanel,
+            Ext.grid.locking.ILockable {
         /** [Config Option] (Boolean) */
         allowDeselect?: boolean | undefined;
         /** [Config Option] (Boolean) */
@@ -33378,12 +35553,10 @@ declare namespace Ext.panel {
     }
 }
 declare namespace Ext.perf {
-    export interface IAccumulator extends Ext.IBase {
-    }
+    export interface IAccumulator extends Ext.IBase {}
 }
 declare namespace Ext.perf {
-    export interface IMonitor extends Ext.IBase {
-    }
+    export interface IMonitor extends Ext.IBase {}
     export class Monitor {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -33419,8 +35592,7 @@ declare namespace Ext.perf {
     }
 }
 declare namespace Ext {
-    export interface IPerf extends Ext.IBase {
-    }
+    export interface IPerf extends Ext.IBase {}
     export class Perf {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -33910,8 +36082,7 @@ declare namespace Ext.picker {
     }
 }
 declare namespace Ext {
-    export interface IPluginManager extends Ext.IAbstractManager {
-    }
+    export interface IPluginManager extends Ext.IAbstractManager {}
     export class PluginManager {
         /** [Property] (Ext.util.HashMap) */
         static all: Ext.util.IHashMap;
@@ -33948,7 +36119,10 @@ declare namespace Ext {
          * @param defaultsOnly Boolean True to only return plugins of this type where the plugin's isDefault property is truthy
          * @returns Ext.AbstractPlugin[] All matching plugins
          */
-        static findByType(type?: string, defaultsOnly?: boolean): Ext.IAbstractPlugin[];
+        static findByType(
+            type?: string,
+            defaultsOnly?: boolean,
+        ): Ext.IAbstractPlugin[];
         /** [Method] Returns an item by id
          * @param id String The id of the item
          * @returns Object The item, undefined if not found.
@@ -33999,8 +36173,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IPluginMgr extends Ext.IAbstractManager {
-    }
+    export interface IPluginMgr extends Ext.IAbstractManager {}
     export class PluginMgr {
         /** [Property] (Ext.util.HashMap) */
         static all: Ext.util.IHashMap;
@@ -34037,7 +36210,10 @@ declare namespace Ext {
          * @param defaultsOnly Boolean True to only return plugins of this type where the plugin's isDefault property is truthy
          * @returns Ext.AbstractPlugin[] All matching plugins
          */
-        static findByType(type?: string, defaultsOnly?: boolean): Ext.IAbstractPlugin[];
+        static findByType(
+            type?: string,
+            defaultsOnly?: boolean,
+        ): Ext.IAbstractPlugin[];
         /** [Method] Returns an item by id
          * @param id String The id of the item
          * @returns Object The item, undefined if not found.
@@ -34130,7 +36306,11 @@ declare namespace Ext {
          * @param animate Boolean Whether to animate the transition of the progress bar. If this value is not specified, the default for the class is used
          * @returns Ext.ProgressBar this
          */
-        updateProgress?(value?: number, text?: string, animate?: boolean): Ext.IProgressBar;
+        updateProgress?(
+            value?: number,
+            text?: string,
+            animate?: boolean,
+        ): Ext.IProgressBar;
         /** [Method] Updates the progress bar text
          * @param text String The string to display in the progress text element
          * @returns Ext.ProgressBar this
@@ -34182,7 +36362,8 @@ declare namespace Ext.resizer {
     }
 }
 declare namespace Ext.resizer {
-    export interface IBorderSplitterTracker extends Ext.resizer.ISplitterTracker {
+    export interface IBorderSplitterTracker
+        extends Ext.resizer.ISplitterTracker {
         /** [Method] ensure the tracker is enabled store boxes of previous and next components and calculate the constrain region
          * @param e Object
          */
@@ -34244,7 +36425,12 @@ declare namespace Ext.resizer {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -34253,7 +36439,13 @@ declare namespace Ext.resizer {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -34295,7 +36487,13 @@ declare namespace Ext.resizer {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -34330,7 +36528,12 @@ declare namespace Ext.resizer {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Perform a manual resize and fires the resize event
          * @param width Number
          * @param height Number
@@ -34407,7 +36610,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -34416,7 +36624,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -34458,7 +36672,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -34493,7 +36713,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Perform a manual resize and fires the resize event
          * @param width Number
          * @param height Number
@@ -34769,13 +36994,20 @@ declare namespace Ext.selection {
          * @param store Ext.data.AbstractStore The store being unbound
          * @param initial Boolean True if this store is being bound as initialization of the instance.
          */
-        onUnbindStore?(store?: Ext.data.IAbstractStore, initial?: boolean): void;
+        onUnbindStore?(
+            store?: Ext.data.IAbstractStore,
+            initial?: boolean,
+        ): void;
         /** [Method] Selects a record instance by record instance or index
          * @param records Ext.data.Model[]/Number An array of records or an index
          * @param keepExisting Boolean True to retain existing selections
          * @param suppressEvent Boolean True to not fire a select event
          */
-        select?(records?: any, keepExisting?: boolean, suppressEvent?: boolean): void;
+        select?(
+            records?: any,
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] Selects all records in the view
          * @param suppressEvent Boolean True to suppress any select events
          */
@@ -34785,7 +37017,11 @@ declare namespace Ext.selection {
          * @param endRow Ext.data.Model/Number The record or index of the last row in the range
          * @param keepExisting Boolean True to retain existing selections
          */
-        selectRange?(startRow?: any, endRow?: any, keepExisting?: boolean): void;
+        selectRange?(
+            startRow?: any,
+            endRow?: any,
+            keepExisting?: boolean,
+        ): void;
         /** [Method] Sets a record as the last focused record
          * @param record Ext.data.Model
          */
@@ -34805,7 +37041,9 @@ declare namespace Ext.selection {
     }
 }
 declare namespace Ext {
-    export interface IAbstractSelectionModel extends Ext.util.IObservable, Ext.util.IBindable {
+    export interface IAbstractSelectionModel
+        extends Ext.util.IObservable,
+            Ext.util.IBindable {
         /** [Config Option] (Boolean) */
         allowDeselect?: boolean | undefined;
         /** [Config Option] ("SINGLE"/"SIMPLE"/"MULTI") */
@@ -34895,13 +37133,20 @@ declare namespace Ext {
          * @param store Ext.data.AbstractStore The store being unbound
          * @param initial Boolean True if this store is being bound as initialization of the instance.
          */
-        onUnbindStore?(store?: Ext.data.IAbstractStore, initial?: boolean): void;
+        onUnbindStore?(
+            store?: Ext.data.IAbstractStore,
+            initial?: boolean,
+        ): void;
         /** [Method] Selects a record instance by record instance or index
          * @param records Ext.data.Model[]/Number An array of records or an index
          * @param keepExisting Boolean True to retain existing selections
          * @param suppressEvent Boolean True to not fire a select event
          */
-        select?(records?: any, keepExisting?: boolean, suppressEvent?: boolean): void;
+        select?(
+            records?: any,
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] Selects all records in the view
          * @param suppressEvent Boolean True to suppress any select events
          */
@@ -34911,7 +37156,11 @@ declare namespace Ext {
          * @param endRow Ext.data.Model/Number The record or index of the last row in the range
          * @param keepExisting Boolean True to retain existing selections
          */
-        selectRange?(startRow?: any, endRow?: any, keepExisting?: boolean): void;
+        selectRange?(
+            startRow?: any,
+            endRow?: any,
+            keepExisting?: boolean,
+        ): void;
         /** [Method] Sets a record as the last focused record
          * @param record Ext.data.Model
          */
@@ -34949,7 +37198,10 @@ declare namespace Ext.selection {
          * @param suppressEvent Boolean Set to false to not fire a select event
          * @returns Boolean true if there is a previous record, else false
          */
-        selectPrevious?(keepExisting?: boolean, suppressEvent?: boolean): boolean;
+        selectPrevious?(
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): boolean;
     }
 }
 declare namespace Ext.selection {
@@ -34977,7 +37229,12 @@ declare namespace Ext {
          * @param width Number The target element width
          * @param height Number The target element height
          */
-        realign?(left?: number, top?: number, width?: number, height?: number): void;
+        realign?(
+            left?: number,
+            top?: number,
+            width?: number,
+            height?: number,
+        ): void;
         /** [Method] Sets the opacity of the shadow
          * @param opacity Number The opacity
          */
@@ -34993,8 +37250,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IShadowPool extends Ext.IBase {
-    }
+    export interface IShadowPool extends Ext.IBase {}
     export class ShadowPool {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -35338,8 +37594,7 @@ declare namespace Ext.state {
     }
 }
 declare namespace Ext.state {
-    export interface IManager extends Ext.IBase {
-    }
+    export interface IManager extends Ext.IBase {}
     export class Manager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -35412,7 +37667,12 @@ declare namespace Ext.state {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -35421,7 +37681,13 @@ declare namespace Ext.state {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Clears a value from the state
          * @param name String The key name
          */
@@ -35475,7 +37741,13 @@ declare namespace Ext.state {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -35510,7 +37782,12 @@ declare namespace Ext.state {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -35559,7 +37836,12 @@ declare namespace Ext.state {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -35568,7 +37850,13 @@ declare namespace Ext.state {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Add events that will trigger the state to be saved
          * @param events String/String[] The event name or an array of event names.
          */
@@ -35616,7 +37904,13 @@ declare namespace Ext.state {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -35651,7 +37945,12 @@ declare namespace Ext.state {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -35664,7 +37963,11 @@ declare namespace Ext.state {
          * @param stateName String The name to use for the property in state.
          * @returns Boolean True if the property was saved, false if not.
          */
-        savePropToState?(propName?: string, state?: any, stateName?: string): boolean;
+        savePropToState?(
+            propName?: string,
+            state?: any,
+            stateName?: string,
+        ): boolean;
         /** [Method] Gathers additional named properties of the instance and adds their current values to the passed state object
          * @param propNames String/String[] The name (or array of names) of the property to save.
          * @param state Object The state object in to which to save the property values.
@@ -35690,8 +37993,7 @@ declare namespace Ext.state {
     }
 }
 declare namespace Ext {
-    export interface IString {
-    }
+    export interface IString {}
     export class String {
         /** [Method] Adds a set of character entity definitions to the set used by htmlEncode and htmlDecode
          * @param entities Object The set of character entities to add to the current definitions.
@@ -35713,7 +38015,11 @@ declare namespace Ext {
          * @param word Boolean true to try to find a common word break.
          * @returns String The converted text.
          */
-        static ellipsis(value?: string, length?: number, word?: boolean): string;
+        static ellipsis(
+            value?: string,
+            length?: number,
+            word?: boolean,
+        ): string;
         /** [Method] Checks if a string ends with a substring
          * @param s String The original string
          * @param start String The substring to check
@@ -35759,7 +38065,11 @@ declare namespace Ext {
          * @param character String The character with which to pad the original string.
          * @returns String The padded string.
          */
-        static leftPad(string?: string, size?: number, character?: string): string;
+        static leftPad(
+            string?: string,
+            size?: number,
+            character?: string,
+        ): string;
         /** [Method] Returns a string with a specified number of repetitions a given string pattern
          * @param pattern String The pattern to repeat.
          * @param count Number The number of times to repeat the pattern (may be 0).
@@ -35777,7 +38087,11 @@ declare namespace Ext {
          * @param start String The substring to check
          * @param ignoreCase Boolean True to ignore the case in the comparison
          */
-        static startsWith(s?: string, start?: string, ignoreCase?: boolean): void;
+        static startsWith(
+            s?: string,
+            start?: string,
+            ignoreCase?: boolean,
+        ): void;
         /** [Method] Utility function that allows you to easily switch a string between two alternating values
          * @param string String The current string.
          * @param value String The value to compare to the current string.
@@ -35804,8 +38118,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface ISupports {
-    }
+    export interface ISupports {}
     export class Supports {
         /** [Property] (Boolean) */
         static ArraySort: boolean;
@@ -36202,8 +38515,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.tip {
-    export interface IQuickTipManager extends Ext.IBase {
-    }
+    export interface IQuickTipManager extends Ext.IBase {}
     export class QuickTipManager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -36270,8 +38582,7 @@ declare namespace Ext.tip {
     }
 }
 declare namespace Ext {
-    export interface IQuickTips extends Ext.IBase {
-    }
+    export interface IQuickTips extends Ext.IBase {}
     export class QuickTips {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -36552,7 +38863,10 @@ declare namespace Ext.toolbar {
          * @param store Ext.data.AbstractStore The store being unbound
          * @param initial Boolean True if this store is being bound as initialization of the instance.
          */
-        onUnbindStore?(store?: Ext.data.IAbstractStore, initial?: boolean): void;
+        onUnbindStore?(
+            store?: Ext.data.IAbstractStore,
+            initial?: boolean,
+        ): void;
         /** [Method] Unbinds the paging toolbar from the specified Ext data Store deprecated
          * @param store Ext.data.Store The data store to unbind
          */
@@ -36564,7 +38878,9 @@ declare namespace Ext.toolbar {
     }
 }
 declare namespace Ext {
-    export interface IPagingToolbar extends Ext.toolbar.IToolbar, Ext.util.IBindable {
+    export interface IPagingToolbar
+        extends Ext.toolbar.IToolbar,
+            Ext.util.IBindable {
         /** [Config Option] (String) */
         afterPageText?: string | undefined;
         /** [Config Option] (String) */
@@ -36630,7 +38946,10 @@ declare namespace Ext {
          * @param store Ext.data.AbstractStore The store being unbound
          * @param initial Boolean True if this store is being bound as initialization of the instance.
          */
-        onUnbindStore?(store?: Ext.data.IAbstractStore, initial?: boolean): void;
+        onUnbindStore?(
+            store?: Ext.data.IAbstractStore,
+            initial?: boolean,
+        ): void;
         /** [Method] Unbinds the paging toolbar from the specified Ext data Store deprecated
          * @param store Ext.data.Store The data store to unbind
          */
@@ -36790,7 +39109,12 @@ declare namespace Ext.tree {
          * @param callback Function The function to run after the collapse is completed
          * @param scope Object The scope of the callback function.
          */
-        collapseNode?(record?: Ext.data.IModel, deep?: boolean, callback?: any, scope?: any): void;
+        collapseNode?(
+            record?: Ext.data.IModel,
+            deep?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Expand all nodes
          * @param callback Function A function to execute when the expand finishes.
          * @param scope Object The scope of the callback function
@@ -36802,7 +39126,12 @@ declare namespace Ext.tree {
          * @param callback Function The function to run after the expand is completed
          * @param scope Object The scope of the callback function.
          */
-        expandNode?(record?: Ext.data.IModel, deep?: boolean, callback?: any, scope?: any): void;
+        expandNode?(
+            record?: Ext.data.IModel,
+            deep?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Expand the tree to the path of a particular node
          * @param path String The path to expand. The path should include a leading separator.
          * @param field String The field to get the data from. Defaults to the model idProperty.
@@ -36810,7 +39139,13 @@ declare namespace Ext.tree {
          * @param callback Function A function to execute when the expand finishes. The callback will be called with (success, lastNode) where success is if the expand was successful and lastNode is the last node that was expanded.
          * @param scope Object The scope of the callback function
          */
-        expandPath?(path?: string, field?: string, separator?: string, callback?: any, scope?: any): void;
+        expandPath?(
+            path?: string,
+            field?: string,
+            separator?: string,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Retrieve an array of checked records
          * @returns Ext.data.NodeInterface[] An array containing the checked records
          */
@@ -36826,7 +39161,13 @@ declare namespace Ext.tree {
          * @param callback Function A function to execute when the select finishes. The callback will be called with (bSuccess, oLastNode) where bSuccess is if the select was successful and oLastNode is the last node that was expanded.
          * @param scope Object The scope of the callback function
          */
-        selectPath?(path?: string, field?: string, separator?: string, callback?: any, scope?: any): void;
+        selectPath?(
+            path?: string,
+            field?: string,
+            separator?: string,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sets root node of this tree
          * @param root Ext.data.Model/Ext.data.NodeInterface/Object
          * @returns Ext.data.NodeInterface The new root
@@ -36875,7 +39216,12 @@ declare namespace Ext.tree {
          * @param callback Function The function to run after the collapse is completed
          * @param scope Object The scope of the callback function.
          */
-        collapseNode?(record?: Ext.data.IModel, deep?: boolean, callback?: any, scope?: any): void;
+        collapseNode?(
+            record?: Ext.data.IModel,
+            deep?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Expand all nodes
          * @param callback Function A function to execute when the expand finishes.
          * @param scope Object The scope of the callback function
@@ -36887,7 +39233,12 @@ declare namespace Ext.tree {
          * @param callback Function The function to run after the expand is completed
          * @param scope Object The scope of the callback function.
          */
-        expandNode?(record?: Ext.data.IModel, deep?: boolean, callback?: any, scope?: any): void;
+        expandNode?(
+            record?: Ext.data.IModel,
+            deep?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Expand the tree to the path of a particular node
          * @param path String The path to expand. The path should include a leading separator.
          * @param field String The field to get the data from. Defaults to the model idProperty.
@@ -36895,7 +39246,13 @@ declare namespace Ext.tree {
          * @param callback Function A function to execute when the expand finishes. The callback will be called with (success, lastNode) where success is if the expand was successful and lastNode is the last node that was expanded.
          * @param scope Object The scope of the callback function
          */
-        expandPath?(path?: string, field?: string, separator?: string, callback?: any, scope?: any): void;
+        expandPath?(
+            path?: string,
+            field?: string,
+            separator?: string,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Retrieve an array of checked records
          * @returns Ext.data.NodeInterface[] An array containing the checked records
          */
@@ -36911,7 +39268,13 @@ declare namespace Ext.tree {
          * @param callback Function A function to execute when the select finishes. The callback will be called with (bSuccess, oLastNode) where bSuccess is if the select was successful and oLastNode is the last node that was expanded.
          * @param scope Object The scope of the callback function
          */
-        selectPath?(path?: string, field?: string, separator?: string, callback?: any, scope?: any): void;
+        selectPath?(
+            path?: string,
+            field?: string,
+            separator?: string,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sets root node of this tree
          * @param root Ext.data.Model/Ext.data.NodeInterface/Object
          * @returns Ext.data.NodeInterface The new root
@@ -36960,7 +39323,12 @@ declare namespace Ext {
          * @param callback Function The function to run after the collapse is completed
          * @param scope Object The scope of the callback function.
          */
-        collapseNode?(record?: Ext.data.IModel, deep?: boolean, callback?: any, scope?: any): void;
+        collapseNode?(
+            record?: Ext.data.IModel,
+            deep?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Expand all nodes
          * @param callback Function A function to execute when the expand finishes.
          * @param scope Object The scope of the callback function
@@ -36972,7 +39340,12 @@ declare namespace Ext {
          * @param callback Function The function to run after the expand is completed
          * @param scope Object The scope of the callback function.
          */
-        expandNode?(record?: Ext.data.IModel, deep?: boolean, callback?: any, scope?: any): void;
+        expandNode?(
+            record?: Ext.data.IModel,
+            deep?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Expand the tree to the path of a particular node
          * @param path String The path to expand. The path should include a leading separator.
          * @param field String The field to get the data from. Defaults to the model idProperty.
@@ -36980,7 +39353,13 @@ declare namespace Ext {
          * @param callback Function A function to execute when the expand finishes. The callback will be called with (success, lastNode) where success is if the expand was successful and lastNode is the last node that was expanded.
          * @param scope Object The scope of the callback function
          */
-        expandPath?(path?: string, field?: string, separator?: string, callback?: any, scope?: any): void;
+        expandPath?(
+            path?: string,
+            field?: string,
+            separator?: string,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Retrieve an array of checked records
          * @returns Ext.data.NodeInterface[] An array containing the checked records
          */
@@ -36996,7 +39375,13 @@ declare namespace Ext {
          * @param callback Function A function to execute when the select finishes. The callback will be called with (bSuccess, oLastNode) where bSuccess is if the select was successful and oLastNode is the last node that was expanded.
          * @param scope Object The scope of the callback function
          */
-        selectPath?(path?: string, field?: string, separator?: string, callback?: any, scope?: any): void;
+        selectPath?(
+            path?: string,
+            field?: string,
+            separator?: string,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Sets root node of this tree
          * @param root Ext.data.Model/Ext.data.NodeInterface/Object
          * @returns Ext.data.NodeInterface The new root
@@ -37070,14 +39455,24 @@ declare namespace Ext.tree {
          * @param callback Function The function to run after the collapse is completed
          * @param scope Object The scope of the callback function.
          */
-        collapse?(record?: Ext.data.IModel, deep?: boolean, callback?: any, scope?: any): void;
+        collapse?(
+            record?: Ext.data.IModel,
+            deep?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Expands a record that is loaded in the view
          * @param record Ext.data.Model The record to expand
          * @param deep Boolean True to expand nodes all the way down the tree hierarchy.
          * @param callback Function The function to run after the expand is completed
          * @param scope Object The scope of the callback function.
          */
-        expand?(record?: Ext.data.IModel, deep?: boolean, callback?: any, scope?: any): void;
+        expand?(
+            record?: Ext.data.IModel,
+            deep?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
         /** [Method] Gets the listeners to bind to a new store
          * @returns Object The listeners to be bound to the store in object literal form. The scope may be omitted, it is assumed to be the current instance.
          */
@@ -37096,12 +39491,16 @@ declare namespace Ext.tree {
          * @param callback Function The function to run after the expand/collapse is completed
          * @param scope Object The scope of the callback function.
          */
-        toggle?(record?: Ext.data.IModel, deep?: boolean, callback?: any, scope?: any): void;
+        toggle?(
+            record?: Ext.data.IModel,
+            deep?: boolean,
+            callback?: any,
+            scope?: any,
+        ): void;
     }
 }
 declare namespace Ext.tree {
-    export interface IViewDragZone extends Ext.view.IDragZone {
-    }
+    export interface IViewDragZone extends Ext.view.IDragZone {}
 }
 declare namespace Ext.tree {
     export interface IViewDropZone extends Ext.view.IDropZone {
@@ -37140,7 +39539,9 @@ declare namespace Ext.tree {
     }
 }
 declare namespace Ext.util {
-    export interface IAbstractMixedCollection extends Ext.IBase, Ext.util.IObservable {
+    export interface IAbstractMixedCollection
+        extends Ext.IBase,
+            Ext.util.IObservable {
         /** [Config Option] (Boolean) */
         allowFunctions?: boolean | undefined;
         /** [Property] (Boolean) */
@@ -37166,7 +39567,12 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -37175,7 +39581,13 @@ declare namespace Ext.util {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all items from the collection  */
         clear?(): void;
         /** [Method] Removes all listeners for this object including the managed listeners */
@@ -37224,7 +39636,12 @@ declare namespace Ext.util {
          * @param caseSensitive Boolean True for case sensitive comparison.
          * @returns Ext.util.MixedCollection The new filtered collection
          */
-        filter?(property?: any, value?: any, anyMatch?: boolean, caseSensitive?: boolean): Ext.util.IMixedCollection;
+        filter?(
+            property?: any,
+            value?: any,
+            anyMatch?: boolean,
+            caseSensitive?: boolean,
+        ): Ext.util.IMixedCollection;
         /** [Method] Filter by a function
          * @param fn Function The function to be called.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
@@ -37247,7 +39664,13 @@ declare namespace Ext.util {
          * @param caseSensitive Boolean True for case sensitive comparison.
          * @returns Number The matched index or -1
          */
-        findIndex?(property?: string, value?: any, start?: number, anyMatch?: boolean, caseSensitive?: boolean): number;
+        findIndex?(
+            property?: string,
+            value?: any,
+            start?: number,
+            anyMatch?: boolean,
+            caseSensitive?: boolean,
+        ): number;
         /** [Method] Find the index of the first matching object in this collection by a function
          * @param fn Function The function to be called.
          * @param scope Object The scope (this reference) in which the function is executed. Defaults to this MixedCollection.
@@ -37335,7 +39758,13 @@ declare namespace Ext.util {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -37390,7 +39819,12 @@ declare namespace Ext.util {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Remove a range of items starting at a specified index in the collection
          * @param index Number The index within the collection of the item to remove.
          * @param removeCount Number The nuber of items to remove beginning at the specified index.
@@ -37416,7 +39850,12 @@ declare namespace Ext.util {
          * @param end Number The record index to end at
          * @returns Number The total
          */
-        sum?(property?: string, root?: string, start?: number, end?: number): number;
+        sum?(
+            property?: string,
+            root?: string,
+            start?: number,
+            end?: number,
+        ): number;
         /** [Method] Suspends firing of the named event s
          * @param eventName String... Multiple event names to suspend.
          */
@@ -37496,7 +39935,10 @@ declare namespace Ext.util {
          * @param store Ext.data.AbstractStore The store being unbound
          * @param initial Boolean True if this store is being bound as initialization of the instance.
          */
-        onUnbindStore?(store?: Ext.data.IAbstractStore, initial?: boolean): void;
+        onUnbindStore?(
+            store?: Ext.data.IAbstractStore,
+            initial?: boolean,
+        ): void;
         /** [Method] Unbinds listeners from this component to the store
          * @param store Ext.data.AbstractStore The store to unbind from
          */
@@ -37552,8 +39994,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface ICookies extends Ext.IBase {
-    }
+    export interface ICookies extends Ext.IBase {}
     export class Cookies {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -37600,7 +40041,14 @@ declare namespace Ext.util {
          * @param domain String Setting a domain restricts access to pages on a given domain (typically used to allow cookie access across subdomains). For example, "sencha.com" will create a cookie that can be accessed from any subdomain of sencha.com, including www.sencha.com, support.sencha.com, etc.
          * @param secure Boolean Specify true to indicate that the cookie should only be accessible via SSL on a page using the HTTPS protocol. Defaults to false. Note that this will only work if the page calling this code uses the HTTPS protocol, otherwise the cookie will be created with default options.
          */
-        static set(name?: string, value?: any, expires?: any, path?: string, domain?: string, secure?: boolean): void;
+        static set(
+            name?: string,
+            value?: any,
+            expires?: any,
+            path?: string,
+            domain?: string,
+            secure?: boolean,
+        ): void;
         /** [Method] Get the reference to the class from which this object was instantiated
          * @returns Ext.Class
          */
@@ -37608,8 +40056,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface ICSS extends Ext.IBase {
-    }
+    export interface ICSS extends Ext.IBase {}
     export class CSS {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -37634,7 +40081,11 @@ declare namespace Ext.util {
          * @param property String The cssText specification eg "color:red;font-weight:bold;text-decoration:underline"
          * @returns CSSStyleRule The created rule
          */
-        static createRule(styleSheet?: CSSStyleSheet, selector?: string, property?: string): CSSStyleRule;
+        static createRule(
+            styleSheet?: CSSStyleSheet,
+            selector?: string,
+            property?: string,
+        ): CSSStyleRule;
         /** [Method] Creates a stylesheet from a text blob of rules
          * @param cssText String The text containing the css rules
          * @param id String An id to add to the stylesheet for later removal
@@ -37685,7 +40136,11 @@ declare namespace Ext.util {
          * @param value String The new value for the property
          * @returns Boolean true If a rule was found and updated
          */
-        static updateRule(selector?: any, property?: string, value?: string): boolean;
+        static updateRule(
+            selector?: any,
+            property?: string,
+            value?: string,
+        ): boolean;
     }
 }
 declare namespace Ext.util {
@@ -37700,7 +40155,12 @@ declare namespace Ext.util {
          * @param newScope Object Overrides scope passed to constructor. Remember that if no scope is specified, this will refer to the browser window.
          * @param newArgs Array Overrides args passed to constructor
          */
-        delay?(newDelay?: number, newFn?: any, newScope?: any, newArgs?: any[]): void;
+        delay?(
+            newDelay?: number,
+            newFn?: any,
+            newScope?: any,
+            newArgs?: any[],
+        ): void;
     }
 }
 declare namespace Ext.util {
@@ -37824,8 +40284,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IFormat {
-    }
+    export interface IFormat {}
     export class Format {
         /** [Property] (Boolean) */
         static currencyAtEnd: boolean;
@@ -37853,7 +40312,12 @@ declare namespace Ext.util {
          * @param end Boolean True if the currency sign should be at the end of the string (defaults to currencyAtEnd)
          * @returns String The formatted currency string
          */
-        static currency(value?: any, sign?: string, decimals?: number, end?: boolean): string;
+        static currency(
+            value?: any,
+            sign?: string,
+            decimals?: number,
+            end?: boolean,
+        ): string;
         /** [Method] Formats the passed date using the specified format pattern
          * @param value String/Date The value to format. If a string is passed, it is converted to a Date by the Javascript's built-in Date.parse method.
          * @param format String Any valid date format string. Defaults to Ext.Date.defaultFormat.
@@ -37877,7 +40341,11 @@ declare namespace Ext.util {
          * @param word Boolean true to try to find a common word break.
          * @returns String The converted text.
          */
-        static ellipsis(value?: string, length?: number, word?: boolean): string;
+        static ellipsis(
+            value?: string,
+            length?: number,
+            word?: boolean,
+        ): string;
         /** [Method] Escapes the passed string for use in a regular expression
          * @param str String
          * @returns String
@@ -37910,7 +40378,11 @@ declare namespace Ext.util {
          * @param character String The character with which to pad the original string.
          * @returns String The padded string.
          */
-        static leftPad(string?: string, size?: number, character?: string): string;
+        static leftPad(
+            string?: string,
+            size?: number,
+            character?: string,
+        ): string;
         /** [Method] Converts a string to all lower case letters
          * @param value String The text to convert
          * @returns String The converted text
@@ -38022,7 +40494,12 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -38031,7 +40508,13 @@ declare namespace Ext.util {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all items from the hash
          * @param initial Object
          * @returns Ext.util.HashMap this
@@ -38112,7 +40595,13 @@ declare namespace Ext.util {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -38157,7 +40646,12 @@ declare namespace Ext.util {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Replaces an item in the hash
          * @param key String The key of the item.
          * @param value Object The new value for the item.
@@ -38187,8 +40681,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IHistory extends Ext.IBase, Ext.util.IObservable {
-    }
+    export interface IHistory extends Ext.IBase, Ext.util.IObservable {}
     export class History {
         /** [Property] (String) */
         static fieldId: string;
@@ -38218,7 +40711,12 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -38227,7 +40725,13 @@ declare namespace Ext.util {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Programmatically steps back one step in browser history equivalent to the user pressing the Back button */
         static back(): void;
         /** [Method] Call the original method that was previously overridden with override Ext define My Cat  constructor functi
@@ -38299,7 +40803,13 @@ declare namespace Ext.util {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -38321,7 +40831,11 @@ declare namespace Ext.util {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Removes an event handler
          * @param eventName String The type of event the handler was associated with.
          * @param fn Function The handler to remove. This must be a reference to the function passed into the Ext.util.Observable.addListener call.
@@ -38334,7 +40848,12 @@ declare namespace Ext.util {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -38362,8 +40881,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext {
-    export interface IHistory extends Ext.IBase, Ext.util.IObservable {
-    }
+    export interface IHistory extends Ext.IBase, Ext.util.IObservable {}
     export class History {
         /** [Property] (String) */
         static fieldId: string;
@@ -38393,7 +40911,12 @@ declare namespace Ext {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addListener(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        static addListener(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -38402,7 +40925,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static addManagedListener(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static addManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Programmatically steps back one step in browser history equivalent to the user pressing the Back button */
         static back(): void;
         /** [Method] Call the original method that was previously overridden with override Ext define My Cat  constructor functi
@@ -38474,7 +41003,13 @@ declare namespace Ext {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        static mon(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        static mon(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -38496,7 +41031,11 @@ declare namespace Ext {
          * @param prefix String A common prefix to prepend to the event names. For example: this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Now the grid will forward 'load' and 'clear' events of store as 'storeload' and 'storeclear'.
          * @returns Object A Destroyable object. An object which implements the destroy method which, when destroyed, removes all relayers. For example: this.storeRelayers = this.relayEvents(this.getStore(), ['load', 'clear'], 'store');  Can be undone by calling Ext.destroy(this.storeRelayers);  or this.store.relayers.destroy();
          */
-        static relayEvents(origin?: any, events?: string[], prefix?: string): any;
+        static relayEvents(
+            origin?: any,
+            events?: string[],
+            prefix?: string,
+        ): any;
         /** [Method] Removes an event handler
          * @param eventName String The type of event the handler was associated with.
          * @param fn Function The handler to remove. This must be a reference to the function passed into the Ext.util.Observable.addListener call.
@@ -38509,7 +41048,12 @@ declare namespace Ext {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        static removeManagedListener(item?: any, ename?: any, fn?: any, scope?: any): void;
+        static removeManagedListener(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -38537,8 +41081,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext.util {
-    export interface IInflector extends Ext.IBase {
-    }
+    export interface IInflector extends Ext.IBase {}
     export class Inflector {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -38846,7 +41389,9 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IMixedCollection extends Ext.util.IAbstractMixedCollection, Ext.util.ISortable {
+    export interface IMixedCollection
+        extends Ext.util.IAbstractMixedCollection,
+            Ext.util.ISortable {
         /** [Config Option] (Boolean) */
         allowFunctions?: boolean | undefined;
         /** [Method] Calculates the insertion index of the new item based upon the comparison function passed or the current sort order
@@ -38903,7 +41448,12 @@ declare namespace Ext.util {
          * @param options Object An object containing handler configuration.  Note: Unlike in ExtJS 3.x, the options object will also be passed as the last argument to every event handler.  This object may contain any of the following properties:
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.on({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addListener?(eventName?: any, fn?: any, scope?: any, options?: any): any;
+        addListener?(
+            eventName?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Adds listeners to any Observable object or Ext Element which are automatically removed when this Component is destr
          * @param item Ext.util.Observable/Ext.Element The item to which to add a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -38912,7 +41462,13 @@ declare namespace Ext.util {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        addManagedListener?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        addManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Removes all listeners for this object including the managed listeners */
         clearListeners?(): void;
         /** [Method] Removes all managed listeners for this object  */
@@ -38946,7 +41502,13 @@ declare namespace Ext.util {
          * @param options Object If the ename parameter was an event name, this is the addListener options.
          * @returns Object Only when the destroyable option is specified.  A Destroyable object. An object which implements the destroy method which removes all listeners added in this call. For example:  this.btnListeners = = myButton.mon({  destroyable: true  mouseover:  function() { console.log('mouseover'); },  mouseout: function() { console.log('mouseout'); },  click:  function() { console.log('click'); } }); And when those listeners need to be removed:  Ext.destroy(this.btnListeners); or  this.btnListeners.destroy();
          */
-        mon?(item?: any, ename?: any, fn?: any, scope?: any, options?: any): any;
+        mon?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+            options?: any,
+        ): any;
         /** [Method] Shorthand for removeManagedListener
          * @param item Ext.util.Observable/Ext.Element The item from which to remove a listener/listeners.
          * @param ename Object/String The event name, or an object containing event name properties.
@@ -38981,7 +41543,12 @@ declare namespace Ext.util {
          * @param fn Function If the ename parameter was an event name, this is the handler function.
          * @param scope Object If the ename parameter was an event name, this is the scope (this reference) in which the handler function is executed.
          */
-        removeManagedListener?(item?: any, ename?: any, fn?: any, scope?: any): void;
+        removeManagedListener?(
+            item?: any,
+            ename?: any,
+            fn?: any,
+            scope?: any,
+        ): void;
         /** [Method] Resumes firing of the named event s
          * @param eventName String... Multiple event names to resume.
          */
@@ -39051,8 +41618,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface IOffset extends Ext.IBase {
-    }
+    export interface IOffset extends Ext.IBase {}
 }
 declare namespace Ext.util {
     export interface IPoint extends Ext.util.IRegion {
@@ -39134,7 +41700,12 @@ declare namespace Ext.util {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.util.Positionable this
          */
-        alignTo?(element?: any, position?: string, offsets?: number[], animate?: any): Ext.util.IPositionable;
+        alignTo?(
+            element?: any,
+            position?: string,
+            offsets?: number[],
+            animate?: any,
+        ): Ext.util.IPositionable;
         /** [Method] Anchors an element to another element and realigns it when the window is resized
          * @param element Ext.util.Positionable/HTMLElement/String The Positionable, HTMLElement, or id of the element to align to.
          * @param position String The position to align to
@@ -39171,7 +41742,11 @@ declare namespace Ext.util {
          * @param offsets Number[] Offset the positioning by [x, y]
          * @returns Number[] [x, y]
          */
-        getAlignToXY?(element?: any, position?: string, offsets?: number[]): number[];
+        getAlignToXY?(
+            element?: any,
+            position?: string,
+            offsets?: number[],
+        ): number[];
         /** [Method] Gets the x y coordinates specified by the anchor position on the element
          * @param anchor String The specified anchor position. See alignTo for details on supported anchor positions.
          * @param local Boolean True to get the local (element top/left-relative) anchor position instead of page coordinates
@@ -39191,7 +41766,11 @@ declare namespace Ext.util {
          * @param proposedSize Number[] A proposed [width, height] size to constrain instead of using the element's current size
          * @returns Number[]/Boolean If the element needs to be translated, an [X, Y] vector by which this element must be translated. Otherwise, false.
          */
-        getConstrainVector?(constrainTo?: any, proposedPosition?: number[], proposedSize?: number[]): any;
+        getConstrainVector?(
+            constrainTo?: any,
+            proposedPosition?: number[],
+            proposedSize?: number[],
+        ): any;
         /** [Method] Returns the x coordinate of this element reletive to its offsetParent
          * @returns Number The local x coordinate
          */
@@ -39266,7 +41845,10 @@ declare namespace Ext.util {
          * @param animate Boolean/Object true for the default animation or a standard Element animation config object
          * @returns Ext.util.Positionable this
          */
-        setRegion?(region?: Ext.util.IRegion, animate?: any): Ext.util.IPositionable;
+        setRegion?(
+            region?: Ext.util.IRegion,
+            animate?: any,
+        ): Ext.util.IPositionable;
         /** [Method] Sets the X position of the DOM element based on page coordinates
          * @param The Number X position
          * @param animate Boolean/Object True for the default animation, or a standard Element animation config object
@@ -39357,7 +41939,12 @@ declare namespace Ext.util {
          * @param left Number left offset
          * @returns Ext.util.Region this
          */
-        adjust?(top?: number, right?: number, bottom?: number, left?: number): Ext.util.IRegion;
+        adjust?(
+            top?: number,
+            right?: number,
+            bottom?: number,
+            left?: number,
+        ): Ext.util.IRegion;
         /** [Method] Modifies the current region to be constrained to the targetRegion
          * @param targetRegion Ext.util.Region
          * @returns Ext.util.Region this
@@ -39387,7 +41974,10 @@ declare namespace Ext.util {
          * @param p Ext.util.Point the point
          * @returns Ext.util.Offset
          */
-        getOutOfBoundOffset?(axis?: string, p?: Ext.util.IPoint): Ext.util.IOffset;
+        getOutOfBoundOffset?(
+            axis?: string,
+            p?: Ext.util.IPoint,
+        ): Ext.util.IOffset;
         /** [Method] Get the offset amount on the x axis
          * @param p Number the offset
          * @returns Number
@@ -39595,8 +42185,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext.util {
-    export interface ITaskManager extends Ext.util.ITaskRunner {
-    }
+    export interface ITaskManager extends Ext.util.ITaskRunner {}
     export class TaskManager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -39650,8 +42239,7 @@ declare namespace Ext.util {
     }
 }
 declare namespace Ext {
-    export interface ITaskManager extends Ext.util.ITaskRunner {
-    }
+    export interface ITaskManager extends Ext.util.ITaskRunner {}
     export class TaskManager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;
@@ -40065,7 +42653,11 @@ declare namespace Ext.view {
          * @param record Ext.data.Model The Record being prepared for rendering.
          * @returns Array/Object The formatted data in a format expected by the internal template's overwrite() method. (either an array if your params are numeric (i.e. {0}) or an object (i.e. {foo: 'bar'}))
          */
-        prepareData?(data?: any, recordIndex?: number, record?: Ext.data.IModel): any;
+        prepareData?(
+            data?: any,
+            recordIndex?: number,
+            record?: Ext.data.IModel,
+        ): any;
         /** [Method] Refreshes the view by reloading the data from the store and re rendering the template  */
         refresh?(): void;
         /** [Method] Refreshes an individual node s data from the store
@@ -40077,7 +42669,11 @@ declare namespace Ext.view {
          * @param keepExisting Boolean
          * @param suppressEvent Boolean Set to false to not fire a select event
          */
-        select?(records?: any, keepExisting?: boolean, suppressEvent?: boolean): void;
+        select?(
+            records?: any,
+            keepExisting?: boolean,
+            suppressEvent?: boolean,
+        ): void;
         /** [Method] Unbinds listeners from this component to the store
          * @param store Ext.data.AbstractStore The store to unbind from
          */
@@ -40296,7 +42892,12 @@ declare namespace Ext.view {
          * @param data Object
          * @returns Boolean True if the drop was valid, else false
          */
-        onNodeDrop?(targetNode?: any, dragZone?: any, e?: any, data?: any): boolean;
+        onNodeDrop?(
+            targetNode?: any,
+            dragZone?: any,
+            e?: any,
+            data?: any,
+        ): boolean;
         /** [Method] The mouse is over a View node
          * @param node Object
          * @param dragZone Object
@@ -40334,13 +42935,21 @@ declare namespace Ext.view {
          * @param domReplace Boolean True to remove and replace the element in the document too.
          * @returns Ext.view.NodeCache this
          */
-        replaceElement?(el?: any, replacement?: any, domReplace?: boolean): Ext.view.INodeCache;
+        replaceElement?(
+            el?: any,
+            replacement?: any,
+            domReplace?: boolean,
+        ): Ext.view.INodeCache;
         /** [Method] Appends prepends records depending on direction flag
          * @param newRecords Ext.data.Model[] Items to append/prepend
          * @param direction Number -1' = scroll up,0` = scroll down.
          * @param removeCount Number The number of records to remove from the end. if scrolling down, rows are removed from the top and the new rows are added at the bottom.
          */
-        scroll?(newRecords?: Ext.data.IModel[], direction?: number, removeCount?: number): void;
+        scroll?(
+            newRecords?: Ext.data.IModel[],
+            direction?: number,
+            removeCount?: number,
+        ): void;
     }
 }
 declare namespace Ext.view {
@@ -40444,7 +43053,12 @@ declare namespace Ext.view {
          * @param store Ext.data.Store The store this grid is bound to
          * @returns String a CSS class name to add to the row.
          */
-        getRowClass?(record?: Ext.data.IModel, index?: number, rowParams?: any, store?: Ext.data.IStore): string;
+        getRowClass?(
+            record?: Ext.data.IModel,
+            index?: number,
+            rowParams?: any,
+            store?: Ext.data.IStore,
+        ): string;
         /** [Method] Finds the index of the passed node
          * @param node Object
          * @returns Number The index of the node or -1
@@ -40590,7 +43204,12 @@ declare namespace Ext.window {
          * @param scope Object The scope (this reference) in which the callback is executed.
          * @returns Ext.window.MessageBox this
          */
-        alert?(title?: string, msg?: string, fn?: any, scope?: any): Ext.window.IMessageBox;
+        alert?(
+            title?: string,
+            msg?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.window.IMessageBox;
         /** [Method] Displays a confirmation message box with Yes and No buttons comparable to JavaScript s confirm
          * @param title String The title bar text
          * @param msg String The message box body text
@@ -40598,7 +43217,12 @@ declare namespace Ext.window {
          * @param scope Object The scope (this reference) in which the callback is executed.
          * @returns Ext.window.MessageBox this
          */
-        confirm?(title?: string, msg?: string, fn?: any, scope?: any): Ext.window.IMessageBox;
+        confirm?(
+            title?: string,
+            msg?: string,
+            fn?: any,
+            scope?: any,
+        ): Ext.window.IMessageBox;
         /** [Method] Hides this Component setting it to invisible using the configured hideMode
          * @returns Ext.Component this
          */
@@ -40611,7 +43235,11 @@ declare namespace Ext.window {
          * @param progressText String The text to display inside the progress bar
          * @returns Ext.window.MessageBox this
          */
-        progress?(title?: string, msg?: string, progressText?: string): Ext.window.IMessageBox;
+        progress?(
+            title?: string,
+            msg?: string,
+            progressText?: string,
+        ): Ext.window.IMessageBox;
         /** [Method] Displays a message box with OK and Cancel buttons prompting the user to enter some text comparable to JavaScript s p
          * @param title String The title bar text
          * @param msg String The message box body text
@@ -40635,7 +43263,11 @@ declare namespace Ext.window {
          * @param height Number The height of the icon. If not specified, the default is used
          * @returns Ext.window.MessageBox this
          */
-        setIcon?(icon?: string, width?: number, height?: number): Ext.window.IMessageBox;
+        setIcon?(
+            icon?: string,
+            width?: number,
+            height?: number,
+        ): Ext.window.IMessageBox;
         /** [Method] Displays a new message box or reinitializes an existing message box based on the config options passed in
          * @param config Object The following config options are supported:
          * @returns Ext.window.MessageBox this
@@ -40647,14 +43279,22 @@ declare namespace Ext.window {
          * @param msg String The message box's body text is replaced with the specified string (defaults to undefined so that any existing body text will not get overwritten by default unless a new value is passed in)
          * @returns Ext.window.MessageBox this
          */
-        updateProgress?(value?: number, progressText?: string, msg?: string): Ext.window.IMessageBox;
+        updateProgress?(
+            value?: number,
+            progressText?: string,
+            msg?: string,
+        ): Ext.window.IMessageBox;
         /** [Method] Displays a message box with an infinitely auto updating progress bar
          * @param msg String The message box body text
          * @param title String The title bar text
          * @param config Object A Ext.ProgressBar.wait config object
          * @returns Ext.window.MessageBox this
          */
-        wait?(msg?: string, title?: string, config?: any): Ext.window.IMessageBox;
+        wait?(
+            msg?: string,
+            title?: string,
+            config?: any,
+        ): Ext.window.IMessageBox;
     }
 }
 declare namespace Ext.window {
@@ -40842,8 +43482,7 @@ declare namespace Ext {
     }
 }
 declare namespace Ext {
-    export interface IWindowManager extends Ext.IZIndexManager {
-    }
+    export interface IWindowManager extends Ext.IZIndexManager {}
     export class WindowManager {
         /** [Property] (Ext.Class) */
         static self: Ext.IClass;

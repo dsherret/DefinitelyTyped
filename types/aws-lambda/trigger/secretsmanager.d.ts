@@ -1,8 +1,15 @@
 import { Handler } from "../handler";
 
-export type SecretsManagerRotationHandler = Handler<SecretsManagerRotationEvent, void>;
+export type SecretsManagerRotationHandler = Handler<
+    SecretsManagerRotationEvent,
+    void
+>;
 
-export type SecretsManagerRotationEventStep = "createSecret" | "setSecret" | "testSecret" | "finishSecret";
+export type SecretsManagerRotationEventStep =
+    | "createSecret"
+    | "setSecret"
+    | "testSecret"
+    | "finishSecret";
 
 /**
  * Secrets Manager Rotation event

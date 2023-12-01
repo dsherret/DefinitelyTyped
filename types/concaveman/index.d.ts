@@ -13,7 +13,11 @@ declare module "concaveman" {
      *
      * //=hull
      */
-    function concaveman(points: number[][], concavity?: number, lengthThreshold?: number): number[][];
+    function concaveman(
+        points: number[][],
+        concavity?: number,
+        lengthThreshold?: number,
+    ): number[][];
     namespace concaveman {}
     export = concaveman;
 }

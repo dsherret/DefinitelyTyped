@@ -7,16 +7,24 @@ import { Disposable } from "../index";
 export interface StyleManager {
     // Event Subscription
     /** Invoke callback for all current and future style elements. */
-    observeStyleElements(callback: (styleElement: StyleElementObservedEvent) => void): Disposable;
+    observeStyleElements(
+        callback: (styleElement: StyleElementObservedEvent) => void,
+    ): Disposable;
 
     /** Invoke callback when a style element is added. */
-    onDidAddStyleElement(callback: (styleElement: StyleElementObservedEvent) => void): Disposable;
+    onDidAddStyleElement(
+        callback: (styleElement: StyleElementObservedEvent) => void,
+    ): Disposable;
 
     /** Invoke callback when a style element is removed. */
-    onDidRemoveStyleElement(callback: (styleElement: HTMLStyleElement) => void): Disposable;
+    onDidRemoveStyleElement(
+        callback: (styleElement: HTMLStyleElement) => void,
+    ): Disposable;
 
     /** Invoke callback when an existing style element is updated. */
-    onDidUpdateStyleElement(callback: (styleElement: StyleElementObservedEvent) => void): Disposable;
+    onDidUpdateStyleElement(
+        callback: (styleElement: StyleElementObservedEvent) => void,
+    ): Disposable;
 
     // Reading Style Elements
     /** Get all loaded style elements. */

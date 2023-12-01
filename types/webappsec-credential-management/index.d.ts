@@ -10,7 +10,10 @@
  * See: https://www.w3.org/TR/credential-management-1/#monkey-patching
  * ************************************************************************** */
 
-declare function fetch(input: Request | string, init?: RequestInit | CMRequestInit): Promise<Response>;
+declare function fetch(
+    input: Request | string,
+    init?: RequestInit | CMRequestInit,
+): Promise<Response>;
 
 interface GlobalFetch {
     // variant for navigator.credentials monkey patching
@@ -116,7 +119,10 @@ interface CredentialData {
     readonly id: string;
 }
 
-type CredentialType = PasswordCredential | FederatedCredential | PublicKeyCredential;
+type CredentialType =
+    | PasswordCredential
+    | FederatedCredential
+    | PublicKeyCredential;
 
 /**
  * A generic and extensible Credential interface from which all credentials

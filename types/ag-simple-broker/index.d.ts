@@ -14,32 +14,55 @@ declare class AGSimpleBroker extends AsyncStreamEmitter<any> {
     emit(eventName: "publish", data: AGSimpleBroker.PublishData): void;
 
     listener(eventName: "ready"): ConsumableStream<{}>;
-    listener(eventName: "subscribe"): ConsumableStream<AGSimpleBroker.SubscribeData>;
-    listener(eventName: "unsubscribe"): ConsumableStream<AGSimpleBroker.UnsubscribeData>;
+    listener(
+        eventName: "subscribe",
+    ): ConsumableStream<AGSimpleBroker.SubscribeData>;
+    listener(
+        eventName: "unsubscribe",
+    ): ConsumableStream<AGSimpleBroker.UnsubscribeData>;
     listener(eventName: "error"): ConsumableStream<AGSimpleBroker.ErrorData>;
-    listener(eventName: "publish"): ConsumableStream<AGSimpleBroker.PublishData>;
+    listener(
+        eventName: "publish",
+    ): ConsumableStream<AGSimpleBroker.PublishData>;
 
     exchange(): AGSimpleBroker.SimpleExchange;
 
     subscribeClient(client: { id: string }, channelName: string): Promise<void>;
     subscribeSocket(client: { id: string }, channelName: string): Promise<void>;
 
-    unsubscribeClient(client: { id: string }, channelName: string): Promise<void>;
-    unsubscribeSocket(client: { id: string }, channelName: string): Promise<void>;
+    unsubscribeClient(
+        client: { id: string },
+        channelName: string,
+    ): Promise<void>;
+    unsubscribeSocket(
+        client: { id: string },
+        channelName: string,
+    ): Promise<void>;
 
     subscriptions(): string[];
     isSubscribed(channelName: string): boolean;
 
     setCodecEngine(codec: AGServer.CodecEngine): void;
 
-    invokePublish(channelName: string, data: any, suppressEvent?: boolean): Promise<void>;
-    transmitPublish(channelName: string, data: any, suppressEvent?: boolean): Promise<void>;
+    invokePublish(
+        channelName: string,
+        data: any,
+        suppressEvent?: boolean,
+    ): Promise<void>;
+    transmitPublish(
+        channelName: string,
+        data: any,
+        suppressEvent?: boolean,
+    ): Promise<void>;
 }
 
 export = AGSimpleBroker;
 
 declare namespace AGSimpleBroker {
-    class SimpleExchange extends AsyncStreamEmitter<any> implements AGChannel.Client {
+    class SimpleExchange
+        extends AsyncStreamEmitter<any>
+        implements AGChannel.Client
+    {
         id: string;
 
         constructor(broker: AGSimpleBroker);
@@ -59,8 +82,12 @@ declare namespace AGSimpleBroker {
         killChannelOutputConsumer(consumerId: number): void;
         killChannelListenerConsumer(consumerId: number): void;
 
-        getChannelOutputConsumerStats(consumerId: number): Consumer.ConsumerStats;
-        getChannelListenerConsumerStats(consumerId: number): Consumer.ConsumerStats;
+        getChannelOutputConsumerStats(
+            consumerId: number,
+        ): Consumer.ConsumerStats;
+        getChannelListenerConsumerStats(
+            consumerId: number,
+        ): Consumer.ConsumerStats;
 
         getChannelBackpressure(channelName: string): number;
 
@@ -75,17 +102,37 @@ declare namespace AGSimpleBroker {
         channelKillListener(channelName: string, eventName: string): void;
         channelKillAllListeners(channelName: string): void;
 
-        channelGetOutputConsumerStatsList(channelName: string): Consumer.ConsumerStats[];
-        channelGetListenerConsumerStatsList(channelName: string, eventName: string): Consumer.ConsumerStats[];
-        channelGetAllListenersConsumerStatsList(channelName: string): Consumer.ConsumerStats[];
+        channelGetOutputConsumerStatsList(
+            channelName: string,
+        ): Consumer.ConsumerStats[];
+        channelGetListenerConsumerStatsList(
+            channelName: string,
+            eventName: string,
+        ): Consumer.ConsumerStats[];
+        channelGetAllListenersConsumerStatsList(
+            channelName: string,
+        ): Consumer.ConsumerStats[];
 
         channelGetOutputBackpressure(channelName: string): number;
-        channelGetListenerBackpressure(channelName: string, eventName: string): number;
+        channelGetListenerBackpressure(
+            channelName: string,
+            eventName: string,
+        ): number;
         channelGetAllListenersBackpressure(channelName: string): number;
 
-        channelHasOutputConsumer(channelName: string, consumerId: number): boolean;
-        channelHasListenerConsumer(channelName: string, eventName: string, consumerId: number): boolean;
-        channelHasAnyListenerConsumer(channelName: string, consumerId: number): boolean;
+        channelHasOutputConsumer(
+            channelName: string,
+            consumerId: number,
+        ): boolean;
+        channelHasListenerConsumer(
+            channelName: string,
+            eventName: string,
+            consumerId: number,
+        ): boolean;
+        channelHasAnyListenerConsumer(
+            channelName: string,
+            consumerId: number,
+        ): boolean;
 
         getChannelState(channelName: string): AGChannel.ChannelState;
         getChannelOptions(channelName: string): object;

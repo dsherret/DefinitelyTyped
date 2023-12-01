@@ -36,7 +36,9 @@ declare namespace jsrsasign.KJUR.asn1.cms {
                         | SigningCertificateV2;
                     SignaturePolicyIdentifier: {
                         oid: string;
-                        hash: { alg: string; hash: string } | cades.SignaturePolicyIdentifier;
+                        hash:
+                            | { alg: string; hash: string }
+                            | cades.SignaturePolicyIdentifier;
                     };
                 };
                 signerCert: string;

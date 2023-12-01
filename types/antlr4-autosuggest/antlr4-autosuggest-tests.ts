@@ -13,7 +13,14 @@ class Antlr4JSParser extends antlr4.Parser {
     }
 }
 
-const autosuggester: autosuggest.AutoSuggester = autosuggest.autosuggester(Antlr4JSLexer, Antlr4JSParser);
+const autosuggester: autosuggest.AutoSuggester = autosuggest.autosuggester(
+    Antlr4JSLexer,
+    Antlr4JSParser,
+);
 const suggestions: string[] = autosuggester.autosuggest("ABC");
 
-const lowercase = autosuggest.autosuggester(Antlr4JSLexer, Antlr4JSParser, "LOWER");
+const lowercase = autosuggest.autosuggester(
+    Antlr4JSLexer,
+    Antlr4JSParser,
+    "LOWER",
+);

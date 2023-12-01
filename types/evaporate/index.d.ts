@@ -3,7 +3,10 @@ export = Evaporate;
 declare class Evaporate {
     constructor(config: Evaporate.CreateConfig);
     supported: boolean;
-    add(config: Evaporate.AddConfig, options?: Evaporate.AddOverrideOptions): Promise<string>;
+    add(
+        config: Evaporate.AddConfig,
+        options?: Evaporate.AddOverrideOptions,
+    ): Promise<string>;
     pause(file_key?: string, options?: object): Promise<undefined[]>;
     resume(file_key?: string): Promise<undefined[]>;
     cancel(file_key?: string): Promise<undefined[]>;
@@ -14,7 +17,10 @@ declare namespace Evaporate {
 
     interface CreateConfig {
         readableStreams?: boolean | undefined;
-        readableStreamPartMethod?: null | ((file: File, start: number, end: number) => ReadableStream) | undefined;
+        readableStreamPartMethod?:
+            | null
+            | ((file: File, start: number, end: number) => ReadableStream)
+            | undefined;
         bucket: string;
         logging?: boolean | undefined;
         maxConcurrentParts?: number | undefined;
@@ -31,7 +37,10 @@ declare namespace Evaporate {
         onlyRetryForSameFileName?: boolean | undefined;
         timeUrl?: string | undefined;
         cryptoMd5Method?: null | ((data: ArrayBuffer) => string) | undefined;
-        cryptoHexEncodedHash256?: null | ((data: string | ArrayBuffer | null) => string) | undefined;
+        cryptoHexEncodedHash256?:
+            | null
+            | ((data: string | ArrayBuffer | null) => string)
+            | undefined;
         aws_url?: string | undefined;
         aws_key?: string | undefined;
         awsRegion?: string | undefined;
@@ -44,21 +53,27 @@ declare namespace Evaporate {
         customAuthMethod?:
             | null
             | ((
-                signParams: object,
-                signHeaders: object,
-                stringToSign: string,
-                signatureDateTime: string,
-                canonicalRequest: string,
-            ) => Promise<string>)
+                  signParams: object,
+                  signHeaders: object,
+                  stringToSign: string,
+                  signatureDateTime: string,
+                  canonicalRequest: string,
+              ) => Promise<string>)
             | undefined;
         maxFileSize?: number | undefined;
         signResponseHandler?:
             | null
-            | ((response: any, stringToSign: string, signatureDateTime: string) => Promise<string>)
+            | ((
+                  response: any,
+                  stringToSign: string,
+                  signatureDateTime: string,
+              ) => Promise<string>)
             | undefined;
         xhrWithCredentials?: boolean | undefined;
         localTimeOffset?: number | undefined;
-        evaporateChanged?: ((evaporate: Evaporate, evaporatingCount: number) => void) | undefined;
+        evaporateChanged?:
+            | ((evaporate: Evaporate, evaporatingCount: number) => void)
+            | undefined;
         abortCompletionThrottlingMs?: number | undefined;
     }
 
@@ -86,7 +101,13 @@ declare namespace Evaporate {
         resumed?: ((file_key: string) => void) | undefined;
         pausing?: ((file_key: string) => void) | undefined;
         cancelled?: (() => void) | undefined;
-        complete?: ((xhr: XMLHttpRequest, awsObjectKey: string, stats: TransferStats) => void) | undefined;
+        complete?:
+            | ((
+                  xhr: XMLHttpRequest,
+                  awsObjectKey: string,
+                  stats: TransferStats,
+              ) => void)
+            | undefined;
         nameChanged?: ((awsObjectKey: string) => void) | undefined;
         info?: ((msg: string) => void) | undefined;
         warn?: ((msg: string) => void) | undefined;
@@ -110,8 +131,12 @@ declare namespace Evaporate {
         | "awsRegion"
         | "awsSignatureVersion"
         | "evaporateChanged";
-    type AddOverrideOptionKeys = Exclude<keyof CreateConfig, ImmutableOptionKeys>;
-    interface AddOverrideOptions extends Pick<CreateConfig, AddOverrideOptionKeys> {}
+    type AddOverrideOptionKeys = Exclude<
+        keyof CreateConfig,
+        ImmutableOptionKeys
+    >;
+    interface AddOverrideOptions
+        extends Pick<CreateConfig, AddOverrideOptionKeys> {}
 
     interface PauseConfig {
         force?: boolean | undefined;

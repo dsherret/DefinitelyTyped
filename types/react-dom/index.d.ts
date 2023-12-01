@@ -17,8 +17,12 @@ import {
     ReactPortal,
 } from "react";
 
-export function findDOMNode(instance: ReactInstance | null | undefined): Element | null | Text;
-export function unmountComponentAtNode(container: Element | DocumentFragment): boolean;
+export function findDOMNode(
+    instance: ReactInstance | null | undefined,
+): Element | null | Text;
+export function unmountComponentAtNode(
+    container: Element | DocumentFragment,
+): boolean;
 
 export function createPortal(
     children: ReactNode,
@@ -42,7 +46,10 @@ export function unstable_renderSubtreeIntoContainer<T extends Element>(
     container: Element,
     callback?: (element: T) => any,
 ): T;
-export function unstable_renderSubtreeIntoContainer<P, T extends Component<P, ComponentState>>(
+export function unstable_renderSubtreeIntoContainer<
+    P,
+    T extends Component<P, ComponentState>,
+>(
     parentComponent: Component<any>,
     element: CElement<P, T>,
     container: Element,
@@ -75,7 +82,9 @@ export interface Renderer {
     ): Element;
 
     (
-        element: FunctionComponentElement<any> | Array<FunctionComponentElement<any>>,
+        element:
+            | FunctionComponentElement<any>
+            | Array<FunctionComponentElement<any>>,
         container: Container | null,
         callback?: () => void,
     ): void;

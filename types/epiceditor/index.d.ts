@@ -6,27 +6,35 @@ interface EpicEditorOptions {
     localStorageName?: string | undefined;
     useNativeFullsreen?: boolean | undefined;
     parser?: any;
-    file?: {
-        name: string;
-        defaultContent: string;
-        autoSave: any;
-    } | undefined;
-    theme?: {
-        base: string;
-        preview: string;
-        editor: string;
-    } | undefined;
+    file?:
+        | {
+              name: string;
+              defaultContent: string;
+              autoSave: any;
+          }
+        | undefined;
+    theme?:
+        | {
+              base: string;
+              preview: string;
+              editor: string;
+          }
+        | undefined;
     focusOnLoad?: boolean | undefined;
-    shortcut?: {
-        modifier: number;
-        fullscreen: number;
-        preview: number;
-    } | undefined;
-    string?: {
-        togglePreview: string;
-        toggleEdit: string;
-        toggleFullscreen: string;
-    } | undefined;
+    shortcut?:
+        | {
+              modifier: number;
+              fullscreen: number;
+              preview: number;
+          }
+        | undefined;
+    string?:
+        | {
+              togglePreview: string;
+              toggleEdit: string;
+              toggleFullscreen: string;
+          }
+        | undefined;
 }
 
 declare class EpicEditor {

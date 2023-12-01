@@ -13,7 +13,12 @@ StatelessComponent.defaultProps = {
 <StatelessComponent />;
 
 const StatelessComponent2: React.SFC<SCProps> = ({ foo, children }) => {
-    return <div>{foo}{children}</div>;
+    return (
+        <div>
+            {foo}
+            {children}
+        </div>
+    );
 };
 StatelessComponent2.displayName = "StatelessComponent4";
 StatelessComponent2.defaultProps = {
@@ -24,7 +29,13 @@ StatelessComponent2.defaultProps = {
 // svg sanity check
 <svg viewBox="0 0 1000 1000">
     <g>
-        <text x="200" y="300" strokeWidth="5" stroke="black" alignmentBaseline="middle">
+        <text
+            x="200"
+            y="300"
+            strokeWidth="5"
+            stroke="black"
+            alignmentBaseline="middle"
+        >
             Hello, world!
         </text>
         <div slot="Some Div">Hello again!</div>
@@ -57,19 +68,16 @@ interface Props {
 interface State {
     foobar: string;
 }
-class ComponentWithPropsAndState extends React.Component<Props, State> {
-}
+class ComponentWithPropsAndState extends React.Component<Props, State> {}
 <ComponentWithPropsAndState hello="TypeScript" />;
 
-class ComponentWithoutState extends React.Component<Props> {
-}
+class ComponentWithoutState extends React.Component<Props> {}
 <ComponentWithoutState hello="TypeScript" />;
 
-class ComponentWithoutPropsAndState extends React.Component {
-}
+class ComponentWithoutPropsAndState extends React.Component {}
 <ComponentWithoutPropsAndState />;
 
-const StatelessComponentWithoutProps: React.SFC = props => {
+const StatelessComponentWithoutProps: React.SFC = (props) => {
     return <div />;
 };
 <StatelessComponentWithoutProps />;
@@ -99,7 +107,10 @@ class SetStateTest extends React.Component<{}, { foo: boolean; bar: boolean }> {
 }
 
 // Below tests that extended types for state work
-export abstract class SetStateTestForExtendsState<P, S extends { baseProp: string }> extends React.Component<P, S> {
+export abstract class SetStateTestForExtendsState<
+    P,
+    S extends { baseProp: string },
+> extends React.Component<P, S> {
     foo() {
         this.setState({ baseProp: "foobar" });
     }
@@ -149,14 +160,18 @@ function reactNodeTests() {
         yield <div key="two">two</div>;
     }
 
-    <div>{Object.freeze([<div key="one">one</div>, <div key="two">two</div>])}</div>;
+    <div>
+        {Object.freeze([<div key="one">one</div>, <div key="two">two</div>])}
+    </div>;
     <div>{new Set([<div key="one">one</div>, <div key="two">two</div>])}</div>;
     // TODO: This warns at runtime so we should probably reject it as well
     <div>
-        {new Map([
-            ["one", <div key="one">one</div>],
-            ["two", <div key="two">two</div>],
-        ])}
+        {
+            new Map([
+                ["one", <div key="one">one</div>],
+                ["two", <div key="two">two</div>],
+            ])
+        }
     </div>;
     <div>{createChildren()}</div>;
 }

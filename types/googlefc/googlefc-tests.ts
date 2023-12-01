@@ -1,5 +1,5 @@
 // To guarantee functionality, this must go before the FC tag on the page.
-googlefc.controlledMessagingFunction = message => {
+googlefc.controlledMessagingFunction = (message) => {
     const today = new Date();
     // If it is in between 0 and 12 o’clock, show the message. Otherwise, do not.
     if (today.getHours() < 12) {
@@ -12,7 +12,10 @@ googlefc.controlledMessagingFunction = message => {
 // Queue the callback on the callbackQueue.
 googlefc.callbackQueue.push({
     AD_BLOCK_DATA_READY: () => {
-        if (googlefc.getAdBlockerStatus() === googlefc.AdBlockerStatusEnum.NO_AD_BLOCKER) {
+        if (
+            googlefc.getAdBlockerStatus() ===
+            googlefc.AdBlockerStatusEnum.NO_AD_BLOCKER
+        ) {
             // Handle a non-ad blocking user.
         }
     },
@@ -21,7 +24,9 @@ googlefc.callbackQueue.push({
 // Signals that the default DNS link will be overridden.
 googlefc.ccpa.overrideDnsLink = true;
 
-googlefc.callbackQueue.push({ CONSENT_DATA_READY: () => googlefc.showRevocationMessage() });
+googlefc.callbackQueue.push({
+    CONSENT_DATA_READY: () => googlefc.showRevocationMessage(),
+});
 googlefc.callbackQueue.push({ CONSENT_API_READY: () => {} });
 
 // Queue the callback on the callbackQueue.
@@ -80,7 +85,7 @@ googlefc.callbackQueue.push({
     },
 });
 
-googlefc.ccpa.openConfirmationDialog(userOptedOut => {
+googlefc.ccpa.openConfirmationDialog((userOptedOut) => {
     if (userOptedOut) {
         // TODO: Hide custom CCPA Do Not Sell link here.
     }
@@ -94,7 +99,10 @@ googlefc.callbackQueue.push({
 // Register the callback for the initial CCPA data.
 googlefc.callbackQueue.push({
     INITIAL_CCPA_DATA_READY: () => {
-        if (googlefc.ccpa.getInitialCcpaStatus() === googlefc.ccpa.InitialCcpaStatusEnum.NOT_OPTED_OUT) {
+        if (
+            googlefc.ccpa.getInitialCcpaStatus() ===
+            googlefc.ccpa.InitialCcpaStatusEnum.NOT_OPTED_OUT
+        ) {
         }
     },
 });

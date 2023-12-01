@@ -22,7 +22,7 @@ function doTest(test: (ctx: any, ...obj: Dependency[]) => void) {
 }
 
 namespace BasicWiring {
-    doTest(ctx => {
+    doTest((ctx) => {
         // initialize di container so all singleton(default) objects will be wired at this stage
         ctx.initialize();
 
@@ -66,7 +66,7 @@ namespace PrototypeStrategy {
 namespace PassingConstructorArguments {
     class ProfileView {}
 
-    doTest(ctx => {
+    doTest((ctx) => {
         ctx.register("str", String, "hello world"); // signle simple argument
         ctx.register("profileView", ProfileView, { el: "#profile_div" }); // signle object literal argument
         ctx.register("array", Array, ["Saab", "Volvo", "BMW"]); // multiple argument is passed in using an array
@@ -91,14 +91,16 @@ namespace CyclicalDependency {
 }
 
 namespace FunctionalObject {
-    doTest(ctx => {
+    doTest((ctx) => {
         var FuncObject = (spec: any) => {
                 var that = {};
                 return that;
             },
             spec: any = [];
 
-        ctx.register("funcObjSingleton", FuncObject, spec).factory(di.factory.func);
+        ctx.register("funcObjSingleton", FuncObject, spec).factory(
+            di.factory.func,
+        );
 
         // function chaining can be used to customize your object registration
         ctx.register("funcObjProto", FuncObject, spec)
@@ -114,8 +116,7 @@ namespace FunctionalObject {
 
 namespace RuntimeDependenciesOverride {
     doTest((ctx, A) => {
-        ctx.register("a", A)
-            .dependencies("bee=b"); // dependencies specified here will take precedence
+        ctx.register("a", A).dependencies("bee=b"); // dependencies specified here will take precedence
         ctx.get("a").bee === ctx.get("b"); // true
     });
 }
@@ -129,7 +130,7 @@ namespace CreateYourOwn {
         start() {}
     }
 
-    doTest(ctx => {
+    doTest((ctx) => {
         ctx.register("history").object(new Backbone().history);
         ctx.get("history").start(); // you can use it since it is already created and initialized
         ctx.initialize(); // initialize the rest of the objects

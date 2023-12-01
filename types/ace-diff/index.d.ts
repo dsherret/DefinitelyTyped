@@ -37,11 +37,13 @@ declare namespace AceDiff {
         maxDiffs?: number | undefined;
         left?: AceDiffLROpts | undefined;
         right?: AceDiffLROpts | undefined;
-        classes?: {
-            diff: string;
-            connector: string;
-            newCodeConnectorLinkContent: string;
-            deletedCodeConnectorLinkContent: string;
-        } | undefined;
+        classes?:
+            | {
+                  diff: string;
+                  connector: string;
+                  newCodeConnectorLinkContent: string;
+                  deletedCodeConnectorLinkContent: string;
+              }
+            | undefined;
     }
 }

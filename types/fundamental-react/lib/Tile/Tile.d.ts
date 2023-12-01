@@ -4,7 +4,9 @@ export type TileProps = {
     className?: string | undefined;
     isDouble?: boolean | undefined;
     size?: "s" | undefined;
-    onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
+    onClick?:
+        | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
+        | undefined;
 } & { [x: string]: any };
 
 export type TileContentProps = {

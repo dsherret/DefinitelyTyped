@@ -1,9 +1,17 @@
-export function search(query?: string, options?: SearchOptions): Promise<TorrentSearchResult[]>;
-export function getTorrent(id: string | number | { link: string; [propName: string]: any }): Promise<TorrentDetails>;
+export function search(
+    query?: string,
+    options?: SearchOptions,
+): Promise<TorrentSearchResult[]>;
+export function getTorrent(
+    id: string | number | { link: string; [propName: string]: any },
+): Promise<TorrentDetails>;
 export function getComments(id: string | number): Promise<Comment[]>;
 export function topTorrents(category?: number): Promise<TorrentSearchResult[]>;
 export function recentTorrents(): Promise<TorrentSearchResult[]>;
-export function userTorrents(user: string, options?: SearchOptions): Promise<TorrentSearchResult[]>;
+export function userTorrents(
+    user: string,
+    options?: SearchOptions,
+): Promise<TorrentSearchResult[]>;
 export function getTvShow(id: string | number): Promise<TVSeason[]>;
 export function getCategories(): Promise<CategoryGroup[]>;
 

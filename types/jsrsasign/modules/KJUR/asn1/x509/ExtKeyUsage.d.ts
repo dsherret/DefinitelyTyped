@@ -15,8 +15,12 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
      * // KeyPurposeId ::= OBJECT IDENTIFIER
      */
     class ExtKeyUsage extends Extension {
-        constructor(params?: { array: Array<ObjectIdentifierParam | HexParam | NameParam> });
-        setPurposeArray(purposeArray: Array<ObjectIdentifierParam | HexParam | NameParam>): void;
+        constructor(params?: {
+            array: Array<ObjectIdentifierParam | HexParam | NameParam>;
+        });
+        setPurposeArray(
+            purposeArray: Array<ObjectIdentifierParam | HexParam | NameParam>,
+        ): void;
         getExtnValueHex(): string;
     }
 }

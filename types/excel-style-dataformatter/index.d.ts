@@ -7,7 +7,11 @@ declare class DataFormatter {
      * @param type value type
      * @param format format preset
      */
-    format(value: any, type: string, format: string): DataFormatter.FormatResult;
+    format(
+        value: any,
+        type: string,
+        format: string,
+    ): DataFormatter.FormatResult;
     /**
      * Defines locales
      * @param  locales

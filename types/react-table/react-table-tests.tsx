@@ -73,8 +73,7 @@ declare module "react-table" {
     // take this file as-is, or comment out the sections that don't apply to your plugin configuration
 
     interface TableOptions<D extends object>
-        extends
-            UseExpandedOptions<D>,
+        extends UseExpandedOptions<D>,
             UseFiltersOptions<D>,
             UseGlobalFiltersOptions<D>,
             UseGroupByOptions<D>,
@@ -82,14 +81,12 @@ declare module "react-table" {
             UseResizeColumnsOptions<D>,
             UseRowSelectOptions<D>,
             UseRowStateOptions<D>,
-            UseSortByOptions<D>
-    {
+            UseSortByOptions<D> {
         updateMyData: (rowIndex: number, columnId: string, value: any) => void;
     }
 
     interface TableInstance<D extends object = {}>
-        extends
-            UseColumnOrderInstanceProps<D>,
+        extends UseColumnOrderInstanceProps<D>,
             UseExpandedInstanceProps<D>,
             UseFiltersInstanceProps<D>,
             UseGlobalFiltersInstanceProps<D>,
@@ -97,14 +94,12 @@ declare module "react-table" {
             UsePaginationInstanceProps<D>,
             UseRowSelectInstanceProps<D>,
             UseRowStateInstanceProps<D>,
-            UseSortByInstanceProps<D>
-    {
+            UseSortByInstanceProps<D> {
         editable: boolean;
     }
 
     interface TableState<D extends object = {}>
-        extends
-            UseColumnOrderState<D>,
+        extends UseColumnOrderState<D>,
             UseExpandedState<D>,
             UseFiltersState<D>,
             UseGlobalFiltersState<D>,
@@ -113,31 +108,30 @@ declare module "react-table" {
             UseResizeColumnsState<D>,
             UseRowSelectState<D>,
             UseRowStateState<D>,
-            UseSortByState<D>
-    {}
+            UseSortByState<D> {}
 
     interface ColumnInterface<D extends object = {}>
-        extends
-            UseFiltersColumnOptions<D>,
+        extends UseFiltersColumnOptions<D>,
             UseGlobalFiltersColumnOptions<D>,
             UseGroupByColumnOptions<D>,
             UseResizeColumnsColumnOptions<D>,
-            UseSortByColumnOptions<D>
-    {}
+            UseSortByColumnOptions<D> {}
 
     interface ColumnInstance<D extends object = {}>
-        extends
-            UseFiltersColumnProps<D>,
+        extends UseFiltersColumnProps<D>,
             UseGroupByColumnProps<D>,
             UseResizeColumnsColumnProps<D>,
-            UseSortByColumnProps<D>
-    {}
+            UseSortByColumnProps<D> {}
 
-    interface Cell<D extends object = {}> extends UseGroupByCellProps<D>, UseRowStateCellProps<D> {}
+    interface Cell<D extends object = {}>
+        extends UseGroupByCellProps<D>,
+            UseRowStateCellProps<D> {}
 
     interface Row<D extends object = {}>
-        extends UseExpandedRowProps<D>, UseGroupByRowProps<D>, UseRowSelectRowProps<D>, UseRowStateRowProps<D>
-    {}
+        extends UseExpandedRowProps<D>,
+            UseGroupByRowProps<D>,
+            UseRowSelectRowProps<D>,
+            UseRowStateRowProps<D> {}
 }
 
 interface Data {
@@ -183,7 +177,9 @@ const EditableCell = ({
 };
 
 // Define a default UI for filtering
-function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter, parent } }: FilterProps<Data>) {
+function DefaultColumnFilter({
+    column: { filterValue, preFilteredRows, setFilter, parent },
+}: FilterProps<Data>) {
     const count = preFilteredRows.length;
 
     const foo = parent; // $ExpectType ColumnInstance<Data> | undefined
@@ -191,7 +187,7 @@ function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter
     return (
         <input
             value={filterValue || ""}
-            onChange={e => {
+            onChange={(e) => {
                 setFilter(e.target.value || undefined); // Set undefined to remove the filter entirely
             }}
             placeholder={`Search ${count} records...`}
@@ -201,12 +197,14 @@ function DefaultColumnFilter({ column: { filterValue, preFilteredRows, setFilter
 
 // This is a custom filter UI for selecting
 // a unique option from a list
-function SelectColumnFilter({ column: { filterValue, setFilter, preFilteredRows, id } }: FilterProps<Data>) {
+function SelectColumnFilter({
+    column: { filterValue, setFilter, preFilteredRows, id },
+}: FilterProps<Data>) {
     // Calculate the options for filtering
     // using the preFilteredRows
     const options = React.useMemo(() => {
         const options = new Set<any>();
-        preFilteredRows.forEach(row => {
+        preFilteredRows.forEach((row) => {
             options.add(row.values[id]);
         });
         return [...Array.from(options.values())];
@@ -216,7 +214,7 @@ function SelectColumnFilter({ column: { filterValue, setFilter, preFilteredRows,
     return (
         <select
             value={filterValue}
-            onChange={e => {
+            onChange={(e) => {
                 setFilter(e.target.value || undefined);
             }}
         >
@@ -233,14 +231,16 @@ function SelectColumnFilter({ column: { filterValue, setFilter, preFilteredRows,
 // This is a custom filter UI that uses a
 // slider to set the filter value between a column's
 // min and max values
-function SliderColumnFilter({ column: { filterValue, setFilter, preFilteredRows, id } }: FilterProps<Data>) {
+function SliderColumnFilter({
+    column: { filterValue, setFilter, preFilteredRows, id },
+}: FilterProps<Data>) {
     // Calculate the min and max
     // using the preFilteredRows
 
     const [min, max] = React.useMemo(() => {
         let min = preFilteredRows.length ? preFilteredRows[0].values[id] : 0;
         let max = preFilteredRows.length ? preFilteredRows[0].values[id] : 0;
-        preFilteredRows.forEach(row => {
+        preFilteredRows.forEach((row) => {
             min = Math.min(row.values[id], min);
             max = Math.max(row.values[id], max);
         });
@@ -254,7 +254,7 @@ function SliderColumnFilter({ column: { filterValue, setFilter, preFilteredRows,
                 min={min}
                 max={max}
                 value={filterValue || min}
-                onChange={e => {
+                onChange={(e) => {
                     setFilter(parseInt(e.target.value, 10));
                 }}
             />
@@ -266,11 +266,13 @@ function SliderColumnFilter({ column: { filterValue, setFilter, preFilteredRows,
 // This is a custom UI for our 'between' or number range
 // filter. It uses two number boxes and filters rows to
 // ones that have values between the two
-function NumberRangeColumnFilter({ column: { filterValue = [], preFilteredRows, setFilter, id } }: FilterProps<Data>) {
+function NumberRangeColumnFilter({
+    column: { filterValue = [], preFilteredRows, setFilter, id },
+}: FilterProps<Data>) {
     const [min, max] = React.useMemo(() => {
         let min = preFilteredRows.length ? preFilteredRows[0].values[id] : 0;
         let max = preFilteredRows.length ? preFilteredRows[0].values[id] : 0;
-        preFilteredRows.forEach(row => {
+        preFilteredRows.forEach((row) => {
             min = Math.min(row.values[id], min);
             max = Math.max(row.values[id], max);
         });
@@ -286,9 +288,12 @@ function NumberRangeColumnFilter({ column: { filterValue = [], preFilteredRows, 
             <input
                 value={filterValue[0] || ""}
                 type="number"
-                onChange={e => {
+                onChange={(e) => {
                     const val = e.target.value;
-                    setFilter((old: any[] = []) => [val ? parseInt(val, 10) : undefined, old[1]]);
+                    setFilter((old: any[] = []) => [
+                        val ? parseInt(val, 10) : undefined,
+                        old[1],
+                    ]);
                 }}
                 placeholder={`Min (${min})`}
                 style={{
@@ -300,9 +305,12 @@ function NumberRangeColumnFilter({ column: { filterValue = [], preFilteredRows, 
             <input
                 value={filterValue[1] || ""}
                 type="number"
-                onChange={e => {
+                onChange={(e) => {
                     const val = e.target.value;
-                    setFilter((old: any[] = []) => [old[0], val ? parseInt(val, 10) : undefined]);
+                    setFilter((old: any[] = []) => [
+                        old[0],
+                        val ? parseInt(val, 10) : undefined,
+                    ]);
                 }}
                 placeholder={`Max (${max})`}
                 style={{
@@ -314,7 +322,11 @@ function NumberRangeColumnFilter({ column: { filterValue = [], preFilteredRows, 
     );
 }
 
-function fuzzyTextFilterFn<T extends object>(rows: Array<Row<T>>, ids: Array<IdType<T>>, filterValue: FilterValue) {
+function fuzzyTextFilterFn<T extends object>(
+    rows: Array<Row<T>>,
+    ids: Array<IdType<T>>,
+    filterValue: FilterValue,
+) {
     // return matchSorter(rows, filterValue, {
     //     keys: [(row: Row<any>) => row.values[id]],
     // });
@@ -332,18 +344,29 @@ interface Table<T extends object> {
 }
 
 // Be sure to pass our updateMyData and the skipPageReset option
-function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Data>) {
+function Table({
+    columns,
+    data,
+    updateMyData,
+    skipPageReset = false,
+}: Table<Data>) {
     const filterTypes = React.useMemo(
         () => ({
             // Add a new fuzzyTextFilterFn filter type.
             fuzzyText: fuzzyTextFilterFn,
             // Or, override the default text filter to use
             // "startWith"
-            text: (rows: Array<Row<Data>>, ids: Array<IdType<Data>>, filterValue: FilterValue) => {
-                return rows.filter(row => {
+            text: (
+                rows: Array<Row<Data>>,
+                ids: Array<IdType<Data>>,
+                filterValue: FilterValue,
+            ) => {
+                return rows.filter((row) => {
                     const rowValue = row.values[ids[0]];
                     return rowValue !== undefined
-                        ? String(rowValue).toLowerCase().startsWith(String(filterValue).toLowerCase())
+                        ? String(rowValue)
+                              .toLowerCase()
+                              .startsWith(String(filterValue).toLowerCase())
                         : true;
                 });
             },
@@ -380,7 +403,14 @@ function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Dat
         nextPage,
         previousPage,
         setPageSize,
-        state: { pageIndex, pageSize, groupBy, expanded, filters, selectedRowIds },
+        state: {
+            pageIndex,
+            pageSize,
+            groupBy,
+            expanded,
+            filters,
+            selectedRowIds,
+        },
     } = useTable<Data>(
         {
             columns,
@@ -412,21 +442,29 @@ function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Dat
         usePagination,
         useRowSelect,
         (hooks: Hooks<Data>) => {
-            hooks.allColumns.push(columns => [
+            hooks.allColumns.push((columns) => [
                 {
                     id: "selection",
                     // The header can use the table's getToggleAllRowsSelectedProps method
                     // to render a checkbox
-                    Header: ({ getToggleAllRowsSelectedProps }: HeaderProps<Data>) => (
+                    Header: ({
+                        getToggleAllRowsSelectedProps,
+                    }: HeaderProps<Data>) => (
                         <div>
-                            <input type="checkbox" {...getToggleAllRowsSelectedProps()} />
+                            <input
+                                type="checkbox"
+                                {...getToggleAllRowsSelectedProps()}
+                            />
                         </div>
                     ),
                     // The cell can use the individual row's getToggleRowSelectedProps method
                     // to the render a checkbox
                     Cell: ({ row }: CellProps<Data>) => (
                         <div>
-                            <input type="checkbox" {...row.getToggleRowSelectedProps()} />
+                            <input
+                                type="checkbox"
+                                {...row.getToggleRowSelectedProps()}
+                            />
                         </div>
                     ),
                 },
@@ -441,10 +479,11 @@ function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Dat
             <table {...getTableProps()}>
                 <thead>
                     {headerGroups.map((headerGroup: HeaderGroup<Data>) => {
-                        const { key, ...restHeaderGroup } = headerGroup.getHeaderGroupProps();
+                        const { key, ...restHeaderGroup } =
+                            headerGroup.getHeaderGroupProps();
                         return (
                             <tr key={key} {...restHeaderGroup}>
-                                {headerGroup.headers.map(column => {
+                                {headerGroup.headers.map((column) => {
                                     // $ExpectType TableHeaderProps
                                     const headerProps = column.getHeaderProps();
                                     const {
@@ -455,34 +494,53 @@ function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Dat
                                         ...restHeaderProps
                                     } = headerProps;
                                     // $ExpectType TableGroupByToggleProps
-                                    const groupByToggleProps = column.getGroupByToggleProps();
+                                    const groupByToggleProps =
+                                        column.getGroupByToggleProps();
                                     const {
                                         title: groupTitle,
                                         style: groupStyle,
                                         onClick: groupOnClick,
                                     } = groupByToggleProps;
                                     // $ExpectType TableSortByToggleProps
-                                    const sortByProps = column.getSortByToggleProps();
-                                    const { title: sortTitle, style: sortStyle, onClick: sortOnClick } = sortByProps;
+                                    const sortByProps =
+                                        column.getSortByToggleProps();
+                                    const {
+                                        title: sortTitle,
+                                        style: sortStyle,
+                                        onClick: sortOnClick,
+                                    } = sortByProps;
                                     return (
-                                        <th key={headerKey} {...restHeaderProps}>
+                                        <th
+                                            key={headerKey}
+                                            {...restHeaderProps}
+                                        >
                                             <div>
-                                                {column.canGroupBy
-                                                    ? (
-                                                        // If the column can be grouped, let's add a toggle
-                                                        <span {...groupByToggleProps}>
-                                                            {column.isGrouped ? "🛑 " : "👊 "}
-                                                        </span>
-                                                    )
-                                                    : null}
+                                                {column.canGroupBy ? (
+                                                    // If the column can be grouped, let's add a toggle
+                                                    <span
+                                                        {...groupByToggleProps}
+                                                    >
+                                                        {column.isGrouped
+                                                            ? "🛑 "
+                                                            : "👊 "}
+                                                    </span>
+                                                ) : null}
                                                 <span {...sortByProps}>
                                                     {column.render("Header")}
                                                     {/* Add a sort direction indicator */}
-                                                    {column.isSorted ? (column.isSortedDesc ? " 🔽" : " 🔼") : ""}
+                                                    {column.isSorted
+                                                        ? column.isSortedDesc
+                                                            ? " 🔽"
+                                                            : " 🔼"
+                                                        : ""}
                                                 </span>
                                             </div>
                                             {/* Render the columns filter UI */}
-                                            <div>{column.canFilter ? column.render("Filter") : null}</div>
+                                            <div>
+                                                {column.canFilter
+                                                    ? column.render("Filter")
+                                                    : null}
+                                            </div>
                                         </th>
                                     );
                                 })}
@@ -497,32 +555,35 @@ function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Dat
                         return (
                             <tr key={key} {...restRowProps}>
                                 {row.cells.map((cell: Cell<Data>) => {
-                                    const { key, ...restCellProps } = cell.getCellProps();
+                                    const { key, ...restCellProps } =
+                                        cell.getCellProps();
                                     return (
                                         <td key={key} {...restCellProps}>
-                                            {cell.isGrouped
-                                                ? (
-                                                    <>
-                                                        <span {...row.getToggleRowExpandedProps()}>
-                                                            {row.isExpanded ? "👇" : "👉"}
-                                                        </span>{" "}
-                                                        {cell.render("Cell", { editable: false })}{" "}
-                                                        ({row.subRows.length})
-                                                    </>
-                                                )
-                                                : cell.isAggregated
-                                                ? (
-                                                    // If the cell is aggregated, use the Aggregated
-                                                    // renderer for cell
-                                                    cell.render("Aggregated")
-                                                )
-                                                : cell.isPlaceholder
-                                                ? null
-                                                : (
-                                                    // For cells with repeated values, render null
-                                                    // Otherwise, just render the regular cell
-                                                    cell.render("Cell", { editable: true })
-                                                )}
+                                            {cell.isGrouped ? (
+                                                <>
+                                                    <span
+                                                        {...row.getToggleRowExpandedProps()}
+                                                    >
+                                                        {row.isExpanded
+                                                            ? "👇"
+                                                            : "👉"}
+                                                    </span>{" "}
+                                                    {cell.render("Cell", {
+                                                        editable: false,
+                                                    })}{" "}
+                                                    ({row.subRows.length})
+                                                </>
+                                            ) : cell.isAggregated ? (
+                                                // If the cell is aggregated, use the Aggregated
+                                                // renderer for cell
+                                                cell.render("Aggregated")
+                                            ) : cell.isPlaceholder ? null : (
+                                                // For cells with repeated values, render null
+                                                // Otherwise, just render the regular cell
+                                                cell.render("Cell", {
+                                                    editable: true,
+                                                })
+                                            )}
                                         </td>
                                     );
                                 })}
@@ -531,24 +592,25 @@ function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Dat
                     })}
                 </tbody>
                 <tfoot>
-                    {footerGroups.map(footerGroup => {
-                        const { key, ...restFooterGroupProps } = footerGroup.getFooterGroupProps();
+                    {footerGroups.map((footerGroup) => {
+                        const { key, ...restFooterGroupProps } =
+                            footerGroup.getFooterGroupProps();
                         return (
                             <tr key={key} {...restFooterGroupProps}>
-                                {footerGroup.headers.map(column => (
-                                    <td {...column.getFooterProps()}>{column.render("Footer")}</td>
+                                {footerGroup.headers.map((column) => (
+                                    <td {...column.getFooterProps()}>
+                                        {column.render("Footer")}
+                                    </td>
                                 ))}
                             </tr>
                         );
                     })}
                 </tfoot>
             </table>
-            {
-                /*
+            {/*
         Pagination can be built however you'd like.
         This is just a very basic UI implementation:
-      */
-            }
+      */}
             <div className="pagination">
                 <button onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
                     {"<<"}
@@ -559,23 +621,27 @@ function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Dat
                 <button onClick={nextPage} disabled={!canNextPage}>
                     {">"}
                 </button>{" "}
-                <button onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+                <button
+                    onClick={() => gotoPage(pageCount - 1)}
+                    disabled={!canNextPage}
+                >
                     {">>"}
                 </button>{" "}
                 <span>
                     Page{" "}
                     <strong>
                         {pageIndex + 1} of {pageOptions.length}
-                    </strong>
-                    {" "}
+                    </strong>{" "}
                 </span>
                 <span>
                     | Go to page:{" "}
                     <input
                         type="number"
                         defaultValue={pageIndex + 1}
-                        onChange={e => {
-                            const page = e.target.value ? Number(e.target.value) - 1 : 0;
+                        onChange={(e) => {
+                            const page = e.target.value
+                                ? Number(e.target.value) - 1
+                                : 0;
                             gotoPage(page);
                         }}
                         style={{ width: "100px" }}
@@ -583,11 +649,11 @@ function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Dat
                 </span>{" "}
                 <select
                     value={pageSize}
-                    onChange={e => {
+                    onChange={(e) => {
                         setPageSize(Number(e.target.value));
                     }}
                 >
-                    {[10, 20, 30, 40, 50].map(pageSize => (
+                    {[10, 20, 30, 40, 50].map((pageSize) => (
                         <option key={pageSize} value={pageSize}>
                             Show {pageSize}
                         </option>
@@ -618,8 +684,12 @@ function Table({ columns, data, updateMyData, skipPageReset = false }: Table<Dat
 }
 
 // Define a custom filter filter function!
-function filterGreaterThan(rows: Array<Row<any>>, id: Array<IdType<any>>, filterValue: FilterValue) {
-    return rows.filter(row => {
+function filterGreaterThan(
+    rows: Array<Row<any>>,
+    id: Array<IdType<any>>,
+    filterValue: FilterValue,
+) {
+    return rows.filter((row) => {
         const rowValue = row.values[id[0]];
         return rowValue >= filterValue;
     });
@@ -638,7 +708,7 @@ function roundedMedian(values: any[]) {
     let min = values[0] || "";
     let max = values[0] || "";
 
-    values.forEach(value => {
+    values.forEach((value) => {
         min = Math.min(min, value);
         max = Math.max(max, value);
     });
@@ -648,17 +718,94 @@ function roundedMedian(values: any[]) {
 
 const Component = (props: {}) => {
     const startingData: Data[] = [
-        { firstName: "plastic", lastName: "leather", age: 1, visits: 87, progress: 53, status: "relationship" },
-        { firstName: "eggs", lastName: "quartz", age: 13, visits: 78, progress: 82, status: "complicated" },
-        { firstName: "wash", lastName: "wrench", age: 29, visits: 75, progress: 49, status: "single" },
-        { firstName: "introduction", lastName: "impression", age: 2, visits: 35, progress: 51, status: "relationship" },
-        { firstName: "steel", lastName: "difference", age: 9, visits: 64, progress: 94, status: "complicated" },
-        { firstName: "snakes", lastName: "corn", age: 17, visits: 55, progress: 47, status: "relationship" },
-        { firstName: "ocean", lastName: "definition", age: 26, visits: 17, progress: 22, status: "single" },
-        { firstName: "drawing", lastName: "fifth", age: 15, visits: 84, progress: 12, status: "complicated" },
-        { firstName: "silver", lastName: "riddle", age: 15, visits: 59, progress: 24, status: "relationship" },
-        { firstName: "surprise", lastName: "zinc", age: 23, visits: 7, progress: 48, status: "single" },
-        { firstName: "riddle", lastName: "information", age: 2, visits: 63, progress: 3, status: "complicated" },
+        {
+            firstName: "plastic",
+            lastName: "leather",
+            age: 1,
+            visits: 87,
+            progress: 53,
+            status: "relationship",
+        },
+        {
+            firstName: "eggs",
+            lastName: "quartz",
+            age: 13,
+            visits: 78,
+            progress: 82,
+            status: "complicated",
+        },
+        {
+            firstName: "wash",
+            lastName: "wrench",
+            age: 29,
+            visits: 75,
+            progress: 49,
+            status: "single",
+        },
+        {
+            firstName: "introduction",
+            lastName: "impression",
+            age: 2,
+            visits: 35,
+            progress: 51,
+            status: "relationship",
+        },
+        {
+            firstName: "steel",
+            lastName: "difference",
+            age: 9,
+            visits: 64,
+            progress: 94,
+            status: "complicated",
+        },
+        {
+            firstName: "snakes",
+            lastName: "corn",
+            age: 17,
+            visits: 55,
+            progress: 47,
+            status: "relationship",
+        },
+        {
+            firstName: "ocean",
+            lastName: "definition",
+            age: 26,
+            visits: 17,
+            progress: 22,
+            status: "single",
+        },
+        {
+            firstName: "drawing",
+            lastName: "fifth",
+            age: 15,
+            visits: 84,
+            progress: 12,
+            status: "complicated",
+        },
+        {
+            firstName: "silver",
+            lastName: "riddle",
+            age: 15,
+            visits: 59,
+            progress: 24,
+            status: "relationship",
+        },
+        {
+            firstName: "surprise",
+            lastName: "zinc",
+            age: 23,
+            visits: 7,
+            progress: 48,
+            status: "single",
+        },
+        {
+            firstName: "riddle",
+            lastName: "information",
+            age: 2,
+            visits: 63,
+            progress: 3,
+            status: "complicated",
+        },
     ];
     const columns: ReadonlyArray<Column<Data>> = [
         {
@@ -667,14 +814,20 @@ const Component = (props: {}) => {
             // to render a checkbox
             Header: ({ getToggleAllRowsSelectedProps }: HeaderProps<Data>) => (
                 <div>
-                    <input type="checkbox" {...getToggleAllRowsSelectedProps()} />
+                    <input
+                        type="checkbox"
+                        {...getToggleAllRowsSelectedProps()}
+                    />
                 </div>
             ),
             // The cell can use the individual row's getToggleRowSelectedProps method
             // to the render a checkbox
             Cell: ({ row }: CellProps<Data>) => (
                 <div>
-                    <input type="checkbox" {...row.getToggleRowSelectedProps()} />
+                    <input
+                        type="checkbox"
+                        {...row.getToggleRowSelectedProps()}
+                    />
                 </div>
             ),
         },
@@ -689,7 +842,9 @@ const Component = (props: {}) => {
                     // then sum any of those counts if they are
                     // aggregated further
                     aggregate: "count",
-                    Aggregated: ({ cell: { value } }: CellProps<Data>) => <>{value} Names</>,
+                    Aggregated: ({ cell: { value } }: CellProps<Data>) => (
+                        <>{value} Names</>
+                    ),
                     Cell: ({ value }) => {
                         const v = value; // $ExpectType string
                         return <>{value}</>;
@@ -708,7 +863,9 @@ const Component = (props: {}) => {
                     // being aggregated, then sum those counts if
                     // they are aggregated further
                     aggregate: "uniqueCount",
-                    Aggregated: ({ cell: { value } }: CellProps<Data>) => <>{value} Unique Names</>,
+                    Aggregated: ({ cell: { value } }: CellProps<Data>) => (
+                        <>{value} Unique Names</>
+                    ),
                 },
             ],
         },
@@ -722,7 +879,9 @@ const Component = (props: {}) => {
                     filter: "equals",
                     // Aggregate the average age of visitors
                     aggregate: "average",
-                    Aggregated: ({ cell: { value } }: CellProps<Data>) => <>{value} (avg)</>,
+                    Aggregated: ({ cell: { value } }: CellProps<Data>) => (
+                        <>{value} (avg)</>
+                    ),
                     disableGlobalFilter: true,
                     Cell: ({ value }) => {
                         const v = value; // $ExpectType number
@@ -736,7 +895,9 @@ const Component = (props: {}) => {
                     filter: "between",
                     // Aggregate the sum of all visits
                     aggregate: "sum",
-                    Aggregated: ({ cell: { value } }: CellProps<Data>) => <>{value} (total)</>,
+                    Aggregated: ({ cell: { value } }: CellProps<Data>) => (
+                        <>{value} (total)</>
+                    ),
                 },
                 {
                     Header: "Status",
@@ -751,7 +912,9 @@ const Component = (props: {}) => {
                     filter: filterGreaterThan,
                     // Use our custom roundedMedian aggregator
                     aggregate: roundedMedian,
-                    Aggregated: ({ cell: { value } }: CellProps<Data>) => <>{value} (med)</>,
+                    Aggregated: ({ cell: { value } }: CellProps<Data>) => (
+                        <>{value} (med)</>
+                    ),
                 },
             ],
         },
@@ -767,7 +930,9 @@ const Component = (props: {}) => {
             // then sum any of those counts if they are
             // aggregated further
             aggregate: "count",
-            Aggregated: ({ cell: { value } }: CellProps<Data>) => <>{value} Names</>,
+            Aggregated: ({ cell: { value } }: CellProps<Data>) => (
+                <>{value} Names</>
+            ),
             Cell: ({ value }) => {
                 const v = value; // $ExpectType string
                 return <>{value}</>;
@@ -780,7 +945,9 @@ const Component = (props: {}) => {
             filter: "equals",
             // Aggregate the average age of visitors
             aggregate: "average",
-            Aggregated: ({ cell: { value } }: CellProps<Data>) => <>{value} (avg)</>,
+            Aggregated: ({ cell: { value } }: CellProps<Data>) => (
+                <>{value} (avg)</>
+            ),
             disableGlobalFilter: true,
             Cell: ({ value }) => {
                 const v = value; // $ExpectType number
@@ -794,7 +961,9 @@ const Component = (props: {}) => {
             filter: "between",
             // Aggregate the sum of all visits
             aggregate: "sum",
-            Aggregated: ({ cell: { value } }: CellProps<Data>) => <>{value} (total)</>,
+            Aggregated: ({ cell: { value } }: CellProps<Data>) => (
+                <>{value} (total)</>
+            ),
         },
         {
             Header: "Sub Rows",
@@ -820,7 +989,7 @@ const Component = (props: {}) => {
     const updateMyData = (rowIndex: number, columnId: string, value: any) => {
         // We also turn on the flag to not reset the page
         skipPageResetRef.current = true;
-        setData(old =>
+        setData((old) =>
             old.map((row, index) => {
                 if (index === rowIndex) {
                     return {
@@ -829,7 +998,7 @@ const Component = (props: {}) => {
                     };
                 }
                 return row;
-            })
+            }),
         );
     };
 
@@ -883,7 +1052,12 @@ const Component = (props: {}) => {
     return (
         <>
             <button onClick={resetData}>Reset Data</button>
-            <Table columns={columns} data={data} updateMyData={updateMyData} skipPageReset={skipPageResetRef.current} />
+            <Table
+                columns={columns}
+                data={data}
+                updateMyData={updateMyData}
+                skipPageReset={skipPageResetRef.current}
+            />
         </>
     );
 };

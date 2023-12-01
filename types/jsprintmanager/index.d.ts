@@ -18,9 +18,15 @@ export namespace JSPM {
         sendToClient(): Promise<{}>;
         _intToByteArray(number: number): Uint8Array;
         _genPFGArrayAsync(printFileGroup: PrintFile[]): Promise<Blob>;
-        _genPCArrayAsync(printerCommands: string, binPrinterCommands: Uint8Array, printerCopies: number): Promise<Blob>;
+        _genPCArrayAsync(
+            printerCommands: string,
+            binPrinterCommands: Uint8Array,
+            printerCopies: number,
+        ): Promise<Blob>;
         _str2UTF8Array(str: string): number[];
-        _genPrinterArrayAsync(clientPrinter: IClientPrinter): Promise<Uint8Array>;
+        _genPrinterArrayAsync(
+            clientPrinter: IClientPrinter,
+        ): Promise<Uint8Array>;
         _generateDataAsync(): Promise<Blob>;
     }
 
@@ -52,7 +58,12 @@ export namespace JSPM {
         printToDefaultIfNotFound: boolean;
         trayName: string;
         paperName: string;
-        constructor(printerName: string, printToDefaultIfNotFound?: boolean, trayName?: string, paperName?: string);
+        constructor(
+            printerName: string,
+            printToDefaultIfNotFound?: boolean,
+            trayName?: string,
+            paperName?: string,
+        );
         serialize(): string;
     }
     class ParallelPortPrinter implements IClientPrinter {
@@ -147,7 +158,12 @@ export namespace JSPM {
         onClose: (e: any) => void;
         onOpen: (e: any) => void;
         onStatusChanged: () => void;
-        constructor(addr?: string, port?: number, secure?: boolean, auto_reconnect?: boolean);
+        constructor(
+            addr?: string,
+            port?: number,
+            secure?: boolean,
+            auto_reconnect?: boolean,
+        );
         private _onOpen(e, __this);
         private _onMessage(e, job_list);
         private _onError(e);
@@ -163,7 +179,11 @@ export namespace JSPM {
     namespace JSPrintManager {
         let WS: JSPMWebSocket;
         let auto_reconnect: boolean;
-        function start(secure?: boolean, host?: string, port?: number): Promise<void>;
+        function start(
+            secure?: boolean,
+            host?: string,
+            port?: number,
+        ): Promise<void>;
         function getPrinters(): Promise<{}>;
         function getPrintersInfo(): Promise<{}>;
         const websocket_status: WSStatus;
@@ -179,8 +199,17 @@ export namespace JSPM {
         private _copies;
         copies: number;
         private escapeInvalidFileNameChars();
-        constructor(fileContent: any, fileContentType: FileSourceType, fileName: string, copies?: number);
-        protected bool2str(value: any, true_val?: string, false_val?: string): string;
+        constructor(
+            fileContent: any,
+            fileContentType: FileSourceType,
+            fileName: string,
+            copies?: number,
+        );
+        protected bool2str(
+            value: any,
+            true_val?: string,
+            false_val?: string,
+        ): string;
         serialize(): Promise<zip.Reader>;
     }
 
@@ -190,7 +219,12 @@ export namespace JSPM {
         printRange: string;
         printInReverseOrder: boolean;
         printRotation: PrintRotation;
-        constructor(fileContent: any, fileContentType: FileSourceType, fileName: string, copies?: number);
+        constructor(
+            fileContent: any,
+            fileContentType: FileSourceType,
+            fileName: string,
+            copies?: number,
+        );
         isValidRange(range: string): boolean;
         private getBLOBContent();
         serialize(): Promise<zip.Reader>;

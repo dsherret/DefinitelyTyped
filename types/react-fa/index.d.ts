@@ -1,4 +1,10 @@
-import { Component, ComponentClass, FunctionComponent, HTMLProps, ReactElement } from "react";
+import {
+    Component,
+    ComponentClass,
+    FunctionComponent,
+    HTMLProps,
+    ReactElement,
+} from "react";
 
 // fake intermediate interface to remove typing on size, as the typing
 // is overrided by react-fa
@@ -31,7 +37,10 @@ export const Icon: ComponentClass<IconProps>;
 
 export interface IconStackProps extends SizeOverrideHTMLProps<IconStack> {
     size?: IconSize | undefined;
-    children?: ReactElement<IconProps> | Array<ReactElement<IconProps>> | undefined;
+    children?:
+        | ReactElement<IconProps>
+        | Array<ReactElement<IconProps>>
+        | undefined;
 }
 
 export type IconStack = Component<IconStackProps>;

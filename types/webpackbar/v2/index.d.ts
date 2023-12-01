@@ -50,6 +50,8 @@ declare namespace WebpackBar {
         /** Show compiled in time */
         compiledIn?: boolean | undefined;
         /** Function called when all builds are finished */
-        done?: ((sharedState: SharedState, ctx: WebpackBar) => void) | undefined;
+        done?:
+            | ((sharedState: SharedState, ctx: WebpackBar) => void)
+            | undefined;
     }
 }

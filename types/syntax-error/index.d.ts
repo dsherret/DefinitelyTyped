@@ -12,6 +12,13 @@ declare function syntaxError(
     src: any,
     file?: string,
     opts?: acorn.Options,
-): (SyntaxError & { line: number; column: number; annotated: string; inspect(): string }) | undefined;
+):
+    | (SyntaxError & {
+          line: number;
+          column: number;
+          annotated: string;
+          inspect(): string;
+      })
+    | undefined;
 
 export = syntaxError;

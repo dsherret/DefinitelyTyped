@@ -36,6 +36,9 @@ declare global {
             modulePathPrefix?: string | undefined;
         }
 
-        type ModulePathCallback = (moduleName: string, debug: boolean) => string;
+        type ModulePathCallback = (
+            moduleName: string,
+            debug: boolean,
+        ) => string;
     }
 }

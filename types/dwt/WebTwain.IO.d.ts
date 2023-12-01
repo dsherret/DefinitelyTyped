@@ -140,10 +140,7 @@ export interface WebTwainIO extends WebTwainUtil {
             indices: number[],
             type: number,
         ) => void,
-        failureCallBack: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallBack: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Convert the specified images to a blob.
@@ -165,10 +162,7 @@ export interface WebTwainIO extends WebTwainUtil {
             indices: number[],
             type: number,
         ) => void,
-        failureCallBack: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallBack: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Download the specified file via FTP
@@ -183,10 +177,7 @@ export interface WebTwainIO extends WebTwainUtil {
         host: string,
         path: string,
         successCallback: () => void,
-        failureCallBack: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallBack: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Download the specified file via FTP.
@@ -203,10 +194,7 @@ export interface WebTwainIO extends WebTwainUtil {
         path: string,
         type: Dynamsoft.EnumDWT_ImageType | number,
         successCallback: () => void,
-        failureCallBack: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallBack: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Upload the specified image via FTP.
@@ -223,10 +211,7 @@ export interface WebTwainIO extends WebTwainUtil {
         index: number,
         path: string,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Upload the specified image via FTP.
@@ -245,10 +230,7 @@ export interface WebTwainIO extends WebTwainUtil {
         path: string,
         type: Dynamsoft.EnumDWT_ImageType | number,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Upload all images as a multi-page TIFF via FTP.
@@ -263,10 +245,7 @@ export interface WebTwainIO extends WebTwainUtil {
         host: string,
         path: string,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Upload all images as a multi-page PDF via FTP.
@@ -281,10 +260,7 @@ export interface WebTwainIO extends WebTwainUtil {
         host: string,
         path: string,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Upload selected images as a multi-page PDF via FTP.
@@ -299,10 +275,7 @@ export interface WebTwainIO extends WebTwainUtil {
         host: string,
         path: string,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Upload selected images as a multi-page TIFF via FTP.
@@ -318,10 +291,7 @@ export interface WebTwainIO extends WebTwainUtil {
         path: string,
         type: Dynamsoft.EnumDWT_ImageType | number,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Download the specified file via a HTTP Get request.
@@ -336,10 +306,7 @@ export interface WebTwainIO extends WebTwainUtil {
         host: string,
         path: string,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Download the specified file via a HTTP Get request.
@@ -356,10 +323,7 @@ export interface WebTwainIO extends WebTwainUtil {
         path: string,
         type: Dynamsoft.EnumDWT_ImageType | number,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Download the specified file via a HTTP Post request.
@@ -398,10 +362,7 @@ export interface WebTwainIO extends WebTwainUtil {
         path: string,
         localPath: string,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Upload the specified image(s) via a HTTP Post.
@@ -467,10 +428,7 @@ export interface WebTwainIO extends WebTwainUtil {
         path: string,
         type: Dynamsoft.EnumDWT_ImageType | number,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Upload the specified image via a HTTP Post request.
@@ -646,10 +604,7 @@ export interface WebTwainIO extends WebTwainUtil {
     LoadImage(
         fileName: string,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -665,10 +620,7 @@ export interface WebTwainIO extends WebTwainUtil {
         fileName: string,
         type: Dynamsoft.EnumDWT_ImageType | number,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -683,10 +635,7 @@ export interface WebTwainIO extends WebTwainUtil {
         imageData: string,
         imageType: Dynamsoft.EnumDWT_ImageType,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -700,10 +649,7 @@ export interface WebTwainIO extends WebTwainUtil {
     LoadImageFromBinary(
         imageData: Blob | ArrayBuffer,
         successCallback: () => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Load an image from the system clipboard. The image must be in DIB format.
@@ -714,10 +660,7 @@ export interface WebTwainIO extends WebTwainUtil {
      */
     LoadDibFromClipboard(
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -866,10 +809,7 @@ export interface WebTwainIO extends WebTwainUtil {
     SaveSelectedImagesAsMultiPageTIFF(
         fileName: string,
         successCallback?: () => void,
-        failureCallback?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback?: (errorCode: number, errorString: string) => void,
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ): void | boolean;
     /**
@@ -896,30 +836,20 @@ export interface WebTwainIO extends WebTwainUtil {
      * @param name The name of the field.
      * @param value The value of the field.
      */
-    SetHTTPFormField(
-        name: string,
-        value: string,
-    ): boolean;
+    SetHTTPFormField(name: string, value: string): boolean;
     /**
      * Add a binary file to the HTTP Post Form.
      * @param name The name of the field.
      * @param content The content of the file.
      * @param fileName The name of the file.
      */
-    SetHTTPFormField(
-        name: string,
-        content: Blob,
-        fileName?: string,
-    ): boolean;
+    SetHTTPFormField(name: string, content: Blob, fileName?: string): boolean;
     /**
      * Add a custom header to the HTTP Post Form.
      * @param name The name of the field.
      * @param value The value of the field.
      */
-    SetHTTPHeader(
-        name: string,
-        value: string,
-    ): boolean;
+    SetHTTPHeader(name: string, value: string): boolean;
     /**
      * Clear the content of all custom tiff tags.
      * @param id The id of the custom tag.
@@ -936,10 +866,7 @@ export interface WebTwainIO extends WebTwainUtil {
      * @param threshold Specify the threshold (in MB).
      * @param size Specify the segment size (in KB).
      */
-    SetUploadSegment(
-        threshold: number,
-        size: number,
-    ): boolean;
+    SetUploadSegment(threshold: number, size: number): boolean;
     /**
      * Show the system's save-file dialog or open-file dialog.
      * @param isSave Whether to show a save-file dialog or an open-file dialog

@@ -68,11 +68,13 @@ export interface PackageVersion {
     description?: string | undefined;
     main?: string | undefined;
     scripts?: Record<string, string> | undefined;
-    repository?: {
-        type: string;
-        url: string;
-        directory?: string | undefined;
-    } | undefined;
+    repository?:
+        | {
+              type: string;
+              url: string;
+              directory?: string | undefined;
+          }
+        | undefined;
     engines?: Record<string, string> | undefined;
     keywords?: string[] | undefined;
     author?: Human | undefined;

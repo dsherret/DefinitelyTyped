@@ -6,7 +6,16 @@ export interface LogcatOpts {
      * The log print format
      * @default `threadtime`
      */
-    format?: "brief" | "process" | "tag" | "thread" | "raw" | "time" | "threadtime" | "long" | undefined;
+    format?:
+        | "brief"
+        | "process"
+        | "tag"
+        | "thread"
+        | "raw"
+        | "time"
+        | "threadtime"
+        | "long"
+        | undefined;
     /**
      * Series of <tag>[:priority]
      * where <tag> is a log component tag (or * for all) and priority is:
@@ -58,6 +67,9 @@ export default class Logcat extends EventEmitter {
     once(event: "output", listener: (output: Log) => void): this;
     prependListener(event: string, listener: (...args: any[]) => void): this;
     prependListener(event: "output", listener: (output: Log) => void): this;
-    prependOnceListener(event: string, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string,
+        listener: (...args: any[]) => void,
+    ): this;
     prependOnceListener(event: "output", listener: (output: Log) => void): this;
 }

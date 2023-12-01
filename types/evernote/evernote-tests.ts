@@ -9,4 +9,6 @@ const userStore = client.getUserStore();
 userStore.getUser();
 
 const noteStore = client.getNoteStore();
-noteStore.findNoteCounts(filter, false).then(n => Object.keys(n.notebookCounts || {}));
+noteStore
+    .findNoteCounts(filter, false)
+    .then((n) => Object.keys(n.notebookCounts || {}));

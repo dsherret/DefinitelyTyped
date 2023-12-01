@@ -1,5 +1,11 @@
 import { PureComponent, ReactNode } from "react";
-import { FlatListProps as _FlatListProps, ImageProps, StyleProp, ViewProps, ViewStyle } from "react-native";
+import {
+    FlatListProps as _FlatListProps,
+    ImageProps,
+    StyleProp,
+    ViewProps,
+    ViewStyle,
+} from "react-native";
 
 export interface ImageDimensions {
     width: number;
@@ -81,7 +87,12 @@ export interface Props extends ViewProps {
     /**
      * Custom function to render your images, 1st param is the image props, 2nd is its dimensions
      */
-    imageComponent?: ((imageProps: ImageProps, imageDimensions: ImageDimensions) => ReactNode) | undefined;
+    imageComponent?:
+        | ((
+              imageProps: ImageProps,
+              imageDimensions: ImageDimensions,
+          ) => ReactNode)
+        | undefined;
 
     /**
      * Custom function to render the page of an image that couldn't be displayed

@@ -1,6 +1,6 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "no-invalid-template-strings": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "no-invalid-template-strings": false
+  }
 }

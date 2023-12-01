@@ -1,7 +1,9 @@
 import * as Backbone from "backbone";
 import * as _ from "lodash";
 
-export type WpBackboneViewList = WpBackBoneView[] | { [key: string]: WpBackBoneView[] };
+export type WpBackboneViewList =
+    | WpBackBoneView[]
+    | { [key: string]: WpBackBoneView[] };
 
 export interface WpBackBoneViewOptions {
     template?: _.TemplateExecutor;
@@ -64,7 +66,11 @@ export type WpBackboneSubviews = Backbone.Model & {
      * is used. `views` accepts a `Backbone.View` instance or an array of
      * `Backbone.View` instances.
      */
-    set: (selector: string, views: WpBackboneViewList, options?: WpSubViewSetOptions) => WpBackboneSubviews;
+    set: (
+        selector: string,
+        views: WpBackboneViewList,
+        options?: WpSubViewSetOptions,
+    ) => WpBackboneSubviews;
 
     /**
      * Add subview(s) to existing subviews.
@@ -77,7 +83,11 @@ export type WpBackboneSubviews = Backbone.Model & {
      * is used. `views` accepts a `Backbone.View` instance or an array of
      * `Backbone.View` instances.
      */
-    add: (selector: string, views: WpBackboneViewList, options?: WpSubViewSetOptions) => WpBackboneSubviews;
+    add: (
+        selector: string,
+        views: WpBackboneViewList,
+        options?: WpSubViewSetOptions,
+    ) => WpBackboneSubviews;
 
     /**
      * Removes an added subview.
@@ -86,7 +96,11 @@ export type WpBackboneSubviews = Backbone.Model & {
      * set, then all of the `selector`'s subviews will be unregistered and
      * removed.
      */
-    unset: (selector: string, views: WpBackboneViewList, options?: WpSubViewSetOptions) => WpBackboneSubviews;
+    unset: (
+        selector: string,
+        views: WpBackboneViewList,
+        options?: WpSubViewSetOptions,
+    ) => WpBackboneSubviews;
 
     /**
      * Detaches all subviews.
@@ -124,7 +138,10 @@ export type WpBackboneSubviews = Backbone.Model & {
      *
      * Can be overridden in subclasses.
      */
-    replace: ($target: JQuery, els: string | HTMLElement | HTMLElement[]) => WpBackboneSubviews;
+    replace: (
+        $target: JQuery,
+        els: string | HTMLElement | HTMLElement[],
+    ) => WpBackboneSubviews;
 
     /**
      * Insert subviews into a selector.

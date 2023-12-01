@@ -1,4 +1,11 @@
-import { APIGatewayEvent, CKafkaEvent, CMQTopicEvent, COSEvent, Handler, TimerEvent } from "serverless-tencent-scf";
+import {
+    APIGatewayEvent,
+    CKafkaEvent,
+    CMQTopicEvent,
+    COSEvent,
+    Handler,
+    TimerEvent,
+} from "serverless-tencent-scf";
 
 interface CustomEvent {
     hello: "world";
@@ -40,7 +47,7 @@ const apiGatewayEvent: APIGatewayEvent = {
         Host: "service-3ei3tii4-251000691.ap-guangzhou.apigateway.myqloud.com",
         "User-Agent": "User Agent String",
     },
-    body: "{\"test\":\"body\"}",
+    body: '{"test":"body"}',
     pathParameters: {
         path: "value",
     },
@@ -76,7 +83,8 @@ const cosEvent: COSEvent = {
                 cosObject: {
                     url: "http://testpic-1253970026.cos.ap-chengdu.myqcloud.com/testfile",
                     meta: {
-                        "x-cos-request-id": "NWMxOWY4MGFfMjViMjU4NjRfMTUyMVxxxxxxxxx=",
+                        "x-cos-request-id":
+                            "NWMxOWY4MGFfMjViMjU4NjRfMTUyMVxxxxxxxxx=",
                         "Content-Type": "",
                         "x-cos-meta-mykey": "myvalue",
                     },
@@ -99,10 +107,12 @@ const cosEvent: COSEvent = {
                 requestParameters: {
                     requestSourceIP: "192.168.15.101",
                     requestHeaders: {
-                        Authorization: "q-sign-algorithm=sha1&q-ak=xxxxxxxxxxxxxx...",
+                        Authorization:
+                            "q-sign-algorithm=sha1&q-ak=xxxxxxxxxxxxxx...",
                     },
                 },
-                eventQueue: "qcs:0:lambda:cd:appid/1253970026:default.printevent.$LATEST",
+                eventQueue:
+                    "qcs:0:lambda:cd:appid/1253970026:default.printevent.$LATEST",
                 reservedInfo: "",
                 reqid: 179398952,
             },

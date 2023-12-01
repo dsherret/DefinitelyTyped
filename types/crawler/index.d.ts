@@ -9,8 +9,17 @@ declare class Crawler extends EventEmitter {
     constructor(options: Crawler.CreateCrawlerOptions);
     readonly queueSize: number;
 
-    on(channel: "schedule" | "request", listener: (options: Crawler.CrawlerRequestOptions) => void): this;
-    on(channel: "limiterChange", listener: (options: Crawler.CrawlerRequestOptions, limiter: string) => void): this;
+    on(
+        channel: "schedule" | "request",
+        listener: (options: Crawler.CrawlerRequestOptions) => void,
+    ): this;
+    on(
+        channel: "limiterChange",
+        listener: (
+            options: Crawler.CrawlerRequestOptions,
+            limiter: string,
+        ) => void,
+    ): this;
     on(channel: "drain", listener: () => void): this;
 
     queue(
@@ -23,7 +32,10 @@ declare class Crawler extends EventEmitter {
 
     direct(
         options: Omit<Crawler.CrawlerRequestOptions, "callback"> & {
-            callback: (error: Error, response: Crawler.CrawlerRequestResponse) => void;
+            callback: (
+                error: Error,
+                response: Crawler.CrawlerRequestResponse,
+            ) => void;
         },
     ): void;
 
@@ -55,8 +67,19 @@ declare namespace Crawler {
         priority?: number | undefined;
         jquery?: any;
         jQuery?: any;
-        preRequest?: ((options: CrawlerRequestOptions, doRequest: (err?: Error) => void) => void) | undefined;
-        callback?: ((err: Error, res: CrawlerRequestResponse, done: () => void) => void) | undefined;
+        preRequest?:
+            | ((
+                  options: CrawlerRequestOptions,
+                  doRequest: (err?: Error) => void,
+              ) => void)
+            | undefined;
+        callback?:
+            | ((
+                  err: Error,
+                  res: CrawlerRequestResponse,
+                  done: () => void,
+              ) => void)
+            | undefined;
         [x: string]: any;
     }
 
@@ -90,13 +113,26 @@ declare namespace Crawler {
         homogeneous?: boolean | undefined;
         http2?: boolean | undefined;
         debug?: boolean | undefined;
-        logger?: {
-            log: (level: string, ...args: readonly any[]) => void;
-        } | undefined;
+        logger?:
+            | {
+                  log: (level: string, ...args: readonly any[]) => void;
+              }
+            | undefined;
         seenreq?: any;
         headers?: Headers | undefined;
-        preRequest?: ((options: CrawlerRequestOptions, doRequest: (err?: Error) => void) => void) | undefined;
-        callback?: ((err: Error, res: CrawlerRequestResponse, done: () => void) => void) | undefined;
+        preRequest?:
+            | ((
+                  options: CrawlerRequestOptions,
+                  doRequest: (err?: Error) => void,
+              ) => void)
+            | undefined;
+        callback?:
+            | ((
+                  err: Error,
+                  res: CrawlerRequestResponse,
+                  done: () => void,
+              ) => void)
+            | undefined;
         [x: string]: any;
     }
 }

@@ -10,4 +10,11 @@ export import ReplaceSource = require("./lib/ReplaceSource");
 export import SizeOnlySource = require("./lib/SizeOnlySource");
 export import Source = require("./lib/Source");
 export import SourceMapSource = require("./lib/SourceMapSource");
-export { CachedData, MapOptions, Replacement, SourceAndMapMixin, SourceAndMapResult, SourceLike } from "./lib/index";
+export {
+    CachedData,
+    MapOptions,
+    Replacement,
+    SourceAndMapMixin,
+    SourceAndMapResult,
+    SourceLike,
+} from "./lib/index";

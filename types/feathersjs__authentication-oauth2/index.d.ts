@@ -4,13 +4,17 @@ import { Application, Paginated, Service } from "@feathersjs/feathers";
 import { Request, RequestHandler } from "express";
 import { Profile, Strategy } from "passport";
 
-declare const feathersAuthenticationOAuth2:
-    & ((options?: FeathersAuthenticationOAuth2Options) => () => void)
-    & typeof self;
+declare const feathersAuthenticationOAuth2: ((
+    options?: FeathersAuthenticationOAuth2Options,
+) => () => void) &
+    typeof self;
 export default feathersAuthenticationOAuth2;
 
 // todo: make a base options interface in feathers/authentication that we can extend here
-export interface FeathersAuthenticationOAuth2Options<VerifierType = typeof Verifier, ServiceType = any> {
+export interface FeathersAuthenticationOAuth2Options<
+    VerifierType = typeof Verifier,
+    ServiceType = any,
+> {
     /**
      * The name of the OAuth2 provider
      */
@@ -97,7 +101,8 @@ export class Verifier<
     /**
      * The interface for the options that are passed into the verifier
      */
-    OptionType extends FeathersAuthenticationOAuth2Options = FeathersAuthenticationOAuth2Options,
+    OptionType extends
+        FeathersAuthenticationOAuth2Options = FeathersAuthenticationOAuth2Options,
     /**
      * The profile type for the response, 99% f use cases will be fine with passports default Profile, but you can get more specific like this
      * @example
@@ -111,10 +116,18 @@ export class Verifier<
     constructor(app: Application, options: OptionType);
     options: OptionType;
     service: Service<DataType>;
-    _updateEntity(entity: any, data: FeathersAuthenticationOAuth2Data<ProfileType>): Promise<any>; // updates an existing entity
-    _createEntity(data: FeathersAuthenticationOAuth2Data<ProfileType>): Promise<any>; // creates an entity if they didn't exist already
+    _updateEntity(
+        entity: any,
+        data: FeathersAuthenticationOAuth2Data<ProfileType>,
+    ): Promise<any>; // updates an existing entity
+    _createEntity(
+        data: FeathersAuthenticationOAuth2Data<ProfileType>,
+    ): Promise<any>; // creates an entity if they didn't exist already
     _normalizeResult<T = DataType>(results: T[] | Paginated<T>): Promise<T>; // normalizes result from service to account for pagination
-    _setPayloadAndDone(entity: any, done: (err: Error | null, user: object, info: object) => void): Promise<any>;
+    _setPayloadAndDone(
+        entity: any,
+        done: (err: Error | null, user: object, info: object) => void,
+    ): Promise<any>;
     verify(
         req: Request,
         accessToken: string,

@@ -40,23 +40,32 @@ const transform: Transform = (file, api) => {
 
     return j(file.source)
         .find(j.VariableDeclaration)
-        .filter(p => p.value.declarations.length === 1)
-        .replaceWith(p => {
+        .filter((p) => p.value.declarations.length === 1)
+        .replaceWith((p) => {
             const decl = p.value.declarations[0];
             if (decl.type === "VariableDeclarator" && decl.init != null) {
                 if (
-                    decl.init.type !== "ArrowFunctionExpression"
-                    || (!hasJSXElement(decl.init.body) && decl.init.body.type !== "JSXElement")
+                    decl.init.type !== "ArrowFunctionExpression" ||
+                    (!hasJSXElement(decl.init.body) &&
+                        decl.init.body.type !== "JSXElement")
                 ) {
                     return p.value;
                 }
 
                 let body: any = decl.init.body;
-                body = body.type === "JSXElement" ? j.returnStatement(body) : body = body.body;
+                body =
+                    body.type === "JSXElement"
+                        ? j.returnStatement(body)
+                        : (body = body.body);
 
                 j(body)
                     .find(j.Identifier, { name: "props" })
-                    .replaceWith(p => j.memberExpression(j.thisExpression(), j.identifier("props")));
+                    .replaceWith((p) =>
+                        j.memberExpression(
+                            j.thisExpression(),
+                            j.identifier("props"),
+                        ),
+                    );
 
                 return statement`class ${decl.id} extends Component {
           render() { ${body} }

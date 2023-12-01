@@ -65,7 +65,8 @@ columnify(
     [
         {
             name: "mod1",
-            description: "some description which happens to be far larger than the max",
+            description:
+                "some description which happens to be far larger than the max",
             version: "0.0.1",
         },
         {
@@ -121,7 +122,10 @@ columnify(data, { paddingChr: "." });
 data = [
     {
         name: "glob@3.2.9",
-        paths: ["node_modules/tap/node_modules/glob", "node_modules/tape/node_modules/glob"].join("\n"),
+        paths: [
+            "node_modules/tap/node_modules/glob",
+            "node_modules/tape/node_modules/glob",
+        ].join("\n"),
     },
     {
         name: "nopt@2.2.1",

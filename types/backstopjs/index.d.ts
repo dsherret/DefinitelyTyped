@@ -4,10 +4,10 @@ export interface CommonConfig {
     baseUrl?: string | undefined;
     ci?:
         | {
-            format?: string | undefined;
-            testReportFileName?: string | undefined;
-            testSuiteName?: string | undefined;
-        }
+              format?: string | undefined;
+              testReportFileName?: string | undefined;
+              testSuiteName?: string | undefined;
+          }
         | undefined;
     debugWindow?: boolean | undefined;
     debug?: boolean | undefined;
@@ -17,29 +17,29 @@ export interface CommonConfig {
     onReadyScript?: string | undefined;
     paths?:
         | {
-            ci_report?: string | undefined;
-            bitmaps_reference?: string | undefined;
-            bitmaps_test?: string | undefined;
-            engine_scripts?: string | undefined;
-            html_report?: string | undefined;
-            json_report?: string | undefined;
-        }
+              ci_report?: string | undefined;
+              bitmaps_reference?: string | undefined;
+              bitmaps_test?: string | undefined;
+              engine_scripts?: string | undefined;
+              html_report?: string | undefined;
+              json_report?: string | undefined;
+          }
         | undefined;
     report?: Array<"browser" | "CI" | "json"> | undefined;
     resembleOutputOptions?:
         | {
-            // See https://github.com/rsmbl/Resemble.js
-            errorColor?:
-                | {
-                    red: number;
-                    green: number;
-                    blue: number;
-                }
-                | undefined;
-            errorType?: string | undefined;
-            transparency?: number | undefined;
-            ignoreAntialiasing?: boolean | undefined;
-        }
+              // See https://github.com/rsmbl/Resemble.js
+              errorColor?:
+                  | {
+                        red: number;
+                        green: number;
+                        blue: number;
+                    }
+                  | undefined;
+              errorType?: string | undefined;
+              transparency?: number | undefined;
+              ignoreAntialiasing?: boolean | undefined;
+          }
         | undefined;
     scenarios: Scenario[];
     viewports: Viewport[];
@@ -57,9 +57,9 @@ export interface PlaywrightEngineConfig extends CommonConfig {
     engine?: "playwright" | undefined;
     engineOptions?:
         | ({
-            browser?: "chromium" | "firefox" | "webkit";
-            storageState?: string;
-        } & CommonEngineOptions)
+              browser?: "chromium" | "firefox" | "webkit";
+              storageState?: string;
+          } & CommonEngineOptions)
         | undefined;
 }
 
@@ -67,9 +67,9 @@ export interface PuppeteerEngineConfig extends CommonConfig {
     engine?: "puppeteer" | undefined;
     engineOptions?:
         | ({
-            browser?: never;
-            storageState?: never;
-        } & CommonEngineOptions)
+              browser?: never;
+              storageState?: never;
+          } & CommonEngineOptions)
         | undefined;
 }
 
@@ -128,5 +128,9 @@ export interface ViewportLegacy {
 
 export default function backstop(
     command: "approve" | "init" | "reference" | "test",
-    options?: { docker?: boolean; config?: Config | string | undefined; filter?: string | undefined },
+    options?: {
+        docker?: boolean;
+        config?: Config | string | undefined;
+        filter?: string | undefined;
+    },
 ): Promise<void>;

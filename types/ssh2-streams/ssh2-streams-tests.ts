@@ -2,7 +2,10 @@ import * as ssh2 from "ssh2-streams";
 import * as stream from "stream";
 
 declare const SERVER_KEY: string;
-declare const HOST_KEY: { publicKey: ssh2.ParsedKey; privateKey: ssh2.ParsedKey };
+declare const HOST_KEY: {
+    publicKey: ssh2.ParsedKey;
+    privateKey: ssh2.ParsedKey;
+};
 declare const clientBufStream: stream.Transform & { buffer: string };
 declare const serverBufStream: stream.Transform & { buffer: string };
 declare const parsedKey: ssh2.ParsedKey;
@@ -14,20 +17,29 @@ const algos = ["ssh-dss", "ssh-rsa", "ecdsa-sha2-nistp521"];
 const client = new ssh2.SSH2Stream({ algorithms: { serverHostKey: algos } });
 const server = new ssh2.SSH2Stream({ server: true, hostKeys: hostKeys });
 
-client
-    .pipe(server)
-    .pipe(client);
+client.pipe(server).pipe(client);
 
 client
     .on("error", (err: Error) => {})
     .on("ready", () => {})
     .on("header", (header: ssh2.Header) => {})
-    .on("fingerprint", (hostKey: Buffer, callback: (success: boolean) => void) => {})
+    .on(
+        "fingerprint",
+        (hostKey: Buffer, callback: (success: boolean) => void) => {},
+    )
     .on("USERAUTH_BANNER", (message: string) => {})
     .on("USERAUTH_SUCCESS", () => {})
     .on("USERAUTH_FAILURE", (authsLeft: string[], partial: boolean) => {})
     .on("USERAUTH_PK_OK", () => {})
-    .on("USERAUTH_INFO_REQUEST", (name: string, instructions: string, lang: string, prompts: ssh2.Prompt[]) => {})
+    .on(
+        "USERAUTH_INFO_REQUEST",
+        (
+            name: string,
+            instructions: string,
+            lang: string,
+            prompts: ssh2.Prompt[],
+        ) => {},
+    )
     .on("CHANNEL_OPEN", (info: ssh2.ChannelOpenInfo) => {})
     .on("SERVICE_ACCEPT", (serviceName: string) => {})
     .on("REQUEST_SUCCESS", (resData?: Buffer) => {})
@@ -37,7 +49,9 @@ client
         (
             reqName: string,
             wantReply: boolean,
-            reqData: ssh2.TcpipForwardGlobalRequest | ssh2.openssh_StreamLocalForwardGlobalRequest,
+            reqData:
+                | ssh2.TcpipForwardGlobalRequest
+                | ssh2.openssh_StreamLocalForwardGlobalRequest,
         ) => {},
     );
 
@@ -58,9 +72,19 @@ client.openssh_noMoreSessions();
 client.openssh_streamLocalForward("socketPath");
 client.openssh_cancelStreamLocalForward("socketPath");
 client.session(0, 0, 0);
-client.directTcpip(0, 0, 0, { srcIP: "srcIP", srcPort: 0, destIP: "destIP", destPort: 0 });
+client.directTcpip(0, 0, 0, {
+    srcIP: "srcIP",
+    srcPort: 0,
+    destIP: "destIP",
+    destPort: 0,
+});
 client.openssh_directStreamLocal(0, 0, 0, { socketPath: "socketPath" });
-client.x11Forward(0, { single: true, cookie: "cookie", protocol: "protocol", screen: 0 });
+client.x11Forward(0, {
+    single: true,
+    cookie: "cookie",
+    protocol: "protocol",
+    screen: 0,
+});
 client.pty(0, 0, 0, 0, 0, "term", null);
 client.openssh_agentForward(0);
 client.shell(0);
@@ -78,7 +102,10 @@ server
             username: string,
             serviceName: string,
             authmethod: string,
-            authMethodData: string | ssh2.PublicKeyAuthMethodData | ssh2.HostbasedAuthMethodData,
+            authMethodData:
+                | string
+                | ssh2.PublicKeyAuthMethodData
+                | ssh2.HostbasedAuthMethodData,
         ) => {},
     )
     .on("USERAUTH_INFO_RESPONSE", (responses: string[]) => {});
@@ -98,7 +125,12 @@ server.channelData(0, "data");
 server.channelExtData(0, "data", 0);
 server.authInfoReq("name", "instructions", prompts);
 server.authPKOK("keyAlgorithm", buffer);
-server.forwardedTcpip(0, 0, 0, { bindAddr: "bindAddr", bindPort: 8080, remoteAddr: "remoteAddr", remotePort: 8080 });
+server.forwardedTcpip(0, 0, 0, {
+    bindAddr: "bindAddr",
+    bindPort: 8080,
+    remoteAddr: "remoteAddr",
+    remotePort: 8080,
+});
 server.x11(0, 0, 0, { originAddr: "originAddr", originPort: 0 });
 server.openssh_forwardedStreamLocal(0, 0, 0, { socketPath: "socketPath" });
 
@@ -114,12 +146,27 @@ sftp.createReadStream("path");
 sftp.createWriteStream("path");
 sftp.data(0, buffer);
 sftp.fastGet("remotePath", "localPath", () => {});
-sftp.fastGet("remotePath", "localPath", { concurrency: 64, chunkSize: 32768, step: () => {} }, () => {});
+sftp.fastGet(
+    "remotePath",
+    "localPath",
+    { concurrency: 64, chunkSize: 32768, step: () => {} },
+    () => {},
+);
 sftp.fastPut("localPath", "remotePath", () => {});
-sftp.fastPut("localPath", "remotePath", { concurrency: 64, chunkSize: 32768, step: () => {}, mode: "0755" }, () => {});
+sftp.fastPut(
+    "localPath",
+    "remotePath",
+    { concurrency: 64, chunkSize: 32768, step: () => {}, mode: "0755" },
+    () => {},
+);
 sftp.readFile("remotePath", () => {});
 sftp.readFile("remotePath", "utf8", () => {});
 sftp.readFile("remotePath", { encoding: "utf8", flag: "r" }, () => {});
 sftp.writeFile("remotePath", "example data", () => {});
 sftp.writeFile("remotePath", "example data", "utf8", () => {});
-sftp.writeFile("remotePath", "example data", { encoding: "utf8", mode: 438, flag: "w" }, () => {});
+sftp.writeFile(
+    "remotePath",
+    "example data",
+    { encoding: "utf8", mode: 438, flag: "w" },
+    () => {},
+);

@@ -61,7 +61,10 @@ export interface BootstrapTableProps {
     /**
      * If set, data is remote (use also fetchInfo)
      */
-    remote?: ((remobeObj: RemoteObjSpec) => RemoteObjSpec) | boolean | undefined; // Updated to support ^3.0.0
+    remote?:
+        | ((remobeObj: RemoteObjSpec) => RemoteObjSpec)
+        | boolean
+        | undefined; // Updated to support ^3.0.0
     /**
      * Use keyField to tell table which column is unique. This is same as isKey in <TableHeaderColumn>
      * Tips: You need choose one configuration to set key field: keyField or isKey in <TableHeaderColumn>
@@ -104,7 +107,10 @@ export interface BootstrapTableProps {
      *             return rowIndex%2==0?"tr-odd":"tr-even";  //return a class name.
      *         }
      */
-    trClassName?: string | ((rowData: any, rowIndex: number) => string) | undefined;
+    trClassName?:
+        | string
+        | ((rowData: any, rowIndex: number) => string)
+        | undefined;
     /**
      * Enable row insertion by setting insertRow to true, default is false.
      * If you enable row insertion, there's a  button on the upper left side of table.
@@ -221,7 +227,9 @@ export interface SelectRow {
      *     `event`: The event target object.
      * If return value of this (function) is false, the select or deselect action will not be applied.
      */
-    onSelect?: ((row: any, isSelected: boolean, event: any) => boolean) | undefined;
+    onSelect?:
+        | ((row: any, isSelected: boolean, event: any) => boolean)
+        | undefined;
     /**
      * Accept a custom callback function, if click select all checkbox, this function will be called.
      * This callback function taking two arguments isSelected and currentSelectedAndDisplayData:
@@ -229,7 +237,9 @@ export interface SelectRow {
      *     `currentSelectedAndDisplayData`: If pagination enabled, this result is the data which in a page. In contrast, this is all data in table.
      * If return value of this function is false, the select all or deselect all action will not be applied.
      */
-    onSelectAll?: ((isSelected: boolean, currentSelectedAndDisplayData: any) => boolean) | undefined;
+    onSelectAll?:
+        | ((isSelected: boolean, currentSelectedAndDisplayData: any) => boolean)
+        | undefined;
 
     /**
      * Provide a list of unselectable row keys.
@@ -254,12 +264,16 @@ export interface CellEdit {
      * This callback function taking three arguments:row, cellName and cellValue
      * It's necessary to return a bool value which whether apply this cell editing.
      */
-    beforeSaveCell?: ((row: any, cellName: string, cellValue: any) => boolean) | undefined;
+    beforeSaveCell?:
+        | ((row: any, cellName: string, cellValue: any) => boolean)
+        | undefined;
     /**
      * Accept a custom callback function, after cell saving, this function will be called.
      * This callback function taking three arguments:row, cellName and cellValue
      */
-    afterSaveCell?: ((row: any, cellName: string, cellValue: any) => void) | undefined;
+    afterSaveCell?:
+        | ((row: any, cellName: string, cellValue: any) => void)
+        | undefined;
 }
 
 export type SortOrder = "asc" | "desc";
@@ -374,7 +388,9 @@ export interface Options {
      *     `sortName`: The sort column name
      *     `sortOrder`: The sort ordering.
      */
-    onSortChange?: ((sortName: string, sortOrder: SortOrder) => void) | undefined;
+    onSortChange?:
+        | ((sortName: string, sortOrder: SortOrder) => void)
+        | undefined;
     /**
      * Assign a callback function which will be called after trigger searching.
      * This function taking two argument: search and result.
@@ -429,8 +445,13 @@ export interface Options {
      * `next`: If you confirm to drop row, call next() to continue the process
      * `rowKeys` is the row keys which been deleted, you can call next function to apply this deletion.
      */
-    handleConfirmDeleteRow?: ((next: Function, rowKeys: any[]) => void) | undefined;
-    paginationShowsTotal?: boolean | ((start: number, to: number, total: number) => string | ReactElement) | undefined;
+    handleConfirmDeleteRow?:
+        | ((next: Function, rowKeys: any[]) => void)
+        | undefined;
+    paginationShowsTotal?:
+        | boolean
+        | ((start: number, to: number, total: number) => string | ReactElement)
+        | undefined;
     onSearchChange?: Function | undefined;
     onAddRow?: Function | undefined;
     onExportToCSV?: Function | undefined;
@@ -556,15 +577,23 @@ export interface TableHeaderColumnProps {
      *         getElement(REQUIRED): Accept a callback function and take two arguments: onUpdate and props.
      *         customEditorParameters: Another extra data for custom cell edit component.
      */
-    customEditor?: {
-        getElement: (onUpdate: any, props: any) => ReactElement;
-        customEditorParameters?: object | undefined;
-    } | undefined;
+    customEditor?:
+        | {
+              getElement: (onUpdate: any, props: any) => ReactElement;
+              customEditorParameters?: object | undefined;
+          }
+        | undefined;
     /**
      * To customize the column. This callback function should return a String or a React Component.
      * In addition, this function taking two argument: cell and row.
      */
-    dataFormat?: ((cell: any, row: any, formatExtraData?: any) => string | ReactElement) | undefined;
+    dataFormat?:
+        | ((
+              cell: any,
+              row: any,
+              formatExtraData?: any,
+          ) => string | ReactElement)
+        | undefined;
     /**
      * To to enable search or filter data on formatting. Default is false
      */
@@ -589,7 +618,15 @@ export interface TableHeaderColumnProps {
      * Give a customize function for data sorting.
      * This function taking four arguments: a, b, order, sortField, extraData
      */
-    sortFunc?: ((a: any, b: any, order: SortOrder, sortField: any, extraData: any) => number) | undefined;
+    sortFunc?:
+        | ((
+              a: any,
+              b: any,
+              order: SortOrder,
+              sortField: any,
+              extraData: any,
+          ) => number)
+        | undefined;
     /**
      * It's a extra data for custom sort function, if defined, this data will be pass as fifth argument in sortFunc.
      */
@@ -599,13 +636,29 @@ export interface TableHeaderColumnProps {
      * If Function, it taking four arguments: cell, row, rowIndex, columnIndex.
      * In addition, this function should return a String which is the class name you want to add on.
      */
-    className?: string | ((cell: any, row: any, rowIndex: number, columnIndex: number) => string) | undefined;
+    className?:
+        | string
+        | ((
+              cell: any,
+              row: any,
+              rowIndex: number,
+              columnIndex: number,
+          ) => string)
+        | undefined;
     /**
      * Add custom css class on table body column, this attribute only accept String or Function.
      * If Function, it taking four arguments: cell, row, rowIndex, columnIndex.
      * In addition, this function should return a String which is the class name you want to add on.
      */
-    columnClassName?: String | ((cell: any, row: any, rowIndex: number, columnIndex: number) => string) | undefined;
+    columnClassName?:
+        | String
+        | ((
+              cell: any,
+              row: any,
+              rowIndex: number,
+              columnIndex: number,
+          ) => string)
+        | undefined;
     /**
      * Add True to set column editable, false is non-editable. If give Object,
      * you can do more customization when editing cell. This object have following properties:
@@ -705,7 +758,13 @@ export interface ApplyFilterParameter {
     callback: SetFilterCallback;
 }
 
-export type FilterType = "TextFilter" | "RegexFilter" | "SelectFilter" | "NumberFilter" | "DateFilter" | "CustomFilter";
+export type FilterType =
+    | "TextFilter"
+    | "RegexFilter"
+    | "SelectFilter"
+    | "NumberFilter"
+    | "DateFilter"
+    | "CustomFilter";
 export interface Filter {
     /**
      * "TextFilter"||"SelectFilter"||"NumberFilter"||"DateFilter"||"RegexFilter"||"YOUR_CUSTOM_FILTER"
@@ -742,7 +801,10 @@ export interface Filter {
      * Get element which represent filter.
      */
     getElement?:
-        | ((filterHandler: (parameters?: ApplyFilterParameter) => void, filterParameters: any) => JSX.Element)
+        | ((
+              filterHandler: (parameters?: ApplyFilterParameter) => void,
+              filterParameters: any,
+          ) => JSX.Element)
         | undefined;
 
     /**
@@ -751,7 +813,8 @@ export interface Filter {
     customFilterParameters?: any;
 }
 
-export interface TableHeaderColumn extends ComponentClass<TableHeaderColumnProps> {}
+export interface TableHeaderColumn
+    extends ComponentClass<TableHeaderColumnProps> {}
 declare const TableHeaderColumn: TableHeaderColumn;
 
 declare class TableDataSet extends EventEmitter {

@@ -81,13 +81,21 @@ declare namespace JsReport {
         add(
             type: string,
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            callback: (req: Request, res: Response, err?: any) => Promise<any> | void,
+            callback: (
+                req: Request,
+                res: Response,
+                err?: any,
+            ) => Promise<any> | void,
         ): void;
     }
 
     interface Collection {
         find(query: { [field: string]: any }): Promise<object[]>;
-        update(query: { [field: string]: any }, update: object, options?: object): Promise<any>;
+        update(
+            query: { [field: string]: any },
+            update: object,
+            options?: object,
+        ): Promise<any>;
         remove(query: { [field: string]: any }): Promise<any>;
         insert(obj: object): Promise<object>;
     }
@@ -148,9 +156,19 @@ declare namespace JsReport {
         getPathsToWatchForAutoCleanup(): string[];
         ensureTempDirectoryExists(): Promise<TempDirectoryResult>;
         readTempFile(filename: string, opts: any): Promise<ReadTempFileResult>;
-        writeTempFile(filenameFn: () => string, content: any, opts: any): Promise<WriteFileResult>;
-        readTempFileStream(filename: string, opts: any): Promise<ReadTempFileStreamResult>;
-        writeTempFileStream(filenameFn: () => string, opts: any): Promise<WriteFileStreamResult>;
+        writeTempFile(
+            filenameFn: () => string,
+            content: any,
+            opts: any,
+        ): Promise<WriteFileResult>;
+        readTempFileStream(
+            filename: string,
+            opts: any,
+        ): Promise<ReadTempFileStreamResult>;
+        writeTempFileStream(
+            filenameFn: () => string,
+            opts: any,
+        ): Promise<WriteFileStreamResult>;
         silentLogs(logger: any): void;
     }
 
@@ -190,9 +208,11 @@ declare namespace JsReport {
          * @default true
          */
         useExtensionsLocationCache?: boolean | undefined;
-        logger?: {
-            silent?: boolean | undefined;
-        } | undefined;
+        logger?:
+            | {
+                  silent?: boolean | undefined;
+              }
+            | undefined;
         /** global single timeout that controls how much a report generation should wait before it times out */
         reportTimeout?: number | undefined;
         /**
@@ -203,38 +223,50 @@ declare namespace JsReport {
         enableRequestReportTimeout?: boolean | undefined;
         /** @default false */
         allowLocalFilesAccess?: boolean | undefined;
-        encryption?: {
-            /** lenght must be 16 characters */
-            secretKey: string;
-            /** @default true */
-            enabled?: boolean | undefined;
-        } | undefined;
-        templatingEngines?: {
-            /** @default 'dedicated-process' */
-            strategy?: EngineStrategy | undefined;
-            /**
-             * defines the number of worker processes used for generating reports
-             * @default 1
-             */
-            numberOfWorkers?: number | undefined;
-            forkOptions?: {
-                execArgv?: string | string[] | undefined;
-            } | undefined;
-            allowedModules?: string | string[] | undefined;
-            /** sets the reporter timeout in milliseconds */
-            timeout?: number | undefined;
-            templateCache?: {
-                max: number;
-                enabled: boolean;
-            } | undefined;
-        } | undefined;
-        store?: {
-            provider?: ReporterOptionsStoreProvider | undefined;
-        } | undefined;
-        blobStorage?: {
-            provider?: ReporterOptionsBlobStorageProvider | undefined;
-            dataDirectory?: string | undefined;
-        } | undefined;
+        encryption?:
+            | {
+                  /** lenght must be 16 characters */
+                  secretKey: string;
+                  /** @default true */
+                  enabled?: boolean | undefined;
+              }
+            | undefined;
+        templatingEngines?:
+            | {
+                  /** @default 'dedicated-process' */
+                  strategy?: EngineStrategy | undefined;
+                  /**
+                   * defines the number of worker processes used for generating reports
+                   * @default 1
+                   */
+                  numberOfWorkers?: number | undefined;
+                  forkOptions?:
+                      | {
+                            execArgv?: string | string[] | undefined;
+                        }
+                      | undefined;
+                  allowedModules?: string | string[] | undefined;
+                  /** sets the reporter timeout in milliseconds */
+                  timeout?: number | undefined;
+                  templateCache?:
+                      | {
+                            max: number;
+                            enabled: boolean;
+                        }
+                      | undefined;
+              }
+            | undefined;
+        store?:
+            | {
+                  provider?: ReporterOptionsStoreProvider | undefined;
+              }
+            | undefined;
+        blobStorage?:
+            | {
+                  provider?: ReporterOptionsBlobStorageProvider | undefined;
+                  dataDirectory?: string | undefined;
+              }
+            | undefined;
         extensions?: any;
         extensionsList?: string[] | undefined;
         /** @default true */

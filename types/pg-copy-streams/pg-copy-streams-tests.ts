@@ -5,7 +5,7 @@ const client = new Client("fake-config-string");
 
 const copyStream = client.query(from("copy data from stdin;"));
 
-copyStream.write("", err => {
+copyStream.write("", (err) => {
     if (err) {
         console.error(err);
         return;

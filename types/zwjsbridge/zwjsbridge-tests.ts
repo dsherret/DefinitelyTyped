@@ -1,4 +1,4 @@
-(async () => {
+async () => {
     ZWJSBridge.onReady(() => {
         ZWJSBridge.setLocalStorage({
             key: "key",
@@ -143,4 +143,4 @@
             appKey: "appkey",
         });
     });
-});
+};

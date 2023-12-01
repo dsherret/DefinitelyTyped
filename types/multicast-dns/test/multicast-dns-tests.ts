@@ -34,14 +34,23 @@ mdns.query([{ name: "brunhilde.local", type: "A" }], (error, bytes) => {
     bytes; // $ExpectType number | undefined
 });
 mdns.query([{ name: "brunhilde.local", type: "A" }], { port: 1234 });
-mdns.query([{ name: "brunhilde.local", type: "A" }], { port: 1234 }, (error, bytes) => {
-    error; // $ExpectType Error | null
-    bytes; // $ExpectType number | undefined
-});
+mdns.query(
+    [{ name: "brunhilde.local", type: "A" }],
+    { port: 1234 },
+    (error, bytes) => {
+        error; // $ExpectType Error | null
+        bytes; // $ExpectType number | undefined
+    },
+);
 // @ts-expect-error
 mdns.query([{ name: "brunhilde.local", type: "A" }], "A", { port: 1234 });
 // @ts-expect-error
-mdns.query([{ name: "brunhilde.local", type: "A" }], "A", { port: 1234 }, () => {});
+mdns.query(
+    [{ name: "brunhilde.local", type: "A" }],
+    "A",
+    { port: 1234 },
+    () => {},
+);
 mdns.query({
     questions: [{ name: "brunhilde.local", type: "A" }],
 });
@@ -89,11 +98,17 @@ mdns.query(
 );
 
 mdns.respond([{ name: "brunhilde.local", type: "A", data: "192.158.1.5" }]);
-mdns.respond([{ name: "brunhilde.local", type: "A", data: "192.158.1.5" }], { port: 1234 });
-mdns.respond([{ name: "brunhilde.local", type: "A", data: "192.158.1.5" }], { port: 1234 }, (error, bytes) => {
-    error; // $ExpectType Error | null
-    bytes; // $ExpectType number | undefined
+mdns.respond([{ name: "brunhilde.local", type: "A", data: "192.158.1.5" }], {
+    port: 1234,
 });
+mdns.respond(
+    [{ name: "brunhilde.local", type: "A", data: "192.158.1.5" }],
+    { port: 1234 },
+    (error, bytes) => {
+        error; // $ExpectType Error | null
+        bytes; // $ExpectType number | undefined
+    },
+);
 mdns.respond({
     answers: [{ name: "brunhilde.local", type: "A", data: "192.158.1.5" }],
 });
@@ -149,13 +164,13 @@ mdns.on("message", (message, rinfo) => {
     message; // $ExpectType Required<Packet>
     rinfo; // $ExpectType RemoteInfo
 });
-mdns.on("error", error => {
+mdns.on("error", (error) => {
     error; // $ExpectType Error
 });
-mdns.on("warning", error => {
+mdns.on("warning", (error) => {
     error; // $ExpectType Error
 });
-mdns.on("foo", param => {
+mdns.on("foo", (param) => {
     param; // $ExpectType any
 });
 
@@ -172,13 +187,13 @@ mdns.once("message", (message, rinfo) => {
     message; // $ExpectType Required<Packet>
     rinfo; // $ExpectType RemoteInfo
 });
-mdns.once("error", error => {
+mdns.once("error", (error) => {
     error; // $ExpectType Error
 });
-mdns.once("warning", error => {
+mdns.once("warning", (error) => {
     error; // $ExpectType Error
 });
-mdns.once("foo", param => {
+mdns.once("foo", (param) => {
     param; // $ExpectType any
 });
 
@@ -195,13 +210,13 @@ mdns.addListener("message", (message, rinfo) => {
     message; // $ExpectType Required<Packet>
     rinfo; // $ExpectType RemoteInfo
 });
-mdns.addListener("error", error => {
+mdns.addListener("error", (error) => {
     error; // $ExpectType Error
 });
-mdns.addListener("warning", error => {
+mdns.addListener("warning", (error) => {
     error; // $ExpectType Error
 });
-mdns.addListener("foo", param => {
+mdns.addListener("foo", (param) => {
     param; // $ExpectType any
 });
 
@@ -218,13 +233,13 @@ mdns.prependListener("message", (message, rinfo) => {
     message; // $ExpectType Required<Packet>
     rinfo; // $ExpectType RemoteInfo
 });
-mdns.prependListener("error", error => {
+mdns.prependListener("error", (error) => {
     error; // $ExpectType Error
 });
-mdns.prependListener("warning", error => {
+mdns.prependListener("warning", (error) => {
     error; // $ExpectType Error
 });
-mdns.prependListener("foo", param => {
+mdns.prependListener("foo", (param) => {
     param; // $ExpectType any
 });
 
@@ -241,13 +256,13 @@ mdns.prependOnceListener("message", (message, rinfo) => {
     message; // $ExpectType Required<Packet>
     rinfo; // $ExpectType RemoteInfo
 });
-mdns.prependOnceListener("error", error => {
+mdns.prependOnceListener("error", (error) => {
     error; // $ExpectType Error
 });
-mdns.prependOnceListener("warning", error => {
+mdns.prependOnceListener("warning", (error) => {
     error; // $ExpectType Error
 });
-mdns.prependOnceListener("foo", param => {
+mdns.prependOnceListener("foo", (param) => {
     param; // $ExpectType any
 });
 
@@ -264,13 +279,13 @@ mdns.off("message", (message, rinfo) => {
     message; // $ExpectType Required<Packet>
     rinfo; // $ExpectType RemoteInfo
 });
-mdns.off("error", error => {
+mdns.off("error", (error) => {
     error; // $ExpectType Error
 });
-mdns.off("warning", error => {
+mdns.off("warning", (error) => {
     error; // $ExpectType Error
 });
-mdns.off("foo", param => {
+mdns.off("foo", (param) => {
     param; // $ExpectType any
 });
 
@@ -287,13 +302,13 @@ mdns.removeListener("message", (message, rinfo) => {
     message; // $ExpectType Required<Packet>
     rinfo; // $ExpectType RemoteInfo
 });
-mdns.removeListener("error", error => {
+mdns.removeListener("error", (error) => {
     error; // $ExpectType Error
 });
-mdns.removeListener("warning", error => {
+mdns.removeListener("warning", (error) => {
     error; // $ExpectType Error
 });
-mdns.removeListener("foo", param => {
+mdns.removeListener("foo", (param) => {
     param; // $ExpectType any
 });
 
@@ -307,11 +322,23 @@ mdns.removeAllListeners("warning");
 mdns.removeAllListeners("foo");
 
 mdns.emit("ready");
-mdns.emit("response", (null as any) as makeMdns.ResponsePacket, (null as any) as dgram.RemoteInfo);
-mdns.emit("query", (null as any) as makeMdns.QueryPacket, (null as any) as dgram.RemoteInfo);
-mdns.emit("message", (null as any) as makeMdns.FullPacket, (null as any) as dgram.RemoteInfo);
-mdns.emit("error", (null as any) as Error);
-mdns.emit("warning", (null as any) as Error);
+mdns.emit(
+    "response",
+    null as any as makeMdns.ResponsePacket,
+    null as any as dgram.RemoteInfo,
+);
+mdns.emit(
+    "query",
+    null as any as makeMdns.QueryPacket,
+    null as any as dgram.RemoteInfo,
+);
+mdns.emit(
+    "message",
+    null as any as makeMdns.FullPacket,
+    null as any as dgram.RemoteInfo,
+);
+mdns.emit("error", null as any as Error);
+mdns.emit("warning", null as any as Error);
 mdns.emit("foo");
 
 mdns.listeners("ready"); // $ExpectType (() => void)[]

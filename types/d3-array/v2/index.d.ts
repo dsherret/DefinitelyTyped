@@ -193,10 +193,7 @@ export function quantile<T>(
  * Similar to quantile, but expects the input to be a sorted array of values.
  * In contrast with quantile, the accessor is only called on the elements needed to compute the quantile.
  */
-export function quantileSorted<T extends Numeric>(
-    array: Array<T | undefined | null>,
-    p: number,
-): number | undefined;
+export function quantileSorted<T extends Numeric>(array: Array<T | undefined | null>, p: number): number | undefined;
 /**
  * Similar to quantile, but expects the input to be a sorted array of values.
  * In contrast with quantile, the accessor is only called on the elements needed to compute the quantile.
@@ -1039,8 +1036,7 @@ export interface HistogramGeneratorDate<Datum, Value extends Date | undefined> e
 }
 
 export interface HistogramGeneratorNumber<Datum, Value extends number | undefined>
-    extends HistogramCommon<Datum, Value>
-{
+    extends HistogramCommon<Datum, Value> {
     domain(): (values: Iterable<Value>) => [number, number] | [undefined, undefined];
     domain(domain: [number, number]): this;
     domain(domainAccessor: (values: Iterable<Value>) => [number, number] | [undefined, undefined]): this;
@@ -1129,11 +1125,9 @@ export function thresholdSturges(values: ArrayLike<number | undefined>): number;
 /**
  * The InternMap class extends the native JavaScript Map class, allowing Dates and other non-primitive keys by bypassing the SameValueZero algorithm when determining key equality.
  */
-export class InternMap<K = any, V = any> extends Map<K, V> {
-}
+export class InternMap<K = any, V = any> extends Map<K, V> {}
 
 /**
  * The InternSet class extends the native JavaScript Set class, allowing Dates and other non-primitive keys by bypassing the SameValueZero algorithm when determining key equality.
  */
-export class InternSet<T = any> extends Set<T> {
-}
+export class InternSet<T = any> extends Set<T> {}

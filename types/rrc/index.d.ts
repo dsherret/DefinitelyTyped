@@ -1,6 +1,10 @@
 import * as H from "history";
 import * as React from "react";
-import { match as MatchObject, RouteComponentProps, RouteProps } from "react-router-dom";
+import {
+    match as MatchObject,
+    RouteComponentProps,
+    RouteProps,
+} from "react-router-dom";
 
 export interface ScrollIntoViewProps {
     alignToTop?: boolean | undefined;
@@ -24,7 +28,9 @@ export function withScroll(
     options?: WithScrollOptions,
 ): ComponentConstructor<RouteComponentProps<any> | {}>;
 
-export type RouteConfiguration = RouteProps & { inject?: { [key: string]: any } | undefined };
+export type RouteConfiguration = RouteProps & {
+    inject?: { [key: string]: any } | undefined;
+};
 
 export interface SwitchProps {
     routes: RouteConfiguration[];
@@ -53,9 +59,13 @@ export interface WhenActiveOptions {
     isActive?: IsActiveCallback | undefined;
 }
 
-export type WhenActiveReturnType<Props> = (component: ComponentConstructor<Props>) => ComponentConstructor<Props>;
+export type WhenActiveReturnType<Props> = (
+    component: ComponentConstructor<Props>,
+) => ComponentConstructor<Props>;
 
-export function whenActive<Props>(options?: WhenActiveOptions): WhenActiveReturnType<Props>;
+export function whenActive<Props>(
+    options?: WhenActiveOptions,
+): WhenActiveReturnType<Props>;
 
 export interface StatusProps {
     code: string;
@@ -63,16 +73,23 @@ export interface StatusProps {
 
 export class Status extends React.Component<StatusProps> {}
 
-export type GetKeyFunction<Params extends { [K in keyof Params]?: string } = {}> = (
+export type GetKeyFunction<
+    Params extends { [K in keyof Params]?: string } = {},
+> = (
     match: MatchObject<Params>,
     route: RouteConfiguration,
     location: H.Location,
 ) => string;
 
-export interface WrapSwitchProps<Params extends { [K in keyof Params]?: string } = {}> extends SwitchProps {
+export interface WrapSwitchProps<
+    Params extends { [K in keyof Params]?: string } = {},
+> extends SwitchProps {
     getKey?: GetKeyFunction<Params> | undefined;
 }
 
-export function wrapSwitch<WrapperProps, Params extends { [K in keyof Params]?: string } = {}>(
+export function wrapSwitch<
+    WrapperProps,
+    Params extends { [K in keyof Params]?: string } = {},
+>(
     Wrapper: ComponentConstructor<WrapperProps>,
 ): ComponentConstructor<WrapSwitchProps<Params> & WrapperProps>;

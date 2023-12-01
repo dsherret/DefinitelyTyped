@@ -1,5 +1,11 @@
 import { Id, PolicyOptions } from "catbox";
-import { CachePolicyOptions, Plugin, Request, Server, ServerOptionsCache } from "hapi";
+import {
+    CachePolicyOptions,
+    Plugin,
+    Request,
+    Server,
+    ServerOptionsCache,
+} from "hapi";
 declare namespace yar {
     interface YarOptions {
         /**

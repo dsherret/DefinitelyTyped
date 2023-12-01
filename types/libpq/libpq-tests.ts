@@ -4,10 +4,11 @@ import PQ = require("libpq");
 
 // Stub mocha functions
 const { describe, it, before, after, beforeEach, afterEach } = null as any as {
-    [s: string]: ((s: string, cb: (done: any) => void) => void) & ((cb: (done: any) => void) => void) & {
-        only: any;
-        skip: any;
-    };
+    [s: string]: ((s: string, cb: (done: any) => void) => void) &
+        ((cb: (done: any) => void) => void) & {
+            only: any;
+            skip: any;
+        };
 };
 
 declare const _: { times<T>(n: number, f: () => T): T[] };
@@ -17,7 +18,9 @@ declare const ok: Function;
 const createTable = (pq: PQ) => {
     pq.exec("CREATE TEMP TABLE test_data(name text, age int)");
     console.log(pq.resultErrorMessage());
-    pq.exec("INSERT INTO test_data(name, age) VALUES ('brian', 32), ('aaron', 30), ('', null);");
+    pq.exec(
+        "INSERT INTO test_data(name, age) VALUES ('brian', 32), ('aaron', 30), ('', null);",
+    );
 };
 
 const blink = (n: number, cb: Function) => {
@@ -83,7 +86,7 @@ describe("async connection", () => {
     it("works", (done) => {
         const pq = new PQ();
         assert(!pq.connected, "should have connected set to falsy");
-        pq.connect(err => {
+        pq.connect((err) => {
             assert.ifError(err);
             pq.exec("SELECT NOW()");
             assert.equal(pq.ntuples(), 1);
@@ -98,7 +101,7 @@ describe("async connection", () => {
     });
 
     it("returns an error to the callback if connection fails", (done) => {
-        new PQ().connect("host=asldkfjasldkfjalskdfjasdf", err => {
+        new PQ().connect("host=asldkfjasldkfjalskdfjasdf", (err) => {
             assert(err, "should have passed an error");
             done();
         });
@@ -128,7 +131,11 @@ describe("async simple query", () => {
         assert(pq.setNonBlocking(true));
         pq.writable(() => {
             const success = pq.sendQuery("SELECT 1");
-            assert.strictEqual(pq.flush(), 0, "Should have flushed all data to socket");
+            assert.strictEqual(
+                pq.flush(),
+                0,
+                "Should have flushed all data to socket",
+            );
             assert(success, pq.errorMessage());
             consume(pq, () => {
                 assert.ifError(pq.errorMessage());
@@ -142,9 +149,15 @@ describe("async simple query", () => {
     });
 
     it("dispatches parameterized query", (done: Function) => {
-        const success = pq.sendQueryParams("SELECT $1::text as name", ["Brian"]);
+        const success = pq.sendQueryParams("SELECT $1::text as name", [
+            "Brian",
+        ]);
         assert(success, pq.errorMessage());
-        assert.strictEqual(pq.flush(), 0, "Should have flushed query text & parameters");
+        assert.strictEqual(
+            pq.flush(),
+            0,
+            "Should have flushed query text & parameters",
+        );
         consume(pq, () => {
             assert.ifError(pq.errorMessage());
             assert(pq.getResult());
@@ -157,7 +170,11 @@ describe("async simple query", () => {
 
     it("dispatches named query", (done: Function) => {
         const statementName = "async-get-name";
-        const success = pq.sendPrepare(statementName, "SELECT $1::text as name", 1);
+        const success = pq.sendPrepare(
+            statementName,
+            "SELECT $1::text as name",
+            1,
+        );
         assert(success, pq.errorMessage());
         assert.strictEqual(pq.flush(), 0, "Should have flushed query text");
         consume(pq, () => {
@@ -256,8 +273,7 @@ describe("COPY IN", () => {
         const res2 = pq.putCopyEnd();
         assert.strictEqual(res2, 1);
 
-        while (pq.getResult()) {
-        }
+        while (pq.getResult()) {}
 
         pq.exec("SELECT COUNT(*) FROM test_data");
         assert.equal(pq.getvalue(0, 0), 4);
@@ -274,8 +290,7 @@ describe("COPY IN", () => {
         const res2 = pq.putCopyEnd("cancel!");
         assert.strictEqual(res2, 1);
 
-        while (pq.getResult()) {
-        }
+        while (pq.getResult()) {}
         assert(pq.errorMessage());
         assert(
             pq.errorMessage().includes("cancel!"),
@@ -301,7 +316,7 @@ describe("COPY OUT", () => {
     });
 
     const getRow = (pq: PQ, expected: string) => {
-        const result = <Buffer> pq.getCopyData(false);
+        const result = <Buffer>pq.getCopyData(false);
         assert(result instanceof Buffer, "Result should be a buffer");
         assert.equal(result.toString("utf8"), expected);
     };
@@ -312,7 +327,7 @@ describe("COPY OUT", () => {
         getRow(pq, "brian\t32\n");
         getRow(pq, "aaron\t30\n");
         getRow(pq, "\t\\N\n");
-        assert.strictEqual(<number> pq.getCopyData(), -1);
+        assert.strictEqual(<number>pq.getCopyData(), -1);
     });
 });
 
@@ -342,8 +357,7 @@ describe("without being connected", () => {
     it("throws when writing while not connected", () => {
         const pq = new PQ();
         assert.throws(() => {
-            pq.writable(() => {
-            });
+            pq.writable(() => {});
         });
     });
 });
@@ -380,10 +394,13 @@ describe("error info", () => {
             assert.equal(err.sqlState, 42804);
             assert.equal(
                 err.messagePrimary,
-                "column \"age\" is of type integer but expression is of type timestamp with time zone",
+                'column "age" is of type integer but expression is of type timestamp with time zone',
             );
             assert.equal(err.messageDetail, undefined);
-            assert.equal(err.messageHint, "You will need to rewrite or cast the expression.");
+            assert.equal(
+                err.messageHint,
+                "You will need to rewrite or cast the expression.",
+            );
             assert.equal(err.statementPosition, 33);
             assert.equal(err.internalPosition, undefined);
             assert.equal(err.internalQuery, undefined);
@@ -434,7 +451,7 @@ describe("escapeIdentifier", () => {
         const pq = new PQ();
         pq.connectSync();
         const result = pq.escapeIdentifier("bang");
-        assert.equal(result, "\"bang\"");
+        assert.equal(result, '"bang"');
     });
 });
 
@@ -582,7 +599,9 @@ describe("result accessors", () => {
     });
 
     before(() => {
-        pq.exec("INSERT INTO test_data(name, age) VALUES ('bob', 80) RETURNING *");
+        pq.exec(
+            "INSERT INTO test_data(name, age) VALUES ('bob', 80) RETURNING *",
+        );
         assert(!pq.errorMessage());
     });
 
@@ -644,7 +663,10 @@ describe("connecting with bad credentials", () => {
         try {
             new PQ().connectSync("asldkfjlasdf");
         } catch (e) {
-            assert.equal(e.toString().indexOf("connection pointer is NULL"), -1);
+            assert.equal(
+                e.toString().indexOf("connection pointer is NULL"),
+                -1,
+            );
             return;
         }
 

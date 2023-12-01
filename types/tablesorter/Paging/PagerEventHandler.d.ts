@@ -17,6 +17,8 @@ export interface PagerEventHandler<TElement = HTMLElement> {
      */
     (
         eventArgs: JQuery.TriggeredEvent<TElement, null, TElement, TElement>,
-        options: TablesorterConfigurationStore<TElement> | PagerConfigurationStore<TElement>,
+        options:
+            | TablesorterConfigurationStore<TElement>
+            | PagerConfigurationStore<TElement>,
     ): void;
 }

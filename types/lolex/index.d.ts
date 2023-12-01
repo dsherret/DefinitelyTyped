@@ -28,7 +28,11 @@ export interface GlobalTimers<TTimerId extends TimerId> {
      * @param args   Any extra arguments to pass to the callback.
      * @returns Time identifier for cancellation.
      */
-    setTimeout: (callback: () => void, timeout: number, ...args: any[]) => TTimerId;
+    setTimeout: (
+        callback: () => void,
+        timeout: number,
+        ...args: any[]
+    ) => TTimerId;
 
     /**
      * Clears a timer, as long as it was created using setTimeout.
@@ -45,7 +49,11 @@ export interface GlobalTimers<TTimerId extends TimerId> {
      * @param args   Any extra arguments to pass to the callback.
      * @returns Time identifier for cancellation.
      */
-    setInterval: (callback: () => void, timeout: number, ...args: any[]) => TTimerId;
+    setInterval: (
+        callback: () => void,
+        timeout: number,
+        ...args: any[]
+    ) => TTimerId;
 
     /**
      * Clears a timer, as long as it was created using setInterval.
@@ -99,7 +107,8 @@ export type TimerId = number | NodeTimer;
 /**
  * Controls the flow of time.
  */
-export interface LolexClock<TTimerId extends TimerId> extends GlobalTimers<TTimerId> {
+export interface LolexClock<TTimerId extends TimerId>
+    extends GlobalTimers<TTimerId> {
     /**
      * Current clock time.
      */
@@ -306,7 +315,10 @@ type InstalledClock<TClock extends Clock = Clock> = TClock & InstalledMethods;
  * @typeparam {TClock}   Type of clock to create.
  * @remarks The default epoch is 0.
  */
-export declare function createClock<TClock extends Clock = Clock>(now?: number | Date, loopLimit?: number): TClock;
+export declare function createClock<TClock extends Clock = Clock>(
+    now?: number | Date,
+    loopLimit?: number,
+): TClock;
 
 export interface LolexInstallOpts {
     /**
@@ -350,12 +362,19 @@ export interface LolexInstallOpts {
  * @param toFake   Names of methods that should be faked.
  * @typeparam {TClock}   Type of clock to create.
  */
-export declare function install<TClock extends Clock = Clock>(opts?: LolexInstallOpts): InstalledClock<TClock>;
+export declare function install<TClock extends Clock = Clock>(
+    opts?: LolexInstallOpts,
+): InstalledClock<TClock>;
 
 export interface LolexWithContext {
     timers: GlobalTimers<TimerId>;
-    createClock: <TClock extends Clock = Clock>(now?: number | Date, loopLimit?: number) => TClock;
-    install: <TClock extends Clock = Clock>(opts?: LolexInstallOpts) => InstalledClock<TClock>;
+    createClock: <TClock extends Clock = Clock>(
+        now?: number | Date,
+        loopLimit?: number,
+    ) => TClock;
+    install: <TClock extends Clock = Clock>(
+        opts?: LolexInstallOpts,
+    ) => InstalledClock<TClock>;
     withGlobal: (global: Object) => LolexWithContext;
 }
 

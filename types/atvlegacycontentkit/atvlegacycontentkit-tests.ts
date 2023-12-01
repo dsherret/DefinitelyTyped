@@ -1,9 +1,17 @@
 function genericFunctions() {
     atv._debugDumpControllerStack();
     atv.appStoreReceipt();
-    const interval = atv.setInterval(test => console.log("test"), 1000, "test3");
+    const interval = atv.setInterval(
+        (test) => console.log("test"),
+        1000,
+        "test3",
+    );
     atv.clearInterval(interval);
-    const timeout = atv.setTimeout(test => console.log("test", test), 1000, "test2");
+    const timeout = atv.setTimeout(
+        (test) => console.log("test", test),
+        1000,
+        "test2",
+    );
     atv.clearTimeout(timeout);
 
     atv.logout();
@@ -65,13 +73,22 @@ function elementTest() {
     document.rootElement.getAttribute("test");
     document.rootElement.getElementByName("test");
     document.rootElement.getElementsByName("test");
-    document.rootElement.insertChildAfter(document.makeElementNamed("test2"), document.rootElement.childElements[0]);
-    document.rootElement.insertChildBefore(document.makeElementNamed("test3"), document.rootElement.childElements[0]);
+    document.rootElement.insertChildAfter(
+        document.makeElementNamed("test2"),
+        document.rootElement.childElements[0],
+    );
+    document.rootElement.insertChildBefore(
+        document.makeElementNamed("test3"),
+        document.rootElement.childElements[0],
+    );
     document.rootElement.ownerDocument.rootElement;
     document.rootElement.parent.ownerDocument;
     document.rootElement.removeAttribute("test");
     document.rootElement.removeFromParent();
-    document.rootElement.replaceChild(document.rootElement.childElements[0], document.makeElementNamed("test4"));
+    document.rootElement.replaceChild(
+        document.rootElement.childElements[0],
+        document.makeElementNamed("test4"),
+    );
     document.rootElement.setAttribute("test", "test");
     console.log(document.rootElement.tagName);
     console.log(document.rootElement.textContent);
@@ -198,30 +215,38 @@ function exitApp() {
 function pages() {
     atv.loadAndSwapPlist({});
     atv.loadAndSwapURL("http://example.com", "GET", { Test: "Test" }, "test");
-    atv.loadAndSwapXML(atv.parseXML("<atv></atv>"), success => console.log(success));
+    atv.loadAndSwapXML(atv.parseXML("<atv></atv>"), (success) =>
+        console.log(success),
+    );
     atv.loadPlist("");
     atv.loadURL("https://google.com");
-    atv.loadXML(atv.parseXML("<atv></atv>"), s => console.log(s));
+    atv.loadXML(atv.parseXML("<atv></atv>"), (s) => console.log(s));
     atv.parsePlist("");
     atv.parseXML("<atv></atv>");
 }
 
 function localStorage() {
     atv.localStorage["Test"] = "test";
-    console.assert(atv.localStorage["Test"] != null, atv.localStorage.getItem("Test"));
+    console.assert(
+        atv.localStorage["Test"] != null,
+        atv.localStorage.getItem("Test"),
+    );
     atv.localStorage.removeItem("Test");
     atv.localStorage.clear();
 
     atv.sessionStorage["Test"] = "test";
-    console.assert(atv.sessionStorage["Test"] != null, atv.sessionStorage.getItem("Test"));
+    console.assert(
+        atv.sessionStorage["Test"] != null,
+        atv.sessionStorage.getItem("Test"),
+    );
     atv.sessionStorage.removeItem("Test");
     atv.sessionStorage.clear();
 }
 
-atv.onPageLoad = p => console.log(p);
-atv.onPageUnload = p => console.log(p);
-atv.onPageBuried = p => console.log(p);
-atv.onPageExhumed = p => console.log(p);
+atv.onPageLoad = (p) => console.log(p);
+atv.onPageUnload = (p) => console.log(p);
+atv.onPageBuried = (p) => console.log(p);
+atv.onPageExhumed = (p) => console.log(p);
 atv.onAppEntry = () => console.log("app entry");
 atv.onAppExit = () => console.log("app exit");
 
@@ -237,14 +262,20 @@ atv.onScreensaverPhotosSelectionEntry = () => {
 atv.onScreensaverPhotosSelectionExit = () => console.log("Screensaver exit");
 
 atv.onExecuteQuery = (query, callback) => {
-    query.filters.forEach(f => console.log(f.operation, f.property, f.value));
+    query.filters.forEach((f) => console.log(f.operation, f.property, f.value));
     console.log(query, query.length, query.shuffle);
 
     callback.success([
         {
             id: "test",
             type: "photo",
-            assets: [{ width: 10, height: 10, src: "https://avatars.githubusercontent.com/u/3637556" }],
+            assets: [
+                {
+                    width: 10,
+                    height: 10,
+                    src: "https://avatars.githubusercontent.com/u/3637556",
+                },
+            ],
         },
     ]);
     callback.failure("test");
@@ -263,11 +294,11 @@ atv.onAuthenticate = (username, password, callback) => {
     callback.failure("test");
 };
 
-atv.onOpenURL = options => {
+atv.onOpenURL = (options) => {
     console.log(options.openURL);
 };
 
-atv.onGenerateRequest = request => {
+atv.onGenerateRequest = (request) => {
     request.url = "https://example.com";
     request.setRequestHeader("Test12", "test");
 };
@@ -280,7 +311,7 @@ function pinEntry() {
     pinEntry.numDigits = 6;
     pinEntry.userEditable = true;
     pinEntry.hideDigits = true;
-    pinEntry.onSubmit = value => console.log(value);
+    pinEntry.onSubmit = (value) => console.log(value);
     pinEntry.onCancel = () => console.log("cancel");
     pinEntry.show();
 }
@@ -308,30 +339,37 @@ function player() {
         atv.player.convertGrossToNetTime(10);
         atv.player.convertNetToGrossTime(10);
         console.log(atv.player.currentItem);
-        console.log(atv.player.currentPlaybackDate, atv.player.currentPlaybackRate);
+        console.log(
+            atv.player.currentPlaybackDate,
+            atv.player.currentPlaybackRate,
+        );
         console.log(atv.player.eventGroups);
         console.log(atv.player.interstitials);
         atv.player.observeTimedMetadataKeys();
         atv.player.play();
         atv.setTimeout(() => atv.player.stop(), 10000);
-        atv.setTimeout(() => atv.player.stopWithReason("Test", "Test 2"), 10000);
+        atv.setTimeout(
+            () => atv.player.stopWithReason("Test", "Test 2"),
+            10000,
+        );
     }
 }
 
 if (atv.player) {
     atv.player.willStartPlaying = () => console.log("will start playing");
     atv.player.currentAssetChanged = () => console.log("current asset changed");
-    atv.player.loadMoreAssets = callback => {
+    atv.player.loadMoreAssets = (callback) => {
         console.log("load more");
         callback.success(null);
         callback.failure("test");
     };
-    atv.player.onStartBuffering = p => console.log(p);
+    atv.player.onStartBuffering = (p) => console.log(p);
     atv.player.onBufferSufficientToPlay = () => console.log("sufficent");
-    atv.player.onPlaybackError = error => console.log(error);
-    atv.player.onQualityOfServiceReport = q => console.log(q.accessLog, q.errorLog);
-    atv.player.playerStateChanged = s => console.log(s);
-    atv.player.playerWillSeekToTime = time => {
+    atv.player.onPlaybackError = (error) => console.log(error);
+    atv.player.onQualityOfServiceReport = (q) =>
+        console.log(q.accessLog, q.errorLog);
+    atv.player.playerStateChanged = (s) => console.log(s);
+    atv.player.playerWillSeekToTime = (time) => {
         console.log(time);
         return time;
     };
@@ -339,14 +377,15 @@ if (atv.player) {
         console.log(event, p);
         return true;
     };
-    atv.player.playerDateDidChange = d => console.log(d);
-    atv.player.playerTimeDidChange = t => console.log(t);
+    atv.player.playerDateDidChange = (d) => console.log(d);
+    atv.player.playerTimeDidChange = (t) => console.log(t);
     atv.player.didStopPlaying = () => console.log("stop");
-    atv.player.onTransportControlsDisplayed = d => console.log(d);
-    atv.player.onTransportControlsHidden = d => console.log(d);
-    atv.player.didSelectAudioTrack = a => console.log(a);
-    atv.player.didSelectSubtitleTrack = s => console.log(s, s.bcp47, s.cc, s.forced, s.name, s.sdh, s.subtitle);
-    atv.player.onTimedMetdataChanged = m =>
+    atv.player.onTransportControlsDisplayed = (d) => console.log(d);
+    atv.player.onTransportControlsHidden = (d) => console.log(d);
+    atv.player.didSelectAudioTrack = (a) => console.log(a);
+    atv.player.didSelectSubtitleTrack = (s) =>
+        console.log(s, s.bcp47, s.cc, s.forced, s.name, s.sdh, s.subtitle);
+    atv.player.onTimedMetdataChanged = (m) =>
         console.log(
             m,
             m.dataValue,
@@ -369,7 +408,7 @@ if (atv.player) {
 
 function popupMenu() {
     const p = new atv.PopupMenu();
-    p.load(atv.parseXML("<atv></atv>"), s => console.log(s));
+    p.load(atv.parseXML("<atv></atv>"), (s) => console.log(s));
     p.cancel();
 }
 
@@ -388,13 +427,17 @@ function ratingControl() {
     r.rating = 1;
     r.title = "title";
     r.hasUserSetRating = false;
-    r.onRate = r => console.log(r);
+    r.onRate = (r) => console.log(r);
     r.onCancel = () => console.log("cancel");
     r.show();
 }
 
 function sharedCredentials() {
-    console.log(atv.sharedCredentials, atv.sharedCredentials?.password, atv.sharedCredentials?.username);
+    console.log(
+        atv.sharedCredentials,
+        atv.sharedCredentials?.password,
+        atv.sharedCredentials?.username,
+    );
 }
 
 if (atv.secureKeyDelivery) {
@@ -418,9 +461,9 @@ if (atv.secureKeyDelivery) {
 
 function storeFront() {
     const req = new atv.SKProductsRequest(["test"]);
-    req.onProductsRequestDidReceiveResponse = res => {
+    req.onProductsRequestDidReceiveResponse = (res) => {
         console.log(res, res.invalidProductIdentifiers, res.products);
-        res.products.forEach(p =>
+        res.products.forEach((p) =>
             console.log(
                 p.localizedDescription,
                 p.localizedPrice,
@@ -429,19 +472,25 @@ function storeFront() {
                 p.priceLocale,
                 p.priceLocale.localeIdentifier,
                 p.productIdentifier,
-            )
+            ),
         );
     };
     req.onRequestDidFinish = () => console.log("finish");
-    req.onRequestDidFailWithError = error =>
-        console.log(error, error.code, error.error, error.message, error.transaction);
+    req.onRequestDidFailWithError = (error) =>
+        console.log(
+            error,
+            error.code,
+            error.error,
+            error.message,
+            error.transaction,
+        );
     req.start();
     req.cancel();
 
     const obs: SKPaymentTransactionObserver = {
-        updatedTransactions: t => {
+        updatedTransactions: (t) => {
             console.log(t);
-            t.forEach(tr =>
+            t.forEach((tr) =>
                 console.log(
                     tr.originalTransaction,
                     tr.payment,
@@ -449,12 +498,12 @@ function storeFront() {
                     tr.transactionIdentifier,
                     tr.transactionReceipt,
                     tr.transactionState,
-                )
+                ),
             );
         },
-        removedTransactions: t => {
+        removedTransactions: (t) => {
             console.log(t);
-            t.forEach(tr =>
+            t.forEach((tr) =>
                 console.log(
                     tr.originalTransaction,
                     tr.payment,
@@ -462,10 +511,10 @@ function storeFront() {
                     tr.transactionIdentifier,
                     tr.transactionReceipt,
                     tr.transactionState,
-                )
+                ),
             );
         },
-        restoreCompletedTransactionsFailedWithError: e => {
+        restoreCompletedTransactionsFailedWithError: (e) => {
             console.log(e, e.code, e.error, e.message, e.transaction);
         },
         restoreCompletedTransactionsFinished: () => {
@@ -509,7 +558,7 @@ function storeFront() {
 
     console.log(atv.SKDefaultPaymentQueue.transactions);
     if (atv.SKDefaultPaymentQueue.transactions != null) {
-        atv.SKDefaultPaymentQueue.transactions.forEach(tr =>
+        atv.SKDefaultPaymentQueue.transactions.forEach((tr) =>
             console.log(
                 tr.originalTransaction,
                 tr.payment,
@@ -517,7 +566,7 @@ function storeFront() {
                 tr.transactionIdentifier,
                 tr.transactionReceipt,
                 tr.transactionState,
-            )
+            ),
         );
     }
 
@@ -531,21 +580,32 @@ function storeFront() {
     );
 
     const receipt = new atv.SKReceiptRefreshRequest({});
-    receipt.onRequestDidFailWithError = e => console.log(e, e.code, e.error, e.message, e.transaction);
+    receipt.onRequestDidFailWithError = (e) =>
+        console.log(e, e.code, e.error, e.message, e.transaction);
     receipt.onRequestDidFinish = () => console.log("finish");
     receipt.start();
     receipt.cancel();
 
-    console.log(atv.SKReceiptPropertyIsExpired, atv.SKReceiptPropertyIsRevoked, atv.SKReceiptPropertyIsVolumePurchase);
+    console.log(
+        atv.SKReceiptPropertyIsExpired,
+        atv.SKReceiptPropertyIsRevoked,
+        atv.SKReceiptPropertyIsVolumePurchase,
+    );
 }
 
 function slideShow() {
-    atv.slideShow.onExit = p => console.log(p);
+    atv.slideShow.onExit = (p) => console.log(p);
     const photos: MediaBrowserPhoto[] = [
         {
             id: "test",
             type: "photo",
-            assets: [{ width: 10, height: 10, src: "https://avatars.githubusercontent.com/u/3637556?s=200&v=4" }],
+            assets: [
+                {
+                    width: 10,
+                    height: 10,
+                    src: "https://avatars.githubusercontent.com/u/3637556?s=200&v=4",
+                },
+            ],
         },
     ];
     atv.slideShow.showSettings(photos);
@@ -560,9 +620,10 @@ function textEntry() {
     textEntry.label = "Label";
     textEntry.footnote = "Footnote";
     textEntry.defaultValue = "Default Value";
-    textEntry.image = "https://avatars.githubusercontent.com/u/3637556?s=200&v=4";
+    textEntry.image =
+        "https://avatars.githubusercontent.com/u/3637556?s=200&v=4";
     textEntry.defaultToAppleID = true;
-    textEntry.onSubmit = v => console.log(v);
+    textEntry.onSubmit = (v) => console.log(v);
     textEntry.onCancel = () => console.log("cancel");
     textEntry.show();
 }

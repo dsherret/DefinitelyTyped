@@ -1,7 +1,8 @@
 import * as bump from "bump-regex";
 
 bump({}, (err, res) => {
-    if (err) {}
+    if (err) {
+    }
     if (res) {
         res.new;
         res.prev;
@@ -19,4 +20,7 @@ bump({ regex: /^.+$/, str: "1.0.0" }, (err, res) => {});
 
 bump({ regex: /^.+$/, global: true, str: "1.0.0" }, (err, res) => {});
 
-bump({ regex: /^.+$/, case: true, keepmetadata: true, str: "1.0.0" }, (err, res) => {});
+bump(
+    { regex: /^.+$/, case: true, keepmetadata: true, str: "1.0.0" },
+    (err, res) => {},
+);

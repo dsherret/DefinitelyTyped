@@ -7,7 +7,11 @@
  * @param buffer The buffer to encode the `value` to. If not provided, a new `Buffer` will be allocated.
  * @param [offset=0] The byte offset in the `buffer` to encode `value` to.
  */
-export function encode(value: ValueToEncode, buffer?: Buffer, offset?: number): Buffer;
+export function encode(
+    value: ValueToEncode,
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 export namespace encode {
     /**
      * The number of bytes the last call to `encode` produced.
@@ -22,7 +26,11 @@ export namespace encode {
  * @param [start=0] The byte offset in the `buffer` start decoding.
  * @param [end=buffer.length] The byte offset in the `buffer` stop decoding.
  */
-export function decode(buffer: Buffer, start?: number, end?: number): DecodedValue;
+export function decode(
+    buffer: Buffer,
+    start?: number,
+    end?: number,
+): DecodedValue;
 export namespace decode {
     /**
      * The number of bytes the last call to `decode` produced.
@@ -35,5 +43,11 @@ export namespace decode {
  */
 export function encodingLength(value: ValueToEncode): number;
 
-export type ValueToEncode = readonly ValueToEncode[] | Buffer | number | string | null | undefined;
+export type ValueToEncode =
+    | readonly ValueToEncode[]
+    | Buffer
+    | number
+    | string
+    | null
+    | undefined;
 export type DecodedValue = Buffer | DecodedValue[];

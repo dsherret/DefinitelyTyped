@@ -7,6 +7,9 @@ import { BaseQuad, DatasetCore } from "rdf-js";
  * equality and by looping over all quads of a and check if b contains it using the `.has` method. Returns `true` if
  * both datasets are equal. Otherwise `false `is returned.
  */
-declare function equals(a: DatasetCore<BaseQuad>, b: DatasetCore<BaseQuad>): boolean;
+declare function equals(
+    a: DatasetCore<BaseQuad>,
+    b: DatasetCore<BaseQuad>,
+): boolean;
 
 export = equals;

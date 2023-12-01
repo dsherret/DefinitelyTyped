@@ -67,8 +67,8 @@ folder.close();
 // 1. cast Global to any, lie to typescript that all is fine
 //    by using any or typescript ignore comments (see below)
 const globalOne = new Global("myGlobal");
-(<any> globalOne).prop = "hello";
-messnamed("myobj", (<any> globalOne).prop);
+(<any>globalOne).prop = "hello";
+messnamed("myobj", (<any>globalOne).prop);
 // @ts-expect-error
 messnamed("myobj", globalOne.prop);
 //
@@ -102,7 +102,10 @@ const liveApiCallback = (args: any) => {
     post(args);
 };
 
-const liveApiInstance = new LiveAPI(liveApiCallback, "live_set tracks 0 devices 0");
+const liveApiInstance = new LiveAPI(
+    liveApiCallback,
+    "live_set tracks 0 devices 0",
+);
 
 // Accessing properties
 post(liveApiInstance.id);
@@ -258,7 +261,11 @@ function onWorkspaceDisabled(rectData: MaxobjListenerData<number>) {
     }
 }
 
-const maxobjListener = new MaxobjListener(myMaxobj, "workspacedisabled", onWorkspaceDisabled);
+const maxobjListener = new MaxobjListener(
+    myMaxobj,
+    "workspacedisabled",
+    onWorkspaceDisabled,
+);
 post(maxobjListener.maxobject);
 post(maxobjListener.attrname);
 post(maxobjListener.silent);
@@ -560,7 +567,14 @@ sketchInstance.text("Hello, World!");
 
 // Get and set pixels
 const pixelColor = sketchInstance.getpixel(10, 10);
-sketchInstance.setpixel(10, 10, pixelColor[0], pixelColor[1], pixelColor[2], pixelColor[3]);
+sketchInstance.setpixel(
+    10,
+    10,
+    pixelColor[0],
+    pixelColor[1],
+    pixelColor[2],
+    pixelColor[3],
+);
 
 // Test transformation methods
 sketchInstance.screentoworld(10, 10);
@@ -674,14 +688,22 @@ jitterMatrixInstance.write("testoutput.jxf");
 
 // Test JitterReposUtils
 const impulseMatrix = new JitterMatrix(2, "float32", 320, 240);
-const resultMatrix = JitterReposUtils.cartopolmatrix2dfloat32(impulseMatrix, 10, 20, false);
+const resultMatrix = JitterReposUtils.cartopolmatrix2dfloat32(
+    impulseMatrix,
+    10,
+    20,
+    false,
+);
 post("JitterReposUtils test completed.");
 
 // Test JitterListener
 const jitterObjectInstance1 = new JitterObject("jit.window");
-const jitterListenerInstance = new JitterListener(jitterObjectInstance1.getregisteredname(), (event: any) => {
-    post("Event received from JitterListener:" + event);
-});
+const jitterListenerInstance = new JitterListener(
+    jitterObjectInstance1.getregisteredname(),
+    (event: any) => {
+        post("Event received from JitterListener:" + event);
+    },
+);
 
 // Test JitterListener properties
 jitterListenerInstance.function = (event: any) => {
@@ -742,10 +764,24 @@ const pos = [0, 0, 0];
 const rot = [0, 0, 0];
 const scale = [1, 1, 1];
 const p2: number[] = [];
-const isIntersectLineQuad = Jitter3DUtils.intersect_line_quad(line_a, line_b, pos, rot, scale, p1, p2);
+const isIntersectLineQuad = Jitter3DUtils.intersect_line_quad(
+    line_a,
+    line_b,
+    pos,
+    rot,
+    scale,
+    p1,
+    p2,
+);
 post("intersect_line_quad:" + isIntersectLineQuad);
 
-const isIntersectLineSphere = Jitter3DUtils.intersect_line_sphere(line_a, line_b, center, radius, p1);
+const isIntersectLineSphere = Jitter3DUtils.intersect_line_sphere(
+    line_a,
+    line_b,
+    center,
+    radius,
+    p1,
+);
 post("intersect_line_sphere:" + isIntersectLineSphere);
 
 Jitter3DUtils.normalize_quat(quat);

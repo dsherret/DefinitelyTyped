@@ -1,6 +1,13 @@
-import { connect, Document as CamoDocument, DocumentSchema, SchemaTypeExtended } from "camo";
+import {
+    connect,
+    Document as CamoDocument,
+    DocumentSchema,
+    SchemaTypeExtended,
+} from "camo";
 
-connect("mongodb://user:password@localhost:27017/database?authSource=admin").then(() => {
+connect(
+    "mongodb://user:password@localhost:27017/database?authSource=admin",
+).then(() => {
     let document = new CamoDocument();
 
     interface UserSchema extends DocumentSchema {
@@ -29,7 +36,7 @@ connect("mongodb://user:password@localhost:27017/database?authSource=admin").the
         friends: ["user-2", "user-3"],
     });
 
-    newUser.save().then(done => {
+    newUser.save().then((done) => {
         console.log(done._id);
     });
 });

@@ -5,23 +5,25 @@ This package contains typings for the [WordPress Customizer JavaScript API](http
 ## Usage
 
 The package adds type-checking to the built-in functions, so you can just use something like
+
 ```ts
-wp.customize.section('nav').deactivate({
-    completeCallback: () => {
-        wp.customize.section('colors').activate(); // show after nav hides completely
-    },
+wp.customize.section("nav").deactivate({
+  completeCallback: () => {
+    wp.customize.section("colors").activate(); // show after nav hides completely
+  },
 });
 ```
 
 However, if you want to use the types directly, they are exported under the `wordpress__customize` namespace, so, rewriting the same to use a function:
+
 ```ts
 function fun(section: wordpress__customize.Section): void {
   section.deactivate({
     completeCallback: () => {
-        wp.customize.section('colors').activate(); // show after nav hides completely
+      wp.customize.section("colors").activate(); // show after nav hides completely
     },
   });
 }
 
-wp.customize.section('nav', fun);
+wp.customize.section("nav", fun);
 ```

@@ -114,7 +114,14 @@ declare namespace MIMEType {
         set(key: string, value: string): this;
         clear(): void;
         delete(key: string): boolean;
-        forEach(callbackfn: (value: string, key: string, map: Map<string, string>) => void, thisArg?: any): void;
+        forEach(
+            callbackfn: (
+                value: string,
+                key: string,
+                map: Map<string, string>,
+            ) => void,
+            thisArg?: any,
+        ): void;
         keys(): IterableIterator<string>;
         values(): IterableIterator<string>;
         entries(): IterableIterator<[string, string]>;

@@ -3,19 +3,20 @@ import * as React from "react";
 import * as StyledSystem from "styled-system";
 
 export interface BoxProps
-    extends
-        StyledSystem.SpaceProps,
+    extends StyledSystem.SpaceProps,
         StyledSystem.LayoutProps,
         StyledSystem.TypographyProps,
         StyledSystem.ColorProps,
-        StyledSystem.FlexboxProps
-{
+        StyledSystem.FlexboxProps {
     as?: React.ElementType | undefined;
 }
 
 export type BoxType = StyledComponent<
     JSX.IntrinsicElements["div"],
-    Omit<JSX.IntrinsicElements["div"] & BoxProps, keyof React.ClassAttributes<any>>
+    Omit<
+        JSX.IntrinsicElements["div"] & BoxProps,
+        keyof React.ClassAttributes<any>
+    >
 >;
 
 export const Box: BoxType;

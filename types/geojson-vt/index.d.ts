@@ -113,7 +113,15 @@ declare class GeoJSONVT {
      * @param cx x coordinate of the target tile
      * @param cy y coordinate of the target tile
      */
-    splitTile(features: geojsonvt.Tile, z: number, x: number, y: number, cz: number, cx: number, cy: number): void;
+    splitTile(
+        features: geojsonvt.Tile,
+        z: number,
+        x: number,
+        y: number,
+        cz: number,
+        cx: number,
+        cy: number,
+    ): void;
 
     /**
      * gets a tile based on coordinates
@@ -121,8 +129,15 @@ declare class GeoJSONVT {
      * @param x x coordinate (supports both number or string input)
      * @param y y coordinate (supports both number or string input)
      */
-    getTile(z: number | string, x: number | string, y: number | string): null | geojsonvt.Tile;
+    getTile(
+        z: number | string,
+        x: number | string,
+        y: number | string,
+    ): null | geojsonvt.Tile;
 }
 
-declare function geojsonvt(data: geojsonvt.Data, options: geojsonvt.Options): GeoJSONVT;
+declare function geojsonvt(
+    data: geojsonvt.Data,
+    options: geojsonvt.Options,
+): GeoJSONVT;
 export = geojsonvt;

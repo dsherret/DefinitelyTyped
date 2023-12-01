@@ -25,8 +25,8 @@ player.errors();
 // $ExpectType void
 player.errors.extend({
     PLAYER_ERR_FOO: {
-        headline: "My custom \"foo\" error",
-        message: "A custom \"foo\" error message.",
+        headline: 'My custom "foo" error',
+        message: 'A custom "foo" error message.',
     },
 });
 // $ExpectType void

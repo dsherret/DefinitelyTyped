@@ -1,21 +1,17 @@
-var exec = function(name?, times?, args?) {
+var exec = function (name?, times?, args?) {
     do {
         editor.commands.exec(name, editor, args);
     } while (times-- > 1);
 };
-var testRanges = function(str) {
+var testRanges = function (str) {
     assert.equal(editor.selection.getAllRanges() + "", str + "");
 };
 
 const aceMultiSelectTests = {
     name: "ACE multi_select.js",
 
-    "test: multiselect editing": function() {
-        var doc = new AceAjax.EditSession([
-            "w1.w2",
-            "    wtt.w",
-            "    wtt.w",
-        ]);
+    "test: multiselect editing": function () {
+        var doc = new AceAjax.EditSession(["w1.w2", "    wtt.w", "    wtt.w"]);
         editor = new AceAjax.Editor(renderer, doc);
 
         editor.navigateFileEnd();
@@ -36,12 +32,8 @@ const aceMultiSelectTests = {
         // assert.equal(editor.selection.getAllRanges().length, 1);
     },
 
-    "test: multiselect navigation": function() {
-        var doc = new AceAjax.EditSession([
-            "w1.w2",
-            "    wtt.w",
-            "    wtt.we",
-        ]);
+    "test: multiselect navigation": function () {
+        var doc = new AceAjax.EditSession(["w1.w2", "    wtt.w", "    wtt.we"]);
         editor = new AceAjax.Editor(renderer, doc);
 
         editor.selectMoreLines(1);
@@ -58,12 +50,8 @@ const aceMultiSelectTests = {
         assert.ok(!editor.inMultiSelectMode);
     },
 
-    "test: multiselect session change": function() {
-        var doc = new AceAjax.EditSession([
-            "w1.w2",
-            "    wtt.w",
-            "    wtt.w",
-        ]);
+    "test: multiselect session change": function () {
+        var doc = new AceAjax.EditSession(["w1.w2", "    wtt.w", "    wtt.w"]);
         editor = new AceAjax.Editor(renderer, doc);
 
         editor.selectMoreLines(1);
@@ -78,12 +66,8 @@ const aceMultiSelectTests = {
         assert.ok(editor.inMultiSelectMode);
     },
 
-    "test: multiselect addRange": function() {
-        var doc = new AceAjax.EditSession([
-            "w1.w2",
-            "    wtt.w",
-            "    wtt.w",
-        ]);
+    "test: multiselect addRange": function () {
+        var doc = new AceAjax.EditSession(["w1.w2", "    wtt.w", "    wtt.w"]);
         editor = new AceAjax.Editor(renderer, doc);
 
         var selection = editor.selection;

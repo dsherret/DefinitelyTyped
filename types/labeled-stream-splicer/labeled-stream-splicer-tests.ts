@@ -7,10 +7,14 @@ const writable = new stream.Writable();
 
 let pipeline: splicer = splicer();
 pipeline = splicer([readable, duplex, writable]);
-pipeline = splicer(["r", readable, "d", duplex, "w", writable], { encoding: "utf8" });
+pipeline = splicer(["r", readable, "d", duplex, "w", writable], {
+    encoding: "utf8",
+});
 pipeline = splicer.obj();
 pipeline = splicer.obj([readable, duplex, writable]);
-pipeline = splicer(["r", readable, "d", duplex, "w", writable], { encoding: "utf8" });
+pipeline = splicer(["r", readable, "d", duplex, "w", writable], {
+    encoding: "utf8",
+});
 
 let length: number = pipeline.length;
 length = pipeline.push(duplex, writable);

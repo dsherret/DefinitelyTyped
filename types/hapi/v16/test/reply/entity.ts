@@ -9,7 +9,7 @@ server.route({
     path: "/",
     config: {
         cache: { expiresIn: 5000 },
-        handler: function(request, reply) {
+        handler: function (request, reply) {
             const response = reply.entity({ etag: "abc" });
             if (response) {
                 response.header("X", "y");

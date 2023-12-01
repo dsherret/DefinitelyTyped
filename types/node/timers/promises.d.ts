@@ -27,7 +27,11 @@ declare module "timers/promises" {
      * @param [delay=1] The number of milliseconds to wait before fulfilling the promise.
      * @param value A value with which the promise is fulfilled.
      */
-    function setTimeout<T = void>(delay?: number, value?: T, options?: TimerOptions): Promise<T>;
+    function setTimeout<T = void>(
+        delay?: number,
+        value?: T,
+        options?: TimerOptions,
+    ): Promise<T>;
     /**
      * ```js
      * import {
@@ -41,7 +45,10 @@ declare module "timers/promises" {
      * @since v15.0.0
      * @param value A value with which the promise is fulfilled.
      */
-    function setImmediate<T = void>(value?: T, options?: TimerOptions): Promise<T>;
+    function setImmediate<T = void>(
+        value?: T,
+        options?: TimerOptions,
+    ): Promise<T>;
     /**
      * Returns an async iterator that generates values in an interval of `delay` ms.
      * If `ref` is `true`, you need to call `next()` of async iterator explicitly
@@ -63,7 +70,11 @@ declare module "timers/promises" {
      * ```
      * @since v15.9.0
      */
-    function setInterval<T = void>(delay?: number, value?: T, options?: TimerOptions): AsyncIterable<T>;
+    function setInterval<T = void>(
+        delay?: number,
+        value?: T,
+        options?: TimerOptions,
+    ): AsyncIterable<T>;
     interface Scheduler {
         /**
          * ```js

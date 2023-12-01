@@ -46,16 +46,29 @@ export type DigestValidateFunction = (
 
 export class BasicStrategy implements passport.Strategy {
     constructor(verify: BasicVerifyFunction);
-    constructor(options: BasicStrategyOptions<false>, verify: BasicVerifyFunction);
-    constructor(options: BasicStrategyOptions<true>, verify: BasicVerifyFunctionWithRequest);
+    constructor(
+        options: BasicStrategyOptions<false>,
+        verify: BasicVerifyFunction,
+    );
+    constructor(
+        options: BasicStrategyOptions<true>,
+        verify: BasicVerifyFunctionWithRequest,
+    );
 
     name: string;
     authenticate(req: express.Request, options?: object): void;
 }
 
 export class DigestStrategy implements passport.Strategy {
-    constructor(secret: DigestSecretFunction, validate?: DigestValidateFunction);
-    constructor(options: DigestStrategyOptions, secret: DigestSecretFunction, validate?: DigestValidateFunction);
+    constructor(
+        secret: DigestSecretFunction,
+        validate?: DigestValidateFunction,
+    );
+    constructor(
+        options: DigestStrategyOptions,
+        secret: DigestSecretFunction,
+        validate?: DigestValidateFunction,
+    );
 
     name: string;
     authenticate(req: express.Request, options?: object): void;

@@ -1,6 +1,16 @@
-type RollTransformation = RollTransformationKey | [RollTransformationKey, number] | ((results: number[]) => number[]);
+type RollTransformation =
+    | RollTransformationKey
+    | [RollTransformationKey, number]
+    | ((results: number[]) => number[]);
 
-type RollTransformationKey = "sum" | "add" | "subtract" | "multiply" | "divide" | "best-of" | "worst-of";
+type RollTransformationKey =
+    | "sum"
+    | "add"
+    | "subtract"
+    | "multiply"
+    | "divide"
+    | "best-of"
+    | "worst-of";
 
 interface RollObject {
     quantity: number;

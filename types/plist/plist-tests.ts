@@ -16,10 +16,14 @@ interface Person {
 // instanceOfPerson(obj)
 function instanceOfPerson(obj: any): obj is Person {
     return (
-        "id" in obj && typeof obj.id === "number"
-        && "name" in obj && typeof obj.name === "string"
-        && "birthday" in obj && obj.birthday instanceof Date
-        && "data" in obj && obj.data instanceof Buffer
+        "id" in obj &&
+        typeof obj.id === "number" &&
+        "name" in obj &&
+        typeof obj.name === "string" &&
+        "birthday" in obj &&
+        obj.birthday instanceof Date &&
+        "data" in obj &&
+        obj.data instanceof Buffer
     );
 }
 
@@ -67,9 +71,7 @@ if (plistValue1 instanceof Array) {
 }
 
 // parsing a plist from filename
-const plistValue2 = plist.parse(
-    fs.readFileSync("plist/sample.plist", "utf8"),
-);
+const plistValue2 = plist.parse(fs.readFileSync("plist/sample.plist", "utf8"));
 console.log(plistValue2);
 
 ///

@@ -1,5 +1,15 @@
 import babel from "@webpack-blocks/babel";
-import { Block, Context, createConfig, env, group, match, MatchOptions, Util, when } from "@webpack-blocks/core";
+import {
+    Block,
+    Context,
+    createConfig,
+    env,
+    group,
+    match,
+    MatchOptions,
+    Util,
+    when,
+} from "@webpack-blocks/core";
 import { Configuration } from "webpack";
 import { css, file, url } from "webpack-blocks";
 
@@ -10,14 +20,20 @@ const block = (config: Configuration): Block => {
 const config: Configuration = {};
 const blocks: Block[] = [block(config)];
 const emptyMatchOptions: MatchOptions = {};
-const filledMatchOptions: MatchOptions = { exclude: new RegExp(""), include: "" };
+const filledMatchOptions: MatchOptions = {
+    exclude: new RegExp(""),
+    include: "",
+};
 
 // tests
 createConfig({ webpack: null, webpackVersion: "" }, blocks);
 createConfig([
     css(),
     match(["*.eot", "*.ttf", "*.woff", "*.woff2"], [file()]),
-    match(["*.gif", "*.jpg", "*.jpeg", "*.png", "*.svg", "*.webp"], [url({ limit: 10000 })]),
+    match(
+        ["*.gif", "*.jpg", "*.jpeg", "*.png", "*.svg", "*.webp"],
+        [url({ limit: 10000 })],
+    ),
 ]);
 createConfig([match(["*.js", "!*node_modules*"], [babel()])]);
 

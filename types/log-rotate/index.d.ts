@@ -1,4 +1,8 @@
-declare function logRotate(file: string, options: logRotate.Options, cb: logRotate.Callback): void;
+declare function logRotate(
+    file: string,
+    options: logRotate.Options,
+    cb: logRotate.Callback,
+): void;
 declare function logRotate(file: string, cb: logRotate.Callback): void;
 declare namespace logRotate {
     type Callback = (err: Error | null, rotated?: string) => void;

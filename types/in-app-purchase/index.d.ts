@@ -12,14 +12,20 @@ export function setup(callback: (err: any) => void): void;
 export function getService(receipt: Receipt): Service;
 
 export function validate(receipt: Receipt): Promise<ValidationResponse>;
-export function validate(receipt: Receipt, callback: (err: any, res: ValidationResponse) => void): void;
+export function validate(
+    receipt: Receipt,
+    callback: (err: any, res: ValidationResponse) => void,
+): void;
 export function validate(
     service: Service,
     receipt: Receipt,
     callback: (err: any, res: ValidationResponse) => void,
 ): void;
 
-export function validateOnce(receipt: Receipt, secretOrPubKey: any): Promise<ValidationResponse>;
+export function validateOnce(
+    receipt: Receipt,
+    secretOrPubKey: any,
+): Promise<ValidationResponse>;
 export function validateOnce(
     receipt: Receipt,
     secretOrPubKey: any,
@@ -35,10 +41,13 @@ export function validateOnce(
 export function isValidated(response: ValidationResponse): boolean;
 export function isExpired(item: PurchasedItem): boolean;
 export function isCanceled(item: PurchasedItem): boolean;
-export function getPurchaseData(purchaseData?: ValidationResponse, options?: {
-    ignoreCanceled: boolean;
-    ignoreExpired: boolean;
-}): PurchasedItem[] | null;
+export function getPurchaseData(
+    purchaseData?: ValidationResponse,
+    options?: {
+        ignoreCanceled: boolean;
+        ignoreExpired: boolean;
+    },
+): PurchasedItem[] | null;
 
 export function refreshGoogleToken(): Promise<void>;
 export function refreshGoogleToken(callback: (err: any) => void): void;
@@ -59,12 +68,14 @@ export interface Config {
     applePassword?: string | undefined;
 
     // Configurations for Google Service Account validation: You can validate with just packageName, productId, and purchaseToken
-    googleServiceAccount?: {
-        // client email from Google API service account JSON key file
-        clientEmail: string;
-        // private key string from Google API service account JSON key file
-        privateKey: string;
-    } | undefined;
+    googleServiceAccount?:
+        | {
+              // client email from Google API service account JSON key file
+              clientEmail: string;
+              // private key string from Google API service account JSON key file
+              privateKey: string;
+          }
+        | undefined;
 
     /* Configurations for Google Play */
     // this is the path to the directory containing iap-sanbox/iap-live files
@@ -110,10 +121,12 @@ export type Service =
 
 export type UnityReceipt = object | string;
 export type AppleReceipt = string;
-export type GoogleReceipt = {
-    data: string;
-    signature: string;
-} | string;
+export type GoogleReceipt =
+    | {
+          data: string;
+          signature: string;
+      }
+    | string;
 export type WindowsReceipt = string;
 export type AmazonReceipt = object | string;
 export type RokuReceipt = string;

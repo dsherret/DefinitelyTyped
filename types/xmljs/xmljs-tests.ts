@@ -23,7 +23,7 @@ p.parseString(xml, (err, xmlNode) => {
         ["Envelope", "Body", "GetstockpriceResponse", "Price"],
         true,
     );
-    const arr = nodes.map(n => n.text);
+    const arr = nodes.map((n) => n.text);
 
     // console.log(arr);
 });

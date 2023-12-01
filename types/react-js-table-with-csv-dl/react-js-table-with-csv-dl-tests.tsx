@@ -10,4 +10,11 @@ const contentData = [
 
 const headersData = ["name", "age"];
 
-const test = <TableViewer content={contentData} headers={headersData} maxHeight={1} minHeight={0} />;
+const test = (
+    <TableViewer
+        content={contentData}
+        headers={headersData}
+        maxHeight={1}
+        minHeight={0}
+    />
+);

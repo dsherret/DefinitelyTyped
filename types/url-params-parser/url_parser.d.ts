@@ -1,4 +1,7 @@
-export function UrlParser(urlString: string, namedUrl?: string): UrlParserResult;
+export function UrlParser(
+    urlString: string,
+    namedUrl?: string,
+): UrlParserResult;
 
 export interface UrlParserResult {
     host: string;

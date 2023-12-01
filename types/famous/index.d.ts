@@ -11,8 +11,7 @@ declare module "famous/core" {
         static requestUpdateOnNextTick(requester: number): void;
     }
 
-    export class Scene extends Node {
-    }
+    export class Scene extends Node {}
 
     export class Node {
         static RELATIVE_SIZE: number;
@@ -40,7 +39,11 @@ declare module "famous/core" {
         requestUpdateOnNextTick(requester: number): void;
 
         getSizeMode(): number[];
-        setSizeMode(x?: string | number, y?: string | number, z?: string | number): Node;
+        setSizeMode(
+            x?: string | number,
+            y?: string | number,
+            z?: string | number,
+        ): Node;
 
         getSize(): number[];
         getRenderSize(): number[];
@@ -136,7 +139,13 @@ declare module "famous/components" {
     export class Position {
         constructor(node: Node);
 
-        set(x: number, y?: number, z?: number, transition?: any, callback?: Function): Position;
+        set(
+            x: number,
+            y?: number,
+            z?: number,
+            transition?: any,
+            callback?: Function,
+        ): Position;
 
         getX(): number;
         setX(val: number, transition?: any, callback?: Function): Position;
@@ -164,13 +173,25 @@ declare module "famous/components" {
     export class Size {
         constructor(node: Node);
 
-        setAbsolute(x?: number, y?: number, z?: number, options?: any, callback?: Function): void;
+        setAbsolute(
+            x?: number,
+            y?: number,
+            z?: number,
+            options?: any,
+            callback?: Function,
+        ): void;
     }
 
     export class Scale {
         constructor(node: Node);
 
-        set(x: number, y?: number, z?: number, transition?: any, callback?: Function): Scale;
+        set(
+            x: number,
+            y?: number,
+            z?: number,
+            transition?: any,
+            callback?: Function,
+        ): Scale;
 
         getX(): number;
         setX(val: number, transition?: any, callback?: Function): Scale;
@@ -189,7 +210,13 @@ declare module "famous/components" {
     export class Rotation {
         constructor(node: Node);
 
-        set(x: number, y?: number, z?: number, transition?: any, callback?: Function): Rotation;
+        set(
+            x: number,
+            y?: number,
+            z?: number,
+            transition?: any,
+            callback?: Function,
+        ): Rotation;
 
         getX(): number;
         setX(val: number, transition?: any, callback?: Function): Rotation;
@@ -208,7 +235,13 @@ declare module "famous/components" {
     export class Align {
         constructor(node: Node);
 
-        set(x: number, y?: number, z?: number, transition?: any, callback?: Function): Align;
+        set(
+            x: number,
+            y?: number,
+            z?: number,
+            transition?: any,
+            callback?: Function,
+        ): Align;
 
         getX(): number;
         setX(val: number, transition?: any, callback?: Function): Align;
@@ -227,7 +260,13 @@ declare module "famous/components" {
     export class MountPoint {
         constructor(node: Node);
 
-        set(x: number, y?: number, z?: number, transition?: any, callback?: Function): MountPoint;
+        set(
+            x: number,
+            y?: number,
+            z?: number,
+            transition?: any,
+            callback?: Function,
+        ): MountPoint;
 
         getX(): number;
         setX(val: number, transition?: any, callback?: Function): MountPoint;
@@ -246,7 +285,13 @@ declare module "famous/components" {
     export class Origin {
         constructor(node: Node);
 
-        set(x: number, y?: number, z?: number, transition?: any, callback?: Function): Origin;
+        set(
+            x: number,
+            y?: number,
+            z?: number,
+            transition?: any,
+            callback?: Function,
+        ): Origin;
 
         getX(): number;
         setX(val: number, transition?: any, callback?: Function): Origin;
@@ -278,7 +323,10 @@ declare module "famous/components" {
     export class GestureHandler {
         constructor(node: Node, events?: IGestureEvent[]);
         onReceive(ev: string, payload: IGesturePayload): void;
-        on(ev: string | IGestureEvent, cb: (payload?: IGesturePayload) => void): void;
+        on(
+            ev: string | IGestureEvent,
+            cb: (payload?: IGesturePayload) => void,
+        ): void;
         triggerGestures(): void;
         trigger(ev: string, payload?: IGesturePayload): void;
     }
@@ -307,12 +355,9 @@ declare module "famous/components" {
 }
 
 declare module "famous/dom-renderers/events" {
-    export class EventMap {
-    }
-    export class MouseEvent {
-    }
-    export class TouchEvent {
-    }
+    export class EventMap {}
+    export class MouseEvent {}
+    export class TouchEvent {}
 }
 
 declare module "famous/math" {
@@ -448,7 +493,10 @@ declare module "famous/physics" {
         off(key: string, callback: (payload: any) => void): void;
         trigger(key: string, payload: any): void;
         getRestrictions(): string[];
-        setRestrictions(transRestrictions: string, rotRestrictions: string): Particle;
+        setRestrictions(
+            transRestrictions: string,
+            rotRestrictions: string,
+        ): Particle;
         getMass(): number;
         setMass(mass: number): Particle;
         getInverseMass(): number;
@@ -554,7 +602,11 @@ declare module "famous/physics" {
         period: number;
         dampingRatio: number;
         anchor: Vec3;
-        constructor(source?: Particle, targets?: Particle[] | Particle, options?: ISpringOptions);
+        constructor(
+            source?: Particle,
+            targets?: Particle[] | Particle,
+            options?: ISpringOptions,
+        );
         init(options?: ISpringOptions): void;
         update(): void;
     }
@@ -570,7 +622,11 @@ declare module "famous/physics" {
     }
 
     export class RotationalSpring extends Force {
-        constructor(source?: Particle, targets?: Particle[] | Particle, options?: IRotationalSpringOptions);
+        constructor(
+            source?: Particle,
+            targets?: Particle[] | Particle,
+            options?: IRotationalSpringOptions,
+        );
         max: number;
         stiffness: number;
         damping: number;
@@ -579,15 +635,13 @@ declare module "famous/physics" {
         anchor: Vec3;
     }
 
-    export class ConvexBody extends Particle {
-    }
+    export class ConvexBody extends Particle {}
 
     export class Box extends ConvexBody {
         constructor(options?: any);
     }
 
-    export class Constraint {
-    }
+    export class Constraint {}
 
     export class Angle extends Constraint {
         constructor(a: Particle, b: Particle, options?: any);

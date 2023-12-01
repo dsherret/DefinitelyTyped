@@ -187,9 +187,7 @@ export function reinitializeEditor(
     initialEdits?: object,
 ): void;
 
-export {
-    default as PluginBlockSettingsMenuItem,
-} from "./components/block-settings-menu/plugin-block-settings-menu-item";
+export { default as PluginBlockSettingsMenuItem } from "./components/block-settings-menu/plugin-block-settings-menu-item";
 export { default as PluginMoreMenuItem } from "./components/header/plugin-more-menu-item";
 export { default as PluginSidebarMoreMenuItem } from "./components/header/plugin-sidebar-more-menu-item";
 export { default as PluginDocumentSettingPanel } from "./components/sidebar/plugin-document-setting-panel";

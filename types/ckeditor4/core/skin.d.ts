@@ -9,11 +9,21 @@ declare namespace CKEDITOR {
         ua_dialog: string;
         ua_editor: string;
 
-        addIcon(name: string, path: string, offset?: number, bgsize?: string): void;
+        addIcon(
+            name: string,
+            path: string,
+            offset?: number,
+            bgsize?: string,
+        ): void;
 
         chameleon(editor: string, part: string): void;
 
-        getIconStyle(name: string, rtl?: boolean, overridePath?: number, overrideBgsize?: string): unknown;
+        getIconStyle(
+            name: string,
+            rtl?: boolean,
+            overridePath?: number,
+            overrideBgsize?: string,
+        ): unknown;
 
         getPath(part: string): unknown;
 

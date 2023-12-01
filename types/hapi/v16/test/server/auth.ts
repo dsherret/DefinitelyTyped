@@ -5,14 +5,14 @@ import * as Hapi from "hapi";
 const server = new Hapi.Server();
 server.connection({ port: 80 });
 
-var scheme: Hapi.ServerAuthScheme = function(server, options) {
+var scheme: Hapi.ServerAuthScheme = function (server, options) {
     return {
         api: {
             settings: {
                 x: 5,
             },
         },
-        authenticate: function(request, reply) {
+        authenticate: function (request, reply) {
             const req = request.raw.req;
             const authorization = req.headers.authorization;
             if (!authorization) {
@@ -36,16 +36,16 @@ server.auth.default("default");
 server.route({
     method: "GET",
     path: "/",
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         return reply(request.auth.credentials.user);
     },
 });
 
 // scheme
 
-scheme = function(server, options) {
+scheme = function (server, options) {
     return {
-        authenticate: function(request, reply) {
+        authenticate: function (request, reply) {
             const req = request.raw.req;
             const authorization = req.headers.authorization;
             if (!authorization) {
@@ -69,7 +69,7 @@ server.route({
     path: "/",
     config: {
         auth: "default",
-        handler: function(request, reply) {
+        handler: function (request, reply) {
             return reply(request.auth.credentials.user);
         },
     },
@@ -80,7 +80,7 @@ server.route({
 server.route({
     method: "GET",
     path: "/",
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         request.server.auth.test("default", request, (err, credentials) => {
             if (err) {
                 return reply({ status: false });

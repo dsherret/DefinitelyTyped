@@ -1,5 +1,11 @@
 import { PathLike } from "fs";
-import type { Driver, EmptyObject, ErrorOnlyCallback, ParsedMigration, ScanOptions } from "../index";
+import type {
+    Driver,
+    EmptyObject,
+    ErrorOnlyCallback,
+    ParsedMigration,
+    ScanOptions,
+} from "../index";
 
 export function drop(driver: Driver, cb?: ErrorOnlyCallback): void;
 
@@ -10,7 +16,11 @@ export function migrate(
     cb: ErrorOnlyCallback,
 ): void;
 
-export function migrate(migrations: readonly ParsedMigration[], driver: Driver, cb: ErrorOnlyCallback): void;
+export function migrate(
+    migrations: readonly ParsedMigration[],
+    driver: Driver,
+    cb: ErrorOnlyCallback,
+): void;
 
 export function scan(
     directory: PathLike,
@@ -18,4 +28,7 @@ export function scan(
     cb: (err: Error | undefined, migrations: ParsedMigration[]) => void,
 ): void;
 
-export function scan(directory: PathLike, cb: (err: Error | undefined, migrations: ParsedMigration[]) => void): void;
+export function scan(
+    directory: PathLike,
+    cb: (err: Error | undefined, migrations: ParsedMigration[]) => void,
+): void;

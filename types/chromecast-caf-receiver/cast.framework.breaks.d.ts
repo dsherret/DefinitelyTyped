@@ -84,7 +84,12 @@ export interface BreakManager {
      * parsing logic in the provided interceptor.
      */
     setBreakClipLoadInterceptor(
-        interceptor: ((breakClip: BreakClip, breakClipLoaderContext?: BreakClipLoadInterceptorContext) => void) | null,
+        interceptor:
+            | ((
+                  breakClip: BreakClip,
+                  breakClipLoaderContext?: BreakClipLoadInterceptorContext,
+              ) => void)
+            | null,
     ): void;
 
     /**
@@ -93,7 +98,9 @@ export interface BreakManager {
      *     to default one. The default break seek interceptor will
      *     return the closest break from the seekTo value.
      */
-    setBreakSeekInterceptor(seekInterceptor: ((breakSeekData: BreakSeekData) => void) | null): void;
+    setBreakSeekInterceptor(
+        seekInterceptor: ((breakSeekData: BreakSeekData) => void) | null,
+    ): void;
 
     /**
      * Set a flag to control if the watched client stitching break should be played.
@@ -110,6 +117,8 @@ export interface BreakManager {
      * by your own code instead of by CAF.
      */
     setVastTrackingInterceptor(
-        interceptor?: (trackingUrl: string) => string | URL | Promise<string | URL> | null,
+        interceptor?: (
+            trackingUrl: string,
+        ) => string | URL | Promise<string | URL> | null,
     ): void;
 }

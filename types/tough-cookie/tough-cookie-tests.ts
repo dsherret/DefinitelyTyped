@@ -1,4 +1,10 @@
-import { Cookie, CookieJar, MemoryCookieStore, PrefixSecurityEnum, version } from "tough-cookie";
+import {
+    Cookie,
+    CookieJar,
+    MemoryCookieStore,
+    PrefixSecurityEnum,
+    version,
+} from "tough-cookie";
 
 version; // $ExpectType string
 PrefixSecurityEnum.DISABLED; // $ExpectType string
@@ -48,7 +54,9 @@ jar.getSetCookieStringsSync(url); // $ExpectType string[]
 jar.getSetCookieStringsSync(url, {}); // $ExpectType string[]
 
 jar.serialize(); // $ExpectType Promise<Serialized>
-jar.serialize((err: Error | null, serializedObject: CookieJar.Serialized): void => {}); // $ExpectType void
+jar.serialize(
+    (err: Error | null, serializedObject: CookieJar.Serialized): void => {},
+); // $ExpectType void
 
 jar.serializeSync(); // $ExpectType Serialized
 

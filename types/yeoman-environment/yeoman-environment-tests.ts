@@ -58,8 +58,8 @@ if (result instanceof Generator) {
     result;
 }
 
-(async () => {
+async () => {
     await env.run("my-generator", {});
     await env.runGenerator(null as any as Generator);
     await env.start({});
-});
+};

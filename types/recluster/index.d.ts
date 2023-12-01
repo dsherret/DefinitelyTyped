@@ -41,5 +41,8 @@ declare namespace recluster {
     }
 }
 
-declare function recluster(file: string, options?: recluster.BalancerOptions): recluster.Balancer;
+declare function recluster(
+    file: string,
+    options?: recluster.BalancerOptions,
+): recluster.Balancer;
 export = recluster;

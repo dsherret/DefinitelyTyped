@@ -108,20 +108,33 @@ declare namespace GoogleAdsScripts {
             /** Creates a location target in this campaign from a location. */
             addLocation(location: TargetedLocation): TargetedLocationOperation;
             /** Creates a location target in this campaign from a location JSON. */
-            addLocation(location: { id: number; bidModifier?: number | undefined }): TargetedLocationOperation;
+            addLocation(location: {
+                id: number;
+                bidModifier?: number | undefined;
+            }): TargetedLocationOperation;
             /** Creates a location target in this campaign from a location ID and bid modifier. */
-            addLocation(locationId: number, bidModifier: number): TargetedLocationOperation;
+            addLocation(
+                locationId: number,
+                bidModifier: number,
+            ): TargetedLocationOperation;
             /** Adds a negative keyword list to this campaign. */
-            addNegativeKeywordList(negativeKeywordList: NegativeKeywordList): void;
+            addNegativeKeywordList(
+                negativeKeywordList: NegativeKeywordList,
+            ): void;
             /** Creates a proximity target in this campaign from a proximity object. */
-            addProximity(proximity: TargetedProximityObject): TargetedProximityOperation;
+            addProximity(
+                proximity: TargetedProximityObject,
+            ): TargetedProximityOperation;
             /** Creates a proximity target in this campaign. */
             addProximity(
                 latitude: number,
                 longitude: number,
                 radius: number,
                 radiusUnits: string,
-                optArgs?: { bidModifier?: number | undefined; address?: AddressObject | undefined },
+                optArgs?: {
+                    bidModifier?: number | undefined;
+                    address?: AddressObject | undefined;
+                },
             ): TargetedProximityOperation;
             /** Returns the selector of all product ads in the shopping campaign. */
             ads(): ProductAdSelector;
@@ -134,11 +147,15 @@ declare namespace GoogleAdsScripts {
             /** Enables the shopping campaign. */
             enable(): void;
             /** Creates a location exclusion in this campaign. */
-            excludeLocation(location: ExcludedLocation): ExcludedLocationOperation;
+            excludeLocation(
+                location: ExcludedLocation,
+            ): ExcludedLocationOperation;
             /** Creates a location exclusion in this campaign. */
             excludeLocation(locationId: number): ExcludedLocationOperation;
             /** Creates a location exclusion in this campaign for the specified JSON. */
-            excludeLocation(location: TargetedLocationObject): ExcludedLocationOperation;
+            excludeLocation(
+                location: TargetedLocationObject,
+            ): ExcludedLocationOperation;
             /** Returns the ad rotation type of the shopping campaign. */
             getAdRotationType(): string;
             /** Returns the bidding strategy type of the shopping campaign. */
@@ -176,7 +193,9 @@ declare namespace GoogleAdsScripts {
             /** Removes a label from the shopping campaign. */
             removeLabel(name: string): void;
             /** Removes a negative keyword list from this campaign. */
-            removeNegativeKeywordList(negativeKeywordList: NegativeKeywordList): void;
+            removeNegativeKeywordList(
+                negativeKeywordList: NegativeKeywordList,
+            ): void;
             /** Sets the ad rotation type of the shopping campaign. */
             setAdRotationType(adRotationType: string): void;
             /** Sets the shopping campaign's end date from either an object containing year, month, and day fields, or an 8-digit string in YYYYMMDD format. */
@@ -214,7 +233,8 @@ declare namespace GoogleAdsScripts {
          *        var shoppingCampaign = shoppingCampaignIterator.next();
          *      }
          */
-        interface ShoppingCampaignIterator extends Base.Iterator<ShoppingCampaign> {}
+        interface ShoppingCampaignIterator
+            extends Base.Iterator<ShoppingCampaign> {}
 
         /**
          * Fetches shopping campaigns. Supports filtering and sorting.
@@ -233,14 +253,12 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ShoppingCampaignSelector
-            extends
-                Base.Selector<ShoppingCampaignIterator>,
+            extends Base.Selector<ShoppingCampaignIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
 
         /**
          * Access to campaign-level targeting criteria.
@@ -267,7 +285,10 @@ declare namespace GoogleAdsScripts {
             /** Specializes this selector to return Platform criteria. */
             platforms(): PlatformSelector;
             /** Sets the targeting setting for this campaign. */
-            setTargetingSetting(criterionTypeGroup: string, targetingSetting: string): void;
+            setTargetingSetting(
+                criterionTypeGroup: string,
+                targetingSetting: string,
+            ): void;
             /** Specializes this selector to return TargetedLocation criteria. */
             targetedLocations(): TargetedLocationSelector;
             /** Specializes this selector to return TargetedProximity criteria. */

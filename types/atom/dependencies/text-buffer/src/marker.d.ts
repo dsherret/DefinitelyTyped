@@ -76,7 +76,10 @@ export interface Marker {
      */
     setRange(
         range: RangeCompatible,
-        params?: { reversed?: boolean | undefined; exclusive?: boolean | undefined },
+        params?: {
+            reversed?: boolean | undefined;
+            exclusive?: boolean | undefined;
+        },
     ): boolean;
 
     /**
@@ -127,7 +130,13 @@ export interface CopyMarkerOptions {
     reversed?: boolean | undefined;
 
     /** Determines the rules by which changes to the buffer invalidate the marker. */
-    invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+    invalidate?:
+        | "never"
+        | "surround"
+        | "overlap"
+        | "inside"
+        | "touch"
+        | undefined;
 
     /**
      *  Indicates whether insertions at the start or end of the marked range should

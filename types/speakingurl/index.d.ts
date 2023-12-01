@@ -15,7 +15,10 @@ interface SpeakingURLOptions {
     custom?: string[] | Dictionary<string> | undefined;
 }
 
-declare function getSlug(input: string, options?: SpeakingURLOptions | string): string;
+declare function getSlug(
+    input: string,
+    options?: SpeakingURLOptions | string,
+): string;
 
 declare namespace getSlug {
     function createSlug(options: SpeakingURLOptions): (input: string) => string;

@@ -31,7 +31,10 @@ const regexRules = {
     default: "never",
 };
 
-const cacheEngine1 = new simpleUrlCache.CacheEngine(fileStorageConfig, regexRules);
+const cacheEngine1 = new simpleUrlCache.CacheEngine(
+    fileStorageConfig,
+    regexRules,
+);
 
 let url1 = cacheEngine1.url("/someUrl.html");
 
@@ -41,7 +44,10 @@ url1.getUrl();
 url1.removeUrl();
 url1.destroy();
 
-const cacheEngine2 = new simpleUrlCache.CacheEngine(redisStorageConfig, regexRules);
+const cacheEngine2 = new simpleUrlCache.CacheEngine(
+    redisStorageConfig,
+    regexRules,
+);
 
 let url2 = cacheEngine2.url("/someUrl.html");
 url2.cache("<b>some HTML");

@@ -25,17 +25,25 @@ export class TestMethods<T extends HTMLElement> {
     /**
      * A set of sort-definitions for testing.
      */
-    protected sorting: readonly SortDefinition[] = [[0, 1], [1, 0]];
+    protected sorting: readonly SortDefinition[] = [
+        [0, 1],
+        [1, 0],
+    ];
 
     /**
      * A set of relative sort-definitions for testing.
      */
-    protected relativeSorting: readonly RelativeSortDefinition[] = [[0, "o"], [1, "s"]];
+    protected relativeSorting: readonly RelativeSortDefinition[] = [
+        [0, "o"],
+        [1, "s"],
+    ];
 
     /**
      * A set of mixed sort-definitions for testing.
      */
-    protected mixedSorting: ReadonlyArray<SortDefinition | RelativeSortDefinition> = [
+    protected mixedSorting: ReadonlyArray<
+        SortDefinition | RelativeSortDefinition
+    > = [
         [0, "d"],
         [1, "o"],
     ];
@@ -129,11 +137,23 @@ export class TestMethods<T extends HTMLElement> {
         // $ExpectType Widget<T>
         $.tablesorter.getColumnData(this.table, { 0: widget, "*": widget }, 0);
         // $ExpectType Widget<T>
-        $.tablesorter.getColumnData(this.table, { 0: widget, "*": widget }, "*");
+        $.tablesorter.getColumnData(
+            this.table,
+            { 0: widget, "*": widget },
+            "*",
+        );
         // $ExpectType Widget<T>
-        $.tablesorter.getColumnData(tableElement, { 0: widget, "*": widget }, 0);
+        $.tablesorter.getColumnData(
+            tableElement,
+            { 0: widget, "*": widget },
+            0,
+        );
         // $ExpectType Widget<T>
-        $.tablesorter.getColumnData(tableElement, { 0: widget, "*": widget }, "*");
+        $.tablesorter.getColumnData(
+            tableElement,
+            { 0: widget, "*": widget },
+            "*",
+        );
 
         $.tablesorter.getColumnText(this.table, 0);
         $.tablesorter.getColumnText(this.table, 0, parsedCellCallback);
@@ -156,7 +176,12 @@ export class TestMethods<T extends HTMLElement> {
         $.tablesorter.getColumnText(tableElement, 0, parsedCellCallback);
         $.tablesorter.getColumnText(tableElement, 0, parsedCellCallback, "*");
         $.tablesorter.getColumnText(tableElement, 0, parsedCellCallback, $());
-        $.tablesorter.getColumnText(tableElement, 0, parsedCellCallback, $()[0]);
+        $.tablesorter.getColumnText(
+            tableElement,
+            0,
+            parsedCellCallback,
+            $()[0],
+        );
         $.tablesorter.getColumnText(
             tableElement,
             0,
@@ -207,7 +232,11 @@ export class TestMethods<T extends HTMLElement> {
         // $ExpectType boolean
         $.tablesorter.isValueInArray(2, this.sorting);
         // $ExpectType boolean
-        $.tablesorter.isValueInArray(2, [[0, "this.table"], [1, 2102311923084], [3, {}]]);
+        $.tablesorter.isValueInArray(2, [
+            [0, "this.table"],
+            [1, 2102311923084],
+            [3, {}],
+        ]);
 
         // $ExpectType void
         $.tablesorter.processTbody(this.table, $());
@@ -272,7 +301,11 @@ export class TestMethods<T extends HTMLElement> {
         $.tablesorter.sortOn(config, this.sorting);
         $.tablesorter.sortOn(config, this.sorting, this.triggerCallback);
         $.tablesorter.sortOn(config, this.relativeSorting);
-        $.tablesorter.sortOn(config, this.relativeSorting, this.triggerCallback);
+        $.tablesorter.sortOn(
+            config,
+            this.relativeSorting,
+            this.triggerCallback,
+        );
         $.tablesorter.sortOn(config, this.mixedSorting);
         $.tablesorter.sortOn(config, this.mixedSorting, this.triggerCallback);
 
@@ -317,7 +350,12 @@ export class TestMethods<T extends HTMLElement> {
         $.tablesorter.updateCell(config, $(), true);
         $.tablesorter.updateCell(config, $(), true, this.triggerCallback);
         $.tablesorter.updateCell(config, $(), this.sorting);
-        $.tablesorter.updateCell(config, $(), this.sorting, this.triggerCallback);
+        $.tablesorter.updateCell(
+            config,
+            $(),
+            this.sorting,
+            this.triggerCallback,
+        );
 
         $.tablesorter.updateHeaders(config);
         $.tablesorter.updateHeaders(config, this.triggerCallback);
@@ -326,13 +364,25 @@ export class TestMethods<T extends HTMLElement> {
         $.tablesorter.filter.bindSearch(tableElement, $(), true);
 
         $.tablesorter.filter.buildSelect(this.table, 0, [1, 2, 3, 4], true);
-        $.tablesorter.filter.buildSelect(this.table, 0, [1, 2, 3, 4], true, true);
+        $.tablesorter.filter.buildSelect(
+            this.table,
+            0,
+            [1, 2, 3, 4],
+            true,
+            true,
+        );
         $.tablesorter.filter.buildSelect(this.table, 0, "", true);
         $.tablesorter.filter.buildSelect(this.table, 0, "", true, true);
         $.tablesorter.filter.buildSelect(this.table, 0, $(), true);
         $.tablesorter.filter.buildSelect(this.table, 0, $(), true, true);
         $.tablesorter.filter.buildSelect(tableElement, 0, [1, 2, 3, 4], true);
-        $.tablesorter.filter.buildSelect(tableElement, 0, [1, 2, 3, 4], true, true);
+        $.tablesorter.filter.buildSelect(
+            tableElement,
+            0,
+            [1, 2, 3, 4],
+            true,
+            true,
+        );
         $.tablesorter.filter.buildSelect(tableElement, 0, "", true);
         $.tablesorter.filter.buildSelect(tableElement, 0, "", true, true);
         $.tablesorter.filter.buildSelect(tableElement, 0, $(), true);

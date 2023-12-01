@@ -26,7 +26,10 @@ interface Result {
     calculate(spec?: Spec): Calculated;
 }
 
-declare function fileSize<T extends Options>(bytes: number, options?: T): Required<T> & Result;
+declare function fileSize<T extends Options>(
+    bytes: number,
+    options?: T,
+): Required<T> & Result;
 
 export as namespace filesize;
 

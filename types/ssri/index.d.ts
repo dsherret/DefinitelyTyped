@@ -35,7 +35,10 @@ export class Integrity {
 
     toJSON(): string;
 
-    toString(opts?: { strict?: boolean | undefined; sep?: string | undefined }): string;
+    toString(opts?: {
+        strict?: boolean | undefined;
+        sep?: string | undefined;
+    }): string;
 
     concat(
         integrity: string | IntegrityLike | HashLike,
@@ -48,7 +51,9 @@ export class Integrity {
         integrity: string | IntegrityLike | HashLike,
         opts?: {
             strict?: boolean | undefined;
-            pickAlgorithm?: ((algo1: string, algo2: string) => string) | undefined;
+            pickAlgorithm?:
+                | ((algo1: string, algo2: string) => string)
+                | undefined;
         },
     ): Hash | false;
 
@@ -98,7 +103,11 @@ export function fromHex(
 export function fromHex(
     hexDigest: string,
     algorithm: string,
-    opts?: { single: true; strict?: boolean | undefined; options?: readonly string[] | undefined },
+    opts?: {
+        single: true;
+        strict?: boolean | undefined;
+        options?: readonly string[] | undefined;
+    },
 ): Hash;
 export function fromHex(
     hexDigest: string,

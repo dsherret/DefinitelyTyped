@@ -35,5 +35,8 @@ declare namespace CoViews {
 /**
  * Pass views `dir` and `opts` to return a render function.
  */
-declare function CoViews(dir?: string, opts?: CoViews.Options): (view: string, locals?: Object) => any;
+declare function CoViews(
+    dir?: string,
+    opts?: CoViews.Options,
+): (view: string, locals?: Object) => any;
 export = CoViews;

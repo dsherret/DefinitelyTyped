@@ -1,1 +1,4 @@
-export default function isScalarAndEqual(valueA: unknown, valueB: unknown): boolean;
+export default function isScalarAndEqual(
+    valueA: unknown,
+    valueB: unknown,
+): boolean;

@@ -15,10 +15,11 @@ declare const spies: any;
 
 // Stub mocha functions
 const { describe, it, before, after, beforeEach, afterEach } = null as any as {
-    [s: string]: ((s: string, cb: (done: any) => void) => void) & ((cb: (done: any) => void) => void) & {
-        only: any;
-        skip: any;
-    };
+    [s: string]: ((s: string, cb: (done: any) => void) => void) &
+        ((cb: (done: any) => void) => void) & {
+            only: any;
+            skip: any;
+        };
 };
 
 // TODO: These aren't useful as types tests since they take `any`.
@@ -44,7 +45,7 @@ let dataWrap = (fn: any) => {
 };
 
 describe("source stream", () => {
-    it("should explode on invalid glob (empty)", done => {
+    it("should explode on invalid glob (empty)", (done) => {
         let stream: any;
         try {
             stream = gulp.src();
@@ -55,7 +56,7 @@ describe("source stream", () => {
         }
     });
 
-    it("should explode on invalid glob (number)", done => {
+    it("should explode on invalid glob (number)", (done) => {
         let stream: any;
         try {
             stream = gulp.src(123);
@@ -66,7 +67,7 @@ describe("source stream", () => {
         }
     });
 
-    it("should explode on invalid glob (empty array)", done => {
+    it("should explode on invalid glob (empty array)", (done) => {
         let stream: any;
         try {
             stream = gulp.src([]);
@@ -77,7 +78,7 @@ describe("source stream", () => {
         }
     });
 
-    it("should pass through writes", done => {
+    it("should pass through writes", (done) => {
         const expectedPath = path.join(__dirname, "./fixtures/test.coffee");
         const expectedContent = fs.readFileSync(expectedPath);
 
@@ -98,13 +99,16 @@ describe("source stream", () => {
         const stream = vfs.src("./fixtures/nothing.coffee");
 
         const buffered: any[] = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
         stream.write(expectedFile);
         stream.end();
     });
 
-    it("should glob a file with default settings", done => {
+    it("should glob a file with default settings", (done) => {
         const expectedPath = path.join(__dirname, "./fixtures/test.coffee");
         const expectedContent = fs.readFileSync(expectedPath);
 
@@ -120,11 +124,14 @@ describe("source stream", () => {
         const stream = vfs.src("./fixtures/*.coffee", { cwd: __dirname });
 
         const buffered: any[] = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
     });
 
-    it("should glob a file with default settings and relative cwd", done => {
+    it("should glob a file with default settings and relative cwd", (done) => {
         const expectedPath = path.join(__dirname, "./fixtures/test.coffee");
         const expectedContent = fs.readFileSync(expectedPath);
 
@@ -137,14 +144,19 @@ describe("source stream", () => {
             done();
         };
 
-        const stream = vfs.src("./fixtures/*.coffee", { cwd: path.relative(process.cwd(), __dirname) });
+        const stream = vfs.src("./fixtures/*.coffee", {
+            cwd: path.relative(process.cwd(), __dirname),
+        });
 
         const buffered: any[] = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
     });
 
-    it("should glob a directory with default settings", done => {
+    it("should glob a directory with default settings", (done) => {
         const expectedPath = path.join(__dirname, "./fixtures/wow");
 
         const onEnd = () => {
@@ -158,11 +170,14 @@ describe("source stream", () => {
         const stream = vfs.src("./fixtures/wow/", { cwd: __dirname });
 
         const buffered: any[] = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
     });
 
-    it("should glob a file with with no contents", done => {
+    it("should glob a file with with no contents", (done) => {
         const expectedPath = path.join(__dirname, "./fixtures/test.coffee");
         const expectedContent = fs.readFileSync(expectedPath);
 
@@ -174,14 +189,20 @@ describe("source stream", () => {
             done();
         };
 
-        const stream = vfs.src("./fixtures/*.coffee", { cwd: __dirname, read: false });
+        const stream = vfs.src("./fixtures/*.coffee", {
+            cwd: __dirname,
+            read: false,
+        });
 
         const buffered: any = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
     });
 
-    it("should glob a file with streaming contents", done => {
+    it("should glob a file with streaming contents", (done) => {
         const expectedPath = path.join(__dirname, "./fixtures/test.coffee");
         const expectedContent = fs.readFileSync(expectedPath);
 
@@ -192,9 +213,11 @@ describe("source stream", () => {
             buffered[0].isStream().should.equal(true);
 
             let contentBuffer = new Buffer([]);
-            const contentBufferStream = through(dataWrap((data: any) => {
-                contentBuffer = Buffer.concat([contentBuffer, data]);
-            }));
+            const contentBufferStream = through(
+                dataWrap((data: any) => {
+                    contentBuffer = Buffer.concat([contentBuffer, data]);
+                }),
+            );
             buffered[0].contents.pipe(contentBufferStream);
             buffered[0].contents.once("end", () => {
                 bufEqual(contentBuffer, expectedContent);
@@ -202,10 +225,16 @@ describe("source stream", () => {
             });
         };
 
-        const stream = vfs.src("./fixtures/*.coffee", { cwd: __dirname, buffer: false });
+        const stream = vfs.src("./fixtures/*.coffee", {
+            cwd: __dirname,
+            buffer: false,
+        });
 
         const buffered: any = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
     });
 });
@@ -244,7 +273,7 @@ describe("dest stream", () => {
     beforeEach(wipeOut);
     afterEach(wipeOut);
 
-    it("should explode on invalid folder", done => {
+    it("should explode on invalid folder", (done) => {
         let stream: any;
         try {
             stream = gulp.dest();
@@ -255,7 +284,7 @@ describe("dest stream", () => {
         }
     });
 
-    it("should pass through writes with cwd", done => {
+    it("should pass through writes with cwd", (done) => {
         const inputPath = path.join(__dirname, "./fixtures/test.coffee");
 
         const expectedFile = new File({
@@ -274,13 +303,16 @@ describe("dest stream", () => {
         const stream = vfs.dest("./out-fixtures/", { cwd: __dirname });
 
         const buffered: any[] = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
         stream.write(expectedFile);
         stream.end();
     });
 
-    it("should pass through writes with default cwd", done => {
+    it("should pass through writes with default cwd", (done) => {
         const inputPath = path.join(__dirname, "./fixtures/test.coffee");
 
         const expectedFile = new File({
@@ -299,13 +331,16 @@ describe("dest stream", () => {
         const stream = vfs.dest(path.join(__dirname, "./out-fixtures/"));
 
         const buffered: any[] = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
         stream.write(expectedFile);
         stream.end();
     });
 
-    it("should not write null files", done => {
+    it("should not write null files", (done) => {
         const inputPath = path.join(__dirname, "./fixtures/test.coffee");
         const inputBase = path.join(__dirname, "./fixtures/");
         const expectedPath = path.join(__dirname, "./out-fixtures/test.coffee");
@@ -322,9 +357,18 @@ describe("dest stream", () => {
         const onEnd = () => {
             buffered.length.should.equal(1);
             buffered[0].should.equal(expectedFile);
-            buffered[0].cwd.should.equal(expectedCwd, "cwd should have changed");
-            buffered[0].base.should.equal(expectedBase, "base should have changed");
-            buffered[0].path.should.equal(expectedPath, "path should have changed");
+            buffered[0].cwd.should.equal(
+                expectedCwd,
+                "cwd should have changed",
+            );
+            buffered[0].base.should.equal(
+                expectedBase,
+                "base should have changed",
+            );
+            buffered[0].path.should.equal(
+                expectedPath,
+                "path should have changed",
+            );
             fs.existsSync(expectedPath).should.equal(false);
             done();
         };
@@ -332,13 +376,16 @@ describe("dest stream", () => {
         const stream = vfs.dest("./out-fixtures/", { cwd: __dirname });
 
         const buffered: any[] = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
         stream.write(expectedFile);
         stream.end();
     });
 
-    it("should write buffer files to the right folder with relative cwd", done => {
+    it("should write buffer files to the right folder with relative cwd", (done) => {
         const inputPath = path.join(__dirname, "./fixtures/test.coffee");
         const inputBase = path.join(__dirname, "./fixtures/");
         const expectedPath = path.join(__dirname, "./out-fixtures/test.coffee");
@@ -356,24 +403,41 @@ describe("dest stream", () => {
         const onEnd = () => {
             buffered.length.should.equal(1);
             buffered[0].should.equal(expectedFile);
-            buffered[0].cwd.should.equal(expectedCwd, "cwd should have changed");
-            buffered[0].base.should.equal(expectedBase, "base should have changed");
-            buffered[0].path.should.equal(expectedPath, "path should have changed");
+            buffered[0].cwd.should.equal(
+                expectedCwd,
+                "cwd should have changed",
+            );
+            buffered[0].base.should.equal(
+                expectedBase,
+                "base should have changed",
+            );
+            buffered[0].path.should.equal(
+                expectedPath,
+                "path should have changed",
+            );
             fs.existsSync(expectedPath).should.equal(true);
-            bufEqual(fs.readFileSync(expectedPath), expectedContents).should.equal(true);
+            bufEqual(
+                fs.readFileSync(expectedPath),
+                expectedContents,
+            ).should.equal(true);
             done();
         };
 
-        const stream = vfs.dest("./out-fixtures/", { cwd: path.relative(process.cwd(), __dirname) });
+        const stream = vfs.dest("./out-fixtures/", {
+            cwd: path.relative(process.cwd(), __dirname),
+        });
 
         const buffered: any = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
         stream.write(expectedFile);
         stream.end();
     });
 
-    it("should write buffer files to the right folder", done => {
+    it("should write buffer files to the right folder", (done) => {
         const inputPath = path.join(__dirname, "./fixtures/test.coffee");
         const inputBase = path.join(__dirname, "./fixtures/");
         const expectedPath = path.join(__dirname, "./out-fixtures/test.coffee");
@@ -387,33 +451,50 @@ describe("dest stream", () => {
             cwd: __dirname,
             path: inputPath,
             contents: expectedContents,
-            stat: <any> {
+            stat: (<any>{
                 mode: expectedMode,
-            } as fs.Stats,
+            }) as fs.Stats,
         });
 
         const onEnd = () => {
             buffered.length.should.equal(1);
             buffered[0].should.equal(expectedFile);
-            buffered[0].cwd.should.equal(expectedCwd, "cwd should have changed");
-            buffered[0].base.should.equal(expectedBase, "base should have changed");
-            buffered[0].path.should.equal(expectedPath, "path should have changed");
+            buffered[0].cwd.should.equal(
+                expectedCwd,
+                "cwd should have changed",
+            );
+            buffered[0].base.should.equal(
+                expectedBase,
+                "base should have changed",
+            );
+            buffered[0].path.should.equal(
+                expectedPath,
+                "path should have changed",
+            );
             fs.existsSync(expectedPath).should.equal(true);
-            bufEqual(fs.readFileSync(expectedPath), expectedContents).should.equal(true);
-            realMode(fs.lstatSync(expectedPath).mode).should.equal(expectedMode);
+            bufEqual(
+                fs.readFileSync(expectedPath),
+                expectedContents,
+            ).should.equal(true);
+            realMode(fs.lstatSync(expectedPath).mode).should.equal(
+                expectedMode,
+            );
             done();
         };
 
         const stream = vfs.dest("./out-fixtures/", { cwd: __dirname });
 
         const buffered: any[] = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
         stream.write(expectedFile);
         stream.end();
     });
 
-    it("should write streaming files to the right folder", done => {
+    it("should write streaming files to the right folder", (done) => {
         const inputPath = path.join(__dirname, "./fixtures/test.coffee");
         const inputBase = path.join(__dirname, "./fixtures/");
         const expectedPath = path.join(__dirname, "./out-fixtures/test.coffee");
@@ -428,27 +509,44 @@ describe("dest stream", () => {
             cwd: __dirname,
             path: inputPath,
             contents: contentStream,
-            stat: <any> {
+            stat: (<any>{
                 mode: expectedMode,
-            } as fs.Stats,
+            }) as fs.Stats,
         });
 
         const onEnd = () => {
             buffered.length.should.equal(1);
             buffered[0].should.equal(expectedFile);
-            buffered[0].cwd.should.equal(expectedCwd, "cwd should have changed");
-            buffered[0].base.should.equal(expectedBase, "base should have changed");
-            buffered[0].path.should.equal(expectedPath, "path should have changed");
+            buffered[0].cwd.should.equal(
+                expectedCwd,
+                "cwd should have changed",
+            );
+            buffered[0].base.should.equal(
+                expectedBase,
+                "base should have changed",
+            );
+            buffered[0].path.should.equal(
+                expectedPath,
+                "path should have changed",
+            );
             fs.existsSync(expectedPath).should.equal(true);
-            bufEqual(fs.readFileSync(expectedPath), expectedContents).should.equal(true);
-            realMode(fs.lstatSync(expectedPath).mode).should.equal(expectedMode);
+            bufEqual(
+                fs.readFileSync(expectedPath),
+                expectedContents,
+            ).should.equal(true);
+            realMode(fs.lstatSync(expectedPath).mode).should.equal(
+                expectedMode,
+            );
             done();
         };
 
         const stream = vfs.dest("./out-fixtures/", { cwd: __dirname });
 
         const buffered: any = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
         stream.write(expectedFile);
         setTimeout(() => {
@@ -458,7 +556,7 @@ describe("dest stream", () => {
         stream.end();
     });
 
-    it("should write directories to the right folder", done => {
+    it("should write directories to the right folder", (done) => {
         const inputPath = path.join(__dirname, "./fixtures/test");
         const inputBase = path.join(__dirname, "./fixtures/");
         const expectedPath = path.join(__dirname, "./out-fixtures/test");
@@ -471,42 +569,62 @@ describe("dest stream", () => {
             cwd: __dirname,
             path: inputPath,
             contents: null,
-            stat: <any> {
+            stat: (<any>{
                 isDirectory: () => true,
                 mode: expectedMode,
-            } as fs.Stats,
+            }) as fs.Stats,
         });
 
         const onEnd = () => {
             buffered.length.should.equal(1);
             buffered[0].should.equal(expectedFile);
-            buffered[0].cwd.should.equal(expectedCwd, "cwd should have changed");
-            buffered[0].base.should.equal(expectedBase, "base should have changed");
-            buffered[0].path.should.equal(expectedPath, "path should have changed");
+            buffered[0].cwd.should.equal(
+                expectedCwd,
+                "cwd should have changed",
+            );
+            buffered[0].base.should.equal(
+                expectedBase,
+                "base should have changed",
+            );
+            buffered[0].path.should.equal(
+                expectedPath,
+                "path should have changed",
+            );
             fs.existsSync(expectedPath).should.equal(true);
             fs.lstatSync(expectedPath).isDirectory().should.equal(true);
-            realMode(fs.lstatSync(expectedPath).mode).should.equal(expectedMode);
+            realMode(fs.lstatSync(expectedPath).mode).should.equal(
+                expectedMode,
+            );
             done();
         };
 
         const stream = vfs.dest("./out-fixtures/", { cwd: __dirname });
 
         const buffered: any[] = [];
-        bufferStream = through.obj(dataWrap(buffered.push.bind(buffered)), onEnd);
+        bufferStream = through.obj(
+            dataWrap(buffered.push.bind(buffered)),
+            onEnd,
+        );
         stream.pipe(bufferStream);
         stream.write(expectedFile);
         stream.end();
     });
 
-    it("should allow piping multiple dests in streaming mode", done => {
-        const inputPath1 = path.join(__dirname, "./out-fixtures/multiple-first");
-        const inputPath2 = path.join(__dirname, "./out-fixtures/multiple-second");
+    it("should allow piping multiple dests in streaming mode", (done) => {
+        const inputPath1 = path.join(
+            __dirname,
+            "./out-fixtures/multiple-first",
+        );
+        const inputPath2 = path.join(
+            __dirname,
+            "./out-fixtures/multiple-second",
+        );
         const inputBase = path.join(__dirname, "./out-fixtures/");
         const srcPath = path.join(__dirname, "./fixtures/test.coffee");
         const stream1 = vfs.dest("./out-fixtures/", { cwd: __dirname });
         const stream2 = vfs.dest("./out-fixtures/", { cwd: __dirname });
         const content = fs.readFileSync(srcPath);
-        const rename = through.obj(function(file: any, _: any, next: any) {
+        const rename = through.obj(function (file: any, _: any, next: any) {
             file.path = inputPath2;
             this.push(file);
             next();
@@ -517,13 +635,19 @@ describe("dest stream", () => {
         });
 
         stream1.pipe(rename).pipe(stream2);
-        stream2.on("data", (file: any) => {
-            file.path.should.equal(inputPath2);
-        }).once("end", () => {
-            fs.readFileSync(inputPath1, "utf8").should.equal(content.toString());
-            fs.readFileSync(inputPath2, "utf8").should.equal(content.toString());
-            done();
-        });
+        stream2
+            .on("data", (file: any) => {
+                file.path.should.equal(inputPath2);
+            })
+            .once("end", () => {
+                fs.readFileSync(inputPath1, "utf8").should.equal(
+                    content.toString(),
+                );
+                fs.readFileSync(inputPath2, "utf8").should.equal(
+                    content.toString(),
+                );
+                done();
+            });
 
         const file = new File({
             base: inputBase,

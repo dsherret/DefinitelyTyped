@@ -22,7 +22,10 @@ export const on: OnModifier;
  *   manager](https://emberjs.github.io/rfcs/0373-Element-Modifier-Managers.html).
  * @param modifier The modifier definition to associate with the manager.
  */
-export function setModifierManager<T>(factory: (owner: Owner) => unknown, modifier: T): T;
+export function setModifierManager<T>(
+    factory: (owner: Owner) => unknown,
+    modifier: T,
+): T;
 
 export interface ModifierCapabilitiesVersions {
     // passes factoryFor(...).class to `.createModifier`
@@ -40,7 +43,9 @@ export interface ModifierCapabilities {
  * Given a target version of Ember, return an opaque token which Ember can use
  * to determine what a given modifier manager supports.
  */
-export function capabilities<Version extends keyof ModifierCapabilitiesVersions>(
+export function capabilities<
+    Version extends keyof ModifierCapabilitiesVersions,
+>(
     managerAPI: Version,
     optionalFeatures?: ModifierCapabilitiesVersions[Version],
 ): ModifierCapabilities;

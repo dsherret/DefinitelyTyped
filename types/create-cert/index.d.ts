@@ -1,6 +1,8 @@
 import { CertificateCreationOptions } from "pem";
 
-declare function createCert(opts?: createCert.Options | string): Promise<createCert.CertificateData>;
+declare function createCert(
+    opts?: createCert.Options | string,
+): Promise<createCert.CertificateData>;
 
 export = createCert;
 

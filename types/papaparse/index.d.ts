@@ -13,7 +13,10 @@ export {}; // Don't export all declarations!
  * @returns Doesn't return anything. Results are provided asynchronously to a callback function.
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function parse<T, TFile extends LocalFile = LocalFile>(file: TFile, config: ParseLocalConfig<T, TFile>): void;
+export function parse<T, TFile extends LocalFile = LocalFile>(
+    file: TFile,
+    config: ParseLocalConfig<T, TFile>,
+): void;
 /**
  * Parse remote files
  * @param url the path or URL to the file to download.
@@ -30,7 +33,10 @@ export function parse<T>(url: string, config: ParseRemoteConfig<T>): void;
  */
 /* eslint-disable @definitelytyped/no-unnecessary-generics */
 // tslint:disable-next-line:unified-signatures
-export function parse<T>(csvString: string, config: ParseWorkerConfig<T> & { download?: false | undefined }): void;
+export function parse<T>(
+    csvString: string,
+    config: ParseWorkerConfig<T> & { download?: false | undefined },
+): void;
 /* eslint-enable @definitelytyped/no-unnecessary-generics */
 /**
  * Parse string
@@ -40,7 +46,10 @@ export function parse<T>(csvString: string, config: ParseWorkerConfig<T> & { dow
  */
 export function parse<T>(
     csvString: string,
-    config?: ParseConfig<T> & { download?: false | undefined; worker?: false | undefined },
+    config?: ParseConfig<T> & {
+        download?: false | undefined;
+        worker?: false | undefined;
+    },
 ): ParseResult<T>;
 /**
  * Parse string, remote files or  local files
@@ -50,10 +59,12 @@ export function parse<T>(
  */
 export function parse<T>(
     source: LocalFile | string,
-    config:
-        & ParseLocalConfig<T, LocalFile>
-        & (
-            | (ParseConfig<T> & { download?: false | undefined; worker?: false | undefined })
+    config: ParseLocalConfig<T, LocalFile> &
+        (
+            | (ParseConfig<T> & {
+                  download?: false | undefined;
+                  worker?: false | undefined;
+              })
             | (ParseWorkerConfig<T> & { download?: false | undefined })
             | ParseRemoteConfig<T>
         ),
@@ -66,14 +77,20 @@ export function parse<T>(
  *
  * @see https://github.com/mholt/PapaParse#papa-parse-for-node
  */
-export function parse(stream: typeof NODE_STREAM_INPUT, config?: ParseConfig): Duplex;
+export function parse(
+    stream: typeof NODE_STREAM_INPUT,
+    config?: ParseConfig,
+): Duplex;
 
 /**
  * Unparses javascript data objects and returns a csv string
  * @param data can be one of: An array of arrays; An array of objects; An object explicitly defining `fields` and `data`
  * @param config an optional config object
  */
-export function unparse<T>(data: T[] | UnparseObject<T>, config?: UnparseConfig): string;
+export function unparse<T>(
+    data: T[] | UnparseObject<T>,
+    config?: UnparseConfig,
+): string;
 
 /**
  * Read-Only Properties
@@ -271,7 +288,8 @@ export interface ParseWorkerConfig<T = any> extends ParseConfig<T> {
 }
 
 // Base interface for all async parsing
-interface ParseAsyncConfigBase<T = any, TInput = undefined> extends ParseConfig<T, TInput> {
+interface ParseAsyncConfigBase<T = any, TInput = undefined>
+    extends ParseConfig<T, TInput> {
     /**
      * Whether or not to use a worker thread.
      * Using a worker will keep your page reactive, but may be slightly slower.
@@ -297,16 +315,19 @@ interface ParseAsyncConfigBase<T = any, TInput = undefined> extends ParseConfig<
 }
 
 // Async parsing local file can specify encoding
-interface ParseLocalConfigBase<T = any, TInput = undefined> extends ParseAsyncConfigBase<T, TInput> {
+interface ParseLocalConfigBase<T = any, TInput = undefined>
+    extends ParseAsyncConfigBase<T, TInput> {
     /** The encoding to use when opening local files. If specified, it must be a value supported by the FileReader API. */
     encoding?: string | undefined;
 }
 
-interface ParseLocalConfigStep<T = any, TInput = undefined> extends ParseLocalConfigBase<T, TInput> {
+interface ParseLocalConfigStep<T = any, TInput = undefined>
+    extends ParseLocalConfigBase<T, TInput> {
     /** @inheritdoc */
     step(results: ParseStepResult<T>, parser: Parser): void;
 }
-interface ParseLocalConfigNoStep<T = any, TInput = undefined> extends ParseLocalConfigBase<T, TInput> {
+interface ParseLocalConfigNoStep<T = any, TInput = undefined>
+    extends ParseLocalConfigBase<T, TInput> {
     /** @inheritdoc */
     complete(results: ParseResult<T>, file: TInput): void;
 }
@@ -317,7 +338,8 @@ export type ParseLocalConfig<T = any, TInput = undefined> =
     | ParseLocalConfigNoStep<T, TInput>;
 
 // Remote parsing has options for the backing web request
-interface ParseRemoteConfigBase<T = any> extends ParseAsyncConfigBase<T, string> {
+interface ParseRemoteConfigBase<T = any>
+    extends ParseAsyncConfigBase<T, string> {
     /**
      * This indicates that the string you passed as the first argument to `parse()`
      * is actually a URL from which to download a file and parse its contents.
@@ -333,7 +355,13 @@ interface ParseRemoteConfigBase<T = any> extends ParseAsyncConfigBase<T, string>
      * Use POST request on the URL of the download option. The value passed will be set as the body of the request.
      * @default undefined
      */
-    downloadRequestBody?: Blob | BufferSource | FormData | URLSearchParams | string | undefined;
+    downloadRequestBody?:
+        | Blob
+        | BufferSource
+        | FormData
+        | URLSearchParams
+        | string
+        | undefined;
     /**
      * A boolean value passed directly into XMLHttpRequest's "withCredentials" property.
      * @default undefined
@@ -351,7 +379,9 @@ interface ParseRemoteConfigNoStep<T = any> extends ParseRemoteConfigBase<T> {
 }
 
 // Remote parsing is async and thus must specify either `step` or `complete` (but may specify both)
-export type ParseRemoteConfig<T = any> = ParseRemoteConfigStep<T> | ParseRemoteConfigNoStep<T>;
+export type ParseRemoteConfig<T = any> =
+    | ParseRemoteConfigStep<T>
+    | ParseRemoteConfigNoStep<T>;
 
 export interface UnparseConfig {
     /**
@@ -364,7 +394,11 @@ export interface UnparseConfig {
      *
      * @default false
      */
-    quotes?: boolean | boolean[] | ((value: any, columnIndex: number) => boolean) | undefined;
+    quotes?:
+        | boolean
+        | boolean[]
+        | ((value: any, columnIndex: number) => boolean)
+        | undefined;
     /**
      * The character used to quote fields.
      * @default '"'
@@ -424,7 +458,12 @@ export interface ParseError {
     /** A generalization of the error */
     type: "Quotes" | "Delimiter" | "FieldMismatch";
     /** Standardized error code */
-    code: "MissingQuotes" | "UndetectableDelimiter" | "TooFewFields" | "TooManyFields" | "InvalidQuotes";
+    code:
+        | "MissingQuotes"
+        | "UndetectableDelimiter"
+        | "TooFewFields"
+        | "TooManyFields"
+        | "InvalidQuotes";
     /** Human-readable details */
     message: string;
     /** Row index of parsed data where error is */

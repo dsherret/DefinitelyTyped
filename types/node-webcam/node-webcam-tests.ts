@@ -65,20 +65,26 @@ NodeWebcam.capture("test_picture", opts, (err, data) => {
 
 // Get list of cameras
 
-Webcam.list(list => {
+Webcam.list((list) => {
     // Use another device
 
-    const cam = NodeWebcam.Factory.create({ ...opts, device: list[0] }, "linux");
+    const cam = NodeWebcam.Factory.create(
+        { ...opts, device: list[0] },
+        "linux",
+    );
     cam.capture("pictures/picture_" + new Date().getTime(), (err, data) => {
         data && console.info("data", data);
         err && console.error("err", err);
     });
 });
 
-NodeWebcam.list(list => {
+NodeWebcam.list((list) => {
     // Use another device
     console.info("list", list);
-    const camera = NodeWebcam.Factory.create({ ...opts, device: list[0] }, "linux");
+    const camera = NodeWebcam.Factory.create(
+        { ...opts, device: list[0] },
+        "linux",
+    );
 
     camera.capture("pictures/picture_" + new Date().getTime(), (err, data) => {
         data && console.info("data", data);

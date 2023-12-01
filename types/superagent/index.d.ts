@@ -15,11 +15,20 @@ declare namespace request {
 
     type BrowserParser = (str: string) => any;
 
-    type NodeParser = (res: request.Response, callback: (err: Error | null, body: any) => void) => void;
+    type NodeParser = (
+        res: request.Response,
+        callback: (err: Error | null, body: any) => void,
+    ) => void;
 
     type Parser = BrowserParser | NodeParser;
 
-    type MultipartValueSingle = Blob | Buffer | fs.ReadStream | string | boolean | number;
+    type MultipartValueSingle =
+        | Blob
+        | Buffer
+        | fs.ReadStream
+        | string
+        | boolean
+        | number;
 
     type MultipartValue = MultipartValueSingle | MultipartValueSingle[];
 
@@ -123,15 +132,33 @@ declare namespace request {
         attach(
             field: string,
             file: MultipartValueSingle,
-            options?: string | { filename?: string | undefined; contentType?: string | undefined },
+            options?:
+                | string
+                | {
+                      filename?: string | undefined;
+                      contentType?: string | undefined;
+                  },
         ): this;
-        auth(user: string, pass: string, options?: { type: "basic" | "auto" }): this;
+        auth(
+            user: string,
+            pass: string,
+            options?: { type: "basic" | "auto" },
+        ): this;
         auth(token: string, options: { type: "bearer" }): this;
         buffer(val?: boolean): this;
         ca(cert: string | string[] | Buffer | Buffer[]): this;
         cert(cert: string | string[] | Buffer | Buffer[]): this;
         clearTimeout(): this;
-        connect(override: string | { [hostname: string]: false | string | { host: string; port: number } }): this;
+        connect(
+            override:
+                | string
+                | {
+                      [hostname: string]:
+                          | false
+                          | string
+                          | { host: string; port: number };
+                  },
+        ): this;
         disableTLSCerts(): this;
         end(callback?: CallbackHandler): void;
         field(name: string, val: MultipartValue): this;
@@ -146,7 +173,14 @@ declare namespace request {
         on(name: string, handler: (event: any) => void): this;
         parse(parser: Parser): this;
         part(): this;
-        pfx(cert: string | string[] | Buffer | Buffer[] | { pfx: string | Buffer; passphrase: string }): this;
+        pfx(
+            cert:
+                | string
+                | string[]
+                | Buffer
+                | Buffer[]
+                | { pfx: string | Buffer; passphrase: string },
+        ): this;
         pipe(stream: NodeJS.WritableStream, options?: object): stream.Writable;
         query(val: object | string): this;
         redirects(n: number): this;
@@ -157,7 +191,14 @@ declare namespace request {
         set(field: object): this;
         set(field: string, val: string): this;
         set(field: "Cookie", val: string[]): this;
-        timeout(ms: number | { deadline?: number | undefined; response?: number | undefined }): this;
+        timeout(
+            ms:
+                | number
+                | {
+                      deadline?: number | undefined;
+                      response?: number | undefined;
+                  },
+        ): this;
         trustLocalhost(enabled?: boolean): this;
         type(val: string): this;
         unset(field: string): this;

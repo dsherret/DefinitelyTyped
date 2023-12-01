@@ -5,11 +5,16 @@ import EncodingDown from "encoding-down";
 import levelup = require("levelup");
 
 declare namespace Level {
-    interface LevelDB<K = any, V = any> extends levelup.LevelUp<EncodingDown<K, V>> {
+    interface LevelDB<K = any, V = any>
+        extends levelup.LevelUp<EncodingDown<K, V>> {
         errors: typeof levelup.errors;
     }
     interface Constructor {
-        (location: string, options?: AbstractOptions, callback?: ErrorCallback): LevelDB;
+        (
+            location: string,
+            options?: AbstractOptions,
+            callback?: ErrorCallback,
+        ): LevelDB;
     }
 }
 

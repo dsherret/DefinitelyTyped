@@ -76,11 +76,16 @@ declare namespace proj4 {
      * @deprecated v3
      */
     function Point(x: number, y: number, z?: number): InterfaceCoordinates;
-    function Point(coordinates: TemplateCoordinates | string): InterfaceCoordinates;
+    function Point(
+        coordinates: TemplateCoordinates | string,
+    ): InterfaceCoordinates;
 
     function toPoint(array: number[]): InterfaceCoordinates;
 
-    function defs(name: string, projection: string | ProjectionDefinition): void;
+    function defs(
+        name: string,
+        projection: string | ProjectionDefinition,
+    ): void;
     function defs(name: string[][]): undefined[];
     function defs(name: string): ProjectionDefinition;
     function nadgrid(key: string, grid: ArrayBuffer): void;
@@ -96,7 +101,10 @@ declare namespace proj4 {
     const version: string;
 }
 
-declare function proj4(fromProjection: string, toProjection?: string): proj4.Converter;
+declare function proj4(
+    fromProjection: string,
+    toProjection?: string,
+): proj4.Converter;
 declare function proj4<T extends proj4.TemplateCoordinates>(
     toProjection: string,
     coordinates: T,

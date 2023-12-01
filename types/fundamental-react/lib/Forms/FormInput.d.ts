@@ -10,10 +10,17 @@ export type FormInputProps = {
     placeholder?: string | undefined;
     readOnly?: boolean | undefined;
     type?: string | undefined;
-    validationState?: {
-        state?: "error" | "warning" | "information" | "success" | undefined;
-        text?: string | undefined;
-    } | undefined;
+    validationState?:
+        | {
+              state?:
+                  | "error"
+                  | "warning"
+                  | "information"
+                  | "success"
+                  | undefined;
+              text?: string | undefined;
+          }
+        | undefined;
     value?: string | number | undefined;
 } & { [x: string]: any };
 

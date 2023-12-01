@@ -6,7 +6,7 @@ import { EntityManager } from "./EntityManager";
 import { Telegram } from "./Telegram";
 
 export interface GameEntityConstructor {
-    new(): GameEntity;
+    new (): GameEntity;
 }
 
 /**
@@ -200,7 +200,10 @@ export class GameEntity {
      * @param renderComponent - A renderable component of a 3D engine.
      * @param callback - A callback that can be used to sync this game entity with the renderable component.
      */
-    setRenderComponent<ComponentType>(renderComponent: ComponentType, callback: RenderCallback<ComponentType>): this;
+    setRenderComponent<ComponentType>(
+        renderComponent: ComponentType,
+        callback: RenderCallback<ComponentType>,
+    ): this;
 
     /**
      * Holds the implementation for the message handling of this game entity.
@@ -230,7 +233,12 @@ export class GameEntity {
      * @param delay - A time value in millisecond used to delay the message dispatching.
      * @param data - An object for custom data.
      */
-    sendMessage(receiver: GameEntity, message: string, delay?: number, data?: object | null): this;
+    sendMessage(
+        receiver: GameEntity,
+        message: string,
+        delay?: number,
+        data?: object | null,
+    ): this;
 
     /**
      * Transforms this instance into a JSON object.
@@ -259,4 +267,7 @@ export class GameEntity {
     updateWorldMatrix(): void;
 }
 
-export type RenderCallback<ComponentType> = (entity: GameEntity, renderComponent: ComponentType) => void;
+export type RenderCallback<ComponentType> = (
+    entity: GameEntity,
+    renderComponent: ComponentType,
+) => void;

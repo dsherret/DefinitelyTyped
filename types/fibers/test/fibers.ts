@@ -33,7 +33,11 @@ const fibonacciGeneratorFiberTest = () => {
     const Fibonacci = () => {
         // Create a new fiber which yields sequential Fibonacci numbers
         const fiber = Fiber(() => {
-            for (let [curr, prev] = [0, 1];; [curr, prev] = [curr + prev, curr]) {
+            for (
+                let [curr, prev] = [0, 1];
+                ;
+                [curr, prev] = [curr + prev, curr]
+            ) {
                 Fiber.yield(curr);
             }
         });

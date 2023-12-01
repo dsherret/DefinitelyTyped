@@ -12,7 +12,11 @@ declare namespace TypeCheck {
 
     export interface TC {
         VERSION: string;
-        typeCheck: (typeDescription: string, inst: any, options?: Options) => boolean;
+        typeCheck: (
+            typeDescription: string,
+            inst: any,
+            options?: Options,
+        ) => boolean;
         parseType: (typeDescription: string) => Object;
         parsedTypeCheck: (parsedType: any, obj: any) => boolean;
     }

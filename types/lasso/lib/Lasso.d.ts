@@ -25,7 +25,11 @@ export type LassoPage = (
     options: PageConfig,
     callback?: (err: Error | null, result: LassoPageResult) => void,
 ) => Promise<any>;
-export type LassoResource = (path: string, options?: any, callback?: Callback) => void;
+export type LassoResource = (
+    path: string,
+    options?: any,
+    callback?: Callback,
+) => void;
 
 export interface CustomPlugin {
     plugin: string;
@@ -65,10 +69,25 @@ export default class Lasso extends EventEmitter {
     writer: writers.Writer;
 
     initPlugins(): void;
-    createAppBundleMappings(bundleSetConfig: any, lassoContext: LassoContext, callback: Callback): any;
-    buildPageBundles(options: any, lassoContext: LassoContext, callback: Callback): void;
-    getAppBundleMappingsCached(bundleSetConfig: any, lassoContext: LassoContext, callback: Callback): void;
-    buildLassoCacheKey(lassoContext: LassoContext): { value: string; parts: string[] };
+    createAppBundleMappings(
+        bundleSetConfig: any,
+        lassoContext: LassoContext,
+        callback: Callback,
+    ): any;
+    buildPageBundles(
+        options: any,
+        lassoContext: LassoContext,
+        callback: Callback,
+    ): void;
+    getAppBundleMappingsCached(
+        bundleSetConfig: any,
+        lassoContext: LassoContext,
+        callback: Callback,
+    ): void;
+    buildLassoCacheKey(lassoContext: LassoContext): {
+        value: string;
+        parts: string[];
+    };
     getLassoCache(lassoContext: LassoContext): any;
     getConfig(): LassoConfig;
     getJavaScriptDependencyHtml(url: string, attributes?: any): string;

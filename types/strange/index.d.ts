@@ -25,14 +25,22 @@ interface RangeConstructor {
      * @param end Range's end, or right endpoint.
      * @param bounds Range's bounds.
      */
-    new<T extends Range.Endpoint>(begin?: T | null, end?: T | null, bounds?: Range.Bounds): Range<T>;
+    new <T extends Range.Endpoint>(
+        begin?: T | null,
+        end?: T | null,
+        bounds?: Range.Bounds,
+    ): Range<T>;
 
     /**
      * @param begin Range's beginning, or left endpoint.
      * @param end Range's end, or right endpoint.
      * @param bounds Range's bounds.
      */
-    <T extends Range.Endpoint>(begin?: T | null, end?: T | null, bounds?: Range.Bounds): Range<T>;
+    <T extends Range.Endpoint>(
+        begin?: T | null,
+        end?: T | null,
+        bounds?: Range.Bounds,
+    ): Range<T>;
 
     /**
      * Compares two range's beginnings.
@@ -44,7 +52,10 @@ interface RangeConstructor {
      * Range.compareBeginToBegin(new Range(0, 10), new Range(0, 15)) // => 0
      * Range.compareBeginToBegin(new Range(0, 10), new Range(0, 15, "()")) // => 1
      */
-    compareBeginToBegin<U extends Range.Endpoint>(a: Range<U>, b: Range<U>): -1 | 0 | 1;
+    compareBeginToBegin<U extends Range.Endpoint>(
+        a: Range<U>,
+        b: Range<U>,
+    ): -1 | 0 | 1;
 
     /**
      * Compares the first range's beginning to the second's end.
@@ -56,7 +67,10 @@ interface RangeConstructor {
      * Range.compareBeginToEnd(new Range(0, 10), new Range(-10, 0)) // => 0
      * Range.compareBeginToEnd(new Range(0, 10), new Range(-10, -5)) // => 1
      */
-    compareBeginToEnd<U extends Range.Endpoint>(a: Range<U>, b: Range<U>): -1 | 0 | 1;
+    compareBeginToEnd<U extends Range.Endpoint>(
+        a: Range<U>,
+        b: Range<U>,
+    ): -1 | 0 | 1;
 
     /**
      * Compares two range's endings.
@@ -68,7 +82,10 @@ interface RangeConstructor {
      * Range.compareEndToEnd(new Range(0, 10), new Range(5, 10)) // => 0
      * Range.compareEndToEnd(new Range(0, 10), new Range(5, 10, "()")) // => 1
      */
-    compareEndToEnd<U extends Range.Endpoint>(a: Range<U>, b: Range<U>): -1 | 0 | 1;
+    compareEndToEnd<U extends Range.Endpoint>(
+        a: Range<U>,
+        b: Range<U>,
+    ): -1 | 0 | 1;
 
     /**
      * Parses a string stringified by
@@ -100,7 +117,10 @@ interface RangeConstructor {
      * Range.parse("[15,]", Number) // => new Range(15, Infinity)
      * Range.parse("(,3.14]", Number) // => new Range(-Infinity, 3.14, "(]")
      */
-    parse<U extends Range.Endpoint>(range: string, parse: (endpoint: string) => U): Range<U>;
+    parse<U extends Range.Endpoint>(
+        range: string,
+        parse: (endpoint: string) => U,
+    ): Range<U>;
 
     /**
      * Merges two ranges and returns a range that encompasses both of them.

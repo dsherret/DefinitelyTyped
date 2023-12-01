@@ -113,13 +113,19 @@ declare namespace contextMenus {
          * @param item Menu item to append.
          * @param parentID [optional] ID of the parent menu item.
          */
-        appendMenuItem: (item: MenuItem, parentID?: string) => cytoscape.Core | undefined;
+        appendMenuItem: (
+            item: MenuItem,
+            parentID?: string,
+        ) => cytoscape.Core | undefined;
         /**
          * Appends given menu items to the menu items list.
          * @param items Menu items to append.
          * @param parentID [optional] ID of the parent menu item.
          */
-        appendMenuItems: (items: MenuItem[], parentID?: string) => cytoscape.Core | undefined;
+        appendMenuItems: (
+            items: MenuItem[],
+            parentID?: string,
+        ) => cytoscape.Core | undefined;
         /**
          * Removes the menu item with the given ID and its submenu along with it.
          * @param itemID ID of the menu item to remove.
@@ -130,13 +136,19 @@ declare namespace contextMenus {
          * @param itemID ID of the menu item.
          * @param status Whether the menu item will have a following divider.
          */
-        setTrailingDivider: (itemID: string, status: boolean) => cytoscape.Core | undefined;
+        setTrailingDivider: (
+            itemID: string,
+            status: boolean,
+        ) => cytoscape.Core | undefined;
         /**
          * Inserts given item before the existing item with the given ID.
          * @param item Menu item to insert.
          * @param existingItemID ID of the existing menu item.
          */
-        insertBeforeMenuItem: (item: MenuItem, existingItemID: string) => cytoscape.Core | undefined;
+        insertBeforeMenuItem: (
+            item: MenuItem,
+            existingItemID: string,
+        ) => cytoscape.Core | undefined;
         /**
          * Moves the item with the given ID to the submenu of the parent with the given ID or to the root with the specified options.
          *
@@ -149,14 +161,20 @@ declare namespace contextMenus {
          */
         moveToSubmenu: (
             itemID: string,
-            options?: { coreAsWell?: string; selector?: string } | string | null,
+            options?:
+                | { coreAsWell?: string; selector?: string }
+                | string
+                | null,
         ) => cytoscape.Core | undefined;
         /**
          * Inserts the item before the existing item with the given ID and moves it to the submenu that contains the existing item.
          * @param itemID ID of the menu item to move.
          * @param existingItemID ID of the existing menu item.
          */
-        moveBeforeOtherMenuItem: (itemID: string, existingItemID: string) => cytoscape.Core | undefined;
+        moveBeforeOtherMenuItem: (
+            itemID: string,
+            existingItemID: string,
+        ) => cytoscape.Core | undefined;
         /**
          * Disables the menu item with the given ID.
          * @param itemID ID of the menu item to disable.
@@ -191,7 +209,9 @@ declare global {
              * Initializes and/or returns the context menu instance.
              * @param options The options for the context menu or "get" to get the current instance.
              */
-            contextMenus: (options: contextMenus.MenuOptions | string) => contextMenus.ContextMenu;
+            contextMenus: (
+                options: contextMenus.MenuOptions | string,
+            ) => contextMenus.ContextMenu;
         }
     }
 }

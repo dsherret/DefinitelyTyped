@@ -43,12 +43,18 @@ declare module "pug" {
     /**
      * Compile a Pug template to a function which can be rendered multiple times with different locals.
      */
-    export function compile(template: string, options?: Options): compileTemplate;
+    export function compile(
+        template: string,
+        options?: Options,
+    ): compileTemplate;
 
     /**
      * Compile a Pug template from a file to a function which can be rendered multiple times with different locals.
      */
-    export function compileFile(path: string, options?: Options): compileTemplate;
+    export function compileFile(
+        path: string,
+        options?: Options,
+    ): compileTemplate;
 
     /**
      * Compile a Pug template to a string of JavaScript that can be used client side along with the Pug runtime.
@@ -64,7 +70,10 @@ declare module "pug" {
      * that can be used client side along with the Pug runtime.
      * You should only use this method if you need dependencies to implement something like watching for changes to the Pug files.
      */
-    export function compileClientWithDependenciesTracked(template: string, options?: Options): {
+    export function compileClientWithDependenciesTracked(
+        template: string,
+        options?: Options,
+    ): {
         body: string;
         dependencies: string[];
     };
@@ -82,12 +91,18 @@ declare module "pug" {
      * Compile a Pug template and render it with locals to html string.
      * @param {(Options & LocalsObject)} options Pug Options and rendering locals
      */
-    export function render(template: string, options: Options & LocalsObject): string;
+    export function render(
+        template: string,
+        options: Options & LocalsObject,
+    ): string;
     /**
      * Compile a Pug template and render it without locals to html string.
      * @param {((err: Error | null, html: string) => void)} callback Node.js-style callback receiving the rendered results. This callback is called synchronously.
      */
-    export function render(template: string, callback: (err: Error | null, html: string) => void): void;
+    export function render(
+        template: string,
+        callback: (err: Error | null, html: string) => void,
+    ): void;
     /**
      * Compile a Pug template and render it with locals to html string.
      * @param {(Options & LocalsObject)} options Pug Options and rendering locals
@@ -107,12 +122,18 @@ declare module "pug" {
      * Compile a Pug template from a file and render it with locals to html string.
      * @param {(Options & LocalsObject)} options Pug Options and rendering locals
      */
-    export function renderFile(path: string, options: Options & LocalsObject): string;
+    export function renderFile(
+        path: string,
+        options: Options & LocalsObject,
+    ): string;
     /**
      * Compile a Pug template from a file and render it without locals to html string.
      * @param {((err: Error | null, html: string) => void)} callback Node.js-style callback receiving the rendered results. This callback is called synchronously.
      */
-    export function renderFile(path: string, callback: (err: Error | null, html: string) => void): void;
+    export function renderFile(
+        path: string,
+        callback: (err: Error | null, html: string) => void,
+    ): void;
     /**
      * Compile a Pug template from a file and render it with locals to html string.
      * @param {(Options & LocalsObject)} options Pug Options and rendering locals

@@ -10,7 +10,9 @@ export = F;
  * @param redactOptions.strict The strict option, when set to true, will cause the redactor function to throw if instead of an object it finds a primitive.
  * @returns Redacted value from input
  */
-declare function F(redactOptions: F.RedactOptionsNoSerialize): F.redactFnNoSerialize;
+declare function F(
+    redactOptions: F.RedactOptionsNoSerialize,
+): F.redactFnNoSerialize;
 declare function F(redactOptions?: F.RedactOptions): F.redactFn;
 
 declare namespace F {

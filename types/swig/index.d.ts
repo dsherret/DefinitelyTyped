@@ -19,7 +19,12 @@ export declare class Swig {
             swig?: Swig,
         ) => boolean,
         compile: (
-            compiler?: (content?: string, parents?: any, options?: any, blockName?: string) => string,
+            compiler?: (
+                content?: string,
+                parents?: any,
+                options?: any,
+                blockName?: string,
+            ) => string,
             args?: any[],
             content?: string,
             parents?: any,
@@ -38,9 +43,16 @@ export declare class Swig {
         options: SwigOptions,
         cb: (err: Error, compiledRender: (locals?: any) => string) => void,
     ): void;
-    compileFile(pathname: string, options?: SwigOptions): (locals?: any) => string;
+    compileFile(
+        pathname: string,
+        options?: SwigOptions,
+    ): (locals?: any) => string;
     render(source: string, options?: SwigOptions): string;
-    renderFile(pathName: string, locals: any, cb: (err: Error, output: string) => void): void;
+    renderFile(
+        pathName: string,
+        locals: any,
+        cb: (err: Error, output: string) => void,
+    ): void;
     renderFile(pathName: string, locals?: any): string;
     run(templateFn: Function, locals?: any, filePath?: string): string;
     invalidateCache(): void;
@@ -162,7 +174,12 @@ export declare function setTag(
         swig?: Swig,
     ) => boolean,
     compile: (
-        compiler?: (content?: string, parents?: any, options?: any, blockName?: string) => string,
+        compiler?: (
+            content?: string,
+            parents?: any,
+            options?: any,
+            blockName?: string,
+        ) => string,
         args?: any[],
         content?: string,
         parents?: any,
@@ -173,17 +190,34 @@ export declare function setTag(
     blockLevel?: boolean,
 ): void;
 export declare function setExtension(name: string, object: any): void;
-export declare function parseFile(pathName: string, options?: any): parser.ParseReturn;
+export declare function parseFile(
+    pathName: string,
+    options?: any,
+): parser.ParseReturn;
 export declare function precompile(source: string, options?: SwigOptions): any;
-export declare function compile(source: string, options?: SwigOptions): (locals?: any) => string;
+export declare function compile(
+    source: string,
+    options?: SwigOptions,
+): (locals?: any) => string;
 export declare function compileFile(
     pathname: string,
     options: SwigOptions,
     cb: (err: Error, compiledRender: (locals?: any) => string) => void,
 ): void;
-export declare function compileFile(pathname: string, options?: SwigOptions): (locals?: any) => string;
+export declare function compileFile(
+    pathname: string,
+    options?: SwigOptions,
+): (locals?: any) => string;
 export declare function render(source: string, options?: SwigOptions): string;
-export declare function renderFile(pathName: string, locals: any, cb: (err: Error, output: string) => void): void;
+export declare function renderFile(
+    pathName: string,
+    locals: any,
+    cb: (err: Error, output: string) => void,
+): void;
 export declare function renderFile(pathName: string, locals?: any): string;
-export declare function run(templateFn: Function, locals?: any, filePath?: string): string;
+export declare function run(
+    templateFn: Function,
+    locals?: any,
+    filePath?: string,
+): string;
 export declare function invalidateCache(): void;

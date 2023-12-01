@@ -162,20 +162,28 @@ export class GraphDatabase {
      * @param {ChangePasswordOptions}   options     Options.
      * @param {DoneCallback}            callback    A callback.
      */
-    changePassword(options: ChangePasswordOptions, callback: DoneCallback): void;
+    changePassword(
+        options: ChangePasswordOptions,
+        callback: DoneCallback,
+    ): void;
 
     /**
      * Checks if the password must be changed.
      * @param {Function} callback A callback.
      */
-    checkPasswordChangeNeeded(callback: (error: any, changed: boolean) => void): void;
+    checkPasswordChangeNeeded(
+        callback: (error: any, changed: boolean) => void,
+    ): void;
 
     /**
      * Creates a constraint.
      * @param {ConstraintOptions}   options   Options.
      * @param {ResultCallback}      callback  A callback.
      */
-    createConstraint(options: ConstraintOptions, callback: ResultCallback): void;
+    createConstraint(
+        options: ConstraintOptions,
+        callback: ResultCallback,
+    ): void;
 
     /**
      * Makes simple, parametrized Cypher queries.
@@ -241,14 +249,20 @@ export class GraphDatabase {
      * @param {ConstraintOptions}   options   Options.
      * @param {Function}            callback  A callback.
      */
-    hasConstraint(options: ConstraintOptions, callback: (error: any, exists: boolean) => void): void;
+    hasConstraint(
+        options: ConstraintOptions,
+        callback: (error: any, exists: boolean) => void,
+    ): void;
 
     /**
      * Determines if an index exists.
      * @param {IndexOptions}    options   Options.
      * @param {Function}        callback  A callback.
      */
-    hasIndex(options: IndexOptions, callback: (error: any, exists: boolean) => void): void;
+    hasIndex(
+        options: IndexOptions,
+        callback: (error: any, exists: boolean) => void,
+    ): void;
 
     /**
      * Makes arbitrary HTTP request to the REST API.

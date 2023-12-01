@@ -99,16 +99,14 @@ const link: Mdast.Link = {
 
 // Combination of all the declared ContentMap interfaces.
 interface ContentMap
-    extends
-        Mdast.BlockContentMap,
+    extends Mdast.BlockContentMap,
         Mdast.DefinitionContentMap,
         Mdast.FrontmatterContentMap,
         Mdast.ListContentMap,
         Mdast.PhrasingContentMap,
         Mdast.RowContentMap,
         Mdast.StaticPhrasingContentMap,
-        Mdast.TableContentMap
-{}
+        Mdast.TableContentMap {}
 
 // Type with all …ContentMap keys corresponding to something whose `{type: "…"}` field does not match the key.
 // This should be empty. A previous version of these type definitions named a few entries like

@@ -108,7 +108,13 @@ interface GetDownloadAuthorizationOpts extends CommonArgs {
 }
 
 interface DownloadFileOpts extends CommonArgs {
-    responseType: "arraybuffer" | "blob" | "document" | "json" | "text" | "stream";
+    responseType:
+        | "arraybuffer"
+        | "blob"
+        | "document"
+        | "json"
+        | "text"
+        | "stream";
     onDownloadProgress?: UploadProgressFn | null | undefined;
 }
 
@@ -143,30 +149,61 @@ declare class BackBlazeB2 {
     authorize(opts?: CommonArgs): Promise<StandardApiResponse>;
 
     createBucket(opts: CreateBucketOpts): Promise<StandardApiResponse>;
-    deleteBucket(opts: { bucketId: string } & CommonArgs): Promise<StandardApiResponse>;
+    deleteBucket(
+        opts: { bucketId: string } & CommonArgs,
+    ): Promise<StandardApiResponse>;
     listBuckets(opts?: CommonArgs): Promise<StandardApiResponse>;
     getBucket(opts: GetBucketOpts): Promise<StandardApiResponse>;
     updateBucket(opts: UpdateBucketOpts): Promise<StandardApiResponse>;
 
-    getUploadUrl(opts: { bucketId: string } & CommonArgs): Promise<StandardApiResponse>;
+    getUploadUrl(
+        opts: { bucketId: string } & CommonArgs,
+    ): Promise<StandardApiResponse>;
     uploadFile(opts: UploadFileOpts): Promise<StandardApiResponse>;
     listFileNames(opts: ListFileNamesOpts): Promise<StandardApiResponse>;
     listFileVersions(opts: ListFileVersionsOpts): Promise<StandardApiResponse>;
 
     listParts(opts: ListPartsOpts): Promise<StandardApiResponse>;
-    hideFile(opts: { bucketId: string; fileName: string } & CommonArgs): Promise<StandardApiResponse>;
-    getFileInfo(opts: { fileId: string } & CommonArgs): Promise<StandardApiResponse>;
-    getDownloadAuthorization(opts: GetDownloadAuthorizationOpts): Promise<StandardApiResponse>;
-    downloadFileByName(opts: DownlaodFileByNameOpts): Promise<StandardApiResponse>;
-    downloadFileById(opts: { fileId: string } & DownloadFileOpts): Promise<StandardApiResponse>;
-    deleteFileVersion(opts: { fileId: string; fileName: string } & CommonArgs): Promise<StandardApiResponse>;
-    startLargeFile(opts: { bucketId: string; fileName: string } & CommonArgs): Promise<StandardApiResponse>;
-    getUploadPartUrl(opts: { fileId: string } & CommonArgs): Promise<StandardApiResponse>;
+    hideFile(
+        opts: { bucketId: string; fileName: string } & CommonArgs,
+    ): Promise<StandardApiResponse>;
+    getFileInfo(
+        opts: { fileId: string } & CommonArgs,
+    ): Promise<StandardApiResponse>;
+    getDownloadAuthorization(
+        opts: GetDownloadAuthorizationOpts,
+    ): Promise<StandardApiResponse>;
+    downloadFileByName(
+        opts: DownlaodFileByNameOpts,
+    ): Promise<StandardApiResponse>;
+    downloadFileById(
+        opts: { fileId: string } & DownloadFileOpts,
+    ): Promise<StandardApiResponse>;
+    deleteFileVersion(
+        opts: { fileId: string; fileName: string } & CommonArgs,
+    ): Promise<StandardApiResponse>;
+    startLargeFile(
+        opts: { bucketId: string; fileName: string } & CommonArgs,
+    ): Promise<StandardApiResponse>;
+    getUploadPartUrl(
+        opts: { fileId: string } & CommonArgs,
+    ): Promise<StandardApiResponse>;
     uploadPart(opts: UploadPartOpts): Promise<StandardApiResponse>;
-    finishLargeFile(opts: { fileId: string; partSha1Array: string[] } & CommonArgs): Promise<StandardApiResponse>;
-    cancelLargeFile(opts: { fileId: string } & CommonArgs): Promise<StandardApiResponse>;
+    finishLargeFile(
+        opts: { fileId: string; partSha1Array: string[] } & CommonArgs,
+    ): Promise<StandardApiResponse>;
+    cancelLargeFile(
+        opts: { fileId: string } & CommonArgs,
+    ): Promise<StandardApiResponse>;
 
     createKey(opts: CreateKeyOpts): Promise<StandardApiResponse>;
-    deleteKey(opts: { applicationKeyId: string } & CommonArgs): Promise<StandardApiResponse>;
-    listKeys(opts: { maxKeyCount: number; startApplicationKeyId: string } & CommonArgs): Promise<StandardApiResponse>;
+    deleteKey(
+        opts: { applicationKeyId: string } & CommonArgs,
+    ): Promise<StandardApiResponse>;
+    listKeys(
+        opts: {
+            maxKeyCount: number;
+            startApplicationKeyId: string;
+        } & CommonArgs,
+    ): Promise<StandardApiResponse>;
 }

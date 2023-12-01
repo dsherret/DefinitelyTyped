@@ -6,8 +6,12 @@ export = methods;
 export {};
 
 declare module "cache-manager" {
-    function caching(IConfig: CacheManagerIORedis.RedisStoreClusterConfig): CacheManagerIORedis.ClusterCache;
-    function caching(IConfig: CacheManagerIORedis.RedisStoreSingleNodeConfig): CacheManagerIORedis.SingleNodeCache;
+    function caching(
+        IConfig: CacheManagerIORedis.RedisStoreClusterConfig,
+    ): CacheManagerIORedis.ClusterCache;
+    function caching(
+        IConfig: CacheManagerIORedis.RedisStoreSingleNodeConfig,
+    ): CacheManagerIORedis.SingleNodeCache;
     function caching(IConfig: StoreConfig & CacheOptions): Cache;
 }
 
@@ -22,14 +26,17 @@ declare namespace CacheManagerIORedis {
 
     interface RedisStoreConstructor {
         create:
-            | ((...options: RedisStoreSingleNodeConfig[]) => RedisSingleNodeStore)
+            | ((
+                  ...options: RedisStoreSingleNodeConfig[]
+              ) => RedisSingleNodeStore)
             | ((...options: RedisStoreClusterConfig[]) => RedisClusterStore);
     }
 
-    type RedisStoreSingleNodeConfig = CachingConfig & IORedis.RedisOptions & {
-        store: RedisStoreConstructor;
-        max?: number | undefined;
-    } & CacheOptions;
+    type RedisStoreSingleNodeConfig = CachingConfig &
+        IORedis.RedisOptions & {
+            store: RedisStoreConstructor;
+            max?: number | undefined;
+        } & CacheOptions;
 
     type RedisStoreClusterConfig = CachingConfig & {
         store: RedisStoreConstructor;

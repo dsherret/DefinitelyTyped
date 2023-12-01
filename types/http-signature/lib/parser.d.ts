@@ -44,4 +44,7 @@ export interface ParseResponse {
  * @throws {StrictParsingError} If old attributes are used in strict parsing mode
  * @throws {ExpiredRequestError} If the value of date or x-date exceeds skew
  */
-export function parseRequest(request: ClientRequest, options?: ParseOptions): ParseResponse;
+export function parseRequest(
+    request: ClientRequest,
+    options?: ParseOptions,
+): ParseResponse;

@@ -46,5 +46,8 @@ import humanize = require("tiny-human-time");
     humanize.short(0);
     humanize.short(0, 1);
     humanize.short([1843869, 590588751] as [number, number]);
-    humanize.short([1843869, 590588751] as [number, number], [23, 698942984] as [number, number]);
+    humanize.short(
+        [1843869, 590588751] as [number, number],
+        [23, 698942984] as [number, number],
+    );
 }

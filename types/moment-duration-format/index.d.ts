@@ -12,8 +12,15 @@ declare module "moment" {
     interface Format {
         defaults: DurationFormatSettings;
 
-        (template: string | TemplateFunction, precision: number, settings?: DurationFormatSettings): string;
-        (template: string | TemplateFunction, settings?: DurationFormatSettings): string;
+        (
+            template: string | TemplateFunction,
+            precision: number,
+            settings?: DurationFormatSettings,
+        ): string;
+        (
+            template: string | TemplateFunction,
+            settings?: DurationFormatSettings,
+        ): string;
         (settings?: DurationFormatSettings): string;
     }
 
@@ -21,7 +28,13 @@ declare module "moment" {
     type UnitOfTrim = "large" | "small" | "both" | "mid" | "all" | "final";
 
     interface DurationFormatSettings {
-        trim?: false | UnitOfTrimV1 | UnitOfTrim | string | Array<UnitOfTrim | string> | undefined;
+        trim?:
+            | false
+            | UnitOfTrimV1
+            | UnitOfTrim
+            | string
+            | Array<UnitOfTrim | string>
+            | undefined;
         largest?: number | undefined;
         trunc?: true | undefined;
         stopTrim?: string | undefined;
@@ -88,7 +101,13 @@ declare module "moment" {
         durationLabelsShort?: DurationLabelDef | undefined;
         durationTimeTemplates?: DurationTimeDef | undefined;
         durationLabelTypes?: DurationLabelTypeDef[] | undefined;
-        durationPluralKey?: ((token: string, integerValue: number, decimalValue: number) => string) | undefined;
+        durationPluralKey?:
+            | ((
+                  token: string,
+                  integerValue: number,
+                  decimalValue: number,
+              ) => string)
+            | undefined;
     }
 
     type TemplateFunction = (this: DurationFormatSettings) => string;

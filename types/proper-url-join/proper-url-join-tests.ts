@@ -31,4 +31,9 @@ urlJoin("foo", { query: { biz: "buz", foo: "bar" } }); // /foo?biz=buz&foo=bar
 urlJoin("foo", "bar?queryString", { query: { biz: "buz", foo: "bar" } });
 
 // @ts-expect-error
-urlJoin("foo", "bar?queryString", { query: { biz: "buz", foo: "bar" } }, "wrong");
+urlJoin(
+    "foo",
+    "bar?queryString",
+    { query: { biz: "buz", foo: "bar" } },
+    "wrong",
+);

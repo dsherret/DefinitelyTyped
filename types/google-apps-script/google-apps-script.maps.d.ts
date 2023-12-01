@@ -89,7 +89,10 @@ declare namespace GoogleAppsScript {
             setArrive(time: Base.Date): DirectionFinder;
             setAvoid(avoid: string): DirectionFinder;
             setDepart(time: Base.Date): DirectionFinder;
-            setDestination(latitude: number, longitude: number): DirectionFinder;
+            setDestination(
+                latitude: number,
+                longitude: number,
+            ): DirectionFinder;
             setDestination(address: string): DirectionFinder;
             setLanguage(language: string): DirectionFinder;
             setMode(mode: Mode): DirectionFinder;
@@ -200,8 +203,18 @@ declare namespace GoogleAppsScript {
         interface Geocoder {
             geocode(address: string): any;
             reverseGeocode(latitude: number, longitude: number): any;
-            reverseGeocode(swLatitude: number, swLongitude: number, neLatitude: number, neLongitude: number): any;
-            setBounds(swLatitude: number, swLongitude: number, neLatitude: number, neLongitude: number): Geocoder;
+            reverseGeocode(
+                swLatitude: number,
+                swLongitude: number,
+                neLatitude: number,
+                neLongitude: number,
+            ): any;
+            setBounds(
+                swLatitude: number,
+                swLongitude: number,
+                neLatitude: number,
+                neLongitude: number,
+            ): Geocoder;
             setLanguage(language: string): Geocoder;
             setRegion(region: string): Geocoder;
         }
@@ -295,13 +308,24 @@ declare namespace GoogleAppsScript {
             getMapUrl(): string;
             setCenter(latitude: number, longitude: number): StaticMap;
             setCenter(address: string): StaticMap;
-            setCustomMarkerStyle(imageUrl: string, useShadow: boolean): StaticMap;
+            setCustomMarkerStyle(
+                imageUrl: string,
+                useShadow: boolean,
+            ): StaticMap;
             setFormat(format: string): StaticMap;
             setLanguage(language: string): StaticMap;
             setMapType(mapType: string): StaticMap;
-            setMarkerStyle(size: string, color: string, label: string): StaticMap;
+            setMarkerStyle(
+                size: string,
+                color: string,
+                label: string,
+            ): StaticMap;
             setMobile(useMobileTiles: boolean): StaticMap;
-            setPathStyle(weight: Integer, color: string, fillColor: string): StaticMap;
+            setPathStyle(
+                weight: Integer,
+                color: string,
+                fillColor: string,
+            ): StaticMap;
             setSize(width: Integer, height: Integer): StaticMap;
             setZoom(zoom: Integer): StaticMap;
         }

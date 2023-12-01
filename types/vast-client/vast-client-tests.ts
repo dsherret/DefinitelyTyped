@@ -25,15 +25,18 @@ function cbSuccess(response: VastResponse): void {
     const extensions: VastAdExtension[] = ads[0].extensions;
     const extensionName: string | null = extensions[0].name;
     const extensionValue: any = extensions[0].value;
-    const linearCreative = response.ads[0].creatives.filter(creative => {
+    const linearCreative = response.ads[0].creatives.filter((creative) => {
         return creative.type === "linear";
     });
     if (linearCreative && linearCreative.length > 0) {
         const creative = linearCreative[0] as VastCreativeLinear;
         const mediaFiles = creative.mediaFiles;
-        const videoClickThroughURLTemplate: VastUrlValue | null = creative.videoClickThroughURLTemplate;
-        const videoClickTrackingURLTemplates: VastUrlValue[] = creative.videoClickTrackingURLTemplates;
-        const videoCustomClickURLTemplates: VastUrlValue[] = creative.videoCustomClickURLTemplates;
+        const videoClickThroughURLTemplate: VastUrlValue | null =
+            creative.videoClickThroughURLTemplate;
+        const videoClickTrackingURLTemplates: VastUrlValue[] =
+            creative.videoClickTrackingURLTemplates;
+        const videoCustomClickURLTemplates: VastUrlValue[] =
+            creative.videoCustomClickURLTemplates;
     }
 }
 
@@ -60,20 +63,11 @@ const client = new VASTClient(5, 60000, customStorage);
 client.cappingFreeLunch = 2;
 
 // Those following client.get calls won't be done
-client
-    .get(VASTUrl)
-    .then(cbSuccess)
-    .catch(cbError);
-client
-    .get(VASTUrl)
-    .then(cbSuccess)
-    .catch(cbError);
+client.get(VASTUrl).then(cbSuccess).catch(cbError);
+client.get(VASTUrl).then(cbSuccess).catch(cbError);
 
 // VASTUrl will be called
-client
-    .get(VASTUrl)
-    .then(cbSuccess)
-    .catch(cbError);
+client.get(VASTUrl).then(cbSuccess).catch(cbError);
 
 // Ignore any call made 5 minutes or less after one.
 client.cappingMinimumTimeInterval = 5 * 60 * 1000;
@@ -82,19 +76,13 @@ client.cappingMinimumTimeInterval = 5 * 60 * 1000;
 // 2 minutes later
 
 // Ignored
-client
-    .get(VASTUrl)
-    .then(cbSuccess)
-    .catch(cbError);
+client.get(VASTUrl).then(cbSuccess).catch(cbError);
 
 // ...
 // 4 minutes later
 
 // Work
-client
-    .get(VASTUrl)
-    .then(cbSuccess)
-    .catch(cbError);
+client.get(VASTUrl).then(cbSuccess).catch(cbError);
 
 // with options
 const urlHandler: VASTClientUrlHandler = {
@@ -105,18 +93,15 @@ const urlHandler: VASTClientUrlHandler = {
         cb(new Error("no vast"));
     },
 };
-client
-    .get(VASTUrl, { urlHandler })
-    .then(cbSuccess)
-    .catch(cbError);
+client.get(VASTUrl, { urlHandler }).then(cbSuccess).catch(cbError);
 
 if (client.hasRemainingAds()) {
     client
         .getNextAds()
-        .then(res => {
+        .then((res) => {
             // Do something with the next Ads
         })
-        .catch(err => {
+        .catch((err) => {
             // Deal with the error
         });
 }
@@ -135,15 +120,19 @@ const count = parser.countURLTemplateFilters();
 
 parser.clearUrlTemplateFilters();
 
-parser.trackVastError(["http://errorUrlTemplate.com/"], { ERRORCODE: 301 }, { ERRORMESSAGE: "error message" });
+parser.trackVastError(
+    ["http://errorUrlTemplate.com/"],
+    { ERRORCODE: 301 },
+    { ERRORMESSAGE: "error message" },
+);
 
 parser
     .fetchVAST(VASTUrl)
-    .then(xml => {
+    .then((xml) => {
         // do something with xml document
         return xml.documentElement.nodeName === "VAST";
     })
-    .catch(error => {
+    .catch((error) => {
         // handle error
     });
 
@@ -151,20 +140,18 @@ const options = {
     withCredentials: true,
     wrapperLimit: 5,
 };
-parser
-    .getAndParseVAST(VASTUrl, options)
-    .then(cbSuccess)
-    .catch(cbError);
+parser.getAndParseVAST(VASTUrl, options).then(cbSuccess).catch(cbError);
 
-parser
-    .parseVAST(VASTXml)
-    .then(cbSuccess)
-    .catch(cbError);
+parser.parseVAST(VASTXml).then(cbSuccess).catch(cbError);
 
 // TRACKER
 
 // Create a VAST Tracker instance for a linear ad
-const vastTracker = new VASTTracker(client, {} as VastAd, {} as VastCreativeLinear);
+const vastTracker = new VASTTracker(
+    client,
+    {} as VastAd,
+    {} as VastCreativeLinear,
+);
 
 // Create a VAST Tracker instance for a companion ad
 const vastTrackerCompanion = new VASTTracker(
@@ -186,7 +173,7 @@ vastTracker.off("skip", onSkip);
 const player = document.getElementById("playerId") as HTMLVideoElement;
 
 // Bind a timeupdate listener to the player
-player.addEventListener("timeupdate", e => {
+player.addEventListener("timeupdate", (e) => {
     vastTracker.setProgress((e.target as HTMLVideoElement).currentTime);
 });
 
@@ -195,7 +182,7 @@ vastTracker.on("firstQuartile", () => {
 });
 
 // Bind a volumechange listener to the player
-player.addEventListener("volumechange", e => {
+player.addEventListener("volumechange", (e) => {
     vastTracker.setMuted((e.target as HTMLVideoElement).muted);
 });
 
@@ -225,7 +212,7 @@ vastTracker.on("pause", () => {
 
 // Bind fullscreenchange listener to the player
 // Note that the fullscreen API is still vendor-prefixed in browsers
-player.addEventListener("fullscreenchange", e => {
+player.addEventListener("fullscreenchange", (e) => {
     const isFullscreen = true;
     vastTracker.setFullscreen(isFullscreen);
 });
@@ -251,7 +238,7 @@ function decreasePlayerSize(): void {
     // do nothing
 }
 
-expandButton.addEventListener("click", e => {
+expandButton.addEventListener("click", (e) => {
     playerExpanded = !playerExpanded;
     if (playerExpanded) {
         increasePlayerSize();
@@ -334,13 +321,18 @@ vastTracker.on("clickthrough", (url: string) => {
 });
 
 // Bind acceptInvitation listener to the invitation button
-const invitationButton = document.getElementById("invitationButtonId") as HTMLButtonElement;
+const invitationButton = document.getElementById(
+    "invitationButtonId",
+) as HTMLButtonElement;
 
 // Bind click listener to the button
 invitationButton.addEventListener("click", () => {
     vastTracker.track("acceptInvitation");
     vastTracker.track("acceptInvitationLinear", { once: false });
-    vastTracker.track("acceptInvitationLinear", { macros: { test: "value" }, once: false });
+    vastTracker.track("acceptInvitationLinear", {
+        macros: { test: "value" },
+        once: false,
+    });
     vastTracker.track("acceptInvitationLinear", { macros: { test: "value" } });
 });
 

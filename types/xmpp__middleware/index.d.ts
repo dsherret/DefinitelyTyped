@@ -22,8 +22,14 @@ declare namespace middleware {
     }
 
     interface Middleware<TEntity extends Entity> {
-        use<TMiddleware extends koaCompose.Middleware<IncomingContext<TEntity>>>(middleware: TMiddleware): TMiddleware;
-        filter<TMiddleware extends koaCompose.Middleware<OutgoingContext<TEntity>>>(
+        use<
+            TMiddleware extends koaCompose.Middleware<IncomingContext<TEntity>>,
+        >(
+            middleware: TMiddleware,
+        ): TMiddleware;
+        filter<
+            TMiddleware extends koaCompose.Middleware<OutgoingContext<TEntity>>,
+        >(
             middleware: TMiddleware,
         ): TMiddleware;
     }

@@ -35,7 +35,7 @@ rjCbc.open("$verysec$retkey$", "foobar");
 
 console.log(blowfishCfb.getBlockSize() * 8);
 console.log(blowfishCfb.getKeySize() * 8);
-console.log(blowfishCfb.getSupportedKeySizes().map(v => v * 8));
+console.log(blowfishCfb.getSupportedKeySizes().map((v) => v * 8));
 console.log(blowfishCfb.getIvSize() * 8);
 console.log(blowfishCfb.getAlgorithmName().toUpperCase());
 console.log(blowfishCfb.getModeName().toUpperCase());

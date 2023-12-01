@@ -224,7 +224,15 @@ export interface LinkDescription {
     rel: string;
 }
 
-export type Method = "CONNECT" | "DELETE" | "GET" | "HEAD" | "OPTIONS" | "PATCH" | "POST" | "PUT";
+export type Method =
+    | "CONNECT"
+    | "DELETE"
+    | "GET"
+    | "HEAD"
+    | "OPTIONS"
+    | "PATCH"
+    | "POST"
+    | "PUT";
 
 // https://developer.paypal.com/docs/api/payments/v2/#definition-money
 export interface Money {
@@ -341,7 +349,8 @@ export type CVVCode =
     /** Maestro_not_available */
     | "4";
 
-export type ResponseCode = /** APPROVED */
+export type ResponseCode =
+    /** APPROVED */
     | "0000"
     /** REFERRAL */
     | "0100"
@@ -608,7 +617,8 @@ export type ResponseCode = /** APPROVED */
     /** UNSUPPORT_REFUND_ON_PENDING_BC */
     | "PPRE";
 
-export type PaymentAdviceCode = /** MASTERCARD_EXPIRED */
+export type PaymentAdviceCode =
+    /** MASTERCARD_EXPIRED */
     | "01"
     /** MASTERCARD_CREDIT_LIMIT */
     | "02"
@@ -711,7 +721,15 @@ export interface BasePaymentHeaders {
 
 export class BasePaymentRequest<H extends BasePaymentHeaders, D = null> {
     readonly path: string;
-    readonly verb: "CONNECT" | "DELETE" | "GET" | "HEAD" | "OPTIONS" | "PATCH" | "POST" | "PUT";
+    readonly verb:
+        | "CONNECT"
+        | "DELETE"
+        | "GET"
+        | "HEAD"
+        | "OPTIONS"
+        | "PATCH"
+        | "POST"
+        | "PUT";
     readonly body: D;
     readonly headers: H;
 
@@ -729,7 +747,10 @@ export namespace AuthorizationsCapture {
     }
 }
 
-export class AuthorizationsCaptureRequest extends BasePaymentRequest<AuthorizationsCapture.RequestHeaders, Capture> {
+export class AuthorizationsCaptureRequest extends BasePaymentRequest<
+    AuthorizationsCapture.RequestHeaders,
+    Capture
+> {
     payPalRequestId(payPalRequestId: string): this;
 
     prefer(prefer: string): this;
@@ -741,7 +762,10 @@ export class AuthorizationsCaptureRequest extends BasePaymentRequest<Authorizati
  * Authorizations Get
  * @see {@link https://developer.paypal.com/api/payments/v2/#authorizations_get}
  */
-export class AuthorizationsGetRequest extends BasePaymentRequest<BasePaymentHeaders, Capture> {}
+export class AuthorizationsGetRequest extends BasePaymentRequest<
+    BasePaymentHeaders,
+    Capture
+> {}
 
 /**
  * Authorizations Reauthorize
@@ -786,7 +810,10 @@ export class AuthorizationsVoidRequest extends BasePaymentRequest<Authorizations
  * Captures Get
  * @see {@link https://developer.paypal.com/api/payments/v2/#captures_get}
  */
-export class CapturesGetRequest extends BasePaymentRequest<BasePaymentHeaders, Capture> {}
+export class CapturesGetRequest extends BasePaymentRequest<
+    BasePaymentHeaders,
+    Capture
+> {}
 
 /**
  * Captures Refund
@@ -806,7 +833,10 @@ export namespace CapturesRefund {
     }
 }
 
-export class CapturesRefundRequest extends BasePaymentRequest<CapturesRefund.RequestHeaders, Capture> {
+export class CapturesRefundRequest extends BasePaymentRequest<
+    CapturesRefund.RequestHeaders,
+    Capture
+> {
     constructor(captureId: string);
 
     payPalRequestId(payPalRequestId: string): this;
@@ -820,6 +850,9 @@ export class CapturesRefundRequest extends BasePaymentRequest<CapturesRefund.Req
  * Refunds Get
  * @see {@link https://developer.paypal.com/api/payments/v2/#refunds_get}
  */
-export class RefundsGetRequest extends BasePaymentRequest<BasePaymentHeaders, Capture> {
+export class RefundsGetRequest extends BasePaymentRequest<
+    BasePaymentHeaders,
+    Capture
+> {
     constructor(refundId: string);
 }

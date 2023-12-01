@@ -95,7 +95,11 @@ export abstract class Render {
     /**
      * Start a new animation process
      */
-    startAnimation(frames: FrameAction[], duration: number, onAnimateEnd: AnimationSuccessAction): void;
+    startAnimation(
+        frames: FrameAction[],
+        duration: number,
+        onAnimateEnd: AnimationSuccessAction,
+    ): void;
     /**
      * End the current animation process and call the callback
      */
@@ -111,7 +115,12 @@ export abstract class Render {
     /**
      * Set the current parameters of the drop shadow
      */
-    setShadowData(pos: Point, angle: number, progress: number, direction: FlipDirection): void;
+    setShadowData(
+        pos: Point,
+        angle: number,
+        progress: number,
+        direction: FlipDirection,
+    ): void;
     /**
      * Clear shadow
      */
@@ -180,6 +189,9 @@ export abstract class Render {
     /**
      * Casting the coordinates of the corners of the rectangle in the coordinates relative to the window
      */
-    convertRectToGlobal(rect: RectPoints, direction?: FlipDirection): RectPoints;
+    convertRectToGlobal(
+        rect: RectPoints,
+        direction?: FlipDirection,
+    ): RectPoints;
 }
 export {};

@@ -14,7 +14,7 @@ declare namespace internal {
             compare?: (a: T, b: T) => number,
             getDefault?: any,
         ): SortedSet<T>;
-        new<T>(
+        new <T>(
             values?: T[],
             equals?: (a: T, b: T) => boolean,
             compare?: (a: T, b: T) => number,
@@ -105,12 +105,21 @@ declare namespace internal {
                 strafe: string;
                 through: string;
             },
-            logNode: (n: Node<T>, innerWrite: (line: string) => void, innerWriteAbove: (line: string) => void) => void,
+            logNode: (
+                n: Node<T>,
+                innerWrite: (line: string) => void,
+                innerWriteAbove: (line: string) => void,
+            ) => void,
             log: (line: string) => void,
             logAbove: (line: string) => void,
         ): void;
         reduce<U>(
-            callback: (accumulator: U, currentValue: T, index: number, set: SortedSet<T>) => U,
+            callback: (
+                accumulator: U,
+                currentValue: T,
+                index: number,
+                set: SortedSet<T>,
+            ) => U,
             initialValue: U,
             index: number,
             thisArg: any,
@@ -118,7 +127,12 @@ declare namespace internal {
             depth?: number,
         ): U;
         reduceRight<U>(
-            callback: (accumulator: U, currentValue: T, index: number, set: SortedSet<T>) => U,
+            callback: (
+                accumulator: U,
+                currentValue: T,
+                index: number,
+                set: SortedSet<T>,
+            ) => U,
             initialValue: U,
             index: number,
             thisArg: any,
@@ -132,7 +146,12 @@ declare namespace internal {
     class SortedSet<T> extends AbstractSet {
         readonly length: number;
 
-        constructor(values?: T[], equals?: (a: T, b: T) => boolean, compare?: (a: T, b: T) => number, getDefault?: any);
+        constructor(
+            values?: T[],
+            equals?: (a: T, b: T) => boolean,
+            compare?: (a: T, b: T) => number,
+            getDefault?: any,
+        );
         constructClone(values?: T[]): SortedSet<T>;
 
         add(value: T): boolean;
@@ -169,12 +188,22 @@ declare namespace internal {
         splayIndex(index: number): boolean;
 
         reduce<U>(
-            callback: (accumulator: U, currentValue: T, index: number, set: SortedSet<T>) => U,
+            callback: (
+                accumulator: U,
+                currentValue: T,
+                index: number,
+                set: SortedSet<T>,
+            ) => U,
             initialValue?: U,
             thisArg?: any,
         ): U;
         reduceRight<U>(
-            callback: (accumulator: U, currentValue: T, index: number, set: SortedSet<T>) => U,
+            callback: (
+                accumulator: U,
+                currentValue: T,
+                index: number,
+                set: SortedSet<T>,
+            ) => U,
             initialValue?: U,
             thisArg?: any,
         ): U;

@@ -15,11 +15,17 @@ export type GeoJSONMultiPoint = Geometry<"MultiPoint", GeoJSONPosition[]>;
 
 export type GeoJSONLineString = Geometry<"LineString", GeoJSONPosition[]>;
 
-export type GeoJSONMultiLineString = Geometry<"MultiLineString", GeoJSONPosition[][]>;
+export type GeoJSONMultiLineString = Geometry<
+    "MultiLineString",
+    GeoJSONPosition[][]
+>;
 
 export type GeoJSONPolygon = Geometry<"Polygon", GeoJSONPosition[][]>;
 
-export type GeoJSONMultiPolygon = Geometry<"MultiPolygon", GeoJSONPosition[][][]>;
+export type GeoJSONMultiPolygon = Geometry<
+    "MultiPolygon",
+    GeoJSONPosition[][][]
+>;
 
 export type GeoJSONGeometry =
     | GeoJSONPoint

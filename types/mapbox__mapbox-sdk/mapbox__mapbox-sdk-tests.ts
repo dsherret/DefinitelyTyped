@@ -1,11 +1,25 @@
-import MapiClient, { SdkConfig } from "@mapbox/mapbox-sdk/lib/classes/mapi-client";
+import MapiClient, {
+    SdkConfig,
+} from "@mapbox/mapbox-sdk/lib/classes/mapi-client";
 import { MapiRequest } from "@mapbox/mapbox-sdk/lib/classes/mapi-request";
 import { MapiResponse } from "@mapbox/mapbox-sdk/lib/classes/mapi-response";
-import Directions, { DirectionsResponse, DirectionsService } from "@mapbox/mapbox-sdk/services/directions";
-import Geocoding, { GeocodeService } from "@mapbox/mapbox-sdk/services/geocoding";
-import MapMatching, { MapMatchingResponse, MapMatchingService } from "@mapbox/mapbox-sdk/services/map-matching";
-import Optimization, { OptimizationService } from "@mapbox/mapbox-sdk/services/optimization";
-import StaticMap, { StaticMapService } from "@mapbox/mapbox-sdk/services/static";
+import Directions, {
+    DirectionsResponse,
+    DirectionsService,
+} from "@mapbox/mapbox-sdk/services/directions";
+import Geocoding, {
+    GeocodeService,
+} from "@mapbox/mapbox-sdk/services/geocoding";
+import MapMatching, {
+    MapMatchingResponse,
+    MapMatchingService,
+} from "@mapbox/mapbox-sdk/services/map-matching";
+import Optimization, {
+    OptimizationService,
+} from "@mapbox/mapbox-sdk/services/optimization";
+import StaticMap, {
+    StaticMapService,
+} from "@mapbox/mapbox-sdk/services/static";
 import Styles, { StylesService } from "@mapbox/mapbox-sdk/services/styles";
 import { LineString } from "geojson";
 
@@ -65,20 +79,19 @@ const drivingDirectionsRequest: MapiRequest = directionsService.getDirections({
     maxWidth: 10,
 });
 
-drivingDirectionsRequest.send().then((response: MapiResponse) => {
-});
+drivingDirectionsRequest.send().then((response: MapiResponse) => {});
 
-const drivingTrafficDirectionsRequest: MapiRequest = directionsService.getDirections({
-    profile: "driving-traffic",
-    waypoints: [],
-    departAt: "2023-10-23T5:00",
-    maxHeight: 4.5,
-    maxWeight: 40,
-    maxWidth: 10,
-});
+const drivingTrafficDirectionsRequest: MapiRequest =
+    directionsService.getDirections({
+        profile: "driving-traffic",
+        waypoints: [],
+        departAt: "2023-10-23T5:00",
+        maxHeight: 4.5,
+        maxWeight: 40,
+        maxWidth: 10,
+    });
 
-drivingTrafficDirectionsRequest.send().then((response: MapiResponse) => {
-});
+drivingTrafficDirectionsRequest.send().then((response: MapiResponse) => {});
 
 const mapMatchingService: MapMatchingService = MapMatching(client);
 
@@ -186,7 +199,11 @@ staticMapService.getStaticImage({
             ["match", ["get", "worldview"], ["all", "US"], true, false],
         ],
         layout: { "line-join": "bevel" },
-        paint: { "line-color": "%236898B3", "line-width": 1.5, "line-dasharray": [1.5, 1] },
+        paint: {
+            "line-color": "%236898B3",
+            "line-width": 1.5,
+            "line-dasharray": [1.5, 1],
+        },
     },
     before_layer: "road-label",
 });
@@ -210,7 +227,7 @@ geocodeService
     })
     .send()
     .then(({ body }) => {
-        body.features.forEach(feature => {
+        body.features.forEach((feature) => {
             const shortCode = feature.short_code;
         });
     });

@@ -12,7 +12,11 @@ export declare var version: string;
  *
  * @return {string} pretty serialized json data ready to display.
  */
-export declare function render(data: any, options?: RendererOptions, indentation?: number): string;
+export declare function render(
+    data: any,
+    options?: RendererOptions,
+    indentation?: number,
+): string;
 
 /**
  * Render pretty json from a string.
@@ -23,7 +27,11 @@ export declare function render(data: any, options?: RendererOptions, indentation
  *
  * @return {string} pretty serialized json data ready to display.
  */
-export declare function renderString(data: string, options?: RendererOptions, indentation?: number): string;
+export declare function renderString(
+    data: string,
+    options?: RendererOptions,
+    indentation?: number,
+): string;
 
 export interface RendererOptions {
     /**

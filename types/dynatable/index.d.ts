@@ -493,7 +493,12 @@ declare namespace JQueryDynatable {
          * };
          */
         _rowWriter?:
-            | ((rowIndex: number, record: any, columns: Column[], cellWriter: Function) => string)
+            | ((
+                  rowIndex: number,
+                  record: any,
+                  columns: Column[],
+                  cellWriter: Function,
+              ) => string)
             | undefined;
         /**
          * Function that returns the HTML code that will be injected for the cell
@@ -561,7 +566,9 @@ declare namespace JQueryDynatable {
          *     //...
          * };
          */
-        _rowReader?: ((index: number, thisRef: any, record: any) => any) | undefined;
+        _rowReader?:
+            | ((index: number, thisRef: any, record: any) => any)
+            | undefined;
         /**
          * Function that interprets the cell into data
          *
@@ -646,7 +653,12 @@ declare namespace JQueryDynatable {
          * @param skipAppend A boolean allowing to skip the appending of the column header to table
          * @param skipUpdate A boolean allowing to skip the call to `dom.update()`
          */
-        add($column: JQuery, position: number, skipAppend?: boolean, skipUpdate?: boolean): void;
+        add(
+            $column: JQuery,
+            position: number,
+            skipAppend?: boolean,
+            skipUpdate?: boolean,
+        ): void;
         /**
          * Add several `data-` attributes on the provided `$cell`
          *

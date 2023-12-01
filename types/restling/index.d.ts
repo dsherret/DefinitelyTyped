@@ -8,7 +8,10 @@ import * as Restler from "restler";
  * @param  options Options.
  * @return  Result.
  */
-export function del(url: string, options?: RestlingOptions): Promise<RestlingResult>;
+export function del(
+    url: string,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 /**
  * Create a GET request.
@@ -16,7 +19,10 @@ export function del(url: string, options?: RestlingOptions): Promise<RestlingRes
  * @param  options Options.
  * @return  Result.
  */
-export function get(url: string, options?: RestlingOptions): Promise<RestlingResult>;
+export function get(
+    url: string,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 /**
  * Create a HEAD request.
@@ -24,7 +30,10 @@ export function get(url: string, options?: RestlingOptions): Promise<RestlingRes
  * @param  options Options.
  * @return  Result.
  */
-export function head(url: string, options?: RestlingOptions): Promise<RestlingResult>;
+export function head(
+    url: string,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 /**
  * Send json data via GET method.
@@ -33,7 +42,12 @@ export function head(url: string, options?: RestlingOptions): Promise<RestlingRe
  * @param  options Options.
  * @return  Result.
  */
-export function json(url: string, data?: any, options?: RestlingOptions, method?: string): Promise<RestlingResult>;
+export function json(
+    url: string,
+    data?: any,
+    options?: RestlingOptions,
+    method?: string,
+): Promise<RestlingResult>;
 
 /**
  * Create a PATCH request.
@@ -41,7 +55,10 @@ export function json(url: string, data?: any, options?: RestlingOptions, method?
  * @param  options Options.
  * @return  Result.
  */
-export function patch(url: string, options?: RestlingOptions): Promise<RestlingResult>;
+export function patch(
+    url: string,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 /**
  * Send json  data  via PATCH method.
@@ -50,7 +67,11 @@ export function patch(url: string, options?: RestlingOptions): Promise<RestlingR
  * @param  options Options.
  * @return  Result.
  */
-export function patchJson(url: string, data?: any, options?: RestlingOptions): Promise<RestlingResult>;
+export function patchJson(
+    url: string,
+    data?: any,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 /**
  * Create a POST request.
@@ -58,7 +79,10 @@ export function patchJson(url: string, data?: any, options?: RestlingOptions): P
  * @param  options Options.
  * @return  Result.
  */
-export function post(url: string, options?: RestlingOptions): Promise<RestlingResult>;
+export function post(
+    url: string,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 /**
  * Send json data via POST method.
@@ -67,7 +91,11 @@ export function post(url: string, options?: RestlingOptions): Promise<RestlingRe
  * @param  options Options.
  * @return  Result.
  */
-export function postJson(url: string, data?: any, options?: RestlingOptions): Promise<RestlingResult>;
+export function postJson(
+    url: string,
+    data?: any,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 /**
  * Create a PUT request.
@@ -75,7 +103,10 @@ export function postJson(url: string, data?: any, options?: RestlingOptions): Pr
  * @param  options Options.
  * @return  Result.
  */
-export function put(url: string, options?: RestlingOptions): Promise<RestlingResult>;
+export function put(
+    url: string,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 /**
  * Send json data via PUT method.
@@ -84,7 +115,11 @@ export function put(url: string, options?: RestlingOptions): Promise<RestlingRes
  * @param  options Options.
  * @return  Result.
  */
-export function putJson(url: string, data?: any, options?: RestlingOptions): Promise<RestlingResult>;
+export function putJson(
+    url: string,
+    data?: any,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 /**
  * Create a request.
@@ -92,21 +127,24 @@ export function putJson(url: string, data?: any, options?: RestlingOptions): Pro
  * @param  options Options.
  * @return  Result.
  */
-export function request(url: string, options?: RestlingOptions): Promise<RestlingResult>;
+export function request(
+    url: string,
+    options?: RestlingOptions,
+): Promise<RestlingResult>;
 
 export function settleAsync(
     requests: Array<{ url: string; options?: RestlingOptions | undefined }>,
 ): Promise<[RestlingResult]>;
-export function settleAsync(
-    requests: { [key: string]: { url: string; options?: RestlingOptions | undefined } },
-): Promise<{ [key: string]: RestlingResult }>;
+export function settleAsync(requests: {
+    [key: string]: { url: string; options?: RestlingOptions | undefined };
+}): Promise<{ [key: string]: RestlingResult }>;
 
 export function allAsync(
     requests: Array<{ url: string; options?: RestlingOptions | undefined }>,
 ): Promise<[RestlingResult]>;
-export function allAsync(
-    requests: { [key: string]: { url: string; options?: RestlingOptions | undefined } },
-): Promise<{ [key: string]: RestlingResult }>;
+export function allAsync(requests: {
+    [key: string]: { url: string; options?: RestlingOptions | undefined };
+}): Promise<{ [key: string]: RestlingResult }>;
 
 /**
  * Interface for the result.

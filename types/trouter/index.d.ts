@@ -46,7 +46,11 @@ declare class Trouter<T = any> {
 
     find(method: Trouter.HTTPMethod, url: string): Trouter.FindResult<T>;
 
-    add(method: Trouter.HTTPMethod, pattern: string | RegExp, ...handlers: T[]): this;
+    add(
+        method: Trouter.HTTPMethod,
+        pattern: string | RegExp,
+        ...handlers: T[]
+    ): this;
 
     all(pattern: string | RegExp, ...handlers: T[]): this;
 

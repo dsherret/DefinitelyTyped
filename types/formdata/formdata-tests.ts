@@ -14,7 +14,7 @@ contentType.toUpperCase();
 
 const emitter = formData.serialize("multipart/form-data");
 if (emitter) {
-    emitter.addListener("data", data => console.log(data));
+    emitter.addListener("data", (data) => console.log(data));
 }
 
 formData.setNodeChunkedEncoding(true);

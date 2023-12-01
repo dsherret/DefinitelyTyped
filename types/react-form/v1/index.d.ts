@@ -7,22 +7,58 @@ export interface Nested<T> {
 }
 export type FormValues = Nested<FormValue>;
 export type Touched = Nested<boolean>;
-export type FormErrors = { [key: string]: FormError } | [{ [key: string]: FormError }];
+export type FormErrors =
+    | { [key: string]: FormError }
+    | [{ [key: string]: FormError }];
 export type NestedErrors = Nested<FormErrors>;
 export type RenderReturn = JSX.Element | false | null;
 
 export interface FormProps {
     loadState?(props: FormProps, self: Form): FormState | undefined;
     defaultValues?: FormValues | undefined;
-    preValidate?(values: FormValues, state: FormState, props: FormProps, self: Form): FormValues;
-    validate?(values: FormValues, state: FormState, props: FormProps): FormErrors;
-    onValidationFail?(values: FormValues, state: FormState, props: FormProps, self: Form): void;
-    onChange?(state: FormState, props: FormProps, initial: boolean | FormProps, self: Form): void;
+    preValidate?(
+        values: FormValues,
+        state: FormState,
+        props: FormProps,
+        self: Form,
+    ): FormValues;
+    validate?(
+        values: FormValues,
+        state: FormState,
+        props: FormProps,
+    ): FormErrors;
+    onValidationFail?(
+        values: FormValues,
+        state: FormState,
+        props: FormProps,
+        self: Form,
+    ): void;
+    onChange?(
+        state: FormState,
+        props: FormProps,
+        initial: boolean | FormProps,
+        self: Form,
+    ): void;
     saveState?(state: FormState, props: FormProps, self: Form): void;
     willUnmount?(state: FormState, props: FormProps, self: Form): void;
-    preSubmit?(values: FormValues, state: FormState, props: FormProps, self: Form): FormValues;
-    onSubmit?(values: FormValues, state: FormState, props: FormProps, self: Form): void;
-    postSubmit?(values: FormValues, state: FormState, props: FormProps, self: Form): void;
+    preSubmit?(
+        values: FormValues,
+        state: FormState,
+        props: FormProps,
+        self: Form,
+    ): FormValues;
+    onSubmit?(
+        values: FormValues,
+        state: FormState,
+        props: FormProps,
+        self: Form,
+    ): void;
+    postSubmit?(
+        values: FormValues,
+        state: FormState,
+        props: FormProps,
+        self: Form,
+    ): void;
 }
 
 export interface FormState {
@@ -57,10 +93,18 @@ export interface FormContext {
     formApi: FormApi;
 }
 
-export class Form extends React.Component<
-    FormProps & { children?: ((props: FormFunctionProps) => RenderReturn) | RenderReturn | undefined },
-    FormState
-> implements FormApi, React.ChildContextProvider<FormContext> {
+export class Form
+    extends React.Component<
+        FormProps & {
+            children?:
+                | ((props: FormFunctionProps) => RenderReturn)
+                | RenderReturn
+                | undefined;
+        },
+        FormState
+    >
+    implements FormApi, React.ChildContextProvider<FormContext>
+{
     static defaultProps: FormProps;
     static childContextTypes: {
         formApi: React.Validator<any>;
@@ -69,7 +113,10 @@ export class Form extends React.Component<
     getDefaultState(): FormState;
     getChildContext(): FormContext;
     componentWillMount(): void;
-    componentWillReceiveProps(nextProps: Readonly<Partial<FormProps>>, nextContext: any): void;
+    componentWillReceiveProps(
+        nextProps: Readonly<Partial<FormProps>>,
+        nextContext: any,
+    ): void;
     componentWillUmount(): void;
 
     // API
@@ -91,7 +138,11 @@ export class Form extends React.Component<
     getAPI(): FormApi;
     setFormState(newState: Partial<FormState>, silent?: boolean): void;
     emitChange(state: FormState, initial?: boolean): void;
-    validate(values: FormValues, state: FormState, props: FormProps): FormErrors;
+    validate(
+        values: FormValues,
+        state: FormState,
+        props: FormProps,
+    ): FormErrors;
     render(): RenderReturn;
 }
 
@@ -118,7 +169,9 @@ export interface FormFieldPropsWithField {
 export interface FormFieldPropsWithoutField {
     children(api: FormApi): RenderReturn;
 }
-export type FormFieldProps = FormFieldPropsWithField | FormFieldPropsWithoutField;
+export type FormFieldProps =
+    | FormFieldPropsWithField
+    | FormFieldPropsWithoutField;
 export const FormField: React.FC<FormFieldProps>;
 
 // FormError
@@ -160,7 +213,8 @@ export interface SelectOption {
     value: any;
     disabled?: boolean | undefined;
 }
-export interface SelectAttrs extends React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectAttrs
+    extends React.SelectHTMLAttributes<HTMLSelectElement> {
     onChange?: any;
     onBlur?: any;
 }
@@ -178,7 +232,8 @@ export interface SelectProps extends SelectAttrs {
 }
 export const Select: React.FC<SelectProps>;
 
-export interface InputAttrs extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputAttrs
+    extends React.InputHTMLAttributes<HTMLInputElement> {
     onChange?: any;
     onBlur?: any;
 }
@@ -194,7 +249,8 @@ export interface CheckboxProps extends InputAttrs {
 }
 export const Checkbox: React.FC<CheckboxProps>;
 
-export interface TextareaAttrs extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextareaAttrs
+    extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     onChange?: any;
     onBlur?: any;
 }
@@ -212,7 +268,10 @@ export const Textarea: React.FC<TextareaProps>;
 
 export interface NestedFormProps extends FormProps {
     field?: FormInputProps["field"] | undefined;
-    children?: React.ReactElement<FormProps> | [React.ReactElement<FormProps>] | undefined;
+    children?:
+        | React.ReactElement<FormProps>
+        | [React.ReactElement<FormProps>]
+        | undefined;
     errorProps?: FormInputProps["errorProps"] | undefined;
 }
 export const NestedForm: React.FC<NestedFormProps>;
@@ -240,7 +299,10 @@ export interface RadioGroupProps {
 export interface RadioGroupContext {
     formRadioGroup: RadioGroup;
 }
-export class RadioGroup extends React.Component<RadioGroupProps> implements FormFieldApi {
+export class RadioGroup
+    extends React.Component<RadioGroupProps>
+    implements FormFieldApi
+{
     static childContextTypes: {
         formRadioGroup: React.Validator<any>;
     };

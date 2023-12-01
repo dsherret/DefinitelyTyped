@@ -8,15 +8,21 @@ interface TestProps {
 const TestComponent: React.FC<TestProps> = () => <>test</>;
 
 function defaultImportComponentLoader() {
-    return new Promise<{ default: typeof TestComponent }>(resolve => resolve({ default: TestComponent }));
+    return new Promise<{ default: typeof TestComponent }>((resolve) =>
+        resolve({ default: TestComponent }),
+    );
 }
 
 function namedImportComponentLoader() {
-    return new Promise<{ name: typeof TestComponent }>(resolve => resolve({ name: TestComponent }));
+    return new Promise<{ name: typeof TestComponent }>((resolve) =>
+        resolve({ name: TestComponent }),
+    );
 }
 
 function importComponentLoader() {
-    return new Promise<typeof TestComponent>(resolve => resolve(TestComponent));
+    return new Promise<typeof TestComponent>((resolve) =>
+        resolve(TestComponent),
+    );
 }
 
 async function importClassComponentLoader() {
@@ -34,11 +40,13 @@ const lib = {
 };
 
 function defaultImportLibLoader() {
-    return new Promise<{ default: typeof lib }>(resolve => resolve({ default: lib }));
+    return new Promise<{ default: typeof lib }>((resolve) =>
+        resolve({ default: lib }),
+    );
 }
 
 function importLibLoader() {
-    return new Promise<typeof lib>(resolve => resolve(lib));
+    return new Promise<typeof lib>((resolve) => resolve(lib));
 }
 
 // loadable
@@ -53,31 +61,37 @@ function importLibLoader() {
 
     // Should infer props from imported component when using resolveComponent
     const LoadableResolvedComponent = loadable(namedImportComponentLoader, {
-        resolveComponent: mod => mod.name,
+        resolveComponent: (mod) => mod.name,
     });
 
     // Should allow passing JSX element to fallback in options
     loadable(defaultImportComponentLoader, { fallback: <div>loading...</div> });
     loadable(importComponentLoader, { fallback: <div>loading...</div> });
-    loadable(namedImportComponentLoader, { resolveComponent: mod => mod.name, fallback: <div>loading...</div> });
+    loadable(namedImportComponentLoader, {
+        resolveComponent: (mod) => mod.name,
+        fallback: <div>loading...</div>,
+    });
 
     // Should allow passing boolean to `ssr` in options
     loadable(defaultImportComponentLoader, { ssr: true });
     loadable(importComponentLoader, { ssr: true });
-    loadable(namedImportComponentLoader, { resolveComponent: mod => mod.name, ssr: true });
+    loadable(namedImportComponentLoader, {
+        resolveComponent: (mod) => mod.name,
+        ssr: true,
+    });
 
     // Should allow passing function to `cacheKey` in options
-    loadable(defaultImportComponentLoader, { cacheKey: props => props.foo });
-    loadable(importComponentLoader, { cacheKey: props => props.foo });
+    loadable(defaultImportComponentLoader, { cacheKey: (props) => props.foo });
+    loadable(importComponentLoader, { cacheKey: (props) => props.foo });
     loadable(namedImportComponentLoader, {
-        resolveComponent: mod => mod.name,
+        resolveComponent: (mod) => mod.name,
         cacheKey: (props: { foo: string }) => props.foo, // Annotation needed here for some reason?
     });
 
     // Should allow ref on a class component
     const LoadableClassDirect = loadable(importClassComponentLoader);
     <LoadableClassDirect
-        ref={ref => {
+        ref={(ref) => {
             ref && ref.publicMethod();
         }}
         foo=""
@@ -87,7 +101,7 @@ function importLibLoader() {
         ssr: false,
     });
     <LoadableClassDirectOnlyClient
-        ref={ref => {
+        ref={(ref) => {
             ref && ref.publicMethod();
         }}
         foo=""
@@ -97,7 +111,7 @@ function importLibLoader() {
         default: await importClassComponentLoader(),
     }));
     <LoadableClassDefault
-        ref={ref => {
+        ref={(ref) => {
             ref && ref.publicMethod();
         }}
         foo=""
@@ -114,13 +128,13 @@ function importLibLoader() {
     LoadableResolvedComponent.preload();
 
     // Should allow force loading
-    LoadableComponent.load().then(Component => {
+    LoadableComponent.load().then((Component) => {
         <Component foo="test" />;
     });
-    LoadableDefaultComponent.load().then(Component => {
+    LoadableDefaultComponent.load().then((Component) => {
         <Component foo="test" />;
     });
-    LoadableResolvedComponent.load().then(Component => {
+    LoadableResolvedComponent.load().then((Component) => {
         <Component foo="test" />;
     });
 }
@@ -142,7 +156,7 @@ function importLibLoader() {
     LazyComponent.preload();
 
     // Should allow force loading
-    LazyComponent.load().then(Component => {
+    LazyComponent.load().then((Component) => {
         <Component foo="test" />;
     });
 }
@@ -151,7 +165,9 @@ function importLibLoader() {
 {
     // Should infer types from module with default export and reflect them in children render prop
     const LoadableDefaultLibrary = loadable.lib(defaultImportLibLoader);
-    <LoadableDefaultLibrary>{({ default: { getTestObj } }) => getTestObj().foo}</LoadableDefaultLibrary>;
+    <LoadableDefaultLibrary>
+        {({ default: { getTestObj } }) => getTestObj().foo}
+    </LoadableDefaultLibrary>;
 
     // Should infer types from module without default export and reflect them in children render prop
     const LoadableLibrary = loadable.lib(importLibLoader);
@@ -164,10 +180,14 @@ function importLibLoader() {
     loadable.lib(defaultImportComponentLoader, { ssr: true });
 
     // Should allow passing function to `cacheKey` in options
-    loadable.lib(defaultImportComponentLoader, { cacheKey: (props: { foo: string }) => props.foo });
+    loadable.lib(defaultImportComponentLoader, {
+        cacheKey: (props: { foo: string }) => props.foo,
+    });
 
     // Should allow passing fallback prop
-    <LoadableLibrary fallback={<div>Loading library...</div>}>{({ getTestObj }) => getTestObj().foo}</LoadableLibrary>;
+    <LoadableLibrary fallback={<div>Loading library...</div>}>
+        {({ getTestObj }) => getTestObj().foo}
+    </LoadableLibrary>;
 
     // Should reflect inferred types from module in ref
     const ref = React.createRef<typeof LoadableLibrary>();
@@ -178,7 +198,7 @@ function importLibLoader() {
     LoadableLibrary.preload();
 
     // Should allow force loading
-    LoadableLibrary.load().then(Component => {
+    LoadableLibrary.load().then((Component) => {
         <Component />;
     });
 }
@@ -187,14 +207,18 @@ function importLibLoader() {
 {
     // Should infer types from module with default export and reflect them in children render prop
     const LazyDefaultLibrary = lazy.lib(defaultImportLibLoader);
-    <LazyDefaultLibrary>{({ default: { getTestObj } }) => getTestObj().foo}</LazyDefaultLibrary>;
+    <LazyDefaultLibrary>
+        {({ default: { getTestObj } }) => getTestObj().foo}
+    </LazyDefaultLibrary>;
 
     // Should infer types from module without default export and reflect them in children render prop
     const LazyLibrary = lazy.lib(importLibLoader);
     <LazyLibrary>{({ getTestObj }) => getTestObj().foo}</LazyLibrary>;
 
     // Should allow passing fallback prop
-    <LazyLibrary fallback={<div>Loading library...</div>}>{({ getTestObj }) => getTestObj().foo}</LazyLibrary>;
+    <LazyLibrary fallback={<div>Loading library...</div>}>
+        {({ getTestObj }) => getTestObj().foo}
+    </LazyLibrary>;
 
     // Should reflect inferred types from module in ref
     const ref = React.createRef<typeof LazyLibrary>();
@@ -205,7 +229,7 @@ function importLibLoader() {
     LazyDefaultLibrary.preload();
 
     // Should allow force loading
-    LazyDefaultLibrary.load().then(Component => {
+    LazyDefaultLibrary.load().then((Component) => {
         <Component />;
     });
 }

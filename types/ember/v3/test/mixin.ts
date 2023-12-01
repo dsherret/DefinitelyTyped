@@ -50,7 +50,9 @@ const EditableAndCancelableMixin = Ember.Mixin.create(EditableMixin, {
     cancelled: false,
 });
 
-const EditableAndCancelableComment = Ember.Route.extend(EditableAndCancelableMixin);
+const EditableAndCancelableComment = Ember.Route.extend(
+    EditableAndCancelableMixin,
+);
 
 const editableAndCancelable = EditableAndCancelableComment.create();
 assertType<boolean>(editableAndCancelable.isEditing);

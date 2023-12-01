@@ -18,12 +18,20 @@ declare module "SyntheticsScreenshot" {
         setUploader(uploader: any): void;
         reset(): void;
         zerofill(num: any, numlen: any): string;
-        take(page: any, stepName?: string, suffix?: string): Promise<ScreenshotResult>;
+        take(
+            page: any,
+            stepName?: string,
+            suffix?: string,
+        ): Promise<ScreenshotResult>;
         /**
          *  Adds screenshot result to map {StepName: [ScreenshotResults]} and
          *  @returns fileName and page url of screenshot
          */
-        addScreenshotResult(stepName: any, fileName: any, pageUrl: any): ScreenshotResult;
+        addScreenshotResult(
+            stepName: any,
+            fileName: any,
+            pageUrl: any,
+        ): ScreenshotResult;
         /**
          * Get all screenshots captured during the execution of this step.
          * If two steps have same name, it will get screenshots for both of them.

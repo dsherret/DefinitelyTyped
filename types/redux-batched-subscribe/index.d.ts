@@ -7,4 +7,6 @@ export interface StoreExtension {
     subscribeImmediate: Store["subscribe"];
 }
 
-export function batchedSubscribe(batch: BatchFunction): StoreEnhancer<StoreExtension>;
+export function batchedSubscribe(
+    batch: BatchFunction,
+): StoreEnhancer<StoreExtension>;

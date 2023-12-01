@@ -17,7 +17,14 @@ declare class Emoji {
 
     img_set: string;
 
-    img_sets: { [key: string]: { path: string; sheet: string; sheet_size: number; mask: number } };
+    img_sets: {
+        [key: string]: {
+            path: string;
+            sheet: string;
+            sheet_size: number;
+            mask: number;
+        };
+    };
 
     include_text: boolean;
 

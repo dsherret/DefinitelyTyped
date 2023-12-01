@@ -1,7 +1,7 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "no-string-throw": false,
-        "no-unnecessary-class": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "no-string-throw": false,
+    "no-unnecessary-class": false
+  }
 }

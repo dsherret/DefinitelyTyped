@@ -39,7 +39,10 @@ declare namespace broccoliFunnel {
          *
          * Default: `[]`
          */
-        include?: string[] | RegExp[] | Array<(relativePath: string) => boolean>;
+        include?:
+            | string[]
+            | RegExp[]
+            | Array<(relativePath: string) => boolean>;
 
         /**
          * One or more matcher expression (regular expression, glob string, or function).
@@ -50,7 +53,10 @@ declare namespace broccoliFunnel {
          *
          * Default: `[]`
          */
-        exclude?: string[] | RegExp[] | Array<(relativePath: string) => boolean>;
+        exclude?:
+            | string[]
+            | RegExp[]
+            | Array<(relativePath: string) => boolean>;
 
         /**
          * One or more relative file paths. Files within the node whose relative paths match will be
@@ -82,7 +88,11 @@ declare namespace broccoliFunnel {
 
         lookupDestinationPath(relativePath: string): string;
 
-        processFile(sourcePath: string, destPath: string, relativePath: string): void;
+        processFile(
+            sourcePath: string,
+            destPath: string,
+            relativePath: string,
+        ): void;
 
         processFilters(inputPath: string): void;
 

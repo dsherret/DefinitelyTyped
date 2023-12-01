@@ -5,5 +5,5 @@ const tracer = new Tracer({
 });
 
 tracer.on("error", (e: any) => {
-    void (0);
+    void 0;
 });

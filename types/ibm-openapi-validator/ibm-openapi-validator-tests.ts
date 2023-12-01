@@ -19,14 +19,13 @@ const oasExamplePetstore = {
             get: {
                 summary: "List all pets",
                 operationId: "listPets",
-                tags: [
-                    "pets",
-                ],
+                tags: ["pets"],
                 parameters: [
                     {
                         name: "limit",
                         in: "query",
-                        description: "How many items to return at one time (max 100)",
+                        description:
+                            "How many items to return at one time (max 100)",
                         required: false,
                         schema: {
                             type: "integer",
@@ -39,7 +38,8 @@ const oasExamplePetstore = {
                         description: "A paged array of pets",
                         headers: {
                             "x-next": {
-                                description: "A link to the next page of responses",
+                                description:
+                                    "A link to the next page of responses",
                                 schema: {
                                     type: "string",
                                 },
@@ -68,9 +68,7 @@ const oasExamplePetstore = {
             post: {
                 summary: "Create a pet",
                 operationId: "createPets",
-                tags: [
-                    "pets",
-                ],
+                tags: ["pets"],
                 responses: {
                     201: {
                         description: "Null response",
@@ -92,9 +90,7 @@ const oasExamplePetstore = {
             get: {
                 summary: "Info for a specific pet",
                 operationId: "showPetById",
-                tags: [
-                    "pets",
-                ],
+                tags: ["pets"],
                 parameters: [
                     {
                         name: "petId",
@@ -135,10 +131,7 @@ const oasExamplePetstore = {
         schemas: {
             Pet: {
                 type: "object",
-                required: [
-                    "id",
-                    "name",
-                ],
+                required: ["id", "name"],
                 properties: {
                     id: {
                         type: "integer",
@@ -160,10 +153,7 @@ const oasExamplePetstore = {
             },
             Error: {
                 type: "object",
-                required: [
-                    "code",
-                    "message",
-                ],
+                required: ["code", "message"],
                 properties: {
                     code: {
                         type: "integer",

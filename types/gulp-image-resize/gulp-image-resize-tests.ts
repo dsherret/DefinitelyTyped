@@ -5,7 +5,8 @@ resize(undefined);
 // @ts-expect-error
 resize("1");
 
-resize({ // $ExpectType Transform
+resize({
+    // $ExpectType Transform
     width: 100,
     height: 100,
     crop: true,

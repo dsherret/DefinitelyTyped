@@ -8,7 +8,10 @@ const fc: BackboneFetchCache.Static = Backbone.fetchCache;
 fc.enabled = true;
 fc.localStorage = true;
 
-const opts: BackboneFetchCache.GetCacheOptions = { url: "string url", data: {} };
+const opts: BackboneFetchCache.GetCacheOptions = {
+    url: "string url",
+    data: {},
+};
 const strKey: string = "string key";
 const getCacheKeyOpts = { getCacheKey: () => "string key" };
 
@@ -37,7 +40,8 @@ lastSync = fc.getLastSync(getCacheKeyOpts, opts);
 fc.getLocalStorage();
 const localStorageKey: string = fc.getLocalStorageKey();
 
-fc.priorityFn = (a: BackboneFetchCache.Cache, b: BackboneFetchCache.Cache) => 12345;
+fc.priorityFn = (a: BackboneFetchCache.Cache, b: BackboneFetchCache.Cache) =>
+    12345;
 
 fc.reset();
 
@@ -60,7 +64,11 @@ const modelOpts: Backbone.ModelFetchWithCacheOptions = {
     expires: new Date().getTime(),
     prefill: true,
     prefillExpires: new Date().getTime(),
-    prefillSuccess: (self: any, attributes: any, opts: Backbone.ModelFetchWithCacheOptions) => {},
+    prefillSuccess: (
+        self: any,
+        attributes: any,
+        opts: Backbone.ModelFetchWithCacheOptions,
+    ) => {},
     context: {},
 };
 

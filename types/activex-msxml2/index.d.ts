@@ -435,7 +435,10 @@ declare namespace MSXML2 {
         ): IXMLDOMNode;
 
         /** create a processing instruction node */
-        createProcessingInstruction(target: string, data: string): IXMLDOMProcessingInstruction;
+        createProcessingInstruction(
+            target: string,
+            data: string,
+        ): IXMLDOMProcessingInstruction;
 
         /** create a text node */
         createTextNode(data: string): IXMLDOMText;
@@ -638,7 +641,10 @@ declare namespace MSXML2 {
         createNode(type: any, name: string, namespaceURI: string): IXMLDOMNode;
 
         /** create a processing instruction node */
-        createProcessingInstruction(target: string, data: string): IXMLDOMProcessingInstruction;
+        createProcessingInstruction(
+            target: string,
+            data: string,
+        ): IXMLDOMProcessingInstruction;
 
         /** create a text node */
         createTextNode(data: string): IXMLDOMText;
@@ -950,7 +956,11 @@ declare namespace MSXML2 {
         endDocument(): void;
 
         /** Receive notification of the end of an element. */
-        endElement(strNamespaceURI: string, strLocalName: string, strQName: string): void;
+        endElement(
+            strNamespaceURI: string,
+            strLocalName: string,
+            strQName: string,
+        ): void;
 
         /** End the scope of a prefix-URI mapping. */
         endPrefixMapping(strPrefix: string): void;
@@ -985,10 +995,19 @@ declare namespace MSXML2 {
         private constructor();
 
         /** Receive notification of a notation declaration event. */
-        notationDecl(strName: string, strPublicId: string, strSystemId: string): void;
+        notationDecl(
+            strName: string,
+            strPublicId: string,
+            strSystemId: string,
+        ): void;
 
         /** Receive notification of an unparsed entity declaration event. */
-        unparsedEntityDecl(strName: string, strPublicId: string, strSystemId: string, strNotationName: string): void;
+        unparsedEntityDecl(
+            strName: string,
+            strPublicId: string,
+            strSystemId: string,
+            strNotationName: string,
+        ): void;
     }
 
     /** IVBSAXEntityResolver interface */
@@ -1006,13 +1025,25 @@ declare namespace MSXML2 {
         private constructor();
 
         /** Receive notification of a recoverable error. */
-        error(oLocator: IVBSAXLocator, strErrorMessage: string, nErrorCode: number): void;
+        error(
+            oLocator: IVBSAXLocator,
+            strErrorMessage: string,
+            nErrorCode: number,
+        ): void;
 
         /** Receive notification of a non-recoverable error. */
-        fatalError(oLocator: IVBSAXLocator, strErrorMessage: string, nErrorCode: number): void;
+        fatalError(
+            oLocator: IVBSAXLocator,
+            strErrorMessage: string,
+            nErrorCode: number,
+        ): void;
 
         /** Receive notification of an ignorable warning. */
-        ignorableWarning(oLocator: IVBSAXLocator, strErrorMessage: string, nErrorCode: number): void;
+        ignorableWarning(
+            oLocator: IVBSAXLocator,
+            strErrorMessage: string,
+            nErrorCode: number,
+        ): void;
     }
 
     /** IVBSAXLocator interface */
@@ -1420,7 +1451,10 @@ declare namespace MSXML2 {
         createNode(type: any, name: string, namespaceURI: string): IXMLDOMNode;
 
         /** create a processing instruction node */
-        createProcessingInstruction(target: string, data: string): IXMLDOMProcessingInstruction;
+        createProcessingInstruction(
+            target: string,
+            data: string,
+        ): IXMLDOMProcessingInstruction;
 
         /** create a text node */
         createTextNode(data: string): IXMLDOMText;
@@ -2007,7 +2041,10 @@ declare namespace MSXML2 {
         removeNamedItem(name: string): IXMLDOMNode;
 
         /** remove the item by name and namespace */
-        removeQualifiedItem(baseName: string, namespaceURI: string): IXMLDOMNode;
+        removeQualifiedItem(
+            baseName: string,
+            namespaceURI: string,
+        ): IXMLDOMNode;
 
         /** reset the position of iterator */
         reset(): void;
@@ -2415,11 +2452,21 @@ declare namespace MSXML2 {
     class IXMLHTTPRequest2Callback {
         private "MSXML2.IXMLHTTPRequest2Callback_typekey": IXMLHTTPRequest2Callback;
         private constructor();
-        ondataavailable(pXHR: FreeThreadedXMLHTTP60, pResponseStream: ISequentialStream): void;
+        ondataavailable(
+            pXHR: FreeThreadedXMLHTTP60,
+            pResponseStream: ISequentialStream,
+        ): void;
         OnError(pXHR: FreeThreadedXMLHTTP60, hrError: undefined): void;
-        OnHeadersAvailable(pXHR: FreeThreadedXMLHTTP60, dwStatus: number, pwszStatus: string): void;
+        OnHeadersAvailable(
+            pXHR: FreeThreadedXMLHTTP60,
+            dwStatus: number,
+            pwszStatus: string,
+        ): void;
         OnRedirect(pXHR: FreeThreadedXMLHTTP60, pwszRedirectUrl: string): void;
-        OnResponseReceived(pXHR: FreeThreadedXMLHTTP60, pResponseStream: ISequentialStream): void;
+        OnResponseReceived(
+            pXHR: FreeThreadedXMLHTTP60,
+            pResponseStream: ISequentialStream,
+        ): void;
     }
 
     /** IXSLProcessor Interface */
@@ -2434,7 +2481,11 @@ declare namespace MSXML2 {
          * set <xsl:param> values
          * @param namespaceURI [namespaceURI='0']
          */
-        addParameter(baseName: string, parameter: any, namespaceURI?: string): void;
+        addParameter(
+            baseName: string,
+            parameter: any,
+            namespaceURI?: string,
+        ): void;
 
         /** XML input tree to transform */
         input: any;
@@ -2560,7 +2611,13 @@ declare namespace MSXML2 {
         private constructor();
 
         /** Add an attribute to the end of the list. */
-        addAttribute(strURI: string, strLocalName: string, strQName: string, strType: string, strValue: string): void;
+        addAttribute(
+            strURI: string,
+            strLocalName: string,
+            strQName: string,
+            strType: string,
+            strValue: string,
+        ): void;
 
         /** Add an attribute, whose value is equal to the indexed attribute in the input attributes object, to the end of the list. */
         addAttributeFromIndex(varAtts: any, nIndex: number): void;
@@ -2663,7 +2720,13 @@ declare namespace MSXML2 {
         readonly onreadystatechange: any;
 
         /** Open HTTP connection */
-        open(bstrMethod: string, bstrUrl: string, varAsync?: any, bstrUser?: any, bstrPassword?: any): void;
+        open(
+            bstrMethod: string,
+            bstrUrl: string,
+            varAsync?: any,
+            bstrUser?: any,
+            bstrPassword?: any,
+        ): void;
 
         /** Get ready state */
         readonly readyState: number;
@@ -2687,7 +2750,11 @@ declare namespace MSXML2 {
         setOption(option: SERVERXMLHTTP_OPTION, value: any): void;
 
         /** Specify proxy configuration */
-        setProxy(proxySetting: SXH_PROXY_SETTING, varProxyServer?: any, varBypassList?: any): void;
+        setProxy(
+            proxySetting: SXH_PROXY_SETTING,
+            varProxyServer?: any,
+            varBypassList?: any,
+        ): void;
 
         /** Specify proxy authentication credentials */
         setProxyCredentials(bstrUserName: string, bstrPassword: string): void;
@@ -2696,7 +2763,12 @@ declare namespace MSXML2 {
         setRequestHeader(bstrHeader: string, bstrValue: string): void;
 
         /** Specify timeout settings (in milliseconds) */
-        setTimeouts(resolveTimeout: number, connectTimeout: number, sendTimeout: number, receiveTimeout: number): void;
+        setTimeouts(
+            resolveTimeout: number,
+            connectTimeout: number,
+            sendTimeout: number,
+            receiveTimeout: number,
+        ): void;
 
         /** Get HTTP status code */
         readonly status: number;
@@ -2735,7 +2807,13 @@ declare namespace MSXML2 {
         readonly onreadystatechange: any;
 
         /** Open HTTP connection */
-        open(bstrMethod: string, bstrUrl: string, varAsync?: any, bstrUser?: any, bstrPassword?: any): void;
+        open(
+            bstrMethod: string,
+            bstrUrl: string,
+            varAsync?: any,
+            bstrUser?: any,
+            bstrPassword?: any,
+        ): void;
 
         /** Get ready state */
         readonly readyState: number;
@@ -2815,7 +2893,10 @@ interface ActiveXObject {
     on(
         obj: MSXML2.FreeThreadedDOMDocument60,
         event: "ondataavailable" | "onreadystatechange",
-        handler: (this: MSXML2.FreeThreadedDOMDocument60, parameter: {}) => void,
+        handler: (
+            this: MSXML2.FreeThreadedDOMDocument60,
+            parameter: {},
+        ) => void,
     ): void;
 }
 

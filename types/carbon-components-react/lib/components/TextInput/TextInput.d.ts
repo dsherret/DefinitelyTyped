@@ -11,7 +11,8 @@ export interface TextInputProps extends TextInputSharedProps {
     warnText?: React.ReactNode | undefined;
 }
 
-interface TextInputFC extends ForwardRefReturn<HTMLInputElement, TextInputProps> {
+interface TextInputFC
+    extends ForwardRefReturn<HTMLInputElement, TextInputProps> {
     readonly ControlledPasswordInput: typeof ControlledPasswordInput;
     readonly PasswordInput: typeof PasswordInput;
 }

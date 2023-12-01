@@ -54,11 +54,11 @@ const sesEventMail: SESMail = {
         },
         {
             name: "From",
-            value: "\"Doe, John\" <sender@example.com>",
+            value: '"Doe, John" <sender@example.com>',
         },
         {
             name: "To",
-            value: "\"recipient@example.com\" <recipient@example.com>",
+            value: '"recipient@example.com" <recipient@example.com>',
         },
         {
             name: "Subject",
@@ -118,7 +118,7 @@ const sesEventMail: SESMail = {
         },
         {
             name: "Content-Type",
-            value: "multipart/alternative; boundary=\"_000_F8098FDD49A344F6112B195BDAexamplecom_\"",
+            value: 'multipart/alternative; boundary="_000_F8098FDD49A344F6112B195BDAexamplecom_"',
         },
         {
             name: "MIME-Version",
@@ -131,13 +131,13 @@ const sesEventMail: SESMail = {
     ],
     commonHeaders: {
         returnPath: "prvs=144d0cba7=sender@example.com",
-        from: ["\"Doe, John\" <sender@example.com>"],
+        from: ['"Doe, John" <sender@example.com>'],
         date: "Mon, 5 Aug 2019 21:29:57 +0000",
-        to: ["\"recipient@example.com\" <recipient@example.com>"],
-        bcc: ["\"otherrecipient@example.com\" <otherrecipient@example.com>"],
+        to: ['"recipient@example.com" <recipient@example.com>'],
+        bcc: ['"otherrecipient@example.com" <otherrecipient@example.com>'],
         messageId: "<F8098FDD-49A3-442D-9935-F6112B195BDA@example.com>",
         subject: "This is a test",
-        replyTo: ["\"Doe, John\" <sender@example.com>"],
+        replyTo: ['"Doe, John" <sender@example.com>'],
     },
 };
 
@@ -176,7 +176,8 @@ const sesS3Event: SESEvent = {
                         type: "S3",
                         bucketName: "my-bucket",
                         objectKey: "path/to/key",
-                        topicArn: "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
+                        topicArn:
+                            "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
                     },
                 },
             },
@@ -195,7 +196,8 @@ const sesSnsEvent: SESEvent = {
                     ...receiptCommon,
                     action: {
                         type: "SNS",
-                        topicArn: "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
+                        topicArn:
+                            "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
                     },
                 },
             },
@@ -214,7 +216,8 @@ const sesBounceEvent: SESEvent = {
                     ...receiptCommon,
                     action: {
                         type: "Bounce",
-                        topicArn: "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
+                        topicArn:
+                            "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
                         smtpReplyCode: "5.1.1",
                         message: "message",
                         sender: "sender",
@@ -237,7 +240,8 @@ const sesLambdaEvent: SESEvent = {
                     ...receiptCommon,
                     action: {
                         type: "Lambda",
-                        functionArn: "arn:aws:lambda:us-east-1:123456789012:function:IncomingEmail",
+                        functionArn:
+                            "arn:aws:lambda:us-east-1:123456789012:function:IncomingEmail",
                         invocationType: "Event",
                     },
                 },
@@ -257,7 +261,8 @@ const sesStopEvent: SESEvent = {
                     ...receiptCommon,
                     action: {
                         type: "Stop",
-                        topicArn: "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
+                        topicArn:
+                            "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
                     },
                 },
             },
@@ -276,7 +281,8 @@ const sesWorkMailEvent: SESEvent = {
                     ...receiptCommon,
                     action: {
                         type: "WorkMail",
-                        topicArn: "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
+                        topicArn:
+                            "arn:aws:sns:us-east-1:123456789012:topic:my-topic",
                         organizationArn: "arn",
                     },
                 },

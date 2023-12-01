@@ -4,17 +4,29 @@ export = c;
 interface args {
     sub: string[];
 
-    option(name: string | [string, string], description: string, defaultValue?: any, init?: OptionInitFunction): args;
+    option(
+        name: string | [string, string],
+        description: string,
+        defaultValue?: any,
+        init?: OptionInitFunction,
+    ): args;
     options(list: Option[]): args;
     command(
         name: string,
         description: string,
-        init?: (name: string, sub: string[], options: ConfigurationOptions) => void,
+        init?: (
+            name: string,
+            sub: string[],
+            options: ConfigurationOptions,
+        ) => void,
         aliases?: string[],
     ): args;
     example(usage: string, description: string): args;
     examples(list: Example[]): args;
-    parse(argv: string[], options?: ConfigurationOptions): { [key: string]: any };
+    parse(
+        argv: string[],
+        options?: ConfigurationOptions,
+    ): { [key: string]: any };
     showHelp(): void;
     showVersion(): void;
 }
@@ -23,13 +35,17 @@ type OptionInitFunction = (value: any) => any;
 
 interface MriOptions {
     args?: string[] | undefined;
-    alias?: {
-        [key: string]: string | string[];
-    } | undefined;
+    alias?:
+        | {
+              [key: string]: string | string[];
+          }
+        | undefined;
     boolean?: string | string[] | undefined;
-    default?: {
-        [key: string]: any;
-    } | undefined;
+    default?:
+        | {
+              [key: string]: any;
+          }
+        | undefined;
     string?: string | string[] | undefined;
     unknown?: ((param: string) => boolean) | undefined;
 }
@@ -37,12 +53,16 @@ interface MriOptions {
 interface MinimistOptions {
     string?: string | string[] | undefined;
     boolean?: boolean | string | string[] | undefined;
-    alias?: {
-        [key: string]: string | string[];
-    } | undefined;
-    default?: {
-        [key: string]: any;
-    } | undefined;
+    alias?:
+        | {
+              [key: string]: string | string[];
+          }
+        | undefined;
+    default?:
+        | {
+              [key: string]: any;
+          }
+        | undefined;
     stopEarly?: boolean | undefined;
     "--"?: boolean | undefined;
     unknown?: ((param: string) => boolean) | undefined;

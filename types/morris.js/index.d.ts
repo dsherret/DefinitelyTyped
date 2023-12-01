@@ -73,7 +73,14 @@ declare namespace morris {
         /** Set to false to disable line smoothing. */
         smooth?: boolean | undefined;
         /** Provide a function on this option to generate custom hover legends. */
-        hoverCallback?: ((index: number, options: ILineOptions, content: string, row: any) => string) | undefined;
+        hoverCallback?:
+            | ((
+                  index: number,
+                  options: ILineOptions,
+                  content: string,
+                  row: any,
+              ) => string)
+            | undefined;
         /** Set to false to skip time/date parsing for X values, instead treating them as an equally-spaced series. */
         parseTime?: boolean | undefined;
         /** Set to a string value (eg: '%') to add a label suffix all y-labels. */
@@ -119,7 +126,14 @@ declare namespace morris {
         /** Set to true to draw bars stacked vertically. */
         stacked?: boolean | undefined;
         /** Provide a function on this option to generate custom hover legends. */
-        hoverCallback?: ((index: number, options: IBarOptions, content: string, row: any) => string) | undefined;
+        hoverCallback?:
+            | ((
+                  index: number,
+                  options: IBarOptions,
+                  content: string,
+                  row: any,
+              ) => string)
+            | undefined;
     }
 
     interface IDonutData {

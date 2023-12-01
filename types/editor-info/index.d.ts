@@ -15,7 +15,10 @@ type EditorData<Constant extends keyof EditorMap> = Simplify<
     }
 >;
 
-type NoEditorData = { [key in keyof EditorMap]: false } & { name: ""; isEditor: false };
+type NoEditorData = { [key in keyof EditorMap]: false } & {
+    name: "";
+    isEditor: false;
+};
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- This is intentional to get some of the benefits of interfaces over types
 interface VsCode extends EditorData<"VSCODE"> {}

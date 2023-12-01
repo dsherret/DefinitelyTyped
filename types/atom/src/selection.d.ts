@@ -12,7 +12,9 @@ import {
 export interface Selection {
     // Event Subscription
     /** Calls your callback when the selection was moved. */
-    onDidChangeRange(callback: (event: SelectionChangedEvent) => void): Disposable;
+    onDidChangeRange(
+        callback: (event: SelectionChangedEvent) => void,
+    ): Disposable;
 
     /** Calls your callback when the selection was destroyed. */
     onDidDestroy(callback: () => void): Disposable;
@@ -191,7 +193,10 @@ export interface Selection {
 
     // Modifying the selected text
     /** Replaces text at the current selection. */
-    insertText(text: string, options?: TextInsertionOptions & ReadonlyEditOptions): void;
+    insertText(
+        text: string,
+        options?: TextInsertionOptions & ReadonlyEditOptions,
+    ): void;
 
     /**
      *  Removes the first character before the selection if the selection is empty
@@ -285,13 +290,23 @@ export interface Selection {
     toggleLineComments(options?: ReadonlyEditOptions): void;
 
     /** Cuts the selection until the end of the screen line. */
-    cutToEndOfLine(maintainClipboard?: boolean, options?: ReadonlyEditOptions): void;
+    cutToEndOfLine(
+        maintainClipboard?: boolean,
+        options?: ReadonlyEditOptions,
+    ): void;
 
     /** Cuts the selection until the end of the buffer line. */
-    cutToEndOfBufferLine(maintainClipboard?: boolean, options?: ReadonlyEditOptions): void;
+    cutToEndOfBufferLine(
+        maintainClipboard?: boolean,
+        options?: ReadonlyEditOptions,
+    ): void;
 
     /** Copies the selection to the clipboard and then deletes it. */
-    cut(maintainClipboard?: boolean, fullLine?: boolean, options?: ReadonlyEditOptions): void;
+    cut(
+        maintainClipboard?: boolean,
+        fullLine?: boolean,
+        options?: ReadonlyEditOptions,
+    ): void;
 
     /** Copies the current selection to the clipboard. */
     copy(maintainClipboard?: boolean, fullLine?: boolean): void;
@@ -315,7 +330,10 @@ export interface Selection {
      */
     merge(
         otherSelection: Selection,
-        options?: { preserveFolds?: boolean | undefined; autoscroll?: boolean | undefined },
+        options?: {
+            preserveFolds?: boolean | undefined;
+            autoscroll?: boolean | undefined;
+        },
     ): void;
 
     // Comparing to other selections

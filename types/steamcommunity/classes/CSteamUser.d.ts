@@ -1,10 +1,21 @@
-import { appid, Callback, CallbackError, contextid, gid, UserComment } from "../index";
+import {
+    appid,
+    Callback,
+    CallbackError,
+    contextid,
+    gid,
+    UserComment,
+} from "../index";
 import CEconItem = require("../classes/CEconItem");
 import SteamID = require("steamid");
 
 export = CSteamUser;
 
-declare function CSteamUser(community: any, userData: any, customurl: any): void;
+declare function CSteamUser(
+    community: any,
+    userData: any,
+    customurl: any,
+): void;
 
 /**
  * A class which stands for a Steam user. This class cannot be instantiated directly; it must be received from a call to getSteamUser.
@@ -53,7 +64,10 @@ declare class CSteamUser {
      * @param size Optional. One of small (default), medium, full.
      * @param protocol Optional. One of http:// (default), https://, // (protocol aware).
      */
-    getAvatarURL(size?: string, protocol?: "http://" | "https://" | string): void;
+    getAvatarURL(
+        size?: string,
+        protocol?: "http://" | "https://" | string,
+    ): void;
 
     /**
      * Adds the user as a friend.

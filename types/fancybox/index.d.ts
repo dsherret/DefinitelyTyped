@@ -1,10 +1,21 @@
 /// <reference types="jquery" />
 
-type FancyBoxInteractionTypes = "close" | "next" | "nextOrClose" | "toggleControls" | "zoom" | false;
+type FancyBoxInteractionTypes =
+    | "close"
+    | "next"
+    | "nextOrClose"
+    | "toggleControls"
+    | "zoom"
+    | false;
 
-type FancyBoxInteractionMethod = (slide?: FancyBoxSlide, event?: JQuery.Event) => FancyBoxInteractionTypes;
+type FancyBoxInteractionMethod = (
+    slide?: FancyBoxSlide,
+    event?: JQuery.Event,
+) => FancyBoxInteractionTypes;
 
-type FancyBoxInteractions = FancyBoxInteractionTypes | FancyBoxInteractionMethod;
+type FancyBoxInteractions =
+    | FancyBoxInteractionTypes
+    | FancyBoxInteractionMethod;
 
 interface FancyBoxPlainObject {
     [key: string]: string | number | boolean | (() => void);
@@ -147,13 +158,13 @@ interface FancyBoxInternationalizationOptions {
 }
 
 interface FancyBoxButtonTypes {
-    "zoom": string;
-    "share": string;
-    "slideShow": string;
-    "fullScreen": string;
-    "download": string;
-    "thumbs": string;
-    "close": string;
+    zoom: string;
+    share: string;
+    slideShow: string;
+    fullScreen: string;
+    download: string;
+    thumbs: string;
+    close: string;
 }
 
 interface FancyBoxOptions {
@@ -256,7 +267,15 @@ interface FancyBoxOptions {
      * "zoom-in-out"
      * "rotate"
      */
-    transitionEffect?: "fade" | "slide" | "circular" | "tube" | "zoom-in-out" | "rotate" | boolean | undefined;
+    transitionEffect?:
+        | "fade"
+        | "slide"
+        | "circular"
+        | "tube"
+        | "zoom-in-out"
+        | "rotate"
+        | boolean
+        | undefined;
     /**
      * Duration in ms for transition animation
      */
@@ -327,7 +346,9 @@ interface FancyBoxOptions {
      * }
      */
     media?: FancyBoxPlainObject | undefined;
-    slideShow?: { autoStart?: boolean | undefined; speed?: number | undefined } | undefined;
+    slideShow?:
+        | { autoStart?: boolean | undefined; speed?: number | undefined }
+        | undefined;
     thumbs?: FancyThumbsOptions | undefined;
     /**
      * Use mousewheel to navigate gallery
@@ -397,7 +418,10 @@ interface FancyBoxOptions {
     dblclickOutside?: FancyBoxInteractions | undefined;
     lang?: string | undefined;
     i18n?: FancyBoxInternationalizationOptions | undefined;
-    caption?: string | ((instance: FancyBoxInstance, current: FancyBoxSlide) => string) | undefined;
+    caption?:
+        | string
+        | ((instance: FancyBoxInstance, current: FancyBoxSlide) => string)
+        | undefined;
 }
 
 interface FancyBoxRefs {
@@ -429,7 +453,12 @@ interface FancyBoxGestures {
     endSwiping(swiping: "x" | "y", scrolling: boolean): void;
     endZooming(): void;
     limitMovement(): void;
-    limitPosition(newOffsetX: number, newOffsetY: number, newWidth: number, newHeight: number): void;
+    limitPosition(
+        newOffsetX: number,
+        newOffsetY: number,
+        newWidth: number,
+        newHeight: number,
+    ): void;
     onPan(): void;
     onSwipe(e: JQuery.Event): void;
     onTap(e: JQuery.Event): void;
@@ -628,7 +657,11 @@ interface FancyBoxInstanceMethods {
      * @param imgWidth
      * @param imgHeight
      */
-    resolveImageSlideSize(slide: FancyBoxSlide, imgWidth: number, imgHeight: number): void;
+    resolveImageSlideSize(
+        slide: FancyBoxSlide,
+        imgWidth: number,
+        imgHeight: number,
+    ): void;
     /**
      * Make content visible
      * This method is called right after content has been loaded or
@@ -781,7 +814,10 @@ interface FancyBoxJQueryMethods {
         opts?: FancyBoxOptions,
         index?: number,
     ): FancyBoxInstance;
-    setTranslate($el: JQuery, props: { left?: number | undefined; top?: number | undefined }): void;
+    setTranslate(
+        $el: JQuery,
+        props: { left?: number | undefined; top?: number | undefined },
+    ): void;
     stop($el: JQuery, callCallback: boolean): void;
     use3d: string;
     version: string;

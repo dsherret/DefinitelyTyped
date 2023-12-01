@@ -9,7 +9,8 @@ var appState: umb.services.IAppState;
 /**
  * Sync tree for specific path
  */
-navigationService.syncTree({ tree: "content", path: "", forceReload: true, activate: false })
+navigationService
+    .syncTree({ tree: "content", path: "", forceReload: true, activate: false })
     .then(() => {
         // do something
     });
@@ -73,7 +74,9 @@ var getActiveNodeId = () => {
         return 0;
     }
     // get the parent id of the current node - we get parent because if we create a new module then the current node will be unpublished and this "id" will be 0
-    return editorState.current.id > 0 ? editorState.current.id : editorState.current.parentId;
+    return editorState.current.id > 0
+        ? editorState.current.id
+        : editorState.current.parentId;
 };
 
 /**

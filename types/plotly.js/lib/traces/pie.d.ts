@@ -75,10 +75,14 @@ export interface PieHoverLabel {
     namelength: number | number[];
 }
 
-export type PieInsideTextOrientation = "horizontal" | "radial" | "tangential" | "auto";
+export type PieInsideTextOrientation =
+    | "horizontal"
+    | "radial"
+    | "tangential"
+    | "auto";
 
-export interface PieData extends
-    Pick<
+export interface PieData
+    extends Pick<
         PlotData,
         | "name"
         | "visible"
@@ -93,8 +97,7 @@ export interface PieData extends
         | "direction"
         | "hole"
         | "rotation"
-    >
-{
+    > {
     type: "pie";
     title: Partial<PieDataTitle>;
     values: Array<number | string>;

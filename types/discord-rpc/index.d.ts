@@ -116,7 +116,10 @@ export class Client extends BaseClient {
      * @param id ID of the user to set
      * @param settings Settings
      */
-    setUserVoiceSettings(id: Snowflake, settings: UserVoiceSettings): Promise<any>;
+    setUserVoiceSettings(
+        id: Snowflake,
+        settings: UserVoiceSettings,
+    ): Promise<any>;
 
     /**
      * Move the user to a voice channel
@@ -171,7 +174,10 @@ export class Client extends BaseClient {
      * @param callback Callback handling keys
      */
     captureShortcut(
-        callback: (key: Array<{ type: number; code: number; name: string }>, stop: () => void) => void,
+        callback: (
+            key: Array<{ type: number; code: number; name: string }>,
+            stop: () => void,
+        ) => void,
     ): Promise<() => void>;
 
     /**
@@ -207,13 +213,22 @@ export class Client extends BaseClient {
     createLobby(type: string, capacity: number, metadata: any): Promise<any>;
     updateLobby(
         lobby: { id: string } | string,
-        options?: { type: string; owner: { id: string } | string; capacity: number; metadata: any },
+        options?: {
+            type: string;
+            owner: { id: string } | string;
+            capacity: number;
+            metadata: any;
+        },
     ): Promise<any>;
     deleteLobby(lobby: { id: string } | string): Promise<any>;
     connectToLobby(id: string, secret: string): Promise<any>;
     sendToLobby(lobby: { id: string } | string, data: any): Promise<any>;
     disconnectFromLobby(lobby: { id: string } | string): Promise<any>;
-    updateLobbyMember(lobby: { id: string } | string, user: { id: string } | string, metadata: any): Promise<any>;
+    updateLobbyMember(
+        lobby: { id: string } | string,
+        user: { id: string } | string,
+        metadata: any,
+    ): Promise<any>;
 
     /**
      * Subscribe to an event
@@ -428,23 +443,23 @@ export interface VoiceSettings {
     mute: boolean;
     input?:
         | {
-            device: string;
-            volume: number;
-        }
+              device: string;
+              volume: number;
+          }
         | undefined;
     output?:
         | {
-            device: string;
-            volume: number;
-        }
+              device: string;
+              volume: number;
+          }
         | undefined;
     mode?:
         | {
-            autoThreshold: boolean;
-            threshold: number;
-            shortcut: Array<{ type: number; code: number; name: string }>;
-            delay: number;
-        }
+              autoThreshold: boolean;
+              threshold: number;
+              shortcut: Array<{ type: number; code: number; name: string }>;
+              delay: number;
+          }
         | undefined;
 }
 

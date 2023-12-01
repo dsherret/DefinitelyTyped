@@ -7,7 +7,17 @@ declare namespace EngineAPI {
         | "HaveStarField";
     type LogonType = "LOG_ON_SERVICE_USER" | "LOG_ON_CURRENT_USER";
     type NxGrpType = "N" | "H" | "C" | string;
-    type FieldAttributesType = "U" | "A" | "I" | "R" | "F" | "M" | "D" | "T" | "TS" | "IV";
+    type FieldAttributesType =
+        | "U"
+        | "A"
+        | "I"
+        | "R"
+        | "F"
+        | "M"
+        | "D"
+        | "T"
+        | "TS"
+        | "IV";
     type FileDataFormatType =
         | "CSV"
         | "FIX"
@@ -19,7 +29,11 @@ declare namespace EngineAPI {
         | "QVX"
         | "JSON"
         | "KML";
-    type TableRecordKeyType = "NOT_KEY" | "ANY_KEY" | "PRIMARY_KEY" | "PERFECT_KEY";
+    type TableRecordKeyType =
+        | "NOT_KEY"
+        | "ANY_KEY"
+        | "PRIMARY_KEY"
+        | "PERFECT_KEY";
 
     /**
      * One of:
@@ -54,8 +68,15 @@ declare namespace EngineAPI {
         | "OTHER_ABS_ACC_TARGET"
         | "OTHER_REL_LIMITED"
         | "OTHER_REL_ACC_TARGET";
-    type OtherLimitModeType = "OTHER_GE_LIMIT" | "OTHER_LE_LIMIT" | "OTHER_GT_LIMIT" | "OTHER_LT_LIMIT";
-    type OtherSortModeType = "OTHER_SORT_DEFAULT" | "OTHER_SORT_DESCENDING" | "OTHER_SORT_ASCENDING";
+    type OtherLimitModeType =
+        | "OTHER_GE_LIMIT"
+        | "OTHER_LE_LIMIT"
+        | "OTHER_GT_LIMIT"
+        | "OTHER_LT_LIMIT";
+    type OtherSortModeType =
+        | "OTHER_SORT_DEFAULT"
+        | "OTHER_SORT_DESCENDING"
+        | "OTHER_SORT_ASCENDING";
     type TotalModeType = "TOTAL_OFF" | "TOTAL_EXPR";
 
     type BnfType = "S" | "E";
@@ -82,7 +103,11 @@ declare namespace EngineAPI {
      * - IT_BREAK; the engine breaks and waits for a response on what to do next.
      * - IT_END; the engine has finished to execute all statements in the script.
      */
-    type InteractionType = "IT_SCRIPTLINE" | "IT_MSGBOX" | "IT_BREAK" | "IT_END";
+    type InteractionType =
+        | "IT_SCRIPTLINE"
+        | "IT_MSGBOX"
+        | "IT_BREAK"
+        | "IT_END";
 
     type ErrorDataCodeType = "0" | "1" | "2";
 
@@ -180,7 +205,13 @@ declare namespace EngineAPI {
      * - RAM
      * - UNKNOWN_TYPE
      */
-    type DriveType = "REMOVABLE" | "FIXED" | "NETWORK" | "CD_ROM" | "RAM" | "UNKNOWN_TYPE";
+    type DriveType =
+        | "REMOVABLE"
+        | "FIXED"
+        | "NETWORK"
+        | "CD_ROM"
+        | "RAM"
+        | "UNKNOWN_TYPE";
 
     /**
      * One of:
@@ -461,8 +492,7 @@ declare namespace EngineAPI {
     /**
      * GenericBookmarkProperties width extend GenericProperties
      */
-    interface IGenericBookmarkProperties extends IGenericProperties {
-    }
+    interface IGenericBookmarkProperties extends IGenericProperties {}
 
     /**
      * GenericDimensionProperties width extend GenericProperties
@@ -2504,7 +2534,10 @@ declare namespace EngineAPI {
          * @param qLabels - (Array of String) List of labels. This parameter is optional.
          * @returns - A promise of a Qlik engine reply.
          */
-        checkExpression(qExpr: string, qLabels?: string[]): Promise<ICheckExpressionResult>;
+        checkExpression(
+            qExpr: string,
+            qLabels?: string[],
+        ): Promise<ICheckExpressionResult>;
 
         /**
          * Checks if:
@@ -2516,7 +2549,9 @@ declare namespace EngineAPI {
          * @param qExpr - Expression to check.
          * @returns - A promise of a Qlik engine reply.
          */
-        checkNumberOrExpression(qExpr: string): Promise<ICheckNumberOrExpressionResult>;
+        checkNumberOrExpression(
+            qExpr: string,
+        ): Promise<ICheckNumberOrExpressionResult>;
 
         /**
          * Checks the syntax of a script.
@@ -2603,7 +2638,9 @@ declare namespace EngineAPI {
          * @param qProp - Information about the object. >> This parameter is mandatory.
          * @returns - A promise of a Qlik engine reply.
          */
-        createBookmark(qProp: IGenericBookmarkProperties): Promise<IGenericBookmark>;
+        createBookmark(
+            qProp: IGenericBookmarkProperties,
+        ): Promise<IGenericBookmark>;
 
         /**
          * Creates a connection. A connection indicates from which data source, the data should be taken.
@@ -2619,7 +2656,9 @@ declare namespace EngineAPI {
          * @param qProp - Information about the properties. >> This parameter is mandatory.
          * @returns - returns a GenericDimension object
          */
-        createDimension(qProp: IGenericDimensionProperties): Promise<IGenericDimension>;
+        createDimension(
+            qProp: IGenericDimensionProperties,
+        ): Promise<IGenericDimension>;
 
         /**
          * Creates a draft of an object.
@@ -2640,7 +2679,9 @@ declare namespace EngineAPI {
          * @param gProp - Information about the properties >> This parameter is mandatory.
          * @returns - returns a GenericMeasure
          */
-        createMeasure(qProp: IGenericMeasureProperties): Promise<IGenericMeasure>;
+        createMeasure(
+            qProp: IGenericMeasureProperties,
+        ): Promise<IGenericMeasure>;
 
         /**
          * Creates a generic object at app level.
@@ -2663,7 +2704,9 @@ declare namespace EngineAPI {
          * @param gProp - Information about the properties >> This parameter is mandatory.
          * @returns - returns a GenericObject
          */
-        createSessionObject(qProp: IGenericObjectProperties): Promise<IGenericObject>;
+        createSessionObject(
+            qProp: IGenericObjectProperties,
+        ): Promise<IGenericObject>;
 
         /**
          * Creates a transient variable.
@@ -2671,7 +2714,9 @@ declare namespace EngineAPI {
          * >> This parameter is mandatory.
          * @returns - returns a GenericVariable
          */
-        createSessionVariable(qProp: IGenericVariableProperties): Promise<IGenericVariable>;
+        createSessionVariable(
+            qProp: IGenericVariableProperties,
+        ): Promise<IGenericVariable>;
         /**
          * Creates a variable.
          *
@@ -2803,7 +2848,11 @@ declare namespace EngineAPI {
          * This parameter is optional. The default value is false.
          * @returns - A promise of Boolean
          */
-        doReload(qMode?: number, qPartial?: boolean, qDebug?: boolean): Promise<boolean>;
+        doReload(
+            qMode?: number,
+            qPartial?: boolean,
+            qDebug?: boolean,
+        ): Promise<boolean>;
 
         /**
          * Reloads the script that is set in an app and returns the path to the script log file.
@@ -2845,9 +2894,10 @@ declare namespace EngineAPI {
          *                   qExpires - download expires in [s]
          * @returns - return a Promise with the qDownloadInfo
          */
-        exportReducedData(
-            qOptions?: { qBookmarkId?: string | undefined; qExpires?: number | undefined },
-        ): Promise<{ qDownloadInfo: any }>;
+        exportReducedData(qOptions?: {
+            qBookmarkId?: string | undefined;
+            qExpires?: number | undefined;
+        }): Promise<{ qDownloadInfo: any }>;
 
         /**
          * Retrieves any fields that belong to the same archipelago as the specified field and
@@ -2858,7 +2908,10 @@ declare namespace EngineAPI {
          * @param qTags - List of tags. This method looks for fields that match at least one of the tags in this list.
          * @returns - A promise of FieldValue.
          */
-        findMatchingFields(qFieldName: string, qTags: string[]): Promise<INxMatchingFieldInfo[]>;
+        findMatchingFields(
+            qFieldName: string,
+            qTags: string[],
+        ): Promise<INxMatchingFieldInfo[]>;
 
         /**
          * Loads the next logical operation (if any).
@@ -2899,7 +2952,10 @@ declare namespace EngineAPI {
          * @param qTable2 - Name of the second table.
          * @returns - return a Promise of IAssociationScore qScore.
          */
-        getAssociationScores(qTable1: string, qTable2: string): Promise<IAssociationScore>;
+        getAssociationScores(
+            qTable1: string,
+            qTable2: string,
+        ): Promise<IAssociationScore>;
 
         /**
          * Returns the handle of a bookmark.
@@ -2913,7 +2969,9 @@ declare namespace EngineAPI {
          * @param qOptions - Information about the list of bookmarks.
          * @returns - return a Promise of INxContainerEntry.
          */
-        getBookmarks(qOptions: INxGetBookmarkOptions): Promise<INxContainerEntry<any>>;
+        getBookmarks(
+            qOptions: INxGetBookmarkOptions,
+        ): Promise<INxContainerEntry<any>>;
 
         /**
          * Retrieves a connection and returns:
@@ -2960,7 +3018,10 @@ declare namespace EngineAPI {
          * @param qDatabase - Name of the database. >> This parameter is mandatory.
          * @returns - return a Promise Array of DatabaseOwner.
          */
-        getDatabaseOwners(qConnectionId: string, qDatabase?: string): Promise<IDatabaseOwner[]>;
+        getDatabaseOwners(
+            qConnectionId: string,
+            qDatabase?: string,
+        ): Promise<IDatabaseOwner[]>;
 
         /**
          * Lists the databases inside a ODBC, OLEDB or CUSTOM data source.
@@ -3012,7 +3073,11 @@ declare namespace EngineAPI {
          * (If qOwner is not set then qDatabase must be set.)
          * @returns - return a Promise Array of DataTable.
          */
-        getDatabaseTables(qConnectionId: string, qDatabase?: string, qOwner?: string): Promise<IDataTable[]>;
+        getDatabaseTables(
+            qConnectionId: string,
+            qDatabase?: string,
+            qOwner?: string,
+        ): Promise<IDataTable[]>;
 
         /**
          * Returns the handle of a dimension.
@@ -3049,7 +3114,9 @@ declare namespace EngineAPI {
          * @param qReadableName: name of a Field that is declared with DECLARE FIELD DEFINITION
          * @returns qname wich contains the expression
          */
-        getFieldOnTheFlyByName(qReadableName: string): Promise<{ qName: string }>;
+        getFieldOnTheFlyByName(
+            qReadableName: string,
+        ): Promise<{ qName: string }>;
 
         /**
          * Retrieves the description of a field.
@@ -3123,7 +3190,10 @@ declare namespace EngineAPI {
          * @param qRelativePath - Path of the connection file. This parameter is optional.
          * @returns - return a Promise Array of FolderItem.
          */
-        getFolderItemsForConnection(qConnectionId: string, qRelativePath: string): Promise<IFolderItem[]>;
+        getFolderItemsForConnection(
+            qConnectionId: string,
+            qRelativePath: string,
+        ): Promise<IFolderItem[]>;
 
         /**
          * Gets the content of a file.
@@ -3181,7 +3251,10 @@ declare namespace EngineAPI {
          * The default value is 0.
          * @returns - return a Promise Array of NxMatchingFieldInfo.
          */
-        getMatchingFields(qTags: string[], qMatchingFieldMode?: boolean): Promise<INxMatchingFieldInfo[]>;
+        getMatchingFields(
+            qTags: string[],
+            qMatchingFieldMode?: boolean,
+        ): Promise<INxMatchingFieldInfo[]>;
 
         /**
          * Lists the media files.
@@ -3213,7 +3286,9 @@ declare namespace EngineAPI {
          * @param qOptions - Information about the list of objects.
          * @returns - return a Promise array of NxContainerEntry.
          */
-        getObjects(qOptions: INxGetObjectOptions): Promise<INxContainerEntry<any>>;
+        getObjects(
+            qOptions: INxGetObjectOptions,
+        ): Promise<INxContainerEntry<any>>;
 
         /**
          * Shows the properties of an object.
@@ -3251,7 +3326,12 @@ declare namespace EngineAPI {
          * @param qTableName - Name of the table.
          * @returns - return a Promise Array of TableRow.
          */
-        getTableData(qOffset: number, qRows: number, qSyntheticMode: boolean, qTableName: string): Promise<ITableRow[]>;
+        getTableData(
+            qOffset: number,
+            qRows: number,
+            qSyntheticMode: boolean,
+            qTableName: string,
+        ): Promise<ITableRow[]>;
 
         /**
          * Returns:
@@ -3339,7 +3419,10 @@ declare namespace EngineAPI {
          * @param qRelativePath - Path of the connection file. This parameter is optional.
          * @returns - return a Promise of FileDataFormat
          */
-        guessFileType(qConnectionId: string, qRelativePath?: string): Promise<IFileDataFormat>;
+        guessFileType(
+            qConnectionId: string,
+            qRelativePath?: string,
+        ): Promise<IFileDataFormat>;
 
         /**
          * Locks all selections in all fields of the current app.
@@ -3380,7 +3463,11 @@ declare namespace EngineAPI {
          * This parameter is optional.
          * @returns - A promise of a Qlik engine reply.
          */
-        modifyConnection(qConnectionId: string, qConnection: IConnection, qOverrideCredentials: boolean): Promise<void>;
+        modifyConnection(
+            qConnectionId: string,
+            qConnection: IConnection,
+            qOverrideCredentials: boolean,
+        ): Promise<void>;
 
         /**
          * Publishes an app. The published app can have a different name than the original app.
@@ -3457,7 +3544,11 @@ declare namespace EngineAPI {
          * >> This parameter is mandatory.
          * @returns - A promise true or false
          */
-        searchAssociations(qOptions: ISearchCombinationOptions, qTerms: string[], qPage: ISearchPage): Promise<void>;
+        searchAssociations(
+            qOptions: ISearchCombinationOptions,
+            qTerms: string[],
+            qPage: ISearchPage,
+        ): Promise<void>;
 
         /**
          * Returns the generic objects corresponding to one or more search terms. The search is performed within the title,
@@ -3471,7 +3562,11 @@ declare namespace EngineAPI {
          * >> This parameter is mandatory.
          * @returns - A Promise of SearchResult
          */
-        searchObjects(qOptions: ISearchObjectOptions, qTerms: string[], qPage: ISearchPage): Promise<ISearchResult>;
+        searchObjects(
+            qOptions: ISearchObjectOptions,
+            qTerms: string[],
+            qPage: ISearchPage,
+        ): Promise<ISearchResult>;
 
         /**
          * Returns the search matches for one or more search terms.
@@ -3509,7 +3604,10 @@ declare namespace EngineAPI {
          * @param qTerms - List of terms to search for. <Array of String>
          * @returns - A Promise List of SearchSuggestionResults
          */
-        searchSuggest(qOptions: ISearchCombinationOptions, qTerms: string[]): Promise<ISearchSuggestionResult>;
+        searchSuggest(
+            qOptions: ISearchCombinationOptions,
+            qTerms: string[],
+        ): Promise<ISearchSuggestionResult>;
 
         /**
          * Selects all search hits for a specified group.
@@ -3701,7 +3799,11 @@ declare namespace EngineAPI {
          * This parameter is optional.
          * @returns - A promise of a Qlik engine reply.
          */
-        lowLevelSelect(qValues: number[], qToggleMode: boolean, qSoftLock?: boolean): Promise<boolean>;
+        lowLevelSelect(
+            qValues: number[],
+            qToggleMode: boolean,
+            qSoftLock?: boolean,
+        ): Promise<boolean>;
 
         /**
          * Selects all values of a field. Excluded values are also selected.
@@ -3748,7 +3850,11 @@ declare namespace EngineAPI {
          * @param qExcludedValuesMode - Include excluded values in search. This parameter is optional.
          * @returns - A promise true or false
          */
-        select(qMatch: string, qSoftLock?: boolean, qExcludedValuesMode?: number): Promise<boolean>;
+        select(
+            qMatch: string,
+            qSoftLock?: boolean,
+            qExcludedValuesMode?: number,
+        ): Promise<boolean>;
 
         /**
          * Selects all possible values in a specific field.
@@ -3772,7 +3878,11 @@ declare namespace EngineAPI {
          * This parameter is optional.
          * @returns - A promise true or false
          */
-        selectValues(qFieldValues: IFieldValue[], qToggleMode?: boolean, qSoftLock?: boolean): Promise<boolean>;
+        selectValues(
+            qFieldValues: IFieldValue[],
+            qToggleMode?: boolean,
+            qSoftLock?: boolean,
+        ): Promise<boolean>;
 
         /**
          * Sets a field in the AND mode.
@@ -3806,7 +3916,11 @@ declare namespace EngineAPI {
          * This parameter is optional.
          * @returns - A promise true or false
          */
-        toggleSelect(qMatch: string, qSoftLock?: boolean, qExcludedValuesMode?: number): Promise<boolean>;
+        toggleSelect(
+            qMatch: string,
+            qSoftLock?: boolean,
+            qExcludedValuesMode?: number,
+        ): Promise<boolean>;
 
         /**
          * Unlocks all selected values of a specific field if the target (or handle ) is a field.
@@ -4053,7 +4167,7 @@ declare namespace EngineAPI {
         getFieldValues(
             qField: string,
             qGetExcludedValues: boolean,
-            qDataPage: { "qStartIndex": number; "qEndIndex": number },
+            qDataPage: { qStartIndex: number; qEndIndex: number },
         ): Promise<{ qFieldValues: IFieldValue[] }>;
 
         /**
@@ -5216,7 +5330,11 @@ declare namespace EngineAPI {
          * This parameter is optional.
          * @returns -
          */
-        acceptListObjectSearch(qPath: string, qToggleMode: boolean, qSoftLock?: boolean): Promise<void>;
+        acceptListObjectSearch(
+            qPath: string,
+            qToggleMode: boolean,
+            qSoftLock?: boolean,
+        ): Promise<void>;
 
         /**
          * Applies a patch to the properties of an object. Allows an update to some of the properties.
@@ -5292,7 +5410,12 @@ declare namespace EngineAPI {
          * Parameters qRow and qCol are not used if qAll is set to true, but they need to be set (for example to 0).
          * @returns -
          */
-        collapseLeft(qPath: string, qRow: number, qCol: number, qAll: boolean): Promise<void>;
+        collapseLeft(
+            qPath: string,
+            qRow: number,
+            qCol: number,
+            qAll: boolean,
+        ): Promise<void>;
 
         /**
          * Collapses the top dimensions of a pivot table. This method applies only to pivot tables that are not always fully expanded.
@@ -5308,7 +5431,12 @@ declare namespace EngineAPI {
          * Parameters qRow and qCol are not used if qAll is set to true, but they need to be set (for example to 0).
          * @returns -
          */
-        collapseTop(qPath: string, qRow: number, qCol: number, qAll: boolean): Promise<void>;
+        collapseTop(
+            qPath: string,
+            qRow: number,
+            qCol: number,
+            qAll: boolean,
+        ): Promise<void>;
 
         /**
          * Copies the properties of a generic object and its children.
@@ -5337,7 +5465,10 @@ declare namespace EngineAPI {
          * Should be set to update the properties of the parent's object at the same time the child is created.
          * @returns - A Promise of GenericObject
          */
-        createChild(qProp: IGenericObjectProperties, qPropForThis?: IGenericObjectProperties): Promise<IGenericObject>;
+        createChild(
+            qProp: IGenericObjectProperties,
+            qPropForThis?: IGenericObjectProperties,
+        ): Promise<IGenericObject>;
 
         /**
          * Removes all children and all children to the children on an object.
@@ -5346,7 +5477,9 @@ declare namespace EngineAPI {
          * Should be set to update the properties of the parent's object at the same time the child is created.
          * @returns -
          */
-        destroyAllChildren(qPropForThis?: IGenericObjectProperties): Promise<void>;
+        destroyAllChildren(
+            qPropForThis?: IGenericObjectProperties,
+        ): Promise<void>;
 
         /**
          * Removes a child object.
@@ -5362,7 +5495,10 @@ declare namespace EngineAPI {
          * Should be set to update the properties of the parent's object at the same time the child is created.
          * @returns - true or false
          */
-        destroyChild(qid: string, qPropForThis?: IGenericObjectProperties): Promise<boolean>;
+        destroyChild(
+            qid: string,
+            qPropForThis?: IGenericObjectProperties,
+        ): Promise<boolean>;
 
         /**
          * You can use the drillUp method with any object that contains a drill-down group as a dimension.
@@ -5379,7 +5515,11 @@ declare namespace EngineAPI {
          * The default value is 0.
          * @returns -
          */
-        drillUp(qPath: string, qDimNo: number, qNbrSteps: number): Promise<void>;
+        drillUp(
+            qPath: string,
+            qDimNo: number,
+            qNbrSteps: number,
+        ): Promise<void>;
 
         /**
          * Adds a snapshot to a generic object.
@@ -5415,7 +5555,12 @@ declare namespace EngineAPI {
          * Parameters qRow and qCol are not used if qAll is set to true, but they need to be set (for example to 0).
          * @returns -
          */
-        expandLeft(qPath: string, qRow: number, qCol: number, qAll: boolean): Promise<void>;
+        expandLeft(
+            qPath: string,
+            qRow: number,
+            qCol: number,
+            qAll: boolean,
+        ): Promise<void>;
 
         /**
          * Expands the top dimensions of a pivot table.
@@ -5432,7 +5577,12 @@ declare namespace EngineAPI {
          * Parameters qRow and qCol are not used if qAll is set to true, but they need to be set (for example to 0).
          * @returns -
          */
-        expandTop(qPath: string, qRow: number, qCol: number, qAll: boolean): Promise<void>;
+        expandTop(
+            qPath: string,
+            qRow: number,
+            qCol: number,
+            qAll: boolean,
+        ): Promise<void>;
 
         /**
          * Exports the data of any generic object to an Excel file or a open XML file.
@@ -5588,7 +5738,10 @@ declare namespace EngineAPI {
          * >> This parameter is mandatory.
          * @returns - A data set Array of NxDataPage
          */
-        getHyperCubeData(qPath: string, qPages: INxPage[]): Promise<INxDataPage[]>;
+        getHyperCubeData(
+            qPath: string,
+            qPages: INxPage[],
+        ): Promise<INxDataPage[]>;
 
         /**
          * Retrieves the values of a pivot table. It is possible to retrieve specific pages of data.
@@ -5599,7 +5752,10 @@ declare namespace EngineAPI {
          * >> This parameter is mandatory.
          * @returns - A data set Array of NxPivotPage
          */
-        getHyperCubePivotData(qPath: string, qPages: INxPage[]): Promise<INxPivotPage[]>;
+        getHyperCubePivotData(
+            qPath: string,
+            qPages: INxPage[],
+        ): Promise<INxPivotPage[]>;
 
         /**
          * Reduces the data of a bar chart, a line chart or a scatter plot chart and retrieves them.
@@ -5665,7 +5821,11 @@ declare namespace EngineAPI {
          * >> This parameter is optional. The default value is 10 000.
          * @returns - A data set Array of NxStackPage.
          */
-        getHyperCubeStackData(qPath: string, qPages: INxPage[], qMaxNbrCells?: number): Promise<INxStackPage[]>;
+        getHyperCubeStackData(
+            qPath: string,
+            qPages: INxPage[],
+            qMaxNbrCells?: number,
+        ): Promise<INxStackPage[]>;
 
         /**
          * Retrieves the values of a stacked pivot table. It is possible to retrieve specific pages of data.
@@ -5674,7 +5834,10 @@ declare namespace EngineAPI {
          * @param qNodeOptions - Specifies all the paging filters needed to define the tree to be fetched.
          * @returns - A data set Array of NxTreeNode.
          */
-        getHyperCubeTreeData(qPath: string, qNodeOptions: INxTreeDataOption[]): Promise<INxTreeNode>;
+        getHyperCubeTreeData(
+            qPath: string,
+            qNodeOptions: INxTreeDataOption[],
+        ): Promise<INxTreeNode>;
 
         /**
          * Returns the type and identifier of the object.
@@ -5721,7 +5884,10 @@ declare namespace EngineAPI {
          * @param qPages -Array of pages you are interested in.
          * @returns - Array of NxDataPage
          */
-        getListObjectData(qPath: string, qPages: INxPage[]): Promise<INxDataPage[]>;
+        getListObjectData(
+            qPath: string,
+            qPages: INxPage[],
+        ): Promise<INxDataPage[]>;
 
         /**
          * Returns the identifier, the type and the properties of the object.
@@ -5914,7 +6080,12 @@ declare namespace EngineAPI {
          * >> This parameter is mandatory.
          * @returns - true or false.
          */
-        selectHyperCubeValues(qPath: string, qDimNo: number, qValues: number[], qToggleMode: boolean): Promise<boolean>;
+        selectHyperCubeValues(
+            qPath: string,
+            qDimNo: number,
+            qValues: number[],
+            qToggleMode: boolean,
+        ): Promise<boolean>;
 
         /**
          * Selects all values of a field.
@@ -5928,7 +6099,10 @@ declare namespace EngineAPI {
          * >> This parameter is optional.
          * @returns - true or false.
          */
-        selectListObjectAll(qPath: string, qSoftLock?: boolean): Promise<boolean>;
+        selectListObjectAll(
+            qPath: string,
+            qSoftLock?: boolean,
+        ): Promise<boolean>;
 
         /**
          * Selects all values of a field.
@@ -5942,7 +6116,10 @@ declare namespace EngineAPI {
          * >> This parameter is optional.
          * @returns - true or false.
          */
-        selectListObjectAlternative(qPath: string, qSoftLock?: boolean): Promise<boolean>;
+        selectListObjectAlternative(
+            qPath: string,
+            qSoftLock?: boolean,
+        ): Promise<boolean>;
 
         /**
          * @param qPath - Path to the definition of the object to be selected.
@@ -5956,7 +6133,11 @@ declare namespace EngineAPI {
          * >> This parameter is optional.
          * @returns - true or false.
          */
-        selectListObjectContinuousRange(qPath: string, qRanges: Range[], qSoftLock?: boolean): Promise<boolean>;
+        selectListObjectContinuousRange(
+            qPath: string,
+            qRanges: Range[],
+            qSoftLock?: boolean,
+        ): Promise<boolean>;
 
         /**
          * Inverts the current selections in a specific field.
@@ -5970,7 +6151,10 @@ declare namespace EngineAPI {
          * >> This parameter is optional.
          * @returns - true or false.
          */
-        selectListObjectExcluded(qPath: string, qSoftLock?: boolean): Promise<boolean>;
+        selectListObjectExcluded(
+            qPath: string,
+            qSoftLock?: boolean,
+        ): Promise<boolean>;
 
         /**
          * Selects all possible values of a list object.
@@ -5984,7 +6168,10 @@ declare namespace EngineAPI {
          * >> This parameter is optional.
          * @returns - true or false.
          */
-        selectListObjectPossible(qPath: string, qSoftLock?: boolean): Promise<boolean>;
+        selectListObjectPossible(
+            qPath: string,
+            qSoftLock?: boolean,
+        ): Promise<boolean>;
 
         /**
          * Makes single selections in dimensions.
@@ -6151,8 +6338,7 @@ declare namespace EngineAPI {
         qActiveExpression: number;
     }
 
-    interface IGenericDerivedFieldProperties extends IGenericProperties {
-    }
+    interface IGenericDerivedFieldProperties extends IGenericProperties {}
 
     interface IGenericDerivedFields extends enigmaJS.IGeneratedAPI {
         /**
@@ -7144,7 +7330,11 @@ declare namespace EngineAPI {
          * @returns - true or false
          * Note: The operation is successful if qSuccess is set to true.
          */
-        copyApp(qTargetAppId: string, qSrcAppId: string, qIds: string[]): Promise<boolean>;
+        copyApp(
+            qTargetAppId: string,
+            qSrcAppId: string,
+            qIds: string[],
+        ): Promise<boolean>;
 
         /**
          * Creates an app.
@@ -7154,7 +7344,10 @@ declare namespace EngineAPI {
          * >> This parameter is optional.
          * >> The default value is Main.
          */
-        createApp(qAppName: string, qLocalizedScriptMainSection?: string): Promise<any>; // ?Result
+        createApp(
+            qAppName: string,
+            qLocalizedScriptMainSection?: string,
+        ): Promise<any>; // ?Result
 
         /**
          * Creates an app and opens an engine session.
@@ -7248,7 +7441,11 @@ declare namespace EngineAPI {
          * This list must contain the GUIDs of all these objects.
          * @returns The operation is successful if qSuccess is set to true.
          */
-        exportApp(qTargetPath: string, qSrcAppId: string, qIds: string[]): Promise<boolean>;
+        exportApp(
+            qTargetPath: string,
+            qSrcAppId: string,
+            qIds: string[],
+        ): Promise<boolean>;
 
         /**
          * Returns the handle of the current app.
@@ -7336,7 +7533,9 @@ declare namespace EngineAPI {
          *                   E: returns the chart functions.
          * @returns qBnfDefs and qBnfHash
          */
-        getBaseBNFString(qBnfType: BnfType): Promise<{ qBnfDefs: IBNFDef; qBnfHash: string }>;
+        getBaseBNFString(
+            qBnfType: BnfType,
+        ): Promise<{ qBnfDefs: IBNFDef; qBnfHash: string }>;
 
         /**
          * Get a Config Object
@@ -7361,7 +7560,9 @@ declare namespace EngineAPI {
          * @param qConnection Information about the connection.
          * @returns A Promise Array of Database
          */
-        getDatabasesFromConnectionString(qConnection: IConnection): Promise<IDatabase[]>;
+        getDatabasesFromConnectionString(
+            qConnection: IConnection,
+        ): Promise<IDatabase[]>;
 
         /**
          * Returns the folder where the apps are stored.
@@ -7493,7 +7694,11 @@ declare namespace EngineAPI {
          * Note: from shema file
          * Note: This operation is possible only in Qlik Sense Enterprise.
          */
-        importApp(qAppId: string, qSrcPath: string, qIds: string[]): Promise<void>;
+        importApp(
+            qAppId: string,
+            qSrcPath: string,
+            qIds: string[],
+        ): Promise<void>;
 
         /**
          * Import an App Extended
@@ -7504,7 +7709,12 @@ declare namespace EngineAPI {
          * Note: from shema file
          * Note: This operation is possible only in Qlik Sense Enterprise.
          */
-        importAppEx(qAppId: string, qSrcPath: string, qIds: string[], qExcludeConnections: boolean): Promise<void>;
+        importAppEx(
+            qAppId: string,
+            qSrcPath: string,
+            qIds: string[],
+            qExcludeConnections: boolean,
+        ): Promise<void>;
 
         /**
          * Informs the engine that a user interaction (which was earlier requested by the engine)
@@ -7636,7 +7846,11 @@ declare namespace EngineAPI {
          * the objects related to these identifiers are removed from the target app.
          * @returns The operation is successful if qSuccess is set to true.
          */
-        replaceAppFromID(qTargetAppId: string, qSrcAppID: string, qIds: string[]): Promise<boolean>;
+        replaceAppFromID(
+            qTargetAppId: string,
+            qSrcAppID: string,
+            qIds: string[],
+        ): Promise<boolean>;
 
         /**
          * Shuts down the Qlik engine.
@@ -8662,15 +8876,19 @@ declare namespace EngineAPI {
 
 // #region Prototype Interfaces for Class definitions
 declare namespace EngineAPI {
-    interface IGenericObjectPrototype<P extends IGenericObjectProperties, L extends IGenericBaseLayout>
-        extends IGenericObject
-    {
+    interface IGenericObjectPrototype<
+        P extends IGenericObjectProperties,
+        L extends IGenericBaseLayout,
+    > extends IGenericObject {
         getLayout(): Promise<L>;
         getProperties(): Promise<P>;
         setProperties(properties: P): Promise<void>;
     }
 
-    interface IAppObjectPrototype<P extends IGenericObjectProperties, O extends IGenericObject> {
+    interface IAppObjectPrototype<
+        P extends IGenericObjectProperties,
+        O extends IGenericObject,
+    > {
         createObject(qProp: P): Promise<O>;
         createSessionObject(qProp: P): Promise<O>;
     }
@@ -8839,13 +9057,22 @@ declare namespace EngineAPI {
     /**
      * GenericList...
      */
-    interface IGenericList extends IGenericObjectPrototype<IGenericListProperties, IGenericListLayout> {
-    }
+    interface IGenericList
+        extends IGenericObjectPrototype<
+            IGenericListProperties,
+            IGenericListLayout
+        > {}
 
-    interface IApp extends IAppObjectPrototype<IGenericListProperties, IGenericList> {
+    interface IApp
+        extends IAppObjectPrototype<IGenericListProperties, IGenericList> {
         createObject(qProp: IGenericListProperties): Promise<IGenericList>;
-        createSessionObject(qProp: IGenericListProperties): Promise<IGenericList>;
-        clearSelections(qPath: "/qListObjectDef", qColIndices?: number[]): Promise<void>;
+        createSessionObject(
+            qProp: IGenericListProperties,
+        ): Promise<IGenericList>;
+        clearSelections(
+            qPath: "/qListObjectDef",
+            qColIndices?: number[],
+        ): Promise<void>;
     }
 }
 // #endregion
@@ -9154,12 +9381,19 @@ declare namespace EngineAPI {
     /**
      * HyperCubeObject width extend GenericObjectPrototype<GenericHyperCubeProperties, GenericHyperCubeLayout>
      */
-    interface IHyperCubeObject extends IGenericObjectPrototype<IGenericHyperCubeProperties, IGenericHyperCubeLayout> {
-    }
+    interface IHyperCubeObject
+        extends IGenericObjectPrototype<
+            IGenericHyperCubeProperties,
+            IGenericHyperCubeLayout
+        > {}
 
     interface IApp {
-        createObject(qProp: IGenericHyperCubeProperties): Promise<IHyperCubeObject>;
-        createSessionObject(qProp: IGenericHyperCubeProperties): Promise<IHyperCubeObject>;
+        createObject(
+            qProp: IGenericHyperCubeProperties,
+        ): Promise<IHyperCubeObject>;
+        createSessionObject(
+            qProp: IGenericHyperCubeProperties,
+        ): Promise<IHyperCubeObject>;
     }
 }
 // #endregion
@@ -9305,13 +9539,18 @@ declare namespace EngineAPI {
      * SelectionListObject width extend GenericObject
      */
     interface ISelectionListObject
-        extends IGenericObjectPrototype<IGenericSelectionListProperties, IGenericSelectionListLayout>
-    {
-    }
+        extends IGenericObjectPrototype<
+            IGenericSelectionListProperties,
+            IGenericSelectionListLayout
+        > {}
 
     interface IApp {
-        createObject(qProp: IGenericSelectionListProperties): Promise<ISelectionListObject>;
-        createSessionObject(qProp: IGenericSelectionListProperties): Promise<ISelectionListObject>;
+        createObject(
+            qProp: IGenericSelectionListProperties,
+        ): Promise<ISelectionListObject>;
+        createSessionObject(
+            qProp: IGenericSelectionListProperties,
+        ): Promise<ISelectionListObject>;
     }
 }
 // #endregion
@@ -9369,13 +9608,18 @@ declare namespace EngineAPI {
      * BookmarkListObject width extend GenericObject
      */
     interface IBookmarkListObject
-        extends IGenericObjectPrototype<IGenericBookmarkListProperties, IGenericBookmarkListLayout>
-    {
-    }
+        extends IGenericObjectPrototype<
+            IGenericBookmarkListProperties,
+            IGenericBookmarkListLayout
+        > {}
 
     interface IApp {
-        createObject(qProp: IGenericBookmarkListProperties): Promise<IBookmarkListObject>;
-        createSessionObject(qProp: IGenericBookmarkListProperties): Promise<IBookmarkListObject>;
+        createObject(
+            qProp: IGenericBookmarkListProperties,
+        ): Promise<IBookmarkListObject>;
+        createSessionObject(
+            qProp: IGenericBookmarkListProperties,
+        ): Promise<IBookmarkListObject>;
     }
 }
 // #endregion
@@ -9433,13 +9677,18 @@ declare namespace EngineAPI {
      * IMeassureListObject
      */
     interface IMeassureListObject
-        extends IGenericObjectPrototype<IGenericMeasureListProperties, IGenericMeasureListLayout>
-    {
-    }
+        extends IGenericObjectPrototype<
+            IGenericMeasureListProperties,
+            IGenericMeasureListLayout
+        > {}
 
     interface IApp {
-        createObject(qProp: IGenericMeasureListProperties): Promise<IMeassureListObject>;
-        createSessionObject(qProp: IGenericMeasureListProperties): Promise<IMeassureListObject>;
+        createObject(
+            qProp: IGenericMeasureListProperties,
+        ): Promise<IMeassureListObject>;
+        createSessionObject(
+            qProp: IGenericMeasureListProperties,
+        ): Promise<IMeassureListObject>;
     }
 }
 // #endregion
@@ -9503,13 +9752,18 @@ declare namespace EngineAPI {
     }
 
     interface IDimensionListObject
-        extends IGenericObjectPrototype<IGenericDimensionsListProperties, IGenericDimensionListLayout>
-    {
-    }
+        extends IGenericObjectPrototype<
+            IGenericDimensionsListProperties,
+            IGenericDimensionListLayout
+        > {}
 
     interface IApp {
-        createObject(qProp: IGenericDimensionsListProperties): Promise<IDimensionListObject>;
-        createSessionObject(qProp: IGenericDimensionsListProperties): Promise<IDimensionListObject>;
+        createObject(
+            qProp: IGenericDimensionsListProperties,
+        ): Promise<IDimensionListObject>;
+        createSessionObject(
+            qProp: IGenericDimensionsListProperties,
+        ): Promise<IDimensionListObject>;
     }
 }
 // #endregion
@@ -9628,13 +9882,18 @@ declare namespace EngineAPI {
      * VariableListObject width extend GenericObject
      */
     interface IVariableListObject
-        extends IGenericObjectPrototype<IGenericVariableListProperties, IGenericVariableListLayout>
-    {
-    }
+        extends IGenericObjectPrototype<
+            IGenericVariableListProperties,
+            IGenericVariableListLayout
+        > {}
 
     interface IApp {
-        createObject(qProp: IGenericVariableListProperties): Promise<IVariableListObject>;
-        createSessionObject(qProp: IGenericVariableListProperties): Promise<IVariableListObject>;
+        createObject(
+            qProp: IGenericVariableListProperties,
+        ): Promise<IVariableListObject>;
+        createSessionObject(
+            qProp: IGenericVariableListProperties,
+        ): Promise<IVariableListObject>;
     }
 }
 // #endregion
@@ -9878,17 +10137,23 @@ declare namespace EngineAPI {
     /**
      * FieldListObject width extend GenericObject
      */
-    interface IFieldListObject extends IGenericObjectPrototype<IGenericFieldListProperties, IGenericFieldLayout> {
-    }
+    interface IFieldListObject
+        extends IGenericObjectPrototype<
+            IGenericFieldListProperties,
+            IGenericFieldLayout
+        > {}
 
     interface IApp {
-        createObject(qProp: IGenericFieldListProperties): Promise<IFieldListObject>;
-        createSessionObject(qProp: IGenericFieldListProperties): Promise<IFieldListObject>;
+        createObject(
+            qProp: IGenericFieldListProperties,
+        ): Promise<IFieldListObject>;
+        createSessionObject(
+            qProp: IGenericFieldListProperties,
+        ): Promise<IFieldListObject>;
     }
 }
 // #endregion
 
 declare namespace enigmaJS {
-    interface IGeneratedAPI {
-    }
+    interface IGeneratedAPI {}
 }

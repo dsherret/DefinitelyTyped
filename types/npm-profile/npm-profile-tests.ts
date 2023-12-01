@@ -18,13 +18,25 @@ const cidr_whitelist: string[] = [];
         );
 
         // $ExpectType ProfileAuthToken
-        const loginWebResult = await profile.loginWeb(async (url) => {}, { registry });
+        const loginWebResult = await profile.loginWeb(async (url) => {}, {
+            registry,
+        });
 
         // $ExpectType ProfileAuthToken
-        const loginCouchResult = await profile.loginCouch(username, email, password, { registry });
+        const loginCouchResult = await profile.loginCouch(
+            username,
+            email,
+            password,
+            { registry },
+        );
 
         // $ExpectType ProfileAuthToken
-        const addUserCouchResult = await profile.adduserCouch(username, email, password, { registry });
+        const addUserCouchResult = await profile.adduserCouch(
+            username,
+            email,
+            password,
+            { registry },
+        );
 
         // $ExpectType ProfileAuthToken
         const addUserResult = await profile.adduser(
@@ -34,7 +46,9 @@ const cidr_whitelist: string[] = [];
         );
 
         // $ExpectType ProfileAuthToken
-        const addUserWebResult = await profile.adduserWeb(async (url) => {}, { registry });
+        const addUserWebResult = await profile.adduserWeb(async (url) => {}, {
+            registry,
+        });
 
         // $ExpectType ProfileData
         const result = await profile.get({ token });
@@ -78,14 +92,27 @@ const cidr_whitelist: string[] = [];
         await profile.removeToken("atoken");
 
         // $ExpectType Token
-        const newToken = await profile.createToken(password, readonly, cidr_whitelist, { token });
+        const newToken = await profile.createToken(
+            password,
+            readonly,
+            cidr_whitelist,
+            { token },
+        );
     } catch (error) {
         error;
     }
 
     // events
-    process.emit("log", "error", "feature", "message part 1", "part 2", "part 3", "etc");
-    process.on("log ", logLevel => {
+    process.emit(
+        "log",
+        "error",
+        "feature",
+        "message part 1",
+        "part 2",
+        "part 3",
+        "etc",
+    );
+    process.on("log ", (logLevel) => {
         logLevel; // $ExpectType LogLevel
     });
 })();

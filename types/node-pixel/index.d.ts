@@ -23,7 +23,10 @@ export interface StripArgs {
     board: Board;
     strips: Array<{ pin: string | number; length: number }> | number[];
     controller?: "FIRMATA" | "I2CBACKPACK";
-    color_order?: typeof COLOR_ORDER.GRB | typeof COLOR_ORDER.RGB | typeof COLOR_ORDER.BRG;
+    color_order?:
+        | typeof COLOR_ORDER.GRB
+        | typeof COLOR_ORDER.RGB
+        | typeof COLOR_ORDER.BRG;
     gamma?: number;
 }
 

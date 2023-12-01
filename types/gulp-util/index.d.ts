@@ -29,7 +29,9 @@ export function log(message?: any, ...optionalParams: any[]): void;
  * file object so it is available to the user or it will error. You can not
  * configure any of the delimiters. Look at the lodash docs for more info.
  */
-export function template(tmpl: string): (opt: { file: { path: string } }) => string;
+export function template(
+    tmpl: string,
+): (opt: { file: { path: string } }) => string;
 export function template(tmpl: string, opt: { file: { path: string } }): string;
 
 export const env: any;
@@ -49,19 +51,29 @@ export function isNull(obj: any): boolean;
 
 export const linefeed: string;
 
-export function combine(streams: NodeJS.ReadWriteStream[]): () => NodeJS.ReadWriteStream;
-export function combine(...streams: NodeJS.ReadWriteStream[]): () => NodeJS.ReadWriteStream;
+export function combine(
+    streams: NodeJS.ReadWriteStream[],
+): () => NodeJS.ReadWriteStream;
+export function combine(
+    ...streams: NodeJS.ReadWriteStream[]
+): () => NodeJS.ReadWriteStream;
 
 /**
  * This is similar to es.wait but instead of buffering text into one string
  * it buffers anything into an array (so very useful for file objects).
  */
-export function buffer(cb?: (err: Error, data: any[]) => void): NodeJS.ReadWriteStream;
+export function buffer(
+    cb?: (err: Error, data: any[]) => void,
+): NodeJS.ReadWriteStream;
 
 export class PluginError implements Error, PluginErrorOptions {
     constructor(options?: PluginErrorOptions);
     constructor(pluginName: string, options?: PluginErrorOptions);
-    constructor(pluginName: string, message: string | Error, options?: PluginErrorOptions);
+    constructor(
+        pluginName: string,
+        message: string | Error,
+        options?: PluginErrorOptions,
+    );
     /**
      * The module name of your plugin.
      */

@@ -1,4 +1,12 @@
-import { add, addSingle, allSuffixes, create, findSuffix, format, getStringByIndex } from "@jayrbolton/suffix-tree";
+import {
+    add,
+    addSingle,
+    allSuffixes,
+    create,
+    findSuffix,
+    format,
+    getStringByIndex,
+} from "@jayrbolton/suffix-tree";
 
 create(); // $ExpectType STree
 const tree = create("abcd"); // $ExpectType STree

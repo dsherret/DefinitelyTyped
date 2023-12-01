@@ -7,6 +7,11 @@ import { PageCollection } from "./PageCollection";
 export class HTMLPageCollection extends PageCollection {
     private readonly element;
     private readonly pagesElement;
-    constructor(app: PageFlip, render: Render, element: HTMLElement, items: NodeListOf<HTMLElement> | HTMLElement[]);
+    constructor(
+        app: PageFlip,
+        render: Render,
+        element: HTMLElement,
+        items: NodeListOf<HTMLElement> | HTMLElement[],
+    );
     load(): void;
 }

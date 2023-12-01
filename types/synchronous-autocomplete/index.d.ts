@@ -139,7 +139,11 @@ declare namespace createAutocomplete {
             completion?: boolean,
         ): Array<AutocompleteResult<TId>>;
         readonly internalId: typeof internalId;
-        byFragment(fragment: string, completion?: boolean, fuzzy?: boolean): number[];
+        byFragment(
+            fragment: string,
+            completion?: boolean,
+            fuzzy?: boolean,
+        ): number[];
     }
 
     interface AutocompleteResult<TId extends string> {

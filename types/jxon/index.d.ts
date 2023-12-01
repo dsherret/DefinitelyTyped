@@ -35,10 +35,25 @@ export function xmlToJs(
     freeze?: boolean,
     nestedAttributes?: boolean,
 ): object;
-export function build(xMLParent: any, verbosity?: VerbosityType, freeze?: boolean, nesteAttributes?: boolean): object;
+export function build(
+    xMLParent: any,
+    verbosity?: VerbosityType,
+    freeze?: boolean,
+    nesteAttributes?: boolean,
+): object;
 
-export function jsToXml(objTree: object, namespaceURI?: string, qualifiedName?: string, documentType?: object): any;
-export function unbuild(objTree: object, namespaceURI?: string, qualifiedName?: string, documentType?: object): any;
+export function jsToXml(
+    objTree: object,
+    namespaceURI?: string,
+    qualifiedName?: string,
+    documentType?: object,
+): any;
+export function unbuild(
+    objTree: object,
+    namespaceURI?: string,
+    qualifiedName?: string,
+    documentType?: object,
+): any;
 
 export function stringToXml(xmlStr: string): any;
 

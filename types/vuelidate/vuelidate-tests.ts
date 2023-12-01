@@ -16,7 +16,7 @@ import {
 import Vue, { ComponentOptions } from "vue";
 
 // excerpt from vue-class-component/src/declarations.ts
-type VueClass<V> = { new(...args: any[]): V & Vue } & typeof Vue;
+type VueClass<V> = { new (...args: any[]): V & Vue } & typeof Vue;
 
 // excerpt from vue-class-component/src/index.ts
 function Component(options: ComponentOptions<Vue> | VueClass<Vue>): any {
@@ -25,9 +25,13 @@ function Component(options: ComponentOptions<Vue> | VueClass<Vue>): any {
 
 const mustBeCool: CustomRule = (value: string) => value.indexOf("cool") >= 0;
 
-const mustBeCool2: CustomRule = (value: string) => !helpers.req(value) || value.indexOf("cool") >= 0;
+const mustBeCool2: CustomRule = (value: string) =>
+    !helpers.req(value) || value.indexOf("cool") >= 0;
 
-const contains = (param: string): CustomRule => (value: string) => !helpers.req(value) || value.indexOf(param) >= 0;
+const contains =
+    (param: string): CustomRule =>
+    (value: string) =>
+        !helpers.req(value) || value.indexOf(param) >= 0;
 
 const mustBeCool3 = helpers.withParams(
     { type: "mustBeCool3" },
@@ -41,7 +45,8 @@ const mustBeCool4 = helpers.regex("mustBeCool4", /^.*cool.*$/);
 const mustBeSame = (reference: string) =>
     helpers.withParams(
         { type: "mustBeSame" },
-        (value: any, parentVm?: Vue) => value === helpers.ref(reference, self, parentVm),
+        (value: any, parentVm?: Vue) =>
+            value === helpers.ref(reference, self, parentVm),
     );
 
 const mustHaveLength = (minLen: number) =>
@@ -60,7 +65,7 @@ const mustHaveLength = (minLen: number) =>
         repeatPassword: {
             sameAsPassword: sameAs("password"),
             mustBeSame: mustBeSame("password"),
-            sameAsPassword2: sameAs(vm => vm.password),
+            sameAsPassword2: sameAs((vm) => vm.password),
         },
         form: {
             nestedA: {
@@ -86,7 +91,13 @@ const mustHaveLength = (minLen: number) =>
         forGroup: {
             nested: { required },
         },
-        validationGroup: ["age", "coolFactor", "flatA", "flatB", "forGroup.nested"],
+        validationGroup: [
+            "age",
+            "coolFactor",
+            "flatA",
+            "flatB",
+            "forGroup.nested",
+        ],
         people: {
             required,
             minLength: minLength(3),
@@ -105,9 +116,15 @@ const mustHaveLength = (minLen: number) =>
 
                 // simulate async call, fail for all logins with even length
                 return new Promise((resolve, reject) => {
-                    setTimeout(() => {
-                        resolve(typeof value === "string" && value.length % 2 !== 0);
-                    }, 350 + Math.random() * 300);
+                    setTimeout(
+                        () => {
+                            resolve(
+                                typeof value === "string" &&
+                                    value.length % 2 !== 0,
+                            );
+                        },
+                        350 + Math.random() * 300,
+                    );
                 });
             },
         },

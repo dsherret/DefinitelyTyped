@@ -15,7 +15,9 @@ export interface Options {
     ignore?: ((name: string) => boolean) | undefined;
     filter?: ((name: string) => boolean) | undefined;
     map?: ((header: Headers) => Headers) | undefined;
-    mapStream?: ((fileStream: ReadStream, header: Headers) => ReadStream) | undefined;
+    mapStream?:
+        | ((fileStream: ReadStream, header: Headers) => ReadStream)
+        | undefined;
     dmode?: number | undefined;
     fmode?: number | undefined;
     readable?: boolean | undefined;

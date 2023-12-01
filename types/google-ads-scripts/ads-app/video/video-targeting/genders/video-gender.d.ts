@@ -28,7 +28,8 @@ declare namespace GoogleAdsScripts {
          *        .withGenderType('GENDER_FEMALE')     // required
          *        .build();                            // create the gender
          */
-        interface VideoGenderBuilder extends Base.Builder<VideoGenderOperation> {
+        interface VideoGenderBuilder
+            extends Base.Builder<VideoGenderOperation> {
             /** Builds the excluded video gender. */
             exclude(): ExcludedVideoGenderOperation;
             /** Sets the gender type. */
@@ -66,13 +67,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoGenderSelector
-            extends
-                Base.Selector<VideoGenderIterator>,
+            extends Base.Selector<VideoGenderIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

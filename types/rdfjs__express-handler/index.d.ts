@@ -32,7 +32,11 @@ interface RdfHandlerOptions {
 
 interface RdfHandler {
     (options?: RdfHandlerOptions): RequestHandler;
-    attach(req: Request, res: Response, options?: RdfHandlerOptions): Promise<void>;
+    attach(
+        req: Request,
+        res: Response,
+        options?: RdfHandlerOptions,
+    ): Promise<void>;
 }
 
 declare const init: RdfHandler;

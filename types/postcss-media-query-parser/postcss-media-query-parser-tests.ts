@@ -24,9 +24,9 @@ if (result.nodes) {
     }
 }
 
-result.walk("", child => {
+result.walk("", (child) => {
     child.parent.type;
 });
-result.walk(child => {
+result.walk((child) => {
     child.parent.type;
 });

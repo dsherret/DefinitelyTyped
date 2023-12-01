@@ -5,7 +5,10 @@ declare class Slack {
     send(message: Slack.Message): any; // TODO: Here comes deferred's promise as a return type
     send(message: Slack.Message, callback: Slack.SendCallback): request.Request;
     respond(query: Slack.Query): Slack.TextResponse;
-    respond(query: Slack.Query, callback: Slack.ResponseCallback): Slack.TextResponse;
+    respond(
+        query: Slack.Query,
+        callback: Slack.ResponseCallback,
+    ): Slack.TextResponse;
 }
 
 declare namespace Slack {

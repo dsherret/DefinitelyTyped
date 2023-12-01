@@ -23,7 +23,10 @@ declare class ThumbSupply {
     ThumbSize: AvailableSize;
 
     constructor();
-    _registerThumbSupplier(mimetype: string, Thumbsupplier: ThumbnailSupplier): void;
+    _registerThumbSupplier(
+        mimetype: string,
+        Thumbsupplier: ThumbnailSupplier,
+    ): void;
     _fetchThumbnailSupplier(file: string, options?: Options): ThumbnailSupplier;
     generateThumbnail(file: string, options?: Options): Promise<string>;
     lookupThumbnail(file: string, options?: Options): Promise<string>;

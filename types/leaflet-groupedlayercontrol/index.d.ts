@@ -5,7 +5,9 @@ declare module "leaflet" {
         class GroupedLayers extends Control {
             constructor(
                 baseLayers: { [index: string]: Layer },
-                groupedOverlays: { [index: string]: { [index: string]: LayerGroup } },
+                groupedOverlays: {
+                    [index: string]: { [index: string]: LayerGroup };
+                },
                 options: GroupedLayersOptions,
             );
         }
@@ -14,7 +16,9 @@ declare module "leaflet" {
     namespace control {
         function groupedLayers(
             baseLayers: { [index: string]: Layer },
-            groupedOverlays: { [index: string]: { [index: string]: LayerGroup } },
+            groupedOverlays: {
+                [index: string]: { [index: string]: LayerGroup };
+            },
             options: GroupedLayersOptions,
         ): Control;
     }

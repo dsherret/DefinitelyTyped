@@ -14,23 +14,23 @@ interface Node {
     // $ExpectType unknown
     breadth({
         tree: nodeA,
-        getChildren: node => node.nodes,
+        getChildren: (node) => node.nodes,
     });
 
     // Traversal with a value and filter
     // $ExpectType number
     breadth({
         tree: nodeA,
-        getChildren: node => node.nodes,
-        visit: node => node.id,
-        filter: node => node.id !== 1,
+        getChildren: (node) => node.nodes,
+        visit: (node) => node.id,
+        filter: (node) => node.id !== 1,
     });
 
     // Traversal with a value that changes `getChildren`
     // $ExpectType number
     breadth({
         tree: nodeA,
-        visit: node => node.id + 1,
+        visit: (node) => node.id + 1,
         getChildren: (node, value) => node.nodes.slice(value),
     });
 
@@ -38,18 +38,18 @@ interface Node {
     // $ExpectType Promise<number>
     breadth({
         tree: nodeA,
-        getChildren: async node => node.nodes,
-        visit: async node => node.id,
-        filter: node => node.id !== 1,
+        getChildren: async (node) => node.nodes,
+        visit: async (node) => node.id,
+        filter: (node) => node.id !== 1,
     });
 
     // "Promised" traversal 2
     // $ExpectType Promise<number>
     breadth({
         tree: nodeA,
-        getChildren: async node => node.nodes,
-        visit: node => node.id,
-        filter: async node => node.id !== 1,
+        getChildren: async (node) => node.nodes,
+        visit: (node) => node.id,
+        filter: async (node) => node.id !== 1,
     });
 
     // Traversal with empty `leave`
@@ -57,7 +57,7 @@ interface Node {
     depth({
         tree: nodeA,
         leave: () => {},
-        getChildren: node => node.nodes,
+        getChildren: (node) => node.nodes,
     });
 
     // Traversal with `leave`
@@ -66,7 +66,7 @@ interface Node {
         tree: nodeA,
         leave: (node: number, children) => node + children.length,
         getChildren: (node, value) => node.nodes.slice(value),
-        visit: node => node.id,
+        visit: (node) => node.id,
     });
 
     // Promised traversal with `leave`
@@ -80,7 +80,10 @@ interface Node {
     // Manually typed
     breadth<number, string | Node, number[]>({
         tree: 10,
-        getChildren: (node, value) => [node, typeof value === "string" ? value.length : value.id],
+        getChildren: (node, value) => [
+            node,
+            typeof value === "string" ? value.length : value.id,
+        ],
         visit: () => "a",
     });
 
@@ -88,39 +91,43 @@ interface Node {
     // $ExpectType number[]
     breadth({
         tree: 10 as number | string,
-        getChildren: (node, value: number[]) => value.map(v => (typeof v === "string" ? v : v * 2)),
-        filter: node => (typeof node === "string" ? node.startsWith("id-") : node % 2 === 0),
+        getChildren: (node, value: number[]) =>
+            value.map((v) => (typeof v === "string" ? v : v * 2)),
+        filter: (node) =>
+            typeof node === "string" ? node.startsWith("id-") : node % 2 === 0,
     });
 
     // Types "inferred" from usage (Promise)
     // $ExpectType Promise<number[]>
     breadth({
         tree: 10 as number | string,
-        getChildren: async (node, value: number[]) => value.map(v => (typeof v === "string" ? v : v * 2)),
-        filter: async node => (typeof node === "string" ? node.startsWith("id-") : node % 2 === 0),
+        getChildren: async (node, value: number[]) =>
+            value.map((v) => (typeof v === "string" ? v : v * 2)),
+        filter: async (node) =>
+            typeof node === "string" ? node.startsWith("id-") : node % 2 === 0,
     });
 
     // -- Errors
 
     breadth({
         tree: nodeA,
-        getChildren: node => node.nodes,
+        getChildren: (node) => node.nodes,
         // @ts-expect-error -- `getChildren` is not a Promise
-        visit: async node => node.id.toString(),
+        visit: async (node) => node.id.toString(),
     });
 
     breadth({
         tree: nodeA,
-        getChildren: node => node.nodes,
+        getChildren: (node) => node.nodes,
         // @ts-expect-error -- `getChildren` is not a Promise
         filter: async () => true,
     });
 
     depth({
         tree: nodeA,
-        getChildren: node => node.nodes,
+        getChildren: (node) => node.nodes,
         // @ts-expect-error -- `getChildren` is not a Promise
-        leave: async node => node.id.toString(),
+        leave: async (node) => node.id.toString(),
     });
 
     depth({
@@ -128,6 +135,6 @@ interface Node {
         leave: (node: number, children) => node + children.length,
         getChildren: (node, value) => node.nodes.slice(value),
         // @ts-expect-error -- Should be a number
-        visit: node => node.id.toString(),
+        visit: (node) => node.id.toString(),
     });
 })();

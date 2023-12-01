@@ -30,10 +30,10 @@ export interface Props {
      */
     onFlippedChange?:
         | ((
-            flipped: boolean,
-            actualPosition: CSSPositionType,
-            originalPosition: CSSPositionType,
-        ) => void)
+              flipped: boolean,
+              actualPosition: CSSPositionType,
+              originalPosition: CSSPositionType,
+          ) => void)
         | undefined;
     /**
      * Position of a layer relative to its target. The position attribute takes two positional arguments in

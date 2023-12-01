@@ -14,7 +14,8 @@ gulp.task("app-js", () =>
             "static/src/js/directives.js",
             "static/src/js/controllers.js",
         ]),
-    ).pipe(gulp.dest("static/dist/js/")));
+    ).pipe(gulp.dest("static/dist/js/")),
+);
 
 const stream1 = gulp.src("*.html");
 const stream2 = gulp.src("*.html");

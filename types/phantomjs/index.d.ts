@@ -91,14 +91,30 @@ interface WebPage {
     injectJs(filename: string): boolean;
     open(url: string, callback: (status: string) => any): void;
     open(url: string, method: string, callback: (status: string) => any): void;
-    open(url: string, method: string, data: any, callback: (status: string) => any): void;
+    open(
+        url: string,
+        method: string,
+        data: any,
+        callback: (status: string) => any,
+    ): void;
     openUrl(url: string, httpConf: any, settings: any): void; // :TODO: elaborate this when documentation improves
     release(): void; // DEPRECATED
     reload(): void;
     render(filename: string): void;
     renderBase64(format: string): string;
-    sendEvent(mouseEventType: string, mouseX?: number, mouseY?: number, button?: string): void;
-    sendEvent(keyboardEventType: string, keyOrKeys: any, aNull?: any, bNull?: any, modifier?: number): void;
+    sendEvent(
+        mouseEventType: string,
+        mouseX?: number,
+        mouseY?: number,
+        button?: string,
+    ): void;
+    sendEvent(
+        keyboardEventType: string,
+        keyOrKeys: any,
+        aNull?: any,
+        bNull?: any,
+        modifier?: number,
+    ): void;
     setContent(content: string, url: string): void;
     stop(): void;
     switchToFocusedFrame(): void;
@@ -121,25 +137,45 @@ interface WebPage {
     onInitialized: () => any;
     onLoadFinished: (status: string) => any;
     onLoadStarted: () => any;
-    onNavigationRequested: (url: string, type: string, willNavigate: boolean, main: boolean) => any;
+    onNavigationRequested: (
+        url: string,
+        type: string,
+        willNavigate: boolean,
+        main: boolean,
+    ) => any;
     onPageCreated: (newPage: WebPage) => any;
     onPrompt: (msg: string, defaultVal: string) => string;
     onResourceError: (resourceError: ResourceError) => any;
     onResourceReceived: (response: ResourceResponse) => any;
-    onResourceRequested: (requestData: ResourceRequest, networkRequest: NetworkRequest) => any;
+    onResourceRequested: (
+        requestData: ResourceRequest,
+        networkRequest: NetworkRequest,
+    ) => any;
     onUrlChanged: (targetUrl: string) => any;
 
     // Callback triggers
     closing(closingPage: WebPage): void;
     initialized(): void;
     javaScriptAlertSent(msg: string): void;
-    javaScriptConsoleMessageSent(msg: string, lineNum?: number, sourceId?: string): void;
+    javaScriptConsoleMessageSent(
+        msg: string,
+        lineNum?: number,
+        sourceId?: string,
+    ): void;
     loadFinished(status: string): void;
     loadStarted(): void;
-    navigationRequested(url: string, type: string, willNavigate: boolean, main: boolean): void;
+    navigationRequested(
+        url: string,
+        type: string,
+        willNavigate: boolean,
+        main: boolean,
+    ): void;
     rawPageCreated(newPage: WebPage): void;
     resourceReceived(response: ResourceResponse): void;
-    resourceRequested(requestData: ResourceRequest, networkRequest: NetworkRequest): void;
+    resourceRequested(
+        requestData: ResourceRequest,
+        networkRequest: NetworkRequest,
+    ): void;
     urlChanged(targetUrl: string): void;
 }
 
@@ -227,7 +263,10 @@ interface FileSystem {
 
     // File Functions
     open(path: string, mode: string): Stream;
-    open(path: string, options: { mode: string; charset?: string | undefined }): Stream;
+    open(
+        path: string,
+        options: { mode: string; charset?: string | undefined },
+    ): Stream;
     read(path: string): string;
     write(path: string, content: string, mode: string): void;
     size(path: string): number;
@@ -250,8 +289,14 @@ interface Stream {
 
 interface WebServer {
     port: number;
-    listen(port: number, cb?: (request: WebServerRequest, response: WebServerResponse) => void): boolean;
-    listen(ipAddressPort: string, cb?: (request: WebServerRequest, response: WebServerResponse) => void): boolean;
+    listen(
+        port: number,
+        cb?: (request: WebServerRequest, response: WebServerResponse) => void,
+    ): boolean;
+    listen(
+        ipAddressPort: string,
+        cb?: (request: WebServerRequest, response: WebServerResponse) => void,
+    ): boolean;
     close(): void;
 }
 
@@ -286,8 +331,7 @@ interface Size {
     height: number;
 }
 
-interface ClipRect extends TopLeft, Size {
-}
+interface ClipRect extends TopLeft, Size {}
 
 interface Cookie {
     name: string;

@@ -195,7 +195,10 @@ declare namespace tableau {
         /** Indicates whether automatic updates are currently paused. */
         getAreAutomaticUpdatesPaused(): boolean;
 
-        addEventListener(event: TableauEventName.FILTER_CHANGE, f: ListenerFunction<FilterEvent>): void;
+        addEventListener(
+            event: TableauEventName.FILTER_CHANGE,
+            f: ListenerFunction<FilterEvent>,
+        ): void;
         addEventListener(
             event:
                 | TableauEventName.CUSTOM_VIEW_LOAD
@@ -204,15 +207,36 @@ declare namespace tableau {
                 | TableauEventName.CUSTOM_VIEW_SET_DEFAULT,
             f: ListenerFunction<CustomViewEvent>,
         ): void;
-        addEventListener(event: TableauEventName.MARKS_SELECTION, f: ListenerFunction<MarksEvent>): void;
-        addEventListener(event: TableauEventName.PARAMETER_VALUE_CHANGE, f: ListenerFunction<ParameterEvent>): void;
-        addEventListener(event: TableauEventName.STORY_POINT_SWITCH, f: ListenerFunction<StoryPointSwitchEvent>): void;
-        addEventListener(event: TableauEventName.TAB_SWITCH, f: ListenerFunction<TabSwitchEvent>): void;
-        addEventListener(event: TableauEventName.TOOLBAR_STATE_CHANGE, f: ListenerFunction<ToolbarStateEvent>): void;
-        addEventListener(event: TableauEventName.VIZ_RESIZE, f: ListenerFunction<VizResizeEvent>): void;
+        addEventListener(
+            event: TableauEventName.MARKS_SELECTION,
+            f: ListenerFunction<MarksEvent>,
+        ): void;
+        addEventListener(
+            event: TableauEventName.PARAMETER_VALUE_CHANGE,
+            f: ListenerFunction<ParameterEvent>,
+        ): void;
+        addEventListener(
+            event: TableauEventName.STORY_POINT_SWITCH,
+            f: ListenerFunction<StoryPointSwitchEvent>,
+        ): void;
+        addEventListener(
+            event: TableauEventName.TAB_SWITCH,
+            f: ListenerFunction<TabSwitchEvent>,
+        ): void;
+        addEventListener(
+            event: TableauEventName.TOOLBAR_STATE_CHANGE,
+            f: ListenerFunction<ToolbarStateEvent>,
+        ): void;
+        addEventListener(
+            event: TableauEventName.VIZ_RESIZE,
+            f: ListenerFunction<VizResizeEvent>,
+        ): void;
 
         /** Removes an event listener from the specified event. */
-        removeEventListener(type: TableauEventName, f: ListenerFunction<TableauEvent>): void;
+        removeEventListener(
+            type: TableauEventName,
+            f: ListenerFunction<TableauEvent>,
+        ): void;
         /** Shows or hides the iframe element hosting the visualization. */
         show(): void;
         /** Shows or hides the iframe element hosting the visualization. */
@@ -242,9 +266,13 @@ declare namespace tableau {
          * Shows the Export Data dialog, which is currently a popup window. The worksheetInDashboard parameter is optional.
          * If not specified, the currently active Worksheet is used.
          */
-        showExportDataDialog(worksheetInDashboard: Sheet | SheetInfo | string): void;
+        showExportDataDialog(
+            worksheetInDashboard: Sheet | SheetInfo | string,
+        ): void;
         /** Shows the Export CrossTab dialog. The worksheetInDashboard parameter is optional. If not specified, the currently active Worksheet is used. */
-        showExportCrossTabDialog(worksheetInDashboard: Sheet | SheetInfo | string): void;
+        showExportCrossTabDialog(
+            worksheetInDashboard: Sheet | SheetInfo | string,
+        ): void;
         /**
          * Equivalent to clicking on the Share toolbar button,
          * which displays a dialog allowing the user to share the visualization by email or by embedding its HTML in a web page.
@@ -557,7 +585,9 @@ declare namespace tableau {
          * Gets data for all fields in the data source used by the currently active sheet and returns it as an object.
          * You can specify options with an optional parameter. This can only be called on sheets of the WORKSHEET type.
          */
-        getUnderlyingDataAsync(options: getUnderlyingDataOptions): Promise<DataTable>;
+        getUnderlyingDataAsync(
+            options: getUnderlyingDataOptions,
+        ): Promise<DataTable>;
         /** Fetches the collection of filters used on the sheet. */
         getFiltersAsync(): Promise<Filter[]>;
         /**
@@ -577,14 +607,24 @@ declare namespace tableau {
          * Subsequent calls to getFiltersAsync[] will return these values even if they are outside of the bounds of the domain.
          * This is equivalent to the behavior in Tableau Desktop.
          */
-        applyRangeFilterAsync(fieldName: string, range: RangeFilterOptions): Promise<string>;
+        applyRangeFilterAsync(
+            fieldName: string,
+            range: RangeFilterOptions,
+        ): Promise<string>;
         /** Applies a relative date filter. */
-        applyRelativeDateFilterAsync(fieldName: string, options: RelativeDateFilterOptions): Promise<string>;
+        applyRelativeDateFilterAsync(
+            fieldName: string,
+            options: RelativeDateFilterOptions,
+        ): Promise<string>;
         /**
          * Applies a hierarchical filter.
          * The values parameter is either a single value, an array of values, or an object { levels: ["1", "2"] }.
          */
-        applyHierarchicalFilterAsync(fieldName: string, values: object, options: any): Promise<string>;
+        applyHierarchicalFilterAsync(
+            fieldName: string,
+            values: object,
+            options: any,
+        ): Promise<string>;
         /**
          * Clears the filter, no matter what kind of filter it is.
          * Note that the filter is removed as long as no associated quick filter is showing for the field.
@@ -599,7 +639,11 @@ declare namespace tableau {
         /** Gets the collection of marks that are currently selected. */
         getSelectedMarksAsync(): Promise<Mark[]>;
         /** Selects the marks and returns them. */
-        selectMarksAsync(fieldName: string, value: object | object[], updateType: SelectionUpdateType): Promise<void>;
+        selectMarksAsync(
+            fieldName: string,
+            value: object | object[],
+            updateType: SelectionUpdateType,
+        ): Promise<void>;
         /**
          * Allows selection based on this syntax for the first parameter:
          * {
@@ -607,7 +651,10 @@ declare namespace tableau {
          *   "Field2": [1, 2, 3]
          * }
          */
-        selectMarksAsync(fieldValuesMap: object | Mark[], updateType: SelectionUpdateType): Promise<void>;
+        selectMarksAsync(
+            fieldValuesMap: object | Mark[],
+            updateType: SelectionUpdateType,
+        ): Promise<void>;
     }
 
     interface getSummaryDataOptions {
@@ -915,7 +962,10 @@ declare namespace tableau {
         getRangeN(): number;
     }
 
-    type ConcreteFilter = CategoricalFilter | QuantitativeFilter | RelativeDateFilter;
+    type ConcreteFilter =
+        | CategoricalFilter
+        | QuantitativeFilter
+        | RelativeDateFilter;
 
     class DataValue {
         /** Contains the raw native value as a JavaScript type, which is one of String, Number, Boolean, or Date */
@@ -958,13 +1008,12 @@ declare namespace tableau {
     }
 
     enum DateRangeType {
-        LAST = "last", /** Refers to the last day, week, month, etc. of the date period. */
-        LASTN = "lastn", /** Refers to the last N days, weeks, months, etc. of the date period. */
-        NEXT = "next", /** Refers to the next day, week, month, etc. of the date period. */
-        NEXTN = "nextn", /** Refers to the next N days, weeks, months, etc. of the date period. */
-        CURRENT = "current", /** Refers to the current day, week, month, etc. of the date period. */
-        TODATE =
-            "todate", /** Refers to everything up to and including the current day, week, month, etc. of the date period. */
+        LAST = "last" /** Refers to the last day, week, month, etc. of the date period. */,
+        LASTN = "lastn" /** Refers to the last N days, weeks, months, etc. of the date period. */,
+        NEXT = "next" /** Refers to the next day, week, month, etc. of the date period. */,
+        NEXTN = "nextn" /** Refers to the next N days, weeks, months, etc. of the date period. */,
+        CURRENT = "current" /** Refers to the current day, week, month, etc. of the date period. */,
+        TODATE = "todate" /** Refers to everything up to and including the current day, week, month, etc. of the date period. */,
     }
     // #endregion
 

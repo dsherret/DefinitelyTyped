@@ -92,7 +92,7 @@ function test_key() {
 function test_throwException() {
     var fn = () => {};
     expect(fn).to.throwError();
-    expect(fn).to.throwException(function(e) {
+    expect(fn).to.throwException(function (e) {
         expect(e).to.be.a(SyntaxError);
     });
     expect(fn).to.throwException(/matches the exception message/);

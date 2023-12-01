@@ -19,15 +19,22 @@ interface Compiler {
     logger: (...args: any[]) => void;
     spawnOptions: { [key: string]: string };
 
-    run(callback?: (exitCode: number, stdout: string, stderr: string) => void): child_process.ChildProcess;
+    run(
+        callback?: (exitCode: number, stdout: string, stderr: string) => void,
+    ): child_process.ChildProcess;
 
     getFullCommand(): string;
 }
 
 type CompileOption = string | boolean;
-type CompileOptions = string[] | { [key: string]: CompileOption | CompileOption[] };
+type CompileOptions =
+    | string[]
+    | { [key: string]: CompileOption | CompileOption[] };
 export var compiler: {
-    new(opts: CompileOptions | string[], extraCommandArgs?: string[]): Compiler;
+    new (
+        opts: CompileOptions | string[],
+        extraCommandArgs?: string[],
+    ): Compiler;
 
     JAR_PATH: string;
     COMPILER_PATH: string;

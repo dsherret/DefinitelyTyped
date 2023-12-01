@@ -13,7 +13,10 @@ declare module "ipaiva" {
     }
 
     export namespace textEditor {
-        export function create(elem: HTMLElement, options?: TextEditorOptions): TextEditor;
+        export function create(
+            elem: HTMLElement,
+            options?: TextEditorOptions,
+        ): TextEditor;
     }
 
     export namespace window {
@@ -29,7 +32,10 @@ declare module "ipaiva" {
             type: "image" | "video" | "audio";
         }
 
-        function onDidPick(callback: OnDidPickCallback, option?: OnDidPickOption): void;
+        function onDidPick(
+            callback: OnDidPickCallback,
+            option?: OnDidPickOption,
+        ): void;
     }
 
     export namespace Crate {
@@ -77,9 +83,11 @@ declare module "ipaiva" {
             width?: number | undefined;
             height?: number | undefined;
             hasMask?: boolean | undefined;
-            attrs?: {
-                [key: string]: any;
-            } | undefined;
+            attrs?:
+                | {
+                      [key: string]: any;
+                  }
+                | undefined;
         }
 
         type DesignStyleSchema = any;

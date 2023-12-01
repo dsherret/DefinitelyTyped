@@ -18,13 +18,24 @@ export interface OptionObject {
 
 export type HashType = "sha1" | "md4" | "md5" | "sha256" | "sha512";
 
-export type DigestType = "hex" | "base26" | "base32" | "base36" | "base49" | "base52" | "base58" | "base62" | "base64";
+export type DigestType =
+    | "hex"
+    | "base26"
+    | "base32"
+    | "base36"
+    | "base49"
+    | "base52"
+    | "base58"
+    | "base62"
+    | "base64";
 
 /**
  * Recommended way to retrieve the options of a loader invocation
  * {@link https://github.com/webpack/loader-utils#getoptions}
  */
-export function getOptions(loaderContext: loader.LoaderContext): Readonly<OptionObject>;
+export function getOptions(
+    loaderContext: loader.LoaderContext,
+): Readonly<OptionObject>;
 
 /**
  * Parses a passed string (e.g. loaderContext.resourceQuery) as a query string, and returns an object.
@@ -36,9 +47,14 @@ export function parseQuery(optionString: string): OptionObject;
  * Turns a request into a string that can be used inside require() or import while avoiding absolute paths. Use it instead of JSON.stringify(...) if you're generating code inside a loader.
  * {@link https://github.com/webpack/loader-utils#stringifyrequest}
  */
-export function stringifyRequest(loaderContext: loader.LoaderContext, resource: string): string;
+export function stringifyRequest(
+    loaderContext: loader.LoaderContext,
+    resource: string,
+): string;
 
-export function getRemainingRequest(loaderContext: loader.LoaderContext): string;
+export function getRemainingRequest(
+    loaderContext: loader.LoaderContext,
+): string;
 
 export function getCurrentRequest(loaderContext: loader.LoaderContext): string;
 
@@ -57,7 +73,11 @@ export function urlToRequest(url: string, root?: string): string;
  * The template and regular expression are set as query params called name and regExp on the current loader's context.
  * {@link https://github.com/webpack/loader-utils#interpolatename}
  */
-export function interpolateName(loaderContext: loader.LoaderContext, name: string, options?: any): string;
+export function interpolateName(
+    loaderContext: loader.LoaderContext,
+    name: string,
+    options?: any,
+): string;
 
 /**
  * @param buffer
@@ -65,4 +85,9 @@ export function interpolateName(loaderContext: loader.LoaderContext, name: strin
  * @param [digestType='hex']
  * @param [maxLength=9999]
  */
-export function getHashDigest(buffer: Buffer, hashType: HashType, digestType: DigestType, maxLength: number): string;
+export function getHashDigest(
+    buffer: Buffer,
+    hashType: HashType,
+    digestType: DigestType,
+    maxLength: number,
+): string;

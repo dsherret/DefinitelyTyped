@@ -1,4 +1,9 @@
-import { debug, generateImage, restoreDefaultOptions, setDefaultOptions } from "jsdom-screenshot";
+import {
+    debug,
+    generateImage,
+    restoreDefaultOptions,
+    setDefaultOptions,
+} from "jsdom-screenshot";
 
 generateImage();
 generateImage({

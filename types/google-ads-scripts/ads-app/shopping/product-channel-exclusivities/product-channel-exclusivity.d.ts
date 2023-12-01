@@ -39,7 +39,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** Builder for ProductChannelExclusivity objects. */
-        interface ProductChannelExclusivityBuilder extends Base.Builder<ProductChannelExclusivityOperation> {
+        interface ProductChannelExclusivityBuilder
+            extends Base.Builder<ProductChannelExclusivityOperation> {
             /** Specifies the bid of the product channel exclusivity. */
             withBid(bid: number): this;
             /** Specifies the channel exclusivity of the new product channel exclusivity. */
@@ -49,6 +50,7 @@ declare namespace GoogleAdsScripts {
         }
 
         /** An operation representing creation of a new product channel exclusivity. */
-        interface ProductChannelExclusivityOperation extends Base.Operation<ProductChannelExclusivity> {}
+        interface ProductChannelExclusivityOperation
+            extends Base.Operation<ProductChannelExclusivity> {}
     }
 }

@@ -31,7 +31,9 @@
  * //=> {status: true, value: ['a', ['c', 'c', 'c', 'c', 'c']]}
  * ```
  */
-declare function Parsimmon<T>(fn: (input: string, i: number) => Parsimmon.Reply<T>): Parsimmon.Parser<T>;
+declare function Parsimmon<T>(
+    fn: (input: string, i: number) => Parsimmon.Reply<T>,
+): Parsimmon.Parser<T>;
 
 declare namespace Parsimmon {
     type StreamType = string;
@@ -77,7 +79,9 @@ declare namespace Parsimmon {
     }
 
     type TypedRule<TLanguageSpec> = {
-        [P in keyof TLanguageSpec]: (r: TypedLanguage<TLanguageSpec>) => Parser<TLanguageSpec[P]>;
+        [P in keyof TLanguageSpec]: (
+            r: TypedLanguage<TLanguageSpec>,
+        ) => Parser<TLanguageSpec[P]>;
     };
 
     type TypedLanguage<TLanguageSpec> = {
@@ -129,7 +133,10 @@ declare namespace Parsimmon {
         /**
          * Transforms the input and output of parser with the given function.
          */
-        promap<U, V>(inputFn: (input: T) => U, outputFn: (output: U) => V): Parser<V>;
+        promap<U, V>(
+            inputFn: (input: T) => U,
+            outputFn: (output: U) => V,
+        ): Parser<V>;
         /**
          * returns wrapper(this) from the parser. Useful for custom functions used
          * to wrap your parsers, while keeping with Parsimmon chaining style.
@@ -252,7 +259,9 @@ declare namespace Parsimmon {
     /**
      * Alias of `Parsimmon(fn)` for backwards compatibility.
      */
-    function Parser<T>(fn: (input: string, i: number) => Parsimmon.Reply<T>): Parser<T>;
+    function Parser<T>(
+        fn: (input: string, i: number) => Parsimmon.Reply<T>,
+    ): Parser<T>;
 
     /**
      * Starting point for building a language parser in Parsimmon.
@@ -299,7 +308,9 @@ declare namespace Parsimmon {
      * on the resulting language do actually exist.
      */
     function createLanguage(rules: Rule): Language;
-    function createLanguage<TLanguageSpec>(rules: TypedRule<TLanguageSpec>): TypedLanguage<TLanguageSpec>;
+    function createLanguage<TLanguageSpec>(
+        rules: TypedRule<TLanguageSpec>,
+    ): TypedLanguage<TLanguageSpec>;
 
     /**
      * To be used inside of Parsimmon(fn). Generates an object describing how
@@ -313,7 +324,10 @@ declare namespace Parsimmon {
      * far the unsuccessful parse went (index), and what kind of syntax it
      * expected to see (expectation). See documentation for Parsimmon(fn).
      */
-    function makeFailure(furthest: number, expectation: string | string[]): FailureReply;
+    function makeFailure(
+        furthest: number,
+        expectation: string | string[],
+    ): FailureReply;
 
     /**
      * Returns true if obj is a Parsimmon parser, otherwise false.
@@ -379,8 +393,17 @@ declare namespace Parsimmon {
      */
     function seq<T>(p1: Parser<T>): Parser<[T]>;
     function seq<T, U>(p1: Parser<T>, p2: Parser<U>): Parser<[T, U]>;
-    function seq<T, U, V>(p1: Parser<T>, p2: Parser<U>, p3: Parser<V>): Parser<[T, U, V]>;
-    function seq<T, U, V, W>(p1: Parser<T>, p2: Parser<U>, p3: Parser<V>, p4: Parser<W>): Parser<[T, U, V, W]>;
+    function seq<T, U, V>(
+        p1: Parser<T>,
+        p2: Parser<U>,
+        p3: Parser<V>,
+    ): Parser<[T, U, V]>;
+    function seq<T, U, V, W>(
+        p1: Parser<T>,
+        p2: Parser<U>,
+        p3: Parser<V>,
+        p4: Parser<W>,
+    ): Parser<[T, U, V, W]>;
     function seq<T, U, V, W, X>(
         p1: Parser<T>,
         p2: Parser<U>,
@@ -420,8 +443,17 @@ declare namespace Parsimmon {
      * Similar to calling Parsimmon.seq and then .map, but the values are not put in an array.
      */
     function seqMap<T, U>(p1: Parser<T>, cb: (a1: T) => U): Parser<U>;
-    function seqMap<T, U, V>(p1: Parser<T>, p2: Parser<U>, cb: (a1: T, a2: U) => V): Parser<V>;
-    function seqMap<T, U, V, W>(p1: Parser<T>, p2: Parser<U>, p3: Parser<V>, cb: (a1: T, a2: U, a3: V) => W): Parser<W>;
+    function seqMap<T, U, V>(
+        p1: Parser<T>,
+        p2: Parser<U>,
+        cb: (a1: T, a2: U) => V,
+    ): Parser<V>;
+    function seqMap<T, U, V, W>(
+        p1: Parser<T>,
+        p2: Parser<U>,
+        p3: Parser<V>,
+        cb: (a1: T, a2: U, a3: V) => W,
+    ): Parser<W>;
     function seqMap<T, U, V, W, X>(
         p1: Parser<T>,
         p2: Parser<U>,
@@ -477,7 +509,17 @@ declare namespace Parsimmon {
         p7: Parser<Z>,
         p8: Parser<A>,
         p9: Parser<B>,
-        cb: (a1: T, a2: U, a3: V, a4: W, a5: X, a6: Y, a7: Z, a8: A, a9: B) => C,
+        cb: (
+            a1: T,
+            a2: U,
+            a3: V,
+            a4: W,
+            a5: X,
+            a6: Y,
+            a7: Z,
+            a8: A,
+            a9: B,
+        ) => C,
     ): Parser<C>;
     function seqMap<T, U, V, W, X, Y, Z, A, B, C, D>(
         p1: Parser<T>,
@@ -490,7 +532,18 @@ declare namespace Parsimmon {
         p8: Parser<A>,
         p9: Parser<B>,
         p10: Parser<C>,
-        cb: (a1: T, a2: U, a3: V, a4: W, a5: X, a6: Y, a7: Z, a8: A, a9: B, a10: C) => D,
+        cb: (
+            a1: T,
+            a2: U,
+            a3: V,
+            a4: W,
+            a5: X,
+            a6: Y,
+            a7: Z,
+            a8: A,
+            a9: B,
+            a10: C,
+        ) => D,
     ): Parser<D>;
 
     function seqObj<T, Key extends keyof T = keyof T>(
@@ -522,7 +575,10 @@ declare namespace Parsimmon {
      * allows to add custom primitive parsers.
      */
     function custom<U>(
-        parsingFunction: (success: SuccessFunctionType<U>, failure: FailureFunctionType<U>) => ParseFunctionType<U>,
+        parsingFunction: (
+            success: SuccessFunctionType<U>,
+            failure: FailureFunctionType<U>,
+        ) => ParseFunctionType<U>,
     ): Parser<U>;
 
     /**
@@ -540,7 +596,10 @@ declare namespace Parsimmon {
     /**
      * This is the same as Parsimmon.sepBy, but matches the content parser at least once.
      */
-    function sepBy1<T, U>(content: Parser<T>, separator: Parser<U>): Parser<[T, ...T[]]>;
+    function sepBy1<T, U>(
+        content: Parser<T>,
+        separator: Parser<U>,
+    ): Parser<[T, ...T[]]>;
 
     /**
      * accepts a function that returns a parser, which is evaluated the first time the parser is used.

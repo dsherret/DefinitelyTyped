@@ -33,7 +33,10 @@ interface CounterOptions {
 declare class TX2 extends EventEmitter {
     event(name: string, data: object): void;
 
-    action(action_name: string, callback: (cb: (data: any) => void) => void): void;
+    action(
+        action_name: string,
+        callback: (cb: (data: any) => void) => void,
+    ): void;
     action<T extends object>(
         action_name: string,
         options: T,

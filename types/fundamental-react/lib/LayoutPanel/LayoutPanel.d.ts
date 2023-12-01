@@ -7,14 +7,36 @@ export type LayoutPanelHeadProps = {
     description?: string;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, "title">;
 
-declare class LayoutPanel extends React.Component<React.HTMLAttributes<HTMLDivElement>> {
+declare class LayoutPanel extends React.Component<
+    React.HTMLAttributes<HTMLDivElement>
+> {
     displayName: "LayoutPanel";
-    static Actions: React.ComponentClass<React.HTMLAttributes<HTMLDivElement>> & { displayName: "LayoutPanel.Actions" };
-    static Body: React.ComponentClass<React.HTMLAttributes<HTMLDivElement>> & { displayName: "LayoutPanel.Body" };
-    static Filters: React.ComponentClass<React.HTMLAttributes<HTMLDivElement>> & { displayName: "LayoutPanel.Filters" };
-    static Footer: React.ComponentClass<React.HTMLAttributes<HTMLDivElement>> & { displayName: "LayoutPanel.Footer" };
-    static Head: React.ComponentClass<LayoutPanelHeadProps> & { displayName: "LayoutPanel.Head" };
-    static Header: React.ComponentClass<React.HTMLAttributes<HTMLDivElement>> & { displayName: "LayoutPanel.Header" };
+    static Actions: React.ComponentClass<
+        React.HTMLAttributes<HTMLDivElement>
+    > & {
+        displayName: "LayoutPanel.Actions";
+    };
+    static Body: React.ComponentClass<React.HTMLAttributes<HTMLDivElement>> & {
+        displayName: "LayoutPanel.Body";
+    };
+    static Filters: React.ComponentClass<
+        React.HTMLAttributes<HTMLDivElement>
+    > & {
+        displayName: "LayoutPanel.Filters";
+    };
+    static Footer: React.ComponentClass<
+        React.HTMLAttributes<HTMLDivElement>
+    > & {
+        displayName: "LayoutPanel.Footer";
+    };
+    static Head: React.ComponentClass<LayoutPanelHeadProps> & {
+        displayName: "LayoutPanel.Head";
+    };
+    static Header: React.ComponentClass<
+        React.HTMLAttributes<HTMLDivElement>
+    > & {
+        displayName: "LayoutPanel.Header";
+    };
 }
 
 export default LayoutPanel;

@@ -8,7 +8,10 @@ export interface ContentSwitcherOptions {
 
 declare const ContentSwitcher_base: any;
 declare class ContentSwitcher extends ContentSwitcher_base {
-    constructor(element: HTMLElement, options?: Partial<ContentSwitcherOptions>);
+    constructor(
+        element: HTMLElement,
+        options?: Partial<ContentSwitcherOptions>,
+    );
     _handleClick(event: Event): void;
     _changeState({ item }: { item: HTMLElement }, callback?: () => void): void;
     setActive(item: HTMLElement, callback?: () => void): void;

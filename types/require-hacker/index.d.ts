@@ -22,15 +22,18 @@ export interface GlobalResolve {
      * @param path Path that is `require`d
      * @param module Module in which the `require` call originated
      */
-    (path: string, module: any):
+    (
+        path: string,
+        module: any,
+    ):
         | {
-            /**
-             * The absolute path of the path argument passed to this `require` function (which could be relative).
-             */
-            path: string;
-            /** Valid CommonJS JavaScript module source code. */
-            source: string;
-        }
+              /**
+               * The absolute path of the path argument passed to this `require` function (which could be relative).
+               */
+              path: string;
+              /** Valid CommonJS JavaScript module source code. */
+              source: string;
+          }
         | undefined;
 }
 
@@ -73,7 +76,11 @@ declare const requireHacker: {
      * @param options Options for setting global hook behaviour.
      * @return Object containing `unmount` method.
      */
-    global_hook(id: string, resolve: GlobalResolve, options?: GlobalHookOptions): Unmount;
+    global_hook(
+        id: string,
+        resolve: GlobalResolve,
+        options?: GlobalHookOptions,
+    ): Unmount;
     /**
      * Intercept all `require` calls for paths with this file extension and reroute them to the resolve function.
      *

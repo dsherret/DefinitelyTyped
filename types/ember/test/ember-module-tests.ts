@@ -209,16 +209,30 @@ Ember.Object.extend(Ember.Mixin.create({ foo: "bar" }), {
     },
 });
 // Ember.MutableArray
-const ma1: Ember.MutableArray<string> = ["money", "in", "the", "bananna", "stand"];
+const ma1: Ember.MutableArray<string> = [
+    "money",
+    "in",
+    "the",
+    "bananna",
+    "stand",
+];
 ma1.addObject("!"); // $ExpectType string
 // @ts-expect-error
 ma1.filterBy("");
 ma1.firstObject; // $ExpectType string | undefined
 ma1.lastObject; // $ExpectType string | undefined
-const ma2: Ember.MutableArray<{ name: string }> = [{ name: "chris" }, { name: "dan" }, { name: "james" }];
+const ma2: Ember.MutableArray<{ name: string }> = [
+    { name: "chris" },
+    { name: "dan" },
+    { name: "james" },
+];
 ma2.filterBy("name", "chris"); // $ExpectType NativeArray<{ name: string; }>
 // Ember.MutableEnumerable
-const me1: Ember.MutableEnumerable<string | null | undefined> = ["foo", undefined, null];
+const me1: Ember.MutableEnumerable<string | null | undefined> = [
+    "foo",
+    undefined,
+    null,
+];
 me1.compact(); // $ExpectType NativeArray<string>
 // Ember.Namespace
 const myNs = Ember.Namespace.extend({});

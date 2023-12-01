@@ -2,11 +2,10 @@
 
 import http = require("http");
 
-type Handler<Request extends http.IncomingMessage, Response extends http.ServerResponse> = (
-    req: Request,
-    res: Response,
-    callback: (err?: Error) => void,
-) => void;
+type Handler<
+    Request extends http.IncomingMessage,
+    Response extends http.ServerResponse,
+> = (req: Request, res: Response, callback: (err?: Error) => void) => void;
 
 declare namespace morgan {
     type FormatFn<
@@ -37,7 +36,10 @@ declare namespace morgan {
     /**
      * Public interface of morgan logger.
      */
-    interface Morgan<Request extends http.IncomingMessage, Response extends http.ServerResponse> {
+    interface Morgan<
+        Request extends http.IncomingMessage,
+        Response extends http.ServerResponse,
+    > {
         /***
          * Create a new morgan logger middleware function using the given format
          * and options. The format argument may be a string of a predefined name
@@ -46,21 +48,30 @@ declare namespace morgan {
          * @param format
          * @param options
          */
-        (format: string, options?: Options<Request, Response>): Handler<Request, Response>;
+        (
+            format: string,
+            options?: Options<Request, Response>,
+        ): Handler<Request, Response>;
         /***
          * Standard Apache combined log output.
          * :remote-addr - :remote-user [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
          * @param format
          * @param options
          */
-        (format: "combined", options?: Options<Request, Response>): Handler<Request, Response>;
+        (
+            format: "combined",
+            options?: Options<Request, Response>,
+        ): Handler<Request, Response>;
         /***
          * Standard Apache common log output.
          * :remote-addr - :remote-user [:date] ":method :url HTTP/:http-version" :status :res[content-length]
          * @param format
          * @param options
          */
-        (format: "common", options?: Options<Request, Response>): Handler<Request, Response>;
+        (
+            format: "common",
+            options?: Options<Request, Response>,
+        ): Handler<Request, Response>;
         /**
          * Concise output colored by response status for development use. The
          * :status token will be colored red for server error codes, yellow for
@@ -68,7 +79,10 @@ declare namespace morgan {
          * all other codes.
          * :method :url :status :response-time ms - :res[content-length]
          */
-        (format: "dev", options?: Options<Request, Response>): Handler<Request, Response>;
+        (
+            format: "dev",
+            options?: Options<Request, Response>,
+        ): Handler<Request, Response>;
 
         /***
          * Shorter than default, also including response time.
@@ -76,7 +90,10 @@ declare namespace morgan {
          * @param format
          * @param options
          */
-        (format: "short", options?: Options<Request, Response>): Handler<Request, Response>;
+        (
+            format: "short",
+            options?: Options<Request, Response>,
+        ): Handler<Request, Response>;
 
         /***
          * The minimal output.
@@ -84,7 +101,10 @@ declare namespace morgan {
          * @param format
          * @param options
          */
-        (format: "tiny", options?: Options<Request, Response>): Handler<Request, Response>;
+        (
+            format: "tiny",
+            options?: Options<Request, Response>,
+        ): Handler<Request, Response>;
 
         /***
          * Create a new morgan logger middleware function using the given format
@@ -93,13 +113,19 @@ declare namespace morgan {
          * @param format
          * @param options
          */
-        (format: FormatFn<Request, Response>, options?: Options<Request, Response>): Handler<Request, Response>;
+        (
+            format: FormatFn<Request, Response>,
+            options?: Options<Request, Response>,
+        ): Handler<Request, Response>;
 
         /**
          * Define a custom token which can be used in custom morgan logging
          * formats.
          */
-        token(name: string, callback: TokenCallbackFn<Request, Response>): Morgan<Request, Response>;
+        token(
+            name: string,
+            callback: TokenCallbackFn<Request, Response>,
+        ): Morgan<Request, Response>;
         /**
          * Define a named custom format by specifying a format string in token
          * notation.
@@ -109,7 +135,10 @@ declare namespace morgan {
         /**
          * Define a named custom format by specifying a format function.
          */
-        format(name: string, fmt: FormatFn<Request, Response>): Morgan<Request, Response>;
+        format(
+            name: string,
+            fmt: FormatFn<Request, Response>,
+        ): Morgan<Request, Response>;
 
         /**
          * Compile a format string in token notation into a format function.
@@ -170,7 +199,10 @@ declare namespace morgan {
     /***
      * Morgan accepts these properties in the options object.
      */
-    interface Options<Request extends http.IncomingMessage, Response extends http.ServerResponse> {
+    interface Options<
+        Request extends http.IncomingMessage,
+        Response extends http.ServerResponse,
+    > {
         /***
          * Buffer duration before writing logs to the stream, defaults to false.
          * When set to true, defaults to 1000 ms.

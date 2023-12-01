@@ -2,7 +2,10 @@ import notifier = require("../");
 
 declare class WindowsToaster {
     constructor(option?: notifier.Option);
-    notify(notification?: WindowsToaster.Notification, callback?: notifier.NotificationCallback): WindowsToaster;
+    notify(
+        notification?: WindowsToaster.Notification,
+        callback?: notifier.NotificationCallback,
+    ): WindowsToaster;
 }
 
 declare namespace WindowsToaster {

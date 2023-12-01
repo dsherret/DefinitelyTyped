@@ -18,14 +18,11 @@ interface Options {
 declare function makeAsyncScript(
     url: string,
     options?: Options,
-): <P>(
-    Component: React.ComponentType<P>,
-) => React.ComponentType<
-    & P
-    & hoistNonReactStatics.NonReactStatics<React.ComponentType<any>>
-    & {
-        asyncScriptOnLoad?: (() => void) | undefined;
-    }
+): <P>(Component: React.ComponentType<P>) => React.ComponentType<
+    P &
+        hoistNonReactStatics.NonReactStatics<React.ComponentType<any>> & {
+            asyncScriptOnLoad?: (() => void) | undefined;
+        }
 >;
 
 export = makeAsyncScript;

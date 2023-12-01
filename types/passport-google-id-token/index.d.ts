@@ -18,7 +18,10 @@ interface StrategyOptions {
      * @param kid The key id specified in the token
      * @param callback
      */
-    getGoogleCerts?: (kid: string, callback: (err: any, cert: string) => void) => void;
+    getGoogleCerts?: (
+        kid: string,
+        callback: (err: any, cert: string) => void,
+    ) => void;
 }
 
 /**

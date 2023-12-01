@@ -60,13 +60,13 @@ export declare function generalClassNames(props: GeneralPropTypes): {
     "hide-for-small-only": boolean;
     "hide-for-medium-only": boolean;
     "hide-for-large-only": boolean;
-    "hide": boolean | undefined;
-    "invisible": boolean | undefined;
+    hide: boolean | undefined;
+    invisible: boolean | undefined;
     "show-for-landscape": boolean | undefined;
     "show-for-portrait": boolean | undefined;
     "show-for-sr": boolean | undefined;
     "show-on-focus": boolean | undefined;
-    "clearfix": boolean | undefined;
+    clearfix: boolean | undefined;
     "float-left": boolean;
     "float-center": boolean;
     "float-right": boolean;
@@ -97,7 +97,10 @@ export declare function addBreakpoint(prop: string, size: string): string;
 /**
  * Sets direction for grid and gutters (horizontal or vertical).
  */
-export declare function setDirection(isVertical?: boolean, gutters?: string | null): string;
+export declare function setDirection(
+    isVertical?: boolean,
+    gutters?: string | null,
+): string;
 /**
  * Property types for flexbox utilities.
  */

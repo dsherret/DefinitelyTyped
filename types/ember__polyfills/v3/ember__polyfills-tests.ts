@@ -13,7 +13,8 @@ import { assign, merge } from "@ember/polyfills";
     assign({ a: "hello" }, { b: 6 }, { a: true }).a; // $ExpectType boolean
     // @ts-expect-error
     assign({ a: "hello" }, "", { a: true }).a;
-    assign({ d: ["gobias industries"] }, { a: "hello" }, { b: 6 }, { a: true }).d; // $ExpectType string[]
+    assign({ d: ["gobias industries"] }, { a: "hello" }, { b: 6 }, { a: true })
+        .d; // $ExpectType string[]
     assign({}, { a: 0 }, { b: 1 }, { c: 2 }, { d: 3 }).a; // $ExpectType any
 
     // matches Object.assign

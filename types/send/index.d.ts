@@ -8,7 +8,11 @@ import * as stream from "stream";
  * Create a new SendStream for the given path to send to a res.
  * The req is the Node.js HTTP request and the path is a urlencoded path to send (urlencoded, not the actual file-system path).
  */
-declare function send(req: stream.Readable, path: string, options?: send.SendOptions): send.SendStream;
+declare function send(
+    req: stream.Readable,
+    path: string,
+    options?: send.SendOptions,
+): send.SendStream;
 
 declare namespace send {
     const mime: typeof m;

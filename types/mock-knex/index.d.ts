@@ -113,7 +113,11 @@ export interface Queries {
      * Also emits a tracker 'query' event.
      * Else, calls 'resolve()' without arguments.
      */
-    track<T extends object = object>(query: T, resolve: (query: T) => void, reject: (error: Error) => void): void;
+    track<T extends object = object>(
+        query: T,
+        resolve: (query: T) => void,
+        reject: (error: Error) => void,
+    ): void;
 
     /**
      * Returns the first (oldest) tracked query, if any have been tracked.

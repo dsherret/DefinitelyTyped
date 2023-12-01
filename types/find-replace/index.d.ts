@@ -12,8 +12,16 @@
  * * If the replaceWith value is a function, it will be invoked with the found value and its result used as the replace value.
  * * If the replaceWith function returns an array, the found value will be replaced with each item in the array (not replaced with the array itself).
  */
-declare function findReplace<T>(array: T[], findFn: (x: T) => boolean, ...replaceWiths: Array<T | ((x: T) => T)>): T[];
-declare function findReplace(array: any[], findFn: (x: any) => boolean, ...replaceWiths: any[]): any[];
+declare function findReplace<T>(
+    array: T[],
+    findFn: (x: T) => boolean,
+    ...replaceWiths: Array<T | ((x: T) => T)>
+): T[];
+declare function findReplace(
+    array: any[],
+    findFn: (x: any) => boolean,
+    ...replaceWiths: any[]
+): any[];
 
 export as namespace findReplace;
 export = findReplace;

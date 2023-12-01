@@ -19,9 +19,9 @@ kavenegar.Send(
 
 kavenegar.SendArray(
     {
-        message: "[\"کاوه نگار\", \"وب سرویس کاوه نگار\"]",
-        sender: "[\"10008445\",\"10008445\"]",
-        receptor: "[\"09123456789\",\"09123456781\"]",
+        message: '["کاوه نگار", "وب سرویس کاوه نگار"]',
+        sender: '["10008445","10008445"]',
+        receptor: '["09123456789","09123456781"]',
     },
     (response, status, message) => {
         const responseMessage = message;
@@ -70,17 +70,26 @@ kavenegar.SelectOutbox(
     },
 );
 
-kavenegar.LatestOutbox({ pagesize: 12, sender: "10004535" }, (response, status, message) => {
-    const responseTest = response[0];
-});
+kavenegar.LatestOutbox(
+    { pagesize: 12, sender: "10004535" },
+    (response, status, message) => {
+        const responseTest = response[0];
+    },
+);
 
-kavenegar.Cancel({ messageid: "989405630,31031213,31031214" }, (response, status, message) => {
-    const responseTest = response;
-});
+kavenegar.Cancel(
+    { messageid: "989405630,31031213,31031214" },
+    (response, status, message) => {
+        const responseTest = response;
+    },
+);
 
-kavenegar.Receive({ linenumber: "30002225", isread: 1 }, (response, status, message) => {
-    const responseTest = response;
-});
+kavenegar.Receive(
+    { linenumber: "30002225", isread: 1 },
+    (response, status, message) => {
+        const responseTest = response;
+    },
+);
 
 kavenegar.CountInbox(
     {
@@ -122,6 +131,9 @@ kavenegar.AccountInfo({}, (response, status, message) => {
     const type = response.type;
 });
 
-kavenegar.AccountConfig({ apilogs: "justfaults", defaultsender: "10004535" }, (response, status, message) => {
-    const responseTest = response;
-});
+kavenegar.AccountConfig(
+    { apilogs: "justfaults", defaultsender: "10004535" },
+    (response, status, message) => {
+        const responseTest = response;
+    },
+);

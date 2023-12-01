@@ -113,7 +113,11 @@ declare namespace Combobox {
          * array.filter builtin) Acceptable values for filter are: false "startsWith" "endsWith"
          * "contains" function(String item)
          */
-        filter?: boolean | string | ((dataItem: any, searchItem: any) => boolean) | undefined;
+        filter?:
+            | boolean
+            | string
+            | ((dataItem: any, searchItem: any) => boolean)
+            | undefined;
         /**
          * Use in conjunction with the filter prop. Filter the list without regard for case. This
          * only applies to non function values for filter

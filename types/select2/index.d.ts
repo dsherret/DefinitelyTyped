@@ -6,18 +6,27 @@ export as namespace Select2;
 // For jQuery v1 and v2 backward compatibility
 // --------------------------------------------------------------------------
 
-export type Sub<O extends string, D extends string> = { [K in O]: (Record<D, never> & Record<string, K>)[K] }[O];
+export type Sub<O extends string, D extends string> = {
+    [K in O]: (Record<D, never> & Record<string, K>)[K];
+}[O];
 
 /**
  * Same as jQuery v3 `JQuery.AjaxSettingsBase`.
  */
-export type JQueryAjaxSettingsBase = Pick<JQueryAjaxSettings, Sub<keyof JQueryAjaxSettings, "url">>;
+export type JQueryAjaxSettingsBase = Pick<
+    JQueryAjaxSettings,
+    Sub<keyof JQueryAjaxSettings, "url">
+>;
 
 /**
  * Same as jQuery v3 `JQuery.EventHandlerBase`.
  */
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export type JQueryEventHandlerBase<TContext, T> = (this: TContext, t: T, ...args: any[]) => void | false;
+export type JQueryEventHandlerBase<TContext, T> = (
+    this: TContext,
+    t: T,
+    ...args: any[]
+) => void | false;
 
 /**
  * Same as jQuery v3 `JQuery.PlainObject`.
@@ -150,16 +159,26 @@ export interface Trigger {
 // Ajax Option
 // --------------------------------------------------------------------------
 
-export interface AjaxOptions<Result = DataFormat | GroupedDataFormat, RemoteResult = any>
-    extends JQueryAjaxSettingsBase
-{
+export interface AjaxOptions<
+    Result = DataFormat | GroupedDataFormat,
+    RemoteResult = any,
+> extends JQueryAjaxSettingsBase {
     delay?: number | undefined;
     url?: string | ((params: QueryOptions) => string) | undefined;
     data?: ((params: QueryOptions) => PlainObject | string) | undefined;
     transport?:
-        | ((settings: JQueryAjaxSettings, success: (data: RemoteResult) => undefined, failure: () => undefined) => void)
+        | ((
+              settings: JQueryAjaxSettings,
+              success: (data: RemoteResult) => undefined,
+              failure: () => undefined,
+          ) => void)
         | undefined;
-    processResults?: ((data: RemoteResult, params: QueryOptions) => ProcessedResult<Result>) | undefined;
+    processResults?:
+        | ((
+              data: RemoteResult,
+              params: QueryOptions,
+          ) => ProcessedResult<Result>)
+        | undefined;
 }
 
 // --------------------------------------------------------------------------
@@ -171,15 +190,21 @@ export interface Select2Require {
     (module: string): any;
     (modules: string[]): void;
     (modules: string[], ready: (...modules: any[]) => void): void;
-    (modules: string[], ready: (...modules: any[]) => void, errback: (err: any) => void): void;
+    (
+        modules: string[],
+        ready: (...modules: any[]) => void,
+        errback: (err: any) => void,
+    ): void;
 }
 
 export interface Select2RequireConfig {
-    map?: {
-        [id: string]: {
-            [id: string]: string;
-        };
-    } | undefined;
+    map?:
+        | {
+              [id: string]: {
+                  [id: string]: string;
+              };
+          }
+        | undefined;
     config?: { [id: string]: {} } | undefined;
     deps?: string[] | undefined;
     callback?: ((...modules: any[]) => void) | undefined;
@@ -189,7 +214,10 @@ export interface Select2RequireConfig {
 // Options
 // --------------------------------------------------------------------------
 
-export interface Options<Result = DataFormat | GroupedDataFormat, RemoteResult = any> {
+export interface Options<
+    Result = DataFormat | GroupedDataFormat,
+    RemoteResult = any,
+> {
     ajax?: AjaxOptions<Result, RemoteResult> | undefined;
     allowClear?: boolean | undefined;
     amdBase?: string | undefined;
@@ -208,10 +236,15 @@ export interface Options<Result = DataFormat | GroupedDataFormat, RemoteResult =
     dropdownCssClass?: string | undefined;
     dropdownParent?: HTMLElement | JQuery | string | undefined;
     escapeMarkup?: ((markup: string) => string) | undefined;
-    initSelection?: ((element: JQuery, callback: (data: any) => void) => void) | undefined;
+    initSelection?:
+        | ((element: JQuery, callback: (data: any) => void) => void)
+        | undefined;
     language?: string | Translation | undefined;
     matcher?:
-        | ((params: SearchOptions, data: OptGroupData | OptionData) => OptGroupData | OptionData | null)
+        | ((
+              params: SearchOptions,
+              data: OptGroupData | OptionData,
+          ) => OptGroupData | OptionData | null)
         | undefined;
     maximumInputLength?: number | undefined;
     maximumSelectionLength?: number | undefined;
@@ -223,21 +256,39 @@ export interface Options<Result = DataFormat | GroupedDataFormat, RemoteResult =
     selectionAdapter?: any;
     selectOnClose?: boolean | undefined;
     sorter?:
-        | ((data: Array<OptGroupData | OptionData | IdTextPair>) => Array<OptGroupData | OptionData | IdTextPair>)
+        | ((
+              data: Array<OptGroupData | OptionData | IdTextPair>,
+          ) => Array<OptGroupData | OptionData | IdTextPair>)
         | undefined;
     tags?: boolean | undefined;
-    templateResult?: ((result: LoadingData | Result) => string | JQuery | null) | undefined;
+    templateResult?:
+        | ((result: LoadingData | Result) => string | JQuery | null)
+        | undefined;
     templateSelection?:
-        | ((selection: IdTextPair | LoadingData | Result, container: JQuery) => string | JQuery)
+        | ((
+              selection: IdTextPair | LoadingData | Result,
+              container: JQuery,
+          ) => string | JQuery)
         | undefined;
     theme?: string | undefined;
-    tokenizer?: ((input: string, selection: any[], selectCallback: () => void, options: Options) => string) | undefined;
+    tokenizer?:
+        | ((
+              input: string,
+              selection: any[],
+              selectCallback: () => void,
+              options: Options,
+          ) => string)
+        | undefined;
     tokenSeparators?: string[] | undefined;
     width?: string | undefined;
 
     // Not in https://select2.org/configuration/options-api
-    createTag?: ((params: SearchOptions) => (IdTextPair & Record<string, any>) | null) | undefined;
-    insertTag?: ((data: Array<OptionData | IdTextPair>, tag: IdTextPair) => void) | undefined;
+    createTag?:
+        | ((params: SearchOptions) => (IdTextPair & Record<string, any>) | null)
+        | undefined;
+    insertTag?:
+        | ((data: Array<OptionData | IdTextPair>, tag: IdTextPair) => void)
+        | undefined;
 }
 
 // --------------------------------------------------------------------------
@@ -284,13 +335,55 @@ declare global {
         trigger(events: Trigger): void;
 
         // TODO: events "change" and "change.select2"
-        on(events: "select2:closing", handler?: JQueryEventHandlerBase<TElement, Event<TElement, IngParams>>): this;
-        on(events: "select2:close", handler?: JQueryEventHandlerBase<TElement, Event<TElement, {}>>): this;
-        on(events: "select2:opening", handler?: JQueryEventHandlerBase<TElement, Event<TElement, IngParams>>): this;
-        on(events: "select2:open", handler?: JQueryEventHandlerBase<TElement, Event<TElement, {}>>): this;
-        on(events: "select2:selecting", handler?: JQueryEventHandlerBase<TElement, Event<TElement, IngParams>>): this;
-        on(events: "select2:select", handler?: JQueryEventHandlerBase<TElement, Event<TElement, DataParams>>): this;
-        on(events: "select2:unselecting", handler?: JQueryEventHandlerBase<TElement, Event<TElement, IngParams>>): this;
-        on(events: "select2:unselect", handler?: JQueryEventHandlerBase<TElement, Event<TElement, DataParams>>): this;
+        on(
+            events: "select2:closing",
+            handler?: JQueryEventHandlerBase<
+                TElement,
+                Event<TElement, IngParams>
+            >,
+        ): this;
+        on(
+            events: "select2:close",
+            handler?: JQueryEventHandlerBase<TElement, Event<TElement, {}>>,
+        ): this;
+        on(
+            events: "select2:opening",
+            handler?: JQueryEventHandlerBase<
+                TElement,
+                Event<TElement, IngParams>
+            >,
+        ): this;
+        on(
+            events: "select2:open",
+            handler?: JQueryEventHandlerBase<TElement, Event<TElement, {}>>,
+        ): this;
+        on(
+            events: "select2:selecting",
+            handler?: JQueryEventHandlerBase<
+                TElement,
+                Event<TElement, IngParams>
+            >,
+        ): this;
+        on(
+            events: "select2:select",
+            handler?: JQueryEventHandlerBase<
+                TElement,
+                Event<TElement, DataParams>
+            >,
+        ): this;
+        on(
+            events: "select2:unselecting",
+            handler?: JQueryEventHandlerBase<
+                TElement,
+                Event<TElement, IngParams>
+            >,
+        ): this;
+        on(
+            events: "select2:unselect",
+            handler?: JQueryEventHandlerBase<
+                TElement,
+                Event<TElement, DataParams>
+            >,
+        ): this;
     }
 }

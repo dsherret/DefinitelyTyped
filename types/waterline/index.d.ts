@@ -41,7 +41,10 @@ declare namespace Waterline {
     interface Waterline {
         loadCollection(collection: CollectionClass): void;
         registerModel(collection: CollectionClass): void;
-        initialize: (config: Config, cb: (err: Error, ontology: Ontology) => any) => any;
+        initialize: (
+            config: Config,
+            cb: (err: Error, ontology: Ontology) => any,
+        ) => any;
         teardown(done?: Function): void;
         collections: any;
     }
@@ -229,7 +232,10 @@ declare namespace Waterline {
 
     type AttributeValidationAsyncFn<T> = (cb: (value: T) => any) => void;
 
-    export type AttributeValidation<T> = T | AttributeValidationSyncFn<T> | AttributeValidationAsyncFn<T>;
+    export type AttributeValidation<T> =
+        | T
+        | AttributeValidationSyncFn<T>
+        | AttributeValidationAsyncFn<T>;
 
     export interface AttributeValidations {
         custom?: AttributeValidation<Function> | undefined;
@@ -264,7 +270,10 @@ declare namespace Waterline {
         limit(lim: number): QueryBuilder<T>;
         skip(num: number): QueryBuilder<T>;
         sort(
-            criteria: string | { [attribute: string]: string } | Array<{ [attribute: string]: string }>,
+            criteria:
+                | string
+                | { [attribute: string]: string }
+                | Array<{ [attribute: string]: string }>,
         ): QueryBuilder<T>;
         paginate(pagination?: { page: number; limit: number }): QueryBuilder<T>;
         populate(association: string): QueryBuilder<T>;
@@ -302,10 +311,27 @@ declare namespace Waterline {
         createEach(params: any[], cb?: Callback<any>): CRUDBuilder<any[]>;
         find(criteria?: any, cb?: Callback<any[]>): QueryBuilder<any[]>;
         findOne(criteria?: any, cb?: Callback<any>): QueryBuilder<any>;
-        findOrCreate(criteria?: any, values?: any, cb?: Callback<any>): QueryBuilder<any>;
-        update(criteria: any, changes?: any, cb?: Callback<any>): UpdateBuilder<any>;
-        update(criteria: any, changes?: any[], cb?: Callback<any[]>): UpdateBuilder<any[]>;
-        updateOne(criteria: any, changes?: any, cb?: Callback<any>, meta?: any): UpdateBuilder<any>;
+        findOrCreate(
+            criteria?: any,
+            values?: any,
+            cb?: Callback<any>,
+        ): QueryBuilder<any>;
+        update(
+            criteria: any,
+            changes?: any,
+            cb?: Callback<any>,
+        ): UpdateBuilder<any>;
+        update(
+            criteria: any,
+            changes?: any[],
+            cb?: Callback<any[]>,
+        ): UpdateBuilder<any[]>;
+        updateOne(
+            criteria: any,
+            changes?: any,
+            cb?: Callback<any>,
+            meta?: any,
+        ): UpdateBuilder<any>;
         destroy(criteria: any, cb?: Callback<any>): CRUDBuilder<any[]>;
         destroy(criteria: any[], cb?: Callback<any[]>): CRUDBuilder<any[]>;
         destroyOne(criteria: any, cb?: Callback<any>): CRUDBuilder<any>;
@@ -327,17 +353,29 @@ declare namespace Waterline {
 
 declare interface WaterlineStatic {
     Model: {
-        extend: (params: Waterline.CollectionDefinition) => Waterline.CollectionClass;
+        extend: (
+            params: Waterline.CollectionDefinition,
+        ) => Waterline.CollectionClass;
     };
     Collection: {
-        extend: (params: Waterline.CollectionDefinition) => Waterline.CollectionClass;
+        extend: (
+            params: Waterline.CollectionDefinition,
+        ) => Waterline.CollectionClass;
     };
-    new(): Waterline.Waterline;
-    start<CB extends (err: Error | undefined, orm: Waterline.Waterline) => unknown>(
+    new (): Waterline.Waterline;
+    start<
+        CB extends (
+            err: Error | undefined,
+            orm: Waterline.Waterline,
+        ) => unknown,
+    >(
         options: Waterline.StartOptions,
         done: CB,
     ): CB;
-    stop<CB extends (err: Error | undefined) => unknown>(orm: Waterline.Waterline, done: CB): ReturnType<CB>;
+    stop<CB extends (err: Error | undefined) => unknown>(
+        orm: Waterline.Waterline,
+        done: CB,
+    ): ReturnType<CB>;
 }
 
 declare var Waterline: WaterlineStatic;

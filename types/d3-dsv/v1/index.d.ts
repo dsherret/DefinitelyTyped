@@ -32,7 +32,8 @@ export interface DSVRowAny {
  * An array object representing all deserialized rows. The array is enhanced with a property listing
  * the names of the parsed columns.
  */
-export interface DSVRowArray<Columns extends string = string> extends Array<DSVRowString<Columns>> {
+export interface DSVRowArray<Columns extends string = string>
+    extends Array<DSVRowString<Columns>> {
     /**
      * List of column names.
      */
@@ -69,7 +70,9 @@ export interface DSVParsedArray<T> extends Array<T> {
  * @param csvString A string, which must be in the comma-separated values format.
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function csvParse<Columns extends string>(csvString: string): DSVRowArray<Columns>;
+export function csvParse<Columns extends string>(
+    csvString: string,
+): DSVRowArray<Columns>;
 /**
  * Parses the specified string, which must be in the comma-separated values format, returning an array of objects representing the parsed rows.
  *
@@ -88,7 +91,11 @@ export function csvParse<Columns extends string>(csvString: string): DSVRowArray
  */
 export function csvParse<ParsedRow extends object, Columns extends string>(
     csvString: string,
-    row: (rawRow: DSVRowString<Columns>, index: number, columns: Columns[]) => ParsedRow | undefined | null,
+    row: (
+        rawRow: DSVRowString<Columns>,
+        index: number,
+        columns: Columns[],
+    ) => ParsedRow | undefined | null,
 ): DSVParsedArray<ParsedRow>;
 
 // csvParseRows(...) ========================================================================
@@ -142,7 +149,10 @@ export function csvParseRows<ParsedRow extends object>(
  * @param rows Array of object rows.
  * @param columns An array of strings representing the column names.
  */
-export function csvFormat<T extends object>(rows: T[], columns?: Array<keyof T>): string;
+export function csvFormat<T extends object>(
+    rows: T[],
+    columns?: Array<keyof T>,
+): string;
 
 // csvFormatBody(...) ============================================================================
 
@@ -152,7 +162,10 @@ export function csvFormat<T extends object>(rows: T[], columns?: Array<keyof T>)
  * @param rows Array of object rows.
  * @param columns An array of strings representing the column names.
  */
-export function csvFormatBody<T extends object>(rows: T[], columns?: Array<keyof T>): string;
+export function csvFormatBody<T extends object>(
+    rows: T[],
+    columns?: Array<keyof T>,
+): string;
 
 // csvFormatRows(...) ========================================================================
 
@@ -208,7 +221,9 @@ export function csvFormatValue(value: string): string;
  * @param tsvString A string, which must be in the tab-separated values format.
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function tsvParse<Columns extends string>(tsvString: string): DSVRowArray<Columns>;
+export function tsvParse<Columns extends string>(
+    tsvString: string,
+): DSVRowArray<Columns>;
 /**
  * Parses the specified string, which must be in the tab-separated values format, returning an array of objects representing the parsed rows.
  *
@@ -227,7 +242,11 @@ export function tsvParse<Columns extends string>(tsvString: string): DSVRowArray
  */
 export function tsvParse<ParsedRow extends object, Columns extends string>(
     tsvString: string,
-    row: (rawRow: DSVRowString<Columns>, index: number, columns: Columns[]) => ParsedRow | undefined | null,
+    row: (
+        rawRow: DSVRowString<Columns>,
+        index: number,
+        columns: Columns[],
+    ) => ParsedRow | undefined | null,
 ): DSVParsedArray<ParsedRow>;
 
 // tsvParseRows(...) ========================================================================
@@ -281,7 +300,10 @@ export function tsvParseRows<ParsedRow extends object>(
  * @param rows Array of object rows.
  * @param columns An array of strings representing the column names.
  */
-export function tsvFormat<T extends object>(rows: T[], columns?: Array<keyof T>): string;
+export function tsvFormat<T extends object>(
+    rows: T[],
+    columns?: Array<keyof T>,
+): string;
 
 // tsvFormatBody(...) ============================================================================
 
@@ -291,7 +313,10 @@ export function tsvFormat<T extends object>(rows: T[], columns?: Array<keyof T>)
  * @param rows Array of object rows.
  * @param columns An array of strings representing the column names.
  */
-export function tsvFormatBody<T extends object>(rows: T[], columns?: Array<keyof T>): string;
+export function tsvFormatBody<T extends object>(
+    rows: T[],
+    columns?: Array<keyof T>,
+): string;
 
 // tsvFormatRows(...) ========================================================================
 
@@ -364,7 +389,11 @@ export interface DSV {
      */
     parse<ParsedRow extends object, Columns extends string>(
         dsvString: string,
-        row: (rawRow: DSVRowString<Columns>, index: number, columns: Columns[]) => ParsedRow | undefined | null,
+        row: (
+            rawRow: DSVRowString<Columns>,
+            index: number,
+            columns: Columns[],
+        ) => ParsedRow | undefined | null,
     ): DSVParsedArray<ParsedRow>;
 
     /**
@@ -465,6 +494,7 @@ export function dsvFormat(delimiter: string): DSV;
  * @param object An object (or array) representing a parsed row
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function autoType<ParsedRow extends object | undefined | null, Columns extends string>(
-    object: DSVRowString<Columns> | string[],
-): ParsedRow;
+export function autoType<
+    ParsedRow extends object | undefined | null,
+    Columns extends string,
+>(object: DSVRowString<Columns> | string[]): ParsedRow;

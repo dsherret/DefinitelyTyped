@@ -7,7 +7,11 @@ interface IConfiguration {
 interface IResolver {
     compare(binding: string, topic: string, headerOptions: {}): boolean;
     reset(): void;
-    purge(options?: { topic?: string | undefined; binding?: string | undefined; compact?: boolean | undefined }): void;
+    purge(options?: {
+        topic?: string | undefined;
+        binding?: string | undefined;
+        compact?: boolean | undefined;
+    }): void;
 }
 
 interface ICallback<T> {
@@ -21,8 +25,12 @@ interface ISubscriptionDefinition<T> {
 
     // after and before lack documentation
 
-    constraint(predicateFn: (data: T, envelope: IEnvelope<T>) => boolean): ISubscriptionDefinition<T>;
-    constraints(predicateFns: Array<(data: T, envelope: IEnvelope<T>) => boolean>): ISubscriptionDefinition<T>;
+    constraint(
+        predicateFn: (data: T, envelope: IEnvelope<T>) => boolean,
+    ): ISubscriptionDefinition<T>;
+    constraints(
+        predicateFns: Array<(data: T, envelope: IEnvelope<T>) => boolean>,
+    ): ISubscriptionDefinition<T>;
     context(theContext: any): ISubscriptionDefinition<T>;
     debounce(interval: number): ISubscriptionDefinition<T>;
     defer(): ISubscriptionDefinition<T>;
@@ -48,7 +56,10 @@ interface IEnvelope<T> {
 }
 
 interface IChannelDefinition<T> {
-    subscribe(topic: string, callback: ICallback<T>): ISubscriptionDefinition<T>;
+    subscribe(
+        topic: string,
+        callback: ICallback<T>,
+    ): ISubscriptionDefinition<T>;
 
     publish(topic: string, data?: T): void;
 
@@ -64,21 +75,31 @@ interface IPostal {
     channel<T>(name?: string): IChannelDefinition<T>;
 
     getSubscribersFor(): Array<ISubscriptionDefinition<any>>;
+    getSubscribersFor(options: {
+        channel?: string | undefined;
+        topic?: string | undefined;
+        context?: any;
+    }): Array<ISubscriptionDefinition<any>>;
     getSubscribersFor(
-        options: { channel?: string | undefined; topic?: string | undefined; context?: any },
+        predicateFn: (sub: ISubscriptionDefinition<any>) => boolean,
     ): Array<ISubscriptionDefinition<any>>;
-    getSubscribersFor(predicateFn: (sub: ISubscriptionDefinition<any>) => boolean): Array<ISubscriptionDefinition<any>>;
 
     publish(envelope: IEnvelope<any>): void;
 
     reset(): void;
 
-    subscribe(
-        options: { channel?: string | undefined; topic: string; callback: ICallback<any> },
-    ): ISubscriptionDefinition<any>;
+    subscribe(options: {
+        channel?: string | undefined;
+        topic: string;
+        callback: ICallback<any>;
+    }): ISubscriptionDefinition<any>;
     unsubscribe(sub: ISubscriptionDefinition<any>): void;
     unsubscribeFor(): void;
-    unsubscribeFor(options: { channel?: string | undefined; topic?: string | undefined; context?: any }): void;
+    unsubscribeFor(options: {
+        channel?: string | undefined;
+        topic?: string | undefined;
+        context?: any;
+    }): void;
 
     configuration: IConfiguration;
 }

@@ -2,7 +2,12 @@ import AGServer = require("socketcluster-server/server");
 import WebSocket = require("ws");
 
 import AuthEngine = require("./auth");
-import { CallIdGenerator, ClientOptions, ProtocolVersions, States } from "./clientsocket";
+import {
+    CallIdGenerator,
+    ClientOptions,
+    ProtocolVersions,
+    States,
+} from "./clientsocket";
 
 declare class AGTransport {
     readonly CONNECTING: "connecting";
@@ -51,7 +56,11 @@ declare class AGTransport {
     close(code?: number, reason?: string): void;
 
     transmitObject(eventObject: AGTransport.EventObject): number | null;
-    transmit(event: string, data: any, options: AGTransport.TransmitOptions): Promise<void>;
+    transmit(
+        event: string,
+        data: any,
+        options: AGTransport.TransmitOptions,
+    ): Promise<void>;
 
     invokeRaw(
         event: string,
@@ -59,7 +68,11 @@ declare class AGTransport {
         options: AGTransport.InvokeOptions,
         callback?: AGTransport.EventObjectCallback,
     ): number | null;
-    invoke<T>(event: string, data: T, options: AGTransport.InvokeOptions): Promise<T>;
+    invoke<T>(
+        event: string,
+        data: T,
+        options: AGTransport.InvokeOptions,
+    ): Promise<T>;
 
     cancelPendingResponse(cid: number): void;
 

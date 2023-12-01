@@ -31,9 +31,18 @@ export interface Combo {
 export class Listener {
     constructor(element?: Element, defaults?: ListenerDefaults);
 
-    simple_combo(keys: string, on_keydown_callback: (event?: KeyboardEvent, count?: number) => any): void;
-    counting_combo(keys: string, on_count_callback: (event?: KeyboardEvent, count?: number) => any): void;
-    sequence_combo(keys: string, callback: (event?: KeyboardEvent, count?: number) => any): void;
+    simple_combo(
+        keys: string,
+        on_keydown_callback: (event?: KeyboardEvent, count?: number) => any,
+    ): void;
+    counting_combo(
+        keys: string,
+        on_count_callback: (event?: KeyboardEvent, count?: number) => any,
+    ): void;
+    sequence_combo(
+        keys: string,
+        callback: (event?: KeyboardEvent, count?: number) => any,
+    ): void;
     register_combo(combo: Combo): Combo;
     unregister_combo(combo: Combo | string): void;
     register_many(combos: Combo[]): Combo[];

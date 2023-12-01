@@ -64,7 +64,7 @@ ca({ unique: true });
 // $ExpectType void | AsyncGenerator<Certificate, any, unknown> | Generator<Certificate, any, unknown>
 ca({ ondata: [] });
 ca({
-    ondata: certificate => {
+    ondata: (certificate) => {
         certificate; // $ExpectType Certificate
     },
 });
@@ -84,7 +84,7 @@ ca({ save: ["foo"] });
 ca({ save: true });
 // $ExpectType void | AsyncGenerator<Certificate, any, unknown> | Generator<Certificate, any, unknown>
 ca({
-    onsave: path => {
+    onsave: (path) => {
         path; // $ExpectType string | undefined
     },
 });

@@ -10,44 +10,49 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.ButtonOptionWidget
      */
-    interface ButtonOptionWidget extends ButtonOptionWidget.Props, ButtonOptionWidget.Prototype {}
+    interface ButtonOptionWidget
+        extends ButtonOptionWidget.Props,
+            ButtonOptionWidget.Prototype {}
 
     namespace ButtonOptionWidget {
-        interface EventMap extends OptionWidget.EventMap, mixin.ButtonElement.EventMap {}
+        interface EventMap
+            extends OptionWidget.EventMap,
+                mixin.ButtonElement.EventMap {}
 
         interface ConfigOptions
-            extends
-                OptionWidget.ConfigOptions,
+            extends OptionWidget.ConfigOptions,
                 mixin.ButtonElement.ConfigOptions,
                 mixin.IconElement.ConfigOptions,
-                mixin.IndicatorElement.ConfigOptions
-        {
-            flags?: LiteralUnion<mixin.ButtonElement.Flag> | Array<LiteralUnion<mixin.ButtonElement.Flag>>;
+                mixin.IndicatorElement.ConfigOptions {
+            flags?:
+                | LiteralUnion<mixin.ButtonElement.Flag>
+                | Array<LiteralUnion<mixin.ButtonElement.Flag>>;
         }
 
         interface Static
-            extends
-                OptionWidget.Static,
+            extends OptionWidget.Static,
                 mixin.ButtonElement.Static,
                 mixin.IconElement.Static,
-                mixin.IndicatorElement.Static
-        {}
+                mixin.IndicatorElement.Static {}
 
         interface Props
-            extends OptionWidget.Props, mixin.ButtonElement.Props, mixin.IconElement.Props, mixin.IndicatorElement.Props
-        {}
+            extends OptionWidget.Props,
+                mixin.ButtonElement.Props,
+                mixin.IconElement.Props,
+                mixin.IndicatorElement.Props {}
 
         interface Prototype
-            extends
-                OptionWidget.Prototype,
+            extends OptionWidget.Prototype,
                 mixin.ButtonElement.Prototype,
                 mixin.IconElement.Prototype,
-                mixin.IndicatorElement.Prototype
-        {
+                mixin.IndicatorElement.Prototype {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -58,7 +63,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -66,7 +74,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -75,11 +86,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -95,7 +118,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): ButtonOptionWidget;
+            new (config?: ConfigOptions): ButtonOptionWidget;
             prototype: Prototype;
             static: Static;
             super: OptionWidget.Constructor;

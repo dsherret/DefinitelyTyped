@@ -21,7 +21,11 @@ declare namespace OuralabsPlugin {
          * @param successCallback The success callback for this asynchronous function.
          * @param failureCallback The failure callback for this asynchronous function; receives an error string.
          */
-        init(channelId: string, successCallback?: () => void, failureCallback?: (error: string) => void): void;
+        init(
+            channelId: string,
+            successCallback?: () => void,
+            failureCallback?: (error: string) => void,
+        ): void;
 
         /**
          * Used to ensure values logged via the plugin are also displayed in the browser's console.

@@ -20,7 +20,9 @@ bitcore.crypto.ECDSA.verify(
     new bitcore.PublicKey("publicKey"),
 );
 
-const utxo: bitcore.Transaction.UnspentOutput[] = [new bitcore.Transaction.UnspentOutput({})];
+const utxo: bitcore.Transaction.UnspentOutput[] = [
+    new bitcore.Transaction.UnspentOutput({}),
+];
 
 new bitcore.Block(Buffer.from("123", "hex"));
 

@@ -1,4 +1,9 @@
-import { Level, MessageConsumer, ServiceConfiguration, SystemService } from "system-service";
+import {
+    Level,
+    MessageConsumer,
+    ServiceConfiguration,
+    SystemService,
+} from "system-service";
 
 class DemoConsumer extends MessageConsumer {
     create() {

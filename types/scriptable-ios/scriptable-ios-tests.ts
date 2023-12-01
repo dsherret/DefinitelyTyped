@@ -98,11 +98,17 @@
     // $ExpectType Promise<string[]>
     DocumentPicker.exportImage(Image.fromFile("some/image.png"));
     // $ExpectType Promise<string[]>
-    DocumentPicker.exportImage(Image.fromFile("some/image.png"), "super interesting image.png");
+    DocumentPicker.exportImage(
+        Image.fromFile("some/image.png"),
+        "super interesting image.png",
+    );
     // $ExpectType Promise<string[]>
     DocumentPicker.exportData(Data.fromFile("test.bin"));
     // $ExpectType Promise<string[]>
-    DocumentPicker.exportData(Data.fromFile("test.bin"), "super interesting data.bin");
+    DocumentPicker.exportData(
+        Data.fromFile("test.bin"),
+        "super interesting data.bin",
+    );
 }
 
 {
@@ -193,7 +199,9 @@
     // @ts-expect-error
     listWidget.addDate("2020-01-01T00:00:00Z");
 
-    const widgetImage = listWidget.addImage(Image.fromData(Data.fromBase64String("foobar")));
+    const widgetImage = listWidget.addImage(
+        Image.fromData(Data.fromBase64String("foobar")),
+    );
     // @ts-expect-error
     listWidget.addImage("42");
 
@@ -549,7 +557,7 @@
     req.headers = {
         "Content-Type": "application/json",
     };
-    req.body = "{\"answer\":42}";
+    req.body = '{"answer":42}';
     req.timeoutInterval = 5;
     req.allowInsecureRequest = true;
     // $ExpectType Promise<any>
@@ -657,7 +665,7 @@
     // $ExpectType Promise<Calendar[]>
     Calendar.presentPicker(true);
 
-    promise.then(calendar => {
+    promise.then((calendar) => {
         // $ExpectType string
         calendar.identifier;
         calendar.identifier = "foo";
@@ -753,7 +761,7 @@
     // $ExpectType Promise<ContactsContainer>
     ContactsContainer.withIdentifier("foo");
 
-    promise.then(container => {
+    promise.then((container) => {
         // $ExpectType string
         container.identifier;
         // $ExpectType string

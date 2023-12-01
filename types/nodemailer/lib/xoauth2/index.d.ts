@@ -32,7 +32,11 @@ declare namespace XOAuth2 {
         provisionCallback?(
             user: string,
             renew: boolean,
-            callback: (err: Error | null, accessToken: string, expires: number) => void,
+            callback: (
+                err: Error | null,
+                accessToken: string,
+                expires: number,
+            ) => void,
         ): void;
         serviceClient?: string | undefined;
     }
@@ -57,13 +61,18 @@ declare class XOAuth2 extends Stream {
     constructor(options?: XOAuth2.Options, logger?: shared.Logger);
 
     /** Returns or generates (if previous has expired) a XOAuth2 token */
-    getToken(renew: boolean, callback: (err: Error | null, accessToken: string) => void): void;
+    getToken(
+        renew: boolean,
+        callback: (err: Error | null, accessToken: string) => void,
+    ): void;
 
     /** Updates token values */
     updateToken(accessToken: string, timeout: s): XOAuth2.Token;
 
     /** Generates a new XOAuth2 token with the credentials provided at initialization */
-    generateToken(callback: (err: Error | null, accessToken: string) => void): void;
+    generateToken(
+        callback: (err: Error | null, accessToken: string) => void,
+    ): void;
 
     /** Converts an access_token and user id into a base64 encoded XOAuth2 token */
     buildXOAuth2Token(accessToken: string): string;
@@ -102,10 +111,16 @@ declare class XOAuth2 extends Stream {
     once(event: "token", listener: (token: XOAuth2.Token) => void): this;
 
     prependListener(event: "error", listener: (err: Error) => void): this;
-    prependListener(event: "end", listener: (token: XOAuth2.Token) => void): this;
+    prependListener(
+        event: "end",
+        listener: (token: XOAuth2.Token) => void,
+    ): this;
 
     prependOnceListener(event: "error", listener: (err: Error) => void): this;
-    prependOnceListener(event: "end", listener: (token: XOAuth2.Token) => void): this;
+    prependOnceListener(
+        event: "end",
+        listener: (token: XOAuth2.Token) => void,
+    ): this;
 
     listeners(event: "error"): Array<(err: Error) => void>;
     listeners(event: "end"): Array<(token: XOAuth2.Token) => void>;

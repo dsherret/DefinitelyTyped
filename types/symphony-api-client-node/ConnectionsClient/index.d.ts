@@ -17,18 +17,41 @@ export interface RemoveConnectionReponse {
     message: string;
 }
 
-export function acceptConnectionRequest(userId: string, sessionToken: string): Promise<Connection>;
-export function getAcceptedConnections(sessionToken: string): Promise<Connection[]>;
+export function acceptConnectionRequest(
+    userId: string,
+    sessionToken: string,
+): Promise<Connection>;
+export function getAcceptedConnections(
+    sessionToken: string,
+): Promise<Connection[]>;
 export function getAllConnections(sessionToken: string): Promise<Connection[]>;
-export function getConnectionRequestStatus(userId: string, sessionToken: string): Promise<Connection>;
+export function getConnectionRequestStatus(
+    userId: string,
+    sessionToken: string,
+): Promise<Connection>;
 export function getConnections(
     status: string,
     commaSeparatedUserIds: string,
     sessionToken: string,
 ): Promise<Connection[]>;
-export function getInboundPendingConnections(sessionToken: string): Promise<Connection[]>;
-export function getPendingConnections(sessionToken: string): Promise<Connection[]>;
-export function getRejectedConnections(sessionToken: string): Promise<Connection[]>;
-export function rejectConnectionRequest(userId: string, sessionToken: string): Promise<Connection>;
-export function removeConnection(userId: string, sessionToken: string): Promise<RemoveConnectionReponse>;
-export function sendConnectionRequest(userId: string, sessionToken: string): Promise<Connection>;
+export function getInboundPendingConnections(
+    sessionToken: string,
+): Promise<Connection[]>;
+export function getPendingConnections(
+    sessionToken: string,
+): Promise<Connection[]>;
+export function getRejectedConnections(
+    sessionToken: string,
+): Promise<Connection[]>;
+export function rejectConnectionRequest(
+    userId: string,
+    sessionToken: string,
+): Promise<Connection>;
+export function removeConnection(
+    userId: string,
+    sessionToken: string,
+): Promise<RemoveConnectionReponse>;
+export function sendConnectionRequest(
+    userId: string,
+    sessionToken: string,
+): Promise<Connection>;

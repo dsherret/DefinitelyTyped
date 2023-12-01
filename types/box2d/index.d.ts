@@ -83,7 +83,10 @@ declare namespace Box2D.Common {
          * @param friction2 Friction 2 to mix.
          * @return The two frictions mixed as one value.
          */
-        public static b2MixFriction(friction1: number, friction2: number): number;
+        public static b2MixFriction(
+            friction1: number,
+            friction2: number,
+        ): number;
 
         /**
          * Restitution mixing law. Feel free to customize this.  Restitution is used to make objects bounce.
@@ -93,7 +96,10 @@ declare namespace Box2D.Common {
          * @param restitution2 Restitution 2 to mix.
          * @return The two restitutions mixed as one value.
          */
-        public static b2MixRestitution(restitution1: number, restitution2: number): number;
+        public static b2MixRestitution(
+            restitution1: number,
+            restitution2: number,
+        ): number;
 
         /**
          * This is used to fatten AABBs in the dynamic tree. This allows proxies to move by a small amount without triggering a tree adjustment. This is in meters.
@@ -1256,7 +1262,9 @@ declare namespace Box2D.Collision {
          * @param d Direction to look for the supporting vertex.
          * @return Supporting vertex.
          */
-        public GetSupportVertex(d: Box2D.Common.Math.b2Vec2): Box2D.Common.Math.b2Vec2;
+        public GetSupportVertex(
+            d: Box2D.Common.Math.b2Vec2,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Get a vertex by index.  Used by b2Distance.
@@ -1324,7 +1332,11 @@ declare namespace Box2D.Collision {
          * @param aabb Swept AABB.
          * @param displacement Extra AABB displacement.
          */
-        public MoveProxy(proxy: b2DynamicTreeNode, aabb: b2AABB, displacement: Box2D.Common.Math.b2Vec2): boolean;
+        public MoveProxy(
+            proxy: b2DynamicTreeNode,
+            aabb: b2AABB,
+            displacement: Box2D.Common.Math.b2Vec2,
+        ): boolean;
 
         /**
          * Query an AABB for overlapping proxies. The callback is called for each proxy that overlaps the supplied AABB. The callback should match function signature fuction callback(proxy:b2DynamicTreeNode):Boolean and should return false to trigger premature termination.
@@ -1332,7 +1344,10 @@ declare namespace Box2D.Collision {
          *    param proxy Proxy overlapping the supplied AABB.
          * @param aabb Proxies are query for overlap on this AABB.
          */
-        public Query(callback: (proxy: b2DynamicTreeNode) => boolean, aabb: b2AABB): void;
+        public Query(
+            callback: (proxy: b2DynamicTreeNode) => boolean,
+            aabb: b2AABB,
+        ): void;
 
         /**
          * Ray-cast against the proxies in the tree. This relies on the callback to perform a exact ray-cast in the case were the proxy contains a shape. The callback also performs the any collision filtering. This has performance roughly equal to k log(n), where k is the number of collisions and n is the number of proxies in the tree.
@@ -1343,7 +1358,10 @@ declare namespace Box2D.Collision {
          * @param input Ray cast input data.  Query all proxies along this ray cast.
          */
         public RayCast(
-            callback: (input: b2RayCastInput, proxy: b2DynamicTreeNode) => number,
+            callback: (
+                input: b2RayCastInput,
+                proxy: b2DynamicTreeNode,
+            ) => number,
             input: b2RayCastInput,
         ): void;
 
@@ -1393,18 +1411,28 @@ declare namespace Box2D.Collision {
         /**
          * @see IBroadPhase.MoveProxy
          */
-        public MoveProxy(proxy: b2DynamicTreeNode, aabb: b2AABB, displacement: Box2D.Common.Math.b2Vec2): void;
+        public MoveProxy(
+            proxy: b2DynamicTreeNode,
+            aabb: b2AABB,
+            displacement: Box2D.Common.Math.b2Vec2,
+        ): void;
 
         /**
          * @see IBroadPhase.Query
          */
-        public Query(callback: (proxy: b2DynamicTreeNode) => boolean, aabb: b2AABB): void;
+        public Query(
+            callback: (proxy: b2DynamicTreeNode) => boolean,
+            aabb: b2AABB,
+        ): void;
 
         /**
          * @see IBroadPhase.RayCast
          */
         public RayCast(
-            callback: (input: b2RayCastInput, proxy: b2DynamicTreeNode) => number,
+            callback: (
+                input: b2RayCastInput,
+                proxy: b2DynamicTreeNode,
+            ) => number,
             input: b2RayCastInput,
         ): void;
 
@@ -1419,7 +1447,10 @@ declare namespace Box2D.Collision {
          * @param proxyB Second proxy to test.
          * @return True if the proxyA and proxyB overlap with Fat AABBs, otherwise false.
          */
-        public TestOverlap(proxyA: b2DynamicTreeNode, proxyB: b2DynamicTreeNode): boolean;
+        public TestOverlap(
+            proxyA: b2DynamicTreeNode,
+            proxyB: b2DynamicTreeNode,
+        ): boolean;
 
         /**
          * Update the pairs. This results in pair callbacks. This can only add pairs.
@@ -1427,7 +1458,9 @@ declare namespace Box2D.Collision {
          *    param userDataA Proxy A in the pair user data.
          *    param userDataB Proxy B in the pair user data.
          */
-        public UpdatePairs(callback: (userDataA: any, userDataB: any) => void): void;
+        public UpdatePairs(
+            callback: (userDataA: any, userDataB: any) => void,
+        ): void;
 
         /**
          * Validates the dynamic tree.
@@ -1442,8 +1475,7 @@ declare namespace Box2D.Collision {
      * Empty declaration, used in many callbacks within b2DynamicTree.
      * Use the b2DynamicTree functions to extract data from this shell.
      */
-    export class b2DynamicTreeNode {
-    }
+    export class b2DynamicTreeNode {}
 }
 
 declare namespace Box2D.Collision {
@@ -1606,7 +1638,11 @@ declare namespace Box2D.Collision {
          * @param p2 End point of the ray, default = null.
          * @param maxFraction Truncate the ray to reach up to this fraction from p1 to p2.
          */
-        constructor(p1?: Box2D.Common.Math.b2Vec2, p2?: Box2D.Common.Math.b2Vec2, maxFraction?: number);
+        constructor(
+            p1?: Box2D.Common.Math.b2Vec2,
+            p2?: Box2D.Common.Math.b2Vec2,
+            maxFraction?: number,
+        );
     }
 }
 
@@ -1844,7 +1880,11 @@ declare namespace Box2D.Collision {
          * @param aabb Swept AABB.
          * @param displacement Extra AABB displacement.
          */
-        MoveProxy(proxy: b2DynamicTreeNode, aabb: b2AABB, displacement: Box2D.Common.Math.b2Vec2): void;
+        MoveProxy(
+            proxy: b2DynamicTreeNode,
+            aabb: b2AABB,
+            displacement: Box2D.Common.Math.b2Vec2,
+        ): void;
 
         /**
          * Query an AABB for overlapping proxies. The callback is called for each proxy that overlaps the supplied AABB. The callback should match function signature fuction callback(proxy:b2DynamicTreeNode):Boolean and should return false to trigger premature termination.
@@ -1852,7 +1892,10 @@ declare namespace Box2D.Collision {
          *    param proxy Proxy overlapping the supplied AABB.
          * @param aabb Proxies are query for overlap on this AABB.
          */
-        Query(callback: (proxy: b2DynamicTreeNode) => boolean, aabb: b2AABB): void;
+        Query(
+            callback: (proxy: b2DynamicTreeNode) => boolean,
+            aabb: b2AABB,
+        ): void;
 
         /**
          * Ray-cast against the proxies in the tree. This relies on the callback to perform a exact ray-cast in the case were the proxy contains a shape. The callback also performs the any collision filtering. This has performance roughly equal to k log(n), where k is the number of collisions and n is the number of proxies in the tree.
@@ -1862,7 +1905,13 @@ declare namespace Box2D.Collision {
          *    param return Return value is the new value for maxFraction.
          * @param input Ray cast input data.  Query all proxies along this ray cast.
          */
-        RayCast(callback: (input: b2RayCastInput, proxy: b2DynamicTreeNode) => number, input: b2RayCastInput): void;
+        RayCast(
+            callback: (
+                input: b2RayCastInput,
+                proxy: b2DynamicTreeNode,
+            ) => number,
+            input: b2RayCastInput,
+        ): void;
 
         /**
          * Perform some iterations to re-balance the tree.
@@ -1888,7 +1937,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param aabb Calculated AABB, this argument is `out`.
          * @param xf Transform to calculate the AABB.
          */
-        public ComputeAABB(aabb: b2AABB, xf: Box2D.Common.Math.b2Transform): void;
+        public ComputeAABB(
+            aabb: b2AABB,
+            xf: Box2D.Common.Math.b2Transform,
+        ): void;
 
         /**
          * Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed about the local origin, not the centroid.
@@ -1966,7 +2018,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param p Point to test against, in world coordinates.
          * @return True if the point is in this shape, otherwise false.
          */
-        public TestPoint(xf: Box2D.Common.Math.b2Transform, p: Box2D.Common.Math.b2Vec2): boolean;
+        public TestPoint(
+            xf: Box2D.Common.Math.b2Transform,
+            p: Box2D.Common.Math.b2Vec2,
+        ): boolean;
     }
 }
 
@@ -2014,7 +2069,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param aabb Calculated AABB, this argument is `out`.
          * @param xf Transform to calculate the AABB.
          */
-        public ComputeAABB(aabb: b2AABB, xf: Box2D.Common.Math.b2Transform): void;
+        public ComputeAABB(
+            aabb: b2AABB,
+            xf: Box2D.Common.Math.b2Transform,
+        ): void;
 
         /**
          * Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed about the local origin, not the centroid.
@@ -2107,7 +2165,9 @@ declare namespace Box2D.Collision.Shapes {
          * @param xf Transform to apply.
          * @return First vertex with xf transform applied.
          */
-        public GetFirstVertex(xf: Box2D.Common.Math.b2Transform): Box2D.Common.Math.b2Vec2;
+        public GetFirstVertex(
+            xf: Box2D.Common.Math.b2Transform,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Get the next edge in the chain.
@@ -2128,7 +2188,11 @@ declare namespace Box2D.Collision.Shapes {
          * @param dY Y world direction.
          * @return Support point.
          */
-        public Support(xf: Box2D.Common.Math.b2Transform, dX: number, dY: number): Box2D.Common.Math.b2Vec2;
+        public Support(
+            xf: Box2D.Common.Math.b2Transform,
+            dX: number,
+            dY: number,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Cast a ray against this shape.
@@ -2149,7 +2213,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param p Point to test against, in world coordinates.
          * @return True if the point is in this shape, otherwise false.
          */
-        public TestPoint(xf: Box2D.Common.Math.b2Transform, p: Box2D.Common.Math.b2Vec2): boolean;
+        public TestPoint(
+            xf: Box2D.Common.Math.b2Transform,
+            p: Box2D.Common.Math.b2Vec2,
+        ): boolean;
     }
 }
 
@@ -2186,7 +2253,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param vertexCount Number of vertices in the shape, default value is 0 and in the box2dweb.js code it is ignored.
          * @return Convex polygon shape.
          */
-        public static AsArray(vertices: Box2D.Common.Math.b2Vec2[], vertexCount?: number): b2PolygonShape;
+        public static AsArray(
+            vertices: Box2D.Common.Math.b2Vec2[],
+            vertexCount?: number,
+        ): b2PolygonShape;
 
         /**
          * Build vertices to represent an axis-aligned box.
@@ -2202,7 +2272,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param v2 Second vertex.
          * @return Edge polygon shape.
          */
-        public static AsEdge(v1: Box2D.Common.Math.b2Vec2, b2: Box2D.Common.Math.b2Vec2): b2PolygonShape;
+        public static AsEdge(
+            v1: Box2D.Common.Math.b2Vec2,
+            b2: Box2D.Common.Math.b2Vec2,
+        ): b2PolygonShape;
 
         /**
          * Build vertices to represent an oriented box.
@@ -2225,14 +2298,20 @@ declare namespace Box2D.Collision.Shapes {
          * @param vertexCount The number of vertices, default is 0 and in the box2dweb.js code it is ignored.
          * @return Convex polygon shape.
          */
-        public static AsVector(vertices: Box2D.Common.Math.b2Vec2[], vertexCount?: number): b2PolygonShape;
+        public static AsVector(
+            vertices: Box2D.Common.Math.b2Vec2[],
+            vertexCount?: number,
+        ): b2PolygonShape;
 
         /**
          * Given a transform, compute the associated axis aligned bounding box for this shape.
          * @param aabb Calculated AABB, this argument is `out`.
          * @param xf Transform to calculate the AABB.
          */
-        public ComputeAABB(aabb: b2AABB, xf: Box2D.Common.Math.b2Transform): void;
+        public ComputeAABB(
+            aabb: b2AABB,
+            xf: Box2D.Common.Math.b2Transform,
+        ): void;
 
         /**
          * Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed about the local origin, not the centroid.
@@ -2277,7 +2356,9 @@ declare namespace Box2D.Collision.Shapes {
          * @param d Direciton to look.
          * @return Vertex supporting the direction.
          */
-        public GetSupportVertex(d: Box2D.Common.Math.b2Vec2): Box2D.Common.Math.b2Vec2;
+        public GetSupportVertex(
+            d: Box2D.Common.Math.b2Vec2,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Get the vertex count.
@@ -2316,7 +2397,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param vertexCount Number of vertices in the shape, default value is 0 and in the box2dweb.js code it is ignored.
          * @return Convex polygon shape.
          */
-        public SetAsArray(vertices: Box2D.Common.Math.b2Vec2[], vertexCount?: number): void;
+        public SetAsArray(
+            vertices: Box2D.Common.Math.b2Vec2[],
+            vertexCount?: number,
+        ): void;
 
         /**
          * Build vertices to represent an axis-aligned box.
@@ -2332,7 +2416,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param v2 Second vertex.
          * @return Edge polygon shape.
          */
-        public SetAsEdge(v1: Box2D.Common.Math.b2Vec2, b2: Box2D.Common.Math.b2Vec2): void;
+        public SetAsEdge(
+            v1: Box2D.Common.Math.b2Vec2,
+            b2: Box2D.Common.Math.b2Vec2,
+        ): void;
 
         /**
          * Build vertices to represent an oriented box.
@@ -2342,7 +2429,12 @@ declare namespace Box2D.Collision.Shapes {
          * @param angle The rotation of the box in local coordinates, default is 0.0.
          * @return Oriented box shape.
          */
-        public SetAsOrientedBox(hx: number, hy: number, center?: Box2D.Common.Math.b2Vec2, angle?: number): void;
+        public SetAsOrientedBox(
+            hx: number,
+            hy: number,
+            center?: Box2D.Common.Math.b2Vec2,
+            angle?: number,
+        ): void;
 
         /**
          * This assumes the vertices define a convex polygon.  It is assumed that the exterior is the the right of each edge.
@@ -2358,7 +2450,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param p Point to test against, in world coordinates.
          * @return True if the point is in this shape, otherwise false.
          */
-        public TestPoint(xf: Box2D.Common.Math.b2Transform, p: Box2D.Common.Math.b2Vec2): boolean;
+        public TestPoint(
+            xf: Box2D.Common.Math.b2Transform,
+            p: Box2D.Common.Math.b2Vec2,
+        ): boolean;
     }
 }
 
@@ -2400,7 +2495,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param aabb Calculated AABB, this argument is `out`.
          * @param xf Transform to calculate the AABB.
          */
-        public ComputeAABB(aabb: b2AABB, xf: Box2D.Common.Math.b2Transform): void;
+        public ComputeAABB(
+            aabb: b2AABB,
+            xf: Box2D.Common.Math.b2Transform,
+        ): void;
 
         /**
          * Compute the mass properties of this shape using its dimensions and density. The inertia tensor is computed about the local origin, not the centroid.
@@ -2473,7 +2571,10 @@ declare namespace Box2D.Collision.Shapes {
          * @param p Point to test against, in world coordinates.
          * @return True if the point is in this shape, otherwise false.
          */
-        public TestPoint(xf: Box2D.Common.Math.b2Transform, p: Box2D.Common.Math.b2Vec2): boolean;
+        public TestPoint(
+            xf: Box2D.Common.Math.b2Transform,
+            p: Box2D.Common.Math.b2Vec2,
+        ): boolean;
     }
 }
 
@@ -2502,14 +2603,20 @@ declare namespace Box2D.Dynamics {
          * @param force The world force vector, usually in Newtons (N).
          * @param point The world position of the point of application.
          */
-        public ApplyForce(force: Box2D.Common.Math.b2Vec2, point: Box2D.Common.Math.b2Vec2): void;
+        public ApplyForce(
+            force: Box2D.Common.Math.b2Vec2,
+            point: Box2D.Common.Math.b2Vec2,
+        ): void;
 
         /**
          * Apply an impulse at a point. This immediately modifies the velocity. It also modifies the angular velocity if the point of application is not at the center of mass. This wakes up the body.
          * @param impules The world impulse vector, usually in N-seconds or kg-m/s.
          * @param point The world position of the point of application.
          */
-        public ApplyImpulse(impulse: Box2D.Common.Math.b2Vec2, point: Box2D.Common.Math.b2Vec2): void;
+        public ApplyImpulse(
+            impulse: Box2D.Common.Math.b2Vec2,
+            point: Box2D.Common.Math.b2Vec2,
+        ): void;
 
         /**
          * Apply a torque. This affects the angular velocity without affecting the linear velocity of the center of mass. This wakes up the body.
@@ -2532,7 +2639,10 @@ declare namespace Box2D.Dynamics {
          * @param density The shape density, default is 0.0, set to zero for static bodies.
          * @return The created fixture.
          */
-        public CreateFixture2(shape: Box2D.Collision.Shapes.b2Shape, density?: number): b2Fixture;
+        public CreateFixture2(
+            shape: Box2D.Collision.Shapes.b2Shape,
+            density?: number,
+        ): b2Fixture;
 
         /**
          * Destroy a fixture. This removes the fixture from the broad-phase and destroys all contacts associated with this fixture. This will automatically adjust the mass of the body if the body is dynamic and the fixture has positive density. All fixtures attached to a body are implicitly destroyed when the body is destroyed.
@@ -2613,14 +2723,18 @@ declare namespace Box2D.Dynamics {
          * @param localPoint Point in local coordinates.
          * @return The world velocity of the point.
          */
-        public GetLinearVelocityFromLocalPoint(localPoint: Box2D.Common.Math.b2Vec2): Box2D.Common.Math.b2Vec2;
+        public GetLinearVelocityFromLocalPoint(
+            localPoint: Box2D.Common.Math.b2Vec2,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Get the world linear velocity of a world point attached to this body.
          * @param worldPoint Point in world coordinates.
          * @return The world velocity of the point.
          */
-        public GetLinearVelocityFromWorldPoint(worldPoint: Box2D.Common.Math.b2Vec2): Box2D.Common.Math.b2Vec2;
+        public GetLinearVelocityFromWorldPoint(
+            worldPoint: Box2D.Common.Math.b2Vec2,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Get the local position of the center of mass.
@@ -2633,14 +2747,18 @@ declare namespace Box2D.Dynamics {
          * @param worldPoint Pointin world coordinates.
          * @return The corresponding local point relative to the body's origin.
          */
-        public GetLocalPoint(worldPoint: Box2D.Common.Math.b2Vec2): Box2D.Common.Math.b2Vec2;
+        public GetLocalPoint(
+            worldPoint: Box2D.Common.Math.b2Vec2,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Gets a local vector given a world vector.
          * @param worldVector World vector.
          * @return The corresponding local vector.
          */
-        public GetLocalVector(worldVector: Box2D.Common.Math.b2Vec2): Box2D.Common.Math.b2Vec2;
+        public GetLocalVector(
+            worldVector: Box2D.Common.Math.b2Vec2,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Get the total mass of the body.
@@ -2701,14 +2819,18 @@ declare namespace Box2D.Dynamics {
          * @param localPoint Point on the body measured relative to the body's origin.
          * @return localPoint expressed in world coordinates.
          */
-        public GetWorldPoint(localPoint: Box2D.Common.Math.b2Vec2): Box2D.Common.Math.b2Vec2;
+        public GetWorldPoint(
+            localPoint: Box2D.Common.Math.b2Vec2,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Get the world coordinates of a vector given the local coordinates.
          * @param localVector Vector fixed in the body.
          * @return localVector expressed in world coordinates.
          */
-        public GetWorldVector(localVector: Box2D.Common.Math.b2Vec2): Box2D.Common.Math.b2Vec2;
+        public GetWorldVector(
+            localVector: Box2D.Common.Math.b2Vec2,
+        ): Box2D.Common.Math.b2Vec2;
 
         /**
          * Get the active state of the body.
@@ -2823,7 +2945,10 @@ declare namespace Box2D.Dynamics {
          * @param position New world body origin position.
          * @param angle New world rotation angle of the body in radians.
          */
-        public SetPositionAndAngle(position: Box2D.Common.Math.b2Vec2, angle: number): void;
+        public SetPositionAndAngle(
+            position: Box2D.Common.Math.b2Vec2,
+            angle: number,
+        ): void;
 
         /**
          * Is this body allowed to sleep
@@ -3005,14 +3130,20 @@ declare namespace Box2D.Dynamics {
          * @param contact Contact point.
          * @param impulse Contact impulse.
          */
-        public PostSolve(contact: Contacts.b2Contact, impulse: b2ContactImpulse): void;
+        public PostSolve(
+            contact: Contacts.b2Contact,
+            impulse: b2ContactImpulse,
+        ): void;
 
         /**
          * This is called after a contact is updated. This allows you to inspect a contact before it goes to the solver. If you are careful, you can modify the contact manifold (e.g. disable contact). A copy of the old manifold is provided so that you can detect changes. Note: this is called only for awake bodies. Note: this is called even when the number of contact points is zero. Note: this is not called for sensors. Note: if you set the number of contact points to zero, you will not get an EndContact callback. However, you may get a BeginContact callback the next step.
          * @param contact Contact point.
          * @param oldManifold Old manifold.
          */
-        public PreSolve(contact: Contacts.b2Contact, oldManifold: Box2D.Collision.b2Manifold): void;
+        public PreSolve(
+            contact: Contacts.b2Contact,
+            oldManifold: Box2D.Collision.b2Manifold,
+        ): void;
     }
 }
 
@@ -3078,7 +3209,11 @@ declare namespace Box2D.Dynamics {
          * @param radius Circle radius.
          * @param color Circle draw color.
          */
-        public DrawCircle(center: Box2D.Common.Math.b2Vec2, radius: number, color: Box2D.Common.b2Color): void;
+        public DrawCircle(
+            center: Box2D.Common.Math.b2Vec2,
+            radius: number,
+            color: Box2D.Common.b2Color,
+        ): void;
 
         /**
          * Draw a closed polygon provided in CCW order.
@@ -3312,7 +3447,9 @@ declare namespace Box2D.Dynamics {
          * @param massData This is a reference to a valid b2MassData, if it is null a new b2MassData is allocated and then returned.  Default = null.
          * @return Mass data.
          */
-        public GetMassData(massData?: Box2D.Collision.Shapes.b2MassData): Box2D.Collision.Shapes.b2MassData;
+        public GetMassData(
+            massData?: Box2D.Collision.Shapes.b2MassData,
+        ): Box2D.Collision.Shapes.b2MassData;
 
         /**
          * Get the next fixture in the parent body's fixture list.
@@ -3356,7 +3493,10 @@ declare namespace Box2D.Dynamics {
          * @param input Ray cast input parameters.
          * @return True if the ray hits the shape, otherwise false.
          */
-        public RayCast(output: Box2D.Collision.b2RayCastOutput, input: Box2D.Collision.b2RayCastInput): boolean;
+        public RayCast(
+            output: Box2D.Collision.b2RayCastOutput,
+            input: Box2D.Collision.b2RayCastInput,
+        ): boolean;
 
         /**
          * Set the density of this fixture. This will _not_ automatically adjust the mass of the body. You must call b2Body::ResetMassData to update the body's mass.
@@ -3477,7 +3617,9 @@ declare namespace Box2D.Dynamics {
          * @param c Controller to add.
          * @return Controller that was added to the world.
          */
-        public AddController(c: Controllers.b2Controller): Controllers.b2Controller;
+        public AddController(
+            c: Controllers.b2Controller,
+        ): Controllers.b2Controller;
 
         /**
          * Call this after you are done with time steps to clear the forces. You normally call this after each call to Step, unless you are performing sub-steps.
@@ -3496,7 +3638,9 @@ declare namespace Box2D.Dynamics {
          * @param controller New controller.
          * @return New controller.
          */
-        public CreateController(controller: Controllers.b2Controller): Controllers.b2Controller;
+        public CreateController(
+            controller: Controllers.b2Controller,
+        ): Controllers.b2Controller;
 
         /**
          * Create a joint to constrain bodies together. No reference to the definition is retained. This may cause the connected bodies to cease colliding.
@@ -3596,7 +3740,10 @@ declare namespace Box2D.Dynamics {
          * @param callback  A user implemented callback class. It should match signature function Callback(fixture:b2Fixture):Boolean.  Return true to continue to the next fixture.
          * @param aabb The query bounding box.
          */
-        public QueryAABB(callback: (fixutre: b2Fixture) => boolean, aabb: Box2D.Collision.b2AABB): void;
+        public QueryAABB(
+            callback: (fixutre: b2Fixture) => boolean,
+            aabb: Box2D.Collision.b2AABB,
+        ): void;
 
         /**
          * Query the world for all fixtures that contain a point.
@@ -3604,7 +3751,10 @@ declare namespace Box2D.Dynamics {
          * @param callback A user implemented callback class.  It should match signature function Callback(fixture:b2Fixture):Boolean.  Return true to continue to the next fixture.
          * @param p The query point.
          */
-        public QueryPoint(callback: (fixture: b2Fixture) => boolean, p: Box2D.Common.Math.b2Vec2): void;
+        public QueryPoint(
+            callback: (fixture: b2Fixture) => boolean,
+            p: Box2D.Common.Math.b2Vec2,
+        ): void;
 
         /**
          * Query the world for all fixtures that precisely overlap the provided transformed shape.
@@ -3649,7 +3799,10 @@ declare namespace Box2D.Dynamics {
          * @param point2 The ray ending point.
          * @return Array of all the fixtures intersected by the ray.
          */
-        public RayCastAll(point1: Box2D.Common.Math.b2Vec2, point2: Box2D.Common.Math.b2Vec2): b2Fixture[];
+        public RayCastAll(
+            point1: Box2D.Common.Math.b2Vec2,
+            point2: Box2D.Common.Math.b2Vec2,
+        ): b2Fixture[];
 
         /**
          * Ray-cast the world for the first fixture in the path of the ray.
@@ -3657,7 +3810,10 @@ declare namespace Box2D.Dynamics {
          * @param point2 The ray ending point.
          * @return First fixture intersected by the ray.
          */
-        public RayCastOne(point1: Box2D.Common.Math.b2Vec2, point2: Box2D.Common.Math.b2Vec2): b2Fixture;
+        public RayCastOne(
+            point1: Box2D.Common.Math.b2Vec2,
+            point2: Box2D.Common.Math.b2Vec2,
+        ): b2Fixture;
 
         /**
          * Removes the controller from the world.
@@ -3720,7 +3876,11 @@ declare namespace Box2D.Dynamics {
          * @param velocityIterations For the velocity constraint solver.
          * @param positionIterations For the position constraint solver.
          */
-        public Step(dt: number, velocityIterations: number, positionIterations: number): void;
+        public Step(
+            dt: number,
+            velocityIterations: number,
+            positionIterations: number,
+        ): void;
 
         /**
          * Perform validation of internal data structures.
@@ -3773,7 +3933,9 @@ declare namespace Box2D.Dynamics.Contacts {
          * @param worldManifold World manifold out.
          * @return World manifold.
          */
-        public GetWorldManifold(worldManifold: Box2D.Collision.b2WorldManifold): void;
+        public GetWorldManifold(
+            worldManifold: Box2D.Collision.b2WorldManifold,
+        ): void;
 
         /**
          * Does this contact generate TOI events for continuous simulation.
@@ -4491,7 +4653,11 @@ declare namespace Box2D.Dynamics.Joints {
          * @param bB Body B.
          * @param anchor World anchor.
          */
-        public Initialize(bA: b2Body, bB: b2Body, anchor: Box2D.Common.Math.b2Vec2): void;
+        public Initialize(
+            bA: b2Body,
+            bB: b2Body,
+            anchor: Box2D.Common.Math.b2Vec2,
+        ): void;
     }
 }
 
@@ -5359,7 +5525,11 @@ declare namespace Box2D.Dynamics.Joints {
          * @param bB Body B.
          * @param anchor Anchor.
          */
-        public Initialize(bA: b2Body, bB: b2Body, anchor: Box2D.Common.Math.b2Vec2): void;
+        public Initialize(
+            bA: b2Body,
+            bB: b2Body,
+            anchor: Box2D.Common.Math.b2Vec2,
+        ): void;
     }
 }
 
@@ -5427,6 +5597,10 @@ declare namespace Box2D.Dynamics.Joints {
          * @param bB Body B.
          * @param anchor Anchor.
          */
-        public Initialize(bA: b2Body, bB: b2Body, anchor: Box2D.Common.Math.b2Vec2): void;
+        public Initialize(
+            bA: b2Body,
+            bB: b2Body,
+            anchor: Box2D.Common.Math.b2Vec2,
+        ): void;
     }
 }

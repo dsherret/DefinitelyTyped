@@ -11,10 +11,15 @@ app.use(versionRequest.setVersionByHeader("My-HTTP-Header-Name"));
 app.use(versionRequest.setVersionByQueryParam());
 app.use(versionRequest.setVersionByQueryParam("myQueryParam"));
 
-const queryParamOptions: versionRequest.SetVersionByQueryParamOptions = { removeQueryParam: true };
-app.use(versionRequest.setVersionByQueryParam("myQueryParam", queryParamOptions));
+const queryParamOptions: versionRequest.SetVersionByQueryParamOptions = {
+    removeQueryParam: true,
+};
+app.use(
+    versionRequest.setVersionByQueryParam("myQueryParam", queryParamOptions),
+);
 
-const customParsingFunction: versionRequest.CustomParsingFunction = (header) => "1.2.3";
+const customParsingFunction: versionRequest.CustomParsingFunction = (header) =>
+    "1.2.3";
 app.use(versionRequest.setVersionByAcceptHeader());
 app.use(versionRequest.setVersionByAcceptHeader(customParsingFunction));
 

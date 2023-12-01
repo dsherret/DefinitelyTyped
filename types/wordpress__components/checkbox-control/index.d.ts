@@ -4,8 +4,11 @@ import BaseControl from "../base-control";
 
 declare namespace CheckboxControl {
     interface Props
-        extends Omit<HTMLProps<HTMLInputElement>, keyof BaseControl.ControlProps | "onChange">, BaseControl.ControlProps
-    {
+        extends Omit<
+                HTMLProps<HTMLInputElement>,
+                keyof BaseControl.ControlProps | "onChange"
+            >,
+            BaseControl.ControlProps {
         /**
          * A heading for the input field, that appears above the checkbox. If
          * the prop is not passed no heading will be rendered.

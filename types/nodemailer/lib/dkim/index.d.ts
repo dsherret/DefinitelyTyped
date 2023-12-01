@@ -39,7 +39,10 @@ declare class DKIM {
 
     constructor(options?: DKIM.Options);
 
-    sign(input: string | Buffer | Readable, extraOptions?: DKIM.Options): PassThrough;
+    sign(
+        input: string | Buffer | Readable,
+        extraOptions?: DKIM.Options,
+    ): PassThrough;
 }
 
 export = DKIM;

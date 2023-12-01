@@ -1,7 +1,9 @@
 import * as Rox from "rox-react-native";
 
 const flags = {
-    superFlag: new Rox.Flag(false, { freeze: Rox.FreezeOptions.freezeOptionNone }),
+    superFlag: new Rox.Flag(false, {
+        freeze: Rox.FreezeOptions.freezeOptionNone,
+    }),
     superFlag2: new Rox.Flag(),
 };
 
@@ -55,12 +57,18 @@ function linkTargetGroupAttributes() {
     });
 }
 
-function impressionHandler(_reporting: Rox.RoxReporting, _experiment?: Rox.RoxExperiment) {
+function impressionHandler(
+    _reporting: Rox.RoxReporting,
+    _experiment?: Rox.RoxExperiment,
+) {
     // If there is no experiment it means that the user has not been enrolled
     // or that the reporting is not used yet
 }
 
 function configurationFetchedHandler(fetcherResult: Rox.RoxFetcherResult) {
-    if (fetcherResult.hasChanges && fetcherResult.fetcherStatus === Rox.RoxFetcherStatus.AppliedFromCache) {
+    if (
+        fetcherResult.hasChanges &&
+        fetcherResult.fetcherStatus === Rox.RoxFetcherStatus.AppliedFromCache
+    ) {
     }
 }

@@ -187,7 +187,10 @@ declare namespace AMap {
         search(
             origin: LocationValue,
             destination: LocationValue,
-            callback?: (status: Riding.SearchStatus, result: Riding.SearchResultBase | string) => void,
+            callback?: (
+                status: Riding.SearchStatus,
+                result: Riding.SearchResultBase | string,
+            ) => void,
         ): void;
         /**
          * 根据起点终点名称查询路径规划
@@ -196,7 +199,10 @@ declare namespace AMap {
          */
         search(
             point: Riding.SearchPoint[],
-            callback?: (status: Riding.SearchStatus, result: Riding.SearchResultExt | string) => void,
+            callback?: (
+                status: Riding.SearchStatus,
+                result: Riding.SearchResultExt | string,
+            ) => void,
         ): void;
         /**
          * 清除搜索的结果

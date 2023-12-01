@@ -75,12 +75,19 @@ export class Observable<T, S> {
     delay(wait: number): Observable<T, S>;
     throttle(
         wait: number,
-        options?: { leading?: boolean | undefined; trailing?: boolean | undefined },
+        options?: {
+            leading?: boolean | undefined;
+            trailing?: boolean | undefined;
+        },
     ): Observable<T, S>;
     debounce(wait: number, options?: { immediate: boolean }): Observable<T, S>;
     valuesToErrors(): Observable<never, S | T>;
-    valuesToErrors<U>(handler: (value: T) => { convert: boolean; error: U }): Observable<never, S | U>;
-    errorsToValues<U>(handler?: (error: S) => { convert: boolean; value: U }): Observable<T | U, never>;
+    valuesToErrors<U>(
+        handler: (value: T) => { convert: boolean; error: U },
+    ): Observable<never, S | U>;
+    errorsToValues<U>(
+        handler?: (error: S) => { convert: boolean; value: U },
+    ): Observable<T | U, never>;
     mapErrors<U>(fn: (error: S) => U): Observable<T, U>;
     filterErrors(predicate?: (error: S) => boolean): Observable<T, S>;
     endOnError(): Observable<T, S>;
@@ -91,44 +98,91 @@ export class Observable<T, S> {
     beforeEnd<U>(fn: () => U): Observable<T | U, S>;
     slidingWindow(max: number, mix?: number): Observable<T[], S>;
     bufferWhile(predicate: (value: T) => boolean): Observable<T[], S>;
-    bufferWithCount(count: number, options?: { flushOnEnd: boolean }): Observable<T[], S>;
-    bufferWithTimeOrCount(interval: number, count: number, options?: { flushOnEnd: boolean }): Observable<T[], S>;
+    bufferWithCount(
+        count: number,
+        options?: { flushOnEnd: boolean },
+    ): Observable<T[], S>;
+    bufferWithTimeOrCount(
+        interval: number,
+        count: number,
+        options?: { flushOnEnd: boolean },
+    ): Observable<T[], S>;
     transduce<U>(transducer: any): Observable<U, S>;
-    withHandler<U, V>(handler: (emitter: Emitter<U, V>, event: Event<T, S>) => void): Observable<U, V>;
+    withHandler<U, V>(
+        handler: (emitter: Emitter<U, V>, event: Event<T, S>) => void,
+    ): Observable<U, V>;
     // Combine streams
-    combine<U, V, W>(otherObs: Observable<U, V>, combinator?: (value: T, ...values: U[]) => W): Observable<W, S | V>;
-    zip<U, V, W>(otherObs: Observable<U, V>, combinator?: (value: T, ...values: U[]) => W): Observable<W, S | V>;
+    combine<U, V, W>(
+        otherObs: Observable<U, V>,
+        combinator?: (value: T, ...values: U[]) => W,
+    ): Observable<W, S | V>;
+    zip<U, V, W>(
+        otherObs: Observable<U, V>,
+        combinator?: (value: T, ...values: U[]) => W,
+    ): Observable<W, S | V>;
     merge<U, V>(otherObs: Observable<U, V>): Observable<T | U, S | V>;
     concat<U, V>(otherObs: Observable<U, V>): Observable<T | U, S | V>;
-    flatMap<U, V>(transform: (value: T) => Observable<U, V>): Observable<U, V | S>;
-    flatMap<X extends T & Property<T, any>>(): Observable<ValueOfAnObservable<X>, any>;
-    flatMapLatest<U, V>(fn: (value: T) => Observable<U, V>): Observable<U, V | S>;
-    flatMapLatest<X extends T & Property<T, any>>(): Observable<ValueOfAnObservable<X>, any>;
-    flatMapFirst<U, V>(fn: (value: T) => Observable<U, V>): Observable<U, V | S>;
-    flatMapFirst<X extends T & Property<T, any>>(): Observable<ValueOfAnObservable<X>, any>;
-    flatMapConcat<U, V>(fn: (value: T) => Observable<U, V>): Observable<U, V | S>;
-    flatMapConcat<X extends T & Property<T, any>>(): Observable<ValueOfAnObservable<X>, any>;
-    flatMapConcurLimit<U, V>(fn: (value: T) => Observable<U, V>, limit: number): Observable<U, V | S>;
-    flatMapErrors<U, V>(transform: (error: S) => Observable<U, V>): Observable<U | T, V>;
+    flatMap<U, V>(
+        transform: (value: T) => Observable<U, V>,
+    ): Observable<U, V | S>;
+    flatMap<X extends T & Property<T, any>>(): Observable<
+        ValueOfAnObservable<X>,
+        any
+    >;
+    flatMapLatest<U, V>(
+        fn: (value: T) => Observable<U, V>,
+    ): Observable<U, V | S>;
+    flatMapLatest<X extends T & Property<T, any>>(): Observable<
+        ValueOfAnObservable<X>,
+        any
+    >;
+    flatMapFirst<U, V>(
+        fn: (value: T) => Observable<U, V>,
+    ): Observable<U, V | S>;
+    flatMapFirst<X extends T & Property<T, any>>(): Observable<
+        ValueOfAnObservable<X>,
+        any
+    >;
+    flatMapConcat<U, V>(
+        fn: (value: T) => Observable<U, V>,
+    ): Observable<U, V | S>;
+    flatMapConcat<X extends T & Property<T, any>>(): Observable<
+        ValueOfAnObservable<X>,
+        any
+    >;
+    flatMapConcurLimit<U, V>(
+        fn: (value: T) => Observable<U, V>,
+        limit: number,
+    ): Observable<U, V | S>;
+    flatMapErrors<U, V>(
+        transform: (error: S) => Observable<U, V>,
+    ): Observable<U | T, V>;
     // Combine two streams
     filterBy<U>(otherObs: Observable<boolean, U>): Observable<T, S>;
     sampledBy(otherObs: Observable<any, any>): Observable<T, S>;
-    sampledBy<U, W>(otherObs: Observable<U, any>, combinator: (a: T, b: U) => W): Observable<W, S>;
+    sampledBy<U, W>(
+        otherObs: Observable<U, any>,
+        combinator: (a: T, b: U) => W,
+    ): Observable<W, S>;
     skipUntilBy<U, V>(otherObs: Observable<U, V>): Observable<U, V>;
     takeUntilBy<U, V>(otherObs: Observable<U, V>): Observable<T, S>;
-    bufferBy<U, V>(otherObs: Observable<U, V>, options?: { flushOnEnd: boolean }): Observable<T[], S>;
+    bufferBy<U, V>(
+        otherObs: Observable<U, V>,
+        options?: { flushOnEnd: boolean },
+    ): Observable<T[], S>;
     bufferWhileBy<U>(
         otherObs: Observable<boolean, U>,
-        options?: { flushOnEnd?: boolean | undefined; flushOnChange?: boolean | undefined },
+        options?: {
+            flushOnEnd?: boolean | undefined;
+            flushOnChange?: boolean | undefined;
+        },
     ): Observable<T[], S>;
     awaiting<U, V>(otherObs: Observable<U, V>): Observable<boolean, S>;
 }
 
-export class Stream<T, S> extends Observable<T, S> {
-}
+export class Stream<T, S> extends Observable<T, S> {}
 
-export class Property<T, S> extends Observable<T, S> {
-}
+export class Property<T, S> extends Observable<T, S> {}
 
 export class Pool<T, S> extends Observable<T, S> {
     plug(obs: Observable<T, S>): this;
@@ -155,17 +209,29 @@ export interface Emitter<V, E> {
 export function never(): Stream<never, never>;
 export function later<T>(wait: number, value: T): Stream<T, never>;
 export function interval<T>(interval: number, value: T): Stream<T, never>;
-export function sequentially<T>(interval: number, values: T[]): Stream<T, never>;
+export function sequentially<T>(
+    interval: number,
+    values: T[],
+): Stream<T, never>;
 export function fromPoll<T>(interval: number, fn: () => T): Stream<T, never>;
-export function withInterval<T, S>(interval: number, handler: (emitter: Emitter<T, S>) => void): Stream<T, S>;
-export function fromCallback<T>(fn: (callback: (value: T) => void) => void): Stream<T, never>;
-export function fromNodeCallback<T, S>(fn: (callback: (error: S | null, result: T) => void) => void): Stream<T, S>;
+export function withInterval<T, S>(
+    interval: number,
+    handler: (emitter: Emitter<T, S>) => void,
+): Stream<T, S>;
+export function fromCallback<T>(
+    fn: (callback: (value: T) => void) => void,
+): Stream<T, never>;
+export function fromNodeCallback<T, S>(
+    fn: (callback: (error: S | null, result: T) => void) => void,
+): Stream<T, S>;
 export function fromEvents<T, S>(
     target: EventTarget | NodeJS.EventEmitter | { on: Function; off: Function },
     eventName: string,
     transform?: (value: T) => S,
 ): Stream<T, S>;
-export function stream<T, S>(subscribe: (emitter: Emitter<T, S>) => Function | void): Stream<T, S>;
+export function stream<T, S>(
+    subscribe: (emitter: Emitter<T, S>) => Function | void,
+): Stream<T, S>;
 export function fromESObservable<T, S>(observable: any): Stream<T, S>;
 
 // Create a property
@@ -178,7 +244,10 @@ export function combine<T, S, U>(
     passiveObss: Array<Observable<T, S>>,
     combinator?: (...values: T[]) => U,
 ): Stream<U, S>;
-export function combine<T, S, U>(obss: Array<Observable<T, S>>, combinator: (...values: T[]) => U): Stream<U, S>;
+export function combine<T, S, U>(
+    obss: Array<Observable<T, S>>,
+    combinator: (...values: T[]) => U,
+): Stream<U, S>;
 export function combine<T extends { [name: string]: Observable<any, any> }>(
     obss: T,
 ): Stream<{ [P in keyof T]: ValueOfAnObservable<T[P]> }, any>;
@@ -188,7 +257,12 @@ export function combine<
 >(
     obss: T,
     passiveObss: K,
-): Stream<{ [P in keyof T]: ValueOfAnObservable<T[P]> } & { [P in keyof K]: ValueOfAnObservable<K[P]> }, any>;
+): Stream<
+    { [P in keyof T]: ValueOfAnObservable<T[P]> } & {
+        [P in keyof K]: ValueOfAnObservable<K[P]>;
+    },
+    any
+>;
 export function combine<T extends [Observable<any, any>], P extends keyof T>(
     obss: T,
 ): Stream<[ValueOfAnObservable<T[0]>], any>;
@@ -285,22 +359,51 @@ export function combine<
     any
 >;
 export function combine<
-    T extends [Observable<any, any>, Observable<any, any>, Observable<any, any>, Observable<any, any>],
+    T extends [
+        Observable<any, any>,
+        Observable<any, any>,
+        Observable<any, any>,
+        Observable<any, any>,
+    ],
 >(
     obss: T,
 ): Stream<
-    [ValueOfAnObservable<T[0]>, ValueOfAnObservable<T[1]>, ValueOfAnObservable<T[2]>, ValueOfAnObservable<T[3]>],
+    [
+        ValueOfAnObservable<T[0]>,
+        ValueOfAnObservable<T[1]>,
+        ValueOfAnObservable<T[2]>,
+        ValueOfAnObservable<T[3]>,
+    ],
     any
 >;
-export function combine<T extends [Observable<any, any>, Observable<any, any>, Observable<any, any>]>(
+export function combine<
+    T extends [
+        Observable<any, any>,
+        Observable<any, any>,
+        Observable<any, any>,
+    ],
+>(
     obss: T,
-): Stream<[ValueOfAnObservable<T[0]>, ValueOfAnObservable<T[1]>, ValueOfAnObservable<T[2]>], any>;
+): Stream<
+    [
+        ValueOfAnObservable<T[0]>,
+        ValueOfAnObservable<T[1]>,
+        ValueOfAnObservable<T[2]>,
+    ],
+    any
+>;
 export function combine<T extends [Observable<any, any>, Observable<any, any>]>(
     obss: T,
 ): Stream<[ValueOfAnObservable<T[0]>, ValueOfAnObservable<T[1]>], any>;
-export function combine<T extends [Observable<any, any>]>(obss: T): Stream<[ValueOfAnObservable<T[0]>], any>;
+export function combine<T extends [Observable<any, any>]>(
+    obss: T,
+): Stream<[ValueOfAnObservable<T[0]>], any>;
 export function combine<T extends never[]>(obss: T): Stream<never, never>;
-export function combine<T extends [Observable<any, any>], P extends [Observable<any, any>], K>(
+export function combine<
+    T extends [Observable<any, any>],
+    P extends [Observable<any, any>],
+    K,
+>(
     obss: T,
     obssP: P,
     combinator: (a: T[0][""], b: P[0][""]) => K,
@@ -313,16 +416,34 @@ export function zip<T, S, U>(
 export function merge<T, S>(obss: Array<Observable<T, S>>): Observable<T, S>;
 export function concat<T, S>(obss: Array<Observable<T, S>>): Observable<T, S>;
 export function pool<T, S>(): Pool<T, S>;
-export function repeat<T, S>(generator: (i: number) => Observable<T, S> | boolean): Observable<T, S>;
+export function repeat<T, S>(
+    generator: (i: number) => Observable<T, S> | boolean,
+): Observable<T, S>;
 
 export var staticLand: {
     Observable: {
-        ap<A, B, E1, E2>(obsF: Observable<(x: A) => B, E1>, obsV: Observable<A, E2>): Observable<B, E1 | E2>;
-        bimap<V1, E1, V2, E2>(fnE: (x: E1) => E2, fnV: (x: V1) => V2, obs: Observable<V1, E1>): Observable<V2, E2>;
-        chain<V, V2, E, E2>(cb: (value: V) => Observable<V2, E2>, s: Observable<V, E>): Observable<V2, E | E2>;
-        concat<V1, E1, V2, E2>(obs1: Observable<V1, E1>, obs2: Observable<V2, E2>): Observable<V1 | V2, E1 | E2>;
+        ap<A, B, E1, E2>(
+            obsF: Observable<(x: A) => B, E1>,
+            obsV: Observable<A, E2>,
+        ): Observable<B, E1 | E2>;
+        bimap<V1, E1, V2, E2>(
+            fnE: (x: E1) => E2,
+            fnV: (x: V1) => V2,
+            obs: Observable<V1, E1>,
+        ): Observable<V2, E2>;
+        chain<V, V2, E, E2>(
+            cb: (value: V) => Observable<V2, E2>,
+            s: Observable<V, E>,
+        ): Observable<V2, E | E2>;
+        concat<V1, E1, V2, E2>(
+            obs1: Observable<V1, E1>,
+            obs2: Observable<V2, E2>,
+        ): Observable<V1 | V2, E1 | E2>;
         empty(): Observable<never, never>;
-        map<V, V2, E>(cb: (value: V) => V2, s: Observable<V, E>): Observable<V2, E>;
+        map<V, V2, E>(
+            cb: (value: V) => V2,
+            s: Observable<V, E>,
+        ): Observable<V2, E>;
         of<V>(value: V): Observable<V, never>;
     };
 };

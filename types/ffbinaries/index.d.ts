@@ -12,7 +12,14 @@ export interface LocateResultNotFound {
     version: null;
 }
 export type LocateResult = LocateResultFound | LocateResultNotFound;
-export type Platform = "osx-64" | "linux-32" | "linux-64" | "linux-armel" | "linux-armhf" | "windows-32" | "windows-64";
+export type Platform =
+    | "osx-64"
+    | "linux-32"
+    | "linux-64"
+    | "linux-armel"
+    | "linux-armhf"
+    | "windows-32"
+    | "windows-64";
 
 export interface DownloadOptions {
     /**
@@ -38,7 +45,9 @@ export interface DownloadOptions {
     /**
      * A progress-update function, triggered with percentage as argument at an interval until download is completed.
      */
-    tickerFn?: ((tickData: { filename: string; progress: number }) => void) | undefined;
+    tickerFn?:
+        | ((tickData: { filename: string; progress: number }) => void)
+        | undefined;
     /**
      * Frequency at which the ticker progress updates are issued (in ms; defaults to `1000`).
      */
@@ -67,7 +76,10 @@ export interface DownloadResultClean {
     status: string;
 }
 
-export type DownloadResult = DownloadResultFileExists | DownloadResultFromCache | DownloadResultClean;
+export type DownloadResult =
+    | DownloadResultFileExists
+    | DownloadResultFromCache
+    | DownloadResultClean;
 
 export interface VersionData {
     version: string;
@@ -92,7 +104,9 @@ export interface LocateBinariesOptions {
 /**
  * Downloads and extracts the requested binaries.
  */
-export function downloadBinaries(callback: (error: string | null, results: DownloadResult[]) => void): void;
+export function downloadBinaries(
+    callback: (error: string | null, results: DownloadResult[]) => void,
+): void;
 export function downloadBinaries(
     components: Component | Component[],
     callback: (error: string | null, results: DownloadResult[]) => void,
@@ -112,7 +126,9 @@ export function getVersionData(
 /**
  * Fetches the list of available versions from the API.
  */
-export function listVersions(callback: (error: string | null, versions: string[]) => void): void;
+export function listVersions(
+    callback: (error: string | null, versions: string[]) => void,
+): void;
 /**
  * Returns the list of available platforms.
  */
@@ -120,7 +136,10 @@ export function listPlatforms(): Platform[];
 /**
  * Returns the platform code of the machine as detected by the module.
  */
-export function detectPlatform(options?: { type: string; arch: string }): Platform | null;
+export function detectPlatform(options?: {
+    type: string;
+    arch: string;
+}): Platform | null;
 /**
  * Resolves input to a platform code (matches aliases).
  */
@@ -128,7 +147,10 @@ export function resolvePlatform(input: string): Platform | null;
 /**
  * Resolves a filename of a binary for a given platform (appends ".exe" in Windows).
  */
-export function getBinaryFilename(component: Component, platform: Platform): string;
+export function getBinaryFilename(
+    component: Component,
+    platform: Platform,
+): string;
 /**
  * Looks for binaries already existing in the system. Returns object with located binaries, their paths and versions.
  */

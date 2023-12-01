@@ -24,7 +24,7 @@ let str: string;
 
 new GrammarRegistry({ maxTokensPerLine: 100 });
 registry.loadGrammarSync("javascript.json");
-const result = grammar.tokenizeLine("var text = \"hello world\";");
+const result = grammar.tokenizeLine('var text = "hello world";');
 result.tokens.forEach((token) => {
     console.log(`Token text: '${token.value}' with scopes: ${token.scopes}`);
 });
@@ -60,8 +60,8 @@ grammar.tokenizeLine("Test String", tokenizeLineResult.ruleStack, false);
 
 // Grammar Registry ===========================================================
 // Event Subscription
-subscription = registry.onDidAddGrammar(grammar => grammar.name);
-subscription = registry.onDidUpdateGrammar(grammar => grammar.name);
+subscription = registry.onDidAddGrammar((grammar) => grammar.name);
+subscription = registry.onDidUpdateGrammar((grammar) => grammar.name);
 
 // Managing Grammars
 grammars = registry.getGrammars();

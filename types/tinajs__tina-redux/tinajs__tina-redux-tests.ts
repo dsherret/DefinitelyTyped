@@ -28,14 +28,13 @@ const todos = (state = initialState, action: TodoAction) => {
                 },
             ];
         case "TOGGLE_TODO":
-            return state.map(
-                todo =>
-                    todo.id === action.id
-                        ? { ...todo, completed: !todo.completed }
-                        : todo,
+            return state.map((todo) =>
+                todo.id === action.id
+                    ? { ...todo, completed: !todo.completed }
+                    : todo,
             );
         case "CLEAR_COMPLETED_TODOS":
-            return state.filter(todo => !todo.completed);
+            return state.filter((todo) => !todo.completed);
         default:
             return state;
     }

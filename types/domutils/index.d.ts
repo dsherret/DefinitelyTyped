@@ -38,10 +38,23 @@ export function appendChild(elem: DomElement, child: DomElement): void;
  *        See http://dom.spec.whatwg.org/#dom-node-comparedocumentposition for
  *        a description of these values.
  */
-export function compareDocumentPosition(nodeA: DomElement, nodeB: DomElement): number;
+export function compareDocumentPosition(
+    nodeA: DomElement,
+    nodeB: DomElement,
+): number;
 export function existsOne(test: any, elems: DomElement[]): boolean;
-export function filter(test: any, element: DomElement, recurse: boolean, limit: number): DomElement[];
-export function find(test: any, elems: DomElement[], recurse: boolean, limit: number): DomElement[];
+export function filter(
+    test: any,
+    element: DomElement,
+    recurse: boolean,
+    limit: number,
+): DomElement[];
+export function find(
+    test: any,
+    elems: DomElement[],
+    recurse: boolean,
+    limit: number,
+): DomElement[];
 export function findAll(test: any, rootElems: DomElement[]): DomElement[];
 export function findOne(test: any, elems: DomElement[]): DomElement;
 export function findOneChild(test: any, elems: DomElement[]): DomElement;
@@ -54,15 +67,30 @@ export function getElementById(id: any, element: any, recurse?: any): any;
 /***
  * Legacy
  */
-export function getElements(options: any, element: any, recurse?: any, limit?: any): any;
+export function getElements(
+    options: any,
+    element: any,
+    recurse?: any,
+    limit?: any,
+): any;
 /***
  * Legacy
  */
-export function getElementsByTagName(name: any, element: any, recurse?: any, limit?: any): any;
+export function getElementsByTagName(
+    name: any,
+    element: any,
+    recurse?: any,
+    limit?: any,
+): any;
 /***
  * Legacy
  */
-export function getElementsByTagType(type: any, element: any, recurse?: any, limit?: any): any;
+export function getElementsByTagType(
+    type: any,
+    element: any,
+    recurse?: any,
+    limit?: any,
+): any;
 export function getInnerHTML(elem: DomElement, opts: any): string;
 /***
  * Returns the name property of an element
@@ -78,7 +106,10 @@ export function getName(elem: DomElement): string;
  */
 export function getOuterHTML(
     dom: DomElement[],
-    opts?: { decodeEntities?: boolean | undefined; xmlMode?: boolean | undefined },
+    opts?: {
+        decodeEntities?: boolean | undefined;
+        xmlMode?: boolean | undefined;
+    },
 ): string;
 export function getParent(elem: DomElement): DomElement;
 export function getSiblings(elem: DomElement): DomElement[];

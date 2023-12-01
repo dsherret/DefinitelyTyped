@@ -8,7 +8,12 @@ import * as R from "ramda";
     const double = R.partial<number>(multiply, [2]);
     double(2); // => 4
 
-    function greet(salutation: string, title: string, firstName: string, lastName: string) {
+    function greet(
+        salutation: string,
+        title: string,
+        firstName: string,
+        lastName: string,
+    ) {
         return `${salutation}, ${title} ${firstName} ${lastName}!`;
     }
 

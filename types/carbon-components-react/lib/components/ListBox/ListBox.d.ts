@@ -21,7 +21,8 @@ export interface ListBoxProps extends Omit<ReactDivAttr, ExcludedAttributes> {
     warnText?: React.ReactNode | undefined;
 }
 
-export interface ListBoxComponent extends ForwardRefReturn<HTMLDivElement, ListBoxProps> {
+export interface ListBoxComponent
+    extends ForwardRefReturn<HTMLDivElement, ListBoxProps> {
     readonly Field: ListBoxFieldComponent;
     readonly Menu: ListBoxMenuComponent;
     readonly MenuIcon: ListBoxMenuIconComponent;

@@ -83,8 +83,12 @@ expectType<number & object>(conversions.object(123, options));
 conversions.object({}, options); // $ExpectType {}
 
 conversions.ArrayBuffer(unknown, options); // $ExpectType ArrayBuffer
-expectType<ArrayBufferLike>(conversions.ArrayBuffer(unknown, { allowShared: true }));
-expectType<ArrayBufferLike>(conversions.ArrayBuffer(unknown, bufferSourceOptions));
+expectType<ArrayBufferLike>(
+    conversions.ArrayBuffer(unknown, { allowShared: true }),
+);
+expectType<ArrayBufferLike>(
+    conversions.ArrayBuffer(unknown, bufferSourceOptions),
+);
 
 conversions.DataView(unknown, bufferSourceOptions); // $ExpectType DataView
 
@@ -102,7 +106,11 @@ conversions.Float64Array(unknown, bufferSourceOptions); // $ExpectType Float64Ar
 
 conversions.ArrayBufferView(unknown, bufferSourceOptions); // $ExpectType ArrayBufferView
 conversions.BufferSource(unknown, options); // $ExpectType ArrayBuffer | ArrayBufferView
-expectType<ArrayBufferLike | ArrayBufferView>(conversions.BufferSource(unknown, { allowShared: true }));
-expectType<ArrayBufferLike | ArrayBufferView>(conversions.BufferSource(unknown, bufferSourceOptions));
+expectType<ArrayBufferLike | ArrayBufferView>(
+    conversions.BufferSource(unknown, { allowShared: true }),
+);
+expectType<ArrayBufferLike | ArrayBufferView>(
+    conversions.BufferSource(unknown, bufferSourceOptions),
+);
 
 conversions.DOMTimeStamp(unknown, options); // $ExpectType number

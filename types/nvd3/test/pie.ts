@@ -12,23 +12,25 @@ namespace nvd3_test_pie {
     var width = 300;
     var height = 300;
 
-    nv.addGraph(function() {
-        var chart = nv.models.pie()
-            .x(function(d) {
+    nv.addGraph(function () {
+        var chart = nv.models
+            .pie()
+            .x(function (d) {
                 return d.key;
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d.y;
             })
             .width(width)
             .height(height)
-            .labelType(function(d, i, values) {
+            .labelType(function (d, i, values) {
                 return values.key + ":" + values.value;
             });
 
         d3.select("#test1")
             .datum([testdata])
-            .transition().duration(1200)
+            .transition()
+            .duration(1200)
             .attr("width", width)
             .attr("height", height)
             .call(chart);
@@ -48,12 +50,13 @@ namespace nvd3_test_pie {
         return chart;
     });
 
-    nv.addGraph(function() {
-        var chart = nv.models.pie()
-            .x(function(d) {
+    nv.addGraph(function () {
+        var chart = nv.models
+            .pie()
+            .x(function (d) {
                 return d.key;
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d.y;
             })
             .width(width)
@@ -64,7 +67,8 @@ namespace nvd3_test_pie {
 
         d3.select("#test2")
             .datum([testdata])
-            .transition().duration(1200)
+            .transition()
+            .duration(1200)
             .attr("width", width)
             .attr("height", height)
             .call(chart);

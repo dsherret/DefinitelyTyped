@@ -94,9 +94,8 @@ checkResult = mask.checkFields(obj);
 
 checkResult = mask.checkDottedFields(obj);
 
-const filter: (
-    obj: Record<string, any>,
-) => Record<string, any> = mask.createFilterFunc();
+const filter: (obj: Record<string, any>) => Record<string, any> =
+    mask.createFilterFunc();
 
 obj = filter(obj);
 

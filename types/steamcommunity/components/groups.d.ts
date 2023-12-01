@@ -19,9 +19,21 @@ export interface Groups {
 
     getAllGroupAnnouncements(gid: gid, time: Date, callback: Callback): any;
 
-    postGroupAnnouncement(gid: gid, headline: string, content: string, hidden: boolean, callback: Callback): void;
+    postGroupAnnouncement(
+        gid: gid,
+        headline: string,
+        content: string,
+        hidden: boolean,
+        callback: Callback,
+    ): void;
 
-    editGroupAnnouncement(gid: gid, aid: any, headline: string, content: string, callback: Callback): void;
+    editGroupAnnouncement(
+        gid: gid,
+        aid: any,
+        headline: string,
+        content: string,
+        callback: Callback,
+    ): void;
 
     deleteGroupAnnouncement(gid: gid, aid: any, callback: Callback): void;
 
@@ -48,13 +60,26 @@ export interface Groups {
 
     deleteGroupEvent(gid: gid, id: any, callback: Callback): void;
 
-    setGroupPlayerOfTheWeek(gid: gid, steamID: SteamID | string, callback: Callback): void;
+    setGroupPlayerOfTheWeek(
+        gid: gid,
+        steamID: SteamID | string,
+        callback: Callback,
+    ): void;
 
-    kickGroupMember(gid: gid, steamID: SteamID | string, callback: Callback): void;
+    kickGroupMember(
+        gid: gid,
+        steamID: SteamID | string,
+        callback: Callback,
+    ): void;
 
     getGroupHistory(gid: gid, page: number, callback: Callback): void;
 
-    getAllGroupComments(gid: gid, from: number, count: number, callback: Callback): void;
+    getAllGroupComments(
+        gid: gid,
+        from: number,
+        count: number,
+        callback: Callback,
+    ): void;
 
     deleteGroupComment(gid: gid, cid: cid, callback: Callback): void;
 
@@ -87,5 +112,9 @@ export interface Groups {
      * @param approve - True to allow everyone who requested into the group, false to not
      * @param callback - Takes only an Error object/null as the first argument
      */
-    respondToAllGroupJoinRequests(gid: gid, approve: boolean, callback: Callback): void;
+    respondToAllGroupJoinRequests(
+        gid: gid,
+        approve: boolean,
+        callback: Callback,
+    ): void;
 }

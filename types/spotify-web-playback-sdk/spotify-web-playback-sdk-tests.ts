@@ -41,13 +41,17 @@ player.getCurrentState().then((playbackState: Spotify.PlaybackState | null) => {
         const repeatMode: 0 | 1 | 2 = playbackState.repeat_mode;
         const images = current_track.album.images;
         if (images.length) {
-            const { 0: { height, width } } = images;
+            const {
+                0: { height, width },
+            } = images;
         }
 
         console.log("Currently Playing", current_track);
         console.log("Playing Next", next_tracks[0]);
     } else {
-        console.error("The user is not playing music through the Web Playback SDK");
+        console.error(
+            "The user is not playing music through the Web Playback SDK",
+        );
     }
 });
 
@@ -638,9 +642,7 @@ const SAMPLE_PLAYBACK_STATE: Spotify.PlaybackState = {
         disallow_toggling_shuffle_reasons: [],
         disallow_peeking_next_reasons: [],
         disallow_peeking_prev_reasons: [],
-        disallow_resuming_reasons: [
-            "not_paused",
-        ],
+        disallow_resuming_reasons: ["not_paused"],
     },
     disallows: {
         seeking: false,

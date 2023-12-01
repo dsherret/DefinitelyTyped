@@ -20,12 +20,27 @@ export default class Redemption {
     signedTransaction: Promise<string>;
     withdrawnEmitter: EventEmitter;
     receivedConfirmationEmitter: EventEmitter;
-    constructor(deposit: DepositBaseClass, redemptionDetails?: RedemptionDetails);
+    constructor(
+        deposit: DepositBaseClass,
+        redemptionDetails?: RedemptionDetails,
+    );
     autoSubmittingState?: AutoSubmitState | undefined;
     autoSubmit(): AutoSubmitState;
-    proveWithdrawal(transactionID: string, confirmations: number): Promise<void>;
-    onBitcoinTransactionSigned(transactionHandler: (transaction: string) => void): void;
+    proveWithdrawal(
+        transactionID: string,
+        confirmations: number,
+    ): Promise<void>;
+    onBitcoinTransactionSigned(
+        transactionHandler: (transaction: string) => void,
+    ): void;
     onWithdrawn(withdrawalHandler: (txHash: string) => void): void;
-    onReceivedConfirmation(onReceivedConfirmationHandler: (transactionID: string, confirmations: number) => void): void;
-    getLatestRedemptionDetails(existingRedemptionDetails: RedemptionDetails | undefined): Promise<RedemptionDetails>;
+    onReceivedConfirmation(
+        onReceivedConfirmationHandler: (
+            transactionID: string,
+            confirmations: number,
+        ) => void,
+    ): void;
+    getLatestRedemptionDetails(
+        existingRedemptionDetails: RedemptionDetails | undefined,
+    ): Promise<RedemptionDetails>;
 }

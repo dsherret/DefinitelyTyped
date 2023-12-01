@@ -40,7 +40,7 @@ linkifier.add("@", {
     validate: (text, pos, self) => {
         return 42;
     },
-    normalize: match => {
+    normalize: (match) => {
         match.url = "forty-two";
     },
 });
@@ -50,7 +50,7 @@ linkifier.add("skype:", {
     validate: (text, pos, self) => {
         return 42;
     },
-    normalize: match => {
+    normalize: (match) => {
         match.url = "forty-two";
     },
 });

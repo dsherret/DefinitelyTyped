@@ -35,7 +35,11 @@ class ComponentWithDecorator extends React.Component<Props, State> {
     }
 }
 
-const ClickOutsideStatefulComponent = enhanceWithClickOutside(StatefulComponent);
+const ClickOutsideStatefulComponent =
+    enhanceWithClickOutside(StatefulComponent);
 
-render(<ClickOutsideStatefulComponent text="" />, document.getElementById("test"));
+render(
+    <ClickOutsideStatefulComponent text="" />,
+    document.getElementById("test"),
+);
 render(<ComponentWithDecorator text="" />, document.getElementById("test"));

@@ -19,7 +19,11 @@ declare class ApnsService {
 
     public notificationHubService: NotificationHubService;
 
-    public send(tags: string | string[], payload: object | string, callback: ResponseCallback): void;
+    public send(
+        tags: string | string[],
+        payload: object | string,
+        callback: ResponseCallback,
+    ): void;
 
     public send(
         tags: string | string[],
@@ -28,7 +32,11 @@ declare class ApnsService {
         callback: ResponseCallback,
     ): void;
 
-    public createNativeRegistration(token: string, tags: string | string[], callback: ResponseCallback): void;
+    public createNativeRegistration(
+        token: string,
+        tags: string | string[],
+        callback: ResponseCallback,
+    ): void;
 
     public createNativeRegistration(
         token: string,
@@ -84,7 +92,10 @@ declare class ApnsService {
         callback: ResponseCallback,
     ): void;
 
-    public listRegistrationsByToken(token: string, callback: ResponseCallback): void;
+    public listRegistrationsByToken(
+        token: string,
+        callback: ResponseCallback,
+    ): void;
 
     public listRegistrationsByToken(
         token: string,

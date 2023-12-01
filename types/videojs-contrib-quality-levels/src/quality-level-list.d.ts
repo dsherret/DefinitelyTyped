@@ -2,7 +2,10 @@ import videojs from "video.js";
 import { Representation } from "../";
 import QualityLevel from "./quality-level";
 
-export default class QualityLevelList extends videojs.EventTarget implements ArrayLike<QualityLevel> {
+export default class QualityLevelList
+    extends videojs.EventTarget
+    implements ArrayLike<QualityLevel>
+{
     readonly selectedIndex: number;
 
     readonly length: number;

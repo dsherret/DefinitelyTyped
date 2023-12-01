@@ -42,7 +42,11 @@ interface CustomComponent {
     method(): void;
 }
 
-const Component: Glide.ComponentFunction<CustomComponent> = (_Glide, _Components, Events) => {
+const Component: Glide.ComponentFunction<CustomComponent> = (
+    _Glide,
+    _Components,
+    Events,
+) => {
     const Example: CustomComponent = {
         mount() {
             const {
@@ -91,7 +95,7 @@ const Component: Glide.ComponentFunction<CustomComponent> = (_Glide, _Components
     Events.on("pause", Example.method);
 
     // Run events
-    Events.on("run.after", move => {
+    Events.on("run.after", (move) => {
         // $ExpectType string
         move;
     });

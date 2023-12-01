@@ -11,11 +11,11 @@ fitvids(document.querySelectorAll(".video-container"));
 fitvids(document.querySelector(".video-container"));
 // $ExpectType void
 fitvids({
-    players: "iframe[src*=\"example.com\"]",
+    players: 'iframe[src*="example.com"]',
 });
 // $ExpectType void
 fitvids(".video-container", {
-    players: ["iframe[src*=\"example1.com\"]", "iframe[src*=\"example2.com\"]"],
+    players: ['iframe[src*="example1.com"]', 'iframe[src*="example2.com"]'],
 });
 // $ExpectType void
 fitvids({

@@ -75,7 +75,9 @@ declare namespace GoogleAdsScripts {
          */
         interface ExpandedTextAdBuilder extends Base.Builder<AdOperation> {
             /** Sets the custom parameters of the new ad to the specified value. */
-            withCustomParameters(customParameters: Record<string, string>): this;
+            withCustomParameters(
+                customParameters: Record<string, string>,
+            ): this;
             /** Sets the new ad's description to the specified value. */
             withDescription(description: string): this;
             /** Sets the new ad's first description to the specified value. */

@@ -7,7 +7,8 @@ export type UploadMediaErrorCode =
     | "EMPTY_FILE"
     | "GENERAL";
 
-export interface MediaItem extends Omit<Attachment, "alt_text" | "caption" | "source_url" | "title"> {
+export interface MediaItem
+    extends Omit<Attachment, "alt_text" | "caption" | "source_url" | "title"> {
     alt: string;
     caption: string;
     title: string;
@@ -34,7 +35,11 @@ export interface UploadMediaOptions {
     /**
      * Function called when an error happens.
      */
-    onError(error: { code: UploadMediaErrorCode; message: string; file: File }): void;
+    onError(error: {
+        code: UploadMediaErrorCode;
+        message: string;
+        file: File;
+    }): void;
     /**
      * Function called each time a file or a temporary representation of the file is available.
      */

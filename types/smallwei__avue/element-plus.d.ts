@@ -2,17 +2,30 @@ type ColumnCls<T> = string | ((data: { row: T; rowIndex: number }) => string);
 
 type CellCls<T> =
     | string
-    | ((data: { row: T; rowIndex: number; column: TableColumnCtx<T>; columnIndex: number }) => string);
+    | ((data: {
+          row: T;
+          rowIndex: number;
+          column: TableColumnCtx<T>;
+          columnIndex: number;
+      }) => string);
 
-type SpanMethod<T> = (data: { row: T; rowIndex: number; column: TableColumnCtx<T>; columnIndex: number }) =>
+type SpanMethod<T> = (data: {
+    row: T;
+    rowIndex: number;
+    column: TableColumnCtx<T>;
+    columnIndex: number;
+}) =>
     | number[]
     | {
-        rowspan: number;
-        colspan: number;
-    }
+          rowspan: number;
+          colspan: number;
+      }
     | undefined;
 
-type SummaryMethod<T> = (data: { columns: Array<TableColumnCtx<T>>; data: T[] }) => string[];
+type SummaryMethod<T> = (data: {
+    columns: Array<TableColumnCtx<T>>;
+    data: T[];
+}) => string[];
 
 interface CI<T> {
     column: TableColumnCtx<T>;
@@ -46,7 +59,12 @@ interface TableColumnCtx<T> {
     showTooltipWhenOverflow: boolean;
     showOverflowTooltip: boolean;
     fixed: boolean | string;
-    formatter: (row: T, column: TableColumnCtx<T>, cellValue: any, index: number) => VNode | string;
+    formatter: (
+        row: T,
+        column: TableColumnCtx<T>,
+        cellValue: any,
+        index: number,
+    ) => VNode | string;
     selectable: (row: T, index: number) => boolean;
     reserveSelection: boolean;
     filterMethod: FilterMethods<T>;
@@ -85,12 +103,18 @@ interface UploadFile {
     url?: string;
     raw?: UploadRawFile;
 }
-type UploadUserFile = Omit<UploadFile, "status" | "uid"> & Partial<Pick<UploadFile, "status" | "uid">>;
+type UploadUserFile = Omit<UploadFile, "status" | "uid"> &
+    Partial<Pick<UploadFile, "status" | "uid">>;
 
 interface FormItemRule extends RuleItem {
     trigger?: string | string[];
 }
 
-type CellEvent<T> = (row: any, column: TableColumnCtx<T>, cell: any, event: Event) => void;
+type CellEvent<T> = (
+    row: any,
+    column: TableColumnCtx<T>,
+    cell: any,
+    event: Event,
+) => void;
 type RowEvent<T> = (row: any, column: TableColumnCtx<T>, event: Event) => void;
 type HeaderEvent<T> = (column: TableColumnCtx<T>, event: Event) => void;

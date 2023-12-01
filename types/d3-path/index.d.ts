@@ -49,7 +49,14 @@ export interface Path {
      * @param x x-Coordinate of point to draw the curve to
      * @param y y-Coordinate of point to draw the curve to
      */
-    bezierCurveTo(cpx1: number, cpy1: number, cpx2: number, cpy2: number, x: number, y: number): void;
+    bezierCurveTo(
+        cpx1: number,
+        cpy1: number,
+        cpx2: number,
+        cpy2: number,
+        x: number,
+        y: number,
+    ): void;
 
     /**
      * Draws a circular arc segment with the specified radius that starts tangent to the line between the current point and the specified point ⟨x1, y1⟩
@@ -76,7 +83,14 @@ export interface Path {
      * @param endAngle End angle of arc segment
      * @param anticlockwise Flag indicating directionality (true = anti-clockwise, false = clockwise)
      */
-    arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    arc(
+        x: number,
+        y: number,
+        radius: number,
+        startAngle: number,
+        endAngle: number,
+        anticlockwise?: boolean,
+    ): void;
 
     /**
      * Creates a new subpath containing just the four points ⟨x, y⟩, ⟨x + w, y⟩, ⟨x + w, y + h⟩, ⟨x, y + h⟩,

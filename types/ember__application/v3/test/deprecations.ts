@@ -14,4 +14,8 @@ deprecate("this is no longer advised", false);
 
 // @ts-expect-error
 deprecateFunc("this is no longer advised", () => {});
-deprecateFunc("this is no longer advised", { id: "no-longer-do-this", until: "v4.0" }, () => {});
+deprecateFunc(
+    "this is no longer advised",
+    { id: "no-longer-do-this", until: "v4.0" },
+    () => {},
+);

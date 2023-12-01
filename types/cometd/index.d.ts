@@ -80,22 +80,33 @@ export interface Configuration {
     useWorkerScheduler?: boolean | undefined;
 }
 
-export type ConnectionType = "long-polling" | "callback-polling" | "iframe" | "flash";
+export type ConnectionType =
+    | "long-polling"
+    | "callback-polling"
+    | "iframe"
+    | "flash";
 export type ReconnectAdvice = "retry" | "handshake" | "none";
-export type Status = "disconnected" | "disconnecting" | "handshaking" | "connected" | "connecting";
+export type Status =
+    | "disconnected"
+    | "disconnecting"
+    | "handshaking"
+    | "connected"
+    | "connecting";
 
 export interface BaseMessage {
     successful: boolean;
     channel: string;
     id?: string | undefined;
     clientId?: string | undefined;
-    advice?: {
-        reconnect?: ReconnectAdvice | undefined;
-        timeout?: number | undefined;
-        interval?: number | undefined;
-        "multiple-clients"?: boolean | undefined;
-        hosts?: string[] | undefined;
-    } | undefined;
+    advice?:
+        | {
+              reconnect?: ReconnectAdvice | undefined;
+              timeout?: number | undefined;
+              interval?: number | undefined;
+              "multiple-clients"?: boolean | undefined;
+              hosts?: string[] | undefined;
+          }
+        | undefined;
     connectionType?: ConnectionType | undefined;
     timestamp?: string | undefined;
     data?: any;
@@ -121,7 +132,9 @@ export interface UnsuccessfulHandshakeMessage extends BaseMessage {
     reestablish?: undefined;
 }
 
-export type HandshakeMessage = SuccessfulHandshakeMessage | UnsuccessfulHandshakeMessage;
+export type HandshakeMessage =
+    | SuccessfulHandshakeMessage
+    | UnsuccessfulHandshakeMessage;
 
 export interface SubscribeMessage extends BaseMessage {
     subscription: string;
@@ -221,7 +234,10 @@ export class CometD {
      * @param handshakeProps an object to be merged with the handshake message
      * @param handshakeCallback a function to be invoked when the handshake is acknowledged
      */
-    handshake(handshakeProps: object, handshakeCallback: HandshakeListener): void;
+    handshake(
+        handshakeProps: object,
+        handshakeCallback: HandshakeListener,
+    ): void;
 
     /**
      * Disconnects from the Bayeux server.
@@ -309,7 +325,11 @@ export class CometD {
      * @param subscribeCallback a function to be invoked when the subscription is acknowledged
      * @return the subscription handle to be passed to `unsubscribe`
      */
-    subscribe(channel: string, callback: Callback, subscribeCallback?: SubscribeListener): SubscriptionHandle;
+    subscribe(
+        channel: string,
+        callback: Callback,
+        subscribeCallback?: SubscribeListener,
+    ): SubscriptionHandle;
 
     /**
      * Subscribes to the given channel, performing the given callback in the given scope when a
@@ -343,7 +363,10 @@ export class CometD {
      * @param subscription the subscription to unsubscribe.
      * @param unsubscribeCallback a function to be invoked when the unsubscription is acknowledged
      */
-    unsubscribe(subscription: SubscriptionHandle, unsubscribeCallback?: SubscribeListener): void;
+    unsubscribe(
+        subscription: SubscriptionHandle,
+        unsubscribeCallback?: SubscribeListener,
+    ): void;
 
     /**
      * Unsubscribes the subscription obtained with a call to `subscribe`.
@@ -361,7 +384,10 @@ export class CometD {
     /**
      * Resubscribes as necessary in case of a re-handshake.
      */
-    resubscribe(subscription: SubscriptionHandle, subscribeProps?: object): SubscriptionHandle;
+    resubscribe(
+        subscription: SubscriptionHandle,
+        subscribeProps?: object,
+    ): SubscriptionHandle;
 
     /**
      * Removes all subscriptions added via `subscribe`, but does not remove the listeners added via
@@ -388,7 +414,12 @@ export class CometD {
      * @param publishCallback a function to be invoked when the publish is acknowledged by the
      * server
      */
-    publish(channel: string, content: object, publishProps: object, publishCallback?: Listener): void;
+    publish(
+        channel: string,
+        content: object,
+        publishProps: object,
+        publishCallback?: Listener,
+    ): void;
 
     /**
      * Publishes a message with binary data on the given channel.

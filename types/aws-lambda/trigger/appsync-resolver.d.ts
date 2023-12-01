@@ -1,20 +1,23 @@
 import { Handler } from "../handler";
 
-export type AppSyncResolverHandler<TArguments, TResult, TSource = Record<string, any> | null> = Handler<
-    AppSyncResolverEvent<TArguments, TSource>,
-    TResult
->;
+export type AppSyncResolverHandler<
+    TArguments,
+    TResult,
+    TSource = Record<string, any> | null,
+> = Handler<AppSyncResolverEvent<TArguments, TSource>, TResult>;
 
 // https:docs.aws.amazon.com/appsync/latest/devguide/tutorial-lambda-resolvers.html#advanced-use-case-batching
-export type AppSyncBatchResolverHandler<TArguments, TResult, TSource = Record<string, any> | null> = Handler<
-    Array<AppSyncResolverEvent<TArguments, TSource>>,
-    TResult[]
->;
+export type AppSyncBatchResolverHandler<
+    TArguments,
+    TResult,
+    TSource = Record<string, any> | null,
+> = Handler<Array<AppSyncResolverEvent<TArguments, TSource>>, TResult[]>;
 
 /**
  * @deprecated Use {@link AppSyncAuthorizerHandler}
  */
-export type AppSyncAuthorizerHander<TResolverContext = undefined> = AppSyncAuthorizerHandler<TResolverContext>;
+export type AppSyncAuthorizerHander<TResolverContext = undefined> =
+    AppSyncAuthorizerHandler<TResolverContext>;
 
 /**
  * See https://docs.aws.amazon.com/appsync/latest/devguide/security-authz.html#aws-lambda-authorization
@@ -46,7 +49,10 @@ export type AppSyncIdentity =
  */
 // Maintainer's note: Some of these properties are shared with the Amplify resolver.
 // It may be worth checking if changes here may be applicable there too.
-export interface AppSyncResolverEvent<TArguments, TSource = Record<string, any> | null> {
+export interface AppSyncResolverEvent<
+    TArguments,
+    TSource = Record<string, any> | null,
+> {
     arguments: TArguments;
     identity?: AppSyncIdentity;
     source: TSource;

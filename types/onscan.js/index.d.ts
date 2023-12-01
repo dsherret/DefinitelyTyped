@@ -148,10 +148,10 @@ export interface ScanOptions {
 export type KeyCode =
     | number
     | {
-        keyCode: number;
-        key: string;
-        shiftKey?: boolean;
-    };
+          keyCode: number;
+          key: string;
+          shiftKey?: boolean;
+      };
 
 export interface OnScan {
     /**
@@ -229,7 +229,7 @@ export interface ScanErrorEvent extends CustomEvent<ScanError> {}
 
 declare global {
     interface DocumentEventMap {
-        "scan": ScanEvent;
-        "scanError": ScanErrorEvent;
+        scan: ScanEvent;
+        scanError: ScanErrorEvent;
     }
 }

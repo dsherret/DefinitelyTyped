@@ -18,9 +18,7 @@ export default {
         },
         {
             name: "Extension",
-            superClass: [
-                "Base",
-            ],
+            superClass: ["Base"],
             properties: [
                 {
                     name: "value",

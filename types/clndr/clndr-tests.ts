@@ -60,7 +60,7 @@ const options: Clndr.ClndrOptions = {
     },
     extras: {},
     render(data) {
-        return "<div class=\"html data as a string\"></div>";
+        return '<div class="html data as a string"></div>';
     },
     constraints: {
         startDate: "2017-12-22",
@@ -88,5 +88,5 @@ myCalendar
     .today()
     .setEvents([])
     .addEvents([])
-    .removeEvents(event => event.id === "idToRemove")
+    .removeEvents((event) => event.id === "idToRemove")
     .destroy();

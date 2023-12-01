@@ -10,6 +10,10 @@ declare namespace CKEDITOR {
 
         detect(defaultLanguage: string, probeLanguage?: string): string;
 
-        load(languageCode: string, defaultLanguage: string, callback: (code: string, entries: unknown) => void): void;
+        load(
+            languageCode: string,
+            defaultLanguage: string,
+            callback: (code: string, entries: unknown) => void,
+        ): void;
     }
 }

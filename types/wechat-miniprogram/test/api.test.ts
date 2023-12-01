@@ -28,20 +28,20 @@ wx.navigateTo({
     ctx.draw();
 }
 
-getCurrentPages().map(p => p.options);
+getCurrentPages().map((p) => p.options);
 
 const query = wx.createSelectorQuery();
 // $ExpectType SelectorQuery
 query;
-query.select("#a").boundingClientRect(res => {
+query.select("#a").boundingClientRect((res) => {
     // $ExpectType number
     res.bottom;
 });
-query.selectViewport().scrollOffset(res => {
+query.selectViewport().scrollOffset((res) => {
     // $ExpectType number
     res.scrollTop;
 });
-query.exec(res => {
+query.exec((res) => {
     // $ExpectType any
     res;
 });
@@ -77,7 +77,7 @@ wx.getStorage<string>({
         res.data;
     },
 });
-wx.getStorage<string>({ key: "key" }).then(res => {
+wx.getStorage<string>({ key: "key" }).then((res) => {
     // $ExpectType string
     res.data;
 });

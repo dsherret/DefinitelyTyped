@@ -23,7 +23,7 @@ const Customized = DS.JSONAPIAdapter.extend({
 
 const AuthTokenHeader = DS.JSONAPIAdapter.extend({
     session: Ember.inject.service("session"),
-    headers: Ember.computed("session.authToken", function() {
+    headers: Ember.computed("session.authToken", function () {
         return {
             API_KEY: this.get("session.authToken"),
             ANOTHER_HEADER: "Some header value",
@@ -88,7 +88,9 @@ const BuildURLAdapter = DS.RESTAdapter.extend({
     },
 
     worksWithQueryRecord() {
-        this.buildURL("super-user", null, null, "queryRecord", { companyId: 10 });
+        this.buildURL("super-user", null, null, "queryRecord", {
+            companyId: 10,
+        });
     },
 
     worksWithFindMany() {

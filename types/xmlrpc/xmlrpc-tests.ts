@@ -8,7 +8,7 @@ const serverOpts = {
 const serverWithOutCallback = xmlrpc.createServer(serverOpts);
 
 const serverWithCallback = xmlrpc.createServer(serverOpts, () => {
-    serverWithCallback.on("NotFound", method => {
+    serverWithCallback.on("NotFound", (method) => {
         console.log(`Method ${method} not found`);
     });
 
@@ -32,7 +32,11 @@ const serverWithCallback = xmlrpc.createServer(serverOpts, () => {
             this.tagName = "Value";
         }
     }
-    client.methodCall("hello", [new Value("custom_string_value")], (err, val) => {
-        console.log(val);
-    });
+    client.methodCall(
+        "hello",
+        [new Value("custom_string_value")],
+        (err, val) => {
+            console.log(val);
+        },
+    );
 });

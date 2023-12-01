@@ -33,7 +33,7 @@ tape(name, (test: tape.Test) => {
     var actual: any;
     var expected: any;
     var err: any;
-    var fn = function() {};
+    var fn = function () {};
     var msg: string;
 
     var exceptionExpected: RegExp | (() => void);
@@ -157,7 +157,7 @@ tape(name, (test: tape.Test) => {
 
 tape("simple delay", (test) => P.delay(1));
 
-tape("nested tests with promises", function(test) {
+tape("nested tests with promises", function (test) {
     test.test("delay1", () => P.delay(1));
     test.test("delay2", () => P.delay(1));
 });

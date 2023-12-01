@@ -42,7 +42,9 @@ export interface LoggedOutOptions {
  *       ensureLoggedIn({ redirectTo: '/session/new', setReturnTo: false }),
  *       function(req, res) { ... });
  */
-export function ensureLoggedIn(options?: LoggedInOptions | string): RequestHandler;
+export function ensureLoggedIn(
+    options?: LoggedInOptions | string,
+): RequestHandler;
 
 /**
  * Ensure that no user is logged in before proceeding to next route middleware.
@@ -65,4 +67,6 @@ export function ensureLoggedIn(options?: LoggedInOptions | string): RequestHandl
  *       ensureLoggedOut({ redirectTo: '/home' }),
  *       function(req, res) { ... });
  */
-export function ensureLoggedOut(options?: LoggedOutOptions | string): RequestHandler;
+export function ensureLoggedOut(
+    options?: LoggedOutOptions | string,
+): RequestHandler;

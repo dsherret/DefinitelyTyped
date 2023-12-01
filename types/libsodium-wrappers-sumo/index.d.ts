@@ -1,6 +1,12 @@
 export * from "libsodium-wrappers";
 
-import { KeyPair, StateAddress, StringKeyPair, StringOutputFormat, Uint8ArrayOutputFormat } from "libsodium-wrappers";
+import {
+    KeyPair,
+    StateAddress,
+    StringKeyPair,
+    StringOutputFormat,
+    Uint8ArrayOutputFormat,
+} from "libsodium-wrappers";
 
 export const crypto_auth_hmacsha256_BYTES: number;
 export const crypto_auth_hmacsha256_KEYBYTES: number;
@@ -152,10 +158,18 @@ export function crypto_auth_hmacsha256(
     outputFormat: StringOutputFormat,
 ): string;
 
-export function crypto_auth_hmacsha256_keygen(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
-export function crypto_auth_hmacsha256_keygen(outputFormat: StringOutputFormat): string;
+export function crypto_auth_hmacsha256_keygen(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
+export function crypto_auth_hmacsha256_keygen(
+    outputFormat: StringOutputFormat,
+): string;
 
-export function crypto_auth_hmacsha256_verify(tag: Uint8Array, message: string | Uint8Array, key: Uint8Array): boolean;
+export function crypto_auth_hmacsha256_verify(
+    tag: Uint8Array,
+    message: string | Uint8Array,
+    key: Uint8Array,
+): boolean;
 
 export function crypto_auth_hmacsha512(
     message: string | Uint8Array,
@@ -168,10 +182,18 @@ export function crypto_auth_hmacsha512(
     outputFormat: StringOutputFormat,
 ): string;
 
-export function crypto_auth_hmacsha512_keygen(outputFormat: StringOutputFormat): string;
-export function crypto_auth_hmacsha512_keygen(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
+export function crypto_auth_hmacsha512_keygen(
+    outputFormat: StringOutputFormat,
+): string;
+export function crypto_auth_hmacsha512_keygen(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
 
-export function crypto_auth_hmacsha512_verify(tag: Uint8Array, message: string | Uint8Array, key: Uint8Array): boolean;
+export function crypto_auth_hmacsha512_verify(
+    tag: Uint8Array,
+    message: string | Uint8Array,
+    key: Uint8Array,
+): boolean;
 
 export function crypto_box_curve25519xchacha20poly1305_keypair(
     publicKey: Uint8Array,
@@ -213,18 +235,31 @@ export function crypto_core_ristretto255_add(
     q: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ristretto255_add(p: Uint8Array, q: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ristretto255_add(
+    p: Uint8Array,
+    q: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ristretto255_from_hash(
     r: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ristretto255_from_hash(r: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ristretto255_from_hash(
+    r: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
-export function crypto_core_ristretto255_is_valid_point(point: string | Uint8Array): boolean;
+export function crypto_core_ristretto255_is_valid_point(
+    point: string | Uint8Array,
+): boolean;
 
-export function crypto_core_ristretto255_random(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
-export function crypto_core_ristretto255_random(outputFormat: StringOutputFormat): string;
+export function crypto_core_ristretto255_random(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
+export function crypto_core_ristretto255_random(
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ristretto255_scalar_add(
     x: Uint8Array,
@@ -275,8 +310,12 @@ export function crypto_core_ristretto255_scalar_negate(
     outputFormat: StringOutputFormat,
 ): string;
 
-export function crypto_core_ristretto255_scalar_random(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
-export function crypto_core_ristretto255_scalar_random(outputFormat: StringOutputFormat): string;
+export function crypto_core_ristretto255_scalar_random(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
+export function crypto_core_ristretto255_scalar_random(
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ristretto255_scalar_reduce(
     secret: string | Uint8Array,
@@ -303,7 +342,11 @@ export function crypto_core_ristretto255_sub(
     q: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ristretto255_sub(p: Uint8Array, q: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ristretto255_sub(
+    p: Uint8Array,
+    q: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_generichash_blake2b_salt_personal(
     subkey_len: number,
@@ -324,31 +367,49 @@ export function crypto_hash_sha256(
     message: string | Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_hash_sha256(message: string | Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_hash_sha256(
+    message: string | Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_hash_sha256_final(
     stateAddress: StateAddress,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_hash_sha256_final(stateAddress: StateAddress, outputFormat: StringOutputFormat | null): string;
+export function crypto_hash_sha256_final(
+    stateAddress: StateAddress,
+    outputFormat: StringOutputFormat | null,
+): string;
 
 export function crypto_hash_sha256_init(): number;
-export function crypto_hash_sha256_update(stateAddress: StateAddress, message: Uint8Array): void;
+export function crypto_hash_sha256_update(
+    stateAddress: StateAddress,
+    message: Uint8Array,
+): void;
 
 export function crypto_hash_sha512(
     message: string | Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_hash_sha512(message: string | Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_hash_sha512(
+    message: string | Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_hash_sha512_final(
     stateAddress: StateAddress,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_hash_sha512_final(stateAddress: StateAddress, outputFormat: StringOutputFormat | null): string;
+export function crypto_hash_sha512_final(
+    stateAddress: StateAddress,
+    outputFormat: StringOutputFormat | null,
+): string;
 
 export function crypto_hash_sha512_init(): number;
-export function crypto_hash_sha512_update(stateAddress: StateAddress, message: Uint8Array): void;
+export function crypto_hash_sha512_update(
+    stateAddress: StateAddress,
+    message: Uint8Array,
+): void;
 
 export function crypto_onetimeauth(
     message: string | Uint8Array,
@@ -365,16 +426,32 @@ export function crypto_onetimeauth_final(
     stateAddress: StateAddress,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_onetimeauth_final(stateAddress: StateAddress, outputFormat: StringOutputFormat): string;
+export function crypto_onetimeauth_final(
+    stateAddress: StateAddress,
+    outputFormat: StringOutputFormat,
+): string;
 
-export function crypto_onetimeauth_init(key?: string | Uint8Array | null): StateAddress;
+export function crypto_onetimeauth_init(
+    key?: string | Uint8Array | null,
+): StateAddress;
 
-export function crypto_onetimeauth_keygen(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
-export function crypto_onetimeauth_keygen(outputFormat: StringOutputFormat): string;
+export function crypto_onetimeauth_keygen(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
+export function crypto_onetimeauth_keygen(
+    outputFormat: StringOutputFormat,
+): string;
 
-export function crypto_onetimeauth_update(stateAddress: StateAddress, message_chunk: string | Uint8Array): void;
+export function crypto_onetimeauth_update(
+    stateAddress: StateAddress,
+    message_chunk: string | Uint8Array,
+): void;
 
-export function crypto_onetimeauth_verify(hash: Uint8Array, message: string | Uint8Array, key: Uint8Array): boolean;
+export function crypto_onetimeauth_verify(
+    hash: Uint8Array,
+    message: string | Uint8Array,
+    key: Uint8Array,
+): boolean;
 
 export function crypto_pwhash_scryptsalsa208sha256(
     keyLength: number,
@@ -417,79 +494,125 @@ export function crypto_core_ed25519_add(
     q: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_add(p: Uint8Array, q: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_add(
+    p: Uint8Array,
+    q: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_from_hash(
     r: string | Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_from_hash(r: string | Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_from_hash(
+    r: string | Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_from_uniform(
     r: string | Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_from_uniform(r: string | Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_from_uniform(
+    r: string | Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_is_valid_point(repr: Uint8Array): boolean;
 
-export function crypto_core_ed25519_random(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
-export function crypto_core_ed25519_random(outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_random(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
+export function crypto_core_ed25519_random(
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_scalar_add(
     x: Uint8Array,
     y: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_scalar_add(x: Uint8Array, y: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_scalar_add(
+    x: Uint8Array,
+    y: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_scalar_complement(
     s: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_scalar_complement(s: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_scalar_complement(
+    s: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_scalar_invert(
     s: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_scalar_invert(s: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_scalar_invert(
+    s: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_scalar_mul(
     x: Uint8Array,
     y: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_scalar_mul(x: Uint8Array, y: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_scalar_mul(
+    x: Uint8Array,
+    y: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_scalar_negate(
     s: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_scalar_negate(s: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_scalar_negate(
+    s: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
-export function crypto_core_ed25519_scalar_random(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
-export function crypto_core_ed25519_scalar_random(outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_scalar_random(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
+export function crypto_core_ed25519_scalar_random(
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_scalar_reduce(
     sample: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_scalar_reduce(sample: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_scalar_reduce(
+    sample: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_scalar_sub(
     x: Uint8Array,
     y: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_scalar_sub(x: Uint8Array, y: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_scalar_sub(
+    x: Uint8Array,
+    y: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_core_ed25519_sub(
     p: Uint8Array,
     q: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_core_ed25519_sub(p: Uint8Array, q: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_core_ed25519_sub(
+    p: Uint8Array,
+    q: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_pwhash_scryptsalsa208sha256_str(
     password: string | Uint8Array,
@@ -507,19 +630,29 @@ export function crypto_scalarmult_ed25519(
     p: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_scalarmult_ed25519(n: Uint8Array, p: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_scalarmult_ed25519(
+    n: Uint8Array,
+    p: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_scalarmult_ed25519_base(
     scalar: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_scalarmult_ed25519_base(scalar: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_scalarmult_ed25519_base(
+    scalar: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_scalarmult_ed25519_base_noclamp(
     scalar: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_scalarmult_ed25519_base_noclamp(scalar: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_scalarmult_ed25519_base_noclamp(
+    scalar: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_scalarmult_ed25519_noclamp(
     n: Uint8Array,
@@ -547,7 +680,10 @@ export function crypto_scalarmult_ristretto255_base(
     scalar: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_scalarmult_ristretto255_base(scalar: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_scalarmult_ristretto255_base(
+    scalar: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_shorthash_siphashx24(
     message: string | Uint8Array,
@@ -564,13 +700,19 @@ export function crypto_sign_ed25519_sk_to_pk(
     privateKey: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_sign_ed25519_sk_to_pk(privateKey: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_sign_ed25519_sk_to_pk(
+    privateKey: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_sign_ed25519_sk_to_seed(
     privateKey: Uint8Array,
     outputFormat?: Uint8ArrayOutputFormat | null,
 ): Uint8Array;
-export function crypto_sign_ed25519_sk_to_seed(privateKey: Uint8Array, outputFormat: StringOutputFormat): string;
+export function crypto_sign_ed25519_sk_to_seed(
+    privateKey: Uint8Array,
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_stream_chacha20(
     outLength: number,
@@ -613,8 +755,12 @@ export function crypto_stream_chacha20_ietf_xor_ic(
     outputFormat: StringOutputFormat,
 ): string;
 
-export function crypto_stream_chacha20_keygen(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
-export function crypto_stream_chacha20_keygen(outputFormat: StringOutputFormat): string;
+export function crypto_stream_chacha20_keygen(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
+export function crypto_stream_chacha20_keygen(
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_stream_chacha20_xor(
     input_message: string | Uint8Array,
@@ -644,11 +790,17 @@ export function crypto_stream_chacha20_xor_ic(
     outputFormat: StringOutputFormat,
 ): string;
 
-export function crypto_stream_keygen(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
+export function crypto_stream_keygen(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
 export function crypto_stream_keygen(outputFormat: StringOutputFormat): string;
 
-export function crypto_stream_xchacha20_keygen(outputFormat?: Uint8ArrayOutputFormat | null): Uint8Array;
-export function crypto_stream_xchacha20_keygen(outputFormat: StringOutputFormat): string;
+export function crypto_stream_xchacha20_keygen(
+    outputFormat?: Uint8ArrayOutputFormat | null,
+): Uint8Array;
+export function crypto_stream_xchacha20_keygen(
+    outputFormat: StringOutputFormat,
+): string;
 
 export function crypto_stream_xchacha20_xor(
     input_message: string | Uint8Array,

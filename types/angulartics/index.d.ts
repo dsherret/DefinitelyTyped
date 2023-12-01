@@ -45,16 +45,31 @@ declare namespace angulartics {
         trackExceptions(value: boolean): void;
         developerMode(value: boolean): void;
 
-        registerPageTrack(callback: (path: string, location?: angular.ILocationService) => any): void;
-        registerEventTrack(callback: (eventName: string, properties?: any) => any): void;
+        registerPageTrack(
+            callback: (
+                path: string,
+                location?: angular.ILocationService,
+            ) => any,
+        ): void;
+        registerEventTrack(
+            callback: (eventName: string, properties?: any) => any,
+        ): void;
         registerTransactionTrack(callback: any): void;
         registerSetAlias(callback: (alias: string) => any): void;
         registerSetUsername(callback: (username: string) => any): void;
         registerSetUserProperties(callback: (userProperties: any) => any): void;
-        registerSetUserPropertiesOnce(callback: (userProperties: any) => any): void;
-        registerSetSuperProperties(callback: (superProperties: any) => any): void;
-        registerSetSuperPropertiesOnce(callback: (superProperties: any) => any): void;
-        registerIncrementProperty(callback: (property: string, value?: any) => any): void;
+        registerSetUserPropertiesOnce(
+            callback: (userProperties: any) => any,
+        ): void;
+        registerSetSuperProperties(
+            callback: (superProperties: any) => any,
+        ): void;
+        registerSetSuperPropertiesOnce(
+            callback: (superProperties: any) => any,
+        ): void;
+        registerIncrementProperty(
+            callback: (property: string, value?: any) => any,
+        ): void;
         registerUserTimings(callback: (properties: any) => any): void;
         registerClearCookies(callback: any): void;
 

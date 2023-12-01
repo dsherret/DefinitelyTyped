@@ -3,7 +3,10 @@ import { PolicyDocument } from "./api-gateway-authorizer";
 
 export type IoTProtocolType = "http" | "mqtt" | "tls";
 
-export type IoTCustomAuthorizerHandler = Handler<IoTCustomAuthorizerEvent, IoTCustomAuthorizerResult>;
+export type IoTCustomAuthorizerHandler = Handler<
+    IoTCustomAuthorizerEvent,
+    IoTCustomAuthorizerResult
+>;
 
 export interface IoTProtocolDataTLS {
     serverName: string; // The server name indication (SNI) host_name string.

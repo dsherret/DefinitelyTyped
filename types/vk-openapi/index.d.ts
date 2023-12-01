@@ -23,7 +23,10 @@ declare namespace vk {
 
         namespace Auth {
             interface API {
-                login(cb: (status: LoginStatus) => void, settings: number): void;
+                login(
+                    cb: (status: LoginStatus) => void,
+                    settings: number,
+                ): void;
                 logout(cb: (status: EmptyLoginStatus) => void): void;
                 revokeGrants(cb: (status: EmptyLoginStatus) => void): void;
                 getLoginStatus(cb: (status: LoginStatus) => void): void;
@@ -60,7 +63,11 @@ declare namespace vk {
 
         namespace Api {
             interface API {
-                call(method: string, params: ApiParams, cb: (response: any) => void): void;
+                call(
+                    method: string,
+                    params: ApiParams,
+                    cb: (response: any) => void,
+                ): void;
             }
 
             interface ApiParams {
@@ -71,11 +78,33 @@ declare namespace vk {
 
         namespace Widgets {
             interface API {
-                ContactUs(elementId: string, options: Nullable<ContactUsOptions>, ownerId: number): number;
-                Comments(elementId: string, options?: CommentsOptions, pageId?: string): number;
-                Post(elementId: string, ownerId: number, postId: number, hash: string, options?: PostOptions): number;
-                Group(elementId: string, options: Nullable<GroupOptions>, groupId: number): number;
-                Like(elementId: string, options?: LikeOptions, pageId?: string): number;
+                ContactUs(
+                    elementId: string,
+                    options: Nullable<ContactUsOptions>,
+                    ownerId: number,
+                ): number;
+                Comments(
+                    elementId: string,
+                    options?: CommentsOptions,
+                    pageId?: string,
+                ): number;
+                Post(
+                    elementId: string,
+                    ownerId: number,
+                    postId: number,
+                    hash: string,
+                    options?: PostOptions,
+                ): number;
+                Group(
+                    elementId: string,
+                    options: Nullable<GroupOptions>,
+                    groupId: number,
+                ): number;
+                Like(
+                    elementId: string,
+                    options?: LikeOptions,
+                    pageId?: string,
+                ): number;
                 Recommended(
                     elementId: string,
                     options?: RecommendedOptions,
@@ -83,9 +112,17 @@ declare namespace vk {
                     sort?: RecommendedSort,
                     target?: RecommendedTarget,
                 ): number;
-                Poll(elementId: string, options: Nullable<PollOptions>, pollId: string): number;
+                Poll(
+                    elementId: string,
+                    options: Nullable<PollOptions>,
+                    pollId: string,
+                ): number;
                 Auth(elementId: string, options?: AuthOptions): number;
-                Subscribe(elementId: string, options: Nullable<SubscribeOptions>, ownerId: number): number;
+                Subscribe(
+                    elementId: string,
+                    options: Nullable<SubscribeOptions>,
+                    ownerId: number,
+                ): number;
                 CommunityMessages(
                     elementId: string,
                     groupId: number,
@@ -103,10 +140,21 @@ declare namespace vk {
                     options: Nullable<AllowMessagesFromCommunityOptions>,
                     groupId: number,
                 ): number;
-                App(elementId: string, appId: number, options?: AppOptions): number;
+                App(
+                    elementId: string,
+                    appId: number,
+                    options?: AppOptions,
+                ): number;
                 Article(elementId: string, articleId: string): number;
-                Bookmarks(elementId: string, options?: BookmarksOptions): number;
-                Podcast(elementId: string, episodeId: string, hash: string): number;
+                Bookmarks(
+                    elementId: string,
+                    options?: BookmarksOptions,
+                ): number;
+                Podcast(
+                    elementId: string,
+                    episodeId: string,
+                    hash: string,
+                ): number;
             }
 
             interface ContactUsOptions {
@@ -198,7 +246,11 @@ declare namespace vk {
                 disableTitleChange?: 1 | undefined;
             }
 
-            type OnCanNotWriteReason = "offline" | "no_access" | "disabled_messages" | "cant_write";
+            type OnCanNotWriteReason =
+                | "offline"
+                | "no_access"
+                | "disabled_messages"
+                | "cant_write";
 
             interface CommunityMessages {
                 stopTitleAnimation(): void;
@@ -228,8 +280,14 @@ declare namespace vk {
 
         namespace Observer {
             interface API {
-                subscribe<E extends ObserverEvent>(event: E, handler: ObserverEventHandler<E>): void;
-                unsubscribe<E extends ObserverEvent>(event: E, handler?: ObserverEventHandler<E>): void;
+                subscribe<E extends ObserverEvent>(
+                    event: E,
+                    handler: ObserverEventHandler<E>,
+                ): void;
+                unsubscribe<E extends ObserverEvent>(
+                    event: E,
+                    handler?: ObserverEventHandler<E>,
+                ): void;
             }
 
             type ObserverEvent =
@@ -253,12 +311,21 @@ declare namespace vk {
             type ObserverEventHandler<E extends ObserverEvent> = E extends
                 | "widgets.comments.new_comment"
                 | "widgets.comments.delete_comment"
-                ? (num: number, lastComment: string, date: string, sign: string) => void
-                : E extends "widgets.like.liked" | "widgets.like.unliked" ? (likes: number) => void
-                : E extends "widgets.like.shared" | "widgets.like.unshared" ? (shares: number) => void
-                : E extends "widgets.allowMessagesFromCommunity.allowed" | "widgets.allowMessagesFromCommunity.denied"
-                    ? (uid: number) => void
-                : () => void;
+                ? (
+                      num: number,
+                      lastComment: string,
+                      date: string,
+                      sign: string,
+                  ) => void
+                : E extends "widgets.like.liked" | "widgets.like.unliked"
+                  ? (likes: number) => void
+                  : E extends "widgets.like.shared" | "widgets.like.unshared"
+                    ? (shares: number) => void
+                    : E extends
+                            | "widgets.allowMessagesFromCommunity.allowed"
+                            | "widgets.allowMessagesFromCommunity.denied"
+                      ? (uid: number) => void
+                      : () => void;
         }
 
         namespace Retargeting {
@@ -267,7 +334,11 @@ declare namespace vk {
                 Hit(): void;
                 Event(eventName: string): void;
                 Add(audienceId: number): void;
-                ProductEvent(priceListId: number, eventName: ProductEvent, eventParams?: ProductEventParams): void;
+                ProductEvent(
+                    priceListId: number,
+                    eventName: ProductEvent,
+                    eventParams?: ProductEventParams,
+                ): void;
             }
 
             type ProductEvent =

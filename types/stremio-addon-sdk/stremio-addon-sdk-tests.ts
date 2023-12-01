@@ -52,7 +52,7 @@ builder;
 builder.defineCatalogHandler(() =>
     Promise.resolve({
         metas: [],
-    })
+    }),
 );
 
 // $ExpectType void
@@ -63,7 +63,7 @@ builder.defineMetaHandler(() =>
             name: "",
             type: "channel",
         },
-    })
+    }),
 );
 
 // $ExpectType Promise<{ addons: AddonCatalog[]; } & Cache>
@@ -76,14 +76,14 @@ builder.defineResourceHandler({
 builder.defineStreamHandler(() =>
     Promise.resolve({
         streams: [],
-    })
+    }),
 );
 
 // $ExpectType void
 builder.defineSubtitlesHandler(() =>
     Promise.resolve({
         subtitles: [],
-    })
+    }),
 );
 
 // $ExpectType AddonInterface
@@ -117,7 +117,13 @@ addon;
 // $ExpectType any
 getRouter(addon);
 
-const shortResource: ShortManifestResource[] = ["catalog", "meta", "stream", "subtitles", "addon_catalog"];
+const shortResource: ShortManifestResource[] = [
+    "catalog",
+    "meta",
+    "stream",
+    "subtitles",
+    "addon_catalog",
+];
 
 // $ExpectType ShortManifestResource[]
 shortResource;
@@ -197,7 +203,8 @@ const metaPreview: MetaPreview = {
     type: "movie",
     name: "Star Wars: Episode IX – The Rise of Skywalker",
     poster: "https://image.tmdb.org/t/p/w342/lFx2i2pg1BoaD7grcpGDyHM1eML.jpg",
-    background: "https://image.tmdb.org/t/p/w342/lFx2i2pg1BoaD7grcpGDyHM1eML.jpg",
+    background:
+        "https://image.tmdb.org/t/p/w342/lFx2i2pg1BoaD7grcpGDyHM1eML.jpg",
     logo: "",
     description: "",
 };

@@ -53,7 +53,7 @@ validator.addSchema(url, schema);
 var singleErrorResult = validator.validateResult(data, schema);
 var multiErrorResult = validator.validateMultiple(data, schema);
 // async
-validator.validate(data, schema, function(isValid, validationError) {});
+validator.validate(data, schema, function (isValid, validationError) {});
 
 // checkRecursive
 var a: tv4.JsonSchema = {};
@@ -88,23 +88,23 @@ var arr = validator.getMissingUris(/^https?:\/\/example.com/);
 validator.dropSchemas();
 var other_tv4 = validator.freshApi();
 validator.reset();
-validator.setErrorReporter(function(error, data, schema) {
+validator.setErrorReporter(function (error, data, schema) {
     return "Error code: " + error.code;
 });
 validator.language("en-gb");
 validator.addLanguage("fr", {});
 validator.language("fr");
-validator.addFormat("decimal-digits", function(data, schema) {
+validator.addFormat("decimal-digits", function (data, schema) {
     if (typeof data === "string" && !/^[0-9]+$/.test(data)) {
         return null;
     }
     return "must be string of decimal digits";
 });
 validator.addFormat({
-    "my-format": function(data: any, schema: any): null | string {
+    "my-format": function (data: any, schema: any): null | string {
         return null;
     },
-    "other-format": function(data: any, schema: any): string {
+    "other-format": function (data: any, schema: any): string {
         return "oops";
     },
 });
@@ -114,11 +114,14 @@ function simpleFailure() {
 function detailedFailure() {
     return true;
 }
-validator.defineKeyword("my-custom-keyword", function(data, value, schema) {
+validator.defineKeyword("my-custom-keyword", function (data, value, schema) {
     if (simpleFailure()) {
         return "Failure";
     } else if (detailedFailure()) {
-        return { code: validator.errorCodes["MY_CUSTOM_CODE"], message: { param1: "a", param2: "b" } };
+        return {
+            code: validator.errorCodes["MY_CUSTOM_CODE"],
+            message: { param1: "a", param2: "b" },
+        };
     } else {
         return null;
     }

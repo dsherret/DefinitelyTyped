@@ -23,7 +23,10 @@ declare namespace newrelic {
      *   The key will report to Insights as its own PageAction attribute with the specified values.
      * @see https://docs.newrelic.com/docs/browser/new-relic-browser/browser-agent-spa-api/add-page-action
      */
-    function addPageAction(name: string, attributes?: Record<string, SimpleType>): void;
+    function addPageAction(
+        name: string,
+        attributes?: Record<string, SimpleType>,
+    ): void;
 
     /**
      * Adds a JavaScript object with a custom name, start time, etc. to an in-progress session trace.
@@ -52,7 +55,10 @@ declare namespace newrelic {
      * @param customAttributes An object containing name/value pairs representing custom attributes.
      * @see https://docs.newrelic.com/docs/browser/new-relic-browser/browser-agent-spa-api/notice-error
      */
-    function noticeError(error: Error | string, customAttributes?: Record<string, SimpleType>): void;
+    function noticeError(
+        error: Error | string,
+        customAttributes?: Record<string, SimpleType>,
+    ): void;
 
     /**
      * Adds a user-defined attribute name and value to subsequent events on the page.
@@ -64,7 +70,11 @@ declare namespace newrelic {
      *   values cannot be complex objects, only simple types such as strings and numbers.
      * @see https://docs.newrelic.com/docs/browser/new-relic-browser/browser-agent-spa-api/set-custom-attribute
      */
-    function setCustomAttribute(name: string, value: SimpleType, persist?: boolean): void;
+    function setCustomAttribute(
+        name: string,
+        value: SimpleType,
+        persist?: boolean,
+    ): void;
 
     /**
      * Allows selective ignoring of known errors that the Browser agent captures.
@@ -162,7 +172,9 @@ declare namespace newrelic {
          * @see https://docs.newrelic.com/docs/browser/new-relic-browser/browser-agent-spa-api/spa-get-context
          */
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        getContext<T extends ContextObject = ContextObject>(callback: GetContextCallback<T>): this;
+        getContext<T extends ContextObject = ContextObject>(
+            callback: GetContextCallback<T>,
+        ): this;
 
         /**
          * Overrides other SPA save() calls; ignores an interaction so it is not saved or sent to New Relic.
@@ -181,7 +193,9 @@ declare namespace newrelic {
          * @see https://docs.newrelic.com/docs/browser/new-relic-browser/browser-agent-spa-api/spa-on-end
          */
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        onEnd<T extends ContextObject = ContextObject>(callback: GetContextCallback<T>): this;
+        onEnd<T extends ContextObject = ContextObject>(
+            callback: GetContextCallback<T>,
+        ): this;
 
         /**
          * Ensures a SPA browser interaction will be saved when it ends.

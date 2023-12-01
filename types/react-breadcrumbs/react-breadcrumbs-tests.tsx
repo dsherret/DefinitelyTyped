@@ -19,7 +19,7 @@ class MyComponent extends React.Component {
                     className="demo__crumbs"
                     hidden
                     separator="|"
-                    setCrumbs={crumbs => null}
+                    setCrumbs={(crumbs) => null}
                     wrapper={Wrapper}
                 />
 
@@ -28,9 +28,7 @@ class MyComponent extends React.Component {
                     wrapper={FunctionWrapper}
                 />
 
-                <Breadcrumbs className="demo__crumbs">
-                    Children
-                </Breadcrumbs>
+                <Breadcrumbs className="demo__crumbs">Children</Breadcrumbs>
 
                 <Breadcrumb data={{ title: "Dashboard", pathname: "/" }} />
 

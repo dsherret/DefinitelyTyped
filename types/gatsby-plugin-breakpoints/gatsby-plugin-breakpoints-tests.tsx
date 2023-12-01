@@ -30,14 +30,20 @@ function HookComponent() {
 }
 
 // withBreakpoints HOC
-const EnhancedFunctionalComponent = withBreakpoints(function Component({ breakpoints }) {
+const EnhancedFunctionalComponent = withBreakpoints(function Component({
+    breakpoints,
+}) {
     return breakpoints.xs ? <div /> : <div>Content hidden only on mobile</div>;
 });
 
 class Component extends React.Component<BreakpointProps> {
     render() {
         const { breakpoints } = this.props;
-        return breakpoints.xs ? <div /> : <div>Content hidden only on mobile</div>;
+        return breakpoints.xs ? (
+            <div />
+        ) : (
+            <div>Content hidden only on mobile</div>
+        );
     }
 }
 
@@ -49,6 +55,12 @@ function useContext() {
     return context;
 }
 // BreakpointProvider
-const ProviderComponent: React.FC<{ children?: ReactNode }> = ({ children }) => {
-    return <BreakpointProvider queries={defaultQueries}>{children}</BreakpointProvider>;
+const ProviderComponent: React.FC<{ children?: ReactNode }> = ({
+    children,
+}) => {
+    return (
+        <BreakpointProvider queries={defaultQueries}>
+            {children}
+        </BreakpointProvider>
+    );
 };

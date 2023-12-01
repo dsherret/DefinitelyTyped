@@ -29,4 +29,8 @@ export = validate;
  *   validate(browserifyBundleMin, browserifyBundleMap);
  * }, 'The sourcemap is not valid');
  */
-declare function validate(minifiedCode: string, sourceMap?: string, sourceContent?: Record<string, string>): void;
+declare function validate(
+    minifiedCode: string,
+    sourceMap?: string,
+    sourceContent?: Record<string, string>,
+): void;

@@ -16,7 +16,9 @@ function junit_xml_reporter_html() {
 }
 
 function nunit_xml_reporter_html() {
-    jasmine.getEnv().addReporter(new jasmineReporters.NUnitXmlReporter({ savePath: ".." }));
+    jasmine
+        .getEnv()
+        .addReporter(new jasmineReporters.NUnitXmlReporter({ savePath: ".." }));
 }
 
 function tap_reporter_html() {
@@ -52,7 +54,9 @@ function JUnitXmlReporterSpec_js() {
         properties: null,
     };
 
-    function setupReporterWithOptions(options?: jasmineReporters.JUnitXmlReporter.ConstructorOptions) {
+    function setupReporterWithOptions(
+        options?: jasmineReporters.JUnitXmlReporter.ConstructorOptions,
+    ) {
         new jasmineReporters.JUnitXmlReporter(options);
     }
 
@@ -70,14 +74,33 @@ function JUnitXmlReporterSpec_js() {
     setupReporterWithOptions({ stylesheetPath: true });
     setupReporterWithOptions({ stylesheetPath: "" });
     setupReporterWithOptions({ stylesheetPath: "mystyle.xslt" });
-    setupReporterWithOptions({ consolidate: false, stylesheetPath: "mystyle.xslt" });
+    setupReporterWithOptions({
+        consolidate: false,
+        stylesheetPath: "mystyle.xslt",
+    });
     setupReporterWithOptions({ consolidateAll: true });
     setupReporterWithOptions({ consolidateAll: true, filePrefix: "results" });
-    setupReporterWithOptions({ consolidateAll: false, consolidate: true, filePrefix: "results-" });
-    setupReporterWithOptions({ consolidateAll: true, consolidate: false, filePrefix: "results-" });
+    setupReporterWithOptions({
+        consolidateAll: false,
+        consolidate: true,
+        filePrefix: "results-",
+    });
+    setupReporterWithOptions({
+        consolidateAll: true,
+        consolidate: false,
+        filePrefix: "results-",
+    });
     setupReporterWithOptions({ consolidateAll: true, consolidate: true });
-    setupReporterWithOptions({ consolidateAll: true, consolidate: true, useDotNotation: true });
-    setupReporterWithOptions({ consolidateAll: true, consolidate: true, useDotNotation: false });
+    setupReporterWithOptions({
+        consolidateAll: true,
+        consolidate: true,
+        useDotNotation: true,
+    });
+    setupReporterWithOptions({
+        consolidateAll: true,
+        consolidate: true,
+        useDotNotation: false,
+    });
     setupReporterWithOptions({ consolidateAll: true, consolidate: true });
     setupReporterWithOptions({});
     setupReporterWithOptions({ package: "testPackage" });
@@ -97,11 +120,17 @@ function JUnitXmlReporterSpec_js() {
         },
     });
     setupReporterWithOptions({ suppressDisabled: true });
-    setupReporterWithOptions({ consolidateAll: true, consolidate: true, captureStdout: true });
+    setupReporterWithOptions({
+        consolidateAll: true,
+        consolidate: true,
+        captureStdout: true,
+    });
 }
 
 function NUnitXmlReporterSpec_js() {
-    function setupReporterWithOptions(options?: jasmineReporters.NUnitXmlReporter.ConstructorOptions) {
+    function setupReporterWithOptions(
+        options?: jasmineReporters.NUnitXmlReporter.ConstructorOptions,
+    ) {
         new jasmineReporters.NUnitXmlReporter(options);
     }
 
@@ -114,7 +143,9 @@ function NUnitXmlReporterSpec_js() {
 
 function TeamCityReporterSpec_js() {
     const modification = "-modified";
-    function setupReporterWithOptions(options?: jasmineReporters.TeamCityReporter.ConstructorOptions) {
+    function setupReporterWithOptions(
+        options?: jasmineReporters.TeamCityReporter.ConstructorOptions,
+    ) {
         new jasmineReporters.TeamCityReporter(options);
     }
 

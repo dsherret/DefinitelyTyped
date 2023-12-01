@@ -82,7 +82,7 @@ MultipartParser.stateToString;
 MultipartParser.STATES;
 
 const form = new Formidable(options);
-form.on("data", data => {
+form.on("data", (data) => {
     // $ExpectType EventData
     data;
 
@@ -135,7 +135,7 @@ form.on("field", (name, value) => {
     value;
 });
 
-form.on("error", err => {
+form.on("error", (err) => {
     // $ExpectType any
     err;
 });
@@ -143,7 +143,7 @@ form.on("error", err => {
 form.on("aborted", () => {});
 
 form.once("end", () => {});
-form.once("error", err => {
+form.once("error", (err) => {
     // $ExpectType any
     err;
 });
@@ -155,11 +155,11 @@ form.use((self, options) => {
     options;
 });
 
-form.onPart = part => {
+form.onPart = (part) => {
     // $ExpectType Part
     part;
 
-    part.on("data", buffer => {
+    part.on("data", (buffer) => {
         // $ExpectType any
         buffer;
     });
@@ -167,7 +167,7 @@ form.onPart = part => {
     form.handlePart(part);
 };
 
-http.createServer(req => {
+http.createServer((req) => {
     // $ExpectType IncomingMessage
     req;
 

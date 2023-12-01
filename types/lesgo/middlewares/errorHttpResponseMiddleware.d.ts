@@ -17,6 +17,10 @@ export function errorHttpResponseAfterHandler(
     opts?: ErrorHttpMiddlewareOptions,
 ): void;
 
-export function errorHttpResponseHandler(opts?: ErrorHttpMiddlewareOptions): any;
+export function errorHttpResponseHandler(
+    opts?: ErrorHttpMiddlewareOptions,
+): any;
 
-export default function errorHttpResponseMiddleware(opts?: ErrorHttpMiddlewareOptions): ErrorHttpMiddleware;
+export default function errorHttpResponseMiddleware(
+    opts?: ErrorHttpMiddlewareOptions,
+): ErrorHttpMiddleware;

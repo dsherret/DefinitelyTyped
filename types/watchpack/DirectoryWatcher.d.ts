@@ -25,7 +25,12 @@ declare class DirectoryWatcher extends EventEmitter {
 
     constructor(directoryPath: string, options: Watchpack.WatcherOptions);
 
-    setFileTime(filePath: string, mtime: number, initial: boolean, type?: string | boolean): void;
+    setFileTime(
+        filePath: string,
+        mtime: number,
+        initial: boolean,
+        type?: string | boolean,
+    ): void;
 
     setDirectory(directoryPath: string, exist: boolean, initial: boolean): void;
 

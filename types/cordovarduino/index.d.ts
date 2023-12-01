@@ -6,7 +6,10 @@ declare namespace Cordovardunio {
          * @param successCallback Function to call on success
          * @param errorCallback   Function to call on error
          */
-        requestPermission(successCallback: Function, errorCallback: Function): void;
+        requestPermission(
+            successCallback: Function,
+            errorCallback: Function,
+        ): void;
 
         /**
          * Open a connection.
@@ -15,7 +18,11 @@ declare namespace Cordovardunio {
          * @param successCallback Function to call on success
          * @param errorCallback   Function to call on error
          */
-        open(opts: SerialOptions, successCallback: Function, errorCallback: Function): void;
+        open(
+            opts: SerialOptions,
+            successCallback: Function,
+            errorCallback: Function,
+        ): void;
 
         /**
          * Write to the serial port.
@@ -24,7 +31,11 @@ declare namespace Cordovardunio {
          * @param successCallback Function to call on success
          * @param errorCallback   Function to call on error
          */
-        write(data: string, successCallback: Function, errorCallback: Function): void;
+        write(
+            data: string,
+            successCallback: Function,
+            errorCallback: Function,
+        ): void;
 
         /**
          * Read from the serial port.
@@ -48,7 +59,10 @@ declare namespace Cordovardunio {
          * @param successCallback Function to call on success
          * @param errorCallback   Function to call on error
          */
-        registerReadCallback(successCallback: Function, errorCallback: Function): void;
+        registerReadCallback(
+            successCallback: Function,
+            errorCallback: Function,
+        ): void;
     }
 
     interface SerialOptions {

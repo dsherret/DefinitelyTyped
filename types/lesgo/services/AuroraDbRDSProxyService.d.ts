@@ -1,8 +1,17 @@
 import { ConnectionOptions } from "mysql2";
-import { Connection, FieldPacket, OkPacket, ResultSetHeader, RowDataPacket } from "mysql2/promise";
+import {
+    Connection,
+    FieldPacket,
+    OkPacket,
+    ResultSetHeader,
+    RowDataPacket,
+} from "mysql2/promise";
 import { PaginatorObject } from "./pagination/Paginator";
 
-export type AuroraDbRDSProxyServiceParams = Pick<ConnectionOptions, "host" | "user" | "password" | "database"> & {
+export type AuroraDbRDSProxyServiceParams = Pick<
+    ConnectionOptions,
+    "host" | "user" | "password" | "database"
+> & {
     persists?: boolean;
 };
 
@@ -36,7 +45,11 @@ export default class AuroraDbRDSProxyService {
         connectionOpts?: AuroraDbRDSProxyServiceParams,
     ): Promise<AuroraDbRDSProxyServiceResult>;
 
-    selectFirst(sql: string, params?: any, connectionOpts?: AuroraDbRDSProxyServiceParams): Promise<any>;
+    selectFirst(
+        sql: string,
+        params?: any,
+        connectionOpts?: AuroraDbRDSProxyServiceParams,
+    ): Promise<any>;
 
     selectPaginate(
         sql: string,
@@ -47,7 +60,15 @@ export default class AuroraDbRDSProxyService {
         connectionOpts?: AuroraDbRDSProxyServiceParams,
     ): PaginatorObject<any>;
 
-    insert(sql: string, sqlParams?: any, connectionOpts?: AuroraDbRDSProxyServiceParams): Promise<number>;
+    insert(
+        sql: string,
+        sqlParams?: any,
+        connectionOpts?: AuroraDbRDSProxyServiceParams,
+    ): Promise<number>;
 
-    update(sql: string, sqlParams?: any, connectionOpts?: AuroraDbRDSProxyServiceParams): Promise<void>;
+    update(
+        sql: string,
+        sqlParams?: any,
+        connectionOpts?: AuroraDbRDSProxyServiceParams,
+    ): Promise<void>;
 }

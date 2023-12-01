@@ -34,7 +34,9 @@ dispatch("core/notices").createInfoNotice("hello world");
 dispatch("core/notices").createInfoNotice("hello world", { id: "foo" });
 
 dispatch("core/notices").createSuccessNotice("hello world");
-dispatch("core/notices").createSuccessNotice("hello world", { isDismissible: false });
+dispatch("core/notices").createSuccessNotice("hello world", {
+    isDismissible: false,
+});
 
 dispatch("core/notices").createWarningNotice("hello world");
 dispatch("core/notices").createWarningNotice("hello world", undefined);

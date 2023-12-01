@@ -26,8 +26,14 @@ function mixpanel_base() {
         };
     }
 
-    mixpanel.track<ErrorEvent>(ErrorNames.ERROR1, { id: "1111", message: "Bad error" });
-    mixpanel.track<ErrorEvent>(ErrorNames.ERROR2, { id: "1111", message: "Bad error" });
+    mixpanel.track<ErrorEvent>(ErrorNames.ERROR1, {
+        id: "1111",
+        message: "Bad error",
+    });
+    mixpanel.track<ErrorEvent>(ErrorNames.ERROR2, {
+        id: "1111",
+        message: "Bad error",
+    });
 
     mixpanel.track_links("#nav", "Clicked Nav Link");
     mixpanel.track_links("#nav", "Clicked Nav Link", { prop: "A" });
@@ -38,11 +44,20 @@ function mixpanel_base() {
 
     mixpanel.register({ device: "android", version: "4.0.1" });
     mixpanel.register({ device: "android", version: "4.0.1" }, 5);
-    mixpanel.register({ device: "android", version: "4.0.1" }, { persistent: false });
+    mixpanel.register(
+        { device: "android", version: "4.0.1" },
+        { persistent: false },
+    );
 
     mixpanel.register_once({ device: "android", version: "4.0.1" });
-    mixpanel.register_once({ device: "android", version: "4.0.1" }, "default", 4);
-    mixpanel.register_once({ device: "android", version: "4.0.1" }, "default", { persistent: false });
+    mixpanel.register_once(
+        { device: "android", version: "4.0.1" },
+        "default",
+        4,
+    );
+    mixpanel.register_once({ device: "android", version: "4.0.1" }, "default", {
+        persistent: false,
+    });
 
     mixpanel.unregister("device");
     mixpanel.unregister("device", { persistent: false });
@@ -65,7 +80,7 @@ function mixpanel_base() {
         persistence: "cookie",
         persistence_name: "",
         cookie_name: "",
-        loaded: lib => {},
+        loaded: (lib) => {},
         store_google: true,
         save_referrer: true,
         test: false,
@@ -172,7 +187,11 @@ function mixpanel_people() {
 
     mixpanel.people.track_charge(50);
     mixpanel.people.track_charge(30.5, { $time: new Date("jan 1 2012") });
-    mixpanel.people.track_charge(30.5, { $time: new Date("jan 1 2012") }, () => {});
+    mixpanel.people.track_charge(
+        30.5,
+        { $time: new Date("jan 1 2012") },
+        () => {},
+    );
 
     mixpanel.people.clear_charges();
     mixpanel.people.clear_charges(() => {});

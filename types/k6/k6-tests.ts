@@ -23,15 +23,15 @@ export default function test2() {
 function test3() {
     const res = http.get("http://httpbin.org", { responseType: "text" });
     check(res, {
-        "response code was 200": res => res.status === 200,
-        "body size was 1234 bytes": res => res.body.length === 1234,
+        "response code was 200": (res) => res.status === 200,
+        "body size was 1234 bytes": (res) => res.body.length === 1234,
     });
 }
 
 function test4() {
     const res = http.get("https://loadimpact.com");
     check(res, {
-        "status code MUST be 200": res => res.status === 200,
+        "status code MUST be 200": (res) => res.status === 200,
     }) || fail("status code was *not* 200");
 }
 
@@ -40,14 +40,18 @@ function test5() {
         group("front page", () => {
             const res = http.get("https://loadimpact.com");
             check(res, {
-                "status code is 200": res => res.status === 200,
+                "status code is 200": (res) => res.status === 200,
             });
         });
         group("features page", () => {
             const res = http.get("https://loadimpact.com/features");
             check(res, {
-                "status code is 200": res => res.status === 200,
-                "h1 message is correct": res => res.html("h1").text().startsWith("Simple yet realistic load testing"),
+                "status code is 200": (res) => res.status === 200,
+                "h1 message is correct": (res) =>
+                    res
+                        .html("h1")
+                        .text()
+                        .startsWith("Simple yet realistic load testing"),
             });
         });
     });
@@ -66,7 +70,7 @@ function httpTest1() {
         "http://test.loadimpact.com/images/logo.png",
     ]);
     check(responses[0], {
-        "main page status was 200": res => res.status === 200,
+        "main page status was 200": (res) => res.status === 200,
     });
 }
 
@@ -90,11 +94,16 @@ function httpTest2() {
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
         },
     };
-    const responses: Array<RefinedResponse<"text">> = http.batch([req1, req2, req3]);
+    const responses: Array<RefinedResponse<"text">> = http.batch([
+        req1,
+        req2,
+        req3,
+    ]);
     // httpbin.org should return our POST data in the response body, so
     // we check the third response object to see that the POST worked.
     check(responses[3], {
-        "form data OK": res => JSON.parse(res.body)["form"]["hello"] === "world!",
+        "form data OK": (res) =>
+            JSON.parse(res.body)["form"]["hello"] === "world!",
     });
 }
 
@@ -122,7 +131,8 @@ function httpTest5() {
     const res1 = http.get(baseURL + "/user/login", { responseType: "text" });
 
     // Extract hidden value needed to POST form
-    const formBuildID = (res1.body.match("name=\"form_build_id\" value=\"(.*)\"") || [])[1];
+    const formBuildID = (res1.body.match('name="form_build_id" value="(.*)"') ||
+        [])[1];
     // Create an Object containing the form data
     const formdata = {
         name: "testuser1",
@@ -136,7 +146,7 @@ function httpTest5() {
     const res2 = http.post(baseURL + "/user/login", formdata, { headers });
     // Verify that we ended up on the user page
     check(res2, {
-        "login succeeded": res2 => res2.url === `${baseURL}/users/testuser1`,
+        "login succeeded": (res2) => res2.url === `${baseURL}/users/testuser1`,
     }) || fail("login failed");
 }
 
@@ -153,7 +163,8 @@ function httpTest6() {
 function httpTest7() {
     const url1 = "https://api.loadimpact.com/v3/account/me";
     const url2 = "http://httpbin.org/get";
-    const apiToken = "f232831bda15dd233c53b9c548732c0197619a3d3c451134d9abded7eb5bb195";
+    const apiToken =
+        "f232831bda15dd233c53b9c548732c0197619a3d3c451134d9abded7eb5bb195";
     const requestHeaders = {
         "User-Agent": "k6",
         Authorization: "Token " + apiToken,
@@ -171,16 +182,19 @@ function jsonObject(value: JSONValue | undefined): value is JSONObject {
 
 function httpTest8() {
     // Passing username and password as part of URL plus the auth option will authenticate using HTTP Digest authentication
-    const res = http.get("http://user:passwd@httpbin.org/digest-auth/auth/user/passwd", { auth: "digest" });
+    const res = http.get(
+        "http://user:passwd@httpbin.org/digest-auth/auth/user/passwd",
+        { auth: "digest" },
+    );
 
     // Verify response
     check(res, {
-        "status is 200": r => r.status === 200,
-        "is authenticated": r => {
+        "status is 200": (r) => r.status === 200,
+        "is authenticated": (r) => {
             const json = r.json();
             return jsonObject(json) && !!json.authenticated;
         },
-        "is correct user": r => {
+        "is correct user": (r) => {
             const json = r.json();
             return jsonObject(json) && json.user === "user";
         },
@@ -190,8 +204,8 @@ function httpTest8() {
 function httpTest9() {
     const res = http.get("https://loadimpact.com");
     check(res, {
-        "status is 200": r => r.status === 200,
-        "caption is correct": r => r.html("h1").text() === "Example Domain",
+        "status is 200": (r) => r.status === 200,
+        "caption is correct": (r) => r.html("h1").text() === "Example Domain",
     });
 }
 
@@ -208,5 +222,8 @@ function httpTest11() {
     let res = http.get("https://httpbin.org/forms/post");
 
     // Now, submit form setting/overriding some fields of the form
-    res = res.submitForm({ fields: { custname: "test", extradata: "test2" }, submitSelector: "mySubmit" });
+    res = res.submitForm({
+        fields: { custname: "test", extradata: "test2" },
+        submitSelector: "mySubmit",
+    });
 }

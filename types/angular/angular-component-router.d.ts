@@ -103,7 +103,9 @@ declare namespace angular {
          * This method delegates to the child component's `routerCanDeactivate` hook if it exists,
          * and otherwise resolves to true.
          */
-        routerCanDeactivate(nextInstruction: ComponentInstruction): IPromise<boolean>;
+        routerCanDeactivate(
+            nextInstruction: ComponentInstruction,
+        ): IPromise<boolean>;
 
         /**
          * Called by the {@link Router} during recognition phase of a navigation.
@@ -115,7 +117,9 @@ declare namespace angular {
          * Otherwise, this method delegates to the child component's `routerCanReuse` hook if it exists,
          * or resolves to true if the hook is not present.
          */
-        routerCanReuse(nextInstruction: ComponentInstruction): IPromise<boolean>;
+        routerCanReuse(
+            nextInstruction: ComponentInstruction,
+        ): IPromise<boolean>;
     }
 
     interface RouteRegistry {
@@ -133,7 +137,10 @@ declare namespace angular {
          * Given a URL and a parent component, return the most specific instruction for navigating
          * the application into the state specified by the url
          */
-        recognize(url: string, ancestorInstructions: Instruction[]): IPromise<Instruction>;
+        recognize(
+            url: string,
+            ancestorInstructions: Instruction[],
+        ): IPromise<Instruction>;
 
         /**
          * Given a normalized list with component names and params like: `['user', {id: 3 }]`
@@ -142,7 +149,11 @@ declare namespace angular {
          * If the optional param `_aux` is `true`, then we generate starting at an auxiliary
          * route boundary.
          */
-        generate(linkParams: any[], ancestorInstructions: Instruction[], _aux?: boolean): Instruction;
+        generate(
+            linkParams: any[],
+            ancestorInstructions: Instruction[],
+            _aux?: boolean,
+        ): Instruction;
 
         hasRoute(name: string, parentComponent: any): boolean;
 
@@ -241,18 +252,27 @@ declare namespace angular {
          * If the given URL begins with a `/`, router will navigate absolutely.
          * If the given URL does not begin with `/`, the router will navigate relative to this component.
          */
-        navigateByUrl(url: string, _skipLocationChange?: boolean): IPromise<any>;
+        navigateByUrl(
+            url: string,
+            _skipLocationChange?: boolean,
+        ): IPromise<any>;
 
         /**
          * Navigate via the provided instruction. Returns a promise that resolves when navigation is
          * complete.
          */
-        navigateByInstruction(instruction: Instruction, _skipLocationChange?: boolean): IPromise<any>;
+        navigateByInstruction(
+            instruction: Instruction,
+            _skipLocationChange?: boolean,
+        ): IPromise<any>;
 
         /**
          * Updates this router and all descendant routers according to the given instruction
          */
-        commit(instruction: Instruction, _skipLocationChange?: boolean): IPromise<any>;
+        commit(
+            instruction: Instruction,
+            _skipLocationChange?: boolean,
+        ): IPromise<any>;
 
         /**
          * Subscribe to URL updates from the router
@@ -334,7 +354,10 @@ declare namespace angular {
      * {@example router/ts/on_activate/on_activate_example.ts region='routerOnActivate'}
      */
     interface OnActivate {
-        $routerOnActivate(next?: angular.ComponentInstruction, prev?: angular.ComponentInstruction): any;
+        $routerOnActivate(
+            next?: angular.ComponentInstruction,
+            prev?: angular.ComponentInstruction,
+        ): any;
     }
 
     /**
@@ -357,7 +380,10 @@ declare namespace angular {
      * {@example router/ts/can_deactivate/can_deactivate_example.ts region='routerCanDeactivate'}
      */
     interface CanDeactivate {
-        $routerCanDeactivate(next?: ComponentInstruction, prev?: ComponentInstruction): boolean | IPromise<boolean>;
+        $routerCanDeactivate(
+            next?: ComponentInstruction,
+            prev?: ComponentInstruction,
+        ): boolean | IPromise<boolean>;
     }
 
     /**
@@ -376,7 +402,10 @@ declare namespace angular {
      * {@example router/ts/on_deactivate/on_deactivate_example.ts region='routerOnDeactivate'}
      */
     interface OnDeactivate {
-        $routerOnDeactivate(next?: angular.ComponentInstruction, prev?: angular.ComponentInstruction): any;
+        $routerOnDeactivate(
+            next?: angular.ComponentInstruction,
+            prev?: angular.ComponentInstruction,
+        ): any;
     }
 
     /**
@@ -422,7 +451,10 @@ declare namespace angular {
      * {@example router/ts/reuse/reuse_example.ts region='reuseCmp'}
      */
     interface OnReuse {
-        $routerOnReuse(next?: angular.ComponentInstruction, prev?: angular.ComponentInstruction): any;
+        $routerOnReuse(
+            next?: angular.ComponentInstruction,
+            prev?: angular.ComponentInstruction,
+        ): any;
     }
 
     /**
@@ -431,8 +463,7 @@ declare namespace angular {
      * An example of a `Type` is `MyCustomComponent` class, which in JavaScript is be represented by
      * the `MyCustomComponent` constructor function.
      */
-    interface Type extends Function {
-    }
+    interface Type extends Function {}
 
     /**
      * `RouteDefinition` defines a route within a {@link RouteConfig} decorator.

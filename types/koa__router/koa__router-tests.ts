@@ -66,7 +66,10 @@ router.get<{}, {}, string>("user", "/users/:id", (ctx) => {
 
 const match = router.match("/users/:id", "GET");
 
-const mw: Router.Middleware = (ctx: Koa.ParameterizedContext<any, Router.RouterParamContext>, next: Koa.Next) => {
+const mw: Router.Middleware = (
+    ctx: Koa.ParameterizedContext<any, Router.RouterParamContext>,
+    next: Koa.Next,
+) => {
     ctx.body = "Ok";
 };
 
@@ -147,17 +150,21 @@ interface WoohInterface {
 
 const router4 = new Router<MyState, MyContext>({ prefix: "/users" });
 
-router4.get("/", (ctx: Koa.ParameterizedContext<BlahInterface & WoohInterface>, next) => {
-    ctx.state.blah = "blah";
-    ctx.state.wooh = "wooh";
-    return next();
-}, (ctx, next) => {
-    console.log(ctx.state.blah);
-    console.log(ctx.state.wooh);
-    console.log(ctx.state.foo);
-    ctx.body = "Hello World!";
-    return next();
-});
+router4.get(
+    "/",
+    (ctx: Koa.ParameterizedContext<BlahInterface & WoohInterface>, next) => {
+        ctx.state.blah = "blah";
+        ctx.state.wooh = "wooh";
+        return next();
+    },
+    (ctx, next) => {
+        console.log(ctx.state.blah);
+        console.log(ctx.state.wooh);
+        console.log(ctx.state.foo);
+        ctx.body = "Hello World!";
+        return next();
+    },
+);
 
 const middleware1: Koa.Middleware<BlahInterface> = (ctx, next) => {
     ctx.state.blah = "blah";
@@ -167,8 +174,7 @@ const middleware2: Koa.Middleware<WoohInterface> = (ctx, next) => {
     ctx.state.wooh = "blah";
 };
 
-const emptyMiddleware: Koa.Middleware<{}> = (ctx, next) => {
-};
+const emptyMiddleware: Koa.Middleware<{}> = (ctx, next) => {};
 
 function routeHandler1(ctx: Koa.ParameterizedContext<WoohInterface>): void {
     ctx.body = "234";
@@ -197,9 +203,22 @@ router4.delete("/foo", middleware1, routeHandler2);
 router4.head("/foo", middleware2, routeHandler3);
 
 router4.post("/foo", emptyMiddleware, emptyMiddleware, routeHandler4);
-router4.post("/foo", emptyMiddleware, emptyMiddleware, emptyMiddleware, routeHandler4);
+router4.post(
+    "/foo",
+    emptyMiddleware,
+    emptyMiddleware,
+    emptyMiddleware,
+    routeHandler4,
+);
 router4.get("name", "/foo", emptyMiddleware, emptyMiddleware, routeHandler4);
-router4.get("name", "/foo", emptyMiddleware, emptyMiddleware, emptyMiddleware, routeHandler4);
+router4.get(
+    "name",
+    "/foo",
+    emptyMiddleware,
+    emptyMiddleware,
+    emptyMiddleware,
+    routeHandler4,
+);
 
 const router5 = new Router<any, {}>();
 router5.register("/foo", ["GET"], middleware1, {

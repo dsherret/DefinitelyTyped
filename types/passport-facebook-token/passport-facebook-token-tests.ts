@@ -3,7 +3,11 @@ import * as passport from "passport";
 import PassportFacebookToken = require("passport-facebook-token");
 
 const User = {
-    findOrCreate(id: string, provider: string, callback: (err: any, user: any) => void): void {
+    findOrCreate(
+        id: string,
+        provider: string,
+        callback: (err: any, user: any) => void,
+    ): void {
         callback(null, { username: "ray" });
     },
 };

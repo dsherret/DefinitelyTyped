@@ -15,7 +15,10 @@ declare namespace M {
         /**
          * Init carousels.
          */
-        static init(els: MElements, options?: Partial<CarouselOptions>): Carousel[];
+        static init(
+            els: MElements,
+            options?: Partial<CarouselOptions>,
+        ): Carousel[];
 
         /**
          * If the carousel is being clicked or tapped.
@@ -111,7 +114,10 @@ declare namespace M {
 interface JQuery {
     carousel(method: keyof Pick<M.Carousel, "destroy">): JQuery;
     carousel(
-        method: keyof Pick<M.Carousel, "next"> | keyof Pick<M.Carousel, "prev"> | keyof Pick<M.Carousel, "set">,
+        method:
+            | keyof Pick<M.Carousel, "next">
+            | keyof Pick<M.Carousel, "prev">
+            | keyof Pick<M.Carousel, "set">,
         n?: number,
     ): JQuery;
     carousel(options?: Partial<M.CarouselOptions>): JQuery;

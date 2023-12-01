@@ -2,5 +2,8 @@
 export { default as Category, Props as CategoryProps } from "./category";
 export { default as Emoji } from "./emoji/emoji";
 export { default as NimbleEmoji, NimbleEmojiProps } from "./emoji/nimble-emoji";
-export { default as NimblePicker, NimblePickerProps } from "./picker/nimble-picker";
+export {
+    default as NimblePicker,
+    NimblePickerProps,
+} from "./picker/nimble-picker";
 export { default as Picker } from "./picker/picker";

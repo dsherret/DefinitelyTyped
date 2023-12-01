@@ -7,10 +7,13 @@ options.windowClass = "some-css-class";
 options.size = "md";
 
 var dialogs: angular.dialogservice.IDialogService;
-dialogs.error("Error", "An unknown error occurred preventing the completion of the requested action.");
+dialogs.error(
+    "Error",
+    "An unknown error occurred preventing the completion of the requested action.",
+);
 dialogs.wait(
     "Creating User",
-    "Please wait while we attempt to create user \"Michael Conroy.\"<br><br>This should only take a moment.",
+    'Please wait while we attempt to create user "Michael Conroy."<br><br>This should only take a moment.',
     50,
 );
 dialogs.notify(

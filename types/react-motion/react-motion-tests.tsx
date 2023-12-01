@@ -23,14 +23,17 @@ class Root extends React.Component {
 class TransitionTest extends React.Component {
     render() {
         return (
-            <TransitionMotion defaultStyles={this.getDefaultStyles()} styles={this.getStyles()}>
+            <TransitionMotion
+                defaultStyles={this.getDefaultStyles()}
+                styles={this.getStyles()}
+            >
                 {this.renderItems.bind(this)}
             </TransitionMotion>
         );
     }
 
     getDefaultStyles(): TransitionPlainStyle[] {
-        return [1, 2, 3].map(num => {
+        return [1, 2, 3].map((num) => {
             const style: PlainStyle = {
                 height: 0,
             };
@@ -43,7 +46,7 @@ class TransitionTest extends React.Component {
     }
 
     getStyles(): TransitionStyle[] {
-        return [1, 2, 3].map(num => {
+        return [1, 2, 3].map((num) => {
             const style: Style = {
                 height: spring(10),
             };
@@ -58,9 +61,12 @@ class TransitionTest extends React.Component {
     renderItems(interpolatedItems: TransitionStyle[]): JSX.Element {
         return (
             <div>
-                {interpolatedItems.map(config => {
+                {interpolatedItems.map((config) => {
                     return (
-                        <div key={config.key} style={{ height: config.style["height"] as number }}>
+                        <div
+                            key={config.key}
+                            style={{ height: config.style["height"] as number }}
+                        >
                             {config.data}
                         </div>
                     );
@@ -73,7 +79,10 @@ class TransitionTest extends React.Component {
 class StaggeredTest extends React.Component {
     render() {
         return (
-            <StaggeredMotion defaultStyles={[{ h: 0 }, { h: 0 }, { h: 0 }]} styles={this.getStyles.bind(this)}>
+            <StaggeredMotion
+                defaultStyles={[{ h: 0 }, { h: 0 }, { h: 0 }]}
+                styles={this.getStyles.bind(this)}
+            >
                 {() => <div />}
             </StaggeredMotion>
         );
@@ -82,7 +91,10 @@ class StaggeredTest extends React.Component {
     getStyles(prevInterpolatedStyles: PlainStyle[]): Style[] {
         return prevInterpolatedStyles.map((prevStyle, index) => {
             const style: Style = {};
-            style["h"] = (index === 0) ? spring(100) : spring(prevInterpolatedStyles[index - 1]["h"]);
+            style["h"] =
+                index === 0
+                    ? spring(100)
+                    : spring(prevInterpolatedStyles[index - 1]["h"]);
             return style;
         });
     }

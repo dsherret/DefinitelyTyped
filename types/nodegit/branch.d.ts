@@ -12,7 +12,12 @@ export namespace Branch {
 }
 
 export class Branch {
-    static create(repo: Repository, branchName: string, target: Commit, force: number): Promise<Reference>;
+    static create(
+        repo: Repository,
+        branchName: string,
+        target: Commit,
+        force: number,
+    ): Promise<Reference>;
     static createFromAnnotated(
         repository: Repository,
         branchName: string,
@@ -22,9 +27,20 @@ export class Branch {
     static delete(branch: Reference): number;
     static isHead(branch: Reference): number;
     static iteratorNew(repo: Repository, listFlags: number): Promise<any>;
-    static lookup(repo: Repository, branchName: string, branchType: Branch.BRANCH): Promise<Reference>;
-    static move(branch: Reference, newBranchName: string, force: number): Promise<Reference>;
+    static lookup(
+        repo: Repository,
+        branchName: string,
+        branchType: Branch.BRANCH,
+    ): Promise<Reference>;
+    static move(
+        branch: Reference,
+        newBranchName: string,
+        force: number,
+    ): Promise<Reference>;
     static name(ref: Reference): Promise<string>;
-    static setUpstream(branch: Reference, upstreamName: string | null): Promise<number>;
+    static setUpstream(
+        branch: Reference,
+        upstreamName: string | null,
+    ): Promise<number>;
     static upstream(branch: Reference): Promise<Reference>;
 }

@@ -5,10 +5,10 @@ scrollIntoView(someElement);
 
 scrollIntoView(someElement, {
     time: 500, // half a second
-    ease: function(value) {
+    ease: function (value) {
         return Math.pow(value, 2) - value; // Do something weird.
     },
-    validTarget: function(target, parentsScrolled) {
+    validTarget: function (target, parentsScrolled) {
         return parentsScrolled < 2 && !target.matches(".dontScroll");
     },
     align: {
@@ -21,7 +21,7 @@ scrollIntoView(someElement, {
     },
 });
 
-scrollIntoView(someElement, function(type) {
+scrollIntoView(someElement, function (type) {
     // Scrolling done.
     // type will be 'complete' if the scroll completed or 'canceled' if the current scroll was canceled by a new scroll
 });

@@ -9,7 +9,9 @@ export default class EmberModalService extends Service {
     /**
      * Array model.
      */
-    content: EmberArray<ModalModel> & { removeObject: (model: ModalModel) => void };
+    content: EmberArray<ModalModel> & {
+        removeObject: (model: ModalModel) => void;
+    };
 
     /**
      * Creates new modal object and insert it in the array.

@@ -23,7 +23,11 @@ export interface Attributes {
     [key: string]: string | undefined;
 }
 
-export type ElementTag = typeof Comment | typeof CData | typeof ProcessingInstruction | string;
+export type ElementTag =
+    | typeof Comment
+    | typeof CData
+    | typeof ProcessingInstruction
+    | string;
 
 export type ElementText = { toString(): string } | string;
 
@@ -72,12 +76,22 @@ export class QName {
 // special tags
 export function CData(text?: ElementText): Element;
 export function Comment(text?: ElementText): Element;
-export function ProcessingInstruction(target: ElementText, text?: ElementText): Element;
+export function ProcessingInstruction(
+    target: ElementText,
+    text?: ElementText,
+): Element;
 
 export function XML(data: string): Element;
 export function Element(ElementTag: string, attrib?: Attributes): Element;
-export function SubElement(parent: Element, ElementTag: string, attrib?: Attributes): Element;
+export function SubElement(
+    parent: Element,
+    ElementTag: string,
+    attrib?: Attributes,
+): Element;
 
 export function parse(source: string): ElementTree;
 export function register_namespace(prefix: string, uri: string): void;
-export function tostring(element: Element, options: ElementTreeWriteOptions): string;
+export function tostring(
+    element: Element,
+    options: ElementTreeWriteOptions,
+): string;

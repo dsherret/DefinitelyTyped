@@ -26,7 +26,7 @@ export class Login extends React.Component {
                         } else if (result.isCancelled) {
                             alert("login is cancelled.");
                         } else {
-                            AccessToken.getCurrentAccessToken().then(data => {
+                            AccessToken.getCurrentAccessToken().then((data) => {
                                 if (data) {
                                     alert(data.accessToken.toString());
                                 }
@@ -42,14 +42,16 @@ export class Login extends React.Component {
 
 // Attempt a login using the Facebook login dialog asking for default permissions.
 LoginManager.logInWithPermissions(["public_profile"]).then(
-    result => {
+    (result) => {
         if (result.isCancelled) {
             alert("Login cancelled");
         } else {
-            alert(`Login success with permissions: ${result.grantedPermissions}`);
+            alert(
+                `Login success with permissions: ${result.grantedPermissions}`,
+            );
         }
     },
-    error => {
+    (error) => {
         alert(`Login fail with error: ${error}`);
     },
 );
@@ -64,13 +66,13 @@ const shareLinkContent: FBSDK.ShareLinkContent = {
 // Share the link using the share dialog.
 export const shareLinkWithShareDialog = (): void => {
     ShareDialog.canShow(shareLinkContent)
-        .then(canShow => {
+        .then((canShow) => {
             if (canShow) {
                 return ShareDialog.show(shareLinkContent);
             }
         })
         .then(
-            result => {
+            (result) => {
                 if (result.isCancelled) {
                     alert("Share cancelled");
                 } else {
@@ -100,7 +102,7 @@ const userData: FBSDK.UserData = {
     country: "United Kingdom",
 };
 AppEventsLogger.setUserData(userData);
-AppEventsLogger.getUserID().then(result => {
+AppEventsLogger.getUserID().then((result) => {
     if (result) alert(result);
 });
 

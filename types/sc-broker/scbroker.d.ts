@@ -26,15 +26,24 @@ declare class SCBroker extends EventEmitter {
     constructor(options?: { run?: (() => void) | undefined });
     static create(options?: { run?: (() => void) | undefined }): SCBroker;
 
-    on(event: "subscribe" | "unsubscribe", listener: (channel: string) => void): this;
+    on(
+        event: "subscribe" | "unsubscribe",
+        listener: (channel: string) => void,
+    ): this;
     on(event: "publish", listener: (channel: string, data: any) => void): this;
     on(
         event: "masterMessage",
-        listener: (data: any, respond: (err: Error | null, responseData: any) => void) => void,
+        listener: (
+            data: any,
+            respond: (err: Error | null, responseData: any) => void,
+        ) => void,
     ): this;
     on(
         event: "message",
-        listener: (message: any, respond: (err: Error | null, responseData: any) => void) => void,
+        listener: (
+            message: any,
+            respond: (err: Error | null, responseData: any) => void,
+        ) => void,
     ): this;
     on(event: "warning", listener: (err: Error) => void): this;
 
@@ -42,13 +51,28 @@ declare class SCBroker extends EventEmitter {
     run(): void;
     exec(query: SCBroker.QueryFunction, baseKey?: KeyChain): any;
 
-    addMiddleware(type: "subscribe", middleware: SCBroker.SubscribeMiddleware): void;
-    addMiddleware(type: "publish", middleware: SCBroker.PublishMiddleware): void;
+    addMiddleware(
+        type: "subscribe",
+        middleware: SCBroker.SubscribeMiddleware,
+    ): void;
+    addMiddleware(
+        type: "publish",
+        middleware: SCBroker.PublishMiddleware,
+    ): void;
 
-    removeMiddleware(type: "subscribe", middleware: SCBroker.SubscribeMiddleware): void;
-    removeMiddleware(type: "publish", middleware: SCBroker.PublishMiddleware): void;
+    removeMiddleware(
+        type: "subscribe",
+        middleware: SCBroker.SubscribeMiddleware,
+    ): void;
+    removeMiddleware(
+        type: "publish",
+        middleware: SCBroker.PublishMiddleware,
+    ): void;
 
-    sendToMaster(data: any, callback?: (err: Error | null, responseData: any) => void): void;
+    sendToMaster(
+        data: any,
+        callback?: (err: Error | null, responseData: any) => void,
+    ): void;
 }
 
 export = SCBroker;
@@ -91,5 +115,9 @@ declare namespace SCBroker {
         command: object;
     }
 
-    type QueryFunction = (dataMap: FlexiMap, dataExpirer: ExpiryManager, subscriptions: Subscriptions) => any;
+    type QueryFunction = (
+        dataMap: FlexiMap,
+        dataExpirer: ExpiryManager,
+        subscriptions: Subscriptions,
+    ) => any;
 }

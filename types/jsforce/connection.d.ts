@@ -62,7 +62,14 @@ export interface ConnectionOptions extends PartialOAuth2Options {
     redirectUri?: string | undefined;
     refreshToken?: string | undefined;
     refreshFn?:
-        | ((conn: Connection, callback: (err: Error | null, accessToken: string, res?: unknown) => void) => unknown)
+        | ((
+              conn: Connection,
+              callback: (
+                  err: Error | null,
+                  accessToken: string,
+                  res?: unknown,
+              ) => void,
+          ) => unknown)
         | undefined;
     serverUrl?: string | undefined;
     sessionId?: string | undefined;
@@ -143,9 +150,24 @@ export interface IdentityInfo {
 
 export abstract class RestApi {
     get(path: string, options: object, callback: () => object): Promise<object>;
-    post(path: string, body: object, options: object, callback: () => object): Promise<object>;
-    put(path: string, body: object, options: object, callback: () => object): Promise<object>;
-    patch(path: string, body: object, options: object, callback: () => object): Promise<object>;
+    post(
+        path: string,
+        body: object,
+        options: object,
+        callback: () => object,
+    ): Promise<object>;
+    put(
+        path: string,
+        body: object,
+        options: object,
+        callback: () => object,
+    ): Promise<object>;
+    patch(
+        path: string,
+        body: object,
+        options: object,
+        callback: () => object,
+    ): Promise<object>;
     del(path: string, options: object, callback: () => object): Promise<object>;
 }
 
@@ -228,12 +250,18 @@ export abstract class BaseConnection extends EventEmitter {
         type: string,
         records: Record<T> | Array<Record<T>>,
         options?: RestApiOptions,
-        callback?: (err: Error, result: RecordResult | Array<Record<T>>) => void,
+        callback?: (
+            err: Error,
+            result: RecordResult | Array<Record<T>>,
+        ) => void,
     ): Promise<RecordResult | RecordResult[]>;
     update<T>(
         records: Record<T> | Array<Record<T>>,
         options?: RestApiOptions,
-        callback?: (err: Error, result: RecordResult | Array<Record<T>>) => void,
+        callback?: (
+            err: Error,
+            result: RecordResult | Array<Record<T>>,
+        ) => void,
     ): Promise<RecordResult | RecordResult[]>;
     upsert<T>(
         type: string,
@@ -284,20 +312,32 @@ export abstract class BaseConnection extends EventEmitter {
     ): Promise<DescribeSObjectResult[]>;
     describeGlobal$: {
         /** Returns a value from the cache if it exists, otherwise calls Connection.describeGlobal */
-        (callback?: (err: Error, result: DescribeGlobalResult) => void): DescribeGlobalResult;
+        (
+            callback?: (err: Error, result: DescribeGlobalResult) => void,
+        ): DescribeGlobalResult;
         clear(): void;
     };
-    describeGlobal<T>(callback?: (err: Error, result: DescribeGlobalResult) => void): Promise<DescribeGlobalResult>;
+    describeGlobal<T>(
+        callback?: (err: Error, result: DescribeGlobalResult) => void,
+    ): Promise<DescribeGlobalResult>;
     // we want any object to be accepted if the user doesn't decide to give an explicit type
     sobject<T = object>(resource: string): SObject<T>;
-    recent(callback?: (err: Error, result: RecordResult[]) => void): Promise<RecordResult[]>;
-    recent(param: number | string, callback?: (err: Error, result: RecordResult[]) => void): Promise<RecordResult[]>;
+    recent(
+        callback?: (err: Error, result: RecordResult[]) => void,
+    ): Promise<RecordResult[]>;
+    recent(
+        param: number | string,
+        callback?: (err: Error, result: RecordResult[]) => void,
+    ): Promise<RecordResult[]>;
     recent(
         type: string,
         limit: number,
         callback?: (err: Error, result: RecordResult[]) => void,
     ): Promise<RecordResult[]>;
-    search<T>(sosl: string, callback?: (err: Error, result: SearchResult<T>) => void): Promise<SearchResult<T>>;
+    search<T>(
+        sosl: string,
+        callback?: (err: Error, result: SearchResult<T>) => void,
+    ): Promise<SearchResult<T>>;
 }
 
 export class Connection extends BaseConnection {
@@ -327,18 +367,50 @@ export class Connection extends BaseConnection {
         options?: object,
         callback?: (err: Error, result: QueryResult<T>) => void,
     ): Query<QueryResult<T>>;
-    authorize(code: string, callback?: (err: Error, res: UserInfo) => void): Promise<UserInfo>;
-    login(user: string, password: string, callback?: (err: Error, res: UserInfo) => void): Promise<UserInfo>;
-    loginByOAuth2(user: string, password: string, callback?: (err: Error, res: UserInfo) => void): Promise<UserInfo>;
-    loginBySoap(user: string, password: string, callback?: (err: Error, res: UserInfo) => void): Promise<UserInfo>;
-    logout(revoke: boolean, callback?: (err: Error, res: undefined) => void): Promise<void>;
+    authorize(
+        code: string,
+        callback?: (err: Error, res: UserInfo) => void,
+    ): Promise<UserInfo>;
+    login(
+        user: string,
+        password: string,
+        callback?: (err: Error, res: UserInfo) => void,
+    ): Promise<UserInfo>;
+    loginByOAuth2(
+        user: string,
+        password: string,
+        callback?: (err: Error, res: UserInfo) => void,
+    ): Promise<UserInfo>;
+    loginBySoap(
+        user: string,
+        password: string,
+        callback?: (err: Error, res: UserInfo) => void,
+    ): Promise<UserInfo>;
+    logout(
+        revoke: boolean,
+        callback?: (err: Error, res: undefined) => void,
+    ): Promise<void>;
     logout(callback?: (err: Error, res: undefined) => void): Promise<void>;
-    logoutByOAuth2(revoke: boolean, callback?: (err: Error, res: undefined) => void): Promise<void>;
-    logoutByOAuth2(callback?: (err: Error, res: undefined) => void): Promise<void>;
-    logoutBySoap(revoke: boolean, callback?: (err: Error, res: undefined) => void): Promise<void>;
-    logoutBySoap(callback?: (err: Error, res: undefined) => void): Promise<void>;
-    limits(callback?: (err: Error, res: undefined) => void): Promise<LimitsInfo>;
-    identity(callback?: (err: Error, res: IdentityInfo) => void): Promise<IdentityInfo>;
+    logoutByOAuth2(
+        revoke: boolean,
+        callback?: (err: Error, res: undefined) => void,
+    ): Promise<void>;
+    logoutByOAuth2(
+        callback?: (err: Error, res: undefined) => void,
+    ): Promise<void>;
+    logoutBySoap(
+        revoke: boolean,
+        callback?: (err: Error, res: undefined) => void,
+    ): Promise<void>;
+    logoutBySoap(
+        callback?: (err: Error, res: undefined) => void,
+    ): Promise<void>;
+    limits(
+        callback?: (err: Error, res: undefined) => void,
+    ): Promise<LimitsInfo>;
+    identity(
+        callback?: (err: Error, res: IdentityInfo) => void,
+    ): Promise<IdentityInfo>;
     requestPost<T = object>(
         url: string,
         body: object,
@@ -356,5 +428,8 @@ export class Tooling extends BaseConnection {
     _logger: any;
 
     // Specific to tooling
-    executeAnonymous(body: string, callback?: (err: Error, res: any) => void): Promise<ExecuteAnonymousResult>;
+    executeAnonymous(
+        body: string,
+        callback?: (err: Error, res: any) => void,
+    ): Promise<ExecuteAnonymousResult>;
 }

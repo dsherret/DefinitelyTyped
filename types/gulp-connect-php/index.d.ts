@@ -41,7 +41,9 @@ declare namespace PhpDevelopmentServerConnection {
         router?: string | undefined;
     }
 
-    type ConfigCallbackType = typeof OPTIONS_SPAWN_OBJ | typeof OPTIONS_PHP_CLI_ARR;
+    type ConfigCallbackType =
+        | typeof OPTIONS_SPAWN_OBJ
+        | typeof OPTIONS_PHP_CLI_ARR;
 
     type ConfigCallback = (
         type: ConfigCallbackType,
@@ -79,7 +81,10 @@ declare class PhpDevelopmentServerConnection {
      * @param options Options to override ones set in the constructor
      * @param callback Called when the sever is connected. May be passed an error
      */
-    server(options?: PhpDevelopmentServerConnection.Options, callback?: (err?: Error) => void): void;
+    server(
+        options?: PhpDevelopmentServerConnection.Options,
+        callback?: (err?: Error) => void,
+    ): void;
 
     /**
      * Close/Shutdown the PHP development server

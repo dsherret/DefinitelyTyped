@@ -8,7 +8,9 @@ declare const BitField: BitField;
 
 interface BitField {
     (bufferOrOptions?: BitField.Options | Buffer): BitField.BitFieldInstance;
-    new(bufferOrOptions?: BitField.Options | Buffer): BitField.BitFieldInstance;
+    new (
+        bufferOrOptions?: BitField.Options | Buffer,
+    ): BitField.BitFieldInstance;
 }
 
 declare namespace BitField {

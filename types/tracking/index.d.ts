@@ -164,7 +164,11 @@ declare namespace tracking {
          * @param width The pixel canvas width.
          * @param height The pixel data height.
          */
-        abstract track(pixels: Uint8ClampedArray, width: number, height: number): void;
+        abstract track(
+            pixels: Uint8ClampedArray,
+            width: number,
+            height: number,
+        ): void;
     }
 
     /**

@@ -23,10 +23,7 @@ async function usage() {
     await client.writeSymbol("GVL_ReadingAndWriting.Number", 10);
     await client.writeSymbol("GVL_ReadingAndWriting.Issue94", {
         BoolValue: false,
-        ArrayValue: [
-            { ByteValue: 234 },
-            { ByteValue: 99 },
-        ],
+        ArrayValue: [{ ByteValue: 234 }, { ByteValue: 99 }],
     });
 
     await client.convertFromRaw(
@@ -46,11 +43,15 @@ async function usage() {
         sym.name,
     );
 
-    const subscription = await client.subscribe("GVL_Test.IncrementingValue", (data, sub) => {
-        sub.unsubscribe();
+    const subscription = await client.subscribe(
+        "GVL_Test.IncrementingValue",
+        (data, sub) => {
+            sub.unsubscribe();
 
-        console.log(`${data.timeStamp}: Value changed to ${data.value}`);
-    }, 1000);
+            console.log(`${data.timeStamp}: Value changed to ${data.value}`);
+        },
+        1000,
+    );
 
     console.log(`Subscribed to ${subscription.target}`);
 
@@ -67,20 +68,25 @@ async function usage() {
     await client.invokeRpcMethod("GVL_RPC.RpcBlock", "StructTest", {
         Input: {
             SomeText: "Hello RPC method",
-            SomeReal: 1200.50,
+            SomeReal: 1200.5,
             SomeDate: new Date("2020-07-03T14:57:22.000Z"),
         },
     });
 
-    let handle = await client.createVariableHandle("GVL_ReadingAndWriting.ReferenceValue");
+    let handle = await client.createVariableHandle(
+        "GVL_ReadingAndWriting.ReferenceValue",
+    );
 
     await client.writeRawByHandle(
         handle,
-        await client.convertToRaw({
-            SomeText: "struct written from reference",
-            SomeReal: -12345,
-            SomeDate: new Date("1970-04-13T12:25:33.000Z"),
-        }, "ST_Struct"),
+        await client.convertToRaw(
+            {
+                SomeText: "struct written from reference",
+                SomeReal: -12345,
+                SomeDate: new Date("1970-04-13T12:25:33.000Z"),
+            },
+            "ST_Struct",
+        ),
     );
 
     const value = {
@@ -174,7 +180,7 @@ async function usage() {
 
     await client.sendAdsCommand(1, Buffer.alloc(0), 10000);
 
-    client.on("plcRuntimeStateChange", state => {
+    client.on("plcRuntimeStateChange", (state) => {
         console.log("State is now:", state);
     });
 

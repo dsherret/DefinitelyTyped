@@ -27,7 +27,10 @@ declare namespace gulpLesshint {
 
     interface Plugin {
         (options?: Options): {
-            on(event: "data", listener: (file: LessHintFile) => void): Transform;
+            on(
+                event: "data",
+                listener: (file: LessHintFile) => void,
+            ): Transform;
         } & Transform;
         reporter(reporter?: string): Transform;
         failOnError(): Transform;

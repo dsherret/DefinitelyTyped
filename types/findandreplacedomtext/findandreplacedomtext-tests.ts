@@ -20,7 +20,11 @@ findAndReplaceDOMText(d, { find: /(TEST)hello/, wrap: "x", replace: "$1" });
 
 findAndReplaceDOMText(d, { find: /(TEST)hello/g, wrap: "x", replace: "$1" });
 
-findAndReplaceDOMText(d, { find: /\s(TEST)(hello)/g, wrap: "x", replace: "$2" });
+findAndReplaceDOMText(d, {
+    find: /\s(TEST)(hello)/g,
+    wrap: "x",
+    replace: "$2",
+});
 
 findAndReplaceDOMText(d, { find: /\bat\b/, wrap: "x" });
 
@@ -29,7 +33,7 @@ findAndReplaceDOMText(d, { find: /\bat\b/g, wrap: "x" });
 findAndReplaceDOMText(d, {
     find: /\bAAA\b/,
     wrap: "x",
-    forceContext: el => {
+    forceContext: (el) => {
         return el.nodeName.toLowerCase() === "p";
     },
 });
@@ -40,13 +44,21 @@ findAndReplaceDOMText(d, { find: /FooBar/, wrap: "x", forceContext: true });
 
 findAndReplaceDOMText(d, { find: /FooBar/, wrap: "x", forceContext: false });
 
-findAndReplaceDOMText(d, { find: /FooBar/, wrap: "x", forceContext: forcedAContext });
+findAndReplaceDOMText(d, {
+    find: /FooBar/,
+    wrap: "x",
+    forceContext: forcedAContext,
+});
 
-findAndReplaceDOMText(d, { find: /FooBar/, wrap: "x", forceContext: forcedAContext });
+findAndReplaceDOMText(d, {
+    find: /FooBar/,
+    wrap: "x",
+    forceContext: forcedAContext,
+});
 
 findAndReplaceDOMText(d, {
     find: /test/gi,
-    replace: portion => {
+    replace: (portion) => {
         const e = document.createElement("x");
         e.className = "f";
         e.appendChild(document.createTextNode(portion.text));
@@ -63,7 +75,7 @@ findAndReplaceDOMText(d, { find: /x/, wrap: "em" });
 
 findAndReplaceDOMText(d, {
     find: /a/g,
-    replace: portion => {
+    replace: (portion) => {
         return document.createTextNode("b" + portion.text);
     },
 });
@@ -106,7 +118,7 @@ findAndReplaceDOMText(d, {
 findAndReplaceDOMText(d, {
     find: /foo/g,
     wrap: "span",
-    filterElements: el => {
+    filterElements: (el) => {
         return !/^(?:script|style)$/i.test(el.nodeName);
     },
 });
@@ -114,7 +126,7 @@ findAndReplaceDOMText(d, {
 findAndReplaceDOMText(d, {
     find: /foo/g,
     wrap: "span",
-    filterElements: el => {
+    filterElements: (el) => {
         return "script" !== el.nodeName.toLowerCase();
     },
 });
@@ -156,21 +168,21 @@ findAndReplaceDOMText(d, {
 
 findAndReplaceDOMText(d, {
     find: /A+/g,
-    replace: portion => {
+    replace: (portion) => {
         return portion.indexInMatch;
     },
 });
 
 findAndReplaceDOMText(d, {
     find: /A+/g,
-    replace: portion => {
+    replace: (portion) => {
         return portion.indexInMatch;
     },
 });
 
 findAndReplaceDOMText(d, {
     find: /A+/g,
-    replace: portion => {
+    replace: (portion) => {
         return portion.indexInMatch;
     },
 });

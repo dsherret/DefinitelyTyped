@@ -90,16 +90,18 @@ const maxPayment: paypal.Payment = {
                 allowed_payment_method: "asdf",
             },
             item_list: {
-                items: [{
-                    sku: "asdf",
-                    name: "asdf",
-                    description: "asdf",
-                    quantity: 2,
-                    price: "adsf",
-                    currency: "adsf",
-                    tax: "asdf",
-                    url: "asdf",
-                }],
+                items: [
+                    {
+                        sku: "asdf",
+                        name: "asdf",
+                        description: "asdf",
+                        quantity: 2,
+                        price: "adsf",
+                        currency: "adsf",
+                        tax: "asdf",
+                        url: "asdf",
+                    },
+                ],
                 shipping_address: {
                     line1: "asdf",
                     line2: "asdf",
@@ -227,15 +229,19 @@ paypal.notification.webhook.create(webhook, (err, response) => {
 });
 
 // Replace Webhook
-paypal.notification.webhook.replace("asdf", [{ op: "string", path: "asdf", value: "asdf" }], (err, response) => {
-    let test;
-    if (err) {
-        test = err.response.debug_id;
-        test = err.stack;
-        return;
-    }
-    test = response.event_types[0].name;
-});
+paypal.notification.webhook.replace(
+    "asdf",
+    [{ op: "string", path: "asdf", value: "asdf" }],
+    (err, response) => {
+        let test;
+        if (err) {
+            test = err.response.debug_id;
+            test = err.stack;
+            return;
+        }
+        test = response.event_types[0].name;
+    },
+);
 
 // Delete Webhook
 paypal.notification.webhook.del("asdf", (err, response) => {
@@ -307,15 +313,18 @@ paypal.notification.webhookEvent.getAndVerify(webhookEvent, (err, response) => {
 });
 
 // WebhookEvent List
-paypal.notification.webhookEvent.list({ transaction_id: "asdf" }, (err, response) => {
-    let test;
-    if (err) {
-        test = err.response.debug_id;
-        test = err.stack;
-        return;
-    }
-    test = response.events[0].resource;
-});
+paypal.notification.webhookEvent.list(
+    { transaction_id: "asdf" },
+    (err, response) => {
+        let test;
+        if (err) {
+            test = err.response.debug_id;
+            test = err.stack;
+            return;
+        }
+        test = response.events[0].resource;
+    },
+);
 
 // WebhookEvent Resend
 paypal.notification.webhookEvent.resend("id", (err, response) => {
@@ -342,15 +351,20 @@ paypal.notification.webhookEvent.resend("id", (err, response) => {
 });
 
 // WebhookEvent Verify
-paypal.notification.webhookEvent.verify({ header: "asdf" }, webhookEvent, "id", (err, response) => {
-    let test;
-    if (err) {
-        test = err.response.debug_id;
-        test = err.stack;
-        return;
-    }
-    test = response.verification_status;
-});
+paypal.notification.webhookEvent.verify(
+    { header: "asdf" },
+    webhookEvent,
+    "id",
+    (err, response) => {
+        let test;
+        if (err) {
+            test = err.response.debug_id;
+            test = err.stack;
+            return;
+        }
+        test = response.verification_status;
+    },
+);
 
 // WebhookEventType List
 paypal.notification.webhookEventType.list((err, response) => {
@@ -389,15 +403,19 @@ paypal.authorization.capture("id", captureRequest, (err, response) => {
 });
 
 // ReAuthorization
-paypal.authorization.reauthorize("id", { total: "10", currency: "USD" }, (err, response) => {
-    let test;
-    if (err) {
-        test = err.response.debug_id;
-        test = err.stack;
-        return;
-    }
-    test = response.id;
-});
+paypal.authorization.reauthorize(
+    "id",
+    { total: "10", currency: "USD" },
+    (err, response) => {
+        let test;
+        if (err) {
+            test = err.response.debug_id;
+            test = err.stack;
+            return;
+        }
+        test = response.id;
+    },
+);
 
 // Capture Get
 paypal.capture.get("id", (err, response) => {
@@ -434,12 +452,14 @@ const minInvoice: paypal.invoice.Invoice = {};
 // Max Invoice
 const maxInvoice: paypal.invoice.Invoice = {
     allow_tip: true,
-    billing_info: [{
-        email: "asfd",
-        language: "string",
-        notification_channel: "string",
-        additional_info: "string",
-    }],
+    billing_info: [
+        {
+            email: "asfd",
+            language: "string",
+            notification_channel: "string",
+            additional_info: "string",
+        },
+    ],
     discount: {
         percent: 2,
         amount: {
@@ -463,23 +483,25 @@ const maxInvoice: paypal.invoice.Invoice = {
         },
     },
     invoice_date: "asdf",
-    items: [{
-        name: "asdf",
-        description: "asdf",
-        quantity: 2,
-        unit_price: {
-            currency: "USD",
-            value: "20",
+    items: [
+        {
+            name: "asdf",
+            description: "asdf",
+            quantity: 2,
+            unit_price: {
+                currency: "USD",
+                value: "20",
+            },
+            tax: {
+                percent: 20,
+            },
+            date: "asdf",
+            discount: {
+                percent: 20,
+            },
+            unit_of_measure: "asdf",
         },
-        tax: {
-            percent: 20,
-        },
-        date: "asdf",
-        discount: {
-            percent: 20,
-        },
-        unit_of_measure: "asdf",
-    }],
+    ],
     merchant_info: {
         email: "asdf",
         first_name: "asdf",

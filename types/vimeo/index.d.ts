@@ -5,7 +5,10 @@ export type CompleteCallback = (
     headers?: object,
 ) => void;
 
-export type ProgressCallback = (bytesUploaded: number, bytesTotal: number) => void;
+export type ProgressCallback = (
+    bytesUploaded: number,
+    bytesTotal: number,
+) => void;
 export type ErrorCallback = (err: string) => void;
 export type UriCallback = (uri: string) => void;
 
@@ -90,7 +93,11 @@ export class Vimeo {
      *                                for more.
      * @param state         A unique state that will be returned to you on your redirect URI.
      */
-    buildAuthorizationEndpoint(redirectUri: string, scope: string | string[], state: string): void;
+    buildAuthorizationEndpoint(
+        redirectUri: string,
+        scope: string | string[],
+        state: string,
+    ): void;
 
     /**
      * Generates an unauthenticated access token. This is necessary to make unauthenticated requests
@@ -101,7 +108,10 @@ export class Vimeo {
      *                          occured the first parameter will be that error, otherwise the first
      *                          parameter will be null.
      */
-    generateClientCredentials(scope: string | string[], fn: CompleteCallback): void;
+    generateClientCredentials(
+        scope: string | string[],
+        fn: CompleteCallback,
+    ): void;
 
     /**
      * Upload a file.

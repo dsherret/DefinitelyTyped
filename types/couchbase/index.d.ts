@@ -154,7 +154,11 @@ declare class ClassicAuthenticator implements Authenticator {
      * @param username Cluster administration username.
      * @param password Cluster administration password.
      */
-    constructor(buckets: { [key: string]: string }, username: string, password: string);
+    constructor(
+        buckets: { [key: string]: string },
+        username: string,
+        password: string,
+    );
 
     username: string;
     password: string;
@@ -541,7 +545,12 @@ interface BucketManager {
      * Builds any indexes that were previously created with the deferred attribute.
      * @param callback The callback function.
      */
-    buildDeferredIndexes(callback: (err: CouchbaseError | null, deferredIndexes: string[]) => void): void;
+    buildDeferredIndexes(
+        callback: (
+            err: CouchbaseError | null,
+            deferredIndexes: string[],
+        ) => void,
+    ): void;
 
     /**
      * Creates a non-primary GSI index with an optional name.
@@ -550,7 +559,11 @@ interface BucketManager {
      * @param options
      * @param callback The callback function.
      */
-    createIndex(indexName: string, fields: string[], callback: (err: CouchbaseError | null) => void): void;
+    createIndex(
+        indexName: string,
+        fields: string[],
+        callback: (err: CouchbaseError | null) => void,
+    ): void;
 
     /**
      * Creates a non-primary GSI index with an optional name.
@@ -578,7 +591,10 @@ interface BucketManager {
      * @param options
      * @param callback The callback function.
      */
-    createPrimaryIndex(options: CreateIndexOptions, callback: (err: CouchbaseError | null) => void): void;
+    createPrimaryIndex(
+        options: CreateIndexOptions,
+        callback: (err: CouchbaseError | null) => void,
+    ): void;
 
     /**
      * Drops a specific GSI index by name.
@@ -586,7 +602,10 @@ interface BucketManager {
      * @param options
      * @param callback The callback function.
      */
-    dropIndex(indexName: string, callback: (err: CouchbaseError | null) => void): void;
+    dropIndex(
+        indexName: string,
+        callback: (err: CouchbaseError | null) => void,
+    ): void;
 
     /**
      * Drops a specific GSI index by name.
@@ -594,7 +613,11 @@ interface BucketManager {
      * @param options
      * @param callback The callback function.
      */
-    dropIndex(indexName: string, options: DropIndexOptions, callback: (err: CouchbaseError | null) => void): void;
+    dropIndex(
+        indexName: string,
+        options: DropIndexOptions,
+        callback: (err: CouchbaseError | null) => void,
+    ): void;
 
     /**
      * Drops a primary GSI index.
@@ -608,7 +631,10 @@ interface BucketManager {
      * @param options
      * @param callback The callback function.
      */
-    dropPrimaryIndex(options: DropPrimaryIndexOptions, callback: (err: CouchbaseError | null) => void): void;
+    dropPrimaryIndex(
+        options: DropPrimaryIndexOptions,
+        callback: (err: CouchbaseError | null) => void,
+    ): void;
 
     /**
      * Flushes the cluster, deleting all data stored within this bucket. Note that this method requires the Flush permission to be enabled on the bucket from the management console before it will work.
@@ -633,7 +659,12 @@ interface BucketManager {
      * Retrieves a list of the indexes currently configured on the cluster.
      * @param callback The callback function.
      */
-    getIndexes(callback: (err: CouchbaseError | null, indexes: IndexInfo[] | null) => void): void;
+    getIndexes(
+        callback: (
+            err: CouchbaseError | null,
+            indexes: IndexInfo[] | null,
+        ) => void,
+    ): void;
 
     /**
      * Registers a design document to this bucket, failing if it already exists.
@@ -666,7 +697,10 @@ interface BucketManager {
      * @param watchList List of indexes to watch.
      * @param callback The callback function.
      */
-    watchIndexes(watchList: string[], callback: (err: Error | null) => void): void;
+    watchIndexes(
+        watchList: string[],
+        callback: (err: Error | null) => void,
+    ): void;
 
     /**
      * Watches a list of indexes, waiting for them to become available for use.
@@ -674,7 +708,11 @@ interface BucketManager {
      * @param options
      * @param callback The callback function.
      */
-    watchIndexes(watchList: string[], options: WatchIndexesOptions, callback: (err: Error | null) => void): void;
+    watchIndexes(
+        watchList: string[],
+        options: WatchIndexesOptions,
+        callback: (err: Error | null) => void,
+    ): void;
 }
 
 /**
@@ -768,7 +806,11 @@ declare class ViewQuery {
      * @param end
      * @param inclusive_end
      */
-    range(start: any | any[], end: any | any[], inclusive_end?: boolean): ViewQuery;
+    range(
+        start: any | any[],
+        end: any | any[],
+        inclusive_end?: boolean,
+    ): ViewQuery;
 
     /**
      * Specifies whether to execute the map-reduce reduce step.
@@ -1001,12 +1043,16 @@ declare abstract class SearchQuery {
     /**
      * Creates a query for matches all of a list of subqueries in an index.
      */
-    static conjuncts(queries: readonly SearchQuery.Query[]): SearchQuery.ConjunctionQuery;
+    static conjuncts(
+        queries: readonly SearchQuery.Query[],
+    ): SearchQuery.ConjunctionQuery;
 
     /**
      * Creates a query for matches all of a list of subqueries in an index.
      */
-    static conjuncts(...queries: SearchQuery.Query[]): SearchQuery.ConjunctionQuery;
+    static conjuncts(
+        ...queries: SearchQuery.Query[]
+    ): SearchQuery.ConjunctionQuery;
 
     /**
      * Creates a search query for matching date ranges in an index.
@@ -1016,12 +1062,16 @@ declare abstract class SearchQuery {
     /**
      * Creates a query for matches any of a list of subqueries in an index.
      */
-    static disjuncts(queries: readonly SearchQuery.Query[]): SearchQuery.DisjunctionQuery;
+    static disjuncts(
+        queries: readonly SearchQuery.Query[],
+    ): SearchQuery.DisjunctionQuery;
 
     /**
      * Creates a query for matches any of a list of subqueries in an index.
      */
-    static disjuncts(...queries: SearchQuery.Query[]): SearchQuery.DisjunctionQuery;
+    static disjuncts(
+        ...queries: SearchQuery.Query[]
+    ): SearchQuery.DisjunctionQuery;
 
     /**
      * Creates a query which allows you to match a list of document IDs in an index.
@@ -1143,7 +1193,10 @@ declare abstract class SearchQuery {
     /**
      * Request a particular highlight style and field list for this query.
      */
-    highlight(style: SearchQuery.HighlightStyle, fields: readonly string[]): this;
+    highlight(
+        style: SearchQuery.HighlightStyle,
+        fields: readonly string[],
+    ): this;
 
     /**
      * Request a particular highlight style and field list for this query.
@@ -1180,8 +1233,7 @@ declare abstract class SearchQuery {
 }
 
 declare namespace SearchQuery {
-    abstract class Query {
-    }
+    abstract class Query {}
 
     abstract class BooleanQuery extends Query {
         /**
@@ -1339,11 +1391,9 @@ declare namespace SearchQuery {
         field(field: string): this;
     }
 
-    abstract class MatchAllQuery extends Query {
-    }
+    abstract class MatchAllQuery extends Query {}
 
-    abstract class MatchNoneQuery extends Query {
-    }
+    abstract class MatchNoneQuery extends Query {}
 
     abstract class MatchPhraseQuery extends Query {
         /**
@@ -1574,12 +1624,10 @@ declare namespace SearchQuery {
     }
 }
 
-declare class SearchFacet {
-}
+declare class SearchFacet {}
 
 declare namespace SearchFacet {
-    class TermFacet extends SearchFacet {
-    }
+    class TermFacet extends SearchFacet {}
 
     function term(field: string, size: number): TermFacet;
 
@@ -1604,13 +1652,11 @@ declare class SearchSort {
 }
 
 declare namespace SearchSort {
-    class ScoreSort extends SearchSort {
-    }
+    class ScoreSort extends SearchSort {}
 
     function score(): ScoreSort;
 
-    class IdSort extends SearchSort {
-    }
+    class IdSort extends SearchSort {}
 
     function id(): IdSort;
 
@@ -1626,7 +1672,11 @@ declare namespace SearchSort {
         unit(unit: string): this;
     }
 
-    function geoDistance(field: string, lat: number, lon: number): GeoDistanceSort;
+    function geoDistance(
+        field: string,
+        lat: number,
+        lon: number,
+    ): GeoDistanceSort;
 }
 
 /**
@@ -1689,7 +1739,11 @@ interface Bucket extends events.EventEmitter {
      * @param fragment The document's contents to append.
      * @param callback The callback function.
      */
-    append(key: string | Buffer, fragment: any, callback: Bucket.OpCallback): void;
+    append(
+        key: string | Buffer,
+        fragment: any,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * @param key The target document key.
@@ -1697,7 +1751,12 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    append(key: string | Buffer, fragment: any, options: AppendOptions, callback: Bucket.OpCallback): void;
+    append(
+        key: string | Buffer,
+        fragment: any,
+        options: AppendOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Increments or decrements a key's numeric value.
@@ -1706,7 +1765,11 @@ interface Bucket extends events.EventEmitter {
      * @param delta The amount to add or subtract from the counter value. This value may be any non-zero integer.
      * @param callback The callback function.
      */
-    counter(key: string | Buffer, delta: number, callback: Bucket.OpCallback): void;
+    counter(
+        key: string | Buffer,
+        delta: number,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * @param key The target document key.
@@ -1714,7 +1777,12 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    counter(key: string | Buffer, delta: number, options: CounterOptions, callback: Bucket.OpCallback): void;
+    counter(
+        key: string | Buffer,
+        delta: number,
+        options: CounterOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Shuts down this connection.
@@ -1759,7 +1827,11 @@ interface Bucket extends events.EventEmitter {
      * @param callback The callback function.
      * @returns {}
      */
-    getAndLock(key: string, options: GetAndLockOptions, callback: Bucket.OpCallback): void;
+    getAndLock(
+        key: string,
+        options: GetAndLockOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Retrieves a document and updates the expiry of the item at the same time.
@@ -1768,7 +1840,12 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    getAndTouch(key: string | Buffer, expiry: number, options: any, callback: Bucket.OpCallback): void;
+    getAndTouch(
+        key: string | Buffer,
+        expiry: number,
+        options: any,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Retrieves a document and updates the expiry of the item at the same time.
@@ -1776,14 +1853,21 @@ interface Bucket extends events.EventEmitter {
      * @param expiry The expiration time to use. If a value of 0 is provided, then the current expiration time is cleared and the key is set to never expire. Otherwise, the key is updated to expire in the time provided (in seconds).
      * @param callback The callback function.
      */
-    getAndTouch(key: string | Buffer, expiry: number, callback: Bucket.OpCallback): void;
+    getAndTouch(
+        key: string | Buffer,
+        expiry: number,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Retrieves a list of keys
      * @param keys The target document keys.
      * @param callback The callback function.
      */
-    getMulti(key: ReadonlyArray<string | Buffer>, callback: Bucket.MultiGetCallback): void;
+    getMulti(
+        key: ReadonlyArray<string | Buffer>,
+        callback: Bucket.MultiGetCallback,
+    ): void;
 
     /**
      * Get a document from a replica server in your cluster.
@@ -1798,7 +1882,11 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    getReplica(key: string | Buffer, options: GetReplicaOptions, callback: Bucket.OpCallback): void;
+    getReplica(
+        key: string | Buffer,
+        options: GetReplicaOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Identical to Bucket#upsert but will fail if the document already exists.
@@ -1815,7 +1903,12 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    insert(key: string | Buffer, value: any, options: InsertOptions, callback: Bucket.OpCallback): void;
+    insert(
+        key: string | Buffer,
+        value: any,
+        options: InsertOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Returns an instance of a BuckerManager for performing management operations against a bucket.
@@ -1837,28 +1930,42 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    prepend(key: string, fragment: any, options: PrependOptions, callback: Bucket.OpCallback): void;
+    prepend(
+        key: string,
+        fragment: any,
+        options: PrependOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Executes a previously prepared query object.
      * @param query The query to execute.
      * @param callback The callback function.
      */
-    query(query: ViewQuery | SpatialQuery, callback?: Bucket.QueryCallback): Bucket.ViewQueryResponse;
+    query(
+        query: ViewQuery | SpatialQuery,
+        callback?: Bucket.QueryCallback,
+    ): Bucket.ViewQueryResponse;
 
     /**
      * Executes a previously prepared query object.
      * @param query The query to execute.
      * @param callback The callback function.
      */
-    query(query: N1qlQuery, callback?: Bucket.N1qlQueryCallback): Bucket.N1qlQueryResponse;
+    query(
+        query: N1qlQuery,
+        callback?: Bucket.N1qlQueryCallback,
+    ): Bucket.N1qlQueryResponse;
 
     /**
      * Executes a previously prepared query object.
      * @param query The query to execute.
      * @param callback The callback function.
      */
-    query(query: SearchQuery, callback?: Bucket.FtsQueryCallback): Bucket.FtsQueryResponse;
+    query(
+        query: SearchQuery,
+        callback?: Bucket.FtsQueryCallback,
+    ): Bucket.FtsQueryResponse;
 
     /**
      * Executes a previously prepared query object.
@@ -1885,7 +1992,11 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    remove(key: string | Buffer, options: RemoveOptions, callback: Bucket.OpCallback): void;
+    remove(
+        key: string | Buffer,
+        options: RemoveOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Identical to Bucket#upsert, but will only succeed if the document exists already (i.e. the inverse of Bucket#insert).
@@ -1893,7 +2004,11 @@ interface Bucket extends events.EventEmitter {
      * @param value The document's contents.
      * @param callback The callback function.
      */
-    replace(key: string | Buffer, value: any, callback: Bucket.OpCallback): void;
+    replace(
+        key: string | Buffer,
+        value: any,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Identical to Bucket#upsert, but will only succeed if the document exists already (i.e. the inverse of Bucket#insert).
@@ -1902,14 +2017,22 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    replace(key: string | Buffer, value: any, options: ReplaceOptions, callback: Bucket.OpCallback): void;
+    replace(
+        key: string | Buffer,
+        value: any,
+        options: ReplaceOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Configures a custom set of transcoder functions for encoding and decoding values that are being stored or retreived from the server.
      * @param encoder The function for encoding.
      * @param decoder The function for decoding.
      */
-    setTranscoder(encoder: Bucket.EncoderFunction, decoder: Bucket.DecoderFunction): void;
+    setTranscoder(
+        encoder: Bucket.EncoderFunction,
+        decoder: Bucket.DecoderFunction,
+    ): void;
 
     /**
      * Update the document expiration time.
@@ -1918,7 +2041,12 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    touch(key: string | Buffer, expiry: number, options: TouchOptions, callback: Bucket.OpCallback): void;
+    touch(
+        key: string | Buffer,
+        expiry: number,
+        options: TouchOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Unlock a previously locked document on the server. See the Bucket#lock method for more details on locking.
@@ -1926,7 +2054,11 @@ interface Bucket extends events.EventEmitter {
      * @param cas The CAS value returned when the key was locked. This operation will fail if the CAS value provided does not match that which was the result of the original lock operation.
      * @param callback The callback function.
      */
-    unlock(key: string | Buffer, cas: Bucket.CAS, callback: Bucket.OpCallback): void;
+    unlock(
+        key: string | Buffer,
+        cas: Bucket.CAS,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Unlock a previously locked document on the server. See the Bucket#lock method for more details on locking.
@@ -1935,7 +2067,12 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    unlock(key: string | Buffer, cas: Bucket.CAS, options: any, callback: Bucket.OpCallback): void;
+    unlock(
+        key: string | Buffer,
+        cas: Bucket.CAS,
+        options: any,
+        callback: Bucket.OpCallback,
+    ): void;
 
     /**
      * Stores a document to the bucket.
@@ -1952,10 +2089,18 @@ interface Bucket extends events.EventEmitter {
      * @param options The options object.
      * @param callback The callback function.
      */
-    upsert(key: string | Buffer, value: any, options: UpsertOptions, callback: Bucket.OpCallback): void;
+    upsert(
+        key: string | Buffer,
+        value: any,
+        options: UpsertOptions,
+        callback: Bucket.OpCallback,
+    ): void;
 
     addListener(event: "connect", listener: () => void): this;
-    addListener(event: "error", listener: (error: CouchbaseError) => void): this;
+    addListener(
+        event: "error",
+        listener: (error: CouchbaseError) => void,
+    ): this;
 
     on(event: "connect", listener: () => void): this;
     on(event: "error", listener: (error: CouchbaseError) => void): this;
@@ -1964,10 +2109,16 @@ interface Bucket extends events.EventEmitter {
     once(event: "error", listener: (error: CouchbaseError) => void): this;
 
     prependListener(event: "connect", listener: () => void): this;
-    prependListener(event: "error", listener: (error: CouchbaseError) => void): this;
+    prependListener(
+        event: "error",
+        listener: (error: CouchbaseError) => void,
+    ): this;
 
     prependOnceListener(event: "connect", listener: () => void): this;
-    prependOnceListener(event: "error", listener: (error: CouchbaseError) => void): this;
+    prependOnceListener(
+        event: "error",
+        listener: (error: CouchbaseError) => void,
+    ): this;
 }
 
 declare namespace Bucket {
@@ -1980,7 +2131,11 @@ declare namespace Bucket {
          * @param rows The rows returned from the query.
          * @param meta The metadata returned by the query.
          */
-        (error: CouchbaseError | null, rows: any[] | null, meta: Bucket.ViewQueryResponse.Meta): void;
+        (
+            error: CouchbaseError | null,
+            rows: any[] | null,
+            meta: Bucket.ViewQueryResponse.Meta,
+        ): void;
     }
 
     /**
@@ -1992,7 +2147,11 @@ declare namespace Bucket {
          * @param rows The rows returned from the query.
          * @param meta The metadata returned by the query.
          */
-        (error: CouchbaseError | null, rows: any[] | null, meta: Bucket.N1qlQueryResponse.Meta): void;
+        (
+            error: CouchbaseError | null,
+            rows: any[] | null,
+            meta: Bucket.N1qlQueryResponse.Meta,
+        ): void;
     }
 
     /**
@@ -2004,7 +2163,11 @@ declare namespace Bucket {
          * @param rows The rows returned from the query.
          * @param meta The metadata returned by the query.
          */
-        (error: CouchbaseError | null, rows: any[] | null, meta: Bucket.FtsQueryResponse.Meta): void;
+        (
+            error: CouchbaseError | null,
+            rows: any[] | null,
+            meta: Bucket.FtsQueryResponse.Meta,
+        ): void;
     }
 
     /**
@@ -2060,37 +2223,90 @@ declare namespace Bucket {
      * The CAS value is a special object that indicates the current state of the item on the server. Each time an object is mutated on the server, the value is changed. CAS objects can be used in conjunction with mutation operations to ensure that the value on the server matches the local value retrieved by the client. This is useful when doing document updates on the server as you can ensure no changes were applied by other clients while you were in the process of mutating the document locally.
      * In the Node.js SDK, the CAS is represented as an opaque value. As such, you cannot generate CAS objects, but should rather use the values returned from a Bucket.OpCallback.
      */
-    interface CAS {
-    }
+    interface CAS {}
 
     /**
      * An event emitter allowing you to bind to various query result set events.
      */
     interface N1qlQueryResponse extends events.EventEmitter {
-        addListener(event: "end", listener: (meta: N1qlQueryResponse.Meta) => void): this;
-        addListener(event: "error", listener: (error: CouchbaseError) => void): this;
-        addListener(event: "row", listener: (row: any, meta: N1qlQueryResponse.Meta) => void): this;
-        addListener(event: "rows", listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void): this;
+        addListener(
+            event: "end",
+            listener: (meta: N1qlQueryResponse.Meta) => void,
+        ): this;
+        addListener(
+            event: "error",
+            listener: (error: CouchbaseError) => void,
+        ): this;
+        addListener(
+            event: "row",
+            listener: (row: any, meta: N1qlQueryResponse.Meta) => void,
+        ): this;
+        addListener(
+            event: "rows",
+            listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void,
+        ): this;
 
-        on(event: "end", listener: (meta: N1qlQueryResponse.Meta) => void): this;
+        on(
+            event: "end",
+            listener: (meta: N1qlQueryResponse.Meta) => void,
+        ): this;
         on(event: "error", listener: (error: CouchbaseError) => void): this;
-        on(event: "row", listener: (row: any, meta: N1qlQueryResponse.Meta) => void): this;
-        on(event: "rows", listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void): this;
+        on(
+            event: "row",
+            listener: (row: any, meta: N1qlQueryResponse.Meta) => void,
+        ): this;
+        on(
+            event: "rows",
+            listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void,
+        ): this;
 
-        once(event: "end", listener: (meta: N1qlQueryResponse.Meta) => void): this;
+        once(
+            event: "end",
+            listener: (meta: N1qlQueryResponse.Meta) => void,
+        ): this;
         once(event: "error", listener: (error: CouchbaseError) => void): this;
-        once(event: "row", listener: (row: any, meta: N1qlQueryResponse.Meta) => void): this;
-        once(event: "rows", listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void): this;
+        once(
+            event: "row",
+            listener: (row: any, meta: N1qlQueryResponse.Meta) => void,
+        ): this;
+        once(
+            event: "rows",
+            listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void,
+        ): this;
 
-        prependListener(event: "end", listener: (meta: N1qlQueryResponse.Meta) => void): this;
-        prependListener(event: "error", listener: (error: CouchbaseError) => void): this;
-        prependListener(event: "row", listener: (row: any, meta: N1qlQueryResponse.Meta) => void): this;
-        prependListener(event: "rows", listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void): this;
+        prependListener(
+            event: "end",
+            listener: (meta: N1qlQueryResponse.Meta) => void,
+        ): this;
+        prependListener(
+            event: "error",
+            listener: (error: CouchbaseError) => void,
+        ): this;
+        prependListener(
+            event: "row",
+            listener: (row: any, meta: N1qlQueryResponse.Meta) => void,
+        ): this;
+        prependListener(
+            event: "rows",
+            listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void,
+        ): this;
 
-        prependOnceListener(event: "end", listener: (meta: N1qlQueryResponse.Meta) => void): this;
-        prependOnceListener(event: "error", listener: (error: CouchbaseError) => void): this;
-        prependOnceListener(event: "row", listener: (row: any, meta: N1qlQueryResponse.Meta) => void): this;
-        prependOnceListener(event: "rows", listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void): this;
+        prependOnceListener(
+            event: "end",
+            listener: (meta: N1qlQueryResponse.Meta) => void,
+        ): this;
+        prependOnceListener(
+            event: "error",
+            listener: (error: CouchbaseError) => void,
+        ): this;
+        prependOnceListener(
+            event: "row",
+            listener: (row: any, meta: N1qlQueryResponse.Meta) => void,
+        ): this;
+        prependOnceListener(
+            event: "rows",
+            listener: (rows: any[], meta: N1qlQueryResponse.Meta) => void,
+        ): this;
     }
 
     namespace N1qlQueryResponse {
@@ -2117,30 +2333,84 @@ declare namespace Bucket {
      * An event emitter allowing you to bind to various query result set events.
      */
     interface ViewQueryResponse extends events.EventEmitter {
-        addListener(event: "end", listener: (meta: ViewQueryResponse.Meta) => void): this;
-        addListener(event: "error", listener: (error: CouchbaseError) => void): this;
-        addListener(event: "row", listener: (row: any, meta: ViewQueryResponse.Meta) => void): this;
-        addListener(event: "rows", listener: (rows: any[], meta: ViewQueryResponse.Meta) => void): this;
+        addListener(
+            event: "end",
+            listener: (meta: ViewQueryResponse.Meta) => void,
+        ): this;
+        addListener(
+            event: "error",
+            listener: (error: CouchbaseError) => void,
+        ): this;
+        addListener(
+            event: "row",
+            listener: (row: any, meta: ViewQueryResponse.Meta) => void,
+        ): this;
+        addListener(
+            event: "rows",
+            listener: (rows: any[], meta: ViewQueryResponse.Meta) => void,
+        ): this;
 
-        on(event: "end", listener: (meta: ViewQueryResponse.Meta) => void): this;
+        on(
+            event: "end",
+            listener: (meta: ViewQueryResponse.Meta) => void,
+        ): this;
         on(event: "error", listener: (error: CouchbaseError) => void): this;
-        on(event: "row", listener: (row: any, meta: ViewQueryResponse.Meta) => void): this;
-        on(event: "rows", listener: (rows: any[], meta: ViewQueryResponse.Meta) => void): this;
+        on(
+            event: "row",
+            listener: (row: any, meta: ViewQueryResponse.Meta) => void,
+        ): this;
+        on(
+            event: "rows",
+            listener: (rows: any[], meta: ViewQueryResponse.Meta) => void,
+        ): this;
 
-        once(event: "end", listener: (meta: ViewQueryResponse.Meta) => void): this;
+        once(
+            event: "end",
+            listener: (meta: ViewQueryResponse.Meta) => void,
+        ): this;
         once(event: "error", listener: (error: CouchbaseError) => void): this;
-        once(event: "row", listener: (row: any, meta: ViewQueryResponse.Meta) => void): this;
-        once(event: "rows", listener: (rows: any[], meta: ViewQueryResponse.Meta) => void): this;
+        once(
+            event: "row",
+            listener: (row: any, meta: ViewQueryResponse.Meta) => void,
+        ): this;
+        once(
+            event: "rows",
+            listener: (rows: any[], meta: ViewQueryResponse.Meta) => void,
+        ): this;
 
-        prependListener(event: "end", listener: (meta: ViewQueryResponse.Meta) => void): this;
-        prependListener(event: "error", listener: (error: CouchbaseError) => void): this;
-        prependListener(event: "row", listener: (row: any, meta: ViewQueryResponse.Meta) => void): this;
-        prependListener(event: "rows", listener: (rows: any[], meta: ViewQueryResponse.Meta) => void): this;
+        prependListener(
+            event: "end",
+            listener: (meta: ViewQueryResponse.Meta) => void,
+        ): this;
+        prependListener(
+            event: "error",
+            listener: (error: CouchbaseError) => void,
+        ): this;
+        prependListener(
+            event: "row",
+            listener: (row: any, meta: ViewQueryResponse.Meta) => void,
+        ): this;
+        prependListener(
+            event: "rows",
+            listener: (rows: any[], meta: ViewQueryResponse.Meta) => void,
+        ): this;
 
-        prependOnceListener(event: "end", listener: (meta: ViewQueryResponse.Meta) => void): this;
-        prependOnceListener(event: "error", listener: (error: CouchbaseError) => void): this;
-        prependOnceListener(event: "row", listener: (row: any, meta: ViewQueryResponse.Meta) => void): this;
-        prependOnceListener(event: "rows", listener: (rows: any[], meta: ViewQueryResponse.Meta) => void): this;
+        prependOnceListener(
+            event: "end",
+            listener: (meta: ViewQueryResponse.Meta) => void,
+        ): this;
+        prependOnceListener(
+            event: "error",
+            listener: (error: CouchbaseError) => void,
+        ): this;
+        prependOnceListener(
+            event: "row",
+            listener: (row: any, meta: ViewQueryResponse.Meta) => void,
+        ): this;
+        prependOnceListener(
+            event: "rows",
+            listener: (rows: any[], meta: ViewQueryResponse.Meta) => void,
+        ): this;
     }
 
     namespace ViewQueryResponse {
@@ -2159,30 +2429,81 @@ declare namespace Bucket {
      * An event emitter allowing you to bind to various query result set events.
      */
     interface FtsQueryResponse extends events.EventEmitter {
-        addListener(event: "end", listener: (meta: FtsQueryResponse.Meta) => void): this;
-        addListener(event: "error", listener: (error: CouchbaseError) => void): this;
-        addListener(event: "row", listener: (row: any, meta: FtsQueryResponse.Meta) => void): this;
-        addListener(event: "rows", listener: (rows: any[], meta: FtsQueryResponse.Meta) => void): this;
+        addListener(
+            event: "end",
+            listener: (meta: FtsQueryResponse.Meta) => void,
+        ): this;
+        addListener(
+            event: "error",
+            listener: (error: CouchbaseError) => void,
+        ): this;
+        addListener(
+            event: "row",
+            listener: (row: any, meta: FtsQueryResponse.Meta) => void,
+        ): this;
+        addListener(
+            event: "rows",
+            listener: (rows: any[], meta: FtsQueryResponse.Meta) => void,
+        ): this;
 
         on(event: "end", listener: (meta: FtsQueryResponse.Meta) => void): this;
         on(event: "error", listener: (error: CouchbaseError) => void): this;
-        on(event: "row", listener: (row: any, meta: FtsQueryResponse.Meta) => void): this;
-        on(event: "rows", listener: (rows: any[], meta: FtsQueryResponse.Meta) => void): this;
+        on(
+            event: "row",
+            listener: (row: any, meta: FtsQueryResponse.Meta) => void,
+        ): this;
+        on(
+            event: "rows",
+            listener: (rows: any[], meta: FtsQueryResponse.Meta) => void,
+        ): this;
 
-        once(event: "end", listener: (meta: FtsQueryResponse.Meta) => void): this;
+        once(
+            event: "end",
+            listener: (meta: FtsQueryResponse.Meta) => void,
+        ): this;
         once(event: "error", listener: (error: CouchbaseError) => void): this;
-        once(event: "row", listener: (row: any, meta: FtsQueryResponse.Meta) => void): this;
-        once(event: "rows", listener: (rows: any[], meta: FtsQueryResponse.Meta) => void): this;
+        once(
+            event: "row",
+            listener: (row: any, meta: FtsQueryResponse.Meta) => void,
+        ): this;
+        once(
+            event: "rows",
+            listener: (rows: any[], meta: FtsQueryResponse.Meta) => void,
+        ): this;
 
-        prependListener(event: "end", listener: (meta: FtsQueryResponse.Meta) => void): this;
-        prependListener(event: "error", listener: (error: CouchbaseError) => void): this;
-        prependListener(event: "row", listener: (row: any, meta: FtsQueryResponse.Meta) => void): this;
-        prependListener(event: "rows", listener: (rows: any[], meta: FtsQueryResponse.Meta) => void): this;
+        prependListener(
+            event: "end",
+            listener: (meta: FtsQueryResponse.Meta) => void,
+        ): this;
+        prependListener(
+            event: "error",
+            listener: (error: CouchbaseError) => void,
+        ): this;
+        prependListener(
+            event: "row",
+            listener: (row: any, meta: FtsQueryResponse.Meta) => void,
+        ): this;
+        prependListener(
+            event: "rows",
+            listener: (rows: any[], meta: FtsQueryResponse.Meta) => void,
+        ): this;
 
-        prependOnceListener(event: "end", listener: (meta: FtsQueryResponse.Meta) => void): this;
-        prependOnceListener(event: "error", listener: (error: CouchbaseError) => void): this;
-        prependOnceListener(event: "row", listener: (row: any, meta: FtsQueryResponse.Meta) => void): this;
-        prependOnceListener(event: "rows", listener: (rows: any[], meta: FtsQueryResponse.Meta) => void): this;
+        prependOnceListener(
+            event: "end",
+            listener: (meta: FtsQueryResponse.Meta) => void,
+        ): this;
+        prependOnceListener(
+            event: "error",
+            listener: (error: CouchbaseError) => void,
+        ): this;
+        prependOnceListener(
+            event: "row",
+            listener: (row: any, meta: FtsQueryResponse.Meta) => void,
+        ): this;
+        prependOnceListener(
+            event: "rows",
+            listener: (rows: any[], meta: FtsQueryResponse.Meta) => void,
+        ): this;
     }
 
     namespace FtsQueryResponse {

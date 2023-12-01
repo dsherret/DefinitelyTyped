@@ -7,13 +7,21 @@ declare namespace KoaRoute {
     /**
      * The Koa handler will receive parameters extracted from the route as extra arguments.
      */
-    type Handler = (this: Koa.Context, ctx: Koa.Context, ...params: any[]) => any;
+    type Handler = (
+        this: Koa.Context,
+        ctx: Koa.Context,
+        ...params: any[]
+    ) => any;
 
     type CreateRoute = (routeFunc: Handler) => Koa.Middleware;
 
     interface Method {
         (path: Path): CreateRoute;
-        (path: Path, fn: Handler, opts?: pathToRegexp.ParseOptions & pathToRegexp.RegExpOptions): Koa.Middleware;
+        (
+            path: Path,
+            fn: Handler,
+            opts?: pathToRegexp.ParseOptions & pathToRegexp.RegExpOptions,
+        ): Koa.Middleware;
     }
 
     type CreateMethod = (method: string) => Method;

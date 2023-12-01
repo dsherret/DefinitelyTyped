@@ -98,8 +98,16 @@ declare namespace SemanticUI {
          * Removes API settings from the page and all events
          */
         (behavior: "destroy"): JQuery;
-        <K extends keyof ApiSettings>(behavior: "setting", name: K, value?: undefined): ApiSettings._Impl[K];
-        <K extends keyof ApiSettings>(behavior: "setting", name: K, value: ApiSettings._Impl[K]): JQuery;
+        <K extends keyof ApiSettings>(
+            behavior: "setting",
+            name: K,
+            value?: undefined,
+        ): ApiSettings._Impl[K];
+        <K extends keyof ApiSettings>(
+            behavior: "setting",
+            name: K,
+            value: ApiSettings._Impl[K],
+        ): JQuery;
         (behavior: "setting", value: ApiSettings): JQuery;
         (settings?: ApiSettings): JQuery;
     }
@@ -110,54 +118,53 @@ declare namespace SemanticUI {
     type ApiSettings = ApiSettings.Param;
 
     namespace ApiSettings {
-        type Param =
-            & (
-                | Pick<_Impl, "api">
-                | Pick<_Impl, "on">
-                | Pick<_Impl, "cache">
-                | Pick<_Impl, "stateContext">
-                | Pick<_Impl, "encodeParameters">
-                | Pick<_Impl, "defaultData">
-                | Pick<_Impl, "serializeForm">
-                | Pick<_Impl, "throttle">
-                | Pick<_Impl, "throttleFirstRequest">
-                | Pick<_Impl, "interruptRequests">
-                | Pick<_Impl, "loadingDuration">
-                | Pick<_Impl, "hideError">
-                | Pick<_Impl, "errorDuration">
-                | Pick<_Impl, "action">
-                | Pick<_Impl, "url">
-                | Pick<_Impl, "urlData">
-                | Pick<_Impl, "response">
-                | Pick<_Impl, "responseAsync">
-                | Pick<_Impl, "mockResponse">
-                | Pick<_Impl, "mockResponseAsync">
-                | Pick<_Impl, "method">
-                | Pick<_Impl, "dataType">
-                | Pick<_Impl, "data">
-                | Pick<_Impl, "beforeSend">
-                | Pick<_Impl, "beforeXHR">
-                | Pick<_Impl, "onRequest">
-                | Pick<_Impl, "onResponse">
-                | Pick<_Impl, "successTest">
-                | Pick<_Impl, "onSuccess">
-                | Pick<_Impl, "onComplete">
-                | Pick<_Impl, "onFailure">
-                | Pick<_Impl, "onError">
-                | Pick<_Impl, "onAbort">
-                | Pick<_Impl, "regExp">
-                | Pick<_Impl, "selector">
-                | Pick<_Impl, "className">
-                | Pick<_Impl, "metadata">
-                | Pick<_Impl, "error">
-                | Pick<_Impl, "namespace">
-                | Pick<_Impl, "name">
-                | Pick<_Impl, "silent">
-                | Pick<_Impl, "debug">
-                | Pick<_Impl, "performance">
-                | Pick<_Impl, "verbose">
-            )
-            & Partial<Pick<_Impl, keyof _Impl>>;
+        type Param = (
+            | Pick<_Impl, "api">
+            | Pick<_Impl, "on">
+            | Pick<_Impl, "cache">
+            | Pick<_Impl, "stateContext">
+            | Pick<_Impl, "encodeParameters">
+            | Pick<_Impl, "defaultData">
+            | Pick<_Impl, "serializeForm">
+            | Pick<_Impl, "throttle">
+            | Pick<_Impl, "throttleFirstRequest">
+            | Pick<_Impl, "interruptRequests">
+            | Pick<_Impl, "loadingDuration">
+            | Pick<_Impl, "hideError">
+            | Pick<_Impl, "errorDuration">
+            | Pick<_Impl, "action">
+            | Pick<_Impl, "url">
+            | Pick<_Impl, "urlData">
+            | Pick<_Impl, "response">
+            | Pick<_Impl, "responseAsync">
+            | Pick<_Impl, "mockResponse">
+            | Pick<_Impl, "mockResponseAsync">
+            | Pick<_Impl, "method">
+            | Pick<_Impl, "dataType">
+            | Pick<_Impl, "data">
+            | Pick<_Impl, "beforeSend">
+            | Pick<_Impl, "beforeXHR">
+            | Pick<_Impl, "onRequest">
+            | Pick<_Impl, "onResponse">
+            | Pick<_Impl, "successTest">
+            | Pick<_Impl, "onSuccess">
+            | Pick<_Impl, "onComplete">
+            | Pick<_Impl, "onFailure">
+            | Pick<_Impl, "onError">
+            | Pick<_Impl, "onAbort">
+            | Pick<_Impl, "regExp">
+            | Pick<_Impl, "selector">
+            | Pick<_Impl, "className">
+            | Pick<_Impl, "metadata">
+            | Pick<_Impl, "error">
+            | Pick<_Impl, "namespace">
+            | Pick<_Impl, "name">
+            | Pick<_Impl, "silent">
+            | Pick<_Impl, "debug">
+            | Pick<_Impl, "performance">
+            | Pick<_Impl, "verbose">
+        ) &
+            Partial<Pick<_Impl, keyof _Impl>>;
 
         interface _Impl {
             api: {
@@ -266,7 +273,12 @@ declare namespace SemanticUI {
              *
              * @default false
              */
-            responseAsync: ((settings: ApiSettings, callback: (response: any) => void) => void) | false;
+            responseAsync:
+                | ((
+                      settings: ApiSettings,
+                      callback: (response: any) => void,
+                  ) => void)
+                | false;
             /**
              * @see response
              */
@@ -274,11 +286,23 @@ declare namespace SemanticUI {
             /**
              * @see responseAsync
              */
-            mockResponseAsync: ((settings: ApiSettings, callback: (response: any) => void) => void) | false;
+            mockResponseAsync:
+                | ((
+                      settings: ApiSettings,
+                      callback: (response: any) => void,
+                  ) => void)
+                | false;
             /**
              * Method for transmitting request to server
              */
-            method: "post" | "get" | "put" | "delete" | "head" | "options" | "patch";
+            method:
+                | "post"
+                | "get"
+                | "put"
+                | "delete"
+                | "head"
+                | "options"
+                | "patch";
             /**
              * Expected data type of response
              */
@@ -329,11 +353,19 @@ declare namespace SemanticUI {
             /**
              * Callback on server error from returned status code, or XHR failure.
              */
-            onError(errorMessage: string, element: JQuery, xhr: JQuery.jqXHR): void;
+            onError(
+                errorMessage: string,
+                element: JQuery,
+                xhr: JQuery.jqXHR,
+            ): void;
             /**
              * Callback on abort caused by user clicking a link or manually cancelling request.
              */
-            onAbort(errorMessage: string, element: JQuery, xhr: JQuery.jqXHR): void;
+            onAbort(
+                errorMessage: string,
+                element: JQuery,
+                xhr: JQuery.jqXHR,
+            ): void;
 
             // endregion
 
@@ -408,12 +440,8 @@ declare namespace SemanticUI {
         type RegExpSettings = RegExpSettings.Param;
 
         namespace RegExpSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "required">
-                    | Pick<_Impl, "optional">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "required"> | Pick<_Impl, "optional">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -430,12 +458,8 @@ declare namespace SemanticUI {
         type SelectorSettings = SelectorSettings.Param;
 
         namespace SelectorSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "disabled">
-                    | Pick<_Impl, "form">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "disabled"> | Pick<_Impl, "form">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -452,12 +476,8 @@ declare namespace SemanticUI {
         type ClassNameSettings = ClassNameSettings.Param;
 
         namespace ClassNameSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "loading">
-                    | Pick<_Impl, "error">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "loading"> | Pick<_Impl, "error">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -474,12 +494,8 @@ declare namespace SemanticUI {
         type MetadataSettings = MetadataSettings.Param;
 
         namespace MetadataSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "action">
-                    | Pick<_Impl, "url">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "action"> | Pick<_Impl, "url">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -496,23 +512,22 @@ declare namespace SemanticUI {
         type ErrorSettings = ErrorSettings.Param;
 
         namespace ErrorSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "beforeSend">
-                    | Pick<_Impl, "error">
-                    | Pick<_Impl, "exitConditions">
-                    | Pick<_Impl, "JSONParse">
-                    | Pick<_Impl, "legacyParameters">
-                    | Pick<_Impl, "missingAction">
-                    | Pick<_Impl, "missingSerialize">
-                    | Pick<_Impl, "missingURL">
-                    | Pick<_Impl, "noReturnedValue">
-                    | Pick<_Impl, "parseError">
-                    | Pick<_Impl, "requiredParameter">
-                    | Pick<_Impl, "statusMessage">
-                    | Pick<_Impl, "timeout">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "beforeSend">
+                | Pick<_Impl, "error">
+                | Pick<_Impl, "exitConditions">
+                | Pick<_Impl, "JSONParse">
+                | Pick<_Impl, "legacyParameters">
+                | Pick<_Impl, "missingAction">
+                | Pick<_Impl, "missingSerialize">
+                | Pick<_Impl, "missingURL">
+                | Pick<_Impl, "noReturnedValue">
+                | Pick<_Impl, "parseError">
+                | Pick<_Impl, "requiredParameter">
+                | Pick<_Impl, "statusMessage">
+                | Pick<_Impl, "timeout">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**

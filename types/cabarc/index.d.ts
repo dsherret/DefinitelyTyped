@@ -1,8 +1,8 @@
 /// <reference types="node" />
 
 export namespace Cabinet {
-    const SIGNATURE = 0x4643534D;
-    const MSZIP_SIGNATURE = 0x4B43;
+    const SIGNATURE = 0x4643534d;
+    const MSZIP_SIGNATURE = 0x4b43;
     enum COMPRESSION {
         NONE = 0x0000,
         MSZIP = 0x0100,
@@ -80,9 +80,9 @@ export class CFFile {
     static readonly EXEC = 0x40;
     static readonly UNICODE = 0x80;
 
-    static readonly INDEX_CONTINUED_FROM_PREV = 0xFFFD;
-    static readonly INDEX_CONTINUED_TO_NEXT = 0xFFFE;
-    static readonly INDEX_CONTINUED_PREV_AND_NEXT = 0xFFFF;
+    static readonly INDEX_CONTINUED_FROM_PREV = 0xfffd;
+    static readonly INDEX_CONTINUED_TO_NEXT = 0xfffe;
+    static readonly INDEX_CONTINUED_PREV_AND_NEXT = 0xffff;
 
     static readonly SIZE = 16;
     static readonly MAX_SIZE: number;

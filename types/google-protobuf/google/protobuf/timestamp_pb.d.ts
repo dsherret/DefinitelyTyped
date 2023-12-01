@@ -15,12 +15,23 @@ export class Timestamp extends jspb.Message {
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Timestamp.AsObject;
-    static toObject(includeInstance: boolean, msg: Timestamp): Timestamp.AsObject;
+    static toObject(
+        includeInstance: boolean,
+        msg: Timestamp,
+    ): Timestamp.AsObject;
     static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
-    static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
-    static serializeBinaryToWriter(message: Timestamp, writer: jspb.BinaryWriter): void;
+    static extensionsBinary: {
+        [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>;
+    };
+    static serializeBinaryToWriter(
+        message: Timestamp,
+        writer: jspb.BinaryWriter,
+    ): void;
     static deserializeBinary(bytes: Uint8Array): Timestamp;
-    static deserializeBinaryFromReader(message: Timestamp, reader: jspb.BinaryReader): Timestamp;
+    static deserializeBinaryFromReader(
+        message: Timestamp,
+        reader: jspb.BinaryReader,
+    ): Timestamp;
     static fromDate(date: Date): Timestamp;
 }
 

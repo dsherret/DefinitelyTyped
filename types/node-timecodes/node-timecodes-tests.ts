@@ -1,4 +1,8 @@
-import timecode, { fromSeconds, TimecodeOptions, toSeconds } from "node-timecodes";
+import timecode, {
+    fromSeconds,
+    TimecodeOptions,
+    toSeconds,
+} from "node-timecodes";
 
 type Option = TimecodeOptions;
 

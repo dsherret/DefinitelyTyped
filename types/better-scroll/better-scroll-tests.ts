@@ -43,28 +43,48 @@ BScroll1.scrollTo(0, 100, 200);
 BScroll1.scrollToElement("selectedElement");
 BScroll1.scrollToElement("selectedElement", 250);
 
-BScroll1.scrollToElement(document.getElementById("selectedElement") as HTMLElement);
-BScroll1.scrollToElement(document.getElementById("selectedElement") as HTMLElement, 250);
+BScroll1.scrollToElement(
+    document.getElementById("selectedElement") as HTMLElement,
+);
+BScroll1.scrollToElement(
+    document.getElementById("selectedElement") as HTMLElement,
+    250,
+);
 
 BScroll2.on("scrollStart", () => {
     console.log("scroll started");
 });
 
 const BScroll9 = new BScroll(document.getElementById("wrapper") as HTMLElement);
-const BScroll10 = new BScroll(document.getElementById("wrapper") as HTMLElement, { freeScroll: true });
-const BScroll11 = new BScroll(document.getElementById("wrapper") as HTMLElement, {
-    preventDefaultException: {
-        tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT)$/,
+const BScroll10 = new BScroll(
+    document.getElementById("wrapper") as HTMLElement,
+    { freeScroll: true },
+);
+const BScroll11 = new BScroll(
+    document.getElementById("wrapper") as HTMLElement,
+    {
+        preventDefaultException: {
+            tagName: /^(INPUT|TEXTAREA|BUTTON|SELECT)$/,
+        },
     },
-});
-const BScroll12 = new BScroll(document.getElementById("wrapper") as HTMLElement, {
-    preventDefaultException: {
-        className: /(^|\s)test(\s|$)/,
+);
+const BScroll12 = new BScroll(
+    document.getElementById("wrapper") as HTMLElement,
+    {
+        preventDefaultException: {
+            className: /(^|\s)test(\s|$)/,
+        },
     },
-});
+);
 
-const BScroll13 = new BScroll(document.getElementById("wrapper") as HTMLElement, {
-    swipeBounceTime: 1000,
-});
+const BScroll13 = new BScroll(
+    document.getElementById("wrapper") as HTMLElement,
+    {
+        swipeBounceTime: 1000,
+    },
+);
 
-const BScroll14 = new BScroll("#wrapper", { disableMouse: true, disableTouch: false });
+const BScroll14 = new BScroll("#wrapper", {
+    disableMouse: true,
+    disableTouch: false,
+});

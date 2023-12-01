@@ -33,7 +33,11 @@ export interface DataTableColumnOptions {
     hidden?: boolean;
     type?: DataTableColumnType;
     format?: string;
-    render?: (data: string, cell: HTMLTableCellElement, row: DataTableRow) => string;
+    render?: (
+        data: string,
+        cell: HTMLTableCellElement,
+        row: DataTableRow,
+    ) => string;
 }
 
 // TODO: some of the attributes only exist depending on the type selected
@@ -137,13 +141,25 @@ export class DataTable {
 
     constructor(table: string | Element, options?: DataTableOptions);
 
-    static extend(pluginName: string, callback: (options: DataTableOptions) => DataTablePlugin): void;
+    static extend(
+        pluginName: string,
+        callback: (options: DataTableOptions) => DataTablePlugin,
+    ): void;
 
-    on(event: "datatable.init" | "datatable.refresh" | "datatable.update", callback: () => void): void;
+    on(
+        event: "datatable.init" | "datatable.refresh" | "datatable.update",
+        callback: () => void,
+    ): void;
     on(event: "datatable.page", callback: (page: number) => void): void;
-    on(event: "datatable.sort", callback: (column: number, direction: DataTableOrderDirection) => void): void;
+    on(
+        event: "datatable.sort",
+        callback: (column: number, direction: DataTableOrderDirection) => void,
+    ): void;
     on(event: "datatable.perpage", callback: (perpage: number) => void): void;
-    on(event: "datatable.search", callback: (query: string, matched: DataTableRow[]) => void): void;
+    on(
+        event: "datatable.search",
+        callback: (query: string, matched: DataTableRow[]) => void,
+    ): void;
 
     rows(): DataTableRows;
     columns(): DataTableColumns;

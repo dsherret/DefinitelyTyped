@@ -2,7 +2,10 @@ import notifier = require("../");
 
 declare class NotifySend {
     constructor(option?: notifier.Option);
-    notify(notification?: NotifySend.Notification, callback?: notifier.NotificationCallback): NotifySend;
+    notify(
+        notification?: NotifySend.Notification,
+        callback?: notifier.NotificationCallback,
+    ): NotifySend;
 }
 
 declare namespace NotifySend {

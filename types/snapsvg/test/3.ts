@@ -23,9 +23,9 @@ window.onload = () => {
         var c = s.circle(200, 200, 10);
         var r = s.rect(200, 100, 100, 100, 20, 20).attr({
             stroke: "#123456",
-            "strokeWidth": 20,
+            strokeWidth: 20,
             fill: "red",
-            "opacity": 0.3,
+            opacity: 0.3,
         });
 
         var rclone = r.clone();
@@ -48,7 +48,11 @@ window.onload = () => {
         rclone4.transform("t100,100r20,200,200");
         rclone5.transform("t100,100r40,200,200");
 
-        s.text(450, 250, "combined translate of 100,100 and rotate around 200,200");
+        s.text(
+            450,
+            250,
+            "combined translate of 100,100 and rotate around 200,200",
+        );
     }
 
     {
@@ -61,13 +65,18 @@ window.onload = () => {
 
         var r = s.rect(100, 100, 100, 100, 20, 20).attr({
             stroke: "#123456",
-            "strokeWidth": 20,
+            strokeWidth: 20,
             fill: "red",
             filter: f,
         });
-        Snap.animate(0, 10, function(value) {
-            filterChild.attributes[0].value = value + "," + value;
-        }, 1000);
+        Snap.animate(
+            0,
+            10,
+            function (value) {
+                filterChild.attributes[0].value = value + "," + value;
+            },
+            1000,
+        );
 
         var t = s.text(0, 50, "Hover to blur, hover out for shadow");
 
@@ -75,9 +84,14 @@ window.onload = () => {
 
         function addBlur() {
             this.attr({ filter: f });
-            Snap.animate(0, 10, function(value) {
-                filterChild.attributes[0].value = value + "," + value;
-            }, 1000);
+            Snap.animate(
+                0,
+                10,
+                function (value) {
+                    filterChild.attributes[0].value = value + "," + value;
+                },
+                1000,
+            );
         }
 
         function addShadow() {
@@ -90,16 +104,19 @@ window.onload = () => {
         var rect = s.rect(20, 20, 40, 40);
         var circle = s.circle(60, 150, 50);
 
-        var move = function(dx: number, dy: number) {
+        var move = function (dx: number, dy: number) {
             this.attr({
-                transform: this.data("origTransform") + (this.data("origTransform") ? "T" : "t") + [dx, dy],
+                transform:
+                    this.data("origTransform") +
+                    (this.data("origTransform") ? "T" : "t") +
+                    [dx, dy],
             });
         };
 
-        var start = function() {
+        var start = function () {
             this.data("origTransform", this.transform().local);
         };
-        var stop = function() {
+        var stop = function () {
             console.log("finished dragging");
         };
 
@@ -118,7 +135,9 @@ window.onload = () => {
                 var bb = this.getBBox();
                 var handle = new Array();
                 handle[0] = s.circle(bb.x, bb.y, 10).attr({ class: "handler" });
-                handle[1] = s.circle(bb.x + bb.width, bb.y, 10).attr({ class: "handler" });
+                handle[1] = s
+                    .circle(bb.x + bb.width, bb.y, 10)
+                    .attr({ class: "handler" });
                 handleGroup = s.group(this, handle[0], handle[1]);
                 handleGroup.drag(move, start, stop);
             } else {
@@ -129,18 +148,21 @@ window.onload = () => {
             }
         }
 
-        var start = function() {
+        var start = function () {
             this.data("origTransform", this.transform().local);
         };
 
-        var move = function(dx: number, dy: number) {
+        var move = function (dx: number, dy: number) {
             var scale = 1 + dx / 50;
             this.attr({
-                transform: this.data("origTransform") + (this.data("origTransform") ? "S" : "s") + scale,
+                transform:
+                    this.data("origTransform") +
+                    (this.data("origTransform") ? "S" : "s") +
+                    scale,
             });
         };
 
-        var stop = function() {};
+        var stop = function () {};
 
         var myRect = s.rect(100, 100, 100, 100).attr({ fill: "blue" });
 
@@ -151,10 +173,16 @@ window.onload = () => {
 
     {
         // Snap mask
-        var bigC = s.circle(200, 200, 175).attr({ stroke: "silver", "strokeWidth": 40, fill: "silver" });
+        var bigC = s
+            .circle(200, 200, 175)
+            .attr({ stroke: "silver", strokeWidth: 40, fill: "silver" });
 
-        var r = s.rect(100, 100, 100, 100, 20, 20).attr({ stroke: "#123456", "strokeWidth": 20, fill: "red" });
-        var c = s.circle(50, 50, 50).attr({ stroke: "#123456", "strokeWidth": 20, fill: "blue" });
+        var r = s
+            .rect(100, 100, 100, 100, 20, 20)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "red" });
+        var c = s
+            .circle(50, 50, 50)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "blue" });
 
         var g = s.group(r, c);
 
@@ -165,48 +193,65 @@ window.onload = () => {
 
     {
         // Snap animated mask-clippath
-        var bigC = s.circle(100, 100, 75).attr({ stroke: "silver", "strokeWidth": 40, fill: "silver" });
-        var bigC2 = s.circle(250, 250, 75).attr({ stroke: "silver", "strokeWidth": 40, fill: "silver" });
+        var bigC = s
+            .circle(100, 100, 75)
+            .attr({ stroke: "silver", strokeWidth: 40, fill: "silver" });
+        var bigC2 = s
+            .circle(250, 250, 75)
+            .attr({ stroke: "silver", strokeWidth: 40, fill: "silver" });
         var clipG = s.group(bigC, bigC2);
 
-        var r = s.rect(100, 100, 100, 100, 20, 20).attr({ stroke: "#123456", "strokeWidth": 20, fill: "red" });
-        var c = s.circle(50, 50, 50).attr({ stroke: "#123456", "strokeWidth": 20, fill: "blue" });
+        var r = s
+            .rect(100, 100, 100, 100, 20, 20)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "red" });
+        var c = s
+            .circle(50, 50, 50)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "blue" });
 
         var g = s.group(r, c);
 
         g.attr({ mask: clipG });
 
         g.animate({ transform: "r360,150,150" }, 3000, mina.bounce);
-        clipG.animate({ transform: "t200,0" }, 3000, mina.bounce, function() {
+        clipG.animate({ transform: "t200,0" }, 3000, mina.bounce, function () {
             clipG.animate({ transform: "t0,0" }, 3000, mina.bounce);
         });
     }
     {
         // Snap load and animate svg
         var g = s.group();
-        var tux = Snap.load("Dreaming_tux.svg", function(loadedFragment: Snap.Fragment) {
-            g.append(loadedFragment.selectAll());
-            g.hover(hoverover, hoverout);
-            g.text(300, 100, "hover over me");
-        });
+        var tux = Snap.load(
+            "Dreaming_tux.svg",
+            function (loadedFragment: Snap.Fragment) {
+                g.append(loadedFragment.selectAll());
+                g.hover(hoverover, hoverout);
+                g.text(300, 100, "hover over me");
+            },
+        );
 
-        var hoverover = function() {
+        var hoverover = function () {
             g.animate({ transform: "s2r45,150,150" }, 1000, mina.bounce);
         };
-        var hoverout = function() {
+        var hoverout = function () {
             g.animate({ transform: "s1r0,150,150" }, 1000, mina.bounce);
         };
     }
 
     {
         // Snap path test if a point inside with translation
-        var x: number, y: number, myTranslateX = 200, myTranslateY = 100;
+        var x: number,
+            y: number,
+            myTranslateX = 200,
+            myTranslateY = 100;
 
-        var myPathString = "M 60 0 L 120 0 L 180 60 L 180 120 L 120 180 L 60 180 L 0 120 L 0 60 Z";
+        var myPathString =
+            "M 60 0 L 120 0 L 180 60 L 180 120 L 120 180 L 60 180 L 0 120 L 0 60 Z";
 
         var p = s.path(myPathString);
         s.path([["M", 5, 10], ["l", 15, 2], ["Z"]]);
-        var p2 = s.path(myPathString).transform("t" + myTranslateX + "," + myTranslateY);
+        var p2 = s
+            .path(myPathString)
+            .transform("t" + myTranslateX + "," + myTranslateY);
 
         for (var count = 0; count < 500; count++) {
             x = Math.random() * 800;
@@ -220,7 +265,13 @@ window.onload = () => {
             }
 
             // matching against path as though it was translated
-            if (Snap.path.isPointInside(myPathString, x - myTranslateX, y - myTranslateY)) {
+            if (
+                Snap.path.isPointInside(
+                    myPathString,
+                    x - myTranslateX,
+                    y - myTranslateY,
+                )
+            ) {
                 c.attr({ fill: "#0000ff" });
             }
         }
@@ -228,8 +279,12 @@ window.onload = () => {
 
     {
         // Snap animate rotate a group
-        var r = s.rect(100, 100, 100, 100, 20, 20).attr({ stroke: "#123456", "strokeWidth": 20, fill: "red" });
-        var c = s.circle(50, 50, 50).attr({ stroke: "#123456", "strokeWidth": 20, fill: "blue" });
+        var r = s
+            .rect(100, 100, 100, 100, 20, 20)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "red" });
+        var c = s
+            .circle(50, 50, 50)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "blue" });
 
         var g = s.group(r, c);
 
@@ -250,27 +305,44 @@ window.onload = () => {
             { animation: { transform: "s1,1" }, dur: 1000 },
         ];
 
-        var rectAnim = [{
-            animation: { fill: "green", transform: "r1180,150,150" },
-            dur: 1500,
-        }, { animation: { fill: "silver", transform: "r360,150,150" }, dur: 1500 }];
+        var rectAnim = [
+            {
+                animation: { fill: "green", transform: "r1180,150,150" },
+                dur: 1500,
+            },
+            {
+                animation: { fill: "silver", transform: "r360,150,150" },
+                dur: 1500,
+            },
+        ];
 
-        var circleAnim = [{ animation: { transform: "s0,1" }, dur: 1500 }, {
-            animation: { transform: "s1,1" },
-            dur: 1500,
-        }];
+        var circleAnim = [
+            { animation: { transform: "s0,1" }, dur: 1500 },
+            {
+                animation: { transform: "s1,1" },
+                dur: 1500,
+            },
+        ];
 
-        function nextFrame(el: Snap.Element, frameArray: any[], whichFrame: number) {
+        function nextFrame(
+            el: Snap.Element,
+            frameArray: any[],
+            whichFrame: number,
+        ) {
             if (whichFrame >= frameArray.length) return;
             el.animate(
                 frameArray[whichFrame].animation,
                 frameArray[whichFrame].dur,
-                <any> nextFrame.bind(null, el, frameArray, whichFrame + 1),
+                <any>nextFrame.bind(null, el, frameArray, whichFrame + 1),
             );
         }
 
-        var r = s.rect(100, 100, 100, 100, 20, 20).attr({ stroke: "#123456", "strokeWidth": 20, fill: "red" });
-        var c = s.circle(50, 50, 50).attr({ stroke: "#123456", "strokeWidth": 20, fill: "blue" });
+        var r = s
+            .rect(100, 100, 100, 100, 20, 20)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "red" });
+        var c = s
+            .circle(50, 50, 50)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "blue" });
 
         var g = s.group(r, c);
 
@@ -283,9 +355,14 @@ window.onload = () => {
         // Snap animate number
         var t = s.text(50, 50, 0);
 
-        Snap.animate(0, 100, function(value) {
-            t.attr({ text: Math.round(value) });
-        }, 1000);
+        Snap.animate(
+            0,
+            100,
+            function (value) {
+                t.attr({ text: Math.round(value) });
+            },
+            1000,
+        );
     }
     {
         // Snap animate text announce
@@ -297,24 +374,27 @@ window.onload = () => {
         var timing = 750;
 
         for (var index = 0; index < len; index++) {
-            (function() {
+            (function () {
                 var svgTextElement = s.text(350, 100, textArray[index]).attr({
                     fontSize: "120px",
                     opacity: 0,
                     "text-anchor": "middle",
                 });
 
-                setTimeout(function() {
+                setTimeout(function () {
                     Snap.animate(
                         0,
                         1,
-                        function(value) {
+                        function (value) {
                             // svgTextElement.transform('s' + value   );                              // Animate by transform
-                            svgTextElement.attr({ "font-size": value * 100, opacity: value }); // Animate by font-size ?
+                            svgTextElement.attr({
+                                "font-size": value * 100,
+                                opacity: value,
+                            }); // Animate by font-size ?
                         },
                         timing,
                         mina.bounce,
-                        function() {
+                        function () {
                             svgTextElement.remove();
                         },
                     );
@@ -324,20 +404,31 @@ window.onload = () => {
     }
     {
         // Snap animate on click
-        var r = s.rect(100, 100, 100, 100, 20, 20).attr({ stroke: "#123456", "strokeWidth": 20, fill: "red" });
-        var c = s.circle(50, 50, 50).attr({ stroke: "#123456", "strokeWidth": 20, fill: "blue" });
-        var otherRect = s.rect(200, 200, 50, 50, 10, 10).attr({ stroke: "#123456", "strokeWidth": 20, fill: "green" });
+        var r = s
+            .rect(100, 100, 100, 100, 20, 20)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "red" });
+        var c = s
+            .circle(50, 50, 50)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "blue" });
+        var otherRect = s
+            .rect(200, 200, 50, 50, 10, 10)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "green" });
 
         var g = s.group(r, c);
 
-        var clickFunc = function() {
+        var clickFunc = function () {
             g.transform(""); // reset the animation, may not be needed
             otherRect.transform("");
             g.animate({ transform: "r45,150,150" }, 1000, mina.bounce);
-            otherRect.animate({ transform: "r360, 150,150" }, 2000, mina.bounce, endAnim);
+            otherRect.animate(
+                { transform: "r360, 150,150" },
+                2000,
+                mina.bounce,
+                endAnim,
+            );
         };
 
-        var endAnim = function() {
+        var endAnim = function () {
             otherRect.animate({ transform: "r90,200,200" }, 2000, mina.bounce);
         };
 
@@ -348,8 +439,12 @@ window.onload = () => {
         // Snap and the matrix
         var s = Snap("#svgout");
 
-        var r = s.rect(100, 100, 100, 100, 20, 20).attr({ stroke: "#123456", "strokeWidth": 20, fill: "red" });
-        var c = s.circle(50, 50, 50).attr({ stroke: "#123456", "strokeWidth": 20, fill: "blue" });
+        var r = s
+            .rect(100, 100, 100, 100, 20, 20)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "red" });
+        var c = s
+            .circle(50, 50, 50)
+            .attr({ stroke: "#123456", strokeWidth: 20, fill: "blue" });
         var t = s.text(150, 75, "The order of transformations is important!!!");
         var g = s.group(r, c, t);
 
@@ -365,7 +460,7 @@ window.onload = () => {
 
         var myInvertedMatrix = myMatrix.invert();
 
-        g.animate({ transform: myMatrix }, 3000, mina.bounce, function() {
+        g.animate({ transform: myMatrix }, 3000, mina.bounce, function () {
             g.animate({ transform: myInvertedMatrix }, 3000, mina.bounce);
         });
         console.log(g.transform(), myMatrix.split());

@@ -38,11 +38,14 @@ const response: conn.OAuthTokenResponse = {
 };
 
 class MyConnector extends conn.OAuthConnector {
-    onCreate(app: express.Router) {
-    }
+    onCreate(app: express.Router) {}
 
     authorize(params: conn.AuthorizeParams): express.RequestHandler {
-        return (req: express.Request, res: express.Response, next: express.NextFunction) => next;
+        return (
+            req: express.Request,
+            res: express.Response,
+            next: express.NextFunction,
+        ) => next;
     }
 
     onNewUser(
@@ -88,6 +91,6 @@ class MyConnector extends conn.OAuthConnector {
     }
 }
 
-conn.createOAuthConnector(new MyConnector()).then(result => {
+conn.createOAuthConnector(new MyConnector()).then((result) => {
     return null;
 });

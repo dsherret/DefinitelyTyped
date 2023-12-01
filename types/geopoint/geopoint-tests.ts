@@ -3,11 +3,16 @@ import GeoPoint = require("geopoint");
 function test() {
     const geopoint: GeoPoint = new GeoPoint(2.33, 4.66, false);
 
-    const boundingCoords: [GeoPoint, GeoPoint] = geopoint.boundingCoordinates(5, 12, true);
+    const boundingCoords: [GeoPoint, GeoPoint] = geopoint.boundingCoordinates(
+        5,
+        12,
+        true,
+    );
 
-    const boundingCoordsWithoutRadius: [GeoPoint, GeoPoint] = geopoint.boundingCoordinates(5, undefined, true);
+    const boundingCoordsWithoutRadius: [GeoPoint, GeoPoint] =
+        geopoint.boundingCoordinates(5, undefined, true);
 
-    const distanceTo: number = geopoint.distanceTo(new GeoPoint(4.20, 6.9));
+    const distanceTo: number = geopoint.distanceTo(new GeoPoint(4.2, 6.9));
 
     const latitude: number = geopoint.latitude(false);
 

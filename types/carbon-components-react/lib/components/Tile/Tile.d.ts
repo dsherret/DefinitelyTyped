@@ -1,5 +1,10 @@
 import * as React from "react";
-import { ReactAnchorAttr, ReactButtonAttr, ReactDivAttr, ReactLabelAttr } from "../../../typings/shared";
+import {
+    ReactAnchorAttr,
+    ReactButtonAttr,
+    ReactDivAttr,
+    ReactLabelAttr,
+} from "../../../typings/shared";
 import { LinkProps } from "../Link";
 
 // Tile

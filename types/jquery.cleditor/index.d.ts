@@ -16,7 +16,12 @@ interface CLEditor {
     change(handler: Function): CLEditor;
     clear(): CLEditor;
     disable(disabled: boolean): CLEditor;
-    execCommand(commands: string, value: any, useCSS?: boolean, button?: any): CLEditor;
+    execCommand(
+        commands: string,
+        value: any,
+        useCSS?: boolean,
+        button?: any,
+    ): CLEditor;
     focus(): CLEditor;
     hidePopups(): CLEditor;
     refresh(): CLEditor;
@@ -52,10 +57,24 @@ interface JQueryCLEditorButtonDefinition {
     command?: string | undefined;
     popupName?: string | undefined;
     popupContent?: string | undefined;
-    getEnabled?: ((data: JQueryCLEditorButtonDefinitionEventData) => boolean) | undefined;
-    getPressed?: ((data: JQueryCLEditorButtonDefinitionEventData) => boolean) | undefined;
-    buttonClick?: ((event: Event, data: JQueryCLEditorButtonDefinitionEventData) => boolean) | undefined;
-    popupClick?: ((event: Event, data: JQueryCLEditorButtonDefinitionEventData) => boolean) | undefined;
+    getEnabled?:
+        | ((data: JQueryCLEditorButtonDefinitionEventData) => boolean)
+        | undefined;
+    getPressed?:
+        | ((data: JQueryCLEditorButtonDefinitionEventData) => boolean)
+        | undefined;
+    buttonClick?:
+        | ((
+              event: Event,
+              data: JQueryCLEditorButtonDefinitionEventData,
+          ) => boolean)
+        | undefined;
+    popupClick?:
+        | ((
+              event: Event,
+              data: JQueryCLEditorButtonDefinitionEventData,
+          ) => boolean)
+        | undefined;
 }
 
 interface JQueryCLEditorButtonDefinitionEventData {

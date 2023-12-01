@@ -7,7 +7,9 @@ import { Selection, TransitionLike, ValueFn } from "d3-selection";
  * where x0 is the minimum x-value, y0 is the minimum y-value, x1 is the maximum x-value, and y1 is the maximum y-value.
  * For an x-brush, it must be defined as [x0, x1]; for a y-brush, it must be defined as [y0, y1].
  */
-export type BrushSelection = [[number, number], [number, number]] | [number, number];
+export type BrushSelection =
+    | [[number, number], [number, number]]
+    | [number, number];
 
 /**
  * A D3 brush behavior
@@ -38,8 +40,13 @@ export interface BrushBehavior<Datum> {
      * @param event
      */
     move(
-        group: Selection<SVGGElement, Datum, any, any> | TransitionLike<SVGGElement, Datum>,
-        selection: null | BrushSelection | ValueFn<SVGGElement, Datum, BrushSelection>,
+        group:
+            | Selection<SVGGElement, Datum, any, any>
+            | TransitionLike<SVGGElement, Datum>,
+        selection:
+            | null
+            | BrushSelection
+            | ValueFn<SVGGElement, Datum, BrushSelection>,
         event?: Event,
     ): void;
 
@@ -77,7 +84,13 @@ export interface BrushBehavior<Datum> {
      * with this as the current DOM element. The function returns an array of points [[x0, y0], [x1, y1]],
      * where [x0, y0] is the top-left corner and [x1, y1] is the bottom-right corner.
      */
-    extent(extent: ValueFn<SVGGElement, Datum, [[number, number], [number, number]]>): this;
+    extent(
+        extent: ValueFn<
+            SVGGElement,
+            Datum,
+            [[number, number], [number, number]]
+        >,
+    ): this;
 
     /**
      * Returns the current filter function.
@@ -94,7 +107,9 @@ export interface BrushBehavior<Datum> {
      * in order, being passed the current event `event` and datum `d`, with the `this` context as the current DOM element.
      * The function returns a boolean value.
      */
-    filter(filterFn: (this: SVGGElement, event: any, d: Datum) => boolean): this;
+    filter(
+        filterFn: (this: SVGGElement, event: any, d: Datum) => boolean,
+    ): this;
 
     /**
      * Returns the current touch support detector, which defaults to a function returning true,
@@ -162,7 +177,9 @@ export interface BrushBehavior<Datum> {
      * start (at the start of a brush gesture, such as on mousedown), brush (when the brush moves, such as on mousemove), or
      * end (at the end of a brush gesture, such as on mouseup.)
      */
-    on(typenames: string): ((this: SVGGElement, event: any, d: Datum) => void) | undefined;
+    on(
+        typenames: string,
+    ): ((this: SVGGElement, event: any, d: Datum) => void) | undefined;
     /**
      * Removes the current event listeners for the specified typenames, if any.
      *
@@ -188,7 +205,10 @@ export interface BrushBehavior<Datum> {
      * @param listener An event listener function which is evaluated for each selected element,
      * in order, being passed the current event `event` and datum `d`, with the `this` context as the current DOM element.
      */
-    on(typenames: string, listener: (this: SVGGElement, event: any, d: Datum) => void): this;
+    on(
+        typenames: string,
+        listener: (this: SVGGElement, event: any, d: Datum) => void,
+    ): this;
 }
 
 /**

@@ -43,8 +43,8 @@ map.panBy(new naver.maps.Point(10, 10));
  * Event Basic Example
  * See https://navermaps.github.io/maps.js.ncp/docs/tutorial-1-event-simple.example.html
  */
-naver.maps.Event.addListener(map, "click", function(e) {});
-naver.maps.Event.addListener(map, "keydown", function(e) {});
+naver.maps.Event.addListener(map, "click", function (e) {});
+naver.maps.Event.addListener(map, "keydown", function (e) {});
 
 /**
  * Layer Example
@@ -53,7 +53,7 @@ naver.maps.Event.addListener(map, "keydown", function(e) {});
 const street = new naver.maps.StreetLayer();
 const cadastral = new naver.maps.CadastralLayer();
 
-naver.maps.Event.once(map, "init", function() {
+naver.maps.Event.once(map, "init", function () {
     street.setMap(map);
     cadastral.setMap(map);
 });
@@ -156,19 +156,22 @@ const coords = [
 ];
 const polyline = new naver.maps.Polyline({
     map: map,
-    path: coords.map(coord => new naver.maps.LatLng(coord[0], coord[1])),
+    path: coords.map((coord) => new naver.maps.LatLng(coord[0], coord[1])),
     strokeLineCap: "round",
     strokeLineJoin: "round",
 });
 
 const getBicycleLayer = naver.maps.NaverStyleMapTypeOptions.getBicycleLayer();
 const getBlankMap = naver.maps.NaverStyleMapTypeOptions.getBlankMap();
-const getCadastralLayer = naver.maps.NaverStyleMapTypeOptions.getCadastralLayer();
+const getCadastralLayer =
+    naver.maps.NaverStyleMapTypeOptions.getCadastralLayer();
 const getHybridMap = naver.maps.NaverStyleMapTypeOptions.getHybridMap();
 const getMapTypes = naver.maps.NaverStyleMapTypeOptions.getMapTypes();
-const getNormalLabelLayer = naver.maps.NaverStyleMapTypeOptions.getNormalLabelLayer();
+const getNormalLabelLayer =
+    naver.maps.NaverStyleMapTypeOptions.getNormalLabelLayer();
 const getNormalMap = naver.maps.NaverStyleMapTypeOptions.getNormalMap();
-const getSatelliteLabelLayer = naver.maps.NaverStyleMapTypeOptions.getSatelliteLabelLayer();
+const getSatelliteLabelLayer =
+    naver.maps.NaverStyleMapTypeOptions.getSatelliteLabelLayer();
 const getSatelliteMap = naver.maps.NaverStyleMapTypeOptions.getSatelliteMap();
 const getStreetLayer = naver.maps.NaverStyleMapTypeOptions.getStreetLayer();
 const getTerrainMap = naver.maps.NaverStyleMapTypeOptions.getTerrainMap();
@@ -253,12 +256,17 @@ const polygon = new naver.maps.Polygon({
 polygon.setPaths(arrayPaths);
 polygon.setPaths(kvoArrayPaths);
 polygon.setPaths(literalArrayPaths);
-expectType<naver.maps.ArrayOfCoords[] | naver.maps.KVOArray<naver.maps.KVOArrayOfCoords>>(polygon.getPaths());
+expectType<
+    | naver.maps.ArrayOfCoords[]
+    | naver.maps.KVOArray<naver.maps.KVOArrayOfCoords>
+>(polygon.getPaths());
 
 polygon.setOptions("paths", kvoArrayPaths);
 polygon.setOptions("paths", literalArrayPaths);
 expectType<
-    naver.maps.ArrayOfCoords[] | naver.maps.KVOArray<naver.maps.KVOArrayOfCoords> | naver.maps.ArrayOfCoordsLiteral[]
+    | naver.maps.ArrayOfCoords[]
+    | naver.maps.KVOArray<naver.maps.KVOArrayOfCoords>
+    | naver.maps.ArrayOfCoordsLiteral[]
 >(polygon.getOptions("paths"));
 expectType<naver.maps.PolygonOptions>(polygon.getOptions());
 
@@ -298,7 +306,10 @@ naver.maps.Service.geocode(
 naver.maps.Service.reverseGeocode(
     {
         coords: jeju,
-        orders: [naver.maps.Service.OrderType.ADDR, naver.maps.Service.OrderType.ROAD_ADDR].join(","),
+        orders: [
+            naver.maps.Service.OrderType.ADDR,
+            naver.maps.Service.OrderType.ROAD_ADDR,
+        ].join(","),
     },
     (status, response) => {
         const address = response.v2.address;
@@ -322,7 +333,7 @@ naver.maps.Service.reverseGeocode(
  * See https://navermaps.github.io/maps.js.ncp/docs/tutorial-3-drawing-restore.example.html
  */
 let drawingManager: naver.maps.drawing.DrawingManager | undefined;
-naver.maps.Event.once(map, "init", function() {
+naver.maps.Event.once(map, "init", function () {
     drawingManager = new naver.maps.drawing.DrawingManager({
         map: map,
         rectangleOptions: {
@@ -353,9 +364,18 @@ naver.maps.Event.once(map, "init", function() {
         },
     });
 
-    drawingManager.addListener(naver.maps.drawing.DrawingEvents.ADD, function(e) {});
-    drawingManager.addListener(naver.maps.drawing.DrawingEvents.REMOVE, function(e) {});
-    drawingManager.addListener(naver.maps.drawing.DrawingEvents.SELECT, function(e) {});
+    drawingManager.addListener(
+        naver.maps.drawing.DrawingEvents.ADD,
+        function (e) {},
+    );
+    drawingManager.addListener(
+        naver.maps.drawing.DrawingEvents.REMOVE,
+        function (e) {},
+    );
+    drawingManager.addListener(
+        naver.maps.drawing.DrawingEvents.SELECT,
+        function (e) {},
+    );
 });
 
 /**
@@ -378,7 +398,8 @@ const drawingControlOptions: naver.maps.drawing.DrawingControlOptions = {
 };
 drawingManager?.setOptions("drawingControlOptions", drawingControlOptions);
 // drawing mode
-const drawingMode: naver.maps.drawing.DrawingMode = naver.maps.drawing.DrawingMode.POLYGON;
+const drawingMode: naver.maps.drawing.DrawingMode =
+    naver.maps.drawing.DrawingMode.POLYGON;
 drawingManager?.setOptions("drawingMode", drawingMode);
 // control point options
 const controlPointOptions: naver.maps.drawing.ControlPointOptions = {
@@ -500,7 +521,7 @@ drawingManager?.getOptions("markerOptions")?.zIndex;
 /**
  * Map Data Layer Event
  */
-map.data.addListener("click", function(e: naver.maps.PointerEvent) {
+map.data.addListener("click", function (e: naver.maps.PointerEvent) {
     const feature = e.feature;
     if (feature.getProperty("focus") !== true) {
         feature.setProperty("focus", true);
@@ -523,18 +544,30 @@ expectType<naver.maps.Point>(new naver.maps.Point(1, 1));
  * LatLngBounds
  */
 new naver.maps.LatLngBounds([-100, -90, 100, 90]);
-new naver.maps.LatLngBounds(new naver.maps.LatLng(37.5, 126.9), new naver.maps.LatLng(37.5, 126.9));
+new naver.maps.LatLngBounds(
+    new naver.maps.LatLng(37.5, 126.9),
+    new naver.maps.LatLng(37.5, 126.9),
+);
 expectType<naver.maps.LatLngBounds>(
-    naver.maps.LatLngBounds.bounds(new naver.maps.LatLng(-180, -90), new naver.maps.LatLng(0, 0)),
+    naver.maps.LatLngBounds.bounds(
+        new naver.maps.LatLng(-180, -90),
+        new naver.maps.LatLng(0, 0),
+    ),
 );
 
 /**
  * PointBounds
  */
 new naver.maps.PointBounds([0, 0, 10, 10]);
-new naver.maps.PointBounds(new naver.maps.Point(-10, -10), new naver.maps.Point(10, 10));
+new naver.maps.PointBounds(
+    new naver.maps.Point(-10, -10),
+    new naver.maps.Point(10, 10),
+);
 expectType<naver.maps.PointBounds>(
-    naver.maps.PointBounds.bounds(new naver.maps.Point(-1, -1), new naver.maps.Point(0, 0)),
+    naver.maps.PointBounds.bounds(
+        new naver.maps.Point(-1, -1),
+        new naver.maps.Point(0, 0),
+    ),
 );
 
 function expectType<T>(value: T) {

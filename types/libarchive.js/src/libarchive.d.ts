@@ -19,9 +19,13 @@ export class Archive {
 
     getFilesObject(): Promise<FilesObject>;
 
-    getFilesArray(): Promise<Array<{ file: File | CompressedFile; path: string }>>;
+    getFilesArray(): Promise<
+        Array<{ file: File | CompressedFile; path: string }>
+    >;
 
-    extractFiles(extractCallback?: (entry: { file: File; path: string }) => void): Promise<FilesObject>;
+    extractFiles(
+        extractCallback?: (entry: { file: File; path: string }) => void,
+    ): Promise<FilesObject>;
 
     extractSingleFile(path: string): Promise<File>;
 }

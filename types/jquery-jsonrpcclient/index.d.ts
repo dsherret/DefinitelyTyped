@@ -87,7 +87,7 @@ interface JsonRpcClientFactory {
      *                           call. If specified a setTimeout will be used to keep track of calls
      *                           made through a websocket.
      */
-    new(options?: JsonRpcClientOptions): JsonRpcClient;
+    new (options?: JsonRpcClientOptions): JsonRpcClient;
 }
 
 interface JQueryStatic {

@@ -11,7 +11,10 @@ app.use(morgan("short"));
 app.use(morgan("tiny"));
 app.use(morgan(":remote-addr :method :url"));
 
-const tokenCallback: morgan.TokenCallbackFn = (req: IncomingMessage, res: ServerResponse): string => {
+const tokenCallback: morgan.TokenCallbackFn = (
+    req: IncomingMessage,
+    res: ServerResponse,
+): string => {
     const rqid = req.headers["request-id"];
     if (rqid) {
         if (Array.isArray(rqid)) {
@@ -32,17 +35,23 @@ const stream: morgan.StreamOptions = {
     },
 };
 
-app.use(morgan("combined", {
-    buffer: true,
-    immediate: true,
-    skip: (req: IncomingMessage, res: ServerResponse) => res.statusCode < 400,
-    stream,
-}));
+app.use(
+    morgan("combined", {
+        buffer: true,
+        immediate: true,
+        skip: (req: IncomingMessage, res: ServerResponse) =>
+            res.statusCode < 400,
+        stream,
+    }),
+);
 
 // test interface definition for morgan
 
 // a named custom format defined as string (example: extend 'tiny' format with user-agent token)
-morgan.format("tiny-extended", ":method :url :status :res[content-length] - :response-time ms :user-agent");
+morgan.format(
+    "tiny-extended",
+    ":method :url :status :res[content-length] - :response-time ms :user-agent",
+);
 app.use(morgan("tiny-extended"));
 
 // a named custom format defined using the Function signature (example: extend 'dev' format with user-agent token)
@@ -57,22 +66,25 @@ interface ExtendedFormatFn extends morgan.FormatFn {
     memoizer?: FormatFnIndexer | undefined;
 }
 
-const developmentExtendedFormatLine: ExtendedFormatFn = (tokens, req: IncomingMessage, res: ServerResponse): string => {
+const developmentExtendedFormatLine: ExtendedFormatFn = (
+    tokens,
+    req: IncomingMessage,
+    res: ServerResponse,
+): string => {
     // get the status code if response written
-    const status = res.statusCode
-        ? res.statusCode
-        : undefined;
+    const status = res.statusCode ? res.statusCode : undefined;
 
     // get status color
-    const color = status && status >= 500
-        ? 31 // red
-        : status && status >= 400
-        ? 33 // yellow
-        : status && status >= 300
-        ? 36 // cyan
-        : status && status >= 200
-        ? 32 // green
-        : 0; // no color
+    const color =
+        status && status >= 500
+            ? 31 // red
+            : status && status >= 400
+              ? 33 // yellow
+              : status && status >= 300
+                ? 36 // cyan
+                : status && status >= 200
+                  ? 32 // green
+                  : 0; // no color
 
     // get colored format function, if previously memoized, otherwise undefined
     let fn: morgan.FormatFn | undefined = developmentExtendedFormatLine.memoizer

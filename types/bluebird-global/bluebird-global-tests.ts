@@ -14,10 +14,9 @@ function testFunctionReturningPromise() {
             }
 
             resolve("lorem ipsum");
-        })
-            .then((value) => {
-                return value + " dolor";
-            });
+        }).then((value) => {
+            return value + " dolor";
+        });
     }
 
     functionReturningPromise()

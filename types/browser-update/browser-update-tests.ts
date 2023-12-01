@@ -6,7 +6,8 @@ import browserUpdateMinimal = require("browser-update/update.npm");
 type Options = browserUpdate.Options;
 type DetectedBrowser = browserUpdate.DetectedBrowser;
 type DetectedBrowsers = browserUpdate.DetectedBrowsers;
-type BrowserWithLanguageTextOptions = browserUpdate.BrowserWithLanguageTextOptions;
+type BrowserWithLanguageTextOptions =
+    browserUpdate.BrowserWithLanguageTextOptions;
 type RequiredBrowsers = browserUpdate.RequiredBrowsers;
 type TextConfig = browserUpdate.TextConfig;
 type ParsedOptions = browserUpdate.ParsedOptions;
@@ -62,7 +63,7 @@ browserUpdate({ pageurl: "http" });
 browserUpdate({ container: document.createElement("div") });
 browserUpdate({ api: 1 });
 browserUpdate({
-    onshow: options => {
+    onshow: (options) => {
         options; // $ExpectType ParsedOptions
         options.text; // $ExpectType string | TextConfig | undefined
         options.domain; // $ExpectType string
@@ -93,12 +94,12 @@ browserUpdate({
     },
 });
 browserUpdate({
-    onclick: options => {
+    onclick: (options) => {
         options; // $ExpectType ParsedOptions
     },
 });
 browserUpdate({
-    onclose: options => {
+    onclose: (options) => {
         options; // $ExpectType ParsedOptions
     },
 });

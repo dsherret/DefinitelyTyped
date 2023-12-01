@@ -45,15 +45,28 @@ declare namespace MaxAPIStatic {
 
     type MaxFunctionSelector = MESSAGE_TYPES | string;
     type MaxFunctionHandler = (...args: any[]) => any;
-    type Anything = string | number | Array<string | number> | JSONObject | JSONArray;
+    type Anything =
+        | string
+        | number
+        | Array<string | number>
+        | JSONObject
+        | JSONArray;
 
     // Handlers
     /** Register a single handler */
-    function addHandler(selector: MaxFunctionSelector, handler: MaxFunctionHandler): void;
+    function addHandler(
+        selector: MaxFunctionSelector,
+        handler: MaxFunctionHandler,
+    ): void;
     /** Register handlers */
-    function addHandlers(handlers: Record<MaxFunctionSelector, MaxFunctionHandler>): void;
+    function addHandlers(
+        handlers: Record<MaxFunctionSelector, MaxFunctionHandler>,
+    ): void;
     /** Remove a single handler */
-    function removeHandler(selector: MaxFunctionSelector, handler: MaxFunctionHandler): void;
+    function removeHandler(
+        selector: MaxFunctionSelector,
+        handler: MaxFunctionHandler,
+    ): void;
     /** Remove handlers */
     function removeHandlers(selector: MaxFunctionSelector): void;
 
@@ -74,7 +87,11 @@ declare namespace MaxAPIStatic {
     /** Set the value of a dict object */
     function setDict(id: string, dict: JSONObject): Promise<JSONObject>;
     /** Partially update the value of a dict object at a given path */
-    function updateDict(id: string, updatePath: string, updateValue: JSONValue): Promise<JSONObject>;
+    function updateDict(
+        id: string,
+        updatePath: string,
+        updateValue: JSONValue,
+    ): Promise<JSONObject>;
 }
 
 export default MaxAPIStatic;

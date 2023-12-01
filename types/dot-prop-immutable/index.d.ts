@@ -49,10 +49,7 @@ export type Path = number | string | Array<number | string>;
  * //=> 'gold-unicorn'
  * ```
  */
-export function get(
-    object: ArrayOrObject | undefined,
-    path: Path,
-): any;
+export function get(object: ArrayOrObject | undefined, path: Path): any;
 
 export function get<V>(
     object: ArrayOrObject | undefined,
@@ -124,10 +121,7 @@ export function set<T extends ArrayOrObject>(
  * //=> {foo: [{}, 'white-unicorn', 'silver-unicorn']}
  * ```
  */
-declare function _delete<T extends ArrayOrObject>(
-    object: T,
-    path: Path,
-): T;
+declare function _delete<T extends ArrayOrObject>(object: T, path: Path): T;
 export { _delete as delete };
 
 /**
@@ -144,10 +138,7 @@ export { _delete as delete };
  * //=> {foo: { bar: false } }
  * ```
  */
-export function toggle<T extends ArrayOrObject>(
-    object: T,
-    path: Path,
-): T;
+export function toggle<T extends ArrayOrObject>(object: T, path: Path): T;
 
 /**
  * Merge a value by a dot path.

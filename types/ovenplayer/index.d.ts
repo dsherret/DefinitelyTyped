@@ -1,6 +1,8 @@
 interface OvenPlayer {
     debug(debug: boolean): boolean;
-    generateWebrtcUrls(sources: OvenPlayerWebRTCStream | OvenPlayerWebRTCStream[]): OvenPlayerSource[];
+    generateWebrtcUrls(
+        sources: OvenPlayerWebRTCStream | OvenPlayerWebRTCStream[],
+    ): OvenPlayerSource[];
     create(container: string, config: OvenPlayerConfig): OvenPlayerInstance;
     getPlayerByContainerId(containerId: string): OvenPlayerInstance | null;
     getPlayerByIndex(index: number): OvenPlayerInstance | null;
@@ -149,116 +151,196 @@ interface OvenPlayerHandler {
     /**
      * Player initialization complete. And you can use API methods.
      */
-    (evnetName: "ready", callback: (eventData: OvenPlayerEvents["ready"]) => void): void;
+    (
+        evnetName: "ready",
+        callback: (eventData: OvenPlayerEvents["ready"]) => void,
+    ): void;
     /**
      * It occurs when new metadata is received.
      */
-    (evnetName: "metaChanged", callback: (eventData: OvenPlayerEvents["metaChanged"]) => void): void;
+    (
+        evnetName: "metaChanged",
+        callback: (eventData: OvenPlayerEvents["metaChanged"]) => void,
+    ): void;
     /**
      * It occurs when the state of a player changes.
      */
-    (evnetName: "stateChanged", callback: (eventData: OvenPlayerEvents["stateChanged"]) => void): void;
+    (
+        evnetName: "stateChanged",
+        callback: (eventData: OvenPlayerEvents["stateChanged"]) => void,
+    ): void;
     /**
      * Fired when the player's size has been changed.
      */
-    (evnetName: "resized", callback: (eventData: OvenPlayerEvents["resized"]) => void): void;
+    (
+        evnetName: "resized",
+        callback: (eventData: OvenPlayerEvents["resized"]) => void,
+    ): void;
     /**
      * Fired when the playback rate has been changed
      */
-    (evnetName: "playbackRateChanged", callback: (eventData: OvenPlayerEvents["playbackRateChanged"]) => void): void;
+    (
+        evnetName: "playbackRateChanged",
+        callback: (eventData: OvenPlayerEvents["playbackRateChanged"]) => void,
+    ): void;
     /**
      * Fired after a seek has been requested either by scrubbing the control bar or through the API.
      */
-    (evnetName: "seek", callback: (eventData: OvenPlayerEvents["seek"]) => void): void;
+    (
+        evnetName: "seek",
+        callback: (eventData: OvenPlayerEvents["seek"]) => void,
+    ): void;
     /**
      * While the player is playing, this event is fired as the playback position gets updated. This may occur as frequently as 10 times per second.
      */
-    (evnetName: "time", callback: (eventData: OvenPlayerEvents["time"]) => void): void;
+    (
+        evnetName: "time",
+        callback: (eventData: OvenPlayerEvents["time"]) => void,
+    ): void;
     /**
      * Fired when the currently playing item loads additional data into its buffer.
      */
-    (evnetName: "bufferChanged", callback: (eventData: OvenPlayerEvents["bufferChanged"]) => void): void;
+    (
+        evnetName: "bufferChanged",
+        callback: (eventData: OvenPlayerEvents["bufferChanged"]) => void,
+    ): void;
     /**
      * Triggered when the player has gone in or out of a mute state.
      */
-    (evnetName: "mute", callback: (eventData: OvenPlayerEvents["mute"]) => void): void;
+    (
+        evnetName: "mute",
+        callback: (eventData: OvenPlayerEvents["mute"]) => void,
+    ): void;
     /**
      * Triggered when the player's volume is changed.
      */
-    (evnetName: "volumeChanged", callback: (eventData: OvenPlayerEvents["volumeChanged"]) => void): void;
+    (
+        evnetName: "volumeChanged",
+        callback: (eventData: OvenPlayerEvents["volumeChanged"]) => void,
+    ): void;
     /**
      * Fired when the active playlist is changed. It happens in response to, e.g., a user clicking an option in the playlist menu or a script calling `setCurrentPlaylist` or prev playlist has been completed.
      */
-    (evnetName: "playlistChanged", callback: (eventData: OvenPlayerEvents["playlistChanged"]) => void): void;
+    (
+        evnetName: "playlistChanged",
+        callback: (eventData: OvenPlayerEvents["playlistChanged"]) => void,
+    ): void;
     /**
      * Fired when the active source(protocol) is changed. It happens in response to, e.g., a user clicking an option in the source menu or a script calling `setCurrentSource`.
      */
-    (evnetName: "sourceChanged", callback: (eventData: OvenPlayerEvents["sourceChanged"]) => void): void;
+    (
+        evnetName: "sourceChanged",
+        callback: (eventData: OvenPlayerEvents["sourceChanged"]) => void,
+    ): void;
     /**
      * Fired when the active quality level is changed. It happens in response to, e.g., a user clicking an option in the quality menu or a script calling `setCurrentQuality`.
      */
-    (evnetName: "qualityLevelChanged", callback: (eventData: OvenPlayerEvents["qualityLevelChanged"]) => void): void;
+    (
+        evnetName: "qualityLevelChanged",
+        callback: (eventData: OvenPlayerEvents["qualityLevelChanged"]) => void,
+    ): void;
     /**
      * Fired when VTTCue is changed.
      */
-    (evnetName: "cueChanged", callback: (eventData: OvenPlayerEvents["cueChanged"]) => void): void;
+    (
+        evnetName: "cueChanged",
+        callback: (eventData: OvenPlayerEvents["cueChanged"]) => void,
+    ): void;
     /**
      * Fired when timecode mode is changed.
      */
     (
         evnetName: "timeDisplayModeChanged",
-        callback: (eventData: OvenPlayerEvents["timeDisplayModeChanged"]) => void,
+        callback: (
+            eventData: OvenPlayerEvents["timeDisplayModeChanged"],
+        ) => void,
     ): void;
     /**
      * Fired when Ad is changed.
      */
-    (evnetName: "adChanged", callback: (eventData: OvenPlayerEvents["adChanged"]) => void): void;
+    (
+        evnetName: "adChanged",
+        callback: (eventData: OvenPlayerEvents["adChanged"]) => void,
+    ): void;
     /**
      * Fired when Ad is playing.
      */
-    (evnetName: "adTime", callback: (eventData: OvenPlayerEvents["adTime"]) => void): void;
+    (
+        evnetName: "adTime",
+        callback: (eventData: OvenPlayerEvents["adTime"]) => void,
+    ): void;
     /**
      * Fired when Ad is complete.
      */
-    (evnetName: "adComplete", callback: (eventData: OvenPlayerEvents["adComplete"]) => void): void;
+    (
+        evnetName: "adComplete",
+        callback: (eventData: OvenPlayerEvents["adComplete"]) => void,
+    ): void;
     /**
      * Fired when screen mode is changed.
      */
-    (evnetName: "fullscreenChanged", callback: (eventData: OvenPlayerEvents["fullscreenChanged"]) => void): void;
+    (
+        evnetName: "fullscreenChanged",
+        callback: (eventData: OvenPlayerEvents["fullscreenChanged"]) => void,
+    ): void;
     /**
      * Triggered when the player is clicked.
      * If ad clicked, this returns {type : "adclick"}.
      */
-    (evnetName: "clicked", callback: (eventData: OvenPlayerEvents["clicked"]) => void): void;
+    (
+        evnetName: "clicked",
+        callback: (eventData: OvenPlayerEvents["clicked"]) => void,
+    ): void;
     /**
      * Fired when the all playlist is complete.
      */
-    (evnetName: "allPlaylistEnded", callback: (eventData: OvenPlayerEvents["allPlaylistEnded"]) => void): void;
+    (
+        evnetName: "allPlaylistEnded",
+        callback: (eventData: OvenPlayerEvents["allPlaylistEnded"]) => void,
+    ): void;
     /**
      * Triggered when HLS object is initialized and ready to use.
      */
-    (evnetName: "hlsPrepared", callback: (eventData: OvenPlayerEvents["hlsPrepared"]) => void): void;
+    (
+        evnetName: "hlsPrepared",
+        callback: (eventData: OvenPlayerEvents["hlsPrepared"]) => void,
+    ): void;
     /**
      * Triggered after HLS object is destroyed.
      */
-    (evnetName: "hlsDestroyed", callback: (eventData: OvenPlayerEvents["hlsDestroyed"]) => void): void;
+    (
+        evnetName: "hlsDestroyed",
+        callback: (eventData: OvenPlayerEvents["hlsDestroyed"]) => void,
+    ): void;
     /**
      * Triggered when DASH object is initialized and ready to use.
      */
-    (evnetName: "dashPrepared", callback: (eventData: OvenPlayerEvents["dashPrepared"]) => void): void;
+    (
+        evnetName: "dashPrepared",
+        callback: (eventData: OvenPlayerEvents["dashPrepared"]) => void,
+    ): void;
     /**
      * Triggered after DASH object is destroyed.
      */
-    (evnetName: "dashDestroyed", callback: (eventData: OvenPlayerEvents["dashDestroyed"]) => void): void;
+    (
+        evnetName: "dashDestroyed",
+        callback: (eventData: OvenPlayerEvents["dashDestroyed"]) => void,
+    ): void;
     /**
      * Player is destroyed.
      */
-    (evnetName: "destroy", callback: (eventData: OvenPlayerEvents["destroy"]) => void): void;
+    (
+        evnetName: "destroy",
+        callback: (eventData: OvenPlayerEvents["destroy"]) => void,
+    ): void;
     /**
      * Error occurred.
      * @internal
      */
-    (evnetName: "error", callback: (eventData: OvenPlayerEvents["error"]) => void): void;
+    (
+        evnetName: "error",
+        callback: (eventData: OvenPlayerEvents["error"]) => void,
+    ): void;
 }
 
 interface OvenPlayerEvents {

@@ -74,11 +74,13 @@ interface Options {
     /**
      * used internally by IdyllInstance
      */
-    inputConfig?: {
-        components: any;
-        transform: any[];
-        compiler: CompilerOptions;
-    } | undefined;
+    inputConfig?:
+        | {
+              components: any;
+              transform: any[];
+              compiler: CompilerOptions;
+          }
+        | undefined;
 }
 
 type PredefinedFile =

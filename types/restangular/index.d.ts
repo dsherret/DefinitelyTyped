@@ -37,10 +37,19 @@ declare namespace restangular {
         setParentless(parentless: boolean, routes: string[]): IProvider;
         setDefaultHttpFields(httpFields: any): IProvider;
         addElementTransformer(route: string, transformer: Function): IProvider;
-        addElementTransformer(route: string, isCollection: boolean, transformer: Function): IProvider;
+        addElementTransformer(
+            route: string,
+            isCollection: boolean,
+            transformer: Function,
+        ): IProvider;
         setTransformOnlyServerElements(active: boolean): IProvider;
         setOnElemRestangularized(
-            callback: (elem: any, isCollection: boolean, what: string, restangular: IService) => any,
+            callback: (
+                elem: any,
+                isCollection: boolean,
+                what: string,
+                restangular: IService,
+            ) => any,
         ): IProvider;
         setResponseInterceptor(
             responseInterceptor: (
@@ -73,10 +82,20 @@ declare namespace restangular {
             ) => any,
         ): IProvider;
         setRequestInterceptor(
-            requestInterceptor: (element: any, operation: string, what: string, url: string) => any,
+            requestInterceptor: (
+                element: any,
+                operation: string,
+                what: string,
+                url: string,
+            ) => any,
         ): IProvider;
         addRequestInterceptor(
-            requestInterceptor: (element: any, operation: string, what: string, url: string) => any,
+            requestInterceptor: (
+                element: any,
+                operation: string,
+                what: string,
+                url: string,
+            ) => any,
         ): IProvider;
         setFullRequestInterceptor(
             fullRequestInterceptor: (
@@ -87,7 +106,12 @@ declare namespace restangular {
                 headers: any,
                 params: any,
                 httpConfig: angular.IRequestShortcutConfig,
-            ) => { headers: any; params: any; element: any; httpConfig: angular.IRequestShortcutConfig },
+            ) => {
+                headers: any;
+                params: any;
+                element: any;
+                httpConfig: angular.IRequestShortcutConfig;
+            },
         ): IProvider;
         addFullRequestInterceptor(
             requestInterceptor: (
@@ -98,7 +122,12 @@ declare namespace restangular {
                 headers: any,
                 params: any,
                 httpConfig: angular.IRequestShortcutConfig,
-            ) => { headers: any; params: any; element: any; httpConfig: angular.IRequestShortcutConfig },
+            ) => {
+                headers: any;
+                params: any;
+                element: any;
+                httpConfig: angular.IRequestShortcutConfig;
+            },
         ): IProvider;
         setErrorInterceptor(
             errorInterceptor: (
@@ -107,7 +136,9 @@ declare namespace restangular {
                 responseHandler: (response: restangular.IResponse) => any,
             ) => any,
         ): IProvider;
-        setRestangularFields(fields: { [fieldName: string]: string }): IProvider;
+        setRestangularFields(fields: {
+            [fieldName: string]: string;
+        }): IProvider;
         setMethodOverriders(overriders: string[]): IProvider;
         setJsonp(jsonp: boolean): IProvider;
         setDefaultRequestParams(params: any): IProvider;
@@ -121,18 +152,49 @@ declare namespace restangular {
         setSelfLinkAbsoluteUrl(value: boolean): IProvider;
         setParentless(value: any): IProvider;
         setPlainByDefault(isPlain: boolean): IProvider;
-        extendModel(route: string, extender: (model: IElement) => any): IProvider;
-        extendCollection(route: string, extender: (collection: ICollection) => any): IProvider;
+        extendModel(
+            route: string,
+            extender: (model: IElement) => any,
+        ): IProvider;
+        extendCollection(
+            route: string,
+            extender: (collection: ICollection) => any,
+        ): IProvider;
     }
 
     interface ICustom {
         customGET(path: string, params?: any, headers?: any): IPromise<any>;
-        customGETLIST(path: string, params?: any, headers?: any): ICollectionPromise<any>;
+        customGETLIST(
+            path: string,
+            params?: any,
+            headers?: any,
+        ): ICollectionPromise<any>;
         customDELETE(path: string, params?: any, headers?: any): IPromise<any>;
-        customPOST(elem?: any, path?: string, params?: any, headers?: any): IPromise<any>;
-        customPUT(elem?: any, path?: string, params?: any, headers?: any): IPromise<any>;
-        customPATCH(elem?: any, path?: string, params?: any, headers?: any): IPromise<any>;
-        customOperation(operation: string, path: string, params?: any, headers?: any, elem?: any): IPromise<any>;
+        customPOST(
+            elem?: any,
+            path?: string,
+            params?: any,
+            headers?: any,
+        ): IPromise<any>;
+        customPUT(
+            elem?: any,
+            path?: string,
+            params?: any,
+            headers?: any,
+        ): IPromise<any>;
+        customPATCH(
+            elem?: any,
+            path?: string,
+            params?: any,
+            headers?: any,
+        ): IPromise<any>;
+        customOperation(
+            operation: string,
+            path: string,
+            params?: any,
+            headers?: any,
+            elem?: any,
+        ): IPromise<any>;
         addRestangularMethod(
             name: string,
             operation: string,
@@ -150,9 +212,21 @@ declare namespace restangular {
         all(route: string): ICollection;
         allUrl(route: string, url: string): ICollection;
         copy(fromElement: any): IElement;
-        withConfig(configurer: (RestangularProvider: IProvider) => any): IService;
-        restangularizeElement(parent: any, element: any, route: string, collection?: any, reqParams?: any): IElement;
-        restangularizeCollection(parent: any, element: any, route: string): ICollection;
+        withConfig(
+            configurer: (RestangularProvider: IProvider) => any,
+        ): IService;
+        restangularizeElement(
+            parent: any,
+            element: any,
+            route: string,
+            collection?: any,
+            reqParams?: any,
+        ): IElement;
+        restangularizeCollection(
+            parent: any,
+            element: any,
+            route: string,
+        ): ICollection;
         service(route: string, parent?: any): IScopedService;
         stripRestangular(element: any): any;
     }
@@ -160,8 +234,16 @@ declare namespace restangular {
     interface IScopedService extends IService {
         one(id: number): IElement;
         one(id: string): IElement;
-        post(elementToPost: any, queryParams?: any, headers?: any): IPromise<any>;
-        post<T>(elementToPost: T, queryParams?: any, headers?: any): IPromise<T>;
+        post(
+            elementToPost: any,
+            queryParams?: any,
+            headers?: any,
+        ): IPromise<any>;
+        post<T>(
+            elementToPost: T,
+            queryParams?: any,
+            headers?: any,
+        ): IPromise<T>;
         getList(queryParams?: any, headers?: any): ICollectionPromise<any>;
         getList<T>(queryParams?: any, headers?: any): ICollectionPromise<T>;
     }
@@ -169,11 +251,29 @@ declare namespace restangular {
     interface IElement extends IService {
         get(queryParams?: any, headers?: any): IPromise<any>;
         get<T>(queryParams?: any, headers?: any): IPromise<T>;
-        getList(subElement?: any, queryParams?: any, headers?: any): ICollectionPromise<any>;
-        getList<T>(subElement?: any, queryParams?: any, headers?: any): ICollectionPromise<T>;
+        getList(
+            subElement?: any,
+            queryParams?: any,
+            headers?: any,
+        ): ICollectionPromise<any>;
+        getList<T>(
+            subElement?: any,
+            queryParams?: any,
+            headers?: any,
+        ): ICollectionPromise<T>;
         put(queryParams?: any, headers?: any): IPromise<any>;
-        post(subElement: any, elementToPost?: any, queryParams?: any, headers?: any): IPromise<any>;
-        post<T>(subElement: any, elementToPost: T, queryParams?: any, headers?: any): IPromise<T>;
+        post(
+            subElement: any,
+            elementToPost?: any,
+            queryParams?: any,
+            headers?: any,
+        ): IPromise<any>;
+        post<T>(
+            subElement: any,
+            elementToPost: T,
+            queryParams?: any,
+            headers?: any,
+        ): IPromise<T>;
         remove(queryParams?: any, headers?: any): IPromise<any>;
         head(queryParams?: any, headers?: any): IPromise<any>;
         trace(queryParams?: any, headers?: any): IPromise<any>;
@@ -194,8 +294,16 @@ declare namespace restangular {
     interface ICollection extends IService, Array<any> {
         getList(queryParams?: any, headers?: any): ICollectionPromise<any>;
         getList<T>(queryParams?: any, headers?: any): ICollectionPromise<T>;
-        post(elementToPost: any, queryParams?: any, headers?: any): IPromise<any>;
-        post<T>(elementToPost: T, queryParams?: any, headers?: any): IPromise<T>;
+        post(
+            elementToPost: any,
+            queryParams?: any,
+            headers?: any,
+        ): IPromise<any>;
+        post<T>(
+            elementToPost: T,
+            queryParams?: any,
+            headers?: any,
+        ): IPromise<T>;
         head(queryParams?: any, headers?: any): IPromise<any>;
         trace(queryParams?: any, headers?: any): IPromise<any>;
         options(queryParams?: any, headers?: any): IPromise<any>;

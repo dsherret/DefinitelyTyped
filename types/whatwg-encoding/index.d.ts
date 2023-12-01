@@ -10,7 +10,10 @@
  *
  * console.assert(decode(new Uint8Array([0x48, 0x69]), "UTF-8") === "Hi");
  */
-export function decode(uint8Array: Uint8Array, fallbackEncodingName: string): string;
+export function decode(
+    uint8Array: Uint8Array,
+    fallbackEncodingName: string,
+): string;
 /**
  * Performs the [get an encoding](https://encoding.spec.whatwg.org/#concept-encoding-get) algorithm.
  *

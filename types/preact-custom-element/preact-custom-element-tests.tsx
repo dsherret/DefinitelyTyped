@@ -1,7 +1,7 @@
 import { Component, FunctionalComponent, h, render } from "preact";
 import register = require("preact-custom-element");
 
-const Foo: FunctionalComponent<any> = props => {
+const Foo: FunctionalComponent<any> = (props) => {
     return <div></div>;
 };
 

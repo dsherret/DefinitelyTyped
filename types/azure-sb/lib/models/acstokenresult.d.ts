@@ -18,7 +18,8 @@ import { Azure as Az } from "azure-sb";
 import Dictionary = Az.ServiceBus.Dictionary;
 
 export namespace Azure.ServiceBus.Results {
-    export interface AcsTokenResponse extends Dictionary<string | Dictionary<string>> {
+    export interface AcsTokenResponse
+        extends Dictionary<string | Dictionary<string>> {
         WrapAccessToken: Dictionary<string>;
         WrapAccessTokenExpiresIn: Dictionary<string>;
     }

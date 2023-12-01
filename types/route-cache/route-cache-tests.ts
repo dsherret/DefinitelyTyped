@@ -6,13 +6,29 @@ import Redis from "ioredis";
 
 const redis = new Redis();
 const ioRedisStore: IoRedisStore = new IoRedisStore(redis);
-const lruStore: LruStore = new LruStore({ max: 100, length: (value: any, key: string) => 1, maxAge: 1000 });
+const lruStore: LruStore = new LruStore({
+    max: 100,
+    length: (value: any, key: string) => 1,
+    maxAge: 1000,
+});
 
-const configRedisStore: routeCache.ConfigOptions = { max: 100, cacheStore: ioRedisStore };
-const configLruStore: routeCache.ConfigOptions = { max: 100, cacheStore: lruStore };
+const configRedisStore: routeCache.ConfigOptions = {
+    max: 100,
+    cacheStore: ioRedisStore,
+};
+const configLruStore: routeCache.ConfigOptions = {
+    max: 100,
+    cacheStore: lruStore,
+};
 
-const cacheKeyFunc: routeCache.CacheKeyFunc = (req: express.Request, res: express.Response) => "foo";
-const cacheKeyFuncNull: routeCache.CacheKeyFunc = (req: express.Request, res: express.Response) => null;
+const cacheKeyFunc: routeCache.CacheKeyFunc = (
+    req: express.Request,
+    res: express.Response,
+) => "foo";
+const cacheKeyFuncNull: routeCache.CacheKeyFunc = (
+    req: express.Request,
+    res: express.Response,
+) => null;
 
 routeCache.config({ max: 100, cacheStore: ioRedisStore }); // $ExpectType RouteCache
 routeCache.config({ max: 100, cacheStore: lruStore }); // $ExpectType RouteCache

@@ -27,7 +27,11 @@ interface CancelableType {
 }
 
 // based on https://github.com/post-robot/src/public/on.js
-export function on(name: string, options: ServerOptionsType | HandlerType, handler?: HandlerType): CancelableType;
+export function on(
+    name: string,
+    options: ServerOptionsType | HandlerType,
+    handler?: HandlerType,
+): CancelableType;
 
 export function once(
     name: string,

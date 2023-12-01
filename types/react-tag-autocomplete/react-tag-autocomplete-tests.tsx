@@ -1,5 +1,9 @@
 import * as React from "react";
-import ReactTags, { SuggestionComponentProps, Tag, TagComponentProps } from "react-tag-autocomplete";
+import ReactTags, {
+    SuggestionComponentProps,
+    Tag,
+    TagComponentProps,
+} from "react-tag-autocomplete";
 
 const TestRequired = () => {
     const onAddTag = (tag: { id: string | number; name: string }) => {};
@@ -46,8 +50,13 @@ class TestAll extends React.Component {
             { id: 5, name: "Lemons" },
             { id: 6, name: "Apricots", disabled: true },
         ];
-        const suggestionFilter = (tag: { id: string | number; name: string }, query: string) => true;
-        const tagComponent = (props: TagComponentProps) => <button onClick={props.onDelete}>{props.tag.name}</button>;
+        const suggestionFilter = (
+            tag: { id: string | number; name: string },
+            query: string,
+        ) => true;
+        const tagComponent = (props: TagComponentProps) => (
+            <button onClick={props.onDelete}>{props.tag.name}</button>
+        );
         const tags = [
             { id: 1, name: "Apples" },
             { id: 2, name: "Pears" },

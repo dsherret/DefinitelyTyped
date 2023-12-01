@@ -216,7 +216,11 @@ export const timeMillisecond: CountableTimeInterval;
  * @param stop A stop date object for the range.
  * @param step An optional number of steps to apply when calculating the dates in the range.
  */
-export function timeMilliseconds(start: Date, stop: Date, step?: number): Date[];
+export function timeMilliseconds(
+    start: Date,
+    stop: Date,
+    step?: number,
+): Date[];
 
 /**
  * Seconds Interval in Local Time; seconds (e.g., 01:23:45.0000 AM); 1,000 milliseconds.

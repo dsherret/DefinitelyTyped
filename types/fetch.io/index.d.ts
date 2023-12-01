@@ -102,7 +102,10 @@ export class Request {
     /**
      * Get Response directly
      */
-    then(resolve: (value?: Response) => void, reject?: (reason?: any) => void): Promise<any>;
+    then(
+        resolve: (value?: Response) => void,
+        reject?: (reason?: any) => void,
+    ): Promise<any>;
 
     /**
      * Make Response to JSON

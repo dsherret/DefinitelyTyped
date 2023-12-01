@@ -15,12 +15,15 @@ declare namespace IOSTContract {
         globalHas(contract: string, key: string): boolean;
         globalGet(contract: string, key: string): string | null;
         globalMapHas(contract: string, key: string, field: string): boolean;
-        globalMapGet(contract: string, key: string, field: string): string | null;
+        globalMapGet(
+            contract: string,
+            key: string,
+            field: string,
+        ): string | null;
         globalMapLen(contract: string, key: string): number;
         globalMapKeys(contract: string, key: string): string[];
     }
-    interface Storage extends LocalStorage, GlobalStorage {
-    }
+    interface Storage extends LocalStorage, GlobalStorage {}
 }
 
 declare const storage: IOSTContract.Storage;

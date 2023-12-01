@@ -128,7 +128,10 @@ export class Client {
      * @param remotePath 目录路径
      * @param options 选项 请参考文档
      */
-    listDir(remotePath: string, options?: listDirOptions): Promise<false | listDirResponse>;
+    listDir(
+        remotePath: string,
+        options?: listDirOptions,
+    ): Promise<false | listDirResponse>;
 
     /**
      * 上传单个文件
@@ -180,7 +183,10 @@ export class Client {
      * @param multiUuid 任务标识，初始化时生成。即 X-Upyun-Multi-Uuid
      * @link https://github.com/upyun/node-sdk#completemultipartupload-remotepath-multiuuid
      */
-    completeMultipartUpload(remotePath: string, multiUuid: string): Promise<boolean>;
+    completeMultipartUpload(
+        remotePath: string,
+        multiUuid: string,
+    ): Promise<boolean>;
 
     /**
      * 创建目录
@@ -243,7 +249,11 @@ export class Client {
      * @param options 其他可选参数
      * @link https://github.com/upyun/node-sdk#copytargetpath-sourcepath-options--
      */
-    copy(targetPath: string, sourcePath: string, options?: copyOrMoveOptions): Promise<boolean>;
+    copy(
+        targetPath: string,
+        sourcePath: string,
+        options?: copyOrMoveOptions,
+    ): Promise<boolean>;
 
     /**
      * @param targetPath 目标文件地址
@@ -251,7 +261,11 @@ export class Client {
      * @param options 其他可选参数
      * @link https://github.com/upyun/node-sdk#movetargetpath-sourcepath-options--
      */
-    move(targetPath: string, sourcePath: string, options?: copyOrMoveOptions): Promise<boolean>;
+    move(
+        targetPath: string,
+        sourcePath: string,
+        options?: copyOrMoveOptions,
+    ): Promise<boolean>;
 }
 
 // sign模块
@@ -321,5 +335,8 @@ export namespace sign {
      * @param service service Instance
      * @param urls url
      */
-    function getPurgeHeaderSign(service: Service, urls: string[]): GetPurgeHeaderSignReturnType;
+    function getPurgeHeaderSign(
+        service: Service,
+        urls: string[],
+    ): GetPurgeHeaderSignReturnType;
 }

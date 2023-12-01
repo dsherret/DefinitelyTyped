@@ -4,7 +4,8 @@ import * as glossy from "glossy";
 import * as net from "net";
 import * as Transport from "winston-transport";
 
-export interface SyslogTransportOptions extends Transport.TransportStreamOptions {
+export interface SyslogTransportOptions
+    extends Transport.TransportStreamOptions {
     host?: string | undefined;
     port?: number | undefined;
     path?: string | undefined;
@@ -24,7 +25,7 @@ export interface SyslogTransportInstance extends Transport {
 
     connect(callback: (err: true | null) => any): void;
 
-    new(options?: SyslogTransportOptions): SyslogTransportInstance;
+    new (options?: SyslogTransportOptions): SyslogTransportInstance;
 }
 
 export const Syslog: SyslogTransportInstance;

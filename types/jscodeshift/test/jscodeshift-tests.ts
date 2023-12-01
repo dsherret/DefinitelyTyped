@@ -1,17 +1,30 @@
-import { API, ASTNode, Collection, FileInfo, ImportDeclaration, JSCodeshift, Parser, Transform } from "jscodeshift";
+import {
+    API,
+    ASTNode,
+    Collection,
+    FileInfo,
+    ImportDeclaration,
+    JSCodeshift,
+    Parser,
+    Transform,
+} from "jscodeshift";
 import { run } from "jscodeshift/src/Runner";
 import * as testUtils from "jscodeshift/src/testUtils";
 
 // Can define transform with `function`.
 function replaceWithFooTransform(fileInfo: FileInfo, api: API) {
-    return api.jscodeshift(fileInfo.source).findVariableDeclarators("foo").renameTo("bar").toSource();
+    return api
+        .jscodeshift(fileInfo.source)
+        .findVariableDeclarators("foo")
+        .renameTo("bar")
+        .toSource();
 }
 
 // Type-force parameter for .map is optional
 function mapSignature(fileInfo: FileInfo, api: API) {
     return api
         .jscodeshift(fileInfo.source)
-        .map(p => p)
+        .map((p) => p)
         .toSource();
 }
 
@@ -21,8 +34,10 @@ const reverseIdentifiersTransform: Transform = (file, api) => {
 
     return j(file.source)
         .find(j.Identifier)
-        .forEach(path => {
-            j(path).replaceWith(j.identifier(path.node.name.split("").reverse().join("")));
+        .forEach((path) => {
+            j(path).replaceWith(
+                j.identifier(path.node.name.split("").reverse().join("")),
+            );
         })
         .toSource();
 };
@@ -50,18 +65,29 @@ const transformImportSpecifier: Transform = (file, { j }) => {
     return j(file.source)
         .find(j.ImportDeclaration, {
             source: { value: "specific-library" },
-            specifiers: specifiers =>
+            specifiers: (specifiers) =>
                 specifiers?.some(
-                    specifier => specifier.type === "ImportSpecifier" && specifier.imported.name === "import-to-remove",
+                    (specifier) =>
+                        specifier.type === "ImportSpecifier" &&
+                        specifier.imported.name === "import-to-remove",
                 ) || false,
         })
-        .replaceWith(path => {
-            const specifiersExceptImportToRemove = path.node.specifiers?.filter(
-                specifier => !(specifier.type === "ImportSpecifier" && specifier.imported.name === "import-to-remove"),
-            ) ?? [];
+        .replaceWith((path) => {
+            const specifiersExceptImportToRemove =
+                path.node.specifiers?.filter(
+                    (specifier) =>
+                        !(
+                            specifier.type === "ImportSpecifier" &&
+                            specifier.imported.name === "import-to-remove"
+                        ),
+                ) ?? [];
 
             return specifiersExceptImportToRemove.length > 0
-                ? j.importDeclaration(specifiersExceptImportToRemove, path.node.source, path.node.importKind)
+                ? j.importDeclaration(
+                      specifiersExceptImportToRemove,
+                      path.node.source,
+                      path.node.importKind,
+                  )
                 : null;
         })
         .toSource();
@@ -75,11 +101,13 @@ const transformExportDefaultArrow: Transform = (file, { j }) => {
                 type: "ArrowFunctionExpression",
             },
         })
-        .forEach(path => {
-            const arrow = path.node.declaration as import("ast-types/gen/kinds").ArrowFunctionExpressionKind;
-            const body = arrow.body.type === "BlockStatement"
-                ? arrow.body
-                : j.blockStatement([j.returnStatement(arrow.body)]);
+        .forEach((path) => {
+            const arrow = path.node
+                .declaration as import("ast-types/gen/kinds").ArrowFunctionExpressionKind;
+            const body =
+                arrow.body.type === "BlockStatement"
+                    ? arrow.body
+                    : j.blockStatement([j.returnStatement(arrow.body)]);
             j(path).replaceWith(
                 j.exportDefaultDeclaration(
                     j.functionDeclaration.from({
@@ -113,11 +141,17 @@ const transformExportDefaultArrow: Transform = (file, { j }) => {
             // $ExpectType Identifier
             node.param;
 
-            if (node.param.typeAnnotation && node.param.typeAnnotation.type === "TSTypeAnnotation") {
+            if (
+                node.param.typeAnnotation &&
+                node.param.typeAnnotation.type === "TSTypeAnnotation"
+            ) {
                 // $ExpectType TSTypeAnnotation
                 node.param.typeAnnotation;
 
-                if (node.param.typeAnnotation.typeAnnotation.type === "TSArrayType") {
+                if (
+                    node.param.typeAnnotation.typeAnnotation.type ===
+                    "TSArrayType"
+                ) {
                     // $ExpectType TSArrayType
                     node.param.typeAnnotation.typeAnnotation;
                 }
@@ -127,14 +161,21 @@ const transformExportDefaultArrow: Transform = (file, { j }) => {
 }
 
 // Can define a collection
-function getFileDefaultImport(file: FileInfo, j: JSCodeshift): Collection<ImportDeclaration> {
+function getFileDefaultImport(
+    file: FileInfo,
+    j: JSCodeshift,
+): Collection<ImportDeclaration> {
     return j(file.source).find(j.ImportDeclaration);
 }
 
 // Can apply a transform passed as module
-testUtils.applyTransform({ default: transformImportSpecifier, parser: "ts" }, null, {
-    source: "import test from 'test';",
-});
+testUtils.applyTransform(
+    { default: transformImportSpecifier, parser: "ts" },
+    null,
+    {
+        source: "import test from 'test';",
+    },
+);
 
 // Can apply a transform passed as function
 testUtils.applyTransform(
@@ -145,7 +186,9 @@ testUtils.applyTransform(
 );
 
 // Can define a test
-testUtils.defineTest("directory", "transformName", { opt: true }, undefined, { parser: "tsx" });
+testUtils.defineTest("directory", "transformName", { opt: true }, undefined, {
+    parser: "tsx",
+});
 
 // Can run a test
 testUtils.runTest("dirname", "transformName", {});
@@ -159,7 +202,12 @@ testUtils.defineInlineTest(
 );
 
 // Can define an inline test with transform passed as function
-testUtils.defineInlineTest(() => {}, { opt: true }, "import test from 'test';", "import test from './test';");
+testUtils.defineInlineTest(
+    () => {},
+    { opt: true },
+    "import test from 'test';",
+    "import test from './test';",
+);
 
 // Can run an inline test with transform passed as module
 testUtils.runInlineTest(
@@ -209,7 +257,11 @@ testUtils.runSnapshotTest(
 );
 
 // Can run a snapshot test with transform passed as function
-testUtils.runSnapshotTest(reverseIdentifiersTransform, {}, { source: "var firstWord = 'Hello ';" });
+testUtils.runSnapshotTest(
+    reverseIdentifiersTransform,
+    {},
+    { source: "var firstWord = 'Hello ';" },
+);
 
 run("transform.js", ["foo.js", "bar"], {
     dry: true,

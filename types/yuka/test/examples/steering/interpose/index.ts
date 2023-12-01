@@ -46,12 +46,16 @@ function animate() {
     target1.x = Math.cos(elapsedTime * 0.1) * Math.sin(elapsedTime * 0.1) * 6;
     target1.z = Math.sin(elapsedTime * 0.3) * 6;
 
-    target2.x = 1 + Math.cos(elapsedTime * 0.5) * Math.sin(elapsedTime * 0.3) * 4;
+    target2.x =
+        1 + Math.cos(elapsedTime * 0.5) * Math.sin(elapsedTime * 0.3) * 4;
     target2.z = 1 + Math.sin(elapsedTime * 0.3) * 6;
 
     entityManager.update(delta);
 }
 
-function sync(entity: YUKA.GameEntity, renderComponent: { matrix: YUKA.Matrix4 }) {
+function sync(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrix: YUKA.Matrix4 },
+) {
     renderComponent.matrix.copy(entity.worldMatrix);
 }

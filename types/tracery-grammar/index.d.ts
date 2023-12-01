@@ -23,7 +23,11 @@ declare class TraceryNode {
     preactions: TraceryNodeAction[];
     postactions: TraceryNodeAction[];
     action?: TraceryNodeAction | undefined;
-    constructor(parent: TraceryNode | TraceryGrammar | null, childIndex: number, settings: Settings);
+    constructor(
+        parent: TraceryNode | TraceryGrammar | null,
+        childIndex: number,
+        settings: Settings,
+    );
     toString(): string;
     expandChildren(childRule: string, preventRecursion: boolean): void;
     expand(preventRecursion?: boolean): void;
@@ -62,11 +66,15 @@ declare class TracerySymbol {
     stack?: TraceryRuleSet[] | undefined;
     uses?:
         | Array<{
-            node?: TraceryNode | undefined;
-        }>
+              node?: TraceryNode | undefined;
+          }>
         | undefined;
     isDynamic?: boolean | undefined;
-    constructor(grammar: TraceryGrammar, key: string, rawRules: ConstructorParameters<typeof TraceryRuleSet>[1]);
+    constructor(
+        grammar: TraceryGrammar,
+        key: string,
+        rawRules: ConstructorParameters<typeof TraceryRuleSet>[1],
+    );
     clearState(): void;
     pushRules(rawRules: ConstructorParameters<typeof TraceryRuleSet>[1]): void;
     popRules(): void;
@@ -89,12 +97,18 @@ declare class TraceryGrammar {
     expand(rule: string, allowEscapeChars?: boolean): TraceryNode;
     flatten(rule: string, allowEscapeChars?: boolean): string;
     toJSON(): string;
-    pushRules(key: string, rawRules: ConstructorParameters<typeof TracerySymbol>[2], sourceAction?: boolean): void;
+    pushRules(
+        key: string,
+        rawRules: ConstructorParameters<typeof TracerySymbol>[2],
+        sourceAction?: boolean,
+    ): void;
     popRules(key: string): void;
     selectRule(key: string, node: TraceryNode, errors: string[]): any;
 }
 declare const tracery: {
-    createGrammar: (raw: ConstructorParameters<typeof TraceryGrammar>[0]) => TraceryGrammar;
+    createGrammar: (
+        raw: ConstructorParameters<typeof TraceryGrammar>[0],
+    ) => TraceryGrammar;
     parseTag: (tagContents: string | null) => {
         symbol: any;
         preactions: any[];

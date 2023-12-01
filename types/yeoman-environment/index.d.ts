@@ -1,6 +1,11 @@
 import { Command } from "commander";
 import { EventEmitter } from "events";
-import { ExecaChildProcess, ExecaSyncReturnValue, Options, SyncOptions } from "execa";
+import {
+    ExecaChildProcess,
+    ExecaSyncReturnValue,
+    Options,
+    SyncOptions,
+} from "execa";
 import * as inquirer from "inquirer";
 import { Store as MemFsStore } from "mem-fs";
 import * as Generator from "yeoman-generator";
@@ -24,7 +29,9 @@ import { Stream, Transform } from "stream";
  * An optional adapter can be passed to provide interaction in non-CLI environment
  * (e.g. IDE plugins), otherwise a `TerminalAdapter` is instantiated by default
  */
-declare class Environment<TOptions extends Environment.Options = Environment.Options> extends EventEmitter {
+declare class Environment<
+    TOptions extends Environment.Options = Environment.Options,
+> extends EventEmitter {
     /**
      * The utilities of the module.
      */
@@ -77,7 +84,11 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param opts The options for the environment.
      * @param adapter A `TerminalAdapter` instance for handling input/output.
      */
-    constructor(args?: string | string[], opts?: TOptions, adapter?: Environment.Adapter);
+    constructor(
+        args?: string | string[],
+        opts?: TOptions,
+        adapter?: Environment.Adapter,
+    );
 
     /**
      * Creates a new `Environment` instance.
@@ -87,7 +98,9 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param adapter A `TerminalAdapter` instance for handling input/output.
      * @returns The newly created environment.
      */
-    static createEnv<TOptions extends Environment.Options = Environment.Options>(
+    static createEnv<
+        TOptions extends Environment.Options = Environment.Options,
+    >(
         args?: string | string[],
         opts?: TOptions,
         adapter?: Environment.Adapter,
@@ -124,7 +137,10 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param options Options for searching the generator.
      * @returns The paths to the generators which were found.
      */
-    static lookupGenerator(namespace: string, options?: Environment.ArrayGeneratorLookupOptions): string[];
+    static lookupGenerator(
+        namespace: string,
+        options?: Environment.ArrayGeneratorLookupOptions,
+    ): string[];
 
     /**
      * Invokes a lookup for a specific generator.
@@ -133,7 +149,10 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param options Options for searching the generator.
      * @returns The path to the generator which was found.
      */
-    static lookupGenerator(namespace: string, options?: Environment.SingleGeneratorLookupOptions): string;
+    static lookupGenerator(
+        namespace: string,
+        options?: Environment.SingleGeneratorLookupOptions,
+    ): string;
 
     /**
      * Converts a generator namespace to its name.
@@ -148,7 +167,9 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param generatorClass The generator class to create a command for.
      * @returns The prepared command.
      */
-    static prepareCommand(generatorClass: Generator.GeneratorConstructor): Command;
+    static prepareCommand(
+        generatorClass: Generator.GeneratorConstructor,
+    ): Command;
 
     /**
      * Prepares a command for cli support.
@@ -157,7 +178,10 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param generatorClass The constructor of the generator to prepare the command for.
      * @returns The prepared command.
      */
-    static prepareGeneratorCommand(command: Command, generatorClass: Generator.GeneratorConstructor): Command;
+    static prepareGeneratorCommand(
+        command: Command,
+        generatorClass: Generator.GeneratorConstructor,
+    ): Command;
 
     /**
      * Gets the alias for the specified `name`.
@@ -194,7 +218,10 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param transformStreams The transforms to apply.
      * @param stream The file stream to apply the transforms on.
      */
-    applyTransforms(transformStreams: Transform[], stream?: NodeJS.ReadableStream): Promise<void>;
+    applyTransforms(
+        transformStreams: Transform[],
+        stream?: NodeJS.ReadableStream,
+    ): Promise<void>;
 
     /**
      * Commits the `mem-fs` to the disk.
@@ -211,7 +238,11 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param options The options to pass to the generator.
      * @returns The instantiated generator or a singleton instance.
      */
-    composeWith(namespaceOrPath: string, args: string[], options: Generator.GeneratorOptions): Generator;
+    composeWith(
+        namespaceOrPath: string,
+        args: string[],
+        options: Generator.GeneratorOptions,
+    ): Generator;
 
     /**
      * Creates a new generator.
@@ -246,7 +277,10 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param list The paths to search for generators.
      * @param options The options for looking for generators.
      */
-    findGeneratorsIn(list: string[], options?: Environment.GeneratorsInOptions): string[];
+    findGeneratorsIn(
+        list: string[],
+        options?: Environment.GeneratorsInOptions,
+    ): string[];
 
     /**
      * Gets a single constructor of a generator from the registered list of generators.
@@ -367,7 +401,9 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param options The options to load.
      * @return the new shared options of the environment.
      */
-    loadSharedOptions(options: Generator.GeneratorOptions): Generator.GeneratorOptions;
+    loadSharedOptions(
+        options: Generator.GeneratorOptions,
+    ): Generator.GeneratorOptions;
 
     /**
      * Searches for generators and their sub-generators.
@@ -384,14 +420,18 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param options The options for the lookup.
      * @returns A list of generators.
      */
-    lookup(options?: Environment.LookupOptions): Environment.LookupGeneratorMeta[];
+    lookup(
+        options?: Environment.LookupOptions,
+    ): Environment.LookupGeneratorMeta[];
 
     /**
      * Searches and registers generators inside the custom local repository.
      *
      * @param packagesToLookup The patterns of the packages to lookup.
      */
-    lookupLocalPackages(packagesToLookup?: string[]): Environment.LookupGeneratorMeta[];
+    lookupLocalPackages(
+        packagesToLookup?: string[],
+    ): Environment.LookupGeneratorMeta[];
 
     /**
      * Converts the specified `filePath` to a namespace.
@@ -464,7 +504,10 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param packageName The name of the package to resolve.
      * @param packageVersion The version or the version range of the package to resolve.
      */
-    resolvePackage(packageName: string, packageVersion: string): [string, string];
+    resolvePackage(
+        packageName: string,
+        packageVersion: string,
+    ): [string, string];
 
     /**
      * Gets the first generator that was queued to run in this environment.
@@ -480,7 +523,10 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param args The arguments to pass to the generator.
      * @param options The options to pass to the generator.
      */
-    run(args: string | [string, ...string[]], options?: Generator.GeneratorOptions): Promise<void>;
+    run(
+        args: string | [string, ...string[]],
+        options?: Generator.GeneratorOptions,
+    ): Promise<void>;
 
     /**
      * Runs the specified generator.
@@ -505,7 +551,11 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param args The arguments to pass to the program.
      * @param options The options to use for running the command.
      */
-    spawnCommand(command: string, args: string[], options: Options): ExecaChildProcess;
+    spawnCommand(
+        command: string,
+        args: string[],
+        options: Options,
+    ): ExecaChildProcess;
 
     /**
      * Spawns a command synchronously.
@@ -514,7 +564,11 @@ declare class Environment<TOptions extends Environment.Options = Environment.Opt
      * @param args The arguments to pass to the program.
      * @param options The options to use for running the command.
      */
-    spawnCommandSync(command: string, args: string[], options: SyncOptions): ExecaSyncReturnValue;
+    spawnCommandSync(
+        command: string,
+        args: string[],
+        options: SyncOptions,
+    ): ExecaSyncReturnValue;
 }
 
 declare namespace Environment {
@@ -636,7 +690,10 @@ declare namespace Environment {
     /**
      * Provides options for instantiating a generator.
      */
-    interface InstantiateOptions<TOptions extends Generator.GeneratorOptions = Generator.GeneratorOptions> {
+    interface InstantiateOptions<
+        TOptions extends
+            Generator.GeneratorOptions = Generator.GeneratorOptions,
+    > {
         /**
          * The arguments to pass to the generator.
          */

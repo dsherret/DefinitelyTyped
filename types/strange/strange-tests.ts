@@ -108,7 +108,11 @@ import * as RangeTree from "strange/tree";
 {
     const left = new RangeTree([new Range(-5, 0)]);
     const right = new RangeTree([new Range(5, 10)]);
-    const root = new RangeTree<number>([new Range(0, 5), new Range(0, 10)], left, right);
+    const root = new RangeTree<number>(
+        [new Range(0, 5), new Range(0, 10)],
+        left,
+        right,
+    );
     root.search(7); // => [new Range(0, 10), new Range(5, 10)]
     root.search(new Range(8, 9)); // => [new Range(5, 10), new Range(0, 10)]
 

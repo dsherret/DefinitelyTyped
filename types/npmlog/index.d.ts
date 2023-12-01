@@ -22,7 +22,12 @@ declare namespace npmlog {
          * @param message message of the log which will be formatted using utils.format()
          * @param args additional arguments appended to the log message also formatted using utils.format()
          */
-        log(level: LogLevels | string, prefix: string, message: any, ...args: any[]): void;
+        log(
+            level: LogLevels | string,
+            prefix: string,
+            message: any,
+            ...args: any[]
+        ): void;
 
         /**
          * @param prefix
@@ -52,7 +57,12 @@ declare namespace npmlog {
         pause(): void;
         resume(): void;
 
-        addLevel(level: string, n: number, style?: StyleObject, disp?: string): void;
+        addLevel(
+            level: string,
+            n: number,
+            style?: StyleObject,
+            disp?: string,
+        ): void;
 
         // Allows for custom log levels
         // npmlog.addLevel("custom", level)
@@ -60,7 +70,16 @@ declare namespace npmlog {
         [key: string]: any;
     }
 
-    type LogLevels = "silly" | "verbose" | "info" | "timing" | "http" | "notice" | "warn" | "error" | "silent";
+    type LogLevels =
+        | "silly"
+        | "verbose"
+        | "info"
+        | "timing"
+        | "http"
+        | "notice"
+        | "warn"
+        | "error"
+        | "silent";
 
     interface StyleObject {
         fg?: string | undefined;

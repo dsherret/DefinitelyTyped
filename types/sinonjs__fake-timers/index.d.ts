@@ -30,7 +30,11 @@ export interface GlobalTimers<TTimerId extends TimerId> {
      * @param args   Any extra arguments to pass to the callback.
      * @returns Time identifier for cancellation.
      */
-    setTimeout: (callback: (...args: any[]) => void, timeout: number, ...args: any[]) => TTimerId;
+    setTimeout: (
+        callback: (...args: any[]) => void,
+        timeout: number,
+        ...args: any[]
+    ) => TTimerId;
 
     /**
      * Clears a timer, as long as it was created using setTimeout.
@@ -47,7 +51,11 @@ export interface GlobalTimers<TTimerId extends TimerId> {
      * @param args   Any extra arguments to pass to the callback.
      * @returns Time identifier for cancellation.
      */
-    setInterval: (callback: (...args: any[]) => void, timeout: number, ...args: any[]) => TTimerId;
+    setInterval: (
+        callback: (...args: any[]) => void,
+        timeout: number,
+        ...args: any[]
+    ) => TTimerId;
 
     /**
      * Clears a timer, as long as it was created using setInterval.
@@ -64,7 +72,10 @@ export interface GlobalTimers<TTimerId extends TimerId> {
      * @remarks You'll still have to call clock.tick() for the callback to fire.
      * @remarks If called during a tick the callback won't fire until 1 millisecond has ticked by.
      */
-    setImmediate: (callback: (...args: any[]) => void, ...args: any[]) => TTimerId;
+    setImmediate: (
+        callback: (...args: any[]) => void,
+        ...args: any[]
+    ) => TTimerId;
 
     /**
      * Clears a timer, as long as it was created using setImmediate.
@@ -107,7 +118,8 @@ export type TimerId = number | NodeTimer;
 /**
  * Controls the flow of time.
  */
-export interface FakeClock<TTimerId extends TimerId> extends GlobalTimers<TTimerId> {
+export interface FakeClock<TTimerId extends TimerId>
+    extends GlobalTimers<TTimerId> {
     /**
      * Current clock time.
      */

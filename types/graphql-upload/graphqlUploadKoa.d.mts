@@ -6,6 +6,7 @@ export interface UploadOptions {
     maxFiles?: number | undefined;
 }
 
-export default function graphqlUploadKoa<StateT = DefaultState, ContextT = DefaultContext>(
-    uploadOptions?: UploadOptions,
-): Middleware<StateT, ContextT>; // eslint-disable-line @definitelytyped/no-unnecessary-generics
+export default function graphqlUploadKoa<
+    StateT = DefaultState,
+    ContextT = DefaultContext,
+>(uploadOptions?: UploadOptions): Middleware<StateT, ContextT>; // eslint-disable-line @definitelytyped/no-unnecessary-generics

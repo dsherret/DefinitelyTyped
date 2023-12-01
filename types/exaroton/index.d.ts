@@ -61,7 +61,11 @@ declare class Client {
      * @param gotOptions
      * @param outputStream
      */
-    streamResponse(url: string, gotOptions: object, outputStream: WritableStream): Promise<unknown>;
+    streamResponse(
+        url: string,
+        gotOptions: object,
+        outputStream: WritableStream,
+    ): Promise<unknown>;
 
     /**
      * Get a list of all servers

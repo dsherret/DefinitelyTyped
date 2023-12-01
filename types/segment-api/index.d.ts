@@ -45,11 +45,25 @@ export type Callback = (err: string) => void;
 export type PropertiesCallback = () => Properties;
 export type EventCallback = () => string;
 export type ReadyCallback = () => void;
-export type EventFiredCallback = (event: string, properties: Properties, options: Options) => void;
+export type EventFiredCallback = (
+    event: string,
+    properties: Properties,
+    options: Options,
+) => void;
 
 export function init(key: string): void;
-export function identify(userId: string, traits?: Traits, options?: Options, callback?: Callback): void;
-export function track(event: string, properties?: Properties, options?: Options, callback?: Callback): void;
+export function identify(
+    userId: string,
+    traits?: Traits,
+    options?: Options,
+    callback?: Callback,
+): void;
+export function track(
+    event: string,
+    properties?: Properties,
+    options?: Options,
+    callback?: Callback,
+): void;
 export function trackLink(
     element: HTMLElement | HTMLElement[],
     event: string | EventCallback,
@@ -67,8 +81,18 @@ export function page(
     options?: Options,
     callback?: Callback,
 ): void;
-export function group(groupId: string, traits?: Traits, options?: Options, callback?: Callback): void;
-export function alias(userId: string, previousId?: string, options?: Options, callback?: Callback): void;
+export function group(
+    groupId: string,
+    traits?: Traits,
+    options?: Options,
+    callback?: Callback,
+): void;
+export function alias(
+    userId: string,
+    previousId?: string,
+    options?: Options,
+    callback?: Callback,
+): void;
 export function ready(callback: ReadyCallback): void;
 export function debug(enable?: boolean): void;
 export function on(method: string, callback: EventFiredCallback): void;

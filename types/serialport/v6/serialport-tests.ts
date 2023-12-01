@@ -9,22 +9,26 @@ function test_basic_connect() {
 function test_connect_config() {
     const port1 = new SerialPort("", {}, (error: Error) => {});
 
-    const port4 = new SerialPort("", {
-        autoOpen: false,
-        lock: false,
-        baudRate: 115200,
-        dataBits: 5,
-        stopBits: 2,
-        parity: "odd",
-        rtscts: true,
-        xon: true,
-        xoff: true,
-        highWaterMark: 1024,
-        bindingOptions: {
-            vmin: 1,
-            vtime: 1,
+    const port4 = new SerialPort(
+        "",
+        {
+            autoOpen: false,
+            lock: false,
+            baudRate: 115200,
+            dataBits: 5,
+            stopBits: 2,
+            parity: "odd",
+            rtscts: true,
+            xon: true,
+            xoff: true,
+            highWaterMark: 1024,
+            bindingOptions: {
+                vmin: 1,
+                vtime: 1,
+            },
         },
-    }, (error: Error) => {});
+        (error: Error) => {},
+    );
 }
 
 function test_open() {
@@ -104,8 +108,12 @@ function test_parsers() {
 
     const ByteLengthParser = new SerialPort.parsers.ByteLength({ length: 8 });
     const CCTalkParser = new SerialPort.parsers.CCTalk();
-    const DelimiterParser = new SerialPort.parsers.Delimiter({ delimiter: Buffer.from("EOL") });
-    const ReadlineParser = new SerialPort.parsers.Readline({ delimiter: "\r\n" });
+    const DelimiterParser = new SerialPort.parsers.Delimiter({
+        delimiter: Buffer.from("EOL"),
+    });
+    const ReadlineParser = new SerialPort.parsers.Readline({
+        delimiter: "\r\n",
+    });
     const ReadyParser = new SerialPort.parsers.Ready({ data: "READY" });
     const RegexParser = new SerialPort.parsers.Regex({ regex: /.*/ });
 

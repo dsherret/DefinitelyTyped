@@ -40,7 +40,9 @@ natural.DamerauLevenshteinDistance("ones", "onez", { search: false });
 // $ExpectType number
 natural.DamerauLevenshteinDistance("ones", "onez");
 // $ExpectType number | SubstringDistanceResult
-natural.DamerauLevenshteinDistance("ones", "onez", { search: Math.random() > 0.5 });
+natural.DamerauLevenshteinDistance("ones", "onez", {
+    search: Math.random() > 0.5,
+});
 
 console.log(natural.DiceCoefficient("thing", "thing"));
 console.log(natural.DiceCoefficient("not", "same"));
@@ -84,22 +86,26 @@ classifier.train();
 console.log(classifier.classify("i am short silver"));
 console.log(classifier.classify("i am long copper"));
 var classifications = classifier.getClassifications("i am long copper");
-classifications.forEach(function(classification) {
+classifications.forEach(function (classification) {
     var label = classification.label;
     var value = classification.value;
     console.log("label: " + label + ", value: " + value);
 });
 classifier.addDocument(["sell", "gold"], "sell");
-classifier.events.on("trainedWithDocument", function(obj: any) {
+classifier.events.on("trainedWithDocument", function (obj: any) {
     console.log(obj);
 });
-classifier.save("classifier.json", function(err, classifier) {
+classifier.save("classifier.json", function (err, classifier) {
     // the classifier is saved to the classifier.json file!
 });
-natural.BayesClassifier.load("classifier.json", null, function(err, classifier) {
-    console.log(classifier.classify("long SUNW"));
-    console.log(classifier.classify("short SUNW"));
-});
+natural.BayesClassifier.load(
+    "classifier.json",
+    null,
+    function (err, classifier) {
+        console.log(classifier.classify("long SUNW"));
+        console.log(classifier.classify("short SUNW"));
+    },
+);
 var classifier = new natural.BayesClassifier();
 classifier.addDocument(["sell", "gold"], "sell");
 classifier.addDocument(["buy", "silver"], "buy");
@@ -147,7 +153,9 @@ console.log(NGrams.trigrams("some other words here"));
 console.log(NGrams.trigrams(["some", "other", "words", "here"]));
 console.log(NGrams.ngrams("some other words here for you", 4));
 console.log(NGrams.ngrams(["some", "other", "words", "here", "for", "you"], 4));
-console.log(NGrams.ngrams("some other words here for you", 4, "[start]", "[end]"));
+console.log(
+    NGrams.ngrams("some other words here for you", 4, "[start]", "[end]"),
+);
 console.log(NGrams.ngrams("some other words here for you", 4, null, "[end]"));
 var NGramsZH = natural.NGramsZH;
 console.log(NGramsZH.bigrams("中文测试"));
@@ -165,12 +173,12 @@ tfidf.addDocument("this document is about ruby and node.");
 tfidf.addDocument("this document is about node. it has node examples");
 
 console.log("node --------------------------------");
-tfidf.tfidfs("node", function(i, measure) {
+tfidf.tfidfs("node", function (i, measure) {
     console.log("document #" + i + " is " + measure);
 });
 
 console.log("ruby --------------------------------");
-tfidf.tfidfs("ruby", function(i, measure) {
+tfidf.tfidfs("ruby", function (i, measure) {
     console.log("document #" + i + " is " + measure);
 });
 console.log(tfidf.tfidf("node", 0));
@@ -182,7 +190,7 @@ tfidf.addDocument("this document is about node.");
 tfidf.addDocument("this document is about ruby.");
 tfidf.addDocument("this document is about ruby and node.");
 
-tfidf.tfidfs("node ruby", function(i, measure) {
+tfidf.tfidfs("node ruby", function (i, measure) {
     console.log("document #" + i + " is " + measure);
 });
 tfidf.addDocument(["document", "about", "node"]);
@@ -190,10 +198,10 @@ tfidf.addDocument(["document", "about", "ruby"]);
 tfidf.addDocument(["document", "about", "ruby", "node"]);
 tfidf.addDocument(["document", "about", "node", "node", "examples"]);
 
-tfidf.tfidfs(["node", "ruby"], function(i, measure) {
+tfidf.tfidfs(["node", "ruby"], function (i, measure) {
     console.log("document #" + i + " is " + measure);
 });
-tfidf.listTerms(0 /*document index*/).forEach(function(item) {
+tfidf.listTerms(0 /*document index*/).forEach(function (item) {
     console.log(item.term + ": " + item.tfidf);
 });
 var tfidf = new TfIdf();
@@ -263,8 +271,8 @@ console.log(spt.pathTo(4));
 
 var wordnet = new natural.WordNet();
 
-wordnet.lookup("node", function(results) {
-    results.forEach(function(result) {
+wordnet.lookup("node", function (results) {
+    results.forEach(function (result) {
         console.log("------------------------------------");
         console.log(result.synsetOffset);
         console.log(result.pos);
@@ -276,7 +284,7 @@ wordnet.lookup("node", function(results) {
 });
 var wordnet = new natural.WordNet();
 
-wordnet.get(4424418, "n", function(result) {
+wordnet.get(4424418, "n", function (result) {
     console.log("------------------------------------");
     console.log(result.lemma);
     console.log(result.pos);

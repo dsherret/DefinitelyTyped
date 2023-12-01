@@ -69,10 +69,10 @@ declare namespace Featherlight {
         (config: Config): Featherlight;
         (): Featherlight;
 
-        new($content: JQuery, config?: Config): Featherlight;
-        new($content: string, config?: Config): Featherlight;
-        new(config: Config): Featherlight;
-        new(): Featherlight;
+        new ($content: JQuery, config?: Config): Featherlight;
+        new ($content: string, config?: Config): Featherlight;
+        new (config: Config): Featherlight;
+        new (): Featherlight;
 
         attach($source: JQuery, $content: JQuery, config?: Config): JQuery;
         attach($source: JQuery, $content: string, config?: Config): JQuery;

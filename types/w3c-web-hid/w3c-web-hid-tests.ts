@@ -6,7 +6,7 @@ async function example_1() {
 
     document.addEventListener("DOMContentLoaded", async () => {
         const devices = await navigator.hid.getDevices();
-        devices.forEach(device => {
+        devices.forEach((device) => {
             console.log(`HID: ${device.productName}`);
         });
     });

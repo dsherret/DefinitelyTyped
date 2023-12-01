@@ -8,7 +8,11 @@ export { AssetManager } from "./assets/AssetManager";
 export { AssetManagerState } from "./assets/AssetManagerState";
 export { AssetType } from "./assets/AssetType";
 export { AtlasTextureAsset } from "./assets/AtlasTextureAsset";
-export { BitmapFontAsset, BitmapFontCharData, BitmapFontData } from "./assets/BitmapFontAsset";
+export {
+    BitmapFontAsset,
+    BitmapFontCharData,
+    BitmapFontData,
+} from "./assets/BitmapFontAsset";
 export { BVGAsset } from "./assets/BVGAsset";
 export { FontAsset } from "./assets/FontAsset";
 export { JSONAsset } from "./assets/JSONAsset";
@@ -70,7 +74,11 @@ export { FontStyle } from "./display/text/styles/FontStyle";
 export { FontVerticalAlign } from "./display/text/styles/FontVerticalAlign";
 export { FontWeight } from "./display/text/styles/FontWeight";
 export { TextField } from "./display/text/TextField";
-export { TextMetricsData, TextMetricsEx, TextSegmentMetricsData } from "./display/text/TextMetrics";
+export {
+    TextMetricsData,
+    TextMetricsEx,
+    TextSegmentMetricsData,
+} from "./display/text/TextMetrics";
 export { TextStyle } from "./display/text/TextStyle";
 export { TilingInfo } from "./display/TilingInfo";
 export { BitmapTextRenderer } from "./drivers/BitmapTextRenderer";

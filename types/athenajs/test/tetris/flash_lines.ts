@@ -29,7 +29,13 @@ export default class FlashLines extends Paint {
 
     render() {
         for (const line of this.lines) {
-            this.rect(0, line * this.lineHeight, this.width, this.lineHeight, "white");
+            this.rect(
+                0,
+                line * this.lineHeight,
+                this.width,
+                this.lineHeight,
+                "white",
+            );
         }
     }
 }

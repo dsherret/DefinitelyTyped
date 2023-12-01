@@ -10,13 +10,22 @@ export type ComboboxInputProps = {
     list: React.ReactNode;
     /* An object containing a `Menu` component. */
     menu: React.ReactElement<MenuProps>;
-    onClick?: ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void) | undefined;
+    onClick?:
+        | ((event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void)
+        | undefined;
     placeholder?: string | undefined;
     popoverProps?: object | undefined;
-    validationState?: {
-        state?: "error" | "warning" | "information" | "success" | undefined;
-        text?: string | undefined;
-    } | undefined;
+    validationState?:
+        | {
+              state?:
+                  | "error"
+                  | "warning"
+                  | "information"
+                  | "success"
+                  | undefined;
+              text?: string | undefined;
+          }
+        | undefined;
 } & { [x: string]: any };
 
 declare const ComboboxInput: React.FunctionComponent<ComboboxInputProps>;

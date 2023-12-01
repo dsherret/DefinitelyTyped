@@ -21,7 +21,8 @@ declare namespace GoogleAdsScripts {
          *        var sharedExcludedPlacement = sharedExcludedPlacementIterator.next();
          *      }
          */
-        interface SharedExcludedPlacementIterator extends Base.Iterator<SharedExcludedPlacement> {}
+        interface SharedExcludedPlacementIterator
+            extends Base.Iterator<SharedExcludedPlacement> {}
 
         /**
          * Fetches shared excluded placements. Supports filtering and sorting.
@@ -41,11 +42,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface SharedExcludedPlacementSelector
-            extends
-                Base.Selector<SharedExcludedPlacementIterator>,
+            extends Base.Selector<SharedExcludedPlacementIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

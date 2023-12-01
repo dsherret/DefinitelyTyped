@@ -8,7 +8,9 @@ interface ErrorConstructor {
      *
      * @see https://v8.dev/docs/stack-trace-api#customizing-stack-traces
      */
-    prepareStackTrace?: ((err: Error, stackTraces: NodeJS.CallSite[]) => any) | undefined;
+    prepareStackTrace?:
+        | ((err: Error, stackTraces: NodeJS.CallSite[]) => any)
+        | undefined;
 
     stackTraceLimit: number;
 }
@@ -67,12 +69,12 @@ interface AbortSignal {
 
 declare var AbortController: {
     prototype: AbortController;
-    new(): AbortController;
+    new (): AbortController;
 };
 
 declare var AbortSignal: {
     prototype: AbortSignal;
-    new(): AbortSignal;
+    new (): AbortSignal;
     abort(reason?: any): AbortSignal;
     timeout(milliseconds: number): AbortSignal;
 };
@@ -104,10 +106,10 @@ interface BigUint64Array extends RelativeIndexable<bigint> {}
 // #endregion ArrayLike.at() end
 
 /*----------------------------------------------*
-*                                               *
-*               GLOBAL INTERFACES               *
-*                                               *
-*-----------------------------------------------*/
+ *                                               *
+ *               GLOBAL INTERFACES               *
+ *                                               *
+ *-----------------------------------------------*/
 declare namespace NodeJS {
     interface CallSite {
         /**
@@ -197,7 +199,10 @@ declare namespace NodeJS {
         pause(): this;
         resume(): this;
         isPaused(): boolean;
-        pipe<T extends WritableStream>(destination: T, options?: { end?: boolean | undefined }): T;
+        pipe<T extends WritableStream>(
+            destination: T,
+            options?: { end?: boolean | undefined },
+        ): T;
         unpipe(destination?: WritableStream): this;
         unshift(chunk: string | Uint8Array, encoding?: BufferEncoding): void;
         wrap(oldStream: ReadableStream): this;
@@ -206,8 +211,15 @@ declare namespace NodeJS {
 
     interface WritableStream extends EventEmitter {
         writable: boolean;
-        write(buffer: Uint8Array | string, cb?: (err?: Error | null) => void): boolean;
-        write(str: string, encoding?: BufferEncoding, cb?: (err?: Error | null) => void): boolean;
+        write(
+            buffer: Uint8Array | string,
+            cb?: (err?: Error | null) => void,
+        ): boolean;
+        write(
+            str: string,
+            encoding?: BufferEncoding,
+            cb?: (err?: Error | null) => void,
+        ): boolean;
         end(cb?: () => void): void;
         end(data: string | Uint8Array, cb?: () => void): void;
         end(str: string, encoding?: BufferEncoding, cb?: () => void): void;
@@ -250,7 +262,8 @@ declare namespace NodeJS {
         paths(request: string): string[] | null;
     }
 
-    interface RequireExtensions extends Dict<(m: Module, filename: string) => any> {
+    interface RequireExtensions
+        extends Dict<(m: Module, filename: string) => any> {
         ".js": (m: Module, filename: string) => any;
         ".json": (m: Module, filename: string) => any;
         ".node": (m: Module, filename: string) => any;

@@ -2,9 +2,17 @@
 export declare class Git {
     constructor(gitDirectory: any);
 
-    refs(options: any, prefix: string, callback: (err: any, data: string) => void): void;
+    refs(
+        options: any,
+        prefix: string,
+        callback: (err: any, data: string) => void,
+    ): void;
 
-    fs_read(gitDirectory: string, file: string, callback: (err: any, data: any) => void): void;
+    fs_read(
+        gitDirectory: string,
+        file: string,
+        callback: (err: any, data: any) => void,
+    ): void;
 
     transform_options(options: any): string[];
 
@@ -27,7 +35,12 @@ export declare class Git {
 
     rev_parse(options: any, str: string, callback: Function): void;
 
-    rev_parse(options: any, str: string, level: number, callback: Function): void;
+    rev_parse(
+        options: any,
+        str: string,
+        level: number,
+        callback: Function,
+    ): void;
 
     ls_tree(treeish: any, callback: Function): void;
 
@@ -44,11 +57,25 @@ export declare class Git {
     init(options: any, callback: Function): void;
 
     // not implemented!
-    clone(options: any, originalPath: any, targetPath: any, callback: Function): void;
+    clone(
+        options: any,
+        originalPath: any,
+        targetPath: any,
+        callback: Function,
+    ): void;
 
-    diff(commit1: any, commit2: any, callback: (error: any, patch: string) => void): void;
+    diff(
+        commit1: any,
+        commit2: any,
+        callback: (error: any, patch: string) => void,
+    ): void;
 
-    diff(commit1: any, commit2: any, options: any, callback: (error: any, patch: string) => void): void;
+    diff(
+        commit1: any,
+        commit2: any,
+        options: any,
+        callback: (error: any, patch: string) => void,
+    ): void;
 
     fs_exist(path: any, callback: Function): void;
 
@@ -128,9 +155,18 @@ export declare class Blame {
     commit: string;
     lines: BlameLine[];
 
-    constructor(repo: Repo, file: string, callback: (err: any, blame: Blame) => void);
+    constructor(
+        repo: Repo,
+        file: string,
+        callback: (err: any, blame: Blame) => void,
+    );
 
-    constructor(repo: Repo, file: string, commit: string, callback: (err: any, blame: Blame) => void);
+    constructor(
+        repo: Repo,
+        file: string,
+        commit: string,
+        callback: (err: any, blame: Blame) => void,
+    );
 }
 
 // lib/git/blame_line.js
@@ -198,7 +234,12 @@ export declare class Commit {
 
     static find_all(repo: any, reference: any, callback: Function): void;
 
-    static find_all(repo: any, reference: any, options: any, callback: Function): void;
+    static find_all(
+        repo: any,
+        reference: any,
+        options: any,
+        callback: Function,
+    ): void;
 
     static count(repo: any, ref: any, callback: Function): void;
 
@@ -206,7 +247,13 @@ export declare class Commit {
 
     static diff(repo: any, a: any, b: any, callback: Function): void;
 
-    static diff(repo: any, a: any, b: any, paths: any, callback: Function): void;
+    static diff(
+        repo: any,
+        a: any,
+        b: any,
+        paths: any,
+        callback: Function,
+    ): void;
 
     show(callback: Function): void;
 
@@ -228,7 +275,12 @@ export declare class CommitStats {
 
     static find_all(repo: any, reference: any, callback: Function): void;
 
-    static find_all(repo: any, reference: any, options: any, callback: Function): void;
+    static find_all(
+        repo: any,
+        reference: any,
+        options: any,
+        callback: Function,
+    ): void;
 
     static list_from_string(repo: any, text: string): CommitStats[];
 }
@@ -335,7 +387,12 @@ export declare class GitFileOperations {
 
     static fs_rmdir_r(dir: any, callback: Function): void;
 
-    static fs_write(dir: any, file: any, content: any, callback: Function): void;
+    static fs_write(
+        dir: any,
+        file: any,
+        content: any,
+        callback: Function,
+    ): void;
 }
 
 // lib/git/git_index.js
@@ -356,7 +413,13 @@ export declare class GitIndex {
 
     commit(message: any, parents: any, actor: any, callback: Function): void;
 
-    commit(message: any, parents: any, actor: any, lastTree: any, callback: Function): void;
+    commit(
+        message: any,
+        parents: any,
+        actor: any,
+        lastTree: any,
+        callback: Function,
+    ): void;
 
     write_tree(tree: any, callback: Function): any;
 
@@ -436,7 +499,14 @@ export declare class PackStorage {
 
     unpack_object(pack: any, packfile: any, offset: any, options: any): any[];
 
-    unpack_deltified(packfile: any, type: any, offset: any, objOffset: any, size: any, options: any): any;
+    unpack_deltified(
+        packfile: any,
+        type: any,
+        offset: any,
+        objOffset: any,
+        size: any,
+        options: any,
+    ): any;
 }
 
 // lib/git/raw.js
@@ -452,8 +522,7 @@ export declare class RawObject {
 }
 
 // lib/git/ref.js
-export declare class Ref {
-}
+export declare class Ref {}
 
 // lib/git/remote.js
 export declare class Remote {
@@ -475,7 +544,11 @@ export declare class Repo {
 
     constructor(path: string, callback: (err: any, repo: Repo) => void);
 
-    constructor(path: string, options: any, callback: (err: any, repo: Repo) => void);
+    constructor(
+        path: string,
+        options: any,
+        callback: (err: any, repo: Repo) => void,
+    );
 
     head(callback: (err: any, head: Head) => void): void;
 
@@ -489,7 +562,12 @@ export declare class Repo {
 
     commits(start: string, maxCount: number, callback: Function): void;
 
-    commits(start: string, maxCount: number, skip: any, callback: Function): void;
+    commits(
+        start: string,
+        maxCount: number,
+        skip: any,
+        callback: Function,
+    ): void;
 
     commit(id: string, callback: Function): void;
 
@@ -503,7 +581,12 @@ export declare class Repo {
 
     blob(id: string, callback: Function): void;
 
-    init_bare(path: any, gitOptions: any, repoOptions: any, callback: Function): void;
+    init_bare(
+        path: any,
+        gitOptions: any,
+        repoOptions: any,
+        callback: Function,
+    ): void;
 
     fork_bare(path: any, callback: Function): void;
 
@@ -512,9 +595,18 @@ export declare class Repo {
     // buggy?
     diff(a: string, callback: (error: any, patch: string) => void): void;
 
-    diff(a: string, b: string, callback: (error: any, patch: string) => void): void;
+    diff(
+        a: string,
+        b: string,
+        callback: (error: any, patch: string) => void,
+    ): void;
 
-    diff(a: string, b: string, paths: any, callback: (error: any, patch: string) => void): void;
+    diff(
+        a: string,
+        b: string,
+        paths: any,
+        callback: (error: any, patch: string) => void,
+    ): void;
 
     commit_diff(commit: string, callback: Function): void;
 
@@ -526,15 +618,33 @@ export declare class Repo {
 
     log(commit: string, callback: (err: any, commits: Commit[]) => void): void;
 
-    log(commit: string, path: any, callback: (err: any, commits: Commit[]) => void): void;
+    log(
+        commit: string,
+        path: any,
+        callback: (err: any, commits: Commit[]) => void,
+    ): void;
 
-    log(commit: string, path: any, options: any, callback: (err: any, commits: Commit[]) => void): void;
+    log(
+        commit: string,
+        path: any,
+        options: any,
+        callback: (err: any, commits: Commit[]) => void,
+    ): void;
 
     commit_deltas_from(otherRepo: any, callback: Function): void;
 
-    commit_deltas_from(otherRepo: any, reference: any, callback: Function): void;
+    commit_deltas_from(
+        otherRepo: any,
+        reference: any,
+        callback: Function,
+    ): void;
 
-    commit_deltas_from(otherRepo: any, reference: any, otherReference: any, callback: Function): void;
+    commit_deltas_from(
+        otherRepo: any,
+        reference: any,
+        otherReference: any,
+        callback: Function,
+    ): void;
 
     refs(callback: Function): void;
 
@@ -544,7 +654,11 @@ export declare class Repo {
 
     get_head(headName: any, callback: Function): void;
 
-    blame(file: string, commit: string, callback: (err: any, blame: Blame) => void): void;
+    blame(
+        file: string,
+        commit: string,
+        callback: (err: any, blame: Blame) => void,
+    ): void;
 
     commit_stats(callback: Function): void;
 
@@ -552,7 +666,12 @@ export declare class Repo {
 
     commit_stats(start: any, maxCount: any, callback: Function): void;
 
-    commit_stats(start: any, maxCount: any, skip: any, callback: Function): void;
+    commit_stats(
+        start: any,
+        maxCount: any,
+        skip: any,
+        callback: Function,
+    ): void;
 
     commit_index(message: any, callback: Function): void;
 

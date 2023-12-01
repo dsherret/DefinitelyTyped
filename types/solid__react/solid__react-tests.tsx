@@ -21,8 +21,10 @@ export const TestElement: React.FC = () => {
     const loggedOut = useLoggedOut();
     const someValue = useLDflexValue("user.name");
     const someList = useLDflexList("user.friends");
-    const someOtherValue: { toString: () => string } | undefined = useLDflex("user.name")[0];
-    const someOtherList: Array<{ toString: () => string }> | undefined = useLDflex("user.name", true)[0];
+    const someOtherValue: { toString: () => string } | undefined =
+        useLDflex("user.name")[0];
+    const someOtherList: Array<{ toString: () => string }> | undefined =
+        useLDflex("user.name", true)[0];
 
     return (
         <>

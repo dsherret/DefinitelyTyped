@@ -169,4 +169,7 @@ export interface ClientContextEnv {
  *   Parameter to use to provide the result payload for a successful lambda execution.
  *   Pass `null` or `undefined` for the `error` parameter to use this parameter.
  */
-export type Callback<TResult = any> = (error?: Error | string | null, result?: TResult) => void;
+export type Callback<TResult = any> = (
+    error?: Error | string | null,
+    result?: TResult,
+) => void;

@@ -12,7 +12,9 @@ export interface BlockPickerStylesProps {
 }
 
 export interface BlockPickerProps extends CustomPickerProps {
-    onSwatchHover?: ((color: ColorState, event: MouseEvent) => void) | undefined;
+    onSwatchHover?:
+        | ((color: ColorState, event: MouseEvent) => void)
+        | undefined;
     colors?: string[] | undefined;
     width?: string | undefined;
     triangle?: "hide" | "top" | undefined;

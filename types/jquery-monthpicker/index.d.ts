@@ -22,19 +22,21 @@ interface JQueryMonthPickerOptions {
     StartYear?: number | null | undefined;
     UseInputMask?: boolean | undefined;
     ValidationErrorMessage?: string | null | undefined;
-    i18n?: {
-        year?: string | undefined;
-        prevYear?: string | undefined;
-        nextYear?: string | undefined;
-        next12Years?: string | undefined;
-        prev12Years?: string | undefined;
-        nextLabel?: string | undefined;
-        prevLabel?: string | undefined;
-        buttonText?: string | undefined;
-        jumpYears?: string | undefined;
-        backTo?: string | undefined;
-        months?: string[] | undefined;
-    } | undefined;
+    i18n?:
+        | {
+              year?: string | undefined;
+              prevYear?: string | undefined;
+              nextYear?: string | undefined;
+              next12Years?: string | undefined;
+              prev12Years?: string | undefined;
+              nextLabel?: string | undefined;
+              prevLabel?: string | undefined;
+              buttonText?: string | undefined;
+              jumpYears?: string | undefined;
+              backTo?: string | undefined;
+              months?: string[] | undefined;
+          }
+        | undefined;
     OnBeforeMenuClose?: (() => void) | undefined;
     OnBeforeMenuOpen?: (() => void) | undefined;
     OnAfterMenuClose?: (() => void) | undefined;

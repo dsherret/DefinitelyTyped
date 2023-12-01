@@ -6,10 +6,13 @@ const badRequestError = Boom.badRequest("message", { some: "data" });
 badRequestError.data.some;
 const badRequestError2: Boom = Boom.badImplementation("message");
 
-const unauthorizedError1 = Boom.unauthorized("message", "scheme", { some: "attribute" });
+const unauthorizedError1 = Boom.unauthorized("message", "scheme", {
+    some: "attribute",
+});
 unauthorizedError1.output.payload.attributes.some === "attribute";
 unauthorizedError1.output.payload.attributes.error === "message";
-unauthorizedError1.output.headers["WWW-Authenticate"] === "scheme some=\"attribute\", error=\"message\"";
+unauthorizedError1.output.headers["WWW-Authenticate"] ===
+    'scheme some="attribute", error="message"';
 
 const unauthorizedError2 = Boom.unauthorized("message", ["scheme"]);
 unauthorizedError2.output.payload.attributes === undefined;
@@ -19,9 +22,12 @@ const unauthorizedError3 = Boom.unauthorized(null, "scheme", "attribute");
 unauthorizedError3.output.payload.attributes === "attribute";
 unauthorizedError3.output.headers["WWW-Authenticate"] === "scheme attribute";
 
-const unauthorizedError4 = Boom.unauthorized(null, "scheme", { some: "attribute" });
+const unauthorizedError4 = Boom.unauthorized(null, "scheme", {
+    some: "attribute",
+});
 unauthorizedError4.output.payload.attributes.some === "attribute";
-unauthorizedError4.output.headers["WWW-Authenticate"] === "scheme some=\"attribute\"";
+unauthorizedError4.output.headers["WWW-Authenticate"] ===
+    'scheme some="attribute"';
 
 const paymentRequiredError = Boom.paymentRequired("message", { some: "data" });
 paymentRequiredError.data.some;
@@ -35,7 +41,9 @@ const notFoundError = Boom.notFound("message", { some: "data" });
 notFoundError.data.some;
 const notFoundError2: Boom = Boom.notFound("message");
 
-const methodNotAllowedError = Boom.methodNotAllowed("message", { some: "data" });
+const methodNotAllowedError = Boom.methodNotAllowed("message", {
+    some: "data",
+});
 methodNotAllowedError.data.some;
 const methodNotAllowedError2: Boom = Boom.methodNotAllowed("message");
 
@@ -43,7 +51,9 @@ const notAcceptableError = Boom.notAcceptable("message", { some: "data" });
 notAcceptableError.data.some;
 const notAcceptableError2: Boom = Boom.notAcceptable("message");
 
-const proxyAuthRequiredError = Boom.proxyAuthRequired("message", { some: "data" });
+const proxyAuthRequiredError = Boom.proxyAuthRequired("message", {
+    some: "data",
+});
 proxyAuthRequiredError.data.some;
 const proxyAuthRequiredError2: Boom = Boom.proxyAuthRequired("message");
 
@@ -62,7 +72,9 @@ const lengthRequiredError = Boom.lengthRequired("message", { some: "data" });
 lengthRequiredError.data.some;
 const lengthRequiredError2: Boom = Boom.lengthRequired("message");
 
-const preconditionFailedError = Boom.preconditionFailed("message", { some: "data" });
+const preconditionFailedError = Boom.preconditionFailed("message", {
+    some: "data",
+});
 preconditionFailedError.data.some;
 const preconditionFailedError2: Boom = Boom.preconditionFailed("message");
 
@@ -74,15 +86,21 @@ const uriTooLongError = Boom.uriTooLong("message", { some: "data" });
 uriTooLongError.data.some;
 const uriTooLongError2: Boom = Boom.uriTooLong("message");
 
-const unsupportedMediaTypeError = Boom.unsupportedMediaType("message", { some: "data" });
+const unsupportedMediaTypeError = Boom.unsupportedMediaType("message", {
+    some: "data",
+});
 unsupportedMediaTypeError.data.some;
 const unsupportedMediaTypeError2: Boom = Boom.unsupportedMediaType("message");
 
-const rangeNotSatisfiableError = Boom.rangeNotSatisfiable("message", { some: "data" });
+const rangeNotSatisfiableError = Boom.rangeNotSatisfiable("message", {
+    some: "data",
+});
 rangeNotSatisfiableError.data.some;
 const rangeNotSatisfiableError2: Boom = Boom.rangeNotSatisfiable("message");
 
-const expectationFailedError = Boom.expectationFailed("message", { some: "data" });
+const expectationFailedError = Boom.expectationFailed("message", {
+    some: "data",
+});
 expectationFailedError.data.some;
 const expectationFailedError2: Boom = Boom.expectationFailed("message");
 
@@ -98,11 +116,15 @@ const lockedError = Boom.locked("message", { some: "data" });
 lockedError.data.some;
 const lockedError2: Boom = Boom.locked("message");
 
-const failedDependencyError = Boom.failedDependency("message", { some: "data" });
+const failedDependencyError = Boom.failedDependency("message", {
+    some: "data",
+});
 failedDependencyError.data.some;
 const failedDependencyError2: Boom = Boom.failedDependency("message");
 
-const preconditionRequiredError = Boom.preconditionRequired("message", { some: "data" });
+const preconditionRequiredError = Boom.preconditionRequired("message", {
+    some: "data",
+});
 preconditionRequiredError.data.some;
 const preconditionRequiredError2: Boom = Boom.preconditionRequired("message");
 
@@ -116,7 +138,9 @@ const illegalError2: Boom = Boom.illegal("message");
 
 // 5xx and data type
 
-const badImplementationError = Boom.badImplementation("message", { some: "data" });
+const badImplementationError = Boom.badImplementation("message", {
+    some: "data",
+});
 badImplementationError.data.some;
 const badImplementationError2: Boom = Boom.badImplementation("message");
 
@@ -132,7 +156,9 @@ const badGatewayError = Boom.badGateway("message", { some: "data" });
 badGatewayError.data.some;
 const badGatewayError2: Boom = Boom.badGateway("message");
 
-const serverUnavailableError = Boom.serverUnavailable("message", { some: "data" });
+const serverUnavailableError = Boom.serverUnavailable("message", {
+    some: "data",
+});
 serverUnavailableError.data.some;
 const serverUnavailableError2: Boom = Boom.serverUnavailable("message");
 
@@ -141,7 +167,10 @@ gatewayTimeoutError.data.some;
 const gatewayTimeoutError2: Boom = Boom.gatewayTimeout("message");
 
 // boomify
-const boomifiedError = Boom.boomify(new Error("test"), { statusCode: 400, message: "some message" });
+const boomifiedError = Boom.boomify(new Error("test"), {
+    statusCode: 400,
+    message: "some message",
+});
 
 // isBoom
 
@@ -149,7 +178,7 @@ const isBoomError = new Boom("test");
 
 Boom.isBoom(isBoomError);
 
-const maybeBoom = <any> new Boom("test");
+const maybeBoom = <any>new Boom("test");
 if (Boom.isBoom(maybeBoom)) {
     // isBoom is a type guard that allows accessing these properties:
     maybeBoom.output.headers;

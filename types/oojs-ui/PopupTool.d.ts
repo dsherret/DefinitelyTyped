@@ -32,7 +32,9 @@ declare namespace OO.ui {
     interface PopupTool extends PopupTool.Props, PopupTool.Prototype {}
 
     namespace PopupTool {
-        interface ConfigOptions extends Tool.ConfigOptions, mixin.PopupElement.ConfigOptions {}
+        interface ConfigOptions
+            extends Tool.ConfigOptions,
+                mixin.PopupElement.ConfigOptions {}
 
         type Static = Tool.Static;
 
@@ -52,7 +54,7 @@ declare namespace OO.ui {
              * @param toolGroup
              * @param config Configuration options
              */
-            new(toolGroup: ToolGroup, config?: ConfigOptions): PopupTool;
+            new (toolGroup: ToolGroup, config?: ConfigOptions): PopupTool;
             prototype: Prototype;
             static: Static;
             super: Tool.Constructor;

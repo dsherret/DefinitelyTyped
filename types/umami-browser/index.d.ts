@@ -12,7 +12,11 @@ declare namespace umami {
     }
 
     interface umami {
-        track(payloadOrCallback?: TrackPayload | ((properties: TrackPayload) => TrackPayload)): void;
+        track(
+            payloadOrCallback?:
+                | TrackPayload
+                | ((properties: TrackPayload) => TrackPayload),
+        ): void;
         track(eventName?: string, eventData?: Record<string, unknown>): void;
     }
 }

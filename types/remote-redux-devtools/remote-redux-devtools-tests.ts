@@ -7,9 +7,7 @@ const reducer: Reducer<{}> = () => ({});
 const middleware: Middleware[] = [];
 const store = createStore(
     reducer,
-    composeEnhancers(
-        applyMiddleware(...middleware),
-    ),
+    composeEnhancers(applyMiddleware(...middleware)),
 );
 
 const store1 = createStore(

@@ -58,14 +58,19 @@ const options: ImageMapster.Options = {
     boundList: $(),
     showToolTip: true,
     toolTipContainer: $(),
-    toolTipClose: ["area-mouseout", "area-click", "tooltip-click", "image-mouseout"],
-    onClick: onClickData => {},
-    onMouseover: onMouseData => {},
-    onMouseout: onMouseData => {},
-    onGetList: onGetListData => $(),
-    onConfigured: bool => {},
-    onStateChange: onStateChangeData => {},
-    onShowToolTip: onShowToolTipData => {},
+    toolTipClose: [
+        "area-mouseout",
+        "area-click",
+        "tooltip-click",
+        "image-mouseout",
+    ],
+    onClick: (onClickData) => {},
+    onMouseover: (onMouseData) => {},
+    onMouseout: (onMouseData) => {},
+    onGetList: (onGetListData) => $(),
+    onConfigured: (bool) => {},
+    onStateChange: (onStateChangeData) => {},
+    onShowToolTip: (onShowToolTipData) => {},
 };
 
 $("img").mapster(options);

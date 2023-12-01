@@ -2,7 +2,7 @@ import mergeImg from "merge-img";
 import { resolve } from "path";
 const fixturePath = resolve(__dirname, "fixtures");
 
-mergeImg(["image-1.png", "image-2.jpg"]).then(img => {
+mergeImg(["image-1.png", "image-2.jpg"]).then((img) => {
     // Save image as file
     img.write("out.png", () => console.log("done"));
 });

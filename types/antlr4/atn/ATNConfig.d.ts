@@ -3,7 +3,8 @@ import HashCode from "../misc/HashCode";
 import ATNState from "../state/ATNState";
 import SemanticContext from "./SemanticContext";
 
-export interface ATNConfigConfig extends Pick<ATNConfig, "state" | "alt" | "context" | "semanticContext"> {
+export interface ATNConfigConfig
+    extends Pick<ATNConfig, "state" | "alt" | "context" | "semanticContext"> {
     reachesIntoOuterContext: number;
     precedenceFilterSuppressed: boolean;
 }

@@ -4,14 +4,14 @@ import usage = require("gulp-help-doc");
 /**
  * Demo task
  */
-gulp.task("demo", function() {});
+gulp.task("demo", function () {});
 
 let logger: {
     output: string;
     log(msg: string): any;
 } = {
     output: "",
-    log: msg => logger.output += msg + "\n",
+    log: (msg) => (logger.output += msg + "\n"),
 };
 
 usage(gulp, {

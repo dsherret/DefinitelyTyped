@@ -90,15 +90,17 @@ export interface UpdateRequest {
 export interface Amount {
     currency: string;
     total: string;
-    details?: {
-        subtotal?: string | undefined;
-        shipping?: string | undefined;
-        tax?: string | undefined;
-        handling_fee?: string | undefined;
-        shipping_discout?: string | undefined;
-        insurance?: string | undefined;
-        gift_wrap?: string | undefined;
-    } | undefined;
+    details?:
+        | {
+              subtotal?: string | undefined;
+              shipping?: string | undefined;
+              tax?: string | undefined;
+              handling_fee?: string | undefined;
+              shipping_discout?: string | undefined;
+              insurance?: string | undefined;
+              gift_wrap?: string | undefined;
+          }
+        | undefined;
 }
 export interface ErrorDetails {
     readonly field: string;
@@ -139,21 +141,25 @@ export interface Transaction {
     reference_id?: string | undefined;
     amount: Amount;
     description?: string | undefined;
-    item_list?: {
-        items: Item[];
-        shipping_address?: Address | undefined;
-        shipping_method?: string | undefined;
-        shipping_phone_number?: string | undefined;
-    } | undefined;
+    item_list?:
+        | {
+              items: Item[];
+              shipping_address?: Address | undefined;
+              shipping_method?: string | undefined;
+              shipping_phone_number?: string | undefined;
+          }
+        | undefined;
     payee?: Payee | undefined;
     note_to_payee?: string | undefined;
     custom?: string | undefined;
     invoice_number?: string | undefined;
     purchase_order?: string | undefined;
     soft_descriptor?: string | undefined;
-    payment_options?: {
-        allowed_payment_method: string;
-    } | undefined;
+    payment_options?:
+        | {
+              allowed_payment_method: string;
+          }
+        | undefined;
     notify_url?: string | undefined;
     order_url?: string | undefined;
     readonly related_resources?: RelatedResources[] | undefined;
@@ -162,11 +168,13 @@ export interface Transaction {
 export interface Payee {
     email: string;
     merchant_id: string;
-    payee_display_metadata?: {
-        email?: string | undefined;
-        display_phone?: Phone | undefined;
-        brand_name?: string | undefined;
-    } | undefined;
+    payee_display_metadata?:
+        | {
+              email?: string | undefined;
+              display_phone?: Phone | undefined;
+              brand_name?: string | undefined;
+          }
+        | undefined;
 }
 
 export interface Payment {
@@ -179,10 +187,12 @@ export interface Payment {
     readonly state?: string | undefined;
     experience_profile_id?: string | undefined;
     note_to_payer?: string | undefined;
-    redirect_urls?: {
-        return_url?: string | undefined;
-        cancel_url?: string | undefined;
-    } | undefined;
+    redirect_urls?:
+        | {
+              return_url?: string | undefined;
+              cancel_url?: string | undefined;
+          }
+        | undefined;
     readonly failure_reason?: string | undefined;
     readonly create_time?: string | undefined;
     readonly update_time?: string | undefined;
@@ -318,7 +328,10 @@ export namespace payment {
         cb?: CallbackFunction<PaymentResponse>,
     ): void;
     function list(
-        data: QueryParameters | http.RequestOptions | CallbackFunction<ListResponse>,
+        data:
+            | QueryParameters
+            | http.RequestOptions
+            | CallbackFunction<ListResponse>,
         config?: http.RequestOptions | CallbackFunction<ListResponse>,
         cb?: CallbackFunction<ListResponse>,
     ): void;
@@ -349,8 +362,13 @@ export namespace notification {
             readonly webhooks: Webhook[];
         }
         function list(
-            data: QueryParameters | http.RequestOptions | CallbackFunction<WebhookListResponse>,
-            config?: http.RequestOptions | CallbackFunction<WebhookListResponse>,
+            data:
+                | QueryParameters
+                | http.RequestOptions
+                | CallbackFunction<WebhookListResponse>,
+            config?:
+                | http.RequestOptions
+                | CallbackFunction<WebhookListResponse>,
             cb?: CallbackFunction<WebhookListResponse>,
         ): void;
         function create(
@@ -406,8 +424,13 @@ export namespace notification {
             cb: CallbackFunction<WebhookEvent>,
         ): void;
         function list(
-            data: QueryParameters | http.RequestOptions | CallbackFunction<WebhookEventListResponse>,
-            config?: http.RequestOptions | CallbackFunction<WebhookEventListResponse>,
+            data:
+                | QueryParameters
+                | http.RequestOptions
+                | CallbackFunction<WebhookEventListResponse>,
+            config?:
+                | http.RequestOptions
+                | CallbackFunction<WebhookEventListResponse>,
             cb?: CallbackFunction<WebhookEventListResponse>,
         ): void;
         function resend(
@@ -424,7 +447,10 @@ export namespace notification {
     }
     namespace webhookEventType {
         function list(
-            data: QueryParameters | http.RequestOptions | CallbackFunction<EventTypesResponse>,
+            data:
+                | QueryParameters
+                | http.RequestOptions
+                | CallbackFunction<EventTypesResponse>,
             config?: http.RequestOptions | CallbackFunction<EventTypesResponse>,
             cb?: CallbackFunction<EventTypesResponse>,
         ): void;
@@ -444,13 +470,19 @@ export namespace authorization {
     ): void;
     function capture(
         id: string,
-        data: CaptureRequest | http.RequestOptions | CallbackFunction<CaptureResource>,
+        data:
+            | CaptureRequest
+            | http.RequestOptions
+            | CallbackFunction<CaptureResource>,
         config?: http.RequestOptions | CallbackFunction<CaptureResource>,
         cb?: CallbackFunction<CaptureResource>,
     ): void;
     function reauthorize(
         id: string,
-        data: Amount | http.RequestOptions | CallbackFunction<AuthorizationResource>,
+        data:
+            | Amount
+            | http.RequestOptions
+            | CallbackFunction<AuthorizationResource>,
         config?: http.RequestOptions | CallbackFunction<AuthorizationResource>,
         cb?: CallbackFunction<AuthorizationResource>,
     ): void;
@@ -465,7 +497,10 @@ export namespace capture {
     ): void;
     function refund(
         id: string,
-        data: RefundRequest | http.RequestOptions | CallbackFunction<RefundResource>,
+        data:
+            | RefundRequest
+            | http.RequestOptions
+            | CallbackFunction<RefundResource>,
         config?: http.RequestOptions | CallbackFunction<RefundResource>,
         cb?: CallbackFunction<RefundResource>,
     ): void;
@@ -487,28 +522,32 @@ export namespace invoice {
         invoice_date?: string | undefined;
         items?: InvoiceItem[] | undefined;
         merchant_info?: Merchant | undefined;
-        readonly metadata?: {
-            created_date?: string | undefined;
-            created_by?: string | undefined;
-            cancelled_date?: string | undefined;
-            cancelled_by?: string | undefined;
-            last_updated_date?: string | undefined;
-            last_updated_by?: string | undefined;
-            first_sent_date?: string | undefined;
-            last_sent_date?: string | undefined;
-            last_sent_by?: string | undefined;
-            payer_view_url?: string | undefined;
-        } | undefined;
+        readonly metadata?:
+            | {
+                  created_date?: string | undefined;
+                  created_by?: string | undefined;
+                  cancelled_date?: string | undefined;
+                  cancelled_by?: string | undefined;
+                  last_updated_date?: string | undefined;
+                  last_updated_by?: string | undefined;
+                  first_sent_date?: string | undefined;
+                  last_sent_date?: string | undefined;
+                  last_sent_by?: string | undefined;
+                  payer_view_url?: string | undefined;
+              }
+            | undefined;
         note?: string | undefined;
         number?: string | undefined;
         payment_term?: PaymentTerm | undefined;
         reference?: string | undefined;
-        shipping_info?: {
-            address: Address;
-            business_name?: string | undefined;
-            first_name: string;
-            last_name: string;
-        } | undefined;
+        shipping_info?:
+            | {
+                  address: Address;
+                  business_name?: string | undefined;
+                  first_name: string;
+                  last_name: string;
+              }
+            | undefined;
         phone?: Phone | undefined;
         readonly status?: string | undefined;
         tax_calculated_after_discount?: boolean | undefined;
@@ -525,18 +564,24 @@ export namespace invoice {
         logo_url?: string | undefined;
         readonly payments?: PaymentDetail[] | undefined;
         readonly refunds?: Detail[] | undefined;
-        readonly payment_summary?: {
-            paypal: Currency;
-            other: Currency;
-        } | undefined;
-        readonly refunded_amount?: {
-            paypal: Currency;
-            other: Currency;
-        } | undefined;
-        readonly paid_amount?: {
-            paypal: Currency;
-            other: Currency;
-        } | undefined;
+        readonly payment_summary?:
+            | {
+                  paypal: Currency;
+                  other: Currency;
+              }
+            | undefined;
+        readonly refunded_amount?:
+            | {
+                  paypal: Currency;
+                  other: Currency;
+              }
+            | undefined;
+        readonly paid_amount?:
+            | {
+                  paypal: Currency;
+                  other: Currency;
+              }
+            | undefined;
         attachments?: FileAttachment[] | undefined;
         readonly links?: Link[] | undefined;
     }
@@ -692,7 +737,10 @@ export namespace invoice {
         cb?: CallbackFunction<InvoiceResponse>,
     ): void;
     function list(
-        data: QueryParameters | http.RequestOptions | CallbackFunction<ListResponse>,
+        data:
+            | QueryParameters
+            | http.RequestOptions
+            | CallbackFunction<ListResponse>,
         config?: http.RequestOptions | CallbackFunction<ListResponse>,
         cb?: CallbackFunction<ListResponse>,
     ): void;
@@ -753,7 +801,10 @@ export namespace sale {
     ): void;
     function refund(
         id: string,
-        data: RefundRequest | http.RequestOptions | CallbackFunction<RefundResource>,
+        data:
+            | RefundRequest
+            | http.RequestOptions
+            | CallbackFunction<RefundResource>,
         config?: http.RequestOptions | CallbackFunction<RefundResource>,
         cb?: CallbackFunction<RefundResource>,
     ): void;
@@ -766,7 +817,13 @@ export namespace billingAgreement {
     function execute(id: string, data: any, config?: any, cb?: any): void;
     function get(id: string, config: any, cb?: any): void;
     function reactivate(id: string, data: any, config?: any, cb?: any): void;
-    function searchTransactions(id: string, start_date: any, end_date?: any, config?: any, cb?: any): void;
+    function searchTransactions(
+        id: string,
+        start_date: any,
+        end_date?: any,
+        config?: any,
+        cb?: any,
+    ): void;
     function setBalance(id: string, data: any, config?: any, cb?: any): void;
     function suspend(id: string, data: any, config?: any, cb?: any): void;
     function update(id: string, data: any, config?: any, cb?: any): void;

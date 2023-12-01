@@ -9,6 +9,8 @@ declare namespace JsReportAssets {
     }
 }
 
-declare function JsReportAssets(cfg?: JsReportAssets.Configuration): ExtensionDefinition;
+declare function JsReportAssets(
+    cfg?: JsReportAssets.Configuration,
+): ExtensionDefinition;
 
 export = JsReportAssets;

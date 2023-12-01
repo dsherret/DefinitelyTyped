@@ -31,7 +31,7 @@ const testAxisLabelColor = (options: echarts.EChartOption.XAxis) => {
 };
 
 // id, type, and name are defined for every series type
-const map = option.series!.map(s => [s.id, s.name, s.type]);
+const map = option.series!.map((s) => [s.id, s.name, s.type]);
 
 const seriesGraph: echarts.EChartOption.SeriesGraph = {};
 // $ExpectType number | number[] | undefined

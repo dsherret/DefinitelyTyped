@@ -1,7 +1,8 @@
 import * as React from "react";
 
 declare namespace InputGroupButton {
-    export interface InputGroupButtonProps extends React.HTMLProps<InputGroupButton> {
+    export interface InputGroupButtonProps
+        extends React.HTMLProps<InputGroupButton> {
         bsClass?: string | undefined;
     }
 }

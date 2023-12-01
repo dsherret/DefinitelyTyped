@@ -37,7 +37,7 @@ export namespace config {
 
     interface Config {
         mongodb: {
-            url: Parameters<typeof mongo.MongoClient["connect"]>[0];
+            url: Parameters<(typeof mongo.MongoClient)["connect"]>[0];
             databaseName?: mongo.Db["databaseName"];
             options?: mongo.MongoClientOptions;
         };
@@ -81,7 +81,10 @@ export function up(db: mongo.Db, client: mongo.MongoClient): Promise<string[]>;
  * migratedDown.forEach(fileName => console.log('Migrated Down:', fileName));
  * ```
  */
-export function down(db: mongo.Db, client: mongo.MongoClient): Promise<string[]>;
+export function down(
+    db: mongo.Db,
+    client: mongo.MongoClient,
+): Promise<string[]>;
 export function status(db: mongo.Db): Promise<MigrationStatus[]>;
 
 export interface MigrationStatus {

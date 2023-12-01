@@ -22,12 +22,14 @@ export interface RemarkOptions {
      * Pass default options to the plugin generating tableOfContents
      * @see https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/#configuring-the-tableofcontents
      */
-    tableOfContents?: {
-        absolute?: boolean | undefined;
-        pathToSlugField?: string | undefined;
-        heading?: null | string | undefined;
-        maxDepth?: number | undefined;
-    } | undefined;
+    tableOfContents?:
+        | {
+              absolute?: boolean | undefined;
+              pathToSlugField?: string | undefined;
+              heading?: null | string | undefined;
+              maxDepth?: number | undefined;
+          }
+        | undefined;
     /**
      * @see https://www.gatsbyjs.com/plugins/gatsby-transformer-remark/#example-excerpts
      */

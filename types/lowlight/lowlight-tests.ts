@@ -7,7 +7,7 @@ function highlighter(hljs: any): any {
         case_insensitive: true,
         keywords: {
             keyword:
-                "forall all exists exist only m M i e 1 2 3 4 5 6 7 8 9 0 - + * / \ % ! . , ; : | lim limsup liminf infinity not",
+                "forall all exists exist only m M i e 1 2 3 4 5 6 7 8 9 0 - + * /  % ! . , ; : | lim limsup liminf infinity not",
         },
         contains: [
             {
@@ -21,9 +21,10 @@ function highlighter(hljs: any): any {
 
 registerLanguage("math", highlighter);
 
-console.log(highlight(
-    "typescript",
-    `class CPP {
+console.log(
+    highlight(
+        "typescript",
+        `class CPP {
     private year: number;
     public constructor(private version: string) {
         this.year = Number(version.match(/.+\d+$/));
@@ -34,10 +35,12 @@ console.log(highlight(
     }
 }
 `,
-));
+    ),
+);
 
-console.info(highlightAuto(
-    `class CPP {
+console.info(
+    highlightAuto(
+        `class CPP {
     private year: number;
     public constructor(private version: string) {
         this.year = Number(version.match(/.+\d+$/));
@@ -48,13 +51,15 @@ console.info(highlightAuto(
     }
 }
 `,
-));
+    ),
+);
 
 core.registerLanguage("math", highlighter);
 
-console.log(core.highlight(
-    "javascript",
-    `class CPP {
+console.log(
+    core.highlight(
+        "javascript",
+        `class CPP {
     constructor(version) {
         this.version = version;
         this.year = Number(version.match(/.+\d+$/));
@@ -65,11 +70,13 @@ console.log(core.highlight(
     }
 }
 `,
-    { prefix: "core-" },
-));
+        { prefix: "core-" },
+    ),
+);
 
-console.info(core.highlightAuto(
-    `class CPP {
+console.info(
+    core.highlightAuto(
+        `class CPP {
     constructor(version) {
         this.version = version;
         this.year = Number(version.match(/.+\d+$/));
@@ -80,5 +87,9 @@ console.info(core.highlightAuto(
     }
 }
 `,
-    { prefix: "core-", subset: ["purescript", "javascript", "typescript", "coffeescript"] },
-));
+        {
+            prefix: "core-",
+            subset: ["purescript", "javascript", "typescript", "coffeescript"],
+        },
+    ),
+);

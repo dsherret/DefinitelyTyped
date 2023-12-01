@@ -52,7 +52,11 @@ export interface SkewAnimation {
     skewY(ay: number): Animation;
 }
 
-export interface Animation extends RotateAnimation, ScaleAnimation, SkewAnimation, TranslateAnimation {
+export interface Animation
+    extends RotateAnimation,
+        ScaleAnimation,
+        SkewAnimation,
+        TranslateAnimation {
     opacity(x: number): Animation;
     backgroundColor(x: string): Animation;
     width(x: number): Animation;
@@ -68,13 +72,11 @@ export interface LagLng {
     longitude: number;
 }
 
-export type CallbackFunction<T> = (
-    callbacks: {
-        success: (res: T) => void;
-        fail: () => void;
-        complete: () => void;
-    },
-) => void;
+export type CallbackFunction<T> = (callbacks: {
+    success: (res: T) => void;
+    fail: () => void;
+    complete: () => void;
+}) => void;
 
 export interface MapContext {
     getCenterLocation: CallbackFunction<LagLng>;
@@ -237,10 +239,7 @@ export interface WxEnhances {
 
     createSelectorQuery(): Promise<{}>;
 
-    getLocation(params: {
-        type: string;
-        altitude: boolean;
-    }): Promise<{
+    getLocation(params: { type: string; altitude: boolean }): Promise<{
         latitude: number;
         longitude: number;
         speed: number;
@@ -252,9 +251,7 @@ export interface WxEnhances {
 
     getNetworkType(): Promise<{ networkType: string }>;
 
-    getSavedFileInfo(
-        params: FilePathParam,
-    ): Promise<{
+    getSavedFileInfo(params: FilePathParam): Promise<{
         errMsg: string;
         size: number;
         createTime: number;
@@ -278,10 +275,7 @@ export interface WxEnhances {
         };
     }>;
 
-    getShareInfo(params: {
-        shareTicket: string;
-        timeout: number;
-    }): Promise<{
+    getShareInfo(params: { shareTicket: string; timeout: number }): Promise<{
         errMsg: string;
         encryptedData: string;
         iv: string;

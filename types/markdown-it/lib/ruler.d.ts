@@ -66,7 +66,12 @@ declare class Ruler<T> {
      * @param fn rule function.
      * @param options rule options (not mandatory).
      */
-    before(beforeName: string, ruleName: string, fn: T, options?: Ruler.RuleOptions): void;
+    before(
+        beforeName: string,
+        ruleName: string,
+        fn: T,
+        options?: Ruler.RuleOptions,
+    ): void;
 
     /**
      * Add new rule to chain after one with given name. See also
@@ -91,7 +96,12 @@ declare class Ruler<T> {
      * @param fn rule function.
      * @param options rule options (not mandatory).
      */
-    after(afterName: string, ruleName: string, fn: T, options?: Ruler.RuleOptions): void;
+    after(
+        afterName: string,
+        ruleName: string,
+        fn: T,
+        options?: Ruler.RuleOptions,
+    ): void;
 
     /**
      * Push new rule to the end of chain. See also

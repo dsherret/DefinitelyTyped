@@ -55,7 +55,10 @@ declare module "angular" {
 
             clearAll(): void;
 
-            (message: Message, type?: MessageType): IPromise<INotificationScope>;
+            (
+                message: Message,
+                type?: MessageType,
+            ): IPromise<INotificationScope>;
         }
     }
 }

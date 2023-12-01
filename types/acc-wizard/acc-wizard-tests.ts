@@ -25,10 +25,10 @@ function testWithOptions() {
         nextClasses: "btn btn-primary",
         backClasses: "btn",
         autoScrolling: true,
-        onNext: function() {},
-        onBack: function() {},
-        onInit: function() {},
-        onDestroy: function() {},
+        onNext: function () {},
+        onBack: function () {},
+        onInit: function () {},
+        onDestroy: function () {},
     };
 
     $("#test").accwizard(options);

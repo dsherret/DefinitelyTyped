@@ -109,7 +109,11 @@ declare namespace CKEDITOR {
 
         addTemplate(name: string, source: string): template;
 
-        appendTo(element: string | HTMLElement, config?: config, data?: string): editor;
+        appendTo(
+            element: string | HTMLElement,
+            config?: config,
+            data?: string,
+        ): editor;
 
         domReady(): void;
 
@@ -133,7 +137,12 @@ declare namespace CKEDITOR {
 
         replaceAll(className?: string): void;
 
-        replaceAll(assertionFunction: (textarea: HTMLTextAreaElement, config: config) => boolean): void;
+        replaceAll(
+            assertionFunction: (
+                textarea: HTMLTextAreaElement,
+                config: config,
+            ) => boolean,
+        ): void;
 
         warn(errorCode: string, additionalData?: any): void;
 
@@ -142,9 +151,17 @@ declare namespace CKEDITOR {
 
         define(name: string, meta: { [key: string]: any }): void;
 
-        fire(eventName: string, data?: { [key: string]: any }, editor?: editor): any;
+        fire(
+            eventName: string,
+            data?: { [key: string]: any },
+            editor?: editor,
+        ): any;
 
-        fireOnce(eventName: string, data?: { [key: string]: any }, editor?: editor): any;
+        fireOnce(
+            eventName: string,
+            data?: { [key: string]: any },
+            editor?: editor,
+        ): any;
 
         hasListeners(eventName: string): boolean;
 

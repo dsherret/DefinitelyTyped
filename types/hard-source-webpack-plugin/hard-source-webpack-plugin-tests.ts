@@ -25,12 +25,15 @@ new HardSourceWebpackPlugin.SerializerCacachePlugin();
 new HardSourceWebpackPlugin.SerializerJsonPlugin();
 
 new HardSourceWebpackPlugin.ParallelModulePlugin({
-    fork: ((
-        forkFn: (modulePath: string, args?: readonly string[], options?: ForkOptions) => ChildProcess,
+    fork: (
+        forkFn: (
+            modulePath: string,
+            args?: readonly string[],
+            options?: ForkOptions,
+        ) => ChildProcess,
         compiler: webpack.Compiler,
         webpackBin: string,
-    ) => {
-    }),
+    ) => {},
     numWorkers: () => 3,
     minModules: 10,
 });

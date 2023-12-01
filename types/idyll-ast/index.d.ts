@@ -1,4 +1,11 @@
-import { AST, Node, Property, PropType, PropValue, TreeNode } from "idyll-compiler";
+import {
+    AST,
+    Node,
+    Property,
+    PropType,
+    PropValue,
+    TreeNode,
+} from "idyll-compiler";
 
 /**
  * appends a single node to the AST

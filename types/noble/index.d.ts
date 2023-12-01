@@ -3,7 +3,10 @@
 import events = require("events");
 
 export declare function startScanning(callback?: (error?: Error) => void): void;
-export declare function startScanning(serviceUUIDs: string[], callback?: (error?: Error) => void): void;
+export declare function startScanning(
+    serviceUUIDs: string[],
+    callback?: (error?: Error) => void,
+): void;
 export declare function startScanning(
     serviceUUIDs: string[],
     allowDuplicates: boolean,
@@ -11,26 +14,68 @@ export declare function startScanning(
 ): void;
 export declare function stopScanning(callback?: () => void): void;
 
-export declare function on(event: "stateChange", listener: (state: string) => void): events.EventEmitter;
-export declare function on(event: "scanStart", listener: () => void): events.EventEmitter;
-export declare function on(event: "scanStop", listener: () => void): events.EventEmitter;
-export declare function on(event: "discover", listener: (peripheral: Peripheral) => void): events.EventEmitter;
-export declare function on(event: string, listener: Function): events.EventEmitter;
+export declare function on(
+    event: "stateChange",
+    listener: (state: string) => void,
+): events.EventEmitter;
+export declare function on(
+    event: "scanStart",
+    listener: () => void,
+): events.EventEmitter;
+export declare function on(
+    event: "scanStop",
+    listener: () => void,
+): events.EventEmitter;
+export declare function on(
+    event: "discover",
+    listener: (peripheral: Peripheral) => void,
+): events.EventEmitter;
+export declare function on(
+    event: string,
+    listener: Function,
+): events.EventEmitter;
 
-export declare function once(event: "stateChange", listener: (state: string) => void): events.EventEmitter;
-export declare function once(event: "scanStart", listener: () => void): events.EventEmitter;
-export declare function once(event: "scanStop", listener: () => void): events.EventEmitter;
-export declare function once(event: "discover", listener: (peripheral: Peripheral) => void): events.EventEmitter;
-export declare function once(event: string, listener: Function): events.EventEmitter;
+export declare function once(
+    event: "stateChange",
+    listener: (state: string) => void,
+): events.EventEmitter;
+export declare function once(
+    event: "scanStart",
+    listener: () => void,
+): events.EventEmitter;
+export declare function once(
+    event: "scanStop",
+    listener: () => void,
+): events.EventEmitter;
+export declare function once(
+    event: "discover",
+    listener: (peripheral: Peripheral) => void,
+): events.EventEmitter;
+export declare function once(
+    event: string,
+    listener: Function,
+): events.EventEmitter;
 
-export declare function removeListener(event: "stateChange", listener: (state: string) => void): events.EventEmitter;
-export declare function removeListener(event: "scanStart", listener: () => void): events.EventEmitter;
-export declare function removeListener(event: "scanStop", listener: () => void): events.EventEmitter;
+export declare function removeListener(
+    event: "stateChange",
+    listener: (state: string) => void,
+): events.EventEmitter;
+export declare function removeListener(
+    event: "scanStart",
+    listener: () => void,
+): events.EventEmitter;
+export declare function removeListener(
+    event: "scanStop",
+    listener: () => void,
+): events.EventEmitter;
 export declare function removeListener(
     event: "discover",
     listener: (peripheral: Peripheral) => void,
 ): events.EventEmitter;
-export declare function removeListener(event: string, listener: Function): events.EventEmitter;
+export declare function removeListener(
+    event: string,
+    listener: Function,
+): events.EventEmitter;
 
 export declare function removeAllListeners(event?: string): events.EventEmitter;
 
@@ -45,35 +90,65 @@ export declare class Peripheral extends events.EventEmitter {
     advertisement: Advertisement;
     rssi: number;
     services: Service[];
-    state: "error" | "connecting" | "connected" | "disconnecting" | "disconnected";
+    state:
+        | "error"
+        | "connecting"
+        | "connected"
+        | "disconnecting"
+        | "disconnected";
 
     connect(callback?: (error: string) => void): void;
     disconnect(callback?: () => void): void;
     updateRssi(callback?: (error: string, rssi: number) => void): void;
-    discoverServices(serviceUUIDs: string[], callback?: (error: string, services: Service[]) => void): void;
+    discoverServices(
+        serviceUUIDs: string[],
+        callback?: (error: string, services: Service[]) => void,
+    ): void;
     discoverAllServicesAndCharacteristics(
-        callback?: (error: string, services: Service[], characteristics: Characteristic[]) => void,
+        callback?: (
+            error: string,
+            services: Service[],
+            characteristics: Characteristic[],
+        ) => void,
     ): void;
     discoverSomeServicesAndCharacteristics(
         serviceUUIDs: string[],
         characteristicUUIDs: string[],
-        callback?: (error: string, services: Service[], characteristics: Characteristic[]) => void,
+        callback?: (
+            error: string,
+            services: Service[],
+            characteristics: Characteristic[],
+        ) => void,
     ): void;
 
-    readHandle(handle: number, callback: (error: string, data: Buffer) => void): void;
-    writeHandle(handle: number, data: Buffer, withoutResponse: boolean, callback: (error: string) => void): void;
+    readHandle(
+        handle: number,
+        callback: (error: string, data: Buffer) => void,
+    ): void;
+    writeHandle(
+        handle: number,
+        data: Buffer,
+        withoutResponse: boolean,
+        callback: (error: string) => void,
+    ): void;
     toString(): string;
 
     on(event: "connect", listener: (error: string) => void): this;
     on(event: "disconnect", listener: (error: string) => void): this;
     on(event: "rssiUpdate", listener: (rssi: number) => void): this;
-    on(event: "servicesDiscover", listener: (services: Service[]) => void): this;
+    on(
+        event: "servicesDiscover",
+        listener: (services: Service[]) => void,
+    ): this;
     on(event: string, listener: Function): this;
 
     once(event: "connect", listener: (error: string) => void): this;
     once(event: "disconnect", listener: (error: string) => void): this;
     once(event: "rssiUpdate", listener: (rssi: number) => void): this;
-    once(event: "servicesDiscover", listener: (services: Service[]) => void): this;
+    once(
+        event: "servicesDiscover",
+        listener: (services: Service[]) => void,
+    ): this;
     once(event: string, listener: Function): this;
 }
 
@@ -105,12 +180,24 @@ export declare class Service extends events.EventEmitter {
     ): void;
     toString(): string;
 
-    on(event: "includedServicesDiscover", listener: (includedServiceUuids: string[]) => void): this;
-    on(event: "characteristicsDiscover", listener: (characteristics: Characteristic[]) => void): this;
+    on(
+        event: "includedServicesDiscover",
+        listener: (includedServiceUuids: string[]) => void,
+    ): this;
+    on(
+        event: "characteristicsDiscover",
+        listener: (characteristics: Characteristic[]) => void,
+    ): this;
     on(event: string, listener: Function): this;
 
-    once(event: "includedServicesDiscover", listener: (includedServiceUuids: string[]) => void): this;
-    once(event: "characteristicsDiscover", listener: (characteristics: Characteristic[]) => void): this;
+    once(
+        event: "includedServicesDiscover",
+        listener: (includedServiceUuids: string[]) => void,
+    ): this;
+    once(
+        event: "characteristicsDiscover",
+        listener: (characteristics: Characteristic[]) => void,
+    ): this;
     once(event: string, listener: Function): this;
 }
 
@@ -122,27 +209,53 @@ export declare class Characteristic extends events.EventEmitter {
     descriptors: Descriptor[];
 
     read(callback?: (error: string, data: Buffer) => void): void;
-    write(data: Buffer, notify: boolean, callback?: (error: string) => void): void;
+    write(
+        data: Buffer,
+        notify: boolean,
+        callback?: (error: string) => void,
+    ): void;
     broadcast(broadcast: boolean, callback?: (error: string) => void): void;
     notify(notify: boolean, callback?: (error: string) => void): void;
-    discoverDescriptors(callback?: (error: string, descriptors: Descriptor[]) => void): void;
+    discoverDescriptors(
+        callback?: (error: string, descriptors: Descriptor[]) => void,
+    ): void;
     toString(): string;
     subscribe(callback?: (error: string) => void): void;
     unsubscribe(callback?: (error: string) => void): void;
 
-    on(event: "read", listener: (data: Buffer, isNotification: boolean) => void): this;
-    on(event: "write", withoutResponse: boolean, listener: (error: string) => void): this;
+    on(
+        event: "read",
+        listener: (data: Buffer, isNotification: boolean) => void,
+    ): this;
+    on(
+        event: "write",
+        withoutResponse: boolean,
+        listener: (error: string) => void,
+    ): this;
     on(event: "broadcast", listener: (state: string) => void): this;
     on(event: "notify", listener: (state: string) => void): this;
-    on(event: "descriptorsDiscover", listener: (descriptors: Descriptor[]) => void): this;
+    on(
+        event: "descriptorsDiscover",
+        listener: (descriptors: Descriptor[]) => void,
+    ): this;
     on(event: string, listener: Function): this;
     on(event: string, option: boolean, listener: Function): this;
 
-    once(event: "read", listener: (data: Buffer, isNotification: boolean) => void): this;
-    once(event: "write", withoutResponse: boolean, listener: (error: string) => void): this;
+    once(
+        event: "read",
+        listener: (data: Buffer, isNotification: boolean) => void,
+    ): this;
+    once(
+        event: "write",
+        withoutResponse: boolean,
+        listener: (error: string) => void,
+    ): this;
     once(event: "broadcast", listener: (state: string) => void): this;
     once(event: "notify", listener: (state: string) => void): this;
-    once(event: "descriptorsDiscover", listener: (descriptors: Descriptor[]) => void): this;
+    once(
+        event: "descriptorsDiscover",
+        listener: (descriptors: Descriptor[]) => void,
+    ): this;
     once(event: string, listener: Function): this;
     once(event: string, option: boolean, listener: Function): this;
 }
@@ -156,11 +269,17 @@ export declare class Descriptor extends events.EventEmitter {
     writeValue(data: Buffer, callback?: (error: string) => void): void;
     toString(): string;
 
-    on(event: "valueRead", listener: (error: string, data: Buffer) => void): this;
+    on(
+        event: "valueRead",
+        listener: (error: string, data: Buffer) => void,
+    ): this;
     on(event: "valueWrite", listener: (error: string) => void): this;
     on(event: string, listener: Function): this;
 
-    once(event: "valueRead", listener: (error: string, data: Buffer) => void): this;
+    once(
+        event: "valueRead",
+        listener: (error: string, data: Buffer) => void,
+    ): this;
     once(event: "valueWrite", listener: (error: string) => void): this;
     once(event: string, listener: Function): this;
 }

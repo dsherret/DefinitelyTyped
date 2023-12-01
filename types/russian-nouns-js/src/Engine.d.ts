@@ -22,7 +22,11 @@ export default class Engine {
      * женского рода в творительном могут иметь как окончания -ей -ой, так и -ею -ою.
      * Второй предложный падеж (местный падеж, локатив) не включен в предложный.
      */
-    decline(lemma: LemmaOptions | Lemma, grammaticalCase?: Case[keyof Case], pluralForm?: string): [string];
+    decline(
+        lemma: LemmaOptions | Lemma,
+        grammaticalCase?: Case[keyof Case],
+        pluralForm?: string,
+    ): [string];
 
     /**
      * @param {RussianNouns.Lemma|Object} lemma

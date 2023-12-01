@@ -21,18 +21,24 @@ function ModuleTest(): void {
     Module.logReadFiles = false;
     Module.filePackagePrefixURL = "http://www.example.org/";
     Module.preinitializedWebGLContext = new WebGLRenderingContext();
-    Module.onAbort = what => console.log("abort");
+    Module.onAbort = (what) => console.log("abort");
     Module.onRuntimeInitialized = () => console.log("init");
 
-    const package: ArrayBuffer = Module.getPreloadedPackage("package-name", 100);
+    const package: ArrayBuffer = Module.getPreloadedPackage(
+        "package-name",
+        100,
+    );
     const exports: Emscripten.WebAssemblyExports = Module.instantiateWasm(
         [{ name: "func-name", kind: "function" }],
         (module: WebAssembly.Module) => {},
     );
-    const memFile: string = Module.locateFile("file.mem", "http://www.example.org/");
+    const memFile: string = Module.locateFile(
+        "file.mem",
+        "http://www.example.org/",
+    );
     Module.onCustomMessage(new MessageEvent("TestType"));
 
-    Module.print = text => alert("stdout: " + text);
+    Module.print = (text) => alert("stdout: " + text);
 
     const int_sqrt_number = Module.cwrap("int_sqrt", "number", ["number"]);
     const int_sqrt_null = Module.cwrap("int_sqrt", null, ["number"]);
@@ -40,7 +46,9 @@ function ModuleTest(): void {
     const empty: null = int_sqrt_null(28);
 
     const myTypedArray = new Uint8Array(10);
-    const buf = Module._malloc(myTypedArray.length * myTypedArray.BYTES_PER_ELEMENT);
+    const buf = Module._malloc(
+        myTypedArray.length * myTypedArray.BYTES_PER_ELEMENT,
+    );
     Module.setValue(buf, 10, "i32");
     const x = Module.getValue(buf, "i32") + 123;
     Module.HEAPU8.set(myTypedArray, buf);
@@ -49,7 +57,9 @@ function ModuleTest(): void {
     Module.ccall("my_function", null, ["number"], [buf], { async: true });
     Module.cwrap("my_function", "string", ["number", "boolean", "array"]);
     Module.cwrap("my_function", null, ["number"]);
-    Module.cwrap("my_function", "string", ["number", "boolean", "array"], { async: true });
+    Module.cwrap("my_function", "string", ["number", "boolean", "array"], {
+        async: true,
+    });
     Module._free(buf);
     Module.destroy({});
 }
@@ -58,8 +68,8 @@ function ModuleTest(): void {
 function FSTest(): void {
     FS.init(
         () => null,
-        _ => null,
-        _ => null,
+        (_) => null,
+        (_) => null,
     );
     FS.init(null, null, null);
 
@@ -70,13 +80,13 @@ function FSTest(): void {
         FS.mkdir("/data");
         FS.mount(IDBFS, {}, "/data");
 
-        FS.syncfs(true, err => {
+        FS.syncfs(true, (err) => {
             // handle callback
         });
     }
 
     function myAppShutdown() {
-        FS.syncfs(err => {
+        FS.syncfs((err) => {
             // handle callback
         });
     }

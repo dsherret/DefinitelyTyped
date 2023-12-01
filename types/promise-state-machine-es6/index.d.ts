@@ -23,17 +23,17 @@ interface FsmBase<State, Transitions> {
     can(state: Transitions): boolean;
     can(...args: Transitions[]): boolean;
 
-    toDOTsync(options?: { replacer: (data: DotNode<State, Transitions>) => DotNodeStringified }): string;
+    toDOTsync(options?: {
+        replacer: (data: DotNode<State, Transitions>) => DotNodeStringified;
+    }): string;
 }
 
 declare const PromiseStateMachine: {
-    new<State, Transitions extends string>(payload: {
+    new <State, Transitions extends string>(payload: {
         initial: State;
         events: PromiseStateMachine.Events<State, Transitions>;
-    }):
-        & events.EventEmitter
-        & FsmBase<State, Transitions>
-        & {
+    }): events.EventEmitter &
+        FsmBase<State, Transitions> & {
             [name in Transitions]: () => Promise<any>;
         };
 };

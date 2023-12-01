@@ -37,4 +37,7 @@ browserOptions = {
     txt: {},
 };
 // Look for the server
-browser = bonjourInstance.findOne(browserOptions, (srv: bonjour.RemoteService) => {});
+browser = bonjourInstance.findOne(
+    browserOptions,
+    (srv: bonjour.RemoteService) => {},
+);

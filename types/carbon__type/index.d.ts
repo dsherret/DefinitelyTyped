@@ -687,15 +687,11 @@ export const styles: {
     };
 };
 
-export function fontFamily(
-    name: string,
-): {
+export function fontFamily(name: string): {
     fontFamily: string;
 };
 
-export function fontWeight(
-    weight: string,
-): {
+export function fontWeight(weight: string): {
     fontWeight: number;
 };
 

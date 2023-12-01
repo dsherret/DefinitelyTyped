@@ -2,7 +2,10 @@
 
 declare global {
     namespace Chai {
-        interface Assertion extends LanguageChains, NumericComparison, TypeComparison {
+        interface Assertion
+            extends LanguageChains,
+                NumericComparison,
+                TypeComparison {
             like(expected: any): void;
         }
     }

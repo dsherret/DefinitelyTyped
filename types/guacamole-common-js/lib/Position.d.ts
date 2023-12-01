@@ -39,7 +39,11 @@ export class Position {
      * @param clientY
      *     The viewport-relative Y coordinate to translate.
      */
-    fromClientPosition(element: Element, clientX: number, clientY: number): void;
+    fromClientPosition(
+        element: Element,
+        clientX: number,
+        clientY: number,
+    ): void;
 
     /**
      * Returns a new {@link Position} representing the relative position
@@ -61,5 +65,9 @@ export class Position {
      *     A new Guacamole.Position representing the relative position of the given
      *     client coordinates.
      */
-    static fromClientPosition(element: Element, clientX: number, clientY: number): Position;
+    static fromClientPosition(
+        element: Element,
+        clientX: number,
+        clientY: number,
+    ): Position;
 }

@@ -129,7 +129,12 @@ declare module "async_hooks" {
          * @param triggerAsyncId the unique ID of the async resource in whose execution context this async resource was created
          * @param resource reference to the resource representing the async operation, needs to be released during destroy
          */
-        init?(asyncId: number, type: string, triggerAsyncId: number, resource: object): void;
+        init?(
+            asyncId: number,
+            type: string,
+            triggerAsyncId: number,
+            resource: object,
+        ): void;
         /**
          * When an asynchronous operation is initiated or completes a callback is called to notify the user.
          * The before callback is called just before said callback is executed.
@@ -268,18 +273,20 @@ declare module "async_hooks" {
          *   this async event (default: `executionAsyncId()`), or an
          *   AsyncResourceOptions object (since v9.3.0)
          */
-        constructor(type: string, triggerAsyncId?: number | AsyncResourceOptions);
+        constructor(
+            type: string,
+            triggerAsyncId?: number | AsyncResourceOptions,
+        );
         /**
          * Binds the given function to the current execution context.
          * @since v14.8.0, v12.19.0
          * @param fn The function to bind to the current execution context.
          * @param type An optional name to associate with the underlying `AsyncResource`.
          */
-        static bind<Func extends (this: ThisArg, ...args: any[]) => any, ThisArg>(
-            fn: Func,
-            type?: string,
-            thisArg?: ThisArg,
-        ): Func;
+        static bind<
+            Func extends (this: ThisArg, ...args: any[]) => any,
+            ThisArg,
+        >(fn: Func, type?: string, thisArg?: ThisArg): Func;
         /**
          * Binds the given function to execute to this `AsyncResource`'s scope.
          * @since v14.8.0, v12.19.0
@@ -404,7 +411,10 @@ declare module "async_hooks" {
          * @experimental
          * @return A new function with the signature `(fn: (...args) : R, ...args) : R`.
          */
-        static snapshot(): <R, TArgs extends any[]>(fn: (...args: TArgs) => R, ...args: TArgs) => R;
+        static snapshot(): <R, TArgs extends any[]>(
+            fn: (...args: TArgs) => R,
+            ...args: TArgs
+        ) => R;
         /**
          * Disables the instance of `AsyncLocalStorage`. All subsequent calls
          * to `asyncLocalStorage.getStore()` will return `undefined` until`asyncLocalStorage.run()` or `asyncLocalStorage.enterWith()` is called again.
@@ -461,7 +471,11 @@ declare module "async_hooks" {
          * @since v13.10.0, v12.17.0
          */
         run<R>(store: T, callback: () => R): R;
-        run<R, TArgs extends any[]>(store: T, callback: (...args: TArgs) => R, ...args: TArgs): R;
+        run<R, TArgs extends any[]>(
+            store: T,
+            callback: (...args: TArgs) => R,
+            ...args: TArgs
+        ): R;
         /**
          * Runs a function synchronously outside of a context and returns its
          * return value. The store is not accessible within the callback function or
@@ -490,7 +504,10 @@ declare module "async_hooks" {
          * @since v13.10.0, v12.17.0
          * @experimental
          */
-        exit<R, TArgs extends any[]>(callback: (...args: TArgs) => R, ...args: TArgs): R;
+        exit<R, TArgs extends any[]>(
+            callback: (...args: TArgs) => R,
+            ...args: TArgs
+        ): R;
         /**
          * Transitions into the context for the remainder of the current
          * synchronous execution and then persists the store through any following

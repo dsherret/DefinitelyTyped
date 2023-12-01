@@ -77,7 +77,12 @@ export class Discovery extends EventEmitter {
      * @param interval Any data that can be serialized into JSON.
      * @param available Optional parameter to set availability of the service. If not specified, the default is 'true', meaning available.
      */
-    announce(name: string, userData: any, interval?: number, available?: boolean): void;
+    announce(
+        name: string,
+        userData: any,
+        interval?: number,
+        available?: boolean,
+    ): void;
 
     /**
      * Halts announcements.
@@ -108,7 +113,12 @@ export class Discovery extends EventEmitter {
      * @param interval Any data that can be serialized into JSON.
      * @param available Optional parameter to set availability of the service. If not specified, the default is 'true', meaning available.
      */
-    update(name: string, userData: any, interval?: number, available?: boolean): void;
+    update(
+        name: string,
+        userData: any,
+        interval?: number,
+        available?: boolean,
+    ): void;
 
     /**
      * Not documented at the time this type definition was created.

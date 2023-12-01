@@ -63,7 +63,11 @@ export class TVWebApp {
     buildWidget(profilePath: string, excludeFiles?: string): Promise<void>;
     launchOnSimulator(simulatorLocation: string): Promise<void>;
     launchOnEmulator(chromeExecPath?: string, isDebug?: boolean): Promise<void>;
-    launchOnTV(tvIP: string, chromeExecPath?: string, isDebug?: boolean): Promise<void>;
+    launchOnTV(
+        tvIP: string,
+        chromeExecPath?: string,
+        isDebug?: boolean,
+    ): Promise<void>;
     getAppScreenWidth(): string;
     static openProject(projectPath: string): TVWebApp;
     static getProjectId(projectPath: string): string;
@@ -75,13 +79,19 @@ export class TizenCertManager {
     loadCaCert(): string;
     createCert(authorInfo: AuthorInfo): void;
     getTizenDeveloperCA(): string;
-    getTizenDistributorProfile(privilegeLevel: PrivilegeLevel): DistributorProfile;
+    getTizenDistributorProfile(
+        privilegeLevel: PrivilegeLevel,
+    ): DistributorProfile;
 }
 
 export class SamsungCertManager {
     constructor(resourcePath: string);
     init(): Promise<void>;
-    createAuthorCert(profileName: string, authorInfo: SamsungAuthorInfo, accessInfo: AccessInfo): Promise<string>;
+    createAuthorCert(
+        profileName: string,
+        authorInfo: SamsungAuthorInfo,
+        accessInfo: AccessInfo,
+    ): Promise<string>;
     createDistributorCert(
         profileName: string,
         distrbutorInfo: DistributorInfo,
@@ -92,7 +102,10 @@ export class SamsungCertManager {
     fetchAuthorCRT(accessInfo: AccessInfo): Promise<void>;
     fetchDistributorCRT(isCrt: boolean): Promise<void>;
     generateAuthorPCKS12(password: string): void;
-    generateDistributorPCKS12(password: string, privilegeLevel: SamsungPrivilegeLevel): void;
+    generateDistributorPCKS12(
+        password: string,
+        privilegeLevel: SamsungPrivilegeLevel,
+    ): void;
     loadCaCert(certFile: string): string;
 }
 
@@ -105,7 +118,12 @@ export class ProfileManager {
     ): Promise<void>;
     setActivateProfile(profileName: string): boolean;
     removeProfile(profileName: string): boolean;
-    modifyProfile(profileName: string, itemType: ItemType, certpath: string, password: string): boolean;
+    modifyProfile(
+        profileName: string,
+        itemType: ItemType,
+        certpath: string,
+        password: string,
+    ): boolean;
     isProfileExist(profileName: string): boolean;
     listProfile(): string[] | null;
     getProfileKeys(profileName: string): string[] | null;

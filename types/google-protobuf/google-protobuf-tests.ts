@@ -75,7 +75,10 @@ class MyTestObject extends jspb.Message {
         return MyTestObject.deserializeBinaryFromReader(msg, reader);
     }
 
-    static deserializeBinaryFromReader(msg: MyTestObject, reader: jspb.BinaryReader): MyTestObject {
+    static deserializeBinaryFromReader(
+        msg: MyTestObject,
+        reader: jspb.BinaryReader,
+    ): MyTestObject {
         while (reader.nextField()) {
             if (reader.isEndGroup()) {
                 break;
@@ -103,24 +106,27 @@ class MyTestObject extends jspb.Message {
     getExtensionsObject() {
         const testObject = new MyTestObject();
         const { ExtensionRangeOptions } = google_protobuf_descriptor_pb;
-        const options: google_protobuf_descriptor_pb.ExtensionRangeOptions = ExtensionRangeOptions.deserializeBinary(
-            testObject.serializeBinary(),
-        );
+        const options: google_protobuf_descriptor_pb.ExtensionRangeOptions =
+            ExtensionRangeOptions.deserializeBinary(
+                testObject.serializeBinary(),
+            );
         return options.toObject(true);
     }
 
-    clearUninterpretedOptionList(options: google_protobuf_descriptor_pb.ExtensionRangeOptions) {
+    clearUninterpretedOptionList(
+        options: google_protobuf_descriptor_pb.ExtensionRangeOptions,
+    ) {
         options.getUninterpretedOptionList();
         options.clearUninterpretedOptionList();
     }
 
-    static serializeBinaryToWriter(message: MyTestObject, writer: jspb.BinaryWriter) {
+    static serializeBinaryToWriter(
+        message: MyTestObject,
+        writer: jspb.BinaryWriter,
+    ) {
         const f1 = message.getSomeInteger();
         if (f1) {
-            writer.writeInt32(
-                1,
-                f1,
-            );
+            writer.writeInt32(1, f1);
         }
     }
 
@@ -136,7 +142,14 @@ class MyTestObject extends jspb.Message {
 class MySimple extends jspb.Message {
     constructor(opt_data?: any) {
         super(); // This isn't actually called in the JS version of this file, but it's required by TS
-        jspb.Message.initialize(this, opt_data, 0, -1, MySimple.repeatedFields_, null);
+        jspb.Message.initialize(
+            this,
+            opt_data,
+            0,
+            -1,
+            MySimple.repeatedFields_,
+            null,
+        );
     }
 
     static repeatedFields_ = [3];
@@ -150,35 +163,61 @@ class MySimple extends jspb.Message {
             myString: jspb.Message.getFieldWithDefault(msg, 1, ""),
             myBool: jspb.Message.getFieldWithDefault(msg, 2, false),
             someLabelsList: jspb.Message.getField(msg, 3),
-            someCodeGeneratorRequest: google_protobuf_compiler_plugin_pb.CodeGeneratorRequest.toObject(
+            someCodeGeneratorRequest:
+                google_protobuf_compiler_plugin_pb.CodeGeneratorRequest.toObject(
+                    includeInstance,
+                    msg.getSomeCodeGeneratorRequest(),
+                ),
+            someAny: google_protobuf_any_pb.Any.toObject(
                 includeInstance,
-                msg.getSomeCodeGeneratorRequest(),
+                msg.getSomeAny(),
             ),
-            someAny: google_protobuf_any_pb.Any.toObject(includeInstance, msg.getSomeAny()),
-            someMethod: google_protobuf_api_pb.Method.toObject(includeInstance, msg.getSomeMethod()),
-            someGeneratedCodeInfo: google_protobuf_descriptor_pb.GeneratedCodeInfo.toObject(
+            someMethod: google_protobuf_api_pb.Method.toObject(
                 includeInstance,
-                msg.getSomeGeneratedCodeInfo(),
+                msg.getSomeMethod(),
             ),
-            someDuration: google_protobuf_duration_pb.Duration.toObject(includeInstance, msg.getSomeDuration()),
-            someEmpty: google_protobuf_empty_pb.Empty.toObject(includeInstance, msg.getSomeEmpty()),
-            someFieldMask: google_protobuf_field_mask_pb.FieldMask.toObject(includeInstance, msg.getSomeFieldMask()),
-            someSourceContext: google_protobuf_source_context_pb.SourceContext.toObject(
+            someGeneratedCodeInfo:
+                google_protobuf_descriptor_pb.GeneratedCodeInfo.toObject(
+                    includeInstance,
+                    msg.getSomeGeneratedCodeInfo(),
+                ),
+            someDuration: google_protobuf_duration_pb.Duration.toObject(
                 includeInstance,
-                msg.getSomeSourceContext(),
+                msg.getSomeDuration(),
             ),
-            someStruct: google_protobuf_struct_pb.Struct.toObject(includeInstance, msg.getSomeStruct()),
-            someTimestamp: google_protobuf_timestamp_pb.Timestamp.toObject(includeInstance, msg.getSomeTimestamp()),
-            someType: google_protobuf_type_pb.Type.toObject(includeInstance, msg.getSomeType()),
+            someEmpty: google_protobuf_empty_pb.Empty.toObject(
+                includeInstance,
+                msg.getSomeEmpty(),
+            ),
+            someFieldMask: google_protobuf_field_mask_pb.FieldMask.toObject(
+                includeInstance,
+                msg.getSomeFieldMask(),
+            ),
+            someSourceContext:
+                google_protobuf_source_context_pb.SourceContext.toObject(
+                    includeInstance,
+                    msg.getSomeSourceContext(),
+                ),
+            someStruct: google_protobuf_struct_pb.Struct.toObject(
+                includeInstance,
+                msg.getSomeStruct(),
+            ),
+            someTimestamp: google_protobuf_timestamp_pb.Timestamp.toObject(
+                includeInstance,
+                msg.getSomeTimestamp(),
+            ),
+            someType: google_protobuf_type_pb.Type.toObject(
+                includeInstance,
+                msg.getSomeType(),
+            ),
             someDoubleValue: google_protobuf_wrappers_pb.DoubleValue.toObject(
                 includeInstance,
                 msg.getSomeDoubleValue(),
             ),
             someKeyValueMap: msg.getSomeKeyValueMap().toObject(includeInstance),
-            someMoreComplexKeyValueMap: msg.getSomeMoreComplexKeyValueMap().toObject(
-                includeInstance,
-                MyTestObject.toObject,
-            ),
+            someMoreComplexKeyValueMap: msg
+                .getSomeMoreComplexKeyValueMap()
+                .toObject(includeInstance, MyTestObject.toObject),
         };
 
         if (includeInstance) {
@@ -194,7 +233,10 @@ class MySimple extends jspb.Message {
         return MySimple.deserializeBinaryFromReader(msg, reader);
     }
 
-    static deserializeBinaryFromReader(msg: MySimple, reader: jspb.BinaryReader): MySimple {
+    static deserializeBinaryFromReader(
+        msg: MySimple,
+        reader: jspb.BinaryReader,
+    ): MySimple {
         while (reader.nextField()) {
             if (reader.isEndGroup()) {
                 break;
@@ -214,72 +256,116 @@ class MySimple extends jspb.Message {
                     msg.addSomeLabels(value3);
                     break;
                 case 4:
-                    const value4 = new google_protobuf_compiler_plugin_pb.CodeGeneratorRequest();
+                    const value4 =
+                        new google_protobuf_compiler_plugin_pb.CodeGeneratorRequest();
                     reader.readMessage(
                         value4,
-                        google_protobuf_compiler_plugin_pb.CodeGeneratorRequest.deserializeBinaryFromReader,
+                        google_protobuf_compiler_plugin_pb.CodeGeneratorRequest
+                            .deserializeBinaryFromReader,
                     );
                     msg.setSomeCodeGeneratorRequest(value4);
                     break;
                 case 5:
                     const value5 = new google_protobuf_any_pb.Any();
-                    reader.readMessage(value5, google_protobuf_any_pb.Any.deserializeBinaryFromReader);
+                    reader.readMessage(
+                        value5,
+                        google_protobuf_any_pb.Any.deserializeBinaryFromReader,
+                    );
                     msg.setSomeAny(value5);
                     break;
                 case 6:
                     const value6 = new google_protobuf_api_pb.Method();
-                    reader.readMessage(value6, google_protobuf_api_pb.Method.deserializeBinaryFromReader);
+                    reader.readMessage(
+                        value6,
+                        google_protobuf_api_pb.Method
+                            .deserializeBinaryFromReader,
+                    );
                     msg.setSomeMethod(value6);
                     break;
                 case 7:
-                    const value7 = new google_protobuf_descriptor_pb.GeneratedCodeInfo();
+                    const value7 =
+                        new google_protobuf_descriptor_pb.GeneratedCodeInfo();
                     reader.readMessage(
                         value7,
-                        google_protobuf_descriptor_pb.GeneratedCodeInfo.deserializeBinaryFromReader,
+                        google_protobuf_descriptor_pb.GeneratedCodeInfo
+                            .deserializeBinaryFromReader,
                     );
                     msg.setSomeGeneratedCodeInfo(value7);
                     break;
                 case 8:
                     const value8 = new google_protobuf_duration_pb.Duration();
-                    reader.readMessage(value8, google_protobuf_duration_pb.Duration.deserializeBinaryFromReader);
+                    reader.readMessage(
+                        value8,
+                        google_protobuf_duration_pb.Duration
+                            .deserializeBinaryFromReader,
+                    );
                     msg.setSomeDuration(value8);
                     break;
                 case 9:
                     const value9 = new google_protobuf_empty_pb.Empty();
-                    reader.readMessage(value9, google_protobuf_empty_pb.Empty.deserializeBinaryFromReader);
+                    reader.readMessage(
+                        value9,
+                        google_protobuf_empty_pb.Empty
+                            .deserializeBinaryFromReader,
+                    );
                     msg.setSomeEmpty(value9);
                     break;
                 case 10:
-                    const value10 = new google_protobuf_field_mask_pb.FieldMask();
-                    reader.readMessage(value10, google_protobuf_field_mask_pb.FieldMask.deserializeBinaryFromReader);
+                    const value10 =
+                        new google_protobuf_field_mask_pb.FieldMask();
+                    reader.readMessage(
+                        value10,
+                        google_protobuf_field_mask_pb.FieldMask
+                            .deserializeBinaryFromReader,
+                    );
                     msg.setSomeFieldMask(value10);
                     break;
                 case 11:
-                    const value11 = new google_protobuf_source_context_pb.SourceContext();
+                    const value11 =
+                        new google_protobuf_source_context_pb.SourceContext();
                     reader.readMessage(
                         value11,
-                        google_protobuf_source_context_pb.SourceContext.deserializeBinaryFromReader,
+                        google_protobuf_source_context_pb.SourceContext
+                            .deserializeBinaryFromReader,
                     );
                     msg.setSomeSourceContext(value11);
                     break;
                 case 12:
                     const value12 = new google_protobuf_struct_pb.Struct();
-                    reader.readMessage(value12, google_protobuf_struct_pb.Struct.deserializeBinaryFromReader);
+                    reader.readMessage(
+                        value12,
+                        google_protobuf_struct_pb.Struct
+                            .deserializeBinaryFromReader,
+                    );
                     msg.setSomeStruct(value12);
                     break;
                 case 13:
-                    const value13 = new google_protobuf_timestamp_pb.Timestamp();
-                    reader.readMessage(value13, google_protobuf_timestamp_pb.Timestamp.deserializeBinaryFromReader);
+                    const value13 =
+                        new google_protobuf_timestamp_pb.Timestamp();
+                    reader.readMessage(
+                        value13,
+                        google_protobuf_timestamp_pb.Timestamp
+                            .deserializeBinaryFromReader,
+                    );
                     msg.setSomeTimestamp(value13);
                     break;
                 case 14:
                     const value14 = new google_protobuf_type_pb.Type();
-                    reader.readMessage(value14, google_protobuf_type_pb.Type.deserializeBinaryFromReader);
+                    reader.readMessage(
+                        value14,
+                        google_protobuf_type_pb.Type
+                            .deserializeBinaryFromReader,
+                    );
                     msg.setSomeType(value14);
                     break;
                 case 15:
-                    const value15 = new google_protobuf_wrappers_pb.DoubleValue();
-                    reader.readMessage(value15, google_protobuf_wrappers_pb.DoubleValue.deserializeBinaryFromReader);
+                    const value15 =
+                        new google_protobuf_wrappers_pb.DoubleValue();
+                    reader.readMessage(
+                        value15,
+                        google_protobuf_wrappers_pb.DoubleValue
+                            .deserializeBinaryFromReader,
+                    );
                     msg.setSomeDoubleValue(value15);
                     break;
                 case 16:
@@ -327,45 +413,41 @@ class MySimple extends jspb.Message {
     getExtensionsObject() {
         const simple = new MySimple();
         const { ExtensionRangeOptions } = google_protobuf_descriptor_pb;
-        const options: google_protobuf_descriptor_pb.ExtensionRangeOptions = ExtensionRangeOptions.deserializeBinary(
-            simple.serializeBinary(),
-        );
+        const options: google_protobuf_descriptor_pb.ExtensionRangeOptions =
+            ExtensionRangeOptions.deserializeBinary(simple.serializeBinary());
         return options.toObject(true);
     }
 
-    clearUninterpretedOptionList(options: google_protobuf_descriptor_pb.ExtensionRangeOptions) {
+    clearUninterpretedOptionList(
+        options: google_protobuf_descriptor_pb.ExtensionRangeOptions,
+    ) {
         options.getUninterpretedOptionList();
         options.clearUninterpretedOptionList();
     }
 
-    static serializeBinaryToWriter(message: MySimple, writer: jspb.BinaryWriter) {
+    static serializeBinaryToWriter(
+        message: MySimple,
+        writer: jspb.BinaryWriter,
+    ) {
         const f1 = message.getMyString();
         if (f1.length > 0) {
-            writer.writeString(
-                1,
-                f1,
-            );
+            writer.writeString(1, f1);
         }
         const f2 = message.getMyBool();
         if (f2) {
-            writer.writeBool(
-                2,
-                f2,
-            );
+            writer.writeBool(2, f2);
         }
         const f3 = message.getSomeLabelsList();
         if (f3.length > 0) {
-            writer.writeRepeatedString(
-                3,
-                f3,
-            );
+            writer.writeRepeatedString(3, f3);
         }
         const f4 = message.getSomeCodeGeneratorRequest();
         if (f4 != null) {
             writer.writeMessage(
                 4,
                 f4,
-                google_protobuf_compiler_plugin_pb.CodeGeneratorRequest.serializeBinaryToWriter,
+                google_protobuf_compiler_plugin_pb.CodeGeneratorRequest
+                    .serializeBinaryToWriter,
             );
         }
         const f5 = message.getSomeAny();
@@ -389,7 +471,8 @@ class MySimple extends jspb.Message {
             writer.writeMessage(
                 7,
                 f7,
-                google_protobuf_descriptor_pb.GeneratedCodeInfo.serializeBinaryToWriter,
+                google_protobuf_descriptor_pb.GeneratedCodeInfo
+                    .serializeBinaryToWriter,
             );
         }
         const f8 = message.getSomeDuration();
@@ -421,7 +504,8 @@ class MySimple extends jspb.Message {
             writer.writeMessage(
                 11,
                 f11,
-                google_protobuf_source_context_pb.SourceContext.serializeBinaryToWriter,
+                google_protobuf_source_context_pb.SourceContext
+                    .serializeBinaryToWriter,
             );
         }
         const f12 = message.getSomeStruct();
@@ -514,10 +598,16 @@ class MySimple extends jspb.Message {
     }
 
     getSomeCodeGeneratorRequest(): google_protobuf_compiler_plugin_pb.CodeGeneratorRequest {
-        return jspb.Message.getWrapperField(this, google_protobuf_compiler_plugin_pb.CodeGeneratorRequest, 4);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_compiler_plugin_pb.CodeGeneratorRequest,
+            4,
+        );
     }
 
-    setSomeCodeGeneratorRequest(value?: google_protobuf_compiler_plugin_pb.CodeGeneratorRequest) {
+    setSomeCodeGeneratorRequest(
+        value?: google_protobuf_compiler_plugin_pb.CodeGeneratorRequest,
+    ) {
         jspb.Message.setWrapperField(this, 4, value);
     }
 
@@ -530,7 +620,11 @@ class MySimple extends jspb.Message {
     }
 
     getSomeAny(): google_protobuf_any_pb.Any {
-        return jspb.Message.getWrapperField(this, google_protobuf_any_pb.Any, 5);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_any_pb.Any,
+            5,
+        );
     }
 
     setSomeAny(value?: google_protobuf_any_pb.Any) {
@@ -546,7 +640,11 @@ class MySimple extends jspb.Message {
     }
 
     getSomeMethod(): google_protobuf_api_pb.Method {
-        return jspb.Message.getWrapperField(this, google_protobuf_api_pb.Method, 6);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_api_pb.Method,
+            6,
+        );
     }
 
     setSomeMethod(value?: google_protobuf_api_pb.Method) {
@@ -562,10 +660,16 @@ class MySimple extends jspb.Message {
     }
 
     getSomeGeneratedCodeInfo(): google_protobuf_descriptor_pb.GeneratedCodeInfo {
-        return jspb.Message.getWrapperField(this, google_protobuf_descriptor_pb.GeneratedCodeInfo, 7);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_descriptor_pb.GeneratedCodeInfo,
+            7,
+        );
     }
 
-    setSomeGeneratedCodeInfo(value?: google_protobuf_descriptor_pb.GeneratedCodeInfo) {
+    setSomeGeneratedCodeInfo(
+        value?: google_protobuf_descriptor_pb.GeneratedCodeInfo,
+    ) {
         jspb.Message.setWrapperField(this, 7, value);
     }
 
@@ -578,7 +682,11 @@ class MySimple extends jspb.Message {
     }
 
     getSomeDuration(): google_protobuf_duration_pb.Duration {
-        return jspb.Message.getWrapperField(this, google_protobuf_duration_pb.Duration, 8);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_duration_pb.Duration,
+            8,
+        );
     }
 
     setSomeDuration(value?: google_protobuf_duration_pb.Duration) {
@@ -594,7 +702,11 @@ class MySimple extends jspb.Message {
     }
 
     getSomeEmpty(): google_protobuf_empty_pb.Empty {
-        return jspb.Message.getWrapperField(this, google_protobuf_empty_pb.Empty, 9);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_empty_pb.Empty,
+            9,
+        );
     }
 
     setSomeEmpty(value?: google_protobuf_empty_pb.Empty) {
@@ -610,7 +722,11 @@ class MySimple extends jspb.Message {
     }
 
     getSomeFieldMask(): google_protobuf_field_mask_pb.FieldMask {
-        return jspb.Message.getWrapperField(this, google_protobuf_field_mask_pb.FieldMask, 10);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_field_mask_pb.FieldMask,
+            10,
+        );
     }
 
     setSomeFieldMask(value?: google_protobuf_field_mask_pb.FieldMask) {
@@ -626,10 +742,16 @@ class MySimple extends jspb.Message {
     }
 
     getSomeSourceContext(): google_protobuf_source_context_pb.SourceContext {
-        return jspb.Message.getWrapperField(this, google_protobuf_source_context_pb.SourceContext, 11);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_source_context_pb.SourceContext,
+            11,
+        );
     }
 
-    setSomeSourceContext(value?: google_protobuf_source_context_pb.SourceContext) {
+    setSomeSourceContext(
+        value?: google_protobuf_source_context_pb.SourceContext,
+    ) {
         jspb.Message.setWrapperField(this, 11, value);
     }
 
@@ -642,7 +764,11 @@ class MySimple extends jspb.Message {
     }
 
     getSomeStruct(): google_protobuf_struct_pb.Struct {
-        return jspb.Message.getWrapperField(this, google_protobuf_struct_pb.Struct, 12);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_struct_pb.Struct,
+            12,
+        );
     }
 
     setSomeStruct(value?: google_protobuf_struct_pb.Struct) {
@@ -658,7 +784,11 @@ class MySimple extends jspb.Message {
     }
 
     getSomeTimestamp(): google_protobuf_timestamp_pb.Timestamp {
-        return jspb.Message.getWrapperField(this, google_protobuf_timestamp_pb.Timestamp, 13);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_timestamp_pb.Timestamp,
+            13,
+        );
     }
 
     setSomeTimestamp(value?: google_protobuf_timestamp_pb.Timestamp) {
@@ -674,7 +804,11 @@ class MySimple extends jspb.Message {
     }
 
     getSomeType(): google_protobuf_type_pb.Type {
-        return jspb.Message.getWrapperField(this, google_protobuf_type_pb.Type, 14);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_type_pb.Type,
+            14,
+        );
     }
 
     setSomeType(value?: google_protobuf_type_pb.Type) {
@@ -690,7 +824,11 @@ class MySimple extends jspb.Message {
     }
 
     getSomeDoubleValue(): google_protobuf_wrappers_pb.DoubleValue {
-        return jspb.Message.getWrapperField(this, google_protobuf_wrappers_pb.DoubleValue, 15);
+        return jspb.Message.getWrapperField(
+            this,
+            google_protobuf_wrappers_pb.DoubleValue,
+            15,
+        );
     }
 
     setSomeDoubleValue(value?: google_protobuf_wrappers_pb.DoubleValue) {

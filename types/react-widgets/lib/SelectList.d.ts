@@ -79,7 +79,13 @@ declare namespace SelectList {
          * relevant DOM nodes needed to implement scroll behavior: the list element, the element
          * that is currently focused, and a focused value.
          */
-        onMove?: ((list: HTMLElement, focusedNode: HTMLElement, focusedItem: any) => void) | undefined;
+        onMove?:
+            | ((
+                  list: HTMLElement,
+                  focusedNode: HTMLElement,
+                  focusedItem: any,
+              ) => void)
+            | undefined;
         /**
          * Mark whether the widget is in a busy or loading state. If true the widget will display a
          * spinner gif, useful when loading data via an ajax call.

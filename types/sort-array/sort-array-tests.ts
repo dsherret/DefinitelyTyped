@@ -43,7 +43,7 @@ sortArray(repositories, {
     by: "total",
     order: "desc",
     computed: {
-        total: repository => repository.openIssues + repository.closedIssues,
+        total: (repository) => repository.openIssues + repository.closedIssues,
     },
 });
 
@@ -53,11 +53,15 @@ interface SortArrayOfDeepObjects {
         number: number;
     };
 }
-const data: SortArrayOfDeepObjects[] = [{ inner: { number: 2 } }, { inner: { number: 3 } }, { inner: { number: 1 } }];
+const data: SortArrayOfDeepObjects[] = [
+    { inner: { number: 2 } },
+    { inner: { number: 3 } },
+    { inner: { number: 1 } },
+];
 // $ExpectType SortArrayOfDeepObjects[]
 sortArray(data, {
     by: "number",
     computed: {
-        number: row => row.inner.number,
+        number: (row) => row.inner.number,
     },
 });

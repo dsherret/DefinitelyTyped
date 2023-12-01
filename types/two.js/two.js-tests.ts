@@ -64,7 +64,7 @@ import Two = require("two.js");
 
     // Bind a function to scale and rotate the group
     // to the animation loop.
-    two.bind("update", frameCount => {
+    two.bind("update", (frameCount) => {
         // This code is called everytime two.update() is called.
         // Effectively 60 times per second.
         if (group.scale > 0.9999) {

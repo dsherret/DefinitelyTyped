@@ -7,21 +7,25 @@ declare class TuskMastodonInstance {
     patch(path: string, params?: GeneralObject): Promise<GeneralObject>;
     delete(path: string, params?: GeneralObject): Promise<GeneralObject>;
 
-    request(method: ValidHTTPMethod, path: string, params?: GeneralObject): Promise<GeneralObject>;
+    request(
+        method: ValidHTTPMethod,
+        path: string,
+        params?: GeneralObject,
+    ): Promise<GeneralObject>;
 
-    getAuth(): { "access_token": string };
-    setAuth(auth: { "access_token": string }): void;
+    getAuth(): { access_token: string };
+    setAuth(auth: { access_token: string }): void;
 
     formEncodeParams(params: GeneralObject): string;
 }
 
 interface TuskMastodonOptions {
-    "access_token": string;
+    access_token: string;
     /**
      * The base URL of the Mastodon instance to connect to. Defaults to `https://mastodon.social/api/v1/`.
      */
-    "api_url"?: string;
-    "timeout_ms"?: number;
+    api_url?: string;
+    timeout_ms?: number;
 }
 
 interface GeneralObject {

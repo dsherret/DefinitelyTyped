@@ -7,22 +7,30 @@ SequelizeFixtures.loadFile("", {}).then(() => {});
 SequelizeFixtures.loadFile("", {}, { encoding: "utf8" }).then(() => {});
 
 SequelizeFixtures.loadFiles([], {}).then(() => {});
-SequelizeFixtures.loadFiles([], {}, { log: m => {} }).then(() => {});
+SequelizeFixtures.loadFiles([], {}, { log: (m) => {} }).then(() => {});
 
 SequelizeFixtures.loadFixture({}, {}).then(() => {});
-sequelize.transaction(function(tx) {
+sequelize.transaction(function (tx) {
     SequelizeFixtures.loadFixture({}, {}, { transaction: tx }).then(() => {});
     return null;
 });
 
 SequelizeFixtures.loadFixtures([], {}).then(() => {});
-SequelizeFixtures.loadFixtures([], {}, {
-    transformFixtureDataFn: (data) => {
-        return data;
+SequelizeFixtures.loadFixtures(
+    [],
+    {},
+    {
+        transformFixtureDataFn: (data) => {
+            return data;
+        },
     },
-}).then(() => {});
-SequelizeFixtures.loadFixtures([], {}, {
-    modifyFixtureDataFn: (data) => {
-        return data;
+).then(() => {});
+SequelizeFixtures.loadFixtures(
+    [],
+    {},
+    {
+        modifyFixtureDataFn: (data) => {
+            return data;
+        },
     },
-}).then(() => {});
+).then(() => {});

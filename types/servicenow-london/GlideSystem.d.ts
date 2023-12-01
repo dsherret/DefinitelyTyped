@@ -16,7 +16,14 @@ interface GlideSystem {
     daysAgo(days: number): string;
     daysAgoEnd(days: number): string;
     daysAgoStart(days: number): string;
-    debug(message: string, parm1?: any, parm2?: any, parm3?: any, parm4?: any, parm5?: any): void;
+    debug(
+        message: string,
+        parm1?: any,
+        parm2?: any,
+        parm3?: any,
+        parm4?: any,
+        parm5?: any,
+    ): void;
     endOfLastMonth(): string;
     endOfLastWeek(): string;
     endOfLastYear(): string;
@@ -27,7 +34,14 @@ interface GlideSystem {
     endOfThisQuarter(): string;
     endOfThisWeek(): string;
     endOfThisYear(): string;
-    error(message: string, parm1?: any, parm2?: any, parm3?: any, parm4?: any, parm5?: any): void;
+    error(
+        message: string,
+        parm1?: any,
+        parm2?: any,
+        parm3?: any,
+        parm4?: any,
+        parm5?: any,
+    ): void;
     eventQueue(
         eventName: string,
         gr: ScopedGlideRecord,
@@ -67,7 +81,14 @@ interface GlideSystem {
     hoursAgoEnd(hours: number): string;
     hoursAgoStart(hours: number): string;
     include(include: string): void;
-    info(message: any, parm1?: any, parm2?: any, parm3?: any, parm4?: any, parm5?: any): void;
+    info(
+        message: any,
+        parm1?: any,
+        parm2?: any,
+        parm3?: any,
+        parm4?: any,
+        parm5?: any,
+    ): void;
     isDebugging(): boolean;
     isInteractive(): boolean;
     isLoggedIn(): boolean;
@@ -83,7 +104,14 @@ interface GlideSystem {
     setProperty(key: string, value: string, description: string): void;
     setRedirect(uri: string): void;
     tableExists(table: string): boolean;
-    warn(message: string, parm1?: any, parm2?: any, parm3?: any, parm4?: any, parm5?: any): void;
+    warn(
+        message: string,
+        parm1?: any,
+        parm2?: any,
+        parm3?: any,
+        parm4?: any,
+        parm5?: any,
+    ): void;
     xmlToJSON(xml: string): any;
     yearsAgo(years: number): string;
     yesterday(): string;

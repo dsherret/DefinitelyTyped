@@ -15,8 +15,8 @@ export class CompositeMetadata implements Iterable<Entry> {
  */
 export function encodeCompositeMetadata(
     metadata:
-        | Map<string | WellKnownMimeType | number, (Buffer | (() => Buffer))>
-        | Array<[string | WellKnownMimeType | number, (Buffer | (() => Buffer))]>,
+        | Map<string | WellKnownMimeType | number, Buffer | (() => Buffer)>
+        | Array<[string | WellKnownMimeType | number, Buffer | (() => Buffer)]>,
 ): Buffer;
 
 /**
@@ -33,7 +33,11 @@ export function encodeCompositeMetadata(
  * @param metadata the metadata value to encode.
  */
 // see #encodeMetadataHeader(ByteBufAllocator, String, int)
-export function encodeAndAddCustomMetadata(compositeMetaData: Buffer, customMimeType: string, metadata: Buffer): Buffer;
+export function encodeAndAddCustomMetadata(
+    compositeMetaData: Buffer,
+    customMimeType: string,
+    metadata: Buffer,
+): Buffer;
 
 /**
  * Encode a new sub-metadata information into a composite metadata {@link CompositeByteBuf
@@ -81,7 +85,10 @@ export function encodeAndAddWellKnownMetadata(
  *     <strong>slice</strong> and the content buffer <strong>slice</strong>, or one of the
  *     zero-length error constant arrays
  */
-export function decodeMimeAndContentBuffersSlices(compositeMetadata: Buffer, entryIndex: number): Buffer[];
+export function decodeMimeAndContentBuffersSlices(
+    compositeMetadata: Buffer,
+    entryIndex: number,
+): Buffer[];
 
 /**
  * Decode a {@link CharSequence} custome mime type from a {@link ByteBuf}, assuming said buffer
@@ -101,9 +108,14 @@ export function decodeMimeAndContentBuffersSlices(compositeMetadata: Buffer, ent
  *     invalid
  * @see #decodeMimeIdFromMimeBuffer(ByteBuf)
  */
-export function decodeMimeTypeFromMimeBuffer(flyweightMimeBuffer: Buffer): string;
+export function decodeMimeTypeFromMimeBuffer(
+    flyweightMimeBuffer: Buffer,
+): string;
 
-export function encodeCustomMetadataHeader(customMime: string, metadataLength: number): Buffer;
+export function encodeCustomMetadataHeader(
+    customMime: string,
+    metadataLength: number,
+): Buffer;
 
 /**
  * Encode a {@link WellKnownMimeType well known mime type} and a metadata value length into a
@@ -118,7 +130,10 @@ export function encodeCustomMetadataHeader(customMime: string, metadataLength: n
  *     integer.
  * @return the encoded mime and metadata length information
  */
-export function encodeWellKnownMetadataHeader(mimeType: number, metadataLength: number): Buffer;
+export function encodeWellKnownMetadataHeader(
+    mimeType: number,
+    metadataLength: number,
+): Buffer;
 
 /**
  * Decode given {@link Buffer} into {@link Iterator<Entry>}

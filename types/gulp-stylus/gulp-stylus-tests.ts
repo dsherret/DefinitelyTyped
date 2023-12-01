@@ -2,24 +2,31 @@ import * as gulp from "gulp";
 import stylus = require("gulp-stylus");
 
 gulp.task("styles1", () => {
-    return gulp.src("./css/one.styl")
+    return gulp
+        .src("./css/one.styl")
         .pipe(stylus())
         .pipe(gulp.dest("./css/build"));
 });
 
 gulp.task("styles2", () => {
-    return gulp.src("./css/compressed.styl")
-        .pipe(stylus({
-            compress: true,
-        }))
+    return gulp
+        .src("./css/compressed.styl")
+        .pipe(
+            stylus({
+                compress: true,
+            }),
+        )
         .pipe(gulp.dest("./css/build"));
 });
 
 gulp.task("styles3", () => {
-    return gulp.src("./css/*.styl")
-        .pipe(stylus({
-            "include css": true,
-        }))
+    return gulp
+        .src("./css/*.styl")
+        .pipe(
+            stylus({
+                "include css": true,
+            }),
+        )
         .pipe(gulp.dest("./"));
 });
 

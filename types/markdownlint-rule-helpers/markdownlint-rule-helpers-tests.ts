@@ -120,10 +120,25 @@ helpers.forEachLine([lineMetadata], (_metadata: helpers.LineMetadata) => {});
 helpers.flattenLists([token]);
 
 // $ExpectType void
-helpers.forEachHeading(ruleParams, (_heading: MarkdownIt.Token, _content: string, _token: MarkdownIt.Token) => {});
+helpers.forEachHeading(
+    ruleParams,
+    (
+        _heading: MarkdownIt.Token,
+        _content: string,
+        _token: MarkdownIt.Token,
+    ) => {},
+);
 
 // $ExpectType void
-helpers.forEachInlineCodeSpan("", (_code: string, _lineIndex: number, _columnIndex: number, _ticks: number) => {});
+helpers.forEachInlineCodeSpan(
+    "",
+    (
+        _code: string,
+        _lineIndex: number,
+        _columnIndex: number,
+        _ticks: number,
+    ) => {},
+);
 
 // $ExpectType string
 helpers.ellipsify("");

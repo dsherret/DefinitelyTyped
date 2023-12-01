@@ -19,8 +19,7 @@ export interface LocalizationProviderProps {
     children: React.ReactElement;
     parseMarkup?: MarkupParser | undefined;
 }
-export class LocalizationProvider extends React.Component<LocalizationProviderProps> {
-}
+export class LocalizationProvider extends React.Component<LocalizationProviderProps> {}
 
 export class ReactLocalization {
     constructor(bundles: IterableIterator<FluentBundle>);
@@ -33,8 +32,7 @@ export interface LocalizedProps {
     [key: string]: any;
 }
 
-export class Localized extends React.Component<LocalizedProps> {
-}
+export class Localized extends React.Component<LocalizedProps> {}
 
 // Inspired by react-redux's type definition:
 /**
@@ -51,8 +49,9 @@ export class Localized extends React.Component<LocalizedProps> {
  */
 export type Matching<InjectedProps, DecorationTargetProps> = {
     [P in keyof DecorationTargetProps]: P extends keyof InjectedProps
-        ? InjectedProps[P] extends DecorationTargetProps[P] ? DecorationTargetProps[P]
-        : InjectedProps[P]
+        ? InjectedProps[P] extends DecorationTargetProps[P]
+            ? DecorationTargetProps[P]
+            : InjectedProps[P]
         : DecorationTargetProps[P];
 };
 
@@ -66,11 +65,11 @@ export type Matching<InjectedProps, DecorationTargetProps> = {
  * required by the decorated (right hand side) component.
  * But any property required by the decorated component must be satisfied by the injected property.
  */
-export type Shared<
-    InjectedProps,
-    DecorationTargetProps,
-> = {
-    [P in Extract<keyof InjectedProps, keyof DecorationTargetProps>]?: InjectedProps[P] extends DecorationTargetProps[P]
+export type Shared<InjectedProps, DecorationTargetProps> = {
+    [P in Extract<
+        keyof InjectedProps,
+        keyof DecorationTargetProps
+    >]?: InjectedProps[P] extends DecorationTargetProps[P]
         ? DecorationTargetProps[P]
         : never;
 };
@@ -90,6 +89,10 @@ export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 
 // Injects `getString` and removes it from the prop requirements. Will not pass
 // through `getString` if it's passed in during render.
-export function withLocalization<C extends React.ComponentType<Matching<InjectedProps, GetProps<C>>>>(
+export function withLocalization<
+    C extends React.ComponentType<Matching<InjectedProps, GetProps<C>>>,
+>(
     component: C,
-): React.ComponentType<Omit<GetProps<C>, keyof Shared<InjectedProps, GetProps<C>>>>;
+): React.ComponentType<
+    Omit<GetProps<C>, keyof Shared<InjectedProps, GetProps<C>>>
+>;

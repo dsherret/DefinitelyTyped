@@ -5,7 +5,7 @@ import SwaggerUI from "swagger-ui-react";
     <SwaggerUI
         docExpansion="none"
         url="www.example.com/swagger.json"
-        requestInterceptor={request => {
+        requestInterceptor={(request) => {
             console.log(request);
             return request;
         }}

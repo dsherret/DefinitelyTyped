@@ -21,7 +21,13 @@ declare namespace jsrsasign.KJUR.crypto {
          * @param y public key Y or null
          * @param x private key X
          */
-        setPrivate(p: BigInteger, q: BigInteger, g: BigInteger, y: BigInteger | null, x: BigInteger): void;
+        setPrivate(
+            p: BigInteger,
+            q: BigInteger,
+            g: BigInteger,
+            y: BigInteger | null,
+            x: BigInteger,
+        ): void;
 
         /**
          * set DSA private key by key parameters of hexadecimal string
@@ -31,7 +37,13 @@ declare namespace jsrsasign.KJUR.crypto {
          * @param hY public key Y or null
          * @param hX private key X
          */
-        setPrivateHex(hP: string, hQ: string, hG: string, hY: string, hX: string): void;
+        setPrivateHex(
+            hP: string,
+            hQ: string,
+            hG: string,
+            hY: string,
+            hX: string,
+        ): void;
 
         /**
          * set DSA public key by key parameters of BigInteger object
@@ -40,7 +52,12 @@ declare namespace jsrsasign.KJUR.crypto {
          * @param g base G parameter
          * @param y public key Y
          */
-        setPublic(p: BigInteger, q: BigInteger, g: BigInteger, y: BigInteger): void;
+        setPublic(
+            p: BigInteger,
+            q: BigInteger,
+            g: BigInteger,
+            y: BigInteger,
+        ): void;
 
         /**
          * set DSA public key by key parameters of hexadecimal string

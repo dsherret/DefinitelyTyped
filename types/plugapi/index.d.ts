@@ -353,7 +353,13 @@ declare namespace PlugAPI {
 
 declare class PlugAPI {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    constructor(login: PlugAPI.PlugLogin, callback?: (error: Error, bot: PlugAPI) => void | ((bot: PlugAPI) => void));
+    constructor(
+        login: PlugAPI.PlugLogin,
+        callback?: (
+            error: Error,
+            bot: PlugAPI,
+        ) => void | ((bot: PlugAPI) => void),
+    );
     deleteAllChat: boolean;
     multiLine: boolean;
     multiLineLimit: number;
@@ -378,32 +384,75 @@ declare class PlugAPI {
     getUsers(): PlugAPI.User.DJ[];
     getWaitList(): PlugAPI.User.Extended;
     getWaitListPosition(userID: number): number;
-    havePermission(userID: number, permission: number, global?: boolean): boolean;
+    havePermission(
+        userID: number,
+        permission: number,
+        global?: boolean,
+    ): boolean;
     joinBooth(callback?: () => void): boolean;
     leaveBooth(callback?: () => void): boolean;
     selfSkip(callback?: () => void): boolean;
     sendChat(msg: string, timeout?: number): void;
     setLogger(logObject: PlugAPI.LogObject): boolean;
 
-    on(event: "boothCycle", callback: (data: PlugAPI.Event.BoothCycle) => void): void;
-    on(event: "boothLocked", callback: (data: PlugAPI.Event.BoothLocked) => void): void;
+    on(
+        event: "boothCycle",
+        callback: (data: PlugAPI.Event.BoothCycle) => void,
+    ): void;
+    on(
+        event: "boothLocked",
+        callback: (data: PlugAPI.Event.BoothLocked) => void,
+    ): void;
     on(event: "chat", callback: (data: PlugAPI.Event.Chat) => void): void;
-    on(event: "chatDelete", callback: (data: PlugAPI.Event.ChatDelete) => void): void;
+    on(
+        event: "chatDelete",
+        callback: (data: PlugAPI.Event.ChatDelete) => void,
+    ): void;
     on(event: "grab", callback: (data: PlugAPI.Event.Grab) => void): void;
     on(event: "advance", callback: (data: PlugAPI.Event.Advance) => void): void;
-    on(event: "djListUpdate", callback: (data: PlugAPI.Event.DJListUpdate) => void): void;
+    on(
+        event: "djListUpdate",
+        callback: (data: PlugAPI.Event.DJListUpdate) => void,
+    ): void;
     on(event: "emote", callback: (data: PlugAPI.Event.Emote) => void): void;
-    on(event: "followJoin", callback: (data: PlugAPI.Event.FollowJoin) => void): void;
-    on(event: "modAddDJ", callback: (data: PlugAPI.Event.ModAddDJ) => void): void;
+    on(
+        event: "followJoin",
+        callback: (data: PlugAPI.Event.FollowJoin) => void,
+    ): void;
+    on(
+        event: "modAddDJ",
+        callback: (data: PlugAPI.Event.ModAddDJ) => void,
+    ): void;
     on(event: "modBan", callback: (data: PlugAPI.Event.ModBan) => void): void;
-    on(event: "modMoveDJ", callback: (data: PlugAPI.Event.ModMoveDJ) => void): void;
-    on(event: "modRemoveDJ", callback: (data: PlugAPI.Event.ModRemoveDJ) => void): void;
+    on(
+        event: "modMoveDJ",
+        callback: (data: PlugAPI.Event.ModMoveDJ) => void,
+    ): void;
+    on(
+        event: "modRemoveDJ",
+        callback: (data: PlugAPI.Event.ModRemoveDJ) => void,
+    ): void;
     on(event: "modSkip", callback: (data: PlugAPI.Event.ModSkip) => void): void;
-    on(event: "roomMinChatLevelUpdate", callback: (data: PlugAPI.Event.RoomMinChatLevelUpdate) => void): void;
-    on(event: "roomJoin", callback: (data: PlugAPI.Event.RoomJoin) => void): void;
-    on(event: "userJoin", callback: (data: PlugAPI.Event.UserJoin) => void): void;
-    on(event: "userLeave", callback: (data: PlugAPI.Event.UserLeave) => void): void;
-    on(event: "userUpdate", callback: (data: PlugAPI.Event.UserUpdate) => void): void;
+    on(
+        event: "roomMinChatLevelUpdate",
+        callback: (data: PlugAPI.Event.RoomMinChatLevelUpdate) => void,
+    ): void;
+    on(
+        event: "roomJoin",
+        callback: (data: PlugAPI.Event.RoomJoin) => void,
+    ): void;
+    on(
+        event: "userJoin",
+        callback: (data: PlugAPI.Event.UserJoin) => void,
+    ): void;
+    on(
+        event: "userLeave",
+        callback: (data: PlugAPI.Event.UserLeave) => void,
+    ): void;
+    on(
+        event: "userUpdate",
+        callback: (data: PlugAPI.Event.UserUpdate) => void,
+    ): void;
     on(event: "vote", callback: (data: PlugAPI.Event.Vote) => void): void;
     on(event: "command", callback: (data: PlugAPI.Event.Command) => void): void;
     on(event: string, callback: (data: any) => void): void;

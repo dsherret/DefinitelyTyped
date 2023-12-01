@@ -1,7 +1,7 @@
 /// <reference types="geojson" />
 
 declare namespace L {
-    type LatLngExpression = LatLng | number[] | ({ lat: number; lng: number });
+    type LatLngExpression = LatLng | number[] | { lat: number; lng: number };
     type LatLngBoundsExpression = LatLngBounds | LatLngExpression[];
     type PositionString = "topleft" | "topright" | "bottomleft" | "bottomright";
 }
@@ -39,12 +39,12 @@ declare namespace L {
          * Creates a Bounds object from two coordinates (usually top-left and bottom-right
          * corners).
          */
-        new(topLeft: Point, bottomRight: Point): Bounds;
+        new (topLeft: Point, bottomRight: Point): Bounds;
 
         /**
          * Creates a Bounds object defined by the points it contains.
          */
-        new(points: Point[]): Bounds;
+        new (points: Point[]): Bounds;
     }
     export var Bounds: BoundsStatic;
 
@@ -172,14 +172,22 @@ declare namespace L {
      * Instantiates a circle object given a geographical point, a radius in meters
      * and optionally an options object.
      */
-    function circle(latlng: LatLngExpression, radius: number, options?: PathOptions): Circle;
+    function circle(
+        latlng: LatLngExpression,
+        radius: number,
+        options?: PathOptions,
+    ): Circle;
 
     export interface CircleStatic extends ClassStatic {
         /**
          * Instantiates a circle object given a geographical point, a radius in meters
          * and optionally an options object.
          */
-        new(latlng: LatLngExpression, radius: number, options?: PathOptions): Circle;
+        new (
+            latlng: LatLngExpression,
+            radius: number,
+            options?: PathOptions,
+        ): Circle;
     }
     export var Circle: CircleStatic;
 
@@ -217,7 +225,10 @@ declare namespace L {
      * an options object. The default radius is 10 and can be altered by passing a
      * "radius" member in the path options object.
      */
-    function circleMarker(latlng: LatLngExpression, options?: PathOptions): CircleMarker;
+    function circleMarker(
+        latlng: LatLngExpression,
+        options?: PathOptions,
+    ): CircleMarker;
 
     export interface CircleMarkerStatic extends ClassStatic {
         /**
@@ -225,7 +236,7 @@ declare namespace L {
          * an options object. The default radius is 10 and can be altered by passing a
          * "radius" member in the path options object.
          */
-        new(latlng: LatLngExpression, options?: PathOptions): CircleMarker;
+        new (latlng: LatLngExpression, options?: PathOptions): CircleMarker;
     }
     export var CircleMarker: CircleMarkerStatic;
 
@@ -281,7 +292,9 @@ declare namespace L {
          * same method on any class to inherit from it.
          */
         extend(options: ClassExtendOptions): any;
-        extend<Options, NewClass>(options: ClassExtendOptions): { new(options?: Options): NewClass };
+        extend<Options, NewClass>(
+            options: ClassExtendOptions,
+        ): { new (options?: Options): NewClass };
 
         /**
          * You can also use the following shortcut when you just need to make
@@ -308,7 +321,7 @@ declare namespace L {
         /**
          * Creates a control with the given options.
          */
-        new(options?: ControlOptions): Control;
+        new (options?: ControlOptions): Control;
 
         Zoom: Control.ZoomStatic;
         Attribution: Control.AttributionStatic;
@@ -365,11 +378,10 @@ declare namespace L {
             /**
              * Creates a zoom control.
              */
-            new(options?: ZoomOptions): Zoom;
+            new (options?: ZoomOptions): Zoom;
         }
 
-        export interface Zoom extends L.Control {
-        }
+        export interface Zoom extends L.Control {}
 
         export interface ZoomOptions {
             /**
@@ -413,7 +425,7 @@ declare namespace L {
             /**
              * Creates an attribution control.
              */
-            new(options?: AttributionOptions): Attribution;
+            new (options?: AttributionOptions): Attribution;
         }
 
         export interface Attribution extends L.Control {
@@ -438,7 +450,11 @@ declare namespace L {
              * Creates an attribution control with the given layers. Base layers will be
              * switched with radio buttons, while overlays will be switched with checkboxes.
              */
-            new(baseLayers?: any, overlays?: any, options?: LayersOptions): Layers;
+            new (
+                baseLayers?: any,
+                overlays?: any,
+                options?: LayersOptions,
+            ): Layers;
         }
 
         export interface Layers extends L.Control, IEventPowered<Layers> {
@@ -459,14 +475,38 @@ declare namespace L {
 
             ////////////////
             ////////////////
-            addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): Layers;
+            addEventListener(
+                type: string,
+                fn: (e: LeafletEvent) => void,
+                context?: any,
+            ): Layers;
+            addOneTimeEventListener(
+                type: string,
+                fn: (e: LeafletEvent) => void,
+                context?: any,
+            ): Layers;
+            removeEventListener(
+                type: string,
+                fn?: (e: LeafletEvent) => void,
+                context?: any,
+            ): Layers;
             hasEventListeners(type: string): boolean;
             fireEvent(type: string, data?: any): Layers;
-            on(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            once(type: string, fn: (e: LeafletEvent) => void, context?: any): Layers;
-            off(type: string, fn?: (e: LeafletEvent) => void, context?: any): Layers;
+            on(
+                type: string,
+                fn: (e: LeafletEvent) => void,
+                context?: any,
+            ): Layers;
+            once(
+                type: string,
+                fn: (e: LeafletEvent) => void,
+                context?: any,
+            ): Layers;
+            off(
+                type: string,
+                fn?: (e: LeafletEvent) => void,
+                context?: any,
+            ): Layers;
             fire(type: string, data?: any): Layers;
             addEventListener(eventMap: any, context?: any): Layers;
             removeEventListener(eventMap?: any, context?: any): Layers;
@@ -479,11 +519,10 @@ declare namespace L {
             /**
              * Creates an scale control with the given options.
              */
-            new(options?: ScaleOptions): Scale;
+            new (options?: ScaleOptions): Scale;
         }
 
-        export interface Scale extends L.Control {
-        }
+        export interface Scale extends L.Control {}
     }
 
     export interface control {
@@ -502,13 +541,19 @@ declare namespace L {
         /**
          * Creates an attribution control.
          */
-        export function attribution(options?: AttributionOptions): L.Control.Attribution;
+        export function attribution(
+            options?: AttributionOptions,
+        ): L.Control.Attribution;
 
         /**
          * Creates an attribution control with the given layers. Base layers will be
          * switched with radio buttons, while overlays will be switched with checkboxes.
          */
-        export function layers(baseLayers?: any, overlays?: any, options?: LayersOptions): L.Control.Layers;
+        export function layers(
+            baseLayers?: any,
+            overlays?: any,
+            options?: LayersOptions,
+        ): L.Control.Layers;
 
         /**
          * Creates an scale control with the given options.
@@ -567,12 +612,11 @@ declare namespace L {
         /**
          * Creates a div icon instance with the given options.
          */
-        new(options: DivIconOptions): DivIcon;
+        new (options: DivIconOptions): DivIcon;
     }
     export var DivIcon: DivIconStatic;
 
-    export interface DivIcon extends Icon {
-    }
+    export interface DivIcon extends Icon {}
 }
 
 declare namespace L {
@@ -618,14 +662,34 @@ declare namespace L {
          * Adds a listener fn to the element's DOM event of the specified type. this keyword
          * inside the listener will point to context, or to the element if not specified.
          */
-        addListener(el: HTMLElement, type: string, fn: (e: Event) => void, context?: any): DomEvent;
-        on(el: HTMLElement, type: string, fn: (e: Event) => void, context?: any): DomEvent;
+        addListener(
+            el: HTMLElement,
+            type: string,
+            fn: (e: Event) => void,
+            context?: any,
+        ): DomEvent;
+        on(
+            el: HTMLElement,
+            type: string,
+            fn: (e: Event) => void,
+            context?: any,
+        ): DomEvent;
 
         /**
          * Removes an event listener from the element.
          */
-        removeListener(el: HTMLElement, type: string, fn: (e: Event) => void, context?: any): DomEvent;
-        off(el: HTMLElement, type: string, fn: (e: Event) => void, context?: any): DomEvent;
+        removeListener(
+            el: HTMLElement,
+            type: string,
+            fn: (e: Event) => void,
+            context?: any,
+        ): DomEvent;
+        off(
+            el: HTMLElement,
+            type: string,
+            fn: (e: Event) => void,
+            context?: any,
+        ): DomEvent;
 
         /**
          * Stop the given event from propagation to parent elements. Used inside the
@@ -693,7 +757,11 @@ declare namespace L {
          * Creates an element with tagName, sets the className, and optionally appends
          * it to container element.
          */
-        export function create(tagName: string, className: string, container?: HTMLElement): HTMLElement;
+        export function create(
+            tagName: string,
+            className: string,
+            container?: HTMLElement,
+        ): HTMLElement;
 
         /**
          * Makes sure text cannot be selected, for example during dragging.
@@ -751,7 +819,11 @@ declare namespace L {
          * Leaflet internally to position its layers). Forces top/left positioning
          * if disable3D is true.
          */
-        export function setPosition(el: HTMLElement, point: Point, disable3D?: boolean): void;
+        export function setPosition(
+            el: HTMLElement,
+            point: Point,
+            disable3D?: boolean,
+        ): void;
 
         /**
          * Returns the coordinates of an element previously positioned with setPosition.
@@ -776,7 +848,7 @@ declare namespace L {
          * Creates a Draggable object for moving the given element when you start dragging
          * the dragHandle element (equals the element itself by default).
          */
-        new(element: HTMLElement, dragHandle?: HTMLElement): Draggable;
+        new (element: HTMLElement, dragHandle?: HTMLElement): Draggable;
     }
     export var Draggable: DraggableStatic;
 
@@ -793,14 +865,38 @@ declare namespace L {
 
         ////////////////
         ////////////////
-        addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Draggable;
-        addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Draggable;
-        removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): Draggable;
+        addEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Draggable;
+        addOneTimeEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Draggable;
+        removeEventListener(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): Draggable;
         hasEventListeners(type: string): boolean;
         fireEvent(type: string, data?: any): Draggable;
-        on(type: string, fn: (e: LeafletEvent) => void, context?: any): Draggable;
-        once(type: string, fn: (e: LeafletEvent) => void, context?: any): Draggable;
-        off(type: string, fn?: (e: LeafletEvent) => void, context?: any): Draggable;
+        on(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Draggable;
+        once(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Draggable;
+        off(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): Draggable;
         fire(type: string, data?: any): Draggable;
         addEventListener(eventMap: any, context?: any): Draggable;
         removeEventListener(eventMap?: any, context?: any): Draggable;
@@ -820,11 +916,14 @@ declare namespace L {
         /**
          * Create a layer group, optionally given an initial set of layers.
          */
-        new<T extends ILayer>(layers?: T[]): FeatureGroup<T>;
+        new <T extends ILayer>(layers?: T[]): FeatureGroup<T>;
     }
     export var FeatureGroup: FeatureGroupStatic;
 
-    export interface FeatureGroup<T extends ILayer> extends LayerGroup<T>, ILayer, IEventPowered<FeatureGroup<T>> {
+    export interface FeatureGroup<T extends ILayer>
+        extends LayerGroup<T>,
+            ILayer,
+            IEventPowered<FeatureGroup<T>> {
         /**
          * Binds a popup with a particular HTML content to a click on any layer from the
          * group that has a bindPopup method.
@@ -869,14 +968,38 @@ declare namespace L {
 
         ////////////////
         ////////////////
-        addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): FeatureGroup<T>;
-        addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): FeatureGroup<T>;
-        removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): FeatureGroup<T>;
+        addEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): FeatureGroup<T>;
+        addOneTimeEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): FeatureGroup<T>;
+        removeEventListener(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): FeatureGroup<T>;
         hasEventListeners(type: string): boolean;
         fireEvent(type: string, data?: any): FeatureGroup<T>;
-        on(type: string, fn: (e: LeafletEvent) => void, context?: any): FeatureGroup<T>;
-        once(type: string, fn: (e: LeafletEvent) => void, context?: any): FeatureGroup<T>;
-        off(type: string, fn?: (e: LeafletEvent) => void, context?: any): FeatureGroup<T>;
+        on(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): FeatureGroup<T>;
+        once(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): FeatureGroup<T>;
+        off(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): FeatureGroup<T>;
         fire(type: string, data?: any): FeatureGroup<T>;
         addEventListener(eventMap: any, context?: any): FeatureGroup<T>;
         removeEventListener(eventMap?: any, context?: any): FeatureGroup<T>;
@@ -900,12 +1023,15 @@ declare namespace L {
          * to display on the map (you can alternatively add it later with addData method)
          * and an options object.
          */
-        new(geojson?: any, options?: GeoJSONOptions): GeoJSON;
+        new (geojson?: any, options?: GeoJSONOptions): GeoJSON;
 
         /**
          * Creates a layer from a given GeoJSON feature.
          */
-        geometryToLayer(featureData: GeoJSON, pointToLayer?: (featureData: any, latlng: LatLng) => ILayer): ILayer;
+        geometryToLayer(
+            featureData: GeoJSON,
+            pointToLayer?: (featureData: any, latlng: LatLng) => ILayer,
+        ): ILayer;
 
         /**
          * Creates a LatLng object from an array of 2 numbers (latitude, longitude)
@@ -920,7 +1046,11 @@ declare namespace L {
          * 1 for an array of arrays of points, etc., 0 by default). If reverse is set to
          * true, the numbers will be interpreted as (longitude, latitude).
          */
-        coordsToLatLngs(coords: any[], levelsDeep?: number, reverse?: boolean): any[];
+        coordsToLatLngs(
+            coords: any[],
+            levelsDeep?: number,
+            reverse?: boolean,
+        ): any[];
     }
     export var GeoJSON: GeoJSONStatic;
 
@@ -954,7 +1084,9 @@ declare namespace L {
          * Function that will be used for creating layers for GeoJSON points (if not
          * specified, simple markers will be created).
          */
-        pointToLayer?: ((featureData: any, latlng: LatLng) => ILayer) | undefined;
+        pointToLayer?:
+            | ((featureData: any, latlng: LatLng) => ILayer)
+            | undefined;
 
         /**
          * Function that will be used to get style options for vector layers created
@@ -992,29 +1124,27 @@ declare namespace L {
         /**
          * Creates an icon instance with the given options.
          */
-        new(options: IconOptions): Icon;
+        new (options: IconOptions): Icon;
 
         Default: {
             /**
              * Creates a default icon instance with the given options.
              */
-            new(options?: IconOptions): Icon.Default;
+            new (options?: IconOptions): Icon.Default;
 
             imagePath: string;
         };
     }
     export var Icon: IconStatic;
 
-    export interface Icon {
-    }
+    export interface Icon {}
 
     namespace Icon {
         /**
          * L.Icon.Default extends L.Icon and is the blue icon Leaflet uses
          * for markers by default.
          */
-        export interface Default extends Icon {
-        }
+        export interface Default extends Icon {}
     }
 }
 
@@ -1156,12 +1286,20 @@ declare namespace L {
          * will point to). You can also pass several space-separated types (e.g. 'click
          * dblclick').
          */
-        addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): T;
+        addEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): T;
 
         /**
          * The same as above except the listener will only get fired once and then removed.
          */
-        addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): T;
+        addOneTimeEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): T;
         /**
          * Adds a set of type/listener pairs, e.g. {click: onClick, mousemove: onMouseMove}
          */
@@ -1171,7 +1309,11 @@ declare namespace L {
          * Removes a previously added listener function. If no function is specified,
          * it will remove all the listeners of that particular event from the object.
          */
-        removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): T;
+        removeEventListener(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): T;
 
         /**
          * Removes a set of type/listener pairs.
@@ -1268,8 +1410,8 @@ declare namespace L {
 
 declare namespace L {
     namespace Mixin {
-        export interface LeafletMixinEvents extends IEventPowered<LeafletMixinEvents> {
-        }
+        export interface LeafletMixinEvents
+            extends IEventPowered<LeafletMixinEvents> {}
 
         export var Events: LeafletMixinEvents;
     }
@@ -1280,14 +1422,22 @@ declare namespace L {
      * Instantiates an image overlay object given the URL of the image and the geographical
      * bounds it is tied to.
      */
-    function imageOverlay(imageUrl: string, bounds: LatLngBounds, options?: ImageOverlayOptions): ImageOverlay;
+    function imageOverlay(
+        imageUrl: string,
+        bounds: LatLngBounds,
+        options?: ImageOverlayOptions,
+    ): ImageOverlay;
 
     export interface ImageOverlayStatic extends ClassStatic {
         /**
          * Instantiates an image overlay object given the URL of the image and the geographical
          * bounds it is tied to.
          */
-        new(imageUrl: string, bounds: LatLngBounds, options?: ImageOverlayOptions): ImageOverlay;
+        new (
+            imageUrl: string,
+            bounds: LatLngBounds,
+            options?: ImageOverlayOptions,
+        ): ImageOverlay;
     }
     export var ImageOverlay: ImageOverlayStatic;
 
@@ -1388,13 +1538,13 @@ declare namespace L {
          * Creates an object representing a geographical point with the given latitude
          * and longitude.
          */
-        new(latitude: number, longitude: number): LatLng;
+        new (latitude: number, longitude: number): LatLng;
 
         /**
          * Creates an object representing a geographical point with the given latitude
          * and longitude.
          */
-        new(coords: LatLngExpression): LatLng;
+        new (coords: LatLngExpression): LatLng;
 
         /**
          * A multiplier for converting degrees into radians.
@@ -1460,7 +1610,10 @@ declare namespace L {
      * Creates a LatLngBounds object by defining south-west and north-east corners
      * of the rectangle.
      */
-    function latLngBounds(southWest: LatLngExpression, northEast: LatLngExpression): LatLngBounds;
+    function latLngBounds(
+        southWest: LatLngExpression,
+        northEast: LatLngExpression,
+    ): LatLngBounds;
 
     /**
      * Creates a LatLngBounds object defined by the geographical points it contains.
@@ -1473,13 +1626,16 @@ declare namespace L {
          * Creates a LatLngBounds object by defining south-west and north-east corners
          * of the rectangle.
          */
-        new(southWest: LatLngExpression, northEast: LatLngExpression): LatLngBounds;
+        new (
+            southWest: LatLngExpression,
+            northEast: LatLngExpression,
+        ): LatLngBounds;
 
         /**
          * Creates a LatLngBounds object defined by the geographical points it contains.
          * Very useful for zooming the map to fit a particular set of locations with fitBounds.
          */
-        new(latlngs: LatLngBoundsExpression): LatLngBounds;
+        new (latlngs: LatLngBoundsExpression): LatLngBounds;
     }
     export var LatLngBounds: LatLngBoundsStatic;
 
@@ -1589,7 +1745,7 @@ declare namespace L {
         /**
          * Create a layer group, optionally given an initial set of layers.
          */
-        new<T extends ILayer>(layers?: T[]): LayerGroup<T>;
+        new <T extends ILayer>(layers?: T[]): LayerGroup<T>;
     }
     export var LayerGroup: LayerGroupStatic;
 
@@ -1899,19 +2055,31 @@ declare namespace L {
         /**
          * Returns the distance between point p and segment p1 to p2.
          */
-        export function pointToSegmentDistance(p: Point, p1: Point, p2: Point): number;
+        export function pointToSegmentDistance(
+            p: Point,
+            p1: Point,
+            p2: Point,
+        ): number;
 
         /**
          * Returns the closest point from a point p on a segment p1 to p2.
          */
-        export function closestPointOnSegment(p: Point, p1: Point, p2: Point): Point;
+        export function closestPointOnSegment(
+            p: Point,
+            p1: Point,
+            p2: Point,
+        ): Point;
 
         /**
          * Clips the segment a to b by rectangular bounds. Used by Leaflet to only show
          * polyline points that are on the screen or near, increasing performance. Returns
          * either false or a length-2 array of clipped points.
          */
-        export function clipSegment(a: Point, b: Point, bounds: Bounds): Point[] | boolean;
+        export function clipSegment(
+            a: Point,
+            b: Point,
+            bounds: Bounds,
+        ): Point[] | boolean;
     }
 }
 
@@ -1984,13 +2152,13 @@ declare namespace L {
          * Instantiates a map object given a div element and optionally an
          * object literal with map options described below.
          */
-        new(id: HTMLElement, options?: Map.MapOptions): Map;
+        new (id: HTMLElement, options?: Map.MapOptions): Map;
 
         /**
          * Instantiates a map object given a div element id and optionally an
          * object literal with map options described below.
          */
-        new(id: string, options?: Map.MapOptions): Map;
+        new (id: string, options?: Map.MapOptions): Map;
     }
     export var Map: MapStatic;
 
@@ -2001,7 +2169,11 @@ declare namespace L {
          * Sets the view of the map (geographical center and zoom) with the given
          * animation options.
          */
-        setView(center: LatLngExpression, zoom?: number, options?: Map.ZoomPanOptions): Map;
+        setView(
+            center: LatLngExpression,
+            zoom?: number,
+            options?: Map.ZoomPanOptions,
+        ): Map;
 
         /**
          * Sets the zoom of the map.
@@ -2022,7 +2194,11 @@ declare namespace L {
          * Zooms the map while keeping a specified point on the map stationary
          * (e.g. used internally for scroll zoom and double-click zoom).
          */
-        setZoomAround(latlng: LatLngExpression, zoom: number, options?: Map.ZoomPanOptions): Map;
+        setZoomAround(
+            latlng: LatLngExpression,
+            zoom: number,
+            options?: Map.ZoomPanOptions,
+        ): Map;
 
         /**
          * Sets a map view that contains the given geographical bounds with the maximum
@@ -2172,13 +2348,21 @@ declare namespace L {
          * Creates a popup with the specified options and opens it in the given point
          * on a map.
          */
-        openPopup(html: string, latlng: LatLngExpression, options?: PopupOptions): Map;
+        openPopup(
+            html: string,
+            latlng: LatLngExpression,
+            options?: PopupOptions,
+        ): Map;
 
         /**
          * Creates a popup with the specified options and opens it in the given point
          * on a map.
          */
-        openPopup(el: HTMLElement, latlng: LatLngExpression, options?: PopupOptions): Map;
+        openPopup(
+            el: HTMLElement,
+            latlng: LatLngExpression,
+            options?: PopupOptions,
+        ): Map;
 
         /**
          * Closes the popup previously opened with openPopup (or the given one).
@@ -2340,9 +2524,21 @@ declare namespace L {
 
         ////////////////
         ////////////////
-        addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Map;
-        addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Map;
-        removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): Map;
+        addEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Map;
+        addOneTimeEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Map;
+        removeEventListener(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): Map;
         hasEventListeners(type: string): boolean;
         fireEvent(type: string, data?: any): Map;
         on(type: string, fn: (e: LeafletEvent) => void, context?: any): Map;
@@ -2733,7 +2929,7 @@ declare namespace L {
          * Instantiates a Marker object given a geographical point and optionally
          * an options object.
          */
-        new(latlng: LatLngExpression, options?: MarkerOptions): Marker;
+        new (latlng: LatLngExpression, options?: MarkerOptions): Marker;
     };
 
     export interface Marker extends ILayer, IEventPowered<Marker> {
@@ -2853,14 +3049,34 @@ declare namespace L {
 
         ////////////////
         ////////////////
-        addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Marker;
-        addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Marker;
-        removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): Marker;
+        addEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Marker;
+        addOneTimeEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Marker;
+        removeEventListener(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): Marker;
         hasEventListeners(type: string): boolean;
         fireEvent(type: string, data?: any): Marker;
         on(type: string, fn: (e: LeafletEvent) => void, context?: any): Marker;
-        once(type: string, fn: (e: LeafletEvent) => void, context?: any): Marker;
-        off(type: string, fn?: (e: LeafletEvent) => void, context?: any): Marker;
+        once(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Marker;
+        off(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): Marker;
         fire(type: string, data?: any): Marker;
         addEventListener(eventMap: any, context?: any): Marker;
         removeEventListener(eventMap?: any, context?: any): Marker;
@@ -2954,7 +3170,10 @@ declare namespace L {
      * for each individual polygon) and optionally an options object (the same
      * as for MultiPolyline).
      */
-    function multiPolygon(latlngs: LatLng[][], options?: PolylineOptions): MultiPolygon;
+    function multiPolygon(
+        latlngs: LatLng[][],
+        options?: PolylineOptions,
+    ): MultiPolygon;
 
     export interface MultiPolygonStatic extends ClassStatic {
         /**
@@ -2962,7 +3181,7 @@ declare namespace L {
          * for each individual polygon) and optionally an options object (the same
          * as for MultiPolyline).
          */
-        new(latlngs: LatLng[][], options?: PolylineOptions): MultiPolygon;
+        new (latlngs: LatLng[][], options?: PolylineOptions): MultiPolygon;
     }
     export var MultiPolygon: MultiPolygonStatic;
 
@@ -2995,14 +3214,17 @@ declare namespace L {
      * Instantiates a multi-polyline object given an array of arrays of geographical
      * points (one for each individual polyline) and optionally an options object.
      */
-    function multiPolyline(latlngs: LatLng[][], options?: PolylineOptions): MultiPolyline;
+    function multiPolyline(
+        latlngs: LatLng[][],
+        options?: PolylineOptions,
+    ): MultiPolyline;
 
     export interface MultiPolylineStatic extends ClassStatic {
         /**
          * Instantiates a multi-polyline object given an array of arrays of geographical
          * points (one for each individual polyline) and optionally an options object.
          */
-        new(latlngs: LatLng[][], options?: PolylineOptions): MultiPolyline;
+        new (latlngs: LatLng[][], options?: PolylineOptions): MultiPolyline;
     }
     export var MultiPolyline: MultiPolylineStatic;
 
@@ -3144,9 +3366,21 @@ declare namespace L {
 
         ////////////////
         ////////////////
-        addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Path;
-        addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): Path;
-        removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): Path;
+        addEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Path;
+        addOneTimeEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): Path;
+        removeEventListener(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): Path;
         hasEventListeners(type: string): boolean;
         fireEvent(type: string, data?: any): Path;
         on(type: string, fn: (e: LeafletEvent) => void, context?: any): Path;
@@ -3300,7 +3534,7 @@ declare namespace L {
          * Creates a Point object with the given x and y coordinates. If optional round
          * is set to true, rounds the x and y values.
          */
-        new(x: number, y: number, round?: boolean): Point;
+        new (x: number, y: number, round?: boolean): Point;
     }
     export var Point: PointStatic;
 
@@ -3371,7 +3605,10 @@ declare namespace L {
      * latlngs array representing the exterior ring while the remaining represent
      * the holes inside.
      */
-    function polygon(latlngs: LatLngBoundsExpression, options?: PolylineOptions): Polygon;
+    function polygon(
+        latlngs: LatLngBoundsExpression,
+        options?: PolylineOptions,
+    ): Polygon;
 
     export interface PolygonStatic extends ClassStatic {
         /**
@@ -3381,12 +3618,14 @@ declare namespace L {
          * latlngs array representing the exterior ring while the remaining represent
          * the holes inside.
          */
-        new(latlngs: LatLngBoundsExpression, options?: PolylineOptions): Polygon;
+        new (
+            latlngs: LatLngBoundsExpression,
+            options?: PolylineOptions,
+        ): Polygon;
     }
     export var Polygon: PolygonStatic;
 
-    export interface Polygon extends Polyline {
-    }
+    export interface Polygon extends Polyline {}
 }
 
 declare namespace L {
@@ -3394,14 +3633,20 @@ declare namespace L {
      * Instantiates a polyline object given an array of geographical points and
      * optionally an options object.
      */
-    function polyline(latlngs: LatLngBoundsExpression, options?: PolylineOptions): Polyline;
+    function polyline(
+        latlngs: LatLngBoundsExpression,
+        options?: PolylineOptions,
+    ): Polyline;
 
     export interface PolylineStatic extends ClassStatic {
         /**
          * Instantiates a polyline object given an array of geographical points and
          * optionally an options object.
          */
-        new(latlngs: LatLngBoundsExpression, options?: PolylineOptions): Polyline;
+        new (
+            latlngs: LatLngBoundsExpression,
+            options?: PolylineOptions,
+        ): Polyline;
     }
     export var Polyline: PolylineStatic;
 
@@ -3426,7 +3671,11 @@ declare namespace L {
          * Allows adding, removing or replacing points in the polyline. Syntax is the
          * same as in Array#splice. Returns the array of removed points (if any).
          */
-        spliceLatLngs(index: number, pointsToRemove: number, ...latlngs: LatLng[]): LatLng[];
+        spliceLatLngs(
+            index: number,
+            pointsToRemove: number,
+            ...latlngs: LatLng[]
+        ): LatLng[];
 
         /**
          * Returns the LatLngBounds of the polyline.
@@ -3485,7 +3734,7 @@ declare namespace L {
          * its appearance and location and an optional object that is used to tag the
          * popup with a reference to the source object to which it refers.
          */
-        new(options?: PopupOptions, source?: any): Popup;
+        new (options?: PopupOptions, source?: any): Popup;
     }
     export var Popup: PopupStatic;
 
@@ -3650,7 +3899,7 @@ declare namespace L {
         /**
          * Creates a PosAnimation object.
          */
-        new(): PosAnimation;
+        new (): PosAnimation;
     }
     export var PosAnimation: PosAnimationStatic;
 
@@ -3660,18 +3909,47 @@ declare namespace L {
          * duration in seconds (0.25 by default) and easing linearity factor (3rd argument
          * of the cubic bezier curve, 0.5 by default)
          */
-        run(element: HTMLElement, newPos: Point, duration?: number, easeLinearity?: number): PosAnimation;
+        run(
+            element: HTMLElement,
+            newPos: Point,
+            duration?: number,
+            easeLinearity?: number,
+        ): PosAnimation;
 
         ////////////////
         ////////////////
-        addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): PosAnimation;
-        addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): PosAnimation;
-        removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): PosAnimation;
+        addEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): PosAnimation;
+        addOneTimeEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): PosAnimation;
+        removeEventListener(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): PosAnimation;
         hasEventListeners(type: string): boolean;
         fireEvent(type: string, data?: any): PosAnimation;
-        on(type: string, fn: (e: LeafletEvent) => void, context?: any): PosAnimation;
-        once(type: string, fn: (e: LeafletEvent) => void, context?: any): PosAnimation;
-        off(type: string, fn?: (e: LeafletEvent) => void, context?: any): PosAnimation;
+        on(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): PosAnimation;
+        once(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): PosAnimation;
+        off(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): PosAnimation;
         fire(type: string, data?: any): PosAnimation;
         addEventListener(eventMap: any, context?: any): PosAnimation;
         removeEventListener(eventMap?: any, context?: any): PosAnimation;
@@ -3719,7 +3997,7 @@ declare namespace L {
          * Instantiates a rectangle object with the given geographical bounds and
          * optionally an options object.
          */
-        new(bounds: LatLngBounds, options?: PathOptions): Rectangle;
+        new (bounds: LatLngBounds, options?: PathOptions): Rectangle;
     }
     export var Rectangle: RectangleStatic;
 
@@ -3773,21 +4051,21 @@ declare namespace L {
          * Instantiates a tile layer object given a URL template and optionally an options
          * object.
          */
-        new(urlTemplate: string, options?: TileLayerOptions): TileLayer;
+        new (urlTemplate: string, options?: TileLayerOptions): TileLayer;
 
         WMS: {
             /**
              * Instantiates a WMS tile layer object given a base URL of the WMS service and
              * a WMS parameters/options object.
              */
-            new(baseUrl: string, options: WMSOptions): TileLayer.WMS;
+            new (baseUrl: string, options: WMSOptions): TileLayer.WMS;
         };
 
         Canvas: {
             /**
              * Instantiates a Canvas tile layer object given an options object (optionally).
              */
-            new(options?: TileLayerOptions): TileLayer.Canvas;
+            new (options?: TileLayerOptions): TileLayer.Canvas;
         };
     }
     export var TileLayer: TileLayerStatic;
@@ -3850,14 +4128,38 @@ declare namespace L {
 
         ////////////////
         ////////////////
-        addEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): TileLayer;
-        addOneTimeEventListener(type: string, fn: (e: LeafletEvent) => void, context?: any): TileLayer;
-        removeEventListener(type: string, fn?: (e: LeafletEvent) => void, context?: any): TileLayer;
+        addEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): TileLayer;
+        addOneTimeEventListener(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): TileLayer;
+        removeEventListener(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): TileLayer;
         hasEventListeners(type: string): boolean;
         fireEvent(type: string, data?: any): TileLayer;
-        on(type: string, fn: (e: LeafletEvent) => void, context?: any): TileLayer;
-        once(type: string, fn: (e: LeafletEvent) => void, context?: any): TileLayer;
-        off(type: string, fn?: (e: LeafletEvent) => void, context?: any): TileLayer;
+        on(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): TileLayer;
+        once(
+            type: string,
+            fn: (e: LeafletEvent) => void,
+            context?: any,
+        ): TileLayer;
+        off(
+            type: string,
+            fn?: (e: LeafletEvent) => void,
+            context?: any,
+        ): TileLayer;
         fire(type: string, data?: any): TileLayer;
         addEventListener(eventMap: any, context?: any): TileLayer;
         removeEventListener(eventMap?: any, context?: any): TileLayer;
@@ -3881,7 +4183,11 @@ declare namespace L {
              * canvas is the actual canvas tile on which you can draw, tilePoint represents
              * the tile numbers, and zoom is the current zoom.
              */
-            drawTile(canvas: HTMLCanvasElement, tilePoint: Point, zoom: number): Canvas;
+            drawTile(
+                canvas: HTMLCanvasElement,
+                tilePoint: Point,
+                zoom: number,
+            ): Canvas;
 
             /**
              * Calling redraw will cause the drawTile method to be called for all tiles.
@@ -4068,7 +4374,7 @@ declare namespace L {
         /**
          * Creates a transformation object with the given coefficients.
          */
-        new(a: number, b: number, c: number, d: number): Transformation;
+        new (a: number, b: number, c: number, d: number): Transformation;
     }
     export var Transformation: TransformationStatic;
 
@@ -4113,7 +4419,11 @@ declare namespace L {
          * the map), optionally passing the scope (context) in which the function will
          * be called.
          */
-        export function limitExecByInterval<T extends Function>(fn: T, time: number, context?: any): T;
+        export function limitExecByInterval<T extends Function>(
+            fn: T,
+            time: number,
+            context?: any,
+        ): T;
 
         /**
          * Returns a function which always returns false.

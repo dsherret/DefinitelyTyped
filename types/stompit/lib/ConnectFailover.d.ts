@@ -5,23 +5,37 @@ import { AddressInfo } from "./connect-failover/getAddressInfo";
 import Client = require("./Client");
 
 declare class ConnectFailover extends EventEmitter {
-    constructor(servers?: ConnectOptions[] | string, options?: ConnectFailover.ConnectFailoverOptions);
+    constructor(
+        servers?: ConnectOptions[] | string,
+        options?: ConnectFailover.ConnectFailoverOptions,
+    );
 
     addServer(config: ConnectOptions | string): void;
 
     getReconnectDelay(reconnects: number): number;
 
     connect(
-        callback: (error: Error | null, client: Client, reconnect: () => void, server: ConnectFailover.Server) => void,
+        callback: (
+            error: Error | null,
+            client: Client,
+            reconnect: () => void,
+            server: ConnectFailover.Server,
+        ) => void,
     ): {
         abort: () => void;
     };
 
     on(
         event: "error",
-        listener: (err: ConnectFailover.ConnectError, server: ConnectFailover.ConnectState) => void,
+        listener: (
+            err: ConnectFailover.ConnectError,
+            server: ConnectFailover.ConnectState,
+        ) => void,
     ): this;
-    on(event: "connect" | "connecting", listener: (server: ConnectFailover.ConnectState) => void): this;
+    on(
+        event: "connect" | "connecting",
+        listener: (server: ConnectFailover.ConnectState) => void,
+    ): this;
 }
 
 export = ConnectFailover;
@@ -47,7 +61,12 @@ declare namespace ConnectFailover {
         randomize?: boolean | undefined;
 
         // Override the connect function
-        connectFunction?: ((options: ConnectOptions, connectionListener?: ConnectionListener) => Client) | undefined;
+        connectFunction?:
+            | ((
+                  options: ConnectOptions,
+                  connectionListener?: ConnectionListener,
+              ) => Client)
+            | undefined;
     }
 
     interface Server {

@@ -4,11 +4,20 @@ export class Itunes {
     constructor(username: string, password: string, options: ItunesOptions);
     executeRequest(task: RequestTask, callback: () => void): void;
     login(username: string, password: string): void;
-    changeProvider(providerId: string, callback: (error?: any, paused?: boolean) => void): void;
+    changeProvider(
+        providerId: string,
+        callback: (error?: any, paused?: boolean) => void,
+    ): void;
     getApps(callback: (error: any, paused: boolean) => void): void;
     getSettings(callback: (error: any, paused: boolean) => void): void;
-    getAPIURL(url: string, callback: (error: any, paused: boolean) => void): void;
-    request(query: AnalyticsQuery, callback: (error: any, body: QueryResult) => void): void;
+    getAPIURL(
+        url: string,
+        callback: (error: any, paused: boolean) => void,
+    ): void;
+    request(
+        query: AnalyticsQuery,
+        callback: (error: any, body: QueryResult) => void,
+    ): void;
     getCookies(): string;
     getHeaders(): object;
 }

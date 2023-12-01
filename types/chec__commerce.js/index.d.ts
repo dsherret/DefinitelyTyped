@@ -9,7 +9,11 @@ import { Services } from "./features/services";
 export = Commerce;
 
 declare class Commerce {
-    constructor(publicKey: string, debug?: boolean, config?: Commerce.CommerceConfig);
+    constructor(
+        publicKey: string,
+        debug?: boolean,
+        config?: Commerce.CommerceConfig,
+    );
 
     cart: Cart;
     categories: Categories;

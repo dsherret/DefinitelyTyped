@@ -7,9 +7,13 @@ import * as zookeeper from "node-zookeeper-client";
     client.once("connected", () => {
         console.log("Connected to the server.");
 
-        client.create(path, error => {
+        client.create(path, (error) => {
             if (error) {
-                console.log("Failed to create node: %s due to: %s.", path, error);
+                console.log(
+                    "Failed to create node: %s due to: %s.",
+                    path,
+                    error,
+                );
             } else {
                 console.log("Node: %s is successfully created.", path);
             }
@@ -24,7 +28,7 @@ import * as zookeeper from "node-zookeeper-client";
 function listChildren(client: zookeeper.Client, path: string) {
     client.getChildren(
         path,
-        event => {
+        (event) => {
             console.log("Got watcher event: %s", event);
             listChildren(client, path);
         },
@@ -55,10 +59,9 @@ function listChildren(client: zookeeper.Client, path: string) {
     client.connect();
 }
 
-const client = zookeeper.createClient(
-    "localhost:2181/test",
-    { sessionTimeout: 10000 },
-);
+const client = zookeeper.createClient("localhost:2181/test", {
+    sessionTimeout: 10000,
+});
 
 {
     client.create(
@@ -138,7 +141,7 @@ const client = zookeeper.createClient(
 {
     client.getData(
         "/test/demo",
-        event => {
+        (event) => {
             console.log("Got event: %s.", event);
         },
         (error: Error, data, stat) => {
@@ -226,7 +229,7 @@ const client = zookeeper.createClient(
     client.on("connected", () => {
         console.log("Client state is changed to connected.");
     });
-    client.on("state", state => {
+    client.on("state", (state) => {
         if (state === zookeeper.State.SYNC_CONNECTED) {
             console.log("Client state is changed to connected.");
         }
@@ -235,7 +238,8 @@ const client = zookeeper.createClient(
 
 {
     client.once("connected", () => {
-        client.transaction()
+        client
+            .transaction()
             .create("/txn")
             .create("/txn/1", new Buffer("transaction"))
             .setData("/txn/1", new Buffer("test"), -1)
@@ -262,7 +266,10 @@ const client = zookeeper.createClient(
 {
     client.create("/test/demo", (error, path) => {
         if (error) {
-            if ((error as zookeeper.Exception).getCode() === zookeeper.Exception.NODE_EXISTS) {
+            if (
+                (error as zookeeper.Exception).getCode() ===
+                zookeeper.Exception.NODE_EXISTS
+            ) {
                 console.log("Node exists.");
             } else {
                 console.log((error as Error).stack);
@@ -279,6 +286,15 @@ const client = zookeeper.createClient(
 }
 
 {
-    new zookeeper.Exception(zookeeper.Exception.NO_NODE, "test", zookeeper.Exception);
-    new zookeeper.Exception(zookeeper.Exception.NO_NODE, "test", "/test", zookeeper.Exception);
+    new zookeeper.Exception(
+        zookeeper.Exception.NO_NODE,
+        "test",
+        zookeeper.Exception,
+    );
+    new zookeeper.Exception(
+        zookeeper.Exception.NO_NODE,
+        "test",
+        "/test",
+        zookeeper.Exception,
+    );
 }

@@ -11,6 +11,6 @@ Those files are used as input to generate these typings.
 
 As of 1.6.2018.
 
-1) Install typescript globally: `npm i -g typescript`
-2) Install React's dependencies: `cd ../react && npm i`
-3) Run tests: `cd ../recharts && tsc`
+1. Install typescript globally: `npm i -g typescript`
+2. Install React's dependencies: `cd ../react && npm i`
+3. Run tests: `cd ../recharts && tsc`

@@ -58,7 +58,11 @@ declare namespace scalike {
         foreach(f: (a: A) => void): void;
         orElse<B extends A>(ob: Optional<B>): Optional<A>;
         apply1<B, C>(ob: Optional<B>, f: (a: A, b: B) => C): Optional<C>;
-        apply2<B, C, D>(ob: Optional<B>, oc: Optional<C>, f: (a: A, b: B, c: C) => D): Optional<D>;
+        apply2<B, C, D>(
+            ob: Optional<B>,
+            oc: Optional<C>,
+            f: (a: A, b: B, c: C) => D,
+        ): Optional<D>;
         chain<B>(ob: Optional<B>): OptionalBuilder1<A, B>;
     }
     export const None: Optional<any>;
@@ -84,7 +88,12 @@ declare namespace scalike {
         private ob;
         private oc;
         private od;
-        constructor(oa: Optional<A>, ob: Optional<B>, oc: Optional<C>, od: Optional<D>);
+        constructor(
+            oa: Optional<A>,
+            ob: Optional<B>,
+            oc: Optional<C>,
+            od: Optional<D>,
+        );
         run<E>(f: (a: A, b: B, c: C, d: D) => E): Optional<E>;
         chain<E>(oe: Optional<E>): OptionalBuilder4<A, B, C, D, E>;
     }
@@ -94,7 +103,13 @@ declare namespace scalike {
         private oc;
         private od;
         private oe;
-        constructor(oa: Optional<A>, ob: Optional<B>, oc: Optional<C>, od: Optional<D>, oe: Optional<E>);
+        constructor(
+            oa: Optional<A>,
+            ob: Optional<B>,
+            oc: Optional<C>,
+            od: Optional<D>,
+            oe: Optional<E>,
+        );
         run<F>(f: (a: A, b: B, c: C, d: D, e: E) => F): Optional<F>;
         chain<F>(of: Optional<F>): OptionalBuilder5<A, B, C, D, E, F>;
     }
@@ -133,7 +148,11 @@ declare namespace scalike {
         transform<B>(fs: (a: A) => Try<B>, ff: (e: Error) => Try<B>): Try<B>;
         recover<B extends A>(f: (e: Error) => Optional<Try<B>>): Try<A>;
         apply1<B, C>(ob: Try<B>, f: (a: A, b: B) => C): Try<C>;
-        apply2<B, C, D>(ob: Try<B>, oc: Try<C>, f: (a: A, b: B, c: C) => D): Try<D>;
+        apply2<B, C, D>(
+            ob: Try<B>,
+            oc: Try<C>,
+            f: (a: A, b: B, c: C) => D,
+        ): Try<D>;
         chain<B>(ob: Try<B>): TryBuilder1<A, B>;
     }
     export function Try<A>(f: () => A): Try<A>;
@@ -181,7 +200,14 @@ declare namespace scalike {
         private od;
         private oe;
         private of;
-        constructor(oa: Try<A>, ob: Try<B>, oc: Try<C>, od: Try<D>, oe: Try<E>, of: Try<F>);
+        constructor(
+            oa: Try<A>,
+            ob: Try<B>,
+            oc: Try<C>,
+            od: Try<D>,
+            oe: Try<E>,
+            of: Try<F>,
+        );
         run<G>(f: (a: A, b: B, c: C, d: D, e: E, f: F) => G): Try<G>;
     }
 
@@ -199,13 +225,19 @@ declare namespace scalike {
         flatMap<B>(f: (a: A) => Future<B>): Future<B>;
         filter(f: (a: A) => boolean): Future<A>;
         recover<B extends A>(f: (e: Error) => Optional<B>): Future<A>;
-        recoverWith<B extends A>(f: (e: Error) => Optional<Future<B>>): Future<A>;
+        recoverWith<B extends A>(
+            f: (e: Error) => Optional<Future<B>>,
+        ): Future<A>;
         zip<B>(fu: Future<B>): Future<[A, B]>;
         zipWith<B, C>(fu: Future<B>, f: (a: A, b: B) => C): Future<C>;
         fallbackTo<B extends A>(fu: Future<B>): Future<A>;
         andThen<B>(f: (t: Try<A>) => B): Future<A>;
         apply1<B, C>(ob: Future<B>, f: (a: A, b: B) => C): Future<C>;
-        apply2<B, C, D>(ob: Future<B>, oc: Future<C>, f: (a: A, b: B, c: C) => D): Future<D>;
+        apply2<B, C, D>(
+            ob: Future<B>,
+            oc: Future<C>,
+            f: (a: A, b: B, c: C) => D,
+        ): Future<D>;
         chain<B>(ob: Future<B>): FutureBuilder1<A, B>;
     }
     export function Future<A>(f: Promise<A> | (() => A)): Future<A>;
@@ -217,9 +249,19 @@ declare namespace scalike {
         function fromTry<A>(t: Try<A>): Future<A>;
         function sequence<A>(fus: Array<Future<A>>): Future<A[]>;
         function firstCompletedOf<A>(fus: Array<Future<A>>): Future<A>;
-        function find<A>(fus: Array<Future<A>>, f: (a: A) => boolean): Future<Optional<A>>;
-        function foldLeft<A, B>(fu: Array<Future<A>>, zero: B, f: (b: B, a: A) => B): Future<B>;
-        function reduceLeft<A, B>(fu: Array<Future<A>>, f: (b: B, a: A) => B): Future<B>;
+        function find<A>(
+            fus: Array<Future<A>>,
+            f: (a: A) => boolean,
+        ): Future<Optional<A>>;
+        function foldLeft<A, B>(
+            fu: Array<Future<A>>,
+            zero: B,
+            f: (b: B, a: A) => B,
+        ): Future<B>;
+        function reduceLeft<A, B>(
+            fu: Array<Future<A>>,
+            f: (b: B, a: A) => B,
+        ): Future<B>;
         function traverse<A, B>(fu: A[], f: (a: A) => Future<B>): Future<B[]>;
     }
     export class FutureBuilder1<A, B> {
@@ -252,7 +294,13 @@ declare namespace scalike {
         private oc;
         private od;
         private oe;
-        constructor(oa: Future<A>, ob: Future<B>, oc: Future<C>, od: Future<D>, oe: Future<E>);
+        constructor(
+            oa: Future<A>,
+            ob: Future<B>,
+            oc: Future<C>,
+            od: Future<D>,
+            oe: Future<E>,
+        );
         run<F>(f: (a: A, b: B, c: C, d: D, e: E) => F): Future<F>;
         chain<F>(of: Future<F>): FutureBuilder5<A, B, C, D, E, F>;
     }
@@ -263,7 +311,14 @@ declare namespace scalike {
         private od;
         private oe;
         private of;
-        constructor(oa: Future<A>, ob: Future<B>, oc: Future<C>, od: Future<D>, oe: Future<E>, of: Future<F>);
+        constructor(
+            oa: Future<A>,
+            ob: Future<B>,
+            oc: Future<C>,
+            od: Future<D>,
+            oe: Future<E>,
+            of: Future<F>,
+        );
         run<G>(f: (a: A, b: B, c: C, d: D, e: E, f: F) => G): Future<G>;
     }
 }

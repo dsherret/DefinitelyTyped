@@ -270,10 +270,16 @@ declare namespace run {
     }
 }
 
-declare function run(options: run.Options): Promise<run.SuccessResult | run.ErrorResult>;
 declare function run(
     options: run.Options,
-    callback: (error: boolean, results: run.SuccessResult | run.ErrorResult, response: PassThrough) => void,
+): Promise<run.SuccessResult | run.ErrorResult>;
+declare function run(
+    options: run.Options,
+    callback: (
+        error: boolean,
+        results: run.SuccessResult | run.ErrorResult,
+        response: PassThrough,
+    ) => void,
 ): void;
 
 export = run;

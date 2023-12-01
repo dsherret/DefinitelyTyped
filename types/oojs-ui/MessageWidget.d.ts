@@ -9,7 +9,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.MessageWidget
      */
-    interface MessageWidget extends MessageWidget.Props, MessageWidget.Prototype {}
+    interface MessageWidget
+        extends MessageWidget.Props,
+            MessageWidget.Prototype {}
 
     namespace MessageWidget {
         type Type = "notice" | "error" | "warning" | "success";
@@ -19,18 +21,19 @@ declare namespace OO.ui {
          */
         type Flag = Type;
 
-        interface EventMap extends Widget.EventMap, mixin.LabelElement.EventMap, mixin.FlaggedElement.EventMap {
+        interface EventMap
+            extends Widget.EventMap,
+                mixin.LabelElement.EventMap,
+                mixin.FlaggedElement.EventMap {
             close: [];
         }
 
         interface ConfigOptions
-            extends
-                Widget.ConfigOptions,
+            extends Widget.ConfigOptions,
                 mixin.IconElement.ConfigOptions,
                 mixin.LabelElement.ConfigOptions,
                 mixin.TitledElement.ConfigOptions,
-                mixin.FlaggedElement.ConfigOptions
-        {
+                mixin.FlaggedElement.ConfigOptions {
             /**
              * The type of the notice widget. This will also
              * impact the flags that the widget receives (and hence its CSS design) as well
@@ -47,34 +50,28 @@ declare namespace OO.ui {
         }
 
         interface Static
-            extends
-                Widget.Static,
+            extends Widget.Static,
                 mixin.IconElement.Static,
                 mixin.LabelElement.Static,
                 mixin.TitledElement.Static,
-                mixin.FlaggedElement.Static
-        {
+                mixin.FlaggedElement.Static {
             /** An object defining the icon name per defined type. */
             iconMap: Record<string, Icon>;
         }
 
         interface Props
-            extends
-                Widget.Props,
+            extends Widget.Props,
                 mixin.IconElement.Props,
                 mixin.LabelElement.Props,
                 mixin.TitledElement.Props,
-                mixin.FlaggedElement.Props
-        {}
+                mixin.FlaggedElement.Props {}
 
         interface Prototype
-            extends
-                Widget.Prototype,
+            extends Widget.Prototype,
                 mixin.IconElement.Prototype,
                 mixin.LabelElement.Prototype,
                 mixin.TitledElement.Prototype,
-                mixin.FlaggedElement.Prototype
-        {
+                mixin.FlaggedElement.Prototype {
             /**
              * Set the inline state of the widget.
              *
@@ -98,7 +95,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -109,7 +109,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -117,7 +120,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -126,11 +132,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -146,7 +164,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): MessageWidget;
+            new (config?: ConfigOptions): MessageWidget;
             prototype: Prototype;
             static: Static;
             super: Widget.Constructor;

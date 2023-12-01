@@ -49,7 +49,11 @@ function customSpinner() {
         frames: ["🍇", "🍈", "🍉", "🍋"],
     };
 
-    const spinnies = new Spinnies({ color: "blue", succeedColor: "green", spinner });
+    const spinnies = new Spinnies({
+        color: "blue",
+        succeedColor: "green",
+        spinner,
+    });
 }
 
 function disableSpins() {

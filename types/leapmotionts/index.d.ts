@@ -15,7 +15,10 @@ export interface Listener {
     onInit(controller: Controller): void;
 }
 
-export declare class DefaultListener extends EventDispatcher implements Listener {
+export declare class DefaultListener
+    extends EventDispatcher
+    implements Listener
+{
     constructor();
     public onConnect(controller: Controller): void;
     public onDisconnect(controller: Controller): void;
@@ -65,7 +68,11 @@ export declare class LeapUtil {
     static sphericalToCartesian(vSpherical: Vector3): Vector3;
     static clamp(inVal: number, minVal: number, maxVal: number): number;
     static lerp(a: number, b: number, coefficient: number): number;
-    static lerpVector(vec1: Vector3, vec2: Vector3, coefficient: number): Vector3;
+    static lerpVector(
+        vec1: Vector3,
+        vec2: Vector3,
+        coefficient: number,
+    ): Vector3;
 }
 
 export declare class Controller extends EventDispatcher {

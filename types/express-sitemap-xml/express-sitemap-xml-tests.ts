@@ -18,8 +18,10 @@ const base = "http://example.com";
 const getLeaves = () => leaves;
 const getLeavesPromise = () => Promise.resolve(leaves);
 
-expressSitemapXml.buildSitemaps(leaves, base).then(sitemap => typeof sitemap === "object");
-buildSitemaps(leaves, base).then(sitemap => typeof sitemap === "object");
+expressSitemapXml
+    .buildSitemaps(leaves, base)
+    .then((sitemap) => typeof sitemap === "object");
+buildSitemaps(leaves, base).then((sitemap) => typeof sitemap === "object");
 
 const sitemap1 = expressSitemapXml(getLeaves, base);
 const sitemap2 = expressSitemapXml(getLeavesPromise, base);
@@ -27,7 +29,7 @@ const sitemap2 = expressSitemapXml(getLeavesPromise, base);
 express().use(sitemap1);
 express().use(sitemap2);
 
-(async () => {
+async () => {
     const urls = [
         {
             url: "/1",
@@ -46,4 +48,4 @@ express().use(sitemap2);
     ];
     // $ExpectType Sitemap
     await buildSitemaps(urls, "https://example.com");
-});
+};

@@ -78,7 +78,7 @@ export interface Component<T extends object = any, S extends System = System> {
 }
 
 export interface ComponentConstructor<T extends object> {
-    new(el: Entity, attrValue: string, id: string): T & Component;
+    new (el: Entity, attrValue: string, id: string): T & Component;
     prototype: T & {
         name: string;
         system: System;
@@ -144,8 +144,15 @@ export interface Entity<C = ObjectMap<Component>> extends ANode {
 
     // setAttribute specific usages
     setAttribute(attr: string, value: any): void;
-    setAttribute(attr: string, property: string, componentAttrValue?: any): void;
-    setAttribute(type: "position" | "rotation" | "scale", value: Coordinate): void;
+    setAttribute(
+        attr: string,
+        property: string,
+        componentAttrValue?: any,
+    ): void;
+    setAttribute(
+        type: "position" | "rotation" | "scale",
+        value: Coordinate,
+    ): void;
 
     // addEventListener specific usages
     addEventListener<K extends keyof EntityEventMap>(
@@ -201,7 +208,7 @@ export interface Geometry<T = any> {
 }
 
 export interface GeometryConstructor<T extends object = object> {
-    new(): T & Geometry;
+    new (): T & Geometry;
 }
 
 export interface GeometryDescriptor<T extends Geometry = Geometry> {
@@ -253,10 +260,16 @@ export interface Scene extends Entity {
         listener: EventListenerOrEventListenerObject,
         useCapture?: boolean,
     ): void;
-    addEventListener(type: SceneEvents, listener: EventListener, useCapture?: boolean): void;
+    addEventListener(
+        type: SceneEvents,
+        listener: EventListener,
+        useCapture?: boolean,
+    ): void;
 }
 
-export type Schema<T extends object = object> = SinglePropertySchema<T> | MultiPropertySchema<T>;
+export type Schema<T extends object = object> =
+    | SinglePropertySchema<T>
+    | MultiPropertySchema<T>;
 
 export interface SchemaUtils {
     isSingleProperty(schema: Schema): boolean;
@@ -277,7 +290,7 @@ export interface Shader {
 }
 
 export interface ShaderConstructor<T extends object> {
-    new(): T;
+    new (): T;
 }
 
 export interface ShaderDescriptor<T extends Shader = Shader> {
@@ -303,7 +316,7 @@ export interface System<T extends object = any> {
 }
 
 export interface SystemConstructor<T extends object = object> {
-    new(scene: Scene): T & System;
+    new (scene: Scene): T & System;
 }
 
 export interface Utils {
@@ -313,7 +326,11 @@ export interface Utils {
         stringify(coord: Coordinate): string;
     };
     entity: {
-        getComponentProperty(entity: Entity, componentName: string, delimiter?: string): any;
+        getComponentProperty(
+            entity: Entity,
+            componentName: string,
+            delimiter?: string,
+        ): any;
         setComponentProperty(
             entity: Entity,
             componentName: string,
@@ -359,8 +376,11 @@ export interface Utils {
 
 // Definitions
 // used as mixins to register functions to create classes (newable functions) in A-Frame
-export type ComponentDefinition<T extends object = object> = T & Partial<Component> & ThisType<T & Component>;
-export type GeometryDefinition<T extends object = object, U = any> = T & Partial<Geometry<U>>;
+export type ComponentDefinition<T extends object = object> = T &
+    Partial<Component> &
+    ThisType<T & Component>;
+export type GeometryDefinition<T extends object = object, U = any> = T &
+    Partial<Geometry<U>>;
 export type NodeDefinition<T extends object = object> = T & Partial<ANode>;
 export interface PrimitiveDefinition {
     defaultComponents?: any; // TODO cleanup type
@@ -371,9 +391,9 @@ export interface PrimitiveDefinition {
 export interface MinimalShaderDefinition {
     schema: Shader["schema"];
 }
-export type ShaderDefinition<T extends object = MinimalShaderDefinition & object> =
-    & T
-    & Partial<Shader>;
+export type ShaderDefinition<
+    T extends object = MinimalShaderDefinition & object,
+> = T & Partial<Shader>;
 export type SystemDefinition<T extends object = object> = T & Partial<System>;
 
 // root export

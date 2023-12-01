@@ -1,6 +1,9 @@
 export = gitUsername;
 
-declare function gitUsername(cwd?: string, options?: gitUsername.OptionsWithoutCwd): string | null;
+declare function gitUsername(
+    cwd?: string,
+    options?: gitUsername.OptionsWithoutCwd,
+): string | null;
 declare function gitUsername(options: gitUsername.Options): string | null;
 
 declare namespace gitUsername {

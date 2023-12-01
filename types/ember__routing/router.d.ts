@@ -44,6 +44,6 @@ export default interface Router extends Evented {}
 
 declare module "@ember/service" {
     interface Registry {
-        "router": RouterService;
+        router: RouterService;
     }
 }

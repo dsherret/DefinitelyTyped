@@ -1,7 +1,7 @@
 import imageToBase64 = require("image-to-base64");
 
 imageToBase64("path/to/file.jpg") // Path to the image
-    .then(response => {
+    .then((response) => {
         response; // $ExpectType string
     })
     .catch((error: Error) => {
@@ -9,7 +9,7 @@ imageToBase64("path/to/file.jpg") // Path to the image
     });
 
 imageToBase64("https://whatever-image/") // Image URL
-    .then(response => {
+    .then((response) => {
         response; // $ExpectType string
     })
     .catch((error: Error) => {

@@ -48,4 +48,6 @@ export function getFontSizeClass(fontSizeSlug: string): string;
  *
  * @param attributeNames - 1 or more font size attributes
  */
-export function withFontSizes(...attributeNames: string[]): (component: ComponentType<any>) => ComponentType<any>;
+export function withFontSizes(
+    ...attributeNames: string[]
+): (component: ComponentType<any>) => ComponentType<any>;

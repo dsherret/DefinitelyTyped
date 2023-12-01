@@ -36,7 +36,11 @@ export namespace Connection {
             ...args: any[]
         ): void;
         deleteAttributes(toDelete: any, callbacks: any): void;
-        discoverAvailability(entities: any, attributeNames: any, callbacks: any): void;
+        discoverAvailability(
+            entities: any,
+            attributeNames: any,
+            callbacks: any,
+        ): void;
         getAvailableTypes(options: any): void;
         getTypeInfo(type: any, options: any): void;
         query(entities: any, attributesName: any, options: any): void;
@@ -57,7 +61,13 @@ export namespace Connection {
             providingApplication: any,
             callbacks: any,
         ): any;
-        updateSubscription(subId: any, duration: any, throttling: any, cond: any, options: any): void;
+        updateSubscription(
+            subId: any,
+            duration: any,
+            throttling: any,
+            cond: any,
+            options: any,
+        ): void;
     }
 
     class V2 {

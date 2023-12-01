@@ -5,7 +5,12 @@ interface Parameter {
 
 interface Attribute {
     location: number[] | number;
-    pointer(type?: number, normalized?: boolean, stride?: number, offset?: number): number;
+    pointer(
+        type?: number,
+        normalized?: boolean,
+        stride?: number,
+        offset?: number,
+    ): number;
 }
 
 declare class Shader {
@@ -22,8 +27,18 @@ declare class Shader {
     bind(): void;
     dispose(): void;
 
-    update(vertex: string, fragment: string, uniforms?: Parameter[], attributes?: Parameter[]): void;
-    update(obj: { vertex: string; fragment: string; uniforms: Parameter[]; attributes: Parameter[] }): void;
+    update(
+        vertex: string,
+        fragment: string,
+        uniforms?: Parameter[],
+        attributes?: Parameter[],
+    ): void;
+    update(obj: {
+        vertex: string;
+        fragment: string;
+        uniforms: Parameter[];
+        attributes: Parameter[];
+    }): void;
 }
 
 declare function createShader(

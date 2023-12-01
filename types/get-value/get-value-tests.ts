@@ -13,7 +13,8 @@ get(obj, ["a", "b", "c", "d"]);
 {
     const isEnumerable = Object.prototype.propertyIsEnumerable;
     const options: get.Options = {
-        isValid: (key, obj) => isEnumerable.call(obj, key) || typeof obj[key] === "string",
+        isValid: (key, obj) =>
+            isEnumerable.call(obj, key) || typeof obj[key] === "string",
     };
 
     const obj = {};

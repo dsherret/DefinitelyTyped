@@ -1,11 +1,14 @@
 import * as Redux from "redux";
 
-export interface MockStore<S = any, A extends Redux.Action = Redux.AnyAction> extends Redux.Store<S, A> {
+export interface MockStore<S = any, A extends Redux.Action = Redux.AnyAction>
+    extends Redux.Store<S, A> {
     getActions(): any[];
     clearActions(): void;
 }
 
-export type MockStoreEnhanced<S = {}, DispatchExts = {}> = MockStore<S> & { dispatch: DispatchExts };
+export type MockStoreEnhanced<S = {}, DispatchExts = {}> = MockStore<S> & {
+    dispatch: DispatchExts;
+};
 
 export type MockStoreCreator<S = {}, DispatchExts = {}> = (
     state?: S | MockGetState<S>,

@@ -23,9 +23,9 @@ type ScriptMatchingPattern =
 
 type ScriptMatchingPatternPre =
     | ScriptMatchingPatternBase
-    | ScriptMatchingPatternHash & {
-        chunks?: "initial" | "async" | "all" | undefined;
-    };
+    | (ScriptMatchingPatternHash & {
+          chunks?: "initial" | "async" | "all" | undefined;
+      });
 
 interface Custom {
     test: ScriptMatchingPattern;

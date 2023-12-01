@@ -53,7 +53,10 @@ declare namespace parse {
      * @param cb Callback: first arg is `null` or error string,
      *                     second arg is parsed data or `undefined` if an error occurred
      */
-    function source(str: string, cb: (err: null | string, data: LcovFile[] | undefined) => void): void;
+    function source(
+        str: string,
+        cb: (err: null | string, data: LcovFile[] | undefined) => void,
+    ): void;
 }
 
 /**
@@ -75,6 +78,9 @@ declare namespace parse {
  * @param cb Callback: first arg is `null` or error string,
  *                     second arg is parsed data or `undefined` if an error occurred
  */
-declare function parse(file: string, cb: (err: null | string, data: parse.LcovFile[] | undefined) => void): void;
+declare function parse(
+    file: string,
+    cb: (err: null | string, data: parse.LcovFile[] | undefined) => void,
+): void;
 
 export = parse;

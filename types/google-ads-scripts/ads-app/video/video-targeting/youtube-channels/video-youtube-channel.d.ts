@@ -34,7 +34,8 @@ declare namespace GoogleAdsScripts {
          *        .withChannelId('UCqVDpXKLmKeBU_yyt_QkItQ')    // required
          *        .build();                                     // create the YouTube channel
          */
-        interface VideoYouTubeChannelBuilder extends Base.Builder<VideoYouTubeChannelOperation> {
+        interface VideoYouTubeChannelBuilder
+            extends Base.Builder<VideoYouTubeChannelOperation> {
             /** Builds the excluded video YouTube channel. */
             exclude(): ExcludedVideoYouTubeChannelOperation;
             /** Sets the YouTube channel ID. */
@@ -50,10 +51,12 @@ declare namespace GoogleAdsScripts {
          *        var videoYouTubeChannel = videoYouTubeChannelIterator.next();
          *      }
          */
-        interface VideoYouTubeChannelIterator extends Base.Iterator<VideoYouTubeChannel> {}
+        interface VideoYouTubeChannelIterator
+            extends Base.Iterator<VideoYouTubeChannel> {}
 
         /** An operation representing creation of a new video YouTube channel. */
-        interface VideoYouTubeChannelOperation extends Base.Operation<VideoYouTubeChannel> {}
+        interface VideoYouTubeChannelOperation
+            extends Base.Operation<VideoYouTubeChannel> {}
 
         /**
          * Fetches video YouTube channels. Supports filtering and sorting.
@@ -72,13 +75,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoYouTubeChannelSelector
-            extends
-                Base.Selector<VideoYouTubeChannelIterator>,
+            extends Base.Selector<VideoYouTubeChannelIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

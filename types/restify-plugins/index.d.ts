@@ -34,7 +34,9 @@ export namespace pre {
     /**
      * Regexp to capture curl user-agents
      */
-    function userAgentConnection(options?: { userAgentRegExp: any }): RequestHandler;
+    function userAgentConnection(options?: {
+        userAgentRegExp: any;
+    }): RequestHandler;
 }
 
 // *************** This module includes the following header parser plugins:
@@ -71,7 +73,9 @@ export interface AuditLoggerOptions {
 /**
  * An audit logger for recording all handled requests
  */
-export function auditLogger(options: AuditLoggerOptions): (...args: any[]) => void;
+export function auditLogger(
+    options: AuditLoggerOptions,
+): (...args: any[]) => void;
 
 /**
  * Authorization header
@@ -167,7 +171,9 @@ export function bodyParser(options?: BodyParserOptions): RequestHandler[];
 /**
  * Reads the body of the request.
  */
-export function bodyReader(options?: { maxBodySize?: number | undefined }): RequestHandler;
+export function bodyReader(options?: {
+    maxBodySize?: number | undefined;
+}): RequestHandler;
 
 export interface UrlEncodedBodyParser {
     mapParams?: boolean | undefined;
@@ -180,14 +186,18 @@ export interface UrlEncodedBodyParser {
  * If req.params already contains a given key, that key is skipped and an
  * error is logged.
  */
-export function urlEncodedBodyParser(options?: UrlEncodedBodyParser): RequestHandler[];
+export function urlEncodedBodyParser(
+    options?: UrlEncodedBodyParser,
+): RequestHandler[];
 
 /**
  * Parses JSON POST bodies
  */
-export function jsonBodyParser(
-    options?: { mapParams?: boolean | undefined; reviver?: any; overrideParams?: boolean | undefined },
-): RequestHandler[];
+export function jsonBodyParser(options?: {
+    mapParams?: boolean | undefined;
+    reviver?: any;
+    overrideParams?: boolean | undefined;
+}): RequestHandler[];
 
 /**
  * Parses JSONP callback
@@ -210,7 +220,9 @@ export interface MultipartBodyParser {
 /**
  * Parses JSONP callback
  */
-export function multipartBodyParser(options?: MultipartBodyParser): RequestHandler;
+export function multipartBodyParser(
+    options?: MultipartBodyParser,
+): RequestHandler;
 
 export interface QueryParserOptions {
     /**

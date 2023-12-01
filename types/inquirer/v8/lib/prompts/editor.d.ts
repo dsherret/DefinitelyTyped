@@ -14,7 +14,9 @@ type Question = inquirer.EditorQuestionOptions<inquirer.Answers>;
  * @template TQuestion
  * The options for the question.
  */
-declare class EditorPrompt<TQuestion extends Question = Question> extends Prompt<TQuestion> {
+declare class EditorPrompt<
+    TQuestion extends Question = Question,
+> extends Prompt<TQuestion> {
     /**
      * Resolves the value of the prompt.
      */
@@ -47,7 +49,11 @@ declare class EditorPrompt<TQuestion extends Question = Question> extends Prompt
      * @param answers
      * The answer-object.
      */
-    constructor(question: TQuestion, readLine: ReadlineInterface, answers: inquirer.Answers);
+    constructor(
+        question: TQuestion,
+        readLine: ReadlineInterface,
+        answers: inquirer.Answers,
+    );
 
     /**
      * Runs the prompt.
@@ -87,7 +93,9 @@ declare class EditorPrompt<TQuestion extends Question = Question> extends Prompt
      * @param eventArgs
      * An object which contains event-data.
      */
-    protected onEnd(eventArgs: inquirer.prompts.SuccessfulPromptStateData): void;
+    protected onEnd(
+        eventArgs: inquirer.prompts.SuccessfulPromptStateData,
+    ): void;
 
     /**
      * Handles the `error`-event of the prompt.

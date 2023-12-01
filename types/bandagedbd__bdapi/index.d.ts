@@ -337,7 +337,11 @@ declare namespace BdApiModule {
          * @returns A cancel function which allows you to undo the patch.
          * @deprecated
          */
-        monkeyPatch(module: object, methodName: string, options: MonkeyPatchOptions): CancelPatch;
+        monkeyPatch(
+            module: object,
+            methodName: string,
+            options: MonkeyPatchOptions,
+        ): CancelPatch;
 
         /**
          * Adds a listener for when the node is removed from the document body.
@@ -382,7 +386,11 @@ declare namespace BdApiModule {
          * @param options.onCancel Callback to occur when clicking the cancel button.
          * @deprecated Use {@link UIModule.UI.showConfirmationModal()} instead.
          */
-        showConfirmationModal(title: string, content: string, options?: UIModule.ConfirmationModalOptions): void;
+        showConfirmationModal(
+            title: string,
+            content: string,
+            options?: UIModule.ConfirmationModalOptions,
+        ): void;
 
         /**
          * Shows a simple toast message similar to on Android.
@@ -449,7 +457,14 @@ declare namespace ContextMenuModule {
         /**
          * Type of the item. Defaults to "text".
          */
-        type?: "text" | "toggle" | "radio" | "submenu" | "custom" | "separator" | "group";
+        type?:
+            | "text"
+            | "toggle"
+            | "radio"
+            | "submenu"
+            | "custom"
+            | "separator"
+            | "group";
 
         label: string;
         id?: string;
@@ -632,7 +647,11 @@ declare namespace ContextMenuModule {
          *     }
          * });
          */
-        open(event: MouseEvent, menuComponent: object, config: ContextMenuConfig): void;
+        open(
+            event: MouseEvent,
+            menuComponent: object,
+            config: ContextMenuConfig,
+        ): void;
 
         /**
          * Allows you to patch a given context menu. Acts as a wrapper around the {@link Patcher}.
@@ -708,7 +727,11 @@ declare namespace DOMModule {
          * @param options Options object to customize the element
          * @param child Child node to add
          */
-        createElement(tag: string, options?: DOMCreateElementOptions, child?: HTMLElement): void;
+        createElement(
+            tag: string,
+            options?: DOMCreateElementOptions,
+            child?: HTMLElement,
+        ): void;
 
         /**
          * Adds a listener for when the node is removed from the document body.
@@ -796,7 +819,12 @@ declare namespace PatcherModule {
          * the arguments of the original function, and the return value of the original function.
          * @returns Function that cancels the original patch.
          */
-        after(caller: string, moduleToPatch: object, functionName: string, callback: () => void): () => void;
+        after(
+            caller: string,
+            moduleToPatch: object,
+            functionName: string,
+            callback: () => void,
+        ): () => void;
 
         /**
          * This method patches onto another function, allowing your code to run beforehand. Using this, you are also
@@ -809,7 +837,12 @@ declare namespace PatcherModule {
          * the arguments of the original function, and the return value of the original function.
          * @returns Function that cancels the original patch.
          */
-        before(caller: string, moduleToPatch: object, functionName: string, callback: () => void): () => void;
+        before(
+            caller: string,
+            moduleToPatch: object,
+            functionName: string,
+            callback: () => void,
+        ): () => void;
 
         /**
          * Returns all patches by a particular caller. The patches all have an {@link PatcherModule.Patcher.unpatch()}
@@ -818,7 +851,7 @@ declare namespace PatcherModule {
          * @param caller ID of the original patches
          * @returns Array of all the patch objects.
          */
-        getPatchesByCaller(caller: string): Array<(() => void)>;
+        getPatchesByCaller(caller: string): Array<() => void>;
 
         /**
          * This method patches onto another function, allowing your code to run instead. Using this, you are also able
@@ -831,7 +864,12 @@ declare namespace PatcherModule {
          * the arguments of the original function, and the return value of the original function.
          * @returns Function that cancels the original patch.
          */
-        instead(caller: string, moduleToPatch: object, functionName: string, callback: () => void): () => void;
+        instead(
+            caller: string,
+            moduleToPatch: object,
+            functionName: string,
+            callback: () => void,
+        ): () => void;
 
         /**
          * Automatically cancels all patches created with a specific ID.
@@ -949,7 +987,10 @@ declare namespace ReactUtilsModule {
          * @param options Options for the search
          * @returns The owner instance or {@code undefined} if not found.
          */
-        getOwnerInstance(node: HTMLElement, options: OwnerInstaceOptions): ReactInstance.ReactNode;
+        getOwnerInstance(
+            node: HTMLElement,
+            options: OwnerInstaceOptions,
+        ): ReactInstance.ReactNode;
 
         /**
          * Creates an unrendered React component that wraps dom elements.
@@ -1140,7 +1181,10 @@ declare namespace UIModule {
          * @param title title of the modal
          * @param content a string of text to display in the modal
          */
-        alert(title: string, content: string | Element | string[] | Element[]): void;
+        alert(
+            title: string,
+            content: string | Element | string[] | Element[],
+        ): void;
 
         /**
          * Creates a tooltip to automatically show on hover.
@@ -1149,7 +1193,11 @@ declare namespace UIModule {
          * @param content String to show in the tooltip
          * @param options Additional options for the tooltip
          */
-        createTooltip(node: HTMLElement, content: string | HTMLElement, options: TooltipOptions): Tooltip;
+        createTooltip(
+            node: HTMLElement,
+            content: string | HTMLElement,
+            options: TooltipOptions,
+        ): Tooltip;
 
         /**
          * Gives access to the [Electron Dialog]{@link https://www.electronjs.org/docs/latest/api/dialog/} API.
@@ -1169,7 +1217,11 @@ declare namespace UIModule {
          * @param options Options to modify the modal
          * @returns The confirmation modal ID.
          */
-        showConfirmationModal(title: string, children: Element[], options: ConfirmationModalOptions): string;
+        showConfirmationModal(
+            title: string,
+            children: Element[],
+            options: ConfirmationModalOptions,
+        ): string;
 
         /**
          * Shows a notice above Discord's chat layer.
@@ -1255,7 +1307,11 @@ declare namespace UtilsModule {
          * @param searchFilter Filter to check against each object and subobject
          * @param options Additional options to customize the search
          */
-        findInTree(tree: object, searchFilter: (node: object) => boolean, options: UtilsFindInTreeOptions): any;
+        findInTree(
+            tree: object,
+            searchFilter: (node: object) => boolean,
+            options: UtilsFindInTreeOptions,
+        ): any;
     }
 }
 
@@ -1390,8 +1446,14 @@ declare namespace WebpackModule {
          * {@code true} to signify match.
          * @param options Options to configure the search
          */
-        getModule(filter: WebpackFilter, options?: WebpackModuleSearchOptions): object | null;
+        getModule(
+            filter: WebpackFilter,
+            options?: WebpackModuleSearchOptions,
+        ): object | null;
 
-        waitForModule(filter: WebpackFilter, options?: WebpackAsyncModuleSearchOptions): Promise<object | null>;
+        waitForModule(
+            filter: WebpackFilter,
+            options?: WebpackAsyncModuleSearchOptions,
+        ): Promise<object | null>;
     }
 }

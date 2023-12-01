@@ -70,16 +70,16 @@ export interface BestPractices extends Linter.RulesRecord {
     complexity: Linter.RuleEntry<
         [
             | Partial<{
-                /**
-                 * @default 20
-                 */
-                max: number;
-                /**
-                 * @deprecated
-                 * @default 20
-                 */
-                maximum: number;
-            }>
+                  /**
+                   * @default 20
+                   */
+                  max: number;
+                  /**
+                   * @deprecated
+                   * @default 20
+                   */
+                  maximum: number;
+              }>
             | number,
         ]
     >;
@@ -107,7 +107,9 @@ export interface BestPractices extends Linter.RulesRecord {
      * @since 0.0.2
      * @see https://eslint.org/docs/rules/curly
      */
-    curly: Linter.RuleEntry<["all" | "multi" | "multi-line" | "multi-or-nest" | "consistent"]>;
+    curly: Linter.RuleEntry<
+        ["all" | "multi" | "multi-line" | "multi-or-nest" | "consistent"]
+    >;
 
     /**
      * Rule to require `default` cases in `switch` statements.
@@ -160,16 +162,16 @@ export interface BestPractices extends Linter.RulesRecord {
      */
     eqeqeq:
         | Linter.RuleEntry<
-            [
-                "always",
-                Partial<{
-                    /**
-                     * @default 'always'
-                     */
-                    null: "always" | "never" | "ignore";
-                }>,
-            ]
-        >
+              [
+                  "always",
+                  Partial<{
+                      /**
+                       * @default 'always'
+                       */
+                      null: "always" | "never" | "ignore";
+                  }>,
+              ]
+          >
         | Linter.RuleEntry<["smart" | "allow-null"]>;
 
     /**
@@ -635,14 +637,14 @@ export interface BestPractices extends Linter.RulesRecord {
         [
             ...Array<
                 | {
-                    object: string;
-                    property?: string | undefined;
-                    message?: string | undefined;
-                }
+                      object: string;
+                      property?: string | undefined;
+                      message?: string | undefined;
+                  }
                 | {
-                    property: string;
-                    message?: string | undefined;
-                }
+                      property: string;
+                      message?: string | undefined;
+                  }
             >,
         ]
     >;
@@ -919,13 +921,13 @@ export interface BestPractices extends Linter.RulesRecord {
      */
     yoda:
         | Linter.RuleEntry<
-            [
-                "never",
-                Partial<{
-                    exceptRange: boolean;
-                    onlyEquality: boolean;
-                }>,
-            ]
-        >
+              [
+                  "never",
+                  Partial<{
+                      exceptRange: boolean;
+                      onlyEquality: boolean;
+                  }>,
+              ]
+          >
         | Linter.RuleEntry<["always"]>;
 }

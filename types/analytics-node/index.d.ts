@@ -3,11 +3,11 @@ export = AnalyticsNode.Analytics;
 declare namespace AnalyticsNode {
     type Identity =
         | {
-            userId: string | number;
-        }
+              userId: string | number;
+          }
         | {
-            anonymousId: string | number;
-        };
+              anonymousId: string | number;
+          };
 
     type Message = Identity & {
         type: string;
@@ -128,6 +128,8 @@ declare namespace AnalyticsNode {
         ): Analytics;
 
         /* Flush batched calls to make sure nothing is left in the queue */
-        flush(callback?: (err: Error, data: Data) => void): Promise<{ batch: any; timestamp: string; sentAt: string }>;
+        flush(
+            callback?: (err: Error, data: Data) => void,
+        ): Promise<{ batch: any; timestamp: string; sentAt: string }>;
     }
 }

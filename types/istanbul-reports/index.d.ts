@@ -1,6 +1,9 @@
 import { Node, ReportBase } from "istanbul-lib-report";
 
-export function create<T extends keyof ReportOptions>(name: T, options?: Partial<ReportOptions[T]>): ReportBase;
+export function create<T extends keyof ReportOptions>(
+    name: T,
+    options?: Partial<ReportOptions[T]>,
+): ReportBase;
 
 export interface FileOptions {
     file: string;

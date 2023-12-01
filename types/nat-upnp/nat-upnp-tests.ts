@@ -1,8 +1,10 @@
 import { createClient, device, ssdp, utils } from "nat-upnp";
 
 const ssdpClient = ssdp.create();
-const promiseEventEmitter = ssdpClient.search("urn:schemas-upnp-org:device:InternetGatewayDevice:1");
-promiseEventEmitter.on("device", res => {
+const promiseEventEmitter = ssdpClient.search(
+    "urn:schemas-upnp-org:device:InternetGatewayDevice:1",
+);
+promiseEventEmitter.on("device", (res) => {
     console.log("onDevice", res);
 });
 setTimeout(() => ssdpClient.close(), 100);
@@ -23,7 +25,10 @@ NATClient.findGateway((err, gatewayDevice) => {
     if (err || gatewayDevice == null) {
         console.error(
             "NATClient.findGateway",
-            err || new Error("Invalid callback data, neither error, nor response provided"),
+            err ||
+                new Error(
+                    "Invalid callback data, neither error, nor response provided",
+                ),
         );
         return;
     }
@@ -31,7 +36,10 @@ NATClient.findGateway((err, gatewayDevice) => {
         if (err2 || service == null) {
             console.error(
                 "gatewayDevice.getService",
-                err2 || new Error("Invalid callback data, neither error, nor response provided"),
+                err2 ||
+                    new Error(
+                        "Invalid callback data, neither error, nor response provided",
+                    ),
             );
             return;
         }
@@ -41,7 +49,10 @@ NATClient.findGateway((err, gatewayDevice) => {
         if (err2 || res == null) {
             console.error(
                 "gatewayDevice.run",
-                err2 || new Error("Invalid callback data, neither error, nor response provided"),
+                err2 ||
+                    new Error(
+                        "Invalid callback data, neither error, nor response provided",
+                    ),
             );
             return;
         }
@@ -53,7 +64,10 @@ NATClient.externalIp((err, ip) => {
     if (err || ip == null) {
         console.error(
             "NATClient.externalIp",
-            err || new Error("Invalid callback data, neither error, nor response provided"),
+            err ||
+                new Error(
+                    "Invalid callback data, neither error, nor response provided",
+                ),
         );
         return;
     }
@@ -64,22 +78,28 @@ NATClient.getMappings((err, mappings) => {
     if (err || mappings == null) {
         console.error(
             "NATClient.getMappings(cb)",
-            err || new Error("Invalid callback data, neither error, nor response provided"),
+            err ||
+                new Error(
+                    "Invalid callback data, neither error, nor response provided",
+                ),
         );
         return;
     }
-    console.log(mappings.map(m => m));
+    console.log(mappings.map((m) => m));
 });
 
 NATClient.getMappings({ local: true, description: /test/ }, (err, mappings) => {
     if (err || mappings == null) {
         console.error(
             "NATClient.getMappings(opts, cb)",
-            err || new Error("Invalid callback data, neither error, nor response provided"),
+            err ||
+                new Error(
+                    "Invalid callback data, neither error, nor response provided",
+                ),
         );
         return;
     }
-    console.log(mappings.map(m => m));
+    console.log(mappings.map((m) => m));
 });
 
 NATClient.portMapping({
@@ -103,7 +123,10 @@ NATClient.portMapping(
         if (err || res == null) {
             console.error(
                 "NATClient.portMapping",
-                err || new Error("Invalid callback data, neither error, nor response provided"),
+                err ||
+                    new Error(
+                        "Invalid callback data, neither error, nor response provided",
+                    ),
             );
             return;
         }
@@ -120,7 +143,10 @@ NATClient.portUnmapping(
         if (err || res == null) {
             console.error(
                 "NATClient.portUnmapping",
-                err || new Error("Invalid callback data, neither error, nor response provided"),
+                err ||
+                    new Error(
+                        "Invalid callback data, neither error, nor response provided",
+                    ),
             );
             return;
         }

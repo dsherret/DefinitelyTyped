@@ -22,8 +22,13 @@ import Promise = require("bluebird");
  * stream.on('error', err => console.log('Failed!'));
  * stream.on('end', () => console.log('Finished!'));
  */
-declare function gotResume(url: string, options?: gotResume.TransferOptions): gotResume.TransferStream;
-declare function gotResume(options: gotResume.TransferOptionsWithUrl): gotResume.TransferStream;
+declare function gotResume(
+    url: string,
+    options?: gotResume.TransferOptions,
+): gotResume.TransferStream;
+declare function gotResume(
+    options: gotResume.TransferOptionsWithUrl,
+): gotResume.TransferStream;
 
 declare namespace gotResume {
     /**
@@ -46,7 +51,11 @@ declare namespace gotResume {
      *   .then(() => console.log('Finished!'))
      *   .catch(err => console.log('Failed!'));
      */
-    function toFile(path: string, url: string, options?: ToFileOptions): Promise<void>;
+    function toFile(
+        path: string,
+        url: string,
+        options?: ToFileOptions,
+    ): Promise<void>;
     function toFile(path: string, options: ToFileOptionsWithUrl): Promise<void>;
 
     interface WithUrl {
@@ -292,7 +301,9 @@ declare namespace gotResume {
          */
         addListener(
             event: "error",
-            listener: (error: TransferError | CancelError | globalThis.Error) => any,
+            listener: (
+                error: TransferError | CancelError | globalThis.Error,
+            ) => any,
         ): TransferStream;
         /**
          * Emitted when transfer completes.
@@ -303,7 +314,10 @@ declare namespace gotResume {
         /**
          * Emitted when data received.
          */
-        addListener(event: "progress", listener: (progress: Progress) => any): TransferStream;
+        addListener(
+            event: "progress",
+            listener: (progress: Progress) => any,
+        ): TransferStream;
         /**
          * Emitted when first HTTP request made to server.
          *
@@ -318,46 +332,106 @@ declare namespace gotResume {
          * const stream = gotResume('http://google.com/');
          * stream.on('response', res => console.log('Length: ', stream.transfer.length));
          */
-        addListener(event: "response", listener: (res: IncomingMessage) => any): TransferStream;
+        addListener(
+            event: "response",
+            listener: (res: IncomingMessage) => any,
+        ): TransferStream;
 
-        on(event: "error", listener: (error: TransferError | CancelError | globalThis.Error) => any): TransferStream;
+        on(
+            event: "error",
+            listener: (
+                error: TransferError | CancelError | globalThis.Error,
+            ) => any,
+        ): TransferStream;
         on(event: "end", listener: () => any): TransferStream;
-        on(event: "progress", listener: (progress: Progress) => any): TransferStream;
-        on(event: "response", listener: (res: IncomingMessage) => any): TransferStream;
+        on(
+            event: "progress",
+            listener: (progress: Progress) => any,
+        ): TransferStream;
+        on(
+            event: "response",
+            listener: (res: IncomingMessage) => any,
+        ): TransferStream;
 
-        once(event: "error", listener: (error: TransferError | CancelError | globalThis.Error) => any): TransferStream;
+        once(
+            event: "error",
+            listener: (
+                error: TransferError | CancelError | globalThis.Error,
+            ) => any,
+        ): TransferStream;
         once(event: "end", listener: () => any): TransferStream;
-        once(event: "progress", listener: (progress: Progress) => any): TransferStream;
-        once(event: "response", listener: (res: IncomingMessage) => any): TransferStream;
+        once(
+            event: "progress",
+            listener: (progress: Progress) => any,
+        ): TransferStream;
+        once(
+            event: "response",
+            listener: (res: IncomingMessage) => any,
+        ): TransferStream;
 
         prependListener(
             event: "error",
-            listener: (error: TransferError | CancelError | globalThis.Error) => any,
+            listener: (
+                error: TransferError | CancelError | globalThis.Error,
+            ) => any,
         ): TransferStream;
         prependListener(event: "end", listener: () => any): TransferStream;
-        prependListener(event: "progress", listener: (progress: Progress) => any): TransferStream;
-        prependListener(event: "response", listener: (res: IncomingMessage) => any): TransferStream;
+        prependListener(
+            event: "progress",
+            listener: (progress: Progress) => any,
+        ): TransferStream;
+        prependListener(
+            event: "response",
+            listener: (res: IncomingMessage) => any,
+        ): TransferStream;
 
         prependOnceListener(
             event: "error",
-            listener: (error: TransferError | CancelError | globalThis.Error) => any,
+            listener: (
+                error: TransferError | CancelError | globalThis.Error,
+            ) => any,
         ): TransferStream;
         prependOnceListener(event: "end", listener: () => any): TransferStream;
-        prependOnceListener(event: "progress", listener: (progress: Progress) => any): TransferStream;
-        prependOnceListener(event: "response", listener: (res: IncomingMessage) => any): TransferStream;
+        prependOnceListener(
+            event: "progress",
+            listener: (progress: Progress) => any,
+        ): TransferStream;
+        prependOnceListener(
+            event: "response",
+            listener: (res: IncomingMessage) => any,
+        ): TransferStream;
 
         removeListener(
             event: "error",
-            listener: (error: TransferError | CancelError | globalThis.Error) => any,
+            listener: (
+                error: TransferError | CancelError | globalThis.Error,
+            ) => any,
         ): TransferStream;
         removeListener(event: "end", listener: () => any): TransferStream;
-        removeListener(event: "progress", listener: (progress: Progress) => any): TransferStream;
-        removeListener(event: "response", listener: (res: IncomingMessage) => any): TransferStream;
+        removeListener(
+            event: "progress",
+            listener: (progress: Progress) => any,
+        ): TransferStream;
+        removeListener(
+            event: "response",
+            listener: (res: IncomingMessage) => any,
+        ): TransferStream;
 
-        off(event: "error", listener: (error: TransferError | CancelError | globalThis.Error) => any): TransferStream;
+        off(
+            event: "error",
+            listener: (
+                error: TransferError | CancelError | globalThis.Error,
+            ) => any,
+        ): TransferStream;
         off(event: "end", listener: () => any): TransferStream;
-        off(event: "progress", listener: (progress: Progress) => any): TransferStream;
-        off(event: "response", listener: (res: IncomingMessage) => any): TransferStream;
+        off(
+            event: "progress",
+            listener: (progress: Progress) => any,
+        ): TransferStream;
+        off(
+            event: "response",
+            listener: (res: IncomingMessage) => any,
+        ): TransferStream;
     } & PassThrough;
 
     interface Progress {

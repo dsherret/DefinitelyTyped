@@ -9,9 +9,14 @@ bitauth.getSinFromPublicKey(keys.pub);
 const contract = "something to sign";
 const signature = bitauth.sign(contract, keys.priv);
 let verified = bitauth.verifySignature(contract, keys.pub, signature);
-bitauth.verifySignature(contract, keys.pub, signature, (err?: Error, valid?: boolean) => {
-    verified = err ? false : valid;
-});
+bitauth.verifySignature(
+    contract,
+    keys.pub,
+    signature,
+    (err?: Error, valid?: boolean) => {
+        verified = err ? false : valid;
+    },
+);
 let valid = bitauth.validateSin(keys.sin);
 bitauth.validateSin(keys.sin, (err?: Error) => {
     valid = err ? false : true;

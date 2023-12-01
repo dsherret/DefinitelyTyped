@@ -6,4 +6,6 @@ export interface PolylineExport {
     polylines: Information.Polyline[];
 }
 
-export default function toPolylines(parsed: Information.FileInfo): PolylineExport;
+export default function toPolylines(
+    parsed: Information.FileInfo,
+): PolylineExport;

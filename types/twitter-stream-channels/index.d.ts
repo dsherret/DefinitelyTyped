@@ -7,8 +7,7 @@ declare module "twitter-stream-channels" {
 
     namespace TwitterStreamChannels {
         export namespace StreamChannels {
-            export interface Channels {
-            }
+            export interface Channels {}
 
             export interface StreamChannelsOptions {
                 track?: {} | undefined;
@@ -24,7 +23,10 @@ declare module "twitter-stream-channels" {
             /**
              * @see https://github.com/topheman/twitter-stream-channels/blob/master/lib/StreamChannels.js#L25
              */
-            constructor(apiClient: Twit, options: StreamChannels.StreamChannelsOptions);
+            constructor(
+                apiClient: Twit,
+                options: StreamChannels.StreamChannelsOptions,
+            );
 
             /**
              * Call this function to restart the stream after you called `.stop()` on it.

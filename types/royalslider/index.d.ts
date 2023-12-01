@@ -428,7 +428,8 @@ declare namespace RoyalSlider {
         thumbnail: string;
     }
 
-    export interface RoyalSlider { // TODO: extends/implements JQuery? (giving problems due to next(), prev(), width and height and 'selector'.
+    export interface RoyalSlider {
+        // TODO: extends/implements JQuery? (giving problems due to next(), prev(), width and height and 'selector'.
         /**
          * go to slide with id
          */

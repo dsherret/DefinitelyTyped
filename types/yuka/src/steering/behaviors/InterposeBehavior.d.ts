@@ -33,7 +33,11 @@ export class InterposeBehavior extends SteeringBehavior {
      * @param [entity2] - The second agent.
      * @param [deceleration] - The amount of deceleration.
      */
-    constructor(entity1?: MovingEntity, entity2?: MovingEntity, deceleration?: number);
+    constructor(
+        entity1?: MovingEntity,
+        entity2?: MovingEntity,
+        deceleration?: number,
+    );
 
     /**
      * Calculates the steering force for a single simulation step.

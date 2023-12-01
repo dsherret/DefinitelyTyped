@@ -14,7 +14,7 @@ declare namespace DataTables {
     }
 
     interface RowGroupStaticFunctions {
-        new(dt: Api, settings: boolean | RowGroupSettings): undefined;
+        new (dt: Api, settings: boolean | RowGroupSettings): undefined;
         version: string;
         defaults: RowGroupSettings;
     }
@@ -82,11 +82,19 @@ declare namespace DataTables {
         /**
          * Provide a function that can be used to control the data shown in the end grouping row
          */
-        endRender?: ((rows: Api, group: string) => string | HTMLElement | JQuery) | undefined;
+        endRender?:
+            | ((rows: Api, group: string) => string | HTMLElement | JQuery)
+            | undefined;
 
         /**
          * Provide a function that can be used to control the data shown in the start grouping row
          */
-        startRender?: ((rows: Api, group: string, level: number) => string | HTMLElement | JQuery) | undefined;
+        startRender?:
+            | ((
+                  rows: Api,
+                  group: string,
+                  level: number,
+              ) => string | HTMLElement | JQuery)
+            | undefined;
     }
 }

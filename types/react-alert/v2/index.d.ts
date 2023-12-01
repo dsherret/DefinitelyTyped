@@ -13,7 +13,12 @@ export interface AlertContainerProps {
      *
      * Default: 'bottom left'
      */
-    position?: "bottom left" | "bottom right" | "top left" | "top right" | undefined;
+    position?:
+        | "bottom left"
+        | "bottom right"
+        | "top left"
+        | "top right"
+        | undefined;
 
     /**
      * The color theme of the alert. Can be [dark, light].

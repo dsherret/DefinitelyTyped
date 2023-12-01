@@ -1,7 +1,7 @@
 // This throws a TypeError at runtime, but TypeScript should probably allow it.
 new NavigationPreloadManager();
 
-navigator.serviceWorker.ready.then(async registration => {
+navigator.serviceWorker.ready.then(async (registration) => {
     await registration.navigationPreload.enable();
     await registration.navigationPreload.disable();
 

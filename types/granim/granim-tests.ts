@@ -37,7 +37,7 @@ let granimInstance: Granim = new Granim({
     onStart: () => {
         console.log("Granim: onStart");
     },
-    onGradientChange: colorDetails => {
+    onGradientChange: (colorDetails) => {
         console.log("Granim: onGradientChange, details: ");
         console.log(colorDetails);
     },

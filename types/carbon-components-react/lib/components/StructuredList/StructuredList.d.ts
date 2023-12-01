@@ -1,5 +1,10 @@
 import * as React from "react";
-import { ReactAttr, ReactDivAttr, ReactInputAttr, ReactLabelAttr } from "../../../typings/shared";
+import {
+    ReactAttr,
+    ReactDivAttr,
+    ReactInputAttr,
+    ReactLabelAttr,
+} from "../../../typings/shared";
 
 // StructuredListWrapper
 
@@ -29,7 +34,8 @@ type ExcludedListInputPropKeys = "onChange" | "tabIndex" | "type" | "value";
 /**
  * Prop "checked" is not overrideable with the 2021 release flag enabled.
  */
-export interface StructuredListInputProps extends Omit<ReactInputAttr, ExcludedListInputPropKeys> {
+export interface StructuredListInputProps
+    extends Omit<ReactInputAttr, ExcludedListInputPropKeys> {
     /**
      * @deprecated This is not used with the 2021 release flag enabled.
      */
@@ -49,7 +55,8 @@ export declare const StructuredListInput: React.FC<StructuredListInputProps>;
 
 // StructuredListRow
 
-export interface StructuredListDivRowProps extends Omit<ReactDivAttr, "onKeyDown" | "tabIndex"> {
+export interface StructuredListDivRowProps
+    extends Omit<ReactDivAttr, "onKeyDown" | "tabIndex"> {
     head?: boolean | undefined;
     /**
      * @deprecated
@@ -69,7 +76,9 @@ export interface StructuredListLabelRowProps extends ReactLabelAttr {
     label: true;
 }
 
-export type AllStructuredListRowProps = StructuredListLabelRowProps | StructuredListDivRowProps;
+export type AllStructuredListRowProps =
+    | StructuredListLabelRowProps
+    | StructuredListDivRowProps;
 export declare const StructuredListRow: React.FC<AllStructuredListRowProps>;
 
 // StructuredListBody

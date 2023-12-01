@@ -121,7 +121,7 @@ const Hacker = new Liftoff({
     v8flags: ["--harmony"], // or v8flags: require('v8flags')
 });
 
-Hacker.prepare({}, env => {
+Hacker.prepare({}, (env) => {
     env; // $ExpectType LiftoffEnv
     env.cwd; // $ExpectType string
     env.preload; // $ExpectType string[]
@@ -134,12 +134,12 @@ Hacker.prepare({}, env => {
     env.config; // $ExpectType { [key: string]: any; }
     env.completion; // $ExpectType boolean | undefined
 
-    Hacker.execute(env, function(env, argv) {
+    Hacker.execute(env, function (env, argv) {
         this; // $ExpectType Liftoff
         env; // $ExpectType LiftoffEnv
         argv; // $ExpectType string[]
     });
-    Hacker.execute(env, ["--foo"], function(env, argv) {
+    Hacker.execute(env, ["--foo"], function (env, argv) {
         this; // $ExpectType Liftoff
         env; // $ExpectType LiftoffEnv
         argv; // $ExpectType string[]
@@ -148,7 +148,7 @@ Hacker.prepare({}, env => {
 
 const liftoff = new Liftoff();
 
-liftoff.addListener("preload:before", name => {
+liftoff.addListener("preload:before", (name) => {
     name; // $ExpectType string
 });
 liftoff.addListener("preload:success", (name, module) => {
@@ -175,7 +175,7 @@ liftoff.addListener("foo", (...args) => {
     args; // $ExpectType any[]
 });
 
-liftoff.on("preload:before", name => {
+liftoff.on("preload:before", (name) => {
     name; // $ExpectType string
 });
 liftoff.on("preload:success", (name, module) => {
@@ -202,7 +202,7 @@ liftoff.on("foo", (...args) => {
     args; // $ExpectType any[]
 });
 
-liftoff.once("preload:before", name => {
+liftoff.once("preload:before", (name) => {
     name; // $ExpectType string
 });
 liftoff.once("preload:success", (name, module) => {
@@ -229,7 +229,7 @@ liftoff.once("foo", (...args) => {
     args; // $ExpectType any[]
 });
 
-liftoff.prependListener("preload:before", name => {
+liftoff.prependListener("preload:before", (name) => {
     name; // $ExpectType string
 });
 liftoff.prependListener("preload:success", (name, module) => {
@@ -256,7 +256,7 @@ liftoff.prependListener("foo", (...args) => {
     args; // $ExpectType any[]
 });
 
-liftoff.prependOnceListener("preload:before", name => {
+liftoff.prependOnceListener("preload:before", (name) => {
     name; // $ExpectType string
 });
 liftoff.prependOnceListener("preload:success", (name, module) => {
@@ -283,7 +283,7 @@ liftoff.prependOnceListener("foo", (...args) => {
     args; // $ExpectType any[]
 });
 
-liftoff.removeListener("preload:before", name => {
+liftoff.removeListener("preload:before", (name) => {
     name; // $ExpectType string
 });
 liftoff.removeListener("preload:success", (name, module) => {
@@ -310,7 +310,7 @@ liftoff.removeListener("foo", (...args) => {
     args; // $ExpectType any[]
 });
 
-liftoff.off("preload:before", name => {
+liftoff.off("preload:before", (name) => {
     name; // $ExpectType string
 });
 liftoff.off("preload:success", (name, module) => {

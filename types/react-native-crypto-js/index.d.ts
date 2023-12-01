@@ -262,8 +262,16 @@ interface CipherStatic {
 }
 
 interface CipherHelper {
-    encrypt(message: WordArray | string, key: WordArray | string, cfg?: CipherOption): CipherParams;
-    decrypt(ciphertext: CipherParams | string, key: WordArray | string, cfg?: CipherOption): WordArray;
+    encrypt(
+        message: WordArray | string,
+        key: WordArray | string,
+        cfg?: CipherOption,
+    ): CipherParams;
+    decrypt(
+        ciphertext: CipherParams | string,
+        key: WordArray | string,
+        cfg?: CipherOption,
+    ): WordArray;
 }
 
 /**
@@ -849,7 +857,10 @@ declare global {
                  *
                  *     var ciphertextParams = RNCryptoJS.lib.SerializableCipher._parse(ciphertextStringOrParams, format);
                  */
-                _parse(ciphertext: CipherParams | string, format: Format): CipherParams;
+                _parse(
+                    ciphertext: CipherParams | string,
+                    format: Format,
+                ): CipherParams;
             };
 
             /**
@@ -960,7 +971,12 @@ declare global {
                  *     var derivedParams = RNCryptoJS.kdf.OpenSSL.execute('Password', 256/32, 128/32);
                  *     var derivedParams = RNCryptoJS.kdf.OpenSSL.execute('Password', 256/32, 128/32, 'saltsalt');
                  */
-                execute(password: string, keySize: number, ivSize: number, salt?: WordArray | string): CipherParams;
+                execute(
+                    password: string,
+                    keySize: number,
+                    ivSize: number,
+                    salt?: WordArray | string,
+                ): CipherParams;
             };
         }
 
@@ -1099,7 +1115,10 @@ declare global {
                  *
                  *     var hmacHasher = RNCryptoJS.algo.HMAC.create(RNCryptoJS.algo.SHA256, key);
                  */
-                static create(hasher: HasherStatic, key: WordArray | string): HMAC;
+                static create(
+                    hasher: HasherStatic,
+                    key: WordArray | string,
+                ): HMAC;
                 /**
                  * Resets this HMAC to its initial state.
                  *
@@ -1168,7 +1187,10 @@ declare global {
                  *
                  *     var key = kdf.compute(password, salt);
                  */
-                compute(password: WordArray | string, salt: WordArray): WordArray;
+                compute(
+                    password: WordArray | string,
+                    salt: WordArray,
+                ): WordArray;
             }
             /**
              * This key derivation function is meant to conform with EVP_BytesToKey.
@@ -1186,7 +1208,11 @@ declare global {
                  *     var kdf = RNCryptoJS.algo.EvpKDF.create({ keySize: 8 });
                  *     var kdf = RNCryptoJS.algo.EvpKDF.create({ keySize: 8, iterations: 1000 });
                  */
-                static create(cfg?: { keySize: number; hasher?: HasherStatic | undefined; iterations: number }): EvpKDF;
+                static create(cfg?: {
+                    keySize: number;
+                    hasher?: HasherStatic | undefined;
+                    iterations: number;
+                }): EvpKDF;
 
                 /**
                  * Derives a key from a password.
@@ -1200,7 +1226,10 @@ declare global {
                  *
                  *     var key = kdf.compute(password, salt);
                  */
-                compute(password: WordArray | string, salt: WordArray): WordArray;
+                compute(
+                    password: WordArray | string,
+                    salt: WordArray,
+                ): WordArray;
             }
 
             /**
@@ -1627,7 +1656,11 @@ declare global {
          *     var key = RNCryptoJS.PBKDF2(password, salt, { keySize: 8 });
          *     var key = RNCryptoJS.PBKDF2(password, salt, { keySize: 8, iterations: 1000 });
          */
-        function PBKDF2(password: WordArray | string, salt: WordArray | string, cfg?: KDFOption): WordArray;
+        function PBKDF2(
+            password: WordArray | string,
+            salt: WordArray | string,
+            cfg?: KDFOption,
+        ): WordArray;
 
         /**
          * Shortcut functions to the cipher's object interface.

@@ -22,7 +22,11 @@ declare namespace itemsjs {
         total: number;
     }
 
-    interface SearchOptions<I extends {}, S extends string, A extends keyof I & string> {
+    interface SearchOptions<
+        I extends {},
+        S extends string,
+        A extends keyof I & string,
+    > {
         query?: string | undefined;
         /** @default 1 */
         page?: number | undefined;
@@ -61,7 +65,11 @@ declare namespace itemsjs {
         per_page?: number | undefined;
     }
 
-    interface ItemsJs<I extends {}, S extends string, A extends keyof I & string> {
+    interface ItemsJs<
+        I extends {},
+        S extends string,
+        A extends keyof I & string,
+    > {
         /** Search items */
         search(options?: SearchOptions<I, S, A>): {
             data: {
@@ -92,7 +100,9 @@ declare namespace itemsjs {
             id: I extends { id: infer ID } ? ID : unknown,
             options: SimilarOptions<I>,
         ): {
-            data: { items: Array<I & { _id: number; intersection_length: number }> };
+            data: {
+                items: Array<I & { _id: number; intersection_length: number }>;
+            };
             pagination: Pagination;
         };
 
@@ -125,7 +135,11 @@ declare namespace itemsjs {
     }
 
     /** Configuration for itemsjs */
-    interface Configuration<I extends {}, S extends string, A extends keyof I & string> {
+    interface Configuration<
+        I extends {},
+        S extends string,
+        A extends keyof I & string,
+    > {
         sortings?: Record<S, Sorting<I>> | undefined;
         aggregations?: Record<A, Aggregation> | undefined;
         /** @default [] */
@@ -145,6 +159,9 @@ declare function itemsjs<
     I extends {} = Record<any, unknown>,
     S extends string = string,
     A extends keyof I & string = keyof I & string,
->(items: I[], configuration?: itemsjs.Configuration<I, S, A>): itemsjs.ItemsJs<I, S, A>;
+>(
+    items: I[],
+    configuration?: itemsjs.Configuration<I, S, A>,
+): itemsjs.ItemsJs<I, S, A>;
 
 export = itemsjs;

@@ -6,8 +6,8 @@ let client = ScopedClient.create("https://api.github.com")
     .header("accept", "application/json")
     .path("user/show/technoweenie")
     .get()((err, resp, body) => {
-        body; // $ExpectType string
-    });
+    body; // $ExpectType string
+});
 
 // Setting the url through multiple steps
 client = ScopedClient.create()
@@ -31,7 +31,8 @@ client.scope("users/technoweenie", (cli) => {
 function handler(err: Error, resp: IncomingMessage, body: string) {}
 
 // Other HTTP methods
-client.query({ login: "technoweenie", token: "..." })
+client
+    .query({ login: "technoweenie", token: "..." })
     .scope("users/technoweenie", (cli) => {
         cli.post("data")(handler);
         cli.put("data")(handler);
@@ -48,9 +49,7 @@ client.post((err, req) => {
 })(handler);
 
 // HTTP Basic Authentication
-client
-    .auth("technoweenie", "...")
-    .get((err, req) => {});
+client.auth("technoweenie", "...").get((err, req) => {});
 
 // Setting a timeout
 client = ScopedClient.create("http://10.255.255.1:9999");

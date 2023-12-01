@@ -29,6 +29,9 @@ ds18b20.sensors((err, ids) => {
     console.log("Sensor IDs", ids);
     ids.forEach((id) => {
         console.log(`Sensor ${id} (decimal) :`, ds18b20.temperatureSync(id));
-        console.log(`Sensor ${id} (hex) :`, ds18b20.temperatureSync(id, { parser: "hex" }));
+        console.log(
+            `Sensor ${id} (hex) :`,
+            ds18b20.temperatureSync(id, { parser: "hex" }),
+        );
     });
 });

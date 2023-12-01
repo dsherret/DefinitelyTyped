@@ -50,7 +50,9 @@ export interface PhotoSwipeProps {
      * Image loaded
      * {@link https://photoswipe.com/documentation/api.html}
      */
-    imageLoadComplete?: ((instance: PhotoSwipe, index: number, item: Item) => void) | undefined;
+    imageLoadComplete?:
+        | ((instance: PhotoSwipe, index: number, item: Item) => void)
+        | undefined;
     /**
      * Photoswipe event listener
      * Viewport size changed
@@ -64,7 +66,9 @@ export interface PhotoSwipeProps {
      * Use it to dynamically change properties
      * {@link https://photoswipe.com/documentation/api.html}
      */
-    gettingData?: ((instance: PhotoSwipe, index: number, item: Item) => void) | undefined;
+    gettingData?:
+        | ((instance: PhotoSwipe, index: number, item: Item) => void)
+        | undefined;
     /**
      * Photoswipe event listener
      * Mouse was used (triggers only once)
@@ -100,7 +104,9 @@ export interface PhotoSwipeProps {
      * Allows overriding vertical margin for individual items
      * {@link https://photoswipe.com/documentation/api.html}
      */
-    parseVerticalMargin?: ((instance: PhotoSwipe, item: Item) => void) | undefined;
+    parseVerticalMargin?:
+        | ((instance: PhotoSwipe, item: Item) => void)
+        | undefined;
     /**
      * Photoswipe event listener
      * Gallery starts closing
@@ -134,28 +140,38 @@ export interface PhotoSwipeProps {
      * Look at the "Implementing inline gallery display" FAQ section for more info.
      * {@link https://photoswipe.com/documentation/api.html}
      */
-    updateScrollOffset?: ((instance: PhotoSwipe, _offset: { x: number; y: number }) => void) | undefined;
+    updateScrollOffset?:
+        | ((instance: PhotoSwipe, _offset: { x: number; y: number }) => void)
+        | undefined;
     /**
      * Photoswipe event listener
      * Allow to call preventDefault on down and up events
      * {@link https://photoswipe.com/documentation/api.html}
      */
     preventDragEvent?:
-        | ((instance: PhotoSwipe, e: MouseEvent, isDown: boolean, preventObj: { prevent: boolean }) => void)
+        | ((
+              instance: PhotoSwipe,
+              e: MouseEvent,
+              isDown: boolean,
+              preventObj: { prevent: boolean },
+          ) => void)
         | undefined;
     /**
      * Photoswipe event listener
      * Share link clicked
      * {@link https://photoswipe.com/documentation/api.html}
      */
-    shareLinkClick?: ((instance: PhotoSwipe, e: MouseEvent, item: Item) => void) | undefined;
+    shareLinkClick?:
+        | ((instance: PhotoSwipe, e: MouseEvent, item: Item) => void)
+        | undefined;
 }
 
 export interface PhotoSwipeGalleryItem extends Item {
     thumbnail: string;
 }
 
-export interface PhotoSwipeGalleryProps extends Omit<PhotoSwipeProps, "isOpen"> {
+export interface PhotoSwipeGalleryProps
+    extends Omit<PhotoSwipeProps, "isOpen"> {
     /**
      * photoswipe item
      * {@link http://photoswipe.com/documentation/getting-started.html}

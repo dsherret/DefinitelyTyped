@@ -1,7 +1,11 @@
 export = CachePolicy;
 
 declare class CachePolicy {
-    constructor(req: CachePolicy.Request, res: CachePolicy.Response, options?: CachePolicy.Options);
+    constructor(
+        req: CachePolicy.Request,
+        res: CachePolicy.Response,
+        options?: CachePolicy.Options,
+    );
 
     /**
      * Returns `true` if the response can be stored in a cache.

@@ -52,7 +52,11 @@ export interface TemplateObject {
 }
 
 export type TemplateType = LiteralUnion<
-    "section" | "subsection" | "progressbar" | "activityIndicator" | "completed",
+    | "section"
+    | "subsection"
+    | "progressbar"
+    | "activityIndicator"
+    | "completed",
     string
 >;
 

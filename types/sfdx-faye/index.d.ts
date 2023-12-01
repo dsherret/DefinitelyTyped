@@ -19,14 +19,12 @@ type AnyJson = JsonPrimitive | JsonCollection;
 /**
  * Any JSON-compatible object.
  */
-interface JsonMap extends Record<string, AnyJson> {
-}
+interface JsonMap extends Record<string, AnyJson> {}
 
 /**
  * Any JSON-compatible array.
  */
-interface JsonArray extends Array<AnyJson> {
-}
+interface JsonArray extends Array<AnyJson> {}
 
 type Message = JsonMap;
 type Callback<T = unknown> = (...args: any[]) => T;
@@ -124,7 +122,10 @@ declare class Client extends EventEmitter {
      * @param channel The topic to subscribe to.
      * @param callback The callback to execute once a message has been received.
      */
-    subscribe(channel: string, callback: (message: JsonMap) => void): CometSubscription;
+    subscribe(
+        channel: string,
+        callback: (message: JsonMap) => void,
+    ): CometSubscription;
 
     unsubscribe(channelName: string, subscr: Subscription): void;
     /**

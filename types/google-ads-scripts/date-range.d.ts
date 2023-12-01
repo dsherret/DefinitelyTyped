@@ -14,5 +14,5 @@ declare namespace GoogleAdsScripts {
         AllTime: "ALL_TIME";
     };
 
-    type DateRangeType = typeof DateRange[keyof typeof DateRange];
+    type DateRangeType = (typeof DateRange)[keyof typeof DateRange];
 }

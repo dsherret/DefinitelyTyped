@@ -4,7 +4,7 @@ import * as Hapi from "hapi";
 const server = new Hapi.Server();
 server.connection({ port: 80 });
 
-const onRequest: Hapi.ServerExtRequestHandler = function(request, reply) {
+const onRequest: Hapi.ServerExtRequestHandler = function (request, reply) {
     // Change all requests to '/test'
     request.setUrl("/test");
     return reply.continue();

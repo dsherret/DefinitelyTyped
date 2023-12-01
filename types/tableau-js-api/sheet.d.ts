@@ -1,4 +1,9 @@
-import { DashboardObjectType, FilterUpdateType, SelectionUpdateType, SheetType } from "./enums";
+import {
+    DashboardObjectType,
+    FilterUpdateType,
+    SelectionUpdateType,
+    SheetType,
+} from "./enums";
 import {
     Filter,
     FilterOptions,
@@ -63,9 +68,14 @@ export class Worksheet extends Sheet {
     getParentStoryPoint(): StoryPoint;
     // methods
     getDataSourcesAsync(): Promise<DataSource[]>;
-    getSummaryDataAsync(options: GetSummaryDataOptions | GetUnderlyingDataOptions): Promise<DataTable>;
+    getSummaryDataAsync(
+        options: GetSummaryDataOptions | GetUnderlyingDataOptions,
+    ): Promise<DataTable>;
     getUnderlyingTablesAsync(): Promise<LogicalTable[]>;
-    getUnderlyingTableDataAsync(tableId: string, options: GetUnderlyingDataOptions): Promise<DataTable>;
+    getUnderlyingTableDataAsync(
+        tableId: string,
+        options: GetUnderlyingDataOptions,
+    ): Promise<DataTable>;
     // filtering
     getFiltersAsync(): Promise<Filter[]>;
     applyFilterAsync(
@@ -74,8 +84,14 @@ export class Worksheet extends Sheet {
         updateType: FilterUpdateType,
         options?: FilterOptions,
     ): Promise<string>;
-    applyRangeFilterAsync(fieldName: string, range: RangeFilterOptions): Promise<string>;
-    applyRelativeDateFilterAsync(fieldName: string, options: RelativeDateFilterOptions): Promise<string>;
+    applyRangeFilterAsync(
+        fieldName: string,
+        range: RangeFilterOptions,
+    ): Promise<string>;
+    applyRelativeDateFilterAsync(
+        fieldName: string,
+        options: RelativeDateFilterOptions,
+    ): Promise<string>;
     applyHierarchicalFilterAsync(
         fieldName: string,
         values: any[] | object,
@@ -85,10 +101,20 @@ export class Worksheet extends Sheet {
     // marks selection
     clearSelectedMarksAsync(): Promise<void>;
     getSelectedMarksAsync(): Promise<Mark[]>;
-    selectMarksAsync(fieldName: string, value: object | object[], updateType: SelectionUpdateType): Promise<void>;
-    selectMarksAsync(fieldValueMap: { [fieldName: string]: any[] }, updateType: SelectionUpdateType): Promise<void>;
+    selectMarksAsync(
+        fieldName: string,
+        value: object | object[],
+        updateType: SelectionUpdateType,
+    ): Promise<void>;
+    selectMarksAsync(
+        fieldValueMap: { [fieldName: string]: any[] },
+        updateType: SelectionUpdateType,
+    ): Promise<void>;
     // tslint:disable-next-line:unified-signatures
-    selectMarksAsync(marks: Mark[], updateType: SelectionUpdateType): Promise<void>;
+    selectMarksAsync(
+        marks: Mark[],
+        updateType: SelectionUpdateType,
+    ): Promise<void>;
 }
 
 export interface GetSummaryDataOptions {

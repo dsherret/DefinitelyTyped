@@ -84,9 +84,19 @@ const parseOperation = ClearBlade.parseOperationQuery(query1.query);
 const parseQuery1 = ClearBlade.parseQuery(query1);
 const parseQuery2 = ClearBlade.parseQuery(query1.query);
 
-ClearBlade.createDevice("devicename", { type: "devicetype" }, false, genericCallback);
+ClearBlade.createDevice(
+    "devicename",
+    { type: "devicetype" },
+    false,
+    genericCallback,
+);
 ClearBlade.deleteDevice("devicename", true, genericCallback);
-ClearBlade.updateDevice("devicename", { type: "devicetype" }, true, genericCallback);
+ClearBlade.updateDevice(
+    "devicename",
+    { type: "devicetype" },
+    true,
+    genericCallback,
+);
 ClearBlade.getDeviceByName("devicename", genericCallback);
 ClearBlade.getAllDevicesForSystem(genericCallback);
 ClearBlade.validateEmailPassword("test@test.com", "password");
@@ -139,7 +149,12 @@ code.getAllServices(genericCallback);
 ///////////////////////////////////////
 // Deployment API invocations
 ///////////////////////////////////////
-deployment.create("deploymentname", "deployment description", {}, genericCallback);
+deployment.create(
+    "deploymentname",
+    "deployment description",
+    {},
+    genericCallback,
+);
 deployment.update("deploymentname", {}, genericCallback);
 deployment.delete("deploymentname", genericCallback);
 deployment.read("deploymentname", genericCallback);
@@ -157,7 +172,14 @@ user.count(query1, genericCallback);
 ///////////////////////////////////////
 // Messaging API invocations
 ///////////////////////////////////////
-messaging.getMessageHistoryWithTimeFrame("topic", 5, 10, 15, 20, genericCallback);
+messaging.getMessageHistoryWithTimeFrame(
+    "topic",
+    5,
+    10,
+    15,
+    20,
+    genericCallback,
+);
 messaging.getMessageHistory("topic", 5, 15, genericCallback);
 messaging.getAndDeleteMessageHistory("topic", 5, 10, 1, 20, genericCallback);
 messaging.getCurrentTopics(genericCallback);

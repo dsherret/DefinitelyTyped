@@ -47,21 +47,24 @@ export interface Config {
      * See `unrtf` manual for available options
      */
     rtf?: extractorExecOpts | undefined;
-    tesseract?: {
-        /**
-         *  A pass-through to tesseract allowing for setting of language for extraction.
-         */
-        lang: string;
-    } | {
-        /**
-         * `tesseract.lang` allows a quick means to provide the most popular tesseract option,
-         * but if you need to configure more options, you can simply pass `cmd`.
-         * `cmd` is the string that matches the command-line options you want to pass to tesseract.
-         * For instance, to provide language and psm,
-         * you would pass `{ tesseract: { cmd:"-l chi_sim -psm 10" } }`
-         */
-        cmd: string;
-    } | undefined;
+    tesseract?:
+        | {
+              /**
+               *  A pass-through to tesseract allowing for setting of language for extraction.
+               */
+              lang: string;
+          }
+        | {
+              /**
+               * `tesseract.lang` allows a quick means to provide the most popular tesseract option,
+               * but if you need to configure more options, you can simply pass `cmd`.
+               * `cmd` is the string that matches the command-line options you want to pass to tesseract.
+               * For instance, to provide language and psm,
+               * you would pass `{ tesseract: { cmd:"-l chi_sim -psm 10" } }`
+               */
+              cmd: string;
+          }
+        | undefined;
     /**
      * This is a proxy options object to the library textract uses for pdf extraction: pdf-text-extract.
      * Options include ownerPassword, userPassword if you are extracting text from password protected PDFs.
@@ -69,33 +72,44 @@ export interface Config {
      * It is not suggested you modify this without understanding what trouble that might get you in.
      * See [this GH issue](https://github.com/dbashford/textract/issues/75) for why textract overrides that library's default.
      */
-    pdftotextOptions?: {
-        firstPage?: number | undefined;
-        lastPage?: number | undefined;
-        resolution?: number | undefined;
-        crop?: {
-            x: number;
-            y: number;
-            w: number;
-            h: number;
-        } | undefined;
-        /**
-         * Do not change unless you know what you are doing!
-         * @default "raw"
-         */
-        layout?: "layout" | "raw" | "htmlmeta" | undefined;
-        /**
-         * @default "UTF-8"
-         */
-        encoding?: "UCS-2" | "ASCII7" | "Latin1" | "UTF-8" | "ZapfDingbats" | "Symbol" | undefined;
-        eol?: "unix" | "dos" | "mac" | undefined;
-        ownerPassword?: string | undefined;
-        userPassword?: string | undefined;
-        /**
-         * @default true
-         */
-        splitPages?: boolean | undefined;
-    } | undefined;
+    pdftotextOptions?:
+        | {
+              firstPage?: number | undefined;
+              lastPage?: number | undefined;
+              resolution?: number | undefined;
+              crop?:
+                  | {
+                        x: number;
+                        y: number;
+                        w: number;
+                        h: number;
+                    }
+                  | undefined;
+              /**
+               * Do not change unless you know what you are doing!
+               * @default "raw"
+               */
+              layout?: "layout" | "raw" | "htmlmeta" | undefined;
+              /**
+               * @default "UTF-8"
+               */
+              encoding?:
+                  | "UCS-2"
+                  | "ASCII7"
+                  | "Latin1"
+                  | "UTF-8"
+                  | "ZapfDingbats"
+                  | "Symbol"
+                  | undefined;
+              eol?: "unix" | "dos" | "mac" | undefined;
+              ownerPassword?: string | undefined;
+              userPassword?: string | undefined;
+              /**
+               * @default true
+               */
+              splitPages?: boolean | undefined;
+          }
+        | undefined;
     /**
      * When extracting HTML, whether or not to include `alt` text with the extracted text.
      * @default false
@@ -115,7 +129,10 @@ export interface URLConfig extends Config {
  * @param filePath path to file
  * @param callback callback
  */
-export function fromFileWithPath(filePath: string, callback: (error: Error | null, text: string) => void): void;
+export function fromFileWithPath(
+    filePath: string,
+    callback: (error: Error | null, text: string) => void,
+): void;
 /**
  * Get text from file by path
  * @param filePath path to file
@@ -208,7 +225,10 @@ export function fromBufferWithName(
  * @param url url as string or object
  * @param callback callback
  */
-export function fromUrl(url: string | URL, callback: (error: Error | null, text: string) => void): void;
+export function fromUrl(
+    url: string | URL,
+    callback: (error: Error | null, text: string) => void,
+): void;
 /**
  * Get text from url
  * @param url url as string or object

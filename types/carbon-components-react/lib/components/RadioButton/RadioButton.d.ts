@@ -8,7 +8,8 @@ export type RadioButtonValue = string | number;
 
 type ExcludedAttributes = "onChange" | "ref" | "type" | "value";
 
-export interface RadioButtonProps extends Omit<ReactInputAttr, ExcludedAttributes> {
+export interface RadioButtonProps
+    extends Omit<ReactInputAttr, ExcludedAttributes> {
     defaultChecked?: boolean | undefined;
     hideLabel?: boolean | undefined;
     /**

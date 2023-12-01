@@ -39,7 +39,10 @@ declare namespace Router {
         host?: string | RegExp | undefined;
     }
 
-    interface RouterParamContext<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext> {
+    interface RouterParamContext<
+        StateT = Koa.DefaultState,
+        ContextT = Koa.DefaultContext,
+    > {
         /**
          * url params
          */
@@ -55,17 +58,36 @@ declare namespace Router {
         _matchedRouteName: string | undefined;
     }
 
-    type RouterContext<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext, BodyT = unknown> =
-        Koa.ParameterizedContext<StateT, ContextT & RouterParamContext<StateT, ContextT>, BodyT>;
-
-    type Middleware<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext, BodyT = unknown> = Koa.Middleware<
+    type RouterContext<
+        StateT = Koa.DefaultState,
+        ContextT = Koa.DefaultContext,
+        BodyT = unknown,
+    > = Koa.ParameterizedContext<
         StateT,
         ContextT & RouterParamContext<StateT, ContextT>,
         BodyT
     >;
 
-    interface ParamMiddleware<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext, BodyT = unknown> {
-        (param: string, ctx: RouterContext<StateT, ContextT, BodyT>, next: Koa.Next): any;
+    type Middleware<
+        StateT = Koa.DefaultState,
+        ContextT = Koa.DefaultContext,
+        BodyT = unknown,
+    > = Koa.Middleware<
+        StateT,
+        ContextT & RouterParamContext<StateT, ContextT>,
+        BodyT
+    >;
+
+    interface ParamMiddleware<
+        StateT = Koa.DefaultState,
+        ContextT = Koa.DefaultContext,
+        BodyT = unknown,
+    > {
+        (
+            param: string,
+            ctx: RouterContext<StateT, ContextT, BodyT>,
+            next: Koa.Next,
+        ): any;
     }
 
     interface RouterAllowedMethodsOptions {
@@ -220,7 +242,9 @@ declare class Router<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext> {
      * sequentially, requests start at the first middleware and work their way
      * "down" the middleware stack.
      */
-    use(...middleware: Array<Router.Middleware<StateT, ContextT>>): Router<StateT, ContextT>;
+    use(
+        ...middleware: Array<Router.Middleware<StateT, ContextT>>
+    ): Router<StateT, ContextT>;
     /**
      * Use given middleware.
      *
@@ -488,7 +512,11 @@ declare class Router<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext> {
      * });
      * ```
      */
-    redirect(source: string, destination: string, code?: number): Router<StateT, ContextT>;
+    redirect(
+        source: string,
+        destination: string,
+        code?: number,
+    ): Router<StateT, ContextT>;
 
     /**
      * Create and register a route.
@@ -496,7 +524,9 @@ declare class Router<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext> {
     register(
         path: string | RegExp,
         methods: string[],
-        middleware: Router.Middleware<StateT, ContextT> | Array<Router.Middleware<StateT, ContextT>>,
+        middleware:
+            | Router.Middleware<StateT, ContextT>
+            | Array<Router.Middleware<StateT, ContextT>>,
         opts?: Router.LayerOptions,
     ): Router.Layer;
 
@@ -523,7 +553,11 @@ declare class Router<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext> {
      * router.url('user', { id: 3 }, { query: "limit=1" });
      * // => "/users/3?limit=1"
      */
-    url(name: string, params?: any, options?: Router.UrlOptionsQuery): Error | string;
+    url(
+        name: string,
+        params?: any,
+        options?: Router.UrlOptionsQuery,
+    ): Error | string;
 
     /**
      * Match given `path` and return corresponding routes.

@@ -78,9 +78,18 @@ cal.itermonthdays(2014, node_calendar.FEBRUARY).forEach(assertIsNumber);
 cal.itermonthdays2(2013, node_calendar.MARCH).forEach(assertDayOfWeekMonth);
 cal.iterweekdays().forEach(assertIsNumber);
 
-assertMonthGrid(cal.monthdatescalendar(2012, node_calendar.APRIL), assertIsDate);
-assertMonthGrid(cal.monthdays2calendar(2011, node_calendar.MAY), assertDayOfWeekMonth);
-assertMonthGrid(cal.monthdayscalendar(2010, node_calendar.JUNE), assertIsNumber);
+assertMonthGrid(
+    cal.monthdatescalendar(2012, node_calendar.APRIL),
+    assertIsDate,
+);
+assertMonthGrid(
+    cal.monthdays2calendar(2011, node_calendar.MAY),
+    assertDayOfWeekMonth,
+);
+assertMonthGrid(
+    cal.monthdayscalendar(2010, node_calendar.JUNE),
+    assertIsNumber,
+);
 
 assertYearGrid(cal.yeardatescalendar(2009, 3), assertIsDate);
 assertYearGrid(cal.yeardays2calendar(2008, 2), assertDayOfWeekMonth);
@@ -100,7 +109,14 @@ assertIsNumber(node_calendar.leapdays(2000, 2010));
 
 node_calendar.monthrange(2015, node_calendar.JANUARY).forEach(assertIsNumber);
 
-var timegmt: [number, number, number, number, number, number] = [2014, node_calendar.JULY, 7, 12, 41, 59];
+var timegmt: [number, number, number, number, number, number] = [
+    2014,
+    node_calendar.JULY,
+    7,
+    12,
+    41,
+    59,
+];
 assertIsNumber(node_calendar.timegm(timegmt));
 
 // FUNCTIONS ------------------------------------------------------------------
@@ -127,16 +143,25 @@ function assertWeekRow<T>(row: IWeekRow<T>, assertItemType: (item: T) => void) {
     row.forEach(assertItemType);
 }
 
-function assertMonthGrid<T>(grid: IMonthGrid<T>, assertItemType: (item: T) => void) {
-    grid.forEach(wr => assertWeekRow(wr, assertItemType));
+function assertMonthGrid<T>(
+    grid: IMonthGrid<T>,
+    assertItemType: (item: T) => void,
+) {
+    grid.forEach((wr) => assertWeekRow(wr, assertItemType));
 }
 
-function assertMonthRow<T>(row: IMonthRow<T>, assertItemType: (item: T) => void) {
-    row.forEach(mg => assertMonthGrid(mg, assertItemType));
+function assertMonthRow<T>(
+    row: IMonthRow<T>,
+    assertItemType: (item: T) => void,
+) {
+    row.forEach((mg) => assertMonthGrid(mg, assertItemType));
 }
 
-function assertYearGrid<T>(grid: IYearGrid<T>, assertItemType: (item: T) => void) {
-    grid.forEach(mr => assertMonthRow(mr, assertItemType));
+function assertYearGrid<T>(
+    grid: IYearGrid<T>,
+    assertItemType: (item: T) => void,
+) {
+    grid.forEach((mr) => assertMonthRow(mr, assertItemType));
 }
 
 function assert(condition: boolean, msg?: string): void {
@@ -145,6 +170,12 @@ function assert(condition: boolean, msg?: string): void {
 }
 
 function assertIsError(error: Error) {
-    assert(typeof error.name == "string", "Error name should exist and be a string");
-    assert(typeof error.message == "string", "Error message should exist and be a string");
+    assert(
+        typeof error.name == "string",
+        "Error name should exist and be a string",
+    );
+    assert(
+        typeof error.message == "string",
+        "Error message should exist and be a string",
+    );
 }

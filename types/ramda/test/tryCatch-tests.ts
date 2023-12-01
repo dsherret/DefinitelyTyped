@@ -1,12 +1,12 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     /* Type inference when catcher is typed */
     R.tryCatch((x: number) => x, R.F)(5); // $ExpectType number | false
 
     R.tryCatch(
         (x: number) => x + 1,
-        err => err,
+        (err) => err,
     )(6);
 
     R.tryCatch(
@@ -19,7 +19,7 @@ import * as R from "ramda";
     // string cannot be assigned to number
     R.tryCatch(
         (x: number) => x + 1,
-        err => err,
+        (err) => err,
         // @ts-expect-error
     )("string");
 
@@ -39,7 +39,7 @@ import * as R from "ramda";
 
     // With currying
 
-    R.tryCatch((x: number) => x + 1)(err => err)(2); // $ExpectType unknown
+    R.tryCatch((x: number) => x + 1)((err) => err)(2); // $ExpectType unknown
     R.tryCatch((x: number) => x + 1)((err, x) => x)(2); // $ExpectType number
 
     R.tryCatch((x: number) => x, R.F); // $ExpectType (() => false) | ((x: number) => number)
@@ -94,11 +94,12 @@ import * as R from "ramda";
 
     // $ExpectType (() => "some-error") | (<Y>(y: Y) => { x: "arg"; y: Y; })
     const gtf = R.tryCatch(
-        <X>(x: X) => <Y>(y: Y) => ({ x, y }),
+        <X>(x: X) =>
+            <Y>(y: Y) => ({ x, y }),
         () => () => "some-error" as const,
     )("arg" as const);
 
     gtf("arg2" as const); // $ExpectType "some-error" | { x: "arg"; y: "arg2"; }
 
     R.tryCatch(R.and, R.always(undefined))(true); // $ExpectType (<B>(b: B) => boolean | B) | undefined
-});
+};

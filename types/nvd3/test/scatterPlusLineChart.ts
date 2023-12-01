@@ -1,13 +1,14 @@
 namespace nvd3_test_scatterPlusLineChart {
     var chart;
-    nv.addGraph(function() {
-        chart = nv.models.scatterChart()
+    nv.addGraph(function () {
+        chart = nv.models
+            .scatterChart()
             .showDistX(true)
             .showDistY(true)
             .duration(300)
             .color(d3.scale.category10().range());
 
-        chart.dispatch.on("renderEnd", function() {
+        chart.dispatch.on("renderEnd", function () {
             console.log("render complete");
         });
 
@@ -19,13 +20,14 @@ namespace nvd3_test_scatterPlusLineChart {
             .call(chart);
 
         nv.utils.windowResize(chart.update);
-        chart.dispatch.on("stateChange", function(e) {
+        chart.dispatch.on("stateChange", function (e) {
             nv.log("New State:", JSON.stringify(e));
         });
         return chart;
     });
 
-    function randomData(groups, points) { // # groups,# points per group
+    function randomData(groups, points) {
+        // # groups,# points per group
         var data = [],
             shapes = ["circle"],
             random = d3.random.normal();
@@ -34,8 +36,8 @@ namespace nvd3_test_scatterPlusLineChart {
             data.push({
                 key: "Group " + i,
                 values: [],
-                slope: Math.random() - .01,
-                intercept: Math.random() - .5,
+                slope: Math.random() - 0.01,
+                intercept: Math.random() - 0.5,
             });
 
             for (var j = 0; j < points; j++) {

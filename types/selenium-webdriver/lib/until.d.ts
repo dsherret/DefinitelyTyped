@@ -1,4 +1,13 @@
-import { Alert, By, ByHash, Condition, Locator, WebDriver, WebElement, WebElementCondition } from "../";
+import {
+    Alert,
+    By,
+    ByHash,
+    Condition,
+    Locator,
+    WebDriver,
+    WebElement,
+    WebElementCondition,
+} from "../";
 
 /**
  * Creates a condition that will wait until the input driver is able to switch
@@ -20,7 +29,12 @@ import { Alert, By, ByHash, Condition, Locator, WebDriver, WebElement, WebElemen
  * @return {!Condition<boolean>} A new condition.
  */
 export function ableToSwitchToFrame(
-    frame: number | WebElement | By | ((webdriver: WebDriver) => WebElement) | ByHash,
+    frame:
+        | number
+        | WebElement
+        | By
+        | ((webdriver: WebDriver) => WebElement)
+        | ByHash,
 ): Condition<boolean>;
 
 /**
@@ -104,7 +118,10 @@ export function elementLocated(locator: Locator): WebElementCondition;
  * @return {!WebElementCondition} The new condition.
  * @see WebDriver#getText
  */
-export function elementTextContains(element: WebElement, substr: string): WebElementCondition;
+export function elementTextContains(
+    element: WebElement,
+    substr: string,
+): WebElementCondition;
 
 /**
  * Creates a condition that will wait for the given element's
@@ -116,7 +133,10 @@ export function elementTextContains(element: WebElement, substr: string): WebEle
  * @return {!WebElementCondition} The new condition.
  * @see WebDriver#getText
  */
-export function elementTextIs(element: WebElement, text: string): WebElementCondition;
+export function elementTextIs(
+    element: WebElement,
+    text: string,
+): WebElementCondition;
 
 /**
  * Creates a condition that will wait for the given element's
@@ -128,7 +148,10 @@ export function elementTextIs(element: WebElement, text: string): WebElementCond
  * @return {!WebElementCondition} The new condition.
  * @see WebDriver#getText
  */
-export function elementTextMatches(element: WebElement, regex: RegExp): WebElementCondition;
+export function elementTextMatches(
+    element: WebElement,
+    regex: RegExp,
+): WebElementCondition;
 
 /**
  * Creates a condition that will loop until at least one element is

@@ -109,7 +109,9 @@ declare namespace ChannelIO {
         hidePopup?: boolean | undefined;
     }
 
-    type CallbackParams<T> = [error: null, data: T] | [error: APIError, data: null];
+    type CallbackParams<T> =
+        | [error: null, data: T]
+        | [error: APIError, data: null];
 
     interface ErrorReason {
         message: string;
@@ -136,7 +138,10 @@ declare namespace ChannelIO {
          * @param callback - a callback function which will be called after boot.
          * @see https://developers.channel.io/docs/web-channel-io#boot
          */
-        boot: (option: BootOption, callback?: (...params: CallbackParams<User>) => void) => void;
+        boot: (
+            option: BootOption,
+            callback?: (...params: CallbackParams<User>) => void,
+        ) => void;
         /**
          * Shutdown channel plugin
          *
@@ -261,7 +266,9 @@ declare namespace ChannelIO {
          *
          * @see https://developers.channel.io/docs/web-channel-io#onfollowupchanged
          */
-        onFollowUpChanged: (callback: (profile: FollowUpProfile) => void) => void;
+        onFollowUpChanged: (
+            callback: (profile: FollowUpProfile) => void,
+        ) => void;
         /**
          * @deprecated Recommend to use onChatCreated instead.
          */
@@ -307,21 +314,30 @@ declare namespace ChannelIO {
          *
          * @see https://developers.channel.io/docs/web-channel-io#updateuser
          */
-        updateUser: (profile: Partial<UpdateUserOption>, callback?: (...params: CallbackParams<User>) => void) => void;
+        updateUser: (
+            profile: Partial<UpdateUserOption>,
+            callback?: (...params: CallbackParams<User>) => void,
+        ) => void;
         /**
          * Add tags.
          *
          * @param tags - Tags to be added. Duplicate values are maintained. Combined tag list cannot exceed 10. Null or empty list is not allowed. Always lower case.
          * @see https://developers.channel.io/docs/web-channel-io#addtags
          */
-        addTags: (tags: Tags, callback?: (...params: CallbackParams<User>) => void) => void;
+        addTags: (
+            tags: Tags,
+            callback?: (...params: CallbackParams<User>) => void,
+        ) => void;
         /**
          * Remove tags.
          *
          * @param tags Tags to be erased. If there is no match tag value, it is ignored. Null or empty list is not allowed.
          * @see https://developers.channel.io/docs/web-channel-io#removetags
          */
-        removeTags: (tags: Tags, callback?: (...params: CallbackParams<User>) => void) => void;
+        removeTags: (
+            tags: Tags,
+            callback?: (...params: CallbackParams<User>) => void,
+        ) => void;
         /**
          * Set page to be used instead of canonical url .
          * setPage with null or undefined is different from resetPage. (that will send page data with null)
@@ -352,9 +368,10 @@ declare namespace ChannelIO {
     }
 
     interface Singleton {
-        <Command extends Commands>(command: Command, ...params: Parameters<CommandSignature[Command]>): ReturnType<
-            CommandSignature[Command]
-        >;
+        <Command extends Commands>(
+            command: Command,
+            ...params: Parameters<CommandSignature[Command]>
+        ): ReturnType<CommandSignature[Command]>;
     }
 
     type Tags = [string, ...string[]];

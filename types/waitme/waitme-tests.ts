@@ -15,7 +15,8 @@ $("#container").waitMe({
     source: "",
 });
 
-$("#container").waitMe()
+$("#container")
+    .waitMe()
     .on("close", () => {
         // code here
     });

@@ -25,12 +25,16 @@ declare module "redux-optimistic-ui" {
     /**
      * Enhances and wraps your root reducer into optimistic state
      */
-    export function optimistic<TState>(reducer: Reducer<TState>): Reducer<OptimisticState<TState>>;
+    export function optimistic<TState>(
+        reducer: Reducer<TState>,
+    ): Reducer<OptimisticState<TState>>;
 
     /**
      * Returns your current state or state if it wasn't enhanced yet
      */
-    export function ensureState<TState>(state: OptimisticState<TState> | TState): TState;
+    export function ensureState<TState>(
+        state: OptimisticState<TState> | TState,
+    ): TState;
 
     /**
      * Optimistic action slice

@@ -1,9 +1,7 @@
 import PouchDB = require("pouchdb-core");
 
-function isString(someString: string) {
-}
-function isNumber(someNumber: number) {
-}
+function isString(someString: string) {}
+function isNumber(someNumber: number) {}
 
 function testAllDocs() {
     const db = new PouchDB<{ foo: number }>();
@@ -26,27 +24,29 @@ function testAllDocs() {
 
     db.allDocs({ startkey: "a", endkey: "b" });
     db.allDocs({ startkey: "a", endkey: "b", inclusive_end: true });
-    db.allDocs({ keys: ["a", "b", "c"] }).then(({ offset, total_rows, rows }) => {
-        isNumber(offset);
-        isNumber(total_rows);
+    db.allDocs({ keys: ["a", "b", "c"] }).then(
+        ({ offset, total_rows, rows }) => {
+            isNumber(offset);
+            isNumber(total_rows);
 
-        rows.forEach(row => {
-            if ("error" in row) {
-                isString(row.key);
-            } else {
-                const { id, key, value, doc } = row;
+            rows.forEach((row) => {
+                if ("error" in row) {
+                    isString(row.key);
+                } else {
+                    const { id, key, value, doc } = row;
 
-                isString(id);
-                isString(key);
-                isString(value.rev);
+                    isString(id);
+                    isString(key);
+                    isString(value.rev);
 
-                // check document property
-                isNumber(doc!.foo);
-                isString(doc!._id);
-                isString(doc!._rev);
-            }
-        });
-    });
+                    // check document property
+                    isNumber(doc!.foo);
+                    isString(doc!._id);
+                    isString(doc!._rev);
+                }
+            });
+        },
+    );
     db.allDocs({ key: "a" });
     db.allDocs({
         attachments: true,
@@ -74,7 +74,7 @@ function testBulkDocs() {
     };
 
     db.bulkDocs([model, model2]).then((result) => {
-        result.forEach(result => {
+        result.forEach((result) => {
             if (!isError(result)) {
                 const { ok, id, rev } = result;
                 isString(id);
@@ -83,13 +83,18 @@ function testBulkDocs() {
         });
     });
 
-    db.bulkDocs([model, model2], null, (error, response) => {
-    });
+    db.bulkDocs([model, model2], null, (error, response) => {});
 }
 
 function testBulkGet() {
     const db = new PouchDB();
-    db.bulkGet({ docs: [{ id: "a", rev: "b" }, { id: "b", rev: "c" }, { id: "c", rev: "d" }] }).then((response) => {
+    db.bulkGet({
+        docs: [
+            { id: "a", rev: "b" },
+            { id: "b", rev: "c" },
+            { id: "c", rev: "d" },
+        ],
+    }).then((response) => {
         const results = response.results;
         results.forEach((result) => {
             const id = result.id;
@@ -98,7 +103,13 @@ function testBulkGet() {
         });
     });
     db.bulkGet(
-        { docs: [{ id: "a", rev: "b" }, { id: "b", rev: "c" }, { id: "c", rev: "d" }] },
+        {
+            docs: [
+                { id: "a", rev: "b" },
+                { id: "b", rev: "c" },
+                { id: "c", rev: "d" },
+            ],
+        },
         (error, response) => {},
     );
 }
@@ -121,11 +132,10 @@ function testCompact() {
 function testDestroy() {
     const db = new PouchDB();
 
-    db.destroy({}, (error) => {
-    });
-    db.destroy().then(() => {
-    }).catch((error) => {
-    });
+    db.destroy({}, (error) => {});
+    db.destroy()
+        .then(() => {})
+        .catch((error) => {});
 }
 
 function testBasics() {
@@ -142,29 +152,23 @@ function testBasics() {
     db.post(model).then((result) => {
         isString(result.id);
     });
-    db.post(model, null, (error, response) => {
-    });
+    db.post(model, null, (error, response) => {});
 
     db.get(id).then((result) => {
         model = result;
         isString(result._id);
         isString(result._rev);
     });
-    db.get(id, null, (error, result) => {
-    });
+    db.get(id, null, (error, result) => {});
 
-    db.put(model).then((error) => {
-    });
-    db.put(model, null, (error) => {
-    });
+    db.put(model).then((error) => {});
+    db.put(model, null, (error) => {});
 
-    db.info().then((info) => {
-    });
-    db.info((error, result) => {
-    });
+    db.info().then((info) => {});
+    db.info((error, result) => {});
 
     // "Round-trippable": can put back a document from get
-    db.get("id").then(doc => db.put(doc));
+    db.get("id").then((doc) => db.put(doc));
 
     PouchDB.debug.enable("*");
 }
@@ -227,7 +231,8 @@ function testChanges() {
             const _changes: Array<{ rev: string }> = change.changes;
             const _foo: string = change.doc!.foo;
             const _deleted: boolean | undefined = change.doc!._deleted;
-            const _attachments: PouchDB.Core.Attachments | undefined = change.doc!._attachments;
+            const _attachments: PouchDB.Core.Attachments | undefined =
+                change.doc!._attachments;
         })
         .on("complete", (info) => {
             const _status: string = info.status;
@@ -240,7 +245,8 @@ function testChanges() {
             const _seq_couch20: string = change.seq as string;
             const _changes: Array<{ rev: string }> = change.changes;
             const _deleted: boolean | undefined = change.doc!._deleted;
-            const _attachments: PouchDB.Core.Attachments | undefined = change.doc!._attachments;
+            const _attachments: PouchDB.Core.Attachments | undefined =
+                change.doc!._attachments;
         });
 
     db.changes({
@@ -293,7 +299,10 @@ function testPlugins() {
         getFoo: () => 42,
     };
     const PouchDBWithPlugin = PouchDB.plugin(plugin);
-    const PouchDBWithPluginCb = PouchDB.plugin<{ foo: number; getFoo: () => number }>(db => {
+    const PouchDBWithPluginCb = PouchDB.plugin<{
+        foo: number;
+        getFoo: () => number;
+    }>((db) => {
         db.foo = 42;
         db.getFoo = () => 42;
     });
@@ -331,27 +340,33 @@ function heterogeneousGenericsDatabase(db: PouchDB.Database) {
         meow: "roar",
     });
 
-    db.allDocs<Cat>({ startkey: "cat/", endkey: "cat/\uffff", include_docs: true })
-        .then(cats => {
-            for (const row of cats.rows) {
-                if (row.doc) {
-                    row.doc.meow; // $ExpectType string
+    db.allDocs<Cat>({
+        startkey: "cat/",
+        endkey: "cat/\uffff",
+        include_docs: true,
+    }).then((cats) => {
+        for (const row of cats.rows) {
+            if (row.doc) {
+                row.doc.meow; // $ExpectType string
 
-                    // Round-trip test
-                    db.put(row.doc);
-                    db.put<Cat>(row.doc);
-                    // Generic strictness test
-                    // @ts-expect-error
-                    db.put<Boot>(row.doc);
-                }
+                // Round-trip test
+                db.put(row.doc);
+                db.put<Cat>(row.doc);
+                // Generic strictness test
+                // @ts-expect-error
+                db.put<Boot>(row.doc);
             }
-        });
-    db.allDocs<Boot>({ startkey: "boot/", endkey: "boot/\uffff", include_docs: true })
-        .then(boots => {
-            for (const row of boots.rows) {
-                if (row.doc) {
-                    row.doc.thud; // $ExpectType boolean
-                }
+        }
+    });
+    db.allDocs<Boot>({
+        startkey: "boot/",
+        endkey: "boot/\uffff",
+        include_docs: true,
+    }).then((boots) => {
+        for (const row of boots.rows) {
+            if (row.doc) {
+                row.doc.thud; // $ExpectType boolean
             }
-        });
+        }
+    });
 }

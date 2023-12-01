@@ -12,7 +12,7 @@ twemojiParser.toCodePoints("\uD83D\uDE03");
 // $ExpectType string[]
 const codePoints = toCodePoints("\uD83D\uDE03");
 
-entities.forEach(entity => {
+entities.forEach((entity) => {
     /*
     entities = [
     {

@@ -34,7 +34,12 @@ declare namespace SRP {
      *
      * @returns {Buffer}
      */
-    export function computeVerifier(params: Params, salt: Buffer, I: Buffer, P: Buffer): Buffer;
+    export function computeVerifier(
+        params: Params,
+        salt: Buffer,
+        I: Buffer,
+        P: Buffer,
+    ): Buffer;
 
     /**
      * Generate a random key.
@@ -42,7 +47,10 @@ declare namespace SRP {
      * @param {number} bytes length of key (default=32)
      * @param {function} callback function to call with err,key
      */
-    export function genKey(bytes: number, callback: (error: Error, key: Buffer) => void): void;
+    export function genKey(
+        bytes: number,
+        callback: (error: Error, key: Buffer) => void,
+    ): void;
 
     /**
      * Generate a random 32-byte key.
@@ -52,7 +60,13 @@ declare namespace SRP {
     export function genKey(callback: (error: Error, key: Buffer) => void): void;
 
     export class Client {
-        constructor(params: Params, salt: Buffer, identity: Buffer, password: Buffer, secret1: Buffer);
+        constructor(
+            params: Params,
+            salt: Buffer,
+            identity: Buffer,
+            password: Buffer,
+            secret1: Buffer,
+        );
         computeA(): Buffer;
         setB(B: Buffer): void;
         computeM1(): Buffer;

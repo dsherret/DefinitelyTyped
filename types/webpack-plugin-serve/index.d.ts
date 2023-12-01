@@ -2,8 +2,14 @@
 
 import { Options as HistoryApiFallbackOptions } from "connect-history-api-fallback";
 import type { GlobbyOptions } from "globby";
-import { Options as HttpProxyMiddlewareConfig, RequestHandler as Proxy } from "http-proxy-middleware";
-import { SecureServerOptions as Http2SecureServerOptions, ServerOptions as Http2ServerOptions } from "http2";
+import {
+    Options as HttpProxyMiddlewareConfig,
+    RequestHandler as Proxy,
+} from "http-proxy-middleware";
+import {
+    SecureServerOptions as Http2SecureServerOptions,
+    ServerOptions as Http2ServerOptions,
+} from "http2";
 import { ServerOptions as HttpsServerOptions } from "https";
 import * as Koa from "koa";
 import { CompressOptions } from "koa-compress";
@@ -24,12 +30,14 @@ export interface StaticObject {
 }
 
 export interface WebpackPluginServeOptions {
-    client?: {
-        address?: string | undefined;
-        protocol?: "ws" | "wss" | undefined;
-        retry?: boolean | undefined;
-        silent?: boolean | undefined;
-    } | undefined;
+    client?:
+        | {
+              address?: string | undefined;
+              protocol?: "ws" | "wss" | undefined;
+              retry?: boolean | undefined;
+              silent?: boolean | undefined;
+          }
+        | undefined;
     compress?: boolean | undefined;
     historyFallback?: boolean | HistoryApiFallbackOptions | undefined;
     hmr?: boolean | "refresh-on-failure" | undefined;
@@ -37,17 +45,19 @@ export interface WebpackPluginServeOptions {
     http2?: boolean | Http2ServerOptions | Http2SecureServerOptions | undefined;
     https?: HttpsServerOptions | undefined;
     liveReload?: boolean | undefined;
-    log?: {
-        level: "trace" | "debug" | "info" | "warn" | "error";
-        timestamp?: boolean | undefined;
-    } | undefined;
+    log?:
+        | {
+              level: "trace" | "debug" | "info" | "warn" | "error";
+              timestamp?: boolean | undefined;
+          }
+        | undefined;
     middleware?: ((app: Koa, builtins: Builtins) => void) | undefined;
     open?:
         | boolean
         | {
-            wait?: boolean | undefined;
-            app?: string | readonly string[] | undefined;
-        }
+              wait?: boolean | undefined;
+              app?: string | readonly string[] | undefined;
+          }
         | undefined;
     port?: number | Promise<number> | undefined;
     progress?: boolean | "minimal" | undefined;

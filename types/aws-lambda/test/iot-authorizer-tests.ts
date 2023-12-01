@@ -51,21 +51,29 @@ const iotCustomAuthorizerResult: IoTCustomAuthorizerResult = {
                 {
                     Action: "iot:Publish",
                     Effect: "Allow",
-                    Resource: "arn:aws:iot:us-east-1:<your_aws_account_id>:topic/customauthtesting",
+                    Resource:
+                        "arn:aws:iot:us-east-1:<your_aws_account_id>:topic/customauthtesting",
                 },
             ],
         },
     ],
 };
 
-const iotCustomAuthorizerHandler: IoTCustomAuthorizerHandler = async (event, context, callback) => {
+const iotCustomAuthorizerHandler: IoTCustomAuthorizerHandler = async (
+    event,
+    context,
+    callback,
+) => {
     strOrUndefined = event.token;
     bool = event.signatureVerified;
     const protocols: IoTProtocolType[] = event.protocols;
     obj = event.protocolData;
-    const protocolDataTLS: IoTProtocolDataTLS | undefined = event.protocolData.tls;
-    const protocolDataHTTP: IoTProtocolDataHTTP | undefined = event.protocolData.http;
-    const protocolDataMQTT: IoTProtocolDataMQTT | undefined = event.protocolData.mqtt;
+    const protocolDataTLS: IoTProtocolDataTLS | undefined =
+        event.protocolData.tls;
+    const protocolDataHTTP: IoTProtocolDataHTTP | undefined =
+        event.protocolData.http;
+    const protocolDataMQTT: IoTProtocolDataMQTT | undefined =
+        event.protocolData.mqtt;
     obj = event.connectionMetadata;
     str = event.connectionMetadata.id;
 
@@ -109,7 +117,12 @@ function createPolicyDocument(): PolicyDocument {
 
     // Bad Resource with valid Principal
     // @ts-expect-error
-    statement = { Effect: str, Action: str, Principal: { Service: str }, Resource: 123 };
+    statement = {
+        Effect: str,
+        Action: str,
+        Principal: { Service: str },
+        Resource: 123,
+    };
 
     // Bad principal with valid Resource
     // @ts-expect-error
@@ -146,7 +159,10 @@ function createPolicyDocument(): PolicyDocument {
 
     statement = { Effect: str, NotAction: str, NotResource: str };
 
-    let policyDocument: PolicyDocument = { Version: str, Statement: [statement] };
+    let policyDocument: PolicyDocument = {
+        Version: str,
+        Statement: [statement],
+    };
 
     policyDocument = { Version: str, Statement: [statement, statement] };
 

@@ -14,7 +14,11 @@ export class LargeObject {
     readAsync(length: number): Promise<Buffer>;
     write(buffer: Buffer, callback?: (error: Error) => void): void;
     writeAsync(buffer: Buffer): Promise<any>;
-    seek(position: number, ref: number, callback?: (error: Error, position: number) => void): void;
+    seek(
+        position: number,
+        ref: number,
+        callback?: (error: Error, position: number) => void,
+    ): void;
     seekAsync(position: number, ref: number): Promise<number>;
     tell(callback: (error: Error, position: number) => void): void;
     tellAsync(): Promise<number>;
@@ -36,7 +40,11 @@ export class LargeObjectManager {
     static readonly READ: number;
     static readonly READWRITE: number;
     constructor(options: LargeObjectManagerSettings | object);
-    open(oid: number, mode: number, callback: (error: Error, result: LargeObject) => void): void;
+    open(
+        oid: number,
+        mode: number,
+        callback: (error: Error, result: LargeObject) => void,
+    ): void;
     openAsync(oid: number, mode: number): Promise<LargeObject>;
     create(callback: (error: Error, oid: number) => void): void;
     createAsync(): Promise<number>;
@@ -45,12 +53,17 @@ export class LargeObjectManager {
         bufferSize: number,
         callback: (error: Error, size: number, stream: ReadStream) => void,
     ): void;
-    openAndReadableStreamAsync(oid: number, bufferSize?: number): Promise<[number, ReadStream]>;
+    openAndReadableStreamAsync(
+        oid: number,
+        bufferSize?: number,
+    ): Promise<[number, ReadStream]>;
     createAndWritableStream(
         bufferSize?: number,
         callback?: (error: Error, oid: number, stream: WriteStream) => void,
     ): void;
-    createAndWritableStreamAsync(bufferSize?: number): Promise<[number, WriteStream]>;
+    createAndWritableStreamAsync(
+        bufferSize?: number,
+    ): Promise<[number, WriteStream]>;
     unlink(oid: number, callback?: (error: Error) => void): void;
     unlinkAsync(oid: number): Promise<any>;
 }

@@ -16,7 +16,11 @@ export interface RandomPasswordCharactersSet {
 
 export interface RandomPasswordOptions {
     avoidAmbiguous?: boolean | undefined;
-    characters?: string | RandomPasswordCharactersSet | Array<(RandomPasswordCharactersSet | string)> | undefined;
+    characters?:
+        | string
+        | RandomPasswordCharactersSet
+        | Array<RandomPasswordCharactersSet | string>
+        | undefined;
     length?: number | undefined;
     predicate?: ((result: string) => boolean) | undefined;
 }

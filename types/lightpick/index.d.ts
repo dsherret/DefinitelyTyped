@@ -30,7 +30,11 @@ declare class Lightpick {
     /**
      * Set date range.
      */
-    setDateRange(start?: Lightpick.InputDate, end?: Lightpick.InputDate, preventOnSelect?: boolean): void;
+    setDateRange(
+        start?: Lightpick.InputDate,
+        end?: Lightpick.InputDate,
+        preventOnSelect?: boolean,
+    ): void;
 
     setDisableDates(dates: readonly Lightpick.DisabledDate[]): void;
 

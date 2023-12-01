@@ -19,7 +19,10 @@ myCodeMirror.foldCode(myCodeMirror.getCursor(), {
 });
 
 myCodeMirror.foldCode(myCodeMirror.getCursor(), CodeMirror.fold.auto);
-myCodeMirror.foldCode(myCodeMirror.getCursor(), CodeMirror.fold.combine(rangeFinder, CodeMirror.fold.auto));
+myCodeMirror.foldCode(
+    myCodeMirror.getCursor(),
+    CodeMirror.fold.combine(rangeFinder, CodeMirror.fold.auto),
+);
 
 const myKeyMap: CodeMirror.KeyMap = {
     test: CodeMirror.commands.fold,

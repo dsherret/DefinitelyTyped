@@ -19,14 +19,14 @@ gantt1.change_view_mode(Gantt.VIEW_MODE.WEEK);
 gantt1.refresh(tasks);
 
 new Gantt("#gantt", tasks, {
-    on_click: task => {},
+    on_click: (task) => {},
     on_date_change: (task, start, end) => {},
     on_progress_change: (task, progress) => {},
-    on_view_change: mode => {},
+    on_view_change: (mode) => {},
 });
 
 new Gantt("#gantt", tasks, {
-    custom_popup_html: task => {
+    custom_popup_html: (task) => {
         const end_date = task._end.toDateString();
         return `
         <div class="details-container">

@@ -73,7 +73,10 @@ export class Agent {
 
 export function configureAgent(options: Options): Agent;
 export function instrumentSchema(schema: GraphQLSchema): void;
-export function koaMiddleware(): (context: Context, next: () => Promise<any>) => void;
+export function koaMiddleware(): (
+    context: Context,
+    next: () => Promise<any>,
+) => void;
 export function middleware(): (req: Request, res: Response, next?: any) => void;
 export function instrumentHapiServer(server: Server): void;
 export function context(req: Request): any;

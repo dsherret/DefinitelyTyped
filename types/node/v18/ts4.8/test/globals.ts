@@ -46,7 +46,7 @@ declare var RANDOM_GLOBAL_VARIABLE: true;
 
 // fetch
 {
-    fetch("https://example.com").then(response => {
+    fetch("https://example.com").then((response) => {
         response.arrayBuffer(); // $ExpectType Promise<ArrayBuffer>
         response.blob(); // $ExpectType Promise<Blob>
         response.formData(); // $ExpectType Promise<FormData>

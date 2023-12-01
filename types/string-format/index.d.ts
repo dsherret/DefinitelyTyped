@@ -1,4 +1,7 @@
-declare function Format(template: string, ...args: Array<({ [k: string]: any } | string)>): string;
+declare function Format(
+    template: string,
+    ...args: Array<{ [k: string]: any } | string>
+): string;
 
 interface Transformers {
     [k: string]: (s: any) => string;

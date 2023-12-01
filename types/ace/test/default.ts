@@ -53,20 +53,18 @@ editor.replace("bar");
 
 editor.replaceAll("bar");
 
-editor.getSession().on("change", function(e) {
+editor.getSession().on("change", function (e) {
     // e.type, etc
 });
 
-editor.getSession().selection.on("changeSelection", function(e) {
-});
+editor.getSession().selection.on("changeSelection", function (e) {});
 
-editor.getSession().selection.on("changeCursor", function(e) {
-});
+editor.getSession().selection.on("changeCursor", function (e) {});
 
 editor.commands.addCommand({
     name: "myCommand",
     bindKey: { win: "Ctrl-M", mac: "Command-M" },
-    exec: function(editor) {
+    exec: function (editor) {
         // ...
     },
     readOnly: true, // false if this command should not apply in readOnly mode
@@ -165,7 +163,10 @@ editor.getSelection().selectDown();
 
 editor.indent();
 
-assert.equal(["a12345", "    b12345", "    c12345"].join("\n"), session.toString());
+assert.equal(
+    ["a12345", "    b12345", "    c12345"].join("\n"),
+    session.toString(),
+);
 
 assert.position(editor.getCursorPosition(), 2, 7);
 
@@ -188,7 +189,10 @@ editor.getSelection().selectDown();
 editor.getSelection().selectDown();
 
 editor.blockOutdent();
-assert.equal(session.toString(), ["    a12345", "b12345", "    c12345"].join("\n"));
+assert.equal(
+    session.toString(),
+    ["    a12345", "b12345", "    c12345"].join("\n"),
+);
 
 assert.position(editor.getCursorPosition(), 2, 1);
 
@@ -304,7 +308,10 @@ editor.moveCursorTo(1, 1);
 editor.getSelection().selectDown();
 
 editor.copyLinesDown();
-assert.equal(["11", "22", "33", "22", "33", "44"].join("\n"), session.toString());
+assert.equal(
+    ["11", "22", "33", "22", "33", "44"].join("\n"),
+    session.toString(),
+);
 
 assert.position(editor.getCursorPosition(), 3, 0);
 assert.position(editor.getSelection().getSelectionAnchor(), 5, 0);
@@ -314,7 +321,10 @@ editor.moveCursorTo(1, 1);
 editor.getSelection().selectDown();
 
 editor.copyLinesUp();
-assert.equal(["11", "22", "33", "22", "33", "44"].join("\n"), session.toString());
+assert.equal(
+    ["11", "22", "33", "22", "33", "44"].join("\n"),
+    session.toString(),
+);
 
 assert.position(editor.getCursorPosition(), 1, 0);
 assert.position(editor.getSelection().getSelectionAnchor(), 3, 0);

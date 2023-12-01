@@ -28,46 +28,56 @@ var config: sql.config = {
         },
     },
     beforeConnect: (conn) => {
-        conn.on("debug", message => console.info(message));
-        conn.on("error", err => console.error(err));
+        conn.on("debug", (message) => console.info(message));
+        conn.on("error", (err) => console.error(err));
         conn.removeAllListeners();
     },
 };
 
-var connectionString = "Server=localhost,1433;Database=database;User Id=username;Password=password;Encrypt=true";
+var connectionString =
+    "Server=localhost,1433;Database=database;User Id=username;Password=password;Encrypt=true";
 
 var minimalConfig: sql.config = { server: "ip" };
 
-var connectionStringTest: sql.ConnectionPool = new sql.ConnectionPool("connectionstring", (err) => {
-    if (err) {
-        return err;
-    }
-});
+var connectionStringTest: sql.ConnectionPool = new sql.ConnectionPool(
+    "connectionstring",
+    (err) => {
+        if (err) {
+            return err;
+        }
+    },
+);
 
-var connection: sql.ConnectionPool = new sql.ConnectionPool(config, function(err: any) {
+var connection: sql.ConnectionPool = new sql.ConnectionPool(config, function (
+    err: any,
+) {
     if (err != null) {
         console.warn("Issue with connecting to SQL Server!");
     } else {
-        connection.query`SELECT ${1} as value`.then(res => {});
+        connection.query`SELECT ${1} as value`.then((res) => {});
         var requestQuery = new sql.Request(connection);
 
         var getArticlesQuery = "SELECT * FROM TABLE";
 
-        requestQuery.query(getArticlesQuery, function(err, result) {
+        requestQuery.query(getArticlesQuery, function (err, result) {
             if (err) {
-                console.error(`Error happened calling Query: ${err.name} ${err.message}`);
+                console.error(
+                    `Error happened calling Query: ${err.name} ${err.message}`,
+                );
             } // checking to see if the articles returned as at least one.
             else if (result.recordset.length > 0) {
             }
         });
 
-        requestQuery.query`SELECT * FROM TABLE`.then(res => {});
+        requestQuery.query`SELECT * FROM TABLE`.then((res) => {});
 
         getArticlesQuery = "SELECT 1 as value FROM TABLE";
 
-        requestQuery.query<Entity>(getArticlesQuery, function(err, result) {
+        requestQuery.query<Entity>(getArticlesQuery, function (err, result) {
             if (err) {
-                console.error(`Error happened calling Query: ${err.name} ${err.message}`);
+                console.error(
+                    `Error happened calling Query: ${err.name} ${err.message}`,
+                );
             } // checking to see if the articles returned as at least one.
             else if (result.recordset.length > 0 && result.recordset[0].value) {
             }
@@ -80,27 +90,39 @@ var connection: sql.ConnectionPool = new sql.ConnectionPool(config, function(err
         requestStoredProcedure.input("pId", testId);
         requestStoredProcedure.input("pString", testString);
 
-        requestStoredProcedure.execute("StoredProcedureName", function(err, recordsets, returnValue) {
-            if (err != null) {
-                console.error(`Error happened calling Query: ${err.name} ${err.message}`);
-            } else {
-                console.info(returnValue);
-            }
-        });
+        requestStoredProcedure.execute(
+            "StoredProcedureName",
+            function (err, recordsets, returnValue) {
+                if (err != null) {
+                    console.error(
+                        `Error happened calling Query: ${err.name} ${err.message}`,
+                    );
+                } else {
+                    console.info(returnValue);
+                }
+            },
+        );
 
-        requestStoredProcedure.execute<Entity>("StoredProcedureName", function(err, recordsets, returnValue) {
-            if (err != null) {
-                console.error(`Error happened calling Query: ${err.name} ${err.message}`);
-            } else {
-                console.info(returnValue);
-            }
-        });
+        requestStoredProcedure.execute<Entity>(
+            "StoredProcedureName",
+            function (err, recordsets, returnValue) {
+                if (err != null) {
+                    console.error(
+                        `Error happened calling Query: ${err.name} ${err.message}`,
+                    );
+                } else {
+                    console.info(returnValue);
+                }
+            },
+        );
 
         requestStoredProcedure.execute<[Entity, AnotherEntity]>(
             "StoredProcedureName",
-            function(err, recordsets, returnValue) {
+            function (err, recordsets, returnValue) {
                 if (err != null) {
-                    console.error(`Error happened calling Query: ${err.name} ${err.message}`);
+                    console.error(
+                        `Error happened calling Query: ${err.name} ${err.message}`,
+                    );
                 } else {
                     console.info(returnValue);
                     recordsets.recordsets[0]; // $ExpectType IRecordSet<Entity>
@@ -122,49 +144,106 @@ var connection: sql.ConnectionPool = new sql.ConnectionPool(config, function(err
 
         requestStoredProcedureWithOutput.input("name", sql.Decimal, 155.33); // decimal(18, 0)
         requestStoredProcedureWithOutput.input("name", sql.Decimal(10), 155.33); // decimal(10, 0)
-        requestStoredProcedureWithOutput.input("name", sql.Decimal(10, 2), 155.33); // decimal(10, 2)
+        requestStoredProcedureWithOutput.input(
+            "name",
+            sql.Decimal(10, 2),
+            155.33,
+        ); // decimal(10, 2)
 
-        requestStoredProcedureWithOutput.input("name", sql.DateTime2, new Date()); // datetime2(7)
-        requestStoredProcedureWithOutput.input("name", sql.DateTime2(5), new Date()); // datetime2(5)
+        requestStoredProcedureWithOutput.input(
+            "name",
+            sql.DateTime2,
+            new Date(),
+        ); // datetime2(7)
+        requestStoredProcedureWithOutput.input(
+            "name",
+            sql.DateTime2(5),
+            new Date(),
+        ); // datetime2(5)
 
         requestStoredProcedureWithOutput.input("name", "abc");
 
         // checking replaceInput method
 
-        requestStoredProcedureWithOutput.replaceInput("name", sql.VarChar, "abc"); // varchar(3)
-        requestStoredProcedureWithOutput.replaceInput("name", sql.VarChar(50), "abc"); // varchar(MAX)
+        requestStoredProcedureWithOutput.replaceInput(
+            "name",
+            sql.VarChar,
+            "abc",
+        ); // varchar(3)
+        requestStoredProcedureWithOutput.replaceInput(
+            "name",
+            sql.VarChar(50),
+            "abc",
+        ); // varchar(MAX)
 
-        requestStoredProcedureWithOutput.replaceInput("name", sql.Decimal, 155.33); // decimal(18, 0)
-        requestStoredProcedureWithOutput.replaceInput("name", sql.Decimal(10), 155.33); // decimal(10, 0)
-        requestStoredProcedureWithOutput.replaceInput("name", sql.Decimal(10, 2), 155.33); // decimal(10, 2)
+        requestStoredProcedureWithOutput.replaceInput(
+            "name",
+            sql.Decimal,
+            155.33,
+        ); // decimal(18, 0)
+        requestStoredProcedureWithOutput.replaceInput(
+            "name",
+            sql.Decimal(10),
+            155.33,
+        ); // decimal(10, 0)
+        requestStoredProcedureWithOutput.replaceInput(
+            "name",
+            sql.Decimal(10, 2),
+            155.33,
+        ); // decimal(10, 2)
 
-        requestStoredProcedureWithOutput.replaceInput("name", sql.DateTime2, new Date()); // datetime2(7)
-        requestStoredProcedureWithOutput.replaceInput("name", sql.DateTime2(5), new Date()); // datetime2(5)
+        requestStoredProcedureWithOutput.replaceInput(
+            "name",
+            sql.DateTime2,
+            new Date(),
+        ); // datetime2(7)
+        requestStoredProcedureWithOutput.replaceInput(
+            "name",
+            sql.DateTime2(5),
+            new Date(),
+        ); // datetime2(5)
 
         requestStoredProcedureWithOutput.replaceInput("name", "abc");
 
         // executing stored procedure
 
-        requestStoredProcedure.execute("StoredProcedureName", function(err, recordsets, returnValue) {
-            if (err != null) {
-                console.error(`Error happened calling Query: ${err.name} ${err.message}`);
-            } else {
-                console.info(requestStoredProcedureWithOutput.parameters["output"].value);
-            }
-        });
+        requestStoredProcedure.execute(
+            "StoredProcedureName",
+            function (err, recordsets, returnValue) {
+                if (err != null) {
+                    console.error(
+                        `Error happened calling Query: ${err.name} ${err.message}`,
+                    );
+                } else {
+                    console.info(
+                        requestStoredProcedureWithOutput.parameters["output"]
+                            .value,
+                    );
+                }
+            },
+        );
 
-        requestStoredProcedure.execute<Entity>("StoredProcedureName", function(err, recordsets, returnValue) {
-            if (err != null) {
-                console.error(`Error happened calling Query: ${err.name} ${err.message}`);
-            } else {
-                console.info(requestStoredProcedureWithOutput.parameters["output"].value);
-            }
-        });
+        requestStoredProcedure.execute<Entity>(
+            "StoredProcedureName",
+            function (err, recordsets, returnValue) {
+                if (err != null) {
+                    console.error(
+                        `Error happened calling Query: ${err.name} ${err.message}`,
+                    );
+                } else {
+                    console.info(
+                        requestStoredProcedureWithOutput.parameters["output"]
+                            .value,
+                    );
+                }
+            },
+        );
     }
 });
 
 function test_connection_string_parser() {
-    var parsedConfig: sql.config = sql.ConnectionPool.parseConnectionString(connectionString);
+    var parsedConfig: sql.config =
+        sql.ConnectionPool.parseConnectionString(connectionString);
     parsedConfig.pool; // $ExpectType PoolOpts<Connection>
     parsedConfig.options; // $ExpectType IOptions
 }
@@ -178,7 +257,7 @@ function test_table() {
     table.columns.add("type", sql.Int, { nullable: false });
     table.columns.add("amount", sql.Decimal(7, 2), { nullable: false });
 
-    table.rows.add("name", 42, 3.50);
+    table.rows.add("name", 42, 3.5);
     table.rows.add("name2", 7, 3.14);
 }
 
@@ -187,13 +266,19 @@ function test_table2() {
 
     table.create = true;
 
-    table.columns.add("col1", sql.VarChar, { length: sql.MAX, nullable: false });
+    table.columns.add("col1", sql.VarChar, {
+        length: sql.MAX,
+        nullable: false,
+    });
     table.columns.add("col2", sql.Int, { nullable: false, identity: true });
     table.columns.add("col3", sql.VarChar, { nullable: false, readOnly: true });
     table.columns.add("col4", sql.VarChar, { nullable: false, length: 20 });
     table.columns.add("col5", sql.Decimal(7, 2), { nullable: false });
 
-    [["name", 42, 3.50], ["name2", 7, 3.14]].forEach((row: sql.IRow) => table.rows.add(...row));
+    [
+        ["name", 42, 3.5],
+        ["name2", 7, 3.14],
+    ].forEach((row: sql.IRow) => table.rows.add(...row));
 }
 
 function _getSqlType(type: any): sql.ISqlType {
@@ -206,14 +291,22 @@ function test_promise_returns() {
     connection.connect().then(() => {});
     connection.close().then(() => {});
     connection.query("SELECT 1").then((recordset) => {});
-    connection.query<Entity>("SELECT 1 as value").then(res => {});
+    connection.query<Entity>("SELECT 1 as value").then((res) => {});
     connection.query`SELECT ${1}`.then((recordset) => {});
-    connection.batch("create procedure #temporary as select * from table").then((recordset) => {});
-    connection.batch<Entity>("create procedure #temporary as select * from table;select 1 as value").then(
+    connection
+        .batch("create procedure #temporary as select * from table")
+        .then((recordset) => {});
+    connection
+        .batch<Entity>(
+            "create procedure #temporary as select * from table;select 1 as value",
+        )
+        .then((recordset) => {});
+    connection.batch`create procedure #temporary as select ${1} from table`.then(
         (recordset) => {},
     );
-    connection.batch`create procedure #temporary as select ${1} from table`.then((recordset) => {});
-    connection.batch<Entity>`create procedure #temporary as select ${1} from table`.then((recordset) => {});
+    connection.batch<Entity>`create procedure #temporary as select ${1} from table`.then(
+        (recordset) => {},
+    );
 
     var preparedStatment = new sql.PreparedStatement(connection);
     preparedStatment.prepare("SELECT @myValue").then(() => {});
@@ -222,9 +315,15 @@ function test_promise_returns() {
 
     const transaction = new sql.Transaction(connection);
     transaction.begin().then(() => {});
-    transaction.begin(sql.ISOLATION_LEVEL.READ_COMMITTED).then(() => {}).catch(() => {});
-    transaction.begin(sql.ISOLATION_LEVEL.READ_COMMITTED).then(trans => {}).catch(err => {});
-    transaction.begin(undefined, err => {
+    transaction
+        .begin(sql.ISOLATION_LEVEL.READ_COMMITTED)
+        .then(() => {})
+        .catch(() => {});
+    transaction
+        .begin(sql.ISOLATION_LEVEL.READ_COMMITTED)
+        .then((trans) => {})
+        .catch((err) => {});
+    transaction.begin(undefined, (err) => {
         err; // $ExpectType ConnectionError | TransactionError
     });
     (async () => {
@@ -235,18 +334,26 @@ function test_promise_returns() {
     transaction.rollback().then(() => {});
 
     var request = new sql.Request();
-    request.batch("create procedure #temporary as select * from table;select 1 as value").then((recordset) => {});
-    request.batch<Entity>("create procedure #temporary as select * from table;select 1 as value").then(
+    request
+        .batch(
+            "create procedure #temporary as select * from table;select 1 as value",
+        )
+        .then((recordset) => {});
+    request
+        .batch<Entity>(
+            "create procedure #temporary as select * from table;select 1 as value",
+        )
+        .then((recordset) => {});
+    request.batch`create procedure #temporary as select * from table;select ${1} as value`.then(
         (recordset) => {},
     );
-    request.batch`create procedure #temporary as select * from table;select ${1} as value`.then((recordset) => {});
     request.batch<Entity>`create procedure #temporary as select * from table;select ${1} as value`.then(
         (recordset) => {},
     );
     request.bulk(new sql.Table("table_name")).then(() => {});
     request.query("SELECT 1").then((recordset) => {});
-    request.query`SELECT ${1} as value`.then(res => {});
-    request.query<Entity>("SELECT 1 as value").then(res => {});
+    request.query`SELECT ${1} as value`.then((res) => {});
+    request.query<Entity>("SELECT 1 as value").then((res) => {});
     request.query`SELECT ${1}`.then((recordset) => {});
     request.query<Entity>`SELECT ${1}`.then((recordset) => {});
     request.execute("procedure_name").then((recordset) => {});
@@ -303,7 +410,7 @@ async function test_msnodesqlv8() {
 
 function test_rows_and_columnns() {
     var table = new sql.Table("#temp_table3");
-    table.columns.forEach(col => col.name);
+    table.columns.forEach((col) => col.name);
 }
 
 function test_mssql_errors() {
@@ -313,16 +420,19 @@ function test_mssql_errors() {
     const baseMSSQLError = new sql.MSSQLError(sqlDriverError, "EREQUEST");
     const connectionError = new sql.ConnectionError(sqlDriverError, "ELOGIN");
     const requestError = new sql.RequestError(sqlDriverError, "EREQUEST");
-    const preparedStatementError = new sql.PreparedStatementError(sqlDriverError, "EINJECT");
+    const preparedStatementError = new sql.PreparedStatementError(
+        sqlDriverError,
+        "EINJECT",
+    );
     const transactionError = new sql.TransactionError(sqlDriverError, "EABORT");
 
     // Test inheritance
     if (
-        "name" in baseMSSQLError
-        && "name" in connectionError
-        && "name" in requestError
-        && "name" in preparedStatementError
-        && "name" in transactionError
+        "name" in baseMSSQLError &&
+        "name" in connectionError &&
+        "name" in requestError &&
+        "name" in preparedStatementError &&
+        "name" in transactionError
     ) {
         let name: string = baseMSSQLError.name;
         let msg: string = requestError.message;
@@ -338,7 +448,8 @@ async function test_global_connect_config() {
     const value = "test_value";
     try {
         let pool = await sql.connect(config);
-        let result1 = await pool.request()
+        let result1 = await pool
+            .request()
             .input("input_parameter", sql.Int, value)
             .query("select * from mytable where id = @input_parameter");
 
@@ -346,7 +457,8 @@ async function test_global_connect_config() {
 
         // Stored procedure
 
-        let result2 = await pool.request()
+        let result2 = await pool
+            .request()
             .input("input_parameter", sql.Int, value)
             .output("output_parameter", sql.VarChar(50))
             .execute("procedure_name");
@@ -359,7 +471,7 @@ async function test_global_connect_config() {
 
 function test_globa_request_callback_config() {
     const value = "test_value";
-    sql.connect(config, err => {
+    sql.connect(config, (err) => {
         // ... error checks
 
         // Query
@@ -385,20 +497,25 @@ function test_globa_request_callback_config() {
 
 function test_global_request_promise_config() {
     const value = "test_value";
-    sql.connect(connectionString).then(pool => {
-        // Query
+    sql.connect(connectionString)
+        .then((pool) => {
+            // Query
 
-        return pool.request()
-            .input("input_parameter", sql.Int, value)
-            .query("select * from mytable where id = @input_parameter");
-    }).then(() => {}).catch(err => {});
+            return pool
+                .request()
+                .input("input_parameter", sql.Int, value)
+                .query("select * from mytable where id = @input_parameter");
+        })
+        .then(() => {})
+        .catch((err) => {});
 }
 
 async function test_global_connect_connection_string() {
     const value = "test_value";
     try {
         let pool = await sql.connect(connectionString);
-        let result1 = await pool.request()
+        let result1 = await pool
+            .request()
             .input("input_parameter", sql.Int, value)
             .query("select * from mytable where id = @input_parameter");
 
@@ -406,7 +523,8 @@ async function test_global_connect_connection_string() {
 
         // Stored procedure
 
-        let result2 = await pool.request()
+        let result2 = await pool
+            .request()
             .input("input_parameter", sql.Int, value)
             .output("output_parameter", sql.VarChar(50))
             .execute("procedure_name");
@@ -419,7 +537,7 @@ async function test_global_connect_connection_string() {
 
 function test_globa_request_callback_connection_string() {
     const value = "test_value";
-    sql.connect(connectionString, err => {
+    sql.connect(connectionString, (err) => {
         // ... error checks
 
         // Query
@@ -445,13 +563,17 @@ function test_globa_request_callback_connection_string() {
 
 function test_global_request_promise_connection_string() {
     const value = "test_value";
-    sql.connect(connectionString).then(pool => {
-        // Query
+    sql.connect(connectionString)
+        .then((pool) => {
+            // Query
 
-        return pool.request()
-            .input("input_parameter", sql.Int, value)
-            .query("select * from mytable where id = @input_parameter");
-    }).then(() => {}).catch(err => {});
+            return pool
+                .request()
+                .input("input_parameter", sql.Int, value)
+                .query("select * from mytable where id = @input_parameter");
+        })
+        .then(() => {})
+        .catch((err) => {});
 }
 
 function test_connection_options() {

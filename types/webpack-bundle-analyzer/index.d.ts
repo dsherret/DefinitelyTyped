@@ -2,13 +2,25 @@
 
 import { Server } from "http";
 import { AddressInfo } from "net";
-import { Compiler, Stats as WebpackStats, StatsOptions, WebpackPluginInstance } from "webpack";
+import {
+    Compiler,
+    Stats as WebpackStats,
+    StatsOptions,
+    WebpackPluginInstance,
+} from "webpack";
 
 export namespace BundleAnalyzerPlugin {
     // Copied from @types/webpack@4 as webpack@5 only has `any` defined at the moment.
     // See https://github.com/webpack/webpack/issues/11630
     namespace Stats {
-        type Preset = boolean | "errors-only" | "errors-warnings" | "minimal" | "none" | "normal" | "verbose";
+        type Preset =
+            | boolean
+            | "errors-only"
+            | "errors-warnings"
+            | "minimal"
+            | "none"
+            | "normal"
+            | "verbose";
 
         type ToJsonOptionsObject = StatsOptions;
 
@@ -53,7 +65,11 @@ export namespace BundleAnalyzerPlugin {
          * The URL printed to console with server mode.
          * @default 'http://${listenHost}:${boundAddress.port}'
          */
-        analyzerUrl?: (options: { listenPort: string; listenHost: string; boundAddress: AddressInfo }) => string;
+        analyzerUrl?: (options: {
+            listenPort: string;
+            listenHost: string;
+            boundAddress: AddressInfo;
+        }) => string;
 
         /**
          * Path to bundle report file that will be generated in "static" mode.
@@ -109,7 +125,11 @@ export namespace BundleAnalyzerPlugin {
          * If multiple patterns are provided asset should match at least one of them to be excluded.
          * @default null
          */
-        excludeAssets?: null | ExcludeAssetsPattern | ExcludeAssetsPattern[] | undefined;
+        excludeAssets?:
+            | null
+            | ExcludeAssetsPattern
+            | ExcludeAssetsPattern[]
+            | undefined;
 
         /**
          * Log level. Can be "info", "warn", "error" or "silent".

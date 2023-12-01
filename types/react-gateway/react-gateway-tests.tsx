@@ -11,9 +11,7 @@ class ReactGateway extends React.Component<Gateway.GatewayProps> {
     render() {
         return (
             <Gateway {...this.props}>
-                <div>
-                    Text goes here.
-                </div>
+                <div>Text goes here.</div>
             </Gateway>
         );
     }

@@ -41,7 +41,7 @@ if ("mediaSession" in navigator && navigator.mediaSession) {
         }
     });
 
-    navigator.mediaSession.setActionHandler("seekto", event => {
+    navigator.mediaSession.setActionHandler("seekto", (event) => {
         if (event.fastSeek === false) {
             audio.currentTime = event.seekTime ?? 0;
         }
@@ -62,7 +62,11 @@ if ("mediaSession" in navigator && navigator.mediaSession) {
             { src: "podcast_xhd.jpg", sizes: "1024x1024", type: "image/jpeg" },
             { src: "podcast.png", sizes: "128x128", type: "image/png" },
             { src: "podcast_hd.png", sizes: "256x256", type: "image/png" },
-            { src: "podcast.ico", sizes: "128x128 256x256", type: "image/x-icon" },
+            {
+                src: "podcast.ico",
+                sizes: "128x128 256x256",
+                type: "image/x-icon",
+            },
         ],
     });
 }

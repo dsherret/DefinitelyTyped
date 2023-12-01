@@ -24,7 +24,10 @@ export interface SourceMapConverter {
      * When `options.encoding == 'uri'`, the data will be uri encoded, otherwise they will be base64 encoded.
      * When `options.multiline == true`, the comment is formatted like: /*# sourceMappingURL=... *\/, which you would find in a CSS source file
      */
-    toComment(options?: { multiline?: boolean | undefined; encoding?: "uri" | undefined }): string;
+    toComment(options?: {
+        multiline?: boolean | undefined;
+        encoding?: "uri" | undefined;
+    }): string;
 
     /** Adds given property to the source map. Throws an error if property already exists */
     addProperty(key: string, value: any): SourceMapConverter;
@@ -55,7 +58,10 @@ export function fromComment(comment: string): SourceMapConverter;
  * Returns source map converter from given filename by parsing //# sourceMappingURL=filename.
  * filename must point to a file that is found inside the mapFileDir. Most tools store this file right next to the generated file, i.e. the one containing the source map.
  */
-export function fromMapFileComment(comment: string, readMap: (filename: string) => string): SourceMapConverter;
+export function fromMapFileComment(
+    comment: string,
+    readMap: (filename: string) => string,
+): SourceMapConverter;
 export function fromMapFileComment(
     comment: string,
     readMap: (filename: string) => Promise<string>,
@@ -70,7 +76,10 @@ export function fromSource(content: string): SourceMapConverter | null;
  * Finds last sourcemap comment in file and returns source map converter or returns `null` if no source map comment was found.
  * The sourcemap will be read from the map file found by parsing # sourceMappingURL=file comment. For more info see fromMapFileComment.
  */
-export function fromMapFileSource(content: string, readMap: (filename: string) => string): SourceMapConverter | null;
+export function fromMapFileSource(
+    content: string,
+    readMap: (filename: string) => string,
+): SourceMapConverter | null;
 export function fromMapFileSource(
     content: string,
     readMap: (filename: string) => Promise<string>,
@@ -97,4 +106,7 @@ export const mapFileCommentRegex: RegExp;
  * By default, the comment is formatted like: //# sourceMappingURL=..., which you would normally see in a JS source file.
  * When options.multiline == true, the comment is formatted like: /*# sourceMappingURL=... *\/, which you would find in a CSS source file.
  */
-export function generateMapFileComment(file: string, options?: { multiline?: boolean | undefined }): string;
+export function generateMapFileComment(
+    file: string,
+    options?: { multiline?: boolean | undefined },
+): string;

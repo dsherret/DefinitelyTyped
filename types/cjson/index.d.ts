@@ -76,7 +76,11 @@ export function replace(
  * @param obj2 any object.
  * @return target merged object.
  */
-export function extend<T1 extends object, T2 extends object>(deep: boolean, obj1: T1, obj2: T2): T1 & T2;
+export function extend<T1 extends object, T2 extends object>(
+    deep: boolean,
+    obj1: T1,
+    obj2: T2,
+): T1 & T2;
 
 /**
  * Merge objects to the first one
@@ -112,6 +116,6 @@ export function load(
     options?:
         | boolean
         | {
-            [key: string]: string;
-        },
+              [key: string]: string;
+          },
 ): any;

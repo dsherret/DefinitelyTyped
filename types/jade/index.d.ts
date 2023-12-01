@@ -1,15 +1,20 @@
-export type JadeCustomFilterFunction = (text: string, options: {
-    [key: string]: boolean;
-}) => string;
+export type JadeCustomFilterFunction = (
+    text: string,
+    options: {
+        [key: string]: boolean;
+    },
+) => string;
 
 export interface JadeOptions {
     filename?: string | undefined;
     basedir?: string | undefined;
     doctype?: string | undefined;
     pretty?: boolean | string | undefined;
-    filters?: {
-        [key: string]: JadeCustomFilterFunction;
-    } | undefined;
+    filters?:
+        | {
+              [key: string]: JadeCustomFilterFunction;
+          }
+        | undefined;
     self?: boolean | undefined;
     debug?: boolean | undefined;
     compileDebug?: boolean | undefined;
@@ -25,10 +30,22 @@ export interface TemplateLocals {
 
 export type JadeGenerationFunction = (locals?: TemplateLocals) => string;
 
-export declare function compile(template: string, options?: JadeOptions): JadeGenerationFunction;
-export declare function compileFile(path: string, options?: JadeOptions): JadeGenerationFunction;
-export declare function compileClient(template: string, options?: JadeOptions): JadeGenerationFunction;
-export declare function compileClientWithDependenciesTracked(template: string, options?: JadeOptions): {
+export declare function compile(
+    template: string,
+    options?: JadeOptions,
+): JadeGenerationFunction;
+export declare function compileFile(
+    path: string,
+    options?: JadeOptions,
+): JadeGenerationFunction;
+export declare function compileClient(
+    template: string,
+    options?: JadeOptions,
+): JadeGenerationFunction;
+export declare function compileClientWithDependenciesTracked(
+    template: string,
+    options?: JadeOptions,
+): {
     body: JadeGenerationFunction;
     dependencies: string[];
 };

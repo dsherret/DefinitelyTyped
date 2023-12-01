@@ -7,7 +7,11 @@ import twitter = require("passport-twitter");
 
 // just some test model
 var User = {
-    findOrCreate(id: string, provider: string, callback: (err: any, user: any) => void): void {
+    findOrCreate(
+        id: string,
+        provider: string,
+        callback: (err: any, user: any) => void,
+    ): void {
         callback(null, { username: "james" });
     },
 };
@@ -19,16 +23,20 @@ passport.use(
             consumerSecret: process.env.PASSPORT_TWITTER_CONSUMER_SECRET,
             callbackURL: process.env.PASSPORT_TWITTER_CALLBACK_URL,
         },
-        function(
+        function (
             accessToken: string,
             refreshToken: string,
             profile: twitter.Profile,
             done: (error: any, user?: any) => void,
         ) {
-            User.findOrCreate(profile.id, profile.provider, function(err, user) {
-                if (err) return done(err);
-                done(null, user);
-            });
+            User.findOrCreate(
+                profile.id,
+                profile.provider,
+                function (err, user) {
+                    if (err) return done(err);
+                    done(null, user);
+                },
+            );
         },
     ),
 );
@@ -41,16 +49,20 @@ passport.use(
             callbackURL: process.env.PASSPORT_TWITTER_CALLBACK_URL,
             passReqToCallback: false,
         },
-        function(
+        function (
             accessToken: string,
             refreshToken: string,
             profile: twitter.Profile,
             done: (error: any, user?: any) => void,
         ) {
-            User.findOrCreate(profile.id, profile.provider, function(err, user) {
-                if (err) return done(err);
-                done(null, user);
-            });
+            User.findOrCreate(
+                profile.id,
+                profile.provider,
+                function (err, user) {
+                    if (err) return done(err);
+                    done(null, user);
+                },
+            );
         },
     ),
 );
@@ -64,17 +76,21 @@ passport.use(
             passReqToCallback: true,
             includeEmail: true,
         },
-        function(
+        function (
             req: express.Request,
             accessToken: string,
             refreshToken: string,
             profile: twitter.Profile,
             done: (error: any, user?: any) => void,
         ) {
-            User.findOrCreate(profile.id, profile.provider, function(err, user) {
-                if (err) return done(err);
-                done(null, user);
-            });
+            User.findOrCreate(
+                profile.id,
+                profile.provider,
+                function (err, user) {
+                    if (err) return done(err);
+                    done(null, user);
+                },
+            );
         },
     ),
 );

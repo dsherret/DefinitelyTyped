@@ -15,7 +15,7 @@ Polymer({
         },
         prop3: {
             type: Object,
-            value: { "foo": "bar" },
+            value: { foo: "bar" },
         },
     },
 
@@ -25,7 +25,7 @@ Polymer({
         tabindex: 0,
     },
 
-    ready: function() {
+    ready: function () {
         const template = Polymer.dom(this).querySelector("template");
         if (template) {
             this.templatize(template);
@@ -34,12 +34,12 @@ Polymer({
         this.textContent = "My element!";
         this.$.name.textContent = this.name;
         this.serialize({});
-        this.async(function() {
+        this.async(function () {
             // access sibling or parent elements here
         });
     },
 
-    __prop2: function() {
+    __prop2: function () {
         var toLight = document.createElement("div");
         Polymer.dom(this).appendChild(toLight);
 
@@ -54,7 +54,7 @@ Polymer({
 var MyElement = Polymer.Class({
     is: "my-element",
 
-    created: function() {
+    created: function () {
         this.textContent = "My element!";
     },
 } as polymer.Base);

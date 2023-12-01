@@ -3,7 +3,10 @@
 /**
  * @async
  */
-declare function imagemin(input: readonly string[], options?: Options): Promise<Result[]>;
+declare function imagemin(
+    input: readonly string[],
+    options?: Options,
+): Promise<Result[]>;
 
 declare namespace imagemin {
     /**

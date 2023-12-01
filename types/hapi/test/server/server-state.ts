@@ -1,5 +1,10 @@
 // from https://hapijs.com/tutorials/cookies?lang=en_US
-import { Server, ServerOptions, ServerRoute, ServerStateCookieOptions } from "hapi";
+import {
+    Server,
+    ServerOptions,
+    ServerRoute,
+    ServerStateCookieOptions,
+} from "hapi";
 
 const options: ServerOptions = {
     port: 8000,

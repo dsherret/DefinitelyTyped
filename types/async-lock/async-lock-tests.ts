@@ -10,7 +10,7 @@ const lock = new AsyncLock();
 // $ExpectType void
 lock.acquire<number>(
     "key",
-    done => {
+    (done) => {
         done; // $ExpectType AsyncLockDoneCallback<number>
         done(undefined, 1);
     },
@@ -21,7 +21,7 @@ lock.acquire<number>(
 );
 
 // $ExpectType Promise<number>
-lock.acquire<number>("key", done => {
+lock.acquire<number>("key", (done) => {
     done(undefined, 1);
 });
 lock.acquire("key", () => 1); // $ExpectType Promise<number>

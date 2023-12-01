@@ -4,7 +4,7 @@ var chromeStub = window.chrome as any as typeof SinonChrome;
 
 // Examples taken from https://github.com/vitalets/sinon-chrome:
 
-chromeStub.tabs.query({}, function(tabs: any) {
+chromeStub.tabs.query({}, function (tabs: any) {
     chromeStub.browserAction.setBadgeText({ text: String(tabs.length) });
 });
 
@@ -17,12 +17,17 @@ sinon.assert.calledWithMatch(chromeStub.browserAction.setBadgeText, {
 
 chromeStub.tabs.onCreated.trigger({ url: "http://google.com" });
 
-chromeStub.tabs.onUpdated.applyTrigger([1, { status: "complete" }, { id: 1, url: "http://google.com" }]);
+chromeStub.tabs.onUpdated.applyTrigger([
+    1,
+    { status: "complete" },
+    { id: 1, url: "http://google.com" },
+]);
 
 // Extended examples:
 
 var calledOnce: boolean = chromeStub.browserAction.setBadgeText.calledOnce;
-var calledWithMatch: boolean = chromeStub.browserAction.setBadgeText.calledWithMatch({ text: "2" });
+var calledWithMatch: boolean =
+    chromeStub.browserAction.setBadgeText.calledWithMatch({ text: "2" });
 
 chromeStub.storage.local.get.yields({});
 chromeStub.storage.onChanged.trigger();
@@ -55,35 +60,33 @@ chromeStub.registerPlugin(
 chromeStub.registerPlugin(new chromeStub.plugins.CookiePlugin());
 
 chromeStub.registerPlugin(
-    new chromeStub.plugins.CookiePlugin(
-        [
-            {
-                domain: ".domain.com",
-                expirationDate: 1511612273,
-                hostOnly: false,
-                httpOnly: false,
-                name: "COOKIE_NAME",
-                path: "/data",
-                secure: false,
-                session: false,
-                storeId: "0",
-                value: "COOKIE_VALUE",
-                sameSite: "unspecified",
-            },
-            {
-                domain: "other-domain.com",
-                hostOnly: false,
-                httpOnly: false,
-                name: "other-cookie",
-                path: "/",
-                secure: false,
-                session: true,
-                storeId: "0",
-                value: "123",
-                sameSite: "unspecified",
-            },
-        ],
-    ),
+    new chromeStub.plugins.CookiePlugin([
+        {
+            domain: ".domain.com",
+            expirationDate: 1511612273,
+            hostOnly: false,
+            httpOnly: false,
+            name: "COOKIE_NAME",
+            path: "/data",
+            secure: false,
+            session: false,
+            storeId: "0",
+            value: "COOKIE_VALUE",
+            sameSite: "unspecified",
+        },
+        {
+            domain: "other-domain.com",
+            hostOnly: false,
+            httpOnly: false,
+            name: "other-cookie",
+            path: "/",
+            secure: false,
+            session: true,
+            storeId: "0",
+            value: "123",
+            sameSite: "unspecified",
+        },
+    ]),
 );
 
 chromeStub.runtime.openOptionsPage();

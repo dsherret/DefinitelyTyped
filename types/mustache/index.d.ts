@@ -244,7 +244,11 @@ export class Writer {
      * @param lineHasNonSpace
      * Whether to indent lines that are empty.
      */
-    indentPartial(partial: string, indentation: string, lineHasNonSpace: boolean): string;
+    indentPartial(
+        partial: string,
+        indentation: string,
+        lineHasNonSpace: boolean,
+    ): string;
 
     /**
      * Renders a partial.
@@ -333,7 +337,10 @@ export function clearCache(): void;
  * @param tags
  * The tags to use.
  */
-export function parse(template: string, tags?: OpeningAndClosingTags): TemplateSpans;
+export function parse(
+    template: string,
+    tags?: OpeningAndClosingTags,
+): TemplateSpans;
 
 /**
  * Renders the {@link template `template`} with the given {@link view `view`} and {@link partials `partials`} using the default writer.

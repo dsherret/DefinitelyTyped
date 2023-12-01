@@ -27,21 +27,21 @@ function test_add_prefixes() {
 }
 
 function test_serialize() {
-    const writer: N3.Writer = new N3.Writer(
-        {
-            format: "ttl",
-            prefixes: {
-                foaf: "http://xmlns.com/foaf/0.1",
-                freebase: N3.DataFactory.namedNode("http://rdf.freebase.com/ns/"),
-                g: "http://base.google.com/ns/1.0",
-            },
+    const writer: N3.Writer = new N3.Writer({
+        format: "ttl",
+        prefixes: {
+            foaf: "http://xmlns.com/foaf/0.1",
+            freebase: N3.DataFactory.namedNode("http://rdf.freebase.com/ns/"),
+            g: "http://base.google.com/ns/1.0",
         },
+    });
+    writer.addQuad(
+        N3.DataFactory.quad(
+            N3.DataFactory.namedNode("subject-name"),
+            N3.DataFactory.namedNode("predicate-name"),
+            N3.DataFactory.literal(12),
+        ),
     );
-    writer.addQuad(N3.DataFactory.quad(
-        N3.DataFactory.namedNode("subject-name"),
-        N3.DataFactory.namedNode("predicate-name"),
-        N3.DataFactory.literal(12),
-    ));
 
     writer.end((error, result) => {
         console.log(`result ${result}`);
@@ -62,7 +62,13 @@ function test_doc_rdf_to_triples_1() {
                 c:smarterThan c:Tom.`,
         (error: Error, quad: RDF.Quad, prefixes: N3.Prefixes) => {
             if (quad) {
-                console.log(quad.subject, quad.predicate, quad.object, quad.graph, ".");
+                console.log(
+                    quad.subject,
+                    quad.predicate,
+                    quad.object,
+                    quad.graph,
+                    ".",
+                );
             } else {
                 console.log("# That's all, folks!", prefixes);
             }
@@ -79,7 +85,13 @@ function test_doc_rdf_to_triples_and_prefixes() {
                 c:smarterThan c:Tom.`,
         (error: Error, quad: RDF.Quad) => {
             if (quad) {
-                console.log(quad.subject, quad.predicate, quad.object, quad.graph, ".");
+                console.log(
+                    quad.subject,
+                    quad.predicate,
+                    quad.object,
+                    quad.graph,
+                    ".",
+                );
             } else {
                 console.log("# That's all, folks!");
             }
@@ -156,7 +168,9 @@ function test_doc_rdf_stream_to_triples_1() {
         object: N3.BlankNode;
         graph: N3.BlankNode;
     }
-    const parser: N3.Parser<QuadBnode> = new N3.Parser<QuadBnode>({ factory: N3.DataFactory });
+    const parser: N3.Parser<QuadBnode> = new N3.Parser<QuadBnode>({
+        factory: N3.DataFactory,
+    });
     parser.parse("abc", console.log);
 
     const streamParser: N3.StreamParser = new N3.StreamParser();
@@ -164,7 +178,7 @@ function test_doc_rdf_stream_to_triples_1() {
     const rdfStream = fs.createReadStream("cartoons.ttl");
     const pipedStreamParser: N3.StreamParser = rdfStream.pipe(streamParser);
     streamParser.pipe(
-        new class SlowConsumer extends stream.Writable {
+        new (class SlowConsumer extends stream.Writable {
             constructor() {
                 super({ objectMode: true });
                 this._write = (quad: RDF.Quad, encoding, done) => {
@@ -172,7 +186,7 @@ function test_doc_rdf_stream_to_triples_1() {
                     setTimeout(done, 1000);
                 };
             }
-        }(),
+        })(),
     );
 }
 
@@ -189,17 +203,25 @@ function test_doc_rdf_stream_to_triples_with_undefined_prefix_callback() {
 }
 
 function test_doc_from_triples_to_string() {
-    const writer: N3.Writer = new N3.Writer({ prefixes: { c: "http://example.org/cartoons#" } });
-    writer.addQuad(N3.DataFactory.quad(
-        N3.DataFactory.namedNode("http://example.org/cartoons#Tom"),
-        N3.DataFactory.namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-        N3.DataFactory.namedNode("http://example.org/cartoons#Cat"),
-    ));
-    writer.addQuad(N3.DataFactory.quad(
-        N3.DataFactory.namedNode("http://example.org/cartoons#Tom"),
-        N3.DataFactory.namedNode("http://example.org/cartoons#name"),
-        N3.DataFactory.literal("Tom"),
-    ));
+    const writer: N3.Writer = new N3.Writer({
+        prefixes: { c: "http://example.org/cartoons#" },
+    });
+    writer.addQuad(
+        N3.DataFactory.quad(
+            N3.DataFactory.namedNode("http://example.org/cartoons#Tom"),
+            N3.DataFactory.namedNode(
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            ),
+            N3.DataFactory.namedNode("http://example.org/cartoons#Cat"),
+        ),
+    );
+    writer.addQuad(
+        N3.DataFactory.quad(
+            N3.DataFactory.namedNode("http://example.org/cartoons#Tom"),
+            N3.DataFactory.namedNode("http://example.org/cartoons#name"),
+            N3.DataFactory.literal("Tom"),
+        ),
+    );
     writer.end((error, result: string) => {
         console.log(result);
     });
@@ -211,18 +233,26 @@ function test_doc_from_triples_to_string() {
 function test_doc_from_triples_to_rdf_stream() {
     const writer: N3.Writer = new N3.Writer(process.stdout, {
         end: false,
-        prefixes: { c: N3.DataFactory.namedNode("http://example.org/cartoons#") },
+        prefixes: {
+            c: N3.DataFactory.namedNode("http://example.org/cartoons#"),
+        },
     });
-    writer.addQuad(N3.DataFactory.quad(
-        N3.DataFactory.namedNode("http://example.org/cartoons#Tom"),
-        N3.DataFactory.namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-        N3.DataFactory.namedNode("http://example.org/cartoons#Cat"),
-    ));
-    writer.addQuad(N3.DataFactory.quad(
-        N3.DataFactory.namedNode("http://example.org/cartoons#Tom"),
-        N3.DataFactory.namedNode("http://example.org/cartoons#name"),
-        N3.DataFactory.literal("Tom"),
-    ));
+    writer.addQuad(
+        N3.DataFactory.quad(
+            N3.DataFactory.namedNode("http://example.org/cartoons#Tom"),
+            N3.DataFactory.namedNode(
+                "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+            ),
+            N3.DataFactory.namedNode("http://example.org/cartoons#Cat"),
+        ),
+    );
+    writer.addQuad(
+        N3.DataFactory.quad(
+            N3.DataFactory.namedNode("http://example.org/cartoons#Tom"),
+            N3.DataFactory.namedNode("http://example.org/cartoons#name"),
+            N3.DataFactory.literal("Tom"),
+        ),
+    );
     writer.end();
 }
 
@@ -230,7 +260,9 @@ function test_doc_from_triple_stream_to_rdf_stream() {
     const streamParser: N3.StreamParser = new N3.StreamParser();
     const inputStream = fs.createReadStream("cartoons.ttl");
     const streamWriter: N3.StreamWriter = new N3.StreamWriter({
-        prefixes: { c: N3.DataFactory.namedNode("http://example.org/cartoons#") },
+        prefixes: {
+            c: N3.DataFactory.namedNode("http://example.org/cartoons#"),
+        },
     });
     inputStream.pipe(streamParser);
     streamParser.pipe(streamWriter);
@@ -240,7 +272,9 @@ function test_doc_from_triple_stream_to_rdf_stream() {
 function test_doc_streamwriter_import() {
     const quadStream: RDF.Stream = {} as any;
     const streamWriter: N3.StreamWriter = new N3.StreamWriter({
-        prefixes: { c: N3.DataFactory.namedNode("http://example.org/cartoons#") },
+        prefixes: {
+            c: N3.DataFactory.namedNode("http://example.org/cartoons#"),
+        },
     });
     streamWriter.import(quadStream);
 }
@@ -257,19 +291,30 @@ function test_doc_blank_nodes_and_lists() {
             N3.DataFactory.namedNode("http://xmlns.com/foaf/0.1/givenName"),
             N3.DataFactory.literal("Tom", "en"),
         ),
-        N3.DataFactory.namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
+        N3.DataFactory.namedNode(
+            "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+        ),
         N3.DataFactory.namedNode("http://example.org/cartoons#Cat"),
     );
     writer.addQuad(
         N3.DataFactory.namedNode("http://example.org/cartoons#Jerry"),
         N3.DataFactory.namedNode("http://xmlns.com/foaf/0.1/knows"),
-        writer.blank([{
-            predicate: N3.DataFactory.namedNode("http://www.w3.org/1999/02/22-rdf-syntax-ns#type"),
-            object: N3.DataFactory.namedNode("http://example.org/cartoons#Cat"),
-        }, {
-            predicate: N3.DataFactory.namedNode("http://xmlns.com/foaf/0.1/givenName"),
-            object: N3.DataFactory.literal("Tom", "en"),
-        }]),
+        writer.blank([
+            {
+                predicate: N3.DataFactory.namedNode(
+                    "http://www.w3.org/1999/02/22-rdf-syntax-ns#type",
+                ),
+                object: N3.DataFactory.namedNode(
+                    "http://example.org/cartoons#Cat",
+                ),
+            },
+            {
+                predicate: N3.DataFactory.namedNode(
+                    "http://xmlns.com/foaf/0.1/givenName",
+                ),
+                object: N3.DataFactory.literal("Tom", "en"),
+            },
+        ]),
     );
     writer.addQuad(
         N3.DataFactory.namedNode("http://example.org/cartoons#Mammy"),
@@ -328,7 +373,12 @@ function test_doc_storing() {
     const bnode1: RDF.BlankNode = store.createBlankNode();
     const bnode2: RDF.BlankNode = store.createBlankNode("abc");
 
-    const mickey: RDF.Quad = store.getQuads(N3.DataFactory.namedNode("http://ex.org/Mickey"), null, null, null)[0];
+    const mickey: RDF.Quad = store.getQuads(
+        N3.DataFactory.namedNode("http://ex.org/Mickey"),
+        null,
+        null,
+        null,
+    )[0];
     if (mickey.object.termType === "Literal") {
         console.log(mickey.object.datatype);
     }
@@ -344,7 +394,9 @@ function test_doc_storing() {
         console.log(q.subject, q.predicate, q.object, ".");
     }
 
-    const quadStream: RDF.Stream = store.match(N3.DataFactory.namedNode("http://ex.org/Mickey"));
+    const quadStream: RDF.Stream = store.match(
+        N3.DataFactory.namedNode("http://ex.org/Mickey"),
+    );
 
     interface N3QuadGeneralized extends N3.BaseQuad {
         subject: N3.Quad_Subject | N3.BlankNode | N3.Literal;
@@ -358,7 +410,10 @@ function test_doc_storing() {
         object: RDF.Quad_Object | RDF.BlankNode | RDF.Literal;
         graph: RDF.Quad_Graph | RDF.BlankNode | RDF.Literal;
     }
-    const storeGeneralized = new N3.Store<RDFQuadGeneralized, N3QuadGeneralized>();
+    const storeGeneralized = new N3.Store<
+        RDFQuadGeneralized,
+        N3QuadGeneralized
+    >();
     // storeGeneralized.
     storeGeneralized.addQuad(
         N3.DataFactory.namedNode("http://ex.org/Pluto"),
@@ -385,26 +440,47 @@ function test_store_queries() {
 
 function test_doc_utility() {
     const N3Util = N3.Util;
-    N3Util.isNamedNode(N3.DataFactory.namedNode("http://example.org/cartoons#Mickey")); // true
+    N3Util.isNamedNode(
+        N3.DataFactory.namedNode("http://example.org/cartoons#Mickey"),
+    ); // true
 
     N3Util.isLiteral(N3.DataFactory.literal("Mickey Mouse")); // true
     N3Util.isLiteral(N3.DataFactory.literal("Mickey Mouse", "en")); // true
-    N3Util.isLiteral(N3.DataFactory.literal("3", N3.DataFactory.namedNode("http://www.w3.org/2001/XMLSchema#integer"))); // true
+    N3Util.isLiteral(
+        N3.DataFactory.literal(
+            "3",
+            N3.DataFactory.namedNode(
+                "http://www.w3.org/2001/XMLSchema#integer",
+            ),
+        ),
+    ); // true
     N3Util.isLiteral(N3.DataFactory.literal("http://example.org/")); // true
 
-    N3Util.isLiteral(N3.DataFactory.literal("This word is \"quoted\"!")); // true
-    N3Util.isLiteral(N3.DataFactory.literal("3", N3.DataFactory.namedNode("http://www.w3.org/2001/XMLSchema#integer"))); // true
+    N3Util.isLiteral(N3.DataFactory.literal('This word is "quoted"!')); // true
+    N3Util.isLiteral(
+        N3.DataFactory.literal(
+            "3",
+            N3.DataFactory.namedNode(
+                "http://www.w3.org/2001/XMLSchema#integer",
+            ),
+        ),
+    ); // true
 
-    new N3.Parser().parse("<a> <b> \"This word is \\\"quoted\\\"!\".", console.log);
+    new N3.Parser().parse('<a> <b> "This word is \\"quoted\\"!".', console.log);
     // { subject: 'a', predicate: 'b', object: '"This word is "quoted"!"' }
 
     N3Util.isBlankNode(N3.DataFactory.blankNode("b1")); // true
     N3Util.isNamedNode(N3.DataFactory.blankNode("b1")); // false
     N3Util.isLiteral(N3.DataFactory.blankNode("b1")); // false
 
-    const prefixes: N3.Prefixes = { rdfs: N3.DataFactory.namedNode("http://www.w3.org/2000/01/rdf-schema#") };
-    const namedNode1: RDF.NamedNode = N3Util.prefix("http://www.w3.org/2000/01/rdf-schema#")("label");
-    const namedNode2: RDF.NamedNode = N3Util.prefixes(prefixes)("rdfs")("label");
+    const prefixes: N3.Prefixes = {
+        rdfs: N3.DataFactory.namedNode("http://www.w3.org/2000/01/rdf-schema#"),
+    };
+    const namedNode1: RDF.NamedNode = N3Util.prefix(
+        "http://www.w3.org/2000/01/rdf-schema#",
+    )("label");
+    const namedNode2: RDF.NamedNode =
+        N3Util.prefixes(prefixes)("rdfs")("label");
     const namedNode3: N3.NamedNode = N3Util.prefixes(prefixes)("rdfs")("label");
 }
 
@@ -448,12 +524,18 @@ function test_parser_options() {
 }
 
 function test_term_to_and_from_id() {
-    const label: string = N3.termToId(N3.termFromId("http://www.w3.org/2000/01/rdf-schema#label", N3.DataFactory));
+    const label: string = N3.termToId(
+        N3.termFromId(
+            "http://www.w3.org/2000/01/rdf-schema#label",
+            N3.DataFactory,
+        ),
+    );
 }
 
 function test_lexer_sync() {
     const lexer: N3.Lexer = new N3.Lexer();
-    const result: N3.Token[] = lexer.tokenize(`@prefix c: <http://example.org/cartoons#>.
+    const result: N3.Token[] =
+        lexer.tokenize(`@prefix c: <http://example.org/cartoons#>.
       c:Tom a c:Cat.
       c:Jerry a c:Mouse;
       c:smarterThan c:Tom.`);

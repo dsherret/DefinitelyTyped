@@ -5,6 +5,6 @@ export interface ChannelEvent<Type> extends ApplicationEvent<"channel", Type> {
     name?: string | undefined;
 }
 export interface ChannelEvents extends BaseEventMap {
-    "connected": ChannelEvent<"connected">;
-    "disconnected": ChannelEvent<"disconnected">;
+    connected: ChannelEvent<"connected">;
+    disconnected: ChannelEvent<"disconnected">;
 }

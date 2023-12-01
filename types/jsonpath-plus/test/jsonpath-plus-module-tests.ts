@@ -18,9 +18,18 @@ const sandboxType: JSONPath.sandboxType = {
     yes: "man",
 };
 
-const callback: JSONPath.callback = (payloadValue: any, type: string, fullPayload: any): void => {};
+const callback: JSONPath.callback = (
+    payloadValue: any,
+    type: string,
+    fullPayload: any,
+): void => {};
 
-const otherCallback = (value: any, path: string, parent: object, parentPropertyName: any): boolean => {
+const otherCallback = (
+    value: any,
+    path: string,
+    parent: object,
+    parentPropertyName: any,
+): boolean => {
     return false;
 };
 
@@ -39,6 +48,12 @@ const options: JSONPath.options = {
     otherTypeCallback: otherCallback,
 };
 
-let moduleResult = JSONPath.JSONPath(options, path, json, callback, otherCallback);
+let moduleResult = JSONPath.JSONPath(
+    options,
+    path,
+    json,
+    callback,
+    otherCallback,
+);
 
 moduleResult = JSONPath.JSONPath(path, json);

@@ -14,7 +14,13 @@ interface HummerCommonStyle {
     /**
      * @summary justifyContent: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly'
      */
-    justifyContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "space-evenly";
+    justifyContent?:
+        | "flex-start"
+        | "flex-end"
+        | "center"
+        | "space-between"
+        | "space-around"
+        | "space-evenly";
     /**
      * @summary  alignItems: 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch'
      */
@@ -22,7 +28,13 @@ interface HummerCommonStyle {
     /**
      * @summary alignContent: 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch';
      */
-    alignContent?: "flex-start" | "flex-end" | "center" | "space-between" | "space-around" | "stretch";
+    alignContent?:
+        | "flex-start"
+        | "flex-end"
+        | "center"
+        | "space-between"
+        | "space-around"
+        | "stretch";
     /**
      * @summary flexGrow: 1
      */

@@ -3,7 +3,11 @@
 import * as Hapi from "hapi";
 const server = new Hapi.Server();
 
-const add = function(a: number, b: number, next: (err: Error | null, result: number) => void) {
+const add = function (
+    a: number,
+    b: number,
+    next: (err: Error | null, result: number) => void,
+) {
     return next(null, a + b);
 };
 

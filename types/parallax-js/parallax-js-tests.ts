@@ -64,7 +64,10 @@ const parallax = new Parallax(scene, {
 
 // --- test options that allow multiple types ---
 // inputElement allows null, HTMLElement
-const inputElementOpts: ParallaxOptions[] = [{ inputElement: null }, { inputElement: scene }];
+const inputElementOpts: ParallaxOptions[] = [
+    { inputElement: null },
+    { inputElement: scene },
+];
 parallax.setInputElement(null);
 parallax.setInputElement(scene);
 
@@ -95,10 +98,16 @@ const invalidLimitYOpt: ParallaxOptions = { limitY: true };
 parallax.limit(0, true);
 
 // selector allows null or string
-const selectorOpts: ParallaxOptions[] = [{ selector: null }, { selector: ".layer" }];
+const selectorOpts: ParallaxOptions[] = [
+    { selector: null },
+    { selector: ".layer" },
+];
 
 // onReady allows null or callback function
-const onReadyOptions: ParallaxOptions[] = [{ onReady: null }, { onReady: () => console.log("Parallax is ready!") }];
+const onReadyOptions: ParallaxOptions[] = [
+    { onReady: null },
+    { onReady: () => console.log("Parallax is ready!") },
+];
 
 // --- test parallax object non-setter methods ---
 parallax.disable();

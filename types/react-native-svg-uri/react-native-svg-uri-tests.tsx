@@ -7,7 +7,9 @@ const TestSvgUri = () => (
         <SvgUri
             width="200"
             height="200"
-            source={{ uri: "http://thenewcode.com/assets/images/thumbnails/homer-simpson.svg" }}
+            source={{
+                uri: "http://thenewcode.com/assets/images/thumbnails/homer-simpson.svg",
+            }}
         />
     </View>
 );

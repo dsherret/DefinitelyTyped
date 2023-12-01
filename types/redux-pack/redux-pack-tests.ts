@@ -67,7 +67,10 @@ function baz(baz: string): Action<FooState, Foo> {
 const LOAD_FOO = "LOAD_FOO";
 const BAR_ERROR = "BAR_ERROR";
 declare const initialState: FooState;
-function fooReducer(state = initialState, action: Action<FooState, Foo, string | null, {}, MetaOne & MetaTwo>) {
+function fooReducer(
+    state = initialState,
+    action: Action<FooState, Foo, string | null, {}, MetaOne & MetaTwo>,
+) {
     const { type, payload } = action;
     switch (type) {
         // example of non-redux-pack action
@@ -81,16 +84,25 @@ function fooReducer(state = initialState, action: Action<FooState, Foo, string |
             };
         case LOAD_FOO:
             return handle(state, action, {
-                start: prevState => ({ ...prevState, isLoading: true, error: false, foo: null }),
-                finish: prevState => ({ ...prevState, isLoading: false }),
-                failure: prevState => ({ ...prevState, error: true, errorMsg: payload as string }),
+                start: (prevState) => ({
+                    ...prevState,
+                    isLoading: true,
+                    error: false,
+                    foo: null,
+                }),
+                finish: (prevState) => ({ ...prevState, isLoading: false }),
+                failure: (prevState) => ({
+                    ...prevState,
+                    error: true,
+                    errorMsg: payload as string,
+                }),
                 // must define both state and action params to correctly scope action (to access custom meta)
                 success: (prevState, action) => ({
                     ...prevState,
                     foo: payload as Foo,
                     metaPropOne: action.meta.propOne,
                 }),
-                always: prevState => prevState, // unnecessary, for the sake of example
+                always: (prevState) => prevState, // unnecessary, for the sake of example
             });
         default:
             return state;
@@ -100,10 +112,13 @@ function fooReducer(state = initialState, action: Action<FooState, Foo, string |
 // https://github.com/lelandrichardson/redux-pack/tree/v0.1.5#adding-side-effects-with-event-hooks
 const DO_FOO = "DO_FOO";
 declare function doFoo(): Promise<Foo>;
-declare function sendAnalytics(action: string, data: {
-    userId: string;
-    fooId: string;
-}): void;
+declare function sendAnalytics(
+    action: string,
+    data: {
+        userId: string;
+        fooId: string;
+    },
+): void;
 function userDoesFoo(): Action<FooState, Foo> {
     return {
         type: DO_FOO,

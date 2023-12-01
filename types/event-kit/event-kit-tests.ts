@@ -32,7 +32,9 @@ class User {
 }
 
 const user = new User();
-subscription = user.onDidChangeName(name => console.log("My name is #{name}"));
+subscription = user.onDidChangeName((name) =>
+    console.log("My name is #{name}"),
+);
 subscription.dispose();
 
 // Disposable =================================================================
@@ -54,10 +56,7 @@ subscriptions.dispose();
 
 // Managing Disposables
 subscriptions.add(subscription);
-subscriptions.add(
-    subscription,
-    { dispose() {} },
-);
+subscriptions.add(subscription, { dispose() {} });
 
 subscriptions.remove(subscription);
 subscriptions.remove({ dispose() {} });
@@ -74,9 +73,9 @@ emitter.clear();
 emitter.dispose();
 
 // Event Subscription
-subscription = emitter.on("test-event", value => {});
-emitter.once("test-event", value => {});
-subscription = emitter.preempt("test-event", value => {});
+subscription = emitter.on("test-event", (value) => {});
+emitter.once("test-event", (value) => {});
+subscription = emitter.preempt("test-event", (value) => {});
 
 // Event Emission
 emitter.emit("test-event");

@@ -1,4 +1,4 @@
-(async () => {
+async () => {
     // WebSocket
     ap.onSocketOpen();
     ap.onSocketError();
@@ -111,7 +111,8 @@
             });
 
             if (bleDevices.characteristics.length) {
-                const characteristicId = bleDevices.characteristics[0].characteristicId;
+                const characteristicId =
+                    bleDevices.characteristics[0].characteristicId;
 
                 ap.notifyBLECharacteristicValueChange({
                     // 这里的 deviceId 需要在 getBluetoothDevices 或 onBluetoothDeviceFound 接口中获取
@@ -239,4 +240,4 @@
     ap.tradePay("orderStr");
 
     ap.getServerTime();
-});
+};

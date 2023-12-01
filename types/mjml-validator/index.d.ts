@@ -9,7 +9,7 @@ export interface MJMLType {
     getErrorMessage(): string | undefined;
     getValue(): string;
 }
-export type MJMLTypeChecker = new(value: string) => MJMLType;
+export type MJMLTypeChecker = new (value: string) => MJMLType;
 
 export type MJMLInitializeType = (spec: string) => MJMLTypeChecker;
 
@@ -26,11 +26,17 @@ export type MJMLValidationRule = (
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 ) => MJMLParseError | MJMLParseError[] | void | undefined;
 
-export function formatValidationError(message: string, element: MJMLJsonObject): MJMLParseError;
+export function formatValidationError(
+    message: string,
+    element: MJMLJsonObject,
+): MJMLParseError;
 
 export const rulesCollection: { [rule: string]: MJMLValidationRule };
 
-export function registerRule(rule: MJMLValidationRule, name?: string): boolean | undefined;
+export function registerRule(
+    rule: MJMLValidationRule,
+    name?: string,
+): boolean | undefined;
 
 export const dependencies: MJMLDependenciesObject;
 

@@ -11,7 +11,7 @@ import {
 const validStyleObject: StyleObject = {
     display: "block",
     ":after": {
-        content: "\" \"",
+        content: '" "',
     },
 };
 

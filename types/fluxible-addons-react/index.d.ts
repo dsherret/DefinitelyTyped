@@ -3,7 +3,9 @@ import * as React from "react";
 import BaseStore = require("fluxible/addons/BaseStore");
 import { ComponentContext } from "fluxible";
 
-export type ConnectableComponent = typeof React.Component | React.ComponentType<any>;
+export type ConnectableComponent =
+    | typeof React.Component
+    | React.ComponentType<any>;
 
 /**
  * Registers change listeners and retrieves state from stores using the `getStateFromStores`
@@ -29,4 +31,7 @@ export function connectToStores(
  * @param customContextTypes Custom contextTypes to add
  * @returns React.Component
  */
-export function provideContext(Component: ConnectableComponent, customContextTypes?: any): typeof React.Component;
+export function provideContext(
+    Component: ConnectableComponent,
+    customContextTypes?: any,
+): typeof React.Component;

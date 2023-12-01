@@ -4,6 +4,6 @@ import metascraperYoutube = require("metascraper-youtube");
 const html = "example";
 const url = "https://example.org";
 
-metascraper([metascraperYoutube()])({ html, url }).then(data => {
+metascraper([metascraperYoutube()])({ html, url }).then((data) => {
     data;
 });

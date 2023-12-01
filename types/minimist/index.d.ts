@@ -4,7 +4,10 @@
  * @param [args] An optional argument array (typically `process.argv.slice(2)`)
  * @param [opts] An optional options object to customize the parsing
  */
-declare function minimist(args?: string[], opts?: minimist.Opts): minimist.ParsedArgs;
+declare function minimist(
+    args?: string[],
+    opts?: minimist.Opts,
+): minimist.ParsedArgs;
 
 /**
  * Return an argument object populated with the array arguments from args. Strongly-typed
@@ -15,7 +18,10 @@ declare function minimist(args?: string[], opts?: minimist.Opts): minimist.Parse
  * @param [args] An optional argument array (typically `process.argv.slice(2)`)
  * @param [opts] An optional options object to customize the parsing
  */
-declare function minimist<T>(args?: string[], opts?: minimist.Opts): T & minimist.ParsedArgs;
+declare function minimist<T>(
+    args?: string[],
+    opts?: minimist.Opts,
+): T & minimist.ParsedArgs;
 
 /**
  * Return an argument object populated with the array arguments from args. Strongly-typed
@@ -26,7 +32,10 @@ declare function minimist<T>(args?: string[], opts?: minimist.Opts): T & minimis
  * @param [args] An optional argument array (typically `process.argv.slice(2)`)
  * @param [opts] An optional options object to customize the parsing
  */
-declare function minimist<T extends minimist.ParsedArgs>(args?: string[], opts?: minimist.Opts): T;
+declare function minimist<T extends minimist.ParsedArgs>(
+    args?: string[],
+    opts?: minimist.Opts,
+): T;
 
 declare namespace minimist {
     interface Opts {

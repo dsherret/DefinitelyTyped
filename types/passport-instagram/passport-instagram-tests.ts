@@ -7,7 +7,11 @@ import instagram = require("passport-instagram");
 
 // just some test model
 const User = {
-    findOrCreate(id: string, provider: string, callback: (err: any, user: any) => void): void {
+    findOrCreate(
+        id: string,
+        provider: string,
+        callback: (err: any, user: any) => void,
+    ): void {
         callback(null, {
             username: "sagar7993",
             displayName: "Sagar Jain",
@@ -23,16 +27,20 @@ passport.use(
             clientSecret: process.env.PASSPORT_INSTAGRAM_CLIENT_SECRET,
             callbackURL: process.env.PASSPORT_INSTAGRAM_CALLBACK_URL,
         },
-        function(
+        function (
             accessToken: string,
             refreshToken: string,
             profile: instagram.Profile,
             callback: (error: any, user?: any) => void,
         ) {
-            User.findOrCreate(profile.id, profile.provider, function(err, user) {
-                if (err) return callback(err);
-                callback(null, user);
-            });
+            User.findOrCreate(
+                profile.id,
+                profile.provider,
+                function (err, user) {
+                    if (err) return callback(err);
+                    callback(null, user);
+                },
+            );
         },
     ),
 );
@@ -45,16 +53,20 @@ passport.use(
             callbackURL: process.env.PASSPORT_INSTAGRAM_CALLBACK_URL,
             passReqToCallback: false,
         },
-        function(
+        function (
             accessToken: string,
             refreshToken: string,
             profile: instagram.Profile,
             callback: (error: any, user?: any) => void,
         ) {
-            User.findOrCreate(profile.id, profile.provider, function(err, user) {
-                if (err) return callback(err);
-                callback(null, user);
-            });
+            User.findOrCreate(
+                profile.id,
+                profile.provider,
+                function (err, user) {
+                    if (err) return callback(err);
+                    callback(null, user);
+                },
+            );
         },
     ),
 );

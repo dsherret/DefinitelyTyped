@@ -51,8 +51,13 @@ declare module "@google-cloud/datastore" {
         save(entities: OneOrMany<object>, callback: CommitCallback): void;
         save(entities: OneOrMany<object>): Promise<CommitResult>;
 
-        delete(keyOrKeys: DatastoreKey | readonly DatastoreKey[], callback: CommitCallback): void;
-        delete(keyOrKeys: DatastoreKey | readonly DatastoreKey[]): Promise<CommitResult>;
+        delete(
+            keyOrKeys: DatastoreKey | readonly DatastoreKey[],
+            callback: CommitCallback,
+        ): void;
+        delete(
+            keyOrKeys: DatastoreKey | readonly DatastoreKey[],
+        ): Promise<CommitResult>;
 
         transaction(): DatastoreTransaction;
 
@@ -68,7 +73,9 @@ declare module "@google-cloud/datastore" {
 
         isGeoPoint(value: any): value is DatastoreGeopoint;
 
-        key(pathOrOptions: DatastoreKeyPath | DatastoreKeyOptions): DatastoreKey;
+        key(
+            pathOrOptions: DatastoreKeyPath | DatastoreKeyOptions,
+        ): DatastoreKey;
 
         isKey(value: any): value is DatastoreKey;
 
@@ -154,7 +161,11 @@ declare module "@google-cloud/datastore/query" {
     class Query {
         constructor(scope: string, kinds: string, namespace: string);
 
-        filter(property: string, operator: QueryFilterOperator, value: any): this;
+        filter(
+            property: string,
+            operator: QueryFilterOperator,
+            value: any,
+        ): this;
         filter(property: string, value: any): this;
 
         hasAncestor(key: DatastoreKey): this;
@@ -193,47 +204,95 @@ declare module "@google-cloud/datastore/query" {
 
     interface QueryInfo {
         endCursor?: string | undefined;
-        readonly moreResults: MoreResultsAfterCursor | MoreResultsAfterLimit | NoMoreResults;
+        readonly moreResults:
+            | MoreResultsAfterCursor
+            | MoreResultsAfterLimit
+            | NoMoreResults;
     }
 
-    type QueryCallback = (err: Error, entities: object[], info: QueryInfo) => void;
+    type QueryCallback = (
+        err: Error,
+        entities: object[],
+        info: QueryInfo,
+    ) => void;
     type QueryResult = [object[], QueryInfo];
 }
 
 declare module "@google-cloud/datastore/request" {
     import { DatastoreKey, OneOrMany } from "@google-cloud/datastore/entity";
-    import { Query, QueryCallback, QueryOptions, QueryResult } from "@google-cloud/datastore/query";
+    import {
+        Query,
+        QueryCallback,
+        QueryOptions,
+        QueryResult,
+    } from "@google-cloud/datastore/query";
 
     /**
      * Creates requests to the Datastore endpoint.
      * Designed to be inherited by {@link Datastore} & {@link DatastoreTransaction}
      */
     abstract class DatastoreRequest {
-        allocateIds(incompleteKey: DatastoreKey, n: number, callback: AllocateIdsCallback): void;
-        allocateIds(incompleteKey: DatastoreKey, n: number): Promise<AllocateIdsResult>;
+        allocateIds(
+            incompleteKey: DatastoreKey,
+            n: number,
+            callback: AllocateIdsCallback,
+        ): void;
+        allocateIds(
+            incompleteKey: DatastoreKey,
+            n: number,
+        ): Promise<AllocateIdsResult>;
 
         createReadStream(
             keys: DatastoreKey | readonly DatastoreKey[],
             options: QueryOptions,
         ): NodeJS.ReadableStream;
 
-        delete(keyOrKeys: DatastoreKey | readonly DatastoreKey[], callback: CommitCallback): void;
+        delete(
+            keyOrKeys: DatastoreKey | readonly DatastoreKey[],
+            callback: CommitCallback,
+        ): void;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        delete(keyOrKeys: DatastoreKey | readonly DatastoreKey[]): Promise<CommitResult> | void;
+        delete(
+            keyOrKeys: DatastoreKey | readonly DatastoreKey[],
+        ): Promise<CommitResult> | void;
 
-        get(key: DatastoreKey, options: QueryOptions, callback: GetCallback<object>): void;
-        get(keys: readonly DatastoreKey[], options: QueryOptions, callback: GetCallback<object[]>): void;
+        get(
+            key: DatastoreKey,
+            options: QueryOptions,
+            callback: GetCallback<object>,
+        ): void;
+        get(
+            keys: readonly DatastoreKey[],
+            options: QueryOptions,
+            callback: GetCallback<object[]>,
+        ): void;
         get(key: DatastoreKey, callback: GetCallback<object>): void;
-        get(keys: readonly DatastoreKey[], callback: GetCallback<object[]>): void;
+        get(
+            keys: readonly DatastoreKey[],
+            callback: GetCallback<object[]>,
+        ): void;
 
-        get(key: DatastoreKey, options?: QueryOptions): Promise<[object | undefined]>;
-        get(keys: readonly DatastoreKey[], options?: QueryOptions): Promise<[object[]]>;
+        get(
+            key: DatastoreKey,
+            options?: QueryOptions,
+        ): Promise<[object | undefined]>;
+        get(
+            keys: readonly DatastoreKey[],
+            options?: QueryOptions,
+        ): Promise<[object[]]>;
 
-        runQuery(query: Query, options: QueryOptions, callback: QueryCallback): void;
+        runQuery(
+            query: Query,
+            options: QueryOptions,
+            callback: QueryCallback,
+        ): void;
         runQuery(query: Query, callback: QueryCallback): void;
         runQuery(query: Query, options?: QueryOptions): Promise<QueryResult>;
 
-        runQueryStream(query: Query, options?: QueryOptions): NodeJS.ReadableStream;
+        runQueryStream(
+            query: Query,
+            options?: QueryOptions,
+        ): NodeJS.ReadableStream;
 
         save(entities: OneOrMany<object>, callback: CommitCallback): void;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -273,7 +332,11 @@ declare module "@google-cloud/datastore/transaction" {
     import Datastore_ = require("@google-cloud/datastore");
     import { DatastoreKey, OneOrMany } from "@google-cloud/datastore/entity";
     import { Query } from "@google-cloud/datastore/query";
-    import { CommitCallback, CommitResult, DatastoreRequest } from "@google-cloud/datastore/request";
+    import {
+        CommitCallback,
+        CommitResult,
+        DatastoreRequest,
+    } from "@google-cloud/datastore/request";
 
     class DatastoreTransaction extends DatastoreRequest {
         constructor(datastore: Datastore_);

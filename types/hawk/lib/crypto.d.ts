@@ -23,16 +23,36 @@ export const headerVersion: string;
 
 export const algorithms: string[];
 
-export function calculateMac(type: string, credentials: Client.Credentials, options: Artifacts): string;
+export function calculateMac(
+    type: string,
+    credentials: Client.Credentials,
+    options: Artifacts,
+): string;
 
-export function generateNormalizedString(type: string, options: Artifacts): string;
+export function generateNormalizedString(
+    type: string,
+    options: Artifacts,
+): string;
 
-export function calculatePayloadHash(payload: string, algorithm: string, contentType: string): string;
+export function calculatePayloadHash(
+    payload: string,
+    algorithm: string,
+    contentType: string,
+): string;
 
-export function initializePayloadHash(algorithm: string, contentType: string): string;
+export function initializePayloadHash(
+    algorithm: string,
+    contentType: string,
+): string;
 
 export function finalizePayloadHash(hash: Crypto.Hash): string;
 
-export function calculateTsMac(ts: string, credentials: Client.Credentials): string;
+export function calculateTsMac(
+    ts: string,
+    credentials: Client.Credentials,
+): string;
 
-export function timestampMessage(credentials: Client.Credentials, localtimeOffsetMsec: number): TimestampMessage;
+export function timestampMessage(
+    credentials: Client.Credentials,
+    localtimeOffsetMsec: number,
+): TimestampMessage;

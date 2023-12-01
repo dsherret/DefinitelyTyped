@@ -22,8 +22,13 @@ function onOwnMessage(msg: Element): boolean {
             to: from,
             type: "error",
             id: msg.getAttribute("id"),
-        }).cnode(own).up().c("error", { type: "cancel", code: "501" })
-            .c("feature-not-implemented", { xmlns: "urn:ietf:params:xml:ns:xmpp-stanzas" });
+        })
+            .cnode(own)
+            .up()
+            .c("error", { type: "cancel", code: "501" })
+            .c("feature-not-implemented", {
+                xmlns: "urn:ietf:params:xml:ns:xmpp-stanzas",
+            });
 
         connection.sendPresence(iq);
         connection.sendIQ(iq);
@@ -42,8 +47,10 @@ function onMessage(msg: Element): boolean {
         const body = elems[0];
 
         log(
-            "ECHOBOT: I got a message from " + from + ": "
-                + Strophe.getText(body),
+            "ECHOBOT: I got a message from " +
+                from +
+                ": " +
+                Strophe.getText(body),
         );
 
         const text = Strophe.getText(body) + " (this is echo)";
@@ -64,7 +71,8 @@ function sendMessage() {
             to: to,
             type: "chat",
         })
-            .cnode(Strophe.xmlElement("body", message)).up()
+            .cnode(Strophe.xmlElement("body", message))
+            .up()
             .c("active", { xmlns: "http://jabber.org/protocol/chatstates" });
 
         connection.send(reply);
@@ -88,13 +96,24 @@ function onConnect(status: Strophe.Status): void {
         log("Strophe is disconnected.");
     } else if (status === Strophe.Status.CONNECTED) {
         log("Strophe is connected.");
-        log(
-            "ECHOBOT: Send a message to " + connection.jid
-                + " to talk to me.",
-        );
+        log("ECHOBOT: Send a message to " + connection.jid + " to talk to me.");
 
-        connection.addHandler(onMessage, undefined, "message", undefined, undefined, undefined);
-        connection.addHandler(onOwnMessage, undefined, "iq", "set", undefined, undefined);
+        connection.addHandler(
+            onMessage,
+            undefined,
+            "message",
+            undefined,
+            undefined,
+            undefined,
+        );
+        connection.addHandler(
+            onOwnMessage,
+            undefined,
+            "iq",
+            "set",
+            undefined,
+            undefined,
+        );
         connection.send($pres().tree());
     }
 }
@@ -111,7 +130,10 @@ function onRoomPresence(stanza: Element, room: Strophe.MUC.XmppRoom): boolean {
     return true;
 }
 
-function onRoomRoster(occupants: Strophe.MUC.OccupantMap, room: Strophe.MUC.XmppRoom): boolean {
+function onRoomRoster(
+    occupants: Strophe.MUC.OccupantMap,
+    room: Strophe.MUC.XmppRoom,
+): boolean {
     for (const nick of Object.keys(occupants)) {
         const occupant = occupants[nick];
         console.log(occupant.nick, occupant.show, occupant.status);
@@ -120,4 +142,10 @@ function onRoomRoster(occupants: Strophe.MUC.OccupantMap, room: Strophe.MUC.Xmpp
 }
 
 connection.muc.init(connection);
-connection.muc.join("room", "nick", onRoomMessage, onRoomPresence, onRoomRoster);
+connection.muc.join(
+    "room",
+    "nick",
+    onRoomMessage,
+    onRoomPresence,
+    onRoomRoster,
+);

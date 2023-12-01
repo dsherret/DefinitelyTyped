@@ -8,10 +8,22 @@ declare class SteamChatRoomClient extends EventEmitter {
     constructor(user: SteamUser);
 
     // EVENTS
-    on<K extends keyof ChatEvents>(event: K, listener: (...args: ChatEvents[K]) => void): this;
-    once<K extends keyof ChatEvents>(event: K, listener: (...args: ChatEvents[K]) => void): this;
-    off<K extends keyof ChatEvents>(event: K, listener: (...args: ChatEvents[K]) => void): this;
-    removeListener<K extends keyof ChatEvents>(event: K, listener: (...args: ChatEvents[K]) => void): this;
+    on<K extends keyof ChatEvents>(
+        event: K,
+        listener: (...args: ChatEvents[K]) => void,
+    ): this;
+    once<K extends keyof ChatEvents>(
+        event: K,
+        listener: (...args: ChatEvents[K]) => void,
+    ): this;
+    off<K extends keyof ChatEvents>(
+        event: K,
+        listener: (...args: ChatEvents[K]) => void,
+    ): this;
+    removeListener<K extends keyof ChatEvents>(
+        event: K,
+        listener: (...args: ChatEvents[K]) => void,
+    ): this;
     removeAllListeners(event?: keyof ChatEvents): this;
 
     /**
@@ -26,9 +38,17 @@ declare class SteamChatRoomClient extends EventEmitter {
         name?: string,
         callback?: (
             err: Error | null,
-            response: { chat_group_id: string; state: ChatRoomGroupState; user_chat_state: UserChatRoomGroupState },
+            response: {
+                chat_group_id: string;
+                state: ChatRoomGroupState;
+                user_chat_state: UserChatRoomGroupState;
+            },
         ) => void,
-    ): Promise<{ chat_group_id: string; state: ChatRoomGroupState; user_chat_state: UserChatRoomGroupState }>;
+    ): Promise<{
+        chat_group_id: string;
+        state: ChatRoomGroupState;
+        user_chat_state: UserChatRoomGroupState;
+    }>;
 
     /**
      * Converts an "ad-hoc" multi-user group chat into a full-fledged chat room group, which can contain multiple channels.
@@ -39,14 +59,21 @@ declare class SteamChatRoomClient extends EventEmitter {
      * @param [callback]
      * @since v4.21.0
      */
-    saveGroup(groupId: string, name: string, callback?: (err: Error | null) => void): Promise<void>;
+    saveGroup(
+        groupId: string,
+        name: string,
+        callback?: (err: Error | null) => void,
+    ): Promise<void>;
 
     /**
      * Get a list of the chat room groups you're in.
      * @param [callback]
      */
     getGroups(
-        callback?: (err: Error | null, response: { chat_room_groups: Record<string, ChatRoomGroup> }) => void,
+        callback?: (
+            err: Error | null,
+            response: { chat_room_groups: Record<string, ChatRoomGroup> },
+        ) => void,
     ): Promise<{ chat_room_groups: Record<string, ChatRoomGroup> }>;
 
     /**
@@ -57,7 +84,10 @@ declare class SteamChatRoomClient extends EventEmitter {
      */
     setSessionActiveGroups(
         groupIDs: number[] | string[] | number | string,
-        callback?: (err: Error | null, response: { chat_room_groups: Record<string, ChatRoomGroupState> }) => void,
+        callback?: (
+            err: Error | null,
+            response: { chat_room_groups: Record<string, ChatRoomGroupState> },
+        ) => void,
     ): Promise<{ chat_room_groups: Record<string, ChatRoomGroupState> }>;
 
     /**
@@ -77,7 +107,10 @@ declare class SteamChatRoomClient extends EventEmitter {
      */
     getClanChatGroupInfo(
         clanSteamID: SteamID | string,
-        callback?: (err: Error | null, response: { chat_group_summary: ChatRoomGroupSummary }) => void,
+        callback?: (
+            err: Error | null,
+            response: { chat_group_summary: ChatRoomGroupSummary },
+        ) => void,
     ): Promise<{ chat_group_summary: ChatRoomGroupSummary }>;
 
     /**
@@ -91,9 +124,15 @@ declare class SteamChatRoomClient extends EventEmitter {
         inviteCode?: string,
         callback?: (
             err: Error | null,
-            response: { state: ChatRoomGroupState; user_chat_state: UserChatRoomGroupState },
+            response: {
+                state: ChatRoomGroupState;
+                user_chat_state: UserChatRoomGroupState;
+            },
         ) => void,
-    ): Promise<{ state: ChatRoomGroupState; user_chat_state: UserChatRoomGroupState }>;
+    ): Promise<{
+        state: ChatRoomGroupState;
+        user_chat_state: UserChatRoomGroupState;
+    }>;
 
     /**
      * Leaves a chat room group you have previously joined.
@@ -101,7 +140,10 @@ declare class SteamChatRoomClient extends EventEmitter {
      * @param [callback]
      * @since v4.21.0
      */
-    leaveGroup(groupId: string, callback?: (err: Error | null) => void): Promise<void>;
+    leaveGroup(
+        groupId: string,
+        callback?: (err: Error | null) => void,
+    ): Promise<void>;
 
     /**
      * Invite a friend to a chat room group.
@@ -126,9 +168,17 @@ declare class SteamChatRoomClient extends EventEmitter {
         options?: { secondsValid?: number; voiceChatId?: number },
         callback?: (
             err: Error | null,
-            response: { invite_code: string; invite_url: string; seconds_valid: number },
+            response: {
+                invite_code: string;
+                invite_url: string;
+                seconds_valid: number;
+            },
         ) => void,
-    ): Promise<{ invite_code: string; invite_url: string; seconds_valid: number }>;
+    ): Promise<{
+        invite_code: string;
+        invite_url: string;
+        seconds_valid: number;
+    }>;
 
     /**
      * Get all active invite links for a given chat group.
@@ -137,7 +187,10 @@ declare class SteamChatRoomClient extends EventEmitter {
      */
     getGroupInviteLinks(
         groupId: number,
-        callback?: (err: Error | null, response: { invite_links: GroupInviteLinks[] }) => void,
+        callback?: (
+            err: Error | null,
+            response: { invite_links: GroupInviteLinks[] },
+        ) => void,
     ): Promise<{ invite_links: GroupInviteLinks[] }>;
 
     /**
@@ -145,7 +198,10 @@ declare class SteamChatRoomClient extends EventEmitter {
      * @param linkUrl
      * @param [callback]
      */
-    deleteInviteLink(linkUrl: string, callback?: (err: Error | null) => void): Promise<void>;
+    deleteInviteLink(
+        linkUrl: string,
+        callback?: (err: Error | null) => void,
+    ): Promise<void>;
 
     /**
      * Send a direct chat message to a friend.
@@ -157,7 +213,10 @@ declare class SteamChatRoomClient extends EventEmitter {
     sendFriendMessage(
         steamId: SteamID | string,
         message: string,
-        options?: { chatEntryType?: SteamUser.EChatEntryType; containsBbCode?: boolean },
+        options?: {
+            chatEntryType?: SteamUser.EChatEntryType;
+            containsBbCode?: boolean;
+        },
         callback?: (err: Error | null, response: SentMessage) => void,
     ): Promise<SentMessage>;
 
@@ -166,7 +225,10 @@ declare class SteamChatRoomClient extends EventEmitter {
      * @param steamId
      * @param [callback]
      */
-    sendFriendTyping(steamId: SteamID | string, callback?: (err: Error | null) => void): Promise<void>;
+    sendFriendTyping(
+        steamId: SteamID | string,
+        callback?: (err: Error | null) => void,
+    ): Promise<void>;
 
     /**
      * Send a message to a chat room.
@@ -207,7 +269,10 @@ declare class SteamChatRoomClient extends EventEmitter {
         groupId: number | string,
         name: string,
         options?: { isVoiceRoom: boolean },
-        callback?: (err: Error | null, response: { chat_room: ChatRoomState }) => void,
+        callback?: (
+            err: Error | null,
+            response: { chat_room: ChatRoomState },
+        ) => void,
     ): Promise<{ chat_room: ChatRoomState }>;
 
     /**
@@ -297,7 +362,13 @@ declare class SteamChatRoomClient extends EventEmitter {
      */
     getActiveFriendMessageSessions(
         options?: { conversationsSince: Date | number },
-        callback?: (err: Error | null, response: { sessions: ActiveFriendMessageSession[]; timestamp: Date }) => void,
+        callback?: (
+            err: Error | null,
+            response: {
+                sessions: ActiveFriendMessageSession[];
+                timestamp: Date;
+            },
+        ) => void,
     ): Promise<any>;
 
     /**
@@ -309,7 +380,10 @@ declare class SteamChatRoomClient extends EventEmitter {
     getFriendMessageHistory(
         friendSteamId: SteamID | string,
         options?: GetMessageHistoryOptions,
-        callback?: (err: Error | null, response: { messages: FriendMessage[]; more_available: boolean }) => void,
+        callback?: (
+            err: Error | null,
+            response: { messages: FriendMessage[]; more_available: boolean },
+        ) => void,
     ): Promise<{ messages: FriendMessage[]; more_available: boolean }>;
 
     /**
@@ -323,7 +397,10 @@ declare class SteamChatRoomClient extends EventEmitter {
         groupId: number | string,
         chatId: number | string,
         options?: GetMessageHistoryOptions,
-        callback?: (err: Error | null, response: { message: ChatMessage[]; more_available: boolean }) => void,
+        callback?: (
+            err: Error | null,
+            response: { message: ChatMessage[]; more_available: boolean },
+        ) => void,
     ): Promise<{ message: ChatMessage[]; more_available: boolean }>;
 
     /**
@@ -331,7 +408,10 @@ declare class SteamChatRoomClient extends EventEmitter {
      * @param friendSteamId - The SteamID of the friend whose message(s) you want to acknowledge
      * @param timestamp - The timestamp of the newest message you're acknowledging (will ack all older messages)
      */
-    ackFriendMessage(friendSteamId: SteamID | string, timestamp: Date | number): void;
+    ackFriendMessage(
+        friendSteamId: SteamID | string,
+        timestamp: Date | number,
+    ): void;
 }
 
 // #region "Events"

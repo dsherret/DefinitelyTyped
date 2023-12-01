@@ -100,9 +100,21 @@ export interface DataTableProps {
     onRowSizeChange: (index: number, value: any) => void;
     onSortOrderChange: (key: string, order: string) => void;
     /** Callback when the cell is clicked. This callback is only active when selectable is false. */
-    onCellClick: (rowIndex: number, columnIndex: number, row: any, columnValue: any, event: any) => void;
+    onCellClick: (
+        rowIndex: number,
+        columnIndex: number,
+        row: any,
+        columnValue: any,
+        event: any,
+    ) => void;
     /** Similar to onCellClick, activated when the cell is double clicked. Fires even if rows are selectable. */
-    onCellDoubleClick: (rowIndex: number, columnIndex: number, row: any, columnValue: any, event: any) => void;
+    onCellDoubleClick: (
+        rowIndex: number,
+        columnIndex: number,
+        row: any,
+        columnValue: any,
+        event: any,
+    ) => void;
     /** Notification if the filter value changes */
     onFilterValueChange: (value: string) => void;
     onNextPageClick: (event: any) => void;
@@ -110,4 +122,6 @@ export interface DataTableProps {
     onRowSelection: (selectedRows: any) => void;
 }
 
-export default class DataTable extends React.Component<Partial<DataTableProps>> {}
+export default class DataTable extends React.Component<
+    Partial<DataTableProps>
+> {}

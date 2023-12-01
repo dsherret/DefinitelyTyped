@@ -21,7 +21,11 @@ export class Tree {
     /**
      * Retrieves the tree pointed to by the oid
      */
-    static lookup(repo: Repository, id: string | Oid | Tree, callback?: Function): Promise<Tree>;
+    static lookup(
+        repo: Repository,
+        id: string | Oid | Tree,
+        callback?: Function,
+    ): Promise<Tree>;
 
     entryById(id: Oid): TreeEntry;
     _entryByIndex(idx: number): TreeEntry;
@@ -42,7 +46,11 @@ export class Tree {
     /**
      * Diff two trees with options
      */
-    diffWithOptions(tree: Tree | null, options?: DiffOptions, callback?: Function): Promise<Diff>;
+    diffWithOptions(
+        tree: Tree | null,
+        options?: DiffOptions,
+        callback?: Function,
+    ): Promise<Diff>;
     /**
      * Get an entry at the ith position.
      */
@@ -73,5 +81,9 @@ export class Tree {
      */
     builder(): Treebuilder;
     dup(): Promise<Tree>;
-    createUpdated(repo: Repository, nUpdates: number, updates: TreeUpdate): Promise<Oid>;
+    createUpdated(
+        repo: Repository,
+        nUpdates: number,
+        updates: TreeUpdate,
+    ): Promise<Oid>;
 }

@@ -11,7 +11,7 @@ let texts = wx.getTextLineHeight({
     fontSize: 28,
     fontWeight: "bold",
     fontStyle: "normal",
-    success: res => {
+    success: (res) => {
         console.assert(res.lineHeight === 0);
     },
 });
@@ -21,7 +21,7 @@ console.assert(textload != null); // 当前版本不支持此加载自定义字�
 wx.setPreferredFramesPerSecond(30);
 // 系统信息
 wx.getBatteryInfo({
-    success: info => {
+    success: (info) => {
         console.info(info.isCharging);
         console.info(info.level);
     },
@@ -64,20 +64,20 @@ wx.onError(onWXError);
 wx.offError(onWXError);
 
 // 触摸事件
-wx.onTouchStart(d => {
+wx.onTouchStart((d) => {
     console.assert(d != null);
 });
-wx.onTouchMove(d => {
+wx.onTouchMove((d) => {
     console.assert(d != null);
 });
-wx.onTouchEnd(d => {
+wx.onTouchEnd((d) => {
     console.assert(d != null);
 });
-wx.onTouchCancel(d => {
+wx.onTouchCancel((d) => {
     console.assert(d != null);
 });
 // 加速计
-wx.onAccelerometerChange(res => {
+wx.onAccelerometerChange((res) => {
     console.assert(res.x != null);
     console.assert(res.y != null);
     console.assert(res.z != null);
@@ -111,7 +111,7 @@ wx.setClipboardData({
     },
 });
 // 罗盘
-wx.onCompassChange(res => {
+wx.onCompassChange((res) => {
     console.assert(res.direction != null);
 });
 wx.startCompass({
@@ -130,7 +130,7 @@ wx.getNetworkType({
         console.log("wx.getNetworkType success");
     },
 });
-wx.onNetworkStatusChange(res => {
+wx.onNetworkStatusChange((res) => {
     console.assert(res.isConnected != null);
 });
 // 屏幕
@@ -163,7 +163,7 @@ wx.vibrateLong({
     },
 });
 // 转屏
-wx.onDeviceOrientationChange(res => {
+wx.onDeviceOrientationChange((res) => {
     console.assert(res.value != null);
 });
 // 文件
@@ -171,7 +171,7 @@ let getFile = wx.getFileSystemManager();
 console.assert(getFile != null);
 // 位置
 wx.getLocation({
-    success: res => {
+    success: (res) => {
         res.altitude != null;
         console.log("wx.getLocation success");
     },
@@ -218,7 +218,7 @@ wx.closeSocket({
         console.log("wx.closeSocket success");
     },
 });
-wx.onSocketOpen(res => {
+wx.onSocketOpen((res) => {
     console.assert(res.header != null);
 });
 wx.onSocketClose;
@@ -241,8 +241,12 @@ let upLoad = wx.uploadFile({
     },
 });
 console.assert(upLoad != null);
-upLoad.onProgressUpdate(res => {
-    console.log(`upload progress: ${res.progress}, ${res.totalBytesSent / res.totalBytesExpectedToSend}`);
+upLoad.onProgressUpdate((res) => {
+    console.log(
+        `upload progress: ${res.progress}, ${
+            res.totalBytesSent / res.totalBytesExpectedToSend
+        }`,
+    );
 });
 upLoad.abort();
 
@@ -279,7 +283,7 @@ wx.login({
 // 防沉迷
 wx.checkIsUserAdvisedToRest({
     todayPlayedTime: 10,
-    success: res => {
+    success: (res) => {
         console.assert(res.result != null);
     },
 });
@@ -308,11 +312,11 @@ let ubtn = wx.createUserInfoButton({
     },
 });
 console.assert(ubtn != null);
-ubtn.onTap(res => {
+ubtn.onTap((res) => {
     console.assert(res.errMsg != null && res.userInfo != null);
 });
 const newUserInfoParam: wx.types.NewUserInfoParam = {
-    success: res => {
+    success: (res) => {
         console.assert(res.data != null);
     },
 };
@@ -337,18 +341,18 @@ let createOpenSet = wx.createOpenSettingButton({
 });
 console.assert(createOpenSet != null);
 wx.getSetting({
-    success: res => {
+    success: (res) => {
         res.authSetting != null;
     },
 });
 wx.openSetting({
-    success: res => {
+    success: (res) => {
         res.authSetting != null;
     },
 });
 // 微信运动
 wx.getWeRunData({
-    success: res => {
+    success: (res) => {
         res.encryptedData != null;
         res.iv != null;
     },
@@ -407,7 +411,7 @@ console.assert(getOpenD != null);
 // 转发
 wx.getShareInfo({
     shareTicket: "",
-    success: res => {
+    success: (res) => {
         res.encryptedData != null;
         res.errMsg != null;
         res.iv != null;
@@ -445,12 +449,12 @@ wx.clearStorage({
 });
 wx.getStorage({
     key: "test key",
-    success: res => {
+    success: (res) => {
         console.assert(res.data != null);
     },
 });
 wx.getStorageInfo({
-    success: res => {
+    success: (res) => {
         console.assert(res.keys != null);
         console.assert(res.currentSize != null);
         console.assert(res.limitSize != null);
@@ -507,7 +511,7 @@ wx.hideToast();
 wx.hideLoading();
 // 键盘
 wx.hideKeyboard();
-wx.onKeyboardInput(res => {
+wx.onKeyboardInput((res) => {
     console.assert(res.value != null);
 });
 wx.showKeyboard({
@@ -525,7 +529,7 @@ wx.setStatusBarStyle({
     style: "black",
 });
 // 窗口
-wx.onWindowResize(res => {
+wx.onWindowResize((res) => {
     console.assert(res.windowHeight !== 0);
     console.assert(res.windowWidth !== 0);
 });
@@ -540,7 +544,7 @@ let creatInn = wx.createInnerAudioContext();
 console.assert(creatInn != null);
 
 wx.getAvailableAudioSources({
-    success: res => {
+    success: (res) => {
         console.assert(res.audioSources.length > 0);
     },
 });
@@ -552,7 +556,7 @@ wx.chooseImage({
     count: 1,
     sizeType: ["original"],
     sourceType: ["album"],
-    success: res => {
+    success: (res) => {
         console.assert(res.tempFilePaths.length > 0);
     },
 });
@@ -574,7 +578,10 @@ wx.requestMidasPayment({
     currencyType: "CNY",
 });
 // 广告
-const bannerAd = wx.createBannerAd({ adUnitId: "test", style: { width: 100, height: 64, left: 800, top: 300 } });
+const bannerAd = wx.createBannerAd({
+    adUnitId: "test",
+    style: { width: 100, height: 64, left: 800, top: 300 },
+});
 console.log("bannerAd: " + bannerAd.adUnitId);
 const videoAd = wx.createRewardedVideoAd({ adUnitId: "test" });
 console.log("videoAd: " + videoAd.adUnitId);
@@ -586,5 +593,8 @@ const gridAd = wx.createGridAd({
     adTheme: "black",
 });
 console.log("gridAd: " + gridAd.adUnitId);
-const csmAd = wx.createCustomAd({ adUnitId: "test", style: { left: 100, top: 100 } });
+const csmAd = wx.createCustomAd({
+    adUnitId: "test",
+    style: { left: 100, top: 100 },
+});
 console.log("customAd: " + csmAd.style.fixed);

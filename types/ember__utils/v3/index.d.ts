@@ -46,7 +46,11 @@ export function tryInvoke<FNAME extends keyof T, T extends object>(
     obj: T,
     methodName: FNAME,
 ): T[FNAME] extends () => any ? ReturnType<T[FNAME]> : undefined;
-export function tryInvoke(obj: object, methodName: string, args?: any[]): undefined;
+export function tryInvoke(
+    obj: object,
+    methodName: string,
+    args?: any[],
+): undefined;
 
 /**
  * Returns a consistent type for the passed object.

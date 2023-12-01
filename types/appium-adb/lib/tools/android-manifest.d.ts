@@ -37,7 +37,10 @@ interface AndroidManifest {
      *                              _dumpsys package_ command. It may speed up the method execution.
      * @return The version of the target SDK.
      */
-    targetSdkVersionUsingPKG(pkg: string, cmdOutput?: string | null): Promise<number>;
+    targetSdkVersionUsingPKG(
+        pkg: string,
+        cmdOutput?: string | null,
+    ): Promise<number>;
 
     /**
      * Create binary representation of package manifest (usually AndroidManifest.xml).
@@ -48,7 +51,11 @@ interface AndroidManifest {
      * @param manifestPackage - The name of the manifest package
      * @param targetPackage - The name of the destination package
      */
-    compileManifest(manifest: string, manifestPackage: string, targetPackage: string): Promise<void>;
+    compileManifest(
+        manifest: string,
+        manifestPackage: string,
+        targetPackage: string,
+    ): Promise<void>;
 
     /**
      * Replace/insert the specially precompiled manifest file into the
@@ -63,7 +70,11 @@ interface AndroidManifest {
      * @param dstApk - Full path to the resulting package.
      *                          The file will be overridden if it already exists.
      */
-    insertManifest(manifest: string, srcApk: string, dstApk: string): Promise<void>;
+    insertManifest(
+        manifest: string,
+        srcApk: string,
+        dstApk: string,
+    ): Promise<void>;
 
     /**
      * Check whether package manifest contains Internet permissions.

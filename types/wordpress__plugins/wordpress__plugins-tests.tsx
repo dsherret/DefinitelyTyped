@@ -29,4 +29,6 @@ const Foo = ({ iconName, foobar }: Props) => (
     </ul>
 );
 
-const Foobar = plugins.withPluginContext<ContextProps, OwnProps>(({ icon }) => ({ iconName: icon.toString() }))(Foo);
+const Foobar = plugins.withPluginContext<ContextProps, OwnProps>(
+    ({ icon }) => ({ iconName: icon.toString() }),
+)(Foo);

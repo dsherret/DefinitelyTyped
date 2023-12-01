@@ -39,7 +39,10 @@ declare class FileSystem {
      *                          to `true`).
      * @return Mock file system.
      */
-    static create(paths?: FileSystem.DirectoryItems, options?: FileSystem.Options): FileSystem;
+    static create(
+        paths?: FileSystem.DirectoryItems,
+        options?: FileSystem.Options,
+    ): FileSystem;
 
     /**
      * Generate a factory for new files.

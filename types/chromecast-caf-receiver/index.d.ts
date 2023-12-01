@@ -62,14 +62,20 @@ declare global {
     type EmsgEventHandler = (event: EmsgEvent) => void;
     type MediaStatusEventHandler = (event: MediaStatusEvent) => void;
     type CustomStateEventHandler = (event: CustomStateEvent) => void;
-    type MediaInformationChangedEventHandler = (event: MediaInformationChangedEvent) => void;
+    type MediaInformationChangedEventHandler = (
+        event: MediaInformationChangedEvent,
+    ) => void;
     type MediaFinishedEventHandler = (event: MediaFinishedEvent) => void;
     type LoadEventHandler = (event: LoadEvent) => void;
-    type SegmentDownloadedEventHandler = (event: SegmentDownloadedEvent) => void;
+    type SegmentDownloadedEventHandler = (
+        event: SegmentDownloadedEvent,
+    ) => void;
     type RequestEventHandler = (event: RequestEvent) => void;
     type LiveStatusEventHandler = (event: LiveStatusEvent) => void;
     type TimedMetadataEventHandler = (event: TimedMetadataEvent) => void;
-    type PlayerDataChangedEventHandler = (event: PlayerDataChangedEvent) => void;
+    type PlayerDataChangedEventHandler = (
+        event: PlayerDataChangedEvent,
+    ) => void;
     type RequestHandler = (request: framework.NetworkRequestInfo) => void;
     type BinaryHandler = (data: Uint8Array) => Uint8Array | Promise<Uint8Array>;
 }

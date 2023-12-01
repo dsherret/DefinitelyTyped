@@ -22,7 +22,11 @@ export interface CertificateInfo {
 }
 
 // Api to create a Certificate Authority
-export function createCA(caCerticateInfo: CACertificateInfo): Promise<Certificate>;
+export function createCA(
+    caCerticateInfo: CACertificateInfo,
+): Promise<Certificate>;
 
 // Api to create a Certificate
-export function createCert(certicateInfo: CertificateInfo): Promise<Certificate>;
+export function createCert(
+    certicateInfo: CertificateInfo,
+): Promise<Certificate>;

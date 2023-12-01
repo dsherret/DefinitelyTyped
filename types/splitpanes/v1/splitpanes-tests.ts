@@ -6,8 +6,7 @@ new Vue({
     components: {
         "split-panes": splitPanes,
     },
-    template:
-        `<split-panes class="default-theme" horizontal @resize="horizontalResize($event)" :dblClickSplitter="false" :push-other-panes="false">
+    template: `<split-panes class="default-theme" horizontal @resize="horizontalResize($event)" :dblClickSplitter="false" :push-other-panes="false">
     <span splitpanes-min="2" splitpanes-size="35" splitpanes-max="85">
         A
      </span>

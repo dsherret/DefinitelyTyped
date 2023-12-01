@@ -75,7 +75,11 @@ export class LineSegment {
      * @param result - The result vector.
      * @return The closest point.
      */
-    closestPointToPoint(point: Vector3, clampToLine: boolean, result: Vector3): Vector3;
+    closestPointToPoint(
+        point: Vector3,
+        clampToLine: boolean,
+        result: Vector3,
+    ): Vector3;
 
     /**
      * Computes a scalar value which represents the closest point on an infinite line

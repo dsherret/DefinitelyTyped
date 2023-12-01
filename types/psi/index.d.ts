@@ -1,7 +1,10 @@
 /**
  * PageSpeed Insights with reporting
  */
-declare function psi(url: string, options?: psi.Options): Promise<psi.ResponseData>;
+declare function psi(
+    url: string,
+    options?: psi.Options,
+): Promise<psi.ResponseData>;
 
 declare namespace psi {
     /**

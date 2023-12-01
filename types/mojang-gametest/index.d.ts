@@ -73,7 +73,10 @@ export class GameTestSequence {
      * Returns a GameTestSequence object where additional .thenXyz
      * method steps can be added.
      */
-    thenExecuteAfter(delayTicks: number, callback: () => void): GameTestSequence;
+    thenExecuteAfter(
+        delayTicks: number,
+        callback: () => void,
+    ): GameTestSequence;
     /**
      * @remarks
      * Runs the given callback every tick for the given number of
@@ -269,7 +272,10 @@ export class SculkSpreader {
      * @param offset
      * @param charge
      */
-    addCursorsWithOffset(offset: mojangminecraft.BlockLocation, charge: number): void;
+    addCursorsWithOffset(
+        offset: mojangminecraft.BlockLocation,
+        charge: number,
+    ): void;
     /**
      * @remarks
      * Retrieves the current position of the specified cursor.
@@ -430,7 +436,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * Direction to place the specified item within.
      * @throws This function can throw errors.
      */
-    breakBlock(blockLocation: mojangminecraft.BlockLocation, direction?: mojangminecraft.Direction): boolean;
+    breakBlock(
+        blockLocation: mojangminecraft.BlockLocation,
+        direction?: mojangminecraft.Direction,
+    ): boolean;
     /**
      * @remarks
      * Gets the first block that intersects with the vector of the
@@ -439,7 +448,9 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
      */
-    getBlockFromViewVector(options?: mojangminecraft.BlockRaycastOptions): mojangminecraft.Block;
+    getBlockFromViewVector(
+        options?: mojangminecraft.BlockRaycastOptions,
+    ): mojangminecraft.Block;
     /**
      * @remarks
      * Gets a component (that represents additional capabilities)
@@ -486,7 +497,9 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
      */
-    getEntitiesFromViewVector(options?: mojangminecraft.EntityRaycastOptions): mojangminecraft.Entity[];
+    getEntitiesFromViewVector(
+        options?: mojangminecraft.EntityRaycastOptions,
+    ): mojangminecraft.Entity[];
     /**
      * @remarks
      * Gets the current item cooldown time for a particular
@@ -512,7 +525,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * Whether to set the selected slot once given.
      * @throws This function can throw errors.
      */
-    giveItem(itemStack: mojangminecraft.ItemStack, selectSlot?: boolean): boolean;
+    giveItem(
+        itemStack: mojangminecraft.ItemStack,
+        selectSlot?: boolean,
+    ): boolean;
     /**
      * @remarks
      * Returns true if the specified component is present on this
@@ -550,7 +566,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * Direction to place the specified item within.
      * @throws This function can throw errors.
      */
-    interactWithBlock(blockLocation: mojangminecraft.BlockLocation, direction?: mojangminecraft.Direction): boolean;
+    interactWithBlock(
+        blockLocation: mojangminecraft.BlockLocation,
+        direction?: mojangminecraft.Direction,
+    ): boolean;
     /**
      * @remarks
      * Causes the simulated player to interact with a mob. Returns
@@ -617,7 +636,11 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * @param speed
      * @throws This function can throw errors.
      */
-    moveRelative(leftRight: number, backwardForward: number, speed?: number): void;
+    moveRelative(
+        leftRight: number,
+        backwardForward: number,
+        speed?: number,
+    ): void;
     /**
      * @remarks
      * Orders the simulated player to move to the given block
@@ -628,7 +651,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * @param speed
      * @throws This function can throw errors.
      */
-    moveToBlock(blockLocation: mojangminecraft.BlockLocation, speed?: number): void;
+    moveToBlock(
+        blockLocation: mojangminecraft.BlockLocation,
+        speed?: number,
+    ): void;
     /**
      * @remarks
      * Orders the simulated player to move to the given location in
@@ -651,7 +677,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * @param speed
      * @throws This function can throw errors.
      */
-    navigateToBlock(blockLocation: mojangminecraft.BlockLocation, speed?: number): mojangminecraft.NavigationResult;
+    navigateToBlock(
+        blockLocation: mojangminecraft.BlockLocation,
+        speed?: number,
+    ): mojangminecraft.NavigationResult;
     /**
      * @remarks
      * Will use navigation to follow the selected entity to within
@@ -661,7 +690,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * @param speed
      * @throws This function can throw errors.
      */
-    navigateToEntity(entity: mojangminecraft.Entity, speed?: number): mojangminecraft.NavigationResult;
+    navigateToEntity(
+        entity: mojangminecraft.Entity,
+        speed?: number,
+    ): mojangminecraft.NavigationResult;
     /**
      * @remarks
      * Orders the simulated player to move to a specific location
@@ -674,7 +706,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * @param speed
      * @throws This function can throw errors.
      */
-    navigateToLocation(location: mojangminecraft.Location, speed?: number): mojangminecraft.NavigationResult;
+    navigateToLocation(
+        location: mojangminecraft.Location,
+        speed?: number,
+    ): mojangminecraft.NavigationResult;
     /**
      * @remarks
      * Use navigation to follow the route provided via the
@@ -686,7 +721,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * Net speed to use for doing the navigation.
      * @throws This function can throw errors.
      */
-    navigateToLocations(locations: mojangminecraft.Location[], speed?: number): void;
+    navigateToLocations(
+        locations: mojangminecraft.Location[],
+        speed?: number,
+    ): void;
     /**
      * @remarks
      * This method is inherited from Player, but is inoperative in
@@ -697,7 +735,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * Additional optional options for the sound.
      * @throws This function can throw errors.
      */
-    playSound(soundID: string, soundOptions?: mojangminecraft.SoundOptions): void;
+    playSound(
+        soundID: string,
+        soundOptions?: mojangminecraft.SoundOptions,
+    ): void;
     postClientMessage(id: string, value: string): void;
     /**
      * @remarks
@@ -755,7 +796,9 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * command response values.
      * @throws This function can throw errors.
      */
-    runCommandAsync(commandString: string): Promise<mojangminecraft.CommandResult>;
+    runCommandAsync(
+        commandString: string,
+    ): Promise<mojangminecraft.CommandResult>;
     /**
      * @remarks
      * Causes the simulated player to turn to face the provided
@@ -772,7 +815,10 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * Data value of the property to set.
      * @throws This function can throw errors.
      */
-    setDynamicProperty(identifier: string, value: boolean | number | string): void;
+    setDynamicProperty(
+        identifier: string,
+        value: boolean | number | string,
+    ): void;
     /**
      * @remarks
      * Sets the game mode that the simulated player is operating
@@ -793,7 +839,11 @@ export class SimulatedPlayer extends mojangminecraft.Player {
      * Whether to set the selected slot once set.
      * @throws This function can throw errors.
      */
-    setItem(itemStack: mojangminecraft.ItemStack, slot: number, selectSlot?: boolean): boolean;
+    setItem(
+        itemStack: mojangminecraft.ItemStack,
+        slot: number,
+        selectSlot?: boolean,
+    ): boolean;
     /**
      * @remarks
      * Sets the main rotation of the entity.
@@ -1099,7 +1149,10 @@ export class Test {
      * chest) to test the contents of.
      * @throws This function can throw errors.
      */
-    assertContainerContains(itemStack: mojangminecraft.ItemStack, blockLocation: mojangminecraft.BlockLocation): void;
+    assertContainerContains(
+        itemStack: mojangminecraft.ItemStack,
+        blockLocation: mojangminecraft.BlockLocation,
+    ): void;
     /**
      * @remarks
      * Tests that a container (e.g., a chest) at the specified
@@ -1248,7 +1301,10 @@ export class Test {
      *            .structureName("gametests:mediumglass");
      * ```
      */
-    assertEntityPresentInArea(entityTypeIdentifier: string, isPresent?: boolean): void;
+    assertEntityPresentInArea(
+        entityTypeIdentifier: string,
+        isPresent?: boolean,
+    ): void;
     /**
      * @remarks
      * Tests that an entity (e.g., a skeleton) at the specified
@@ -1298,7 +1354,11 @@ export class Test {
      * not testing the specified location.
      * @throws This function can throw errors.
      */
-    assertEntityTouching(entityTypeIdentifier: string, location: mojangminecraft.Location, isTouching?: boolean): void;
+    assertEntityTouching(
+        entityTypeIdentifier: string,
+        location: mojangminecraft.Location,
+        isTouching?: boolean,
+    ): void;
     /**
      * @remarks
      * Depending on the value of isWaterlogged, tests that a block
@@ -1312,7 +1372,10 @@ export class Test {
      * be waterlogged.
      * @throws This function can throw errors.
      */
-    assertIsWaterlogged(blockLocation: mojangminecraft.BlockLocation, isWaterlogged?: boolean): void;
+    assertIsWaterlogged(
+        blockLocation: mojangminecraft.BlockLocation,
+        isWaterlogged?: boolean,
+    ): void;
     /**
      * @remarks
      * Tests that items of a particular type and count are present
@@ -1373,8 +1436,14 @@ export class Test {
      * Expected power level.
      * @throws This function can throw errors.
      */
-    assertRedstonePower(blockLocation: mojangminecraft.BlockLocation, power: number): void;
-    destroyBlock(blockLocation: mojangminecraft.BlockLocation, dropResources?: boolean): void;
+    assertRedstonePower(
+        blockLocation: mojangminecraft.BlockLocation,
+        power: number,
+    ): void;
+    destroyBlock(
+        blockLocation: mojangminecraft.BlockLocation,
+        dropResources?: boolean,
+    ): void;
     /**
      * @remarks
      * Marks the current test as a failure case.
@@ -1401,7 +1470,9 @@ export class Test {
      * Location of the block to retrieve.
      * @throws This function can throw errors.
      */
-    getBlock(blockLocation: mojangminecraft.BlockLocation): mojangminecraft.Block;
+    getBlock(
+        blockLocation: mojangminecraft.BlockLocation,
+    ): mojangminecraft.Block;
     /**
      * @remarks
      * Gets the dimension of this test.
@@ -1417,7 +1488,9 @@ export class Test {
      * Location of the block to retrieve.
      * @throws This function can throw errors.
      */
-    getFenceConnectivity(blockLocation: mojangminecraft.BlockLocation): FenceConnectivity;
+    getFenceConnectivity(
+        blockLocation: mojangminecraft.BlockLocation,
+    ): FenceConnectivity;
     /**
      * @remarks
      * Retrieves a sculk spreader object that can be used to
@@ -1426,7 +1499,9 @@ export class Test {
      * Location of the block to retrieve a sculk spreader from.
      * @throws This function can throw errors.
      */
-    getSculkSpreader(blockLocation: mojangminecraft.BlockLocation): SculkSpreader;
+    getSculkSpreader(
+        blockLocation: mojangminecraft.BlockLocation,
+    ): SculkSpreader;
     /**
      * @remarks
      * Returns the direction of the current test - see the
@@ -1486,7 +1561,10 @@ export class Test {
      * Number of ticks to pulse Redstone.
      * @throws This function can throw errors.
      */
-    pulseRedstone(blockLocation: mojangminecraft.BlockLocation, duration: number): void;
+    pulseRedstone(
+        blockLocation: mojangminecraft.BlockLocation,
+        duration: number,
+    ): void;
     /**
      * @remarks
      * From a BlockLocation, returns a new BlockLocation with
@@ -1501,7 +1579,9 @@ export class Test {
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
      */
-    relativeBlockLocation(worldBlockLocation: mojangminecraft.BlockLocation): mojangminecraft.BlockLocation;
+    relativeBlockLocation(
+        worldBlockLocation: mojangminecraft.BlockLocation,
+    ): mojangminecraft.BlockLocation;
     /**
      * @remarks
      * From a location, returns a new location with coordinates
@@ -1516,7 +1596,9 @@ export class Test {
      * A location relative to the GameTest command block.
      * @throws This function can throw errors.
      */
-    relativeLocation(worldLocation: mojangminecraft.Location): mojangminecraft.Location;
+    relativeLocation(
+        worldLocation: mojangminecraft.Location,
+    ): mojangminecraft.Location;
     /**
      * @remarks
      * Removes a simulated player from the world.
@@ -1537,7 +1619,9 @@ export class Test {
      * opposite of the test direction, and so on.
      * @throws This function can throw errors.
      */
-    rotateDirection(direction: mojangminecraft.Direction): mojangminecraft.Direction;
+    rotateDirection(
+        direction: mojangminecraft.Direction,
+    ): mojangminecraft.Direction;
     rotateVector(vector: mojangminecraft.Vector): mojangminecraft.Vector;
     /**
      * @remarks
@@ -1587,7 +1671,10 @@ export class Test {
      * Location of the block to set.
      * @throws This function can throw errors.
      */
-    setBlockType(blockType: mojangminecraft.BlockType, blockLocation: mojangminecraft.BlockLocation): void;
+    setBlockType(
+        blockType: mojangminecraft.BlockType,
+        blockLocation: mojangminecraft.BlockLocation,
+    ): void;
     /**
      * @remarks
      * For blocks that are fluid containers - like a cauldron -
@@ -1599,7 +1686,10 @@ export class Test {
      * list of values.
      * @throws This function can throw errors.
      */
-    setFluidContainer(location: mojangminecraft.BlockLocation, type: mojangminecraft.FluidType): void;
+    setFluidContainer(
+        location: mojangminecraft.BlockLocation,
+        type: mojangminecraft.FluidType,
+    ): void;
     /**
      * @remarks
      * Sets the fuse of an explodable entity.
@@ -1647,7 +1737,10 @@ export class Test {
      *
      * ```
      */
-    spawn(entityTypeIdentifier: string, blockLocation: mojangminecraft.BlockLocation): mojangminecraft.Entity;
+    spawn(
+        entityTypeIdentifier: string,
+        blockLocation: mojangminecraft.BlockLocation,
+    ): mojangminecraft.Entity;
     /**
      * @remarks
      * Spawns an entity at a location.
@@ -1666,7 +1759,10 @@ export class Test {
      *        test.spawn("minecraft:pig<minecraft:ageable_grow_up>", new Location(1.5, 2, 1.5));
      * ```
      */
-    spawnAtLocation(entityTypeIdentifier: string, location: mojangminecraft.Location): mojangminecraft.Entity;
+    spawnAtLocation(
+        entityTypeIdentifier: string,
+        location: mojangminecraft.Location,
+    ): mojangminecraft.Entity;
     /**
      * @remarks
      * Spawns an item entity at a specified location.
@@ -1685,7 +1781,10 @@ export class Test {
      *
      * ```
      */
-    spawnItem(itemStack: mojangminecraft.ItemStack, location: mojangminecraft.Location): mojangminecraft.Entity;
+    spawnItem(
+        itemStack: mojangminecraft.ItemStack,
+        location: mojangminecraft.Location,
+    ): mojangminecraft.Entity;
     /**
      * @remarks
      * Creates a new simulated player within the world.
@@ -1941,7 +2040,11 @@ export class Test {
      * Adjustable modifier to the mob's walking speed.
      * @throws This function can throw errors.
      */
-    walkTo(mob: mojangminecraft.Entity, blockLocation: mojangminecraft.BlockLocation, speedModifier?: number): void;
+    walkTo(
+        mob: mojangminecraft.Entity,
+        blockLocation: mojangminecraft.BlockLocation,
+        speedModifier?: number,
+    ): void;
     /**
      * @remarks
      * Forces a mob to walk to a particular location. Usually used
@@ -1956,7 +2059,11 @@ export class Test {
      * Adjustable modifier to the mob's walking speed.
      * @throws This function can throw errors.
      */
-    walkToLocation(mob: mojangminecraft.Entity, location: mojangminecraft.Location, speedModifier?: number): void;
+    walkToLocation(
+        mob: mojangminecraft.Entity,
+        location: mojangminecraft.Location,
+        speedModifier?: number,
+    ): void;
     /**
      * @remarks
      * From a BlockLocation with coordinates relative to the
@@ -1969,7 +2076,9 @@ export class Test {
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
      */
-    worldBlockLocation(relativeBlockLocation: mojangminecraft.BlockLocation): mojangminecraft.BlockLocation;
+    worldBlockLocation(
+        relativeBlockLocation: mojangminecraft.BlockLocation,
+    ): mojangminecraft.BlockLocation;
     /**
      * @remarks
      * From a location with coordinates relative to the GameTest
@@ -1982,7 +2091,9 @@ export class Test {
      * An absolute location relative to the GameTest command block.
      * @throws This function can throw errors.
      */
-    worldLocation(relativeLocation: mojangminecraft.Location): mojangminecraft.Location;
+    worldLocation(
+        relativeLocation: mojangminecraft.Location,
+    ): mojangminecraft.Location;
     protected constructor();
 }
 /**

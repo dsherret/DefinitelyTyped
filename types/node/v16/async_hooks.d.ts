@@ -121,7 +121,12 @@ declare module "async_hooks" {
          * @param triggerAsyncId the unique ID of the async resource in whose execution context this async resource was created
          * @param resource reference to the resource representing the async operation, needs to be released during destroy
          */
-        init?(asyncId: number, type: string, triggerAsyncId: number, resource: object): void;
+        init?(
+            asyncId: number,
+            type: string,
+            triggerAsyncId: number,
+            resource: object,
+        ): void;
         /**
          * When an asynchronous operation is initiated or completes a callback is called to notify the user.
          * The before callback is called just before said callback is executed.
@@ -260,7 +265,10 @@ declare module "async_hooks" {
          *   this async event (default: `executionAsyncId()`), or an
          *   AsyncResourceOptions object (since v9.3.0)
          */
-        constructor(type: string, triggerAsyncId?: number | AsyncResourceOptions);
+        constructor(
+            type: string,
+            triggerAsyncId?: number | AsyncResourceOptions,
+        );
         /**
          * Binds the given function to the current execution context.
          *
@@ -270,7 +278,10 @@ declare module "async_hooks" {
          * @param fn The function to bind to the current execution context.
          * @param type An optional name to associate with the underlying `AsyncResource`.
          */
-        static bind<Func extends (this: ThisArg, ...args: any[]) => any, ThisArg>(
+        static bind<
+            Func extends (this: ThisArg, ...args: any[]) => any,
+            ThisArg,
+        >(
             fn: Func,
             type?: string,
             thisArg?: ThisArg,
@@ -423,7 +434,11 @@ declare module "async_hooks" {
          * @since v13.10.0, v12.17.0
          */
         run<R>(store: T, callback: () => R): R;
-        run<R, TArgs extends any[]>(store: T, callback: (...args: TArgs) => R, ...args: TArgs): R;
+        run<R, TArgs extends any[]>(
+            store: T,
+            callback: (...args: TArgs) => R,
+            ...args: TArgs
+        ): R;
         /**
          * Runs a function synchronously outside of a context and returns its
          * return value. The store is not accessible within the callback function or
@@ -452,7 +467,10 @@ declare module "async_hooks" {
          * @since v13.10.0, v12.17.0
          * @experimental
          */
-        exit<R, TArgs extends any[]>(callback: (...args: TArgs) => R, ...args: TArgs): R;
+        exit<R, TArgs extends any[]>(
+            callback: (...args: TArgs) => R,
+            ...args: TArgs
+        ): R;
         /**
          * Transitions into the context for the remainder of the current
          * synchronous execution and then persists the store through any following

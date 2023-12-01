@@ -8,7 +8,7 @@ import {
     ShortNumberInfo,
 } from "google-libphonenumber";
 
-(() => {
+() => {
     // Require `PhoneNumberFormat`.
     var PNF = libphonenumber.PhoneNumberFormat;
 
@@ -32,9 +32,9 @@ import {
 
     // $ExpectType number
     phoneUtil.getLengthOfNationalDestinationCode(phoneNumber);
-});
+};
 
-(() => {
+() => {
     // Require `AsYouTypeFormatter`.
     var AsYouTypeFormatter = libphonenumber.AsYouTypeFormatter;
     var formatter = new AsYouTypeFormatter("US");
@@ -49,7 +49,7 @@ import {
     console.log(formatter.inputDigit("2")); // => (650) 253-22
 
     formatter.clear();
-});
+};
 
 // Get instance of `PhoneNumberUtil`
 var phoneNumberUtil = PhoneNumberUtil.getInstance();

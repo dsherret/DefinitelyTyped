@@ -13,8 +13,14 @@ declare namespace WavEncoder {
 
 declare const WavEncoder: {
     encode: {
-        (audioData: WavEncoder.AudioData, opts?: WavEncoder.Options): Promise<ArrayBuffer>;
-        sync: (audioData: WavEncoder.AudioData, opts?: WavEncoder.Options) => ArrayBuffer;
+        (
+            audioData: WavEncoder.AudioData,
+            opts?: WavEncoder.Options,
+        ): Promise<ArrayBuffer>;
+        sync: (
+            audioData: WavEncoder.AudioData,
+            opts?: WavEncoder.Options,
+        ) => ArrayBuffer;
     };
 };
 

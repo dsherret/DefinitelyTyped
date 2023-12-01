@@ -53,7 +53,9 @@ pm.makeRe("foo/{01..25}/bar", {
 });
 
 const isMatchWithIgnore = pm("*.!(*a)", { ignore: "single-string" });
-const isMatchWithMultipleIgnores = pm("*.!(*a)", { ignore: ["many", "strings"] });
+const isMatchWithMultipleIgnores = pm("*.!(*a)", {
+    ignore: ["many", "strings"],
+});
 
 const picoConstansts = pm.constants.globChars(true /* is windows */);
 picoConstansts.SLASH_LITERAL; // $ExpectType string

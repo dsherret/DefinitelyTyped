@@ -184,12 +184,14 @@ export interface UnsuccessfulValidationResult {
     reason: string;
 }
 
-export type ValidateResult = SuccessfulValidationResult | UnsuccessfulValidationResult;
+export type ValidateResult =
+    | SuccessfulValidationResult
+    | UnsuccessfulValidationResult;
 
 type Result<T> =
     | (SuccessfulValidationResult & {
-        output: ReadonlyArray<{ type: "collection" } & T>;
-    })
+          output: ReadonlyArray<{ type: "collection" } & T>;
+      })
     | UnsuccessfulValidationResult;
 
 export type ConvertResult = Result<{ data: CollectionDefinition }>;
@@ -216,7 +218,9 @@ interface OptionsTypes {
     array: readonly unknown[];
 }
 
-export interface OptionsDocument<T extends keyof OptionsTypes = keyof OptionsTypes> extends OptionsBase {
+export interface OptionsDocument<
+    T extends keyof OptionsTypes = keyof OptionsTypes,
+> extends OptionsBase {
     name: string;
     id: string;
     type: T;
@@ -243,7 +247,10 @@ export class SchemaPack {
         cb: Callback<{ requests: unknown; missingEndpoints: unknown }>,
     ): void;
 
-    static getOptions(mode: "document", criteria: OptionsCriteria): OptionsDocument;
+    static getOptions(
+        mode: "document",
+        criteria: OptionsCriteria,
+    ): OptionsDocument;
     static getOptions(mode: "use", criteria: OptionsCriteria): OptionsUse;
 }
 
@@ -255,9 +262,15 @@ export function convert(
 
 export function getMetaData(input: Input, cb: Callback<MetadataResult>): void;
 
-export function getOptions(mode: "document", criteria: OptionsCriteria): OptionsDocument;
+export function getOptions(
+    mode: "document",
+    criteria: OptionsCriteria,
+): OptionsDocument;
 export function getOptions(mode: "use", criteria: OptionsCriteria): OptionsUse;
 
-export function mergeAndValidate(input: Input, cb: Callback<ValidateResult>): void;
+export function mergeAndValidate(
+    input: Input,
+    cb: Callback<ValidateResult>,
+): void;
 
 export function validate(input: Input): ValidateResult;

@@ -185,12 +185,16 @@ export class QueueBase {
      * If this returns or resolves to null; our default queueing implementation will create a queue based on queueData.items or the single media
      *  in the load request data.
      */
-    initialize(requestData: messages.LoadRequestData): messages.QueueData | Promise<messages.QueueData>;
+    initialize(
+        requestData: messages.LoadRequestData,
+    ): messages.QueueData | Promise<messages.QueueData>;
 
     /**
      * Returns next items after the reference item; often the end of the current queue; called by the receiver MediaManager.
      */
-    nextItems(itemId?: number): messages.QueueItem[] | Promise<messages.QueueItem[]>;
+    nextItems(
+        itemId?: number,
+    ): messages.QueueItem[] | Promise<messages.QueueItem[]>;
 
     /**
      * Sets the current item with the itemId; called by the receiver MediaManager when it changes the current playing item.
@@ -212,7 +216,9 @@ export class QueueBase {
     /**
      * Returns previous items before the reference item; often at the beginning of the queue; called by the receiver MediaManager.
      */
-    prevItems(itemId?: number): messages.QueueItem[] | Promise<messages.QueueItem[]>;
+    prevItems(
+        itemId?: number,
+    ): messages.QueueItem[] | Promise<messages.QueueItem[]>;
 
     /**
      * Shuffles the queue and returns new queue items. Returns null if the operation is not supported.
@@ -238,7 +244,8 @@ interface MessageEventToMessageTypeMap {
     [messages.MessageType.CLOUD_STATUS]: messages.CloudMediaStatus;
     [messages.MessageType.CUSTOM_COMMAND]: messages.CustomCommandRequestData;
     [messages.MessageType.DISPLAY_STATUS]: messages.DisplayStatusRequestData;
-    [messages.MessageType.EDIT_AUDIO_TRACKS]: messages.EditAudioTracksRequestData;
+    [messages.MessageType
+        .EDIT_AUDIO_TRACKS]: messages.EditAudioTracksRequestData;
     [messages.MessageType.EDIT_TRACKS_INFO]: messages.EditTracksInfoRequestData;
     [messages.MessageType.FOCUS_STATE]: messages.FocusStateRequestData;
     [messages.MessageType.GET_STATUS]: messages.GetStatusRequestData;
@@ -261,7 +268,8 @@ interface MessageEventToMessageTypeMap {
     [messages.MessageType.SEEK]: messages.SeekRequestData;
     [messages.MessageType.SESSION_STATE]: messages.StoreSessionResponseData;
     [messages.MessageType.SET_CREDENTIALS]: messages.SetCredentialsRequestData;
-    [messages.MessageType.SET_PLAYBACK_RATE]: messages.SetPlaybackRateRequestData;
+    [messages.MessageType
+        .SET_PLAYBACK_RATE]: messages.SetPlaybackRateRequestData;
     [messages.MessageType.SET_VOLUME]: messages.VolumeRequestData;
     [messages.MessageType.STORE_SESSION]: messages.StoreSessionRequestData;
     [messages.MessageType.USER_ACTION]: messages.UserActionRequestData;
@@ -336,7 +344,9 @@ export class PlayerManager {
      * or when a different bitrate is chosen in response to network conditions).
      */
     addEventListener(
-        eventType: events.EventType.BITRATE_CHANGED | events.EventType.BITRATE_CHANGED[],
+        eventType:
+            | events.EventType.BITRATE_CHANGED
+            | events.EventType.BITRATE_CHANGED[],
         eventListener: BitrateChangedEventHandler,
     ): void;
 
@@ -370,7 +380,9 @@ export class PlayerManager {
      * Adds an event listener for the cache loaded player event. Fired when content pre-cached by fastplay has finished loading.
      */
     addEventListener(
-        eventType: events.EventType.CACHE_LOADED | events.EventType.CACHE_LOADED[],
+        eventType:
+            | events.EventType.CACHE_LOADED
+            | events.EventType.CACHE_LOADED[],
         eventListener: CacheLoadedEventHandler,
     ): void;
 
@@ -400,7 +412,10 @@ export class PlayerManager {
     /**
      * Adds an event listener for the EMSG player event. Fired when an emsg is found in a segment. This will only be fired for DASH content
      */
-    addEventListener(eventType: events.EventType.EMSG | events.EventType.EMSG[], eventListener: EmsgEventHandler): void;
+    addEventListener(
+        eventType: events.EventType.EMSG | events.EventType.EMSG[],
+        eventListener: EmsgEventHandler,
+    ): void;
 
     /**
      * Adds an event listener for the pause player event. Fired when an error occurs.
@@ -413,13 +428,18 @@ export class PlayerManager {
     /**
      * Adds an event listener for the ID3 player event. Fired when an ID3 tag is encountered. This will only be fired for HLS content.
      */
-    addEventListener(eventType: events.EventType.ID3 | events.EventType.ID3[], eventListener: Id3EventHandler): void;
+    addEventListener(
+        eventType: events.EventType.ID3 | events.EventType.ID3[],
+        eventListener: Id3EventHandler,
+    ): void;
 
     /**
      * Adds an event listener for the media status player event. Fired before an outgoing message is sent containing current media status.
      */
     addEventListener(
-        eventType: events.EventType.MEDIA_STATUS | events.EventType.MEDIA_STATUS[],
+        eventType:
+            | events.EventType.MEDIA_STATUS
+            | events.EventType.MEDIA_STATUS[],
         eventListener: MediaStatusEventHandler,
     ): void;
 
@@ -427,7 +447,9 @@ export class PlayerManager {
      * Adds an event listener for the custom state player event. Fired when an outgoing custom state message is sent.
      */
     addEventListener(
-        eventType: events.EventType.CUSTOM_STATE | events.EventType.CUSTOM_STATE[],
+        eventType:
+            | events.EventType.CUSTOM_STATE
+            | events.EventType.CUSTOM_STATE[],
         eventListener: CustomStateEventHandler,
     ): void;
 
@@ -436,7 +458,9 @@ export class PlayerManager {
      * For example when playing a live radio and the track metadata changed.
      */
     addEventListener(
-        eventType: events.EventType.MEDIA_INFORMATION_CHANGED | events.EventType.MEDIA_INFORMATION_CHANGED[],
+        eventType:
+            | events.EventType.MEDIA_INFORMATION_CHANGED
+            | events.EventType.MEDIA_INFORMATION_CHANGED[],
         eventListener: MediaInformationChangedEventHandler,
     ): void;
 
@@ -446,7 +470,9 @@ export class PlayerManager {
      * When queueing is used, this event will trigger once for each queue item that finishes.
      */
     addEventListener(
-        eventType: events.EventType.MEDIA_FINISHED | events.EventType.MEDIA_FINISHED[],
+        eventType:
+            | events.EventType.MEDIA_FINISHED
+            | events.EventType.MEDIA_FINISHED[],
         eventListener: MediaFinishedEventHandler,
     ): void;
 
@@ -472,7 +498,9 @@ export class PlayerManager {
      * When queueing is used, this event will trigger once for each queue item that finishes.
      */
     addEventListener(
-        eventType: events.EventType.SEGMENT_DOWNLOADED | events.EventType.SEGMENT_DOWNLOADED[],
+        eventType:
+            | events.EventType.SEGMENT_DOWNLOADED
+            | events.EventType.SEGMENT_DOWNLOADED[],
         eventListener: SegmentDownloadedEventHandler,
     ): void;
 
@@ -563,12 +591,20 @@ export class PlayerManager {
      * Adds an event listener for player events that get the base @see{@link events.Event} in the callback.
      * Includes ALL and CLIP_STARTED
      */
-    addEventListener(eventType: events.EventType | events.EventType[], eventListener: EventHandler): void;
+    addEventListener(
+        eventType: events.EventType | events.EventType[],
+        eventListener: EventHandler,
+    ): void;
 
     /**
      * Sends a media status message to all senders (broadcast). Applications use this to send a custom state change.
      */
-    broadcastStatus(includeMedia?: boolean, requestId?: number, customData?: any, includeQueueItems?: boolean): void;
+    broadcastStatus(
+        includeMedia?: boolean,
+        requestId?: number,
+        customData?: any,
+        includeQueueItems?: boolean,
+    ): void;
 
     /**
      * Convert media time to absolute time.
@@ -702,7 +738,10 @@ export class PlayerManager {
     /**
      * Requests a text string to be played back locally on the receiver device.
      */
-    playString(stringId: messages.PlayStringId, args?: string[]): Promise<messages.ErrorData | null>;
+    playString(
+        stringId: messages.PlayStringId,
+        args?: string[],
+    ): Promise<messages.ErrorData | null>;
 
     /**
      * Request Google Assistant to refresh the credentials. Only works if the original credentials came from the assistant.
@@ -712,7 +751,10 @@ export class PlayerManager {
     /**
      * Removes the event listener added for given player event. If event listener is not added; it will be ignored.
      */
-    removeEventListener(eventType: events.EventType | events.EventType[], eventListener: EventHandler): void;
+    removeEventListener(
+        eventType: events.EventType | events.EventType[],
+        eventListener: EventHandler,
+    ): void;
 
     /**
      * Seeks in current media.
@@ -766,12 +808,17 @@ export class PlayerManager {
     /**
      * Sets MediaElement to use. If Promise of MediaElement is set; media begins playback after Promise is resolved.
      */
-    setMediaElement(mediaElement: HTMLMediaElement | Promise<HTMLMediaElement>): void;
+    setMediaElement(
+        mediaElement: HTMLMediaElement | Promise<HTMLMediaElement>,
+    ): void;
 
     /**
      * Sets media information.
      */
-    setMediaInformation(mediaInformation: messages.MediaInformation, opt_broadcast?: boolean): void;
+    setMediaInformation(
+        mediaInformation: messages.MediaInformation,
+        opt_broadcast?: boolean,
+    ): void;
 
     /**
      * Sets a handler to return or modify PlaybackConfig; for a specific load request. The handler paramaters are the load request data
@@ -779,14 +826,19 @@ export class PlayerManager {
      *  or null to prevent the media from playing. The return value can be a promise to allow waiting for data from the server.
      */
     setMediaPlaybackInfoHandler(
-        handler: (loadRequestData: messages.LoadRequestData, playbackConfig: PlaybackConfig) => void,
+        handler: (
+            loadRequestData: messages.LoadRequestData,
+            playbackConfig: PlaybackConfig,
+        ) => void,
     ): void;
 
     /**
      * Sets a handler to return the media url for a load request. This handler can be used to avoid having the media content url published as part
      * of the media status. By default the media contentId is used as the content url.
      */
-    setMediaUrlResolver(resolver: (loadRequestData: messages.LoadRequestData) => void): void;
+    setMediaUrlResolver(
+        resolver: (loadRequestData: messages.LoadRequestData) => void,
+    ): void;
 
     /**
      * Provide an interceptor of incoming and outgoing messages. The interceptor
@@ -796,11 +848,18 @@ export class PlayerManager {
      * provided, and no interceptor is provided for preload - the load
      * interceptor will be called for preload messages.
      */
-    setMessageInterceptor<MessageEvent extends keyof MessageEventToMessageTypeMap>(
+    setMessageInterceptor<
+        MessageEvent extends keyof MessageEventToMessageTypeMap,
+    >(
         type: MessageEvent,
-        interceptor: MessageInterceptor<MessageEventToMessageTypeMap[MessageEvent]>,
+        interceptor: MessageInterceptor<
+            MessageEventToMessageTypeMap[MessageEvent]
+        >,
     ): void;
-    setMessageInterceptor(type: messages.MessageType, interceptor: MessageInterceptor<messages.RequestData>): void;
+    setMessageInterceptor(
+        type: messages.MessageType,
+        interceptor: MessageInterceptor<messages.RequestData>,
+    ): void;
 
     /**
      * Sets playback configuration on the PlayerManager.
@@ -818,21 +877,30 @@ export class PlayerManager {
      * 32  Skip backward
      * Combinations are described as summations; for example, Pause+Seek+StreamVolume+Mute == 15.
      */
-    setSupportedMediaCommands(supportedMediaCommands: number, broadcastStatus?: boolean): void;
+    setSupportedMediaCommands(
+        supportedMediaCommands: number,
+        broadcastStatus?: boolean,
+    ): void;
 
     /**
      * Remove commands from receiver supported media commands.
      * @param supportedMediaCommands A bitmask of media commands supported by the application.
      * @param broadcastStatus Whether the senders should be notified about the change (if not provided, the senders will be notified).
      */
-    removeSupportedMediaCommands(supportedMediaCommands: number, broadcastStatus?: boolean): void;
+    removeSupportedMediaCommands(
+        supportedMediaCommands: number,
+        broadcastStatus?: boolean,
+    ): void;
 
     /**
      * Add commands to receiver supported media commands.
      * @param supportedMediaCommands A bitmask of media commands supported by the application.
      * @param broadcastStatus Whether the senders should be notified about the change (if not provided, the senders will be notified).
      */
-    addSupportedMediaCommands(supportedMediaCommands: number, broadcastStatus?: boolean): void;
+    addSupportedMediaCommands(
+        supportedMediaCommands: number,
+        broadcastStatus?: boolean,
+    ): void;
 
     /**
      * Gets the current receiver supported media commands.
@@ -922,7 +990,9 @@ export class PlaybackConfig {
      * Handler to process manifest data. The handler is passed the manifest,
      * and returns the modified manifest.
      */
-    manifestHandler?: ((manifest: string) => string | Promise<string>) | undefined;
+    manifestHandler?:
+        | ((manifest: string) => string | Promise<string>)
+        | undefined;
 
     /**
      * A function to customize request to get a manifest.
@@ -1132,12 +1202,18 @@ export class CastReceiverContext {
      * @param listener
      * @throws Error If system is not ready or the namespace is not supported by this application.
      */
-    addCustomMessageListener(namespace: string, listener: SystemEventHandler): void;
+    addCustomMessageListener(
+        namespace: string,
+        listener: SystemEventHandler,
+    ): void;
 
     /**
      * Add listener to cast system events.
      */
-    addEventListener(type: system.EventType | system.EventType[], handler: SystemEventHandler): void;
+    addEventListener(
+        type: system.EventType | system.EventType[],
+        handler: SystemEventHandler,
+    ): void;
 
     /**
      * Checks if the given media params of video or audio streams are supported
@@ -1152,7 +1228,13 @@ export class CastReceiverContext {
      * @param framerate Describes the frame rate of the stream.
      * @returns If the stream can be played on chromecast.
      */
-    canDisplayType(mimeType: string, codecs?: string, width?: number, height?: number, framerate?: number): boolean;
+    canDisplayType(
+        mimeType: string,
+        codecs?: string,
+        width?: number,
+        height?: number,
+        framerate?: number,
+    ): boolean;
 
     /**
      * Provides application information once the system is ready, otherwise it will be null.
@@ -1226,12 +1308,18 @@ export class CastReceiverContext {
      * @param listener
      * @throws Error If system is not ready or the namespace is not supported by this application.
      */
-    removeCustomMessageListener(namespace: string, listener: SystemEventHandler): void;
+    removeCustomMessageListener(
+        namespace: string,
+        listener: SystemEventHandler,
+    ): void;
 
     /**
      * Remove listener to cast system events.
      */
-    removeEventListener(type: system.EventType, handler: SystemEventHandler): void;
+    removeEventListener(
+        type: system.EventType,
+        handler: SystemEventHandler,
+    ): void;
 
     /**
      * Sends a message to a specific sender or broadcasts it to all connected
@@ -1242,7 +1330,11 @@ export class CastReceiverContext {
      * @param message Value must not be null.
      * @throws Error If there was an error preparing the message.
      */
-    sendCustomMessage(namespace: string, senderId: string | undefined, message: any): void;
+    sendCustomMessage(
+        namespace: string,
+        senderId: string | undefined,
+        message: any,
+    ): void;
 
     /**
      * @deprecated

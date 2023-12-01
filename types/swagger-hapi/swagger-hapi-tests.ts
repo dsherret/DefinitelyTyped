@@ -22,7 +22,7 @@ SwaggerHapi.create(config, (err, swaggerHapi) => {
         const appRootFromMw = swaggerHapi.config.swagger.appRoot;
     }
 
-    app.register(swaggerHapi.plugin, err => {
+    app.register(swaggerHapi.plugin, (err) => {
         if (err) {
             console.error("Failed to load plugin:", err);
             return;

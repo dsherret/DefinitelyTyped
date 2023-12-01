@@ -17,11 +17,13 @@ const flagsData: ng.featureflags.FlagData[] = [
     },
 ];
 
-myApp.config(function(featureFlagsProvider: ng.featureflags.FeatureFlagsProvider) {
+myApp.config(function (
+    featureFlagsProvider: ng.featureflags.FeatureFlagsProvider,
+) {
     featureFlagsProvider.setInitialFlags(flagsData);
 });
 
-myApp.run(function(
+myApp.run(function (
     $q: ng.IQService,
     $http: ng.IHttpService,
     featureFlags: ng.featureflags.FeatureFlagsService,

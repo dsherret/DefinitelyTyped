@@ -14,23 +14,34 @@ export as namespace URI;
 declare const URI: {
     (value?: string | URI.URIOptions | HTMLElement, base?: string | URI): URI;
 
-    new(value?: string | URI.URIOptions | HTMLElement, base?: string | URI): URI;
+    new (
+        value?: string | URI.URIOptions | HTMLElement,
+        base?: string | URI,
+    ): URI;
 
     addQuery(data: URI.QueryDataMap, prop: string, value: string): object;
     addQuery(data: URI.QueryDataMap, qryObj: object): object;
 
     build(parts: URI.URIOptions): string;
-    buildAuthority(
-        parts: {
-            username?: string | undefined;
-            password?: string | undefined;
-            hostname?: string | undefined;
-            port?: string | undefined;
-        },
+    buildAuthority(parts: {
+        username?: string | undefined;
+        password?: string | undefined;
+        hostname?: string | undefined;
+        port?: string | undefined;
+    }): string;
+    buildHost(parts: {
+        hostname?: string | undefined;
+        port?: string | undefined;
+    }): string;
+    buildQuery(
+        data: URI.QueryDataMap,
+        duplicateQueryParameters?: boolean,
+        escapeQuerySpace?: boolean,
     ): string;
-    buildHost(parts: { hostname?: string | undefined; port?: string | undefined }): string;
-    buildQuery(data: URI.QueryDataMap, duplicateQueryParameters?: boolean, escapeQuerySpace?: boolean): string;
-    buildUserinfo(parts: { username?: string | undefined; password?: string | undefined }): string;
+    buildUserinfo(parts: {
+        username?: string | undefined;
+        password?: string | undefined;
+    }): string;
 
     commonPath(path1: string, path2: string): string;
 
@@ -88,7 +99,15 @@ declare const URI: {
 
     unicode(): void;
 
-    withinString(source: string, func: (url: string, start: number, end: number, source: string) => string): string;
+    withinString(
+        source: string,
+        func: (
+            url: string,
+            start: number,
+            end: number,
+            source: string,
+        ) => string,
+    ): string;
 };
 
 declare namespace URI {
@@ -171,12 +190,28 @@ declare namespace URI {
 
         hasQuery(
             name: /*string | */ any,
-            value?: string | number | boolean | string[] | number[] | boolean[] | RegExp | ((...args: any[]) => any),
+            value?:
+                | string
+                | number
+                | boolean
+                | string[]
+                | number[]
+                | boolean[]
+                | RegExp
+                | ((...args: any[]) => any),
             withinArray?: boolean,
         ): boolean;
         hasSearch(
             name: /*string | */ any,
-            value?: string | number | boolean | string[] | number[] | boolean[] | RegExp | ((...args: any[]) => any),
+            value?:
+                | string
+                | number
+                | boolean
+                | string[]
+                | number[]
+                | boolean[]
+                | RegExp
+                | ((...args: any[]) => any),
             withinArray?: boolean,
         ): boolean;
     }
@@ -270,7 +305,12 @@ interface URI {
 
     query(): string;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    query(qry: string | URI.QueryDataMap | ((qryObject: URI.QueryDataMap) => URI.QueryDataMap | void)): URI;
+    query(
+        qry:
+            | string
+            | URI.QueryDataMap
+            | ((qryObject: URI.QueryDataMap) => URI.QueryDataMap | void),
+    ): URI;
     query(v: boolean): URI.QueryDataMap;
 
     readable(): string;
@@ -286,7 +326,12 @@ interface URI {
     scheme(protocol: string): URI;
     search(): string;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    search(qry: string | URI.QueryDataMap | ((qryObject: URI.QueryDataMap) => URI.QueryDataMap | void)): URI;
+    search(
+        qry:
+            | string
+            | URI.QueryDataMap
+            | ((qryObject: URI.QueryDataMap) => URI.QueryDataMap | void),
+    ): URI;
     search(v: boolean): URI.QueryDataMap;
     segment(): string[];
     segment(segments: string[] | string): URI;
@@ -302,12 +347,28 @@ interface URI {
     setSearch(qry: URI.QueryDataMap): URI;
     hasQuery(
         name: /*string | */ any,
-        value?: string | number | boolean | string[] | number[] | boolean[] | RegExp | ((...args: any[]) => any),
+        value?:
+            | string
+            | number
+            | boolean
+            | string[]
+            | number[]
+            | boolean[]
+            | RegExp
+            | ((...args: any[]) => any),
         withinArray?: boolean,
     ): boolean;
     hasSearch(
         name: /*string | */ any,
-        value?: string | number | boolean | string[] | number[] | boolean[] | RegExp | ((...args: any[]) => any),
+        value?:
+            | string
+            | number
+            | boolean
+            | string[]
+            | number[]
+            | boolean[]
+            | RegExp
+            | ((...args: any[]) => any),
         withinArray?: boolean,
     ): boolean;
     subdomain(): string;

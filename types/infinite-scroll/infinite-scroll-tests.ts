@@ -47,7 +47,7 @@ infScroll.on("error", (_error, _path, _response) => {});
 infScroll.on("last", (_body, _path) => {});
 infScroll.on("history", (_title, _path) => {});
 
-$(".abc").on("scrollThreshold.infiniteScroll", _event => {});
+$(".abc").on("scrollThreshold.infiniteScroll", (_event) => {});
 $(".abc").on("request.infiniteScroll", (_event, _path, _fetchPromise) => {});
 $(".abc").on("load.infiniteScroll", (_event, _body, _path, _response) => {});
 $(".abc").on("append.infiniteScroll", (_event, _path, _items, _response) => {});

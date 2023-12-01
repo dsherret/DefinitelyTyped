@@ -11,7 +11,10 @@ b = filter.hasRegexFilter();
 
 const face = new ndn.Face();
 
-let n: number = face.expressInterest(new ndn.Interest(), (interest: ndn.Interest, data: ndn.Data) => {});
+let n: number = face.expressInterest(
+    new ndn.Interest(),
+    (interest: ndn.Interest, data: ndn.Data) => {},
+);
 face.expressInterest(
     new ndn.Name("/A"),
     (interest: ndn.Interest, data: ndn.Data) => {},
@@ -28,7 +31,11 @@ face.expressInterest(
 n = ndn.Face.getMaxNdnPacketSize();
 face.putData(new ndn.Data());
 
-n = face.registerPrefix(new ndn.Name("/A"), (prefix: ndn.Name, interest: ndn.Interest) => {}, (prefix: ndn.Name) => {});
+n = face.registerPrefix(
+    new ndn.Name("/A"),
+    (prefix: ndn.Name, interest: ndn.Interest) => {},
+    (prefix: ndn.Name) => {},
+);
 face.registerPrefix(
     new ndn.Name("/A"),
     (prefix: ndn.Name, interest: ndn.Interest) => {},
@@ -44,7 +51,13 @@ face.setCommandSigningInfo(new ndn.KeyChain(), name);
 
 n = face.setInterestFilter(
     filter,
-    (prefix: ndn.Name, interest: ndn.Interest, face: ndn.Face, filterId: number, filter: ndn.InterestFilter) => {},
+    (
+        prefix: ndn.Name,
+        interest: ndn.Interest,
+        face: ndn.Face,
+        filterId: number,
+        filter: ndn.InterestFilter,
+    ) => {},
 );
 face.setInterestFilter(name, (prefix: ndn.Name, interest: ndn.Interest) => {});
 

@@ -1,5 +1,5 @@
 namespace nvd3_test_lineChartSVGResize {
-    nv.addGraph(function() {
+    nv.addGraph(function () {
         var chart = nv.models.lineChart();
         var fitScreen = false;
         var width = 600;
@@ -7,16 +7,13 @@ namespace nvd3_test_lineChartSVGResize {
         var zoom = 1;
 
         chart.useInteractiveGuideline(true);
-        chart.xAxis
-            .tickFormat(d3.format(",r"));
+        chart.xAxis.tickFormat(d3.format(",r"));
 
-        chart.lines.dispatch.on("elementClick", function(evt) {
+        chart.lines.dispatch.on("elementClick", function (evt) {
             console.log(evt);
         });
 
-        chart.yAxis
-            .axisLabel("Voltage (v)")
-            .tickFormat(d3.format(",.2f"));
+        chart.yAxis.axisLabel("Voltage (v)").tickFormat(d3.format(",.2f"));
 
         d3.select("#chart1 svg")
             .attr("perserveAspectRatio", "xMinYMid")
@@ -36,24 +33,23 @@ namespace nvd3_test_lineChartSVGResize {
             var w = width * zoom,
                 h = height * zoom;
 
-            chart
-                .width(w)
-                .height(h);
+            chart.width(w).height(h);
 
             d3.select("#chart1 svg")
                 .attr("viewBox", "0 0 " + w + " " + h)
-                .transition().duration(500)
+                .transition()
+                .duration(500)
                 .call(chart);
         }
 
         function zoomOut() {
-            zoom += .25;
+            zoom += 0.25;
             setChartViewBox();
         }
 
         function zoomIn() {
-            if (zoom <= .5) return;
-            zoom -= .25;
+            if (zoom <= 0.5) return;
+            zoom -= 0.25;
             setChartViewBox();
         }
 
@@ -86,7 +82,7 @@ namespace nvd3_test_lineChartSVGResize {
 
         for (var i = 0; i < 100; i++) {
             sin.push({ x: i, y: Math.sin(i / 10) });
-            cos.push({ x: i, y: .5 * Math.cos(i / 10) });
+            cos.push({ x: i, y: 0.5 * Math.cos(i / 10) });
         }
         return [
             {

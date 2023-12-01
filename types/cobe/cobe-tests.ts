@@ -20,7 +20,7 @@ const globe = createGlobe(new HTMLCanvasElement(), {
         { location: [37.7595, -122.4367], size: 0.03 },
         { location: [40.7128, -74.006], size: 0.1 },
     ],
-    onRender: state => {
+    onRender: (state) => {
         state; // $ExpectType Record<string, unknown>
         // Called on every animation frame.
         // `state` will be an empty object, return updated params.

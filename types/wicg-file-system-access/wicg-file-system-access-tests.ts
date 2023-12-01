@@ -4,7 +4,9 @@
     const fileHandles: FileSystemFileHandle[] = await showOpenFilePicker({
         excludeAcceptAllOption: true,
         multiple: true,
-        types: [{ accept: { "image/*": [".png", ".jpg"], "text/plain": ".txt" } }],
+        types: [
+            { accept: { "image/*": [".png", ".jpg"], "text/plain": ".txt" } },
+        ],
     });
     let w: FileSystemWritableFileStream = await fileHandle.createWritable();
     w = await fileHandle.createWritable({ keepExistingData: true });
@@ -13,7 +15,11 @@
     await w.write({ type: "seek", position: 0 });
     await w.seek(1);
     await w.write(new Blob(["xyz"]));
-    await w.write({ type: "write", position: 3, data: new Uint8Array([4, 5, 6]) });
+    await w.write({
+        type: "write",
+        position: 3,
+        data: new Uint8Array([4, 5, 6]),
+    });
     await w.write({ type: "truncate", size: 2 });
     await w.truncate(1);
     await w.close();
@@ -27,7 +33,9 @@
     };
     const filePickerOptions: FilePickerOptions = {
         excludeAcceptAllOption: true,
-        types: [{ description: "SVG images", accept: { "image/svg": [".svg"] } }],
+        types: [
+            { description: "SVG images", accept: { "image/svg": [".svg"] } },
+        ],
     };
 
     fileHandle = await showSaveFilePicker();
@@ -48,7 +56,9 @@
     let dirHandle: FileSystemDirectoryHandle = await showDirectoryPicker();
     dirHandle = await showDirectoryPicker({});
 
-    (async function* recursivelyWalkDir(dirHandle: FileSystemDirectoryHandle): AsyncIterable<File> {
+    (async function* recursivelyWalkDir(
+        dirHandle: FileSystemDirectoryHandle,
+    ): AsyncIterable<File> {
         // Disable due to a bug in TSLint https://github.com/palantir/tslint/issues/3997:
         // tslint:disable-next-line await-promise
         for await (const [name, handle] of dirHandle) {
@@ -80,7 +90,13 @@
     fileHandle = await chooseFileSystemEntries();
     fileHandle = await chooseFileSystemEntries({
         type: "open-file",
-        accepts: [{ description: "Images", extensions: ["png", "jpg"], mimeTypes: ["image/*"] }],
+        accepts: [
+            {
+                description: "Images",
+                extensions: ["png", "jpg"],
+                mimeTypes: ["image/*"],
+            },
+        ],
         excludeAcceptAllOption: false,
         multiple: false,
     });
@@ -92,7 +108,9 @@
     permissionState = await fileHandle.requestPermission({ writable: false });
     permissionState = await fileHandle.requestPermission({ writable: true });
 
-    (async function* recursivelyWalkDir(dirHandle: FileSystemDirectoryHandle): AsyncIterable<File> {
+    (async function* recursivelyWalkDir(
+        dirHandle: FileSystemDirectoryHandle,
+    ): AsyncIterable<File> {
         for await (const handle of dirHandle.getEntries()) {
             if (handle.isFile) {
                 yield handle.getFile();

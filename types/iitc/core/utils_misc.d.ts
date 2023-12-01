@@ -41,14 +41,20 @@ declare global {
 
     function zeroPad(num: number, pad: number): string;
 
-    function unixTimeToString(time?: string | number | Date, full?: boolean): string;
+    function unixTimeToString(
+        time?: string | number | Date,
+        full?: boolean,
+    ): string;
 
     /**
      * convert time to string
      * converts a javascript time to a precise date and time (optionally with millisecond precision)
      * formatted in ISO-style YYYY-MM-DD hh:mm:ss.mmm - but using local timezone
      */
-    function unixTimeToDateTimeString(ticks: number | string | Date, millisecond?: boolean): string;
+    function unixTimeToDateTimeString(
+        ticks: number | string | Date,
+        millisecond?: boolean,
+    ): string;
 
     /** convert time to string */
     function unixTimeToHHmm(time: number | string | Date): string;
@@ -70,7 +76,10 @@ declare global {
 
     function zoomToAndShowPortal(guid: string, latlng: L.LatLng): void;
 
-    function selectPortalByLatLng(lat: number | L.LatLng | [number, number], lng?: number): void;
+    function selectPortalByLatLng(
+        lat: number | L.LatLng | [number, number],
+        lng?: number,
+    ): void;
 
     /**
      * escape a javascript string, so quotes and backslashes are escaped with a backslash
@@ -104,9 +113,16 @@ declare global {
      * read from cookie if it has not added to map yet.
      * @return 'defaultDisplay' if both overlayStatus and cookie didn't have the record
      */
-    function isLayerGroupDisplayed(name: string, defaultDisplay: boolean): boolean;
+    function isLayerGroupDisplayed(
+        name: string,
+        defaultDisplay: boolean,
+    ): boolean;
 
-    function addLayerGroup(name: string, layerGroup: L.LayerGroup, defaultDisplay?: boolean): void;
+    function addLayerGroup(
+        name: string,
+        layerGroup: L.LayerGroup,
+        defaultDisplay?: boolean,
+    ): void;
 
     function removeLayerGroup(layerGroup: L.LayerGroup): void;
 

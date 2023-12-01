@@ -7,7 +7,11 @@ import * as facebook from "passport-facebook";
 
 // just some test model
 const User = {
-    findOrCreate(id: string, provider: string, callback: (err: any, user: any) => void): void {
+    findOrCreate(
+        id: string,
+        provider: string,
+        callback: (err: any, user: any) => void,
+    ): void {
         callback(null, { username: "james" });
     },
 };

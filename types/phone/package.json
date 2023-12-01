@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/phone",
-    "version": "2.4.9999",
-    "projects": [
-        "https://github.com/aftership/phone"
-    ],
-    "devDependencies": {
-        "@types/phone": "workspace:."
+  "private": true,
+  "name": "@types/phone",
+  "version": "2.4.9999",
+  "projects": [
+    "https://github.com/aftership/phone"
+  ],
+  "devDependencies": {
+    "@types/phone": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Hagai Cohen",
+      "githubUsername": "DxCx"
     },
-    "owners": [
-        {
-            "name": "Hagai Cohen",
-            "githubUsername": "DxCx"
-        },
-        {
-            "name": "Tim Brown",
-            "githubUsername": "brimtown"
-        }
-    ]
+    {
+      "name": "Tim Brown",
+      "githubUsername": "brimtown"
+    }
+  ]
 }

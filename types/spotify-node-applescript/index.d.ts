@@ -6,7 +6,11 @@ export function playTrack(uri: string, callback?: SuccessCallbackFn): void;
 /**
  * Play a track in a context (for example an album).
  */
-export function playTrackInContext(uri: string, contextUri: string, callback?: SuccessCallbackFn): void;
+export function playTrackInContext(
+    uri: string,
+    contextUri: string,
+    callback?: SuccessCallbackFn,
+): void;
 
 /**
  * Get the current track.
@@ -86,7 +90,10 @@ export function isRepeating(callback: IsRepeatingCallbackFn): void;
 /**
  * Sets repeating on or off
  */
-export function setRepeating(repeating: boolean, callback?: SuccessCallbackFn): void;
+export function setRepeating(
+    repeating: boolean,
+    callback?: SuccessCallbackFn,
+): void;
 
 /**
  * Toggles repeating
@@ -101,7 +108,10 @@ export function isShuffling(callback: IsShufflingCallbackFn): void;
 /**
  * Sets shuffling on or off
  */
-export function setShuffling(shuffling: boolean, callback?: SuccessCallbackFn): void;
+export function setShuffling(
+    shuffling: boolean,
+    callback?: SuccessCallbackFn,
+): void;
 
 /**
  * Toggles shuffling

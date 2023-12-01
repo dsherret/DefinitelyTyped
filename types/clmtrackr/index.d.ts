@@ -10,10 +10,12 @@ interface TrackerParams {
     /** whether to stop tracking when the fitting has converged (default is false) */
     stopOnConvergence?: boolean | undefined;
     /** object with parameters for facedetection : */
-    faceDetection?: {
-        /** whether to use web workers for face detection (default is true) */
-        useWebWorkers?: boolean | undefined;
-    } | undefined;
+    faceDetection?:
+        | {
+              /** whether to use web workers for face detection (default is true) */
+              useWebWorkers?: boolean | undefined;
+          }
+        | undefined;
 }
 
 type IPosition = [number, number];
@@ -28,7 +30,9 @@ declare namespace _default {
 
         start(element: HTMLVideoElement | HTMLCanvasElement): void;
 
-        track(element: HTMLVideoElement | HTMLCanvasElement): IPosition[] | false;
+        track(
+            element: HTMLVideoElement | HTMLCanvasElement,
+        ): IPosition[] | false;
 
         reset(): void;
 
@@ -42,7 +46,10 @@ declare namespace _default {
 
         draw(canvas: HTMLCanvasElement): void;
 
-        setResponseMode(type: "single" | "cycle" | "blend", list: Array<"raw" | "sobel" | "lbp">): void;
+        setResponseMode(
+            type: "single" | "cycle" | "blend",
+            list: Array<"raw" | "sobel" | "lbp">,
+        ): void;
     }
     const version: string;
 }

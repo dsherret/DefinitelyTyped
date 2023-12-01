@@ -91,7 +91,7 @@ const TestRangeDurations = () => {
 };
 
 const TestDisabledDates = () => {
-    const isDateDisabled: DisabledDatesFunc = date => date.day() % 2 === 1;
+    const isDateDisabled: DisabledDatesFunc = (date) => date.day() % 2 === 1;
     return <CalendarPicker disabledDates={isDateDisabled} />;
 };
 
@@ -113,7 +113,7 @@ const TestCustomDateStyle = () => {
 };
 
 const TestCustomDateFuncs = () => {
-    const customDatesStylesFn: CustomDatesStylesFunc = date => {
+    const customDatesStylesFn: CustomDatesStylesFunc = (date) => {
         if (date.weekday() === 0) {
             return {
                 containerStyle: {
@@ -152,13 +152,23 @@ const TestCustomDateFuncs = () => {
             },
         };
     };
-    return <CalendarPicker customDatesStyles={customDatesStylesFn} customDayHeaderStyles={customDayHeaderStylesFn} />;
+    return (
+        <CalendarPicker
+            customDatesStyles={customDatesStylesFn}
+            customDayHeaderStyles={customDayHeaderStylesFn}
+        />
+    );
 };
 
 const TestCallbacks = () => {
-    const onDateChange: DateChangedCallback = date => console.log(date.day());
+    const onDateChange: DateChangedCallback = (date) => console.log(date.day());
 
-    return <CalendarPicker onDateChange={onDateChange} onMonthChange={onDateChange} />;
+    return (
+        <CalendarPicker
+            onDateChange={onDateChange}
+            onMonthChange={onDateChange}
+        />
+    );
 };
 
 const TestRef = () => {
@@ -190,7 +200,12 @@ const TestDayOfWeekStyles = () => {
 };
 
 const TestCustomComponents = () => {
-    return <CalendarPicker nextComponent={<View></View>} previousComponent={[<TextInput />]} />;
+    return (
+        <CalendarPicker
+            nextComponent={<View></View>}
+            previousComponent={[<TextInput />]}
+        />
+    );
 };
 
 const TestInitialViewValues = () => {

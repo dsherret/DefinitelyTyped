@@ -9,7 +9,9 @@ declare global {
      * stock intel site does internally too (the array format is only on the network)
      */
     class DecodeArray {
-        portalSummary(data: any[]): IITC.PortalData | IITC.PortalDataCore | undefined;
+        portalSummary(
+            data: any[],
+        ): IITC.PortalData | IITC.PortalDataCore | undefined;
         portalDetail(data: any[]): IITC.PortalDataDetail | undefined;
     }
 

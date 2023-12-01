@@ -4,34 +4,65 @@ import connect = require("connect");
 const app = connect();
 
 // log all requests
-app.use((req: connect.IncomingMessage, res: http.ServerResponse, next: connect.NextFunction) => {
-    console.log(req, res);
-    next();
-});
+app.use(
+    (
+        req: connect.IncomingMessage,
+        res: http.ServerResponse,
+        next: connect.NextFunction,
+    ) => {
+        console.log(req, res);
+        next();
+    },
+);
 
 // "Throw" an Error
-app.use((req: connect.IncomingMessage, res: http.ServerResponse, next: connect.NextFunction) => {
-    next(new Error("Something went wrong!"));
-});
+app.use(
+    (
+        req: connect.IncomingMessage,
+        res: http.ServerResponse,
+        next: connect.NextFunction,
+    ) => {
+        next(new Error("Something went wrong!"));
+    },
+);
 
 // "Throw" a number
-app.use((req: connect.IncomingMessage, res: http.ServerResponse, next: connect.NextFunction) => {
-    next(404);
-});
+app.use(
+    (
+        req: connect.IncomingMessage,
+        res: http.ServerResponse,
+        next: connect.NextFunction,
+    ) => {
+        next(404);
+    },
+);
 
 // Stop on errors
-app.use((err: any, req: connect.IncomingMessage, res: http.ServerResponse, next: connect.NextFunction) => {
-    if (err) {
-        return res.end(`Error: ${err}`);
-    }
+app.use(
+    (
+        err: any,
+        req: connect.IncomingMessage,
+        res: http.ServerResponse,
+        next: connect.NextFunction,
+    ) => {
+        if (err) {
+            return res.end(`Error: ${err}`);
+        }
 
-    next();
-});
+        next();
+    },
+);
 
 // Use legacy `Function` for `next` parameter.
-app.use((req: connect.IncomingMessage, res: http.ServerResponse, next: Function) => {
-    next();
-});
+app.use(
+    (
+        req: connect.IncomingMessage,
+        res: http.ServerResponse,
+        next: Function,
+    ) => {
+        next();
+    },
+);
 
 // respond to all requests
 app.use((req: connect.IncomingMessage, res: http.ServerResponse) => {

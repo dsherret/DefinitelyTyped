@@ -1,4 +1,10 @@
-import { ChangeEvent, Component, CSSProperties, HTMLProps, ReactNode } from "react";
+import {
+    ChangeEvent,
+    Component,
+    CSSProperties,
+    HTMLProps,
+    ReactNode,
+} from "react";
 
 export = Autocomplete;
 declare namespace Autocomplete {
@@ -16,7 +22,9 @@ declare namespace Autocomplete {
          *
          * Invoked every time the user changes the input's value.
          */
-        onChange?: ((e: ChangeEvent<HTMLInputElement>, value: string) => void) | undefined;
+        onChange?:
+            | ((e: ChangeEvent<HTMLInputElement>, value: string) => void)
+            | undefined;
         /**
          * Arguments: `value: String, item: Any`
          *
@@ -59,7 +67,11 @@ declare namespace Autocomplete {
          * an optional set of styles that can be applied to improve the look/feel
          * of the items in the dropdown menu.
          */
-        renderItem: (item: any, isHighlighted: boolean, styles?: CSSProperties) => ReactNode;
+        renderItem: (
+            item: any,
+            isHighlighted: boolean,
+            styles?: CSSProperties,
+        ) => ReactNode;
         /**
          * Arguments: `items: Array<Any>, value: String, styles: Object`
          *
@@ -71,10 +83,10 @@ declare namespace Autocomplete {
          */
         renderMenu?:
             | ((
-                items: ReactNode[],
-                value: string,
-                styles: CSSProperties,
-            ) => ReactNode)
+                  items: ReactNode[],
+                  value: string,
+                  styles: CSSProperties,
+              ) => ReactNode)
             | undefined;
         /**
          * Styles that are applied to the dropdown menu in the default `renderMenu`
@@ -91,7 +103,9 @@ declare namespace Autocomplete {
          * apply `props.ref` and all `props.on<event>` event handlers. Failing to do
          * this will cause `Autocomplete` to behave unexpectedly.
          */
-        renderInput?: ((props: HTMLProps<HTMLInputElement>) => ReactNode) | undefined;
+        renderInput?:
+            | ((props: HTMLProps<HTMLInputElement>) => ReactNode)
+            | undefined;
         /**
          * Props passed to `props.renderInput`. By default these props will be
          * applied to the `<input />` element rendered by `Autocomplete`, unless you
@@ -159,7 +173,10 @@ declare namespace Autocomplete {
         menuWidth?: number | undefined;
     }
 }
-declare class Autocomplete extends Component<Autocomplete.Props, Autocomplete.State> {
+declare class Autocomplete extends Component<
+    Autocomplete.Props,
+    Autocomplete.State
+> {
     /**
      * Autocomplete exposes a subset of `HTMLInputElement` properties to the parent component.
      * They can be accessed through Autocomplete's `ref` prop.

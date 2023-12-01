@@ -13,42 +13,58 @@ new CleanCSS().minify(source, (error: any, minified: CleanCSS.Output): void => {
 
 const pathToOutputDirectory = "path";
 
-new CleanCSS({ sourceMap: true, rebaseTo: pathToOutputDirectory })
-    .minify(source, (error: any, minified: CleanCSS.Output): void => {
+new CleanCSS({ sourceMap: true, rebaseTo: pathToOutputDirectory }).minify(
+    source,
+    (error: any, minified: CleanCSS.Output): void => {
         // access minified.sourceMap for SourceMapGenerator object
         // see https://github.com/mozilla/source-map/#sourcemapgenerator for more details
         // see https://github.com/clean-css/clean-css-cli/blob/8fc585e99d7bf4e812a5d4444ccbaf9967f24f10/index.js#L372-L374 on how it's used in clean-css' CLI
         console.log(minified.sourceMap);
         minified.sourceMap?.setSourceContent("bar.css", "");
-    });
+    },
+);
 
-const inputSourceMap = { version: "3", sources: ["foo.css"], names: [], mappings: "AAAA" };
-new CleanCSS({ sourceMap: true, rebaseTo: pathToOutputDirectory })
-    .minify(source, inputSourceMap, (error: any, minified: CleanCSS.Output): void => {
+const inputSourceMap = {
+    version: "3",
+    sources: ["foo.css"],
+    names: [],
+    mappings: "AAAA",
+};
+new CleanCSS({ sourceMap: true, rebaseTo: pathToOutputDirectory }).minify(
+    source,
+    inputSourceMap,
+    (error: any, minified: CleanCSS.Output): void => {
         // access minified.sourceMap as above
         console.log(minified.sourceMap);
-    });
+    },
+);
 
 const inputSourceMapAsString = JSON.stringify(inputSourceMap);
-new CleanCSS({ sourceMap: true, rebaseTo: pathToOutputDirectory })
-    .minify(source, inputSourceMapAsString, (error: any, minified: CleanCSS.Output): void => {
+new CleanCSS({ sourceMap: true, rebaseTo: pathToOutputDirectory }).minify(
+    source,
+    inputSourceMapAsString,
+    (error: any, minified: CleanCSS.Output): void => {
         // access minified.sourceMap as above
         console.log(minified.sourceMap);
-    });
+    },
+);
 
-new CleanCSS({ sourceMap: true, rebaseTo: pathToOutputDirectory }).minify({
-    "path/to/source/1": {
-        styles: source,
-        sourceMap: inputSourceMap,
+new CleanCSS({ sourceMap: true, rebaseTo: pathToOutputDirectory }).minify(
+    {
+        "path/to/source/1": {
+            styles: source,
+            sourceMap: inputSourceMap,
+        },
+        "path/to/source/2": {
+            styles: source,
+            sourceMap: inputSourceMapAsString,
+        },
     },
-    "path/to/source/2": {
-        styles: source,
-        sourceMap: inputSourceMapAsString,
+    (error: any, minified: CleanCSS.Output): void => {
+        // access minified.sourceMap as above
+        console.log(minified.sourceMap);
     },
-}, (error: any, minified: CleanCSS.Output): void => {
-    // access minified.sourceMap as above
-    console.log(minified.sourceMap);
-});
+);
 
 new CleanCSS().minify(["path/to/file/one", "path/to/file/two"]);
 
@@ -62,42 +78,53 @@ new CleanCSS().minify({
 });
 
 // new tests - promise resolution
-new CleanCSS({ returnPromise: true, rebaseTo: pathToOutputDirectory }).minify(source)
+new CleanCSS({ returnPromise: true, rebaseTo: pathToOutputDirectory })
+    .minify(source)
     .then((minified: CleanCSS.Output): void => {
         console.log(minified.styles);
-    }).catch((error: any): void => {
+    })
+    .catch((error: any): void => {
         console.log(error);
     });
 
-new CleanCSS({ returnPromise: true, sourceMap: true }).minify(source)
+new CleanCSS({ returnPromise: true, sourceMap: true })
+    .minify(source)
     .then((minified: CleanCSS.Output): void => {
         // access minified.sourceMap as above
         console.log(minified.sourceMap);
-    }).catch((error: any): void => {
+    })
+    .catch((error: any): void => {
         console.log(error);
     });
 
-new CleanCSS({ returnPromise: true, sourceMap: true }).minify(source, inputSourceMapAsString)
+new CleanCSS({ returnPromise: true, sourceMap: true })
+    .minify(source, inputSourceMapAsString)
     .then((minified: CleanCSS.Output): void => {
         // access minified.sourceMap as above
         console.log(minified.sourceMap);
-    }).catch((error: any): void => {
+    })
+    .catch((error: any): void => {
         console.log(error);
     });
 
 // test object return when passing options as object
 let CleanCssOptions: CleanCSS.Options = { returnPromise: true };
-new CleanCSS(CleanCssOptions).minify(source)
+new CleanCSS(CleanCssOptions)
+    .minify(source)
     .then((minified: CleanCSS.Output): void => {
         console.log(minified.styles);
-    }).catch((error: any): void => {
+    })
+    .catch((error: any): void => {
         console.log(error);
     });
 
 CleanCssOptions = { returnPromise: false };
-new CleanCSS(CleanCssOptions).minify(source, (error: any, minified: CleanCSS.Output): void => {
-    console.log(minified.styles);
-});
+new CleanCSS(CleanCssOptions).minify(
+    source,
+    (error: any, minified: CleanCSS.Output): void => {
+        console.log(minified.styles);
+    },
+);
 
 // test clean-css semicolonAfterLastProperty option works as expected
 source = "a{font-weight:bold;}";
@@ -107,6 +134,9 @@ CleanCssOptions = {
     },
 };
 
-new CleanCSS(CleanCssOptions).minify(source, (error: any, minified: CleanCSS.Output): void => {
-    console.log(minified.styles);
-});
+new CleanCSS(CleanCssOptions).minify(
+    source,
+    (error: any, minified: CleanCSS.Output): void => {
+        console.log(minified.styles);
+    },
+);

@@ -4,7 +4,9 @@ const { Cookie, CookieAccessInfo, CookieJar } = cookiejarLib;
 
 // Original test: https://github.com/bmeck/node-cookiejar/blob/master/tests/test.js
 
-let testCookie: cookiejarLib.Cookie | undefined = new Cookie("a=1;domain=.test.com;path=/");
+let testCookie: cookiejarLib.Cookie | undefined = new Cookie(
+    "a=1;domain=.test.com;path=/",
+);
 // assert.equal(testCookie.name, "a");
 // assert.equal(testCookie.value, "1");
 // assert.equal(testCookie.domain, ".test.com");
@@ -20,17 +22,23 @@ testCookie = new Cookie("a=1;path=/", ".test.com");
 
 // Test CookieJar
 const testCookieJar = new CookieJar();
-testCookieJar.setCookies([
-    "a=1;domain=.test.com;path=/",
-    "b=2;domain=test.com;path=/",
-    "c=3;domain=test.com;path=/;expires=January 1, 1970",
-].join(":"));
+testCookieJar.setCookies(
+    [
+        "a=1;domain=.test.com;path=/",
+        "b=2;domain=test.com;path=/",
+        "c=3;domain=test.com;path=/;expires=January 1, 1970",
+    ].join(":"),
+);
 
-let testCookies = testCookieJar.getCookies(new CookieAccessInfo("test.com", "/"));
+let testCookies = testCookieJar.getCookies(
+    new CookieAccessInfo("test.com", "/"),
+);
 // assert.equal(testCookies.length, 2, "Expires on setCookies fail\n" + testCookies.toString());
 // assert.equal(testCookies.toValueString(), 'a=1;b=2', "Cannot get value string of multiple cookies");
 
-testCookies = testCookieJar.getCookies(new CookieAccessInfo("www.test.com", "/"));
+testCookies = testCookieJar.getCookies(
+    new CookieAccessInfo("www.test.com", "/"),
+);
 // assert.equal(testCookies.length, 2, "Wildcard domain fail\n" + testCookies.toString());
 
 testCookieJar.setCookies("b=2;domain=test.com;path=/;expires=January 1, 1970");
@@ -68,18 +76,32 @@ testCookie = new Cookie("a=1;domain=.test.com;path=/;;;;");
 
 // Test request_path and request_domain
 testCookieJar2.setCookie(new Cookie("sub=4;path=/", "test.com"));
-testCookie = testCookieJar2.getCookie("sub", new CookieAccessInfo("sub.test.com", "/"));
+testCookie = testCookieJar2.getCookie(
+    "sub",
+    new CookieAccessInfo("sub.test.com", "/"),
+);
 // assert.equal(testCookie, undefined);
 
-testCookie = testCookieJar2.getCookie("sub", new CookieAccessInfo("test.com", "/"));
+testCookie = testCookieJar2.getCookie(
+    "sub",
+    new CookieAccessInfo("test.com", "/"),
+);
 // assert.equal(testCookie.name, "sub");
 // assert.equal(testCookie.domain, "test.com");
 
-testCookieJar2.setCookie(new Cookie("sub=4;path=/accounts", "test.com", "/accounts"));
-testCookie = testCookieJar2.getCookie("sub", new CookieAccessInfo("test.com", "/foo"));
+testCookieJar2.setCookie(
+    new Cookie("sub=4;path=/accounts", "test.com", "/accounts"),
+);
+testCookie = testCookieJar2.getCookie(
+    "sub",
+    new CookieAccessInfo("test.com", "/foo"),
+);
 // assert.equal(testCookie, undefined);
 
-testCookie = testCookieJar2.getCookie("sub", new CookieAccessInfo("test.com", "/accounts"));
+testCookie = testCookieJar2.getCookie(
+    "sub",
+    new CookieAccessInfo("test.com", "/accounts"),
+);
 // assert.equal(testCookie.path, "/accounts");
 
 testCookieJar2.setCookie(new Cookie("sub=5;path=/", "test.com", "/accounts"));
@@ -94,7 +116,10 @@ testCookie = testCookieJar2.getCookie("sub", CookieAccessInfo.All);
 // Test that `CookieJar.getCookie` may return `undefined`
 {
     const cookieJar = new CookieJar();
-    let cookie = cookieJar.getCookie("a", new CookieAccessInfo("test.com", "/"));
+    let cookie = cookieJar.getCookie(
+        "a",
+        new CookieAccessInfo("test.com", "/"),
+    );
     cookie = undefined;
 }
 // Test that `CookieJar.setCookies` returns a mutable array

@@ -22,8 +22,15 @@ export declare const getMenuOffset: GetMenuOffsetFn;
 
 export type MenuOffsetValue = MenuOffsetData | GetMenuOffsetFn;
 
-type ExcludedAttributes = "aria-expanded" | "aria-haspopup" | "aria-label" | "onClick" | "onKeyDown" | "type";
-export interface OverflowMenuProps extends Omit<ReactButtonAttr, ExcludedAttributes> {
+type ExcludedAttributes =
+    | "aria-expanded"
+    | "aria-haspopup"
+    | "aria-label"
+    | "onClick"
+    | "onKeyDown"
+    | "type";
+export interface OverflowMenuProps
+    extends Omit<ReactButtonAttr, ExcludedAttributes> {
     ariaLabel?: string | undefined;
     direction?: VerticalDirection | undefined;
     iconClass?: ReactAttr["className"] | undefined;
@@ -37,7 +44,9 @@ export interface OverflowMenuProps extends Omit<ReactButtonAttr, ExcludedAttribu
     menuOffset?: MenuOffsetValue | undefined;
     menuOffsetFlip?: MenuOffsetValue | undefined;
     menuOptionsClass?: ReactAttr["className"] | undefined;
-    onClick?(event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void;
+    onClick?(
+        event: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    ): void;
     onClose?(): void;
     onOpen?(): void;
     open?: boolean | undefined;
@@ -49,5 +58,8 @@ export interface OverflowMenuProps extends Omit<ReactButtonAttr, ExcludedAttribu
 declare class OverflowMenuComponent extends React.Component<OverflowMenuProps> {}
 export { OverflowMenuComponent as OverflowMenu };
 
-declare const OverflowMenu: ForwardRefReturn<HTMLButtonElement, OverflowMenuProps>;
+declare const OverflowMenu: ForwardRefReturn<
+    HTMLButtonElement,
+    OverflowMenuProps
+>;
 export default OverflowMenu;

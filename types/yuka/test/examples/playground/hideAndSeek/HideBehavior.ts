@@ -43,7 +43,12 @@ export class HideBehavior extends SteeringBehavior {
     _bestHidingSpot: Vector3;
     _dBoxLength: number;
 
-    constructor(entityManager: EntityManager, pursuer: MovingEntity, distanceFromHidingSpot = 2, deceleration = 1.5) {
+    constructor(
+        entityManager: EntityManager,
+        pursuer: MovingEntity,
+        distanceFromHidingSpot = 2,
+        deceleration = 1.5,
+    ) {
         super();
 
         this.entityManager = entityManager;
@@ -73,7 +78,9 @@ export class HideBehavior extends SteeringBehavior {
 
                 this._getHidingPosition(obstacle, this.pursuer, hidingSpot);
 
-                const squaredDistance = hidingSpot.squaredDistanceTo(vehicle.position);
+                const squaredDistance = hidingSpot.squaredDistanceTo(
+                    vehicle.position,
+                );
 
                 if (squaredDistance < closestDistanceSquared) {
                     closestDistanceSquared = squaredDistance;
@@ -112,23 +119,34 @@ export class HideBehavior extends SteeringBehavior {
         // the obstacles in the game world
         const obstacles = obstaclesArray;
         // the detection box length is proportional to the agent's velocity
-        this._dBoxLength = this.dBoxMinLength + (vehicle.getSpeed() / vehicle.maxSpeed) * this.dBoxMinLength;
+        this._dBoxLength =
+            this.dBoxMinLength +
+            (vehicle.getSpeed() / vehicle.maxSpeed) * this.dBoxMinLength;
         vehicle.worldMatrix.getInverse(inverse);
         for (let i = 0, l = obstacles.length; i < l; i++) {
             const obstacle = obstacles[i];
             // calculate this obstacle's position in local space of the vehicle
-            localPositionOfObstacle.copy(obstacle.position).applyMatrix4(inverse);
+            localPositionOfObstacle
+                .copy(obstacle.position)
+                .applyMatrix4(inverse);
             // if the local position has a positive z value then it must lay behind the agent.
             // besides the absolute z value must be smaller than the length of the detection box
-            if (localPositionOfObstacle.z > 0 && Math.abs(localPositionOfObstacle.z) < this._dBoxLength) {
+            if (
+                localPositionOfObstacle.z > 0 &&
+                Math.abs(localPositionOfObstacle.z) < this._dBoxLength
+            ) {
                 // if the distance from the x axis to the object's position is less
                 // than its radius + half the width of the detection box then there is a potential intersection
-                const expandedRadius = obstacle.boundingRadius + vehicle.boundingRadius;
+                const expandedRadius =
+                    obstacle.boundingRadius + vehicle.boundingRadius;
                 if (Math.abs(localPositionOfObstacle.x) < expandedRadius) {
                     // do intersection test in local space of the vehicle
                     boundingSphere.center.copy(localPositionOfObstacle);
                     boundingSphere.radius = expandedRadius;
-                    ray.intersectBoundingSphere(boundingSphere, intersectionPoint);
+                    ray.intersectBoundingSphere(
+                        boundingSphere,
+                        intersectionPoint,
+                    );
                     // compare distances
                     if (intersectionPoint.z < distanceToClosestObstacle) {
                         // save new minimum distance
@@ -136,7 +154,9 @@ export class HideBehavior extends SteeringBehavior {
                         // save closest obstacle
                         closestObstacle = obstacle;
                         // save local position for force calculation
-                        localPositionOfClosestObstacle.copy(localPositionOfObstacle);
+                        localPositionOfClosestObstacle.copy(
+                            localPositionOfObstacle,
+                        );
                     }
                 }
             }
@@ -153,7 +173,9 @@ export class HideBehavior extends SteeringBehavior {
 
             // check if the best hiding spot is behind the vehicle
 
-            localPositionOfHidingSpot.copy(this._bestHidingSpot).applyMatrix4(inverse);
+            localPositionOfHidingSpot
+                .copy(this._bestHidingSpot)
+                .applyMatrix4(inverse);
 
             // if so flip the z-coordinate of the waypoint in order to avoid conflicts
 
@@ -161,7 +183,9 @@ export class HideBehavior extends SteeringBehavior {
 
             // compute the optimal x-coordinate so the vehicle steers next to the obstacle
 
-            this._waypoint.x -= (closestObstacle.boundingRadius + vehicle.boundingRadius) * sign;
+            this._waypoint.x -=
+                (closestObstacle.boundingRadius + vehicle.boundingRadius) *
+                sign;
 
             this._waypoint.applyMatrix4(vehicle.worldMatrix);
         }
@@ -169,7 +193,9 @@ export class HideBehavior extends SteeringBehavior {
         // proceed if there is an active waypoint
 
         if (this._waypoint !== null) {
-            const distanceSq = this._waypoint.squaredDistanceTo(vehicle.position);
+            const distanceSq = this._waypoint.squaredDistanceTo(
+                vehicle.position,
+            );
 
             // if we are close enough, delete the current waypoint
 
@@ -179,7 +205,11 @@ export class HideBehavior extends SteeringBehavior {
         }
     }
 
-    _getHidingPosition(obstacle: CustomObstacle, pursuer: MovingEntity, hidingSpot: Vector3) {
+    _getHidingPosition(
+        obstacle: CustomObstacle,
+        pursuer: MovingEntity,
+        hidingSpot: Vector3,
+    ) {
         // calculate the ideal spacing of the vehicle to the hiding spot
 
         const spacing = obstacle.boundingRadius + this.distanceFromHidingSpot;

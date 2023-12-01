@@ -38,7 +38,10 @@ declare namespace SMTPConnection {
         type?: "oauth2" | "OAuth2" | "OAUTH2" | undefined;
     }
 
-    type AuthenticationType = AuthenticationTypeCustom | AuthenticationTypeLogin | AuthenticationTypeOAuth2;
+    type AuthenticationType =
+        | AuthenticationTypeCustom
+        | AuthenticationTypeLogin
+        | AuthenticationTypeOAuth2;
 
     interface AuthenticationCredentials {
         /** normal authentication object */
@@ -65,13 +68,21 @@ declare namespace SMTPConnection {
         authMethods: string[];
         maxAllowedSize: number | false;
         sendCommand(cmd: string): Promise<CustomAuthenticationResponse>;
-        sendCommand(cmd: string, done: (err: Error | null, data: CustomAuthenticationResponse) => void): void;
+        sendCommand(
+            cmd: string,
+            done: (
+                err: Error | null,
+                data: CustomAuthenticationResponse,
+            ) => void,
+        ): void;
         resolve(): unknown;
         reject(err: Error | string): unknown;
     }
 
     interface CustomAuthenticationHandlers {
-        [method: string]: (ctx: CustomAuthenticationContext) => Promise<boolean> | unknown;
+        [method: string]: (
+            ctx: CustomAuthenticationContext,
+        ) => Promise<boolean> | unknown;
     }
 
     type DSNOption = "NEVER" | "SUCCESS" | "FAILURE" | "DELAY";
@@ -225,13 +236,19 @@ declare class SMTPConnection extends EventEmitter {
     send(
         envelope: SMTPConnection.Envelope,
         message: string | Buffer | Readable,
-        callback: (err: SMTPConnection.SMTPError | null, info: SMTPConnection.SentMessageInfo) => void,
+        callback: (
+            err: SMTPConnection.SMTPError | null,
+            info: SMTPConnection.SentMessageInfo,
+        ) => void,
     ): void;
     /** Resets connection state */
     reset(callback: (err?: SMTPConnection.SMTPError) => void): void;
 
     addListener(event: "connect" | "end", listener: () => void): this;
-    addListener(event: "error", listener: (err: SMTPConnection.SMTPError) => void): this;
+    addListener(
+        event: "error",
+        listener: (err: SMTPConnection.SMTPError) => void,
+    ): this;
 
     emit(event: "connect" | "end"): boolean;
     emit(event: "error", error: Error): boolean;
@@ -242,27 +259,44 @@ declare class SMTPConnection extends EventEmitter {
     listeners(event: "error"): Array<(err: SMTPConnection.SMTPError) => void>;
 
     off(event: "connect" | "end", listener: () => void): this;
-    off(event: "error", listener: (err: SMTPConnection.SMTPError) => void): this;
+    off(
+        event: "error",
+        listener: (err: SMTPConnection.SMTPError) => void,
+    ): this;
 
     on(event: "connect" | "end", listener: () => void): this;
     on(event: "error", listener: (err: SMTPConnection.SMTPError) => void): this;
 
     once(event: "connect" | "end", listener: () => void): this;
-    once(event: "error", listener: (err: SMTPConnection.SMTPError) => void): this;
+    once(
+        event: "error",
+        listener: (err: SMTPConnection.SMTPError) => void,
+    ): this;
 
     prependListener(event: "connect" | "end", listener: () => void): this;
-    prependListener(event: "error", listener: (err: SMTPConnection.SMTPError) => void): this;
+    prependListener(
+        event: "error",
+        listener: (err: SMTPConnection.SMTPError) => void,
+    ): this;
 
     prependOnceListener(event: "connect" | "end", listener: () => void): this;
-    prependOnceListener(event: "error", listener: (err: SMTPConnection.SMTPError) => void): this;
+    prependOnceListener(
+        event: "error",
+        listener: (err: SMTPConnection.SMTPError) => void,
+    ): this;
 
     rawListeners(event: "connect" | "end"): Array<() => void>;
-    rawListeners(event: "error"): Array<(err: SMTPConnection.SMTPError) => void>;
+    rawListeners(
+        event: "error",
+    ): Array<(err: SMTPConnection.SMTPError) => void>;
 
     removeAllListener(event: "connect" | "end" | "error"): this;
 
     removeListener(event: "connect" | "end", listener: () => void): this;
-    removeListener(event: "error", listener: (err: SMTPConnection.SMTPError) => void): this;
+    removeListener(
+        event: "error",
+        listener: (err: SMTPConnection.SMTPError) => void,
+    ): this;
 }
 
 export = SMTPConnection;

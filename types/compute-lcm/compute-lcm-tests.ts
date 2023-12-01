@@ -10,4 +10,4 @@ const data: Array<[string, number]> = [
     ["foo", 2],
     ["bar", 3],
 ];
-lcm(data, d => d[1]); // $ExpectType number | null
+lcm(data, (d) => d[1]); // $ExpectType number | null

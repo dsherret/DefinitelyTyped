@@ -20,7 +20,11 @@ import { Swipe } from "./swipe";
 import { Transition } from "./transition";
 import { Translate } from "./translate";
 
-type ComponentFunction<T = Record<string, any>> = (Glide: Glide, Components: Components, Events: EventsBus) => T;
+type ComponentFunction<T = Record<string, any>> = (
+    Glide: Glide,
+    Components: Components,
+    Events: EventsBus,
+) => T;
 
 export interface Components {
     Anchors: Anchors;

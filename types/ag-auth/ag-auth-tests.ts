@@ -16,16 +16,22 @@ const testObject = { foo: "bar" };
     let signedToken = await authEngine.signToken(testObject, "shhhhh");
 
     // sign with default (HMAC SHA256) and single audience
-    signedToken = await authEngine.signToken(testObject, "shhhhh", { audience: "theAudience" });
+    signedToken = await authEngine.signToken(testObject, "shhhhh", {
+        audience: "theAudience",
+    });
 
     // sign with RSA SHA256
     cert = fs.readFileSync("private.key"); // get private key
-    signedToken = await authEngine.signToken(testObject, cert, { algorithm: "RS256" });
+    signedToken = await authEngine.signToken(testObject, cert, {
+        algorithm: "RS256",
+    });
 
     // sign with encrypted RSA SHA256 private key (only PEM encoding is supported)
     const privKey: Buffer = fs.readFileSync("encrypted_private.key"); // get private key
     const secret = { key: privKey.toString(), passphrase: "keypwd" };
-    signedToken = await authEngine.signToken(testObject, secret, { algorithm: "RS256" }); // the algorithm option is mandatory in this case
+    signedToken = await authEngine.signToken(testObject, secret, {
+        algorithm: "RS256",
+    }); // the algorithm option is mandatory in this case
 
     // verify a token
     let token = await authEngine.verifyToken(signedToken ?? "", "shhhhh", {});

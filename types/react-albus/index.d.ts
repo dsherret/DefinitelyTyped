@@ -34,7 +34,11 @@ export const Wizard: React.ComponentType<WizardProps>;
 
 export type WizardContextRenderProps =
     | { render?: ((wizard: WizardContext) => React.ReactNode) | undefined }
-    | { children: ((wizard: WizardContext) => React.ReactNode) | React.ReactNode };
+    | {
+          children:
+              | ((wizard: WizardContext) => React.ReactNode)
+              | React.ReactNode;
+      };
 
 export const WithWizard: React.ComponentType<WizardContextRenderProps>;
 

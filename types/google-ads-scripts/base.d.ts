@@ -29,7 +29,10 @@ declare namespace GoogleAdsScripts {
              * Date range must be specified if the selector has conditions or ordering for a stat field. Note that only the last date
              * range specified for the selector will take effect.
              */
-            forDateRange(dateFrom: string | AdsApp.GoogleAdsDate, dateTo: string | AdsApp.GoogleAdsDate): this;
+            forDateRange(
+                dateFrom: string | AdsApp.GoogleAdsDate,
+                dateTo: string | AdsApp.GoogleAdsDate,
+            ): this;
         }
 
         interface SelectorOrderBy {
@@ -76,7 +79,10 @@ declare namespace GoogleAdsScripts {
             /** Returns stats for the specified date range. */
             getStatsFor(dateRange: DateRangeType): AdsApp.Stats;
             /** Returns stats for the specified custom date range. */
-            getStatsFor(dateFrom: string | AdsApp.GoogleAdsDate, dateTo: string | AdsApp.GoogleAdsDate): AdsApp.Stats;
+            getStatsFor(
+                dateFrom: string | AdsApp.GoogleAdsDate,
+                dateTo: string | AdsApp.GoogleAdsDate,
+            ): AdsApp.Stats;
         }
     }
 }

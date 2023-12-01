@@ -34,7 +34,8 @@ const extendOptions4: CoreObject.ExtendOptions<{ a: number }> = { a: "hi" };
 //////////// ExtendThisType ////////////
 
 declare function extendThisType1<T>(
-    options: T & CoreObject.ExtendThisType<{ prop: string; method: () => number }, T>,
+    options: T &
+        CoreObject.ExtendThisType<{ prop: string; method: () => number }, T>,
 ): void;
 extendThisType1({
     otherMethod() {

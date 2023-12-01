@@ -23,7 +23,10 @@ export interface ColorResult {
     rgb: RGBColor;
 }
 
-export type ColorChangeHandler = (color: ColorResult, event: React.ChangeEvent<HTMLInputElement>) => void;
+export type ColorChangeHandler = (
+    color: ColorResult,
+    event: React.ChangeEvent<HTMLInputElement>,
+) => void;
 
 export interface ColorPickerProps<A> extends ClassAttributes<A> {
     color?: Color | undefined;
@@ -41,18 +44,60 @@ export interface CustomPickerProps<A> extends ClassAttributes<A> {
     onChange: ColorChangeHandler;
 }
 
-export { AlphaPickerProps, default as AlphaPicker } from "./lib/components/alpha/Alpha";
-export { BlockPickerProps, default as BlockPicker } from "./lib/components/block/Block";
-export { ChromePickerProps, default as ChromePicker } from "./lib/components/chrome/Chrome";
-export { CirclePickerProps, default as CirclePicker } from "./lib/components/circle/Circle";
-export { CheckboardProps, default as Checkboard } from "./lib/components/common/Checkboard";
-export { default as CustomPicker, InjectedColorProps } from "./lib/components/common/ColorWrap";
-export { CompactPickerProps, default as CompactPicker } from "./lib/components/compact/Compact";
-export { default as GithubPicker, GithubPickerProps } from "./lib/components/github/Github";
+export {
+    AlphaPickerProps,
+    default as AlphaPicker,
+} from "./lib/components/alpha/Alpha";
+export {
+    BlockPickerProps,
+    default as BlockPicker,
+} from "./lib/components/block/Block";
+export {
+    ChromePickerProps,
+    default as ChromePicker,
+} from "./lib/components/chrome/Chrome";
+export {
+    CirclePickerProps,
+    default as CirclePicker,
+} from "./lib/components/circle/Circle";
+export {
+    CheckboardProps,
+    default as Checkboard,
+} from "./lib/components/common/Checkboard";
+export {
+    default as CustomPicker,
+    InjectedColorProps,
+} from "./lib/components/common/ColorWrap";
+export {
+    CompactPickerProps,
+    default as CompactPicker,
+} from "./lib/components/compact/Compact";
+export {
+    default as GithubPicker,
+    GithubPickerProps,
+} from "./lib/components/github/Github";
 export { default as HuePicker, HuePickerProps } from "./lib/components/hue/Hue";
-export { default as MaterialPicker, MaterialPickerProps } from "./lib/components/material/Material";
-export { default as PhotoshopPicker, PhotoshopPickerProps } from "./lib/components/photoshop/Photoshop";
-export { default as SketchPicker, SketchPickerProps } from "./lib/components/sketch/Sketch";
-export { default as SliderPicker, SliderPickerProps } from "./lib/components/slider/Slider";
-export { default as SwatchesPicker, SwatchesPickerProps } from "./lib/components/swatches/Swatches";
-export { default as TwitterPicker, TwitterPickerProps } from "./lib/components/twitter/Twitter";
+export {
+    default as MaterialPicker,
+    MaterialPickerProps,
+} from "./lib/components/material/Material";
+export {
+    default as PhotoshopPicker,
+    PhotoshopPickerProps,
+} from "./lib/components/photoshop/Photoshop";
+export {
+    default as SketchPicker,
+    SketchPickerProps,
+} from "./lib/components/sketch/Sketch";
+export {
+    default as SliderPicker,
+    SliderPickerProps,
+} from "./lib/components/slider/Slider";
+export {
+    default as SwatchesPicker,
+    SwatchesPickerProps,
+} from "./lib/components/swatches/Swatches";
+export {
+    default as TwitterPicker,
+    TwitterPickerProps,
+} from "./lib/components/twitter/Twitter";

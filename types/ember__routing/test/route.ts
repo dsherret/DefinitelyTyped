@@ -36,7 +36,11 @@ Route.extend({
 });
 
 Route.extend({
-    resetController(controller: Controller, isExiting: boolean, transition: Transition) {
+    resetController(
+        controller: Controller,
+        isExiting: boolean,
+        transition: Transition,
+    ) {
         if (isExiting) {
             //   controller.set('page', 1);
             transition.abort();
@@ -104,7 +108,9 @@ class TransitionToExamples extends Route {
 
     transitionToIdWithQP() {
         // $ExpectType Transition<unknown>
-        this.transitionTo("blog-post", 1, { queryParams: { includeComments: true } });
+        this.transitionTo("blog-post", 1, {
+            queryParams: { includeComments: true },
+        });
     }
 
     transitionToIds() {
@@ -114,7 +120,9 @@ class TransitionToExamples extends Route {
 
     transitionToIdsWithQP() {
         // $ExpectType Transition<unknown>
-        this.transitionTo("blog-comment", 1, "13", { queryParams: { includePost: true } });
+        this.transitionTo("blog-comment", 1, "13", {
+            queryParams: { includePost: true },
+        });
     }
 
     buildRouteInfoMetadata() {
@@ -205,7 +213,9 @@ class WithImplicitParams extends Route {
 }
 
 // $ExpectType RouteParams
-type ImplicitParams = WithImplicitParams extends Route<any, infer T> ? T : never;
+type ImplicitParams = WithImplicitParams extends Route<any, infer T>
+    ? T
+    : never;
 
 // back-compat for existing users of these
 // NOTE: we will *not* migrate the private import locations when moving to

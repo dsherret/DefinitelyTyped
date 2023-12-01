@@ -18,7 +18,9 @@ export type OverrideFunc = (config: WebpackConfig) => WebpackConfig;
  *   condition && disableEsLint(),
  * );
  */
-export function override(...args: Array<OverrideFunc | false | undefined | null | 0>): OverrideFunc;
+export function override(
+    ...args: Array<OverrideFunc | false | undefined | null | 0>
+): OverrideFunc;
 
 /**
  * Enables left to right composition of multiple override functions,
@@ -27,7 +29,10 @@ export function override(...args: Array<OverrideFunc | false | undefined | null 
 export function overrideDevServer(...args: OverrideFunc[]): OverrideFunc;
 
 /** logs the config to the console, useful for debugging */
-export function tap(options?: { message?: string | undefined; dest?: string | undefined }): OverrideFunc;
+export function tap(options?: {
+    message?: string | undefined;
+    dest?: string | undefined;
+}): OverrideFunc;
 
 /**
  * Returns the `babel` loader from the provided `config`.
@@ -40,4 +45,7 @@ export function tap(options?: { message?: string | undefined; dest?: string | un
  * @param isOutsideOfApp Flag for whether to use the `babel-loader`
  * for matching files in `src/` or files outside of `src/`.
  */
-export function getBabelLoader(config: WebpackConfig, isOutsideOfApp: boolean): unknown;
+export function getBabelLoader(
+    config: WebpackConfig,
+    isOutsideOfApp: boolean,
+): unknown;

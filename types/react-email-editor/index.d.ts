@@ -6,12 +6,12 @@ export interface AppearanceConfig {
     readonly theme?: ThemeColor | undefined;
     readonly panels?:
         | {
-            readonly tools?:
-                | {
-                    readonly dock: DockPosition;
-                }
-                | undefined;
-        }
+              readonly tools?:
+                  | {
+                        readonly dock: DockPosition;
+                    }
+                  | undefined;
+          }
         | undefined;
 }
 
@@ -178,10 +178,15 @@ export interface Design {
 export type SaveDesignCallback = (data: Design) => void;
 export type ExportHtmlCallback = (data: HtmlExport) => void;
 export type EventCallback = (data: object) => void;
-export type FileUploadCallback = (file: FileInfo, done: FileUploadDoneCallback) => void;
+export type FileUploadCallback = (
+    file: FileInfo,
+    done: FileUploadDoneCallback,
+) => void;
 export type FileUploadDoneCallback = (data: FileUploadDoneData) => void;
 
-export type DisplayConditionDoneCallback = (data: DisplayCondition | null) => void;
+export type DisplayConditionDoneCallback = (
+    data: DisplayCondition | null,
+) => void;
 export type DisplayConditionCallback = (
     data: DisplayCondition | EmptyDisplayCondition,
     done: DisplayConditionDoneCallback,
@@ -190,7 +195,10 @@ export type DisplayConditionCallback = (
 export default class Component extends ReactComponent<EmailEditorProps> {
     private unlayerReady(): void;
     registerCallback(type: "image", callback: FileUploadCallback): void;
-    registerCallback(type: "displayCondition", callback: DisplayConditionCallback): void;
+    registerCallback(
+        type: "displayCondition",
+        callback: DisplayConditionCallback,
+    ): void;
     addEventListener(type: string, callback: EventCallback): void;
     loadBlank(type: object): void;
     loadDesign(design: Design): void;

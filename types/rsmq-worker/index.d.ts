@@ -42,7 +42,7 @@ declare namespace RSMQWorker {
 }
 
 interface RSMQWorkerStatic {
-    new(queuename: string, options?: RSMQWorker.Options): RSMQWorker.Client;
+    new (queuename: string, options?: RSMQWorker.Options): RSMQWorker.Client;
 }
 
 declare var RSMQWorker: RSMQWorkerStatic;

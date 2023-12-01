@@ -13,9 +13,13 @@ export class DirectUpload {
 }
 
 export interface DirectUploadDelegate {
-    directUploadWillCreateBlobWithXHR?: ((xhr: XMLHttpRequest) => void) | undefined;
+    directUploadWillCreateBlobWithXHR?:
+        | ((xhr: XMLHttpRequest) => void)
+        | undefined;
 
-    directUploadWillStoreFileWithXHR?: ((xhr: XMLHttpRequest) => void) | undefined;
+    directUploadWillStoreFileWithXHR?:
+        | ((xhr: XMLHttpRequest) => void)
+        | undefined;
 }
 
 export interface Blob {

@@ -9,8 +9,8 @@ interface Podium {
      * Creates a new podium emitter
      * @param events  if present, the value is passed to podium.registerEvent().
      */
-    new(events?: Podium.Events[]): Podium;
-    new(events?: Podium.Events): Podium;
+    new (events?: Podium.Events[]): Podium;
+    new (events?: Podium.Events): Podium;
 
     /**
      * podium.registerEvent(events)
@@ -38,7 +38,13 @@ interface Podium {
      * @see {@link https://github.com/hapijs/podium/blob/master/API.md#podiumemitcriteria-data-callback}
      */
     emit(
-        criteria: string | { name: string; channel?: string | undefined; tags?: string | string[] | undefined },
+        criteria:
+            | string
+            | {
+                  name: string;
+                  channel?: string | undefined;
+                  tags?: string | string[] | undefined;
+              },
         data: any,
         callback?: () => void,
     ): void;
@@ -59,7 +65,10 @@ interface Podium {
      * @param listener  the handler method set to receive event updates. The function signature depends on the block, spread, and tags options.
      * @see {@link https://github.com/hapijs/podium/blob/master/API.md#podiumoncriteria-listener}
      */
-    addListener(criteria: string | Podium.Criteria, listener: Podium.Listener): void;
+    addListener(
+        criteria: string | Podium.Criteria,
+        listener: Podium.Listener,
+    ): void;
 
     /**
      * podium.once(criteria, listener)

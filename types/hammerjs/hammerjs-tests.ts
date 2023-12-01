@@ -8,7 +8,7 @@
     var mc = new Hammer(myElement);
 
     // listen to events...
-    mc.on("panleft panright tap press", function(ev) {
+    mc.on("panleft panright tap press", function (ev) {
         console.log(ev.maxPointers - 2);
         console.log(Math.floor(ev.overallVelocity));
         console.log(ev.timeStamp + Date.now());
@@ -23,7 +23,7 @@
     var mc = new Hammer(myElement);
 
     // listen to events...
-    mc.on("panleft panright tap press", function(ev) {
+    mc.on("panleft panright tap press", function (ev) {
         myElement.textContent = ev.type + " gesture detected.";
     });
 })();
@@ -40,15 +40,18 @@
     mc.get("pan").set({ direction: Hammer.DIRECTION_ALL });
 
     // listen to events...
-    mc.on("panleft panright panup pandown tap press", function(ev: HammerInput) {
-        type EventType =
-            | HammerStatic["INPUT_START"]
-            | HammerStatic["INPUT_MOVE"]
-            | HammerStatic["INPUT_END"]
-            | HammerStatic["INPUT_CANCEL"];
-        const eventType: EventType = ev.eventType;
-        myElement.textContent = ev.type + " gesture detected.";
-    });
+    mc.on(
+        "panleft panright panup pandown tap press",
+        function (ev: HammerInput) {
+            type EventType =
+                | HammerStatic["INPUT_START"]
+                | HammerStatic["INPUT_MOVE"]
+                | HammerStatic["INPUT_END"]
+                | HammerStatic["INPUT_CANCEL"];
+            const eventType: EventType = ev.eventType;
+            myElement.textContent = ev.type + " gesture detected.";
+        },
+    );
 })();
 
 (() => {
@@ -67,7 +70,7 @@
     // add to the Manager
     mc.add([pinch, rotate]);
 
-    mc.on("pinch rotate", function(ev: HammerInput) {
+    mc.on("pinch rotate", function (ev: HammerInput) {
         myElement.textContent += ev.type + " ";
     });
 })();
@@ -88,7 +91,7 @@
     // the tap event will be emitted on every tap
     mc.get("quadrupletap").recognizeWith("tap");
 
-    mc.on("tap quadrupletap", function(ev) {
+    mc.on("tap quadrupletap", function (ev) {
         myElement.textContent += ev.type + " ";
     });
 })();
@@ -109,7 +112,7 @@
     // we only want to trigger a tap, when we don't have detected a doubletap
     mc.get("singletap").requireFailure("doubletap");
 
-    mc.on("singletap doubletap", function(ev) {
+    mc.on("singletap doubletap", function (ev) {
         myElement.textContent += ev.type + " ";
     });
 })();
@@ -132,7 +135,7 @@
     // we only want to trigger a tap, when we don't have detected a doubletap
     mc.get("singletap").requireFailure("doubletap");
 
-    mc.on("singletap doubletap", function(ev) {
+    mc.on("singletap doubletap", function (ev) {
         myElement.textContent += ev.type + " ";
     });
 })();
@@ -146,7 +149,8 @@
         [Hammer.STATE_CANCELLED]: 16 as 16,
         [Hammer.STATE_FAILED]: 32 as 32,
     };
-    input[Hammer.STATE_RECOGNIZED] = Hammer.STATE_ENDED as typeof Hammer.STATE_ENDED;
+    input[Hammer.STATE_RECOGNIZED] =
+        Hammer.STATE_ENDED as typeof Hammer.STATE_ENDED;
 
     var direction = {
         [Hammer.INPUT_START]: 1 as 1,
@@ -161,9 +165,12 @@
         [Hammer.DIRECTION_RIGHT]: 4 as 4,
         [Hammer.DIRECTION_UP]: 8 as 8,
         [Hammer.DIRECTION_DOWN]: 16 as 16,
-        [Hammer.DIRECTION_HORIZONTAL]: (Hammer.DIRECTION_LEFT | Hammer.DIRECTION_RIGHT) as 6, // TS infers this as a number, so we have to cast it ourselves
-        [Hammer.DIRECTION_VERTICAL]: (Hammer.DIRECTION_UP | Hammer.DIRECTION_DOWN) as 24, // bits aren't overlapping, so binary or is equal to addition
-        [Hammer.DIRECTION_ALL]: (Hammer.DIRECTION_HORIZONTAL | Hammer.DIRECTION_VERTICAL) as 30,
+        [Hammer.DIRECTION_HORIZONTAL]: (Hammer.DIRECTION_LEFT |
+            Hammer.DIRECTION_RIGHT) as 6, // TS infers this as a number, so we have to cast it ourselves
+        [Hammer.DIRECTION_VERTICAL]: (Hammer.DIRECTION_UP |
+            Hammer.DIRECTION_DOWN) as 24, // bits aren't overlapping, so binary or is equal to addition
+        [Hammer.DIRECTION_ALL]: (Hammer.DIRECTION_HORIZONTAL |
+            Hammer.DIRECTION_VERTICAL) as 30,
     };
 
     type KeysSameAsValues<T extends { [K in keyof T]: K }> = true; // typecheck: if all keys are equal to their value

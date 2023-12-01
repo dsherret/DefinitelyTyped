@@ -1,6 +1,6 @@
 import * as metaget from "metaget";
 
-metaget.fetch("https://wordpress.com").then(response => {
+metaget.fetch("https://wordpress.com").then((response) => {
     response; // $ExpectType Record<string, string> || Result
 });
 

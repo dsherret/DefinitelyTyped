@@ -49,7 +49,7 @@ var favicons: favicojs.Favico[] = [
 
 // public methods
 
-favicons.map(favico => {
+favicons.map((favico) => {
     // badge
     favico.badge(2);
     favico.badge(3, "slide");

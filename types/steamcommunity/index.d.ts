@@ -24,8 +24,7 @@ import { Users } from "./components/users";
 import { WebApi } from "./components/webapi";
 
 interface SteamCommunity
-    extends
-        Chat,
+    extends Chat,
         EventEmitter,
         Confirmations,
         Groups,
@@ -37,8 +36,7 @@ interface SteamCommunity
         Profile,
         TwoFactor,
         Users,
-        WebApi
-{}
+        WebApi {}
 
 declare class SteamCommunity {
     constructor(options?: SteamCommunity.Options);
@@ -219,14 +217,16 @@ declare class SteamCommunity {
      * @param callback Called when results are available.
      */
     marketSearch(
-        options: string | {
-            /** The query string to search for. */
-            query: string;
-            /** The AppID of the game you're searching for. */
-            appid: SteamCommunity.appid;
-            /** `true` to also search in the descriptions of items (takes longer to search), `false` or omitted otherwise. */
-            searchDescriptions: boolean;
-        },
+        options:
+            | string
+            | {
+                  /** The query string to search for. */
+                  query: string;
+                  /** The AppID of the game you're searching for. */
+                  appid: SteamCommunity.appid;
+                  /** `true` to also search in the descriptions of items (takes longer to search), `false` or omitted otherwise. */
+                  searchDescriptions: boolean;
+              },
         callback: (
             /**
              * If an error occurred, this will be an Error object.
@@ -288,7 +288,10 @@ declare class SteamCommunity {
      * @param event "sessionExpired"
      * @param listener Emitted when an HTTP request is made which requires a login, and Steam redirects us to the login page (i.e. we aren't logged in).
      */
-    on(event: "sessionExpired", listener: SteamCommunity.Events.sessionExpired): this;
+    on(
+        event: "sessionExpired",
+        listener: SteamCommunity.Events.sessionExpired,
+    ): this;
 
     /**
      * This event will be emitted when the confirmation checker needs a new confirmation key to continue. Keys that can be reused will be saved for up to five minutes before they are requested again.
@@ -301,7 +304,10 @@ declare class SteamCommunity {
      *     callback(null, time, SteamTotp.getConfirmationKey(identitySecret, time, tag));
      * });
      */
-    on(event: "confKeyNeeded", listener: SteamCommunity.Events.confKeyNeeded): this;
+    on(
+        event: "confKeyNeeded",
+        listener: SteamCommunity.Events.confKeyNeeded,
+    ): this;
 
     /**
      * Emitted when a new confirmation is received. This will be emitted once per confirmation.
@@ -315,7 +321,10 @@ declare class SteamCommunity {
      * @param event "newConfirmation"
      * @param listener Emitted when a new confirmation is received. This will be emitted once per confirmation.
      */
-    on(event: "newConfirmation", listener: SteamCommunity.Events.newConfirmation): this;
+    on(
+        event: "newConfirmation",
+        listener: SteamCommunity.Events.newConfirmation,
+    ): this;
 
     /**
      * Emitted when the automatic confirmation checker auto-accepts a confirmation with success.
@@ -323,7 +332,10 @@ declare class SteamCommunity {
      * @param event "confirmationAccepted"
      * @param listener Emitted when the automatic confirmation checker auto-accepts a confirmation with success.
      */
-    on(event: "confirmationAccepted", listener: SteamCommunity.Events.confirmationAccepted): this;
+    on(
+        event: "confirmationAccepted",
+        listener: SteamCommunity.Events.confirmationAccepted,
+    ): this;
 
     /**
      * Emitted when there's a problem while logging into webchat.
@@ -331,7 +343,10 @@ declare class SteamCommunity {
      * @param event "chatLogOnFailed"
      * @param listener Emitted when there's a problem while logging into webchat.
      */
-    on(event: "chatLogOnFailed", listener: SteamCommunity.Events.chatLogOnFailed): this;
+    on(
+        event: "chatLogOnFailed",
+        listener: SteamCommunity.Events.chatLogOnFailed,
+    ): this;
 
     /**
      * Emitted when we receive new persona state data for a friend.
@@ -339,7 +354,10 @@ declare class SteamCommunity {
      * @param event "chatPersonaState"
      * @param listener Emitted when we receive new persona state data for a friend.
      */
-    on(event: "chatPersonaState", listener: SteamCommunity.Events.chatPersonaState): this;
+    on(
+        event: "chatPersonaState",
+        listener: SteamCommunity.Events.chatPersonaState,
+    ): this;
 
     /**
      * Emitted when we receive a new chat message.
@@ -365,7 +383,10 @@ declare class SteamCommunity {
      */
     on(event: "chatLoggedOff" | "chatLoggedOn", listener: () => void): this;
 
-    on(type: "debug" | string | number, listener: (...args: any[]) => void): this;
+    on(
+        type: "debug" | string | number,
+        listener: (...args: any[]) => void,
+    ): this;
 
     steamID: SteamID;
 }
@@ -475,7 +496,7 @@ declare namespace SteamCommunity {
 
     interface GroupItemHistory {
         /** A string containing the item history type. This is the type displayed on the history page, without spaces. For example, NewMember, InviteSent, etc.. */
-        "type": string;
+        type: string;
         /** A Date object containing the date and time when this action took place. Since the history page doesn't display any years, the year could possibly be incorrect.. */
         date: Date;
         /**
@@ -555,7 +576,10 @@ declare namespace SteamCommunity {
          * @param tag If an error occurred when you were getting the key, pass an `Error` object here and no further arguments. If successful, pass `null` here.
          * @param callback The Unix timestamp that you used to generate this key.
          */
-        type confKeyNeeded = (tag: string, callback: confKeyNeededCallback) => void;
+        type confKeyNeeded = (
+            tag: string,
+            callback: confKeyNeededCallback,
+        ) => void;
 
         /**
          * You should call this function when you have the key ready.
@@ -564,7 +588,11 @@ declare namespace SteamCommunity {
          * @param time The Unix timestamp that you used to generate this key.
          * @param key The base64 string key.
          */
-        type confKeyNeededCallback = (err: CallbackError, time: number, key: string) => void;
+        type confKeyNeededCallback = (
+            err: CallbackError,
+            time: number,
+            key: string,
+        ) => void;
 
         /**
          * @param confirmation A `CConfirmation` object.
@@ -586,7 +614,10 @@ declare namespace SteamCommunity {
          * @param steamID The SteamID of the user for whom we just got persona data, as a `SteamID` object.
          * @param persona The user's persona data.
          */
-        type chatPersonaState = (steamID: SteamID, persona: PersonaState) => void;
+        type chatPersonaState = (
+            steamID: SteamID,
+            persona: PersonaState,
+        ) => void;
 
         /**
          * @param steamID The sender's SteamID, as a `SteamID` object.
@@ -616,7 +647,7 @@ declare namespace SteamCommunity {
     type Callback = (err: CallbackError) => any;
 
     /** `null` on success, an `Error` object on failure. */
-    type CallbackError = Error & { [key: string]: any } | null;
+    type CallbackError = (Error & { [key: string]: any }) | null;
 
     /** Unique and can change after a trade. */
     type assetid = number | string;

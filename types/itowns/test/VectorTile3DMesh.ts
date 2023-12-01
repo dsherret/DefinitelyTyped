@@ -39,8 +39,12 @@ function addElevationLayerFromConfig(json: any) {
     };
     view.addLayer(new itowns.ElevationLayer(config.id, config));
 }
-itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json").then(addElevationLayerFromConfig);
-itowns.Fetcher.json("./layers/JSONLayers/WORLD_DTM.json").then(addElevationLayerFromConfig);
+itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json").then(
+    addElevationLayerFromConfig,
+);
+itowns.Fetcher.json("./layers/JSONLayers/WORLD_DTM.json").then(
+    addElevationLayerFromConfig,
+);
 
 // ---------- DISPLAY VECTOR TILED MAP DATA AS A ColorLayer : ----------
 
@@ -50,10 +54,12 @@ const mapSource = new itowns.VectorTilesSource({
     // We don't display mountains and parcels related data to ease visualisation. Also, we don't display
     // buildings related data as it will be displayed in another Layer.
     filter: (layer) => {
-        return !layer["source-layer"].includes("bati_surf")
-            && !layer["source-layer"].includes("oro_")
-            && !layer["source-layer"].includes("routier_ponc")
-            && !layer["source-layer"].includes("parcellaire");
+        return (
+            !layer["source-layer"].includes("bati_surf") &&
+            !layer["source-layer"].includes("oro_") &&
+            !layer["source-layer"].includes("routier_ponc") &&
+            !layer["source-layer"].includes("parcellaire")
+        );
     },
 });
 
@@ -78,14 +84,16 @@ view.addLayer(mapLayer);
 
 // ---------- DISPLAY ORTHO-IMAGES : ----------
 
-const ortho = itowns.Fetcher.json("./layers/JSONLayers/Ortho.json").then(function _(json: any) {
-    const config = {
-        ...json,
-        source: new itowns.WMTSSource(json.source),
-    };
-    const layer = new itowns.ColorLayer("Ortho", config);
-    return view.addLayer(layer);
-});
+const ortho = itowns.Fetcher.json("./layers/JSONLayers/Ortho.json").then(
+    function _(json: any) {
+        const config = {
+            ...json,
+            source: new itowns.WMTSSource(json.source),
+        };
+        const layer = new itowns.ColorLayer("Ortho", config);
+        return view.addLayer(layer);
+    },
+);
 
 // ---------- DISPLAY VECTOR TILED BUILDING DATA AS 3D MESHES : ----------
 
@@ -94,8 +102,10 @@ const buildingsSource = new itowns.VectorTilesSource({
     style: "https://wxs.ign.fr/essentiels/static/vectorTiles/styles/PLAN.IGN/standard.json",
     // We only want to display buildings related data.
     filter: (layer) => {
-        return layer["source-layer"].includes("bati_surf")
-            && layer.paint["fill-color"];
+        return (
+            layer["source-layer"].includes("bati_surf") &&
+            layer.paint["fill-color"]
+        );
     },
 });
 

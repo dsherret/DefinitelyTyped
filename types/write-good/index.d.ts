@@ -52,6 +52,9 @@ declare namespace WriteGood {
 /**
  * Returns a list of violations in the supplied `text`.
  */
-declare function WriteGood(text: string, options?: WriteGood.Options): WriteGood.Problem[];
+declare function WriteGood(
+    text: string,
+    options?: WriteGood.Options,
+): WriteGood.Problem[];
 
 export = WriteGood;

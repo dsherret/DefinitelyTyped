@@ -13,4 +13,6 @@ export interface SuccessHttpMiddleware {
     after: MiddlewareFunction<HttpGatewayEvent, any>;
 }
 
-export default function successHttpResponseMiddleware(opts?: MiddlewareOptions): SuccessHttpMiddleware;
+export default function successHttpResponseMiddleware(
+    opts?: MiddlewareOptions,
+): SuccessHttpMiddleware;

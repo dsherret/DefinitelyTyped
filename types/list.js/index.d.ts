@@ -8,7 +8,11 @@ declare class List {
     filtered: boolean;
     alphabet: string;
 
-    constructor(element: string | HTMLElement, options?: List.ListOptions, values?: object[]);
+    constructor(
+        element: string | HTMLElement,
+        options?: List.ListOptions,
+        values?: object[],
+    );
 
     add(values: object[], callback?: (item: List.ListItem) => void): void;
     remove(valueName: string, value: any): number;
@@ -38,7 +42,11 @@ declare namespace List {
     }
 
     interface ListOptions {
-        valueNames?: Array<string | { data: string[] } | { name: string; attr: string }> | undefined;
+        valueNames?:
+            | Array<
+                  string | { data: string[] } | { name: string; attr: string }
+              >
+            | undefined;
         item?: string | undefined;
         listClass?: string | undefined;
         searchClass?: string | undefined;
@@ -46,14 +54,16 @@ declare namespace List {
         indexAsync?: boolean | undefined;
         page?: number | undefined;
         i?: number | undefined;
-        pagination?: {
-            paginationClass?: string | undefined;
-            innerWindow?: number | undefined;
-            outerWindow?: number | undefined;
-            left?: number | undefined;
-            right?: number | undefined;
-            item?: string | undefined;
-        } | undefined;
+        pagination?:
+            | {
+                  paginationClass?: string | undefined;
+                  innerWindow?: number | undefined;
+                  outerWindow?: number | undefined;
+                  left?: number | undefined;
+                  right?: number | undefined;
+                  item?: string | undefined;
+              }
+            | undefined;
         fuzzySearch?: FuzzySearchOptions | undefined;
     }
 
@@ -69,7 +79,9 @@ declare namespace List {
         order?: string | undefined;
         alphabet?: string | undefined;
         insensitive?: boolean | undefined;
-        sortFunction?: ((a: object, b: object) => number | undefined) | undefined;
+        sortFunction?:
+            | ((a: object, b: object) => number | undefined)
+            | undefined;
     }
 
     type Event =

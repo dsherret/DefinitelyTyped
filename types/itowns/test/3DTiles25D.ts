@@ -21,12 +21,7 @@ const extent = new itowns.Extent(
 const viewerDiv = document.getElementById("viewerDiv") as HTMLDivElement;
 
 // Instanciate PlanarView*
-const cameraCoord = new itowns.Coordinates(
-    "EPSG:3946",
-    1841980,
-    5175682,
-    3000,
-);
+const cameraCoord = new itowns.Coordinates("EPSG:3946", 1841980, 5175682, 3000);
 const view = new itowns.PlanarView(viewerDiv, extent, {
     placement: {
         coord: cameraCoord,
@@ -87,8 +82,9 @@ const $3dTilesLayer = new itowns.C3DTilesLayer(
     {
         name: "Lyon-2015-building",
         source: new itowns.C3DTilesSource({
-            url: "https://raw.githubusercontent.com/iTowns/iTowns2-sample-data/master/"
-                + "3DTiles/lyon_1_3946_textured_draco/tileset.json",
+            url:
+                "https://raw.githubusercontent.com/iTowns/iTowns2-sample-data/master/" +
+                "3DTiles/lyon_1_3946_textured_draco/tileset.json",
         }),
     },
     view,

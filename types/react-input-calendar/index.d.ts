@@ -44,11 +44,18 @@ declare namespace reactInputCalendar {
         /**
          * Set a function that will be triggered the when input field is blurred. It will return the event and the date in the props.computableFormat format.
          */
-        onBlur?: ((event: React.SyntheticEvent<ReactInputCalendar>, computableDate: string) => void) | undefined;
+        onBlur?:
+            | ((
+                  event: React.SyntheticEvent<ReactInputCalendar>,
+                  computableDate: string,
+              ) => void)
+            | undefined;
         /**
          * Set a function that will be triggered when the input field is focused.
          */
-        onFocus?: ((event: React.SyntheticEvent<ReactInputCalendar>) => void) | undefined;
+        onFocus?:
+            | ((event: React.SyntheticEvent<ReactInputCalendar>) => void)
+            | undefined;
         /**
          * Define state when date picker would close once the user has clicked on a date.
          */
@@ -75,8 +82,10 @@ declare namespace reactInputCalendar {
         disabled?: boolean | undefined;
     }
     interface ReactInputCalendarState {}
-    export class ReactInputCalendar extends React.Component<ReactInputCalendarProps, ReactInputCalendarState> {
-    }
+    export class ReactInputCalendar extends React.Component<
+        ReactInputCalendarProps,
+        ReactInputCalendarState
+    > {}
 }
 declare var ReactInputCalendar: typeof reactInputCalendar.ReactInputCalendar;
 declare module "react-input-calendar" {

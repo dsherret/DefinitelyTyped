@@ -45,7 +45,9 @@ declare namespace jQueryTagsInput {
         /**
          * Callback function on change list of tags
          */
-        onChange?: ((element: JQuery, changedValue: string) => void) | undefined;
+        onChange?:
+            | ((element: JQuery, changedValue: string) => void)
+            | undefined;
 
         /**
          * Delimiters on tags creation

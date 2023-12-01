@@ -155,7 +155,10 @@ function configureImageTransform({
         trackedImageComp.mainPass.opacityTex = opacityTexture;
     }
 
-    trackedImageComp.mainPass.baseColor = setAlpha(trackedImageComp.mainPass.baseColor, imageAlpha);
+    trackedImageComp.mainPass.baseColor = setAlpha(
+        trackedImageComp.mainPass.baseColor,
+        imageAlpha,
+    );
 
     const anchors = screenTransform.anchors;
     const offsets = screenTransform.offsets;
@@ -177,7 +180,9 @@ function configureImageTransform({
     anchors.top += offsetVec.y;
     anchors.bottom += offsetVec.y;
 
-    const rotateTo = screenTransform.rotation.multiply(quat.angleAxis(rotationToAdd * degToRad, vec3.forward()));
+    const rotateTo = screenTransform.rotation.multiply(
+        quat.angleAxis(rotationToAdd * degToRad, vec3.forward()),
+    );
 
     screenTransform.rotation = rotateTo;
 
@@ -191,7 +196,9 @@ function setupTracking() {
         movieImage.enabled = false;
 
         if (movie) {
-            print("WARNING: Please remove Background Video texture from the script component to save memory.");
+            print(
+                "WARNING: Please remove Background Video texture from the script component to save memory.",
+            );
         }
     } else {
         movieImage.mainPass.baseTex = movie;
@@ -216,7 +223,9 @@ function setupTracking() {
         trackedImageMesh.setRenderOrder(moveImageMesh.getRenderOrder() - 1);
 
         if (backgroundImage) {
-            backgroundImage.setRenderOrder(trackedImageMesh.getRenderOrder() - 1);
+            backgroundImage.setRenderOrder(
+                trackedImageMesh.getRenderOrder() - 1,
+            );
         }
     }
 
@@ -241,15 +250,22 @@ function playAnimatedTexture() {
             );
             return;
         }
-        const providerDurationCheck = roundToNearest(animationData.duration / animationData.frameRate);
+        const providerDurationCheck = roundToNearest(
+            animationData.duration / animationData.frameRate,
+        );
         const providerDuration = roundToNearest(provider.getDuration());
         if (providerDuration !== providerDurationCheck) {
-            showError("ERROR: You need to set the duration on animated texture to: " + providerDurationCheck);
+            showError(
+                "ERROR: You need to set the duration on animated texture to: " +
+                    providerDurationCheck,
+            );
             return;
         }
         animatedTextureInitialized = true;
     } else {
-        showError("ERROR: Please assign a 2D Animated Texture file in the Video's texture input");
+        showError(
+            "ERROR: Please assign a 2D Animated Texture file in the Video's texture input",
+        );
         return;
     }
 }
@@ -264,7 +280,8 @@ function positionImage(frame: number) {
             const screenPos = animationData.positions[frame];
             const offsetPos = startingPositionOffset.add(screenPos);
             const worldPoint = extentsTarget.localPointToWorldPoint(offsetPos);
-            const parentPoint = trackedImageTransform.worldPointToParentPoint(worldPoint);
+            const parentPoint =
+                trackedImageTransform.worldPointToParentPoint(worldPoint);
             trackedImageTransform.anchors.setCenter(parentPoint);
         }
 
@@ -276,7 +293,9 @@ function positionImage(frame: number) {
         }
 
         if (trackRotation) {
-            const rot = quat.fromEulerVec(animationData.rotations[frame].uniformScale(-Math.PI / 180));
+            const rot = quat.fromEulerVec(
+                animationData.rotations[frame].uniformScale(-Math.PI / 180),
+            );
             const rotateTo = startingRotationOffset.multiply(rot);
             trackedImageTransform.rotation = rotateTo;
         }
@@ -312,7 +331,9 @@ function playBackTimer() {
 
 function findAnimationData() {
     const results: AnimationData[] = [];
-    const allComponents = script.getSceneObject().getComponents("Component.ScriptComponent");
+    const allComponents = script
+        .getSceneObject()
+        .getComponents("Component.ScriptComponent");
     for (const component of allComponents) {
         if (component.api) {
             if (component.api.animationData) {
@@ -355,7 +376,9 @@ function checkProperties() {
     }
 
     if (!mainImage) {
-        showError("ERROR: Please assign a texture to Image texture input on FaceInVideoController script.");
+        showError(
+            "ERROR: Please assign a texture to Image texture input on FaceInVideoController script.",
+        );
         return false;
     }
 
@@ -381,11 +404,15 @@ function checkProperties() {
     }
 
     if (!backgroundImage) {
-        showError("WARNING: Please make sure Background Image object exists and assigned under the advanced checkbox");
+        showError(
+            "WARNING: Please make sure Background Image object exists and assigned under the advanced checkbox",
+        );
     }
 
     if (!movie && showVideo) {
-        showError("ERROR: Please assign a video or animated texture to Video input on FaceInVideoController script.");
+        showError(
+            "ERROR: Please assign a video or animated texture to Video input on FaceInVideoController script.",
+        );
         return false;
     }
     return true;

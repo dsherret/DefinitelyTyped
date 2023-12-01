@@ -1,6 +1,12 @@
 import { BlockInstance } from "@wordpress/blocks";
 
-import { EditorBlockListSettings, EditorBlockMode, EditorInserterItem, EditorSelection, EditorSettings } from "../";
+import {
+    EditorBlockListSettings,
+    EditorBlockMode,
+    EditorInserterItem,
+    EditorSelection,
+    EditorSettings,
+} from "../";
 
 /**
  * Determines if the given block type is allowed to be inserted into the block list.
@@ -10,7 +16,10 @@ import { EditorBlockListSettings, EditorBlockMode, EditorInserterItem, EditorSel
  *
  * @returns Whether the given block type is allowed to be inserted.
  */
-export function canInsertBlockType(blockName: string, rootClientId?: string): boolean;
+export function canInsertBlockType(
+    blockName: string,
+    rootClientId?: string,
+): boolean;
 
 /**
  * Returns the client ID of the block adjacent one at the given reference `startClientId` and modifier
@@ -22,7 +31,10 @@ export function canInsertBlockType(blockName: string, rootClientId?: string): bo
  *
  * @returns Return the client ID of the block, or null if none exists.
  */
-export function getAdjacentBlockClientId(startClientId?: string, modifier?: 1 | -1): string | null;
+export function getAdjacentBlockClientId(
+    startClientId?: string,
+    modifier?: 1 | -1,
+): string | null;
 
 /**
  * Returns a block given its client ID. This is a parsed copy of the block, containing its
@@ -42,7 +54,9 @@ export function getBlock(clientId: string): BlockInstance | null;
  *
  * @returns Block attributes.
  */
-export function getBlockAttributes(clientId: string): Record<string, any> | null;
+export function getBlockAttributes(
+    clientId: string,
+): Record<string, any> | null;
 
 /**
  * Returns the number of blocks currently present in the post.
@@ -78,7 +92,10 @@ export function getBlockIndex(clientId: string, rootClientId?: string): number;
  * Returns the insertion point, the index at which the new inserted block would
  * be placed. Defaults to the last index.
  */
-export function getBlockInsertionPoint(): { index: number; rootClientId?: string | undefined };
+export function getBlockInsertionPoint(): {
+    index: number;
+    rootClientId?: string | undefined;
+};
 
 /**
  * Returns the Block List settings of a block, if any exist.
@@ -87,7 +104,9 @@ export function getBlockInsertionPoint(): { index: number; rootClientId?: string
  *
  * @returns Block settings of the block if set.
  */
-export function getBlockListSettings(clientId?: string): EditorBlockListSettings | undefined;
+export function getBlockListSettings(
+    clientId?: string,
+): EditorBlockListSettings | undefined;
 
 /**
  * Returns the block's editing mode, defaulting to `"visual"` if not explicitly assigned.
@@ -164,7 +183,9 @@ export function getBlocks(rootClientId?: string): BlockInstance[];
  *
  * @param clientIds - Client IDs for which blocks are to be returned.
  */
-export function getBlocksByClientId(clientIds: string | string[]): Array<BlockInstance | null>;
+export function getBlocksByClientId(
+    clientIds: string | string[],
+): Array<BlockInstance | null>;
 
 /**
  * Returns an array containing the clientIds of all descendants of the blocks given.
@@ -396,7 +417,10 @@ export function hasSelectedBlock(): boolean;
  *
  * @returns Whether the block as an inner block selected
  */
-export function hasSelectedInnerBlock(clientId: string, deep?: boolean): boolean;
+export function hasSelectedInnerBlock(
+    clientId: string,
+    deep?: boolean,
+): boolean;
 
 /**
  * Returns `true` if an ancestor of the block is multi-selected, or `false` otherwise.

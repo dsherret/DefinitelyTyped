@@ -21,7 +21,11 @@ export interface Options {
  * Default is 'undefined', which generates URLs without protocol.
  * True to force https and false to force http
  */
-export function url(email: string, options?: Options, protocol?: boolean): string;
+export function url(
+    email: string,
+    options?: Options,
+    protocol?: boolean,
+): string;
 /**
  * @param email - The gravatar email
  * @param [options] - Query string options
@@ -29,4 +33,8 @@ export function url(email: string, options?: Options, protocol?: boolean): strin
  * Default is 'undefined', which generates URLs without protocol.
  * True to force https and false to force http
  */
-export function profile_url(email: string, options?: Options, protocol?: boolean): string;
+export function profile_url(
+    email: string,
+    options?: Options,
+    protocol?: boolean,
+): string;

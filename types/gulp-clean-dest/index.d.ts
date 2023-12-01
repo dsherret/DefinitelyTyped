@@ -19,6 +19,9 @@ declare namespace gulpCleanDest {
  * @param destination The name of the dest directory
  * @param options Options for the cleaning process
  */
-declare function gulpCleanDest(destination: string, options?: gulpCleanDest.Options): NodeJS.ReadWriteStream;
+declare function gulpCleanDest(
+    destination: string,
+    options?: gulpCleanDest.Options,
+): NodeJS.ReadWriteStream;
 
 export = gulpCleanDest;

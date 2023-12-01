@@ -10,7 +10,11 @@ interface EarcutStatic {
      * @example with a hole: earcut([0,0, 100,0, 100,100, 0,100,  20,20, 80,20, 80,80, 20,80], [4]); // [3,0,4, 5,4,0, 3,4,7, 5,0,1, 2,3,7, 6,5,1, 2,7,6, 6,1,2]
      * @example with 3d coords: earcut([10,0,1, 0,50,2, 60,60,3, 70,10,4], null, 3); // [1,0,3, 3,2,1]
      */
-    (vertices: ArrayLike<number>, holes?: ArrayLike<number>, dimensions?: number): number[];
+    (
+        vertices: ArrayLike<number>,
+        holes?: ArrayLike<number>,
+        dimensions?: number,
+    ): number[];
 
     /**
      * Transforms multi-dimensional array (e.g. GeoJSON Polygon) into the format expected by earcut.
@@ -22,7 +26,11 @@ interface EarcutStatic {
      *     const triangles = earcut(data.vertices, data.holes, data.dimensions);
      * @param data Arrays of rings, with the first being the outline and the rest holes. A ring is an array points, each point being an array of numbers.
      */
-    flatten(data: ArrayLike<ArrayLike<ArrayLike<number>>>): { vertices: number[]; holes: number[]; dimensions: number };
+    flatten(data: ArrayLike<ArrayLike<ArrayLike<number>>>): {
+        vertices: number[];
+        holes: number[];
+        dimensions: number;
+    };
 
     /**
      * Returns the relative difference between the total area of triangles and the area of the input polygon. 0 means the triangulation is fully correct.

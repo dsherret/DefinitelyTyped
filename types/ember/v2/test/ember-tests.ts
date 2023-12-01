@@ -13,7 +13,7 @@ App.country.get("presidentName");
 App.president = Ember.Object.create({
     firstName: "Barack",
     lastName: "Obama",
-    fullName: Ember.computed(function() {
+    fullName: Ember.computed(function () {
         return `${this.get("firstName")} ${this.get("lastName")}`;
     }),
 });
@@ -48,7 +48,7 @@ PersonReopened.create().get("isPerson");
 
 App.todosController = Ember.Object.create({
     todos: [Ember.Object.create({ isDone: false })],
-    remaining: Ember.computed("todos.@each.isDone", function() {
+    remaining: Ember.computed("todos.@each.isDone", function () {
         const todos = this.get("todos");
         return todos.filterProperty("isDone", false).get("length");
     }),
@@ -95,7 +95,9 @@ App.userController = Ember.Object.create({
 Ember.Handlebars.registerHelper(
     "highlight",
     (property: string, options: any) =>
-        new Ember.Handlebars.SafeString("<span class=\"highlight\">" + "some value" + "</span>"),
+        new Ember.Handlebars.SafeString(
+            '<span class="highlight">' + "some value" + "</span>",
+        ),
 );
 
 const coolView = App.CoolView.create();
@@ -136,13 +138,15 @@ people2.isAny("isHappy", "true");
 people2.isAny("isHappy");
 
 // Examples taken from http://emberjs.com/api/classes/Em.RSVP.Promise.html
-const promise = new Ember.RSVP.Promise<string>((resolve: Function, reject: Function) => {
-    // on success
-    resolve("ok!");
+const promise = new Ember.RSVP.Promise<string>(
+    (resolve: Function, reject: Function) => {
+        // on success
+        resolve("ok!");
 
-    // on failure
-    reject("no-k!");
-});
+        // on failure
+        reject("no-k!");
+    },
+);
 
 promise.then(
     (value: any) => {
@@ -154,7 +158,9 @@ promise.then(
 );
 
 // make sure Ember.RSVP.Promise can be reference as a type
-declare function promiseReturningFunction(urn: string): Ember.RSVP.Promise<string>;
+declare function promiseReturningFunction(
+    urn: string,
+): Ember.RSVP.Promise<string>;
 
 const mix1 = Ember.Mixin.create({
     foo: 1,

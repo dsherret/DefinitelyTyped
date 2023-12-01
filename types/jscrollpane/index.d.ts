@@ -169,7 +169,11 @@ interface JScrollPaneApi {
      * @param animate Should an animation occur. If you don't provide this argument then the animateScroll
             value from the settings object is used instead.
     */
-    scrollToElement(ele: HTMLElement, stickToTop?: boolean, animate?: boolean): void;
+    scrollToElement(
+        ele: HTMLElement,
+        stickToTop?: boolean,
+        animate?: boolean,
+    ): void;
     /**
      * Scrolls the pane so that the specified co-ordinates within the content are at the top left of the viewport.
      * @param destX Left position of the viewport to scroll to
@@ -246,7 +250,12 @@ interface JScrollPaneApi {
      * This method is called when jScrollPane is trying to animate to a new position. You can override it if you want
      * to provide advanced animation functionality.
      */
-    animate(ele: JQuery, prop: string, value: any, stepCallback: (...args: any[]) => any): void;
+    animate(
+        ele: JQuery,
+        prop: string,
+        value: any,
+        stepCallback: (...args: any[]) => any,
+    ): void;
     /**
      * Returns the current x position of the viewport with regards to the content pane.
      */

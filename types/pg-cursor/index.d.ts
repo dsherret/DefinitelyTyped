@@ -15,15 +15,26 @@ declare namespace Cursor {
          */
         types?: CustomTypesConfig;
     }
-    type ResultCallback<RowType> = (err: Error | undefined, rows: RowType[], result: QueryResult) => void;
+    type ResultCallback<RowType> = (
+        err: Error | undefined,
+        rows: RowType[],
+        result: QueryResult,
+    ) => void;
 }
 
 declare class Cursor<Row = any> extends EventEmitter {
-    constructor(query: string, values?: any[], config?: Cursor.CursorQueryConfig);
+    constructor(
+        query: string,
+        values?: any[],
+        config?: Cursor.CursorQueryConfig,
+    );
     submit: (connection: Connection) => void;
     read(maxRows: number): Promise<Row[]>;
     read(maxRows: number, callback: Cursor.ResultCallback<Row>): undefined;
-    read(maxRows: number, callback?: Cursor.ResultCallback<Row>): Promise<Row[]> | undefined;
+    read(
+        maxRows: number,
+        callback?: Cursor.ResultCallback<Row>,
+    ): Promise<Row[]> | undefined;
     close(): Promise<void>;
     close(callback: (err: Error) => void): undefined;
     close(callback?: (err: Error) => void): Promise<void> | undefined;

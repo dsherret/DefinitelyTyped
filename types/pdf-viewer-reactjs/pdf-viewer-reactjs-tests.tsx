@@ -44,14 +44,16 @@ class Example extends React.Component {
                         document={{
                             url: "https://somewrongurl/tsjydyd.pdf",
                         }}
-                        alert={err => (
+                        alert={(err) => (
                             <div
                                 style={{
                                     color: "#fa5b35",
                                     backgroundColor: "#0c0c0c",
                                 }}
                             >
-                                <h3 style={{ fontWeight: "bolder" }}>Failed To load !!!</h3>
+                                <h3 style={{ fontWeight: "bolder" }}>
+                                    Failed To load !!!
+                                </h3>
                                 <h6>{err.message}</h6>
                             </div>
                         )}
@@ -62,7 +64,11 @@ class Example extends React.Component {
                         document={{
                             url: sources.url,
                         }}
-                        loader={<h2 style={{ color: "#fa5b35" }}>Custom loader element</h2>}
+                        loader={
+                            <h2 style={{ color: "#fa5b35" }}>
+                                Custom loader element
+                            </h2>
+                        }
                     />
                 </div>
                 <div>
@@ -122,10 +128,14 @@ class Example extends React.Component {
                             url: sources.url,
                         }}
                         onDocumentClick={() => alert("Document was clicked")}
-                        onPrevBtnClick={page => alert(`Page ${page} selected`)}
-                        onNextBtnClick={page => alert(`Page ${page} selected`)}
-                        onZoom={scale => alert(`Zoom scale is ${scale}`)}
-                        onRotation={angle => alert(`Page angle is ${angle}`)}
+                        onPrevBtnClick={(page) =>
+                            alert(`Page ${page} selected`)
+                        }
+                        onNextBtnClick={(page) =>
+                            alert(`Page ${page} selected`)
+                        }
+                        onZoom={(scale) => alert(`Zoom scale is ${scale}`)}
+                        onRotation={(angle) => alert(`Page angle is ${angle}`)}
                     />
                 </div>
                 <div>

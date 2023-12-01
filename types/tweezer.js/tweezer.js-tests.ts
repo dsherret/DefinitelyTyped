@@ -13,7 +13,12 @@ tweezer
     .begin()
     .stop();
 
-function testEaser(currentTime: number, beginningTime: number, changeInValue: number, duration: number) {
+function testEaser(
+    currentTime: number,
+    beginningTime: number,
+    changeInValue: number,
+    duration: number,
+) {
     return 42;
 }
 

@@ -17,7 +17,10 @@ export default class LexerActionExecutor {
      * @return A {@link LexerActionExecutor} for executing the combine actions
      * of `lexerActionExecutor` and `lexerAction`.
      */
-    static append(lexerActionExecutor: LexerActionExecutor, lexerAction: LexerAction): LexerActionExecutor;
+    static append(
+        lexerActionExecutor: LexerActionExecutor,
+        lexerAction: LexerAction,
+    ): LexerActionExecutor;
 
     readonly lexerActions: LexerAction[];
 

@@ -7,6 +7,8 @@ import { FlexboxPropTypes } from "../utils";
  * http://foundation.zurb.com/sites/docs/badge.html
  */
 export declare const Badge: React.FunctionComponent<BadgeProps>;
-export interface BadgeProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLSpanElement> {
+export interface BadgeProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLSpanElement> {
     color?: BadgeColors | undefined;
 }

@@ -30,7 +30,8 @@ declare namespace GoogleAdsScripts {
         interface ExcludedTopicIterator extends Base.Iterator<ExcludedTopic> {}
 
         /** An operation representing creation of a new excluded topic. */
-        interface ExcludedTopicOperation extends Base.Operation<ExcludedTopic> {}
+        interface ExcludedTopicOperation
+            extends Base.Operation<ExcludedTopic> {}
 
         /**
          * Fetches excluded topics. Supports filtering and sorting.
@@ -46,13 +47,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedTopicSelector
-            extends
-                Base.Selector<ExcludedTopicIterator>,
+            extends Base.Selector<ExcludedTopicIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

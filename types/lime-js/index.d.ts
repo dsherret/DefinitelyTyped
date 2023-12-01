@@ -106,7 +106,11 @@ declare namespace Lime {
     }
 
     class Channel {
-        constructor(transport: Transport, autoReplyPings: boolean, autoNotifyReceipt: boolean);
+        constructor(
+            transport: Transport,
+            autoReplyPings: boolean,
+            autoNotifyReceipt: boolean,
+        );
         sendMessage(message: Message): void;
         onMessage(message: Message): void;
         sendCommand(command: Command): void;
@@ -123,10 +127,21 @@ declare namespace Lime {
     }
 
     class ClientChannel extends Channel {
-        constructor(transport: Transport, autoReplyPings?: boolean, autoNotifyReceipt?: boolean);
+        constructor(
+            transport: Transport,
+            autoReplyPings?: boolean,
+            autoNotifyReceipt?: boolean,
+        );
         startNewSession(): void;
-        negotiateSession(sessionCompression: string, sessionEncryption: string): void;
-        authenticateSession(identity: string, authentication: Authentication, instance: string): void;
+        negotiateSession(
+            sessionCompression: string,
+            sessionEncryption: string,
+        ): void;
+        authenticateSession(
+            identity: string,
+            authentication: Authentication,
+            instance: string,
+        ): void;
         sendFinishingSession(): void;
         onSessionNegotiating(session: Session): void;
         onSessionAuthenticating(session: Session): void;

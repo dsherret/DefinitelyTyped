@@ -3,15 +3,21 @@
  */
 import htmlparser = require("htmlparser2");
 
-const options: htmlparser.DomHandlerOptions = { withEndIndices: false, withDomLvl1: true };
-const dh = new htmlparser.DomHandler((err: Error, dom: htmlparser.DomElement[]) => {
-    if (err) {
-        throw err;
-    }
+const options: htmlparser.DomHandlerOptions = {
+    withEndIndices: false,
+    withDomLvl1: true,
+};
+const dh = new htmlparser.DomHandler(
+    (err: Error, dom: htmlparser.DomElement[]) => {
+        if (err) {
+            throw err;
+        }
 
-    // Use DomUtils to get name of first element in dom
-    console.log(htmlparser.DomUtils.getName(dom[0]));
-}, options);
+        // Use DomUtils to get name of first element in dom
+        console.log(htmlparser.DomUtils.getName(dom[0]));
+    },
+    options,
+);
 dh.onopentag = (name: string, attribs: { [s: string]: string }) => {
     if (name === "script" && attribs["type"] === "text/javascript") {
         console.log("JS! Hooray!");
@@ -26,5 +32,7 @@ dh.onclosetag = () => {
 
 var parser = new htmlparser.Parser(dh);
 
-parser.write("Xyz <script type='text/javascript'>var foo = '<<bar>>';</script>");
+parser.write(
+    "Xyz <script type='text/javascript'>var foo = '<<bar>>';</script>",
+);
 parser.end();

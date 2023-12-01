@@ -54,10 +54,22 @@ declare namespace SemanticUI {
          * Sets modal to active
          */
         (behavior: "set active"): JQuery;
-        (behavior: "attach events", selector: string | JQuery, event?: string): JQuery;
+        (
+            behavior: "attach events",
+            selector: string | JQuery,
+            event?: string,
+        ): JQuery;
         (behavior: "destroy"): JQuery;
-        <K extends keyof ModalSettings>(behavior: "setting", name: K, value?: undefined): ModalSettings._Impl[K];
-        <K extends keyof ModalSettings>(behavior: "setting", name: K, value: ModalSettings._Impl[K]): JQuery;
+        <K extends keyof ModalSettings>(
+            behavior: "setting",
+            name: K,
+            value?: undefined,
+        ): ModalSettings._Impl[K];
+        <K extends keyof ModalSettings>(
+            behavior: "setting",
+            name: K,
+            value: ModalSettings._Impl[K],
+        ): JQuery;
         (behavior: "setting", value: ModalSettings): JQuery;
         (settings?: ModalSettings): JQuery;
     }
@@ -68,37 +80,36 @@ declare namespace SemanticUI {
     type ModalSettings = ModalSettings.Param;
 
     namespace ModalSettings {
-        type Param =
-            & (
-                | Pick<_Impl, "detachable">
-                | Pick<_Impl, "autofocus">
-                | Pick<_Impl, "observeChanges">
-                | Pick<_Impl, "allowMultiple">
-                | Pick<_Impl, "keyboardShortcuts">
-                | Pick<_Impl, "offset">
-                | Pick<_Impl, "context">
-                | Pick<_Impl, "closable">
-                | Pick<_Impl, "dimmerSettings">
-                | Pick<_Impl, "transition">
-                | Pick<_Impl, "duration">
-                | Pick<_Impl, "queue">
-                | Pick<_Impl, "onShow">
-                | Pick<_Impl, "onVisible">
-                | Pick<_Impl, "onHide">
-                | Pick<_Impl, "onHidden">
-                | Pick<_Impl, "onApprove">
-                | Pick<_Impl, "onDeny">
-                | Pick<_Impl, "selector">
-                | Pick<_Impl, "className">
-                | Pick<_Impl, "error">
-                | Pick<_Impl, "namespace">
-                | Pick<_Impl, "name">
-                | Pick<_Impl, "silent">
-                | Pick<_Impl, "debug">
-                | Pick<_Impl, "performance">
-                | Pick<_Impl, "verbose">
-            )
-            & Partial<Pick<_Impl, keyof _Impl>>;
+        type Param = (
+            | Pick<_Impl, "detachable">
+            | Pick<_Impl, "autofocus">
+            | Pick<_Impl, "observeChanges">
+            | Pick<_Impl, "allowMultiple">
+            | Pick<_Impl, "keyboardShortcuts">
+            | Pick<_Impl, "offset">
+            | Pick<_Impl, "context">
+            | Pick<_Impl, "closable">
+            | Pick<_Impl, "dimmerSettings">
+            | Pick<_Impl, "transition">
+            | Pick<_Impl, "duration">
+            | Pick<_Impl, "queue">
+            | Pick<_Impl, "onShow">
+            | Pick<_Impl, "onVisible">
+            | Pick<_Impl, "onHide">
+            | Pick<_Impl, "onHidden">
+            | Pick<_Impl, "onApprove">
+            | Pick<_Impl, "onDeny">
+            | Pick<_Impl, "selector">
+            | Pick<_Impl, "className">
+            | Pick<_Impl, "error">
+            | Pick<_Impl, "namespace">
+            | Pick<_Impl, "name">
+            | Pick<_Impl, "silent">
+            | Pick<_Impl, "debug">
+            | Pick<_Impl, "performance">
+            | Pick<_Impl, "verbose">
+        ) &
+            Partial<Pick<_Impl, keyof _Impl>>;
 
         interface _Impl {
             // region Modal Settings
@@ -268,13 +279,12 @@ declare namespace SemanticUI {
         type SelectorSettings = SelectorSettings.Param;
 
         namespace SelectorSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "close">
-                    | Pick<_Impl, "approve">
-                    | Pick<_Impl, "deny">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "close">
+                | Pick<_Impl, "approve">
+                | Pick<_Impl, "deny">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -295,12 +305,8 @@ declare namespace SemanticUI {
         type ClassNameSettings = ClassNameSettings.Param;
 
         namespace ClassNameSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "active">
-                    | Pick<_Impl, "scrolling">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "active"> | Pick<_Impl, "scrolling">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -317,9 +323,8 @@ declare namespace SemanticUI {
         type ErrorSettings = ErrorSettings.Param;
 
         namespace ErrorSettings {
-            type Param =
-                & (Pick<_Impl, "method">)
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = Pick<_Impl, "method"> &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**

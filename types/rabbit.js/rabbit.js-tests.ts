@@ -1,7 +1,7 @@
 import rabbit = require("rabbit.js");
 var context = rabbit.createContext();
 
-context.on("ready", function() {
+context.on("ready", function () {
     console.log("ready");
 });
 
@@ -19,23 +19,23 @@ pub.write("hello", "utf8");
 pub.close();
 
 sub.connect("chat");
-sub.on("data", function(msg: string) {
+sub.on("data", function (msg: string) {
     console.log(msg);
 });
 sub.close();
 
 rep.setEncoding("utf8");
-rep.on("data", function(msg: string) {
+rep.on("data", function (msg: string) {
     rep.write("msg", "utf8");
 });
 rep.connect("uppercase");
-req.connect("uppercase", function() {
+req.connect("uppercase", function () {
     req.pipe(process.stdout);
 });
 
-push.connect("items", function() {
+push.connect("items", function () {
     pull.pipe(push);
 });
 push.close();
-pull.connect("items", function() {});
+pull.connect("items", function () {});
 pull.close();

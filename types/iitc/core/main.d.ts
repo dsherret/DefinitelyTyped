@@ -40,19 +40,30 @@ declare global {
     function zoomToAndShowPortal(guid: PortalGUID, position: L.LatLng): void;
 
     /** Create Portal-Marker */
-    function createMarker(position: L.LatLng, options: IITC.PortalOptions): L.CircleMarker;
+    function createMarker(
+        position: L.LatLng,
+        options: IITC.PortalOptions,
+    ): L.CircleMarker;
 
     // Map Stuff
     function selectPortalByLatLng(lat: number, lng: number): void;
 
     /** add Layergroup to leaflets layer-chooser */
-    function addLayerGroup(name: string, layer: L.LayerGroup, defaultVisibile: boolean, groupname?: string): void;
+    function addLayerGroup(
+        name: string,
+        layer: L.LayerGroup,
+        defaultVisibile: boolean,
+        groupname?: string,
+    ): void;
 
     /** remove a layer */
     function removeLayerGroup(layer: L.LayerGroup): void;
 
     /** get layer visiblity */
-    function isLayerGroupDisplayed(name: string, defaultDisplay?: boolean): boolean;
+    function isLayerGroupDisplayed(
+        name: string,
+        defaultDisplay?: boolean,
+    ): boolean;
 
     /** set layer visiblity */
     function updateDisplayedLayerGroup(name: string, display: boolean): void;

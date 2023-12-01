@@ -62,6 +62,6 @@ const question: DistinctQuestion<{ answer: boolean }> = {
     type: "confirm",
 };
 
-ui.prompt(question).then(result => {
+ui.prompt(question).then((result) => {
     result.answer; // $ExpectType boolean
 });

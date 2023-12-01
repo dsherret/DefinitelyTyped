@@ -5,29 +5,33 @@ import * as splitFile from "split-file";
 
 splitFile
     .splitFile(__dirname + "/testfile.bin", 3)
-    .then(names => {
+    .then((names) => {
         console.log(names);
     })
-    .catch(err => {
+    .catch((err) => {
         console.log("Error: ", err);
     });
 
 splitFile
     .splitFileBySize(__dirname + "/testfile.bin", 457000)
-    .then(names => {
+    .then((names) => {
         console.log(names);
     })
-    .catch(err => {
+    .catch((err) => {
         console.log("Error: ", err);
     });
 
-const files = ["testfile.bin.sf-part1", "testfile.bin.sf-part2", "testfile.bin.sf-part3"];
+const files = [
+    "testfile.bin.sf-part1",
+    "testfile.bin.sf-part2",
+    "testfile.bin.sf-part3",
+];
 
 splitFile
     .mergeFiles(files, __dirname + "/testfile-output.bin")
     .then(() => {
         console.log("Done!");
     })
-    .catch(err => {
+    .catch((err) => {
         console.log("Error: ", err);
     });

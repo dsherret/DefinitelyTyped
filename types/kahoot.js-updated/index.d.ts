@@ -18,40 +18,42 @@ declare namespace Kahoot {
          */
         options?:
             | {
-                ChallengeAutoContinue?: boolean | undefined;
-                ChallengeGetFullScore?: boolean | undefined;
-                ChallengeAlwaysCorrect?: boolean | undefined;
-                ChallengeUseStreakBonus?: boolean | undefined;
-                ChallengeWaitForInput?: boolean | undefined;
-                ChallengeScore?: number | null | undefined;
-            }
+                  ChallengeAutoContinue?: boolean | undefined;
+                  ChallengeGetFullScore?: boolean | undefined;
+                  ChallengeAlwaysCorrect?: boolean | undefined;
+                  ChallengeUseStreakBonus?: boolean | undefined;
+                  ChallengeWaitForInput?: boolean | undefined;
+                  ChallengeScore?: number | null | undefined;
+              }
             | undefined;
         /**
          * Modules to load or not to load. All are enabled by default
          */
         modules?:
             | {
-                extraData?: boolean | undefined;
-                feedback?: boolean | undefined;
-                gameReset?: boolean | undefined;
-                quizStart?: boolean | undefined;
-                quizEnd?: boolean | undefined;
-                podium?: boolean | undefined;
-                timeOver?: boolean | undefined;
-                reconnect?: boolean | undefined;
-                questionReady?: boolean | undefined;
-                questionStart?: boolean | undefined;
-                questionEnd?: boolean | undefined;
-                nameAccept?: boolean | undefined;
-                teamAccept?: boolean | undefined;
-                teamTalk?: boolean | undefined;
-                backup?: boolean | undefined;
-                answer?: boolean | undefined;
-            }
+                  extraData?: boolean | undefined;
+                  feedback?: boolean | undefined;
+                  gameReset?: boolean | undefined;
+                  quizStart?: boolean | undefined;
+                  quizEnd?: boolean | undefined;
+                  podium?: boolean | undefined;
+                  timeOver?: boolean | undefined;
+                  reconnect?: boolean | undefined;
+                  questionReady?: boolean | undefined;
+                  questionStart?: boolean | undefined;
+                  questionEnd?: boolean | undefined;
+                  nameAccept?: boolean | undefined;
+                  teamAccept?: boolean | undefined;
+                  teamTalk?: boolean | undefined;
+                  backup?: boolean | undefined;
+                  answer?: boolean | undefined;
+              }
             | undefined;
 
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        proxy?: ((options: RequestOptions) => void | RequestOptions) | undefined;
+        proxy?:
+            | ((options: RequestOptions) => void | RequestOptions)
+            | undefined;
         wsproxy?: ((url: string) => WsProxyReturn) | undefined;
     }
 
@@ -285,7 +287,11 @@ declare class Kahoot extends EventEmitter {
      * @fires Kahoot#Joined
      * @fires Kahoot#TwoFactorReset
      */
-    join(pin: string | number, name: string, team?: string[] | false): Promise<Kahoot.JoinResponse>;
+    join(
+        pin: string | number,
+        name: string,
+        team?: string[] | false,
+    ): Promise<Kahoot.JoinResponse>;
 
     /**
      * @param team The team member names. If set to false, team members will not be automatically added
@@ -293,14 +299,19 @@ declare class Kahoot extends EventEmitter {
      * @fires Kahoot#Joined
      * @fires Kahoot#TwoFactorReset
      */
-    joinTeam(team: string[] | false, emit?: boolean): Promise<Kahoot.LiveEventTimetrack>;
+    joinTeam(
+        team: string[] | false,
+        emit?: boolean,
+    ): Promise<Kahoot.LiveEventTimetrack>;
 
     /**
      * Answer the 2FA question
      * @param steps A list of four numbers.
      * Each number represents one of the four colors in the 2FA code (red, blue, yellow, green)
      */
-    answerTwoFactorAuth(steps: [number, number, number, number]): Promise<Kahoot.LiveEventTimetrack>;
+    answerTwoFactorAuth(
+        steps: [number, number, number, number],
+    ): Promise<Kahoot.LiveEventTimetrack>;
 
     /**
      * Answer a question
@@ -360,11 +371,26 @@ declare class Kahoot extends EventEmitter {
     waiting: {};
 
     // Events
-    on<E extends Kahoot.Events>(eventName: E, listener: (ev: Kahoot.EventsMap[E]) => void): this;
-    addListener<E extends Kahoot.Events>(eventName: E, listener: (ev: Kahoot.EventsMap[E]) => void): this;
-    prependListener<E extends Kahoot.Events>(eventName: E, listener: (ev: Kahoot.EventsMap[E]) => void): this;
-    prependOnceListener<E extends Kahoot.Events>(eventName: E, listener: (ev: Kahoot.EventsMap[E]) => void): this;
-    removeListener<E extends Kahoot.Events>(eventName: E, listener: (ev: Kahoot.EventsMap[E]) => void): this;
+    on<E extends Kahoot.Events>(
+        eventName: E,
+        listener: (ev: Kahoot.EventsMap[E]) => void,
+    ): this;
+    addListener<E extends Kahoot.Events>(
+        eventName: E,
+        listener: (ev: Kahoot.EventsMap[E]) => void,
+    ): this;
+    prependListener<E extends Kahoot.Events>(
+        eventName: E,
+        listener: (ev: Kahoot.EventsMap[E]) => void,
+    ): this;
+    prependOnceListener<E extends Kahoot.Events>(
+        eventName: E,
+        listener: (ev: Kahoot.EventsMap[E]) => void,
+    ): this;
+    removeListener<E extends Kahoot.Events>(
+        eventName: E,
+        listener: (ev: Kahoot.EventsMap[E]) => void,
+    ): this;
 }
 
 export = Kahoot;

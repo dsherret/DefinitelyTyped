@@ -7,7 +7,10 @@ class MockVoiceProcessor implements VoiceProcessor {
         downsamplerScript: string,
         errorCallback: (e: Error) => void,
         audioProcessCallback: (data: any) => void,
-        audioContextCallback: (analyzer: AnalyserNode, gainNode: GainNode) => void,
+        audioContextCallback: (
+            analyzer: AnalyserNode,
+            gainNode: GainNode,
+        ) => void,
     ): void {
         throw new Error("Method not implemented.");
     }
@@ -40,7 +43,10 @@ bumblebee.start();
 
 bumblebee.stop();
 
-const analyzer = new SpectrumAnalyser(context.createAnalyser(), new HTMLCanvasElement());
+const analyzer = new SpectrumAnalyser(
+    context.createAnalyser(),
+    new HTMLCanvasElement(),
+);
 
 analyzer.setLineColor("#000000");
 analyzer.setBackgroundColor("#000000");

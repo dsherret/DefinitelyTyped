@@ -62,7 +62,10 @@ export interface FormatLocaleObject {
      * @param value The reference value to determine the appropriate SI prefix.
      * @throws Error on invalid format specifier.
      */
-    formatPrefix(specifier: string, value: number): (n: number | { valueOf(): number }) => string;
+    formatPrefix(
+        specifier: string,
+        value: number,
+    ): (n: number | { valueOf(): number }) => string;
 }
 
 /**
@@ -158,7 +161,9 @@ export interface FormatSpecifierObject {
  *
  * @param locale A Format locale definition.
  */
-export function formatLocale(locale: FormatLocaleDefinition): FormatLocaleObject;
+export function formatLocale(
+    locale: FormatLocaleDefinition,
+): FormatLocaleObject;
 
 /**
  * Create a new locale-based object which exposes format(...) and formatPrefix(...)
@@ -167,7 +172,9 @@ export function formatLocale(locale: FormatLocaleDefinition): FormatLocaleObject
  *
  * @param defaultLocale A Format locale definition to be used as default.
  */
-export function formatDefaultLocale(defaultLocale: FormatLocaleDefinition): FormatLocaleObject;
+export function formatDefaultLocale(
+    defaultLocale: FormatLocaleDefinition,
+): FormatLocaleObject;
 
 /**
  * Returns a new format function for the given string specifier. The returned function
@@ -181,7 +188,9 @@ export function formatDefaultLocale(defaultLocale: FormatLocaleDefinition): Form
  * @param specifier A Specifier string.
  * @throws Error on invalid format specifier.
  */
-export function format(specifier: string): (n: number | { valueOf(): number }) => string;
+export function format(
+    specifier: string,
+): (n: number | { valueOf(): number }) => string;
 
 /**
  * Returns a new format function for the given string specifier. The returned function
@@ -198,7 +207,10 @@ export function format(specifier: string): (n: number | { valueOf(): number }) =
  * @param value The reference value to determine the appropriate SI prefix.
  * @throws Error on invalid format specifier.
  */
-export function formatPrefix(specifier: string, value: number): (n: number | { valueOf(): number }) => string;
+export function formatPrefix(
+    specifier: string,
+    value: number,
+): (n: number | { valueOf(): number }) => string;
 
 /**
  * A Format Specifier
@@ -289,7 +301,22 @@ export class FormatSpecifier {
      * the type 'n' is shorthand for ',g'. For the 'g', 'n' and '' (none) types,
      * decimal notation is used if the resulting string would have precision or fewer digits; otherwise, exponent notation is used.
      */
-    type: "e" | "f" | "g" | "r" | "s" | "%" | "p" | "b" | "o" | "d" | "x" | "X" | "c" | "" | "n";
+    type:
+        | "e"
+        | "f"
+        | "g"
+        | "r"
+        | "s"
+        | "%"
+        | "p"
+        | "b"
+        | "o"
+        | "d"
+        | "x"
+        | "X"
+        | "c"
+        | ""
+        | "n";
     /**
      * Return the object as a specifier string.
      */

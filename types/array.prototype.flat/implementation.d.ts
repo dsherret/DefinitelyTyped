@@ -47,7 +47,9 @@ declare function flat<U>(
         | ReadonlyArray<ReadonlyArray<ReadonlyArray<Array<readonly U[]>>>>
         | ReadonlyArray<ReadonlyArray<ReadonlyArray<Array<readonly U[]>>>>
         | ReadonlyArray<Array<ReadonlyArray<ReadonlyArray<readonly U[]>>>>
-        | ReadonlyArray<ReadonlyArray<ReadonlyArray<ReadonlyArray<readonly U[]>>>>,
+        | ReadonlyArray<
+              ReadonlyArray<ReadonlyArray<ReadonlyArray<readonly U[]>>>
+          >,
     depth: 4,
 ): U[];
 
@@ -91,7 +93,10 @@ declare function flat<U>(
  *
  * @param depth The maximum recursion depth
  */
-declare function flat<U>(receiver: readonly U[][] | ReadonlyArray<readonly U[]>, depth?: 1): U[];
+declare function flat<U>(
+    receiver: readonly U[][] | ReadonlyArray<readonly U[]>,
+    depth?: 1,
+): U[];
 
 /**
  * Returns a new array with all sub-array elements concatenated into it recursively up to the

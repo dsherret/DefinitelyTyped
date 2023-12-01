@@ -14,7 +14,14 @@ interface JQuerySlick extends JQuerySlickInitials {
     /**
      * Default: null
      */
-    animType: "OTransform" | "MozTransform" | "webkitTransform" | "msTransform" | "transform" | false | null;
+    animType:
+        | "OTransform"
+        | "MozTransform"
+        | "webkitTransform"
+        | "msTransform"
+        | "transform"
+        | false
+        | null;
 
     /**
      * Default: null
@@ -89,17 +96,32 @@ interface JQuerySlick extends JQuerySlickInitials {
     /**
      * Default: null
      */
-    transformType: "-o-transform" | "-moz-transform" | "-webkit-transform" | "-ms-transform" | "transition" | null;
+    transformType:
+        | "-o-transform"
+        | "-moz-transform"
+        | "-webkit-transform"
+        | "-ms-transform"
+        | "transition"
+        | null;
 
     /**
      * Default: null
      */
-    transitionType: "OTransition" | "MozTransition" | "webkitTransition" | "msTransition" | "transition" | null;
+    transitionType:
+        | "OTransition"
+        | "MozTransition"
+        | "webkitTransition"
+        | "msTransition"
+        | "transition"
+        | null;
 
     /**
      * Default: 'visibilitychange'
      */
-    visibilityChange: "visibilitychange" | "mozvisibilitychange" | "webkitvisibilitychange";
+    visibilityChange:
+        | "visibilitychange"
+        | "mozvisibilitychange"
+        | "webkitvisibilitychange";
 
     /**
      * Default: 0
@@ -599,7 +621,11 @@ interface JQuery {
      * @param slide
      * @param dontAnimate
      */
-    slick(methodName: "slickGoTo", slide: number, dontAnimate?: boolean): JQuery;
+    slick(
+        methodName: "slickGoTo",
+        slide: number,
+        dontAnimate?: boolean,
+    ): JQuery;
 
     /**
      * Navigates to the next slide
@@ -633,7 +659,12 @@ interface JQuery {
      * @param index/div>
      * @param addBefore
      */
-    slick(methodName: "slickAdd", html: string | Object, index?: number, addBefore?: number): JQuery;
+    slick(
+        methodName: "slickAdd",
+        html: string | Object,
+        index?: number,
+        addBefore?: number,
+    ): JQuery;
 
     /**
      * Remove slide by index. If removeBefore is set true, remove slide preceding index, or the first slide if no index is specified.
@@ -642,7 +673,11 @@ interface JQuery {
      * @param index
      * @param removeBefore
      */
-    slick(methodName: "slickRemove", index: number, removeBefore?: number): JQuery;
+    slick(
+        methodName: "slickRemove",
+        index: number,
+        removeBefore?: number,
+    ): JQuery;
 
     /**
      * Filters slides using jQuery .filter()
@@ -656,7 +691,10 @@ interface JQuery {
      * @param methodName The name of the method
      * @param func
      */
-    slick(methodName: "slickFilter", func: (index: number, element: Element) => any): JQuery;
+    slick(
+        methodName: "slickFilter",
+        func: (index: number, element: Element) => any,
+    ): JQuery;
 
     /**
      * Removes applied filtering
@@ -679,7 +717,12 @@ interface JQuery {
      * @param value depends on option
      * @param refresh
      */
-    slick(methodName: "slickSetOption", option: string, value: JQuerySlickOptions, refresh?: boolean): JQuery;
+    slick(
+        methodName: "slickSetOption",
+        option: string,
+        value: JQuerySlickOptions,
+        refresh?: boolean,
+    ): JQuery;
 
     /**
      * Deconstructs slick

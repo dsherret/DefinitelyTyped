@@ -19,19 +19,23 @@ export interface CollapseProps extends React.HTMLProps<Collapse> {
     /** One or multiple children with static, variable or dynamic height. */
     children: React.ReactNode;
     /** It is possible to set className for extra div elements that ReactCollapse creates. */
-    theme?: {
-        collapse?: string | undefined;
-        content?: string | undefined;
-    } | undefined;
+    theme?:
+        | {
+              collapse?: string | undefined;
+              content?: string | undefined;
+          }
+        | undefined;
     /** Callback function triggered when animation has completed */
     onRest?: ((args: CollapseCallbackArgs) => void) | undefined;
     /** Callback function triggered when animation begins */
     onWork?: ((args: CollapseCallbackArgs) => void) | undefined;
     /** A way to control the initial element style. Will not be valid after the initial render */
-    initialStyle?: {
-        height?: string | number | undefined;
-        overflow?: string | undefined;
-    } | undefined;
+    initialStyle?:
+        | {
+              height?: string | number | undefined;
+              overflow?: string | undefined;
+          }
+        | undefined;
     /** How often (in ms) the height of the content is checked. */
     checkTimeout?: number | undefined;
 }

@@ -1,7 +1,8 @@
 import * as angular from "angular";
 import * as ngCookiesModule from "angular-cookies";
 
-angular.module("angular-cookies-tests", [ngCookiesModule])
+angular
+    .module("angular-cookies-tests", [ngCookiesModule])
     .config(($cookiesProvider: angular.cookies.ICookiesProvider) => {
         $cookiesProvider.defaults = {
             path: "/",
@@ -57,7 +58,9 @@ angular.module("angular-cookies-tests", [ngCookiesModule])
             }
 
             setSessionToken(token: string): void {
-                this.$cookies.put("sessionToken", token, { expires: undefined });
+                this.$cookies.put("sessionToken", token, {
+                    expires: undefined,
+                });
             }
 
             setSessionData(data: any): void {
@@ -65,8 +68,13 @@ angular.module("angular-cookies-tests", [ngCookiesModule])
             }
 
             allowTrackingOnly(): void {
-                const consent: ConsentSettings = { tracking: true, spam: false };
-                this.$cookies.putObject("consent", consent, { path: "/public" });
+                const consent: ConsentSettings = {
+                    tracking: true,
+                    spam: false,
+                };
+                this.$cookies.putObject("consent", consent, {
+                    path: "/public",
+                });
             }
 
             logOut(): void {

@@ -1,4 +1,11 @@
-import Duck, { DuckCreators, DuckInstance, DuckOptions, DuckReducer, DuckSagas, DuckTakes } from "extensible-duck";
+import Duck, {
+    DuckCreators,
+    DuckInstance,
+    DuckOptions,
+    DuckReducer,
+    DuckSagas,
+    DuckTakes,
+} from "extensible-duck";
 
 // mandatory prop types
 interface TState {
@@ -30,11 +37,16 @@ interface TConsts extends Record<string, string[]> {
 // mandatory props
 const initialState: TState = { z: 1 };
 const types: Array<keyof TActionTypes> = ["A1"];
-const reducer: DuckReducer<TState, TAction, TActionTypes, TActionCreators, TSelectors, TSagas, TTakes, TConsts> = (
-    s,
-    a,
-    d,
-) => {
+const reducer: DuckReducer<
+    TState,
+    TAction,
+    TActionTypes,
+    TActionCreators,
+    TSelectors,
+    TSagas,
+    TTakes,
+    TConsts
+> = (s, a, d) => {
     testDuckInstanceProperties(d);
     switch (a.type) {
         case d.types.A1:
@@ -52,7 +64,7 @@ const creators: DuckCreators<
     TSagas,
     TTakes,
     TConsts
-> = d => {
+> = (d) => {
     testDuckInstanceProperties(d);
     return {
         actA1: () => ({
@@ -61,11 +73,20 @@ const creators: DuckCreators<
     };
 };
 const selectors: TSelectors = {
-    getZ: s => s.z,
+    getZ: (s) => s.z,
 };
 
 // optional props
-const sagas: DuckSagas<TState, TAction, TActionTypes, TActionCreators, TSelectors, TSagas, TTakes, TConsts> = d => {
+const sagas: DuckSagas<
+    TState,
+    TAction,
+    TActionTypes,
+    TActionCreators,
+    TSelectors,
+    TSagas,
+    TTakes,
+    TConsts
+> = (d) => {
     testDuckInstanceProperties(d);
     return {
         *sg1() {
@@ -74,7 +95,16 @@ const sagas: DuckSagas<TState, TAction, TActionTypes, TActionCreators, TSelector
         },
     };
 };
-const takes: DuckTakes<TState, TAction, TActionTypes, TActionCreators, TSelectors, TSagas, TTakes, TConsts> = d => {
+const takes: DuckTakes<
+    TState,
+    TAction,
+    TActionTypes,
+    TActionCreators,
+    TSelectors,
+    TSagas,
+    TTakes,
+    TConsts
+> = (d) => {
     testDuckInstanceProperties(d);
     return [];
 };
@@ -90,12 +120,36 @@ const dMandatoryProps: DuckOptions<
     TSagas,
     TTakes,
     TConsts
-> = { namespace: "ns", store: "s", types, initialState, reducer, creators, selectors };
-const d1 = new Duck<TState, TAction, TActionTypes, TActionCreators, TSelectors, TSagas, TTakes, TConsts>(
-    dMandatoryProps,
-);
+> = {
+    namespace: "ns",
+    store: "s",
+    types,
+    initialState,
+    reducer,
+    creators,
+    selectors,
+};
+const d1 = new Duck<
+    TState,
+    TAction,
+    TActionTypes,
+    TActionCreators,
+    TSelectors,
+    TSagas,
+    TTakes,
+    TConsts
+>(dMandatoryProps);
 
-const d2 = new Duck<TState, TAction, TActionTypes, TActionCreators, TSelectors, TSagas, TTakes, TConsts>({
+const d2 = new Duck<
+    TState,
+    TAction,
+    TActionTypes,
+    TActionCreators,
+    TSelectors,
+    TSagas,
+    TTakes,
+    TConsts
+>({
     ...dMandatoryProps,
     // optional props
     storePath: "sp",
@@ -106,7 +160,16 @@ const d2 = new Duck<TState, TAction, TActionTypes, TActionCreators, TSelectors, 
 
 // duck instance properties
 const testDuckProperties = (
-    d: Duck<TState, TAction, TActionTypes, TActionCreators, TSelectors, TSagas, TTakes, TConsts>,
+    d: Duck<
+        TState,
+        TAction,
+        TActionTypes,
+        TActionCreators,
+        TSelectors,
+        TSagas,
+        TTakes,
+        TConsts
+    >,
 ) => {
     d.creators.actA1;
     d.initialState.z;
@@ -114,7 +177,16 @@ const testDuckProperties = (
         initialState,
         { type: "a1" },
         // have to assert type as Duck class definition is missing 'TConsts'. practically, you'll probably use 'any' 😢
-        d as DuckInstance<TState, TAction, TActionTypes, TActionCreators, TSelectors, TSagas, TTakes, TConsts>,
+        d as DuckInstance<
+            TState,
+            TAction,
+            TActionTypes,
+            TActionCreators,
+            TSelectors,
+            TSagas,
+            TTakes,
+            TConsts
+        >,
     );
     d.selectors.getZ;
     d.store;
@@ -125,7 +197,16 @@ const testDuckProperties = (
     d.options;
 };
 const testDuckInstanceProperties = (
-    d: DuckInstance<TState, TAction, TActionTypes, TActionCreators, TSelectors, TSagas, TTakes, TConsts>,
+    d: DuckInstance<
+        TState,
+        TAction,
+        TActionTypes,
+        TActionCreators,
+        TSelectors,
+        TSagas,
+        TTakes,
+        TConsts
+    >,
 ) => {
     d.creators.actA1;
     d.initialState.z;

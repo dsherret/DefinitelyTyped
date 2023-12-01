@@ -22,7 +22,13 @@ export default class TextInput extends TextInput_base {
         passwordIsVisible: boolean;
         selectorPasswordVisibilityTooltip: HTMLElement;
     }) => void;
-    _toggle: ({ element, button }: { element: HTMLElement; button: Element }) => void;
+    _toggle: ({
+        element,
+        button,
+    }: {
+        element: HTMLElement;
+        button: Element;
+    }) => void;
     static get options(): TextInputOptions;
     static components: WeakMap<object, any>;
 }

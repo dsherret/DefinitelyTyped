@@ -28,7 +28,7 @@ interface RTCErrorInit {
 
 declare var RTCError: {
     prototype: RTCError;
-    new(init: RTCErrorInit, message?: string): RTCError;
+    new (init: RTCErrorInit, message?: string): RTCError;
 };
 
 // https://www.w3.org/TR/webrtc/#idl-def-rtcerrorevent
@@ -43,7 +43,7 @@ interface RTCErrorEventInit extends EventInit {
 
 declare var RTCErrorEvent: {
     prototype: RTCErrorEvent;
-    new(type: string, eventInitDict: RTCErrorEventInit): RTCErrorEvent;
+    new (type: string, eventInitDict: RTCErrorEventInit): RTCErrorEvent;
 };
 
 // https://www.w3.org/TR/webrtc/#idl-def-rtcicecandidatepair
@@ -63,8 +63,7 @@ interface RTCOfferOptions extends RTCOfferAnswerOptions {
 }
 
 // https://www.w3.org/TR/webrtc/#idl-def-rtcansweroptions
-interface RTCAnswerOptions extends RTCOfferAnswerOptions {
-}
+interface RTCAnswerOptions extends RTCOfferAnswerOptions {}
 
 // https://www.w3.org/TR/webrtc/#idl-def-rtciceserver
 interface RTCIceServer {
@@ -84,13 +83,15 @@ interface RTCIceParameters {
 type RTCIceRole = "controlled" | "controlling" | "unknown";
 
 interface RTCIceTransportEventMap {
-    "gatheringstatechange": Event;
-    "selectedcandidatepairchange": Event;
-    "statechange": Event;
+    gatheringstatechange: Event;
+    selectedcandidatepairchange: Event;
+    statechange: Event;
 }
 
 // https://www.w3.org/TR/webrtc/#idl-def-rtcicetransport
-type IceTransportEventHandler = ((this: RTCIceTransport, ev: Event) => any) | null;
+type IceTransportEventHandler =
+    | ((this: RTCIceTransport, ev: Event) => any)
+    | null;
 interface RTCIceTransport extends EventTarget {
     readonly role: RTCIceRole;
     // readonly component: RTCIceComponent;
@@ -106,7 +107,10 @@ interface RTCIceTransport extends EventTarget {
     onselectedcandidatepairchange: IceTransportEventHandler;
     addEventListener<K extends keyof RTCIceTransportEventMap>(
         type: K,
-        listener: (this: RTCIceTransport, ev: RTCIceTransportEventMap[K]) => any,
+        listener: (
+            this: RTCIceTransport,
+            ev: RTCIceTransportEventMap[K],
+        ) => any,
         options?: boolean | AddEventListenerOptions,
     ): void;
     addEventListener(
@@ -116,7 +120,10 @@ interface RTCIceTransport extends EventTarget {
     ): void;
     removeEventListener<K extends keyof RTCIceTransportEventMap>(
         type: K,
-        listener: (this: RTCIceTransport, ev: RTCIceTransportEventMap[K]) => any,
+        listener: (
+            this: RTCIceTransport,
+            ev: RTCIceTransportEventMap[K],
+        ) => any,
         options: boolean | EventListenerOptions,
     ): void;
     removeEventListener(
@@ -127,12 +134,14 @@ interface RTCIceTransport extends EventTarget {
 }
 
 interface RTCDtlsTransportEventMap {
-    "error": Event;
-    "statechange": Event;
+    error: Event;
+    statechange: Event;
 }
 
 // https://www.w3.org/TR/webrtc/#idl-def-rtcdtlstransport
-type DtlsTransportEventHandler<E extends Event> = ((this: RTCDtlsTransport, ev: E) => any) | null;
+type DtlsTransportEventHandler<E extends Event> =
+    | ((this: RTCDtlsTransport, ev: E) => any)
+    | null;
 interface RTCDtlsTransport extends EventTarget {
     readonly iceTransport: RTCIceTransport;
     readonly state: RTCDtlsTransportState;
@@ -141,7 +150,10 @@ interface RTCDtlsTransport extends EventTarget {
     onstatechange: DtlsTransportEventHandler<Event>;
     addEventListener<K extends keyof RTCDtlsTransportEventMap>(
         type: K,
-        listener: (this: RTCDtlsTransport, ev: RTCDtlsTransportEventMap[K]) => any,
+        listener: (
+            this: RTCDtlsTransport,
+            ev: RTCDtlsTransportEventMap[K],
+        ) => any,
         options?: boolean | AddEventListenerOptions,
     ): void;
     addEventListener(
@@ -151,7 +163,10 @@ interface RTCDtlsTransport extends EventTarget {
     ): void;
     removeEventListener<K extends keyof RTCDtlsTransportEventMap>(
         type: K,
-        listener: (this: RTCDtlsTransport, ev: RTCDtlsTransportEventMap[K]) => any,
+        listener: (
+            this: RTCDtlsTransport,
+            ev: RTCDtlsTransportEventMap[K],
+        ) => any,
         options?: boolean | EventListenerOptions,
     ): void;
     removeEventListener(
@@ -315,7 +330,9 @@ interface RTCDataChannelInit {
 }
 
 // https://www.w3.org/TR/webrtc/#idl-def-rtcdatachannel
-type DataChannelEventHandler<E extends Event> = ((this: RTCDataChannel, ev: E) => any) | null;
+type DataChannelEventHandler<E extends Event> =
+    | ((this: RTCDataChannel, ev: E) => any)
+    | null;
 interface RTCDataChannel extends EventTarget {
     readonly label: string;
     readonly ordered: boolean;
@@ -366,10 +383,14 @@ interface RTCDataChannelEvent {
 }
 
 // https://www.w3.org/TR/webrtc/#idl-def-rtcpeerconnection
-type PeerConnectionEventHandler<E extends Event> = ((this: RTCPeerConnection, ev: E) => any) | null;
+type PeerConnectionEventHandler<E extends Event> =
+    | ((this: RTCPeerConnection, ev: E) => any)
+    | null;
 interface RTCPeerConnection extends EventTarget {
     createOffer(options?: RTCOfferOptions): Promise<RTCSessionDescriptionInit>;
-    createAnswer(options?: RTCAnswerOptions): Promise<RTCSessionDescriptionInit>;
+    createAnswer(
+        options?: RTCAnswerOptions,
+    ): Promise<RTCSessionDescriptionInit>;
 
     setLocalDescription(description: RTCSessionDescriptionInit): Promise<void>;
     readonly localDescription: RTCSessionDescription | null;
@@ -381,7 +402,9 @@ interface RTCPeerConnection extends EventTarget {
     readonly currentRemoteDescription: RTCSessionDescription | null;
     readonly pendingRemoteDescription: RTCSessionDescription | null;
 
-    addIceCandidate(candidate?: RTCIceCandidateInit | RTCIceCandidate): Promise<void>;
+    addIceCandidate(
+        candidate?: RTCIceCandidateInit | RTCIceCandidate,
+    ): Promise<void>;
 
     readonly signalingState: RTCSignalingState;
     readonly connectionState: RTCPeerConnectionState;
@@ -399,12 +422,18 @@ interface RTCPeerConnection extends EventTarget {
     getTransceivers(): RTCRtpTransceiver[];
     addTrack(track: MediaStreamTrack, ...streams: MediaStream[]): RTCRtpSender;
     removeTrack(sender: RTCRtpSender): void;
-    addTransceiver(trackOrKind: MediaStreamTrack | string, init?: RTCRtpTransceiverInit): RTCRtpTransceiver;
+    addTransceiver(
+        trackOrKind: MediaStreamTrack | string,
+        init?: RTCRtpTransceiverInit,
+    ): RTCRtpTransceiver;
     ontrack: PeerConnectionEventHandler<RTCTrackEvent>;
 
     // Extension: https://www.w3.org/TR/webrtc/#h-rtcpeerconnection-interface-extensions-1
     readonly sctp: RTCSctpTransport | null;
-    createDataChannel(label: string | null, dataChannelDict?: RTCDataChannelInit): RTCDataChannel;
+    createDataChannel(
+        label: string | null,
+        dataChannelDict?: RTCDataChannelInit,
+    ): RTCDataChannel;
     ondatachannel: PeerConnectionEventHandler<RTCDataChannelEvent>;
 
     // Extension: https://www.w3.org/TR/webrtc/#h-rtcpeerconnection-interface-extensions-2
@@ -443,7 +472,7 @@ interface RTCPeerConnection extends EventTarget {
     ): Promise<void>;
 }
 interface RTCPeerConnectionStatic {
-    new(configuration?: RTCConfiguration, options?: any): RTCPeerConnection;
+    new (configuration?: RTCConfiguration, options?: any): RTCPeerConnection;
     readonly defaultIceServers: RTCIceServer[];
 
     // Extension: https://www.w3.org/TR/webrtc/#sec.cert-mgmt

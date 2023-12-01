@@ -76,10 +76,18 @@ export class RelayModernRecord {
     /**
      * Set the value of a field to a reference to another record.
      */
-    setLinkedRecordID(record: Record, storageKey: string, linkedID: DataID): void;
+    setLinkedRecordID(
+        record: Record,
+        storageKey: string,
+        linkedID: DataID,
+    ): void;
 
     /**
      * Set the value of a field to a list of references other records.
      */
-    setLinkedRecordIDs(record: Record, storageKey: string, linkedIDs: DataID[] | null): void;
+    setLinkedRecordIDs(
+        record: Record,
+        storageKey: string,
+        linkedIDs: DataID[] | null,
+    ): void;
 }

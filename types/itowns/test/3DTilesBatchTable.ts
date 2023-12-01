@@ -17,15 +17,14 @@ const viewerDiv = document.getElementById("viewerDiv") as HTMLDivElement;
 const view = new itowns.GlobeView(viewerDiv, placement);
 
 // Add Open Street Map orthographic layer
-itowns.Fetcher.json("./layers/JSONLayers/OPENSM.json")
-    .then(function _(json) {
-        const config = {
-            ...json as OpenSM,
-            source: new itowns.TMSSource((json as OpenSM).source),
-        };
-        const layer = new itowns.ColorLayer("Ortho", config);
-        view.addLayer(layer);
-    });
+itowns.Fetcher.json("./layers/JSONLayers/OPENSM.json").then(function _(json) {
+    const config = {
+        ...(json as OpenSM),
+        source: new itowns.TMSSource((json as OpenSM).source),
+    };
+    const layer = new itowns.ColorLayer("Ortho", config);
+    view.addLayer(layer);
+});
 
 // Create a new 3D tiles layer with batch table hierarchy extension
 const extensions = new itowns.C3DTExtensions();

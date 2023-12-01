@@ -17,4 +17,8 @@ export = lnfs;
  *   console.log('Symlink successfully created!');
  * });
  */
-declare function lnfs(src: string, dest: string, type?: fs.symlink.Type): Promise<string>;
+declare function lnfs(
+    src: string,
+    dest: string,
+    type?: fs.symlink.Type,
+): Promise<string>;

@@ -1,5 +1,9 @@
 declare module "arena/prototypes" {
-    import { _Constructor, _ConstructorById, GameObject } from "game/prototypes";
+    import {
+        _Constructor,
+        _ConstructorById,
+        GameObject,
+    } from "game/prototypes";
     import { BodyPartConstant } from "game/constants";
 
     export interface BodyPart extends GameObject {
@@ -13,6 +17,8 @@ declare module "arena/prototypes" {
          */
         ticksToDecay: number;
     }
-    interface BodyPartConstructor extends _Constructor<BodyPart>, _ConstructorById<BodyPart> {}
+    interface BodyPartConstructor
+        extends _Constructor<BodyPart>,
+            _ConstructorById<BodyPart> {}
     export const BodyPart: BodyPartConstructor;
 }

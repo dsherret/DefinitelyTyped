@@ -25,10 +25,30 @@ const grid: number[][] = [
 ];
 
 const multiGrid: number[][][] = [
-    [[1, 32], [2, 24], [4, 16], [8, 8]], // x=-1
-    [[2, 16], [4, 12], [8, 8], [16, 4]], // x=0
-    [[3, 8], [6, 6], [12, 4], [24, 2]], // x=1
-    [[4, 4], [8, 3], [16, 2], [32, 1]], // x=2
+    [
+        [1, 32],
+        [2, 24],
+        [4, 16],
+        [8, 8],
+    ], // x=-1
+    [
+        [2, 16],
+        [4, 12],
+        [8, 8],
+        [16, 4],
+    ], // x=0
+    [
+        [3, 8],
+        [6, 6],
+        [12, 4],
+        [24, 2],
+    ], // x=1
+    [
+        [4, 4],
+        [8, 3],
+        [16, 2],
+        [32, 1],
+    ], // x=2
 ];
 
 // Tests for returned Interpolator functions and their return values
@@ -64,7 +84,10 @@ const multiGrid: number[][][] = [
 // Tests for returned MultiGridInterpolator functions and their return values
 {
     // $ExpectType (x: number, y: number) => number[]
-    const multiGridInterpolator = createMultiGridInterpolator(multiGrid, options);
+    const multiGridInterpolator = createMultiGridInterpolator(
+        multiGrid,
+        options,
+    );
     // $ExpectType number[]
     multiGridInterpolator(0.5, 0.5);
     // ts-expect-error

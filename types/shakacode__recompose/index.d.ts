@@ -4,7 +4,12 @@
 
 declare module "@shakacode/recompose" {
     import * as React from "react";
-    import { ComponentClass, ComponentType as Component, FunctionComponent, ValidationMap } from "react";
+    import {
+        ComponentClass,
+        ComponentType as Component,
+        FunctionComponent,
+        ValidationMap,
+    } from "react";
 
     type mapper<TInner, TOutter> = (input: TInner) => TOutter;
     type predicate<T> = mapper<T, boolean>;
@@ -33,7 +38,10 @@ declare module "@shakacode/recompose" {
     // Injects props and removes them from the prop requirements.
     // Will not pass through the injected props if they are passed in during
     // render. Also adds new prop requirements from TNeedsProps.
-    export interface InferableComponentEnhancerWithProps<TInjectedProps, TNeedsProps> {
+    export interface InferableComponentEnhancerWithProps<
+        TInjectedProps,
+        TNeedsProps,
+    > {
         <P extends TInjectedProps>(
             component: Component<P>,
         ): React.ComponentClass<Omit<P, keyof TInjectedProps> & TNeedsProps>;
@@ -42,14 +50,16 @@ declare module "@shakacode/recompose" {
     // Injects props and removes them from the prop requirements.
     // Will not pass through the injected props if they are passed in during
     // render.
-    export type InferableComponentEnhancer<TInjectedProps> = InferableComponentEnhancerWithProps<TInjectedProps, {}>;
+    export type InferableComponentEnhancer<TInjectedProps> =
+        InferableComponentEnhancerWithProps<TInjectedProps, {}>;
 
     // Injects default props and makes them optional. Will still pass through
     // the injected props if they are passed in during render.
-    export type DefaultingInferableComponentEnhancer<TInjectedProps> = InferableComponentEnhancerWithProps<
-        TInjectedProps,
-        Partial<TInjectedProps>
-    >;
+    export type DefaultingInferableComponentEnhancer<TInjectedProps> =
+        InferableComponentEnhancerWithProps<
+            TInjectedProps,
+            Partial<TInjectedProps>
+        >;
 
     // Higher-order components: https://github.com/shakacode/recompose/blob/master/docs/API.md#higher-order-components
 
@@ -79,10 +89,11 @@ declare module "@shakacode/recompose" {
     type HandleCreatorsHandlers<TOutter, THandlers> = {
         [P in keyof THandlers]: (props: TOutter) => THandlers[P];
     };
-    type HandleCreators<TOutter, THandlers> =
-        & HandleCreatorsStructure<TOutter>
-        & HandleCreatorsHandlers<TOutter, THandlers>;
-    type HandleCreatorsFactory<TOutter, THandlers> = (initialProps: TOutter) => HandleCreators<TOutter, THandlers>;
+    type HandleCreators<TOutter, THandlers> = HandleCreatorsStructure<TOutter> &
+        HandleCreatorsHandlers<TOutter, THandlers>;
+    type HandleCreatorsFactory<TOutter, THandlers> = (
+        initialProps: TOutter,
+    ) => HandleCreators<TOutter, THandlers>;
 
     export function withHandlers<TOutter, THandlers>(
         handlerCreators:
@@ -105,23 +116,19 @@ declare module "@shakacode/recompose" {
     type NameMap = {
         [outterName: string]: string;
     };
-    export function renameProps(
-        nameMap: NameMap,
-    ): ComponentEnhancer<any, any>;
+    export function renameProps(nameMap: NameMap): ComponentEnhancer<any, any>;
 
     // flattenProp: https://github.com/shakacode/recompose/blob/master/docs/API.md#flattenProp
-    export function flattenProp(
-        propName: string,
-    ): ComponentEnhancer<any, any>;
+    export function flattenProp(propName: string): ComponentEnhancer<any, any>;
 
     // withState: https://github.com/shakacode/recompose/blob/master/docs/API.md#withState
     type stateProps<
         TState,
         TStateName extends string,
         TStateUpdaterName extends string,
-    > =
-        & { [stateName in TStateName]: TState }
-        & { [stateUpdateName in TStateUpdaterName]: (state: TState) => TState };
+    > = {
+        [stateName in TStateName]: TState;
+    } & { [stateUpdateName in TStateUpdaterName]: (state: TState) => TState };
     export function withState<
         TOutter,
         TState,
@@ -137,17 +144,29 @@ declare module "@shakacode/recompose" {
     >;
 
     // withStateHandlers: https://github.com/shakacode/recompose/blob/master/docs/API.md#withstatehandlers
-    type StateHandler<TState> = (...payload: any[]) => Partial<TState> | undefined;
+    type StateHandler<TState> = (
+        ...payload: any[]
+    ) => Partial<TState> | undefined;
     type StateHandlerMap<TState> = {
         [updaterName: string]: StateHandler<TState>;
     };
     type StateUpdaters<TOutter, TState, TUpdaters> = {
-        [updaterName in keyof TUpdaters]: (state: TState, props: TOutter) => TUpdaters[updaterName];
+        [updaterName in keyof TUpdaters]: (
+            state: TState,
+            props: TOutter,
+        ) => TUpdaters[updaterName];
     };
-    export function withStateHandlers<TState, TUpdaters extends StateHandlerMap<TState>, TOutter = {}>(
+    export function withStateHandlers<
+        TState,
+        TUpdaters extends StateHandlerMap<TState>,
+        TOutter = {},
+    >(
         createProps: TState | mapper<TOutter, TState>,
         stateUpdaters: StateUpdaters<TOutter, TState, TUpdaters>,
-    ): InferableComponentEnhancerWithProps<TOutter & TState & TUpdaters, TOutter>;
+    ): InferableComponentEnhancerWithProps<
+        TOutter & TState & TUpdaters,
+        TOutter
+    >;
 
     // withReducer: https://github.com/shakacode/recompose/blob/master/docs/API.md#withReducer
     type reducer<TState, TAction> = (s: TState, a: TAction) => TState;
@@ -156,9 +175,9 @@ declare module "@shakacode/recompose" {
         TAction,
         TStateName extends string,
         TDispatchName extends string,
-    > =
-        & { [stateName in TStateName]: TState }
-        & { [dispatchName in TDispatchName]: (a: TAction) => void };
+    > = {
+        [stateName in TStateName]: TState;
+    } & { [dispatchName in TDispatchName]: (a: TAction) => void };
     export function withReducer<
         TOutter,
         TState,
@@ -178,8 +197,12 @@ declare module "@shakacode/recompose" {
     // branch: https://github.com/shakacode/recompose/blob/master/docs/API.md#branch
     export function branch<TOutter>(
         test: predicate<TOutter>,
-        trueEnhancer: ComponentEnhancer<any, any> | InferableComponentEnhancer<{}>,
-        falseEnhancer?: ComponentEnhancer<any, any> | InferableComponentEnhancer<{}>,
+        trueEnhancer:
+            | ComponentEnhancer<any, any>
+            | InferableComponentEnhancer<{}>,
+        falseEnhancer?:
+            | ComponentEnhancer<any, any>
+            | InferableComponentEnhancer<{}>,
     ): ComponentEnhancer<any, TOutter>;
 
     // renderComponent: https://github.com/shakacode/recompose/blob/master/docs/API.md#renderComponent
@@ -196,7 +219,9 @@ declare module "@shakacode/recompose" {
     ): InferableComponentEnhancer<{}>;
 
     // pure: https://github.com/shakacode/recompose/blob/master/docs/API.md#pure
-    export function pure<TProps>(component: Component<TProps>): Component<TProps>;
+    export function pure<TProps>(
+        component: Component<TProps>,
+    ): Component<TProps>;
 
     // onlyUpdateForKeys: https://github.com/shakacode/recompose/blob/master/docs/API.md#onlyUpdateForKeys
     export function onlyUpdateForKeys(
@@ -227,7 +252,10 @@ declare module "@shakacode/recompose" {
             f: (prevState: TState, props: TProps) => Pick<TState, TKeyOfState>,
             callback?: () => any,
         ): void;
-        setState<TKeyOfState extends keyof TState>(state: Pick<TState, TKeyOfState>, callback?: () => any): void;
+        setState<TKeyOfState extends keyof TState>(
+            state: Pick<TState, TKeyOfState>,
+            callback?: () => any,
+        ): void;
         forceUpdate(callBack?: () => any): void;
 
         context: any;
@@ -235,61 +263,118 @@ declare module "@shakacode/recompose" {
             [key: string]: React.ReactInstance;
         };
     }
-    type ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance = {}> =
-        & _ReactLifeCycleFunctionsThisArguments<TProps, TState>
-        & TInstance;
+    type ReactLifeCycleFunctionsThisArguments<
+        TProps,
+        TState,
+        TInstance = {},
+    > = _ReactLifeCycleFunctionsThisArguments<TProps, TState> & TInstance;
 
     // lifecycle: https://github.com/shakacode/recompose/blob/master/docs/API.md#lifecycle
     interface ReactLifeCycleFunctions<TProps, TState, TInstance = {}> {
         componentWillMount?:
-            | ((this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>) => void)
+            | ((
+                  this: ReactLifeCycleFunctionsThisArguments<
+                      TProps,
+                      TState,
+                      TInstance
+                  >,
+              ) => void)
             | undefined;
-        UNSAFE_componentWillMount?(this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>): void;
+        UNSAFE_componentWillMount?(
+            this: ReactLifeCycleFunctionsThisArguments<
+                TProps,
+                TState,
+                TInstance
+            >,
+        ): void;
         componentDidMount?:
-            | ((this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>) => void)
+            | ((
+                  this: ReactLifeCycleFunctionsThisArguments<
+                      TProps,
+                      TState,
+                      TInstance
+                  >,
+              ) => void)
             | undefined;
         componentWillReceiveProps?:
-            | ((this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>, nextProps: TProps) => void)
+            | ((
+                  this: ReactLifeCycleFunctionsThisArguments<
+                      TProps,
+                      TState,
+                      TInstance
+                  >,
+                  nextProps: TProps,
+              ) => void)
             | undefined;
         UNSAFE_componentWillReceiveProps?(
-            this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>,
+            this: ReactLifeCycleFunctionsThisArguments<
+                TProps,
+                TState,
+                TInstance
+            >,
             nextProps: TProps,
         ): void;
         shouldComponentUpdate?:
             | ((
-                this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>,
-                nextProps: TProps,
-                nextState: TState,
-            ) => boolean)
+                  this: ReactLifeCycleFunctionsThisArguments<
+                      TProps,
+                      TState,
+                      TInstance
+                  >,
+                  nextProps: TProps,
+                  nextState: TState,
+              ) => boolean)
             | undefined;
         componentWillUpdate?:
             | ((
-                this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>,
-                nextProps: TProps,
-                nextState: TState,
-            ) => void)
+                  this: ReactLifeCycleFunctionsThisArguments<
+                      TProps,
+                      TState,
+                      TInstance
+                  >,
+                  nextProps: TProps,
+                  nextState: TState,
+              ) => void)
             | undefined;
         UNSAFE_componentWillUpdate?(
-            this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>,
+            this: ReactLifeCycleFunctionsThisArguments<
+                TProps,
+                TState,
+                TInstance
+            >,
             nextProps: TProps,
             nextState: TState,
         ): void;
         componentDidUpdate?:
             | ((
-                this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>,
-                prevProps: TProps,
-                prevState: TState,
-            ) => void)
+                  this: ReactLifeCycleFunctionsThisArguments<
+                      TProps,
+                      TState,
+                      TInstance
+                  >,
+                  prevProps: TProps,
+                  prevState: TState,
+              ) => void)
             | undefined;
         componentWillUnmount?:
-            | ((this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>) => void)
+            | ((
+                  this: ReactLifeCycleFunctionsThisArguments<
+                      TProps,
+                      TState,
+                      TInstance
+                  >,
+              ) => void)
             | undefined;
         componentDidCatch?:
             | ((
-                this: ReactLifeCycleFunctionsThisArguments<TProps, TState, TInstance>,
-                error: Error,
-                info: React.ErrorInfo,
-            ) => void)
+                  this: ReactLifeCycleFunctionsThisArguments<
+                      TProps,
+                      TState,
+                      TInstance
+                  >,
+                  error: Error,
+                  info: React.ErrorInfo,
+              ) => void)
             | undefined;
     }
 
@@ -303,7 +388,9 @@ declare module "@shakacode/recompose" {
     // toRenderProps: https://github.com/shakacode/recompose/blob/master/docs/API.md#torenderprops
     export function toRenderProps<TInner, TOutter>(
         hoc: InferableComponentEnhancerWithProps<TInner & TOutter, TOutter>,
-    ): FunctionComponent<TOutter & { children: (props: TInner) => React.ReactElement }>;
+    ): FunctionComponent<
+        TOutter & { children: (props: TInner) => React.ReactElement }
+    >;
 
     // fromRenderProps: https://github.com/shakacode/recompose/blob/master/docs/API.md#fromrenderprops
     export function fromRenderProps<TInner, TOutter, TRenderProps = {}>(
@@ -344,9 +431,7 @@ declare module "@shakacode/recompose" {
     // ): ComponentEnhancer<any, any>;
 
     // getDisplayName: https://github.com/shakacode/recompose/blob/master/docs/API.md#getDisplayName
-    export function getDisplayName(
-        component: Component<any>,
-    ): string;
+    export function getDisplayName(component: Component<any>): string;
 
     // wrapDisplayName: https://github.com/shakacode/recompose/blob/master/docs/API.md#wrapDisplayName
     export function wrapDisplayName(
@@ -355,15 +440,10 @@ declare module "@shakacode/recompose" {
     ): string;
 
     // shallowEqual: https://github.com/shakacode/recompose/blob/master/docs/API.md#shallowEqual
-    export function shallowEqual(
-        a: Object,
-        b: Object,
-    ): boolean;
+    export function shallowEqual(a: Object, b: Object): boolean;
 
     // isClassComponent: https://github.com/shakacode/recompose/blob/master/docs/API.md#isClassComponent
-    export function isClassComponent(
-        value: any,
-    ): boolean;
+    export function isClassComponent(value: any): boolean;
 
     // createEagerElement: https://github.com/shakacode/recompose/blob/master/docs/API.md#createEagerElement
     export function createEagerElement(
@@ -373,7 +453,10 @@ declare module "@shakacode/recompose" {
     ): React.ReactElement;
 
     // createEagerFactory: https://github.com/shakacode/recompose/blob/master/docs/API.md#createEagerFactory
-    type componentFactory = (props?: Object, children?: React.ReactNode) => React.ReactElement;
+    type componentFactory = (
+        props?: Object,
+        children?: React.ReactNode,
+    ) => React.ReactElement;
     export function createEagerFactory(
         type: Component<any> | string,
     ): componentFactory;
@@ -384,9 +467,7 @@ declare module "@shakacode/recompose" {
     ): React.ComponentClass<any>; // ???
 
     // componentFromProp: https://github.com/shakacode/recompose/blob/master/docs/API.md#componentFromProp
-    export function componentFromProp(
-        propName: string,
-    ): FunctionComponent<any>;
+    export function componentFromProp(propName: string): FunctionComponent<any>;
 
     // nest: https://github.com/shakacode/recompose/blob/master/docs/API.md#nest
     export function nest(
@@ -403,12 +484,20 @@ declare module "@shakacode/recompose" {
 
     // componentFromStream: https://github.com/shakacode/recompose/blob/master/docs/API.md#componentFromStream
     export function componentFromStream<TProps>(
-        propsToReactNode: mapper<Subscribable<TProps>, Subscribable<React.ReactNode>>,
+        propsToReactNode: mapper<
+            Subscribable<TProps>,
+            Subscribable<React.ReactNode>
+        >,
     ): Component<TProps>; // ???
 
     // componentFromStreamWithConfig: https://github.com/shakacode/recompose/blob/master/docs/API.md#componentfromstreamwithconfig
-    export function componentFromStreamWithConfig(config: ObservableConfig): <TProps>(
-        propsToReactNode: mapper<Subscribable<TProps>, Subscribable<React.ReactNode>>,
+    export function componentFromStreamWithConfig(
+        config: ObservableConfig,
+    ): <TProps>(
+        propsToReactNode: mapper<
+            Subscribable<TProps>,
+            Subscribable<React.ReactNode>
+        >,
     ) => Component<TProps>;
 
     // mapPropsStream: https://github.com/shakacode/recompose/blob/master/docs/API.md#mapPropsStream
@@ -417,7 +506,9 @@ declare module "@shakacode/recompose" {
     ): ComponentEnhancer<TInner, TOutter>;
 
     // mapPropsStreamWithConfig: https://github.com/shakacode/recompose/blob/master/docs/API.md#mappropsstreamwithconfig
-    export function mapPropsStreamWithConfig(config: ObservableConfig): <TInner, TOutter>(
+    export function mapPropsStreamWithConfig(
+        config: ObservableConfig,
+    ): <TInner, TOutter>(
         transform: mapper<Subscribable<TOutter>, Subscribable<TInner>>,
     ) => ComponentEnhancer<TInner, TOutter>;
 
@@ -426,7 +517,10 @@ declare module "@shakacode/recompose" {
         handler: (value: T) => void;
         stream: TSubs;
     };
-    export function createEventHandler<T, TSubs extends Subscribable<T>>(): EventHandlerOf<T, TSubs>;
+    export function createEventHandler<
+        T,
+        TSubs extends Subscribable<T>,
+    >(): EventHandlerOf<T, TSubs>;
 
     // createEventHandlerWithConfig: https://github.com/shakacode/recompose/blob/master/docs/API.md#createEventHandlerWithConfig
     export function createEventHandlerWithConfig(
@@ -435,7 +529,9 @@ declare module "@shakacode/recompose" {
 
     // setObservableConfig: https://github.com/shakacode/recompose/blob/master/docs/API.md#setObservableConfig
     type ObservableConfig = {
-        fromESObservable?: (<T>(observable: Subscribable<T>) => any) | undefined;
+        fromESObservable?:
+            | (<T>(observable: Subscribable<T>) => any)
+            | undefined;
         toESObservable?: (<T>(stream: any) => Subscribable<T>) | undefined;
     };
     export function setObservableConfig(config: ObservableConfig): void;

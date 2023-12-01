@@ -33,7 +33,11 @@ export class EvadeBehavior extends SteeringBehavior {
      * @param [panicDistance] - The agent only flees from the pursuer if it is inside this radius.
      * @param [predictionFactor] - This factor determines how far the vehicle predicts the movement of the pursuer.
      */
-    constructor(pursuer?: MovingEntity, panicDistance?: number, predictionFactor?: number);
+    constructor(
+        pursuer?: MovingEntity,
+        panicDistance?: number,
+        predictionFactor?: number,
+    );
 
     /**
      * Calculates the steering force for a single simulation step.

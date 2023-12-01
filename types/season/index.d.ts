@@ -9,7 +9,10 @@ export function setCacheDir(cacheDirectory: string): void;
 export function stringify(object: any): string;
 
 /** Read the CSON or JSON object at the given path and return it to the callback once it is read and parsed. */
-export function readFile(objectPath: string, callback: (err: Error | null, object: any) => void): void;
+export function readFile(
+    objectPath: string,
+    callback: (err: Error | null, object: any) => void,
+): void;
 export function readFile(
     objectPath: string,
     options: ParseOptions,
@@ -20,7 +23,11 @@ export function readFile(
 export function readFileSync(objectPath: string, options?: ParseOptions): any;
 
 /** Write the object to the given path as either JSON or CSON depending on the path's extension. */
-export function writeFile(objectPath: string, object: any, callback: (err: Error | null) => void): void;
+export function writeFile(
+    objectPath: string,
+    object: any,
+    callback: (err: Error | null) => void,
+): void;
 
 /** Synchronous version of `CSON.writeFile(objectPath, object, callback)` */
 export function writeFileSync(objectPath: string, object: any): void;

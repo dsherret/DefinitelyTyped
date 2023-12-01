@@ -34,8 +34,14 @@ declare namespace RCTooltip {
         defaultVisible?: boolean | undefined;
         placement?: Placement | Object | undefined;
         align?: Object | undefined;
-        onPopupAlign?: ((popupDomNode: Element, align: Object) => void) | undefined;
-        overlay: (() => React.ReactChild) | React.ReactChild | React.ReactFragment | React.ReactPortal;
+        onPopupAlign?:
+            | ((popupDomNode: Element, align: Object) => void)
+            | undefined;
+        overlay:
+            | (() => React.ReactChild)
+            | React.ReactChild
+            | React.ReactFragment
+            | React.ReactPortal;
         arrowContent?: React.ReactNode | undefined;
         getTooltipContainer?: (() => Element) | undefined;
         destroyTooltipOnHide?: boolean | undefined;

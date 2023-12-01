@@ -9,7 +9,7 @@ import * as Hoek from "hoek";
 // clone(obj)
 
 let nestedObj = {
-    w: /^something$/ig,
+    w: /^something$/gi,
     x: {
         a: [1, 2, 3],
         b: 123456,
@@ -30,7 +30,7 @@ console.log(copy.x.b); // results in 100
 // cloneWithShallow(obj, keys)
 
 nestedObj = {
-    w: /^something$/ig,
+    w: /^something$/gi,
     x: {
         a: [1, 2, 3],
         b: 123456,
@@ -88,11 +88,16 @@ const defaults1 = {
 
 const options2 = { server: { port: 8080 } };
 
-const config1 = Hoek.applyToDefaultsWithShallow(defaults1, options2, ["server"]); // results in { server: { port: 8080 }, name: 'example' }
+const config1 = Hoek.applyToDefaultsWithShallow(defaults1, options2, [
+    "server",
+]); // results in { server: { port: 8080 }, name: 'example' }
 
 // deepEqual(b, a, [options])
 
-Hoek.deepEqual({ a: [1, 2], b: "string", c: { d: true } }, { a: [1, 2], b: "string", c: { d: true } }); // results in true
+Hoek.deepEqual(
+    { a: [1, 2], b: "string", c: { d: true } },
+    { a: [1, 2], b: "string", c: { d: true } },
+); // results in true
 Hoek.deepEqual(Object.create(null), {}, { prototype: false }); // results in true
 Hoek.deepEqual(Object.create(null), {}); // results in false
 
@@ -201,12 +206,16 @@ Hoek.stringify(a); // Returns '[Cannot display object: Converting circular struc
 
 const timerObj = new Hoek.Timer();
 console.log("Time is now: " + timerObj.ts);
-console.log(`Elapsed time from initialization: ${timerObj.elapsed()}milliseconds`);
+console.log(
+    `Elapsed time from initialization: ${timerObj.elapsed()}milliseconds`,
+);
 
 // Bench
 
 const benchObj = new Hoek.Bench();
-console.log(`Elapsed time from initialization: ${benchObj.elapsed()}milliseconds`);
+console.log(
+    `Elapsed time from initialization: ${benchObj.elapsed()}milliseconds`,
+);
 
 // base64urlEncode(value)
 
@@ -223,11 +232,11 @@ const escapedString = Hoek.escapeHtml(string); // returns &lt;html&gt; hey &lt;/
 
 // escapeHeaderAttribute(attribute)
 
-a = Hoek.escapeHeaderAttribute("I said \"go w\\o me\""); // returns I said \"go w\\o me\"
+a = Hoek.escapeHeaderAttribute('I said "go w\\o me"'); // returns I said \"go w\\o me\"
 
 // escapeRegex(string)
 
-a = Hoek.escapeRegex("4^f$s.4*5+-_?%=#!:@|~\\/`\"(>)[<]d{}s,"); // returns 4\^f\$s\.4\*5\+\-_\?%\=#\!\:@\|~\\\/`"\(>\)\[<\]d\{\}s\,
+a = Hoek.escapeRegex('4^f$s.4*5+-_?%=#!:@|~\\/`"(>)[<]d{}s,'); // returns 4\^f\$s\.4\*5\+\-_\?%\=#\!\:@\|~\\\/`"\(>\)\[<\]d\{\}s\,
 
 // assert(condition, message)
 

@@ -9,7 +9,10 @@ function noArgsCPS(callback: ErrBack<[number], undefined>) {
     callback(void 0, 5);
 }
 
-function multiReturnCPS(a: number, callback: ErrBack<[number, string, boolean], Error>) {
+function multiReturnCPS(
+    a: number,
+    callback: ErrBack<[number, string, boolean], Error>,
+) {
     if (a < 0) {
         callback(new Error("Cannot call this with an argument of 0!"));
     } else {
@@ -17,7 +20,11 @@ function multiReturnCPS(a: number, callback: ErrBack<[number, string, boolean], 
     }
 }
 
-function divideNumbersCPS(a: number, b: number, callback: ErrBack<[number], Error>) {
+function divideNumbersCPS(
+    a: number,
+    b: number,
+    callback: ErrBack<[number], Error>,
+) {
     if (b === 0) {
         callback(new Error("Cannot divide by a negative number"));
     } else {
@@ -38,7 +45,7 @@ const rDivideNumbers2 = righto(divideNumbersCPS, 2, 1);
 // $ExpectType Righto<[number], Error>
 righto(divideNumbersCPS, rDivideNumbers1, rDivideNumbers2);
 // $ExpectType Righto<[number], Error>
-righto(divideNumbersCPS, rDivideNumbers1, new Promise<number>(r => r(5)));
+righto(divideNumbersCPS, rDivideNumbers1, new Promise<number>((r) => r(5)));
 // $ExpectType Righto<[boolean], null>
 const rBool = righto<[], [boolean], null>((fn) => fn(null, true));
 // @ts-expect-error
@@ -59,8 +66,18 @@ righto(noArgsCPS);
 // @ts-expect-error
 righto(noArgsCPS, 5);
 
-righto(divideNumbersCPS, righto.after(rDivideNumbers1), rDivideNumbers1, rDivideNumbers2);
-righto(divideNumbersCPS, rDivideNumbers1, rDivideNumbers2, righto.after(rDivideNumbers1));
+righto(
+    divideNumbersCPS,
+    righto.after(rDivideNumbers1),
+    rDivideNumbers1,
+    rDivideNumbers2,
+);
+righto(
+    divideNumbersCPS,
+    rDivideNumbers1,
+    rDivideNumbers2,
+    righto.after(rDivideNumbers1),
+);
 righto(
     divideNumbersCPS,
     righto.after(rDivideNumbers1),
@@ -70,7 +87,13 @@ righto(
 );
 // dprint-ignore
 // @ts-expect-error
-righto(divideNumbersCPS, righto.after(rDivideNumbers1), rDivideNumbers1, righto.after(rDivideNumbers1), rDivideNumbers2);
+righto(
+    divideNumbersCPS,
+    righto.after(rDivideNumbers1),
+    rDivideNumbers1,
+    righto.after(rDivideNumbers1),
+    rDivideNumbers2,
+);
 // #endregion
 
 // #region Test righto.fork
@@ -83,19 +106,21 @@ const promise3 = new Promise(righto.fork(rMultiReturn));
 // #endregion
 
 // #region Test righto.iterate
-const generated = righto.iterate(
-    function*(a: string, b: string, c: string): Generator<Righto<[string], never>, string, string> {
-        const x = yield righto((done) => {
-            done(void 0, "x");
-        });
+const generated = righto.iterate(function* (
+    a: string,
+    b: string,
+    c: string,
+): Generator<Righto<[string], never>, string, string> {
+    const x = yield righto((done) => {
+        done(void 0, "x");
+    });
 
-        const y = yield righto((done) => {
-            done(void 0, "y");
-        });
+    const y = yield righto((done) => {
+        done(void 0, "y");
+    });
 
-        return x + y + a + b + c;
-    },
-);
+    return x + y + a + b + c;
+});
 
 // $ExpectType Righto<[string], never>
 const result = generated("a", "b", "c");
@@ -123,7 +148,10 @@ function reduceTestFunc2(callback: ErrBack<[number], null>) {
     callback(null, 2);
 }
 // $ExpectType Righto<[number], null>
-const reduced1 = righto.reduce([righto(reduceTestFunc1), righto(reduceTestFunc2)]);
+const reduced1 = righto.reduce([
+    righto(reduceTestFunc1),
+    righto(reduceTestFunc2),
+]);
 
 function reduceTestFunc3(last: number, callback: ErrBack<[number], null>) {
     callback(null, last);
@@ -136,7 +164,8 @@ function reduceTestFunc4(last: number, callback: ErrBack<[number], null>) {
 // $ExpectType Righto<[number], null>
 const reduced2 = righto.reduce(
     [reduceTestFunc3, reduceTestFunc4],
-    (result, next) => { // Reducer
+    (result, next) => {
+        // Reducer
         return righto(next, result);
     },
     5, // Seed
@@ -170,7 +199,7 @@ righto.sync(numToString, rBool);
 // $ExpectType Righto<[boolean], null>
 righto.from(rBool);
 // $ExpectType Righto<[number], any>
-righto.from(new Promise<number>(r => r(5)));
+righto.from(new Promise<number>((r) => r(5)));
 // $ExpectType Righto<[string], undefined>
 righto.from("test");
 // $ExpectType Righto<[{ a: number; b: { a: number; }; }], undefined>
@@ -187,9 +216,12 @@ const rValIn = righto((value, callback) => {
 // #endregion
 
 // #region Test righto.get
-const rGetObj = righto((cb: ErrBack<[{ a: number; b: number; c: number }], never>) => cb(void 0, { a: 1, b: 2, c: 3 }));
+const rGetObj = righto(
+    (cb: ErrBack<[{ a: number; b: number; c: number }], never>) =>
+        cb(void 0, { a: 1, b: 2, c: 3 }),
+);
 // $ExpectType Righto<[number], never>
-rGetObj.get(x => x.a);
+rGetObj.get((x) => x.a);
 // $ExpectType Righto<[any], never>
 rGetObj.get("a");
 // $ExpectType Righto<[any], never>
@@ -274,7 +306,10 @@ resolvedObjRecursive.obj.obj.rNum;
 
 // #region Test righto.mate
 // $ExpectType Righto<[number, number], Error>
-const rMate = righto.mate<[number, number], Error>(rDivideNumbers1, rDivideNumbers2);
+const rMate = righto.mate<[number, number], Error>(
+    rDivideNumbers1,
+    rDivideNumbers2,
+);
 
 rMate((error, stuff, otherStuff) => {
     // $ExpectType Error | undefined

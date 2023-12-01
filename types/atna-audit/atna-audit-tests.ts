@@ -29,10 +29,30 @@ const sysParticipant = new atna.construct.ActiveParticipant(
     [sysRoleCode],
 );
 const userRoleCodeDef = new atna.construct.Code(1234, "userRole", "DCM");
-const userParticipant = new atna.construct.ActiveParticipant("username", "", true, null, null, [userRoleCodeDef]);
-const sourceTypeCode = new atna.construct.Code(atna.constants.AUDIT_SRC_TYPE_UI, "", "");
-const sourceIdent = new atna.construct.AuditSourceIdentification(null, "auditSource", sourceTypeCode);
-const audit = new atna.construct.AuditMessage(eIdent, [sysParticipant, userParticipant], null, [sourceIdent]);
+const userParticipant = new atna.construct.ActiveParticipant(
+    "username",
+    "",
+    true,
+    null,
+    null,
+    [userRoleCodeDef],
+);
+const sourceTypeCode = new atna.construct.Code(
+    atna.constants.AUDIT_SRC_TYPE_UI,
+    "",
+    "",
+);
+const sourceIdent = new atna.construct.AuditSourceIdentification(
+    null,
+    "auditSource",
+    sourceTypeCode,
+);
+const audit = new atna.construct.AuditMessage(
+    eIdent,
+    [sysParticipant, userParticipant],
+    null,
+    [sourceIdent],
+);
 audit.toXML().split("<");
 
 atna.send.sendAuditEvent(
@@ -42,7 +62,7 @@ atna.send.sendAuditEvent(
         host: "localhost",
         port: 5050,
     },
-    err => {
+    (err) => {
         throw err;
     },
 );

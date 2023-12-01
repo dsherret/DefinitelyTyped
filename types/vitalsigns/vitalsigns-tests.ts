@@ -10,9 +10,12 @@ vitals.monitor("tick");
 vitals.unhealthyWhen("cpu", "usage").equals(100);
 vitals.unhealthyWhen("tick", "maxMs").greaterThan(500);
 
-vitals.monitor({
-    connections: () => new Object(),
-}, { name: "game" });
+vitals.monitor(
+    {
+        connections: () => new Object(),
+    },
+    { name: "game" },
+);
 
 var vitals = new VitalSigns({
     autoCheck: 5000,

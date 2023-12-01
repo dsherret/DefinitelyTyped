@@ -4,7 +4,14 @@
 
 declare namespace GM {
     interface PlatformInfo {
-        os: "mac" | "win" | "android" | "cros" | "linux" | "openbsd" | "fuchsia";
+        os:
+            | "mac"
+            | "win"
+            | "android"
+            | "cros"
+            | "linux"
+            | "openbsd"
+            | "fuchsia";
         arch: "arm" | "x86-32" | "x86-64";
     }
 
@@ -40,7 +47,16 @@ declare namespace GM {
         };
     }
     type Value = string | boolean | number | object;
-    type RequestMethod = "GET" | "POST" | "PUT" | "DELETE" | "PATCH" | "HEAD" | "TRACE" | "OPTIONS" | "CONNECT";
+    type RequestMethod =
+        | "GET"
+        | "POST"
+        | "PUT"
+        | "DELETE"
+        | "PATCH"
+        | "HEAD"
+        | "TRACE"
+        | "OPTIONS"
+        | "CONNECT";
     interface Headers {
         [header: string]: string;
     }
@@ -219,7 +235,11 @@ declare var GM: {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     addElement(tagName: string, attributes: object): HTMLElement | void;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    addElement(parentNode: string, tagName: string, attributes: object): HTMLElement | void;
+    addElement(
+        parentNode: string,
+        tagName: string,
+        attributes: object,
+    ): HTMLElement | void;
 
     /**
      * Utility function to inject script element.
@@ -254,7 +274,12 @@ declare var GM: {
      */
     addValueChangeListener(
         key: string,
-        callback: (key?: string, oldValue?: string, newValue?: string, remote?: boolean) => void,
+        callback: (
+            key?: string,
+            oldValue?: string,
+            newValue?: string,
+            remote?: boolean,
+        ) => void,
     ): string;
 
     /**
@@ -294,7 +319,10 @@ declare var GM: {
      * @see {@link https://erosman.github.io/support/content/help.html#getValue}
      */
     getValue(key: string): Promise<GM.Value>;
-    getValue<TValue = GM.Value>(key: string, defaultValue?: TValue): Promise<TValue>;
+    getValue<TValue = GM.Value>(
+        key: string,
+        defaultValue?: TValue,
+    ): Promise<TValue>;
 
     /**
      * An object container info about the running script.
@@ -339,7 +367,9 @@ declare var GM: {
      * system's notification mechanism
      * @see {@link https://erosman.github.io/support/content/help.html#notification}
      */
-    notification(text: string | { text: string; image?: Blob | string }): Promise<string>;
+    notification(
+        text: string | { text: string; image?: Blob | string },
+    ): Promise<string>;
 
     /**
      * Opens the specified URL in a new tab.
@@ -470,7 +500,10 @@ declare function GM_deleteValue(key: string): void;
  * @see {@link https://erosman.github.io/support/content/help.html#getValue}
  */
 declare function GM_getValue(key: string): GM.Value;
-declare function GM_getValue<TValue = GM.Value>(key: string, defaultValue?: TValue): TValue;
+declare function GM_getValue<TValue = GM.Value>(
+    key: string,
+    defaultValue?: TValue,
+): TValue;
 
 /**
  * Given a defined `@resource`, this method fetches and returns the content of the url

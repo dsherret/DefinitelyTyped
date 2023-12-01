@@ -13,18 +13,36 @@ let name = new ndn.Name("/key-name");
 let id: ndn.PibIdentity = kc.createIdentityV2(name);
 id = kc.createIdentityV2(name, kp);
 kc.createIdentityV2(name, (id: ndn.PibIdentity) => {});
-kc.createIdentityV2(name, (id: ndn.PibIdentity) => {}, (err) => {});
+kc.createIdentityV2(
+    name,
+    (id: ndn.PibIdentity) => {},
+    (err) => {},
+);
 kc.createIdentityV2(name, kp, (id: ndn.PibIdentity) => {});
-kc.createIdentityV2(name, kp, (id: ndn.PibIdentity) => {}, (err) => {});
+kc.createIdentityV2(
+    name,
+    kp,
+    (id: ndn.PibIdentity) => {},
+    (err) => {},
+);
 kc.deleteIdentity(id);
 kc.setDefaultIdentity(id);
 
 let key: ndn.PibKey = kc.createKey(id);
 key = kc.createKey(id, kp);
 kc.createKey(id, (key: ndn.PibKey) => {});
-kc.createKey(id, (key: ndn.PibKey) => {}, (err) => {});
+kc.createKey(
+    id,
+    (key: ndn.PibKey) => {},
+    (err) => {},
+);
 kc.createKey(id, kp, (key: ndn.PibKey) => {});
-kc.createKey(id, kp, (key: ndn.PibKey) => {}, (err) => {});
+kc.createKey(
+    id,
+    kp,
+    (key: ndn.PibKey) => {},
+    (err) => {},
+);
 kc.deleteKey(id, key);
 kc.setDefaultKey(id, key);
 

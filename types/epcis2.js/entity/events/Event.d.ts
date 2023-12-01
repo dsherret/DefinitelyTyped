@@ -234,7 +234,9 @@ export default class Event extends Entity {
      * @param persistentDisposition
      * @return the event instance
      */
-    setPersistentDisposition(persistentDisposition: PersistentDisposition): Event;
+    setPersistentDisposition(
+        persistentDisposition: PersistentDisposition,
+    ): Event;
     /**
      * Getter for the persistentDisposition property
      * @return - the persistentDisposition
@@ -292,7 +294,9 @@ export default class Event extends Entity {
      * @param bizTransactionList - the bizTransactions to remove
      * @return the event instance
      */
-    removeBizTransactionList(bizTransactionList: BizTransactionElement[]): Event;
+    removeBizTransactionList(
+        bizTransactionList: BizTransactionElement[],
+    ): Event;
     /**
      * Getter for the bizTransactionList property
      * @return the bizTransactionList

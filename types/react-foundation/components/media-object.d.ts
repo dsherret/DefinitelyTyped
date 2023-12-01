@@ -9,7 +9,9 @@ import { FlexboxPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const MediaObject: React.FunctionComponent<MediaObjectProps>;
-export interface MediaObjectProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface MediaObjectProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     stackForSmall?: boolean | undefined;
 }
 /**
@@ -19,7 +21,9 @@ export interface MediaObjectProps extends FlexboxPropTypes, React.HTMLAttributes
  * @returns {Object}
  */
 export declare const MediaObjectSection: React.FunctionComponent<MediaObjectSectionProps>;
-export interface MediaObjectSectionProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface MediaObjectSectionProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     alignment?: HorizontalAlignments | undefined;
     isMain?: boolean | undefined;
     isMiddle?: boolean | undefined;

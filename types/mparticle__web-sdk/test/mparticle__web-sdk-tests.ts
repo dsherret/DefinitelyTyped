@@ -52,7 +52,7 @@ const identifyRequest: mParticle.IdentifyRequest = {
     },
 };
 
-const identityCallback: mParticle.IdentityCallback = result => {
+const identityCallback: mParticle.IdentityCallback = (result) => {
     if (result.getUser()) {
         // IDSync request succeeded, mutate attributes or query for the MPID as needed
         const user = result.getUser();
@@ -85,13 +85,13 @@ const identityCallback: mParticle.IdentityCallback = result => {
 };
 
 const logger: mParticle.Logger = {
-    error: error => {
+    error: (error) => {
         console.log(error);
     },
-    warning: error => {
+    warning: (error) => {
         console.log(error);
     },
-    verbose: error => {
+    verbose: (error) => {
         console.log(error);
     },
 };
@@ -170,16 +170,37 @@ mParticle.logError(
 mParticle.logEvent("eventName");
 mParticle.logEvent("eventName", mParticle.EventType.Location);
 mParticle.logEvent("eventName", mParticle.EventType.Location, customAttrs);
-mParticle.logEvent("eventName", mParticle.EventType.Location, customAttrs, customFlags);
-mParticle.logEvent("eventName", mParticle.EventType.Location, customAttrs, customFlags, eventOptions);
+mParticle.logEvent(
+    "eventName",
+    mParticle.EventType.Location,
+    customAttrs,
+    customFlags,
+);
+mParticle.logEvent(
+    "eventName",
+    mParticle.EventType.Location,
+    customAttrs,
+    customFlags,
+    eventOptions,
+);
 
 mParticle.logForm("click", "eventName");
 mParticle.logForm("click", "eventName", mParticle.EventType.Location);
-mParticle.logForm("click", "eventName", mParticle.EventType.Location, customAttrs);
+mParticle.logForm(
+    "click",
+    "eventName",
+    mParticle.EventType.Location,
+    customAttrs,
+);
 
 mParticle.logLink("click", "eventName");
 mParticle.logLink("click", "eventName", mParticle.EventType.Location);
-mParticle.logLink("click", "eventName", mParticle.EventType.Location, customAttrs);
+mParticle.logLink(
+    "click",
+    "eventName",
+    mParticle.EventType.Location,
+    customAttrs,
+);
 
 mParticle.logPageView();
 mParticle.logPageView("pageName");
@@ -219,7 +240,7 @@ mParticle.setSessionAttribute("key4", null);
 mParticle.startNewSession();
 
 mParticle.startTrackingLocation();
-mParticle.startTrackingLocation(location => {
+mParticle.startTrackingLocation((location) => {
     console.log(location.coords.latitude);
     console.log(location.coords.longitude);
 });
@@ -233,13 +254,14 @@ mParticle.sessionManager.getSession();
 // CONSENT START
 const user: mParticle.User = mParticle.Identity.getCurrentUser();
 
-const ccpaConsent: mParticle.CCPAConsentState = mParticle.Consent.createCCPAConsent(
-    true,
-    new Date().getTime(),
-    "consentDocument",
-    "location",
-    "hardware",
-);
+const ccpaConsent: mParticle.CCPAConsentState =
+    mParticle.Consent.createCCPAConsent(
+        true,
+        new Date().getTime(),
+        "consentDocument",
+        "location",
+        "hardware",
+    );
 const gdprConsent = mParticle.Consent.createGDPRConsent(
     true,
     new Date().getTime(),
@@ -248,18 +270,21 @@ const gdprConsent = mParticle.Consent.createGDPRConsent(
     "hardware",
 );
 
-let consentState: mParticle.ConsentState = mParticle.Consent.createConsentState();
+let consentState: mParticle.ConsentState =
+    mParticle.Consent.createConsentState();
 
 consentState.addGDPRConsentState("generalConsent", gdprConsent);
 consentState.setCCPAConsentState(ccpaConsent);
 user.setConsentState(consentState);
 
-const ccpaConsentState: mParticle.CCPAConsentState = consentState.getCCPAConsentState();
+const ccpaConsentState: mParticle.CCPAConsentState =
+    consentState.getCCPAConsentState();
 user.setConsentState(consentState);
 
 // Remove consent state
 consentState = user.getConsentState();
-const gdprConsentState: mParticle.GDPRConsentState = consentState.getGDPRConsentState();
+const gdprConsentState: mParticle.GDPRConsentState =
+    consentState.getGDPRConsentState();
 
 const user2 = mParticle.Identity.getCurrentUser();
 user2.getConsentState().setGDPRConsentState(gdprConsentState);
@@ -284,7 +309,11 @@ const product1: mParticle.Product = mParticle.eCommerce.createProduct(
     "coupon1",
     { foo: "bar" },
 );
-const product2: mParticle.Product = mParticle.eCommerce.createProduct("product2", "sku2", 20);
+const product2: mParticle.Product = mParticle.eCommerce.createProduct(
+    "product2",
+    "sku2",
+    20,
+);
 console.log("Product 1 Name", product1.Name);
 console.log("Product 1 Sku", product1.Sku);
 console.log("Product 1 Price", product1.Price);
@@ -296,37 +325,56 @@ console.log("Product 1 Position", product1.Position);
 console.log("Product 1 Coupon", product1.Coupon);
 console.log("Product 1 Attributes", product1.Attributes);
 
-const impression1: mParticle.Impression = mParticle.eCommerce.createImpression("name1", product1);
-const impression2: mParticle.Impression = mParticle.eCommerce.createImpression("name2", product2);
-const impression3: mParticle.Impression = mParticle.eCommerce.createImpression("name2", [product1, product2]);
+const impression1: mParticle.Impression = mParticle.eCommerce.createImpression(
+    "name1",
+    product1,
+);
+const impression2: mParticle.Impression = mParticle.eCommerce.createImpression(
+    "name2",
+    product2,
+);
+const impression3: mParticle.Impression = mParticle.eCommerce.createImpression(
+    "name2",
+    [product1, product2],
+);
 console.log("Impression 1 Name", impression1.Name);
 console.log("Impression 1 Product", impression1.Product);
 
 const promotion1 = mParticle.eCommerce.createPromotion("id2");
-const promotion2: mParticle.Promotion = mParticle.eCommerce.createPromotion("id1", "creative", "name", 1);
+const promotion2: mParticle.Promotion = mParticle.eCommerce.createPromotion(
+    "id1",
+    "creative",
+    "name",
+    1,
+);
 console.log("Promotion 1 ID", promotion1.Id);
 console.log("Promotion 1 Creative", promotion1.Creative);
 console.log("Promotion 1 Name", promotion1.Name);
 console.log("Promotion 1 Position", promotion1.Position);
 
-const transactionAttributes1: mParticle.TransactionAttributes = mParticle.eCommerce.createTransactionAttributes(
-    "TAid1",
-);
-const transactionAttributes2: mParticle.TransactionAttributes = mParticle.eCommerce.createTransactionAttributes(
-    "TAid1",
-    "aff1",
-    "coupon",
-    1798,
-    10,
-    5,
-);
+const transactionAttributes1: mParticle.TransactionAttributes =
+    mParticle.eCommerce.createTransactionAttributes("TAid1");
+const transactionAttributes2: mParticle.TransactionAttributes =
+    mParticle.eCommerce.createTransactionAttributes(
+        "TAid1",
+        "aff1",
+        "coupon",
+        1798,
+        10,
+        5,
+    );
 
 const clearCartBoolean = true;
 const eCommerceCustomAttributes = { value: 10 };
 const eCommerceCustomFlags = { CF1: "key" };
 
 mParticle.eCommerce.logCheckout(1);
-mParticle.eCommerce.logCheckout(1, "ok", eCommerceCustomAttributes, eCommerceCustomFlags);
+mParticle.eCommerce.logCheckout(
+    1,
+    "ok",
+    eCommerceCustomAttributes,
+    eCommerceCustomFlags,
+);
 
 mParticle.eCommerce.logProductAction(
     mParticle.ProductActionType.AddToCart,
@@ -396,7 +444,12 @@ mParticle.eCommerce.logProductAction(
     eCommerceCustomFlags,
 );
 
-mParticle.eCommerce.logProductAction(0, [product1, product2], eCommerceCustomAttributes, eCommerceCustomFlags);
+mParticle.eCommerce.logProductAction(
+    0,
+    [product1, product2],
+    eCommerceCustomAttributes,
+    eCommerceCustomFlags,
+);
 
 mParticle.eCommerce.logProductAction(
     0,
@@ -415,9 +468,15 @@ mParticle.eCommerce.logPurchase(
     eCommerceCustomFlags,
 );
 
-mParticle.eCommerce.logPromotion(mParticle.PromotionType.PromotionClick, promotion1);
+mParticle.eCommerce.logPromotion(
+    mParticle.PromotionType.PromotionClick,
+    promotion1,
+);
 
-mParticle.eCommerce.logPromotion(mParticle.PromotionType.PromotionClick, [promotion1, promotion2]);
+mParticle.eCommerce.logPromotion(mParticle.PromotionType.PromotionClick, [
+    promotion1,
+    promotion2,
+]);
 
 mParticle.eCommerce.logPromotion(
     mParticle.PromotionType.PromotionView,
@@ -441,7 +500,12 @@ mParticle.eCommerce.logPromotion(
 
 mParticle.eCommerce.logImpression(impression1);
 mParticle.eCommerce.logImpression([impression1, impression2]);
-mParticle.eCommerce.logImpression(impression1, eCommerceCustomAttributes, eCommerceCustomFlags, eventOptions);
+mParticle.eCommerce.logImpression(
+    impression1,
+    eCommerceCustomAttributes,
+    eCommerceCustomFlags,
+    eventOptions,
+);
 
 mParticle.eCommerce.logRefund(
     transactionAttributes1,
@@ -481,7 +545,7 @@ const identifyIdentities: mParticle.IdentifyRequest = {
     },
 };
 
-mParticle.Identity.login(identifyIdentities, result => {
+mParticle.Identity.login(identifyIdentities, (result) => {
     console.log(result.body.is_ephemeral);
     console.log(result.body.is_logged_in);
     console.log(result.body.matched_identities);
@@ -515,21 +579,24 @@ mParticle.Identity.login(identifyIdentities, result => {
         endTime: new Date().getTime(),
     };
 
-    mParticle.Identity.aliasUsers(userAliasObject, result => {
+    mParticle.Identity.aliasUsers(userAliasObject, (result) => {
         const httpCode: number = result.httpCode;
         const message: string = result.message;
     });
 
-    const aliasRequest: mParticle.UserAliasRequest = mParticle.Identity.createAliasRequest(
-        result.getPreviousUser(),
-        result.getUser(),
-    );
+    const aliasRequest: mParticle.UserAliasRequest =
+        mParticle.Identity.createAliasRequest(
+            result.getPreviousUser(),
+            result.getUser(),
+        );
 
     result.getPreviousUser().getAllUserAttributes();
-    const consentState: mParticle.ConsentState = result.getUser().getConsentState();
+    const consentState: mParticle.ConsentState = result
+        .getUser()
+        .getConsentState();
 });
 
-mParticle.Identity.logout(identifyIdentities, result => {
+mParticle.Identity.logout(identifyIdentities, (result) => {
     console.log(result.body.is_ephemeral);
     console.log(result.body.is_logged_in);
     console.log(result.body.matched_identities);
@@ -563,18 +630,21 @@ mParticle.Identity.logout(identifyIdentities, result => {
         endTime: new Date().getTime(),
     };
 
-    mParticle.Identity.aliasUsers(userAliasObject, result => {
+    mParticle.Identity.aliasUsers(userAliasObject, (result) => {
         const httpCode: number = result.httpCode;
         const message: string = result.message;
     });
 
-    const aliasRequest: mParticle.UserAliasRequest = mParticle.Identity.createAliasRequest(
-        result.getPreviousUser(),
-        result.getUser(),
-    );
+    const aliasRequest: mParticle.UserAliasRequest =
+        mParticle.Identity.createAliasRequest(
+            result.getPreviousUser(),
+            result.getUser(),
+        );
 
     result.getPreviousUser().getAllUserAttributes();
-    const consentState: mParticle.ConsentState = result.getUser().getConsentState();
+    const consentState: mParticle.ConsentState = result
+        .getUser()
+        .getConsentState();
 });
 
 // Logout Identity API Data can be an empty object with no callback
@@ -583,7 +653,7 @@ mParticle.Identity.logout(null);
 mParticle.Identity.logout(undefined);
 mParticle.Identity.logout();
 
-mParticle.Identity.identify(identifyIdentities, result => {
+mParticle.Identity.identify(identifyIdentities, (result) => {
     console.log(result.body.is_ephemeral);
     console.log(result.body.is_logged_in);
     console.log(result.body.matched_identities);
@@ -618,21 +688,24 @@ mParticle.Identity.identify(identifyIdentities, result => {
         scope: "mpid",
     };
 
-    mParticle.Identity.aliasUsers(userAliasObject, result => {
+    mParticle.Identity.aliasUsers(userAliasObject, (result) => {
         const httpCode: number = result.httpCode;
         const message: string = result.message;
     });
 
-    const aliasRequest: mParticle.UserAliasRequest = mParticle.Identity.createAliasRequest(
-        result.getPreviousUser(),
-        result.getUser(),
-    );
+    const aliasRequest: mParticle.UserAliasRequest =
+        mParticle.Identity.createAliasRequest(
+            result.getPreviousUser(),
+            result.getUser(),
+        );
 
     result.getPreviousUser().getAllUserAttributes();
-    const consentState: mParticle.ConsentState = result.getUser().getConsentState();
+    const consentState: mParticle.ConsentState = result
+        .getUser()
+        .getConsentState();
 });
 
-mParticle.Identity.modify(identifyIdentities, result => {
+mParticle.Identity.modify(identifyIdentities, (result) => {
     console.log(result.body.context);
     console.log(result.body.is_ephemeral);
     console.log(result.body.is_logged_in);
@@ -667,24 +740,30 @@ mParticle.Identity.modify(identifyIdentities, result => {
         endTime: new Date().getTime(),
     };
 
-    mParticle.Identity.aliasUsers(userAliasObject, result => {
+    mParticle.Identity.aliasUsers(userAliasObject, (result) => {
         const httpCode: number = result.httpCode;
         const message: string = result.message;
     });
 
-    const aliasRequest: mParticle.UserAliasRequest = mParticle.Identity.createAliasRequest(
-        result.getPreviousUser(),
-        result.getUser(),
-    );
+    const aliasRequest: mParticle.UserAliasRequest =
+        mParticle.Identity.createAliasRequest(
+            result.getPreviousUser(),
+            result.getUser(),
+        );
 
     result.getPreviousUser().getAllUserAttributes();
-    const consentState: mParticle.ConsentState = result.getUser().getConsentState();
+    const consentState: mParticle.ConsentState = result
+        .getUser()
+        .getConsentState();
 });
 
 const user3: mParticle.User = mParticle.Identity.getCurrentUser();
-const user4: mParticle.User = mParticle.Identity.getUser("mpid" as mParticle.MPID);
+const user4: mParticle.User = mParticle.Identity.getUser(
+    "mpid" as mParticle.MPID,
+);
 
-const identities: mParticle.IdentityApiData = mParticle.Identity.getCurrentUser().getUserIdentities();
+const identities: mParticle.IdentityApiData =
+    mParticle.Identity.getCurrentUser().getUserIdentities();
 const { email, customerid, facebook, other } = identities.userIdentities;
 const mpid: mParticle.MPID = mParticle.Identity.getCurrentUser().getMPID();
 const user5: mParticle.User = mParticle.Identity.getCurrentUser();
@@ -698,7 +777,8 @@ user5.setUserAttributes({
 user5.removeUserAttribute("attr");
 user5.setUserAttributeList("hi", ["hello"]);
 user5.removeAllUserAttributes();
-const userAttributesList: mParticle.AllUserAttributes = user5.getUserAttributesLists();
+const userAttributesList: mParticle.AllUserAttributes =
+    user5.getUserAttributesLists();
 const userAttributes = user5.getAllUserAttributes();
 const abc = "abc";
 

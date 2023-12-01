@@ -40,7 +40,7 @@ render(
 const AriaModalOnExitBasic = (
     <AriaModal
         titleText="test"
-        onExit={e => {
+        onExit={(e) => {
             e.stopPropagation();
         }}
     />

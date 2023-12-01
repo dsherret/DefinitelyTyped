@@ -34,8 +34,17 @@ declare class Nightmare {
         arg2: T2,
         arg3: T3,
     ): Nightmare;
-    evaluate<T1, T2, R>(fn: (arg1: T1, arg2: T2) => R, cb: (result: R) => void, arg1: T1, arg2: T2): Nightmare;
-    evaluate<T, R>(fn: (arg: T) => R, cb: (result: R) => void, arg: T): Nightmare;
+    evaluate<T1, T2, R>(
+        fn: (arg1: T1, arg2: T2) => R,
+        cb: (result: R) => void,
+        arg1: T1,
+        arg2: T2,
+    ): Nightmare;
+    evaluate<T, R>(
+        fn: (arg: T) => R,
+        cb: (result: R) => void,
+        arg: T,
+    ): Nightmare;
     evaluate<T>(fn: (arg: T) => void, cb: () => void, arg: T): Nightmare;
     evaluate<R>(fn: () => R, cb: (result: R) => void): Nightmare;
     evaluate(fn: () => void): Nightmare;
@@ -54,8 +63,17 @@ declare class Nightmare {
         value3: T3,
         value4: T4,
     ): Nightmare;
-    wait<T1, T2, T3>(fn: (arg1: T1, arg2: T2, arg3: T3) => any, value1: T1, value2: T2, value3: T3): Nightmare;
-    wait<T1, T2>(fn: (arg1: T1, arg2: T2) => any, value1: T1, value2: T2): Nightmare;
+    wait<T1, T2, T3>(
+        fn: (arg1: T1, arg2: T2, arg3: T3) => any,
+        value1: T1,
+        value2: T2,
+        value3: T3,
+    ): Nightmare;
+    wait<T1, T2>(
+        fn: (arg1: T1, arg2: T2) => any,
+        value1: T1,
+        value2: T2,
+    ): Nightmare;
     wait<T1>(fn: (arg1: T1) => any, value1: T1): Nightmare;
     wait(fn: () => any, value: any, delay?: number): Nightmare;
     wait(fn: () => any): Nightmare;
@@ -76,19 +94,42 @@ declare class Nightmare {
     on(event: "urlChanged", cb: (targetUrl: string) => void): Nightmare;
     on(
         event: "navigationRequested",
-        cb: (url: string, type: string, willNavigate: boolean, main: boolean) => void,
+        cb: (
+            url: string,
+            type: string,
+            willNavigate: boolean,
+            main: boolean,
+        ) => void,
     ): Nightmare;
     on(
         event: "resourceRequested",
-        cb: (requestData: Nightmare.IRequest, networkRequest: Nightmare.INetwordRequest) => void,
+        cb: (
+            requestData: Nightmare.IRequest,
+            networkRequest: Nightmare.INetwordRequest,
+        ) => void,
     ): Nightmare;
-    on(event: "resourceReceived", cb: (response: Nightmare.IResponse) => void): Nightmare;
-    on(event: "resourceError", cb: (resourceError: Nightmare.IResourceError) => void): Nightmare;
-    on(event: "consoleMessage", cb: (msg: string, lineNumber: number, sourceId: number) => void): Nightmare;
+    on(
+        event: "resourceReceived",
+        cb: (response: Nightmare.IResponse) => void,
+    ): Nightmare;
+    on(
+        event: "resourceError",
+        cb: (resourceError: Nightmare.IResourceError) => void,
+    ): Nightmare;
+    on(
+        event: "consoleMessage",
+        cb: (msg: string, lineNumber: number, sourceId: number) => void,
+    ): Nightmare;
     on(event: "alert", cb: (msg: string) => void): Nightmare;
     on(event: "confirm", cb: (msg: string) => void): Nightmare;
-    on(event: "prompt", cb: (msg: string, defaultValue?: string) => void): Nightmare;
-    on(event: "error", cb: (msg: string, trace?: Nightmare.IStackTrace[]) => void): Nightmare;
+    on(
+        event: "prompt",
+        cb: (msg: string, defaultValue?: string) => void,
+    ): Nightmare;
+    on(
+        event: "error",
+        cb: (msg: string, trace?: Nightmare.IStackTrace[]) => void,
+    ): Nightmare;
     on(event: "timeout", cb: (msg: string) => void): Nightmare;
     once(event: string, cb: () => void): Nightmare;
     once(event: "initialized", cb: () => void): Nightmare;
@@ -97,40 +138,92 @@ declare class Nightmare {
     once(event: "urlChanged", cb: (targetUrl: string) => void): Nightmare;
     once(
         event: "navigationRequested",
-        cb: (url: string, type: string, willNavigate: boolean, main: boolean) => void,
+        cb: (
+            url: string,
+            type: string,
+            willNavigate: boolean,
+            main: boolean,
+        ) => void,
     ): Nightmare;
     once(
         event: "resourceRequested",
-        cb: (requestData: Nightmare.IRequest, networkRequest: Nightmare.INetwordRequest) => void,
+        cb: (
+            requestData: Nightmare.IRequest,
+            networkRequest: Nightmare.INetwordRequest,
+        ) => void,
     ): Nightmare;
-    once(event: "resourceReceived", cb: (response: Nightmare.IResponse) => void): Nightmare;
-    once(event: "resourceError", cb: (resourceError: Nightmare.IResourceError) => void): Nightmare;
-    once(event: "consoleMessage", cb: (msg: string, lineNumber: number, sourceId: number) => void): Nightmare;
+    once(
+        event: "resourceReceived",
+        cb: (response: Nightmare.IResponse) => void,
+    ): Nightmare;
+    once(
+        event: "resourceError",
+        cb: (resourceError: Nightmare.IResourceError) => void,
+    ): Nightmare;
+    once(
+        event: "consoleMessage",
+        cb: (msg: string, lineNumber: number, sourceId: number) => void,
+    ): Nightmare;
     once(event: "alert", cb: (msg: string) => void): Nightmare;
     once(event: "confirm", cb: (msg: string) => void): Nightmare;
-    once(event: "prompt", cb: (msg: string, defaultValue?: string) => void): Nightmare;
-    once(event: "error", cb: (msg: string, trace?: Nightmare.IStackTrace[]) => void): Nightmare;
+    once(
+        event: "prompt",
+        cb: (msg: string, defaultValue?: string) => void,
+    ): Nightmare;
+    once(
+        event: "error",
+        cb: (msg: string, trace?: Nightmare.IStackTrace[]) => void,
+    ): Nightmare;
     once(event: "timeout", cb: (msg: string) => void): Nightmare;
     removeListener(event: string, cb: () => void): Nightmare;
     removeListener(event: "initialized", cb: () => void): Nightmare;
     removeListener(event: "loadStarted", cb: () => void): Nightmare;
-    removeListener(event: "loadFinished", cb: (status: string) => void): Nightmare;
-    removeListener(event: "urlChanged", cb: (targetUrl: string) => void): Nightmare;
+    removeListener(
+        event: "loadFinished",
+        cb: (status: string) => void,
+    ): Nightmare;
+    removeListener(
+        event: "urlChanged",
+        cb: (targetUrl: string) => void,
+    ): Nightmare;
     removeListener(
         event: "navigationRequested",
-        cb: (url: string, type: string, willNavigate: boolean, main: boolean) => void,
+        cb: (
+            url: string,
+            type: string,
+            willNavigate: boolean,
+            main: boolean,
+        ) => void,
     ): Nightmare;
     removeListener(
         event: "resourceRequested",
-        cb: (requestData: Nightmare.IRequest, networkRequest: Nightmare.INetwordRequest) => void,
+        cb: (
+            requestData: Nightmare.IRequest,
+            networkRequest: Nightmare.INetwordRequest,
+        ) => void,
     ): Nightmare;
-    removeListener(event: "resourceReceived", cb: (response: Nightmare.IResponse) => void): Nightmare;
-    removeListener(event: "resourceError", cb: (resourceError: Nightmare.IResourceError) => void): Nightmare;
-    removeListener(event: "consoleMessage", cb: (msg: string, lineNumber: number, sourceId: number) => void): Nightmare;
+    removeListener(
+        event: "resourceReceived",
+        cb: (response: Nightmare.IResponse) => void,
+    ): Nightmare;
+    removeListener(
+        event: "resourceError",
+        cb: (resourceError: Nightmare.IResourceError) => void,
+    ): Nightmare;
+    removeListener(
+        event: "consoleMessage",
+        cb: (msg: string, lineNumber: number, sourceId: number) => void,
+    ): Nightmare;
     removeListener(event: "alert", cb: (msg: string) => void): Nightmare;
     removeListener(event: "confirm", cb: (msg: string) => void): Nightmare;
-    removeListener(event: "prompt", cb: (msg: string, defaultValue?: string) => void): Nightmare;
-    removeListener(event: "error", cb: (msg: string, trace?: Nightmare.IStackTrace[]) => void): Nightmare;
+    removeListener(
+        event: "prompt",
+        cb: (msg: string, defaultValue?: string) => void,
+    ): Nightmare;
+    removeListener(
+        event: "error",
+        cb: (msg: string, trace?: Nightmare.IStackTrace[]) => void,
+    ): Nightmare;
     removeListener(event: "timeout", cb: (msg: string) => void): Nightmare;
     screenshot(done?: (err: any, buffer: Buffer) => void): Nightmare;
     screenshot(path: string, done?: (err: any) => void): Nightmare;
@@ -186,22 +279,26 @@ declare namespace Nightmare {
         cookiesFile?: string | undefined;
         phantomPath?: string | undefined;
         show?: boolean | undefined;
-        paths?: {
-            downloads?: string | undefined;
-        } | undefined;
+        paths?:
+            | {
+                  downloads?: string | undefined;
+              }
+            | undefined;
         maxDownloadRequestWait?: number | undefined;
         ignoreDownloads?: boolean | undefined;
         typeInterval?: number | undefined;
         x?: number | undefined;
         y?: number | undefined;
         electronPath?: string | undefined;
-        openDevTools?: {
-            /**
-             * Opens the devtools with specified dock state, can be right, bottom, undocked, detach.
-             * https://github.com/electron/electron/blob/master/docs/api/web-contents.md#contentsopendevtoolsoptions
-             */
-            mode?: string | undefined;
-        } | undefined;
+        openDevTools?:
+            | {
+                  /**
+                   * Opens the devtools with specified dock state, can be right, bottom, undocked, detach.
+                   * https://github.com/electron/electron/blob/master/docs/api/web-contents.md#contentsopendevtoolsoptions
+                   */
+                  mode?: string | undefined;
+              }
+            | undefined;
     }
 
     export interface IRequest {

@@ -136,9 +136,13 @@ declare namespace wx {
         //  中断下载任务
         abort(): void;
         //  下载进度变化事件的回调函数
-        onProgressUpdate(callback: (res: OnProgressCallbackOptions) => {}): void;
+        onProgressUpdate(
+            callback: (res: OnProgressCallbackOptions) => {},
+        ): void;
         //  取消监听下载进度变化事件
-        offProgressUpdate(callback: (res: OnProgressCallbackOptions) => {}): void;
+        offProgressUpdate(
+            callback: (res: OnProgressCallbackOptions) => {},
+        ): void;
         //  监听 HTTP Response Header 事件。会比请求完成事件更早
         onHeadersReceived(callback: DataResponseCallback): void;
         //  取消监听 HTTP Response Header 事件
@@ -172,9 +176,13 @@ declare namespace wx {
         //  中断上传任务
         abort(): void;
         //  上传进度变化事件的回调函数
-        onProgressUpdate(callback: (res: OnProgressCallbackOptions) => {}): void;
+        onProgressUpdate(
+            callback: (res: OnProgressCallbackOptions) => {},
+        ): void;
         //  取消监听上传进度变化事件
-        offProgressUpdate(callback: (res: OnProgressCallbackOptions) => {}): void;
+        offProgressUpdate(
+            callback: (res: OnProgressCallbackOptions) => {},
+        ): void;
         //  监听 HTTP Response Header 事件。会比请求完成事件更早
         onHeadersReceived(callback: DataResponseCallback): void;
         //  取消监听 HTTP Response Header 事件
@@ -373,7 +381,9 @@ declare namespace wx {
         /** 歌曲数据链接，只有在当前有音乐播放时返回 */
         dataUrl?: string | undefined;
     }
-    type GetBackgroundAudioPlayerStateSuccessCallback = (state: BackgroundAudioPlayerState) => void;
+    type GetBackgroundAudioPlayerStateSuccessCallback = (
+        state: BackgroundAudioPlayerState,
+    ) => void;
     interface GetBackgroundAudioPlayerStateOptions {
         /** 接口调用成功的回调函数 */
         success?: GetBackgroundAudioPlayerStateSuccessCallback | undefined;
@@ -383,7 +393,9 @@ declare namespace wx {
         complete?: NoneParamCallback | undefined;
     }
     /** 获取音乐播放状态。 */
-    function getBackgroundAudioPlayerState(options: GetBackgroundAudioPlayerStateOptions): void;
+    function getBackgroundAudioPlayerState(
+        options: GetBackgroundAudioPlayerStateOptions,
+    ): void;
 
     interface PlayBackgroundAudioOptions {
         /** 音乐链接 */
@@ -1116,7 +1128,14 @@ declare namespace wx {
      */
     function hideNavigationBarLoading(): void;
 
-    type TimingFunction = "linear" | "ease" | "ease-in" | "ease-in-out" | "ease-out" | "step-start" | "step-end";
+    type TimingFunction =
+        | "linear"
+        | "ease"
+        | "ease-in"
+        | "ease-in-out"
+        | "ease-out"
+        | "step-start"
+        | "step-end";
 
     // 动画
     interface CreateAnimationOptions {
@@ -1253,7 +1272,14 @@ declare namespace wx {
         /**
          * 同transform-function matrix
          */
-        matrix(a: number, b: number, c: number, d: number, tx: number, ty: number): Animation;
+        matrix(
+            a: number,
+            b: number,
+            c: number,
+            d: number,
+            tx: number,
+            ty: number,
+        ): Animation;
         /** 同transform-function matrix3d */
         matrix3d(
             a1: number,
@@ -1401,7 +1427,14 @@ declare namespace wx {
          * @param {number} endAngle 结束弧度
          * @param {boolean} sweepAngle 从起始弧度开始，扫过的弧度
          */
-        arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, sweepAngle: boolean): void;
+        arc(
+            x: number,
+            y: number,
+            radius: number,
+            startAngle: number,
+            endAngle: number,
+            sweepAngle: boolean,
+        ): void;
         /**
          * 创建二次方贝塞尔曲线
          *
@@ -1421,7 +1454,14 @@ declare namespace wx {
          * @param {number} x 结束点的x坐标
          * @param {number} y 结束点的y坐标
          */
-        bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+        bezierCurveTo(
+            cp1x: number,
+            cp1y: number,
+            cp2x: number,
+            cp2y: number,
+            x: number,
+            y: number,
+        ): void;
         /**
          * 设置填充样式
          *
@@ -1442,7 +1482,12 @@ declare namespace wx {
          * @param {number} blur 阴影的模糊级别，数值越大越模糊 0~100
          * @param {string} color 阴影的颜色。 'rgb(255, 0, 0)'或'rgba(255, 0, 0, 0.6)'或'#ff0000'格式的颜色字符串
          */
-        setShadow(offsetX: number, offsetY: number, blur: number, color: string): void;
+        setShadow(
+            offsetX: number,
+            offsetY: number,
+            blur: number,
+            color: string,
+        ): void;
         /**
          * 设置字体大小
          *
@@ -1555,7 +1600,9 @@ declare namespace wx {
     /**
      * 返回到上一个小程序。只有在当前小程序是被其他小程序打开时可以调用成功
      */
-    function navigateBackMiniProgram(options: NavigateBackMiniProgramOptions): void;
+    function navigateBackMiniProgram(
+        options: NavigateBackMiniProgramOptions,
+    ): void;
 
     // 帐号信息
     interface AccountInfo {
@@ -1763,4 +1810,13 @@ declare function setInterval(callback: any, delay: number, rest: any): number;
  */
 declare function clearInterval(timeoutID: number): number;
 
-export { App, clearInterval, clearTimeout, getApp, Page, setInterval, setTimeout, wx };
+export {
+    App,
+    clearInterval,
+    clearTimeout,
+    getApp,
+    Page,
+    setInterval,
+    setTimeout,
+    wx,
+};

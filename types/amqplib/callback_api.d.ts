@@ -5,7 +5,9 @@ export * from "./properties";
 export interface Connection extends events.EventEmitter {
     close(callback?: (err: any) => void): void;
     createChannel(callback: (err: any, channel: Channel) => void): void;
-    createConfirmChannel(callback: (err: any, confirmChannel: ConfirmChannel) => void): void;
+    createConfirmChannel(
+        callback: (err: any, confirmChannel: ConfirmChannel) => void,
+    ): void;
     connection: {
         serverProperties: ServerProperties;
     };
@@ -21,14 +23,20 @@ export interface Channel extends events.EventEmitter {
         options?: Options.AssertQueue,
         callback?: (err: any, ok: Replies.AssertQueue) => void,
     ): void;
-    checkQueue(queue: string, callback?: (err: any, ok: Replies.AssertQueue) => void): void;
+    checkQueue(
+        queue: string,
+        callback?: (err: any, ok: Replies.AssertQueue) => void,
+    ): void;
 
     deleteQueue(
         queue: string,
         options?: Options.DeleteQueue,
         callback?: (err: any, ok: Replies.DeleteQueue) => void,
     ): void;
-    purgeQueue(queue: string, callback?: (err: any, ok: Replies.PurgeQueue) => void): void;
+    purgeQueue(
+        queue: string,
+        callback?: (err: any, ok: Replies.PurgeQueue) => void,
+    ): void;
 
     bindQueue(
         queue: string,
@@ -51,7 +59,10 @@ export interface Channel extends events.EventEmitter {
         options?: Options.AssertExchange,
         callback?: (err: any, ok: Replies.AssertExchange) => void,
     ): void;
-    checkExchange(exchange: string, callback?: (err: any, ok: Replies.Empty) => void): void;
+    checkExchange(
+        exchange: string,
+        callback?: (err: any, ok: Replies.Empty) => void,
+    ): void;
 
     deleteExchange(
         exchange: string,
@@ -74,8 +85,17 @@ export interface Channel extends events.EventEmitter {
         callback?: (err: any, ok: Replies.Empty) => void,
     ): void;
 
-    publish(exchange: string, routingKey: string, content: Buffer, options?: Options.Publish): boolean;
-    sendToQueue(queue: string, content: Buffer, options?: Options.Publish): boolean;
+    publish(
+        exchange: string,
+        routingKey: string,
+        content: Buffer,
+        options?: Options.Publish,
+    ): boolean;
+    sendToQueue(
+        queue: string,
+        content: Buffer,
+        options?: Options.Publish,
+    ): boolean;
 
     consume(
         queue: string,
@@ -84,8 +104,15 @@ export interface Channel extends events.EventEmitter {
         callback?: (err: any, ok: Replies.Consume) => void,
     ): void;
 
-    cancel(consumerTag: string, callback?: (err: any, ok: Replies.Empty) => void): void;
-    get(queue: string, options?: Options.Get, callback?: (err: any, ok: Message | false) => void): void;
+    cancel(
+        consumerTag: string,
+        callback?: (err: any, ok: Replies.Empty) => void,
+    ): void;
+    get(
+        queue: string,
+        options?: Options.Get,
+        callback?: (err: any, ok: Message | false) => void,
+    ): void;
 
     ack(message: Message, allUpTo?: boolean): void;
     ackAll(): void;
@@ -117,7 +144,10 @@ export interface ConfirmChannel extends Channel {
 }
 
 export const credentials: {
-    amqplain(username: string, password: string): {
+    amqplain(
+        username: string,
+        password: string,
+    ): {
         mechanism: string;
         response(): Buffer;
         username: string;
@@ -127,7 +157,10 @@ export const credentials: {
         mechanism: string;
         response(): Buffer;
     };
-    plain(username: string, password: string): {
+    plain(
+        username: string,
+        password: string,
+    ): {
         mechanism: string;
         response(): Buffer;
         username: string;
@@ -135,8 +168,13 @@ export const credentials: {
     };
 };
 
-export function connect(callback: (err: any, connection: Connection) => void): void;
-export function connect(url: string | Options.Connect, callback: (err: any, connection: Connection) => void): void;
+export function connect(
+    callback: (err: any, connection: Connection) => void,
+): void;
+export function connect(
+    url: string | Options.Connect,
+    callback: (err: any, connection: Connection) => void,
+): void;
 export function connect(
     url: string | Options.Connect,
     socketOptions: any,

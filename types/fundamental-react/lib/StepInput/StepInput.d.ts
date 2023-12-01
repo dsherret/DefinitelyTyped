@@ -8,10 +8,17 @@ export interface StepInputProps {
     onChange?: ((stepValue: number) => void) | undefined;
     placeholder?: string | undefined;
     readOnly?: boolean | undefined;
-    validationState?: {
-        state?: "error" | "warning" | "information" | "success" | undefined;
-        text?: string | undefined;
-    } | undefined;
+    validationState?:
+        | {
+              state?:
+                  | "error"
+                  | "warning"
+                  | "information"
+                  | "success"
+                  | undefined;
+              text?: string | undefined;
+          }
+        | undefined;
     value?: number | undefined;
 }
 

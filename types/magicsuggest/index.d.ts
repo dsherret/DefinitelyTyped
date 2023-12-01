@@ -3,7 +3,9 @@ interface JQuery {
     /**
      * Initialize MagicSuggest on this selector
      */
-    magicSuggest(configurationObject?: MagicSuggest.Configuration): MagicSuggest.Instance;
+    magicSuggest(
+        configurationObject?: MagicSuggest.Configuration,
+    ): MagicSuggest.Instance;
 }
 
 declare namespace MagicSuggest {

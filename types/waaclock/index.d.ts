@@ -39,19 +39,32 @@ declare namespace WAAClock {
  * You can set the default tolerance of events with the options toleranceLate and toleranceEarly.
  */
 declare class WAAClock {
-    constructor(audioContext: AudioContext, opts?: { toleranceEarly?: number; toleranceLate?: number });
+    constructor(
+        audioContext: AudioContext,
+        opts?: { toleranceEarly?: number; toleranceLate?: number },
+    );
 
     /** Schedules func to run before deadline in seconds, and returns an Event object. */
-    callbackAtTime(func: (e: WAAClock.Event) => void, deadline: number): WAAClock.Event;
+    callbackAtTime(
+        func: (e: WAAClock.Event) => void,
+        deadline: number,
+    ): WAAClock.Event;
 
     /** Schedules func to run after delay seconds, and returns an Event object. */
-    setTimeout(func: (e: WAAClock.Event) => void, delay: number): WAAClock.Event;
+    setTimeout(
+        func: (e: WAAClock.Event) => void,
+        delay: number,
+    ): WAAClock.Event;
 
     /**
      * Stretch time and repeat time of events by ratio, keeping their relative distance,
      * and taking tRef as a reference . In fact this is equivalent to changing the tempo.
      */
-    timeStretch(tRef: number, events: WAAClock.Event[], ratio: number): WAAClock.Event[];
+    timeStretch(
+        tRef: number,
+        events: WAAClock.Event[],
+        ratio: number,
+    ): WAAClock.Event[];
 
     /** Starts the clock. This will also erase all the events that were previously scheduled. */
     start(): void;

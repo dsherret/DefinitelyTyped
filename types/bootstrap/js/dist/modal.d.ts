@@ -1,4 +1,7 @@
-import BaseComponent, { GetInstanceFactory, GetOrCreateInstanceFactory } from "./base-component";
+import BaseComponent, {
+    GetInstanceFactory,
+    GetOrCreateInstanceFactory,
+} from "./base-component";
 
 declare class Modal extends BaseComponent {
     /**
@@ -11,7 +14,10 @@ declare class Modal extends BaseComponent {
      * Static method which allows you to get the modal instance associated with
      * a DOM element, or create a new one in case it wasn’t initialised
      */
-    static getOrCreateInstance: GetOrCreateInstanceFactory<Modal, Partial<Modal.Options>>;
+    static getOrCreateInstance: GetOrCreateInstanceFactory<
+        Modal,
+        Partial<Modal.Options>
+    >;
 
     static jQueryInterface: Modal.jQueryInterface;
 
@@ -126,7 +132,13 @@ declare namespace Modal {
     }
 
     type jQueryInterface = (
-        config?: Partial<Options> | "toggle" | "show" | "hide" | "handleUpdate" | "dispose",
+        config?:
+            | Partial<Options>
+            | "toggle"
+            | "show"
+            | "hide"
+            | "handleUpdate"
+            | "dispose",
     ) => JQuery;
 }
 

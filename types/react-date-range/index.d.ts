@@ -193,13 +193,13 @@ export interface CalendarProps {
      */
     navigatorRenderer?:
         | ((
-            currFocusedDate: Date,
-            changeShownDate: (
-                value: Date | number | string,
-                mode?: "set" | "setYear" | "setMonth" | "monthOffset",
-            ) => void,
-            props: CalendarProps,
-        ) => JSX.Element)
+              currFocusedDate: Date,
+              changeShownDate: (
+                  value: Date | number | string,
+                  mode?: "set" | "setYear" | "setMonth" | "monthOffset",
+              ) => void,
+              props: CalendarProps,
+          ) => JSX.Element)
         | undefined;
     /** default: none */
     onChange?: ((date: Date) => void) | undefined;
@@ -306,7 +306,9 @@ export interface DefinedRangeProps {
      *
      * default: none
      */
-    renderStaticRangeLabel?: ((staticRange: StaticRange) => React.ReactNode) | undefined;
+    renderStaticRangeLabel?:
+        | ((staticRange: StaticRange) => React.ReactNode)
+        | undefined;
     /** default: `defaultStaticRanges` (defined and exported in package) */
     staticRanges?: StaticRange[] | undefined;
 }
@@ -316,13 +318,17 @@ export class DefinedRange extends React.Component<DefinedRangeProps> {}
 export const defaultStaticRanges: StaticRange[];
 export const defaultInputRanges: InputRange[];
 
-export function createStaticRanges(ranges: Array<Optional<StaticRange, "isSelected">>): StaticRange[];
+export function createStaticRanges(
+    ranges: Array<Optional<StaticRange, "isSelected">>,
+): StaticRange[];
 
 // =============================================================================
 // DateRangePicker Component
 // =============================================================================
 
-export interface DateRangePickerProps extends DateRangeProps, DefinedRangeProps {
+export interface DateRangePickerProps
+    extends DateRangeProps,
+        DefinedRangeProps {
     /**
      * NOTE: currently the date range picker component passes the `onPreviewChange` prop
      * (if included) to both subcomponents even though they seemingly expect different types

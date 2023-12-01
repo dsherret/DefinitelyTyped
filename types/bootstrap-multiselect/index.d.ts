@@ -83,7 +83,9 @@ interface MultiSelectOptions {
     /**
      * A function which is triggered when the multiselect is finished initializing.
      */
-    onInitialized?: ((select: HTMLSelectElement, container: HTMLElement) => void) | undefined;
+    onInitialized?:
+        | ((select: HTMLSelectElement, container: HTMLElement) => void)
+        | undefined;
 
     /**
      * A callback called when the dropdown is shown.
@@ -151,7 +153,12 @@ interface MultiSelectOptions {
      * @param options
      * @param select
      */
-    buttonText?: ((options: HTMLOptionsCollection, select: HTMLSelectElement) => string) | undefined;
+    buttonText?:
+        | ((
+              options: HTMLOptionsCollection,
+              select: HTMLSelectElement,
+          ) => string)
+        | undefined;
 
     /**
      * A callback specifying the title of the button.
@@ -161,7 +168,9 @@ interface MultiSelectOptions {
      * @param options
      * @param select
      */
-    buttonTitle?: ((options: HTMLOptionElement[], select: HTMLSelectElement) => string) | undefined;
+    buttonTitle?:
+        | ((options: HTMLOptionElement[], select: HTMLSelectElement) => string)
+        | undefined;
 
     /**
      * The text displayed when no option is selected. This option is used in the default buttonText and buttonTitle functions.
@@ -293,15 +302,33 @@ interface MultiSelectOptions {
 interface JQuery {
     multiselect(options?: MultiSelectOptions): JQuery;
 
-    multiselect(method: "destroy" | "refresh" | "rebuild" | "updateButtonText" | "disable" | "enable"): JQuery;
+    multiselect(
+        method:
+            | "destroy"
+            | "refresh"
+            | "rebuild"
+            | "updateButtonText"
+            | "disable"
+            | "enable",
+    ): JQuery;
 
-    multiselect(method: "select" | "deselect", value: string | string[] | number, triggerOnChange?: boolean): JQuery;
+    multiselect(
+        method: "select" | "deselect",
+        value: string | string[] | number,
+        triggerOnChange?: boolean,
+    ): JQuery;
 
-    multiselect(method: "selectAll" | "deselectAll", justVisible?: boolean): JQuery;
+    multiselect(
+        method: "selectAll" | "deselectAll",
+        justVisible?: boolean,
+    ): JQuery;
 
     multiselect(method: "setOptions", options: MultiSelectOptions): JQuery;
 
-    multiselect(method: "dataprovider", data: MultiSelectOptionElement[]): JQuery;
+    multiselect(
+        method: "dataprovider",
+        data: MultiSelectOptionElement[],
+    ): JQuery;
 
     multiselect(method: "setAllSelectedText", value: string): JQuery;
 }

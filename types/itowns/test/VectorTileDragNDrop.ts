@@ -43,18 +43,38 @@ function loadStyle(event: Event, files?: FileList) {
 }
 
 // Listen to drag and drop actions
-document.addEventListener("dragenter", function _(e) {
-    e.preventDefault();
-}, false);
-document.addEventListener("dragover", function _(e) {
-    e.preventDefault();
-}, false);
-document.addEventListener("dragleave", function _(e) {
-    e.preventDefault();
-}, false);
-document.addEventListener("drop", function _(e) {
-    loadStyle(e, e.dataTransfer?.files);
-}, false);
-document.addEventListener("paste", function _(e) {
-    loadStyle(e, e.clipboardData?.files);
-}, false);
+document.addEventListener(
+    "dragenter",
+    function _(e) {
+        e.preventDefault();
+    },
+    false,
+);
+document.addEventListener(
+    "dragover",
+    function _(e) {
+        e.preventDefault();
+    },
+    false,
+);
+document.addEventListener(
+    "dragleave",
+    function _(e) {
+        e.preventDefault();
+    },
+    false,
+);
+document.addEventListener(
+    "drop",
+    function _(e) {
+        loadStyle(e, e.dataTransfer?.files);
+    },
+    false,
+);
+document.addEventListener(
+    "paste",
+    function _(e) {
+        loadStyle(e, e.clipboardData?.files);
+    },
+    false,
+);

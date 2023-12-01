@@ -133,11 +133,12 @@ declare const nodeRedNodeTestHelper: NodeTestHelper & {
 
 declare namespace nodeRedNodeTestHelper {
     type TestNodeInitializer = NodeInitializer | NodeInitializer[];
-    type TestFlowsItem<TNodeDef extends NodeDef = NodeDef> = Partial<TNodeDef> & {
-        id: string;
-        type: string;
-        wires?: string[][] | undefined;
-    };
+    type TestFlowsItem<TNodeDef extends NodeDef = NodeDef> =
+        Partial<TNodeDef> & {
+            id: string;
+            type: string;
+            wires?: string[][] | undefined;
+        };
     type TestFlows = TestFlowsItem[];
     type TestCredentials<TCred> = NodeCredentials<TCred>;
 }

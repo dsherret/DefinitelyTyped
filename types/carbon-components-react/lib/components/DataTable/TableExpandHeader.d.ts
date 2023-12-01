@@ -1,6 +1,7 @@
 import * as React from "react";
 
-export interface TableExpandHeaderProps extends React.ThHTMLAttributes<HTMLTableHeaderCellElement> {
+export interface TableExpandHeaderProps
+    extends React.ThHTMLAttributes<HTMLTableHeaderCellElement> {
     ariaLabel?: string | undefined;
     /**
      * @deprecated

@@ -12,7 +12,14 @@ export type TypedArray =
     | Uint32Array
     | Float32Array
     | Float64Array;
-export type Resampling = "NEAREST" | "GAUSS" | "CUBIC" | "AVERAGE" | "MODE" | "AVERAGE_MAGPHASE" | "NONE";
+export type Resampling =
+    | "NEAREST"
+    | "GAUSS"
+    | "CUBIC"
+    | "AVERAGE"
+    | "MODE"
+    | "AVERAGE_MAGPHASE"
+    | "NONE";
 
 export interface XY {
     x: number;
@@ -279,9 +286,17 @@ export class CoordinateTransformation {
 }
 
 export interface Dataset {
-    buildOverviews(resampling: Resampling, overviews: number[], bands?: number[]): void;
+    buildOverviews(
+        resampling: Resampling,
+        overviews: number[],
+        bands?: number[],
+    ): void;
     close(): void;
-    executeSQL(statement: string, spatial_filter?: Geometry, dialect?: string): Layer;
+    executeSQL(
+        statement: string,
+        spatial_filter?: Geometry,
+        dialect?: string,
+    ): Layer;
     flush(): void;
     getFileList(): string[];
     getGCPProjection(): string;
@@ -310,7 +325,11 @@ export interface DatasetBands {
 }
 
 export interface DatasetLayers {
-    copy(src_lyr_name: string, dst_lyr_name: string, options?: object | string[]): Layer;
+    copy(
+        src_lyr_name: string,
+        dst_lyr_name: string,
+        options?: object | string[],
+    ): Layer;
     count(): number;
     create(
         name: string,
@@ -336,7 +355,12 @@ export interface Driver {
         data_type?: number,
         creation_options?: string[] | object,
     ): Dataset;
-    createCopy(filename: string, src: Dataset, strict?: boolean, options?: string[] | object): Dataset;
+    createCopy(
+        filename: string,
+        src: Dataset,
+        strict?: boolean,
+        options?: string[] | object,
+    ): Dataset;
     deleteDataset(filename: string): void;
     getMetadata(domain?: string): object;
     open(path: string, mode?: "r" | "r+"): Dataset;
@@ -513,7 +537,12 @@ export interface Layer {
     getSpatialFilter(): Geometry;
     setAttributeFilter(filter: string): void;
     setSpatialFilter(filter: Geometry): void;
-    setSpatialFilter(minX: number, maxX: number, minY: number, maxY: number): void;
+    setSpatialFilter(
+        minX: number,
+        maxX: number,
+        minY: number,
+        maxY: number,
+    ): void;
     testCapability(capability: string): boolean;
     readonly ds: Dataset;
     readonly features: LayerFeatures;
@@ -618,8 +647,16 @@ export interface RasterBand {
     getMaskBand(): RasterBand;
     getMaskFlags(): number;
     getMetadata(domain?: string): object;
-    getStatistics(allow_approximation: boolean, force: boolean): RasterBandStatistics;
-    setStatistics(min: number, max: number, mean: number, std_dev: number): void;
+    getStatistics(
+        allow_approximation: boolean,
+        force: boolean,
+    ): RasterBandStatistics;
+    setStatistics(
+        min: number,
+        max: number,
+        mean: number,
+        std_dev: number,
+    ): void;
     readonly blockSize: XY;
     categoryNames: string[];
     colorInterpretation: string;
@@ -723,11 +760,25 @@ export const drivers: GDALDrivers;
 export const lastError: { number: any; message: any; type: any };
 export const version: string;
 
-export function checksumImage(src: RasterBand, x?: number, y?: number, w?: number, h?: number): number;
+export function checksumImage(
+    src: RasterBand,
+    x?: number,
+    y?: number,
+    w?: number,
+    h?: number,
+): number;
 export function contourGenerate(options: ContourGenerateOptions): void;
-export function decToDMS(angle: number, axis: "lat" | "long", precision?: number): string;
+export function decToDMS(
+    angle: number,
+    axis: "lat" | "long",
+    precision?: number,
+): string;
 export function fillNodata(options: FillNoDataOptions): void;
-export function open(path: string, mode?: "r" | "r+" | "w", drivers?: string | string[]): Dataset;
+export function open(
+    path: string,
+    mode?: "r" | "r+" | "w",
+    drivers?: string | string[],
+): Dataset;
 export function open(
     path: string,
     mode?: "w",
@@ -742,5 +793,8 @@ export function polygonize(options: PolygonizeOptions): void;
 export function quiet(): void;
 export function reprojectImage(options: ReprojectImageOptions): void;
 export function sieveFilter(options: SieveFilterOptions): void;
-export function suggestedWarpOutput(options: SuggestedWarpOutputOptions): { rasterSize: any; geoTransform: any };
+export function suggestedWarpOutput(options: SuggestedWarpOutputOptions): {
+    rasterSize: any;
+    geoTransform: any;
+};
 export function verbose(): void;

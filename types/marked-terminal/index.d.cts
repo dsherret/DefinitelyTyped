@@ -57,7 +57,10 @@ export interface TerminalRendererOptions {
 }
 
 declare class TerminalRenderer extends Renderer {
-    constructor(options?: TerminalRendererOptions, highlightOptions?: CardinalOptions);
+    constructor(
+        options?: TerminalRendererOptions,
+        highlightOptions?: CardinalOptions,
+    );
 }
 
 export function markedTerminal(

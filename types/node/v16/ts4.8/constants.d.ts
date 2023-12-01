@@ -4,12 +4,11 @@ declare module "constants" {
     import { constants as cryptoConstants } from "node:crypto";
     import { constants as fsConstants } from "node:fs";
 
-    const exp:
-        & typeof osConstants.errno
-        & typeof osConstants.priority
-        & SignalConstants
-        & typeof cryptoConstants
-        & typeof fsConstants;
+    const exp: typeof osConstants.errno &
+        typeof osConstants.priority &
+        SignalConstants &
+        typeof cryptoConstants &
+        typeof fsConstants;
     export = exp;
 }
 

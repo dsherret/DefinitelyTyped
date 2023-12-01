@@ -4,12 +4,15 @@ import snekfetch = require("snekfetch");
 
 const writeFile = util.promisify(fs.writeFile);
 
-snekfetch.get("https://s.gus.host/o-SNAKES-80.jpg")
-    .then(r => writeFile("download.jpg", r.body as (string | Buffer)));
+snekfetch
+    .get("https://s.gus.host/o-SNAKES-80.jpg")
+    .then((r) => writeFile("download.jpg", r.body as string | Buffer));
 
-snekfetch.get("https://s.gus.host/o-SNAKES-80.jpg")
+snekfetch
+    .get("https://s.gus.host/o-SNAKES-80.jpg")
     .pipe(fs.createWriteStream("download.jpg"));
 
-snekfetch.post("https://httpbin.org/post")
+snekfetch
+    .post("https://httpbin.org/post")
     .send({ meme: "dream" })
-    .then(r => console.log(r.body));
+    .then((r) => console.log(r.body));

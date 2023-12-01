@@ -32,7 +32,10 @@ export class FrisbySpec<TResult = FrisbyResponse> {
     ): [T] extends [FrisbySpec<infer U>] ? FrisbySpec<U> : FrisbySpec<T>;
     timeout(timeout: number): number;
     use(fn: (...args: any[]) => void): FrisbySpec;
-    static addExpectHandler(expectName: string, expectFn: (...args: any[]) => any): void;
+    static addExpectHandler(
+        expectName: string,
+        expectFn: (...args: any[]) => any,
+    ): void;
     static removeExpectHandler(expectName: string): void;
 }
 
@@ -45,7 +48,10 @@ export interface FrisbyResponse {
 }
 
 export const version: string;
-export function addExpectHandler(expectName: string, expectFn: (...args: any[]) => any): FrisbySpec;
+export function addExpectHandler(
+    expectName: string,
+    expectFn: (...args: any[]) => any,
+): FrisbySpec;
 export function baseUrl(url: string): void;
 export function create(name: string): void;
 export function del(...args: any[]): FrisbySpec;
@@ -57,7 +63,10 @@ export function globalSetup(opts: {}): void;
 export function patch(...args: any[]): FrisbySpec;
 export function post(...args: any[]): FrisbySpec;
 export function put(...args: any[]): FrisbySpec;
-export function removeExpectHandler(expectName: string, expectFn: (...args: any[]) => any): FrisbySpec;
+export function removeExpectHandler(
+    expectName: string,
+    expectFn: (...args: any[]) => any,
+): FrisbySpec;
 export function setup(...args: any[]): FrisbySpec;
 export function timeout(...args: any[]): FrisbySpec;
 export function use(...args: any[]): FrisbySpec;

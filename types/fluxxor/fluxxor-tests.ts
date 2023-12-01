@@ -27,7 +27,11 @@ class DispatcherTest {
     waitForStores() {
         var store: Fluxxor.Store;
         var fn = () => console.log(1);
-        var v1: void = this.v.waitForStores(store, ["mystore1", "mystore2"], fn);
+        var v1: void = this.v.waitForStores(
+            store,
+            ["mystore1", "mystore2"],
+            fn,
+        );
     }
 }
 
@@ -85,20 +89,10 @@ class StoreTest {
 
         // first form
         var v1: void = this.v.bindActions("action1", fn);
-        var v2: void = this.v.bindActions(
-            "action1",
-            fn,
-            "action2",
-            fn,
-        );
+        var v2: void = this.v.bindActions("action1", fn, "action2", fn);
 
         // second form
-        var v3: void = this.v.bindActions([
-            "action1",
-            fn,
-            "action2",
-            fn,
-        ]);
+        var v3: void = this.v.bindActions(["action1", fn, "action2", fn]);
     }
 
     waitFor() {
@@ -145,7 +139,11 @@ class StoreWatchMixinTest<StoreState> {
     constructor() {
         this.v = Fluxxor.StoreWatchMixin<StoreState>("store1");
         this.v = Fluxxor.StoreWatchMixin<StoreState>("store1", "store2");
-        this.v = Fluxxor.StoreWatchMixin<StoreState>("store1", "store2", "store3");
+        this.v = Fluxxor.StoreWatchMixin<StoreState>(
+            "store1",
+            "store2",
+            "store3",
+        );
     }
 
     getStateFromFlux() {

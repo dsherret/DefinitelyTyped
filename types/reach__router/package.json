@@ -1,37 +1,37 @@
 {
-    "private": true,
-    "name": "@types/reach__router",
-    "version": "1.3.9999",
-    "projects": [
-        "https://github.com/reach/router"
-    ],
-    "dependencies": {
-        "@types/react": "*"
+  "private": true,
+  "name": "@types/reach__router",
+  "version": "1.3.9999",
+  "projects": [
+    "https://github.com/reach/router"
+  ],
+  "dependencies": {
+    "@types/react": "*"
+  },
+  "devDependencies": {
+    "@types/reach__router": "workspace:.",
+    "@types/react-dom": "*"
+  },
+  "owners": [
+    {
+      "name": "A.Mokhtar",
+      "githubUsername": "xMokAx"
     },
-    "devDependencies": {
-        "@types/reach__router": "workspace:.",
-        "@types/react-dom": "*"
+    {
+      "name": "Awwit",
+      "githubUsername": "awwit"
     },
-    "owners": [
-        {
-            "name": "A.Mokhtar",
-            "githubUsername": "xMokAx"
-        },
-        {
-            "name": "Awwit",
-            "githubUsername": "awwit"
-        },
-        {
-            "name": "wroughtec",
-            "githubUsername": "wroughtec"
-        },
-        {
-            "name": "O.Jackman",
-            "githubUsername": "chilledoj"
-        },
-        {
-            "name": "Eyas",
-            "githubUsername": "Eyas"
-        }
-    ]
+    {
+      "name": "wroughtec",
+      "githubUsername": "wroughtec"
+    },
+    {
+      "name": "O.Jackman",
+      "githubUsername": "chilledoj"
+    },
+    {
+      "name": "Eyas",
+      "githubUsername": "Eyas"
+    }
+  ]
 }

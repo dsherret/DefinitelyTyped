@@ -16,7 +16,9 @@ import * as fs from "fs";
 
     client.list("/remote/path").then(() => null);
     client.list("/remote/path", (f) => /foobar$/.test(f.name)).then(() => null);
-    client.list("/remote/path", (f) => f.name.startsWith("foo")).then(() => null);
+    client
+        .list("/remote/path", (f) => f.name.startsWith("foo"))
+        .then(() => null);
 
     const type = (await client.list("/remote/path"))[0].type;
     switch (type) {
@@ -35,7 +37,9 @@ import * as fs from "fs";
     client.realPath("/remote/path").then(() => null);
 
     client.get("/remote/path").then(() => null);
-    client.get("/remote/path", fs.createWriteStream("/local/path/copy.txt")).then(() => null);
+    client
+        .get("/remote/path", fs.createWriteStream("/local/path/copy.txt"))
+        .then(() => null);
     client
         .get("/remote/path", fs.createWriteStream("/local/path/copy.txt"), {
             readStreamOptions: {
@@ -59,7 +63,9 @@ import * as fs from "fs";
 
     client.put("/local/path", "/remote/path").then(() => null);
     client.put(Buffer.from("content", "utf8"), "/remote/path").then(() => null);
-    client.put(fs.createReadStream("Hello World"), "/remote/path").then(() => null);
+    client
+        .put(fs.createReadStream("Hello World"), "/remote/path")
+        .then(() => null);
     client
         .put(fs.createReadStream("Hello World"), "/remote/path", {
             writeStreamOptions: {
@@ -99,23 +105,31 @@ import * as fs from "fs";
     client.realPath("./relative/remote/path").then(() => null);
 
     client.uploadDir("/local/path", "/remote/path").then(() => null);
-    client.uploadDir("/local/path", "/remote/path", {
-        filter: (pathname, isdir) => /foo*/.test(pathname) && isdir,
-    }).then(() => null);
-    client.uploadDir("/local/path", "/remote/path", {
-        filter: (pathname, isdir) => /foo*/.test(pathname) && !isdir,
-        useFastput: true,
-    }).then(() => null);
+    client
+        .uploadDir("/local/path", "/remote/path", {
+            filter: (pathname, isdir) => /foo*/.test(pathname) && isdir,
+        })
+        .then(() => null);
+    client
+        .uploadDir("/local/path", "/remote/path", {
+            filter: (pathname, isdir) => /foo*/.test(pathname) && !isdir,
+            useFastput: true,
+        })
+        .then(() => null);
 
     client.downloadDir("/remote/path", "/local/path").then(() => null);
 
-    client.downloadDir("/remote/path", "/local/path", {
-        filter: (pathname, isdir) => /foo*/.test(pathname) && isdir,
-    }).then(() => null);
-    client.downloadDir("/remote/path", "/local/path", {
-        filter: (pathname, isdir) => /foo*/.test(pathname) && !isdir,
-        useFastget: true,
-    }).then(() => null);
+    client
+        .downloadDir("/remote/path", "/local/path", {
+            filter: (pathname, isdir) => /foo*/.test(pathname) && isdir,
+        })
+        .then(() => null);
+    client
+        .downloadDir("/remote/path", "/local/path", {
+            filter: (pathname, isdir) => /foo*/.test(pathname) && !isdir,
+            useFastget: true,
+        })
+        .then(() => null);
 
     client.end().then(() => null);
 

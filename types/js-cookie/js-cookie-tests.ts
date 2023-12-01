@@ -5,7 +5,12 @@ Cookies.set("name", "value", { expires: 7 }); // $ExpectType string | undefined
 Cookies.set("name", "value", { expires: new Date() }); // $ExpectType string | undefined
 Cookies.set("name", "value", { expires: 7, path: "" }); // $ExpectType string | undefined
 Cookies.set("name", "value", { expires: 7, path: "", domain: "" }); // $ExpectType string | undefined
-Cookies.set("name", "value", { expires: 7, path: "", domain: "", secure: true }); // $ExpectType string | undefined
+Cookies.set("name", "value", {
+    expires: 7,
+    path: "",
+    domain: "",
+    secure: true,
+}); // $ExpectType string | undefined
 Cookies.set("name", "value", { secure: true }); // $ExpectType string | undefined
 Cookies.set("name", "value", { domain: "" }); // $ExpectType string | undefined
 Cookies.set("name", "value", { path: "" }); // $ExpectType string | undefined
@@ -44,7 +49,9 @@ Cookies.withConverter<object>({
     },
     // $ExpectType (value: string, name: string) => string
     read(value, name) {
-        return value.replace(/\+/g, " ").replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
+        return value
+            .replace(/\+/g, " ")
+            .replace(/(%[0-9A-Z]{2})+/g, decodeURIComponent);
     },
 });
 

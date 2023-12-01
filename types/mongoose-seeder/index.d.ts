@@ -7,7 +7,11 @@ export interface IOptions {
 
 type seedCallback = (err: any, dbData: any) => void;
 
-export function seed(data: any, options: IOptions, callback: seedCallback): void;
+export function seed(
+    data: any,
+    options: IOptions,
+    callback: seedCallback,
+): void;
 export function seed(data: any, callback: seedCallback): void;
 
 export function seed(data: any, options: IOptions): Q.Promise<any>;

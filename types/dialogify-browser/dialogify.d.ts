@@ -109,7 +109,13 @@ declare namespace Dialogify {
          * @param this Dialogify instance.
          * @param event Mouse click event
          */
-        click?: JQuery.TypeEventHandler<Dialogify, null, Dialogify, Dialogify, "click">;
+        click?: JQuery.TypeEventHandler<
+            Dialogify,
+            null,
+            Dialogify,
+            Dialogify,
+            "click"
+        >;
         /** Set `autofocus` property or not, `false` by default. */
         focused?: boolean;
         /** Set button as disabled or not, `false` by default. */
@@ -180,7 +186,10 @@ declare class Dialogify {
      * @param options Button options.
      * @returns Dialogify instance for chaining.
      */
-    buttons(buttons: Array<Dialogify.Button | string>, options?: Dialogify.ButtonOption): Dialogify;
+    buttons(
+        buttons: Array<Dialogify.Button | string>,
+        options?: Dialogify.ButtonOption,
+    ): Dialogify;
 
     /**
      * Set event listener.
@@ -190,7 +199,13 @@ declare class Dialogify {
      */
     on<TType extends Dialogify.DialogifyEvent>(
         event: TType,
-        callback: JQuery.TypeEventHandler<Dialogify, undefined, Dialogify, Dialogify, TType>,
+        callback: JQuery.TypeEventHandler<
+            Dialogify,
+            undefined,
+            Dialogify,
+            Dialogify,
+            TType
+        >,
     ): Dialogify;
 
     /**
@@ -234,14 +249,20 @@ declare class Dialogify {
      * @param message content to diaplay in dialog, can be html or text.
      * @param options options of a dialog.
      */
-    static confirm(message: string, options?: Dialogify.ConfirmDialogOptions): void;
+    static confirm(
+        message: string,
+        options?: Dialogify.ConfirmDialogOptions,
+    ): void;
 
     /**
      * Display a dialog with a message prompting the user to input some text, and to wait until the user either submits the text or cancels the dialog.
      * @param message content to diaplay in dialog, can be html or text.
      * @param options options of a dialog.
      */
-    static prompt(message: string, options?: Dialogify.PromptDialogOptions): void;
+    static prompt(
+        message: string,
+        options?: Dialogify.PromptDialogOptions,
+    ): void;
 
     /**
      * Close all active dialogs.

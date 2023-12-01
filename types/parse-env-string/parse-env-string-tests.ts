@@ -5,4 +5,4 @@ parseEnvString(null);
 // $ExpectType { [key: string]: string; }
 parseEnvString(undefined);
 // $ExpectType { [key: string]: string; }
-parseEnvString("foo=hello bar= baz=\", world\"");
+parseEnvString('foo=hello bar= baz=", world"');

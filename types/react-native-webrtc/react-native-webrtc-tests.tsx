@@ -37,7 +37,10 @@ const peer = new RTCPeerConnection({
         {
             username: "carlos",
             credential: "carlos90",
-            urls: ["turn:coturn.workserver.xyz:3478?transport=udp", "turn:coturn.workserver.xyz:3478?transport=tcp"],
+            urls: [
+                "turn:coturn.workserver.xyz:3478?transport=udp",
+                "turn:coturn.workserver.xyz:3478?transport=tcp",
+            ],
         },
     ],
     iceTransportPolicy: "all",
@@ -62,4 +65,6 @@ peer.addStream(MediaStreamInit);
 
 registerGlobals();
 
-export const VideoCall = () => <RTCView objectFit={"cover"} zOrder={0} style={{}} streamURL={""} />;
+export const VideoCall = () => (
+    <RTCView objectFit={"cover"} zOrder={0} style={{}} streamURL={""} />
+);

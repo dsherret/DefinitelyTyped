@@ -1,15 +1,16 @@
 import * as React from "react";
 import * as ReactNative from "react-native";
 
-export type onChangeTextCallback = (formatted: string, extracted?: string) => void;
+export type onChangeTextCallback = (
+    formatted: string,
+    extracted?: string,
+) => void;
 
 export interface TextInputMaskProps
-    extends
-        ReactNative.ViewProps,
+    extends ReactNative.ViewProps,
         ReactNative.TextInputIOSProps,
         ReactNative.TextInputAndroidProps,
-        ReactNative.AccessibilityProps
-{
+        ReactNative.AccessibilityProps {
     refInput?: ((ref: any) => void) | undefined;
     maskDefaultValue?: boolean | undefined;
     mask?: string | undefined;
@@ -95,20 +96,24 @@ export interface TextInputMaskProps
     /**
      * Callback that is called when the text input is blurred
      */
-    onBlur?: ((e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputFocusEventData>) => void) | undefined;
+    onBlur?:
+        | ((
+              e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputFocusEventData>,
+          ) => void)
+        | undefined;
 
     /**
      * Callback that is called when the text input's text changes.
      */
     onChange?:
         | ((event: {
-            nativeEvent: {
-                text: string;
-                contentSize: { width: number; height: number };
-                target: number;
-                eventCount: number;
-            };
-        }) => void)
+              nativeEvent: {
+                  text: string;
+                  contentSize: { width: number; height: number };
+                  target: number;
+                  eventCount: number;
+              };
+          }) => void)
         | undefined;
 
     /**
@@ -119,30 +124,42 @@ export interface TextInputMaskProps
      * Only called for multiline text inputs.
      */
     onContentSizeChange?:
-        | ((event: { nativeEvent: { contentSize: { width: number; height: number } } }) => void)
+        | ((event: {
+              nativeEvent: { contentSize: { width: number; height: number } };
+          }) => void)
         | undefined;
 
     /**
      * Callback that is called when text input ends.
      */
-    onEndEditing?: ((event: { nativeEvent: { text: string } }) => void) | undefined;
+    onEndEditing?:
+        | ((event: { nativeEvent: { text: string } }) => void)
+        | undefined;
 
     /**
      * Callback that is called when the text input is focused
      */
-    onFocus?: ((e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputFocusEventData>) => void) | undefined;
+    onFocus?:
+        | ((
+              e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputFocusEventData>,
+          ) => void)
+        | undefined;
 
     /**
      * Callback that is called when the text input selection is changed.
      */
     onSelectionChange?:
-        | ((e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputSelectionChangeEventData>) => void)
+        | ((
+              e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputSelectionChangeEventData>,
+          ) => void)
         | undefined;
 
     /**
      * Callback that is called when the text input's submit button is pressed.
      */
-    onSubmitEditing?: ((event: { nativeEvent: { text: string } }) => void) | undefined;
+    onSubmitEditing?:
+        | ((event: { nativeEvent: { text: string } }) => void)
+        | undefined;
 
     /**
      * Invoked on content scroll with
@@ -150,7 +167,11 @@ export interface TextInputMaskProps
      *
      * May also contain other properties from ScrollEvent but on Android contentSize is not provided for performance reasons.
      */
-    onScroll?: ((e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputScrollEventData>) => void) | undefined;
+    onScroll?:
+        | ((
+              e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputScrollEventData>,
+          ) => void)
+        | undefined;
 
     /**
      * Callback that is called when a key is pressed.
@@ -161,7 +182,11 @@ export interface TextInputMaskProps
      * Fires before onChange callbacks.
      * Note: on Android only the inputs from soft keyboard are handled, not the hardware keyboard inputs.
      */
-    onKeyPress?: ((e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputKeyPressEventData>) => void) | undefined;
+    onKeyPress?:
+        | ((
+              e: ReactNative.NativeSyntheticEvent<ReactNative.TextInputKeyPressEventData>,
+          ) => void)
+        | undefined;
 
     /**
      * The string that will be rendered before text input has been entered

@@ -216,7 +216,11 @@ export const timeMillisecond: CountableTimeInterval;
  * @param stop A stop date object for the range.
  * @param step An optional number of steps to apply when calculating the dates in the range.
  */
-export function timeMilliseconds(start: Date, stop: Date, step?: number): Date[];
+export function timeMilliseconds(
+    start: Date,
+    stop: Date,
+    step?: number,
+): Date[];
 
 /**
  * Seconds Interval in Local Time; seconds (e.g., 01:23:45.0000 AM); 1,000 milliseconds.
@@ -668,7 +672,11 @@ export function timeTicks(start: Date, stop: Date, count: number): Date[];
 /**
  * Returns the time interval that would be used by d3.timeTicks given the same arguments.
  */
-export function timeTickInterval(start: Date, stop: Date, count: number): TimeInterval | null;
+export function timeTickInterval(
+    start: Date,
+    stop: Date,
+    count: number,
+): TimeInterval | null;
 
 /**
  * Returns an array of approximately count dates at regular intervals between start and stop (inclusive).
@@ -680,4 +688,8 @@ export function utcTicks(start: Date, stop: Date, count: number): Date[];
  * Returns the time interval that would be used by d3.utcTicks given the same arguments.
  * If there is no associated interval, such as when start or stop is invalid, returns null.
  */
-export function utcTickInterval(start: Date, stop: Date, count: number): TimeInterval | null;
+export function utcTickInterval(
+    start: Date,
+    stop: Date,
+    count: number,
+): TimeInterval | null;

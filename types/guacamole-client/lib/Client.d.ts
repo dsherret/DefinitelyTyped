@@ -31,13 +31,13 @@ export namespace Client {
     type ExportLayer =
         | ExportLayerBase
         | (ExportLayerBase & {
-            x: number;
-            y: number;
-            z: number;
-            alpha: number;
-            matrix: unknown;
-            parent: unknown;
-        });
+              x: number;
+              y: number;
+              z: number;
+              alpha: number;
+              matrix: unknown;
+              parent: unknown;
+          });
 
     export interface ExportedState {
         currentState: State;
@@ -124,7 +124,11 @@ export class Client {
      * @param name The defined name of an output stream within the given object.
      * @returns An output stream which will write blobs to the named output stream of the given object.
      */
-    createObjectOutputStream(index: number, mimetype: Mimetype, name: string): OutputStream;
+    createObjectOutputStream(
+        index: number,
+        mimetype: Mimetype,
+        name: string,
+    ): OutputStream;
 
     /**
      * Allocates an available stream index and creates a new
@@ -279,7 +283,12 @@ export class Client {
      * has been initialied to play the data in the provided stream, or null
      * if the built-in audio players of the Guacamole client should be used.
      */
-    onaudio: null | ((audioStream: InputStream, mimetype: Mimetype) => AudioPlayer | null);
+    onaudio:
+        | null
+        | ((
+              audioStream: InputStream,
+              mimetype: Mimetype,
+          ) => AudioPlayer | null);
 
     /**
      * Fired when a video stream is created. The stream provided to this event
@@ -298,7 +307,13 @@ export class Client {
      * has been initialied to play the data in the provided stream, or null
      * if the built-in video players of the Guacamole client should be used.
      */
-    onvideo: null | ((videoStream: InputStream, layer: VisibleLayer, mimetype: Mimetype) => VideoPlayer | null);
+    onvideo:
+        | null
+        | ((
+              videoStream: InputStream,
+              layer: VisibleLayer,
+              mimetype: Mimetype,
+          ) => VideoPlayer | null);
 
     /**
      * Fired when the current value of a connection parameter is being exposed
@@ -309,7 +324,13 @@ export class Client {
      * @param mimetype The mimetype of the data which will be received.
      * @param name The name of the connection parameter whose value is being exposed.
      */
-    onargv: null | ((parameterStream: InputStream, mimetype: Mimetype, name: string) => void);
+    onargv:
+        | null
+        | ((
+              parameterStream: InputStream,
+              mimetype: Mimetype,
+              name: string,
+          ) => void);
 
     /**
      * Fired when the clipboard of the remote client is changing.
@@ -318,7 +339,9 @@ export class Client {
      * @param stream The stream that will receive clipboard data from the server.
      * @param mimetype The mimetype of the data which will be received.
      */
-    onclipboard: null | ((clipboardStream: InputStream, mimetype: Mimetype) => void);
+    onclipboard:
+        | null
+        | ((clipboardStream: InputStream, mimetype: Mimetype) => void);
 
     /**
      * Fired when a file stream is created. The stream provided to this event
@@ -329,7 +352,9 @@ export class Client {
      * @param mimetype The mimetype of the file received.
      * @param filename The name of the file received.
      */
-    onfile: null | ((fileStream: InputStream, mimetype: Mimetype, name: string) => void);
+    onfile:
+        | null
+        | ((fileStream: InputStream, mimetype: Mimetype, name: string) => void);
 
     /**
      * Fired when a filesystem object is created. The object provided to this
@@ -351,7 +376,9 @@ export class Client {
      * @param mimetype The mimetype of the data which will be received.
      * @param name The name of the pipe.
      */
-    onpipe: null | ((pipeStream: InputStream, mimetype: Mimetype, name: string) => void);
+    onpipe:
+        | null
+        | ((pipeStream: InputStream, mimetype: Mimetype, name: string) => void);
 
     /**
      * Fired whenever a sync instruction is received from the server, indicating

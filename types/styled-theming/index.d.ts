@@ -1,4 +1,8 @@
-import { FlattenInterpolation, ThemedStyledProps, ThemeProps } from "styled-components";
+import {
+    FlattenInterpolation,
+    ThemedStyledProps,
+    ThemeProps,
+} from "styled-components";
 
 declare function theme(name: string, values: theme.ThemeMap): theme.ThemeSet;
 
@@ -19,7 +23,9 @@ declare namespace theme {
     };
 
     type ThemeSet = (props: object) => string;
-    type VariantSet<TProp extends string, TVariant extends string> = (props: { [key in TProp]?: TVariant }) => string;
+    type VariantSet<TProp extends string, TVariant extends string> = (props: {
+        [key in TProp]?: TVariant;
+    }) => string;
 
     function variants<TProp extends string, TVariant extends string>(
         name: string,

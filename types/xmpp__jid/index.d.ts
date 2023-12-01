@@ -19,7 +19,11 @@ declare namespace jid {
         domain: string;
         resource: string;
 
-        constructor(local: string | null | undefined, domain: string, resource?: string | null);
+        constructor(
+            local: string | null | undefined,
+            domain: string,
+            resource?: string | null,
+        );
 
         toString(unescape?: boolean): string;
 

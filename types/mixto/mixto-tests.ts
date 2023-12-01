@@ -1,7 +1,7 @@
 import Mixin = require("mixto");
 
 interface ISampleStatic extends Mixto.IMixinStatic {
-    new(): ISample;
+    new (): ISample;
 }
 
 interface ISample {

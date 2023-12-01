@@ -23,7 +23,7 @@ interface FirebaseClient {
     /**
      * Creates a new FirebaseClient given the provided configuration
      */
-    new(config: FirebaseConfig): FirebaseClient;
+    new (config: FirebaseConfig): FirebaseClient;
 
     /**
      * Retrieves all objects at the base path

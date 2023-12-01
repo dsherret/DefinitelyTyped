@@ -57,9 +57,11 @@ function testFilter() {
         return chunk.bar === this.variables.get("baz");
     });
 
-    const filteredAsync: stream.Transform = filter<Foo>(async function filterFunc(chunk) {
-        return chunk.bar === this.variables.get("baz");
-    });
+    const filteredAsync: stream.Transform = filter<Foo>(
+        async function filterFunc(chunk) {
+            return chunk.bar === this.variables.get("baz");
+        },
+    );
 }
 
 function testFlatten() {
@@ -107,11 +109,13 @@ function testMap() {
 
     const mapped: stream.Transform = map<Foo, number>(syncMap);
 
-    const lazyMapped: stream.Transform = map<Foo, number>(async function mapFunc(chunk, _) {
-        const baz: number = this.variables.get("baz");
+    const lazyMapped: stream.Transform = map<Foo, number>(
+        async function mapFunc(chunk, _) {
+            const baz: number = this.variables.get("baz");
 
-        return chunk.bar * baz;
-    });
+            return chunk.bar * baz;
+        },
+    );
 }
 
 function testNul() {

@@ -1,1 +1,4 @@
-export function sampleSphere(d: number, rng: (...params: number[]) => number): number[];
+export function sampleSphere(
+    d: number,
+    rng: (...params: number[]) => number,
+): number[];

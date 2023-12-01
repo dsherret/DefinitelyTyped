@@ -74,18 +74,27 @@ let rawPromise: Promise<DSVParsedArray<DSVRowString>>;
 let rawPromiseHeader: Promise<DSVParsedArray<DSVRowString<Headers>>>;
 let parsedPromise: Promise<DSVParsedArray<Car>>;
 
-declare const parseRowString: (rawRow: DSVRowString, index: number, columns: string[]) => Car | undefined | null;
+declare const parseRowString: (
+    rawRow: DSVRowString,
+    index: number,
+    columns: string[],
+) => Car | undefined | null;
 
-const parseRow = (d: DSVRowString<Headers>, index: number, columns: Headers[]): Car | undefined | null => {
+const parseRow = (
+    d: DSVRowString<Headers>,
+    index: number,
+    columns: Headers[],
+): Car | undefined | null => {
     const item: string | undefined = d[columns[0]];
-    const car = d.Make === "Ford"
-        ? null
-        : {
-            year: new Date(+d.Make, 0, 1),
-            make: d.Make,
-            model: d.Model,
-            length: +d.Length,
-        };
+    const car =
+        d.Make === "Ford"
+            ? null
+            : {
+                  year: new Date(+d.Make, 0, 1),
+                  make: d.Make,
+                  model: d.Model,
+                  length: +d.Length,
+              };
     return index % 2 === 0 ? undefined : car;
 };
 
@@ -136,7 +145,9 @@ parsedPromise = d3Fetch.dsv("|", url, parseRow);
 parsedPromise = d3Fetch.dsv("|", url, init, parseRow);
 parsedPromise = d3Fetch.dsv("|", url, parseRowSimple);
 
-anyPromise = d3Fetch.dsv("|", url, (d: DSVRaw<Car>) => map.set(d.model, +d.year));
+anyPromise = d3Fetch.dsv("|", url, (d: DSVRaw<Car>) =>
+    map.set(d.model, +d.year),
+);
 
 // TSV
 

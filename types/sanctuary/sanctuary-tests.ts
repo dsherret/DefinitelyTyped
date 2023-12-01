@@ -10,7 +10,11 @@ S.duplicate(S.Just(1));
 S.zip([1, 2, 3])(["a", "a", "a"]);
 
 // $ExpectType ReadonlyArray<Maybe<number>>
-S.zipWith((a: number) => (b: number) => S.Just(a + b))(["a", "b"])(["x", "y", "z"]);
+S.zipWith((a: number) => (b: number) => S.Just(a + b))(["a", "b"])([
+    "x",
+    "y",
+    "z",
+]);
 
 // $ExpectType Pair<string, number>
 S.mapLeft(S.toUpper)(S.Pair("foo")(64));
@@ -89,10 +93,14 @@ S.invert<number>(Sum(5));
 S.reduce(S.add)(0)([1, 2, 3, 4, 5]);
 
 // $ExpectType number[]
-S.reduce((xs: number[]) => (x: number) => S.prepend(x)(xs))([])([1, 2, 3, 4, 5]);
+S.reduce((xs: number[]) => (x: number) => S.prepend(x)(xs))([])([
+    1, 2, 3, 4, 5,
+]);
 
 // $ExpectType number[]
-S.reduce<number, number[]>(xs => x => S.prepend(x)(xs))([])([1, 2, 3, 4, 5]);
+S.reduce<number, number[]>((xs) => (x) => S.prepend(x)(xs))([])([
+    1, 2, 3, 4, 5,
+]);
 
 // $ExpectType number[]
 S.reduce_<number, number[]>(S.append)([])([1, 2, 3]);

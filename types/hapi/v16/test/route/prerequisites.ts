@@ -4,15 +4,15 @@ import * as Hapi from "hapi";
 const server = new Hapi.Server();
 server.connection({ port: 80 });
 
-const pre1: Hapi.RoutePrerequisiteRequestHandler = function(request, reply) {
+const pre1: Hapi.RoutePrerequisiteRequestHandler = function (request, reply) {
     return reply("Hello");
 };
 
-const pre2: Hapi.RoutePrerequisiteRequestHandler = function(request, reply) {
+const pre2: Hapi.RoutePrerequisiteRequestHandler = function (request, reply) {
     return reply("World");
 };
 
-const pre3: Hapi.RoutePrerequisiteRequestHandler = function(request, reply) {
+const pre3: Hapi.RoutePrerequisiteRequestHandler = function (request, reply) {
     const pre = request.pre as Pre1;
     return reply(pre.m1 + " " + pre.m2);
 };
@@ -29,7 +29,7 @@ server.route({
             ],
             { method: pre3, assign: "m3" },
         ],
-        handler: function(request, reply) {
+        handler: function (request, reply) {
             const pre = request.pre as Pre2;
             return reply(pre.m3 + "\n");
         },

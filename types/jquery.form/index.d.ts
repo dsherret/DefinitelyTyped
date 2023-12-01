@@ -1,8 +1,16 @@
 /// <reference types="jquery"/>
 
 interface JQueryFormOptions extends JQueryAjaxSettings {
-    beforeSerialize?: (($form: JQuery, options: JQueryFormOptions) => boolean) | undefined;
-    beforeSubmit?: ((formData: any[], $form: JQuery, options: JQueryFormOptions) => boolean) | undefined;
+    beforeSerialize?:
+        | (($form: JQuery, options: JQueryFormOptions) => boolean)
+        | undefined;
+    beforeSubmit?:
+        | ((
+              formData: any[],
+              $form: JQuery,
+              options: JQueryFormOptions,
+          ) => boolean)
+        | undefined;
     clearForm?: boolean | undefined;
     forceSync?: boolean | undefined;
     iframe?: boolean | undefined;
@@ -13,7 +21,12 @@ interface JQueryFormOptions extends JQueryAjaxSettings {
     semantic?: boolean | undefined;
     target?: any;
     uploadProgress?:
-        | ((event: ProgressEvent, position: number, total: number, percentComplete: number) => void)
+        | ((
+              event: ProgressEvent,
+              position: number,
+              total: number,
+              percentComplete: number,
+          ) => void)
         | undefined;
 }
 

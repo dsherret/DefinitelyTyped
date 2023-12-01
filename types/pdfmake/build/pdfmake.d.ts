@@ -1,5 +1,10 @@
 /// <reference lib="dom" />
-import { BufferOptions, CustomTableLayout, TDocumentDefinitions, TFontDictionary } from "../interfaces";
+import {
+    BufferOptions,
+    CustomTableLayout,
+    TDocumentDefinitions,
+    TFontDictionary,
+} from "../interfaces";
 
 export let vfs: { [file: string]: string };
 export let fonts: TFontDictionary;
@@ -14,7 +19,11 @@ export function createPdf(
 
 export interface TCreatedPdf {
     download(cb?: () => void, options?: BufferOptions): void;
-    download(defaultFileName: string, cb?: () => void, options?: BufferOptions): void;
+    download(
+        defaultFileName: string,
+        cb?: () => void,
+        options?: BufferOptions,
+    ): void;
 
     getBlob(cb: (result: Blob) => void, options?: BufferOptions): void;
     getBase64(cb: (result: string) => void, options?: BufferOptions): void;

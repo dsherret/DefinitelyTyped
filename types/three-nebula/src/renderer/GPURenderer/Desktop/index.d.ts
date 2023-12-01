@@ -11,7 +11,11 @@ import { DEFAULT_RENDERER_OPTIONS } from "../common/constants";
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
 export default class DesktopGPURenderer extends BaseRenderer {
-    constructor(container: Container, three: Three, options: typeof DEFAULT_RENDERER_OPTIONS | object);
+    constructor(
+        container: Container,
+        three: Three,
+        options: typeof DEFAULT_RENDERER_OPTIONS | object,
+    );
     container: Container;
     three: Three;
     camera: THREE.Camera;

@@ -14,7 +14,10 @@ if (!newVersion || !newVersion.match(/^\d+$/)) {
 const indexPath = join(nodeDir, "index.d.ts");
 
 const indexContents = readFileSync(indexPath, "utf-8");
-const [, currentVersion] = indexContents.match(/\/\/ Type definitions for non-npm package Node.js (\d+).\d+/) ?? [];
+const [, currentVersion] =
+    indexContents.match(
+        /\/\/ Type definitions for non-npm package Node.js (\d+).\d+/,
+    ) ?? [];
 
 const folderName = join(nodeDir, `v${currentVersion}`);
 
@@ -25,10 +28,10 @@ mkdirSync(tempSubfolder);
 copySync(nodeDir, tempSubfolder, {
     filter(src) {
         if (
-            src.match(/v[^a-z]+$/)
-            || src.endsWith("package-lock.json")
-            || src.endsWith(".eslintrc.json")
-            || src.includes("/script")
+            src.match(/v[^a-z]+$/) ||
+            src.endsWith("package-lock.json") ||
+            src.endsWith(".eslintrc.json") ||
+            src.includes("/script")
         ) {
             return false;
         }
@@ -52,9 +55,7 @@ const oldTSConfig = JSON.parse(readFileSync(tsConfigPath, "utf-8"));
 oldTSConfig.compilerOptions.baseUrl = "../../";
 oldTSConfig.compilerOptions.typeRoots = ["../../"];
 oldTSConfig.compilerOptions.paths = {
-    "node": [
-        `node/v${currentVersion}`,
-    ],
+    node: [`node/v${currentVersion}`],
 };
 
 writeFileSync(tsConfigPath, JSON.stringify(oldTSConfig, null, "  "), "utf8");
@@ -66,9 +67,7 @@ const oldTSConfig2 = JSON.parse(readFileSync(tsConfigPath2, "utf-8"));
 oldTSConfig2.compilerOptions.baseUrl = "../../../";
 oldTSConfig2.compilerOptions.typeRoots = ["../../../"];
 oldTSConfig2.compilerOptions.paths = {
-    "node": [
-        `node/v${currentVersion}`,
-    ],
+    node: [`node/v${currentVersion}`],
 };
 
 writeFileSync(tsConfigPath2, JSON.stringify(oldTSConfig2, null, "  "), "utf8");

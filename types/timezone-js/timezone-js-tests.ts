@@ -7,10 +7,8 @@ var bool: boolean;
 
 var opts: timezone.TimezoneJsOptions = {
     async: bool,
-    success: (data: string) => {
-    },
-    error: (err: Error) => {
-    },
+    success: (data: string) => {},
+    error: (err: Error) => {},
     url: str,
 };
 

@@ -19,19 +19,25 @@ function testCallback() {
     });
 
     // $ExpectType void
-    srs({
-        length: 32,
-        alphanumeric: true,
-    }, (error, result) => {
-        // $ExpectType string | undefined
-        const _result = result;
-    });
+    srs(
+        {
+            length: 32,
+            alphanumeric: true,
+        },
+        (error, result) => {
+            // $ExpectType string | undefined
+            const _result = result;
+        },
+    );
 
     // @ts-expect-error
-    srs((error, result) => {
-        const _result = result;
-    }, {
-        length: 32,
-        alphanumeric: true,
-    });
+    srs(
+        (error, result) => {
+            const _result = result;
+        },
+        {
+            length: 32,
+            alphanumeric: true,
+        },
+    );
 }

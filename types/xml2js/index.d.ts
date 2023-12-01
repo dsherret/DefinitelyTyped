@@ -2,13 +2,19 @@
 import { EventEmitter } from "events";
 import * as processors from "./lib/processors";
 
-export function parseString(str: convertableToString, callback: (err: Error | null, result: any) => void): void;
+export function parseString(
+    str: convertableToString,
+    callback: (err: Error | null, result: any) => void,
+): void;
 export function parseString(
     str: convertableToString,
     options: ParserOptions,
     callback: (err: Error | null, result: any) => void,
 ): void;
-export function parseStringPromise(str: convertableToString, options?: ParserOptions): Promise<any>;
+export function parseStringPromise(
+    str: convertableToString,
+    options?: ParserOptions,
+): Promise<any>;
 
 export const defaults: {
     "0.1": Options;
@@ -34,7 +40,10 @@ export class Builder {
 
 export class Parser extends EventEmitter {
     constructor(options?: ParserOptions);
-    parseString(str: convertableToString, cb?: (error: Error | null, result: any) => void): void;
+    parseString(
+        str: convertableToString,
+        cb?: (error: Error | null, result: any) => void,
+    ): void;
     parseStringPromise(str: convertableToString): Promise<any>;
     reset(): void;
 }
@@ -61,7 +70,9 @@ export interface ParserOptions {
     async?: boolean | undefined;
     strict?: boolean | undefined;
     attrNameProcessors?: Array<(name: string) => any> | undefined;
-    attrValueProcessors?: Array<(value: string, name: string) => any> | undefined;
+    attrValueProcessors?:
+        | Array<(value: string, name: string) => any>
+        | undefined;
     tagNameProcessors?: Array<(name: string) => any> | undefined;
     valueProcessors?: Array<(value: string, name: string) => any> | undefined;
     chunkSize?: number | undefined;
@@ -79,7 +90,10 @@ export interface BuilderOptions {
     cdata?: boolean | undefined;
 }
 
-export type Options = Omit<ParserOptions, "preserveChildrenOrder" | "chunkSize">;
+export type Options = Omit<
+    ParserOptions,
+    "preserveChildrenOrder" | "chunkSize"
+>;
 export type OptionsV2 = ParserOptions & BuilderOptions;
 
 export interface convertableToString {

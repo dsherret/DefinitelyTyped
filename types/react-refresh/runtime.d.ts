@@ -13,7 +13,12 @@ export function performReactRefresh(): RefreshUpdate | null;
 
 export function register(type: unknown, id: string): void;
 
-export function setSignature(type: unknown, key: string, forceReset?: boolean, getCustomHooks?: () => AnyFn): void;
+export function setSignature(
+    type: unknown,
+    key: string,
+    forceReset?: boolean,
+    getCustomHooks?: () => AnyFn,
+): void;
 
 /**
  * This is lazily called during first render for a type.

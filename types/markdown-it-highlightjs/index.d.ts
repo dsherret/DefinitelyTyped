@@ -15,9 +15,11 @@ declare const highlightjs: PluginWithOptions<{
     /**
      * Register other languages which are not included in the standard pack.
      */
-    register?: {
-        [language: string]: (hljs?: HLJSApi) => Language;
-    } | undefined;
+    register?:
+        | {
+              [language: string]: (hljs?: HLJSApi) => Language;
+          }
+        | undefined;
 
     /**
      * Whether to highlight inline code.

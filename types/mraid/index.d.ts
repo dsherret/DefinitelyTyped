@@ -26,7 +26,9 @@ export interface MRAID2 extends MRAID1 {
     createCalendarEvent(parameters: MRAIDCalendarEvent): void;
     getOrientationProperties(): MRAIDOrientationProperties;
     // For full compatibility with all SDKs, clients should shallow copy getOrientationProperties result into an empty object, apply changes and then pass into setOrientationProperties
-    setOrientationProperties(newValues: Partial<MRAIDOrientationProperties>): void;
+    setOrientationProperties(
+        newValues: Partial<MRAIDOrientationProperties>,
+    ): void;
     getCurrentPosition(): MRAIDRect;
     getDefaultPosition(): MRAIDRect;
     getMaxSize(): MRAIDSize;
@@ -72,7 +74,14 @@ export interface MRAIDEventHandlers {
     audioVolumeChange: (newPercentage: number) => void;
     adAction: (action: keyof MRAID) => void;
 }
-type MRAIDFeature = "sms" | "tel" | "calendar" | "storePicture" | "inlineVideo" | "vpaid" | "location"; // Does not include supports features from MRAID 1.0 "Candidates for Future Versions" Addendum
+type MRAIDFeature =
+    | "sms"
+    | "tel"
+    | "calendar"
+    | "storePicture"
+    | "inlineVideo"
+    | "vpaid"
+    | "location"; // Does not include supports features from MRAID 1.0 "Candidates for Future Versions" Addendum
 type MRAIDPlacementType = "inline" | "interstitial";
 type MRAIDState = "loading" | "default" | "expanded" | "resized" | "hidden";
 type MRAIDOrientation = "portrait" | "landscape";
@@ -103,7 +112,11 @@ type MRAIDResizeProperties = MRAIDSize & {
     height: number;
     allowOffscreen: boolean;
     // Deprecated in MRAID 3.0; should still be provided by SDKs for backwards compatibility, but may not be honoured
-    customClosePosition?: "top-left" | "top-right" | "bottom-right" | "bottom-left";
+    customClosePosition?:
+        | "top-left"
+        | "top-right"
+        | "bottom-right"
+        | "bottom-left";
 };
 declare enum MRAIDLocationType {
     LocationServices = 1,
@@ -134,7 +147,11 @@ export interface MRAIDCalendarEvent {
 type MRAIDVPAIDObject = {
     [key: string]: any;
 } & {
-    subscribe(fn: MRAIDVPAIDEventHandlers, event: string, listenerScope?: any): void;
+    subscribe(
+        fn: MRAIDVPAIDEventHandlers,
+        event: string,
+        listenerScope?: any,
+    ): void;
     unsubscribe(fn: MRAIDVPAIDEventHandlers, event: string): void;
     startAd(): void;
     getAdDuration(): number;

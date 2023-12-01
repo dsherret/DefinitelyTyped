@@ -7,13 +7,36 @@ import {
     ToISOTimeDurationOptions,
     ZoneOptions,
 } from "../index";
-import { CanBeInvalid, DefaultValidity, IfValid, Invalid, Valid } from "./_util";
+import {
+    CanBeInvalid,
+    DefaultValidity,
+    IfValid,
+    Invalid,
+    Valid,
+} from "./_util";
 import { Duration, DurationLike, DurationUnits } from "./duration";
 import { Interval } from "./interval";
 import { Zone } from "./zone";
 
-export type DateTimeUnit = "year" | "quarter" | "month" | "week" | "day" | "hour" | "minute" | "second" | "millisecond";
-export type ToRelativeUnit = "years" | "quarters" | "months" | "weeks" | "days" | "hours" | "minutes" | "seconds";
+export type DateTimeUnit =
+    | "year"
+    | "quarter"
+    | "month"
+    | "week"
+    | "day"
+    | "hour"
+    | "minute"
+    | "second"
+    | "millisecond";
+export type ToRelativeUnit =
+    | "years"
+    | "quarters"
+    | "months"
+    | "weeks"
+    | "days"
+    | "hours"
+    | "minutes"
+    | "seconds";
 
 export type MonthNumbers = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 export type WeekdayNumbers = 1 | 2 | 3 | 4 | 5 | 6 | 7;
@@ -205,17 +228,21 @@ export type PossibleWeeksInYear = 52 | 53;
 export type ToObjectOutput<
     IncludeConfig extends boolean | undefined = undefined,
     IsValid extends boolean | undefined = undefined,
-> = IsValid extends true ? _ToObjectOutput<IncludeConfig>
-    : CanBeInvalid extends false ? _ToObjectOutput<IncludeConfig>
-    : Partial<_ToObjectOutput<IncludeConfig>>;
+> = IsValid extends true
+    ? _ToObjectOutput<IncludeConfig>
+    : CanBeInvalid extends false
+      ? _ToObjectOutput<IncludeConfig>
+      : Partial<_ToObjectOutput<IncludeConfig>>;
 /** @internal */
-export type _ToObjectOutput<IncludeConfig extends boolean | undefined = undefined> =
-    & Record<_ToObjectUnit, number>
-    & (IncludeConfig extends true ? LocaleOptions : unknown);
+export type _ToObjectOutput<
+    IncludeConfig extends boolean | undefined = undefined,
+> = Record<_ToObjectUnit, number> &
+    (IncludeConfig extends true ? LocaleOptions : unknown);
 /** @internal */
 export type _ToObjectUnit = Exclude<DateTimeUnit, "quarter" | "week">;
 
-export interface ToRelativeOptions extends Omit<ToRelativeCalendarOptions, "unit"> {
+export interface ToRelativeOptions
+    extends Omit<ToRelativeCalendarOptions, "unit"> {
     /**
      * @default long
      */
@@ -377,7 +404,9 @@ export interface ExplainedFormat {
     invalidReason?: string | undefined;
 }
 
-export type DateTimeMaybeValid = CanBeInvalid extends true ? (DateTime<Valid> | DateTime<Invalid>) : DateTime;
+export type DateTimeMaybeValid = CanBeInvalid extends true
+    ? DateTime<Valid> | DateTime<Invalid>
+    : DateTime;
 
 /**
  * A DateTime is an immutable data structure representing a specific date and time and accompanying methods.
@@ -476,9 +505,24 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
         minute: number,
         opts?: DateTimeJSOptions,
     ): DateTimeMaybeValid;
-    static local(year: number, month: number, day: number, hour: number, opts?: DateTimeJSOptions): DateTimeMaybeValid;
-    static local(year: number, month: number, day: number, opts?: DateTimeJSOptions): DateTimeMaybeValid;
-    static local(year: number, month: number, opts?: DateTimeJSOptions): DateTimeMaybeValid;
+    static local(
+        year: number,
+        month: number,
+        day: number,
+        hour: number,
+        opts?: DateTimeJSOptions,
+    ): DateTimeMaybeValid;
+    static local(
+        year: number,
+        month: number,
+        day: number,
+        opts?: DateTimeJSOptions,
+    ): DateTimeMaybeValid;
+    static local(
+        year: number,
+        month: number,
+        opts?: DateTimeJSOptions,
+    ): DateTimeMaybeValid;
     static local(year: number, opts?: DateTimeJSOptions): DateTimeMaybeValid;
     static local(opts?: DateTimeJSOptions): DateTime<Valid>;
 
@@ -543,9 +587,24 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
         minute: number,
         options?: LocaleOptions,
     ): DateTimeMaybeValid;
-    static utc(year: number, month: number, day: number, hour: number, options?: LocaleOptions): DateTimeMaybeValid;
-    static utc(year: number, month: number, day: number, options?: LocaleOptions): DateTimeMaybeValid;
-    static utc(year: number, month: number, options?: LocaleOptions): DateTimeMaybeValid;
+    static utc(
+        year: number,
+        month: number,
+        day: number,
+        hour: number,
+        options?: LocaleOptions,
+    ): DateTimeMaybeValid;
+    static utc(
+        year: number,
+        month: number,
+        day: number,
+        options?: LocaleOptions,
+    ): DateTimeMaybeValid;
+    static utc(
+        year: number,
+        month: number,
+        options?: LocaleOptions,
+    ): DateTimeMaybeValid;
     static utc(year: number, options?: LocaleOptions): DateTimeMaybeValid;
     static utc(options?: LocaleOptions): DateTime<Valid>;
 
@@ -556,7 +615,10 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @param options - configuration options for the DateTime
      * @param options.zone - the zone to place the DateTime into
      */
-    static fromJSDate(date: Date, options?: { zone?: string | Zone }): DateTimeMaybeValid;
+    static fromJSDate(
+        date: Date,
+        options?: { zone?: string | Zone },
+    ): DateTimeMaybeValid;
 
     /**
      * Create a DateTime from a number of milliseconds since the epoch (meaning since 1 January 1970 00:00:00 UTC). Uses the default zone.
@@ -568,7 +630,10 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @param options.outputCalendar - the output calendar to set on the resulting DateTime instance
      * @param options.numberingSystem - the numbering system to set on the resulting DateTime instance
      */
-    static fromMillis(milliseconds: number, options?: DateTimeJSOptions): DateTimeMaybeValid;
+    static fromMillis(
+        milliseconds: number,
+        options?: DateTimeJSOptions,
+    ): DateTimeMaybeValid;
 
     /**
      * Create a DateTime from a number of seconds since the epoch (meaning since 1 January 1970 00:00:00 UTC). Uses the default zone.
@@ -580,7 +645,10 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @param options.outputCalendar - the output calendar to set on the resulting DateTime instance
      * @param options.numberingSystem - the numbering system to set on the resulting DateTime instance
      */
-    static fromSeconds(seconds: number, options?: DateTimeJSOptions): DateTime<Valid>;
+    static fromSeconds(
+        seconds: number,
+        options?: DateTimeJSOptions,
+    ): DateTime<Valid>;
 
     /**
      * Create a DateTime from a JavaScript object with keys like 'year' and 'hour' with reasonable defaults.
@@ -618,7 +686,10 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @example
      * DateTime.fromObject({ weekYear: 2016, weekNumber: 2, weekday: 3 }).toISODate() //=> '2016-01-13'
      */
-    static fromObject(obj: DateObjectUnits, opts?: DateTimeJSOptions): DateTimeMaybeValid;
+    static fromObject(
+        obj: DateObjectUnits,
+        opts?: DateTimeJSOptions,
+    ): DateTimeMaybeValid;
 
     /**
      * Create a DateTime from an ISO 8601 string
@@ -663,7 +734,10 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @example
      * DateTime.fromRFC2822('25 Nov 2016 13:23 Z')
      */
-    static fromRFC2822(text: string, opts?: DateTimeOptions): DateTimeMaybeValid;
+    static fromRFC2822(
+        text: string,
+        opts?: DateTimeOptions,
+    ): DateTimeMaybeValid;
 
     /**
      * Create a DateTime from an HTTP header date
@@ -703,12 +777,20 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @param opts.numberingSystem - the numbering system to use when parsing. Will also set the resulting DateTime to this numbering system
      * @param opts.outputCalendar - the output calendar to set on the resulting DateTime instance
      */
-    static fromFormat(text: string, fmt: string, opts?: DateTimeOptions): DateTimeMaybeValid;
+    static fromFormat(
+        text: string,
+        fmt: string,
+        opts?: DateTimeOptions,
+    ): DateTimeMaybeValid;
 
     /**
      * @deprecated use fromFormat instead
      */
-    static fromString(text: string, format: string, options?: DateTimeOptions): DateTimeMaybeValid;
+    static fromString(
+        text: string,
+        format: string,
+        options?: DateTimeOptions,
+    ): DateTimeMaybeValid;
 
     /**
      * Create a DateTime from a SQL date, time, or datetime
@@ -765,7 +847,10 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @example
      * DateTime.parseFormatForOpts(DateTime.DATETIME_FULL); //=> "MMMM d, yyyyy, h:m a ZZZ"
      */
-    static parseFormatForOpts(formatOpts?: DateTimeFormatOptions, localeOpts?: LocaleOptions): string | null;
+    static parseFormatForOpts(
+        formatOpts?: DateTimeFormatOptions,
+        localeOpts?: LocaleOptions,
+    ): string | null;
 
     /**
      * Produce the fully expanded format token for the locale
@@ -1043,7 +1128,9 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      *
      * @param opts - the same options as toLocaleString
      */
-    resolvedLocaleOptions(opts?: LocaleOptions | DateTimeFormatOptions): ResolvedLocaleOptions;
+    resolvedLocaleOptions(
+        opts?: LocaleOptions | DateTimeFormatOptions,
+    ): ResolvedLocaleOptions;
 
     // TRANSFORM
 
@@ -1197,7 +1284,10 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @example
      * DateTime.now().toFormat("HH 'hours and' mm 'minutes'") //=> '20 hours and 55 minutes'
      */
-    toFormat(fmt: string, opts?: LocaleOptions): IfValid<string, "Invalid DateTime", IsValid>;
+    toFormat(
+        fmt: string,
+        opts?: LocaleOptions,
+    ): IfValid<string, "Invalid DateTime", IsValid>;
 
     /**
      * Returns a localized string representing this date. Accepts the same options as the Intl.DateTimeFormat constructor and any presets defined by Luxon,
@@ -1441,7 +1531,11 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * i2.diff(i1, ['months', 'days']).toObject() //=> { months: 16, days: 19.03125 }
      * i2.diff(i1, ['months', 'days', 'hours']).toObject() //=> { months: 16, days: 19, hours: 0.75 }
      */
-    diff(otherDateTime: DateTime, unit?: DurationUnits, opts?: DiffOptions): Duration<IsValid>;
+    diff(
+        otherDateTime: DateTime,
+        unit?: DurationUnits,
+        opts?: DiffOptions,
+    ): Duration<IsValid>;
 
     /**
      * Return the difference between this DateTime and right now.
@@ -1458,7 +1552,9 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      *
      * @param otherDateTime - the other end point of the Interval
      */
-    until(otherDateTime: DateTime): IfValid<Interval<Valid>, DateTime<Invalid>, IsValid>;
+    until(
+        otherDateTime: DateTime,
+    ): IfValid<Interval<Valid>, DateTime<Invalid>, IsValid>;
 
     /**
      * Return whether this DateTime is in the same unit of time as another DateTime.
@@ -1470,7 +1566,10 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @example
      * DateTime.now().hasSame(otherDT, 'day'); //~> true if otherDT is in the same current calendar day
      */
-    hasSame(otherDateTime: DateTime, unit: DateTimeUnit): IfValid<boolean, false, IsValid>;
+    hasSame(
+        otherDateTime: DateTime,
+        unit: DateTimeUnit,
+    ): IfValid<boolean, false, IsValid>;
 
     /**
      * An equality check.
@@ -1514,7 +1613,9 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @example
      * DateTime.now().minus({ days: 2 }).toRelativeCalendar() //=> "2 days ago"
      */
-    toRelativeCalendar(options?: ToRelativeCalendarOptions): IfValid<string, null, IsValid>;
+    toRelativeCalendar(
+        options?: ToRelativeCalendarOptions,
+    ): IfValid<string, null, IsValid>;
 
     /**
      * Return the min of several date times
@@ -1523,7 +1624,9 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      */
     static min<AllValid extends boolean>(
         ...dateTimes: Array<DateTime<AllValid>>
-    ): (AllValid extends true ? DateTime<Valid> : never) | (AllValid extends false ? DateTime<Invalid> : never);
+    ):
+        | (AllValid extends true ? DateTime<Valid> : never)
+        | (AllValid extends false ? DateTime<Invalid> : never);
 
     /**
      * Return the max of several date times
@@ -1532,7 +1635,9 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      */
     static max<AllValid extends boolean>(
         ...dateTimes: Array<DateTime<AllValid>>
-    ): (AllValid extends true ? DateTime<Valid> : never) | (AllValid extends false ? DateTime<Invalid> : never);
+    ):
+        | (AllValid extends true ? DateTime<Valid> : never)
+        | (AllValid extends false ? DateTime<Invalid> : never);
 
     // MISC
 
@@ -1543,12 +1648,20 @@ export class DateTime<IsValid extends boolean = DefaultValidity> {
      * @param fmt - the format the string is expected to be in (see description)
      * @param options - options taken by fromFormat()
      */
-    static fromFormatExplain(text: string, fmt: string, options?: DateTimeOptions): ExplainedFormat;
+    static fromFormatExplain(
+        text: string,
+        fmt: string,
+        options?: DateTimeOptions,
+    ): ExplainedFormat;
 
     /**
      * @deprecated use fromFormatExplain instead
      */
-    static fromStringExplain(text: string, fmt: string, options?: DateTimeOptions): ExplainedFormat;
+    static fromStringExplain(
+        text: string,
+        fmt: string,
+        options?: DateTimeOptions,
+    ): ExplainedFormat;
 
     // FORMAT PRESETS
 

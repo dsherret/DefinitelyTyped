@@ -58,7 +58,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.ProcessDialog
      */
-    interface ProcessDialog extends ProcessDialog.Props, ProcessDialog.Prototype {}
+    interface ProcessDialog
+        extends ProcessDialog.Props,
+            ProcessDialog.Prototype {}
 
     namespace ProcessDialog {
         type ConfigOptions = Dialog.ConfigOptions;
@@ -71,7 +73,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): ProcessDialog;
+            new (config?: ConfigOptions): ProcessDialog;
             prototype: Prototype;
             static: Static;
             super: Dialog.Constructor;

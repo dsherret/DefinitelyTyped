@@ -4,7 +4,8 @@ import "leaflet-routing-machine";
 const map: L.Map = L.map("map-container");
 
 L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", {
-    attribution: "&copy; <a href=\"http://osm.org/copyright\">OpenStreetMap</a> contributors",
+    attribution:
+        '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
 }).addTo(map);
 
 const waypoints = [
@@ -15,7 +16,11 @@ const waypoints = [
 
 const myPlan = new L.Routing.Plan(waypoints, {
     addWaypoints: false,
-    createMarker: (index: number, waypoint: L.Routing.Waypoint, numberOfWaypoints: number) => {
+    createMarker: (
+        index: number,
+        waypoint: L.Routing.Waypoint,
+        numberOfWaypoints: number,
+    ) => {
         if (waypoint && index > -1 && index < numberOfWaypoints) {
             return L.marker(waypoint.latLng);
         }

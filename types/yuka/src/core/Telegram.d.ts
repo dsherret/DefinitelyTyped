@@ -29,7 +29,13 @@ export class Telegram {
      * @param delay - A time value in millisecond used to delay the message dispatching.
      * @param data - An object for custom data.
      */
-    constructor(sender: GameEntity, receiver: GameEntity, message: string, delay: number, data: object);
+    constructor(
+        sender: GameEntity,
+        receiver: GameEntity,
+        message: string,
+        delay: number,
+        data: object,
+    );
 
     /**
      * Transforms this instance into a JSON object.

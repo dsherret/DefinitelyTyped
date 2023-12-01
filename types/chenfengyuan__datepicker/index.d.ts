@@ -241,7 +241,9 @@ export interface DatepickerOptions {
     /**
      * Filter each date item. If it returns `false`, the related date will be disabled.
      */
-    filter?: ((date: Date, view: "day" | "month" | "year") => boolean | undefined) | undefined;
+    filter?:
+        | ((date: Date, view: "day" | "month" | "year") => boolean | undefined)
+        | undefined;
 
     /**
      * A shortcut of the "show.datepicker" event.

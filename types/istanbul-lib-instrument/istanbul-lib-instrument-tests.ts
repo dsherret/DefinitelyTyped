@@ -1,4 +1,8 @@
-import { createInstrumenter, programVisitor, readInitialCoverage } from "istanbul-lib-instrument";
+import {
+    createInstrumenter,
+    programVisitor,
+    readInitialCoverage,
+} from "istanbul-lib-instrument";
 
 import * as babelTypes from "babel-types";
 import { RawSourceMap } from "source-map";
@@ -33,13 +37,18 @@ const newCode = instrumenter.instrumentSync(code, filename, sourceMap);
 code.trim();
 
 // instrument with all args
-instrumenter.instrument(code, filename, (error, code) => {
-    if (error) {
-        error.stack;
-    } else {
-        code.trim();
-    }
-}, sourceMap);
+instrumenter.instrument(
+    code,
+    filename,
+    (error, code) => {
+        if (error) {
+            error.stack;
+        } else {
+            code.trim();
+        }
+    },
+    sourceMap,
+);
 
 // instrument without a filename
 instrumenter.instrument(code, (error, code) => {
@@ -62,7 +71,9 @@ initialCov.gcv;
 programVisitor(babelTypes);
 programVisitor(babelTypes, filename);
 programVisitor(babelTypes, filename, { coverageVariable: "coverage" });
-const visitor = programVisitor(babelTypes, filename, { inputSourceMap: sourceMap });
+const visitor = programVisitor(babelTypes, filename, {
+    inputSourceMap: sourceMap,
+});
 
 visitor.enter(filename);
 const data = visitor.exit(filename);

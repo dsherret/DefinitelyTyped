@@ -6,7 +6,7 @@ declare module "chart.js" {
     }
 
     interface InteractionModeRegistry {
-        "interpolate": "interpolate";
+        interpolate: "interpolate";
     }
 
     interface ChartDataSets {

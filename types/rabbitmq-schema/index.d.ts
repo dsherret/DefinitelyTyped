@@ -55,7 +55,11 @@ declare class RabbitMQSchema {
 
     validate(schema: Topology | Topology[], parentPath?: string): void;
 
-    validateMessage<T>(exchangeName: string, routingPattern: string, message: T): T;
+    validateMessage<T>(
+        exchangeName: string,
+        routingPattern: string,
+        message: T,
+    ): T;
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     getQueueByName(name: string): Queue | void;

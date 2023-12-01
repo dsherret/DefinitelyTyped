@@ -103,7 +103,11 @@ declare namespace SAT {
      * @param  {Response} response specified the result of a collision between two circle.
      * @return {boolean}             return {true} if there is a collision. {false} otherwise.
      */
-    export function testCircleCircle(a: Circle, b: Circle, response?: Response): boolean;
+    export function testCircleCircle(
+        a: Circle,
+        b: Circle,
+        response?: Response,
+    ): boolean;
     /**
      * @function {testPolygonCicle} tests a collision between a {Polygon} and a {Circle}. if a response is to
      * be calculated in the event of a collision, pass in a cleared {Response} object.
@@ -112,7 +116,11 @@ declare namespace SAT {
      * @param  {Response} response specified the result of a collision between a {Polygon} and a {Circle}.
      * @return {boolean}             return {true} if there is a collision. {false} otherwise.
      */
-    export function testPolygonCircle(polygon: Polygon, circle: Circle, response?: Response): boolean;
+    export function testPolygonCircle(
+        polygon: Polygon,
+        circle: Circle,
+        response?: Response,
+    ): boolean;
     /**
      * @function {testCirclePolygon} tests a collision between a {Circle} and a {Polygon}. if a response is to
      * be calculated in the event of a collision, pass in a cleared {Response} object.
@@ -121,7 +129,11 @@ declare namespace SAT {
      * @param  {Response} response specified the result of a collision between a {Circle} and a {Polygon}.
      * @return {boolean}             return {true} if there is a collision. {false} otherwise.
      */
-    export function testCirclePolygon(circle: Circle, polygon: Polygon, response?: Response): boolean;
+    export function testCirclePolygon(
+        circle: Circle,
+        polygon: Polygon,
+        response?: Response,
+    ): boolean;
     /**
      * @function {testPolygonPolygon} tests whether two polygons {a} and {b} collide.
      * if a response is to be calculated in the event of a collision, pass in a cleared {Response} object.
@@ -130,7 +142,11 @@ declare namespace SAT {
      * @param  {Response} response specified the result of a collision between two {Polygon}s.
      * @return {boolean}           return {true} if there is a collision. {false} otherwise.
      */
-    export function testPolygonPolygon(a: Polygon, b: Polygon, response?: Response): boolean;
+    export function testPolygonPolygon(
+        a: Polygon,
+        b: Polygon,
+        response?: Response,
+    ): boolean;
 }
 
 declare module "sat" {

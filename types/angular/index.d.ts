@@ -25,7 +25,7 @@ declare namespace angular {
 
     // not directly implemented, but ensures that constructed class implements $get
     interface IServiceProviderClass {
-        new(...args: any[]): IServiceProvider;
+        new (...args: any[]): IServiceProvider;
     }
 
     interface IServiceProviderFactory {
@@ -117,7 +117,11 @@ declare namespace angular {
          */
         forEach<T>(
             obj: { [index: string]: T },
-            iterator: (value: T, key: string, obj: { [index: string]: T }) => void,
+            iterator: (
+                value: T,
+                key: string,
+                obj: { [index: string]: T },
+            ) => void,
             context?: any,
         ): { [index: string]: T };
         /**
@@ -129,7 +133,11 @@ declare namespace angular {
          * @param iterator Iterator function.
          * @param context Object to become context (this) for the iterator function.
          */
-        forEach(obj: any, iterator: (value: any, key: any, obj: any) => void, context?: any): any;
+        forEach(
+            obj: any,
+            iterator: (value: any, key: any, obj: any) => void,
+            context?: any,
+        ): any;
 
         fromJson(json: string): any;
         identity<T>(arg?: T): T;
@@ -216,7 +224,9 @@ declare namespace angular {
          *
          * @param object Object map of components where the keys are the names and the values are the component definition objects
          */
-        component(object: { [componentName: string]: IComponentOptions }): IModule;
+        component(object: {
+            [componentName: string]: IComponentOptions;
+        }): IModule;
         /**
          * Use this method to register work which needs to be performed on module loading.
          *
@@ -246,8 +256,13 @@ declare namespace angular {
          * @param name Controller name, or an object map of controllers where the keys are the names and the values are the constructors.
          * @param controllerConstructor Controller constructor fn (optionally decorated with DI annotations in the array notation).
          */
-        controller(name: string, controllerConstructor: Injectable<IControllerConstructor>): IModule;
-        controller(object: { [name: string]: Injectable<IControllerConstructor> }): IModule;
+        controller(
+            name: string,
+            controllerConstructor: Injectable<IControllerConstructor>,
+        ): IModule;
+        controller(object: {
+            [name: string]: Injectable<IControllerConstructor>;
+        }): IModule;
         /**
          * Register a new directive with the compiler.
          *
@@ -261,18 +276,20 @@ declare namespace angular {
             TController extends IDirectiveController = IController,
         >(
             name: string,
-            directiveFactory: Injectable<IDirectiveFactory<TScope, TElement, TAttributes, TController>>,
+            directiveFactory: Injectable<
+                IDirectiveFactory<TScope, TElement, TAttributes, TController>
+            >,
         ): IModule;
         directive<
             TScope extends IScope = IScope,
             TElement extends JQLite = JQLite,
             TAttributes extends IAttributes = IAttributes,
             TController extends IDirectiveController = IController,
-        >(
-            object: {
-                [directiveName: string]: Injectable<IDirectiveFactory<TScope, TElement, TAttributes, TController>>;
-            },
-        ): IModule;
+        >(object: {
+            [directiveName: string]: Injectable<
+                IDirectiveFactory<TScope, TElement, TAttributes, TController>
+            >;
+        }): IModule;
 
         /**
          * Register a service factory, which will be called to return the service instance. This is short for registering a service where its provider consists of only a $get property, which is the given service factory function. You should use $provide.factory(getFn) if you do not need to configure your service in a provider.
@@ -282,10 +299,19 @@ declare namespace angular {
          */
         factory(name: string, $getFn: Injectable<Function>): IModule;
         factory(object: { [name: string]: Injectable<Function> }): IModule;
-        filter(name: string, filterFactoryFunction: Injectable<FilterFactory>): IModule;
+        filter(
+            name: string,
+            filterFactoryFunction: Injectable<FilterFactory>,
+        ): IModule;
         filter(object: { [name: string]: Injectable<FilterFactory> }): IModule;
-        provider(name: string, serviceProviderFactory: IServiceProviderFactory): IModule;
-        provider(name: string, serviceProviderConstructor: IServiceProviderClass): IModule;
+        provider(
+            name: string,
+            serviceProviderFactory: IServiceProviderFactory,
+        ): IModule;
+        provider(
+            name: string,
+            serviceProviderConstructor: IServiceProviderClass,
+        ): IModule;
         provider(name: string, inlineAnnotatedConstructor: any[]): IModule;
         provider(name: string, providerObject: IServiceProvider): IModule;
         provider(object: Object): IModule;
@@ -299,7 +325,10 @@ declare namespace angular {
          * @param name The name of the instance.
          * @param serviceConstructor An injectable class (constructor function) that will be instantiated.
          */
-        service(name: string, serviceConstructor: Injectable<Function>): IModule;
+        service(
+            name: string,
+            serviceConstructor: Injectable<Function>,
+        ): IModule;
         service(object: { [name: string]: Injectable<Function> }): IModule;
         /**
          * Register a value service with the $injector, such as a string, a number, an array, an object or a function. This is short for registering a service where its provider's $get property is a factory function that takes no arguments and returns the value service.
@@ -400,13 +429,27 @@ declare namespace angular {
         $valid: boolean;
         $invalid: boolean;
         $submitted: boolean;
-        $error: { [validationErrorKey: string]: Array<INgModelController | IFormController> };
+        $error: {
+            [validationErrorKey: string]: Array<
+                INgModelController | IFormController
+            >;
+        };
         $name?: string | undefined;
-        $pending?: { [validationErrorKey: string]: Array<INgModelController | IFormController> } | undefined;
+        $pending?:
+            | {
+                  [validationErrorKey: string]: Array<
+                      INgModelController | IFormController
+                  >;
+              }
+            | undefined;
         $addControl(control: INgModelController | IFormController): void;
         $getControls(): ReadonlyArray<INgModelController | IFormController>;
         $removeControl(control: INgModelController | IFormController): void;
-        $setValidity(validationErrorKey: string, isValid: boolean, control: INgModelController | IFormController): void;
+        $setValidity(
+            validationErrorKey: string,
+            isValid: boolean,
+            control: INgModelController | IFormController,
+        ): void;
         $setDirty(): void;
         $setPristine(): void;
         $commitViewValue(): void;
@@ -645,15 +688,26 @@ declare namespace angular {
          * @param name Event name to listen on.
          * @param listener Function to call when the event is emitted.
          */
-        $on(name: string, listener: (event: IAngularEvent, ...args: any[]) => any): () => void;
+        $on(
+            name: string,
+            listener: (event: IAngularEvent, ...args: any[]) => any,
+        ): () => void;
 
-        $watch(watchExpression: string, listener?: string, objectEquality?: boolean): () => void;
+        $watch(
+            watchExpression: string,
+            listener?: string,
+            objectEquality?: boolean,
+        ): () => void;
         $watch<T>(
             watchExpression: string,
             listener?: (newValue: T, oldValue: T, scope: IScope) => any,
             objectEquality?: boolean,
         ): () => void;
-        $watch(watchExpression: (scope: IScope) => any, listener?: string, objectEquality?: boolean): () => void;
+        $watch(
+            watchExpression: (scope: IScope) => any,
+            listener?: string,
+            objectEquality?: boolean,
+        ): () => void;
         $watch<T>(
             watchExpression: (scope: IScope) => T,
             listener?: (newValue: T, oldValue: T, scope: IScope) => any,
@@ -780,7 +834,13 @@ declare namespace angular {
     // see http://docs.angularjs.org/api/ng/service/$interval
     ///////////////////////////////////////////////////////////////////////////
     interface IIntervalService {
-        (func: Function, delay: number, count?: number, invokeApply?: boolean, ...args: any[]): IPromise<any>;
+        (
+            func: Function,
+            delay: number,
+            count?: number,
+            invokeApply?: boolean,
+            ...args: any[]
+        ): IPromise<any>;
         cancel(promise: IPromise<any>): boolean;
     }
 
@@ -813,7 +873,10 @@ declare namespace angular {
     interface IFilterFilter {
         <T>(
             array: T[],
-            expression: string | IFilterFilterPatternObject | IFilterFilterPredicateFunc<T>,
+            expression:
+                | string
+                | IFilterFilterPatternObject
+                | IFilterFilterPredicateFunc<T>,
             comparator?: IFilterFilterComparatorFunc<T> | boolean,
         ): T[];
     }
@@ -870,7 +933,11 @@ declare namespace angular {
          * @param timezone Timezone to be used for formatting. It understands UTC/GMT and the continental US time zone abbreviations, but for general use, use a time zone offset, for example, '+0430' (4 hours, 30 minutes east of the Greenwich meridian) If not specified, the timezone of the browser will be used.
          * @return Formatted string or the input if input is not recognized as date/millis.
          */
-        (date: Date | number | string, format?: string, timezone?: string): string;
+        (
+            date: Date | number | string,
+            format?: string,
+            timezone?: string,
+        ): string;
     }
 
     interface IFilterJson {
@@ -913,7 +980,11 @@ declare namespace angular {
          * @param begin Index at which to begin limitation. As a negative index, begin indicates an offset from the end of input. Defaults to 0.
          * @return A new substring of length limit or less if input had less than limit elements.
          */
-        (input: string | number, limit: string | number, begin?: string | number): string;
+        (
+            input: string | number,
+            limit: string | number,
+            begin?: string | number,
+        ): string;
     }
 
     interface IFilterOrderBy {
@@ -927,7 +998,10 @@ declare namespace angular {
          */
         <T>(
             array: T[],
-            expression: string | ((value: T) => any) | Array<((value: T) => any) | string>,
+            expression:
+                | string
+                | ((value: T) => any)
+                | Array<((value: T) => any) | string>,
             reverse?: boolean,
             comparator?: IFilterOrderByComparatorFunc,
         ): T[];
@@ -1059,7 +1133,10 @@ declare namespace angular {
          */
         setIdentifierFns(
             identifierStart?: (character: string, codePoint: number) => boolean,
-            identifierContinue?: (character: string, codePoint: number) => boolean,
+            identifierContinue?: (
+                character: string,
+                codePoint: number,
+            ) => boolean,
         ): void;
     }
 
@@ -1131,7 +1208,10 @@ declare namespace angular {
          * @param search New search params
          * @param paramValue If search is a string or a Number, then paramValue will override only a single search property. If paramValue is null, the property specified via the first argument will be deleted. If paramValue is an array, it will override the property of the search component of $location specified via the first argument. If paramValue is true, the property specified via the first argument will be added with no value nor trailing equal sign.
          */
-        search(search: string, paramValue: string | number | null | string[] | boolean): ILocationService;
+        search(
+            search: string,
+            paramValue: string | number | null | string[] | boolean,
+        ): ILocationService;
 
         state(): any;
         state(state: any): ILocationService;
@@ -1148,13 +1228,11 @@ declare namespace angular {
         // implementation tests it as boolean, which makes more sense
         // since this is a toggler
         html5Mode(active: boolean): ILocationProvider;
-        html5Mode(
-            mode: {
-                enabled?: boolean | undefined;
-                requireBase?: boolean | undefined;
-                rewriteLinks?: boolean | undefined;
-            },
-        ): ILocationProvider;
+        html5Mode(mode: {
+            enabled?: boolean | undefined;
+            requireBase?: boolean | undefined;
+            rewriteLinks?: boolean | undefined;
+        }): ILocationProvider;
     }
 
     ///////////////////////////////////////////////////////////////////////////
@@ -1190,8 +1268,18 @@ declare namespace angular {
      * See http://docs.angularjs.org/api/ng/service/$q
      */
     interface IQService {
-        new<T>(resolver: (resolve: IQResolveReject<T>, reject: IQResolveReject<any>) => any): IPromise<T>;
-        <T>(resolver: (resolve: IQResolveReject<T>, reject: IQResolveReject<any>) => any): IPromise<T>;
+        new <T>(
+            resolver: (
+                resolve: IQResolveReject<T>,
+                reject: IQResolveReject<any>,
+            ) => any,
+        ): IPromise<T>;
+        <T>(
+            resolver: (
+                resolve: IQResolveReject<T>,
+                reject: IQResolveReject<any>,
+            ) => any,
+        ): IPromise<T>;
 
         /**
          * Combines multiple promises into a single promise that is resolved when all of the input promises are resolved.
@@ -1261,13 +1349,28 @@ declare namespace angular {
             ],
         ): IPromise<[T1, T2, T3, T4, T5, T6]>;
         all<T1, T2, T3, T4, T5>(
-            values: [T1 | IPromise<T1>, T2 | IPromise<T2>, T3 | IPromise<T3>, T4 | IPromise<T4>, T5 | IPromise<T5>],
+            values: [
+                T1 | IPromise<T1>,
+                T2 | IPromise<T2>,
+                T3 | IPromise<T3>,
+                T4 | IPromise<T4>,
+                T5 | IPromise<T5>,
+            ],
         ): IPromise<[T1, T2, T3, T4, T5]>;
         all<T1, T2, T3, T4>(
-            values: [T1 | IPromise<T1>, T2 | IPromise<T2>, T3 | IPromise<T3>, T4 | IPromise<T4>],
+            values: [
+                T1 | IPromise<T1>,
+                T2 | IPromise<T2>,
+                T3 | IPromise<T3>,
+                T4 | IPromise<T4>,
+            ],
         ): IPromise<[T1, T2, T3, T4]>;
-        all<T1, T2, T3>(values: [T1 | IPromise<T1>, T2 | IPromise<T2>, T3 | IPromise<T3>]): IPromise<[T1, T2, T3]>;
-        all<T1, T2>(values: [T1 | IPromise<T1>, T2 | IPromise<T2>]): IPromise<[T1, T2]>;
+        all<T1, T2, T3>(
+            values: [T1 | IPromise<T1>, T2 | IPromise<T2>, T3 | IPromise<T3>],
+        ): IPromise<[T1, T2, T3]>;
+        all<T1, T2>(
+            values: [T1 | IPromise<T1>, T2 | IPromise<T2>],
+        ): IPromise<[T1, T2]>;
         all<TAll>(promises: Array<TAll | IPromise<TAll>>): IPromise<TAll[]>;
         /**
          * Combines multiple promises into a single promise that is resolved when all of the input promises are resolved.
@@ -1276,7 +1379,9 @@ declare namespace angular {
          *
          * @param promises A hash of promises.
          */
-        all<T>(promises: { [K in keyof T]: (IPromise<T[K]> | T[K]) }): IPromise<T>;
+        all<T>(promises: {
+            [K in keyof T]: IPromise<T[K]> | T[K];
+        }): IPromise<T>;
         /**
          * Creates a Deferred object which represents a task which will finish in the future.
          */
@@ -1286,7 +1391,9 @@ declare namespace angular {
          *
          * @param promises A list or hash of promises.
          */
-        race<T>(promises: Array<IPromise<T>> | { [key: string]: IPromise<T> }): IPromise<T>;
+        race<T>(
+            promises: Array<IPromise<T>> | { [key: string]: IPromise<T> },
+        ): IPromise<T>;
         /**
          * Creates a promise that is resolved as rejected with the specified reason. This api should be used to forward rejection in a chain of promises. If you are dealing with the last promise in a promise chain, you don't need to worry about it.
          *
@@ -1319,17 +1426,23 @@ declare namespace angular {
         when<T1, T2>(value: PromiseLike<T1> | T2): IPromise<T1 | T2>;
         when<TResult, T>(
             value: PromiseLike<T> | T,
-            successCallback: (promiseValue: T) => PromiseLike<TResult> | TResult,
+            successCallback: (
+                promiseValue: T,
+            ) => PromiseLike<TResult> | TResult,
         ): IPromise<TResult>;
         when<TResult, T>(
             value: T,
-            successCallback: (promiseValue: T) => PromiseLike<TResult> | TResult,
+            successCallback: (
+                promiseValue: T,
+            ) => PromiseLike<TResult> | TResult,
             errorCallback: null | undefined | ((reason: any) => any),
             notifyCallback?: (state: any) => any,
         ): IPromise<TResult>;
         when<TResult, TResult2, T>(
             value: PromiseLike<T>,
-            successCallback: (promiseValue: T) => PromiseLike<TResult> | TResult,
+            successCallback: (
+                promiseValue: T,
+            ) => PromiseLike<TResult> | TResult,
             errorCallback: (reason: any) => TResult2 | PromiseLike<TResult2>,
             notifyCallback?: (state: any) => any,
         ): IPromise<TResult | TResult2>;
@@ -1374,19 +1487,27 @@ declare namespace angular {
          */
         then<TResult1 = T, TResult2 = never>(
             successCallback?:
-                | ((value: T) => PromiseLike<never> | PromiseLike<TResult1> | TResult1)
+                | ((
+                      value: T,
+                  ) => PromiseLike<never> | PromiseLike<TResult1> | TResult1)
                 | null,
             errorCallback?:
-                | ((reason: any) => PromiseLike<never> | PromiseLike<TResult2> | TResult2)
+                | ((
+                      reason: any,
+                  ) => PromiseLike<never> | PromiseLike<TResult2> | TResult2)
                 | null,
             notifyCallback?: (state: any) => any,
         ): IPromise<TResult1 | TResult2>;
         then<TResult1 = T, TResult2 = never>(
             successCallback?:
-                | ((value: T) => IPromise<never> | IPromise<TResult1> | TResult1)
+                | ((
+                      value: T,
+                  ) => IPromise<never> | IPromise<TResult1> | TResult1)
                 | null,
             errorCallback?:
-                | ((reason: any) => IPromise<never> | IPromise<TResult2> | TResult2)
+                | ((
+                      reason: any,
+                  ) => IPromise<never> | IPromise<TResult2> | TResult2)
                 | null,
             notifyCallback?: (state: any) => any,
         ): IPromise<TResult1 | TResult2>;
@@ -1396,12 +1517,16 @@ declare namespace angular {
          */
         catch<TResult = never>(
             onRejected?:
-                | ((reason: any) => PromiseLike<never> | PromiseLike<TResult> | TResult)
+                | ((
+                      reason: any,
+                  ) => PromiseLike<never> | PromiseLike<TResult> | TResult)
                 | null,
         ): IPromise<T | TResult>;
         catch<TResult = never>(
             onRejected?:
-                | ((reason: any) => IPromise<never> | IPromise<TResult> | TResult)
+                | ((
+                      reason: any,
+                  ) => IPromise<never> | IPromise<TResult> | TResult)
                 | null,
         ): IPromise<T | TResult>;
 
@@ -1450,7 +1575,10 @@ declare namespace angular {
          *
          * capacity — turns the cache into LRU cache.
          */
-        (cacheId: string, optionsMap?: { capacity?: number | undefined }): ICacheObject;
+        (
+            cacheId: string,
+            optionsMap?: { capacity?: number | undefined },
+        ): ICacheObject;
 
         /**
          * Get information about all the caches that have been created.
@@ -1546,21 +1674,25 @@ declare namespace angular {
             TController extends IDirectiveController = IController,
         >(
             name: string,
-            directiveFactory: Injectable<IDirectiveFactory<TScope, TElement, TAttributes, TController>>,
+            directiveFactory: Injectable<
+                IDirectiveFactory<TScope, TElement, TAttributes, TController>
+            >,
         ): ICompileProvider;
         directive<
             TScope extends IScope = IScope,
             TElement extends JQLite = JQLite,
             TAttributes extends IAttributes = IAttributes,
             TController extends IDirectiveController = IController,
-        >(
-            object: {
-                [directiveName: string]: Injectable<IDirectiveFactory<TScope, TElement, TAttributes, TController>>;
-            },
-        ): ICompileProvider;
+        >(object: {
+            [directiveName: string]: Injectable<
+                IDirectiveFactory<TScope, TElement, TAttributes, TController>
+            >;
+        }): ICompileProvider;
 
         component(name: string, options: IComponentOptions): ICompileProvider;
-        component(object: { [componentName: string]: IComponentOptions }): ICompileProvider;
+        component(object: {
+            [componentName: string]: IComponentOptions;
+        }): ICompileProvider;
 
         /** @deprecated The old name of aHrefSanitizationTrustedUrlList. Kept for compatibility. */
         aHrefSanitizationWhitelist(): RegExp;
@@ -1627,14 +1759,20 @@ declare namespace angular {
 
     // This corresponds to the "publicLinkFn" returned by $compile.
     interface ITemplateLinkingFunction {
-        (scope: IScope, cloneAttachFn?: ICloneAttachFunction, options?: ITemplateLinkingFunctionOptions): JQLite;
+        (
+            scope: IScope,
+            cloneAttachFn?: ICloneAttachFunction,
+            options?: ITemplateLinkingFunctionOptions,
+        ): JQLite;
     }
 
     interface ITemplateLinkingFunctionOptions {
         parentBoundTranscludeFn?: ITranscludeFunction | undefined;
-        transcludeControllers?: {
-            [controller: string]: { instance: IController };
-        } | undefined;
+        transcludeControllers?:
+            | {
+                  [controller: string]: { instance: IController };
+              }
+            | undefined;
         futureParentElement?: JQuery | undefined;
     }
 
@@ -1645,9 +1783,18 @@ declare namespace angular {
      */
     interface ITranscludeFunction {
         // If the scope is provided, then the cloneAttachFn must be as well.
-        (scope: IScope, cloneAttachFn: ICloneAttachFunction, futureParentElement?: JQuery, slotName?: string): JQLite;
+        (
+            scope: IScope,
+            cloneAttachFn: ICloneAttachFunction,
+            futureParentElement?: JQuery,
+            slotName?: string,
+        ): JQLite;
         // If one argument is provided, then it's assumed to be the cloneAttachFn.
-        (cloneAttachFn?: ICloneAttachFunction, futureParentElement?: JQuery, slotName?: string): JQLite;
+        (
+            cloneAttachFn?: ICloneAttachFunction,
+            futureParentElement?: JQuery,
+            slotName?: string,
+        ): JQLite;
 
         /**
          * Returns true if the specified slot contains content (i.e. one or more DOM nodes)
@@ -1671,7 +1818,7 @@ declare namespace angular {
 
     interface IControllerService {
         // Although the documentation doesn't state this, locals are optional
-        <T>(controllerConstructor: new(...args: any[]) => T, locals?: any): T;
+        <T>(controllerConstructor: new (...args: any[]) => T, locals?: any): T;
         <T>(controllerConstructor: (...args: any[]) => T, locals?: any): T;
         <T>(controllerName: string, locals?: any): T;
     }
@@ -1714,7 +1861,10 @@ declare namespace angular {
          * @param url Relative or absolute URL specifying the destination of the request
          * @param config Optional configuration object
          */
-        delete<T>(url: string, config?: IRequestShortcutConfig): IHttpPromise<T>;
+        delete<T>(
+            url: string,
+            config?: IRequestShortcutConfig,
+        ): IHttpPromise<T>;
 
         /**
          * Shortcut method to perform HEAD request.
@@ -1739,7 +1889,11 @@ declare namespace angular {
          * @param data Request content
          * @param config Optional configuration object
          */
-        post<T>(url: string, data: any, config?: IRequestShortcutConfig): IHttpPromise<T>;
+        post<T>(
+            url: string,
+            data: any,
+            config?: IRequestShortcutConfig,
+        ): IHttpPromise<T>;
 
         /**
          * Shortcut method to perform PUT request.
@@ -1748,7 +1902,11 @@ declare namespace angular {
          * @param data Request content
          * @param config Optional configuration object
          */
-        put<T>(url: string, data: any, config?: IRequestShortcutConfig): IHttpPromise<T>;
+        put<T>(
+            url: string,
+            data: any,
+            config?: IRequestShortcutConfig,
+        ): IHttpPromise<T>;
 
         /**
          * Shortcut method to perform PATCH request.
@@ -1757,7 +1915,11 @@ declare namespace angular {
          * @param data Request content
          * @param config Optional configuration object
          */
-        patch<T>(url: string, data: any, config?: IRequestShortcutConfig): IHttpPromise<T>;
+        patch<T>(
+            url: string,
+            data: any,
+            config?: IRequestShortcutConfig,
+        ): IHttpPromise<T>;
 
         /**
          * Runtime equivalent of the $httpProvider.defaults property. Allows configuration of default headers, withCredentials as well as request and response transformations.
@@ -1821,12 +1983,16 @@ declare namespace angular {
          * Event listeners to be bound to the XMLHttpRequest object.
          * To bind events to the XMLHttpRequest upload object, use uploadEventHandlers. The handler will be called in the context of a $apply block.
          */
-        eventHandlers?: { [type: string]: EventListenerOrEventListenerObject } | undefined;
+        eventHandlers?:
+            | { [type: string]: EventListenerOrEventListenerObject }
+            | undefined;
         /**
          * Event listeners to be bound to the XMLHttpRequest upload object.
          * To bind events to the XMLHttpRequest object, use eventHandlers. The handler will be called in the context of a $apply block.
          */
-        uploadEventHandlers?: { [type: string]: EventListenerOrEventListenerObject } | undefined;
+        uploadEventHandlers?:
+            | { [type: string]: EventListenerOrEventListenerObject }
+            | undefined;
     }
 
     interface IHttpHeadersGetter {
@@ -1835,7 +2001,12 @@ declare namespace angular {
     }
 
     interface IHttpPromiseCallback<T> {
-        (data: T, status: number, headers: IHttpHeadersGetter, config: IRequestConfig): void;
+        (
+            data: T,
+            status: number,
+            headers: IHttpHeadersGetter,
+            config: IRequestConfig,
+        ): void;
     }
 
     interface IHttpResponse<T> {
@@ -1895,13 +2066,19 @@ declare namespace angular {
          * headers and returns its transformed (typically serialized) version.
          * @see {@link https://docs.angularjs.org/api/ng/service/$http#transforming-requests-and-responses}
          */
-        transformRequest?: IHttpRequestTransformer | IHttpRequestTransformer[] | undefined;
+        transformRequest?:
+            | IHttpRequestTransformer
+            | IHttpRequestTransformer[]
+            | undefined;
 
         /**
          * Transform function or an array of such functions. The transform function takes the http response body and
          * headers and returns its transformed (typically deserialized) version.
          */
-        transformResponse?: IHttpResponseTransformer | IHttpResponseTransformer[] | undefined;
+        transformResponse?:
+            | IHttpResponseTransformer
+            | IHttpResponseTransformer[]
+            | undefined;
 
         /**
          * Map of strings or functions which return strings representing HTTP headers to send to the server. If the
@@ -1931,10 +2108,18 @@ declare namespace angular {
     }
 
     interface IHttpInterceptor {
-        request?(config: IRequestConfig): IRequestConfig | IPromise<IRequestConfig>;
-        requestError?(rejection: any): IRequestConfig | IPromise<IRequestConfig>;
-        response?<T>(response: IHttpResponse<T>): IPromise<IHttpResponse<T>> | IHttpResponse<T>;
-        responseError?<T>(rejection: any): IPromise<IHttpResponse<T>> | IHttpResponse<T>;
+        request?(
+            config: IRequestConfig,
+        ): IRequestConfig | IPromise<IRequestConfig>;
+        requestError?(
+            rejection: any,
+        ): IRequestConfig | IPromise<IRequestConfig>;
+        response?<T>(
+            response: IHttpResponse<T>,
+        ): IPromise<IHttpResponse<T>> | IHttpResponse<T>;
+        responseError?<T>(
+            rejection: any,
+        ): IPromise<IHttpResponse<T>> | IHttpResponse<T>;
     }
 
     interface IHttpInterceptorFactory {
@@ -2022,11 +2207,16 @@ declare namespace angular {
         getTrustedJs(value: any): any;
         getTrustedResourceUrl(value: any): any;
         getTrustedUrl(value: any): any;
-        parse(type: string, expression: string): (context: any, locals: any) => any;
+        parse(
+            type: string,
+            expression: string,
+        ): (context: any, locals: any) => any;
         parseAsCss(expression: string): (context: any, locals: any) => any;
         parseAsHtml(expression: string): (context: any, locals: any) => any;
         parseAsJs(expression: string): (context: any, locals: any) => any;
-        parseAsResourceUrl(expression: string): (context: any, locals: any) => any;
+        parseAsResourceUrl(
+            expression: string,
+        ): (context: any, locals: any) => any;
         parseAsUrl(expression: string): (context: any, locals: any) => any;
         trustAs(type: string, value: any): any;
         trustAsHtml(value: any): any;
@@ -2136,7 +2326,10 @@ declare namespace angular {
          * $attrs - Current attributes object for the element
          * Use the array form to define dependencies (necessary if strictDi is enabled and you require dependency injection)
          */
-        templateUrl?: string | Injectable<(...args: any[]) => string> | undefined;
+        templateUrl?:
+            | string
+            | Injectable<(...args: any[]) => string>
+            | undefined;
         /**
          * Define DOM attribute binding to component properties. Component properties are always bound to the component
          * controller and not to the scope.
@@ -2156,9 +2349,8 @@ declare namespace angular {
     }
 
     type IControllerConstructor =
-        | (new(...args: any[]) => IController)
-        | // Instead of classes, plain functions are often used as controller constructors, especially in examples.
-        ((...args: any[]) => void | IController);
+        | (new (...args: any[]) => IController) // Instead of classes, plain functions are often used as controller constructors, especially in examples.
+        | ((...args: any[]) => void | IController);
 
     /**
      * Directive controllers have a well-defined lifecycle. Each controller can implement "lifecycle hooks". These are methods that
@@ -2296,7 +2488,10 @@ declare namespace angular {
     // and http://docs.angularjs.org/guide/directive
     ///////////////////////////////////////////////////////////////////////////
 
-    type IDirectiveController = IController | IController[] | { [key: string]: IController };
+    type IDirectiveController =
+        | IController
+        | IController[]
+        | { [key: string]: IController };
 
     interface IDirectiveFactory<
         TScope extends IScope = IScope,
@@ -2332,8 +2527,12 @@ declare namespace angular {
         TAttributes extends IAttributes = IAttributes,
         TController extends IDirectiveController = IController,
     > {
-        pre?: IDirectiveLinkFn<TScope, TElement, TAttributes, TController> | undefined;
-        post?: IDirectiveLinkFn<TScope, TElement, TAttributes, TController> | undefined;
+        pre?:
+            | IDirectiveLinkFn<TScope, TElement, TAttributes, TController>
+            | undefined;
+        post?:
+            | IDirectiveLinkFn<TScope, TElement, TAttributes, TController>
+            | undefined;
     }
 
     interface IDirectiveCompileFn<
@@ -2364,7 +2563,9 @@ declare namespace angular {
         TAttributes extends IAttributes = IAttributes,
         TController extends IDirectiveController = IController,
     > {
-        compile?: IDirectiveCompileFn<TScope, TElement, TAttributes, TController> | undefined;
+        compile?:
+            | IDirectiveCompileFn<TScope, TElement, TAttributes, TController>
+            | undefined;
         controller?: string | Injectable<IControllerConstructor> | undefined;
         controllerAs?: string | undefined;
         /**
@@ -2372,7 +2573,10 @@ declare namespace angular {
          * the controller constructor is called, this use is now deprecated. Please place initialization code that
          * relies upon bindings inside a $onInit method on the controller, instead.
          */
-        bindToController?: boolean | { [boundProperty: string]: string } | undefined;
+        bindToController?:
+            | boolean
+            | { [boundProperty: string]: string }
+            | undefined;
         link?:
             | IDirectiveLinkFn<TScope, TElement, TAttributes, TController>
             | IDirectivePrePost<TScope, TElement, TAttributes, TController>
@@ -2383,14 +2587,28 @@ declare namespace angular {
          * @deprecated
          */
         replace?: boolean | undefined;
-        require?: string | string[] | { [controller: string]: string } | undefined;
+        require?:
+            | string
+            | string[]
+            | { [controller: string]: string }
+            | undefined;
         restrict?: string | undefined;
         scope?: boolean | { [boundProperty: string]: string } | undefined;
-        template?: string | ((tElement: TElement, tAttrs: TAttributes) => string) | undefined;
+        template?:
+            | string
+            | ((tElement: TElement, tAttrs: TAttributes) => string)
+            | undefined;
         templateNamespace?: string | undefined;
-        templateUrl?: string | ((tElement: TElement, tAttrs: TAttributes) => string) | undefined;
+        templateUrl?:
+            | string
+            | ((tElement: TElement, tAttrs: TAttributes) => string)
+            | undefined;
         terminal?: boolean | undefined;
-        transclude?: boolean | "element" | { [slot: string]: string } | undefined;
+        transclude?:
+            | boolean
+            | "element"
+            | { [slot: string]: string }
+            | undefined;
     }
 
     /**
@@ -2448,14 +2666,25 @@ declare namespace angular {
             get(name: "$window"): IWindowService;
             get<T>(name: "$xhrFactory"): IXhrFactory<T>;
             has(name: string): boolean;
-            instantiate<T>(typeConstructor: { new(...args: any[]): T }, locals?: any): T;
-            invoke<T = any>(func: Injectable<Function | ((...args: any[]) => T)>, context?: any, locals?: any): T;
+            instantiate<T>(
+                typeConstructor: { new (...args: any[]): T },
+                locals?: any,
+            ): T;
+            invoke<T = any>(
+                func: Injectable<Function | ((...args: any[]) => T)>,
+                context?: any,
+                locals?: any,
+            ): T;
             /**
              * Add the specified modules to the current injector.
              * This method will add each of the injectables to the injector and execute all of the config and run blocks for each module passed to the method.
              * @param modules A module, module name or annotated injection function.
              */
-            loadNewModules(modules: Array<IModule | string | Injectable<(...args: any[]) => void>>): void;
+            loadNewModules(
+                modules: Array<
+                    IModule | string | Injectable<(...args: any[]) => void>
+                >,
+            ): void;
             /** An object map of all the modules that have been loaded into the injector. */
             modules: { [moduleName: string]: IModule };
             strictDi: boolean;
@@ -2495,12 +2724,27 @@ declare namespace angular {
              * $delegate - The original service instance, which can be monkey patched, configured, decorated or delegated to.
              */
             decorator(name: string, inlineAnnotatedFunction: any[]): void;
-            factory(name: string, serviceFactoryFunction: Function): IServiceProvider;
-            factory(name: string, inlineAnnotatedFunction: any[]): IServiceProvider;
-            provider(name: string, provider: IServiceProvider): IServiceProvider;
-            provider(name: string, serviceProviderConstructor: Function): IServiceProvider;
+            factory(
+                name: string,
+                serviceFactoryFunction: Function,
+            ): IServiceProvider;
+            factory(
+                name: string,
+                inlineAnnotatedFunction: any[],
+            ): IServiceProvider;
+            provider(
+                name: string,
+                provider: IServiceProvider,
+            ): IServiceProvider;
+            provider(
+                name: string,
+                serviceProviderConstructor: Function,
+            ): IServiceProvider;
             service(name: string, constructor: Function): IServiceProvider;
-            service(name: string, inlineAnnotatedFunction: any[]): IServiceProvider;
+            service(
+                name: string,
+                inlineAnnotatedFunction: any[],
+            ): IServiceProvider;
             value(name: string, value: any): IServiceProvider;
         }
     }

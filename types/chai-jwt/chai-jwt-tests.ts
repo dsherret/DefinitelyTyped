@@ -23,4 +23,6 @@ expect(validJWT).to.be.signedWith("1234");
 
 expect(otherJWT).to.be.signedWith(readFileSync("public.pem"));
 
-expect(validJWT).to.be.a.jwt.and.have.claim("scope").and.equals("update:something");
+expect(validJWT)
+    .to.be.a.jwt.and.have.claim("scope")
+    .and.equals("update:something");

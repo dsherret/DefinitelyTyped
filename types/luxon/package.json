@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/luxon",
-    "version": "3.3.9999",
-    "projects": [
-        "https://github.com/moment/luxon#readme"
-    ],
-    "devDependencies": {
-        "@types/luxon": "workspace:."
+  "private": true,
+  "name": "@types/luxon",
+  "version": "3.3.9999",
+  "projects": [
+    "https://github.com/moment/luxon#readme"
+  ],
+  "devDependencies": {
+    "@types/luxon": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Carson Full",
+      "githubUsername": "carsonf"
     },
-    "owners": [
-        {
-            "name": "Carson Full",
-            "githubUsername": "carsonf"
-        },
-        {
-            "name": "Piotr Błażejewicz",
-            "githubUsername": "peterblazejewicz"
-        }
-    ]
+    {
+      "name": "Piotr Błażejewicz",
+      "githubUsername": "peterblazejewicz"
+    }
+  ]
 }

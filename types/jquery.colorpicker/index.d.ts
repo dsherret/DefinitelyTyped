@@ -60,9 +60,18 @@ interface JQueryColorpickerStatic {
     parts: { [name: string]: (inst: any) => any };
     partslists: { [name: string]: string[] };
     regional: { [key: string]: string };
-    swatches: { [swatch: string]: { [name: string]: JQueryColorpickerStatic.RGB } };
+    swatches: {
+        [swatch: string]: { [name: string]: JQueryColorpickerStatic.RGB };
+    };
     writers: { [name: string]: (color: any, that: any) => any };
-    Color: { new(r?: number, g?: number, b?: number, a?: number): JQueryColorpickerStatic.Color };
+    Color: {
+        new (
+            r?: number,
+            g?: number,
+            b?: number,
+            a?: number,
+        ): JQueryColorpickerStatic.Color;
+    };
 }
 
 declare namespace JQueryColorpickerStatic {

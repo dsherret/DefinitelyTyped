@@ -8,7 +8,10 @@ declare class Sentiment {
         options?: Sentiment.AnalysisOptions,
         callback?: (err: string, result: Sentiment.AnalysisResult) => void,
     ): Sentiment.AnalysisResult;
-    registerLanguage(languageCode: string, language: Sentiment.LanguageModule): void;
+    registerLanguage(
+        languageCode: string,
+        language: Sentiment.LanguageModule,
+    ): void;
 }
 
 declare namespace Sentiment {
@@ -20,15 +23,23 @@ declare namespace Sentiment {
         labels: {
             [token: string]: number;
         };
-        scoringStrategy?: {
-            apply: (tokens: string[], cursor: number, tokenScore: number) => number;
-        } | undefined;
+        scoringStrategy?:
+            | {
+                  apply: (
+                      tokens: string[],
+                      cursor: number,
+                      tokenScore: number,
+                  ) => number;
+              }
+            | undefined;
     }
 
     interface AnalysisOptions {
-        extras?: {
-            [token: string]: number;
-        } | undefined;
+        extras?:
+            | {
+                  [token: string]: number;
+              }
+            | undefined;
         language?: string | undefined;
     }
 

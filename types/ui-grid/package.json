@@ -1,29 +1,29 @@
 {
-    "private": true,
-    "name": "@types/ui-grid",
-    "version": "0.0.9999",
-    "projects": [
-        "http://www.ui-grid.info/"
-    ],
-    "dependencies": {
-        "@types/angular": "*",
-        "@types/jquery": "*"
+  "private": true,
+  "name": "@types/ui-grid",
+  "version": "0.0.9999",
+  "projects": [
+    "http://www.ui-grid.info/"
+  ],
+  "dependencies": {
+    "@types/angular": "*",
+    "@types/jquery": "*"
+  },
+  "devDependencies": {
+    "@types/ui-grid": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Ben Tesser",
+      "githubUsername": "btesser"
     },
-    "devDependencies": {
-        "@types/ui-grid": "workspace:."
+    {
+      "name": "Joe Skeen",
+      "githubUsername": "joeskeen"
     },
-    "owners": [
-        {
-            "name": "Ben Tesser",
-            "githubUsername": "btesser"
-        },
-        {
-            "name": "Joe Skeen",
-            "githubUsername": "joeskeen"
-        },
-        {
-            "name": "Peter Bojanczyk",
-            "githubUsername": "pbojanczyk"
-        }
-    ]
+    {
+      "name": "Peter Bojanczyk",
+      "githubUsername": "pbojanczyk"
+    }
+  ]
 }

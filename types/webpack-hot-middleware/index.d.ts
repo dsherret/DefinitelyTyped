@@ -19,12 +19,16 @@ declare namespace WebpackHotMiddleware {
         quiet?: boolean | undefined;
         dynamicPublicPath?: boolean | undefined;
         autoConnect?: boolean | undefined;
-        ansiColors?: {
-            [key: string]: any;
-        } | undefined;
-        overlayStyles?: {
-            [key: string]: any;
-        } | undefined;
+        ansiColors?:
+            | {
+                  [key: string]: any;
+              }
+            | undefined;
+        overlayStyles?:
+            | {
+                  [key: string]: any;
+              }
+            | undefined;
         overlayWarnings?: boolean | undefined;
     }
     interface MiddlewareOptions {

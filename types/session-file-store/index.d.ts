@@ -3,11 +3,13 @@ import * as session from "express-session";
 
 export = f;
 
-declare function f(options: (options?: session.SessionOptions) => express.RequestHandler): f.FileStore;
+declare function f(
+    options: (options?: session.SessionOptions) => express.RequestHandler,
+): f.FileStore;
 
 declare namespace f {
     interface FileStore {
-        new(options?: Options): session.Store;
+        new (options?: Options): session.Store;
     }
     /**
      * FileStore Options

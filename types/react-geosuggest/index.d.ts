@@ -13,10 +13,14 @@ export default class Geosuggest extends Component<GeosuggestProps> {
 // Replace with Exclude once on 2.8+
 export type Omit<T, K extends keyof T> = Pick<
     T,
-    ({ [P in keyof T]: P } & { [P in K]: never } & { [x: string]: never; [x: number]: never })[keyof T]
+    ({ [P in keyof T]: P } & { [P in K]: never } & {
+        [x: string]: never;
+        [x: number]: never;
+    })[keyof T]
 >;
 
-export interface GeosuggestProps extends Omit<InputHTMLAttributes<HTMLInputElement>, "style"> {
+export interface GeosuggestProps
+    extends Omit<InputHTMLAttributes<HTMLInputElement>, "style"> {
     placeholder?: string | undefined;
     initialValue?: string | undefined;
     className?: string | undefined;
@@ -46,9 +50,15 @@ export interface GeosuggestProps extends Omit<InputHTMLAttributes<HTMLInputEleme
     onUpdateSuggests?(suggests: any, activeSuggest: any): void;
     onActivateSuggest?(suggest: Suggest): void;
     onSuggestNoResults?(userInput: string): void;
-    getSuggestLabel?(googleSuggest: google.maps.places.AutocompletePrediction): string;
-    renderSuggestItem?(googleSuggest: google.maps.places.AutocompletePrediction): any;
-    skipSuggest?(googleSuggest: google.maps.places.AutocompletePrediction): boolean;
+    getSuggestLabel?(
+        googleSuggest: google.maps.places.AutocompletePrediction,
+    ): string;
+    renderSuggestItem?(
+        googleSuggest: google.maps.places.AutocompletePrediction,
+    ): any;
+    skipSuggest?(
+        googleSuggest: google.maps.places.AutocompletePrediction,
+    ): boolean;
     autoActivateFirstSuggest?: boolean | undefined;
     label?: string | undefined;
     suggestsClassName?: string | undefined;

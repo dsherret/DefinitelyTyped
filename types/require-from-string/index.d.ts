@@ -1,8 +1,15 @@
 /**
  * Load module from string in Node.
  */
-declare function requireFromString(code: string, options?: requireFromString.Options): any;
-declare function requireFromString(code: string, filename?: string, options?: requireFromString.Options): any;
+declare function requireFromString(
+    code: string,
+    options?: requireFromString.Options,
+): any;
+declare function requireFromString(
+    code: string,
+    filename?: string,
+    options?: requireFromString.Options,
+): any;
 
 declare namespace requireFromString {
     interface Options {

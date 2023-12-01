@@ -39,7 +39,9 @@ declare namespace Cronitor {
         metadata?: Record<string, any>; // JSON serializable key/value pairs
         name?: string; // Display name of the monitor
         note?: string; // Additional context/troubleshooting information
-        notify?: string[] | { alerts: string[]; events: Record<string, boolean> }; // Notification settings
+        notify?:
+            | string[]
+            | { alerts: string[]; events: Record<string, boolean> }; // Notification settings
         paused?: boolean; // Monitoring/alerting status
         platform?: string; // Platform information
         grace_seconds?: number; // Number of seconds for grace period
@@ -76,7 +78,12 @@ declare namespace Cronitor {
         wrap(key: string, callback: () => Promise<any>): () => Promise<any>;
         wraps(lib: any): void;
         newSeries(): string;
-        schedule(key: string, schedule: string, cb: () => void, options?: any): any;
+        schedule(
+            key: string,
+            schedule: string,
+            cb: () => void,
+            options?: any,
+        ): any;
 
         Monitor: typeof Monitor;
         Event: typeof Event;
@@ -111,6 +118,9 @@ declare class Event {
     fail(message?: string | null): Promise<void>;
 }
 
-declare function Cronitor(apiKey: string, config?: Cronitor.CronitorConfig): Cronitor.Cronitor;
+declare function Cronitor(
+    apiKey: string,
+    config?: Cronitor.CronitorConfig,
+): Cronitor.Cronitor;
 
 export = Cronitor;

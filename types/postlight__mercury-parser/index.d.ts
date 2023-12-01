@@ -23,5 +23,8 @@ export interface ParseOptions {
     html?: string | Buffer | undefined;
 }
 
-export function parse(url: string, options?: ParseOptions): Promise<ParseResult>;
+export function parse(
+    url: string,
+    options?: ParseOptions,
+): Promise<ParseResult>;
 export function fetchResource(url: string): Promise<string>;

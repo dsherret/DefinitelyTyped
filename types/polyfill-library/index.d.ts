@@ -105,7 +105,9 @@ export function listAllPolyfills(): Promise<string[]>;
  * Returns a Promise which resolves with the metadata or with undefined if no metadata exists
  * for the polyfill.
  */
-export function describePolyfill(featureName: string): Promise<PolyfillMeta | undefined>;
+export function describePolyfill(
+    featureName: string,
+): Promise<PolyfillMeta | undefined>;
 
 /**
  * Create an options object for use with `getPolyfills` or `getPolyfillString`.

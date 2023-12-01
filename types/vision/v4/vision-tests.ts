@@ -34,10 +34,15 @@ server.register(Vision, (err) => {
     server.route({
         method: "GET",
         path: "/view",
-        handler: function(request, reply) {
-            request.render("test", { message: "hello" }, {}, (err, rendered, config) => {
-                return reply(rendered);
-            });
+        handler: function (request, reply) {
+            request.render(
+                "test",
+                { message: "hello" },
+                {},
+                (err, rendered, config) => {
+                    return reply(rendered);
+                },
+            );
         },
     });
 
@@ -69,7 +74,7 @@ server.register(Vision, (err) => {
         path: __dirname + "/templates",
     });
 
-    const handler: Hapi.RouteHandler = function(request, reply) {
+    const handler: Hapi.RouteHandler = function (request, reply) {
         const context = {
             title: "Views Example",
             message: "Hello, World",

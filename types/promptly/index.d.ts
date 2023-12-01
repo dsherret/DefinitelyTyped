@@ -18,13 +18,40 @@ export interface Options {
 }
 
 export declare function prompt(message: string, fn?: Callback): Promise<string>;
-export declare function prompt(message: string, opts: Options, fn?: Callback): Promise<string>;
+export declare function prompt(
+    message: string,
+    opts: Options,
+    fn?: Callback,
+): Promise<string>;
 
-export declare function password(message: string, fn?: Callback): Promise<string>;
-export declare function password(message: string, opts: Options, fn?: Callback): Promise<string>;
+export declare function password(
+    message: string,
+    fn?: Callback,
+): Promise<string>;
+export declare function password(
+    message: string,
+    opts: Options,
+    fn?: Callback,
+): Promise<string>;
 
-export declare function confirm(message: string, fn?: Callback): Promise<boolean>;
-export declare function confirm(message: string, opts: Options, fn?: Callback): Promise<boolean>;
+export declare function confirm(
+    message: string,
+    fn?: Callback,
+): Promise<boolean>;
+export declare function confirm(
+    message: string,
+    opts: Options,
+    fn?: Callback,
+): Promise<boolean>;
 
-export declare function choose(message: string, choices: string[], fn?: Callback): Promise<string>;
-export declare function choose(message: string, choices: string[], opts: Options, fn?: Callback): Promise<string>;
+export declare function choose(
+    message: string,
+    choices: string[],
+    fn?: Callback,
+): Promise<string>;
+export declare function choose(
+    message: string,
+    choices: string[],
+    opts: Options,
+    fn?: Callback,
+): Promise<string>;

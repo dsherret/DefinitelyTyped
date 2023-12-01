@@ -35,14 +35,25 @@ export interface Headers {
 }
 
 export interface Pack extends stream.Readable {
-    entry(headers: Headers, buffer?: string | Buffer | Callback, callback?: Callback): stream.Writable;
+    entry(
+        headers: Headers,
+        buffer?: string | Buffer | Callback,
+        callback?: Callback,
+    ): stream.Writable;
     finalize(): void;
 }
 
 export interface Extract extends stream.Writable {
     destroy(error?: Error): any;
     on(event: string, listener: (...args: any[]) => void): this;
-    on(event: "entry", listener: (headers: Headers, stream: stream.PassThrough, next: () => void) => void): this;
+    on(
+        event: "entry",
+        listener: (
+            headers: Headers,
+            stream: stream.PassThrough,
+            next: () => void,
+        ) => void,
+    ): this;
 }
 
 export function extract(opts?: stream.WritableOptions): Extract;

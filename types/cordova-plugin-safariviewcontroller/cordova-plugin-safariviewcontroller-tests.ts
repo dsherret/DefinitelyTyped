@@ -5,7 +5,7 @@ type SVCHPR = SafariViewControllerHandlerPackagesResult;
 type SVC = SafariViewController;
 
 // $ExpectType void
-SafariViewController.isAvailable(isAvailable => {
+SafariViewController.isAvailable((isAvailable) => {
     isAvailable; // $ExpectType boolean
 });
 SafariViewController.show({ url: "foo" }); // $ExpectType void
@@ -26,11 +26,11 @@ SafariViewController.show({ url: "foo", showDefaultShareMenuItem: true }); // $E
 // $ExpectType void
 SafariViewController.show(
     { url: "foo" },
-    res => {
+    (res) => {
         res; // $ExpectType SafariViewControllerShowResult
         res.event; // $ExpectType "opened" | "loaded" | "closed" || "loaded" | "closed" | "opened"
     },
-    err => {
+    (err) => {
         err; // $ExpectType unknown
     },
 );
@@ -39,24 +39,24 @@ SafariViewController.hide();
 // $ExpectType void
 SafariViewController.hide(
     () => {},
-    err => {
+    (err) => {
         err; // $ExpectType unknown
     },
 );
 // $ExpectType void
-SafariViewController.getViewHandlerPackages(packages => {
+SafariViewController.getViewHandlerPackages((packages) => {
     packages; // $ExpectType SafariViewControllerHandlerPackagesResult
     packages.customTabsImplementations; // $ExpectType string[]
     packages.defaultHandler; // $ExpectType string | null
 });
 // $ExpectType void
 SafariViewController.getViewHandlerPackages(
-    packages => {
+    (packages) => {
         packages; // $ExpectType SafariViewControllerHandlerPackagesResult
         packages.customTabsImplementations; // $ExpectType string[]
         packages.defaultHandler; // $ExpectType string | null
     },
-    err => {
+    (err) => {
         err; // $ExpectType unknown
     },
 );
@@ -65,10 +65,10 @@ SafariViewController.useCustomTabsImplementation("foo");
 // $ExpectType void
 SafariViewController.useCustomTabsImplementation(
     "foo",
-    res => {
+    (res) => {
         res; // $ExpectType true
     },
-    err => {
+    (err) => {
         err; // $ExpectType unknown
     },
 );
@@ -76,10 +76,10 @@ SafariViewController.useCustomTabsImplementation(
 SafariViewController.connectToService();
 // $ExpectType void
 SafariViewController.connectToService(
-    res => {
+    (res) => {
         res; // $ExpectType true
     },
-    err => {
+    (err) => {
         err; // $ExpectType unknown
     },
 );
@@ -87,10 +87,10 @@ SafariViewController.connectToService(
 SafariViewController.warmUp();
 // $ExpectType void
 SafariViewController.warmUp(
-    res => {
+    (res) => {
         res; // $ExpectType true
     },
-    err => {
+    (err) => {
         err; // $ExpectType unknown
     },
 );
@@ -99,10 +99,10 @@ SafariViewController.mayLaunchUrl("foo");
 // $ExpectType void
 SafariViewController.mayLaunchUrl(
     "foo",
-    res => {
+    (res) => {
         res; // $ExpectType true
     },
-    err => {
+    (err) => {
         err; // $ExpectType unknown
     },
 );

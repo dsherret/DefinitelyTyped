@@ -12,14 +12,17 @@ function ex1() {
 }
 
 function ex2() {
-    var promise = new Promise<number, string>(function(reason: string, ...args: number[]) {
+    var promise = new Promise<number, string>(function (
+        reason: string,
+        ...args: number[]
+    ) {
         return;
     });
 }
 
 function ex3() {
     var promise = new Promise<number, string>();
-    promise.onResolve(function(reason: string, ...args: number[]) {
+    promise.onResolve(function (reason: string, ...args: number[]) {
         return;
     });
 }
@@ -36,7 +39,7 @@ function reject() {
 
 function onFulfill1<R>() {
     var promise = new Promise<number, R>();
-    promise.onFulfill(function(...args: number[]) {
+    promise.onFulfill(function (...args: number[]) {
         assert.equal(3, args[0] + args[1]);
     });
     promise.fulfill(1, 2);
@@ -45,14 +48,14 @@ function onFulfill1<R>() {
 function onFulfill2() {
     var promise = new Promise<string, Error>();
     promise.fulfill(" :D ");
-    promise.onFulfill(function(arg: string) {
+    promise.onFulfill(function (arg: string) {
         console.log(arg); // logs " :D "
     });
 }
 
 function onReject1<F>() {
     var promise = new Promise<F, string>();
-    promise.onReject(function(reason: string) {
+    promise.onReject(function (reason: string) {
         assert.equal("sad", reason);
     });
     promise.reject("sad");
@@ -61,14 +64,14 @@ function onReject1<F>() {
 function onReject2() {
     var promise = new Promise<string, string>();
     promise.reject(" :( ");
-    promise.onReject(function(reason: string) {
+    promise.onReject(function (reason: string) {
         console.log(reason); // logs " :( "
     });
 }
 
 function onResolve1<R>() {
     var promise = new Promise<number, R>();
-    promise.onResolve(function(err: R, ...args: number[]) {
+    promise.onResolve(function (err: R, ...args: number[]) {
         console.log(args[0] + args[1]); // logs 3
     });
     promise.fulfill(1, 2);
@@ -77,7 +80,7 @@ function onResolve1<R>() {
 function onResolve2<F>() {
     // rejection
     var promise = new Promise<F, Error>();
-    promise.onResolve(function(err: Error) {
+    promise.onResolve(function (err: Error) {
         if (err) {
             console.log(err.message); // logs "failed"
         }
@@ -88,23 +91,26 @@ function onResolve2<F>() {
 function then() {
     var promise = new Promise<number, Error>();
 
-    promise.then(function(arg: number) {
-        return arg + 1;
-    }).then(function(arg: number) {
-        throw new Error(arg + " is an error!");
-    }).then(null, function(err: Error) {
-        assert.ok(err instanceof Error);
-        assert.equal("2 is an error", err.message);
-    });
+    promise
+        .then(function (arg: number) {
+            return arg + 1;
+        })
+        .then(function (arg: number) {
+            throw new Error(arg + " is an error!");
+        })
+        .then(null, function (err: Error) {
+            assert.ok(err instanceof Error);
+            assert.equal("2 is an error", err.message);
+        });
     promise.fulfill(1);
 }
 
 function end1() {
     var promise = new Promise<number, Error>();
-    promise.then(function() {
+    promise.then(function () {
         throw new Error("shucks");
     });
-    setTimeout(function() {
+    setTimeout(function () {
         promise.fulfill();
         // error was caught and swallowed by the promise returned from
         // p.then(). we either have to always register handlers on
@@ -115,12 +121,14 @@ function end1() {
 function end2() {
     // this time we use .end() which prevents catching thrown errors
     var promise = new Promise<any, Error>();
-    setTimeout(function() {
+    setTimeout(function () {
         promise.fulfill(); // throws "shucks"
     }, 10);
-    return promise.then(function() {
-        throw new Error("shucks");
-    }).end(); // <--
+    return promise
+        .then(function () {
+            throw new Error("shucks");
+        })
+        .end(); // <--
 }
 
 function chain() {

@@ -27,13 +27,13 @@ const runner = Nightwatch.CliRunner();
 client.updateCapabilities({
     testCapability: "one, two, three",
 });
-client.updateCapabilities(function() {
+client.updateCapabilities(function () {
     return {};
 });
 
-(async () => {
+async () => {
     const browser = await client.launchBrowser();
     isType<NightwatchAPI>(browser);
 
     isType<NightwatchClient>(client.nightwatch_client);
-});
+};

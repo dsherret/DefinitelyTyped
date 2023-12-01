@@ -1,5 +1,7 @@
 interface RedisClient {
-    multi(operations: any[][]): { exec(cb: (err: any, res: any) => unknown): void };
+    multi(operations: any[][]): {
+        exec(cb: (err: any, res: any) => unknown): void;
+    };
 }
 
 declare class Limiter {

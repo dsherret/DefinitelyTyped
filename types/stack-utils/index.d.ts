@@ -4,7 +4,10 @@ declare class StackUtils {
     static nodeInternals(): RegExp[];
     constructor(options?: StackUtils.Options);
     clean(stack: string | string[]): string;
-    capture(limit?: number, startStackFunction?: Function): StackUtils.CallSite[];
+    capture(
+        limit?: number,
+        startStackFunction?: Function,
+    ): StackUtils.CallSite[];
     capture(startStackFunction: Function): StackUtils.CallSite[];
     captureString(limit?: number, startStackFunction?: Function): string;
     captureString(startStackFunction: Function): string;

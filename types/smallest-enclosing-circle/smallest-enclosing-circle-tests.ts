@@ -1,7 +1,10 @@
 import enclosingCircle = require("smallest-enclosing-circle");
 
 // $ExpectType Circle
-enclosingCircle([{ x: 23, y: 23 }, { x: 10, y: 0 }]);
+enclosingCircle([
+    { x: 23, y: 23 },
+    { x: 10, y: 0 },
+]);
 
 // @ts-expect-error
 enclosingCircle({ x: -3, y: 8 });

@@ -74,7 +74,12 @@ declare namespace SimpleMDE {
         lineWrapping?: boolean | undefined;
         parsingConfig?: ParsingOptions | undefined;
         placeholder?: string | undefined;
-        previewRender?: ((markdownPlaintext: string, previewElement?: HTMLElement) => string) | undefined;
+        previewRender?:
+            | ((
+                  markdownPlaintext: string,
+                  previewElement?: HTMLElement,
+              ) => string)
+            | undefined;
         promptURLs?: boolean | undefined;
         renderingConfig?: RenderingOptions | undefined;
         shortcuts?: ShortcutsArray | undefined;

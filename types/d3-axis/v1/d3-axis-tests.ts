@@ -29,7 +29,9 @@ declare let axisScaleString: d3Axis.AxisScale<string>;
 let containerElement: d3Axis.AxisContainerElement;
 const svg: SVGSVGElement = select<SVGSVGElement, any>("svg").node()!; // mock
 const g: SVGGElement = select<SVGGElement, any>("g").node()!; // mock
-const canvas: HTMLCanvasElement = select<HTMLCanvasElement, any>("canvas").node()!; // mock
+const canvas: HTMLCanvasElement = select<HTMLCanvasElement, any>(
+    "canvas",
+).node()!; // mock
 
 containerElement = svg;
 containerElement = g;
@@ -40,10 +42,12 @@ containerElement = canvas; // fails, incompatible type
 // Test Axis Generators
 // --------------------------------------------------------------------------
 
-let topAxis: d3Axis.Axis<number | { valueOf(): number }> = d3Axis.axisTop(axisScaleNumber);
+let topAxis: d3Axis.Axis<number | { valueOf(): number }> =
+    d3Axis.axisTop(axisScaleNumber);
 let rightAxis: d3Axis.Axis<Date> = d3Axis.axisRight<Date>(axisScaleDate);
 let bottomAxis: d3Axis.Axis<string> = d3Axis.axisBottom(axisScaleString);
-let leftAxis: d3Axis.Axis<number | { valueOf(): number }> = d3Axis.axisLeft(axisScaleNumber);
+let leftAxis: d3Axis.Axis<number | { valueOf(): number }> =
+    d3Axis.axisLeft(axisScaleNumber);
 
 // --------------------------------------------------------------------------
 // Test Configure Axis
@@ -88,10 +92,11 @@ const tickValues: Date[] | null = rightAxis.tickValues();
 topAxis = topAxis.tickFormat(format(",.0f"));
 topAxis = topAxis.tickFormat(null);
 
-const formatFn: ((domainValue: string, index: number) => string) | null = bottomAxis.tickFormat();
+const formatFn: ((domainValue: string, index: number) => string) | null =
+    bottomAxis.tickFormat();
 
 bottomAxis.tickFormat((d, i) => "#" + i);
-bottomAxis.tickFormat(d => d + "!");
+bottomAxis.tickFormat((d) => d + "!");
 
 // tickSize(...) ----------------------------------------------------------------
 
@@ -117,19 +122,28 @@ num = rightAxis.tickPadding();
 // Test Apply Axis
 // --------------------------------------------------------------------------
 
-const gSelection: Selection<SVGGElement, any, any, any> = select<SVGGElement, any>("g");
+const gSelection: Selection<SVGGElement, any, any, any> = select<
+    SVGGElement,
+    any
+>("g");
 const gTransition = gSelection.transition();
 
 gSelection.call(topAxis);
 gTransition.call(topAxis);
 
-const svgSelection: Selection<SVGSVGElement, any, any, any> = select<SVGSVGElement, any>("svg");
+const svgSelection: Selection<SVGSVGElement, any, any, any> = select<
+    SVGSVGElement,
+    any
+>("svg");
 const svgTransition = svgSelection.transition();
 
 svgSelection.call(leftAxis);
 svgTransition.call(leftAxis);
 
-const pathSelection: Selection<SVGPathElement, any, any, any> = select<SVGPathElement, any>("path");
+const pathSelection: Selection<SVGPathElement, any, any, any> = select<
+    SVGPathElement,
+    any
+>("path");
 const pathTransition = svgSelection.transition();
 
 // // @ts-expect-error
@@ -137,7 +151,10 @@ const pathTransition = svgSelection.transition();
 // // @ts-expect-error
 // pathSelection.call(bottomAxis);
 
-const canvasSelection: Selection<HTMLCanvasElement, any, any, any> = select<HTMLCanvasElement, any>("canvas");
+const canvasSelection: Selection<HTMLCanvasElement, any, any, any> = select<
+    HTMLCanvasElement,
+    any
+>("canvas");
 const canvasTransition = canvasSelection.transition();
 
 // @ts-expect-error

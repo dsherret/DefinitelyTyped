@@ -7,22 +7,22 @@ interface Person {
     age: number;
 }
 
-type PersonTable = new() => Reactable.Table<Person>;
+type PersonTable = new () => Reactable.Table<Person>;
 const PersonTable = Reactable.Table as PersonTable;
 
-type PersonTableHeader = new() => Reactable.Thead;
+type PersonTableHeader = new () => Reactable.Thead;
 const PersonTableHeader = Reactable.Thead as PersonTableHeader;
 
-type PersonTableTh = new() => Reactable.Th;
+type PersonTableTh = new () => Reactable.Th;
 const PersonTableTh = Reactable.Th as PersonTableTh;
 
-type PersonRow = new() => Reactable.Tr<Person>;
+type PersonRow = new () => Reactable.Tr<Person>;
 const PersonRow = Reactable.Tr as PersonRow;
 
-type PersonTableTd = new() => Reactable.Td;
+type PersonTableTd = new () => Reactable.Td;
 const PersonTableTd = Reactable.Td as PersonTableTd;
 
-type PersonTableTfoot = new() => Reactable.Tfoot;
+type PersonTableTfoot = new () => Reactable.Tfoot;
 const PersonTableTfoot = Reactable.Tfoot as PersonTableTfoot;
 
 const data = [
@@ -53,24 +53,18 @@ export class FullblownReactableTestComponent extends React.Component {
         const rows: JSX.Element[] = [];
         for (const d of data) {
             const tds: JSX.Element[] = [];
-            displayedColumns.forEach(col =>
+            displayedColumns.forEach((col) =>
                 tds.push(
                     <PersonTableTd column={col}>
                         <p>d[col]</p>
                     </PersonTableTd>,
-                )
+                ),
             );
-            rows.push(
-                <PersonRow>
-                    {tds}
-                </PersonRow>,
-            );
+            rows.push(<PersonRow>{tds}</PersonRow>);
         }
         return (
             <PersonTable defaultSort={{ column: "name", direction: "asc" }}>
-                <PersonTableHeader>
-                    {columns}
-                </PersonTableHeader>
+                <PersonTableHeader>{columns}</PersonTableHeader>
                 {rows}
                 <PersonTableTfoot>
                     <tr className="reactable-footer">

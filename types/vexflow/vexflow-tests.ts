@@ -4,7 +4,11 @@ var ctx = renderer.getContext();
 
 // Add a treble clef and time signature
 var stave = new Vex.Flow.Stave(10, 0, 550);
-stave.setContext(ctx).addClef("treble").addKeySignature("A").addTimeSignature("4/4");
+stave
+    .setContext(ctx)
+    .addClef("treble")
+    .addKeySignature("A")
+    .addTimeSignature("4/4");
 stave.setNumLines(5);
 stave.options.line_config = [
     { visible: true },
@@ -16,7 +20,10 @@ stave.options.line_config = [
 // TODO add test where only some lines visible
 
 // this isn't pretty, but so isn't vexflow 1's modifier typing ;)
-const timesignature: Vex.Flow.StaveModifier = stave.getModifiers(Vex.Flow.Modifier.Position.LEFT, "timesignatures")[0];
+const timesignature: Vex.Flow.StaveModifier = stave.getModifiers(
+    Vex.Flow.Modifier.Position.LEFT,
+    "timesignatures",
+)[0];
 //  could also type as TimeSignature instead of StaveModifier
 timesignature.setStyle({ fillStyle: "#FF0000" });
 timesignature.getStyle().strokeStyle = "#FF0000";
@@ -31,7 +38,10 @@ var notes1 = [
     new Vex.Flow.StaveNote({ keys: ["e##/5"], duration: "8d" })
         .addAccidental(0, new Vex.Flow.Accidental("##"))
         .addDotToAll(),
-    new Vex.Flow.StaveNote({ keys: ["eb/5"], duration: "16" }).addAccidental(0, new Vex.Flow.Accidental("b")),
+    new Vex.Flow.StaveNote({ keys: ["eb/5"], duration: "16" }).addAccidental(
+        0,
+        new Vex.Flow.Accidental("b"),
+    ),
     new Vex.Flow.StaveNote({ keys: ["d/5"], duration: "h" }),
     new Vex.Flow.StaveNote({ keys: ["c/5", "eb/5", "g#/5"], duration: "q" })
         .addAccidental(1, new Vex.Flow.Accidental("b"))
@@ -48,8 +58,15 @@ stringnumber.getStyle().fillStyle = "#00FF00";
 var beam = new Vex.Flow.Beam(notes1.slice(0, 2));
 
 // Add a grace note to the half D
-var gracenote = new Vex.Flow.GraceNote({ keys: ["e/5"], duration: "16", slash: true });
-notes1[2].addModifier(0, new Vex.Flow.GraceNoteGroup([gracenote], true).beamNotes());
+var gracenote = new Vex.Flow.GraceNote({
+    keys: ["e/5"],
+    duration: "16",
+    slash: true,
+});
+notes1[2].addModifier(
+    0,
+    new Vex.Flow.GraceNoteGroup([gracenote], true).beamNotes(),
+);
 
 // Color the chord
 notes1[3].setStyle({ fillStyle: "blue", strokeStyle: "blue" });
@@ -77,8 +94,12 @@ var voice2 = new Vex.Flow.Voice(Vex.Flow.TIME4_4).addTickables([
 ]);
 
 // Format and justify the notes to 550 pixels
-var formatter = new Vex.Flow.Formatter({ softmaxFactor: null, maxIterations: 2 })
-    .joinVoices([voice1, voice2]).format([voice1, voice2], 550);
+var formatter = new Vex.Flow.Formatter({
+    softmaxFactor: null,
+    maxIterations: 2,
+})
+    .joinVoices([voice1, voice2])
+    .format([voice1, voice2], 550);
 
 // Render stave
 stave.draw();
@@ -118,7 +139,10 @@ var notes = [
     new Vex.Flow.TabNote({
         positions: [{ str: 2, fret: 5 }],
         duration: "h",
-    }).addModifier(new Vex.Flow.Vibrato().setHarsh(true).setVibratoWidth(70), 0),
+    }).addModifier(
+        new Vex.Flow.Vibrato().setHarsh(true).setVibratoWidth(70),
+        0,
+    ),
 ];
 
 // Format ad draw the notes
@@ -133,7 +157,9 @@ const system = vf.System();
 
 system
     .addStave({
-        voices: [score.voice(score.notes("C4/q, D4, E4, F4", { stem: "up" }), {})],
+        voices: [
+            score.voice(score.notes("C4/q, D4, E4, F4", { stem: "up" }), {}),
+        ],
     })
     .addClef("treble")
     .addTimeSignature("4/4");

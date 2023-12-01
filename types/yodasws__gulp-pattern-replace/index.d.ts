@@ -19,7 +19,9 @@ declare namespace replacePattern {
     type SearchObject =
         | SearchOptions
         | SearchPattern
-        | ReadonlyArray<SearchOptions | SearchPattern | [SearchPattern, Replacement]>;
+        | ReadonlyArray<
+              SearchOptions | SearchPattern | [SearchPattern, Replacement]
+          >;
 }
 
 export = replacePattern;

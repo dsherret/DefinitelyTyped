@@ -26,5 +26,8 @@ export interface RetrievedGrade {
 export interface GradeService {
     scorePublish(idtoken: IdToken, grade: PublishedGrade): Promise<boolean>;
 
-    result(idtoken: IdToken, filters?: GradeFilters): Promise<RetrievedGrade[] | false>;
+    result(
+        idtoken: IdToken,
+        filters?: GradeFilters,
+    ): Promise<RetrievedGrade[] | false>;
 }

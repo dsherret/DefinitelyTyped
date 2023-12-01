@@ -1,5 +1,5 @@
 {
-    "rules": {
-        "@definitelytyped/no-single-declare-module": "off"
-    }
+  "rules": {
+    "@definitelytyped/no-single-declare-module": "off"
+  }
 }

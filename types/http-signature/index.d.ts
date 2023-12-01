@@ -1,6 +1,11 @@
 /// <reference types="node" />
 
-export { ParseOptions, parseRequest, parseRequest as parse, ParseResponse } from "./lib/parser";
+export {
+    ParseOptions,
+    parseRequest,
+    parseRequest as parse,
+    ParseResponse,
+} from "./lib/parser";
 
 export {
     createSigner,
@@ -13,6 +18,14 @@ export {
     signRequest as sign,
 } from "./lib/signer";
 
-export { fingerprint as sshKeyFingerprint, pemToRsaSSHKey, sshKeyToPEM } from "./lib/utils";
+export {
+    fingerprint as sshKeyFingerprint,
+    pemToRsaSSHKey,
+    sshKeyToPEM,
+} from "./lib/utils";
 
-export { verifyHMAC, verifySignature, verifySignature as verify } from "./lib/verify";
+export {
+    verifyHMAC,
+    verifySignature,
+    verifySignature as verify,
+} from "./lib/verify";

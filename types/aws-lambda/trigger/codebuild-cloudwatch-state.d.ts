@@ -6,7 +6,11 @@ export type CodeBuildCloudWatchStateHandler = EventBridgeHandler<
     void
 >;
 
-export type CodeBuildStateType = "IN_PROGRESS" | "SUCCEEDED" | "FAILED" | "STOPPED";
+export type CodeBuildStateType =
+    | "IN_PROGRESS"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "STOPPED";
 export type CodeBuildPhaseType =
     | "COMPLETED"
     | "FINALIZING"
@@ -19,7 +23,13 @@ export type CodeBuildPhaseType =
     | "DOWNLOAD_SOURCE"
     | "PROVISIONING"
     | "SUBMITTED";
-export type CodeBuildPhaseStatusType = "TIMED_OUT" | "STOPPED" | "FAILED" | "SUCCEEDED" | "FAULT" | "CLIENT_ERROR";
+export type CodeBuildPhaseStatusType =
+    | "TIMED_OUT"
+    | "STOPPED"
+    | "FAILED"
+    | "SUCCEEDED"
+    | "FAULT"
+    | "CLIENT_ERROR";
 export type CodeBuildCacheType = "NO_CACHE" | "LOCAL" | "S3";
 export type CodeBuildSourceLocationType =
     | "CODECOMMIT"
@@ -34,13 +44,18 @@ export type CodeBuildEnvironmentType =
     | "LINUX_GPU_CONTAINER"
     | "WINDOWS_CONTAINER"
     | "ARM_CONTAINER";
-export type CodeBuildEnvironmentPullCredentialsType = "CODEBUILD" | "SERVICE_ROLE";
+export type CodeBuildEnvironmentPullCredentialsType =
+    | "CODEBUILD"
+    | "SERVICE_ROLE";
 export type CodeBuildEnvironmentComputeType =
     | "BUILD_GENERAL1_SMALL"
     | "BUILD_GENERAL1_MEDIUM"
     | "BUILD_GENERAL1_LARGE"
     | "BUILD_GENERAL1_2XLARGE";
-export type CodeBuildEnvironmentVariableType = "PARAMETER_STORE" | "PLAINTEXT" | "SECRETS_MANAGER";
+export type CodeBuildEnvironmentVariableType =
+    | "PARAMETER_STORE"
+    | "PLAINTEXT"
+    | "SECRETS_MANAGER";
 
 export interface CodeBuildStateEventDetail {
     "build-status": CodeBuildStateType;
@@ -70,7 +85,9 @@ export interface CodeBuildStateEventDetail {
         environment: {
             image: string;
             "privileged-mode": boolean;
-            "image-pull-credentials-type"?: CodeBuildEnvironmentPullCredentialsType | undefined;
+            "image-pull-credentials-type"?:
+                | CodeBuildEnvironmentPullCredentialsType
+                | undefined;
             "compute-type": CodeBuildEnvironmentComputeType;
             type: CodeBuildEnvironmentType;
             "environment-variables": Array<{
@@ -98,7 +115,9 @@ export interface CodeBuildStateEventDetail {
 }
 
 export interface CodeBuildCloudWatchStateEvent
-    extends EventBridgeEvent<"CodeBuild Build State Change", CodeBuildStateEventDetail>
-{
+    extends EventBridgeEvent<
+        "CodeBuild Build State Change",
+        CodeBuildStateEventDetail
+    > {
     source: "aws.codebuild";
 }

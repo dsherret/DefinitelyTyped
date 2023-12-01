@@ -15,7 +15,9 @@ export interface AlphaColorResult extends HSLColor {
     source: "rgb";
 }
 
-export interface AlphaProps extends RenderersProps, CustomPickerInjectedProps<AlphaColorResult> {
+export interface AlphaProps
+    extends RenderersProps,
+        CustomPickerInjectedProps<AlphaColorResult> {
     pointer?: ComponentType | undefined;
     radius?: string | undefined;
     shadow?: string | undefined;

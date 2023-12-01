@@ -1,6 +1,6 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "use-default-type-parameter": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "use-default-type-parameter": false
+  }
 }

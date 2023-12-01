@@ -9,7 +9,10 @@ import { DOMWindow } from "jsdom";
  *
  * If you need the unbound scroll position, use `getUnboundedScrollPosition`.
  */
-declare function getScrollPosition(scrollable: HTMLElement | DOMWindow): { x: number; y: number };
+declare function getScrollPosition(scrollable: HTMLElement | DOMWindow): {
+    x: number;
+    y: number;
+};
 
 declare namespace getScrollPosition {}
 

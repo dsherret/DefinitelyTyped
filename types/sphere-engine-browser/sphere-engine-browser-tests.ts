@@ -36,10 +36,33 @@ export default class MyGame extends Thread {
         const sH = Surface.Screen.height;
 
         Prim.fill(Surface.Screen, Color.DodgerBlue);
-        Prim.drawSolidEllipse(Surface.Screen, sW / 2, sH / 2, sW / 4, sH / 4, Color.Chartreuse, Color.DarkGreen);
-        Prim.drawEllipse(Surface.Screen, sW / 2, sH / 2, sW / 4, sH / 4, Color.Black);
+        Prim.drawSolidEllipse(
+            Surface.Screen,
+            sW / 2,
+            sH / 2,
+            sW / 4,
+            sH / 4,
+            Color.Chartreuse,
+            Color.DarkGreen,
+        );
+        Prim.drawEllipse(
+            Surface.Screen,
+            sW / 2,
+            sH / 2,
+            sW / 4,
+            sH / 4,
+            Color.Black,
+        );
 
         Prim.blit(Surface.Screen, this.x, this.y, this.image);
-        Prim.drawRectangle(Surface.Screen, this.x, this.y, this.image.width, this.image.height, 2, Color.Black);
+        Prim.drawRectangle(
+            Surface.Screen,
+            this.x,
+            this.y,
+            this.image.width,
+            this.image.height,
+            2,
+            Color.Black,
+        );
     }
 }

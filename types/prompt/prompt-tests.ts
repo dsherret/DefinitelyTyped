@@ -13,7 +13,7 @@ const obj = {
     mindset: "NY",
 };
 
-prompt.addProperties(obj, ["username", "email"], err => {
+prompt.addProperties(obj, ["username", "email"], (err) => {
     err;
     console.log("Updated object received:");
     console.dir(obj);
@@ -49,8 +49,8 @@ prompt.get(
             type: "string",
             required: true,
             message: "Please dont use the demo credentials",
-            before: line => line.trim(),
-            conform: surname => {
+            before: (line) => line.trim(),
+            conform: (surname) => {
                 const name = prompt.history("name")!.value;
                 return name !== "John" || surname !== "Smith";
             },

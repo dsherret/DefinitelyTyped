@@ -9,8 +9,8 @@ type Flush = (callback: Callback) => void;
 declare const WriteStream: {
     (opts: WritableOptions, write: Write, flush?: Flush): Writable;
     (write: Write, flush?: Flush): Writable;
-    new(opts: WritableOptions, write: Write, flush?: Flush): Writable;
-    new(write: Write, flush?: Flush): Writable;
+    new (opts: WritableOptions, write: Write, flush?: Flush): Writable;
+    new (write: Write, flush?: Flush): Writable;
     obj(opts: WritableOptions, write: Write, flush?: Flush): Writable;
     obj(write: Write, flush?: Flush): Writable;
 };

@@ -85,7 +85,12 @@ interface AllCallbacks {
      * @param language The name of the code langage.
      * @param context A renderer specific context object.
      */
-    blockcode(out: Buffer, text: Buffer, language: Buffer, context?: RenderState): void;
+    blockcode(
+        out: Buffer,
+        text: Buffer,
+        language: Buffer,
+        context?: RenderState,
+    ): void;
     /**
      * Renders a blockquote.
      * @param out The output string buffer to append to.
@@ -107,7 +112,12 @@ interface AllCallbacks {
      * @param level The header level.
      * @param context A renderer specific context object.
      */
-    header(out: Buffer, text: Buffer, level: number, context?: RenderState): void;
+    header(
+        out: Buffer,
+        text: Buffer,
+        level: number,
+        context?: RenderState,
+    ): void;
     /**
      * Renders a horizontal rule.
      * @param out The output string buffer to append to.
@@ -149,7 +159,12 @@ interface AllCallbacks {
      * bit that this should be concerned with is MKD_LI_BLOCK.
      * @param context A renderer specific context object.
      */
-    listitem(out: Buffer, text: Buffer, flags: number, context?: RenderState): void;
+    listitem(
+        out: Buffer,
+        text: Buffer,
+        flags: number,
+        context?: RenderState,
+    ): void;
     /**
      * Renders a paragraph.
      *
@@ -209,7 +224,12 @@ interface AllCallbacks {
      * MKD_TABLE_ALIGN_L, and MKD_TABLE_ALIGN_R.
      * @param context A renderer specific context object.
      */
-    table_cell(out: Buffer, text: Buffer, flags: number, context?: RenderState): void;
+    table_cell(
+        out: Buffer,
+        text: Buffer,
+        flags: number,
+        context?: RenderState,
+    ): void;
     /**
      * Renders a link that was autodetected.
      *
@@ -224,7 +244,12 @@ interface AllCallbacks {
      * @param context A renderer specific context object.
      * @returns Whether or not the tag was rendered.
      */
-    autolink(out: Buffer, text: Buffer, type: SnuOwnd.MKDAAutolinkType, context?: RenderState): boolean;
+    autolink(
+        out: Buffer,
+        text: Buffer,
+        type: SnuOwnd.MKDAAutolinkType,
+        context?: RenderState,
+    ): boolean;
     /**
      * Renders inline code.
      *
@@ -269,7 +294,13 @@ interface AllCallbacks {
      * @param context A renderer specific context object.
      * @returns Whether or not the tag was rendered.
      */
-    image(out: Buffer, link: Buffer, title: Buffer, alt: Buffer, context?: RenderState): boolean;
+    image(
+        out: Buffer,
+        link: Buffer,
+        title: Buffer,
+        alt: Buffer,
+        context?: RenderState,
+    ): boolean;
     /**
      * Renders line break.
      *
@@ -298,7 +329,13 @@ interface AllCallbacks {
      * @param context A renderer specific context object.
      * @returns Whether or not the tag was rendered.
      */
-    link(out: Buffer, link: Buffer, title: Buffer, content: Buffer, context?: RenderState): boolean;
+    link(
+        out: Buffer,
+        link: Buffer,
+        title: Buffer,
+        content: Buffer,
+        context?: RenderState,
+    ): boolean;
     /**
      * Copies and potentially escapes some HTML.
      *
@@ -378,7 +415,9 @@ export type Callbacks = NullableValues<AllCallbacks>;
  * @param callbacks A table of callbacks to place into a callbacks object.
  * @returns A callbacks object holding the provided callbacks.
  */
-export function createCustomCallbacks(callbacks?: Partial<Callbacks>): Callbacks;
+export function createCustomCallbacks(
+    callbacks?: Partial<Callbacks>,
+): Callbacks;
 
 /**
  * Produce a callbacks object that matches Reddit's output.
@@ -429,7 +468,10 @@ export interface Renderer {
  * @param callbacks The callbacks object to use for the renderer.
  * @param context Renderer specific context information.
  */
-export function createCustomRenderer(callbacks: Partial<Callbacks>, context?: RenderState): Renderer;
+export function createCustomRenderer(
+    callbacks: Partial<Callbacks>,
+    context?: RenderState,
+): Renderer;
 
 /**
  * Produces a renderer object that will match Reddit's output.
@@ -461,11 +503,14 @@ export interface Markdown {
     inLinkBody: number;
     activeChars: Partial<Record<string, number>>;
     refs: Partial<
-        Record<string, {
-            id: string;
-            link: Buffer;
-            title: Buffer;
-        }>
+        Record<
+            string,
+            {
+                id: string;
+                link: Buffer;
+                title: Buffer;
+            }
+        >
     >;
     nestingLimit: number;
     maxTableCols: number;

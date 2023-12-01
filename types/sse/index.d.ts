@@ -10,7 +10,11 @@ declare class SSE extends EventEmitter {
 
     server: EventEmitter;
 
-    handleRequest(req: IncomingMessage, res: ServerResponse, query: string): void;
+    handleRequest(
+        req: IncomingMessage,
+        res: ServerResponse,
+        query: string,
+    ): void;
     matchesPath(queryPath: string, matchPath: string): boolean;
 }
 
@@ -27,7 +31,11 @@ declare namespace SSE {
         res: ServerResponse;
 
         initialize(): void;
-        send(event?: string | Client.SendObject, data?: string, id?: string): void;
+        send(
+            event?: string | Client.SendObject,
+            data?: string,
+            id?: string,
+        ): void;
         close(): void;
     }
 

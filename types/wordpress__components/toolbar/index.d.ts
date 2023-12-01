@@ -5,10 +5,8 @@ import ToolbarButton from "../toolbar-button";
 
 declare namespace Toolbar {
     interface Props
-        extends
-            Omit<HTMLProps<HTMLDivElement>, "controls" | "label">,
-            Partial<Pick<DropdownMenu.Props, "icon" | "label">>
-    {
+        extends Omit<HTMLProps<HTMLDivElement>, "controls" | "label">,
+            Partial<Pick<DropdownMenu.Props, "icon" | "label">> {
         /**
          * Class to set on the container div.
          */
@@ -21,7 +19,10 @@ declare namespace Toolbar {
          * Either an array of `Control` objects or an array of array of
          * `Control` objects.
          */
-        controls?: readonly Control[] | ReadonlyArray<readonly Control[]> | undefined;
+        controls?:
+            | readonly Control[]
+            | ReadonlyArray<readonly Control[]>
+            | undefined;
     }
     type Control = ToolbarButton.Props;
 }

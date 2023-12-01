@@ -7,22 +7,52 @@ interface JasmineDataDrivenTest {
     <T, U, V, W, X, Y, Z>(
         description: string,
         dataset: Array<[T, U, V, W, X, Y, Z]>,
-        assertion: (arg0: T, arg1: U, arg2: V, arg3: W, arg4: X, arg5: Y, arg6: Z, done: () => void) => void,
+        assertion: (
+            arg0: T,
+            arg1: U,
+            arg2: V,
+            arg3: W,
+            arg4: X,
+            arg5: Y,
+            arg6: Z,
+            done: () => void,
+        ) => void,
     ): void;
     <T, U, V, W, X, Y>(
         description: string,
         dataset: Array<[T, U, V, W, X, Y]>,
-        assertion: (arg0: T, arg1: U, arg2: V, arg3: W, arg4: X, arg5: Y, done: () => void) => void,
+        assertion: (
+            arg0: T,
+            arg1: U,
+            arg2: V,
+            arg3: W,
+            arg4: X,
+            arg5: Y,
+            done: () => void,
+        ) => void,
     ): void;
     <T, U, V, W, X>(
         description: string,
         dataset: Array<[T, U, V, W, X]>,
-        assertion: (arg0: T, arg1: U, arg2: V, arg3: W, arg4: X, done: () => void) => void,
+        assertion: (
+            arg0: T,
+            arg1: U,
+            arg2: V,
+            arg3: W,
+            arg4: X,
+            done: () => void,
+        ) => void,
     ): void;
     <T, U, V, W>(
         description: string,
         dataset: Array<[T, U, V, W]>,
-        assertion: (arg0: T, arg1: U, arg2: V, arg3: W, done: () => void) => void,
+        assertion: (
+            arg0: T,
+            arg1: U,
+            arg2: V,
+            arg3: W,
+            done: () => void,
+        ) => void,
     ): void;
     <T, U, V>(
         description: string,

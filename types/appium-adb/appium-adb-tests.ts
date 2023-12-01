@@ -12,7 +12,9 @@ function identity<T>(arg: T): T {
     return arg;
 }
 
-const apiLevelStr: Promise<string> = adb.getDeviceProperty("ro.build.version.sdk");
+const apiLevelStr: Promise<string> = adb.getDeviceProperty(
+    "ro.build.version.sdk",
+);
 const apiLevel: Promise<number> = adb.getApiLevel();
 const platVersion: Promise<string> = adb.getPlatformVersion();
 const sysLang: Promise<string> = adb.getDeviceSysLanguage();
@@ -41,7 +43,10 @@ adb.back();
 adb.goToHome();
 adb.lock();
 
-const keyboard: Promise<{ isKeyboardShown: boolean; canCloseKeyboard: boolean }> = adb.isSoftKeyboardPresent();
+const keyboard: Promise<{
+    isKeyboardShown: boolean;
+    canCloseKeyboard: boolean;
+}> = adb.isSoftKeyboardPresent();
 adb.setAnimationState(true);
 const anim: Promise<boolean> = adb.isAnimationOn();
 
@@ -63,7 +68,9 @@ adb.setGeoLocation({
     longitude: "50.5",
     latitude: "50.1",
 });
-const exists: Promise<boolean> = adb.processExists("com.example.android.contactmanager");
+const exists: Promise<boolean> = adb.processExists(
+    "com.example.android.contactmanager",
+);
 
 const sysPort = 12345;
 const devicePort = 54321;
@@ -80,7 +87,9 @@ const logs: Log[] = adb.getLogcatLogs();
 let name: Promise<string> = adb.getNameByPid("1627");
 name = adb.getNameByPid(115);
 
-const pids: Promise<number[]> = adb.getPIDsByName("com.example.android.contactmanager");
+const pids: Promise<number[]> = adb.getPIDsByName(
+    "com.example.android.contactmanager",
+);
 adb.killProcessesByName("com.example.android.contactmanager");
 adb.killProcessByPID(5078);
 adb.broadcastProcessEnd("intent", "processName");
@@ -93,12 +102,20 @@ model = adb.getManufacturer();
 const screen: Promise<string | null> = adb.getScreenSize();
 const density: Promise<number | null> = adb.getScreenDensity();
 
-adb.grantPermission("io.appium.android.apis", "android.permission.READ_EXTERNAL_STORAGE");
-adb.revokePermission("io.appium.android.apis", "android.permission.READ_EXTERNAL_STORAGE");
+adb.grantPermission(
+    "io.appium.android.apis",
+    "android.permission.READ_EXTERNAL_STORAGE",
+);
+adb.revokePermission(
+    "io.appium.android.apis",
+    "android.permission.READ_EXTERNAL_STORAGE",
+);
 adb.getReqPermissions("io.appium.android").then(identity);
 adb.getGrantedPermissions("io.appium.android").then(identity);
 adb.getDeniedPermissions("io.appium.android").then(identity);
-const match: RegExpExecArray | null = adb.isValidClass("some.package/some.package.Activity");
+const match: RegExpExecArray | null = adb.isValidClass(
+    "some.package/some.package.Activity",
+);
 const path: string = adb.getAdbPath();
 
 adb.setHttpProxy("http://localhost", 4723);
@@ -113,7 +130,9 @@ adb.setDefaultHiddenApiPolicy();
 adb.powerAC(adb.POWER_AC_STATES.POWER_AC_ON);
 
 let devices = adb.getConnectedDevices();
-const verboseDevices: Promise<VerboseDevice[]> = adb.getConnectedDevices({ verbose: true });
+const verboseDevices: Promise<VerboseDevice[]> = adb.getConnectedDevices({
+    verbose: true,
+});
 devices = verboseDevices;
 adb.waitForEmulatorReady(60000);
 

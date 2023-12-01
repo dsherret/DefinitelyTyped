@@ -18,7 +18,7 @@ new Tooltip(element, {
 });
 // $ExpectType Tooltip
 new Tooltip(element, {
-    popperConfig: defaultBsPopperConfig => defaultBsPopperConfig,
+    popperConfig: (defaultBsPopperConfig) => defaultBsPopperConfig,
 });
 
 // $ExpectType Tooltip | null
@@ -67,19 +67,19 @@ Tooltip.DefaultType.allowList; // $ExpectType string
 Tooltip.DefaultType.offset; // $ExpectType string
 Tooltip.DefaultType.popperConfig; // $ExpectType string
 
-element.addEventListener(Tooltip.Events.hidden, event => {
+element.addEventListener(Tooltip.Events.hidden, (event) => {
     // do something…
 });
 
-element.addEventListener(Tooltip.Events.hide, event => {
+element.addEventListener(Tooltip.Events.hide, (event) => {
     // do something…
 });
 
-element.addEventListener(Tooltip.Events.show, event => {
+element.addEventListener(Tooltip.Events.show, (event) => {
     // do something…
 });
 
-element.addEventListener(Tooltip.Events.shown, event => {
+element.addEventListener(Tooltip.Events.shown, (event) => {
     // do something…
 });
 
@@ -87,7 +87,11 @@ element.addEventListener(Tooltip.Events.shown, event => {
 $(".alert").tooltip();
 
 // $ExpectType JQuery<HTMLElement>
-$(".alert").tooltip({ delay: 0.5, title: () => "foo", customClass: () => "custom-class" });
+$(".alert").tooltip({
+    delay: 0.5,
+    title: () => "foo",
+    customClass: () => "custom-class",
+});
 
 $(".alert").tooltip("hide"); // $ExpectType JQuery<HTMLElement>
 $(".alert").tooltip("show"); // $ExpectType JQuery<HTMLElement>

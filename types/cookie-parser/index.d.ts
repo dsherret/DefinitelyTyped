@@ -26,9 +26,14 @@ declare namespace cookieParser {
 
     function JSONCookie(jsonCookie: string): object | undefined;
 
-    function JSONCookies<T extends { [key: string]: string }>(jsonCookies: T): { [P in keyof T]: object | undefined };
+    function JSONCookies<T extends { [key: string]: string }>(
+        jsonCookies: T,
+    ): { [P in keyof T]: object | undefined };
 
-    function signedCookie(cookie: string, secret: string | string[]): string | false;
+    function signedCookie(
+        cookie: string,
+        secret: string | string[],
+    ): string | false;
 
     function signedCookies<T extends { [key: string]: string }>(
         cookies: T,

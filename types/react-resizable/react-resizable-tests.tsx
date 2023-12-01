@@ -1,12 +1,17 @@
 import * as React from "react";
 import { Resizable, ResizableBox, ResizeCallbackData } from "react-resizable";
 
-const resizeCallback = (event: React.SyntheticEvent, data: ResizeCallbackData) => {
+const resizeCallback = (
+    event: React.SyntheticEvent,
+    data: ResizeCallbackData,
+) => {
     console.log(data.size.height);
     console.log(data.node);
 };
 
-class TestResizableComponent extends React.Component<{ children?: React.ReactNode }> {
+class TestResizableComponent extends React.Component<{
+    children?: React.ReactNode;
+}> {
     render() {
         return (
             <Resizable
@@ -30,7 +35,9 @@ class TestResizableComponent extends React.Component<{ children?: React.ReactNod
     }
 }
 
-class TestResizableBoxComponent extends React.Component<{ children?: React.ReactNode }> {
+class TestResizableBoxComponent extends React.Component<{
+    children?: React.ReactNode;
+}> {
     render() {
         return (
             <ResizableBox
@@ -40,7 +47,9 @@ class TestResizableBoxComponent extends React.Component<{ children?: React.React
                 onResizeStop={resizeCallback}
                 onResize={resizeCallback}
                 transformScale={1}
-                handle={(resizeHandle, ref) => <div ref={ref}>{resizeHandle}</div>}
+                handle={(resizeHandle, ref) => (
+                    <div ref={ref}>{resizeHandle}</div>
+                )}
             >
                 <div>{this.props.children}</div>
             </ResizableBox>
@@ -48,7 +57,9 @@ class TestResizableBoxComponent extends React.Component<{ children?: React.React
     }
 }
 
-class TestStyledResizableBoxComponent extends React.Component<{ children?: React.ReactNode }> {
+class TestStyledResizableBoxComponent extends React.Component<{
+    children?: React.ReactNode;
+}> {
     render() {
         return (
             <ResizableBox width={10} height={20} style={{ color: "pink" }}>
@@ -58,7 +69,9 @@ class TestStyledResizableBoxComponent extends React.Component<{ children?: React
     }
 }
 
-class TestXResizableComponent extends React.Component<{ children?: React.ReactNode }> {
+class TestXResizableComponent extends React.Component<{
+    children?: React.ReactNode;
+}> {
     render() {
         return (
             <Resizable
@@ -81,7 +94,9 @@ class TestXResizableComponent extends React.Component<{ children?: React.ReactNo
     }
 }
 
-class TestYResizableComponent extends React.Component<{ children?: React.ReactNode }> {
+class TestYResizableComponent extends React.Component<{
+    children?: React.ReactNode;
+}> {
     render() {
         return (
             <Resizable
@@ -104,7 +119,9 @@ class TestYResizableComponent extends React.Component<{ children?: React.ReactNo
     }
 }
 
-class TestXYResizableComponent extends React.Component<{ children?: React.ReactNode }> {
+class TestXYResizableComponent extends React.Component<{
+    children?: React.ReactNode;
+}> {
     render() {
         return (
             <Resizable

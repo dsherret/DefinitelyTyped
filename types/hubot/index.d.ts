@@ -40,7 +40,11 @@ declare namespace Hubot {
     class Middleware<T extends Adapter = Adapter> {
         stack: Array<MiddlewareHandler<T>>;
         constructor(robot: Robot<T>);
-        execute(context: MiddlewareContext<T>, next: NextFunction, done: DoneFunction): void;
+        execute(
+            context: MiddlewareContext<T>,
+            next: NextFunction,
+            done: DoneFunction,
+        ): void;
         register(middleware: MiddlewareHandler<T>): void;
     }
 
@@ -129,9 +133,10 @@ declare namespace Hubot {
         http(url: string, options?: HttpOptions): ScopedClient;
     }
 
-    type ListenerCallback<A extends Adapter = Adapter, M extends Message = Message> = (
-        response: Response<A, M>,
-    ) => void;
+    type ListenerCallback<
+        A extends Adapter = Adapter,
+        M extends Message = Message,
+    > = (response: Response<A, M>) => void;
     type DoneFunction = () => void;
     type NextFunction = (done: DoneFunction) => void;
     interface MiddlewareContext<T extends Adapter = Adapter> {
@@ -184,32 +189,62 @@ declare namespace Hubot {
         readonly server?: Server | undefined;
         readonly router: Express;
 
-        constructor(adapterPath: string, adapter: string, httpd: boolean, name: string, alias?: string);
+        constructor(
+            adapterPath: string,
+            adapter: string,
+            httpd: boolean,
+            name: string,
+            alias?: string,
+        );
         catchAll(callback: ListenerCallback<A, CatchAllMessage>): void;
-        catchAll(options: {}, callback: ListenerCallback<A, CatchAllMessage>): void;
+        catchAll(
+            options: {},
+            callback: ListenerCallback<A, CatchAllMessage>,
+        ): void;
         emit(event: string | symbol, ...args: unknown[]): void;
         enter(callback: ListenerCallback<A, EnterMessage>): void;
         enter(options: {}, callback: ListenerCallback<A, EnterMessage>): void;
         error(cb: (error: Error) => void): void;
         hear(regex: RegExp, callback: ListenerCallback<A, TextMessage>): void;
-        hear(regex: RegExp, options: {}, callback: ListenerCallback<A, TextMessage>): void;
+        hear(
+            regex: RegExp,
+            options: {},
+            callback: ListenerCallback<A, TextMessage>,
+        ): void;
         helpCommands(): string[];
         http(url: string, options?: HttpOptions): ScopedClient;
         leave(callback: ListenerCallback<A, LeaveMessage>): void;
         leave(options: {}, callback: ListenerCallback<A, LeaveMessage>): void;
-        listen(matcher: (message: Message) => boolean, callback: ListenerCallback<A>): void;
-        listen(matcher: (message: Message) => boolean, options: {}, callback: ListenerCallback<A>): void;
+        listen(
+            matcher: (message: Message) => boolean,
+            callback: ListenerCallback<A>,
+        ): void;
+        listen(
+            matcher: (message: Message) => boolean,
+            options: {},
+            callback: ListenerCallback<A>,
+        ): void;
         listenerMiddleware(middleware: MiddlewareHandler<A>): void;
         loadExternalScripts(packages: string[]): void;
         loadFile(directory: string, fileName: string): void;
         loadHubotScripts(path: string, scripts: string[]): void;
         messageRoom(room: string, ...strings: string[]): void;
-        on(event: string | symbol, listener: (...args: unknown[]) => void): this;
+        on(
+            event: string | symbol,
+            listener: (...args: unknown[]) => void,
+        ): this;
         receive(message: Message, cb?: () => void): void;
         receiveMiddleware(middleware: MiddlewareHandler<A>): void;
         reply(envelope: Envelope, ...strings: string[]): void;
-        respond(regex: RegExp, callback: ListenerCallback<A, TextMessage>): void;
-        respond(regex: RegExp, options: {}, callback: ListenerCallback<A, TextMessage>): void;
+        respond(
+            regex: RegExp,
+            callback: ListenerCallback<A, TextMessage>,
+        ): void;
+        respond(
+            regex: RegExp,
+            options: {},
+            callback: ListenerCallback<A, TextMessage>,
+        ): void;
         respondPattern(regex: RegExp): RegExp;
         responseMiddleware(middleware: MiddlewareHandler<A>): void;
         run(): void;

@@ -12,7 +12,11 @@ declare global {
     /** These are HTTP status codes returned by the redemption API. */
     var REDEEM_STATUSES: { [key: number]: string };
 
-    function handleRedeemResponse(data: ResultData, textStatus: any, jqXHR: JQuery.jqXHR): void;
+    function handleRedeemResponse(
+        data: ResultData,
+        textStatus: any,
+        jqXHR: JQuery.jqXHR,
+    ): void;
 
     function formatPasscodeLong(data: ResultData): void;
     function formatPasscodeShort(data: ResultData): void;

@@ -415,9 +415,19 @@ sshpk.parseFingerprint("", [""]);
 // $ExpectType Fingerprint
 sshpk.parseFingerprint("", {});
 // $ExpectType Fingerprint
-sshpk.parseFingerprint("", { enAlgs: [""], algotirhms: [""], type: "key", hashType: "spki" });
+sshpk.parseFingerprint("", {
+    enAlgs: [""],
+    algotirhms: [""],
+    type: "key",
+    hashType: "spki",
+});
 // $ExpectType Fingerprint
-sshpk.parseFingerprint("", { enAlgs: [""], algotirhms: [""], type: "certificate", hashType: "ssh" });
+sshpk.parseFingerprint("", {
+    enAlgs: [""],
+    algotirhms: [""],
+    type: "certificate",
+    hashType: "ssh",
+});
 
 // $ExpectType string
 fingerprint.toString();

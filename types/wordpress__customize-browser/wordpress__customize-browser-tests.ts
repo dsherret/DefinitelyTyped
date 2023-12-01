@@ -2,23 +2,25 @@ import * as _ from "underscore";
 
 // Code snippets from https://developer.wordpress.org/themes/customize-api/the-customizer-javascript-api/
 
-wp.customize("page_for_posts", setting => {
-    setting.bind(pageId => {
+wp.customize("page_for_posts", (setting) => {
+    setting.bind((pageId) => {
         pageId = parseInt(pageId, 10);
         if (pageId > 0) {
             // tslint:disable-next-line:prefer-template
-            wp.customize.previewer.previewUrl.set(wp.customize.settings.url.home + "?page_id=" + pageId);
+            wp.customize.previewer.previewUrl.set(
+                wp.customize.settings.url.home + "?page_id=" + pageId,
+            );
         }
     });
 });
 
-wp.customize.panel.each(panel => {
+wp.customize.panel.each((panel) => {
     /* ... */
 });
-wp.customize.section.each(section => {
+wp.customize.section.each((section) => {
     /* ... */
 });
-wp.customize.control.each(control => {
+wp.customize.control.each((control) => {
     /* ... */
 });
 
@@ -31,7 +33,7 @@ id = wp.customize.section("sidebar-widgets-sidebar-1").panel(); // returns widge
 const sections = wp.customize.panel("widgets").sections();
 const controls = wp.customize.section("title_tagline").controls();
 
-_.each(wp.customize.section("title_tagline").controls(), control => {
+_.each(wp.customize.section("title_tagline").controls(), (control) => {
     control.section("nav");
 });
 

@@ -345,8 +345,7 @@ declare namespace JsMockito {
     /**
      * Used to verify how many times a function of method is called.
      */
-    export interface Verifier {
-    }
+    export interface Verifier {}
 
     /**
      * Test if a given variable is a mock
@@ -418,7 +417,10 @@ declare namespace JsMockito {
      */
     export function mockFunction(): Function;
     export function mockFunction(funcName: string): Function;
-    export function mockFunction(funcName: string, delegate: Function): Function;
+    export function mockFunction(
+        funcName: string,
+        delegate: Function,
+    ): Function;
 
     /**
      * Create a mockable and stubbable objects.
@@ -449,7 +451,7 @@ declare namespace JsMockito {
      * @param Obj the constructor for the object to be mocked
      * @return a mock object
      */
-    export function mock<T>(Obj: { new(): T }): T;
+    export function mock<T>(Obj: { new (): T }): T;
 
     namespace Verifiers {
         /**
@@ -657,7 +659,7 @@ declare function mockFunction(funcName: string, delegate: Function): Function;
  * @param Obj the constructor for the object to be mocked
  * @return a mock object
  */
-declare function mock<T>(Obj: { new(): T }): T;
+declare function mock<T>(Obj: { new (): T }): T;
 
 /**
  * Test that a invocation never occurred. For example:

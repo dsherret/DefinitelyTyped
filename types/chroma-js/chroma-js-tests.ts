@@ -54,27 +54,8 @@ function test_chroma() {
     chroma.contrast("pink", "purple");
     chroma.brewer.OrRd;
     const data = [
-        3.0,
-        3.5,
-        3.6,
-        3.8,
-        3.8,
-        4.1,
-        4.3,
-        4.4,
-        4.6,
-        4.9,
-        5.2,
-        5.3,
-        5.4,
-        5.7,
-        5.8,
-        5.9,
-        6.2,
-        6.5,
-        6.8,
-        7.2,
-        9,
+        3.0, 3.5, 3.6, 3.8, 3.8, 4.1, 4.3, 4.4, 4.6, 4.9, 5.2, 5.3, 5.4, 5.7,
+        5.8, 5.9, 6.2, 6.5, 6.8, 7.2, 9,
     ];
     chroma.limits(data, "e", 5);
     chroma.limits(data, "q", 5);
@@ -199,7 +180,12 @@ function test_scale() {
     // use the default helix...
     chroma.cubehelix();
     // or customize it
-    chroma.cubehelix().start(200).rotations(-0.5).gamma(0.8).lightness([0.3, 0.8]);
+    chroma
+        .cubehelix()
+        .start(200)
+        .rotations(-0.5)
+        .gamma(0.8)
+        .lightness([0.3, 0.8]);
 
     chroma
         .cubehelix()
@@ -243,4 +229,6 @@ function test_types() {
 // which is passed as undefined/null or not passed at all
 // const scaleColors1: Color[] = chroma.scale(['black', 'white']).colors(12);
 const scaleColors2: Color[] = chroma.scale(["black", "white"]).colors(12, null);
-const scaleColors3: Color[] = chroma.scale(["black", "white"]).colors(12, undefined);
+const scaleColors3: Color[] = chroma
+    .scale(["black", "white"])
+    .colors(12, undefined);

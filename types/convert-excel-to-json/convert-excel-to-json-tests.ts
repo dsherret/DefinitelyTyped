@@ -28,25 +28,30 @@ excelToJson({
 excelToJson({
     sourceFile,
     range: "A2:B3",
-    sheets: ["sheet1", {
-        name: "sheet2",
-        header: {
-            rows: 1,
+    sheets: [
+        "sheet1",
+        {
+            name: "sheet2",
+            header: {
+                rows: 1,
+            },
+            columnToKey: {
+                A: "id",
+                B: "firstName",
+                D: "email",
+            },
         },
-        columnToKey: {
-            A: "id",
-            B: "firstName",
-            D: "email",
-        },
-    }],
+    ],
 }).sheet2;
 
 // $ExpectType { [key: string]: any[]; }
 excelToJson({
     sourceFile,
-    sheets: [{
-        name: "sheet2",
-    }],
+    sheets: [
+        {
+            name: "sheet2",
+        },
+    ],
     header: {
         rows: 1,
     },
@@ -60,9 +65,11 @@ excelToJson({
 // $ExpectType any[]
 excelToJson({
     sourceFile,
-    sheets: [{
-        name: "sheet3",
-    }],
+    sheets: [
+        {
+            name: "sheet3",
+        },
+    ],
     header: {
         rows: 0,
     },

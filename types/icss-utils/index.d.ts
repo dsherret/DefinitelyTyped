@@ -17,10 +17,22 @@ export interface ExtractedICSS {
     icssExports: CSSExports;
 }
 
-export function replaceValueSymbols(value: string, replacements: Replacements): string;
+export function replaceValueSymbols(
+    value: string,
+    replacements: Replacements,
+): string;
 
-export function replaceSymbols(css: Container, replacements: Replacements): void;
+export function replaceSymbols(
+    css: Container,
+    replacements: Replacements,
+): void;
 
-export function extractICSS(css: Container, removeRules?: boolean): ExtractedICSS;
+export function extractICSS(
+    css: Container,
+    removeRules?: boolean,
+): ExtractedICSS;
 
-export function createICSSRules(imports: CSSImports, exports: CSSExports): Rule[];
+export function createICSSRules(
+    imports: CSSImports,
+    exports: CSSExports,
+): Rule[];

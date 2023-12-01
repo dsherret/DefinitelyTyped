@@ -12,10 +12,7 @@ export interface WebTwainAcquire extends WebTwainEdit {
      */
     AcquireImage(
         successCallBack?: () => void,
-        failureCallBack?: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallBack?: (errorCode: number, errorString: string) => void,
     ): void;
     AcquireImage(
         deviceConfiguration?: DeviceConfiguration,
@@ -51,10 +48,7 @@ export interface WebTwainAcquire extends WebTwainEdit {
      */
     EnableSourceUI(
         successCallBack: () => void,
-        failureCallBack: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallBack: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Load a data source to get it ready to acquire images.
@@ -73,7 +67,9 @@ export interface WebTwainAcquire extends WebTwainEdit {
      * Return all available data sources (scanners, etc.) and optionally all detailed information about them.
      * @param bIncludeDetails Whether to return more details about the data sources or just their names.
      */
-    GetSourceNamesAsync(bIncludeDetails: boolean): Promise<string[] | SourceDetails[]>;
+    GetSourceNamesAsync(
+        bIncludeDetails: boolean,
+    ): Promise<string[] | SourceDetails[]>;
     /**
      * Bring up the Source Selection User Interface (UI) for the user to choose a data source.
      * @param successCallback A callback function that is executed if the request succeeds.
@@ -403,10 +399,7 @@ export interface WebTwainAcquire extends WebTwainEdit {
      */
     getCapabilities(
         succssCallback: (capabilityDetails: CapabilityDetails[]) => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
     /**
      * Sets up one or multiple capabilities in one call.
@@ -590,7 +583,13 @@ export interface WebTwainAcquire extends WebTwainEdit {
      * @param right  the value (in Unit) of the right-most edge of the specified frame.
      * @param bottom  the value (in Unit) of the bottom-most edge of the specified frame.
      */
-    CapSetFrame(index: number, left: number, top: number, right: number, bottom: number): boolean;
+    CapSetFrame(
+        index: number,
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+    ): boolean;
     /**
      * Get the cap item value of the capability specified by Capability property,
      * when the value of the CapType property is TWON_ARRAY or TWON_ENUMERATION.
@@ -721,16 +720,18 @@ export interface ScanSetup {
      * The name of the data source (the scanner). If not set, the default data source is used.
      */
     scanner?: string | undefined;
-    ui?: {
-        /**
-         * Whether to show the UI of the device.
-         */
-        bShowUI?: boolean | undefined;
-        /**
-         * Whether to show the indicator of the device.
-         */
-        bShowIndicator?: boolean | undefined;
-    } | undefined;
+    ui?:
+        | {
+              /**
+               * Whether to show the UI of the device.
+               */
+              bShowUI?: boolean | undefined;
+              /**
+               * Whether to show the indicator of the device.
+               */
+              bShowIndicator?: boolean | undefined;
+          }
+        | undefined;
     /**
      * The TWAIN transfer mode.
      */
@@ -738,25 +739,30 @@ export interface ScanSetup {
     /**
      * Set how the transfer is done.
      */
-    fileXfer?: {
-        /**
-         * Specify the file name (or pattern) for file transfer.
-         * Example: "C:\\WebTWAIN<%06d>.bmp"
-         */
-        fileName?: string | undefined;
-        /**
-         * Specify the file format.
-         */
-        fileFormat?: Dynamsoft.EnumDWT_FileFormat | number | undefined;
-        /**
-         * Specify the quality of JPEG files.
-         */
-        jpegQuality?: number | undefined;
-        /**
-         * Specify the compression type of the file.
-         */
-        compressionType?: Dynamsoft.EnumDWT_CompressionType | number | undefined;
-    } | undefined;
+    fileXfer?:
+        | {
+              /**
+               * Specify the file name (or pattern) for file transfer.
+               * Example: "C:\\WebTWAIN<%06d>.bmp"
+               */
+              fileName?: string | undefined;
+              /**
+               * Specify the file format.
+               */
+              fileFormat?: Dynamsoft.EnumDWT_FileFormat | number | undefined;
+              /**
+               * Specify the quality of JPEG files.
+               */
+              jpegQuality?: number | undefined;
+              /**
+               * Specify the compression type of the file.
+               */
+              compressionType?:
+                  | Dynamsoft.EnumDWT_CompressionType
+                  | number
+                  | undefined;
+          }
+        | undefined;
     /**
      * Set where the scanned images are inserted.
      */
@@ -768,87 +774,99 @@ export interface ScanSetup {
     /**
      * Basic settings.
      */
-    settings?: {
-        /**
-         * "ignore" (default) or "fail".
-         */
-        exception?: string | undefined;
-        /**
-         * Specify the pixel type.
-         */
-        pixelType?: Dynamsoft.EnumDWT_PixelType | number | undefined;
-        /**
-         * Specify the resolution.
-         */
-        resolution?: number | undefined;
-        /**
-         * Whether to enable document feader.
-         */
-        bFeeder?: boolean | undefined;
-        /**
-         * Whether to enable duplex scan.
-         */
-        bDuplex?: boolean | undefined;
-    } | undefined;
-    moreSettings?: {
-        /**
-         * "ignore" (default) or "fail".
-         */
-        exception?: string | undefined;
-        /**
-         * Specify the bit depth.
-         */
-        bitDepth?: number | undefined;
-        /**
-         * Specify the page size.
-         */
-        pageSize?: Dynamsoft.EnumDWT_CapSupportedSizes | number | undefined;
-        /**
-         * Specify the unit.
-         */
-        unit?: Dynamsoft.EnumDWT_UnitType | number | undefined;
-        /**
-         * Specify a layout to scan, if present, it'll override pageSize.
-         */
-        layout?: {
-            left?: number | undefined;
-            top?: number | undefined;
-            right?: number | undefined;
-            bottom?: number | undefined;
-        } | undefined;
-        /**
-         * Specify the pixel flavor.
-         */
-        pixelFlavor?: Dynamsoft.EnumDWT_CapPixelFlavor | number | undefined;
-        /**
-         * Specify Brightness.
-         */
-        brightness?: number | undefined;
-        /**
-         * Specify contrast.
-         */
-        contrast?: number | undefined;
-        /**
-         * Specify how many images are transferred per session.
-         */
-        nXferCount?: number | undefined;
-        /**
-         * Whether to enable automatic blank image detection and removal.
-         */
-        autoDiscardBlankPages?: boolean | undefined;
-        /**
-         * Whether to enable automatic border detection.
-         */
-        autoBorderDetection?: boolean | undefined;
-        /**
-         * Whether to enable automatic skew correction.
-         */
-        autoDeskew?: boolean | undefined;
-        /**
-         * Whether to enable automatic brightness adjustment.
-         */
-        autoBright?: boolean | undefined;
-    } | undefined;
+    settings?:
+        | {
+              /**
+               * "ignore" (default) or "fail".
+               */
+              exception?: string | undefined;
+              /**
+               * Specify the pixel type.
+               */
+              pixelType?: Dynamsoft.EnumDWT_PixelType | number | undefined;
+              /**
+               * Specify the resolution.
+               */
+              resolution?: number | undefined;
+              /**
+               * Whether to enable document feader.
+               */
+              bFeeder?: boolean | undefined;
+              /**
+               * Whether to enable duplex scan.
+               */
+              bDuplex?: boolean | undefined;
+          }
+        | undefined;
+    moreSettings?:
+        | {
+              /**
+               * "ignore" (default) or "fail".
+               */
+              exception?: string | undefined;
+              /**
+               * Specify the bit depth.
+               */
+              bitDepth?: number | undefined;
+              /**
+               * Specify the page size.
+               */
+              pageSize?:
+                  | Dynamsoft.EnumDWT_CapSupportedSizes
+                  | number
+                  | undefined;
+              /**
+               * Specify the unit.
+               */
+              unit?: Dynamsoft.EnumDWT_UnitType | number | undefined;
+              /**
+               * Specify a layout to scan, if present, it'll override pageSize.
+               */
+              layout?:
+                  | {
+                        left?: number | undefined;
+                        top?: number | undefined;
+                        right?: number | undefined;
+                        bottom?: number | undefined;
+                    }
+                  | undefined;
+              /**
+               * Specify the pixel flavor.
+               */
+              pixelFlavor?:
+                  | Dynamsoft.EnumDWT_CapPixelFlavor
+                  | number
+                  | undefined;
+              /**
+               * Specify Brightness.
+               */
+              brightness?: number | undefined;
+              /**
+               * Specify contrast.
+               */
+              contrast?: number | undefined;
+              /**
+               * Specify how many images are transferred per session.
+               */
+              nXferCount?: number | undefined;
+              /**
+               * Whether to enable automatic blank image detection and removal.
+               */
+              autoDiscardBlankPages?: boolean | undefined;
+              /**
+               * Whether to enable automatic border detection.
+               */
+              autoBorderDetection?: boolean | undefined;
+              /**
+               * Whether to enable automatic skew correction.
+               */
+              autoDeskew?: boolean | undefined;
+              /**
+               * Whether to enable automatic brightness adjustment.
+               */
+              autoBright?: boolean | undefined;
+          }
+        | undefined;
     /**
      * A callback triggered before the scan, after the scan and after each page has been transferred.
      */
@@ -856,119 +874,135 @@ export interface ScanSetup {
     /**
      * Set up how the scanned images are outputted.
      */
-    outputSetup?: {
-        /**
-         * Output type. "http" is the only supported type for now.
-         */
-        type?: string | undefined;
-        /**
-         * Set the output format.
-         */
-        format?: Dynamsoft.EnumDWT_ImageType | number | undefined;
-        /**
-         * Specify how many times the library will try the output.
-         */
-        reTries?: number | undefined;
-        /**
-         * Whether to use the FileUploader.
-         */
-        useUploader?: false | undefined;
-        /**
-         * Whether to upload all images in one HTTP post.
-         */
-        singlePost?: boolean | undefined;
-        /**
-         * Whether to show a progress bar when outputting.
-         */
-        showProgressBar?: boolean | undefined;
-        /**
-         * Whether to remove the images after outputting.
-         */
-        removeAfterOutput?: boolean | undefined;
-        /**
-         * A callback triggered during the outputting.
-         * @argument fileInfo A JSON object that contains the fileName, percentage, statusCode, responseString, etc.
-         */
-        funcHttpUploadStatus?: ((fileInfo: any) => void) | undefined;
-        /**
-         * Setup for PDF output.
-         */
-        pdfSetup?: {
-            author?: string | undefined;
-            compression?: Dynamsoft.EnumDWT_PDFCompressionType | number | undefined;
-            creator?: string | undefined;
-            /**
-             * Example: 'D:20181231'
-             */
-            creationDate?: string | undefined;
-            keyWords?: string | undefined;
-            /**
-             * Example: 'D:20181231'
-             */
-            modifiedDate?: string | undefined;
-            producer?: string | undefined;
-            subject?: string | undefined;
-            title?: string | undefined;
-            version?: number | undefined;
-            quality?: number | undefined;
-        } | undefined;
-        /**
-         * Setup for TIFF output.
-         */
-        tiffSetup?: {
-            quality?: number | undefined;
-            compression?: Dynamsoft.EnumDWT_TIFFCompressionType | number | undefined;
-            /**
-             * Specify Tiff custom tags.
-             */
-            tiffTags?: TiffTag[] | undefined;
-        } | undefined;
-        /**
-         * Setup for HTTP upload via Post.
-         */
-        httpParams?: {
-            /**
-             * Target of the request.
-             * Example: "http://dynamsoft.com/receivepost.aspx"
-             */
-            url?: string | undefined;
-            /**
-             * Custom headers in the form.
-             * Example: {md5: ""}
-             */
-            headers?: any;
-            /**
-             * Custom form fields.
-             * Example: {"UploadedBy": "Dynamsoft"}
-             */
-            formFields?: any;
-            /**
-             * The maximum size of a file to be uploaded (in bytes).
-             */
-            maxSizeLimit?: number | undefined;
-            /**
-             * Specify how many threads (<=4) are to be used. Only valid when {useUploader} is true.
-             */
-            threads?: number | undefined;
-            /**
-             * Specify the names for the files in the form.
-             * Example: "RemoteName<%06d>"
-             */
-            remoteName?: string | undefined;
-            /**
-             * Specify the name(s) (pattern) of the uploaded files.
-             * Example: "uploadedFile<%06d>.jpg"
-             */
-            fileName?: string | undefined;
-        } | undefined;
-    } | undefined;
+    outputSetup?:
+        | {
+              /**
+               * Output type. "http" is the only supported type for now.
+               */
+              type?: string | undefined;
+              /**
+               * Set the output format.
+               */
+              format?: Dynamsoft.EnumDWT_ImageType | number | undefined;
+              /**
+               * Specify how many times the library will try the output.
+               */
+              reTries?: number | undefined;
+              /**
+               * Whether to use the FileUploader.
+               */
+              useUploader?: false | undefined;
+              /**
+               * Whether to upload all images in one HTTP post.
+               */
+              singlePost?: boolean | undefined;
+              /**
+               * Whether to show a progress bar when outputting.
+               */
+              showProgressBar?: boolean | undefined;
+              /**
+               * Whether to remove the images after outputting.
+               */
+              removeAfterOutput?: boolean | undefined;
+              /**
+               * A callback triggered during the outputting.
+               * @argument fileInfo A JSON object that contains the fileName, percentage, statusCode, responseString, etc.
+               */
+              funcHttpUploadStatus?: ((fileInfo: any) => void) | undefined;
+              /**
+               * Setup for PDF output.
+               */
+              pdfSetup?:
+                  | {
+                        author?: string | undefined;
+                        compression?:
+                            | Dynamsoft.EnumDWT_PDFCompressionType
+                            | number
+                            | undefined;
+                        creator?: string | undefined;
+                        /**
+                         * Example: 'D:20181231'
+                         */
+                        creationDate?: string | undefined;
+                        keyWords?: string | undefined;
+                        /**
+                         * Example: 'D:20181231'
+                         */
+                        modifiedDate?: string | undefined;
+                        producer?: string | undefined;
+                        subject?: string | undefined;
+                        title?: string | undefined;
+                        version?: number | undefined;
+                        quality?: number | undefined;
+                    }
+                  | undefined;
+              /**
+               * Setup for TIFF output.
+               */
+              tiffSetup?:
+                  | {
+                        quality?: number | undefined;
+                        compression?:
+                            | Dynamsoft.EnumDWT_TIFFCompressionType
+                            | number
+                            | undefined;
+                        /**
+                         * Specify Tiff custom tags.
+                         */
+                        tiffTags?: TiffTag[] | undefined;
+                    }
+                  | undefined;
+              /**
+               * Setup for HTTP upload via Post.
+               */
+              httpParams?:
+                  | {
+                        /**
+                         * Target of the request.
+                         * Example: "http://dynamsoft.com/receivepost.aspx"
+                         */
+                        url?: string | undefined;
+                        /**
+                         * Custom headers in the form.
+                         * Example: {md5: ""}
+                         */
+                        headers?: any;
+                        /**
+                         * Custom form fields.
+                         * Example: {"UploadedBy": "Dynamsoft"}
+                         */
+                        formFields?: any;
+                        /**
+                         * The maximum size of a file to be uploaded (in bytes).
+                         */
+                        maxSizeLimit?: number | undefined;
+                        /**
+                         * Specify how many threads (<=4) are to be used. Only valid when {useUploader} is true.
+                         */
+                        threads?: number | undefined;
+                        /**
+                         * Specify the names for the files in the form.
+                         * Example: "RemoteName<%06d>"
+                         */
+                        remoteName?: string | undefined;
+                        /**
+                         * Specify the name(s) (pattern) of the uploaded files.
+                         * Example: "uploadedFile<%06d>.jpg"
+                         */
+                        fileName?: string | undefined;
+                    }
+                  | undefined;
+          }
+        | undefined;
 }
 export interface Status {
     bScanCompleted?: boolean | undefined;
     event?: string | undefined;
-    result?: {
-        currentPageNum?: number | undefined;
-    } | undefined;
+    result?:
+        | {
+              currentPageNum?: number | undefined;
+          }
+        | undefined;
 }
 export interface TiffTag {
     tagIdentifier?: number | undefined;
@@ -1029,7 +1063,11 @@ export interface ValueAndLabel {
     /**
      * Numeric representation of the item
      */
-    value: Dynamsoft.EnumDWT_Cap | Dynamsoft.EnumDWT_CapType | Dynamsoft.EnumDWT_CapValueType | number;
+    value:
+        | Dynamsoft.EnumDWT_Cap
+        | Dynamsoft.EnumDWT_CapType
+        | Dynamsoft.EnumDWT_CapValueType
+        | number;
     /**
      * Label or name of the item
      */

@@ -39,7 +39,10 @@ export function loadOrCreateSync(filename: string): Keys;
  * If a sync file access method is not available, `loadOrCreate` can be called with a callback.
  * that callback will be called with `cb(null, keys)`. If loading the keys errored, new keys are created.
  */
-export function loadOrCreate(filename: string, cb: (err: Error | null, keys: Keys) => any): void;
+export function loadOrCreate(
+    filename: string,
+    cb: (err: Error | null, keys: Keys) => any,
+): void;
 
 /**
  * generate a key, with optional seed. curve defaults to `ed25519` (and no other type is currently supported) seed should be a 32 byte buffer.
@@ -54,28 +57,45 @@ export function generate(curve?: string, seed?: Buffer): Keys;
  *
  * The fine details of the signature format are described in the [protocol guide](https://ssbc.github.io/scuttlebutt-protocol-guide/#signature)
  */
-export function signObj<T extends object>(keys: Keys, obj: T): T & { signature: string };
-export function signObj<T extends object>(keys: Keys, hmac_key: string, obj: T): T & { signature: string };
+export function signObj<T extends object>(
+    keys: Keys,
+    obj: T,
+): T & { signature: string };
+export function signObj<T extends object>(
+    keys: Keys,
+    hmac_key: string,
+    obj: T,
+): T & { signature: string };
 
 /**
  * verify a signed object. `hmac_key` must be the same value as passed to `signObj`.
  */
 export function verifyObj(keys: Keys, obj: { signature: string }): boolean;
-export function verifyObj(keys: Keys, hmac_key: string, obj: { signature: string }): boolean;
+export function verifyObj(
+    keys: Keys,
+    hmac_key: string,
+    obj: { signature: string },
+): boolean;
 
 /**
  * encrypt a message content to many recipients. msg will be JSON encoded, then encrypted with [private-box](https://github.com/auditdrivencrypto/private-box)
  *
  * `recipients` must be an array of feed ids. your own feed id should be included.
  */
-export function box(content: object | string | boolean | number, recipients: readonly string[]): string;
+export function box(
+    content: object | string | boolean | number,
+    recipients: readonly string[],
+): string;
 
 /**
  * decrypt a message encrypted with `box`. If the `boxed` successfully decrypted, the parsed JSON is returned, if not, `undefined` is returned.
  *
  * the decryption process is described in the [protocol guide - decrypting](https://ssbc.github.io/scuttlebutt-protocol-guide/#decrypting)
  */
-export function unbox(boxed: string, keys: Keys): object | string | boolean | number | undefined;
+export function unbox(
+    boxed: string,
+    keys: Keys,
+): object | string | boolean | number | undefined;
 
 /**
  * extract the `msg_key` used to encrypt this message, or null if it cannot be decrypted. the `msg_key` if not null, can then be passed to `unboxBody`
@@ -86,7 +106,10 @@ export function unboxKey(boxed: string, keys: Keys): string | null | undefined;
  * decrypt a message `content` with a `msg_key`. returns the plaintext message content or null if this is not the correct `msg_key`.
  * The purpose of `unboxBody` and `unboxKey` is so support messages that are shared then later revealed.
  */
-export function unboxBody(boxed: string, msg_key: string): string | null | undefined;
+export function unboxBody(
+    boxed: string,
+    msg_key: string,
+): string | null | undefined;
 
 /**
  * symmetrically encrypt an object with `key` (a buffer)

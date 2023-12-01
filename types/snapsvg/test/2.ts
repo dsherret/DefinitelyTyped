@@ -25,7 +25,11 @@ function tester1() {
     function drawDrop(): void {
         // var c = paper.circle(window.innerWidth * Math.random(), window.innerHeight * Math.random(), 50);
         var radius = 25;
-        var c = paper.circle(x + radius * Math.random() - radius * 2, y + radius * Math.random() - radius, radius * 2);
+        var c = paper.circle(
+            x + radius * Math.random() - radius * 2,
+            y + radius * Math.random() - radius,
+            radius * 2,
+        );
         c.animate({ r: 0 }, 1000, mina.bounce, () => c.remove());
     }
 }
@@ -51,7 +55,9 @@ function tester2() {
 
 function tester3() {
     // true
-    console.log(Snap.deg(Snap.rad(Snap.deg(Math.PI))) === Snap.deg(Snap.rad(180)));
+    console.log(
+        Snap.deg(Snap.rad(Snap.deg(Math.PI))) === Snap.deg(Snap.rad(180)),
+    );
 
     var colorString = "#BADA55";
     var rgb = Snap.getRGB(colorString);
@@ -60,7 +66,12 @@ function tester3() {
     var hsb = Snap.rgb2hsb(rgb.r, rgb.g, rgb.b);
 
     // all true
-    console.log(rgb.r === col.r && rgb.g === col.g && rgb.b === col.b && rgb.hex === col.hex);
+    console.log(
+        rgb.r === col.r &&
+            rgb.g === col.g &&
+            rgb.b === col.b &&
+            rgb.hex === col.hex,
+    );
     console.log(hsl.h === hsb.h);
     console.log(hsl.h === col.h && hsl.s === col.s && hsb.b === col.v);
     console.log(!col.error);
@@ -103,7 +114,14 @@ function tester5() {
 
     Snap.animate(sideLength, sideLength + 100, updater, 1500 /*ms*/);
     setTimeout(() => {
-        Snap.animate(sideLength + 100, 0, updater, 100, /*ms*/ easer, square.remove);
+        Snap.animate(
+            sideLength + 100,
+            0,
+            updater,
+            100,
+            /*ms*/ easer,
+            square.remove,
+        );
     }, 500);
 }
 
@@ -125,14 +143,22 @@ function tester6() {
 function tester7() {
     var paper = Snap(600, 800);
 
-    Snap.load("http://snapsvg.io/assets/images/logo.svg", (fragment: Snap.Fragment) => {
-        // viewBox retrieveal
-        let fragmentViewBox = fragment.select("svg").attr("viewBox");
-        let symbol = paper.symbol(fragmentViewBox.x, fragmentViewBox.y, fragmentViewBox.width, fragmentViewBox.height);
+    Snap.load(
+        "http://snapsvg.io/assets/images/logo.svg",
+        (fragment: Snap.Fragment) => {
+            // viewBox retrieveal
+            let fragmentViewBox = fragment.select("svg").attr("viewBox");
+            let symbol = paper.symbol(
+                fragmentViewBox.x,
+                fragmentViewBox.y,
+                fragmentViewBox.width,
+                fragmentViewBox.height,
+            );
 
-        symbol.add(fragment.selectAll("svg *"));
-        symbol.toDefs();
-    });
+            symbol.add(fragment.selectAll("svg *"));
+            symbol.toDefs();
+        },
+    );
 }
 
 // $(function () {

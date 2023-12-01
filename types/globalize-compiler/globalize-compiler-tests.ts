@@ -4,9 +4,9 @@ import * as globalizeCompiler from "globalize-compiler";
 
 let extractsArray: globalizeCompiler.FormatterOrParserFunction[];
 
-const templateFunction: (options: globalizeCompiler.CompileTemplateOptions) => string = (
+const templateFunction: (
     options: globalizeCompiler.CompileTemplateOptions,
-): string => {
+) => string = (options: globalizeCompiler.CompileTemplateOptions): string => {
     const deps: string[] = options.dependencies;
     const code: string = options.code;
     return `${deps.join(";")}${code}`;
@@ -14,9 +14,17 @@ const templateFunction: (options: globalizeCompiler.CompileTemplateOptions) => s
 
 let compileOutput: string;
 compileOutput = globalizeCompiler.compile(extractsArray);
-compileOutput = globalizeCompiler.compile({ x: () => "test", y: (x: string) => x });
-compileOutput = globalizeCompiler.compile(extractsArray, { template: templateFunction });
-compileOutput = globalizeCompiler.compile({ x: () => "test", y: (x: string) => x }, { template: templateFunction });
+compileOutput = globalizeCompiler.compile({
+    x: () => "test",
+    y: (x: string) => x,
+});
+compileOutput = globalizeCompiler.compile(extractsArray, {
+    template: templateFunction,
+});
+compileOutput = globalizeCompiler.compile(
+    { x: () => "test", y: (x: string) => x },
+    { template: templateFunction },
+);
 
 let extractOutput: globalizeCompiler.ExtractFunction;
 extractOutput = globalizeCompiler.extract("path");
@@ -26,8 +34,15 @@ extractOutput = globalizeCompiler.extract(ast);
 
 extractsArray = extractOutput(globalize);
 
-compileOutput = globalizeCompiler.compileExtracts({ extracts: extractOutput, defaultLocale: "en" });
-compileOutput = globalizeCompiler.compileExtracts({ extracts: extractOutput, defaultLocale: "en", messages: {} });
+compileOutput = globalizeCompiler.compileExtracts({
+    extracts: extractOutput,
+    defaultLocale: "en",
+});
+compileOutput = globalizeCompiler.compileExtracts({
+    extracts: extractOutput,
+    defaultLocale: "en",
+    messages: {},
+});
 compileOutput = globalizeCompiler.compileExtracts({
     extracts: extractOutput,
     defaultLocale: "en",
@@ -39,7 +54,11 @@ compileOutput = globalizeCompiler.compileExtracts({
     messages: {},
     template: templateFunction,
 });
-compileOutput = globalizeCompiler.compileExtracts({ extracts: extractOutput, defaultLocale: "en", cldr: {} });
+compileOutput = globalizeCompiler.compileExtracts({
+    extracts: extractOutput,
+    defaultLocale: "en",
+    cldr: {},
+});
 compileOutput = globalizeCompiler.compileExtracts({
     extracts: extractOutput,
     defaultLocale: "en",
@@ -61,4 +80,7 @@ compileOutput = globalizeCompiler.compileExtracts({
 });
 
 // Array extracts are also accepted
-compileOutput = globalizeCompiler.compileExtracts({ extracts: [extractOutput, extractOutput], defaultLocale: "en" });
+compileOutput = globalizeCompiler.compileExtracts({
+    extracts: [extractOutput, extractOutput],
+    defaultLocale: "en",
+});

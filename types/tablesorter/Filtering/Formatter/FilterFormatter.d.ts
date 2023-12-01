@@ -5,4 +5,7 @@ import { UIFormatter } from "./UIFormatter";
 /**
  * Provides the functionality to generate filter-controls.
  */
-export interface FilterFormatter extends Html5Formatter, UIFormatter, Select2Formatter {}
+export interface FilterFormatter
+    extends Html5Formatter,
+        UIFormatter,
+        Select2Formatter {}

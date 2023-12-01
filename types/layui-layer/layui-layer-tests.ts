@@ -52,16 +52,21 @@ layer.load(1); // 风格1的加载
 
 /********************************************************************************/
 // eg1
-layer.confirm("纳尼？", {
-    btn: ["按钮一", "按钮二", "按钮三"], // 可以无限个按钮
-    btn3(index, layero) {
-        // 按钮【按钮三】的回调
+layer.confirm(
+    "纳尼？",
+    {
+        btn: ["按钮一", "按钮二", "按钮三"], // 可以无限个按钮
+        btn3(index, layero) {
+            // 按钮【按钮三】的回调
+        },
     },
-}, (index, layero) => {
-    // 按钮【按钮一】的回调
-}, (index) => {
-    // 按钮【按钮二】的回调
-});
+    (index, layero) => {
+        // 按钮【按钮一】的回调
+    },
+    (index) => {
+        // 按钮【按钮二】的回调
+    },
+);
 
 // eg2
 layer.open({
@@ -77,12 +82,10 @@ layer.open({
     },
     btn3(index, layero) {
         // 按钮【按钮三】的回调
-
         // return false 开启该代码可禁止点击该按钮关闭
     },
     cancel() {
         // 右上角关闭回调
-
         // return false 开启该代码可禁止点击该按钮关闭
     },
 });
@@ -177,12 +180,16 @@ layer.msg("关闭后想做些什么", () => {
     // do something
 });
 // eg
-layer.msg("同上", {
-    icon: 1,
-    time: 2000, // 2秒关闭（如果不配置，默认是3秒）
-}, () => {
-    // do something
-});
+layer.msg(
+    "同上",
+    {
+        icon: 1,
+        time: 2000, // 2秒关闭（如果不配置，默认是3秒）
+    },
+    () => {
+        // do something
+    },
+);
 
 /********************************************************************************/
 // eg1
@@ -198,7 +205,7 @@ layer.close(index);
 // eg1
 layer.tips("只想提示地精准些", "#id");
 // eg 2
-$("#id").on("click", function() {
+$("#id").on("click", function () {
     const that = this;
     layer.tips("只想提示地精准些", that); // 在元素的事件回调体中，follow直接赋予this即可
 });
@@ -290,28 +297,35 @@ layer.prompt((value, index, elem) => {
     layer.close(index);
 });
 // 例子2
-layer.prompt({
-    formType: 2,
-    value: "初始值",
-    title: "请输入值",
-}, (value, index, elem) => {
-    alert(value); // 得到value
-    layer.close(index);
-});
+layer.prompt(
+    {
+        formType: 2,
+        value: "初始值",
+        title: "请输入值",
+    },
+    (value, index, elem) => {
+        alert(value); // 得到value
+        layer.close(index);
+    },
+);
 
 /********************************************************************************/
 layer.tab({
     area: ["600px", "300px"],
-    tab: [{
-        title: "TAB1",
-        content: "内容1",
-    }, {
-        title: "TAB2",
-        content: "内容2",
-    }, {
-        title: "TAB3",
-        content: "内容3",
-    }],
+    tab: [
+        {
+            title: "TAB1",
+            content: "内容1",
+        },
+        {
+            title: "TAB2",
+            content: "内容2",
+        },
+        {
+            title: "TAB3",
+            content: "内容3",
+        },
+    ],
 });
 
 /********************************************************************************/
@@ -325,7 +339,8 @@ let photos: layer.PhotosData = {
     title: "", // 相册标题
     id: 123, // 相册id
     start: 0, // 初始显示的图片序号，默认0
-    data: [ // 相册包含的图片，数组格式
+    data: [
+        // 相册包含的图片，数组格式
         {
             alt: "图片名",
             pid: 666, // 图片id

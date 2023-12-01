@@ -8,12 +8,14 @@ declare module "connect-redis" {
     import * as ioRedis from "ioredis";
     import * as redis from "redis";
 
-    function s(options: (options?: session.SessionOptions) => express.RequestHandler): s.RedisStore;
+    function s(
+        options: (options?: session.SessionOptions) => express.RequestHandler,
+    ): s.RedisStore;
 
     namespace s {
         type Client = redis.RedisClient | ioRedis.Redis | ioRedis.Cluster;
         interface RedisStore extends session.Store {
-            new(options: RedisStoreOptions): RedisStore;
+            new (options: RedisStoreOptions): RedisStore;
             client: Client;
         }
         interface RedisStoreOptions {
@@ -22,7 +24,15 @@ declare module "connect-redis" {
             port?: number | undefined;
             socket?: string | undefined;
             url?: string | undefined;
-            ttl?: number | string | ((store: RedisStore, sess: session.SessionData, sid: string) => number) | undefined;
+            ttl?:
+                | number
+                | string
+                | ((
+                      store: RedisStore,
+                      sess: session.SessionData,
+                      sid: string,
+                  ) => number)
+                | undefined;
             disableTTL?: boolean | undefined;
             disableTouch?: boolean | undefined;
             db?: number | undefined;

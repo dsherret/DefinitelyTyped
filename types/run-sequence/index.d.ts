@@ -3,7 +3,9 @@
 import gulp = require("gulp");
 
 interface IRunSequence {
-    (...streams: Array<string | string[] | gulp.TaskCallback>): NodeJS.ReadWriteStream;
+    (
+        ...streams: Array<string | string[] | gulp.TaskCallback>
+    ): NodeJS.ReadWriteStream;
 
     use(gulp: gulp.Gulp): IRunSequence;
 }

@@ -24,7 +24,11 @@ declare function crypt(
     mode: Mode,
 ): true | number[];
 
-declare function rijndaelCipher(block: number[], key: number[], encrypt: boolean): number[];
+declare function rijndaelCipher(
+    block: number[],
+    key: number[],
+    encrypt: boolean,
+): number[];
 
 export function decrypt(
     ctext: number[],

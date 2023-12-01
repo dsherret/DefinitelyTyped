@@ -11,7 +11,10 @@ export default class Viewport {
     bottom: number;
     right: number;
 
-    constructor(outer: HTMLElement, options?: { intersectionTolerance: number });
+    constructor(
+        outer: HTMLElement,
+        options?: { intersectionTolerance: number },
+    );
     intersectsRegion(region: Region): boolean;
     hasVerticalOverlap(region: Region): boolean;
     hasHorizontalOverlap(region: Region): boolean;

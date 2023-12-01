@@ -8,7 +8,11 @@ declare function writeFile(
     options: writeFile.Options | BufferEncoding,
     callback: (error?: Error) => void,
 ): void;
-declare function writeFile(filename: string, data: string | Buffer, callback: (error?: Error) => void): void;
+declare function writeFile(
+    filename: string,
+    data: string | Buffer,
+    callback: (error?: Error) => void,
+): void;
 declare function writeFile(
     filename: string,
     data: string | Buffer,
@@ -16,14 +20,18 @@ declare function writeFile(
 ): Promise<void>;
 
 declare namespace writeFile {
-    function sync(filename: string, data: string | Buffer, options?: Options | BufferEncoding): void;
+    function sync(
+        filename: string,
+        data: string | Buffer,
+        options?: Options | BufferEncoding,
+    ): void;
 
     interface Options {
         chown?:
             | {
-                uid: number;
-                gid: number;
-            }
+                  uid: number;
+                  gid: number;
+              }
             | undefined;
         /**
          * @default 'utf8'

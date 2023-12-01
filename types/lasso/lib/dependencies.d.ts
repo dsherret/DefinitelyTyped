@@ -12,10 +12,12 @@ export interface Bundle {
 
 export interface DependencyConfig {
     type?: string | undefined;
-    attributes?: {
-        integrity: string;
-        crossorigin: string;
-    } | undefined;
+    attributes?:
+        | {
+              integrity: string;
+              crossorigin: string;
+          }
+        | undefined;
     inline?: string | undefined;
     slot?: string | undefined;
     "css-slot"?: string | undefined;
@@ -38,15 +40,26 @@ export interface Dependency extends EventEmitter, DependencyConfig {
     contentType?: string | undefined;
     properties?: { [key: string]: string } | undefined;
 
-    (dependencyConfig: DependencyConfig, dirname: string, filename?: string): Dependency;
+    (
+        dependencyConfig: DependencyConfig,
+        dirname: string,
+        filename?: string,
+    ): Dependency;
     calculateKey(lassoContext: LassoContext, callback: Callback): any;
     doCalculateKey(lassoContext: LassoContext, callback: Callback): any;
     calculateKeyFromProps(): string;
-    createPackageManifest(manifest?: any, dirname?: string, filename?: string): any;
+    createPackageManifest(
+        manifest?: any,
+        dirname?: string,
+        filename?: string,
+    ): any;
     createReadStream(lassoContext: LassoContext): any;
     doGetLastModified(lassoContext: any, callback: Callback): any;
     getContentType(): any;
-    getDefaultBundleName(pageBundleName?: string, lassoContext?: LassoContext): string;
+    getDefaultBundleName(
+        pageBundleName?: string,
+        lassoContext?: LassoContext,
+    ): string;
     getDir(): string | null;
     getFileLastModified(path: string, callback: Callback): any;
     getJavaScriptSlot(): any;
@@ -88,12 +101,21 @@ export interface DependencyRegistry {
 
     addNormalizer(normalizerFunc: any): any;
     createDependency(config: any, dirname: string, filename?: string): any;
-    createRequireHandler(path: string, lassoContext: LassoContext, userOptions: any): any;
+    createRequireHandler(
+        path: string,
+        lassoContext: LassoContext,
+        userOptions: any,
+    ): any;
     createResourceTransformType(transformFunc: any): any;
     getRequireExtensionNames(): any;
     getRequireHandler(path: string, lassoContext: LassoContext): any;
     getType(type: string): any;
-    normalizeDependencies(dependencies: any[], dirname: string, filename: string, callback: Callback): any;
+    normalizeDependencies(
+        dependencies: any[],
+        dirname: string,
+        filename: string,
+        callback: Callback,
+    ): any;
     registerDefaults(): void;
     registerExtension(extension: string, type: string): void;
     registerJavaScriptType(type: string, mixins: any): void;

@@ -1,14 +1,14 @@
 /// <reference types="jquery" />
 
 /*!
-*  filename: ej.web.all.d.ts
-*  version : 20.3.0.56
-*  Copyright Syncfusion Inc. 2001 - 2022. All rights reserved.
-*  Use of this code is subject to the terms of our license.
-*  A copy of the current license can be obtained at any time by e-mailing
-*  licensing@syncfusion.com. Any infringement will be prosecuted under
-*  applicable laws.
-*/
+ *  filename: ej.web.all.d.ts
+ *  version : 20.3.0.56
+ *  Copyright Syncfusion Inc. 2001 - 2022. All rights reserved.
+ *  Use of this code is subject to the terms of our license.
+ *  A copy of the current license can be obtained at any time by e-mailing
+ *  licensing@syncfusion.com. Any infringement will be prosecuted under
+ *  applicable laws.
+ */
 declare namespace ej {
     const dataUtil: dataUtil;
     function isMobile(): boolean;
@@ -24,7 +24,12 @@ declare namespace ej {
     function addPrefix(style: string): string;
     function animationEndEvent(): string;
     function blockDefaultActions(e: any): void;
-    function buildTag(tag: string, innerHtml?: string, styles?: any, attrs?: any): JQuery;
+    function buildTag(
+        tag: string,
+        innerHtml?: string,
+        styles?: any,
+        attrs?: any,
+    ): JQuery;
     function cancelEvent(): string;
     function copyObject(): string;
     function createObject(nameSpace: string, value: any, initIn: any): JQuery;
@@ -32,7 +37,12 @@ declare namespace ej {
     function setCulture(culture: string): void;
     function getObject(element: string, model: any): any;
     function getObject(nameSpace: string, fromdata?: any): any;
-    function defineClass(className: string, constructor: any, proto: any, replace: boolean): any;
+    function defineClass(
+        className: string,
+        constructor: any,
+        proto: any,
+        replace: boolean,
+    ): any;
     function destroyWidgets(element: any): void;
     function endEvent(): string;
     function event(type: string, data: any, eventProp: any): any;
@@ -100,14 +110,28 @@ declare namespace ej {
     function widget(pluginName: string, className: string, proto: any): any;
     function avg(json: any, filedName: string): any;
     function getGuid(prefix: string): number;
-    function group(jsonArray: any, field: string, agg: string, level: number, groupDs: string): any;
+    function group(
+        jsonArray: any,
+        field: string,
+        agg: string,
+        level: number,
+        groupDs: string,
+    ): any;
     function isJSON(jsonData: string): string;
     function max(jsonArray: any, fieldName?: string, comparer?: string): any;
     function min(jsonArray: any, fieldName: string, comparer: string): any;
     function merge(first: string, second: string): any;
-    function mergeshort(jsonArray: any, fieldName: string, comparer: string): any;
+    function mergeshort(
+        jsonArray: any,
+        fieldName: string,
+        comparer: string,
+    ): any;
     function parseJSON(jsonText: string): string;
-    function parseTable(table: number, headerOption: string, headerRowIndex: string): any;
+    function parseTable(
+        table: number,
+        headerOption: string,
+        headerRowIndex: string,
+    ): any;
     function select(jsonArray: any, fields: string): any;
     function setTransition(): boolean;
     function sum(json: string, fieldName: string): string;
@@ -137,10 +161,19 @@ declare namespace ej {
         const autoInit: boolean;
         const registeredInstances: any[];
         const registeredWidgets: any[];
-        function register(pluginName: string, className: string, prototype: any): void;
+        function register(
+            pluginName: string,
+            className: string,
+            prototype: any,
+        ): void;
         function destroyAll(elements: Element): void;
         function init(element: Element): void;
-        function registerInstance(element: Element, pluginName: string, className: string, prototype: any): void;
+        function registerInstance(
+            element: Element,
+            pluginName: string,
+            className: string,
+            prototype: any,
+        ): void;
     }
 
     interface browserInfoOptions {
@@ -155,14 +188,22 @@ declare namespace ej {
         setModel(options: any, forceSet?: boolean): any;
         option(prop?: any, value?: any, forceSet?: boolean): any;
         _trigger(eventName?: string, eventProp?: any): any;
-        _on(element: JQuery, eventType?: string, handler?: (eventObject: JQueryEventObject) => any): any;
+        _on(
+            element: JQuery,
+            eventType?: string,
+            handler?: (eventObject: JQueryEventObject) => any,
+        ): any;
         _on(
             element: JQuery,
             eventType?: string,
             selector?: string,
             handler?: (eventObject: JQueryEventObject) => any,
         ): any;
-        _off(element: JQuery, eventName: string, handler?: (eventObject: JQueryEventObject) => any): any;
+        _off(
+            element: JQuery,
+            eventName: string,
+            handler?: (eventObject: JQueryEventObject) => any,
+        ): any;
         _off(
             element: JQuery,
             eventType?: string,
@@ -189,9 +230,18 @@ declare namespace ej {
     class DataManager {
         constructor(dataSource?: any, query?: ej.Query, adaptor?: any);
         setDefaultQuery(query: ej.Query): void;
-        executeQuery(query?: ej.Query, done?: any, fail?: any, always?: any): JQueryPromise<any>;
+        executeQuery(
+            query?: ej.Query,
+            done?: any,
+            fail?: any,
+            always?: any,
+        ): JQueryPromise<any>;
         executeLocal(query?: ej.Query): ej.DataManager;
-        saveChanges(changes?: Changes, key?: string, tableName?: string): JQueryDeferred<any>;
+        saveChanges(
+            changes?: Changes,
+            key?: string,
+            tableName?: string,
+        ): JQueryDeferred<any>;
         insert(data: any, tableName?: string): JQueryPromise<any>;
         remove(keyField: string, value: any, tableName?: string): any;
         update(keyField: string, value: any, tableName?: string): any;
@@ -203,7 +253,12 @@ declare namespace ej {
         static extend(prototype: any): Query;
         key(field: string): ej.Query;
         using(dataManager: ej.DataManager): ej.Query;
-        execute(dataManager: ej.DataManager, done: any, fail?: string, always?: string): any;
+        execute(
+            dataManager: ej.DataManager,
+            done: any,
+            fail?: string,
+            always?: string,
+        ): any;
         executeLocal(dataManager: ej.DataManager): ej.DataManager;
         clone(): ej.Query;
         from(tableName: any): ej.Query;
@@ -224,7 +279,11 @@ declare namespace ej {
             ignoreCase?: boolean,
             ignoreAccent?: boolean,
         ): ej.Query;
-        sortBy(fieldName: string, comparer?: ej.SortOrder, isFromGroup?: boolean): ej.Query;
+        sortBy(
+            fieldName: string,
+            comparer?: ej.SortOrder,
+            isFromGroup?: boolean,
+        ): ej.Query;
         sortByDesc(fieldName: string): ej.Query;
         group(fieldName: string): ej.Query;
         page(pageIndex: number, pageSize: number): ej.Query;
@@ -244,8 +303,19 @@ declare namespace ej {
         options: AdaptorOptions;
         extend(overrides: any): ej.Adaptor;
         processQuery(dm: ej.DataManager, query: ej.Query): any;
-        processResponse(data: any, ds: any, query: ej.Query, xhr: JQueryXHR, request?: any, changes?: Changes): any;
-        convertToQueryString(req: any, query: ej.Query, dm: ej.DataManager): JQueryParam;
+        processResponse(
+            data: any,
+            ds: any,
+            query: ej.Query,
+            xhr: JQueryXHR,
+            request?: any,
+            changes?: Changes,
+        ): any;
+        convertToQueryString(
+            req: any,
+            query: ej.Query,
+            dm: ej.DataManager,
+        ): JQueryParam;
     }
 
     interface AdaptorOptions {
@@ -264,20 +334,39 @@ declare namespace ej {
 
     class UrlAdaptor extends ej.Adaptor {
         constructor();
-        processQuery(dm: ej.DataManager, query: ej.Query, hierarchyFilters?: any): {
+        processQuery(
+            dm: ej.DataManager,
+            query: ej.Query,
+            hierarchyFilters?: any,
+        ): {
             type: string;
             url: string;
             ejPvtData: any;
             contentType?: string;
             data?: any;
         };
-        convertToQueryString(req: any, query: ej.Query, dm: ej.DataManager): JQueryParam;
-        processResponse(data: any, ds: any, query: ej.Query, xhr: JQueryXHR, request?: any, changes?: Changes): any;
+        convertToQueryString(
+            req: any,
+            query: ej.Query,
+            dm: ej.DataManager,
+        ): JQueryParam;
+        processResponse(
+            data: any,
+            ds: any,
+            query: ej.Query,
+            xhr: JQueryXHR,
+            request?: any,
+            changes?: Changes,
+        ): any;
         onGroup(e: any): void;
         onAggregates(e: any): void;
         batchRequest(dm: ej.DataManager, changes: Changes, e: any): void;
         beforeSend(dm: ej.DataManager, request: any, settings?: any): void;
-        insert(dm: ej.DataManager, data: any, tableName: string): { url: string; data: any };
+        insert(
+            dm: ej.DataManager,
+            data: any,
+            tableName: string,
+        ): { url: string; data: any };
         remove(
             dm: ej.DataManager,
             keyField: string,
@@ -294,7 +383,11 @@ declare namespace ej {
     }
     class WebMethodAdaptor extends ej.UrlAdaptor {
         constructor();
-        processQuery(dm: ej.DataManager, query: ej.Query, hierarchyFilters?: any): {
+        processQuery(
+            dm: ej.DataManager,
+            query: ej.Query,
+            hierarchyFilters?: any,
+        ): {
             type: string;
             url: string;
             ejPvtData: any;
@@ -306,9 +399,24 @@ declare namespace ej {
         constructor();
         init(adaptor: any, timeStamp: number, pageSize: number): void;
         generateKey(url: string, query: ej.Query): string;
-        processQuery(dm: ej.DataManager, query: ej.Query, hierarchyFilters?: any): any;
-        processResponse(data: any, ds: any, query: ej.Query, xhr: JQueryXHR, request?: any, changes?: Changes): any;
-        insert(dm: ej.DataManager, data: any, tableName: string): { url: string; data: any };
+        processQuery(
+            dm: ej.DataManager,
+            query: ej.Query,
+            hierarchyFilters?: any,
+        ): any;
+        processResponse(
+            data: any,
+            ds: any,
+            query: ej.Query,
+            xhr: JQueryXHR,
+            request?: any,
+            changes?: Changes,
+        ): any;
+        insert(
+            dm: ej.DataManager,
+            data: any,
+            tableName: string,
+        ): { url: string; data: any };
         remove(
             dm: ej.DataManager,
             keyField: string,
@@ -331,7 +439,11 @@ declare namespace ej {
         constructor();
         options: UrlAdaptorOptions;
         onEachWhere(filter: any, requiresCast: boolean): any;
-        onPredicate(pred: ej.Predicate, query: ej.Query, requiresCast: boolean): string;
+        onPredicate(
+            pred: ej.Predicate,
+            query: ej.Query,
+            requiresCast: boolean,
+        ): string;
         onComplexPredicate(pred: ej.Predicate, requiresCast: boolean): string;
         onWhere(filters: string[]): string;
         onEachSearch(e: any): void;
@@ -343,13 +455,33 @@ declare namespace ej {
         onAggregates(e: any): string;
         onCount(e: any): string;
         beforeSend(dm: ej.DataManager, request: any, settings?: any): void;
-        processResponse(data: any, ds: any, query: ej.Query, xhr: any, request: any, changes: Changes): {
+        processResponse(
+            data: any,
+            ds: any,
+            query: ej.Query,
+            xhr: any,
+            request: any,
+            changes: Changes,
+        ): {
             result: any;
             count: number;
         };
-        convertToQueryString(req: any, query: ej.Query, dm: ej.DataManager): JQueryParam;
-        insert(dm: ej.DataManager, data: any, tableName: string): { url: string; data: any };
-        remove(dm: ej.DataManager, keyField: string, value: any, tableName: string): { url: string; type: string };
+        convertToQueryString(
+            req: any,
+            query: ej.Query,
+            dm: ej.DataManager,
+        ): JQueryParam;
+        insert(
+            dm: ej.DataManager,
+            data: any,
+            tableName: string,
+        ): { url: string; data: any };
+        remove(
+            dm: ej.DataManager,
+            keyField: string,
+            value: any,
+            tableName: string,
+        ): { url: string; type: string };
         update(
             dm: ej.DataManager,
             keyField: string,
@@ -387,7 +519,11 @@ declare namespace ej {
 
     class WebApiAdaptor extends ej.ODataAdaptor {
         constructor();
-        insert(dm: ej.DataManager, data: any, tableName?: string): { url: string; type: string; data: any };
+        insert(
+            dm: ej.DataManager,
+            data: any,
+            tableName?: string,
+        ): { url: string; type: string; data: any };
         remove(
             dm: ej.DataManager,
             value: any,
@@ -400,7 +536,14 @@ declare namespace ej {
             keyField?: string,
             tableName?: string,
         ): { url: string; type: string; data: any; accept: string };
-        processResponse(data: any, ds: any, query: ej.Query, xhr: any, request: any, changes: Changes): {
+        processResponse(
+            data: any,
+            ds: any,
+            query: ej.Query,
+            xhr: any,
+            request: any,
+            changes: Changes,
+        ): {
             result: any;
             count: number;
         };
@@ -413,14 +556,24 @@ declare namespace ej {
         onEachSearch(e: any): void;
         onSearch(e: any): string;
         beforeSend(dm: ej.DataManager, request: any, settings?: any): void;
-        processQuery(ds: any, query: ej.Query): {
+        processQuery(
+            ds: any,
+            query: ej.Query,
+        ): {
             type: string;
             url: string;
             ejPvtData: any;
             contentType?: string;
             data?: any;
         };
-        processResponse(data: any, ds: any, query: ej.Query, xhr: any, request: any, changes: Changes): {
+        processResponse(
+            data: any,
+            ds: any,
+            query: ej.Query,
+            xhr: any,
+            request: any,
+            changes: Changes,
+        ): {
             result: any;
             count: number;
         };
@@ -461,13 +614,27 @@ declare namespace ej {
         onSkip(ds: any, e: any): any;
         onSelect(ds: any, e: any): any;
         insert(dm: ej.DataManager, data: any, tableName?: string): any;
-        remove(dm: ej.DataManager, keyField: string, value: any, tableName: string): any;
-        update(dm: ej.DataManager, keyField: string, value: any, tableName: string): any;
+        remove(
+            dm: ej.DataManager,
+            keyField: string,
+            value: any,
+            tableName: string,
+        ): any;
+        update(
+            dm: ej.DataManager,
+            keyField: string,
+            value: any,
+            tableName: string,
+        ): any;
     }
     class ForeignKeyAdaptor extends ej.JsonAdaptor {
         constructor(data: any, type: string);
         processQuery(ds: any, query: ej.Query): any;
-        insert(dm: ej.DataManager, data: any, tableName: string): { url: string; data: any };
+        insert(
+            dm: ej.DataManager,
+            data: any,
+            tableName: string,
+        ): { url: string; data: any };
         update(
             dm: ej.DataManager,
             keyField: string,
@@ -479,7 +646,11 @@ declare namespace ej {
         constructor();
         batchRequest(dm: ej.DataManager, changes: Changes, e: any): void;
         beforeSend(dm: ej.DataManager, request: any, settings?: any): void;
-        insert(dm: ej.DataManager, data: any, tableName: string): { url: string; data: any };
+        insert(
+            dm: ej.DataManager,
+            data: any,
+            tableName: string,
+        ): { url: string; data: any };
         remove(
             dm: ej.DataManager,
             keyField: string,
@@ -494,7 +665,12 @@ declare namespace ej {
         ): { type: string; url: string; data: any };
     }
     class TableModel {
-        constructor(name: string, jsonArray: any[], dataManager: ej.DataManager, modelComputed: any);
+        constructor(
+            name: string,
+            jsonArray: any[],
+            dataManager: ej.DataManager,
+            modelComputed: any,
+        );
         on(eventName: string, handler: any): void;
         off(eventName: string, handler: any): void;
         setDataManager(dataManager: DataManager): void;
@@ -542,8 +718,20 @@ declare namespace ej {
             ignoreCase: boolean,
             ignoreAccent?: boolean,
         );
-        and(field: string, operator: any, value: any, ignoreCase: boolean, ignoreAccent?: boolean): ej.Predicate;
-        or(field: string, operator: any, value: any, ignoreCase: boolean, ignoreAccent?: boolean): ej.Predicate;
+        and(
+            field: string,
+            operator: any,
+            value: any,
+            ignoreCase: boolean,
+            ignoreAccent?: boolean,
+        ): ej.Predicate;
+        or(
+            field: string,
+            operator: any,
+            value: any,
+            ignoreCase: boolean,
+            ignoreAccent?: boolean,
+        ): ej.Predicate;
         or(predicate: any[]): any;
         validate(record: any): boolean;
         toJSON(): {
@@ -561,12 +749,24 @@ declare namespace ej {
         mergeSort(jsonArray: any[], fieldName?: string, comparer?: any): any[];
         max(jsonArray: any[], fieldName?: string, comparer?: string): any[];
         min(jsonArray: any[], fieldName: string, comparer: string): any[];
-        distinct(jsonArray: any[], fieldName?: string, requiresCompleteRecord?: any): any[];
+        distinct(
+            jsonArray: any[],
+            fieldName?: string,
+            requiresCompleteRecord?: any,
+        ): any[];
         sum(json: any, fieldName: string): number;
         avg(json: any, fieldName: string): number;
         select(jsonArray: any[], fieldName: string, fields: string): any[];
-        group(jsonArray: any[], field: string, /* internal */ level: number): any[];
-        parseTable(table: string, headerOption: ej.headerOption, headerRowIndex: number): any;
+        group(
+            jsonArray: any[],
+            field: string,
+            /* internal */ level: number,
+        ): any[];
+        parseTable(
+            table: string,
+            headerOption: ej.headerOption,
+            headerRowIndex: number,
+        ): any;
     }
     interface AjaxSettings {
         type?: string;
@@ -1131,7 +1331,11 @@ declare namespace ej {
          * @param {number} Specifies the animation speed when scrolling, if animation is enabled.
          * @returns {void}
          */
-        scrollX(pixel: number | string, disableAnimation: boolean, animationSpeed: number): void;
+        scrollX(
+            pixel: number | string,
+            disableAnimation: boolean,
+            animationSpeed: number,
+        ): void;
 
         /** Vertical scroller moves to given pixel from its origin position. We can also specify the animation speed,in which the scroller has to move while re-positioning it.
          * @param {number|string} Vertical scroller moves to the specified pixel.
@@ -1139,7 +1343,11 @@ declare namespace ej {
          * @param {number} Specifies the animation speed when scrolling, if animation is enabled.
          * @returns {void}
          */
-        scrollY(pixel: number | string, disableAnimation: boolean, animationSpeed: number): void;
+        scrollY(
+            pixel: number | string,
+            disableAnimation: boolean,
+            animationSpeed: number,
+        ): void;
     }
     export namespace Scroller {
         export interface Model {
@@ -1405,7 +1613,12 @@ declare namespace ej {
          * @param {boolean} Enable or disable the AJAX request to the added panel
          * @returns {void}
          */
-        addItem(header_name: string, content: string, index: number, isAjaxReq: boolean): void;
+        addItem(
+            header_name: string,
+            content: string,
+            index: number,
+            isAjaxReq: boolean,
+        ): void;
 
         /** This method used to collapse the all the expanded items in accordion at a time.
          * @returns {void}
@@ -4227,8 +4440,7 @@ declare namespace ej {
         computeFormula(Formula: string): string;
     }
     export namespace Calculate {
-        export interface Model {
-        }
+        export interface Model {}
     }
 
     class CheckBox extends ej.Widget {
@@ -9318,7 +9530,11 @@ declare namespace ej {
          * @param {number} New index position of the given source node.
          * @returns {void}
          */
-        moveNode(sourceNode: string | any, destinationNode: string | any, index: number): void;
+        moveNode(
+            sourceNode: string | any,
+            destinationNode: string | any,
+            index: number,
+        ): void;
 
         /** Removes all the nodes in the DropDownTree.
          * @returns {void}
@@ -10275,14 +10491,11 @@ declare namespace ej {
         getValue(): number;
     }
 
-    class NumericTextbox extends Editor {
-    }
+    class NumericTextbox extends Editor {}
 
-    class CurrencyTextbox extends Editor {
-    }
+    class CurrencyTextbox extends Editor {}
 
-    class PercentageTextbox extends Editor {
-    }
+    class PercentageTextbox extends Editor {}
     export namespace Editor {
         export interface Model {
             /** Specifies the currency symbol of currency textbox, used when the user wants to overwrite the currency symbol commonly instead of the current culture symbol.
@@ -11642,7 +11855,12 @@ declare namespace ej {
          * @param {any} name of the event
          * @returns {void}
          */
-        show(locationX: number, locationY: number, targetElement: any, event: any): void;
+        show(
+            locationX: number,
+            locationY: number,
+            targetElement: any,
+            event: any,
+        ): void;
 
         /** Show the specific items in Menu control.
          * @param {string|any[]} ItemID of the Menu item to be shown
@@ -13250,7 +13468,11 @@ declare namespace ej {
          * @param {any} contentGroup is used in the object
          * @returns {void}
          */
-        updateGroup(tabIndex: number, groupId: string, contentGroup?: any): void;
+        updateGroup(
+            tabIndex: number,
+            groupId: string,
+            contentGroup?: any,
+        ): void;
 
         /** Update option in existing Backstage.
          * @param {number} index to the backstage item
@@ -13266,7 +13488,12 @@ declare namespace ej {
          * @param {number} sub group index in the ribbon group. This is optional. If the value is not given, all content groups will be removed.
          * @returns {void}
          */
-        removeTabGroupContent(tabIndex: number, groupText: string, contentIndex?: number, subGroupIndex?: number): void;
+        removeTabGroupContent(
+            tabIndex: number,
+            groupText: string,
+            contentIndex?: number,
+            subGroupIndex?: number,
+        ): void;
 
         /** Remove option from Backstage.
          * @param {number} index to the backstage item
@@ -14255,7 +14482,11 @@ declare namespace ej {
          * @param {string} optional Pass add/remove action to be performed. By default "add" action will perform
          * @returns {void}
          */
-        columns(columndetails: any[] | string, keyvalue: any[] | string, action?: string): void;
+        columns(
+            columndetails: any[] | string,
+            keyvalue: any[] | string,
+            action?: string,
+        ): void;
 
         /** Destroy the Kanban widget all events bound using this._on will be unbind automatically and bring the control to pre-init state.
          * @returns {void}
@@ -16406,7 +16637,11 @@ declare namespace ej {
          * @param {boolean} Boolean value to specify whether the argument is textNode or not, this is optional.
          * @returns {void}
          */
-        executeCommand(cmdName: string, args: any, textnodeType?: boolean): void;
+        executeCommand(
+            cmdName: string,
+            args: any,
+            textnodeType?: boolean,
+        ): void;
 
         /** Focuses the RTE control.
          * @returns {void}
@@ -18212,7 +18447,13 @@ declare namespace ej {
          * @param {string} specifies id of tab, this is optional.
          * @returns {void}
          */
-        addItem(URL: string, displayLabel: string, index: number, cssClass: string, id: string): void;
+        addItem(
+            URL: string,
+            displayLabel: string,
+            index: number,
+            cssClass: string,
+            id: string,
+        ): void;
 
         /** To disable the tab control.
          * @returns {void}
@@ -20073,7 +20314,11 @@ declare namespace ej {
          * @param {boolean} Parent node will be prevented from auto expanding
          * @returns {void}
          */
-        addNode(newNodeText: string | any, target: string | any, preventTargetExpand: boolean): void;
+        addNode(
+            newNodeText: string | any,
+            target: string | any,
+            preventTargetExpand: boolean,
+        ): void;
 
         /** To add a collection of nodes in TreeView. If target tree node is specified, then the given nodes are added as child of target tree node, otherwise nodes are added in TreeView.
          * @param {any|any[]} New node details in JSON object
@@ -20081,7 +20326,11 @@ declare namespace ej {
          * @param {boolean} Parent node will be prevented from auto expanding
          * @returns {void}
          */
-        addNodes(collection: any | any[], target: string | any, preventTargetExpand: boolean): void;
+        addNodes(
+            collection: any | any[],
+            target: string | any,
+            preventTargetExpand: boolean,
+        ): void;
 
         /** To check all the nodes in TreeView.
          * @returns {void}
@@ -20321,7 +20570,11 @@ declare namespace ej {
          * @param {number} New index position of given source node
          * @returns {void}
          */
-        moveNode(sourceNode: string | any, destinationNode: string | any, index: number): void;
+        moveNode(
+            sourceNode: string | any,
+            destinationNode: string | any,
+            index: number,
+        ): void;
 
         /** To refresh the TreeView
          * @returns {void}
@@ -22538,7 +22791,12 @@ declare namespace ej {
          * @param {any[]} optionalPass the array of the gridIds to be filtered
          * @returns {void}
          */
-        export(action?: string, serverEvent?: string, multipleExport?: boolean, gridIds?: any[]): void;
+        export(
+            action?: string,
+            serverEvent?: string,
+            multipleExport?: boolean,
+            gridIds?: any[],
+        ): void;
 
         /** Send a filtering request to filter one column in grid.
          * @param {any[]|string} Pass the field name of the column
@@ -27751,7 +28009,9 @@ declare namespace ej {
             /** Alignment of sunburst datalabel
              * @default {Angle. See DatalabelAlignment}
              */
-            labelRotationMode?: ej.datavisualization.Sunburst.SunburstLabelRotationMode | string;
+            labelRotationMode?:
+                | ej.datavisualization.Sunburst.SunburstLabelRotationMode
+                | string;
 
             /** Options for customizing the data label font.
              */
@@ -27770,7 +28030,9 @@ declare namespace ej {
             /** Datalabel overflow mode
              * @default {Trim. See LabelOverflowMode}
              */
-            labelOverflowMode?: ej.datavisualization.Sunburst.SunburstLabelOverflowMode | string;
+            labelOverflowMode?:
+                | ej.datavisualization.Sunburst.SunburstLabelOverflowMode
+                | string;
         }
 
         export interface TitleFont {
@@ -27840,7 +28102,9 @@ declare namespace ej {
             /** Sub title text alignment
              * @default {far. See TextAlignment}
              */
-            textAlignment?: ej.datavisualization.Sunburst.SunburstAlignment | string;
+            textAlignment?:
+                | ej.datavisualization.Sunburst.SunburstAlignment
+                | string;
 
             /** Options for customizing the font of sub title.
              */
@@ -27860,7 +28124,9 @@ declare namespace ej {
             /** Title text alignment
              * @default {center. See TextAlignment}
              */
-            textAlignment?: ej.datavisualization.Sunburst.SunburstAlignment | string;
+            textAlignment?:
+                | ej.datavisualization.Sunburst.SunburstAlignment
+                | string;
 
             /** Options for customizing the font of sunburst title.
              */
@@ -28041,7 +28307,9 @@ declare namespace ej {
             /** Alignment of the legend title.
              * @default {center. See Alignment}
              */
-            textAlignment?: ej.datavisualization.Sunburst.SunburstAlignment | string;
+            textAlignment?:
+                | ej.datavisualization.Sunburst.SunburstAlignment
+                | string;
         }
 
         export interface Legend {
@@ -28053,12 +28321,16 @@ declare namespace ej {
             /** Interactive action of legend items.
              * @default {toggleSegmentVisibility. See Alignment}
              */
-            clickAction?: ej.datavisualization.Sunburst.SunburstClickAction | string;
+            clickAction?:
+                | ej.datavisualization.Sunburst.SunburstClickAction
+                | string;
 
             /** Horizontal alignment of the legend.
              * @default {Center. See Alignment}
              */
-            alignment?: ej.datavisualization.Sunburst.SunburstAlignment | string;
+            alignment?:
+                | ej.datavisualization.Sunburst.SunburstAlignment
+                | string;
 
             /** Options for customizing the legend border.
              */
@@ -28095,7 +28367,9 @@ declare namespace ej {
              * **custom** as value to this property.
              * @default {Bottom. See Position}
              */
-            position?: ej.datavisualization.Sunburst.SunburstLegendPosition | string;
+            position?:
+                | ej.datavisualization.Sunburst.SunburstLegendPosition
+                | string;
 
             /** Shape of the legend items.
              * @default {None. See Shape}
@@ -28142,12 +28416,16 @@ declare namespace ej {
             /** Toolbar horizontal alignment
              * @default {right. See Alignment}
              */
-            toolbarHorizontalAlignment?: ej.datavisualization.Sunburst.SunburstHorizontalAlignment | string;
+            toolbarHorizontalAlignment?:
+                | ej.datavisualization.Sunburst.SunburstHorizontalAlignment
+                | string;
 
             /** Toolbar vertical alignment
              * @default {top. See Alignment}
              */
-            toolbarVerticalAlignment?: ej.datavisualization.Sunburst.SunburstVerticalAlignment | string;
+            toolbarVerticalAlignment?:
+                | ej.datavisualization.Sunburst.SunburstVerticalAlignment
+                | string;
         }
     }
     namespace Sunburst {
@@ -28639,7 +28917,9 @@ declare namespace ej {
 
             /** Triggers before the pivot engine starts to populate.
              */
-            beforePivotEnginePopulate?(e: BeforePivotEnginePopulateEventArgs): void;
+            beforePivotEnginePopulate?(
+                e: BeforePivotEnginePopulateEventArgs,
+            ): void;
 
             /** Triggers when click action is performed over a value cell.
              */
@@ -28659,7 +28939,9 @@ declare namespace ej {
 
             /** Triggers when the hyperlink of column header is clicked.
              */
-            columnHeaderHyperlinkClick?(e: ColumnHeaderHyperlinkClickEventArgs): void;
+            columnHeaderHyperlinkClick?(
+                e: ColumnHeaderHyperlinkClickEventArgs,
+            ): void;
 
             /** Triggers after performing drill operation in the PivotGrid.
              */
@@ -28691,7 +28973,9 @@ declare namespace ej {
 
             /** Triggers when the hyperlink of summary cell is clicked.
              */
-            summaryCellHyperlinkClick?(e: SummaryCellHyperlinkClickEventArgs): void;
+            summaryCellHyperlinkClick?(
+                e: SummaryCellHyperlinkClickEventArgs,
+            ): void;
 
             /** Triggers when the hyperlink of value cell is clicked.
              */
@@ -29576,7 +29860,10 @@ declare namespace ej {
 
     class PivotSchemaDesigner extends ej.Widget {
         static fn: PivotSchemaDesigner;
-        constructor(element: JQuery | Element, options?: PivotSchemaDesigner.Model);
+        constructor(
+            element: JQuery | Element,
+            options?: PivotSchemaDesigner.Model,
+        );
         static Locale: any;
         model: PivotSchemaDesigner.Model;
         defaults: PivotSchemaDesigner.Model;
@@ -31789,7 +32076,9 @@ declare namespace ej {
 
             /** Triggers before populating the pivot engine on operating in client mode.
              */
-            beforePivotEnginePopulate?(e: BeforePivotEnginePopulateEventArgs): void;
+            beforePivotEnginePopulate?(
+                e: BeforePivotEnginePopulateEventArgs,
+            ): void;
 
             /** Triggers when PivotGauge started loading at client-side.
              */
@@ -32507,7 +32796,11 @@ declare namespace ej {
          * @param {string|number} Pass the id of an appointment, in case if a single appointment needs to be exported. Otherwise, it takes the null value.
          * @returns {void}
          */
-        exportSchedule(action: string, serverEvent: string, id: string | number): void;
+        exportSchedule(
+            action: string,
+            serverEvent: string,
+            id: string | number,
+        ): void;
 
         /** Exports the appointments from the Schedule control and saves it in a Excel file.
          * @param {string} It refers the controller action name to redirect. (For MVC)
@@ -34289,7 +34582,10 @@ declare namespace ej {
 
     class RecurrenceEditor extends ej.Widget {
         static fn: RecurrenceEditor;
-        constructor(element: JQuery | Element, options?: RecurrenceEditor.Model);
+        constructor(
+            element: JQuery | Element,
+            options?: RecurrenceEditor.Model,
+        );
         static Locale: any;
         model: RecurrenceEditor.Model;
         defaults: RecurrenceEditor.Model;
@@ -34463,7 +34759,11 @@ declare namespace ej {
          * @param {boolean} optionalPass the multiple exporting value as true/false
          * @returns {void}
          */
-        export(action: string, serverEvent?: string, multipleExport?: boolean): void;
+        export(
+            action: string,
+            serverEvent?: string,
+            multipleExport?: boolean,
+        ): void;
 
         /** Sends filtering request to filter a column in Gantt dynamically.
          * @param {string} Pass the field name of the column.
@@ -34540,7 +34840,10 @@ declare namespace ej {
          * @param {boolean} Defines that we need to preserve the previously selected cells of not
          * @returns {void}
          */
-        selectCells(Indexes: any[], preservePreviousSelectedCell: boolean): void;
+        selectCells(
+            Indexes: any[],
+            preservePreviousSelectedCell: boolean,
+        ): void;
 
         /** To select multiple rows dynamically.
          * @param {any[]} array of row indexes to select
@@ -34592,7 +34895,12 @@ declare namespace ej {
          * @param {number} Offset value of dependency task.
          * @returns {void}
          */
-        updateDependency(fromTaskId: number, toTaskId: number, predecessorType: string, offset: number): void;
+        updateDependency(
+            fromTaskId: number,
+            toTaskId: number,
+            predecessorType: string,
+            offset: number,
+        ): void;
 
         /** To update the value of Gantt record by using it's task id value.
          * @param {any} object with modified field values and current task id value
@@ -36760,7 +37068,10 @@ declare namespace ej {
          * @param {boolean} Defines that we need to preserve the previously selected cells or not
          * @returns {void}
          */
-        selectCells(Indexes: any[], preservePreviousSelectedCell: boolean): void;
+        selectCells(
+            Indexes: any[],
+            preservePreviousSelectedCell: boolean,
+        ): void;
 
         /** To open the dialog to add new record/row in TreeGrid.
          * @returns {void}
@@ -39330,7 +39641,10 @@ declare namespace ej {
 
     class NavigationDrawer extends ej.Widget {
         static fn: NavigationDrawer;
-        constructor(element: JQuery | Element, options?: NavigationDrawer.Model);
+        constructor(
+            element: JQuery | Element,
+            options?: NavigationDrawer.Model,
+        );
         static Locale: any;
         model: NavigationDrawer.Model;
         defaults: NavigationDrawer.Model;
@@ -40741,14 +41055,20 @@ declare namespace ej {
          * @param {Spreadsheet.CellIndex} Pass the Object "CellIndex"
          * @returns {void}
          */
-        deleteShiftLeft(startCell: Spreadsheet.CellIndex, endCell: Spreadsheet.CellIndex): void;
+        deleteShiftLeft(
+            startCell: Spreadsheet.CellIndex,
+            endCell: Spreadsheet.CellIndex,
+        ): void;
 
         /** This method is used to delete the selected cells and shift the remaining cells up.
          * @param {Spreadsheet.CellIndex} Pass the Object "CellIndex"
          * @param {Spreadsheet.CellIndex} Pass the Object "CellIndex"
          * @returns {void}
          */
-        deleteShiftUp(startCell: Spreadsheet.CellIndex, endCell: Spreadsheet.CellIndex): void;
+        deleteShiftUp(
+            startCell: Spreadsheet.CellIndex,
+            endCell: Spreadsheet.CellIndex,
+        ): void;
 
         /** This method is used to edit data in the specified range of cells based on its corresponding rangeSettings.
          * @param {string} Pass the defined rangeSettings property name.
@@ -40791,7 +41111,12 @@ declare namespace ej {
          * @param {number} Pass the end column index.
          * @returns {String}
          */
-        getAlphaRange(sRIndex: number, sCIndex: number, eRIndex: number, eCIndex: number): String;
+        getAlphaRange(
+            sRIndex: number,
+            sCIndex: number,
+            eRIndex: number,
+            eCIndex: number,
+        ): String;
 
         /** This method is used to get the cell element based on specified row and column index in the Spreadsheet.
          * @param {number} Pass the row index.
@@ -40837,7 +41162,11 @@ declare namespace ej {
          * @param {boolean} Optional. Pass {{'`true`' | markdownify}}, if you want to skip the hidden rows.
          * @returns {HTMLElement}
          */
-        getRange(range: string, sheetIdx: number, skipHiddenRow?: boolean): HTMLElement;
+        getRange(
+            range: string,
+            sheetIdx: number,
+            skipHiddenRow?: boolean,
+        ): HTMLElement;
 
         /** This method is used to get the data in specified range in Spreadsheet.
          * @param {any} Optional. Pass the range, property, sheetIdx, valueOnly in options
@@ -40951,14 +41280,20 @@ declare namespace ej {
          * @param {Spreadsheet.CellIndex} Pass the Object "CellIndex"
          * @returns {void}
          */
-        insertShiftBottom(startCell: Spreadsheet.CellIndex, endCell: Spreadsheet.CellIndex): void;
+        insertShiftBottom(
+            startCell: Spreadsheet.CellIndex,
+            endCell: Spreadsheet.CellIndex,
+        ): void;
 
         /** This method is used to insert cells in the selected or specified range and shift remaining cells to right.
          * @param {Spreadsheet.CellIndex} Pass the Object "CellIndex"
          * @param {Spreadsheet.CellIndex} Pass the Object "CellIndex"
          * @returns {void}
          */
-        insertShiftRight(startCell: Spreadsheet.CellIndex, endCell: Spreadsheet.CellIndex): void;
+        insertShiftRight(
+            startCell: Spreadsheet.CellIndex,
+            endCell: Spreadsheet.CellIndex,
+        ): void;
 
         /** This method is used to import excel file manually by using form data.
          * @param {Spreadsheet.ImportingOptions} Pass the form data object to import files manually.
@@ -40999,7 +41334,10 @@ declare namespace ej {
          * @param {Spreadsheet.CellIndex} Pass the Object "CellIndex"
          * @returns {void}
          */
-        performSelection(startCell: Spreadsheet.CellIndex, endCell: Spreadsheet.CellIndex): void;
+        performSelection(
+            startCell: Spreadsheet.CellIndex,
+            endCell: Spreadsheet.CellIndex,
+        ): void;
 
         /** This method is used to protect or unprotect active sheet.
          * @param {boolean} Optional. By default is {{'`true`' | markdownify}}. If it is {{'`false`' | markdownify}} active sheet is unprotected.
@@ -41107,7 +41445,11 @@ declare namespace ej {
          * @param {number} If we pass cellAddress then which sheet to be navigate in the applied link.
          * @returns {void}
          */
-        setHyperlink(range: string | any[], link: Spreadsheet.LinkOptions, sheetIdx: number): void;
+        setHyperlink(
+            range: string | any[],
+            link: Spreadsheet.LinkOptions,
+            sheetIdx: number,
+        ): void;
 
         /** This method is used to set the readonly option for the specified range.
          * @param {string|any[]} Pass the range.
@@ -41235,7 +41577,11 @@ declare namespace ej {
          * @param {boolean} Optional. It specifies whether to skip element processing or not.
          * @returns {void}
          */
-        updateUniqueData(data: Spreadsheet.DataOptions, range?: any[] | string, skipCell?: boolean): void;
+        updateUniqueData(
+            data: Spreadsheet.DataOptions,
+            range?: any[] | string,
+            skipCell?: boolean,
+        ): void;
 
         /** This method is used to wrap the selected range of cells in the Spreadsheet.
          * @param {any[]|string} Optional. If the range is specified, then it will update wrap in the specified  range else it will use the current selected range.
@@ -41435,7 +41781,11 @@ declare namespace ej {
              * @param {number} Optional. Pass sheet index.
              * @returns {void}
              */
-            addCellTypes(range: string, settings: Spreadsheet.CellTypeSettings, sheetIdx: number): void;
+            addCellTypes(
+                range: string,
+                settings: Spreadsheet.CellTypeSettings,
+                sheetIdx: number,
+            ): void;
 
             /** This method is used to remove cell type from the specified range of cells in the Spreadsheet.
              * @param {string|any[]} Pass the range where you want remove cell type.
@@ -41508,7 +41858,10 @@ declare namespace ej {
              * @param {ej.datavisualization.Chart.Theme} Pass the chart theme which want to update.
              * @returns {void}
              */
-            changeTheme(chartId: string, theme: ej.datavisualization.Chart.Theme): void;
+            changeTheme(
+                chartId: string,
+                theme: ej.datavisualization.Chart.Theme,
+            ): void;
 
             /** This method is used to change the type of the chart in the Spreadsheet.
              * @param {string} Pass the chart id.
@@ -41524,14 +41877,22 @@ declare namespace ej {
              * @param {string} Legend range of chart data.
              * @returns {void}
              */
-            changeDataRange(chartId: string, xRange: string, yRange: string, lRange: string): void;
+            changeDataRange(
+                chartId: string,
+                xRange: string,
+                yRange: string,
+                lRange: string,
+            ): void;
 
             /** This method is used to create a chart for specified range in Spreadsheet.
              * @param {string|any[]} Optional. If range is specified, it will create chart for the specified range else it will use the current selected range.
              * @param {Spreadsheet.ChartOptions} Optional.
              * @returns {void}
              */
-            createChart(range: string | any[], options: Spreadsheet.ChartOptions): void;
+            createChart(
+                range: string | any[],
+                options: Spreadsheet.ChartOptions,
+            ): void;
 
             /** This method is used to refresh the chart in the Spreadsheet.
              * @param {string} To pass the chart Id.
@@ -41553,7 +41914,10 @@ declare namespace ej {
              * @param {ej.Spreadsheet.ChartProperties} Pass chart element value which you want to update.
              * @returns {void}
              */
-            updateChartElement(chartId: string, value: ej.Spreadsheet.ChartProperties): void;
+            updateChartElement(
+                chartId: string,
+                value: ej.Spreadsheet.ChartProperties,
+            ): void;
 
             /** This method is used switch row to columns and vice versa for chart in the Spreadsheet. So that the data is displayed in the chart the way you want.
              * @param {string} Pass the chart id.
@@ -41586,7 +41950,11 @@ declare namespace ej {
              * @param {boolean} Optional. Pass {{'`true`' | markdownify}}, if you want to skip the hidden rows data.
              * @returns {void}
              */
-            deleteComment(range: any[] | string, sheetIdx: number, skipHiddenRow: boolean): void;
+            deleteComment(
+                range: any[] | string,
+                sheetIdx: number,
+                skipHiddenRow: boolean,
+            ): void;
 
             /** This method is used to edit the comment in the target Cell in Spreadsheet.
              * @param {Spreadsheet.CellIndex} Optional.
@@ -41617,7 +41985,12 @@ declare namespace ej {
              * @param {boolean} Optional. Pass {{'`true`' | markdownify}} to show the user name
              * @returns {void}
              */
-            setComment(range: string | any[], data: string, showEditPanel: boolean, showUserName: boolean): void;
+            setComment(
+                range: string | any[],
+                data: string,
+                showEditPanel: boolean,
+                showUserName: boolean,
+            ): void;
 
             /** This method is used to show all the comments in the Spreadsheet.
              * @returns {void}
@@ -41639,7 +42012,12 @@ declare namespace ej {
              * @param {number} Specifies the item index
              * @returns {void}
              */
-            addItem(target: ej.Spreadsheet.ContextMenuType, itemColl: any[], operation: string, itemIdx: number): void;
+            addItem(
+                target: ej.Spreadsheet.ContextMenuType,
+                itemColl: any[],
+                operation: string,
+                itemIdx: number,
+            ): void;
 
             /** This method is used to change data source in the context menu.
              * @param {string} Specifies the context menu type to bind the data source.
@@ -41690,7 +42068,10 @@ declare namespace ej {
              * @param {any|any[]} Pass the destination range to drop the dragged cells.
              * @returns {void}
              */
-            moveRangeTo(sourceRange: any | any[], destinationRange: any | any[]): void;
+            moveRangeTo(
+                sourceRange: any | any[],
+                destinationRange: any | any[],
+            ): void;
         }
 
         export interface AutoFillObject {
@@ -41765,7 +42146,12 @@ declare namespace ej {
              * @param {number} Optional. Pass the index of the sheet.
              * @returns {any|string|any[]}
              */
-            getPropertyValue(rowIdx: number, colIdx: number, prop: string, sheetIdx: number): any | string | any[];
+            getPropertyValue(
+                rowIdx: number,
+                colIdx: number,
+                prop: string,
+                sheetIdx: number,
+            ): any | string | any[];
 
             /** This method is used to get the property value in specified cell in Spreadsheet.
              * @param {HTMLElement} Pass the cell element to get property value.
@@ -41775,7 +42161,11 @@ declare namespace ej {
              * @param {number} Pass the index of sheet.
              * @returns {any|string|any[]}
              */
-            getPropertyValueByElem(elem: HTMLElement, property: string, sheetIdx: number): any | string | any[];
+            getPropertyValueByElem(
+                elem: HTMLElement,
+                property: string,
+                sheetIdx: number,
+            ): any | string | any[];
 
             /** This method is used to save the edited cell value in the Spreadsheet.
              * @returns {void}
@@ -41787,7 +42177,10 @@ declare namespace ej {
              * @param {string|number} Pass the cell value.
              * @returns {void}
              */
-            updateCell(cell: Spreadsheet.CellIndex, value: string | number): void;
+            updateCell(
+                cell: Spreadsheet.CellIndex,
+                value: string | number,
+            ): void;
 
             /** This method is used to update a particular cell value and its format in the Spreadsheet.
              * @param {Spreadsheet.CellIndex} Pass Object CellIndex.
@@ -41810,7 +42203,12 @@ declare namespace ej {
              * @param {number} Pass sheet index.
              * @returns {void}
              */
-            updateValue(aRange: string, val: string | number, formatClass: string, sheetIdx: number): void;
+            updateValue(
+                aRange: string,
+                val: string | number,
+                formatClass: string,
+                sheetIdx: number,
+            ): void;
         }
 
         export interface XLExport {
@@ -41962,7 +42360,11 @@ declare namespace ej {
              * @param {string} Pass the type for custom format.
              * @returns {void}
              */
-            addCustomFormatSpecifier(name: string, formatSpecifier: string, type: string): void;
+            addCustomFormatSpecifier(
+                name: string,
+                formatSpecifier: string,
+                type: string,
+            ): void;
 
             /** This method is used to add the font to the Ribbon font family dropdown.
              * @param {string} Font name which needs to add into the font family option.
@@ -41975,7 +42377,10 @@ declare namespace ej {
              * @param {Spreadsheet.NumberFormatOptions} Pass Object NumberFormatOptions.
              * @returns {void}
              */
-            addNewCustomStyle(styleName: string, options: Spreadsheet.NumberFormatOptions): void;
+            addNewCustomStyle(
+                styleName: string,
+                options: Spreadsheet.NumberFormatOptions,
+            ): void;
 
             /** This method is used to apply the custom cell style in the specified range.
              * @param {string} Pass the style name.
@@ -41995,7 +42400,10 @@ declare namespace ej {
              * @param {string|any[]} Optional. If the range is specified, then it will create table in the specified range else it will use the current selected range.
              * @returns {string}
              */
-            createTable(tableObject: Spreadsheet.TableOptions, range: string | any[]): string;
+            createTable(
+                tableObject: Spreadsheet.TableOptions,
+                range: string | any[],
+            ): string;
 
             /** This method is used to delete the added custom cell style in spreadsheet.
              * @param {string} Pass the cell style name
@@ -42008,7 +42416,10 @@ declare namespace ej {
              * @param {string} Pass the range to format cells.
              * @returns {void}
              */
-            format(formatObj: Spreadsheet.FormatObjectOptions, range: string): void;
+            format(
+                formatObj: Spreadsheet.FormatObjectOptions,
+                range: string,
+            ): void;
 
             /** This method is used to get the border from hashcode in the Spreadsheet.
              * @param {string} Pass the border hashcode.
@@ -42065,7 +42476,10 @@ declare namespace ej {
              * @param {Spreadsheet.FormatOptions} Optional.
              * @returns {void}
              */
-            removeStyle(range: any[] | string, options: Spreadsheet.FormatOptions): void;
+            removeStyle(
+                range: any[] | string,
+                options: Spreadsheet.FormatOptions,
+            ): void;
 
             /** This method is used to remove table with specified tableId in the Spreadsheet.
              * @param {number} Pass the tableId that you want to remove.
@@ -42085,7 +42499,10 @@ declare namespace ej {
              * @param {any[]} Optional. If the range is specified, then it will update format in the specified range else it will use the current selected range.
              * @returns {void}
              */
-            updateFormat(formatObj: Spreadsheet.BorderOptions, range: any[]): void;
+            updateFormat(
+                formatObj: Spreadsheet.BorderOptions,
+                range: any[],
+            ): void;
 
             /** This method is used to update the unique format for selected range of cells in the Spreadsheet.
              * @param {string} Pass the unique format class.
@@ -42308,14 +42725,20 @@ declare namespace ej {
              * @param {number} pass the index of the item to be added in the backstage.
              * @returns {void}
              */
-            addBackStageItem(pageItem: Spreadsheet.BackstageOptions, index: number): void;
+            addBackStageItem(
+                pageItem: Spreadsheet.BackstageOptions,
+                index: number,
+            ): void;
 
             /** This method is used to dynamically add the contextual tabs in the ribbon.
              * @param {Spreadsheet.ContextualTabOptions} Pass Object ContextualTabOptions.
              * @param {number} pass the index of the contextual tab.
              * @returns {void}
              */
-            addContextualTabs(contextualTabSet: Spreadsheet.ContextualTabOptions, index: number): void;
+            addContextualTabs(
+                contextualTabSet: Spreadsheet.ContextualTabOptions,
+                index: number,
+            ): void;
 
             /** This method is used to dynamically add the menu item in the file menu.
              * @param {any[]} Specifies the item to be added
@@ -42332,7 +42755,13 @@ declare namespace ej {
              * @param {string} Optional. Pass the scope of the name manager.
              * @returns {void}
              */
-            addNamedRange(name: string, refersTo: string, comment: string, sheetIdx: number, scope: string): void;
+            addNamedRange(
+                name: string,
+                refersTo: string,
+                comment: string,
+                sheetIdx: number,
+                scope: string,
+            ): void;
 
             /** This method is used to dynamically add the tab in the ribbon.
              * @param {string} Specifies the text to be displayed in the tab.
@@ -42348,7 +42777,11 @@ declare namespace ej {
              * @param {number} pass the index of the ribbon group.
              * @returns {void}
              */
-            addTabGroup(tabIndex: number, tabGroup: Spreadsheet.TabOptions, groupIndex: number): void;
+            addTabGroup(
+                tabIndex: number,
+                tabGroup: Spreadsheet.TabOptions,
+                groupIndex: number,
+            ): void;
 
             /** This method is used to insert the few type (SUM, MAX, MIN, AVG, COUNT) of formulas in the selected range of cells in the Spreadsheet.
              * @param {string} To pass the type("SUM","MAX","MIN","AVG","COUNT").
@@ -42405,7 +42838,10 @@ declare namespace ej {
              * @param {number} pass the index of the item to be updated
              * @returns {void}
              */
-            updateMenuItem(item: Spreadsheet.MenuItemOptions, index: number): void;
+            updateMenuItem(
+                item: Spreadsheet.MenuItemOptions,
+                index: number,
+            ): void;
 
             /** This method is used to update the ribbon icons in the Spreadsheet.
              * @returns {void}
@@ -42429,7 +42865,12 @@ declare namespace ej {
              * @param {boolean} Pass {{'`true`' | markdownify}}, if you want to match with entire cell contents.
              * @returns {void}
              */
-            replaceAllByBook(findData: string, replaceData: string, isCSen: boolean, isEMatch: boolean): void;
+            replaceAllByBook(
+                findData: string,
+                replaceData: string,
+                isCSen: boolean,
+                isEMatch: boolean,
+            ): void;
 
             /** This method is used to find and replace all data by sheet in Spreadsheet.
              * @param {string} Pass the search data.
@@ -42438,7 +42879,12 @@ declare namespace ej {
              * @param {boolean} Pass {{'`true`' | markdownify}}, if you want to match with entire cell contents.
              * @returns {void}
              */
-            replaceAllBySheet(findData: string, replaceData: string, isCSen: boolean, isEMatch: boolean): void;
+            replaceAllBySheet(
+                findData: string,
+                replaceData: string,
+                isCSen: boolean,
+                isEMatch: boolean,
+            ): void;
         }
 
         export interface XLSelection {
@@ -42507,7 +42953,14 @@ declare namespace ej {
              * @param {number} Optional. Pass the left of the image that you want to set.
              * @returns {string}
              */
-            setPicture(range: string, url: string, width: number, height: number, top: number, left: number): string;
+            setPicture(
+                range: string,
+                url: string,
+                width: number,
+                height: number,
+                top: number,
+                left: number,
+            ): string;
         }
 
         export interface ColorOptions {
@@ -42527,7 +42980,11 @@ declare namespace ej {
              * @param {string} Pass the range
              * @returns {void}
              */
-            sortByColor(operation: string, color: Spreadsheet.ColorOptions, range: string): void;
+            sortByColor(
+                operation: string,
+                color: Spreadsheet.ColorOptions,
+                range: string,
+            ): void;
 
             /** This method is used to sort a particular range of cells based on its values in the Spreadsheet.
              * @param {any[]|string} Pass the range to sort.
@@ -42535,7 +42992,11 @@ declare namespace ej {
              * @param {string} Pass the direction to sort
              * @returns {boolean}
              */
-            sortByRange(range: any[] | string, columnName: string, direction: string): boolean;
+            sortByRange(
+                range: any[] | string,
+                columnName: string,
+                direction: string,
+            ): boolean;
         }
 
         export interface SparklineOptions {
@@ -42579,7 +43040,11 @@ declare namespace ej {
              * @param {number} Optional. Pass the sheet index
              * @returns {void}
              */
-            changePointColor(sparklineId: string, option: any, sheetIdx: number): void;
+            changePointColor(
+                sparklineId: string,
+                option: any,
+                sheetIdx: number,
+            ): void;
 
             /** This method used to change the sparkline type in the spreadsheet.
              * @param {string} Pass the sparkline ID
@@ -42587,7 +43052,11 @@ declare namespace ej {
              * @param {number} Optional. Pass the sheet index
              * @returns {void}
              */
-            changeType(sparklineId: string, type: string, sheetIdx: number): void;
+            changeType(
+                sparklineId: string,
+                type: string,
+                sheetIdx: number,
+            ): void;
         }
 
         export interface XLValidate {
@@ -45305,7 +45774,9 @@ declare namespace ej {
 
             /** Triggers when the property of the annotation is changed in the page of the PDF document.
              */
-            annotationPropertiesChange?(e: AnnotationPropertiesChangeEventArgs): void;
+            annotationPropertiesChange?(
+                e: AnnotationPropertiesChangeEventArgs,
+            ): void;
 
             /** Triggers when a handwritten signature is added over the page of the PDF document.
              */
@@ -45317,7 +45788,9 @@ declare namespace ej {
 
             /** Triggers when a handwritten signature properties is changed in the PDF document.
              */
-            signaturePropertiesChange?(e: SignaturePropertiesChangeEventArgs): void;
+            signaturePropertiesChange?(
+                e: SignaturePropertiesChangeEventArgs,
+            ): void;
 
             /** Triggers when a handwritten signature is resized in the PDF document.
              */
@@ -46102,7 +46575,12 @@ declare namespace ej {
          * @param {number} Index of the error word present in the target content
          * @returns {any}
          */
-        change(word: string, targetSentence: string, changeWord: string, index: number): any;
+        change(
+            word: string,
+            targetSentence: string,
+            changeWord: string,
+            index: number,
+        ): any;
 
         /** To change all the error word occurrences from the given input sentence.
          * @param {string} Error word to change from the target content
@@ -46110,7 +46588,11 @@ declare namespace ej {
          * @param {string} Word to replace with the error word
          * @returns {any}
          */
-        changeAll(word: string, targetSentence: string, changeWord: string): any;
+        changeAll(
+            word: string,
+            targetSentence: string,
+            changeWord: string,
+        ): any;
 
         /** To add the words into the custom dictionary.
          * @param {string} Word to add into the dictionary file
@@ -47455,7 +47937,10 @@ declare namespace ej.datavisualization {
          * @param {number} pointerIndex value for the Gauge
          * @returns {any}
          */
-        getPointerDistanceFromScale(scaleIndex: number, pointerIndex: number): any;
+        getPointerDistanceFromScale(
+            scaleIndex: number,
+            pointerIndex: number,
+        ): any;
 
         /** To get PointerHeight in number
          * @param {number} scaleIndex value for the Gauge
@@ -47631,7 +48116,11 @@ declare namespace ej.datavisualization {
          * @param {number} Bar DistanceFromScale value for Gauge
          * @returns {void}
          */
-        setBarDistanceFromScale(scaleIndex: number, pointerIndex: number, value: number): void;
+        setBarDistanceFromScale(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set setBarPointerValue
          * @param {number} scaleIndex value for the Gauge
@@ -47639,7 +48128,11 @@ declare namespace ej.datavisualization {
          * @param {number} Bar Pointer Value for Gauge
          * @returns {void}
          */
-        setBarPointerValue(scaleIndex: number, pointerIndex: number, value: number): void;
+        setBarPointerValue(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set setBarWidth
          * @param {number} scaleIndex value for the Gauge
@@ -47647,7 +48140,11 @@ declare namespace ej.datavisualization {
          * @param {number} Bar Width for Gauge
          * @returns {void}
          */
-        setBarWidth(scaleIndex: number, pointerIndex: number, value: number): void;
+        setBarWidth(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set setCustomLabelAngle
          * @param {number} scaleIndex value for the Gauge
@@ -47655,7 +48152,11 @@ declare namespace ej.datavisualization {
          * @param {number} Custom Label Angle for Gauge
          * @returns {void}
          */
-        setCustomLabelAngle(scaleIndex: number, customLabelIndex: number, value: number): void;
+        setCustomLabelAngle(
+            scaleIndex: number,
+            customLabelIndex: number,
+            value: number,
+        ): void;
 
         /** To set setCustomLabelValue
          * @param {number} scaleIndex value for the Gauge
@@ -47663,7 +48164,11 @@ declare namespace ej.datavisualization {
          * @param {number} CustomLabel value for Gauge
          * @returns {void}
          */
-        setCustomLabelValue(scaleIndex: number, customLabelIndex: number, value: number): void;
+        setCustomLabelValue(
+            scaleIndex: number,
+            customLabelIndex: number,
+            value: number,
+        ): void;
 
         /** To set setLabelAngle
          * @param {number} scaleIndex value for the Gauge
@@ -47671,7 +48176,11 @@ declare namespace ej.datavisualization {
          * @param {number} Label Angle for Gauge
          * @returns {void}
          */
-        setLabelAngle(scaleIndex: number, labelIndex: number, angle: number): void;
+        setLabelAngle(
+            scaleIndex: number,
+            labelIndex: number,
+            angle: number,
+        ): void;
 
         /** To set setLabelPlacement
          * @param {number} scaleIndex value for the Gauge
@@ -47679,7 +48188,11 @@ declare namespace ej.datavisualization {
          * @param {number} Label Placement for Gauge
          * @returns {void}
          */
-        setLabelPlacement(scaleIndex: number, labelIndex: number, value: number): void;
+        setLabelPlacement(
+            scaleIndex: number,
+            labelIndex: number,
+            value: number,
+        ): void;
 
         /** To set setLabelStyle
          * @param {number} scaleIndex value for the Gauge
@@ -47687,7 +48200,11 @@ declare namespace ej.datavisualization {
          * @param {string} Label Style for Gauge
          * @returns {void}
          */
-        setLabelStyle(scaleIndex: number, labelIndex: number, value: string): void;
+        setLabelStyle(
+            scaleIndex: number,
+            labelIndex: number,
+            value: string,
+        ): void;
 
         /** To set setLabelXDistanceFromScale
          * @param {number} scaleIndex value for the Gauge
@@ -47695,7 +48212,11 @@ declare namespace ej.datavisualization {
          * @param {number} Label XDistance From Scale for Gauge
          * @returns {void}
          */
-        setLabelXDistanceFromScale(scaleIndex: number, labelIndex: number, value: number): void;
+        setLabelXDistanceFromScale(
+            scaleIndex: number,
+            labelIndex: number,
+            value: number,
+        ): void;
 
         /** To set setLabelYDistanceFromScale
          * @param {number} scaleIndex value for the Gauge
@@ -47703,7 +48224,11 @@ declare namespace ej.datavisualization {
          * @param {number} Label YDistance From Scale for Gauge
          * @returns {void}
          */
-        setLabelYDistanceFromScale(scaleIndex: number, labelIndex: number, value: number): void;
+        setLabelYDistanceFromScale(
+            scaleIndex: number,
+            labelIndex: number,
+            value: number,
+        ): void;
 
         /** To set setMajorIntervalValue
          * @param {number} scaleIndex value for the Gauge
@@ -47718,7 +48243,11 @@ declare namespace ej.datavisualization {
          * @param {string} marker Style for Gauge
          * @returns {void}
          */
-        setMarkerStyle(scaleIndex: number, pointerIndex: number, value: string): void;
+        setMarkerStyle(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: string,
+        ): void;
 
         /** To set setMaximumValue
          * @param {number} scaleIndex value for the Gauge
@@ -47747,7 +48276,11 @@ declare namespace ej.datavisualization {
          * @param {number} for Gauge
          * @returns {void}
          */
-        setPointerDistanceFromScale(scaleIndex: number, pointerIndex: number, value: number): void;
+        setPointerDistanceFromScale(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set PointerHeight
          * @param {number} scaleIndex value for the Gauge
@@ -47755,7 +48288,11 @@ declare namespace ej.datavisualization {
          * @param {number} for Gauge
          * @returns {void}
          */
-        setPointerHeight(scaleIndex: number, pointerIndex: number, height: number): void;
+        setPointerHeight(
+            scaleIndex: number,
+            pointerIndex: number,
+            height: number,
+        ): void;
 
         /** To set setPointerPlacement
          * @param {number} scaleIndex value for the Gauge
@@ -47763,7 +48300,11 @@ declare namespace ej.datavisualization {
          * @param {number} pointer placement for Gauge
          * @returns {void}
          */
-        setPointerPlacement(scaleIndex: number, pointerIndex: number, value: number): void;
+        setPointerPlacement(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set PointerValue
          * @param {number} scaleIndex value for the Gauge
@@ -47771,7 +48312,11 @@ declare namespace ej.datavisualization {
          * @param {number} Pointer value for Gauge
          * @returns {void}
          */
-        setPointerValue(scaleIndex: number, pointerIndex: number, value: number): void;
+        setPointerValue(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set PointerWidth
          * @param {number} scaleIndex value for the Gauge
@@ -47779,7 +48324,11 @@ declare namespace ej.datavisualization {
          * @param {number} Pointer width for Gauge
          * @returns {void}
          */
-        setPointerWidth(scaleIndex: number, pointerIndex: number, width: number): void;
+        setPointerWidth(
+            scaleIndex: number,
+            pointerIndex: number,
+            width: number,
+        ): void;
 
         /** To set setRangeBorderWidth
          * @param {number} scaleIndex value for the Gauge
@@ -47787,7 +48336,11 @@ declare namespace ej.datavisualization {
          * @param {number} Range Border Width for Gauge
          * @returns {void}
          */
-        setRangeBorderWidth(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeBorderWidth(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set setRangeDistanceFromScale
          * @param {number} scaleIndex value for the Gauge
@@ -47795,7 +48348,11 @@ declare namespace ej.datavisualization {
          * @param {number} Range Distance FromScale for Gauge
          * @returns {void}
          */
-        setRangeDistanceFromScale(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeDistanceFromScale(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set setRangeEndValue
          * @param {number} scaleIndex value for the Gauge
@@ -47803,7 +48360,11 @@ declare namespace ej.datavisualization {
          * @param {number} Range end value for Gauge
          * @returns {void}
          */
-        setRangeEndValue(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeEndValue(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set setRangeEndWidth
          * @param {number} scaleIndex value for the Gauge
@@ -47811,7 +48372,11 @@ declare namespace ej.datavisualization {
          * @param {number} Range End Width for Gauge
          * @returns {void}
          */
-        setRangeEndWidth(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeEndWidth(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set setRangePosition
          * @param {number} scaleIndex value for the Gauge
@@ -47819,7 +48384,11 @@ declare namespace ej.datavisualization {
          * @param {number} Range Position for Gauge
          * @returns {void}
          */
-        setRangePosition(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangePosition(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set setRangeStartValue
          * @param {number} scaleIndex value for the Gauge
@@ -47827,7 +48396,11 @@ declare namespace ej.datavisualization {
          * @param {number} range start value for Gauge
          * @returns {void}
          */
-        setRangeStartValue(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeStartValue(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set setRangeStartWidth
          * @param {number} scaleIndex value for the Gauge
@@ -47835,7 +48408,11 @@ declare namespace ej.datavisualization {
          * @param {number} Range Start Width for Gauge
          * @returns {void}
          */
-        setRangeStartWidth(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeStartWidth(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set setScaleBarLength
          * @param {number} scaleIndex value for the Gauge
@@ -47885,7 +48462,11 @@ declare namespace ej.datavisualization {
          * @param {number} Tick Angle for Gauge
          * @returns {void}
          */
-        setTickAngle(scaleIndex: number, tickIndex: number, angle: number): void;
+        setTickAngle(
+            scaleIndex: number,
+            tickIndex: number,
+            angle: number,
+        ): void;
 
         /** To set setTickHeight
          * @param {number} scaleIndex value for the Gauge
@@ -47893,7 +48474,11 @@ declare namespace ej.datavisualization {
          * @param {number} Tick Height for Gauge
          * @returns {void}
          */
-        setTickHeight(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickHeight(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
 
         /** To set setTickPlacement
          * @param {number} scaleIndex value for the Gauge
@@ -47901,7 +48486,11 @@ declare namespace ej.datavisualization {
          * @param {number} Tick Placement for Gauge
          * @returns {void}
          */
-        setTickPlacement(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickPlacement(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
 
         /** To set setTickStyle
          * @param {number} scaleIndex value for the Gauge
@@ -47909,7 +48498,11 @@ declare namespace ej.datavisualization {
          * @param {string} Tick Style for Gauge
          * @returns {void}
          */
-        setTickStyle(scaleIndex: number, tickIndex: number, value: string): void;
+        setTickStyle(
+            scaleIndex: number,
+            tickIndex: number,
+            value: string,
+        ): void;
 
         /** To set setTickWidth
          * @param {number} scaleIndex value for the Gauge
@@ -47917,7 +48510,11 @@ declare namespace ej.datavisualization {
          * @param {number} Tick Width for Gauge
          * @returns {void}
          */
-        setTickWidth(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickWidth(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
 
         /** To set setTickXDistanceFromScale
          * @param {number} scaleIndex value for the Gauge
@@ -47925,7 +48522,11 @@ declare namespace ej.datavisualization {
          * @param {number} Tick XDistance From Scale for Gauge
          * @returns {void}
          */
-        setTickXDistanceFromScale(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickXDistanceFromScale(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
 
         /** To set setTickYDistanceFromScale
          * @param {number} scaleIndex value for the Gauge
@@ -47933,7 +48534,11 @@ declare namespace ej.datavisualization {
          * @param {number} Tick YDistance From Scale for Gauge
          * @returns {void}
          */
-        setTickYDistanceFromScale(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickYDistanceFromScale(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
     }
     export namespace LinearGauge {
         export interface Model {
@@ -48019,7 +48624,9 @@ declare namespace ej.datavisualization {
             /** Specify labelPosition value of Linear gauge See
              * @default {bottom}
              */
-            outerCustomLabelPosition?: ej.datavisualization.LinearGauge.OuterCustomLabelPosition | string;
+            outerCustomLabelPosition?:
+                | ej.datavisualization.LinearGauge.OuterCustomLabelPosition
+                | string;
 
             /** Specifies the pointerGradient1 for Linear gauge.
              * @default {null}
@@ -49101,7 +49708,9 @@ declare namespace ej.datavisualization {
             /** Specifies the label Placement of label. See
              * @default {Near}
              */
-            placement?: ej.datavisualization.LinearGauge.PointerPlacement | string;
+            placement?:
+                | ej.datavisualization.LinearGauge.PointerPlacement
+                | string;
 
             /** Specifies the textColor of font.
              * @default {null}
@@ -49120,7 +49729,9 @@ declare namespace ej.datavisualization {
             /** Specifies the unitText Position of label.See
              * @default {Back}
              */
-            unitTextPlacement?: ej.datavisualization.LinearGauge.UnitTextPlacement | string;
+            unitTextPlacement?:
+                | ej.datavisualization.LinearGauge.UnitTextPlacement
+                | string;
         }
 
         export interface ScalesMarkerPointersBorder {
@@ -49169,7 +49780,9 @@ declare namespace ej.datavisualization {
             /** Specifies the pointer Placement of marker pointer See PointerPlacement
              * @default {Far}
              */
-            placement?: ej.datavisualization.LinearGauge.PointerPlacement | string;
+            placement?:
+                | ej.datavisualization.LinearGauge.PointerPlacement
+                | string;
 
             /** Specifies the marker Style of marker pointerSee
              * @default {Triangle}
@@ -49250,7 +49863,9 @@ declare namespace ej.datavisualization {
             /** Specifies the range Position in the ranges. See RangePlacement
              * @default {Center}
              */
-            placement?: ej.datavisualization.LinearGauge.PointerPlacement | string;
+            placement?:
+                | ej.datavisualization.LinearGauge.PointerPlacement
+                | string;
 
             /** Specifies the startValue in the ranges.
              * @default {20}
@@ -49304,7 +49919,9 @@ declare namespace ej.datavisualization {
             /** Specifies the tick Placement in the tick. See TickPlacement
              * @default {Near}
              */
-            placement?: ej.datavisualization.LinearGauge.PointerPlacement | string;
+            placement?:
+                | ej.datavisualization.LinearGauge.PointerPlacement
+                | string;
 
             /** Specifies the tick Style in the tick. See
              * @default {MajorInterval}
@@ -49683,7 +50300,10 @@ declare namespace ej.datavisualization {
          * @param {number} pointerIndex value for the Gauge
          * @returns {any}
          */
-        getMarkerDistanceFromScale(scaleIndex: number, pointerIndex: number): any;
+        getMarkerDistanceFromScale(
+            scaleIndex: number,
+            pointerIndex: number,
+        ): any;
 
         /** To get MarkerStyle
          * @param {number} scaleIndex value for the Gauge
@@ -49897,7 +50517,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        includeFirstValue(scaleIndex: number, labelIndex: number, value: number): void;
+        includeFirstValue(
+            scaleIndex: number,
+            labelIndex: number,
+            value: number,
+        ): void;
 
         /** Switching the redraw option for the gauge
          * @param {string} redraw value for the gauge
@@ -49911,7 +50535,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setBackNeedleLength(scaleIndex: number, pointerIndex: number, value: number): void;
+        setBackNeedleLength(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set CustomLabelAngle
          * @param {number} scaleIndex value for the gauge
@@ -49919,7 +50547,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setCustomLabelAngle(scaleIndex: number, customLabelIndex: number, value: number): void;
+        setCustomLabelAngle(
+            scaleIndex: number,
+            customLabelIndex: number,
+            value: number,
+        ): void;
 
         /** To set CustomLabelValue
          * @param {number} scaleIndex value for the gauge
@@ -49927,7 +50559,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setCustomLabelValue(scaleIndex: number, customLabelIndex: number, value: number): void;
+        setCustomLabelValue(
+            scaleIndex: number,
+            customLabelIndex: number,
+            value: number,
+        ): void;
 
         /** To set LabelAngle
          * @param {number} scaleIndex value for the gauge
@@ -49935,7 +50571,11 @@ declare namespace ej.datavisualization {
          * @param {number} angle value for the gauge
          * @returns {void}
          */
-        setLabelAngle(scaleIndex: number, labelIndex: number, angle: number): void;
+        setLabelAngle(
+            scaleIndex: number,
+            labelIndex: number,
+            angle: number,
+        ): void;
 
         /** To set LabelDistanceFromScale
          * @param {number} scaleIndex value for the gauge
@@ -49943,7 +50583,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setLabelDistanceFromScale(scaleIndex: number, labelIndex: number, value: number): void;
+        setLabelDistanceFromScale(
+            scaleIndex: number,
+            labelIndex: number,
+            value: number,
+        ): void;
 
         /** To set LabelPlacement
          * @param {number} scaleIndex value for the gauge
@@ -49951,7 +50595,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setLabelPlacement(scaleIndex: number, labelIndex: number, value: number): void;
+        setLabelPlacement(
+            scaleIndex: number,
+            labelIndex: number,
+            value: number,
+        ): void;
 
         /** To set LabelStyle
          * @param {number} scaleIndex value for the gauge
@@ -49959,7 +50607,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setLabelStyle(scaleIndex: number, labelIndex: number, value: number): void;
+        setLabelStyle(
+            scaleIndex: number,
+            labelIndex: number,
+            value: number,
+        ): void;
 
         /** To set MajorIntervalValue
          * @param {number} scaleIndex value for the gauge
@@ -49974,7 +50626,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setMarkerDistanceFromScale(scaleIndex: number, pointerIndex: number, value: number): void;
+        setMarkerDistanceFromScale(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set MarkerStyle
          * @param {number} scaleIndex value for the gauge
@@ -49982,7 +50638,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setMarkerStyle(scaleIndex: number, pointerIndex: number, value: number): void;
+        setMarkerStyle(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set MaximumValue
          * @param {number} scaleIndex value for the gauge
@@ -50011,7 +50671,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setNeedleStyle(scaleIndex: number, pointerIndex: number, value: number): void;
+        setNeedleStyle(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set PointerCapBorderWidth
          * @param {number} scaleIndex value for the gauge
@@ -50033,7 +50697,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setPointerLength(scaleIndex: number, pointerIndex: number, value: number): void;
+        setPointerLength(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set PointerNeedleType
          * @param {number} scaleIndex value for the gauge
@@ -50041,7 +50709,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setPointerNeedleType(scaleIndex: number, pointerIndex: number, value: number): void;
+        setPointerNeedleType(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set PointerPlacement
          * @param {number} scaleIndex value for the gauge
@@ -50049,7 +50721,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setPointerPlacement(scaleIndex: number, pointerIndex: number, value: number): void;
+        setPointerPlacement(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set PointerValue
          * @param {number} scaleIndex value for the gauge
@@ -50057,7 +50733,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setPointerValue(scaleIndex: number, pointerIndex: number, value: number): void;
+        setPointerValue(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set PointerWidth
          * @param {number} scaleIndex value for the gauge
@@ -50065,7 +50745,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setPointerWidth(scaleIndex: number, pointerIndex: number, value: number): void;
+        setPointerWidth(
+            scaleIndex: number,
+            pointerIndex: number,
+            value: number,
+        ): void;
 
         /** To set RangeBorderWidth
          * @param {number} scaleIndex value for the gauge
@@ -50073,7 +50757,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setRangeBorderWidth(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeBorderWidth(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set RangeDistanceFromScale
          * @param {number} scaleIndex value for the gauge
@@ -50081,7 +50769,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setRangeDistanceFromScale(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeDistanceFromScale(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set RangeEndValue
          * @param {number} scaleIndex value for the gauge
@@ -50089,7 +50781,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setRangeEndValue(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeEndValue(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set RangePosition
          * @param {number} scaleIndex value for the gauge
@@ -50097,7 +50793,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setRangePosition(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangePosition(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set RangeSize
          * @param {number} scaleIndex value for the gauge
@@ -50105,7 +50805,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setRangeSize(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeSize(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set RangeStartValue
          * @param {number} scaleIndex value for the gauge
@@ -50113,7 +50817,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setRangeStartValue(scaleIndex: number, rangeIndex: number, value: number): void;
+        setRangeStartValue(
+            scaleIndex: number,
+            rangeIndex: number,
+            value: number,
+        ): void;
 
         /** To set ScaleBarSize
          * @param {number} scaleIndex value for the gauge
@@ -50156,7 +50864,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setSubGaugeLocation(scaleIndex: number, GaugeIndex: number, value: number): void;
+        setSubGaugeLocation(
+            scaleIndex: number,
+            GaugeIndex: number,
+            value: number,
+        ): void;
 
         /** To set SweepAngle
          * @param {number} scaleIndex value for the gauge
@@ -50171,7 +50883,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setTickAngle(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickAngle(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
 
         /** To set TickDistanceFromScale
          * @param {number} scaleIndex value for the gauge
@@ -50179,7 +50895,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setTickDistanceFromScale(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickDistanceFromScale(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
 
         /** To set TickHeight
          * @param {number} scaleIndex value for the gauge
@@ -50187,7 +50907,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setTickHeight(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickHeight(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
 
         /** To set TickPlacement
          * @param {number} scaleIndex value for the gauge
@@ -50195,7 +50919,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setTickPlacement(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickPlacement(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
 
         /** To set TickStyle
          * @param {number} scaleIndex value for the gauge
@@ -50203,7 +50931,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setTickStyle(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickStyle(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
 
         /** To set TickWidth
          * @param {number} scaleIndex value for the gauge
@@ -50211,7 +50943,11 @@ declare namespace ej.datavisualization {
          * @param {number} value for the gauge
          * @returns {void}
          */
-        setTickWidth(scaleIndex: number, tickIndex: number, value: number): void;
+        setTickWidth(
+            scaleIndex: number,
+            tickIndex: number,
+            value: number,
+        ): void;
     }
     export namespace CircularGauge {
         export interface Model {
@@ -50233,7 +50969,9 @@ declare namespace ej.datavisualization {
             /** Specify range Z-order placement of circular gauge.
              * @default {Rear}
              */
-            rangeZOrder?: ej.datavisualization.CircularGauge.RangeZOrderPlacement | string;
+            rangeZOrder?:
+                | ej.datavisualization.CircularGauge.RangeZOrderPlacement
+                | string;
 
             /** Specify animate value of circular gauge
              * @default {true}
@@ -50262,7 +51000,9 @@ declare namespace ej.datavisualization {
             /** Specify gaugePosition value of circular gauge See GaugePosition
              * @default {center}
              */
-            gaugePosition?: ej.datavisualization.CircularGauge.gaugePosition | string;
+            gaugePosition?:
+                | ej.datavisualization.CircularGauge.gaugePosition
+                | string;
 
             /** Specifies the height of circular gauge.
              * @default {360}
@@ -50302,7 +51042,9 @@ declare namespace ej.datavisualization {
             /** Specify outerCustomLabelPosition value of circular gauge See
              * @default {bottom}
              */
-            outerCustomLabelPosition?: ej.datavisualization.CircularGauge.OuterCustomLabelPosition | string;
+            outerCustomLabelPosition?:
+                | ej.datavisualization.CircularGauge.OuterCustomLabelPosition
+                | string;
 
             /** Specifies the radius of circular gauge.
              * @default {180}
@@ -51164,7 +51906,9 @@ declare namespace ej.datavisualization {
             /** Specifies the position of the  custom labels. See
              * @default {inner}
              */
-            positionType?: ej.datavisualization.CircularGauge.CustomLabelPositionType | string;
+            positionType?:
+                | ej.datavisualization.CircularGauge.CustomLabelPositionType
+                | string;
         }
 
         export interface ScalesIndicatorsPosition {
@@ -51317,7 +52061,9 @@ declare namespace ej.datavisualization {
             /** Specify unitTextPosition of circular gauge. See UnitTextPosition
              * @default {Back}
              */
-            unitTextPosition?: ej.datavisualization.CircularGauge.UnitTextPlacement | string;
+            unitTextPosition?:
+                | ej.datavisualization.CircularGauge.UnitTextPlacement
+                | string;
         }
 
         export interface ScalesPointerCap {
@@ -51870,7 +52616,9 @@ declare namespace ej.datavisualization {
             /** Specifies the alignment of the legend.
              * @default {Center. See Alignment}
              */
-            alignment?: ej.datavisualization.CircularGauge.LegendAlignment | string;
+            alignment?:
+                | ej.datavisualization.CircularGauge.LegendAlignment
+                | string;
 
             /** Options for customizing the legend border.
              */
@@ -51898,7 +52646,9 @@ declare namespace ej.datavisualization {
             /** Places the legend at specified position. Legend can be placed at **left**, **right**, **top** or **bottom** of the circular gauge.
              * @default {Bottom. See Position}
              */
-            position?: ej.datavisualization.CircularGauge.LegendPosition | string;
+            position?:
+                | ej.datavisualization.CircularGauge.LegendPosition
+                | string;
 
             /** Shape of the legend items.
              * @default {Circle. See Shape}
@@ -52916,7 +53666,9 @@ declare namespace ej.datavisualization {
 
             /** Fires during the calculation of chart area bounds. You can use this event to customize the bounds of chart area.
              */
-            chartAreaBoundsCalculate?(e: ChartAreaBoundsCalculateEventArgs): void;
+            chartAreaBoundsCalculate?(
+                e: ChartAreaBoundsCalculateEventArgs,
+            ): void;
 
             /** Fires after chart is created.
              */
@@ -53046,7 +53798,9 @@ declare namespace ej.datavisualization {
 
             /** Fires, when multi level labels are rendering.
              */
-            multiLevelLabelRendering?(e: MultiLevelLabelRenderingEventArgs): void;
+            multiLevelLabelRendering?(
+                e: MultiLevelLabelRenderingEventArgs,
+            ): void;
 
             /** Fires, when trendlines are rendering.
              */
@@ -53963,7 +54717,9 @@ declare namespace ej.datavisualization {
             /** Specifies the horizontal alignment of the annotation.
              * @default {middle. See HorizontalAlignment}
              */
-            horizontalAlignment?: ej.datavisualization.Chart.HorizontalAlignment | string;
+            horizontalAlignment?:
+                | ej.datavisualization.Chart.HorizontalAlignment
+                | string;
 
             /** Options to customize the margin of annotation.
              */
@@ -53982,7 +54738,9 @@ declare namespace ej.datavisualization {
             /** Specifies the vertical alignment of the annotation.
              * @default {middle. See VerticalAlignment}
              */
-            verticalAlignment?: ej.datavisualization.Chart.VerticalAlignment | string;
+            verticalAlignment?:
+                | ej.datavisualization.Chart.VerticalAlignment
+                | string;
 
             /** Controls the visibility of the annotation.
              * @default {false}
@@ -54050,7 +54808,9 @@ declare namespace ej.datavisualization {
             /** Specifies the orientation of the document
              * @default {portrait}
              */
-            orientation?: ej.datavisualization.Chart.ExportingOrientation | string;
+            orientation?:
+                | ej.datavisualization.Chart.ExportingOrientation
+                | string;
 
             /** Specifies the mode of exporting
              * @default {client}
@@ -54337,7 +55097,9 @@ declare namespace ej.datavisualization {
             /** Horizontal alignment of the data label.
              * @default {center}
              */
-            horizontalTextAlignment?: ej.datavisualization.Chart.HorizontalTextAlignment | string;
+            horizontalTextAlignment?:
+                | ej.datavisualization.Chart.HorizontalTextAlignment
+                | string;
 
             /** Margin of the text to its background shape. The size of the background shape increases based on the margin applied to its text.
              */
@@ -54374,7 +55136,9 @@ declare namespace ej.datavisualization {
             /** Vertical alignment of the data label.
              * @default {center}
              */
-            verticalTextAlignment?: ej.datavisualization.Chart.VerticalTextAlignment | string;
+            verticalTextAlignment?:
+                | ej.datavisualization.Chart.VerticalTextAlignment
+                | string;
 
             /** Controls the visibility of the data labels.
              * @default {false}
@@ -56072,7 +56836,9 @@ declare namespace ej.datavisualization {
             /** Border type of the multi level labels.
              * @default {rectangle. See Type}
              */
-            type?: ej.datavisualization.Chart.MultiLevelLabelsBorderType | string;
+            type?:
+                | ej.datavisualization.Chart.MultiLevelLabelsBorderType
+                | string;
         }
 
         export interface PrimaryXAxisMultiLevelLabel {
@@ -56383,7 +57149,9 @@ declare namespace ej.datavisualization {
             /** Specifies the position of labels at the edge of the axis.
              * @default {ej.datavisualization.Chart.EdgeLabelPlacement.None. See EdgeLabelPlacement}
              */
-            edgeLabelPlacement?: ej.datavisualization.Chart.EdgeLabelPlacement | string;
+            edgeLabelPlacement?:
+                | ej.datavisualization.Chart.EdgeLabelPlacement
+                | string;
 
             /** Specifies whether to trim the axis label when the width of the label exceeds the maximumLabelWidth.
              * @default {false}
@@ -56412,7 +57180,9 @@ declare namespace ej.datavisualization {
             /** Specifies the action to take when the axis labels are overlapping with each other.
              * @default {ej.datavisualization.Chart.LabelIntersectAction.None. See LabelIntersectAction}
              */
-            labelIntersectAction?: ej.datavisualization.Chart.LabelIntersectAction | string;
+            labelIntersectAction?:
+                | ej.datavisualization.Chart.LabelIntersectAction
+                | string;
 
             /** Specifies the position of the axis labels.
              * @default {outside. See LabelPosition}
@@ -56517,7 +57287,9 @@ declare namespace ej.datavisualization {
             /** Specifies the position of the axis tick lines.
              * @default {outside. See TickLinesPosition}
              */
-            tickLinesPosition?: ej.datavisualization.Chart.TickLinesPosition | string;
+            tickLinesPosition?:
+                | ej.datavisualization.Chart.TickLinesPosition
+                | string;
 
             /** Options for customizing the border of the labels.
              */
@@ -56787,7 +57559,9 @@ declare namespace ej.datavisualization {
             /** Border type of the multi level labels.
              * @default {rectangle. See Type}
              */
-            type?: ej.datavisualization.Chart.MultiLevelLabelsBorderType | string;
+            type?:
+                | ej.datavisualization.Chart.MultiLevelLabelsBorderType
+                | string;
         }
 
         export interface AxesMultiLevelLabel {
@@ -57087,7 +57861,9 @@ declare namespace ej.datavisualization {
             /** Specifies the position of labels at the edge of the axis.
              * @default {ej.datavisualization.Chart.EdgeLabelPlacement.None. See EdgeLabelPlacement}
              */
-            edgeLabelPlacement?: ej.datavisualization.Chart.EdgeLabelPlacement | string;
+            edgeLabelPlacement?:
+                | ej.datavisualization.Chart.EdgeLabelPlacement
+                | string;
 
             /** Specifies whether to trim the axis label when the width of the label exceeds the maximumLabelWidth.
              * @default {false}
@@ -57121,7 +57897,9 @@ declare namespace ej.datavisualization {
             /** Specifies the action to take when the axis labels are overlapping with each other.
              * @default {ej.datavisualization.Chart.LabelIntersectAction.None. See LabelIntersectAction}
              */
-            labelIntersectAction?: ej.datavisualization.Chart.LabelIntersectAction | string;
+            labelIntersectAction?:
+                | ej.datavisualization.Chart.LabelIntersectAction
+                | string;
 
             /** Specifies the position of the axis labels.
              * @default {outside. See LabelPosition}
@@ -57226,7 +58004,9 @@ declare namespace ej.datavisualization {
             /** Specifies the position of the axis tick lines.
              * @default {outside. See TickLinesPosition}
              */
-            tickLinesPosition?: ej.datavisualization.Chart.TickLinesPosition | string;
+            tickLinesPosition?:
+                | ej.datavisualization.Chart.TickLinesPosition
+                | string;
 
             /** Options for customizing the border of the labels.
              */
@@ -57496,7 +58276,9 @@ declare namespace ej.datavisualization {
             /** Border type of the multi level labels.
              * @default {rectangle. See Type}
              */
-            type?: ej.datavisualization.Chart.MultiLevelLabelsBorderType | string;
+            type?:
+                | ej.datavisualization.Chart.MultiLevelLabelsBorderType
+                | string;
         }
 
         export interface PrimaryYAxisMultiLevelLabel {
@@ -57792,7 +58574,9 @@ declare namespace ej.datavisualization {
             /** Specifies the position of labels at the edge of the axis.
              * @default {ej.datavisualization.Chart.EdgeLabelPlacement.None. See EdgeLabelPlacement}
              */
-            edgeLabelPlacement?: ej.datavisualization.Chart.EdgeLabelPlacement | string;
+            edgeLabelPlacement?:
+                | ej.datavisualization.Chart.EdgeLabelPlacement
+                | string;
 
             /** Specifies whether to trim the axis label when the width of the label exceeds the maximumLabelWidth.
              * @default {false}
@@ -57821,7 +58605,9 @@ declare namespace ej.datavisualization {
             /** Specifies the action to take when the axis labels are overlapping with each other.
              * @default {ej.datavisualization.Chart.LabelIntersectAction.None}
              */
-            labelIntersectAction?: ej.datavisualization.Chart.LabelIntersectAction | string;
+            labelIntersectAction?:
+                | ej.datavisualization.Chart.LabelIntersectAction
+                | string;
 
             /** Specifies the position of the axis labels.
              * @default {outside. See LabelPosition}
@@ -57935,7 +58721,9 @@ declare namespace ej.datavisualization {
             /** Specifies the position of the axis tick lines.
              * @default {outside. See TickLinesPosition}
              */
-            tickLinesPosition?: ej.datavisualization.Chart.TickLinesPosition | string;
+            tickLinesPosition?:
+                | ej.datavisualization.Chart.TickLinesPosition
+                | string;
 
             /** Options for customizing the border of the labels.
              */
@@ -58212,7 +59000,9 @@ declare namespace ej.datavisualization {
             /** Horizontal alignment of the data label.
              * @default {center}
              */
-            horizontalTextAlignment?: ej.datavisualization.Chart.HorizontalTextAlignment | string;
+            horizontalTextAlignment?:
+                | ej.datavisualization.Chart.HorizontalTextAlignment
+                | string;
 
             /** Margin of the text to its background shape. The size of the background shape increases based on the margin applied to its text.
              */
@@ -58241,7 +59031,9 @@ declare namespace ej.datavisualization {
             /** Vertical alignment of the data label.
              * @default {'center'}
              */
-            verticalTextAlignment?: ej.datavisualization.Chart.VerticalTextAlignment | string;
+            verticalTextAlignment?:
+                | ej.datavisualization.Chart.VerticalTextAlignment
+                | string;
 
             /** Controls the visibility of the data labels.
              * @default {false}
@@ -58612,7 +59404,9 @@ declare namespace ej.datavisualization {
             /** Horizontal alignment of the data label.
              * @default {center}
              */
-            horizontalTextAlignment?: ej.datavisualization.Chart.HorizontalTextAlignment | string;
+            horizontalTextAlignment?:
+                | ej.datavisualization.Chart.HorizontalTextAlignment
+                | string;
 
             /** Margin of the text to its background shape. The size of the background shape increases based on the margin applied to its text.
              */
@@ -58637,7 +59431,9 @@ declare namespace ej.datavisualization {
             /** Vertical alignment of the data label.
              * @default {'center'}
              */
-            verticalTextAlignment?: ej.datavisualization.Chart.VerticalTextAlignment | string;
+            verticalTextAlignment?:
+                | ej.datavisualization.Chart.VerticalTextAlignment
+                | string;
 
             /** Controls the visibility of the data labels.
              * @default {false}
@@ -60396,7 +61192,9 @@ declare namespace ej.datavisualization {
             /** If the range is not given explicitly, range will be calculated automatically.
              * @default {none}
              */
-            rangePadding?: ej.datavisualization.RangeNavigator.RangePadding | string;
+            rangePadding?:
+                | ej.datavisualization.RangeNavigator.RangePadding
+                | string;
 
             /** Options for customizing the starting and ending ranges.
              */
@@ -60881,17 +61679,23 @@ declare namespace ej.datavisualization {
             /** Specifies the intervalType for higher level labels. See
              * @default {auto}
              */
-            intervalType?: ej.datavisualization.RangeNavigator.IntervalType | string;
+            intervalType?:
+                | ej.datavisualization.RangeNavigator.IntervalType
+                | string;
 
             /** Specifies the position of the labels to render either inside or outside of plot area
              * @default {outside}
              */
-            labelPlacement?: ej.datavisualization.RangeNavigator.LabelPlacement | string;
+            labelPlacement?:
+                | ej.datavisualization.RangeNavigator.LabelPlacement
+                | string;
 
             /** Specifies to hide the labels when it intersects with each other.
              * @default {none}
              */
-            labelIntersectAction?: ej.datavisualization.RangeNavigator.LabelIntersectAction | string;
+            labelIntersectAction?:
+                | ej.datavisualization.RangeNavigator.LabelIntersectAction
+                | string;
 
             /** Specifies the position of the labels in higher level
              * @default {top}
@@ -60997,17 +61801,23 @@ declare namespace ej.datavisualization {
             /** Specifies the intervalType of the labels in lower level.See IntervalType
              * @default {auto}
              */
-            intervalType?: ej.datavisualization.RangeNavigator.IntervalType | string;
+            intervalType?:
+                | ej.datavisualization.RangeNavigator.IntervalType
+                | string;
 
             /** Specifies the position of the labels to render either inside or outside of plot area. See LabelPlacement
              * @default {outside}
              */
-            labelPlacement?: ej.datavisualization.RangeNavigator.LabelPlacement | string;
+            labelPlacement?:
+                | ej.datavisualization.RangeNavigator.LabelPlacement
+                | string;
 
             /** Specifies to hide the labels when it intersects with each other.
              * @default {none}
              */
-            labelIntersectAction?: ej.datavisualization.RangeNavigator.LabelIntersectAction | string;
+            labelIntersectAction?:
+                | ej.datavisualization.RangeNavigator.LabelIntersectAction
+                | string;
 
             /** Specifies the position of the labels in lower level.See Position
              * @default {bottom}
@@ -61064,7 +61874,9 @@ declare namespace ej.datavisualization {
             /** Specifies the horizontalAlignment of the label in RangeNavigator
              * @default {middle}
              */
-            horizontalAlignment?: ej.datavisualization.RangeNavigator.HorizontalAlignment | string;
+            horizontalAlignment?:
+                | ej.datavisualization.RangeNavigator.HorizontalAlignment
+                | string;
         }
 
         export interface LabelSettings {
@@ -61630,7 +62442,9 @@ declare namespace ej.datavisualization {
             /** Specifies the direction of flow in bullet graph. Neither it may be backward nor forward.
              * @default {forward}
              */
-            flowDirection?: ej.datavisualization.BulletGraph.FlowDirection | string;
+            flowDirection?:
+                | ej.datavisualization.BulletGraph.FlowDirection
+                | string;
 
             /** Specifies the height of the bullet graph.
              * @default {90}
@@ -61704,7 +62518,9 @@ declare namespace ej.datavisualization {
 
             /** Fires on rendering the comparative measure symbol.
              */
-            drawComparativeMeasureSymbol?(e: DrawComparativeMeasureSymbolEventArgs): void;
+            drawComparativeMeasureSymbol?(
+                e: DrawComparativeMeasureSymbolEventArgs,
+            ): void;
 
             /** Fires on rendering the feature measure bar.
              */
@@ -62131,7 +62947,9 @@ declare namespace ej.datavisualization {
             /** Specifies the alignment of indicator with respect to scale based on text position
              * @default {'Near'}
              */
-            textAlignment?: ej.datavisualization.BulletGraph.TextAlignment | string;
+            textAlignment?:
+                | ej.datavisualization.BulletGraph.TextAlignment
+                | string;
 
             /** Specifies where indicator text should be anchored when indicator overlaps with other caption group text. Text will be anchored when overlapping caption group text are at same
              * position. Anchoring is not applicable for float position.
@@ -62147,7 +62965,9 @@ declare namespace ej.datavisualization {
             /** Specifies where indicator should be placed
              * @default {'float'}
              */
-            textPosition?: ej.datavisualization.BulletGraph.TextPosition | string;
+            textPosition?:
+                | ej.datavisualization.BulletGraph.TextPosition
+                | string;
 
             /** Specifies the space between indicator symbol and text.
              * @default {3}
@@ -62237,7 +63057,9 @@ declare namespace ej.datavisualization {
             /** Specifies the alignment of sub title text with respect to scale. Alignment will not be applied in float position.
              * @default {'Near'}
              */
-            textAlignment?: ej.datavisualization.BulletGraph.TextAlignment | string;
+            textAlignment?:
+                | ej.datavisualization.BulletGraph.TextAlignment
+                | string;
 
             /** Specifies where subtitle text should be anchored when sub title text overlaps with other caption group text. Text will be anchored when overlapping caption group text are at same
              * position. Anchoring is not applicable for float position.
@@ -62253,7 +63075,9 @@ declare namespace ej.datavisualization {
             /** Specifies where sub title text should be placed.
              * @default {'float'}
              */
-            textPosition?: ej.datavisualization.BulletGraph.TextPosition | string;
+            textPosition?:
+                | ej.datavisualization.BulletGraph.TextPosition
+                | string;
         }
 
         export interface CaptionSettings {
@@ -62290,7 +63114,9 @@ declare namespace ej.datavisualization {
             /** Specifies the alignment of caption text with respect to scale. This property will not be applied when text position is float.
              * @default {'Near'}
              */
-            textAlignment?: ej.datavisualization.BulletGraph.TextAlignment | string;
+            textAlignment?:
+                | ej.datavisualization.BulletGraph.TextAlignment
+                | string;
 
             /** Specifies caption text anchoring when caption text overlaps with other caption group text. Text will be anchored when overlapping caption group text are at same position.
              * Anchoring is not applicable for float position.
@@ -62306,7 +63132,9 @@ declare namespace ej.datavisualization {
             /** Specifies how caption text should be placed.
              * @default {'float'}
              */
-            textPosition?: ej.datavisualization.BulletGraph.TextPosition | string;
+            textPosition?:
+                | ej.datavisualization.BulletGraph.TextPosition
+                | string;
         }
 
         export interface QualitativeRange {
@@ -62429,7 +63257,9 @@ declare namespace ej.datavisualization {
             /** Specifies the placement of labels in bullet graph scale.
              * @default {outside}
              */
-            labelPlacement?: ej.datavisualization.BulletGraph.LabelPlacement | string;
+            labelPlacement?:
+                | ej.datavisualization.BulletGraph.LabelPlacement
+                | string;
 
             /** Specifies the prefix to be added with labels in bullet graph.
              * @default {Empty string}
@@ -62564,12 +63394,16 @@ declare namespace ej.datavisualization {
             /** Specifies the placement of ticks to render either inside or outside the scale.
              * @default {ej.datavisualization.BulletGraph.TickPlacement.Outside}
              */
-            tickPlacement?: ej.datavisualization.BulletGraph.TickPlacement | string;
+            tickPlacement?:
+                | ej.datavisualization.BulletGraph.TickPlacement
+                | string;
 
             /** Specifies the position of the ticks to render either above,below or inside
              * @default {ej.datavisualization.BulletGraph.TickPosition.Far}
              */
-            tickPosition?: ej.datavisualization.BulletGraph.TickPosition | string;
+            tickPosition?:
+                | ej.datavisualization.BulletGraph.TickPosition
+                | string;
         }
 
         export interface TooltipSettings {
@@ -63485,7 +64319,9 @@ declare namespace ej.datavisualization {
             /** set the orientation of legend labels
              * @default {vertical}
              */
-            labelOrientation?: ej.datavisualization.Map.LabelOrientation | string;
+            labelOrientation?:
+                | ej.datavisualization.Map.LabelOrientation
+                | string;
 
             /** to get leftLabel value for legend setting
              * @default {null}
@@ -63822,7 +64658,9 @@ declare namespace ej.datavisualization {
             /** set the orientation of legend labels
              * @default {vertical}
              */
-            labelOrientation?: ej.datavisualization.Map.LabelOrientation | string;
+            labelOrientation?:
+                | ej.datavisualization.Map.LabelOrientation
+                | string;
 
             /** to get leftLabel value for legend setting
              * @default {null}
@@ -64520,7 +65358,9 @@ declare namespace ej.datavisualization {
             /** Specifies the items layout mode of the treemap. Accepted itemsLayoutMode values are Squarified, SliceAndDiceHorizontal, SliceAndDiceVertical and SliceAndDiceAuto
              * @default {Squarified}
              */
-            itemsLayoutMode?: ej.datavisualization.TreeMap.ItemsLayoutMode | string;
+            itemsLayoutMode?:
+                | ej.datavisualization.TreeMap.ItemsLayoutMode
+                | string;
 
             /** Specify to convert the date object to string, using locale settings.
              * @default {false}
@@ -64549,7 +65389,9 @@ declare namespace ej.datavisualization {
             /** Specifies the selection mode of the treemap. Accepted selection mode values are Default and Multiple.
              * @default {default}
              */
-            groupSelectionMode?: ej.datavisualization.TreeMap.groupSelectionMode | string;
+            groupSelectionMode?:
+                | ej.datavisualization.TreeMap.groupSelectionMode
+                | string;
 
             /** Specifies the legend visibility status of the treemap
              * @default {false}
@@ -64842,7 +65684,9 @@ declare namespace ej.datavisualization {
             /** Specifies the mode of label visibility
              * @default {visible}
              */
-            labelVisibilityMode?: ej.datavisualization.TreeMap.VisibilityMode | string;
+            labelVisibilityMode?:
+                | ej.datavisualization.TreeMap.VisibilityMode
+                | string;
 
             /** Shows or hides the label of the leaf item.
              * @default {false}
@@ -64920,7 +65764,9 @@ declare namespace ej.datavisualization {
             /** Specifies the mode of header visibility
              * @default {visible}
              */
-            headerVisibilityMode?: ej.datavisualization.TreeMap.VisibilityMode | string;
+            headerVisibilityMode?:
+                | ej.datavisualization.TreeMap.VisibilityMode
+                | string;
 
             /** Specifies the position of the labels.
              * @default {center}
@@ -64940,7 +65786,9 @@ declare namespace ej.datavisualization {
             /** Specifies the mode of label visibility
              * @default {visible}
              */
-            labelVisibilityMode?: ej.datavisualization.TreeMap.VisibilityMode | string;
+            labelVisibilityMode?:
+                | ej.datavisualization.TreeMap.VisibilityMode
+                | string;
 
             /** Shows or hides the header for tree map level.
              * @default {false}
@@ -65158,7 +66006,10 @@ declare namespace ej.datavisualization {
          * @param {Diagram.ExportImageSettings} options to export the desired region of diagram to the desired formats.
          * @returns {string}
          */
-        exportImage(image: string, exportImageSettings?: Diagram.ExportImageSettings): string;
+        exportImage(
+            image: string,
+            exportImageSettings?: Diagram.ExportImageSettings,
+        ): string;
 
         /** Read a node/connector object by its name
          * @param {string} name of the node/connector that is to be identified
@@ -65244,7 +66095,10 @@ declare namespace ej.datavisualization {
          * @param {Diagram.PrintImageSettings} options to export the desired region of diagram to the desired formats.
          * @returns {string}
          */
-        printImage(image: string, printImageSettings?: Diagram.PrintImageSettings): string;
+        printImage(
+            image: string,
+            printImageSettings?: Diagram.PrintImageSettings,
+        ): string;
 
         /** Restore the last action that was reverted
          * @returns {void}
@@ -65609,7 +66463,9 @@ declare namespace ej.datavisualization {
             /** Sets the direction of line bridges.
              * @default {ej.datavisualization.Diagram.BridgeDirection.Top}
              */
-            bridgeDirection?: ej.datavisualization.Diagram.BridgeDirection | string;
+            bridgeDirection?:
+                | ej.datavisualization.Diagram.BridgeDirection
+                | string;
 
             /** Defines a set of custom commands and binds them with a set of desired key gestures.
              */
@@ -65628,7 +66484,9 @@ declare namespace ej.datavisualization {
             /** Enables/Disables the default behaviors of the diagram.
              * @default {ej.datavisualization.Diagram.DiagramConstraints.All}
              */
-            constraints?: ej.datavisualization.Diagram.DiagramConstraints | string;
+            constraints?:
+                | ej.datavisualization.Diagram.DiagramConstraints
+                | string;
 
             /** An object to customize the context menu of diagram
              */
@@ -65670,7 +66528,9 @@ declare namespace ej.datavisualization {
             /** Defines the type of the rendering mode of label.
              * @default {HTML}
              */
-            labelRenderingMode?: ej.datavisualization.Diagram.LabelRenderingMode | string;
+            labelRenderingMode?:
+                | ej.datavisualization.Diagram.LabelRenderingMode
+                | string;
 
             /** Automatically arranges the nodes and connectors in a predefined manner.
              */
@@ -65759,7 +66619,9 @@ declare namespace ej.datavisualization {
 
             /** Triggers when the connector collection is changed
              */
-            connectorCollectionChange?(e: ConnectorCollectionChangeEventArgs): void;
+            connectorCollectionChange?(
+                e: ConnectorCollectionChangeEventArgs,
+            ): void;
 
             /** Triggers when the connectors' source point is changed
              */
@@ -66735,7 +67597,9 @@ declare namespace ej.datavisualization {
             /** Enables or disables the default behaviors of the label.
              * @default {ej.datavisualization.Diagram.LabelConstraints.None}
              */
-            constraints?: ej.datavisualization.Diagram.LabelConstraints | string;
+            constraints?:
+                | ej.datavisualization.Diagram.LabelConstraints
+                | string;
 
             /** Sets the fill color of the text area
              * @default {transparent}
@@ -66765,7 +67629,9 @@ declare namespace ej.datavisualization {
             /** Sets the horizontal alignment of the label.
              * @default {ej.datavisualization.Diagram.HorizontalAlignment.Center}
              */
-            horizontalAlignment?: ej.datavisualization.Diagram.HorizontalAlignment | string;
+            horizontalAlignment?:
+                | ej.datavisualization.Diagram.HorizontalAlignment
+                | string;
 
             /** Sets the hyperlink for the labels in the connectors.
              * @default {none}
@@ -66819,7 +67685,9 @@ declare namespace ej.datavisualization {
             /** Defines whether the label should be positioned whether relative to segments or connector boundaries
              * @default {ej.datavisualization.Diagram.LabelRelativeMode.SegmentPath}
              */
-            relativeMode?: ej.datavisualization.Diagram.LabelRelativeMode | string;
+            relativeMode?:
+                | ej.datavisualization.Diagram.LabelRelativeMode
+                | string;
 
             /** Defines the angle to which the label needs to be rotated
              * @default {0}
@@ -66843,12 +67711,16 @@ declare namespace ej.datavisualization {
             /** Sets how to decorate the label text.
              * @default {ej.datavisualization.Diagram.TextDecorations.None}
              */
-            textDecoration?: ej.datavisualization.Diagram.TextDecorations | string;
+            textDecoration?:
+                | ej.datavisualization.Diagram.TextDecorations
+                | string;
 
             /** Sets the vertical alignment of the label.
              * @default {ej.datavisualization.Diagram.VerticalAlignment.Center}
              */
-            verticalAlignment?: ej.datavisualization.Diagram.VerticalAlignment | string;
+            verticalAlignment?:
+                | ej.datavisualization.Diagram.VerticalAlignment
+                | string;
 
             /** Enables or disables the visibility of the label
              * @default {true}
@@ -66954,7 +67826,9 @@ declare namespace ej.datavisualization {
             /** Sets the type of the Association in a BPMN Process
              * @default {ej.datavisualization.Diagram.AssociationFlows.Default}
              */
-            association?: ej.datavisualization.Diagram.AssociationFlows | string;
+            association?:
+                | ej.datavisualization.Diagram.AssociationFlows
+                | string;
 
             /** Sets the type of the message flow. Applicable, if the connector is of type &quot;BPMN&quot;
              * @default {ej.datavisualization.Diagram.BPMNMessageFlows.Default}
@@ -66969,7 +67843,9 @@ declare namespace ej.datavisualization {
             /** Defines the role of the connector in a UML Class Diagram. Applicable, if the type of the connector is &quot;classifier&quot;.
              * @default {ej.datavisualization.Diagram.ClassifierShapes.Association}
              */
-            relationship?: ej.datavisualization.Diagram.ClassifierShapes | string;
+            relationship?:
+                | ej.datavisualization.Diagram.ClassifierShapes
+                | string;
 
             /** Defines the multiplicity option of the connector
              * @default {null}
@@ -66979,7 +67855,9 @@ declare namespace ej.datavisualization {
             /** Defines the shape of UMLActivity to connector. Applicable, if the connector is of type UMLActivity
              * @default {ej.datavisualization.Diagram.UMLActivityFlow.Control}
              */
-            ActivityFlow?: ej.datavisualization.Diagram.UMLActivityFlow | string;
+            ActivityFlow?:
+                | ej.datavisualization.Diagram.UMLActivityFlow
+                | string;
         }
 
         export interface ConnectorsSourceDecorator {
@@ -67083,7 +67961,9 @@ declare namespace ej.datavisualization {
             /** Enables or disables the behaviors of connectors.
              * @default {ej.datavisualization.Diagram.ConnectorConstraints.Default}
              */
-            constraints?: ej.datavisualization.Diagram.ConnectorConstraints | string;
+            constraints?:
+                | ej.datavisualization.Diagram.ConnectorConstraints
+                | string;
 
             /** Defines the radius of the rounded corner
              * @default {0}
@@ -67097,7 +67977,9 @@ declare namespace ej.datavisualization {
             /** Sets the horizontal alignment of the connector. Applicable, if the parent of the connector is a container.
              * @default {ej.datavisualization.Diagram.HorizontalAlignment.Left}
              */
-            horizontalAlign?: ej.datavisualization.Diagram.HorizontalAlignment | string;
+            horizontalAlign?:
+                | ej.datavisualization.Diagram.HorizontalAlignment
+                | string;
 
             /** A collection of JSON objects where each object represents a label.
              * @default {[]}
@@ -67225,7 +68107,9 @@ declare namespace ej.datavisualization {
             /** To set the vertical alignment of connector (Applicable,if the parent is group).
              * @default {ej.datavisualization.Diagram.VerticalAlignment.Top}
              */
-            verticalAlign?: ej.datavisualization.Diagram.VerticalAlignment | string;
+            verticalAlign?:
+                | ej.datavisualization.Diagram.VerticalAlignment
+                | string;
 
             /** Enables or disables the visibility of connector
              * @default {true}
@@ -67514,17 +68398,23 @@ declare namespace ej.datavisualization {
             /** Defines how to horizontally align the layout within the layout bounds
              * @default {ej.datavisualization.Diagram.HorizontalAlignment.Center}
              */
-            horizontalAlignment?: ej.datavisualization.Diagram.HorizontalAlignment | string;
+            horizontalAlignment?:
+                | ej.datavisualization.Diagram.HorizontalAlignment
+                | string;
 
             /** Defines how to vertically align the layout within the layout bounds
              * @default {ej.datavisualization.Diagram.VerticalAlignment.Center}
              */
-            verticalAlignment?: ej.datavisualization.Diagram.VerticalAlignment | string;
+            verticalAlignment?:
+                | ej.datavisualization.Diagram.VerticalAlignment
+                | string;
 
             /** Sets the orientation/direction to arrange the diagram elements.
              * @default {ej.datavisualization.Diagram.LayoutOrientations.TopToBottom}
              */
-            orientation?: ej.datavisualization.Diagram.LayoutOrientations | string;
+            orientation?:
+                | ej.datavisualization.Diagram.LayoutOrientations
+                | string;
 
             /** Sets the type of the layout based on which the elements will be arranged.
              * @default {ej.datavisualization.Diagram.LayoutTypes.None}
@@ -67571,7 +68461,9 @@ declare namespace ej.datavisualization {
             /** Sets the direction of the text annotation
              * @default {ej.datavisualization.Diagram.BPMNAnnotationDirections.Left}
              */
-            direction?: ej.datavisualization.Diagram.BPMNAnnotationDirection | string;
+            direction?:
+                | ej.datavisualization.Diagram.BPMNAnnotationDirection
+                | string;
 
             /** Sets the height of the text annotation
              * @default {20}
@@ -67655,7 +68547,9 @@ declare namespace ej.datavisualization {
             /** Sets the horizontal alignment of the icon.
              * @default {ej.datavisualization.Diagram.HorizontalAlignment.Center}
              */
-            horizontalAlignment?: ej.datavisualization.Diagram.HorizontalAlignment | string;
+            horizontalAlignment?:
+                | ej.datavisualization.Diagram.HorizontalAlignment
+                | string;
 
             /** To set the margin for the collapse icon of node
              * @default {ej.datavisualization.Diagram.Margin()}
@@ -67675,7 +68569,9 @@ declare namespace ej.datavisualization {
             /** Sets the vertical alignment of the icon.
              * @default {ej.datavisualization.Diagram.VerticalAlignment.Center}
              */
-            verticalAlignment?: ej.datavisualization.Diagram.VerticalAlignment | string;
+            verticalAlignment?:
+                | ej.datavisualization.Diagram.VerticalAlignment
+                | string;
         }
 
         export interface NodesContainer {
@@ -67743,7 +68639,9 @@ declare namespace ej.datavisualization {
             /** Sets the horizontal alignment of the icon.
              * @default {ej.datavisualization.Diagram.HorizontalAlignment.Center}
              */
-            horizontalAlignment?: ej.datavisualization.Diagram.HorizontalAlignment | string;
+            horizontalAlignment?:
+                | ej.datavisualization.Diagram.HorizontalAlignment
+                | string;
 
             /** To set the margin for the expand icon of node
              * @default {ej.datavisualization.Diagram.Margin()}
@@ -67763,7 +68661,9 @@ declare namespace ej.datavisualization {
             /** Sets the vertical alignment of the icon.
              * @default {ej.datavisualization.Diagram.VerticalAlignment.Center}
              */
-            verticalAlignment?: ej.datavisualization.Diagram.VerticalAlignment | string;
+            verticalAlignment?:
+                | ej.datavisualization.Diagram.VerticalAlignment
+                | string;
         }
 
         export interface NodesGradientLinearGradient {
@@ -67919,7 +68819,9 @@ declare namespace ej.datavisualization {
             /** Enables or disables the default behaviors of the label.
              * @default {ej.datavisualization.Diagram.LabelConstraints.None}
              */
-            constraints?: ej.datavisualization.Diagram.LabelConstraints | string;
+            constraints?:
+                | ej.datavisualization.Diagram.LabelConstraints
+                | string;
 
             /** Sets the fill color of the text area
              * @default {transparent}
@@ -67949,7 +68851,9 @@ declare namespace ej.datavisualization {
             /** Sets the horizontal alignment of the label.
              * @default {ej.datavisualization.Diagram.HorizontalAlignment.Center}
              */
-            horizontalAlignment?: ej.datavisualization.Diagram.HorizontalAlignment | string;
+            horizontalAlignment?:
+                | ej.datavisualization.Diagram.HorizontalAlignment
+                | string;
 
             /** Enables/disables the italic style
              * @default {false}
@@ -68016,7 +68920,9 @@ declare namespace ej.datavisualization {
             /** Sets how to decorate the label text.
              * @default {ej.datavisualization.Diagram.TextDecorations.None}
              */
-            textDecoration?: ej.datavisualization.Diagram.TextDecorations | string;
+            textDecoration?:
+                | ej.datavisualization.Diagram.TextDecorations
+                | string;
 
             /** Defines the overflowed content is displayed or not.
              * @default {false}
@@ -68026,7 +68932,9 @@ declare namespace ej.datavisualization {
             /** Sets the vertical alignment of the label.
              * @default {ej.datavisualization.Diagram.VerticalAlignment.Center}
              */
-            verticalAlignment?: ej.datavisualization.Diagram.VerticalAlignment | string;
+            verticalAlignment?:
+                | ej.datavisualization.Diagram.VerticalAlignment
+                | string;
 
             /** Enables or disables the visibility of the label
              * @default {true}
@@ -68498,7 +69406,9 @@ declare namespace ej.datavisualization {
             /** Sets the horizontal alignment of the node. Applicable, if the parent of the node is a container.
              * @default {ej.datavisualization.Diagram.HorizontalAlignment.Left}
              */
-            horizontalAlign?: ej.datavisualization.Diagram.HorizontalAlignment | string;
+            horizontalAlign?:
+                | ej.datavisualization.Diagram.HorizontalAlignment
+                | string;
 
             /** A read only collection of the incoming connectors/edges of the node
              * @default {[]}
@@ -68718,7 +69628,9 @@ declare namespace ej.datavisualization {
             /** Sets the vertical alignment of a node. Applicable, if the parent of a node is a container.
              * @default {ej.datavisualization.Diagram.VerticalAlignment.Top}
              */
-            verticalAlign?: ej.datavisualization.Diagram.VerticalAlignment | string;
+            verticalAlign?:
+                | ej.datavisualization.Diagram.VerticalAlignment
+                | string;
 
             /** Defines the visibility of the node
              * @default {true}
@@ -68806,7 +69718,9 @@ declare namespace ej.datavisualization {
             /** Sets the orientation of the page.
              * @default {ej.datavisualization.Diagram.PageOrientations.Portrait}
              */
-            pageOrientation?: ej.datavisualization.Diagram.PageOrientations | string;
+            pageOrientation?:
+                | ej.datavisualization.Diagram.PageOrientations
+                | string;
 
             /** Defines the height of a diagram page
              * @default {null}
@@ -68826,7 +69740,9 @@ declare namespace ej.datavisualization {
             /** Defines the draggable region of diagram elements.
              * @default {ej.datavisualization.Diagram.BoundaryConstraints.Infinite}
              */
-            boundaryConstraints?: ej.datavisualization.Diagram.BoundaryConstraints | string;
+            boundaryConstraints?:
+                | ej.datavisualization.Diagram.BoundaryConstraints
+                | string;
 
             /** Enables or disables the page breaks
              * @default {false}
@@ -68870,7 +69786,9 @@ declare namespace ej.datavisualization {
             /** Sets the horizontal alignment of the user handle
              * @default {ej.datavisualization.Diagram.HorizontalAlignment.Center}
              */
-            horizontalAlignment?: ej.datavisualization.Diagram.HorizontalAlignment | string;
+            horizontalAlignment?:
+                | ej.datavisualization.Diagram.HorizontalAlignment
+                | string;
 
             /** To set the margin of the user handle
              * @default {ej.datavisualization.Diagram.Margin()}
@@ -68913,7 +69831,9 @@ declare namespace ej.datavisualization {
             /** Defines the position of the user handle
              * @default {ej.datavisualization.Diagram.UserHandlePositions.BottomCenter}
              */
-            position?: ej.datavisualization.Diagram.UserHandlePositions | string;
+            position?:
+                | ej.datavisualization.Diagram.UserHandlePositions
+                | string;
 
             /** Defines the size of the user handle
              * @default {8}
@@ -68927,7 +69847,9 @@ declare namespace ej.datavisualization {
             /** Sets the vertical alignment of the user handle
              * @default {ej.datavisualization.Diagram.VerticalAlignment.Center}
              */
-            verticalAlignment?: ej.datavisualization.Diagram.VerticalAlignment | string;
+            verticalAlignment?:
+                | ej.datavisualization.Diagram.VerticalAlignment
+                | string;
 
             /** Defines the visibility of the user handle
              * @default {true}
@@ -68944,7 +69866,9 @@ declare namespace ej.datavisualization {
             /** Controls the visibility of selector.
              * @default {ej.datavisualization.Diagram.SelectorConstraints.All}
              */
-            constraints?: ej.datavisualization.Diagram.SelectorConstraints | string;
+            constraints?:
+                | ej.datavisualization.Diagram.SelectorConstraints
+                | string;
 
             /** Defines a method that dynamically enables/ disables the interaction with multiple selection.
              * @default {null}
@@ -69142,7 +70066,9 @@ declare namespace ej.datavisualization {
 
             /** Defines and sets the snapConstraints
              */
-            snapConstraints?: ej.datavisualization.Diagram.SnapConstraints | string;
+            snapConstraints?:
+                | ej.datavisualization.Diagram.SnapConstraints
+                | string;
 
             /** Defines the minimum distance between the selected object and the nearest object
              * @default {5}
@@ -69158,7 +70084,9 @@ declare namespace ej.datavisualization {
             /** Defines the horizontal alignment of tooltip.
              * @default {ej.datavisualization.Diagram.HorizontalAlignment.Center}
              */
-            horizontal?: ej.datavisualization.Diagram.HorizontalAlignment | string;
+            horizontal?:
+                | ej.datavisualization.Diagram.HorizontalAlignment
+                | string;
 
             /** Defines the vertical alignment of tooltip.
              * @default {ej.datavisualization.Diagram.VerticalAlignment.Bottom}
@@ -70634,7 +71562,9 @@ declare namespace ej.datavisualization {
             /** Specifies the text style of the heat map label.
              * @default {ej.HeatMap.TextDecoration.None}
              */
-            textDecoration?: ej.datavisualization.HeatMap.TextDecoration | string;
+            textDecoration?:
+                | ej.datavisualization.HeatMap.TextDecoration
+                | string;
 
             /** Specifies the font size of the heat map label.
              * @default {10}
@@ -70775,7 +71705,9 @@ declare namespace ej.datavisualization {
             /** Specifies the orientation of the heatmap legend
              * @default {ej.HeatMap.LegendOrientation.Horizontal}
              */
-            orientation?: ej.datavisualization.HeatMap.LegendOrientation | string;
+            orientation?:
+                | ej.datavisualization.HeatMap.LegendOrientation
+                | string;
 
             /** Specifies the legend mode as gradient or list.
              * @default {ej.HeatMap.LegendMode.Gradient}
@@ -70801,7 +71733,9 @@ declare namespace ej.datavisualization {
             /** Specifies the text style of the heatmap legend label.
              * @default {ej.HeatMap.TextDecoration.None}
              */
-            textDecoration?: ej.datavisualization.HeatMap.TextDecoration | string;
+            textDecoration?:
+                | ej.datavisualization.HeatMap.TextDecoration
+                | string;
 
             /** Specifies the font size of the heatmap legend label.
              * @default {10}
@@ -72160,7 +73094,9 @@ declare namespace ej.datavisualization {
             /** Alignment of sunburst datalabel
              * @default {Angle. See DatalabelAlignment}
              */
-            labelRotationMode?: ej.datavisualization.Sunburst.SunburstLabelRotationMode | string;
+            labelRotationMode?:
+                | ej.datavisualization.Sunburst.SunburstLabelRotationMode
+                | string;
 
             /** Options for customizing the data label font.
              */
@@ -72179,7 +73115,9 @@ declare namespace ej.datavisualization {
             /** Datalabel overflow mode
              * @default {Trim. See LabelOverflowMode}
              */
-            labelOverflowMode?: ej.datavisualization.Sunburst.SunburstLabelOverflowMode | string;
+            labelOverflowMode?:
+                | ej.datavisualization.Sunburst.SunburstLabelOverflowMode
+                | string;
         }
 
         export interface TitleFont {
@@ -72249,7 +73187,9 @@ declare namespace ej.datavisualization {
             /** Sub title text alignment
              * @default {far. See TextAlignment}
              */
-            textAlignment?: ej.datavisualization.Sunburst.SunburstAlignment | string;
+            textAlignment?:
+                | ej.datavisualization.Sunburst.SunburstAlignment
+                | string;
 
             /** Options for customizing the font of sub title.
              */
@@ -72269,7 +73209,9 @@ declare namespace ej.datavisualization {
             /** Title text alignment
              * @default {center. See TextAlignment}
              */
-            textAlignment?: ej.datavisualization.Sunburst.SunburstAlignment | string;
+            textAlignment?:
+                | ej.datavisualization.Sunburst.SunburstAlignment
+                | string;
 
             /** Options for customizing the font of sunburst title.
              */
@@ -72450,7 +73392,9 @@ declare namespace ej.datavisualization {
             /** Alignment of the legend title.
              * @default {center. See Alignment}
              */
-            textAlignment?: ej.datavisualization.Sunburst.SunburstAlignment | string;
+            textAlignment?:
+                | ej.datavisualization.Sunburst.SunburstAlignment
+                | string;
         }
 
         export interface Legend {
@@ -72462,12 +73406,16 @@ declare namespace ej.datavisualization {
             /** Interactive action of legend items.
              * @default {toggleSegmentVisibility. See Alignment}
              */
-            clickAction?: ej.datavisualization.Sunburst.SunburstClickAction | string;
+            clickAction?:
+                | ej.datavisualization.Sunburst.SunburstClickAction
+                | string;
 
             /** Horizontal alignment of the legend.
              * @default {Center. See Alignment}
              */
-            alignment?: ej.datavisualization.Sunburst.SunburstAlignment | string;
+            alignment?:
+                | ej.datavisualization.Sunburst.SunburstAlignment
+                | string;
 
             /** Options for customizing the legend border.
              */
@@ -72504,7 +73452,9 @@ declare namespace ej.datavisualization {
              * **custom** as value to this property.
              * @default {Bottom. See Position}
              */
-            position?: ej.datavisualization.Sunburst.SunburstLegendPosition | string;
+            position?:
+                | ej.datavisualization.Sunburst.SunburstLegendPosition
+                | string;
 
             /** Shape of the legend items.
              * @default {None. See Shape}
@@ -72551,12 +73501,16 @@ declare namespace ej.datavisualization {
             /** Toolbar horizontal alignment
              * @default {right. See Alignment}
              */
-            toolbarHorizontalAlignment?: ej.datavisualization.Sunburst.SunburstHorizontalAlignment | string;
+            toolbarHorizontalAlignment?:
+                | ej.datavisualization.Sunburst.SunburstHorizontalAlignment
+                | string;
 
             /** Toolbar vertical alignment
              * @default {top. See Alignment}
              */
-            toolbarVerticalAlignment?: ej.datavisualization.Sunburst.SunburstVerticalAlignment | string;
+            toolbarVerticalAlignment?:
+                | ej.datavisualization.Sunburst.SunburstVerticalAlignment
+                | string;
         }
     }
     namespace Sunburst {
@@ -72911,7 +73865,9 @@ interface JQuery {
     ejRadioButton(options?: ej.RadioButton.Model): JQuery;
     ejRadioButton(memberName: any, value?: any, param?: any): any;
 
-    ejRangeNavigator(options?: ej.datavisualization.RangeNavigator.Model): JQuery;
+    ejRangeNavigator(
+        options?: ej.datavisualization.RangeNavigator.Model,
+    ): JQuery;
     ejRangeNavigator(memberName: any, value?: any, param?: any): any;
 
     ejRating(options?: ej.Rating.Model): JQuery;

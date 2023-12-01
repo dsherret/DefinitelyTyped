@@ -5,7 +5,7 @@ import pdfParse = require("pdf-parse");
 const dataBuffer: Buffer = null as never;
 
 // https://www.npmjs.com/package/pdf-parse#basic-usage---local-files
-pdfParse(dataBuffer).then(data => {
+pdfParse(dataBuffer).then((data) => {
     // number of pages
     const numpages: number = data.numpages;
     // number of rendered pages
@@ -27,7 +27,7 @@ let options: pdfParse.Options;
 options = {};
 
 options = {
-    pagerender: pageData => {
+    pagerender: (pageData) => {
         const _pageData: any = pageData;
         return "modified callback";
     },

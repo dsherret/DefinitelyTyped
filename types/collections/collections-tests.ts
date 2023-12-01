@@ -56,7 +56,7 @@ array = set.swap(1, 4, ...DATA);
 set.splay(DATA[0]);
 bool = set.splayIndex(1);
 set.reduce((acc, v) => [...acc, v], [] as Person[]);
-set.reduceRight(acc => acc + 1, 0);
+set.reduceRight((acc) => acc + 1, 0);
 iterator = set.iterate();
 
 bool = iterator.next().done;
@@ -85,6 +85,6 @@ node.log(
     () => {},
 );
 node.reduce((acc, v) => [...acc, v], [] as Person[], 3, {}, set);
-node.reduceRight(acc => acc + 1, 0, 3, {}, set);
+node.reduceRight((acc) => acc + 1, 0, 3, {}, set);
 str = node.summary();
 node.touch();

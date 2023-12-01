@@ -9,7 +9,10 @@ import type { Options as NodeMailerOptions } from "nodemailer/lib/mailer";
  * The function `previewEmail` returns a `Promise` which resolves with a URL.
  * We automatically open the browser to this URL unless you specify options.open as false
  */
-declare function previewEmail(message: NodeMailerOptions, options?: previewEmail.Options): Promise<string>;
+declare function previewEmail(
+    message: NodeMailerOptions,
+    options?: previewEmail.Options,
+): Promise<string>;
 
 declare namespace previewEmail {
     interface Options {

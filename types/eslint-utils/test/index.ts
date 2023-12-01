@@ -4,7 +4,10 @@ import * as ESTree from "estree";
 
 declare const commentOrToken: ESTree.Comment | AST.Token;
 declare const identifier: ESTree.Identifier;
-declare const functionLike: ESTree.ArrowFunctionExpression | ESTree.FunctionDeclaration | ESTree.FunctionExpression;
+declare const functionLike:
+    | ESTree.ArrowFunctionExpression
+    | ESTree.FunctionDeclaration
+    | ESTree.FunctionExpression;
 declare const propertyLike:
     | ESTree.MemberExpression
     | ESTree.MethodDefinition

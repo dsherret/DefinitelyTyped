@@ -8,7 +8,10 @@ import { TopBarProps } from "./top-bar";
  * Responsive navigation component.
  * http://foundation.zurb.com/sites/docs/responsive-navigation.html
  */
-export declare class ResponsiveNavigation extends Component<ResponsiveNavigationProps, ResponsiveNavigationState> {
+export declare class ResponsiveNavigation extends Component<
+    ResponsiveNavigationProps,
+    ResponsiveNavigationState
+> {
     constructor();
     componentWillMount(): void;
     componentDidMount(): void;
@@ -62,7 +65,9 @@ export interface ResponsiveNavigationState {
     isTitleBarVisible: boolean;
     isTopBarVisible: boolean;
 }
-export interface ResponsiveNavigationProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface ResponsiveNavigationProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     breakpoint?: number | undefined;
     titleBar?: TitleBarProps | undefined;
     menuIcon?: MenuIconProps | undefined;
@@ -76,8 +81,9 @@ export interface ResponsiveNavigationProps extends FlexboxPropTypes, React.HTMLA
  * @returns {Object}
  */
 export declare const TitleBar: React.FunctionComponent<TitleBarProps>;
-export interface TitleBarProps extends GeneralPropTypes, React.HTMLAttributes<HTMLDivElement> {
-}
+export interface TitleBarProps
+    extends GeneralPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {}
 /**
  * Title bar menu icon sub-component.
  *
@@ -85,8 +91,9 @@ export interface TitleBarProps extends GeneralPropTypes, React.HTMLAttributes<HT
  * @returns {Object}
  */
 export declare const MenuIcon: React.FunctionComponent<MenuIconProps>;
-export interface MenuIconProps extends GeneralPropTypes, React.ButtonHTMLAttributes<HTMLButtonElement> {
-}
+export interface MenuIconProps
+    extends GeneralPropTypes,
+        React.ButtonHTMLAttributes<HTMLButtonElement> {}
 /**
  * Title bar title sub-component.
  *
@@ -94,5 +101,6 @@ export interface MenuIconProps extends GeneralPropTypes, React.ButtonHTMLAttribu
  * @returns {Object}
  */
 export declare const TitleBarTitle: React.FunctionComponent<TitleBarTitleProps>;
-export interface TitleBarTitleProps extends GeneralPropTypes, React.HTMLAttributes<HTMLDivElement> {
-}
+export interface TitleBarTitleProps
+    extends GeneralPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {}

@@ -55,7 +55,11 @@ export function csv<Columns extends string>(
  */
 export function csv<ParsedRow extends object, Columns extends string = string>(
     url: string,
-    row: (rawRow: DSVRowString<Columns>, index: number, columns: Columns[]) => ParsedRow | undefined | null,
+    row: (
+        rawRow: DSVRowString<Columns>,
+        index: number,
+        columns: Columns[],
+    ) => ParsedRow | undefined | null,
 ): Promise<DSVParsedArray<ParsedRow>>;
 /**
  * Fetches the CSV file at the specified input URL and returns
@@ -79,7 +83,11 @@ export function csv<ParsedRow extends object, Columns extends string = string>(
 export function csv<ParsedRow extends object, Columns extends string = string>(
     url: string,
     init: RequestInit,
-    row: (rawRow: DSVRowString<Columns>, index: number, columns: Columns[]) => ParsedRow | undefined | null,
+    row: (
+        rawRow: DSVRowString<Columns>,
+        index: number,
+        columns: Columns[],
+    ) => ParsedRow | undefined | null,
 ): Promise<DSVParsedArray<ParsedRow>>;
 
 /**
@@ -121,7 +129,11 @@ export function dsv<Columns extends string>(
 export function dsv<ParsedRow extends object, Columns extends string = string>(
     delimiter: string,
     url: string,
-    row: (rawRow: DSVRowString<Columns>, index: number, columns: Columns[]) => ParsedRow | undefined | null,
+    row: (
+        rawRow: DSVRowString<Columns>,
+        index: number,
+        columns: Columns[],
+    ) => ParsedRow | undefined | null,
 ): Promise<DSVParsedArray<ParsedRow>>;
 /**
  * Fetches the DSV file with the specified delimiter character at the specified input URL and returns
@@ -147,7 +159,11 @@ export function dsv<ParsedRow extends object, Columns extends string = string>(
     delimiter: string,
     url: string,
     init: RequestInit,
-    row: (rawRow: DSVRowString<Columns>, index: number, columns: Columns[]) => ParsedRow | undefined | null,
+    row: (
+        rawRow: DSVRowString<Columns>,
+        index: number,
+        columns: Columns[],
+    ) => ParsedRow | undefined | null,
 ): Promise<DSVParsedArray<ParsedRow>>;
 
 /**
@@ -168,7 +184,10 @@ export function html(url: string, init?: RequestInit): Promise<Document>;
  * @param url A valid URL string.
  * @param init An optional object of image properties to set.
  */
-export function image(url: string, init?: Partial<HTMLImageElement>): Promise<HTMLImageElement>;
+export function image(
+    url: string,
+    init?: Partial<HTMLImageElement>,
+): Promise<HTMLImageElement>;
 
 /**
  * Fetches the json file at the specified input URL and returns it as a Promise of a parsed JSON object.
@@ -244,7 +263,11 @@ export function tsv<Columns extends string>(
  */
 export function tsv<ParsedRow extends object, Columns extends string = string>(
     url: string,
-    row: (rawRow: DSVRowString<Columns>, index: number, columns: Columns[]) => ParsedRow | undefined | null,
+    row: (
+        rawRow: DSVRowString<Columns>,
+        index: number,
+        columns: Columns[],
+    ) => ParsedRow | undefined | null,
 ): Promise<DSVParsedArray<ParsedRow>>;
 /**
  * Fetches the TSV file at the specified input URL and returns
@@ -268,7 +291,11 @@ export function tsv<ParsedRow extends object, Columns extends string = string>(
 export function tsv<ParsedRow extends object, Columns extends string = string>(
     url: string,
     init: RequestInit,
-    row: (rawRow: DSVRowString<Columns>, index: number, columns: Columns[]) => ParsedRow | undefined | null,
+    row: (
+        rawRow: DSVRowString<Columns>,
+        index: number,
+        columns: Columns[],
+    ) => ParsedRow | undefined | null,
 ): Promise<DSVParsedArray<ParsedRow>>;
 
 /**

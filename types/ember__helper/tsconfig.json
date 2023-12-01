@@ -1,17 +1,12 @@
 {
-    "compilerOptions": {
-        "module": "commonjs",
-        "lib": [
-            "es6"
-        ],
-        "strict": true,
-        "exactOptionalPropertyTypes": true,
-        "types": [],
-        "noEmit": true,
-        "forceConsistentCasingInFileNames": true
-    },
-    "files": [
-        "index.d.ts",
-        "ember__helper-tests.ts"
-    ]
+  "compilerOptions": {
+    "module": "commonjs",
+    "lib": ["es6"],
+    "strict": true,
+    "exactOptionalPropertyTypes": true,
+    "types": [],
+    "noEmit": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "files": ["index.d.ts", "ember__helper-tests.ts"]
 }

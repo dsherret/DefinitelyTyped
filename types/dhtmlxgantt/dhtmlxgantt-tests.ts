@@ -12,7 +12,7 @@ gantt.config.scale_height = 40;
 gantt.config.xml_date = "%m-%d-%Y";
 
 // templates
-gantt.templates.task_class = function(start: Date, end: Date, task: any) {
+gantt.templates.task_class = function (start: Date, end: Date, task: any) {
     if (task.some) {
         return "classA";
     } else {
@@ -30,7 +30,7 @@ gantt.load("/data/events");
 const wbs: string = gantt.getWBSCode(gantt.getTask(1));
 
 // events
-gantt.attachEvent("onBeforeLightbox", function(id?: string) {
+gantt.attachEvent("onBeforeLightbox", function (id?: string) {
     gantt.showTask(id);
 });
 // gantt enterprise

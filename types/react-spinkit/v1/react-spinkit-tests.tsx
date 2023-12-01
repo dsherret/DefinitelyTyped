@@ -18,6 +18,9 @@ const spinners = [
 
     // Spinner options
     <Spinner spinnerName="wordpress" noFadeIn />,
-    <Spinner spinnerName="wordpress" overrideSpinnerClassName="my-class-to-override" />,
+    <Spinner
+        spinnerName="wordpress"
+        overrideSpinnerClassName="my-class-to-override"
+    />,
     <Spinner spinnerName="wordpress" className="my-class" />,
 ];

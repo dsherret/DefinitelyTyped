@@ -48,7 +48,10 @@ declare namespace AMap {
          * @param callback 查询回调
          */
         getLocalCity(
-            callback: (status: CitySearch.SearchStatus, result: CitySearch.SearchResult | string) => void,
+            callback: (
+                status: CitySearch.SearchStatus,
+                result: CitySearch.SearchResult | string,
+            ) => void,
         ): void;
         /**
          * 根据输入IP地址返回对应城市信息
@@ -57,7 +60,10 @@ declare namespace AMap {
          */
         getCityByIp(
             ip: string,
-            callback: (status: CitySearch.SearchStatus, result: CitySearch.SearchResult | string) => void,
+            callback: (
+                status: CitySearch.SearchStatus,
+                result: CitySearch.SearchResult | string,
+            ) => void,
         ): void;
     }
 }

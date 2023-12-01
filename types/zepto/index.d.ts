@@ -261,13 +261,20 @@ interface ZeptoStatic {
      * @param fn Callback function when the HTTP GET request is completed.
      * @return The XMLHttpRequest object.
      */
-    get(url: string, fn: (data: any, status: string, xhr: XMLHttpRequest) => void): XMLHttpRequest;
+    get(
+        url: string,
+        fn: (data: any, status: string, xhr: XMLHttpRequest) => void,
+    ): XMLHttpRequest;
 
     /**
      * @see ZeptoStatic.get
      * @param data See ZeptoAjaxSettings.data
      */
-    get(url: string, data: any, fn: (data: any, status: string, xhr: XMLHttpRequest) => void): XMLHttpRequest;
+    get(
+        url: string,
+        data: any,
+        fn: (data: any, status: string, xhr: XMLHttpRequest) => void,
+    ): XMLHttpRequest;
 
     /**
      * Get JSON data via Ajax GET request. This is a shortcut for the $.ajax method.
@@ -275,13 +282,20 @@ interface ZeptoStatic {
      * @param fn Callback function when the HTTP GET request is completed.
      * @return The XMLHttpRequest object.
      */
-    getJSON(url: string, fn: (data: any, status: string, xhr: XMLHttpRequest) => void): XMLHttpRequest;
+    getJSON(
+        url: string,
+        fn: (data: any, status: string, xhr: XMLHttpRequest) => void,
+    ): XMLHttpRequest;
 
     /**
      * @see ZeptoStatic.getJSON
      * @param data See ZeptoAjaxSettings.data
      */
-    getJSON(url: string, data: any, fn: (data: any, status: string, xhr: XMLHttpRequest) => void): XMLHttpRequest;
+    getJSON(
+        url: string,
+        data: any,
+        fn: (data: any, status: string, xhr: XMLHttpRequest) => void,
+    ): XMLHttpRequest;
 
     /**
      * Serialize an object to a URL-encoded string representation for use in Ajax request query strings and post data. If shallow is set, nested objects are not serialized and nested array values won’t use square brackets on their keys.
@@ -298,7 +312,11 @@ interface ZeptoStatic {
      * @param fn Callback function when the HTTP POST request is completed.
      * @return The XMLHttpRequest object.
      */
-    post(url: string, fn: (data: any, status: string, xhr: XMLHttpRequest) => void, dataType?: string): XMLHttpRequest;
+    post(
+        url: string,
+        fn: (data: any, status: string, xhr: XMLHttpRequest) => void,
+        dataType?: string,
+    ): XMLHttpRequest;
 
     /**
      * @see ZeptoStatic.post
@@ -512,7 +530,10 @@ interface ZeptoCollection {
      * @param fn
      * @param oldValue
      */
-    attr(name: string, fn: (index: number, oldValue: any) => void): ZeptoCollection;
+    attr(
+        name: string,
+        fn: (index: number, oldValue: any) => void,
+    ): ZeptoCollection;
 
     /**
      * @see ZeptoCollection.attr
@@ -685,7 +706,9 @@ interface ZeptoCollection {
      * @param fn
      * @return
      */
-    forEach(fn: (item: any, index: number, array: any[]) => void): ZeptoCollection;
+    forEach(
+        fn: (item: any, index: number, array: any[]) => void,
+    ): ZeptoCollection;
 
     /**
      * Get all elements or a single element from the current collection. When no index is given, returns all elements in an ordinary array. When index is specified, return only the element at that position. This is different than eq in the way that the returned node is not wrapped in a Zepto collection.
@@ -1018,7 +1041,10 @@ interface ZeptoCollection {
      * @see ZeptoCollection.Prop
      * @param fn
      */
-    prop(name: string, fn: (index: number, oldValue: any) => void): ZeptoCollection;
+    prop(
+        name: string,
+        fn: (index: number, oldValue: any) => void,
+    ): ZeptoCollection;
 
     /**
      * Add elements to the end of the current collection.
@@ -1041,7 +1067,15 @@ interface ZeptoCollection {
      * @param fn
      * @return
      */
-    reduce(fn: (memo: any, item: any, index: number, array: any[], initial: any) => any): any;
+    reduce(
+        fn: (
+            memo: any,
+            item: any,
+            index: number,
+            array: any[],
+            initial: any,
+        ) => any,
+    ): any;
 
     /**
      * Remove elements in the current collection from their parent nodes, effectively detaching them from the DOM.
@@ -1067,7 +1101,9 @@ interface ZeptoCollection {
      * @see ZeptoCollection.removeClass
      * @param fn
      */
-    removeClass(fn: (index: number, oldClassName: string) => void): ZeptoCollection;
+    removeClass(
+        fn: (index: number, oldClassName: string) => void,
+    ): ZeptoCollection;
 
     /**
      * Replace each element in the collection—both its contents and the element itself—with the new content. Content can be of any type described in before.
@@ -1158,7 +1194,10 @@ interface ZeptoCollection {
      * @see ZeptoCollection.toggleClass
      * @param fn
      */
-    toggleClass(fn: (index: number, oldClassNames: string) => void, setting?: boolean): ZeptoCollection;
+    toggleClass(
+        fn: (index: number, oldClassNames: string) => void,
+        setting?: boolean,
+    ): ZeptoCollection;
 
     /**
      * Remove immediate parent nodes of each element in the collection and put their children in their place. Basically, this method removes one level of ancestry while keeping current elements in the DOM.
@@ -1277,7 +1316,11 @@ interface ZeptoCollection {
      * @param fn
      * @return
      */
-    delegate(selector: string, type: string, fn: ZeptoEventHandler): ZeptoCollection;
+    delegate(
+        selector: string,
+        type: string,
+        fn: ZeptoEventHandler,
+    ): ZeptoCollection;
 
     /**
      * Detach event handler added by live.
@@ -1411,7 +1454,11 @@ interface ZeptoCollection {
      * @param fn
      * @return
      */
-    undelegate(selector: string, type: string, fn: ZeptoEventHandler): ZeptoCollection;
+    undelegate(
+        selector: string,
+        type: string,
+        fn: ZeptoEventHandler,
+    ): ZeptoCollection;
 
     focusin(): ZeptoCollection;
     focusin(fn: ZeptoEventHandler): ZeptoCollection;
@@ -1497,7 +1544,10 @@ interface ZeptoCollection {
      * @example
      *    $('#some_element').load('/foo.html #bar')
      */
-    load(url: string, fn?: (data: any, status: string, xhr: XMLHttpRequest) => void): ZeptoCollection;
+    load(
+        url: string,
+        fn?: (data: any, status: string, xhr: XMLHttpRequest) => void,
+    ): ZeptoCollection;
 
     /**
      * Form
@@ -1560,7 +1610,12 @@ interface ZeptoCollection {
      *    If the first argument is a string instead of object, it is taken as a CSS keyframe animation name.
      * @note Zepto exclusively uses CSS transitions for effects and animation. jQuery easings are not supported. jQuery's syntax for relative changes ("=+10px") is not supported. See the spec for a list of animatable properties (http://www.w3.org/TR/css3-transitions/#animatable-properties-). Browser support may vary, so be sure to test in all browsers you want to support.
      */
-    animate(properties: any, duration?: number, easing?: string, complete?: () => void): ZeptoCollection;
+    animate(
+        properties: any,
+        duration?: number,
+        easing?: string,
+        complete?: () => void,
+    ): ZeptoCollection;
 
     /**
      * @see ZeptoCollection.animate
@@ -1589,9 +1644,15 @@ interface ZeptoAjaxSettings {
     xhrFields?: { [key: string]: any } | undefined;
     username?: string | undefined;
     password?: string | undefined;
-    beforeSend?: ((xhr: XMLHttpRequest, settings: ZeptoAjaxSettings) => boolean) | undefined;
-    success?: ((data: any, status: string, xhr: XMLHttpRequest) => void) | undefined;
-    error?: ((xhr: XMLHttpRequest, errorType: string, error: Error) => void) | undefined;
+    beforeSend?:
+        | ((xhr: XMLHttpRequest, settings: ZeptoAjaxSettings) => boolean)
+        | undefined;
+    success?:
+        | ((data: any, status: string, xhr: XMLHttpRequest) => void)
+        | undefined;
+    error?:
+        | ((xhr: XMLHttpRequest, errorType: string, error: Error) => void)
+        | undefined;
     complete?: ((xhr: XMLHttpRequest, status: string) => void) | undefined;
 }
 

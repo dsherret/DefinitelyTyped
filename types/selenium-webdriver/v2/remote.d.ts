@@ -99,5 +99,8 @@ export class FileDetector extends webdriver.FileDetector {
      * @return {!webdriver.promise.Promise<string>} A promise for the processed
      *     file path.
      */
-    handleFile(driver: webdriver.WebDriver, file: string): webdriver.promise.Promise<string>;
+    handleFile(
+        driver: webdriver.WebDriver,
+        file: string,
+    ): webdriver.promise.Promise<string>;
 }

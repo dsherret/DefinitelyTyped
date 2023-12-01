@@ -45,7 +45,9 @@ declare namespace GoogleAppsScript {
             setDataSourceUrl(url: string): AreaChartBuilder;
             setDataTable(tableBuilder: DataTableBuilder): AreaChartBuilder;
             setDataTable(table: DataTableSource): AreaChartBuilder;
-            setDataViewDefinition(dataViewDefinition: DataViewDefinition): AreaChartBuilder;
+            setDataViewDefinition(
+                dataViewDefinition: DataViewDefinition,
+            ): AreaChartBuilder;
             setDimensions(width: Integer, height: Integer): AreaChartBuilder;
             setLegendPosition(position: Position): AreaChartBuilder;
             setLegendTextStyle(textStyle: TextStyle): AreaChartBuilder;
@@ -92,7 +94,9 @@ declare namespace GoogleAppsScript {
             setDataSourceUrl(url: string): BarChartBuilder;
             setDataTable(tableBuilder: DataTableBuilder): BarChartBuilder;
             setDataTable(table: DataTableSource): BarChartBuilder;
-            setDataViewDefinition(dataViewDefinition: DataViewDefinition): BarChartBuilder;
+            setDataViewDefinition(
+                dataViewDefinition: DataViewDefinition,
+            ): BarChartBuilder;
             setDimensions(width: Integer, height: Integer): BarChartBuilder;
             setLegendPosition(position: Position): BarChartBuilder;
             setLegendTextStyle(textStyle: TextStyle): BarChartBuilder;
@@ -259,7 +263,9 @@ declare namespace GoogleAppsScript {
             setDataSourceUrl(url: string): ColumnChartBuilder;
             setDataTable(tableBuilder: DataTableBuilder): ColumnChartBuilder;
             setDataTable(table: DataTableSource): ColumnChartBuilder;
-            setDataViewDefinition(dataViewDefinition: DataViewDefinition): ColumnChartBuilder;
+            setDataViewDefinition(
+                dataViewDefinition: DataViewDefinition,
+            ): ColumnChartBuilder;
             setDimensions(width: Integer, height: Integer): ColumnChartBuilder;
             setLegendPosition(position: Position): ColumnChartBuilder;
             setLegendTextStyle(textStyle: TextStyle): ColumnChartBuilder;
@@ -297,8 +303,7 @@ declare namespace GoogleAppsScript {
          * methods: a DataTable can be passed around, but not manipulated directly.
          */
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface DataTable {
-        }
+        interface DataTable {}
         /**
          * Builder of DataTable objects. Building a data table consists of first specifying its columns, and
          * then adding its rows, one at a time. Example:
@@ -318,7 +323,11 @@ declare namespace GoogleAppsScript {
             addColumn(type: ColumnType, label: string): DataTableBuilder;
             addRow(values: any[]): DataTableBuilder;
             build(): DataTable;
-            setValue(row: Integer, column: Integer, value: any): DataTableBuilder;
+            setValue(
+                row: Integer,
+                column: Integer,
+                value: any,
+            ): DataTableBuilder;
         }
         /**
          * Interface for objects that can represent their data as a DataTable.
@@ -343,8 +352,7 @@ declare namespace GoogleAppsScript {
          * to define and use a DataViewDefinition.
          */
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface DataViewDefinition {
-        }
+        interface DataViewDefinition {}
         /**
          * Builder for DataViewDefinition objects.
          *
@@ -419,7 +427,9 @@ declare namespace GoogleAppsScript {
             setDataSourceUrl(url: string): LineChartBuilder;
             setDataTable(tableBuilder: DataTableBuilder): LineChartBuilder;
             setDataTable(table: DataTableSource): LineChartBuilder;
-            setDataViewDefinition(dataViewDefinition: DataViewDefinition): LineChartBuilder;
+            setDataViewDefinition(
+                dataViewDefinition: DataViewDefinition,
+            ): LineChartBuilder;
             setDimensions(width: Integer, height: Integer): LineChartBuilder;
             setLegendPosition(position: Position): LineChartBuilder;
             setLegendTextStyle(textStyle: TextStyle): LineChartBuilder;
@@ -470,7 +480,9 @@ declare namespace GoogleAppsScript {
             setMaxValue(maxValue: Integer): NumberRangeFilterBuilder;
             setMinValue(minValue: Integer): NumberRangeFilterBuilder;
             setOrientation(orientation: Orientation): NumberRangeFilterBuilder;
-            setShowRangeValues(showRangeValues: boolean): NumberRangeFilterBuilder;
+            setShowRangeValues(
+                showRangeValues: boolean,
+            ): NumberRangeFilterBuilder;
             setTicks(ticks: Integer): NumberRangeFilterBuilder;
         }
         /**
@@ -515,7 +527,9 @@ declare namespace GoogleAppsScript {
             setDataSourceUrl(url: string): PieChartBuilder;
             setDataTable(tableBuilder: DataTableBuilder): PieChartBuilder;
             setDataTable(table: DataTableSource): PieChartBuilder;
-            setDataViewDefinition(dataViewDefinition: DataViewDefinition): PieChartBuilder;
+            setDataViewDefinition(
+                dataViewDefinition: DataViewDefinition,
+            ): PieChartBuilder;
             setDimensions(width: Integer, height: Integer): PieChartBuilder;
             setLegendPosition(position: Position): PieChartBuilder;
             setLegendTextStyle(textStyle: TextStyle): PieChartBuilder;
@@ -568,7 +582,9 @@ declare namespace GoogleAppsScript {
             setDataSourceUrl(url: string): ScatterChartBuilder;
             setDataTable(tableBuilder: DataTableBuilder): ScatterChartBuilder;
             setDataTable(table: DataTableSource): ScatterChartBuilder;
-            setDataViewDefinition(dataViewDefinition: DataViewDefinition): ScatterChartBuilder;
+            setDataViewDefinition(
+                dataViewDefinition: DataViewDefinition,
+            ): ScatterChartBuilder;
             setDimensions(width: Integer, height: Integer): ScatterChartBuilder;
             setLegendPosition(position: Position): ScatterChartBuilder;
             setLegendTextStyle(textStyle: TextStyle): ScatterChartBuilder;
@@ -622,13 +638,18 @@ declare namespace GoogleAppsScript {
             build(): Chart;
             enablePaging(enablePaging: boolean): TableChartBuilder;
             enablePaging(pageSize: Integer): TableChartBuilder;
-            enablePaging(pageSize: Integer, startPage: Integer): TableChartBuilder;
+            enablePaging(
+                pageSize: Integer,
+                startPage: Integer,
+            ): TableChartBuilder;
             enableRtlTable(rtlEnabled: boolean): TableChartBuilder;
             enableSorting(enableSorting: boolean): TableChartBuilder;
             setDataSourceUrl(url: string): TableChartBuilder;
             setDataTable(tableBuilder: DataTableBuilder): TableChartBuilder;
             setDataTable(table: DataTableSource): TableChartBuilder;
-            setDataViewDefinition(dataViewDefinition: DataViewDefinition): TableChartBuilder;
+            setDataViewDefinition(
+                dataViewDefinition: DataViewDefinition,
+            ): TableChartBuilder;
             setDimensions(width: Integer, height: Integer): TableChartBuilder;
             setFirstRowNumber(number: Integer): TableChartBuilder;
             setInitialSortingAscending(column: Integer): TableChartBuilder;

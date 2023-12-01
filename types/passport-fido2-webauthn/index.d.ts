@@ -21,7 +21,10 @@ declare class WebAuthnStrategy extends PassportStrategy {
         verify: WebAuthnStrategy.VerifyFunction,
         register: WebAuthnStrategy.RegisterFunction,
     );
-    constructor(verify: WebAuthnStrategy.VerifyFunction, register: WebAuthnStrategy.RegisterFunction);
+    constructor(
+        verify: WebAuthnStrategy.VerifyFunction,
+        register: WebAuthnStrategy.RegisterFunction,
+    );
 }
 
 declare namespace WebAuthnStrategy {
@@ -31,10 +34,18 @@ declare namespace WebAuthnStrategy {
     class SessionChallengeStore {
         constructor(options?: SessionStoreOptions);
 
-        challenge(req: express.Request, info: { user: any }, cb: ChallengeFunction): void;
+        challenge(
+            req: express.Request,
+            info: { user: any },
+            cb: ChallengeFunction,
+        ): void;
         challenge(req: express.Request, cb: ChallengeFunction): void;
 
-        verify(req: express.Request, challenge: Buffer, validated: ValidatedFunction): void;
+        verify(
+            req: express.Request,
+            challenge: Buffer,
+            validated: ValidatedFunction,
+        ): void;
     }
 
     interface StrategyOptions {
@@ -45,7 +56,11 @@ declare namespace WebAuthnStrategy {
         [key: string]: AttestationFormat;
     }
     interface AttestationFormat {
-        verify: (attStmt: any, authData: any, hash: string | Buffer) => VerifiedAttestation;
+        verify: (
+            attStmt: any,
+            authData: any,
+            hash: string | Buffer,
+        ) => VerifiedAttestation;
         parse?: (attStmt: any) => ParsedAttestation;
     }
     interface VerifiedAttestation {
@@ -64,20 +79,39 @@ declare namespace WebAuthnStrategy {
 
     type VerifyFunction =
         | ((
-            req: express.Request,
-            id: string,
-            userHandle: Buffer,
-            flags: AuthenticatorFlags,
-            verified: VerifiedFunction,
-        ) => void)
-        | ((req: express.Request, id: string, userHandle: Buffer, verified: VerifiedFunction) => void)
-        | ((id: string, userHandle: Buffer, flags: AuthenticatorFlags, verified: VerifiedFunction) => void)
-        | ((id: string, userHandle: Buffer, verified: VerifiedFunction) => void);
+              req: express.Request,
+              id: string,
+              userHandle: Buffer,
+              flags: AuthenticatorFlags,
+              verified: VerifiedFunction,
+          ) => void)
+        | ((
+              req: express.Request,
+              id: string,
+              userHandle: Buffer,
+              verified: VerifiedFunction,
+          ) => void)
+        | ((
+              id: string,
+              userHandle: Buffer,
+              flags: AuthenticatorFlags,
+              verified: VerifiedFunction,
+          ) => void)
+        | ((
+              id: string,
+              userHandle: Buffer,
+              verified: VerifiedFunction,
+          ) => void);
     interface AuthenticatorFlags {
         userPresent: boolean;
         userVerified: boolean;
     }
-    type VerifiedFunction = (err: any, user?: any, publicKey?: string | { message: string }, info?: any) => void;
+    type VerifiedFunction = (
+        err: any,
+        user?: any,
+        publicKey?: string | { message: string },
+        info?: any,
+    ) => void;
 
     type VerifySignCountFunction = (
         id: string,
@@ -88,40 +122,45 @@ declare namespace WebAuthnStrategy {
 
     type RegisterFunction =
         | ((
-            user: any,
-            id: string,
-            publicKey: string,
-            flags: AuthenticatorFlags,
-            signCount: number,
-            transports: any,
-            attestation: VerifiedAttestation,
-            registered: RegisteredFunction,
-        ) => void)
+              user: any,
+              id: string,
+              publicKey: string,
+              flags: AuthenticatorFlags,
+              signCount: number,
+              transports: any,
+              attestation: VerifiedAttestation,
+              registered: RegisteredFunction,
+          ) => void)
         | ((
-            user: any,
-            id: string,
-            publicKey: string,
-            flags: AuthenticatorFlags,
-            signCount: number,
-            transports: any,
-            registered: RegisteredFunction,
-        ) => void)
+              user: any,
+              id: string,
+              publicKey: string,
+              flags: AuthenticatorFlags,
+              signCount: number,
+              transports: any,
+              registered: RegisteredFunction,
+          ) => void)
         | ((
-            user: any,
-            id: string,
-            publicKey: string,
-            flags: AuthenticatorFlags,
-            signCount: number,
-            registered: RegisteredFunction,
-        ) => void)
+              user: any,
+              id: string,
+              publicKey: string,
+              flags: AuthenticatorFlags,
+              signCount: number,
+              registered: RegisteredFunction,
+          ) => void)
         | ((
-            user: any,
-            id: string,
-            publicKey: string,
-            flags: AuthenticatorFlags,
-            registered: RegisteredFunction,
-        ) => void)
-        | ((user: any, id: string, publicKey: string, registered: RegisteredFunction) => void);
+              user: any,
+              id: string,
+              publicKey: string,
+              flags: AuthenticatorFlags,
+              registered: RegisteredFunction,
+          ) => void)
+        | ((
+              user: any,
+              id: string,
+              publicKey: string,
+              registered: RegisteredFunction,
+          ) => void);
     type RegisteredFunction = (err: any, user?: any, info?: any) => void;
 
     interface SessionStoreOptions {

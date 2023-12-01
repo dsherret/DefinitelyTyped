@@ -1,7 +1,10 @@
 /// Demonstrate usage in the browser's window object
 
 window.Xrm.Utility.alertDialog("message", () => {});
-parent && parent.Xrm.Page && parent.Xrm.Page.context && parent.Xrm.Page.context.getOrgLcid();
+parent &&
+    parent.Xrm.Page &&
+    parent.Xrm.Page.context &&
+    parent.Xrm.Page.context.getOrgLcid();
 
 /// Demonstrate clientglobalcontext.d.ts
 
@@ -33,14 +36,19 @@ grids.forEach((gridControl: Xrm.Page.GridControl) => {
         .getGrid()
         .getSelectedRows()
         .forEach((row) => {
-            selectedGridReferences.push(row.getData().getEntity().getEntityReference());
+            selectedGridReferences.push(
+                row.getData().getEntity().getEntityReference(),
+            );
         });
 });
 
 /// Demonstrate generic overload vs typecast
 
-const lookupAttribute = Xrm.Page.getControl("customerid") as Xrm.Page.LookupControl;
-const lookupAttribute2 = Xrm.Page.getControl<Xrm.Page.LookupControl>("customerid");
+const lookupAttribute = Xrm.Page.getControl(
+    "customerid",
+) as Xrm.Page.LookupControl;
+const lookupAttribute2 =
+    Xrm.Page.getControl<Xrm.Page.LookupControl>("customerid");
 
 /// Demonstrate ES6 String literal syntax
 
@@ -60,7 +68,8 @@ lookupAttribute.addPreSearch(() => {
 const lookupValues = lookupAttribute.getAttribute().getValue();
 
 if (lookupValues !== null) {
-    if (lookupValues[0].id || lookupValues[0].entityType) throw new Error("Invalid value in Lookup control.");
+    if (lookupValues[0].id || lookupValues[0].entityType)
+        throw new Error("Invalid value in Lookup control.");
 }
 
 lookupAttribute.getAttribute().setValue(null);
@@ -83,7 +92,8 @@ if (Xrm.Page.data.process != null) {
 
 Xrm.Utility.openQuickCreate("account").then(
     (object) => {
-        if (object) alert(`Newly created record Id: ${object.savedEntityReference.id}`);
+        if (object)
+            alert(`Newly created record Id: ${object.savedEntityReference.id}`);
     },
     (error) => {
         console.log(`Code: ${error.errorCode}, Message: ${error.message}`);
@@ -114,8 +124,8 @@ Xrm.Page.data.entity.addOnSave((context: Xrm.Page.SaveEventContext) => {
     const eventArgs = context.getEventArgs();
 
     if (
-        eventArgs.getSaveMode() === XrmEnum.SaveMode.AutoSave
-        || eventArgs.getSaveMode() === XrmEnum.SaveMode.SaveAndClose
+        eventArgs.getSaveMode() === XrmEnum.SaveMode.AutoSave ||
+        eventArgs.getSaveMode() === XrmEnum.SaveMode.SaveAndClose
     ) {
         eventArgs.preventDefault();
     }
@@ -124,10 +134,12 @@ Xrm.Page.data.entity.addOnSave((context: Xrm.Page.SaveEventContext) => {
     eventArgs.disableAsyncTimeout();
 });
 
-Xrm.Page.data.entity.addOnSave(async (context: Xrm.Events.SaveEventContextAsync) => {
-    const eventArgs = context.getEventArgs();
-    eventArgs.disableAsyncTimeout?.();
-});
+Xrm.Page.data.entity.addOnSave(
+    async (context: Xrm.Events.SaveEventContextAsync) => {
+        const eventArgs = context.getEventArgs();
+        eventArgs.disableAsyncTimeout?.();
+    },
+);
 
 /// Demonstrate ES6 String literal with templates
 
@@ -137,7 +149,8 @@ alert(`The current entity type is: ${Xrm.Page.data.entity.getEntityName()}`);
 
 /// Demonstrate Optionset Value as int in Turbo Forms
 
-const optionSetAttribute = Xrm.Page.getAttribute<Xrm.Page.OptionSetAttribute>("statuscode");
+const optionSetAttribute =
+    Xrm.Page.getAttribute<Xrm.Page.OptionSetAttribute>("statuscode");
 const optionValue: number = optionSetAttribute.getOptions()[0].value;
 
 /// Demonstrate Control.setFocus();
@@ -167,7 +180,8 @@ const isMulitselect = attribute.getAttributeType() === "multiselectoptionset";
 
 /// Demonstrate v8 AutoComplete
 
-let autoCompleteControl = Xrm.Page.getControl<Xrm.Page.AutoLookupControl>("name");
+let autoCompleteControl =
+    Xrm.Page.getControl<Xrm.Page.AutoLookupControl>("name");
 const userInput = autoCompleteControl.getValue();
 const accountResult = {};
 const resultSet: Xrm.Page.AutoCompleteResultSet = {
@@ -182,7 +196,9 @@ const resultSet: Xrm.Page.AutoCompleteResultSet = {
             // For this sample, we are just opening a page
             // that provides information on working with
             // accounts in CRM.
-            window.open("http://www.microsoft.com/en-us/dynamics/crm-customer-center/create-or-edit-an-account.aspx");
+            window.open(
+                "http://www.microsoft.com/en-us/dynamics/crm-customer-center/create-or-edit-an-account.aspx",
+            );
         },
     },
 };
@@ -219,7 +235,10 @@ ctrl.setVisible(true);
 
 // Demonstrate getEntityMetadata
 Xrm.Utility.getEntityMetadata("account", ["telephone1"]).then((metadata) => {
-    console.log(metadata.Attributes["statuscode"].OptionSet[0].Label.LocalizedLabels[0].Label);
+    console.log(
+        metadata.Attributes["statuscode"].OptionSet[0].Label.LocalizedLabels[0]
+            .Label,
+    );
 });
 
 // Demonstrate WebAPI RetrieveMultiple
@@ -366,7 +385,9 @@ function testOnLoadTypes(formContext: Xrm.FormContext) {
 
         eventContext.getFormContext().data.addOnLoad(onDataLoad);
         function onDataLoad(eventContext: Xrm.Events.DataLoadEventContext) {
-            const dataLoadState: XrmEnum.FormDataLoadState = eventContext.getEventArgs().getDataLoadState();
+            const dataLoadState: XrmEnum.FormDataLoadState = eventContext
+                .getEventArgs()
+                .getDataLoadState();
         }
     }
 }
@@ -407,7 +428,8 @@ Xrm.Utility.getPageContext(); // $ExpectType PageContext
 // Demonstrate visibility for grid control
 const gridControlGetSetVisible = (context: Xrm.Events.EventContext) => {
     const formContext = context.getFormContext();
-    const gridControl = formContext.getControl<Xrm.Controls.GridControl>("myGrid");
+    const gridControl =
+        formContext.getControl<Xrm.Controls.GridControl>("myGrid");
 
     // getVisible
     const visibility = gridControl.getVisible();
@@ -416,13 +438,18 @@ const gridControlGetSetVisible = (context: Xrm.Events.EventContext) => {
     gridControl.setVisible(!visibility);
 };
 
-async function ribbonCommand(commandProperties: Xrm.CommandProperties, primaryEntity: Xrm.EntityReference) {
-    if (commandProperties.SourceControlId === "AddExistingRecordFromSubGridAssociated") {
+async function ribbonCommand(
+    commandProperties: Xrm.CommandProperties,
+    primaryEntity: Xrm.EntityReference,
+) {
+    if (
+        commandProperties.SourceControlId ===
+        "AddExistingRecordFromSubGridAssociated"
+    ) {
         await Promise.resolve(
             Xrm.Navigation.openAlertDialog({
                 title: `${commandProperties.CommandValueId}`,
-                text:
-                    `Thanks for clicking on ${primaryEntity.Name} of type ${primaryEntity.TypeName} and id ${primaryEntity.Id}`,
+                text: `Thanks for clicking on ${primaryEntity.Name} of type ${primaryEntity.TypeName} and id ${primaryEntity.Id}`,
             }),
         );
     }
@@ -477,12 +504,14 @@ Xrm.App.sidePanes.getPane("panelId");
 Xrm.App.sidePanes.getSelectedPane();
 
 // Demonstrate GetSettings
-const settingValue = Xrm.Utility.getGlobalContext().getCurrentAppSetting("SettingsName");
+const settingValue =
+    Xrm.Utility.getGlobalContext().getCurrentAppSetting("SettingsName");
 
 function onLoadSetupEvents(eventContext: Xrm.Events.EventContext) {
     const formContext = eventContext.getFormContext();
     // Demonstrate Knowledge base handler events
-    const kbSearchControl: Xrm.Controls.KbSearchControl = formContext.getControl("<name>");
+    const kbSearchControl: Xrm.Controls.KbSearchControl =
+        formContext.getControl("<name>");
     const kbHandler = () => {
         alert("hit handler");
     };
@@ -500,8 +529,14 @@ function onLoadSetupEvents(eventContext: Xrm.Events.EventContext) {
     const searchResult = kbSearchControl.getSelectedResults();
 
     let ret = kbSearchControl.openSearchResult(1);
-    ret = kbSearchControl.openSearchResult(1, XrmEnum.OpenSearchResultMode.Inline);
-    ret = kbSearchControl.openSearchResult(1, XrmEnum.OpenSearchResultMode.Popup);
+    ret = kbSearchControl.openSearchResult(
+        1,
+        XrmEnum.OpenSearchResultMode.Inline,
+    );
+    ret = kbSearchControl.openSearchResult(
+        1,
+        XrmEnum.OpenSearchResultMode.Popup,
+    );
 
     const searchText = kbSearchControl.getSearchQuery();
     kbSearchControl.setSearchQuery("pot of gold");
@@ -553,9 +588,10 @@ function onChangeHeaderField(executionContext: Xrm.Events.EventContext): void {
 }
 
 function booleanAttributeControls(formContext: Xrm.FormContext) {
-    let booleanAttribute: Xrm.Attributes.BooleanAttribute = formContext.getAttribute<Xrm.Attributes.BooleanAttribute>(
-        "prefx_myattribute",
-    );
+    let booleanAttribute: Xrm.Attributes.BooleanAttribute =
+        formContext.getAttribute<Xrm.Attributes.BooleanAttribute>(
+            "prefx_myattribute",
+        );
     const booleanValue: boolean | null = booleanAttribute.getValue();
 
     // @ts-expect-error
@@ -563,11 +599,15 @@ function booleanAttributeControls(formContext: Xrm.FormContext) {
 
     booleanAttribute = booleanAttribute.controls.get(0).getAttribute();
 
-    booleanAttribute.controls.forEach((c: Xrm.Controls.BooleanControl) => c.setDisabled(true));
+    booleanAttribute.controls.forEach((c: Xrm.Controls.BooleanControl) =>
+        c.setDisabled(true),
+    );
 
-    booleanAttribute.controls.get(0).getAttribute().getAttributeType() === "boolean";
+    booleanAttribute.controls.get(0).getAttribute().getAttributeType() ===
+        "boolean";
     // @ts-expect-error
-    booleanAttribute.controls.get(0).getAttribute().getAttributeType() === "optionset";
+    booleanAttribute.controls.get(0).getAttribute().getAttributeType() ===
+        "optionset";
 }
 
 // Demonstrate add and remove methods for formContext.data.process
@@ -609,10 +649,13 @@ Xrm.Navigation.navigateTo({
     },
 );
 
-const multiSelectOptionSetControl = Xrm.Page.getControl<Xrm.Controls.MultiSelectOptionSetControl>("choices");
+const multiSelectOptionSetControl =
+    Xrm.Page.getControl<Xrm.Controls.MultiSelectOptionSetControl>("choices");
 
 // $ExpectType MultiSelectOptionSetAttribute
 multiSelectOptionSetControl.getAttribute();
 
 // Demonstrates getWebResourceUrl
-const webResourceUrl = Xrm.Utility.getGlobalContext().getWebResourceUrl("sample_webResource1.js");
+const webResourceUrl = Xrm.Utility.getGlobalContext().getWebResourceUrl(
+    "sample_webResource1.js",
+);

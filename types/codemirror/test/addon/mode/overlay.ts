@@ -20,5 +20,8 @@ CodeMirror.defineMode("mustache", (config, parserConfig) => {
             return null;
         },
     };
-    return CodeMirror.overlayMode(CodeMirror.getMode(config, parserConfig.backdrop || "text/html"), mustacheOverlay);
+    return CodeMirror.overlayMode(
+        CodeMirror.getMode(config, parserConfig.backdrop || "text/html"),
+        mustacheOverlay,
+    );
 });

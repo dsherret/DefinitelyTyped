@@ -143,7 +143,10 @@ declare namespace google.earth {
      * Efficiently executes an arbitrary, user-defined function (the batch function), minimizing the amount of overhead incurred during cross-process communication between the web browser and Google Earth Plugin.
      * This method is useful for batching together a large set of calls to the Earth API, for example, a large number of consecutive calls to KmlCoordArray.pushLatLngAlt.
      */
-    export function executeBatch(pluginInstance: GEPlugin, batchFunction: Function): void;
+    export function executeBatch(
+        pluginInstance: GEPlugin,
+        batchFunction: Function,
+    ): void;
 
     /**
      * Sets the language to be used for new instances of the plugin.
@@ -385,7 +388,11 @@ declare namespace google.earth {
         /**
          * Sets the link, refreshVisibility, and flyToView for the network link.
          */
-        set(link: KmlLink, refreshVisibility: boolean, flyToView: boolean): void;
+        set(
+            link: KmlLink,
+            refreshVisibility: boolean,
+            flyToView: boolean,
+        ): void;
 
         /**
          * Specifies the location of any of the following:
@@ -607,7 +614,10 @@ declare namespace google.earth {
          * * GEPlugin.OPTION_STATE_ENABLED
          * * GEPlugin.OPTION_STATE_DISABLED
          */
-        setOption(type: GEViewerOptionsTypeEnum, state: GEViewerOptionsValueEnum): void;
+        setOption(
+            type: GEViewerOptionsTypeEnum,
+            state: GEViewerOptionsValueEnum,
+        ): void;
 
         /**
          * Set the state of viewer options, including sunlight, Street View, and historical imagery.
@@ -776,7 +786,11 @@ declare namespace google.earth {
         /**
          * Sets the latitude, longitude, altitude.
          */
-        setLatLngAlt(latitude: number, longitude: number, altitude: number): void;
+        setLatLngAlt(
+            latitude: number,
+            longitude: number,
+            altitude: number,
+        ): void;
 
         /**
          * Degrees north or south of the Equator (0 degrees).
@@ -1365,7 +1379,9 @@ declare namespace google.earth {
          * Enables or disables building highlighting.
          * When enabled, buildings will be highlighted when they are moused over.
          */
-        setBuildingHighlightingEnabled(buildingHighlightingEnabled: boolean): void;
+        setBuildingHighlightingEnabled(
+            buildingHighlightingEnabled: boolean,
+        ): void;
 
         /**
          * Returns the terrain exaggeration value. Valid values are in the range of 1.0 through 3.0.
@@ -1383,7 +1399,9 @@ declare namespace google.earth {
          * This view provides pan and lookAt controls, but no zoom slider.
          * The tilt will be set to 90, or parallel with level ground.
          */
-        setAutoGroundLevelViewEnabled(autoGroundLevelViewEnabled: boolean): void;
+        setAutoGroundLevelViewEnabled(
+            autoGroundLevelViewEnabled: boolean,
+        ): void;
 
         /**
          * Whether automatic ground level view is enabled.
@@ -2802,7 +2820,11 @@ declare namespace google.earth {
         /**
          * Sets the latitude, longitude, and altitide.
          */
-        setLatLngAlt(latitude: number, longitude: number, altitude: number): void;
+        setLatLngAlt(
+            latitude: number,
+            longitude: number,
+            altitude: number,
+        ): void;
 
         /**
          * The point's latitude, in degrees.

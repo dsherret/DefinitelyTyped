@@ -99,8 +99,12 @@ declare module "console" {
 
             interface ConsoleConstructor {
                 prototype: Console;
-                new(stdout: object, stderr?: object, ignoreErrors?: boolean): Console;
-                new(options: ConsoleConstructorOptions): Console;
+                new (
+                    stdout: object,
+                    stderr?: object,
+                    ignoreErrors?: boolean,
+                ): Console;
+                new (options: ConsoleConstructorOptions): Console;
             }
 
             interface Global {

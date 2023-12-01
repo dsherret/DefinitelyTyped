@@ -40,7 +40,9 @@ const doc2 = (
             <columns columnGap={10}>
                 <column width={100}>Fixed width column</column>
                 <column width="10%">Percentage width column</column>
-                <column width="auto">Column that adjusts width based on the content</column>
+                <column width="auto">
+                    Column that adjusts width based on the content
+                </column>
                 <column width="*">Column that fills the remaining space</column>
             </columns>
         </content>
@@ -77,7 +79,11 @@ const leftCellStyle = {
 const doc3 = (
     <document>
         <content>
-            <table widths={[100, "*", "auto"]} headerRows={1} layout="headerLineOnly">
+            <table
+                widths={[100, "*", "auto"]}
+                headerRows={1}
+                layout="headerLineOnly"
+            >
                 <row>
                     <cell>Fixed width column</cell>
                     <cell>Column that fills the remaining space</cell>
@@ -134,7 +140,9 @@ const doc6 = (
 
 const GroupGreeting = ({ names }: { names: string[] }) => (
     <stack>
-        {names.map(name => <Greeting name={name} />)}
+        {names.map((name) => (
+            <Greeting name={name} />
+        ))}
     </stack>
 );
 

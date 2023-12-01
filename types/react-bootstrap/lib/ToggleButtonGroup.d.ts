@@ -29,11 +29,13 @@ declare namespace ToggleButtonGroup {
         onChange?(values: any[]): void;
     }
 
-    export type ToggleButtonGroupProps =
-        & BaseProps
-        & (RadioProps | CheckboxProps)
-        & Omit<ButtonGroup.ButtonGroupProps, "onChange">
-        & Omit<React.HTMLProps<ToggleButtonGroup>, "defaultValue" | "type" | "value" | "onChange">;
+    export type ToggleButtonGroupProps = BaseProps &
+        (RadioProps | CheckboxProps) &
+        Omit<ButtonGroup.ButtonGroupProps, "onChange"> &
+        Omit<
+            React.HTMLProps<ToggleButtonGroup>,
+            "defaultValue" | "type" | "value" | "onChange"
+        >;
 }
 declare class ToggleButtonGroup extends React.Component<ToggleButtonGroup.ToggleButtonGroupProps> {}
 export = ToggleButtonGroup;

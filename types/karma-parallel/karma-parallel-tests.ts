@@ -12,13 +12,17 @@ const configTest = (config: karma.Config) => {
         parallelOptions: {
             executors: 4, // Defaults to cpu-count - 1
             shardStrategy: "round-robin",
-            customShardStrategy: config => {
+            customShardStrategy: (config) => {
                 config.executors; // $ExpectType number
                 config.shardIndex; // $ExpectType number
                 config.description; // $ExpectType string
-                window.parallelDescribeCount = window.parallelDescribeCount || 0;
+                window.parallelDescribeCount =
+                    window.parallelDescribeCount || 0;
                 window.parallelDescribeCount++;
-                return window.parallelDescribeCount % config.executors === config.shardIndex;
+                return (
+                    window.parallelDescribeCount % config.executors ===
+                    config.shardIndex
+                );
             },
             aggregatedReporterTest: /coverage|istanbul|junit/i,
         },

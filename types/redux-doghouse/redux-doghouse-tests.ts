@@ -26,7 +26,9 @@ const actionCreatorsScopedToA = scopeableActionsFromCreators.scope("a");
 
 actionCreatorsScopedToA.foo("bar");
 
-const scopeableActionsFromFooCreator = new ScopedActionFactory(fooActionCreator);
+const scopeableActionsFromFooCreator = new ScopedActionFactory(
+    fooActionCreator,
+);
 const actionCreatorScopedToB = scopeableActionsFromFooCreator.scope("b");
 
 actionCreatorScopedToB("bar");
@@ -40,21 +42,34 @@ const scopeableActionsFactories = {
         plainFooAction: fooActionCreator,
     },
 };
-const boundScopeableActions = bindScopedActionFactories(scopeableActionsFactories, store.dispatch);
+const boundScopeableActions = bindScopedActionFactories(
+    scopeableActionsFactories,
+    store.dispatch,
+);
 boundScopeableActions["myComponentActions"].scope("bar");
 boundScopeableActions["otherActions"]["plainFooAction"]("bar");
 
 const boundActions = bindScopedActionFactories(actionCreators, store.dispatch);
 boundActions.foo("bar");
 
-bindScopedActionFactories(fooActionCreator, store.dispatch, (a: ActionCreator<any>, d: Dispatch<any>) => a)("bar");
+bindScopedActionFactories(
+    fooActionCreator,
+    store.dispatch,
+    (a: ActionCreator<any>, d: Dispatch<any>) => a,
+)("bar");
 
 // ==== bindActionCreatorsDeep
-const boundScopeableActionFactories = bindActionCreatorsDeep(scopeableActionsFactories, store.dispatch);
+const boundScopeableActionFactories = bindActionCreatorsDeep(
+    scopeableActionsFactories,
+    store.dispatch,
+);
 boundScopeableActionFactories["myComponentActions"].scope("bar");
 boundScopeableActionFactories["otherActions"]["plainFooAction"]("bar");
 
-const boundActionFactories = bindActionCreatorsDeep(actionCreators, store.dispatch);
+const boundActionFactories = bindActionCreatorsDeep(
+    actionCreators,
+    store.dispatch,
+);
 boundActionFactories.foo("bar");
 
 bindActionCreatorsDeep(fooActionCreator, store.dispatch)("bar");
@@ -65,9 +80,12 @@ const reducers = {
         return state;
     },
 };
-const actionCreatorsA = scopeActionCreators({
-    incrementFoo: () => ({ type: "INCREMENT_FOO" }),
-}, "a");
+const actionCreatorsA = scopeActionCreators(
+    {
+        incrementFoo: () => ({ type: "INCREMENT_FOO" }),
+    },
+    "a",
+);
 
 const scopedReducers = scopeReducers(reducers);
 const state = {

@@ -5,7 +5,12 @@ export function isStringNode(node: Node): node is string;
 export function isEOL(el: string): boolean;
 export function keysReduce<V>(
     obj: object,
-    reduce: (previousValue: V, currentValue: string, currentIndex: number, array: string[]) => V,
+    reduce: (
+        previousValue: V,
+        currentValue: string,
+        currentIndex: number,
+        array: string[],
+    ) => V,
     def: V,
 ): V;
 export function getNodeLength(node: Node): number;

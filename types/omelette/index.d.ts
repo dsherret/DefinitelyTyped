@@ -6,7 +6,10 @@ export as namespace omelette;
 declare namespace omelette {
     interface Omelette {
         (message: string): Instance;
-        (literals: TemplateStringsArray, ...placeholders: TemplateValue[]): Instance;
+        (
+            literals: TemplateStringsArray,
+            ...placeholders: TemplateValue[]
+        ): Instance;
     }
 
     interface Instance {

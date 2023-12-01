@@ -6,7 +6,10 @@ jsprim.deepCopy({ test: { deep: { value: ["test", 1] } } }); // $ExpectType { te
 
 jsprim.deepEqual(2, 2); // $ExpectType boolean
 jsprim.deepEqual("test", 2); // $ExpectType boolean
-jsprim.deepEqual({ test: "test", deep: { value: 2 } }, { test: "test", deep: { value: 2 } }); // $ExpectType boolean
+jsprim.deepEqual(
+    { test: "test", deep: { value: 2 } },
+    { test: "test", deep: { value: 2 } },
+); // $ExpectType boolean
 
 jsprim.endsWith("test", "est"); // $ExpectType boolean
 
@@ -14,7 +17,11 @@ jsprim.extraProperties({ test: 1, other: 2 }, ["other"]); // $ExpectType string[
 
 jsprim.flattenIter([1, [2, 3, [4]]], 2, (value) => {}); // $ExpectType void
 
-jsprim.flattenIter({ deep: { deep: { deep: { deep: { value: 2 } } } } }, 0, (value) => {}); // $ExpectType void
+jsprim.flattenIter(
+    { deep: { deep: { deep: { deep: { value: 2 } } } } },
+    0,
+    (value) => {},
+); // $ExpectType void
 
 jsprim.flattenObject({ deep: { deep: { deep: { deep: { value: 2 } } } } }, 2); // $ExpectType unknown[]
 

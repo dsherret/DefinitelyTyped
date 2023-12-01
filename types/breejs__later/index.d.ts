@@ -163,7 +163,11 @@ export interface Schedule {
      * @param dateFrom: The earliest a valid range can occur
      * @param dateTo: The latest a valid range can occur
      */
-    nextRange(numberOfInst: number, dateFrom?: Date, dateTo?: Date): Date[] | Date;
+    nextRange(
+        numberOfInst: number,
+        dateFrom?: Date,
+        dateTo?: Date,
+    ): Date[] | Date;
 
     /**
      * Finds the previous valid instance or instances of the current schedule,
@@ -187,7 +191,11 @@ export interface Schedule {
      * @param dateFrom: The earliest a valid range can occur
      * @param dateTo: The latest a valid range can occur
      */
-    prevRange(numberOfInst: number, dateFrom?: Date, dateTo?: Date): Date[] | Date;
+    prevRange(
+        numberOfInst: number,
+        dateFrom?: Date,
+        dateTo?: Date,
+    ): Date[] | Date;
 }
 
 export interface RecurrenceBuilder extends ScheduleData {
@@ -358,7 +366,14 @@ export namespace date {
      * @param m: Minute between 0 and 59, defaults to 0
      * @param s: Second between 0 and 59, defaults to 0
      */
-    function next(Y?: number, M?: number, D?: number, h?: number, m?: number, s?: number): Date;
+    function next(
+        Y?: number,
+        M?: number,
+        D?: number,
+        h?: number,
+        m?: number,
+        s?: number,
+    ): Date;
 
     /**
      * Builds and returns a new Date using the specified values.  Date
@@ -371,7 +386,14 @@ export namespace date {
      * @param m: Minute between 0 and 59, defaults to 59
      * @param s: Second between 0 and 59, defaults to 59
      */
-    function prev(Y?: number, M?: number, D?: number, h?: number, m?: number, s?: number): Date;
+    function prev(
+        Y?: number,
+        M?: number,
+        D?: number,
+        h?: number,
+        m?: number,
+        s?: number,
+    ): Date;
 
     /**
      * Determines if a value will cause a particular constraint to rollover to the
@@ -383,7 +405,12 @@ export namespace date {
      * @param constraint: A modifier
      * @param period: A time period
      */
-    function nextRollover(d: Date, val: number, constraint: Modifier, period: TimePeriod): Date;
+    function nextRollover(
+        d: Date,
+        val: number,
+        constraint: Modifier,
+        period: TimePeriod,
+    ): Date;
 
     /**
      * Determines if a value will cause a particular constraint to rollover to the
@@ -395,7 +422,12 @@ export namespace date {
      * @param constraint: A modifier
      * @param period: A time period
      */
-    function prevRollover(d: Date, val: number, constraint: Modifier, period: TimePeriod): Date;
+    function prevRollover(
+        d: Date,
+        val: number,
+        constraint: Modifier,
+        period: TimePeriod,
+    ): Date;
 }
 
 export interface TimePeriod {
@@ -515,7 +547,11 @@ export namespace array {
      * @param array The array to be searched
      * @param extent The extents of the array
      */
-    function next(current: number, array: number[], extent: [minimum: number, maximum: number]): number;
+    function next(
+        current: number,
+        array: number[],
+        extent: [minimum: number, maximum: number],
+    ): number;
 
     /**
      * Returns the next invalid value in the array.
@@ -523,7 +559,11 @@ export namespace array {
      * @param array The array to be searched
      * @param extent The extents of the array
      */
-    function nextInvalid(current: number, array: number[], extent: [minimum: number, maximum: number]): number;
+    function nextInvalid(
+        current: number,
+        array: number[],
+        extent: [minimum: number, maximum: number],
+    ): number;
 
     /**
      * Returns the previous valid value in the array.
@@ -531,7 +571,11 @@ export namespace array {
      * @param array The array to be searched
      * @param extent The extents of the array
      */
-    function prev(current: number, array: number[], extent: [minimum: number, maximum: number]): number;
+    function prev(
+        current: number,
+        array: number[],
+        extent: [minimum: number, maximum: number],
+    ): number;
 
     /**
      * Returns the previous invalid value in the array.
@@ -539,7 +583,11 @@ export namespace array {
      * @param array The array to be searched
      * @param extent The extents of the array
      */
-    function prevInvalid(current: number, array: number[], extent: [minimum: number, maximum: number]): number;
+    function prevInvalid(
+        current: number,
+        array: number[],
+        extent: [minimum: number, maximum: number],
+    ): number;
 }
 
 /**

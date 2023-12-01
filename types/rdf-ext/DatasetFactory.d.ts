@@ -6,7 +6,7 @@ export interface DatasetFactory {
 }
 
 interface DatasetFactoryCtor {
-    new(): DatasetFactory;
+    new (): DatasetFactory;
     exports: ["dataset"];
 }
 

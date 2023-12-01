@@ -27,5 +27,8 @@ type Method = "select_all" | "deselect_all" | "refresh";
 interface JQuery {
     multiSelect(methodOrOptions?: Method | Options): JQuery;
     multiSelect(method: "addOption", addOption: AddOption): JQuery;
-    multiSelect(method: "select" | "deselect", options?: string | any[]): JQuery;
+    multiSelect(
+        method: "select" | "deselect",
+        options?: string | any[],
+    ): JQuery;
 }

@@ -19,11 +19,14 @@ const onRequest: Lifecycle.Method = (request, h) => {
     /*
      * Server events
      */
-    request.server.events.on("request", (request: Request, event: any, tags: any) => {
-        console.log(request.paramsArray);
-        console.log(event);
-        console.log(tags);
-    });
+    request.server.events.on(
+        "request",
+        (request: Request, event: any, tags: any) => {
+            console.log(request.paramsArray);
+            console.log(event);
+            console.log(tags);
+        },
+    );
 
     request.server.events.on("response", (request: Request) => {
         console.log("Response sent for request: " + request.path);

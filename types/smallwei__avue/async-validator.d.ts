@@ -97,7 +97,9 @@ type ExecuteValidator = (
     source: Values,
     options: ValidateOption,
 ) => void;
-type ValidateMessage<T extends any[] = unknown[]> = string | ((...args: T) => string);
+type ValidateMessage<T extends any[] = unknown[]> =
+    | string
+    | ((...args: T) => string);
 type FullField = string | undefined;
 type EnumString = string | undefined;
 type Pattern = string | RegExp | undefined;
@@ -161,7 +163,10 @@ interface ValidateError {
     field?: string;
 }
 type ValidateFieldsError = Record<string, ValidateError[]>;
-type ValidateCallback = (errors: ValidateError[] | null, fields: ValidateFieldsError | Values) => void;
+type ValidateCallback = (
+    errors: ValidateError[] | null,
+    fields: ValidateFieldsError | Values,
+) => void;
 interface RuleValuePackage {
     rule: InternalRuleItem;
     value: Value;

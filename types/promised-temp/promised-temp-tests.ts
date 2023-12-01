@@ -13,11 +13,13 @@ function testCleanup() {
 }
 
 function testOpen() {
-    temp.open({ dir: "tempDir", prefix: "pref", suffix: "suff" }).then((result: temp.OpenFile) => {
-        const { path, fd } = result;
-        path.length;
-        fd.toPrecision(5);
-    });
+    temp.open({ dir: "tempDir", prefix: "pref", suffix: "suff" }).then(
+        (result: temp.OpenFile) => {
+            const { path, fd } = result;
+            path.length;
+            fd.toPrecision(5);
+        },
+    );
 
     temp.open("strPrefix").then((result: temp.OpenFile) => {
         const { path, fd } = result;
@@ -27,7 +29,8 @@ function testOpen() {
 }
 
 function testCreateWriteStream() {
-    const stream = temp.createWriteStream("HelloStreamAffix")
+    const stream = temp
+        .createWriteStream("HelloStreamAffix")
         .then((stream: fs.WriteStream) => stream.write("data"));
 
     const stream2 = temp.createWriteStream();

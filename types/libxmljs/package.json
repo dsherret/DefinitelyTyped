@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/libxmljs",
-    "version": "0.18.9999",
-    "projects": [
-        "https://github.com/libxmljs/libxmljs"
-    ],
-    "dependencies": {
-        "@types/node": "*"
+  "private": true,
+  "name": "@types/libxmljs",
+  "version": "0.18.9999",
+  "projects": [
+    "https://github.com/libxmljs/libxmljs"
+  ],
+  "dependencies": {
+    "@types/node": "*"
+  },
+  "devDependencies": {
+    "@types/libxmljs": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "François de Campredon",
+      "githubUsername": "fdecampredon"
     },
-    "devDependencies": {
-        "@types/libxmljs": "workspace:."
+    {
+      "name": "ComFreek",
+      "githubUsername": "ComFreek"
     },
-    "owners": [
-        {
-            "name": "François de Campredon",
-            "githubUsername": "fdecampredon"
-        },
-        {
-            "name": "ComFreek",
-            "githubUsername": "ComFreek"
-        },
-        {
-            "name": "Roeland",
-            "githubUsername": "r03"
-        }
-    ]
+    {
+      "name": "Roeland",
+      "githubUsername": "r03"
+    }
+  ]
 }

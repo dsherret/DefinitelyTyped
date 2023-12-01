@@ -1,6 +1,10 @@
 import { Item } from "photoswipe";
 import * as React from "react";
-import { PhotoSwipe, PhotoSwipeGallery, PhotoSwipeGalleryItem } from "react-photoswipe";
+import {
+    PhotoSwipe,
+    PhotoSwipeGallery,
+    PhotoSwipeGalleryItem,
+} from "react-photoswipe";
 
 interface State {
     openPhotoSwipe: boolean;
@@ -67,7 +71,11 @@ class MyApp extends React.Component<{}, State> {
         console.log(item);
     };
 
-    handleImageLoadComplete = (instance: PhotoSwipe, index: number, item: Item) => {
+    handleImageLoadComplete = (
+        instance: PhotoSwipe,
+        index: number,
+        item: Item,
+    ) => {
         console.log(instance, index, item);
     };
 
@@ -115,7 +123,10 @@ class MyApp extends React.Component<{}, State> {
         console.log(instance);
     };
 
-    handleUpdateScrollOffset = (instance: PhotoSwipe, _offset: { x: number; y: number }) => {
+    handleUpdateScrollOffset = (
+        instance: PhotoSwipe,
+        _offset: { x: number; y: number },
+    ) => {
         console.log(instance, _offset);
     };
 
@@ -128,7 +139,11 @@ class MyApp extends React.Component<{}, State> {
         console.log(instance, e, isDown, preventObj);
     };
 
-    handleShareLinkClick = (instance: PhotoSwipe, e: MouseEvent, item: Item) => {
+    handleShareLinkClick = (
+        instance: PhotoSwipe,
+        e: MouseEvent,
+        item: Item,
+    ) => {
         console.log(instance, e, item);
     };
 
@@ -138,7 +153,9 @@ class MyApp extends React.Component<{}, State> {
         return (
             <div>
                 <button onClick={this.openPhotoSwipe}>Open PhotoSwipe</button>
-                <button onClick={this.openPhotoSwipeGallery}>Open PhotoSwipeGallery</button>
+                <button onClick={this.openPhotoSwipeGallery}>
+                    Open PhotoSwipeGallery
+                </button>
                 <PhotoSwipe
                     isOpen={openPhotoSwipe}
                     id="photoSwipe"

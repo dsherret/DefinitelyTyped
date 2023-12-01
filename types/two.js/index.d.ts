@@ -263,12 +263,11 @@ declare namespace Two {
         static MakeObservable(obj: any): any;
     }
 
-    interface BoundingClientRect extends
-        Record<
+    interface BoundingClientRect
+        extends Record<
             "top" | "left" | "right" | "bottom" | "width" | "height",
             number
-        >
-    {}
+        > {}
 
     type Object = Path | Group | Text;
 

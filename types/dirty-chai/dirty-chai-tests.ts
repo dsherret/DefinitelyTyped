@@ -67,9 +67,7 @@ describe("dirty chai", () => {
 
             it("should assert function mid-chain", () => {
                 expect(() => {
-                    expect(true)
-                        .to.not.be.ok()
-                        .and.not.equal(false);
+                    expect(true).to.not.be.ok().and.not.equal(false);
                 }).to.throw(/expected true to be falsy/);
             });
 

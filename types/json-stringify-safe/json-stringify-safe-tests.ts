@@ -35,10 +35,13 @@ stringify.getSerialize((key, val) => {
     key; // $ExpectType string
     val; // $ExpectType any
 });
-stringify.getSerialize((key, val) => {
-    key; // $ExpectType string
-    val; // $ExpectType any
-}, (key, val) => {
-    key; // $ExpectType string
-    val; // $ExpectType any
-});
+stringify.getSerialize(
+    (key, val) => {
+        key; // $ExpectType string
+        val; // $ExpectType any
+    },
+    (key, val) => {
+        key; // $ExpectType string
+        val; // $ExpectType any
+    },
+);

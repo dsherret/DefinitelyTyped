@@ -28,7 +28,7 @@ assertType<number>(obj.a);
 assertType<number>(obj.c);
 
 export class Person extends EmberObject {
-    fullName = computed("firstName", "lastName", function() {
+    fullName = computed("firstName", "lastName", function () {
         return [this.firstName + this.lastName].join(" ");
     });
     firstName: string;

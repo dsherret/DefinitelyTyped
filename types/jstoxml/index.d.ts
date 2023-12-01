@@ -71,7 +71,10 @@ export interface XmlOptions {
     _selfCloseTag?: boolean | undefined;
 }
 
-export function toXML(obj?: XmlElement | XmlElement[], options?: XmlOptions): string;
+export function toXML(
+    obj?: XmlElement | XmlElement[],
+    options?: XmlOptions,
+): string;
 
 // do not export every type by default
 export {};

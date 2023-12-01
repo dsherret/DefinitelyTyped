@@ -53,7 +53,10 @@ declare namespace Webhook {
         | { triggerId: 10; triggerName: WebhookTriggerName.TaskUnassigned }
         | { triggerId: 12; triggerName: WebhookTriggerName.TaskDelayed }
         | { triggerId: 13; triggerName: WebhookTriggerName.TaskCloned }
-        | { triggerId: 14; triggerName: WebhookTriggerName.SmsRecipientResponseMissed };
+        | {
+              triggerId: 14;
+              triggerName: WebhookTriggerName.SmsRecipientResponseMissed;
+          };
 }
 
 export = Webhook;

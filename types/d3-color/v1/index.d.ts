@@ -7,7 +7,12 @@
 /**
  * Type allowing for color objects from a specified color space
  */
-export type ColorSpaceObject = RGBColor | HSLColor | LabColor | HCLColor | CubehelixColor;
+export type ColorSpaceObject =
+    | RGBColor
+    | HSLColor
+    | LabColor
+    | HCLColor
+    | CubehelixColor;
 
 /**
  * A helper interface of methods common to color objects (including colors defined outside the d3-color standard module,
@@ -157,14 +162,12 @@ export interface RGBColor extends Color {
      *
      * @param values If values is specified, any enumerable own properties of values are assigned to the new returned color.
      */
-    copy(
-        values?: {
-            r?: number | undefined;
-            g?: number | undefined;
-            b?: number | undefined;
-            opacity?: number | undefined;
-        },
-    ): this;
+    copy(values?: {
+        r?: number | undefined;
+        g?: number | undefined;
+        b?: number | undefined;
+        opacity?: number | undefined;
+    }): this;
 }
 
 /**
@@ -244,14 +247,12 @@ export interface HSLColor extends Color {
      *
      * @param values If values is specified, any enumerable own properties of values are assigned to the new returned color.
      */
-    copy(
-        values?: {
-            h?: number | undefined;
-            s?: number | undefined;
-            l?: number | undefined;
-            opacity?: number | undefined;
-        },
-    ): this;
+    copy(values?: {
+        h?: number | undefined;
+        s?: number | undefined;
+        l?: number | undefined;
+        opacity?: number | undefined;
+    }): this;
 }
 
 /**
@@ -332,14 +333,12 @@ export interface LabColor extends Color {
      *
      * @param values If values is specified, any enumerable own properties of values are assigned to the new returned color.
      */
-    copy(
-        values?: {
-            l?: number | undefined;
-            a?: number | undefined;
-            b?: number | undefined;
-            opacity?: number | undefined;
-        },
-    ): this;
+    copy(values?: {
+        l?: number | undefined;
+        a?: number | undefined;
+        b?: number | undefined;
+        opacity?: number | undefined;
+    }): this;
 }
 
 /**
@@ -433,14 +432,12 @@ export interface HCLColor extends Color {
      *
      * @param values If values is specified, any enumerable own properties of values are assigned to the new returned color.
      */
-    copy(
-        values?: {
-            h?: number | undefined;
-            c?: number | undefined;
-            l?: number | undefined;
-            opacity?: number | undefined;
-        },
-    ): this;
+    copy(values?: {
+        h?: number | undefined;
+        c?: number | undefined;
+        l?: number | undefined;
+        opacity?: number | undefined;
+    }): this;
 }
 
 /**
@@ -553,14 +550,12 @@ export interface CubehelixColor extends Color {
      *
      * @param values If values is specified, any enumerable own properties of values are assigned to the new returned color.
      */
-    copy(
-        values?: {
-            h?: number | undefined;
-            s?: number | undefined;
-            l?: number | undefined;
-            opacity?: number | undefined;
-        },
-    ): this;
+    copy(values?: {
+        h?: number | undefined;
+        s?: number | undefined;
+        l?: number | undefined;
+        opacity?: number | undefined;
+    }): this;
 }
 
 /**

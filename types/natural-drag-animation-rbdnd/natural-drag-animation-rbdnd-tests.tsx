@@ -1,6 +1,12 @@
 import NaturalDragAnimation from "natural-drag-animation-rbdnd";
 import * as React from "react";
-import { DragDropContext, Draggable, DraggableLocation, Droppable, DropResult } from "react-beautiful-dnd";
+import {
+    DragDropContext,
+    Draggable,
+    DraggableLocation,
+    Droppable,
+    DropResult,
+} from "react-beautiful-dnd";
 import * as ReactDOM from "react-dom";
 
 interface listItemType {
@@ -9,13 +15,17 @@ interface listItemType {
 }
 // fake data generator
 const getItems = (count: number, offset = 0): listItemType[] =>
-    Array.from({ length: count }, (v, k) => k).map(k => ({
+    Array.from({ length: count }, (v, k) => k).map((k) => ({
         id: `item-${k + offset}`,
         content: `item ${k + offset}`,
     }));
 
 // a little function to help us with reordering the result
-const reorder = (list: listItemType[], startIndex: number, endIndex: number) => {
+const reorder = (
+    list: listItemType[],
+    startIndex: number,
+    endIndex: number,
+) => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
@@ -48,7 +58,10 @@ const move = (
     return result;
 };
 
-class List extends React.Component<{}, { items: listItemType[]; selected: listItemType[] }> {
+class List extends React.Component<
+    {},
+    { items: listItemType[]; selected: listItemType[] }
+> {
     constructor(props: any) {
         super(props);
         this.state = {
@@ -68,7 +81,8 @@ class List extends React.Component<{}, { items: listItemType[]; selected: listIt
     };
 
     // getList = (id:string) => this.state[this.id2List[id]];
-    getList = (id: string) => id === "droppable" ? this.state.items : this.state.selected;
+    getList = (id: string) =>
+        id === "droppable" ? this.state.items : this.state.selected;
 
     onDragEnd = (res: DropResult) => {
         const { source, destination } = res;
@@ -117,8 +131,16 @@ class List extends React.Component<{}, { items: listItemType[]; selected: listIt
                 }}
             >
                 <DragDropContext onDragEnd={this.onDragEnd}>
-                    <Column droppableId="droppable" data={this.state.items} {...this.props} />
-                    <Column droppableId="droppable2" data={this.state.selected} {...this.props} />
+                    <Column
+                        droppableId="droppable"
+                        data={this.state.items}
+                        {...this.props}
+                    />
+                    <Column
+                        droppableId="droppable2"
+                        data={this.state.selected}
+                        {...this.props}
+                    />
                 </DragDropContext>
             </div>
         );
@@ -135,7 +157,10 @@ const getListStyle = (isDraggingOver: boolean) => ({
     width: 250,
 });
 
-class Column extends React.Component<{ data: listItemType[]; droppableId: string }> {
+class Column extends React.Component<{
+    data: listItemType[];
+    droppableId: string;
+}> {
     // static propTypes = {
     //   droppableId: PropTypes.string.isRequired,
     //   data: PropTypes.arrayOf(PropTypes.shape()).isRequired,
@@ -152,7 +177,12 @@ class Column extends React.Component<{ data: listItemType[]; droppableId: string
                         style={getListStyle(snapshot.isDraggingOver)}
                     >
                         {this.props.data.map((item, index) => (
-                            <Item item={item} index={index} key={item.id} {...props} />
+                            <Item
+                                item={item}
+                                index={index}
+                                key={item.id}
+                                {...props}
+                            />
                         ))}
                         {provided.placeholder}
                     </div>
@@ -180,11 +210,7 @@ class Item extends React.Component<{ item: listItemType; index: number }> {
         const { item, index, ...props } = this.props;
 
         return (
-            <Draggable
-                key={item.id}
-                draggableId={item.id}
-                index={index}
-            >
+            <Draggable key={item.id} draggableId={item.id} index={index}>
                 {(provided, snapshot) => (
                     <NaturalDragAnimation
                         style={getItemStyle(

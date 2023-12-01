@@ -19,14 +19,19 @@ export function ReadMe() {
     - Renders markdown as React elements using [commonmark-react-renderer](https://github.com/rexxars/commonmark-react-renderer)
     - Embed React components inside your markdown (in any paragraph position) like this:
 
-    ${<Example />}
+    ${(<Example />)}
   `;
 }
 
 const customMd = md.customize({
     renderers: {
         // customize heading with class
-        Heading: (props) => React.createElement("h" + props.level, { className: "fancy-heading" }, props.children),
+        Heading: (props) =>
+            React.createElement(
+                "h" + props.level,
+                { className: "fancy-heading" },
+                props.children,
+            ),
     },
 });
 

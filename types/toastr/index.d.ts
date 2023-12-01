@@ -119,28 +119,30 @@ interface ToastrOptions {
     /**
      * If specified, you must provide all classes.
      */
-    iconClasses?: {
-        /**
-         * Icon to use on error toasts.
-         * @default toast-error
-         */
-        error: string;
-        /**
-         * Icon to use on info toasts.
-         * @default toast-info
-         */
-        info: string;
-        /**
-         * Icon to use on success toasts.
-         * @default toast-success
-         */
-        success: string;
-        /**
-         * Icon to use on warning toasts.
-         * @default toast-warning
-         */
-        warning: string;
-    } | undefined;
+    iconClasses?:
+        | {
+              /**
+               * Icon to use on error toasts.
+               * @default toast-error
+               */
+              error: string;
+              /**
+               * Icon to use on info toasts.
+               * @default toast-info
+               */
+              info: string;
+              /**
+               * Icon to use on success toasts.
+               * @default toast-success
+               */
+              success: string;
+              /**
+               * Icon to use on warning toasts.
+               * @default toast-warning
+               */
+              warning: string;
+          }
+        | undefined;
     /**
      * Icon to use for toast.
      * @default toast-info
@@ -221,7 +223,11 @@ interface ToastrDisplayMethod {
      * @param title Title to display on toast
      * @param overrides Option values for toast
      */
-    (message: string | JQuery, title?: string, overrides?: ToastrOptions): JQuery;
+    (
+        message: string | JQuery,
+        title?: string,
+        overrides?: ToastrOptions,
+    ): JQuery;
 }
 
 type ToastrType = "error" | "info" | "success" | "warning";

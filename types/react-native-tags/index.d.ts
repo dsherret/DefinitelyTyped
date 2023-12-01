@@ -73,7 +73,14 @@ interface TagsProps {
     /**
      * Fires when tags are pressed
      */
-    onTagPress?: ((index: number, tagLabel: string, event: any, deleted: boolean) => void) | undefined;
+    onTagPress?:
+        | ((
+              index: number,
+              tagLabel: string,
+              event: any,
+              deleted: boolean,
+          ) => void)
+        | undefined;
     /**
      * Forward props to the textInput
      * ```javascript

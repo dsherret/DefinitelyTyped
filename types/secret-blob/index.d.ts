@@ -26,7 +26,11 @@ export function keygen<TBuf extends Buffer = SecureBuffer>(key?: TBuf): TBuf;
  * const message = Buffer.from('Hello world')
  * const encrypted = secretBlob.encrypt(message, key)
  */
-export function encrypt(plaintext: Buffer, key: Buffer, ciphertext?: Buffer): Buffer;
+export function encrypt(
+    plaintext: Buffer,
+    key: Buffer,
+    ciphertext?: Buffer,
+): Buffer;
 /**
  * @returns The number of bytes required to encrypt plaintext. Simply `plaintext.byteLength + HEADERBYTES`.
  */
@@ -47,7 +51,11 @@ export function encryptLength(plaintext: Buffer): number;
  * const decrypted = secretBlob.decrypt(encrypted, key)
  * console.log(decrypted.toString()) // Hello world
  */
-export function decrypt<TBuf extends Buffer = SecureBuffer>(ciphertext: Buffer, key: Buffer, plaintext?: TBuf): TBuf;
+export function decrypt<TBuf extends Buffer = SecureBuffer>(
+    ciphertext: Buffer,
+    key: Buffer,
+    plaintext?: TBuf,
+): TBuf;
 /**
  * @returns The number of bytes required to encrypt ciphertext. Simply `ciphertext.byteLength - HEADERBYTES`.
  */

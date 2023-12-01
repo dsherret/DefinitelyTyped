@@ -39,7 +39,9 @@ export class File {
      *  your callback has been invoked, the file will have unsubscribed from the
      *  file watches.
      */
-    onWillThrowWatchError(callback: (errorObject: PathWatchErrorThrownEvent) => void): Disposable;
+    onWillThrowWatchError(
+        callback: (errorObject: PathWatchErrorThrownEvent) => void,
+    ): Disposable;
 
     // File Metadata
     /** Returns a boolean, always true. */
@@ -194,7 +196,9 @@ export class Directory {
     getEntriesSync(): Array<File | Directory>;
 
     /** Reads file entries in this directory from disk asynchronously. */
-    getEntries(callback: (error: Error, entries: Array<File | Directory>) => void): void;
+    getEntries(
+        callback: (error: Error, entries: Array<File | Directory>) => void,
+    ): void;
 
     /**
      *  Determines if the given path (real or symbolic) is inside this directory. This
@@ -228,7 +232,9 @@ export interface WatchedFilePathChangedEvent {
 // The structures that are passed to the user by Atom following specific API calls.
 
 export interface PathWatcher {
-    onDidChange(callback: (change: WatchedFilePathChangedEvent) => void): Disposable;
+    onDidChange(
+        callback: (change: WatchedFilePathChangedEvent) => void,
+    ): Disposable;
 
     close(): void;
 }

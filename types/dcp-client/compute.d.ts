@@ -38,7 +38,11 @@ declare module "dcp/compute" {
          * @param work: Function | string | URL | DcpURL
          * @param arguments
          */
-        do(n: number, work: object | string | URL | DcpURL, arguments?: object): Promise<JobHandle>;
+        do(
+            n: number,
+            work: object | string | URL | DcpURL,
+            arguments?: object,
+        ): Promise<JobHandle>;
 
         /**
          * Form 1: for (rangeObject, work, arguments)
@@ -64,7 +68,12 @@ declare module "dcp/compute" {
          */
         for<T>(
             rangeObject: object | Ranges,
-            work: object | string | URL | DcpURL | ((input: any, ...data: T[]) => any),
+            work:
+                | object
+                | string
+                | URL
+                | DcpURL
+                | ((input: any, ...data: T[]) => any),
             arguments?: readonly T[],
         ): JobHandle;
 
@@ -139,7 +148,11 @@ declare module "dcp/compute" {
          * @param startTime
          * @param endTime
          */
-        status(startTime: number, endTime: number, paymentAccount: Keystore): JobHandle;
+        status(
+            startTime: number,
+            endTime: number,
+            paymentAccount: Keystore,
+        ): JobHandle;
 
         /**
          * This async function accepts job Id as its argument and returns information and status of a job specified with jobID.
@@ -178,7 +191,10 @@ declare module "dcp/compute" {
          * returning a number which describes the payment required to compute such a slice on a worker or in a market working at the rates described in the WorkValue object.
          * This function does not take into account job-related overhead.
          */
-        calculateSlicePayment(sliceProfile: SliceProfile, workValue: WorkValue): number;
+        calculateSlicePayment(
+            sliceProfile: SliceProfile,
+            workValue: WorkValue,
+        ): number;
     }
 
     /**
@@ -217,8 +233,14 @@ declare module "dcp/compute" {
          * @event console: Used to collect the console output of the workers.
          * @event result A slice completes and returns.
          */
-        addEventListener(eventName: "readystatechange" | "resultsUpdated" | "cancel", listener: () => void): void;
-        addEventListener(eventName: "accepted", listener: (event: { job: JobHandle }) => void): void;
+        addEventListener(
+            eventName: "readystatechange" | "resultsUpdated" | "cancel",
+            listener: () => void,
+        ): void;
+        addEventListener(
+            eventName: "accepted",
+            listener: (event: { job: JobHandle }) => void,
+        ): void;
         addEventListener(
             eventName: "result",
             listener: (event: {
@@ -243,7 +265,10 @@ declare module "dcp/compute" {
                 };
             }) => void,
         ): void;
-        addEventListener(eventName: "complete", listener: (event: ResultHandle) => void): void;
+        addEventListener(
+            eventName: "complete",
+            listener: (event: ResultHandle) => void,
+        ): void;
         addEventListener(
             eventName: "status",
             listener: (event: {
@@ -475,7 +500,12 @@ declare module "dcp/compute" {
          * @param group – Groups in range
          * @returns Promise<void>
          */
-        constructor(startOrObject: number | object, end: number, step?: number, group?: number | object);
+        constructor(
+            startOrObject: number | object,
+            end: number,
+            step?: number,
+            group?: number | object,
+        );
 
         /**
          * See SuperRangeObject.filter()
@@ -525,7 +555,10 @@ declare module "dcp/compute" {
          * @param range – If first argument is a RangeObject, subsquent arguments are range objects too.
          * @returns instance of MultiRangeObject
          */
-        constructor(arg: RangeObject | RangeObject[] | object, range: RangeObject);
+        constructor(
+            arg: RangeObject | RangeObject[] | object,
+            range: RangeObject,
+        );
 
         /**
          * See SuperRangeObject.filter()

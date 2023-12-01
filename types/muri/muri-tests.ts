@@ -7,8 +7,12 @@ const parsed = {
         userAndPass: muri("mongodb://admin:password@localhost:27017/test"),
     },
     replset: {
-        default: muri("mongodb://localhost:27017,localhost:27018,localhost:27019/test?replicaSet=replset"),
-        ssl: muri("mongodb://localhost:27017,localhost:27018,localhost:27019/test?replicaSet=replset&ssl=true"),
+        default: muri(
+            "mongodb://localhost:27017,localhost:27018,localhost:27019/test?replicaSet=replset",
+        ),
+        ssl: muri(
+            "mongodb://localhost:27017,localhost:27018,localhost:27019/test?replicaSet=replset&ssl=true",
+        ),
     },
     simple: {
         default: muri("mongodb://localhost"),

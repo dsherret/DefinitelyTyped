@@ -64,10 +64,15 @@ export interface Venmo {
      *   });
      * });
      */
-    tokenize(options?: { processResultsDelay?: number | undefined }): Promise<VenmoTokenizePayload>;
+    tokenize(options?: {
+        processResultsDelay?: number | undefined;
+    }): Promise<VenmoTokenizePayload>;
     tokenize(
         options?: { processResultsDelay?: number | undefined },
-        callback?: (error?: BraintreeError, payload?: VenmoTokenizePayload) => void,
+        callback?: (
+            error?: BraintreeError,
+            payload?: VenmoTokenizePayload,
+        ) => void,
     ): void;
 
     /**

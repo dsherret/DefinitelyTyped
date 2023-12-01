@@ -490,32 +490,34 @@ declare namespace Microsoft.Live {
          */
         work?:
             | Array<{
-                employer: {
-                    name: string;
-                };
-            }>
+                  employer: {
+                      name: string;
+                  };
+              }>
             | undefined;
         /**
          * The contact's email addresses.
          */
-        emails?: {
-            /**
-             * The contact's preferred email address.
-             */
-            preferred?: string | undefined;
-            /**
-             * The contact's personal email address.
-             */
-            personal?: string | undefined;
-            /**
-             * The contact's business email address.
-             */
-            business?: string | undefined;
-            /**
-             * The contact's "alternate" email address.
-             */
-            other?: string | undefined;
-        } | undefined;
+        emails?:
+            | {
+                  /**
+                   * The contact's preferred email address.
+                   */
+                  preferred?: string | undefined;
+                  /**
+                   * The contact's personal email address.
+                   */
+                  personal?: string | undefined;
+                  /**
+                   * The contact's business email address.
+                   */
+                  business?: string | undefined;
+                  /**
+                   * The contact's "alternate" email address.
+                   */
+                  other?: string | undefined;
+              }
+            | undefined;
     }
 
     /**
@@ -1226,16 +1228,18 @@ declare namespace Microsoft.Live {
          * The path strings that reference the next and previous sets in a
          * paginated response.
          */
-        paging?: {
-            /**
-             * Path string for the next set of results.
-             */
-            next?: string | undefined;
-            /**
-             * Path string for the previous set of results.
-             */
-            previous?: string | undefined;
-        } | undefined;
+        paging?:
+            | {
+                  /**
+                   * Path string for the next set of results.
+                   */
+                  next?: string | undefined;
+                  /**
+                   * Path string for the previous set of results.
+                   */
+                  previous?: string | undefined;
+              }
+            | undefined;
     }
 
     /**
@@ -2090,7 +2094,10 @@ declare namespace Microsoft.Live {
          *   code to handle a successful, failed, and in-progress call to the
          *   corresponding WL.api method, respectively.
          */
-        api<T>(properties: IAPIProperties, callback?: (response: any) => void): IPromise<T>;
+        api<T>(
+            properties: IAPIProperties,
+            callback?: (response: any) => void,
+        ): IPromise<T>;
         /**
          * Makes a call to download a file from Microsoft SkyDrive.
          *
@@ -2135,7 +2142,10 @@ declare namespace Microsoft.Live {
          *   handle a successful, failed, and in-progress call to the
          *   corresponding WL.backgroudUpload method, respectively.
          */
-        backgroundUpload<T>(properties: IBackgroundUploadProperties, callback?: (response: any) => void): IPromise<T>;
+        backgroundUpload<T>(
+            properties: IBackgroundUploadProperties,
+            callback?: (response: any) => void,
+        ): IPromise<T>;
         /**
          * Specifies whether the current user can be signed out of their
          * Microsoft account.
@@ -2169,7 +2179,10 @@ declare namespace Microsoft.Live {
          *   the onError parameter to enable your code to handle a failed call
          *   to the corresponding WL.download method.
          */
-        download(properties: IDownloadProperties, callback?: (response: any) => void): IPromise<void>;
+        download(
+            properties: IDownloadProperties,
+            callback?: (response: any) => void,
+        ): IPromise<void>;
         Event: IEventAPI;
         /**
          * Displays the Microsoft SkyDrive file picker, which enables
@@ -2185,7 +2198,10 @@ declare namespace Microsoft.Live {
          *   a successful and failed call to the corresponding WL.fileDialog
          *   method, respectively.
          */
-        fileDialog(properties: IFileDialogProperties, callback?: (response: any) => void): IPromise<IFilePickerResult>;
+        fileDialog(
+            properties: IFileDialogProperties,
+            callback?: (response: any) => void,
+        ): IPromise<IFilePickerResult>;
         /**
          * Returns the sign-in status of the current user. If the user is signed
          * in and connected to your app, this function returns the session
@@ -2210,7 +2226,10 @@ declare namespace Microsoft.Live {
          *   In the body of the onSuccess function, a status object is returned,
          *   which contains the user's sign-in status and the session object.
          */
-        getLoginStatus(callback?: (status: ILoginStatus) => void, force?: boolean): IPromise<ILoginStatus>;
+        getLoginStatus(
+            callback?: (status: ILoginStatus) => void,
+            force?: boolean,
+        ): IPromise<ILoginStatus>;
         /**
          * Retrieves the current session object synchronously, if a session
          * object exists. For situations in which performance is critical, such
@@ -2264,7 +2283,10 @@ declare namespace Microsoft.Live {
          *   code to handle a successful, failed, and in-progress call to the
          *   corresponding WL.login method, respectively.
          */
-        login(properties: ILoginProperties, callback?: (status: any) => void): IPromise<ILoginStatus>;
+        login(
+            properties: ILoginProperties,
+            callback?: (status: any) => void,
+        ): IPromise<ILoginStatus>;
         /**
          * Signs the user out of Live Connect and clears any user state that is
          * maintained by the JavaScript library, such as cookies. If the user
@@ -2282,7 +2304,9 @@ declare namespace Microsoft.Live {
          *   code to handle a successful, failed, and in-progress call to the
          *   corresponding WL.logout method, respectively.
          */
-        logout(callback?: (status: ILoginStatus) => void): IPromise<ILoginStatus>;
+        logout(
+            callback?: (status: ILoginStatus) => void,
+        ): IPromise<ILoginStatus>;
         /**
          * Displays either the Live Connect sign-in button or the Microsoft
          * SkyDrive file picker button. The sign-in button either prompts the
@@ -2321,7 +2345,10 @@ declare namespace Microsoft.Live {
          *   onProgress parameter applies to newer web browsers such as Internet
          *   Explorer 10 only.
          */
-        upload<T>(properties: IUploadProperties, callback?: (response: any) => void): IPromise<T>;
+        upload<T>(
+            properties: IUploadProperties,
+            callback?: (response: any) => void,
+        ): IPromise<T>;
     }
 }
 

@@ -20,7 +20,8 @@ const CodePipelineEvent: CodePipelineEvent = {
                         s3Location: {
                             bucketName:
                                 "the name of the bucket configured as the pipeline artifact store in Amazon S3, for example codepipeline-us-east-2-1234567890",
-                            objectKey: "the name of the application, for example CodePipelineDemoApplication.zip",
+                            objectKey:
+                                "the name of the application, for example CodePipelineDemoApplication.zip",
                         },
                         type: "S3",
                     },
@@ -53,7 +54,10 @@ const CodePipelineEvent: CodePipelineEvent = {
     },
 };
 
-CodePipelineEvent["CodePipeline.job"].data.encryptionKey = { type: "KMS", id: "key" };
+CodePipelineEvent["CodePipeline.job"].data.encryptionKey = {
+    type: "KMS",
+    id: "key",
+};
 
 /* CodePipeline CloudWatch Events
  * see https://docs.aws.amazon.com/codepipeline/latest/userguide/detect-state-changes-cloudwatch-events.html

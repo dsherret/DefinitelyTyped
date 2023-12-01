@@ -122,7 +122,10 @@ interface JQuery {
     /**
      * Initialize the countdown
      */
-    countdown(finalDate: string, callback?: (event: jQueryCountdown.Event) => void): JQuery;
+    countdown(
+        finalDate: string,
+        callback?: (event: jQueryCountdown.Event) => void,
+    ): JQuery;
 
     /**
      * Initialize the countdown with options
@@ -141,5 +144,8 @@ interface JQuery {
     /**
      * Trigger an event whenever some state change
      */
-    on(method: jQueryCountdown.Methods, callback: (event: jQueryCountdown.Event) => void): JQuery;
+    on(
+        method: jQueryCountdown.Methods,
+        callback: (event: jQueryCountdown.Event) => void,
+    ): JQuery;
 }

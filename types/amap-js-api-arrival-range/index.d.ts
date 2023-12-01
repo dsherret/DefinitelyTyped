@@ -53,7 +53,10 @@ declare namespace AMap {
         search(
             origin: LocationValue,
             time: number,
-            callback: (status: ArrivalRange.SearchStatus, result: string | ArrivalRange.SearchResult) => void,
+            callback: (
+                status: ArrivalRange.SearchStatus,
+                result: string | ArrivalRange.SearchResult,
+            ) => void,
             opts?: ArrivalRange.SearchOptions,
         ): void;
     }

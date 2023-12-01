@@ -25,10 +25,12 @@ declare namespace GoogleAdsScripts {
          *        var excludedVideoAge = excludedVideoAgeIterator.next();
          *      }
          */
-        interface ExcludedVideoAgeIterator extends Base.Iterator<ExcludedVideoAge> {}
+        interface ExcludedVideoAgeIterator
+            extends Base.Iterator<ExcludedVideoAge> {}
 
         /** An operation representing creation of a new excluded video age. */
-        interface ExcludedVideoAgeOperation extends Base.Operation<ExcludedVideoAge> {}
+        interface ExcludedVideoAgeOperation
+            extends Base.Operation<ExcludedVideoAge> {}
 
         /**
          * Fetches excluded video ages. Supports filtering and sorting.
@@ -46,11 +48,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedVideoAgeSelector
-            extends
-                Base.Selector<ExcludedVideoAgeIterator>,
+            extends Base.Selector<ExcludedVideoAgeIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

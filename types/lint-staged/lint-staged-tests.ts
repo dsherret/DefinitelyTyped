@@ -17,10 +17,11 @@ config = {
     "*.md": "prettier --list-different",
 };
 
-const micromatch = (allStagedFiles: string[], patterns: string[]) => [] as string[];
+const micromatch = (allStagedFiles: string[], patterns: string[]) =>
+    [] as string[];
 
 // https://github.com/okonet/lint-staged#example-export-a-function-to-build-your-own-matchers
-config = allStagedFiles => {
+config = (allStagedFiles) => {
     const shFiles = micromatch(allStagedFiles, ["**/src/**/*.sh"]);
     if (shFiles.length) {
         return `printf '%s\n' "Script files aren't allowed in src directory" >&2`;
@@ -32,7 +33,8 @@ config = allStagedFiles => {
 
 // https://github.com/okonet/lint-staged#example-wrap-filenames-in-single-quotes-and-run-once-per-file
 config = {
-    "**/*.js?(x)": filenames => filenames.map(filename => `prettier --write '${filename}'`),
+    "**/*.js?(x)": (filenames) =>
+        filenames.map((filename) => `prettier --write '${filename}'`),
 };
 
 // https://github.com/okonet/lint-staged#example-run-tsc-on-changes-to-typescript-files-but-do-not-pass-any-filename-arguments
@@ -42,5 +44,6 @@ config = {
 
 // https://github.com/okonet/lint-staged#example-run-eslint-on-entire-repo-if-more-than-10-staged-files
 config = {
-    "**/*.js?(x)": filenames => (filenames.length > 10 ? "eslint ." : `eslint ${filenames.join(" ")}`),
+    "**/*.js?(x)": (filenames) =>
+        filenames.length > 10 ? "eslint ." : `eslint ${filenames.join(" ")}`,
 };

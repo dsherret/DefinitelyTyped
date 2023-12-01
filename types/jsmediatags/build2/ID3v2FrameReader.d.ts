@@ -1,4 +1,11 @@
-import { CharsetType, FrameReaderSignature, TagFrameFlags, TagFrameHeader, TagFrames, TagHeader } from "../types";
+import {
+    CharsetType,
+    FrameReaderSignature,
+    TagFrameFlags,
+    TagFrameHeader,
+    TagFrames,
+    TagHeader,
+} from "../types";
 import MediaFileReader from "./MediaFileReader";
 
 interface ID3v2FrameReader {

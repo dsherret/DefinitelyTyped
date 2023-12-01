@@ -42,76 +42,76 @@ import fs = require("fs");
 
     parser.onend = () => {};
 
-    parser.write("<xml>Hello, <who name=\"world\">world</who>!</xml>").close();
+    parser.write('<xml>Hello, <who name="world">world</who>!</xml>').close();
 
     const saxStream = sax.createStream(/*strict=*/ true, opts);
 
-    saxStream.on("text", text => {
+    saxStream.on("text", (text) => {
         // $ExpectType string
         text;
     });
 
-    saxStream.on("doctype", doctype => {
+    saxStream.on("doctype", (doctype) => {
         // $ExpectType string
         doctype;
     });
 
-    saxStream.on("processinginstruction", node => {
+    saxStream.on("processinginstruction", (node) => {
         // $ExpectType { name: string; body: string; }
         node;
     });
 
-    saxStream.on("opentag", tag => {
+    saxStream.on("opentag", (tag) => {
         // $ExpectType Tag | QualifiedTag || QualifiedTag | Tag
         tag;
     });
 
-    saxStream.on("opentagstart", tag => {
+    saxStream.on("opentagstart", (tag) => {
         // $ExpectType Tag | QualifiedTag || QualifiedTag | Tag
         tag;
     });
 
-    saxStream.on("sgmldeclaration", sgmlDecl => {
+    saxStream.on("sgmldeclaration", (sgmlDecl) => {
         // $ExpectType string
         sgmlDecl;
     });
 
-    saxStream.on("closetag", tagName => {
+    saxStream.on("closetag", (tagName) => {
         // $ExpectType string
         tagName;
     });
 
-    saxStream.on("attribute", attr => {
+    saxStream.on("attribute", (attr) => {
         // $ExpectType { name: string; value: string; }
         attr;
     });
 
-    saxStream.on("comment", comment => {
+    saxStream.on("comment", (comment) => {
         // $ExpectType string
         comment;
     });
 
-    saxStream.on("cdata", cdata => {
+    saxStream.on("cdata", (cdata) => {
         // $ExpectType string
         cdata;
     });
 
-    saxStream.on("opennamespace", ns => {
+    saxStream.on("opennamespace", (ns) => {
         // $ExpectType { prefix: string; uri: string; }
         ns;
     });
 
-    saxStream.on("closenamespace", ns => {
+    saxStream.on("closenamespace", (ns) => {
         // $ExpectType { prefix: string; uri: string; }
         ns;
     });
 
-    saxStream.on("script", script => {
+    saxStream.on("script", (script) => {
         // $ExpectType string
         script;
     });
 
-    saxStream.on("error", error => {
+    saxStream.on("error", (error) => {
         // $ExpectType Error
         error;
 
@@ -119,12 +119,12 @@ import fs = require("fs");
         this._parser.resume();
     });
 
-    saxStream.on("pipe", src => {
+    saxStream.on("pipe", (src) => {
         // $ExpectType Readable
         src;
     });
 
-    saxStream.on("unpipe", src => {
+    saxStream.on("unpipe", (src) => {
         // $ExpectType Readable
         src;
     });
@@ -160,7 +160,7 @@ import fs = require("fs");
 
     parser.onend = () => {};
 
-    parser.write("<xml>Hello, <who name=\"world\">world</who>!</xml>").close();
+    parser.write('<xml>Hello, <who name="world">world</who>!</xml>').close();
 })();
 
 // $ExpectType SAXParser

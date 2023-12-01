@@ -52,7 +52,10 @@ declare namespace InsertModuleGlobals {
         [name: string]: InsertFunction | undefined;
     }
 
-    type InsertFunction = (file: string, basedir: string) => VariableConfig | string;
+    type InsertFunction = (
+        file: string,
+        basedir: string,
+    ) => VariableConfig | string;
 
     interface VariableConfig {
         id: string;

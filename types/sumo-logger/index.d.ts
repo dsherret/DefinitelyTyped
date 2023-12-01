@@ -123,7 +123,10 @@ declare class SumoLogger {
      * If you call the function with a JSON object, each field in the object is included as a separate field.
      * Fields called `sessionId`, `url`, and `timestamp` are sent in both cases.
      */
-    log(message: string, options?: SumoLogger.PerMessageOptions): boolean | Promise<any>;
+    log(
+        message: string,
+        options?: SumoLogger.PerMessageOptions,
+    ): boolean | Promise<any>;
 
     /**
      * Set a log message to be sent.
@@ -132,7 +135,9 @@ declare class SumoLogger {
      * If you call the function with a JSON object, each field in the object is included as a separate field.
      * Fields called `sessionId`, `url`, and `timestamp` are sent in both cases.
      */
-    log<T extends object>(event: Partial<SumoLogger.PerMessageOptions> & T): boolean | Promise<any>;
+    log<T extends object>(
+        event: Partial<SumoLogger.PerMessageOptions> & T,
+    ): boolean | Promise<any>;
 
     /**
      * Force any pending logs to be sent immediately. This is mainly for use in a

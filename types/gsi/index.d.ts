@@ -77,11 +77,18 @@ interface PromptMomentNotification {
     /** Is this notification for a skipped moment? */
     isSkippedMoment: () => boolean;
     /** The detailed reason for the skipped moment. */
-    getSkippedReason: () => "auto_cancel" | "user_cancel" | "tap_outside" | "issuing_failed";
+    getSkippedReason: () =>
+        | "auto_cancel"
+        | "user_cancel"
+        | "tap_outside"
+        | "issuing_failed";
     /** Is this notification for a dismissed moment? */
     isDismissedMoment: () => boolean;
     /** The detailed reason for the dismissal. */
-    getDismissedReason: () => "credential_returned" | "cancel_called" | "flow_restarted";
+    getDismissedReason: () =>
+        | "credential_returned"
+        | "cancel_called"
+        | "flow_restarted";
     /** Return a string for the moment type. */
     getMomentType: () => "display" | "skipped" | "dismissed";
 }
@@ -175,7 +182,10 @@ declare namespace google.accounts.id {
      * @param parent The parent element onto which to mount the Sign In With Google button.
      * @param options Button configuration options.
      */
-    function renderButton(parent: string, options: GsiButtonConfiguration): void;
+    function renderButton(
+        parent: string,
+        options: GsiButtonConfiguration,
+    ): void;
 
     /**
      * When the user signs out of your website, you need to call the method google.accounts.id.disableAutoSelect to record the status in cookies. This prevents a UX dead loop.
@@ -209,7 +219,10 @@ declare namespace google.accounts.id {
      * @param credential Credential object.
      * @param callback Optional callback to run code after the credentials are stored.
      */
-    function storeCredential(credential: GsiCredential, callback?: () => void): void;
+    function storeCredential(
+        credential: GsiCredential,
+        callback?: () => void,
+    ): void;
 
     /**
      * You can cancel the One Tap flow if you remove the prompt from the relying party DOM. The cancel operation is ignored if a credential is already selected.
@@ -240,7 +253,10 @@ declare namespace google.accounts.id {
      * @param hint The email address or unique ID of the user's Google Account. The ID is the sub property of the credential payload.
      * @param callback Optional RevocationResponse handler.
      */
-    function revoke(hint: string, callback?: (done: RevocationResponse) => void): void;
+    function revoke(
+        hint: string,
+        callback?: (done: RevocationResponse) => void,
+    ): void;
 }
 
 interface Window {

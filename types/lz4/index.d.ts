@@ -90,7 +90,12 @@ export function decode(input: Buffer, options?: DecoderOptions): Buffer;
  * @param endIdx input buffer end index (default=startIdx + input.length)
  * @returns >=0: uncompressed size, <0: error at offset
  */
-export function decodeBlock(input: Buffer, output: Buffer, startIdx?: number, endIdx?: number): number;
+export function decodeBlock(
+    input: Buffer,
+    output: Buffer,
+    startIdx?: number,
+    endIdx?: number,
+): number;
 
 /**
  * Determine maximum size for a compressed block given it's uncompressed size.
@@ -110,7 +115,12 @@ export function encodeBound(inputSize: number): number;
  * @param endIdx output buffer end index (default=startIdx + output.length)
  * @returns >0: compressed size, =0: not compressible
  */
-export function encodeBlock(input: Buffer, output: Buffer, startIdx?: number, endIdx?: number): number;
+export function encodeBlock(
+    input: Buffer,
+    output: Buffer,
+    startIdx?: number,
+    endIdx?: number,
+): number;
 
 /**
  * Encode a block of data to a compressed LZ4 block with high compression.
@@ -122,7 +132,11 @@ export function encodeBlock(input: Buffer, output: Buffer, startIdx?: number, en
  * @param compressionLevel compression level (3-12, default 9)
  * @returns >0: compressed size, =0: not compressible
  */
-export function encodeBlockHC(input: Buffer, output: Buffer, compressionLevel?: number): number;
+export function encodeBlockHC(
+    input: Buffer,
+    output: Buffer,
+    compressionLevel?: number,
+): number;
 
 /**
  * LZ4 encoder stream options.
@@ -171,12 +185,15 @@ export interface EncoderOptions {
 
 export interface EncoderConstructor {
     (options?: EncoderOptions): Encoder;
-    new(options?: EncoderOptions): Encoder;
+    new (options?: EncoderOptions): Encoder;
 }
 
 export interface Encoder extends Transform {
     addListener(event: "data", listener: (chunk: Buffer) => void): this;
-    addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     on(event: "data", listener: (chunk: Buffer) => void): this;
     on(event: string | symbol, listener: (...args: any[]) => void): this;
@@ -185,13 +202,22 @@ export interface Encoder extends Transform {
     once(event: string | symbol, listener: (...args: any[]) => void): this;
 
     prependListener(event: "data", listener: (chunk: Buffer) => void): this;
-    prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     prependOnceListener(event: "data", listener: (chunk: Buffer) => void): this;
-    prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     removeListener(event: "data", listener: (chunk: Buffer) => void): this;
-    removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    removeListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     off(event: "data", listener: (chunk: Buffer) => void): this;
     off(event: string | symbol, listener: (...args: any[]) => void): this;
@@ -210,12 +236,15 @@ export interface DecoderOptions {
 
 export interface DecoderConstructor {
     (options?: DecoderOptions): Decoder;
-    new(options?: DecoderOptions): Decoder;
+    new (options?: DecoderOptions): Decoder;
 }
 
 export interface Decoder extends Transform {
     addListener(event: "data", listener: (chunk: Buffer) => void): this;
-    addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     on(event: "data", listener: (chunk: Buffer) => void): this;
     on(event: string | symbol, listener: (...args: any[]) => void): this;
@@ -224,13 +253,22 @@ export interface Decoder extends Transform {
     once(event: string | symbol, listener: (...args: any[]) => void): this;
 
     prependListener(event: "data", listener: (chunk: Buffer) => void): this;
-    prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     prependOnceListener(event: "data", listener: (chunk: Buffer) => void): this;
-    prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     removeListener(event: "data", listener: (chunk: Buffer) => void): this;
-    removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    removeListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     off(event: "data", listener: (chunk: Buffer) => void): this;
     off(event: string | symbol, listener: (...args: any[]) => void): this;

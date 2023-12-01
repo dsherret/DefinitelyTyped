@@ -23,7 +23,8 @@ const Customized = DS.JSONAPISerializer.extend({
         requestType: string,
     ) {
         payload.data.attributes.amount = payload.data.attributes.cost.amount;
-        payload.data.attributes.currency = payload.data.attributes.cost.currency;
+        payload.data.attributes.currency =
+            payload.data.attributes.cost.currency;
 
         delete payload.data.attributes.cost;
 
@@ -63,7 +64,10 @@ interface CustomSerializerOptions {
 }
 
 const SerializerUsingSnapshots = DS.RESTSerializer.extend({
-    serialize(snapshot: DS.Snapshot<"message-for-serializer">, options: CustomSerializerOptions) {
+    serialize(
+        snapshot: DS.Snapshot<"message-for-serializer">,
+        options: CustomSerializerOptions,
+    ) {
         let json: any = {
             POST_TTL: snapshot.attr("title"),
             POST_BDY: snapshot.attr("body"),

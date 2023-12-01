@@ -25,7 +25,7 @@ XMPlugin.getDeviceId();
 XMPlugin.getVersion();
 
 // player
-(async () => {
+async () => {
     await player.play();
     await player.play(1);
     await player.preloadSound(1);
@@ -77,10 +77,10 @@ XMPlugin.getVersion();
     player.emit("play", {});
     player.off("play");
     player.off("play", () => {});
-});
+};
 
 // xmly
-(async () => {
+async () => {
     const url = "https://open.ximalaya.com";
     let res: {
         code: number;
@@ -96,4 +96,4 @@ XMPlugin.getVersion();
     res = await xmly.post(url);
     res = await xmly.bindThirdUid("xx");
     res = await xmly.unbindThirdUid("xx");
-});
+};

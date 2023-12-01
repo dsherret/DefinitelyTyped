@@ -1,6 +1,12 @@
 import "chai";
 import { By, WebElement } from "selenium-webdriver";
-import { Awaitable, Definition, Element, ELEMENT_KEY, NightwatchAPI } from "./index";
+import {
+    Awaitable,
+    Definition,
+    Element,
+    ELEMENT_KEY,
+    NightwatchAPI,
+} from "./index";
 
 export interface NightwatchExpectResult {
     value: null;
@@ -109,12 +115,18 @@ export interface ExpectElement extends ExpectAssertions<ExpectElement> {
     /**
      * Checks if a given attribute of an element exists and optionally if it has the expected value.
      */
-    attribute(attribute: string, message?: string): Awaitable<this, NightwatchExpectResult>;
+    attribute(
+        attribute: string,
+        message?: string,
+    ): Awaitable<this, NightwatchExpectResult>;
 
     /**
      * Checks a given css property of an element exists and optionally if it has the expected value.
      */
-    css(property: string, message?: string): Awaitable<this, NightwatchExpectResult>;
+    css(
+        property: string,
+        message?: string,
+    ): Awaitable<this, NightwatchExpectResult>;
 
     /**
      * Property that checks if an element is currently enabled.
@@ -130,7 +142,10 @@ export interface ExpectElement extends ExpectAssertions<ExpectElement> {
      * Checks if a given DOM property of an element has the expected value.
      * For all the available DOM element properties, consult the [Element doc at MDN](https://developer.mozilla.org/en-US/docs/Web/API/element).
      */
-    property(name: string, message?: string): Awaitable<this, NightwatchExpectResult>;
+    property(
+        name: string,
+        message?: string,
+    ): Awaitable<this, NightwatchExpectResult>;
 
     /**
      * Property that checks if an OPTION element, or an INPUT element of type checkbox or radio button is currently selected.
@@ -156,10 +171,15 @@ export interface ExpectElement extends ExpectAssertions<ExpectElement> {
      * Checks if the specified DOM property of a given element is present and has the expected value.
      * For all the available DOM element properties, consult the [Element doc at MDN](https://developer.mozilla.org/en-US/docs/Web/API/element).
      */
-    domProperty(propertyName: string, message?: string): Awaitable<this, NightwatchExpectResult>;
+    domProperty(
+        propertyName: string,
+        message?: string,
+    ): Awaitable<this, NightwatchExpectResult>;
 }
 
-export interface ExpectSection extends ExpectAssertions<ExpectSection>, ExpectElement {}
+export interface ExpectSection
+    extends ExpectAssertions<ExpectSection>,
+        ExpectElement {}
 
 export interface ExpectElements extends ExpectAssertions<ExpectElements> {
     /**

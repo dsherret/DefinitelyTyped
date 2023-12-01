@@ -6,7 +6,12 @@ export class CookieAccessInfo {
      * @param secure boolean access is secure (ssl generally)
      * @param script boolean access is from a script
      */
-    constructor(domain: string, path?: string, secure?: boolean, script?: boolean);
+    constructor(
+        domain: string,
+        path?: string,
+        secure?: boolean,
+        script?: boolean,
+    );
 
     static All: CookieAccessInfo;
     domain: string; // domain to match
@@ -38,7 +43,11 @@ export class Cookie {
      * @param requestDomain string argument is used to default the domain if it is not explicit in the cookie string
      * @param requestPath string argument is used to set the path if it is not explicit in a cookie String
      */
-    constructor(cookie: string | Cookie, requestDomain?: string, requestPath?: string);
+    constructor(
+        cookie: string | Cookie,
+        requestDomain?: string,
+        requestPath?: string,
+    );
 
     /**
      * the set-cookie: string for this cookie
@@ -84,7 +93,11 @@ export class CookieJar {
      * @param requestDomain string argument is used to default the domain if it is not explicit in the cookie string
      * @param requestPath string argument is used to set the path if it is not explicit in a cookie String
      */
-    setCookie(cookie: string | Cookie, requestDomain?: string, requestPath?: string): Cookie | false;
+    setCookie(
+        cookie: string | Cookie,
+        requestDomain?: string,
+        requestPath?: string,
+    ): Cookie | false;
 
     /**
      * modify (or add if not already-existing) a large number of cookies to the
@@ -93,18 +106,27 @@ export class CookieJar {
      * @param requestDomain string argument is used to default the domain if it is not explicit in the cookie string
      * @param requestPath string argument is used to set the path if it is not explicit in a cookie String
      */
-    setCookies(cookie: string | readonly string[], requestDomain?: string, requestPath?: string): Cookie[];
+    setCookies(
+        cookie: string | readonly string[],
+        requestDomain?: string,
+        requestPath?: string,
+    ): Cookie[];
 
     /**
      * get a cookie with the name and access_info matching
      * @param cookieName string to be parsed into a Cookie
      * @param accessInfo CookieAccessInfo
      */
-    getCookie(cookieName: string, accessInfo: CookieAccessInfo): Cookie | undefined;
+    getCookie(
+        cookieName: string,
+        accessInfo: CookieAccessInfo,
+    ): Cookie | undefined;
 
     /**
      * grab all cookies matching this access_info
      * @param accessInfo CookieAccessInfo
      */
-    getCookies(accessInfo: CookieAccessInfo): readonly Cookie[] & { toValueString(): string };
+    getCookies(
+        accessInfo: CookieAccessInfo,
+    ): readonly Cookie[] & { toValueString(): string };
 }

@@ -26,33 +26,50 @@ declare namespace CKEDITOR {
     interface CKEditorPluginsCore {
         autoEmbed?: plugins.autoEmbed;
         clipboard?: {
-            dataTransfer: { new(nativeDataTransfer?: DataTransfer, editor?: editor): plugins.clipboard.dataTransfer };
+            dataTransfer: {
+                new (
+                    nativeDataTransfer?: DataTransfer,
+                    editor?: editor,
+                ): plugins.clipboard.dataTransfer;
+            };
             fallbackDataTransfer: {
-                new(dataTransfer: plugins.clipboard.dataTransfer): plugins.clipboard.fallbackDataTransfer;
+                new (
+                    dataTransfer: plugins.clipboard.dataTransfer,
+                ): plugins.clipboard.fallbackDataTransfer;
             };
         } & plugins.clipboard;
-        contextMenu?: { new(editor: editor): plugins.contextMenu };
+        contextMenu?: { new (editor: editor): plugins.contextMenu };
         copyformatting?: {
             state: plugins.copyformatting.stateConstructor;
         } & plugins.copyformatting;
         embedBase?: {
-            createWidgetBaseDefinition(editor: editor): plugins.embedBase.baseDefinition;
+            createWidgetBaseDefinition(
+                editor: editor,
+            ): plugins.embedBase.baseDefinition;
         };
         image2: plugins.image2;
         imagebase?: {
-            progressBar: { new(): plugins.imagebase.progressBar };
-            progressReporter: { new(wrapperHtml?: string): plugins.imagebase.progressReporter };
+            progressBar: { new (): plugins.imagebase.progressBar };
+            progressReporter: {
+                new (wrapperHtml?: string): plugins.imagebase.progressReporter;
+            };
         } & plugins.imagebase;
         indent?: {
-            registerCommands(editor: editor, commands: { [key: string]: command }): void;
+            registerCommands(
+                editor: editor,
+                commands: { [key: string]: command },
+            ): void;
             readonly genericDefinition: plugins.indent.genericDefinition;
             readonly specificDefinition: plugins.indent.specificDefinition;
         };
         indentList?: plugins.indentList;
         link?: plugins.link;
-        list?: { new(): plugins.list };
+        list?: { new (): plugins.list };
         notification?: {
-            new(editor: editor, options: plugins.notification.options): plugins.notification;
+            new (
+                editor: editor,
+                options: plugins.notification.options,
+            ): plugins.notification;
         };
         notificationAggregator?: {
             task: plugins.notificationAggregator.taskConstructor;
@@ -61,7 +78,7 @@ declare namespace CKEDITOR {
         tableselection?: plugins.tableselection;
         widget?: {
             nestedEditable: {
-                new(
+                new (
                     editor: editor,
                     element: dom.element,
                     config: { filter?: filter | undefined },
@@ -92,9 +109,16 @@ declare namespace CKEDITOR {
             isFileApiSupported: boolean;
             mainPasteEvent: string;
 
-            addPasteButton(editor: editor, name: string, definition: { [key: string]: unknown }): void;
+            addPasteButton(
+                editor: editor,
+                name: string,
+                definition: { [key: string]: unknown },
+            ): void;
 
-            canClipboardApiBeTrusted(dataTransfer: clipboard.dataTransfer, editor: editor): boolean;
+            canClipboardApiBeTrusted(
+                dataTransfer: clipboard.dataTransfer,
+                editor: editor,
+            ): boolean;
 
             getDropTarget(editor: editor): dom.domObject;
 
@@ -142,9 +166,17 @@ declare namespace CKEDITOR {
         }
 
         interface contextMenu extends menu {
-            addTarget(element: dom.element, nativeContextMenuOnCtrl?: boolean): void;
+            addTarget(
+                element: dom.element,
+                nativeContextMenuOnCtrl?: boolean,
+            ): void;
 
-            open(offsetParent: dom.element, corner?: number, offsetX?: number, offsetY?: number): void;
+            open(
+                offsetParent: dom.element,
+                corner?: number,
+                offsetX?: number,
+                offsetY?: number,
+            ): void;
         }
 
         interface copyformatting {
@@ -158,7 +190,7 @@ declare namespace CKEDITOR {
 
         namespace copyformatting {
             interface stateConstructor extends eventConstructor<state> {
-                new(editor: editor): state;
+                new (editor: editor): state;
             }
             interface state extends event {
                 editor: editor;
@@ -175,7 +207,11 @@ declare namespace CKEDITOR {
                 providerUrl: template;
                 urlRegExp: RegExp;
 
-                getErrorMessage(messageTypeOrMessage: string, url?: string, suffix?: string): string;
+                getErrorMessage(
+                    messageTypeOrMessage: string,
+                    url?: string,
+                    suffix?: string,
+                ): string;
 
                 isUrlValid(url: string): boolean;
 
@@ -206,7 +242,10 @@ declare namespace CKEDITOR {
                 data: { [key: string]: string },
             ) => { set: { [tag: string]: string }; removed: string[] };
 
-            getLinkAttributesParser(): (editor: editor, element: dom.element) => { [key: string]: string };
+            getLinkAttributesParser(): (
+                editor: editor,
+                element: dom.element,
+            ) => { [key: string]: string };
 
             getNatural(image: dom.element): {
                 [key: string]: string;
@@ -222,7 +261,11 @@ declare namespace CKEDITOR {
                 definition: imagebase.imageWidgetDefinition,
             ): imagebase.imageWidgetDefinition;
 
-            addImageWidget(editor: editor, name: string, definition: imagebase.imageWidgetDefinition): void;
+            addImageWidget(
+                editor: editor,
+                name: string,
+                definition: imagebase.imageWidgetDefinition,
+            ): void;
         }
 
         namespace imagebase {
@@ -277,7 +320,10 @@ declare namespace CKEDITOR {
                 readonly isIndent: boolean;
                 readonly jobs: {
                     [priority: string]: {
-                        refresh: (editor: editor, path: dom.elementPath) => number;
+                        refresh: (
+                            editor: editor,
+                            path: dom.elementPath,
+                        ) => number;
                         exec: (editor: editor) => boolean;
                     };
                 };
@@ -309,17 +355,34 @@ declare namespace CKEDITOR {
                 data: { [key: string]: unknown },
             ): { set: { [key: string]: string }; removed: string[] };
 
-            getSelectedLink(editor: editor, returnMultiple?: boolean): dom.element | dom.element[];
+            getSelectedLink(
+                editor: editor,
+                returnMultiple?: boolean,
+            ): dom.element | dom.element[];
 
-            parseLinkAttributes(editor: editor, element: dom.element): { [key: string]: unknown };
+            parseLinkAttributes(
+                editor: editor,
+                element: dom.element,
+            ): { [key: string]: unknown };
 
-            showDisplayTextForElement(element: dom.element, editor: editor): boolean;
+            showDisplayTextForElement(
+                element: dom.element,
+                editor: editor,
+            ): boolean;
 
-            tryRestoreFakeAnchor(editor: editor, element: dom.element): dom.element;
+            tryRestoreFakeAnchor(
+                editor: editor,
+                element: dom.element,
+            ): dom.element;
         }
 
         interface list {
-            arrayToList(listArray: unknown, database: unknown, paragraphMode: unknown, dir: unknown): void;
+            arrayToList(
+                listArray: unknown,
+                database: unknown,
+                paragraphMode: unknown,
+                dir: unknown,
+            ): void;
 
             listToArray(
                 listNode: unknown,
@@ -378,15 +441,22 @@ declare namespace CKEDITOR {
             type type = "info" | "warning" | "success" | "progress";
         }
 
-        interface notificationAggregatorConstructor extends eventConstructor<notificationAggregator> {
-            new(editor: editor, message: string, singularMessage?: string): notificationAggregator;
+        interface notificationAggregatorConstructor
+            extends eventConstructor<notificationAggregator> {
+            new (
+                editor: editor,
+                message: string,
+                singularMessage?: string,
+            ): notificationAggregator;
         }
 
         interface notificationAggregator extends event {
             readonly editor: editor;
             readonly notification: notification;
 
-            createTask(options?: { weight?: number | undefined }): notificationAggregator.task;
+            createTask(options?: {
+                weight?: number | undefined;
+            }): notificationAggregator.task;
 
             getDoneTaskCount(): number;
 
@@ -401,7 +471,7 @@ declare namespace CKEDITOR {
 
         namespace notificationAggregator {
             interface taskConstructor extends eventConstructor<task> {
-                new(weight?: number): task;
+                new (weight?: number): task;
             }
 
             interface task extends event {
@@ -443,13 +513,19 @@ declare namespace CKEDITOR {
             filters: { [filter: string]: unknown };
             createFilter(options: { rules: () => unknown }): () => unknown;
             getClipboardData(data: eventData, type: string): string;
-            getConfigValue(editor: editor, configVariable: string): string | boolean | number | unknown | unknown[];
+            getConfigValue(
+                editor: editor,
+                configVariable: string,
+            ): string | boolean | number | unknown | unknown[];
             getContentGeneratorName(content: string): string | undefined;
             loadFilters(filters: string[], callback: () => void): boolean;
         }
 
         interface tableselection {
-            getCellsBetween(first: dom.element, last: dom.element): dom.element[];
+            getCellsBetween(
+                first: dom.element,
+                last: dom.element,
+            ): dom.element[];
         }
 
         interface widgetConstructor extends eventConstructor<widget> {
@@ -473,7 +549,7 @@ declare namespace CKEDITOR {
 
             isParserWidgetWrapper(node: dom.node): boolean;
 
-            new(
+            new (
                 widgetsRepo: widget.repository,
                 id: number,
                 element: dom.element,
@@ -511,7 +587,10 @@ declare namespace CKEDITOR {
 
             hasClass(className: string, Whether: boolean): void;
 
-            initEditable(editableName: string, definition: widget.nestedEditable.definition): boolean;
+            initEditable(
+                editableName: string,
+                definition: widget.nestedEditable.definition,
+            ): boolean;
 
             isInited(): boolean;
 
@@ -534,7 +613,9 @@ declare namespace CKEDITOR {
             namespace nestedEditable {
                 interface definition {
                     allowedContent?: filter.allowedContentRules | undefined;
-                    disallowedContent?: filter.disallowedContentRules | undefined;
+                    disallowedContent?:
+                        | filter.disallowedContentRules
+                        | undefined;
                     pathName?: string | undefined;
                     selector?: string | undefined;
                 }
@@ -556,7 +637,10 @@ declare namespace CKEDITOR {
                 data?: ((evt: eventInfo) => void) | undefined;
                 defaults?: { [key: string]: unknown } | undefined;
                 dialog?: string | undefined;
-                downcast?: string | ((element: htmlParser.element) => void) | undefined;
+                downcast?:
+                    | string
+                    | ((element: htmlParser.element) => void)
+                    | undefined;
                 downcasts?: { [key: string]: unknown } | undefined;
                 draggable?: boolean | undefined;
                 edit?: (() => void) | undefined;
@@ -568,15 +652,21 @@ declare namespace CKEDITOR {
                 mask?: boolean | undefined;
                 parts?: { [key: string]: unknown } | undefined;
                 pathName?: string | undefined;
-                styleToAllowedContentRules?: ((style: style) => filter.allowedContentRules) | undefined;
+                styleToAllowedContentRules?:
+                    | ((style: style) => filter.allowedContentRules)
+                    | undefined;
                 styleableElements?: string | undefined;
                 template?: string | template | undefined;
-                upcast?: string | ((element: htmlParser.element, data: unknown) => boolean) | undefined;
+                upcast?:
+                    | string
+                    | ((element: htmlParser.element, data: unknown) => boolean)
+                    | undefined;
                 upcastPriority?: number | undefined;
                 upcasts?: { [key: string]: unknown } | undefined;
             }
 
-            interface repositoryConstructor extends eventConstructor<repository> {}
+            interface repositoryConstructor
+                extends eventConstructor<repository> {}
 
             interface repository extends event {
                 readonly editor: editor;
@@ -588,11 +678,19 @@ declare namespace CKEDITOR {
 
                 add(name: string, widgetDef: definition): void;
 
-                addUpcastCallback(callback: (element: htmlParser.element, data: unknown) => boolean): void;
+                addUpcastCallback(
+                    callback: (
+                        element: htmlParser.element,
+                        data: unknown,
+                    ) => boolean,
+                ): void;
 
                 checkSelection(): void;
 
-                checkWidgets(options?: { initOnlyNew?: boolean | undefined; focusInited?: boolean | undefined }): void;
+                checkWidgets(options?: {
+                    initOnlyNew?: boolean | undefined;
+                    focusInited?: boolean | undefined;
+                }): void;
 
                 del(widget: widget): void;
 
@@ -602,7 +700,10 @@ declare namespace CKEDITOR {
 
                 finalizeCreation(container: unknown): void;
 
-                getByElement(element: unknown, checkWrapperOnly: boolean): widget;
+                getByElement(
+                    element: unknown,
+                    checkWrapperOnly: boolean,
+                ): widget;
 
                 initOn(
                     element: dom.element,

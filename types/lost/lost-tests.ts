@@ -51,7 +51,11 @@ for (const lib of libs) {
 
 // lib/core exports from version 9.0
 // lg-logic
-import { calcValue, parseLostProperty, validateUnit } from "lost/lib/core/lg-logic";
+import {
+    calcValue,
+    parseLostProperty,
+    validateUnit,
+} from "lost/lib/core/lg-logic";
 calcValue("0");
 calcValue("0", "0");
 calcValue("0", "0", "0");

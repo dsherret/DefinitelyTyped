@@ -9,7 +9,11 @@ interface Store<State> {
 
 declare const numberStore: Store<number>;
 function useVersion(): number {
-    return useSyncExternalStore(numberStore.subscribe, numberStore.getState, numberStore.getServerState);
+    return useSyncExternalStore(
+        numberStore.subscribe,
+        numberStore.getState,
+        numberStore.getServerState,
+    );
 }
 
 function useStoreWrong() {
@@ -30,13 +34,22 @@ function useStoreWrong() {
     );
 }
 
-declare const objectStore: Store<{ version: { major: number; minor: number }; users: string[] }>;
+declare const objectStore: Store<{
+    version: { major: number; minor: number };
+    users: string[];
+}>;
 function useUsers(): string[] {
-    return useSyncExternalStore(objectStore.subscribe, () => objectStore.getState().users);
+    return useSyncExternalStore(
+        objectStore.subscribe,
+        () => objectStore.getState().users,
+    );
 }
 
 function useReduxSelector<Selection>(
-    selector: (state: { version: { major: number; minor: number }; users: string[] }) => Selection,
+    selector: (state: {
+        version: { major: number; minor: number };
+        users: string[];
+    }) => Selection,
 ): Selection {
     return useSyncExternalStoreWithSelector(
         objectStore.subscribe,
@@ -50,7 +63,7 @@ function useReduxUsers(): string[] {
         objectStore.subscribe,
         objectStore.getState,
         objectStore.getServerState,
-        state => state.users,
+        (state) => state.users,
     );
 }
 function useReduxVersion(): { major: number; minor: number } {
@@ -58,7 +71,7 @@ function useReduxVersion(): { major: number; minor: number } {
         objectStore.subscribe,
         objectStore.getState,
         objectStore.getServerState,
-        state => state.version,
+        (state) => state.version,
         // `patch` does not exist on type `{ major: number, minor: number }`
         // @ts-expect-error
         (a, b) => a.patch === b.patch,
@@ -67,7 +80,7 @@ function useReduxVersion(): { major: number; minor: number } {
         objectStore.subscribe,
         objectStore.getState,
         objectStore.getServerState,
-        state => state.version,
+        (state) => state.version,
         (a, b) => a.minor === b.minor && a.major === b.major,
     );
 }

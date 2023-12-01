@@ -30,7 +30,13 @@ export interface HelmetProps {
     defer?: boolean | undefined;
     encodeSpecialCharacters?: boolean | undefined;
     htmlAttributes?: HtmlProps | undefined;
-    onChangeClientState?: ((newState: any, addedTags: HelmetTags, removedTags: HelmetTags) => void) | undefined;
+    onChangeClientState?:
+        | ((
+              newState: any,
+              addedTags: HelmetTags,
+              removedTags: HelmetTags,
+          ) => void)
+        | undefined;
     link?: LinkProps[] | undefined;
     meta?: MetaProps[] | undefined;
     noscript?: any[] | undefined;
@@ -44,13 +50,16 @@ export interface HelmetProps {
 /**
  * Used by Helmet.peek()
  */
-export type HelmetPropsToState =
-    & HelmetTags
-    & Pick<
+export type HelmetPropsToState = HelmetTags &
+    Pick<
         HelmetProps,
-        "bodyAttributes" | "defer" | "htmlAttributes" | "onChangeClientState" | "title" | "titleAttributes"
-    >
-    & {
+        | "bodyAttributes"
+        | "defer"
+        | "htmlAttributes"
+        | "onChangeClientState"
+        | "title"
+        | "titleAttributes"
+    > & {
         encode: Required<HelmetProps["encodeSpecialCharacters"]>;
     };
 

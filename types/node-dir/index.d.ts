@@ -39,7 +39,12 @@ export interface FileCallback {
 }
 
 export interface FileNamedCallback {
-    (error: any, content: string | Buffer, filename: string, next: () => void): void;
+    (
+        error: any,
+        content: string | Buffer,
+        filename: string,
+        next: () => void,
+    ): void;
 }
 
 export interface StreamCallback {
@@ -54,8 +59,16 @@ export interface PathsResult {
     dirs: string[];
 }
 
-export function readFiles(dir: string, fileCallback: FileCallback, finishedCallback?: FinishedCallback): void;
-export function readFiles(dir: string, fileCallback: FileNamedCallback, finishedCallback?: FinishedCallback): void;
+export function readFiles(
+    dir: string,
+    fileCallback: FileCallback,
+    finishedCallback?: FinishedCallback,
+): void;
+export function readFiles(
+    dir: string,
+    fileCallback: FileNamedCallback,
+    finishedCallback?: FinishedCallback,
+): void;
 export function readFiles(
     dir: string,
     options: Options,
@@ -68,18 +81,31 @@ export function readFiles(
     fileCallback: FileNamedCallback,
     finishedCallback?: FinishedCallback,
 ): void;
-export function readFilesStream(dir: string, streamCallback: StreamCallback, finishedCallback?: FinishedCallback): void;
+export function readFilesStream(
+    dir: string,
+    streamCallback: StreamCallback,
+    finishedCallback?: FinishedCallback,
+): void;
 export function readFilesStream(
     dir: string,
     options: Options,
     streamCallback: StreamCallback,
     finishedCallback?: FinishedCallback,
 ): void;
-export function files(dir: string, callback: (error: any, files: string[]) => void): void;
+export function files(
+    dir: string,
+    callback: (error: any, files: string[]) => void,
+): void;
 export function files(dir: string, syncOption: { sync: true }): string[];
 export function promiseFiles(dir: string): Promise<string[]>;
-export function subdirs(dir: string, callback: (error: any, subdirs: string[]) => void): void;
-export function paths(dir: string, callback: (error: any, paths: PathsResult) => void): void;
+export function subdirs(
+    dir: string,
+    callback: (error: any, subdirs: string[]) => void,
+): void;
+export function paths(
+    dir: string,
+    callback: (error: any, paths: PathsResult) => void,
+): void;
 export function paths(
     dir: string,
     combine: boolean,

@@ -20,7 +20,11 @@ export function onClientRequest(request: EW.IngressClientRequest) {
     // Exercise respondWith
     const target = request.getHeader("target");
     if (target != null && target[0] === "onClientRequest-respondWith") {
-        request.respondWith(418, { "from-respond-with": "frw value" }, "frw body");
+        request.respondWith(
+            418,
+            { "from-respond-with": "frw value" },
+            "frw body",
+        );
     }
 }
 
@@ -36,7 +40,10 @@ export function onOriginRequest(request: EW.IngressOriginRequest) {
 
     // addHeader
     request.addHeader("onOriginRequest-addHeader-single", "single");
-    request.addHeader("onOriginRequest-addHeader-multi", ["multi-1", "multi-2"]);
+    request.addHeader("onOriginRequest-addHeader-multi", [
+        "multi-1",
+        "multi-2",
+    ]);
 
     // removeHeader
     request.getHeader("onOriginRequest-removeHeader-bye");
@@ -52,11 +59,18 @@ export function onOriginRequest(request: EW.IngressOriginRequest) {
     // respondWith
     const target = request.getHeader("target");
     if (target != null && target[0] === "onOriginRequest-respondWith") {
-        request.respondWith(418, { "from-respond-with": "frw value" }, "frw body");
+        request.respondWith(
+            418,
+            { "from-respond-with": "frw value" },
+            "frw body",
+        );
     }
 }
 
-export function onOriginResponse(request: EW.EgressOriginRequest, response: EW.EgressOriginResponse) {
+export function onOriginResponse(
+    request: EW.EgressOriginRequest,
+    response: EW.EgressOriginResponse,
+) {
     if (response.getHeader("should-respondWith")) {
         request.respondWith(444, {}, "wanted a respond with");
         return;
@@ -83,7 +97,10 @@ export function onOriginResponse(request: EW.EgressOriginRequest, response: EW.E
 
     // Resp- addHeader
     response.addHeader("onOriginResponse-addHeader-resp-single", "single");
-    response.addHeader("onOriginResponse-addHeader-resp-multi", ["multi-1", "multi-2"]);
+    response.addHeader("onOriginResponse-addHeader-resp-multi", [
+        "multi-1",
+        "multi-2",
+    ]);
 
     // Resp- removeHeader
     if (!response.getHeader("onOriginResponse-removeHeader-resp-bye")) {
@@ -99,7 +116,11 @@ export function onOriginResponse(request: EW.EgressOriginRequest, response: EW.E
     // respondWith
     const target = request.getHeader("target");
     if (target != null && target[0] === "onOriginResponse-respondWith") {
-        request.respondWith(418, { "from-respond-with": "frw value" }, "frw body");
+        request.respondWith(
+            418,
+            { "from-respond-with": "frw value" },
+            "frw body",
+        );
     }
 
     // verify wasTerminated() returns a boolean
@@ -108,7 +129,10 @@ export function onOriginResponse(request: EW.EgressOriginRequest, response: EW.E
     }
 }
 
-export function onClientResponse(request: EW.EgressClientRequest, response: EW.EgressClientResponse) {
+export function onClientResponse(
+    request: EW.EgressClientRequest,
+    response: EW.EgressClientResponse,
+) {
     if (request.getHeader("should-status")) {
         response.status = 234;
         return;
@@ -135,7 +159,10 @@ export function onClientResponse(request: EW.EgressClientRequest, response: EW.E
 
     // Resp- addHeader
     response.addHeader("onClientResponse-addHeader-resp-single", "single");
-    response.addHeader("onClientResponse-addHeader-resp-multi", ["multi-1", "multi-2"]);
+    response.addHeader("onClientResponse-addHeader-resp-multi", [
+        "multi-1",
+        "multi-2",
+    ]);
 
     // Resp- removeHeader
     if (!response.getHeader("onClientResponse-removeHeader-resp-bye")) {
@@ -151,7 +178,11 @@ export function onClientResponse(request: EW.EgressClientRequest, response: EW.E
     // respondWith
     const target = request.getHeader("target");
     if (target != null && target[0] === "onClientResponse-respondWith") {
-        request.respondWith(418, { "from-respond-with": "frw value" }, "frw body");
+        request.respondWith(
+            418,
+            { "from-respond-with": "frw value" },
+            "frw body",
+        );
     }
 }
 
@@ -173,7 +204,7 @@ export function responseProvider(request: EW.ResponseProviderRequest) {
 }
 
 function testHeaders(headers: EW.Headers) {
-    Object.keys(headers).forEach(key => {
+    Object.keys(headers).forEach((key) => {
         key.toUpperCase();
         headers[key].length;
         headers[key][0].toUpperCase();
@@ -181,5 +212,5 @@ function testHeaders(headers: EW.Headers) {
 
     // get a specific header and do string operations
     const acceptHeader = headers["accept-encoding"];
-    acceptHeader.forEach(val => val.toUpperCase());
+    acceptHeader.forEach((val) => val.toUpperCase());
 }

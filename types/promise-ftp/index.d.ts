@@ -82,8 +82,13 @@ declare class PromiseFtp {
      * @param useCompression - defaults to false.
      * @returns the contents of the specified directory
      */
-    list(path?: string, useCompression?: boolean): Promise<Array<FtpClient.ListingElement | string>>;
-    list(useCompression: boolean): Promise<Array<FtpClient.ListingElement | string>>;
+    list(
+        path?: string,
+        useCompression?: boolean,
+    ): Promise<Array<FtpClient.ListingElement | string>>;
+    list(
+        useCompression: boolean,
+    ): Promise<Array<FtpClient.ListingElement | string>>;
 
     /**
      * Optional "standard" commands (RFC 959)
@@ -101,7 +106,9 @@ declare class PromiseFtp {
         path?: string,
         useCompression?: boolean,
     ): Promise<Array<FtpClient.ListingElement | string>>;
-    listSafe(useCompression: boolean): Promise<Array<FtpClient.ListingElement | string>>;
+    listSafe(
+        useCompression: boolean,
+    ): Promise<Array<FtpClient.ListingElement | string>>;
 
     /**
      * Retrieve a file at path from the server.

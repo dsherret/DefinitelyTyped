@@ -14,9 +14,10 @@ export function foo(read: NodeJS.ReadableStream) {
 
 {
     const transform = json.parse("*");
-    const oldFlush = (cb: (e: Error | null | undefined) => void) => transform._flush(cb);
-    const newFlush: typeof oldFlush = cb => {
-        oldFlush(err => {
+    const oldFlush = (cb: (e: Error | null | undefined) => void) =>
+        transform._flush(cb);
+    const newFlush: typeof oldFlush = (cb) => {
+        oldFlush((err) => {
             if (err) {
                 console.error("Parse error: " + err.message);
             }

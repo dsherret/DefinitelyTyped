@@ -21,7 +21,7 @@ function withTemplate() {
 // Using controller function
 function withControllerAsFunction() {
     btfModal({
-        controller: function() {},
+        controller: function () {},
         template: "<div></div>",
     });
 }
@@ -65,7 +65,10 @@ function withContainerAsDom() {
 
 // With container as DOM Element Array
 function withContainerAsDomArray() {
-    var container: Element[] = [document.getElementById("container"), document.getElementById("container2")];
+    var container: Element[] = [
+        document.getElementById("container"),
+        document.getElementById("container2"),
+    ];
     btfModal({
         template: "<div></div>",
         container: container,
@@ -76,7 +79,7 @@ function withContainerAsDomArray() {
 function withContainerAsFunction() {
     btfModal({
         template: "<div></div>",
-        container: function() {},
+        container: function () {},
     });
 }
 
@@ -93,11 +96,23 @@ function callingValues() {
     var modal: angularModal.AngularModal = btfModal({
         template: "<div></div>",
     });
-    modal.activate().then(() => {}, () => {});
+    modal.activate().then(
+        () => {},
+        () => {},
+    );
     // activating with random locals
-    modal.activate({ name: "TestName" }).then(() => {}, () => {});
+    modal.activate({ name: "TestName" }).then(
+        () => {},
+        () => {},
+    );
     // activating with genericly typed locals
-    modal.activate<{ name: string }>({ name: "TestName" }).then(() => {}, () => {});
-    modal.deactivate().then(() => {}, () => {});
+    modal.activate<{ name: string }>({ name: "TestName" }).then(
+        () => {},
+        () => {},
+    );
+    modal.deactivate().then(
+        () => {},
+        () => {},
+    );
     var isActive: boolean = modal.active();
 }

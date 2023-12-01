@@ -7,12 +7,14 @@ export const MyAwesomeRefreshableComponent: React.FC = () => {
 
     const fetchTags = () =>
         fetch("/my/endpoint/url")
-            .then(res => res.json())
+            .then((res) => res.json())
             .then(setTags);
 
     return (
         <PullToRefreshView onRefresh={fetchTags}>
-            {tags.map(tag => <Text>{tag}</Text>)}
+            {tags.map((tag) => (
+                <Text>{tag}</Text>
+            ))}
         </PullToRefreshView>
     );
 };

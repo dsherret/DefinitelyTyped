@@ -38,7 +38,9 @@ declare namespace AdazzleReactDataGrid {
          * Should update the values of the cells beneath the selected cell.
          * @param e Information about the event
          */
-        onDragHandleDoubleClick?: ((e: DragHandleDoubleClickEvent) => void) | undefined;
+        onDragHandleDoubleClick?:
+            | ((e: DragHandleDoubleClickEvent) => void)
+            | undefined;
         /**
          * Invoked when the user copies a value from one cell and pastes it into another (in the same column).
          * Should update the value of the cell in row e.toRow.
@@ -65,11 +67,18 @@ declare namespace AdazzleReactDataGrid {
          * A react component to customize how rows are rendered.
          * If you want to define your own, consider extending ReactDataGrid.Row.
          */
-        rowRenderer?: React.ReactElement | React.ComponentClass<any> | React.FunctionComponent<any> | undefined;
+        rowRenderer?:
+            | React.ReactElement
+            | React.ComponentClass<any>
+            | React.FunctionComponent<any>
+            | undefined;
         /**
          * A component to display when there are no rows to render.
          */
-        emptyRowsView?: React.ComponentClass<any> | React.FunctionComponent<any> | undefined;
+        emptyRowsView?:
+            | React.ComponentClass<any>
+            | React.FunctionComponent<any>
+            | undefined;
 
         /**
          * The minimum width of the entire grid in pixels.
@@ -122,7 +131,12 @@ declare namespace AdazzleReactDataGrid {
          * @param sortColumn The name of the column being sorted by
          * @param sortDirection The direction to sort ('ASC'/'DESC'/'NONE')
          */
-        onGridSort?: ((sortColumn: string, sortDirection: "ASC" | "DESC" | "NONE") => void) | undefined;
+        onGridSort?:
+            | ((
+                  sortColumn: string,
+                  sortDirection: "ASC" | "DESC" | "NONE",
+              ) => void)
+            | undefined;
 
         /**
          * Initial sorting direction
@@ -181,12 +195,16 @@ declare namespace AdazzleReactDataGrid {
          * Called when a cell is selected.
          * @param coordinates The row and column indices of the selected cell.
          */
-        onCellSelected?: ((coordinates: { rowIdx: number; idx: number }) => void) | undefined;
+        onCellSelected?:
+            | ((coordinates: { rowIdx: number; idx: number }) => void)
+            | undefined;
         /**
          * Called when a cell is deselected.
          * @param coordinates The row and column indices of the deselected cell.
          */
-        onCellDeSelected?: ((coordinates: { rowIdx: number; idx: number }) => void) | undefined;
+        onCellDeSelected?:
+            | ((coordinates: { rowIdx: number; idx: number }) => void)
+            | undefined;
 
         /**
          * How long to wait before rendering a new row while scrolling in milliseconds.
@@ -196,27 +214,43 @@ declare namespace AdazzleReactDataGrid {
         /**
          * Options object for selecting rows
          */
-        rowSelection?: {
-            showCheckbox?: boolean | undefined;
-            enableShiftSelect?: boolean | undefined;
-            onRowsSelected?: ((rows: SelectionParams[]) => void) | undefined;
-            onRowsDeselected?: ((rows: SelectionParams[]) => void) | undefined;
-            selectBy?: {
-                indexes?: number[] | undefined;
-                keys?: { rowKey: string; values: any[] } | undefined;
-                isSelectedKey?: string | undefined;
-            } | undefined;
-        } | undefined;
+        rowSelection?:
+            | {
+                  showCheckbox?: boolean | undefined;
+                  enableShiftSelect?: boolean | undefined;
+                  onRowsSelected?:
+                      | ((rows: SelectionParams[]) => void)
+                      | undefined;
+                  onRowsDeselected?:
+                      | ((rows: SelectionParams[]) => void)
+                      | undefined;
+                  selectBy?:
+                      | {
+                            indexes?: number[] | undefined;
+                            keys?:
+                                | { rowKey: string; values: any[] }
+                                | undefined;
+                            isSelectedKey?: string | undefined;
+                        }
+                      | undefined;
+              }
+            | undefined;
         /**
          * A custom formatter for the select all checkbox cell
          * @default react-data-grid/src/formatters/SelectAll.js
          */
-        selectAllRenderer?: React.ComponentClass<any> | React.FunctionComponent<any> | undefined;
+        selectAllRenderer?:
+            | React.ComponentClass<any>
+            | React.FunctionComponent<any>
+            | undefined;
         /**
          * A custom formatter for select row column
          * @default AdazzleReactDataGridPlugins.Editors.CheckboxEditor
          */
-        rowActionsCell?: React.ComponentClass<any> | React.FunctionComponent<any> | undefined;
+        rowActionsCell?:
+            | React.ComponentClass<any>
+            | React.FunctionComponent<any>
+            | undefined;
         /**
          * An event function called when a row is clicked.
          * Clicking the header row will trigger a call with -1 for the rowIdx.
@@ -247,7 +281,12 @@ declare namespace AdazzleReactDataGrid {
          */
         getValidFilterValues?: ((columnKey: string) => any[]) | undefined;
 
-        getCellActions?: ((column: Column, row: object) => Array<ActionButton | ActionMenu>) | undefined;
+        getCellActions?:
+            | ((
+                  column: Column,
+                  row: object,
+              ) => Array<ActionButton | ActionMenu>)
+            | undefined;
     }
 
     type ActionButton = {
@@ -310,29 +349,47 @@ declare namespace AdazzleReactDataGrid {
         /**
          * A custom formatter for this column's filter.
          */
-        filterRenderer?: React.ReactElement | React.ComponentClass<any> | React.FunctionComponent<any> | undefined;
+        filterRenderer?:
+            | React.ReactElement
+            | React.ComponentClass<any>
+            | React.FunctionComponent<any>
+            | undefined;
         /**
          * The editor for this column. Several editors are available in "react-data-grid/addons".
          * @default A simple text editor
          */
-        editor?: React.ReactElement | React.ComponentClass<any> | React.FunctionComponent<any> | undefined;
+        editor?:
+            | React.ReactElement
+            | React.ComponentClass<any>
+            | React.FunctionComponent<any>
+            | undefined;
         /**
          * A custom read-only formatter for this column. An image formatter is available in "react-data-grid/addons".
          */
-        formatter?: React.ReactElement | React.ComponentClass<any> | React.FunctionComponent<any> | undefined;
+        formatter?:
+            | React.ReactElement
+            | React.ComponentClass<any>
+            | React.FunctionComponent<any>
+            | undefined;
         /**
          * A custom formatter for this column's header.
          */
-        headerRenderer?: React.ReactElement | React.ComponentClass<any> | React.FunctionComponent<any> | undefined;
+        headerRenderer?:
+            | React.ReactElement
+            | React.ComponentClass<any>
+            | React.FunctionComponent<any>
+            | undefined;
         /**
          * Events to be bound to the cells in this specific column.
          * Each event must respect this standard in order to work correctly:
          * @example
          * function onXxx(ev :SyntheticEvent, (rowIdx, idx, name): args)
          */
-        events?: {
-            [name: string]: ColumnEventCallback;
-        } | undefined;
+        events?:
+            | {
+                  [name: string]: ColumnEventCallback;
+              }
+            | undefined;
         /**
          * Retrieve meta data about the row, optionally provide column as a second argument
          */
@@ -354,7 +411,10 @@ declare namespace AdazzleReactDataGrid {
          * @param ev The react event
          * @param args The row and column coordinates of the cell, and the name of the event.
          */
-        (ev: React.SyntheticEvent<any>, args: { rowIdx: number; idx: number; name: string }): void;
+        (
+            ev: React.SyntheticEvent<any>,
+            args: { rowIdx: number; idx: number; name: string },
+        ): void;
     }
 
     /**
@@ -610,7 +670,15 @@ declare module "react-data-grid-addons" {
     import DraggableHeader = Plugins.DraggableHeader;
 
     // ES6 named exports
-    export { Data, DraggableHeader, Editors, Filters, Formatters, Menu, Toolbar };
+    export {
+        Data,
+        DraggableHeader,
+        Editors,
+        Filters,
+        Formatters,
+        Menu,
+        Toolbar,
+    };
 
     // attach to window
     global {

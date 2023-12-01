@@ -15,12 +15,19 @@ declare namespace OO.ui.mixin {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.mixin.FloatableElement
      */
-    interface FloatableElement extends FloatableElement.Props, FloatableElement.Prototype {}
+    interface FloatableElement
+        extends FloatableElement.Props,
+            FloatableElement.Prototype {}
 
     namespace FloatableElement {
         type VerticalPosition = "below" | "above" | "top" | "bottom" | "center";
 
-        type HorizontalPosition = "before" | "after" | "start" | "end" | "center";
+        type HorizontalPosition =
+            | "before"
+            | "after"
+            | "start"
+            | "end"
+            | "center";
 
         interface ConfigOptions {
             /**
@@ -131,12 +138,15 @@ declare namespace OO.ui.mixin {
              * @return New position to apply with {@link JQueryStatic.css() .css()}.
              * Keys are 'top', 'left', 'bottom' and 'right'.
              */
-            computePosition(): Record<"top" | "left" | "bottom" | "right", number | "">;
+            computePosition(): Record<
+                "top" | "left" | "bottom" | "right",
+                number | ""
+            >;
         }
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): FloatableElement;
+            new (config?: ConfigOptions): FloatableElement;
             prototype: Prototype;
             static: {};
         }

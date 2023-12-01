@@ -35,7 +35,10 @@ interface LineColumnFinder {
      * @param col Column number in the string.
      * @returns Found index in the string or `-1` if the given line or column is out of range.
      */
-    toIndex(line: number | LineColumnObject | LineColumnArray, col?: number): number;
+    toIndex(
+        line: number | LineColumnObject | LineColumnArray,
+        col?: number,
+    ): number;
 }
 
 /**
@@ -51,6 +54,9 @@ interface LineColumnOptions {
  * @param options options for the finder or a number representing the 'from' index.
  * @returns a `LineColumnFinder` instance.
  */
-declare function lineColumn(str: string, options?: LineColumnOptions | number): LineColumnFinder;
+declare function lineColumn(
+    str: string,
+    options?: LineColumnOptions | number,
+): LineColumnFinder;
 
 export = lineColumn;

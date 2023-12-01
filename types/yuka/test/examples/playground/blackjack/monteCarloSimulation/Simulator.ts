@@ -58,12 +58,17 @@ function getKey(state: [number, number, boolean]): string {
     return `${state[0]}-${state[1]}-${Number(state[2])}`;
 }
 
-function getProbabilities(Q: { [k: string]: number[] }, state: [number, number, boolean], epsilon: number, nA: number) {
+function getProbabilities(
+    Q: { [k: string]: number[] },
+    state: [number, number, boolean],
+    epsilon: number,
+    nA: number,
+) {
     const key = getKey(state);
     const actionValues = Q[key];
     const probabilities = actionValues.map(() => epsilon / nA);
     const bestAction = MathUtils.argmax(actionValues)[0];
-    probabilities[bestAction] = 1 - epsilon + (epsilon / nA);
+    probabilities[bestAction] = 1 - epsilon + epsilon / nA;
     return probabilities;
 }
 
@@ -77,7 +82,11 @@ function init(Q: { [k: string]: number[] }, env: BlackjackEnvironment) {
     }
 }
 
-function playEpisode(env: BlackjackEnvironment, Q: { [k: string]: number[] }, epsilon: number) {
+function playEpisode(
+    env: BlackjackEnvironment,
+    Q: { [k: string]: number[] },
+    epsilon: number,
+) {
     const episode = [];
     const actionSpace = env.actionSpace;
     const nA = actionSpace.length;
@@ -109,7 +118,11 @@ function playEpisode(env: BlackjackEnvironment, Q: { [k: string]: number[] }, ep
 
 function updateQ(
     env: BlackjackEnvironment,
-    episode: Array<{ state: [number, number, boolean]; action: number; reward: number }>,
+    episode: Array<{
+        state: [number, number, boolean];
+        action: number;
+        reward: number;
+    }>,
     Q: { [k: string]: number[] },
     alpha: number,
 ) {

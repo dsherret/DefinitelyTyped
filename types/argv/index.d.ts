@@ -31,7 +31,10 @@ type argv = {
     mod: (object: module | module[]) => argv;
 
     // Creates custom type function
-    type: (name: string | { [key: string]: typeFunction }, callback?: typeFunction) => any;
+    type: (
+        name: string | { [key: string]: typeFunction },
+        callback?: typeFunction,
+    ) => any;
 
     // Setting version number, and auto setting version option
     version: (v: string) => argv;

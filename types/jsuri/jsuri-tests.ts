@@ -1,5 +1,7 @@
 function test_createUri() {
-    var uri = new jsuri.Uri("http://user:pass@www.test.com:81/index.html?q=books#fragment");
+    var uri = new jsuri.Uri(
+        "http://user:pass@www.test.com:81/index.html?q=books#fragment",
+    );
 
     var getTests = {
         protocol: "http" == uri.protocol(),
@@ -12,16 +14,18 @@ function test_createUri() {
     };
 
     uri.protocol("https");
-    var setProtocolTest = uri.toString() == "https://user:pass@www.test.com:81/index.html?q=books#fragment";
+    var setProtocolTest =
+        uri.toString() ==
+        "https://user:pass@www.test.com:81/index.html?q=books#fragment";
 
     uri.host("mydomain.com");
-    var setHostTest = uri.toString() == "https://user:pass@mydomain.com:81/index.html?q=books#fragment";
+    var setHostTest =
+        uri.toString() ==
+        "https://user:pass@mydomain.com:81/index.html?q=books#fragment";
 }
 
 function test_chainable() {
-    new jsuri.Uri()
-        .setPath("/archives/1979/")
-        .setQuery("?page=1"); // /archives/1979?page=1
+    new jsuri.Uri().setPath("/archives/1979/").setQuery("?page=1"); // /archives/1979?page=1
 
     new jsuri.Uri()
         .setPath("/index.html")
@@ -53,23 +57,21 @@ function test_queryParams() {
 
     new jsuri.Uri().replaceQueryParam("page", 2); // ?page=2
 
-    new jsuri.Uri("?a=1&b=2&c=3")
-        .replaceQueryParam("a", "eh"); // ?a=eh&b=2&c=3
+    new jsuri.Uri("?a=1&b=2&c=3").replaceQueryParam("a", "eh"); // ?a=eh&b=2&c=3
 
-    new jsuri.Uri("?a=1&b=2&c=3&c=4&c=5&c=6")
-        .replaceQueryParam("c", "five", "5"); // ?a=1&b=2&c=3&c=4&c=five&c=6
+    new jsuri.Uri("?a=1&b=2&c=3&c=4&c=5&c=6").replaceQueryParam(
+        "c",
+        "five",
+        "5",
+    ); // ?a=1&b=2&c=3&c=4&c=five&c=6
 
-    new jsuri.Uri("?a=1&b=2&c=3")
-        .deleteQueryParam("a"); // ?b=2&c=3
+    new jsuri.Uri("?a=1&b=2&c=3").deleteQueryParam("a"); // ?b=2&c=3
 
-    new jsuri.Uri("test.com?a=1&b=2&c=3&a=eh")
-        .deleteQueryParam("a", "eh"); // test.com/?a=1&b=2&c=3
+    new jsuri.Uri("test.com?a=1&b=2&c=3&a=eh").deleteQueryParam("a", "eh"); // test.com/?a=1&b=2&c=3
 
-    new jsuri.Uri("?a=1&b=2&c=3")
-        .hasQueryParam("a"); // true
+    new jsuri.Uri("?a=1&b=2&c=3").hasQueryParam("a"); // true
 
-    new jsuri.Uri("?a=1&b=2&c=3")
-        .hasQueryParam("d"); // false
+    new jsuri.Uri("?a=1&b=2&c=3").hasQueryParam("d"); // false
 }
 
 function test_clone() {

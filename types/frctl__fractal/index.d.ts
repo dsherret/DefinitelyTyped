@@ -24,25 +24,34 @@ export namespace fractal {
                 getContext(): any;
                 toJSON(): {};
             }
-            interface EntitySource<T extends Entity, TConfig = any> extends mixins.Source<T, TConfig> {
+            interface EntitySource<T extends Entity, TConfig = any>
+                extends mixins.Source<T, TConfig> {
                 entities(): T[];
 
                 engine<TEngine = any>(
                     adapterFactory?:
                         | string
                         | {
-                            register(source: EntitySource<T>, app: any): Adapter<TEngine>;
-                        }
+                              register(
+                                  source: EntitySource<T>,
+                                  app: any,
+                              ): Adapter<TEngine>;
+                          }
                         | (() => {
-                            register(source: EntitySource<T>, app: any): Adapter<TEngine>;
-                        }),
+                              register(
+                                  source: EntitySource<T>,
+                                  app: any,
+                              ): Adapter<TEngine>;
+                          }),
                 ): Adapter<TEngine>;
 
                 getProp(key: string): string | {};
                 statusInfo(handle: string): StatusInfo | null;
                 toJSON(): {};
             }
-            interface EntityCollection<T extends Entity> extends mixins.Entity, mixins.Collection<T> {
+            interface EntityCollection<T extends Entity>
+                extends mixins.Entity,
+                    mixins.Collection<T> {
                 readonly entities: this;
                 toJSON(): {};
             }
@@ -53,7 +62,10 @@ export namespace fractal {
                 config(): T;
                 config(config: T): this;
                 set<K extends keyof T>(path: K, value: T[K] | null): this;
-                get<K extends keyof T, V = T[K]>(path: K, defaultValue?: V): T[K] | V | null | undefined;
+                get<K extends keyof T, V = T[K]>(
+                    path: K,
+                    defaultValue?: V,
+                ): T[K] | V | null | undefined;
             }
             /**
              * Combined EventEmitter and Configurable mixins
@@ -86,14 +98,21 @@ export namespace fractal {
                 find(handle: string): T;
                 find<TKey extends keyof T>(name: TKey, value: T[TKey]): T;
                 findCollection(handle: string): Collection<T>;
-                findCollection<TKey extends keyof T>(name: TKey, value: T[TKey]): Collection<T>;
+                findCollection<TKey extends keyof T>(
+                    name: TKey,
+                    value: T[TKey],
+                ): Collection<T>;
                 flatten(): this;
                 flattenDeep(): this;
                 squash(): this;
                 filter(handle: string): T[];
                 filter<TKey extends keyof T>(name: TKey, value: T[TKey]): T[];
                 filterItems(items: T[], handle: string): T[];
-                filterItems<TKey extends keyof T>(items: T[], name: TKey, value: T[TKey]): T[];
+                filterItems<TKey extends keyof T>(
+                    items: T[],
+                    name: TKey,
+                    value: T[TKey],
+                ): T[];
                 flattenItems(items: T[], deep?: boolean): T[];
                 squashItems(items: T[]): T[];
                 newSelf(items: T[]): this;
@@ -114,7 +133,9 @@ export namespace fractal {
                 readonly isHidden: boolean;
                 toJSON(): {};
             }
-            interface Source<T = any, TConfig = any> extends ConfigurableEmitter<TConfig>, Collection<T> {
+            interface Source<T = any, TConfig = any>
+                extends ConfigurableEmitter<TConfig>,
+                    Collection<T> {
                 readonly label: string;
                 readonly title: string;
                 readonly source: this;
@@ -143,7 +164,8 @@ export namespace fractal {
                 readonly isVariant: undefined;
                 toVinyl(): VinylFile;
             }
-            interface AssetCollection extends core.entities.EntityCollection<Asset> {
+            interface AssetCollection
+                extends core.entities.EntityCollection<Asset> {
                 assets(): this;
                 toVinylArray(): VinylFile[];
             }
@@ -153,7 +175,8 @@ export namespace fractal {
                 toVinylStream(): ReadableStream;
                 gulpify(): ReadableStream;
             }
-            interface AssetSourceCollection extends core.mixins.ConfigurableEmitter {
+            interface AssetSourceCollection
+                extends core.mixins.ConfigurableEmitter {
                 readonly label: string;
                 readonly title: string;
                 add(name: string, config: any): AssetSource;
@@ -201,7 +224,9 @@ export namespace fractal {
                 render(context: any, env: any, opts: any): Promise<string>;
                 getPreviewContext(): Promise<any>;
                 getPreviewContent(): Promise<string>;
-                setVariants(variantCollection: variants.VariantCollection): void;
+                setVariants(
+                    variantCollection: variants.VariantCollection,
+                ): void;
                 hasTag(tag: string): boolean;
                 resources(): assets.AssetCollection;
                 resourcesJSON(): {};
@@ -213,13 +238,19 @@ export namespace fractal {
                     files: files.FileCollection,
                     resources: assets.AssetCollection,
                     parent: core.entities.Entity,
-                ): IterableIterator<{} | variants.VariantCollection | Component>;
+                ): IterableIterator<
+                    {} | variants.VariantCollection | Component
+                >;
             }
-            interface ComponentCollection extends core.entities.EntityCollection<Component> {
+            interface ComponentCollection
+                extends core.entities.EntityCollection<Component> {
                 components(): this;
                 variants(): this;
             }
-            type Collator = (markup: string, item: { handle: string }) => string;
+            type Collator = (
+                markup: string,
+                item: { handle: string },
+            ) => string;
             interface ComponentDefaultConfig {
                 collated?: boolean | undefined;
                 collator?: Collator | undefined;
@@ -234,9 +265,11 @@ export namespace fractal {
                 ext?: string | undefined;
                 default?: ComponentDefaultConfig | undefined;
                 label?: string | undefined;
-                statuses?: {
-                    [status: string]: core.StatusInfo;
-                } | undefined;
+                statuses?:
+                    | {
+                          [status: string]: core.StatusInfo;
+                      }
+                    | undefined;
                 title?: string | undefined;
                 yield?: string | undefined;
                 "default.collated"?: boolean | undefined;
@@ -247,22 +280,44 @@ export namespace fractal {
                 "default.preview"?: string | undefined;
                 "default.status"?: string | undefined;
             }
-            interface ComponentSource extends core.entities.EntitySource<Component, ComponentConfig> {
+            interface ComponentSource
+                extends core.entities.EntitySource<Component, ComponentConfig> {
                 resources(): files.FileCollection;
                 components(): Component[];
-                getReferencesOf(target: { id: string; handle: string; alias: string }): any[];
+                getReferencesOf(target: {
+                    id: string;
+                    handle: string;
+                    alias: string;
+                }): any[];
                 variants(): this;
                 find(): any;
                 findFile(filePath: string): files.File | undefined;
                 resolve(context: any): any;
-                renderString(str: string, context: any, env: any): Promise<string>;
-                renderPreview(entity: string | core.entities.Entity, preview?: boolean, env?: any): Promise<string>;
-                render(entity: string | core.entities.Entity, context: any, env?: any, opts?: {}): Promise<string>;
+                renderString(
+                    str: string,
+                    context: any,
+                    env: any,
+                ): Promise<string>;
+                renderPreview(
+                    entity: string | core.entities.Entity,
+                    preview?: boolean,
+                    env?: any,
+                ): Promise<string>;
+                render(
+                    entity: string | core.entities.Entity,
+                    context: any,
+                    env?: any,
+                    opts?: {},
+                ): Promise<string>;
             }
         }
         namespace docs {
             class Doc extends core.entities.Entity {
-                constructor(config: any, content: string, parent: core.entities.Entity);
+                constructor(
+                    config: any,
+                    content: string,
+                    parent: core.entities.Entity,
+                );
                 readonly isAsset: undefined;
                 readonly isComponent: undefined;
                 readonly isCollection: undefined;
@@ -274,9 +329,14 @@ export namespace fractal {
                 getContentSync(): string;
                 render(context: any, env?: any, opts?: any): Promise<string>;
                 toc(maxDepth?: number): Promise<string>;
-                static create(config: any, content: string, parent: core.entities.Entity): Doc;
+                static create(
+                    config: any,
+                    content: string,
+                    parent: core.entities.Entity,
+                ): Doc;
             }
-            interface DocCollection extends core.entities.EntityCollection<Doc> {
+            interface DocCollection
+                extends core.entities.EntityCollection<Doc> {
                 pages(): this;
             }
             interface DocDefaultConfig {
@@ -300,9 +360,11 @@ export namespace fractal {
                 label?: string | undefined;
                 markdown?: boolean | DocMarkdownConfig | undefined;
                 path?: string | undefined;
-                statuses?: {
-                    [status: string]: core.StatusInfo;
-                } | undefined;
+                statuses?:
+                    | {
+                          [status: string]: core.StatusInfo;
+                      }
+                    | undefined;
                 title?: string | undefined;
                 "default.context"?: any;
                 "default.prefix"?: string | undefined;
@@ -315,13 +377,23 @@ export namespace fractal {
                 "markdown.smartLists"?: boolean | undefined;
                 "markdown.smartypants"?: boolean | undefined;
             }
-            interface DocSource extends core.entities.EntitySource<Doc, DocConfig> {
+            interface DocSource
+                extends core.entities.EntitySource<Doc, DocConfig> {
                 pages(): this;
                 docs(): this;
                 resolve(context: any): any;
                 toc(page: files.File, maxDepth?: number): Promise<string>;
-                render(page: string | files.File, context?: any, env?: any, opts?: {}): Promise<string>;
-                renderString(str: string, context: any, env?: any): Promise<string>;
+                render(
+                    page: string | files.File,
+                    context?: any,
+                    env?: any,
+                    opts?: {},
+                ): Promise<string>;
+                renderString(
+                    str: string,
+                    context: any,
+                    env?: any,
+                ): Promise<string>;
                 isPage(file: string): boolean;
                 isTemplate(file: string): boolean;
             }
@@ -330,7 +402,10 @@ export namespace fractal {
             interface FileCollection extends core.mixins.Collection<File> {
                 files(): this;
                 match(test: string | RegExp | Array<string | RegExp>): this;
-                matchItems(items: core.mixins.Collection<File>, test: string | RegExp | Array<string | RegExp>): File;
+                matchItems(
+                    items: core.mixins.Collection<File>,
+                    test: string | RegExp | Array<string | RegExp>,
+                ): File;
                 toVinylArray(): VinylFile[];
                 toVinylStream(): ReadableStream;
                 gulpify(): ReadableStream;
@@ -370,7 +445,12 @@ export namespace fractal {
         }
         namespace variants {
             class Variant extends core.entities.Entity {
-                constructor(config: {}, view: any, resources: assets.AssetCollection, parent: components.Component);
+                constructor(
+                    config: {},
+                    view: any,
+                    resources: assets.AssetCollection,
+                    parent: components.Component,
+                );
                 readonly isAsset: undefined;
                 readonly isComponent: undefined;
                 readonly isCollection: undefined;
@@ -409,7 +489,8 @@ export namespace fractal {
                     parent: components.Component,
                 ): Variant;
             }
-            interface VariantCollection extends core.entities.EntityCollection<Variant> {
+            interface VariantCollection
+                extends core.entities.EntityCollection<Variant> {
                 default(): Variant;
                 getCollatedContent(): Promise<string>;
                 getCollatedContentSync(): string;
@@ -429,11 +510,17 @@ export namespace fractal {
             isInteractive(): boolean;
             command(
                 commandString: string,
-                callback: (this: Cli & { fractal: Fractal }, args: any, done: () => void) => void,
-                opts?: string | {
-                    description?: string | undefined;
-                    options?: string[][] | undefined;
-                },
+                callback: (
+                    this: Cli & { fractal: Fractal },
+                    args: any,
+                    done: () => void,
+                ) => void,
+                opts?:
+                    | string
+                    | {
+                          description?: string | undefined;
+                          options?: string[][] | undefined;
+                      },
             ): void;
             exec(command: string): void;
             log(message: string): void;
@@ -466,10 +553,7 @@ export namespace fractal {
                 latest: string;
                 name: string;
             }): void;
-            versionMismatch(details: {
-                cli: string;
-                local: string;
-            }): void;
+            versionMismatch(details: { cli: string; local: string }): void;
         }
     }
 
@@ -492,11 +576,13 @@ export namespace fractal {
             };
             readonly url?: string | undefined;
             readonly urls: {
-                sync?: {
-                    local?: string | undefined;
-                    external?: string | undefined;
-                    ui?: string | undefined;
-                } | undefined;
+                sync?:
+                    | {
+                          local?: string | undefined;
+                          external?: string | undefined;
+                          ui?: string | undefined;
+                      }
+                    | undefined;
                 server?: string | undefined;
             };
             start(sync?: boolean): Promise<HttpServer>;
@@ -565,11 +651,13 @@ export namespace fractal {
 }
 
 export interface FractalConfig {
-    project?: {
-        title?: string | undefined;
-        version?: string | undefined;
-        author?: string | undefined;
-    } | undefined;
+    project?:
+        | {
+              title?: string | undefined;
+              version?: string | undefined;
+              author?: string | undefined;
+          }
+        | undefined;
     "project.title"?: string | undefined;
     "project.version"?: string | undefined;
     "project.author"?: string | undefined;
@@ -577,7 +665,8 @@ export interface FractalConfig {
 
 export function create(config?: FractalConfig): Fractal;
 
-export class Fractal extends fractal.core.mixins.ConfigurableEmitter<FractalConfig> {
+export class Fractal extends fractal.core.mixins
+    .ConfigurableEmitter<FractalConfig> {
     constructor(config?: FractalConfig);
     readonly components: fractal.api.components.ComponentSource;
     readonly docs: fractal.api.docs.DocSource;
@@ -596,17 +685,22 @@ export class Fractal extends fractal.core.mixins.ConfigurableEmitter<FractalConf
 }
 
 export interface CliThemeConfig {
-    delimiter?: {
-        text?: string | undefined;
-        format?: ((str: string) => string) | undefined;
-    } | undefined;
-    styles?: {
-        [key: string]: any;
-    } | undefined;
+    delimiter?:
+        | {
+              text?: string | undefined;
+              format?: ((str: string) => string) | undefined;
+          }
+        | undefined;
+    styles?:
+        | {
+              [key: string]: any;
+          }
+        | undefined;
     "delimiter.text"?: string | undefined;
     "delimiter.format"?: ((str: string) => string) | undefined;
 }
-export class CliTheme extends fractal.core.mixins.ConfigurableEmitter<CliThemeConfig> {
+export class CliTheme extends fractal.core.mixins
+    .ConfigurableEmitter<CliThemeConfig> {
     constructor(config?: CliThemeConfig);
     setDelimiter(text: string, formatter: (str: string) => string): void;
     delimiter(): string;
@@ -623,19 +717,25 @@ export interface WebThemeOptions {
     styles?: string[] | undefined;
     scripts?: string[] | undefined;
     format?: string | undefined;
-    static?: {
-        mount?: string | undefined;
-    } | undefined;
+    static?:
+        | {
+              mount?: string | undefined;
+          }
+        | undefined;
     version?: string | undefined;
     favicon?: string | undefined;
     nav?: string[] | undefined;
     "static.mount": string;
 }
-export class WebTheme extends fractal.core.mixins.ConfigurableEmitter<WebThemeOptions> {
+export class WebTheme extends fractal.core.mixins
+    .ConfigurableEmitter<WebThemeOptions> {
     constructor(viewPaths: string[], options?: WebThemeOptions);
     options(): WebThemeOptions;
     options(value: WebThemeOptions): this;
-    setOption<K extends keyof WebThemeOptions>(key: K, value: WebThemeOptions[K]): this;
+    setOption<K extends keyof WebThemeOptions>(
+        key: K,
+        value: WebThemeOptions[K],
+    ): this;
     getOption<K extends keyof WebThemeOptions>(key: K): WebThemeOptions[K];
     addLoadPath(path: string): this;
     loadPaths(): string[];
@@ -645,24 +745,37 @@ export class WebTheme extends fractal.core.mixins.ConfigurableEmitter<WebThemeOp
     redirectView(): string;
     addStatic(path: string, mount: string): void;
     static(): Array<{ path: string; mount: string }>;
-    addRoute(path: string, opts: {
-        handle?: string | undefined;
-    }, resolver?: any): this;
+    addRoute(
+        path: string,
+        opts: {
+            handle?: string | undefined;
+        },
+        resolver?: any,
+    ): this;
     addResolver(handle: string, resolvers: any): this;
     routes(): any[];
     resolvers(): any;
-    matchRoute(urlPath: string): {
-        route: {
-            handle: string;
-            view: string;
-        };
-        params: any;
-    } | false;
-    urlFromRoute(handle: string, params: any, noRedirect?: boolean): string | null;
+    matchRoute(urlPath: string):
+        | {
+              route: {
+                  handle: string;
+                  view: string;
+              };
+              params: any;
+          }
+        | false;
+    urlFromRoute(
+        handle: string,
+        params: any,
+        noRedirect?: boolean,
+    ): string | null;
 }
 
 export abstract class Adapter<TEngine> extends EventEmitter {
-    constructor(engine: TEngine, source: fractal.core.entities.EntitySource<any>);
+    constructor(
+        engine: TEngine,
+        source: fractal.core.entities.EntitySource<any>,
+    );
     protected _source: fractal.core.entities.EntitySource<any>;
     readonly engine: TEngine;
     readonly views: Array<{
@@ -677,7 +790,12 @@ export abstract class Adapter<TEngine> extends EventEmitter {
 
     protected _resolve<T>(value: PromiseLike<T> | T): Promise<T>;
 
-    abstract render(path: string, str: string, context: any, meta: any): Promise<string>;
+    abstract render(
+        path: string,
+        str: string,
+        context: any,
+        meta: any,
+    ): Promise<string>;
 }
 
 export namespace utils {

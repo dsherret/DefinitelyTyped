@@ -9,7 +9,12 @@ export default class Radius extends Initializer {
     /**
      * Constructs a Radius initializer instance.
      */
-    constructor(width?: number, height?: number, center?: boolean, isEnabled?: boolean);
+    constructor(
+        width?: number,
+        height?: number,
+        center?: boolean,
+        isEnabled?: boolean,
+    );
     /**
      * @description The radius span which is used to set the particle radius value.
      */

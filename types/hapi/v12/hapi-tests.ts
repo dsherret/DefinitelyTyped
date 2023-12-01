@@ -12,7 +12,7 @@ server.connection({
 
 // Add plugins
 var plugin: any = {
-    register: function(plugin: Object, options: Object, next: Function) {
+    register: function (plugin: Object, options: Object, next: Function) {
         next();
     },
 };
@@ -23,10 +23,14 @@ plugin.register.attributes = {
 };
 
 // optional options parameter
-server.register({}, function(err) {});
+server.register({}, function (err) {});
 
 // optional options.routes.vhost parameter
-server.register({}, { select: "api", routes: { prefix: "/prefix" } }, function(err) {});
+server.register(
+    {},
+    { select: "api", routes: { prefix: "/prefix" } },
+    function (err) {},
+);
 
 // server.pack.register(plugin, (err: Object) => {
 //    if (err) { throw err; }
@@ -37,7 +41,11 @@ server.register({}, { select: "api", routes: { prefix: "/prefix" } }, function(e
 // });
 
 // Add server method
-var add = function(a: number, b: number, next: (err: any, result?: any, ttl?: number) => void) {
+var add = function (
+    a: number,
+    b: number,
+    next: (err: any, result?: any, ttl?: number) => void,
+) {
     next(null, a + b);
 };
 
@@ -47,7 +55,10 @@ server.methods["sum"](4, 5, (err: any, result: any) => {
     console.log(result);
 });
 
-var addArray = function(array: number[], next: (err: any, result?: any, ttl?: number) => void) {
+var addArray = function (
+    array: number[],
+    next: (err: any, result?: any, ttl?: number) => void,
+) {
     var sum: number = 0;
     array.forEach((item: number) => {
         sum += item;
@@ -70,43 +81,49 @@ server.methods["sumObj"]([5, 6], (err: any, result: any) => {
 server.route({
     method: "GET",
     path: "/hello",
-    handler: function(request: Hapi.Request, reply: Function) {
+    handler: function (request: Hapi.Request, reply: Function) {
         reply("hello world");
     },
 });
 
-server.route([{
-    method: "GET",
-    path: "/hello2",
-    handler: function(request: Hapi.Request, reply: Function) {
-        reply("hello world2");
+server.route([
+    {
+        method: "GET",
+        path: "/hello2",
+        handler: function (request: Hapi.Request, reply: Function) {
+            reply("hello world2");
+        },
     },
-}]);
+]);
 
 // config.validate parameters should be optional
-server.route([{
-    method: "GET",
-    path: "/hello2",
-    handler: function(request: Hapi.Request, reply: Function) {
-        reply("hello world2");
+server.route([
+    {
+        method: "GET",
+        path: "/hello2",
+        handler: function (request: Hapi.Request, reply: Function) {
+            reply("hello world2");
+        },
+        config: {
+            validate: {},
+        },
     },
-    config: {
-        validate: {},
-    },
-}]);
+]);
 
 // Should be able to chain reply options
-server.route([{
-    method: "GET",
-    path: "/chained-notation",
-    handler: function(request: Hapi.Request, reply: Hapi.IReply) {
-        reply("chained-notation")
-            .bytes(16)
-            .code(200)
-            .type("text/plain")
-            .header("X-Custom", "some-value");
+server.route([
+    {
+        method: "GET",
+        path: "/chained-notation",
+        handler: function (request: Hapi.Request, reply: Hapi.IReply) {
+            reply("chained-notation")
+                .bytes(16)
+                .code(200)
+                .type("text/plain")
+                .header("X-Custom", "some-value");
+        },
     },
-}]);
+]);
 
 // Start the server
 server.start();

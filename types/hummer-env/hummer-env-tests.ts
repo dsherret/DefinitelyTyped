@@ -73,7 +73,7 @@ request.param = {
     param1: "a",
     param2: "b",
 };
-request.send(response => {
+request.send((response) => {
     console.log(response.data);
 });
 
@@ -81,10 +81,10 @@ const ws = new WebSocket("https://websoket.net");
 ws.onopen(() => {
     console.log("the websokect has connected");
 });
-ws.onmessage(ev => {
+ws.onmessage((ev) => {
     console.log(ev.data);
 });
-ws.onclose(ev => {
+ws.onclose((ev) => {
     console.log(ev.code);
     console.log(ev.reason);
 });
@@ -99,12 +99,12 @@ Storage.removeAll();
 Storage.exist("key1"); // $ExpectType boolean
 
 const location = new Location();
-location.getLastLocation(locationInfo => {
+location.getLastLocation((locationInfo) => {
     console.log(locationInfo.altitude);
     console.log(locationInfo.longitude);
 });
 location.startLocation(
-    locationInfo => {
+    (locationInfo) => {
         console.log(locationInfo.altitude);
         console.log(locationInfo.longitude);
     },

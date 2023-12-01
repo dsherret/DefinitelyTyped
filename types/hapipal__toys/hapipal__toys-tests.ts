@@ -12,7 +12,10 @@ import { Stream } from "stream";
 
     // test Toys.auth.strategy
     Toys.auth.strategy(server, "simple-bearer", async (request, h) => {
-        const token = (request.headers.authorization || "").replace("Bearer ", "");
+        const token = (request.headers.authorization || "").replace(
+            "Bearer ",
+            "",
+        );
 
         if (!token) {
             throw Boom.unauthorized(null, "Bearer");
@@ -79,7 +82,10 @@ import { Stream } from "stream";
     });
 
     // tests Toys[EXT_TYPE]
-    const genericExtHandler = (request: Hapi.Request, h: Hapi.ResponseToolkit) => h.continue;
+    const genericExtHandler = (
+        request: Hapi.Request,
+        h: Hapi.ResponseToolkit,
+    ) => h.continue;
     server.ext([
         Toys.onRequest(genericExtHandler),
         Toys.onPreAuth(genericExtHandler),
@@ -106,9 +112,7 @@ import { Stream } from "stream";
         strict: true,
     });
     const reacherWithOptionsValue: string = reacherWithOptions({
-        a: [
-            "test",
-        ],
+        a: ["test"],
     });
     const reacherWithOptionsDefault: string = reacherWithOptions();
 
@@ -188,7 +192,11 @@ import { Stream } from "stream";
         duplicate: true,
     });
     // $ExpectType void
-    Toys.header(response.request.response, "x-my-other-header", "has-this-other-value");
+    Toys.header(
+        response.request.response,
+        "x-my-other-header",
+        "has-this-other-value",
+    );
 
     // tests Toys.getHeaders
     // $ExpectType { [header: string]: string; }
@@ -212,7 +220,9 @@ import { Stream } from "stream";
 
     // tests Toys.forEachAncestorRealm
     // $ExpectType void
-    Toys.forEachAncestorRealm(response.request.route.realm, (realm) => console.log(realm));
+    Toys.forEachAncestorRealm(response.request.route.realm, (realm) =>
+        console.log(realm),
+    );
 
     // tests Toys.asyncStorage
     const multiplyBy = async (x: number) => {

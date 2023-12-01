@@ -1,5 +1,11 @@
 import { Component } from "react";
-import { ComponentConstructor, FieldValue, Formatter, Parser, WrappedFieldProps } from "../index";
+import {
+    ComponentConstructor,
+    FieldValue,
+    Formatter,
+    Parser,
+    WrappedFieldProps,
+} from "../index";
 
 /**
  * These are the props to give to `Field`.
@@ -56,7 +62,8 @@ interface BaseFieldsProps {
 /**
  * Declare Fields as this interface to specify the generics.
  */
-export interface GenericFields<T, FieldsCustomProps> extends Component<BaseFieldsProps & FieldsCustomProps> {
+export interface GenericFields<T, FieldsCustomProps>
+    extends Component<BaseFieldsProps & FieldsCustomProps> {
     /**
      * true if the current value of any of the fields is different from the initialized value, false otherwise.
      */

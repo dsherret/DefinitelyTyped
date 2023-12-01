@@ -37,30 +37,26 @@ export default class ComputedProperty<Get, Set = Get> {
 // Computed property definitions also act as property decorators, including those
 // returned from "macros" in third-party code. We additionally include a marker
 // interface that we use in `UnwrapComputedProperty{G,S}etters`.
-export default interface ComputedProperty<Get, Set = Get> extends PropertyDecorator, ComputedPropertyMarker<Get, Set> {}
+export default interface ComputedProperty<Get, Set = Get>
+    extends PropertyDecorator,
+        ComputedPropertyMarker<Get, Set> {}
 
 /**
  * Creates a new property that is an alias for another property
  * on an object. Calls to `get` or `set` this property behave as
  * though they were called on the original property.
  */
-export function alias(
-    dependentKey: string,
-): ComputedProperty<unknown>;
+export function alias(dependentKey: string): ComputedProperty<unknown>;
 /**
  * A computed property that performs a logical `and` on the
  * original values for the provided dependent properties.
  */
-export function and(
-    ...dependentKeys: string[]
-): ComputedProperty<unknown>;
+export function and(...dependentKeys: string[]): ComputedProperty<unknown>;
 /**
  * A computed property that converts the provided dependent property
  * into a boolean value.
  */
-export function bool(
-    dependentKey: string,
-): ComputedProperty<boolean>;
+export function bool(dependentKey: string): ComputedProperty<boolean>;
 
 /**
  * A computed property that returns the array of values
@@ -85,9 +81,7 @@ export function deprecatingAlias(
  * A computed property that returns true if the value of the dependent
  * property is null, an empty string, empty array, or empty function.
  */
-export function empty(
-    dependentKey: string,
-): ComputedProperty<boolean>;
+export function empty(dependentKey: string): ComputedProperty<boolean>;
 /**
  * A computed property that returns true if the provided dependent property
  * is equal to the given value.
@@ -203,41 +197,31 @@ export function match(
  * dependent array. This will return `-Infinity` when the dependent
  * array is empty.
  */
-export function max(
-    dependentKey: string,
-): ComputedProperty<number>;
+export function max(dependentKey: string): ComputedProperty<number>;
 
 /**
  * A computed property that calculates the minimum value in the
  * dependent array. This will return `Infinity` when the dependent
  * array is empty.
  */
-export function min(
-    dependentKey: string,
-): ComputedProperty<number>;
+export function min(dependentKey: string): ComputedProperty<number>;
 
 /**
  * A computed property that returns true if the value of the dependent
  * property is null or undefined. This avoids errors from JSLint complaining
  * about use of ==, which can be technically confusing.
  */
-export function none(
-    dependentKey: string,
-): ComputedProperty<boolean>;
+export function none(dependentKey: string): ComputedProperty<boolean>;
 /**
  * A computed property that returns the inverse boolean value
  * of the original value for the dependent property.
  */
-export function not(
-    dependentKey: string,
-): ComputedProperty<boolean>;
+export function not(dependentKey: string): ComputedProperty<boolean>;
 /**
  * A computed property that returns true if the value of the dependent
  * property is NOT null, an empty string, empty array, or empty function.
  */
-export function notEmpty(
-    dependentKey: string,
-): ComputedProperty<boolean>;
+export function notEmpty(dependentKey: string): ComputedProperty<boolean>;
 /**
  * Where `computed.alias` aliases `get` and `set`, and allows for bidirectional
  * data flow, `computed.oneWay` only provides an aliased `get`. The `set` will
@@ -245,31 +229,23 @@ export function notEmpty(
  * become the value set. This causes the downstream property to permanently
  * diverge from the upstream property.
  */
-export function oneWay(
-    dependentKey: string,
-): ComputedProperty<unknown>;
+export function oneWay(dependentKey: string): ComputedProperty<unknown>;
 /**
  * A computed property which performs a logical `or` on the
  * original values for the provided dependent properties.
  */
-export function or(
-    ...dependentKeys: string[]
-): ComputedProperty<unknown>;
+export function or(...dependentKeys: string[]): ComputedProperty<unknown>;
 /**
  * Where `computed.oneWay` provides oneWay bindings, `computed.readOnly` provides
  * a readOnly one way binding. Very often when using `computed.oneWay` one does
  * not also want changes to propagate back up, as they will replace the value.
  */
-export function readOnly(
-    dependentKey: string,
-): ComputedProperty<unknown>;
+export function readOnly(dependentKey: string): ComputedProperty<unknown>;
 /**
  * This is a more semantically meaningful alias of `computed.oneWay`,
  * whose name is somewhat ambiguous as to which direction the data flows.
  */
-export function reads(
-    dependentKey: string,
-): ComputedProperty<unknown>;
+export function reads(dependentKey: string): ComputedProperty<unknown>;
 
 /**
  * A computed property which returns a new array with all the
@@ -312,25 +288,19 @@ export function sort<T>(
  * A computed property that returns the sum of the values
  * in the dependent array.
  */
-export function sum(
-    dependentKey: string,
-): ComputedProperty<number>;
+export function sum(dependentKey: string): ComputedProperty<number>;
 
 /**
  * A computed property which returns a new array with all the unique
  * elements from one or more dependent arrays.
  */
-export function uniq(
-    propertyKey: string,
-): ComputedProperty<unknown[]>;
+export function uniq(propertyKey: string): ComputedProperty<unknown[]>;
 
 /**
  * A computed property which returns a new array with all the unique
  * elements from one or more dependent arrays.
  */
-export function union(
-    ...propertyKeys: string[]
-): ComputedProperty<unknown[]>;
+export function union(...propertyKeys: string[]): ComputedProperty<unknown[]>;
 
 /**
  * A computed property which returns a new array with all the unique

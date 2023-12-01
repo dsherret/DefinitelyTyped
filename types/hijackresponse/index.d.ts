@@ -3,8 +3,8 @@ import { Readable } from "stream";
 
 declare namespace e {
     interface HijackedResponse<ResBody = any>
-        extends express.Response<ResBody>, Omit<Readable, keyof express.Response>
-    {
+        extends express.Response<ResBody>,
+            Omit<Readable, keyof express.Response> {
         destroyHijacked: () => boolean;
         unhijack: () => express.Response;
     }

@@ -4,7 +4,12 @@ import * as React from "react";
 // Step interfaces
 // ---------------------
 
-export type ReactourStepPosition = "top" | "right" | "bottom" | "left" | "center";
+export type ReactourStepPosition =
+    | "top"
+    | "right"
+    | "bottom"
+    | "left"
+    | "center";
 
 export interface ReactourStepContentArgs {
     close: () => void;
@@ -17,7 +22,9 @@ export interface ReactourStep {
     /**
      * Content of the step
      */
-    content: React.ReactNode | ((args: ReactourStepContentArgs) => React.ReactNode);
+    content:
+        | React.ReactNode
+        | ((args: ReactourStepContentArgs) => React.ReactNode);
 
     /**
      * Action that can be executed on target element of the step
@@ -95,7 +102,9 @@ export interface CustomHelperProps {
     totalSteps: number;
     gotoStep: (step: number) => void;
     close: () => void;
-    content: React.ReactNode | ((args: ReactourStepContentArgs) => React.ReactNode);
+    content:
+        | React.ReactNode
+        | ((args: ReactourStepContentArgs) => React.ReactNode);
 }
 
 export interface ReactourProps {
@@ -123,7 +132,9 @@ export interface ReactourProps {
     /**
      * Customize _Badge_ content using `current` and `total` steps values
      */
-    badgeContent?: ((current: number, total: number) => React.ReactNode) | undefined;
+    badgeContent?:
+        | ((current: number, total: number) => React.ReactNode)
+        | undefined;
 
     /**
      * Content to be rendered inside the _Helper_
@@ -154,7 +165,10 @@ export interface ReactourProps {
     /**
      * Disable all keyboard navigation (next and prev step) when true, disable only selected keys when array
      */
-    disableKeyboardNavigation?: boolean | Array<"esc" | "right" | "left"> | undefined;
+    disableKeyboardNavigation?:
+        | boolean
+        | Array<"esc" | "right" | "left">
+        | undefined;
 
     /**
      * Function triggered each time current step change
@@ -298,7 +312,9 @@ export interface ReactourProps {
     /**
      * CustomHelper component
      */
-    CustomHelper?: (({ ...props }: CustomHelperProps) => React.ReactElement) | undefined;
+    CustomHelper?:
+        | (({ ...props }: CustomHelperProps) => React.ReactElement)
+        | undefined;
 }
 
 export interface ReactourState {

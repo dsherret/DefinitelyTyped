@@ -84,7 +84,7 @@ QC.create("foo", { maskPattern: 7 }); // $ExpectType QRCode
 QC.create("foo", { maskPattern: 8 });
 // $ExpectType QRCode
 QC.create("foo", {
-    toSJISFunc: codePoint => {
+    toSJISFunc: (codePoint) => {
         codePoint; // $ExpectType string
         return 1;
     },
@@ -127,7 +127,7 @@ dataSegment.getBitsLength(); // $ExpectType number
  */
 
 // $ExpectType void
-QC.toCanvas("sample text", error => {
+QC.toCanvas("sample text", (error) => {
     error; // $ExpectType Error | null | undefined
 });
 // $ExpectType void
@@ -141,7 +141,7 @@ QC.toCanvas("sample text", { maskPattern: 0 }, (error, canvas) => {
     canvas; // $ExpectType HTMLCanvasElement
 });
 // $ExpectType void
-QC.toCanvas([{ data: Buffer.from("foo") }], { maskPattern: 0 }, error => {
+QC.toCanvas([{ data: Buffer.from("foo") }], { maskPattern: 0 }, (error) => {
     error; // $ExpectType Error | null | undefined
 });
 
@@ -163,23 +163,28 @@ QC.toCanvas("sample text", { color: { light: "#000000ff" } }); // $ExpectType Pr
 declare const canvas: HTMLCanvasElement;
 
 // $ExpectType void
-QC.toCanvas(canvas, "sample text", error => {
+QC.toCanvas(canvas, "sample text", (error) => {
     error; // $ExpectType Error | null | undefined
 });
 // $ExpectType void
-QC.toCanvas(canvas, [{ data: Buffer.from("foo") }], error => {
+QC.toCanvas(canvas, [{ data: Buffer.from("foo") }], (error) => {
     error; // $ExpectType Error | null | undefined
 });
 // @ts-expect-error
 QC.toCanvas(canvas, "sample text", (error, foo) => ({}));
 // $ExpectType void
-QC.toCanvas(canvas, "sample text", { maskPattern: 0 }, error => {
+QC.toCanvas(canvas, "sample text", { maskPattern: 0 }, (error) => {
     error; // $ExpectType Error | null | undefined
 });
 // $ExpectType void
-QC.toCanvas(canvas, [{ data: Buffer.from("foo") }], { maskPattern: 0 }, error => {
-    error; // $ExpectType Error | null | undefined
-});
+QC.toCanvas(
+    canvas,
+    [{ data: Buffer.from("foo") }],
+    { maskPattern: 0 },
+    (error) => {
+        error; // $ExpectType Error | null | undefined
+    },
+);
 // @ts-expect-error
 QC.toCanvas(canvas, "sample text", { maskPattern: 0 }, (error, foo) => ({}));
 
@@ -204,25 +209,35 @@ declare const nodeCanvas: {
 };
 
 // $ExpectType void
-QC.toCanvas(nodeCanvas, "sample text", error => {
+QC.toCanvas(nodeCanvas, "sample text", (error) => {
     error; // $ExpectType Error | null | undefined
 });
 // $ExpectType void
-QC.toCanvas(nodeCanvas, [{ data: Buffer.from("foo") }], error => {
+QC.toCanvas(nodeCanvas, [{ data: Buffer.from("foo") }], (error) => {
     error; // $ExpectType Error | null | undefined
 });
 // @ts-expect-error
 QC.toCanvas(nodeCanvas, "sample text", (error, foo) => ({}));
 // $ExpectType void
-QC.toCanvas(nodeCanvas, "sample text", { maskPattern: 0 }, error => {
+QC.toCanvas(nodeCanvas, "sample text", { maskPattern: 0 }, (error) => {
     error; // $ExpectType Error | null | undefined
 });
 // $ExpectType void
-QC.toCanvas(nodeCanvas, [{ data: Buffer.from("foo") }], { maskPattern: 0 }, error => {
-    error; // $ExpectType Error | null | undefined
-});
+QC.toCanvas(
+    nodeCanvas,
+    [{ data: Buffer.from("foo") }],
+    { maskPattern: 0 },
+    (error) => {
+        error; // $ExpectType Error | null | undefined
+    },
+);
 // @ts-expect-error
-QC.toCanvas(nodeCanvas, "sample text", { maskPattern: 0 }, (error, foo) => ({}));
+QC.toCanvas(
+    nodeCanvas,
+    "sample text",
+    { maskPattern: 0 },
+    (error, foo) => ({}),
+);
 
 QC.toCanvas(nodeCanvas, "sample text"); // $ExpectType Promise<void>
 QC.toCanvas(nodeCanvas, [{ data: Buffer.from("foo") }]); // $ExpectType Promise<void>
@@ -245,25 +260,34 @@ QC.toDataURL("some text", (error, url) => {
     url; // $ExpectType string
 });
 // $ExpectType void
-QC.toDataURL([{ data: Buffer.from([253, 254, 255]), mode: "byte" }], (error, url) => {
-    error; // $ExpectType Error | null | undefined
-    url; // $ExpectType string
-});
+QC.toDataURL(
+    [{ data: Buffer.from([253, 254, 255]), mode: "byte" }],
+    (error, url) => {
+        error; // $ExpectType Error | null | undefined
+        url; // $ExpectType string
+    },
+);
 // $ExpectType void
 QC.toDataURL("some text", { version: 2 }, (error, url) => {
     error; // $ExpectType Error | null | undefined
     url; // $ExpectType string
 });
 // $ExpectType void
-QC.toDataURL([{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], { version: 2 }, (error, url) => {
-    error; // $ExpectType Error | null | undefined
-    url; // $ExpectType string
-});
+QC.toDataURL(
+    [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }],
+    { version: 2 },
+    (error, url) => {
+        error; // $ExpectType Error | null | undefined
+        url; // $ExpectType string
+    },
+);
 
 QC.toDataURL("some text"); // $ExpectType Promise<string>
 QC.toDataURL([{ data: Buffer.from([253, 254, 255]), mode: "byte" }]); // $ExpectType Promise<string>
 QC.toDataURL("some text", { version: 2 }); // $ExpectType Promise<string>
-QC.toDataURL([{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], { version: 2 }); // $ExpectType Promise<string>
+QC.toDataURL([{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], {
+    version: 2,
+}); // $ExpectType Promise<string>
 
 QC.toDataURL("sample text", { margin: 0 }); // $ExpectType Promise<string>
 QC.toDataURL("sample text", { scale: 0 }); // $ExpectType Promise<string>
@@ -275,10 +299,19 @@ QC.toDataURL("sample text", { type: "image/webp" }); // $ExpectType Promise<stri
 QC.toDataURL("sample text", { type: "image/png" }); // $ExpectType Promise<string>
 // @ts-expect-error
 QC.toDataURL("sample text", { type: "foo" });
-QC.toDataURL("sample text", { type: "image/jpeg", rendererOpts: { quality: 1 } }); // $ExpectType Promise<string>
-QC.toDataURL("sample text", { type: "image/webp", rendererOpts: { quality: 1 } }); // $ExpectType Promise<string>
+QC.toDataURL("sample text", {
+    type: "image/jpeg",
+    rendererOpts: { quality: 1 },
+}); // $ExpectType Promise<string>
+QC.toDataURL("sample text", {
+    type: "image/webp",
+    rendererOpts: { quality: 1 },
+}); // $ExpectType Promise<string>
 // @ts-expect-error
-QC.toDataURL("sample text", { type: "image/png", rendererOpts: { quality: 1 } });
+QC.toDataURL("sample text", {
+    type: "image/png",
+    rendererOpts: { quality: 1 },
+});
 
 /*
  * toDataURL() with canvas param
@@ -290,25 +323,38 @@ QC.toDataURL(canvas, "some text", (error, url) => {
     url; // $ExpectType string
 });
 // $ExpectType void
-QC.toDataURL(canvas, [{ data: Buffer.from([253, 254, 255]), mode: "byte" }], (error, url) => {
-    error; // $ExpectType Error | null | undefined
-    url; // $ExpectType string
-});
+QC.toDataURL(
+    canvas,
+    [{ data: Buffer.from([253, 254, 255]), mode: "byte" }],
+    (error, url) => {
+        error; // $ExpectType Error | null | undefined
+        url; // $ExpectType string
+    },
+);
 // $ExpectType void
 QC.toDataURL(canvas, "some text", { version: 2 }, (error, url) => {
     error; // $ExpectType Error | null | undefined
     url; // $ExpectType string
 });
 // $ExpectType void
-QC.toDataURL(canvas, [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], { version: 2 }, (error, url) => {
-    error; // $ExpectType Error | null | undefined
-    url; // $ExpectType string
-});
+QC.toDataURL(
+    canvas,
+    [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }],
+    { version: 2 },
+    (error, url) => {
+        error; // $ExpectType Error | null | undefined
+        url; // $ExpectType string
+    },
+);
 
 QC.toDataURL(canvas, "some text"); // $ExpectType Promise<string>
 QC.toDataURL(canvas, [{ data: Buffer.from([253, 254, 255]), mode: "byte" }]); // $ExpectType Promise<string>
 QC.toDataURL(canvas, "some text", { version: 2 }); // $ExpectType Promise<string>
-QC.toDataURL(canvas, [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], { version: 2 }); // $ExpectType Promise<string>
+QC.toDataURL(
+    canvas,
+    [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }],
+    { version: 2 },
+); // $ExpectType Promise<string>
 
 QC.toDataURL(canvas, "sample text", { margin: 0 }); // $ExpectType Promise<string>
 QC.toDataURL(canvas, "sample text", { scale: 0 }); // $ExpectType Promise<string>
@@ -320,10 +366,19 @@ QC.toDataURL(canvas, "sample text", { type: "image/webp" }); // $ExpectType Prom
 QC.toDataURL(canvas, "sample text", { type: "image/png" }); // $ExpectType Promise<string>
 // @ts-expect-error
 QC.toDataURL(canvas, "sample text", { type: "foo" });
-QC.toDataURL(canvas, "sample text", { type: "image/jpeg", rendererOpts: { quality: 1 } }); // $ExpectType Promise<string>
-QC.toDataURL(canvas, "sample text", { type: "image/webp", rendererOpts: { quality: 1 } }); // $ExpectType Promise<string>
+QC.toDataURL(canvas, "sample text", {
+    type: "image/jpeg",
+    rendererOpts: { quality: 1 },
+}); // $ExpectType Promise<string>
+QC.toDataURL(canvas, "sample text", {
+    type: "image/webp",
+    rendererOpts: { quality: 1 },
+}); // $ExpectType Promise<string>
 // @ts-expect-error
-QC.toDataURL(canvas, "sample text", { type: "image/png", rendererOpts: { quality: 1 } });
+QC.toDataURL(canvas, "sample text", {
+    type: "image/png",
+    rendererOpts: { quality: 1 },
+});
 
 /*
  * toString()
@@ -335,25 +390,34 @@ QC.toString("some text", (error, string) => {
     string; // $ExpectType string
 });
 // $ExpectType void
-QC.toString([{ data: Buffer.from([253, 254, 255]), mode: "byte" }], (error, string) => {
-    error; // $ExpectType Error | null | undefined
-    string; // $ExpectType string
-});
+QC.toString(
+    [{ data: Buffer.from([253, 254, 255]), mode: "byte" }],
+    (error, string) => {
+        error; // $ExpectType Error | null | undefined
+        string; // $ExpectType string
+    },
+);
 // $ExpectType void
 QC.toString("some text", { version: 2 }, (error, string) => {
     error; // $ExpectType Error | null | undefined
     string; // $ExpectType string
 });
 // $ExpectType void
-QC.toString([{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], { version: 2 }, (error, string) => {
-    error; // $ExpectType Error | null | undefined
-    string; // $ExpectType string
-});
+QC.toString(
+    [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }],
+    { version: 2 },
+    (error, string) => {
+        error; // $ExpectType Error | null | undefined
+        string; // $ExpectType string
+    },
+);
 
 QC.toString("some text"); // $ExpectType Promise<string>
 QC.toString([{ data: Buffer.from([253, 254, 255]), mode: "byte" }]); // $ExpectType Promise<string>
 QC.toString("some text", { version: 2 }); // $ExpectType Promise<string>
-QC.toString([{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], { version: 2 }); // $ExpectType Promise<string>
+QC.toString([{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], {
+    version: 2,
+}); // $ExpectType Promise<string>
 
 QC.toString("sample text", { margin: 0 }); // $ExpectType Promise<string>
 QC.toString("sample text", { scale: 0 }); // $ExpectType Promise<string>
@@ -374,13 +438,17 @@ QC.toString("sample text", { type: "utf8", small: true });
  */
 
 // $ExpectType void
-QC.toFile("path/to/filename.png", "Some text", error => {
+QC.toFile("path/to/filename.png", "Some text", (error) => {
     error; // $ExpectType Error | null | undefined
 });
 // $ExpectType void
-QC.toFile("path/to/filename.png", [{ data: Buffer.from([253, 254, 255]) }], error => {
-    error; // $ExpectType Error | null | undefined
-});
+QC.toFile(
+    "path/to/filename.png",
+    [{ data: Buffer.from([253, 254, 255]) }],
+    (error) => {
+        error; // $ExpectType Error | null | undefined
+    },
+);
 // @ts-expect-error
 QC.toFile("path/to/filename.png", "some text", (error, foo) => {});
 // $ExpectType void
@@ -393,7 +461,7 @@ QC.toFile(
             light: "#0000", // Transparent background
         },
     },
-    error => {
+    (error) => {
         error; // $ExpectType Error | null | undefined
     },
 );
@@ -402,17 +470,26 @@ QC.toFile(
     "path/to/filename.png",
     [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }],
     { errorCorrectionLevel: "H", maskPattern: 3 },
-    error => {
+    (error) => {
         error; // $ExpectType Error | null | undefined
     },
 );
 // @ts-expect-error
-QC.toFile("path/to/filename.png", "some text", { margin: 0 }, (error, foo) => {});
+QC.toFile(
+    "path/to/filename.png",
+    "some text",
+    { margin: 0 },
+    (error, foo) => {},
+);
 
 QC.toFile("file/path", "some text"); // $ExpectType Promise<void>
 QC.toFile("file/path", [{ data: Buffer.from([253, 254, 255]), mode: "byte" }]); // $ExpectType Promise<void>
 QC.toFile("file/path", "some text", { version: 2 }); // $ExpectType Promise<void>
-QC.toFile("file/path", [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], { version: 2 }); // $ExpectType Promise<void>
+QC.toFile(
+    "file/path",
+    [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }],
+    { version: 2 },
+); // $ExpectType Promise<void>
 
 QC.toFile("file/path", "sample text", { margin: 0 }); // $ExpectType Promise<void>
 QC.toFile("file/path", "sample text", { scale: 0 }); // $ExpectType Promise<void>
@@ -426,10 +503,19 @@ QC.toFile("file/path", "sample text", { type: "utf8" }); // $ExpectType Promise<
 QC.toFile("file/path", "sample text", { type: "foo" });
 QC.toFile("file/path", "sample text", { rendererOpts: { deflateLevel: 1 } }); // $ExpectType Promise<void>
 QC.toFile("file/path", "sample text", { rendererOpts: { deflateStrategy: 1 } }); // $ExpectType Promise<void>
-QC.toFile("file/path", "sample text", { type: "png", rendererOpts: { deflateLevel: 1 } }); // $ExpectType Promise<void>
-QC.toFile("file/path", "sample text", { type: "png", rendererOpts: { deflateStrategy: 1 } }); // $ExpectType Promise<void>
+QC.toFile("file/path", "sample text", {
+    type: "png",
+    rendererOpts: { deflateLevel: 1 },
+}); // $ExpectType Promise<void>
+QC.toFile("file/path", "sample text", {
+    type: "png",
+    rendererOpts: { deflateStrategy: 1 },
+}); // $ExpectType Promise<void>
 // @ts-expect-error
-QC.toFile("file/path", "sample text", { type: "utf8", rendererOpts: { deflateStrategy: 1 } });
+QC.toFile("file/path", "sample text", {
+    type: "utf8",
+    rendererOpts: { deflateStrategy: 1 },
+});
 
 /*
  * toFileStream()
@@ -438,13 +524,17 @@ QC.toFile("file/path", "sample text", { type: "utf8", rendererOpts: { deflateStr
 declare const fileStream: Writable;
 
 // $ExpectType void
-QC.toFileStream(fileStream, "Some text", error => {
+QC.toFileStream(fileStream, "Some text", (error) => {
     error; // $ExpectType Error | null | undefined
 });
 // $ExpectType void
-QC.toFileStream(fileStream, [{ data: Buffer.from([253, 254, 255]) }], error => {
-    error; // $ExpectType Error | null | undefined
-});
+QC.toFileStream(
+    fileStream,
+    [{ data: Buffer.from([253, 254, 255]) }],
+    (error) => {
+        error; // $ExpectType Error | null | undefined
+    },
+);
 // @ts-expect-error
 QC.toFileStream(fileStream, "some text", (error, foo) => {});
 // $ExpectType void
@@ -457,7 +547,7 @@ QC.toFileStream(
             light: "#0000", // Transparent background
         },
     },
-    error => {
+    (error) => {
         error; // $ExpectType Error | null | undefined
     },
 );
@@ -466,7 +556,7 @@ QC.toFileStream(
     fileStream,
     [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }],
     { errorCorrectionLevel: "H", maskPattern: 3 },
-    error => {
+    (error) => {
         error; // $ExpectType Error | null | undefined
     },
 );
@@ -474,9 +564,15 @@ QC.toFileStream(
 QC.toFileStream(fileStream, "some text", { margin: 0 }, (error, foo) => {});
 
 QC.toFileStream(fileStream, "some text"); // $ExpectType Promise<void>
-QC.toFileStream(fileStream, [{ data: Buffer.from([253, 254, 255]), mode: "byte" }]); // $ExpectType Promise<void>
+QC.toFileStream(fileStream, [
+    { data: Buffer.from([253, 254, 255]), mode: "byte" },
+]); // $ExpectType Promise<void>
 QC.toFileStream(fileStream, "some text", { version: 2 }); // $ExpectType Promise<void>
-QC.toFileStream(fileStream, [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], { version: 2 }); // $ExpectType Promise<void>
+QC.toFileStream(
+    fileStream,
+    [{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }],
+    { version: 2 },
+); // $ExpectType Promise<void>
 
 QC.toFileStream(fileStream, "sample text", { margin: 0 }); // $ExpectType Promise<void>
 QC.toFileStream(fileStream, "sample text", { scale: 0 }); // $ExpectType Promise<void>
@@ -486,8 +582,12 @@ QC.toFileStream(fileStream, "sample text", { color: { light: "#000000ff" } }); /
 QC.toFileStream(fileStream, "sample text", { type: "png" }); // $ExpectType Promise<void>
 // @ts-expect-error
 QC.toFileStream(fileStream, "sample text", { type: "foo" });
-QC.toFileStream(fileStream, "sample text", { rendererOpts: { deflateLevel: 1 } }); // $ExpectType Promise<void>
-QC.toFileStream(fileStream, "sample text", { rendererOpts: { deflateStrategy: 1 } }); // $ExpectType Promise<void>
+QC.toFileStream(fileStream, "sample text", {
+    rendererOpts: { deflateLevel: 1 },
+}); // $ExpectType Promise<void>
+QC.toFileStream(fileStream, "sample text", {
+    rendererOpts: { deflateStrategy: 1 },
+}); // $ExpectType Promise<void>
 
 /*
  * toBuffer()
@@ -501,10 +601,14 @@ QC.toBuffer([{ data: Buffer.from([253, 254, 255]) }], (error, buffer) => {
     error; // $ExpectType Error | null | undefined
     buffer; // $ExpectType Buffer
 });
-QC.toBuffer("some text", { errorCorrectionLevel: "H", maskPattern: 3 }, (error, buffer) => {
-    error; // $ExpectType Error | null | undefined
-    buffer; // $ExpectType Buffer
-});
+QC.toBuffer(
+    "some text",
+    { errorCorrectionLevel: "H", maskPattern: 3 },
+    (error, buffer) => {
+        error; // $ExpectType Error | null | undefined
+        buffer; // $ExpectType Buffer
+    },
+);
 QC.toBuffer(
     [{ data: Buffer.from([253, 254, 255]) }],
     {
@@ -522,7 +626,9 @@ QC.toBuffer(
 QC.toBuffer("some text"); // $ExpectType Promise<Buffer>
 QC.toBuffer([{ data: Buffer.from([253, 254, 255]), mode: "byte" }]); // $ExpectType Promise<Buffer>
 QC.toBuffer("some text", { version: 2 }); // $ExpectType Promise<Buffer>
-QC.toBuffer([{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], { version: 2 }); // $ExpectType Promise<Buffer>
+QC.toBuffer([{ data: new Uint8ClampedArray([253, 254, 255]), mode: "byte" }], {
+    version: 2,
+}); // $ExpectType Promise<Buffer>
 
 QC.toBuffer("sample text", { margin: 0 }); // $ExpectType Promise<Buffer>
 QC.toBuffer("sample text", { scale: 0 }); // $ExpectType Promise<Buffer>

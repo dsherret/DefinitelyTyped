@@ -2,7 +2,11 @@ import { Board } from "johnny-five";
 import { BACKWARD, COLOR_ORDER, FORWARD, Pixel, Strip } from "node-pixel";
 
 const board = new Board();
-const strip = new Strip({ board, strips: [{ pin: 6, length: 8 }], color_order: COLOR_ORDER.GRB });
+const strip = new Strip({
+    board,
+    strips: [{ pin: 6, length: 8 }],
+    color_order: COLOR_ORDER.GRB,
+});
 strip.clear();
 strip.show();
 strip.color("red");

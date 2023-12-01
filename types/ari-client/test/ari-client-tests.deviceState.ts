@@ -18,36 +18,42 @@ Ari.connect("http://ari.js:8088", "user", "secret", (err, client) => {
             deviceName: util.format("Stasis:%s", BRIDGE_STATE),
             deviceState: "NOT_INUSE",
         };
-        client.deviceStates.update(opts, err => {});
+        client.deviceStates.update(opts, (err) => {});
     });
 
     client.on("ChannelEnteredBridge", (event, objects) => {
-        if (objects.bridge.channels.length > 0 && currentBridgeState !== "BUSY") {
+        if (
+            objects.bridge.channels.length > 0 &&
+            currentBridgeState !== "BUSY"
+        ) {
             // Mark this bridge as busy
             const opts = {
                 deviceName: util.format("Stasis:%s", BRIDGE_STATE),
                 deviceState: "BUSY",
             };
-            client.deviceStates.update(opts, err => {});
+            client.deviceStates.update(opts, (err) => {});
             currentBridgeState = "BUSY";
         }
     });
 
     client.on("ChannelLeftBridge", (event, objects) => {
-        if (objects.bridge.channels.length === 0 && currentBridgeState !== "NOT_INUSE") {
+        if (
+            objects.bridge.channels.length === 0 &&
+            currentBridgeState !== "NOT_INUSE"
+        ) {
             // Mark this bridge as available
             const opts = {
                 deviceName: util.format("Stasis:%s", BRIDGE_STATE),
                 deviceState: "NOT_INUSE",
             };
-            client.deviceStates.update(opts, err => {});
+            client.deviceStates.update(opts, (err) => {});
             currentBridgeState = "NOT_INUSE";
         }
     });
 
     client.on("StasisStart", (event, incoming) => {
-        incoming.answer(err => {
-            bridge.addChannel({ channel: incoming.id }, err => {});
+        incoming.answer((err) => {
+            bridge.addChannel({ channel: incoming.id }, (err) => {});
         });
     });
 

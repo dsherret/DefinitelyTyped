@@ -48,7 +48,10 @@ declare namespace approuter {
          */
         afterRequestHandler?: (
             ctx: AfterRequestHandlerContext,
-            done: (error: Error | string | undefined | null, incomingResponse: ServerResponse) => void,
+            done: (
+                error: Error | string | undefined | null,
+                incomingResponse: ServerResponse,
+            ) => void,
         ) => void;
 
         /**
@@ -98,11 +101,17 @@ declare namespace approuter {
          */
         insertMiddleware: {
             /** A MiddlewareSlot before the first application router middleware */
-            first?: Array<MiddlewareHandler | { path: string; handler: MiddlewareHandler }>;
+            first?: Array<
+                MiddlewareHandler | { path: string; handler: MiddlewareHandler }
+            >;
             /** A MiddlewareSlot before the standard application router request handling */
-            beforeRequestHandler?: Array<MiddlewareHandler | { path: string; handler: MiddlewareHandler }>;
+            beforeRequestHandler?: Array<
+                MiddlewareHandler | { path: string; handler: MiddlewareHandler }
+            >;
             /** A MiddlewareSlot before the standard application router error handling */
-            beforeErrorHandler?: Array<MiddlewareHandler | { path: string; handler: MiddlewareHandler }>;
+            beforeErrorHandler?: Array<
+                MiddlewareHandler | { path: string; handler: MiddlewareHandler }
+            >;
         };
     }
 
@@ -148,7 +157,10 @@ declare namespace approuter {
          */
         getRouterConfig?: (
             request: AppRouterIncomingMessage,
-            callback: (error: Error | undefined | null, routerConfig: RouterConfig | null | undefined) => void,
+            callback: (
+                error: Error | undefined | null,
+                routerConfig: RouterConfig | null | undefined,
+            ) => void,
         ) => void;
 
         /**
@@ -170,7 +182,10 @@ declare namespace approuter {
          *
          * **Note:** Only the typed configurations are taken into account from this property (the rest are taken from the xs-app.json file).
          */
-        xsappConfig: Pick<ComSapXsappSchema_82, "welcomeFile" | "logout" | "routes" | "websockets" | "errorPage">;
+        xsappConfig: Pick<
+            ComSapXsappSchema_82,
+            "welcomeFile" | "logout" | "routes" | "websockets" | "errorPage"
+        >;
 
         /**
          * An array containing the configuration of the backend destinations.
@@ -222,7 +237,10 @@ declare namespace approuter {
          * error - an error object in case of an error, otherwise null
          * timeout - time, in minutes, until the session times out
          */
-        getSessionTimeout(sessionId: string, callback: (error: object | null, session: number) => void): void;
+        getSessionTimeout(
+            sessionId: string,
+            callback: (error: object | null, session: number) => void,
+        ): void;
 
         /**
          * @param sessionId an unsigned session identifier
@@ -231,7 +249,10 @@ declare namespace approuter {
          * session - the session object
          * id - session identifier, immutable
          */
-        get(sessionId: string, callback: (error: object | null, session: number) => void): void;
+        get(
+            sessionId: string,
+            callback: (error: object | null, session: number) => void,
+        ): void;
 
         /**
          * @param sessionId an unsigned session identifier
@@ -239,7 +260,12 @@ declare namespace approuter {
          * @param timeout a timestamp in milliseconds, after which the session should be automatically invalidated
          * @param callback  a function that is called after the session is saved in the internal session storage of the application router
          */
-        set(sessionId: string, sessionString: string, timeout: number, callback: () => void): void;
+        set(
+            sessionId: string,
+            sessionString: string,
+            timeout: number,
+            callback: () => void,
+        ): void;
 
         /**
          * @param sessionId an unsigned session identifier
@@ -247,7 +273,11 @@ declare namespace approuter {
          * currentSession - current session object
          * @param resetTimeout a boolean that indicates whether to reset the session timeout
          */
-        update(sessionId: string, callback: (currentSession: object) => void, resetTimeout: boolean): void;
+        update(
+            sessionId: string,
+            callback: (currentSession: object) => void,
+            resetTimeout: boolean,
+        ): void;
 
         /**
          * @param sessionId an unsigned session identifier
@@ -314,7 +344,10 @@ declare namespace approuter {
          * @param options - Customize the Approuter with some configurations
          * @param callback - Is invoked when the application router has started or an error has occurred. If not provided and an error occurs (e.g. the port is busy), the application will abort.
          */
-        start(options?: StartOptions, callback?: (err: Error | undefined | null) => void): void;
+        start(
+            options?: StartOptions,
+            callback?: (err: Error | undefined | null) => void,
+        ): void;
 
         /**
          * Stops the application router.
@@ -334,7 +367,10 @@ declare namespace approuter {
          */
         createRouterConfig(
             options: RouterConfigOptions,
-            callback: (error: Error | undefined | null, routerConfig: RouterConfig) => void,
+            callback: (
+                error: Error | undefined | null,
+                routerConfig: RouterConfig,
+            ) => void,
         ): void;
 
         /**
@@ -347,7 +383,10 @@ declare namespace approuter {
         resolveUaaConfig(
             request: AppRouterIncomingMessage,
             uaaOptions: any,
-            callback: (error: Error | undefined | null, tenantUaaOptions: any) => void,
+            callback: (
+                error: Error | undefined | null,
+                tenantUaaOptions: any,
+            ) => void,
         ): void;
 
         /**
@@ -369,7 +408,10 @@ declare namespace approuter {
          * @param event
          * @param {Approuter~onLoginLogoutCallback} listener
          */
-        on(event: "update", listener: (sessionId: string, timeout: number) => void): this;
+        on(
+            event: "update",
+            listener: (sessionId: string, timeout: number) => void,
+        ): this;
 
         /**
          * Emitted when a user session has expired or a user has requested to log out.

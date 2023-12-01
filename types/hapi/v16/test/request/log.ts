@@ -10,7 +10,7 @@ server.on("request", (request, event, tags) => {
     }
 });
 
-const handler: Hapi.RouteHandler = function(request, reply) {
+const handler: Hapi.RouteHandler = function (request, reply) {
     request.log(["test", "error"], "Test event");
     return reply();
 };

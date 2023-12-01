@@ -32,9 +32,15 @@ interface FullMealState {
     drink: DrinkState;
 }
 
-type FullMealReducer = (state: FullMealState, action: SimpleAction) => FullMealState;
+type FullMealReducer = (
+    state: FullMealState,
+    action: SimpleAction,
+) => FullMealState;
 
-const proteinsReducer = (proteinsState: ProteinsState, action: SimpleAction) => {
+const proteinsReducer = (
+    proteinsState: ProteinsState,
+    action: SimpleAction,
+) => {
     switch (action) {
         default:
             return proteinsState;
@@ -55,7 +61,10 @@ const dessertReducer = (dessertState: DessertState, action: SimpleAction) => {
     }
 };
 
-const greeniesReducer = (greeniesState: GreeniesState, action: SimpleAction) => {
+const greeniesReducer = (
+    greeniesState: GreeniesState,
+    action: SimpleAction,
+) => {
     switch (action) {
         default:
             return greeniesState;

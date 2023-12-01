@@ -31,9 +31,15 @@ export default class StressDictionary {
 
     remove(lemma: LemmaOptions | Lemma): void;
 
-    hasStressedEndingSingular(lemma: LemmaOptions | Lemma, grCase: string): boolean[];
+    hasStressedEndingSingular(
+        lemma: LemmaOptions | Lemma,
+        grCase: string,
+    ): boolean[];
 
-    hasStressedEndingPlural(lemma: LemmaOptions | Lemma, grCase: string): boolean[];
+    hasStressedEndingPlural(
+        lemma: LemmaOptions | Lemma,
+        grCase: string,
+    ): boolean[];
 
     /**
      * Благодаря этому методу, словарь можно использовать для других целей.

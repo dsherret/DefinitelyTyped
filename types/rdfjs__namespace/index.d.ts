@@ -1,6 +1,9 @@
 import { DataFactory, NamedNode } from "@rdfjs/types";
 
-export type NamespaceBuilder<TermNames extends string = any> = Record<TermNames, NamedNode> & {
+export type NamespaceBuilder<TermNames extends string = any> = Record<
+    TermNames,
+    NamedNode
+> & {
     (property?: TemplateStringsArray | TermNames): NamedNode;
 };
 

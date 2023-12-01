@@ -11,7 +11,11 @@ const { defineAction } = reduxDefine;
 
 {
     const todos = defineAction("todos", ["LOADING", "SUCCESS"], "my-app");
-    const CREATE_TODO = defineAction("CREATE_TODO", ["ERROR", "SUCCESS"], todos);
+    const CREATE_TODO = defineAction(
+        "CREATE_TODO",
+        ["ERROR", "SUCCESS"],
+        todos,
+    );
     CREATE_TODO.toString(); // $ExpectType "my-app/todos/CREATE_TODO"
     CREATE_TODO.ERROR; // $ExpectType "my-app/todos/CREATE_TODO_ERROR"
     CREATE_TODO.SUCCESS; // $ExpectType "my-app/todos/CREATE_TODO_SUCCESS"
@@ -56,7 +60,11 @@ const { defineAction } = reduxDefine;
 
 {
     const todos = defineAction("todos", ["LOADING", "SUCCESS"], "my-app");
-    const CREATE = todos.defineAction("CREATE", ["ERROR", "SUCCESS"], "my-app/todos");
+    const CREATE = todos.defineAction(
+        "CREATE",
+        ["ERROR", "SUCCESS"],
+        "my-app/todos",
+    );
 
     todos.toString(); // $ExpectType "my-app/todos"
     todos.LOADING; // $ExpectType "my-app/todos_LOADING"
@@ -79,7 +87,11 @@ type MyActionWithNamespace = reduxDefine.Action<"TEST", undefined, "FOO">;
 declare const myActionWithNamespace: MyActionWithNamespace;
 myActionWithNamespace.toString(); // $ExpectType "FOO/TEST"
 
-type MyActionWithSubActionsAndNamespace = reduxDefine.Action<"TEST", "A" | "B", "FOO">;
+type MyActionWithSubActionsAndNamespace = reduxDefine.Action<
+    "TEST",
+    "A" | "B",
+    "FOO"
+>;
 declare const myActionWithSubactionsAndNamespace: MyActionWithSubActionsAndNamespace;
 myActionWithSubactionsAndNamespace.toString(); // $ExpectType "FOO/TEST"
 myActionWithSubactionsAndNamespace.A; // $ExpectType "FOO/TEST_A"

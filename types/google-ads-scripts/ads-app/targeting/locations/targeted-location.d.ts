@@ -45,7 +45,8 @@ declare namespace GoogleAdsScripts {
          *        var targetedLocation = targetedLocationIterator.next();
          *      }
          */
-        interface TargetedLocationIterator extends Base.Iterator<TargetedLocation> {}
+        interface TargetedLocationIterator
+            extends Base.Iterator<TargetedLocation> {}
 
         /** A plain JavaScript object describing a location. */
         interface TargetedLocationObject {
@@ -54,7 +55,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** An operation representing creation of a new targeted location. */
-        interface TargetedLocationOperation extends Base.Operation<TargetedLocation> {}
+        interface TargetedLocationOperation
+            extends Base.Operation<TargetedLocation> {}
 
         /**
          * Fetches targeted locations. Supports filtering and sorting.
@@ -73,13 +75,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface TargetedLocationSelector
-            extends
-                Base.Selector<TargetedLocationIterator>,
+            extends Base.Selector<TargetedLocationIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

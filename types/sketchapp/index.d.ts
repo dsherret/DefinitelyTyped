@@ -119,7 +119,23 @@ interface SketchMSGraphicsContextSettings {
     opacity: number;
     blendMode: SketchMSGraphicsContextSettingsBlendMode;
 }
-type SketchMSGraphicsContextSettingsBlendMode = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+type SketchMSGraphicsContextSettingsBlendMode =
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15;
 interface SketchMSStyleBlur {
     _class: "styleBlur";
     radius: number;
@@ -190,9 +206,11 @@ interface SketchMSAttributedString {
     _class: "attributedString";
     string: string;
     attributes: SketchMSStringAttribute[];
-    archivedAttributedString?: {
-        _archive: string;
-    } | undefined;
+    archivedAttributedString?:
+        | {
+              _archive: string;
+          }
+        | undefined;
 }
 interface SketchMSTextLayer extends SketchMSContainerLayer {
     _class: "text";

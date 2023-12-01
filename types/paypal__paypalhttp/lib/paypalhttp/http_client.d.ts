@@ -14,7 +14,15 @@ export interface HttpRequest<T = object> {
     body: T;
     headers: HttpHeaders;
     path: string;
-    verb: "CONNECT" | "DELETE" | "GET" | "HEAD" | "OPTIONS" | "PATCH" | "POST" | "PUT";
+    verb:
+        | "CONNECT"
+        | "DELETE"
+        | "GET"
+        | "HEAD"
+        | "OPTIONS"
+        | "PATCH"
+        | "POST"
+        | "PUT";
 }
 
 export interface HttpResponse<R> extends ServerResponse {
@@ -27,7 +35,9 @@ export interface HttpResponse<R> extends ServerResponse {
 export type HttpInjector = (request: HttpRequest) => void;
 
 export class HttpClient {
-    readonly encoder: Encoder<[typeof Json, typeof Text, typeof Multipart, typeof FormEncoded]>;
+    readonly encoder: Encoder<
+        [typeof Json, typeof Text, typeof Multipart, typeof FormEncoded]
+    >;
     readonly environment: Environment;
 
     constructor(environment: Environment);
@@ -40,7 +50,10 @@ export class HttpClient {
 
     formatHeaders(headers: HttpHeaders): HttpHeaders;
 
-    mapHeader(rawHeaders: HttpHeaders, formattedHeaders: HttpHeaders): HttpHeaders;
+    mapHeader(
+        rawHeaders: HttpHeaders,
+        formattedHeaders: HttpHeaders,
+    ): HttpHeaders;
 
     execute(req: HttpRequest): Promise<HttpResponse<any>>;
 }

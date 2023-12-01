@@ -3,7 +3,10 @@
 /**
  * Transform svg strokes into filled paths
  */
-declare function outlineStroke(input: string | Buffer, params?: outlineStroke.Options): Promise<string>;
+declare function outlineStroke(
+    input: string | Buffer,
+    params?: outlineStroke.Options,
+): Promise<string>;
 
 declare namespace outlineStroke {
     interface Options {

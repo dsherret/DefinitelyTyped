@@ -18,5 +18,8 @@ export interface LayerDecoration {
     setProperties(newProperties: DecorationLayerOptions): void;
 
     /** Override the decoration properties for a specific marker. */
-    setPropertiesForMarker(marker: DisplayMarker | Marker, properties: DecorationLayerOptions): void;
+    setPropertiesForMarker(
+        marker: DisplayMarker | Marker,
+        properties: DecorationLayerOptions,
+    ): void;
 }

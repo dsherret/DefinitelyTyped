@@ -3,10 +3,22 @@ import Smooch = require("smooch");
 // Events
 Smooch.on("ready", () => {});
 Smooch.on("destroy", () => {});
-Smooch.on("participant:added", (participant: ConversationParticipant, data: ConversationData) => {});
-Smooch.on("participant:removed", (participant: ConversationParticipant, data: ConversationData) => {});
-Smooch.on("conversation:added", (participants: ConversationParticipant[], data: ConversationData) => {});
-Smooch.on("conversation:read", (payload: ConversationReadEventPayload, data: ConversationData) => {});
+Smooch.on(
+    "participant:added",
+    (participant: ConversationParticipant, data: ConversationData) => {},
+);
+Smooch.on(
+    "participant:removed",
+    (participant: ConversationParticipant, data: ConversationData) => {},
+);
+Smooch.on(
+    "conversation:added",
+    (participants: ConversationParticipant[], data: ConversationData) => {},
+);
+Smooch.on(
+    "conversation:read",
+    (payload: ConversationReadEventPayload, data: ConversationData) => {},
+);
 Smooch.on("conversation:removed", (data: ConversationData) => {});
 Smooch.on("message:received", (message: Message, data: ConversationData) => {});
 Smooch.on("message:sent", (message: Message, data: ConversationData) => {});
@@ -41,10 +53,16 @@ Smooch.logout();
 // All fields of updateConversation's options should be optional
 Smooch.updateConversation("conversation-id", {});
 // All fields of updateConversation's options should be nullable
-Smooch.updateConversation("conversation-id", { lastUpdatedAt: null, iconUrl: null });
+Smooch.updateConversation("conversation-id", {
+    lastUpdatedAt: null,
+    iconUrl: null,
+});
 // We should still not be able to provide the wrong type for one of updateConversation's options
 // @ts-expect-error
-Smooch.updateConversation("conversation-id", { lastUpdatedAt: "may", iconUrl: 42 });
+Smooch.updateConversation("conversation-id", {
+    lastUpdatedAt: "may",
+    iconUrl: 42,
+});
 
 // updateUser should allow custom data to be submitted via the metadata property
 Smooch.updateUser({ metadata: { myCustomProperty: 21 } });

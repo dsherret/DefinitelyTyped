@@ -392,7 +392,12 @@ export class Cycle {
     data(name: string, value?: any): any;
 }
 
-export type InterceptionHandler = (this: Proxy, req: Request, res: Response, cycle: Cycle) => Promise<void> | void;
+export type InterceptionHandler = (
+    this: Proxy,
+    req: Request,
+    res: Response,
+    cycle: Cycle,
+) => Promise<void> | void;
 
 export type LogLevel = "error" | "warn" | "info" | "debug";
 
@@ -416,7 +421,12 @@ export class Proxy {
      */
     listen(port: number, callback?: () => void): this;
     listen(port: number, host: string, callback?: () => void): this;
-    listen(port: number, host: string, backlog: number, callback?: () => void): this;
+    listen(
+        port: number,
+        host: string,
+        backlog: number,
+        callback?: () => void,
+    ): this;
 
     /**
      * This is the entry point for intercepting and operating on requests and responses.
@@ -433,7 +443,10 @@ export class Proxy {
      * });
      * ```
      */
-    intercept(opts: string | InterceptOptions, handler: InterceptionHandler): void;
+    intercept(
+        opts: string | InterceptOptions,
+        handler: InterceptionHandler,
+    ): void;
 
     /**
      * Get/set proxy-level slow options. If options is provided, it's a setter.

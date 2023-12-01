@@ -8,8 +8,8 @@ const isMaybe: boolean = gitCompile.denies("test");
 
 const parseVal: [[RegExp, RegExp], [RegExp, RegExp]] = gitignore.parse(".git");
 
-parseVal.forEach(vals => {
-    vals.forEach(val => {
+parseVal.forEach((vals) => {
+    vals.forEach((val) => {
         val.exec("testRegexStr");
     });
 });

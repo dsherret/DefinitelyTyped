@@ -1,6 +1,7 @@
 import { TeenProcessExecOptions } from "teen_process";
 
-export type APP_INSTALL_STATE = typeof APP_INSTALL_STATE[keyof typeof APP_INSTALL_STATE];
+export type APP_INSTALL_STATE =
+    (typeof APP_INSTALL_STATE)[keyof typeof APP_INSTALL_STATE];
 export const APP_INSTALL_STATE: {
     UNKNOWN: "unknown";
     NOT_INSTALLED: "notInstalled";
@@ -253,7 +254,12 @@ interface ApkUtils {
      * @param waitMs [20000] - Number of milliseconds to wait before timeout occurs.
      * @throws If timeout happens.
      */
-    waitForActivityOrNot(pkg: string, activity: string, waitForStop: boolean, waitMs?: number): Promise<void>;
+    waitForActivityOrNot(
+        pkg: string,
+        activity: string,
+        waitForStop: boolean,
+        waitMs?: number,
+    ): Promise<void>;
 
     /**
      * Wait for the given activity to be focused
@@ -275,7 +281,11 @@ interface ApkUtils {
      * @param waitMs [20000] - Number of milliseconds to wait before timeout occurs.
      * @throws If timeout happens.
      */
-    waitForNotActivity(pkg: string, act: string, waitMs?: number): Promise<void>;
+    waitForNotActivity(
+        pkg: string,
+        act: string,
+        waitMs?: number,
+    ): Promise<void>;
 
     /**
      * Uninstall the given package from the device under test.
@@ -295,7 +305,10 @@ interface ApkUtils {
      *                             for more details on this parameter.
      * @throws If there was a failure during application install.
      */
-    installFromDevicePath(apkPathOnDevice: string, opts?: TeenProcessExecOptions): Promise<void>;
+    installFromDevicePath(
+        apkPathOnDevice: string,
+        opts?: TeenProcessExecOptions,
+    ): Promise<void>;
 
     /**
      * Caches the given APK at a remote location to speed up further APK deployments.
@@ -324,7 +337,10 @@ interface ApkUtils {
      *                        try to extract it on its own
      * @returns One of `APP_INSTALL_STATE` constants
      */
-    getApplicationInstallState(appPath: string, pkg?: string | null): Promise<APP_INSTALL_STATE>;
+    getApplicationInstallState(
+        appPath: string,
+        pkg?: string | null,
+    ): Promise<APP_INSTALL_STATE>;
 
     /**
      * Install the package from the local file system or upgrade it if an older
@@ -401,7 +417,11 @@ interface ApkUtils {
      *
      * @return If current locale is language and country as arguments, return true.
      */
-    ensureCurrentLocale(language: string, country: string, script?: string | null): Promise<boolean>;
+    ensureCurrentLocale(
+        language: string,
+        country: string,
+        script?: string | null,
+    ): Promise<boolean>;
 
     /**
      * Set the locale name of the device under test.
@@ -413,7 +433,11 @@ interface ApkUtils {
      * @param script - Script. The script field is case insensitive but Locale always canonicalizes to title case.
      *                            format: [a-zA-Z]{4}. e.g. Hans in zh-Hans-CN : https://developer.android.com/reference/java/util/Locale.html
      */
-    setDeviceLanguageCountry(language: string, country: string, script?: string | null): Promise<void>;
+    setDeviceLanguageCountry(
+        language: string,
+        country: string,
+        script?: string | null,
+    ): Promise<void>;
 
     /**
      * Get the package info from local apk file.

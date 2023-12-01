@@ -53,22 +53,68 @@ export interface CreateMiddlewareOptions {
 
 export function createMiddleware(options?: CreateMiddlewareOptions): Middleware;
 
-export interface RSAARequestTypeDescriptor<State = any, Payload = any, Meta = any> {
+export interface RSAARequestTypeDescriptor<
+    State = any,
+    Payload = any,
+    Meta = any,
+> {
     type: string | symbol;
-    payload?: ((action: RSAAAction, state: State) => Payload | Promise<Payload>) | Payload | undefined;
-    meta?: ((action: RSAAAction, state: State) => Meta | Promise<Meta>) | Meta | undefined;
+    payload?:
+        | ((action: RSAAAction, state: State) => Payload | Promise<Payload>)
+        | Payload
+        | undefined;
+    meta?:
+        | ((action: RSAAAction, state: State) => Meta | Promise<Meta>)
+        | Meta
+        | undefined;
 }
 
-export interface RSAASuccessTypeDescriptor<State = any, Payload = any, Meta = any> {
+export interface RSAASuccessTypeDescriptor<
+    State = any,
+    Payload = any,
+    Meta = any,
+> {
     type: string | symbol;
-    payload?: ((action: RSAAAction, state: State, res: Response) => Payload | Promise<Payload>) | Payload | undefined;
-    meta?: ((action: RSAAAction, state: State, res: Response) => Meta | Promise<Meta>) | Meta | undefined;
+    payload?:
+        | ((
+              action: RSAAAction,
+              state: State,
+              res: Response,
+          ) => Payload | Promise<Payload>)
+        | Payload
+        | undefined;
+    meta?:
+        | ((
+              action: RSAAAction,
+              state: State,
+              res: Response,
+          ) => Meta | Promise<Meta>)
+        | Meta
+        | undefined;
 }
 
-export interface RSAAFailureTypeDescriptor<State = any, Payload = any, Meta = any> {
+export interface RSAAFailureTypeDescriptor<
+    State = any,
+    Payload = any,
+    Meta = any,
+> {
     type: string | symbol;
-    payload?: ((action: RSAAAction, state: State, res: Response) => Payload | Promise<Payload>) | Payload | undefined;
-    meta?: ((action: RSAAAction, state: State, res: Response) => Meta | Promise<Meta>) | Meta | undefined;
+    payload?:
+        | ((
+              action: RSAAAction,
+              state: State,
+              res: Response,
+          ) => Payload | Promise<Payload>)
+        | Payload
+        | undefined;
+    meta?:
+        | ((
+              action: RSAAAction,
+              state: State,
+              res: Response,
+          ) => Meta | Promise<Meta>)
+        | Meta
+        | undefined;
 }
 
 export type RSAARequestType<State = any, Payload = any, Meta = any> =
@@ -108,12 +154,11 @@ export interface RSAAAction<State = any, Payload = any, Meta = any> {
     [RSAA]: RSAACall<State, Payload, Meta>;
 }
 
-type ValidAction<Payload = never, Meta = never> =
-    & { type: string | symbol; error?: false | undefined }
-    // The `[Payload] extends [never]` is required to check if generic type is never.
-    // Can't do it with just `Payload extends never`.
-    & ([Payload] extends [never] ? {} : { payload: Payload })
-    & ([Meta] extends [never] ? {} : { meta: Meta });
+type ValidAction<Payload = never, Meta = never> = {
+    type: string | symbol;
+    error?: false | undefined;
+} & ([Payload] extends [never] ? {} : { payload: Payload }) & // Can't do it with just `Payload extends never`. // The `[Payload] extends [never]` is required to check if generic type is never.
+    ([Meta] extends [never] ? {} : { meta: Meta });
 
 interface InvalidAction<Payload> {
     type: string | symbol;
@@ -125,13 +170,21 @@ interface InvalidAction<Payload> {
  * `Promise<RSAARequestAction>` is not returned from dispatch like other actions
  * Is only dispatched through redux
  */
-export type RSAARequestAction<Payload = never, Meta = never> = ValidAction<Payload, Meta> | InvalidAction<InvalidRSAA>;
+export type RSAARequestAction<Payload = never, Meta = never> =
+    | ValidAction<Payload, Meta>
+    | InvalidAction<InvalidRSAA>;
 
 // @deprecated Use RSAAResultAction
-export type RSAASuccessAction<Payload = any, Meta = any> = RSAAResultAction<Payload, Meta>;
+export type RSAASuccessAction<Payload = any, Meta = any> = RSAAResultAction<
+    Payload,
+    Meta
+>;
 
 // @deprecated Use RSAAResultAction
-export type RSAAFailureAction<Payload = any, Meta = any> = RSAAResultAction<Payload, Meta>;
+export type RSAAFailureAction<Payload = any, Meta = any> = RSAAResultAction<
+    Payload,
+    Meta
+>;
 
 export type RSAAResultAction<Payload = never, Meta = never> =
     | ValidAction<Payload, Meta>
@@ -152,7 +205,9 @@ declare module "redux" {
      * Useful for react-redux or any other library which could use this type.
      */
     interface Dispatch {
-        <Payload, Meta>(action: RSAAAction<any, Payload, Meta>): Promise<RSAAResultAction<Payload, Meta>>;
+        <Payload, Meta>(
+            action: RSAAAction<any, Payload, Meta>,
+        ): Promise<RSAAResultAction<Payload, Meta>>;
         // `Promise<undefined> is returned in case of RSAA validation errors or user bails out
         (action: RSAAAction): Promise<undefined>;
     }

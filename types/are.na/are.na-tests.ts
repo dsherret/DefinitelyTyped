@@ -16,4 +16,4 @@ const makeRequests = async () => {
     return { channel, block, user, search, group };
 };
 
-Promise.resolve(makeRequests()).then(_ => {});
+Promise.resolve(makeRequests()).then((_) => {});

@@ -14,7 +14,9 @@ function assertNever(value: never) {
         throw Error("You do not have WebXR");
     }
 
-    navigator.xr.addEventListener("sessiongranted", evt => console.log("Session granted", evt.session));
+    navigator.xr.addEventListener("sessiongranted", (evt) =>
+        console.log("Session granted", evt.session),
+    );
 
     const startRot = new DOMPoint(0, 0, 0, 1);
     const startSpot = new DOMPoint(0, 0, 0, 1);
@@ -57,7 +59,9 @@ function assertNever(value: never) {
         }
     }
 
-    session.addEventListener("end", evt => console.log("The session has ended.", evt.session));
+    session.addEventListener("end", (evt) =>
+        console.log("The session has ended.", evt.session),
+    );
 
     const ovrExt = ctx.getExtension("OVR_multiview2");
     if (ovrExt && !ovrExt.framebufferTextureMultiviewOVR) {
@@ -65,7 +69,11 @@ function assertNever(value: never) {
     }
 
     const omvExt = ctx.getExtension("OCULUS_multiview");
-    if (omvExt && !omvExt.framebufferTextureMultiviewOVR && !omvExt.framebufferTextureMultisampleMultiviewOVR) {
+    if (
+        omvExt &&
+        !omvExt.framebufferTextureMultiviewOVR &&
+        !omvExt.framebufferTextureMultisampleMultiviewOVR
+    ) {
         throw Error("Incorrect extension type");
     }
 
@@ -95,12 +103,15 @@ function assertNever(value: never) {
         if (pose) {
             let view: XRView;
             for (view of pose.views) {
-                const viewport: XRViewport | undefined = layer.getViewport(view);
+                const viewport: XRViewport | undefined =
+                    layer.getViewport(view);
                 // draw to the device eyes
             }
 
-            const angularVelocity: DOMPointReadOnly | undefined = pose.angularVelocity;
-            const linearVelocity: DOMPointReadOnly | undefined = pose.linearVelocity;
+            const angularVelocity: DOMPointReadOnly | undefined =
+                pose.angularVelocity;
+            const linearVelocity: DOMPointReadOnly | undefined =
+                pose.linearVelocity;
         }
     };
 

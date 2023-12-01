@@ -2,7 +2,12 @@
 
 declare class Filter {
     constructor(options: Filter.FilterOptions);
-    static create(elements: number, falsePositiveRate: number, nTweak?: number, nFlags?: number): Filter;
+    static create(
+        elements: number,
+        falsePositiveRate: number,
+        nTweak?: number,
+        nFlags?: number,
+    ): Filter;
     toObject(): Filter.FilterOptions;
     hash(nHashNum: number, vDataToHash: Buffer): number;
     insert(data: Buffer): void;

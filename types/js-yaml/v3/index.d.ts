@@ -1,6 +1,9 @@
 export as namespace jsyaml;
 
-export function safeLoad(str: string, opts?: LoadOptions): string | object | undefined;
+export function safeLoad(
+    str: string,
+    opts?: LoadOptions,
+): string | object | undefined;
 export function load(str: string, opts?: LoadOptions): any;
 
 export class Type {
@@ -10,7 +13,10 @@ export class Type {
     construct(data: any): any;
     instanceOf: object | null;
     predicate: ((data: object) => boolean) | null;
-    represent: ((data: object) => any) | { [x: string]: (data: object) => any } | null;
+    represent:
+        | ((data: object) => any)
+        | { [x: string]: (data: object) => any }
+        | null;
     defaultStyle: string | null;
     styleAliases: { [x: string]: any };
 }
@@ -22,11 +28,27 @@ export class Schema implements SchemaDefinition {
     static create(schemas: Schema[] | Schema, types: Type[] | Type): Schema;
 }
 
-export function safeLoadAll(str: string, iterator?: null, opts?: LoadOptions): any[];
-export function safeLoadAll(str: string, iterator: (doc: any) => void, opts?: LoadOptions): void;
+export function safeLoadAll(
+    str: string,
+    iterator?: null,
+    opts?: LoadOptions,
+): any[];
+export function safeLoadAll(
+    str: string,
+    iterator: (doc: any) => void,
+    opts?: LoadOptions,
+): void;
 
-export function loadAll(str: string, iterator?: null, opts?: LoadOptions): any[];
-export function loadAll(str: string, iterator: (doc: any) => void, opts?: LoadOptions): void;
+export function loadAll(
+    str: string,
+    iterator?: null,
+    opts?: LoadOptions,
+): any[];
+export function loadAll(
+    str: string,
+    iterator: (doc: any) => void,
+    opts?: LoadOptions,
+): void;
 
 export function safeDump(obj: any, opts?: DumpOptions): string;
 export function dump(obj: any, opts?: DumpOptions): string;
@@ -98,7 +120,10 @@ export interface TypeConstructorOptions {
     construct?: ((data: any) => any) | undefined;
     instanceOf?: object | undefined;
     predicate?: ((data: object) => boolean) | undefined;
-    represent?: ((data: object) => any) | { [x: string]: (data: object) => any } | undefined;
+    represent?:
+        | ((data: object) => any)
+        | { [x: string]: (data: object) => any }
+        | undefined;
     defaultStyle?: string | undefined;
     styleAliases?: { [x: string]: any } | undefined;
 }

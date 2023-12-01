@@ -44,7 +44,11 @@ export default class Recognizer {
      * subclass needs to override these if there are sempreds or actions
      * that the ATN interp needs to execute
      */
-    sempred(localCtx: ParserRuleContext, ruleIndex: number, actionIndex: number): boolean;
+    sempred(
+        localCtx: ParserRuleContext,
+        ruleIndex: number,
+        actionIndex: number,
+    ): boolean;
 
     precpred(localCtx: ParserRuleContext, precedence: number): boolean;
 

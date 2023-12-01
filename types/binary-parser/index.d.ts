@@ -1,78 +1,261 @@
 /// <reference types="node" />
 
 export interface Parser<O extends object | undefined = undefined> {
-    parse(buffer: Buffer, callback?: (err?: Error, result?: any) => void): Parser.Parsed<O>;
+    parse(
+        buffer: Buffer,
+        callback?: (err?: Error, result?: any) => void,
+    ): Parser.Parsed<O>;
 
     create(constructorFunction: ObjectConstructor): Parser;
 
-    int8<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    uint8<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
+    int8<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    uint8<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
 
-    int16<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    uint16<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    int16le<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    int16be<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    uint16le<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    uint16be<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
+    int16<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    uint16<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    int16le<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    int16be<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    uint16le<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    uint16be<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
 
-    int32<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    uint32<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    int32le<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    int32be<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    uint32le<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    uint32be<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
+    int32<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    uint32<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    int32le<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    int32be<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    uint32le<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    uint32be<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
 
-    int64<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, bigint>;
-    uint64<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, bigint>;
-    int64le<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, bigint>;
-    int64be<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, bigint>;
-    uint64le<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, bigint>;
-    uint64be<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, bigint>;
+    int64<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, bigint>;
+    uint64<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, bigint>;
+    int64le<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, bigint>;
+    int64be<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, bigint>;
+    uint64le<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, bigint>;
+    uint64be<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, bigint>;
 
-    bit1<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit2<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit3<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit4<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit5<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit6<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit7<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit8<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit9<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit10<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit11<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit12<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit13<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit14<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit15<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit16<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit17<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit18<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit19<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit20<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit21<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit22<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit23<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit24<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit25<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit26<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit27<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit28<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit29<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit30<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit31<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    bit32<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
+    bit1<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit2<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit3<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit4<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit5<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit6<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit7<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit8<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit9<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit10<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit11<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit12<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit13<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit14<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit15<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit16<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit17<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit18<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit19<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit20<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit21<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit22<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit23<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit24<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit25<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit26<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit27<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit28<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit29<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit30<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit31<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    bit32<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
 
-    float<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    floatle<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    floatbe<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
+    float<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    floatle<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    floatbe<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
 
-    double<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    doublele<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
-    doublebe<N extends string>(name: N, options?: Parser.Options): Parser.Next<O, N, number>;
+    double<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    doublele<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
+    doublebe<N extends string>(
+        name: N,
+        options?: Parser.Options,
+    ): Parser.Next<O, N, number>;
 
-    string<N extends string>(name: N, options?: Parser.StringOptions): Parser.Next<O, N, string>;
+    string<N extends string>(
+        name: N,
+        options?: Parser.StringOptions,
+    ): Parser.Next<O, N, string>;
 
-    buffer<N extends string>(name: N, options: Parser.BufferOptions): Parser.Next<O, N, Buffer>;
+    buffer<N extends string>(
+        name: N,
+        options: Parser.BufferOptions,
+    ): Parser.Next<O, N, Buffer>;
 
     array<N extends string, Q extends Parser.ArrayOptions>(
         name: N,
@@ -80,23 +263,37 @@ export interface Parser<O extends object | undefined = undefined> {
     ): Parser.Next<
         O,
         N,
-        Q extends { type: infer T } ? T extends Parser<infer O> ? O extends undefined ? Array<{}> : O[]
-            : T extends string ? number[]
-            : never
+        Q extends { type: infer T }
+            ? T extends Parser<infer O>
+                ? O extends undefined
+                    ? Array<{}>
+                    : O[]
+                : T extends string
+                  ? number[]
+                  : never
             : never
     >;
 
-    choice<N extends string, Q extends Parser.ChoiceOptions>(name: N, options: Q): Parser.Next<
+    choice<N extends string, Q extends Parser.ChoiceOptions>(
+        name: N,
+        options: Q,
+    ): Parser.Next<
         O,
         N,
         Q extends {
             choices: infer C;
-        } ? C extends {
-                [key in keyof C]: infer T;
-            } ? T extends Parser<infer O> ? O extends undefined ? {} : O
-                : T extends string ? any
+        }
+            ? C extends {
+                  [key in keyof C]: infer T;
+              }
+                ? T extends Parser<infer O>
+                    ? O extends undefined
+                        ? {}
+                        : O
+                    : T extends string
+                      ? any
+                      : never
                 : never
-            : never
             : never
     >;
 
@@ -106,8 +303,12 @@ export interface Parser<O extends object | undefined = undefined> {
     ): Parser.Next<
         O,
         N,
-        Q extends { type: infer T } ? T extends Parser<infer O> ? O extends undefined ? {} : O
-            : never
+        Q extends { type: infer T }
+            ? T extends Parser<infer O>
+                ? O extends undefined
+                    ? {}
+                    : O
+                : never
             : never
     >;
 
@@ -115,7 +316,7 @@ export interface Parser<O extends object | undefined = undefined> {
 
     seek(length: number): Parser<O>;
 
-    endianess(endianess: Parser.Endianness): Parser<O>; /* [sic] */
+    endianess(endianess: Parser.Endianness): Parser<O> /* [sic] */;
 
     namely(alias: string): Parser<O>;
 
@@ -125,13 +326,18 @@ export interface Parser<O extends object | undefined = undefined> {
 }
 
 export interface ParserConstructor {
-    new(): Parser;
+    new (): Parser;
 }
 
 export const Parser: ParserConstructor;
 
 export namespace Parser {
-    type Data = number | string | Array<number | Parser<any>> | Parser<any> | Buffer;
+    type Data =
+        | number
+        | string
+        | Array<number | Parser<any>>
+        | Parser<any>
+        | Buffer;
     type Parsed<O extends object | undefined> = O extends undefined ? {} : O;
 
     interface Options {
@@ -150,14 +356,24 @@ export namespace Parser {
     interface BufferOptions extends Options {
         clone?: boolean | undefined;
         length?: number | string | ((this: Parser<any>) => number) | undefined;
-        readUntil?: string | ((item: number, buffer: Buffer) => boolean) | undefined;
+        readUntil?:
+            | string
+            | ((item: number, buffer: Buffer) => boolean)
+            | undefined;
     }
 
     interface ArrayOptions extends Options {
         type: string | Parser<any>;
         length?: number | string | ((this: Parser<any>) => number) | undefined;
-        lengthInBytes?: number | string | ((this: Parser<any>) => number) | undefined;
-        readUntil?: string | ((item: number, buffer: Buffer) => boolean) | undefined;
+        lengthInBytes?:
+            | number
+            | string
+            | ((this: Parser<any>) => number)
+            | undefined;
+        readUntil?:
+            | string
+            | ((item: number, buffer: Buffer) => boolean)
+            | undefined;
     }
 
     interface ChoiceOptions extends Options {
@@ -170,11 +386,16 @@ export namespace Parser {
         type: Parser<any>;
     }
 
-    type Endianness =
-        | "little"
-        | "big";
+    type Endianness = "little" | "big";
 
-    type Valid<O extends object | undefined, P extends object> = O extends undefined ? P : O & P;
+    type Valid<
+        O extends object | undefined,
+        P extends object,
+    > = O extends undefined ? P : O & P;
 
-    type Next<O extends object | undefined, N extends string, T extends any> = Parser<Valid<O, { [name in N]: T }>>;
+    type Next<
+        O extends object | undefined,
+        N extends string,
+        T extends any,
+    > = Parser<Valid<O, { [name in N]: T }>>;
 }

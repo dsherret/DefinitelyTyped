@@ -81,7 +81,12 @@ export namespace BundleAnalyzerPlugin {
             /** Show which exports of a module are used */
             usedExports?: boolean | undefined;
             /** Filter warnings to be shown */
-            warningsFilter?: string | RegExp | Array<string | RegExp> | ((warning: string) => boolean) | undefined;
+            warningsFilter?:
+                | string
+                | RegExp
+                | Array<string | RegExp>
+                | ((warning: string) => boolean)
+                | undefined;
             /** Show performance hint when file size exceeds `performance.maxAssetSize` */
             performance?: boolean | undefined;
             /** Show the exports of the modules */
@@ -179,7 +184,11 @@ export namespace BundleAnalyzerPlugin {
          * If multiple patterns are provided asset should match at least one of them to be excluded.
          * @default null
          */
-        excludeAssets?: null | ExcludeAssetsPattern | ExcludeAssetsPattern[] | undefined;
+        excludeAssets?:
+            | null
+            | ExcludeAssetsPattern
+            | ExcludeAssetsPattern[]
+            | undefined;
 
         /**
          * Log level. Can be "info", "warn", "error" or "silent".

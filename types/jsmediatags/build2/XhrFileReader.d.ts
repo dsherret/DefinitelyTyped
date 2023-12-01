@@ -47,7 +47,11 @@ export default class XhrFileReader extends MediaFileReader {
         callbacks: CallbackType,
     ): void;
 
-    _setRequestHeader(xhr: XMLHttpRequest, headerName: string, headerValue: string): void;
+    _setRequestHeader(
+        xhr: XMLHttpRequest,
+        headerName: string,
+        headerValue: string,
+    ): void;
 
     _hasResponseHeader(xhr: XMLHttpRequest, headerName: string): boolean;
 

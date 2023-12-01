@@ -32,7 +32,12 @@ export class SourceNode {
     originalSource: string;
     startingLine: number;
 
-    constructor(generatedCode: string, source: string, originalSource: string, startingLine?: number);
+    constructor(
+        generatedCode: string,
+        source: string,
+        originalSource: string,
+        startingLine?: number,
+    );
 
     clone(): SourceNode;
 
@@ -59,7 +64,11 @@ export class SourceListMap {
         originalSource?: string,
     ): void;
 
-    prepend(generatedCode: SourceListMap | SourceNode | CodeNode, source?: string, originalSource?: string): void;
+    prepend(
+        generatedCode: SourceListMap | SourceNode | CodeNode,
+        source?: string,
+        originalSource?: string,
+    ): void;
 
     mapGeneratedCode(fn: (code: string) => string): void;
 

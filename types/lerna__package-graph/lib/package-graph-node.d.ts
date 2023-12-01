@@ -17,7 +17,9 @@ export class PackageGraphNode {
      *
      * @param resolved npm-package-arg Result object
      */
-    satisfies(result: Pick<Result, "gitCommittish" | "gitRange" | "fetchSpec">): boolean;
+    satisfies(
+        result: Pick<Result, "gitCommittish" | "gitRange" | "fetchSpec">,
+    ): boolean;
 
     /**
      * Returns a string representation of this node (its name)

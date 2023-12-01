@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/pkgcloud",
-    "version": "1.7.9999",
-    "projects": [
-        "https://github.com/pkgcloud/pkgcloud#readme"
-    ],
-    "dependencies": {
-        "@types/node": "*"
+  "private": true,
+  "name": "@types/pkgcloud",
+  "version": "1.7.9999",
+  "projects": [
+    "https://github.com/pkgcloud/pkgcloud#readme"
+  ],
+  "dependencies": {
+    "@types/node": "*"
+  },
+  "devDependencies": {
+    "@types/pkgcloud": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Daniel Friesen",
+      "githubUsername": "dantman"
     },
-    "devDependencies": {
-        "@types/pkgcloud": "workspace:."
+    {
+      "name": "Adam Smith",
+      "githubUsername": "ScriptSmith"
     },
-    "owners": [
-        {
-            "name": "Daniel Friesen",
-            "githubUsername": "dantman"
-        },
-        {
-            "name": "Adam Smith",
-            "githubUsername": "ScriptSmith"
-        },
-        {
-            "name": "Cornelis Heuperman",
-            "githubUsername": "heuperman"
-        }
-    ]
+    {
+      "name": "Cornelis Heuperman",
+      "githubUsername": "heuperman"
+    }
+  ]
 }

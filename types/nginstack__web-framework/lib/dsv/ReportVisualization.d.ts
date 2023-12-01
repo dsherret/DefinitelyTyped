@@ -61,7 +61,13 @@ declare class ReportVisualization {
     queryData(filterValues: Record<string, any>): void;
 }
 declare namespace ReportVisualization {
-    export { DataExporter, DataSet, Process, registerExportFormat, SimpleLayoutExporter };
+    export {
+        DataExporter,
+        DataSet,
+        Process,
+        registerExportFormat,
+        SimpleLayoutExporter,
+    };
 }
 import ReportVisualizationColumns = require("./ReportVisualizationColumns.js");
 import ReportVisualizationColumn = require("./ReportVisualizationColumn.js");

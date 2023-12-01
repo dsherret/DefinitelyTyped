@@ -66,7 +66,11 @@ declare class MimeNode {
      * {key: 'value'} as the first argument.
      */
     setHeader(key: string, value: string | string[]): this;
-    setHeader(headers: { [key: string]: string } | Array<{ key: string; value: string }>): this;
+    setHeader(
+        headers:
+            | { [key: string]: string }
+            | Array<{ key: string; value: string }>,
+    ): this;
 
     /**
      * Adds a header value. If the value for selected key exists, the value is appended
@@ -75,7 +79,11 @@ declare class MimeNode {
      * {key: 'value'} as the first argument.
      */
     addHeader(key: string, value: string): this;
-    addHeader(headers: { [key: string]: string } | Array<{ key: string; value: string }>): this;
+    addHeader(
+        headers:
+            | { [key: string]: string }
+            | Array<{ key: string; value: string }>,
+    ): this;
 
     /** Retrieves the first mathcing value of a selected key */
     getHeader(key: string): string;
@@ -116,7 +124,11 @@ declare class MimeNode {
      */
     processFunc(processFunc: (outputStream: Readable) => Readable): void;
 
-    stream(outputStream: Readable, options: ReadableOptions, done: (err?: Error | null) => void): void;
+    stream(
+        outputStream: Readable,
+        options: ReadableOptions,
+        done: (err?: Error | null) => void,
+    ): void;
 
     /** Sets envelope to be used instead of the generated one */
     setEnvelope(envelope: Mail.Envelope): this;

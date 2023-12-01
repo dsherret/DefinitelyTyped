@@ -7,7 +7,10 @@ declare function readFileCallback(
     cb: (err: Error, result: string) => void,
 ): void;
 declare function readFileSync(path: string, encoding: "utf8" | "ascii"): string;
-declare function readFileAsync(path: string, encoding: "utf8" | "ascii"): Promise<string>;
+declare function readFileAsync(
+    path: string,
+    encoding: "utf8" | "ascii",
+): Promise<string>;
 
 // $ExpectType Gensync<[path: string, encoding: "utf8" | "ascii"], string, unknown>
 const readFileFromSync = gensync({
@@ -58,7 +61,7 @@ readFileFromErrback.async;
 readFileFromErrback.errback;
 
 // $ExpectType Gensync<[], void, unknown>
-const noop = gensync(function*() {});
+const noop = gensync(function* () {});
 
 // $ExpectType () => void
 noop.sync;
@@ -71,20 +74,20 @@ noop.errback;
 
 gensync({
     sync: () => {},
-    errback: callback => {
+    errback: (callback) => {
         callback(new Error());
     },
 });
 
-const addNumbers = gensync(function*(a: number, b?: number) {
+const addNumbers = gensync(function* (a: number, b?: number) {
     return a + (b ?? 0);
 });
 
-const pathJoin = gensync(function*(...args: string[]) {
+const pathJoin = gensync(function* (...args: string[]) {
     return args.join("/");
 });
 
-const readContents = gensync(function*(p: string) {
+const readContents = gensync(function* (p: string) {
     const path = yield* pathJoin("folder", p);
     const contents = yield* readFileFromSync(path, "utf8");
     return contents;
@@ -107,7 +110,7 @@ readContents.errback("foo", (err, result) => {
 
 const isAsync = gensync<[], boolean, null>({
     sync: () => false,
-    errback: cb => cb(null, true),
+    errback: (cb) => cb(null, true),
 });
 
 isAsync.errback((err, condition) => {
@@ -118,7 +121,7 @@ isAsync.errback((err, condition) => {
     condition;
 });
 
-gensync(function*() {
+gensync(function* () {
     // $ExpectType [number, string]
     yield* gensync.all([addNumbers(1, 2), readContents("foo")]);
 
@@ -126,7 +129,7 @@ gensync(function*() {
     yield* gensync.race([addNumbers(1, 2), readContents("foo")]);
 });
 
-gensync(function*() {
+gensync(function* () {
     const gens = [addNumbers(1, 2), readContents("foo")];
 
     // $ExpectType (string | number)[]
@@ -138,7 +141,7 @@ gensync(function*() {
 
 declare const iterable: Iterable<gensync.Handler<number | boolean>>;
 
-gensync(function*() {
+gensync(function* () {
     // $ExpectType (number | boolean)[]
     yield* gensync.all(iterable);
 
@@ -148,7 +151,12 @@ gensync(function*() {
 
 // gensync throws when both async and errback are provided.
 // @ts-expect-error
-gensync({ name: "readFile", sync: readFileSync, async: readFileAsync, errback: readFileCallback });
+gensync({
+    name: "readFile",
+    sync: readFileSync,
+    async: readFileAsync,
+    errback: readFileCallback,
+});
 
 function* someOtherGenerator() {
     yield "this is not a gensync generator";
@@ -156,7 +164,7 @@ function* someOtherGenerator() {
 }
 
 // @ts-expect-error
-gensync(function*() {
+gensync(function* () {
     // This generator was not produced by gensync; error.
     // It"d be better to have an error on the next line rather than above,
     // but the generator type that's produced via the body appears to have
@@ -170,7 +178,7 @@ gensync(() => {});
 // @ts-expect-error
 gensync({});
 
-gensync(function*() {
+gensync(function* () {
     // @ts-expect-error
     yield* gensync.all(["not a generator"]);
 
@@ -186,7 +194,7 @@ gensync(function*() {
 
 gensync({
     sync: () => {},
-    errback: callback => {
+    errback: (callback) => {
         // @ts-expect-error
         callback(new Error(), "some result");
     },

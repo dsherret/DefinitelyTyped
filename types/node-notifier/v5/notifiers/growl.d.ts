@@ -2,7 +2,10 @@ import notifier = require("../");
 
 declare class Growl {
     constructor(option?: Growl.Option);
-    notify(notification?: Growl.Notification, callback?: notifier.NotificationCallback): Growl;
+    notify(
+        notification?: Growl.Notification,
+        callback?: notifier.NotificationCallback,
+    ): Growl;
 }
 
 declare namespace Growl {

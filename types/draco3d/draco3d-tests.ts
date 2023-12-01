@@ -1,4 +1,9 @@
-import { createDecoderModule, createEncoderModule, DecoderModule, EncoderModule } from "draco3d";
+import {
+    createDecoderModule,
+    createEncoderModule,
+    DecoderModule,
+    EncoderModule,
+} from "draco3d";
 
 /* Encode */
 
@@ -17,7 +22,13 @@ createEncoderModule().then((encoderModule: EncoderModule) => {
     builder.AddFloatAttribute(mesh, 5120, 100, 3, new Float32Array(10));
 
     encoder.SetAttributeQuantization(encoderModule.POSITION, 12);
-    encoder.SetAttributeExplicitQuantization(encoderModule.POSITION, 14, 2, [0, 0, 0], 10);
+    encoder.SetAttributeExplicitQuantization(
+        encoderModule.POSITION,
+        14,
+        2,
+        [0, 0, 0],
+        10,
+    );
 
     builder.AddFacesToMesh(mesh, 32, new Uint32Array(96));
 
@@ -60,7 +71,13 @@ createEncoderModule().then((encoderModule: EncoderModule) => {
     builder.AddFloatAttribute(mesh, 5120, 100, 3, new Float32Array(10));
 
     encoder.SetAttributeQuantization(encoderModule.POSITION, 12);
-    encoder.SetAttributeExplicitQuantization(encoderModule.POSITION, 14, 2, [0, 0, 0], 10);
+    encoder.SetAttributeExplicitQuantization(
+        encoderModule.POSITION,
+        14,
+        2,
+        [0, 0, 0],
+        10,
+    );
 
     builder.AddFacesToMesh(mesh, 32, new Uint32Array(96));
 
@@ -103,19 +120,39 @@ createDecoderModule().then((decoderModule: DecoderModule) => {
         // Indices.
         let ptr = decoderModule._malloc(50);
         decoder.GetTrianglesUInt16Array(mesh, 50, ptr);
-        const indices = new Uint16Array(decoderModule.HEAPU16.buffer, ptr, 12).slice();
+        const indices = new Uint16Array(
+            decoderModule.HEAPU16.buffer,
+            ptr,
+            12,
+        ).slice();
         decoderModule._free(ptr);
 
         // Attributes.
         ptr = decoderModule._malloc(75);
         const attribute = decoder.GetAttributeByUniqueId(mesh, 123);
-        decoder.GetAttributeDataArrayForAllPoints(mesh, attribute, decoderModule.DT_FLOAT32, 75, ptr);
-        const attributeArray = new Float32Array(decoderModule.HEAPF32.buffer, ptr, 24).slice();
+        decoder.GetAttributeDataArrayForAllPoints(
+            mesh,
+            attribute,
+            decoderModule.DT_FLOAT32,
+            75,
+            ptr,
+        );
+        const attributeArray = new Float32Array(
+            decoderModule.HEAPF32.buffer,
+            ptr,
+            24,
+        ).slice();
 
-        const attributeId = decoder.GetAttributeId(mesh, decoderModule.POSITION);
+        const attributeId = decoder.GetAttributeId(
+            mesh,
+            decoderModule.POSITION,
+        );
         const attribute2 = decoder.GetAttribute(mesh, attributeId);
 
-        const pointCloudStatus = decoder.DecodeBufferToPointCloud(buffer, pointCloud);
+        const pointCloudStatus = decoder.DecodeBufferToPointCloud(
+            buffer,
+            pointCloud,
+        );
 
         if (!pointCloudStatus.ok()) {
             throw new Error("Decoding failure." + pointCloudStatus.error_msg());

@@ -17,8 +17,7 @@ ws.clearScreenDown();
 ws.cursorTo(42, 42);
 ws.cursorTo(42);
 ws.cursorTo(42, () => {});
-ws.addListener("resize", () => {
-});
+ws.addListener("resize", () => {});
 ws.getColorDepth();
 ws.getColorDepth({});
 ws.clearScreenDown();

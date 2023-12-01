@@ -15,9 +15,20 @@ declare module "moment" {
 
     interface Moment {
         preciseDiff(d2: Moment, returnValueObject?: false): string;
-        preciseDiff(d2: Moment, returnValueObject: true): PreciseRangeValueObject;
+        preciseDiff(
+            d2: Moment,
+            returnValueObject: true,
+        ): PreciseRangeValueObject;
     }
 
-    function preciseDiff(d1: Moment, d2: Moment, returnValueObject?: false): string;
-    function preciseDiff(d1: Moment, d2: Moment, returnValueObject: true): PreciseRangeValueObject;
+    function preciseDiff(
+        d1: Moment,
+        d2: Moment,
+        returnValueObject?: false,
+    ): string;
+    function preciseDiff(
+        d1: Moment,
+        d2: Moment,
+        returnValueObject: true,
+    ): PreciseRangeValueObject;
 }

@@ -90,7 +90,10 @@ declare namespace nodeNetstat {
 
     namespace filters {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        function conditional(callback: LineHandler, conditions: Filter): boolean | void;
+        function conditional(
+            callback: LineHandler,
+            conditions: Filter,
+        ): boolean | void;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         function limit(callback: LineHandler, limit: number): boolean | void;
     }

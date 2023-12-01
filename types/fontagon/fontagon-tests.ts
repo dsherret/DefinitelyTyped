@@ -25,7 +25,7 @@ Fontagon({
     htmlTemplate: "<p>Hello world!</p>",
     types: ["eot", "woff", "woff2"],
     order: ["eot", "woff2", "woff", "ttf", "svg"],
-    rename: file => file,
+    rename: (file) => file,
     logs: true,
     formatOptions: {
         svg: {
@@ -37,9 +37,9 @@ Fontagon({
     normalize: true,
     codepoints: {},
 })
-    .then(opts => {
+    .then((opts) => {
         opts; // $ExpectType Options
     })
-    .catch(err => {
+    .catch((err) => {
         err; // $ExpectType any
     });

@@ -19,7 +19,7 @@ failClosedClient.acquireLock("my-fail-closed-lock", (error, lock) => {
         return;
     }
 
-    lock.release(error => {
+    lock.release((error) => {
         if (error) {
             console.error(error);
         } else {
@@ -39,20 +39,25 @@ const failOpenClient = new DynamoDBLockClient.FailOpen({
     retryCount: 0,
 });
 
-failOpenClient.acquireLock({ mylocks: "my-fail-open-lock", mysortkey: "my-sort-key" }, (error, lock) => {
-    if (error) {
-        console.error(error);
-        return;
-    }
-    console.log(`acquired fail open lock with fencing token ${lock.fencingToken}`);
-    lock.on("error", error => console.error("failed to heartbeat!"));
-
-    lock.release(error => {
+failOpenClient.acquireLock(
+    { mylocks: "my-fail-open-lock", mysortkey: "my-sort-key" },
+    (error, lock) => {
         if (error) {
             console.error(error);
-        } else {
-            console.log("released fail open lock");
+            return;
         }
-    });
-    return;
-});
+        console.log(
+            `acquired fail open lock with fencing token ${lock.fencingToken}`,
+        );
+        lock.on("error", (error) => console.error("failed to heartbeat!"));
+
+        lock.release((error) => {
+            if (error) {
+                console.error(error);
+            } else {
+                console.log("released fail open lock");
+            }
+        });
+        return;
+    },
+);

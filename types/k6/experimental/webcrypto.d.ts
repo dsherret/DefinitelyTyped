@@ -133,7 +133,12 @@ export interface SubtleCrypto {
     importKey(
         format: "raw",
         keyData: ArrayBuffer | ArrayBufferView | DataView,
-        algorithm: "AES-CBC" | "AES-CTR" | "AES-GCM" | Algorithm<"AES-CBC" | "AES-CTR" | "AES-GCM"> | HmacImportParams,
+        algorithm:
+            | "AES-CBC"
+            | "AES-CTR"
+            | "AES-GCM"
+            | Algorithm<"AES-CBC" | "AES-CTR" | "AES-GCM">
+            | HmacImportParams,
         extractable: boolean,
         keyUsages: Array<"encrypt" | "decrypt" | "sign" | "verify">,
     ): Promise<CryptoKey>;
@@ -204,7 +209,9 @@ export interface CryptoKey {
  * object that should be passed as the `algorithm` parameter of
  * most `SubtleCrypto` methods.
  */
-export interface Algorithm<I extends AlgorithmIdentifier | HashAlgorithmIdentifier> {
+export interface Algorithm<
+    I extends AlgorithmIdentifier | HashAlgorithmIdentifier,
+> {
     /**
      * The name of the algorithm to use.
      */
@@ -221,7 +228,11 @@ export type AlgorithmIdentifier = string;
  * The `HashAlgorithmIdentifier` type of the Web Crypto API represents
  * the name of a hash algorithm.
  */
-export type HashAlgorithmIdentifier = "SHA-1" | "SHA-256" | "SHA-384" | "SHA-512";
+export type HashAlgorithmIdentifier =
+    | "SHA-1"
+    | "SHA-256"
+    | "SHA-384"
+    | "SHA-512";
 
 /**
  * The `AesKeyGenParams` dictionary of the Web Crypto API represents the

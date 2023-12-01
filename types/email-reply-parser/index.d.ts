@@ -9,7 +9,12 @@ declare class Fragment {
      * @param isSignature Whether the fragment is a signature.
      * @param isQuoted Whether the fragment is quoted text.
      */
-    constructor(content: string, isHidden: boolean, isSignature: boolean, isQuoted: boolean);
+    constructor(
+        content: string,
+        isHidden: boolean,
+        isSignature: boolean,
+        isQuoted: boolean,
+    );
 
     /**
      * The content of the fragment.

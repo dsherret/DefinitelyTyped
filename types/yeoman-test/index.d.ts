@@ -15,7 +15,7 @@ export interface Dictionary<T> {
  * Represents a constructor.
  */
 export interface Constructor<T> {
-    new(...args: any[]): T;
+    new (...args: any[]): T;
 }
 
 /**
@@ -38,7 +38,9 @@ export type Dependency = string | [Generator, string];
  * @param dir - path to the test directory
  * @returns mocha callback
  */
-export function setUpTestDirectory(dir: string): (done: (...args: any[]) => void) => void;
+export function setUpTestDirectory(
+    dir: string,
+): (done: (...args: any[]) => void) => void;
 
 /**
  * Generates a new Gruntfile.js in the current working directory based on
@@ -47,7 +49,10 @@ export function setUpTestDirectory(dir: string): (done: (...args: any[]) => void
  * @param options - Grunt configuration
  * @param done  - callback to call on completion
  */
-export function gruntfile(options: Dictionary<any>, done?: (...args: any[]) => void): void;
+export function gruntfile(
+    options: Dictionary<any>,
+    done?: (...args: any[]) => void,
+): void;
 
 /**
  * Clean-up the test directory and cd into it.
@@ -70,7 +75,10 @@ export function testDirectory(dir: string, cb?: (error?: any) => void): void;
  * @example
  * mockPrompt(angular, {'bootstrap': 'Y', 'compassBoostrap': 'Y'});
  */
-export function mockPrompt(generator: Generator, answers: Generator.Answers): void;
+export function mockPrompt(
+    generator: Generator,
+    answers: Generator.Answers,
+): void;
 
 /**
  * Restore defaults prompts on a generator.
@@ -82,7 +90,10 @@ export function restorePrompt(generator: Generator): void;
  * @param  generator - a Yeoman generator
  * @param  localConfig - localConfig - should look just like if called config.getAll()
  */
-export function mockLocalConfig(generator: Generator, localConfig: Dictionary<any>): void;
+export function mockLocalConfig(
+    generator: Generator,
+    localConfig: Dictionary<any>,
+): void;
 
 /**
  * Create a simple, dummy generator
@@ -120,13 +131,19 @@ export function createGenerator(
  *
  * @param dependencies - paths to the generators dependencies
  */
-export function registerDependencies(env: Env, dependencies: Dependency[]): void;
+export function registerDependencies(
+    env: Env,
+    dependencies: Dependency[],
+): void;
 
 /**
  * Run the provided Generator
  * @param  GeneratorOrNamespace - Generator constructor or namespace
  */
-export function run(GeneratorOrNamespace: string | Constructor<Generator>, settings?: RunContextSettings): RunContext;
+export function run(
+    GeneratorOrNamespace: string | Constructor<Generator>,
+    settings?: RunContextSettings,
+): RunContext;
 
 /**
  * Create a RunContext
@@ -173,7 +190,10 @@ export interface RunContextConstructor {
      *                                      is provided, then namespace is assumed to be
      *                                      'gen:test' in all cases
      */
-    new(Generator: string | Constructor<Generator>, settings?: RunContextSettings): RunContext;
+    new (
+        Generator: string | Constructor<Generator>,
+        settings?: RunContextSettings,
+    ): RunContext;
 }
 
 /**
@@ -351,14 +371,20 @@ export interface RunResult extends RunResultOptions {
      * @param filename
      * @param content An object of key/values the file should contains
      */
-    assertJsonFileContent(filename: string, content: { [key: string]: any }): void;
+    assertJsonFileContent(
+        filename: string,
+        content: { [key: string]: any },
+    ): void;
 
     /**
      * Assert a JSON file does not contain the provided keys
      * @param filename
      * @param content An object of key/values the file should not contain
      */
-    assertNoJsonFileContent(filename: string, content: { [key: string]: any }): void;
+    assertNoJsonFileContent(
+        filename: string,
+        content: { [key: string]: any },
+    ): void;
 
     /**
      * Reverts to old cwd.
@@ -370,7 +396,10 @@ export interface RunResult extends RunResultOptions {
 /**
  * Represents the context of a running generator.
  */
-export interface RunContext extends RunContextConstructor, EventEmitter, Promise<RunResult> {
+export interface RunContext
+    extends RunContextConstructor,
+        EventEmitter,
+        Promise<RunResult> {
     /**
      * A value indicating whether the generator ran through.
      */

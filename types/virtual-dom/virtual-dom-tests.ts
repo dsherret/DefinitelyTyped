@@ -15,12 +15,9 @@ function renderAny(object: any): virtual_dom.VNode {
     } else if (Array.isArray(object)) {
         return h("span.array", ["[", object.map(renderAny), "]"]);
     } else if (typeof object === "object") {
-        var object_children = Object.keys(object).map(key => {
+        var object_children = Object.keys(object).map((key) => {
             var child = object[key];
-            return h("div", [
-                h("span.key", [key, ":"]),
-                renderAny(child),
-            ]);
+            return h("div", [h("span.key", [key, ":"]), renderAny(child)]);
         });
         return h("div.object", object_children);
     } else if (typeof object === "number") {

@@ -74,7 +74,12 @@ declare namespace EW {
          * @param body The content of the response body
          * @param deny_reason The deny reason set if the status code is a 403
          */
-        respondWith(status: number, headers: object, body: string, deny_reason?: string): void;
+        respondWith(
+            status: number,
+            headers: object,
+            body: string,
+            deny_reason?: string,
+        ): void;
 
         /**
          * Checks if the request has been terminated. Returns `true` after
@@ -247,7 +252,9 @@ declare namespace EW {
     }
 
     interface ReadableStreamDefaultControllerCallbackEW<R> {
-        (controller: ReadableStreamDefaultControllerEW<R>): void | PromiseLike<void>;
+        (
+            controller: ReadableStreamDefaultControllerEW<R>,
+        ): void | PromiseLike<void>;
     }
 
     interface ReadableStreamErrorCallback {
@@ -304,7 +311,10 @@ declare namespace EW {
     }
 
     interface WritableStreamDefaultControllerWriteCallback<W> {
-        (chunk: W, controller: WritableStreamDefaultController): void | PromiseLike<void>;
+        (
+            chunk: W,
+            controller: WritableStreamDefaultController,
+        ): void | PromiseLike<void>;
     }
 
     interface WritableStreamDefaultControllerCloseCallback {
@@ -370,7 +380,10 @@ declare namespace EW {
 
     const WritableStreamEW: {
         prototype: WritableStreamEW;
-        new<W = any>(underlyingSink?: UnderlyingSink<W>, strategy?: QueuingStrategy<W>): WritableStreamEW<W>;
+        new <W = any>(
+            underlyingSink?: UnderlyingSink<W>,
+            strategy?: QueuingStrategy<W>,
+        ): WritableStreamEW<W>;
     };
 
     interface ReadableStreamEW<R = any> {
@@ -382,10 +395,16 @@ declare namespace EW {
 
         getReader(): ReadableStreamDefaultReader<R>;
 
-        pipeThrough<T>({ writable, readable }: {
-            writable: WritableStreamEW<R>;
-            readable: ReadableStreamEW<T>;
-        }, options?: PipeOptions): ReadableStreamEW<T>;
+        pipeThrough<T>(
+            {
+                writable,
+                readable,
+            }: {
+                writable: WritableStreamEW<R>;
+                readable: ReadableStreamEW<T>;
+            },
+            options?: PipeOptions,
+        ): ReadableStreamEW<T>;
 
         pipeTo(dest: WritableStreamEW<R>, options?: PipeOptions): Promise<void>;
 
@@ -394,11 +413,17 @@ declare namespace EW {
 
     const ReadableStreamEW: {
         prototype: ReadableStreamEW;
-        new(underlyingSource: UnderlyingByteSource, strategy?: {
-            highWaterMark?: number;
-            size?: undefined;
-        }): ReadableStreamEW<Uint8Array>;
-        new<R = any>(underlyingSource?: UnderlyingSource<R>, strategy?: QueuingStrategy<R>): ReadableStreamEW<R>;
+        new (
+            underlyingSource: UnderlyingByteSource,
+            strategy?: {
+                highWaterMark?: number;
+                size?: undefined;
+            },
+        ): ReadableStreamEW<Uint8Array>;
+        new <R = any>(
+            underlyingSource?: UnderlyingSource<R>,
+            strategy?: QueuingStrategy<R>,
+        ): ReadableStreamEW<R>;
     };
 
     interface ReadableStreamBYOBReader {
@@ -406,7 +431,9 @@ declare namespace EW {
 
         cancel(reason?: any): Promise<void>;
 
-        read<T extends ArrayBufferView>(view: T): Promise<ReadableStreamReadResult<T>>;
+        read<T extends ArrayBufferView>(
+            view: T,
+        ): Promise<ReadableStreamReadResult<T>>;
 
         releaseLock(): void;
     }
@@ -422,19 +449,19 @@ declare namespace EW {
     }
 
     // Legacy interfaces for backwards compatability
-    interface MutableRequest extends MutatesHeaders, ReadsHeaders, ReadsVariables, Request {
-    }
+    interface MutableRequest
+        extends MutatesHeaders,
+            ReadsHeaders,
+            ReadsVariables,
+            Request {}
 
-    interface ImmutableRequest extends ReadsHeaders, ReadsVariables, Request {
-    }
+    interface ImmutableRequest extends ReadsHeaders, ReadsVariables, Request {}
 
-    interface Response extends HasStatus, MutatesHeaders, ReadsHeaders {
-    }
+    interface Response extends HasStatus, MutatesHeaders, ReadsHeaders {}
 
     // onClientRequest
     interface IngressClientRequest
-        extends
-            MutatesHeaders,
+        extends MutatesHeaders,
             ReadsHeaders,
             ReadAllHeader,
             ReadsVariables,
@@ -442,37 +469,54 @@ declare namespace EW {
             HasRespondWith,
             HasRoute,
             HasCacheKey,
-            MutatesVariables
-    {
-    }
+            MutatesVariables {}
 
     // onOriginRequest
     interface IngressOriginRequest
-        extends MutatesHeaders, ReadsHeaders, ReadAllHeader, ReadsVariables, Request, HasRespondWith, MutatesVariables
-    {
-    }
+        extends MutatesHeaders,
+            ReadsHeaders,
+            ReadAllHeader,
+            ReadsVariables,
+            Request,
+            HasRespondWith,
+            MutatesVariables {}
 
     // onOriginResponse
     interface EgressOriginRequest
-        extends ReadsHeaders, ReadAllHeader, ReadsVariables, Request, HasRespondWith, MutatesVariables
-    {
-    }
+        extends ReadsHeaders,
+            ReadAllHeader,
+            ReadsVariables,
+            Request,
+            HasRespondWith,
+            MutatesVariables {}
 
-    interface EgressOriginResponse extends MutatesHeaders, ReadsHeaders, HasStatus {
-    }
+    interface EgressOriginResponse
+        extends MutatesHeaders,
+            ReadsHeaders,
+            HasStatus {}
 
     // onClientResponse
     interface EgressClientRequest
-        extends ReadsHeaders, ReadAllHeader, ReadsVariables, Request, HasRespondWith, MutatesVariables
-    {
-    }
+        extends ReadsHeaders,
+            ReadAllHeader,
+            ReadsVariables,
+            Request,
+            HasRespondWith,
+            MutatesVariables {}
 
-    interface EgressClientResponse extends MutatesHeaders, ReadsHeaders, HasStatus {
-    }
+    interface EgressClientResponse
+        extends MutatesHeaders,
+            ReadsHeaders,
+            HasStatus {}
 
     // responseProvider
-    interface ResponseProviderRequest extends Request, ReadsHeaders, ReadAllHeader, ReadsBody, ReadsVariables, HasBody {
-    }
+    interface ResponseProviderRequest
+        extends Request,
+            ReadsHeaders,
+            ReadAllHeader,
+            ReadsBody,
+            ReadsVariables,
+            HasBody {}
 
     interface Destination {
         /**
@@ -863,13 +907,21 @@ declare module "create-response" {
      *          as a ReadableStream, there is no limit.
      * @param denyReason Deny reason when the status code is 403.
      */
-    function createResponse(status: number, headers: Headers, body: CreateResponseBody, denyReason?: string): object;
-    function createResponse(body?: CreateResponseBody, opts?: {
-        status?: number | undefined;
-        headers?: Headers | undefined;
-        body?: object | undefined;
-        denyReason?: string | undefined;
-    }): object;
+    function createResponse(
+        status: number,
+        headers: Headers,
+        body: CreateResponseBody,
+        denyReason?: string,
+    ): object;
+    function createResponse(
+        body?: CreateResponseBody,
+        opts?: {
+            status?: number | undefined;
+            headers?: Headers | undefined;
+            body?: object | undefined;
+            denyReason?: string | undefined;
+        },
+    ): object;
 }
 
 declare module "http-request" {
@@ -893,12 +945,15 @@ declare module "http-request" {
      *  - `body` The request payload.
      *  - `timeout` The request timeout, in milliseconds.
      */
-    function httpRequest(url: string, options?: {
-        method?: string | undefined;
-        headers?: { [others: string]: string | string[] } | undefined;
-        body?: RequestBody | undefined;
-        timeout?: number | undefined;
-    }): Promise<HttpResponse>;
+    function httpRequest(
+        url: string,
+        options?: {
+            method?: string | undefined;
+            headers?: { [others: string]: string | string[] } | undefined;
+            body?: RequestBody | undefined;
+            timeout?: number | undefined;
+        },
+    ): Promise<HttpResponse>;
 
     /**
      * Describes the result of a `httpRequest()`.
@@ -936,28 +991,35 @@ declare module "http-request" {
  * [WHATWG Streams Standard]: https://streams.spec.whatwg.org
  */
 declare module "streams" {
-    interface ReadableStream<R = any> extends EW.ReadableStreamEW {
-    }
+    interface ReadableStream<R = any> extends EW.ReadableStreamEW {}
 
     const ReadableStream: {
         prototype: ReadableStream;
-        new(underlyingSource: EW.UnderlyingByteSource, strategy?: {
-            highWaterMark?: number;
-            size?: undefined;
-        }): ReadableStream<Uint8Array>;
-        new<R = any>(underlyingSource?: EW.UnderlyingSource<R>, strategy?: EW.QueuingStrategy<R>): ReadableStream<R>;
+        new (
+            underlyingSource: EW.UnderlyingByteSource,
+            strategy?: {
+                highWaterMark?: number;
+                size?: undefined;
+            },
+        ): ReadableStream<Uint8Array>;
+        new <R = any>(
+            underlyingSource?: EW.UnderlyingSource<R>,
+            strategy?: EW.QueuingStrategy<R>,
+        ): ReadableStream<R>;
     };
 
-    interface WritableStream<R = any> extends EW.WritableStreamEW {
-    }
+    interface WritableStream<R = any> extends EW.WritableStreamEW {}
 
     const WritableStream: {
         prototype: WritableStream;
-        new<W = any>(underlyingSink?: EW.UnderlyingSink<W>, strategy?: EW.QueuingStrategy<W>): WritableStream<W>;
+        new <W = any>(
+            underlyingSink?: EW.UnderlyingSink<W>,
+            strategy?: EW.QueuingStrategy<W>,
+        ): WritableStream<W>;
     };
 
-    interface ReadableStreamDefaultController<R = any> extends EW.ReadableStreamDefaultControllerEW {
-    }
+    interface ReadableStreamDefaultController<R = any>
+        extends EW.ReadableStreamDefaultControllerEW {}
 
     interface TransformStream<I = any, O = any> {
         readonly readable: ReadableStream<O>;
@@ -966,7 +1028,7 @@ declare module "streams" {
 
     const TransformStream: {
         prototype: TransformStream;
-        new<I = any, O = any>(
+        new <I = any, O = any>(
             transformer?: Transformer<I, O>,
             writableStrategy?: EW.QueuingStrategy<I>,
             readableStrategy?: EW.QueuingStrategy<O>,
@@ -990,7 +1052,10 @@ declare module "streams" {
     }
 
     interface TransformerTransformCallback<I, O> {
-        (chunk: I, controller: TransformStreamDefaultController<O>): void | Promise<void>;
+        (
+            chunk: I,
+            controller: TransformStreamDefaultController<O>,
+        ): void | Promise<void>;
     }
 
     interface TransformStreamDefaultController<O = any> {
@@ -1009,7 +1074,8 @@ declare module "streams" {
         size(chunk: any): 1;
     }
 
-    interface ByteLengthQueuingStrategy extends EW.QueuingStrategy<ArrayBufferView> {
+    interface ByteLengthQueuingStrategy
+        extends EW.QueuingStrategy<ArrayBufferView> {
         highWaterMark: number;
 
         size(chunk: ArrayBufferView): number;
@@ -1017,7 +1083,7 @@ declare module "streams" {
 
     const ByteLengthQueuingStrategy: {
         prototype: ByteLengthQueuingStrategy;
-        new(options: { highWaterMark: number }): ByteLengthQueuingStrategy;
+        new (options: { highWaterMark: number }): ByteLengthQueuingStrategy;
     };
 
     export {
@@ -1040,14 +1106,16 @@ declare module "text-encode-transform" {
         readonly encoding: string;
     }
 
-    interface TextEncoderStream extends GenericTransformStream, TextEncoderCommon {
+    interface TextEncoderStream
+        extends GenericTransformStream,
+            TextEncoderCommon {
         readonly readable: ReadableStream<Uint8Array>;
         readonly writable: WritableStream<string>;
     }
 
     const TextEncoderStream: {
         prototype: TextEncoderStream;
-        new(): TextEncoderStream;
+        new (): TextEncoderStream;
     };
 
     type BufferSource = ArrayBufferView | ArrayBuffer;
@@ -1094,14 +1162,16 @@ declare module "text-encode-transform" {
         readonly ignoreBOM: boolean;
     }
 
-    interface TextDecoderStream extends GenericTransformStream, TextDecoderCommon {
+    interface TextDecoderStream
+        extends GenericTransformStream,
+            TextDecoderCommon {
         readonly readable: ReadableStream<string>;
         readonly writable: WritableStream<BufferSource>;
     }
 
     const TextDecoderStream: {
         prototype: TextDecoderStream;
-        new(label?: string, options?: TextDecoderOptions): TextDecoderStream;
+        new (label?: string, options?: TextDecoderOptions): TextDecoderStream;
     };
 
     export { TextDecoderStream, TextEncoderStream };
@@ -1227,7 +1297,10 @@ declare module "encoding" {
          * @param encodedData Input data that needs to be decoded.
          * @param outputFormat Optional argument for output format type.
          */
-        decode(encodedData: string, outputFormat?: "String" | "Uint8Array"): DecodedValue;
+        decode(
+            encodedData: string,
+            outputFormat?: "String" | "Uint8Array",
+        ): DecodedValue;
     }
 
     const base64: Base64;
@@ -1237,7 +1310,10 @@ declare module "encoding" {
          * @param encodedData Input data that needs to be decoded.
          * @param outputFormat Optional argument for output format type.
          */
-        decode(encodedData: string, outputFormat?: "String" | "Uint8Array"): DecodedValue;
+        decode(
+            encodedData: string,
+            outputFormat?: "String" | "Uint8Array",
+        ): DecodedValue;
     }
 
     const base64url: Base64url;
@@ -1247,7 +1323,10 @@ declare module "encoding" {
          * @param encodedData Input data that needs to be decoded.
          * @param outputFormat Optional argument for output format type.
          */
-        decode(encodedData: string, outputFormat?: "String" | "Uint8Array"): DecodedValue;
+        decode(
+            encodedData: string,
+            outputFormat?: "String" | "Uint8Array",
+        ): DecodedValue;
     }
 
     const base16: Base16;
@@ -1316,7 +1395,10 @@ declare module "encoding" {
          * @param buffer [Optional] an ArrayBuffer, a TypedArray or a DataView object containing the text to decode.
          * @param options [Optional] An object with the stream property
          */
-        decode(buffer?: ArrayBuffer | TypedArray | DataView, options?: StreamObject): string;
+        decode(
+            buffer?: ArrayBuffer | TypedArray | DataView,
+            options?: StreamObject,
+        ): string;
 
         /**
          * The fatal  flag passed into the constructor
@@ -1349,7 +1431,9 @@ declare module "crypto" {
          *
          * @returns The same array passed as typedArray but with its contents replaced with the newly generated random numbers
          */
-        getRandomValues(array: Exclude<TypedArray, Float32Array | Float64Array>): TypedArray;
+        getRandomValues(
+            array: Exclude<TypedArray, Float32Array | Float64Array>,
+        ): TypedArray;
     }
 
     type BufferSource = ArrayBufferView | ArrayBuffer;
@@ -1365,7 +1449,15 @@ declare module "crypto" {
         | Float32Array
         | Float64Array;
 
-    type Usages = "encrypt" | "decrypt" | "sign" | "verify" | "deriveKey" | "deriveBits" | "wrapKey" | "unwrapKey";
+    type Usages =
+        | "encrypt"
+        | "decrypt"
+        | "sign"
+        | "verify"
+        | "deriveKey"
+        | "deriveBits"
+        | "wrapKey"
+        | "unwrapKey";
 
     type Format = "raw" | "pkcs8" | "spki" | "jwk";
 

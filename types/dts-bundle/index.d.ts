@@ -5,7 +5,10 @@ interface Options {
     out?: string | undefined;
     externals?: boolean | undefined;
     referenceExternals?: boolean | undefined;
-    exclude?: RegExp | ((file: string, external: boolean) => boolean) | undefined;
+    exclude?:
+        | RegExp
+        | ((file: string, external: boolean) => boolean)
+        | undefined;
     removeSource?: boolean | undefined;
     newLine?: string | undefined;
     indent?: string | undefined;

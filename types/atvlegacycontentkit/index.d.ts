@@ -256,7 +256,10 @@ declare namespace atv {
          * @param elementToInsert The element you wish to insert.
          * @param insertBefore The element you wish to insert the other element before.
          */
-        insertChildBefore(elementToInsert: Element, insertBefore: Element): void;
+        insertChildBefore(
+            elementToInsert: Element,
+            insertBefore: Element,
+        ): void;
 
         /**
          * Get the parent element of this element.
@@ -279,7 +282,10 @@ declare namespace atv {
          * @param elementToBeReplaced The element that is going to be replaced.
          * @param elementToReplaceWith The element that has been replaced.
          */
-        replaceChild(elementToBeReplaced: Element, elementToReplaceWith: Element): void;
+        replaceChild(
+            elementToBeReplaced: Element,
+            elementToReplaceWith: Element,
+        ): void;
 
         /**
          * Set an attribute on the element.
@@ -340,7 +346,10 @@ declare namespace atv {
          * @param items The list of media browser items to show.
          * @param initialSelectionIndex The index of what the initial image to be displayed should be.
          */
-        show(items: Array<(MediaBrowserPhoto | MediaBrowserVideo)>, initialSelectionIndex?: number): void;
+        show(
+            items: Array<MediaBrowserPhoto | MediaBrowserVideo>,
+            initialSelectionIndex?: number,
+        ): void;
 
         /**
          * Update the metadata of the asset.
@@ -354,7 +363,10 @@ declare namespace atv {
          * @param photoId The ID of the photo that you want to update.
          * @param metadata The metadata you wish to set the photo to have.
          */
-        updateMetadataLiked(photoId: string, metadata: MediaBrowserMetadata): void;
+        updateMetadataLiked(
+            photoId: string,
+            metadata: MediaBrowserMetadata,
+        ): void;
 
         /**
          * The callback that is called when the media browser requests metadata.
@@ -374,7 +386,10 @@ declare namespace atv {
         /**
          * The callback that is called when the photo is liked or unliked.
          */
-        onLikeSelection?: (photoId: string, metadata: MediaBrowserMetadata) => void;
+        onLikeSelection?: (
+            photoId: string,
+            metadata: MediaBrowserMetadata,
+        ) => void;
 
         /**
          * The type of this media browser. Default allows switching between fullscreen and comments modes by pressing select. Comments screen only sets the media browser to only have fullscreen
@@ -469,7 +484,10 @@ declare namespace atv {
      * @param xml The parent node, containing the XML tree to replace the current page with.
      * @param callback A callback called when the page has been swapped, and if it was successful.
      */
-    function loadAndSwapXML(xml: Node, callback?: (success: boolean) => void): void;
+    function loadAndSwapXML(
+        xml: Node,
+        callback?: (success: boolean) => void,
+    ): void;
 
     /**
      * Load the specified plist onto the controller stack and view it.
@@ -539,10 +557,14 @@ declare namespace atv {
     const NSLocaleCurrencySymbol = "kCFLocaleCurrencySymbolKey";
     const NSLocaleCurrencyCode = "currency";
     const NSLocaleCollatorIdentifier = "kCFLocaleCollatorIdentifierKey";
-    const NSLocaleQuotationBeginDelimiterKey = "kCFLocaleQuotationBeginDelimiterKey";
-    const NSLocaleQuotationEndDelimiterKey = "kCFLocaleQuotationEndDelimiterKey";
-    const NSLocaleAlternateQuotationBeginDelimiterKey = "kCFLocaleAlternateQuotationBeginDelimiterKey";
-    const NSLocaleAlternateQuotationEndDelimiterKey = "kCFLocaleAlternateQuotationEndDelimiterKey";
+    const NSLocaleQuotationBeginDelimiterKey =
+        "kCFLocaleQuotationBeginDelimiterKey";
+    const NSLocaleQuotationEndDelimiterKey =
+        "kCFLocaleQuotationEndDelimiterKey";
+    const NSLocaleAlternateQuotationBeginDelimiterKey =
+        "kCFLocaleAlternateQuotationBeginDelimiterKey";
+    const NSLocaleAlternateQuotationEndDelimiterKey =
+        "kCFLocaleAlternateQuotationEndDelimiterKey";
 
     /**
      * Functions to do with the currently playing item.
@@ -602,7 +624,12 @@ declare namespace atv {
     /**
      * This is called every time the Apple TV wants screensavers.
      */
-    let onExecuteQuery: ((query: ATVScreenSaverQuery, callback: ATVScreenSaverCallback) => void) | null;
+    let onExecuteQuery:
+        | ((
+              query: ATVScreenSaverQuery,
+              callback: ATVScreenSaverCallback,
+          ) => void)
+        | null;
 
     /**
      * Called when the user is logged out. This can be used to remove any user specific data from local or session storage.
@@ -627,7 +654,13 @@ declare namespace atv {
      *
      * This method should not block. You must notify the Apple TV of *all* results with the callback, or else the login will hang for the user.
      */
-    let onAuthenticate: ((username: string, password: string, callback: ATVAuthenticationCallback) => void) | null;
+    let onAuthenticate:
+        | ((
+              username: string,
+              password: string,
+              callback: ATVAuthenticationCallback,
+          ) => void)
+        | null;
 
     /**
      * A callback that seems to be related to an unreleased Universal Search feature. This only appears in PBS applications, but is listed in strings files for ATVLegacyContentKit, so seems
@@ -793,7 +826,9 @@ declare namespace atv {
         /**
          * Called when the player asks for a new asset (e.g. the next one to be played).
          */
-        let loadMoreAssets: ((callback: ATVLoadMoreAssetsCallback) => void) | null;
+        let loadMoreAssets:
+            | ((callback: ATVLoadMoreAssetsCallback) => void)
+            | null;
 
         /**
          * Called when the player starts buffering. The playhead location is how much of the video has been played in seconds.
@@ -813,12 +848,16 @@ declare namespace atv {
         /**
          * Called when there is quality of service report available. Seems to only be logs.
          */
-        let onQualityOfServiceReport: ((report: ATVQualityOfServiceReport) => void) | null;
+        let onQualityOfServiceReport:
+            | ((report: ATVQualityOfServiceReport) => void)
+            | null;
 
         /**
          * Called when the state of the player changes. The state is the new state of the player and the playhead location is how much of the asset has been viewed in seconds.
          */
-        let playerStateChanged: ((state: states, playheadLocation: number) => void) | null;
+        let playerStateChanged:
+            | ((state: states, playheadLocation: number) => void)
+            | null;
 
         /**
          * Called when the player is seeking to a specific time in seconds. This method should return the time the player should seek to. If you want to use the one set by the user, just return
@@ -829,7 +868,9 @@ declare namespace atv {
         /**
          * Whether the player should handle an event. The event parameter describes what event is being requested and the playhead location is how much of the asset has been viewed in seconds.
          */
-        let playerShouldHandleEvent: ((event: events, playheadLocation: number) => boolean) | null;
+        let playerShouldHandleEvent:
+            | ((event: events, playheadLocation: number) => boolean)
+            | null;
 
         /**
          * The current date has changed. This basically just reports the passage of time every second or so.
@@ -849,12 +890,16 @@ declare namespace atv {
         /**
          * The video controls (e.g. the progress bar) are going to be displayed. Animation duration is the length of the animation to fade in the controls.
          */
-        let onTransportControlsDisplayed: ((animationDuration: number) => void) | null;
+        let onTransportControlsDisplayed:
+            | ((animationDuration: number) => void)
+            | null;
 
         /**
          * The video controls (e.g. the progress bar) are going to be hidden. Animation duration is the length of the animation to fade out the controls.
          */
-        let onTransportControlsHidden: ((animationDuration: number) => void) | null;
+        let onTransportControlsHidden:
+            | ((animationDuration: number) => void)
+            | null;
 
         /**
          * The user has selected an audio track. The language is the short string associated with the language choice (e.g. en).
@@ -874,7 +919,12 @@ declare namespace atv {
         /**
          * The player has asked for related content to be loaded. If there is already an item queued, it is supplied as the upNextAsset parameter.
          */
-        let loadRelatedContent: ((upNextAsset: Element, callback: ATVLoadMoreAssetsCallback) => void) | null;
+        let loadRelatedContent:
+            | ((
+                  upNextAsset: Element,
+                  callback: ATVLoadMoreAssetsCallback,
+              ) => void)
+            | null;
 
         /**
          * The currently playing asset.
@@ -1082,13 +1132,19 @@ declare namespace atv {
      * @param ms How long you want between tasks.
      * @param args Arguments you wish to supply to the callback.
      */
-    function setInterval<TArgs extends any[]>(callback: (...args: TArgs) => void, ms?: number, ...args: TArgs): string;
+    function setInterval<TArgs extends any[]>(
+        callback: (...args: TArgs) => void,
+        ms?: number,
+        ...args: TArgs
+    ): string;
 
     /**
      * Set the screensaver collection that is shown in settings.
      * @param collection The collection to set.
      */
-    function setScreensaverPhotosCollection(collection: ATVScreenSaverCollection): void;
+    function setScreensaverPhotosCollection(
+        collection: ATVScreenSaverCollection,
+    ): void;
 
     /**
      * Run a function after a specified amount of time.
@@ -1096,7 +1152,11 @@ declare namespace atv {
      * @param ms How long you wish to delay.
      * @param args Arguments you wish to pass to the function.
      */
-    function setTimeout<TArgs extends any[]>(callback: (...args: TArgs) => void, ms: number, ...args: TArgs): string;
+    function setTimeout<TArgs extends any[]>(
+        callback: (...args: TArgs) => void,
+        ms: number,
+        ...args: TArgs
+    ): string;
 
     /**
      * Scrolls the user down to the bottom shelf on an item detail page. Will throw an exception if used elsewhere.
@@ -1118,7 +1178,9 @@ declare namespace atv {
         /**
          * Accepts the App Store response that contains the app-requested product information.
          */
-        onProductsRequestDidReceiveResponse?: (response: SKProductsResponse) => void;
+        onProductsRequestDidReceiveResponse?: (
+            response: SKProductsResponse,
+        ) => void;
 
         /**
          * Sends the request to the Apple App Store.
@@ -1162,13 +1224,17 @@ declare namespace atv {
          * Adds an observer to the payment queue.
          * @param observer The observer to add to the queue.
          */
-        function addTransactionObserver(observer: SKPaymentTransactionObserver): void;
+        function addTransactionObserver(
+            observer: SKPaymentTransactionObserver,
+        ): void;
 
         /**
          * Removes an observer from the payment queue.
          * @param observer The observer to remove.
          */
-        function removeTransactionObserver(observer: SKPaymentTransactionObserver): void;
+        function removeTransactionObserver(
+            observer: SKPaymentTransactionObserver,
+        ): void;
 
         /**
          * Notifies the App Store that the app finished processing the transaction.
@@ -1185,7 +1251,9 @@ declare namespace atv {
          * Asks the payment queue to restore previously completed purchases, providing an opaque identifier for the user’s account.
          * @param username An opaque identifier for the user’s account on your system.
          */
-        function restoreCompletedTransactionsWithApplicationUsername(username?: string | null): void;
+        function restoreCompletedTransactionsWithApplicationUsername(
+            username?: string | null,
+        ): void;
 
         /**
          * Returns an array of pending transactions.
@@ -1196,11 +1264,15 @@ declare namespace atv {
     /**
      * A copy of the constants for SKPaymentTransactionState, so they match the actual ATV JS values, but while still using the enum.
      */
-    const SKPaymentTransactionStateDeferred = SKPaymentTransactionState.Deferred;
+    const SKPaymentTransactionStateDeferred =
+        SKPaymentTransactionState.Deferred;
     const SKPaymentTransactionStateFailed = SKPaymentTransactionState.Failed;
-    const SKPaymentTransactionStatePurchased = SKPaymentTransactionState.Purchased;
-    const SKPaymentTransactionStatePurchasing = SKPaymentTransactionState.Purchasing;
-    const SKPaymentTransactionStateRestored = SKPaymentTransactionState.Restored;
+    const SKPaymentTransactionStatePurchased =
+        SKPaymentTransactionState.Purchased;
+    const SKPaymentTransactionStatePurchasing =
+        SKPaymentTransactionState.Purchasing;
+    const SKPaymentTransactionStateRestored =
+        SKPaymentTransactionState.Restored;
 
     /**
      * The constants for some SKError types. These don't appear to be used by anything (especially since they don't cover all of the possible subsets of SKError).
@@ -2315,7 +2387,10 @@ declare interface ATVSecureKeyDelivery {
      * the asset ID is parsed directly from this (e.g. by removing the skd:// bit).
      * The callback parameter allows you to return the asset ID and indicate whether it is Base64 encoded or not, or to return an error.
      */
-    fetchAssetID?: (uri: string, callback: ATVSecureKeyFetchAssetCallback) => void;
+    fetchAssetID?: (
+        uri: string,
+        callback: ATVSecureKeyFetchAssetCallback,
+    ) => void;
 
     /**
      * Fetch the FairPlay certificate. The certificate must be in the DER format. These are generally shared across an app, so can be cached if desired.
@@ -2323,7 +2398,10 @@ declare interface ATVSecureKeyDelivery {
      * The 'uri' parameter is a string containing the secure key delivery URI. This is the URI that is contained within the m3u8 in the EXT-X-KEY tag. The URI will begin with "skd://".
      * The callback parameter allows you to return the certificate. This must be base64 encoded (e.g. by using XMLHttpRequest.responseDataAsBase64).
      */
-    fetchCertificate?: (uri: string, callback: ATVSecureKeyGenericCallback) => void;
+    fetchCertificate?: (
+        uri: string,
+        callback: ATVSecureKeyGenericCallback,
+    ) => void;
 
     /**
      * Fetch the FairPlay keys for this particular asset. These are usually unique to each media item.
@@ -2334,7 +2412,11 @@ declare interface ATVSecureKeyDelivery {
      *
      * The callback parameter allows you to return the keys. This must be base64 encoded (e.g. by using XMLHttpRequest.responseDataAsBase64).
      */
-    fetchKey?: (uri: string, requestData: string, callback: ATVSecureKeyGenericCallback) => void;
+    fetchKey?: (
+        uri: string,
+        requestData: string,
+        callback: ATVSecureKeyGenericCallback,
+    ) => void;
 }
 
 /**
@@ -2568,7 +2650,10 @@ declare interface ATVJSSlideShow {
      * @param initialSelection The initial index to use.
      * @param photos The photos to display.
      */
-    run(initialSelection: number, photos: Array<MediaBrowserPhoto | MediaBrowserVideo>): void;
+    run(
+        initialSelection: number,
+        photos: Array<MediaBrowserPhoto | MediaBrowserVideo>,
+    ): void;
 
     /**
      * Show the settings for the slideshow.
@@ -2614,7 +2699,12 @@ declare interface AttributeContainer {
     /**
      * The way the text should break.
      */
-    breakMode?: "clip" | "word-wrap" | "truncate-head" | "truncate-tail" | "truncate-middle";
+    breakMode?:
+        | "clip"
+        | "word-wrap"
+        | "truncate-head"
+        | "truncate-tail"
+        | "truncate-middle";
 
     /**
      * The weight of the text.

@@ -21,7 +21,8 @@ declare class OrcidStrategy extends OAuth2Strategy {
 
 declare namespace OrcidStrategy {
     type StrategyOptions = OrcidStrategyOptions<OAuth2Strategy.StrategyOptions>;
-    type StrategyOptionsWithRequest = OrcidStrategyOptions<OAuth2Strategy.StrategyOptionsWithRequest>;
+    type StrategyOptionsWithRequest =
+        OrcidStrategyOptions<OAuth2Strategy.StrategyOptionsWithRequest>;
 
     type VerifyFunction = OAuth2Strategy.VerifyFunction;
     type VerifyFunctionWithRequest = OAuth2Strategy.VerifyFunctionWithRequest;

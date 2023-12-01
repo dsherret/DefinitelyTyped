@@ -188,12 +188,7 @@ class Row extends React.Component<RowProps, RowState> {
         const { data } = this.props;
 
         return (
-            <Animated.View
-                style={[
-                    styles.row,
-                    this.state.style,
-                ]}
-            >
+            <Animated.View style={[styles.row, this.state.style]}>
                 <Image source={{ uri: data.image }} style={styles.image} />
                 <Text style={styles.text}>{data.text}</Text>
             </Animated.View>

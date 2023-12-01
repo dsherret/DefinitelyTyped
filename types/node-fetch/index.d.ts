@@ -16,7 +16,9 @@ export class Request extends Body {
     url: string;
 
     // node-fetch extensions to the whatwg/fetch spec
-    agent?: RequestOptions["agent"] | ((parsedUrl: URL) => RequestOptions["agent"]);
+    agent?:
+        | RequestOptions["agent"]
+        | ((parsedUrl: URL) => RequestOptions["agent"]);
     compress: boolean;
     counter: number;
     follow: number;
@@ -36,7 +38,9 @@ export interface RequestInit {
     signal?: AbortSignal | null | undefined;
 
     // node-fetch extensions
-    agent?: RequestOptions["agent"] | ((parsedUrl: URL) => RequestOptions["agent"]); // =null http.Agent instance, allows custom proxy, certificate etc.
+    agent?:
+        | RequestOptions["agent"]
+        | ((parsedUrl: URL) => RequestOptions["agent"]); // =null http.Agent instance, allows custom proxy, certificate etc.
     compress?: boolean | undefined; // =true support gzip/deflate content encoding. false to disable
     follow?: number | undefined; // =20 maximum redirect count. 0 to not follow redirect
     size?: number | undefined; // =0 maximum response body size in bytes. 0 to disable
@@ -124,7 +128,10 @@ export class Blob {
 }
 
 export class Body {
-    constructor(body?: any, opts?: { size?: number | undefined; timeout?: number | undefined });
+    constructor(
+        body?: any,
+        opts?: { size?: number | undefined; timeout?: number | undefined },
+    );
     arrayBuffer(): Promise<ArrayBuffer>;
     blob(): Promise<Blob>;
     body: NodeJS.ReadableStream;
@@ -202,10 +209,7 @@ export type BodyInit =
     | FormData;
 export type RequestInfo = string | URLLike | Request;
 
-declare function fetch(
-    url: RequestInfo,
-    init?: RequestInit,
-): Promise<Response>;
+declare function fetch(url: RequestInfo, init?: RequestInit): Promise<Response>;
 
 declare namespace fetch {
     function isRedirect(code: number): boolean;

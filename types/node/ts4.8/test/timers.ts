@@ -36,7 +36,11 @@ import { promisify } from "node:util";
         timers.clearTimeout(timeout[Symbol.toPrimitive]());
     }
     async function testPromisify(doSomething: {
-        (foo: any, onSuccessCallback: (result: string) => void, onErrorCallback: (reason: any) => void): void;
+        (
+            foo: any,
+            onSuccessCallback: (result: string) => void,
+            onErrorCallback: (reason: any) => void,
+        ): void;
         [promisify.custom](foo: any): Promise<string>;
     }) {
         const setTimeout = promisify(timers.setTimeout);

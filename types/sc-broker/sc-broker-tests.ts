@@ -19,7 +19,10 @@ server.on("ready", () => {
 
 server.destroy();
 
-const dataClient = scBroker.createClient({ port: 9000, secretKey: "mySecretKey" });
+const dataClient = scBroker.createClient({
+    port: 9000,
+    secretKey: "mySecretKey",
+});
 
 dataClient.set(["this", "is", "a", "deep", "key"], "Hello world");
 
@@ -63,11 +66,11 @@ const subscriptions = broker.subscriptions;
 subscriptions[1]["test"];
 
 broker
-    .on("subscribe", channel => {
+    .on("subscribe", (channel) => {
         // $ExpectType string
         channel;
     })
-    .on("unsubscribe", channel => {
+    .on("unsubscribe", (channel) => {
         // $ExpectType string
         channel;
     })
@@ -88,7 +91,7 @@ broker
 
 broker.publish("testChannel", 123);
 
-broker.exec(dataMap => {
+broker.exec((dataMap) => {
     dataMap.set(["main", "message"], "Message");
     return dataMap.get(["main"]);
 });
@@ -103,7 +106,7 @@ broker.sendToMaster(123, (err, response) => {
 
 class MyBroker extends SCBroker {
     run() {
-        this.on("subscribe", channel => {});
+        this.on("subscribe", (channel) => {});
     }
 }
 

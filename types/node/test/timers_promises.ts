@@ -1,5 +1,10 @@
 import { TimerOptions } from "node:timers";
-import { scheduler, setImmediate, setInterval, setTimeout } from "node:timers/promises";
+import {
+    scheduler,
+    setImmediate,
+    setInterval,
+    setTimeout,
+} from "node:timers/promises";
 const opts: TimerOptions = {
     ref: false,
     signal: new AbortController().signal,
@@ -20,8 +25,8 @@ scheduler.yield(); // $ExpectType Promise<void>
 const res5: Promise<void> = scheduler.wait(123);
 scheduler.wait(); // $ExpectType Promise<void>
 
-(async () => {
+async () => {
     for await (const test of setInterval(123, 1)) {
         test; // $ExpectType number
     }
-});
+};

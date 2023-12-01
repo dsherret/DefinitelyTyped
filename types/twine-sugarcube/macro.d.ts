@@ -46,7 +46,10 @@ export interface MacroContextObject {
     contents: string;
 }
 
-type ShadowWrapperCallback<T extends any[]> = (this: MacroContext, ...args: T) => void;
+type ShadowWrapperCallback<T extends any[]> = (
+    this: MacroContext,
+    ...args: T
+) => void;
 export interface MacroContext {
     /**
      * The argument string parsed into an array of discrete arguments.
@@ -114,7 +117,9 @@ export interface MacroContext {
      * @since 2.0.0
      * @param filter
      */
-    contextSelectAll(filter: (context: MacroContextObject) => boolean): object[];
+    contextSelectAll(
+        filter: (context: MacroContextObject) => boolean,
+    ): object[];
 
     /**
      * Returns a callback function that wraps the given callbacks to provide access to the variable
@@ -197,7 +202,11 @@ export interface MacroAPI {
      *    }
      * });
      */
-    add(name: string | string[], definition: MacroDefinition, deep?: boolean): void;
+    add(
+        name: string | string[],
+        definition: MacroDefinition,
+        deep?: boolean,
+    ): void;
 
     /**
      * Remove existing macro(s).

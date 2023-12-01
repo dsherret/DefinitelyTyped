@@ -80,22 +80,27 @@ imagemagick.convert(options, (err: any, buffer: Buffer) => {
     // check err, use buffer
 });
 fs.createReadStream("input.png")
-    .pipe(imagemagick.streams.convert({
-        quality: 75,
-        width: 160,
-        height: 160,
-    }))
+    .pipe(
+        imagemagick.streams.convert({
+            quality: 75,
+            width: 160,
+            height: 160,
+        }),
+    )
     .pipe(fs.createWriteStream("output.png"));
 
 // * identify(options, [callback])
 // Identify a buffer provided as srcData and return an object.
-imagemagick.identify({
-    srcData: fs.readFileSync("target.jpg"),
-    debug: true,
-    ignoreWarnings: false,
-}, (err: any, result: imagemagick.IIdentifyResult) => {
-    // check err, use result
-});
+imagemagick.identify(
+    {
+        srcData: fs.readFileSync("target.jpg"),
+        debug: true,
+        ignoreWarnings: false,
+    },
+    (err: any, result: imagemagick.IIdentifyResult) => {
+        // check err, use result
+    },
+);
 
 // * quantizeColors(options)
 // Quantize the image to a specified amount of colors from a buffer provided as srcData and return an array.
@@ -108,15 +113,18 @@ var colors = imagemagick.quantizeColors({
 
 // * composite(options, [callback])
 // Composite a buffer provided as options.compositeData on a buffer provided as options.srcData with gravity specified by options.gravity and return a Buffer
-imagemagick.composite({
-    srcData: fs.readFileSync("target.jpg"),
-    compositeData: fs.readFileSync("composite.jpg"),
-    gravity: "NorthWestGravity",
-    debug: true,
-    ignoreWarnings: false,
-}, (err: any, buffer: Buffer) => {
-    // check err, use buffer
-});
+imagemagick.composite(
+    {
+        srcData: fs.readFileSync("target.jpg"),
+        compositeData: fs.readFileSync("composite.jpg"),
+        gravity: "NorthWestGravity",
+        debug: true,
+        ignoreWarnings: false,
+    },
+    (err: any, buffer: Buffer) => {
+        // check err, use buffer
+    },
+);
 
 // * getConstPixels(options)
 // Get pixels of provided rectangular region.

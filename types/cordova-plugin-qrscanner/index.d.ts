@@ -16,7 +16,9 @@ interface QRScanner {
      * only be visible if `QRScanner.show()` has already made the webview transparent.
      * @param {function} [callback] Callback that gets an error or the QRScannerStatus object.
      */
-    prepare: (callback?: (error: QRScannerError, status: QRScannerStatus) => any) => void;
+    prepare: (
+        callback?: (error: QRScannerError, status: QRScannerStatus) => any,
+    ) => void;
 
     /**
      * Sets QRScanner to "watch" for valid QR codes. Once a valid code is
@@ -59,14 +61,18 @@ interface QRScanner {
      * as well.
      * @param {function} [callback] Callback that gets an error or the QRScannerStatus object.
      */
-    enableLight: (callback?: (error: QRScannerError, status: QRScannerStatus) => any) => void;
+    enableLight: (
+        callback?: (error: QRScannerError, status: QRScannerStatus) => any,
+    ) => void;
 
     /**
      * Disable the device's light. If `QRScanner.prepare()` has not been called,
      * this method performs that setup as well.
      * @param {function} [callback] Callback that gets an error or the QRScannerStatus object.
      */
-    disableLight: (callback?: (error: QRScannerError, status: QRScannerStatus) => any) => void;
+    disableLight: (
+        callback?: (error: QRScannerError, status: QRScannerStatus) => any,
+    ) => void;
 
     /**
      * Switch video capture to the `index` camera. Camera `0` is the back camera,
@@ -75,21 +81,28 @@ interface QRScanner {
      * @param {number} index A number representing the index of the camera to use.
      * @param {function} [callback] Callback that gets an error or the QRScannerStatus object.
      */
-    useCamera: (index: number, callback?: (error: QRScannerError, status: QRScannerStatus) => any) => void;
+    useCamera: (
+        index: number,
+        callback?: (error: QRScannerError, status: QRScannerStatus) => any,
+    ) => void;
 
     /**
      * Switch video capture to the device's front camera. If `QRScanner.prepare()`
      * has not been called, this method performs that setup as well.
      * @param {function} [callback] Callback that gets an error or the QRScannerStatus object.
      */
-    useFrontCamera: (callback?: (error: QRScannerError, status: QRScannerStatus) => any) => void;
+    useFrontCamera: (
+        callback?: (error: QRScannerError, status: QRScannerStatus) => any,
+    ) => void;
 
     /**
      * Switch video capture to the device's back camera. If `QRScanner.prepare()`
      * has not been called, this method performs that setup as well.
      * @param {function} [callback] Callback that gets an error or the QRScannerStatus object.
      */
-    useBackCamera: (callback?: (error: QRScannerError, status: QRScannerStatus) => any) => void;
+    useBackCamera: (
+        callback?: (error: QRScannerError, status: QRScannerStatus) => any,
+    ) => void;
 
     /**
      * Pauses the video preview on the current frame (as if a snapshot was taken).
@@ -112,7 +125,9 @@ interface QRScanner {
      * restart when they return.
      * @param {function} [callback] Callback that gets the QRScannerStatus object.
      */
-    openSettings: (callback?: (error: QRScannerError, status: QRScannerStatus) => any) => void;
+    openSettings: (
+        callback?: (error: QRScannerError, status: QRScannerStatus) => any,
+    ) => void;
 
     /**
      * Retrieve the status of QRScanner and provide it to the callback function.

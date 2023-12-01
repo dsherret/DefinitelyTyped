@@ -19,5 +19,8 @@ declare namespace exec {
     export type { ExecSyncOptions };
 }
 
-declare function exec(cmd: string, options?: ExecSyncOptions & exec.ShellJsOptions): exec.ShellJsExecResponse;
+declare function exec(
+    cmd: string,
+    options?: ExecSyncOptions & exec.ShellJsOptions,
+): exec.ShellJsExecResponse;
 export = exec;

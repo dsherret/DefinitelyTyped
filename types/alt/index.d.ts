@@ -13,7 +13,9 @@ declare namespace AltJS {
 
         // Methods/Listeners
         exportPublicMethods?(exportConfig: any): void;
-        bindListeners?(config: { [methodName: string]: Action<any> | Actions }): void;
+        bindListeners?(config: {
+            [methodName: string]: Action<any> | Actions;
+        }): void;
         exportAsync?(source: Source): void;
         registerAsync?(datasource: Source): void;
 
@@ -53,7 +55,11 @@ declare namespace AltJS {
         loading?: ((args: any) => void) | undefined;
         success: (state: S) => void;
         error: (args: any) => void;
-        interceptResponse?(response: any, action: Action<any>, ...args: any[]): any;
+        interceptResponse?(
+            response: any,
+            action: Action<any>,
+            ...args: any[]
+        ): any;
     }
 
     export interface AltStore<S> {
@@ -88,10 +94,16 @@ declare namespace AltJS {
 
     interface AltConfig {
         dispatcher?: any;
-        serialize?: ((serializeFn: (data: Object) => string) => void) | undefined;
-        deserialize?: ((deserializeFn: (serialData: string) => Object) => void) | undefined;
+        serialize?:
+            | ((serializeFn: (data: Object) => string) => void)
+            | undefined;
+        deserialize?:
+            | ((deserializeFn: (serialData: string) => Object) => void)
+            | undefined;
         storeTransforms?: StateTransform[] | undefined;
-        batchingFunction?: ((callback: (...data: any[]) => any) => void) | undefined;
+        batchingFunction?:
+            | ((callback: (...data: any[]) => any) => void)
+            | undefined;
     }
 
     class Alt {
@@ -102,26 +114,44 @@ declare namespace AltJS {
         flush(): Object;
         recycle(...stores: Array<AltJS.AltStore<any>>): void;
         rollback(): void;
-        dispatch(action?: AltJS.Action<any> | string, data?: Object, details?: any): void;
+        dispatch(
+            action?: AltJS.Action<any> | string,
+            data?: Object,
+            details?: any,
+        ): void;
 
         // Actions methods
-        addActions(actionsName: string, ActionsClass: ActionsClassConstructor): void;
-        createActions<T>(ActionsClass: ActionsClassConstructor, exportObj?: Object): T;
-        createActions<T>(ActionsClass: ActionsClassConstructor, exportObj?: Object, ...constructorArgs: any[]): T;
+        addActions(
+            actionsName: string,
+            ActionsClass: ActionsClassConstructor,
+        ): void;
+        createActions<T>(
+            ActionsClass: ActionsClassConstructor,
+            exportObj?: Object,
+        ): T;
+        createActions<T>(
+            ActionsClass: ActionsClassConstructor,
+            exportObj?: Object,
+            ...constructorArgs: any[]
+        ): T;
         generateActions<T>(...actions: string[]): T;
         getActions(actionsName: string): AltJS.Actions;
 
         // Stores methods
-        addStore(name: string, store: StoreModel<any>, saveStore?: boolean): void;
+        addStore(
+            name: string,
+            store: StoreModel<any>,
+            saveStore?: boolean,
+        ): void;
         createStore<S>(store: StoreModel<S>, name?: string): AltJS.AltStore<S>;
         getStore(name: string): AltJS.AltStore<any>;
     }
 
     export interface AltFactory {
-        new(config?: AltConfig): Alt;
+        new (config?: AltConfig): Alt;
     }
 
-    type ActionsClassConstructor = new(alt: Alt) => AltJS.ActionsClass;
+    type ActionsClassConstructor = new (alt: Alt) => AltJS.ActionsClass;
 
     type ActionHandler = (...data: any[]) => any;
     type ExportConfig = { [key: string]: (...args: any[]) => any };
@@ -142,7 +172,9 @@ declare module "alt/AltContainer" {
         actions?: { [key: string]: Object } | undefined;
         render?: ((...props: any[]) => React.ReactElement) | undefined;
         flux?: AltJS.Alt | undefined;
-        transform?: ((store: AltJS.AltStore<any>, actions: any) => any) | undefined;
+        transform?:
+            | ((store: AltJS.AltStore<any>, actions: any) => any)
+            | undefined;
         shouldComponentUpdate?: ((props: any) => boolean) | undefined;
         component?: React.Component<any> | undefined;
     }

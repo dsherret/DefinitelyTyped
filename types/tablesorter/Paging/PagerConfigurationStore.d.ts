@@ -7,7 +7,8 @@ import { PagerMemory } from "./PagerMemory";
 /**
  * Represents the configuration-store of the `pager` addon.
  */
-export interface PagerConfigurationStore<TElement = HTMLElement> extends PagerConfiguration<TElement> {
+export interface PagerConfigurationStore<TElement = HTMLElement>
+    extends PagerConfiguration<TElement> {
     page: number;
 
     size: number;
@@ -45,7 +46,10 @@ export interface PagerConfigurationStore<TElement = HTMLElement> extends PagerCo
     /**
      * The result of the ajax-request.
      */
-    ajaxData: PagerDataPart<TElement> | [number] | [number, JQuery | any[][], string[]?];
+    ajaxData:
+        | PagerDataPart<TElement>
+        | [number]
+        | [number, JQuery | any[][], string[]?];
 
     /**
      * The index of the cached rows which are being displayed.

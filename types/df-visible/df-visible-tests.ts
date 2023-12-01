@@ -1,22 +1,25 @@
 // https://github.com/customd/jquery-visible/blob/master/examples/demo-basic.html
-$(function() {
+$(function () {
     // Add the spans to the container element.
-    $("#container dt").each(function() {
+    $("#container dt").each(function () {
         $(this).append("<span></span>");
     });
 
     // Trigger the
-    $("#detect").on("click", function() {
+    $("#detect").on("click", function () {
         // Select the detection type.
         var detectPartial = $("#detect_type").val() == "partial";
 
         // Loop over each container, and check if it's visible.
-        $("#container dt").each(function() {
+        $("#container dt").each(function () {
             // Is this element visible onscreen?
             var visible = $(this).visible(detectPartial);
 
             // Set the visible status into the span.
-            $(this).find("span").text(visible ? "Onscreen" : "Offscreen").toggleClass("visible", visible);
+            $(this)
+                .find("span")
+                .text(visible ? "Onscreen" : "Offscreen")
+                .toggleClass("visible", visible);
         });
     });
 });

@@ -74,7 +74,10 @@ type JSONEditorOptions<TValue> = {
     /**
      * The JS template engine to use.
      */
-    template?: string | { compile: (template: string) => (vars: any) => string } | undefined;
+    template?:
+        | string
+        | { compile: (template: string) => (vars: any) => string }
+        | undefined;
     /**
      * The CSS theme to use.
      */
@@ -162,7 +165,9 @@ declare class JSONEditor<TValue> {
         languages: any;
         language: string;
         resolvers: Array<(schema: any) => string>;
-        custom_validators: Array<(schema: any, value: string, path: string) => JSONEditorError[]>;
+        custom_validators: Array<
+            (schema: any, value: string, path: string) => JSONEditorError[]
+        >;
     };
     public static plugins: {
         sceditor: {

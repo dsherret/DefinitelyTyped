@@ -15,9 +15,13 @@ spotify.playTrack("spotify:track:3AhXZa8sUQht0UEdBJgpGc", () => {
 /**
  * Play a track in a context (for example an album).
  */
-spotify.playTrackInContext("spotify:track:0R8P9KfGJCDULmlEoBagcO", "spotify:album:6ZG5lRT77aJ3btmArcykra", () => {
-    // Track is playing in context of an album
-});
+spotify.playTrackInContext(
+    "spotify:track:0R8P9KfGJCDULmlEoBagcO",
+    "spotify:album:6ZG5lRT77aJ3btmArcykra",
+    () => {
+        // Track is playing in context of an album
+    },
+);
 
 /**
  * Get the current track.

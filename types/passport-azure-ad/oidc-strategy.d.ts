@@ -31,11 +31,13 @@ export interface IProfile {
     oid?: string | undefined;
     upn?: string | undefined;
     displayName?: string | undefined;
-    name?: {
-        familyName?: string | undefined;
-        givenName?: string | undefined;
-        middleName?: string | undefined;
-    } | undefined;
+    name?:
+        | {
+              familyName?: string | undefined;
+              givenName?: string | undefined;
+              middleName?: string | undefined;
+          }
+        | undefined;
     emails?: any;
     _raw?: string | undefined;
     _json?: any;
@@ -44,76 +46,90 @@ export interface IProfile {
 export type VerifyOIDCFunction =
     | ((profile: IProfile, done: VerifyCallback) => void)
     | ((iss: string, sub: string, done: VerifyCallback) => void)
-    | ((iss: string, sub: string, profile: IProfile, done: VerifyCallback) => void)
     | ((
-        iss: string,
-        sub: string,
-        profile: IProfile,
-        access_token: string,
-        refresh_token: string,
-        done: VerifyCallback,
-    ) => void)
+          iss: string,
+          sub: string,
+          profile: IProfile,
+          done: VerifyCallback,
+      ) => void)
     | ((
-        iss: string,
-        sub: string,
-        profile: IProfile,
-        access_token: string,
-        refresh_token: string,
-        params: any,
-        done: VerifyCallback,
-    ) => void)
+          iss: string,
+          sub: string,
+          profile: IProfile,
+          access_token: string,
+          refresh_token: string,
+          done: VerifyCallback,
+      ) => void)
     | ((
-        iss: string,
-        sub: string,
-        profile: IProfile,
-        jwtClaims: any,
-        access_token: string,
-        refresh_token: string,
-        params: any,
-        done: VerifyCallback,
-    ) => void);
+          iss: string,
+          sub: string,
+          profile: IProfile,
+          access_token: string,
+          refresh_token: string,
+          params: any,
+          done: VerifyCallback,
+      ) => void)
+    | ((
+          iss: string,
+          sub: string,
+          profile: IProfile,
+          jwtClaims: any,
+          access_token: string,
+          refresh_token: string,
+          params: any,
+          done: VerifyCallback,
+      ) => void);
 
 export type VerifyOIDCFunctionWithReq =
     | ((req: Request, profile: IProfile, done: VerifyCallback) => void)
     | ((req: Request, iss: string, sub: string, done: VerifyCallback) => void)
-    | ((req: Request, iss: string, sub: string, profile: IProfile, done: VerifyCallback) => void)
     | ((
-        req: Request,
-        iss: string,
-        sub: string,
-        profile: IProfile,
-        access_token: string,
-        refresh_token: string,
-        done: VerifyCallback,
-    ) => void)
+          req: Request,
+          iss: string,
+          sub: string,
+          profile: IProfile,
+          done: VerifyCallback,
+      ) => void)
     | ((
-        req: Request,
-        iss: string,
-        sub: string,
-        profile: IProfile,
-        access_token: string,
-        refresh_token: string,
-        params: any,
-        done: VerifyCallback,
-    ) => void)
+          req: Request,
+          iss: string,
+          sub: string,
+          profile: IProfile,
+          access_token: string,
+          refresh_token: string,
+          done: VerifyCallback,
+      ) => void)
     | ((
-        req: Request,
-        iss: string,
-        sub: string,
-        profile: IProfile,
-        jwtClaims: any,
-        access_token: string,
-        refresh_token: string,
-        params: any,
-        done: VerifyCallback,
-    ) => void);
+          req: Request,
+          iss: string,
+          sub: string,
+          profile: IProfile,
+          access_token: string,
+          refresh_token: string,
+          params: any,
+          done: VerifyCallback,
+      ) => void)
+    | ((
+          req: Request,
+          iss: string,
+          sub: string,
+          profile: IProfile,
+          jwtClaims: any,
+          access_token: string,
+          refresh_token: string,
+          params: any,
+          done: VerifyCallback,
+      ) => void);
 
 export class OIDCStrategy implements passport.Strategy {
     constructor(
         options: IOIDCStrategyOptionWithRequest,
         verify: VerifyOIDCFunctionWithReq,
     );
-    constructor(options: IOIDCStrategyOptionWithoutRequest, verify: VerifyOIDCFunction);
+    constructor(
+        options: IOIDCStrategyOptionWithoutRequest,
+        verify: VerifyOIDCFunction,
+    );
 
     name: string;
 

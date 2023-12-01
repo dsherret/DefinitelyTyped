@@ -43,7 +43,8 @@ declare namespace GoogleAdsScripts {
             Swedish: "sv";
         };
 
-        type PriceLanguageType = typeof PriceLanguage[keyof typeof PriceLanguage];
+        type PriceLanguageType =
+            (typeof PriceLanguage)[keyof typeof PriceLanguage];
 
         const PriceQualifier: {
             From: "FROM";
@@ -52,7 +53,8 @@ declare namespace GoogleAdsScripts {
             None: "NONE";
         };
 
-        type PriceQualifierType = typeof PriceQualifier[keyof typeof PriceQualifier];
+        type PriceQualifierType =
+            (typeof PriceQualifier)[keyof typeof PriceQualifier];
 
         const PriceType: {
             Brands: "BRANDS";
@@ -66,7 +68,7 @@ declare namespace GoogleAdsScripts {
             ServiceTiers: "SERVICE_TIERS";
         };
 
-        type PriceTypeType = typeof PriceType[keyof typeof PriceType];
+        type PriceTypeType = (typeof PriceType)[keyof typeof PriceType];
 
         interface PriceBuilder extends Base.Builder<PriceOperation> {
             addPriceItem(priceItem: PriceItem): this;
@@ -85,13 +87,11 @@ declare namespace GoogleAdsScripts {
         interface PriceOperation extends Base.Operation<Price> {}
 
         interface PriceSelector
-            extends
-                Base.Selector<PriceIterator>,
+            extends Base.Selector<PriceIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

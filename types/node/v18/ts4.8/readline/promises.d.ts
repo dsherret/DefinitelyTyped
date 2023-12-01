@@ -5,7 +5,13 @@
  * @since v17.0.0
  */
 declare module "readline/promises" {
-    import { AsyncCompleter, Completer, Direction, Interface as _Interface, ReadLineOptions } from "node:readline";
+    import {
+        AsyncCompleter,
+        Completer,
+        Direction,
+        Interface as _Interface,
+        ReadLineOptions,
+    } from "node:readline";
     import { Abortable } from "node:events";
 
     class Interface extends _Interface {
@@ -50,7 +56,10 @@ declare module "readline/promises" {
         /**
          * @param stream A TTY stream.
          */
-        constructor(stream: NodeJS.WritableStream, options?: { autoCommit?: boolean });
+        constructor(
+            stream: NodeJS.WritableStream,
+            options?: { autoCommit?: boolean },
+        );
         /**
          * The `rl.clearLine()` method adds to the internal list of pending action an action that clears current line of the associated `stream` in a specified direction identified by `dir`.
          * Call `rl.commit()` to see the effect of this method, unless `autoCommit: true` was passed to the constructor.

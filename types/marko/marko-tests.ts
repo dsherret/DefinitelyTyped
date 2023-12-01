@@ -7,18 +7,21 @@ import { load } from "marko";
 import * as markoExpress from "marko/express";
 import { buildTaglibLookup, taglibFinder } from "marko/src/compiler";
 import { Component } from "marko/src/components";
-import { AsyncStream, createWriter, RenderResult, Template } from "marko/src/runtime/html";
+import {
+    AsyncStream,
+    createWriter,
+    RenderResult,
+    Template,
+} from "marko/src/runtime/html";
 
 // tslint:disable-next-line no-var-requires
 const template: Template = require("template.marko");
 
 // Working with document
 
-((document: Document) => {
+(document: Document) => {
     // $ExpectType RenderResult
-    template
-        .renderSync({ name: "Marko" })
-        .appendTo(document.body);
+    template.renderSync({ name: "Marko" }).appendTo(document.body);
 
     createServer((req, res) => {
         res.setHeader("content-type", "text/html");
@@ -26,18 +29,16 @@ const template: Template = require("template.marko");
         template.render({ name: "Marko" }, res);
     }).listen(8080);
 
-    template
-        .render({ $global: { flags: ["mobile"] } })
-        .then((result) => {
-            // $ExpectType RenderResult
-            result.appendTo(document.body);
-        });
+    template.render({ $global: { flags: ["mobile"] } }).then((result) => {
+        // $ExpectType RenderResult
+        result.appendTo(document.body);
+    });
 
     template.render({}, (err: Error | null, result: RenderResult) => {
         // $ExpectType RenderResult
         result.appendTo(document.body);
     });
-});
+};
 
 // WriteStream tests
 
@@ -99,7 +100,7 @@ template.render({}, asyncWriterInstance);
 
 // Component tests
 
-((component: Component) => {
+(component: Component) => {
     // $ExpectType HTMLElement
     component.getEl("header");
 
@@ -108,7 +109,7 @@ template.render({}, asyncWriterInstance);
 
     // $ExpectType Component
     component.getComponent("myFancyButton");
-});
+};
 
 // markoExpress() tests
 
@@ -131,12 +132,12 @@ app.get("/", (req: express.Request, res: express.Response) => {
 
 const lookup = buildTaglibLookup("some/dir");
 
-lookup.forEachTag(tag => {
+lookup.forEachTag((tag) => {
     // $ExpectType string
     tag.name;
 });
 
-lookup.forEachAttribute("div", attr => {
+lookup.forEachAttribute("div", (attr) => {
     // $ExpectType string | undefined
     attr.name;
 });
@@ -158,7 +159,10 @@ isomorphicTemplate.render({ name: "Frank" }, process.stdout);
 const serverTemplateFromFile = load("./sample.marko", { writeToDisk: false });
 serverTemplateFromFile.render({ name: "Frank" }, process.stdout);
 
-const serverTemplateFromString = load("sample.marko", "<div>Hello $!{data.name}</div>");
+const serverTemplateFromString = load(
+    "sample.marko",
+    "<div>Hello $!{data.name}</div>",
+);
 serverTemplateFromString.render({ name: "Frank" }, process.stdout);
 
 // node-require tests

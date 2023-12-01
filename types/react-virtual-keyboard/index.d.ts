@@ -5,7 +5,11 @@ export interface ReactKeyboardOptions extends KeyboardOptions {
     accepted?: undefined; // You should use KeyboardProps.onAccepted event.
 }
 
-export type kbEvents = (event?: string | Event, keyboard?: Element, el?: Element) => void;
+export type kbEvents = (
+    event?: string | Event,
+    keyboard?: Element,
+    el?: Element,
+) => void;
 
 export interface KeyboardProps {
     name?: string | undefined;

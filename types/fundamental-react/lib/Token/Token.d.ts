@@ -6,9 +6,13 @@ export type TokenProps = {
     className?: string | undefined;
     compact?: boolean | undefined;
     readOnly?: boolean | undefined;
-    onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
+    onClick?:
+        | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
+        | undefined;
 } & React.HTMLAttributes<HTMLSpanElement>;
 
-declare const Token: React.ForwardRefExoticComponent<TokenProps & React.RefAttributes<HTMLSpanElement>>;
+declare const Token: React.ForwardRefExoticComponent<
+    TokenProps & React.RefAttributes<HTMLSpanElement>
+>;
 
 export default Token;

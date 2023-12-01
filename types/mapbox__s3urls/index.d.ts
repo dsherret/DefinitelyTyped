@@ -1,9 +1,10 @@
 /* eslint-disable @definitelytyped/no-declare-current-package */
 // eslint-disable-next-line @definitelytyped/no-single-declare-module
 declare module "@mapbox/s3urls" {
-    function fromUrl(
-        url: string,
-    ): { Bucket: string | undefined; Key: string | undefined };
+    function fromUrl(url: string): {
+        Bucket: string | undefined;
+        Key: string | undefined;
+    };
 
     function toUrl(
         bucket: string,

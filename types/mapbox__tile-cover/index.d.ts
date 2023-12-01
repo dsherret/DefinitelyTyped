@@ -10,7 +10,10 @@ import * as GeoJSON from "geojson";
  * specifying the minimum and maximum level to be tiled.
  * @returns FeatureCollection of cells formatted as GeoJSON Features
  */
-export function geojson(geom: GeoJSON.Geometry, limits: Limits): GeoJSON.FeatureCollection;
+export function geojson(
+    geom: GeoJSON.Geometry,
+    limits: Limits,
+): GeoJSON.FeatureCollection;
 
 /**
  * Given a geometry, create cells and return them in their raw form,

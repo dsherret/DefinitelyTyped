@@ -8,7 +8,8 @@ export interface IRow {
 function main(): void {
     const schemaBuilder: lf.schema.Builder = lf.schema.create("todo", 1);
 
-    schemaBuilder.createTable("Item")
+    schemaBuilder
+        .createTable("Item")
         .addColumn("id", lf.Type.INTEGER)
         .addColumn("description", lf.Type.STRING)
         .addColumn("deadline", lf.Type.DATE_TIME)
@@ -23,32 +24,43 @@ function main(): void {
     const connectOptions: lf.schema.ConnectOptions = {
         storeType: lf.schema.DataStoreType.MEMORY,
     };
-    schemaBuilder.connect(connectOptions).then((db) => {
-        todoDb = db;
-        itemSchema = db.getSchema().table("Item");
-        const row = itemSchema.createRow({
-            id: 1,
-            description: "Get a cup of coffee",
-            deadline: new Date(),
-            done: false,
-        });
-        return db.insertOrReplace().into(itemSchema).values([row]).exec();
-    }).then(() => {
-        const column = itemSchema.done;
-        return todoDb.select().from(itemSchema).where(column.eq(false)).exec() as Promise<IRow[]>;
-    }).then((results) => {
-        results.forEach((row) => {
-            document.body.textContent = `${row.description} before ${row.deadline}`;
-        });
+    schemaBuilder
+        .connect(connectOptions)
+        .then((db) => {
+            todoDb = db;
+            itemSchema = db.getSchema().table("Item");
+            const row = itemSchema.createRow({
+                id: 1,
+                description: "Get a cup of coffee",
+                deadline: new Date(),
+                done: false,
+            });
+            return db.insertOrReplace().into(itemSchema).values([row]).exec();
+        })
+        .then(() => {
+            const column = itemSchema.done;
+            return todoDb
+                .select()
+                .from(itemSchema)
+                .where(column.eq(false))
+                .exec() as Promise<IRow[]>;
+        })
+        .then((results) => {
+            results.forEach((row) => {
+                document.body.textContent = `${row.description} before ${row.deadline}`;
+            });
 
-        return todoDb.delete().from(itemSchema);
-    }).then(() => {
-        return todoDb.select(lf.fn.count()).from(itemSchema).exec();
-    }).then(() => {
-        return todoDb.export();
-    }).then(() => {
-        todoDb.createTransaction().stats();
-    });
+            return todoDb.delete().from(itemSchema);
+        })
+        .then(() => {
+            return todoDb.select(lf.fn.count()).from(itemSchema).exec();
+        })
+        .then(() => {
+            return todoDb.export();
+        })
+        .then(() => {
+            todoDb.createTransaction().stats();
+        });
 }
 
 main();

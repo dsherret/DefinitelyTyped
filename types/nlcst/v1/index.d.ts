@@ -54,7 +54,11 @@ export interface WordContentMap {
     text: Text;
 }
 
-export type Content = Paragraph | ParagraphContent | SentenceContent | WordContent;
+export type Content =
+    | Paragraph
+    | ParagraphContent
+    | SentenceContent
+    | WordContent;
 
 export type ParagraphContent = ParagraphContentMap[keyof ParagraphContentMap];
 

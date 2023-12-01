@@ -1,11 +1,17 @@
 import * as React from "react";
-import { confirmable, createConfirmation, ReactConfirmProps } from "react-confirm";
+import {
+    confirmable,
+    createConfirmation,
+    ReactConfirmProps,
+} from "react-confirm";
 
 interface CustomModalProps {
     title: string;
 }
 
-class CustomModal extends React.Component<CustomModalProps & ReactConfirmProps> {
+class CustomModal extends React.Component<
+    CustomModalProps & ReactConfirmProps
+> {
     modalStyle() {
         return this.props.show ? { display: "none" } : undefined;
     }
@@ -15,9 +21,7 @@ class CustomModal extends React.Component<CustomModalProps & ReactConfirmProps> 
             <div style={this.modalStyle()}>
                 <h1>{this.props.title}</h1>
 
-                <div>
-                    {this.props.confirmation}
-                </div>
+                <div>{this.props.confirmation}</div>
 
                 <div>
                     <button onClick={() => this.props.proceed()}>Yes</button>

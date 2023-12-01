@@ -56,7 +56,14 @@ export class CellSpacePartitioning {
      * @param cellsY - The amount of cells along the y-axis.
      * @param cellsZ - The amount of cells along the z-axis.
      */
-    constructor(width: number, height: number, depth: number, cellsX: number, cellsY: number, cellsZ: number);
+    constructor(
+        width: number,
+        height: number,
+        depth: number,
+        cellsX: number,
+        cellsY: number,
+        cellsZ: number,
+    );
 
     /**
      * Updates the partitioning index of a given game entity.
@@ -101,7 +108,11 @@ export class CellSpacePartitioning {
      * @param radius - The given query radius.
      * @param result - The result array.
      */
-    query(position: Vector3, radius: number, result: GameEntity[]): GameEntity[];
+    query(
+        position: Vector3,
+        radius: number,
+        result: GameEntity[],
+    ): GameEntity[];
 
     /**
      * Removes all entities from all partitions.

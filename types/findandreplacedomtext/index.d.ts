@@ -14,7 +14,13 @@ interface Options {
      *
      * $' to represent everything to the right of the match.
      */
-    replace?: string | ((portion: Portion, match?: any) => string | number | HTMLElement | Text) | undefined;
+    replace?:
+        | string
+        | ((
+              portion: Portion,
+              match?: any,
+          ) => string | number | HTMLElement | Text)
+        | undefined;
     /**
      * A string representing the node-name of an element that will be wrapped around matches (e.g. span or em).
      *
@@ -70,6 +76,9 @@ interface Return {
 /**
  * findAndReplaceDOMText searches for regular expression matches in a given DOM node and replaces or wraps each match with a node or piece of text that you can specify.
  */
-declare function findAndReplaceDOMText(node: HTMLElement, options: Options): Return;
+declare function findAndReplaceDOMText(
+    node: HTMLElement,
+    options: Options,
+): Return;
 
 export = findAndReplaceDOMText;

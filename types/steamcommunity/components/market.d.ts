@@ -116,7 +116,11 @@ export interface Market {
      * @param desiredSackCount - How many sacks you want. You must have at least this amount * 1000 gems in the stack you're packing
      * @param callback A function to be called when the request completes.
      */
-    packGemSacks(assetid: assetid, desiredSackCount: number, callback: Callback): void;
+    packGemSacks(
+        assetid: assetid,
+        desiredSackCount: number,
+        callback: Callback,
+    ): void;
 
     /**
      * Unpacks some sacks of gems. You will receive 1000 gems for eaach sack you unpack.
@@ -125,5 +129,9 @@ export interface Market {
      * @param sacksToUnpack How many sacks in the stack you want to unpack.
      * @param callback A function to be called when the request completes.
      */
-    unpackGemSacks(assetid: assetid, sacksToUnpack: number, callback: Callback): void;
+    unpackGemSacks(
+        assetid: assetid,
+        sacksToUnpack: number,
+        callback: Callback,
+    ): void;
 }

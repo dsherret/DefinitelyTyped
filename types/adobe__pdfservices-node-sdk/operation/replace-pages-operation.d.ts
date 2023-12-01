@@ -49,7 +49,11 @@ export class ReplacePagesOperation {
      * If <code>pageRanges</code> is not provided, the specified page of the base PDF file will be replaced
      * by all the pages of the input PDF file.
      */
-    addPagesForReplace(basePageToReplace: number, inputFile: FileRef, pageRanges?: PageRanges): void;
+    addPagesForReplace(
+        basePageToReplace: number,
+        inputFile: FileRef,
+        pageRanges?: PageRanges,
+    ): void;
     /**
      * Executes this operation using the supplied context and returns a Promise which resolves to the operation result.
      *

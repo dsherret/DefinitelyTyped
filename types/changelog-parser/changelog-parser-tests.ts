@@ -32,21 +32,21 @@ parseChangelog(options, (error, result) => {
     const title: string = result.title;
 });
 
-parseChangelog({ filePath: "path/to/CHANGELOG.md" }, error => {});
+parseChangelog({ filePath: "path/to/CHANGELOG.md" }, (error) => {});
 
 // The function should return a promise.
-parseChangelog(options).then(result => {
+parseChangelog(options).then((result) => {
     const title: string = result.title;
 });
 
 // The first argument may be a string, in which case it is treated as the file
 // path.
-parseChangelog("path/to/CHANGELOG.md").then(result => {
+parseChangelog("path/to/CHANGELOG.md").then((result) => {
     const title: string = result.title;
 });
 
 // The options argument may contain a `text` property instead of a `filePath`
 // property..
-parseChangelog({ text: "# Change Log" }).then(result => {
+parseChangelog({ text: "# Change Log" }).then((result) => {
     const title: string = result.title;
 });

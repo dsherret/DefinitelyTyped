@@ -2,9 +2,10 @@ namespace nvd3_test_lineChartLogScale {
     var chart;
     var data;
 
-    nv.addGraph(function() {
-        chart = nv.models.lineChart()
-            .x(function(d) {
+    nv.addGraph(function () {
+        chart = nv.models
+            .lineChart()
+            .x(function (d) {
                 return d.x;
             })
             .options({
@@ -16,18 +17,12 @@ namespace nvd3_test_lineChartLogScale {
 
         data = GenerateData();
 
-        chart.xAxis
-            .axisLabel("x axis")
-            .tickFormat(d3.format("0.2f"));
+        chart.xAxis.axisLabel("x axis").tickFormat(d3.format("0.2f"));
 
         chart.yScale(d3.scale.log());
-        chart.yAxis
-            .axisLabel("Log axis")
-            .tickFormat(d3.format(".4e"));
+        chart.yAxis.axisLabel("Log axis").tickFormat(d3.format(".4e"));
 
-        d3.select("#chart1").append("svg")
-            .datum(data)
-            .call(chart);
+        d3.select("#chart1").append("svg").datum(data).call(chart);
 
         nv.utils.windowResize(chart.update);
 
@@ -39,7 +34,10 @@ namespace nvd3_test_lineChartLogScale {
             sin2 = [];
 
         for (var i = 0; i < 100; i++) {
-            sin.push({ x: i, y: Math.abs(i % 10 == 5 ? null : Math.sin(i / 10)) }); // the nulls are to show how defined works
+            sin.push({
+                x: i,
+                y: Math.abs(i % 10 == 5 ? null : Math.sin(i / 10)),
+            }); // the nulls are to show how defined works
             sin2.push({ x: i, y: Math.abs(Math.sin(i / 5) * 0.4 - 0.25) });
         }
 

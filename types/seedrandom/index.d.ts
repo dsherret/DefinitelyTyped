@@ -1,9 +1,13 @@
 type StateBuilder<S extends string> = Record<S, number>;
-type ComplexStateBuilder<S extends string, M extends string> = StateBuilder<S> & Record<M, number[]>;
+type ComplexStateBuilder<S extends string, M extends string> = StateBuilder<S> &
+    Record<M, number[]>;
 
 interface OtherAlgorithm<State> {
     (seed?: string, options?: { state?: false }): seedrandom.PRNG;
-    (seed?: string, options?: { state: State | true }): seedrandom.StatefulPRNG<State>;
+    (
+        seed?: string,
+        options?: { state: State | true },
+    ): seedrandom.StatefulPRNG<State>;
 }
 
 type Callback<callbackReturnType> = (
@@ -49,16 +53,21 @@ declare namespace seedrandom {
 
 interface seedrandom {
     // Arc4 Algorithm, default seedrandom
-    <O extends seedrandomOptions<any>>(seed?: string, options?: O | boolean): O extends callbackOption<
-        infer callbackReturnType
-    > ? callbackReturnType
-        : O extends stateOptionEnabled ? seedrandom.StatefulPRNG<seedrandom.State.Arc4>
-        : seedrandom.PRNG;
+    <O extends seedrandomOptions<any>>(
+        seed?: string,
+        options?: O | boolean,
+    ): O extends callbackOption<infer callbackReturnType>
+        ? callbackReturnType
+        : O extends stateOptionEnabled
+          ? seedrandom.StatefulPRNG<seedrandom.State.Arc4>
+          : seedrandom.PRNG;
     <O extends seedrandomOptions<any>, callbackReturnType>(
         seed: string | undefined,
         options: O | boolean | undefined,
         callback: Callback<callbackReturnType>,
-    ): O extends callbackOption<infer callbackReturnType> ? callbackReturnType : callbackReturnType;
+    ): O extends callbackOption<infer callbackReturnType>
+        ? callbackReturnType
+        : callbackReturnType;
 
     // Other Algorithms
     alea: OtherAlgorithm<seedrandom.State.Alea>;

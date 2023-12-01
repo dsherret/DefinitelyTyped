@@ -1,6 +1,8 @@
 import through = require("through");
 
-declare function gulpProtractorAngular(options: gulpProtractorAngular.Options): through.ThroughStream;
+declare function gulpProtractorAngular(
+    options: gulpProtractorAngular.Options,
+): through.ThroughStream;
 
 declare namespace gulpProtractorAngular {
     // See https://github.com/rochejul/gulp-angular-protractor/blob/master/readme.md#api

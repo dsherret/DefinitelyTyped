@@ -9,8 +9,9 @@ import { FlexboxPropTypes, GeneralPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const Breadcrumbs: React.FunctionComponent<BreadcrumbsProps>;
-export interface BreadcrumbsProps extends GeneralPropTypes, React.HTMLAttributes<HTMLUListElement> {
-}
+export interface BreadcrumbsProps
+    extends GeneralPropTypes,
+        React.HTMLAttributes<HTMLUListElement> {}
 /**
  * Breadcrumb item component.
  *
@@ -18,6 +19,8 @@ export interface BreadcrumbsProps extends GeneralPropTypes, React.HTMLAttributes
  * @returns {Object}
  */
 export declare const BreadcrumbItem: React.FunctionComponent<BreadcrumbItemProps>;
-export interface BreadcrumbItemProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLLIElement> {
+export interface BreadcrumbItemProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLLIElement> {
     isDisabled?: boolean | undefined;
 }

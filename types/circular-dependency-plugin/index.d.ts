@@ -41,10 +41,10 @@ declare namespace CircularDependencyPlugin {
         onDetected?:
             | false
             | ((x: {
-                module: Module;
-                paths: string[];
-                compilation: Compilation;
-            }) => void)
+                  module: Module;
+                  paths: string[];
+                  compilation: Compilation;
+              }) => void)
             | undefined;
         onEnd?: ((x: { compilation: Compilation }) => void) | undefined;
         onStart?: ((x: { compilation: Compilation }) => void) | undefined;

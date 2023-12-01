@@ -139,7 +139,12 @@ export type jsxTypes =
 
 export type miscTypes = babelTypes.Noop | babelTypes.ParenthesizedExpression;
 
-export type NodeTypes = coreTypes | es2015Types | flowTypes | jsxTypes | miscTypes;
+export type NodeTypes =
+    | coreTypes
+    | es2015Types
+    | flowTypes
+    | jsxTypes
+    | miscTypes;
 
 export interface coreVisitors<V> {
     ArrayExpression?: V | undefined;
@@ -288,20 +293,46 @@ export interface miscVisitors<V> {
 }
 
 export interface visitors<V>
-    extends coreVisitors<V>, es2015Visitors<V>, flowVisitors<V>, jsxVisitors<V>, miscVisitors<V>
-{
-}
+    extends coreVisitors<V>,
+        es2015Visitors<V>,
+        flowVisitors<V>,
+        jsxVisitors<V>,
+        miscVisitors<V> {}
 
 export type Visitor = (commentBlock: NodeTypes, state: any) => void;
 
 export type SimpleVisitor = (node: NodeTypes, state: any) => void;
 
-export type AncestorVisitor = (node: NodeTypes, state: any, ancestors: babelTypes.Node[]) => void;
+export type AncestorVisitor = (
+    node: NodeTypes,
+    state: any,
+    ancestors: babelTypes.Node[],
+) => void;
 
-export type AncestorStatelessVisitor = (node: NodeTypes, state: any, ancestors: babelTypes.Node[]) => void;
+export type AncestorStatelessVisitor = (
+    node: NodeTypes,
+    state: any,
+    ancestors: babelTypes.Node[],
+) => void;
 
-export type RecursiveVisitor = (node: NodeTypes, state: any, next: (node: babelTypes.Node) => void) => void;
+export type RecursiveVisitor = (
+    node: NodeTypes,
+    state: any,
+    next: (node: babelTypes.Node) => void,
+) => void;
 
-export function simple(node: NodeTypes, visitors: visitors<SimpleVisitor>, state: any): void;
-export function ancestor(node: NodeTypes, visitors: visitors<AncestorVisitor>, state: any): void;
-export function recursive(node: NodeTypes, visitors: visitors<RecursiveVisitor>, state: any): void;
+export function simple(
+    node: NodeTypes,
+    visitors: visitors<SimpleVisitor>,
+    state: any,
+): void;
+export function ancestor(
+    node: NodeTypes,
+    visitors: visitors<AncestorVisitor>,
+    state: any,
+): void;
+export function recursive(
+    node: NodeTypes,
+    visitors: visitors<RecursiveVisitor>,
+    state: any,
+): void;

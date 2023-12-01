@@ -10,7 +10,10 @@ export class Parser {
      * @param expression - to parse.
      * @returns Returns an object with two properties `error` and `result`.
      */
-    parse(value: string): { result: string | number | boolean | null; error: FormulaErrorId | null };
+    parse(value: string): {
+        result: string | number | boolean | null;
+        error: FormulaErrorId | null;
+    };
 
     /**
      * Hook that listens to reference calls by the {@link parse} method and allows for side effects on that event.
@@ -18,17 +21,34 @@ export class Parser {
      * @param hook - hook's name.
      * @param handler - the callback to produce the side effect.
      */
-    on(hook: "callVariable", handler: (name: string, done: DoneCallback) => void): void;
-    on(hook: "callFunction", handler: (name: string, params: unknown, done: DoneCallback) => void): void;
+    on(
+        hook: "callVariable",
+        handler: (name: string, done: DoneCallback) => void,
+    ): void;
+    on(
+        hook: "callFunction",
+        handler: (name: string, params: unknown, done: DoneCallback) => void,
+    ): void;
     on(
         hook: "callCellValue",
-        handler: (cellCoord: { row: Coordinate; label: string; column: Coordinate }, done: DoneCallback) => void,
+        handler: (
+            cellCoord: { row: Coordinate; label: string; column: Coordinate },
+            done: DoneCallback,
+        ) => void,
     ): void;
     on(
         hook: "callRangeValue",
         handler: (
-            startCellCoord: { row: Coordinate; label: string; column: Coordinate },
-            endCellCoord: { row: Coordinate; label: string; column: Coordinate },
+            startCellCoord: {
+                row: Coordinate;
+                label: string;
+                column: Coordinate;
+            },
+            endCellCoord: {
+                row: Coordinate;
+                label: string;
+                column: Coordinate;
+            },
             done: DoneCallback,
         ) => void,
     ): void;
@@ -143,7 +163,15 @@ export const ERROR_NUM: "NUM";
 export const ERROR_REF: "REF";
 export const ERROR_VALUE: "VALUE";
 
-export type FormulaErrorId = "#ERROR!" | "#DIV/0!" | "#NAME?" | "#N/A" | "#NULL!" | "#NUM!" | "#REF!" | "#VALUE!";
+export type FormulaErrorId =
+    | "#ERROR!"
+    | "#DIV/0!"
+    | "#NAME?"
+    | "#N/A"
+    | "#NULL!"
+    | "#NUM!"
+    | "#REF!"
+    | "#VALUE!";
 export type FormulaErrorType =
     | typeof ERROR
     | typeof ERROR_DIV_ZERO
@@ -160,7 +188,9 @@ export type FormulaErrorType =
  * @param error - error type or error id.
  * @returns corresponding error id, `null` if not found.
  */
-export function error(error: FormulaErrorType | FormulaErrorId): FormulaErrorId | null;
+export function error(
+    error: FormulaErrorType | FormulaErrorId,
+): FormulaErrorId | null;
 
 export const SUPPORTED_FORMULAS: readonly [
     "ABS",

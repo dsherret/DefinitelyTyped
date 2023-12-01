@@ -27,10 +27,21 @@ function testVerifyFunc3(i: string, p: Profile, cb: VerifyCallback) {
     cb(new Error("Not implemented"));
 }
 
-function testVerifyFunc4(i: string, p: Profile, ctx: object, cb: VerifyCallback) {
+function testVerifyFunc4(
+    i: string,
+    p: Profile,
+    ctx: object,
+    cb: VerifyCallback,
+) {
     cb(new Error("Not Implemented"));
 }
-function testVerifyFunc5(i: string, p: Profile, ctx: object, _idToken: string | object, cb: VerifyCallback) {
+function testVerifyFunc5(
+    i: string,
+    p: Profile,
+    ctx: object,
+    _idToken: string | object,
+    cb: VerifyCallback,
+) {
     cb(new Error("Not implemented"));
 }
 
@@ -73,11 +84,22 @@ function testVerifyFunc9(
     cb(new Error("Not implemented"));
 }
 
-function testVerifyFuncReq4(r: Request, i: string, p: Profile, cb: VerifyCallback) {
+function testVerifyFuncReq4(
+    r: Request,
+    i: string,
+    p: Profile,
+    cb: VerifyCallback,
+) {
     cb(new Error("Not implemented"));
 }
 
-function testVerifyFuncReq5(r: Request, i: string, p: Profile, ctx: object, cb: VerifyCallback) {
+function testVerifyFuncReq5(
+    r: Request,
+    i: string,
+    p: Profile,
+    ctx: object,
+    cb: VerifyCallback,
+) {
     cb(new Error("Not Implemented"));
 }
 function testVerifyFuncReq6(
@@ -133,7 +155,10 @@ function testVerifyFuncReq10(
     cb(new Error("Not implemented"));
 }
 
-let strat: OpenIDConnectStrategy = new OpenIDConnectStrategy(opts, testVerifyFunc3);
+let strat: OpenIDConnectStrategy = new OpenIDConnectStrategy(
+    opts,
+    testVerifyFunc3,
+);
 strat = new OpenIDConnectStrategy(opts, testVerifyFunc4);
 strat = new OpenIDConnectStrategy(opts, testVerifyFunc5);
 strat = new OpenIDConnectStrategy(opts, testVerifyFunc7);
@@ -147,14 +172,38 @@ strat = new OpenIDConnectStrategy(opts, testVerifyFuncReq9);
 strat = new OpenIDConnectStrategy(opts, testVerifyFuncReq10);
 
 const authErr1 = new AuthorizationError("Description", "invalid_request");
-const authErr2 = new AuthorizationError("Description", "invalid_request", undefined);
-const authErr3 = new AuthorizationError("Description", "invalid_request", undefined, 500);
-const authErr4 = new AuthorizationError("Description", "invalid_request", "some_random_uri", 500);
+const authErr2 = new AuthorizationError(
+    "Description",
+    "invalid_request",
+    undefined,
+);
+const authErr3 = new AuthorizationError(
+    "Description",
+    "invalid_request",
+    undefined,
+    500,
+);
+const authErr4 = new AuthorizationError(
+    "Description",
+    "invalid_request",
+    "some_random_uri",
+    500,
+);
 
 const tokenErr1 = new TokenError("undefined");
 const tokenErr2 = new TokenError("undefined", "invalid_request");
-const tokenErr3 = new TokenError("undefined", "invalid_request", undefined, 500);
-const tokenErr4 = new TokenError("undefined", "invalid_request", "some_random_uri", 500);
+const tokenErr3 = new TokenError(
+    "undefined",
+    "invalid_request",
+    undefined,
+    500,
+);
+const tokenErr4 = new TokenError(
+    "undefined",
+    "invalid_request",
+    "some_random_uri",
+    500,
+);
 
 const intErr1 = new InternalOAuthError("Hello", new Error("Hello Error"));
 

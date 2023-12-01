@@ -1,4 +1,9 @@
-export { Accordion, AccordionContent, AccordionItem, AccordionTitle } from "./components/accordion";
+export {
+    Accordion,
+    AccordionContent,
+    AccordionItem,
+    AccordionTitle,
+} from "./components/accordion";
 export { Badge } from "./components/badge";
 export { BreadcrumbItem, Breadcrumbs } from "./components/breadcrumbs";
 export { Button, Link } from "./components/button";
@@ -26,13 +31,34 @@ export {
     ProgressMeterText,
     ProgressMeterWithText,
 } from "./components/progress-bar";
-export { MenuIcon, ResponsiveNavigation, TitleBar, TitleBarTitle } from "./components/responsive";
+export {
+    MenuIcon,
+    ResponsiveNavigation,
+    TitleBar,
+    TitleBarTitle,
+} from "./components/responsive";
 export { Reveal } from "./components/reveal";
-export { Slider, SliderFill, SliderHandle, TwoHandleSlider } from "./components/slider";
-export { Switch, SwitchActive, SwitchInactive, SwitchInput, SwitchPaddle } from "./components/switch";
+export {
+    Slider,
+    SliderFill,
+    SliderHandle,
+    TwoHandleSlider,
+} from "./components/slider";
+export {
+    Switch,
+    SwitchActive,
+    SwitchInactive,
+    SwitchInput,
+    SwitchPaddle,
+} from "./components/switch";
 export { TabItem, TabPanel, Tabs, TabsContent } from "./components/tabs";
 export { Thumbnail, ThumbnailLink } from "./components/thumbnail";
-export { TopBar, TopBarLeft, TopBarRight, TopBarTitle } from "./components/top-bar";
+export {
+    TopBar,
+    TopBarLeft,
+    TopBarRight,
+    TopBarTitle,
+} from "./components/top-bar";
 export { Cell, Grid, GridContainer } from "./components/xy-grid";
 export {
     Alignments,

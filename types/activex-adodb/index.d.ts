@@ -635,7 +635,11 @@ declare namespace ADODB {
          * * If the command specifies a row-returning query, then the method will return a new read-only, forward-only **Recordset** object with the results.
          * * If the command isn't intended to return results (e.g. an `UPDATE` statement), a closed empty **Recordset** will be returned.
          */
-        Execute(RecordsAffected?: undefined, Parameters?: SafeArray, Options?: number): Recordset | null;
+        Execute(
+            RecordsAffected?: undefined,
+            Parameters?: SafeArray,
+            Options?: number,
+        ): Recordset | null;
         Name: string;
         NamedParameters: boolean;
         readonly Parameters: Parameters;
@@ -686,14 +690,22 @@ declare namespace ADODB {
          * @param Password [Password='']
          * @param Options [Options=-1]
          */
-        Open(ConnectionString?: string, UserID?: string, Password?: string, Options?: number): void;
+        Open(
+            ConnectionString?: string,
+            UserID?: string,
+            Password?: string,
+            Options?: number,
+        ): void;
 
         /**
          * Returns a Recordset object that contains schema information
          * @param Schema Type of schema query to run
          * @param Restrictions A SafeArray of query constraints; depends on the [type of the schema query](https://msdn.microsoft.com/en-us/library/jj249359.aspx)
          */
-        OpenSchema(Schema: SchemaEnum, Restrictions?: SafeArray<string>): Recordset;
+        OpenSchema(
+            Schema: SchemaEnum,
+            Restrictions?: SafeArray<string>,
+        ): Recordset;
 
         /**
          * Returns a Recordset object that contains schema information, for a provider-specific schema query type
@@ -758,7 +770,12 @@ declare namespace ADODB {
          * @param DefinedSize [DefinedSize=0]
          * @param Attrib [Attrib=-1]
          */
-        _Append(Name: string, Type: DataTypeEnum, DefinedSize?: number, Attrib?: FieldAttributeEnum): void;
+        _Append(
+            Name: string,
+            Type: DataTypeEnum,
+            DefinedSize?: number,
+            Attrib?: FieldAttributeEnum,
+        ): void;
 
         /**
          * @param DefinedSize [DefinedSize=0]
@@ -970,7 +987,12 @@ declare namespace ADODB {
          * @param SkipRecords [SkipRecords=0]
          * @param SearchDirection [SearchDirection=1]
          */
-        Find(Criteria: string, SkipRecords?: number, SearchDirection?: SearchDirectionEnum, Start?: Bookmark): void;
+        Find(
+            Criteria: string,
+            SkipRecords?: number,
+            SearchDirection?: SearchDirectionEnum,
+            Start?: Bookmark,
+        ): void;
 
         /** @param Rows [Rows=-1] */
         GetRows(
@@ -997,7 +1019,10 @@ declare namespace ADODB {
         LockType: LockTypeEnum;
         MarshalOptions: MarshalOptionsEnum;
         MaxRecords: number;
-        Move(NumRecords: number, Start?: string | Bookmark | BookmarkEnum): void;
+        Move(
+            NumRecords: number,
+            Start?: string | Bookmark | BookmarkEnum,
+        ): void;
         MoveFirst(): void;
         MoveLast(): void;
         MoveNext(): void;
@@ -1047,7 +1072,10 @@ declare namespace ADODB {
         Resync(AffectRecords?: AffectEnum, ResyncValues?: ResyncEnum): void;
 
         /** @param PersistFormat [PersistFormat=0] */
-        Save(Destination: string | Stream, PersistFormat?: PersistFormatEnum): void;
+        Save(
+            Destination: string | Stream,
+            PersistFormat?: PersistFormatEnum,
+        ): void;
 
         /**
          * @param SeekOption [SeekOption=1]
@@ -1199,7 +1227,11 @@ interface ActiveXObject {
     ): void;
     on(
         obj: ADODB.Connection,
-        event: "CommitTransComplete" | "ConnectComplete" | "InfoMessage" | "RollbackTransComplete",
+        event:
+            | "CommitTransComplete"
+            | "ConnectComplete"
+            | "InfoMessage"
+            | "RollbackTransComplete",
         argNames: ["pError", "adStatus", "pConnection"],
         handler: (
             this: ADODB.Connection,
@@ -1216,7 +1248,10 @@ interface ActiveXObject {
         argNames: ["adStatus", "pConnection"],
         handler: (
             this: ADODB.Connection,
-            parameter: { adStatus: ADODB.EventStatusEnum; readonly pConnection: ADODB.Connection },
+            parameter: {
+                adStatus: ADODB.EventStatusEnum;
+                readonly pConnection: ADODB.Connection;
+            },
         ) => void,
     ): void;
     on(
@@ -1232,13 +1267,19 @@ interface ActiveXObject {
         obj: ADODB.Connection,
         event: "WillConnect",
         argNames: ADODB.EventHelperTypes.Connection_WillConnect_ArgNames,
-        handler: (this: ADODB.Connection, parameter: ADODB.EventHelperTypes.Connection_WillConnect_Parameter) => void,
+        handler: (
+            this: ADODB.Connection,
+            parameter: ADODB.EventHelperTypes.Connection_WillConnect_Parameter,
+        ) => void,
     ): void;
     on(
         obj: ADODB.Connection,
         event: "WillExecute",
         argNames: ADODB.EventHelperTypes.Connection_WillExecute_ArgNames,
-        handler: (this: ADODB.Connection, parameter: ADODB.EventHelperTypes.Connection_WillExecute_Parameter) => void,
+        handler: (
+            this: ADODB.Connection,
+            parameter: ADODB.EventHelperTypes.Connection_WillExecute_Parameter,
+        ) => void,
     ): void;
     on(
         obj: ADODB.Recordset,
@@ -1246,7 +1287,11 @@ interface ActiveXObject {
         argNames: ["fMoreData", "adStatus", "pRecordset"],
         handler: (
             this: ADODB.Recordset,
-            parameter: { fMoreData: boolean; adStatus: ADODB.EventStatusEnum; readonly pRecordset: ADODB.Recordset },
+            parameter: {
+                fMoreData: boolean;
+                adStatus: ADODB.EventStatusEnum;
+                readonly pRecordset: ADODB.Recordset;
+            },
         ) => void,
     ): void;
     on(
@@ -1361,7 +1406,12 @@ interface ActiveXObject {
             },
         ) => void,
     ): void;
-    set(obj: ADODB.Recordset, propertyName: "Collect", parameterTypes: [any], newValue: any): void;
+    set(
+        obj: ADODB.Recordset,
+        propertyName: "Collect",
+        parameterTypes: [any],
+        newValue: any,
+    ): void;
 }
 
 interface ActiveXObjectNameMap {

@@ -1,7 +1,17 @@
-import { ElementCreatorOptions, ElementFactory, StripeElement } from "./element";
+import {
+    ElementCreatorOptions,
+    ElementFactory,
+    StripeElement,
+} from "./element";
 import { StripePaymentOptions, StripePaymentRequest } from "./payment";
 import { SourceData, SourceResult } from "./source";
-import { BankTokenData, IBANTokenData, PiiTokenData, TokenData, TokenResult } from "./token";
+import {
+    BankTokenData,
+    IBANTokenData,
+    PiiTokenData,
+    TokenData,
+    TokenResult,
+} from "./token";
 
 export interface StripeJS {
     /**
@@ -54,8 +64,14 @@ export interface StripeJS {
      *
      * @return an object containing the generated token or an error
      */
-    createToken(element: StripeElement, data?: TokenData | IBANTokenData): Promise<TokenResult>;
-    createToken(type: "bank_account", data: BankTokenData): Promise<TokenResult>;
+    createToken(
+        element: StripeElement,
+        data?: TokenData | IBANTokenData,
+    ): Promise<TokenResult>;
+    createToken(
+        type: "bank_account",
+        data: BankTokenData,
+    ): Promise<TokenResult>;
     createToken(type: "pii", data: PiiTokenData): Promise<TokenResult>;
 
     /**
@@ -69,7 +85,10 @@ export interface StripeJS {
      *
      * @return an object containing the generated Source or an error
      */
-    createSource(element: StripeElement, data: SourceData): Promise<SourceResult>;
+    createSource(
+        element: StripeElement,
+        data: SourceData,
+    ): Promise<SourceResult>;
     createSource(data: SourceData): Promise<SourceResult>;
 
     /**
@@ -81,7 +100,13 @@ export interface StripeJS {
      *
      * @return an object containing the generated Source or an error
      */
-    retrieveSource({ id, client_secret }: { id: string; client_secret: string }): Promise<SourceResult>;
+    retrieveSource({
+        id,
+        client_secret,
+    }: {
+        id: string;
+        client_secret: string;
+    }): Promise<SourceResult>;
 }
 
 export interface StripeConfigOptions {

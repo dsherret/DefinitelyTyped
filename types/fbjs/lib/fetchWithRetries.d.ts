@@ -2,7 +2,10 @@
  * Makes a POST request to the server with the given data as the payload.
  * Automatic retries are done based on the values in `retryDelays`.
  */
-declare function fetchWithRetries(uri: string, initWithRetries?: fetchWithRetries.InitWithRetries | null): Promise<any>;
+declare function fetchWithRetries(
+    uri: string,
+    initWithRetries?: fetchWithRetries.InitWithRetries | null,
+): Promise<any>;
 
 declare namespace fetchWithRetries {
     interface InitWithRetries {

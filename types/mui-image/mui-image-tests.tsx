@@ -6,5 +6,12 @@ import * as React from "react";
         console.log("loaded!");
     }
 
-    return <Image src="https://picsum.photos/id/674/2000" width="50vw" onLoad={onLoad} title="Image Title" />;
+    return (
+        <Image
+            src="https://picsum.photos/id/674/2000"
+            width="50vw"
+            onLoad={onLoad}
+            title="Image Title"
+        />
+    );
 })();

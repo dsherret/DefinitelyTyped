@@ -14,27 +14,28 @@ logfmt2.log({ foo: "bar" });
 logfmt.log({ foo: "bar" });
 
 logfmt.stringify({ foo: "bar", a: 14, baz: "hello kitty" });
-const parsed = logfmt.parse("foo=bar a=14 baz=\"hello kitty\" cool%story=bro f %^asdf code=H12");
+const parsed = logfmt.parse(
+    'foo=bar a=14 baz="hello kitty" cool%story=bro f %^asdf code=H12',
+);
 
 parsed.something === true || false || "a string" || null || undefined;
 
 process.stdin.pipe(logfmt.streamParser());
 
-process.stdin
-    .pipe(logfmt.streamStringify())
-    .pipe(process.stdout);
+process.stdin.pipe(logfmt.streamStringify()).pipe(process.stdout);
 
-process.stdin
-    .pipe(logfmt.streamParser())
-    .pipe(through((object) => {
+process.stdin.pipe(logfmt.streamParser()).pipe(
+    through((object) => {
         console.log(object);
-    }));
+    }),
+);
 
 http.createServer((req, res) => {
-    req.pipe(logfmt.streamParser())
-        .pipe(through((object) => {
+    req.pipe(logfmt.streamParser()).pipe(
+        through((object) => {
             console.log(object);
-        }));
+        }),
+    );
 
     res.writeHead(200, { "Content-Type": "text/plain" });
     res.end("OK");
@@ -45,9 +46,11 @@ app.use(logfmt.bodyParserStream());
 app.post("/logs", (req, res) => {
     if (!req.body) return res.send("OK");
 
-    req.body.pipe(through((line) => {
-        console.dir(line);
-    }));
+    req.body.pipe(
+        through((line) => {
+            console.dir(line);
+        }),
+    );
 
     res.send("OK");
 });
@@ -94,26 +97,34 @@ logfmt.error(new Error("test error"));
 
 const app3 = express();
 app3.use(logfmt.requestLogger());
-app3.use(logfmt.requestLogger({ immediate: true }, (req, _res) => {
-    return {
-        method: req.method,
-    };
-}));
-app3.use(logfmt.requestLogger({ elapsed: "request.time" }, (req, _res) => {
-    return {
-        "request.method": req.method,
-    };
-}));
-app3.use(logfmt.requestLogger((req, _res) => {
-    return {
-        method: req.method,
-    };
-}));
-app3.use(logfmt.requestLogger((req, res) => {
-    const data = logfmt.requestLogger.commonFormatter(req, res);
-    return {
-        ip: data.ip,
-        time: data.time,
-        foo: "bar",
-    };
-}));
+app3.use(
+    logfmt.requestLogger({ immediate: true }, (req, _res) => {
+        return {
+            method: req.method,
+        };
+    }),
+);
+app3.use(
+    logfmt.requestLogger({ elapsed: "request.time" }, (req, _res) => {
+        return {
+            "request.method": req.method,
+        };
+    }),
+);
+app3.use(
+    logfmt.requestLogger((req, _res) => {
+        return {
+            method: req.method,
+        };
+    }),
+);
+app3.use(
+    logfmt.requestLogger((req, res) => {
+        const data = logfmt.requestLogger.commonFormatter(req, res);
+        return {
+            ip: data.ip,
+            time: data.time,
+            foo: "bar",
+        };
+    }),
+);

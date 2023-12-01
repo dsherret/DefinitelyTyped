@@ -2,7 +2,11 @@ export class CanvasDriver extends VideoNullDriver {
     private mCtx;
     getRenderer(type: any, owner: any): any;
     render(gameObject: any, renderTexture?: any, customTransform?: any): void;
-    renderObject(child: GameObject, session: RenderSession, parentRenderer: Renderer): void;
+    renderObject(
+        child: GameObject,
+        session: RenderSession,
+        parentRenderer: Renderer,
+    ): void;
     private __createCanvas;
     drawTexture(texture: any): void;
     drawTextureWithOffset(texture: any, ox: any, oy: any): void;

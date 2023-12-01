@@ -26,4 +26,6 @@ export = thunky;
  *   console.log(num); // prints the same random number as above
  * });
  */
-declare function thunky<TFn extends (callback: (...args: any[]) => any) => void>(fn: TFn): TFn;
+declare function thunky<
+    TFn extends (callback: (...args: any[]) => any) => void,
+>(fn: TFn): TFn;

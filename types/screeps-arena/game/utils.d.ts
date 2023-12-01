@@ -9,7 +9,13 @@ declare module "game/utils" {
         TERRAIN_SWAMP,
         TERRAIN_WALL,
     } from "game/constants";
-    import { _Constructor, ConstructionSite, GameObject, Id, RoomPosition } from "game/prototypes";
+    import {
+        _Constructor,
+        ConstructionSite,
+        GameObject,
+        Id,
+        RoomPosition,
+    } from "game/prototypes";
     import { FindPathOpts, PathStep } from "game/path-finder";
 
     /**

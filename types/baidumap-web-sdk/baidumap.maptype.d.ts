@@ -27,7 +27,11 @@ SOFTWARE.
 /// <reference path="./baidumap.maplayer.d.ts" />
 declare namespace BMap {
     class MapType {
-        constructor(name: string, layers: TileLayer | TileLayer[], opts?: MapTypeOptions);
+        constructor(
+            name: string,
+            layers: TileLayer | TileLayer[],
+            opts?: MapTypeOptions,
+        );
         getName(): string;
         getTileLayer(): TileLayer;
         getMinZoom(): number;

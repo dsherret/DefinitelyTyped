@@ -1,7 +1,7 @@
 /*
  * Taken from the tests section on jSignature
  */
-$(document).ready(function() {
+$(document).ready(function () {
     var $sigdiv = $("#signature");
 
     $sigdiv.jSignature();

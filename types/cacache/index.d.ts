@@ -68,15 +68,33 @@ export namespace get {
     }
 
     namespace copy {
-        function byDigest(cachePath: string, hash: string, dest: string, opts?: Options): Promise<string>;
+        function byDigest(
+            cachePath: string,
+            hash: string,
+            dest: string,
+            opts?: Options,
+        ): Promise<string>;
     }
 
     namespace stream {
-        function byDigest(cachePath: string, hash: string, opts?: Options): NodeJS.ReadableStream;
+        function byDigest(
+            cachePath: string,
+            hash: string,
+            opts?: Options,
+        ): NodeJS.ReadableStream;
     }
 
-    function byDigest(cachePath: string, hash: string, opts?: Options): Promise<string>;
-    function copy(cachePath: string, key: string, dest: string, opts?: Options): Promise<CacheObject>;
+    function byDigest(
+        cachePath: string,
+        hash: string,
+        opts?: Options,
+    ): Promise<string>;
+    function copy(
+        cachePath: string,
+        key: string,
+        dest: string,
+        opts?: Options,
+    ): Promise<CacheObject>;
 
     /**
      * Looks up a Subresource Integrity hash in the cache. If content exists
@@ -85,8 +103,14 @@ export namespace get {
      * content as size. If no content exists for this integrity, it will return
      * `false`.
      */
-    function hasContent(cachePath: string, hash: string): Promise<HasContentObject | false>;
-    function hasContentnc(cachePath: string, hash: string): HasContentObject | false;
+    function hasContent(
+        cachePath: string,
+        hash: string,
+    ): Promise<HasContentObject | false>;
+    function hasContentnc(
+        cachePath: string,
+        hash: string,
+    ): HasContentObject | false;
 
     /**
      * Looks up `key` in the cache index, returning information about the entry
@@ -108,7 +132,11 @@ export namespace get {
      * entirely. This version does not emit the `metadata` and `integrity`
      * events at all.
      */
-    function stream(cachePath: string, key: string, opts?: Options): NodeJS.ReadableStream;
+    function stream(
+        cachePath: string,
+        key: string,
+        opts?: Options,
+    ): NodeJS.ReadableStream;
 }
 
 export namespace ls {
@@ -190,7 +218,11 @@ export namespace put {
      * Emits an `integrity` event with the digest of written contents when it
      * succeeds.
      */
-    function stream(cachePath: string, key: string, opts?: Options): NodeJS.WritableStream;
+    function stream(
+        cachePath: string,
+        key: string,
+        opts?: Options,
+    ): NodeJS.WritableStream;
 }
 
 export namespace rm {
@@ -344,7 +376,11 @@ export function clearMemoized(): Record<string, CacheObject>;
  * This function loads the entire cache entry into memory before returning it.
  * If you're dealing with Very Large data, consider using `get.stream` instead.
  */
-export function get(cachePath: string, key: string, options?: get.Options): Promise<GetCacheObject>;
+export function get(
+    cachePath: string,
+    key: string,
+    options?: get.Options,
+): Promise<GetCacheObject>;
 
 /**
  * Lists info for all entries currently in the cache as a single large object.
@@ -358,7 +394,12 @@ export function ls(cachePath: string): Promise<ls.Cache>;
  * a digest (generated according to `opts.algorithms`) after the cache entry has
  * been successfully written.
  */
-export function put(cachePath: string, key: string, data: any, opts?: put.Options): Promise<string>;
+export function put(
+    cachePath: string,
+    key: string,
+    data: any,
+    opts?: put.Options,
+): Promise<string>;
 
 /**
  * Removes the index entry for `key`. Content will still be accessible if

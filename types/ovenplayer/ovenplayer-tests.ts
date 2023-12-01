@@ -118,16 +118,20 @@ player.load([
         adTagUrl: "https://pubads.g.doubleclick.net/gampad/ads?...",
         image: "https://path.to/your_video_thumbnail.jpeg",
         duration: 7343,
-        sources: [{
-            type: "mp4",
-            file: "https://path.to/your_video",
-            label: "360P",
-        }],
-        tracks: [{
-            kind: "captions",
-            file: "https://path.to/your_caption.vtt",
-            label: "KO vtt",
-        }],
+        sources: [
+            {
+                type: "mp4",
+                file: "https://path.to/your_video",
+                label: "360P",
+            },
+        ],
+        tracks: [
+            {
+                kind: "captions",
+                file: "https://path.to/your_caption.vtt",
+                label: "KO vtt",
+            },
+        ],
     },
     {
         title: "02",
@@ -146,11 +150,13 @@ player.load([
                 label: "360P DASH",
             },
         ],
-        tracks: [{
-            kind: "captions",
-            file: "https://path.to/your_caption2.vtt",
-            label: "KO vtt",
-        }],
+        tracks: [
+            {
+                kind: "captions",
+                file: "https://path.to/your_caption2.vtt",
+                label: "KO vtt",
+            },
+        ],
     },
 ]);
 
@@ -169,7 +175,7 @@ const videoElement: HTMLVideoElement = player.getMediaElement();
 player.on("ready", () => {});
 
 // once (evnetName: 'stateChanged', callback: (eventData: OvenPlayerEvents['stateChanged']) => void): void;
-player.once("stateChanged", data => {});
+player.once("stateChanged", (data) => {});
 
 // off(eventName: keyof OvenPlayerEvents): void;
 player.off("ready");

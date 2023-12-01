@@ -1,13 +1,19 @@
 import BigNumber from "bignumber.js";
 
-export type JSONRPCErrorCallback = (err: Error | null, result?: JSONRPCResponsePayload) => void;
+export type JSONRPCErrorCallback = (
+    err: Error | null,
+    result?: JSONRPCResponsePayload,
+) => void;
 
 /**
  * Do not create your own provider. Use an existing provider from a Web3 or ProviderEngine library
  * Read more about Providers in the 0x wiki.
  */
 export interface Provider {
-    sendAsync(payload: JSONRPCRequestPayload, callback: JSONRPCErrorCallback): void;
+    sendAsync(
+        payload: JSONRPCRequestPayload,
+        callback: JSONRPCErrorCallback,
+    ): void;
 }
 
 export type ContractAbi = AbiDefinition[];
@@ -242,7 +248,8 @@ export interface DecodedLogArgs {
     [argName: string]: ContractEventArg;
 }
 
-export interface LogWithDecodedArgs<ArgsType extends DecodedLogArgs> extends DecodedLogEntry<ArgsType> {}
+export interface LogWithDecodedArgs<ArgsType extends DecodedLogArgs>
+    extends DecodedLogEntry<ArgsType> {}
 export type RawLog = LogEntry;
 
 export enum BlockParamLiteral {

@@ -1,6 +1,7 @@
 import * as angular from "angular";
 
-export type ILocalStorageServiceProvider = angular.local.storage.ILocalStorageServiceProvider;
+export type ILocalStorageServiceProvider =
+    angular.local.storage.ILocalStorageServiceProvider;
 export type ILocalStorageService = angular.local.storage.ILocalStorageService;
 export type ICookie = angular.local.storage.ICookie;
 
@@ -28,14 +29,20 @@ declare module "angular" {
              * If localStorage is not supported, the library will default to cookies instead. This behavior can be disabled
              * default: true
              */
-            setDefaultToCookie(shouldDefault: boolean): ILocalStorageServiceProvider;
+            setDefaultToCookie(
+                shouldDefault: boolean,
+            ): ILocalStorageServiceProvider;
             /**
              * Setter for cookie config
              * @param exp number of days before cookies expire (0 = does not expire). default: 30
              * @param path the web path the cookie represents. default: '/'
              * @param secure to store cookies as secure. default: false
              */
-            setStorageCookie(exp: number, path: string, secure: boolean): ILocalStorageServiceProvider;
+            setStorageCookie(
+                exp: number,
+                path: string,
+                secure: boolean,
+            ): ILocalStorageServiceProvider;
             /**
              * Set the cookie domain, since this runs inside a the config() block,
              * only providers and constants can be injected.
@@ -43,13 +50,18 @@ declare module "angular" {
              * use a hardcoded string or window.location.
              * No default value
              */
-            setStorageCookieDomain(domain: string): ILocalStorageServiceProvider;
+            setStorageCookieDomain(
+                domain: string,
+            ): ILocalStorageServiceProvider;
             /**
              * Send signals for each of the following actions:
              * @param setItem default: true
              * @param removeItem default: false
              */
-            setNotify(setItem: boolean, removeItem: boolean): ILocalStorageServiceProvider;
+            setNotify(
+                setItem: boolean,
+                removeItem: boolean,
+            ): ILocalStorageServiceProvider;
         }
 
         // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -127,13 +139,22 @@ declare module "angular" {
              * If local storage is not supported, use cookies instead.
              * Note: Optionally takes a regular expression string and removes matching.
              */
-            clearAll(regularExpression?: RegExp, storageType?: StorageType): boolean;
+            clearAll(
+                regularExpression?: RegExp,
+                storageType?: StorageType,
+            ): boolean;
             /**
              * Bind $scope key to localStorageService.
              * Usage: localStorageService.bind(scope, property, value[optional], key[optional])
              * Returns: deregistration function for this listener.
              */
-            bind(scope: IScope, property: string, value?: any, key?: string, storageType?: StorageType): () => void;
+            bind(
+                scope: IScope,
+                property: string,
+                value?: any,
+                key?: string,
+                storageType?: StorageType,
+            ): () => void;
             /**
              * Return the derive key
              */

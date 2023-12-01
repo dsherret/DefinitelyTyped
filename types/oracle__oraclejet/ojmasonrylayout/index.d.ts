@@ -5,14 +5,19 @@ import {
     JetElementCustomEvent,
     JetSetPropertyType,
 } from "..";
-export interface ojMasonryLayout extends baseComponent<ojMasonryLayoutSettableProperties> {
+export interface ojMasonryLayout
+    extends baseComponent<ojMasonryLayoutSettableProperties> {
     reorderHandle: string | null;
     translations: {
         labelCut?: string | undefined;
         labelPasteAfter?: string | undefined;
         labelPasteBefore?: string | undefined;
     };
-    onReorderHandleChanged: ((event: JetElementCustomEvent<ojMasonryLayout["reorderHandle"]>) => any) | null;
+    onReorderHandleChanged:
+        | ((
+              event: JetElementCustomEvent<ojMasonryLayout["reorderHandle"]>,
+          ) => any)
+        | null;
     onOjAnimateEnd: ((event: ojMasonryLayout.ojAnimateEnd) => any) | null;
     onOjAnimateStart: ((event: ojMasonryLayout.ojAnimateStart) => any) | null;
     onOjBeforeInsert: ((event: ojMasonryLayout.ojBeforeInsert) => any) | null;
@@ -28,14 +33,23 @@ export interface ojMasonryLayout extends baseComponent<ojMasonryLayoutSettablePr
         listener: (this: HTMLElement, ev: ojMasonryLayoutEventMap[T]) => any,
         useCapture?: boolean,
     ): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
-    getProperty<T extends keyof ojMasonryLayoutSettableProperties>(property: T): ojMasonryLayout[T];
+    addEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        useCapture?: boolean,
+    ): void;
+    getProperty<T extends keyof ojMasonryLayoutSettableProperties>(
+        property: T,
+    ): ojMasonryLayout[T];
     getProperty(property: string): any;
     setProperty<T extends keyof ojMasonryLayoutSettableProperties>(
         property: T,
         value: ojMasonryLayoutSettableProperties[T],
     ): void;
-    setProperty<T extends string>(property: T, value: JetSetPropertyType<T, ojMasonryLayoutSettableProperties>): void;
+    setProperty<T extends string>(
+        property: T,
+        value: JetSetPropertyType<T, ojMasonryLayoutSettableProperties>,
+    ): void;
     setProperties(properties: ojMasonryLayoutSettablePropertiesLenient): void;
     insertTile(selector: string, index: number): void;
     refresh(): void;
@@ -43,103 +57,87 @@ export interface ojMasonryLayout extends baseComponent<ojMasonryLayoutSettablePr
     resizeTile(selector: string, sizeStyleClass: string): void;
 }
 export namespace ojMasonryLayout {
-    interface ojAnimateEnd extends
-        CustomEvent<{
+    interface ojAnimateEnd
+        extends CustomEvent<{
             action: string;
             element: Element;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojAnimateStart extends
-        CustomEvent<{
+        }> {}
+    interface ojAnimateStart
+        extends CustomEvent<{
             action: string;
             element: Element;
             endCallback: () => void;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojBeforeInsert extends
-        CustomEvent<{
+        }> {}
+    interface ojBeforeInsert
+        extends CustomEvent<{
             tile: Element;
             index: number;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojBeforeRemove extends
-        CustomEvent<{
+        }> {}
+    interface ojBeforeRemove
+        extends CustomEvent<{
             tile: Element;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojBeforeReorder extends
-        CustomEvent<{
+        }> {}
+    interface ojBeforeReorder
+        extends CustomEvent<{
             tile: Element;
             fromIndex: number;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojBeforeResize extends
-        CustomEvent<{
+        }> {}
+    interface ojBeforeResize
+        extends CustomEvent<{
             tile: Element;
             previousSizeStyleClass: string;
             sizeStyleClass: string;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojInsert extends
-        CustomEvent<{
+        }> {}
+    interface ojInsert
+        extends CustomEvent<{
             tile: Element;
             index: number;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojRemove extends
-        CustomEvent<{
+        }> {}
+    interface ojRemove
+        extends CustomEvent<{
             tile: Element;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojReorder extends
-        CustomEvent<{
+        }> {}
+    interface ojReorder
+        extends CustomEvent<{
             tile: Element;
             fromIndex: number;
             toIndex: number;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojResize extends
-        CustomEvent<{
+        }> {}
+    interface ojResize
+        extends CustomEvent<{
             tile: Element;
             previousSizeStyleClass: string;
             sizeStyleClass: string;
             [propName: string]: any;
-        }>
-    {
-    }
+        }> {}
 }
-export interface ojMasonryLayoutEventMap extends baseComponentEventMap<ojMasonryLayoutSettableProperties> {
-    "ojAnimateEnd": ojMasonryLayout.ojAnimateEnd;
-    "ojAnimateStart": ojMasonryLayout.ojAnimateStart;
-    "ojBeforeInsert": ojMasonryLayout.ojBeforeInsert;
-    "ojBeforeRemove": ojMasonryLayout.ojBeforeRemove;
-    "ojBeforeReorder": ojMasonryLayout.ojBeforeReorder;
-    "ojBeforeResize": ojMasonryLayout.ojBeforeResize;
-    "ojInsert": ojMasonryLayout.ojInsert;
-    "ojRemove": ojMasonryLayout.ojRemove;
-    "ojReorder": ojMasonryLayout.ojReorder;
-    "ojResize": ojMasonryLayout.ojResize;
-    "reorderHandleChanged": JetElementCustomEvent<ojMasonryLayout["reorderHandle"]>;
+export interface ojMasonryLayoutEventMap
+    extends baseComponentEventMap<ojMasonryLayoutSettableProperties> {
+    ojAnimateEnd: ojMasonryLayout.ojAnimateEnd;
+    ojAnimateStart: ojMasonryLayout.ojAnimateStart;
+    ojBeforeInsert: ojMasonryLayout.ojBeforeInsert;
+    ojBeforeRemove: ojMasonryLayout.ojBeforeRemove;
+    ojBeforeReorder: ojMasonryLayout.ojBeforeReorder;
+    ojBeforeResize: ojMasonryLayout.ojBeforeResize;
+    ojInsert: ojMasonryLayout.ojInsert;
+    ojRemove: ojMasonryLayout.ojRemove;
+    ojReorder: ojMasonryLayout.ojReorder;
+    ojResize: ojMasonryLayout.ojResize;
+    reorderHandleChanged: JetElementCustomEvent<
+        ojMasonryLayout["reorderHandle"]
+    >;
 }
-export interface ojMasonryLayoutSettableProperties extends baseComponentSettableProperties {
+export interface ojMasonryLayoutSettableProperties
+    extends baseComponentSettableProperties {
     reorderHandle: string | null;
     translations: {
         labelCut?: string | undefined;
@@ -147,6 +145,7 @@ export interface ojMasonryLayoutSettableProperties extends baseComponentSettable
         labelPasteBefore?: string | undefined;
     };
 }
-export interface ojMasonryLayoutSettablePropertiesLenient extends Partial<ojMasonryLayoutSettableProperties> {
+export interface ojMasonryLayoutSettablePropertiesLenient
+    extends Partial<ojMasonryLayoutSettableProperties> {
     [key: string]: any;
 }

@@ -14,7 +14,11 @@ type Options = Roles | (() => Promise<Roles>) | Promise<Roles>;
 
 declare class RBAC {
     constructor(opts: Options);
-    can(role: string | string[] | Roles[], operation: string, params?: object): Promise<boolean>;
+    can(
+        role: string | string[] | Roles[],
+        operation: string,
+        params?: object,
+    ): Promise<boolean>;
     static create(opts: Options): RBAC;
 }
 

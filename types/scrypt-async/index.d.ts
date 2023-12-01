@@ -15,10 +15,30 @@ declare namespace scrypt {
     }
 
     interface ScryptStatic {
-        (password: string, salt: string, options: Options, callback: CallbackFunc): void;
-        (password: number[], salt: string, options: Options, callback: CallbackFunc): void;
-        (password: string, salt: number[], options: Options, callback: CallbackFunc): void;
-        (password: number[], salt: number[], options: Options, callback: CallbackFunc): void;
+        (
+            password: string,
+            salt: string,
+            options: Options,
+            callback: CallbackFunc,
+        ): void;
+        (
+            password: number[],
+            salt: string,
+            options: Options,
+            callback: CallbackFunc,
+        ): void;
+        (
+            password: string,
+            salt: number[],
+            options: Options,
+            callback: CallbackFunc,
+        ): void;
+        (
+            password: number[],
+            salt: number[],
+            options: Options,
+            callback: CallbackFunc,
+        ): void;
 
         (
             password: string,
@@ -135,10 +155,38 @@ declare namespace scrypt {
             encoding: string,
         ): void;
 
-        (password: string, salt: string, logN: number, r: number, dkLen: number, callback: CallbackFunc): void;
-        (password: string, salt: number[], logN: number, r: number, dkLen: number, callback: CallbackFunc): void;
-        (password: number[], salt: string, logN: number, r: number, dkLen: number, callback: CallbackFunc): void;
-        (password: number[], salt: number[], logN: number, r: number, dkLen: number, callback: CallbackFunc): void;
+        (
+            password: string,
+            salt: string,
+            logN: number,
+            r: number,
+            dkLen: number,
+            callback: CallbackFunc,
+        ): void;
+        (
+            password: string,
+            salt: number[],
+            logN: number,
+            r: number,
+            dkLen: number,
+            callback: CallbackFunc,
+        ): void;
+        (
+            password: number[],
+            salt: string,
+            logN: number,
+            r: number,
+            dkLen: number,
+            callback: CallbackFunc,
+        ): void;
+        (
+            password: number[],
+            salt: number[],
+            logN: number,
+            r: number,
+            dkLen: number,
+            callback: CallbackFunc,
+        ): void;
     }
 }
 

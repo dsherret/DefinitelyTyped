@@ -36,7 +36,13 @@ import {
 import * as React from "react";
 
 <Airplane />; // $ExpectType Element
-<Airplane title="airplane" aria-label="label" tabIndex="0" fill="#fff" className="className" />; // $ExpectType Element
+<Airplane
+    title="airplane"
+    aria-label="label"
+    tabIndex="0"
+    fill="#fff"
+    className="className"
+/>; // $ExpectType Element
 <ClientFinancing_01 />; // $ExpectType Element
 <GlobalMarkets />; // $ExpectType Element
 <SolarField />; // $ExpectType Element

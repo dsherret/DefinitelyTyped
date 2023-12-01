@@ -2,7 +2,8 @@ import { Request } from "express";
 import OAuth2Strategy = require("passport-oauth2");
 
 declare namespace AppleStrategy {
-    interface AuthenticateOptionsBase extends Partial<OAuth2Strategy._StrategyOptionsBase> {
+    interface AuthenticateOptionsBase
+        extends Partial<OAuth2Strategy._StrategyOptionsBase> {
         authorizationURL?: string | undefined;
         tokenURL?: string | undefined;
         clientID: string;
@@ -31,7 +32,11 @@ declare namespace AppleStrategy {
         [key: string]: any;
     }
 
-    type VerifyCallback = (err?: Error | null, user?: object, info?: object) => void;
+    type VerifyCallback = (
+        err?: Error | null,
+        user?: object,
+        info?: object,
+    ) => void;
 
     type VerifyFunction = (
         accessToken: string,
@@ -55,10 +60,18 @@ declare namespace AppleStrategy {
 
 // @ts-ignore AppleStrategy's options type incompatible with OAuth2Strategy's options type
 declare class AppleStrategy extends OAuth2Strategy {
-    constructor(options: AppleStrategy.AuthenticateOptions, verify: AppleStrategy.VerifyFunction);
-    constructor(options: AppleStrategy.AuthenticateOptionsWithRequest, verify: AppleStrategy.VerifyFunctionWithRequest);
+    constructor(
+        options: AppleStrategy.AuthenticateOptions,
+        verify: AppleStrategy.VerifyFunction,
+    );
+    constructor(
+        options: AppleStrategy.AuthenticateOptionsWithRequest,
+        verify: AppleStrategy.VerifyFunctionWithRequest,
+    );
 
-    authorizationParams(options: object): AppleStrategy.AppleAuthorizationParams;
+    authorizationParams(
+        options: object,
+    ): AppleStrategy.AppleAuthorizationParams;
     name: "apple";
 }
 

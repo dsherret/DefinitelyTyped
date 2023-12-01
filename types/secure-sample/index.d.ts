@@ -15,4 +15,7 @@ export = secureSample;
  *
  * shuffle(sample(3, 10)) // [6, 2, 8]
  */
-declare function secureSample(sampleSize: number, populationSize: number): number[];
+declare function secureSample(
+    sampleSize: number,
+    populationSize: number,
+): number[];

@@ -8,7 +8,11 @@ declare class Tar {
         opts?: Tar.TarOptions,
         callback?: (out: Uint8Array) => any,
     ): Uint8Array;
-    append(filepath: string, input: string | Uint8Array, callback?: (out: Uint8Array) => any): Uint8Array;
+    append(
+        filepath: string,
+        input: string | Uint8Array,
+        callback?: (out: Uint8Array) => any,
+    ): Uint8Array;
     clear(): void;
 }
 

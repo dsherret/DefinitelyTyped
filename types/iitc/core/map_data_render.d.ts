@@ -47,7 +47,12 @@ export class Render {
      * having the guid, at least, allows the portal details to be loaded once it's selected. however,
      * no highlighters, portal level numbers, portal names, useful counts of portals, etc are possible
      */
-    createPlaceholderPortalEntity(guid: string, latE6: number, lngE6: number, team: "E" | "R" | "N"): void;
+    createPlaceholderPortalEntity(
+        guid: string,
+        latE6: number,
+        lngE6: number,
+        team: "E" | "R" | "N",
+    ): void;
 
     createPortalEntity(ent: Intel.PortalDetails): void;
     createFieldEntity(ent: Intel.FieldDetails): void;

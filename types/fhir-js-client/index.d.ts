@@ -74,7 +74,10 @@ declare namespace FHIR {
              * Resolve: (entries:Entry[],resolvedReferences:[index: string]: Resource) => { console.log(entries); console.log(resolvedReferences);}
              * Reject: (error:any) => { console.log(error); }
              */
-            fetchAllWithReferences(params: SearchParams, resolveParams: string[]): any;
+            fetchAllWithReferences(
+                params: SearchParams,
+                resolveParams: string[],
+            ): any;
 
             /**
              * GET BASEURL/_history?historyParams
@@ -211,26 +214,28 @@ declare namespace FHIR {
             /**
              * Addition filters to be applied on the history query. The object will be converted into query string parameters.
              */
-            params?: {
-                /**
-                 * To specify alternative response formats by their MIME-types.
-                 * This parameter allows a client to override the accept header value when it is unable to set it correctly due to internal limitations
-                 * (e.g. XSLT usage). For the _format parameter, the values xml, text/xml, application/xml, and application/fhir+xml SHALL be interpreted
-                 * to mean the XML format, the codes json, application/json and application/fhir+json SHALL be interpreted
-                 * to mean the JSON format, and the codes ttl and text/turtle SHALL be interpreted to mean the Turtle RDF format.
-                 * In addition, the values html and text/html are allowed.
-                 */
-                _format?: string | undefined;
-                /**
-                 * Type: dateTime    Only include resource versions that were current at some point during the time period specified
-                 * in the date time value (may be more than one)
-                 */
-                _at?: string | undefined;
-                /**
-                 * Making this interface extendable so that we can add more custom filter parameters
-                 */
-                [propName: string]: any;
-            } | undefined;
+            params?:
+                | {
+                      /**
+                       * To specify alternative response formats by their MIME-types.
+                       * This parameter allows a client to override the accept header value when it is unable to set it correctly due to internal limitations
+                       * (e.g. XSLT usage). For the _format parameter, the values xml, text/xml, application/xml, and application/fhir+xml SHALL be interpreted
+                       * to mean the XML format, the codes json, application/json and application/fhir+json SHALL be interpreted
+                       * to mean the JSON format, and the codes ttl and text/turtle SHALL be interpreted to mean the Turtle RDF format.
+                       * In addition, the values html and text/html are allowed.
+                       */
+                      _format?: string | undefined;
+                      /**
+                       * Type: dateTime    Only include resource versions that were current at some point during the time period specified
+                       * in the date time value (may be more than one)
+                       */
+                      _at?: string | undefined;
+                      /**
+                       * Making this interface extendable so that we can add more custom filter parameters
+                       */
+                      [propName: string]: any;
+                  }
+                | undefined;
         }
 
         interface HistoryParams extends CommonQueryFilters {
@@ -545,7 +550,10 @@ declare namespace FHIR {
              * @param property  The name of the property which is a codable concept
              * Returns a function to which you can pass code values and get a filtered array of observations.
              */
-            byCodes(observations: Resource | Resource[], ...property: string[]): (...codes: string[]) => Resource[];
+            byCodes(
+                observations: Resource | Resource[],
+                ...property: string[]
+            ): (...codes: string[]) => Resource[];
 
             /**
              * Split a set of observations based on codable concept properties. eg. code
@@ -553,7 +561,10 @@ declare namespace FHIR {
              * @param property The name of the property which is a codable concept
              * Returns an object with code values as index and array of observations as values
              */
-            byCode(observations: Resource | Resource[], property: string): ObservationsByCode;
+            byCode(
+                observations: Resource | Resource[],
+                property: string,
+            ): ObservationsByCode;
             /**
              * Helper method to convert units
              */
@@ -707,14 +718,20 @@ declare namespace FHIR {
              * @param callback Called once the SMART client is ready to be used.
              * @param errback Called when either the OAuth2 workflow has not been started on an error occured during the OAuth2 workflow.
              */
-            ready(callback?: (smart: SMARTClient) => void, errback?: (...args: any[]) => void): void;
+            ready(
+                callback?: (smart: SMARTClient) => void,
+                errback?: (...args: any[]) => void,
+            ): void;
 
             /**
              * Initiate the OAuth2 authorization workflow
              * @param params OAuth2 Configuration
              * @param errback Method which is triggered when an error occurs during the OAuth2 authorization workflow
              */
-            authorize(params: OAuth2Configuration, errback?: (...args: any[]) => void): void;
+            authorize(
+                params: OAuth2Configuration,
+                errback?: (...args: any[]) => void,
+            ): void;
 
             /**
              * Resolves the Authorization type of the FHIR server. Can be used to identify if a server supports SMART on FHIR.

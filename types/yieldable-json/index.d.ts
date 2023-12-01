@@ -4,7 +4,10 @@ export type Reviver = (key: number, value: any) => any;
 
 export type Replacer = (key: number, value: any) => any;
 
-export function stringifyAsync(data: object, callback: Callback<string>): () => void;
+export function stringifyAsync(
+    data: object,
+    callback: Callback<string>,
+): () => void;
 export function stringifyAsync(
     data: object,
     replacer_intensity_space: Replacer | any[] | null | number | string,
@@ -25,5 +28,14 @@ export function stringifyAsync(
 ): () => void;
 
 export function parseAsync(text: string, callback: Callback<object>): string;
-export function parseAsync(text: string, reviver_intensity: Reviver | number, callback: Callback<object>): string;
-export function parseAsync(text: string, reviver: Reviver, intensity: number, callback: Callback<object>): string;
+export function parseAsync(
+    text: string,
+    reviver_intensity: Reviver | number,
+    callback: Callback<object>,
+): string;
+export function parseAsync(
+    text: string,
+    reviver: Reviver,
+    intensity: number,
+    callback: Callback<object>,
+): string;

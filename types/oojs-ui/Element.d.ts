@@ -114,7 +114,9 @@ declare namespace OO.ui {
              * @param obj Object to get the document for
              * @return Document object
              */
-            getDocument(obj: JQuery | HTMLElement | Document | globalThis.Window): Document | null;
+            getDocument(
+                obj: JQuery | HTMLElement | Document | globalThis.Window,
+            ): Document | null;
 
             /**
              * Get the window of an element or document.
@@ -122,7 +124,9 @@ declare namespace OO.ui {
              * @param obj Context to get the window for
              * @return Window object
              */
-            getWindow(obj: JQuery | HTMLElement | Document | globalThis.Window): globalThis.Window;
+            getWindow(
+                obj: JQuery | HTMLElement | Document | globalThis.Window,
+            ): globalThis.Window;
 
             /**
              * Get the direction of an element or document.
@@ -130,7 +134,9 @@ declare namespace OO.ui {
              * @param obj Context to get the direction for
              * @return Text direction, either 'ltr' or 'rtl'
              */
-            getDir(obj: JQuery | HTMLElement | Document | globalThis.Window): Direction;
+            getDir(
+                obj: JQuery | HTMLElement | Document | globalThis.Window,
+            ): Direction;
 
             /**
              * Get the offset between two frames.
@@ -140,7 +146,11 @@ declare namespace OO.ui {
              * @param offset Offset to start with, used internally
              * @return Offset object, containing left and top properties
              */
-            getFrameOffset(from: globalThis.Window, to?: globalThis.Window, offset?: Coordinate): Coordinate;
+            getFrameOffset(
+                from: globalThis.Window,
+                to?: globalThis.Window,
+                offset?: Coordinate,
+            ): Coordinate;
 
             /**
              * Get the offset between two elements.
@@ -178,7 +188,10 @@ declare namespace OO.ui {
              * @param el Element from which the value was obtained
              * @return
              */
-            computeNormalizedScrollLeft(nativeOffset: number, el: HTMLElement | globalThis.Window): number;
+            computeNormalizedScrollLeft(
+                nativeOffset: number,
+                el: HTMLElement | globalThis.Window,
+            ): number;
 
             /**
              * Convert our normalized `scrollLeft` value to a value for current browser.
@@ -188,7 +201,10 @@ declare namespace OO.ui {
              * @param el Element on which the value will be set
              * @return
              */
-            computeNativeScrollLeft(normalizedOffset: number, el: HTMLElement | globalThis.Window): number;
+            computeNativeScrollLeft(
+                normalizedOffset: number,
+                el: HTMLElement | globalThis.Window,
+            ): number;
 
             /**
              * Get the number of pixels that an element's content is scrolled to the left.
@@ -230,7 +246,10 @@ declare namespace OO.ui {
              *  `0` (initial scroll position) and `-el.scrollWidth + el.clientWidth`
              *  (furthest possible scroll position).
              */
-            setScrollLeft(el: HTMLElement | globalThis.Window, scrollLeft: number): void;
+            setScrollLeft(
+                el: HTMLElement | globalThis.Window,
+                scrollLeft: number,
+            ): void;
 
             /**
              * Get the root scrollable element of given element's document.
@@ -246,7 +265,9 @@ declare namespace OO.ui {
              * @param el Element to find root scrollable parent for
              * @return Scrollable parent, `<body>` or `<html>`
              */
-            getRootScrollableElement(el: HTMLElement): HTMLBodyElement | HTMLHtmlElement;
+            getRootScrollableElement(
+                el: HTMLElement,
+            ): HTMLBodyElement | HTMLHtmlElement;
 
             /**
              * Get closest scrollable container.
@@ -258,7 +279,10 @@ declare namespace OO.ui {
              * @param dimension Dimension of scrolling to look for; `x`, `y` or omit for either
              * @return Closest scrollable container
              */
-            getClosestScrollableContainer(el: HTMLElement, dimension?: ScrollDirection): HTMLElement;
+            getClosestScrollableContainer(
+                el: HTMLElement,
+                dimension?: ScrollDirection,
+            ): HTMLElement;
 
             /**
              * Scroll element into view.
@@ -267,7 +291,10 @@ declare namespace OO.ui {
              * @param config Configuration options
              * @return Promise which resolves when the scroll is complete
              */
-            scrollIntoView(elOrPosition: HTMLElement | Rectangle, config?: ScrollIntoViewConfig): JQuery.Promise<void>;
+            scrollIntoView(
+                elOrPosition: HTMLElement | Rectangle,
+                config?: ScrollIntoViewConfig,
+            ): JQuery.Promise<void>;
 
             /**
              * Force the browser to reconsider whether it really needs to render scrollbars inside
@@ -409,12 +436,14 @@ declare namespace OO.ui {
              * @param config Configuration options
              * @return Promise which resolves when the scroll is complete
              */
-            scrollElementIntoView(config?: ScrollIntoViewConfig): JQuery.Promise<void>;
+            scrollElementIntoView(
+                config?: ScrollIntoViewConfig,
+            ): JQuery.Promise<void>;
         }
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): Element;
+            new (config?: ConfigOptions): Element;
             prototype: Prototype;
             static: Static;
         }

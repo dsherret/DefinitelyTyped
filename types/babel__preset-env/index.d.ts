@@ -83,10 +83,7 @@ export type ModuleOption =
 export type PluginList = readonly PluginListItem[];
 export type PluginListItem = string | RegExp;
 
-export type UseBuiltInsOption =
-    | "usage"
-    | "entry"
-    | false;
+export type UseBuiltInsOption = "usage" | "entry" | false;
 
 export type CorejsOption =
     | CorejsVersion

@@ -4,8 +4,8 @@ var srp = require("srp");
 var params = srp.params["1024"];
 
 // Test the `genKey` function.
-srp.genKey(function(err: Error, buf: Buffer): void {});
-srp.genKey(16, function(err: Error, buf: Buffer): void {});
+srp.genKey(function (err: Error, buf: Buffer): void {});
+srp.genKey(16, function (err: Error, buf: Buffer): void {});
 
 // Test the `computeVerifier` function.
 var salt = new Buffer("deadbeef", "hex");

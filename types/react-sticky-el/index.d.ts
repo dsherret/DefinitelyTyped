@@ -5,7 +5,8 @@ export default Sticky;
 declare class Sticky extends React.Component<Sticky.Props> {}
 
 declare namespace Sticky {
-    interface Props<HolderProps extends object = {}> extends React.HTMLAttributes<HTMLElement> {
+    interface Props<HolderProps extends object = {}>
+        extends React.HTMLAttributes<HTMLElement> {
         /**
          * 'top' or 'bottom' - to which side element should stick.
          *
@@ -43,7 +44,10 @@ declare namespace Sticky {
          *
          * Defaults to 'div'.
          */
-        holderCmp?: keyof React.ReactHTML | React.ReactElement<HolderProps> | undefined;
+        holderCmp?:
+            | keyof React.ReactHTML
+            | React.ReactElement<HolderProps>
+            | undefined;
 
         /**
          * These props will be used to create `holderElement`.

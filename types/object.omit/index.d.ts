@@ -1,4 +1,7 @@
-type Omit<GType, GKeys extends keyof GType> = Pick<GType, Exclude<keyof GType, GKeys>>;
+type Omit<GType, GKeys extends keyof GType> = Pick<
+    GType,
+    Exclude<keyof GType, GKeys>
+>;
 
 /**
  * Return a copy of an object excluding the given key, or array of keys. Also accepts an optional filter function as the last argument."

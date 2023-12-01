@@ -37,6 +37,9 @@ const elapsedTime = time.getElapsed();
 entity.position.x = Math.sin(elapsedTime) * 2;
 entityManager.update(delta);
 
-function sync(entity: YUKA.GameEntity, renderComponent: { matrix: YUKA.Matrix4 }) {
+function sync(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrix: YUKA.Matrix4 },
+) {
     renderComponent.matrix.copy(entity.worldMatrix);
 }

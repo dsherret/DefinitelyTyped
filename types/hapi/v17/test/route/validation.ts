@@ -1,5 +1,12 @@
 // from https://hapijs.com/tutorials/validation?lang=en_US
-import { Request, ResponseToolkit, RouteOptions, Server, ServerOptions, ServerRoute } from "hapi";
+import {
+    Request,
+    ResponseToolkit,
+    RouteOptions,
+    Server,
+    ServerOptions,
+    ServerRoute,
+} from "hapi";
 import * as Joi from "joi";
 
 const options: ServerOptions = {

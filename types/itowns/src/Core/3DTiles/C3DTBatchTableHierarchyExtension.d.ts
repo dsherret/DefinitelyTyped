@@ -3,7 +3,8 @@ declare class C3DTBatchTableHierarchyExtension {
 
     classes: any; // TODO
     inverseHierarchy: any; // TODO
-    instancesIdxs: Array<{ // TODO
+    instancesIdxs: Array<{
+        // TODO
         classId: any;
         instanceIdx: any;
     }>;

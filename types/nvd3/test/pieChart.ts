@@ -21,12 +21,13 @@ namespace nvd3_test_pieChart {
     var height = 350;
     var width = 350;
 
-    nv.addGraph(function() {
-        var chart = nv.models.pieChart()
-            .x(function(d) {
+    nv.addGraph(function () {
+        var chart = nv.models
+            .pieChart()
+            .x(function (d) {
                 return d.key;
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d.y;
             })
             .width(width)
@@ -34,13 +35,14 @@ namespace nvd3_test_pieChart {
 
         d3.select("#test1")
             .datum(testdata2)
-            .transition().duration(1200)
+            .transition()
+            .duration(1200)
             .attr("width", width)
             .attr("height", height)
             .call(chart);
 
         // update chart data values randomly
-        setInterval(function() {
+        setInterval(function () {
             testdata2[0].y = Math.floor(Math.random() * 10);
             testdata2[1].y = Math.floor(Math.random() * 10);
             chart.update();
@@ -49,12 +51,13 @@ namespace nvd3_test_pieChart {
         return chart;
     });
 
-    nv.addGraph(function() {
-        var chart = nv.models.pieChart()
-            .x(function(d) {
+    nv.addGraph(function () {
+        var chart = nv.models
+            .pieChart()
+            .x(function (d) {
                 return d.key;
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d.y;
             })
             // .labelThreshold(.08)
@@ -67,10 +70,10 @@ namespace nvd3_test_pieChart {
 
         // make it a half circle
         chart.pie
-            .startAngle(function(d) {
+            .startAngle(function (d) {
                 return d.startAngle / 2 - Math.PI / 2;
             })
-            .endAngle(function(d) {
+            .endAngle(function (d) {
                 return d.endAngle / 2 - Math.PI / 2;
             });
 
@@ -101,15 +104,18 @@ namespace nvd3_test_pieChart {
 
         d3.select("#test2")
             .datum(testdata)
-            .transition().duration(1200)
+            .transition()
+            .duration(1200)
             .attr("width", width)
             .attr("height", height)
             .call(chart);
 
         // disable and enable some of the sections
         var is_disabled = false;
-        setInterval(function() {
-            chart.dispatch["changeState"]({ disabled: { 2: !is_disabled, 4: !is_disabled } });
+        setInterval(function () {
+            chart.dispatch["changeState"]({
+                disabled: { 2: !is_disabled, 4: !is_disabled },
+            });
             is_disabled = !is_disabled;
         }, 3000);
 

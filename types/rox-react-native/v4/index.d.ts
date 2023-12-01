@@ -31,7 +31,11 @@ export interface RoxSetupOptions {
     configurationFetchedHandler?(fetcherResult: RoxFetcherResult): void;
     debugLevel?: "verbose" | undefined;
     // https://docs.cloudbees.com/docs/cloudbees-feature-flags-api/4.9/api-reference/react-native-api#_using_the_impressionhandler_option
-    impressionHandler?(reporting: RoxReporting, experiment: RoxExperiment, context: unknown): void;
+    impressionHandler?(
+        reporting: RoxReporting,
+        experiment: RoxExperiment,
+        context: unknown,
+    ): void;
     platform?: string | undefined;
     freeze?: FreezeOptions | undefined;
     disableNetworkFetch?: boolean | undefined;
@@ -190,7 +194,13 @@ export class Configuration<T extends string | boolean | number = string> {
  * Ensure that TypeScript properly types things with a basic type.
  * For example, if T is true, returned type shall be boolean, not true
  */
-export type BasicType<T> = T extends boolean ? boolean : T extends number ? number : T extends string ? string : never;
+export type BasicType<T> = T extends boolean
+    ? boolean
+    : T extends number
+      ? number
+      : T extends string
+        ? string
+        : never;
 
 /**
  * Override: Should only be used for development purposes (QA - Feature dev - e2e)
@@ -214,7 +224,10 @@ export namespace overrides {
      *
      * Note that for boolean flag we still give the value as a string.
      */
-    function setOverride(nameSpacedFlagName: string, value: string | "false" | "true"): void;
+    function setOverride(
+        nameSpacedFlagName: string,
+        value: string | "false" | "true",
+    ): void;
 
     /**
      * Clears the override value from the flag (and the disk).
@@ -242,12 +255,20 @@ export namespace dynamicApi {
     /**
      * Getting boolean value of a flag
      */
-    function isEnabled(nameSpacedFlagName: string, defaultValue: boolean, context?: unknown): boolean;
+    function isEnabled(
+        nameSpacedFlagName: string,
+        defaultValue: boolean,
+        context?: unknown,
+    ): boolean;
 
     /**
      * Getting string value of a Variant flag
      */
-    function value(nameSpacedFlagName: string, defaultValue: string, context?: unknown): string;
+    function value(
+        nameSpacedFlagName: string,
+        defaultValue: string,
+        context?: unknown,
+    ): string;
 }
 
 export const flags: readonly Flag[];

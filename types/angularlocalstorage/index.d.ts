@@ -10,10 +10,14 @@ declare module "angular" {
             remove(key: string): boolean;
             clearAll(): void;
 
-            bind($scope: ng.IScope, key: string, opts?: {
-                defaultValue?: any;
-                storeName?: string | undefined;
-            }): any;
+            bind(
+                $scope: ng.IScope,
+                key: string,
+                opts?: {
+                    defaultValue?: any;
+                    storeName?: string | undefined;
+                },
+            ): any;
             unbind($scope: ng.IScope, key: string, storeName?: string): void;
         }
     }

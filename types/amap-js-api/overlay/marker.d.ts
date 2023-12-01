@@ -133,7 +133,10 @@ declare namespace AMap {
          * 唤起高德地图客户端标注页
          * @param obj 唤起参数
          */
-        markOnAMAP(obj?: { name?: string | undefined; position?: LocationValue | undefined }): void;
+        markOnAMAP(obj?: {
+            name?: string | undefined;
+            position?: LocationValue | undefined;
+        }): void;
         /**
          * 获取锚点
          */

@@ -250,17 +250,19 @@ declare namespace SystemJSLoader {
          * Sets the TypeScript transpiler options.
          */
         // TODO: Import Typescript.CompilerOptions
-        typescriptOptions?: {
-            /**
-             * A boolean flag which instructs the plugin to load configuration from "tsconfig.json".
-             * To override the location of the file set this option to the path of the configuration file,
-             * which will be resolved using normal SystemJS resolution.
-             * Note: This setting is specific to plugin-typescript.
-             */
-            tsconfig?: boolean | string | undefined;
+        typescriptOptions?:
+            | {
+                  /**
+                   * A boolean flag which instructs the plugin to load configuration from "tsconfig.json".
+                   * To override the location of the file set this option to the path of the configuration file,
+                   * which will be resolved using normal SystemJS resolution.
+                   * Note: This setting is specific to plugin-typescript.
+                   */
+                  tsconfig?: boolean | string | undefined;
 
-            [key: string]: any;
-        } | undefined;
+                  [key: string]: any;
+              }
+            | undefined;
     }
 
     interface System extends Config {
@@ -283,7 +285,7 @@ declare namespace SystemJSLoader {
         /**
          * This represents the System base class, which can be extended or reinstantiated to create a custom System instance.
          */
-        constructor: new() => System;
+        constructor: new () => System;
 
         /**
          * Deletes a module from the registry by normalized name.
@@ -326,7 +328,11 @@ declare namespace SystemJSLoader {
         /**
          * Declaration function for defining modules of the System.register polyfill module format.
          */
-        register(name: string, deps: string[], declare: (...modules: any[]) => any): void;
+        register(
+            name: string,
+            deps: string[],
+            declare: (...modules: any[]) => any,
+        ): void;
         register(deps: string[], declare: (...modules: any[]) => any): void;
 
         /**
@@ -339,7 +345,11 @@ declare namespace SystemJSLoader {
             executingRequire: boolean,
             declare: (...modules: any[]) => any,
         ): void;
-        registerDynamic(deps: string[], executingRequire: boolean, declare: (...modules: any[]) => any): void;
+        registerDynamic(
+            deps: string[],
+            executingRequire: boolean,
+            declare: (...modules: any[]) => any,
+        ): void;
 
         /**
          * Sets a module into the registry directly and synchronously.

@@ -1,5 +1,5 @@
 {
-    "rules": {
-        "@definitelytyped/no-self-import": "off"
-    }
+  "rules": {
+    "@definitelytyped/no-self-import": "off"
+  }
 }

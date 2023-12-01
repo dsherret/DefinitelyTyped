@@ -25,11 +25,11 @@ wx.cloud.callFunction({
         x: 1,
         y: 2,
     },
-    success: res => {
+    success: (res) => {
         // $ExpectType string
         res.errMsg;
     },
-    fail: err => {
+    fail: (err) => {
         // $ExpectType string
         err.errMsg;
     },
@@ -37,7 +37,7 @@ wx.cloud.callFunction({
 
 wx.cloud.deleteFile({
     fileList: ["a7xzcb"],
-    success: res => {
+    success: (res) => {
         // $ExpectType DeleteFileResultItem[]
         res.fileList;
     },
@@ -48,11 +48,13 @@ wx.addCard({
     cardList: [
         {
             cardId: "",
-            cardExt: "{\"code\": \"\", \"openid\": \"\", \"timestamp\": \"\", \"signature\":\"\"}",
+            cardExt:
+                '{"code": "", "openid": "", "timestamp": "", "signature":""}',
         },
         {
             cardId: "",
-            cardExt: "{\"code\": \"\", \"openid\": \"\", \"timestamp\": \"\", \"signature\":\"\"}",
+            cardExt:
+                '{"code": "", "openid": "", "timestamp": "", "signature":""}',
         },
     ],
     success(res) {
@@ -91,7 +93,7 @@ wx.canvasGetImageData({
 });
 
 // https://github.com/wechat-miniprogram/api-typings/issues/45
-wx.onGyroscopeChange(res => {
+wx.onGyroscopeChange((res) => {
     // $ExpectType number
     res.x;
     // $ExpectType number
@@ -169,7 +171,7 @@ wx.request({
 // https://github.com/wechat-miniprogram/api-typings/issues/73
 {
     const task = wx.connectSocket({ url: "" });
-    task.onClose(res => {
+    task.onClose((res) => {
         // $ExpectType number
         res.code;
         // $ExpectType string
@@ -179,8 +181,8 @@ wx.request({
 
 // https://github.com/wechat-miniprogram/api-typings/issues/75
 {
-    wx.onBluetoothDeviceFound(res => {
-        res.devices.forEach(device => {
+    wx.onBluetoothDeviceFound((res) => {
+        res.devices.forEach((device) => {
             // $ExpectType string
             device.name;
             // $ExpectType string
@@ -191,7 +193,8 @@ wx.request({
 
 // https://github.com/wechat-miniprogram/api-typings/issues/82
 {
-    interface IDialogMethod extends Partial<WechatMiniprogram.Component.MethodOption> {
+    interface IDialogMethod
+        extends Partial<WechatMiniprogram.Component.MethodOption> {
         f?: (() => string) | undefined;
         g: () => void;
     }
@@ -236,7 +239,7 @@ import WX = WechatMiniprogram;
     wx.createSelectorQuery()
         .select("#canvas")
         .fields({ node: true })
-        .exec(res => {
+        .exec((res) => {
             wx.canvasToTempFilePath({ canvas: res[0].node });
             wx.canvasToTempFilePath({ canvas: res[0].node, quality: 0.5 });
         });
@@ -254,8 +257,7 @@ import WX = WechatMiniprogram;
 // https://github.com/wechat-miniprogram/api-typings/issues/91
 {
     wx.getExtConfig({
-        success(res) {
-        },
+        success(res) {},
     });
 }
 
@@ -269,7 +271,7 @@ import WX = WechatMiniprogram;
         takePhoto() {
             this.ctx.takePhoto({
                 quality: "high",
-                success: res => {
+                success: (res) => {
                     // $ExpectType string
                     res.tempImagePath;
                     this.setData({
@@ -280,7 +282,7 @@ import WX = WechatMiniprogram;
         },
         startRecord() {
             this.ctx.startRecord({
-                success: res => {
+                success: (res) => {
                     // $ExpectType string
                     res.errMsg;
                     console.log("startRecord");
@@ -289,7 +291,7 @@ import WX = WechatMiniprogram;
         },
         stopRecord() {
             this.ctx.stopRecord({
-                success: res => {
+                success: (res) => {
                     // $ExpectType string
                     res.tempThumbPath;
                     // $ExpectType string
@@ -449,7 +451,7 @@ import WX = WechatMiniprogram;
 {
     wx.requestSubscribeMessage({
         tmplIds: ["1", "2"],
-        success: res => {
+        success: (res) => {
             // $ExpectType string
             res.errMsg;
             // $ExpectType string
@@ -465,7 +467,7 @@ import WX = WechatMiniprogram;
     Page({
         test() {
             const observer = wx.createIntersectionObserver(this);
-            observer.observe("", e => {
+            observer.observe("", (e) => {
                 // $ExpectType string
                 e.id;
                 // $ExpectType Record<string, any>

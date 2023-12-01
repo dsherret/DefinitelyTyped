@@ -12,9 +12,10 @@ declare module "koa" {
 }
 
 declare namespace KoaWebsocket {
-    type Middleware<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext> = compose.Middleware<
-        MiddlewareContext<StateT> & ContextT
-    >;
+    type Middleware<
+        StateT = Koa.DefaultState,
+        ContextT = Koa.DefaultContext,
+    > = compose.Middleware<MiddlewareContext<StateT> & ContextT>;
 
     interface MiddlewareContext<StateT> extends Koa.Context {
         // Limitation: Declaration merging cannot overwrap existing properties.
@@ -35,7 +36,8 @@ declare namespace KoaWebsocket {
         use(middleware: Middleware<StateT, ContextT>): this;
     }
 
-    interface App<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext> extends Koa<StateT, ContextT> {
+    interface App<StateT = Koa.DefaultState, ContextT = Koa.DefaultContext>
+        extends Koa<StateT, ContextT> {
         ws: Server<StateT, ContextT>;
     }
 }

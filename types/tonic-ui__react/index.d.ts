@@ -13,7 +13,9 @@ export function AccordionCollapse(props: TonicProps): JSX.Element;
 export function AccordionHeader(props: AccordionHeaderProps): JSX.Element;
 export function AccordionItem(props: AccordionItemProps): JSX.Element;
 export function AccordionToggle(props: AccordionToggleProps): JSX.Element;
-export function AccordionToggleIcon(props: AccordionToggleIconProps): JSX.Element;
+export function AccordionToggleIcon(
+    props: AccordionToggleIconProps,
+): JSX.Element;
 export function Alert(props: AlertProps): JSX.Element;
 export function AlertCloseButton(props: ButtonProps): JSX.Element;
 export function AnimatePresence(): any;
@@ -24,7 +26,9 @@ export function ButtonBase(props: ButtonProps): JSX.Element;
 export function ButtonGroup(props: ButtonGroupProps): JSX.Element;
 export function ButtonLink(props: ButtonLinkProps): JSX.Element;
 export function Checkbox(props: CheckboxProps): JSX.Element;
-export function CheckboxGroup(props: CheckboxGroupProps<Array<string | number | undefined>>): JSX.Element;
+export function CheckboxGroup(
+    props: CheckboxGroupProps<Array<string | number | undefined>>,
+): JSX.Element;
 export function Collapse(props: TransitionProps): JSX.Element;
 export function ControlBox(props: ControlBoxProps): JSX.Element;
 export function DarkMode(props: React.PropsWithChildren<{}>): JSX.Element;
@@ -70,7 +74,9 @@ export function ModalContent(props: ModalContentProps): JSX.Element;
 export function ModalFooter(props: TonicProps): JSX.Element;
 export function ModalHeader(props: TonicProps): JSX.Element;
 export function ModalOverlay(props: ModalOverlayProps): JSX.Element;
-export function Option(props: React.OptionHTMLAttributes<HTMLOptionElement>): JSX.Element;
+export function Option(
+    props: React.OptionHTMLAttributes<HTMLOptionElement>,
+): JSX.Element;
 export function OptionGroup(props: TonicProps): JSX.Element;
 export function Pagination(props: PaginationProps): JSX.Element;
 export function PaginationItem(props: PaginationItemProps): JSX.Element;
@@ -83,7 +89,9 @@ export function PopoverTrigger(props: PopoverTriggerProps): JSX.Element;
 export function Portal(props: PortalProps): JSX.Element;
 export function PortalManager(props: React.PropsWithChildren<{}>): JSX.Element;
 export function Radio(props: InputProps): JSX.Element;
-export function RadioGroup(props: RadioGroupProps<string | number | undefined>): JSX.Element;
+export function RadioGroup(
+    props: RadioGroupProps<string | number | undefined>,
+): JSX.Element;
 export function SVGIcon(props: TonicProps): JSX.Element;
 export function Scale(props: TransitionScaleProps): JSX.Element;
 export function Scrollbar(props: ScrollbarProps): JSX.Element;
@@ -100,7 +108,9 @@ export function SubmenuToggle(props: SubmenuToggleProps): JSX.Element;
 export function Switch(props: CheckboxProps): JSX.Element;
 export function Tab(props: TabProps<string | number | undefined>): JSX.Element;
 export function TabList(props: TonicProps): JSX.Element;
-export function TabPanel(props: TabPanelProps<number | string | undefined>): JSX.Element;
+export function TabPanel(
+    props: TabPanelProps<number | string | undefined>,
+): JSX.Element;
 export function TabPanels(props: TonicProps): JSX.Element;
 export function Table(props: TableProps): JSX.Element;
 export function TableBody(props: TonicProps): JSX.Element;
@@ -109,7 +119,9 @@ export function TableHeader(props: TonicProps): JSX.Element;
 export function TableHeaderCell(props: TonicProps): JSX.Element;
 export function TableHeaderRow(props: TonicProps): JSX.Element;
 export function TableRow(props: TonicProps): JSX.Element;
-export function Tabs(props: TabsProps<string | number | undefined>): JSX.Element;
+export function Tabs(
+    props: TabsProps<string | number | undefined>,
+): JSX.Element;
 export function Tag(props: TagProps): JSX.Element;
 export function TagCloseButton(props: ButtonProps): JSX.Element;
 export function Text(props: TextProps): JSX.Element;
@@ -121,7 +133,9 @@ export function ToastCloseButton(props: ButtonProps): JSX.Element;
 export function ToastController(props: ToastControllerProps): JSX.Element;
 export function ToastProvider(props: ToastProviderProps): JSX.Element;
 export function ToastTransition(props: ToastTransitionProps): JSX.Element;
-export function TonicProvider(props: React.PropsWithChildren<TonicProviderProps>): JSX.Element;
+export function TonicProvider(
+    props: React.PropsWithChildren<TonicProviderProps>,
+): JSX.Element;
 export function Tooltip(props: TooltipProps): JSX.Element;
 export function Truncate(prop: TonicProps): JSX.Element;
 export function VisuallyHidden(props: TonicProps): JSX.Element;
@@ -131,10 +145,16 @@ export const useAccordionItem: any;
 export const useAnimatePresence: any;
 export const useButtonGroup: any;
 export const useCheckboxGroup: any;
-export function useColorMode(): [colorMode: ThemeColorModes, setColorMode: React.Dispatch<ThemeColorModes>];
+export function useColorMode(): [
+    colorMode: ThemeColorModes,
+    setColorMode: React.Dispatch<ThemeColorModes>,
+];
 export function useColorStyle<ThemeColorStyle>(config: {
     colorMode: ThemeColorModes;
-}): [colorStyle: ThemeColorStyle, setColorStyle: React.Dispatch<ThemeColorStyle>];
+}): [
+    colorStyle: ThemeColorStyle,
+    setColorStyle: React.Dispatch<ThemeColorStyle>,
+];
 export function useDrawer(): any;
 export function useInputGroup(): any;
 export function useMenu(): any;
@@ -176,7 +196,10 @@ export interface AccordionToggleIconProps extends Omit<TonicProps, "children"> {
     appear?: boolean;
     children:
         | React.ReactNode
-        | ((state: unknown, props: { ref: any; style: _ExtendedCSSProperties }) => React.ReactNode);
+        | ((
+              state: unknown,
+              props: { ref: any; style: _ExtendedCSSProperties },
+          ) => React.ReactNode);
     disabled?: boolean;
     easing?: string | { enter?: string; exit?: string };
     in?: boolean;
@@ -186,7 +209,9 @@ export interface AccordionToggleIconProps extends Omit<TonicProps, "children"> {
 }
 
 export interface AccordionItemProps extends Omit<TonicProps, "children"> {
-    children?: React.ReactNode | ((context: AccordionItemContext) => React.ReactNode);
+    children?:
+        | React.ReactNode
+        | ((context: AccordionItemContext) => React.ReactNode);
     disabled?: boolean;
     isExpanded?: boolean;
     defaultIsExpanded?: boolean;
@@ -232,9 +257,9 @@ export interface CheckboxProps extends TonicHTMLInputProps<HTMLInputElement> {
     indeterminate?: boolean;
 }
 
-export interface CheckboxGroupProps<T extends Array<string | number | undefined>>
-    extends Omit<TonicProps, "onChange" | "children">
-{
+export interface CheckboxGroupProps<
+    T extends Array<string | number | undefined>,
+> extends Omit<TonicProps, "onChange" | "children"> {
     children: React.ReactNode | ((context: unknown) => React.ReactNode);
     defaultValue?: T;
     disabled?: boolean;
@@ -324,7 +349,8 @@ export interface InputProps extends TonicHTMLInputProps<HTMLInputElement> {
     variant?: "outline" | "filled" | "unstyled";
 }
 
-export interface InputControlProps extends TonicHTMLInputProps<HTMLInputElement> {
+export interface InputControlProps
+    extends TonicHTMLInputProps<HTMLInputElement> {
     error?: boolean;
     endAdornment?: React.ReactNode;
     inputComponent?: React.ComponentType;
@@ -371,7 +397,13 @@ export interface MenuProps extends Omit<TonicProps, "children"> {
     offset?: [skidding: number, distance: number];
     onClose?: () => void;
     onOpen?: () => void;
-    placement?: "top" | "top-start" | "top-end" | "bottom" | "bottom-start" | "bottom-end";
+    placement?:
+        | "top"
+        | "top-start"
+        | "top-end"
+        | "bottom"
+        | "bottom-start"
+        | "bottom-end";
 }
 
 export interface MenuContentProps extends TonicProps {
@@ -393,14 +425,16 @@ export interface MenuToggleProps extends Omit<TonicProps, "children"> {
     children?:
         | React.ReactNode
         | ((
-            state: { getMenuToggleProps: () => _ExtendedCSSProperties },
-            props: _ExtendedCSSProperties,
-        ) => React.ReactNode);
+              state: { getMenuToggleProps: () => _ExtendedCSSProperties },
+              props: _ExtendedCSSProperties,
+          ) => React.ReactNode);
 }
 
 export interface MenuToggleIconProps extends Omit<TonicProps, "children"> {
     appear?: boolean;
-    children?: React.ReactNode | ((state: unknown, props: _ExtendedCSSProperties) => React.ReactNode);
+    children?:
+        | React.ReactNode
+        | ((state: unknown, props: _ExtendedCSSProperties) => React.ReactNode);
     disabled?: boolean;
     easing?: string | { enter?: string; exit?: string };
     in?: boolean;
@@ -443,11 +477,22 @@ export interface PaginationProps extends Omit<TonicProps, "onChange" | "page"> {
     page?: number;
     renderItem?: (props: PaginationItemProps) => React.ReactNode;
     siblingCount?: number;
-    slot?: { first?: boolean; last?: boolean; previous?: boolean; next?: boolean };
+    slot?: {
+        first?: boolean;
+        last?: boolean;
+        previous?: boolean;
+        next?: boolean;
+    };
 }
 
 export interface PaginationItemProps extends TonicProps {
-    type: "start-ellipsis" | "end-ellipsis" | "first-page" | "last-page" | "previous-page" | "next-page";
+    type:
+        | "start-ellipsis"
+        | "end-ellipsis"
+        | "first-page"
+        | "last-page"
+        | "previous-page"
+        | "next-page";
     slot: { previous: JSX.Element; next: JSX.Element };
 }
 
@@ -495,13 +540,21 @@ export interface PopoverContentProps extends TonicProps {
 }
 
 export interface PopoverTriggerProps extends Omit<TonicProps, "children"> {
-    children: React.ReactNode | ((args: { getPopoverTriggerProps: () => TonicProps }) => React.ReactNode);
+    children:
+        | React.ReactNode
+        | ((args: {
+              getPopoverTriggerProps: () => TonicProps;
+          }) => React.ReactNode);
 }
 
 export interface PortalObject {
     (
         render: (close: () => void) => React.ReactNode,
-        options?: { id?: string; appendToParentPortal?: boolean; containerRef?: Element | null },
+        options?: {
+            id?: string;
+            appendToParentPortal?: boolean;
+            containerRef?: Element | null;
+        },
     ): string;
     remove(id: string): void;
 }
@@ -512,8 +565,10 @@ export interface PortalProps {
 }
 
 export interface RadioGroupProps<T extends string | number | undefined>
-    extends Omit<TonicHTMLInputProps<HTMLInputElement>, "onChange" | "children">
-{
+    extends Omit<
+        TonicHTMLInputProps<HTMLInputElement>,
+        "onChange" | "children"
+    > {
     children: React.ReactNode | ((context: unknown) => React.ReactNode);
     defaultValue?: T;
     disabled?: boolean;
@@ -533,7 +588,13 @@ export interface ScrollbarProps extends Omit<TonicProps, "children"> {
     children: React.ReactNode | ((context: unknown) => React.ReactNode);
     minThumbWidth?: number;
     minThumbHeight?: number;
-    onUpdate: (args: { values: { scrollTop: number; scrollHeight: number; clientHeight: number } }) => void;
+    onUpdate: (args: {
+        values: {
+            scrollTop: number;
+            scrollHeight: number;
+            clientHeight: number;
+        };
+    }) => void;
 }
 
 export interface SelectProps extends TonicHTMLSelectProps {
@@ -575,23 +636,29 @@ export interface SubmenuToggleProps extends TonicProps {
     disabled?: boolean;
 }
 
-export interface TabProps<T extends string | number | undefined> extends Omit<TonicProps, "children"> {
+export interface TabProps<T extends string | number | undefined>
+    extends Omit<TonicProps, "children"> {
     children:
         | React.ReactNode
         | ((args: {
-            getTabProps: () => TonicProps;
-            disabled: boolean;
-            index: T;
-            isSelected: boolean;
-        }) => React.ReactNode);
+              getTabProps: () => TonicProps;
+              disabled: boolean;
+              index: T;
+              isSelected: boolean;
+          }) => React.ReactNode);
     disabled?: boolean;
     index?: T;
 }
 
-export interface TabPanelProps<T extends number | string | undefined> extends Omit<TonicProps, "children"> {
+export interface TabPanelProps<T extends number | string | undefined>
+    extends Omit<TonicProps, "children"> {
     children:
         | React.ReactNode
-        | ((args: { getTabPanelProps: () => TonicProps; index: number; isSelected: boolean }) => React.ReactNode);
+        | ((args: {
+              getTabPanelProps: () => TonicProps;
+              index: number;
+              isSelected: boolean;
+          }) => React.ReactNode);
     index?: T;
 }
 
@@ -600,7 +667,8 @@ export interface TableProps extends TonicProps {
     variant?: "default" | "outline";
 }
 
-export interface TabsProps<T extends number | string | undefined> extends Omit<TonicProps, "children" | "onChange"> {
+export interface TabsProps<T extends number | string | undefined>
+    extends Omit<TonicProps, "children" | "onChange"> {
     children: React.ReactNode | ((context: unknown) => React.ReactNode);
     defaultIndex?: T;
     disabled?: boolean;
@@ -642,14 +710,23 @@ export interface ToastControllerProps extends TonicProps {
 export interface ToastProviderProps extends Omit<TonicProps, "children"> {
     children: React.ReactNode | ((context: unknown) => React.ReactNode);
     container?: any;
-    placement?: "top" | "top-right" | "top-left" | "bottom" | "bottom-left" | "bottom-right";
+    placement?:
+        | "top"
+        | "top-right"
+        | "top-left"
+        | "bottom"
+        | "bottom-left"
+        | "bottom-right";
 }
 
 export interface ToastTransitionProps extends Omit<TonicProps, "children"> {
     appear?: boolean;
     children:
         | React.ReactNode
-        | ((state: "entering" | "entered" | "exiting" | "exited", props: _ExtendedCSSProperties) => React.ReactNode);
+        | ((
+              state: "entering" | "entered" | "exiting" | "exited",
+              props: _ExtendedCSSProperties,
+          ) => React.ReactNode);
     easing?: string | { enter?: string; exit?: string };
     in?: boolean;
     mountOnEnter?: boolean;
@@ -679,7 +756,11 @@ export interface TooltipProps extends Omit<TonicProps, "children"> {
     TransitionComponent?: React.ComponentType;
     TransitionProps?: { appear?: boolean };
     arrowAt?: "left" | "right" | "top" | "bottom";
-    children: React.ReactNode | ((context: { getTooltipTriggerProps: () => TonicProps }) => React.ReactNode);
+    children:
+        | React.ReactNode
+        | ((context: {
+              getTooltipTriggerProps: () => TonicProps;
+          }) => React.ReactNode);
     closeOnClick?: boolean;
     closeOnEsc?: boolean;
     closeOnMouseDown?: boolean;
@@ -710,7 +791,9 @@ export interface TooltipProps extends Omit<TonicProps, "children"> {
 
 export interface TransitionProps extends Omit<TonicProps, "children"> {
     appear?: boolean;
-    children: React.ReactNode | ((state: unknown, props: _ExtendedCSSProperties) => React.ReactNode);
+    children:
+        | React.ReactNode
+        | ((state: unknown, props: _ExtendedCSSProperties) => React.ReactNode);
     easing?: string | { enter?: string; exit?: string };
     in?: boolean;
     mountOnEnter?: boolean;
@@ -775,7 +858,10 @@ export interface ThemeColorStyle {
 }
 
 // Extends CSS properties to remove those that conflict with Tonic and add some shorthands/helpers
-type _ExtendedCSSProperties = Omit<React.CSSProperties, "direction" | "scrollBehavior" | "offset"> & {
+type _ExtendedCSSProperties = Omit<
+    React.CSSProperties,
+    "direction" | "scrollBehavior" | "offset"
+> & {
     tabIndex?: string | number | undefined; // tabIndex is defined in HTMLAttributes as just a number. Redefining to be less annoying to work with
 
     paddingX?: string | number | undefined;
@@ -811,21 +897,19 @@ type _ResponsiveCSSProperties = {
     [K in keyof _ExtendedCSSProperties]:
         | _ExtendedCSSProperties[K]
         | {
-            sm?: _ExtendedCSSProperties[K];
-            md?: _ExtendedCSSProperties[K];
-            lg?: _ExtendedCSSProperties[K];
-            xl?: _ExtendedCSSProperties[K];
-            "2xl"?: _ExtendedCSSProperties[K];
-            _?: _ExtendedCSSProperties[K];
-        };
+              sm?: _ExtendedCSSProperties[K];
+              md?: _ExtendedCSSProperties[K];
+              lg?: _ExtendedCSSProperties[K];
+              xl?: _ExtendedCSSProperties[K];
+              "2xl"?: _ExtendedCSSProperties[K];
+              _?: _ExtendedCSSProperties[K];
+          };
 };
 
 /** Helper type that contains all CSS related props that can be augmented with remaining React props like ref/children/etc  */
-type _CSSPropsWithHTML<Element, Attributes> =
-    & React.RefAttributes<Element>
-    & Attributes
-    & _ResponsiveCSSProperties
-    & {
+type _CSSPropsWithHTML<Element, Attributes> = React.RefAttributes<Element> &
+    Attributes &
+    _ResponsiveCSSProperties & {
         as?: string;
 
         // Protip, avoid using this if it can be handled with regular CSS props
@@ -871,67 +955,80 @@ type _CSSPropsWithHTML<Element, Attributes> =
 // 1. The same property exists on both HTMLAttributes and CSSProperties and they aren't compatible. Usually this causes a conflict with responsive CSS property objects.
 // 2. The HTML Attribute conflicts with a Tonic component prop (like Tonic component's onChange is sometimes defined differently
 
-export interface ImageProps extends
-    _CSSPropsWithHTML<
+export interface ImageProps
+    extends _CSSPropsWithHTML<
         HTMLImageElement,
         Omit<
             React.ImgHTMLAttributes<HTMLImageElement>,
             "color" | "translate" | "slot" | "defaultValue" | "height" | "width"
         >
-    >
-{}
+    > {}
 
-interface TonicHTMLAnchorProps extends
-    _CSSPropsWithHTML<
+interface TonicHTMLAnchorProps
+    extends _CSSPropsWithHTML<
         HTMLAnchorElement,
-        Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "tabIndex" | "color" | "translate">
-    >
-{}
+        Omit<
+            React.AnchorHTMLAttributes<HTMLAnchorElement>,
+            "tabIndex" | "color" | "translate"
+        >
+    > {}
 
-interface TonicHTMLSelectProps extends
-    _CSSPropsWithHTML<
+interface TonicHTMLSelectProps
+    extends _CSSPropsWithHTML<
         HTMLSelectElement,
-        Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "tabIndex" | "color" | "translate" | "size">
-    >
-{
+        Omit<
+            React.SelectHTMLAttributes<HTMLSelectElement>,
+            "tabIndex" | "color" | "translate" | "size"
+        >
+    > {
     size?: "sm" | "md" | "lg" | number;
 }
 
-export interface TextareaProps extends
-    _CSSPropsWithHTML<
+export interface TextareaProps
+    extends _CSSPropsWithHTML<
         HTMLTextAreaElement,
-        Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "tabIndex" | "color" | "translate">
-    >
-{
+        Omit<
+            React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+            "tabIndex" | "color" | "translate"
+        >
+    > {
     size?: "sm" | "md" | "lg" | number;
 }
 
-interface TonicHTMLInputProps<Element> extends
-    _CSSPropsWithHTML<
+interface TonicHTMLInputProps<Element>
+    extends _CSSPropsWithHTML<
         Element,
         Omit<
             React.InputHTMLAttributes<Element>,
-            "children" | "color" | "defaultValue" | "height" | "size" | "slot" | "tabIndex" | "translate" | "width"
+            | "children"
+            | "color"
+            | "defaultValue"
+            | "height"
+            | "size"
+            | "slot"
+            | "tabIndex"
+            | "translate"
+            | "width"
         >
-    >
-{
+    > {
     children?: React.ReactNode;
     size?: "sm" | "md" | "lg" | number;
 }
 
-interface TonicHTMLButtonProps extends
-    _CSSPropsWithHTML<
+interface TonicHTMLButtonProps
+    extends _CSSPropsWithHTML<
         HTMLButtonElement,
         Omit<
             React.ButtonHTMLAttributes<HTMLButtonElement>,
             "color" | "tabIndex" | "translate" | "slot" | "defaultValue"
         >
-    >
-{}
+    > {}
 
-export interface TonicProps<Element = HTMLDivElement> extends
-    _CSSPropsWithHTML<
+export interface TonicProps<Element = HTMLDivElement>
+    extends _CSSPropsWithHTML<
         Element,
-        Omit<React.HTMLAttributes<Element>, "color" | "tabIndex" | "translate" | "slot" | "defaultValue">
-    >
-{}
+        Omit<
+            React.HTMLAttributes<Element>,
+            "color" | "tabIndex" | "translate" | "slot" | "defaultValue"
+        >
+    > {}

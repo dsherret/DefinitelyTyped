@@ -19,11 +19,13 @@ module.exports = {
     },
     plugins: [
         new NamedModulesPlugin(),
-        new NamedChunksPlugin(chunk => {
+        new NamedChunksPlugin((chunk) => {
             if (chunk.name) {
                 return chunk.name;
             }
-            return chunk.modules.map((m: any) => path.relative(m.context, m.request)).join("_");
+            return chunk.modules
+                .map((m: any) => path.relative(m.context, m.request))
+                .join("_");
         }),
         // some other declaration
         // ....

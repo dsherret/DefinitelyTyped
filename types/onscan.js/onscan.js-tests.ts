@@ -1,4 +1,9 @@
-import onScan, { ScanError, ScanErrorEvent, ScanEvent, ScanOptions } from "onscan.js";
+import onScan, {
+    ScanError,
+    ScanErrorEvent,
+    ScanEvent,
+    ScanOptions,
+} from "onscan.js";
 
 const options: ScanOptions = {
     onScan: (code, quantity) => {
@@ -6,7 +11,7 @@ const options: ScanOptions = {
         quantity.toExponential();
     },
     onScanButtonLongPress: () => {},
-    onScanError: debug => {},
+    onScanError: (debug) => {},
     onKeyDetect: (keyCode, event) => {},
     onKeyProcess: (char, event) => {},
     onPaste: (pasted, event) => {},
@@ -42,7 +47,7 @@ onScan.attachTo(document, {
         // Alternative to document.addEventListener('scan')
         console.log(`Scanned: ${iQty}x ${sCode}`);
     },
-    onKeyDetect: iKeyCode => {
+    onKeyDetect: (iKeyCode) => {
         // output all potentially relevant key events - great for debugging!
         console.log("Pressed: " + iKeyCode);
     },
@@ -69,7 +74,7 @@ onScan.setOptions(document, {
 onScan.detachFrom(document);
 onScan.attachTo(document, {
     onScan: (sScanned, iQty) => {},
-    keyCodeMapper: oEvent => {
+    keyCodeMapper: (oEvent) => {
         // Look for special keycodes or other event properties specific to
         // your scanner
         if (oEvent.which === "your_special_key_code") {

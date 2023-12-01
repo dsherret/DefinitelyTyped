@@ -26,11 +26,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     // automatically connect to devices.
 });
 
-navigator.serial.addEventListener("connect", e => {
+navigator.serial.addEventListener("connect", (e) => {
     // Add |e.port| to the UI or automatically connect.
 });
 
-navigator.serial.addEventListener("disconnect", e => {
+navigator.serial.addEventListener("disconnect", (e) => {
     // Remove |e.port| from the UI. If the device was open the
     // disconnection can also be observed as a stream error.
 });
@@ -79,11 +79,14 @@ async function example_4b() {
             this.container = "";
         }
 
-        transform(chunk: string, controller: TransformStreamDefaultController<string>) {
+        transform(
+            chunk: string,
+            controller: TransformStreamDefaultController<string>,
+        ) {
             this.container += chunk;
             const lines = this.container.split("\r\n");
             this.container = lines.pop()!;
-            lines.forEach(line => controller.enqueue(line));
+            lines.forEach((line) => controller.enqueue(line));
         }
 
         flush(controller: TransformStreamDefaultController<string>) {
@@ -120,7 +123,7 @@ async function example_6() {
     const port = await navigator.serial.requestPort();
 
     await port.setSignals({ dataTerminalReady: false });
-    await new Promise(resolve => setTimeout(resolve, 200));
+    await new Promise((resolve) => setTimeout(resolve, 200));
     await port.setSignals({ dataTerminalReady: true });
 }
 

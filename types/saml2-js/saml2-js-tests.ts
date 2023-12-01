@@ -10,7 +10,10 @@ import * as saml2 from "saml2-js";
         certificate: fs.readFileSync("cert-file.crt").toString(),
         assert_endpoint: "https://sp.example.com/assert",
         force_authn: true,
-        auth_context: { comparison: "exact", class_refs: ["urn:oasis:names:tc:SAML:1.0:am:password"] },
+        auth_context: {
+            comparison: "exact",
+            class_refs: ["urn:oasis:names:tc:SAML:1.0:am:password"],
+        },
         nameid_format: "urn:oasis:names:tc:SAML:2.0:nameid-format:transient",
         sign_get_request: false,
         allow_unencrypted_assertion: true,
@@ -27,7 +30,10 @@ import * as saml2 from "saml2-js";
     const idp_options = {
         sso_login_url: "https://idp.example.com/login",
         sso_logout_url: "https://idp.example.com/logout",
-        certificates: [fs.readFileSync("cert-file1.crt").toString(), fs.readFileSync("cert-file2.crt").toString()],
+        certificates: [
+            fs.readFileSync("cert-file1.crt").toString(),
+            fs.readFileSync("cert-file2.crt").toString(),
+        ],
         force_authn: true,
         sign_get_request: false,
         allow_unencrypted_assertion: false,
@@ -38,7 +44,11 @@ import * as saml2 from "saml2-js";
 
     // Example usage of identity provider.
     // Pass identity provider into a service provider function with options and a callback.
-    sp.post_assert(idp, { request_body: { SAMLRequest: {} } }, (error: any, response: any) => {});
+    sp.post_assert(
+        idp,
+        { request_body: { SAMLRequest: {} } },
+        (error: any, response: any) => {},
+    );
 }
 
 // Example: Express implementation
@@ -58,49 +68,58 @@ import * as saml2 from "saml2-js";
     const idp_options = {
         sso_login_url: "https://idp.example.com/login",
         sso_logout_url: "https://idp.example.com/logout",
-        certificates: [fs.readFileSync("cert-file1.crt").toString(), fs.readFileSync("cert-file2.crt").toString()],
+        certificates: [
+            fs.readFileSync("cert-file1.crt").toString(),
+            fs.readFileSync("cert-file2.crt").toString(),
+        ],
     };
     const idp = new saml2.IdentityProvider(idp_options);
 
     // ------ Define express endpoints ------
 
     // Endpoint to retrieve metadata
-    app.get("/metadata.xml", function(req, res) {
+    app.get("/metadata.xml", function (req, res) {
         res.type("application/xml");
         res.send(sp.create_metadata());
     });
 
     // Starting point for login
-    app.get("/login", function(req, res) {
-        sp.create_login_request_url(idp, {}, function(err, login_url, request_id) {
-            if (err != null) return res.send(500);
-            res.redirect(login_url);
-        });
+    app.get("/login", function (req, res) {
+        sp.create_login_request_url(
+            idp,
+            {},
+            function (err, login_url, request_id) {
+                if (err != null) return res.send(500);
+                res.redirect(login_url);
+            },
+        );
     });
 
     // Assert endpoint for when login completes
-    app.post("/assert", function(req, res) {
+    app.post("/assert", function (req, res) {
         const options = {
             request_body: req.body,
             notbefore_skew: 5,
         };
-        sp.post_assert(idp, options, function(err, saml_response) {
+        sp.post_assert(idp, options, function (err, saml_response) {
             if (err != null) return res.send(500);
 
             let response_id: string = saml_response.response_header.id;
-            let request_id: string = saml_response.response_header.in_response_to;
+            let request_id: string =
+                saml_response.response_header.in_response_to;
 
             // Save name_id and session_index for logout
             // Note:  In practice these should be saved in the user session, not globally.
             let name_id: string = saml_response.user.name_id;
-            let session_index: string | undefined = saml_response.user.session_index;
+            let session_index: string | undefined =
+                saml_response.user.session_index;
 
             res.send(`Hello ${saml_response.user.name_id}!`);
         });
     });
 
     // Starting point for logout
-    app.get("/logout", function(req, res) {
+    app.get("/logout", function (req, res) {
         let name_id = "";
         let session_index = "";
         const options = {
@@ -108,7 +127,7 @@ import * as saml2 from "saml2-js";
             session_index: session_index,
         };
 
-        sp.create_logout_request_url(idp, options, function(err, logout_url) {
+        sp.create_logout_request_url(idp, options, function (err, logout_url) {
             if (err != null) return res.send(500);
             res.redirect(logout_url);
         });

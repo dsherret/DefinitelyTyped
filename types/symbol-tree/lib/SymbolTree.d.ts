@@ -192,7 +192,10 @@ declare class SymbolTree<T extends object = any> {
      *
      * @return An iterable iterator (ES6)
      */
-    childrenIterator(parent: T, options?: SymbolTree.IteratorOptions): TreeIterator<T>;
+    childrenIterator(
+        parent: T,
+        options?: SymbolTree.IteratorOptions,
+    ): TreeIterator<T>;
 
     /**
      * Iterate over all the previous siblings of the given object. (in reverse tree order)
@@ -231,7 +234,10 @@ declare class SymbolTree<T extends object = any> {
      *
      * @return An iterable iterator (ES6)
      */
-    treeIterator(object: T, options?: SymbolTree.IteratorOptions): TreeIterator<T>;
+    treeIterator(
+        object: T,
+        options?: SymbolTree.IteratorOptions,
+    ): TreeIterator<T>;
 
     /**
      * Find the index of the given object (the number of preceding siblings).

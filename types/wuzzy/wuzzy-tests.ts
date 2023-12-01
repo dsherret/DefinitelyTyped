@@ -1,4 +1,11 @@
-import { jaccard, jarowinkler, levenshtein, ngram, pearson, tanimoto } from "wuzzy";
+import {
+    jaccard,
+    jarowinkler,
+    levenshtein,
+    ngram,
+    pearson,
+    tanimoto,
+} from "wuzzy";
 
 declare const aString: string;
 declare const aStringArr: string[];

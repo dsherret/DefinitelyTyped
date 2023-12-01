@@ -14,13 +14,16 @@ import {
 
 class DllPlugin {
     apply(compiler: Compiler) {
-        compiler.plugin("doSomething", function(...args: string[]) {
+        compiler.plugin("doSomething", function (...args: string[]) {
             console.log(args);
         });
 
-        compiler.plugin(["doSomething", "doNothing"], function(...args: string[]) {
-            console.log(args);
-        });
+        compiler.plugin(
+            ["doSomething", "doNothing"],
+            function (...args: string[]) {
+                console.log(args);
+            },
+        );
     }
 }
 
@@ -32,8 +35,7 @@ class Compiler extends Tapable {
 
 const compiler = new Compiler();
 
-let callback: Tapable.CallbackFunction = function() {
-};
+let callback: Tapable.CallbackFunction = function () {};
 
 compiler.apply(new DllPlugin());
 
@@ -78,26 +80,48 @@ const isBoolean = (val: boolean) => val;
 
     // Without generics we won't get any information
     // for the tap interface:
-    hooks.syncHook.tap("AHook", () => ("ReturnValue"));
-    hooks.syncBailHook.tap("AHook", () => ("ReturnValue"));
-    hooks.syncWaterfallHook.tap("AHook", () => ("ReturnValue"));
-    hooks.asyncParallelHook.tapPromise("AHook", async () => ("ReturnValue"));
-    hooks.asyncParallelBailHook.tapPromise("AHook", async () => ("ReturnValue"));
-    hooks.asyncSeriesHook.tapPromise("AHook", async () => ("ReturnValue"));
-    hooks.asyncSeriesBailHook.tapPromise("AHook", async () => ("ReturnValue"));
-    hooks.asyncSeriesWaterfallHook.tapPromise("AHook", async () => ("ReturnValue"));
+    hooks.syncHook.tap("AHook", () => "ReturnValue");
+    hooks.syncBailHook.tap("AHook", () => "ReturnValue");
+    hooks.syncWaterfallHook.tap("AHook", () => "ReturnValue");
+    hooks.asyncParallelHook.tapPromise("AHook", async () => "ReturnValue");
+    hooks.asyncParallelBailHook.tapPromise("AHook", async () => "ReturnValue");
+    hooks.asyncSeriesHook.tapPromise("AHook", async () => "ReturnValue");
+    hooks.asyncSeriesBailHook.tapPromise("AHook", async () => "ReturnValue");
+    hooks.asyncSeriesWaterfallHook.tapPromise(
+        "AHook",
+        async () => "ReturnValue",
+    );
 
     async function getHookResults() {
         return {
             syncHook: hooks.syncHook.call({ name: "sue", age: 34 }),
             syncBailHook: hooks.syncBailHook.call({ name: "sue", age: 34 }),
-            syncWaterfallHook: hooks.syncWaterfallHook.call({ name: "sue", age: 34 }),
+            syncWaterfallHook: hooks.syncWaterfallHook.call({
+                name: "sue",
+                age: 34,
+            }),
             syncLoopHook: hooks.syncLoopHook.call({ name: "sue", age: 34 }),
-            asyncParallelHook: await hooks.asyncParallelHook.promise({ name: "sue", age: 34 }),
-            asyncParallelBailHook: await hooks.asyncParallelBailHook.promise({ name: "sue", age: 34 }),
-            asyncSeriesHook: await hooks.asyncSeriesHook.promise({ name: "sue", age: 34 }),
-            asyncSeriesBailHook: await hooks.asyncSeriesBailHook.promise({ name: "sue", age: 34 }),
-            asyncSeriesWaterfallHook: await hooks.asyncSeriesWaterfallHook.promise({ name: "sue", age: 34 }),
+            asyncParallelHook: await hooks.asyncParallelHook.promise({
+                name: "sue",
+                age: 34,
+            }),
+            asyncParallelBailHook: await hooks.asyncParallelBailHook.promise({
+                name: "sue",
+                age: 34,
+            }),
+            asyncSeriesHook: await hooks.asyncSeriesHook.promise({
+                name: "sue",
+                age: 34,
+            }),
+            asyncSeriesBailHook: await hooks.asyncSeriesBailHook.promise({
+                name: "sue",
+                age: 34,
+            }),
+            asyncSeriesWaterfallHook:
+                await hooks.asyncSeriesWaterfallHook.promise({
+                    name: "sue",
+                    age: 34,
+                }),
         };
     }
 
@@ -131,37 +155,87 @@ const isBoolean = (val: boolean) => val;
     type Person = { name: string; age: number };
     const hooks = {
         syncHook: new SyncHook<Person, undefined, undefined>(["arg1"]),
-        syncBailHook: new SyncBailHook<Person, undefined, undefined, number>(["arg1"]),
-        syncWaterfallHook: new SyncWaterfallHook<Person, undefined, undefined>(["arg1"]),
+        syncBailHook: new SyncBailHook<Person, undefined, undefined, number>([
+            "arg1",
+        ]),
+        syncWaterfallHook: new SyncWaterfallHook<Person, undefined, undefined>([
+            "arg1",
+        ]),
         syncLoopHook: new SyncLoopHook<Person, undefined, undefined>(["arg1"]),
-        asyncParallelHook: new AsyncParallelHook<Person, undefined, undefined>(["arg1"]),
-        asyncParallelBailHook: new AsyncParallelBailHook<Person, undefined, undefined, number>(["arg1"]),
-        asyncSeriesHook: new AsyncSeriesHook<Person, undefined, undefined>(["arg1"]),
-        asyncSeriesBailHook: new AsyncSeriesBailHook<Person, undefined, undefined, number>(["arg1"]),
-        asyncSeriesWaterfallHook: new AsyncSeriesWaterfallHook<Person, undefined, undefined>(["arg1"]),
+        asyncParallelHook: new AsyncParallelHook<Person, undefined, undefined>([
+            "arg1",
+        ]),
+        asyncParallelBailHook: new AsyncParallelBailHook<
+            Person,
+            undefined,
+            undefined,
+            number
+        >(["arg1"]),
+        asyncSeriesHook: new AsyncSeriesHook<Person, undefined, undefined>([
+            "arg1",
+        ]),
+        asyncSeriesBailHook: new AsyncSeriesBailHook<
+            Person,
+            undefined,
+            undefined,
+            number
+        >(["arg1"]),
+        asyncSeriesWaterfallHook: new AsyncSeriesWaterfallHook<
+            Person,
+            undefined,
+            undefined
+        >(["arg1"]),
     };
 
     // Without generics we will get information
-    hooks.syncHook.tap("AHook", () => ("Any Return Value"));
+    hooks.syncHook.tap("AHook", () => "Any Return Value");
     hooks.syncBailHook.tap("AHook", (person) => person.age);
-    hooks.syncWaterfallHook.tap("AHook", (person) => ({ name: "sue", age: person.age + 1 }));
-    hooks.asyncParallelHook.tapPromise("AHook", async () => ("ReturnValue"));
-    hooks.asyncParallelBailHook.tapPromise("AHook", async (person) => person.age);
-    hooks.asyncSeriesHook.tapPromise("AHook", async () => ("ReturnValue"));
+    hooks.syncWaterfallHook.tap("AHook", (person) => ({
+        name: "sue",
+        age: person.age + 1,
+    }));
+    hooks.asyncParallelHook.tapPromise("AHook", async () => "ReturnValue");
+    hooks.asyncParallelBailHook.tapPromise(
+        "AHook",
+        async (person) => person.age,
+    );
+    hooks.asyncSeriesHook.tapPromise("AHook", async () => "ReturnValue");
     hooks.asyncSeriesBailHook.tapPromise("AHook", async (person) => person.age);
-    hooks.asyncSeriesWaterfallHook.tapPromise("AHook", async (person) => ({ name: "sue", age: person.age + 1 }));
+    hooks.asyncSeriesWaterfallHook.tapPromise("AHook", async (person) => ({
+        name: "sue",
+        age: person.age + 1,
+    }));
 
     async function getHookResults() {
         return {
             syncHook: hooks.syncHook.call({ name: "sue", age: 34 }),
             syncBailHook: hooks.syncBailHook.call({ name: "sue", age: 34 }),
-            syncWaterfallHook: hooks.syncWaterfallHook.call({ name: "sue", age: 34 }),
+            syncWaterfallHook: hooks.syncWaterfallHook.call({
+                name: "sue",
+                age: 34,
+            }),
             syncLoopHook: hooks.syncLoopHook.call({ name: "sue", age: 34 }),
-            asyncParallelHook: await hooks.asyncParallelHook.promise({ name: "sue", age: 34 }),
-            asyncParallelBailHook: await hooks.asyncParallelBailHook.promise({ name: "sue", age: 34 }),
-            asyncSeriesHook: await hooks.asyncSeriesHook.promise({ name: "sue", age: 34 }),
-            asyncSeriesBailHook: await hooks.asyncSeriesBailHook.promise({ name: "sue", age: 34 }),
-            asyncSeriesWaterfallHook: await hooks.asyncSeriesWaterfallHook.promise({ name: "sue", age: 34 }),
+            asyncParallelHook: await hooks.asyncParallelHook.promise({
+                name: "sue",
+                age: 34,
+            }),
+            asyncParallelBailHook: await hooks.asyncParallelBailHook.promise({
+                name: "sue",
+                age: 34,
+            }),
+            asyncSeriesHook: await hooks.asyncSeriesHook.promise({
+                name: "sue",
+                age: 34,
+            }),
+            asyncSeriesBailHook: await hooks.asyncSeriesBailHook.promise({
+                name: "sue",
+                age: 34,
+            }),
+            asyncSeriesWaterfallHook:
+                await hooks.asyncSeriesWaterfallHook.promise({
+                    name: "sue",
+                    age: 34,
+                }),
         };
     }
 
@@ -191,38 +265,56 @@ const isBoolean = (val: boolean) => val;
 
     // Test TapOptions
     // Minimal params
-    hooks.syncHook.tap({
-        name: "Hook1",
-    }, () => ("Any Return Value"));
+    hooks.syncHook.tap(
+        {
+            name: "Hook1",
+        },
+        () => "Any Return Value",
+    );
 
     // All param types
-    hooks.syncHook.tap({
-        name: "Hook2",
-        type: "sync",
-        before: "Hook1",
-        context: true,
-        stage: 10,
-    }, () => ("Any Return Value"));
+    hooks.syncHook.tap(
+        {
+            name: "Hook2",
+            type: "sync",
+            before: "Hook1",
+            context: true,
+            stage: 10,
+        },
+        () => "Any Return Value",
+    );
 
-    hooks.syncHook.tap({
-        name: "Hook3",
-        before: ["Hook1", "Hook2"],
-    }, () => ("Any Return Value"));
+    hooks.syncHook.tap(
+        {
+            name: "Hook3",
+            before: ["Hook1", "Hook2"],
+        },
+        () => "Any Return Value",
+    );
 
     // No optional params
-    hooks.syncHook.tap({
-        name: "Hook4",
-    }, () => ("Any Return Value"));
+    hooks.syncHook.tap(
+        {
+            name: "Hook4",
+        },
+        () => "Any Return Value",
+    );
 
     // The `fn` param
-    hooks.syncWaterfallHook.tap({
-        name: "SyncHook",
-        fn: (person) => ({ name: "sue", age: person.age + 1 }),
-    }, (person) => ({ name: "sue", age: person.age + 1 }));
+    hooks.syncWaterfallHook.tap(
+        {
+            name: "SyncHook",
+            fn: (person) => ({ name: "sue", age: person.age + 1 }),
+        },
+        (person) => ({ name: "sue", age: person.age + 1 }),
+    );
 
-    hooks.asyncSeriesWaterfallHook.tapPromise({
-        name: "PromiseHook",
-        type: "promise",
-        fn: async (person) => ({ name: "sue", age: person.age + 1 }),
-    }, async (person) => ({ name: "sue", age: person.age + 1 }));
+    hooks.asyncSeriesWaterfallHook.tapPromise(
+        {
+            name: "PromiseHook",
+            type: "promise",
+            fn: async (person) => ({ name: "sue", age: person.age + 1 }),
+        },
+        async (person) => ({ name: "sue", age: person.age + 1 }),
+    );
 })();

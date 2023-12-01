@@ -106,10 +106,24 @@ export interface DirResult {
     removeCallback: () => void;
 }
 
-export type FileCallback = (err: Error | null, name: string, fd: number, removeCallback: () => void) => void;
-export type FileCallbackNoFd = (err: Error | null, name: string, fd: undefined, removeCallback: () => void) => void;
+export type FileCallback = (
+    err: Error | null,
+    name: string,
+    fd: number,
+    removeCallback: () => void,
+) => void;
+export type FileCallbackNoFd = (
+    err: Error | null,
+    name: string,
+    fd: undefined,
+    removeCallback: () => void,
+) => void;
 
-export type DirCallback = (err: Error | null, name: string, removeCallback: () => void) => void;
+export type DirCallback = (
+    err: Error | null,
+    name: string,
+    removeCallback: () => void,
+) => void;
 
 export type TmpNameCallback = (err: Error | null, name: string) => void;
 

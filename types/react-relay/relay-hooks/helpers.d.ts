@@ -10,21 +10,31 @@ export type KeyType<TData = unknown> = Readonly<{
     " $fragmentSpreads": FragmentType;
 }>;
 
-export type KeyTypeData<TKey extends KeyType<TData>, TData = unknown> = Required<TKey>[" $data"];
+export type KeyTypeData<
+    TKey extends KeyType<TData>,
+    TData = unknown,
+> = Required<TKey>[" $data"];
 
-export type ArrayKeyType<TData = unknown> = ReadonlyArray<KeyType<readonly TData[]> | null | undefined>;
-export type ArrayKeyTypeData<TKey extends ArrayKeyType<TData>, TData = unknown> = KeyTypeData<
-    NonNullable<TKey[number]>
+export type ArrayKeyType<TData = unknown> = ReadonlyArray<
+    KeyType<readonly TData[]> | null | undefined
 >;
+export type ArrayKeyTypeData<
+    TKey extends ArrayKeyType<TData>,
+    TData = unknown,
+> = KeyTypeData<NonNullable<TKey[number]>>;
 
-export type GetEntryPointParamsFromEntryPoint<TEntryPoint> = TEntryPoint extends EntryPoint<
-    infer TEntryPointComponent,
-    infer TEntryPointParams
-> ? TEntryPointParams
-    : never;
+export type GetEntryPointParamsFromEntryPoint<TEntryPoint> =
+    TEntryPoint extends EntryPoint<
+        infer TEntryPointComponent,
+        infer TEntryPointParams
+    >
+        ? TEntryPointParams
+        : never;
 
-export type GetEntryPointComponentFromEntryPoint<TEntryPoint> = TEntryPoint extends EntryPoint<
-    infer TEntryPointComponent,
-    infer TEntryPointParams
-> ? TEntryPointComponent
-    : never;
+export type GetEntryPointComponentFromEntryPoint<TEntryPoint> =
+    TEntryPoint extends EntryPoint<
+        infer TEntryPointComponent,
+        infer TEntryPointParams
+    >
+        ? TEntryPointComponent
+        : never;

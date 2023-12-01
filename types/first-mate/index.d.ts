@@ -30,7 +30,11 @@ export class Grammar {
      *  in the file which defaults to `false`.
      *  @return An object representing the result of the tokenize.
      */
-    tokenizeLine(line: string, ruleStack?: null, firstLine?: boolean): TokenizeLineResult;
+    tokenizeLine(
+        line: string,
+        ruleStack?: null,
+        firstLine?: boolean,
+    ): TokenizeLineResult;
     /**
      *  Tokenizes the line of text.
      *  @param line A string of text to tokenize.
@@ -40,7 +44,11 @@ export class Grammar {
      *  in the file which defaults to `false`.
      *  @return An object representing the result of the tokenize.
      */
-    tokenizeLine(line: string, ruleStack: GrammarRule[], firstLine?: false): TokenizeLineResult;
+    tokenizeLine(
+        line: string,
+        ruleStack: GrammarRule[],
+        firstLine?: false,
+    ): TokenizeLineResult;
 }
 
 /** Instance side of GrammarRegistry class. */
@@ -119,7 +127,10 @@ export class GrammarRegistry {
      *  @param grammarPath The absolute file path to the grammar.
      *  @param callback The function to be invoked once the Grammar has been read in.
      */
-    readGrammar(grammarPath: string, callback: (error: Error | null, grammar?: Grammar) => void): void;
+    readGrammar(
+        grammarPath: string,
+        callback: (error: Error | null, grammar?: Grammar) => void,
+    ): void;
 
     /**
      *  Read a grammar synchronously and add it to this registry.
@@ -134,7 +145,10 @@ export class GrammarRegistry {
      *  @param callback The function to be invoked once the Grammar has been read in
      *  and added to the registry.
      */
-    loadGrammar(grammarPath: string, callback: (error: Error | null, grammar?: Grammar) => void): void;
+    loadGrammar(
+        grammarPath: string,
+        callback: (error: Error | null, grammar?: Grammar) => void,
+    ): void;
 
     /**
      *  Convert compact tags representation into convenient, space-inefficient tokens.
@@ -142,7 +156,10 @@ export class GrammarRegistry {
      *  @param tags The tags returned from a call to Grammar::tokenizeLine().
      *  @return An array of Token instances decoded from the given tags.
      */
-    decodeTokens(lineText: string, tags: Array<number | string>): GrammarToken[];
+    decodeTokens(
+        lineText: string,
+        tags: Array<number | string>,
+    ): GrammarToken[];
 }
 
 export class ScopeSelector {

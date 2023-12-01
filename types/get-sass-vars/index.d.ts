@@ -30,6 +30,9 @@ declare namespace sassVars {
  * @param options
  * The options for resolving the variables.
  */
-declare function sassVars(data: string, options?: sassVars.SassVarsOptions): Promise<Record<string, unknown>>;
+declare function sassVars(
+    data: string,
+    options?: sassVars.SassVarsOptions,
+): Promise<Record<string, unknown>>;
 
 export = sassVars;

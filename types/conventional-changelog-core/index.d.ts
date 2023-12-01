@@ -2,10 +2,19 @@
 
 import * as Stream from "stream";
 
-import { Context as BaseContext, Options as BaseWriterOptions } from "conventional-changelog-writer";
-import { Commit, Options as BaseParserOptions } from "conventional-commits-parser";
+import {
+    Context as BaseContext,
+    Options as BaseWriterOptions,
+} from "conventional-changelog-writer";
+import {
+    Commit,
+    Options as BaseParserOptions,
+} from "conventional-commits-parser";
 import { Options as RecommendedBumpOptions } from "conventional-recommended-bump";
-import { ExecOptions as GitRawExecOptions, GitOptions as BaseGitRawCommitsOptions } from "git-raw-commits";
+import {
+    ExecOptions as GitRawExecOptions,
+    GitOptions as BaseGitRawCommitsOptions,
+} from "git-raw-commits";
 
 import { Package } from "normalize-package-data";
 
@@ -18,7 +27,10 @@ import { Package } from "normalize-package-data";
  * @param parserOpts
  * @param writerOpts
  */
-declare function conventionalChangelogCore<TCommit extends Commit = Commit, TContext extends BaseContext = Context>(
+declare function conventionalChangelogCore<
+    TCommit extends Commit = Commit,
+    TContext extends BaseContext = Context,
+>(
     options?: Options<TCommit, TContext>,
     context?: Partial<TContext>,
     gitRawCommitsOpts?: GitRawCommitsOptions,
@@ -141,7 +153,8 @@ declare namespace conventionalChangelogCore {
         debug?: BaseGitRawCommitsOptions["debug"] | undefined;
     }
 
-    type MergedContext<T extends BaseContext = BaseContext> = T & MergedContext.ExtraContext;
+    type MergedContext<T extends BaseContext = BaseContext> = T &
+        MergedContext.ExtraContext;
 
     namespace MergedContext {
         interface ExtraContext {
@@ -157,7 +170,10 @@ declare namespace conventionalChangelogCore {
         }
     }
 
-    interface Options<TCommit extends Commit = Commit, TContext extends BaseContext = BaseContext> {
+    interface Options<
+        TCommit extends Commit = Commit,
+        TContext extends BaseContext = BaseContext,
+    > {
         /**
          * This should serve as default values for other arguments of
          * `conventionalChangelogCore` so you don't need to rewrite the same or similar
@@ -252,24 +268,31 @@ declare namespace conventionalChangelogCore {
     }
 
     namespace Options {
-        type Config<TCommit extends Commit = Commit, TContext extends BaseContext = BaseContext> =
+        type Config<
+            TCommit extends Commit = Commit,
+            TContext extends BaseContext = BaseContext,
+        > =
             | Promise<Config.Object<TCommit, TContext>>
             | Config.Function<TCommit, TContext>
             | Config.Object<TCommit, TContext>;
 
         namespace Config {
-            type FunctionType<TCommit extends Commit = Commit, TContext extends BaseContext = BaseContext> = (
-                callback: FunctionType.Callback<TCommit, TContext>,
-            ) => void;
+            type FunctionType<
+                TCommit extends Commit = Commit,
+                TContext extends BaseContext = BaseContext,
+            > = (callback: FunctionType.Callback<TCommit, TContext>) => void;
 
             namespace FunctionType {
-                type Callback<TCommit extends Commit = Commit, TContext extends BaseContext = BaseContext> = (
-                    error: any,
-                    config: ObjectType<TCommit, TContext>,
-                ) => void;
+                type Callback<
+                    TCommit extends Commit = Commit,
+                    TContext extends BaseContext = BaseContext,
+                > = (error: any, config: ObjectType<TCommit, TContext>) => void;
             }
 
-            interface ObjectType<TCommit extends Commit = Commit, TContext extends BaseContext = BaseContext> {
+            interface ObjectType<
+                TCommit extends Commit = Commit,
+                TContext extends BaseContext = BaseContext,
+            > {
                 context?: Partial<TContext> | undefined;
                 gitRawCommitsOpts?: GitRawCommitsOptions | undefined;
                 parserOpts?: ParserOptions | undefined;
@@ -297,7 +320,9 @@ declare namespace conventionalChangelogCore {
              * @default
              * Pass through.
              */
-            transform?: ((pkg: Record<string, any>) => Record<string, any>) | undefined;
+            transform?:
+                | ((pkg: Record<string, any>) => Record<string, any>)
+                | undefined;
         }
 
         interface Transform<T extends Commit = Commit> {
@@ -309,11 +334,18 @@ declare namespace conventionalChangelogCore {
              * @param commit The commit from conventional-commits-parser.
              * @param cb     Callback when you are done.
              */
-            (this: Stream.Transform, commit: Commit, cb: Transform.Callback<T>): void;
+            (
+                this: Stream.Transform,
+                commit: Commit,
+                cb: Transform.Callback<T>,
+            ): void;
         }
 
         namespace Transform {
-            type Callback<T extends Commit = Commit> = (error: any, commit: T) => void;
+            type Callback<T extends Commit = Commit> = (
+                error: any,
+                commit: T,
+            ) => void;
         }
     }
 
@@ -329,9 +361,10 @@ declare namespace conventionalChangelogCore {
         warn?: BaseParserOptions["warn"] | undefined;
     }
 
-    interface WriterOptions<TCommit extends Commit = Commit, TContext extends BaseContext = BaseContext>
-        extends BaseWriterOptions<TCommit, MergedContext<TContext>>
-    {
+    interface WriterOptions<
+        TCommit extends Commit = Commit,
+        TContext extends BaseContext = BaseContext,
+    > extends BaseWriterOptions<TCommit, MergedContext<TContext>> {
         /**
          * Last chance to modify your context before generating a changelog.
          *
@@ -340,7 +373,12 @@ declare namespace conventionalChangelogCore {
          * @remarks
          * If you overwrite this value the above context defaults will be gone.
          */
-        finalizeContext?: BaseWriterOptions<TCommit, MergedContext<TContext>>["finalizeContext"] | undefined;
+        finalizeContext?:
+            | BaseWriterOptions<
+                  TCommit,
+                  MergedContext<TContext>
+              >["finalizeContext"]
+            | undefined;
 
         /**
          * A function to get debug information.
@@ -375,10 +413,14 @@ declare namespace conventionalChangelogCore {
 
 type Context = conventionalChangelogCore.Context;
 type GitRawCommitsOptions = conventionalChangelogCore.GitRawCommitsOptions;
-type Options<TCommit extends Commit = Commit, TContext extends BaseContext = BaseContext> =
-    conventionalChangelogCore.Options<TCommit, TContext>;
+type Options<
+    TCommit extends Commit = Commit,
+    TContext extends BaseContext = BaseContext,
+> = conventionalChangelogCore.Options<TCommit, TContext>;
 type ParserOptions = conventionalChangelogCore.ParserOptions;
-type WriterOptions<TCommit extends Commit = Commit, TContext extends BaseContext = BaseContext> =
-    conventionalChangelogCore.WriterOptions<TCommit, TContext>;
+type WriterOptions<
+    TCommit extends Commit = Commit,
+    TContext extends BaseContext = BaseContext,
+> = conventionalChangelogCore.WriterOptions<TCommit, TContext>;
 
 export = conventionalChangelogCore;

@@ -1,10 +1,20 @@
 import * as React from "react";
-import { ReturnKeyType, ReturnKeyTypeAndroid, ReturnKeyTypeIOS, TextInputProps, TextStyle } from "react-native";
+import {
+    ReturnKeyType,
+    ReturnKeyTypeAndroid,
+    ReturnKeyTypeIOS,
+    TextInputProps,
+    TextStyle,
+} from "react-native";
 
 export interface SearchBarProps {
     height: number;
     autoCorrect?: boolean | undefined;
-    returnKeyType?: ReturnKeyType | ReturnKeyTypeAndroid | ReturnKeyTypeIOS | undefined;
+    returnKeyType?:
+        | ReturnKeyType
+        | ReturnKeyTypeAndroid
+        | ReturnKeyTypeIOS
+        | undefined;
     placeholder?: string | undefined;
     padding?: number | undefined;
     inputStyle?: TextStyle | undefined;

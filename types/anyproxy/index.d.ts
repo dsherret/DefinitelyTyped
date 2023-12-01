@@ -46,7 +46,9 @@ export interface RuleModule {
     /** Introduction of this rule file. AnyProxy will read this field and give some tip to user. */
     summary?: string | undefined;
     /** Before sending request to server, AnyProxy will call beforeSendRequest with param requestDetail. */
-    beforeSendRequest?(requestDetail: RequestDetail): MaybePromise<BeforeSendRequestResult | null | undefined>;
+    beforeSendRequest?(
+        requestDetail: RequestDetail,
+    ): MaybePromise<BeforeSendRequestResult | null | undefined>;
     /** Before sending response to client, AnyProxy will call beforeSendResponse with param requestDetail responseDetail. */
     beforeSendResponse?(
         requestDetail: RequestDetail,
@@ -57,12 +59,17 @@ export interface RuleModule {
      * If configed with forceProxyHttps in launching, AnyProxy will skip calling this method.
      * Only by returning true, AnyProxy will try to replace the certificate and intercept the https request.
      */
-    beforeDealHttpsRequest?(requestDetail: BeforeDealHttpsRequestDetail): MaybePromise<boolean>;
+    beforeDealHttpsRequest?(
+        requestDetail: BeforeDealHttpsRequestDetail,
+    ): MaybePromise<boolean>;
     /**
      * AnyProxy will call this method when an error happened in request handling.
      * Errors usually are issued during requesting, e.g. DNS failure, request timeout.
      */
-    onError?(requestDetail: RequestDetail, err: Error): MaybePromise<BeforeSendResponseResult | null | undefined>;
+    onError?(
+        requestDetail: RequestDetail,
+        err: Error,
+    ): MaybePromise<BeforeSendResponseResult | null | undefined>;
     /** AnyProxy will call this method when failed to connect target server in https request. */
     onConnectError?(
         requestDetail: RequestDetail,
@@ -187,17 +194,30 @@ export class ProxyRecorder extends EventEmitter {
 
     getDecodedBody(id: number, cb?: (err: Error, content: any) => void): void;
 
-    getDecodedWsMessage(id: number, cb?: (err: Error, content: any) => void): void;
+    getDecodedWsMessage(
+        id: number,
+        cb?: (err: Error, content: any) => void,
+    ): void;
 
-    getSingleRecord(id: number, cb: (err: Error, record: RecorderInfo) => void): void;
+    getSingleRecord(
+        id: number,
+        cb: (err: Error, record: RecorderInfo) => void,
+    ): void;
 
     getSummaryList(cb: (err: Error, records: RecorderInfo[]) => void): void;
 
-    getRecords(idStart: number, limit: number, cb: (err: Error, records: RecorderInfo[]) => void): void;
+    getRecords(
+        idStart: number,
+        limit: number,
+        cb: (err: Error, records: RecorderInfo[]) => void,
+    ): void;
 
     clear(): void;
 
-    getCacheFile(fileName: string, cb: (err: Error, filePath: string) => void): void;
+    getCacheFile(
+        fileName: string,
+        cb: (err: Error, filePath: string) => void,
+    ): void;
 }
 
 export class ProxyWebServer extends EventEmitter {
@@ -224,7 +244,11 @@ export namespace utils {
     /** Manage the system proxy config. sudo password may be required. */
     namespace systemProxyMgr {
         /** Enable global system proxy with specified params. sudo password may be required. */
-        function enableGlobalProxy(host: string, port: string | number, networkType?: NetworkType): void;
+        function enableGlobalProxy(
+            host: string,
+            port: string | number,
+            networkType?: NetworkType,
+        ): void;
         /** Disable global system proxy. sudo password may be required. */
         function disableGlobalProxy(networkType?: NetworkType): void;
     }
@@ -235,6 +259,8 @@ export namespace utils {
         function ifRootCAFileExists(): boolean;
 
         /** Generate a rootCA */
-        function generateRootCA(callback: (err: Error, keyPath: string) => void): void;
+        function generateRootCA(
+            callback: (err: Error, keyPath: string) => void,
+        ): void;
     }
 }

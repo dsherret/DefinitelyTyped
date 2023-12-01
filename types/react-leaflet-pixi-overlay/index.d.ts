@@ -13,7 +13,8 @@ export interface MarkerPropsPixiOverlay {
     markerSpriteAnchor?: [number, number];
 }
 
-export interface MarkersPropsPixiOverlay extends Array<MarkerPropsPixiOverlay> {}
+export interface MarkersPropsPixiOverlay
+    extends Array<MarkerPropsPixiOverlay> {}
 
 export interface PixiOverlayProps {
     markers: MarkersPropsPixiOverlay;

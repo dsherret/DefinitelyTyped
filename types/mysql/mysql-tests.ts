@@ -17,8 +17,7 @@ connection.query("SELECT 1 + 1 AS solution", (err, rows, fields) => {
     console.log("The solution is: ", rows[0].solution);
 });
 
-connection.end(err => {
-});
+connection.end((err) => {});
 
 connection = mysql.createConnection({
     host: "example.org",
@@ -26,7 +25,7 @@ connection = mysql.createConnection({
     password: "secret",
 });
 
-connection.connect(err => {
+connection.connect((err) => {
     if (err) {
         console.error(`error connecting: ${err.stack}`);
         return;
@@ -60,13 +59,13 @@ connection = mysql.createConnection({
     },
 });
 
-connection.end(err => {
+connection.end((err) => {
     // The connection is terminated now
 });
 
 connection.destroy();
 
-connection.changeUser({ user: "john" }, err => {
+connection.changeUser({ user: "john" }, (err) => {
     if (err) console.error("SHOULD BE ERROR");
 });
 
@@ -81,17 +80,27 @@ let sql = `SELECT * FROM users WHERE id = ${connection.escape(userId)}`;
 connection.query(sql, (err, results) => {
     // ...
 });
-connection.query("SELECT * FROM users WHERE id = ?", [userId], (err, results) => {
-    // ...
-});
+connection.query(
+    "SELECT * FROM users WHERE id = ?",
+    [userId],
+    (err, results) => {
+        // ...
+    },
+);
 
 const post = { id: 1, title: "Hello MySQL" };
-const queryx = connection.query("INSERT INTO posts SET ?", post, (err, result) => {
-    // Neat!
-});
+const queryx = connection.query(
+    "INSERT INTO posts SET ?",
+    post,
+    (err, result) => {
+        // Neat!
+    },
+);
 console.log(queryx.sql); // INSERT INTO posts SET `id` = 1, `title` = 'Hello MySQL'
 
-const queryStr = `SELECT * FROM posts WHERE title=${mysql.escape("Hello MySQL")}`;
+const queryStr = `SELECT * FROM posts WHERE title=${mysql.escape(
+    "Hello MySQL",
+)}`;
 
 console.log(queryStr); // SELECT * FROM posts WHERE title='Hello MySQL'
 
@@ -109,9 +118,13 @@ connection.query(sql, (err, results) => {
 
 const userIdNum = 1;
 const columns = ["username", "email"];
-const queryy = connection.query("SELECT ?? FROM ?? WHERE id = ?", [columns, "users", userIdNum], (err, results) => {
-    // ...
-});
+const queryy = connection.query(
+    "SELECT ?? FROM ?? WHERE id = ?",
+    [columns, "users", userIdNum],
+    (err, results) => {
+        // ...
+    },
+);
 
 console.log(queryy.sql); // SELECT `username`, `email` FROM `users` WHERE id = 1
 
@@ -119,7 +132,7 @@ sql = "SELECT * FROM ?? WHERE ?? = ?";
 const inserts = ["users", "id", userId];
 sql = mysql.format(sql, inserts);
 
-connection.config.queryFormat = function(query, values) {
+connection.config.queryFormat = function (query, values) {
     if (!values) return query;
     return query.replace(/\:(\w+)/g, (txt: string, key: string) => {
         if (values.hasOwnProperty(key)) {
@@ -130,23 +143,38 @@ connection.config.queryFormat = function(query, values) {
 };
 
 // $ExpectType string
-connection.config.queryFormat("UPDATE posts SET title = :title", { title: "Hello MySQL" });
+connection.config.queryFormat("UPDATE posts SET title = :title", {
+    title: "Hello MySQL",
+});
 
 connection.query("UPDATE posts SET title = :title", { title: "Hello MySQL" });
-connection.query({ sql: "UPDATE posts SET title = :title" }, { title: "Hello MySQL" });
-connection.query({ sql: "UPDATE posts SET title = :title" }, { title: "Hello MySQL" }, (err, result) => {});
+connection.query(
+    { sql: "UPDATE posts SET title = :title" },
+    { title: "Hello MySQL" },
+);
+connection.query(
+    { sql: "UPDATE posts SET title = :title" },
+    { title: "Hello MySQL" },
+    (err, result) => {},
+);
 
-const s: stream.Readable = connection.query("UPDATE posts SET title = :title", { title: "Hello MySQL" }).stream({
-    highWaterMark: 5,
-});
+const s: stream.Readable = connection
+    .query("UPDATE posts SET title = :title", { title: "Hello MySQL" })
+    .stream({
+        highWaterMark: 5,
+    });
 
-connection.query("INSERT INTO posts SET ?", { title: "test" }, (err, result) => {
-    if (err) throw err;
+connection.query(
+    "INSERT INTO posts SET ?",
+    { title: "test" },
+    (err, result) => {
+        if (err) throw err;
 
-    console.log(result.insertId);
-});
+        console.log(result.insertId);
+    },
+);
 
-connection.query("DELETE FROM posts WHERE title = \"wrong\"", (err, result) => {
+connection.query('DELETE FROM posts WHERE title = "wrong"', (err, result) => {
     if (err) throw err;
 
     console.log(`deleted ${result.affectedRows} rows`);
@@ -165,12 +193,12 @@ connection = mysql.createConnection({
     password: "test",
 });
 
-connection.connect(err => {
+connection.connect((err) => {
     if (err) throw err;
     console.log(`connected as id ${connection.threadId}`);
 });
 
-connection.ping(err => {
+connection.ping((err) => {
     if (err) throw err;
     console.log("Ping was successful");
 });
@@ -186,7 +214,10 @@ const poolConfig = {
 
 let pool = mysql.createPool(poolConfig);
 
-console.log("Connection timezone config:", pool.config.connectionConfig.timezone);
+console.log(
+    "Connection timezone config:",
+    pool.config.connectionConfig.timezone,
+);
 
 pool.query("SELECT 1 + 1 AS solution", (err, rows, fields) => {
     if (err) throw err;
@@ -232,31 +263,25 @@ poolCluster.add("SLAVE1", poolConfig);
 poolCluster.add("SLAVE2", poolConfig);
 
 // Target Group : ALL(anonymous, MASTER, SLAVE1-2), Selector : round-robin(default)
-poolCluster.getConnection((err, connection) => {
-});
+poolCluster.getConnection((err, connection) => {});
 
 // Target Group : MASTER, Selector : round-robin
-poolCluster.getConnection("MASTER", (err, connection) => {
-});
+poolCluster.getConnection("MASTER", (err, connection) => {});
 
 // Target Group : SLAVE1-2, Selector : order
 // If can't connect to SLAVE1, return SLAVE2. (remove SLAVE1 in the cluster)
-poolCluster.once("remove", nodeId => {
+poolCluster.once("remove", (nodeId) => {
     console.log(`REMOVED NODE : ${nodeId}`); // nodeId = SLAVE1
 });
 
-poolCluster.getConnection("SLAVE*", "ORDER", (err, connection) => {
-});
+poolCluster.getConnection("SLAVE*", "ORDER", (err, connection) => {});
 
 // of namespace : of(pattern, selector)
-poolCluster.of("*").getConnection((err, connection) => {
-});
+poolCluster.of("*").getConnection((err, connection) => {});
 
 pool = poolCluster.of("SLAVE*", "RANDOM");
-pool.getConnection((err, connection) => {
-});
-pool.getConnection((err, connection) => {
-});
+pool.getConnection((err, connection) => {});
+pool.getConnection((err, connection) => {});
 
 const poolClusterWithOptions = mysql.createPoolCluster({
     canRetry: true,
@@ -268,7 +293,10 @@ const poolClusterWithOptions = mysql.createPoolCluster({
 // raw
 // $ExpectType { toSqlString: () => string; }
 const CURRENT_TIMESTAMP = mysql.raw("CURRENT_TIMESTAMP()");
-const sqlString = mysql.format("UPDATE posts SET modified = ? WHERE id = ?", [CURRENT_TIMESTAMP, 42]);
+const sqlString = mysql.format("UPDATE posts SET modified = ? WHERE id = ?", [
+    CURRENT_TIMESTAMP,
+    42,
+]);
 
 // destroy
 poolCluster.end();
@@ -277,13 +305,13 @@ poolCluster.end();
 
 const queryF = connection.query("SELECT * FROM posts");
 queryF
-    .on("error", err => {
+    .on("error", (err) => {
         // Handle error, an 'end' event will be emitted after this as well
     })
-    .on("fields", fields => {
+    .on("fields", (fields) => {
         // the field packets for the rows to follow
     })
-    .on("result", row => {
+    .on("result", (row) => {
         // Pausing the connnection is useful if your processing involves I/O
         connection.pause();
 
@@ -300,7 +328,8 @@ queryF
     });
 
 const writable = fs.createWriteStream("file.txt");
-connection.query("SELECT * FROM posts")
+connection
+    .query("SELECT * FROM posts")
     .stream({ highWaterMark: 5 })
     .pipe(writable);
 
@@ -341,7 +370,7 @@ connection.query(options, (err, results) => {
     */
 });
 
-connection.beginTransaction(err => {
+connection.beginTransaction((err) => {
     const title = "title";
 
     if (err) {
@@ -362,7 +391,7 @@ connection.beginTransaction(err => {
                     throw err;
                 });
             }
-            connection.commit(err => {
+            connection.commit((err) => {
                 if (err) {
                     connection.rollback(() => {
                         throw err;
@@ -375,17 +404,20 @@ connection.beginTransaction(err => {
 });
 
 // Kill query after 60s
-connection.query({ sql: "SELECT COUNT(*) AS count FROM big_table", timeout: 60000 }, (err, rows: any) => {
-    if (err && err.code === "PROTOCOL_SEQUENCE_TIMEOUT") {
-        throw new Error("too long to count table rows!");
-    }
+connection.query(
+    { sql: "SELECT COUNT(*) AS count FROM big_table", timeout: 60000 },
+    (err, rows: any) => {
+        if (err && err.code === "PROTOCOL_SEQUENCE_TIMEOUT") {
+            throw new Error("too long to count table rows!");
+        }
 
-    if (err) {
-        throw err;
-    }
+        if (err) {
+            throw err;
+        }
 
-    console.log(`${rows[0].count} rows`);
-});
+        console.log(`${rows[0].count} rows`);
+    },
+);
 
 try {
     connection = mysql.createConnection({
@@ -396,21 +428,24 @@ try {
     console.error("SHOULD BE WRONG PORT ERROR: ", err);
 }
 
-connection.connect(err => {
+connection.connect((err) => {
     console.log(err.code); // 'ECONNREFUSED'
     console.log(err.fatal); // true
 });
 
-connection.query("SELECT 1", err => {
+connection.query("SELECT 1", (err) => {
     console.log(err.code); // 'ECONNREFUSED'
     console.log(err.fatal); // true
 });
 
-connection.query("USE name_of_db_that_does_not_exist", (err: mysql.MysqlError, rows: any) => {
-    // $ExpectType string
-    err.stack;
-    console.log(err.code); // 'ER_BAD_DB_ERROR'
-});
+connection.query(
+    "USE name_of_db_that_does_not_exist",
+    (err: mysql.MysqlError, rows: any) => {
+        // $ExpectType string
+        err.stack;
+        console.log(err.code); // 'ER_BAD_DB_ERROR'
+    },
+);
 
 connection.query("SELECT 1", (err, rows) => {
     console.log(err); // null
@@ -427,19 +462,20 @@ connection.on("error", onConnectionError);
 connection.query("USE name_of_db_that_does_not_exist");
 
 // I am Chuck Norris:
-connection.on("error", () => {
-});
+connection.on("error", () => {});
 
 connection = mysql.createConnection({ typeCast: false });
 
-const query1 = connection.query({ sql: "...", typeCast: false }, (err: Error, results: any) => {
-});
+const query1 = connection.query(
+    { sql: "...", typeCast: false },
+    (err: Error, results: any) => {},
+);
 
 connection.query({
     sql: "...",
     typeCast: (field, next: () => void) => {
         if (field.type === "TINY" && field.length === 1) {
-            return (field.string() === "1"); // 1 = true, 0 = false
+            return field.string() === "1"; // 1 = true, 0 = false
         }
         next();
     },
@@ -453,18 +489,22 @@ connection.query({
             if (string === null) {
                 return null;
             }
-            return (JSON.parse(string));
+            return JSON.parse(string);
         }
         next();
     },
 });
 
-connection.query({ sql: "...", values: ["test"] }, (err: Error, results: any) => {
-});
+connection.query(
+    { sql: "...", values: ["test"] },
+    (err: Error, results: any) => {},
+);
 
 connection = mysql.createConnection("mysql://localhost/test?flags=-FOUND_ROWS");
 connection = mysql.createConnection({ debug: true });
-connection = mysql.createConnection({ debug: ["ComQueryPacket", "RowDataPacket"] });
+connection = mysql.createConnection({
+    debug: ["ComQueryPacket", "RowDataPacket"],
+});
 connection = mysql.createConnection({ dateStrings: ["DATE"] });
 connection = mysql.createConnection({ dateStrings: true });
 connection = mysql.createConnection({ flags: "-FOUND_ROWS" });

@@ -1,5 +1,10 @@
 import { Identity } from "../../identity";
-import { AnchorType, Bounds, Transition, TransitionOptions } from "../../shapes";
+import {
+    AnchorType,
+    Bounds,
+    Transition,
+    TransitionOptions,
+} from "../../shapes";
 import Transport from "../../transport/transport";
 import { Application } from "../application/application";
 import { Base } from "../base";
@@ -858,7 +863,11 @@ export declare class _Window extends WebContents<WindowEvents> {
      * @return {Promise.<void>}
      * @tutorial Window.moveBy
      */
-    moveBy(deltaLeft: number, deltaTop: number, options?: WindowMovementOptions): Promise<void>;
+    moveBy(
+        deltaLeft: number,
+        deltaTop: number,
+        options?: WindowMovementOptions,
+    ): Promise<void>;
     /**
      * Moves the window to a specified location.
      * @param { number } left The left position of the window
@@ -867,7 +876,11 @@ export declare class _Window extends WebContents<WindowEvents> {
      * @return {Promise.<void>}
      * @tutorial Window.moveTo
      */
-    moveTo(left: number, top: number, options?: WindowMovementOptions): Promise<void>;
+    moveTo(
+        left: number,
+        top: number,
+        options?: WindowMovementOptions,
+    ): Promise<void>;
     /**
      * Resizes the window by a specified amount.
      * @param { number } deltaWidth The change in the width of the window
@@ -896,7 +909,12 @@ export declare class _Window extends WebContents<WindowEvents> {
      * @return {Promise.<void>}
      * @tutorial Window.resizeTo
      */
-    resizeTo(width: number, height: number, anchor: AnchorType, options?: WindowMovementOptions): Promise<void>;
+    resizeTo(
+        width: number,
+        height: number,
+        anchor: AnchorType,
+        options?: WindowMovementOptions,
+    ): Promise<void>;
     /**
      * Restores the window to its normal state (i.e., unminimized, unmaximized).
      * @return {Promise.<void>}
@@ -937,7 +955,12 @@ export declare class _Window extends WebContents<WindowEvents> {
      * @return {Promise.<void>}
      * @tutorial Window.showAt
      */
-    showAt(left: number, top: number, force?: boolean, options?: WindowMovementOptions): Promise<void>;
+    showAt(
+        left: number,
+        top: number,
+        force?: boolean,
+        options?: WindowMovementOptions,
+    ): Promise<void>;
     /**
      * Shows the Chromium Developer Tools
      * @return {Promise.<void>}

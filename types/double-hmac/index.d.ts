@@ -23,4 +23,8 @@ export = compare;
  *   assert.ok(equal)
  * })
  */
-declare function compare(a: Buffer, b: Buffer, cb: (err: Error | null, equal: boolean) => void): void;
+declare function compare(
+    a: Buffer,
+    b: Buffer,
+    cb: (err: Error | null, equal: boolean) => void,
+): void;

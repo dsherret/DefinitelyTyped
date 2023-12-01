@@ -24,7 +24,9 @@ function loggingMiddleware() {
     };
 }
 
-const mockStoreCreator: MockStoreCreator<number> = configureStore<number>([loggingMiddleware]);
+const mockStoreCreator: MockStoreCreator<number> = configureStore<number>([
+    loggingMiddleware,
+]);
 const initialState = 0;
 
 const store: MockStore<number> = mockStoreCreator(initialState);

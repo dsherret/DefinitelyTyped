@@ -1,8 +1,8 @@
 import * as React from "react";
 
 export interface AutosizeInputProps
-    extends React.InputHTMLAttributes<HTMLInputElement>, React.ClassAttributes<HTMLInputElement>
-{
+    extends React.InputHTMLAttributes<HTMLInputElement>,
+        React.ClassAttributes<HTMLInputElement> {
     inputClassName?: string | undefined;
     inputRef?: ((instance: HTMLInputElement | null) => void) | undefined;
     inputStyle?: React.CSSProperties | undefined;

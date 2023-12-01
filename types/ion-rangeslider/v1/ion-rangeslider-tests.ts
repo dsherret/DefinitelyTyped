@@ -17,13 +17,13 @@ sliderInputElement.ionRangeSlider({
     prettify: true,
     disable: false,
     values: ["a", "b", "c"],
-    onLoad: function(obj) {
+    onLoad: function (obj) {
         console.log(obj);
     },
-    onChange: function(obj) {
+    onChange: function (obj) {
         console.log(obj);
     },
-    onFinish: function(obj) {
+    onFinish: function (obj) {
         console.log(obj);
     },
 });

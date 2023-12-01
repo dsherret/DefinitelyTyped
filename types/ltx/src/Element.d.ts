@@ -53,11 +53,24 @@ export default class Element {
 
     getChildren(name: string, xmlns?: string): Element[];
 
-    getChildByAttr(attr: string, val: any, xmlns?: string, recursive?: boolean): Element | undefined;
+    getChildByAttr(
+        attr: string,
+        val: any,
+        xmlns?: string,
+        recursive?: boolean,
+    ): Element | undefined;
 
-    getChildrenByAttr(attr: string, val: any, xmlns?: string, recursive?: boolean): Element[];
+    getChildrenByAttr(
+        attr: string,
+        val: any,
+        xmlns?: string,
+        recursive?: boolean,
+    ): Element[];
 
-    getChildrenByFilter(filter: (child: Node) => boolean, recursive?: boolean): Element[];
+    getChildrenByFilter(
+        filter: (child: Node) => boolean,
+        recursive?: boolean,
+    ): Element[];
 
     getText(): string;
 

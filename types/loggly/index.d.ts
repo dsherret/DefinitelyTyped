@@ -4,10 +4,12 @@ export declare interface LogglyOptions {
     tags?: string[] | undefined;
     json?: boolean | undefined;
     host?: string | undefined;
-    auth?: {
-        username: string;
-        password: string;
-    } | undefined;
+    auth?:
+        | {
+              username: string;
+              password: string;
+          }
+        | undefined;
 }
 
 declare interface SharedSearchOptions {
@@ -43,10 +45,20 @@ export declare function createClient(options: LogglyOptions): LogglyInstance;
 export declare const version: number;
 
 export declare interface LogglyInstance {
-    log(message: any, tags?: string[], callback?: (err: any, results: any) => void): this;
+    log(
+        message: any,
+        tags?: string[],
+        callback?: (err: any, results: any) => void,
+    ): this;
     log(message: any, callback?: (err: any, results: any) => void): this;
-    search(query: string, callback?: (err: any, results: SearchResults) => void): Search;
-    search(options: SearchOptions, callback?: (err: any, results: SearchResults) => void): Search;
+    search(
+        query: string,
+        callback?: (err: any, results: SearchResults) => void,
+    ): Search;
+    search(
+        options: SearchOptions,
+        callback?: (err: any, results: SearchResults) => void,
+    ): Search;
 }
 
 export declare interface Search {

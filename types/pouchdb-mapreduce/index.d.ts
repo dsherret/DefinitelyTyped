@@ -7,7 +7,10 @@ declare namespace PouchDB {
      *
      * @param emit CouchDB does not support emit as an argument and maps defined this way will always run locally
      */
-    type Map<Content extends {}, Result> = (doc: Content, emit?: (key: any, value: Content | Result) => void) => void;
+    type Map<Content extends {}, Result> = (
+        doc: Content,
+        emit?: (key: any, value: Content | Result) => void,
+    ) => void;
     /**
      * CouchDB-style Reduction function
      *
@@ -23,13 +26,21 @@ declare namespace PouchDB {
     interface Filter<Content extends {}, Reduction> {
         // Assume that Content | Reduction is enough leverage in most cases to handle intermediate map emits
         map: Map<Content, Reduction>;
-        reduce?: Reducer<Content, Reduction> | BuiltInReducers | string | undefined;
+        reduce?:
+            | Reducer<Content, Reduction>
+            | BuiltInReducers
+            | string
+            | undefined;
     }
 
     namespace Query {
         interface Options<Content extends {}, Reduction> {
             /** Reduce function, or the string name of a built-in function: '_sum', '_count', or '_stats'. */
-            reduce?: Reducer<Content, Reduction> | BuiltInReducers | boolean | undefined;
+            reduce?:
+                | Reducer<Content, Reduction>
+                | BuiltInReducers
+                | boolean
+                | undefined;
             /** Include the document in each row in the doc field. */
             include_docs?: boolean | undefined;
             /** Include conflicts in the _conflicts field of a doc. */
@@ -81,7 +92,9 @@ declare namespace PouchDB {
                 id: any;
                 key: any;
                 value: any;
-                doc?: Core.ExistingDocument<Content & Core.AllDocsMeta> | undefined;
+                doc?:
+                    | Core.ExistingDocument<Content & Core.AllDocsMeta>
+                    | undefined;
             }>;
         }
     }
@@ -110,10 +123,7 @@ declare namespace PouchDB {
          * Invoke a map/reduce function, which allows you to perform more complex queries
          * on PouchDB than what you get with allDocs().
          */
-        query<
-            Result extends {},
-            Model extends {} = Content,
-        >(
+        query<Result extends {}, Model extends {} = Content>(
             fun: string | Map<Model, Result> | Filter<Model, Result>,
             opts: Query.Options<Model, Result>,
             callback: Core.Callback<Query.Response<Result>>,

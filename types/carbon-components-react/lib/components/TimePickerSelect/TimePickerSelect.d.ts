@@ -1,6 +1,7 @@
 import * as React from "react";
 
-export interface TimePickerSelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "id"> {
+export interface TimePickerSelectProps
+    extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "id"> {
     /**
      * @deprecated
      */

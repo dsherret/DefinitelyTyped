@@ -38,10 +38,15 @@ export declare class ColorSampler {
     /**
      * @ignore
      */
-    constructor(docId: number, index: number, position: {
-        x: number;
-        y: number;
-    }, color: SolidColor | NoColor);
+    constructor(
+        docId: number,
+        index: number,
+        position: {
+            x: number;
+            y: number;
+        },
+        color: SolidColor | NoColor,
+    );
     /**
      * The class name of the referenced object: *"ColorSampler"*.
      * @minVersion 24.0
@@ -81,8 +86,5 @@ export declare class ColorSampler {
      * @param position Object literal with target coordinates in pixels `{x: number, y: number}`.
      * @minVersion 24.0
      */
-    move(position: {
-        x: number;
-        y: number;
-    }): void;
+    move(position: { x: number; y: number }): void;
 }

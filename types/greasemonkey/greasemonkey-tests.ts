@@ -50,17 +50,17 @@ async function getBooleanWithDefault() {
 }
 
 async function getStringValue() {
-    const e = await GM.getValue("e") as string | undefined;
+    const e = (await GM.getValue("e")) as string | undefined;
     return e;
 }
 
 async function getNumberValue() {
-    const f = await GM.getValue("f") as number | undefined;
+    const f = (await GM.getValue("f")) as number | undefined;
     return f;
 }
 
 async function getBooleanValue() {
-    const g = await GM.getValue("g") as boolean | undefined;
+    const g = (await GM.getValue("g")) as boolean | undefined;
     return g;
 }
 
@@ -77,15 +77,15 @@ GM.deleteValue("d").then(() => {
 
 // GM.listValues
 
-GM.listValues().then(values =>
+GM.listValues().then((values) =>
     values.forEach(async (name: string) => {
         console.log(name + ":", await GM.getValue(name));
-    })
+    }),
 );
 
 // GM.getResourceUrl
 
-GM.getResourceUrl("some_res").then(url => {
+GM.getResourceUrl("some_res").then((url) => {
     console.log("Resource url:", url);
 });
 

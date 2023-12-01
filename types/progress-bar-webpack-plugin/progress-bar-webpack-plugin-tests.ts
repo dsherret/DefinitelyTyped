@@ -14,7 +14,7 @@ const configuration: webpack.Configuration = {
             curr: 2,
             incomplete: " ",
             width: 20,
-            customSummary: summary => {
+            customSummary: (summary) => {
                 console.log(summary);
                 // rest of the code ...
             },

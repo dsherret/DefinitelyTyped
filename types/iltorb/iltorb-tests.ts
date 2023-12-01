@@ -19,29 +19,28 @@ const myMode: br.BrotliMode = mode;
 const myQuality: br.BrotliCompressionQuality = quality;
 
 const onCompress = (err1: Error | null | undefined, compressed: Buffer) => {
-    br.decompress(compressed, (err2: Error | null | undefined, decompressed: Buffer) => {
-        console.log(decompressed.toString());
-    });
+    br.decompress(
+        compressed,
+        (err2: Error | null | undefined, decompressed: Buffer) => {
+            console.log(decompressed.toString());
+        },
+    );
 };
 
 br.compress(Buffer.from("foo", "utf8"), onCompress);
 
 br.compress(Buffer.from("foo", "utf8"), opts, onCompress);
 
-br
-    .compress(Buffer.from("foobar"))
-    .then(compressedData => {
-        br.decompress(compressedData).then(data => {
-            console.log(data.equals(Buffer.from("foobar")));
-        });
+br.compress(Buffer.from("foobar")).then((compressedData) => {
+    br.decompress(compressedData).then((data) => {
+        console.log(data.equals(Buffer.from("foobar")));
     });
+});
 
 const stream = br.compressStream();
 stream.flush();
 
-createReadStream(__filename)
-    .pipe(stream)
-    .pipe(createWriteStream("foo.ts"));
+createReadStream(__filename).pipe(stream).pipe(createWriteStream("foo.ts"));
 
 createReadStream(__dirname)
     .pipe(br.compressStream(opts))

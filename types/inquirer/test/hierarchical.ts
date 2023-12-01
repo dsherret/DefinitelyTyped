@@ -26,12 +26,14 @@ const directionsPrompt: DistinctQuestion<RPGAnswers> = {
 };
 
 function main() {
-    console.log("You find youself in a small room, there is a door in front of you.");
+    console.log(
+        "You find youself in a small room, there is a door in front of you.",
+    );
     exitHouse();
 }
 
 function exitHouse() {
-    inquirer.prompt(directionsPrompt).then(answers => {
+    inquirer.prompt(directionsPrompt).then((answers) => {
         if (answers.direction === "Forward") {
             console.log("You find yourself in a forest");
             console.log(
@@ -46,11 +48,13 @@ function exitHouse() {
 }
 
 function encounter1() {
-    inquirer.prompt(directionsPrompt).then(answers => {
+    inquirer.prompt(directionsPrompt).then((answers) => {
         const direction = answers.direction;
         if (direction === "Forward") {
             console.log("You attempt to fight the wolf");
-            console.log("Theres a stick and some stones lying around you could use as a weapon");
+            console.log(
+                "Theres a stick and some stones lying around you could use as a weapon",
+            );
             encounter2b();
         } else if (direction === "Right") {
             console.log("You befriend the dwarf");
@@ -64,7 +68,7 @@ function encounter1() {
 }
 
 function encounter2a() {
-    inquirer.prompt(directionsPrompt).then(answers => {
+    inquirer.prompt(directionsPrompt).then((answers) => {
         const direction = answers.direction;
         if (direction === "Forward") {
             let output = "You find a painted wooden sign that says:";
@@ -87,7 +91,12 @@ function encounter2b() {
             type: "list",
             name: "weapon",
             message: "Pick one",
-            choices: ["Use the stick", "Grab a large rock", "Try and make a run for it", "Attack the wolf unarmed"],
+            choices: [
+                "Use the stick",
+                "Grab a large rock",
+                "Try and make a run for it",
+                "Attack the wolf unarmed",
+            ],
         })
         .then(() => {
             console.log("The wolf mauls you. You die. The end.");

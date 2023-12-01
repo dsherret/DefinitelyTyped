@@ -4,7 +4,7 @@ import PQClean = require("pqclean");
 {
     // $ExpectType Promise<GenerateKeyPairResult>
     const keyPairPromise = PQClean.kem.generateKeyPair("mceliece8192128");
-    keyPairPromise.then(result => {
+    keyPairPromise.then((result) => {
         // $ExpectType PublicKey
         const publicKey = result.publicKey;
         // $ExpectType PrivateKey
@@ -23,11 +23,14 @@ import PQClean = require("pqclean");
         // $ExpectType PublicKey
         new PQClean.kem.PublicKey(publicKey.algorithm.name, publicKey.export());
         // $ExpectType PrivateKey
-        new PQClean.kem.PrivateKey(privateKey.algorithm.name, privateKey.export());
+        new PQClean.kem.PrivateKey(
+            privateKey.algorithm.name,
+            privateKey.export(),
+        );
 
         // $ExpectType Promise<GenerateKeyResult>
         const generateKeyPromise = publicKey.generateKey();
-        generateKeyPromise.then(result => {
+        generateKeyPromise.then((result) => {
             // $ExpectType ArrayBuffer
             const key = result.key;
             // $ExpectType ArrayBuffer
@@ -35,7 +38,7 @@ import PQClean = require("pqclean");
 
             // $ExpectType Promise<ArrayBuffer>
             const decryptKeyPromise = privateKey.decryptKey(encryptedKey);
-            decryptKeyPromise.then(receivedKey => {
+            decryptKeyPromise.then((receivedKey) => {
                 // $ExpectType ArrayBuffer
                 receivedKey;
             });
@@ -70,7 +73,7 @@ import PQClean = require("pqclean");
 {
     // $ExpectType Promise<GenerateKeyPairResult>
     const keyPairPromise = PQClean.sign.generateKeyPair("falcon-1024");
-    keyPairPromise.then(result => {
+    keyPairPromise.then((result) => {
         // $ExpectType PublicKey
         const publicKey = result.publicKey;
         // $ExpectType PrivateKey
@@ -87,18 +90,24 @@ import PQClean = require("pqclean");
         privateKey.export();
 
         // $ExpectType PublicKey
-        new PQClean.sign.PublicKey(publicKey.algorithm.name, publicKey.export());
+        new PQClean.sign.PublicKey(
+            publicKey.algorithm.name,
+            publicKey.export(),
+        );
         // $ExpectType PrivateKey
-        new PQClean.sign.PrivateKey(privateKey.algorithm.name, privateKey.export());
+        new PQClean.sign.PrivateKey(
+            privateKey.algorithm.name,
+            privateKey.export(),
+        );
 
         const message = new ArrayBuffer(100);
 
         // $ExpectType Promise<ArrayBuffer>
         const signaturePromise = privateKey.sign(message);
-        signaturePromise.then(signature => {
+        signaturePromise.then((signature) => {
             // $ExpectType Promise<boolean>
             const verificationPromise = publicKey.verify(message, signature);
-            verificationPromise.then(valid => {
+            verificationPromise.then((valid) => {
                 // $ExpectType boolean
                 valid;
             });
@@ -178,12 +187,16 @@ import PQClean = require("pqclean");
                 const { key, encryptedKey } = result;
 
                 // $ExpectType void
-                mceliece.decryptKey(privateKey, encryptedKey, (err, receivedKey) => {
-                    // $ExpectType Error | null
-                    err;
-                    // $ExpectType Buffer
-                    receivedKey;
-                });
+                mceliece.decryptKey(
+                    privateKey,
+                    encryptedKey,
+                    (err, receivedKey) => {
+                        // $ExpectType Error | null
+                        err;
+                        // $ExpectType Buffer
+                        receivedKey;
+                    },
+                );
             });
         });
     }

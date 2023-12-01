@@ -81,28 +81,28 @@ intro
     .onbeforeexit(() => {
         alert("Before Exit");
     })
-    .onbeforechange(function(element) {
+    .onbeforechange(function (element) {
         element.getAttribute("class");
     })
-    .onafterchange(function(element) {
+    .onafterchange(function (element) {
         element.getAttribute("class");
     })
-    .onchange(function(element) {
+    .onchange(function (element) {
         element.getAttribute("class");
     })
-    .oncomplete(function() {
+    .oncomplete(function () {
         alert("Done");
     })
-    .onexit(function() {
+    .onexit(function () {
         alert("Exiting");
     })
-    .onhintsadded(function() {
+    .onhintsadded(function () {
         alert("Hints added");
     })
-    .onhintclick(function(hintElement, item, stepId) {
+    .onhintclick(function (hintElement, item, stepId) {
         hintElement.getAttribute("class");
     })
-    .onhintclose(function(stepId) {
+    .onhintclose(function (stepId) {
         alert("Hint close for Step ID " + stepId);
     })
     .addHints()
@@ -116,15 +116,9 @@ intro
 
 const currentStep: number | undefined = intro.currentStep();
 
-introWithElement
-    .start()
-    .exit()
-    .clone();
+introWithElement.start().exit().clone();
 
-introWithQuerySelector
-    .start()
-    .exit()
-    .clone();
+introWithQuerySelector.start().exit().clone();
 
 // test: intro.js should expose instance type #41108
 class SomeClass {

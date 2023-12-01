@@ -4,7 +4,7 @@ isAsyncFunction(() => {}); // $ExpectType boolean
 isAsyncFunction(null); // $ExpectType boolean
 
 // $ExpectType boolean
-isAsyncFunction(function*() {
+isAsyncFunction(function* () {
     yield 42;
     return Infinity;
 });

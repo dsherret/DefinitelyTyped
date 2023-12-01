@@ -90,7 +90,10 @@ export interface BankingAccountDetailV2 extends BankingAccount {
         /**
          * Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments
          */
-        maturityInstructions: "HOLD_ON_MATURITY" | "PAID_OUT_AT_MATURITY" | "ROLLED_OVER";
+        maturityInstructions:
+            | "HOLD_ON_MATURITY"
+            | "PAID_OUT_AT_MATURITY"
+            | "ROLLED_OVER";
         [k: string]: unknown;
     }>;
     creditCard?: {
@@ -225,53 +228,51 @@ export interface BankingAccountDetailV2 extends BankingAccount {
         /**
          * Rate tiers applicable for this rate
          */
-        tiers?:
-            | Array<{
+        tiers?: Array<{
+            /**
+             * Display text providing more information on the rate tier.
+             */
+            additionalInfo?: string | null;
+            /**
+             * Link to a web page with more information on this rate tier
+             */
+            additionalInfoUri?: string | null;
+            /**
+             * Defines a condition for the applicability of a tiered rate
+             */
+            applicabilityConditions?: {
                 /**
-                 * Display text providing more information on the rate tier.
+                 * Display text providing more information on the condition
                  */
                 additionalInfo?: string | null;
                 /**
-                 * Link to a web page with more information on this rate tier
+                 * Link to a web page with more information on this condition
                  */
                 additionalInfoUri?: string | null;
-                /**
-                 * Defines a condition for the applicability of a tiered rate
-                 */
-                applicabilityConditions?: {
-                    /**
-                     * Display text providing more information on the condition
-                     */
-                    additionalInfo?: string | null;
-                    /**
-                     * Link to a web page with more information on this condition
-                     */
-                    additionalInfoUri?: string | null;
-                    [k: string]: unknown;
-                };
-                /**
-                 * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-                 */
-                maximumValue?: number | null;
-                /**
-                 * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-                 */
-                minimumValue: number;
-                /**
-                 * A display name for the tier
-                 */
-                name: string;
-                /**
-                 * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-                 */
-                rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-                /**
-                 * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-                 */
-                unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
                 [k: string]: unknown;
-            }>
-            | null;
+            };
+            /**
+             * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+             */
+            maximumValue?: number | null;
+            /**
+             * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+             */
+            minimumValue: number;
+            /**
+             * A display name for the tier
+             */
+            name: string;
+            /**
+             * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+             */
+            rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+            /**
+             * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+             */
+            unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+            [k: string]: unknown;
+        }> | null;
         [k: string]: unknown;
     }>;
     /**
@@ -336,53 +337,51 @@ export interface BankingAccountDetailV2 extends BankingAccount {
         /**
          * Rate tiers applicable for this rate
          */
-        tiers?:
-            | Array<{
+        tiers?: Array<{
+            /**
+             * Display text providing more information on the rate tier.
+             */
+            additionalInfo?: string | null;
+            /**
+             * Link to a web page with more information on this rate tier
+             */
+            additionalInfoUri?: string | null;
+            /**
+             * Defines a condition for the applicability of a tiered rate
+             */
+            applicabilityConditions?: {
                 /**
-                 * Display text providing more information on the rate tier.
+                 * Display text providing more information on the condition
                  */
                 additionalInfo?: string | null;
                 /**
-                 * Link to a web page with more information on this rate tier
+                 * Link to a web page with more information on this condition
                  */
                 additionalInfoUri?: string | null;
-                /**
-                 * Defines a condition for the applicability of a tiered rate
-                 */
-                applicabilityConditions?: {
-                    /**
-                     * Display text providing more information on the condition
-                     */
-                    additionalInfo?: string | null;
-                    /**
-                     * Link to a web page with more information on this condition
-                     */
-                    additionalInfoUri?: string | null;
-                    [k: string]: unknown;
-                };
-                /**
-                 * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-                 */
-                maximumValue?: number | null;
-                /**
-                 * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-                 */
-                minimumValue: number;
-                /**
-                 * A display name for the tier
-                 */
-                name: string;
-                /**
-                 * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-                 */
-                rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-                /**
-                 * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-                 */
-                unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
                 [k: string]: unknown;
-            }>
-            | null;
+            };
+            /**
+             * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+             */
+            maximumValue?: number | null;
+            /**
+             * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+             */
+            minimumValue: number;
+            /**
+             * A display name for the tier
+             */
+            name: string;
+            /**
+             * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+             */
+            rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+            /**
+             * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+             */
+            unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+            [k: string]: unknown;
+        }> | null;
         [k: string]: unknown;
     }>;
     /**
@@ -483,88 +482,89 @@ export interface BankingAccountDetailV2 extends BankingAccount {
         /**
          * An optional list of discounts to this fee that may be available
          */
-        discounts?:
-            | Array<{
+        discounts?: Array<{
+            /**
+             * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+             */
+            accruedRate?: string | null;
+            /**
+             * Display text providing more information on the discount
+             */
+            additionalInfo?: string | null;
+            /**
+             * Link to a web page with more information on this discount
+             */
+            additionalInfoUri?: string | null;
+            /**
+             * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+             */
+            additionalValue?: string | null;
+            /**
+             * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+             */
+            amount?: string | null;
+            /**
+             * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+             */
+            balanceRate?: string | null;
+            /**
+             * Description of the discount
+             */
+            description: string;
+            /**
+             * The type of discount. See the next section for an overview of valid values and their meaning
+             */
+            discountType:
+                | "BALANCE"
+                | "DEPOSITS"
+                | "ELIGIBILITY_ONLY"
+                | "FEE_CAP"
+                | "PAYMENTS";
+            /**
+             * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
+             */
+            eligibility?: Array<{
                 /**
-                 * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                 */
-                accruedRate?: string | null;
-                /**
-                 * Display text providing more information on the discount
+                 * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
                  */
                 additionalInfo?: string | null;
                 /**
-                 * Link to a web page with more information on this discount
+                 * Link to a web page with more information on this eligibility constraint
                  */
                 additionalInfoUri?: string | null;
                 /**
-                 * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+                 * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
                  */
                 additionalValue?: string | null;
                 /**
-                 * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+                 * The type of the specific eligibility constraint for a discount
                  */
-                amount?: string | null;
-                /**
-                 * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                 */
-                balanceRate?: string | null;
-                /**
-                 * Description of the discount
-                 */
-                description: string;
-                /**
-                 * The type of discount. See the next section for an overview of valid values and their meaning
-                 */
-                discountType: "BALANCE" | "DEPOSITS" | "ELIGIBILITY_ONLY" | "FEE_CAP" | "PAYMENTS";
-                /**
-                 * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
-                 */
-                eligibility?:
-                    | Array<{
-                        /**
-                         * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                         */
-                        additionalInfo?: string | null;
-                        /**
-                         * Link to a web page with more information on this eligibility constraint
-                         */
-                        additionalInfoUri?: string | null;
-                        /**
-                         * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                         */
-                        additionalValue?: string | null;
-                        /**
-                         * The type of the specific eligibility constraint for a discount
-                         */
-                        discountEligibilityType:
-                            | "BUSINESS"
-                            | "EMPLOYMENT_STATUS"
-                            | "INTRODUCTORY"
-                            | "MAX_AGE"
-                            | "MIN_AGE"
-                            | "MIN_INCOME"
-                            | "MIN_TURNOVER"
-                            | "NATURAL_PERSON"
-                            | "OTHER"
-                            | "PENSION_RECIPIENT"
-                            | "RESIDENCY_STATUS"
-                            | "STAFF"
-                            | "STUDENT";
-                        [k: string]: unknown;
-                    }>
-                    | null;
-                /**
-                 * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                 */
-                feeRate?: string | null;
-                /**
-                 * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
-                 */
-                transactionRate?: string | null;
+                discountEligibilityType:
+                    | "BUSINESS"
+                    | "EMPLOYMENT_STATUS"
+                    | "INTRODUCTORY"
+                    | "MAX_AGE"
+                    | "MIN_AGE"
+                    | "MIN_INCOME"
+                    | "MIN_TURNOVER"
+                    | "NATURAL_PERSON"
+                    | "OTHER"
+                    | "PENSION_RECIPIENT"
+                    | "RESIDENCY_STATUS"
+                    | "STAFF"
+                    | "STUDENT";
                 [k: string]: unknown;
-            }>
-            | null;
+            }> | null;
+            /**
+             * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+             */
+            feeRate?: string | null;
+            /**
+             * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
+             */
+            transactionRate?: string | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The type of fee
          */
@@ -797,7 +797,12 @@ export interface BankingAccountV2 {
     /**
      * Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers
      */
-    accountOwnership: "UNKNOWN" | "ONE_PARTY" | "TWO_PARTY" | "MANY_PARTY" | "OTHER";
+    accountOwnership:
+        | "UNKNOWN"
+        | "ONE_PARTY"
+        | "TWO_PARTY"
+        | "MANY_PARTY"
+        | "OTHER";
     /**
      * Date that the account was created (if known)
      */
@@ -900,19 +905,17 @@ export interface BankingBalance {
     /**
      * Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards
      */
-    purses?:
-        | Array<{
-            /**
-             * The balance available for this additional currency purse
-             */
-            amount: string;
-            /**
-             * The currency for the purse
-             */
-            currency?: string | null;
-            [k: string]: unknown;
-        }>
-        | null;
+    purses?: Array<{
+        /**
+         * The balance available for this additional currency purse
+         */
+        amount: string;
+        /**
+         * The currency for the purse
+         */
+        currency?: string | null;
+        [k: string]: unknown;
+    }> | null;
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the banking api. */
@@ -1432,83 +1435,73 @@ export interface BankingProductAdditionalInformationV2 {
     /**
      * An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.
      */
-    additionalBundleUris?:
-        | Array<{
-            /**
-             * The URI describing the additional information
-             */
-            additionalInfoUri: string;
-            /**
-             * Display text providing more information about the document URI
-             */
-            description?: string | null;
-            [k: string]: unknown;
-        }>
-        | null;
+    additionalBundleUris?: Array<{
+        /**
+         * The URI describing the additional information
+         */
+        additionalInfoUri: string;
+        /**
+         * Display text providing more information about the document URI
+         */
+        description?: string | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.
      */
-    additionalEligibilityUris?:
-        | Array<{
-            /**
-             * The URI describing the additional information
-             */
-            additionalInfoUri: string;
-            /**
-             * Display text providing more information about the document URI
-             */
-            description?: string | null;
-            [k: string]: unknown;
-        }>
-        | null;
+    additionalEligibilityUris?: Array<{
+        /**
+         * The URI describing the additional information
+         */
+        additionalInfoUri: string;
+        /**
+         * Display text providing more information about the document URI
+         */
+        description?: string | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.
      */
-    additionalFeesAndPricingUris?:
-        | Array<{
-            /**
-             * The URI describing the additional information
-             */
-            additionalInfoUri: string;
-            /**
-             * Display text providing more information about the document URI
-             */
-            description?: string | null;
-            [k: string]: unknown;
-        }>
-        | null;
+    additionalFeesAndPricingUris?: Array<{
+        /**
+         * The URI describing the additional information
+         */
+        additionalInfoUri: string;
+        /**
+         * Display text providing more information about the document URI
+         */
+        description?: string | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.
      */
-    additionalOverviewUris?:
-        | Array<{
-            /**
-             * The URI describing the additional information
-             */
-            additionalInfoUri: string;
-            /**
-             * Display text providing more information about the document URI
-             */
-            description?: string | null;
-            [k: string]: unknown;
-        }>
-        | null;
+    additionalOverviewUris?: Array<{
+        /**
+         * The URI describing the additional information
+         */
+        additionalInfoUri: string;
+        /**
+         * Display text providing more information about the document URI
+         */
+        description?: string | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.
      */
-    additionalTermsUris?:
-        | Array<{
-            /**
-             * The URI describing the additional information
-             */
-            additionalInfoUri: string;
-            /**
-             * Display text providing more information about the document URI
-             */
-            description?: string | null;
-            [k: string]: unknown;
-        }>
-        | null;
+    additionalTermsUris?: Array<{
+        /**
+         * The URI describing the additional information
+         */
+        additionalInfoUri: string;
+        /**
+         * Display text providing more information about the document URI
+         */
+        description?: string | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.
      */
@@ -1605,7 +1598,12 @@ export interface BankingProductConstraint {
     /**
      * The type of constraint described.  See the next section for an overview of valid values and their meaning
      */
-    constraintType: "MAX_BALANCE" | "MAX_LIMIT" | "MIN_BALANCE" | "MIN_LIMIT" | "OPENING_BALANCE";
+    constraintType:
+        | "MAX_BALANCE"
+        | "MAX_LIMIT"
+        | "MIN_BALANCE"
+        | "MIN_LIMIT"
+        | "OPENING_BALANCE";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the banking api. */
@@ -1634,7 +1632,14 @@ export interface BankingProductDepositRate {
     /**
      * The type of rate (base, bonus, etc). See the next section for an overview of valid values and their meaning
      */
-    depositRateType: "BONUS" | "BUNDLE_BONUS" | "FIXED" | "FLOATING" | "INTRODUCTORY" | "MARKET_LINKED" | "VARIABLE";
+    depositRateType:
+        | "BONUS"
+        | "BUNDLE_BONUS"
+        | "FIXED"
+        | "FLOATING"
+        | "INTRODUCTORY"
+        | "MARKET_LINKED"
+        | "VARIABLE";
     /**
      * The rate to be applied
      */
@@ -1642,53 +1647,51 @@ export interface BankingProductDepositRate {
     /**
      * Rate tiers applicable for this rate
      */
-    tiers?:
-        | Array<{
+    tiers?: Array<{
+        /**
+         * Display text providing more information on the rate tier.
+         */
+        additionalInfo?: string | null;
+        /**
+         * Link to a web page with more information on this rate tier
+         */
+        additionalInfoUri?: string | null;
+        /**
+         * Defines a condition for the applicability of a tiered rate
+         */
+        applicabilityConditions?: {
             /**
-             * Display text providing more information on the rate tier.
+             * Display text providing more information on the condition
              */
             additionalInfo?: string | null;
             /**
-             * Link to a web page with more information on this rate tier
+             * Link to a web page with more information on this condition
              */
             additionalInfoUri?: string | null;
-            /**
-             * Defines a condition for the applicability of a tiered rate
-             */
-            applicabilityConditions?: {
-                /**
-                 * Display text providing more information on the condition
-                 */
-                additionalInfo?: string | null;
-                /**
-                 * Link to a web page with more information on this condition
-                 */
-                additionalInfoUri?: string | null;
-                [k: string]: unknown;
-            };
-            /**
-             * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-             */
-            maximumValue?: number | null;
-            /**
-             * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-             */
-            minimumValue: number;
-            /**
-             * A display name for the tier
-             */
-            name: string;
-            /**
-             * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-             */
-            rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-            /**
-             * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-             */
-            unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
             [k: string]: unknown;
-        }>
-        | null;
+        };
+        /**
+         * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+         */
+        maximumValue?: number | null;
+        /**
+         * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+         */
+        minimumValue: number;
+        /**
+         * A display name for the tier
+         */
+        name: string;
+        /**
+         * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+         */
+        rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+        /**
+         * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+         */
+        unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+        [k: string]: unknown;
+    }> | null;
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the banking api. */
@@ -1790,7 +1793,12 @@ export interface BankingProductDetailV4 extends BankingProductV4 {
         /**
          * The type of constraint described.  See the next section for an overview of valid values and their meaning
          */
-        constraintType: "MAX_BALANCE" | "MAX_LIMIT" | "MIN_BALANCE" | "MIN_LIMIT" | "OPENING_BALANCE";
+        constraintType:
+            | "MAX_BALANCE"
+            | "MAX_LIMIT"
+            | "MIN_BALANCE"
+            | "MIN_LIMIT"
+            | "OPENING_BALANCE";
         [k: string]: unknown;
     }>;
     /**
@@ -1866,88 +1874,89 @@ export interface BankingProductDetailV4 extends BankingProductV4 {
         /**
          * An optional list of discounts to this fee that may be available
          */
-        discounts?:
-            | Array<{
+        discounts?: Array<{
+            /**
+             * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+             */
+            accruedRate?: string | null;
+            /**
+             * Display text providing more information on the discount
+             */
+            additionalInfo?: string | null;
+            /**
+             * Link to a web page with more information on this discount
+             */
+            additionalInfoUri?: string | null;
+            /**
+             * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+             */
+            additionalValue?: string | null;
+            /**
+             * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+             */
+            amount?: string | null;
+            /**
+             * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+             */
+            balanceRate?: string | null;
+            /**
+             * Description of the discount
+             */
+            description: string;
+            /**
+             * The type of discount. See the next section for an overview of valid values and their meaning
+             */
+            discountType:
+                | "BALANCE"
+                | "DEPOSITS"
+                | "ELIGIBILITY_ONLY"
+                | "FEE_CAP"
+                | "PAYMENTS";
+            /**
+             * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
+             */
+            eligibility?: Array<{
                 /**
-                 * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                 */
-                accruedRate?: string | null;
-                /**
-                 * Display text providing more information on the discount
+                 * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
                  */
                 additionalInfo?: string | null;
                 /**
-                 * Link to a web page with more information on this discount
+                 * Link to a web page with more information on this eligibility constraint
                  */
                 additionalInfoUri?: string | null;
                 /**
-                 * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+                 * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
                  */
                 additionalValue?: string | null;
                 /**
-                 * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+                 * The type of the specific eligibility constraint for a discount
                  */
-                amount?: string | null;
-                /**
-                 * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                 */
-                balanceRate?: string | null;
-                /**
-                 * Description of the discount
-                 */
-                description: string;
-                /**
-                 * The type of discount. See the next section for an overview of valid values and their meaning
-                 */
-                discountType: "BALANCE" | "DEPOSITS" | "ELIGIBILITY_ONLY" | "FEE_CAP" | "PAYMENTS";
-                /**
-                 * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
-                 */
-                eligibility?:
-                    | Array<{
-                        /**
-                         * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                         */
-                        additionalInfo?: string | null;
-                        /**
-                         * Link to a web page with more information on this eligibility constraint
-                         */
-                        additionalInfoUri?: string | null;
-                        /**
-                         * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                         */
-                        additionalValue?: string | null;
-                        /**
-                         * The type of the specific eligibility constraint for a discount
-                         */
-                        discountEligibilityType:
-                            | "BUSINESS"
-                            | "EMPLOYMENT_STATUS"
-                            | "INTRODUCTORY"
-                            | "MAX_AGE"
-                            | "MIN_AGE"
-                            | "MIN_INCOME"
-                            | "MIN_TURNOVER"
-                            | "NATURAL_PERSON"
-                            | "OTHER"
-                            | "PENSION_RECIPIENT"
-                            | "RESIDENCY_STATUS"
-                            | "STAFF"
-                            | "STUDENT";
-                        [k: string]: unknown;
-                    }>
-                    | null;
-                /**
-                 * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                 */
-                feeRate?: string | null;
-                /**
-                 * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
-                 */
-                transactionRate?: string | null;
+                discountEligibilityType:
+                    | "BUSINESS"
+                    | "EMPLOYMENT_STATUS"
+                    | "INTRODUCTORY"
+                    | "MAX_AGE"
+                    | "MIN_AGE"
+                    | "MIN_INCOME"
+                    | "MIN_TURNOVER"
+                    | "NATURAL_PERSON"
+                    | "OTHER"
+                    | "PENSION_RECIPIENT"
+                    | "RESIDENCY_STATUS"
+                    | "STAFF"
+                    | "STUDENT";
                 [k: string]: unknown;
-            }>
-            | null;
+            }> | null;
+            /**
+             * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+             */
+            feeRate?: string | null;
+            /**
+             * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
+             */
+            transactionRate?: string | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The type of fee
          */
@@ -2014,53 +2023,51 @@ export interface BankingProductDetailV4 extends BankingProductV4 {
         /**
          * Rate tiers applicable for this rate
          */
-        tiers?:
-            | Array<{
+        tiers?: Array<{
+            /**
+             * Display text providing more information on the rate tier.
+             */
+            additionalInfo?: string | null;
+            /**
+             * Link to a web page with more information on this rate tier
+             */
+            additionalInfoUri?: string | null;
+            /**
+             * Defines a condition for the applicability of a tiered rate
+             */
+            applicabilityConditions?: {
                 /**
-                 * Display text providing more information on the rate tier.
+                 * Display text providing more information on the condition
                  */
                 additionalInfo?: string | null;
                 /**
-                 * Link to a web page with more information on this rate tier
+                 * Link to a web page with more information on this condition
                  */
                 additionalInfoUri?: string | null;
-                /**
-                 * Defines a condition for the applicability of a tiered rate
-                 */
-                applicabilityConditions?: {
-                    /**
-                     * Display text providing more information on the condition
-                     */
-                    additionalInfo?: string | null;
-                    /**
-                     * Link to a web page with more information on this condition
-                     */
-                    additionalInfoUri?: string | null;
-                    [k: string]: unknown;
-                };
-                /**
-                 * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-                 */
-                maximumValue?: number | null;
-                /**
-                 * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-                 */
-                minimumValue: number;
-                /**
-                 * A display name for the tier
-                 */
-                name: string;
-                /**
-                 * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-                 */
-                rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-                /**
-                 * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-                 */
-                unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
                 [k: string]: unknown;
-            }>
-            | null;
+            };
+            /**
+             * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+             */
+            maximumValue?: number | null;
+            /**
+             * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+             */
+            minimumValue: number;
+            /**
+             * A display name for the tier
+             */
+            name: string;
+            /**
+             * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+             */
+            rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+            /**
+             * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+             */
+            unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+            [k: string]: unknown;
+        }> | null;
         [k: string]: unknown;
     }>;
     /**
@@ -2125,53 +2132,51 @@ export interface BankingProductDetailV4 extends BankingProductV4 {
         /**
          * Rate tiers applicable for this rate
          */
-        tiers?:
-            | Array<{
+        tiers?: Array<{
+            /**
+             * Display text providing more information on the rate tier.
+             */
+            additionalInfo?: string | null;
+            /**
+             * Link to a web page with more information on this rate tier
+             */
+            additionalInfoUri?: string | null;
+            /**
+             * Defines a condition for the applicability of a tiered rate
+             */
+            applicabilityConditions?: {
                 /**
-                 * Display text providing more information on the rate tier.
+                 * Display text providing more information on the condition
                  */
                 additionalInfo?: string | null;
                 /**
-                 * Link to a web page with more information on this rate tier
+                 * Link to a web page with more information on this condition
                  */
                 additionalInfoUri?: string | null;
-                /**
-                 * Defines a condition for the applicability of a tiered rate
-                 */
-                applicabilityConditions?: {
-                    /**
-                     * Display text providing more information on the condition
-                     */
-                    additionalInfo?: string | null;
-                    /**
-                     * Link to a web page with more information on this condition
-                     */
-                    additionalInfoUri?: string | null;
-                    [k: string]: unknown;
-                };
-                /**
-                 * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-                 */
-                maximumValue?: number | null;
-                /**
-                 * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-                 */
-                minimumValue: number;
-                /**
-                 * A display name for the tier
-                 */
-                name: string;
-                /**
-                 * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-                 */
-                rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-                /**
-                 * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-                 */
-                unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
                 [k: string]: unknown;
-            }>
-            | null;
+            };
+            /**
+             * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+             */
+            maximumValue?: number | null;
+            /**
+             * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+             */
+            minimumValue: number;
+            /**
+             * A display name for the tier
+             */
+            name: string;
+            /**
+             * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+             */
+            rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+            /**
+             * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+             */
+            unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+            [k: string]: unknown;
+        }> | null;
         [k: string]: unknown;
     }>;
     [k: string]: unknown;
@@ -2210,44 +2215,47 @@ export interface BankingProductDiscount {
     /**
      * The type of discount. See the next section for an overview of valid values and their meaning
      */
-    discountType: "BALANCE" | "DEPOSITS" | "ELIGIBILITY_ONLY" | "FEE_CAP" | "PAYMENTS";
+    discountType:
+        | "BALANCE"
+        | "DEPOSITS"
+        | "ELIGIBILITY_ONLY"
+        | "FEE_CAP"
+        | "PAYMENTS";
     /**
      * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
      */
-    eligibility?:
-        | Array<{
-            /**
-             * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-             */
-            additionalInfo?: string | null;
-            /**
-             * Link to a web page with more information on this eligibility constraint
-             */
-            additionalInfoUri?: string | null;
-            /**
-             * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-             */
-            additionalValue?: string | null;
-            /**
-             * The type of the specific eligibility constraint for a discount
-             */
-            discountEligibilityType:
-                | "BUSINESS"
-                | "EMPLOYMENT_STATUS"
-                | "INTRODUCTORY"
-                | "MAX_AGE"
-                | "MIN_AGE"
-                | "MIN_INCOME"
-                | "MIN_TURNOVER"
-                | "NATURAL_PERSON"
-                | "OTHER"
-                | "PENSION_RECIPIENT"
-                | "RESIDENCY_STATUS"
-                | "STAFF"
-                | "STUDENT";
-            [k: string]: unknown;
-        }>
-        | null;
+    eligibility?: Array<{
+        /**
+         * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
+         */
+        additionalInfo?: string | null;
+        /**
+         * Link to a web page with more information on this eligibility constraint
+         */
+        additionalInfoUri?: string | null;
+        /**
+         * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
+         */
+        additionalValue?: string | null;
+        /**
+         * The type of the specific eligibility constraint for a discount
+         */
+        discountEligibilityType:
+            | "BUSINESS"
+            | "EMPLOYMENT_STATUS"
+            | "INTRODUCTORY"
+            | "MAX_AGE"
+            | "MIN_AGE"
+            | "MIN_INCOME"
+            | "MIN_TURNOVER"
+            | "NATURAL_PERSON"
+            | "OTHER"
+            | "PENSION_RECIPIENT"
+            | "RESIDENCY_STATUS"
+            | "STAFF"
+            | "STUDENT";
+        [k: string]: unknown;
+    }> | null;
     /**
      * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
      */
@@ -2413,88 +2421,89 @@ export interface BankingProductFee {
     /**
      * An optional list of discounts to this fee that may be available
      */
-    discounts?:
-        | Array<{
+    discounts?: Array<{
+        /**
+         * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+         */
+        accruedRate?: string | null;
+        /**
+         * Display text providing more information on the discount
+         */
+        additionalInfo?: string | null;
+        /**
+         * Link to a web page with more information on this discount
+         */
+        additionalInfoUri?: string | null;
+        /**
+         * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+         */
+        additionalValue?: string | null;
+        /**
+         * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+         */
+        amount?: string | null;
+        /**
+         * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+         */
+        balanceRate?: string | null;
+        /**
+         * Description of the discount
+         */
+        description: string;
+        /**
+         * The type of discount. See the next section for an overview of valid values and their meaning
+         */
+        discountType:
+            | "BALANCE"
+            | "DEPOSITS"
+            | "ELIGIBILITY_ONLY"
+            | "FEE_CAP"
+            | "PAYMENTS";
+        /**
+         * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
+         */
+        eligibility?: Array<{
             /**
-             * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-             */
-            accruedRate?: string | null;
-            /**
-             * Display text providing more information on the discount
+             * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
              */
             additionalInfo?: string | null;
             /**
-             * Link to a web page with more information on this discount
+             * Link to a web page with more information on this eligibility constraint
              */
             additionalInfoUri?: string | null;
             /**
-             * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+             * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
              */
             additionalValue?: string | null;
             /**
-             * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+             * The type of the specific eligibility constraint for a discount
              */
-            amount?: string | null;
-            /**
-             * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-             */
-            balanceRate?: string | null;
-            /**
-             * Description of the discount
-             */
-            description: string;
-            /**
-             * The type of discount. See the next section for an overview of valid values and their meaning
-             */
-            discountType: "BALANCE" | "DEPOSITS" | "ELIGIBILITY_ONLY" | "FEE_CAP" | "PAYMENTS";
-            /**
-             * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
-             */
-            eligibility?:
-                | Array<{
-                    /**
-                     * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                     */
-                    additionalInfo?: string | null;
-                    /**
-                     * Link to a web page with more information on this eligibility constraint
-                     */
-                    additionalInfoUri?: string | null;
-                    /**
-                     * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                     */
-                    additionalValue?: string | null;
-                    /**
-                     * The type of the specific eligibility constraint for a discount
-                     */
-                    discountEligibilityType:
-                        | "BUSINESS"
-                        | "EMPLOYMENT_STATUS"
-                        | "INTRODUCTORY"
-                        | "MAX_AGE"
-                        | "MIN_AGE"
-                        | "MIN_INCOME"
-                        | "MIN_TURNOVER"
-                        | "NATURAL_PERSON"
-                        | "OTHER"
-                        | "PENSION_RECIPIENT"
-                        | "RESIDENCY_STATUS"
-                        | "STAFF"
-                        | "STUDENT";
-                    [k: string]: unknown;
-                }>
-                | null;
-            /**
-             * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-             */
-            feeRate?: string | null;
-            /**
-             * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
-             */
-            transactionRate?: string | null;
+            discountEligibilityType:
+                | "BUSINESS"
+                | "EMPLOYMENT_STATUS"
+                | "INTRODUCTORY"
+                | "MAX_AGE"
+                | "MIN_AGE"
+                | "MIN_INCOME"
+                | "MIN_TURNOVER"
+                | "NATURAL_PERSON"
+                | "OTHER"
+                | "PENSION_RECIPIENT"
+                | "RESIDENCY_STATUS"
+                | "STAFF"
+                | "STUDENT";
             [k: string]: unknown;
-        }>
-        | null;
+        }> | null;
+        /**
+         * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+         */
+        feeRate?: string | null;
+        /**
+         * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
+         */
+        transactionRate?: string | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The type of fee
      */
@@ -2580,53 +2589,51 @@ export interface BankingProductLendingRateV2 {
     /**
      * Rate tiers applicable for this rate
      */
-    tiers?:
-        | Array<{
+    tiers?: Array<{
+        /**
+         * Display text providing more information on the rate tier.
+         */
+        additionalInfo?: string | null;
+        /**
+         * Link to a web page with more information on this rate tier
+         */
+        additionalInfoUri?: string | null;
+        /**
+         * Defines a condition for the applicability of a tiered rate
+         */
+        applicabilityConditions?: {
             /**
-             * Display text providing more information on the rate tier.
+             * Display text providing more information on the condition
              */
             additionalInfo?: string | null;
             /**
-             * Link to a web page with more information on this rate tier
+             * Link to a web page with more information on this condition
              */
             additionalInfoUri?: string | null;
-            /**
-             * Defines a condition for the applicability of a tiered rate
-             */
-            applicabilityConditions?: {
-                /**
-                 * Display text providing more information on the condition
-                 */
-                additionalInfo?: string | null;
-                /**
-                 * Link to a web page with more information on this condition
-                 */
-                additionalInfoUri?: string | null;
-                [k: string]: unknown;
-            };
-            /**
-             * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-             */
-            maximumValue?: number | null;
-            /**
-             * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-             */
-            minimumValue: number;
-            /**
-             * A display name for the tier
-             */
-            name: string;
-            /**
-             * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-             */
-            rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-            /**
-             * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-             */
-            unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
             [k: string]: unknown;
-        }>
-        | null;
+        };
+        /**
+         * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+         */
+        maximumValue?: number | null;
+        /**
+         * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+         */
+        minimumValue: number;
+        /**
+         * A display name for the tier
+         */
+        name: string;
+        /**
+         * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+         */
+        rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+        /**
+         * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+         */
+        unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+        [k: string]: unknown;
+    }> | null;
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the banking api. */
@@ -2705,83 +2712,73 @@ export interface BankingProductV4 {
         /**
          * An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.
          */
-        additionalBundleUris?:
-            | Array<{
-                /**
-                 * The URI describing the additional information
-                 */
-                additionalInfoUri: string;
-                /**
-                 * Display text providing more information about the document URI
-                 */
-                description?: string | null;
-                [k: string]: unknown;
-            }>
-            | null;
+        additionalBundleUris?: Array<{
+            /**
+             * The URI describing the additional information
+             */
+            additionalInfoUri: string;
+            /**
+             * Display text providing more information about the document URI
+             */
+            description?: string | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.
          */
-        additionalEligibilityUris?:
-            | Array<{
-                /**
-                 * The URI describing the additional information
-                 */
-                additionalInfoUri: string;
-                /**
-                 * Display text providing more information about the document URI
-                 */
-                description?: string | null;
-                [k: string]: unknown;
-            }>
-            | null;
+        additionalEligibilityUris?: Array<{
+            /**
+             * The URI describing the additional information
+             */
+            additionalInfoUri: string;
+            /**
+             * Display text providing more information about the document URI
+             */
+            description?: string | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.
          */
-        additionalFeesAndPricingUris?:
-            | Array<{
-                /**
-                 * The URI describing the additional information
-                 */
-                additionalInfoUri: string;
-                /**
-                 * Display text providing more information about the document URI
-                 */
-                description?: string | null;
-                [k: string]: unknown;
-            }>
-            | null;
+        additionalFeesAndPricingUris?: Array<{
+            /**
+             * The URI describing the additional information
+             */
+            additionalInfoUri: string;
+            /**
+             * Display text providing more information about the document URI
+             */
+            description?: string | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.
          */
-        additionalOverviewUris?:
-            | Array<{
-                /**
-                 * The URI describing the additional information
-                 */
-                additionalInfoUri: string;
-                /**
-                 * Display text providing more information about the document URI
-                 */
-                description?: string | null;
-                [k: string]: unknown;
-            }>
-            | null;
+        additionalOverviewUris?: Array<{
+            /**
+             * The URI describing the additional information
+             */
+            additionalInfoUri: string;
+            /**
+             * Display text providing more information about the document URI
+             */
+            description?: string | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.
          */
-        additionalTermsUris?:
-            | Array<{
-                /**
-                 * The URI describing the additional information
-                 */
-                additionalInfoUri: string;
-                /**
-                 * Display text providing more information about the document URI
-                 */
-                description?: string | null;
-                [k: string]: unknown;
-            }>
-            | null;
+        additionalTermsUris?: Array<{
+            /**
+             * The URI describing the additional information
+             */
+            additionalInfoUri: string;
+            /**
+             * Display text providing more information about the document URI
+             */
+            description?: string | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.
          */
@@ -2819,19 +2816,17 @@ export interface BankingProductV4 {
     /**
      * An array of card art images
      */
-    cardArt?:
-        | Array<{
-            /**
-             * URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**
-             */
-            imageUri: string;
-            /**
-             * Display label for the specific image
-             */
-            title?: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    cardArt?: Array<{
+        /**
+         * URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**
+         */
+        imageUri: string;
+        /**
+         * Display label for the specific image
+         */
+        title?: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * A description of the product
      */
@@ -3062,7 +3057,12 @@ export interface BankingScheduledPayment {
             /**
              * The type of object provided that specifies the destination of the funds for the payment.
              */
-            toUType: "accountId" | "biller" | "domestic" | "international" | "payeeId";
+            toUType:
+                | "accountId"
+                | "biller"
+                | "domestic"
+                | "international"
+                | "payeeId";
             [k: string]: unknown;
         };
         [k: string]: unknown;
@@ -3106,7 +3106,9 @@ export interface BankingScheduledPayment {
             /**
              * Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
              */
-            nonBusinessDayTreatment?: ("AFTER" | "BEFORE" | "ON" | "ONLY") | null;
+            nonBusinessDayTreatment?:
+                | ("AFTER" | "BEFORE" | "ON" | "ONLY")
+                | null;
             /**
              * Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely
              */
@@ -3132,7 +3134,9 @@ export interface BankingScheduledPayment {
             /**
              * Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
              */
-            nonBusinessDayTreatment?: ("AFTER" | "BEFORE" | "ON" | "ONLY") | null;
+            nonBusinessDayTreatment?:
+                | ("AFTER" | "BEFORE" | "ON" | "ONLY")
+                | null;
             /**
              * Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely
              */
@@ -3156,7 +3160,11 @@ export interface BankingScheduledPayment {
         /**
          * The type of recurrence used to define the schedule
          */
-        recurrenceUType: "eventBased" | "intervalSchedule" | "lastWeekDay" | "onceOff";
+        recurrenceUType:
+            | "eventBased"
+            | "intervalSchedule"
+            | "lastWeekDay"
+            | "onceOff";
         [k: string]: unknown;
     };
     /**
@@ -3372,7 +3380,13 @@ export interface BankingScheduledPaymentV2 {
             /**
              * The type of object provided that specifies the destination of the funds for the payment.
              */
-            toUType: "accountId" | "biller" | "digitalWallet" | "domestic" | "international" | "payeeId";
+            toUType:
+                | "accountId"
+                | "biller"
+                | "digitalWallet"
+                | "domestic"
+                | "international"
+                | "payeeId";
             [k: string]: unknown;
         };
         [k: string]: unknown;
@@ -3416,7 +3430,9 @@ export interface BankingScheduledPaymentV2 {
             /**
              * Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
              */
-            nonBusinessDayTreatment?: ("AFTER" | "BEFORE" | "ON" | "ONLY") | null;
+            nonBusinessDayTreatment?:
+                | ("AFTER" | "BEFORE" | "ON" | "ONLY")
+                | null;
             /**
              * Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely
              */
@@ -3442,7 +3458,9 @@ export interface BankingScheduledPaymentV2 {
             /**
              * Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
              */
-            nonBusinessDayTreatment?: ("AFTER" | "BEFORE" | "ON" | "ONLY") | null;
+            nonBusinessDayTreatment?:
+                | ("AFTER" | "BEFORE" | "ON" | "ONLY")
+                | null;
             /**
              * Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely
              */
@@ -3466,7 +3484,11 @@ export interface BankingScheduledPaymentV2 {
         /**
          * The type of recurrence used to define the schedule
          */
-        recurrenceUType: "eventBased" | "intervalSchedule" | "lastWeekDay" | "onceOff";
+        recurrenceUType:
+            | "eventBased"
+            | "intervalSchedule"
+            | "lastWeekDay"
+            | "onceOff";
         [k: string]: unknown;
     };
     /**
@@ -3596,7 +3618,11 @@ export interface BankingScheduledPaymentRecurrence {
     /**
      * The type of recurrence used to define the schedule
      */
-    recurrenceUType: "eventBased" | "intervalSchedule" | "lastWeekDay" | "onceOff";
+    recurrenceUType:
+        | "eventBased"
+        | "intervalSchedule"
+        | "lastWeekDay"
+        | "onceOff";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the banking api. */
@@ -3849,7 +3875,12 @@ export interface BankingScheduledPaymentSet {
         /**
          * The type of object provided that specifies the destination of the funds for the payment.
          */
-        toUType: "accountId" | "biller" | "domestic" | "international" | "payeeId";
+        toUType:
+            | "accountId"
+            | "biller"
+            | "domestic"
+            | "international"
+            | "payeeId";
         [k: string]: unknown;
     };
     [k: string]: unknown;
@@ -4036,7 +4067,13 @@ export interface BankingScheduledPaymentSetV2 {
         /**
          * The type of object provided that specifies the destination of the funds for the payment.
          */
-        toUType: "accountId" | "biller" | "digitalWallet" | "domestic" | "international" | "payeeId";
+        toUType:
+            | "accountId"
+            | "biller"
+            | "digitalWallet"
+            | "domestic"
+            | "international"
+            | "payeeId";
         [k: string]: unknown;
     };
     [k: string]: unknown;
@@ -4359,7 +4396,13 @@ export interface BankingScheduledPaymentToV2 {
     /**
      * The type of object provided that specifies the destination of the funds for the payment.
      */
-    toUType: "accountId" | "biller" | "digitalWallet" | "domestic" | "international" | "payeeId";
+    toUType:
+        | "accountId"
+        | "biller"
+        | "digitalWallet"
+        | "domestic"
+        | "international"
+        | "payeeId";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the banking api. */
@@ -4384,7 +4427,10 @@ export interface BankingTermDepositAccount {
     /**
      * Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments
      */
-    maturityInstructions: "HOLD_ON_MATURITY" | "PAID_OUT_AT_MATURITY" | "ROLLED_OVER";
+    maturityInstructions:
+        | "HOLD_ON_MATURITY"
+        | "PAID_OUT_AT_MATURITY"
+        | "ROLLED_OVER";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the banking api. */
@@ -4948,7 +4994,10 @@ export interface ResponseBankingAccountByIdV2 {
             /**
              * Current instructions on action to be taken at maturity. This includes default actions that may be specified in the terms and conditions for the product e.g. roll-over to the same term and frequency of interest payments
              */
-            maturityInstructions: "HOLD_ON_MATURITY" | "PAID_OUT_AT_MATURITY" | "ROLLED_OVER";
+            maturityInstructions:
+                | "HOLD_ON_MATURITY"
+                | "PAID_OUT_AT_MATURITY"
+                | "ROLLED_OVER";
             [k: string]: unknown;
         }>;
         creditCard?: {
@@ -5083,53 +5132,51 @@ export interface ResponseBankingAccountByIdV2 {
             /**
              * Rate tiers applicable for this rate
              */
-            tiers?:
-                | Array<{
+            tiers?: Array<{
+                /**
+                 * Display text providing more information on the rate tier.
+                 */
+                additionalInfo?: string | null;
+                /**
+                 * Link to a web page with more information on this rate tier
+                 */
+                additionalInfoUri?: string | null;
+                /**
+                 * Defines a condition for the applicability of a tiered rate
+                 */
+                applicabilityConditions?: {
                     /**
-                     * Display text providing more information on the rate tier.
+                     * Display text providing more information on the condition
                      */
                     additionalInfo?: string | null;
                     /**
-                     * Link to a web page with more information on this rate tier
+                     * Link to a web page with more information on this condition
                      */
                     additionalInfoUri?: string | null;
-                    /**
-                     * Defines a condition for the applicability of a tiered rate
-                     */
-                    applicabilityConditions?: {
-                        /**
-                         * Display text providing more information on the condition
-                         */
-                        additionalInfo?: string | null;
-                        /**
-                         * Link to a web page with more information on this condition
-                         */
-                        additionalInfoUri?: string | null;
-                        [k: string]: unknown;
-                    };
-                    /**
-                     * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-                     */
-                    maximumValue?: number | null;
-                    /**
-                     * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-                     */
-                    minimumValue: number;
-                    /**
-                     * A display name for the tier
-                     */
-                    name: string;
-                    /**
-                     * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-                     */
-                    rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-                    /**
-                     * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-                     */
-                    unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
                     [k: string]: unknown;
-                }>
-                | null;
+                };
+                /**
+                 * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+                 */
+                maximumValue?: number | null;
+                /**
+                 * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+                 */
+                minimumValue: number;
+                /**
+                 * A display name for the tier
+                 */
+                name: string;
+                /**
+                 * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+                 */
+                rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+                /**
+                 * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+                 */
+                unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+                [k: string]: unknown;
+            }> | null;
             [k: string]: unknown;
         }>;
         /**
@@ -5194,53 +5241,51 @@ export interface ResponseBankingAccountByIdV2 {
             /**
              * Rate tiers applicable for this rate
              */
-            tiers?:
-                | Array<{
+            tiers?: Array<{
+                /**
+                 * Display text providing more information on the rate tier.
+                 */
+                additionalInfo?: string | null;
+                /**
+                 * Link to a web page with more information on this rate tier
+                 */
+                additionalInfoUri?: string | null;
+                /**
+                 * Defines a condition for the applicability of a tiered rate
+                 */
+                applicabilityConditions?: {
                     /**
-                     * Display text providing more information on the rate tier.
+                     * Display text providing more information on the condition
                      */
                     additionalInfo?: string | null;
                     /**
-                     * Link to a web page with more information on this rate tier
+                     * Link to a web page with more information on this condition
                      */
                     additionalInfoUri?: string | null;
-                    /**
-                     * Defines a condition for the applicability of a tiered rate
-                     */
-                    applicabilityConditions?: {
-                        /**
-                         * Display text providing more information on the condition
-                         */
-                        additionalInfo?: string | null;
-                        /**
-                         * Link to a web page with more information on this condition
-                         */
-                        additionalInfoUri?: string | null;
-                        [k: string]: unknown;
-                    };
-                    /**
-                     * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-                     */
-                    maximumValue?: number | null;
-                    /**
-                     * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-                     */
-                    minimumValue: number;
-                    /**
-                     * A display name for the tier
-                     */
-                    name: string;
-                    /**
-                     * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-                     */
-                    rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-                    /**
-                     * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-                     */
-                    unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
                     [k: string]: unknown;
-                }>
-                | null;
+                };
+                /**
+                 * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+                 */
+                maximumValue?: number | null;
+                /**
+                 * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+                 */
+                minimumValue: number;
+                /**
+                 * A display name for the tier
+                 */
+                name: string;
+                /**
+                 * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+                 */
+                rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+                /**
+                 * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+                 */
+                unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+                [k: string]: unknown;
+            }> | null;
             [k: string]: unknown;
         }>;
         /**
@@ -5341,88 +5386,89 @@ export interface ResponseBankingAccountByIdV2 {
             /**
              * An optional list of discounts to this fee that may be available
              */
-            discounts?:
-                | Array<{
+            discounts?: Array<{
+                /**
+                 * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+                 */
+                accruedRate?: string | null;
+                /**
+                 * Display text providing more information on the discount
+                 */
+                additionalInfo?: string | null;
+                /**
+                 * Link to a web page with more information on this discount
+                 */
+                additionalInfoUri?: string | null;
+                /**
+                 * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+                 */
+                additionalValue?: string | null;
+                /**
+                 * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+                 */
+                amount?: string | null;
+                /**
+                 * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+                 */
+                balanceRate?: string | null;
+                /**
+                 * Description of the discount
+                 */
+                description: string;
+                /**
+                 * The type of discount. See the next section for an overview of valid values and their meaning
+                 */
+                discountType:
+                    | "BALANCE"
+                    | "DEPOSITS"
+                    | "ELIGIBILITY_ONLY"
+                    | "FEE_CAP"
+                    | "PAYMENTS";
+                /**
+                 * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
+                 */
+                eligibility?: Array<{
                     /**
-                     * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                     */
-                    accruedRate?: string | null;
-                    /**
-                     * Display text providing more information on the discount
+                     * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
                      */
                     additionalInfo?: string | null;
                     /**
-                     * Link to a web page with more information on this discount
+                     * Link to a web page with more information on this eligibility constraint
                      */
                     additionalInfoUri?: string | null;
                     /**
-                     * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+                     * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
                      */
                     additionalValue?: string | null;
                     /**
-                     * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+                     * The type of the specific eligibility constraint for a discount
                      */
-                    amount?: string | null;
-                    /**
-                     * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                     */
-                    balanceRate?: string | null;
-                    /**
-                     * Description of the discount
-                     */
-                    description: string;
-                    /**
-                     * The type of discount. See the next section for an overview of valid values and their meaning
-                     */
-                    discountType: "BALANCE" | "DEPOSITS" | "ELIGIBILITY_ONLY" | "FEE_CAP" | "PAYMENTS";
-                    /**
-                     * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
-                     */
-                    eligibility?:
-                        | Array<{
-                            /**
-                             * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                             */
-                            additionalInfo?: string | null;
-                            /**
-                             * Link to a web page with more information on this eligibility constraint
-                             */
-                            additionalInfoUri?: string | null;
-                            /**
-                             * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                             */
-                            additionalValue?: string | null;
-                            /**
-                             * The type of the specific eligibility constraint for a discount
-                             */
-                            discountEligibilityType:
-                                | "BUSINESS"
-                                | "EMPLOYMENT_STATUS"
-                                | "INTRODUCTORY"
-                                | "MAX_AGE"
-                                | "MIN_AGE"
-                                | "MIN_INCOME"
-                                | "MIN_TURNOVER"
-                                | "NATURAL_PERSON"
-                                | "OTHER"
-                                | "PENSION_RECIPIENT"
-                                | "RESIDENCY_STATUS"
-                                | "STAFF"
-                                | "STUDENT";
-                            [k: string]: unknown;
-                        }>
-                        | null;
-                    /**
-                     * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                     */
-                    feeRate?: string | null;
-                    /**
-                     * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
-                     */
-                    transactionRate?: string | null;
+                    discountEligibilityType:
+                        | "BUSINESS"
+                        | "EMPLOYMENT_STATUS"
+                        | "INTRODUCTORY"
+                        | "MAX_AGE"
+                        | "MIN_AGE"
+                        | "MIN_INCOME"
+                        | "MIN_TURNOVER"
+                        | "NATURAL_PERSON"
+                        | "OTHER"
+                        | "PENSION_RECIPIENT"
+                        | "RESIDENCY_STATUS"
+                        | "STAFF"
+                        | "STUDENT";
                     [k: string]: unknown;
-                }>
-                | null;
+                }> | null;
+                /**
+                 * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+                 */
+                feeRate?: string | null;
+                /**
+                 * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
+                 */
+                transactionRate?: string | null;
+                [k: string]: unknown;
+            }> | null;
             /**
              * The type of fee
              */
@@ -5708,7 +5754,12 @@ export interface ResponseBankingAccountByIdV3 {
         /**
          * Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers
          */
-        accountOwnership: "UNKNOWN" | "ONE_PARTY" | "TWO_PARTY" | "MANY_PARTY" | "OTHER";
+        accountOwnership:
+            | "UNKNOWN"
+            | "ONE_PARTY"
+            | "TWO_PARTY"
+            | "MANY_PARTY"
+            | "OTHER";
         /**
          * Date that the account was created (if known)
          */
@@ -5784,7 +5835,12 @@ export interface ResponseBankingAccountListV2 {
             /**
              * Value indicating the number of customers that have ownership of the account, according to the data holder's definition of account ownership. Does not indicate that all account owners are eligible consumers
              */
-            accountOwnership: "UNKNOWN" | "ONE_PARTY" | "TWO_PARTY" | "MANY_PARTY" | "OTHER";
+            accountOwnership:
+                | "UNKNOWN"
+                | "ONE_PARTY"
+                | "TWO_PARTY"
+                | "MANY_PARTY"
+                | "OTHER";
             /**
              * Date that the account was created (if known)
              */
@@ -5901,19 +5957,17 @@ export interface ResponseBankingAccountsBalanceById {
         /**
          * Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards
          */
-        purses?:
-            | Array<{
-                /**
-                 * The balance available for this additional currency purse
-                 */
-                amount: string;
-                /**
-                 * The currency for the purse
-                 */
-                currency?: string | null;
-                [k: string]: unknown;
-            }>
-            | null;
+        purses?: Array<{
+            /**
+             * The balance available for this additional currency purse
+             */
+            amount: string;
+            /**
+             * The currency for the purse
+             */
+            currency?: string | null;
+            [k: string]: unknown;
+        }> | null;
         [k: string]: unknown;
     };
     links: {
@@ -5963,19 +6017,17 @@ export interface ResponseBankingAccountsBalanceList {
             /**
              * Optional array of balances for the account in other currencies. Included to support accounts that support multi-currency purses such as Travel Cards
              */
-            purses?:
-                | Array<{
-                    /**
-                     * The balance available for this additional currency purse
-                     */
-                    amount: string;
-                    /**
-                     * The currency for the purse
-                     */
-                    currency?: string | null;
-                    [k: string]: unknown;
-                }>
-                | null;
+            purses?: Array<{
+                /**
+                 * The balance available for this additional currency purse
+                 */
+                amount: string;
+                /**
+                 * The currency for the purse
+                 */
+                currency?: string | null;
+                [k: string]: unknown;
+            }> | null;
             [k: string]: unknown;
         }>;
         [k: string]: unknown;
@@ -6364,83 +6416,73 @@ export interface ResponseBankingProductByIdV4 {
             /**
              * An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.
              */
-            additionalBundleUris?:
-                | Array<{
-                    /**
-                     * The URI describing the additional information
-                     */
-                    additionalInfoUri: string;
-                    /**
-                     * Display text providing more information about the document URI
-                     */
-                    description?: string | null;
-                    [k: string]: unknown;
-                }>
-                | null;
+            additionalBundleUris?: Array<{
+                /**
+                 * The URI describing the additional information
+                 */
+                additionalInfoUri: string;
+                /**
+                 * Display text providing more information about the document URI
+                 */
+                description?: string | null;
+                [k: string]: unknown;
+            }> | null;
             /**
              * An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.
              */
-            additionalEligibilityUris?:
-                | Array<{
-                    /**
-                     * The URI describing the additional information
-                     */
-                    additionalInfoUri: string;
-                    /**
-                     * Display text providing more information about the document URI
-                     */
-                    description?: string | null;
-                    [k: string]: unknown;
-                }>
-                | null;
+            additionalEligibilityUris?: Array<{
+                /**
+                 * The URI describing the additional information
+                 */
+                additionalInfoUri: string;
+                /**
+                 * Display text providing more information about the document URI
+                 */
+                description?: string | null;
+                [k: string]: unknown;
+            }> | null;
             /**
              * An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.
              */
-            additionalFeesAndPricingUris?:
-                | Array<{
-                    /**
-                     * The URI describing the additional information
-                     */
-                    additionalInfoUri: string;
-                    /**
-                     * Display text providing more information about the document URI
-                     */
-                    description?: string | null;
-                    [k: string]: unknown;
-                }>
-                | null;
+            additionalFeesAndPricingUris?: Array<{
+                /**
+                 * The URI describing the additional information
+                 */
+                additionalInfoUri: string;
+                /**
+                 * Display text providing more information about the document URI
+                 */
+                description?: string | null;
+                [k: string]: unknown;
+            }> | null;
             /**
              * An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.
              */
-            additionalOverviewUris?:
-                | Array<{
-                    /**
-                     * The URI describing the additional information
-                     */
-                    additionalInfoUri: string;
-                    /**
-                     * Display text providing more information about the document URI
-                     */
-                    description?: string | null;
-                    [k: string]: unknown;
-                }>
-                | null;
+            additionalOverviewUris?: Array<{
+                /**
+                 * The URI describing the additional information
+                 */
+                additionalInfoUri: string;
+                /**
+                 * Display text providing more information about the document URI
+                 */
+                description?: string | null;
+                [k: string]: unknown;
+            }> | null;
             /**
              * An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.
              */
-            additionalTermsUris?:
-                | Array<{
-                    /**
-                     * The URI describing the additional information
-                     */
-                    additionalInfoUri: string;
-                    /**
-                     * Display text providing more information about the document URI
-                     */
-                    description?: string | null;
-                    [k: string]: unknown;
-                }>
-                | null;
+            additionalTermsUris?: Array<{
+                /**
+                 * The URI describing the additional information
+                 */
+                additionalInfoUri: string;
+                /**
+                 * Display text providing more information about the document URI
+                 */
+                description?: string | null;
+                [k: string]: unknown;
+            }> | null;
             /**
              * Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.
              */
@@ -6478,19 +6520,17 @@ export interface ResponseBankingProductByIdV4 {
         /**
          * An array of card art images
          */
-        cardArt?:
-            | Array<{
-                /**
-                 * URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**
-                 */
-                imageUri: string;
-                /**
-                 * Display label for the specific image
-                 */
-                title?: string;
-                [k: string]: unknown;
-            }>
-            | null;
+        cardArt?: Array<{
+            /**
+             * URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**
+             */
+            imageUri: string;
+            /**
+             * Display label for the specific image
+             */
+            title?: string;
+            [k: string]: unknown;
+        }> | null;
         /**
          * A description of the product
          */
@@ -6633,7 +6673,12 @@ export interface ResponseBankingProductByIdV4 {
             /**
              * The type of constraint described.  See the next section for an overview of valid values and their meaning
              */
-            constraintType: "MAX_BALANCE" | "MAX_LIMIT" | "MIN_BALANCE" | "MIN_LIMIT" | "OPENING_BALANCE";
+            constraintType:
+                | "MAX_BALANCE"
+                | "MAX_LIMIT"
+                | "MIN_BALANCE"
+                | "MIN_LIMIT"
+                | "OPENING_BALANCE";
             [k: string]: unknown;
         }>;
         /**
@@ -6709,88 +6754,89 @@ export interface ResponseBankingProductByIdV4 {
             /**
              * An optional list of discounts to this fee that may be available
              */
-            discounts?:
-                | Array<{
+            discounts?: Array<{
+                /**
+                 * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+                 */
+                accruedRate?: string | null;
+                /**
+                 * Display text providing more information on the discount
+                 */
+                additionalInfo?: string | null;
+                /**
+                 * Link to a web page with more information on this discount
+                 */
+                additionalInfoUri?: string | null;
+                /**
+                 * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+                 */
+                additionalValue?: string | null;
+                /**
+                 * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+                 */
+                amount?: string | null;
+                /**
+                 * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+                 */
+                balanceRate?: string | null;
+                /**
+                 * Description of the discount
+                 */
+                description: string;
+                /**
+                 * The type of discount. See the next section for an overview of valid values and their meaning
+                 */
+                discountType:
+                    | "BALANCE"
+                    | "DEPOSITS"
+                    | "ELIGIBILITY_ONLY"
+                    | "FEE_CAP"
+                    | "PAYMENTS";
+                /**
+                 * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
+                 */
+                eligibility?: Array<{
                     /**
-                     * A discount rate calculated based on a proportion of the calculated interest accrued on the account. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                     */
-                    accruedRate?: string | null;
-                    /**
-                     * Display text providing more information on the discount
+                     * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
                      */
                     additionalInfo?: string | null;
                     /**
-                     * Link to a web page with more information on this discount
+                     * Link to a web page with more information on this eligibility constraint
                      */
                     additionalInfoUri?: string | null;
                     /**
-                     * Generic field containing additional information relevant to the [discountType](#tocSproductdiscounttypedoc) specified. Whether mandatory or not is dependent on the value of [discountType](#tocSproductdiscounttypedoc)
+                     * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
                      */
                     additionalValue?: string | null;
                     /**
-                     * Dollar value of the discount. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory.
+                     * The type of the specific eligibility constraint for a discount
                      */
-                    amount?: string | null;
-                    /**
-                     * A discount rate calculated based on a proportion of the balance. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                     */
-                    balanceRate?: string | null;
-                    /**
-                     * Description of the discount
-                     */
-                    description: string;
-                    /**
-                     * The type of discount. See the next section for an overview of valid values and their meaning
-                     */
-                    discountType: "BALANCE" | "DEPOSITS" | "ELIGIBILITY_ONLY" | "FEE_CAP" | "PAYMENTS";
-                    /**
-                     * Eligibility constraints that apply to this discount. Mandatory if ``discountType`` is ``ELIGIBILITY_ONLY``.
-                     */
-                    eligibility?:
-                        | Array<{
-                            /**
-                             * Display text providing more information on this eligibility constraint. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                             */
-                            additionalInfo?: string | null;
-                            /**
-                             * Link to a web page with more information on this eligibility constraint
-                             */
-                            additionalInfoUri?: string | null;
-                            /**
-                             * Generic field containing additional information relevant to the [discountEligibilityType](#tocSproductdiscounteligibilitydoc) specified. Whether mandatory or not is dependent on the value of [discountEligibilityType](#tocSproductdiscounteligibilitydoc)
-                             */
-                            additionalValue?: string | null;
-                            /**
-                             * The type of the specific eligibility constraint for a discount
-                             */
-                            discountEligibilityType:
-                                | "BUSINESS"
-                                | "EMPLOYMENT_STATUS"
-                                | "INTRODUCTORY"
-                                | "MAX_AGE"
-                                | "MIN_AGE"
-                                | "MIN_INCOME"
-                                | "MIN_TURNOVER"
-                                | "NATURAL_PERSON"
-                                | "OTHER"
-                                | "PENSION_RECIPIENT"
-                                | "RESIDENCY_STATUS"
-                                | "STAFF"
-                                | "STUDENT";
-                            [k: string]: unknown;
-                        }>
-                        | null;
-                    /**
-                     * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
-                     */
-                    feeRate?: string | null;
-                    /**
-                     * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
-                     */
-                    transactionRate?: string | null;
+                    discountEligibilityType:
+                        | "BUSINESS"
+                        | "EMPLOYMENT_STATUS"
+                        | "INTRODUCTORY"
+                        | "MAX_AGE"
+                        | "MIN_AGE"
+                        | "MIN_INCOME"
+                        | "MIN_TURNOVER"
+                        | "NATURAL_PERSON"
+                        | "OTHER"
+                        | "PENSION_RECIPIENT"
+                        | "RESIDENCY_STATUS"
+                        | "STAFF"
+                        | "STUDENT";
                     [k: string]: unknown;
-                }>
-                | null;
+                }> | null;
+                /**
+                 * A discount rate calculated based on a proportion of the fee to which this discount is attached. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory. Unless noted in additionalInfo, assumes the application and calculation frequency are the same as the corresponding fee
+                 */
+                feeRate?: string | null;
+                /**
+                 * A discount rate calculated based on a proportion of a transaction. Note that the currency of the fee discount is expected to be the same as the currency of the fee itself. One of amount, balanceRate, transactionRate, accruedRate and feeRate is mandatory
+                 */
+                transactionRate?: string | null;
+                [k: string]: unknown;
+            }> | null;
             /**
              * The type of fee
              */
@@ -6857,53 +6903,51 @@ export interface ResponseBankingProductByIdV4 {
             /**
              * Rate tiers applicable for this rate
              */
-            tiers?:
-                | Array<{
+            tiers?: Array<{
+                /**
+                 * Display text providing more information on the rate tier.
+                 */
+                additionalInfo?: string | null;
+                /**
+                 * Link to a web page with more information on this rate tier
+                 */
+                additionalInfoUri?: string | null;
+                /**
+                 * Defines a condition for the applicability of a tiered rate
+                 */
+                applicabilityConditions?: {
                     /**
-                     * Display text providing more information on the rate tier.
+                     * Display text providing more information on the condition
                      */
                     additionalInfo?: string | null;
                     /**
-                     * Link to a web page with more information on this rate tier
+                     * Link to a web page with more information on this condition
                      */
                     additionalInfoUri?: string | null;
-                    /**
-                     * Defines a condition for the applicability of a tiered rate
-                     */
-                    applicabilityConditions?: {
-                        /**
-                         * Display text providing more information on the condition
-                         */
-                        additionalInfo?: string | null;
-                        /**
-                         * Link to a web page with more information on this condition
-                         */
-                        additionalInfoUri?: string | null;
-                        [k: string]: unknown;
-                    };
-                    /**
-                     * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-                     */
-                    maximumValue?: number | null;
-                    /**
-                     * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-                     */
-                    minimumValue: number;
-                    /**
-                     * A display name for the tier
-                     */
-                    name: string;
-                    /**
-                     * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-                     */
-                    rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-                    /**
-                     * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-                     */
-                    unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
                     [k: string]: unknown;
-                }>
-                | null;
+                };
+                /**
+                 * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+                 */
+                maximumValue?: number | null;
+                /**
+                 * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+                 */
+                minimumValue: number;
+                /**
+                 * A display name for the tier
+                 */
+                name: string;
+                /**
+                 * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+                 */
+                rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+                /**
+                 * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+                 */
+                unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+                [k: string]: unknown;
+            }> | null;
             [k: string]: unknown;
         }>;
         /**
@@ -6968,53 +7012,51 @@ export interface ResponseBankingProductByIdV4 {
             /**
              * Rate tiers applicable for this rate
              */
-            tiers?:
-                | Array<{
+            tiers?: Array<{
+                /**
+                 * Display text providing more information on the rate tier.
+                 */
+                additionalInfo?: string | null;
+                /**
+                 * Link to a web page with more information on this rate tier
+                 */
+                additionalInfoUri?: string | null;
+                /**
+                 * Defines a condition for the applicability of a tiered rate
+                 */
+                applicabilityConditions?: {
                     /**
-                     * Display text providing more information on the rate tier.
+                     * Display text providing more information on the condition
                      */
                     additionalInfo?: string | null;
                     /**
-                     * Link to a web page with more information on this rate tier
+                     * Link to a web page with more information on this condition
                      */
                     additionalInfoUri?: string | null;
-                    /**
-                     * Defines a condition for the applicability of a tiered rate
-                     */
-                    applicabilityConditions?: {
-                        /**
-                         * Display text providing more information on the condition
-                         */
-                        additionalInfo?: string | null;
-                        /**
-                         * Link to a web page with more information on this condition
-                         */
-                        additionalInfoUri?: string | null;
-                        [k: string]: unknown;
-                    };
-                    /**
-                     * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
-                     */
-                    maximumValue?: number | null;
-                    /**
-                     * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
-                     */
-                    minimumValue: number;
-                    /**
-                     * A display name for the tier
-                     */
-                    name: string;
-                    /**
-                     * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
-                     */
-                    rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
-                    /**
-                     * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
-                     */
-                    unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
                     [k: string]: unknown;
-                }>
-                | null;
+                };
+                /**
+                 * The number of tierUnitOfMeasure units that form the upper bound of the tier or band. For a tier with a discrete value (as opposed to a range of values e.g. 1 month) this must be the same as tierValueMinimum. Where this is the same as the tierValueMinimum value of the next-higher tier the referenced tier should be exclusive of this value. For example a term deposit of 2 months falls into the upper tier of the following tiers: (1 – 2 months, 2 – 3 months). If absent the tier's range has no upper bound.
+                 */
+                maximumValue?: number | null;
+                /**
+                 * The number of tierUnitOfMeasure units that form the lower bound of the tier. The tier should be inclusive of this value
+                 */
+                minimumValue: number;
+                /**
+                 * A display name for the tier
+                 */
+                name: string;
+                /**
+                 * The method used to calculate the amount to be applied using one or more tiers. A single rate may be applied to the entire balance or each applicable tier rate is applied to the portion of the balance that falls into that tier (referred to as 'bands' or 'steps')
+                 */
+                rateApplicationMethod?: ("PER_TIER" | "WHOLE_BALANCE") | null;
+                /**
+                 * The unit of measure that applies to the tierValueMinimum and tierValueMaximum values e.g. a **DOLLAR** amount. **PERCENT** (in the case of loan-to-value ratio or LVR). Tier term period representing a discrete number of **MONTH**'s or **DAY**'s (in the case of term deposit tiers)
+                 */
+                unitOfMeasure: "DAY" | "DOLLAR" | "MONTH" | "PERCENT";
+                [k: string]: unknown;
+            }> | null;
             [k: string]: unknown;
         }>;
         [k: string]: unknown;
@@ -7046,83 +7088,73 @@ export interface ResponseBankingProductListV2 {
                 /**
                  * An array of additional bundles for the product, if applicable. To be treated as secondary documents to the `bundleUri`. Only to be used if there is a primary `bundleUri`.
                  */
-                additionalBundleUris?:
-                    | Array<{
-                        /**
-                         * The URI describing the additional information
-                         */
-                        additionalInfoUri: string;
-                        /**
-                         * Display text providing more information about the document URI
-                         */
-                        description?: string | null;
-                        [k: string]: unknown;
-                    }>
-                    | null;
+                additionalBundleUris?: Array<{
+                    /**
+                     * The URI describing the additional information
+                     */
+                    additionalInfoUri: string;
+                    /**
+                     * Display text providing more information about the document URI
+                     */
+                    description?: string | null;
+                    [k: string]: unknown;
+                }> | null;
                 /**
                  * An array of additional eligibility rules and criteria for the product, if applicable. To be treated as secondary documents to the `eligibilityUri`. Only to be used if there is a primary `eligibilityUri`.
                  */
-                additionalEligibilityUris?:
-                    | Array<{
-                        /**
-                         * The URI describing the additional information
-                         */
-                        additionalInfoUri: string;
-                        /**
-                         * Display text providing more information about the document URI
-                         */
-                        description?: string | null;
-                        [k: string]: unknown;
-                    }>
-                    | null;
+                additionalEligibilityUris?: Array<{
+                    /**
+                     * The URI describing the additional information
+                     */
+                    additionalInfoUri: string;
+                    /**
+                     * Display text providing more information about the document URI
+                     */
+                    description?: string | null;
+                    [k: string]: unknown;
+                }> | null;
                 /**
                  * An array of additional fees, pricing, discounts, exemptions and bonuses for the product, if applicable. To be treated as secondary documents to the `feesAndPricingUri`. Only to be used if there is a primary `feesAndPricingUri`.
                  */
-                additionalFeesAndPricingUris?:
-                    | Array<{
-                        /**
-                         * The URI describing the additional information
-                         */
-                        additionalInfoUri: string;
-                        /**
-                         * Display text providing more information about the document URI
-                         */
-                        description?: string | null;
-                        [k: string]: unknown;
-                    }>
-                    | null;
+                additionalFeesAndPricingUris?: Array<{
+                    /**
+                     * The URI describing the additional information
+                     */
+                    additionalInfoUri: string;
+                    /**
+                     * Display text providing more information about the document URI
+                     */
+                    description?: string | null;
+                    [k: string]: unknown;
+                }> | null;
                 /**
                  * An array of additional general overviews for the product or features of the product, if applicable. To be treated as secondary documents to the `overviewUri`. Only to be used if there is a primary `overviewUri`.
                  */
-                additionalOverviewUris?:
-                    | Array<{
-                        /**
-                         * The URI describing the additional information
-                         */
-                        additionalInfoUri: string;
-                        /**
-                         * Display text providing more information about the document URI
-                         */
-                        description?: string | null;
-                        [k: string]: unknown;
-                    }>
-                    | null;
+                additionalOverviewUris?: Array<{
+                    /**
+                     * The URI describing the additional information
+                     */
+                    additionalInfoUri: string;
+                    /**
+                     * Display text providing more information about the document URI
+                     */
+                    description?: string | null;
+                    [k: string]: unknown;
+                }> | null;
                 /**
                  * An array of additional terms and conditions for the product, if applicable. To be treated as secondary documents to the `termsUri`. Only to be used if there is a primary `termsUri`.
                  */
-                additionalTermsUris?:
-                    | Array<{
-                        /**
-                         * The URI describing the additional information
-                         */
-                        additionalInfoUri: string;
-                        /**
-                         * Display text providing more information about the document URI
-                         */
-                        description?: string | null;
-                        [k: string]: unknown;
-                    }>
-                    | null;
+                additionalTermsUris?: Array<{
+                    /**
+                     * The URI describing the additional information
+                     */
+                    additionalInfoUri: string;
+                    /**
+                     * Display text providing more information about the document URI
+                     */
+                    description?: string | null;
+                    [k: string]: unknown;
+                }> | null;
                 /**
                  * Description of a bundle that this product can be part of. Mandatory if `additionalBundleUris` includes one or more supporting documents.
                  */
@@ -7160,19 +7192,17 @@ export interface ResponseBankingProductListV2 {
             /**
              * An array of card art images
              */
-            cardArt?:
-                | Array<{
-                    /**
-                     * URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**
-                     */
-                    imageUri: string;
-                    /**
-                     * Display label for the specific image
-                     */
-                    title?: string;
-                    [k: string]: unknown;
-                }>
-                | null;
+            cardArt?: Array<{
+                /**
+                 * URI reference to a PNG, JPG or GIF image with proportions defined by ISO 7810 ID-1 and width no greater than 512 pixels. The URI reference may be a link or url-encoded data URI according to **[[RFC2397]](#nref-RFC2397)**
+                 */
+                imageUri: string;
+                /**
+                 * Display label for the specific image
+                 */
+                title?: string;
+                [k: string]: unknown;
+            }> | null;
             /**
              * A description of the product
              */
@@ -7377,7 +7407,11 @@ export interface ResponseBankingScheduledPaymentsListV2 {
                             /**
                              * The type of the PayID
                              */
-                            type: "ABN" | "EMAIL" | "ORG_IDENTIFIER" | "TELEPHONE";
+                            type:
+                                | "ABN"
+                                | "EMAIL"
+                                | "ORG_IDENTIFIER"
+                                | "TELEPHONE";
                             [k: string]: unknown;
                         };
                         /**
@@ -7465,7 +7499,12 @@ export interface ResponseBankingScheduledPaymentsListV2 {
                     /**
                      * The type of object provided that specifies the destination of the funds for the payment.
                      */
-                    toUType: "accountId" | "biller" | "domestic" | "international" | "payeeId";
+                    toUType:
+                        | "accountId"
+                        | "biller"
+                        | "domestic"
+                        | "international"
+                        | "payeeId";
                     [k: string]: unknown;
                 };
                 [k: string]: unknown;
@@ -7509,7 +7548,9 @@ export interface ResponseBankingScheduledPaymentsListV2 {
                     /**
                      * Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
                      */
-                    nonBusinessDayTreatment?: ("AFTER" | "BEFORE" | "ON" | "ONLY") | null;
+                    nonBusinessDayTreatment?:
+                        | ("AFTER" | "BEFORE" | "ON" | "ONLY")
+                        | null;
                     /**
                      * Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely
                      */
@@ -7531,11 +7572,20 @@ export interface ResponseBankingScheduledPaymentsListV2 {
                     /**
                      * The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.
                      */
-                    lastWeekDay: "FRI" | "MON" | "SAT" | "SUN" | "THU" | "TUE" | "WED";
+                    lastWeekDay:
+                        | "FRI"
+                        | "MON"
+                        | "SAT"
+                        | "SUN"
+                        | "THU"
+                        | "TUE"
+                        | "WED";
                     /**
                      * Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
                      */
-                    nonBusinessDayTreatment?: ("AFTER" | "BEFORE" | "ON" | "ONLY") | null;
+                    nonBusinessDayTreatment?:
+                        | ("AFTER" | "BEFORE" | "ON" | "ONLY")
+                        | null;
                     /**
                      * Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely
                      */
@@ -7559,7 +7609,11 @@ export interface ResponseBankingScheduledPaymentsListV2 {
                 /**
                  * The type of recurrence used to define the schedule
                  */
-                recurrenceUType: "eventBased" | "intervalSchedule" | "lastWeekDay" | "onceOff";
+                recurrenceUType:
+                    | "eventBased"
+                    | "intervalSchedule"
+                    | "lastWeekDay"
+                    | "onceOff";
                 [k: string]: unknown;
             };
             /**
@@ -7712,7 +7766,11 @@ export interface ResponseBankingScheduledPaymentsList {
                             /**
                              * The type of the PayID
                              */
-                            type: "ABN" | "EMAIL" | "ORG_IDENTIFIER" | "TELEPHONE";
+                            type:
+                                | "ABN"
+                                | "EMAIL"
+                                | "ORG_IDENTIFIER"
+                                | "TELEPHONE";
                             [k: string]: unknown;
                         };
                         /**
@@ -7800,7 +7858,12 @@ export interface ResponseBankingScheduledPaymentsList {
                     /**
                      * The type of object provided that specifies the destination of the funds for the payment.
                      */
-                    toUType: "accountId" | "biller" | "domestic" | "international" | "payeeId";
+                    toUType:
+                        | "accountId"
+                        | "biller"
+                        | "domestic"
+                        | "international"
+                        | "payeeId";
                     [k: string]: unknown;
                 };
                 [k: string]: unknown;
@@ -7844,7 +7907,9 @@ export interface ResponseBankingScheduledPaymentsList {
                     /**
                      * Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
                      */
-                    nonBusinessDayTreatment?: ("AFTER" | "BEFORE" | "ON" | "ONLY") | null;
+                    nonBusinessDayTreatment?:
+                        | ("AFTER" | "BEFORE" | "ON" | "ONLY")
+                        | null;
                     /**
                      * Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value, If neither field is present the payments will continue indefinitely
                      */
@@ -7866,11 +7931,20 @@ export interface ResponseBankingScheduledPaymentsList {
                     /**
                      * The weekDay specified. The payment will occur on the last occurrence of this weekday in the interval.
                      */
-                    lastWeekDay: "FRI" | "MON" | "SAT" | "SUN" | "THU" | "TUE" | "WED";
+                    lastWeekDay:
+                        | "FRI"
+                        | "MON"
+                        | "SAT"
+                        | "SUN"
+                        | "THU"
+                        | "TUE"
+                        | "WED";
                     /**
                      * Enumerated field giving the treatment where a scheduled payment date is not a business day. If absent assumed to be ON.<br/>**AFTER** - If a scheduled payment date is a non-business day the payment will be made on the first business day after the scheduled payment date.<br/>**BEFORE** - If a scheduled payment date is a non-business day the payment will be made on the first business day before the scheduled payment date.<br/>**ON** - If a scheduled payment date is a non-business day the payment will be made on that day regardless.<br/>**ONLY** - Payments only occur on business days. If a scheduled payment date is a non-business day the payment will be ignored
                      */
-                    nonBusinessDayTreatment?: ("AFTER" | "BEFORE" | "ON" | "ONLY") | null;
+                    nonBusinessDayTreatment?:
+                        | ("AFTER" | "BEFORE" | "ON" | "ONLY")
+                        | null;
                     /**
                      * Indicates the number of payments remaining in the schedule. If both finalPaymentDate and paymentsRemaining are present then payments will stop according to the most constraining value. If neither field is present the payments will continue indefinitely
                      */
@@ -7894,7 +7968,11 @@ export interface ResponseBankingScheduledPaymentsList {
                 /**
                  * The type of recurrence used to define the schedule
                  */
-                recurrenceUType: "eventBased" | "intervalSchedule" | "lastWeekDay" | "onceOff";
+                recurrenceUType:
+                    | "eventBased"
+                    | "intervalSchedule"
+                    | "lastWeekDay"
+                    | "onceOff";
                 [k: string]: unknown;
             };
             /**

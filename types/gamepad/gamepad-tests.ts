@@ -30,7 +30,7 @@ gamepad.on("attach", (deviceID, device) => {
 });
 
 // Listen for new gamepads being removed
-gamepad.on("remove", deviceID => {
+gamepad.on("remove", (deviceID) => {
     console.log("remove", {
         deviceID,
     });

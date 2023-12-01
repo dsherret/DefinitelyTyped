@@ -23,7 +23,13 @@ board
         animation.enqueue({
             duration: 2000,
             cuePoints: [0, 0.25, 0.5, 0.75, 1.0],
-            keyFrames: [{ degrees: 0 }, { degrees: 135 }, { degrees: 45 }, { degrees: 180 }, { degrees: 0 }],
+            keyFrames: [
+                { degrees: 0 },
+                { degrees: 135 },
+                { degrees: 45 },
+                { degrees: 180 },
+                { degrees: 0 },
+            ],
         });
 
         // Create a new `button` hardware instance.
@@ -74,7 +80,7 @@ board
 
         escs.throttle(80);
 
-        escs.forEach(item => item.brake());
+        escs.forEach((item) => item.brake());
 
         new five.Motion(7);
 
@@ -111,7 +117,7 @@ board
             invertX: false,
             invertY: false,
         });
-        joystick.on("data", value => {
+        joystick.on("data", (value) => {
             console.log(value);
         });
 
@@ -161,32 +167,34 @@ board
         const piezo = new five.Piezo(3);
 
         // Plays a song
-        piezo.play({
-            // song is composed by an array of pairs of notes and beats
-            // The first argument is the note (null means "no note")
-            // The second argument is the length of time (beat) of the note (or non-note)
-            song: [
-                ["C4", 1 / 4],
-                ["D4", 1 / 4],
-                ["F4", 1 / 4],
-                ["D4", 1 / 4],
-                ["A4", 1 / 4],
-                [null, 1 / 4],
-                ["A4", 1],
-                ["G4", 1],
-                [null, 1 / 2],
-                ["C4", 1 / 4],
-                ["D4", 1 / 4],
-                ["F4", 1 / 4],
-                ["D4", 1 / 4],
-                ["G4", 1 / 4],
-                [null, 1 / 4],
-                ["G4", 1],
-                ["F4", 1],
-                [null, 1 / 2],
-            ],
-            tempo: 100,
-        }).stop();
+        piezo
+            .play({
+                // song is composed by an array of pairs of notes and beats
+                // The first argument is the note (null means "no note")
+                // The second argument is the length of time (beat) of the note (or non-note)
+                song: [
+                    ["C4", 1 / 4],
+                    ["D4", 1 / 4],
+                    ["F4", 1 / 4],
+                    ["D4", 1 / 4],
+                    ["A4", 1 / 4],
+                    [null, 1 / 4],
+                    ["A4", 1],
+                    ["G4", 1],
+                    [null, 1 / 2],
+                    ["C4", 1 / 4],
+                    ["D4", 1 / 4],
+                    ["F4", 1 / 4],
+                    ["D4", 1 / 4],
+                    ["G4", 1 / 4],
+                    [null, 1 / 4],
+                    ["G4", 1],
+                    ["F4", 1],
+                    [null, 1 / 2],
+                ],
+                tempo: 100,
+            })
+            .stop();
 
         // Options object with pin property
 
@@ -242,7 +250,11 @@ const r3 = new five.Relay({ pin: 10, type: "NC" });
 
 // Relays
 const relays0 = new five.Relays([1, 2, 3]);
-const relays2 = new five.Relays([{ pin: 1, type: "NC" }, { pin: 2, type: "NO" }, { pin: 3 }]);
+const relays2 = new five.Relays([
+    { pin: 1, type: "NC" },
+    { pin: 2, type: "NO" },
+    { pin: 3 },
+]);
 const relays3 = new five.Relays([r0, r1, r2]);
 relays0[0].open();
 relays0[1].open();

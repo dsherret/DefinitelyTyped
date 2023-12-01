@@ -16,7 +16,10 @@ export { default as StreetControls } from "./Controls/StreetControls";
 export { default as Feature2Mesh } from "./Converter/Feature2Mesh";
 export { MAIN_LOOP_EVENTS } from "./Core/MainLoop";
 export { default as Ellipsoid, ellipsoidSizes } from "./Core/Math/Ellipsoid";
-export { default as GlobeView, GLOBE_VIEW_EVENTS } from "./Core/Prefab/GlobeView";
+export {
+    default as GlobeView,
+    GLOBE_VIEW_EVENTS,
+} from "./Core/Prefab/GlobeView";
 export { default as PlanarView } from "./Core/Prefab/PlanarView"; // TODO
 export { default as Capabilities } from "./Core/System/Capabilities";
 export { default as View } from "./Core/View";
@@ -28,9 +31,16 @@ export {
 } from "./Process/LayeredMaterialNodeProcessing";
 export { default as Fetcher } from "./Provider/Fetcher";
 export { CAMERA_TYPE } from "./Renderer/Camera";
-export { colorLayerEffects, getMaxColorSamplerUnitsCount } from "./Renderer/LayeredMaterial";
+export {
+    colorLayerEffects,
+    getMaxColorSamplerUnitsCount,
+} from "./Renderer/LayeredMaterial";
 export { default as OrientedImageCamera } from "./Renderer/OrientedImageCamera";
-export { ClassificationScheme, default as PointsMaterial, PNTS_MODE } from "./Renderer/PointsMaterial";
+export {
+    ClassificationScheme,
+    default as PointsMaterial,
+    PNTS_MODE,
+} from "./Renderer/PointsMaterial";
 export { default as ShaderChunk } from "./Renderer/Shader/ShaderChunk";
 export { default as CameraUtils } from "./Utils/CameraUtils";
 export { default as DEMUtils } from "./Utils/DEMUtils";
@@ -38,14 +48,22 @@ export { default as FeaturesUtils } from "./Utils/FeaturesUtils";
 export { default as OrientationUtils } from "./Utils/OrientationUtils";
 
 // Internal itowns format
-export { default as Feature, FEATURE_TYPES, FeatureCollection, FeatureGeometry } from "./Core/Feature";
+export {
+    default as Feature,
+    FEATURE_TYPES,
+    FeatureCollection,
+    FeatureGeometry,
+} from "./Core/Feature";
 export { default as Label } from "./Core/Label"; // TODO
 export { default as Style } from "./Core/Style"; // TODO
 
 // Layers provided by default in iTowns
 // A custom layer should at least implements Layer
 // See http://www.itowns-project.org/itowns/docs/#api/Layer/Layer
-export { C3DTILES_LAYER_EVENTS, default as C3DTilesLayer } from "./Layer/C3DTilesLayer";
+export {
+    C3DTILES_LAYER_EVENTS,
+    default as C3DTilesLayer,
+} from "./Layer/C3DTilesLayer";
 export { default as ColorLayer } from "./Layer/ColorLayer";
 export { default as ElevationLayer } from "./Layer/ElevationLayer"; // TODO
 export { default as FeatureGeometryLayer } from "./Layer/FeatureGeometryLayer";
@@ -87,7 +105,10 @@ export { default as WMTSSource } from "./Source/WMTSSource";
 // Parsers provided by default in iTowns
 // Custom parser can be implemented as wanted, as long as the main function
 // takes the data as the first argument and options as the second.
-export { enableDracoLoader, glTFLoader /*, legacyGLTFLoader */ } from "./Parser/B3dmParser"; // TODO
+export {
+    enableDracoLoader,
+    glTFLoader /*, legacyGLTFLoader */,
+} from "./Parser/B3dmParser"; // TODO
 export { default as CameraCalibrationParser } from "./Parser/CameraCalibrationParser";
 export { default as GDFParser } from "./Parser/GDFParser";
 export { default as GeoJsonParser } from "./Parser/GeoJsonParser";
@@ -108,4 +129,8 @@ export { default as C3DTExtensions } from "./Core/3DTiles/C3DTExtensions";
 export { default as C3DTFeature } from "./Core/3DTiles/C3DTFeature";
 export { default as C3DTileset } from "./Core/3DTiles/C3DTileset";
 export { default as C3DTilesTypes } from "./Core/3DTiles/C3DTilesTypes";
-export { $3dTilesCulling, $3dTilesSubdivisionControl, process3dTilesNode } from "./Process/3dTilesProcessing";
+export {
+    $3dTilesCulling,
+    $3dTilesSubdivisionControl,
+    process3dTilesNode,
+} from "./Process/3dTilesProcessing";

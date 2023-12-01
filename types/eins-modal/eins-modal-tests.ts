@@ -15,5 +15,8 @@ if (modalElement && modalElement.modal) {
     modalElement.modal("hide");
     modalElement.modal("toggle");
     modalElement.modal("toggle");
-    modalElement.modal("show", { openDuration: 200, openTransition: "bounceDownIn" });
+    modalElement.modal("show", {
+        openDuration: 200,
+        openTransition: "bounceDownIn",
+    });
 }

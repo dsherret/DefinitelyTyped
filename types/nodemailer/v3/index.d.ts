@@ -8,7 +8,10 @@ import sesTransport = require("nodemailer-ses-transport");
  * Transporter plugin
  */
 export interface Plugin {
-    (mail: SendMailOptions, callback?: (error: Error, info: SentMessageInfo) => void): void;
+    (
+        mail: SendMailOptions,
+        callback?: (error: Error, info: SentMessageInfo) => void,
+    ): void;
 }
 
 /**
@@ -18,7 +21,10 @@ export interface Transporter {
     /**
      * Send a mail with callback
      */
-    sendMail(mail: SendMailOptions, callback: (error: Error, info: SentMessageInfo) => void): void;
+    sendMail(
+        mail: SendMailOptions,
+        callback: (error: Error, info: SentMessageInfo) => void,
+    ): void;
 
     /**
      * Send a mail
@@ -53,23 +59,38 @@ export interface Transporter {
 /**
  * Create a direct transporter
  */
-export declare function createTransport(options?: directTransport.DirectOptions, defaults?: Object): Transporter;
+export declare function createTransport(
+    options?: directTransport.DirectOptions,
+    defaults?: Object,
+): Transporter;
 /**
  * Create an SMTP transporter
  */
-export declare function createTransport(options?: smtpTransport.SmtpOptions, defaults?: Object): Transporter;
+export declare function createTransport(
+    options?: smtpTransport.SmtpOptions,
+    defaults?: Object,
+): Transporter;
 /**
  * Create an SMTP transporter using a connection url
  */
-export declare function createTransport(connectionUrl: string, defaults?: Object): Transporter;
+export declare function createTransport(
+    connectionUrl: string,
+    defaults?: Object,
+): Transporter;
 /**
  * Create an AWS SES transporter
  */
-export declare function createTransport(options?: sesTransport.SesOptions, defaults?: Object): Transporter;
+export declare function createTransport(
+    options?: sesTransport.SesOptions,
+    defaults?: Object,
+): Transporter;
 /**
  * Create a transporter from a given implementation
  */
-export declare function createTransport(transport: Transport, defaults?: Object): Transporter;
+export declare function createTransport(
+    transport: Transport,
+    defaults?: Object,
+): Transporter;
 export interface AttachmentObject {
     /**
      * filename to be reported as the name of the attached file, use of unicode is allowed
@@ -141,11 +162,21 @@ export interface SendMailOptions {
     /**
      * The plaintext version of the message as an Unicode string, Buffer, Stream or an object {path: '...'}
      */
-    text?: string | Buffer | NodeJS.ReadableStream | AttachmentObject | undefined;
+    text?:
+        | string
+        | Buffer
+        | NodeJS.ReadableStream
+        | AttachmentObject
+        | undefined;
     /**
      * The HTML version of the message as an Unicode string, Buffer, Stream or an object {path: '...'}
      */
-    html?: string | Buffer | NodeJS.ReadableStream | AttachmentObject | undefined;
+    html?:
+        | string
+        | Buffer
+        | NodeJS.ReadableStream
+        | AttachmentObject
+        | undefined;
     /**
      * An object or array of additional header fields (e.g. {"X-Key-Name": "key value"} or [{key: "X-Key-Name", value: "val1"}, {key: "X-Key-Name", value: "val2"}])
      */
@@ -209,6 +240,9 @@ export interface SentMessageInfo {
 export interface Transport {
     name: string;
     version: string;
-    send(mail: SendMailOptions, callback?: (error: Error, info: SentMessageInfo) => void): void;
+    send(
+        mail: SendMailOptions,
+        callback?: (error: Error, info: SentMessageInfo) => void,
+    ): void;
     close(): void;
 }

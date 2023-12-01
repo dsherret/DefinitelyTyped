@@ -55,7 +55,11 @@ declare namespace iqCaller {
          * );
          * console.log(foo);
          */
-        get(element: Element, to?: string, timeout?: number): Promise<Element | undefined>;
+        get(
+            element: Element,
+            to?: string,
+            timeout?: number,
+        ): Promise<Element | undefined>;
         /**
          * A convenient method to send a `set` request. Behaves like `request` but accepts/returns a child
          * element instead of an `iq`.
@@ -68,6 +72,10 @@ declare namespace iqCaller {
          * );
          * console.log(foo);
          */
-        set(element: Element, to?: string, timeout?: number): Promise<Element | undefined>;
+        set(
+            element: Element,
+            to?: string,
+            timeout?: number,
+        ): Promise<Element | undefined>;
     }
 }

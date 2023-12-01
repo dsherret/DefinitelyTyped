@@ -68,7 +68,10 @@ export function call<E>(
     callback: (err: E) => void,
 ): TypedFunctionCall<undefined[], E>;
 export function call<T1, R1, R2, R3, E>(
-    wrappedFunction: (t1: T1, cb: (err: E, r1: R1, r2: R2, r3: R3) => void) => void,
+    wrappedFunction: (
+        t1: T1,
+        cb: (err: E, r1: R1, r2: R2, r3: R3) => void,
+    ) => void,
     t1: T1,
     callback: (error: E, r1: R1, r2: R2, r3: R3) => void,
 ): TypedFunctionCall<[T1], E, R1, R2, R3>;
@@ -88,13 +91,21 @@ export function call<T1, E>(
     callback: (err: E) => void,
 ): TypedFunctionCall<[T1], E>;
 export function call<T1, T2, R1, R2, R3, E>(
-    wrappedFunction: (t1: T1, t2: T2, cb: (err: E, r1: R1, r2: R2, r3: R3) => void) => void,
+    wrappedFunction: (
+        t1: T1,
+        t2: T2,
+        cb: (err: E, r1: R1, r2: R2, r3: R3) => void,
+    ) => void,
     t1: T1,
     t2: T2,
     callback: (error: E, r1: R1, r2: R2, r3: R3) => void,
 ): TypedFunctionCall<[T1, T2], E, R1, R2, R3>;
 export function call<T1, T2, R1, R2, E>(
-    wrappedFunction: (t1: T1, t2: T2, cb: (err: E, r1: R1, r2: R2) => void) => void,
+    wrappedFunction: (
+        t1: T1,
+        t2: T2,
+        cb: (err: E, r1: R1, r2: R2) => void,
+    ) => void,
     t1: T1,
     t2: T2,
     callback: (error: E, r1: R1, r2: R2) => void,
@@ -112,21 +123,36 @@ export function call<T1, T2, E>(
     callback: (err: E) => void,
 ): TypedFunctionCall<[T1, T2], E>;
 export function call<T1, T2, T3, R1, R2, R3, E>(
-    wrappedFunction: (t1: T1, t2: T2, t3: T3, cb: (err: E, r1: R1, r2: R2, r3: R3) => void) => void,
+    wrappedFunction: (
+        t1: T1,
+        t2: T2,
+        t3: T3,
+        cb: (err: E, r1: R1, r2: R2, r3: R3) => void,
+    ) => void,
     t1: T1,
     t2: T2,
     t3: T3,
     callback: (error: E, r1: R1, r2: R2, r3: R3) => void,
 ): TypedFunctionCall<[T1, T2, T3], E, R1, R2, R3>;
 export function call<T1, T2, T3, R1, R2, E>(
-    wrappedFunction: (t1: T1, t2: T2, t3: T3, cb: (err: E, r1: R1, r2: R2) => void) => void,
+    wrappedFunction: (
+        t1: T1,
+        t2: T2,
+        t3: T3,
+        cb: (err: E, r1: R1, r2: R2) => void,
+    ) => void,
     t1: T1,
     t2: T2,
     t3: T3,
     callback: (error: E, r1: R1, r2: R2) => void,
 ): TypedFunctionCall<[T1, T2, T3], E, R1, R2>;
 export function call<T1, T2, T3, R1, E>(
-    wrappedFunction: (t1: T1, t2: T2, t3: T3, cb: (err: E, r1: R1) => void) => void,
+    wrappedFunction: (
+        t1: T1,
+        t2: T2,
+        t3: T3,
+        cb: (err: E, r1: R1) => void,
+    ) => void,
     t1: T1,
     t2: T2,
     t3: T3,
@@ -139,7 +165,10 @@ export function call<T1, T2, T3, E>(
     t3: T3,
     callback: (err: E) => void,
 ): TypedFunctionCall<[T1, T2, T3], E>;
-export function call(wrappedFunction: (...args: any[]) => void, ...args: any[]): FunctionCallAny;
+export function call(
+    wrappedFunction: (...args: any[]) => void,
+    ...args: any[]
+): FunctionCallAny;
 
 export class Backoff extends EventEmitter {
     /**
@@ -191,7 +220,10 @@ export class Backoff extends EventEmitter {
      * @param delay: backoff delay in milliseconds
      * @param err: optional error parameter passed to `backoff.backoff([err])`
      */
-    addListener(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
+    addListener(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
     /**
      * Emitted when a backoff operation is done. Signals that the failing operation
      * should be retried.
@@ -199,7 +231,10 @@ export class Backoff extends EventEmitter {
      * @param number: number of backoffs since last reset, starting at 0
      * @param delay: backoff delay in milliseconds
      */
-    addListener(event: "ready", listener: (number: number, delay: number) => void): this;
+    addListener(
+        event: "ready",
+        listener: (number: number, delay: number) => void,
+    ): this;
     /**
      * Emitted when the maximum number of backoffs is reached. This event will only
      * be emitted if the client has set a limit on the number of backoffs by calling
@@ -209,23 +244,52 @@ export class Backoff extends EventEmitter {
      * @param err: optional error parameter passed to `backoff.backoff([err])`
      */
     addListener(event: "fail", listener: (error?: any) => void): this;
-    on(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
+    on(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
     on(event: "ready", listener: (number: number, delay: number) => void): this;
     on(event: "fail", listener: (error?: any) => void): this;
-    once(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
-    once(event: "ready", listener: (number: number, delay: number) => void): this;
+    once(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
+    once(
+        event: "ready",
+        listener: (number: number, delay: number) => void,
+    ): this;
     once(event: "fail", listener: (error?: any) => void): this;
-    prependListener(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
-    prependListener(event: "ready", listener: (number: number, delay: number) => void): this;
+    prependListener(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
+    prependListener(
+        event: "ready",
+        listener: (number: number, delay: number) => void,
+    ): this;
     prependListener(event: "fail", listener: (error?: any) => void): this;
-    prependOnceListener(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
-    prependOnceListener(event: "ready", listener: (number: number, delay: number) => void): this;
+    prependOnceListener(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
+    prependOnceListener(
+        event: "ready",
+        listener: (number: number, delay: number) => void,
+    ): this;
     prependOnceListener(event: "fail", listener: (error?: any) => void): this;
-    removeListener(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
-    removeListener(event: "ready", listener: (number: number, delay: number) => void): this;
+    removeListener(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
+    removeListener(
+        event: "ready",
+        listener: (number: number, delay: number) => void,
+    ): this;
     removeListener(event: "fail", listener: (error?: any) => void): this;
     removeAllListeners(event?: "backoff" | "ready" | "fail"): this;
-    listeners(event: "backoff"): Array<(number: number, delay: number, error?: any) => void>;
+    listeners(
+        event: "backoff",
+    ): Array<(number: number, delay: number, error?: any) => void>;
     listeners(event: "ready"): Array<(number: number, delay: number) => void>;
     listeners(event: "fail"): Array<(error?: any) => void>;
     emit(event: "backoff", number: number, delay: number, error?: any): boolean;
@@ -321,100 +385,130 @@ export const FunctionCall: FunctionCallConstructor;
  * @param callback: fn's callback
  */
 export interface FunctionCallConstructor {
-    new<R1, R2, R3, E>(
+    new <R1, R2, R3, E>(
         wrappedFunction: (cb: (err: E, r1: R1, r2: R2, r3: R3) => void) => void,
         args: undefined[],
         callback: (error: E, r1: R1, r2: R2, r3: R3) => void,
     ): TypedFunctionCall<undefined[], E, R1, R2, R3>;
-    new<R1, R2, E>(
+    new <R1, R2, E>(
         wrappedFunction: (cb: (err: E, r1: R1, r2: R2) => void) => void,
         args: undefined[],
         callback: (error: E, r1: R1, r2: R2) => void,
     ): TypedFunctionCall<undefined[], E, R1, R2>;
-    new<R1, E>(
+    new <R1, E>(
         wrappedFunction: (cb: (err: E, r1: R1) => void) => void,
         args: undefined[],
         callback: (error: E, r1: R1) => void,
     ): TypedFunctionCall<undefined[], E, R1>;
-    new<E>(
+    new <E>(
         wrappedFunction: (cb: (err: E) => void) => void,
         args: undefined[],
         callback: (err: E) => void,
     ): TypedFunctionCall<undefined[], E>;
 
-    new<T1, R1, R2, R3, E>(
-        wrappedFunction: (t1: T1, cb: (err: E, r1: R1, r2: R2, r3: R3) => void) => void,
+    new <T1, R1, R2, R3, E>(
+        wrappedFunction: (
+            t1: T1,
+            cb: (err: E, r1: R1, r2: R2, r3: R3) => void,
+        ) => void,
         args: [T1],
         callback: (error: E, r1: R1, r2: R2, r3: R3) => void,
     ): TypedFunctionCall<[T1], E, R1, R2, R3>;
-    new<T1, R1, R2, E>(
+    new <T1, R1, R2, E>(
         wrappedFunction: (t1: T1, cb: (err: E, r1: R1, r2: R2) => void) => void,
         args: [T1],
         callback: (error: E, r1: R1, r2: R2) => void,
     ): TypedFunctionCall<[T1], E, R1, R2>;
-    new<T1, R1, E>(
+    new <T1, R1, E>(
         wrappedFunction: (t1: T1, cb: (err: E, r1: R1) => void) => void,
         args: [T1],
         callback: (error: E, r1: R1) => void,
     ): TypedFunctionCall<[T1], E, R1>;
-    new<T1, E>(
+    new <T1, E>(
         wrappedFunction: (t1: T1, cb: (err: E) => void) => void,
         args: [T1],
         callback: (err: E) => void,
     ): TypedFunctionCall<[T1], E>;
 
-    new<T1, T2, R1, R2, R3, E>(
-        wrappedFunction: (t1: T1, t2: T2, cb: (err: E, r1: R1, r2: R2, r3: R3) => void) => void,
+    new <T1, T2, R1, R2, R3, E>(
+        wrappedFunction: (
+            t1: T1,
+            t2: T2,
+            cb: (err: E, r1: R1, r2: R2, r3: R3) => void,
+        ) => void,
         args: [T1, T2],
         callback: (error: E, r1: R1, r2: R2, r3: R3) => void,
     ): TypedFunctionCall<[T1, T2], E, R1, R2, R3>;
-    new<T1, T2, R1, R2, E>(
-        wrappedFunction: (t1: T1, t2: T2, cb: (err: E, r1: R1, r2: R2) => void) => void,
+    new <T1, T2, R1, R2, E>(
+        wrappedFunction: (
+            t1: T1,
+            t2: T2,
+            cb: (err: E, r1: R1, r2: R2) => void,
+        ) => void,
         args: [T1, T2],
         callback: (error: E, r1: R1, r2: R2) => void,
     ): TypedFunctionCall<[T1, T2], E, R1, R2>;
-    new<T1, T2, R1, E>(
+    new <T1, T2, R1, E>(
         wrappedFunction: (t1: T1, t2: T2, cb: (err: E, r1: R1) => void) => void,
         args: [T1, T2],
         callback: (error: E, r1: R1) => void,
     ): TypedFunctionCall<[T1, T2], E, R1>;
-    new<T1, T2, E>(
+    new <T1, T2, E>(
         wrappedFunction: (t1: T1, t2: T2, cb: (err: E) => void) => void,
         args: [T1, T2],
         callback: (err: E) => void,
     ): TypedFunctionCall<[T1, T2], E>;
 
-    new<T1, T2, T3, R1, R2, R3, E>(
-        wrappedFunction: (t1: T1, t2: T2, t3: T3, cb: (err: E, r1: R1, r2: R2, r3: R3) => void) => void,
+    new <T1, T2, T3, R1, R2, R3, E>(
+        wrappedFunction: (
+            t1: T1,
+            t2: T2,
+            t3: T3,
+            cb: (err: E, r1: R1, r2: R2, r3: R3) => void,
+        ) => void,
         args: [T1, T2, T3],
         callback: (error: E, r1: R1, r2: R2, r3: R3) => void,
     ): TypedFunctionCall<[T1, T2, T3], E, R1, R2, R3>;
-    new<T1, T2, T3, R1, R2, E>(
-        wrappedFunction: (t1: T1, t2: T2, t3: T3, cb: (err: E, r1: R1, r2: R2) => void) => void,
+    new <T1, T2, T3, R1, R2, E>(
+        wrappedFunction: (
+            t1: T1,
+            t2: T2,
+            t3: T3,
+            cb: (err: E, r1: R1, r2: R2) => void,
+        ) => void,
         args: [T1, T2, T3],
         callback: (error: E, r1: R1, r2: R2) => void,
     ): TypedFunctionCall<[T1, T2, T3], E, R1, R2>;
-    new<T1, T2, T3, R1, E>(
-        wrappedFunction: (t1: T1, t2: T2, t3: T3, cb: (err: E, r1: R1) => void) => void,
+    new <T1, T2, T3, R1, E>(
+        wrappedFunction: (
+            t1: T1,
+            t2: T2,
+            t3: T3,
+            cb: (err: E, r1: R1) => void,
+        ) => void,
         args: [T1, T2, T3],
         callback: (error: E, r1: R1) => void,
     ): TypedFunctionCall<[T1, T2, T3], E, R1>;
-    new<T1, T2, T3, E>(
+    new <T1, T2, T3, E>(
         wrappedFunction: (t1: T1, t2: T2, t3: T3, cb: (err: E) => void) => void,
         args: [T1, T2, T3],
         callback: (err: E) => void,
     ): TypedFunctionCall<[T1, T2, T3], E>;
 
-    new(
+    new (
         wrappedFunction: (...args: any[]) => void,
         args: any[],
         callback: (error: any, ...resArgs: any[]) => void,
     ): FunctionCallAny;
 }
 
-export type TypedFunctionCall<T, E, R1 = undefined, R2 = undefined, R3 = undefined> =
-    & FunctionCall<T>
-    & FunctionCallArgs<E, R1, R2, R3>;
+export type TypedFunctionCall<
+    T,
+    E,
+    R1 = undefined,
+    R2 = undefined,
+    R3 = undefined,
+> = FunctionCall<T> & FunctionCallArgs<E, R1, R2, R3>;
 export type FunctionCallAny = FunctionCall<any[]> & FunctionCallArgsAny;
 
 export interface FunctionCall<T> extends EventEmitter {
@@ -505,30 +599,50 @@ export interface FunctionCall<T> extends EventEmitter {
      * @param delay: backoff delay in milliseconds
      * @param err: the error that triggered the backoff operation
      */
-    addListener(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
+    addListener(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
 
     /**
      * Emitted when a call is aborted.
      */
     addListener(event: "abort", listener: () => void): this;
     on(event: "call", listener: (args: T) => void): this;
-    on(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
+    on(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
     on(event: "abort", listener: () => void): this;
     once(event: "call", listener: (args: T) => void): this;
-    once(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
+    once(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
     once(event: "abort", listener: () => void): this;
     prependListener(event: "call", listener: (args: T) => void): this;
-    prependListener(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
+    prependListener(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
     prependListener(event: "abort", listener: () => void): this;
     prependOnceListener(event: "call", listener: (args: T) => void): this;
-    prependOnceListener(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
+    prependOnceListener(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
     prependOnceListener(event: "abort", listener: () => void): this;
     removeListener(event: "call", listener: (args: T) => void): this;
-    removeListener(event: "backoff", listener: (number: number, delay: number, error?: any) => void): this;
+    removeListener(
+        event: "backoff",
+        listener: (number: number, delay: number, error?: any) => void,
+    ): this;
     removeListener(event: "abort", listener: () => void): this;
     removeAllListeners(event?: "call" | "callback" | "backoff" | "abort"): this;
     listeners(event: "call"): Array<(args: T) => void>;
-    listeners(event: "backoff"): Array<(number: number, delay: number, error?: any) => void>;
+    listeners(
+        event: "backoff",
+    ): Array<(number: number, delay: number, error?: any) => void>;
     listeners(event: "abort"): Array<() => void>;
     emit(event: "call", args: T): boolean;
     emit(event: "backoff", number: number, delay: number, error?: any): boolean;
@@ -538,7 +652,12 @@ export interface FunctionCall<T> extends EventEmitter {
 }
 
 // Waiting for https://github.com/Microsoft/TypeScript/pull/17884
-export interface FunctionCallArgs<E, R1 = undefined, R2 = undefined, R3 = undefined> {
+export interface FunctionCallArgs<
+    E,
+    R1 = undefined,
+    R2 = undefined,
+    R3 = undefined,
+> {
     /**
      * Returns an array containing the last arguments passed to the completion callback
      * of the wrapped function. For example, to get the error code returned by the last
@@ -558,12 +677,24 @@ export interface FunctionCallArgs<E, R1 = undefined, R2 = undefined, R3 = undefi
      * Emitted each time the wrapped function invokes its callback
      * @param results: wrapped function's return values
      */
-    addListener(event: "callback", listener: (results: [E, R1, R2, R3]) => void): this;
+    addListener(
+        event: "callback",
+        listener: (results: [E, R1, R2, R3]) => void,
+    ): this;
     on(event: "callback", listener: (results: [E, R1, R2, R3]) => void): this;
     once(event: "callback", listener: (results: [E, R1, R2, R3]) => void): this;
-    prependListener(event: "callback", listener: (results: [E, R1, R2, R3]) => void): this;
-    prependOnceListener(event: "callback", listener: (results: [E, R1, R2, R3]) => void): this;
-    removeListener(event: "callback", listener: (results: [E, R1, R2, R3]) => void): this;
+    prependListener(
+        event: "callback",
+        listener: (results: [E, R1, R2, R3]) => void,
+    ): this;
+    prependOnceListener(
+        event: "callback",
+        listener: (results: [E, R1, R2, R3]) => void,
+    ): this;
+    removeListener(
+        event: "callback",
+        listener: (results: [E, R1, R2, R3]) => void,
+    ): this;
     listeners(event: "callback"): Array<(results: [E, R1, R2, R3]) => void>;
     emit(event: "callback", results: [E, R1, R2, R3]): boolean;
 }
@@ -591,8 +722,14 @@ export interface FunctionCallArgsAny {
     addListener(event: "callback", listener: (results: any[]) => void): this;
     on(event: "callback", listener: (results: any[]) => void): this;
     once(event: "callback", listener: (results: any[]) => void): this;
-    prependListener(event: "callback", listener: (results: any[]) => void): this;
-    prependOnceListener(event: "callback", listener: (results: any[]) => void): this;
+    prependListener(
+        event: "callback",
+        listener: (results: any[]) => void,
+    ): this;
+    prependOnceListener(
+        event: "callback",
+        listener: (results: any[]) => void,
+    ): this;
     removeListener(event: "callback", listener: (results: any[]) => void): this;
     listeners(event: "callback"): Array<(results: any[]) => void>;
     emit(event: "callback", results: any[]): boolean;

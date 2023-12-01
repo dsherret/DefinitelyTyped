@@ -39,7 +39,11 @@ export interface Pack extends stream.Readable {
      * To create a pack stream use tar.pack() and call pack.entry(header, [callback]) to add tar entries.
      */
     entry(headers: Headers, callback?: Callback): stream.Writable;
-    entry(headers: Headers, buffer?: string | Buffer, callback?: Callback): stream.Writable;
+    entry(
+        headers: Headers,
+        buffer?: string | Buffer,
+        callback?: Callback,
+    ): stream.Writable;
     finalize(): void;
     [Symbol.asyncIterator](): AsyncIterableIterator<Buffer>;
 }
@@ -53,7 +57,11 @@ export interface Extract extends stream.Writable {
     on(event: string, listener: (...args: any[]) => void): this;
     on(
         event: "entry",
-        listener: (headers: Headers, stream: stream.PassThrough, next: (error?: unknown) => void) => void,
+        listener: (
+            headers: Headers,
+            stream: stream.PassThrough,
+            next: (error?: unknown) => void,
+        ) => void,
     ): this;
     [Symbol.asyncIterator](): AsyncIterator<Entry>;
 }

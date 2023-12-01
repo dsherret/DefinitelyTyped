@@ -40,11 +40,13 @@ const nodeJSON: BlockJSON = {
             object: "text",
             key: "a",
             text: "example",
-            marks: [{
-                data: { testData: "data" },
-                type: "mark",
-                object: "mark",
-            }],
+            marks: [
+                {
+                    data: { testData: "data" },
+                    type: "mark",
+                    object: "mark",
+                },
+            ],
         },
     ],
 };
@@ -58,11 +60,13 @@ const doc = Document.fromJSON({
 const node = new Block(nodeJSON);
 
 doc.findDescendant();
-doc.findDescendant(node => node.object === "block" && node.type === "paragraph");
+doc.findDescendant(
+    (node) => node.object === "block" && node.type === "paragraph",
+);
 doc.findDescendant((node, path) => true);
 
 node.findDescendant();
-node.findDescendant(node => node.object === "block");
+node.findDescendant((node) => node.object === "block");
 node.findDescendant((node, path) => false);
 
 const schema: SchemaProperties = {
@@ -86,17 +90,27 @@ const schema: SchemaProperties = {
             switch (code) {
                 case "last_child_type_invalid": {
                     const paragraph = Block.create("paragraph");
-                    return editor.insertNodeByKey(node.key, node.nodes.size, paragraph);
+                    return editor.insertNodeByKey(
+                        node.key,
+                        node.nodes.size,
+                        paragraph,
+                    );
                 }
             }
         },
-        marks: [{ type: "bold" }, { type: t => ["bold", "underline"].indexOf(t) !== -1 }],
+        marks: [
+            { type: "bold" },
+            { type: (t) => ["bold", "underline"].indexOf(t) !== -1 },
+        ],
         text: /^Test$/,
     },
     blocks: {
         image: {
             isVoid: true,
-            marks: [{ type: "bold" }, { type: t => ["bold", "underline"].indexOf(t) !== -1 }],
+            marks: [
+                { type: "bold" },
+                { type: (t) => ["bold", "underline"].indexOf(t) !== -1 },
+            ],
         },
     },
 };
@@ -165,8 +179,13 @@ const plugin: Plugin<Editor> = {
     onQuery: (query: Query, editor: Editor, next: () => void) => next(),
     validateNode: (node: Node, editor: Editor, next: () => void) => next(),
 
-    commands: { [pluginCommandName]: (editor: Editor, ...args: any[]) => editor },
-    queries: { [pluginQueryName]: (editor: Editor, ...args: any[]) => pluginQueryResult },
+    commands: {
+        [pluginCommandName]: (editor: Editor, ...args: any[]) => editor,
+    },
+    queries: {
+        [pluginQueryName]: (editor: Editor, ...args: any[]) =>
+            pluginQueryResult,
+    },
     schema: { ...schema },
 };
 
@@ -177,13 +196,17 @@ const point = Point.create({ key: "a", offset: 0 });
 const range = Range.create({ anchor: point, focus: point });
 const inline = Inline.create("text");
 const mark = Mark.create("bold");
-const decorations = Decoration.createList([{
-    anchor: Point.create({ key: "a", offset: 0 }),
-    focus: Point.create({ key: "a", offset: 0 }),
-    type: mark.type,
-    data: mark.data,
-}]);
-const annotations = Annotation.createMap({ a: Annotation.create({ key: "a", type: "leaf", data: { foo: "bar " } }) });
+const decorations = Decoration.createList([
+    {
+        anchor: Point.create({ key: "a", offset: 0 }),
+        focus: Point.create({ key: "a", offset: 0 }),
+        type: mark.type,
+        data: mark.data,
+    },
+]);
+const annotations = Annotation.createMap({
+    a: Annotation.create({ key: "a", type: "leaf", data: { foo: "bar " } }),
+});
 
 editor.command(pluginCommandName, 1);
 editor.command(pluginCommandFunc, 1);
@@ -402,12 +425,21 @@ editor
     .replaceNodeByKey("a", inline)
     .replaceNodeByPath(List([1]), inline)
     .select(range)
-    .setAnnotation(Annotation.create({ key: "a", type: "old" }), { key: "a", type: "new" })
+    .setAnnotation(Annotation.create({ key: "a", type: "old" }), {
+        key: "a",
+        type: "new",
+    })
     .setBlocks("paragraph")
     .setBlocksAtRange(range, "paragraph")
     .setInlines("paragraph")
     .setInlinesAtRange(range, "paragraph")
-    .setMarkByKey("a", 0, 2, { type: "bold", data: { thing: "value" } }, { data: { thing: false } })
+    .setMarkByKey(
+        "a",
+        0,
+        2,
+        { type: "bold", data: { thing: "value" } },
+        { data: { thing: false } },
+    )
     .setNodeByKey("a", "paragraph")
     .setNodeByKey("a", { data: Data.create({}) })
     .setNodeByPath(List([0]), "paragraph")
@@ -546,9 +578,15 @@ editor
         newProperties: {},
         data: Data.create({}),
     })
-    .withoutMerging(() => {/* noop */})
-    .withoutNormalizing(() => {/* noop */})
-    .withoutSaving(() => {/* noop */});
+    .withoutMerging(() => {
+        /* noop */
+    })
+    .withoutNormalizing(() => {
+        /* noop */
+    })
+    .withoutSaving(() => {
+        /* noop */
+    });
 
 KeyUtils.setGenerator(() => "Test");
 KeyUtils.create();

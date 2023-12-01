@@ -20,7 +20,8 @@ declare namespace GoogleAdsScripts {
             setStartDate(date: string | GoogleAdsDate): void;
         }
 
-        interface PhoneNumberBuilder extends Base.Builder<PhoneNumberOperation> {
+        interface PhoneNumberBuilder
+            extends Base.Builder<PhoneNumberOperation> {
             withAppId(appId: string): this;
             withCustomParameters(customParameters: string): this;
             withEndDate(date: string | GoogleAdsDate): this;
@@ -41,13 +42,11 @@ declare namespace GoogleAdsScripts {
         interface PhoneNumberOperation extends Base.Operation<PhoneNumber> {}
 
         interface PhoneNumberSelector
-            extends
-                Base.Selector<PhoneNumberIterator>,
+            extends Base.Selector<PhoneNumberIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

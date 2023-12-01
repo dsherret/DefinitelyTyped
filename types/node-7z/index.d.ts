@@ -19,11 +19,17 @@ interface Progress {
 }
 
 // Based off Readable from Streams, node-7z uses Readable but Typescript couldn't extend for Data and Progress typings
-declare class ZipStream extends StreamNS.Stream implements NodeJS.ReadableStream {
+declare class ZipStream
+    extends StreamNS.Stream
+    implements NodeJS.ReadableStream
+{
     /**
      * A utility method for creating Readable Streams out of iterators.
      */
-    static from(iterable: Iterable<any> | AsyncIterable<any>, options?: StreamNS.ReadableOptions): ZipStream;
+    static from(
+        iterable: Iterable<any> | AsyncIterable<any>,
+        options?: StreamNS.ReadableOptions,
+    ): ZipStream;
 
     readable: boolean;
     readonly readableEncoding: BufferEncoding | null;
@@ -44,18 +50,27 @@ declare class ZipStream extends StreamNS.Stream implements NodeJS.ReadableStream
     unshift(chunk: any, encoding?: BufferEncoding): void;
     wrap(oldStream: NodeJS.ReadableStream): this;
     push(chunk: any, encoding?: BufferEncoding): boolean;
-    _destroy(error: Error | null, callback: (error?: Error | null) => void): this;
+    _destroy(
+        error: Error | null,
+        callback: (error?: Error | null) => void,
+    ): this;
     destroy(error?: Error): this;
 
     // tslint:disable:unified-signatures
     addListener(event: "end", listener: () => void): this;
     addListener(event: "data", listener: (data: Data) => void): this;
-    addListener(event: "progress", listener: (progress: Progress) => void): this;
+    addListener(
+        event: "progress",
+        listener: (progress: Progress) => void,
+    ): this;
     addListener(event: "error", listener: (err: Error) => void): this;
     addListener(event: "pause", listener: () => void): this;
     addListener(event: "readable", listener: () => void): this;
     addListener(event: "resume", listener: () => void): this;
-    addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     emit(event: "end"): boolean;
     emit(event: "data", data: Data): boolean;
@@ -86,30 +101,48 @@ declare class ZipStream extends StreamNS.Stream implements NodeJS.ReadableStream
 
     prependListener(event: "end", listener: () => void): this;
     prependListener(event: "data", listener: (data: Data) => void): this;
-    prependListener(event: "progress", listener: (progress: Progress) => void): this;
+    prependListener(
+        event: "progress",
+        listener: (progress: Progress) => void,
+    ): this;
     prependListener(event: "error", listener: (err: Error) => void): this;
     prependListener(event: "pause", listener: () => void): this;
     prependListener(event: "readable", listener: () => void): this;
     prependListener(event: "resume", listener: () => void): this;
-    prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     prependOnceListener(event: "end", listener: () => void): this;
     prependOnceListener(event: "data", listener: (data: Data) => void): this;
-    prependOnceListener(event: "progress", listener: (progress: Progress) => void): this;
+    prependOnceListener(
+        event: "progress",
+        listener: (progress: Progress) => void,
+    ): this;
     prependOnceListener(event: "error", listener: (err: Error) => void): this;
     prependOnceListener(event: "pause", listener: () => void): this;
     prependOnceListener(event: "readable", listener: () => void): this;
     prependOnceListener(event: "resume", listener: () => void): this;
-    prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     removeListener(event: "end", listener: () => void): this;
     removeListener(event: "data", listener: (data: Data) => void): this;
-    removeListener(event: "progress", listener: (progress: Progress) => void): this;
+    removeListener(
+        event: "progress",
+        listener: (progress: Progress) => void,
+    ): this;
     removeListener(event: "error", listener: (error: Error) => void): this;
     removeListener(event: "pause", listener: () => void): this;
     removeListener(event: "readable", listener: () => void): this;
     removeListener(event: "resume", listener: () => void): this;
-    removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    removeListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
     // tslint:enable:unified-signatures
 
     /** Populated from 7zip's response, wait for 'end' event. */
@@ -236,34 +269,53 @@ type SevenZipOptions = Node7zOptions & CommandLineSwitches;
  * @param source Source files to add to the archive
  * @param options Seven Zip Options
  */
-declare function add(archive: string, source: string | string[], options?: SevenZipOptions): ZipStream;
+declare function add(
+    archive: string,
+    source: string | string[],
+    options?: SevenZipOptions,
+): ZipStream;
 /**
  * Delete files from an archive
  * @param archive Archive to target
  * @param output Target files to remove from the archive
  * @param options Seven Zip Options
  */
-declare function _delete(archive: string, target: string | string[], options?: SevenZipOptions): ZipStream;
+declare function _delete(
+    archive: string,
+    target: string | string[],
+    options?: SevenZipOptions,
+): ZipStream;
 /**
  * Extracts files from an archive to the current directory or to the output directory. This command copies all extracted files to one directory.
  * @param archive Archive to extract files from
  * @param output Output directory
  * @param options Seven Zip Options
  */
-declare function extract(archive: string, output: string, options?: SevenZipOptions): ZipStream;
+declare function extract(
+    archive: string,
+    output: string,
+    options?: SevenZipOptions,
+): ZipStream;
 /**
  * Extracts files from an archive to the current directory or to the output directory.
  * @param archive Archive to extract files from
  * @param output Output directory
  * @param options Seven Zip Options
  */
-declare function extractFull(archive: string, output: string, options?: SevenZipOptions): ZipStream;
+declare function extractFull(
+    archive: string,
+    output: string,
+    options?: SevenZipOptions,
+): ZipStream;
 /**
  * Calculate hash values for files
  * @param target Target files to calculate the hash of
  * @param options Seven Zip Options
  */
-declare function hash(target: string | string[], options?: SevenZipOptions): ZipStream;
+declare function hash(
+    target: string | string[],
+    options?: SevenZipOptions,
+): ZipStream;
 /**
  * Lists contents of archive
  * @param archive Archive to list the contents from
@@ -276,7 +328,11 @@ declare function list(archive: string, options?: SevenZipOptions): ZipStream;
  * @param target Pairs of target names and new names to rename to
  * @param options Seven Zip Options
  */
-declare function rename(archive: string, target: string[][], options?: SevenZipOptions): ZipStream;
+declare function rename(
+    archive: string,
+    target: string[][],
+    options?: SevenZipOptions,
+): ZipStream;
 /**
  * Tests archive files
  * @param archive Archive to test
@@ -289,7 +345,11 @@ declare function test(archive: string, options: SevenZipOptions): ZipStream;
  * @param source Source files to update from the file-system to the archive
  * @param options Seven Zip Options
  */
-declare function update(archive: string, files: string | string[], options?: SevenZipOptions): ZipStream;
+declare function update(
+    archive: string,
+    files: string | string[],
+    options?: SevenZipOptions,
+): ZipStream;
 /**
  * Registers the child process given by the $childProcess option.
  * Must be deferred with the $defer option during creation.

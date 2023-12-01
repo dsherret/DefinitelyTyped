@@ -1,9 +1,7 @@
 /// <reference path="common.d.ts" />
 
 interface SamsungPay {
-    setup(setting: {
-        country_code: string;
-    }): void;
+    setup(setting: { country_code: string }): void;
 
     setupPaymentRequest(paymentReqeuestData: {
         supportedNetworks: AllowedNetworks[];
@@ -21,11 +19,12 @@ interface SamsungPay {
 
     getPrime(
         callback: (
-            result: BaseResult & MerchantReferenceInfo & {
-                card_info: CardInfoV1;
-                card: Card;
-                total_amount: string;
-            },
+            result: BaseResult &
+                MerchantReferenceInfo & {
+                    card_info: CardInfoV1;
+                    card: Card;
+                    total_amount: string;
+                },
         ) => void,
     ): void;
 }

@@ -298,8 +298,8 @@ interface Messager {
     hide(cb?: CallBack): any;
 }
 interface MessagerStatic {
-    new(option?: MessagerOption): Messager;
-    new(message: string, option?: MessagerOption): Messager;
+    new (option?: MessagerOption): Messager;
+    new (message: string, option?: MessagerOption): Messager;
 }
 
 interface ZuiStatic {
@@ -350,7 +350,7 @@ interface ModalTrigger {
     adjustPostion(option?: ModalTriggerOption): any;
 }
 interface ModalTriggerStatic {
-    new(option?: ModalTriggerOption): ModalTrigger;
+    new (option?: ModalTriggerOption): ModalTrigger;
 }
 
 interface JQuery {
@@ -387,8 +387,8 @@ interface Color {
 }
 
 interface ColorStatic {
-    new(r: number, g: number, b: number, a?: number): Color;
-    new(hexStrOrrgbColorOrRgbaColorOrName?: string): Color;
+    new (r: number, g: number, b: number, a?: number): Color;
+    new (hexStrOrrgbColorOrRgbaColorOrName?: string): Color;
     isColor(str: string): boolean;
     names: string[];
 }
@@ -600,7 +600,12 @@ interface TreeMenu {
 
     show(params?: JQuery, disableAnimate?: boolean): void;
 
-    add(element: JQuery, items: TreeNode[], expand?: boolean, disabledAnimate?: boolean): void;
+    add(
+        element: JQuery,
+        items: TreeNode[],
+        expand?: boolean,
+        disabledAnimate?: boolean,
+    ): void;
     toData($ul?: JQuery, filter?: string): object;
 
     reload(data: TreeNode[]): void;
@@ -689,7 +694,10 @@ interface DataTable {
 
 interface JQuery {
     datatable(option?: DataTableOption): JQuery;
-    datatable(command: string, optionOrData: DataTableOption | DataTableData): JQuery;
+    datatable(
+        command: string,
+        optionOrData: DataTableOption | DataTableData,
+    ): JQuery;
 }
 
 /**
@@ -701,27 +709,29 @@ interface UploaderOption {
     browse_button?: string | undefined;
     url: string;
     qiniu?: object | undefined;
-    filters?: {
-        mime_type: Array<{
-            title?: string | undefined;
-            extensions?: string | undefined;
-        }>;
-        max_file_size?: string | undefined;
-        prevent_duplicates?: string | undefined;
-    } | undefined;
+    filters?:
+        | {
+              mime_type: Array<{
+                  title?: string | undefined;
+                  extensions?: string | undefined;
+              }>;
+              max_file_size?: string | undefined;
+              prevent_duplicates?: string | undefined;
+          }
+        | undefined;
     fileList?: string | undefined;
     fileTemplate?: string | undefined;
     fileFormater?($file: JQuery, file: FileObj, status: STATUS): void;
     fileIconCreator?(fileType: string, file: FileObj, uploader: Uploader): void;
     staticFiles?:
         | Array<{
-            id?: string | undefined;
-            name?: string | undefined;
-            type?: string | undefined;
-            size?: string | undefined;
-            origSize?: string | undefined;
-            lastModifiedDate?: Date | undefined;
-        }>
+              id?: string | undefined;
+              name?: string | undefined;
+              type?: string | undefined;
+              size?: string | undefined;
+              origSize?: string | undefined;
+              lastModifiedDate?: Date | undefined;
+          }>
         | undefined;
     rename?: boolean | undefined;
     renameExtension?: boolean | undefined;
@@ -736,7 +746,11 @@ interface UploaderOption {
     limitFilesCount?: boolean | number | undefined;
     deleteConfirm?: boolean | string | undefined;
     removeUploaded?: boolean | undefined;
-    statusCreator?(total: UploadProgress, state: STATUS, uploader: Uploader): void;
+    statusCreator?(
+        total: UploadProgress,
+        state: STATUS,
+        uploader: Uploader,
+    ): void;
     previewImageSize?: { width: number; height: number } | undefined;
     uploadedMessage?: boolean | undefined;
     deleteActionOnDone?: boolean | undefined;
@@ -746,13 +760,15 @@ interface UploaderOption {
     multipart_params?: object | CallBack | undefined;
     max_retries?: number | undefined;
     chunk_size?: string | undefined;
-    resize?: {
-        width?: number | undefined;
-        height?: number | undefined;
-        crop?: boolean | undefined;
-        quuality?: number | undefined;
-        preserve_headers?: boolean | undefined;
-    } | undefined;
+    resize?:
+        | {
+              width?: number | undefined;
+              height?: number | undefined;
+              crop?: boolean | undefined;
+              quuality?: number | undefined;
+              preserve_headers?: boolean | undefined;
+          }
+        | undefined;
     multi_selection?: boolean | undefined;
     unique_names?: boolean | undefined;
     runtimes?: string | undefined;

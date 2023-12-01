@@ -4,6 +4,6 @@ import metascraperReadability = require("metascraper-readability");
 const html = "example";
 const url = "https://example.org";
 
-metascraper([metascraperReadability()])({ html, url }).then(data => {
+metascraper([metascraperReadability()])({ html, url }).then((data) => {
     data;
 });

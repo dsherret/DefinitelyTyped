@@ -1,15 +1,12 @@
 import npmWhoami = require("npm-whoami");
 
-npmWhoami(
-    (err, username) => {
-        // $ExpectType Error | null
-        err;
+npmWhoami((err, username) => {
+    // $ExpectType Error | null
+    err;
 
-        // $ExpectType string | undefined
-        username;
-    },
-    {},
-);
+    // $ExpectType string | undefined
+    username;
+}, {});
 
 npmWhoami(() => {}, 10_000);
 npmWhoami(() => {}, "registry");

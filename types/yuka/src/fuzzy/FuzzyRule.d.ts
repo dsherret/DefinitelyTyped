@@ -53,5 +53,8 @@ export class FuzzyRule {
      * @param json - The JSON object.
      * @param fuzzySets - Maps fuzzy sets to UUIDs.
      */
-    fromJSON(json: { [s: string]: any }, fuzzySets: Map<string, FuzzySet>): this;
+    fromJSON(
+        json: { [s: string]: any },
+        fuzzySets: Map<string, FuzzySet>,
+    ): this;
 }

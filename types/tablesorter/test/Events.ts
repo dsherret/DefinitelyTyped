@@ -22,14 +22,20 @@ export class TestEvents<T extends HTMLElement> {
             table;
         };
 
-        const configEventHandler: ConfigEventHandler<T> = (eventArgs, config) => {
+        const configEventHandler: ConfigEventHandler<T> = (
+            eventArgs,
+            config,
+        ) => {
             // $ExpectType TriggeredEvent<T, null, T, T>
             eventArgs;
             // $ExpectType TablesorterConfigurationStore<T>
             config;
         };
 
-        const filterEventHandler: FilterEventHandler<T> = (eventArgs, filters) => {
+        const filterEventHandler: FilterEventHandler<T> = (
+            eventArgs,
+            filters,
+        ) => {
             // $ExpectType TriggeredEvent<T, null, T, T>
             eventArgs;
             // $ExpectType string[]
@@ -41,7 +47,10 @@ export class TestEvents<T extends HTMLElement> {
             eventArgs;
         };
 
-        const pagerEventHandler: PagerEventHandler<T> = (eventArgs, options) => {
+        const pagerEventHandler: PagerEventHandler<T> = (
+            eventArgs,
+            options,
+        ) => {
             // $ExpectType TriggeredEvent<T, null, T, T>
             eventArgs;
             // $ExpectType TablesorterConfigurationStore<T> | PagerConfigurationStore<T>

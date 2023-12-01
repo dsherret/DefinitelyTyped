@@ -64,7 +64,9 @@ declare namespace CAPICOM {
 
         PrivateKey: PrivateKey;
 
-        Export(EncodingType: CADES_Common.ValuesOf<CAPICOM_ENCODING_TYPE>): string;
+        Export(
+            EncodingType: CADES_Common.ValuesOf<CAPICOM_ENCODING_TYPE>,
+        ): string;
 
         ExtendedKeyUsage(): ExtendedKeyUsage;
     }
@@ -84,7 +86,11 @@ declare namespace CAPICOM {
             bFindValidOnly?: boolean,
         ): Certificates;
 
-        Select(title?: string, displayString?: string, bMultiSelect?: boolean): Certificates;
+        Select(
+            title?: string,
+            displayString?: string,
+            bMultiSelect?: boolean,
+        ): Certificates;
     }
 
     interface Store {

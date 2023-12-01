@@ -16,7 +16,10 @@ type RouteModel = object | string | number;
  * The `Ember.Route` class is used to define individual routes. Refer to
  * the [routing guide](http://emberjs.com/guides/routing/) for documentation.
  */
-export default class Route<Model = unknown, Params extends object = object> extends EmberObject {
+export default class Route<
+    Model = unknown,
+    Params extends object = object,
+> extends EmberObject {
     // methods
     /**
      * This hook is called after this route's model has resolved. It follows
@@ -29,7 +32,10 @@ export default class Route<Model = unknown, Params extends object = object> exte
      *   transition will pause until the transition resolves. Otherwise,
      *   non-promise return values are not utilized in any way.
      */
-    afterModel(resolvedModel: Model, transition: Transition): Promise<unknown> | void;
+    afterModel(
+        resolvedModel: Model,
+        transition: Transition,
+    ): Promise<unknown> | void;
 
     /**
      * This hook is the first of the route entry validation hooks called when an
@@ -152,7 +158,11 @@ export default class Route<Model = unknown, Params extends object = object> exte
      * A hook you can use to reset controller values either when the model
      * changes or the route is exiting.
      */
-    resetController(controller: Controller, isExiting: boolean, transition: Transition): void;
+    resetController(
+        controller: Controller,
+        isExiting: boolean,
+        transition: Transition,
+    ): void;
 
     /**
      * Sends an action to the router, which will delegate it to the currently active
@@ -184,7 +194,11 @@ export default class Route<Model = unknown, Params extends object = object> exte
      * when implementing your `setupController` function, make sure to call
      * `_super`
      */
-    setupController(controller: Controller, model: Model, transition: Transition): void;
+    setupController(
+        controller: Controller,
+        model: Model,
+        transition: Transition,
+    ): void;
 
     /**
      * Transition the application into another route. The route may
@@ -378,8 +392,17 @@ export default class Route<Model = unknown, Params extends object = object> exte
      * @deprecated    until 5.0. Inject the router service and use its methods.
      */
     transitionTo(name: string, options?: { queryParams: object }): Transition;
-    transitionTo(name: string, modelsA: RouteModel, options?: { queryParams: object }): Transition;
-    transitionTo(name: string, modelsA: RouteModel, modelsB: RouteModel, options?: { queryParams: object }): Transition;
+    transitionTo(
+        name: string,
+        modelsA: RouteModel,
+        options?: { queryParams: object },
+    ): Transition;
+    transitionTo(
+        name: string,
+        modelsA: RouteModel,
+        modelsB: RouteModel,
+        options?: { queryParams: object },
+    ): Transition;
     transitionTo(
         name: string,
         modelsA: RouteModel,
@@ -528,4 +551,6 @@ export default class Route<Model = unknown, Params extends object = object> exte
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface -- used for declaration merge
-export default interface Route<Model = unknown, Params extends object = object> extends ActionHandler, Evented {}
+export default interface Route<Model = unknown, Params extends object = object>
+    extends ActionHandler,
+        Evented {}

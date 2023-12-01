@@ -8,7 +8,15 @@ export interface RequireModeOptions {
 declare module "../../" {
     let modeURL: string;
 
-    function requireMode(mode: string | { name: string }, callback: () => void, options?: RequireModeOptions): void;
+    function requireMode(
+        mode: string | { name: string },
+        callback: () => void,
+        options?: RequireModeOptions,
+    ): void;
 
-    function autoLoadMode(instance: Editor, mode: string, options?: RequireModeOptions): void;
+    function autoLoadMode(
+        instance: Editor,
+        mode: string,
+        options?: RequireModeOptions,
+    ): void;
 }

@@ -21,7 +21,11 @@ export interface Model extends React.ComponentClass {
 export interface useVirtualModelProps {
     itemCount?: number;
     // getEstimatedItemSize is not marked explicitly optional in useVirtualModel, but model implmentation gives it a default, thus making it optional.
-    getEstimatedItemSize?: (itemSizes: number, scrollSize: number, newItemCount?: number) => number;
+    getEstimatedItemSize?: (
+        itemSizes: number,
+        scrollSize: number,
+        newItemCount?: number,
+    ) => number;
     estimatedWidgetSize?: number;
     overscanCount?: number;
     horizontal?: boolean;
@@ -49,13 +53,20 @@ export const EVT_ALL: EventType[];
 /**
  * useSubscription is a hook that subscribes to a model and calls a callback when one of the passed events is triggered.
  */
-export function useSubscription(model: Model, events: EventType[], callback: (() => void) | null): void;
+export function useSubscription(
+    model: Model,
+    events: EventType[],
+    callback: (() => void) | null,
+): void;
 
 /**
  * useComponentSubscription is a hook used for subscribing a component to a model.
  * Usually you won't need to use this hook directly.
  */
-export function useComponentSubscription(model: Model, events?: EventType[]): void;
+export function useComponentSubscription(
+    model: Model,
+    events?: EventType[],
+): void;
 
 /**
  * useOnce keeps a ref to the underlying component.

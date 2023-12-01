@@ -26,9 +26,21 @@ export default class Share extends React.Component {
 
     render() {
         return (
-            <View style={{ alignItems: "center", justifyContent: "center", flex: 1 }}>
+            <View
+                style={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                    flex: 1,
+                }}
+            >
                 <View
-                    style={{ borderColor: "green", borderWidth: 1, backgroundColor: "white", height: 200, width: 300 }}
+                    style={{
+                        borderColor: "green",
+                        borderWidth: 1,
+                        backgroundColor: "white",
+                        height: 200,
+                        width: 300,
+                    }}
                 >
                     <Text>type: {this.state.type}</Text>
                     <Text>value: {this.state.value}</Text>

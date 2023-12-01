@@ -28,22 +28,22 @@ client.close();
 
 // on
 // event as string
-client.on("error", data => {
+client.on("error", (data) => {
     console.log(data.code);
     console.log(data.signatureId);
 });
 // event as enum
-client.on(HelloSign.events.DECLINE, data => {
+client.on(HelloSign.events.DECLINE, (data) => {
     console.log(data.reason);
 });
 
 // once
 // event as string
-client.once("ready", data => {
+client.once("ready", (data) => {
     console.log(data.signatureId);
 });
 // event as enum
-client.once(HelloSign.events.REASSIGN, data => {
+client.once(HelloSign.events.REASSIGN, (data) => {
     console.log(data.name);
     console.log(data.email);
 });

@@ -7,7 +7,9 @@ import { useSaveData } from "react-adaptive-hooks/save-data";
 
 const NetworkStatus = () => {
     const initialEffectiveConnectionType = "4g";
-    const { effectiveConnectionType } = useNetworkStatus(initialEffectiveConnectionType);
+    const { effectiveConnectionType } = useNetworkStatus(
+        initialEffectiveConnectionType,
+    );
 
     let media;
     switch (effectiveConnectionType) {
@@ -21,10 +23,18 @@ const NetworkStatus = () => {
             media = <img src="..." alt="high resolution" />;
             break;
         case "4g":
-            media = <video muted controls>{/* ... */}</video>;
+            media = (
+                <video muted controls>
+                    {/* ... */}
+                </video>
+            );
             break;
         default:
-            media = <video muted controls>{/* ... */}</video>;
+            media = (
+                <video muted controls>
+                    {/* ... */}
+                </video>
+            );
             break;
     }
 
@@ -37,7 +47,13 @@ const SaveData = () => {
 
     return (
         <div>
-            {saveData ? <img src="..." /> : <video muted controls>{/* ... */}</video>}
+            {saveData ? (
+                <img src="..." />
+            ) : (
+                <video muted controls>
+                    {/* ... */}
+                </video>
+            )}
         </div>
     );
 };
@@ -47,9 +63,13 @@ const HardwareConcurrency = () => {
 
     return (
         <div>
-            {numberOfLogicalProcessors && numberOfLogicalProcessors <= 4
-                ? <img src="..." />
-                : <video muted controls>{/* ... */}</video>}
+            {numberOfLogicalProcessors && numberOfLogicalProcessors <= 4 ? (
+                <img src="..." />
+            ) : (
+                <video muted controls>
+                    {/* ... */}
+                </video>
+            )}
         </div>
     );
 };
@@ -60,7 +80,13 @@ const MemoryStatus = () => {
 
     return (
         <div>
-            {deviceMemory < 4 ? <img src="..." /> : <video muted controls>{/* ... */}</video>}
+            {deviceMemory < 4 ? (
+                <img src="..." />
+            ) : (
+                <video muted controls>
+                    {/* ... */}
+                </video>
+            )}
         </div>
     );
 };
@@ -86,15 +112,29 @@ interface MediaCapabilitiesProps {
 }
 
 const MediaCapabilities = ({ videoSources }: MediaCapabilitiesProps) => {
-    const { mediaCapabilities } = useMediaCapabilities(webmMediaConfig, initialMediaCapabilities);
+    const { mediaCapabilities } = useMediaCapabilities(
+        webmMediaConfig,
+        initialMediaCapabilities,
+    );
 
     return (
         <div>
-            <video src={mediaCapabilities.supported ? videoSources.webm : videoSources.mp4} controls>{/* ... */}</video>
-            {(!mediaCapabilities.supported || !mediaCapabilities.hasMediaConfig) && (
+            <video
+                src={
+                    mediaCapabilities.supported
+                        ? videoSources.webm
+                        : videoSources.mp4
+                }
+                controls
+            >
+                {/* ... */}
+            </video>
+            {(!mediaCapabilities.supported ||
+                !mediaCapabilities.hasMediaConfig) && (
                 <div className="muted">
-                    Defaulted to mp4. Couldn't test webm support, either the media capabilities api is unavailable or no
-                    media configuration was given.
+                    Defaulted to mp4. Couldn't test webm support, either the
+                    media capabilities api is unavailable or no media
+                    configuration was given.
                 </div>
             )}
         </div>

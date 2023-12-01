@@ -1,7 +1,10 @@
 import { CPSFunction, Righto, RightoAfter } from ".";
 
 /** Represents a type as either the type itself, a righto of the type, or a promise of the type */
-type Flexible<T, ET = any> = T | Promise<T> | Righto<[T | undefined, ...any[]], ET>;
+type Flexible<T, ET = any> =
+    | T
+    | Promise<T>
+    | Righto<[T | undefined, ...any[]], ET>;
 /** Accepts an array of types and returns a array of each type OR'd with eventual representations (Righto and promise) */
 type ArgsAsFlexible<AT extends any[], ET> = {
     [T in keyof AT]: Flexible<AT[T], ET>;
@@ -12,9 +15,11 @@ type ResolvedObject<T> = {
 };
 /** Recursively transforms an object type to unwrap its Righto typed properties into "unknown" */
 type ResolvedObjectRecursive<T> = {
-    [P in keyof T]: T[P] extends Righto<infer X> ? X[0]
-        : T[P] extends object ? ResolvedObjectRecursive<T[P]>
-        : T[P];
+    [P in keyof T]: T[P] extends Righto<infer X>
+        ? X[0]
+        : T[P] extends object
+          ? ResolvedObjectRecursive<T[P]>
+          : T[P];
 };
 /** Maps an array of types into their righto representations */
 type RightoArrayFrom<T extends any[], ET> = {
@@ -63,14 +68,26 @@ declare function righto<AT extends any[], RT extends any[], ET = any>(
 // Library for function righto methods
 declare namespace righto {
     /** A callback function that accepts a single error argument, with any number of return arguments */
-    type ErrBack<RT extends any[] = [], ET = any> = (err?: ET, ...results: { [P in keyof RT]?: RT[P] }) => void;
+    type ErrBack<RT extends any[] = [], ET = any> = (
+        err?: ET,
+        ...results: { [P in keyof RT]?: RT[P] }
+    ) => void;
     /**  Usually an async function that accepts any number of parameters, then returns a result or error through an ErrBack method */
-    type CPSFunction<AT extends any[], RT extends any[], ET> = (...args: [...AT, ErrBack<RT, ET>]) => void;
+    type CPSFunction<AT extends any[], RT extends any[], ET> = (
+        ...args: [...AT, ErrBack<RT, ET>]
+    ) => void;
     /** A righto that does not resolve to any value, used for introducing delays in righto argument chains */
     type RightoAfter = Righto<[]>;
     /** Represents a constructed righto object */
-    interface Righto<RT extends any[], ET = any> extends CPSFunction<[], RT, ET> {
-        get(prop: string | number | Righto<[string, ...any[]]> | Righto<[number, ...any[]]>): Righto<[any], ET>;
+    interface Righto<RT extends any[], ET = any>
+        extends CPSFunction<[], RT, ET> {
+        get(
+            prop:
+                | string
+                | number
+                | Righto<[string, ...any[]]>
+                | Righto<[number, ...any[]]>,
+        ): Righto<[any], ET>;
         get<T>(fn: (x: RT[0]) => T): Righto<[T], ET>;
         /** You can force a righto task for run at any time without dealing with the results (or error) by calling it with no arguments */
         (): Righto<RT, ET>;
@@ -118,7 +135,9 @@ declare namespace righto {
      * });
      */
     function iterate<AT extends any[], RT, ET>(
-        constructGenerator: (...args: AT) => Generator<Righto<[RT], ET>, RT, RT>,
+        constructGenerator: (
+            ...args: AT
+        ) => Generator<Righto<[RT], ET>, RT, RT>,
     ): (...args: AT) => Righto<[RT], ET>;
 
     /**
@@ -157,7 +176,9 @@ declare namespace righto {
      *     // finalResult === 2
      * });
      */
-    function reduce<RT, ET = any>(values: Array<Righto<[RT], ET>>): Righto<[RT], ET>;
+    function reduce<RT, ET = any>(
+        values: Array<Righto<[RT], ET>>,
+    ): Righto<[RT], ET>;
 
     /**
      * Righto.reduce takes an Array of values (an an eventual that resolves to an array) as the first argument, resolves them from left-to-right,
@@ -194,7 +215,10 @@ declare namespace righto {
      */
     function reduce<RT, ET = any>(
         values: Array<CPSFunction<[RT], [RT], ET>>,
-        reducer: (result: RT, next: CPSFunction<[RT], [RT], ET>) => Righto<[RT], ET>,
+        reducer: (
+            result: RT,
+            next: CPSFunction<[RT], [RT], ET>,
+        ) => Righto<[RT], ET>,
         seed?: RT,
     ): Righto<[RT], ET>;
 
@@ -226,7 +250,9 @@ declare namespace righto {
      *     results; // -> ['a','b','c']
      * });
      */
-    function all<RT, ET = any>(tasks: Array<Righto<[RT], ET>>): Righto<[RT[]], ET>;
+    function all<RT, ET = any>(
+        tasks: Array<Righto<[RT], ET>>,
+    ): Righto<[RT[]], ET>;
     function all(tasks: Array<Righto<any>>): Righto<[any[]]>;
 
     /**
@@ -271,7 +297,9 @@ declare namespace righto {
      * righto.from(somePromise); // Returns a new righto that resolves the promise
      * righto.from(5); // Returns a new righto that resolves 5
      */
-    function from<T, ET = any>(source: Righto<[T], ET> | Promise<T>): Righto<[T], ET>;
+    function from<T, ET = any>(
+        source: Righto<[T], ET> | Promise<T>,
+    ): Righto<[T], ET>;
     function from<T>(source: T): Righto<[T], undefined>;
 
     /**
@@ -295,7 +323,9 @@ declare namespace righto {
      *
      * righto2();
      */
-    function value<T, ET = any>(resolvable: Righto<[T], ET> | Promise<T>): Righto<[Righto<[T], ET>], ET>;
+    function value<T, ET = any>(
+        resolvable: Righto<[T], ET> | Promise<T>,
+    ): Righto<[Righto<[T], ET>], ET>;
 
     /**
      * You can resolve a task to an array containing either the error or results from a righto with righto.surely, which resolves to an array in the form of [error?, results...?].
@@ -350,7 +380,10 @@ declare namespace righto {
      *     typeof result === 'string';
      * });
      */
-    function handle<RT extends any[], ET>(righto: Righto<RT, ET>, handler: CPSFunction<[ET], RT, ET>): Righto<RT, ET>;
+    function handle<RT extends any[], ET>(
+        righto: Righto<RT, ET>,
+        handler: CPSFunction<[ET], RT, ET>,
+    ): Righto<RT, ET>;
 
     /**
      * Sometimes you need a task to run after another has succeeded, but you don't need its results, righto.after(task1, task2, taskN...) can be used to achieve this.
@@ -415,7 +448,9 @@ declare namespace righto {
      *     otherStuff -> 7
      * });
      */
-    function mate<RT extends any[], ET>(...rightos: RightoArrayFrom<RT, ET>): Righto<RT, ET>;
+    function mate<RT extends any[], ET>(
+        ...rightos: RightoArrayFrom<RT, ET>
+    ): Righto<RT, ET>;
 
     /**
      * A shorthand way to provide a failed result. This is handy for rejecting in .get methods.
@@ -445,7 +480,10 @@ declare namespace righto {
      *     bar === 'bar'
      * });
      */
-    function proxy<AT extends any[]>(fn: CPSFunction<AT, any[], any>, ...args: AT): any;
+    function proxy<AT extends any[]>(
+        fn: CPSFunction<AT, any[], any>,
+        ...args: AT
+    ): any;
 
     /**
      * Enables or disables debug logging. When true, stack traces can be retrieved from each righto object using [righto instance].trace();

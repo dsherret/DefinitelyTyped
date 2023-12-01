@@ -37,9 +37,15 @@ verovio.module.onRuntimeInitialized = () => {
     vrvTk.renderToSVG(1);
     const { groups } = vrvTk.getAvailableOptions();
     const definitions = Object.keys(groups)
-        .map(key => Object.keys(groups[key].options).map(option => groups[key].options[option]))
+        .map((key) =>
+            Object.keys(groups[key].options).map(
+                (option) => groups[key].options[option],
+            ),
+        )
         .reduce((result, array) => [...result, ...array], []);
-    const intDefinitions = definitions.filter(d => d.type === "int") as verovio.IntOption[];
+    const intDefinitions = definitions.filter(
+        (d) => d.type === "int",
+    ) as verovio.IntOption[];
     const firstDefinition = definitions[0];
     if (firstDefinition.type === "int") {
         // $ExpectType IntOption

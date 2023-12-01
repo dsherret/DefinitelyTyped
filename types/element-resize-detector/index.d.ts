@@ -48,8 +48,14 @@ declare namespace elementResizeDetectorMaker {
     }
 
     interface Erd {
-        listenTo(element: HTMLElement, callback: (elem: HTMLElement) => void): void;
-        removeListener(element: HTMLElement, callback: (elem: HTMLElement) => void): void;
+        listenTo(
+            element: HTMLElement,
+            callback: (elem: HTMLElement) => void,
+        ): void;
+        removeListener(
+            element: HTMLElement,
+            callback: (elem: HTMLElement) => void,
+        ): void;
         removeAllListeners(element: HTMLElement): void;
         uninstall(element: HTMLElement): void;
     }

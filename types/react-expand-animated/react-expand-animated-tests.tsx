@@ -44,6 +44,7 @@ import Expand from "react-expand-animated";
 </Expand>;
 
 <Expand // @ts-expect-error
- tag="notATag">
+    tag="notATag"
+>
     <div />
 </Expand>;

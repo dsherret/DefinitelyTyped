@@ -48,15 +48,36 @@ declare namespace Traverson {
         doesResolveRelative(): boolean;
         doesPreferEmbeddedResources(): boolean;
         doesContentNegotiation(): boolean;
-        get(callback: (err: any, document: any, traversal?: Traversal) => void): InAction;
-        getResource(callback: (err: any, document: any, traversal?: Traversal) => void): InAction;
-        getUrl(callback: (err: any, document: any, traversal?: Traversal) => void): InAction;
-        getUri(callback: (err: any, document: any, traversal?: Traversal) => void): InAction; // Alias for getUrl()
-        post(data: any, callback: (err: any, document: any, traversal?: Traversal) => void): InAction;
-        put(data: any, callback: (err: any, document: any, traversal?: Traversal) => void): InAction;
-        patch(data: any, callback: (err: any, document: any, traversal?: Traversal) => void): InAction;
-        delete(callback: (err: any, document: any, traversal?: Traversal) => void): InAction;
-        del(callback: (err: any, document: any, traversal?: Traversal) => void): InAction; // Alias for delete()
+        get(
+            callback: (err: any, document: any, traversal?: Traversal) => void,
+        ): InAction;
+        getResource(
+            callback: (err: any, document: any, traversal?: Traversal) => void,
+        ): InAction;
+        getUrl(
+            callback: (err: any, document: any, traversal?: Traversal) => void,
+        ): InAction;
+        getUri(
+            callback: (err: any, document: any, traversal?: Traversal) => void,
+        ): InAction; // Alias for getUrl()
+        post(
+            data: any,
+            callback: (err: any, document: any, traversal?: Traversal) => void,
+        ): InAction;
+        put(
+            data: any,
+            callback: (err: any, document: any, traversal?: Traversal) => void,
+        ): InAction;
+        patch(
+            data: any,
+            callback: (err: any, document: any, traversal?: Traversal) => void,
+        ): InAction;
+        delete(
+            callback: (err: any, document: any, traversal?: Traversal) => void,
+        ): InAction;
+        del(
+            callback: (err: any, document: any, traversal?: Traversal) => void,
+        ): InAction; // Alias for delete()
         linkHeader(): Builder;
     }
 

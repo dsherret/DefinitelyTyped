@@ -327,7 +327,9 @@ declare class Calendar {
      * @param availability - Availability to check against.
      * @see https://docs.scriptable.app/calendar/#-supportsavailability
      */
-    supportsAvailability(availability: "busy" | "free" | "tentative" | "unavailable"): boolean;
+    supportsAvailability(
+        availability: "busy" | "free" | "tentative" | "unavailable",
+    ): boolean;
 
     /**
      * _Saves calendar._
@@ -518,7 +520,11 @@ declare class CalendarEvent {
      * @param calendars - Calendars to fetch events for. Defaults to all calendars.
      * @see https://docs.scriptable.app/calendarevent/#between
      */
-    static between(startDate: Date, endDate: Date, calendars?: readonly Calendar[]): Promise<CalendarEvent[]>;
+    static between(
+        startDate: Date,
+        endDate: Date,
+        calendars?: readonly Calendar[],
+    ): Promise<CalendarEvent[]>;
 
     /**
      * _Adds a recurrence rule._
@@ -594,7 +600,8 @@ declare class CallbackURL<T extends string = string> {
      * @see https://docs.scriptable.app/callbackurl/#-open
      */
     open(): Promise<
-        T extends `shortcuts://x-callback-url/${string}` ? { result: string | number | boolean | null }
+        T extends `shortcuts://x-callback-url/${string}`
+            ? { result: string | number | boolean | null }
             : Record<string, string | number | boolean | null>
     >;
 
@@ -1379,7 +1386,9 @@ declare class ContactsGroup {
      * @param containers - Container to fetch contacts groups from.
      * @see https://docs.scriptable.app/contactsgroup/#all
      */
-    static all(containers: readonly ContactsContainer[]): Promise<ContactsGroup[]>;
+    static all(
+        containers: readonly ContactsContainer[],
+    ): Promise<ContactsGroup[]>;
 
     /**
      * _Queues a contacts group to be added._
@@ -3316,7 +3325,12 @@ declare class ListWidget {
      * @param trailing - Padding on the trailing edge.
      * @see https://docs.scriptable.app/listwidget/#-setpadding
      */
-    setPadding(top: number, leading: number, bottom: number, trailing: number): void;
+    setPadding(
+        top: number,
+        leading: number,
+        bottom: number,
+        trailing: number,
+    ): void;
 
     /**
      * _Use the default padding._
@@ -3514,7 +3528,11 @@ declare var Location: {
      * @param locale - Optional. Preferred locale to fetch information in. Uses the default locale of the device if null.
      * @see https://docs.scriptable.app/location/#reversegeocode
      */
-    reverseGeocode(latitude: number, longitude: number, locale?: string): Promise<Location.GeocodeSummary[]>;
+    reverseGeocode(
+        latitude: number,
+        longitude: number,
+        locale?: string,
+    ): Promise<Location.GeocodeSummary[]>;
 };
 
 /**
@@ -3999,7 +4017,12 @@ declare class Notification {
      * @param repeats - If true the notification will be sent daily on the specified time, otherwise it will only be sent once. Defaults to false.
      * @see https://docs.scriptable.app/notification/#-setweeklytrigger
      */
-    setWeeklyTrigger(weekday: number, hour: number, minute: number, repeats?: boolean): void;
+    setWeeklyTrigger(
+        weekday: number,
+        hour: number,
+        minute: number,
+        repeats?: boolean,
+    ): void;
 
     /**
      * _Adds an action button._
@@ -4458,7 +4481,10 @@ declare class RecurrenceRule {
      * @param occurrenceCount - Number of times the rule should repeat before it ends.
      * @see https://docs.scriptable.app/recurrencerule/#dailyoccurrencecount
      */
-    static dailyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
+    static dailyOccurrenceCount(
+        interval: number,
+        occurrenceCount: number,
+    ): RecurrenceRule;
 
     /**
      * _Constructs a weekly recurrence rule._
@@ -4490,7 +4516,10 @@ declare class RecurrenceRule {
      * @param occurrenceCount - Number of times the rule should repeat before it ends.
      * @see https://docs.scriptable.app/recurrencerule/#weeklyoccurrencecount
      */
-    static weeklyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
+    static weeklyOccurrenceCount(
+        interval: number,
+        occurrenceCount: number,
+    ): RecurrenceRule;
 
     /**
      * _Constructs a monthly recurrence rule._
@@ -4522,7 +4551,10 @@ declare class RecurrenceRule {
      * @param occurrenceCount - Number of times the rule should repeat before it ends.
      * @see https://docs.scriptable.app/recurrencerule/#monthlyoccurrencecount
      */
-    static monthlyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
+    static monthlyOccurrenceCount(
+        interval: number,
+        occurrenceCount: number,
+    ): RecurrenceRule;
 
     /**
      * _Constructs a yearly recurrence rule._
@@ -4554,7 +4586,10 @@ declare class RecurrenceRule {
      * @param occurrenceCount - Number of times the rule should repeat before it ends.
      * @see https://docs.scriptable.app/recurrencerule/#yearlyoccurrencecount
      */
-    static yearlyOccurrenceCount(interval: number, occurrenceCount: number): RecurrenceRule;
+    static yearlyOccurrenceCount(
+        interval: number,
+        occurrenceCount: number,
+    ): RecurrenceRule;
 
     /**
      * _Constructs a complex weekly recurrence rule._
@@ -4953,14 +4988,18 @@ declare class Reminder {
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#completedduetoday
      */
-    static completedDueToday(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static completedDueToday(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches incomplete reminders due today._
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#incompleteduetoday
      */
-    static incompleteDueToday(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static incompleteDueToday(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches all reminders due tomorrow._
@@ -4974,35 +5013,45 @@ declare class Reminder {
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#completedduetomorrow
      */
-    static completedDueTomorrow(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static completedDueTomorrow(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches incomplete reminders due tomorrow._
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#incompleteduetomorrow
      */
-    static incompleteDueTomorrow(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static incompleteDueTomorrow(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches all reminders due yesterday._
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#alldueyesterday
      */
-    static allDueYesterday(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static allDueYesterday(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches completed reminders due yesterday._
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#completeddueyesterday
      */
-    static completedDueYesterday(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static completedDueYesterday(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches incomplete reminders due yesterday._
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#incompletedueyesterday
      */
-    static incompleteDueYesterday(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static incompleteDueYesterday(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches all reminders due this week._
@@ -5016,14 +5065,18 @@ declare class Reminder {
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#completedduethisweek
      */
-    static completedDueThisWeek(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static completedDueThisWeek(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches incomplete reminders due this week._
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#incompleteduethisweek
      */
-    static incompleteDueThisWeek(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static incompleteDueThisWeek(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches all reminders due next week._
@@ -5037,14 +5090,18 @@ declare class Reminder {
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#completedduenextweek
      */
-    static completedDueNextWeek(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static completedDueNextWeek(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches incomplete reminders due next week._
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#incompleteduenextweek
      */
-    static incompleteDueNextWeek(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static incompleteDueNextWeek(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches all reminders due last week._
@@ -5058,14 +5115,18 @@ declare class Reminder {
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#completedduelastweek
      */
-    static completedDueLastWeek(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static completedDueLastWeek(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches incomplete reminders due last week._
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#incompleteduelastweek
      */
-    static incompleteDueLastWeek(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static incompleteDueLastWeek(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches reminders completed today._
@@ -5083,7 +5144,9 @@ declare class Reminder {
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#completedthisweek
      */
-    static completedThisWeek(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static completedThisWeek(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches reminders completed last week._
@@ -5092,7 +5155,9 @@ declare class Reminder {
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#completedlastweek
      */
-    static completedLastWeek(calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static completedLastWeek(
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches due reminders._
@@ -5101,7 +5166,11 @@ declare class Reminder {
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#allduebetween
      */
-    static allDueBetween(startDate: Date, endDate: Date, calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static allDueBetween(
+        startDate: Date,
+        endDate: Date,
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Fetches completed reminders._
@@ -5136,7 +5205,11 @@ declare class Reminder {
      * @param calendars - Calendars to fetch reminders for. Defaults to all calendars.
      * @see https://docs.scriptable.app/reminder/#completedbetween
      */
-    static completedBetween(startDate: Date, endDate: Date, calendars?: readonly Calendar[]): Promise<Reminder[]>;
+    static completedBetween(
+        startDate: Date,
+        endDate: Date,
+        calendars?: readonly Calendar[],
+    ): Promise<Reminder[]>;
 
     /**
      * _Adds a recurrence rule._
@@ -5326,7 +5399,12 @@ declare class Request {
      * @param filename - Name of the file.
      * @see https://docs.scriptable.app/request/#-addfiledatatomultipart
      */
-    addFileDataToMultipart(data: Data, mimeType: string, name: string, filename: string): void;
+    addFileDataToMultipart(
+        data: Data,
+        mimeType: string,
+        name: string,
+        filename: string,
+    ): void;
 
     /**
      * _Adds a file to a multipart request._
@@ -5551,7 +5629,9 @@ declare var ShareSheet: {
      * @param activityItems - Items to perform activity on.
      * @see https://docs.scriptable.app/sharesheet/#present
      */
-    present(activityItems: readonly any[]): Promise<ShareSheet.ShareSheetResult>;
+    present(
+        activityItems: readonly any[],
+    ): Promise<ShareSheet.ShareSheetResult>;
 };
 
 /**
@@ -5745,7 +5825,11 @@ declare class Timer {
      * @param callback - The callback to be called when the timer fires.
      * @see https://docs.scriptable.app/timer/#schedule
      */
-    static schedule(timeInterval: number, repeats: boolean, callback: () => void): Timer;
+    static schedule(
+        timeInterval: number,
+        repeats: boolean,
+        callback: () => void,
+    ): Timer;
 
     /**
      * _Schedules the timer._
@@ -6144,7 +6228,12 @@ declare class WebView {
      * @param fullscreen - Optional. Set to true to present the web view in fullscreen. This only has an effect when used within the app. Defaults to false.
      * @see https://docs.scriptable.app/webview/#loadhtml
      */
-    static loadHTML(html: string, baseURL?: string, preferredSize?: Size, fullscreen?: boolean): Promise<void>;
+    static loadHTML(
+        html: string,
+        baseURL?: string,
+        preferredSize?: Size,
+        fullscreen?: boolean,
+    ): Promise<void>;
 
     /**
      * _Loads a file and renders it._
@@ -6163,7 +6252,11 @@ declare class WebView {
      * @param fullscreen - Optional. Set to true to present the web view in fullscreen. This only has an effect when used within the app. Defaults to false.
      * @see https://docs.scriptable.app/webview/#loadfile
      */
-    static loadFile(fileURL: string, preferredSize?: Size, fullscreen?: boolean): Promise<void>;
+    static loadFile(
+        fileURL: string,
+        preferredSize?: Size,
+        fullscreen?: boolean,
+    ): Promise<void>;
 
     /**
      * _Loads URL in web view and presents the web view._
@@ -6174,7 +6267,11 @@ declare class WebView {
      * @param fullscreen - Optional. Set to true to present the web view in fullscreen. This only has an effect when used within the app. Defaults to false.
      * @see https://docs.scriptable.app/webview/#loadurl
      */
-    static loadURL(url: string, preferredSize?: Size, fullscreen?: boolean): Promise<void>;
+    static loadURL(
+        url: string,
+        preferredSize?: Size,
+        fullscreen?: boolean,
+    ): Promise<void>;
 
     /**
      * _Loads URL in web view._
@@ -6697,7 +6794,12 @@ declare class WidgetStack {
      * @param trailing - Padding on the trailing edge.
      * @see https://docs.scriptable.app/widgetstack/#-setpadding
      */
-    setPadding(top: number, leading: number, bottom: number, trailing: number): void;
+    setPadding(
+        top: number,
+        leading: number,
+        bottom: number,
+        trailing: number,
+    ): void;
 
     /**
      * _Use the default padding._

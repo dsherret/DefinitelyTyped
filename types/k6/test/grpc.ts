@@ -11,7 +11,11 @@ client.connect("localhost:8080", { maxReceiveSize: 30, maxSendSize: 30 });
 
 client.close();
 
-client.load(["../googleapis/google"], "language_service.proto", "extra_service.proto");
+client.load(
+    ["../googleapis/google"],
+    "language_service.proto",
+    "extra_service.proto",
+);
 
 client.loadProtoset("./lib/test.protoset");
 

@@ -289,15 +289,15 @@ server.username; // $ExpectType string | undefined
 server.password; // $ExpectType string | undefined
 
 // $ExpectType void
-server.onConnect(socket => {
+server.onConnect((socket) => {
     socket; // $ExpectType Socket
 });
 // $ExpectType void
-server.onResponse(1, response => {
+server.onResponse(1, (response) => {
     response; // $ExpectType Response
 });
 // $ExpectType void
-server.onError(1, error => {
+server.onError(1, (error) => {
     error; // $ExpectType Error
 });
 server.error(new Error()); // $ExpectType void
@@ -306,7 +306,7 @@ server.saslAuth(); // $ExpectType void
 server.appendToBuffer(Buffer.alloc(1)); // $ExpectType Buffer
 server.responseHandler(Buffer.alloc(1)); // $ExpectType void
 // $ExpectType void
-server.sock(true, socket => {
+server.sock(true, (socket) => {
     socket; // $ExpectType Socket
 });
 server.write(new Uint8Array()); // $ExpectType void
@@ -317,7 +317,13 @@ server.close(); // $ExpectType void
 server.toString(); // $ExpectType string
 
 memjs.Utils.makeRequestBuffer(1, "foo", "123", "bar", 1); // $ExpectType Buffer
-memjs.Utils.makeRequestBuffer(1, Buffer.from("foo"), Buffer.from("123"), Buffer.from("bar"), 1);
+memjs.Utils.makeRequestBuffer(
+    1,
+    Buffer.from("foo"),
+    Buffer.from("123"),
+    Buffer.from("bar"),
+    1,
+);
 memjs.Utils.makeAmountInitialAndExpiration(1, 0, 1); // $ExpectType Buffer
 memjs.Utils.makeExpiration(1); // $ExpectType Buffer
 memjs.Utils.hashCode("foo"); // $ExpectType number

@@ -85,7 +85,11 @@ export interface CheckQuantityResponse {
 
 export interface HelperValidationResponse {
     rules: {
-        [name: string]: { required?: boolean | undefined; email?: boolean | undefined; digits?: boolean | undefined };
+        [name: string]: {
+            required?: boolean | undefined;
+            email?: boolean | undefined;
+            digits?: boolean | undefined;
+        };
     };
 }
 
@@ -102,19 +106,42 @@ export class Checkout {
     /** @deprecated */
     protect(token: string): Promise<any>;
     generateToken(identifier: string, data: object): Promise<CheckoutToken>;
-    generateTokenFrom(type: IdentifierType, identifier: string): Promise<CheckoutToken>;
-    capture(token: string, data: CheckoutCapture): Promise<CheckoutCaptureResponse>;
+    generateTokenFrom(
+        type: IdentifierType,
+        identifier: string,
+    ): Promise<CheckoutToken>;
+    capture(
+        token: string,
+        data: CheckoutCapture,
+    ): Promise<CheckoutCaptureResponse>;
     receipt(token: string): Promise<any>;
 
-    checkPayWhatYouWant(token: string, data: { customer_set_price: string }): Promise<CheckPayWhatYouWantResponse>;
+    checkPayWhatYouWant(
+        token: string,
+        data: { customer_set_price: string },
+    ): Promise<CheckPayWhatYouWantResponse>;
     fields(identifier: string): Promise<any>;
-    getLocationFromIP(token: string, ipAddress?: string): Promise<GetLocationFromIPResponse>;
+    getLocationFromIP(
+        token: string,
+        ipAddress?: string,
+    ): Promise<GetLocationFromIPResponse>;
     isFree(token: string): Promise<IsFreeResponse>;
-    checkVariant(token: string, lineItemId: string, data: object): Promise<CheckVariantResponse>;
-    checkDiscount(token: string, data: { code: string }): Promise<CheckDiscountResponse>;
+    checkVariant(
+        token: string,
+        lineItemId: string,
+        data: object,
+    ): Promise<CheckVariantResponse>;
+    checkDiscount(
+        token: string,
+        data: { code: string },
+    ): Promise<CheckDiscountResponse>;
     checkShippingOption(
         token: string,
-        data: { shipping_option_id: string; country: string; region?: string | undefined },
+        data: {
+            shipping_option_id: string;
+            country: string;
+            region?: string | undefined;
+        },
     ): Promise<CheckShippingOptionResponse>;
     getShippingOptions(
         token: string,
@@ -129,9 +156,16 @@ export class Checkout {
             postal_zip_code?: string | undefined;
         },
     ): Promise<SetTaxZoneResponse>;
-    checkQuantity(token: string, lineItemId: string, data: object): Promise<CheckQuantityResponse>;
+    checkQuantity(
+        token: string,
+        lineItemId: string,
+        data: object,
+    ): Promise<CheckQuantityResponse>;
     helperValidation(token: string): Promise<HelperValidationResponse>;
     getLive(token: string): Promise<Live>;
     getToken(token: string): Promise<CheckoutToken>;
-    checkGiftcard(token: string, params: { code: string }): Promise<CheckGiftcardResponse>;
+    checkGiftcard(
+        token: string,
+        params: { code: string },
+    ): Promise<CheckGiftcardResponse>;
 }

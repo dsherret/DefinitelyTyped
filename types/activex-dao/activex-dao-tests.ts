@@ -40,7 +40,11 @@ let dbsNorthwind = engine.OpenDatabase("c:\\path\\to\\northwind.mdb");
         WHERE OrderDate > QuarterStart
     `;
     qdf = dbsNorthwind.CreateQueryDef("Second quarter (parameters)", sql);
-    WScript.Echo(`Field names: ${collectionToArray(qdf.Fields).map(fld => fld.Name).join(", ")}`);
+    WScript.Echo(
+        `Field names: ${collectionToArray(qdf.Fields)
+            .map((fld) => fld.Name)
+            .join(", ")}`,
+    );
 }
 
 // https://msdn.microsoft.com/VBA/Access-VBA/articles/count-the-number-of-records-in-a-dao-recordset
@@ -82,7 +86,10 @@ const findRecordCount = (dbs: DAO.Database, sql: string) => {
 // https://msdn.microsoft.com/VBA/Access-VBA/articles/extract-data-from-a-record-in-a-dao-recordset
 {
     // copy entire records to an array
-    const rstEmployees = dbsNorthwind.OpenRecordset("SELECT FirstName, LastName, Title FROM Employees", dbOpenSnapshot);
+    const rstEmployees = dbsNorthwind.OpenRecordset(
+        "SELECT FirstName, LastName, Title FROM Employees",
+        dbOpenSnapshot,
+    );
     const records = new VBArray<string>(rstEmployees.GetRows(3));
     const recordCount = records.ubound(2) + 1;
     const columnCount = records.ubound(1) + 1;
@@ -98,7 +105,10 @@ const findRecordCount = (dbs: DAO.Database, sql: string) => {
 // find a record in a dynaset-type or snapshot-type DAO Recordset -- https://msdn.microsoft.com/en-us/vba/access-vba/articles/find-a-record-in-a-dynaset-type-or-snapshot-type-dao-recordset
 {
     const orders: number[] = [];
-    const rstOrders = dbsNorthwind.OpenRecordset("SELECT * FROM Orders ORDER BY OrderID", dbOpenSnapshot);
+    const rstOrders = dbsNorthwind.OpenRecordset(
+        "SELECT * FROM Orders ORDER BY OrderID",
+        dbOpenSnapshot,
+    );
     const rstOrderDetails = dbsNorthwind.OpenRecordset(
         "SELECT * FROM [Order Details] ORDER BY OrderID",
         dbOpenSnapshot,

@@ -6,7 +6,7 @@ declare namespace Dragster {
 
     interface DragsterStatic {
         (elem: HTMLElement): Dragster;
-        new(elem: HTMLElement): Dragster;
+        new (elem: HTMLElement): Dragster;
     }
 }
 

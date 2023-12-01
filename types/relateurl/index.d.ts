@@ -109,7 +109,11 @@ declare class RelateUrl {
     static ROOT_RELATIVE: string;
     static SHORTEST: string;
 
-    static relate(from: string, to: string, options?: RelateUrl.Options): string;
+    static relate(
+        from: string,
+        to: string,
+        options?: RelateUrl.Options,
+    ): string;
 
     constructor(from: string, options?: RelateUrl.Options);
     relate(to: string, options?: RelateUrl.Options): string;

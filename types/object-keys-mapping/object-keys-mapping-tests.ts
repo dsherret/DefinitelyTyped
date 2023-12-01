@@ -1,4 +1,9 @@
-import { Operator, reverseCamelcase, toCamelcase, trim } from "object-keys-mapping";
+import {
+    Operator,
+    reverseCamelcase,
+    toCamelcase,
+    trim,
+} from "object-keys-mapping";
 
 trim({ name: "" });
 

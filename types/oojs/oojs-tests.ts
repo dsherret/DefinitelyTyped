@@ -68,7 +68,7 @@ OO.getObjectValues(objectWithMultipleValueTypes); // $ExpectType (string | numbe
     // $ExpectType number | null
     OO.binarySearch(
         sampleArray,
-        item => {
+        (item) => {
             item; // $ExpectType number | undefined
             return 1;
         },
@@ -76,7 +76,7 @@ OO.getObjectValues(objectWithMultipleValueTypes); // $ExpectType (string | numbe
     );
 
     // $ExpectType number | null
-    OO.binarySearch(sampleArray, item => {
+    OO.binarySearch(sampleArray, (item) => {
         item; // $ExpectType number | undefined
         return 1;
     });
@@ -100,34 +100,34 @@ OO.getObjectValues(objectWithMultipleValueTypes); // $ExpectType (string | numbe
     OO.copy(deeplyNestedObject); // $ExpectType { foo: { bar: { baz: number; }; }; fooBar: number; }
 
     // $ExpectType unknown
-    OO.copy(deeplyNestedObject, leaf => {
+    OO.copy(deeplyNestedObject, (leaf) => {
         leaf; // $ExpectType number
     });
 
     // $ExpectType unknown
     OO.copy(
         deeplyNestedObject2,
-        leaf => {
+        (leaf) => {
             leaf; // $ExpectType string | number | HTMLAnchorElement | (() => string) | { clone: () => string; }
         },
-        node => {
+        (node) => {
             // $ExpectType string | number | string[] | HTMLAnchorElement | (() => string) | { baz: number; } | { bar: { baz: number; }; } | { clone: () => string; } | { foo: { bar: { baz: number; }; }; bar: string[]; baz: { clone: () => string; }; fooBar: HTMLAnchorElement; fooBaz: () => string; }
             node;
         },
     );
 
     // $ExpectType unknown
-    OO.copy(1, undefined, node => {
+    OO.copy(1, undefined, (node) => {
         node; // $ExpectType number
     });
 
     // $ExpectType unknown
     OO.copy(
         sampleArray,
-        leaf => {
+        (leaf) => {
             leaf; // $ExpectType number | undefined
         },
-        node => {
+        (node) => {
             node; // $ExpectType number | (number | undefined)[] | undefined
         },
     );
@@ -166,7 +166,7 @@ let eventEmitter = new OO.EventEmitter();
 
 {
     // $ExpectType EventEmitter
-    eventEmitter.on("event", function(arg1) {
+    eventEmitter.on("event", function (arg1) {
         this; // $ExpectType null
         arg1; // $ExpectType any
     });
@@ -184,7 +184,7 @@ let eventEmitter = new OO.EventEmitter();
     // $ExpectType EventEmitter
     eventEmitter.on(
         "event",
-        function(arg1, arg2, arg3) {
+        function (arg1, arg2, arg3) {
             this; // $ExpectType null
             arg1; // $ExpectType any
             arg2; // $ExpectType any
@@ -196,7 +196,7 @@ let eventEmitter = new OO.EventEmitter();
     // $ExpectType EventEmitter
     eventEmitter.on(
         "event",
-        function(arg1, arg2, arg3) {
+        function (arg1, arg2, arg3) {
             this; // $ExpectType {}
             arg1; // $ExpectType any
             arg2; // $ExpectType any
@@ -208,7 +208,7 @@ let eventEmitter = new OO.EventEmitter();
 }
 
 // $ExpectType EventEmitter
-eventEmitter.once("event", function(arg1) {
+eventEmitter.once("event", function (arg1) {
     this; // $ExpectType null
     arg1; // $ExpectType any
 });
@@ -220,7 +220,7 @@ eventEmitter.once("event", function(arg1) {
     // $ExpectType EventEmitter
     eventEmitter.off(
         "event",
-        function(arg1) {
+        function (arg1) {
             arg1; // $ExpectType any
         },
         {},
@@ -244,7 +244,7 @@ eventEmitter.emitThrow("event", 1, 2, 3);
                 this; // $ExpectType { a: () => 1; }
             },
             event2: [
-                function() {
+                function () {
                     this; // $ExpectType { a: () => 1; }
                 },
                 1,
@@ -277,7 +277,7 @@ eventEmitter.disconnect(
     },
     {
         event() {},
-        event2: [function() {}, 1, 2, 3],
+        event2: [function () {}, 1, 2, 3],
         event3: "a",
         event4: ["a", 1, 2, 3],
     },
@@ -409,7 +409,7 @@ registry.lookup("foo");
     };
 
     // $ExpectType Registry
-    registry.on("register", function(name, data) {
+    registry.on("register", function (name, data) {
         this; // $ExpectType null
         name; // $ExpectType string
         data; // $ExpectType unknown
@@ -417,7 +417,7 @@ registry.lookup("foo");
 
     registry.on(
         "register",
-        function(arg1, arg2, arg3, arg4, arg5, name, data) {
+        function (arg1, arg2, arg3, arg4, arg5, name, data) {
             this; // $ExpectType null
             arg1; // $ExpectType number
             arg2; // $ExpectType number
@@ -437,7 +437,7 @@ registry.lookup("foo");
 
     registry.on(
         "unregister",
-        function(name, data) {
+        function (name, data) {
             this; // $ExpectType number
             name; // $ExpectType string
             data; // $ExpectType unknown
@@ -451,7 +451,7 @@ registry.lookup("foo");
     // @ts-expect-error
     registry.on("unregister", "unregisterIllegal", [], funcObj);
 
-    registry.on("non-exist", function(arg) {
+    registry.on("non-exist", function (arg) {
         this; // $ExpectType null
         arg; // $ExpectType any
     });
@@ -459,13 +459,13 @@ registry.lookup("foo");
 
 {
     // $ExpectType Registry
-    registry.once("register", function(name, data) {
+    registry.once("register", function (name, data) {
         this; // $ExpectType null
         name; // $ExpectType string
         data; // $ExpectType unknown
     });
 
-    registry.once("non-exist", function(arg) {
+    registry.once("non-exist", function (arg) {
         this; // $ExpectType null
         arg; // $ExpectType any
     });
@@ -480,7 +480,7 @@ registry.lookup("foo");
     };
 
     // $ExpectType Registry
-    registry.off("register", function(name, data) {
+    registry.off("register", function (name, data) {
         this; // $ExpectType null
         name; // $ExpectType string
         data; // $ExpectType unknown
@@ -493,7 +493,7 @@ registry.lookup("foo");
 
     registry.off(
         "unregister",
-        function(name, data) {
+        function (name, data) {
             this; // $ExpectType number
             name; // $ExpectType string
             data; // $ExpectType unknown
@@ -506,7 +506,7 @@ registry.lookup("foo");
     // @ts-expect-error
     registry.off("unregister", "unregisterIllegal", funcObj);
 
-    registry.off("non-exist", function(arg) {
+    registry.off("non-exist", function (arg) {
         this; // $ExpectType null
         arg; // $ExpectType any
     });
@@ -588,7 +588,7 @@ registry.lookup("foo");
 
     registry.connect(null, {
         register: [
-            function(arg1, arg2, arg3, arg4, arg5, name, data) {
+            function (arg1, arg2, arg3, arg4, arg5, name, data) {
                 this; // $ExpectType null
                 arg2; // $ExpectType number
                 arg3; // $ExpectType number
@@ -660,7 +660,7 @@ registry.lookup("foo");
 
     registry.disconnect(null, {
         register: [
-            function(arg1, arg2, arg3, arg4, arg5, name, data) {
+            function (arg1, arg2, arg3, arg4, arg5, name, data) {
                 this; // $ExpectType null
                 arg1; // $ExpectType number
                 arg2; // $ExpectType number

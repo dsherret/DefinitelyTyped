@@ -1,5 +1,9 @@
 import * as React from "react";
-import { ConnectDragPreview, ConnectDragSource, ConnectDropTarget } from "react-dnd";
+import {
+    ConnectDragPreview,
+    ConnectDragSource,
+    ConnectDropTarget,
+} from "react-dnd";
 import { Index, ListProps } from "react-virtualized";
 
 export * from "./utils/default-handlers";
@@ -13,7 +17,9 @@ export interface GetTreeItemChildren<T = {}> {
     treeIndex: number;
 }
 
-export type GetTreeItemChildrenFn<T = {}> = (data: GetTreeItemChildren<T>) => void;
+export type GetTreeItemChildrenFn<T = {}> = (
+    data: GetTreeItemChildren<T>,
+) => void;
 
 export type TreeItem<T = {}> = T & {
     title?: React.ReactNode | undefined;
@@ -56,7 +62,9 @@ export interface ExtendedNodeData<T = {}> extends NodeData<T> {
     isSearchFocus: boolean;
 }
 
-export interface OnVisibilityToggleData<T = {}> extends FullTree<T>, TreeNode<T> {
+export interface OnVisibilityToggleData<T = {}>
+    extends FullTree<T>,
+        TreeNode<T> {
     expanded: boolean;
 }
 
@@ -72,7 +80,8 @@ interface PreviousAndNextLocation {
     nextPath: NumberOrStringArray;
 }
 
-export interface OnDragPreviousAndNextLocation<T = {}> extends PreviousAndNextLocation {
+export interface OnDragPreviousAndNextLocation<T = {}>
+    extends PreviousAndNextLocation {
     prevParent: TreeItem<T> | null;
     nextParent: TreeItem<T> | null;
 }
@@ -83,7 +92,8 @@ export interface ShouldCopyData<T = {}> {
     prevTreeIndex: number;
 }
 
-export interface OnMovePreviousAndNextLocation<T = {}> extends PreviousAndNextLocation {
+export interface OnMovePreviousAndNextLocation<T = {}>
+    extends PreviousAndNextLocation {
     nextParentNode: TreeItem<T> | null;
 }
 
@@ -124,7 +134,9 @@ export interface NodeRendererProps<T = {}> {
     canDrop?: boolean | undefined;
 }
 
-export type PlaceholderRenderer<T = {}> = React.ComponentType<PlaceholderRendererProps<T>>;
+export type PlaceholderRenderer<T = {}> = React.ComponentType<
+    PlaceholderRendererProps<T>
+>;
 
 export interface PlaceholderRendererProps<T = {}> {
     isOver: boolean;
@@ -182,7 +194,9 @@ export interface ReactSortableTreeProps<T = {}> extends ThemeTreeProps<T> {
     onChange(treeData: Array<TreeItem<T>>): void;
     getNodeKey?(data: TreeNode<T> & TreeIndex): string | number;
     generateNodeProps?(data: ExtendedNodeData<T>): { [index: string]: any };
-    onMoveNode?(data: NodeData<T> & FullTree<T> & OnMovePreviousAndNextLocation<T>): void;
+    onMoveNode?(
+        data: NodeData<T> & FullTree<T> & OnMovePreviousAndNextLocation<T>,
+    ): void;
     onVisibilityToggle?(data: OnVisibilityToggleData<T>): void;
     onDragStateChanged?(data: OnDragStateChangedData<T>): void;
     maxDepth?: number | undefined;
@@ -197,13 +211,18 @@ export interface ReactSortableTreeProps<T = {}> extends ThemeTreeProps<T> {
     onlyExpandSearchedNodes?: boolean | undefined;
     searchFinishCallback?(matches: Array<NodeData<T>>): void;
     dndType?: string | undefined;
-    shouldCopyOnOutsideDrop?: boolean | ((data: ShouldCopyData<T>) => boolean) | undefined;
+    shouldCopyOnOutsideDrop?:
+        | boolean
+        | ((data: ShouldCopyData<T>) => boolean)
+        | undefined;
     className?: string | undefined;
     isVirtualized?: boolean | undefined;
 }
 
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-declare function SortableTree<T>(props: React.PropsWithChildren<ReactSortableTreeProps<T>>): JSX.Element;
+declare function SortableTree<T>(
+    props: React.PropsWithChildren<ReactSortableTreeProps<T>>,
+): JSX.Element;
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
 declare function SortableTreeWithoutDndContext<T>(
     props: React.PropsWithChildren<ReactSortableTreeProps<T>>,

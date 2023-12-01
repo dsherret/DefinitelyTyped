@@ -1,8 +1,19 @@
 /// <reference types="node" />
 
-type State = "poweredOn" | "poweredOff" | "unauthorized" | "unsupported" | "unknown" | "resetting";
+type State =
+    | "poweredOn"
+    | "poweredOff"
+    | "unauthorized"
+    | "unsupported"
+    | "unknown"
+    | "resetting";
 
-type Property = "read" | "write" | "indicate" | "notify" | "writeWithoutResponse";
+type Property =
+    | "read"
+    | "write"
+    | "indicate"
+    | "notify"
+    | "writeWithoutResponse";
 
 interface CharacteristicOptions {
     uuid: string;
@@ -14,20 +25,23 @@ interface CharacteristicOptions {
     onNotify?: (() => void) | null | undefined;
     onReadRequest?:
         | ((
-            offset: number,
-            callback: (result: number, data?: Buffer) => void,
-        ) => void)
+              offset: number,
+              callback: (result: number, data?: Buffer) => void,
+          ) => void)
         | null
         | undefined;
-    onSubscribe?: ((maxValueSize: number, updateValueCallback: any) => void) | null | undefined;
+    onSubscribe?:
+        | ((maxValueSize: number, updateValueCallback: any) => void)
+        | null
+        | undefined;
     onUnsubscribe?: (() => void) | null | undefined;
     onWriteRequest?:
         | ((
-            data: Buffer,
-            offset: number,
-            withoutResponse: boolean,
-            callback: (result: number) => void,
-        ) => void)
+              data: Buffer,
+              offset: number,
+              withoutResponse: boolean,
+              callback: (result: number) => void,
+          ) => void)
         | null
         | undefined;
 }
@@ -45,13 +59,21 @@ declare class Characteristic {
 
     onNotify(): void;
 
-    onReadRequest(offset: number, callback: (result: number, data?: Buffer) => void): void;
+    onReadRequest(
+        offset: number,
+        callback: (result: number, data?: Buffer) => void,
+    ): void;
 
     onSubscribe(maxValueSize: number, updateValueCallback: any): void;
 
     onUnsubscribe(): void;
 
-    onWriteRequest(data: Buffer, offset: number, withoutResponse: boolean, callback: (result: number) => void): void;
+    onWriteRequest(
+        data: Buffer,
+        offset: number,
+        withoutResponse: boolean,
+        callback: (result: number) => void,
+    ): void;
 
     toString(): string;
 
@@ -121,7 +143,10 @@ interface Bleno extends NodeJS.EventEmitter {
 
     disconnect(): void;
 
-    setServices(services: readonly PrimaryService[], callback?: (arg: Error | undefined | null) => void): void;
+    setServices(
+        services: readonly PrimaryService[],
+        callback?: (arg: Error | undefined | null) => void,
+    ): void;
 
     startAdvertising(
         name: string,
@@ -137,7 +162,10 @@ interface Bleno extends NodeJS.EventEmitter {
         callback?: (arg: Error | undefined | null) => void,
     ): void;
 
-    startAdvertisingWithEIRData(advertisementData: Buffer, callback?: (arg: Error | undefined | null) => void): void;
+    startAdvertisingWithEIRData(
+        advertisementData: Buffer,
+        callback?: (arg: Error | undefined | null) => void,
+    ): void;
     startAdvertisingWithEIRData(
         advertisementData: Buffer,
         scanData: Buffer,

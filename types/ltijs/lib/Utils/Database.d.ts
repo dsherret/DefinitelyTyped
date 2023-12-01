@@ -1,12 +1,14 @@
 export interface DatabaseConnectionOptions {
     url: string;
-    connection?: {
-        user: string;
-        pass: string;
-        useNewUrlParser?: boolean | undefined;
-        keepAlive?: boolean | undefined;
-        keepAliveInitialDelay?: number | undefined;
-    } | undefined;
+    connection?:
+        | {
+              user: string;
+              pass: string;
+              useNewUrlParser?: boolean | undefined;
+              keepAlive?: boolean | undefined;
+              keepAliveInitialDelay?: number | undefined;
+          }
+        | undefined;
     plugin?: never;
 }
 
@@ -23,15 +25,32 @@ export interface Database {
 
     Close(): Promise<true>;
 
-    Get(encryptionKey: string | false, collection: string, query: object): Promise<object | false>;
+    Get(
+        encryptionKey: string | false,
+        collection: string,
+        query: object,
+    ): Promise<object | false>;
 
-    Insert(encryptionKey: string | false, collection: string, item: object, index: object): Promise<true>;
+    Insert(
+        encryptionKey: string | false,
+        collection: string,
+        item: object,
+        index: object,
+    ): Promise<true>;
 
-    Modify(encryptionKey: string | false, collection: string, query: object, modification: object): Promise<true>;
+    Modify(
+        encryptionKey: string | false,
+        collection: string,
+        query: object,
+        modification: object,
+    ): Promise<true>;
 
     Delete(collection: string, query: object): Promise<true>;
 
-    encrypt(data: string, secret: string): Promise<{ iv: string; data: string }>;
+    encrypt(
+        data: string,
+        secret: string,
+    ): Promise<{ iv: string; data: string }>;
 
     Decrypt(data: string, _iv: string, secret: string): Promise<string>;
 }

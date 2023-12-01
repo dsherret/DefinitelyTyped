@@ -19,12 +19,20 @@ export function createComplexityLimitRule(
 export function complexityLimitExceededErrorMessage(): string;
 
 declare class ComplexityVisitor {
-    constructor(context: any, { scalarCost, objectCost, listFactor, introspectionListFactor }: {
-        scalarCost?: number;
-        objectCost?: number;
-        listFactor?: number;
-        introspectionListFactor?: number;
-    });
+    constructor(
+        context: any,
+        {
+            scalarCost,
+            objectCost,
+            listFactor,
+            introspectionListFactor,
+        }: {
+            scalarCost?: number;
+            objectCost?: number;
+            listFactor?: number;
+            introspectionListFactor?: number;
+        },
+    );
     context: any;
     scalarCost: number;
     objectCost: number;
@@ -43,9 +51,7 @@ declare class ComplexityVisitor {
     leaveField(): void;
     getFieldCostFactor(): any;
     getTypeCostFactor(type: any): any;
-    isIntrospectionList({ ofType }: {
-        ofType: any;
-    }): boolean;
+    isIntrospectionList({ ofType }: { ofType: any }): boolean;
     getFieldCost(): any;
     getTypeCost(type: any): any;
     getDirectiveValue(directiveName: any): number;

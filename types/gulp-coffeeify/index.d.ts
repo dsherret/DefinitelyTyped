@@ -6,10 +6,12 @@ declare namespace coffeeify {
     }
 
     interface Option {
-        options?: {
-            debug?: boolean | undefined;
-            paths?: string[] | undefined;
-        } | undefined;
+        options?:
+            | {
+                  debug?: boolean | undefined;
+                  paths?: string[] | undefined;
+              }
+            | undefined;
         /**
          * [DEPRECATED]: You should use a 'paths' options of browserify.
          */

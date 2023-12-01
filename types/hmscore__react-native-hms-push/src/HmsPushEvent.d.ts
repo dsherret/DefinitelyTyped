@@ -1,5 +1,8 @@
 import { NativeEventSubscription } from "react-native";
-import { RemoteDataMessageObject, RemoteDataMessageWithExtras } from "./RemoteDataMessage";
+import {
+    RemoteDataMessageObject,
+    RemoteDataMessageWithExtras,
+} from "./RemoteDataMessage";
 import { ResultResponse } from "./ResultResponse";
 
 export interface HmsPushEvents {
@@ -16,20 +19,40 @@ export interface HmsPushEvents {
 }
 
 export interface HmsPushEventListeners {
-    onRemoteMessageReceived: (result: (result: RemoteDataMessageObject) => void) => NativeEventSubscription;
-    onTokenReceived: (result: (result: { token: string }) => void) => NativeEventSubscription;
+    onRemoteMessageReceived: (
+        result: (result: RemoteDataMessageObject) => void,
+    ) => NativeEventSubscription;
+    onTokenReceived: (
+        result: (result: { token: string }) => void,
+    ) => NativeEventSubscription;
     onMultiSenderTokenReceived: (
         result: (result: { dataJSON: string; token: string }) => void,
     ) => NativeEventSubscription;
-    onTokenError: (result: (result: ResultResponse<string>) => void) => NativeEventSubscription;
-    onMultiSenderTokenError: (result: (result: ResultResponse<string>) => void) => NativeEventSubscription;
-    onPushMessageSent: (result: (result: { msgId: string }) => void) => NativeEventSubscription;
-    onPushMessageSentError: (
-        result: (result: { resultInfo: string; msgId: string; result: string }) => void,
+    onTokenError: (
+        result: (result: ResultResponse<string>) => void,
     ) => NativeEventSubscription;
-    onPushMessageSentDelivered: (result: (result: ResultResponse<boolean>) => void) => NativeEventSubscription;
-    onLocalNotificationAction: (result: (result: { dataJSON: string }) => void) => NativeEventSubscription;
-    onNotificationOpenedApp: (result: (result: RemoteDataMessageWithExtras) => void) => NativeEventSubscription;
+    onMultiSenderTokenError: (
+        result: (result: ResultResponse<string>) => void,
+    ) => NativeEventSubscription;
+    onPushMessageSent: (
+        result: (result: { msgId: string }) => void,
+    ) => NativeEventSubscription;
+    onPushMessageSentError: (
+        result: (result: {
+            resultInfo: string;
+            msgId: string;
+            result: string;
+        }) => void,
+    ) => NativeEventSubscription;
+    onPushMessageSentDelivered: (
+        result: (result: ResultResponse<boolean>) => void,
+    ) => NativeEventSubscription;
+    onLocalNotificationAction: (
+        result: (result: { dataJSON: string }) => void,
+    ) => NativeEventSubscription;
+    onNotificationOpenedApp: (
+        result: (result: RemoteDataMessageWithExtras) => void,
+    ) => NativeEventSubscription;
 }
 
 export type HmsPushEventType = HmsPushEvents & HmsPushEventListeners;

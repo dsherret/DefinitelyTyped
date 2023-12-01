@@ -21,7 +21,7 @@ let compilerProcess = closureCompiler.run((exitCode, stdout, stderr) => {
 let jsonStream: GoogleClosureCompiler.JSONStreamFile[] = [
     {
         path: "foo.js",
-        src: "var x = \"hello, world\";",
+        src: 'var x = "hello, world";',
     },
 ];
 

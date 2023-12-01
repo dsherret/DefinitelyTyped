@@ -35,7 +35,9 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
     class AuthorityInfoAccess extends Extension {
         constructor(params?: ArrayParam<ExtensionParam>);
 
-        setAccessDescriptionArray(accessDescriptionArray: ExtensionParam[]): void;
+        setAccessDescriptionArray(
+            accessDescriptionArray: ExtensionParam[],
+        ): void;
         getExtnValueHex(): string;
     }
 }

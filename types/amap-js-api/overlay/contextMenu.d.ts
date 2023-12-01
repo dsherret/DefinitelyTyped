@@ -29,7 +29,11 @@ declare namespace AMap {
          * @param fn 该菜单下需进行的操作
          * @param num 当前菜单项在右键菜单中的排序位置，以0开始
          */
-        addItem(text: string, fn: (this: HTMLLIElement) => void, num?: number): void;
+        addItem(
+            text: string,
+            fn: (this: HTMLLIElement) => void,
+            num?: number,
+        ): void;
         /**
          * 删除一个菜单项
          * @param text 菜单显示内容

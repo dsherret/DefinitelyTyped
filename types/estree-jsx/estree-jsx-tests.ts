@@ -38,7 +38,9 @@ declare let text: JSXText;
 
 declare let estreeNode: ESTree.Node;
 
-declare let children: Array<JSXText | JSXExpressionContainer | JSXSpreadChild | JSXElement | JSXFragment>;
+declare let children: Array<
+    JSXText | JSXExpressionContainer | JSXSpreadChild | JSXElement | JSXFragment
+>;
 
 declare let string: string;
 declare let boolean: boolean;
@@ -48,21 +50,29 @@ const namespacedNameNamespace: JSXIdentifier = namespacedName.namespace;
 const namespacedNameName: JSXIdentifier = namespacedName.name;
 
 // JSXMemberExpression
-const memberRxpressionObject: JSXMemberExpression | JSXIdentifier = memberExpression.object;
+const memberRxpressionObject: JSXMemberExpression | JSXIdentifier =
+    memberExpression.object;
 const memberRxpressionProperty: JSXIdentifier = memberExpression.property;
 
 // JSXExpressionContainer
-const expOrEmpty: ESTree.Expression | JSXEmptyExpression = expressionContainer.expression;
+const expOrEmpty: ESTree.Expression | JSXEmptyExpression =
+    expressionContainer.expression;
 
 // JSXSpreadChild
 const exp: ESTree.Expression = spreadChild.expression;
 
 // JSXAttribute
 const attributeName: JSXIdentifier | JSXNamespacedName = attribute.name;
-const attributeValue: ESTree.Literal | JSXExpressionContainer | JSXElement | JSXFragment | null = attribute.value;
+const attributeValue:
+    | ESTree.Literal
+    | JSXExpressionContainer
+    | JSXElement
+    | JSXFragment
+    | null = attribute.value;
 
 // JSXOpeningElement
-const attributes: Array<JSXAttribute | JSXSpreadAttribute> = openingElement.attributes;
+const attributes: Array<JSXAttribute | JSXSpreadAttribute> =
+    openingElement.attributes;
 boolean = openingElement.selfClosing;
 
 // JSXElement

@@ -15,9 +15,7 @@ const instance2 = basicLightbox.create(
     },
 );
 
-const instance3 = basicLightbox.create(
-    document.querySelector("#template")!,
-);
+const instance3 = basicLightbox.create(document.querySelector("#template")!);
 
 const visible = basicLightbox.visible();
 

@@ -110,7 +110,10 @@ interface SQLTransaction {
 
 // [Callback = FunctionOnly, NoInterfaceObject]
 interface SQLStatementCallback {
-    /*handleEvent*/ (transaction: SQLTransaction, resultSet: SQLResultSet): void;
+    /*handleEvent*/ (
+        transaction: SQLTransaction,
+        resultSet: SQLResultSet,
+    ): void;
 }
 
 // [Callback = FunctionOnly, NoInterfaceObject]
@@ -127,7 +130,11 @@ interface DatabaseSync {
 
     readTransaction(callback: SQLTransactionSyncCallback): void;
 
-    changeVersion(oldVersion: DOMString, newVersion: DOMString, callback: SQLTransactionSyncCallback): void;
+    changeVersion(
+        oldVersion: DOMString,
+        newVersion: DOMString,
+        callback: SQLTransactionSyncCallback,
+    ): void;
 }
 
 // [Callback = FunctionOnly, NoInterfaceObject]

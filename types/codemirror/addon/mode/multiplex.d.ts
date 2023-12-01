@@ -25,5 +25,8 @@ declare module "../../" {
      *
      * The outer mode will not see the content between the delimiters.
      */
-    function multiplexingMode(outer: Mode<any>, ...others: MultiplexedInnerMode[]): Mode<any>;
+    function multiplexingMode(
+        outer: Mode<any>,
+        ...others: MultiplexedInnerMode[]
+    ): Mode<any>;
 }

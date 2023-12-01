@@ -2,18 +2,25 @@ import * as React from "react";
 import { ReactInputAttr } from "../../../typings/shared";
 import { RadioButtonValue } from "../RadioButton";
 
-export type RadioTileChangeEvent = React.ChangeEvent<HTMLInputElement> | React.KeyboardEvent<HTMLLabelElement>;
+export type RadioTileChangeEvent =
+    | React.ChangeEvent<HTMLInputElement>
+    | React.KeyboardEvent<HTMLLabelElement>;
 
 type ExcludedAttributes = "onChange" | "onKeyDown" | "type" | "value";
 
-export interface RadioTileProps extends Omit<ReactInputAttr, ExcludedAttributes> {
+export interface RadioTileProps
+    extends Omit<ReactInputAttr, ExcludedAttributes> {
     defaultChecked?: boolean | undefined;
     /**
      * @deprecated
      */
     iconDescription?: string | undefined;
     light?: boolean | undefined;
-    onChange?(value: RadioTileProps["value"], name: RadioTileProps["name"], event: RadioTileChangeEvent): void;
+    onChange?(
+        value: RadioTileProps["value"],
+        name: RadioTileProps["name"],
+        event: RadioTileChangeEvent,
+    ): void;
     value: RadioButtonValue;
 }
 

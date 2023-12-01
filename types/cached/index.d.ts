@@ -70,7 +70,9 @@ declare namespace cached {
      * Convert a node-style function that takes a callback as its first parameter into a parameterless function that generates a promise.
      * In other words: this is what you'd want to wrap your node-style functions in when using them as value arguments to set or getOrElse.
      */
-    function deferred<T>(func: (callback: (err: any, result?: T) => void) => void): Promise<T>;
+    function deferred<T>(
+        func: (callback: (err: any, result?: T) => void) => void,
+    ): Promise<T>;
 }
 
 declare class Cache<T> {
@@ -95,7 +97,11 @@ declare class Cache<T> {
      * c. A function returning (a) or (b)
      * @param options - optional cache options for this key only
      */
-    set(key: string, value: T | (() => T) | Promise<T> | (() => Promise<T>), options?: CacheDefaults): Promise<void>;
+    set(
+        key: string,
+        value: T | (() => T) | Promise<T> | (() => Promise<T>),
+        options?: CacheDefaults,
+    ): Promise<void>;
 
     /**
      * Cache retrieve operation. key has to be a string.
@@ -113,7 +119,11 @@ declare class Cache<T> {
      * This is done on a per-instance level, so if you create many cache instances reading and writing the same keys, you are asking for trouble.
      * If you don't, the worst case is every process in your system fetching the value at once. Which should be a smaller number than the number of concurrent requests in most cases.
      */
-    getOrElse(key: string, value: T | (() => T) | Promise<T> | (() => Promise<T>), options?: CacheDefaults): Promise<T>;
+    getOrElse(
+        key: string,
+        value: T | (() => T) | Promise<T> | (() => Promise<T>),
+        options?: CacheDefaults,
+    ): Promise<T>;
 
     /**
      * Cache delete operation. key has to be a string.

@@ -264,13 +264,17 @@ export namespace SQIPCardEntry {
      * Callback invoked when card entry is returned successfully with card details.
      * @param cardDetails - The results of a successful card entry
      */
-    type CardEntryNonceRequestSuccessCallback = (cardDetails: CardDetails) => void;
+    type CardEntryNonceRequestSuccessCallback = (
+        cardDetails: CardDetails,
+    ) => void;
 
     /**
      * Callback invoked when Buyer Verification flow succeeds.
      * @param buyerVerificationDetails
      */
-    type BuyerVerificationSuccessCallback = (buyerVerificationDetails: BuyerVerificationDetails) => void;
+    type BuyerVerificationSuccessCallback = (
+        buyerVerificationDetails: BuyerVerificationDetails,
+    ) => void;
 
     /**
      * Callback invoked when Buyer Verification flow fails.
@@ -326,7 +330,9 @@ export namespace SQIPCardEntry {
      * call completeCardEntry after getting the card nonce from the `onCardNonceRequestSuccess` cardDetails parameter.
      * @param onCardEntryComplete - The callback invoked when card entry is completed and is closed.
      */
-    function completeCardEntry(onCardEntryComplete: CardEntryCompleteCallback): Promise<void>;
+    function completeCardEntry(
+        onCardEntryComplete: CardEntryCompleteCallback,
+    ): Promise<void>;
 
     /**
      * Called in the `onCardNonceRequestSuccess` callback. Returns execution to the card entry form with an error string to be shown in the form.
@@ -378,7 +384,9 @@ export namespace SQIPApplePay {
      * @platform IOS
      * @param cardDetails - The non-confidential details of the card and a nonce.
      */
-    type ApplePayNonceRequestSuccessCallback = (cardDetails: CardDetails) => void;
+    type ApplePayNonceRequestSuccessCallback = (
+        cardDetails: CardDetails,
+    ) => void;
 
     /**
      * Callback invoked when a card nonce cannot be generated from Apple Pay payment authorization card input values.
@@ -437,7 +445,10 @@ export namespace SQIPApplePay {
      * @param [errorMessage] - The error message that Apple Pay displays in the native layer card entry view controller.
      * @throws ex
      */
-    function completeApplePayAuthorization(isSuccess: boolean, errorMessage?: string): Promise<void>;
+    function completeApplePayAuthorization(
+        isSuccess: boolean,
+        errorMessage?: string,
+    ): Promise<void>;
 }
 
 export namespace SQIPGooglePay {
@@ -476,7 +487,9 @@ export namespace SQIPGooglePay {
      * @platform Android
      * @param cardDetails - The non-confidential details of the card and a nonce.
      */
-    type GooglePayNonceRequestSuccessCallback = (cardDetails: CardDetails) => void;
+    type GooglePayNonceRequestSuccessCallback = (
+        cardDetails: CardDetails,
+    ) => void;
 
     /**
      * Callback invoked a card nonce could not be obtained.
@@ -500,7 +513,10 @@ export namespace SQIPGooglePay {
      * @param squareLocationId - The Square Location ID from the developer portal.
      * @param environment - Specifies the Google Pay environment to run Google Pay in: Test or Production
      */
-    function initializeGooglePay(squareLocationId: string, environment: GooglePayEnvironment): Promise<void>;
+    function initializeGooglePay(
+        squareLocationId: string,
+        environment: GooglePayEnvironment,
+    ): Promise<void>;
 
     /**
      * Returns true if the device supports Google Pay and the user has added at least one card that Square supports.

@@ -17,7 +17,7 @@ const validStringTooltip = (
         variant="primary"
         tooltip="auto"
         tooltipPlacement="top"
-        tooltipLabel={n => `Value is ${n}`}
+        tooltipLabel={(n) => `Value is ${n}`}
         tooltipStyle={{ fontSize: "1.5rem" }}
         tooltipProps={{ className: "text-center" }}
         inputProps={{ onMouseEnter: () => {} }}
@@ -26,7 +26,9 @@ const validStringTooltip = (
     />
 );
 
-const validCustomTooltip = <RangeSlider tooltipLabel={n => <p>Value is {n}</p>} />;
+const validCustomTooltip = (
+    <RangeSlider tooltipLabel={(n) => <p>Value is {n}</p>} />
+);
 
 // Invalid examples
 
@@ -50,7 +52,11 @@ const stringValue = <RangeSlider value="5" />;
 const invalidTooltipStyle = <RangeSlider tooltipStyle={{ textSize: "big" }} />;
 
 // @ts-expect-error
-const invalidInputProps = <RangeSlider inputProps={{ someInvalidProp: "value" }} />;
+const invalidInputProps = (
+    <RangeSlider inputProps={{ someInvalidProp: "value" }} />
+);
 
 // @ts-expect-error
-const invalidTooltipProps = <RangeSlider tooltipProps={{ someInvalidProp: "value" }} />;
+const invalidTooltipProps = (
+    <RangeSlider tooltipProps={{ someInvalidProp: "value" }} />
+);

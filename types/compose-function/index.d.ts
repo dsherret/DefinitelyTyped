@@ -1,8 +1,5 @@
 // Hardcoded signatures for 2-4 parameters
-declare function f<A, B, C>(
-    f1: (b: B) => C,
-    f2: (a: A) => B,
-): (a: A) => C;
+declare function f<A, B, C>(f1: (b: B) => C, f2: (a: A) => B): (a: A) => C;
 declare function f<A, B, C, D>(
     f1: (b: C) => D,
     f2: (a: B) => C,

@@ -8,9 +8,11 @@ declare namespace codecs {
         encode(input: InType): Buffer;
         decode(input: Uint8Array): OutType;
     }
-    interface NamedCodec<TName extends string = string, InType = any, OutType = InType>
-        extends BaseCodec<InType, OutType>
-    {
+    interface NamedCodec<
+        TName extends string = string,
+        InType = any,
+        OutType = InType,
+    > extends BaseCodec<InType, OutType> {
         name: TName;
     }
 
@@ -48,32 +50,47 @@ declare namespace codecs {
         TCodec extends MaybeCodecInput,
         TFallback extends NamedCodec = BinaryCodec,
         TCodecs = CodecLookup,
-    > = Codec<TCodec, TFallback, TCodecs> extends BaseCodec<any, infer T> ? T
+    > = Codec<TCodec, TFallback, TCodecs> extends BaseCodec<any, infer T>
+        ? T
         : unknown;
 
     type InType<
         TCodec extends MaybeCodecInput,
         TFallback extends NamedCodec = BinaryCodec,
         TCodecs = CodecLookup,
-    > = Codec<TCodec, TFallback, TCodecs> extends BaseCodec<infer T, any> ? T
+    > = Codec<TCodec, TFallback, TCodecs> extends BaseCodec<infer T, any>
+        ? T
         : unknown;
 
     type CodecName<
         TInput extends MaybeCodecInput,
         TFallback extends NamedCodec = BinaryCodec,
         TCodecs = CodecLookup,
-    > = TInput extends null | undefined ? TFallback["name"]
-        : TInput extends NamedCodec ? TInput["name"]
-        : TInput extends BaseCodec ? undefined
-        : TInput extends keyof TCodecs ? TCodecs[TInput] extends NamedCodec<infer Name> ? Name
-            : undefined
-        : TFallback["name"];
+    > = TInput extends null | undefined
+        ? TFallback["name"]
+        : TInput extends NamedCodec
+          ? TInput["name"]
+          : TInput extends BaseCodec
+            ? undefined
+            : TInput extends keyof TCodecs
+              ? TCodecs[TInput] extends NamedCodec<infer Name>
+                  ? Name
+                  : undefined
+              : TFallback["name"];
 
-    type Codec<TInput, TFallback = BinaryCodec, TCodecs = CodecLookup> = TInput extends BaseCodec ? TInput
-        : TInput extends null | undefined ? TFallback
-        : TInput extends keyof TCodecs ? TCodecs[TInput] extends BaseCodec ? TCodecs[TInput]
-            : TFallback
-        : TFallback;
+    type Codec<
+        TInput,
+        TFallback = BinaryCodec,
+        TCodecs = CodecLookup,
+    > = TInput extends BaseCodec
+        ? TInput
+        : TInput extends null | undefined
+          ? TFallback
+          : TInput extends keyof TCodecs
+            ? TCodecs[TInput] extends BaseCodec
+                ? TCodecs[TInput]
+                : TFallback
+            : TFallback;
 
     interface Codecs {
         (): BinaryCodec;

@@ -30,7 +30,9 @@ class AbstractStoreModel<S> implements AltJS.StoreModel<S> {
     bindActions: (...actions: Object[]) => void;
     bindAction: (...args: any[]) => void;
     bindListeners: (obj: any) => void;
-    exportPublicMethods: (config: { [key: string]: (...args: any[]) => any }) => any;
+    exportPublicMethods: (config: {
+        [key: string]: (...args: any[]) => any;
+    }) => any;
     exportAsync: (source: any) => void;
     waitFor: any;
     exportConfig: any;
@@ -59,8 +61,10 @@ class ExplicitActionsClass extends AbstractActions {
     }
 }
 
-var generatedActions = alt.createActions<TestActionsGenerate>(GenerateActionsClass);
-var explicitActions = alt.createActions<ExplicitActionsClass>(ExplicitActionsClass);
+var generatedActions =
+    alt.createActions<TestActionsGenerate>(GenerateActionsClass);
+var explicitActions =
+    alt.createActions<ExplicitActionsClass>(ExplicitActionsClass);
 
 interface AltTestState {
     hello: string;
@@ -90,7 +94,10 @@ var testSource: AltJS.Source = {
     },
 };
 
-class TestStore extends AbstractStoreModel<AltTestState> implements AltTestState {
+class TestStore
+    extends AbstractStoreModel<AltTestState>
+    implements AltTestState
+{
     hello: string = "world";
     constructor() {
         super();
@@ -119,7 +126,9 @@ interface ExtendedTestStore extends AltJS.AltStore<AltTestState> {
     split(): string[];
 }
 
-var testStore = <ExtendedTestStore> alt.createStore<AltTestState>(new TestStore());
+var testStore = <ExtendedTestStore>(
+    alt.createStore<AltTestState>(new TestStore())
+);
 
 function testCallback(state: AltTestState) {
     console.log(state);

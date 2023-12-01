@@ -5,33 +5,33 @@ export type Interaction = Promise<any> | (() => Promise<any>);
 
 export type TransactionProps =
     | {
-        name: string;
-        code?: string;
-        args?: any[];
-        signers: Address[] | SignerInfo[];
-        addressMap?: AddressMap;
-    }
+          name: string;
+          code?: string;
+          args?: any[];
+          signers: Address[] | SignerInfo[];
+          addressMap?: AddressMap;
+      }
     | {
-        name?: string;
-        code: string;
-        args?: any[];
-        signers: Address[] | SignerInfo[];
-        addressMap?: AddressMap;
-    };
+          name?: string;
+          code: string;
+          args?: any[];
+          signers: Address[] | SignerInfo[];
+          addressMap?: AddressMap;
+      };
 
 export type ScriptProps =
     | {
-        name: string;
-        code?: string;
-        args?: any[];
-        transformers?: CadenceTransformer[];
-    }
+          name: string;
+          code?: string;
+          args?: any[];
+          transformers?: CadenceTransformer[];
+      }
     | {
-        name?: string;
-        code: string;
-        args?: any[];
-        transformers?: CadenceTransformer[];
-    };
+          name?: string;
+          code: string;
+          args?: any[];
+          transformers?: CadenceTransformer[];
+      };
 
 export interface TransactionEvent {
     type: string;
@@ -50,11 +50,16 @@ export interface TransactionStatus {
     events: TransactionEvent[];
 }
 
-export type TransactionResponse = [TransactionStatus | null, string | Error | null];
+export type TransactionResponse = [
+    TransactionStatus | null,
+    string | Error | null,
+];
 
 export type ScriptResponse = [any, string | Error | null];
 
-export function sendTransaction(props: TransactionProps): Promise<TransactionResponse>;
+export function sendTransaction(
+    props: TransactionProps,
+): Promise<TransactionResponse>;
 
 export function sendTransaction(
     name: string,
@@ -64,4 +69,7 @@ export function sendTransaction(
 
 export function executeScript(props: ScriptProps): Promise<ScriptResponse>;
 
-export function executeScript(name: string, args?: any[]): Promise<ScriptResponse>;
+export function executeScript(
+    name: string,
+    args?: any[],
+): Promise<ScriptResponse>;

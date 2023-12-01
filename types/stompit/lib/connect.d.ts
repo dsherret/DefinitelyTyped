@@ -8,7 +8,11 @@ declare function connect(
     optionsOrPathOrPort: connect.ConnectOptions | string | number,
     connectionListener?: connect.ConnectionListener,
 ): Client;
-declare function connect(port: number, host?: string, connectionListener?: connect.ConnectionListener): Client;
+declare function connect(
+    port: number,
+    host?: string,
+    connectionListener?: connect.ConnectionListener,
+): Client;
 
 export = connect;
 
@@ -25,22 +29,36 @@ declare namespace connect {
         connectHeaders?: ConnectHeaders | undefined;
         ssl?: boolean | undefined;
         // This connectionListener type comes from @types/node
-        connect?: ((options: ConnectOptions, connectionListener?: () => void) => Socket) | undefined;
+        connect?:
+            | ((
+                  options: ConnectOptions,
+                  connectionListener?: () => void,
+              ) => Socket)
+            | undefined;
     }
 
-    interface NetTcpConnectOptions extends BaseConnectOptions, TcpNetConnectOpts {
+    interface NetTcpConnectOptions
+        extends BaseConnectOptions,
+            TcpNetConnectOpts {
         ssl?: false | undefined;
     }
 
-    interface NetIpcConnectOptions extends BaseConnectOptions, IpcNetConnectOpts {
+    interface NetIpcConnectOptions
+        extends BaseConnectOptions,
+            IpcNetConnectOpts {
         ssl?: false | undefined;
     }
 
-    interface SslConnectOptions extends BaseConnectOptions, TlsConnectionOptions {
+    interface SslConnectOptions
+        extends BaseConnectOptions,
+            TlsConnectionOptions {
         ssl: true;
     }
 
-    type ConnectOptions = NetTcpConnectOptions | NetIpcConnectOptions | SslConnectOptions;
+    type ConnectOptions =
+        | NetTcpConnectOptions
+        | NetIpcConnectOptions
+        | SslConnectOptions;
 
     type ConnectionListener = (err: Error | null, client: Client) => void;
 }

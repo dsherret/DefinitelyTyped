@@ -1,4 +1,10 @@
-import { DuplexConnection, Frame, ISubscriber, ReactiveSocket, Responder } from "rsocket-types";
+import {
+    DuplexConnection,
+    Frame,
+    ISubscriber,
+    ReactiveSocket,
+    Responder,
+} from "rsocket-types";
 import { RequesterLeaseHandler, ResponderLeaseHandler } from "./RSocketLease";
 import { PayloadSerializers } from "./RSocketSerialization";
 
@@ -8,7 +14,9 @@ export interface RSocketMachine<D, M> extends ReactiveSocket<D, M> {
 
 export function createServerMachine<D, M>(
     connection: DuplexConnection,
-    connectionPublisher: (partialSubscriber: Partial<ISubscriber<Frame>>) => void,
+    connectionPublisher: (
+        partialSubscriber: Partial<ISubscriber<Frame>>,
+    ) => void,
     keepAliveTimeout: number,
     serializers?: PayloadSerializers<D, M>,
     errorHandler?: (e: Error) => void,
@@ -18,7 +26,9 @@ export function createServerMachine<D, M>(
 
 export function createClientMachine<D, M>(
     connection: DuplexConnection,
-    connectionPublisher: (partialSubscriber: Partial<ISubscriber<Frame>>) => void,
+    connectionPublisher: (
+        partialSubscriber: Partial<ISubscriber<Frame>>,
+    ) => void,
     keepAliveTimeout: number,
     serializers?: PayloadSerializers<D, M>,
     requestHandler?: Partial<Responder<D, M>>,

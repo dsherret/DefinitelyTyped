@@ -20,11 +20,11 @@ jsonfile.readFile(file, (err, obj) => {
     obj;
 });
 
-jsonfile.readFile(file).then(obj => {
+jsonfile.readFile(file).then((obj) => {
     // $ExpectType any
     obj;
 });
-jsonfile.readFile(file, { encoding: "utf8", throws: true }).then(obj => {
+jsonfile.readFile(file, { encoding: "utf8", throws: true }).then((obj) => {
     // $ExpectType any
     obj;
 });
@@ -34,25 +34,25 @@ jsonfile.readFileSync(file);
 jsonfile.readFileSync(file, { encoding: "utf8", throws: true });
 
 // $ExpectType void
-jsonfile.writeFile(file, obj, err => {
+jsonfile.writeFile(file, obj, (err) => {
     // $ExpectType ErrnoException | null
     err;
 });
 
 // $ExpectType void
-jsonfile.writeFile(file, obj, { spaces: 2 }, err => {
+jsonfile.writeFile(file, obj, { spaces: 2 }, (err) => {
     // $ExpectType ErrnoException | null
     err;
 });
 
 // $ExpectType void
-jsonfile.writeFile(file, obj, { spaces: 2, EOL: "\r\n" }, err => {
+jsonfile.writeFile(file, obj, { spaces: 2, EOL: "\r\n" }, (err) => {
     // $ExpectType ErrnoException | null
     err;
 });
 
 // $ExpectType void
-jsonfile.writeFile(file, obj, { flag: "a" }, err => {
+jsonfile.writeFile(file, obj, { flag: "a" }, (err) => {
     // $ExpectType ErrnoException | null
     err;
 });
@@ -70,4 +70,9 @@ jsonfile.writeFileSync(file, obj, { flag: "a" });
 // $ExpectType string
 stripBom("content");
 // $ExpectType string
-stringify(obj, { finalEOL: true, EOL: "\r\n", spaces: 2, replacer: (key, value) => value });
+stringify(obj, {
+    finalEOL: true,
+    EOL: "\r\n",
+    spaces: 2,
+    replacer: (key, value) => value,
+});

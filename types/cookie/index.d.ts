@@ -141,7 +141,10 @@ export interface CookieParseOptions {
  * @param str the string representing a `Cookie` header value
  * @param [options] object containing parsing options
  */
-export function parse(str: string, options?: CookieParseOptions): Record<string, string>;
+export function parse(
+    str: string,
+    options?: CookieParseOptions,
+): Record<string, string>;
 
 /**
  * Serialize a cookie name-value pair into a `Set-Cookie` header string.
@@ -151,4 +154,8 @@ export function parse(str: string, options?: CookieParseOptions): Record<string,
  * @param [options] object containing serialization options
  * @throws {TypeError} when `maxAge` options is invalid
  */
-export function serialize(name: string, value: string, options?: CookieSerializeOptions): string;
+export function serialize(
+    name: string,
+    value: string,
+    options?: CookieSerializeOptions,
+): string;

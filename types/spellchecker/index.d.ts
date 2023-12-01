@@ -43,7 +43,9 @@ export function checkSpelling(corpus: string): MisspelledLocation[];
  * @param corpus - String corpus of text to spellcheck.
  * @returns array - Returns a Promise that resolves with the Array described by checkSpelling().
  */
-export function checkSpellingAsync(corpus: string): Promise<MisspelledLocation[]>;
+export function checkSpellingAsync(
+    corpus: string,
+): Promise<MisspelledLocation[]>;
 
 /**
  * Spellchecker.add - Adds a word to the dictionary.

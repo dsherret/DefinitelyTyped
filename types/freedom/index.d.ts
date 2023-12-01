@@ -39,8 +39,9 @@ declare namespace freedom {
         providePromises: (classFn?: Function) => void;
     }
 
-    interface ParentModuleThing extends ModuleSelfConstructor, OnAndEmit<any, any> {
-    }
+    interface ParentModuleThing
+        extends ModuleSelfConstructor,
+            OnAndEmit<any, any> {}
 
     interface Logger {
         debug(...args: any[]): void;
@@ -112,7 +113,10 @@ declare namespace freedom {
         // promise to a factory constructor for the freedom module. The
         // |manifestPath| should be a path to a json string that specifies the
         // freedom module.
-        (manifestPath: string, options?: FreedomInCoreEnvOptions): Promise<FreedomModuleFactoryManager<any>>;
+        (
+            manifestPath: string,
+            options?: FreedomInCoreEnvOptions,
+        ): Promise<FreedomModuleFactoryManager<any>>;
     }
 
     interface FreedomInModuleEnv {
@@ -123,15 +127,15 @@ declare namespace freedom {
         // Creates an interface to the freedom core provider which can be used to
         // create loggers and channels.
         // Note: unlike other providers, core is a getter.
-        "core": FreedomModuleFactoryManager<Core>;
+        core: FreedomModuleFactoryManager<Core>;
         "core.console": FreedomModuleFactoryManager<Console.Console>;
         "core.rtcdatachannel": FreedomModuleFactoryManager<RTCDataChannel.RTCDataChannel>;
         "core.rtcpeerconnection": FreedomModuleFactoryManager<RTCPeerConnection.RTCPeerConnection>;
         "core.storage": FreedomModuleFactoryManager<Storage.Storage>;
         "core.tcpsocket": FreedomModuleFactoryManager<TcpSocket.Socket>;
         "core.udpsocket": FreedomModuleFactoryManager<UdpSocket.Socket>;
-        "pgp": FreedomModuleFactoryManager<PgpProvider.PgpProvider>;
-        "portControl": FreedomModuleFactoryManager<PortControl.PortControl>;
+        pgp: FreedomModuleFactoryManager<PgpProvider.PgpProvider>;
+        portControl: FreedomModuleFactoryManager<PortControl.PortControl>;
 
         // We use this specification so that you can reference freedom sub-modules by
         // an array-lookup of its name. One day, maybe we'll have a nicer way to do
@@ -280,7 +284,10 @@ declare namespace freedom.RTCPeerConnection {
 
         close(): Promise<void>;
 
-        createDataChannel(label: string, init: RTCDataChannelInit): Promise<string>;
+        createDataChannel(
+            label: string,
+            init: RTCDataChannelInit,
+        ): Promise<string>;
 
         getStats(selector?: string): Promise<any>;
 
@@ -381,7 +388,12 @@ declare namespace freedom.UdpSocket {
 
     interface Implementation {
         bind(address: string, port: number, continuation: () => void): void;
-        sendTo(data: ArrayBuffer, address: string, port: number, continuation: (bytesWritten: number) => void): void;
+        sendTo(
+            data: ArrayBuffer,
+            address: string,
+            port: number,
+            continuation: (bytesWritten: number) => void,
+        ): void;
         destroy(continuation: () => void): void;
         getInfo(continuation: (socketInfo: SocketInfo) => void): void;
     }
@@ -419,8 +431,15 @@ declare namespace freedom.PgpProvider {
         exportKey(): Promise<PublicKey>;
         getFingerprint(publicKey: string): Promise<KeyFingerprint>;
         ecdhBob(curve: string, pubKey: string): Promise<ArrayBuffer>;
-        signEncrypt(data: ArrayBuffer, encryptKey?: string, sign?: boolean): Promise<ArrayBuffer>;
-        verifyDecrypt(data: ArrayBuffer, verifyKey?: string): Promise<VerifyDecryptResult>;
+        signEncrypt(
+            data: ArrayBuffer,
+            encryptKey?: string,
+            sign?: boolean,
+        ): Promise<ArrayBuffer>;
+        verifyDecrypt(
+            data: ArrayBuffer,
+            verifyKey?: string,
+        ): Promise<VerifyDecryptResult>;
         armor(data: ArrayBuffer, type?: string): Promise<string>;
         dearmor(data: string): Promise<ArrayBuffer>;
     }
@@ -453,20 +472,37 @@ declare namespace freedom.PortControl {
 
     // Main interface for the module
     interface PortControl {
-        addMapping(intPort: number, extPort: number, lifetime: number): Promise<Mapping>;
+        addMapping(
+            intPort: number,
+            extPort: number,
+            lifetime: number,
+        ): Promise<Mapping>;
         deleteMapping(extPort: number): Promise<boolean>;
         probeProtocolSupport(): Promise<ProtocolSupport>;
 
         probePmpSupport(): Promise<boolean>;
-        addMappingPmp(intPort: number, extPort: number, lifetime: number): Promise<Mapping>;
+        addMappingPmp(
+            intPort: number,
+            extPort: number,
+            lifetime: number,
+        ): Promise<Mapping>;
         deleteMappingPmp(extPort: number): Promise<boolean>;
 
         probePcpSupport(): Promise<boolean>;
-        addMappingPcp(intPort: number, extPort: number, lifetime: number): Promise<Mapping>;
+        addMappingPcp(
+            intPort: number,
+            extPort: number,
+            lifetime: number,
+        ): Promise<Mapping>;
         deleteMappingPcp(extPort: number): Promise<boolean>;
 
         probeUpnpSupport(): Promise<boolean>;
-        addMappingUpnp(intPort: number, extPort: number, lifetime: number, controlUrl?: string): Promise<Mapping>;
+        addMappingUpnp(
+            intPort: number,
+            extPort: number,
+            lifetime: number,
+            controlUrl?: string,
+        ): Promise<Mapping>;
         deleteMappingUpnp(extPort: number): Promise<boolean>;
 
         getActiveMappings(): Promise<ActiveMappings>;

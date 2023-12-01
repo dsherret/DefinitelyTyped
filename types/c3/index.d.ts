@@ -22,7 +22,12 @@ export type Domain = [number, number];
  * @param j The sub index of the data point where the label is shown.
  * @returns The formatted data label.
  */
-export type FormatFunction = (v: number | { valueOf(): number }, id: string, i: number, j: number) => string;
+export type FormatFunction = (
+    v: number | { valueOf(): number },
+    id: string,
+    i: number,
+    j: number,
+) => string;
 
 export type XAxisName = "x";
 export type YAxisName = "y" | "y2";
@@ -64,68 +69,87 @@ export interface ChartConfiguration {
      * Note: When chart is not binded, c3 starts observing if chart.element is binded by MutationObserver. In this case, polyfill is required in IE9 and IE10 becuase they do not support
      * MutationObserver. On the other hand, if chart always will be binded, polyfill will not be required because MutationObserver will never be called.
      */
-    bindto?: string | HTMLElement | d3.Selection<any, any, any, any> | null | undefined;
+    bindto?:
+        | string
+        | HTMLElement
+        | d3.Selection<any, any, any, any>
+        | null
+        | undefined;
 
-    svg?: {
-        /** Class to assign to the chart's container SVG element. */
-        classname?: string | undefined;
-    } | undefined;
+    svg?:
+        | {
+              /** Class to assign to the chart's container SVG element. */
+              classname?: string | undefined;
+          }
+        | undefined;
 
-    size?: {
-        /**
-         * The desired width of the chart element.
-         * If this option is not specified, the width of the chart will be calculated by the size of the parent element it's appended to.
-         * Note: This option should be specified if possible because it can improve its performance because some size calculations will be skipped by an explicit value.
-         */
-        width?: number | undefined;
-        /**
-         * The desired height of the chart element.
-         * If this option is not specified, the height of the chart will be calculated by the size of the parent element it's appended to.
-         */
-        height?: number | undefined;
-    } | undefined;
+    size?:
+        | {
+              /**
+               * The desired width of the chart element.
+               * If this option is not specified, the width of the chart will be calculated by the size of the parent element it's appended to.
+               * Note: This option should be specified if possible because it can improve its performance because some size calculations will be skipped by an explicit value.
+               */
+              width?: number | undefined;
+              /**
+               * The desired height of the chart element.
+               * If this option is not specified, the height of the chart will be calculated by the size of the parent element it's appended to.
+               */
+              height?: number | undefined;
+          }
+        | undefined;
 
     padding?: Padding | undefined;
 
-    resize?: {
-        /**
-         * Indicate if the chart should automatically get resized when the window gets resized.
-         */
-        auto?: boolean | undefined;
-    } | undefined;
+    resize?:
+        | {
+              /**
+               * Indicate if the chart should automatically get resized when the window gets resized.
+               */
+              auto?: boolean | undefined;
+          }
+        | undefined;
 
-    color?: {
-        /**
-         * Set custom color pattern. Order matches the order of the data.
-         */
-        pattern?: string[] | undefined;
-        /**
-         * **Experimental.**
-         */
-        threshold?: {
-            unit?: string | undefined;
-            values?: unknown[] | undefined;
-            /** Defaults to `100`. */
-            max?: number | undefined;
-        } | undefined;
-    } | undefined;
+    color?:
+        | {
+              /**
+               * Set custom color pattern. Order matches the order of the data.
+               */
+              pattern?: string[] | undefined;
+              /**
+               * **Experimental.**
+               */
+              threshold?:
+                  | {
+                        unit?: string | undefined;
+                        values?: unknown[] | undefined;
+                        /** Defaults to `100`. */
+                        max?: number | undefined;
+                    }
+                  | undefined;
+          }
+        | undefined;
 
-    interaction?: {
-        /**
-         * Indicate if the chart should have interactions.
-         * If `false` is set, all of interactions (showing/hiding tooltip, selection, mouse events, etc) will be disabled.
-         */
-        enabled?: boolean | undefined;
-        brighten?: boolean | undefined;
-    } | undefined;
+    interaction?:
+        | {
+              /**
+               * Indicate if the chart should have interactions.
+               * If `false` is set, all of interactions (showing/hiding tooltip, selection, mouse events, etc) will be disabled.
+               */
+              enabled?: boolean | undefined;
+              brighten?: boolean | undefined;
+          }
+        | undefined;
 
-    transition?: {
-        /**
-         * Set duration of transition (in milliseconds) for chart animation.
-         * Note: If `0` or `null` set, transition will be skipped. So, this makes initial rendering faster especially in case you have a lot of data.
-         */
-        duration?: number | null | undefined;
-    } | undefined;
+    transition?:
+        | {
+              /**
+               * Set duration of transition (in milliseconds) for chart animation.
+               * Note: If `0` or `null` set, transition will be skipped. So, this makes initial rendering faster especially in case you have a lot of data.
+               */
+              duration?: number | null | undefined;
+          }
+        | undefined;
 
     /**
      * Set a callback to execute when the chart is initialized.
@@ -183,222 +207,248 @@ export interface ChartConfiguration {
 
     line?: LineOptions | undefined;
 
-    area?: {
-        /**
-         * Set if min or max value will be 0 on area chart.
-         */
-        zerobased?: boolean | undefined;
-    } | undefined;
+    area?:
+        | {
+              /**
+               * Set if min or max value will be 0 on area chart.
+               */
+              zerobased?: boolean | undefined;
+          }
+        | undefined;
 
-    bar?: {
-        /**
-         * Change the width of bars. If ratio is specified, change the width of bar chart by ratio.
-         */
-        width?:
-            | number
-            | {
-                /**
-                 * Set the width of each bar by ratio
-                 * Defaults to `0.6`.
-                 */
-                ratio: number;
-                /**
-                 * Set max width of each bar
-                 */
-                max?: number | undefined;
-            }
-            | undefined;
-        /**
-         * Set if min or max value will be 0 on bar chart.
-         */
-        zerobased?: boolean | undefined;
-        /**
-         * Set space between bars in bar charts
-         */
-        space?: number | undefined;
-    } | undefined;
+    bar?:
+        | {
+              /**
+               * Change the width of bars. If ratio is specified, change the width of bar chart by ratio.
+               */
+              width?:
+                  | number
+                  | {
+                        /**
+                         * Set the width of each bar by ratio
+                         * Defaults to `0.6`.
+                         */
+                        ratio: number;
+                        /**
+                         * Set max width of each bar
+                         */
+                        max?: number | undefined;
+                    }
+                  | undefined;
+              /**
+               * Set if min or max value will be 0 on bar chart.
+               */
+              zerobased?: boolean | undefined;
+              /**
+               * Set space between bars in bar charts
+               */
+              space?: number | undefined;
+          }
+        | undefined;
 
-    pie?: {
-        label?: LabelOptionsWithThreshold | undefined;
-        /**
-         * Enable or disable expanding pie pieces.
-         */
-        expand?: ExpandOptions | undefined;
-        /**
-         * Sets the angular separation between each adjacent arc.
-         */
-        padAngle?: number | undefined;
-    } | undefined;
+    pie?:
+        | {
+              label?: LabelOptionsWithThreshold | undefined;
+              /**
+               * Enable or disable expanding pie pieces.
+               */
+              expand?: ExpandOptions | undefined;
+              /**
+               * Sets the angular separation between each adjacent arc.
+               */
+              padAngle?: number | undefined;
+          }
+        | undefined;
 
-    donut?: {
-        label?: LabelOptionsWithThreshold | undefined;
-        /**
-         * Enable or disable expanding pie pieces.
-         */
-        expand?: ExpandOptions | undefined;
-        /**
-         * Sets the angular separation between each adjacent arc.
-         */
-        padAngle?: number | undefined;
-        /**
-         * Set width of donut chart.
-         */
-        width?: number | undefined;
-        /**
-         * Set title of donut chart.
-         */
-        title?: string | undefined;
-    } | undefined;
+    donut?:
+        | {
+              label?: LabelOptionsWithThreshold | undefined;
+              /**
+               * Enable or disable expanding pie pieces.
+               */
+              expand?: ExpandOptions | undefined;
+              /**
+               * Sets the angular separation between each adjacent arc.
+               */
+              padAngle?: number | undefined;
+              /**
+               * Set width of donut chart.
+               */
+              width?: number | undefined;
+              /**
+               * Set title of donut chart.
+               */
+              title?: string | undefined;
+          }
+        | undefined;
 
-    gauge?: {
-        label?: LabelOptions | undefined;
-        labelLine?: {
-            show?: boolean | undefined;
-        } | undefined;
-        /**
-         * Enable or disable expanding gauge.
-         */
-        expand?: ExpandOptions | undefined;
-        /**
-         * Set min value of the gauge.
-         * Defaults to `0`.
-         */
-        min?: number | undefined;
-        /**
-         * Set max value of the gauge.
-         * Defaults to `100`.
-         */
-        max?: number | undefined;
-        /**
-         * Set units of the gauge.
-         */
-        units?: string | undefined;
-        /**
-         * Set width of gauge chart.
-         */
-        width?: number | undefined;
-        /**
-         * Whether this should be displayed
-         * as a full circle instead of a
-         * half circle.
-         * Defaults to `false`.
-         */
-        fullCircle?: boolean | undefined;
-        arcs?: {
-            /**
-             * Defaults to `5`.
-             */
-            minWidth?: number | undefined;
-        } | undefined;
-    } | undefined;
+    gauge?:
+        | {
+              label?: LabelOptions | undefined;
+              labelLine?:
+                  | {
+                        show?: boolean | undefined;
+                    }
+                  | undefined;
+              /**
+               * Enable or disable expanding gauge.
+               */
+              expand?: ExpandOptions | undefined;
+              /**
+               * Set min value of the gauge.
+               * Defaults to `0`.
+               */
+              min?: number | undefined;
+              /**
+               * Set max value of the gauge.
+               * Defaults to `100`.
+               */
+              max?: number | undefined;
+              /**
+               * Set units of the gauge.
+               */
+              units?: string | undefined;
+              /**
+               * Set width of gauge chart.
+               */
+              width?: number | undefined;
+              /**
+               * Whether this should be displayed
+               * as a full circle instead of a
+               * half circle.
+               * Defaults to `false`.
+               */
+              fullCircle?: boolean | undefined;
+              arcs?:
+                  | {
+                        /**
+                         * Defaults to `5`.
+                         */
+                        minWidth?: number | undefined;
+                    }
+                  | undefined;
+          }
+        | undefined;
 
-    spline?: {
-        interpolation?: {
-            /**
-             * Set custom spline interpolation
-             */
-            type?:
-                | "linear"
-                | "linear-closed"
-                | "basis"
-                | "basis-open"
-                | "basis-closed"
-                | "bundle"
-                | "cardinal"
-                | "cardinal-open"
-                | "cardinal-closed"
-                | "monotone"
-                | "step"
-                | "step-before"
-                | "step-after"
-                | undefined;
-        } | undefined;
-    } | undefined;
+    spline?:
+        | {
+              interpolation?:
+                  | {
+                        /**
+                         * Set custom spline interpolation
+                         */
+                        type?:
+                            | "linear"
+                            | "linear-closed"
+                            | "basis"
+                            | "basis-open"
+                            | "basis-closed"
+                            | "bundle"
+                            | "cardinal"
+                            | "cardinal-open"
+                            | "cardinal-closed"
+                            | "monotone"
+                            | "step"
+                            | "step-before"
+                            | "step-after"
+                            | undefined;
+                    }
+                  | undefined;
+          }
+        | undefined;
 
-    stanford?: {
-        /** Show lines anywhere in the chart. */
-        lines?:
-            | Array<{
-                value_x1?: number | undefined;
-                value_y1?: number | undefined;
-                value_x2?: number | undefined;
-                value_y2?: number | undefined;
-                /** Class to apply to the line. */
-                class?: string | undefined;
-            }>
-            | undefined;
-        /** Add regions to the chart. */
-        regions?:
-            | Array<{
-                /** Points should be added in counter-clockwise direction  to close the polygon. */
-                points: Array<{
-                    x: number;
-                    y: number;
-                }>;
-                text?: ((value: number, percentage: number) => string) | undefined;
-                opacity?: number | undefined;
-                /** Class to apply to the region. */
-                class?: string | undefined;
-            }>
-            | undefined;
-        /** Show text anywhere inside the chart. */
-        texts?:
-            | Array<{
-                /** x-position. */
-                x?: number | undefined;
-                /** y-position. */
-                y?: number | undefined;
-                /** Text content to show. */
-                content?: string | undefined;
-                /** Class to apply to the text. */
-                class?: string | undefined;
-            }>
-            | undefined;
-        /** Change the minimum value of the stanford color scale. */
-        scaleMin?: number | undefined;
-        /** Change the maximum value of the stanford color scale. */
-        scaleMax?: number | undefined;
-        /**
-         * Change the width of the stanford color scale.
-         * Defaults to `20`.
-         */
-        scaleWidth?: number | undefined;
-        /**
-         * Set formatter for stanford color scale axis tick text.
-         * This option accepts the string 'pow10', a d3.format object and any function you define.
-         * Defauls to `d3.format("d")`.
-         */
-        scaleFormat?: "pow10" | ((arg0: number) => string) | undefined;
-        /**
-         * Set the values for stanford color scale axis tick text. This option accepts a function that returns an array of numbers.
-         */
-        scaleValues?: ((minValue: number, maxValue: number) => number[]) | undefined;
-        /**
-         * Set the color interpolator for stanford color scale. This option is a
-         * `d3.interpolate*` object or any function you definethat receives a
-         * value between `0` and `1`, and returns a color as string.
-         */
-        colors?: ((value: number) => string) | undefined;
-        /**
-         * Set the padding for the Stanford color scale.
-         */
-        padding?: Padding | undefined;
-    } | undefined;
+    stanford?:
+        | {
+              /** Show lines anywhere in the chart. */
+              lines?:
+                  | Array<{
+                        value_x1?: number | undefined;
+                        value_y1?: number | undefined;
+                        value_x2?: number | undefined;
+                        value_y2?: number | undefined;
+                        /** Class to apply to the line. */
+                        class?: string | undefined;
+                    }>
+                  | undefined;
+              /** Add regions to the chart. */
+              regions?:
+                  | Array<{
+                        /** Points should be added in counter-clockwise direction  to close the polygon. */
+                        points: Array<{
+                            x: number;
+                            y: number;
+                        }>;
+                        text?:
+                            | ((value: number, percentage: number) => string)
+                            | undefined;
+                        opacity?: number | undefined;
+                        /** Class to apply to the region. */
+                        class?: string | undefined;
+                    }>
+                  | undefined;
+              /** Show text anywhere inside the chart. */
+              texts?:
+                  | Array<{
+                        /** x-position. */
+                        x?: number | undefined;
+                        /** y-position. */
+                        y?: number | undefined;
+                        /** Text content to show. */
+                        content?: string | undefined;
+                        /** Class to apply to the text. */
+                        class?: string | undefined;
+                    }>
+                  | undefined;
+              /** Change the minimum value of the stanford color scale. */
+              scaleMin?: number | undefined;
+              /** Change the maximum value of the stanford color scale. */
+              scaleMax?: number | undefined;
+              /**
+               * Change the width of the stanford color scale.
+               * Defaults to `20`.
+               */
+              scaleWidth?: number | undefined;
+              /**
+               * Set formatter for stanford color scale axis tick text.
+               * This option accepts the string 'pow10', a d3.format object and any function you define.
+               * Defauls to `d3.format("d")`.
+               */
+              scaleFormat?: "pow10" | ((arg0: number) => string) | undefined;
+              /**
+               * Set the values for stanford color scale axis tick text. This option accepts a function that returns an array of numbers.
+               */
+              scaleValues?:
+                  | ((minValue: number, maxValue: number) => number[])
+                  | undefined;
+              /**
+               * Set the color interpolator for stanford color scale. This option is a
+               * `d3.interpolate*` object or any function you definethat receives a
+               * value between `0` and `1`, and returns a color as string.
+               */
+              colors?: ((value: number) => string) | undefined;
+              /**
+               * Set the padding for the Stanford color scale.
+               */
+              padding?: Padding | undefined;
+          }
+        | undefined;
 
-    title?: {
-        /**
-         * Chart title text.
-         */
-        text?: string | undefined;
-        /**
-         * Spacing around the title.
-         */
-        padding?: Padding | undefined;
-        /**
-         * Position the title relative to the chart.
-         */
-        title_position?: "right" | "center" | "left" | undefined;
-    } | undefined;
+    title?:
+        | {
+              /**
+               * Chart title text.
+               */
+              text?: string | undefined;
+              /**
+               * Spacing around the title.
+               */
+              padding?: Padding | undefined;
+              /**
+               * Position the title relative to the chart.
+               */
+              title_position?: "right" | "center" | "left" | undefined;
+          }
+        | undefined;
 }
 
 export interface LabelOptions {
@@ -412,10 +462,12 @@ export interface LabelOptions {
     format?(value: number, ratio: number, id: string): string | number;
 }
 
-export type ExpandOptions = boolean | {
-    /** Transition duration for expanding. */
-    duration?: number | undefined;
-};
+export type ExpandOptions =
+    | boolean
+    | {
+          /** Transition duration for expanding. */
+          duration?: number | undefined;
+      };
 
 export interface LabelOptionsWithThreshold extends LabelOptions {
     /**
@@ -438,7 +490,10 @@ export interface Data {
     /**
      * Parse a JSON object for data. Can be in the column form `{key1: [val1, val2, ...]; ...}` or in the row form `[{key1: val1; key2: val2}, ...]`. If `url` is provided this will be ignored.
      */
-    json?: Record<string, PrimitiveArray> | Array<Record<string, Primitive>> | undefined;
+    json?:
+        | Record<string, PrimitiveArray>
+        | Array<Record<string, Primitive>>
+        | undefined;
     /**
      * A list of rows, where the first row is the column names and the remaining rows are data.  If `url` or `json` are provided this will be ignored.
      */
@@ -454,12 +509,14 @@ export interface Data {
     /**
      * If `data.json` is provided and is in row form, these keys are used to pull the data from each row.
      */
-    keys?: {
-        /** This is the key for the x-value in each row. */
-        x?: string | undefined;
-        /** List of remaining keys (besides the x key) to pull data for. */
-        value: string[];
-    } | undefined;
+    keys?:
+        | {
+              /** This is the key for the x-value in each row. */
+              x?: string | undefined;
+              /** List of remaining keys (besides the x key) to pull data for. */
+              value: string[];
+          }
+        | undefined;
     /**
      * Specify the key of x values in the data.
      * We can show the data with non-index x values by this option. This option is required when the type of x axis is timeseries. If this option is set on category axis, the values of the data
@@ -528,7 +585,12 @@ export interface Data {
      * This option changes the order of stacking the data and pieces of pie/donut. If null specified, it will be the order the data loaded. If function specified, it will be used to sort the data
      * and it will recieve the data as argument.
      */
-    order?: "asc" | "desc" | ((...data: DataSeries[]) => number) | null | undefined;
+    order?:
+        | "asc"
+        | "desc"
+        | ((...data: DataSeries[]) => number)
+        | null
+        | undefined;
     /**
      * Define regions for each data.
      * The values must be an array for each data and it should include an object that has start, end, style. If start is not set, the start will be the first data point. If end is not set, the
@@ -540,18 +602,27 @@ export interface Data {
      * Set color converter function.
      * The function is called for each data ID, for each data series, and for each individual point.
      */
-    color?: ((color: string, d: string | DataSeries | DataPoint) => string | d3.RGBColor | d3.HSLColor) | undefined;
+    color?:
+        | ((
+              color: string,
+              d: string | DataSeries | DataPoint,
+          ) => string | d3.RGBColor | d3.HSLColor)
+        | undefined;
     /**
      * Set color for each data.
      * If a function is specified, it is called once each with the data ID, the data series, and each point.
      */
-    colors?: {
-        [key: string]:
-            | string
-            | d3.RGBColor
-            | d3.HSLColor
-            | ((d: string | DataSeries | DataPoint) => string | d3.RGBColor | d3.HSLColor);
-    } | undefined;
+    colors?:
+        | {
+              [key: string]:
+                  | string
+                  | d3.RGBColor
+                  | d3.HSLColor
+                  | ((
+                        d: string | DataSeries | DataPoint,
+                    ) => string | d3.RGBColor | d3.HSLColor);
+          }
+        | undefined;
     /**
      * Hide each data when the chart appears.
      * If true specified, all of data will be hidden. If multiple ids specified as an array, those will be hidden.
@@ -564,55 +635,65 @@ export interface Data {
      * @param allSeries Array of all data series, whether filtered or not.
      * @returns `true` if the series should be shown, `false` if it should be hidden.
      */
-    filter?: ((series: DataSeries, index: number, allSeries: DataSeries[]) => boolean) | undefined;
+    filter?:
+        | ((
+              series: DataSeries,
+              index: number,
+              allSeries: DataSeries[],
+          ) => boolean)
+        | undefined;
     /**
      * Set text displayed when empty data.
      * Defaults to `""`.
      */
     empty?: { label: { text: string } } | undefined;
 
-    selection?: {
-        /**
-         * Enable or disable selecting data.
-         * If this option is set `true`, we can select the data points and get/set its state of selection by API (e.g. `select`, `unselect`, `selected`).
-         * Defaults to `false`.
-         */
-        enabled?: boolean | undefined;
-        /**
-         * Set grouped selection enabled.
-         * If this option set `true`, multiple data points that have same x value will be selected by one selection.
-         * Defaults to `false`.
-         */
-        grouped?: boolean | undefined;
-        /**
-         * Set multiple data points selection enabled.
-         * If this option set `true`, multiple data points can have the selected
-         * state at the same time. If `false` set, only one data point can have
-         * the selected state and the others will be unselected when the new data point is selected.
-         */
-        multiple?: boolean | undefined;
-        /**
-         * Enable to select data points by dragging.
-         * If this option set `true`, data points can be selected by dragging.
-         *
-         * **Note**: If this option set `true`, scrolling on the chart will be disabled because dragging event will handle the event.
-         */
-        draggable?: boolean | undefined;
-        /**
-         * Prevent specific data from being selected. Only called if `selection.enabled` is `true`.
-         * @param d The data series to decide for.
-         * @returns `false` if selection should be disabled for this data.
-         */
-        isselectable?(this: Record<string, any>, d: DataSeries): boolean;
-    } | undefined;
-    stack?: {
-        /**
-         * Set the stacking to be normalized. Default is false.
-         *
-         * **Note**: For stacking, the `data.groups` option should be set and have positive values. The yAxis will be set in percentage value (0 ~ 100%).
-         */
-        normalize?: boolean | undefined;
-    } | undefined;
+    selection?:
+        | {
+              /**
+               * Enable or disable selecting data.
+               * If this option is set `true`, we can select the data points and get/set its state of selection by API (e.g. `select`, `unselect`, `selected`).
+               * Defaults to `false`.
+               */
+              enabled?: boolean | undefined;
+              /**
+               * Set grouped selection enabled.
+               * If this option set `true`, multiple data points that have same x value will be selected by one selection.
+               * Defaults to `false`.
+               */
+              grouped?: boolean | undefined;
+              /**
+               * Set multiple data points selection enabled.
+               * If this option set `true`, multiple data points can have the selected
+               * state at the same time. If `false` set, only one data point can have
+               * the selected state and the others will be unselected when the new data point is selected.
+               */
+              multiple?: boolean | undefined;
+              /**
+               * Enable to select data points by dragging.
+               * If this option set `true`, data points can be selected by dragging.
+               *
+               * **Note**: If this option set `true`, scrolling on the chart will be disabled because dragging event will handle the event.
+               */
+              draggable?: boolean | undefined;
+              /**
+               * Prevent specific data from being selected. Only called if `selection.enabled` is `true`.
+               * @param d The data series to decide for.
+               * @returns `false` if selection should be disabled for this data.
+               */
+              isselectable?(this: Record<string, any>, d: DataSeries): boolean;
+          }
+        | undefined;
+    stack?:
+        | {
+              /**
+               * Set the stacking to be normalized. Default is false.
+               *
+               * **Note**: For stacking, the `data.groups` option should be set and have positive values. The yAxis will be set in percentage value (0 ~ 100%).
+               */
+              normalize?: boolean | undefined;
+          }
+        | undefined;
     /**
      * Set a callback for click event on each data point.
      * @param d The data point that was clicked.
@@ -720,17 +801,17 @@ export interface XAxisConfiguration extends AxisConfiguration {
     label?:
         | string
         | {
-            /** The label text to show. */
-            text: string;
-            /** The position of the label. */
-            position:
-                | "inner-right"
-                | "inner-center"
-                | "inner-left"
-                | "outer-right"
-                | "outer-center"
-                | "outer-left";
-        }
+              /** The label text to show. */
+              text: string;
+              /** The position of the label. */
+              position:
+                  | "inner-right"
+                  | "inner-center"
+                  | "inner-left"
+                  | "outer-right"
+                  | "outer-center"
+                  | "outer-left";
+          }
         | undefined;
 
     /**
@@ -766,17 +847,17 @@ export interface YAxisConfiguration extends AxisConfiguration {
     label?:
         | string
         | {
-            /** The label text to show. */
-            text: string;
-            /** The position of the label. */
-            position:
-                | "inner-top"
-                | "inner-middle"
-                | "inner-bottom"
-                | "outer-top"
-                | "outer-middle"
-                | "outer-bottom";
-        }
+              /** The label text to show. */
+              text: string;
+              /** The position of the label. */
+              position:
+                  | "inner-top"
+                  | "inner-middle"
+                  | "inner-bottom"
+                  | "outer-top"
+                  | "outer-middle"
+                  | "outer-bottom";
+          }
         | undefined;
 
     /**
@@ -833,11 +914,11 @@ export interface XTickConfiguration extends TickConfiguration {
     culling?:
         | boolean
         | {
-            /**
-             * The number of tick texts will be adjusted to less than this value.
-             */
-            max: number;
-        }
+              /**
+               * The number of tick texts will be adjusted to less than this value.
+               */
+              max: number;
+          }
         | undefined;
     /**
      * Fit x axis ticks.
@@ -861,21 +942,27 @@ export interface YTickConfiguration extends TickConfiguration {
 }
 
 export interface YTickConfigurationWithTime extends YTickConfiguration {
-    time?: {
-        type?: unknown | undefined;
-        interval?: unknown | undefined;
-    } | undefined;
+    time?:
+        | {
+              type?: unknown | undefined;
+              interval?: unknown | undefined;
+          }
+        | undefined;
 }
 
 export interface GridOptions {
     x?: AxisGridOptions | undefined;
     y?: AxisGridOptions | undefined;
-    focus?: {
-        show?: boolean | undefined;
-    } | undefined;
-    lines?: {
-        front?: boolean | undefined;
-    } | undefined;
+    focus?:
+        | {
+              show?: boolean | undefined;
+          }
+        | undefined;
+    lines?:
+        | {
+              front?: boolean | undefined;
+          }
+        | undefined;
 }
 
 export interface AxisGridOptions {
@@ -970,65 +1057,76 @@ export interface LegendOptions {
     /**
      * Change inset legend attributes. Ignored unless `legend.position` is `"inset"`.
      */
-    inset?: {
-        /**
-         * Decides the position of the legend.
-         * Defaults to `"top-left"`.
-         */
-        anchor?: "top-left" | "top-right" | "bottom-left" | "bottom-right" | undefined;
-        /**
-         * Set the horizontal position of the legend based on the anchor.
-         * Defaults to `10`.
-         */
-        x?: number | undefined;
-        /**
-         * Set the vertical position of the legend based on the anchor.
-         * Defaults to `0`.
-         */
-        y?: number | undefined;
-        /**
-         * Defines the max step the legend has (e.g. If `step=2` and legend has 3 items, the legend has 2 columns).
-         */
-        step?: number | undefined;
-    } | undefined;
+    inset?:
+        | {
+              /**
+               * Decides the position of the legend.
+               * Defaults to `"top-left"`.
+               */
+              anchor?:
+                  | "top-left"
+                  | "top-right"
+                  | "bottom-left"
+                  | "bottom-right"
+                  | undefined;
+              /**
+               * Set the horizontal position of the legend based on the anchor.
+               * Defaults to `10`.
+               */
+              x?: number | undefined;
+              /**
+               * Set the vertical position of the legend based on the anchor.
+               * Defaults to `0`.
+               */
+              y?: number | undefined;
+              /**
+               * Defines the max step the legend has (e.g. If `step=2` and legend has 3 items, the legend has 2 columns).
+               */
+              step?: number | undefined;
+          }
+        | undefined;
     /**
      * Padding between legend elements.
      * Defaults to `0`.
      */
     padding?: number | undefined;
 
-    item?: {
-        /**
-         * Set click event handler to the legend item.
-         * @param id The ID of the legend item.
-         */
-        onclick?(this: ChartInternal, id: string): void;
-        /**
-         * Set mouseover event handler to the legend item.
-         * @param id The ID of the legend item.
-         */
-        onmouseover?(this: ChartInternal, id: string): void;
-        /**
-         * Set mouseout event handler to the legend item.
-         * @param id The ID of the legend item.
-         */
-        onmouseout?(this: ChartInternal, id: string): void;
-        /**
-         * Tile settings for legend color display.
-         */
-        tile?: {
-            /**
-             * Tile width.
-             * Defaults to `10`.
-             */
-            width?: number | undefined;
-            /**
-             * Tile height.
-             * Defaults to `10`.
-             */
-            height?: number | undefined;
-        } | undefined;
-    } | undefined;
+    item?:
+        | {
+              /**
+               * Set click event handler to the legend item.
+               * @param id The ID of the legend item.
+               */
+              onclick?(this: ChartInternal, id: string): void;
+              /**
+               * Set mouseover event handler to the legend item.
+               * @param id The ID of the legend item.
+               */
+              onmouseover?(this: ChartInternal, id: string): void;
+              /**
+               * Set mouseout event handler to the legend item.
+               * @param id The ID of the legend item.
+               */
+              onmouseout?(this: ChartInternal, id: string): void;
+              /**
+               * Tile settings for legend color display.
+               */
+              tile?:
+                  | {
+                        /**
+                         * Tile width.
+                         * Defaults to `10`.
+                         */
+                        width?: number | undefined;
+                        /**
+                         * Tile height.
+                         * Defaults to `10`.
+                         */
+                        height?: number | undefined;
+                    }
+                  | undefined;
+          }
+        | undefined;
 
     /**
      * Defaults to `false`.
@@ -1047,25 +1145,37 @@ export interface TooltipOptions {
      * Defaults to `true`.
      */
     grouped?: boolean | undefined;
-    format?: {
-        /**
-         * Set format for the title of tooltip.
-         * @param x Value of the data point to show.
-         * @param index Index of the data point to show.
-         */
-        title?(x: Primitive, index: number): string;
-        /**
-         * Set format for the name of each data in tooltip.
-         * @param ratio Will be `undefined` if the chart is not donut/pie/gauge.
-         */
-        name?(name: string, ratio: number | undefined, id: string, index: number): string;
-        /**
-         * Set format for the value of each data in tooltip.
-         * @param ratio Will be `undefined` if the chart is not donut/pie/gauge.
-         * @returns If `undefined` returned, the row of that value will be skipped.
-         */
-        value?(value: Primitive, ratio: number | undefined, id: string, index: number): string | undefined;
-    } | undefined;
+    format?:
+        | {
+              /**
+               * Set format for the title of tooltip.
+               * @param x Value of the data point to show.
+               * @param index Index of the data point to show.
+               */
+              title?(x: Primitive, index: number): string;
+              /**
+               * Set format for the name of each data in tooltip.
+               * @param ratio Will be `undefined` if the chart is not donut/pie/gauge.
+               */
+              name?(
+                  name: string,
+                  ratio: number | undefined,
+                  id: string,
+                  index: number,
+              ): string;
+              /**
+               * Set format for the value of each data in tooltip.
+               * @param ratio Will be `undefined` if the chart is not donut/pie/gauge.
+               * @returns If `undefined` returned, the row of that value will be skipped.
+               */
+              value?(
+                  value: Primitive,
+                  ratio: number | undefined,
+                  id: string,
+                  index: number,
+              ): string | undefined;
+          }
+        | undefined;
     /** Show the tooltips based on the horizontal position of the mouse. */
     horizontal?: boolean | undefined;
     /**
@@ -1092,17 +1202,27 @@ export interface TooltipOptions {
     /**
      * Set tooltip values order.
      */
-    order?: "desc" | "asc" | unknown[] | ((data1: unknown, data2: unknown) => number) | null | undefined;
-    init?: {
-        show?: boolean | undefined;
-        x?: number | undefined;
-        position?: {
-            /** Defaults to `"0px"`. */
-            top?: string | undefined;
-            /** Defaults to `"50px"`. */
-            left?: string | undefined;
-        } | undefined;
-    } | undefined;
+    order?:
+        | "desc"
+        | "asc"
+        | unknown[]
+        | ((data1: unknown, data2: unknown) => number)
+        | null
+        | undefined;
+    init?:
+        | {
+              show?: boolean | undefined;
+              x?: number | undefined;
+              position?:
+                  | {
+                        /** Defaults to `"0px"`. */
+                        top?: string | undefined;
+                        /** Defaults to `"50px"`. */
+                        left?: string | undefined;
+                    }
+                  | undefined;
+          }
+        | undefined;
     // onshow?: () => void; // Not used
     // onhide?: () => void; // Not used
 }
@@ -1113,17 +1233,23 @@ export interface SubchartOptions {
      * Defaults to `false`.
      */
     show?: boolean | undefined;
-    size?: {
-        /**
-         * Change the height of the subchart.
-         */
-        height: number;
-    } | undefined;
-    axis?: {
-        x?: {
-            show: boolean;
-        } | undefined;
-    } | undefined;
+    size?:
+        | {
+              /**
+               * Change the height of the subchart.
+               */
+              height: number;
+          }
+        | undefined;
+    axis?:
+        | {
+              x?:
+                  | {
+                        show: boolean;
+                    }
+                  | undefined;
+          }
+        | undefined;
     /**
      * Set callback for brush event.
      * Specified function receives the current zoomed x domain.
@@ -1167,10 +1293,12 @@ export interface ZoomOptions {
     disableDefaultBehavior?: boolean | undefined;
 
     priveleged?: boolean | undefined;
-    x?: {
-        min?: number | undefined;
-        max?: number | undefined;
-    } | undefined;
+    x?:
+        | {
+              min?: number | undefined;
+              max?: number | undefined;
+          }
+        | undefined;
     /**
      * Change zoom extent.
      * **Experimental.**
@@ -1196,25 +1324,29 @@ export interface PointOptions {
      */
     sensitivity?: number | undefined;
 
-    focus?: {
-        expand: {
-            /**
-             * Whether to expand each point on focus.
-             */
-            enabled?: boolean | undefined;
-            /**
-             * The radius size of each point on focus.
-             */
-            r?: number | undefined;
-        };
-    } | undefined;
+    focus?:
+        | {
+              expand: {
+                  /**
+                   * Whether to expand each point on focus.
+                   */
+                  enabled?: boolean | undefined;
+                  /**
+                   * The radius size of each point on focus.
+                   */
+                  r?: number | undefined;
+              };
+          }
+        | undefined;
 
-    select?: {
-        /**
-         * The radius size of each point on selected.
-         */
-        r?: number | undefined;
-    } | undefined;
+    select?:
+        | {
+              /**
+               * The radius size of each point on selected.
+               */
+              r?: number | undefined;
+          }
+        | undefined;
 }
 
 export interface LineOptions {
@@ -1224,13 +1356,15 @@ export interface LineOptions {
      * If `false` set, the region of null data will not be connected and get empty.
      */
     connectNull?: boolean | undefined;
-    step?: {
-        /**
-         * Change step type for step chart.
-         * Defaults to `"step"`.
-         */
-        type: "step" | "step-before" | "step-after";
-    } | undefined;
+    step?:
+        | {
+              /**
+               * Change step type for step chart.
+               * Defaults to `"step"`.
+               */
+              type: "step" | "step-before" | "step-after";
+          }
+        | undefined;
 }
 
 export interface ShowHideOptions {
@@ -1289,14 +1423,19 @@ export interface ChartAPI {
          * (`{key1: [val1, val2, ...]; ...}`) or in the row form (`[{key1: val1; key2: val2}, ...]`).
          * If `data` or `url` are provided this will be ignored.
          */
-        json?: Record<string, PrimitiveArray> | Array<Record<string, Primitive>> | undefined;
+        json?:
+            | Record<string, PrimitiveArray>
+            | Array<Record<string, Primitive>>
+            | undefined;
         /** If json is provided and is in row form, these keys are used to pull the data from each row. */
-        keys?: {
-            /** This is the key for the x-value in each row. */
-            x?: string | undefined;
-            /** List of remaining keys (besides the x key) to pull data for. */
-            value: string[];
-        } | undefined;
+        keys?:
+            | {
+                  /** This is the key for the x-value in each row. */
+                  x?: string | undefined;
+                  /** List of remaining keys (besides the x key) to pull data for. */
+                  value: string[];
+              }
+            | undefined;
         /** A list of rows, where the first row is the column names and the remaining rows are data.  If `data`, `url`, or `json` are provided this will be ignored.  */
         rows?: PrimitiveArray[] | undefined;
         /** A list of columns, where the first element in each column is the ID and the remaining elements are data. If `data`, `url`, `json`, or 'rows' are provided, this will be ignored. */
@@ -1328,11 +1467,13 @@ export interface ChartAPI {
      * NOTE: If you call load API soon after/before unload, unload param of load should be used. Otherwise chart will not be rendered properly because of cancel of animation.
      */
     unload(
-        args?: ArrayOrString | {
-            ids?: ArrayOrString | undefined;
-            /** Called after data is loaded, but not after rendering. This is because rendering will finish after some transition and there is some time lag between loading and rendering. */
-            done?: (() => void) | undefined;
-        },
+        args?:
+            | ArrayOrString
+            | {
+                  ids?: ArrayOrString | undefined;
+                  /** Called after data is loaded, but not after rendering. This is because rendering will finish after some transition and there is some time lag between loading and rendering. */
+                  done?: (() => void) | undefined;
+              },
     ): void;
     /**
      * Flow data to the chart. By this API, you can append new data points to the chart.
@@ -1341,14 +1482,19 @@ export interface ChartAPI {
      */
     flow(args: {
         /** An object to convert to data to load. Can be in the column form `{key1: [val1, val2, ...]; ...}` or in the row form `[{key1: val1; key2: val2}, ...]`. */
-        json?: Record<string, PrimitiveArray> | Array<Record<string, Primitive>> | undefined;
+        json?:
+            | Record<string, PrimitiveArray>
+            | Array<Record<string, Primitive>>
+            | undefined;
         /** If json is provided and is in row form, these keys are used to pull the data from each row. */
-        keys?: {
-            /** This is the key for the x-value in each row. */
-            x?: string | undefined;
-            /** List of remaining keys (besides the x key) to pull data for. */
-            value: string[];
-        } | undefined;
+        keys?:
+            | {
+                  /** This is the key for the x-value in each row. */
+                  x?: string | undefined;
+                  /** List of remaining keys (besides the x key) to pull data for. */
+                  value: string[];
+              }
+            | undefined;
         /** A list of rows, where the first row is the column names and the remaining rows are data. If this is provided and `json` is provided, this is ignored. */
         rows?: [string[], ...PrimitiveArray[]] | undefined;
         /** A list of columns, where the first element in each column is the ID and the remaining elements are data. If `json` or `rows` are provided, this will be ignored. */
@@ -1454,7 +1600,9 @@ export interface ChartAPI {
          */
         colors(colors?: {
             [key: string]: string | d3.RGBColor | d3.HSLColor;
-        }): { [key: string]: string };
+        }): {
+            [key: string]: string;
+        };
         /**
          * Get and set axes of the data loaded in the chart.
          * @param axes If this argument is given, the axes of data will be updated. This is a map of data IDs to their new axes' names.
@@ -1493,9 +1641,11 @@ export interface ChartAPI {
      * @returns A map of data IDs to their x IDs after running this function.
      */
     x(
-        x?: PrimitiveArray | {
-            [key: string]: PrimitiveArray;
-        },
+        x?:
+            | PrimitiveArray
+            | {
+                  [key: string]: PrimitiveArray;
+              },
     ): { [key: string]: PrimitiveArray };
 
     /**
@@ -1503,9 +1653,9 @@ export interface ChartAPI {
      * @param x If given, x values of every target will be updated.
      * @returns A map of data IDs to their x IDs after running this function.
      */
-    xs(xs?: {
+    xs(xs?: { [key: string]: PrimitiveArray }): {
         [key: string]: PrimitiveArray;
-    }): { [key: string]: PrimitiveArray };
+    };
 
     axis: {
         (): void;
@@ -1634,7 +1784,10 @@ export interface ChartAPI {
      * Resize the chart. If no size is specified it will resize to fit.
      * @param size This argument should include width and height in pixels.
      */
-    resize(size?: { width?: number | undefined; height?: number | undefined }): void;
+    resize(size?: {
+        width?: number | undefined;
+        height?: number | undefined;
+    }): void;
 
     /**
      * Force to redraw.
@@ -1651,9 +1804,11 @@ export interface ChartAPI {
         (): void;
         show(args: {
             mouse: unknown;
-            data?: {
-                targets: DataSeries[];
-            } | undefined;
+            data?:
+                | {
+                      targets: DataSeries[];
+                  }
+                | undefined;
             id?: string | undefined;
             x?: number | undefined;
         }): void;
@@ -1703,7 +1858,9 @@ export interface GridOperations {
      * Add grid lines. This API adds new grid lines instead of replacing.
      * @param grids New grid lines will be added. It's possible to give an Object if only one line will be added.
      */
-    add(grids: ArrayOrSingle<GridLineOptionsWithAxis>): GridLineOptionsWithAxis[];
+    add(
+        grids: ArrayOrSingle<GridLineOptionsWithAxis>,
+    ): GridLineOptionsWithAxis[];
     /**
      * Remove grid lines.
      * @param params Specifies which grid line to remove. If not given, all of x/y grid lines will be removed. If empty, none will be removed

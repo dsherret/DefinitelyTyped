@@ -17,18 +17,8 @@ declare namespace Mongo {
                     options: CollectionHooks.ModifierOptions,
                 ) => void,
             ): void;
-            insert(
-                hook: (
-                    userId: string,
-                    doc: T,
-                ) => void,
-            ): void;
-            remove(
-                hook: (
-                    userId: string,
-                    doc: T,
-                ) => void,
-            ): void;
+            insert(hook: (userId: string, doc: T) => void): void;
+            remove(hook: (userId: string, doc: T) => void): void;
             update(
                 hook: (
                     userId: string,
@@ -65,18 +55,8 @@ declare namespace Mongo {
                     doc: T,
                 ) => void,
             ): void;
-            insert(
-                hook: (
-                    userId: string,
-                    doc: T,
-                ) => void,
-            ): void;
-            remove(
-                hook: (
-                    userId: string,
-                    doc: T,
-                ) => void,
-            ): void;
+            insert(hook: (userId: string, doc: T) => void): void;
+            remove(hook: (userId: string, doc: T) => void): void;
             update(
                 hook: (
                     userId: string,
@@ -98,25 +78,28 @@ declare namespace Mongo {
             ): void;
         };
         direct: {
-            find(selector?: Mongo.Selector | Mongo.ObjectID | string, options?: {
-                sort?: Mongo.SortSpecifier | undefined;
-                skip?: number | undefined;
-                limit?: number | undefined;
-                fields?: Mongo.FieldSpecifier | undefined;
-                reactive?: boolean | undefined;
-                transform?(doc: any): void;
-            }): Mongo.Cursor<T>;
-            findOne(selector?: Mongo.Selector | Mongo.ObjectID | string, options?: {
-                sort?: Mongo.SortSpecifier | undefined;
-                skip?: number | undefined;
-                fields?: Mongo.FieldSpecifier | undefined;
-                reactive?: boolean | undefined;
-                transform?(doc: any): void;
-            }): T;
-            insert(
-                doc: T,
-                callback?: () => void,
-            ): string;
+            find(
+                selector?: Mongo.Selector | Mongo.ObjectID | string,
+                options?: {
+                    sort?: Mongo.SortSpecifier | undefined;
+                    skip?: number | undefined;
+                    limit?: number | undefined;
+                    fields?: Mongo.FieldSpecifier | undefined;
+                    reactive?: boolean | undefined;
+                    transform?(doc: any): void;
+                },
+            ): Mongo.Cursor<T>;
+            findOne(
+                selector?: Mongo.Selector | Mongo.ObjectID | string,
+                options?: {
+                    sort?: Mongo.SortSpecifier | undefined;
+                    skip?: number | undefined;
+                    fields?: Mongo.FieldSpecifier | undefined;
+                    reactive?: boolean | undefined;
+                    transform?(doc: any): void;
+                },
+            ): T;
+            insert(doc: T, callback?: () => void): string;
             remove(
                 selector: Mongo.Selector | Mongo.ObjectID | string,
                 callback?: () => void,
@@ -137,7 +120,10 @@ declare namespace Mongo {
                     multi?: boolean | undefined;
                 },
                 callback?: () => void,
-            ): { numberAffected?: number | undefined; insertedId?: string | undefined };
+            ): {
+                numberAffected?: number | undefined;
+                insertedId?: string | undefined;
+            };
         };
         hookOptions: CollectionHooks.GlobalHookOptions;
     }

@@ -11,7 +11,10 @@ function performChange(content: string): string {
 
 change(performChange); // $ExpectType MapStream
 
-function performChangeAsync(content: string, done: (err: any, content: string) => any): void {
+function performChangeAsync(
+    content: string,
+    done: (err: any, content: string) => any,
+): void {
     content.replace(/foo/g, "FOO");
     done(null, content);
 }

@@ -19,6 +19,8 @@ declare namespace directTransport {
     }
 }
 
-declare function directTransport(options: directTransport.DirectOptions): nodemailer.Transport;
+declare function directTransport(
+    options: directTransport.DirectOptions,
+): nodemailer.Transport;
 
 export = directTransport;

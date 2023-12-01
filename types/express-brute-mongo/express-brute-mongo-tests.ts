@@ -4,7 +4,7 @@ import MongoStore = require("express-brute-mongo");
 import mongodb = require("mongodb");
 const MongoClient = mongodb.MongoClient;
 
-const store = new MongoStore(ready => {
+const store = new MongoStore((ready) => {
     MongoClient.connect("mongodb://127.0.0.1:27017/test", (err, db) => {
         if (err) {
             throw err;

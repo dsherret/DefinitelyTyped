@@ -7,7 +7,10 @@ export type TableProps = {
     disableStyles?: boolean | undefined;
     tableBodyClassName?: string | undefined;
     tableBodyProps?: any;
-    tableBodyRowProps?: { [x: string]: any } | ((rowData: string[], index: number) => void) | undefined;
+    tableBodyRowProps?:
+        | { [x: string]: any }
+        | ((rowData: string[], index: number) => void)
+        | undefined;
     tableCellClassName?: string | undefined;
     tableHeaderClassName?: string | undefined;
     tableHeaderProps?: any;

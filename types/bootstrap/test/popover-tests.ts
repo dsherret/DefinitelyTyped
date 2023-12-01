@@ -11,7 +11,7 @@ new Popover(element, {
     },
 });
 new Popover(element, {
-    popperConfig: defaultBsPopperConfig => defaultBsPopperConfig,
+    popperConfig: (defaultBsPopperConfig) => defaultBsPopperConfig,
 });
 
 // $ExpectType Popover | null
@@ -58,23 +58,23 @@ Popover.DefaultType.allowList; // $ExpectType string
 Popover.DefaultType.offset; // $ExpectType string
 Popover.DefaultType.popperConfig; // $ExpectType string
 
-element.addEventListener(Popover.Events.show, event => {
+element.addEventListener(Popover.Events.show, (event) => {
     // do something…
 });
 
-element.addEventListener(Popover.Events.shown, event => {
+element.addEventListener(Popover.Events.shown, (event) => {
     // do something…
 });
 
-element.addEventListener(Popover.Events.hide, event => {
+element.addEventListener(Popover.Events.hide, (event) => {
     // do something…
 });
 
-element.addEventListener(Popover.Events.hidden, event => {
+element.addEventListener(Popover.Events.hidden, (event) => {
     // do something…
 });
 
-element.addEventListener(Popover.Events.inserted, event => {
+element.addEventListener(Popover.Events.inserted, (event) => {
     // do something…
 });
 

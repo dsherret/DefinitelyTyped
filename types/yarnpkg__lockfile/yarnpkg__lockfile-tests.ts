@@ -12,7 +12,8 @@ if (parseResult.type === "merge" || parseResult.type === "success") {
         key.toLowerCase();
         value.version.toLowerCase();
         const _isResolved = typeof value.resolved === "string";
-        const _hasDependencies = Object.keys(value.dependencies ?? {}).length > 0;
+        const _hasDependencies =
+            Object.keys(value.dependencies ?? {}).length > 0;
 
         testFirstLevelDependency(value);
     });

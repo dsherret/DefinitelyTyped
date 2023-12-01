@@ -3,6 +3,7 @@ Types for writing AWS Synthetic Canaries using the syn-nodejs-puppeteer runtime.
 ### Structure
 
 The syn-nodejs-puppeteer runtime has an unusual structure - files are in node_modules with no package!
+
 ````
 nodejs/node_modules/Synthetics.js
 nodejs/node_modules/SyntheticsLogger.js
@@ -13,3 +14,4 @@ Because of this, every type definition file declares it's own module, similar to
 
 If you choose to define "types" in tsconfig, it must include this package for it to work.
 
+````

@@ -12,10 +12,9 @@ addParameters({
 });
 
 // Test `addWithJSX` function
-storiesOf("Component", module).addWithJSX(
-    "simple info",
-    () => <div>Click the "?" mark at top-right to view the info.</div>,
-);
+storiesOf("Component", module).addWithJSX("simple info", () => (
+    <div>Click the "?" mark at top-right to view the info.</div>
+));
 
 storiesOf("Component with options", module).addWithJSX(
     "simple info",

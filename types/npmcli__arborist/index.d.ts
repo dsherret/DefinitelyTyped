@@ -21,11 +21,21 @@ declare class Arborist extends EventEmitter {
     idealTree: Arborist.Node | null;
     virtualTree?: Arborist.Node | null;
 
-    audit(options: Arborist.BuildIdealTreeOptions & { fix: true }): Promise<Arborist.Node>;
-    audit(options?: Arborist.BuildIdealTreeOptions & { fix?: false }): Promise<Arborist.AuditReport>;
-    audit(options: Arborist.BuildIdealTreeOptions & { fix?: boolean }): Promise<Arborist.Node | Arborist.AuditReport>;
-    buildIdealTree(options?: Arborist.BuildIdealTreeOptions): Promise<Arborist.Node>;
-    dedupe(options?: Omit<Arborist.ReifyOptions, "preferDedupe" | "names">): Promise<Arborist.Node>;
+    audit(
+        options: Arborist.BuildIdealTreeOptions & { fix: true },
+    ): Promise<Arborist.Node>;
+    audit(
+        options?: Arborist.BuildIdealTreeOptions & { fix?: false },
+    ): Promise<Arborist.AuditReport>;
+    audit(
+        options: Arborist.BuildIdealTreeOptions & { fix?: boolean },
+    ): Promise<Arborist.Node | Arborist.AuditReport>;
+    buildIdealTree(
+        options?: Arborist.BuildIdealTreeOptions,
+    ): Promise<Arborist.Node>;
+    dedupe(
+        options?: Omit<Arborist.ReifyOptions, "preferDedupe" | "names">,
+    ): Promise<Arborist.Node>;
     loadActual(options?: Arborist.Options): Promise<Arborist.Node>;
     loadVirtual(options?: Arborist.Options): Promise<Arborist.Node>;
     reify(options?: Arborist.ReifyOptions): Promise<Arborist.Node>;
@@ -33,7 +43,9 @@ declare class Arborist extends EventEmitter {
 
 declare namespace Arborist {
     const Arborist: Arborist;
-    interface Options extends PacoteOptions, Partial<Pick<import("cacache").get.Options, "memoize">> {
+    interface Options
+        extends PacoteOptions,
+            Partial<Pick<import("cacache").get.Options, "memoize">> {
         path?: string;
         nodeVersion?: string;
         lockfileVersion?: number | null;
@@ -387,14 +399,17 @@ declare namespace Arborist {
         commit(): PackageLock;
         toJSON(): PackageLock;
         toString(options?: ToStringOptions): string;
-        save(options?: ToStringOptions): Promise<[undefined, undefined | false]>;
+        save(
+            options?: ToStringOptions,
+        ): Promise<[undefined, undefined | false]>;
     }
     interface ExplicitRequest {
         from: Node;
         name: string;
         action?: "DELETE";
     }
-    interface Inventory extends Omit<Map<string, Node>, "delete" | "set" | "has"> {
+    interface Inventory
+        extends Omit<Map<string, Node>, "delete" | "set" | "has"> {
         get primaryKey(): string;
         get indexes(): string[];
         filter(fn: (node: Node) => boolean): Generator<Node, void>;

@@ -86,9 +86,16 @@ export namespace si {
         updateBaseUrl(url: string): void;
     };
 
-    function search(term: string | SearchOptionsTerm, n?: number, opts?: SearchOptions): Promise<Torrent[]>;
+    function search(
+        term: string | SearchOptionsTerm,
+        n?: number,
+        opts?: SearchOptions,
+    ): Promise<Torrent[]>;
 
-    function searchAll(term: string | SearchOptionsTerm, opts?: SearchOptions): Promise<Torrent[]>;
+    function searchAll(
+        term: string | SearchOptionsTerm,
+        opts?: SearchOptions,
+    ): Promise<Torrent[]>;
 
     function searchPage(
         term: string | SearchOptionsTerm,
@@ -104,7 +111,11 @@ export namespace si {
         opts?: SearchOptions,
     ): Promise<Torrent[]>;
 
-    function searchAllByUser(user: string | SearchOptionsTerm, term: string, opts?: SearchOptions): Promise<Torrent[]>;
+    function searchAllByUser(
+        user: string | SearchOptionsTerm,
+        term: string,
+        opts?: SearchOptions,
+    ): Promise<Torrent[]>;
 
     function searchByUserAndByPage(
         user: string | SearchOptionsTerm,
@@ -274,9 +285,16 @@ export namespace pantsu {
         password: string;
     }
 
-    function search(term: string | SearchOptionsTerm, n?: number, opts?: SearchOptions): Promise<Torrent[]>;
+    function search(
+        term: string | SearchOptionsTerm,
+        n?: number,
+        opts?: SearchOptions,
+    ): Promise<Torrent[]>;
 
-    function searchAll(term: string | SearchOptionsTerm, opts?: SearchOptions): Promise<Torrent[]>;
+    function searchAll(
+        term: string | SearchOptionsTerm,
+        opts?: SearchOptions,
+    ): Promise<Torrent[]>;
 
     function infoRequest(id: number): Promise<Torrent>;
 

@@ -21,12 +21,10 @@ const view = new itowns.GlobeView(viewerDiv, placement);
 // defined as a plain js object. See `Layer` documentation for more info.
 itowns.Fetcher.json("layers/JSONLayers/Ortho.json").then((json) => {
     const config = {
-        ...json as Ortho,
+        ...(json as Ortho),
         source: new itowns.WMTSSource((json as Ortho).source),
     };
-    view.addLayer(
-        new itowns.ColorLayer(config.id, config),
-    );
+    view.addLayer(new itowns.ColorLayer(config.id, config));
 });
 
 // Add two elevaion layers, each with a different level of detail. Here again, each layer's properties are
@@ -38,8 +36,12 @@ function addElevationLayerFromConfig(json: IgnMNTHighres | WorldDTM) {
     };
     view.addLayer(new itowns.ElevationLayer(config.id, config));
 }
-itowns.Fetcher.json("layers/JSONLayers/IGN_MNT_HIGHRES.json").then(addElevationLayerFromConfig);
-itowns.Fetcher.json("layers/JSONLayers/WORLD_DTM.json").then(addElevationLayerFromConfig);
+itowns.Fetcher.json("layers/JSONLayers/IGN_MNT_HIGHRES.json").then(
+    addElevationLayerFromConfig,
+);
+itowns.Fetcher.json("layers/JSONLayers/WORLD_DTM.json").then(
+    addElevationLayerFromConfig,
+);
 
 // ---------- DISPLAY GEOID HEIGHT DATA : ----------
 
@@ -49,8 +51,9 @@ itowns.Fetcher.json("layers/JSONLayers/WORLD_DTM.json").then(addElevationLayerFr
 // Define the source of a geoid height grid, which serves as a conversion grid between altitudes and
 // ellipsoid heights.
 const geoidSource = new itowns.FileSource({
-    url: "https://raw.githubusercontent.com/iTowns/iTowns2-sample-data/master/altitude-conversion-grids/"
-        + "RAF20_float.gtx",
+    url:
+        "https://raw.githubusercontent.com/iTowns/iTowns2-sample-data/master/altitude-conversion-grids/" +
+        "RAF20_float.gtx",
     crs: "EPSG:4326",
     format: "application/gtx",
 });

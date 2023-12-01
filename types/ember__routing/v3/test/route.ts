@@ -81,7 +81,11 @@ Route.extend({
 });
 
 Route.extend({
-    resetController(controller: Controller, isExiting: boolean, transition: Transition) {
+    resetController(
+        controller: Controller,
+        isExiting: boolean,
+        transition: Transition,
+    ) {
         if (isExiting) {
             //   controller.set('page', 1);
             transition.abort();
@@ -137,7 +141,9 @@ class TransitionToExamples extends Route {
 
     transitionToIdWithQP() {
         // $ExpectType Transition<unknown>
-        this.transitionTo("blog-post", 1, { queryParams: { includeComments: true } });
+        this.transitionTo("blog-post", 1, {
+            queryParams: { includeComments: true },
+        });
     }
 
     transitionToIds() {
@@ -147,7 +153,9 @@ class TransitionToExamples extends Route {
 
     transitionToIdsWithQP() {
         // $ExpectType Transition<unknown>
-        this.transitionTo("blog-comment", 1, "13", { queryParams: { includePost: true } });
+        this.transitionTo("blog-comment", 1, "13", {
+            queryParams: { includePost: true },
+        });
     }
 
     buildRouteInfoMetadata() {
@@ -199,7 +207,9 @@ class TypedRoute extends Route<ExampleModel> {
         if (params.usePromise) {
             return { id: "123" };
         } else {
-            const promise: PromiseLike<ExampleModel> = new Promise((resolve) => resolve({ id: "123" }));
+            const promise: PromiseLike<ExampleModel> = new Promise((resolve) =>
+                resolve({ id: "123" }),
+            );
             return promise;
         }
     }
@@ -220,7 +230,11 @@ class TypedRoute extends Route<ExampleModel> {
         }
     }
 
-    setupController(controller: Controller, model: ExampleModel, transition: Transition) {
+    setupController(
+        controller: Controller,
+        model: ExampleModel,
+        transition: Transition,
+    ) {
         controller.set("model", model);
     }
 
@@ -259,7 +273,11 @@ class InvalidTypedRoute extends Route<ExampleModel> {
     }
 
     // @ts-expect-error
-    setupController(controller: Controller, model: InvalidModel, transition: Transition) {
+    setupController(
+        controller: Controller,
+        model: InvalidModel,
+        transition: Transition,
+    ) {
         controller.set("model", model);
     }
 

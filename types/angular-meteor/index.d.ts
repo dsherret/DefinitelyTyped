@@ -23,7 +23,10 @@ declare module "angular" {
              * @param scopeVariableName - The name of the scope's variable to bind to
              * @param [objectEquality=false] - Watch the object equality using angular.equals instead of comparing for reference equality, deeper watch but also slower
              */
-            getReactively(scopeVariableName: string, objectEquality?: boolean): ReactiveResult;
+            getReactively(
+                scopeVariableName: string,
+                objectEquality?: boolean,
+            ): ReactiveResult;
 
             /**
              * A service which is a wrapper for Meteor.subscribe. It subscribes to a Meteor.publish method in the client and returns a AngularJS promise when ready.
@@ -34,7 +37,10 @@ declare module "angular" {
              *
              * @return The promise solved successfully when subscription is ready. The success promise holds the subscription handle.
              */
-            subscribe(name: string, ...publisherArguments: any[]): angular.IPromise<Meteor.SubscriptionHandle>;
+            subscribe(
+                name: string,
+                ...publisherArguments: any[]
+            ): angular.IPromise<Meteor.SubscriptionHandle>;
 
             /**
              * The helpers method is part of the ReactiveContext, and available on every context and $scope.
@@ -46,7 +52,9 @@ declare module "angular" {
              * @param definitions - Object containing `name` => `function` definition, where each name is a string and each function is the helper function. Should return a [MongoDB Cursor](http://docs.meteor.com/#/full/mongo_cursor)
              * @return This method returns this, which the the reactive context, in order to provide the ability to chain the logic.
              */
-            helpers(definitions: { [helperName: string]: () => Mongo.Cursor<any> }): IScope;
+            helpers(definitions: {
+                [helperName: string]: () => Mongo.Cursor<any>;
+            }): IScope;
 
             /**
              * This method is a wrapper of Tracker.autorun and shares exactly the same API.
@@ -72,7 +80,11 @@ declare module "angular" {
              *                              - However if set to false, changes in the client won't be automatically propagated back to the Meteor collection.
              */
             collection<T>(
-                collection: Mongo.Collection<T> | ReactiveResult | Function | (() => T),
+                collection:
+                    | Mongo.Collection<T>
+                    | ReactiveResult
+                    | Function
+                    | (() => T),
                 autoClientSave?: boolean,
             ): AngularMeteorCollection<T>;
 
@@ -86,7 +98,11 @@ declare module "angular" {
              * @param [updateCollection] - A collection object which will be used for updates (insert, update, delete).
              */
             collection<T, U>(
-                collection: Mongo.Collection<T> | ReactiveResult | Function | (() => T),
+                collection:
+                    | Mongo.Collection<T>
+                    | ReactiveResult
+                    | Function
+                    | (() => T),
                 autoClientSave: boolean,
                 updateCollection: Mongo.Collection<U>,
             ): AngularMeteorCollection2<T, U>;
@@ -116,7 +132,10 @@ declare module "angular" {
              *
              * @return The promise solved successfully when subscription is ready. The success promise holds the subscription handle.
              */
-            subscribe(name: string, ...publisherArguments: any[]): angular.IPromise<Meteor.SubscriptionHandle>;
+            subscribe(
+                name: string,
+                ...publisherArguments: any[]
+            ): angular.IPromise<Meteor.SubscriptionHandle>;
 
             /**
              * A service service which wraps up Meteor.methods with AngularJS promises.
@@ -126,7 +145,10 @@ declare module "angular" {
              *
              * @return The promise solves successfully with the return value of the method or return reject with the error from the method.
              */
-            call<T>(name: string, ...methodArguments: any[]): angular.IPromise<T>;
+            call<T>(
+                name: string,
+                ...methodArguments: any[]
+            ): angular.IPromise<T>;
 
             // User Authentication BEGIN ->
 
@@ -156,7 +178,9 @@ declare module "angular" {
              * If it returns a string, the promise will be rejected using said string as the reason.
              * Any other return (false, null, undefined) will be rejected with the default "FORBIDDEN" reason.
              */
-            requireValidUser(validatorFn: (user: Meteor.User) => boolean | string): angular.IPromise<Meteor.User>;
+            requireValidUser(
+                validatorFn: (user: Meteor.User) => boolean | string,
+            ): angular.IPromise<Meteor.User>;
 
             /**
              * Log the user in with a password.
@@ -165,7 +189,11 @@ declare module "angular" {
              * @param password - The user's password.
              */
             loginWithPassword(
-                user: string | { email: string } | { username: string } | { id: string },
+                user:
+                    | string
+                    | { email: string }
+                    | { username: string }
+                    | { id: string },
                 password: string,
             ): angular.IPromise<void>;
 
@@ -177,14 +205,12 @@ declare module "angular" {
              * @param options.password - The user's password. This is not sent in plain text over the wire.
              * @param options.profile - The user's profile, typically including the name field.
              */
-            createUser(
-                options: {
-                    username?: string | undefined;
-                    email?: string | undefined;
-                    password: string;
-                    profile?: Object | undefined;
-                },
-            ): angular.IPromise<void>;
+            createUser(options: {
+                username?: string | undefined;
+                email?: string | undefined;
+                password: string;
+                profile?: Object | undefined;
+            }): angular.IPromise<void>;
 
             /**
              * Change the current user's password. Must be logged in.
@@ -192,7 +218,10 @@ declare module "angular" {
              * @param oldPassword - The user's current password. This is not sent in plain text over the wire.
              * @param newPassword - A new password for the user. This is not sent in plain text over the wire.
              */
-            changePassword(oldPassword: string, newPassword: string): angular.IPromise<void>;
+            changePassword(
+                oldPassword: string,
+                newPassword: string,
+            ): angular.IPromise<void>;
 
             /**
              * Request a forgot password email.
@@ -207,7 +236,10 @@ declare module "angular" {
              * @param token - The token retrieved from the reset password URL.
              * @param newPassword - A new password for the user. This is not sent in plain text over the wire.
              */
-            resetPassword(token: string, newPassword: string): angular.IPromise<void>;
+            resetPassword(
+                token: string,
+                newPassword: string,
+            ): angular.IPromise<void>;
 
             /**
              * Marks the user's email address as verified. Logs the user in afterwards.
@@ -267,9 +299,11 @@ declare module "angular" {
              *
              * @return The promise solved successfully when the picture is taken with the data as a parameter or rejected with an error as a parameter in case of error.
              */
-            getPicture(
-                options?: { width?: number | undefined; height?: number | undefined; quality?: number | undefined },
-            ): angular.IPromise<any>;
+            getPicture(options?: {
+                width?: number | undefined;
+                height?: number | undefined;
+                quality?: number | undefined;
+            }): angular.IPromise<any>;
 
             // <- $meteorCamera END
 
@@ -331,7 +365,8 @@ declare module "angular" {
         /**
          * An object that connects a Meteor Collection to an AngularJS scope variable
          */
-        interface AngularMeteorCollection<T> extends AngularMeteorCollection2<T, T> {}
+        interface AngularMeteorCollection<T>
+            extends AngularMeteorCollection2<T, T> {}
 
         /**
          * An object that connects a Meteor Collection to an AngularJS scope variable,
@@ -364,7 +399,9 @@ declare module "angular" {
         }
 
         interface ILoginWithExternalService {
-            (options: Meteor.LoginWithExternalServiceOptions): angular.IPromise<void>;
+            (
+                options: Meteor.LoginWithExternalServiceOptions,
+            ): angular.IPromise<void>;
         }
 
         interface ReactiveResult {}

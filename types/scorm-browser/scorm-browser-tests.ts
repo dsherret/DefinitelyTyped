@@ -65,12 +65,20 @@ if (window.API) {
 
     const coreChildren: string = window.API.LMSGetValue("cmi.core._children");
     const coreStudentID: string = window.API.LMSGetValue("cmi.core.student_id");
-    const coreStudentName: string = window.API.LMSGetValue("cmi.core.student_name");
-    const coreSCOLocation: string = window.API.LMSGetValue("cmi.core.lesson_location");
+    const coreStudentName: string = window.API.LMSGetValue(
+        "cmi.core.student_name",
+    );
+    const coreSCOLocation: string = window.API.LMSGetValue(
+        "cmi.core.lesson_location",
+    );
     const creditFlag: string = window.API.LMSGetValue("cmi.core.credit");
-    const lessonStatus: string = window.API.LMSGetValue("cmi.core.lesson_status");
+    const lessonStatus: string = window.API.LMSGetValue(
+        "cmi.core.lesson_status",
+    );
     const entryStatus: string = window.API.LMSGetValue("cmi.core.entry");
-    const scoreChildren: string = window.API.LMSGetValue("cmi.core.score_children");
+    const scoreChildren: string = window.API.LMSGetValue(
+        "cmi.core.score_children",
+    );
     const scoreRaw: string = window.API.LMSGetValue("cmi.core.score.raw");
     const scoreMax: string = window.API.LMSGetValue("cmi.core.score.max");
     const scoreMin: string = window.API.LMSGetValue("cmi.core.score.min");
@@ -79,26 +87,62 @@ if (window.API) {
     const suspendData: string = window.API.LMSGetValue("cmi.suspend_data");
     const launchData: string = window.API.LMSGetValue("cmi.launch_data");
     const comments: string = window.API.LMSGetValue("cmi.comments");
-    const commentsFromLMS: string = window.API.LMSGetValue("cmi.comments_from_lms");
-    const objChildren: string = window.API.LMSGetValue("cmi.objectives._children");
+    const commentsFromLMS: string = window.API.LMSGetValue(
+        "cmi.comments_from_lms",
+    );
+    const objChildren: string = window.API.LMSGetValue(
+        "cmi.objectives._children",
+    );
     const totalObj: string = window.API.LMSGetValue("cmi.objectives._count");
     const objID: string = window.API.LMSGetValue(`cmi.objectives.${0}.id`);
-    const objScoreChildren: string = window.API.LMSGetValue(`cmi.objectives.${(1).toString()}.score._children`);
-    const objScoreRaw: string = window.API.LMSGetValue(`cmi.objectives.${2}.score.raw`);
-    const objScoreMax: string = window.API.LMSGetValue(`cmi.objectives.${3}.score.max`);
-    const objStatus: string = window.API.LMSGetValue(`cmi.objectives.${5}.status`);
-    const studentDataChildren: string = window.API.LMSGetValue("cmi.student_data._children");
-    const masteryScore: string = window.API.LMSGetValue("cmi.student_data.mastery_score");
-    const maxTimeAllowed: string = window.API.LMSGetValue("cmi.student_data.max_time_allowed");
-    const timeLimitAction: string = window.API.LMSGetValue("cmi.student_data.time_limit_action");
-    const studentPreferenceChildren: string = window.API.LMSGetValue("cmi.student_preference._children");
-    const audioValue: string = window.API.LMSGetValue("cmi.student_preference.audio");
-    const languageValue: string = window.API.LMSGetValue("cmi.student_preference.language");
-    const speedValue: string = window.API.LMSGetValue("cmi.student_preference.speed");
-    const textValue: string = window.API.LMSGetValue("cmi.student_preference.text");
-    const interactionsChildren: string = window.API.LMSGetValue("cmi.interactions._children");
-    const interactionsCount: string = window.API.LMSGetValue("cmi.interactions._count");
-    const interactionObjectivesCount: string = window.API.LMSGetValue(`cmi.interactions.${0}.objectives._count`);
+    const objScoreChildren: string = window.API.LMSGetValue(
+        `cmi.objectives.${(1).toString()}.score._children`,
+    );
+    const objScoreRaw: string = window.API.LMSGetValue(
+        `cmi.objectives.${2}.score.raw`,
+    );
+    const objScoreMax: string = window.API.LMSGetValue(
+        `cmi.objectives.${3}.score.max`,
+    );
+    const objStatus: string = window.API.LMSGetValue(
+        `cmi.objectives.${5}.status`,
+    );
+    const studentDataChildren: string = window.API.LMSGetValue(
+        "cmi.student_data._children",
+    );
+    const masteryScore: string = window.API.LMSGetValue(
+        "cmi.student_data.mastery_score",
+    );
+    const maxTimeAllowed: string = window.API.LMSGetValue(
+        "cmi.student_data.max_time_allowed",
+    );
+    const timeLimitAction: string = window.API.LMSGetValue(
+        "cmi.student_data.time_limit_action",
+    );
+    const studentPreferenceChildren: string = window.API.LMSGetValue(
+        "cmi.student_preference._children",
+    );
+    const audioValue: string = window.API.LMSGetValue(
+        "cmi.student_preference.audio",
+    );
+    const languageValue: string = window.API.LMSGetValue(
+        "cmi.student_preference.language",
+    );
+    const speedValue: string = window.API.LMSGetValue(
+        "cmi.student_preference.speed",
+    );
+    const textValue: string = window.API.LMSGetValue(
+        "cmi.student_preference.text",
+    );
+    const interactionsChildren: string = window.API.LMSGetValue(
+        "cmi.interactions._children",
+    );
+    const interactionsCount: string = window.API.LMSGetValue(
+        "cmi.interactions._count",
+    );
+    const interactionObjectivesCount: string = window.API.LMSGetValue(
+        `cmi.interactions.${0}.objectives._count`,
+    );
     const interactionCorrectResponsesCount: string = window.API.LMSGetValue(
         `cmi.interactions.${0}.correct_responses._count`,
     );
@@ -122,10 +166,16 @@ if (window.API) {
     window.API.LMSSetValue("cmi.student_preference.speed", "-100");
     window.API.LMSSetValue("cmi.student_preference.text", (1).toString());
     window.API.LMSSetValue(`cmi.interactions.${0}.id`, "t-010-010");
-    window.API.LMSSetValue(`cmi.interactions.${0}.objectives.${0}.id`, "objective-0");
+    window.API.LMSSetValue(
+        `cmi.interactions.${0}.objectives.${0}.id`,
+        "objective-0",
+    );
     window.API.LMSSetValue(`cmi.interactions.${0}.time`, "12:34:56.00");
     window.API.LMSSetValue(`cmi.interactions.${0}.type`, "true-false");
-    window.API.LMSSetValue(`cmi.interactions.${0}.correct_responses.${0}.pattern`, "t");
+    window.API.LMSSetValue(
+        `cmi.interactions.${0}.correct_responses.${0}.pattern`,
+        "t",
+    );
     window.API.LMSSetValue(`cmi.interactions.${0}.weighting`, "1");
     window.API.LMSSetValue(`cmi.interactions.${0}.student_response`, "f");
     window.API.LMSSetValue(`cmi.interactions.${0}.result`, "wrong");

@@ -22,6 +22,7 @@ interface ProphotoDefinitionMixin {
     };
 }
 
-declare const definition: Omit<typeof rgb, keyof ProphotoDefinitionMixin> & ProphotoDefinitionMixin;
+declare const definition: Omit<typeof rgb, keyof ProphotoDefinitionMixin> &
+    ProphotoDefinitionMixin;
 
 export default definition;

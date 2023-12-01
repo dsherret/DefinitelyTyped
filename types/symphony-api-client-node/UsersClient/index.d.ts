@@ -41,9 +41,15 @@ export function getUserFromEmail(email: string, local?: boolean): Promise<User>;
 
 export function getUserFromUsername(username: string): Promise<User>;
 
-export function getUsersFromEmailList(commaSeparatedEmails: string, local?: boolean): Promise<UsersList>;
+export function getUsersFromEmailList(
+    commaSeparatedEmails: string,
+    local?: boolean,
+): Promise<UsersList>;
 
-export function getUsersFromIdList(commaSeparatedIds: string, local?: boolean): Promise<UsersList>;
+export function getUsersFromIdList(
+    commaSeparatedIds: string,
+    local?: boolean,
+): Promise<UsersList>;
 
 export function searchUsers(
     query: string,

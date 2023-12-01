@@ -4,11 +4,11 @@ import * as Hapi from "hapi";
 const server = new Hapi.Server();
 server.connection({ port: 80 });
 
-const getAlbum: Hapi.RouteHandler = function(request, reply) {
+const getAlbum: Hapi.RouteHandler = function (request, reply) {
     return reply(
-        "You asked for "
-            + (request.params.song ? request.params.song + " from " : "")
-            + request.params.album,
+        "You asked for " +
+            (request.params.song ? request.params.song + " from " : "") +
+            request.params.album,
     );
 };
 
@@ -20,7 +20,7 @@ server.route({
 
 // Example 2
 
-const getPerson: Hapi.RouteHandler = function(request, reply) {
+const getPerson: Hapi.RouteHandler = function (request, reply) {
     const nameParts = request.params.name.split("/");
     return reply({ first: nameParts[0], last: nameParts[1] });
 };

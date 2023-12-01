@@ -1,15 +1,11 @@
 import coffeelint = require("gulp-coffeelint");
 import gulp = require("gulp");
 
-gulp.task("lint", function() {
-    gulp.src("./src/*.coffee")
-        .pipe(coffeelint())
-        .pipe(coffeelint.reporter());
+gulp.task("lint", function () {
+    gulp.src("./src/*.coffee").pipe(coffeelint()).pipe(coffeelint.reporter());
 });
 
-gulp.src("./src/*.coffee")
-    .pipe(coffeelint())
-    .pipe(coffeelint.reporter("csv"));
+gulp.src("./src/*.coffee").pipe(coffeelint()).pipe(coffeelint.reporter("csv"));
 
 declare var stylish: Function;
 
@@ -26,12 +22,12 @@ gulp.src("./src/*.coffee")
     .pipe(coffeelint.reporter("coffeelint-stylish"))
     .pipe(coffeelint.reporter("fail"));
 
-var myReporter = (function() {
+var myReporter = (function () {
     function MyReporter(errorReport: any) {
         this.errorReport = errorReport;
     }
 
-    MyReporter.prototype.publish = function() {
+    MyReporter.prototype.publish = function () {
         var hasError = this.errorReport.hasError();
         if (hasError) {
             return console.log("Oh no!");
@@ -42,8 +38,9 @@ var myReporter = (function() {
     return MyReporter;
 })();
 
-gulp.task("lint", function() {
-    return gulp.src("./src/*.coffee")
+gulp.task("lint", function () {
+    return gulp
+        .src("./src/*.coffee")
         .pipe(coffeelint())
         .pipe(coffeelint.reporter(myReporter));
 });

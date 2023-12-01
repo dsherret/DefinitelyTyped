@@ -1,5 +1,12 @@
 // helper types
-export type JsonData = string | number | boolean | Date | Json | JsonArray | undefined;
+export type JsonData =
+    | string
+    | number
+    | boolean
+    | Date
+    | Json
+    | JsonArray
+    | undefined;
 export type KnuddelsEvent = string | Json | KnuddelsEventArray;
 
 // API
@@ -10,7 +17,8 @@ declare global {
 
     interface JsonArray extends Array<JsonData> {}
 
-    interface KnuddelsEventArray extends Array<string | Json | KnuddelsEventArray> {}
+    interface KnuddelsEventArray
+        extends Array<string | Json | KnuddelsEventArray> {}
 
     /**
      * @see https://developer.knuddels.de/docs/classes/Client.html
@@ -24,7 +32,9 @@ declare global {
         /**
          * @see https://developer.knuddels.de/docs/classes/Client.html#method_removeConnectionTypeChangeListener
          */
-        function removeConnectionTypeChangeListener(callback: (type: string) => void): void;
+        function removeConnectionTypeChangeListener(
+            callback: (type: string) => void,
+        ): void;
         /**
          * @see https://developer.knuddels.de/docs/classes/Client.html#method_dispatchEvent
          */
@@ -75,7 +85,9 @@ declare global {
         /**
          * @see https://developer.knuddels.de/docs/classes/Client.html#method_addConnectionTypeChangeListener
          */
-        function addConnectionTypeChangeListener(callback: (type: string) => void): void;
+        function addConnectionTypeChangeListener(
+            callback: (type: string) => void,
+        ): void;
         /**
          * @see https://developer.knuddels.de/docs/classes/Client.html#method_getNick
          */
@@ -95,7 +107,10 @@ declare global {
         /**
          * @see https://developer.knuddels.de/docs/classes/Client.html#method_addEventListener
          */
-        function addEventListener(type: string, callback: (event: { type: string; data: KnuddelsEvent }) => void): void;
+        function addEventListener(
+            type: string,
+            callback: (event: { type: string; data: KnuddelsEvent }) => void,
+        ): void;
         /**
          * @see https://developer.knuddels.de/docs/classes/Client.html#property_pageData
          */

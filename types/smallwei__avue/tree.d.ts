@@ -38,9 +38,19 @@ export interface AvueTreeProps<T = any> {
     /** 组件配置属性 */
     option?: AvueTreeOption<T>;
     /** 新增节点回调 */
-    onSave?: (parent: any, data: any, done: () => void, loading: () => void) => void;
+    onSave?: (
+        parent: any,
+        data: any,
+        done: () => void,
+        loading: () => void,
+    ) => void;
     /** 修改节点回调 */
-    onUpdate?: (parent: any, data: any, done: () => void, loading: () => void) => void;
+    onUpdate?: (
+        parent: any,
+        data: any,
+        done: () => void,
+        loading: () => void,
+    ) => void;
     /** 删除节点回调 */
     onDel?: (data: any, done: () => void) => void;
 }
@@ -50,7 +60,7 @@ export interface AvueTreeSlots<T = any> {
     default: (scoped: { node: { data: T }; data: T }) => VNode[];
 }
 
-export const AvueTree: new() => {
+export const AvueTree: new () => {
     $props: AvueTreeProps;
     $slots: AvueTreeSlots;
 };

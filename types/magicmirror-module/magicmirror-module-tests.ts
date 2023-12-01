@@ -59,7 +59,11 @@ Module.register<TestConfig>("test", {
         this.show();
         this.show(100);
         this.show(100, () => {});
-        this.show(100, () => {}, { lockString: this.identifier, force: true, onError: () => {} });
+        this.show(100, () => {}, {
+            lockString: this.identifier,
+            force: true,
+            onError: () => {},
+        });
     },
     socketNotificationReceived(notification: string, payload: any) {
         if (notification === "test") {

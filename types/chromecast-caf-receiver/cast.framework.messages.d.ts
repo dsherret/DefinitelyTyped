@@ -1988,7 +1988,12 @@ export class LoadByEntityRequestData extends RequestData {
  * @see https://developers.google.com/cast/docs/reference/web_receiver/cast.framework.messages.LiveSeekableRange
  */
 export class LiveSeekableRange {
-    constructor(start?: number, end?: number, isMovingWindow?: boolean, isLiveDone?: boolean);
+    constructor(
+        start?: number,
+        end?: number,
+        isMovingWindow?: boolean,
+        isLiveDone?: boolean,
+    );
 
     /**
      * A boolean value indicates whether a live stream is ended. If it is done;
@@ -2155,7 +2160,11 @@ export class FetchItemsRequestData extends RequestData {
  * @see https://developers.google.com/cast/docs/reference/caf_receiver/cast.framework.messages.ExtendedMediaStatus
  */
 export class ExtendedMediaStatus {
-    constructor(playerState: MediaInformation, opt_media?: MediaInformation, opt_mediaSessionId?: number);
+    constructor(
+        playerState: MediaInformation,
+        opt_media?: MediaInformation,
+        opt_mediaSessionId?: number,
+    );
 
     media?: MediaInformation | undefined;
 

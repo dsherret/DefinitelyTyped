@@ -1,4 +1,8 @@
-import { RouterScrollProvider, useRouterScroll, withRouterScroll } from "moxy__next-router-scroll";
+import {
+    RouterScrollProvider,
+    useRouterScroll,
+    withRouterScroll,
+} from "moxy__next-router-scroll";
 import * as React from "react";
 import { render } from "react-dom";
 
@@ -44,13 +48,15 @@ describe("withRouterScroll", () => {
     it("should return component with scroll context", () => {
         class Component extends React.PureComponent {
             render() {
-                const MyComponent = withRouterScroll(({ routerScroll }: any) => {
-                    const providerValue = useRouterScroll();
+                const MyComponent = withRouterScroll(
+                    ({ routerScroll }: any) => {
+                        const providerValue = useRouterScroll();
 
-                    expect(routerScroll).toBe(providerValue);
+                        expect(routerScroll).toBe(providerValue);
 
-                    return null;
-                });
+                        return null;
+                    },
+                );
                 return (
                     <RouterScrollProvider>
                         <MyComponent />

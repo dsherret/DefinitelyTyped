@@ -22,12 +22,16 @@ const setApplicationLocale = (() => {}) as typeof Terra.setApplicationLocale;
 setApplicationLocale("en");
 
 const viewports = (() => []) as typeof Terra.viewports;
-viewports("tiny").map(dimensions => dimensions as { height: number; width: number; name: "tiny" });
+viewports("tiny").map(
+    (dimensions) =>
+        dimensions as { height: number; width: number; name: "tiny" },
+);
 viewports();
 viewports("small");
 viewports("medium", "large");
 
-const validatesAccessibility = (() => {}) as typeof Terra.validates.accessibility;
+const validatesAccessibility =
+    (() => {}) as typeof Terra.validates.accessibility;
 validatesAccessibility();
 validatesAccessibility({});
 validatesAccessibility({ rules: { "some-rule": { enabled: false } } });
@@ -44,4 +48,7 @@ validatesElement("filled options", {
 const validatesScreenshot = (() => {}) as typeof Terra.validates.screenshot;
 validatesScreenshot("no options");
 validatesScreenshot("empty options", {});
-validatesScreenshot("filled options", { mismatchTolerance: 1, selector: "#root" });
+validatesScreenshot("filled options", {
+    mismatchTolerance: 1,
+    selector: "#root",
+});

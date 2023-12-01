@@ -91,15 +91,18 @@ iString = d3Interpolate.interpolate(new StringCoercible("a: 1"), "a: 5");
 
 // Typed arrays
 iTypedArray = d3Interpolate.interpolate([0, 1], Float64Array.from([0, 1]));
-iTypedArray = d3Interpolate.interpolate(Float64Array.from([0, 1]), Float64Array.from([0, 1]));
+iTypedArray = d3Interpolate.interpolate(
+    Float64Array.from([0, 1]),
+    Float64Array.from([0, 1]),
+);
 
 iArrayNum = d3Interpolate.interpolate(["1", "2"], [4, 8]);
 iArrayStr = d3Interpolate.interpolate(["1", "2"], ["4", "8"]);
 // two element array with first element date and second element string
-iArrayMixed = d3Interpolate.interpolate<[Date, string]>([new Date(2016, 6, 1), "b: 2"], [
-    new Date(2016, 6, 31),
-    "b: 8",
-]);
+iArrayMixed = d3Interpolate.interpolate<[Date, string]>(
+    [new Date(2016, 6, 1), "b: 2"],
+    [new Date(2016, 6, 31), "b: 8"],
+);
 
 // Coercible to number
 
@@ -112,19 +115,28 @@ iKeyVal = d3Interpolate.interpolate({ x: 0, y: 1 }, { x: 1, y: 10, z: 100 });
 iXyz = d3Interpolate.interpolate({ x: 0, y: 1 }, { x: 1, y: 10, z: 100 });
 iXyz = d3Interpolate.interpolate<Xyz>({ x: 0, y: 1 }, { x: 1, y: 10, z: 100 });
 
-d3Interpolate.interpolate<NumCoercible>(new NumCoercible(1), new NumCoercible(5));
+d3Interpolate.interpolate<NumCoercible>(
+    new NumCoercible(1),
+    new NumCoercible(5),
+);
 d3Interpolate.interpolate<NumCoercible>({ a: 1 }, new NumCoercible(5));
 
 // test interpolateNumber(a, b) signature ----------------------------------------------
 
 iNum = d3Interpolate.interpolateNumber(0, 100);
-iNum = d3Interpolate.interpolateNumber(new NumCoercible(0), new NumCoercible(100));
+iNum = d3Interpolate.interpolateNumber(
+    new NumCoercible(0),
+    new NumCoercible(100),
+);
 num = iNum(0.5);
 
 // test interpolateNumber(a, b) signature ----------------------------------------------
 
 iNum = d3Interpolate.interpolateRound(0, 100);
-iNum = d3Interpolate.interpolateRound(new NumCoercible(0), new NumCoercible(100));
+iNum = d3Interpolate.interpolateRound(
+    new NumCoercible(0),
+    new NumCoercible(100),
+);
 num = iNum(0.5);
 
 // test interpolateString(a, b) signature ----------------------------------------------
@@ -134,14 +146,20 @@ str = iString(0.5);
 
 // test interpolateDate(a, b) signature ------------------------------------------------
 
-iDate = d3Interpolate.interpolateDate(new Date(2016, 6, 1), new Date(2016, 6, 31));
+iDate = d3Interpolate.interpolateDate(
+    new Date(2016, 6, 1),
+    new Date(2016, 6, 31),
+);
 
 // test interpolateArray(a, b) signature -----------------------------------------------
 
 iArrayNum = d3Interpolate.interpolateArray<number[]>([1, 2], [4, 8]); // explicit typing
 arrNum = iArrayNum(0.5);
 
-iArrayNum = d3Interpolate.interpolateArray<[number, number]>(["1", "2"], [4, 8]); // explicit typing
+iArrayNum = d3Interpolate.interpolateArray<[number, number]>(
+    ["1", "2"],
+    [4, 8],
+); // explicit typing
 arrNum = iArrayNum(0.5);
 
 iArrayStr = d3Interpolate.interpolateArray<string[]>(["1", "2"], ["4", "8"]); // explicit typing
@@ -151,34 +169,52 @@ iArrayStr = d3Interpolate.interpolateArray([1, 2], ["4", "8"]); // inferred typi
 arrStr = iArrayStr(0.5);
 
 // two element array with first element date and second element string
-iArrayMixed = d3Interpolate.interpolateArray<[Date, string]>([new Date(2016, 6, 1), "b: 1"], [
-    new Date(2016, 6, 31),
-    "b: 8",
-]);
+iArrayMixed = d3Interpolate.interpolateArray<[Date, string]>(
+    [new Date(2016, 6, 1), "b: 1"],
+    [new Date(2016, 6, 31), "b: 8"],
+);
 
 iTypedArray = d3Interpolate.interpolateArray([0, 1], Float64Array.from([0, 1]));
 
 // test interpolateNumberArray(a, b) signature -----------------------------------------
 
 iArrayNum = d3Interpolate.interpolateNumberArray([0, 1], [0, 1]);
-iTypedArray = d3Interpolate.interpolateNumberArray([0, 1], Float64Array.from([0, 1]));
-iTypedArray = d3Interpolate.interpolateNumberArray(Float64Array.from([0, 1]), Float64Array.from([0, 1]));
+iTypedArray = d3Interpolate.interpolateNumberArray(
+    [0, 1],
+    Float64Array.from([0, 1]),
+);
+iTypedArray = d3Interpolate.interpolateNumberArray(
+    Float64Array.from([0, 1]),
+    Float64Array.from([0, 1]),
+);
 
 // test interpolateObject(a, b) signature ----------------------------------------------
 
-iKeyVal = d3Interpolate.interpolateObject({ x: 0, y: 1 }, { x: 1, y: 10, z: 100 });
+iKeyVal = d3Interpolate.interpolateObject(
+    { x: 0, y: 1 },
+    { x: 1, y: 10, z: 100 },
+);
 objKeyVal = iKeyVal(0.5);
 
 iXyz = d3Interpolate.interpolateObject({ x: 0, y: 1 }, { x: 1, y: 10, z: 100 });
-iXyz = d3Interpolate.interpolateObject<Xyz>({ x: 0, y: 1 }, { x: 1, y: 10, z: 100 });
+iXyz = d3Interpolate.interpolateObject<Xyz>(
+    { x: 0, y: 1 },
+    { x: 1, y: 10, z: 100 },
+);
 xyz = iXyz(0.5);
 
-iRGBColorObj = d3Interpolate.interpolateObject<d3Color.RGBColor>(d3Color.rgb("steelblue"), d3Color.rgb("seagreen"));
+iRGBColorObj = d3Interpolate.interpolateObject<d3Color.RGBColor>(
+    d3Color.rgb("steelblue"),
+    d3Color.rgb("seagreen"),
+);
 objRGBColor = iRGBColorObj(0.5);
 
 // test interpolateTransformCss(a, b) signature ----------------------------------------
 
-iString = d3Interpolate.interpolateTransformCss("rotate(0deg)", "rotate(60deg)");
+iString = d3Interpolate.interpolateTransformCss(
+    "rotate(0deg)",
+    "rotate(60deg)",
+);
 str = iString(0.5);
 
 // test interpolateTransformSvg(a, b) signature ----------------------------------------
@@ -203,15 +239,24 @@ iMix = d3Interpolate.interpolateDiscrete([new Date(2016, 6, 1), "b: 2"]);
 // test quantize(interpolator, n) signature --------------------------------------------
 
 arrNum = d3Interpolate.quantize(d3Interpolate.interpolateRound(-1, 2), 4); // inferred template parameter type
-arrStr = d3Interpolate.quantize<string>(d3Interpolate.interpolateString("-1", "2"), 4); // explicit template parameter typing
+arrStr = d3Interpolate.quantize<string>(
+    d3Interpolate.interpolateString("-1", "2"),
+    4,
+); // explicit template parameter typing
 // @ts-expect-error
-arrStr = d3Interpolate.quantize<string>(d3Interpolate.interpolateRound(-1, 2), 4); // fails, due to explicit typing v argument type mismatch
+arrStr = d3Interpolate.quantize<string>(
+    d3Interpolate.interpolateRound(-1, 2),
+    4,
+); // fails, due to explicit typing v argument type mismatch
 
 // test interpolateRgb(a, b) signatures ------------------------------------------------
 
 // without gamma correction
 iString = d3Interpolate.interpolateRgb("seagreen", "steelblue");
-iString = d3Interpolate.interpolateRgb(d3Color.rgb("seagreen"), d3Color.hcl("steelblue"));
+iString = d3Interpolate.interpolateRgb(
+    d3Color.rgb("seagreen"),
+    d3Color.hcl("steelblue"),
+);
 str = iString(0.5);
 
 // with gamma correction
@@ -219,34 +264,56 @@ iString = d3Interpolate.interpolateRgb.gamma(2.2)("purple", "orange");
 
 // test interpolateRgbBasis(color) and  interpolateRgbBasisClosed(color) signatures ----
 
-iString = d3Interpolate.interpolateRgbBasis(["seagreen", d3Color.rgb("steelblue"), "rgb(100, 100, 100)"]);
+iString = d3Interpolate.interpolateRgbBasis([
+    "seagreen",
+    d3Color.rgb("steelblue"),
+    "rgb(100, 100, 100)",
+]);
 
 // test interpolateHsl(a, b) and interpolateHslLong(a, b)-------------------------------
 
 iString = d3Interpolate.interpolateHsl("seagreen", "steelblue");
-iString = d3Interpolate.interpolateHsl(d3Color.rgb("seagreen"), d3Color.hcl("steelblue"));
+iString = d3Interpolate.interpolateHsl(
+    d3Color.rgb("seagreen"),
+    d3Color.hcl("steelblue"),
+);
 
 iString = d3Interpolate.interpolateHslLong("seagreen", "steelblue");
-iString = d3Interpolate.interpolateHslLong(d3Color.rgb("seagreen"), d3Color.hcl("steelblue"));
+iString = d3Interpolate.interpolateHslLong(
+    d3Color.rgb("seagreen"),
+    d3Color.hcl("steelblue"),
+);
 
 // test interpolateLab(a, b) -----------------------------------------------------------
 
 iString = d3Interpolate.interpolateLab("seagreen", "steelblue");
-iString = d3Interpolate.interpolateLab(d3Color.rgb("seagreen"), d3Color.hcl("steelblue"));
+iString = d3Interpolate.interpolateLab(
+    d3Color.rgb("seagreen"),
+    d3Color.hcl("steelblue"),
+);
 
 // test interpolateHcl(a, b) and interpolateHclLong(a, b) ------------------------------
 
 iString = d3Interpolate.interpolateHcl("seagreen", "steelblue");
-iString = d3Interpolate.interpolateHcl(d3Color.rgb("seagreen"), d3Color.hcl("steelblue"));
+iString = d3Interpolate.interpolateHcl(
+    d3Color.rgb("seagreen"),
+    d3Color.hcl("steelblue"),
+);
 
 iString = d3Interpolate.interpolateHclLong("seagreen", "steelblue");
-iString = d3Interpolate.interpolateHclLong(d3Color.rgb("seagreen"), d3Color.hcl("steelblue"));
+iString = d3Interpolate.interpolateHclLong(
+    d3Color.rgb("seagreen"),
+    d3Color.hcl("steelblue"),
+);
 
 // test interpolateCubehelix(a, b) and interpolateCubehelixLong(a, b) ------------------
 
 // without gamma correction
 iString = d3Interpolate.interpolateCubehelix("seagreen", "steelblue");
-iString = d3Interpolate.interpolateCubehelix(d3Color.rgb("seagreen"), d3Color.hcl("steelblue"));
+iString = d3Interpolate.interpolateCubehelix(
+    d3Color.rgb("seagreen"),
+    d3Color.hcl("steelblue"),
+);
 str = iString(0.5);
 
 // with gamma correction
@@ -254,7 +321,10 @@ iString = d3Interpolate.interpolateCubehelix.gamma(2.2)("purple", "orange");
 
 // without gamma correction
 iString = d3Interpolate.interpolateCubehelixLong("seagreen", "steelblue");
-iString = d3Interpolate.interpolateCubehelixLong(d3Color.rgb("seagreen"), d3Color.hcl("steelblue"));
+iString = d3Interpolate.interpolateCubehelixLong(
+    d3Color.rgb("seagreen"),
+    d3Color.hcl("steelblue"),
+);
 str = iString(0.5);
 
 // with gamma correction
@@ -272,24 +342,60 @@ iNum = d3Interpolate.interpolateHue(30, 90);
 
 // test piecewise ----------------------------------------------------------------------
 
-iZoom = d3Interpolate.piecewise([[50, 50, 300], [100, 100, 500]]);
-iZoom = d3Interpolate.piecewise(d3Interpolate.interpolateZoom, [[50, 50, 300], [100, 100, 500]]);
+iZoom = d3Interpolate.piecewise([
+    [50, 50, 300],
+    [100, 100, 500],
+]);
+iZoom = d3Interpolate.piecewise(d3Interpolate.interpolateZoom, [
+    [50, 50, 300],
+    [100, 100, 500],
+]);
 
 iString = d3Interpolate.piecewise(["red", "green", "blue"]);
-iString = d3Interpolate.piecewise(d3Interpolate.interpolateRgb.gamma(2.2), ["red", "green", "blue"]);
-iString = d3Interpolate.piecewise(d3Interpolate.interpolateCubehelix, ["red", "green", "blue"]);
+iString = d3Interpolate.piecewise(d3Interpolate.interpolateRgb.gamma(2.2), [
+    "red",
+    "green",
+    "blue",
+]);
+iString = d3Interpolate.piecewise(d3Interpolate.interpolateCubehelix, [
+    "red",
+    "green",
+    "blue",
+]);
 iNum = d3Interpolate.piecewise(d3Interpolate.interpolateNumber, [1, 2, 3]);
 iNum = d3Interpolate.piecewise(d3Interpolate.interpolateRound, [1.1, 2.2, 3.3]);
-iString = d3Interpolate.piecewise(d3Interpolate.interpolateString, ["2px", "3px", "5px"]);
+iString = d3Interpolate.piecewise(d3Interpolate.interpolateString, [
+    "2px",
+    "3px",
+    "5px",
+]);
 iDate = d3Interpolate.piecewise(d3Interpolate.interpolateDate, [
     new Date(2018, 5, 1),
     new Date(2018, 5, 2),
     new Date(2018, 5, 3),
 ]);
-iString = d3Interpolate.piecewise(d3Interpolate.interpolateTransformCss, ["rotate(0deg)", "rotate(60deg)"]);
-iString = d3Interpolate.piecewise(d3Interpolate.interpolateTransformSvg, ["rotate(0)", "rotate(60)"]);
+iString = d3Interpolate.piecewise(d3Interpolate.interpolateTransformCss, [
+    "rotate(0deg)",
+    "rotate(60deg)",
+]);
+iString = d3Interpolate.piecewise(d3Interpolate.interpolateTransformSvg, [
+    "rotate(0)",
+    "rotate(60)",
+]);
 
-iArrayNum = d3Interpolate.piecewise<number[]>([[1, 2], [4, 8]]);
-iArrayNum = d3Interpolate.piecewise<number[]>(d3Interpolate.interpolateArray, [[1, 2], [4, 8]]);
-iArrayStr = d3Interpolate.piecewise<string[]>(d3Interpolate.interpolateArray, [["2px", "1em"], ["3px", "1.2em"]]);
-iArrayMixed = d3Interpolate.piecewise<[Date, string]>(d3Interpolate.interpolateArray, [[new Date(2016, 6, 1), "b: 1"]]);
+iArrayNum = d3Interpolate.piecewise<number[]>([
+    [1, 2],
+    [4, 8],
+]);
+iArrayNum = d3Interpolate.piecewise<number[]>(d3Interpolate.interpolateArray, [
+    [1, 2],
+    [4, 8],
+]);
+iArrayStr = d3Interpolate.piecewise<string[]>(d3Interpolate.interpolateArray, [
+    ["2px", "1em"],
+    ["3px", "1.2em"],
+]);
+iArrayMixed = d3Interpolate.piecewise<[Date, string]>(
+    d3Interpolate.interpolateArray,
+    [[new Date(2016, 6, 1), "b: 1"]],
+);

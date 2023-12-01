@@ -5,7 +5,10 @@ export namespace kavenegar {
         version?: string | undefined;
     }
 
-    type ResponseK<T, Y> = (data: T, callback: (entries: Y, status: number, message: string) => void) => void;
+    type ResponseK<T, Y> = (
+        data: T,
+        callback: (entries: Y, status: number, message: string) => void,
+    ) => void;
 
     type Methods =
         | "send"
@@ -29,7 +32,12 @@ export namespace kavenegar {
     type Actions = "sms" | "verify" | "account" | "call";
 
     interface KavenegarInstance {
-        request: (action: Actions, method: Methods, params: object, callback: any) => void;
+        request: (
+            action: Actions,
+            method: Methods,
+            params: object,
+            callback: any,
+        ) => void;
         Send: ResponseK<
             {
                 receptor: string;
@@ -206,7 +214,10 @@ export namespace kavenegar {
                 cost: number;
             }>
         >;
-        AccountInfo: ResponseK<{}, { remaincredit: number; expiredate: number; type: string }>;
+        AccountInfo: ResponseK<
+            {},
+            { remaincredit: number; expiredate: number; type: string }
+        >;
         AccountConfig: ResponseK<
             {
                 apilogs?: string | undefined;
@@ -228,4 +239,6 @@ export namespace kavenegar {
     }
 }
 
-export function KavenegarApi(options: kavenegar.Options): kavenegar.KavenegarInstance;
+export function KavenegarApi(
+    options: kavenegar.Options,
+): kavenegar.KavenegarInstance;

@@ -62,7 +62,10 @@ Jwt.token.signature.verify(token.raw, "HS512", "some_shared_secret");
 
 // Crypto definitions
 
-Jwt.crypto.rsaPublicKeyToPEM("00:aa:18:ab:a4:3b:50:de:ef:38:59:8f:af:87:d2", "65537");
+Jwt.crypto.rsaPublicKeyToPEM(
+    "00:aa:18:ab:a4:3b:50:de:ef:38:59:8f:af:87:d2",
+    "65537",
+);
 
 // Utils definitions
 

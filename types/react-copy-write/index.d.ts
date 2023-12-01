@@ -10,7 +10,9 @@ type Mutator<T> = (mutator: MutateFn<T>) => void;
 
 type SelectorFn<T> = (state: T) => AnyDeepMemberOfState<T>;
 
-type RenderFn<T> = (...state: Array<Readonly<ReturnType<SelectorFn<T>>>>) => JSX.Element | JSX.Element[] | null;
+type RenderFn<T> = (
+    ...state: Array<Readonly<ReturnType<SelectorFn<T>>>>
+) => JSX.Element | JSX.Element[] | null;
 
 interface ConsumerPropsBase<T> {
     select?: Array<SelectorFn<T>> | undefined;
@@ -24,7 +26,9 @@ interface ConsumerPropsImplicitRender<T> extends ConsumerPropsBase<T> {
     children?: RenderFn<T> | undefined;
 }
 
-type ConsumerProps<T> = ConsumerPropsExplicitRender<T> | ConsumerPropsImplicitRender<T>;
+type ConsumerProps<T> =
+    | ConsumerPropsExplicitRender<T>
+    | ConsumerPropsImplicitRender<T>;
 
 declare class Consumer<T> extends Component<ConsumerProps<T>> {}
 
@@ -35,9 +39,11 @@ interface ProviderProps<T> {
 
 declare class Provider<T> extends Component<ProviderProps<T>> {}
 
-declare function create<T extends object>(state: T): {
-    Provider: new() => Provider<T>;
-    Consumer: new() => Consumer<T>;
+declare function create<T extends object>(
+    state: T,
+): {
+    Provider: new () => Provider<T>;
+    Consumer: new () => Consumer<T>;
     createSelector: SelectorFn<T>;
     mutate: Mutator<T>;
 };

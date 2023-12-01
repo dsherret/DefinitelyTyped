@@ -76,7 +76,9 @@ const actionBars = (
                             </Menu.List>
                         </Menu>
                     }
-                    control={<Button glyph="vertical-grip" option="transparent" />}
+                    control={
+                        <Button glyph="vertical-grip" option="transparent" />
+                    }
                     placement="bottom-end"
                 />
             }
@@ -406,7 +408,7 @@ const dialogs = (
         </Dialog>
         <Dialog
             actions={[]}
-            allowListForLockFocus={e => {}}
+            allowListForLockFocus={(e) => {}}
             title=""
             disableAutoClose
             focusElementOnClose={{}}
@@ -878,7 +880,10 @@ const inputGroup = (
             <FormLabel>Input with icon text action</FormLabel>
             <FormItem>
                 <InputGroup actions>
-                    <Button glyph="navigation-down-arrow" option="transparent" />
+                    <Button
+                        glyph="navigation-down-arrow"
+                        option="transparent"
+                    />
                 </InputGroup>
             </FormItem>
         </FormGroup>
@@ -888,7 +893,10 @@ const inputGroup = (
             <FormLabel>Input with icon text action</FormLabel>
             <FormItem>
                 <InputGroup actions compact>
-                    <Button glyph="navigation-down-arrow" option="transparent" />
+                    <Button
+                        glyph="navigation-down-arrow"
+                        option="transparent"
+                    />
                 </InputGroup>
             </FormItem>
         </FormGroup>
@@ -898,7 +906,9 @@ const inputGroup = (
 const links = (
     <div>
         <Link href="#">Default Link</Link>
-        <Link disabled href="#">Disabled Link</Link>
+        <Link disabled href="#">
+            Disabled Link
+        </Link>
     </div>
 );
 
@@ -1000,8 +1010,12 @@ const menus = (
     <div>
         <Menu>
             <Menu.List>
-                <Menu.Item separator url="/">Option 1</Menu.Item>
-                <Menu.Item separator url="/">Option 2</Menu.Item>
+                <Menu.Item separator url="/">
+                    Option 1
+                </Menu.Item>
+                <Menu.Item separator url="/">
+                    Option 2
+                </Menu.Item>
                 <Menu.Item url="/">Option 3</Menu.Item>
                 <Menu.Item url="/">Option 4</Menu.Item>
             </Menu.List>
@@ -1060,7 +1074,9 @@ const menus = (
                     <Menu.Item url="/">Option 1</Menu.Item>
                 </Menu.Item>
                 <Menu.Item>
-                    <Menu.Item disabled selected url="/">Option 1</Menu.Item>
+                    <Menu.Item disabled selected url="/">
+                        Option 1
+                    </Menu.Item>
                 </Menu.Item>
             </Menu.List>
         </Menu>
@@ -1069,24 +1085,13 @@ const menus = (
 
 const messageStrips = (
     <div>
-        <MessageStrip
-            dismissible
-            link="#"
-            linkText="link"
-        >
+        <MessageStrip dismissible link="#" linkText="link">
             Default MessageStrip
         </MessageStrip>
-        <MessageStrip
-            dismissible
-            link="#"
-            linkText="Learn More"
-            type="error"
-        >
+        <MessageStrip dismissible link="#" linkText="Learn More" type="error">
             Error Message.
         </MessageStrip>
-        <MessageStrip noGlyph>
-            Error Message with no icon
-        </MessageStrip>
+        <MessageStrip noGlyph>Error Message with no icon</MessageStrip>
     </div>
 );
 
@@ -1164,12 +1169,8 @@ const paginations = (
 
 const layoutPanel = (
     <LayoutPanel>
-        <LayoutPanel.Header>
-            LayoutPanel Head
-        </LayoutPanel.Header>
-        <LayoutPanel.Body>
-            LayoutPanel Body
-        </LayoutPanel.Body>
+        <LayoutPanel.Header>LayoutPanel Head</LayoutPanel.Header>
+        <LayoutPanel.Body>LayoutPanel Body</LayoutPanel.Body>
     </LayoutPanel>
 );
 
@@ -1523,7 +1524,8 @@ const popovers = (
                 title="Overflow Example"
             >
                 <p>
-                    Click the icon to show the popover and then scroll within the modal body...
+                    Click the icon to show the popover and then scroll within
+                    the modal body...
                 </p>
                 <br />
                 <br />
@@ -1670,7 +1672,10 @@ const selects = (
             selectedKey={"2"}
         />
 
-        <Select compact validationState={{ state: "warning", text: "Validated" }} />
+        <Select
+            compact
+            validationState={{ state: "warning", text: "Validated" }}
+        />
     </div>
 );
 
@@ -2007,13 +2012,42 @@ const shellbars = (
 
 const sideNavs = (
     <div>
-        <SideNav skipLink={{ href: "/", label: "skip to /" }} selectedId="item-2">
+        <SideNav
+            skipLink={{ href: "/", label: "skip to /" }}
+            selectedId="item-2"
+        >
             <SideNav.List groupLabel="groupLabel-1">
-                <SideNav.ListItem condensed id="item-1" name="Link Item" url="#" />
-                <SideNav.ListItem condensed id="item-2" name="Link Item" url="#" />
-                <SideNav.ListItem condensed id="item-3" name="Link Item" url="#" />
-                <SideNav.ListItem condensed id="item-4" name={<p>Link Item</p>} url="#" />
-                <SideNav.ListItem condensed expandSubmenuLabel="subemenuLabel-1" id="item-5" name="Link Item" url="#" />
+                <SideNav.ListItem
+                    condensed
+                    id="item-1"
+                    name="Link Item"
+                    url="#"
+                />
+                <SideNav.ListItem
+                    condensed
+                    id="item-2"
+                    name="Link Item"
+                    url="#"
+                />
+                <SideNav.ListItem
+                    condensed
+                    id="item-3"
+                    name="Link Item"
+                    url="#"
+                />
+                <SideNav.ListItem
+                    condensed
+                    id="item-4"
+                    name={<p>Link Item</p>}
+                    url="#"
+                />
+                <SideNav.ListItem
+                    condensed
+                    expandSubmenuLabel="subemenuLabel-1"
+                    id="item-5"
+                    name="Link Item"
+                    url="#"
+                />
             </SideNav.List>
         </SideNav>
         <SideNav selectedId="item_2">
@@ -2210,7 +2244,12 @@ const tables = (
                                     </Menu.List>
                                 </Menu>
                             }
-                            control={<Button glyph="vertical-grip" option="transparent" />}
+                            control={
+                                <Button
+                                    glyph="vertical-grip"
+                                    option="transparent"
+                                />
+                            }
                             placement="bottom-end"
                         />,
                     ],
@@ -2239,7 +2278,12 @@ const tables = (
                                     </Menu.List>
                                 </Menu>
                             }
-                            control={<Button glyph="vertical-grip" option="transparent" />}
+                            control={
+                                <Button
+                                    glyph="vertical-grip"
+                                    option="transparent"
+                                />
+                            }
                             placement="bottom-end"
                         />,
                     ],
@@ -2268,7 +2312,12 @@ const tables = (
                                     </Menu.List>
                                 </Menu>
                             }
-                            control={<Button glyph="vertical-grip" option="transparent" />}
+                            control={
+                                <Button
+                                    glyph="vertical-grip"
+                                    option="transparent"
+                                />
+                            }
                             placement="bottom-end"
                         />,
                     ],
@@ -2297,7 +2346,12 @@ const tables = (
                                     </Menu.List>
                                 </Menu>
                             }
-                            control={<Button glyph="vertical-grip" option="transparent" />}
+                            control={
+                                <Button
+                                    glyph="vertical-grip"
+                                    option="transparent"
+                                />
+                            }
                             placement="bottom-end"
                         />,
                     ],
@@ -2314,9 +2368,11 @@ const tabs = (
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
             </Tab>
             <Tab id="2" title="Tab 2">
-                Numquam libero id corporis odit animi voluptat, Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Possimus quia tempore eligendi tempora repellat officia rerum laudantium, veritatis officiis asperiores
-                ipsum nam, distinctio, dolor provident culpa voluptatibus esse deserunt animi?
+                Numquam libero id corporis odit animi voluptat, Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Possimus quia
+                tempore eligendi tempora repellat officia rerum laudantium,
+                veritatis officiis asperiores ipsum nam, distinctio, dolor
+                provident culpa voluptatibus esse deserunt animi?
             </Tab>
             <Tab disabled id="3" title="Tab 3">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -2340,7 +2396,10 @@ const tiles = (
         </Tile>
         <br />
         <Tile isDouble>
-            <Tile.Header className="tileHeader-class-1" subtitle="Header Subtitle">
+            <Tile.Header
+                className="tileHeader-class-1"
+                subtitle="Header Subtitle"
+            >
                 <p>Header Description</p>
             </Tile.Header>
         </Tile>
@@ -2384,15 +2443,17 @@ const title = (
 
 const switches = (
     <div>
-        <Switch>
-            switch
-        </Switch>
+        <Switch>switch</Switch>
     </div>
 );
 
 const tokens = (
     <div>
-        <Token buttonLabel="Bibendum" onClick={function w() {}} ref={ele => {}}>
+        <Token
+            buttonLabel="Bibendum"
+            onClick={function w() {}}
+            ref={(ele) => {}}
+        >
             Bibendum
         </Token>
         <Token buttonLabel="Lorem" onClick={function w() {}}>

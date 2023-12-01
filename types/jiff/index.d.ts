@@ -28,9 +28,15 @@ declare namespace jiff {
 }
 
 declare var jiff: {
-    InvalidPatchOperationError: new(message: string) => Error & { name: "InvalidPatchOperationError" };
-    TestFailedError: new(message: string) => Error & { name: "TestFailedError" };
-    PatchNotInvertibleError: new(message: string) => Error & { name: "PatchNotInvertibleError" };
+    InvalidPatchOperationError: new (
+        message: string,
+    ) => Error & { name: "InvalidPatchOperationError" };
+    TestFailedError: new (
+        message: string,
+    ) => Error & { name: "TestFailedError" };
+    PatchNotInvertibleError: new (
+        message: string,
+    ) => Error & { name: "PatchNotInvertibleError" };
     /**
      * Create a deep copy of x which must be a legal JSON object/array/value
      * @param x object/array/value to clone
@@ -44,7 +50,11 @@ declare var jiff: {
      * @param options if a function, see options.hash
      * @returns JSON Patch such that patch(diff(a, b), a) ~ b
      */
-    diff(a: jiff.JSONValue, b: jiff.JSONValue, options?: jiff.HashFunction | jiff.DiffOptions): jiff.JSONPatch;
+    diff(
+        a: jiff.JSONValue,
+        b: jiff.JSONValue,
+        options?: jiff.HashFunction | jiff.DiffOptions,
+    ): jiff.JSONPatch;
     inverse(patch: jiff.JSONPatch): jiff.JSONPatch;
     /**
      * Apply the supplied JSON Patch to x
@@ -56,8 +66,16 @@ declare var jiff: {
      *  an array or object, it will be mutated and returned. Otherwise, if
      *  x is a value, the new value will be returned.
      */
-    patch(changes: jiff.JSONPatch, x: jiff.JSONValue, options?: jiff.PatchOptions): jiff.JSONValue;
-    patchInPlace(patch: jiff.JSONPatch, a: jiff.JSONValue, options?: jiff.PatchOptions): void;
+    patch(
+        changes: jiff.JSONPatch,
+        x: jiff.JSONValue,
+        options?: jiff.PatchOptions,
+    ): jiff.JSONValue;
+    patchInPlace(
+        patch: jiff.JSONPatch,
+        a: jiff.JSONValue,
+        options?: jiff.PatchOptions,
+    ): void;
 };
 
 export = jiff;

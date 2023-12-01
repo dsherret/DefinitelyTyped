@@ -7,4 +7,7 @@ export interface ExtendableConfig {
     [key: string]: any;
 }
 
-export default function configsOverload(configsDirectory?: string, options?: ConfigsOverloadOptions): ExtendableConfig;
+export default function configsOverload(
+    configsDirectory?: string,
+    options?: ConfigsOverloadOptions,
+): ExtendableConfig;

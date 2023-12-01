@@ -32,9 +32,14 @@ const transformer = new Transformer({
         idl; // $ExpectType AttributeMemberType
         implName; // $ExpectType string
 
-        const reflectAttr = idl.extAttrs.find(attr => attr.name === "Reflect");
-        const attrName: string = (reflectAttr && reflectAttr.rhs && JSON.parse(reflectAttr.rhs.value as string))
-            || idl.name.toLowerCase();
+        const reflectAttr = idl.extAttrs.find(
+            (attr) => attr.name === "Reflect",
+        );
+        const attrName: string =
+            (reflectAttr &&
+                reflectAttr.rhs &&
+                JSON.parse(reflectAttr.rhs.value as string)) ||
+            idl.name.toLowerCase();
 
         return {
             get: `${implName}.getAttributeNS(null, "${attrName}")`,
@@ -46,7 +51,7 @@ const transformer = new Transformer({
 });
 
 transformer.addSource(idlDir, libDir);
-transformer.generate(libDir).catch(err => {
+transformer.generate(libDir).catch((err) => {
     console.error(err);
     process.exit(1);
 });

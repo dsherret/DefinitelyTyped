@@ -12,7 +12,10 @@ import stream = require("stream");
  * Pass a function as last argument to be called on error or finish of the last stream.
  */
 declare function multipipe(callback?: (err?: Error) => any): stream.PassThrough;
-declare function multipipe(options?: stream.DuplexOptions, callback?: (err?: Error) => any): stream.PassThrough;
+declare function multipipe(
+    options?: stream.DuplexOptions,
+    callback?: (err?: Error) => any,
+): stream.PassThrough;
 
 declare function multipipe(
     stream: NodeJS.ReadWriteStream | readonly stream.Stream[],

@@ -6,10 +6,7 @@ const handler = (response: GoogleLoginInfo) => {
 };
 
 const ReactGoogleLoginComponent: JSX.Element = (
-    <GoogleLogin
-        socialId="1234567890000"
-        responseHandler={handler}
-    />
+    <GoogleLogin socialId="1234567890000" responseHandler={handler} />
 );
 
 const ReactGoogleLoginComponentAllOptions: JSX.Element = (

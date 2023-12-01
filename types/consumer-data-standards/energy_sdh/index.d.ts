@@ -328,7 +328,15 @@ export interface EnergyDerDetailResponse {
                 /**
                  * Used to indicate the primary technology used in the DER device
                  */
-                type: "FOSSIL" | "HYDRO" | "WIND" | "SOLAR_PV" | "RENEWABLE" | "GEOTHERMAL" | "STORAGE" | "OTHER";
+                type:
+                    | "FOSSIL"
+                    | "HYDRO"
+                    | "WIND"
+                    | "SOLAR_PV"
+                    | "RENEWABLE"
+                    | "GEOTHERMAL"
+                    | "STORAGE"
+                    | "OTHER";
                 [k: string]: unknown;
             }>;
             /**
@@ -518,7 +526,15 @@ export interface EnergyDerListResponse {
                     /**
                      * Used to indicate the primary technology used in the DER device
                      */
-                    type: "FOSSIL" | "HYDRO" | "WIND" | "SOLAR_PV" | "RENEWABLE" | "GEOTHERMAL" | "STORAGE" | "OTHER";
+                    type:
+                        | "FOSSIL"
+                        | "HYDRO"
+                        | "WIND"
+                        | "SOLAR_PV"
+                        | "RENEWABLE"
+                        | "GEOTHERMAL"
+                        | "STORAGE"
+                        | "OTHER";
                     [k: string]: unknown;
                 }>;
                 /**
@@ -729,7 +745,15 @@ export interface EnergyDerRecord {
             /**
              * Used to indicate the primary technology used in the DER device
              */
-            type: "FOSSIL" | "HYDRO" | "WIND" | "SOLAR_PV" | "RENEWABLE" | "GEOTHERMAL" | "STORAGE" | "OTHER";
+            type:
+                | "FOSSIL"
+                | "HYDRO"
+                | "WIND"
+                | "SOLAR_PV"
+                | "RENEWABLE"
+                | "GEOTHERMAL"
+                | "STORAGE"
+                | "OTHER";
             [k: string]: unknown;
         }>;
         /**
@@ -871,7 +895,15 @@ export interface EnergyServicePoint {
     /**
      * Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>
      */
-    jurisdictionCode: "ALL" | "ACT" | "NEM" | "NSW" | "QLD" | "SA" | "TAS" | "VIC";
+    jurisdictionCode:
+        | "ALL"
+        | "ACT"
+        | "NEM"
+        | "NSW"
+        | "QLD"
+        | "SA"
+        | "TAS"
+        | "VIC";
     /**
      * The date and time that the information for this service point was modified
      */
@@ -899,7 +931,12 @@ export interface EnergyServicePoint {
     /**
      * Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>
      */
-    servicePointStatus: "ACTIVE" | "DE_ENERGISED" | "EXTINCT" | "GREENFIELD" | "OFF_MARKET";
+    servicePointStatus:
+        | "ACTIVE"
+        | "DE_ENERGISED"
+        | "EXTINCT"
+        | "GREENFIELD"
+        | "OFF_MARKET";
     /**
      * The start date from which this service point first became valid
      */
@@ -942,7 +979,15 @@ export interface EnergyServicePointDetail {
     /**
      * Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>
      */
-    jurisdictionCode: "ALL" | "ACT" | "NEM" | "NSW" | "QLD" | "SA" | "TAS" | "VIC";
+    jurisdictionCode:
+        | "ALL"
+        | "ACT"
+        | "NEM"
+        | "NSW"
+        | "QLD"
+        | "SA"
+        | "TAS"
+        | "VIC";
     /**
      * The date and time that the information for this service point was modified
      */
@@ -1092,121 +1137,119 @@ export interface EnergyServicePointDetail {
     /**
      * The meters associated with the service point. This may be empty where there are no meters physically installed at the service point
      */
-    meters?:
-        | Array<{
+    meters?: Array<{
+        /**
+         * The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique
+         */
+        meterId: string;
+        /**
+         * Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point
+         */
+        registers?: Array<{
             /**
-             * The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique
+             * The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.
              */
-            meterId: string;
+            averagedDailyLoad?: number;
             /**
-             * Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point
+             * Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>
              */
-            registers?: Array<{
-                /**
-                 * The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.
-                 */
-                averagedDailyLoad?: number;
-                /**
-                 * Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>
-                 */
-                consumptionType?: "ACTUAL" | "CUMULATIVE";
-                /**
-                 * Indicates whether the energy recorded by this register is created under a Controlled Load regime
-                 */
-                controlledLoad?: boolean;
-                /**
-                 * Multiplier required to take a register value and turn it into a value representing billable energy
-                 */
-                multiplier?: number;
-                /**
-                 * The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider
-                 */
-                networkTariffCode?: string;
-                /**
-                 * Indicates the consumption type of register
-                 */
-                registerConsumptionType:
-                    | "INTERVAL"
-                    | "BASIC"
-                    | "PROFILE_DATA"
-                    | "ACTIVE_IMPORT"
-                    | "ACTIVE"
-                    | "REACTIVE_IMPORT"
-                    | "REACTIVE";
-                /**
-                 * Unique identifier of the register within this service point.  Is not globally unique
-                 */
-                registerId: string;
-                /**
-                 * Register suffix of the meter register where the meter reads are obtained
-                 */
-                registerSuffix?: string;
-                /**
-                 * Code to identify the time validity of register contents
-                 */
-                timeOfDay?:
-                    | "ALLDAY"
-                    | "INTERVAL"
-                    | "PEAK"
-                    | "BUSINESS"
-                    | "SHOULDER"
-                    | "EVENING"
-                    | "OFFPEAK"
-                    | "CONTROLLED"
-                    | "DEMAND";
-                /**
-                 * The unit of measure for data held in this register
-                 */
-                unitOfMeasure?: string;
-                [k: string]: unknown;
-            }>;
+            consumptionType?: "ACTUAL" | "CUMULATIVE";
             /**
-             * Technical characteristics of the meter
+             * Indicates whether the energy recorded by this register is created under a Controlled Load regime
              */
-            specifications: {
-                /**
-                 * The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>
-                 */
-                installationType:
-                    | "BASIC"
-                    | "COMMS1"
-                    | "COMMS2"
-                    | "COMMS3"
-                    | "COMMS4"
-                    | "COMMS4C"
-                    | "COMMS4D"
-                    | "MRAM"
-                    | "MRIM"
-                    | "PROF"
-                    | "SAMPLE"
-                    | "UMCP"
-                    | "VICAMI"
-                    | "NCOLNUML";
-                /**
-                 * Free text field to identify the manufacturer of the installed meter
-                 */
-                manufacturer?: string;
-                /**
-                 * Free text field to identify the meter manufacturer’s designation for the meter model
-                 */
-                model?: string;
-                /**
-                 * This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required
-                 */
-                nextScheduledReadDate?: string;
-                /**
-                 * Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>
-                 */
-                readType?: string;
-                /**
-                 * A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>
-                 */
-                status: "CURRENT" | "DISCONNECTED";
-                [k: string]: unknown;
-            };
+            controlledLoad?: boolean;
+            /**
+             * Multiplier required to take a register value and turn it into a value representing billable energy
+             */
+            multiplier?: number;
+            /**
+             * The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider
+             */
+            networkTariffCode?: string;
+            /**
+             * Indicates the consumption type of register
+             */
+            registerConsumptionType:
+                | "INTERVAL"
+                | "BASIC"
+                | "PROFILE_DATA"
+                | "ACTIVE_IMPORT"
+                | "ACTIVE"
+                | "REACTIVE_IMPORT"
+                | "REACTIVE";
+            /**
+             * Unique identifier of the register within this service point.  Is not globally unique
+             */
+            registerId: string;
+            /**
+             * Register suffix of the meter register where the meter reads are obtained
+             */
+            registerSuffix?: string;
+            /**
+             * Code to identify the time validity of register contents
+             */
+            timeOfDay?:
+                | "ALLDAY"
+                | "INTERVAL"
+                | "PEAK"
+                | "BUSINESS"
+                | "SHOULDER"
+                | "EVENING"
+                | "OFFPEAK"
+                | "CONTROLLED"
+                | "DEMAND";
+            /**
+             * The unit of measure for data held in this register
+             */
+            unitOfMeasure?: string;
             [k: string]: unknown;
-        }>
-        | null;
+        }>;
+        /**
+         * Technical characteristics of the meter
+         */
+        specifications: {
+            /**
+             * The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>
+             */
+            installationType:
+                | "BASIC"
+                | "COMMS1"
+                | "COMMS2"
+                | "COMMS3"
+                | "COMMS4"
+                | "COMMS4C"
+                | "COMMS4D"
+                | "MRAM"
+                | "MRIM"
+                | "PROF"
+                | "SAMPLE"
+                | "UMCP"
+                | "VICAMI"
+                | "NCOLNUML";
+            /**
+             * Free text field to identify the manufacturer of the installed meter
+             */
+            manufacturer?: string;
+            /**
+             * Free text field to identify the meter manufacturer’s designation for the meter model
+             */
+            model?: string;
+            /**
+             * This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required
+             */
+            nextScheduledReadDate?: string;
+            /**
+             * Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>
+             */
+            readType?: string;
+            /**
+             * A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>
+             */
+            status: "CURRENT" | "DISCONNECTED";
+            [k: string]: unknown;
+        };
+        [k: string]: unknown;
+    }> | null;
     /**
      * The independent ID of the service point, known in the industry as the NMI
      */
@@ -1241,7 +1284,12 @@ export interface EnergyServicePointDetail {
     /**
      * Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>
      */
-    servicePointStatus: "ACTIVE" | "DE_ENERGISED" | "EXTINCT" | "GREENFIELD" | "OFF_MARKET";
+    servicePointStatus:
+        | "ACTIVE"
+        | "DE_ENERGISED"
+        | "EXTINCT"
+        | "GREENFIELD"
+        | "OFF_MARKET";
     /**
      * The start date from which this service point first became valid
      */
@@ -1285,7 +1333,15 @@ export interface EnergyServicePointDetailResponse {
         /**
          * Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>
          */
-        jurisdictionCode: "ALL" | "ACT" | "NEM" | "NSW" | "QLD" | "SA" | "TAS" | "VIC";
+        jurisdictionCode:
+            | "ALL"
+            | "ACT"
+            | "NEM"
+            | "NSW"
+            | "QLD"
+            | "SA"
+            | "TAS"
+            | "VIC";
         /**
          * The date and time that the information for this service point was modified
          */
@@ -1435,121 +1491,119 @@ export interface EnergyServicePointDetailResponse {
         /**
          * The meters associated with the service point. This may be empty where there are no meters physically installed at the service point
          */
-        meters?:
-            | Array<{
+        meters?: Array<{
+            /**
+             * The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique
+             */
+            meterId: string;
+            /**
+             * Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point
+             */
+            registers?: Array<{
                 /**
-                 * The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique
+                 * The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.
                  */
-                meterId: string;
+                averagedDailyLoad?: number;
                 /**
-                 * Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point
+                 * Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>
                  */
-                registers?: Array<{
-                    /**
-                     * The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.
-                     */
-                    averagedDailyLoad?: number;
-                    /**
-                     * Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>
-                     */
-                    consumptionType?: "ACTUAL" | "CUMULATIVE";
-                    /**
-                     * Indicates whether the energy recorded by this register is created under a Controlled Load regime
-                     */
-                    controlledLoad?: boolean;
-                    /**
-                     * Multiplier required to take a register value and turn it into a value representing billable energy
-                     */
-                    multiplier?: number;
-                    /**
-                     * The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider
-                     */
-                    networkTariffCode?: string;
-                    /**
-                     * Indicates the consumption type of register
-                     */
-                    registerConsumptionType:
-                        | "INTERVAL"
-                        | "BASIC"
-                        | "PROFILE_DATA"
-                        | "ACTIVE_IMPORT"
-                        | "ACTIVE"
-                        | "REACTIVE_IMPORT"
-                        | "REACTIVE";
-                    /**
-                     * Unique identifier of the register within this service point.  Is not globally unique
-                     */
-                    registerId: string;
-                    /**
-                     * Register suffix of the meter register where the meter reads are obtained
-                     */
-                    registerSuffix?: string;
-                    /**
-                     * Code to identify the time validity of register contents
-                     */
-                    timeOfDay?:
-                        | "ALLDAY"
-                        | "INTERVAL"
-                        | "PEAK"
-                        | "BUSINESS"
-                        | "SHOULDER"
-                        | "EVENING"
-                        | "OFFPEAK"
-                        | "CONTROLLED"
-                        | "DEMAND";
-                    /**
-                     * The unit of measure for data held in this register
-                     */
-                    unitOfMeasure?: string;
-                    [k: string]: unknown;
-                }>;
+                consumptionType?: "ACTUAL" | "CUMULATIVE";
                 /**
-                 * Technical characteristics of the meter
+                 * Indicates whether the energy recorded by this register is created under a Controlled Load regime
                  */
-                specifications: {
-                    /**
-                     * The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>
-                     */
-                    installationType:
-                        | "BASIC"
-                        | "COMMS1"
-                        | "COMMS2"
-                        | "COMMS3"
-                        | "COMMS4"
-                        | "COMMS4C"
-                        | "COMMS4D"
-                        | "MRAM"
-                        | "MRIM"
-                        | "PROF"
-                        | "SAMPLE"
-                        | "UMCP"
-                        | "VICAMI"
-                        | "NCOLNUML";
-                    /**
-                     * Free text field to identify the manufacturer of the installed meter
-                     */
-                    manufacturer?: string;
-                    /**
-                     * Free text field to identify the meter manufacturer’s designation for the meter model
-                     */
-                    model?: string;
-                    /**
-                     * This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required
-                     */
-                    nextScheduledReadDate?: string;
-                    /**
-                     * Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>
-                     */
-                    readType?: string;
-                    /**
-                     * A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>
-                     */
-                    status: "CURRENT" | "DISCONNECTED";
-                    [k: string]: unknown;
-                };
+                controlledLoad?: boolean;
+                /**
+                 * Multiplier required to take a register value and turn it into a value representing billable energy
+                 */
+                multiplier?: number;
+                /**
+                 * The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider
+                 */
+                networkTariffCode?: string;
+                /**
+                 * Indicates the consumption type of register
+                 */
+                registerConsumptionType:
+                    | "INTERVAL"
+                    | "BASIC"
+                    | "PROFILE_DATA"
+                    | "ACTIVE_IMPORT"
+                    | "ACTIVE"
+                    | "REACTIVE_IMPORT"
+                    | "REACTIVE";
+                /**
+                 * Unique identifier of the register within this service point.  Is not globally unique
+                 */
+                registerId: string;
+                /**
+                 * Register suffix of the meter register where the meter reads are obtained
+                 */
+                registerSuffix?: string;
+                /**
+                 * Code to identify the time validity of register contents
+                 */
+                timeOfDay?:
+                    | "ALLDAY"
+                    | "INTERVAL"
+                    | "PEAK"
+                    | "BUSINESS"
+                    | "SHOULDER"
+                    | "EVENING"
+                    | "OFFPEAK"
+                    | "CONTROLLED"
+                    | "DEMAND";
+                /**
+                 * The unit of measure for data held in this register
+                 */
+                unitOfMeasure?: string;
                 [k: string]: unknown;
-            }>
-            | null;
+            }>;
+            /**
+             * Technical characteristics of the meter
+             */
+            specifications: {
+                /**
+                 * The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>
+                 */
+                installationType:
+                    | "BASIC"
+                    | "COMMS1"
+                    | "COMMS2"
+                    | "COMMS3"
+                    | "COMMS4"
+                    | "COMMS4C"
+                    | "COMMS4D"
+                    | "MRAM"
+                    | "MRIM"
+                    | "PROF"
+                    | "SAMPLE"
+                    | "UMCP"
+                    | "VICAMI"
+                    | "NCOLNUML";
+                /**
+                 * Free text field to identify the manufacturer of the installed meter
+                 */
+                manufacturer?: string;
+                /**
+                 * Free text field to identify the meter manufacturer’s designation for the meter model
+                 */
+                model?: string;
+                /**
+                 * This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required
+                 */
+                nextScheduledReadDate?: string;
+                /**
+                 * Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>
+                 */
+                readType?: string;
+                /**
+                 * A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>
+                 */
+                status: "CURRENT" | "DISCONNECTED";
+                [k: string]: unknown;
+            };
+            [k: string]: unknown;
+        }> | null;
         /**
          * The independent ID of the service point, known in the industry as the NMI
          */
@@ -1584,7 +1638,12 @@ export interface EnergyServicePointDetailResponse {
         /**
          * Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>
          */
-        servicePointStatus: "ACTIVE" | "DE_ENERGISED" | "EXTINCT" | "GREENFIELD" | "OFF_MARKET";
+        servicePointStatus:
+            | "ACTIVE"
+            | "DE_ENERGISED"
+            | "EXTINCT"
+            | "GREENFIELD"
+            | "OFF_MARKET";
         /**
          * The start date from which this service point first became valid
          */
@@ -1626,7 +1685,15 @@ export interface EnergyServicePointListResponse {
             /**
              * Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>
              */
-            jurisdictionCode: "ALL" | "ACT" | "NEM" | "NSW" | "QLD" | "SA" | "TAS" | "VIC";
+            jurisdictionCode:
+                | "ALL"
+                | "ACT"
+                | "NEM"
+                | "NSW"
+                | "QLD"
+                | "SA"
+                | "TAS"
+                | "VIC";
             /**
              * The date and time that the information for this service point was modified
              */
@@ -1654,7 +1721,12 @@ export interface EnergyServicePointListResponse {
             /**
              * Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>
              */
-            servicePointStatus: "ACTIVE" | "DE_ENERGISED" | "EXTINCT" | "GREENFIELD" | "OFF_MARKET";
+            servicePointStatus:
+                | "ACTIVE"
+                | "DE_ENERGISED"
+                | "EXTINCT"
+                | "GREENFIELD"
+                | "OFF_MARKET";
             /**
              * The start date from which this service point first became valid
              */

@@ -23,7 +23,10 @@ declare namespace cytoscapeCxtmenu {
          * Alternatively, a function that returns an array of commands
          * depending on the selected element.
          */
-        commands?: Command[] | ((element: cytoscape.Singular) => Command[]) | undefined;
+        commands?:
+            | Command[]
+            | ((element: cytoscape.Singular) => Command[])
+            | undefined;
         /*
          * The background color of the menu.
          * Can be any valid [CSS color definition](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value).
@@ -158,7 +161,9 @@ declare global {
             /*
              * Set up the context menu according to the given options.
              */
-            cxtmenu: (options?: cytoscapeCxtmenu.Options) => cytoscapeCxtmenu.MenuInstance;
+            cxtmenu: (
+                options?: cytoscapeCxtmenu.Options,
+            ) => cytoscapeCxtmenu.MenuInstance;
         }
     }
 }

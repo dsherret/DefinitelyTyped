@@ -11,33 +11,87 @@ declare class Liftoff extends EventEmitter {
      */
     constructor(options?: Liftoff.Options);
 
-    prepare(options: Liftoff.PrepareOptions, callback: (env: Liftoff.LiftoffEnv) => void): void;
-    execute(env: Liftoff.LiftoffEnv, callback: (this: Liftoff, env: Liftoff.LiftoffEnv, argv: string[]) => void): void;
+    prepare(
+        options: Liftoff.PrepareOptions,
+        callback: (env: Liftoff.LiftoffEnv) => void,
+    ): void;
+    execute(
+        env: Liftoff.LiftoffEnv,
+        callback: (
+            this: Liftoff,
+            env: Liftoff.LiftoffEnv,
+            argv: string[],
+        ) => void,
+    ): void;
     execute(
         env: Liftoff.LiftoffEnv,
         forcedFlags: string | string[],
-        callback: (this: Liftoff, env: Liftoff.LiftoffEnv, argv: string[]) => void,
+        callback: (
+            this: Liftoff,
+            env: Liftoff.LiftoffEnv,
+            argv: string[],
+        ) => void,
     ): void;
 
-    addListener<TEvent extends keyof Liftoff.Events>(event: TEvent, listener: Liftoff.Events[TEvent]): this;
-    addListener(event: string | symbol, listener: (...args: any[]) => void): this;
-    on<TEvent extends keyof Liftoff.Events>(event: TEvent, listener: Liftoff.Events[TEvent]): this;
+    addListener<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+        listener: Liftoff.Events[TEvent],
+    ): this;
+    addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
+    on<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+        listener: Liftoff.Events[TEvent],
+    ): this;
     on(event: string | symbol, listener: (...args: any[]) => void): this;
-    once<TEvent extends keyof Liftoff.Events>(event: TEvent, listener: Liftoff.Events[TEvent]): this;
+    once<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+        listener: Liftoff.Events[TEvent],
+    ): this;
     once(event: string | symbol, listener: (...args: any[]) => void): this;
-    prependListener<TEvent extends keyof Liftoff.Events>(event: TEvent, listener: Liftoff.Events[TEvent]): this;
-    prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
-    prependOnceListener<TEvent extends keyof Liftoff.Events>(event: TEvent, listener: Liftoff.Events[TEvent]): this;
-    prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
-    removeListener<TEvent extends keyof Liftoff.Events>(event: TEvent, listener: Liftoff.Events[TEvent]): this;
-    removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
-    off<TEvent extends keyof Liftoff.Events>(event: TEvent, listener: Liftoff.Events[TEvent]): this;
+    prependListener<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+        listener: Liftoff.Events[TEvent],
+    ): this;
+    prependListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
+    prependOnceListener<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+        listener: Liftoff.Events[TEvent],
+    ): this;
+    prependOnceListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
+    removeListener<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+        listener: Liftoff.Events[TEvent],
+    ): this;
+    removeListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
+    off<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+        listener: Liftoff.Events[TEvent],
+    ): this;
     off(event: string | symbol, listener: (...args: any[]) => void): this;
-    listeners<TEvent extends keyof Liftoff.Events>(event: TEvent): Array<Liftoff.Events[TEvent]>;
+    listeners<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+    ): Array<Liftoff.Events[TEvent]>;
     listeners(event: string | symbol): Array<(...args: any[]) => void>;
-    rawListeners<TEvent extends keyof Liftoff.Events>(event: TEvent): Array<Liftoff.Events[TEvent]>;
+    rawListeners<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+    ): Array<Liftoff.Events[TEvent]>;
     rawListeners(event: string | symbol): Array<(...args: any[]) => void>;
-    emit<TEvent extends keyof Liftoff.Events>(event: TEvent, ...args: Parameters<Liftoff.Events[TEvent]>): boolean;
+    emit<TEvent extends keyof Liftoff.Events>(
+        event: TEvent,
+        ...args: Parameters<Liftoff.Events[TEvent]>
+    ): boolean;
     emit(event: string | symbol, ...args: any[]): boolean;
 }
 
@@ -82,7 +136,10 @@ declare namespace Liftoff {
          * To support all v8flags, see `v8flags`.
          * @default null
          */
-        v8flags?: string[] | ((cb: (err: any, flags: string[]) => void) => void) | undefined;
+        v8flags?:
+            | string[]
+            | ((cb: (err: any, flags: string[]) => void) => void)
+            | undefined;
         /**
          * Sets what the process title will be.
          * @default null
@@ -99,9 +156,13 @@ declare namespace Liftoff {
          * of path arguments keyed by unique names.
          * @default null
          */
-        configFiles?: {
-            [extension: string]: { [locationName: string]: string | PathSpec };
-        } | undefined;
+        configFiles?:
+            | {
+                  [extension: string]: {
+                      [locationName: string]: string | PathSpec;
+                  };
+              }
+            | undefined;
     }
 
     interface PrepareOptions {
@@ -161,7 +222,9 @@ declare namespace Liftoff {
         /**
          * an object of filepaths for each found config file (filepath values will be null if not found)
          */
-        configFiles: { [extensions: string]: { [path: string]: string | null } };
+        configFiles: {
+            [extensions: string]: { [path: string]: string | null };
+        };
         /**
          * The paths and contents of the found config files.
          */

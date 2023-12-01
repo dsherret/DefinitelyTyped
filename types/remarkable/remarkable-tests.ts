@@ -109,13 +109,8 @@ export class RemarkableTest {
 
     enableRulesManually() {
         const md = new Remarkable();
-        md.core.ruler.enable([
-            "abbr",
-        ]);
-        md.block.ruler.enable([
-            "footnote",
-            "deflist",
-        ]);
+        md.core.ruler.enable(["abbr"]);
+        md.block.ruler.enable(["footnote", "deflist"]);
         md.inline.ruler.enable([
             "footnote_inline",
             "ins",
@@ -139,13 +134,14 @@ export class RemarkableTest {
         const md = new Remarkable();
         const noop = () => {};
         const plugin1: Remarkable.Plugin = noop as (md: Remarkable) => void;
-        const plugin2: Remarkable.Plugin = noop as (md: Remarkable, options: {}) => void;
+        const plugin2: Remarkable.Plugin = noop as (
+            md: Remarkable,
+            options: {},
+        ) => void;
         const plugin3: Remarkable.Plugin = noop as (md: Remarkable) => void;
         const opts: any = undefined;
 
-        md.use(plugin1)
-            .use(plugin2, opts)
-            .use(plugin3);
+        md.use(plugin1).use(plugin2, opts).use(plugin3);
     }
 
     touchParserAndRenderer() {
@@ -376,8 +372,8 @@ export class UtilsTest {
     }
 
     isValidEntityCode() {
-        Remarkable.utils.isValidEntityCode(0xD800);
-        Remarkable.utils.isValidEntityCode(0xD7FF);
+        Remarkable.utils.isValidEntityCode(0xd800);
+        Remarkable.utils.isValidEntityCode(0xd7ff);
         Remarkable.utils.isValidEntityCode(1000);
     }
 
@@ -392,6 +388,6 @@ export class UtilsTest {
     }
 
     escapeHtml() {
-        Remarkable.utils.replaceEntities("<script>alert(\"&copy;\")</script>");
+        Remarkable.utils.replaceEntities('<script>alert("&copy;")</script>');
     }
 }

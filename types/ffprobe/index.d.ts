@@ -66,15 +66,18 @@ declare namespace getInfo {
         roll: number;
     }
 
-    interface UnknownSphericalMappingSideData extends BaseSphericalMappingSideData {
+    interface UnknownSphericalMappingSideData
+        extends BaseSphericalMappingSideData {
         projection: "unknown";
     }
 
-    interface EquirectangularSphericalMappingSideData extends BaseSphericalMappingSideData {
+    interface EquirectangularSphericalMappingSideData
+        extends BaseSphericalMappingSideData {
         projection: "equirectangular";
     }
 
-    interface CubeMapSphericalMappingSideData extends BaseSphericalMappingSideData {
+    interface CubeMapSphericalMappingSideData
+        extends BaseSphericalMappingSideData {
         projection: "cubemap";
         /**
          * Based on the C code related to Cube Map Spherical Mapping side data section
@@ -83,7 +86,8 @@ declare namespace getInfo {
         padding: number;
     }
 
-    interface TiltedEquirectangularSphericalMappingSideData extends BaseSphericalMappingSideData {
+    interface TiltedEquirectangularSphericalMappingSideData
+        extends BaseSphericalMappingSideData {
         projection: "tiled equirectangular";
         /**
          * Based on the C code related to Cube Map Spherical Mapping side data section
@@ -121,7 +125,8 @@ declare namespace getInfo {
         side_data_type: "Mastering display metadata";
     }
 
-    interface PrimariesMasteringDisplayMetadataSideData extends BaseMasteringDisplayMetadataSideData {
+    interface PrimariesMasteringDisplayMetadataSideData
+        extends BaseMasteringDisplayMetadataSideData {
         /**
          * Based on the C code related to Primaries Mastering display metadata side data section
          * {@see https://github.com/FFmpeg/FFmpeg/blob/b37795688a9bfa6d5a2e9b2535c4b10ebc14ac5d/fftools/ffprobe.c#L2336-L2344}
@@ -137,7 +142,8 @@ declare namespace getInfo {
         white_point_y: string;
     }
 
-    interface LuminanceMasteringDisplayMetadataSideData extends BaseMasteringDisplayMetadataSideData {
+    interface LuminanceMasteringDisplayMetadataSideData
+        extends BaseMasteringDisplayMetadataSideData {
         /**
          * Based on the C code related to Luminance Mastering display metadata side data section
          * {@see https://github.com/FFmpeg/FFmpeg/blob/b37795688a9bfa6d5a2e9b2535c4b10ebc14ac5d/fftools/ffprobe.c#L2348-L2349}
@@ -149,7 +155,8 @@ declare namespace getInfo {
     type MasteringDisplayMetadataSideData =
         | PrimariesMasteringDisplayMetadataSideData
         | LuminanceMasteringDisplayMetadataSideData
-        | (PrimariesMasteringDisplayMetadataSideData & LuminanceMasteringDisplayMetadataSideData);
+        | (PrimariesMasteringDisplayMetadataSideData &
+              LuminanceMasteringDisplayMetadataSideData);
 
     interface ContentLightLevelMetadataSideData extends BaseSideData {
         /**
@@ -344,6 +351,9 @@ declare function getInfo(
     cb: (err: Error, info: getInfo.FFProbeResult) => void,
 ): void;
 
-declare function getInfo(filePath: string, options: getInfo.Options): Promise<getInfo.FFProbeResult>;
+declare function getInfo(
+    filePath: string,
+    options: getInfo.Options,
+): Promise<getInfo.FFProbeResult>;
 
 export = getInfo;

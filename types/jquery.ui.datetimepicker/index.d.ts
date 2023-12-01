@@ -118,7 +118,16 @@ interface JQuery {
     datetimepicker(): JQuery;
     datetimepicker(options?: DateTimePickerOptions): JQuery;
     datetimepicker(method: string, methodParameter: any): any;
-    datetimepicker(method: "formatTime", methodParameter: formatTimeOptions): string;
-    datetimepicker(method: "parseTime", methodParameter: parseTimeOptions): Time;
-    datetimepicker(method: "parseDateTime", methodParameter: parseDateTimeOptions): Date;
+    datetimepicker(
+        method: "formatTime",
+        methodParameter: formatTimeOptions,
+    ): string;
+    datetimepicker(
+        method: "parseTime",
+        methodParameter: parseTimeOptions,
+    ): Time;
+    datetimepicker(
+        method: "parseDateTime",
+        methodParameter: parseDateTimeOptions,
+    ): Date;
 }

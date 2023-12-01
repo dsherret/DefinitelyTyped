@@ -41,7 +41,10 @@ export class PNG extends Duplex {
         deltaY?: number,
     ): PNG;
 
-    on(event: "metadata", callback: (this: PNG, metadata: Metadata) => void): this;
+    on(
+        event: "metadata",
+        callback: (this: PNG, metadata: Metadata) => void,
+    ): this;
     on(event: "parsed", callback: (this: PNG, data: Buffer) => void): this;
     on(event: "error", callback: (this: PNG, error: Error) => void): this;
     on(event: "close", callback: (this: PNG) => void): this;
@@ -49,7 +52,10 @@ export class PNG extends Duplex {
 
     pack(): PNG;
 
-    parse(data: string | Buffer, callback?: (error: Error, data: PNG) => void): PNG;
+    parse(
+        data: string | Buffer,
+        callback?: (error: Error, data: PNG) => void,
+    ): PNG;
 }
 
 export interface BaseOptions {
@@ -64,11 +70,13 @@ export interface ParserOptions {
 }
 
 export interface PackerOptions {
-    bgColor?: {
-        red: number;
-        green: number;
-        blue: number;
-    } | undefined;
+    bgColor?:
+        | {
+              red: number;
+              green: number;
+              blue: number;
+          }
+        | undefined;
     bitDepth?: BitDepth | undefined;
     colorType?: ColorType | undefined;
     deflateChunkSize?: number | undefined;

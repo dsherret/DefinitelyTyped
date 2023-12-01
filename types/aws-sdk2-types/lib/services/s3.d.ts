@@ -6,7 +6,11 @@ export class S3Customizations extends Service {
     /**
      * Get a pre-signed URL for a given operation name.
      */
-    getSignedUrl(operation: string, params: any, callback: (err: Error, url: string) => void): void;
+    getSignedUrl(
+        operation: string,
+        params: any,
+        callback: (err: Error, url: string) => void,
+    ): void;
     /**
      * Get a pre-signed URL for a given operation name.
      */

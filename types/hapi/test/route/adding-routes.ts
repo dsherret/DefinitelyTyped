@@ -1,5 +1,11 @@
 // from https://hapijs.com/tutorials/getting-started#adding-routes
-import { Request, ResponseToolkit, Server, ServerOptions, ServerRoute } from "hapi";
+import {
+    Request,
+    ResponseToolkit,
+    Server,
+    ServerOptions,
+    ServerRoute,
+} from "hapi";
 
 const options: ServerOptions = {
     port: 8000,

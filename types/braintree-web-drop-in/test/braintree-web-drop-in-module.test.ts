@@ -15,7 +15,13 @@ dropin.create({ authorization: "", container: "my-div" }, (error, myDropin) => {
         container: "my-div",
         locale: "en-US",
         translations: {},
-        paymentOptionPriority: ["card", "paypal", "paypalCredit", "venmo", "applePay"],
+        paymentOptionPriority: [
+            "card",
+            "paypal",
+            "paypalCredit",
+            "venmo",
+            "applePay",
+        ],
         card: {
             cardholderName: {
                 required: false,
@@ -62,7 +68,7 @@ dropin.create({ authorization: "", container: "my-div" }, (error, myDropin) => {
                 totalPrice: "100.00",
             },
             button: {
-                onClick: event => {},
+                onClick: (event) => {},
             },
         },
         dataCollector: {
@@ -82,14 +88,23 @@ dropin.create({ authorization: "", container: "my-div" }, (error, myDropin) => {
     function onNoPaymentMethodRequestable() {
         return;
     }
-    function onPaymentMethodRequestable({ type, paymentMethodIsSelected }: dropin.PaymentMethodRequestablePayload) {
+    function onPaymentMethodRequestable({
+        type,
+        paymentMethodIsSelected,
+    }: dropin.PaymentMethodRequestablePayload) {
         const myType: "CreditCard" | "PayPalAccount" = type;
         const myBool: boolean = paymentMethodIsSelected;
     }
-    function onPaymentOptionSelected({ paymentOption }: dropin.PaymentOptionSelectedPayload) {
-        const myPaymentOption: "card" | "paypal" | "paypalCredit" = paymentOption;
+    function onPaymentOptionSelected({
+        paymentOption,
+    }: dropin.PaymentOptionSelectedPayload) {
+        const myPaymentOption: "card" | "paypal" | "paypalCredit" =
+            paymentOption;
     }
-    function onChangeActiveView({ previousViewId, newViewId }: dropin.ChangeActiveViewPayload) {
+    function onChangeActiveView({
+        previousViewId,
+        newViewId,
+    }: dropin.ChangeActiveViewPayload) {
         const myPreviousView:
             | "card"
             | "paypal"
@@ -129,18 +144,24 @@ dropin.create({ authorization: "", container: "my-div" }, (error, myDropin) => {
     });
 
     const myPayload = await myDropin.requestPaymentMethod();
-    const type: "AndroidPayCard" | "ApplePayCard" | "CreditCard" | "PayPalAccount" | "VenmoAccount" = myPayload.type;
+    const type:
+        | "AndroidPayCard"
+        | "ApplePayCard"
+        | "CreditCard"
+        | "PayPalAccount"
+        | "VenmoAccount" = myPayload.type;
     switch (myPayload.type) {
         case "AndroidPayCard":
         case "ApplePayCard":
         case "CreditCard":
-            const countryOfIssuance: string = myPayload.binData.countryOfIssuance;
+            const countryOfIssuance: string =
+                myPayload.binData.countryOfIssuance;
     }
     const details: object = myPayload.details;
     const deviceData: string | undefined = myPayload.deviceData;
     const nonce: string = myPayload.nonce;
 
-    myDropin.teardown(error => {
+    myDropin.teardown((error) => {
         if (error) {
             return;
         }
@@ -149,8 +170,12 @@ dropin.create({ authorization: "", container: "my-div" }, (error, myDropin) => {
 
     myDropin.updateConfiguration("paypal", "amount", "10.00");
     myDropin.updateConfiguration("paypalCredit", "amount", "10.00");
-    myDropin.updateConfiguration("applePay", "paymentRequest", { total: { amount: "10.00" } });
-    myDropin.updateConfiguration("googlePay", "transactionInfo", { totalPrice: "10.00" });
+    myDropin.updateConfiguration("applePay", "paymentRequest", {
+        total: { amount: "10.00" },
+    });
+    myDropin.updateConfiguration("googlePay", "transactionInfo", {
+        totalPrice: "10.00",
+    });
     myDropin.updateConfiguration("threeDSecure", "amount", "10.00");
 })();
 

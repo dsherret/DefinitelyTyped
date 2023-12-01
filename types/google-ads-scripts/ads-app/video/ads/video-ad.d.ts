@@ -7,7 +7,9 @@ declare namespace GoogleAdsScripts {
             /** Sets the image that will be used as customized companion banner. */
             withCompanionBanner(imageMedia: Media): this;
             /** Sets the custom parameters of the new video ad to the specified value. */
-            withCustomParameters(customParameters: Record<string, string>): this;
+            withCustomParameters(
+                customParameters: Record<string, string>,
+            ): this;
             /** Sets the website address that appears on the ad. */
             withDisplayUrl(displayUrl: string): this;
             /** Sets the final URL of the new video ad to the specified value. */
@@ -29,7 +31,9 @@ declare namespace GoogleAdsScripts {
             /** Sets the image that will be used as customized companion banner. */
             withCompanionBanner(imageMedia: Media): this;
             /** Sets the custom parameters of the new video ad to the specified value. */
-            withCustomParameters(customParameters: Record<string, string>): this;
+            withCustomParameters(
+                customParameters: Record<string, string>,
+            ): this;
             /** Sets the website address that appears on the ad. */
             withDisplayUrl(displayUrl: string): this;
             /** Sets the final URL of the new video ad to the specified value. */
@@ -47,7 +51,9 @@ declare namespace GoogleAdsScripts {
             /** Sets the image that will be used as customized companion banner. */
             withCompanionBanner(imageMedia: Media): this;
             /** Sets the custom parameters of the new video ad to the specified value. */
-            withCustomParameters(customParameters: Record<string, string>): this;
+            withCustomParameters(
+                customParameters: Record<string, string>,
+            ): this;
             /** Sets the website address that appears on the ad. */
             withDisplayUrl(displayUrl: string): this;
             /** Sets the final URL of the new video ad to the specified value. */
@@ -165,14 +171,12 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoAdSelector
-            extends
-                Base.Selector<VideoAdIterator>,
+            extends Base.Selector<VideoAdIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
 
         /**
          * Provides access to ad URLs.
@@ -187,7 +191,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** Builder for a video discovery ad under construction. */
-        interface VideoDiscoveryAdBuilder extends Base.Builder<VideoAdOperation> {
+        interface VideoDiscoveryAdBuilder
+            extends Base.Builder<VideoAdOperation> {
             /** Sets the video ad name. */
             withAdName(adName: string): this;
             /** Sets the first line of the new ad's description to the specified value. */

@@ -59,7 +59,9 @@ declare namespace GoogleAdsScripts {
          */
         interface ImageAdBuilder extends Base.Builder<AdOperation> {
             /** Sets the custom parameters of the new ad to the specified value. */
-            withCustomParameters(customParameters: Record<string, string>): this;
+            withCustomParameters(
+                customParameters: Record<string, string>,
+            ): this;
             /** Sets the display URL of the new ad to the specified value. */
             withDisplayUrl(displayUrl: string): this;
             /** Sets the final URL of the new ad to the specified value. */

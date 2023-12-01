@@ -1,7 +1,8 @@
 import dotenv = require("dotenv-flow");
 
 const env = dotenv.config();
-const dbUrl: string | null = env.error || !env.parsed ? null : env.parsed["BASIC"];
+const dbUrl: string | null =
+    env.error || !env.parsed ? null : env.parsed["BASIC"];
 
 dotenv.config({
     node_env: "production",

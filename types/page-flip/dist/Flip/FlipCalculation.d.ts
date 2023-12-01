@@ -18,7 +18,12 @@ export class FlipCalculation {
     private readonly pageWidth;
     private readonly pageHeight;
 
-    constructor(direction: FlipDirection, corner: FlipCorner, pageWidth: string, pageHeight: string);
+    constructor(
+        direction: FlipDirection,
+        corner: FlipCorner,
+        pageWidth: string,
+        pageHeight: string,
+    );
     /**
      * The main calculation method
      */

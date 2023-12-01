@@ -12,7 +12,10 @@ import express = require("express");
 /**
  * @see https://github.com/avinoamr/connect-slashes#usage
  */
-declare function slashes(addTrailingSlashes?: boolean, options?: slashes.Options): express.RequestHandler;
+declare function slashes(
+    addTrailingSlashes?: boolean,
+    options?: slashes.Options,
+): express.RequestHandler;
 
 declare namespace slashes {
     /**

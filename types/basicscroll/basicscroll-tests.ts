@@ -55,7 +55,9 @@ const easeBoxes: basicScroll.BasicScroll[] = [];
 document.querySelectorAll(".easeBox").forEach((elem, i) => {
     // Get the timing from the data attribute.
     // You can also hard-code the timing, but for the demo it's easier this way.
-    const timing: basicScroll.KnownTimings = <basicScroll.KnownTimings> elem.getAttribute("data-timing");
+    const timing: basicScroll.KnownTimings = <basicScroll.KnownTimings>(
+        elem.getAttribute("data-timing")
+    );
 
     // Crate an instance for the current element and store the instance in an array.
     // We start the animation later using the instances from the array.
@@ -92,8 +94,10 @@ const fadeBox = basicScroll.create({
     elem: document.querySelector(".fadeBox"),
     from: "bottom-bottom",
     to: "top-middle",
-    inside: (instance, percentage, props) => console.log("fadeBox is animating"),
-    outside: (instance, percentage, props) => console.log("fadeBox is not animating"),
+    inside: (instance, percentage, props) =>
+        console.log("fadeBox is animating"),
+    outside: (instance, percentage, props) =>
+        console.log("fadeBox is not animating"),
     props: {
         "--o": {
             from: 0.01,
@@ -118,4 +122,4 @@ const referenceBox = basicScroll.create({
 rotateBox.start();
 fadeBox.start();
 referenceBox.start();
-easeBoxes.forEach(easeBox => easeBox.start());
+easeBoxes.forEach((easeBox) => easeBox.start());

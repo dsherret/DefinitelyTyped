@@ -7,7 +7,11 @@ import { Options, Status } from "../";
  * @param content - Notice message.
  * @param [options={}] - Notice options.
  */
-export function createNotice(status: Status | undefined, content: string, options?: Partial<Options>): void;
+export function createNotice(
+    status: Status | undefined,
+    content: string,
+    options?: Partial<Options>,
+): void;
 
 /**
  * Dispatches an action signalling that an error notice is to be created.
@@ -15,7 +19,10 @@ export function createNotice(status: Status | undefined, content: string, option
  * @param content - Notice message.
  * @param [options] - Optional notice options.
  */
-export function createErrorNotice(content: string, options?: Partial<Options>): void;
+export function createErrorNotice(
+    content: string,
+    options?: Partial<Options>,
+): void;
 
 /**
  * Dispatches an action signalling that an info notice is to be created.
@@ -23,7 +30,10 @@ export function createErrorNotice(content: string, options?: Partial<Options>): 
  * @param content - Notice message.
  * @param [options] - Optional notice options.
  */
-export function createInfoNotice(content: string, options?: Partial<Options>): void;
+export function createInfoNotice(
+    content: string,
+    options?: Partial<Options>,
+): void;
 
 /**
  * Dispatches an action signalling that a success notice is to be created.
@@ -31,7 +41,10 @@ export function createInfoNotice(content: string, options?: Partial<Options>): v
  * @param content - Notice message.
  * @param [options] - Optional notice options.
  */
-export function createSuccessNotice(content: string, options?: Partial<Options>): void;
+export function createSuccessNotice(
+    content: string,
+    options?: Partial<Options>,
+): void;
 
 /**
  * Dispatches an action signalling that a warning notice is to be created.
@@ -39,7 +52,10 @@ export function createSuccessNotice(content: string, options?: Partial<Options>)
  * @param content - Notice message.
  * @param [options] - Optional notice options.
  */
-export function createWarningNotice(content: string, options?: Partial<Options>): void;
+export function createWarningNotice(
+    content: string,
+    options?: Partial<Options>,
+): void;
 
 /**
  * Dispatches an action signalling that a notice is to be removed.

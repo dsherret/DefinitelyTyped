@@ -155,7 +155,9 @@ export interface AutocompleteProvider {
      *  like them displayed to the user. Returning a Promise of an array of suggestions
      *  is also supported.
      */
-    getSuggestions(params: SuggestionsRequestedEvent): Suggestions | Promise<Suggestions>;
+    getSuggestions(
+        params: SuggestionsRequestedEvent,
+    ): Suggestions | Promise<Suggestions>;
 
     /**
      *  (experimental) Is called when a suggestion is selected by the user for
@@ -163,7 +165,9 @@ export interface AutocompleteProvider {
      *  Promise of the new suggestion to replace it with or return null if
      *  no change is needed.
      */
-    getSuggestionDetailsOnSelect?(suggestion: AnySuggestion): Promise<AnySuggestion | null> | AnySuggestion | null;
+    getSuggestionDetailsOnSelect?(
+        suggestion: AnySuggestion,
+    ): Promise<AnySuggestion | null> | AnySuggestion | null;
 
     /**
      *  Function that is called when a suggestion from your provider was inserted

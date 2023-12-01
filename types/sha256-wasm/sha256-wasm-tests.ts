@@ -20,7 +20,7 @@ if (Sha256.WASM) {
 
 Sha256.ready(); // $ExpectType Promise<void>
 // $ExpectType Promise<void>
-Sha256.ready(err => {
+Sha256.ready((err) => {
     err; // $ExpectType Error | undefined
 });
 
@@ -45,7 +45,7 @@ hash.digest("utf8"); // $ExpectType string
 
 hash.ready(); // $ExpectType Promise<void>
 // $ExpectType Promise<void>
-hash.ready(err => {
+hash.ready((err) => {
     err; // $ExpectType Error | undefined
 });
 

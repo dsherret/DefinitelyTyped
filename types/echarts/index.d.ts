@@ -65,14 +65,18 @@ declare namespace echarts {
      *
      * @param target Chart instance or container.
      */
-    function dispose(target: ECharts | HTMLDivElement | HTMLCanvasElement): void;
+    function dispose(
+        target: ECharts | HTMLDivElement | HTMLCanvasElement,
+    ): void;
 
     /**
      * Returns chart instance of dom container.
      *
      * @param target Chart container.
      */
-    function getInstanceByDom(target: HTMLDivElement | HTMLCanvasElement): ECharts;
+    function getInstanceByDom(
+        target: HTMLDivElement | HTMLCanvasElement,
+    ): ECharts;
 
     /**
      * Registers available maps. This can only be used after including
@@ -90,7 +94,11 @@ declare namespace echarts {
      *     for better visual effect.
      *     See [USA Population Estimates example](https://echarts.apache.org/examples/en/editor.html?c=map-usa).
      */
-    function registerMap(mapName: string, geoJson: object, specialAreas?: object): void;
+    function registerMap(
+        mapName: string,
+        geoJson: object,
+        specialAreas?: object,
+    ): void;
 
     /**
      * Registers a theme, should be specified when
@@ -193,7 +201,11 @@ declare namespace echarts {
          * @param {boolean} [lazyUpdate=false] Whether not to update chart
          *     immediately
          */
-        setOption(option: EChartOption | EChartsResponsiveOption, notMerge?: boolean, lazyUpdate?: boolean): void;
+        setOption(
+            option: EChartOption | EChartsResponsiveOption,
+            notMerge?: boolean,
+            lazyUpdate?: boolean,
+        ): void;
 
         /**
          * Configuration item, data, universal interface, all parameters and
@@ -383,7 +395,12 @@ declare namespace echarts {
          * @param {object} [context] context of callback function, what
          *     `this` refers to.
          */
-        on(eventName: string, query: string | Object, handler: Function, context?: object): void;
+        on(
+            eventName: string,
+            query: string | Object,
+            handler: Function,
+            context?: object,
+        ): void;
 
         /**
          * Unbind event-handler function.
@@ -406,7 +423,10 @@ declare namespace echarts {
          *     coordinate system.
          * @param {string | any[]} value The value to be converted.
          */
-        convertToPixel(finder: EChartsConvertFinder, value: string | any[]): string | any[];
+        convertToPixel(
+            finder: EChartsConvertFinder,
+            value: string | any[],
+        ): string | any[];
 
         /**
          * Convert a point from pixel coordinate to logical coordinate
@@ -418,7 +438,10 @@ declare namespace echarts {
          *     coordinate system.
          * @param {string | any[]} value The value to be converted.
          */
-        convertFromPixel(finder: EChartsConvertFinder, value: any[] | string): any[] | string;
+        convertFromPixel(
+            finder: EChartsConvertFinder,
+            value: any[] | string,
+        ): any[] | string;
 
         /**
          * Determine whether the given point is in the given coordinate systems or series.
@@ -824,7 +847,10 @@ declare namespace echarts {
          *
          * @see https://echarts.apache.org/en/option.html#singleAxis
          */
-        singleAxis?: EChartOption.SingleAxis | EChartOption.SingleAxis[] | undefined;
+        singleAxis?:
+            | EChartOption.SingleAxis
+            | EChartOption.SingleAxis[]
+            | undefined;
 
         /**
          * `timeline` component, which provides functions like switching and playing
@@ -905,7 +931,9 @@ declare namespace echarts {
          *
          * @see https://echarts.apache.org/en/option.html#textStyle
          */
-        textStyle?: (EChartOption.BaseTextStyle & EChartOption.BaseTextStyleWithRich) | undefined;
+        textStyle?:
+            | (EChartOption.BaseTextStyle & EChartOption.BaseTextStyleWithRich)
+            | undefined;
 
         /**
          * Whether to enable animation.
@@ -1269,7 +1297,12 @@ declare namespace echarts {
                  *
                  * @default 'start'
                  */
-                nameLocation?: "start" | "middle" | "center" | "end" | undefined;
+                nameLocation?:
+                    | "start"
+                    | "middle"
+                    | "center"
+                    | "end"
+                    | undefined;
 
                 /**
                  * Text style of axis name.
@@ -1334,7 +1367,11 @@ declare namespace echarts {
                  * @default null
                  * @see https://echarts.apache.org/option.html#yAxis.min
                  */
-                min?: number | string | ((value: { min: number; max: number }) => number) | undefined;
+                min?:
+                    | number
+                    | string
+                    | ((value: { min: number; max: number }) => number)
+                    | undefined;
 
                 /**
                  * The maximum value of axis.
@@ -1351,7 +1388,11 @@ declare namespace echarts {
                  * @default null
                  * @see https://echarts.apache.org/option.html#yAxis.max
                  */
-                max?: number | string | ((value: { min: number; max: number }) => number) | undefined;
+                max?:
+                    | number
+                    | string
+                    | ((value: { min: number; max: number }) => number)
+                    | undefined;
 
                 /**
                  * It is available only in numerical axis, i.e., type: `'value'`.
@@ -1524,7 +1565,9 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#yAxis.data
                  */
-                data?: Array<string | number | CartesianAxis.DataObject> | undefined;
+                data?:
+                    | Array<string | number | CartesianAxis.DataObject>
+                    | undefined;
 
                 /**
                  * axisPointer settings on the axis.
@@ -1591,7 +1634,10 @@ declare namespace echarts {
                  * @todo describe
                  */
                 interface Label extends Omit<TextStyleWithRich, "color"> {
-                    color?: string | ((val: string) => EChartOption.Color) | undefined;
+                    color?:
+                        | string
+                        | ((val: string) => EChartOption.Color)
+                        | undefined;
                     show?: boolean | undefined;
                     interval?: number | Function | undefined;
                     inside?: boolean | undefined;
@@ -1625,14 +1671,16 @@ declare namespace echarts {
                 interface SplitArea {
                     interval?: number | Function | undefined;
                     show?: boolean | undefined;
-                    areaStyle?: {
-                        color?: string[] | undefined;
-                        shadowBlur?: number | undefined;
-                        shadowColor?: string | undefined;
-                        shadowOffsetX?: number | undefined;
-                        shadowOffsetY?: number | undefined;
-                        opacity?: number | undefined;
-                    } | undefined;
+                    areaStyle?:
+                        | {
+                              color?: string[] | undefined;
+                              shadowBlur?: number | undefined;
+                              shadowColor?: string | undefined;
+                              shadowOffsetX?: number | undefined;
+                              shadowOffsetY?: number | undefined;
+                              opacity?: number | undefined;
+                          }
+                        | undefined;
                 }
 
                 /**
@@ -1653,29 +1701,33 @@ declare namespace echarts {
                     z?: number | undefined;
                     label?: PointerLabel | undefined;
                     lineStyle?: LineStyle | undefined;
-                    shadowStyle?: {
-                        color?: EChartOption.Color | undefined;
-                        shadowBlur?: number | undefined;
-                        shadowColor?: EChartOption.Color | undefined;
-                        shadowOffsetX?: number | undefined;
-                        shadowOffsetY?: number | undefined;
-                        opacity?: number | undefined;
-                    } | undefined;
+                    shadowStyle?:
+                        | {
+                              color?: EChartOption.Color | undefined;
+                              shadowBlur?: number | undefined;
+                              shadowColor?: EChartOption.Color | undefined;
+                              shadowOffsetX?: number | undefined;
+                              shadowOffsetY?: number | undefined;
+                              opacity?: number | undefined;
+                          }
+                        | undefined;
                     triggerTooltip?: boolean | undefined;
                     value?: number | undefined;
                     status?: boolean | undefined;
-                    handle?: {
-                        show?: boolean | undefined;
-                        icon?: any;
-                        size?: number | number[] | undefined;
-                        margin?: number | undefined;
-                        color?: string | undefined;
-                        throttle?: number | undefined;
-                        shadowBlur?: number | undefined;
-                        shadowColor?: string | undefined;
-                        shadowOffsetX?: number | undefined;
-                        shadowOffsetY?: number | undefined;
-                    } | undefined;
+                    handle?:
+                        | {
+                              show?: boolean | undefined;
+                              icon?: any;
+                              size?: number | number[] | undefined;
+                              margin?: number | undefined;
+                              color?: string | undefined;
+                              throttle?: number | undefined;
+                              shadowBlur?: number | undefined;
+                              shadowColor?: string | undefined;
+                              shadowOffsetX?: number | undefined;
+                              shadowOffsetY?: number | undefined;
+                          }
+                        | undefined;
                 }
 
                 interface PointerLabel {

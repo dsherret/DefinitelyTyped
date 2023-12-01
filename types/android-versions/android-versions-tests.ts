@@ -7,11 +7,11 @@ android.R; // $ExpectType AndroidVersion
 android.VERSIONS; // $ExpectType Record<VersionCode, AndroidVersion>
 
 // $ExpectType AndroidVersion[] | null
-android.getAll(version => {
+android.getAll((version) => {
     return version.ndk > 5 && version.api < 15;
 });
 
 // $ExpectType AndroidVersion
-android.get(version => {
+android.get((version) => {
     return version.ndk > 5 && version.api < 15;
 })!;

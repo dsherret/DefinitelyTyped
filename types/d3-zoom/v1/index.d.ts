@@ -38,7 +38,10 @@ export interface ZoomScale {
  * The first generic refers to the type of reference element to which the zoom behavior is attached.
  * The second generic refers to the type of the datum of the reference element.
  */
-export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datum> extends Function {
+export interface ZoomBehavior<
+    ZoomRefElement extends ZoomedElementBaseType,
+    Datum,
+> extends Function {
     /**
      * Applies this zoom behavior to the specified selection, binding the necessary event listeners to
      * allow panning and zooming, and initializing the zoom transform on each selected element to the identity transform if not already defined. This function is typically not invoked directly,
@@ -49,7 +52,10 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      * @param selection A D3 selection of elements.
      * @param args Optional arguments to be passed in.
      */
-    (selection: Selection<ZoomRefElement, Datum, any, any>, ...args: any[]): void;
+    (
+        selection: Selection<ZoomRefElement, Datum, any, any>,
+        ...args: any[]
+    ): void;
     /**
      * If selection is a selection, sets the current zoom transform of the selected elements to the specified transform, instantaneously emitting start, zoom and end events.
      * If selection is a transition, defines a “zoom” tween to the specified transform using d3.interpolateZoom, emitting a start event when the transition starts,
@@ -65,9 +71,15 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      * If a function, it is invoked for each selected element, being passed the current datum d and index i, with the this context as the current DOM element.
      */
     transform(
-        selection: Selection<ZoomRefElement, Datum, any, any> | TransitionLike<ZoomRefElement, Datum>,
-        transform: ZoomTransform | ValueFn<ZoomRefElement, Datum, ZoomTransform>,
-        point?: [number, number] | ValueFn<ZoomRefElement, Datum, [number, number]>,
+        selection:
+            | Selection<ZoomRefElement, Datum, any, any>
+            | TransitionLike<ZoomRefElement, Datum>,
+        transform:
+            | ZoomTransform
+            | ValueFn<ZoomRefElement, Datum, ZoomTransform>,
+        point?:
+            | [number, number]
+            | ValueFn<ZoomRefElement, Datum, [number, number]>,
     ): void;
 
     /**
@@ -82,7 +94,9 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      * If a function, it is invoked for each selected element, being passed the current datum d and index i, with the this context as the current DOM element.
      */
     translateBy(
-        selection: Selection<ZoomRefElement, Datum, any, any> | TransitionLike<ZoomRefElement, Datum>,
+        selection:
+            | Selection<ZoomRefElement, Datum, any, any>
+            | TransitionLike<ZoomRefElement, Datum>,
         x: number | ValueFn<ZoomRefElement, Datum, number>,
         y: number | ValueFn<ZoomRefElement, Datum, number>,
     ): void;
@@ -107,7 +121,9 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      * If a function, it is invoked for each selected element, being passed the current datum d and index i, with the this context as the current DOM element.
      */
     translateTo(
-        selection: Selection<ZoomRefElement, Datum, any, any> | TransitionLike<ZoomRefElement, Datum>,
+        selection:
+            | Selection<ZoomRefElement, Datum, any, any>
+            | TransitionLike<ZoomRefElement, Datum>,
         x: number | ValueFn<ZoomRefElement, Datum, number>,
         y: number | ValueFn<ZoomRefElement, Datum, number>,
         p?: [number, number] | ValueFn<ZoomRefElement, Datum, [number, number]>,
@@ -127,7 +143,9 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      * If a function, it is invoked for each selected element, being passed the current datum d and index i, with the this context as the current DOM element.
      */
     scaleBy(
-        selection: Selection<ZoomRefElement, Datum, any, any> | TransitionLike<ZoomRefElement, Datum>,
+        selection:
+            | Selection<ZoomRefElement, Datum, any, any>
+            | TransitionLike<ZoomRefElement, Datum>,
         k: number | ValueFn<ZoomRefElement, Datum, number>,
         p?: [number, number] | ValueFn<ZoomRefElement, Datum, [number, number]>,
     ): void;
@@ -146,7 +164,9 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      * If a function, it is invoked for each selected element, being passed the current datum d and index i, with the this context as the current DOM element.
      */
     scaleTo(
-        selection: Selection<ZoomRefElement, Datum, any, any> | TransitionLike<ZoomRefElement, Datum>,
+        selection:
+            | Selection<ZoomRefElement, Datum, any, any>
+            | TransitionLike<ZoomRefElement, Datum>,
         k: number | ValueFn<ZoomRefElement, Datum, number>,
         p?: [number, number],
     ): void;
@@ -243,7 +263,11 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      * SVG provides no programmatic method for retrieving the initial viewport size. Alternatively, consider using element.getBoundingClientRect.
      * (In Firefox, element.clientWidth and element.clientHeight is zero for SVG elements!)
      */
-    extent(): ValueFn<ZoomRefElement, Datum, [[number, number], [number, number]]>;
+    extent(): ValueFn<
+        ZoomRefElement,
+        Datum,
+        [[number, number], [number, number]]
+    >;
     /**
      * Set the viewport extent to the specified array of points [[x0, y0], [x1, y1]],
      * where [x0, y0] is the top-left corner of the viewport and [x1, y1] is the bottom-right corner of the viewport,
@@ -275,7 +299,13 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      * in order, being passed the current datum (d), the current index (i), and the current group (nodes),
      * with this as the current DOM element.The function returns the extent array.
      */
-    extent(extent: ValueFn<ZoomRefElement, Datum, [[number, number], [number, number]]>): this;
+    extent(
+        extent: ValueFn<
+            ZoomRefElement,
+            Datum,
+            [[number, number], [number, number]]
+        >,
+    ): this;
 
     /**
      * Return the current scale extent.
@@ -346,7 +376,10 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      * Returns the current interpolation factory, which defaults to d3.interpolateZoom to implement smooth zooming.
      */
     interpolate<
-        InterpolationFactory extends (a: ZoomView, b: ZoomView) => (t: number) => ZoomView,
+        InterpolationFactory extends (
+            a: ZoomView,
+            b: ZoomView,
+        ) => (t: number) => ZoomView,
     >(): InterpolationFactory;
 
     /**
@@ -359,7 +392,12 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
      *
      * @param interpolatorFactory An interpolator factory to be used to generate interpolators between zooms for transitions.
      */
-    interpolate(interpolatorFactory: (a: ZoomView, b: ZoomView) => (t: number) => ZoomView): this;
+    interpolate(
+        interpolatorFactory: (
+            a: ZoomView,
+            b: ZoomView,
+        ) => (t: number) => ZoomView,
+    ): this;
 
     /**
      * Return the first currently-assigned listener matching the specified typenames, if any.
@@ -407,7 +445,10 @@ export interface ZoomBehavior<ZoomRefElement extends ZoomedElementBaseType, Datu
  * The first generic refers to the type of reference element to which the zoom behavior is attached.
  * The second generic refers to the type of the datum of the reference element.
  */
-export function zoom<ZoomRefElement extends ZoomedElementBaseType, Datum>(): ZoomBehavior<ZoomRefElement, Datum>;
+export function zoom<
+    ZoomRefElement extends ZoomedElementBaseType,
+    Datum,
+>(): ZoomBehavior<ZoomRefElement, Datum>;
 
 // --------------------------------------------------------------------------
 // Zoom Event
@@ -419,7 +460,10 @@ export function zoom<ZoomRefElement extends ZoomedElementBaseType, Datum>(): Zoo
  * The first generic refers to the type of reference element to which the zoom behavior is attached.
  * The second generic refers to the type of the datum of the reference element.
  */
-export interface D3ZoomEvent<ZoomRefElement extends ZoomedElementBaseType, Datum> {
+export interface D3ZoomEvent<
+    ZoomRefElement extends ZoomedElementBaseType,
+    Datum,
+> {
     /**
      * The ZoomBehavior associated with the event
      */

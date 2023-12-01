@@ -62,7 +62,10 @@ declare module "angular" {
              *
              * {Array.<Object>} - route parameters extracted from the current $location.path() by applying the current route
              */
-            template?: string | { ($routeParams?: IRouteParamsService): string } | undefined;
+            template?:
+                | string
+                | { ($routeParams?: IRouteParamsService): string }
+                | undefined;
             /**
              * {(string|Function)=}
              * Path or function that returns a path to an html template that should be used by ngView.
@@ -71,7 +74,10 @@ declare module "angular" {
              *
              * {Array.<Object>} - route parameters extracted from the current $location.path() by applying the current route
              */
-            templateUrl?: string | { ($routeParams?: IRouteParamsService): string } | undefined;
+            templateUrl?:
+                | string
+                | { ($routeParams?: IRouteParamsService): string }
+                | undefined;
             /**
              * {Object.<string, Function>=}
              * An optional map of dependencies which should be injected into the controller. If any of these
@@ -124,9 +130,16 @@ declare module "angular" {
              * is if the `redirectTo` is a function that returns `undefined`. In this case the route transition occurs
              * as though there was no redirection.
              */
-            redirectTo?: string | {
-                ($routeParams?: IRouteParamsService, $locationPath?: string, $locationSearch?: any): string;
-            } | undefined;
+            redirectTo?:
+                | string
+                | {
+                      (
+                          $routeParams?: IRouteParamsService,
+                          $locationPath?: string,
+                          $locationSearch?: any,
+                      ): string;
+                  }
+                | undefined;
             /**
              * {Function=}
              * A function that will (eventually) return the value to update `$location` URL with and trigger route
@@ -144,7 +157,14 @@ declare module "angular" {
              * will cause the latter to be ignored.
              */
             resolveRedirectTo?:
-                | angular.Injectable<(...deps: any[]) => angular.IPromise<string | undefined> | string | undefined>
+                | angular.Injectable<
+                      (
+                          ...deps: any[]
+                      ) =>
+                          | angular.IPromise<string | undefined>
+                          | string
+                          | undefined
+                  >
                 | undefined;
             /**
              * {boolean=true}

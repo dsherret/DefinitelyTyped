@@ -27,7 +27,10 @@ declare namespace BrowserSyncPlugin {
     }
 }
 declare class BrowserSyncPlugin extends Plugin {
-    constructor(browserSyncOptions: BrowserSync.Options, pluginOptions?: BrowserSyncPlugin.Options);
+    constructor(
+        browserSyncOptions: BrowserSync.Options,
+        pluginOptions?: BrowserSyncPlugin.Options,
+    );
 }
 
 export = BrowserSyncPlugin;

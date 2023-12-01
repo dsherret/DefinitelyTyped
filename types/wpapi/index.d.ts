@@ -480,9 +480,11 @@ declare namespace WPAPI {
         namespace: string;
         methods: HTTPMethod[];
         endpoints: HTTPEndpoint[];
-        _links?: {
-            self: string;
-        } | undefined;
+        _links?:
+            | {
+                  self: string;
+              }
+            | undefined;
     }
 
     type HTTPMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
@@ -500,9 +502,11 @@ declare namespace WPAPI {
         enum?: string[] | undefined;
         description?: string | undefined;
         type?: HTTPArgumentType | undefined;
-        items?: {
-            type: HTTPArgumentType;
-        } | undefined;
+        items?:
+            | {
+                  type: HTTPArgumentType;
+              }
+            | undefined;
     }
 
     type HTTPArgumentType =
@@ -520,8 +524,10 @@ declare namespace WPAPI {
     interface RegisterRouteOptions {
         params?: string[] | undefined;
         methods?: HTTPMethod[] | undefined;
-        mixins?: {
-            [key: string]: (val: any) => any;
-        } | undefined;
+        mixins?:
+            | {
+                  [key: string]: (val: any) => any;
+              }
+            | undefined;
     }
 }

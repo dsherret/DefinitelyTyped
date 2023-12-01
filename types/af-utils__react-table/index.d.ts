@@ -14,53 +14,64 @@ export interface ComponentMap {
     Table?:
         | string
         | ((
-            props: React.HTMLAttributes<HTMLTableElement>,
-        ) => React.ReactElement<React.HTMLAttributes<HTMLTableElement>>);
+              props: React.HTMLAttributes<HTMLTableElement>,
+          ) => React.ReactElement<React.HTMLAttributes<HTMLTableElement>>);
 
     // Table body section
     Tbody?:
         | string
         | ((
-            props: React.HTMLAttributes<HTMLTableSectionElement>,
-        ) => React.ReactElement<React.HTMLAttributes<HTMLTableSectionElement>>);
+              props: React.HTMLAttributes<HTMLTableSectionElement>,
+          ) => React.ReactElement<
+              React.HTMLAttributes<HTMLTableSectionElement>
+          >);
 
     // Table header section
     Thead?:
         | string
         | ((
-            props: React.HTMLAttributes<HTMLTableSectionElement>,
-        ) => React.ReactElement<React.HTMLAttributes<HTMLTableSectionElement>>);
+              props: React.HTMLAttributes<HTMLTableSectionElement>,
+          ) => React.ReactElement<
+              React.HTMLAttributes<HTMLTableSectionElement>
+          >);
 
     // Table footer section
     Tfoot?:
         | string
         | ((
-            props: React.HTMLAttributes<HTMLTableSectionElement>,
-        ) => React.ReactElement<React.HTMLAttributes<HTMLTableSectionElement>>);
+              props: React.HTMLAttributes<HTMLTableSectionElement>,
+          ) => React.ReactElement<
+              React.HTMLAttributes<HTMLTableSectionElement>
+          >);
 
     // Table row element
     Tr?:
         | string
         | ((
-            props: React.HTMLAttributes<HTMLTableRowElement>,
-        ) => React.ReactElement<React.HTMLAttributes<HTMLTableRowElement>>);
+              props: React.HTMLAttributes<HTMLTableRowElement>,
+          ) => React.ReactElement<React.HTMLAttributes<HTMLTableRowElement>>);
 
     // Table header element
     Th?:
         | string
         | ((
-            props: React.HTMLAttributes<HTMLTableCellElement>,
-        ) => React.ReactElement<React.HTMLAttributes<HTMLTableCellElement>>);
+              props: React.HTMLAttributes<HTMLTableCellElement>,
+          ) => React.ReactElement<React.HTMLAttributes<HTMLTableCellElement>>);
 
     // Table data element
     Td?:
         | string
         | ((
-            props: React.HTMLAttributes<HTMLTableCellElement>,
-        ) => React.ReactElement<React.HTMLAttributes<HTMLTableCellElement>>);
+              props: React.HTMLAttributes<HTMLTableCellElement>,
+          ) => React.ReactElement<React.HTMLAttributes<HTMLTableCellElement>>);
 
     // Row rendering function
-    Row?: ({ i, i2, model, data }: {
+    Row?: ({
+        i,
+        i2,
+        model,
+        data,
+    }: {
         i: number;
         i2: number;
         model: Headless.Model;
@@ -73,21 +84,32 @@ export interface ComponentMap {
     // Same as above.
     CellForEmptyRow?: (props: Record<string, unknown>) => React.ReactNode;
 
-    HeaderCells?: ({ columns, components }: {
+    HeaderCells?: ({
+        columns,
+        components,
+    }: {
         columns: ColumnModel[];
         components: ComponentMap;
     }) => React.ReactNode;
     // Same as above.
     HeaderCell?: (props: Record<string, unknown>) => React.ReactNode;
 
-    FooterCells?: ({ columns, components }: {
+    FooterCells?: ({
+        columns,
+        components,
+    }: {
         columns: ColumnModel[];
         components: ComponentMap;
     }) => React.ReactNode;
     FooterCell?: (props: Record<string, unknown>) => React.ReactNode;
 
     // "/* To prevent double memoization in case of HOC usage */"
-    OriginalRow?: ({ i, i2, model, data }: {
+    OriginalRow?: ({
+        i,
+        i2,
+        model,
+        data,
+    }: {
         i: number;
         i2: number;
         model: Headless.Model;
@@ -158,7 +180,11 @@ export interface TableProps extends React.HTMLAttributes<HTMLElement> {
     getKey?: (index: number, rowProps?: RowProps) => any;
 
     // getRowProps by default provides a ref to the row.  You shouldn't need to use this since you can override the Row component.
-    getRowProps?: (model: Headless.Model, index: number, rowData?: any) => RowProps;
+    getRowProps?: (
+        model: Headless.Model,
+        index: number,
+        rowData?: any,
+    ) => RowProps;
 
     components?: ComponentMap;
     headless?: boolean;

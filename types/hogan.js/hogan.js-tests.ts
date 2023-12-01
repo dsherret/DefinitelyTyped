@@ -6,10 +6,12 @@ const compiled = Hogan.compile("{{#if}}{{value}}{{/if}}");
 // $ExpectType string
 Hogan.compile("<%_foo%><%value%><%/foo%>", {
     asString: true,
-    sectionTags: [{
-        o: "_foo",
-        c: "foo",
-    }],
+    sectionTags: [
+        {
+            o: "_foo",
+            c: "foo",
+        },
+    ],
     delimiters: "<% %>",
     disableLambda: true,
 });

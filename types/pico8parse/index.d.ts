@@ -114,8 +114,7 @@ export namespace ast {
         label: Identifier;
     }
 
-    interface BreakStatement extends Base<"BreakStatement"> {
-    }
+    interface BreakStatement extends Base<"BreakStatement"> {}
 
     interface GotoStatement extends Base<"GotoStatement"> {
         label: Identifier;
@@ -167,7 +166,8 @@ export namespace ast {
         init: Expression[];
     }
 
-    interface AssignmentOperatorStatement extends Base<"AssignmentOperatorStatement"> {
+    interface AssignmentOperatorStatement
+        extends Base<"AssignmentOperatorStatement"> {
         operator: BinaryOperator;
         variables: Array<IndexExpression | MemberExpression | Identifier>;
         init: Expression[];
@@ -249,7 +249,8 @@ export namespace ast {
         value: Expression;
     }
 
-    interface TableConstructorExpression extends Base<"TableConstructorExpression"> {
+    interface TableConstructorExpression
+        extends Base<"TableConstructorExpression"> {
         fields: Array<TableKey | TableKeyString | TableValue>;
     }
 
@@ -370,12 +371,24 @@ export namespace ast {
     function returnStatement(args: Expression[]): ReturnStatement;
     function ifStatement(clauses: IfStatementClauses): IfStatement;
     function ifClause(condition: Expression, body: Statement[]): IfClause;
-    function elseifClause(condition: Expression, body: Statement[]): ElseifClause;
+    function elseifClause(
+        condition: Expression,
+        body: Statement[],
+    ): ElseifClause;
     function elseClause(body: Statement[]): ElseClause;
-    function whileStatement(condition: Expression, body: Statement[]): WhileStatement;
+    function whileStatement(
+        condition: Expression,
+        body: Statement[],
+    ): WhileStatement;
     function doStatement(body: Statement[]): DoStatement;
-    function repeatStatement(condition: Expression, body: Statement[]): RepeatStatement;
-    function localStatement(variables: Identifier[], init: Expression[]): LocalStatement;
+    function repeatStatement(
+        condition: Expression,
+        body: Statement[],
+    ): RepeatStatement;
+    function localStatement(
+        variables: Identifier[],
+        init: Expression[],
+    ): LocalStatement;
     function assignmentStatement(
         variables: Array<Identifier | IndexExpression | MemberExpression>,
         init: Expression[],
@@ -385,7 +398,9 @@ export namespace ast {
         variables: Array<Identifier | IndexExpression | MemberExpression>,
         init: Expression[],
     ): AssignmentOperatorStatement;
-    function callStatement(expression: CallExpression | StringCallExpression | TableCallExpression): CallStatement;
+    function callStatement(
+        expression: CallExpression | StringCallExpression | TableCallExpression,
+    ): CallStatement;
     function functionStatement(
         identifier: Identifier | MemberExpression | null,
         parameters: Array<Identifier | VarargLiteral>,
@@ -412,10 +427,26 @@ export namespace ast {
         raw: string,
         rawInterrupted?: string,
     ): StringLiteral;
-    function literal(type: tokenTypes.NumericLiteral, value: number, raw: string): NumericLiteral;
-    function literal(type: tokenTypes.BooleanLiteral, value: boolean, raw: "true" | "false"): BooleanLiteral;
-    function literal(type: tokenTypes.NilLiteral, value: null, raw: "nil"): NilLiteral;
-    function literal(type: tokenTypes.VarargLiteral, value: "...", raw: "..."): VarargLiteral;
+    function literal(
+        type: tokenTypes.NumericLiteral,
+        value: number,
+        raw: string,
+    ): NumericLiteral;
+    function literal(
+        type: tokenTypes.BooleanLiteral,
+        value: boolean,
+        raw: "true" | "false",
+    ): BooleanLiteral;
+    function literal(
+        type: tokenTypes.NilLiteral,
+        value: null,
+        raw: "nil",
+    ): NilLiteral;
+    function literal(
+        type: tokenTypes.VarargLiteral,
+        value: "...",
+        raw: "...",
+    ): VarargLiteral;
     function tableKey(key: Expression, value: Expression): TableKey;
     function tableKeyString(key: Identifier, value: Expression): TableKeyString;
     function tableValue(value: Expression): TableValue;
@@ -427,14 +458,41 @@ export namespace ast {
         left: Expression,
         right: Expression,
     ): BinaryExpression;
-    function binaryExpression(operator: "and" | "or", left: Expression, right: Expression): LogicalExpression;
-    function unaryExpression(operator: UnaryOperator, argument: Expression): UnaryExpression;
-    function memberExpression(base: Expression, indexer: "." | ":", identifier: Identifier): MemberExpression;
-    function indexExpression(base: Expression, index: Expression): IndexExpression;
-    function callExpression(base: Expression, args: Expression[]): CallExpression;
-    function tableCallExpression(base: Expression, argument: Expression[]): TableCallExpression;
-    function stringCallExpression(base: Expression, argument: Expression): StringCallExpression;
-    function comment(value: string, raw: string, rawInterrupted?: string): Comment;
+    function binaryExpression(
+        operator: "and" | "or",
+        left: Expression,
+        right: Expression,
+    ): LogicalExpression;
+    function unaryExpression(
+        operator: UnaryOperator,
+        argument: Expression,
+    ): UnaryExpression;
+    function memberExpression(
+        base: Expression,
+        indexer: "." | ":",
+        identifier: Identifier,
+    ): MemberExpression;
+    function indexExpression(
+        base: Expression,
+        index: Expression,
+    ): IndexExpression;
+    function callExpression(
+        base: Expression,
+        args: Expression[],
+    ): CallExpression;
+    function tableCallExpression(
+        base: Expression,
+        argument: Expression[],
+    ): TableCallExpression;
+    function stringCallExpression(
+        base: Expression,
+        argument: Expression,
+    ): StringCallExpression;
+    function comment(
+        value: string,
+        raw: string,
+        rawInterrupted?: string,
+    ): Comment;
     // #endregion
 }
 

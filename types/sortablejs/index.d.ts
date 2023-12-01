@@ -63,7 +63,10 @@ declare class Sortable {
      * @param name a Sortable.Options property.
      * @param value a value.
      */
-    option<K extends keyof Sortable.Options>(name: K, value: Sortable.Options[K]): void;
+    option<K extends keyof Sortable.Options>(
+        name: K,
+        value: Sortable.Options[K],
+    ): void;
     option<K extends keyof Sortable.Options>(name: K): Sortable.Options[K];
 
     /**
@@ -98,8 +101,11 @@ declare class Sortable {
 
 declare namespace Sortable {
     export interface Options
-        extends SortableOptions, AutoScrollOptions, MultiDragOptions, OnSpillOptions, SwapOptions
-    {}
+        extends SortableOptions,
+            AutoScrollOptions,
+            MultiDragOptions,
+            OnSpillOptions,
+            SwapOptions {}
 
     /**
      * A class that all plugins inherit from for the sake of type inference.
@@ -194,36 +200,46 @@ declare namespace Sortable {
          */
         pull?:
             | PullResult
-            | ((to: Sortable, from: Sortable, dragEl: HTMLElement, event: SortableEvent) => PullResult)
+            | ((
+                  to: Sortable,
+                  from: Sortable,
+                  dragEl: HTMLElement,
+                  event: SortableEvent,
+              ) => PullResult)
             | undefined;
         /**
          * whether elements can be added from other lists, or an array of group names from which elements can be taken.
          */
         put?:
             | PutResult
-            | ((to: Sortable, from: Sortable, dragEl: HTMLElement, event: SortableEvent) => PutResult)
+            | ((
+                  to: Sortable,
+                  from: Sortable,
+                  dragEl: HTMLElement,
+                  event: SortableEvent,
+              ) => PutResult)
             | undefined;
         /**
          * a canonical version of pull, created by Sortable
          */
         checkPull?:
             | ((
-                sortable: Sortable,
-                activeSortable: Sortable,
-                dragEl: HTMLElement,
-                event: SortableEvent,
-            ) => boolean | string | string[])
+                  sortable: Sortable,
+                  activeSortable: Sortable,
+                  dragEl: HTMLElement,
+                  event: SortableEvent,
+              ) => boolean | string | string[])
             | undefined;
         /**
          * a canonical version of put, created by Sortable
          */
         checkPut?:
             | ((
-                sortable: Sortable,
-                activeSortable: Sortable,
-                dragEl: HTMLElement,
-                event: SortableEvent,
-            ) => boolean | string | "clone" | string[])
+                  sortable: Sortable,
+                  activeSortable: Sortable,
+                  dragEl: HTMLElement,
+                  event: SortableEvent,
+              ) => boolean | string | "clone" | string[])
             | undefined;
         /**
          * revert cloned element to initial position after moving to a another list.
@@ -254,7 +270,11 @@ declare namespace Sortable {
          * (will be detected automatically if not given)
          */
         direction?:
-            | ((evt: SortableEvent, target: HTMLElement, dragEl: HTMLElement) => Direction)
+            | ((
+                  evt: SortableEvent,
+                  target: HTMLElement,
+                  dragEl: HTMLElement,
+              ) => Direction)
             | Direction
             | undefined;
         /**
@@ -321,7 +341,12 @@ declare namespace Sortable {
          */
         filter?:
             | string
-            | ((this: Sortable, event: Event | TouchEvent, target: HTMLElement, sortable: Sortable) => boolean)
+            | ((
+                  this: Sortable,
+                  event: Event | TouchEvent,
+                  target: HTMLElement,
+                  sortable: Sortable,
+              ) => boolean)
             | undefined;
         /**
          * ignore the HTML5 DnD behaviour and force the fallback to kick in
@@ -363,10 +388,12 @@ declare namespace Sortable {
          * sorting inside list
          */
         sort?: boolean | undefined;
-        store?: {
-            get: (sortable: Sortable) => string[];
-            set: (sortable: Sortable) => void;
-        } | undefined;
+        store?:
+            | {
+                  get: (sortable: Sortable) => string[];
+                  set: (sortable: Sortable) => void;
+              }
+            | undefined;
         /**
          * Threshold of the swap zone.
          * Defaults to `1`
@@ -377,7 +404,12 @@ declare namespace Sortable {
          */
         touchStartThreshold?: number | undefined;
 
-        setData?: ((dataTransfer: DataTransfer, draggedElement: HTMLElement) => void) | undefined;
+        setData?:
+            | ((
+                  dataTransfer: DataTransfer,
+                  draggedElement: HTMLElement,
+              ) => void)
+            | undefined;
         /**
          * Element dragging started
          */
@@ -422,7 +454,12 @@ declare namespace Sortable {
          * Event when you move an item in the list or between lists
          */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        onMove?: ((evt: MoveEvent, originalEvent: Event) => boolean | -1 | 1 | void) | undefined;
+        onMove?:
+            | ((
+                  evt: MoveEvent,
+                  originalEvent: Event,
+              ) => boolean | -1 | 1 | void)
+            | undefined;
         /**
          * Called when dragging element changes position
          */
@@ -436,7 +473,11 @@ declare namespace Sortable {
          * @param event an Event context.
          * @param fn
          */
-        on(element: HTMLElement, event: string, fn: EventListenerOrEventListenerObject): void;
+        on(
+            element: HTMLElement,
+            event: string,
+            fn: EventListenerOrEventListenerObject,
+        ): void;
 
         /**
          * Remove an event handler function
@@ -444,7 +485,11 @@ declare namespace Sortable {
          * @param event an Event context.
          * @param fn a callback.
          */
-        off(element: HTMLElement, event: string, fn: EventListenerOrEventListenerObject): void;
+        off(
+            element: HTMLElement,
+            event: string,
+            fn: EventListenerOrEventListenerObject,
+        ): void;
 
         /**
          * Get the values of all the CSS properties.
@@ -457,7 +502,10 @@ declare namespace Sortable {
          * @param element an HTMLElement.
          * @param prop a property key.
          */
-        css<K extends keyof CSSStyleDeclaration>(element: HTMLElement, prop: K): CSSStyleDeclaration[K];
+        css<K extends keyof CSSStyleDeclaration>(
+            element: HTMLElement,
+            prop: K,
+        ): CSSStyleDeclaration[K];
 
         /**
          * Set one CSS property.
@@ -465,7 +513,11 @@ declare namespace Sortable {
          * @param prop a property key.
          * @param value a property value.
          */
-        css<K extends keyof CSSStyleDeclaration>(element: HTMLElement, prop: K, value: CSSStyleDeclaration[K]): void;
+        css<K extends keyof CSSStyleDeclaration>(
+            element: HTMLElement,
+            prop: K,
+            value: CSSStyleDeclaration[K],
+        ): void;
 
         /**
          * Get elements by tag name.
@@ -492,7 +544,11 @@ declare namespace Sortable {
          * @param selector an element seletor.
          * @param context a specific element's context.
          */
-        closest(element: HTMLElement, selector: string, context?: HTMLElement): HTMLElement | null;
+        closest(
+            element: HTMLElement,
+            selector: string,
+            context?: HTMLElement,
+        ): HTMLElement | null;
 
         /**
          * Add or remove one classes from each element

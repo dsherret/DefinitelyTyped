@@ -31,6 +31,10 @@ export interface GetPolyfillsResponse {
 
 export function listAllPolyfills(): Promise<readonly string[]>;
 
-export function getPolyfillString(options: GetPolyfillStringOptions): Promise<string>;
+export function getPolyfillString(
+    options: GetPolyfillStringOptions,
+): Promise<string>;
 
-export function getPolyfills(options: GetPolyfillsOptions): Promise<GetPolyfillsResponse>;
+export function getPolyfills(
+    options: GetPolyfillsOptions,
+): Promise<GetPolyfillsResponse>;

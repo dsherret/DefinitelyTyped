@@ -4,7 +4,9 @@
  *
  * NOTE: The return value can be null if the DOM is not yet ready.
  */
-declare function getDocumentScrollElement(doc?: Document): HTMLElement | null | undefined;
+declare function getDocumentScrollElement(
+    doc?: Document,
+): HTMLElement | null | undefined;
 
 declare namespace getDocumentScrollElement {}
 

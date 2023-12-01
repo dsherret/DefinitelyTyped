@@ -78,7 +78,10 @@ session.getSubtree({ oid: arr_oid, combinedTimeout: 10, ...options }, callback);
 session.getAll({ oids }, callback);
 session.getAll({ oids, combinedTimeout: 10 }, callback);
 session.getAll({ oids, combinedTimeout: 10, abortOnError: true }, callback);
-session.getAll({ oids, combinedTimeout: 10, abortOnError: true, ...options }, callback);
+session.getAll(
+    { oids, combinedTimeout: 10, abortOnError: true, ...options },
+    callback,
+);
 
 session.set({ oid: str_oid, type: 2, value: 10 });
 session.set({ oid: arr_oid, type: 2, value: 10 }, callback);

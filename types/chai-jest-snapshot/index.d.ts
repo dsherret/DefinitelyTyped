@@ -5,7 +5,11 @@ declare global {
     namespace Chai {
         interface Assertion {
             /** Assert that the object matches the snapshot */
-            matchSnapshot(snapshotFilename?: string, snapshotName?: string, update?: boolean): Assertion;
+            matchSnapshot(
+                snapshotFilename?: string,
+                snapshotName?: string,
+                update?: boolean,
+            ): Assertion;
             matchSnapshot(update: boolean): Assertion;
         }
     }

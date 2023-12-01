@@ -8,7 +8,12 @@ declare namespace IOSTContract {
 
     interface _IOSTCrypto {
         sha3(data: string): string;
-        verify(algo: string, message: string, signature: string, pubkey: string): number;
+        verify(
+            algo: string,
+            message: string,
+            signature: string,
+            pubkey: string,
+        ): number;
     }
 }
 

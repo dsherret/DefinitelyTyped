@@ -3,9 +3,17 @@ import * as npmlog from "npmlog";
 const prefix = "str";
 const message = "otherStr";
 
-["silly", "verbose", "info", "timing", "http", "notice", "warn", "error", "silent"].forEach(lvl =>
-    npmlog.log(lvl, prefix, message)
-);
+[
+    "silly",
+    "verbose",
+    "info",
+    "timing",
+    "http",
+    "notice",
+    "warn",
+    "error",
+    "silent",
+].forEach((lvl) => npmlog.log(lvl, prefix, message));
 
 npmlog.silly(prefix, message);
 npmlog.verbose(prefix, message);
@@ -49,11 +57,16 @@ npmlog.addLevel("styled-level", 42, {
     bell: false,
 });
 
-npmlog.addLevel("styled-level", 42, {
-    fg: "red",
-    bold: false,
-    underline: true,
-}, "display name");
+npmlog.addLevel(
+    "styled-level",
+    42,
+    {
+        fg: "red",
+        bold: false,
+        underline: true,
+    },
+    "display name",
+);
 
 npmlog.addLevel("broadcast", 10);
 

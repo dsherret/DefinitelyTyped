@@ -3,7 +3,9 @@
  * @param sections One or more Section objects
  * @alias module:command-line-usage
  */
-declare function commandLineUsage(sections: commandLineUsage.Section | commandLineUsage.Section[]): string;
+declare function commandLineUsage(
+    sections: commandLineUsage.Section | commandLineUsage.Section[],
+): string;
 export = commandLineUsage;
 
 declare namespace commandLineUsage {
@@ -22,7 +24,12 @@ declare namespace commandLineUsage {
          *     consistent throughout the array.
          *  4. An object with two properties - data and options. In this case, the data and options will be passed directly to the underlying table layout module for rendering.
          */
-        content?: string | string[] | any[] | { data: any; options: any } | undefined;
+        content?:
+            | string
+            | string[]
+            | any[]
+            | { data: any; options: any }
+            | undefined;
         /** Set to true to avoid indentation and wrapping. Useful for banners. */
         raw?: boolean | undefined;
     }

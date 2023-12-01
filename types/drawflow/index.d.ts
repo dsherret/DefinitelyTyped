@@ -324,7 +324,10 @@ export default class Drawflow {
      * @param eventName
      * @param callback
      */
-    on(eventName: "connectionStart", callback: (event: ConnectionStartEvent) => void): void;
+    on(
+        eventName: "connectionStart",
+        callback: (event: ConnectionStartEvent) => void,
+    ): void;
     /**
      * Called when the connection creation was canceled
      * @param eventName
@@ -335,22 +338,34 @@ export default class Drawflow {
      * @param eventName
      * @param callback (event: id's of nodes and output/input selected)
      */
-    on(eventName: "connectionCreated", callback: (event: ConnectionEvent) => void): void;
+    on(
+        eventName: "connectionCreated",
+        callback: (event: ConnectionEvent) => void,
+    ): void;
     /**
      * @param eventName
      * @param callback (event: id's of nodes and output/input selected)
      */
-    on(eventName: "connectionRemoved", callback: (event: ConnectionEvent) => void): void;
+    on(
+        eventName: "connectionRemoved",
+        callback: (event: ConnectionEvent) => void,
+    ): void;
     /**
      * @param eventName
      * @param callback (event: id's of nodes and output/input selected)
      */
-    on(eventName: "connectionSelected", callback: (event: ConnectionEvent) => void): void;
+    on(
+        eventName: "connectionSelected",
+        callback: (event: ConnectionEvent) => void,
+    ): void;
     /**
      * @param eventName
      * @param callback (event: true)
      */
-    on(eventName: "connectionUnselected", callback: (event: boolean) => void): void;
+    on(
+        eventName: "connectionUnselected",
+        callback: (event: boolean) => void,
+    ): void;
     /**
      * @param eventName
      * @param callback (event: id of Node output)
@@ -397,7 +412,10 @@ export default class Drawflow {
      * @param eventName
      * @param callback (event: position)
      */
-    on(eventName: "mouseMove", callback: (event: MousePositionEvent) => void): void;
+    on(
+        eventName: "mouseMove",
+        callback: (event: MousePositionEvent) => void,
+    ): void;
     /**
      * @param eventName
      * @param callback (event: keyboard event)
@@ -412,7 +430,10 @@ export default class Drawflow {
      * @param eventName
      * @param callback (event: position)
      */
-    on(eventName: "translate", callback: (event: MousePositionEvent) => void): void;
+    on(
+        eventName: "translate",
+        callback: (event: MousePositionEvent) => void,
+    ): void;
     /**
      * Finish import
      * @param eventName

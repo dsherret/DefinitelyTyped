@@ -2,7 +2,11 @@ export class Texture {
     static getScaleFactorFromName(name: string): number;
     static removeScaleFactorFromName(name: string): string;
     static fromBase64String(string: string): Texture;
-    static fromCanvasAsImage(canvas: Element, type?: string, quality?: number): Texture;
+    static fromCanvasAsImage(
+        canvas: Element,
+        type?: string,
+        quality?: number,
+    ): Texture;
     static fromCanvas(canvas: HTMLCanvasElement): Texture | null;
     constructor(
         nativeElement: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement,

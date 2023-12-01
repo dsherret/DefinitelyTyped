@@ -25,21 +25,48 @@ declare namespace GCProfiler {
         };
 
         addListener(eventName: "gc", listener: (info: GCInfo) => void): this;
-        addListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+        addListener(
+            eventName: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
         on(eventName: "gc", listener: (info: GCInfo) => void): this;
-        on(eventName: string | symbol, listener: (...args: any[]) => void): this;
+        on(
+            eventName: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
         once(eventName: "gc", listener: (info: GCInfo) => void): this;
-        once(eventName: string | symbol, listener: (...args: any[]) => void): this;
+        once(
+            eventName: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
         removeListener(eventName: "gc", listener: (info: GCInfo) => void): this;
-        removeListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+        removeListener(
+            eventName: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
         off(eventName: "gc", listener: (info: GCInfo) => void): this;
-        off(eventName: string | symbol, listener: (...args: any[]) => void): this;
+        off(
+            eventName: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
         emit(eventName: "gc", info: GCInfo): boolean;
         emit(eventName: string | symbol, ...args: any[]): boolean;
-        prependListener(eventName: "gc", listener: (info: GCInfo) => void): this;
-        prependListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
-        prependOnceListener(eventName: "gc", listener: (info: GCInfo) => void): this;
-        prependOnceListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+        prependListener(
+            eventName: "gc",
+            listener: (info: GCInfo) => void,
+        ): this;
+        prependListener(
+            eventName: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
+        prependOnceListener(
+            eventName: "gc",
+            listener: (info: GCInfo) => void,
+        ): this;
+        prependOnceListener(
+            eventName: string | symbol,
+            listener: (...args: any[]) => void,
+        ): this;
     }
 
     interface GCInfo {
@@ -66,5 +93,10 @@ declare namespace GCProfiler {
         flags: number;
     }
 
-    type GCType = "Scavenge" | "MarkSweepCompact" | "IncrementalMarking" | "ProcessWeakCallbacks" | "All";
+    type GCType =
+        | "Scavenge"
+        | "MarkSweepCompact"
+        | "IncrementalMarking"
+        | "ProcessWeakCallbacks"
+        | "All";
 }

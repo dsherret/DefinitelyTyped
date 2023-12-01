@@ -7,14 +7,14 @@ git.call_git(
     "",
     {},
     ["https://github.com/DefinitelyTyped/DefinitelyTyped.git", "d.ts"],
-    function(err, data) {
+    function (err, data) {
         console.log(arguments);
     },
 );
 
 new base.Repo("../.git", (err, repo) => {
     repo.log(null, null, null, (err, commits) => {
-        commits.forEach(commit => {
+        commits.forEach((commit) => {
             console.log(commit.message);
         });
     });

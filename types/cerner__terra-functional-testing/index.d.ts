@@ -8,7 +8,13 @@ type AxeOptions = RunOptions;
 
 declare global {
     namespace Terra {
-        type FormFactor = "tiny" | "small" | "medium" | "large" | "huge" | "enormous";
+        type FormFactor =
+            | "tiny"
+            | "small"
+            | "medium"
+            | "large"
+            | "huge"
+            | "enormous";
 
         type Locale =
             | "en"
@@ -29,7 +35,10 @@ declare global {
             | "sv"
             | "sv-SE";
 
-        type Theme = "terra-default-theme" | "orion-fusion-theme" | "clinical-lowlight-theme";
+        type Theme =
+            | "terra-default-theme"
+            | "orion-fusion-theme"
+            | "clinical-lowlight-theme";
 
         interface FormFactorDimensions {
             height: number;
@@ -76,7 +85,11 @@ declare global {
          * @param formFactors - A list of form factors.
          * @param fn - The block of tests to execute against each viewport.
          */
-        function describeViewports(title: string, formFactors: FormFactor[], fn: MochaTestFn): void;
+        function describeViewports(
+            title: string,
+            formFactors: FormFactor[],
+            fn: MochaTestFn,
+        ): void;
 
         /**
          * Mocha describe block to filter tests based on form factors, locales, and themes.
@@ -87,7 +100,11 @@ declare global {
          * @param options - An object containing arrays of formFactors, locales, and themes that the block of tests will only qualify to execute in.
          * @param fn - The block of tests to execute based on the defined form factor, locale, and theme.
          */
-        function describeTests(title: string, options: DescribeTestsOptions | undefined, fn: MochaTestFn): void;
+        function describeTests(
+            title: string,
+            options: DescribeTestsOptions | undefined,
+            fn: MochaTestFn,
+        ): void;
 
         /**
          * Hides the blinking input caret that appears within editable text areas to prevent inconsistent test failures.
@@ -165,7 +182,10 @@ declare global {
              * @param testName - The required test case name.
              * @param options - The visual regression test options. Options include mismatchTolerance and selector
              */
-            screenshot: (testName: string, options?: Omit<ValidationOptions, "rules">) => void;
+            screenshot: (
+                testName: string,
+                options?: Omit<ValidationOptions, "rules">,
+            ) => void;
         };
     }
 }

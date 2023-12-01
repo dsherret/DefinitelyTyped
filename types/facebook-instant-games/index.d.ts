@@ -201,7 +201,9 @@ declare namespace FBInstant {
      * @throws PENDING_REQUEST
      * @throws INVALID_OPERATION
      */
-    function updateAsync(payload: CustomUpdatePayload | LeaderboardUpdatePayload): Promise<void>;
+    function updateAsync(
+        payload: CustomUpdatePayload | LeaderboardUpdatePayload,
+    ): Promise<void>;
 
     /**
      * This invokes a dialog to let the user invite one or more people to the game.
@@ -287,7 +289,11 @@ declare namespace FBInstant {
      * and can only contain '_', '-', ' ', and alphanumeric characters. Values must be less than 100 characters in length.
      * @returns The error if the event failed to log; otherwise returns null.
      */
-    function logEvent(eventName: string, valueToSum?: number, parameters?: { [key: string]: string }): APIError | null;
+    function logEvent(
+        eventName: string,
+        valueToSum?: number,
+        parameters?: { [key: string]: string },
+    ): APIError | null;
 
     /**
      * Set a callback to be fired when a pause event is triggered.
@@ -356,7 +362,9 @@ declare namespace FBInstant {
      * @throws CLIENT_UNSUPPORTED_OPERATION
      * @since 7.0
      */
-    function getRewardedInterstitialAsync(placementID: string): Promise<AdInstance>;
+    function getRewardedInterstitialAsync(
+        placementID: string,
+    ): Promise<AdInstance>;
 
     /**
      * Attempts to match the current player with other users looking for people to play with. If successful, a new Messenger group
@@ -703,7 +711,9 @@ declare namespace FBInstant {
          * @throws NETWORK_FAILURE
          * @throws CLIENT_UNSUPPORTED_OPERATION
          */
-        getSignedPlayerInfoAsync(requestPayload?: string): Promise<SignedPlayerInfo>;
+        getSignedPlayerInfoAsync(
+            requestPayload?: string,
+        ): Promise<SignedPlayerInfo>;
 
         /**
          * Returns a promise that resolves with whether the player can subscribe to the game bot or not.
@@ -862,7 +872,10 @@ declare namespace FBInstant {
          * @param maxSize The maximum bound of the context size query.
          * @returns ContextSizeResponse
          */
-        isSizeBetween(minSize?: number, maxSize?: number): ContextSizeResponse | null;
+        isSizeBetween(
+            minSize?: number,
+            maxSize?: number,
+        ): ContextSizeResponse | null;
 
         /**
          * Request a switch into a specific context. If the player does not have permission to enter that context,
@@ -956,7 +969,10 @@ declare namespace FBInstant {
          * @throws INVALID_OPERATION
          * @throws RATE_LIMITED
          */
-        setScoreAsync(score: number, extraData?: string): Promise<LeaderboardEntry>;
+        setScoreAsync(
+            score: number,
+            extraData?: string,
+        ): Promise<LeaderboardEntry>;
 
         /**
          * Retrieves the leaderboard's entry for the current player, or null if the player has not set one yet.
@@ -977,7 +993,10 @@ declare namespace FBInstant {
          * @throws NETWORK_FAILURE
          * @throws RATE_LIMITED
          */
-        getEntriesAsync(count: number, offset: number): Promise<LeaderboardEntry[]>;
+        getEntriesAsync(
+            count: number,
+            offset: number,
+        ): Promise<LeaderboardEntry[]>;
 
         /**
          * Retrieves the leaderboard score entries of the current player's connected players (including the current player), ordered by local rank within the set of connected players.
@@ -985,7 +1004,10 @@ declare namespace FBInstant {
          * @param offset The offset from the set of ordered connected player score entries to fetch from.
          * @returns Resolves with the leaderboard entries that match the query.
          */
-        getConnectedPlayerEntriesAsync(count: number, offset: number): Promise<LeaderboardEntry[]>;
+        getConnectedPlayerEntriesAsync(
+            count: number,
+            offset: number,
+        ): Promise<LeaderboardEntry[]>;
     }
 
     /**
@@ -1677,7 +1699,11 @@ declare namespace FBInstant {
          * @param params Parameters that will be sent as part of the request.
          * @returns The result of the graph API call.
          */
-        requestAsync(path: string, method?: string, params?: object): Promise<object>;
+        requestAsync(
+            path: string,
+            method?: string,
+            params?: object,
+        ): Promise<object>;
     }
 
     /**
@@ -1713,7 +1739,9 @@ declare namespace FBInstant {
          * @throws INVALID_PARAM
          * @throws CAMERA_EFFECT_NOT_FOUND
          */
-        loadCameraEffectAsync(cameraEffectArgs: CameraEffectArgs): Promise<CameraEffect>;
+        loadCameraEffectAsync(
+            cameraEffectArgs: CameraEffectArgs,
+        ): Promise<CameraEffect>;
 
         /**
          * Clears the current AR effect in the rooms call. If an effect is present that was not applied by the game, the
@@ -2108,7 +2136,10 @@ declare namespace FBInstant {
      * 'INCLUDE_EXISTING_CHALLENGES' - Include the "Existing Challenges" section, which surfaces actively played-in contexts that the player is a part of.
      * 'NEW_PLAYERS_ONLY' - In sections containing individuals, prefer people who have not played the game.
      */
-    type ContextFilter = "NEW_CONTEXT_ONLY" | "INCLUDE_EXISTING_CHALLENGES" | "NEW_PLAYERS_ONLY";
+    type ContextFilter =
+        | "NEW_CONTEXT_ONLY"
+        | "INCLUDE_EXISTING_CHALLENGES"
+        | "NEW_PLAYERS_ONLY";
 
     /**
      * Represents the type of the update action to perform.
@@ -2174,5 +2205,9 @@ declare namespace FBInstant {
      *
      * @since 7.1
      */
-    type LiveMatchStatusType = "PENDING" | "RUNNING" | "CONCLUDED" | "ABANDONED";
+    type LiveMatchStatusType =
+        | "PENDING"
+        | "RUNNING"
+        | "CONCLUDED"
+        | "ABANDONED";
 }

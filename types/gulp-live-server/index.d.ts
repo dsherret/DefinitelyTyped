@@ -28,7 +28,11 @@ declare namespace gls {
     }
 
     type GLS = {
-        (args: Parameters<typeof spawn>[1], options?: Parameters<typeof spawn>[2], livereload?: Livereload): GLSStatic;
+        (
+            args: Parameters<typeof spawn>[1],
+            options?: Parameters<typeof spawn>[2],
+            livereload?: Livereload,
+        ): GLSStatic;
     } & GLSStatic;
 }
 

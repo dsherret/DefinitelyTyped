@@ -113,7 +113,8 @@ export type CMIElementObjectivesNID = `cmi.objectives.${n}.id`;
 /**
  * Listing of supported data model elements
  */
-export type CMIElementObjectivesNScoreChildren = `cmi.objectives.${n}.score._children`;
+export type CMIElementObjectivesNScoreChildren =
+    `cmi.objectives.${n}.score._children`;
 
 /**
  * Number that reflects the performance of the learner, for the objective, relative to the range bounded by the values of min and max
@@ -143,22 +144,26 @@ export type CMIElementStudentDataChildren = "cmi.student_data._children";
 /**
  * Passing score required to master the SCO
  */
-export type CMIElementStudentDataMasteryScore = "cmi.student_data.mastery_score";
+export type CMIElementStudentDataMasteryScore =
+    "cmi.student_data.mastery_score";
 
 /**
  * Amount of accumulated time the learner is allowed to use a SCO
  */
-export type CMIElementStudentDataMaxTimeAllowed = "cmi.student_data.max_time_allowed";
+export type CMIElementStudentDataMaxTimeAllowed =
+    "cmi.student_data.max_time_allowed";
 
 /**
  * Indicates what the SCO should do when max_time_allowed is exceeded
  */
-export type CMIElementStudentDataTimeLimitAction = "cmi.student_data.time_limit_action";
+export type CMIElementStudentDataTimeLimitAction =
+    "cmi.student_data.time_limit_action";
 
 /**
  * Listing of supported data model elements
  */
-export type CMIElementStudentPreferenceChildren = "cmi.student_preference._children";
+export type CMIElementStudentPreferenceChildren =
+    "cmi.student_preference._children";
 
 /**
  * Specifies an intended change in perceived audio level
@@ -168,7 +173,8 @@ export type CMIElementStudentPreferenceAudio = "cmi.student_preference.audio";
 /**
  * The student’s preferred language for SCOs with multilingual capability
  */
-export type CMIElementStudentPreferenceLanguage = "cmi.student_preference.language";
+export type CMIElementStudentPreferenceLanguage =
+    "cmi.student_preference.language";
 
 /**
  * The learner’s preferred relative speed of content delivery
@@ -198,12 +204,14 @@ export type CMIElementInteractionsNID = `cmi.interactions.${n}.id`;
 /**
  * Current number of objectives (i.e., objective identifiers) being stored by the LMS for this interaction
  */
-export type CMIElementInteractionsNObjectivesCount = `cmi.interactions.${n}.objectives._count`;
+export type CMIElementInteractionsNObjectivesCount =
+    `cmi.interactions.${n}.objectives._count`;
 
 /**
  * Label for objectives associated with the interaction
  */
-export type CMIElementInteractionsNObjectivesID = `cmi.interactions.${n}.objectives.${n}.id`;
+export type CMIElementInteractionsNObjectivesID =
+    `cmi.interactions.${n}.objectives.${n}.id`;
 
 /**
  * Point in time at which the interaction was first made available to the student for student interaction and response
@@ -218,22 +226,26 @@ export type CMIElementInteractionsNType = `cmi.interactions.${n}.type`;
 /**
  * Current number of correct responses being stored by the LMS for this interaction
  */
-export type CMIElementInteractionsNCorrectResponsesCount = `cmi.interactions.${n}.correct_responses._count`;
+export type CMIElementInteractionsNCorrectResponsesCount =
+    `cmi.interactions.${n}.correct_responses._count`;
 
 /**
  * One correct response pattern for the interaction
  */
-export type CMIElementInteractionsNCorrectResponsesNPattern = `cmi.interactions.${n}.correct_responses.${n}.pattern`;
+export type CMIElementInteractionsNCorrectResponsesNPattern =
+    `cmi.interactions.${n}.correct_responses.${n}.pattern`;
 
 /**
  * Weight given to the interaction relative to other interactions
  */
-export type CMIElementInteractionsNWeighting = `cmi.interactions.${n}.weighting`;
+export type CMIElementInteractionsNWeighting =
+    `cmi.interactions.${n}.weighting`;
 
 /**
  * Data generated when a student responds to an interaction
  */
-export type CMIElementInteractionsNStudentResponse = `cmi.interactions.${n}.student_response`;
+export type CMIElementInteractionsNStudentResponse =
+    `cmi.interactions.${n}.student_response`;
 
 /**
  * Judgment of the correctness of the learner response

@@ -1,6 +1,13 @@
 // access to user agent.
 var userAgent = swfobject.ua;
-console.log(userAgent.w3, userAgent.pv, userAgent.mac, userAgent.win, userAgent.ie, userAgent.wk);
+console.log(
+    userAgent.w3,
+    userAgent.pv,
+    userAgent.mac,
+    userAgent.win,
+    userAgent.ie,
+    userAgent.wk,
+);
 
 // get flash player version.
 var version = swfobject.getFlashPlayerVersion();
@@ -35,10 +42,4 @@ swfobject.embedSWF(
 );
 
 // show express install
-swfobject.showExpressInstall(
-    {},
-    {},
-    "expressInstall",
-    () => {
-    },
-);
+swfobject.showExpressInstall({}, {}, "expressInstall", () => {});

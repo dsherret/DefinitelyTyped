@@ -15,16 +15,14 @@ interface ScrollAreaProps {
     horizontalContainerStyle?: React.CSSProperties | undefined;
     horizontalScrollbarStyle?: React.CSSProperties | undefined;
     onScroll?:
-        | ((
-            value: {
-                leftPosition: number;
-                topPosition: number;
-                containerHeight: number;
-                containerWidth: number;
-                realHeight: number;
-                realWidth: number;
-            },
-        ) => void)
+        | ((value: {
+              leftPosition: number;
+              topPosition: number;
+              containerHeight: number;
+              containerWidth: number;
+              realHeight: number;
+              realWidth: number;
+          }) => void)
         | undefined;
     contentWindow?: any;
     ownerDocument?: any;

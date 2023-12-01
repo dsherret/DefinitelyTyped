@@ -1,5 +1,9 @@
 import * as React from "react";
-import BootstrapTable, { ColumnDescription, ColumnFormatter, HeaderFormatter } from "react-bootstrap-table-next";
+import BootstrapTable, {
+    ColumnDescription,
+    ColumnFormatter,
+    HeaderFormatter,
+} from "react-bootstrap-table-next";
 import filterFactory, {
     Comparator,
     multiSelectFilter,
@@ -34,7 +38,11 @@ const products: Product[] = [
     },
 ];
 
-const priceHeaderFormatter: HeaderFormatter<Product> = (column, colIndex, components) => {
+const priceHeaderFormatter: HeaderFormatter<Product> = (
+    column,
+    colIndex,
+    components,
+) => {
     return (
         <div>
             {column.text}
@@ -44,7 +52,11 @@ const priceHeaderFormatter: HeaderFormatter<Product> = (column, colIndex, compon
     );
 };
 
-const priceFormatter: ColumnFormatter<Product, { indexSquare: number }> = (cell, row, rowIndex) => {
+const priceFormatter: ColumnFormatter<Product, { indexSquare: number }> = (
+    cell,
+    row,
+    rowIndex,
+) => {
     return (
         <span>
             {rowIndex} - {cell}
@@ -83,11 +95,11 @@ const productColumns: Array<ColumnDescription<Product>> = [
             numberStyle: { backgroundColor: "cadetblue", margin: "0px" }, // custom the style on number input/select
             numberClassName: "custom-number-class", // custom the class on ber input/select
             defaultValue: { number: 2103, comparator: Comparator.GT }, // default value
-            getFilter: filter => {
+            getFilter: (filter) => {
                 // priceFilter was assigned once the component has been mounted.
                 priceFilter = filter;
             },
-            onFilter: filterValue => {},
+            onFilter: (filterValue) => {},
         }),
     },
     {
@@ -104,7 +116,12 @@ const productColumns: Array<ColumnDescription<Product>> = [
  * Number filter test
  */
 render(
-    <BootstrapTable data={products} keyField="id" filter={filterFactory()} columns={productColumns} />,
+    <BootstrapTable
+        data={products}
+        keyField="id"
+        filter={filterFactory()}
+        columns={productColumns}
+    />,
     document.getElementById("app"),
 );
 
@@ -140,8 +157,18 @@ render(
         keyField="id"
         data={products}
         columns={[
-            { dataField: "id", align: "center", sort: true, text: "Product ID" },
-            { dataField: "name", align: "center", sort: true, text: "Product Name" },
+            {
+                dataField: "id",
+                align: "center",
+                sort: true,
+                text: "Product ID",
+            },
+            {
+                dataField: "name",
+                align: "center",
+                sort: true,
+                text: "Product Name",
+            },
             {
                 dataField: "quality",
                 text: "Product Quailty",
@@ -153,10 +180,10 @@ render(
                     defaultValue: 2,
                     comparator: Comparator.LIKE, // default is Comparator.EQ
                     style: { backgroundColor: "pink" },
-                    getFilter: filter => {
+                    getFilter: (filter) => {
                         // qualityFilter was assigned once the component has been mounted.
                     },
-                    onFilter: filterValue => {},
+                    onFilter: (filterValue) => {},
                 }),
             },
         ]}
@@ -170,10 +197,15 @@ render(
         keyField="id"
         data={products}
         columns={[
-            { dataField: "id", align: "center", sort: true, text: "Product ID" },
+            {
+                dataField: "id",
+                align: "center",
+                sort: true,
+                text: "Product ID",
+            },
             {
                 dataField: "name",
-                formatter: cell => cell,
+                formatter: (cell) => cell,
                 align: "center",
                 sort: true,
                 text: "Product Name",
@@ -181,7 +213,8 @@ render(
             {
                 dataField: "quality",
                 text: "Product Quailty",
-                formatter: (cell: number, row, rowIndex, formatExtraData) => selectOptionsObject[cell],
+                formatter: (cell: number, row, rowIndex, formatExtraData) =>
+                    selectOptionsObject[cell],
                 filter: multiSelectFilter({
                     options: selectOptionsObject,
                     className: "test-classname",
@@ -189,11 +222,11 @@ render(
                     defaultValue: [0, 2],
                     comparator: Comparator.LIKE, // default is Comparator.EQ
                     style: { backgroundColor: "pink" },
-                    getFilter: filter => {
+                    getFilter: (filter) => {
                         // qualityFilter was assigned once the component has been mounted.
                         qualityFilter = filter;
                     },
-                    onFilter: filterValue => {
+                    onFilter: (filterValue) => {
                         console.log(filterValue);
                     },
                 }),
@@ -212,7 +245,7 @@ const selectColumns = [
         dataField: "quality",
         text: "Product Quailty",
         formatter: (cell: number) => {
-            const found = selectOptionsList.find(val => val.value === cell);
+            const found = selectOptionsList.find((val) => val.value === cell);
             return found ? found.value : "";
         },
         filter: selectFilter({
@@ -222,16 +255,21 @@ const selectColumns = [
             defaultValue: 2,
             comparator: Comparator.LIKE, // default is Comparator.EQ
             style: { backgroundColor: "pink" },
-            getFilter: filter => {
+            getFilter: (filter) => {
                 // qualityFilter was assigned once the component has been mounted.
                 qualityFilter = filter;
             },
-            onFilter: filterValue => {},
+            onFilter: (filterValue) => {},
         }),
     },
 ];
 render(
-    <BootstrapTable keyField="id" data={products} columns={selectColumns} filter={filterFactory()} />,
+    <BootstrapTable
+        keyField="id"
+        data={products}
+        columns={selectColumns}
+        filter={filterFactory()}
+    />,
     document.getElementById("app"),
 );
 
@@ -254,7 +292,7 @@ const textColumns = [
             caseSensitive: true, // default is false, and true will only work when comparator is LIKE
             style: { backgroundColor: "yellow" }, // your custom inline styles on input
             delay: 1000, // how long will trigger filtering after user typing, default is 500 ms
-            onClick: e => console.log(e),
+            onClick: (e) => console.log(e),
         }),
     },
     {
@@ -264,7 +302,12 @@ const textColumns = [
     },
 ];
 
-<BootstrapTable keyField="id" data={products} columns={textColumns} filter={filterFactory()} />;
+<BootstrapTable
+    keyField="id"
+    data={products}
+    columns={textColumns}
+    filter={filterFactory()}
+/>;
 
 /**
  * After filter test
@@ -285,7 +328,7 @@ const afterFilterColumns = [
             caseSensitive: true, // default is false, and true will only work when comparator is LIKE
             style: { backgroundColor: "yellow" }, // your custom inline styles on input
             delay: 1000, // how long will trigger filtering after user typing, default is 500 ms
-            onClick: e => console.log(e),
+            onClick: (e) => console.log(e),
         }),
     },
     {
@@ -300,6 +343,11 @@ const afterFilter = (newResult: Product[]): void => {
 };
 
 render(
-    <BootstrapTable keyField="id" data={products} columns={selectColumns} filter={filterFactory({ afterFilter })} />,
+    <BootstrapTable
+        keyField="id"
+        data={products}
+        columns={selectColumns}
+        filter={filterFactory({ afterFilter })}
+    />,
     document.getElementById("app"),
 );

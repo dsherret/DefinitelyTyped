@@ -27,16 +27,18 @@ export interface ModuleOptions<ClientIdName extends string = "client_id"> {
      * Defaults to header.Accept = "application/json"
      */
     http?: {} | undefined;
-    options?: {
-        /** Format of data sent in the request body. Defaults to form. */
-        bodyFormat?: "json" | "form" | undefined;
-        /**
-         * Indicates the method used to send the client.id/client.secret authorization params at the token request.
-         * If set to body, the bodyFormat option will be used to format the credentials.
-         * Defaults to header
-         */
-        authorizationMethod?: "header" | "body" | undefined;
-    } | undefined;
+    options?:
+        | {
+              /** Format of data sent in the request body. Defaults to form. */
+              bodyFormat?: "json" | "form" | undefined;
+              /**
+               * Indicates the method used to send the client.id/client.secret authorization params at the token request.
+               * If set to body, the bodyFormat option will be used to format the credentials.
+               * Defaults to header
+               */
+              authorizationMethod?: "header" | "body" | undefined;
+          }
+        | undefined;
 }
 
 export type TokenType = "access_token" | "refresh_token";
@@ -78,15 +80,17 @@ export interface WreckHttpOptions {
     redirect303?: boolean | undefined;
     beforeRedirect?:
         | ((
-            redirectMethod: string,
-            statusCode: number,
-            location: string,
-            resHeaders: { [key: string]: any },
-            redirectOptions: any,
-            next: () => {},
-        ) => void)
+              redirectMethod: string,
+              statusCode: number,
+              location: string,
+              resHeaders: { [key: string]: any },
+              redirectOptions: any,
+              next: () => {},
+          ) => void)
         | undefined;
-    redirected?: ((statusCode: number, location: string, req: any) => void) | undefined;
+    redirected?:
+        | ((statusCode: number, location: string, req: any) => void)
+        | undefined;
     timeout?: number | undefined;
     maxBytes?: number | undefined;
     rejectUnauthorized?: boolean | undefined;
@@ -119,16 +123,14 @@ export class AuthorizationCode<ClientIdName extends string = "client_id"> {
      * @return the absolute authorization url
      */
     authorizeURL(
-        params?:
-            & {
-                /** A string that represents the Client-ID */
-                [key in ClientIdName]?: string;
-            }
-            & {
-                redirect_uri?: string | undefined;
-                scope?: string | string[] | undefined;
-                state?: string | undefined;
-            },
+        params?: {
+            /** A string that represents the Client-ID */
+            [key in ClientIdName]?: string;
+        } & {
+            redirect_uri?: string | undefined;
+            scope?: string | string[] | undefined;
+            state?: string | undefined;
+        },
     ): string;
 
     /**
@@ -140,7 +142,10 @@ export class AuthorizationCode<ClientIdName extends string = "client_id"> {
      * @param [params.scope] String or array of strings representing the application privileges
      * @param [httpOptions] Optional http options passed through the underlying http library
      */
-    getToken(params: AuthorizationTokenConfig, httpOptions?: WreckHttpOptions): Promise<AccessToken>;
+    getToken(
+        params: AuthorizationTokenConfig,
+        httpOptions?: WreckHttpOptions,
+    ): Promise<AccessToken>;
 
     /**
      * Creates a new access token by providing a token object as specified by RFC6750.
@@ -176,7 +181,10 @@ export class ResourceOwnerPassword<ClientIdName extends string = "client_id"> {
      * @param [params.scope] A String or array of strings representing the application privileges
      * @param [httpOptions] Optional http options passed through the underlying http library
      */
-    getToken(params: PasswordTokenConfig, httpOptions?: WreckHttpOptions): Promise<AccessToken>;
+    getToken(
+        params: PasswordTokenConfig,
+        httpOptions?: WreckHttpOptions,
+    ): Promise<AccessToken>;
 
     /**
      * Creates a new access token by providing a token object as specified by RFC6750.
@@ -218,7 +226,10 @@ export class ClientCredentials<ClientIdName extends string = "client_id"> {
      * @param [params.scope] A String or array of strings representing the application privileges
      * @param [httpOptions] Optional http options passed through the underlying http library
      */
-    getToken(params: ClientCredentialTokenConfig, httpOptions?: WreckHttpOptions): Promise<AccessToken>;
+    getToken(
+        params: ClientCredentialTokenConfig,
+        httpOptions?: WreckHttpOptions,
+    ): Promise<AccessToken>;
 
     /**
      * Creates a new access token by providing a token object as specified by RFC6750.

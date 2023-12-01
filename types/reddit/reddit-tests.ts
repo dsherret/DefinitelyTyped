@@ -10,7 +10,7 @@ interface Request {
     postId: number;
 }
 
-(async () => {
+async () => {
     const creds: Reddit.Credentials = {
         username: "username",
         password: "password",
@@ -59,4 +59,4 @@ interface Request {
 
     // $ExpectType void
     await reddit.post<void, Request>("link", request); // eslint-disable-line @typescript-eslint/no-invalid-void-type
-});
+};

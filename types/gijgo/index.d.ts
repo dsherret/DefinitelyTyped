@@ -121,27 +121,60 @@ declare namespace Types {
 
         // Events
         beforeEmptyRowInsert?: ((e: any, $row: JQuery) => any) | undefined;
-        cellDataBound?: ((e: any, $wrapper: JQuery, id: string, column: GridColumn, record: Entity) => any) | undefined;
+        cellDataBound?:
+            | ((
+                  e: any,
+                  $wrapper: JQuery,
+                  id: string,
+                  column: GridColumn,
+                  record: Entity,
+              ) => any)
+            | undefined;
         cellDataChanged?:
-            | ((e: any, $cell: JQuery, column: GridColumn, record: Entity, oldValue: any, newValue: any) => any)
+            | ((
+                  e: any,
+                  $cell: JQuery,
+                  column: GridColumn,
+                  record: Entity,
+                  oldValue: any,
+                  newValue: any,
+              ) => any)
             | undefined;
         columnHide?: ((e: any, column: GridColumn) => any) | undefined;
         columnShow?: ((e: any, column: GridColumn) => any) | undefined;
         dataBinding?: ((e: any, records: Entity[]) => any) | undefined;
-        dataBound?: ((e: any, records: Entity[], totalRecords: number) => any) | undefined;
+        dataBound?:
+            | ((e: any, records: Entity[], totalRecords: number) => any)
+            | undefined;
         dataFiltered?: ((e: any, records: Entity[]) => any) | undefined;
         destroying?: ((e: any) => any) | undefined;
-        detailCollapse?: ((e: any, detailWrapper: JQuery, id: string) => any) | undefined;
-        detailExpand?: ((e: any, detailWrapper: JQuery, id: string) => any) | undefined;
+        detailCollapse?:
+            | ((e: any, detailWrapper: JQuery, id: string) => any)
+            | undefined;
+        detailExpand?:
+            | ((e: any, detailWrapper: JQuery, id: string) => any)
+            | undefined;
         initialized?: ((e: any) => any) | undefined;
         pageChanging?: ((e: any, newPage: number) => any) | undefined;
         pageSizeChange?: ((e: any, newPage: number) => any) | undefined;
-        resize?: ((e: any, newWidth: number, oldWidth: number) => any) | undefined;
-        rowDataBound?: ((e: any, $row: JQuery, id: string, record: Entity) => any) | undefined;
-        rowDataChanged?: ((e: any, id: string, record: Entity) => any) | undefined;
-        rowRemoving?: ((e: any, $row: JQuery, id: string, record: Entity) => any) | undefined;
-        rowSelect?: ((e: any, $row: JQuery, id: string, record: Entity) => any) | undefined;
-        rowUnselect?: ((e: any, $row: JQuery, id: string, record: Entity) => any) | undefined;
+        resize?:
+            | ((e: any, newWidth: number, oldWidth: number) => any)
+            | undefined;
+        rowDataBound?:
+            | ((e: any, $row: JQuery, id: string, record: Entity) => any)
+            | undefined;
+        rowDataChanged?:
+            | ((e: any, id: string, record: Entity) => any)
+            | undefined;
+        rowRemoving?:
+            | ((e: any, $row: JQuery, id: string, record: Entity) => any)
+            | undefined;
+        rowSelect?:
+            | ((e: any, $row: JQuery, id: string, record: Entity) => any)
+            | undefined;
+        rowUnselect?:
+            | ((e: any, $row: JQuery, id: string, record: Entity) => any)
+            | undefined;
     }
 
     interface Grid<Entity, Params> extends JQuery {
@@ -151,7 +184,10 @@ declare namespace Types {
         collapseAll(): Grid<Entity, Params>;
         count(): number;
         destroy(keepTableTag?: boolean, keepWrapperTag?: boolean): void;
-        downloadCSV(filename?: string, includeAllRecords?: boolean): Grid<Entity, Params>;
+        downloadCSV(
+            filename?: string,
+            includeAllRecords?: boolean,
+        ): Grid<Entity, Params>;
         edit(id: string): Grid<Entity, Params>;
         expandAll(): Grid<Entity, Params>;
         // get(position: number): Entity; //TODO: rename to getByPosition to avoid conflicts with jquery.get
@@ -433,8 +469,17 @@ declare namespace Types {
         disable?: ((e: any, node: any, id: string) => any) | undefined;
         destroying?: ((e: any) => any) | undefined;
         nodeDataBound?: ((e: any, node: any, id: string) => any) | undefined;
-        checkboxChange?: ((e: any, node: any, record: any, state: string) => any) | undefined;
-        nodeDrop?: ((e: any, id: string, parentId: string, orderNumber: number) => any) | undefined;
+        checkboxChange?:
+            | ((e: any, node: any, record: any, state: string) => any)
+            | undefined;
+        nodeDrop?:
+            | ((
+                  e: any,
+                  id: string,
+                  parentId: string,
+                  orderNumber: number,
+              ) => any)
+            | undefined;
     }
 
     interface Tree extends JQuery {
@@ -476,7 +521,9 @@ declare namespace Types {
 interface JQuery {
     grid(settings: Types.GridSettings<any>): Types.Grid<any, any>;
     grid<Entity>(settings: Types.GridSettings<Entity>): Types.Grid<Entity, any>;
-    grid<Entity, Params>(settings: Types.GridSettings<Entity>): Types.Grid<Entity, Params>;
+    grid<Entity, Params>(
+        settings: Types.GridSettings<Entity>,
+    ): Types.Grid<Entity, Params>;
 
     dialog(settings: Types.DialogSettings): Types.Dialog;
 
@@ -490,7 +537,9 @@ interface JQuery {
 
     timepicker(settings: Types.TimePickerSettings): Types.TimePicker;
 
-    datetimepicker(settings: Types.DateTimePickerSettings): Types.DateTimePicker;
+    datetimepicker(
+        settings: Types.DateTimePickerSettings,
+    ): Types.DateTimePicker;
 
     slider(settings: Types.SliderSettings): Types.Slider;
 

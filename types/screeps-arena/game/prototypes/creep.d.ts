@@ -106,7 +106,7 @@ declare module "game/prototypes" {
          * @param target The source object to be harvested.
          */
         harvest(
-            target: Source, /* | Mineral | Deposit*/
+            target: Source /* | Mineral | Deposit*/,
         ): CreepActionReturnCode | ERR_NOT_FOUND | ERR_NOT_ENOUGH_RESOURCES;
 
         /**
@@ -115,7 +115,15 @@ declare module "game/prototypes" {
          * Requires the MOVE body part. The target must be adjacent to the creep. The creep must move elsewhere, and the target must move towards the creep.
          * @param target The target creep to be pulled.
          */
-        pull(target: Creep): OK | ERR_NOT_OWNER | ERR_BUSY | ERR_INVALID_TARGET | ERR_NOT_IN_RANGE | ERR_NO_BODYPART;
+        pull(
+            target: Creep,
+        ):
+            | OK
+            | ERR_NOT_OWNER
+            | ERR_BUSY
+            | ERR_INVALID_TARGET
+            | ERR_NOT_IN_RANGE
+            | ERR_NO_BODYPART;
 
         /**
          * Transfer resource from the creep to another object. The target has to be at adjacent square to the creep.
@@ -123,7 +131,11 @@ declare module "game/prototypes" {
          * @param resourceType One of the RESOURCE_* constants
          * @param amount The amount of resources to be transferred. If omitted, all the available carried amount is used.
          */
-        transfer(target: AnyCreep | Structure, resourceType: ResourceConstant, amount?: number): ScreepsReturnCode;
+        transfer(
+            target: AnyCreep | Structure,
+            resourceType: ResourceConstant,
+            amount?: number,
+        ): ScreepsReturnCode;
 
         /**
          * Withdraw resources from a structure, a tombstone or a ruin.
@@ -138,7 +150,7 @@ declare module "game/prototypes" {
          * @param amount The amount of resources to be transferred. If omitted, all the available amount is used.
          */
         withdraw(
-            target: Structure, /* | Tombstone | Ruin*/
+            target: Structure /* | Tombstone | Ruin*/,
             resourceType: ResourceConstant,
             amount?: number,
         ): ScreepsReturnCode;
@@ -148,7 +160,10 @@ declare module "game/prototypes" {
          * @param resourceType One of the RESOURCE_* constants.
          * @param amount The amount of resource units to be dropped. If omitted, all the available carried amount is used.
          */
-        drop(resourceType: ResourceConstant, amount?: number): OK | ERR_NOT_OWNER | ERR_BUSY | ERR_NOT_ENOUGH_RESOURCES;
+        drop(
+            resourceType: ResourceConstant,
+            amount?: number,
+        ): OK | ERR_NOT_OWNER | ERR_BUSY | ERR_NOT_ENOUGH_RESOURCES;
 
         /**
          * Pick up an item (a dropped piece of energy). Needs the CARRY body part. The target has to be at adjacent square to the creep or at the same square.
@@ -165,10 +180,14 @@ declare module "game/prototypes" {
          * @param target The target construction site to be built.
          * @returns Result Code: OK, ERR_NOT_OWNER, ERR_BUSY, ERR_NOT_ENOUGH_RESOURCES, ERR_INVALID_TARGET, ERR_NOT_IN_RANGE, ERR_NO_BODYPART, ERR_RCL_NOT_ENOUGH
          */
-        build(target: ConstructionSite): CreepActionReturnCode | ERR_NOT_ENOUGH_RESOURCES;
+        build(
+            target: ConstructionSite,
+        ): CreepActionReturnCode | ERR_NOT_ENOUGH_RESOURCES;
     }
 
-    interface CreepConstructor extends _Constructor<Creep>, _ConstructorById<Creep> {}
+    interface CreepConstructor
+        extends _Constructor<Creep>,
+            _ConstructorById<Creep> {}
 
     export const Creep: CreepConstructor;
 }

@@ -23,7 +23,7 @@ newer({
 
 // using relative path mapping without specifying a dest value
 newer({
-    map: relativePath => relativePath.replace(".css", ".min.css"),
+    map: (relativePath) => relativePath.replace(".css", ".min.css"),
 });
 
 // invalid options configuration - nothing is specified

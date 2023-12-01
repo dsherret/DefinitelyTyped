@@ -25,12 +25,18 @@ declare module "uglifycss" {
         /**
          * Uglify a string
          */
-        function processString(content: string, options?: UglifyCSSOptions): string;
+        function processString(
+            content: string,
+            options?: UglifyCSSOptions,
+        ): string;
 
         /**
          * Uglify one or more files
          */
-        function processFiles(filenames: string[], options?: UglifyCSSOptions): string;
+        function processFiles(
+            filenames: string[],
+            options?: UglifyCSSOptions,
+        ): string;
     }
 
     export = UglifyCSS;

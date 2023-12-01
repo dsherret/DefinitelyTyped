@@ -8,7 +8,8 @@ function f (n) {
     return false;
 }`);
 
-const s = "FunctionDeclaration !VariableDeclaration > VariableDeclarator[init.value > 3]";
+const s =
+    "FunctionDeclaration !VariableDeclaration > VariableDeclarator[init.value > 3]";
 
 // $ExpectType Selector
 const selector = esquery.parse(s);

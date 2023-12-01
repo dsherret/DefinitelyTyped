@@ -5,7 +5,10 @@
  * @param findAllLines Find all the intersection lines.
  * @return Returns `true` if a self-intersection has been found.
  */
-export function findSelfIntersections(points: readonly number[][], findAllLines?: boolean): boolean;
+export function findSelfIntersections(
+    points: readonly number[][],
+    findAllLines?: boolean,
+): boolean;
 
 /**
  * Get the self-intersection lines.

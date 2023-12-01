@@ -1,11 +1,10 @@
 /** 1135 pictograms in total */
 
-export interface CarbonPictogramProps extends
-    Omit<
+export interface CarbonPictogramProps
+    extends Omit<
         React.SVGProps<React.ReactSVGElement>,
         "ref" | "tabIndex" | "aria-hidden"
-    >
-{
+    > {
     "aria-hidden"?: string;
     "aria-label"?: string;
     "aria-labelledby"?: string;

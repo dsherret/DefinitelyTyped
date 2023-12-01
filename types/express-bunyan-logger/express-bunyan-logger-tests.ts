@@ -25,7 +25,7 @@ const middleware5 = expressBunyan({
 
 expressBunyan({
     format: () => "some format",
-    genReqId: req => req.header("foo") || "other",
+    genReqId: (req) => req.header("foo") || "other",
     name: "foo_app",
     parseUA: false,
     serializers: Bunyan.stdSerializers,

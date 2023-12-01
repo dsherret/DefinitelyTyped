@@ -60,7 +60,9 @@ declare class JiraApi {
      * [Jira Doc](https://docs.atlassian.com/jira/REST/latest/#api/2/project-createProject)
      * @param project - with specs
      */
-    createProject(project: JiraApi.ProjectObject): Promise<JiraApi.JsonResponse>;
+    createProject(
+        project: JiraApi.ProjectObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Find the Rapid View for a specified project
@@ -72,14 +74,19 @@ declare class JiraApi {
      * Get the most recent sprint for a given rapidViewId
      * @param rapidViewId - the id for the rapid view
      */
-    getLastSprintForRapidView(rapidViewId: string): Promise<JiraApi.JsonResponse>;
+    getLastSprintForRapidView(
+        rapidViewId: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get the issues for a rapidView / sprint
      * @param rapidViewId - the id for the rapid view
      * @param sprintId - the id for the sprint
      */
-    getSprintIssues(rapidViewId: string, sprintId: string): Promise<JiraApi.JsonResponse>;
+    getSprintIssues(
+        rapidViewId: string,
+        sprintId: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get a list of Sprints belonging to a Rapid View
@@ -98,7 +105,10 @@ declare class JiraApi {
      * @param issueId - the id of the existing issue
      * @param sprintId - the id of the sprint to add it to
      */
-    addIssueToSprint(issueId: string, sprintId: string): Promise<JiraApi.JsonResponse>;
+    addIssueToSprint(
+        issueId: string,
+        sprintId: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Create an issue link between two issues
@@ -123,7 +133,10 @@ declare class JiraApi {
      * @param issueNumber - The issue number to create the remotelink under
      * @param remoteLink - the remotelink object as specified by the Jira API
      */
-    createRemoteLink(issueNumber: string, remoteLink: JiraApi.LinkObject): Promise<JiraApi.JsonResponse>;
+    createRemoteLink(
+        issueNumber: string,
+        remoteLink: JiraApi.LinkObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get Versions for a project
@@ -144,14 +157,18 @@ declare class JiraApi {
      * [Jira Doc](http://docs.atlassian.com/jira/REST/latest/#id288232)
      * @param version - an object of the new version
      */
-    createVersion(version: JiraApi.VersionObject): Promise<JiraApi.JsonResponse>;
+    createVersion(
+        version: JiraApi.VersionObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Update a version
      * [Jira Doc](https://docs.atlassian.com/jira/REST/latest/#d2e510)
      * @param version - an new object of the version to update
      */
-    updateVersion(version: JiraApi.VersionObject): Promise<JiraApi.JsonResponse>;
+    updateVersion(
+        version: JiraApi.VersionObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Delete a version
@@ -176,7 +193,10 @@ declare class JiraApi {
      * @param versionId - the ID of the version to delete
      * @param position - an object of the new position
      */
-    moveVersion(versionId: string, position: string): Promise<JiraApi.JsonResponse>;
+    moveVersion(
+        versionId: string,
+        position: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Pass a search query to Jira
@@ -184,7 +204,10 @@ declare class JiraApi {
      * @param searchString - jira query string in JQL
      * @param optional - object containing any of the following properties
      */
-    searchJira(searchString: string, optional?: JiraApi.SearchQuery): Promise<JiraApi.JsonResponse>;
+    searchJira(
+        searchString: string,
+        optional?: JiraApi.SearchQuery,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Create a Jira user
@@ -198,7 +221,9 @@ declare class JiraApi {
      * [Jira Doc](http://docs.atlassian.com/jira/REST/latest/#d2e3756)
      * @param options
      */
-    searchUsers(options: JiraApi.SearchUserOptions): Promise<JiraApi.JsonResponse>;
+    searchUsers(
+        options: JiraApi.SearchUserOptions,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get all users in group on Jira
@@ -206,7 +231,11 @@ declare class JiraApi {
      * @param [startAt=0] - The index of the first user to return (0-based)
      * @param [maxResults=50] - The maximum number of users to return (defaults to 50).
      */
-    getUsersInGroup(groupname: string, startAt?: number, maxResults?: number): Promise<JiraApi.JsonResponse>;
+    getUsersInGroup(
+        groupname: string,
+        startAt?: number,
+        maxResults?: number,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get issues related to a user
@@ -214,7 +243,10 @@ declare class JiraApi {
      * @param username - username of user to search for
      * @param open - determines if only open issues should be returned
      */
-    getUsersIssues(username: string, open: boolean): Promise<JiraApi.JsonResponse>;
+    getUsersIssues(
+        username: string,
+        open: boolean,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Returns a user.
@@ -230,7 +262,10 @@ declare class JiraApi {
      * @param [startAt=0] - The index of the first user to return (0-based)
      * @param [maxResults=50] - The maximum number of users to return (defaults to 50).
      */
-    getUsers(startAt?: number, maxResults?: number): Promise<JiraApi.JsonResponse[]>;
+    getUsers(
+        startAt?: number,
+        maxResults?: number,
+    ): Promise<JiraApi.JsonResponse[]>;
 
     /**
      * Add issue to Jira
@@ -244,7 +279,10 @@ declare class JiraApi {
      * @param issueKey - the key of the existing issue
      * @param username - the jira username to add as a watcher to the issue
      */
-    addWatcher(issueKey: string, username: string): Promise<JiraApi.JsonResponse>;
+    addWatcher(
+        issueKey: string,
+        username: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Change an assignee on an issue
@@ -252,7 +290,10 @@ declare class JiraApi {
      * @param issueKey - the key of the existing issue
      * @param assigneeName - the jira username to add as a new assignee to the issue
      */
-    updateAssignee(issueKey: string, assigneeName: string): Promise<JiraApi.JsonResponse>;
+    updateAssignee(
+        issueKey: string,
+        assigneeName: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Change an assignee on an issue
@@ -260,7 +301,10 @@ declare class JiraApi {
      * @param issueKey - the key of the existing issue
      * @param userId - the jira username to add as a new assignee to the issue
      */
-    updateAssigneeWithId(issueKey: string, userId: string): Promise<JiraApi.JsonResponse>;
+    updateAssigneeWithId(
+        issueKey: string,
+        userId: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Delete issue from Jira
@@ -294,7 +338,9 @@ declare class JiraApi {
      * [Jira Doc](http://docs.atlassian.com/jira/REST/latest/#id290028)
      * @param component - Properly Formatted Component
      */
-    addNewComponent(component: JiraApi.ComponentObject): Promise<JiraApi.JsonResponse>;
+    addNewComponent(
+        component: JiraApi.ComponentObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Update Jira component
@@ -302,7 +348,10 @@ declare class JiraApi {
      * @param componentId - the Id of the component to update
      * @param component - Properly Formatted Component
      */
-    updateComponent(componentId: string, component: JiraApi.ComponentObject): Promise<JiraApi.JsonResponse>;
+    updateComponent(
+        componentId: string,
+        component: JiraApi.ComponentObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Delete component from Jira
@@ -325,7 +374,9 @@ declare class JiraApi {
      * [Jira Doc](http://docs.atlassian.com/jira/REST/latest/#api/2/field-createCustomField)
      * @param field - Properly formatted Field object
      */
-    createCustomField(field: JiraApi.FieldObject): Promise<JiraApi.JsonResponse>;
+    createCustomField(
+        field: JiraApi.FieldObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * List all fields custom and not that jira knows about.
@@ -339,7 +390,10 @@ declare class JiraApi {
      * @param fieldKey - the key of the select list field
      * @param option - properly formatted Option object
      */
-    createFieldOption(fieldKey: string, option: JiraApi.FieldOptionObject): Promise<JiraApi.JsonResponse>;
+    createFieldOption(
+        fieldKey: string,
+        option: JiraApi.FieldOptionObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Returns all options defined for a select list issue field.
@@ -367,7 +421,10 @@ declare class JiraApi {
      * @param fieldKey - the key of the select list field
      * @param optionId - the id of the option
      */
-    getFieldOption(fieldKey: string, optionId: string): Promise<JiraApi.JsonResponse>;
+    getFieldOption(
+        fieldKey: string,
+        optionId: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Deletes an option from a select list issue field.
@@ -375,7 +432,10 @@ declare class JiraApi {
      * @param fieldKey - the key of the select list field
      * @param optionId - the id of the deleted option
      */
-    deleteFieldOption(fieldKey: string, optionId: string): Promise<JiraApi.JsonResponse>;
+    deleteFieldOption(
+        fieldKey: string,
+        optionId: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get Property of Issue by Issue and Property Id
@@ -383,7 +443,10 @@ declare class JiraApi {
      * @param issueNumber - The issue number to search for including the project key
      * @param property - The property key to search for
      */
-    getIssueProperty(issueNumber: string, property: string): Promise<JiraApi.JsonResponse>;
+    getIssueProperty(
+        issueNumber: string,
+        property: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * List all changes for an issue, sorted by date, starting from the latest
@@ -392,7 +455,11 @@ declare class JiraApi {
      * @param [startAt=0] - optional starting index number
      * @param [maxResults=50] - optional ending index number
      */
-    getIssueChangelog(issueNumber: string, startAt?: number, maxResults?: number): Promise<JiraApi.JsonResponse>;
+    getIssueChangelog(
+        issueNumber: string,
+        startAt?: number,
+        maxResults?: number,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * List all watchers for an issue
@@ -420,7 +487,10 @@ declare class JiraApi {
      * @param issueId - the Id of the issue to delete
      * @param issueTransition - transition object from the jira rest API
      */
-    transitionIssue(issueId: string, issueTransition: JiraApi.TransitionObject): Promise<JiraApi.JsonResponse>;
+    transitionIssue(
+        issueId: string,
+        issueTransition: JiraApi.TransitionObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * List all Viewable Projects
@@ -442,7 +512,10 @@ declare class JiraApi {
      * @param issueId - Issue to add a comment to
      * @param comment - The object containing your comment data
      */
-    addCommentAdvanced(issueId: string, comment: JiraApi.CommentAdvancedObject): Promise<JiraApi.JsonResponse>;
+    addCommentAdvanced(
+        issueId: string,
+        comment: JiraApi.CommentAdvancedObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Update comment for an issue
@@ -472,7 +545,10 @@ declare class JiraApi {
      * @param issueId - this issue this comment is on
      * @param commentId - the id of the comment
      */
-    getComment(issueId: string, commentId: number): Promise<JiraApi.JsonResponse>;
+    getComment(
+        issueId: string,
+        commentId: number,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Delete Comments by Id.
@@ -480,7 +556,10 @@ declare class JiraApi {
      * @param issueId - this issue this comment is on
      * @param commentId - the id of the comment
      */
-    deleteComment(issueId: string, commentId: number): Promise<JiraApi.JsonResponse>;
+    deleteComment(
+        issueId: string,
+        commentId: number,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Add a worklog to a project
@@ -505,7 +584,10 @@ declare class JiraApi {
      * @param expand - ptional comma separated list of parameters to expand: properties
      * (provides worklog properties).
      */
-    updatedWorklogs(since: number, expand: string): Promise<JiraApi.JsonResponse>;
+    updatedWorklogs(
+        since: number,
+        expand: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Delete worklog from issue
@@ -513,7 +595,10 @@ declare class JiraApi {
      * @param issueId - the Id of the issue to delete
      * @param worklogId - the Id of the worklog in issue to delete
      */
-    deleteWorklog(issueId: string, worklogId: string): Promise<JiraApi.JsonResponse>;
+    deleteWorklog(
+        issueId: string,
+        worklogId: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Deletes an issue link.
@@ -528,7 +613,10 @@ declare class JiraApi {
      * @param worklogsIDs - a list of worklog IDs.
      * @param expand - expand to include additional information about worklogs
      */
-    getWorklogs(worklogsIDs: string[], expand: string): Promise<JiraApi.JsonResponse[]>;
+    getWorklogs(
+        worklogsIDs: string[],
+        expand: string,
+    ): Promise<JiraApi.JsonResponse[]>;
 
     /**
      * Get worklogs list from a given issue
@@ -537,7 +625,11 @@ declare class JiraApi {
      * @param [startAt=0] - optional starting index number
      * @param [maxResults=1000] - optional ending index number
      */
-    getIssueWorklogs(issueId: string, startAt?: number, maxResults?: number): Promise<JiraApi.JsonResponse>;
+    getIssueWorklogs(
+        issueId: string,
+        startAt?: number,
+        maxResults?: number,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * List all Issue Types jira knows about
@@ -550,7 +642,9 @@ declare class JiraApi {
      * [Jira Doc](https://developer.atlassian.com/display/JIRADEV/JIRA+Webhooks+Overview)
      * @param webhook - properly formatted webhook
      */
-    registerWebhook(webhook: JiraApi.WebhookObject): Promise<JiraApi.JsonResponse>;
+    registerWebhook(
+        webhook: JiraApi.WebhookObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * List all registered webhooks
@@ -590,7 +684,10 @@ declare class JiraApi {
      * @param issueId - issue id
      * @param readStream - readStream object from fs
      */
-    addAttachmentOnIssue(issueId: string, readStream: ReadStream): Promise<JiraApi.JsonResponse>;
+    addAttachmentOnIssue(
+        issueId: string,
+        readStream: ReadStream,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Notify people related to issue
@@ -598,7 +695,10 @@ declare class JiraApi {
      * @param issueId - issue id
      * @param notificationBody - properly formatted body
      */
-    issueNotify(issueId: string, notificationBody: JiraApi.NotificationObject): Promise<JiraApi.JsonResponse>;
+    issueNotify(
+        issueId: string,
+        notificationBody: JiraApi.NotificationObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get list of possible statuses
@@ -618,7 +718,11 @@ declare class JiraApi {
      * @param applicationType - type of application (stash, bitbucket)
      * @param dataType - info to return (repository, pullrequest)
      */
-    getDevStatusDetail(issueId: string, applicationType: string, dataType: string): Promise<JiraApi.JsonResponse>;
+    getDevStatusDetail(
+        issueId: string,
+        applicationType: string,
+        dataType: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get issue
@@ -627,7 +731,11 @@ declare class JiraApi {
      * @param [fields] - [optional] The list of fields to return for each issue.
      * @param [expand] - [optional] A comma-separated list of the parameters to expand.
      */
-    getIssue(issueIdOrKey: string, fields?: string | string[], expand?: string): Promise<JiraApi.JsonResponse>;
+    getIssue(
+        issueIdOrKey: string,
+        fields?: string | string[],
+        expand?: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Move issues to backlog
@@ -768,7 +876,11 @@ declare class JiraApi {
      * is used for estimation.
      * @param body - value to set
      */
-    estimateIssueForBoard(issueIdOrKey: string, boardId: number, body: string): Promise<JiraApi.JsonResponse>;
+    estimateIssueForBoard(
+        issueIdOrKey: string,
+        boardId: number,
+        body: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Rank Issues
@@ -785,7 +897,11 @@ declare class JiraApi {
      * @param [maxResults=50] - The maximum number of projects to return per page.
      * Default: 50.
      */
-    getProjects(boardId: string, startAt?: number, maxResults?: number): Promise<JiraApi.JsonResponse>;
+    getProjects(
+        boardId: string,
+        startAt?: number,
+        maxResults?: number,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get Projects Full
@@ -807,7 +923,10 @@ declare class JiraApi {
      * @param boardId - Id of board to retrieve
      * @param propertyKey - Id of property to delete
      */
-    deleteBoardProperty(boardId: string, propertyKey: string): Promise<JiraApi.JsonResponse>;
+    deleteBoardProperty(
+        boardId: string,
+        propertyKey: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Set Board Property
@@ -816,7 +935,11 @@ declare class JiraApi {
      * @param propertyKey - Id of property to delete
      * @param body - value to set, for objects make sure to stringify first
      */
-    setBoardProperty(boardId: string, propertyKey: string, body: string): Promise<JiraApi.JsonResponse>;
+    setBoardProperty(
+        boardId: string,
+        propertyKey: string,
+        body: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get Board Property
@@ -824,7 +947,10 @@ declare class JiraApi {
      * @param boardId - Id of board to retrieve
      * @param propertyKey - Id of property to retrieve
      */
-    getBoardProperty(boardId: string, propertyKey: string): Promise<JiraApi.JsonResponse>;
+    getBoardProperty(
+        boardId: string,
+        propertyKey: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get All Sprints
@@ -904,7 +1030,10 @@ declare class JiraApi {
      * @param epicIdOrKey - Id of epic to retrieve
      * @param body - value to set, for objects make sure to stringify first
      */
-    partiallyUpdateEpic(epicIdOrKey: string, body: string): Promise<JiraApi.JsonResponse>;
+    partiallyUpdateEpic(
+        epicIdOrKey: string,
+        body: string,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Get issues for epic
@@ -934,7 +1063,10 @@ declare class JiraApi {
      * @param epicIdOrKey - Id of epic to move issue to, or 'none' to remove from epic
      * @param issues - array of issues to move
      */
-    moveIssuesToEpic(epicIdOrKey: string, issues: string[]): Promise<JiraApi.JsonResponse>;
+    moveIssuesToEpic(
+        epicIdOrKey: string,
+        issues: string[],
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Rank Epics
@@ -955,7 +1087,9 @@ declare class JiraApi {
      * Get metadata for creating an issue.
      * [Jira Doc](https://developer.atlassian.com/cloud/jira/platform/rest/v3/api-group-issues/#api-rest-api-3-issue-createmeta-get)
      */
-    getIssueCreateMetadata(optional?: JiraApi.CreateIssueMetadataObject): Promise<JiraApi.JsonResponse>;
+    getIssueCreateMetadata(
+        optional?: JiraApi.CreateIssueMetadataObject,
+    ): Promise<JiraApi.JsonResponse>;
 
     /**
      * Generic Get Request

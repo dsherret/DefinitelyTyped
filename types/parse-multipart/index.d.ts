@@ -8,6 +8,9 @@ export interface ParsedFile {
 
 export function getBoundary(header: string): string;
 
-export function Parse(multipartBodyBuffer: Buffer, boundary: string): ParsedFile[];
+export function Parse(
+    multipartBodyBuffer: Buffer,
+    boundary: string,
+): ParsedFile[];
 
 export function DemoData(): Buffer;

@@ -1,6 +1,9 @@
 import { Component, ComponentClass, ReactElement, ReactNode } from "react";
 import { StyleProp, TextStyle, ViewProps, ViewStyle } from "react-native";
-import { NavigationTransitionProps, NavigationTransitionSpec } from "react-navigation";
+import {
+    NavigationTransitionProps,
+    NavigationTransitionSpec,
+} from "react-navigation";
 import { RouteProps } from "react-router-navigation-core";
 
 /**
@@ -37,9 +40,9 @@ export interface NavigationProps extends NavBarProps {
     cardStyle?: StyleProp<ViewStyle> | undefined;
     configureTransition?:
         | ((
-            transitionProps: NavigationTransitionProps,
-            prevTransitionProps?: NavigationTransitionProps,
-        ) => NavigationTransitionSpec)
+              transitionProps: NavigationTransitionProps,
+              prevTransitionProps?: NavigationTransitionProps,
+          ) => NavigationTransitionSpec)
         | undefined;
     onTransitionStart?: ((...args: any[]) => void) | undefined;
     onTransitionEnd?: ((...args: any[]) => void) | undefined;
@@ -78,12 +81,14 @@ export interface TabBarProps {
 
 export interface TabsProps extends TabBarProps {
     // <Tabs /> only:
-    initialLayout?: { width?: number | undefined; height?: number | undefined } | undefined;
+    initialLayout?:
+        | { width?: number | undefined; height?: number | undefined }
+        | undefined;
     configureTransition?:
         | ((
-            transitionProps: NavigationTransitionProps,
-            prevTransitionProps?: NavigationTransitionProps,
-        ) => NavigationTransitionSpec)
+              transitionProps: NavigationTransitionProps,
+              prevTransitionProps?: NavigationTransitionProps,
+          ) => NavigationTransitionSpec)
         | undefined;
 }
 

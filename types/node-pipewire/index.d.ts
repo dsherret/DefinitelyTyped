@@ -37,4 +37,8 @@ export function linkPorts(inputPortId: number, outputPortId: number): void;
 export function unlinkPorts(inputPortId: number, outputPortId: number): void;
 export function getInputNodesName(): string[];
 export function getOutputNodesName(): string[];
-export function waitForNewNode(nodeName: string, direction?: NodeDirection, timeout?: number): Promise<PipewireNode>;
+export function waitForNewNode(
+    nodeName: string,
+    direction?: NodeDirection,
+    timeout?: number,
+): Promise<PipewireNode>;

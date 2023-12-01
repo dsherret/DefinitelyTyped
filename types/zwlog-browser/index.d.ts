@@ -130,60 +130,60 @@ interface zwlog {
     sendAliMonitor: (
         data:
             | {
-                /**
-                 * 固定值，针对涉及“拆解”业务；
-                 */
-                name: "cj";
-                /**
-                 * 业务数据
-                 */
-                obj: {
-                    /**
-                     * 填写具体业务名称，如“余额查询”
-                     */
-                    title: string;
-                    /**
-                     * 常规业务：taSR；医疗或医保业务：taSR_YL
-                     */
-                    c1: string;
-                    /**
-                     * H5 服务 url
-                     */
-                    url: string;
-                };
-            }
+                  /**
+                   * 固定值，针对涉及“拆解”业务；
+                   */
+                  name: "cj";
+                  /**
+                   * 业务数据
+                   */
+                  obj: {
+                      /**
+                       * 填写具体业务名称，如“余额查询”
+                       */
+                      title: string;
+                      /**
+                       * 常规业务：taSR；医疗或医保业务：taSR_YL
+                       */
+                      c1: string;
+                      /**
+                       * H5 服务 url
+                       */
+                      url: string;
+                  };
+              }
             | {
-                /**
-                 * 固定值，针对涉及“办结”业务
-                 */
-                name: "bj";
-                /**
-                 * 业务数据
-                 */
-                obj: {
-                    /**
-                     * 填写具体业务名称，如“余额查询”
-                     */
-                    title: string;
-                    /**
-                     * 常规业务：taSR；医疗或医保业务：taSR_YL
-                     */
-                    c1: string;
-                    /**
-                     * 服务耗时，无法统计填写 0
-                     */
-                    time: number;
-                    /**
-                     * 办结成功或失败
-                     */
-                    success: boolean;
-                };
-            },
+                  /**
+                   * 固定值，针对涉及“办结”业务
+                   */
+                  name: "bj";
+                  /**
+                   * 业务数据
+                   */
+                  obj: {
+                      /**
+                       * 填写具体业务名称，如“余额查询”
+                       */
+                      title: string;
+                      /**
+                       * 常规业务：taSR；医疗或医保业务：taSR_YL
+                       */
+                      c1: string;
+                      /**
+                       * 服务耗时，无法统计填写 0
+                       */
+                      time: number;
+                      /**
+                       * 办结成功或失败
+                       */
+                      success: boolean;
+                  };
+              },
     ) => void;
 }
 
 interface ZwLog {
-    new(initOptions: ZwLogInitOptions): zwlog;
+    new (initOptions: ZwLogInitOptions): zwlog;
 }
 
 declare var ZwLog: ZwLog;

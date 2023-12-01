@@ -12,12 +12,8 @@ function testStates(session, states) {
 }
 
 const aceBackgroundTokenizerTests = {
-    "test background tokenizer update on session change": function() {
-        var doc = new AceAjax.EditSession([
-            "/*",
-            "*/",
-            "var juhu",
-        ]);
+    "test background tokenizer update on session change": function () {
+        var doc = new AceAjax.EditSession(["/*", "*/", "var juhu"]);
         doc.setMode("./mode/javascript");
 
         forceTokenize(doc);

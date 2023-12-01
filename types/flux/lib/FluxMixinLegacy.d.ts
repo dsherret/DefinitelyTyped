@@ -21,6 +21,9 @@ declare namespace FluxMixinLegacy {
  * updated to contain the previous foo AND the bar that was just returned. Only
  * returning bar will not delete foo.
  */
-declare function FluxMixinLegacy(stores: Array<FluxStore<any>>, options?: FluxMixinLegacy.Options): any;
+declare function FluxMixinLegacy(
+    stores: Array<FluxStore<any>>,
+    options?: FluxMixinLegacy.Options,
+): any;
 
 export = FluxMixinLegacy;

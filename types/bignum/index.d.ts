@@ -163,19 +163,34 @@ declare namespace BigNum {
      *
      * The default options are: {endian: 'big', size: 1}.
      */
-    export function toBuffer(n: BigNumCompatible, options?: BufferOptions): Buffer;
+    export function toBuffer(
+        n: BigNumCompatible,
+        options?: BufferOptions,
+    ): Buffer;
 
     /** Return a new BigNum containing the instance value plus n. */
-    export function add(left: BigNumCompatible, right: BigNumCompatible): BigNum;
+    export function add(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): BigNum;
 
     /** Return a new BigNum containing the instance value minus n. */
-    export function sub(left: BigNumCompatible, right: BigNumCompatible): BigNum;
+    export function sub(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): BigNum;
 
     /** Return a new BigNum containing the instance value multiplied by n. */
-    export function mul(left: BigNumCompatible, right: BigNumCompatible): BigNum;
+    export function mul(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): BigNum;
 
     /** Return a new BigNum containing the instance value integrally divided by n. */
-    export function div(dividend: BigNumCompatible, divisor: BigNumCompatible): BigNum;
+    export function div(
+        dividend: BigNumCompatible,
+        divisor: BigNumCompatible,
+    ): BigNum;
 
     /** Return a new BigNum with the absolute value of the instance. */
     export function abs(n: BigNumCompatible): BigNum;
@@ -188,40 +203,74 @@ declare namespace BigNum {
      *
      * Return a positive integer if > n, a negative integer if < n, and 0 if == n.
      */
-    export function cmp(left: BigNumCompatible, right: BigNumCompatible): number;
+    export function cmp(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): number;
 
     /** Return a boolean: whether the instance value is greater than n (> n). */
-    export function gt(left: BigNumCompatible, right: BigNumCompatible): boolean;
+    export function gt(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): boolean;
 
     /** Return a boolean: whether the instance value is greater than or equal to n (>= n). */
-    export function ge(left: BigNumCompatible, right: BigNumCompatible): boolean;
+    export function ge(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): boolean;
 
     /** Return a boolean: whether the instance value is equal to n (== n). */
-    export function eq(left: BigNumCompatible, right: BigNumCompatible): boolean;
+    export function eq(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): boolean;
 
     /** Return a boolean: whether the instance value is less than n (< n). */
-    export function lt(left: BigNumCompatible, right: BigNumCompatible): boolean;
+    export function lt(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): boolean;
 
     /** Return a boolean: whether the instance value is less than or equal to n (<= n). */
-    export function le(left: BigNumCompatible, right: BigNumCompatible): boolean;
+    export function le(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): boolean;
 
     /** Return a new BigNum with the instance value bitwise AND (&)-ed with n. */
-    export function and(left: BigNumCompatible, right: BigNumCompatible): BigNum;
+    export function and(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): BigNum;
 
     /** Return a new BigNum with the instance value bitwise inclusive-OR (|)-ed with n. */
     export function or(left: BigNumCompatible, right: BigNumCompatible): BigNum;
 
     /** Return a new BigNum with the instance value bitwise exclusive-OR (^)-ed with n. */
-    export function xor(left: BigNumCompatible, right: BigNumCompatible): BigNum;
+    export function xor(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): BigNum;
 
     /** Return a new BigNum with the instance value modulo n. */
-    export function mod(left: BigNumCompatible, right: BigNumCompatible): BigNum;
+    export function mod(
+        left: BigNumCompatible,
+        right: BigNumCompatible,
+    ): BigNum;
 
     /** Return a new BigNum with the instance value raised to the nth power. */
-    export function pow(base: BigNumCompatible, exponent: BigNumCompatible): BigNum;
+    export function pow(
+        base: BigNumCompatible,
+        exponent: BigNumCompatible,
+    ): BigNum;
 
     /** Return a new BigNum with the instance value raised to the nth power modulo m. */
-    export function powm(base: BigNumCompatible, exponent: BigNumCompatible, m: BigNumCompatible): BigNum;
+    export function powm(
+        base: BigNumCompatible,
+        exponent: BigNumCompatible,
+        m: BigNumCompatible,
+    ): BigNum;
 
     /** Compute the multiplicative inverse modulo m. */
     export function invertm(n: BigNumCompatible, m: BigNumCompatible): BigNum;
@@ -230,7 +279,10 @@ declare namespace BigNum {
      * If upperBound is supplied, return a random BigNum between the instance value and upperBound - 1, inclusive.
      * Otherwise, return a random BigNum between 0 and the instance value - 1, inclusive.
      */
-    export function rand(n: BigNumCompatible, upperBound?: BigNumCompatible): BigNum;
+    export function rand(
+        n: BigNumCompatible,
+        upperBound?: BigNumCompatible,
+    ): BigNum;
 
     /**
      * Return whether the BigNum is:
@@ -241,10 +293,16 @@ declare namespace BigNum {
     export function probPrime(n: BigNumCompatible): boolean | string;
 
     /** Return a new BigNum that is the 2^bits multiple. Equivalent of the << operator. */
-    export function shiftLeft(n: BigNumCompatible, bits: BigNumCompatible): BigNum;
+    export function shiftLeft(
+        n: BigNumCompatible,
+        bits: BigNumCompatible,
+    ): BigNum;
 
     /** Return a new BigNum of the value integer divided by 2^bits. Equivalent of the >> operator. */
-    export function shiftRight(n: BigNumCompatible, bits: BigNumCompatible): BigNum;
+    export function shiftRight(
+        n: BigNumCompatible,
+        bits: BigNumCompatible,
+    ): BigNum;
 
     /** Return the greatest common divisor of the current BigNum with n as a new BigNum. */
     export function gcd(left: BigNumCompatible, right: BigNum): BigNum;

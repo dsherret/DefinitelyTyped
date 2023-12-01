@@ -2,7 +2,13 @@ export as namespace DPlayer;
 
 export type Lang = "en" | "zh-cn" | "zh-tw";
 export type Preload = "none" | "metadata" | "auto";
-export type VideoType = "auto" | "hls" | "flv" | "dash" | "webtorrent" | "normal";
+export type VideoType =
+    | "auto"
+    | "hls"
+    | "flv"
+    | "dash"
+    | "webtorrent"
+    | "normal";
 export type SubTitleType = "webvtt" | "ass";
 export type DirectionType = "top" | "right" | "bottom";
 export type FullScreenType = "web" | "browser";
@@ -133,7 +139,11 @@ export interface DPlayerDanmaku {
 export interface DPlayerAPIBackend {
     read(endpoint: any, callback: () => void): void;
 
-    send(endpoint: any, danmakuData: DPlayerDanmakuItem, callback: () => void): void;
+    send(
+        endpoint: any,
+        danmakuData: DPlayerDanmakuItem,
+        callback: () => void,
+    ): void;
 }
 
 export interface Danmaku {

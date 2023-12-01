@@ -6,9 +6,16 @@ export default class TBTC {
     depositFactory: DepositFactory;
     constants: Constants;
     config: TBTCConfig;
-    static withConfig(config: TBTCConfig, networkMatchCheck?: boolean): Promise<TBTC>;
+    static withConfig(
+        config: TBTCConfig,
+        networkMatchCheck?: boolean,
+    ): Promise<TBTC>;
     satoshisPerTbtc: BN;
-    constructor(depositFactory: DepositFactory, constants: Constants, config: TBTCConfig);
+    constructor(
+        depositFactory: DepositFactory,
+        constants: Constants,
+        config: TBTCConfig,
+    );
     get Deposit(): DepositFactory;
     get Constants(): Constants;
 }

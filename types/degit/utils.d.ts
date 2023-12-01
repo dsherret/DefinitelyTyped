@@ -16,7 +16,9 @@ export function tryRequire(
     },
 ): unknown;
 
-export function exec(command: string): Promise<{ stdout: string; stderr: string }>;
+export function exec(
+    command: string,
+): Promise<{ stdout: string; stderr: string }>;
 
 export function mkdirp(dir: string): void;
 

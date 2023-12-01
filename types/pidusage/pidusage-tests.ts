@@ -28,18 +28,31 @@ pidusage("two", {}, (err: Error | null, stats: pidusage.Status) => {
     timestamp = stats.timestamp;
 });
 
-pidusage([1, "two"], (err: Error | null, stats: { [key: string]: pidusage.Status }) => {
-    const one: pidusage.Status = stats[1];
-    const two: pidusage.Status = stats.two;
-});
+pidusage(
+    [1, "two"],
+    (err: Error | null, stats: { [key: string]: pidusage.Status }) => {
+        const one: pidusage.Status = stats[1];
+        const two: pidusage.Status = stats.two;
+    },
+);
 
-pidusage([1, "two"], {}, (err: Error | null, stats: { [key: string]: pidusage.Status }) => {
-    const one: pidusage.Status = stats[1];
-    const two: pidusage.Status = stats.two;
-});
+pidusage(
+    [1, "two"],
+    {},
+    (err: Error | null, stats: { [key: string]: pidusage.Status }) => {
+        const one: pidusage.Status = stats[1];
+        const two: pidusage.Status = stats.two;
+    },
+);
 
 const stats_1: Promise<pidusage.Status> = pidusage(1);
 const stats_two: Promise<pidusage.Status> = pidusage("two", {});
 
-const stats_obj: Promise<{ [key: string]: pidusage.Status }> = pidusage([1, "two"]);
-const stats_obj_config: Promise<{ [key: string]: pidusage.Status }> = pidusage([1, "two"], {});
+const stats_obj: Promise<{ [key: string]: pidusage.Status }> = pidusage([
+    1,
+    "two",
+]);
+const stats_obj_config: Promise<{ [key: string]: pidusage.Status }> = pidusage(
+    [1, "two"],
+    {},
+);

@@ -16,7 +16,7 @@ const serverRoute: ServerRoute = {
 server.route(serverRoute);
 server.start();
 
-server.inject("/").then(res => console.log(res.result));
+server.inject("/").then((res) => console.log(res.result));
 
 declare module "hapi" {
     interface ApplicationState {

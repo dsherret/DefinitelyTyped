@@ -16,7 +16,9 @@ export = swizzle;
  * myFunc(1, 2, 3, 4);   // [1, 2, 3, 4]
  * myFunc([1, 2, 3, 4]); // [1, 2, 3, 4]
  */
-declare function swizzle<TElement extends unknown>(arguments: ArrayLike<TElement | ArrayLike<TElement>>): TElement[];
+declare function swizzle<TElement extends unknown>(
+    arguments: ArrayLike<TElement | ArrayLike<TElement>>,
+): TElement[];
 
 declare namespace swizzle {
     /**
@@ -37,6 +39,8 @@ declare namespace swizzle {
     function wrap<TFn extends (arguments: any[]) => unknown>(
         fn: TFn,
     ): (
-        ...args: Parameters<TFn>[0] extends Array<infer TElement> ? Array<TElement | TElement[]> : never
+        ...args: Parameters<TFn>[0] extends Array<infer TElement>
+            ? Array<TElement | TElement[]>
+            : never
     ) => ReturnType<TFn>;
 }

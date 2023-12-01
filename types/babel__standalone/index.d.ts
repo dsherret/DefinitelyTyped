@@ -1,6 +1,14 @@
-import { BabelFileResult, FileResultCallback, TransformOptions, types } from "@babel/core";
+import {
+    BabelFileResult,
+    FileResultCallback,
+    TransformOptions,
+    types,
+} from "@babel/core";
 
-export function transform(code: string, options: TransformOptions): BabelFileResult;
+export function transform(
+    code: string,
+    options: TransformOptions,
+): BabelFileResult;
 
 export function transformFromAst(
     ast: types.Node,
@@ -9,13 +17,19 @@ export function transformFromAst(
     callback?: FileResultCallback,
 ): void;
 
-export function registerPlugin(name: string, plugin: object | (() => void)): void;
+export function registerPlugin(
+    name: string,
+    plugin: object | (() => void),
+): void;
 
 export function registerPlugins(newPlugins: {
     [key: string]: object | (() => void);
 }): void;
 
-export function registerPreset(name: string, preset: object | (() => void)): void;
+export function registerPreset(
+    name: string,
+    preset: object | (() => void),
+): void;
 export function registerPresets(newPresets: {
     [key: string]: object | (() => void);
 }): void;

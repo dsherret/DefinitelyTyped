@@ -20,13 +20,18 @@ prompt = promptSync({});
 
 let name: string = prompt("Enter name: ");
 let nickname: string = prompt({ ask: "Enter nickname: ", value: "N/A" });
-let gender: string = prompt("Enter gender: ", { autocomplete: complete(["male", "female"]) });
+let gender: string = prompt("Enter gender: ", {
+    autocomplete: complete(["male", "female"]),
+});
 let age: string = prompt("Enter age: ", "18", { echo: "*" });
 let password: string = prompt.hide("Enter password: ");
-let anotherPassword: string = prompt("Enter another password: ", { echo: "", value: "*password*" });
+let anotherPassword: string = prompt("Enter another password: ", {
+    echo: "",
+    value: "*password*",
+});
 
 function complete(commands: string[]) {
-    return function(str: string) {
+    return function (str: string) {
         const ret: string[] = [];
         for (let i = 0; i < commands.length; i++) {
             if (commands[i].indexOf(str) == 0) {

@@ -45,7 +45,11 @@ export class BVH {
      * @param [primitivesPerNode=1] - The minimum amount of primitives per BVH node.
      * @param [depth=10] - The maximum hierarchical depth.
      */
-    constructor(branchingFactor?: number, primitivesPerNode?: number, depth?: number);
+    constructor(
+        branchingFactor?: number,
+        primitivesPerNode?: number,
+        depth?: number,
+    );
 
     /**
      * Computes a BVH for the given mesh geometry.
@@ -140,7 +144,12 @@ export class BVHNode {
      * @param maxDepth - The maximum  hierarchical depth.
      * @param currentDepth - The current hierarchical depth.
      */
-    build(branchingFactor: number, primitivesPerNode: number, maxDepth: number, currentDepth: number): this;
+    build(
+        branchingFactor: number,
+        primitivesPerNode: number,
+        maxDepth: number,
+        currentDepth: number,
+    ): this;
 
     /**
      * Computes the AABB for this BVH node.

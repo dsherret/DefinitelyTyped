@@ -8,5 +8,8 @@ import pull = require("..");
  *    `opts` is an optional Object of form `{ last: Boolean }`, where `opts.last` determines whether the last value tested (before closing the stream) is included or excluded (default).
  */
 declare function take<InOut>(n: number): pull.Through<InOut, InOut>;
-declare function take<InOut>(testFn: (data: InOut) => boolean, opts?: { last: boolean }): pull.Through<InOut, InOut>;
+declare function take<InOut>(
+    testFn: (data: InOut) => boolean,
+    opts?: { last: boolean },
+): pull.Through<InOut, InOut>;
 export = take;

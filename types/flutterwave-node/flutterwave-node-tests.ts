@@ -26,7 +26,13 @@ import Ravepay from "flutterwave-node";
     await rave.Bvn.verification({ bvn: "xxx" });
 
     // Card
-    await rave.Card.charge({ token: "xxx", currency: "xxx", amount: "xxx", email: "xxx", txRef: "xxx" });
+    await rave.Card.charge({
+        token: "xxx",
+        currency: "xxx",
+        amount: "xxx",
+        email: "xxx",
+        txRef: "xxx",
+    });
     await rave.Card.validate({ transaction_reference: "xxx" });
 
     // CustomRequest

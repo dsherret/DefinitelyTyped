@@ -81,12 +81,17 @@ export interface KapContext<T extends Record<string, any>> {
 export type Format = "gif" | "mp4" | "webm" | "apng";
 
 // TS-3.4 compatible Omit<>:
-export type ConfigSchema<TValue> = Pick<JSONSchema7, Exclude<keyof JSONSchema7, "required" | "default">> & {
+export type ConfigSchema<TValue> = Pick<
+    JSONSchema7,
+    Exclude<keyof JSONSchema7, "required" | "default">
+> & {
     required?: boolean | undefined;
     default?: TValue | undefined;
 };
 
-export interface KapShareService<T extends Record<string, any> = Record<string, any>> {
+export interface KapShareService<
+    T extends Record<string, any> = Record<string, any>,
+> {
     /**
      * The function that is run when the user clicks the menu item.
      */

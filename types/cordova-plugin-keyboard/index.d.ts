@@ -22,7 +22,10 @@ interface Keyboard {
      * @param shrink
      * @param successCallback A success callbackfunction
      */
-    shrinkView(shrink: boolean, successCallback?: (currentValue: any) => void): void;
+    shrinkView(
+        shrink: boolean,
+        successCallback?: (currentValue: any) => void,
+    ): void;
 
     /**
      * Hide the keyboard toolbar.
@@ -43,7 +46,10 @@ interface Keyboard {
      * @param hide
      * @param successCallback A success callbackfunction
      */
-    hideFormAccessoryBar(hide: boolean, successCallback?: (currentValue: any) => void): void;
+    hideFormAccessoryBar(
+        hide: boolean,
+        successCallback?: (currentValue: any) => void,
+    ): void;
 
     /**
      * Disable scrolling when the the WebView is shrunk.
@@ -62,7 +68,10 @@ interface Keyboard {
      * @param disable
      * @param successCallback A success callbackfunction
      */
-    disableScrollingInShrinkView(disable: boolean, successCallback?: (currentValue: any) => void): void;
+    disableScrollingInShrinkView(
+        disable: boolean,
+        successCallback?: (currentValue: any) => void,
+    ): void;
 
     /**
      * Hide the keyboard
@@ -150,27 +159,27 @@ interface WindowEventMap {
     /**
      * This event is fired when keyboard fully shown.
      */
-    "keyboardDidShow": Event;
+    keyboardDidShow: Event;
 
     /**
      * This event is fired when the keyboard is fully closed.
      */
-    "keyboardDidHide": Event;
+    keyboardDidHide: Event;
 
     /**
      * This event fires before keyboard will be shown.
      */
-    "keyboardWillShow": Event;
+    keyboardWillShow: Event;
 
     /**
      * This event is fired when the keyboard is fully closed.
      */
-    "keyboardWillHide": Event;
+    keyboardWillHide: Event;
 
     /**
      * This event is fired when the keyboard is fully closed.
      */
-    "keyboardHeightWillChange": CordovaKeyboardEvent;
+    keyboardHeightWillChange: CordovaKeyboardEvent;
 }
 
 declare var Keyboard: Keyboard;

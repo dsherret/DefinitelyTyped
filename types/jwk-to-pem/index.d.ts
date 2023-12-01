@@ -1,6 +1,9 @@
 export = jwkToBuffer;
 
-declare function jwkToBuffer(jwk: jwkToBuffer.JWK, opts?: jwkToBuffer.Options): string;
+declare function jwkToBuffer(
+    jwk: jwkToBuffer.JWK,
+    opts?: jwkToBuffer.Options,
+): string;
 
 declare namespace jwkToBuffer {
     interface Options {

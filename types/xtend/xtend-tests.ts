@@ -34,11 +34,22 @@ function assign2(): Result2 {
 }
 
 function assign3(): Result3 {
-    return xtend({ hellow: "world" }, { source1: "U" }, { source2: "V" }, { source3: "W" });
+    return xtend(
+        { hellow: "world" },
+        { source1: "U" },
+        { source2: "V" },
+        { source3: "W" },
+    );
 }
 
 function assign4(): Result4 {
-    return xtend({ hellow: "world" }, { source1: "U" }, { source2: "V" }, { source3: "W" }, { source4: "Q" });
+    return xtend(
+        { hellow: "world" },
+        { source1: "U" },
+        { source2: "V" },
+        { source3: "W" },
+        { source4: "Q" },
+    );
 }
 
 function assign5(): Result5 {

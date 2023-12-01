@@ -20,6 +20,7 @@ interface A98DefinitionMixin {
     };
 }
 
-declare const definition: Omit<typeof rgb, keyof A98DefinitionMixin> & A98DefinitionMixin;
+declare const definition: Omit<typeof rgb, keyof A98DefinitionMixin> &
+    A98DefinitionMixin;
 
 export default definition;

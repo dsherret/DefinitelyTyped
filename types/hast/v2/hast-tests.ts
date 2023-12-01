@@ -1,4 +1,13 @@
-import { Comment, DocType, Element, Literal, Parent, Properties, Root, Text } from "hast";
+import {
+    Comment,
+    DocType,
+    Element,
+    Literal,
+    Parent,
+    Properties,
+    Root,
+    Text,
+} from "hast";
 import { Data, Point, Position } from "unist";
 
 // Augmentations

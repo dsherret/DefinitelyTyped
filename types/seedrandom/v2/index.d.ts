@@ -2,7 +2,7 @@ declare namespace seedrandom {
     export type State = {};
 
     interface prng {
-        new(seed?: string, options?: seedRandomOptions, callback?: any): prng;
+        new (seed?: string, options?: seedRandomOptions, callback?: any): prng;
         (): number;
         quick(): number;
         int32(): number;
@@ -11,7 +11,11 @@ declare namespace seedrandom {
     }
 
     interface seedrandom_prng {
-        (seed?: string, options?: seedRandomOptions, callback?: seedrandomCallback): prng;
+        (
+            seed?: string,
+            options?: seedRandomOptions,
+            callback?: seedrandomCallback,
+        ): prng;
         alea: (seed?: string, options?: seedRandomOptions) => prng;
         xor128: (seed?: string, options?: seedRandomOptions) => prng;
         tychei: (seed?: string, options?: seedRandomOptions) => prng;
@@ -22,12 +26,17 @@ declare namespace seedrandom {
     }
 
     interface seedrandomCallback {
-        (prng?: prng, shortseed?: string, global?: boolean, state?: State): prng;
+        (
+            prng?: prng,
+            shortseed?: string,
+            global?: boolean,
+            state?: State,
+        ): prng;
     }
 
     interface seedRandomOptions {
         entropy?: boolean | undefined;
-        "global"?: boolean | undefined;
+        global?: boolean | undefined;
         state?: boolean | State | undefined;
         pass?: seedrandomCallback | undefined;
     }

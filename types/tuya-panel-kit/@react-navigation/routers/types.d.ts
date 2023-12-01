@@ -3,13 +3,16 @@ import type * as CommonActions from "./CommonActions";
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type CommonNavigationAction = CommonActions.Action;
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-declare type NavigationRoute<ParamList extends ParamListBase, RouteName extends keyof ParamList> =
-    & Route<Extract<RouteName, string>, ParamList[RouteName]>
-    & {
-        state?: NavigationState | PartialState<NavigationState> | undefined;
-    };
+declare type NavigationRoute<
+    ParamList extends ParamListBase,
+    RouteName extends keyof ParamList,
+> = Route<Extract<RouteName, string>, ParamList[RouteName]> & {
+    state?: NavigationState | PartialState<NavigationState> | undefined;
+};
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type NavigationState<ParamList extends ParamListBase = ParamListBase> = Readonly<{
+export declare type NavigationState<
+    ParamList extends ParamListBase = ParamListBase,
+> = Readonly<{
     /**
      * Unique key for the navigation state.
      */
@@ -60,37 +63,41 @@ export declare type PartialRoute<R extends Route<string>> = Omit<R, "key"> & {
     state?: PartialState<NavigationState> | undefined;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type PartialState<State extends NavigationState> =
-    & Partial<Omit<State, "stale" | "routes">>
-    & Readonly<{
+export declare type PartialState<State extends NavigationState> = Partial<
+    Omit<State, "stale" | "routes">
+> &
+    Readonly<{
         stale?: true | undefined;
         // tslint:disable-next-line array-type
         routes: Array<PartialRoute<Route<State["routeNames"][number]>>>;
     }>;
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type Route<RouteName extends string, Params extends object | undefined = object | undefined> =
-    & Readonly<{
-        /**
-         * Unique key for the route.
-         */
-        key: string;
-        /**
-         * User-provided name for the route.
-         */
-        name: RouteName;
-    }>
-    & (undefined extends Params ? Readonly<{
-            /**
-             * Params for this route
-             */
-            params?: Readonly<Params> | undefined;
-        }>
+export declare type Route<
+    RouteName extends string,
+    Params extends object | undefined = object | undefined,
+> = Readonly<{
+    /**
+     * Unique key for the route.
+     */
+    key: string;
+    /**
+     * User-provided name for the route.
+     */
+    name: RouteName;
+}> &
+    (undefined extends Params
+        ? Readonly<{
+              /**
+               * Params for this route
+               */
+              params?: Readonly<Params> | undefined;
+          }>
         : Readonly<{
-            /**
-             * Params for this route
-             */
-            params: Readonly<Params>;
-        }>);
+              /**
+               * Params for this route
+               */
+              params: Readonly<Params>;
+          }>);
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type ParamListBase = Record<string, object | undefined>;
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
@@ -136,7 +143,10 @@ export declare type RouterConfigOptions = {
     routeParamList: ParamListBase;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type Router<State extends NavigationState, Action extends NavigationAction> = {
+export declare type Router<
+    State extends NavigationState,
+    Action extends NavigationAction,
+> = {
     /**
      * Type of the router. Should match the `type` property in state.
      * If the type doesn't match, the state will be discarded during rehydration.
@@ -156,7 +166,10 @@ export declare type Router<State extends NavigationState, Action extends Navigat
      * @param options.routeNames List of valid route names as defined in the screen components.
      * @param options.routeParamsList Object containing params for each route.
      */
-    getRehydratedState(partialState: PartialState<State> | State, options: RouterConfigOptions): State;
+    getRehydratedState(
+        partialState: PartialState<State> | State,
+        options: RouterConfigOptions,
+    ): State;
     /**
      * Take the current state and updated list of route names, and return a new state.
      *
@@ -164,7 +177,10 @@ export declare type Router<State extends NavigationState, Action extends Navigat
      * @param options.routeNames New list of route names.
      * @param options.routeParamsList Object containing params for each route.
      */
-    getStateForRouteNamesChange(state: State, options: RouterConfigOptions): State;
+    getStateForRouteNamesChange(
+        state: State,
+        options: RouterConfigOptions,
+    ): State;
     /**
      * Take the current state and key of a route, and return a new state with the route focused
      *
@@ -181,7 +197,11 @@ export declare type Router<State extends NavigationState, Action extends Navigat
      * @param options.routeNames List of valid route names as defined in the screen components.
      * @param options.routeParamsList Object containing params for each route.
      */
-    getStateForAction(state: State, action: Action, options: RouterConfigOptions): State | PartialState<State> | null;
+    getStateForAction(
+        state: State,
+        action: Action,
+        options: RouterConfigOptions,
+    ): State | PartialState<State> | null;
     /**
      * Whether the action should also change focus in parent navigator
      *

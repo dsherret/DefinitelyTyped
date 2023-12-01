@@ -7,7 +7,7 @@ export interface AppConfig {
 }
 
 export interface AppConstructor {
-    new(): app;
+    new (): app;
 }
 
 /* the supported add-ons */

@@ -1,6 +1,10 @@
 import { Db, MongoError } from "mongodb";
 
-declare function mongodbQueue(db: Db, name: string, opts?: mongodbQueue.QueueOptions): mongodbQueue.Queue;
+declare function mongodbQueue(
+    db: Db,
+    name: string,
+    opts?: mongodbQueue.QueueOptions,
+): mongodbQueue.Queue;
 
 declare namespace mongodbQueue {
     class Queue {
@@ -9,12 +13,27 @@ declare namespace mongodbQueue {
         createIndexes(callback: QueueCallback<string>): void;
         add(payload: Payload, callback: QueueCallback<string>): void;
         add(payload: ArrayPayload, callback: QueueCallback<string[]>): void;
-        add(payload: Payload, opts: QueueOptions, callback: QueueCallback<string>): void;
-        add(payload: ArrayPayload, opts: QueueOptions, callback: QueueCallback<string[]>): void;
+        add(
+            payload: Payload,
+            opts: QueueOptions,
+            callback: QueueCallback<string>,
+        ): void;
+        add(
+            payload: ArrayPayload,
+            opts: QueueOptions,
+            callback: QueueCallback<string[]>,
+        ): void;
         get(callback: QueueCallback<QueueMessage | undefined>): void;
-        get(opts: QueueOptions, callback: QueueCallback<QueueMessage | undefined>): void;
+        get(
+            opts: QueueOptions,
+            callback: QueueCallback<QueueMessage | undefined>,
+        ): void;
         ping(ack: string, callback: QueueCallback<string>): void;
-        ping(ack: string, opts: QueueOptions, callback: QueueCallback<string>): void;
+        ping(
+            ack: string,
+            opts: QueueOptions,
+            callback: QueueCallback<string>,
+        ): void;
         ack(ack: string, callback: QueueCallback<string>): void;
         clean(callback: QueueCallback<any>): void;
         total(callback: QueueCallback<number>): void;

@@ -46,8 +46,11 @@ const packed = jsonPatch.pack(patch);
 const unpacked = jsonPatch.unpack(packed);
 
 // $ExpectType JsonPatch
-const concatenated = jsonPatch.concat({ op: "replace", value: "test", path: "/a" }, {
-    op: "copy",
-    path: "/a",
-    from: "/b",
-});
+const concatenated = jsonPatch.concat(
+    { op: "replace", value: "test", path: "/a" },
+    {
+        op: "copy",
+        path: "/a",
+        from: "/b",
+    },
+);

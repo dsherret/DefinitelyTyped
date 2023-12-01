@@ -9,103 +9,223 @@ export function array(arr: any[], message?: string): asserts arr is any[];
 
 export function bool(bool: boolean, message?: string): asserts bool is boolean;
 
-export function buffer(buffer: Buffer, message?: string): asserts buffer is Buffer;
+export function buffer(
+    buffer: Buffer,
+    message?: string,
+): asserts buffer is Buffer;
 
 export function func(func: Func, message?: string): asserts func is Func;
 
-export function number(number: number, message?: string): asserts number is number;
+export function number(
+    number: number,
+    message?: string,
+): asserts number is number;
 
-export function finite(finite: number, message?: string): asserts finite is number;
+export function finite(
+    finite: number,
+    message?: string,
+): asserts finite is number;
 
-export function object<T extends object = any>(obj: T, message?: string): asserts obj is T;
+export function object<T extends object = any>(
+    obj: T,
+    message?: string,
+): asserts obj is T;
 
 export function string(str: string, message?: string): asserts str is string;
 
-export function stream(stream: Stream, message?: string): asserts stream is Stream;
+export function stream(
+    stream: Stream,
+    message?: string,
+): asserts stream is Stream;
 
 export function date(date: Date, message?: string): asserts date is Date;
 
-export function regexp(regexp: RegExp, message?: string): asserts regexp is RegExp;
+export function regexp(
+    regexp: RegExp,
+    message?: string,
+): asserts regexp is RegExp;
 
 export function uuid(uuid: string, message?: string): asserts uuid is string;
 
-export function arrayOfArray(arr: any[][], message?: string): asserts arr is any[][];
+export function arrayOfArray(
+    arr: any[][],
+    message?: string,
+): asserts arr is any[][];
 
-export function arrayOfBool(arr: boolean[], message?: string): asserts arr is boolean[];
+export function arrayOfBool(
+    arr: boolean[],
+    message?: string,
+): asserts arr is boolean[];
 
-export function arrayOfBuffer(arr: Buffer[], message?: string): asserts arr is Buffer[];
+export function arrayOfBuffer(
+    arr: Buffer[],
+    message?: string,
+): asserts arr is Buffer[];
 
-export function arrayOfFunc(arr: Func[], message?: string): asserts arr is Func[];
+export function arrayOfFunc(
+    arr: Func[],
+    message?: string,
+): asserts arr is Func[];
 
-export function arrayOfNumber(arr: number[], message?: string): asserts arr is number[];
+export function arrayOfNumber(
+    arr: number[],
+    message?: string,
+): asserts arr is number[];
 
-export function arrayOfFinite(arr: number[], message?: string): asserts arr is number[];
+export function arrayOfFinite(
+    arr: number[],
+    message?: string,
+): asserts arr is number[];
 
-export function arrayOfObject<T extends object = any>(arr: T[], message?: string): asserts arr is T[];
+export function arrayOfObject<T extends object = any>(
+    arr: T[],
+    message?: string,
+): asserts arr is T[];
 
-export function arrayOfString(arr: string[], message?: string): asserts arr is string[];
+export function arrayOfString(
+    arr: string[],
+    message?: string,
+): asserts arr is string[];
 
-export function arrayOfStream(arr: Stream[], message?: string): asserts arr is Stream[];
+export function arrayOfStream(
+    arr: Stream[],
+    message?: string,
+): asserts arr is Stream[];
 
-export function arrayOfDate(arr: Date[], message?: string): asserts arr is Date[];
+export function arrayOfDate(
+    arr: Date[],
+    message?: string,
+): asserts arr is Date[];
 
-export function arrayOfRegexp(arr: RegExp[], message?: string): asserts arr is RegExp[];
+export function arrayOfRegexp(
+    arr: RegExp[],
+    message?: string,
+): asserts arr is RegExp[];
 
-export function arrayOfUuid(arr: string[], message?: string): asserts arr is string[];
+export function arrayOfUuid(
+    arr: string[],
+    message?: string,
+): asserts arr is string[];
 
-export function optionalArray(arr: any[] | undefined, message?: string): asserts arr is any[] | undefined;
+export function optionalArray(
+    arr: any[] | undefined,
+    message?: string,
+): asserts arr is any[] | undefined;
 
-export function optionalBool(bool: boolean | undefined, message?: string): asserts bool is boolean | undefined;
+export function optionalBool(
+    bool: boolean | undefined,
+    message?: string,
+): asserts bool is boolean | undefined;
 
-export function optionalBuffer(buffer: Buffer | undefined, message?: string): asserts buffer is Buffer | undefined;
+export function optionalBuffer(
+    buffer: Buffer | undefined,
+    message?: string,
+): asserts buffer is Buffer | undefined;
 
-export function optionalFunc(options: Func | undefined, message?: string): asserts options is Func | undefined;
+export function optionalFunc(
+    options: Func | undefined,
+    message?: string,
+): asserts options is Func | undefined;
 
-export function optionalNumber(options: number | undefined, message?: string): asserts options is number | undefined;
+export function optionalNumber(
+    options: number | undefined,
+    message?: string,
+): asserts options is number | undefined;
 
-export function optionalFinite(options: number | undefined, message?: string): asserts options is number | undefined;
+export function optionalFinite(
+    options: number | undefined,
+    message?: string,
+): asserts options is number | undefined;
 
 export function optionalObject<T extends object = any>(
     options: T | undefined,
     message?: string,
 ): asserts options is T | undefined;
 
-export function optionalString(options: string | undefined, message?: string): asserts options is string | undefined;
+export function optionalString(
+    options: string | undefined,
+    message?: string,
+): asserts options is string | undefined;
 
-export function optionalStream(options: Stream | undefined, message?: string): asserts options is Stream | undefined;
+export function optionalStream(
+    options: Stream | undefined,
+    message?: string,
+): asserts options is Stream | undefined;
 
-export function optionalDate(options: Date | undefined, message?: string): asserts options is Date | undefined;
+export function optionalDate(
+    options: Date | undefined,
+    message?: string,
+): asserts options is Date | undefined;
 
-export function optionalRegexp(options: RegExp | undefined, message?: string): asserts options is RegExp | undefined;
+export function optionalRegexp(
+    options: RegExp | undefined,
+    message?: string,
+): asserts options is RegExp | undefined;
 
-export function optionalUuid(options: string | undefined, message?: string): asserts options is string | undefined;
+export function optionalUuid(
+    options: string | undefined,
+    message?: string,
+): asserts options is string | undefined;
 
-export function optionalArrayOfArray(arr: any[][] | undefined, message?: string): asserts arr is any[][] | undefined;
+export function optionalArrayOfArray(
+    arr: any[][] | undefined,
+    message?: string,
+): asserts arr is any[][] | undefined;
 
-export function optionalArrayOfBool(arr: boolean[] | undefined, message?: string): asserts arr is boolean[] | undefined;
+export function optionalArrayOfBool(
+    arr: boolean[] | undefined,
+    message?: string,
+): asserts arr is boolean[] | undefined;
 
-export function optionalArrayOfBuffer(arr: Buffer[] | undefined, message?: string): asserts arr is Buffer[] | undefined;
+export function optionalArrayOfBuffer(
+    arr: Buffer[] | undefined,
+    message?: string,
+): asserts arr is Buffer[] | undefined;
 
-export function optionalArrayOfFunc(arr: Func[] | undefined, message?: string): asserts arr is Func[] | undefined;
+export function optionalArrayOfFunc(
+    arr: Func[] | undefined,
+    message?: string,
+): asserts arr is Func[] | undefined;
 
-export function optionalArrayOfNumber(arr: number[] | undefined, message?: string): asserts arr is number[] | undefined;
+export function optionalArrayOfNumber(
+    arr: number[] | undefined,
+    message?: string,
+): asserts arr is number[] | undefined;
 
-export function optionalArrayOfFinite(arr: number[] | undefined, message?: string): asserts arr is number[] | undefined;
+export function optionalArrayOfFinite(
+    arr: number[] | undefined,
+    message?: string,
+): asserts arr is number[] | undefined;
 
 export function optionalArrayOfObject<T extends object = any>(
     arr: T[] | undefined,
     message?: string,
 ): asserts arr is T[] | undefined;
 
-export function optionalArrayOfString(arr: string[] | undefined, message?: string): asserts arr is string[] | undefined;
+export function optionalArrayOfString(
+    arr: string[] | undefined,
+    message?: string,
+): asserts arr is string[] | undefined;
 
-export function optionalArrayOfStream(arr: Stream[] | undefined, message?: string): asserts arr is Stream[] | undefined;
+export function optionalArrayOfStream(
+    arr: Stream[] | undefined,
+    message?: string,
+): asserts arr is Stream[] | undefined;
 
-export function optionalArrayOfDate(arr: Date[] | undefined, message?: string): asserts arr is Date[] | undefined;
+export function optionalArrayOfDate(
+    arr: Date[] | undefined,
+    message?: string,
+): asserts arr is Date[] | undefined;
 
-export function optionalArrayOfRegexp(arr: RegExp[] | undefined, message?: string): asserts arr is RegExp[] | undefined;
+export function optionalArrayOfRegexp(
+    arr: RegExp[] | undefined,
+    message?: string,
+): asserts arr is RegExp[] | undefined;
 
-export function optionalArrayOfUuid(arr: string[] | undefined, message?: string): asserts arr is string[] | undefined;
+export function optionalArrayOfUuid(
+    arr: string[] | undefined,
+    message?: string,
+): asserts arr is string[] | undefined;
 
 export function AssertionError(options: any, message?: string): void;
 
@@ -124,7 +244,12 @@ export function AssertionError(options: any, message?: string): void;
  * // AssertionError: whoops
  * ```
  */
-export function fail(actual: any, expected: any, message: any, operator: any): void;
+export function fail(
+    actual: any,
+    expected: any,
+    message: any,
+    operator: any,
+): void;
 
 /**
  * Tests if `value` is truthy. It is equivalent to `assert.equal(!!value, true, message)`.
@@ -247,7 +372,11 @@ export function deepEqual<T>(actual: T, expected: T, message?: string): void;
  * a `message` property set equal to the value of the `message` parameter.
  * If the `message` parameter is undefined, a default error message is assigned.
  */
-export function notDeepEqual(actual: any, expected: any, message?: string): void;
+export function notDeepEqual(
+    actual: any,
+    expected: any,
+    message?: string,
+): void;
 
 /**
  * Tests strict equality as determined by the strict equality operator ( `===` ).
@@ -291,7 +420,11 @@ export function strictEqual<T>(actual: T, expected: T, message?: string): void;
  * set equal to the value of the `message` parameter. If the `message` parameter is undefined,
  * a default error message is assigned.
  */
-export function notStrictEqual(actual: any, expected: any, message?: string): void;
+export function notStrictEqual(
+    actual: any,
+    expected: any,
+    message?: string,
+): void;
 
 export function throws(block: any, error?: any, message?: string): void;
 

@@ -5,8 +5,8 @@ const server = new Hapi.Server();
 server.connection({ host: "localhost", port: 8000 });
 
 // Defines new handler for routes on this server
-var handler: Hapi.MakeRouteHandler = function(route, options) {
-    return function(request, reply) {
+var handler: Hapi.MakeRouteHandler = function (route, options) {
+    return function (request, reply) {
         return reply("new handler: " + options.msg);
     };
 };
@@ -29,12 +29,12 @@ server.route({
     handler: { test: { msg: "test" } },
 });
 
-server.start(function(err) {});
+server.start(function (err) {});
 
 // example 2
 
-handler = function(route, options: TestPluginConfig) {
-    return function(request, reply) {
+handler = function (route, options: TestPluginConfig) {
+    return function (request, reply) {
         return reply("new handler: " + options.msg);
     };
 };

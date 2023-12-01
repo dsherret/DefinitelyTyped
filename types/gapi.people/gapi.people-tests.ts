@@ -48,7 +48,10 @@
      * @param {Event} event Button click event.
      */
     function handleAuthClick(event: MouseEvent) {
-        gapi.auth.authorize({ client_id: CLIENT_ID, scope: SCOPES, immediate: false }, handleAuthResult);
+        gapi.auth.authorize(
+            { client_id: CLIENT_ID, scope: SCOPES, immediate: false },
+            handleAuthResult,
+        );
         return false;
     }
 
@@ -57,7 +60,11 @@
      * of 10 connections.
      */
     function loadPeopleApi() {
-        gapi.client.load("https://people.googleapis.com/$discovery/rest", "v1", listContacts);
+        gapi.client.load(
+            "https://people.googleapis.com/$discovery/rest",
+            "v1",
+            listContacts,
+        );
     }
 
     function listContacts() {
@@ -75,7 +82,7 @@
             personFields: "names",
         });
 
-        request.execute(function(resp) {
+        request.execute(function (resp) {
             var connections = resp.connections || [];
             appendPre("Connections:");
 
@@ -96,7 +103,7 @@
             readMask: "names",
         });
 
-        request.execute(function(resp) {
+        request.execute(function (resp) {
             var otherContacts = resp.otherContacts || [];
             appendPre("Other contacts:");
 
@@ -117,10 +124,10 @@
             readMask: "names",
         });
 
-        request.execute(function(resp) {
+        request.execute(function (resp) {
             if (resp.results && resp.results.length > 0) {
                 appendPre("Contacts found:");
-                listNames(resp.results.map(result => result.person));
+                listNames(resp.results.map((result) => result.person));
             } else {
                 appendPre("No contacts found.");
             }
@@ -156,7 +163,7 @@
             personFields: "personFields",
         });
 
-        request.execute(response => {
+        request.execute((response) => {
             // $ExpectType Person
             response;
             // $ExpectType SourceType

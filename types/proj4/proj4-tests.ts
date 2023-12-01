@@ -4,8 +4,7 @@ import proj4 = require("proj4");
 // Tests data initialisation
 ///////////////////////////////////////////
 const epsg = {
-    4269:
-        "+title=NAD83 (long/lat) +proj=longlat +a=6378137.0 +b=6356752.31414036 +ellps=GRS80 +datum=NAD83 +units=degrees",
+    4269: "+title=NAD83 (long/lat) +proj=longlat +a=6378137.0 +b=6356752.31414036 +ellps=GRS80 +datum=NAD83 +units=degrees",
     4326: "+title=WGS 84 (long/lat) +proj=longlat +ellps=WGS84 +datum=WGS84 +units=degrees",
 };
 const firstProjection = epsg[4269];
@@ -52,7 +51,10 @@ proj4(firstProjection, secondProjection).inverse(pointObj);
 proj4.defs("WGS84");
 proj4.defs("WGS84", secondProjection);
 // $ExpectType undefined[]
-proj4.defs([["EPSG:4326", secondProjection], ["EPSG:4269", firstProjection]]);
+proj4.defs([
+    ["EPSG:4326", secondProjection],
+    ["EPSG:4269", firstProjection],
+]);
 proj4.defs("urn:x-ogc:def:crs:EPSG:4326", proj4.defs("EPSG:4326"));
 
 ///////////////////////////////////

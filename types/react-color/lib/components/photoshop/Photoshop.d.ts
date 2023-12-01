@@ -14,7 +14,8 @@ export interface PhotoshopPickerStylesProps {
     actions: CSSProperties;
 }
 
-export interface PhotoshopPickerProps extends ColorPickerProps<PhotoshopPicker> {
+export interface PhotoshopPickerProps
+    extends ColorPickerProps<PhotoshopPicker> {
     header?: string | undefined;
     styles?: Partial<Classes<PhotoshopPickerStylesProps>> | undefined;
     onAccept?: ColorChangeHandler | undefined;

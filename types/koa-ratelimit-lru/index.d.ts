@@ -8,11 +8,13 @@ declare namespace rateLimit {
         readonly store?: any; // lru-cache ?
         readonly rate?: number | undefined;
         readonly id?: string | undefined;
-        readonly headers?: {
-            readonly remaining?: string | undefined;
-            readonly reset?: string | undefined;
-            readonly total?: string | undefined;
-        } | undefined;
+        readonly headers?:
+            | {
+                  readonly remaining?: string | undefined;
+                  readonly reset?: string | undefined;
+                  readonly total?: string | undefined;
+              }
+            | undefined;
         readonly errorMessage?: string | undefined;
     }
 }

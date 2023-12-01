@@ -31,7 +31,8 @@ const resolved2: string = customRequire2.resolve("test");
 
 const paths2: string[] | null = customRequire2.resolve.paths("test");
 
-const cachedModule2: Module | undefined = customRequire2.cache["/path/to/module.js"];
+const cachedModule2: Module | undefined =
+    customRequire2.cache["/path/to/module.js"];
 
 const main2: Module | undefined = customRequire2.main;
 
@@ -58,7 +59,11 @@ const entry: Module.SourceMapping = smap.findEntry(1, 1);
 }
 
 {
-    const resolve: Module.ResolveHook = async (specifier, context, nextResolve) => {
+    const resolve: Module.ResolveHook = async (
+        specifier,
+        context,
+        nextResolve,
+    ) => {
         const { parentURL = null } = context;
         console.log(context.importAttributes.type);
 

@@ -49,7 +49,9 @@ export class Options extends webdriver.Capabilities {
      * @param {boolean} ignoreSettings Whether to ignore protected mode settings.
      * @return {!Options} A self reference.
      */
-    introduceFlakinessByIgnoringProtectedModeSettings(ignoreSettings: boolean): Options;
+    introduceFlakinessByIgnoringProtectedModeSettings(
+        ignoreSettings: boolean,
+    ): Options;
 
     /**
      * Indicates whether to skip the check that the browser's zoom level is set to

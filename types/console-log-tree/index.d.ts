@@ -5,5 +5,9 @@ export interface Tree {
     children?: readonly Tree[];
 }
 
-export function parse(tree: Tree | readonly Tree[], parentPre?: string, treeStr?: string): string;
+export function parse(
+    tree: Tree | readonly Tree[],
+    parentPre?: string,
+    treeStr?: string,
+): string;
 export function log(tree: Tree | readonly Tree[]): void;

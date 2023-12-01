@@ -24,7 +24,11 @@ declare namespace GoogleAppsScript {
                 }
                 interface RealtimeCollection {
                     // Returns real time data for a view (profile).
-                    get(ids: string, metrics: string, optionalArgs?: any): Analytics.Schema.RealtimeData;
+                    get(
+                        ids: string,
+                        metrics: string,
+                        optionalArgs?: any,
+                    ): Analytics.Schema.RealtimeData;
                 }
             }
             namespace Management {
@@ -36,11 +40,17 @@ declare namespace GoogleAppsScript {
                 }
                 interface AccountUserLinksCollection {
                     // Adds a new user to the given account.
-                    insert(resource: Schema.EntityUserLink, accountId: string): Analytics.Schema.EntityUserLink;
+                    insert(
+                        resource: Schema.EntityUserLink,
+                        accountId: string,
+                    ): Analytics.Schema.EntityUserLink;
                     // Lists account-user links for a given account.
                     list(accountId: string): Analytics.Schema.EntityUserLinks;
                     // Lists account-user links for a given account.
-                    list(accountId: string, optionalArgs: any): Analytics.Schema.EntityUserLinks;
+                    list(
+                        accountId: string,
+                        optionalArgs: any,
+                    ): Analytics.Schema.EntityUserLinks;
                     // Removes a user from the given account.
                     remove(accountId: string, linkId: string): void;
                     // Updates permissions for an existing user on the given account.
@@ -58,11 +68,16 @@ declare namespace GoogleAppsScript {
                 }
                 interface ClientIdCollection {
                     // Hashes the given Client ID.
-                    hashClientId(resource: Analytics.Schema.HashClientIdRequest): Analytics.Schema.HashClientIdResponse;
+                    hashClientId(
+                        resource: Analytics.Schema.HashClientIdRequest,
+                    ): Analytics.Schema.HashClientIdResponse;
                 }
                 interface CustomDataSourcesCollection {
                     // List custom data sources to which the user has access.
-                    list(accountId: string, webPropertyId: string): Analytics.Schema.CustomDataSources;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                    ): Analytics.Schema.CustomDataSources;
                     // List custom data sources to which the user has access.
                     list(
                         accountId: string,
@@ -84,7 +99,10 @@ declare namespace GoogleAppsScript {
                         webPropertyId: string,
                     ): Analytics.Schema.CustomDimension;
                     // Lists custom dimensions to which the user has access.
-                    list(accountId: string, webPropertyId: string): Analytics.Schema.CustomDimensions;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                    ): Analytics.Schema.CustomDimensions;
                     // Lists custom dimensions to which the user has access.
                     list(
                         accountId: string,
@@ -136,9 +154,16 @@ declare namespace GoogleAppsScript {
                         webPropertyId: string,
                     ): Analytics.Schema.CustomMetric;
                     // Lists custom metrics to which the user has access.
-                    list(accountId: string, webPropertyId: string): Analytics.Schema.CustomMetrics;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                    ): Analytics.Schema.CustomMetrics;
                     // Lists custom metrics to which the user has access.
-                    list(accountId: string, webPropertyId: string, optionalArgs: any): Analytics.Schema.CustomMetrics;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                        optionalArgs: any,
+                    ): Analytics.Schema.CustomMetrics;
                     // Updates an existing custom metric. This method supports patch semantics.
                     patch(
                         resource: Schema.CustomMetric,
@@ -186,7 +211,11 @@ declare namespace GoogleAppsScript {
                         profileId: string,
                     ): Analytics.Schema.Experiment;
                     // Lists experiments to which the user has access.
-                    list(accountId: string, webPropertyId: string, profileId: string): Analytics.Schema.Experiments;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                        profileId: string,
+                    ): Analytics.Schema.Experiments;
                     // Lists experiments to which the user has access.
                     list(
                         accountId: string,
@@ -203,7 +232,12 @@ declare namespace GoogleAppsScript {
                         experimentId: string,
                     ): Analytics.Schema.Experiment;
                     // Delete an experiment.
-                    remove(accountId: string, webPropertyId: string, profileId: string, experimentId: string): void;
+                    remove(
+                        accountId: string,
+                        webPropertyId: string,
+                        profileId: string,
+                        experimentId: string,
+                    ): void;
                     // Update an existing experiment.
                     update(
                         resource: Schema.Experiment,
@@ -215,19 +249,39 @@ declare namespace GoogleAppsScript {
                 }
                 interface FiltersCollection {
                     // Returns a filters to which the user has access.
-                    get(accountId: string, filterId: string): Analytics.Schema.Filter;
+                    get(
+                        accountId: string,
+                        filterId: string,
+                    ): Analytics.Schema.Filter;
                     // Create a new filter.
-                    insert(resource: Schema.Filter, accountId: string): Analytics.Schema.Filter;
+                    insert(
+                        resource: Schema.Filter,
+                        accountId: string,
+                    ): Analytics.Schema.Filter;
                     // Lists all filters for an account
                     list(accountId: string): Analytics.Schema.Filters;
                     // Lists all filters for an account
-                    list(accountId: string, optionalArgs: any): Analytics.Schema.Filters;
+                    list(
+                        accountId: string,
+                        optionalArgs: any,
+                    ): Analytics.Schema.Filters;
                     // Updates an existing filter. This method supports patch semantics.
-                    patch(resource: Schema.Filter, accountId: string, filterId: string): Analytics.Schema.Filter;
+                    patch(
+                        resource: Schema.Filter,
+                        accountId: string,
+                        filterId: string,
+                    ): Analytics.Schema.Filter;
                     // Delete a filter.
-                    remove(accountId: string, filterId: string): Analytics.Schema.Filter;
+                    remove(
+                        accountId: string,
+                        filterId: string,
+                    ): Analytics.Schema.Filter;
                     // Updates an existing filter.
-                    update(resource: Schema.Filter, accountId: string, filterId: string): Analytics.Schema.Filter;
+                    update(
+                        resource: Schema.Filter,
+                        accountId: string,
+                        filterId: string,
+                    ): Analytics.Schema.Filter;
                 }
                 interface GoalsCollection {
                     // Gets a goal to which the user has access.
@@ -245,7 +299,11 @@ declare namespace GoogleAppsScript {
                         profileId: string,
                     ): Analytics.Schema.Goal;
                     // Lists goals to which the user has access.
-                    list(accountId: string, webPropertyId: string, profileId: string): Analytics.Schema.Goals;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                        profileId: string,
+                    ): Analytics.Schema.Goals;
                     // Lists goals to which the user has access.
                     list(
                         accountId: string,
@@ -307,7 +365,12 @@ declare namespace GoogleAppsScript {
                         linkId: string,
                     ): Analytics.Schema.ProfileFilterLink;
                     // Delete a profile filter link.
-                    remove(accountId: string, webPropertyId: string, profileId: string, linkId: string): void;
+                    remove(
+                        accountId: string,
+                        webPropertyId: string,
+                        profileId: string,
+                        linkId: string,
+                    ): void;
                     // Update an existing profile filter link.
                     update(
                         resource: Schema.ProfileFilterLink,
@@ -326,7 +389,11 @@ declare namespace GoogleAppsScript {
                         profileId: string,
                     ): Analytics.Schema.EntityUserLink;
                     // Lists profile-user links for a given view (profile).
-                    list(accountId: string, webPropertyId: string, profileId: string): Analytics.Schema.EntityUserLinks;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                        profileId: string,
+                    ): Analytics.Schema.EntityUserLinks;
                     // Lists profile-user links for a given view (profile).
                     list(
                         accountId: string,
@@ -335,7 +402,12 @@ declare namespace GoogleAppsScript {
                         optionalArgs: any,
                     ): Analytics.Schema.EntityUserLinks;
                     // Removes a user from the given view (profile).
-                    remove(accountId: string, webPropertyId: string, profileId: string, linkId: string): void;
+                    remove(
+                        accountId: string,
+                        webPropertyId: string,
+                        profileId: string,
+                        linkId: string,
+                    ): void;
                     // Updates permissions for an existing user on the given view (profile).
                     update(
                         resource: Schema.EntityUserLink,
@@ -347,7 +419,11 @@ declare namespace GoogleAppsScript {
                 }
                 interface ProfilesCollection {
                     // Gets a view (profile) to which the user has access.
-                    get(accountId: string, webPropertyId: string, profileId: string): Analytics.Schema.Profile;
+                    get(
+                        accountId: string,
+                        webPropertyId: string,
+                        profileId: string,
+                    ): Analytics.Schema.Profile;
                     // Create a new view (profile).
                     insert(
                         resource: Schema.Profile,
@@ -355,9 +431,16 @@ declare namespace GoogleAppsScript {
                         webPropertyId: string,
                     ): Analytics.Schema.Profile;
                     // Lists views (profiles) to which the user has access.
-                    list(accountId: string, webPropertyId: string): Analytics.Schema.Profiles;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                    ): Analytics.Schema.Profiles;
                     // Lists views (profiles) to which the user has access.
-                    list(accountId: string, webPropertyId: string, optionalArgs: any): Analytics.Schema.Profiles;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                        optionalArgs: any,
+                    ): Analytics.Schema.Profiles;
                     // Updates an existing view (profile). This method supports patch semantics.
                     patch(
                         resource: Schema.Profile,
@@ -366,7 +449,11 @@ declare namespace GoogleAppsScript {
                         profileId: string,
                     ): Analytics.Schema.Profile;
                     // Deletes a view (profile).
-                    remove(accountId: string, webPropertyId: string, profileId: string): void;
+                    remove(
+                        accountId: string,
+                        webPropertyId: string,
+                        profileId: string,
+                    ): void;
                     // Updates an existing view (profile).
                     update(
                         resource: Schema.Profile,
@@ -389,7 +476,10 @@ declare namespace GoogleAppsScript {
                         webPropertyId: string,
                     ): Analytics.Schema.RemarketingAudience;
                     // Lists remarketing audiences to which the user has access.
-                    list(accountId: string, webPropertyId: string): Analytics.Schema.RemarketingAudiences;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                    ): Analytics.Schema.RemarketingAudiences;
                     // Lists remarketing audiences to which the user has access.
                     list(
                         accountId: string,
@@ -404,7 +494,11 @@ declare namespace GoogleAppsScript {
                         remarketingAudienceId: string,
                     ): Analytics.Schema.RemarketingAudience;
                     // Delete a remarketing audience.
-                    remove(accountId: string, webPropertyId: string, remarketingAudienceId: string): void;
+                    remove(
+                        accountId: string,
+                        webPropertyId: string,
+                        remarketingAudienceId: string,
+                    ): void;
                     // Updates an existing remarketing audience.
                     update(
                         resource: Schema.RemarketingAudience,
@@ -511,7 +605,10 @@ declare namespace GoogleAppsScript {
                         webPropertyId: string,
                     ): Analytics.Schema.EntityAdWordsLink;
                     // Lists webProperty-Google Ads links for a given web property.
-                    list(accountId: string, webPropertyId: string): Analytics.Schema.EntityAdWordsLinks;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                    ): Analytics.Schema.EntityAdWordsLinks;
                     // Lists webProperty-Google Ads links for a given web property.
                     list(
                         accountId: string,
@@ -526,7 +623,11 @@ declare namespace GoogleAppsScript {
                         webPropertyAdWordsLinkId: string,
                     ): Analytics.Schema.EntityAdWordsLink;
                     // Deletes a web property-Google Ads link.
-                    remove(accountId: string, webPropertyId: string, webPropertyAdWordsLinkId: string): void;
+                    remove(
+                        accountId: string,
+                        webPropertyId: string,
+                        webPropertyAdWordsLinkId: string,
+                    ): void;
                     // Updates an existing webProperty-Google Ads link.
                     update(
                         resource: Schema.EntityAdWordsLink,
@@ -537,13 +638,22 @@ declare namespace GoogleAppsScript {
                 }
                 interface WebpropertiesCollection {
                     // Gets a web property to which the user has access.
-                    get(accountId: string, webPropertyId: string): Analytics.Schema.Webproperty;
+                    get(
+                        accountId: string,
+                        webPropertyId: string,
+                    ): Analytics.Schema.Webproperty;
                     // Create a new property if the account has fewer than 20 properties. Web properties are visible in the Google Analytics interface only if they have at least one profile.
-                    insert(resource: Schema.Webproperty, accountId: string): Analytics.Schema.Webproperty;
+                    insert(
+                        resource: Schema.Webproperty,
+                        accountId: string,
+                    ): Analytics.Schema.Webproperty;
                     // Lists web properties to which the user has access.
                     list(accountId: string): Analytics.Schema.Webproperties;
                     // Lists web properties to which the user has access.
-                    list(accountId: string, optionalArgs: any): Analytics.Schema.Webproperties;
+                    list(
+                        accountId: string,
+                        optionalArgs: any,
+                    ): Analytics.Schema.Webproperties;
                     // Updates an existing web property. This method supports patch semantics.
                     patch(
                         resource: Schema.Webproperty,
@@ -565,11 +675,22 @@ declare namespace GoogleAppsScript {
                         webPropertyId: string,
                     ): Analytics.Schema.EntityUserLink;
                     // Lists webProperty-user links for a given web property.
-                    list(accountId: string, webPropertyId: string): Analytics.Schema.EntityUserLinks;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                    ): Analytics.Schema.EntityUserLinks;
                     // Lists webProperty-user links for a given web property.
-                    list(accountId: string, webPropertyId: string, optionalArgs: any): Analytics.Schema.EntityUserLinks;
+                    list(
+                        accountId: string,
+                        webPropertyId: string,
+                        optionalArgs: any,
+                    ): Analytics.Schema.EntityUserLinks;
                     // Removes a user from the given web property.
-                    remove(accountId: string, webPropertyId: string, linkId: string): void;
+                    remove(
+                        accountId: string,
+                        webPropertyId: string,
+                        linkId: string,
+                    ): void;
                     // Updates permissions for an existing user on the given web property.
                     update(
                         resource: Schema.EntityUserLink,
@@ -588,47 +709,99 @@ declare namespace GoogleAppsScript {
             namespace UserDeletion {
                 interface UserDeletionRequestCollection {
                     // Insert or update a user deletion requests.
-                    upsert(resource: Schema.UserDeletionRequest): Analytics.Schema.UserDeletionRequest;
+                    upsert(
+                        resource: Schema.UserDeletionRequest,
+                    ): Analytics.Schema.UserDeletionRequest;
                 }
             }
             interface DataCollection {
                 Ga?: Analytics.Collection.Data.GaCollection | undefined;
                 Mcf?: Analytics.Collection.Data.McfCollection | undefined;
-                Realtime?: Analytics.Collection.Data.RealtimeCollection | undefined;
+                Realtime?:
+                    | Analytics.Collection.Data.RealtimeCollection
+                    | undefined;
             }
             interface ManagementCollection {
-                AccountSummaries?: Analytics.Collection.Management.AccountSummariesCollection | undefined;
-                AccountUserLinks?: Analytics.Collection.Management.AccountUserLinksCollection | undefined;
-                Accounts?: Analytics.Collection.Management.AccountsCollection | undefined;
-                ClientId?: Analytics.Collection.Management.ClientIdCollection | undefined;
-                CustomDataSources?: Analytics.Collection.Management.CustomDataSourcesCollection | undefined;
-                CustomDimensions?: Analytics.Collection.Management.CustomDimensionsCollection | undefined;
-                CustomMetrics?: Analytics.Collection.Management.CustomMetricsCollection | undefined;
-                Experiments?: Analytics.Collection.Management.ExperimentsCollection | undefined;
-                Filters?: Analytics.Collection.Management.FiltersCollection | undefined;
-                Goals?: Analytics.Collection.Management.GoalsCollection | undefined;
-                ProfileFilterLinks?: Analytics.Collection.Management.ProfileFilterLinksCollection | undefined;
-                ProfileUserLinks?: Analytics.Collection.Management.ProfileUserLinksCollection | undefined;
-                Profiles?: Analytics.Collection.Management.ProfilesCollection | undefined;
-                RemarketingAudience?: Analytics.Collection.Management.RemarketingAudienceCollection | undefined;
-                Segments?: Analytics.Collection.Management.SegmentsCollection | undefined;
-                UnsampledReports?: Analytics.Collection.Management.UnsampledReportsCollection | undefined;
-                Uploads?: Analytics.Collection.Management.UploadsCollection | undefined;
-                WebPropertyAdWordsLinks?: Analytics.Collection.Management.WebPropertyAdWordsLinksCollection | undefined;
-                Webproperties?: Analytics.Collection.Management.WebpropertiesCollection | undefined;
-                WebpropertyUserLinks?: Analytics.Collection.Management.WebpropertyUserLinksCollection | undefined;
+                AccountSummaries?:
+                    | Analytics.Collection.Management.AccountSummariesCollection
+                    | undefined;
+                AccountUserLinks?:
+                    | Analytics.Collection.Management.AccountUserLinksCollection
+                    | undefined;
+                Accounts?:
+                    | Analytics.Collection.Management.AccountsCollection
+                    | undefined;
+                ClientId?:
+                    | Analytics.Collection.Management.ClientIdCollection
+                    | undefined;
+                CustomDataSources?:
+                    | Analytics.Collection.Management.CustomDataSourcesCollection
+                    | undefined;
+                CustomDimensions?:
+                    | Analytics.Collection.Management.CustomDimensionsCollection
+                    | undefined;
+                CustomMetrics?:
+                    | Analytics.Collection.Management.CustomMetricsCollection
+                    | undefined;
+                Experiments?:
+                    | Analytics.Collection.Management.ExperimentsCollection
+                    | undefined;
+                Filters?:
+                    | Analytics.Collection.Management.FiltersCollection
+                    | undefined;
+                Goals?:
+                    | Analytics.Collection.Management.GoalsCollection
+                    | undefined;
+                ProfileFilterLinks?:
+                    | Analytics.Collection.Management.ProfileFilterLinksCollection
+                    | undefined;
+                ProfileUserLinks?:
+                    | Analytics.Collection.Management.ProfileUserLinksCollection
+                    | undefined;
+                Profiles?:
+                    | Analytics.Collection.Management.ProfilesCollection
+                    | undefined;
+                RemarketingAudience?:
+                    | Analytics.Collection.Management.RemarketingAudienceCollection
+                    | undefined;
+                Segments?:
+                    | Analytics.Collection.Management.SegmentsCollection
+                    | undefined;
+                UnsampledReports?:
+                    | Analytics.Collection.Management.UnsampledReportsCollection
+                    | undefined;
+                Uploads?:
+                    | Analytics.Collection.Management.UploadsCollection
+                    | undefined;
+                WebPropertyAdWordsLinks?:
+                    | Analytics.Collection.Management.WebPropertyAdWordsLinksCollection
+                    | undefined;
+                Webproperties?:
+                    | Analytics.Collection.Management.WebpropertiesCollection
+                    | undefined;
+                WebpropertyUserLinks?:
+                    | Analytics.Collection.Management.WebpropertyUserLinksCollection
+                    | undefined;
             }
             interface MetadataCollection {
-                Columns?: Analytics.Collection.Metadata.ColumnsCollection | undefined;
+                Columns?:
+                    | Analytics.Collection.Metadata.ColumnsCollection
+                    | undefined;
             }
             interface ProvisioningCollection {
                 // Creates an account ticket.
-                createAccountTicket(resource: Schema.AccountTicket): Analytics.Schema.AccountTicket;
+                createAccountTicket(
+                    resource: Schema.AccountTicket,
+                ): Analytics.Schema.AccountTicket;
                 // Provision account.
-                createAccountTree(resource: Schema.AccountTreeRequest): Analytics.Schema.AccountTreeResponse;
+                createAccountTree(
+                    resource: Schema.AccountTreeRequest,
+                ): Analytics.Schema.AccountTreeResponse;
             }
             interface UserDeletionCollection {
-                UserDeletionRequest?: Analytics.Collection.UserDeletion.UserDeletionRequestCollection | undefined;
+                UserDeletionRequest?:
+                    | Analytics.Collection.UserDeletion.UserDeletionRequestCollection
+                    | undefined;
             }
         }
         namespace Schema {
@@ -671,7 +844,9 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
                 name?: string | undefined;
                 starred?: boolean | undefined;
-                webProperties?: Analytics.Schema.WebPropertySummary[] | undefined;
+                webProperties?:
+                    | Analytics.Schema.WebPropertySummary[]
+                    | undefined;
             }
             interface AccountTicket {
                 account?: Analytics.Schema.Account | undefined;
@@ -727,14 +902,18 @@ declare namespace GoogleAppsScript {
             }
             interface CustomDataSource {
                 accountId?: string | undefined;
-                childLink?: Analytics.Schema.CustomDataSourceChildLink | undefined;
+                childLink?:
+                    | Analytics.Schema.CustomDataSourceChildLink
+                    | undefined;
                 created?: string | undefined;
                 description?: string | undefined;
                 id?: string | undefined;
                 importBehavior?: string | undefined;
                 kind?: string | undefined;
                 name?: string | undefined;
-                parentLink?: Analytics.Schema.CustomDataSourceParentLink | undefined;
+                parentLink?:
+                    | Analytics.Schema.CustomDataSourceParentLink
+                    | undefined;
                 profilesLinked?: string[] | undefined;
                 schema?: string[] | undefined;
                 selfLink?: string | undefined;
@@ -769,7 +948,9 @@ declare namespace GoogleAppsScript {
                 index?: number | undefined;
                 kind?: string | undefined;
                 name?: string | undefined;
-                parentLink?: Analytics.Schema.CustomDimensionParentLink | undefined;
+                parentLink?:
+                    | Analytics.Schema.CustomDimensionParentLink
+                    | undefined;
                 scope?: string | undefined;
                 selfLink?: string | undefined;
                 updated?: string | undefined;
@@ -799,7 +980,9 @@ declare namespace GoogleAppsScript {
                 max_value?: string | undefined;
                 min_value?: string | undefined;
                 name?: string | undefined;
-                parentLink?: Analytics.Schema.CustomMetricParentLink | undefined;
+                parentLink?:
+                    | Analytics.Schema.CustomMetricParentLink
+                    | undefined;
                 scope?: string | undefined;
                 selfLink?: string | undefined;
                 type?: string | undefined;
@@ -845,7 +1028,9 @@ declare namespace GoogleAppsScript {
                 entity?: Analytics.Schema.EntityUserLinkEntity | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
-                permissions?: Analytics.Schema.EntityUserLinkPermissions | undefined;
+                permissions?:
+                    | Analytics.Schema.EntityUserLinkPermissions
+                    | undefined;
                 selfLink?: string | undefined;
                 userRef?: Analytics.Schema.UserRef | undefined;
             }
@@ -892,7 +1077,9 @@ declare namespace GoogleAppsScript {
                 status?: string | undefined;
                 trafficCoverage?: number | undefined;
                 updated?: string | undefined;
-                variations?: Analytics.Schema.ExperimentVariations[] | undefined;
+                variations?:
+                    | Analytics.Schema.ExperimentVariations[]
+                    | undefined;
                 webPropertyId?: string | undefined;
                 winnerConfidenceLevel?: number | undefined;
                 winnerFound?: boolean | undefined;
@@ -920,20 +1107,28 @@ declare namespace GoogleAppsScript {
             }
             interface Filter {
                 accountId?: string | undefined;
-                advancedDetails?: Analytics.Schema.FilterAdvancedDetails | undefined;
+                advancedDetails?:
+                    | Analytics.Schema.FilterAdvancedDetails
+                    | undefined;
                 created?: string | undefined;
                 excludeDetails?: Analytics.Schema.FilterExpression | undefined;
                 id?: string | undefined;
                 includeDetails?: Analytics.Schema.FilterExpression | undefined;
                 kind?: string | undefined;
-                lowercaseDetails?: Analytics.Schema.FilterLowercaseDetails | undefined;
+                lowercaseDetails?:
+                    | Analytics.Schema.FilterLowercaseDetails
+                    | undefined;
                 name?: string | undefined;
                 parentLink?: Analytics.Schema.FilterParentLink | undefined;
-                searchAndReplaceDetails?: Analytics.Schema.FilterSearchAndReplaceDetails | undefined;
+                searchAndReplaceDetails?:
+                    | Analytics.Schema.FilterSearchAndReplaceDetails
+                    | undefined;
                 selfLink?: string | undefined;
                 type?: string | undefined;
                 updated?: string | undefined;
-                uppercaseDetails?: Analytics.Schema.FilterUppercaseDetails | undefined;
+                uppercaseDetails?:
+                    | Analytics.Schema.FilterUppercaseDetails
+                    | undefined;
             }
             interface FilterAdvancedDetails {
                 caseSensitive?: boolean | undefined;
@@ -995,7 +1190,9 @@ declare namespace GoogleAppsScript {
                 username?: string | undefined;
             }
             interface GaData {
-                columnHeaders?: Analytics.Schema.GaDataColumnHeaders[] | undefined;
+                columnHeaders?:
+                    | Analytics.Schema.GaDataColumnHeaders[]
+                    | undefined;
                 containsSampledData?: boolean | undefined;
                 dataLastRefreshed?: string | undefined;
                 dataTable?: Analytics.Schema.GaDataDataTable | undefined;
@@ -1084,10 +1281,16 @@ declare namespace GoogleAppsScript {
                 selfLink?: string | undefined;
                 type?: string | undefined;
                 updated?: string | undefined;
-                urlDestinationDetails?: Analytics.Schema.GoalUrlDestinationDetails | undefined;
+                urlDestinationDetails?:
+                    | Analytics.Schema.GoalUrlDestinationDetails
+                    | undefined;
                 value?: number | undefined;
-                visitNumPagesDetails?: Analytics.Schema.GoalVisitNumPagesDetails | undefined;
-                visitTimeOnSiteDetails?: Analytics.Schema.GoalVisitTimeOnSiteDetails | undefined;
+                visitNumPagesDetails?:
+                    | Analytics.Schema.GoalVisitNumPagesDetails
+                    | undefined;
+                visitTimeOnSiteDetails?:
+                    | Analytics.Schema.GoalVisitTimeOnSiteDetails
+                    | undefined;
                 webPropertyId?: string | undefined;
             }
             interface GoalEventDetails {
@@ -1209,7 +1412,9 @@ declare namespace GoogleAppsScript {
                 start_index?: number | undefined;
             }
             interface McfDataRows {
-                conversionPathValue?: McfDataRowsConversionPathValue[] | undefined;
+                conversionPathValue?:
+                    | McfDataRowsConversionPathValue[]
+                    | undefined;
                 primitiveValue?: string | undefined;
             }
             interface McfDataRowsConversionPathValue {
@@ -1333,7 +1538,9 @@ declare namespace GoogleAppsScript {
             }
             interface RemarketingAudience {
                 accountId?: string | undefined;
-                audienceDefinition?: RemarketingAudienceAudienceDefinition | undefined;
+                audienceDefinition?:
+                    | RemarketingAudienceAudienceDefinition
+                    | undefined;
                 audienceType?: string | undefined;
                 created?: string | undefined;
                 description?: string | undefined;
@@ -1343,7 +1550,9 @@ declare namespace GoogleAppsScript {
                 linkedAdAccounts?: LinkedForeignAccount[] | undefined;
                 linkedViews?: string[] | undefined;
                 name?: string | undefined;
-                stateBasedAudienceDefinition?: RemarketingAudienceStateBasedAudienceDefinition | undefined;
+                stateBasedAudienceDefinition?:
+                    | RemarketingAudienceStateBasedAudienceDefinition
+                    | undefined;
                 updated?: string | undefined;
                 webPropertyId?: string | undefined;
             }
@@ -1351,7 +1560,9 @@ declare namespace GoogleAppsScript {
                 includeConditions?: IncludeConditions | undefined;
             }
             interface RemarketingAudienceStateBasedAudienceDefinition {
-                excludeConditions?: RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions | undefined;
+                excludeConditions?:
+                    | RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions
+                    | undefined;
                 includeConditions?: IncludeConditions | undefined;
             }
             interface RemarketingAudienceStateBasedAudienceDefinitionExcludeConditions {
@@ -1391,11 +1602,15 @@ declare namespace GoogleAppsScript {
             }
             interface UnsampledReport {
                 accountId?: string | undefined;
-                cloudStorageDownloadDetails?: UnsampledReportCloudStorageDownloadDetails | undefined;
+                cloudStorageDownloadDetails?:
+                    | UnsampledReportCloudStorageDownloadDetails
+                    | undefined;
                 created?: string | undefined;
                 dimensions?: string | undefined;
                 downloadType?: string | undefined;
-                driveDownloadDetails?: UnsampledReportDriveDownloadDetails | undefined;
+                driveDownloadDetails?:
+                    | UnsampledReportDriveDownloadDetails
+                    | undefined;
                 end_date?: string | undefined;
                 filters?: string | undefined;
                 id?: string | undefined;

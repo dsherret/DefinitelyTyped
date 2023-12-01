@@ -1,5 +1,14 @@
 import Vue from "vue";
-import { Chrome, Compact, Material, Photoshop, Sketch, Slider, Swatches, Twitter } from "vue-color";
+import {
+    Chrome,
+    Compact,
+    Material,
+    Photoshop,
+    Sketch,
+    Slider,
+    Swatches,
+    Twitter,
+} from "vue-color";
 
 const colors = "#194d33";
 

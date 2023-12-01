@@ -14,4 +14,12 @@ const glide = new Glide(".glide");
 // $ExpectType Glide
 glide.mount({ Autoplay });
 // $ExpectType Glide
-glide.mount({ Anchors, Autoplay, Breakpoints, Controls, Images, Keyboard, Swipe });
+glide.mount({
+    Anchors,
+    Autoplay,
+    Breakpoints,
+    Controls,
+    Images,
+    Keyboard,
+    Swipe,
+});

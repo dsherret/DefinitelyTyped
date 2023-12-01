@@ -34,7 +34,11 @@ async function main() {
     writeSync("test.pdf", { field: "test" }, { save: "pdf" });
 
     // $ExpectType Buffer
-    await writeBuffer(buffer, { otherField: "123" }, { save: "imgpdf", antialias: true });
+    await writeBuffer(
+        buffer,
+        { otherField: "123" },
+        { save: "imgpdf", antialias: true },
+    );
 
     // $ExpectType Buffer
     await writeBuffer(buffer, { field: 123, otherField: true });

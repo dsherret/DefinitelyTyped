@@ -20,7 +20,11 @@ const opts: GaugeOptions = {
     strokeColor: "#E0E0E0", // to see which ones work best for you
     generateGradient: true,
     highDpiSupport: true, // High resolution support
-    percentColors: [[0.0, "#a9d70b"], [0.50, "#f9c802"], [1.0, "#ff0000"]],
+    percentColors: [
+        [0.0, "#a9d70b"],
+        [0.5, "#f9c802"],
+        [1.0, "#ff0000"],
+    ],
     staticLabels: {
         font: "10px sans-serif", // Specifies font
         labels: [100, 130, 150, 220.1, 260, 300], // Print labels at these values

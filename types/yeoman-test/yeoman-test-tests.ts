@@ -7,12 +7,12 @@ declare const env: any;
 declare const generator: Generator;
 declare function before(done: (...args: any[]) => void): void;
 
-(async () => {
+async () => {
     // helpers.setUpTestDirectory()
     before(helpers.setUpTestDirectory("dir"));
 
     // helpers.gruntfile()
-    before(done => helpers.gruntfile({ foo: "bar" }, done));
+    before((done) => helpers.gruntfile({ foo: "bar" }, done));
 
     // helpers.testDirectory()
     helpers.testDirectory(path.join(__dirname, "./temp"), () => {
@@ -44,19 +44,25 @@ declare function before(done: (...args: any[]) => void): void;
     helpers.registerDependencies(env, ["dependency"]);
 
     // helpers.run()
-    helpers.run(path.join(__dirname, "../app"))
+    helpers
+        .run(path.join(__dirname, "../app"))
         .withOptions({ foo: "bar" })
         .withArguments(["name-x"])
         .withPrompts({ coffee: false });
 
-    helpers.run(path.join(__dirname, "../app"))
-        .inTmpDir(dir => {/* ... */})
+    helpers
+        .run(path.join(__dirname, "../app"))
+        .inTmpDir((dir) => {
+            /* ... */
+        })
         .withPrompts({ coffee: false })
-        .then(() => {/* ... */});
+        .then(() => {
+            /* ... */
+        });
 
-    helpers.run(path.join(__dirname, "../app")).withGenerators([
-        [helpers.createDummyGenerator(), "karma:app"],
-    ]);
+    helpers
+        .run(path.join(__dirname, "../app"))
+        .withGenerators([[helpers.createDummyGenerator(), "karma:app"]]);
 
     helpers.run(Generator, {
         resolved: "../app",
@@ -75,13 +81,13 @@ declare function before(done: (...args: any[]) => void): void;
     helpers
         .create("namespace", {}, {})
         .cd("dir")
-        .doInDir(_dir => {}) // prepares the test dir
+        .doInDir((_dir) => {}) // prepares the test dir
         .withGenerators([]) // registers additional generators
         .withOptions({}) // passes options to the generator
         .withLocalConfig({}) // sets the generator config as soon as it is instantiated
         .withPrompts({}) // simulates the prompt answers
         .run()
-        .then(res => {
+        .then((res) => {
             res.assertFile("file.txt");
             res.assertNoFile("file.txt");
             res.assertFileContent("file.txt", "content");
@@ -91,10 +97,15 @@ declare function before(done: (...args: any[]) => void): void;
             res.assertNoJsonFileContent("file.txt", {});
         });
 
-    before(done => {
-        helpers.run(path.join(__dirname, "../app"))
-            .on("error", error => {/* ... */})
-            .on("ready", generator => {/* ... */})
+    before((done) => {
+        helpers
+            .run(path.join(__dirname, "../app"))
+            .on("error", (error) => {
+                /* ... */
+            })
+            .on("ready", (generator) => {
+                /* ... */
+            })
             .on("end", done);
     });
-});
+};

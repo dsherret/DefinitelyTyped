@@ -11,8 +11,10 @@ export let textureSize: number;
 export let copiedText: string;
 export let copiedTextStyle: any[];
 export let charWidthsCache: {
-    [key: string]: { // example: montserrat
-        [key: string]: { // example: normal_normal
+    [key: string]: {
+        // example: montserrat
+        [key: string]: {
+            // example: normal_normal
             [key: string]: number; // example: A: 286
         };
     };
@@ -66,7 +68,12 @@ export function loadSVGFromURL(
  */
 export function getCSSRules(doc: SVGElement): any;
 
-export function parseElements(elements: any[], callback: Function, options: any, reviver?: Function): void;
+export function parseElements(
+    elements: any[],
+    callback: Function,
+    options: any,
+    reviver?: Function,
+): void;
 /**
  * Parses "points" attribute, returning an array of values
  * @param points points attribute string
@@ -84,14 +91,23 @@ export function parseStyleAttribute(element: SVGElement): any;
  * @param [options] Options object
  * @param [reviver] Method for further parsing of SVG elements, called after each fabric object created.
  */
-export function parseElements(elements: SVGElement[], callback: Function, options?: any, reviver?: Function): void;
+export function parseElements(
+    elements: SVGElement[],
+    callback: Function,
+    options?: any,
+    reviver?: Function,
+): void;
 /**
  * Returns an object of attributes' name/value, given element and an array of attribute names;
  * Parses parent "g" nodes recursively upwards.
  * @param element Element to parse
  * @param attributes Array of attributes to parse
  */
-export function parseAttributes(element: HTMLElement, attributes: string[], svgUid?: string): { [key: string]: string };
+export function parseAttributes(
+    element: HTMLElement,
+    attributes: string[],
+    svgUid?: string,
+): { [key: string]: string };
 /**
  * Parses an SVG document, returning all of the gradient declarations found in it
  * @param doc SVG document to parse
@@ -283,7 +299,10 @@ interface ICollection<T> {
      * @param context Context (aka thisObject)
      * @return thisArg
      */
-    forEachObject(callback: (element: Object, index: number, array: Object[]) => void, context?: any): T;
+    forEachObject(
+        callback: (element: Object, index: number, array: Object[]) => void,
+        context?: any,
+    ): T;
 
     /**
      * Returns an array of children objects of this instance
@@ -455,14 +474,21 @@ interface IObjectAnimation<T> {
      * @param value Value to animate property
      * @param options The animation options
      */
-    animate(property: string, value: number | string, options?: IAnimationOptions): Object;
+    animate(
+        property: string,
+        value: number | string,
+        options?: IAnimationOptions,
+    ): Object;
     /**
      * Animates object's properties
      * object.animate({ left: ..., top: ... }, { duration: ... });
      * @param properties Properties to animate with values to animate to
      * @param options The animation options
      */
-    animate(properties: { [key: string]: number | string }, options?: IAnimationOptions): Object;
+    animate(
+        properties: { [key: string]: number | string },
+        options?: IAnimationOptions,
+    ): Object;
 }
 interface IAnimationOptions {
     /**
@@ -674,9 +700,11 @@ interface OGradientOptions {
     y2?: number | undefined;
     r1?: number | undefined;
     r2?: number | undefined;
-    colorStops?: {
-        [key: string]: string;
-    } | undefined;
+    colorStops?:
+        | {
+              [key: string]: string;
+          }
+        | undefined;
     gradientTransform?: any;
 }
 
@@ -756,19 +784,35 @@ export class Intersection {
     /**
      * Checks if one line intersects another
      */
-    static intersectLineLine(a1: Point, a2: Point, b1: Point, b2: Point): Intersection;
+    static intersectLineLine(
+        a1: Point,
+        a2: Point,
+        b1: Point,
+        b2: Point,
+    ): Intersection;
     /**
      * Checks if line intersects polygon
      */
-    static intersectLinePolygon(a1: Point, a2: Point, points: Point[]): Intersection;
+    static intersectLinePolygon(
+        a1: Point,
+        a2: Point,
+        points: Point[],
+    ): Intersection;
     /**
      * Checks if polygon intersects another polygon
      */
-    static intersectPolygonPolygon(points1: Point[], points2: Point[]): Intersection;
+    static intersectPolygonPolygon(
+        points1: Point[],
+        points2: Point[],
+    ): Intersection;
     /**
      * Checks if polygon intersects rectangle
      */
-    static intersectPolygonRectangle(points: Point[], r1: Point, r2: Point): Intersection;
+    static intersectPolygonRectangle(
+        points: Point[],
+        r1: Point,
+        r2: Point,
+    ): Intersection;
 }
 
 interface IPatternOptions {
@@ -1193,12 +1237,14 @@ interface IStaticCanvasOptions {
      * of canvas element in plain untrasformed coordinates
      * The coordinates get updated with @method calcViewportBoundaries.
      */
-    vptCoords?: {
-        tl: { x: number; y: number };
-        tr: { x: number; y: number };
-        bl: { x: number; y: number };
-        br: { x: number; y: number };
-    } | undefined;
+    vptCoords?:
+        | {
+              tl: { x: number; y: number };
+              tr: { x: number; y: number };
+              bl: { x: number; y: number };
+              br: { x: number; y: number };
+          }
+        | undefined;
     /**
      * Based on vptCoords and object.aCoords, skip rendering of objects that
      * are not included in current viewport.
@@ -1222,12 +1268,26 @@ interface IStaticCanvasOptions {
 }
 
 export interface StaticCanvas
-    extends IObservable<StaticCanvas>, IStaticCanvasOptions, ICollection<StaticCanvas>, ICanvasAnimation<StaticCanvas>
-{
-    toJSON(propertiesToInclude?: string[]): { version: string; objects: Object[] };
-    toDatalessJSON(propertiesToInclude?: string[]): { version: string; objects: Object[] };
-    toObject(propertiesToInclude?: string[]): { version: string; objects: Object[] };
-    toDatalessObject(propertiesToInclude?: string[]): { version: string; objects: Object[] };
+    extends IObservable<StaticCanvas>,
+        IStaticCanvasOptions,
+        ICollection<StaticCanvas>,
+        ICanvasAnimation<StaticCanvas> {
+    toJSON(propertiesToInclude?: string[]): {
+        version: string;
+        objects: Object[];
+    };
+    toDatalessJSON(propertiesToInclude?: string[]): {
+        version: string;
+        objects: Object[];
+    };
+    toObject(propertiesToInclude?: string[]): {
+        version: string;
+        objects: Object[];
+    };
+    toDatalessObject(propertiesToInclude?: string[]): {
+        version: string;
+        objects: Object[];
+    };
 }
 export class StaticCanvas {
     /**
@@ -1236,7 +1296,10 @@ export class StaticCanvas {
      * @param {Object} [options] Options object
      * @return {Object} thisArg
      */
-    constructor(element: HTMLCanvasElement | string | null, options?: ICanvasOptions);
+    constructor(
+        element: HTMLCanvasElement | string | null,
+        options?: ICanvasOptions,
+    );
 
     _activeObject?: Object | Group | undefined;
 
@@ -1258,7 +1321,11 @@ export class StaticCanvas {
      * @return {fabric.Canvas} thisArg
      * @chainable
      */
-    setOverlayImage(image: Image | string, callback: Function, options?: IImageOptions): Canvas;
+    setOverlayImage(
+        image: Image | string,
+        callback: Function,
+        options?: IImageOptions,
+    ): Canvas;
 
     /**
      * Sets {@link fabric.StaticCanvas#backgroundImage|background image} for this canvas
@@ -1268,7 +1335,11 @@ export class StaticCanvas {
      * @return {fabric.Canvas} thisArg
      * @chainable
      */
-    setBackgroundImage(image: Image | string, callback: Function, options?: IImageOptions): Canvas;
+    setBackgroundImage(
+        image: Image | string,
+        callback: Function,
+        options?: IImageOptions,
+    ): Canvas;
 
     /**
      * Sets {@link fabric.StaticCanvas#overlayColor|foreground color} for this canvas
@@ -1286,7 +1357,10 @@ export class StaticCanvas {
      * @return {fabric.Canvas} thisArg
      * @chainable
      */
-    setBackgroundColor(backgroundColor: string | Pattern | Gradient, callback: Function): Canvas;
+    setBackgroundColor(
+        backgroundColor: string | Pattern | Gradient,
+        callback: Function,
+    ): Canvas;
 
     /**
      * Returns canvas width (in px)
@@ -1307,7 +1381,10 @@ export class StaticCanvas {
      * @return {fabric.Canvas} instance
      * @chainable true
      */
-    setWidth(value: number | string, options?: ICanvasDimensionsOptions): Canvas;
+    setWidth(
+        value: number | string,
+        options?: ICanvasDimensionsOptions,
+    ): Canvas;
 
     /**
      * Sets height of this canvas instance
@@ -1316,7 +1393,10 @@ export class StaticCanvas {
      * @return {fabric.Canvas} instance
      * @chainable true
      */
-    setHeight(value: number | string, options?: ICanvasDimensionsOptions): Canvas;
+    setHeight(
+        value: number | string,
+        options?: ICanvasDimensionsOptions,
+    ): Canvas;
 
     /**
      * Sets dimensions (width, height) of this canvas instance. when options.cssOnly flag active you should also supply the unit of measure (px/%/em)
@@ -1325,7 +1405,10 @@ export class StaticCanvas {
      * @return {fabric.Canvas} thisArg
      * @chainable
      */
-    setDimensions(dimensions: ICanvasDimensions, options?: ICanvasDimensionsOptions): Canvas;
+    setDimensions(
+        dimensions: ICanvasDimensions,
+        options?: ICanvasDimensionsOptions,
+    ): Canvas;
 
     /**
      * Returns canvas zoom level
@@ -1515,14 +1598,20 @@ export class StaticCanvas {
      * @param {Array} [propertiesToInclude] Any properties that you might want to additionally include in the output
      * @return {String} json string
      */
-    toDatalessJSON(propertiesToInclude?: string[]): { version: string; objects: Object[] };
+    toDatalessJSON(propertiesToInclude?: string[]): {
+        version: string;
+        objects: Object[];
+    };
 
     /**
      * Returns JSON representation of canvas
      * @param {Array} [propertiesToInclude] Any properties that you might want to additionally include in the output
      * @return {String} JSON string
      */
-    toJSON(propertiesToInclude?: string[]): { version: string; objects: Object[] };
+    toJSON(propertiesToInclude?: string[]): {
+        version: string;
+        objects: Object[];
+    };
 
     /**
      * Returns object representation of canvas
@@ -1626,7 +1715,13 @@ export class StaticCanvas {
      * @return {Boolean | null} `true` if method is supported (or at least exists),
      *                          `null` if canvas element or context can not be initialized
      */
-    static supports(methodName: "getImageData" | "toDataURL" | "toDataURLWithQuality" | "setLineDash"): boolean;
+    static supports(
+        methodName:
+            | "getImageData"
+            | "toDataURL"
+            | "toDataURLWithQuality"
+            | "setLineDash",
+    ): boolean;
 
     /**
      * Exports canvas element to a dataurl image. Note that when multiplier is used, cropping is scaled appropriately
@@ -1638,7 +1733,10 @@ export class StaticCanvas {
      * Returns JSON representation of canvas
      * @param [propertiesToInclude] Any properties that you might want to additionally include in the output
      */
-    static toJSON(propertiesToInclude?: string[]): { version: string; objects: Object[] };
+    static toJSON(propertiesToInclude?: string[]): {
+        version: string;
+        objects: Object[];
+    };
 
     /**
      * Clones canvas instance
@@ -1958,14 +2056,20 @@ export class Canvas {
      * @param element <canvas> element to initialize instance on
      * @param [options] Options object
      */
-    constructor(element: HTMLCanvasElement | string | null, options?: ICanvasOptions);
+    constructor(
+        element: HTMLCanvasElement | string | null,
+        options?: ICanvasOptions,
+    );
     /**
      * Constructor
      * @param {HTMLCanvasElement | String} element <canvas> element to initialize instance on
      * @param {Object} [options] Options object
      * @return {Object} thisArg
      */
-    initialize(element: HTMLCanvasElement | string | null, options?: ICanvasOptions): Canvas;
+    initialize(
+        element: HTMLCanvasElement | string | null,
+        options?: ICanvasOptions,
+    ): Canvas;
 
     /**
      * When true, target detection is skipped when hovering over canvas. This can be used to improve performance.
@@ -2008,7 +2112,11 @@ export class Canvas {
      * @param {Object} [point] x,y object of point coordinates we want to check.
      * @return {Boolean} true if point is contained within an area of given object
      */
-    containsPoint(e: Event, target: Object, point?: { x: number; y: number }): boolean;
+    containsPoint(
+        e: Event,
+        target: Object,
+        point?: { x: number; y: number },
+    ): boolean;
     /**
      * Returns true if object is transparent at a certain location
      * @param {fabric.Object} target Object to check
@@ -2182,7 +2290,10 @@ export class Canvas {
      * @param {Object} [pointer] x,y object of point coordinates we want to check.
      * @return {fabric.Object} object that contains pointer
      */
-    _searchPossibleTargets(objects: Object[], pointer: { x: number; y: number }): Object;
+    _searchPossibleTargets(
+        objects: Object[],
+        pointer: { x: number; y: number },
+    ): Object;
 
     static EMPTY_JSON: string;
     /**
@@ -2190,12 +2301,21 @@ export class Canvas {
      * (either those of HTMLCanvasElement itself, or rendering context)
      * @param methodName Method to check support for; Could be one of "getImageData", "toDataURL", "toDataURLWithQuality" or "setLineDash"
      */
-    static supports(methodName: "getImageData" | "toDataURL" | "toDataURLWithQuality" | "setLineDash"): boolean;
+    static supports(
+        methodName:
+            | "getImageData"
+            | "toDataURL"
+            | "toDataURLWithQuality"
+            | "setLineDash",
+    ): boolean;
     /**
      * Returns JSON representation of canvas
      * @param [propertiesToInclude] Any properties that you might want to additionally include in the output
      */
-    static toJSON(propertiesToInclude?: string[]): { version: string; objects: Object[] };
+    static toJSON(propertiesToInclude?: string[]): {
+        version: string;
+        objects: Object[];
+    };
     /**
      * Removes all event listeners
      */
@@ -2321,7 +2441,11 @@ export class Group {
      * @param objects Group objects
      * @param [options] Options object
      */
-    constructor(objects?: Object[], options?: IGroupOptions, isAlreadyGrouped?: boolean);
+    constructor(
+        objects?: Object[],
+        options?: IGroupOptions,
+        isAlreadyGrouped?: boolean,
+    );
     /**
      * Adds an object to a group; Then recalculates group's dimension, position.
      * @param [Object] object
@@ -2525,7 +2649,14 @@ export class Image {
      * @param element Image element
      * @param [options] Options object
      */
-    constructor(element: string | HTMLImageElement | HTMLCanvasElement | HTMLVideoElement, options?: IImageOptions);
+    constructor(
+        element:
+            | string
+            | HTMLImageElement
+            | HTMLCanvasElement
+            | HTMLVideoElement,
+        options?: IImageOptions,
+    );
     /**
      * Returns image or video element which this instance is based on
      * @return Image or Video element
@@ -2538,7 +2669,10 @@ export class Image {
      * @param element image element
      * @param [options] Options object
      */
-    setElement(element: HTMLImageElement | HTMLVideoElement, options?: IImageOptions): Image;
+    setElement(
+        element: HTMLImageElement | HTMLVideoElement,
+        options?: IImageOptions,
+    ): Image;
     /**
      * Delete a single texture if in webgl mode
      */
@@ -2597,14 +2731,22 @@ export class Image {
      * @param [callback] Callback to invoke when image is created (newly created image is passed as a first argument)
      * @param [imgOptions] Options object
      */
-    static fromURL(url: string, callback?: (image: Image) => void, imgOptions?: IImageOptions): Image;
+    static fromURL(
+        url: string,
+        callback?: (image: Image) => void,
+        imgOptions?: IImageOptions,
+    ): Image;
     /**
      * Returns Image instance from an SVG element
      * @param element Element to parse
      * @param callback Callback to execute when fabric.Image object is created
      * @param [options] Options object
      */
-    static fromElement(element: SVGElement, callback: Function, options?: IImageOptions): Image;
+    static fromElement(
+        element: SVGElement,
+        callback: Function,
+        options?: IImageOptions,
+    ): Image;
     /**
      * Default CSS class name for canvas
      */
@@ -2652,7 +2794,11 @@ export class Line {
      * @param {Object} [options] Options object
      * @param {Function} [callback] callback function invoked after parsing
      */
-    static fromElement(element: SVGElement, callback?: Function, options?: ILineOptions): Line;
+    static fromElement(
+        element: SVGElement,
+        callback?: Function,
+        options?: ILineOptions,
+    ): Line;
     /**
      * Returns fabric.Line instance from an object representation
      * @param object Object to create an instance from
@@ -2663,7 +2809,12 @@ export class Line {
      * Produces a function that calculates distance from canvas edge to Line origin.
      */
     makeEdgeToOriginGetter(
-        propertyNames: { origin: number; axis1: any; axis2: any; dimension: any },
+        propertyNames: {
+            origin: number;
+            axis1: any;
+            axis2: any;
+            dimension: any;
+        },
         originValues: { nearest: any; center: any; farthest: any },
     ): Function;
     /**
@@ -3108,7 +3259,17 @@ interface IObjectOptions {
      * You can calculate them without updating with @method calcCoords;
      */
     oCoords?:
-        | { tl: Point; mt: Point; tr: Point; ml: Point; mr: Point; bl: Point; mb: Point; br: Point; mtr: Point }
+        | {
+              tl: Point;
+              mt: Point;
+              tr: Point;
+              ml: Point;
+              mr: Point;
+              bl: Point;
+              mb: Point;
+              br: Point;
+              mtr: Point;
+          }
         | undefined;
     /**
      * Describe object's corner position in canvas object absolute coordinates
@@ -3148,7 +3309,10 @@ interface IObjectOptions {
      */
     canvas?: Canvas | undefined;
 }
-export interface Object extends IObservable<Object>, IObjectOptions, IObjectAnimation<Object> {}
+export interface Object
+    extends IObservable<Object>,
+        IObjectOptions,
+        IObjectAnimation<Object> {}
 export class Object {
     _controlsVisibility: {
         bl?: boolean | undefined;
@@ -3333,7 +3497,10 @@ export class Object {
      * Returns a JSON representation of an instance
      * @param [propertiesToInclude] Any properties that you might want to additionally include in the output
      */
-    toJSON(propertiesToInclude?: string[]): { version: string; objects: Object[] };
+    toJSON(propertiesToInclude?: string[]): {
+        version: string;
+        objects: Object[];
+    };
 
     /**
      * Sets "angle" of an instance
@@ -3388,7 +3555,10 @@ export class Object {
      * @param e Event to operate upon
      * @param [pointer] Pointer to operate upon (instead of event)
      */
-    getLocalPointer(e: Event | undefined, pointer?: { x: number; y: number }): { x: number; y: number };
+    getLocalPointer(
+        e: Event | undefined,
+        pointer?: { x: number; y: number },
+    ): { x: number; y: number };
 
     /**
      * Basic getter
@@ -3403,7 +3573,10 @@ export class Object {
      * @param key Property name
      * @param value Property value (if function, the value is passed into it and its return value is used as a new one)
      */
-    set<K extends keyof this>(key: K, value: this[K] | ((value: this[K]) => this[K])): Object;
+    set<K extends keyof this>(
+        key: K,
+        value: this[K] | ((value: this[K]) => this[K]),
+    ): Object;
 
     /**
      * Sets property to a given value.
@@ -3473,7 +3646,10 @@ export class Object {
      * @param [options] Object with additional `stateProperties` array to include when saving state
      * @return thisArg
      */
-    saveState(options?: { stateProperties?: any[] | undefined; propertySet?: string | undefined }): Object;
+    saveState(options?: {
+        stateProperties?: any[] | undefined;
+        propertySet?: string | undefined;
+    }): Object;
     /**
      * Setups state of an object
      * @param {Object} [options] Object with additional `stateProperties` array to include when saving state
@@ -3525,7 +3701,11 @@ export class Object {
      * @param originX Horizontal origin: 'left', 'center' or 'right'
      * @param originY Vertical origin: 'top', 'center' or 'bottom'
      */
-    translateToCenterPoint(point: Point, originX: string, originY: string): Point;
+    translateToCenterPoint(
+        point: Point,
+        originX: string,
+        originY: string,
+    ): Point;
 
     /**
      * Translates the coordinates from center to origin coordinates (based on the object's dimensions)
@@ -3533,7 +3713,11 @@ export class Object {
      * @param originX Horizontal origin: 'left', 'center' or 'right'
      * @param originY Vertical origin: 'top', 'center' or 'bottom'
      */
-    translateToOriginPoint(center: Point, originX: string, originY: string): Point;
+    translateToOriginPoint(
+        center: Point,
+        originX: string,
+        originY: string,
+    ): Point;
     /**
      * Returns the real center coordinates of the object
      */
@@ -3591,7 +3775,11 @@ export class Object {
      * @return {fabric.Object} thisArg
      * @chainable
      */
-    drawBordersInGroup(ctx: CanvasRenderingContext2D, options?: any, styleOverride?: any): Object;
+    drawBordersInGroup(
+        ctx: CanvasRenderingContext2D,
+        options?: any,
+        styleOverride?: any,
+    ): Object;
 
     /**
      * Draws corners of an object's bounding box.
@@ -3682,13 +3870,22 @@ export class Object {
      * @param {Boolean} [calculate] use coordinates of current position instead of .oCoords
      * @return {Boolean} true if object is fully contained within area of another object
      */
-    isContainedWithinObject(other: Object, absolute?: boolean, calculate?: boolean): boolean;
+    isContainedWithinObject(
+        other: Object,
+        absolute?: boolean,
+        calculate?: boolean,
+    ): boolean;
     /**
      * Checks if object is fully contained within area formed by 2 points
      * @param pointTL top-left point of area
      * @param pointBR bottom-right point of area
      */
-    isContainedWithinRect(pointTL: any, pointBR: any, absolute?: boolean, calculate?: boolean): boolean;
+    isContainedWithinRect(
+        pointTL: any,
+        pointBR: any,
+        absolute?: boolean,
+        calculate?: boolean,
+    ): boolean;
     /**
      * Checks if point is inside the object
      * @param {fabric.Point} point Point to check against
@@ -3697,7 +3894,12 @@ export class Object {
      * @param {Boolean} [calculate] use coordinates of current position instead of .oCoords
      * @return {Boolean} true if point is inside the object
      */
-    containsPoint(point: Point, lines?: any, absolute?: boolean, calculate?: boolean): boolean;
+    containsPoint(
+        point: Point,
+        lines?: any,
+        absolute?: boolean,
+        calculate?: boolean,
+    ): boolean;
     /**
      * Scales an object (equally by x and y)
      * @param value Scale factor
@@ -3721,7 +3923,11 @@ export class Object {
      * @param {Boolean} [calculate] use coordinates of current position instead of .oCoords
      * @return {Boolean} true if object intersects with another object
      */
-    intersectsWithObject(other: Object, absolute?: boolean, calculate?: boolean): boolean;
+    intersectsWithObject(
+        other: Object,
+        absolute?: boolean,
+        calculate?: boolean,
+    ): boolean;
     /**
      * Checks if object intersects with an area formed by 2 points
      * @param {Object} pointTL top-left point of area
@@ -3730,7 +3936,12 @@ export class Object {
      * @param {Boolean} [calculate] use coordinates of current position instead of .oCoords
      * @return {Boolean} true if object intersects with an area formed by 2 points
      */
-    intersectsWithRect(pointTL: any, pointBR: any, absolute?: boolean, calculate?: boolean): boolean;
+    intersectsWithRect(
+        pointTL: any,
+        pointBR: any,
+        absolute?: boolean,
+        calculate?: boolean,
+    ): boolean;
 
     /**
      * Animates object's properties
@@ -3739,14 +3950,21 @@ export class Object {
      * @param value Value to animate property
      * @param options The animation options
      */
-    animate(property: string, value: number | string, options?: IAnimationOptions): Object;
+    animate(
+        property: string,
+        value: number | string,
+        options?: IAnimationOptions,
+    ): Object;
     /**
      * Animates object's properties
      * object.animate({ left: ..., top: ... }, { duration: ... });
      * @param properties Properties to animate with values to animate to
      * @param options The animation options
      */
-    animate(properties: { [key: string]: number | string }, options?: IAnimationOptions): Object;
+    animate(
+        properties: { [key: string]: number | string },
+        options?: IAnimationOptions,
+    ): Object;
     /**
      * Calculate and returns the .coords of an object.
      * @return {Object} Object with tl, tr, br, bl ....
@@ -3769,7 +3987,10 @@ export class Object {
     /**
      * return correct set of coordinates for intersection
      */
-    getCoords(absolute?: boolean, calculate?: boolean): [fabric.Point, fabric.Point, fabric.Point, fabric.Point];
+    getCoords(
+        absolute?: boolean,
+        calculate?: boolean,
+    ): [fabric.Point, fabric.Point, fabric.Point, fabric.Point];
     /**
      * Returns height of an object bounding box counting transformations
      * before 2.0 it was named getHeight();
@@ -3823,14 +4044,20 @@ export class Object {
      * try to to deselect this object. If the function returns true, the process is cancelled
      * @return {Boolean} true to cancel selection
      */
-    onDeselect(options: { e?: Event | undefined; object?: Object | undefined }): boolean;
+    onDeselect(options: {
+        e?: Event | undefined;
+        object?: Object | undefined;
+    }): boolean;
     /**
      * This callback function is called every time _discardActiveObject or _setActiveObject
      * try to to deselect this object. If the function returns true, the process is cancelled
      * @param {Object} [options] options sent from the upper functions
      * @param {Event} [options.e] event if the process is generated by an event
      */
-    onDeselect(options: { e?: Event | undefined; object?: fabric.Object | undefined }): boolean;
+    onDeselect(options: {
+        e?: Event | undefined;
+        object?: fabric.Object | undefined;
+    }): boolean;
     /**
      * This callback function is called every time _discardActiveObject or _setActiveObject
      * try to to select this object. If the function returns true, the process is cancelled
@@ -3882,7 +4109,10 @@ export class Object {
      * @return {Object} .x width dimension
      * @return {Object} .y height dimension
      */
-    _getTransformedDimensions(skewX?: number, skewY?: number): { x: number; y: number };
+    _getTransformedDimensions(
+        skewX?: number,
+        skewY?: number,
+    ): { x: number; y: number };
 
     /**
      * @param {CanvasRenderingContext2D} ctx Context to render on
@@ -3913,7 +4143,10 @@ export class Object {
      * @return {Object} offset.offsetX offset for text rendering
      * @return {Object} offset.offsetY offset for text rendering
      */
-    _applyPatternGradientTransform(ctx: CanvasRenderingContext2D, filler: string | Pattern | Gradient): void;
+    _applyPatternGradientTransform(
+        ctx: CanvasRenderingContext2D,
+        filler: string | Pattern | Gradient,
+    ): void;
     /**
      * @param {CanvasRenderingContext2D} ctx Context to render on
      */
@@ -3959,7 +4192,12 @@ export class Object {
      * @param {Object} Extra parameters for fabric.Object
      * @return {fabric.Object}
      */
-    static _fromObject(className: string, object: Object, callback?: Function, extraParam?: any): Object;
+    static _fromObject(
+        className: string,
+        object: Object,
+        callback?: Function,
+        extraParam?: any,
+    ): Object;
     /**
      * Defines the number of fraction digits to use when serializing object values.
      */
@@ -4001,7 +4239,11 @@ export class Path {
      * @param callback Callback to invoke when an fabric.Path instance is created
      * @param [options] Options object
      */
-    static fromElement(element: SVGElement, callback: Function, options?: IPathOptions): Path;
+    static fromElement(
+        element: SVGElement,
+        callback: Function,
+        options?: IPathOptions,
+    ): Path;
     /**
      * Creates an instance of fabric.Path from an object
      * @param callback Callback to invoke when an fabric.Path instance is created
@@ -4019,13 +4261,19 @@ export class Polygon extends Polyline {
      * @param points Array of points
      * @param [options] Options object
      */
-    constructor(points: Array<{ x: number; y: number }>, options?: IPolylineOptions);
+    constructor(
+        points: Array<{ x: number; y: number }>,
+        options?: IPolylineOptions,
+    );
     /**
      * Returns Polygon instance from an SVG element
      * @param element Element to parse
      * @param [options] Options object
      */
-    static fromElement(element: SVGElement, options?: IPolylineOptions): Polygon;
+    static fromElement(
+        element: SVGElement,
+        options?: IPolylineOptions,
+    ): Polygon;
     /**
      * Returns fabric.Polygon instance from an object representation
      * @param object Object to create an instance from
@@ -4047,7 +4295,10 @@ export class Polyline extends Object {
      * @param [options] Options object
      * @param [skipOffset] Whether points offsetting should be skipped
      */
-    constructor(points: Array<{ x: number; y: number }>, options?: IPolylineOptions);
+    constructor(
+        points: Array<{ x: number; y: number }>,
+        options?: IPolylineOptions,
+    );
 
     pathOffset: Point;
 
@@ -4059,7 +4310,12 @@ export class Polyline extends Object {
      * @return {Object} object.width distance between X coordinates of the polygon leftmost and rightmost point
      * @return {Object} object.height distance between Y coordinates of the polygon topmost and bottommost point
      */
-    _calcDimensions(): { left: number; top: number; width: number; height: number };
+    _calcDimensions(): {
+        left: number;
+        top: number;
+        width: number;
+        height: number;
+    };
     /**
      * List of attribute names to account for when parsing SVG element (used by `fabric.Polygon.fromElement`)
      */
@@ -4069,7 +4325,10 @@ export class Polyline extends Object {
      * @param element Element to parse
      * @param [options] Options object
      */
-    static fromElement(element: SVGElement, options?: IPolylineOptions): Polyline;
+    static fromElement(
+        element: SVGElement,
+        options?: IPolylineOptions,
+    ): Polyline;
     /**
      * Returns fabric.Polyline instance from an object representation
      * @param object Object to create an instance from
@@ -4248,16 +4507,14 @@ export class Text extends Object {
      */
     __charBounds?:
         | Array<
-            Array<
-                {
-                    width: number;
-                    left: number;
-                    height?: number | undefined;
-                    kernedWidth?: number | undefined;
-                    deltaY?: number | undefined;
-                }
-            >
-        >
+              Array<{
+                  width: number;
+                  left: number;
+                  height?: number | undefined;
+                  kernedWidth?: number | undefined;
+                  deltaY?: number | undefined;
+              }>
+          >
         | undefined;
     /**
      * Text Line proportion to font Size (in pixels)
@@ -4364,7 +4621,11 @@ export class Text extends Object {
      * @param {String} property the property name
      * @returns the value of 'property'
      */
-    getValueOfPropertyAt(lineIndex: number, charIndex: number, property: string): any;
+    getValueOfPropertyAt(
+        lineIndex: number,
+        charIndex: number,
+        property: string,
+    ): any;
 
     static DEFAULT_SVG_FONT_SIZE: number;
 
@@ -4375,7 +4636,11 @@ export class Text extends Object {
      * @param {Function} callback callback function invoked after parsing
      * @param {Object} [options] Options object
      */
-    static fromElement(element: SVGElement, callback?: Function, options?: TextOptions): Text;
+    static fromElement(
+        element: SVGElement,
+        callback?: Function,
+        options?: TextOptions,
+    ): Text;
 
     /**
      * Returns fabric.Text instance from an object representation
@@ -4402,7 +4667,10 @@ export class Text extends Object {
      * @param {Number} [selectionStart] Optional index. When not given, current selectionStart is used.
      * @param {Boolean} [skipWrapping] consider the location for unwrapped lines. usefull to manage styles.
      */
-    get2DCursorLocation(selectionStart?: number, skipWrapping?: boolean): { lineIndex: number; charIndex: number };
+    get2DCursorLocation(
+        selectionStart?: number,
+        skipWrapping?: boolean,
+    ): { lineIndex: number; charIndex: number };
 
     /**
      * return a new object that contains all the style property for a character
@@ -4421,7 +4689,11 @@ export class Text extends Object {
      * @param {Boolean} [complete] get full style or not
      * @return {Array} styles an array with one, zero or more Style objects
      */
-    getSelectionStyles(startIndex?: number, endIndex?: number, complete?: boolean): any[];
+    getSelectionStyles(
+        startIndex?: number,
+        endIndex?: number,
+        complete?: boolean,
+    ): any[];
 
     /**
      * Returns styles-string for svg-export
@@ -4454,7 +4726,11 @@ export class Text extends Object {
      * @return {fabric.IText} thisArg
      * @chainable
      */
-    setSelectionStyles(styles: any, startIndex?: number, endIndex?: number): Text;
+    setSelectionStyles(
+        styles: any,
+        startIndex?: number,
+        endIndex?: number,
+    ): Text;
 
     /**
      * Returns true if object has a style property or has it ina specified line
@@ -4603,7 +4879,12 @@ export class Text extends Object {
      * Divides text into lines of text and lines of graphemes.
      * @returns {Object} Lines and text in the text
      */
-    _splitText(): { _unwrappedLines: string[]; lines: string[]; graphemeText: string[]; graphemeLines: string[] };
+    _splitText(): {
+        _unwrappedLines: string[];
+        lines: string[];
+        graphemeText: string[];
+        graphemeLines: string[];
+    };
 
     /**
      * @param {Object} prevStyle
@@ -4622,7 +4903,12 @@ export class Text extends Object {
      */
     _setTextStyles(
         ctx: CanvasRenderingContext2D,
-        charStyle?: { fontFamily: string; fontSize: number; fontWieght: string; fontStyle: string },
+        charStyle?: {
+            fontFamily: string;
+            fontSize: number;
+            fontWieght: string;
+            fontStyle: string;
+        },
         forMeasuring?: boolean,
     ): void;
 
@@ -4896,7 +5182,12 @@ export class IText extends Text {
      * @param {Number} qty number of lines to add
      * @param {Array} copiedStyle Array of objects styles
      */
-    insertNewlineStyleObject(lineIndex: number, charIndex: number, qty: number, copiedStyle: any[]): void;
+    insertNewlineStyleObject(
+        lineIndex: number,
+        charIndex: number,
+        qty: number,
+        copiedStyle: any[],
+    ): void;
     /**
      * Inserts style object for a given line/char index
      * @param {Number} lineIndex Index of a line
@@ -4904,19 +5195,32 @@ export class IText extends Text {
      * @param {Number} quantity number Style object to insert, if given
      * @param {Array} copiedStyle array of style objecs
      */
-    insertCharStyleObject(lineIndex: number, charIndex: number, quantity: number, copiedStyle: any[]): void;
+    insertCharStyleObject(
+        lineIndex: number,
+        charIndex: number,
+        quantity: number,
+        copiedStyle: any[],
+    ): void;
     /**
      * Inserts style object(s)
      * @param {Array} insertedText Characters at the location where style is inserted
      * @param {Number} start cursor index for inserting style
      * @param {Array} [copiedStyle] array of style objects to insert.
      */
-    insertNewStyleBlock(insertedText: any[], start: number, copiedStyle?: any[]): void;
+    insertNewStyleBlock(
+        insertedText: any[],
+        start: number,
+        copiedStyle?: any[],
+    ): void;
     /**
      * Set the selectionStart and selectionEnd according to the ne postion of cursor
      * mimic the key - mouse navigation when shift is pressed.
      */
-    setSelectionStartEndWithShift(start: number, end: number, newSelection: number): void;
+    setSelectionStartEndWithShift(
+        start: number,
+        end: number,
+        newSelection: number,
+    ): void;
     /**
      * Copies selected text
      */
@@ -5112,7 +5416,12 @@ export class IText extends Text {
     /**
      * @return {Object} style contains style for hiddenTextarea
      */
-    _calcTextareaPosition(): { left: string; top: string; fontSize: string; charHeight: number };
+    _calcTextareaPosition(): {
+        left: string;
+        top: string;
+        fontSize: string;
+        charHeight: number;
+    };
 }
 interface ITextboxOptions extends ITextOptions {
     /**
@@ -5246,16 +5555,18 @@ interface IAllFilters {
          * Constructor
          * @param [options] Options object
          */
-        new(options?: any): IBaseFilter;
+        new (options?: any): IBaseFilter;
     };
     BlendColor: {
         /**
          * Constructor
          * @param [options] Options object
          */
-        new(
-            options?: { color?: string | undefined; mode?: string | undefined; alpha?: number | undefined },
-        ): IBlendColorFilter;
+        new (options?: {
+            color?: string | undefined;
+            mode?: string | undefined;
+            alpha?: number | undefined;
+        }): IBlendColorFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5267,9 +5578,11 @@ interface IAllFilters {
          * Constructor
          * @param [options] Options object
          */
-        new(
-            options?: { image?: Image | undefined; mode?: string | undefined; alpha?: number | undefined },
-        ): IBlendImageFilter;
+        new (options?: {
+            image?: Image | undefined;
+            mode?: string | undefined;
+            alpha?: number | undefined;
+        }): IBlendImageFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5277,7 +5590,7 @@ interface IAllFilters {
         fromObject(object: any): IBlendImageFilter;
     };
     Blur: {
-        new(options?: { blur?: number | undefined }): IBlurFilter;
+        new (options?: { blur?: number | undefined }): IBlurFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5285,7 +5598,7 @@ interface IAllFilters {
         fromObject(object: any): IBlurFilter;
     };
     Brightness: {
-        new(options?: {
+        new (options?: {
             /**
              * Value to brighten the image up (0..255)
              * @default 0
@@ -5299,7 +5612,7 @@ interface IAllFilters {
         fromObject(object: any): IBrightnessFilter;
     };
     ColorMatrix: {
-        new(options?: {
+        new (options?: {
             /** Filter matrix */
             matrix?: number[] | undefined;
         }): IColorMatrix;
@@ -5314,7 +5627,7 @@ interface IAllFilters {
          * Constructor
          * @param [options] Options object
          */
-        new(options?: { contrast?: number | undefined }): IContrastFilter;
+        new (options?: { contrast?: number | undefined }): IContrastFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5322,7 +5635,7 @@ interface IAllFilters {
         fromObject(object: any): IContrastFilter;
     };
     Convolute: {
-        new(options?: {
+        new (options?: {
             opaque?: boolean | undefined;
             /** Filter matrix */
             matrix?: number[] | undefined;
@@ -5334,7 +5647,7 @@ interface IAllFilters {
         fromObject(object: any): IConvoluteFilter;
     };
     GradientTransparency: {
-        new(options?: {
+        new (options?: {
             /** @default 100 */
             threshold?: number | undefined;
         }): IGradientTransparencyFilter;
@@ -5345,7 +5658,7 @@ interface IAllFilters {
         fromObject(object: any): IGradientTransparencyFilter;
     };
     Grayscale: {
-        new(options?: any): IGrayscaleFilter;
+        new (options?: any): IGrayscaleFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5353,7 +5666,7 @@ interface IAllFilters {
         fromObject(object: any): IGrayscaleFilter;
     };
     HueRotation: {
-        new(options?: { rotation?: number | undefined }): IHueRotationFilter;
+        new (options?: { rotation?: number | undefined }): IHueRotationFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5365,7 +5678,7 @@ interface IAllFilters {
          * Constructor
          * @param [options] Options object
          */
-        new(options?: any): IInvertFilter;
+        new (options?: any): IInvertFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5373,7 +5686,7 @@ interface IAllFilters {
         fromObject(object: any): IInvertFilter;
     };
     Mask: {
-        new(options?: {
+        new (options?: {
             /** Mask image object */
             mask?: Image | undefined;
             /**
@@ -5389,7 +5702,7 @@ interface IAllFilters {
         fromObject(object: any): IMaskFilter;
     };
     Multiply: {
-        new(options?: {
+        new (options?: {
             /**
              * Color to multiply the image pixels with
              * @default #000000
@@ -5403,7 +5716,7 @@ interface IAllFilters {
         fromObject(object: any): IMultiplyFilter;
     };
     Noise: {
-        new(options?: {
+        new (options?: {
             /** @default 0 */
             noise: number;
         }): INoiseFilter;
@@ -5414,7 +5727,7 @@ interface IAllFilters {
         fromObject(object: any): INoiseFilter;
     };
     Pixelate: {
-        new(options?: {
+        new (options?: {
             /**
              * Blocksize for pixelate
              * @default 4
@@ -5428,7 +5741,7 @@ interface IAllFilters {
         fromObject(object: any): IPixelateFilter;
     };
     RemoveWhite: {
-        new(options?: {
+        new (options?: {
             /** @default 30 */
             threshold?: number | undefined;
             /** @default 20 */
@@ -5441,7 +5754,7 @@ interface IAllFilters {
         fromObject(object: any): IRemoveWhiteFilter;
     };
     Resize: {
-        new(options?: any): IResizeFilter;
+        new (options?: any): IResizeFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5453,7 +5766,7 @@ interface IAllFilters {
          * Constructor
          * @param [options] Options object
          */
-        new(options?: { saturation?: number | undefined }): ISaturationFilter;
+        new (options?: { saturation?: number | undefined }): ISaturationFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5461,7 +5774,7 @@ interface IAllFilters {
         fromObject(object: any): ISaturationFilter;
     };
     Sepia2: {
-        new(options?: any): ISepia2Filter;
+        new (options?: any): ISepia2Filter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5469,7 +5782,7 @@ interface IAllFilters {
         fromObject(object: any): ISepia2Filter;
     };
     Sepia: {
-        new(options?: any): ISepiaFilter;
+        new (options?: any): ISepiaFilter;
         /**
          * Returns filter instance from an object representation
          * @param object Object to create an instance from
@@ -5477,7 +5790,7 @@ interface IAllFilters {
         fromObject(object: any): ISepiaFilter;
     };
     Tint: {
-        new(options?: {
+        new (options?: {
             /**
              * Color to tint the image with
              * @default #000000
@@ -5803,7 +6116,11 @@ export class PencilBrush extends BaseBrush {
      * Converts points to SVG path
      * @param points Array of points
      */
-    convertPointsToSVGPath(points: Array<{ x: number; y: number }>, minX?: number, minY?: number): string[];
+    convertPointsToSVGPath(
+        points: Array<{ x: number; y: number }>,
+        minX?: number,
+        minY?: number,
+    ): string[];
 
     /**
      * Creates fabric.Path object to add on canvas
@@ -5861,7 +6178,12 @@ interface IUtilAnimation {
     cancelAnimFrame(id: number): void;
 }
 
-type IUtilAminEaseFunction = (t: number, b: number, c: number, d: number) => number;
+type IUtilAminEaseFunction = (
+    t: number,
+    b: number,
+    c: number,
+    d: number,
+) => number;
 
 interface IUtilAnimEase {
     easeInBack: IUtilAminEaseFunction;
@@ -5904,7 +6226,12 @@ interface IUtilArc {
     /**
      * Draws arc
      */
-    drawArc(ctx: CanvasRenderingContext2D, fx: number, fy: number, coords: number[]): void;
+    drawArc(
+        ctx: CanvasRenderingContext2D,
+        fx: number,
+        fy: number,
+        coords: number[],
+    ): void;
     /**
      * Calculate bounding box of a elliptic-arc
      * @param fx start point of arc
@@ -5956,12 +6283,20 @@ interface IUtilDomEvent {
     /**
      * Adds an event listener to an element
      */
-    addListener(element: HTMLElement, eventName: string, handler: Function): void;
+    addListener(
+        element: HTMLElement,
+        eventName: string,
+        handler: Function,
+    ): void;
 
     /**
      * Removes an event listener from an element
      */
-    removeListener(element: HTMLElement, eventName: string, handler: Function): void;
+    removeListener(
+        element: HTMLElement,
+        eventName: string,
+        handler: Function,
+    ): void;
 }
 
 interface IUtilDomMisc {
@@ -5992,7 +6327,11 @@ interface IUtilDomMisc {
      * @param wrapper Element to wrap with
      * @param [attributes] Attributes to set on a wrapper
      */
-    wrapElement(element: HTMLElement, wrapper: HTMLElement | string, attributes?: any): HTMLElement;
+    wrapElement(
+        element: HTMLElement,
+        wrapper: HTMLElement | string,
+        attributes?: any,
+    ): HTMLElement;
     /**
      * Returns element scroll offsets
      * @param element Element to operate on
@@ -6169,7 +6508,10 @@ interface IUtilMisc {
      * @param vector The vector to rotate (x and y)
      * @param radians The radians of the angle for the rotation
      */
-    rotateVector(vector: { x: number; y: number }, radians: number): { x: number; y: number };
+    rotateVector(
+        vector: { x: number; y: number },
+        radians: number,
+    ): { x: number; y: number };
 
     /**
      * Apply transform t to point p
@@ -6224,7 +6566,12 @@ interface IUtilMisc {
      * @param [context] Context to invoke callback in
      * @param [crossOrigin] crossOrigin value to set image element to
      */
-    loadImage(url: string, callback: (image: HTMLImageElement) => void, context?: any, crossOrigin?: string): void;
+    loadImage(
+        url: string,
+        callback: (image: HTMLImageElement) => void,
+        context?: any,
+        crossOrigin?: string,
+    ): void;
 
     /**
      * Creates corresponding fabric instances from their object representations
@@ -6233,14 +6580,23 @@ interface IUtilMisc {
      * @param namespace Namespace to get klass "Class" object from
      * @param reviver Method for further parsing of object elements, called after each fabric object created.
      */
-    enlivenObjects(objects: any[], callback: Function, namespace: string, reviver?: Function): void;
+    enlivenObjects(
+        objects: any[],
+        callback: Function,
+        namespace: string,
+        reviver?: Function,
+    ): void;
 
     /**
      * Groups SVG elements (usually those retrieved from SVG document)
      * @param elements SVG elements to group
      * @param [options] Options object
      */
-    groupSVGElements(elements: any[], options?: any, path?: string): Object | Group;
+    groupSVGElements(
+        elements: any[],
+        options?: any,
+        path?: string,
+    ): Object | Group;
 
     /**
      * Clear char widths cache for the given font family or all the cache if no
@@ -6261,7 +6617,11 @@ interface IUtilMisc {
      * @param destination Destination object
      * @param properties Propertie names to include
      */
-    populateWithProperties(source: any, destination: any, properties: any): void;
+    populateWithProperties(
+        source: any,
+        destination: any,
+        properties: any,
+    ): void;
 
     /**
      * Draws a dashed line between two points
@@ -6273,7 +6633,14 @@ interface IUtilMisc {
      * @param y2 end y coordinate
      * @param da dash array pattern
      */
-    drawDashedLine(ctx: CanvasRenderingContext2D, x: number, y: number, x2: number, y2: number, da: any[]): void;
+    drawDashedLine(
+        ctx: CanvasRenderingContext2D,
+        x: number,
+        y: number,
+        x2: number,
+        y2: number,
+        da: any[],
+    ): void;
 
     /**
      * Creates canvas element and initializes it via excanvas if necessary
@@ -6310,9 +6677,7 @@ interface IUtilMisc {
      * Decomposes standard 2x2 matrix into transform componentes
      * @param a transformMatrix
      */
-    qrDecompose(
-        a: number[],
-    ): {
+    qrDecompose(a: number[]): {
         angle: number;
         scaleX: number;
         scaleY: number;
@@ -6327,9 +6692,7 @@ interface IUtilMisc {
      * @param  {fabric.Object} target object to read from
      * @return {Object} Components of transform
      */
-    saveObjectTransform(
-        target: Object,
-    ): {
+    saveObjectTransform(target: Object): {
         scaleX: number;
         scaleY: number;
         skewX: number;
@@ -6384,7 +6747,12 @@ interface IUtilMisc {
      * @param y y coordinate
      * @param tolerance Tolerance
      */
-    isTransparent(ctx: CanvasRenderingContext2D, x: number, y: number, tolerance: number): boolean;
+    isTransparent(
+        ctx: CanvasRenderingContext2D,
+        x: number,
+        y: number,
+        tolerance: number,
+    ): boolean;
 
     /**
      * reset an object transform state to neutral. Top and left are not accounted for
@@ -6396,8 +6764,7 @@ interface IUtilMisc {
 
 export const util: IUtil;
 interface IUtil
-    extends
-        IUtilImage,
+    extends IUtilImage,
         IUtilAnimation,
         IUtilArc,
         IObservable<IUtil>,
@@ -6406,8 +6773,7 @@ interface IUtil
         IUtilDomRequest,
         IUtilDomStyle,
         IUtilClass,
-        IUtilMisc
-{
+        IUtilMisc {
     ease: IUtilAnimEase;
     array: IUtilArray;
     object: IUtilObject;
@@ -6449,7 +6815,9 @@ export interface GPUInfo {
 export interface WebglFilterBackendOptions {
     tileSize: number;
 }
-export interface WebglFilterBackend extends FilterBackend, WebglFilterBackendOptions {
+export interface WebglFilterBackend
+    extends FilterBackend,
+        WebglFilterBackendOptions {
     setupGLContext(width: number, height: number): void;
 
     chooseFastestCopyGLTo2DMethod(width: number, height: number): void;
@@ -6474,7 +6842,10 @@ export interface WebglFilterBackend extends FilterBackend, WebglFilterBackendOpt
         textureImageSource?: HTMLImageElement | HTMLCanvasElement,
     ): WebGLTexture;
 
-    getCachedTexture(uniqueId: string, textureImageSource: HTMLImageElement | HTMLCanvasElement): WebGLTexture;
+    getCachedTexture(
+        uniqueId: string,
+        textureImageSource: HTMLImageElement | HTMLCanvasElement,
+    ): WebGLTexture;
 
     copyGLTo2D(gl: WebGLRenderingContext, pipelineState: any): void;
 
@@ -6597,44 +6968,79 @@ export class Control {
      * The control actionHandler, provide one to handle action ( control being moved )
      * @return {Boolean} true if the action/event modified the object
      */
-    actionHandler(eventData: MouseEvent, transformData: Transform, x: number, y: number): boolean;
+    actionHandler(
+        eventData: MouseEvent,
+        transformData: Transform,
+        x: number,
+        y: number,
+    ): boolean;
 
     /**
      * The control handler for mouse down, provide one to handle mouse down on control
      */
-    mouseDownHandler(eventData: MouseEvent, transformData: Transform, x: number, y: number): boolean;
+    mouseDownHandler(
+        eventData: MouseEvent,
+        transformData: Transform,
+        x: number,
+        y: number,
+    ): boolean;
 
     /**
      * The control mouseUpHandler, provide one to handle an effect on mouse up.
      */
-    mouseUpHandler(eventData: MouseEvent, transformData: Transform, x: number, y: number): boolean;
+    mouseUpHandler(
+        eventData: MouseEvent,
+        transformData: Transform,
+        x: number,
+        y: number,
+    ): boolean;
 
     /**
      * Returns control actionHandler
      */
-    getActionHandler(eventData: MouseEvent, fabricObject: Object, control: Control): ControlMouseEventHandler;
+    getActionHandler(
+        eventData: MouseEvent,
+        fabricObject: Object,
+        control: Control,
+    ): ControlMouseEventHandler;
 
     /**
      * Returns control mouseDown handler
      */
-    getMouseDownHandler(eventData: MouseEvent, fabricObject: Object, control: Control): ControlMouseEventHandler;
+    getMouseDownHandler(
+        eventData: MouseEvent,
+        fabricObject: Object,
+        control: Control,
+    ): ControlMouseEventHandler;
 
     /**
      * Returns control mouseUp handler
      */
-    getMouseUpHandler(eventData: MouseEvent, fabricObject: Object, control: Control): ControlMouseEventHandler;
+    getMouseUpHandler(
+        eventData: MouseEvent,
+        fabricObject: Object,
+        control: Control,
+    ): ControlMouseEventHandler;
 
     /**
      * Returns control cursorStyle for css using cursorStyle. If you need a more elaborate
      * function you can pass one in the constructor
      * the cursorStyle property
      */
-    cursorStyleHandler(eventData: MouseEvent, control: Control, fabricObject: Object): string;
+    cursorStyleHandler(
+        eventData: MouseEvent,
+        control: Control,
+        fabricObject: Object,
+    ): string;
 
     /**
      * Returns the action name. The basic implementation just return the actionName property.
      */
-    getActionName(eventData: MouseEvent, control: Control, fabricObject: Object): string;
+    getActionName(
+        eventData: MouseEvent,
+        control: Control,
+        fabricObject: Object,
+    ): string;
 
     /**
      * Returns controls visibility
@@ -6671,10 +7077,21 @@ export class Control {
      * if they want to draw a control where the position is detected.
      * left and top are the result of the positionHandler function
      */
-    render(ctx: CanvasRenderingContext2D, left: number, top: number, styleOverride: any, fabricObject: Object): void;
+    render(
+        ctx: CanvasRenderingContext2D,
+        left: number,
+        top: number,
+        styleOverride: any,
+        fabricObject: Object,
+    ): void;
 }
 
-type ControlMouseEventHandler = (eventData: MouseEvent, transformData: Transform, x: number, y: number) => boolean;
+type ControlMouseEventHandler = (
+    eventData: MouseEvent,
+    transformData: Transform,
+    x: number,
+    y: number,
+) => boolean;
 
 export interface Transform {
     target: Object;

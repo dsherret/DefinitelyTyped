@@ -101,9 +101,17 @@ export interface MimcSponge {
 
     getConstants(seed?: string, nRounds?: number): Uint8Array[];
 
-    hash(_xL_in: BigNumberish, _xR_in: BigNumberish, _k: BigNumberish): Uint8Array;
+    hash(
+        _xL_in: BigNumberish,
+        _xR_in: BigNumberish,
+        _k: BigNumberish,
+    ): Uint8Array;
 
-    multiHash(arr: BigNumberish[], key?: BigNumberish, numOutputs?: number): Uint8Array;
+    multiHash(
+        arr: BigNumberish[],
+        key?: BigNumberish,
+        numOutputs?: number,
+    ): Uint8Array;
 }
 
 export interface PedersenHash {
@@ -112,7 +120,10 @@ export interface PedersenHash {
 
     baseHash(type: "blake" | "blake2b", S: any): any;
 
-    hash(msg: Uint8Array, options?: { baseHash?: "blake" | "blake2b" }): Uint8Array;
+    hash(
+        msg: Uint8Array,
+        options?: { baseHash?: "blake" | "blake2b" },
+    ): Uint8Array;
 
     getBasePoint(baseHashType: "blake" | "blake2b", pointIdx: number): Point;
 

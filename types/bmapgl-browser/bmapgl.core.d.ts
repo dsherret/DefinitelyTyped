@@ -64,7 +64,10 @@ declare namespace BMapGL {
         getDistance(start: Point, end: Point): number;
         getMapType(): MapType;
         getSize(): Size;
-        getViewport(view: Point[] | Bounds, viewportOptions?: ViewportOptions): Viewport;
+        getViewport(
+            view: Point[] | Bounds,
+            viewportOptions?: ViewportOptions,
+        ): Viewport;
         getZoom(): number;
         getPanorama(): Panorama;
         centerAndZoom(center: Point, zoom: number): void;
@@ -75,7 +78,10 @@ declare namespace BMapGL {
         setCenter(center: Point | string): void;
         setCurrentCity(city: string): void;
         setMapType(mapType: MapType): void;
-        setViewport(view: Point[] | Viewport, viewportOptions?: ViewportOptions): void;
+        setViewport(
+            view: Point[] | Viewport,
+            viewportOptions?: ViewportOptions,
+        ): void;
         setZoom(zoom: number): void;
         highResolutionEnabled(): boolean;
         zoomIn(): void;
@@ -103,12 +109,41 @@ declare namespace BMapGL {
         getTileLayer(mapType: string): TileLayer;
         pixelToPoint(pixel: Pixel): Point;
         pointToPixel(point: Point): Pixel;
-        onclick: (event: { type: string; target: any; point: Point; pixel: Pixel; overlay: Overlay }) => void;
-        ondblclick: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onrightclick: (event: { type: string; target: any; point: Point; pixel: Pixel; overlay: Overlay }) => void;
-        onrightdblclick: (event: { type: string; target: any; point: Point; pixel: Pixel; overlay: Overlay }) => void;
+        onclick: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+            overlay: Overlay;
+        }) => void;
+        ondblclick: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onrightclick: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+            overlay: Overlay;
+        }) => void;
+        onrightdblclick: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+            overlay: Overlay;
+        }) => void;
         onmaptypechange: (event: { type: string; target: any }) => void;
-        onmousemove: (event: { type: string; target: any; point: Point; pixel: Pixel; overlay: Overlay }) => void;
+        onmousemove: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+            overlay: Overlay;
+        }) => void;
         onmouseover: (event: { type: string; target: any }) => void;
         onmouseout: (event: { type: string; target: any }) => void;
         onmovestart: (event: { type: string; target: any }) => void;
@@ -121,21 +156,74 @@ declare namespace BMapGL {
         onremovecontrol: (event: { type: string; target: any }) => void;
         onremoveoverlay: (event: { type: string; target: any }) => void;
         onclearoverlays: (event: { type: string; target: any }) => void;
-        ondragstart: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        ondragging: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        ondragend: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
+        ondragstart: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        ondragging: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        ondragend: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
         onaddtilelayer: (event: { type: string; target: any }) => void;
         onremovetilelayer: (event: { type: string; target: any }) => void;
-        onload: (event: { type: string; target: any; point: Point; pixel: Pixel; zoom: number }) => void;
+        onload: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+            zoom: number;
+        }) => void;
         onresize: (event: { type: string; target: any; size: Size }) => void;
-        onhotspotclick: (event: { type: string; target: any; spots: HotspotOptions }) => void;
-        onhotspotover: (event: { type: string; target: any; spots: HotspotOptions }) => void;
-        onhotspotout: (event: { type: string; target: any; spots: HotspotOptions }) => void;
+        onhotspotclick: (event: {
+            type: string;
+            target: any;
+            spots: HotspotOptions;
+        }) => void;
+        onhotspotover: (event: {
+            type: string;
+            target: any;
+            spots: HotspotOptions;
+        }) => void;
+        onhotspotout: (event: {
+            type: string;
+            target: any;
+            spots: HotspotOptions;
+        }) => void;
         ontilesloaded: (event: { type: string; target: any }) => void;
-        ontouchstart: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        ontouchmove: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        ontouchend: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onlongpress: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
+        ontouchstart: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        ontouchmove: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        ontouchend: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onlongpress: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
         addEventListener(event: string, handler: Callback): void;
         removeEventListener(event: string, handler: Callback): void;
     }

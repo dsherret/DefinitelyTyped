@@ -1,4 +1,8 @@
-import { PluginDefinition, PluginParams, WaveSurferPlugin } from "../../types/plugin";
+import {
+    PluginDefinition,
+    PluginParams,
+    WaveSurferPlugin,
+} from "../../types/plugin";
 import { Styles } from "../../types/util";
 import Observer from "../util/observer";
 import WaveSurfer from "../wavesurfer";
@@ -11,7 +15,10 @@ declare module "../../wavesurfer" {
     }
 }
 
-export default class RegionsPlugin extends Observer implements WaveSurferPlugin {
+export default class RegionsPlugin
+    extends Observer
+    implements WaveSurferPlugin
+{
     constructor(params: RegionsPluginParams, ws: WaveSurfer);
     static create(params: RegionsPluginParams): PluginDefinition;
     destroy(): void;
@@ -53,7 +60,11 @@ export interface RegionsPluginParams extends PluginParams {
 }
 
 export class Region extends Observer {
-    constructor(params: RegionParams, regionsUtil: WaveSurfer["util"], ws: WaveSurfer);
+    constructor(
+        params: RegionParams,
+        regionsUtil: WaveSurfer["util"],
+        ws: WaveSurfer,
+    );
 
     bindDragEvents(): void;
     bindEvents(): void;
@@ -80,7 +91,9 @@ export class Region extends Observer {
     readonly end: number;
     readonly firedIn: boolean;
     readonly firedOut: boolean;
-    readonly formatTimeCallback?: ((start: number, end: number) => string) | undefined;
+    readonly formatTimeCallback?:
+        | ((start: number, end: number) => string)
+        | undefined;
     readonly handleLeftEl: HTMLElement | null;
     readonly handleRightEl: HTMLElement | null;
     readonly handleStyle: HandleStyle;

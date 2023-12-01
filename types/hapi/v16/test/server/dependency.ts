@@ -2,12 +2,16 @@
 
 import * as Hapi from "hapi";
 
-const after: Hapi.AfterDependencyLoadCallback = function(server, next) {
+const after: Hapi.AfterDependencyLoadCallback = function (server, next) {
     // Additional plugin registration logic
     return next();
 };
 
-var registerFunction: Hapi.PluginFunction<{}> = function(server, options, next) {
+var registerFunction: Hapi.PluginFunction<{}> = function (
+    server,
+    options,
+    next,
+) {
     server.dependency("yar", after);
     return next();
 };

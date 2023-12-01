@@ -8,13 +8,20 @@ interface ngStomp {
 
     setDebug(callback: Function): void;
 
-    connect(endpoint: string, headers?: ngStomp.Headers): angular.IHttpPromise<any>;
+    connect(
+        endpoint: string,
+        headers?: ngStomp.Headers,
+    ): angular.IHttpPromise<any>;
 
     disconnect(callback: () => void): angular.IHttpPromise<any>;
 
     subscribe(
         destination: string,
-        callback: (payload: string, headers: ngStomp.Headers, res: Function) => void,
+        callback: (
+            payload: string,
+            headers: ngStomp.Headers,
+            res: Function,
+        ) => void,
         headers?: ngStomp.Headers,
         scope?: any,
     ): any;

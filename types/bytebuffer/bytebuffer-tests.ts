@@ -6,7 +6,9 @@ console.log(bb.readIString() + " from bytebuffer.js");
 // Test overloads typings
 const shouldBeBuffer = bb.writeVString("test");
 if (shouldBeBuffer !== bb) {
-    throw new Error("writeVString without offset specified, should return itself.");
+    throw new Error(
+        "writeVString without offset specified, should return itself.",
+    );
 }
 const shouldBeNumber = bb.writeVString("test", 4);
 if (typeof shouldBeNumber !== "number") {

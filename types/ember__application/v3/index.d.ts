@@ -30,7 +30,11 @@ export default class Application extends Engine {
     /**
      * defines an injection or typeInjection
      */
-    inject(factoryNameOrType: string, property: string, injectionName: string): void;
+    inject(
+        factoryNameOrType: string,
+        property: string,
+        injectionName: string,
+    ): void;
     /**
      * This injects the test helpers into the window's scope. If a function of the
      * same name has already been defined it will be cached (so that it can be reset
@@ -47,7 +51,10 @@ export default class Application extends Engine {
     register(
         fullName: string,
         factory: any,
-        options?: { singleton?: boolean | undefined; instantiate?: boolean | undefined },
+        options?: {
+            singleton?: boolean | undefined;
+            instantiate?: boolean | undefined;
+        },
     ): void;
     /**
      * This removes all helpers that have been registered, and resets and functions

@@ -4,7 +4,13 @@ import { EventEmitter } from "events";
 import { Agent as BaseHTTPAgent, AgentOptions } from "http";
 import { Agent as BaseHTTPSAgent } from "https";
 import { Server as NetServer, Socket } from "net";
-import { Duplex, Readable, ReadableOptions, Writable, WritableOptions } from "stream";
+import {
+    Duplex,
+    Readable,
+    ReadableOptions,
+    Writable,
+    WritableOptions,
+} from "stream";
 
 export interface Prompt {
     prompt: string;
@@ -79,7 +85,9 @@ export type MacAlgorithm =
  * Lists of supported algorithms can either be an ordered array of all supported algorithms,
  * OR a map of algorithms to manipulate the default list
  */
-export type AlgorithmList<T> = T[] | Record<"append" | "prepend" | "remove", T | T[]>;
+export type AlgorithmList<T> =
+    | T[]
+    | Record<"append" | "prepend" | "remove", T | T[]>;
 
 /**
  * Overrides for the default transport layer algorithms used for the connection.
@@ -148,10 +156,26 @@ export interface Header {
     greeting?: string;
 }
 
-export type OpenMode = "r" | "r+" | "w" | "wx" | "xw" | "w+" | "xw+" | "a" | "ax" | "xa" | "a+" | "ax+" | "xa+";
+export type OpenMode =
+    | "r"
+    | "r+"
+    | "w"
+    | "wx"
+    | "xw"
+    | "w+"
+    | "xw+"
+    | "a"
+    | "ax"
+    | "xa"
+    | "a+"
+    | "ax+"
+    | "xa+";
 
 export namespace utils {
-    function parseKey(data: Buffer | string | ParsedKey, passphrase?: Buffer | string): ParsedKey | Error;
+    function parseKey(
+        data: Buffer | string | ParsedKey,
+        passphrase?: Buffer | string,
+    ): ParsedKey | Error;
     namespace sftp {
         enum OPEN_MODE {
             READ = 0x00000001,
@@ -179,7 +203,11 @@ export namespace utils {
     }
 }
 
-export type ChannelType = "session" | "sftp" | "direct-tcpip" | "direct-streamlocal@openssh.com";
+export type ChannelType =
+    | "session"
+    | "sftp"
+    | "direct-tcpip"
+    | "direct-streamlocal@openssh.com";
 
 export type ChannelSubType = "exec" | "shell";
 
@@ -243,7 +271,15 @@ export interface ClientChannel extends Channel {
      * the `exit` callback.
      */
     on(event: "exit", listener: (code: number) => void): this;
-    on(event: "exit", listener: (code: null, signal: string, dump: string, desc: string) => void): this;
+    on(
+        event: "exit",
+        listener: (
+            code: null,
+            signal: string,
+            dump: string,
+            desc: string,
+        ) => void,
+    ): this;
     on(event: string | symbol, listener: Function): this;
 }
 
@@ -294,7 +330,11 @@ export class Client extends EventEmitter {
      */
     on(
         event: "x11",
-        listener: (details: X11Details, accept: AcceptConnection<ClientChannel>, reject: RejectConnection) => void,
+        listener: (
+            details: X11Details,
+            accept: AcceptConnection<ClientChannel>,
+            reject: RejectConnection,
+        ) => void,
     ): this;
 
     /**
@@ -326,12 +366,18 @@ export class Client extends EventEmitter {
      *
      * Call `done` with the new password.
      */
-    on(event: "change password", listener: (message: string, done: ChangePasswordCallback) => void): this;
+    on(
+        event: "change password",
+        listener: (message: string, done: ChangePasswordCallback) => void,
+    ): this;
 
     /**
      * Emitted when an error occurred.
      */
-    on(event: "error", listener: (err: Error & ClientErrorExtensions) => void): this;
+    on(
+        event: "error",
+        listener: (err: Error & ClientErrorExtensions) => void,
+    ): this;
 
     /**
      * Emitted when the socket was disconnected.
@@ -361,7 +407,10 @@ export class Client extends EventEmitter {
     /**
      * Emitted when a handshake has completed (either initial or rekey).
      */
-    on(event: "handshake", listener: (negotiated: NegotiatedAlgorithms) => void): this;
+    on(
+        event: "handshake",
+        listener: (negotiated: NegotiatedAlgorithms) => void,
+    ): this;
 
     /**
      * Emitted when the server announces its available host keys.
@@ -373,7 +422,11 @@ export class Client extends EventEmitter {
      */
     on(
         event: "unix connection",
-        listener: (info: UNIXConnectionDetails, accept: AcceptConnection, reject: RejectConnection) => void,
+        listener: (
+            info: UNIXConnectionDetails,
+            accept: AcceptConnection,
+            reject: RejectConnection,
+        ) => void,
     ): this;
 
     /**
@@ -405,7 +458,11 @@ export class Client extends EventEmitter {
      * @param options Options for the command.
      * @param callback The callback to execute when the channel has been created.
      */
-    shell(window: PseudoTtyOptions | false, options: ShellOptions, callback: ClientCallback): this;
+    shell(
+        window: PseudoTtyOptions | false,
+        options: ShellOptions,
+        callback: ClientCallback,
+    ): this;
 
     /**
      * Starts an interactive shell session on the server.
@@ -447,7 +504,11 @@ export class Client extends EventEmitter {
      * @param remotePort The remote port to bind on the server. If this value is `0`, the actual bound port is provided to `callback`.
      * @param [callback] An optional callback that is invoked when the remote address is bound.
      */
-    forwardIn(remoteAddr: string, remotePort: number, callback?: ClientForwardCallback): this;
+    forwardIn(
+        remoteAddr: string,
+        remotePort: number,
+        callback?: ClientForwardCallback,
+    ): this;
 
     /**
      * Unbind from `remoteAddr` on `remotePort` on the server and stop forwarding incoming TCP
@@ -457,7 +518,11 @@ export class Client extends EventEmitter {
      * @param remotePort The remote port to unbind on the server.
      * @param [callback] An optional callback that is invoked when the remote address is unbound.
      */
-    unforwardIn(remoteAddr: string, remotePort: number, callback?: Callback): this;
+    unforwardIn(
+        remoteAddr: string,
+        remotePort: number,
+        callback?: Callback,
+    ): this;
 
     /**
      * Open a connection with `srcIP` and `srcPort` as the originating address and port and
@@ -469,7 +534,13 @@ export class Client extends EventEmitter {
      * @param dstPort The destination port.
      * @param [callback] The callback that is invoked when the address is bound.
      */
-    forwardOut(srcIP: string, srcPort: number, dstIP: string, dstPort: number, callback?: ClientCallback): this;
+    forwardOut(
+        srcIP: string,
+        srcPort: number,
+        dstIP: string,
+        dstPort: number,
+        callback?: ClientCallback,
+    ): this;
 
     /**
      * Starts an SFTP session.
@@ -523,10 +594,19 @@ export class Client extends EventEmitter {
 
 export type HostVerifier = (key: Buffer, verify: VerifyCallback) => void;
 export type SyncHostVerifier = (key: Buffer) => boolean;
-export type HostFingerprintVerifier = (fingerprint: string, verify: VerifyCallback) => boolean;
+export type HostFingerprintVerifier = (
+    fingerprint: string,
+    verify: VerifyCallback,
+) => boolean;
 export type SyncHostFingerprintVerifier = (fingerprint: string) => boolean;
 export type DebugFunction = (message: string) => void;
-export type AuthenticationType = "password" | "publickey" | "hostbased" | "agent" | "keyboard-interactive" | "none";
+export type AuthenticationType =
+    | "password"
+    | "publickey"
+    | "hostbased"
+    | "agent"
+    | "keyboard-interactive"
+    | "none";
 
 export interface ConnectConfig {
     /** Hostname or IP address of the server. */
@@ -540,7 +620,11 @@ export interface ConnectConfig {
     /** The host's key is hashed using this method and passed to `hostVerifier`. */
     hostHash?: string;
     /** Verifies a hexadecimal hash of the host's key. */
-    hostVerifier?: HostVerifier | SyncHostVerifier | HostFingerprintVerifier | SyncHostFingerprintVerifier;
+    hostVerifier?:
+        | HostVerifier
+        | SyncHostVerifier
+        | HostFingerprintVerifier
+        | SyncHostFingerprintVerifier;
     /** Username for authentication. */
     username?: string;
     /** Password for password-based user authentication. */
@@ -668,7 +752,9 @@ export type AnyAuthMethod =
     | AgentAuthMethod
     | KeyboardInteractiveAuthMethod;
 
-export type NextAuthHandler = (authName: AuthenticationType | AnyAuthMethod) => void;
+export type NextAuthHandler = (
+    authName: AuthenticationType | AnyAuthMethod,
+) => void;
 
 export type AuthHandlerMiddleware = (
     authsLeft: AuthenticationType[],
@@ -744,7 +830,10 @@ export interface PseudoTtyOptions {
     modes?: TerminalModes;
 }
 
-export type ServerConnectionListener = (client: Connection, info: ClientInfo) => void;
+export type ServerConnectionListener = (
+    client: Connection,
+    info: ClientInfo,
+) => void;
 
 export class Server extends NetServer {
     static KEEPALIVE_CLIENT_INTERVAL: number;
@@ -809,14 +898,24 @@ export interface Connection extends EventEmitter {
      * Emitted when the client has requested a new session.
      * Sessions are used to start interactive shells, execute commands, request X11 forwarding, etc.
      */
-    on(event: "session", listener: (accept: AcceptConnection<Session>, reject: RejectConnection) => void): this;
+    on(
+        event: "session",
+        listener: (
+            accept: AcceptConnection<Session>,
+            reject: RejectConnection,
+        ) => void,
+    ): this;
 
     /**
      * Emitted when the client has requested an outbound (TCP) connection.
      */
     on(
         event: "tcpip",
-        listener: (accept: AcceptConnection<ServerChannel>, reject: RejectConnection, info: TcpipRequestInfo) => void,
+        listener: (
+            accept: AcceptConnection<ServerChannel>,
+            reject: RejectConnection,
+            info: TcpipRequestInfo,
+        ) => void,
     ): this;
 
     /**
@@ -824,7 +923,11 @@ export interface Connection extends EventEmitter {
      */
     on(
         event: "openssh.streamlocal",
-        listener: (accept: AcceptConnection<ServerChannel>, reject: RejectConnection, info: SocketRequestInfo) => void,
+        listener: (
+            accept: AcceptConnection<ServerChannel>,
+            reject: RejectConnection,
+            info: SocketRequestInfo,
+        ) => void,
     ): this;
 
     /**
@@ -849,7 +952,9 @@ export interface Connection extends EventEmitter {
         listener: (
             accept: (() => void) | undefined,
             reject: () => void,
-            name: "streamlocal-forward@openssh.com" | "cancel-streamlocal-forward@openssh.com",
+            name:
+                | "streamlocal-forward@openssh.com"
+                | "cancel-streamlocal-forward@openssh.com",
             info: SocketBindInfo,
         ) => void,
     ): this;
@@ -877,7 +982,10 @@ export interface Connection extends EventEmitter {
     /**
      * Emitted when the Alogrithms have been negotiated; emitted every time there is a rekey
      */
-    on(event: "handshake", listener: (negotiated: NegotiatedAlgorithms) => void): this;
+    on(
+        event: "handshake",
+        listener: (negotiated: NegotiatedAlgorithms) => void,
+    ): this;
 
     /**
      * Emitted if the server sends a greeting header
@@ -925,7 +1033,10 @@ export interface Connection extends EventEmitter {
      *
      * Returns `false` if you should wait for the `continue` event before sending any more traffic.
      */
-    openssh_forwardOutStreamLocal(socketPath: string, callback: ServerCallback): this;
+    openssh_forwardOutStreamLocal(
+        socketPath: string,
+        callback: ServerCallback,
+    ): this;
 }
 
 export interface AuthContextBase extends EventEmitter {
@@ -944,7 +1055,10 @@ export interface AuthContextBase extends EventEmitter {
     /**
      * Rejects the authentication request.
      */
-    reject(authMethodsLeft?: AuthenticationType[], isPartialSuccess?: boolean): void;
+    reject(
+        authMethodsLeft?: AuthenticationType[],
+        isPartialSuccess?: boolean,
+    ): void;
 
     /**
      * Emitted when the client aborts the authentication request.
@@ -964,7 +1078,10 @@ export interface KeyboardAuthContext extends AuthContextBase {
      * @param prompts The prompts to send to the client.
      * @param callback A callback to call with the responses from the client.
      */
-    prompt(prompts: string | Prompt | Array<string | Prompt>, callback: KeyboardInteractiveCallback): void;
+    prompt(
+        prompts: string | Prompt | Array<string | Prompt>,
+        callback: KeyboardInteractiveCallback,
+    ): void;
 
     /**
      * Send prompts to the client.
@@ -1085,60 +1202,115 @@ export interface Session extends ServerChannel {
     /**
      * Emitted when the client requested allocation of a pseudo-TTY for this session.
      */
-    on(event: "pty", listener: (accept: SessionAccept, reject: RejectConnection, info: PseudoTtyInfo) => void): this;
+    on(
+        event: "pty",
+        listener: (
+            accept: SessionAccept,
+            reject: RejectConnection,
+            info: PseudoTtyInfo,
+        ) => void,
+    ): this;
 
     /**
      * Emitted when the client reported a change in window dimensions during this session.
      */
     on(
         event: "window-change",
-        listener: (accept: SessionAccept, reject: RejectConnection, info: WindowChangeInfo) => void,
+        listener: (
+            accept: SessionAccept,
+            reject: RejectConnection,
+            info: WindowChangeInfo,
+        ) => void,
     ): this;
 
     /**
      * Emitted when the client requested X11 forwarding.
      */
-    on(event: "x11", listener: (accept: SessionAccept, reject: RejectConnection, info: X11Info) => void): this;
+    on(
+        event: "x11",
+        listener: (
+            accept: SessionAccept,
+            reject: RejectConnection,
+            info: X11Info,
+        ) => void,
+    ): this;
 
     /**
      * Emitted when the client requested an environment variable to be set for this session.
      */
-    on(event: "env", listener: (accept: SessionAccept, reject: RejectConnection, info: SetEnvInfo) => void): this;
+    on(
+        event: "env",
+        listener: (
+            accept: SessionAccept,
+            reject: RejectConnection,
+            info: SetEnvInfo,
+        ) => void,
+    ): this;
 
     /**
      * Emitted when the client has sent a POSIX signal.
      */
-    on(event: "signal", listener: (accept: SessionAccept, reject: RejectConnection, info: SignalInfo) => void): this;
+    on(
+        event: "signal",
+        listener: (
+            accept: SessionAccept,
+            reject: RejectConnection,
+            info: SignalInfo,
+        ) => void,
+    ): this;
 
     /**
      * Emitted when the client has requested incoming ssh-agent requests be forwarded to them.
      */
-    on(event: "auth-agent", listener: (accept: SessionAccept, reject: RejectConnection) => void): this;
+    on(
+        event: "auth-agent",
+        listener: (accept: SessionAccept, reject: RejectConnection) => void,
+    ): this;
 
     /**
      * Emitted when the client has requested an interactive shell.
      */
-    on(event: "shell", listener: (accept: AcceptConnection<ServerChannel>, reject: RejectConnection) => void): this;
+    on(
+        event: "shell",
+        listener: (
+            accept: AcceptConnection<ServerChannel>,
+            reject: RejectConnection,
+        ) => void,
+    ): this;
 
     /**
      * Emitted when the client has requested execution of a command string.
      */
     on(
         event: "exec",
-        listener: (accept: AcceptConnection<ServerChannel>, reject: RejectConnection, info: ExecInfo) => void,
+        listener: (
+            accept: AcceptConnection<ServerChannel>,
+            reject: RejectConnection,
+            info: ExecInfo,
+        ) => void,
     ): this;
 
     /**
      * Emitted when the client has requested the SFTP subsystem.
      */
-    on(event: "sftp", listener: (accept: AcceptSftpConnection, reject: RejectConnection) => void): this;
+    on(
+        event: "sftp",
+        listener: (
+            accept: AcceptSftpConnection,
+            reject: RejectConnection,
+        ) => void,
+    ): this;
 
     /**
      * Emitted when the client has requested an arbitrary subsystem.
      */
     on(
         event: "subsystem",
-        listener: (accept: AcceptConnection<ServerChannel>, reject: RejectConnection, info: SubsystemInfo) => void,
+        listener: (
+            accept: AcceptConnection<ServerChannel>,
+            reject: RejectConnection,
+            info: SubsystemInfo,
+        ) => void,
     ): this;
 
     on(event: string | symbol, listener: Function): this;
@@ -1372,7 +1544,12 @@ export interface SFTPWrapper extends EventEmitter {
      * (Client-only)
      * Downloads a file at `remotePath` to `localPath` using parallel reads for faster throughput.
      */
-    fastGet(remotePath: string, localPath: string, options: TransferOptions, callback: Callback): void;
+    fastGet(
+        remotePath: string,
+        localPath: string,
+        options: TransferOptions,
+        callback: Callback,
+    ): void;
 
     /**
      * (Client-only)
@@ -1384,7 +1561,12 @@ export interface SFTPWrapper extends EventEmitter {
      * (Client-only)
      * Uploads a file from `localPath` to `remotePath` using parallel reads for faster throughput.
      */
-    fastPut(localPath: string, remotePath: string, options: TransferOptions, callback: Callback): void;
+    fastPut(
+        localPath: string,
+        remotePath: string,
+        options: TransferOptions,
+        callback: Callback,
+    ): void;
 
     /**
      * (Client-only)
@@ -1416,7 +1598,10 @@ export interface SFTPWrapper extends EventEmitter {
      * (Client-only)
      * Reads a file in memory and returns its contents
      */
-    readFile(remotePath: string, callback: (err: Error | undefined, handle: Buffer) => void): void;
+    readFile(
+        remotePath: string,
+        callback: (err: Error | undefined, handle: Buffer) => void,
+    ): void;
 
     /**
      * (Client-only)
@@ -1428,31 +1613,54 @@ export interface SFTPWrapper extends EventEmitter {
      * (Client-only)
      * Writes data to a file
      */
-    writeFile(remotePath: string, data: string | Buffer, options: WriteFileOptions, callback?: Callback): void;
+    writeFile(
+        remotePath: string,
+        data: string | Buffer,
+        options: WriteFileOptions,
+        callback?: Callback,
+    ): void;
 
     /**
      * (Client-only)
      * Writes data to a file
      */
-    writeFile(remotePath: string, data: string | Buffer, encoding: string, callback?: Callback): void;
+    writeFile(
+        remotePath: string,
+        data: string | Buffer,
+        encoding: string,
+        callback?: Callback,
+    ): void;
 
     /**
      * (Client-only)
      * Writes data to a file
      */
-    writeFile(remotePath: string, data: string | Buffer, callback?: Callback): void;
+    writeFile(
+        remotePath: string,
+        data: string | Buffer,
+        callback?: Callback,
+    ): void;
 
     /**
      * (Client-only)
      * Appends data to a file
      */
-    appendFile(remotePath: string, data: string | Buffer, options: WriteFileOptions, callback?: Callback): void;
+    appendFile(
+        remotePath: string,
+        data: string | Buffer,
+        options: WriteFileOptions,
+        callback?: Callback,
+    ): void;
 
     /**
      * (Client-only)
      * Appends data to a file
      */
-    appendFile(remotePath: string, data: string | Buffer, callback?: Callback): void;
+    appendFile(
+        remotePath: string,
+        data: string | Buffer,
+        callback?: Callback,
+    ): void;
 
     /**
      * (Client-only)
@@ -1481,7 +1689,11 @@ export interface SFTPWrapper extends EventEmitter {
      * (Client-only)
      * Opens a file `filename` for `mode`.
      */
-    open(filename: string, mode: number | OpenMode, callback: (err: Error | undefined, handle: Buffer) => void): void;
+    open(
+        filename: string,
+        mode: number | OpenMode,
+        callback: (err: Error | undefined, handle: Buffer) => void,
+    ): void;
 
     /**
      * (Client-only)
@@ -1500,31 +1712,55 @@ export interface SFTPWrapper extends EventEmitter {
         offset: number,
         length: number,
         position: number,
-        callback: (err: Error | undefined, bytesRead: number, buffer: Buffer, position: number) => void,
+        callback: (
+            err: Error | undefined,
+            bytesRead: number,
+            buffer: Buffer,
+            position: number,
+        ) => void,
     ): void;
 
     /**
      * (Client-only)
      */
-    write(handle: Buffer, buffer: Buffer, offset: number, length: number, position: number, callback: Callback): void;
+    write(
+        handle: Buffer,
+        buffer: Buffer,
+        offset: number,
+        length: number,
+        position: number,
+        callback: Callback,
+    ): void;
 
     /**
      * (Client-only)
      * Retrieves attributes for the resource associated with `handle`.
      */
-    fstat(handle: Buffer, callback: (err: Error | undefined, stats: Stats) => void): void;
+    fstat(
+        handle: Buffer,
+        callback: (err: Error | undefined, stats: Stats) => void,
+    ): void;
 
     /**
      * (Client-only)
      * Sets the attributes defined in `attributes` for the resource associated with `handle`.
      */
-    fsetstat(handle: Buffer, attributes: InputAttributes, callback: Callback): void;
+    fsetstat(
+        handle: Buffer,
+        attributes: InputAttributes,
+        callback: Callback,
+    ): void;
 
     /**
      * (Client-only)
      * Sets the access time and modified time for the resource associated with `handle`.
      */
-    futimes(handle: Buffer, atime: number | Date, mtime: number | Date, callback: Callback): void;
+    futimes(
+        handle: Buffer,
+        atime: number | Date,
+        mtime: number | Date,
+        callback: Callback,
+    ): void;
 
     /**
      * (Client-only)
@@ -1542,13 +1778,19 @@ export interface SFTPWrapper extends EventEmitter {
      * (Client-only)
      * Opens a directory `path`.
      */
-    opendir(path: string, callback: (err: Error | undefined, handle: Buffer) => void): void;
+    opendir(
+        path: string,
+        callback: (err: Error | undefined, handle: Buffer) => void,
+    ): void;
 
     /**
      * (Client-only)
      * Retrieves a directory listing.
      */
-    readdir(location: string | Buffer, callback: (err: Error | undefined, list: FileEntry[]) => void): void;
+    readdir(
+        location: string | Buffer,
+        callback: (err: Error | undefined, list: FileEntry[]) => void,
+    ): void;
 
     /**
      * (Client-only)
@@ -1584,7 +1826,10 @@ export interface SFTPWrapper extends EventEmitter {
      * (Client-only)
      * Retrieves attributes for `path`.
      */
-    stat(path: string, callback: (err: Error | undefined, stats: Stats) => void): void;
+    stat(
+        path: string,
+        callback: (err: Error | undefined, stats: Stats) => void,
+    ): void;
 
     /**
      * (Client-only)
@@ -1597,19 +1842,31 @@ export interface SFTPWrapper extends EventEmitter {
      * Retrieves attributes for `path`. If `path` is a symlink, the link itself is stat'ed
      * instead of the resource it refers to.
      */
-    lstat(path: string, callback: (err: Error | undefined, stats: Stats) => void): void;
+    lstat(
+        path: string,
+        callback: (err: Error | undefined, stats: Stats) => void,
+    ): void;
 
     /**
      * (Client-only)
      * Sets the attributes defined in `attributes` for `path`.
      */
-    setstat(path: string, attributes: InputAttributes, callback: Callback): void;
+    setstat(
+        path: string,
+        attributes: InputAttributes,
+        callback: Callback,
+    ): void;
 
     /**
      * (Client-only)
      * Sets the access time and modified time for `path`.
      */
-    utimes(path: string, atime: number | Date, mtime: number | Date, callback: Callback): void;
+    utimes(
+        path: string,
+        atime: number | Date,
+        mtime: number | Date,
+        callback: Callback,
+    ): void;
 
     /**
      * (Client-only)
@@ -1627,7 +1884,10 @@ export interface SFTPWrapper extends EventEmitter {
      * (Client-only)
      * Retrieves the target for a symlink at `path`.
      */
-    readlink(path: string, callback: (err: Error | undefined, target: string) => void): void;
+    readlink(
+        path: string,
+        callback: (err: Error | undefined, target: string) => void,
+    ): void;
 
     /**
      * (Client-only)
@@ -1639,50 +1899,77 @@ export interface SFTPWrapper extends EventEmitter {
      * (Client-only)
      * Resolves `path` to an absolute path.
      */
-    realpath(path: string, callback: (err: Error | undefined, absPath: string) => void): void;
+    realpath(
+        path: string,
+        callback: (err: Error | undefined, absPath: string) => void,
+    ): void;
 
     /**
      * (Client-only, OpenSSH extension)
      * Performs POSIX rename(3) from `srcPath` to `destPath`.
      */
-    ext_openssh_rename(srcPath: string, destPath: string, callback: Callback): void;
+    ext_openssh_rename(
+        srcPath: string,
+        destPath: string,
+        callback: Callback,
+    ): void;
 
     /**
      * (Client-only, OpenSSH extension)
      * Performs POSIX statvfs(2) on `path`.
      */
-    ext_openssh_statvfs(path: string, callback: (err: Error | undefined, fsInfo: any) => void): void;
+    ext_openssh_statvfs(
+        path: string,
+        callback: (err: Error | undefined, fsInfo: any) => void,
+    ): void;
 
     /**
      * (Client-only, OpenSSH extension)
      * Performs POSIX fstatvfs(2) on open handle `handle`.
      */
-    ext_openssh_fstatvfs(handle: Buffer, callback: (err: Error | undefined, fsInfo: any) => void): void;
+    ext_openssh_fstatvfs(
+        handle: Buffer,
+        callback: (err: Error | undefined, fsInfo: any) => void,
+    ): void;
 
     /**
      * (Client-only, OpenSSH extension)
      * Performs POSIX link(2) to create a hard link to `targetPath` at `linkPath`.
      */
-    ext_openssh_hardlink(targetPath: string, linkPath: string, callback: Callback): void;
+    ext_openssh_hardlink(
+        targetPath: string,
+        linkPath: string,
+        callback: Callback,
+    ): void;
 
     /**
      * (Client-only, OpenSSH extension)
      * Performs POSIX fsync(3) on the open handle `handle`.
      */
-    ext_openssh_fsync(handle: Buffer, callback: (err: Error | undefined, fsInfo: any) => void): void;
+    ext_openssh_fsync(
+        handle: Buffer,
+        callback: (err: Error | undefined, fsInfo: any) => void,
+    ): void;
 
     /**
      * (Client-only, OpenSSH extension)
      * Similar to setstat(), but instead sets attributes on symlinks.
      */
-    ext_openssh_lsetstat(path: string, attrs: InputAttributes, callback: Callback): void;
+    ext_openssh_lsetstat(
+        path: string,
+        attrs: InputAttributes,
+        callback: Callback,
+    ): void;
     ext_openssh_lsetstat(path: string, callback: Callback): void;
 
     /**
      * (Client-only, OpenSSH extension)
      * Similar to realpath(), but supports tilde-expansion, i.e. "~", "~/..." and "~user/...". These paths are expanded using shell-like rules.
      */
-    ext_openssh_expandPath(path: string, callback: (err: Error | undefined, absPath: string) => void): void;
+    ext_openssh_expandPath(
+        path: string,
+        callback: (err: Error | undefined, absPath: string) => void,
+    ): void;
 
     /**
      * (Client-only)
@@ -1701,25 +1988,76 @@ export interface SFTPWrapper extends EventEmitter {
      * Emitted after initial protocol version check has passed
      */
     on(event: "ready", listener: () => void): this;
-    on(event: "OPEN", listener: (reqId: number, filename: string, flags: number, attrs: Attributes) => void): this;
-    on(event: "READ", listener: (reqId: number, handle: Buffer, offset: number, len: number) => void): this;
-    on(event: "WRITE", listener: (reqId: number, handle: Buffer, offset: number, data: Buffer) => void): this;
+    on(
+        event: "OPEN",
+        listener: (
+            reqId: number,
+            filename: string,
+            flags: number,
+            attrs: Attributes,
+        ) => void,
+    ): this;
+    on(
+        event: "READ",
+        listener: (
+            reqId: number,
+            handle: Buffer,
+            offset: number,
+            len: number,
+        ) => void,
+    ): this;
+    on(
+        event: "WRITE",
+        listener: (
+            reqId: number,
+            handle: Buffer,
+            offset: number,
+            data: Buffer,
+        ) => void,
+    ): this;
     on(event: "FSTAT", listener: (reqId: number, handle: Buffer) => void): this;
-    on(event: "FSETSTAT", listener: (reqId: number, handle: Buffer, attrs: Attributes) => void): this;
+    on(
+        event: "FSETSTAT",
+        listener: (reqId: number, handle: Buffer, attrs: Attributes) => void,
+    ): this;
     on(event: "CLOSE", listener: (reqId: number, handle: Buffer) => void): this;
     on(event: "OPENDIR", listener: (reqId: number, path: string) => void): this;
-    on(event: "READDIR", listener: (reqId: number, handle: Buffer) => void): this;
+    on(
+        event: "READDIR",
+        listener: (reqId: number, handle: Buffer) => void,
+    ): this;
     on(event: "LSTAT", listener: (reqId: number, path: string) => void): this;
     on(event: "STAT", listener: (reqId: number, path: string) => void): this;
     on(event: "REMOVE", listener: (reqId: number, path: string) => void): this;
     on(event: "RMDIR", listener: (reqId: number, path: string) => void): this;
-    on(event: "REALPATH", listener: (reqId: number, path: string) => void): this;
-    on(event: "READLINK", listener: (reqId: number, path: string) => void): this;
-    on(event: "SETSTAT", listener: (reqId: number, path: string, attrs: Attributes) => void): this;
-    on(event: "MKDIR", listener: (reqId: number, path: string, attrs: Attributes) => void): this;
-    on(event: "RENAME", listener: (reqId: number, oldPath: string, newPath: string) => void): this;
-    on(event: "SYMLINK", listener: (reqId: number, targetPath: string, linkPath: string) => void): this;
-    on(event: "EXTENDED", listener: (reqId: number, extName: string, extData: Buffer) => void): this;
+    on(
+        event: "REALPATH",
+        listener: (reqId: number, path: string) => void,
+    ): this;
+    on(
+        event: "READLINK",
+        listener: (reqId: number, path: string) => void,
+    ): this;
+    on(
+        event: "SETSTAT",
+        listener: (reqId: number, path: string, attrs: Attributes) => void,
+    ): this;
+    on(
+        event: "MKDIR",
+        listener: (reqId: number, path: string, attrs: Attributes) => void,
+    ): this;
+    on(
+        event: "RENAME",
+        listener: (reqId: number, oldPath: string, newPath: string) => void,
+    ): this;
+    on(
+        event: "SYMLINK",
+        listener: (reqId: number, targetPath: string, linkPath: string) => void,
+    ): this;
+    on(
+        event: "EXTENDED",
+        listener: (reqId: number, extName: string, extData: Buffer) => void,
+    ): this;
     on(event: string | symbol, listener: Function): this;
 
     /**
@@ -1765,26 +2103,26 @@ export interface PublicKeyEntry {
     pubKey:
         | ParsedKey
         | {
-            pubKey: ParsedKey | Buffer | string;
-            comment?: string;
-        };
+              pubKey: ParsedKey | Buffer | string;
+              comment?: string;
+          };
 }
 
-export type KnownPublicKeys<T extends string | Buffer | ParsedKey = string | Buffer | ParsedKey> = Array<
-    | T
-    | PublicKeyEntry
->;
+export type KnownPublicKeys<
+    T extends string | Buffer | ParsedKey = string | Buffer | ParsedKey,
+> = Array<T | PublicKeyEntry>;
 
-export type PrivateKeys = Array<Buffer | ParsedKey | EncryptedPrivateKey | string>;
+export type PrivateKeys = Array<
+    Buffer | ParsedKey | EncryptedPrivateKey | string
+>;
 
 export type Callback = (err?: Error | null) => void;
 
 export type ErrorCallback = (err: Error) => void;
 
-export type IdentityCallback<T extends string | Buffer | ParsedKey = string | Buffer | ParsedKey> = (
-    err?: Error | null,
-    keys?: KnownPublicKeys<T>,
-) => void;
+export type IdentityCallback<
+    T extends string | Buffer | ParsedKey = string | Buffer | ParsedKey,
+> = (err?: Error | null, keys?: KnownPublicKeys<T>) => void;
 
 export type SignCallback = (err?: Error | null, signature?: Buffer) => void;
 
@@ -1822,7 +2160,9 @@ export class AgentProtocol extends Duplex {
      * `(err, keys)` where `keys` is a possible array of public keys for
      * authentication.
      */
-    getIdentities(callback: (err: Error | undefined, publicKeys?: ParsedKey[]) => void): void;
+    getIdentities(
+        callback: (err: Error | undefined, publicKeys?: ParsedKey[]) => void,
+    ): void;
 
     /**
      * (Server mode only)
@@ -1840,7 +2180,11 @@ export class AgentProtocol extends Duplex {
         options?: SigningRequestOptions,
         callback?: SignCallback,
     ): boolean;
-    sign(pubKey: ParsedKey | Buffer | string, data: Buffer, callback?: SignCallback): boolean;
+    sign(
+        pubKey: ParsedKey | Buffer | string,
+        data: Buffer,
+        callback?: SignCallback,
+    ): boolean;
 
     /**
      * (Server mode only)
@@ -1862,7 +2206,12 @@ export class AgentProtocol extends Duplex {
      */
     on(
         event: "sign",
-        listener: (req: AgentInboundRequest, pubKey: ParsedKey, data: Buffer, options: SigningRequestOptions) => void,
+        listener: (
+            req: AgentInboundRequest,
+            pubKey: ParsedKey,
+            data: Buffer,
+            options: SigningRequestOptions,
+        ) => void,
     ): this;
 
     on(event: string | symbol, listener: Function): this;
@@ -1877,7 +2226,12 @@ export class AgentProtocol extends Duplex {
  */
 export function createAgent(socketPath: string | "pageant"): BaseAgent;
 
-export abstract class BaseAgent<TPublicKey extends string | Buffer | ParsedKey = string | Buffer | ParsedKey> {
+export abstract class BaseAgent<
+    TPublicKey extends string | Buffer | ParsedKey =
+        | string
+        | Buffer
+        | ParsedKey,
+> {
     /**
      * Retrieves user identities, where `keys` is a possible array of public
      * keys for authentication.
@@ -1888,7 +2242,12 @@ export abstract class BaseAgent<TPublicKey extends string | Buffer | ParsedKey =
      * Signs the datawith the given public key, and calls back with its signature.
      * Note that, in the current implementation, "options" is always an empty object.
      */
-    abstract sign(pubKey: TPublicKey, data: Buffer, options: SigningRequestOptions, cb?: SignCallback): void;
+    abstract sign(
+        pubKey: TPublicKey,
+        data: Buffer,
+        options: SigningRequestOptions,
+        cb?: SignCallback,
+    ): void;
     abstract sign(pubKey: TPublicKey, data: Buffer, cb: SignCallback): void;
 
     /**
@@ -1917,7 +2276,11 @@ export class OpenSSHAgent extends BaseAgent<ParsedKey> {
         options?: SigningRequestOptions,
         cb?: SignCallback,
     ): boolean;
-    sign(pubKey: ParsedKey | Buffer | string, data: Buffer, cb?: SignCallback): boolean;
+    sign(
+        pubKey: ParsedKey | Buffer | string,
+        data: Buffer,
+        cb?: SignCallback,
+    ): boolean;
 
     /** @inheritdoc */
     getStream(cb: GetStreamCallback): void;
@@ -1989,13 +2352,25 @@ export interface WriteStream extends Writable {
     on(event: string | symbol, listener: Function): this;
 }
 
-export type ClientCallback = (err: Error | undefined, channel: ClientChannel) => void;
+export type ClientCallback = (
+    err: Error | undefined,
+    channel: ClientChannel,
+) => void;
 
-export type ServerCallback = (err: Error | undefined, channel: ServerChannel) => void;
+export type ServerCallback = (
+    err: Error | undefined,
+    channel: ServerChannel,
+) => void;
 
-export type ClientForwardCallback = (err: Error | undefined, port: number) => void;
+export type ClientForwardCallback = (
+    err: Error | undefined,
+    port: number,
+) => void;
 
-export type ClientSFTPCallback = (err: Error | undefined, sftp: SFTPWrapper) => void;
+export type ClientSFTPCallback = (
+    err: Error | undefined,
+    sftp: SFTPWrapper,
+) => void;
 
 export type ChangePasswordCallback = (newPassword: string) => void;
 

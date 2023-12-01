@@ -8,11 +8,20 @@ declare namespace stripe {
         validateExpiry(month: string, year: string): boolean;
         validateCVC(cardCVC: string): boolean;
         cardType(cardNumber: string): StripeCardDataBrand;
-        getToken(token: string, responseHandler: (status: number, response: StripeCardTokenResponse) => void): void;
+        getToken(
+            token: string,
+            responseHandler: (
+                status: number,
+                response: StripeCardTokenResponse,
+            ) => void,
+        ): void;
         card: StripeCard;
         createToken(
             data: StripeCardTokenData,
-            responseHandler: (status: number, response: StripeCardTokenResponse) => void,
+            responseHandler: (
+                status: number,
+                response: StripeCardTokenResponse,
+            ) => void,
         ): void;
         bankAccount: StripeBankAccount;
     }
@@ -82,7 +91,10 @@ declare namespace stripe {
         funding?: StripeCardDataFunding | undefined;
         createToken(
             data: StripeCardTokenData,
-            responseHandler: (status: number, response: StripeCardTokenResponse) => void,
+            responseHandler: (
+                status: number,
+                response: StripeCardTokenResponse,
+            ) => void,
         ): void;
         validateCardNumber(cardNumber: string): boolean;
         validateExpiry(month: string, year: string): boolean;
@@ -92,10 +104,19 @@ declare namespace stripe {
     interface StripeBankAccount {
         createToken(
             params: StripeBankTokenParams,
-            stripeResponseHandler: (status: number, response: StripeBankTokenResponse) => void,
+            stripeResponseHandler: (
+                status: number,
+                response: StripeBankTokenResponse,
+            ) => void,
         ): void;
-        validateRoutingNumber(routingNumber: number | string, countryCode: string): boolean;
-        validateAccountNumber(accountNumber: number | string, countryCode: string): boolean;
+        validateRoutingNumber(
+            routingNumber: number | string,
+            countryCode: string,
+        ): boolean;
+        validateAccountNumber(
+            accountNumber: number | string,
+            countryCode: string,
+        ): boolean;
     }
 
     interface StripeBankTokenParams {
@@ -121,14 +142,24 @@ declare namespace stripe {
         checkAvailability(resopnseHandler: (result: boolean) => void): void;
         buildSession(
             data: StripeApplePayPaymentRequest,
-            onSuccessHandler: (result: StripeApplePaySessionResult, completion: (value: any) => void) => void,
+            onSuccessHandler: (
+                result: StripeApplePaySessionResult,
+                completion: (value: any) => void,
+            ) => void,
             onErrorHanlder: (error: { message: string }) => void,
         ): any;
     }
 
     type StripeApplePayBillingContactField = "postalAddress" | "name";
-    type StripeApplePayShippingContactField = StripeApplePayBillingContactField | "phone" | "email";
-    type StripeApplePayShipping = "shipping" | "delivery" | "storePickup" | "servicePickup";
+    type StripeApplePayShippingContactField =
+        | StripeApplePayBillingContactField
+        | "phone"
+        | "email";
+    type StripeApplePayShipping =
+        | "shipping"
+        | "delivery"
+        | "storePickup"
+        | "servicePickup";
 
     interface StripeApplePayPaymentRequest {
         billingContact: StripeApplePayPaymentContact;
@@ -136,8 +167,12 @@ declare namespace stripe {
         currencyCode: string;
         total: StripeApplePayLineItem;
         lineItems?: StripeApplePayLineItem[] | undefined;
-        requiredBillingContactFields?: StripeApplePayBillingContactField[] | undefined;
-        requiredShippingContactFields?: StripeApplePayShippingContactField[] | undefined;
+        requiredBillingContactFields?:
+            | StripeApplePayBillingContactField[]
+            | undefined;
+        requiredShippingContactFields?:
+            | StripeApplePayShippingContactField[]
+            | undefined;
         shippingContact?: StripeApplePayPaymentContact | undefined;
         shippingMethods?: StripeApplePayShippingMethod[] | undefined;
         shippingType?: StripeApplePayShipping[] | undefined;

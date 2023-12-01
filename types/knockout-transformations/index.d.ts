@@ -17,16 +17,31 @@ declare namespace KnockoutTransformations {
 }
 
 interface KnockoutObservableArrayFunctions<T> {
-    map<TResult>(mapping: KnockoutTransformations.Mapping<T, TResult>): KnockoutObservableArray<TResult>;
-    map<TResult>(mapping: KnockoutTransformations.MappingOption<T, TResult>): KnockoutObservableArray<TResult>;
     map<TResult>(
-        mapping: KnockoutTransformations.MappingWithDisposeCallbackOption<T, TResult>,
+        mapping: KnockoutTransformations.Mapping<T, TResult>,
+    ): KnockoutObservableArray<TResult>;
+    map<TResult>(
+        mapping: KnockoutTransformations.MappingOption<T, TResult>,
+    ): KnockoutObservableArray<TResult>;
+    map<TResult>(
+        mapping: KnockoutTransformations.MappingWithDisposeCallbackOption<
+            T,
+            TResult
+        >,
     ): KnockoutObservableArray<TResult>;
 
     filter(predicate: (value: T) => boolean): KnockoutObservableArray<T>;
-    sortBy(sorter: (value: T, descending: (sorter: any) => any) => any): KnockoutObservableArray<T>;
-    indexBy(indexer: (value: T) => string): KnockoutObservable<{ [index: string]: T[] }>;
-    indexBy(indexer: (value: T) => string[]): KnockoutObservable<{ [index: string]: T[] }>;
+    sortBy(
+        sorter: (value: T, descending: (sorter: any) => any) => any,
+    ): KnockoutObservableArray<T>;
+    indexBy(
+        indexer: (value: T) => string,
+    ): KnockoutObservable<{ [index: string]: T[] }>;
+    indexBy(
+        indexer: (value: T) => string[],
+    ): KnockoutObservable<{ [index: string]: T[] }>;
     indexBy(indexer: (value: T) => any): KnockoutObservable<any>;
-    uniqueIndexBy(indexer: (value: T) => string): KnockoutObservable<{ [index: string]: T }>;
+    uniqueIndexBy(
+        indexer: (value: T) => string,
+    ): KnockoutObservable<{ [index: string]: T }>;
 }

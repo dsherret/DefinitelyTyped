@@ -30,7 +30,7 @@ generatePackageJson({
 });
 
 generatePackageJson({
-    baseContents: pkg => ({
+    baseContents: (pkg) => ({
         name: pkg.name,
     }),
 });

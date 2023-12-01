@@ -24,9 +24,18 @@ declare namespace nodeNotifier {
             notification?: NotifySend.Notification,
             callback?: NotificationCallback,
         ): NotifySend;
-        notify(notification?: Growl.Notification, callback?: NotificationCallback): Growl;
-        notify(notification?: Notification, callback?: NotificationCallback): NodeNotifier;
-        notify(notification?: string, callback?: NotificationCallback): NodeNotifier;
+        notify(
+            notification?: Growl.Notification,
+            callback?: NotificationCallback,
+        ): Growl;
+        notify(
+            notification?: Notification,
+            callback?: NotificationCallback,
+        ): NodeNotifier;
+        notify(
+            notification?: string,
+            callback?: NotificationCallback,
+        ): NodeNotifier;
         NotificationCenter: typeof NotificationCenter;
         NotifySend: typeof NotifySend;
         WindowsToaster: typeof WindowsToaster;

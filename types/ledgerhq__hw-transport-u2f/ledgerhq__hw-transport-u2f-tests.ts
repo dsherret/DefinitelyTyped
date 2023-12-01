@@ -7,7 +7,7 @@ Transport.list();
 // $ExpectType Promise<TransportU2F>
 Transport.open("test");
 
-const test = Transport.open("test").then(transport => {
+const test = Transport.open("test").then((transport) => {
     // $ExpectType void
     transport.setScrambleKey("BTC");
 

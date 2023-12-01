@@ -1,4 +1,10 @@
-import { Quad, Quad_Graph, Quad_Object, Quad_Predicate, Quad_Subject } from "@rdfjs/types";
+import {
+    Quad,
+    Quad_Graph,
+    Quad_Object,
+    Quad_Predicate,
+    Quad_Subject,
+} from "@rdfjs/types";
 import { PropType } from "./_PropType.js";
 import { BlankNodeExt } from "./BlankNode.js";
 import { DefaultGraphExt } from "./DefaultGraph.js";
@@ -16,7 +22,9 @@ export interface QuadExt extends Quad {
     toCanonical(): string;
     toJSON(): {
         subject: ReturnType<PropType<PropType<QuadExt, "subject">, "toJSON">>;
-        predicate: ReturnType<PropType<PropType<QuadExt, "predicate">, "toJSON">>;
+        predicate: ReturnType<
+            PropType<PropType<QuadExt, "predicate">, "toJSON">
+        >;
         object: ReturnType<PropType<PropType<QuadExt, "object">, "toJSON">>;
         graph: ReturnType<PropType<PropType<QuadExt, "graph">, "toJSON">>;
     };
@@ -24,7 +32,12 @@ export interface QuadExt extends Quad {
 
 // tslint:disable-next-line:no-unnecessary-class
 export class QuadExt {
-    constructor(subject: Quad_Subject, predicate: Quad_Predicate, object: Quad_Object, graph?: Quad_Graph | null);
+    constructor(
+        subject: Quad_Subject,
+        predicate: Quad_Predicate,
+        object: Quad_Object,
+        graph?: Quad_Graph | null,
+    );
 }
 
 export default QuadExt;

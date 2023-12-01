@@ -55,7 +55,7 @@ import {
     const TestProviderAndConsumer = () => (
         <AnalyticsProvider instance={analytics}>
             <AnalyticsConsumer>
-                {props => {
+                {(props) => {
                     const { track, page, identify, user } = props;
                     return <div />;
                 }}

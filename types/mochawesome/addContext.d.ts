@@ -31,6 +31,9 @@ declare namespace addContext {
  *   assert('something');
  * });
  */
-declare function addContext(testCtx: Mocha.Context, context: addContext.TestContext): void;
+declare function addContext(
+    testCtx: Mocha.Context,
+    context: addContext.TestContext,
+): void;
 
 export = addContext;

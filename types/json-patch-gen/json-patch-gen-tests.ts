@@ -1,6 +1,7 @@
 import diff = require("json-patch-gen");
 
-const assertEqual = (a: object, b: object) => JSON.stringify(a) === JSON.stringify(b);
+const assertEqual = (a: object, b: object) =>
+    JSON.stringify(a) === JSON.stringify(b);
 const assertLength = (a: any[], b: number) => a.length === b;
 
 assertLength(diff({ a: "a" }, { a: "a", b: "b" }), 1);

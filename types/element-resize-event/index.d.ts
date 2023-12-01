@@ -15,7 +15,10 @@ export = elementResizeEvent;
  *     });
  * }
  */
-declare function elementResizeEvent(domNode: Element, callback: () => any): void;
+declare function elementResizeEvent(
+    domNode: Element,
+    callback: () => any,
+): void;
 
 declare namespace elementResizeEvent {
     /**

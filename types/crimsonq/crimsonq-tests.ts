@@ -46,9 +46,16 @@ import CrimsonQClient = require("crimsonq");
         }
     });
 
-    producer.pushToConsumer("I_AM_A_CONSUMER", { msgValuesKey: "msg Values Value" }); // $ExpectType Promise<CommandResult | ErrorConstructor> || Promise<ErrorConstructor | CommandResult>
+    producer.pushToConsumer("I_AM_A_CONSUMER", {
+        msgValuesKey: "msg Values Value",
+    }); // $ExpectType Promise<CommandResult | ErrorConstructor> || Promise<ErrorConstructor | CommandResult>
     // tslint:disable-next-line
-    producer.pushToConsumer("I_AM_A_CONSUMER", { failMe: true, msgValuesKey: "msg Values Value" }); // $ExpectType Promise<CommandResult | ErrorConstructor> || Promise<ErrorConstructor | CommandResult>
+    producer.pushToConsumer("I_AM_A_CONSUMER", {
+        failMe: true,
+        msgValuesKey: "msg Values Value",
+    }); // $ExpectType Promise<CommandResult | ErrorConstructor> || Promise<ErrorConstructor | CommandResult>
     // tslint:disable-next-line
-    producer.pushToTopic("/topic/path/more/parts/to/match", { msgSecondValuesKey: "msg Second Values Value" }); // $ExpectType Promise<CommandResult | ErrorConstructor> || Promise<ErrorConstructor | CommandResult>
+    producer.pushToTopic("/topic/path/more/parts/to/match", {
+        msgSecondValuesKey: "msg Second Values Value",
+    }); // $ExpectType Promise<CommandResult | ErrorConstructor> || Promise<ErrorConstructor | CommandResult>
 })();

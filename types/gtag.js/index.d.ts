@@ -1,22 +1,36 @@
 declare var gtag: Gtag.Gtag;
 declare namespace Gtag {
     interface GtagCommands {
-        config: [targetId: string, config?: ControlParams | EventParams | ConfigParams | CustomParams];
+        config: [
+            targetId: string,
+            config?: ControlParams | EventParams | ConfigParams | CustomParams,
+        ];
         // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-        set: [targetId: string, config: CustomParams | boolean | string] | [config: CustomParams];
+        set:
+            | [targetId: string, config: CustomParams | boolean | string]
+            | [config: CustomParams];
         // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
         js: [config: Date];
-        event: [eventName: EventNames | (string & {}), eventParams?: ControlParams | EventParams | CustomParams];
+        event: [
+            eventName: EventNames | (string & {}),
+            eventParams?: ControlParams | EventParams | CustomParams,
+        ];
         get: [
             targetId: string,
             fieldName: FieldNames | string,
             callback?: (field: string | CustomParams | undefined) => any,
         ];
-        consent: [consentArg: ConsentArg | (string & {}), consentParams: ConsentParams];
+        consent: [
+            consentArg: ConsentArg | (string & {}),
+            consentParams: ConsentParams,
+        ];
     }
 
     interface Gtag {
-        <Command extends keyof GtagCommands>(command: Command, ...args: GtagCommands[Command]): void;
+        <Command extends keyof GtagCommands>(
+            command: Command,
+            ...args: GtagCommands[Command]
+        ): void;
     }
 
     interface ConfigParams {

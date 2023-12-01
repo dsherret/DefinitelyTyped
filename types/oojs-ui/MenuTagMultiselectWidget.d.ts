@@ -19,12 +19,13 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.MenuTagMultiselectWidget
      */
-    interface MenuTagMultiselectWidget extends MenuTagMultiselectWidget.Props, MenuTagMultiselectWidget.Prototype {}
+    interface MenuTagMultiselectWidget
+        extends MenuTagMultiselectWidget.Props,
+            MenuTagMultiselectWidget.Prototype {}
 
     namespace MenuTagMultiselectWidget {
-        type Option =
-            & Required<Pick<MenuOptionWidget.ConfigOptions, "data">>
-            & Pick<MenuOptionWidget.ConfigOptions, "label" | "icon">;
+        type Option = Required<Pick<MenuOptionWidget.ConfigOptions, "data">> &
+            Pick<MenuOptionWidget.ConfigOptions, "label" | "icon">;
 
         interface ConfigOptions extends TagMultiselectWidget.ConfigOptions {
             /** Clear the text input value when a menu option is chosen */
@@ -78,7 +79,9 @@ declare namespace OO.ui {
              * @param menuConfig Configuration options
              * @return Menu widget
              */
-            createMenuWidget(menuConfig: MenuSelectWidget.ConfigOptions): MenuSelectWidget;
+            createMenuWidget(
+                menuConfig: MenuSelectWidget.ConfigOptions,
+            ): MenuSelectWidget;
 
             /**
              * Add options to the menu, ensuring that they are unique by data.
@@ -95,7 +98,11 @@ declare namespace OO.ui {
              * @param icon Symbolic icon name
              * @return Option widget
              */
-            createMenuOptionWidget(data: string, label?: string, icon?: Icon): OptionWidget;
+            createMenuOptionWidget(
+                data: string,
+                label?: string,
+                icon?: Icon,
+            ): OptionWidget;
 
             /**
              * Get the menu
@@ -114,7 +121,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): MenuTagMultiselectWidget;
+            new (config?: ConfigOptions): MenuTagMultiselectWidget;
             prototype: Prototype;
             static: Static;
             super: TagMultiselectWidget.Constructor;

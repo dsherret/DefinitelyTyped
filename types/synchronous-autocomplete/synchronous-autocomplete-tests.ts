@@ -31,7 +31,7 @@ const items = [
 ] as const;
 
 // $ExpectType Index<"apple" | "banana">
-const index = buildIndex(str => {
+const index = buildIndex((str) => {
     str; // $ExpectType string
     return str.split(/\s+/g);
 }, items);
@@ -43,7 +43,7 @@ const autocomplete = createAutocomplete(
     index.weights,
     index.nrOfTokens,
     index.originalIds,
-    str => {
+    (str) => {
         str; // $ExpectType string
         return str.split(/\s+/g);
     },
@@ -71,10 +71,17 @@ const scores = {
 const originalIds = ["apple", "banana", "pome"] as const;
 
 // $ExpectType AutocompleteFn<"apple" | "banana" | "pome">
-const autocomplete2 = createAutocomplete(tokens, scores, weights, nrOfTokens, originalIds, str => {
-    str; // $ExpectType string
-    return str.split(/\s+/g);
-});
+const autocomplete2 = createAutocomplete(
+    tokens,
+    scores,
+    weights,
+    nrOfTokens,
+    originalIds,
+    (str) => {
+        str; // $ExpectType string
+        return str.split(/\s+/g);
+    },
+);
 
 const results = autocomplete("ban"); // $ExpectType AutocompleteResult<"apple" | "banana">[]
 autocomplete("ban", 10); // $ExpectType AutocompleteResult<"apple" | "banana">[]

@@ -11,7 +11,12 @@ export namespace crypto {
 
     namespace ECDSA {
         function sign(message: Buffer, key: PrivateKey): Signature;
-        function verify(hashbuf: Buffer, sig: Signature, pubkey: PublicKey, endian?: "little"): boolean;
+        function verify(
+            hashbuf: Buffer,
+            sig: Signature,
+            pubkey: PublicKey,
+            endian?: "little",
+        ): boolean;
     }
 
     namespace Hash {
@@ -141,13 +146,21 @@ export namespace Transaction {
                 hashData?: any,
                 signingMethod?: string,
             ): crypto.TransactionSignature[];
-            addSignature(transaction: Transaction, signature: crypto.Signature, signingMethod?: string): this;
+            addSignature(
+                transaction: Transaction,
+                signature: crypto.Signature,
+                signingMethod?: string,
+            ): this;
             clearSignatures(): this;
             isFullySigned(): boolean;
             countMissingSignatures(): number;
             countSignatures(): number;
             publicKeysWithoutSignature(): number;
-            isValidSignature(transaction: Transaction, signature: crypto.Signature, signingMethod?: string): boolean;
+            isValidSignature(
+                transaction: Transaction,
+                signature: crypto.Signature,
+                signingMethod?: string,
+            ): boolean;
             normalizeSignatures(
                 transaction: Transaction,
                 input: Input,
@@ -176,13 +189,21 @@ export namespace Transaction {
                 hashData?: any,
                 signingMethod?: string,
             ): crypto.TransactionSignature[];
-            addSignature(transaction: Transaction, signature: crypto.Signature, signingMethod?: string): this;
+            addSignature(
+                transaction: Transaction,
+                signature: crypto.Signature,
+                signingMethod?: string,
+            ): this;
             clearSignatures(): this;
             isFullySigned(): boolean;
             countMissingSignatures(): number;
             countSignatures(): number;
             publicKeysWithoutSignature(): number;
-            isValidSignature(transaction: Transaction, signature: crypto.Signature, signingMethod?: string): boolean;
+            isValidSignature(
+                transaction: Transaction,
+                signature: crypto.Signature,
+                signingMethod?: string,
+            ): boolean;
             normalizeSignatures(
                 transaction: Transaction,
                 input: Input,
@@ -202,7 +223,11 @@ export namespace Transaction {
                 hashData?: any,
                 signingMethod?: string,
             ): crypto.TransactionSignature[];
-            addSignature(transaction: Transaction, signature: crypto.Signature, signingMethod?: string): this;
+            addSignature(
+                transaction: Transaction,
+                signature: crypto.Signature,
+                signingMethod?: string,
+            ): this;
             clearSignatures(): this;
             isFullySigned(): boolean;
         }
@@ -216,7 +241,11 @@ export namespace Transaction {
                 hashData?: any,
                 signingMethod?: string,
             ): crypto.TransactionSignature[];
-            addSignature(transaction: Transaction, signature: crypto.Signature, signingMethod?: string): this;
+            addSignature(
+                transaction: Transaction,
+                signature: crypto.Signature,
+                signingMethod?: string,
+            ): this;
             clearSignatures(): this;
             isFullySigned(): boolean;
         }
@@ -248,9 +277,17 @@ export namespace Transaction {
         ): crypto.TransactionSignature[];
         isFullySigned(): boolean;
         isFinal(): boolean;
-        addSignature(transaction: Transaction, signature: crypto.Signature, signingMethod?: string): this;
+        addSignature(
+            transaction: Transaction,
+            signature: crypto.Signature,
+            signingMethod?: string,
+        ): this;
         clearSignatures(): this;
-        isValidSignature(transaction: Transaction, signature: crypto.Signature, signingMethod?: string): boolean;
+        isValidSignature(
+            transaction: Transaction,
+            signature: crypto.Signature,
+            signingMethod?: string,
+        ): boolean;
         isNull(): boolean;
         lockForSeconds(seconds: number): this;
         lockUntilBlockHeight(heightDiff: number): this;
@@ -297,7 +334,12 @@ export class Transaction {
     static fromObject(arg: object): Transaction;
     static fromString(str: string): Transaction;
 
-    from(utxos: Transaction.UnspentOutput[], pubkeys?: PublicKey[], threshold?: number, opts?: object): this;
+    from(
+        utxos: Transaction.UnspentOutput[],
+        pubkeys?: PublicKey[],
+        threshold?: number,
+        opts?: object,
+    ): this;
     to(address: Address[] | Address | string, amount: number): this;
     change(address: Address | string): this;
     fee(amount: number): this;
@@ -325,7 +367,11 @@ export class Transaction {
         flags?: number,
         signingMethod?: string,
     ): boolean;
-    addInput(input: Transaction.Input, outputScript?: string | Script, satoshis?: number): this;
+    addInput(
+        input: Transaction.Input,
+        outputScript?: string | Script,
+        satoshis?: number,
+    ): this;
     uncheckedAddInput(input: Transaction.Input): this;
     hasAllUtxoInfo(): boolean;
     lockUntilDate(time: Date | number): this;
@@ -337,8 +383,14 @@ export class Transaction {
     removeOutput(index: number): void;
     sort(): this;
     shuffleOutputs(): this;
-    sortOutputs(sortingFunction: (outputs: Transaction.Output[]) => Transaction.Output[]): this;
-    sortInputs(sortingFunction: (inputs: Transaction.Input[]) => Transaction.Input[]): this;
+    sortOutputs(
+        sortingFunction: (
+            outputs: Transaction.Output[],
+        ) => Transaction.Output[],
+    ): this;
+    sortInputs(
+        sortingFunction: (inputs: Transaction.Input[]) => Transaction.Input[],
+    ): this;
     removeInput(index: number): void;
     setVersion(version: number): this;
 
@@ -380,7 +432,10 @@ export class PrivateKey {
     static fromObject(obj: object): PrivateKey;
     static fromRandom(network?: string | Networks.Network): PrivateKey;
 
-    getValidationError(data: any, network?: string | Networks.Network): null | Error;
+    getValidationError(
+        data: any,
+        network?: string | Networks.Network,
+    ): null | Error;
     isValid(data: any, network?: string | Networks.Network): boolean;
 
     inspect(): string;
@@ -404,12 +459,21 @@ export class HDPrivateKey {
     constructor(data?: string | Buffer | object);
 
     isValidPath(arg: string | number, hardened?: boolean): boolean;
-    isValidSerialized(data: string | Buffer, network?: string | Networks.Network): boolean;
-    getSerializedError(data: string | Buffer, network?: string | Networks.Network): null | Error;
+    isValidSerialized(
+        data: string | Buffer,
+        network?: string | Networks.Network,
+    ): boolean;
+    getSerializedError(
+        data: string | Buffer,
+        network?: string | Networks.Network,
+    ): null | Error;
 
     derive(arg: string | number, hardened?: boolean): HDPrivateKey;
     deriveChild(arg: string | number, hardened?: boolean): HDPrivateKey;
-    deriveNonCompliantChild(arg: string | number, hardened?: boolean): HDPrivateKey;
+    deriveNonCompliantChild(
+        arg: string | number,
+        hardened?: boolean,
+    ): HDPrivateKey;
 
     toString(): string;
     toObject(): object;
@@ -418,7 +482,10 @@ export class HDPrivateKey {
 
     static fromString(arg: string): HDPrivateKey;
     static fromObject(obj: object): HDPrivateKey;
-    static fromSeed(hexa: string | Buffer, network?: string | Networks.Network): HDPrivateKey;
+    static fromSeed(
+        hexa: string | Buffer,
+        network?: string | Networks.Network,
+    ): HDPrivateKey;
 
     inspect(): string;
 }
@@ -442,15 +509,36 @@ export namespace Script {
     const types: {
         DATA_OUT: string;
     };
-    function buildMultisigOut(publicKeys: PublicKey[], threshold: number, opts: object): Script;
-    function buildMultisigIn(pubkeys: PublicKey[], threshold: number, signatures: Buffer[], opts: object): Script;
-    function buildP2SHMultisigIn(pubkeys: PublicKey[], threshold: number, signatures: Buffer[], opts: object): Script;
+    function buildMultisigOut(
+        publicKeys: PublicKey[],
+        threshold: number,
+        opts: object,
+    ): Script;
+    function buildMultisigIn(
+        pubkeys: PublicKey[],
+        threshold: number,
+        signatures: Buffer[],
+        opts: object,
+    ): Script;
+    function buildP2SHMultisigIn(
+        pubkeys: PublicKey[],
+        threshold: number,
+        signatures: Buffer[],
+        opts: object,
+    ): Script;
     function buildPublicKeyHashOut(address: Address): Script;
     function buildPublicKeyOut(pubkey: PublicKey): Script;
     function buildDataOut(data: string | Buffer, encoding?: string): Script;
     function buildScriptHashOut(script: Script): Script;
-    function buildPublicKeyIn(signature: crypto.Signature | Buffer, sigtype: number): Script;
-    function buildPublicKeyHashIn(publicKey: PublicKey, signature: crypto.Signature | Buffer, sigtype: number): Script;
+    function buildPublicKeyIn(
+        signature: crypto.Signature | Buffer,
+        sigtype: number,
+    ): Script;
+    function buildPublicKeyHashIn(
+        publicKey: PublicKey,
+        signature: crypto.Signature | Buffer,
+        sigtype: number,
+    ): Script;
 
     function empty(): Script;
 }
@@ -542,7 +630,10 @@ export namespace Networks {
 
     function add(data: any): Network;
     function remove(network: Network): void;
-    function get(args: string | number | Network, keys: string | string[]): Network;
+    function get(
+        args: string | number | Network,
+        keys: string | string[],
+    ): Network;
 }
 
 export interface CashAddressDecoding {
@@ -556,19 +647,50 @@ export class Address {
     readonly network: Networks.Network;
     readonly type: string;
 
-    constructor(data: Buffer | Uint8Array | string | object, network?: string | Networks.Network, type?: string);
+    constructor(
+        data: Buffer | Uint8Array | string | object,
+        network?: string | Networks.Network,
+        type?: string,
+    );
 
-    static createMultisig(publicKeys: PublicKey[], threshold: number, network: string | Networks.Network): Address;
-    static payingTo(script: Script, network: string | Networks.Network): Address;
+    static createMultisig(
+        publicKeys: PublicKey[],
+        threshold: number,
+        network: string | Networks.Network,
+    ): Address;
+    static payingTo(
+        script: Script,
+        network: string | Networks.Network,
+    ): Address;
 
     static decodeCashAddress(address: string): CashAddressDecoding;
 
-    static fromPublicKey(data: PublicKey, network: string | Networks.Network): Address;
-    static fromPublicKeyHash(hash: Buffer, network: string | Networks.Network): Address;
-    static fromScriptHash(hash: Buffer, network: string | Networks.Network): Address;
-    static fromScript(script: Script, network: string | Networks.Network): Address;
-    static fromBuffer(buffer: Buffer, network?: string | Networks.Network, type?: string): Address;
-    static fromString(str: string, network?: string | Networks.Network, type?: string): Address;
+    static fromPublicKey(
+        data: PublicKey,
+        network: string | Networks.Network,
+    ): Address;
+    static fromPublicKeyHash(
+        hash: Buffer,
+        network: string | Networks.Network,
+    ): Address;
+    static fromScriptHash(
+        hash: Buffer,
+        network: string | Networks.Network,
+    ): Address;
+    static fromScript(
+        script: Script,
+        network: string | Networks.Network,
+    ): Address;
+    static fromBuffer(
+        buffer: Buffer,
+        network?: string | Networks.Network,
+        type?: string,
+    ): Address;
+    static fromString(
+        str: string,
+        network?: string | Networks.Network,
+        type?: string,
+    ): Address;
     static fromObject(obj: object): Address;
 
     toBuffer(): Buffer;
@@ -578,9 +700,17 @@ export class Address {
     toCashAddress(): string;
     toString(): string;
 
-    getValidationError(data: string, network?: string | Networks.Network, type?: string): null | Error;
+    getValidationError(
+        data: string,
+        network?: string | Networks.Network,
+        type?: string,
+    ): null | Error;
 
-    isValid(data: string, network?: string | Networks.Network, type?: string): boolean;
+    isValid(
+        data: string,
+        network?: string | Networks.Network,
+        type?: string,
+    ): boolean;
     isPayToPublicKeyHash(): boolean;
     isPayToScriptHash(): boolean;
 

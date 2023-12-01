@@ -4,7 +4,12 @@
 
 import { EventEmitter } from "events";
 import { Readable } from "stream";
-import { Entry as BaseEntry, Options, RandomAccessReader, ZipFileOptions } from "yauzl";
+import {
+    Entry as BaseEntry,
+    Options,
+    RandomAccessReader,
+    ZipFileOptions,
+} from "yauzl";
 
 // This class is not directly compatible with @types/yauzl 's ZipFile as this library changes the function signatures
 // Therefore, it is replaced, albeit with a significant portion
@@ -39,7 +44,10 @@ export class ZipFile extends EventEmitter {
     close(): Promise<void>;
     readEntry(): Promise<Entry>;
     readEntries(numEntries?: number): Promise<Entry[]>;
-    walkEntries(callback: (entry: Entry) => Promise<void> | void, numEntries?: number): Promise<void>;
+    walkEntries(
+        callback: (entry: Entry) => Promise<void> | void,
+        numEntries?: number,
+    ): Promise<void>;
     openReadStream(entry: Entry, options?: ZipFileOptions): Promise<Readable>;
 }
 

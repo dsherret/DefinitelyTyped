@@ -25,13 +25,13 @@ $("input.className").maxlength({
     message: "used %charsTyped% of %charsTotal% chars.",
 });
 // Testing the events
-$("input.className").on("maxlength.shown", function() {
+$("input.className").on("maxlength.shown", function () {
     console.log("shown");
 });
-$("input.className").on("maxlength.hidden", function() {
+$("input.className").on("maxlength.hidden", function () {
     console.log("hidden");
 });
-$("textarea").on("autosize.resized", function() {
+$("textarea").on("autosize.resized", function () {
     $(this).trigger("maxlength.reposition");
 });
 
@@ -42,7 +42,7 @@ $("input.className").maxlength({
 // using message function
 $("input.className").maxlength({
     threshold: 20,
-    message: function(currentText, maxLength) {
+    message: function (currentText, maxLength) {
         return "" + Math.ceil(currentText.length / 160) + " SMS Message(s)";
     },
 });
@@ -60,10 +60,9 @@ $("input.className").maxlength({
 });
 // placement function
 $("input.className").maxlength({
-    placement: function(
+    placement: function (
         currentInput: JQuery,
         maxLengthIndicator: JQuery,
         currentInputPosition: BootstrapMaxlength.PositionParam,
-    ) {
-    },
+    ) {},
 });

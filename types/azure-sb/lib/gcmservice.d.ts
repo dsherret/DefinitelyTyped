@@ -12,7 +12,11 @@ declare class GcmService {
 
     public notificationHubService: NotificationHubService;
 
-    public send(tags: string | string[], payload: object | string, callback: ResponseCallback): void;
+    public send(
+        tags: string | string[],
+        payload: object | string,
+        callback: ResponseCallback,
+    ): void;
 
     public createNativeRegistration(
         gcmRegistrationId: string,
@@ -74,7 +78,10 @@ declare class GcmService {
         callback: ResponseCallback,
     ): void;
 
-    public listRegistrationsByGcmRegistrationId(gcmRegistrationId: string, callback: ResponseCallback): void;
+    public listRegistrationsByGcmRegistrationId(
+        gcmRegistrationId: string,
+        callback: ResponseCallback,
+    ): void;
 
     public listRegistrationsByGcmRegistrationId(
         gcmRegistrationId: string,

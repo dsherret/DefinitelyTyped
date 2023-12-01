@@ -52,9 +52,11 @@ export interface DynamicPropsProps {
     components?: Partial<Components> | undefined;
     heading?: string | undefined;
     shouldCollapseProps?: boolean | undefined;
-    overrides?: {
-        [key: string]: React.ComponentType<CommonProps>;
-    } | undefined;
+    overrides?:
+        | {
+              [key: string]: React.ComponentType<CommonProps>;
+          }
+        | undefined;
     props: {
         component?: Obj | Inter | undefined;
     };

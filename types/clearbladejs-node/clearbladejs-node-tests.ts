@@ -3,7 +3,12 @@
 // Definitions by: Jim Bouquet <https://github.com/ClearBlade>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-import { ClearBlade, QueryConditions, QuerySortDirections, Resp } from "clearbladejs-node";
+import {
+    ClearBlade,
+    QueryConditions,
+    QuerySortDirections,
+    Resp,
+} from "clearbladejs-node";
 
 // Sample code for clearbladejs Node SDK v1.0.0 used to test typescript definitions
 
@@ -46,13 +51,26 @@ const coll2 = ClearBlade.Collection({ collectionName: "collectionName" });
 const coll3 = ClearBlade.Collection({ collectionID: "collectionID" });
 
 const query1 = ClearBlade.Query("collectionID");
-const query2 = ClearBlade.Query({ offset: 5, limit: 5, collectionID: "collectionID" });
+const query2 = ClearBlade.Query({
+    offset: 5,
+    limit: 5,
+    collectionID: "collectionID",
+});
 const query3 = ClearBlade.Query({ collectionName: "collectionName" });
 const query4 = ClearBlade.Query({ collection: "collectionID" });
 
 ClearBlade.addToQuery(query1, "key", "value");
-ClearBlade.addFilterToQuery(query1, QueryConditions.QUERY_GREATERTHAN, "key", "value");
-ClearBlade.addSortToQuery(query1, QuerySortDirections.QUERY_SORT_ASCENDING, "column1");
+ClearBlade.addFilterToQuery(
+    query1,
+    QueryConditions.QUERY_GREATERTHAN,
+    "key",
+    "value",
+);
+ClearBlade.addSortToQuery(
+    query1,
+    QuerySortDirections.QUERY_SORT_ASCENDING,
+    "column1",
+);
 
 const opQueryStr = ClearBlade.parseOperationQuery(query1.query);
 const parse1: string = ClearBlade.parseQuery(query1.query);

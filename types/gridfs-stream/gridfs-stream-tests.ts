@@ -21,15 +21,15 @@ var readstream = gfs.createReadStream({
 });
 
 // error handling, e.g. file does not exist
-readstream.on("error", function(err: any) {
+readstream.on("error", function (err: any) {
     console.log("An error occurred!", err);
     throw err;
 });
 
 var bufs: any[] = [];
-readstream.on("data", function(d: any) {
+readstream.on("data", function (d: any) {
     bufs.push(d);
 });
-readstream.on("end", function() {
+readstream.on("end", function () {
     var buf = Buffer.concat(bufs);
 });

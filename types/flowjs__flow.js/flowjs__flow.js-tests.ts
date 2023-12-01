@@ -13,7 +13,14 @@ flowObject.assignBrowse([] as HTMLElement[]);
 flowObject.assignBrowse([] as HTMLElement[], false, false, {});
 flowObject.assignDrop([] as HTMLElement[]);
 flowObject.unAssignDrop([] as HTMLElement[]);
-flowObject.on("fileSuccess", (file: flow_js.FlowFile, serverMessage: string, chunk: flow_js.FlowChunk) => {});
+flowObject.on(
+    "fileSuccess",
+    (
+        file: flow_js.FlowFile,
+        serverMessage: string,
+        chunk: flow_js.FlowChunk,
+    ) => {},
+);
 flowObject.off("fileSuccess", () => {});
 flowObject.upload();
 flowObject.pause();

@@ -35,39 +35,65 @@ import * as url from "node:url";
     https.get("http://www.example.com/xyz");
     https.request("http://www.example.com/xyz");
 
-    https.get("http://www.example.com/xyz", (res: http.IncomingMessage): void => {});
-    https.request("http://www.example.com/xyz", (res: http.IncomingMessage): void => {});
+    https.get(
+        "http://www.example.com/xyz",
+        (res: http.IncomingMessage): void => {},
+    );
+    https.request(
+        "http://www.example.com/xyz",
+        (res: http.IncomingMessage): void => {},
+    );
 
     https.get(new url.URL("http://www.example.com/xyz"));
     https.request(new url.URL("http://www.example.com/xyz"));
 
-    https.get(new url.URL("http://www.example.com/xyz"), (res: http.IncomingMessage): void => {});
-    https.request(new url.URL("http://www.example.com/xyz"), (res: http.IncomingMessage): void => {});
+    https.get(
+        new url.URL("http://www.example.com/xyz"),
+        (res: http.IncomingMessage): void => {},
+    );
+    https.request(
+        new url.URL("http://www.example.com/xyz"),
+        (res: http.IncomingMessage): void => {},
+    );
 
     const opts: https.RequestOptions = {
         path: "/some/path",
     };
     https.get(new url.URL("http://www.example.com"), opts);
     https.request(new url.URL("http://www.example.com"), opts);
-    https.get(new url.URL("http://www.example.com/xyz"), opts, (res: http.IncomingMessage): void => {});
-    https.request(new url.URL("http://www.example.com/xyz"), opts, (res: http.IncomingMessage): void => {});
+    https.get(
+        new url.URL("http://www.example.com/xyz"),
+        opts,
+        (res: http.IncomingMessage): void => {},
+    );
+    https.request(
+        new url.URL("http://www.example.com/xyz"),
+        opts,
+        (res: http.IncomingMessage): void => {},
+    );
 
     https.request(new url.URL("https://www.example.com"), {
-        checkServerIdentity: (host: string, cert: tls.PeerCertificate): Error | undefined => new Error("foo"),
+        checkServerIdentity: (
+            host: string,
+            cert: tls.PeerCertificate,
+        ): Error | undefined => new Error("foo"),
     });
 
     https.globalAgent.options.ca = [];
 
     {
-        function reqListener(req: http.IncomingMessage, res: http.ServerResponse): void {}
+        function reqListener(
+            req: http.IncomingMessage,
+            res: http.ServerResponse,
+        ): void {}
 
         class MyIncomingMessage extends http.IncomingMessage {
             foo: number;
         }
 
-        class MyServerResponse<Request extends http.IncomingMessage = http.IncomingMessage>
-            extends http.ServerResponse<Request>
-        {
+        class MyServerResponse<
+            Request extends http.IncomingMessage = http.IncomingMessage,
+        > extends http.ServerResponse<Request> {
             foo: string;
         }
 
@@ -77,15 +103,21 @@ import * as url from "node:url";
         server = new https.Server(reqListener);
         server = new https.Server({ IncomingMessage: MyIncomingMessage });
 
-        server = new https.Server({
-            IncomingMessage: MyIncomingMessage,
-            ServerResponse: MyServerResponse,
-        }, reqListener);
+        server = new https.Server(
+            {
+                IncomingMessage: MyIncomingMessage,
+                ServerResponse: MyServerResponse,
+            },
+            reqListener,
+        );
 
         server = https.createServer();
         server = https.createServer(reqListener);
         server = https.createServer({ IncomingMessage: MyIncomingMessage });
-        server = https.createServer({ ServerResponse: MyServerResponse }, reqListener);
+        server = https.createServer(
+            { ServerResponse: MyServerResponse },
+            reqListener,
+        );
 
         const timeout: number = server.timeout;
         const listening: boolean = server.listening;
@@ -93,7 +125,11 @@ import * as url from "node:url";
         const maxHeadersCount: number | null = server.maxHeadersCount;
         const maxRequestsPerSocket: number | null = server.maxRequestsPerSocket;
         const headersTimeout: number = server.headersTimeout;
-        server.setTimeout().setTimeout(1000).setTimeout(() => {}).setTimeout(100, () => {});
+        server
+            .setTimeout()
+            .setTimeout(1000)
+            .setTimeout(() => {})
+            .setTimeout(100, () => {});
     }
 }
 
@@ -114,13 +150,28 @@ import * as url from "node:url";
 
     function reqListener(req: MyIncomingMessage, res: MyServerResponse): void {}
 
-    let server = new https.Server({ IncomingMessage: MyIncomingMessage, ServerResponse: MyServerResponse });
-    server = new https.Server({ IncomingMessage: MyIncomingMessage, ServerResponse: MyServerResponse }, (req, res) => {
-        foo = req.foo;
-        bar = res.bar;
-        foo = res.req.foo;
+    let server = new https.Server({
+        IncomingMessage: MyIncomingMessage,
+        ServerResponse: MyServerResponse,
     });
-    server = new https.Server({ IncomingMessage: MyIncomingMessage, ServerResponse: MyServerResponse }, reqListener);
+    server = new https.Server(
+        {
+            IncomingMessage: MyIncomingMessage,
+            ServerResponse: MyServerResponse,
+        },
+        (req, res) => {
+            foo = req.foo;
+            bar = res.bar;
+            foo = res.req.foo;
+        },
+    );
+    server = new https.Server(
+        {
+            IncomingMessage: MyIncomingMessage,
+            ServerResponse: MyServerResponse,
+        },
+        reqListener,
+    );
 
     server.addListener("checkContinue", (req, res) => {
         foo = req.foo;
@@ -132,7 +183,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.addListener("connect", req => {
+    server.addListener("connect", (req) => {
         foo = req.foo;
     });
     server.addListener("request", (req, res) => {
@@ -140,7 +191,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.addListener("upgrade", req => {
+    server.addListener("upgrade", (req) => {
         foo = req.foo;
     });
 
@@ -154,7 +205,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.on("connect", req => {
+    server.on("connect", (req) => {
         foo = req.foo;
     });
     server.on("request", (req, res) => {
@@ -162,7 +213,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.on("upgrade", req => {
+    server.on("upgrade", (req) => {
         foo = req.foo;
     });
 
@@ -176,7 +227,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.once("connect", req => {
+    server.once("connect", (req) => {
         foo = req.foo;
     });
     server.once("request", (req, res) => {
@@ -184,7 +235,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.once("upgrade", req => {
+    server.once("upgrade", (req) => {
         foo = req.foo;
     });
 
@@ -198,7 +249,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.prependListener("connect", req => {
+    server.prependListener("connect", (req) => {
         foo = req.foo;
     });
     server.prependListener("request", (req, res) => {
@@ -206,7 +257,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.prependListener("upgrade", req => {
+    server.prependListener("upgrade", (req) => {
         foo = req.foo;
     });
 
@@ -220,7 +271,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.prependOnceListener("connect", req => {
+    server.prependOnceListener("connect", (req) => {
         foo = req.foo;
     });
     server.prependOnceListener("request", (req, res) => {
@@ -228,7 +279,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.prependOnceListener("upgrade", req => {
+    server.prependOnceListener("upgrade", (req) => {
         foo = req.foo;
     });
 }
@@ -307,16 +358,22 @@ import * as url from "node:url";
         _buffer = ln;
         _socket = tlsSocket;
     });
-    server = server.addListener("newSession", (sessionId, sessionData, callback) => {
-        _buffer = sessionId;
-        _buffer = sessionData;
-        sessionCallback = callback;
-    });
-    server = server.addListener("OCSPRequest", (certificate, issuer, callback) => {
-        _buffer = certificate;
-        _buffer = issuer;
-        ocspRequestCallback = callback;
-    });
+    server = server.addListener(
+        "newSession",
+        (sessionId, sessionData, callback) => {
+            _buffer = sessionId;
+            _buffer = sessionData;
+            sessionCallback = callback;
+        },
+    );
+    server = server.addListener(
+        "OCSPRequest",
+        (certificate, issuer, callback) => {
+            _buffer = certificate;
+            _buffer = issuer;
+            ocspRequestCallback = callback;
+        },
+    );
     server = server.addListener("resumeSession", (sessionId, callback) => {
         _buffer = sessionId;
         sessionCallback = callback;
@@ -331,7 +388,12 @@ import * as url from "node:url";
 
     _boolean = server.emit("keylog", _buffer, _socket);
     _boolean = server.emit("newSession", _buffer, _buffer, sessionCallback);
-    _boolean = server.emit("OCSPRequest", _buffer, _buffer, ocspRequestCallback);
+    _boolean = server.emit(
+        "OCSPRequest",
+        _buffer,
+        _buffer,
+        ocspRequestCallback,
+    );
     _boolean = server.emit("resumeSession", _buffer, sessionCallback);
     _boolean = server.emit("secureConnection", _socket);
     _boolean = server.emit("tlsClientError", _err, _socket);
@@ -392,16 +454,22 @@ import * as url from "node:url";
         _buffer = ln;
         _socket = tlsSocket;
     });
-    server = server.prependListener("newSession", (sessionId, sessionData, callback) => {
-        _buffer = sessionId;
-        _buffer = sessionData;
-        sessionCallback = callback;
-    });
-    server = server.prependListener("OCSPRequest", (certificate, issuer, callback) => {
-        _buffer = certificate;
-        _buffer = issuer;
-        ocspRequestCallback = callback;
-    });
+    server = server.prependListener(
+        "newSession",
+        (sessionId, sessionData, callback) => {
+            _buffer = sessionId;
+            _buffer = sessionData;
+            sessionCallback = callback;
+        },
+    );
+    server = server.prependListener(
+        "OCSPRequest",
+        (certificate, issuer, callback) => {
+            _buffer = certificate;
+            _buffer = issuer;
+            ocspRequestCallback = callback;
+        },
+    );
     server = server.prependListener("resumeSession", (sessionId, callback) => {
         _buffer = sessionId;
         sessionCallback = callback;
@@ -418,20 +486,29 @@ import * as url from "node:url";
         _buffer = ln;
         _socket = tlsSocket;
     });
-    server = server.prependOnceListener("newSession", (sessionId, sessionData, callback) => {
-        _buffer = sessionId;
-        _buffer = sessionData;
-        sessionCallback = callback;
-    });
-    server = server.prependOnceListener("OCSPRequest", (certificate, issuer, callback) => {
-        _buffer = certificate;
-        _buffer = issuer;
-        ocspRequestCallback = callback;
-    });
-    server = server.prependOnceListener("resumeSession", (sessionId, callback) => {
-        _buffer = sessionId;
-        sessionCallback = callback;
-    });
+    server = server.prependOnceListener(
+        "newSession",
+        (sessionId, sessionData, callback) => {
+            _buffer = sessionId;
+            _buffer = sessionData;
+            sessionCallback = callback;
+        },
+    );
+    server = server.prependOnceListener(
+        "OCSPRequest",
+        (certificate, issuer, callback) => {
+            _buffer = certificate;
+            _buffer = issuer;
+            ocspRequestCallback = callback;
+        },
+    );
+    server = server.prependOnceListener(
+        "resumeSession",
+        (sessionId, callback) => {
+            _buffer = sessionId;
+            sessionCallback = callback;
+        },
+    );
     server = server.prependOnceListener("secureConnection", (tlsSocket) => {
         _socket = tlsSocket;
     });

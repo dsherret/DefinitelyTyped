@@ -115,7 +115,9 @@ export interface ReactTagsProps {
      * A callback function to filter suggestion items with. The callback receives two arguments; a suggestion and the current query and must return a boolean value.
      * If no function is supplied the default filter is applied. Default: null.
      */
-    suggestionsFilter?: ((suggestion: Tag, query: string) => boolean) | undefined;
+    suggestionsFilter?:
+        | ((suggestion: Tag, query: string) => boolean)
+        | undefined;
     /**
      * Provide a custom tag component to render. Default: null.
      */

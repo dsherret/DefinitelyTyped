@@ -6,6 +6,8 @@ StatusBarHeight.addEventListener(onChangeHeight);
 
 StatusBarHeight.getAsync()
     .then((height: number) => console.log(`Current height: ${height}`))
-    .catch((error: Error) => console.error("Threw an error in StatusBarHeight.getAsync():", error));
+    .catch((error: Error) =>
+        console.error("Threw an error in StatusBarHeight.getAsync():", error),
+    );
 
 StatusBarHeight.removeEventListener(onChangeHeight);

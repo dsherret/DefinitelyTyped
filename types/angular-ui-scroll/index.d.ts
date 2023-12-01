@@ -19,7 +19,11 @@ declare module "angular" {
              * Important: Make sure to respect the index and count parameters of the request. The array passed to the
              * success method should have exactly count elements unless it hit eof/bof
              */
-            get(index: number, count: number, success: (results: T[]) => any): void;
+            get(
+                index: number,
+                count: number,
+                success: (results: T[]) => any,
+            ): void;
         }
 
         interface IScrollAdapter {
@@ -67,7 +71,9 @@ declare module "angular" {
              * unaffected, unless some updates were made to the item in the updater function. This can be thought of as
              * in place update.
              */
-            applyUpdates(updater: (item: any, scope: ng.IRepeatScope) => any): void;
+            applyUpdates(
+                updater: (item: any, scope: ng.IRepeatScope) => any,
+            ): void;
             /**
              * Adds new items after the last item in the buffer
              *

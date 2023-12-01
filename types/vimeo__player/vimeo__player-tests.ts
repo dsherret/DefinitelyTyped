@@ -50,10 +50,10 @@ player.off("play");
 
 player
     .loadVideo(76979871)
-    .then(id => {
+    .then((id) => {
         // the video successfully loaded
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "TypeError":
                 // the id was not a number
@@ -76,10 +76,10 @@ player
 
 player
     .loadVideo("http://vimeo.com/video/76979871")
-    .then(url => {
+    .then((url) => {
         // the video successfully loaded
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "TypeError":
                 // the id was not a number
@@ -104,10 +104,10 @@ player
     .loadVideo({
         id: 76979871,
     })
-    .then(options => {
+    .then((options) => {
         // the video successfully loaded
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "TypeError":
                 // the id was not a number
@@ -134,7 +134,7 @@ player.ready().then(() => {
 
 player
     .enableTextTrack("en")
-    .then(track => {
+    .then((track) => {
         console.log(track.label);
         console.log(track.kind);
         console.log(track.language);
@@ -142,7 +142,7 @@ player
         // track.kind = 'captions' or 'subtitles'
         // track.label = the human-readable label
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "InvalidTrackLanguageError":
                 // no track was available with the specified language
@@ -163,7 +163,7 @@ player
     .then(() => {
         // the track was disabled
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
@@ -172,7 +172,7 @@ player
     .then(() => {
         // the video was paused
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "PasswordError":
                 // the video is password-protected and the viewer needs to enter the
@@ -194,7 +194,7 @@ player
     .then(() => {
         // the video was played
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "PasswordError":
                 // the video is password-protected and the viewer needs to enter the
@@ -216,7 +216,7 @@ player
     .then(() => {
         // the video was unloaded
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
@@ -225,7 +225,7 @@ player
     .then(() => {
         // the player entered fullscreen
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
@@ -234,7 +234,7 @@ player
     .then(() => {
         // the player exits fullscreen
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
@@ -243,7 +243,7 @@ player
     .then(() => {
         // fullscreen = whether fullscreen is turned on or off
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
@@ -252,7 +252,7 @@ player
     .then(() => {
         // the player entered picture-in-picture
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
@@ -261,7 +261,7 @@ player
     .then(() => {
         // the player exits picture-in-picture
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
@@ -276,10 +276,10 @@ player
 
 player
     .getAutopause()
-    .then(autopause => {
+    .then((autopause) => {
         // autopause = whether autopause is turned on or off
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "UnsupportedError":
                 // Autopause is not supported with the current player or browser
@@ -293,10 +293,10 @@ player
 
 player
     .setAutopause(false)
-    .then(autopause => {
+    .then((autopause) => {
         // autopause was turned off
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "UnsupportedError":
                 // Autopause is not supported with the current player or browser
@@ -310,19 +310,19 @@ player
 
 player
     .getColor()
-    .then(color => {
+    .then((color) => {
         // color = the hex color of the player
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .setColor("#00adef")
-    .then(color => {
+    .then((color) => {
         // color was successfully set
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "ContrastError":
                 // the color was set, but the contrast is outside of the acceptable
@@ -345,19 +345,19 @@ player
 
 player
     .getChapters()
-    .then(chapters => {
+    .then((chapters) => {
         // chapters = an array of chapters objects
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getCurrentChapter()
-    .then(chapter => {
+    .then((chapter) => {
         // chapter = a chapter object
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
@@ -365,10 +365,10 @@ player
     .addCuePoint(15, {
         customKey: "customValue",
     })
-    .then(id => {
+    .then((id) => {
         // cue point was added successfully
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "UnsupportedError":
                 // cue points are not supported with the current player or browser
@@ -386,10 +386,10 @@ player
 
 player
     .removeCuePoint("09ecf4e4-b587-42cf-ad9f-e666b679c9ab")
-    .then(id => {
+    .then((id) => {
         // cue point was removed successfully
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "UnsupportedError":
                 // cue points are not supported with the current player or browser
@@ -407,10 +407,10 @@ player
 
 player
     .getCuePoints()
-    .then(cuePoints => {
+    .then((cuePoints) => {
         // cuePoints = an array of cue point objects
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "UnsupportedError":
                 // cue points are not supported with the current player or browser
@@ -424,19 +424,19 @@ player
 
 player
     .getCurrentTime()
-    .then(seconds => {
+    .then((seconds) => {
         // seconds = the current playback position
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .setCurrentTime(30.456)
-    .then(seconds => {
+    .then((seconds) => {
         // seconds = the actual time that the player seeked to
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "RangeError":
                 // the time was less than 0 or greater than the video’s duration
@@ -450,82 +450,82 @@ player
 
 player
     .getDuration()
-    .then(duration => {
+    .then((duration) => {
         // duration = the duration of the video in seconds
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getEnded()
-    .then(ended => {
+    .then((ended) => {
         // ended = whether or not the video has ended
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getLoop()
-    .then(loop => {
+    .then((loop) => {
         // loop = whether loop is turned on or not
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .setLoop(true)
-    .then(loop => {
+    .then((loop) => {
         // loop was turned on
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getMuted()
-    .then(muted => {
+    .then((muted) => {
         // muted = whether muted is turned on or not
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .setMuted(true)
-    .then(muted => {
+    .then((muted) => {
         // muted was turned on
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getPaused()
-    .then(paused => {
+    .then((paused) => {
         // paused = whether or not the player is paused
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getPlaybackRate()
-    .then(playbackRate => {
+    .then((playbackRate) => {
         // playbackRate = a numeric value of the current playback rate
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .setPlaybackRate(0.5)
-    .then(playbackRate => {
+    .then((playbackRate) => {
         // playback rate was set
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "RangeError":
                 // the playback rate was less than 0.5 or greater than 2
@@ -539,76 +539,78 @@ player
 
 player
     .getTextTracks()
-    .then(tracks => {
+    .then((tracks) => {
         // tracks = an array of track objects
-        tracks.forEach(track => {
+        tracks.forEach((track) => {
             console.log(track.label);
             console.log(track.kind);
             console.log(track.language);
             console.log(track.mode);
         });
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
         error.name;
     });
 
 player
     .getVideoEmbedCode()
-    .then(embedCode => {
+    .then((embedCode) => {
         // embedCode = <iframe> embed code
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getVideoId()
-    .then(id => {
+    .then((id) => {
         // id = the video id
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getVideoTitle()
-    .then(title => {
+    .then((title) => {
         // title = the title of the video
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getVideoWidth()
-    .then(width => {
+    .then((width) => {
         // width = the width of the video that is currently playing
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getVideoHeight()
-    .then(height => {
+    .then((height) => {
         // height = the height of the video that is currently playing
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
-Promise.all([player.getVideoWidth(), player.getVideoHeight()]).then(dimensions => {
-    const width = dimensions[0];
-    const height = dimensions[1];
-});
+Promise.all([player.getVideoWidth(), player.getVideoHeight()]).then(
+    (dimensions) => {
+        const width = dimensions[0];
+        const height = dimensions[1];
+    },
+);
 
 player
     .getVideoUrl()
-    .then(url => {
+    .then((url) => {
         // url = the vimeo.com url for the video
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "PrivacyError":
                 // the url isn’t available because of the video’s privacy setting
@@ -622,19 +624,19 @@ player
 
 player
     .getVolume()
-    .then(volume => {
+    .then((volume) => {
         // volume = the volume level of the player
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .setVolume(0.5)
-    .then(volume => {
+    .then((volume) => {
         // volume was set
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "RangeError":
                 // the volume was less than 0 or greater than 1
@@ -648,28 +650,28 @@ player
 
 player
     .getQualities()
-    .then(qualities => {
+    .then((qualities) => {
         // qualities = an array of quality objects
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getQuality()
-    .then(quality => {
+    .then((quality) => {
         // quality = the current selected quality
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .setQuality("540p")
-    .then(quality => {
+    .then((quality) => {
         // quality was successfully set
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "TypeError":
                 // the quality selected is not valid
@@ -683,10 +685,10 @@ player
 
 player
     .getCameraProps()
-    .then(cameraProps => {
+    .then((cameraProps) => {
         // cameraProps = the current camera properties
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
@@ -697,10 +699,10 @@ player
         roll: 180, // Number between -180 and 180.
         fov: 45, // The field of view in degrees.
     })
-    .then(cameraProps => {
+    .then((cameraProps) => {
         // cameraProps was successfully set
     })
-    .catch(error => {
+    .catch((error) => {
         switch (error.name) {
             case "RangeError":
                 // one of the camera properties is out of range
@@ -713,43 +715,43 @@ player
 
 player
     .getSeeking()
-    .then(seeking => {
+    .then((seeking) => {
         // seeking = whether the player is seeking or not
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getBuffered()
-    .then(buffered => {
+    .then((buffered) => {
         // buffered = an array of the buffered video time ranges.
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getPlayed()
-    .then(played => {
+    .then((played) => {
         // played = array values of the played video time ranges.
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 player
     .getSeekable()
-    .then(seekable => {
+    .then((seekable) => {
         // seekable = array values of the seekable video time ranges.
     })
-    .catch(error => {
+    .catch((error) => {
         // an error occurred
     });
 
 // EVENTS
 
-player.on("play", data => {
+player.on("play", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.duration;
@@ -759,7 +761,7 @@ player.on("play", data => {
     data.seconds;
 });
 
-player.on("pause", data => {
+player.on("pause", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.duration;
@@ -769,7 +771,7 @@ player.on("pause", data => {
     data.seconds;
 });
 
-player.on("ended", data => {
+player.on("ended", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.duration;
@@ -779,7 +781,7 @@ player.on("ended", data => {
     data.seconds;
 });
 
-player.on("timeupdate", data => {
+player.on("timeupdate", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.duration;
@@ -789,7 +791,7 @@ player.on("timeupdate", data => {
     data.seconds;
 });
 
-player.on("progress", data => {
+player.on("progress", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.duration;
@@ -799,7 +801,7 @@ player.on("progress", data => {
     data.seconds;
 });
 
-player.on("seeked", data => {
+player.on("seeked", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.duration;
@@ -809,7 +811,7 @@ player.on("seeked", data => {
     data.seconds;
 });
 
-player.on("texttrackchange", data => {
+player.on("texttrackchange", (data) => {
     // data is an object containing properties specific to that event
     // This can’t be asserted consistently between TypeScript versions.
     data.kind;
@@ -819,7 +821,7 @@ player.on("texttrackchange", data => {
     data.language;
 });
 
-player.on("cuechange", data => {
+player.on("cuechange", (data) => {
     // data is an object containing properties specific to that event
     console.log(data.cues); // Array of Cues
     // $ExpectType string
@@ -833,7 +835,7 @@ player.on("cuechange", data => {
     data.language;
 });
 
-player.on("cuepoint", data => {
+player.on("cuepoint", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.time;
@@ -844,13 +846,13 @@ player.on("cuepoint", data => {
     data.id;
 });
 
-player.on("volumechange", data => {
+player.on("volumechange", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.volume;
 });
 
-player.on("playbackratechange", data => {
+player.on("playbackratechange", (data) => {
     // data is an object containing properties specific to that event
     console.log(data.playbackRate);
 });
@@ -863,7 +865,7 @@ player.on("bufferend", () => {
     // no associated data with this event
 });
 
-player.on("seeking", data => {
+player.on("seeking", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.duration;
@@ -873,13 +875,13 @@ player.on("seeking", data => {
     data.seconds;
 });
 
-player.on("error", data => {
+player.on("error", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType Error
     data;
 });
 
-player.on("loaded", data => {
+player.on("loaded", (data) => {
     // data is an object containing properties specific to that event
     // $ExpectType number
     data.id;

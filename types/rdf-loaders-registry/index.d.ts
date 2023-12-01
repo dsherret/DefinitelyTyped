@@ -11,13 +11,24 @@ declare namespace LoaderRegistry {
     }
 
     interface LoaderRegistry {
-        registerLiteralLoader(datatype: string | NamedNode, loader: Loader<any, any>): void;
-        registerNodeLoader(type: string | NamedNode, loader: Loader<any, any>): void;
+        registerLiteralLoader(
+            datatype: string | NamedNode,
+            loader: Loader<any, any>,
+        ): void;
+        registerNodeLoader(
+            type: string | NamedNode,
+            loader: Loader<any, any>,
+        ): void;
         load<
             T extends any = unknown,
             // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
             TLoader extends Loader<T, TOptions> = Loader<T>,
-            TOptions extends Record<string, any> = TLoader extends Loader<T, infer U> ? U : {},
+            TOptions extends Record<string, any> = TLoader extends Loader<
+                T,
+                infer U
+            >
+                ? U
+                : {},
         >(
             node: GraphPointer,
             options?: TOptions,
@@ -27,8 +38,7 @@ declare namespace LoaderRegistry {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface LoaderRegistry extends LoaderRegistry.LoaderRegistry {
-}
+interface LoaderRegistry extends LoaderRegistry.LoaderRegistry {}
 
 declare class LoaderRegistry {
     _literalLoaders: Map<string, any>;

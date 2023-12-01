@@ -109,10 +109,12 @@ const lorem = readFileSync(__dirname + "/git.diff", "utf8");
 
 const cleanSides = screen.cleanSides;
 function expectClean(value: any) {
-    screen.cleanSides = function(el: blessed.Widgets.BlessedElement) {
+    screen.cleanSides = function (el: blessed.Widgets.BlessedElement) {
         const ret = cleanSides.apply(this, arguments);
         if (ret !== value) {
-            throw new Error(`Failed. Expected ${value} from cleanSides. Got ${ret}.`);
+            throw new Error(
+                `Failed. Expected ${value} from cleanSides. Got ${ret}.`,
+            );
         }
         return ret;
     };
@@ -147,7 +149,7 @@ const text = blessed.scrollabletext({
     vi: true,
 });
 
-text.scroll = function(offset, always) {
+text.scroll = function (offset, always) {
     const el = this;
     let value = true;
     if (el.left < 0) value = true;
@@ -530,7 +532,7 @@ const form2 = blessed.form<FormData>({
     },
 });
 
-form2.on("submit", data => {
+form2.on("submit", (data) => {
     output.setContent(JSON.stringify(data, null, 2));
     screen.render();
 });
@@ -850,48 +852,50 @@ program.hideCursor();
 
 program.setMouse({ sendFocus: true }, true);
 
-program.on("mouse", function(data) {
+program.on("mouse", function (data) {
     program.cup(data.y, data.x);
     program.write(" ");
     program.cup(0, 0);
     program.write(inspect(data));
 });
 
-program.on("resize", function(data) {
-    setTimeout(function() {
+program.on("resize", function (data) {
+    setTimeout(function () {
         program.clear();
         program.cup(0, 0);
         program.write(inspect({ cols: program.cols, rows: program.rows }));
     }, 200);
 });
 
-process.on("SIGWINCH", function(data) {
-    setTimeout(function() {
+process.on("SIGWINCH", function (data) {
+    setTimeout(function () {
         program.cup(1, 0);
-        program.write(inspect({ winch: true, cols: program.cols, rows: program.rows }));
+        program.write(
+            inspect({ winch: true, cols: program.cols, rows: program.rows }),
+        );
     }, 200);
 });
 
-program.on("focus", function(data) {
+program.on("focus", function (data) {
     program.clear();
     program.cup(0, 0);
     program.write("FOCUSIN");
 });
 
-program.on("blur", function(data) {
+program.on("blur", function (data) {
     program.clear();
     program.cup(0, 0);
     program.write("FOCUSOUT");
 });
 
-program.key(["q", "escape", "C-c"], function() {
+program.key(["q", "escape", "C-c"], function () {
     program.showCursor();
     program.disableMouse();
     program.normalBuffer();
     process.exit(0);
 });
 
-program.on("keypress", function(ch, data) {
+program.on("keypress", function (ch, data) {
     if (data.name === "mouse") return;
     program.clear();
     program.cup(0, 0);

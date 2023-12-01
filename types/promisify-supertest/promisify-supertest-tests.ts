@@ -7,9 +7,9 @@ request(app)
     .get("/")
     .expect(200)
     .end()
-    .then(function(res) {
+    .then(function (res) {
         // blah blah blah
     })
-    .catch(function(err) {
+    .catch(function (err) {
         throw err;
     });

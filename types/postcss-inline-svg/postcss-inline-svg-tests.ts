@@ -24,7 +24,7 @@ postcss([
 // Test `encode`
 postcss([
     inlineSvg({
-        encode: code => code,
+        encode: (code) => code,
     }),
 ]);
 
@@ -48,7 +48,7 @@ postcss([
     inlineSvg({
         paths: ["..", "svg"],
         xmlns: false,
-        encode: code => code,
+        encode: (code) => code,
         transform: (svg, _path) => svg,
         removeFill: true,
         removeStroke: /$data/g,

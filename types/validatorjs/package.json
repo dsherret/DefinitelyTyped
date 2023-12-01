@@ -1,25 +1,25 @@
 {
-    "private": true,
-    "name": "@types/validatorjs",
-    "version": "3.15.9999",
-    "projects": [
-        "https://github.com/skaterdav85/validatorjs"
-    ],
-    "devDependencies": {
-        "@types/validatorjs": "workspace:."
+  "private": true,
+  "name": "@types/validatorjs",
+  "version": "3.15.9999",
+  "projects": [
+    "https://github.com/skaterdav85/validatorjs"
+  ],
+  "devDependencies": {
+    "@types/validatorjs": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Karol Janyst",
+      "githubUsername": "LKay"
     },
-    "owners": [
-        {
-            "name": "Karol Janyst",
-            "githubUsername": "LKay"
-        },
-        {
-            "name": "Dan Manastireanu",
-            "githubUsername": "danmana"
-        },
-        {
-            "name": "Matías Olivera",
-            "githubUsername": "MatiasOlivera"
-        }
-    ]
+    {
+      "name": "Dan Manastireanu",
+      "githubUsername": "danmana"
+    },
+    {
+      "name": "Matías Olivera",
+      "githubUsername": "MatiasOlivera"
+    }
+  ]
 }

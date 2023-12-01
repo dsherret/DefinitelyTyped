@@ -90,8 +90,14 @@ export function adminListEnterpriseStreamsV2(
     limit: number,
 ): Promise<AdminStreamListResponse>;
 
-export function streamMembers(id: string, skip: number, limit: number): Promise<StreamMembers>;
+export function streamMembers(
+    id: string,
+    skip: number,
+    limit: number,
+): Promise<StreamMembers>;
 
-export function importMessages(messageList: ImportMessage[]): Promise<ImportMessageResult[]>;
+export function importMessages(
+    messageList: ImportMessage[],
+): Promise<ImportMessageResult[]>;
 
 export function suppressMessage(id: string): Promise<SuppressedMessage>;

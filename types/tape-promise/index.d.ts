@@ -16,7 +16,10 @@ export interface Test extends tape.Test {
      *
      * @param expected if present, must be a RegExp or Function, which is used to test the exception object.
      */
-    rejects(promise: PromiseLike<any> | (() => PromiseLike<any>), msg?: string): Promise<void>;
+    rejects(
+        promise: PromiseLike<any> | (() => PromiseLike<any>),
+        msg?: string,
+    ): Promise<void>;
     rejects(
         promise: PromiseLike<any> | (() => PromiseLike<any>),
         expected?: RegExp | Function,
@@ -26,7 +29,10 @@ export interface Test extends tape.Test {
     /**
      * Assert that the promise resolves successfully.
      */
-    doesNotReject(promise: PromiseLike<any> | (() => PromiseLike<any>), msg?: string): Promise<void>;
+    doesNotReject(
+        promise: PromiseLike<any> | (() => PromiseLike<any>),
+        msg?: string,
+    ): Promise<void>;
     doesNotReject(
         promise: PromiseLike<any> | (() => PromiseLike<any>),
         expected?: RegExp | Function,
@@ -73,4 +79,6 @@ interface AsyncTapeFunction {
 }
 // tslint:enable: unified-signatures
 
-export default function tapePromiseFactory(tapeTest: any): AsyncTapeFunction & typeof tape;
+export default function tapePromiseFactory(
+    tapeTest: any,
+): AsyncTapeFunction & typeof tape;

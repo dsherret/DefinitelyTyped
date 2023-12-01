@@ -25,7 +25,10 @@ declare class Geetest {
     constructor(options: Options);
     register(callback: (error: Error, data: Data) => void): void;
     register(): Promise<Data>;
-    validate(result: Result, callback: (error: Error, success: Success) => void): void;
+    validate(
+        result: Result,
+        callback: (error: Error, success: Success) => void,
+    ): void;
     validate(result: Result): Promise<Success>;
 }
 

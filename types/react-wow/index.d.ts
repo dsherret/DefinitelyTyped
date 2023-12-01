@@ -11,9 +11,8 @@ export interface ReactWOWProps {
      * Animation name.
      * @see https://daneden.github.io/animate.css/
      */
-    animation:
-        // Attention Seekers
-        | "bounce"
+    animation: // Attention Seekers
+    | "bounce"
         | "flash"
         | "pulse"
         | "rubberBand"
@@ -21,21 +20,18 @@ export interface ReactWOWProps {
         | "swing"
         | "tada"
         | "wobble"
-        | "jello"
-        | // Bouncing Entrances
-        "bounceIn"
+        | "jello" // Bouncing Entrances
+        | "bounceIn"
         | "bounceInDown"
         | "bounceInLeft"
         | "bounceInRight"
-        | "bounceInUp"
-        | // Bouncing Exits
-        "bounceOut"
+        | "bounceInUp" // Bouncing Exits
+        | "bounceOut"
         | "bounceOutDown"
         | "bounceOutLeft"
         | "bounceOutRight"
-        | "bounceOutUp"
-        | // Fading Entrances
-        "fadeIn"
+        | "bounceOutUp" // Fading Entrances
+        | "fadeIn"
         | "fadeInDown"
         | "fadeInDownBig"
         | "fadeInLeft"
@@ -43,9 +39,8 @@ export interface ReactWOWProps {
         | "fadeInRight"
         | "fadeInRightBig"
         | "fadeInUp"
-        | "fadeInUpBig"
-        | // Fading Exits
-        "fadeOut"
+        | "fadeInUpBig" // Fading Exits
+        | "fadeOut"
         | "fadeOutDown"
         | "fadeOutDownBig"
         | "fadeOutLeft"
@@ -53,52 +48,43 @@ export interface ReactWOWProps {
         | "fadeOutRight"
         | "fadeOutRightBig"
         | "fadeOutUp"
-        | "fadeOutUpBig"
-        | // Flippers
-        "flip"
+        | "fadeOutUpBig" // Flippers
+        | "flip"
         | "flipInX"
         | "flipInY"
         | "flipOutX"
-        | "flipOutY"
-        | // Lightspeed
-        "lightSpeedIn"
-        | "lightSpeedOut"
-        | // Rotating Entrances
-        "rotateIn"
+        | "flipOutY" // Lightspeed
+        | "lightSpeedIn"
+        | "lightSpeedOut" // Rotating Entrances
+        | "rotateIn"
         | "rotateInDownLeft"
         | "rotateInDownRight"
         | "rotateInUpLeft"
-        | "rotateInUpRight"
-        | // Rotating Exits
-        "rotateOut"
+        | "rotateInUpRight" // Rotating Exits
+        | "rotateOut"
         | "rotateOutDownLeft"
         | "rotateOutDownRight"
         | "rotateOutUpLeft"
-        | "rotateOutUpRight"
-        | // Sliding Entrances
-        "slideInUp"
+        | "rotateOutUpRight" // Sliding Entrances
+        | "slideInUp"
         | "slideInDown"
         | "slideInLeft"
-        | "slideInRight"
-        | // Sliding Exits
-        "slideOutUp"
+        | "slideInRight" // Sliding Exits
+        | "slideOutUp"
         | "slideOutDown"
         | "slideOutLeft"
-        | "slideOutRight"
-        | // Zoom Entrances
-        "zoomIn"
+        | "slideOutRight" // Zoom Entrances
+        | "zoomIn"
         | "zoomInDown"
         | "zoomInLeft"
         | "zoomInRight"
-        | "zoomInUp"
-        | // Zoom Exits
-        "zoomOut"
+        | "zoomInUp" // Zoom Exits
+        | "zoomOut"
         | "zoomOutDown"
         | "zoomOutLeft"
         | "zoomOutRight"
-        | "zoomOutUp"
-        | // Specials
-        "hinge"
+        | "zoomOutUp" // Specials
+        | "hinge"
         | "jackInTheBox"
         | "rollIn"
         | "rollOut";

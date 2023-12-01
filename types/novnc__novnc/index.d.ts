@@ -57,7 +57,9 @@ declare module "@novnc/novnc/core/rfb" {
          * specified to {@link NoVncClient}. The `detail` property is an `object` containing the
          * property `types` which is an `Array` of `string` listing the credentials that are required.
          */
-        credentialsrequired: CustomEvent<{ types: Array<keyof NoVncCredentials> }>;
+        credentialsrequired: CustomEvent<{
+            types: Array<keyof NoVncCredentials>;
+        }>;
 
         /**
          * The `securityfailure` event is fired when the handshaking process with the server fails
@@ -101,7 +103,9 @@ declare module "@novnc/novnc/core/rfb" {
          * The `detail` property is an `object` with the property `capabilities` containing the new
          * value of `capabilities`.
          */
-        capabilities: CustomEvent<{ capabilities: NoVncClient["capabilities"] }>;
+        capabilities: CustomEvent<{
+            capabilities: NoVncClient["capabilities"];
+        }>;
     }
 
     type NoVncEventType = keyof NoVncEvents;
@@ -110,11 +114,23 @@ declare module "@novnc/novnc/core/rfb" {
     class NoVncEventTarget extends EventTarget {
         protected _listeners: Map<NoVncEventType, (event: Event) => void>;
 
-        addEventListener<T extends NoVncEventType>(type: T, listener: (event: NoVncEvents[T]) => void): void;
-        addEventListener(type: string, listener: (event: CustomEvent) => void): void;
+        addEventListener<T extends NoVncEventType>(
+            type: T,
+            listener: (event: NoVncEvents[T]) => void,
+        ): void;
+        addEventListener(
+            type: string,
+            listener: (event: CustomEvent) => void,
+        ): void;
 
-        removeEventListener<T extends NoVncEventType>(type: T, listener: (event: NoVncEvents[T]) => void): void;
-        removeEventListener(type: string, listener: (event: CustomEvent) => void): void;
+        removeEventListener<T extends NoVncEventType>(
+            type: T,
+            listener: (event: NoVncEvents[T]) => void,
+        ): void;
+        removeEventListener(
+            type: string,
+            listener: (event: CustomEvent) => void,
+        ): void;
 
         dispatchEvent(event: NoVncEvent | CustomEvent): boolean;
     }
@@ -138,7 +154,11 @@ declare module "@novnc/novnc/core/rfb" {
          * @param options - An {@link NoVncOptions} specifying extra details about how the connection
          * should be made.
          */
-        constructor(target: Element, url: string | WebSocket | RTCDataChannel, options?: NoVncOptions);
+        constructor(
+            target: Element,
+            url: string | WebSocket | RTCDataChannel,
+            options?: NoVncOptions,
+        );
 
         /**
          * Is a `boolean` indicating if any events (e.g. key presses or mouse movement) should be

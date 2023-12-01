@@ -24,7 +24,7 @@ function* generatorTask() {
     return Promise.resolve(10);
 }
 const task = fiber(generatorTask())
-    .mapResult(res => 11)
+    .mapResult((res) => 11)
     .finally(() => ({}));
 
 Future.scheduler.asap(() => {});

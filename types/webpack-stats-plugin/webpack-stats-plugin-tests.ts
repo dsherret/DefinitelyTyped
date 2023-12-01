@@ -10,7 +10,7 @@ module.exports = {
         new StatsWriterPlugin({
             filename: "stats-transform.json",
             fields: null,
-            transform: data => {
+            transform: (data) => {
                 return JSON.stringify(data.assetsByChunkName, null, INDENT);
             },
         }),
@@ -50,7 +50,7 @@ module.exports = {
                         // Force async.
                         .then(
                             () =>
-                                new Promise(res => {
+                                new Promise((res) => {
                                     process.nextTick(res);
                                 }),
                         )
@@ -61,7 +61,7 @@ module.exports = {
                                 },
                                 null,
                                 INDENT,
-                            )
+                            ),
                         )
                 );
             },
@@ -76,7 +76,14 @@ module.exports = {
         }),
         new StatsWriterPlugin({
             filename: "stats-custom-stats-fields.json",
-            fields: ["errors", "warnings", "assets", "hash", "publicPath", "namedChunkGroups"],
+            fields: [
+                "errors",
+                "warnings",
+                "assets",
+                "hash",
+                "publicPath",
+                "namedChunkGroups",
+            ],
         }),
         new StatsWriterPlugin({
             filename: "stats-override-tostring-opt.json",
@@ -86,13 +93,17 @@ module.exports = {
             },
             transform(data) {
                 data.chunks = data.chunks.map((chunk: any) => {
-                    return ["rendered", "initial", "entry", "size", "names", "parents"].reduce(
-                        (obj: any, key: string) => {
-                            obj[key] = chunk[key];
-                            return obj;
-                        },
-                        {},
-                    );
+                    return [
+                        "rendered",
+                        "initial",
+                        "entry",
+                        "size",
+                        "names",
+                        "parents",
+                    ].reduce((obj: any, key: string) => {
+                        obj[key] = chunk[key];
+                        return obj;
+                    }, {});
                 });
                 return JSON.stringify(data, null, INDENT);
             },

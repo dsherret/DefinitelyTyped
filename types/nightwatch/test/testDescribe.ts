@@ -1,7 +1,7 @@
 import { ExtendDescribeThis } from "nightwatch";
 
 describe("Ecosia", () => {
-    before(browser => browser.url("https://www.ecosia.org/"));
+    before((browser) => browser.url("https://www.ecosia.org/"));
 
     it("Demo test ecosia.org", () => {
         // Setting network conditions before the actual test
@@ -26,7 +26,7 @@ describe("Ecosia", () => {
         browser.waitForElementVisible("body");
     });
 
-    after(browser => browser.end());
+    after((browser) => browser.end());
 });
 
 xdescribe("whole describle block will be skipped", () => {
@@ -43,14 +43,14 @@ interface CustomThis {
     bodySelector: string;
 }
 
-describe("Async Ecosia with custom this", function(this: ExtendDescribeThis<CustomThis>) {
+describe("Async Ecosia with custom this", function (this: ExtendDescribeThis<CustomThis>) {
     this.tags = "ecosia";
     this.desiredCapabilities = {
         browserName: "chrome",
     };
     this.retries(2);
 
-    before(function(this: ExtendDescribeThis<CustomThis>, browser, done) {
+    before(function (this: ExtendDescribeThis<CustomThis>, browser, done) {
         browser.url("https://www.ecosia.org/");
         this.bodySelector = "body";
         done();
@@ -60,5 +60,5 @@ describe("Async Ecosia with custom this", function(this: ExtendDescribeThis<Cust
         browser.waitForElementVisible(this.bodySelector!);
     });
 
-    after(browser => browser.end());
+    after((browser) => browser.end());
 });

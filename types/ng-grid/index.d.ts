@@ -26,18 +26,24 @@ declare namespace ngGrid {
         grid: IGridInstance;
         changeUserSelect(elm: angular.IAugmentedJQuery, value: string): void;
         focusCellElement($scope: IGridScope, index: number): void;
-        selectionHandlers($scope: IGridScope, elm: angular.IAugmentedJQuery): void;
+        selectionHandlers(
+            $scope: IGridScope,
+            elm: angular.IAugmentedJQuery,
+        ): void;
     }
 
     export interface IStyleProviderStatic {
-        new($scope: IGridScope, grid: IGridInstance): IStyleProvider;
+        new ($scope: IGridScope, grid: IGridInstance): IStyleProvider;
     }
 
-    export interface IStyleProvider {
-    }
+    export interface IStyleProvider {}
 
     export interface ISearchProviderStatic {
-        new($scope: IGridScope, grid: IGridInstance, $filter: angular.IFilterService): ISearchProvider;
+        new (
+            $scope: IGridScope,
+            grid: IGridInstance,
+            $filter: angular.IFilterService,
+        ): ISearchProvider;
     }
 
     export interface ISearchProvider {
@@ -47,7 +53,11 @@ declare namespace ngGrid {
     }
 
     export interface ISelectionProviderStatic {
-        new(grid: IGridInstance, $scope: IGridScope, $parse: angular.IParseService): ISelectionProvider;
+        new (
+            grid: IGridInstance,
+            $scope: IGridScope,
+            $parse: angular.IParseService,
+        ): ISelectionProvider;
     }
 
     export interface ISelectionProvider {
@@ -61,11 +71,15 @@ declare namespace ngGrid {
         getSelection(entity: any): number;
         getSelectionIndex(entity: any): number;
         setSelection(rowItem: IRow, isSelected: boolean): void;
-        toggleSelectAll(checkAll: boolean, bypass: boolean, selectFiltered: boolean): void;
+        toggleSelectAll(
+            checkAll: boolean,
+            bypass: boolean,
+            selectFiltered: boolean,
+        ): void;
     }
 
     export interface IEventProviderStatic {
-        new(
+        new (
             grid: IGridInstance,
             $scope: IGridScope,
             domUtilityService: service.IDomUtilityService,
@@ -88,7 +102,12 @@ declare namespace ngGrid {
     }
 
     export interface IAggregateStatic {
-        new(aggEntity: any, rowFactory: IRowFactory, rowHeight: number, groupInitState: boolean): IAggregate;
+        new (
+            aggEntity: any,
+            rowFactory: IRowFactory,
+            rowHeight: number,
+            groupInitState: boolean,
+        ): IAggregate;
     }
 
     export interface IAggregate {
@@ -125,7 +144,7 @@ declare namespace ngGrid {
     }
 
     export interface IRenderedRangeStatic {
-        new(top: number, bottom: number): IRenderedRange;
+        new (top: number, bottom: number): IRenderedRange;
     }
 
     export interface IRenderedRange {
@@ -157,7 +176,7 @@ declare namespace ngGrid {
     }
 
     export interface IDimensionStatic {
-        new(options: any): IDimension;
+        new (options: any): IDimension;
     }
 
     export interface IDimension {
@@ -176,7 +195,7 @@ declare namespace ngGrid {
     }
 
     export interface IRowStatic {
-        new(
+        new (
             entity: any,
             config: IRowConfig,
             selectionProvider: ISelectionProvider,
@@ -208,7 +227,7 @@ declare namespace ngGrid {
     }
 
     export interface IColumnStatic {
-        new(
+        new (
             config: IGridOptions,
             $scope: IGridScope,
             grid: IGridInstance,
@@ -352,18 +371,19 @@ declare namespace ngGrid {
     }
 
     export interface IFooterStatic {
-        new($scope: IGridScope, grid: IGridInstance): IFooter;
+        new ($scope: IGridScope, grid: IGridInstance): IFooter;
     }
 
-    export interface IFooter {
-    }
+    export interface IFooter {}
 
     export interface IGridOptions {
         /** Define an aggregate template to customize the rows when grouped. See github wiki for more details. */
         aggregateTemplate?: string | undefined;
 
         /** Callback for when you want to validate something after selection. */
-        afterSelectionChange?: ((rowItem?: IRow, event?: any) => void) | undefined;
+        afterSelectionChange?:
+            | ((rowItem?: IRow, event?: any) => void)
+            | undefined;
 
         /** Callback if you want to inspect something before selection,
         return false if you want to cancel the selection. return true otherwise.
@@ -371,7 +391,9 @@ declare namespace ngGrid {
         use rowItem.changeSelection(event) method after returning false initially.
         Note: when shift+ Selecting multiple items in the grid this will only get called
         once and the rowItem will be an array of items that are queued to be selected. */
-        beforeSelectionChange?: ((rowItem?: IRow, event?: any) => boolean) | undefined;
+        beforeSelectionChange?:
+            | ((rowItem?: IRow, event?: any) => boolean)
+            | undefined;
 
         /** checkbox templates. */
         checkboxCellTemplate?: string | undefined;
@@ -604,7 +626,11 @@ declare namespace ngGrid {
     }
 
     export interface IPlugin {
-        init(childScope: IGridScope, gridInstance: IGridInstance, services: any): void;
+        init(
+            childScope: IGridScope,
+            gridInstance: IGridInstance,
+            services: any,
+        ): void;
     }
 
     export namespace service {
@@ -612,12 +638,24 @@ declare namespace ngGrid {
             eventStorage: any;
             numberOfGrids: number;
             immediate: number;
-            AssignGridContainers($scope: IGridScope, rootel: angular.IAugmentedJQuery, grid: IGridInstance): void;
+            AssignGridContainers(
+                $scope: IGridScope,
+                rootel: angular.IAugmentedJQuery,
+                grid: IGridInstance,
+            ): void;
             getRealWidth(obj: IDimension): number;
             UpdateGridLayout($scope: IGridScope, grid: IGridInstance): void;
             setStyleText(grid: IGridInstance, css: string): void;
-            BuildStyles($scope: IGridScope, grid: IGridInstance, digest: boolean): void;
-            setColLeft(col: IColumn, colLeft: number, grid: IGridInstance): void;
+            BuildStyles(
+                $scope: IGridScope,
+                grid: IGridInstance,
+                digest: boolean,
+            ): void;
+            setColLeft(
+                col: IColumn,
+                colLeft: number,
+                grid: IGridInstance,
+            ): void;
             RebuildGrid($scope: IGridScope, grid: IGridInstance): void;
             digest($scope: IGridScope): void;
             ScrollH: number;

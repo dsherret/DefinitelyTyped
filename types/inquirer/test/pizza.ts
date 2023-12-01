@@ -92,7 +92,7 @@ const questions: DistinctQuestion[] = [
     },
 ];
 
-inquirer.prompt(questions).then(answers => {
+inquirer.prompt(questions).then((answers) => {
     console.log("\nOrder receipt:");
     console.log(JSON.stringify(answers, null, "  "));
 });

@@ -16,21 +16,23 @@ export let zoomOut: ModuleElementAnimation;
 export function createAnimation(
     oldViewEffect:
         | {
-            effect: AnimationUtils.AnimationMethods;
-            [key: string]: any;
-        }
+              effect: AnimationUtils.AnimationMethods;
+              [key: string]: any;
+          }
         | AnimationUtils.AnimationMethods
         | null,
     newViewEffect:
         | {
-            effect: AnimationUtils.AnimationMethods;
-            [key: string]: any;
-        }
+              effect: AnimationUtils.AnimationMethods;
+              [key: string]: any;
+          }
         | AnimationUtils.AnimationMethods
         | null,
     newViewOnTop: boolean,
 ): ModuleElementAnimation;
-export function switcher(callback: (param0: SwitcherCallBackParam) => Animations): ModuleElementAnimation;
+export function switcher(
+    callback: (param0: SwitcherCallBackParam) => Animations,
+): ModuleElementAnimation;
 export type Animations =
     | "coverStart"
     | "coverUp"

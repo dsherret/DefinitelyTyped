@@ -36,7 +36,9 @@ declare namespace accounting {
         ): string;
         formatMoney(
             number: number | string,
-            options: CurrencySettings<string> | CurrencySettings<CurrencyFormat>,
+            options:
+                | CurrencySettings<string>
+                | CurrencySettings<CurrencyFormat>,
         ): string;
 
         formatMoney(
@@ -47,7 +49,12 @@ declare namespace accounting {
             decimal?: string,
             format?: string,
         ): string[];
-        formatMoney(numbers: number[], options: CurrencySettings<string> | CurrencySettings<CurrencyFormat>): string[];
+        formatMoney(
+            numbers: number[],
+            options:
+                | CurrencySettings<string>
+                | CurrencySettings<CurrencyFormat>,
+        ): string[];
 
         // generic case (any array of numbers)
         formatMoney(
@@ -58,7 +65,12 @@ declare namespace accounting {
             decimal?: string,
             format?: string,
         ): any[];
-        formatMoney(numbers: any[], options: CurrencySettings<string> | CurrencySettings<CurrencyFormat>): any[];
+        formatMoney(
+            numbers: any[],
+            options:
+                | CurrencySettings<string>
+                | CurrencySettings<CurrencyFormat>,
+        ): any[];
 
         // format a list of values for column-display
         formatColumn(
@@ -69,7 +81,12 @@ declare namespace accounting {
             decimal?: string,
             format?: string,
         ): string[];
-        formatColumn(numbers: number[], options: CurrencySettings<string> | CurrencySettings<CurrencyFormat>): string[];
+        formatColumn(
+            numbers: number[],
+            options:
+                | CurrencySettings<string>
+                | CurrencySettings<CurrencyFormat>,
+        ): string[];
 
         formatColumn(
             numbers: number[][],
@@ -81,17 +98,34 @@ declare namespace accounting {
         ): string[][];
         formatColumn(
             numbers: number[][],
-            options: CurrencySettings<string> | CurrencySettings<CurrencyFormat>,
+            options:
+                | CurrencySettings<string>
+                | CurrencySettings<CurrencyFormat>,
         ): string[][];
 
         // format a number with custom precision and localisation
-        formatNumber(number: number, precision?: number, thousand?: string, decimal?: string): string;
+        formatNumber(
+            number: number,
+            precision?: number,
+            thousand?: string,
+            decimal?: string,
+        ): string;
         formatNumber(number: number, options: NumberSettings): string;
 
-        formatNumber(number: number[], precision?: number, thousand?: string, decimal?: string): string[];
+        formatNumber(
+            number: number[],
+            precision?: number,
+            thousand?: string,
+            decimal?: string,
+        ): string[];
         formatNumber(number: number[], options: NumberSettings): string[];
 
-        formatNumber(number: any[], precision?: number, thousand?: string, decimal?: string): any[];
+        formatNumber(
+            number: any[],
+            precision?: number,
+            thousand?: string,
+            decimal?: string,
+        ): any[];
         formatNumber(number: any[], options: NumberSettings): any[];
 
         // better rounding for floating point numbers

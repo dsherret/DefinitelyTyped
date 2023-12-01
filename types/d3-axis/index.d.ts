@@ -266,7 +266,9 @@ export interface Axis<Domain> {
  *
  * @param scale The scale to be used for axis generation.
  */
-export function axisTop<Domain extends AxisDomain>(scale: AxisScale<Domain>): Axis<Domain>;
+export function axisTop<Domain extends AxisDomain>(
+    scale: AxisScale<Domain>,
+): Axis<Domain>;
 
 /**
  * Constructs a new right-oriented axis generator for the given scale, with empty tick arguments,
@@ -274,7 +276,9 @@ export function axisTop<Domain extends AxisDomain>(scale: AxisScale<Domain>): Ax
  *
  * @param scale The scale to be used for axis generation.
  */
-export function axisRight<Domain extends AxisDomain>(scale: AxisScale<Domain>): Axis<Domain>;
+export function axisRight<Domain extends AxisDomain>(
+    scale: AxisScale<Domain>,
+): Axis<Domain>;
 
 /**
  * Constructs a new bottom-oriented axis generator for the given scale, with empty tick arguments,
@@ -282,7 +286,9 @@ export function axisRight<Domain extends AxisDomain>(scale: AxisScale<Domain>): 
  *
  * @param scale The scale to be used for axis generation.
  */
-export function axisBottom<Domain extends AxisDomain>(scale: AxisScale<Domain>): Axis<Domain>;
+export function axisBottom<Domain extends AxisDomain>(
+    scale: AxisScale<Domain>,
+): Axis<Domain>;
 
 /**
  * Constructs a new left-oriented axis generator for the given scale, with empty tick arguments,
@@ -290,4 +296,6 @@ export function axisBottom<Domain extends AxisDomain>(scale: AxisScale<Domain>):
  *
  * @param scale The scale to be used for axis generation.
  */
-export function axisLeft<Domain extends AxisDomain>(scale: AxisScale<Domain>): Axis<Domain>;
+export function axisLeft<Domain extends AxisDomain>(
+    scale: AxisScale<Domain>,
+): Axis<Domain>;

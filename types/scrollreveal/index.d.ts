@@ -46,8 +46,13 @@ declare namespace scrollReveal {
         (options: ScrollRevealObjectOptions): ScrollRevealObject;
         clean(selector: string | HTMLElement | NodeListOf<Element>): void;
         destroy(): void;
-        reveal(selector: string | HTMLElement | NodeListOf<Element>): ScrollRevealObject;
-        reveal(selector: string | HTMLElement | NodeListOf<Element>, interval: number): ScrollRevealObject;
+        reveal(
+            selector: string | HTMLElement | NodeListOf<Element>,
+        ): ScrollRevealObject;
+        reveal(
+            selector: string | HTMLElement | NodeListOf<Element>,
+            interval: number,
+        ): ScrollRevealObject;
         reveal(
             selector: string | HTMLElement | NodeListOf<Element>,
             options: ScrollRevealObjectOptions,

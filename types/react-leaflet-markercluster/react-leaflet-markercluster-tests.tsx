@@ -26,7 +26,9 @@ const MarkerCluster = (
             weight: 9,
         }}
         spiderfyDistanceMultiplier={1}
-        iconCreateFunction={cluster => Leaflet.divIcon({ html: `<b>${cluster.getChildCount()}</b>` })}
+        iconCreateFunction={(cluster) =>
+            Leaflet.divIcon({ html: `<b>${cluster.getChildCount()}</b>` })
+        }
         spiderfyShapePositions={(count, centerPt) => {
             const distanceFromCenter = 35;
             const markerDistance = 45;
@@ -38,7 +40,10 @@ const MarkerCluster = (
             res.length = count;
 
             for (i = count - 1; i >= 0; i--) {
-                res[i] = new Leaflet.Point(centerPt.x + distanceFromCenter, lineStart + markerDistance * i);
+                res[i] = new Leaflet.Point(
+                    centerPt.x + distanceFromCenter,
+                    lineStart + markerDistance * i,
+                );
             }
             return res;
         }}

@@ -5,10 +5,7 @@ const Interval = createInterval();
 
 // By default it will manage integers:
 // (0,100] — the numbers 0 to 100, excluding 0
-new Interval(
-    Interval.exclusiveEndpoint(0),
-    Interval.inclusiveEndpoint(100),
-);
+new Interval(Interval.exclusiveEndpoint(0), Interval.inclusiveEndpoint(100));
 
 // You can provide a custom sort function to support a different data type:
 const DateInterval = createInterval<Date>(function sortDates(a, b) {
@@ -17,12 +14,8 @@ const DateInterval = createInterval<Date>(function sortDates(a, b) {
 
 // [12 hours ago,now] — 12 hours ago until now
 new DateInterval(
-    DateInterval.incEnd(
-        new Date(Date.now() - (1000 * 60 * 60 * 12)),
-    ),
-    DateInterval.incEnd(
-        new Date(Date.now()),
-    ),
+    DateInterval.incEnd(new Date(Date.now() - 1000 * 60 * 60 * 12)),
+    DateInterval.incEnd(new Date(Date.now())),
 );
 
 // You can do calculations with two intervals:

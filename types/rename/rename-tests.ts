@@ -33,14 +33,17 @@ function transformer(obj: rename.FileObject): rename.Specification {
 rename({ basename: "a", extname: ".js" }, transformer);
 rename({ basename: "a", extname: ".js", hash: "-123" }, transformer);
 
-rename({
-    basename: "c",
-    extname: ".js",
-    hash: "111",
-}, {
-    // tslint:disable-next-line no-invalid-template-strings
-    suffix: "-${hash}",
-});
+rename(
+    {
+        basename: "c",
+        extname: ".js",
+        hash: "111",
+    },
+    {
+        // tslint:disable-next-line no-invalid-template-strings
+        suffix: "-${hash}",
+    },
+);
 
 rename.parse("p.js"); // $ExpectType ParsedFileObject
 rename.parse({ dirname: "." }); // $ExpectType ParsedFileObject

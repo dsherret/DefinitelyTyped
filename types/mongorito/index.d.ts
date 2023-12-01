@@ -10,19 +10,24 @@ import {
 
 export { DBRef, Long, MaxKey, MinKey, ObjectId, Timestamp } from "mongodb";
 
-export type Class<T> = new(...args: any[]) => T;
+export type Class<T> = new (...args: any[]) => T;
 export type ModelClass = Class<Model>;
 
-export class MQuery {
-}
+export class MQuery {}
 
 // "extends MQuery": not actually inheritance, but more easy to implement
 export class Query extends MQuery {
     static find<T extends Model>(this: Class<T>, query?: object): Promise<T[]>;
 
-    static findOne<T extends Model>(this: Class<T>, query?: object): Promise<T | null>;
+    static findOne<T extends Model>(
+        this: Class<T>,
+        query?: object,
+    ): Promise<T | null>;
 
-    static findById<T extends Model>(this: Class<T>, id: object | string): Promise<T | null>;
+    static findById<T extends Model>(
+        this: Class<T>,
+        id: object | string,
+    ): Promise<T | null>;
 
     static count(query?: object): Promise<number>;
 
@@ -58,25 +63,35 @@ export class Model extends Query {
 
     static modifyReducer(reducerModifier: ReducerModifier): void;
 
-    static query(method: string, query: Array<[string, any]>): Promise<object[]>;
+    static query(
+        method: string,
+        query: Array<[string, any]>,
+    ): Promise<object[]>;
 
     /**
      * @see mongodb.Collection#listIndexes()
      * @see mongodb.CommandCursor#toArray()
      */
-    static listIndexes(
-        options?: { batchSize?: number | undefined; readPreference?: ReadPreference | string | undefined },
-    ): Promise<any[]>;
+    static listIndexes(options?: {
+        batchSize?: number | undefined;
+        readPreference?: ReadPreference | string | undefined;
+    }): Promise<any[]>;
 
     /**
      * @see mongodb.Collection#createIndex()
      */
-    static createIndex(fieldOrSpec: any, options?: CreateIndexesOptions): Promise<string>;
+    static createIndex(
+        fieldOrSpec: any,
+        options?: CreateIndexesOptions,
+    ): Promise<string>;
 
     /**
      * @see mongodb.Collection#dropIndex()
      */
-    static dropIndex(indexName: string, options?: DropIndexesOptions): Promise<object>;
+    static dropIndex(
+        indexName: string,
+        options?: DropIndexesOptions,
+    ): Promise<object>;
 
     static embeds(key: string, model: ModelClass): void;
 
@@ -266,7 +281,9 @@ export type ReducerState = DefaultReducer & Map<any, Reducer>;
 
 export type ReducerModifier = (reducerState: ReducerState) => ReducerState;
 
-export type Plugin = (modelClass: ModelClass) => (store: PluginStore) => (next: PluginNext) => (action: Action) => void;
+export type Plugin = (
+    modelClass: ModelClass,
+) => (store: PluginStore) => (next: PluginNext) => (action: Action) => void;
 
 export enum DatabaseState {
     STATE_CONNECTED = 0,

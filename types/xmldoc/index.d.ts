@@ -21,11 +21,24 @@ export class XmlElement {
     position: number;
     startTagPosition: number;
 
-    eachChild(iterator: (child: XmlElement, index: number, array: XmlNode[]) => void): void;
-    eachChild<T>(iterator: (this: T, child: XmlElement, index: number, array: XmlNode[]) => void, context: T): void;
+    eachChild(
+        iterator: (child: XmlElement, index: number, array: XmlNode[]) => void,
+    ): void;
+    eachChild<T>(
+        iterator: (
+            this: T,
+            child: XmlElement,
+            index: number,
+            array: XmlNode[],
+        ) => void,
+        context: T,
+    ): void;
     childNamed(name: string): XmlElement | undefined;
     childrenNamed(name: string): XmlElement[];
-    childWithAttribute(name: string, value?: string | null): XmlElement | undefined;
+    childWithAttribute(
+        name: string,
+        value?: string | null,
+    ): XmlElement | undefined;
     descendantWithPath(path: string): XmlElement | undefined;
     valueWithPath(path: string): string | undefined;
     toString(opts?: XmlOptions): string;

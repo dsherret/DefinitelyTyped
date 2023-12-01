@@ -2,7 +2,10 @@ import * as superagent from "superagent";
 
 export = supertest;
 
-declare function supertest(app: any, options?: supertest.Options): supertest.SuperTest<supertest.Test>;
+declare function supertest(
+    app: any,
+    options?: supertest.Options,
+): supertest.SuperTest<supertest.Test>;
 declare namespace supertest {
     interface Response extends superagent.Response {}
 
@@ -15,7 +18,10 @@ declare namespace supertest {
         serverAddress(app: any, path: string): string;
         expect(status: number, callback?: CallbackHandler): this;
         expect(status: number, body: any, callback?: CallbackHandler): this;
-        expect(checker: (res: Response) => any, callback?: CallbackHandler): this;
+        expect(
+            checker: (res: Response) => any,
+            callback?: CallbackHandler,
+        ): this;
         expect(body: string, callback?: CallbackHandler): this;
         expect(body: RegExp, callback?: CallbackHandler): this;
         expect(body: Object, callback?: CallbackHandler): this;
@@ -33,13 +39,14 @@ declare namespace supertest {
     }
     function agent(app?: any, options?: AgentOptions): SuperAgentTest;
 
-    interface SuperTest<T extends superagent.SuperAgentRequest> extends superagent.SuperAgent<T> {}
-    interface SuperTestWithHost<T extends superagent.SuperAgentRequest> extends SuperTest<T> {
+    interface SuperTest<T extends superagent.SuperAgentRequest>
+        extends superagent.SuperAgent<T> {}
+    interface SuperTestWithHost<T extends superagent.SuperAgentRequest>
+        extends SuperTest<T> {
         host(host: string): this;
     }
-    type SuperAgentTest =
-        & SuperTestWithHost<Test>
-        & Pick<
+    type SuperAgentTest = SuperTestWithHost<Test> &
+        Pick<
             Request,
             | "use"
             | "on"

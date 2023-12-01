@@ -24,7 +24,13 @@ export default class Spring extends Behaviour {
     /**
      * Resets the behaviour properties.
      */
-    reset(x?: number, y?: number, z?: number, spring?: number, friction?: number): void;
+    reset(
+        x?: number,
+        y?: number,
+        z?: number,
+        spring?: number,
+        friction?: number,
+    ): void;
     reset(life?: number, easing?: EasingFunction): void;
 
     /**

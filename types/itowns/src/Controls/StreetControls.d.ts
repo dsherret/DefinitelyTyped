@@ -1,6 +1,8 @@
 import * as THREE from "three";
 import View from "../Core/View";
-import FirstPersonControls, { FirstPersonControlsOptions } from "./FirstPersonControls";
+import FirstPersonControls, {
+    FirstPersonControlsOptions,
+} from "./FirstPersonControls";
 
 interface StreetControls {
     wallMaxDistance: number;

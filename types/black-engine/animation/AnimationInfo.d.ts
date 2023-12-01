@@ -1,5 +1,11 @@
 export class AnimationInfo {
-    constructor(controller: AnimationController, name: string, frames: Texture[], fps?: number, loop?: boolean);
+    constructor(
+        controller: AnimationController,
+        name: string,
+        frames: Texture[],
+        fps?: number,
+        loop?: boolean,
+    );
     private mController;
     private mName;
     private mFrames;

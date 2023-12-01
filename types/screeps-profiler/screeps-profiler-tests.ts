@@ -1,15 +1,13 @@
 import profiler = require("screeps-profiler");
 
-function testFunction() {
-}
+function testFunction() {}
 
 class TestClass {
     private readonly dummy: string;
 }
 
 const testObj = {
-    foo() {
-    },
+    foo() {},
 };
 
 profiler.enable();

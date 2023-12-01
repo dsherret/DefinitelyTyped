@@ -11,7 +11,14 @@ import {
     ShallowWrapper,
 } from "enzyme";
 import * as React from "react";
-import { Component, ComponentClass, FunctionComponent, HTMLAttributes, ReactElement, ReactNode } from "react";
+import {
+    Component,
+    ComponentClass,
+    FunctionComponent,
+    HTMLAttributes,
+    ReactElement,
+    ReactNode,
+} from "react";
 
 // Help classes/interfaces
 interface MyComponentProps {
@@ -117,21 +124,20 @@ function configureTest() {
     const configureAdapter: { adapter: EnzymeAdapter } = { adapter: {} };
     configure(configureAdapter);
 
-    const configureAdapterAndDisableLifecycle:
-        & typeof configureAdapter
-        & Pick<ShallowRendererProps, "disableLifecycleMethods"> = {
-            adapter: {},
-            disableLifecycleMethods: true,
-        };
+    const configureAdapterAndDisableLifecycle: typeof configureAdapter &
+        Pick<ShallowRendererProps, "disableLifecycleMethods"> = {
+        adapter: {},
+        disableLifecycleMethods: true,
+    };
     configure(configureAdapterAndDisableLifecycle);
 }
 
 // ShallowWrapper
 function ShallowWrapperTest() {
-    let shallowWrapper: ShallowWrapper<MyComponentProps, MyComponentState> = shallow<
-        MyComponentProps,
-        MyComponentState
-    >(<MyComponent stringProp="value" numberProp={1} />);
+    let shallowWrapper: ShallowWrapper<MyComponentProps, MyComponentState> =
+        shallow<MyComponentProps, MyComponentState>(
+            <MyComponent stringProp="value" numberProp={1} />,
+        );
 
     let reactElement: ReactElement;
     let reactElements: ReactElement[];
@@ -146,7 +152,9 @@ function ShallowWrapperTest() {
 
     // testStatePropsInstanceFn(shallow<MyComponent>(<MyComponent stringProp="value" numberProp={1}/>));
     function testStatePropsInstance() {
-        const wrapper = shallow<MyComponent>(<MyComponent stringProp="value" numberProp={1} />);
+        const wrapper = shallow<MyComponent>(
+            <MyComponent stringProp="value" numberProp={1} />,
+        );
 
         const {
             numberProp, // $ExpectType number
@@ -191,35 +199,47 @@ function ShallowWrapperTest() {
 
     function test_find() {
         anotherComponentWrapper = shallowWrapper.find(AnotherComponent);
-        anotherStatelessWrapper = shallowWrapper.find(AnotherStatelessComponent);
+        anotherStatelessWrapper = shallowWrapper.find(
+            AnotherStatelessComponent,
+        );
         shallowWrapper = shallowWrapper.find({ prop: "value" });
         elementWrapper = shallowWrapper.find(".selector");
         // Since AnotherComponent does not have a constructor, it cannot match the
         // previous selector overload of ComponentClass { new(props?, contenxt? ) }
-        const s1: EnzymeComponentClass<AnotherComponentProps> = AnotherComponent;
+        const s1: EnzymeComponentClass<AnotherComponentProps> =
+            AnotherComponent;
     }
 
     function test_invoke() {
-        CommonWrapperHelper.test_invoke(shallow<OptionalFunctionProp>(
-            <MyFunctionPropComponent
-                requiredFunctionProp={() => {}}
-                singleArg={() => {}}
-                multipleArg={() => {}}
-                multipleReturn={() => {}}
-                nonFun={1}
-            />,
-        ));
+        CommonWrapperHelper.test_invoke(
+            shallow<OptionalFunctionProp>(
+                <MyFunctionPropComponent
+                    requiredFunctionProp={() => {}}
+                    singleArg={() => {}}
+                    multipleArg={() => {}}
+                    multipleReturn={() => {}}
+                    nonFun={1}
+                />,
+            ),
+        );
     }
 
     function test_findWhere() {
-        shallowWrapper = shallowWrapper.findWhere((
-            aShallowWrapper: ShallowWrapper<MyComponentProps, MyComponentState>,
-        ) => true);
+        shallowWrapper = shallowWrapper.findWhere(
+            (
+                aShallowWrapper: ShallowWrapper<
+                    MyComponentProps,
+                    MyComponentState
+                >,
+            ) => true,
+        );
     }
 
     function test_filter() {
         anotherComponentWrapper = shallowWrapper.filter(AnotherComponent);
-        anotherStatelessWrapper = shallowWrapper.filter(AnotherStatelessComponent);
+        anotherStatelessWrapper = shallowWrapper.filter(
+            AnotherStatelessComponent,
+        );
         // NOTE: The following calls to filter do not narrow down the possible type of the result based
         //       on the type of the param, so the return type should not be different than the original
         //       "this". This is a special case for "filter" vs other methods like "find", because "filter"
@@ -230,7 +250,7 @@ function ShallowWrapperTest() {
     }
 
     function test_filterWhere() {
-        shallowWrapper = shallowWrapper.filterWhere(wrapper => {
+        shallowWrapper = shallowWrapper.filterWhere((wrapper) => {
             wrapper.props().stringProp;
             return true;
         });
@@ -245,11 +265,15 @@ function ShallowWrapperTest() {
     }
 
     function test_containsAllMatchingElements() {
-        boolVal = shallowWrapper.containsAllMatchingElements([<div className="foo bar" />]);
+        boolVal = shallowWrapper.containsAllMatchingElements([
+            <div className="foo bar" />,
+        ]);
     }
 
     function test_containsAnyMatchingElement() {
-        boolVal = shallowWrapper.containsAnyMatchingElements([<div className="foo bar" />]);
+        boolVal = shallowWrapper.containsAnyMatchingElements([
+            <div className="foo bar" />,
+        ]);
     }
 
     function test_dive() {
@@ -261,10 +285,13 @@ function ShallowWrapperTest() {
             bar: any;
         }
 
-        const diveWrapper: ShallowWrapper<TmpProps, TmpState> = shallowWrapper.dive<TmpProps, TmpState>({
+        const diveWrapper: ShallowWrapper<TmpProps, TmpState> =
+            shallowWrapper.dive<TmpProps, TmpState>({
+                context: { foobar: "barfoo" },
+            });
+        const diveWrapper2 = shallowWrapper.dive<MyComponent>({
             context: { foobar: "barfoo" },
         });
-        const diveWrapper2 = shallowWrapper.dive<MyComponent>({ context: { foobar: "barfoo" } });
     }
 
     function test_hostNodes() {
@@ -302,13 +329,16 @@ function ShallowWrapperTest() {
     function test_children() {
         shallowWrapper = shallowWrapper.children();
         anotherComponentWrapper = shallowWrapper.children(AnotherComponent);
-        anotherStatelessWrapper = shallowWrapper.children(AnotherStatelessComponent);
+        anotherStatelessWrapper = shallowWrapper.children(
+            AnotherStatelessComponent,
+        );
         shallowWrapper = shallowWrapper.children({ prop: "value" });
         elementWrapper = shallowWrapper.children(".selector");
     }
 
     function test_childAt() {
-        const childWrapper: ShallowWrapper<any, any> = shallowWrapper.childAt(0);
+        const childWrapper: ShallowWrapper<any, any> =
+            shallowWrapper.childAt(0);
 
         interface TmpType1 {
             foo: any;
@@ -318,13 +348,16 @@ function ShallowWrapperTest() {
             bar: any;
         }
 
-        const childWrapper2: ShallowWrapper<TmpType1, TmpType2> = shallowWrapper.childAt<TmpType1, TmpType2>(0);
+        const childWrapper2: ShallowWrapper<TmpType1, TmpType2> =
+            shallowWrapper.childAt<TmpType1, TmpType2>(0);
     }
 
     function test_parents() {
         shallowWrapper = shallowWrapper.parents();
         anotherComponentWrapper = shallowWrapper.parents(AnotherComponent);
-        anotherStatelessWrapper = shallowWrapper.parents(AnotherStatelessComponent);
+        anotherStatelessWrapper = shallowWrapper.parents(
+            AnotherStatelessComponent,
+        );
         shallowWrapper = shallowWrapper.parents({ prop: "myprop" });
         elementWrapper = shallowWrapper.parents(".selector");
     }
@@ -335,7 +368,9 @@ function ShallowWrapperTest() {
 
     function test_closest() {
         anotherComponentWrapper = shallowWrapper.closest(AnotherComponent);
-        anotherStatelessWrapper = shallowWrapper.closest(AnotherStatelessComponent);
+        anotherStatelessWrapper = shallowWrapper.closest(
+            AnotherStatelessComponent,
+        );
         shallowWrapper = shallowWrapper.closest({ prop: "myprop" });
         elementWrapper = shallowWrapper.closest(".selector");
     }
@@ -417,9 +452,15 @@ function ShallowWrapperTest() {
 
     function test_props() {
         const props: MyComponentProps = shallowWrapper.props();
-        const props2: AnotherComponentProps = shallowWrapper.find(AnotherComponent).props();
-        const props3: AnotherStatelessProps = shallowWrapper.find(AnotherStatelessComponent).props();
-        const props4: HTMLAttributes<any> = shallowWrapper.find(".selector").props();
+        const props2: AnotherComponentProps = shallowWrapper
+            .find(AnotherComponent)
+            .props();
+        const props3: AnotherStatelessProps = shallowWrapper
+            .find(AnotherStatelessComponent)
+            .props();
+        const props4: HTMLAttributes<any> = shallowWrapper
+            .find(".selector")
+            .props();
     }
 
     function test_prop() {
@@ -443,12 +484,17 @@ function ShallowWrapperTest() {
 
     function test_setState() {
         shallowWrapper = shallowWrapper.setState({ stateProperty: "state" });
-        shallowWrapper = shallowWrapper.setState({ stateProperty: "state" }, () => console.log("state updated"));
+        shallowWrapper = shallowWrapper.setState(
+            { stateProperty: "state" },
+            () => console.log("state updated"),
+        );
     }
 
     function test_setProps() {
         shallowWrapper = shallowWrapper.setProps({ stringProp: "foo" });
-        shallowWrapper = shallowWrapper.setProps({ stringProp: "foo" }, () => console.log("props update"));
+        shallowWrapper = shallowWrapper.setProps({ stringProp: "foo" }, () =>
+            console.log("props update"),
+        );
     }
 
     function test_setContext() {
@@ -459,10 +505,14 @@ function ShallowWrapperTest() {
         const myComponent = shallowWrapper.instance() as MyComponent;
         myComponent.handleEcho("it works");
 
-        const wrapper = shallow<MyComponent>(<MyComponent stringProp="value" numberProp={1} />);
+        const wrapper = shallow<MyComponent>(
+            <MyComponent stringProp="value" numberProp={1} />,
+        );
         wrapper.instance().handleEcho("it works");
 
-        const wrapperPropsOnly = shallow<MyComponentProps>(<MyComponent stringProp="value" numberProp={1} />);
+        const wrapperPropsOnly = shallow<MyComponentProps>(
+            <MyComponent stringProp="value" numberProp={1} />,
+        );
         wrapperPropsOnly.setProps({ stringProp: "new value" });
         // @ts-expect-error
         wrapperPropsOnly.instance().handleEcho;
@@ -480,8 +530,10 @@ function ShallowWrapperTest() {
     }
 
     function test_type() {
-        const type: string | FunctionComponent<MyComponentProps> | ComponentClass<MyComponentProps> = shallowWrapper
-            .type();
+        const type:
+            | string
+            | FunctionComponent<MyComponentProps>
+            | ComponentClass<MyComponentProps> = shallowWrapper.type();
     }
 
     function test_name() {
@@ -489,22 +541,32 @@ function ShallowWrapperTest() {
     }
 
     function test_forEach() {
-        shallowWrapper = shallowWrapper.forEach(wrapper => wrapper.shallow().props().stringProp);
+        shallowWrapper = shallowWrapper.forEach(
+            (wrapper) => wrapper.shallow().props().stringProp,
+        );
     }
 
     function test_map() {
-        const arrayNumbers: number[] = shallowWrapper.map(wrapper => wrapper.props().numberProp);
+        const arrayNumbers: number[] = shallowWrapper.map(
+            (wrapper) => wrapper.props().numberProp,
+        );
     }
 
     function test_reduce() {
         const total: number = shallowWrapper.reduce(
-            (amount: number, n: ShallowWrapper<MyComponentProps, MyComponentState>) => amount + n.props().numberProp,
+            (
+                amount: number,
+                n: ShallowWrapper<MyComponentProps, MyComponentState>,
+            ) => amount + n.props().numberProp,
         );
     }
 
     function test_reduceRight() {
         const total: number = shallowWrapper.reduceRight<number>(
-            (amount: number, n: ShallowWrapper<MyComponentProps, MyComponentState>) => amount + n.prop("numberProp"),
+            (
+                amount: number,
+                n: ShallowWrapper<MyComponentProps, MyComponentState>,
+            ) => amount + n.prop("numberProp"),
         );
     }
 
@@ -516,8 +578,13 @@ function ShallowWrapperTest() {
     }
 
     function test_someWhere() {
-        boolVal = shallowWrapper.someWhere((aShallowWrapper: ShallowWrapper<MyComponentProps, MyComponentState>) =>
-            true
+        boolVal = shallowWrapper.someWhere(
+            (
+                aShallowWrapper: ShallowWrapper<
+                    MyComponentProps,
+                    MyComponentState
+                >,
+            ) => true,
         );
     }
 
@@ -529,8 +596,13 @@ function ShallowWrapperTest() {
     }
 
     function test_everyWhere() {
-        boolVal = shallowWrapper.everyWhere((aShallowWrapper: ShallowWrapper<MyComponentProps, MyComponentState>) =>
-            true
+        boolVal = shallowWrapper.everyWhere(
+            (
+                aShallowWrapper: ShallowWrapper<
+                    MyComponentProps,
+                    MyComponentState
+                >,
+            ) => true,
         );
     }
 
@@ -544,14 +616,18 @@ function ShallowWrapperTest() {
 
     function test_constructor() {
         let anyWrapper: ShallowWrapper;
-        anyWrapper = new ShallowWrapper(<MyComponent stringProp="1" numberProp={1} />);
+        anyWrapper = new ShallowWrapper(
+            <MyComponent stringProp="1" numberProp={1} />,
+        );
         shallowWrapper = new ShallowWrapper<MyComponentProps, MyComponentState>(
             <MyComponent stringProp="1" numberProp={1} />,
         );
-        shallowWrapper = new ShallowWrapper<MyComponentProps, MyComponentState>([
-            <MyComponent stringProp="1" numberProp={1} />,
-            <MyComponent stringProp="1" numberProp={1} />,
-        ]);
+        shallowWrapper = new ShallowWrapper<MyComponentProps, MyComponentState>(
+            [
+                <MyComponent stringProp="1" numberProp={1} />,
+                <MyComponent stringProp="1" numberProp={1} />,
+            ],
+        );
         shallowWrapper = new ShallowWrapper<MyComponentProps, MyComponentState>(
             <MyComponent stringProp="1" numberProp={1} />,
             shallowWrapper,
@@ -570,7 +646,11 @@ function ShallowWrapperTest() {
 
     function test_renderProp() {
         let shallowWrapper = new ShallowWrapper<MyRenderPropProps>(
-            <MyRenderPropComponent children={(params) => <div className={params} />} />,
+            (
+                <MyRenderPropComponent
+                    children={(params) => <div className={params} />}
+                />
+            ),
         );
         shallowWrapper = shallowWrapper.renderProp("children")("test");
     }
@@ -586,7 +666,9 @@ function ShallowWrapperTest() {
             );
         }
         const shallowWrapper = shallow<MyRenderPropProps>(
-            <MyRenderPropComponent children={(params) => <div className={params} />} />,
+            <MyRenderPropComponent
+                children={(params) => <div className={params} />}
+            />,
             {
                 wrappingComponent: MyProvider,
             },
@@ -598,9 +680,10 @@ function ShallowWrapperTest() {
 
 // ReactWrapper
 function ReactWrapperTest() {
-    let reactWrapper: ReactWrapper<MyComponentProps, MyComponentState> = mount<MyComponentProps, MyComponentState>(
-        <MyComponent stringProp="value" numberProp={1} />,
-    );
+    let reactWrapper: ReactWrapper<MyComponentProps, MyComponentState> = mount<
+        MyComponentProps,
+        MyComponentState
+    >(<MyComponent stringProp="value" numberProp={1} />);
 
     let reactElement: ReactElement;
     let reactElements: ReactElement[];
@@ -613,7 +696,9 @@ function ReactWrapperTest() {
     let anotherComponentWrapper: ReactWrapper<AnotherComponentProps, any>;
 
     function testStatePropsInstance() {
-        const wrapper = mount<MyComponent>(<MyComponent stringProp="value" numberProp={1} />);
+        const wrapper = mount<MyComponent>(
+            <MyComponent stringProp="value" numberProp={1} />,
+        );
 
         const {
             numberProp, // $ExpectType number
@@ -672,7 +757,10 @@ function ReactWrapperTest() {
             bar: string;
         }
 
-        const tmp: ReactWrapper<TmpType1, TmpType2> = reactWrapper.ref<TmpType1, TmpType2>("refName");
+        const tmp: ReactWrapper<TmpType1, TmpType2> = reactWrapper.ref<
+            TmpType1,
+            TmpType2
+        >("refName");
     }
 
     function test_detach() {
@@ -691,19 +779,23 @@ function ReactWrapperTest() {
     }
 
     function test_findWithType() {
-        const anotherComponentTypedWrapper = reactWrapper.find<AnotherComponent>(AnotherComponent);
+        const anotherComponentTypedWrapper =
+            reactWrapper.find<AnotherComponent>(AnotherComponent);
         anotherComponentTypedWrapper.instance().handleAnotherEcho("it works");
     }
 
     function test_findWhere() {
-        reactWrapper = reactWrapper.findWhere((aReactWrapper: ReactWrapper<MyComponentProps, MyComponentState>) =>
-            true
+        reactWrapper = reactWrapper.findWhere(
+            (aReactWrapper: ReactWrapper<MyComponentProps, MyComponentState>) =>
+                true,
         );
     }
 
     function test_filter() {
         anotherComponentWrapper = reactWrapper.filter(AnotherComponent);
-        anotherStatelessWrapper = reactWrapper.filter(AnotherStatelessComponent);
+        anotherStatelessWrapper = reactWrapper.filter(
+            AnotherStatelessComponent,
+        );
         // NOTE: The following calls to filter do not narrow down the possible type of the result based
         //       on the type of the param, so the return type should not be different than the original
         //       "this". This is a special case for "filter" vs other methods like "find", because "filter"
@@ -714,7 +806,7 @@ function ReactWrapperTest() {
     }
 
     function test_filterWhere() {
-        reactWrapper = reactWrapper.filterWhere(wrapper => {
+        reactWrapper = reactWrapper.filterWhere((wrapper) => {
             wrapper.props().stringProp;
             return true;
         });
@@ -729,11 +821,15 @@ function ReactWrapperTest() {
     }
 
     function test_containsAllMatchingElements() {
-        boolVal = reactWrapper.containsAllMatchingElements([<div className="foo bar" />]);
+        boolVal = reactWrapper.containsAllMatchingElements([
+            <div className="foo bar" />,
+        ]);
     }
 
     function test_containsAnyMatchingElement() {
-        boolVal = reactWrapper.containsAnyMatchingElements([<div className="foo bar" />]);
+        boolVal = reactWrapper.containsAnyMatchingElements([
+            <div className="foo bar" />,
+        ]);
     }
 
     function test_equals() {
@@ -749,15 +845,17 @@ function ReactWrapperTest() {
     }
 
     function test_invoke() {
-        CommonWrapperHelper.test_invoke(mount<OptionalFunctionProp>(
-            <MyFunctionPropComponent
-                requiredFunctionProp={() => {}}
-                singleArg={() => {}}
-                multipleArg={() => {}}
-                multipleReturn={() => {}}
-                nonFun={1}
-            />,
-        ));
+        CommonWrapperHelper.test_invoke(
+            mount<OptionalFunctionProp>(
+                <MyFunctionPropComponent
+                    requiredFunctionProp={() => {}}
+                    singleArg={() => {}}
+                    multipleArg={() => {}}
+                    multipleReturn={() => {}}
+                    nonFun={1}
+                />,
+            ),
+        );
     }
 
     function test_is() {
@@ -775,7 +873,9 @@ function ReactWrapperTest() {
     function test_children() {
         reactWrapper = reactWrapper.children();
         anotherComponentWrapper = reactWrapper.children(AnotherComponent);
-        anotherStatelessWrapper = reactWrapper.children(AnotherStatelessComponent);
+        anotherStatelessWrapper = reactWrapper.children(
+            AnotherStatelessComponent,
+        );
         reactWrapper = reactWrapper.children({ prop: "myprop" });
         elementWrapper = reactWrapper.children(".selector");
     }
@@ -791,13 +891,16 @@ function ReactWrapperTest() {
             bar: any;
         }
 
-        const childWrapper2: ReactWrapper<TmpType1, TmpType2> = reactWrapper.childAt<TmpType1, TmpType2>(0);
+        const childWrapper2: ReactWrapper<TmpType1, TmpType2> =
+            reactWrapper.childAt<TmpType1, TmpType2>(0);
     }
 
     function test_parents() {
         reactWrapper = reactWrapper.parents();
         anotherComponentWrapper = reactWrapper.parents(AnotherComponent);
-        anotherStatelessWrapper = reactWrapper.parents(AnotherStatelessComponent);
+        anotherStatelessWrapper = reactWrapper.parents(
+            AnotherStatelessComponent,
+        );
         reactWrapper = reactWrapper.parents({ prop: "myprop" });
         elementWrapper = reactWrapper.parents(".selector");
     }
@@ -808,7 +911,9 @@ function ReactWrapperTest() {
 
     function test_closest() {
         anotherComponentWrapper = reactWrapper.closest(AnotherComponent);
-        anotherStatelessWrapper = reactWrapper.closest(AnotherStatelessComponent);
+        anotherStatelessWrapper = reactWrapper.closest(
+            AnotherStatelessComponent,
+        );
         reactWrapper = reactWrapper.closest({ prop: "myprop" });
         elementWrapper = reactWrapper.closest(".selector");
     }
@@ -882,9 +987,15 @@ function ReactWrapperTest() {
 
     function test_props() {
         const props: MyComponentProps = reactWrapper.props();
-        const props2: AnotherComponentProps = reactWrapper.find(AnotherComponent).props();
-        const props3: AnotherStatelessProps = reactWrapper.find(AnotherStatelessComponent).props();
-        const props4: HTMLAttributes<any> = reactWrapper.find(".selector").props();
+        const props2: AnotherComponentProps = reactWrapper
+            .find(AnotherComponent)
+            .props();
+        const props3: AnotherStatelessProps = reactWrapper
+            .find(AnotherStatelessComponent)
+            .props();
+        const props4: HTMLAttributes<any> = reactWrapper
+            .find(".selector")
+            .props();
     }
 
     function test_prop() {
@@ -904,12 +1015,16 @@ function ReactWrapperTest() {
 
     function test_setState() {
         reactWrapper = reactWrapper.setState({ stateProperty: "state" });
-        reactWrapper = reactWrapper.setState({ stateProperty: "state" }, () => console.log("state set"));
+        reactWrapper = reactWrapper.setState({ stateProperty: "state" }, () =>
+            console.log("state set"),
+        );
     }
 
     function test_setProps() {
         reactWrapper = reactWrapper.setProps({ stringProp: "foo" });
-        reactWrapper = reactWrapper.setProps({ stringProp: "foo" }, () => console.log("props set"));
+        reactWrapper = reactWrapper.setProps({ stringProp: "foo" }, () =>
+            console.log("props set"),
+        );
     }
 
     function test_setContext() {
@@ -920,12 +1035,16 @@ function ReactWrapperTest() {
         const myComponent = reactWrapper.instance() as MyComponent;
         myComponent.handleEcho("it works");
 
-        const wrapperPropsOnly = mount<MyComponentProps>(<MyComponent stringProp="value" numberProp={1} />);
+        const wrapperPropsOnly = mount<MyComponentProps>(
+            <MyComponent stringProp="value" numberProp={1} />,
+        );
         wrapperPropsOnly.setProps({ stringProp: "new value" });
         // @ts-expect-error
         wrapperPropsOnly.instance().handleEcho;
 
-        const wrapper = mount<MyComponent>(<MyComponent stringProp="value" numberProp={1} />);
+        const wrapper = mount<MyComponent>(
+            <MyComponent stringProp="value" numberProp={1} />,
+        );
         wrapper.instance().handleEcho("it works");
     }
 
@@ -941,8 +1060,10 @@ function ReactWrapperTest() {
     }
 
     function test_type() {
-        const type: string | FunctionComponent<MyComponentProps> | ComponentClass<MyComponentProps> = reactWrapper
-            .type();
+        const type:
+            | string
+            | FunctionComponent<MyComponentProps>
+            | ComponentClass<MyComponentProps> = reactWrapper.type();
     }
 
     function test_name() {
@@ -950,22 +1071,32 @@ function ReactWrapperTest() {
     }
 
     function test_forEach() {
-        reactWrapper = reactWrapper.forEach(wrapper => wrapper.props().stringProp);
+        reactWrapper = reactWrapper.forEach(
+            (wrapper) => wrapper.props().stringProp,
+        );
     }
 
     function test_map() {
-        const arrayNumbers: number[] = reactWrapper.map(wrapper => wrapper.props().numberProp);
+        const arrayNumbers: number[] = reactWrapper.map(
+            (wrapper) => wrapper.props().numberProp,
+        );
     }
 
     function test_reduce() {
         const total: number = reactWrapper.reduce<number>(
-            (amount: number, n: ReactWrapper<MyComponentProps, MyComponentState>) => amount + n.prop("numberProp"),
+            (
+                amount: number,
+                n: ReactWrapper<MyComponentProps, MyComponentState>,
+            ) => amount + n.prop("numberProp"),
         );
     }
 
     function test_reduceRight() {
         const total: number = reactWrapper.reduceRight<number>(
-            (amount: number, n: ReactWrapper<MyComponentProps, MyComponentState>) => amount + n.prop("numberProp"),
+            (
+                amount: number,
+                n: ReactWrapper<MyComponentProps, MyComponentState>,
+            ) => amount + n.prop("numberProp"),
         );
     }
 
@@ -977,7 +1108,10 @@ function ReactWrapperTest() {
     }
 
     function test_someWhere() {
-        boolVal = reactWrapper.someWhere((aReactWrapper: ReactWrapper<MyComponentProps, MyComponentState>) => true);
+        boolVal = reactWrapper.someWhere(
+            (aReactWrapper: ReactWrapper<MyComponentProps, MyComponentState>) =>
+                true,
+        );
     }
 
     function test_every() {
@@ -988,7 +1122,10 @@ function ReactWrapperTest() {
     }
 
     function test_everyWhere() {
-        boolVal = reactWrapper.everyWhere((aReactWrapper: ReactWrapper<MyComponentProps, MyComponentState>) => true);
+        boolVal = reactWrapper.everyWhere(
+            (aReactWrapper: ReactWrapper<MyComponentProps, MyComponentState>) =>
+                true,
+        );
     }
 
     function test_isEmptyRender() {
@@ -997,7 +1134,9 @@ function ReactWrapperTest() {
 
     function test_constructor() {
         let anyWrapper: ReactWrapper;
-        anyWrapper = new ReactWrapper(<MyComponent stringProp="1" numberProp={1} />);
+        anyWrapper = new ReactWrapper(
+            <MyComponent stringProp="1" numberProp={1} />,
+        );
         reactWrapper = new ReactWrapper<MyComponentProps, MyComponentState>(
             <MyComponent stringProp="1" numberProp={1} />,
         );
@@ -1041,10 +1180,16 @@ function ReactWrapperTest() {
         const MyContext = React.createContext("test");
         function MyProvider(props: MyProviderProps) {
             const { children, value } = props;
-            return <MyContext.Provider value={value}>{children}</MyContext.Provider>;
+            return (
+                <MyContext.Provider value={value}>
+                    {children}
+                </MyContext.Provider>
+            );
         }
         const wrapper = mount<MyRenderPropProps>(
-            <MyRenderPropComponent children={params => <div className={params} />} />,
+            <MyRenderPropComponent
+                children={(params) => <div className={params} />}
+            />,
             {
                 wrappingComponent: MyProvider,
             },
@@ -1055,7 +1200,11 @@ function ReactWrapperTest() {
 
     function test_renderProp() {
         let reactWrapper = new ReactWrapper<MyRenderPropProps>(
-            <MyRenderPropComponent children={(params) => <div className={params} />} />,
+            (
+                <MyRenderPropComponent
+                    children={(params) => <div className={params} />}
+                />
+            ),
         );
         reactWrapper = reactWrapper.renderProp("children")("test");
     }
@@ -1063,8 +1212,8 @@ function ReactWrapperTest() {
 
 // CheerioWrapper
 function CheerioWrapperTest() {
-    const wrapper: cheerio.Cheerio = shallow(<div />).render()
-        || mount(<div />).render();
+    const wrapper: cheerio.Cheerio =
+        shallow(<div />).render() || mount(<div />).render();
 
     wrapper.toggleClass("className");
 }

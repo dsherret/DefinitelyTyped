@@ -9,7 +9,7 @@ function plugin2(): NodeJS.ReadWriteStream {
     return null;
 }
 
-gulp.task("javascript", function() {
+gulp.task("javascript", function () {
     gulp.src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
@@ -18,7 +18,7 @@ gulp.task("javascript", function() {
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
+gulp.task("javascript", function () {
     gulp.src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
@@ -27,7 +27,7 @@ gulp.task("javascript", function() {
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
+gulp.task("javascript", function () {
     gulp.src("src/**/*.js")
         .pipe(sourcemaps.init({ loadMaps: true }))
         .pipe(plugin1())
@@ -36,7 +36,7 @@ gulp.task("javascript", function() {
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
+gulp.task("javascript", function () {
     gulp.src(["src/test.js", "src/testdir/test2.js"], { base: "src" })
         .pipe(sourcemaps.init())
         .pipe(plugin1())
@@ -45,8 +45,9 @@ gulp.task("javascript", function() {
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
@@ -54,8 +55,9 @@ gulp.task("javascript", function() {
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
@@ -63,116 +65,144 @@ gulp.task("javascript", function() {
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.write({
-            includeContent: false,
-            sourceRoot: function(file) {
-                return "/src";
-            },
-        }))
+        .pipe(
+            sourcemaps.write({
+                includeContent: false,
+                sourceRoot: function (file) {
+                    return "/src";
+                },
+            }),
+        )
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.write({
-            destPath: "../maps",
-        }))
+        .pipe(
+            sourcemaps.write({
+                destPath: "../maps",
+            }),
+        )
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.write({
-            sourceMappingURL: function(file: File): string {
-                return `${file.basename}.map`;
-            },
-        }))
+        .pipe(
+            sourcemaps.write({
+                sourceMappingURL: function (file: File): string {
+                    return `${file.basename}.map`;
+                },
+            }),
+        )
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.write({
-            mapFile: function(mapFilePath: string): string {
-                return mapFilePath.replace(".js.map", ".map");
-            },
-        }))
+        .pipe(
+            sourcemaps.write({
+                mapFile: function (mapFilePath: string): string {
+                    return mapFilePath.replace(".js.map", ".map");
+                },
+            }),
+        )
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.write({
-            charset: "utf-8",
-        }))
+        .pipe(
+            sourcemaps.write({
+                charset: "utf-8",
+            }),
+        )
         .pipe(gulp.dest("dist"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.write("../maps", {
-            sourceMappingURLPrefix: "https://asset-host.example.com/assets",
-        }))
+        .pipe(
+            sourcemaps.write("../maps", {
+                sourceMappingURLPrefix: "https://asset-host.example.com/assets",
+            }),
+        )
         .pipe(gulp.dest("public/scripts"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.write("../maps", {
-            sourceMappingURLPrefix: function(file) {
-                return "https://asset-host.example.com/assets";
-            },
-        }))
+        .pipe(
+            sourcemaps.write("../maps", {
+                sourceMappingURLPrefix: function (file) {
+                    return "https://asset-host.example.com/assets";
+                },
+            }),
+        )
         .pipe(gulp.dest("public/scripts"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.write("../maps", {
-            clone: true,
-        }))
+        .pipe(
+            sourcemaps.write("../maps", {
+                clone: true,
+            }),
+        )
         .pipe(gulp.dest("public/scripts"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.write("../maps", {
-            clone: { contents: false },
-        }))
+        .pipe(
+            sourcemaps.write("../maps", {
+                clone: { contents: false },
+            }),
+        )
         .pipe(gulp.dest("public/scripts"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
@@ -180,17 +210,19 @@ gulp.task("javascript", function() {
         .pipe(gulp.dest("public/scripts"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())
-        .pipe(sourcemaps.mapSources(sourcePah => sourcePah))
+        .pipe(sourcemaps.mapSources((sourcePah) => sourcePah))
         .pipe(gulp.dest("public/scripts"));
 });
 
-gulp.task("javascript", function() {
-    var stream = gulp.src("src/**/*.js")
+gulp.task("javascript", function () {
+    var stream = gulp
+        .src("src/**/*.js")
         .pipe(sourcemaps.init())
         .pipe(plugin1())
         .pipe(plugin2())

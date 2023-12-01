@@ -9,7 +9,7 @@ declare function SHA(algorithm: SHA.Algorithm | Uppercase<SHA.Algorithm>): Hash;
 declare namespace SHA {
     type Algorithm = "sha" | "sha1" | "sha224" | "sha256" | "sha384" | "sha512";
     interface HashStatic {
-        new(): Hash;
+        new (): Hash;
     }
 
     const sha: HashStatic;

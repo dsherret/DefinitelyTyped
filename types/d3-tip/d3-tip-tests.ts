@@ -5,7 +5,10 @@ interface dataType {
     Number: number;
 }
 
-let data: dataType[] = [{ Title: "one", Number: 1 }, { Title: "two", Number: 2 }];
+let data: dataType[] = [
+    { Title: "one", Number: 1 },
+    { Title: "two", Number: 2 },
+];
 let svgElement: SVGElement;
 let root: HTMLElement;
 
@@ -34,7 +37,8 @@ let offsetValue: [number, number] = d3tip.offset();
 d3tip = d3tip.offset([-1, -1]);
 d3tip = d3tip.offset((d, i, o) => [-1, -1]);
 
-let directionValue: "n" | "s" | "e" | "w" | "nw" | "ne" | "sw" | "se" = d3tip.direction();
+let directionValue: "n" | "s" | "e" | "w" | "nw" | "ne" | "sw" | "se" =
+    d3tip.direction();
 d3tip = d3tip.direction("n");
 d3tip = d3tip.direction((d, i, o) => "n");
 

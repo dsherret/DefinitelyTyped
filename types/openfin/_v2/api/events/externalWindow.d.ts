@@ -1,8 +1,10 @@
 import { BaseEventMap } from "./base";
 import { WindowEventMapping } from "./window";
-declare type ExternalWindowEventMapping<Topic = string, Type = string> =
-    & BaseEventMap
-    & Pick<
+declare type ExternalWindowEventMapping<
+    Topic = string,
+    Type = string,
+> = BaseEventMap &
+    Pick<
         WindowEventMapping,
         | "begin-user-bounds-changing"
         | "blurred"
@@ -24,6 +26,9 @@ declare type ExternalWindowEventMapping<Topic = string, Type = string> =
         | "user-movement-enabled"
     >;
 export declare type ExternalWindowEvents = {
-    [Type in keyof ExternalWindowEventMapping]: ExternalWindowEventMapping<"external-window", Type>[Type];
+    [Type in keyof ExternalWindowEventMapping]: ExternalWindowEventMapping<
+        "external-window",
+        Type
+    >[Type];
 };
 export {};

@@ -2,13 +2,28 @@ import { PageRect, Point, Rect, RectPoints, Segment } from "./dist/BasicTypes";
 import { HTMLPageCollection } from "./dist/Collection/HTMLPageCollection";
 import { ImagePageCollection } from "./dist/Collection/ImagePageCollection";
 import { NumberArray, PageCollection } from "./dist/Collection/PageCollection";
-import { DataType, EventCallback, EventObject, WidgetEvent } from "./dist/Event/EventObject";
-import { Flip, FlipCorner, FlipDirection, FlippingState } from "./dist/Flip/Flip";
+import {
+    DataType,
+    EventCallback,
+    EventObject,
+    WidgetEvent,
+} from "./dist/Event/EventObject";
+import {
+    Flip,
+    FlipCorner,
+    FlipDirection,
+    FlippingState,
+} from "./dist/Flip/Flip";
 import { FlipCalculation } from "./dist/Flip/FlipCalculation";
 import { Helper } from "./dist/Helper";
 import { HTMLPage } from "./dist/Page/HTMLPage";
 import { ImagePage } from "./dist/Page/ImagePage";
-import { Page, PageDensity, PageOrientation, PageState } from "./dist/Page/Page";
+import {
+    Page,
+    PageDensity,
+    PageOrientation,
+    PageState,
+} from "./dist/Page/Page";
 import { PageFlip } from "./dist/PageFlip";
 import { CanvasRender } from "./dist/Render/CanvasRender";
 import { HTMLRender } from "./dist/Render/HTMLRender";

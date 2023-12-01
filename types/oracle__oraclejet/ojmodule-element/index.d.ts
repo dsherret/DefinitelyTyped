@@ -1,4 +1,9 @@
-import { JetElement, JetElementCustomEvent, JetSetPropertyType, JetSettableProperties } from "..";
+import {
+    JetElement,
+    JetElementCustomEvent,
+    JetSetPropertyType,
+    JetSettableProperties,
+} from "..";
 export interface ModuleElementAnimation {
     animate(context: {
         node: Node;
@@ -31,8 +36,12 @@ export interface ojModule extends JetElement<ojModuleSettableProperties> {
         view: Node[];
         viewModel: object | null;
     };
-    onAnimationChanged: ((event: JetElementCustomEvent<ojModule["animation"]>) => any) | null;
-    onConfigChanged: ((event: JetElementCustomEvent<ojModule["config"]>) => any) | null;
+    onAnimationChanged:
+        | ((event: JetElementCustomEvent<ojModule["animation"]>) => any)
+        | null;
+    onConfigChanged:
+        | ((event: JetElementCustomEvent<ojModule["config"]>) => any)
+        | null;
     onOjTransitionEnd: ((event: ojModule.ojTransitionEnd) => any) | null;
     onOjTransitionStart: ((event: ojModule.ojTransitionStart) => any) | null;
     onOjViewConnected: ((event: ojModule.ojViewConnected) => any) | null;
@@ -42,51 +51,55 @@ export interface ojModule extends JetElement<ojModuleSettableProperties> {
         listener: (this: HTMLElement, ev: ojModuleEventMap[T]) => any,
         useCapture?: boolean,
     ): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
-    getProperty<T extends keyof ojModuleSettableProperties>(property: T): ojModule[T];
+    addEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        useCapture?: boolean,
+    ): void;
+    getProperty<T extends keyof ojModuleSettableProperties>(
+        property: T,
+    ): ojModule[T];
     getProperty(property: string): any;
-    setProperty<T extends keyof ojModuleSettableProperties>(property: T, value: ojModuleSettableProperties[T]): void;
-    setProperty<T extends string>(property: T, value: JetSetPropertyType<T, ojModuleSettableProperties>): void;
+    setProperty<T extends keyof ojModuleSettableProperties>(
+        property: T,
+        value: ojModuleSettableProperties[T],
+    ): void;
+    setProperty<T extends string>(
+        property: T,
+        value: JetSetPropertyType<T, ojModuleSettableProperties>,
+    ): void;
     setProperties(properties: ojModuleSettablePropertiesLenient): void;
 }
 export namespace ojModule {
-    interface ojTransitionEnd extends
-        CustomEvent<{
+    interface ojTransitionEnd
+        extends CustomEvent<{
             viewModel: object;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojTransitionStart extends
-        CustomEvent<{
+        }> {}
+    interface ojTransitionStart
+        extends CustomEvent<{
             viewModel: object;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojViewConnected extends
-        CustomEvent<{
+        }> {}
+    interface ojViewConnected
+        extends CustomEvent<{
             viewModel: object;
             [propName: string]: any;
-        }>
-    {
-    }
-    interface ojViewDisconnected extends
-        CustomEvent<{
+        }> {}
+    interface ojViewDisconnected
+        extends CustomEvent<{
             viewModel: object;
             view: Node[];
             [propName: string]: any;
-        }>
-    {
-    }
+        }> {}
 }
 export interface ojModuleEventMap extends HTMLElementEventMap {
-    "ojTransitionEnd": ojModule.ojTransitionEnd;
-    "ojTransitionStart": ojModule.ojTransitionStart;
-    "ojViewConnected": ojModule.ojViewConnected;
-    "ojViewDisconnected": ojModule.ojViewDisconnected;
-    "animationChanged": JetElementCustomEvent<ojModule["animation"]>;
-    "configChanged": JetElementCustomEvent<ojModule["config"]>;
+    ojTransitionEnd: ojModule.ojTransitionEnd;
+    ojTransitionStart: ojModule.ojTransitionStart;
+    ojViewConnected: ojModule.ojViewConnected;
+    ojViewDisconnected: ojModule.ojViewDisconnected;
+    animationChanged: JetElementCustomEvent<ojModule["animation"]>;
+    configChanged: JetElementCustomEvent<ojModule["config"]>;
 }
 export interface ojModuleSettableProperties extends JetSettableProperties {
     animation: object;
@@ -96,6 +109,7 @@ export interface ojModuleSettableProperties extends JetSettableProperties {
         viewModel: object | null;
     };
 }
-export interface ojModuleSettablePropertiesLenient extends Partial<ojModuleSettableProperties> {
+export interface ojModuleSettablePropertiesLenient
+    extends Partial<ojModuleSettableProperties> {
     [key: string]: any;
 }

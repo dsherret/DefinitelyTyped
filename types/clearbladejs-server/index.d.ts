@@ -192,11 +192,17 @@ declare namespace CbServer {
         limit?: number | undefined;
     }
 
-    interface QueryOptionsWithCollection extends CollectionOptionsWithCollection, QueryOptions {}
+    interface QueryOptionsWithCollection
+        extends CollectionOptionsWithCollection,
+            QueryOptions {}
 
-    interface QueryOptionsWithName extends CollectionOptionsWithName, QueryOptions {}
+    interface QueryOptionsWithName
+        extends CollectionOptionsWithName,
+            QueryOptions {}
 
-    interface QueryOptionsWithID extends CollectionOptionsWithID, QueryOptions {}
+    interface QueryOptionsWithID
+        extends CollectionOptionsWithID,
+            QueryOptions {}
 
     interface Query {
         SELECTCOLUMNS?: string[] | undefined;

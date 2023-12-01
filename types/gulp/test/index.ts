@@ -16,9 +16,7 @@ gulp.src("client/templates/*.jade")
 gulp.src(["*.js", "!b*.js", "bad.js"]);
 
 // Matches 'client/js/somedir/somefile.js' and resolves `base` to `client/js/`
-gulp.src("client/js/**/*.js")
-    .pipe(minify())
-    .pipe(gulp.dest("build")); // Writes 'build/somedir/somefile.js'
+gulp.src("client/js/**/*.js").pipe(minify()).pipe(gulp.dest("build")); // Writes 'build/somedir/somefile.js'
 
 gulp.src("client/js/**/*.js", { base: "client" })
     .pipe(minify())
@@ -74,9 +72,7 @@ gulp.task(test);
 gulp.task("clean", () => del([".build/"]));
 
 gulp.task("somename", () => {
-    return gulp.src("client/**/*.js")
-        .pipe(minify())
-        .pipe(gulp.dest("build"));
+    return gulp.src("client/**/*.js").pipe(minify()).pipe(gulp.dest("build"));
 });
 
 gulp.task("clean", () => {
@@ -120,7 +116,11 @@ gulp.task(
 );
 
 gulp.watch("js/**/*.js", gulp.parallel("concat", "uglify"));
-gulp.watch("js/**/*.js", { events: ["change"] }, gulp.parallel("concat", "uglify"));
+gulp.watch(
+    "js/**/*.js",
+    { events: ["change"] },
+    gulp.parallel("concat", "uglify"),
+);
 
 const watcher = gulp.watch("js/**/*.js", gulp.parallel("concat", "uglify"));
 // watcher.close

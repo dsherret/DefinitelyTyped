@@ -31,10 +31,10 @@ export class Message {
 export type MessageLike =
     | [string, ...ArgumentType[]]
     | {
-        address: string;
+          address: string;
 
-        args: ArgumentType[];
-    };
+          args: ArgumentType[];
+      };
 
 /**
  * An OSC Bundle message
@@ -69,7 +69,10 @@ export class Client {
 
     /** Send a message to the server */
     send(addressOrMessage: string | Message | MessageLike): void;
-    send(address: string, ...args: [...Array<Message | MessageLike>, ClientSendCallback]): void;
+    send(
+        address: string,
+        ...args: [...Array<Message | MessageLike>, ClientSendCallback]
+    ): void;
     send(...args: [...Array<Message | MessageLike>, ClientSendCallback]): void;
 
     /** Send a Bundle message to the server */
@@ -82,7 +85,10 @@ export type ServerBundleListener = (bundle: Bundle) => void;
 
 export type ServerErrorListner = (error: Error) => void;
 
-export type ServerMessageListener = (message: [string, ...ArgumentType[]], rinfo: RequestInfo) => void;
+export type ServerMessageListener = (
+    message: [string, ...ArgumentType[]],
+    rinfo: RequestInfo,
+) => void;
 
 /**
  * A server to handle OSC messages

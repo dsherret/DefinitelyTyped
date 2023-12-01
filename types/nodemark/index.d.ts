@@ -5,7 +5,12 @@ declare namespace benchmark {
 
     type DoneCallback = () => void;
 
-    type Unit = "nanoseconds" | "microseconds" | "milliseconds" | "seconds" | "hz";
+    type Unit =
+        | "nanoseconds"
+        | "microseconds"
+        | "milliseconds"
+        | "seconds"
+        | "hz";
 
     interface BenchmarkResult {
         mean: number; // the average measured time in nanoseconds

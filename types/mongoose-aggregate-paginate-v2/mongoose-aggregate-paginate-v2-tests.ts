@@ -3,7 +3,14 @@
  * Adapted to mongoose-aggregate-paginate-v2 by Alexandre Croteau <https://github.com/acrilex1>
  */
 
-import { Aggregate, AggregatePaginateModel, AggregatePaginateResult, model, PaginateOptions, Schema } from "mongoose";
+import {
+    Aggregate,
+    AggregatePaginateModel,
+    AggregatePaginateResult,
+    model,
+    PaginateOptions,
+    Schema,
+} from "mongoose";
 import mongooseAggregatePaginate = require("mongoose-aggregate-paginate-v2");
 import { Request, Response, Router } from "express";
 
@@ -55,7 +62,8 @@ router.get("/users.json", async (req: Request, res: Response) => {
     };
 
     try {
-        const value: AggregatePaginateResult<User> = await UserModel.aggregatePaginate(aggregate, options);
+        const value: AggregatePaginateResult<User> =
+            await UserModel.aggregatePaginate(aggregate, options);
         console.log("totalDocs: " + value.totalDocsCustom);
         console.log("limit: " + value.limitCustom);
         console.log("page: " + value.pageCustom);
@@ -89,7 +97,8 @@ router.get("/stats/hobbies.json", async (req: Request, res: Response) => {
     };
 
     try {
-        const value: AggregatePaginateResult<HobbyStats> = await UserModel.aggregatePaginate(aggregate, options);
+        const value: AggregatePaginateResult<HobbyStats> =
+            await UserModel.aggregatePaginate(aggregate, options);
         return res.json(value);
     } catch (err) {
         console.log(err);
@@ -116,7 +125,8 @@ router.get("/stats/hobbies.json", async (req: Request, res: Response) => {
     };
 
     try {
-        const value: AggregatePaginateResult<HobbyStats> = await UserModel.aggregatePaginate(aggregate, options);
+        const value: AggregatePaginateResult<HobbyStats> =
+            await UserModel.aggregatePaginate(aggregate, options);
         return res.json(value);
     } catch (err) {
         console.log(err);

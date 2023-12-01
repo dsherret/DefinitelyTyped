@@ -36,7 +36,7 @@ declare const hljs: {
     md = MarkdownIt(options);
     md = new MarkdownIt(options);
 
-    presets.forEach(p => {
+    presets.forEach((p) => {
         md = MarkdownIt(p);
         md = new MarkdownIt(p);
         md = MarkdownIt(p, options);
@@ -109,11 +109,19 @@ let md: MarkdownIt;
         highlight: (str, lang) => {
             if (lang && hljs.getLanguage(lang)) {
                 try {
-                    return "<pre class=\"hljs\"><code>" + hljs.highlight(lang, str, true).value + "</code></pre>";
+                    return (
+                        '<pre class="hljs"><code>' +
+                        hljs.highlight(lang, str, true).value +
+                        "</code></pre>"
+                    );
                 } catch (__) {}
             }
 
-            return "<pre class=\"hljs\"><code>" + md.utils.escapeHtml(str) + "</code></pre>";
+            return (
+                '<pre class="hljs"><code>' +
+                md.utils.escapeHtml(str) +
+                "</code></pre>"
+            );
         },
     });
 }
@@ -124,7 +132,10 @@ let md: MarkdownIt;
 }
 
 {
-    md = MarkdownIt().disable(["link", "image"]).enable(["link"]).enable("image");
+    md = MarkdownIt()
+        .disable(["link", "image"])
+        .enable(["link"])
+        .enable("image");
 
     md = MarkdownIt({
         html: true,

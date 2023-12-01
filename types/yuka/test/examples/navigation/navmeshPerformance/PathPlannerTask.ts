@@ -6,7 +6,10 @@ import { Task, Vector3 } from "yuka";
 import { CustomVehicle } from "./CustomVehicle";
 import { PathPlanner } from "./PathPlanner";
 
-export type PathPlannerTaskCallback = (vehicle: CustomVehicle, path: Vector3[]) => void;
+export type PathPlannerTaskCallback = (
+    vehicle: CustomVehicle,
+    path: Vector3[],
+) => void;
 
 export class PathPlannerTask extends Task {
     planner: PathPlanner;

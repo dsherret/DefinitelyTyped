@@ -5,7 +5,11 @@ interface Level extends AbstractLevelDOWN {
     readonly prefix: string;
     readonly version: string | number;
     destroy(location: string, cb: (err: Error | undefined) => void): void;
-    destroy(location: string, prefix: string, cb: (err: Error | undefined) => void): void;
+    destroy(
+        location: string,
+        prefix: string,
+        cb: (err: Error | undefined) => void,
+    ): void;
 }
 
 interface LevelOptions {
@@ -14,7 +18,7 @@ interface LevelOptions {
 }
 
 interface LevelConstructor {
-    new(location: string, options?: LevelOptions): Level;
+    new (location: string, options?: LevelOptions): Level;
     (location: string, options?: LevelOptions): Level;
 }
 

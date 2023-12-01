@@ -27,7 +27,11 @@ declare namespace copyfiles {
     type Callback = (error?: Error) => void;
 }
 
-declare function copyfiles(paths: string[], options: copyfiles.Options | number, callback: copyfiles.Callback): void;
+declare function copyfiles(
+    paths: string[],
+    options: copyfiles.Options | number,
+    callback: copyfiles.Callback,
+): void;
 declare function copyfiles(paths: string[], callback: copyfiles.Callback): void;
 
 export = copyfiles;

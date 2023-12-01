@@ -245,7 +245,10 @@ export class Marker extends SvelteComponentTyped<
 
 export class Polygon extends SvelteComponentTyped<
     L.PathOptions & {
-        latLngs: L.LatLngExpression[] | L.LatLngExpression[][] | L.LatLngExpression[][][];
+        latLngs:
+            | L.LatLngExpression[]
+            | L.LatLngExpression[][]
+            | L.LatLngExpression[][][];
         options?: L.PolylineOptions;
         events?: PathEventKeys;
         getPolygon?(): L.Polygon;

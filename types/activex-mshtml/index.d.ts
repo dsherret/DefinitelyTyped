@@ -2907,25 +2907,72 @@ declare namespace MSHTML {
     class CanvasRenderingContext2D {
         private "MSHTML.CanvasRenderingContext2D_typekey": CanvasRenderingContext2D;
         private constructor();
-        arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise: number): void;
-        arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+        arc(
+            x: number,
+            y: number,
+            radius: number,
+            startAngle: number,
+            endAngle: number,
+            anticlockwise: number,
+        ): void;
+        arcTo(
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+            radius: number,
+        ): void;
         beginPath(): void;
-        bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+        bezierCurveTo(
+            cp1x: number,
+            cp1y: number,
+            cp2x: number,
+            cp2y: number,
+            x: number,
+            y: number,
+        ): void;
         readonly canvas: IHTMLCanvasElement;
         clearRect(x: number, y: number, w: number, h: number): void;
         clip(): void;
         closePath(): void;
         createImageData(a1: any, a2: any): ICanvasImageData;
-        createLinearGradient(x0: number, y0: number, x1: number, y1: number): ICanvasGradient;
+        createLinearGradient(
+            x0: number,
+            y0: number,
+            x1: number,
+            y1: number,
+        ): ICanvasGradient;
         createPattern(Image: any, repetition: any): ICanvasPattern;
-        createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): ICanvasGradient;
-        drawImage(pSrc: any, a1: any, a2: any, a3: any, a4: any, a5: any, a6: any, a7: any, a8: any): void;
+        createRadialGradient(
+            x0: number,
+            y0: number,
+            r0: number,
+            x1: number,
+            y1: number,
+            r1: number,
+        ): ICanvasGradient;
+        drawImage(
+            pSrc: any,
+            a1: any,
+            a2: any,
+            a3: any,
+            a4: any,
+            a5: any,
+            a6: any,
+            a7: any,
+            a8: any,
+        ): void;
         fill(): void;
         fillRect(x: number, y: number, w: number, h: number): void;
         fillStyle: any;
         fillText(text: string, x: number, y: number, maxWidth: any): void;
         font: string;
-        getImageData(sx: number, sy: number, sw: number, sh: number): ICanvasImageData;
+        getImageData(
+            sx: number,
+            sy: number,
+            sw: number,
+            sh: number,
+        ): ICanvasImageData;
         globalAlpha: number;
         globalCompositeOperation: string;
         isPointInPath(x: number, y: number): boolean;
@@ -2951,7 +2998,14 @@ declare namespace MSHTML {
         rotate(angle: number): void;
         save(): void;
         scale(x: number, y: number): void;
-        setTransform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
+        setTransform(
+            m11: number,
+            m12: number,
+            m21: number,
+            m22: number,
+            dx: number,
+            dy: number,
+        ): void;
         shadowBlur: number;
         shadowColor: string;
         shadowOffsetX: number;
@@ -2962,7 +3016,14 @@ declare namespace MSHTML {
         strokeText(text: string, x: number, y: number, maxWidth: any): void;
         textAlign: string;
         textBaseline: string;
-        transform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
+        transform(
+            m11: number,
+            m12: number,
+            m21: number,
+            m22: number,
+            dx: number,
+            dy: number,
+        ): void;
         translate(x: number, y: number): void;
     }
 
@@ -2977,7 +3038,11 @@ declare namespace MSHTML {
         private constructor();
 
         /** @param bStrVer [bStrVer=''] */
-        addComponentRequest(bstrName: string, bstrURL: string, bStrVer?: string): void;
+        addComponentRequest(
+            bstrName: string,
+            bstrURL: string,
+            bStrVer?: string,
+        ): void;
         readonly availHeight: number;
         readonly availWidth: number;
         readonly bufferDepth: number;
@@ -2993,7 +3058,11 @@ declare namespace MSHTML {
         readonly height: number;
 
         /** @param bStrVer [bStrVer=''] */
-        isComponentInstalled(bstrName: string, bstrURL: string, bStrVer?: string): boolean;
+        isComponentInstalled(
+            bstrName: string,
+            bstrURL: string,
+            bStrVer?: string,
+        ): boolean;
         readonly javaEnabled: boolean;
         readonly onLine: boolean;
         readonly platform: string;
@@ -3046,7 +3115,11 @@ declare namespace MSHTML {
         screenY: number;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         shiftKey: boolean;
         shiftLeft: boolean;
         readonly source: any;
@@ -3074,8 +3147,22 @@ declare namespace MSHTML {
         addRequest(name: string, reserved?: any): boolean;
         clearRequest(): void;
         commitChanges(): boolean;
-        doReadRequest(usage: any, fname?: any, domain?: any, path?: any, expire?: any, reserved?: any): void;
-        doRequest(usage: any, fname?: any, domain?: any, path?: any, expire?: any, reserved?: any): void;
+        doReadRequest(
+            usage: any,
+            fname?: any,
+            domain?: any,
+            path?: any,
+            expire?: any,
+            reserved?: any,
+        ): void;
+        doRequest(
+            usage: any,
+            fname?: any,
+            domain?: any,
+            path?: any,
+            expire?: any,
+            reserved?: any,
+        ): void;
         doWriteRequest(): boolean;
         getAttribute(name: string): string;
         setAttribute(name: string, value: string, prefs?: any): boolean;
@@ -3109,13 +3196,29 @@ declare namespace MSHTML {
         frameActiveEnabled: boolean;
         frameAsShown: boolean;
         framesetDocument: boolean;
-        getPageMarginBottom(pageRule: any, pageWidth: number, pageHeight: number): any;
+        getPageMarginBottom(
+            pageRule: any,
+            pageWidth: number,
+            pageHeight: number,
+        ): any;
         getPageMarginBottomImportant(pageRule: any): boolean;
-        getPageMarginLeft(pageRule: any, pageWidth: number, pageHeight: number): any;
+        getPageMarginLeft(
+            pageRule: any,
+            pageWidth: number,
+            pageHeight: number,
+        ): any;
         getPageMarginLeftImportant(pageRule: any): boolean;
-        getPageMarginRight(pageRule: any, pageWidth: number, pageHeight: number): any;
+        getPageMarginRight(
+            pageRule: any,
+            pageWidth: number,
+            pageHeight: number,
+        ): any;
         getPageMarginRightImportant(pageRule: any): boolean;
-        getPageMarginTop(pageRule: any, pageWidth: number, pageHeight: number): any;
+        getPageMarginTop(
+            pageRule: any,
+            pageWidth: number,
+            pageHeight: number,
+        ): any;
         getPageMarginTopImportant(pageRule: any): boolean;
         getPrintTaskOptionValue(bstrKey: string): any;
         header: string;
@@ -3171,13 +3274,29 @@ declare namespace MSHTML {
         frameActiveEnabled: boolean;
         frameAsShown: boolean;
         framesetDocument: boolean;
-        getPageMarginBottom(pageRule: any, pageWidth: number, pageHeight: number): any;
+        getPageMarginBottom(
+            pageRule: any,
+            pageWidth: number,
+            pageHeight: number,
+        ): any;
         getPageMarginBottomImportant(pageRule: any): boolean;
-        getPageMarginLeft(pageRule: any, pageWidth: number, pageHeight: number): any;
+        getPageMarginLeft(
+            pageRule: any,
+            pageWidth: number,
+            pageHeight: number,
+        ): any;
         getPageMarginLeftImportant(pageRule: any): boolean;
-        getPageMarginRight(pageRule: any, pageWidth: number, pageHeight: number): any;
+        getPageMarginRight(
+            pageRule: any,
+            pageWidth: number,
+            pageHeight: number,
+        ): any;
         getPageMarginRightImportant(pageRule: any): boolean;
-        getPageMarginTop(pageRule: any, pageWidth: number, pageHeight: number): any;
+        getPageMarginTop(
+            pageRule: any,
+            pageWidth: number,
+            pageHeight: number,
+        ): any;
         getPageMarginTopImportant(pageRule: any): boolean;
         header: string;
         headerFooterFont: string;
@@ -3219,7 +3338,11 @@ declare namespace MSHTML {
         readonly currentTarget: IEventTarget;
         readonly defaultPrevented: boolean;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         readonly isTrusted: boolean;
         preventDefault(): void;
         returnValue: any;
@@ -3256,7 +3379,11 @@ declare namespace MSHTML {
             code: number,
             reason: string,
         ): void;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         readonly isTrusted: boolean;
         preventDefault(): void;
         readonly srcElement: IHTMLElement;
@@ -3287,7 +3414,11 @@ declare namespace MSHTML {
             data: string,
             locale: string,
         ): void;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initUIEvent(
             eventType: string,
             canBubble: boolean,
@@ -3317,8 +3448,17 @@ declare namespace MSHTML {
         readonly defaultPrevented: boolean;
         readonly detail: any;
         readonly eventPhase: number;
-        initCustomEvent(eventType: string, canBubble: boolean, cancelable: boolean, detail: any): void;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initCustomEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+            detail: any,
+        ): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         readonly isTrusted: boolean;
         preventDefault(): void;
         readonly srcElement: IHTMLElement;
@@ -3343,7 +3483,10 @@ declare namespace MSHTML {
         ie9_appendChild(newChild: IHTMLDOMNode): IHTMLDOMNode;
         ie9_insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
         readonly internalSubset: any;
         isDefaultNamespace(pvarNamespace: any): boolean;
@@ -3370,7 +3513,10 @@ declare namespace MSHTML {
 
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         swapNode(otherNode: IHTMLDOMNode): IHTMLDOMNode;
         readonly systemId: any;
@@ -3414,7 +3560,11 @@ declare namespace MSHTML {
             relatedTargetArg: IEventTarget,
             dataTransferArg: IHTMLDataTransfer,
         ): void;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initMouseEvent(
             eventType: string,
             canBubble: boolean,
@@ -3474,7 +3624,11 @@ declare namespace MSHTML {
         readonly currentTarget: IEventTarget;
         readonly defaultPrevented: boolean;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         readonly isTrusted: boolean;
         preventDefault(): void;
         readonly srcElement: IHTMLElement;
@@ -3502,7 +3656,11 @@ declare namespace MSHTML {
         readonly defaultPrevented: boolean;
         readonly detail: number;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initFocusEvent(
             eventType: string,
             canBubble: boolean,
@@ -3545,7 +3703,11 @@ declare namespace MSHTML {
         readonly eventPhase: number;
         getModifierState(keyArg: string): boolean;
         readonly ie9_char: any;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initKeyboardEvent(
             eventType: string,
             canBubble: boolean,
@@ -3593,7 +3755,11 @@ declare namespace MSHTML {
         readonly data: string;
         readonly defaultPrevented: boolean;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initMessageEvent(
             eventType: string,
             canBubble: boolean,
@@ -3633,7 +3799,11 @@ declare namespace MSHTML {
         readonly eventPhase: number;
         readonly fromElement: IHTMLElement;
         getModifierState(keyArg: string): boolean;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initMouseEvent(
             eventType: string,
             canBubble: boolean,
@@ -3702,7 +3872,11 @@ declare namespace MSHTML {
         readonly eventPhase: number;
         readonly fromElement: IHTMLElement;
         getModifierState(keyArg: string): boolean;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initMouseEvent(
             eventType: string,
             canBubble: boolean,
@@ -3780,7 +3954,11 @@ declare namespace MSHTML {
         readonly defaultPrevented: boolean;
         readonly elapsedTime: number;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initMSAnimationEvent(
             eventType: string,
             canBubble: boolean,
@@ -3809,7 +3987,11 @@ declare namespace MSHTML {
         readonly defaultPrevented: boolean;
         readonly detail: number;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initMSManipulationEvent(
             eventType: string,
             canBubble: boolean,
@@ -3848,7 +4030,11 @@ declare namespace MSHTML {
         readonly defaultPrevented: boolean;
         readonly elapsedTime: number;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initMSTransitionEvent(
             eventType: string,
             canBubble: boolean,
@@ -3878,7 +4064,11 @@ declare namespace MSHTML {
         readonly currentTarget: IEventTarget;
         readonly defaultPrevented: boolean;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initMutationEvent(
             eventType: string,
             canBubble: boolean,
@@ -3927,7 +4117,10 @@ declare namespace MSHTML {
         ie9_appendChild(newChild: IHTMLDOMNode): IHTMLDOMNode;
         ie9_insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
         isDefaultNamespace(pvarNamespace: any): boolean;
         isEqualNode(otherNode: IHTMLDOMNode3): boolean;
@@ -3950,7 +4143,10 @@ declare namespace MSHTML {
 
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         swapNode(otherNode: IHTMLDOMNode): IHTMLDOMNode;
         readonly target: string;
@@ -3966,7 +4162,11 @@ declare namespace MSHTML {
         readonly currentTarget: IEventTarget;
         readonly defaultPrevented: boolean;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initProgressEvent(
             eventType: string,
             canBubble: boolean,
@@ -3999,7 +4199,11 @@ declare namespace MSHTML {
         readonly currentTarget: IEventTarget;
         readonly defaultPrevented: boolean;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         readonly isTrusted: boolean;
         preventDefault(): void;
         readonly srcElement: IHTMLElement;
@@ -4019,7 +4223,11 @@ declare namespace MSHTML {
         readonly currentTarget: IEventTarget;
         readonly defaultPrevented: boolean;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initStorageEvent(
             eventType: string,
             canBubble: boolean,
@@ -4056,7 +4264,11 @@ declare namespace MSHTML {
         readonly defaultPrevented: boolean;
         readonly detail: number;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initTextEvent(
             eventType: string,
             canBubble: boolean,
@@ -4096,7 +4308,11 @@ declare namespace MSHTML {
         readonly defaultPrevented: boolean;
         readonly detail: number;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initUIEvent(
             eventType: string,
             canBubble: boolean,
@@ -4137,7 +4353,11 @@ declare namespace MSHTML {
         readonly eventPhase: number;
         readonly fromElement: IHTMLElement;
         getModifierState(keyArg: string): boolean;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initMouseEvent(
             eventType: string,
             canBubble: boolean,
@@ -4348,7 +4568,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -4381,13 +4604,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -4570,7 +4802,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         rev: string;
         role: string;
@@ -4585,16 +4820,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         shape: string;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -4718,7 +4965,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -4747,12 +4997,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -4919,7 +5175,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -4933,16 +5192,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         shape: string;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -5096,7 +5367,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -5121,15 +5395,24 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         readonly initialTime: number;
         readonly initialTimeDouble: number;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -5316,7 +5599,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -5331,16 +5617,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -5443,7 +5741,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -5467,12 +5768,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -5635,7 +5942,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -5648,16 +5958,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -5754,7 +6076,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -5776,12 +6101,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -5944,7 +6275,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -5957,16 +6291,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         size: number;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -6062,7 +6408,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -6084,12 +6433,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -6253,7 +6608,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -6266,16 +6624,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -6373,7 +6743,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -6396,12 +6769,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -6564,7 +6943,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -6577,16 +6959,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -6687,7 +7081,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -6710,12 +7107,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -6891,7 +7294,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         rightMargin: any;
         role: string;
@@ -6906,16 +7312,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -7013,7 +7431,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -7035,12 +7456,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -7203,7 +7630,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -7216,16 +7646,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -7325,7 +7767,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -7350,14 +7795,23 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         ie9_type: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -7532,7 +7986,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -7545,16 +8002,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         status: any;
@@ -7653,7 +8122,10 @@ declare namespace MSHTML {
         getContext(contextId: string): ICanvasRenderingContext2D;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -7676,12 +8148,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -7844,7 +8322,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -7857,16 +8338,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -7966,7 +8459,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -7990,14 +8486,24 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_replaceData(offset: number, Count: number, bstrstring: string): void;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceData(
+            offset: number,
+            Count: number,
+            bstrstring: string,
+        ): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_substringData(offset: number, Count: number): string;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -8162,7 +8668,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceData(offset: number, Count: number, bstrstring: string): void;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
@@ -8176,16 +8685,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -8543,7 +9064,11 @@ declare namespace MSHTML {
         scrollbarTrackColor: any;
 
         /** @param pvarPropertyPriority [pvarPropertyPriority=''] */
-        setProperty(bstrPropertyName: string, pvarPropertyValue: any, pvarPropertyPriority?: any): void;
+        setProperty(
+            bstrPropertyName: string,
+            pvarPropertyValue: any,
+            pvarPropertyPriority?: any,
+        ): void;
         stopColor: any;
         stopOpacity: any;
         stroke: string;
@@ -8878,7 +9403,11 @@ declare namespace MSHTML {
         readonly scrollbarTrackColor: any;
 
         /** @param pvarPropertyPriority [pvarPropertyPriority=''] */
-        setProperty(bstrPropertyName: string, pvarPropertyValue: any, pvarPropertyPriority?: any): void;
+        setProperty(
+            bstrPropertyName: string,
+            pvarPropertyValue: any,
+            pvarPropertyPriority?: any,
+        ): void;
         readonly styleFloat: string;
         readonly tableLayout: string;
         readonly textAlign: string;
@@ -9042,7 +9571,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -9064,12 +9596,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -9233,7 +9771,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -9246,16 +9787,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -9385,7 +9938,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -9410,13 +9966,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -9591,7 +10156,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -9604,16 +10172,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -9713,7 +10293,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -9738,13 +10321,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -9918,7 +10510,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -9931,16 +10526,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -10045,7 +10652,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -10067,12 +10677,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -10235,7 +10851,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -10248,16 +10867,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -10276,7 +10907,11 @@ declare namespace MSHTML {
         private "MSHTML.HTMLDocument_typekey": HTMLDocument;
         private constructor();
         readonly activeElement: IHTMLElement;
-        addEventListener(type: string, listener: any, useCapture: boolean): void;
+        addEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         adoptNode(pNodeSource: IHTMLDOMNode): IHTMLDOMNode3;
         alinkColor: any;
         readonly all: IHTMLElementCollection;
@@ -10303,7 +10938,10 @@ declare namespace MSHTML {
         createCDATASection(text: string): IHTMLDOMNode;
         createComment(bstrData: string): IHTMLDOMNode;
         createDocumentFragment(): IHTMLDocument2;
-        createDocumentFromUrl(bstrURL: string, bstrOptions: string): IHTMLDocument2;
+        createDocumentFromUrl(
+            bstrURL: string,
+            bstrOptions: string,
+        ): IHTMLDocument2;
         createElement(eTag: string): IHTMLElement;
         createElementNS(pvarNS: any, bstrTag: string): IHTMLElement;
         createEvent(eventType: string): IDOMEvent;
@@ -10314,7 +10952,10 @@ declare namespace MSHTML {
             pFilter: any,
             fEntityReferenceExpansion: boolean,
         ): IDOMNodeIterator;
-        createProcessingInstruction(bstrTarget: string, bstrData: string): IDOMProcessingInstruction;
+        createProcessingInstruction(
+            bstrTarget: string,
+            bstrData: string,
+        ): IDOMProcessingInstruction;
         createRange(): IHTMLDOMRange;
         createRenderStyle(v: string): IHTMLRenderStyle;
 
@@ -10342,7 +10983,12 @@ declare namespace MSHTML {
         domain: string;
         elementFromPoint(x: number, y: number): IHTMLElement;
         elementsFromPoint(x: number, y: number): IHTMLDOMChildrenCollection;
-        elementsFromRect(left: number, top: number, width: number, height: number): IHTMLDOMChildrenCollection;
+        elementsFromRect(
+            left: number,
+            top: number,
+            width: number,
+            height: number,
+        ): IHTMLDOMChildrenCollection;
         readonly embeds: IHTMLElementCollection;
 
         /** @param showUI [showUI=false] */
@@ -10363,7 +11009,10 @@ declare namespace MSHTML {
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(pvarNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            pvarNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getSelection(): IHTMLSelection;
         hasAttributes(): boolean;
         hasChildNodes(): boolean;
@@ -10378,7 +11027,10 @@ declare namespace MSHTML {
         ie9_insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
         readonly ie9_parentWindow: IHTMLWindow2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         readonly images: IHTMLElementCollection;
         readonly implementation: IHTMLDOMImplementation;
         importNode(pNodeSource: IHTMLDOMNode, fDeep: boolean): IHTMLDOMNode3;
@@ -10527,11 +11179,18 @@ declare namespace MSHTML {
         readonly referrer: string;
         releaseCapture(): void;
         removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        removeEventListener(type: string, listener: any, useCapture: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
 
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         readonly rootElement: ISVGSVGElement;
         readonly Script: any;
@@ -10593,7 +11252,10 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_nodeValue: any;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         readonly ie9_specified: boolean;
         ie9_value: string;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -10618,7 +11280,10 @@ declare namespace MSHTML {
         prefix: any;
         readonly previousSibling: IHTMLDOMNode;
         removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         readonly specified: boolean;
         textContent: any;
         value: string;
@@ -10628,8 +11293,16 @@ declare namespace MSHTML {
         private "MSHTML.HTMLDOMImplementation_typekey": HTMLDOMImplementation;
         private constructor();
         readonly ["constructor"]: any;
-        createDocument(pvarNS: any, pvarTagName: any, pDocumentType: IDOMDocumentType): IHTMLDocument7;
-        createDocumentType(bstrQualifiedName: string, pvarPublicId: any, pvarSystemId: any): IDOMDocumentType;
+        createDocument(
+            pvarNS: any,
+            pvarTagName: any,
+            pDocumentType: IDOMDocumentType,
+        ): IHTMLDocument7;
+        createDocumentType(
+            bstrQualifiedName: string,
+            pvarPublicId: any,
+            pvarSystemId: any,
+        ): IDOMDocumentType;
         createHTMLDocument(bstrTitle: string): IHTMLDocument7;
         hasFeature(bstrfeature: string, version?: any): boolean;
         ie9_hasFeature(bstrfeature: string, version?: any): boolean;
@@ -10669,7 +11342,11 @@ declare namespace MSHTML {
     class HTMLDOMTextNode {
         private "MSHTML.HTMLDOMTextNode_typekey": HTMLDOMTextNode;
         private constructor();
-        addEventListener(type: string, listener: any, useCapture: boolean): void;
+        addEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         appendChild(newChild: IHTMLDOMNode): IHTMLDOMNode;
         appendData(bstrstring: string): void;
         readonly attributes: any;
@@ -10688,8 +11365,15 @@ declare namespace MSHTML {
         ie9_insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
         ie9_insertData(offset: number, bstrstring: string): void;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceData(offset: number, Count: number, bstrstring: string): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_replaceData(
+            offset: number,
+            Count: number,
+            bstrstring: string,
+        ): void;
         ie9_splitText(offset: number): IHTMLDOMNode;
         ie9_substringData(offset: number, Count: number): string;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -10714,11 +11398,18 @@ declare namespace MSHTML {
         prefix: any;
         readonly previousSibling: IHTMLDOMNode;
         removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        removeEventListener(type: string, listener: any, useCapture: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
 
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceData(offset: number, Count: number, bstrstring: string): void;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         replaceWholeText(bstrText: string): IHTMLDOMNode;
@@ -10814,7 +11505,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -10836,12 +11530,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -11005,7 +11705,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -11018,16 +11721,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -11135,7 +11850,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         getSVGDocument(): any;
         hasAttribute(name: string): boolean;
@@ -11162,12 +11880,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -11333,7 +12057,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -11346,16 +12073,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -11454,7 +12193,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -11476,12 +12218,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -11644,7 +12392,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -11657,16 +12408,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -11762,7 +12525,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -11784,12 +12550,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -11952,7 +12724,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -11965,16 +12740,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         size: any;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -12084,7 +12871,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -12107,12 +12897,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -12280,7 +13076,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         reset(): void;
         role: string;
@@ -12294,16 +13093,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -12407,7 +13218,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -12429,12 +13243,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -12602,7 +13422,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -12616,16 +13439,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -12731,7 +13566,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         getSVGDocument(): any;
         hasAttribute(name: string): boolean;
@@ -12761,13 +13599,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -12946,7 +13793,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -12960,16 +13810,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -13071,7 +13933,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -13093,12 +13958,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -13271,7 +14142,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         rows: string;
@@ -13285,16 +14159,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -13388,7 +14274,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -13410,12 +14299,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -13580,7 +14475,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -13593,16 +14491,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -13696,7 +14606,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -13719,12 +14632,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -13888,7 +14807,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -13901,16 +14823,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -14006,7 +14940,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -14028,12 +14965,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -14196,7 +15139,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -14209,16 +15155,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -14324,7 +15282,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -14346,12 +15307,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -14515,7 +15482,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -14528,16 +15498,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         size: any;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -14633,7 +15615,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -14655,12 +15640,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -14823,7 +15814,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -14836,16 +15830,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -14951,7 +15957,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         getSVGDocument(): any;
         hasAttribute(name: string): boolean;
@@ -14982,13 +15991,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -15167,7 +16185,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -15181,16 +16202,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -15306,7 +16339,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -15338,13 +16374,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -15530,7 +16575,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -15543,16 +16591,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -15649,7 +16709,11 @@ declare namespace MSHTML {
         scrollIntoView(varargStart?: any): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         readonly sourceIndex: number;
         status: any;
         readonly style: IHTMLStyle;
@@ -15755,7 +16819,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -15786,14 +16853,23 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         indeterminate: boolean;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -15974,7 +17050,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -15990,16 +17069,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         setSelectionRange(start: number, end: number): void;
         size: number;
         readonly sourceIndex: number;
@@ -16112,7 +17203,11 @@ declare namespace MSHTML {
         select(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         size: number;
         readonly sourceIndex: number;
         status: any;
@@ -16211,7 +17306,11 @@ declare namespace MSHTML {
         scrollIntoView(varargStart?: any): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         readonly sourceIndex: number;
         src: string;
         start: string;
@@ -16310,7 +17409,11 @@ declare namespace MSHTML {
         select(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         size: number;
         readonly sourceIndex: number;
         status: any;
@@ -16404,7 +17507,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -16426,12 +17532,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -16595,7 +17707,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -16608,16 +17723,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -16716,7 +17843,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -16742,13 +17872,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -16922,7 +18061,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -16935,16 +18077,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -17045,7 +18199,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -17070,13 +18227,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -17250,7 +18416,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -17263,16 +18432,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -17367,7 +18548,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -17389,12 +18573,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -17557,7 +18747,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -17570,16 +18763,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -17676,7 +18881,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -17701,12 +18909,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -17871,7 +19085,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         rev: string;
         role: string;
@@ -17885,16 +19102,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sheet: IHTMLStyleSheet;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -17993,7 +19222,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -18015,12 +19247,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -18183,7 +19421,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -18196,16 +19437,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -18320,7 +19573,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -18342,12 +19598,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -18511,7 +19773,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -18524,16 +19789,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -18634,7 +19911,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -18661,13 +19941,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -18845,7 +20134,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -18860,16 +20152,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         start(): void;
@@ -18987,7 +20291,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -19012,15 +20319,24 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         readonly initialTime: number;
         readonly initialTimeDouble: number;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -19207,7 +20523,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -19222,16 +20541,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -19337,7 +20668,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -19361,12 +20695,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -19530,7 +20870,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -19544,16 +20887,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -19609,7 +20964,11 @@ declare namespace MSHTML {
     }
 
     interface HTMLNamespaceCollection {
-        add(bstrNamespace: string, bstrUrn: string, implementationUrl?: any): any;
+        add(
+            bstrNamespace: string,
+            bstrUrn: string,
+            implementationUrl?: any,
+        ): any;
         readonly ["constructor"]: any;
         item(index: any): any;
         readonly length: number;
@@ -19723,7 +21082,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -19745,12 +21107,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -19914,7 +21282,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -19927,16 +21298,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -20030,7 +21413,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -20052,12 +21438,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -20220,7 +21612,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -20233,16 +21628,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -20354,7 +21761,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         getSVGDocument(): any;
         hasAttribute(name: string): boolean;
@@ -20385,13 +21795,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -20569,7 +21988,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -20582,16 +22004,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         standby: string;
@@ -20692,7 +22126,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -20714,12 +22151,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -20882,7 +22325,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -20895,16 +22341,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         start: number;
@@ -21002,7 +22460,11 @@ declare namespace MSHTML {
         scrollIntoView(varargStart?: any): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         readonly sourceIndex: number;
         status: boolean;
         readonly style: IHTMLStyle;
@@ -21099,7 +22561,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -21124,15 +22589,24 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         ie9_value: string;
         index: number;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -21307,7 +22781,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -21321,16 +22798,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -21349,8 +22838,18 @@ declare namespace MSHTML {
     }
 
     interface HTMLOptionElementFactory {
-        create(text?: any, value?: any, defaultSelected?: any, selected?: any): IHTMLOptionElement;
-        (text?: any, value?: any, defaultSelected?: any, selected?: any): IHTMLOptionElement;
+        create(
+            text?: any,
+            value?: any,
+            defaultSelected?: any,
+            selected?: any,
+        ): IHTMLOptionElement;
+        (
+            text?: any,
+            value?: any,
+            defaultSelected?: any,
+            selected?: any,
+        ): IHTMLOptionElement;
     }
 
     class HTMLParaElement {
@@ -21434,7 +22933,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -21456,12 +22958,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -21624,7 +23132,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -21637,16 +23148,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -21740,7 +23263,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -21763,12 +23289,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -21932,7 +23464,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -21945,16 +23480,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -22099,7 +23646,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -22122,12 +23672,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -22290,7 +23846,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -22303,16 +23862,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -22421,7 +23992,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -22446,13 +24020,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -22628,7 +24211,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -22641,16 +24227,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -22768,7 +24366,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -22793,13 +24394,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -22975,7 +24585,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         rows: number;
@@ -22990,16 +24603,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         status: any;
@@ -23276,10 +24901,18 @@ declare namespace MSHTML {
         scrollbarTrackColor: any;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
 
         /** @param pvarPropertyPriority [pvarPropertyPriority=''] */
-        setProperty(bstrPropertyName: string, pvarPropertyValue: any, pvarPropertyPriority?: any): void;
+        setProperty(
+            bstrPropertyName: string,
+            pvarPropertyValue: any,
+            pvarPropertyPriority?: any,
+        ): void;
         styleFloat: string;
         tableLayout: string;
         textAlign: string;
@@ -23472,7 +25105,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -23496,12 +25132,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -23664,7 +25306,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -23677,16 +25322,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -23788,7 +25445,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -23815,14 +25475,23 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         ie9_value: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -24005,7 +25674,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -24019,16 +25691,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         size: number;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -24129,7 +25813,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -24151,12 +25838,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -24319,7 +26012,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -24332,16 +26028,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -24439,7 +26147,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -24464,13 +26175,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -24645,7 +26365,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -24658,16 +26381,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -24768,7 +26503,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -24793,13 +26531,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -24973,7 +26720,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -24986,16 +26736,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -25095,7 +26857,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -25120,13 +26885,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -25300,7 +27074,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -25313,16 +27090,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -25619,13 +27408,25 @@ declare namespace MSHTML {
         scrollbarTrackColor: any;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
 
         /** @param pvarPropertyPriority [pvarPropertyPriority=''] */
-        setProperty(bstrPropertyName: string, pvarPropertyValue: any, pvarPropertyPriority?: any): void;
+        setProperty(
+            bstrPropertyName: string,
+            pvarPropertyValue: any,
+            pvarPropertyPriority?: any,
+        ): void;
         styleFloat: string;
         tableLayout: string;
         textAlign: string;
@@ -25795,7 +27596,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -25817,12 +27621,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -25986,7 +27796,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -25999,16 +27812,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sheet: IHTMLStyleSheet;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -26052,10 +27877,18 @@ declare namespace MSHTML {
         addImport(bstrURL: string, lIndex?: number): number;
 
         /** @param lIndex [lIndex=-1] */
-        addPageRule(bstrSelector: string, bstrStyle: string, lIndex?: number): number;
+        addPageRule(
+            bstrSelector: string,
+            bstrStyle: string,
+            lIndex?: number,
+        ): number;
 
         /** @param lIndex [lIndex=-1] */
-        addRule(bstrSelector: string, bstrStyle: string, lIndex?: number): number;
+        addRule(
+            bstrSelector: string,
+            bstrStyle: string,
+            lIndex?: number,
+        ): number;
         readonly ["constructor"]: any;
         readonly cssRules: IHTMLStyleSheetRulesCollection;
         cssText: string;
@@ -26260,7 +28093,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -26293,15 +28129,24 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         ie9_tFoot: IHTMLTableSection;
         ie9_tHead: IHTMLTableSection;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -26488,7 +28333,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly rows: IHTMLElementCollection;
@@ -26503,16 +28351,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -26613,7 +28473,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -26635,12 +28498,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -26803,7 +28672,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -26816,16 +28688,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -26932,7 +28816,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -26958,12 +28845,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -27127,7 +29020,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         rowSpan: number;
@@ -27142,16 +29038,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -27250,7 +29158,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -27274,12 +29185,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -27442,7 +29359,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -27455,16 +29375,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         span: number;
         spellcheck: any;
@@ -27572,7 +29504,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -27603,12 +29538,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -27774,7 +29715,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly rowIndex: number;
@@ -27789,16 +29733,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -27900,7 +29856,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -27930,12 +29889,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -28107,7 +30072,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly rows: IHTMLElementCollection;
@@ -28121,16 +30089,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -28233,7 +30213,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -28258,13 +30241,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -28440,7 +30432,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         rows: number;
@@ -28457,16 +30452,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         setSelectionRange(start: number, end: number): void;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -28566,7 +30573,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -28588,12 +30598,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -28756,7 +30772,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -28769,16 +30788,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -28882,7 +30913,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -28904,12 +30938,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -29072,7 +31112,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -29085,16 +31128,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -29190,7 +31245,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -29212,12 +31270,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -29380,7 +31444,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -29393,16 +31460,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -29497,7 +31576,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -29519,12 +31601,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -29687,7 +31775,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -29700,16 +31791,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -29828,7 +31931,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -29854,15 +31960,24 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         readonly initialTime: number;
         readonly initialTimeDouble: number;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -30050,7 +32165,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -30065,16 +32183,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         src: string;
@@ -30376,7 +32506,11 @@ declare namespace MSHTML {
         scrollbarTrackColor: any;
 
         /** @param pvarPropertyPriority [pvarPropertyPriority=''] */
-        setProperty(bstrPropertyName: string, pvarPropertyValue: any, pvarPropertyPriority?: any): void;
+        setProperty(
+            bstrPropertyName: string,
+            pvarPropertyValue: any,
+            pvarPropertyPriority?: any,
+        ): void;
         stopColor: any;
         stopOpacity: any;
         stroke: string;
@@ -30473,7 +32607,11 @@ declare namespace MSHTML {
     }
 
     interface HTMLWindow2 {
-        addEventListener(type: string, listener: any, useCapture: boolean): void;
+        addEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
 
         /** @param message [message=''] */
         alert(message?: string): void;
@@ -30505,7 +32643,10 @@ declare namespace MSHTML {
         readonly frames: FramesCollection;
 
         /** @param bstrPseudoElt [bstrPseudoElt=''] */
-        getComputedStyle(varArgIn: IHTMLDOMNode, bstrPseudoElt?: string): IHTMLCSSStyleDeclaration;
+        getComputedStyle(
+            varArgIn: IHTMLDOMNode,
+            bstrPseudoElt?: string,
+        ): IHTMLCSSStyleDeclaration;
         getSelection(): IHTMLSelection;
         readonly history: IOmHistory;
         readonly innerHeight: number;
@@ -30610,7 +32751,12 @@ declare namespace MSHTML {
          * @param features [features='']
          * @param replace [replace=false]
          */
-        open(url?: string, name?: string, features?: string, replace?: boolean): IHTMLWindow2;
+        open(
+            url?: string,
+            name?: string,
+            features?: string,
+            replace?: boolean,
+        ): IHTMLWindow2;
         opener: any;
         readonly outerHeight: number;
         readonly outerWidth: number;
@@ -30626,7 +32772,11 @@ declare namespace MSHTML {
          * @param defstr [defstr='undefined']
          */
         prompt(message?: string, defstr?: string): any;
-        removeEventListener(type: string, listener: any, useCapture: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         resizeBy(x: number, y: number): void;
         resizeTo(x: number, y: number): void;
         readonly screen: IHTMLScreen;
@@ -30647,7 +32797,11 @@ declare namespace MSHTML {
         showModalDialog(dialog: string, varArgIn?: any, varOptions?: any): any;
 
         /** @param url [url=''] */
-        showModelessDialog(url?: string, varArgIn?: any, options?: any): IHTMLWindow2;
+        showModelessDialog(
+            url?: string,
+            varArgIn?: any,
+            options?: any,
+        ): IHTMLWindow2;
         status: string;
         readonly styleMedia: IHTMLStyleMedia;
         readonly top: IHTMLWindow2;
@@ -30658,7 +32812,11 @@ declare namespace MSHTML {
     }
 
     interface HTMLWindowProxy {
-        addEventListener(type: string, listener: any, useCapture: boolean): void;
+        addEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
 
         /** @param message [message=''] */
         alert(message?: string): void;
@@ -30690,7 +32848,10 @@ declare namespace MSHTML {
         readonly frames: FramesCollection;
 
         /** @param bstrPseudoElt [bstrPseudoElt=''] */
-        getComputedStyle(varArgIn: IHTMLDOMNode, bstrPseudoElt?: string): IHTMLCSSStyleDeclaration;
+        getComputedStyle(
+            varArgIn: IHTMLDOMNode,
+            bstrPseudoElt?: string,
+        ): IHTMLCSSStyleDeclaration;
         getSelection(): IHTMLSelection;
         readonly history: IOmHistory;
         readonly innerHeight: number;
@@ -30795,7 +32956,12 @@ declare namespace MSHTML {
          * @param features [features='']
          * @param replace [replace=false]
          */
-        open(url?: string, name?: string, features?: string, replace?: boolean): IHTMLWindow2;
+        open(
+            url?: string,
+            name?: string,
+            features?: string,
+            replace?: boolean,
+        ): IHTMLWindow2;
         opener: any;
         readonly outerHeight: number;
         readonly outerWidth: number;
@@ -30811,7 +32977,11 @@ declare namespace MSHTML {
          * @param defstr [defstr='undefined']
          */
         prompt(message?: string, defstr?: string): any;
-        removeEventListener(type: string, listener: any, useCapture: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         resizeBy(x: number, y: number): void;
         resizeTo(x: number, y: number): void;
         readonly screen: IHTMLScreen;
@@ -30832,7 +33002,11 @@ declare namespace MSHTML {
         showModalDialog(dialog: string, varArgIn?: any, varOptions?: any): any;
 
         /** @param url [url=''] */
-        showModelessDialog(url?: string, varArgIn?: any, options?: any): IHTMLWindow2;
+        showModelessDialog(
+            url?: string,
+            varArgIn?: any,
+            options?: any,
+        ): IHTMLWindow2;
         status: string;
         readonly styleMedia: IHTMLStyleMedia;
         readonly top: IHTMLWindow2;
@@ -30927,7 +33101,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -30952,14 +33129,23 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         index: number;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -31134,7 +33320,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -31148,16 +33337,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -31258,7 +33459,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -31283,13 +33487,22 @@ declare namespace MSHTML {
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -31472,7 +33685,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         role: string;
         readonly runtimeStyle: IHTMLStyle;
@@ -31486,16 +33702,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         size: number;
         readonly sourceIndex: number;
         spellcheck: any;
@@ -31521,16 +33749,30 @@ declare namespace MSHTML {
         private "MSHTML.HTMLXMLHttpRequest_typekey": HTMLXMLHttpRequest;
         private constructor();
         abort(): void;
-        addEventListener(type: string, listener: any, useCapture: boolean): void;
+        addEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         readonly ["constructor"]: any;
         dispatchEvent(evt: IDOMEvent): boolean;
         getAllResponseHeaders(): string;
         getResponseHeader(bstrHeader: string): string;
         onreadystatechange: any;
         ontimeout: any;
-        open(bstrMethod: string, bstrURL: string, varAsync: any, varUser?: any, varPassword?: any): void;
+        open(
+            bstrMethod: string,
+            bstrURL: string,
+            varAsync: any,
+            varUser?: any,
+            varPassword?: any,
+        ): void;
         readonly readyState: number;
-        removeEventListener(type: string, listener: any, useCapture: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         readonly responseBody: any;
         readonly responseText: string;
         readonly responseXML: any;
@@ -31568,25 +33810,72 @@ declare namespace MSHTML {
     class ICanvasRenderingContext2D {
         private "MSHTML.ICanvasRenderingContext2D_typekey": ICanvasRenderingContext2D;
         private constructor();
-        arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise: number): void;
-        arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+        arc(
+            x: number,
+            y: number,
+            radius: number,
+            startAngle: number,
+            endAngle: number,
+            anticlockwise: number,
+        ): void;
+        arcTo(
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+            radius: number,
+        ): void;
         beginPath(): void;
-        bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+        bezierCurveTo(
+            cp1x: number,
+            cp1y: number,
+            cp2x: number,
+            cp2y: number,
+            x: number,
+            y: number,
+        ): void;
         readonly canvas: IHTMLCanvasElement;
         clearRect(x: number, y: number, w: number, h: number): void;
         clip(): void;
         closePath(): void;
         createImageData(a1: any, a2: any): ICanvasImageData;
-        createLinearGradient(x0: number, y0: number, x1: number, y1: number): ICanvasGradient;
+        createLinearGradient(
+            x0: number,
+            y0: number,
+            x1: number,
+            y1: number,
+        ): ICanvasGradient;
         createPattern(Image: any, repetition: any): ICanvasPattern;
-        createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): ICanvasGradient;
-        drawImage(pSrc: any, a1: any, a2: any, a3: any, a4: any, a5: any, a6: any, a7: any, a8: any): void;
+        createRadialGradient(
+            x0: number,
+            y0: number,
+            r0: number,
+            x1: number,
+            y1: number,
+            r1: number,
+        ): ICanvasGradient;
+        drawImage(
+            pSrc: any,
+            a1: any,
+            a2: any,
+            a3: any,
+            a4: any,
+            a5: any,
+            a6: any,
+            a7: any,
+            a8: any,
+        ): void;
         fill(): void;
         fillRect(x: number, y: number, w: number, h: number): void;
         fillStyle: any;
         fillText(text: string, x: number, y: number, maxWidth: any): void;
         font: string;
-        getImageData(sx: number, sy: number, sw: number, sh: number): ICanvasImageData;
+        getImageData(
+            sx: number,
+            sy: number,
+            sw: number,
+            sh: number,
+        ): ICanvasImageData;
         globalAlpha: number;
         globalCompositeOperation: string;
         isPointInPath(x: number, y: number): boolean;
@@ -31612,7 +33901,14 @@ declare namespace MSHTML {
         rotate(angle: number): void;
         save(): void;
         scale(x: number, y: number): void;
-        setTransform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
+        setTransform(
+            m11: number,
+            m12: number,
+            m21: number,
+            m22: number,
+            dx: number,
+            dy: number,
+        ): void;
         shadowBlur: number;
         shadowColor: string;
         shadowOffsetX: number;
@@ -31623,7 +33919,14 @@ declare namespace MSHTML {
         strokeText(text: string, x: number, y: number, maxWidth: any): void;
         textAlign: string;
         textBaseline: string;
-        transform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
+        transform(
+            m11: number,
+            m12: number,
+            m21: number,
+            m22: number,
+            dx: number,
+            dy: number,
+        ): void;
         translate(x: number, y: number): void;
     }
 
@@ -31653,7 +33956,11 @@ declare namespace MSHTML {
         readonly currentTarget: IEventTarget;
         readonly defaultPrevented: boolean;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         readonly isTrusted: boolean;
         preventDefault(): void;
         readonly srcElement: IHTMLElement;
@@ -31715,9 +34022,17 @@ declare namespace MSHTML {
     class IEventTarget {
         private "MSHTML.IEventTarget_typekey": IEventTarget;
         private constructor();
-        addEventListener(type: string, listener: any, useCapture: boolean): void;
+        addEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         dispatchEvent(evt: IDOMEvent): boolean;
-        removeEventListener(type: string, listener: any, useCapture: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
     }
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -31928,7 +34243,11 @@ declare namespace MSHTML {
         scrollbarTrackColor: any;
 
         /** @param pvarPropertyPriority [pvarPropertyPriority=''] */
-        setProperty(bstrPropertyName: string, pvarPropertyValue: any, pvarPropertyPriority?: any): void;
+        setProperty(
+            bstrPropertyName: string,
+            pvarPropertyValue: any,
+            pvarPropertyPriority?: any,
+        ): void;
         stopColor: any;
         stopOpacity: any;
         stroke: string;
@@ -32187,10 +34506,16 @@ declare namespace MSHTML {
         createCDATASection(text: string): IHTMLDOMNode;
         createElement(bstrTag: string): IHTMLElement;
         createElementNS(pvarNS: any, bstrTag: string): IHTMLElement;
-        createProcessingInstruction(bstrTarget: string, bstrData: string): IDOMProcessingInstruction;
+        createProcessingInstruction(
+            bstrTarget: string,
+            bstrData: string,
+        ): IDOMProcessingInstruction;
         readonly defaultView: IHTMLWindow2;
         getElementsByClassName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(pvarNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            pvarNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getSelection(): IHTMLSelection;
         hasAttributes(): boolean;
         readonly head: IHTMLElement;
@@ -32283,7 +34608,10 @@ declare namespace MSHTML {
         readonly parentNode: IHTMLDOMNode;
         readonly previousSibling: IHTMLDOMNode;
         removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         value: string;
     }
 
@@ -32321,7 +34649,10 @@ declare namespace MSHTML {
 
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         swapNode(otherNode: IHTMLDOMNode): IHTMLDOMNode;
     }
@@ -32342,7 +34673,10 @@ declare namespace MSHTML {
         readonly namespaceURI: any;
         prefix: any;
         removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         textContent: any;
     }
 
@@ -32436,7 +34770,11 @@ declare namespace MSHTML {
         scrollIntoView(varargStart?: any): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         readonly sourceIndex: number;
         readonly style: IHTMLStyle;
         readonly tagName: string;
@@ -32472,7 +34810,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
         getExpression(propname: string): any;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         mergeAttributes(mergeThis: IHTMLElement): void;
         onbeforecopy: any;
         onbeforecut: any;
@@ -32515,7 +34856,11 @@ declare namespace MSHTML {
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         tabIndex: number;
         tagUrn: string;
     }
@@ -32823,7 +35168,11 @@ declare namespace MSHTML {
         removeAttribute(strAttributeName: string, lFlags?: number): boolean;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         styleFloat: string;
         textAlign: string;
         textDecoration: string;
@@ -32980,7 +35329,11 @@ declare namespace MSHTML {
         removeAttribute(strAttributeName: string, lFlags?: number): boolean;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         styleFloat: string;
         textAlign: string;
         textDecoration: string;
@@ -33016,7 +35369,11 @@ declare namespace MSHTML {
         addImport(bstrURL: string, lIndex?: number): number;
 
         /** @param lIndex [lIndex=-1] */
-        addRule(bstrSelector: string, bstrStyle: string, lIndex?: number): number;
+        addRule(
+            bstrSelector: string,
+            bstrStyle: string,
+            lIndex?: number,
+        ): number;
         cssText: string;
         disabled: boolean;
         href: string;
@@ -33209,7 +35566,12 @@ declare namespace MSHTML {
          * @param features [features='']
          * @param replace [replace=false]
          */
-        open(url?: string, name?: string, features?: string, replace?: boolean): IHTMLWindow2;
+        open(
+            url?: string,
+            name?: string,
+            features?: string,
+            replace?: boolean,
+        ): IHTMLWindow2;
         opener: any;
         readonly Option: HTMLOptionElementFactory;
         readonly parent: IHTMLWindow2;
@@ -33261,7 +35623,13 @@ declare namespace MSHTML {
         getAllResponseHeaders(): string;
         getResponseHeader(bstrHeader: string): string;
         onreadystatechange: any;
-        open(bstrMethod: string, bstrURL: string, varAsync: any, varUser?: any, varPassword?: any): void;
+        open(
+            bstrMethod: string,
+            bstrURL: string,
+            varAsync: any,
+            varUser?: any,
+            varPassword?: any,
+        ): void;
         readonly readyState: number;
         readonly responseBody: any;
         readonly responseText: string;
@@ -33574,8 +35942,16 @@ declare namespace MSHTML {
         private "MSHTML.IWebGeolocation_typekey": IWebGeolocation;
         private constructor();
         clearWatch(watchId: number): void;
-        getCurrentPosition(successCallback: any, errorCallback?: any, options?: any): void;
-        watchPosition(successCallback: any, errorCallback?: any, options?: any): number;
+        getCurrentPosition(
+            successCallback: any,
+            errorCallback?: any,
+            options?: any,
+        ): void;
+        watchPosition(
+            successCallback: any,
+            errorCallback?: any,
+            options?: any,
+        ): number;
     }
 
     class NodeIterator {
@@ -33594,7 +35970,11 @@ declare namespace MSHTML {
         private "MSHTML.OldHTMLDocument_typekey": OldHTMLDocument;
         private constructor();
         readonly activeElement: IHTMLElement;
-        addEventListener(type: string, listener: any, useCapture: boolean): void;
+        addEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         adoptNode(pNodeSource: IHTMLDOMNode): IHTMLDOMNode3;
         alinkColor: any;
         readonly all: IHTMLElementCollection;
@@ -33621,7 +36001,10 @@ declare namespace MSHTML {
         createCDATASection(text: string): IHTMLDOMNode;
         createComment(bstrData: string): IHTMLDOMNode;
         createDocumentFragment(): IHTMLDocument2;
-        createDocumentFromUrl(bstrURL: string, bstrOptions: string): IHTMLDocument2;
+        createDocumentFromUrl(
+            bstrURL: string,
+            bstrOptions: string,
+        ): IHTMLDocument2;
         createElement(eTag: string): IHTMLElement;
         createElementNS(pvarNS: any, bstrTag: string): IHTMLElement;
         createEvent(eventType: string): IDOMEvent;
@@ -33632,7 +36015,10 @@ declare namespace MSHTML {
             pFilter: any,
             fEntityReferenceExpansion: boolean,
         ): IDOMNodeIterator;
-        createProcessingInstruction(bstrTarget: string, bstrData: string): IDOMProcessingInstruction;
+        createProcessingInstruction(
+            bstrTarget: string,
+            bstrData: string,
+        ): IDOMProcessingInstruction;
         createRange(): IHTMLDOMRange;
         createRenderStyle(v: string): IHTMLRenderStyle;
 
@@ -33660,7 +36046,12 @@ declare namespace MSHTML {
         domain: string;
         elementFromPoint(x: number, y: number): IHTMLElement;
         elementsFromPoint(x: number, y: number): IHTMLDOMChildrenCollection;
-        elementsFromRect(left: number, top: number, width: number, height: number): IHTMLDOMChildrenCollection;
+        elementsFromRect(
+            left: number,
+            top: number,
+            width: number,
+            height: number,
+        ): IHTMLDOMChildrenCollection;
         readonly embeds: IHTMLElementCollection;
 
         /** @param showUI [showUI=false] */
@@ -33681,7 +36072,10 @@ declare namespace MSHTML {
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(pvarNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            pvarNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getSelection(): IHTMLSelection;
         hasAttributes(): boolean;
         hasChildNodes(): boolean;
@@ -33696,7 +36090,10 @@ declare namespace MSHTML {
         ie9_insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
         readonly ie9_parentWindow: IHTMLWindow2;
         ie9_removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        ie9_replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        ie9_replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         readonly images: IHTMLElementCollection;
         readonly implementation: IHTMLDOMImplementation;
         importNode(pNodeSource: IHTMLDOMNode, fDeep: boolean): IHTMLDOMNode3;
@@ -33845,11 +36242,18 @@ declare namespace MSHTML {
         readonly referrer: string;
         releaseCapture(): void;
         removeChild(oldChild: IHTMLDOMNode): IHTMLDOMNode;
-        removeEventListener(type: string, listener: any, useCapture: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
 
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         readonly rootElement: ISVGSVGElement;
         readonly Script: any;
@@ -33967,7 +36371,10 @@ declare namespace MSHTML {
         getClientRects(): IHTMLRectCollection;
         getElementsByClassName(v: string): IHTMLElementCollection;
         getElementsByTagName(v: string): IHTMLElementCollection;
-        getElementsByTagNameNS(varNS: any, bstrLocalName: string): IHTMLElementCollection;
+        getElementsByTagNameNS(
+            varNS: any,
+            bstrLocalName: string,
+        ): IHTMLElementCollection;
         getExpression(propname: string): any;
         hasAttribute(name: string): boolean;
         hasAttributeNS(pvarNS: any, name: string): boolean;
@@ -33990,12 +36397,18 @@ declare namespace MSHTML {
         readonly ie9_nodeName: string;
         ie9_removeAttribute(strAttributeName: string): void;
         ie9_removeAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        ie9_setAttribute(strAttributeName: string, pvarAttributeValue: any): void;
+        ie9_setAttribute(
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
         ie9_setAttributeNode(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
         readonly ie9_tagName: string;
         innerHTML: string;
         innerText: string;
-        insertAdjacentElement(where: string, insertedElement: IHTMLElement): IHTMLElement;
+        insertAdjacentElement(
+            where: string,
+            insertedElement: IHTMLElement,
+        ): IHTMLElement;
         insertAdjacentHTML(where: string, html: string): void;
         insertAdjacentText(where: string, text: string): void;
         insertBefore(newChild: IHTMLDOMNode, refChild?: any): IHTMLDOMNode;
@@ -34163,7 +36576,10 @@ declare namespace MSHTML {
         /** @param fDeep [fDeep=false] */
         removeNode(fDeep?: boolean): IHTMLDOMNode;
         replaceAdjacentText(where: string, newText: string): string;
-        replaceChild(newChild: IHTMLDOMNode, oldChild: IHTMLDOMNode): IHTMLDOMNode;
+        replaceChild(
+            newChild: IHTMLDOMNode,
+            oldChild: IHTMLDOMNode,
+        ): IHTMLDOMNode;
         replaceNode(replacement: IHTMLDOMNode): IHTMLDOMNode;
         reset(): void;
         role: string;
@@ -34177,16 +36593,28 @@ declare namespace MSHTML {
         setActive(): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         setAttributeNode(pattr: IHTMLDOMAttribute): IHTMLDOMAttribute;
         setAttributeNodeNS(pattr: IHTMLDOMAttribute2): IHTMLDOMAttribute2;
-        setAttributeNS(pvarNS: any, strAttributeName: string, pvarAttributeValue: any): void;
+        setAttributeNS(
+            pvarNS: any,
+            strAttributeName: string,
+            pvarAttributeValue: any,
+        ): void;
 
         /** @param containerCapture [containerCapture=true] */
         setCapture(containerCapture?: boolean): void;
 
         /** @param language [language=''] */
-        setExpression(propname: string, expression: string, language?: string): void;
+        setExpression(
+            propname: string,
+            expression: string,
+            language?: string,
+        ): void;
         readonly sourceIndex: number;
         spellcheck: any;
         readonly style: IHTMLStyle;
@@ -34284,7 +36712,10 @@ declare namespace MSHTML {
         private "MSHTML.SVGAngle_typekey": SVGAngle;
         private constructor();
         convertToSpecifiedUnits(unitType: number): void;
-        newValueSpecifiedUnits(unitType: number, valueInSpecifiedUnits: number): void;
+        newValueSpecifiedUnits(
+            unitType: number,
+            valueInSpecifiedUnits: number,
+        ): void;
         unitType: number;
         value: number;
         valueAsString: string;
@@ -34520,7 +36951,11 @@ declare namespace MSHTML {
         scrollIntoView(varargStart?: any): void;
 
         /** @param lFlags [lFlags=1] */
-        setAttribute(strAttributeName: string, AttributeValue: any, lFlags?: number): void;
+        setAttribute(
+            strAttributeName: string,
+            AttributeValue: any,
+            lFlags?: number,
+        ): void;
         readonly sourceIndex: number;
         readonly style: IHTMLStyle;
         readonly tagName: string;
@@ -34533,7 +36968,11 @@ declare namespace MSHTML {
     class SVGElementInstance {
         private "MSHTML.SVGElementInstance_typekey": SVGElementInstance;
         private constructor();
-        addEventListener(type: string, listener: any, useCapture: boolean): void;
+        addEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         readonly childNodes: ISVGElementInstanceList;
         readonly correspondingElement: ISVGElement;
         readonly correspondingUseElement: ISVGUseElement;
@@ -34543,7 +36982,11 @@ declare namespace MSHTML {
         readonly nextSibling: ISVGElementInstance;
         readonly parentNode: ISVGElementInstance;
         readonly previousSibling: ISVGElementInstance;
-        removeEventListener(type: string, listener: any, useCapture: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
     }
 
     class SVGElementInstanceList {
@@ -34654,7 +37097,10 @@ declare namespace MSHTML {
         private "MSHTML.SVGLength_typekey": SVGLength;
         private constructor();
         convertToSpecifiedUnits(unitType: number): void;
-        newValueSpecifiedUnits(unitType: number, valueInSpecifiedUnits: number): void;
+        newValueSpecifiedUnits(
+            unitType: number,
+            valueInSpecifiedUnits: number,
+        ): void;
         unitType: number;
         value: number;
         valueAsString: string;
@@ -34882,14 +37328,28 @@ declare namespace MSHTML {
             x1: number,
             y1: number,
         ): ISVGPathSegCurvetoQuadraticRel;
-        createSVGPathSegCurvetoQuadraticSmoothAbs(x: number, y: number): ISVGPathSegCurvetoQuadraticSmoothAbs;
-        createSVGPathSegCurvetoQuadraticSmoothRel(x: number, y: number): ISVGPathSegCurvetoQuadraticSmoothRel;
+        createSVGPathSegCurvetoQuadraticSmoothAbs(
+            x: number,
+            y: number,
+        ): ISVGPathSegCurvetoQuadraticSmoothAbs;
+        createSVGPathSegCurvetoQuadraticSmoothRel(
+            x: number,
+            y: number,
+        ): ISVGPathSegCurvetoQuadraticSmoothRel;
         createSVGPathSegLinetoAbs(x: number, y: number): ISVGPathSegLinetoAbs;
-        createSVGPathSegLinetoHorizontalAbs(x: number): ISVGPathSegLinetoHorizontalAbs;
-        createSVGPathSegLinetoHorizontalRel(x: number): ISVGPathSegLinetoHorizontalRel;
+        createSVGPathSegLinetoHorizontalAbs(
+            x: number,
+        ): ISVGPathSegLinetoHorizontalAbs;
+        createSVGPathSegLinetoHorizontalRel(
+            x: number,
+        ): ISVGPathSegLinetoHorizontalRel;
         createSVGPathSegLinetoRel(x: number, y: number): ISVGPathSegLinetoRel;
-        createSVGPathSegLinetoVerticalAbs(y: number): ISVGPathSegLinetoVerticalAbs;
-        createSVGPathSegLinetoVerticalRel(y: number): ISVGPathSegLinetoVerticalRel;
+        createSVGPathSegLinetoVerticalAbs(
+            y: number,
+        ): ISVGPathSegLinetoVerticalAbs;
+        createSVGPathSegLinetoVerticalRel(
+            y: number,
+        ): ISVGPathSegLinetoVerticalRel;
         createSVGPathSegMovetoAbs(x: number, y: number): ISVGPathSegMovetoAbs;
         createSVGPathSegMovetoRel(x: number, y: number): ISVGPathSegMovetoRel;
         readonly farthestViewportElement: ISVGElement;
@@ -35694,7 +38154,11 @@ declare namespace MSHTML {
         readonly defaultPrevented: boolean;
         readonly detail: number;
         readonly eventPhase: number;
-        initEvent(eventType: string, canBubble: boolean, cancelable: boolean): void;
+        initEvent(
+            eventType: string,
+            canBubble: boolean,
+            cancelable: boolean,
+        ): void;
         initUIEvent(
             eventType: string,
             canBubble: boolean,
@@ -35760,8 +38224,16 @@ declare namespace MSHTML {
         private "MSHTML.WebGeolocation_typekey": WebGeolocation;
         private constructor();
         clearWatch(watchId: number): void;
-        getCurrentPosition(successCallback: any, errorCallback?: any, options?: any): void;
-        watchPosition(successCallback: any, errorCallback?: any, options?: any): number;
+        getCurrentPosition(
+            successCallback: any,
+            errorCallback?: any,
+            options?: any,
+        ): void;
+        watchPosition(
+            successCallback: any,
+            errorCallback?: any,
+            options?: any,
+        ): number;
     }
 
     class WebGeoposition {
@@ -35792,9 +38264,17 @@ declare namespace MSHTML {
     class XMLHttpRequestEventTarget {
         private "MSHTML.XMLHttpRequestEventTarget_typekey": XMLHttpRequestEventTarget;
         private constructor();
-        addEventListener(type: string, listener: any, useCapture: boolean): void;
+        addEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
         dispatchEvent(evt: IDOMEvent): boolean;
-        removeEventListener(type: string, listener: any, useCapture: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: any,
+            useCapture: boolean,
+        ): void;
     }
 
     class XMLSerializer {
@@ -35809,7 +38289,10 @@ interface ActiveXObject {
         obj: MSHTML.HTMLNamespace,
         event: "onreadystatechange",
         argNames: ["pEvtObj"],
-        handler: (this: MSHTML.HTMLNamespace, parameter: { readonly pEvtObj: MSHTML.IHTMLEventObj }) => void,
+        handler: (
+            this: MSHTML.HTMLNamespace,
+            parameter: { readonly pEvtObj: MSHTML.IHTMLEventObj },
+        ) => void,
     ): void;
     on(
         obj: MSHTML.HTMLWindow2,
@@ -35817,7 +38300,11 @@ interface ActiveXObject {
         argNames: ["description", "url", "line"],
         handler: (
             this: MSHTML.HTMLWindow2,
-            parameter: { readonly description: string; readonly url: string; readonly line: number },
+            parameter: {
+                readonly description: string;
+                readonly url: string;
+                readonly line: number;
+            },
         ) => void,
     ): void;
     on(
@@ -35826,14 +38313,21 @@ interface ActiveXObject {
         argNames: ["description", "url", "line"],
         handler: (
             this: MSHTML.HTMLWindowProxy,
-            parameter: { readonly description: string; readonly url: string; readonly line: number },
+            parameter: {
+                readonly description: string;
+                readonly url: string;
+                readonly line: number;
+            },
         ) => void,
     ): void;
     on(
         obj: MSHTML.Scriptlet,
         event: "onscriptletevent",
         argNames: ["name", "eventData"],
-        handler: (this: MSHTML.Scriptlet, parameter: { readonly name: string; readonly eventData: any }) => void,
+        handler: (
+            this: MSHTML.Scriptlet,
+            parameter: { readonly name: string; readonly eventData: any },
+        ) => void,
     ): void;
     on(
         obj: MSHTML.HTMLAnchorElement,

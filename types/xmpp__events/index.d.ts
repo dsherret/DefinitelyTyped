@@ -9,7 +9,9 @@ export class TimeoutError extends Error {
     readonly name: "TimeoutError";
 }
 
-export function delay(ms: number): Promise<void> & { timeout: NodeJS.Timeout | number };
+export function delay(
+    ms: number,
+): Promise<void> & { timeout: NodeJS.Timeout | number };
 export function timeout<TPromise extends PromiseLike<unknown>>(
     promise: TPromise,
     ms: number,

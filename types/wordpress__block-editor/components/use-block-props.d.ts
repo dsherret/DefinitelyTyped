@@ -18,12 +18,9 @@ export interface Merged {
 
 export interface UseBlockProps {
     <Props extends Record<string, unknown>>(
-        props?:
-            & Props
-            & {
-                [K in keyof Props]: K extends keyof Reserved ? never : Props[K];
-            }
-            & { ref?: Ref<unknown> },
+        props?: Props & {
+            [K in keyof Props]: K extends keyof Reserved ? never : Props[K];
+        } & { ref?: Ref<unknown> },
     ): Omit<Props, "ref"> & Merged & Reserved;
 
     save: (props?: Record<string, unknown>) => Record<string, unknown>;

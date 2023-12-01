@@ -5,7 +5,13 @@ declare global {
         saveFile(filename: string, mime: string, content: string): void;
 
         // open dialog to send geo intent for navigation apps like gmaps or waze etc...
-        intentPosLink(lat: number, lng: number, zoom: number, title: string, isPortal: boolean): void;
+        intentPosLink(
+            lat: number,
+            lng: number,
+            zoom: number,
+            title: string,
+            isPortal: boolean,
+        ): void;
 
         // share a string to the IITC share activity. only uses the share tab.
         shareString(text: string): void;
@@ -18,7 +24,11 @@ declare global {
         getVersionCode(): number;
         getVersionName(): string;
 
-        addPane(id: string, label: string, icon?: string /*= "ic_action_new_event"*/): void;
+        addPane(
+            id: string,
+            label: string,
+            icon?: string /*= "ic_action_new_event"*/,
+        ): void;
         switchToPane(id: string): void;
 
         dialogFocused(id: string): void;

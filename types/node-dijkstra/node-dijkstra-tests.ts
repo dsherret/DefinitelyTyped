@@ -6,9 +6,7 @@ const graph = new Graph();
 const graph2 = new Graph({ A: { B: 1 } });
 
 // $ExpectType Graph
-graph
-    .addNode("A", { B: 1 })
-    .removeNode("C");
+graph.addNode("A", { B: 1 }).removeNode("C");
 
 // $ExpectType string[] | PathResult || PathResult | string[]
 graph2.path("A", "B");

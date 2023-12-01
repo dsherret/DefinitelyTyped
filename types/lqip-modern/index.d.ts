@@ -15,7 +15,10 @@ declare namespace lqip {
         };
     }
 
-    type OutputFormat = WebpOptions["outputFormat"] | JpegOptions["outputFormat"] | JpgOptions["outputFormat"];
+    type OutputFormat =
+        | WebpOptions["outputFormat"]
+        | JpegOptions["outputFormat"]
+        | JpgOptions["outputFormat"];
 
     type LqipOptions = WebpOptions | JpegOptions | JpgOptions | DefaultOptions;
 
@@ -38,7 +41,10 @@ declare namespace lqip {
     }
 }
 
-declare function lqip(input: string | Buffer, options?: lqip.LqipOptions): Promise<lqip.LqipResult>;
+declare function lqip(
+    input: string | Buffer,
+    options?: lqip.LqipOptions,
+): Promise<lqip.LqipResult>;
 declare function lqip(
     input: readonly string[] | readonly Buffer[],
     options?: lqip.LqipOptions,

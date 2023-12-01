@@ -19,9 +19,9 @@ const task = RNBackgroundDownloader.download({
     },
 })
     .begin(({ expectedBytes }) => {})
-    .progress(percent => {})
+    .progress((percent) => {})
     .done(() => {})
-    .error(error => {});
+    .error((error) => {});
 
 const taskFuncTest = (task: DownloadTask) => {
     // Check task state

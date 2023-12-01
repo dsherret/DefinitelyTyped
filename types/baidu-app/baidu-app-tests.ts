@@ -68,7 +68,7 @@
         },
     });
 
-    uploadTask.onProgressUpdate(res => {
+    uploadTask.onProgressUpdate((res) => {
         console.log("上传进度", res.progress);
         console.log("已经上传的数据长度", res.totalBytesSent);
         console.log("预期需要上传的数据总长度", res.totalBytesExpectedToSend);
@@ -105,7 +105,7 @@
         },
     });
 
-    downloadTask.onProgressUpdate(res => {
+    downloadTask.onProgressUpdate((res) => {
         console.log("下载进度", res.progress);
         console.log("已经下载的数据长度", res.totalBytesWritten);
         console.log("预期需要下载的数据总长度", res.totalBytesExpectedToWrite);
@@ -353,13 +353,13 @@
     voiceRecognizer.onStart(() => {
         console.log("voice start");
     });
-    voiceRecognizer.onRecognize(res => {
+    voiceRecognizer.onRecognize((res) => {
         console.log("voice recognize", res);
     });
-    voiceRecognizer.onFinish(res => {
+    voiceRecognizer.onFinish((res) => {
         console.log("voice end", res);
     });
-    voiceRecognizer.onError(err => {
+    voiceRecognizer.onError((err) => {
         console.log("voice error", err);
     });
 
@@ -595,8 +595,7 @@
 (() => {
     try {
         swan.setStorageSync("key", "value");
-    } catch (e) {
-    }
+    } catch (e) {}
     swan.getStorage({
         key: "key",
         success(res) {
@@ -609,8 +608,7 @@
     });
     try {
         const result = swan.getStorageSync("key");
-    } catch (e) {
-    }
+    } catch (e) {}
     swan.getStorageInfo({
         success(res) {
             console.log(res.keys);
@@ -623,8 +621,7 @@
     try {
         const result = swan.getStorageInfoSync();
         console.log(result);
-    } catch (e) {
-    }
+    } catch (e) {}
 })();
 
 (() => {
@@ -640,12 +637,10 @@
     });
     try {
         swan.removeStorageSync("key");
-    } catch (e) {
-    }
+    } catch (e) {}
     try {
         swan.clearStorageSync();
-    } catch (e) {
-    }
+    } catch (e) {}
 })();
 
 (() => {
@@ -718,13 +713,16 @@
         includePoints() {
             mapContext.includePoints({
                 padding: [10],
-                points: [{
-                    latitude: 23,
-                    longitude: 113.33,
-                }, {
-                    latitude: 23,
-                    longitude: 113.3345211,
-                }],
+                points: [
+                    {
+                        latitude: 23,
+                        longitude: 113.33,
+                    },
+                    {
+                        latitude: 23,
+                        longitude: 113.3345211,
+                    },
+                ],
             });
         },
         getRegion() {
@@ -1121,9 +1119,9 @@
     const ctx = swan.createCanvasContext("myCanvas");
 
     ctx.strokeRect(100, 10, 150, 100);
-    ctx.rotate(20 * Math.PI / 180);
+    ctx.rotate((20 * Math.PI) / 180);
     ctx.strokeRect(100, 10, 150, 100);
-    ctx.rotate(20 * Math.PI / 180);
+    ctx.rotate((20 * Math.PI) / 180);
     ctx.strokeRect(100, 10, 150, 100);
 
     ctx.draw();
@@ -1361,7 +1359,7 @@
     swan.showActionSheet({
         itemList: ["同意", "一般", "不同意"],
         success(res) {
-            console.log(`用户点击了第${(res.tapIndex + 1)}个按钮`);
+            console.log(`用户点击了第${res.tapIndex + 1}个按钮`);
         },
     });
 })();
@@ -1504,8 +1502,9 @@
 (() => {
     swan.createIntersectionObserver({} as any, {
         selectAll: true,
-    }).relativeTo(".container")
-        .observe(".ball", res => {
+    })
+        .relativeTo(".container")
+        .observe(".ball", (res) => {
             console.log(res.intersectionRect); // 相交区域
             console.log(res.intersectionRect.left); // 相交区域的左边界坐标
             console.log(res.intersectionRect.top); // 相交区域的上边界坐标
@@ -1533,21 +1532,10 @@
     });
     Page({
         getRect() {
-            swan.createSelectorQuery().select("#the-id").boundingClientRect((res) => {
-                const rect = res as swan.NodesRefRect;
-                rect.id; // 节点的ID
-                rect.dataset; // 节点的dataset
-                rect.left; // 节点的左边界坐标
-                rect.right; // 节点的右边界坐标
-                rect.top; // 节点的上边界坐标
-                rect.bottom; // 节点的下边界坐标
-                rect.width; // 节点的宽度
-                rect.height; // 节点的高度
-            }).exec();
-        },
-        getAllRects() {
-            swan.createSelectorQuery().selectAll(".a-class").boundingClientRect((rects) => {
-                (rects as swan.NodesRefRect[]).forEach((rect) => {
+            swan.createSelectorQuery()
+                .select("#the-id")
+                .boundingClientRect((res) => {
+                    const rect = res as swan.NodesRefRect;
                     rect.id; // 节点的ID
                     rect.dataset; // 节点的dataset
                     rect.left; // 节点的左边界坐标
@@ -1556,40 +1544,66 @@
                     rect.bottom; // 节点的下边界坐标
                     rect.width; // 节点的宽度
                     rect.height; // 节点的高度
-                });
-            }).exec();
+                })
+                .exec();
+        },
+        getAllRects() {
+            swan.createSelectorQuery()
+                .selectAll(".a-class")
+                .boundingClientRect((rects) => {
+                    (rects as swan.NodesRefRect[]).forEach((rect) => {
+                        rect.id; // 节点的ID
+                        rect.dataset; // 节点的dataset
+                        rect.left; // 节点的左边界坐标
+                        rect.right; // 节点的右边界坐标
+                        rect.top; // 节点的上边界坐标
+                        rect.bottom; // 节点的下边界坐标
+                        rect.width; // 节点的宽度
+                        rect.height; // 节点的高度
+                    });
+                })
+                .exec();
         },
     });
     Page({
         getScrollOffset() {
-            swan.createSelectorQuery().selectViewport().scrollOffset((res) => {
-                res.id; // 节点的ID
-                res.dataset; // 节点的dataset
-                res.scrollLeft; // 节点的水平滚动位置
-                res.scrollTop; // 节点的竖直滚动位置
-            }).exec();
+            swan.createSelectorQuery()
+                .selectViewport()
+                .scrollOffset((res) => {
+                    res.id; // 节点的ID
+                    res.dataset; // 节点的dataset
+                    res.scrollLeft; // 节点的水平滚动位置
+                    res.scrollTop; // 节点的竖直滚动位置
+                })
+                .exec();
         },
     });
     Page({
         getFields() {
-            swan.createSelectorQuery().select("#the-id").fields({
-                dataset: true,
-                size: true,
-                scrollOffset: true,
-                properties: ["scrollX", "scrollY"],
-                computedStyle: ["margin", "backgroundColor"],
-            }, (res) => {
-                res.dataset; // 节点的dataset
-                res.width; // 节点的宽度
-                res.height; // 节点的高度
-                res.scrollLeft; // 节点的水平滚动位置
-                res.scrollTop; // 节点的竖直滚动位置
-                res.scrollX; // 节点 scroll-x 属性的当前值
-                res.scrollY; // 节点 scroll-y 属性的当前值
-                // 此处返回指定要返回的样式名
-                res.margin;
-                res.backgroundColor;
-            }).exec();
+            swan.createSelectorQuery()
+                .select("#the-id")
+                .fields(
+                    {
+                        dataset: true,
+                        size: true,
+                        scrollOffset: true,
+                        properties: ["scrollX", "scrollY"],
+                        computedStyle: ["margin", "backgroundColor"],
+                    },
+                    (res) => {
+                        res.dataset; // 节点的dataset
+                        res.width; // 节点的宽度
+                        res.height; // 节点的高度
+                        res.scrollLeft; // 节点的水平滚动位置
+                        res.scrollTop; // 节点的竖直滚动位置
+                        res.scrollX; // 节点 scroll-x 属性的当前值
+                        res.scrollY; // 节点 scroll-y 属性的当前值
+                        // 此处返回指定要返回的样式名
+                        res.margin;
+                        res.backgroundColor;
+                    },
+                )
+                .exec();
         },
     });
 })();

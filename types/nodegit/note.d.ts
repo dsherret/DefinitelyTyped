@@ -12,7 +12,12 @@ export class Note {
         note: string,
         force: number,
     ): Promise<Oid>;
-    static foreach(repo: Repository, notesRef: string, noteCb: Function, payload: any): Promise<number>;
+    static foreach(
+        repo: Repository,
+        notesRef: string,
+        noteCb: Function,
+        payload: any,
+    ): Promise<number>;
     static iteratorNew(repo: Repository, notesRef: string): Promise<any>;
     static next(noteId: Oid, annotatedId: Oid, it: any): number;
     static read(repo: Repository, notesRef: string, oid: Oid): Promise<Note>;

@@ -47,7 +47,10 @@ export class ValidateScheme {
 
 export class ValidateUrl {
     constructor(packages: { packages: Packages });
-    validate(allowedUrls: readonly string[], options?: ValidationOptions): ValidationResult;
+    validate(
+        allowedUrls: readonly string[],
+        options?: ValidationOptions,
+    ): ValidationResult;
     validateSingle(packageName: string, allowedUrls: Hosts): boolean;
 }
 

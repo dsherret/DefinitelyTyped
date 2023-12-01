@@ -405,7 +405,14 @@ interface Animation {
     /**
      * Same as [transform-function](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix).
      */
-    matrix: (a: number, b: number, c: number, d: number, tx: number, ty: number) => Animation;
+    matrix: (
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        tx: number,
+        ty: number,
+    ) => Animation;
 
     /**
      * Same as [transform-function matrix3d](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/matrix3d).
@@ -447,7 +454,14 @@ interface CanvasContext {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_ui_canvas_canvas-context_canvascontext-arc)
      */
-    arc: (x: number, y: number, r: number, sAngle: number, eAngle: number, counterclockwise?: boolean) => void;
+    arc: (
+        x: number,
+        y: number,
+        r: number,
+        sAngle: number,
+        eAngle: number,
+        counterclockwise?: boolean,
+    ) => void;
 
     /**
      * Start to create a path, must use `fill` or `stroke` to fill or stroke the path.
@@ -465,7 +479,14 @@ interface CanvasContext {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_ui_canvas_canvas-context_canvascontext-beziercurveto)
      */
-    bezierCurveTo: (cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number) => void;
+    bezierCurveTo: (
+        cp1x: number,
+        cp1y: number,
+        cp2x: number,
+        cp2y: number,
+        x: number,
+        y: number,
+    ) => void;
 
     /**
      * Clear the content in the rect.
@@ -506,7 +527,12 @@ interface CanvasContext {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_ui_canvas_canvas-context_canvascontext-createlineargradient)
      */
-    createLinearGradient: (x0: number, y0: number, x1: number, y1: number) => void;
+    createLinearGradient: (
+        x0: number,
+        y0: number,
+        x1: number,
+        y1: number,
+    ) => void;
 
     /**
      * Draw the description in the context such as path, style to the canvas.
@@ -520,7 +546,13 @@ interface CanvasContext {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_ui_canvas_canvas-context_canvascontext-drawimage)
      */
-    drawImage: (imageResource: string, x: number, y: number, width?: number, height?: number) => void;
+    drawImage: (
+        imageResource: string,
+        x: number,
+        y: number,
+        width?: number,
+        height?: number,
+    ) => void;
 
     /**
      * Fill the current path. The default color is black.
@@ -550,18 +582,16 @@ interface CanvasContext {
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_ui_canvas_canvas-context_canvascontext-getimagedata)
      */
     getImageData: (
-        args:
-            & {
-                x: number;
-                y: number;
-                width: number;
-                height: number;
-            }
-            & AsyncCallback<{
-                width: number;
-                height: number;
-                data?: Uint8ClampedArray | undefined;
-            }>,
+        args: {
+            x: number;
+            y: number;
+            width: number;
+            height: number;
+        } & AsyncCallback<{
+            width: number;
+            height: number;
+            data?: Uint8ClampedArray | undefined;
+        }>,
     ) => void;
 
     /**
@@ -712,7 +742,12 @@ interface CanvasContext {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_ui_canvas_canvas-context_canvascontext-setshadow)
      */
-    setShadow: (offsetX: number, offsetY: number, blur: number, color: string) => void;
+    setShadow: (
+        offsetX: number,
+        offsetY: number,
+        blur: number,
+        color: string,
+    ) => void;
 
     /**
      * Set the style of stroke. By default, it is black.
@@ -789,20 +824,18 @@ interface CanvasContext {
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_ui_canvas_canvas-context_canvascontext-totempfilepath)
      */
     toTempFilePath: (
-        args:
-            & {
-                x?: number | undefined;
-                y?: number | undefined;
-                width?: number | undefined;
-                height?: number | undefined;
-                destWidth?: number | undefined;
-                destHeight?: number | undefined;
-                fileType?: string | undefined;
-                quality?: number | undefined;
-            }
-            & AsyncCallback<{
-                filePath: string;
-            }>,
+        args: {
+            x?: number | undefined;
+            y?: number | undefined;
+            width?: number | undefined;
+            height?: number | undefined;
+            destWidth?: number | undefined;
+            destHeight?: number | undefined;
+            fileType?: string | undefined;
+            quality?: number | undefined;
+        } & AsyncCallback<{
+            filePath: string;
+        }>,
     ) => void;
 
     /**
@@ -892,12 +925,11 @@ interface SelectorQuery {
     selectViewport: () => SelectorQuery;
 }
 
-interface MultiLevelSelectArgs extends
-    AsyncCallback<{
+interface MultiLevelSelectArgs
+    extends AsyncCallback<{
         success: boolean;
         result: any[];
-    }>
-{
+    }> {
     title?: string | undefined;
     list: any[];
     name: string;
@@ -921,11 +953,10 @@ interface SetBackgroundColorArgs extends AsyncVoidCallback {
     backgroundColorBottom: string;
 }
 
-interface ChooseImageArgs extends
-    AsyncCallback<{
+interface ChooseImageArgs
+    extends AsyncCallback<{
         apFilePaths: string[];
-    }>
-{
+    }> {
     count?: number | undefined;
     sizeType?: string[] | undefined;
     sourceType?: string[] | undefined;
@@ -977,7 +1008,8 @@ interface GetFileArgs extends AsyncCallback<{ size: number; digest: string }> {
     digestAlgorithm?: string | undefined;
 }
 
-interface GetSavedFileInfo extends AsyncCallback<{ size: number; createTime: number }> {
+interface GetSavedFileInfo
+    extends AsyncCallback<{ size: number; createTime: number }> {
     apFilePath: string;
 }
 
@@ -1027,8 +1059,8 @@ interface RequestArgs extends AsyncCallback<RequestCallbackValue> {
      */
     headers?:
         | {
-            [key: string]: string;
-        }
+              [key: string]: string;
+          }
         | undefined;
     method?: "GET" | "POST" | undefined;
     data?: any;
@@ -1170,16 +1202,15 @@ interface AddPhoneContactArgs extends AsyncCallback<{ success: true }> {
     homeAddressPostalCode: string;
 }
 
-interface ShowAuthGuideArgs extends
-    AsyncCallback<{
+interface ShowAuthGuideArgs
+    extends AsyncCallback<{
         /**
          * When shown is true, it indicates the permission guide
          * pop-up will be shown; when it is false, it indicates
          * the user has allowed the permission.
          */
         shown: boolean;
-    }>
-{
+    }> {
     /**
      * Identifier of the permission under guide, used to identify
      * the type of the permission (such as LBS).
@@ -1267,12 +1298,11 @@ interface TradePayArgs extends AsyncCallback<{ resultCode: string }> {
     paymentUrl?: string | undefined;
 }
 
-interface SignContractArgs extends
-    AsyncCallback<{
+interface SignContractArgs
+    extends AsyncCallback<{
         authState: string;
         authCode: string;
-    }>
-{
+    }> {
     signStr: string;
 }
 
@@ -1332,8 +1362,13 @@ interface StartBluetoothDevicesDiscoveryArgs extends AsyncCallback {
 }
 
 interface ReadBLECharacteristicValueArgs
-    extends AsyncCallback<{ characteristic: { characteristicId: string; serviceId: string; value: string } }>
-{
+    extends AsyncCallback<{
+        characteristic: {
+            characteristicId: string;
+            serviceId: string;
+            value: string;
+        };
+    }> {
     deviceId: string;
     serviceId: string;
     characteristicId: string;
@@ -2068,7 +2103,9 @@ interface MiniprogramApi {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_network_onsocketmessage)
      */
-    onSocketMessage: (args: (arg: { data: string; isBuffer?: boolean }) => void) => void;
+    onSocketMessage: (
+        args: (arg: { data: string; isBuffer?: boolean }) => void,
+    ) => void;
 
     /**
      * Use this API to unlisten to the event of receiving server messages by WebSocket.
@@ -2103,7 +2140,9 @@ interface MiniprogramApi {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_accelerometer_onaccelerometerchange)
      */
-    onAccelerometerChange: (args: (arg: { x: number; y: number; z: number }) => void) => void;
+    onAccelerometerChange: (
+        args: (arg: { x: number; y: number; z: number }) => void,
+    ) => void;
 
     /**
      * Use this API to stop listening to acceleration data event.
@@ -2131,7 +2170,9 @@ interface MiniprogramApi {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_battery_getbatteryinfo)
      */
-    getBatteryInfo: (args?: AsyncCallback<{ level: number; isCharging: boolean }>) => void;
+    getBatteryInfo: (
+        args?: AsyncCallback<{ level: number; isCharging: boolean }>,
+    ) => void;
 
     /**
      * Use this API to synchronously obtain the battery level and the charging state of the current device. No parameters are required.
@@ -2148,7 +2189,13 @@ interface MiniprogramApi {
      */
     openSetting: (
         args?: AsyncCallback<{
-            authSetting: { camera: any; location: any; album: any; userInfo: any; phoneNumber: any };
+            authSetting: {
+                camera: any;
+                location: any;
+                album: any;
+                userInfo: any;
+                phoneNumber: any;
+            };
         }>,
     ) => void;
 
@@ -2175,21 +2222,27 @@ interface MiniprogramApi {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_bluetooth_getbluetoothadapterstate#9097f31e)
      */
-    getBluetoothAdapterState: (args: AsyncCallback<{ discovering: boolean; available: boolean }>) => void;
+    getBluetoothAdapterState: (
+        args: AsyncCallback<{ discovering: boolean; available: boolean }>,
+    ) => void;
 
     /**
      * Use this API to get all the bluetooth devices that are discovered, including those that are connected to the current device.
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_bluetooth_getbluetoothdevices)
      */
-    getBluetoothDevices: (args: AsyncCallback<{ devices: BluetoothDevices[] }>) => void;
+    getBluetoothDevices: (
+        args: AsyncCallback<{ devices: BluetoothDevices[] }>,
+    ) => void;
 
     /**
      * Use this API to get the bluetooth devices that are connected.
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_bluetooth_getconnectedbluetoothdevices)
      */
-    getConnectedBluetoothDevices: (args: { deviceId: string } & AsyncCallback) => void;
+    getConnectedBluetoothDevices: (
+        args: { deviceId: string } & AsyncCallback,
+    ) => void;
 
     /**
      * Use this API to remove the bluetooth adapter with a state change.
@@ -2203,7 +2256,9 @@ interface MiniprogramApi {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_bluetooth_offbluetoothadapterstatechange)
      */
-    onBluetoothDeviceFound: (args: AsyncCallback<{ devices: BluetoothDevices[] }>) => void;
+    onBluetoothDeviceFound: (
+        args: AsyncCallback<{ devices: BluetoothDevices[] }>,
+    ) => void;
 
     /**
      * Use this API to remove the bluetooth devices that are found.
@@ -2217,14 +2272,18 @@ interface MiniprogramApi {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_bluetooth_onbluetoothadapterstatechange#9097f31e)
      */
-    onBluetoothAdapterStateChange: (args?: AsyncCallback<{ discovering: boolean; available: boolean }>) => void;
+    onBluetoothAdapterStateChange: (
+        args?: AsyncCallback<{ discovering: boolean; available: boolean }>,
+    ) => void;
 
     /**
      * Use this API to start discovering bluetooth devices. You can find the results in the API my.onBluetoothDeviceFound.
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_bluetooth_startbluetoothdevicesdiscovery)
      */
-    startBluetoothDevicesDiscovery: (args?: StartBluetoothDevicesDiscoveryArgs) => void;
+    startBluetoothDevicesDiscovery: (
+        args?: StartBluetoothDevicesDiscoveryArgs,
+    ) => void;
 
     /**
      * Use this API to stop discovering bluetooth devices.
@@ -2253,21 +2312,19 @@ interface MiniprogramApi {
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_ble_getbledevicecharacteristics)
      */
     getBLEDeviceCharacteristics: (
-        args:
-            & { deviceId: string; serviceId: string }
-            & AsyncCallback<{
-                characteristic: Array<{
-                    characteristicId: string;
-                    serviceId: string;
-                    value: string;
-                    properties: {
-                        read: boolean;
-                        write: boolean;
-                        notify: boolean;
-                        indicate: boolean;
-                    };
-                }>;
-            }>,
+        args: { deviceId: string; serviceId: string } & AsyncCallback<{
+            characteristic: Array<{
+                characteristicId: string;
+                serviceId: string;
+                value: string;
+                properties: {
+                    read: boolean;
+                    write: boolean;
+                    notify: boolean;
+                    indicate: boolean;
+                };
+            }>;
+        }>,
     ) => void;
 
     /**
@@ -2276,7 +2333,9 @@ interface MiniprogramApi {
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_ble_getbledeviceservices)
      */
     getBLEDeviceServices: (
-        args: { deviceId: string } & AsyncCallback<{ services: Array<{ isPrimary: boolean; serviceId: string }> }>,
+        args: { deviceId: string } & AsyncCallback<{
+            services: Array<{ isPrimary: boolean; serviceId: string }>;
+        }>,
     ) => void;
 
     /**
@@ -2313,14 +2372,18 @@ interface MiniprogramApi {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_ble_onblecharacteristicvaluechange)
      */
-    onBLECharacteristicValueChange: (args: (arg: { deviceId: string; connected: boolean }) => void) => void;
+    onBLECharacteristicValueChange: (
+        args: (arg: { deviceId: string; connected: boolean }) => void,
+    ) => void;
 
     /**
      * Use this API to listen to the Bluetooth Low Energy (BLE) connection error event, including device loss and unusual disconnections.
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_ble_onbleconnectionstatechanged)
      */
-    onBLEConnectionStateChanged: (args: (arg: { deviceId: string; connected: boolean }) => void) => void;
+    onBLEConnectionStateChanged: (
+        args: (arg: { deviceId: string; connected: boolean }) => void,
+    ) => void;
 
     /**
      * Use this API to read the data of Bluetooth Low Energy (BLE) device characteristics.
@@ -2335,14 +2398,18 @@ interface MiniprogramApi {
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_device_bluetooth_ble_writeblecharacteristicvalue)
      */
-    writeBLECharacteristicValue: (args: WriteBLECharacteristicValueArgs) => void;
+    writeBLECharacteristicValue: (
+        args: WriteBLECharacteristicValueArgs,
+    ) => void;
 
     /**
      * The my.openDocument API enables users to preview a PDF file within the mini program.
      *
      * [Docs Link](https://miniprogram.alipay.com/docs/miniprogram/mpdev/api_file_myopendocument)
      */
-    openDocument: (args: { filePath: string; fileType: string } & AsyncCallback) => void;
+    openDocument: (
+        args: { filePath: string; fileType: string } & AsyncCallback,
+    ) => void;
 
     /**
      * View the location on the built-in map.
@@ -2378,10 +2445,10 @@ interface LaunchQuery {
     path: string;
     referrerInfo?:
         | {
-            appId: string;
-            sourceServiceId: string;
-            extraData: any;
-        }
+              appId: string;
+              sourceServiceId: string;
+              extraData: any;
+          }
         | undefined;
 }
 
@@ -2424,67 +2491,70 @@ interface OnPullDownRefresh {
 }
 
 interface OnTabItemTap {
-    (obj: { from: string; pagePath: string; text: string; index: number }): void;
+    (obj: {
+        from: string;
+        pagePath: string;
+        text: string;
+        index: number;
+    }): void;
 }
 
 declare function Page(
-    obj:
-        & {
-            data?: any;
+    obj: {
+        data?: any;
 
-            /**
-             * Page loading
-             */
-            onLoad?: ((query?: any) => void) | undefined;
-            onShow?: EmptyFn | undefined;
-            /**
-             * Page loading complete
-             */
-            onReady?: EmptyFn | undefined;
-            onHide?: EmptyFn | undefined;
-            onUnload?: EmptyFn | undefined;
-            onTitleClick?: EmptyFn | undefined;
-            onPullDownRefresh?: OnPullDownRefresh | undefined;
-            onPullIntercept?: EmptyFn | undefined;
-            onReachBottom?: EmptyFn | undefined;
-            onShareAppMessage?: ((opts: any) => void) | undefined;
-            onOptionMenuClick?: EmptyFn | undefined;
-            onPopMenuClick?: EmptyFn | undefined;
-            onTabItemTap?: OnTabItemTap | undefined;
-            onPageScroll?: ((opts: { scrollTop: number }) => void) | undefined;
-            events?:
-                | {
-                    onBack?: EmptyFn | undefined;
-                    onKeyboardHeight?: EmptyFn | undefined;
-                    onOptionMenuClick?: EmptyFn | undefined;
-                    onPopMenuClick?: EmptyFn | undefined;
-                    onPullIntercept?: EmptyFn | undefined;
-                    onPullDownRefresh?: OnPullDownRefresh | undefined;
-                    onTitleClick?: EmptyFn | undefined;
-                    onTabItemTap?: OnTabItemTap | undefined;
-                    beforeTabItemTap?: EmptyFn | undefined;
-                    onResize?:
-                        | ((opts: {
+        /**
+         * Page loading
+         */
+        onLoad?: ((query?: any) => void) | undefined;
+        onShow?: EmptyFn | undefined;
+        /**
+         * Page loading complete
+         */
+        onReady?: EmptyFn | undefined;
+        onHide?: EmptyFn | undefined;
+        onUnload?: EmptyFn | undefined;
+        onTitleClick?: EmptyFn | undefined;
+        onPullDownRefresh?: OnPullDownRefresh | undefined;
+        onPullIntercept?: EmptyFn | undefined;
+        onReachBottom?: EmptyFn | undefined;
+        onShareAppMessage?: ((opts: any) => void) | undefined;
+        onOptionMenuClick?: EmptyFn | undefined;
+        onPopMenuClick?: EmptyFn | undefined;
+        onTabItemTap?: OnTabItemTap | undefined;
+        onPageScroll?: ((opts: { scrollTop: number }) => void) | undefined;
+        events?:
+            | {
+                  onBack?: EmptyFn | undefined;
+                  onKeyboardHeight?: EmptyFn | undefined;
+                  onOptionMenuClick?: EmptyFn | undefined;
+                  onPopMenuClick?: EmptyFn | undefined;
+                  onPullIntercept?: EmptyFn | undefined;
+                  onPullDownRefresh?: OnPullDownRefresh | undefined;
+                  onTitleClick?: EmptyFn | undefined;
+                  onTabItemTap?: OnTabItemTap | undefined;
+                  beforeTabItemTap?: EmptyFn | undefined;
+                  onResize?:
+                      | ((opts: {
                             size: {
                                 windowWidth: number;
                                 windowHeight: number;
                             };
                         }) => void)
-                        | undefined;
-                }
-                | undefined;
+                      | undefined;
+              }
+            | undefined;
 
-            [key: string]: any;
-        }
-        & ThisType<{
-            readonly data: any;
-            readonly route: string;
-            setData: (data: any, cb?: EmptyFn) => void;
-            $spliceData: (data: any, cb?: EmptyFn) => void;
-            $batchedUpdates: (cb: EmptyFn) => void;
+        [key: string]: any;
+    } & ThisType<{
+        readonly data: any;
+        readonly route: string;
+        setData: (data: any, cb?: EmptyFn) => void;
+        $spliceData: (data: any, cb?: EmptyFn) => void;
+        $batchedUpdates: (cb: EmptyFn) => void;
 
-            [key: string]: any;
-        }>,
+        [key: string]: any;
+    }>,
 ): void;
 
 declare function getCurrentPages(): any[];

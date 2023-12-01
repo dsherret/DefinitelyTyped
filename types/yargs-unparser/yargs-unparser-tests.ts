@@ -6,11 +6,14 @@ unparse({ _: [], foo: "foo", bar: 1, baz: true });
 
 unparse({ _: [], foo: "foo", bar: 1, baz: true }, {});
 
-unparse({ _: [], foo: "foo", bar: 1, baz: true }, {
-    alias: { foo: ["f"] },
-    default: { foo: "bar" },
-    command: "qux",
-});
+unparse(
+    { _: [], foo: "foo", bar: 1, baz: true },
+    {
+        alias: { foo: ["f"] },
+        default: { foo: "bar" },
+        command: "qux",
+    },
+);
 
 const argv: Argv = unparse({ _: ["some/cmd"], foo: "bar" });
 

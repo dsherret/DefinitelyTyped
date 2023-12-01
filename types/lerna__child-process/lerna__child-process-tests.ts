@@ -1,4 +1,11 @@
-import { exec, execSync, getChildProcessCount, getExitCode, spawn, spawnStreaming } from "@lerna/child-process";
+import {
+    exec,
+    execSync,
+    getChildProcessCount,
+    getExitCode,
+    spawn,
+    spawnStreaming,
+} from "@lerna/child-process";
 import { Options, SyncOptions } from "execa";
 
 const childCount: number = getChildProcessCount();

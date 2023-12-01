@@ -142,7 +142,10 @@ export interface RadialGradientBackground {
 }
 
 // Button
-export type BackgroundProps = string | LinearGradientBackground | RadialGradientBackground;
+export type BackgroundProps =
+    | string
+    | LinearGradientBackground
+    | RadialGradientBackground;
 
 export interface GlobalTheme {
     type: "light" | "dark" | string;

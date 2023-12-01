@@ -29,14 +29,20 @@ declare namespace DineroFactory {
         getLocale(): string;
         setLocale(newLocale: string): Dinero;
         getPrecision(): number;
-        convertPrecision(newPrecision: number, roundingMode?: RoundingMode): Dinero;
+        convertPrecision(
+            newPrecision: number,
+            roundingMode?: RoundingMode,
+        ): Dinero;
         add(addend: Dinero): Dinero;
         subtract(subtrahend: Dinero): Dinero;
         multiply(multiplier: number, roundingMode?: RoundingMode): Dinero;
         divide(divisor: number, roundingMode?: RoundingMode): Dinero;
         percentage(percentage: number, roundingMode?: RoundingMode): Dinero;
         allocate(ratios: readonly number[]): Dinero[];
-        convert(currency: string, options?: ExchangeRatesApiOptions): Promise<Dinero>;
+        convert(
+            currency: string,
+            options?: ExchangeRatesApiOptions,
+        ): Promise<Dinero>;
         equalsTo(comparator: Dinero): boolean;
         lessThan(comparator: Dinero): boolean;
         lessThanOrEqual(comparator: Dinero): boolean;

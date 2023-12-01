@@ -5,7 +5,8 @@ import { ComponentType, MouseEventHandler } from "react";
 declare namespace MediaPlaceholder {
     type MediaPlaceholderMultipleAction = "add";
 
-    interface Props<T extends boolean> extends Pick<DropZone.Props, "onHTMLDrop"> {
+    interface Props<T extends boolean>
+        extends Pick<DropZone.Props, "onHTMLDrop"> {
         /**
          * A string passed to `FormFileUpload` that tells the browser which file types can be uploaded
          * to the upload window the browser use e.g: `image#<{(|,video#<{(|`.
@@ -62,10 +63,12 @@ declare namespace MediaPlaceholder {
          * An object that can contain a `title` and `instructions` properties. These properties are
          * passed to the placeholder component as `label` and `instructions` respectively.
          */
-        labels?: {
-            title?: string | undefined;
-            instructions?: string | undefined;
-        } | undefined;
+        labels?:
+            | {
+                  title?: string | undefined;
+                  instructions?: string | undefined;
+              }
+            | undefined;
         /** Undocumented. */
         mediaPreview?: JSX.Element | undefined;
         /**
@@ -80,9 +83,12 @@ declare namespace MediaPlaceholder {
         onError?(message: string): void;
         onSelectURL?(src: string): void;
         multiple?: T | MediaPlaceholderMultipleAction | undefined;
-        value?: T extends true ? number[] : number | undefined | undefined | undefined | undefined;
+        value?: T extends true
+            ? number[]
+            : number | undefined | undefined | undefined | undefined;
         onSelect(
-            value: T extends true ? Array<{ id: number } & { [k: string]: any }>
+            value: T extends true
+                ? Array<{ id: number } & { [k: string]: any }>
                 : { id: number } & { [k: string]: any },
         ): void;
     }
@@ -99,6 +105,8 @@ declare namespace MediaPlaceholder {
     // }
     // type Props = PropsWithoutMultiple | PropsWithMultiple;
 }
-declare function MediaPlaceholder<T extends boolean = false>(props: MediaPlaceholder.Props<T>): JSX.Element;
+declare function MediaPlaceholder<T extends boolean = false>(
+    props: MediaPlaceholder.Props<T>,
+): JSX.Element;
 
 export default MediaPlaceholder;

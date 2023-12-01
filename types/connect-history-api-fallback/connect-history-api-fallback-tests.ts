@@ -13,9 +13,7 @@ historyApiFallback({
 });
 
 historyApiFallback({
-    rewrites: [
-        { from: /\/soccer/, to: "/soccer.html" },
-    ],
+    rewrites: [{ from: /\/soccer/, to: "/soccer.html" }],
 });
 
 historyApiFallback({

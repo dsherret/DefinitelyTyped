@@ -150,5 +150,8 @@ declare class GlideDate {
      * gs.info(duration.getDisplayValue());
      * // 1 Day
      */
-    static subtract(start: GlideDate | GlideTime, end: GlideDate | GlideTime): GlideDuration;
+    static subtract(
+        start: GlideDate | GlideTime,
+        end: GlideDate | GlideTime,
+    ): GlideDuration;
 }

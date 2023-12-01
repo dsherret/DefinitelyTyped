@@ -45,7 +45,9 @@ function testIsNone() {
 }
 
 function testMerge() {
-    assertType<{ first: string; last: string }>(Ember.merge({ first: "Tom" }, { last: "Dale" }));
+    assertType<{ first: string; last: string }>(
+        Ember.merge({ first: "Tom" }, { last: "Dale" }),
+    );
 }
 
 function testAssign() {
@@ -55,7 +57,7 @@ function testAssign() {
 }
 
 function testOnError() {
-    Ember.onerror = error => {
+    Ember.onerror = (error) => {
         Ember.$.post("/report-error", {
             stack: error.stack,
             otherInformation: "whatever app state you want to provide",
@@ -95,7 +97,7 @@ function testDefineProperty() {
     Ember.defineProperty(
         contact,
         "fullName",
-        Ember.computed("firstName", "lastName", function() {
+        Ember.computed("firstName", "lastName", function () {
             return `${this.firstName} ${this.lastName}`;
         }),
     );
@@ -154,7 +156,7 @@ function testTryInvoke() {
     Ember.typeOf([1, 2, 90]); // $ExpectType "array"
     Ember.typeOf(/abc/); // $ExpectType "regexp"
     Ember.typeOf(new Date()); // $ExpectType "date"
-    Ember.typeOf(({} as any) as FileList); // $ExpectType "filelist"
+    Ember.typeOf({} as any as FileList); // $ExpectType "filelist"
     Ember.typeOf(Ember.Object.extend()); // $ExpectType "object"
     Ember.typeOf(Ember.Object.create()); // $ExpectType "object"
     Ember.typeOf(new Error("teamocil")); // $ExpectType "error"
@@ -174,7 +176,12 @@ function testTryInvoke() {
     Ember.assign({ a: "hello" }, { b: 6 }, { a: true }).a; // $ExpectType boolean
     // @ts-expect-error
     Ember.assign({ a: "hello" }, "", { a: true }).a;
-    Ember.assign({ d: ["gobias industries"] }, { a: "hello" }, { b: 6 }, { a: true }).d; // $ExpectType string[]
+    Ember.assign(
+        { d: ["gobias industries"] },
+        { a: "hello" },
+        { b: 6 },
+        { a: true },
+    ).d; // $ExpectType string[]
 })();
 
 (() => {

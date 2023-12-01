@@ -44,7 +44,11 @@ export interface ImageDrawingOptions {
 export class PDFPage {
     static create(): PDFPage;
 
-    setMediaBox(width: number, height: number, options?: SetMediaBoxOptions): PDFPage;
+    setMediaBox(
+        width: number,
+        height: number,
+        options?: SetMediaBoxOptions,
+    ): PDFPage;
 
     drawText(text: string, options?: TextDrawingOptions): PDFPage;
     drawRectangle(options?: RectangleDrawingOptions): PDFPage;

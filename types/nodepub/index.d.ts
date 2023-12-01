@@ -58,4 +58,7 @@ export interface Document {
     writeFilesForEPUB(folder: string): Promise<void>;
 }
 
-export function document(metadata: Metadata, generateContentsCallback?: GenerateContentsCallback): Document;
+export function document(
+    metadata: Metadata,
+    generateContentsCallback?: GenerateContentsCallback,
+): Document;

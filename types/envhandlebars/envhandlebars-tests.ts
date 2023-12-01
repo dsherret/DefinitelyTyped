@@ -1,12 +1,12 @@
 import envhandlebars = require("envhandlebars");
 import { EnvHandlebarsCallback, ExtendHandlebarsFunc } from "envhandlebars";
 
-const extendHandlebars: ExtendHandlebarsFunc = Handlebars => {
+const extendHandlebars: ExtendHandlebarsFunc = (Handlebars) => {
     Handlebars.registerHelper("fullName", (first: string, last: string) => {
         return `${last}, ${first}`;
     });
 };
-const envHandlebarsCallback: EnvHandlebarsCallback = error => {
+const envHandlebarsCallback: EnvHandlebarsCallback = (error) => {
     console.log(error);
 };
 
@@ -27,7 +27,7 @@ envhandlebars(
     {
         extendHandlebars,
     },
-    error => console.log(error),
+    (error) => console.log(error),
 );
 
 envhandlebars(envHandlebarsCallback);

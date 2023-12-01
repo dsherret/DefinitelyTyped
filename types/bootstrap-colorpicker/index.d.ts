@@ -256,8 +256,15 @@ interface JQuery {
      */
     data(methodName: "colorpicker"): ColorPicker;
 
-    off(events: ColorPickerEvents, selector?: string, handler?: (event: ColorPickerEventObject) => any): JQuery;
-    off(events: ColorPickerEvents, handler: (event: ColorPickerEventObject) => any): JQuery;
+    off(
+        events: ColorPickerEvents,
+        selector?: string,
+        handler?: (event: ColorPickerEventObject) => any,
+    ): JQuery;
+    off(
+        events: ColorPickerEvents,
+        handler: (event: ColorPickerEventObject) => any,
+    ): JQuery;
 
     on(
         events: ColorPickerEvents,
@@ -265,6 +272,13 @@ interface JQuery {
         data: any,
         handler?: (event: ColorPickerEventObject) => any,
     ): JQuery;
-    on(events: ColorPickerEvents, selector: string, handler: (event: ColorPickerEventObject) => any): JQuery;
-    on(events: ColorPickerEvents, handler: (event: ColorPickerEventObject) => any): JQuery;
+    on(
+        events: ColorPickerEvents,
+        selector: string,
+        handler: (event: ColorPickerEventObject) => any,
+    ): JQuery;
+    on(
+        events: ColorPickerEvents,
+        handler: (event: ColorPickerEventObject) => any,
+    ): JQuery;
 }

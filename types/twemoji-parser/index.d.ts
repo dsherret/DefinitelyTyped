@@ -22,7 +22,9 @@ export interface EmojiEntity {
 }
 
 export interface ParsingOptions {
-    buildUrl?: ((codepoints: string, assetType: AssetType) => string) | undefined;
+    buildUrl?:
+        | ((codepoints: string, assetType: AssetType) => string)
+        | undefined;
     /**
      * @default 'svg'
      */

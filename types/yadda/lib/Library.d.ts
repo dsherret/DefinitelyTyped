@@ -38,7 +38,12 @@ declare class Library implements localisation.Language.Library {
     ): this;
     define(
         signatures: string | string[] | RegExp | RegExp[],
-        fn?: (this: StepFn, arg1: any, arg2: any, next: (err?: Error) => void) => void,
+        fn?: (
+            this: StepFn,
+            arg1: any,
+            arg2: any,
+            next: (err?: Error) => void,
+        ) => void,
         macro_context?: Context,
         options?: Macro.Options,
     ): this;
@@ -50,37 +55,79 @@ declare class Library implements localisation.Language.Library {
     ): this;
     define(
         signatures: string | string[] | RegExp | RegExp[],
-        fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, next: (err?: Error) => void) => void,
+        fn?: (
+            this: StepFn,
+            arg1: any,
+            arg2: any,
+            arg3: any,
+            next: (err?: Error) => void,
+        ) => void,
         macro_context?: Context,
         options?: Macro.Options,
     ): this;
     define(
         signatures: string | string[] | RegExp | RegExp[],
-        fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, arg4: string) => void,
+        fn?: (
+            this: StepFn,
+            arg1: any,
+            arg2: any,
+            arg3: any,
+            arg4: string,
+        ) => void,
         macro_context?: Context,
         options?: Macro.Options,
     ): this;
     define(
         signatures: string | string[] | RegExp | RegExp[],
-        fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, arg4: any, next: (err?: Error) => void) => void,
+        fn?: (
+            this: StepFn,
+            arg1: any,
+            arg2: any,
+            arg3: any,
+            arg4: any,
+            next: (err?: Error) => void,
+        ) => void,
         macro_context?: Context,
         options?: Macro.Options,
     ): this;
     define(
         signatures: string | string[] | RegExp | RegExp[],
-        fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, arg4: any, arg5: string) => void,
+        fn?: (
+            this: StepFn,
+            arg1: any,
+            arg2: any,
+            arg3: any,
+            arg4: any,
+            arg5: string,
+        ) => void,
         macro_context?: Context,
         options?: Macro.Options,
     ): this;
     define(
         signatures: string | string[] | RegExp | RegExp[],
-        fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, arg4: any, arg5: any, next: (err?: Error) => void) => void,
+        fn?: (
+            this: StepFn,
+            arg1: any,
+            arg2: any,
+            arg3: any,
+            arg4: any,
+            arg5: any,
+            next: (err?: Error) => void,
+        ) => void,
         macro_context?: Context,
         options?: Macro.Options,
     ): this;
     define(
         signatures: string | string[] | RegExp | RegExp[],
-        fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, arg4: any, arg5: any, arg6: string) => void,
+        fn?: (
+            this: StepFn,
+            arg1: any,
+            arg2: any,
+            arg3: any,
+            arg4: any,
+            arg5: any,
+            arg6: string,
+        ) => void,
         macro_context?: Context,
         options?: Macro.Options,
     ): this;

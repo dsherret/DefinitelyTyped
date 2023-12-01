@@ -25,9 +25,12 @@ window.bar = cloneInto(bar, window, { cloneFunctions: true });
 
 // #region Async APIs
 
-(async () => {
+async () => {
     const download = await GM.download("http://example.com");
-    const downloadFilename = await GM_download("http://example.com", "download.html");
+    const downloadFilename = await GM_download(
+        "http://example.com",
+        "download.html",
+    );
 
     await GM.setValue("a", "foobar");
 
@@ -62,23 +65,24 @@ window.bar = cloneInto(bar, window, { cloneFunctions: true });
 
     const h = (await GM.getValue("h")) as object;
 
-    const i: string | number | boolean | object | undefined = await GM.getValue("i");
+    const i: string | number | boolean | object | undefined =
+        await GM.getValue("i");
 
-    await GM.listValues().then(values =>
+    await GM.listValues().then((values) =>
         values.forEach(async (name: string) => {
             console.log(name + ":", await GM.getValue(name));
-        })
+        }),
     );
 
     await GM.deleteValue("d").then(() => {
         console.log("Success");
     });
 
-    await GM.getResourceUrl("some_res").then(url => {
+    await GM.getResourceUrl("some_res").then((url) => {
         console.log("Resource url:", url);
     });
 
-    await GM.getResourceText("some_res").then(text => {
+    await GM.getResourceText("some_res").then((text) => {
         console.log("Resource text:", text);
     });
 
@@ -88,23 +92,41 @@ window.bar = cloneInto(bar, window, { cloneFunctions: true });
         image: "https://wiki.greasespot.net/images/f/f3/Book.png",
     });
 
-    await GM.openInTab("https://erosman.github.io/support/content/help.html#openInTab");
-    await GM.openInTab("https://erosman.github.io/support/content/help.html#openInTab", true);
+    await GM.openInTab(
+        "https://erosman.github.io/support/content/help.html#openInTab",
+    );
+    await GM.openInTab(
+        "https://erosman.github.io/support/content/help.html#openInTab",
+        true,
+    );
 
     await GM.setClipboard("Text to clipboard");
 
-    await GM.fetch("https://example.com").then(response => alert(response.text));
+    await GM.fetch("https://example.com").then((response) =>
+        alert(response.text),
+    );
 
     await GM.fetch("https://example.com", {
         method: "GET",
         headers: { "User-Agent": "Mozilla/5.0", Accept: "text/xml" },
-    }).then(res => console.log([res.status, res.statusText, res.ok, res.headers, res.url, res.text].join("\n")));
+    }).then((res) =>
+        console.log(
+            [
+                res.status,
+                res.statusText,
+                res.ok,
+                res.headers,
+                res.url,
+                res.text,
+            ].join("\n"),
+        ),
+    );
 
     await GM.fetch("http://example.net/login", {
         method: "POST",
         body: new URLSearchParams("username=johndoe&password=xyz123"),
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    }).then(res => {
+    }).then((res) => {
         location.href = "http://www.example.net/dashboard";
     });
 
@@ -127,7 +149,7 @@ window.bar = cloneInto(bar, window, { cloneFunctions: true });
         responseType: "json",
         signal: "",
     });
-});
+};
 // #endregion
 
 // #region Callback APIs
@@ -164,7 +186,10 @@ GM.xmlHttpRequest({
         let responseXML = null;
 
         if (!response.responseXML) {
-            responseXML = new DOMParser().parseFromString(response.responseText, "text/xml");
+            responseXML = new DOMParser().parseFromString(
+                response.responseText,
+                "text/xml",
+            );
         }
 
         console.log(
@@ -294,7 +319,8 @@ const element1 = document.querySelector("addelement1");
 const element2 = document.querySelector("addelement2");
 
 GM.addElement("addelement1", { style: "backgound-color: black;" }) === element1;
-GM_addElement("div", "addelement2", { style: "backgound-color: red;" }) === element2;
+GM_addElement("div", "addelement2", { style: "backgound-color: red;" }) ===
+    element2;
 
 function someFunc() {
     console.log("success");
@@ -338,7 +364,14 @@ const scriptRunAt: string = GM.info.script["run-at"];
 const scriptVersion: string = GM.info.script.version;
 const scriptMetaStr: string | null = GM.info.scriptMetaStr;
 const scriptHandler: string = GM.info.scriptHandler;
-const platformOS: "mac" | "win" | "android" | "cros" | "linux" | "openbsd" | "fuchsia" = GM.info.platform.os;
+const platformOS:
+    | "mac"
+    | "win"
+    | "android"
+    | "cros"
+    | "linux"
+    | "openbsd"
+    | "fuchsia" = GM.info.platform.os;
 const platformarch: "arm" | "x86-32" | "x86-64" = GM.info.platform.arch;
 const browserName: string = GM.info.browser.name;
 const browserVendor: string = GM.info.browser.vendor;

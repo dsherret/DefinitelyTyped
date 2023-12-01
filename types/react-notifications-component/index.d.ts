@@ -20,7 +20,11 @@ export interface ReactNotificationOptions {
     onRemoval?: ((id: string, removedBy: any) => void) | undefined;
     title?: string | React.ReactNode | React.FunctionComponent | undefined;
     message?: string | React.ReactNode | React.FunctionComponent | undefined;
-    content?: React.ComponentClass | React.FunctionComponent | React.ReactNode | undefined;
+    content?:
+        | React.ComponentClass
+        | React.FunctionComponent
+        | React.ReactNode
+        | undefined;
     type?: "success" | "danger" | "info" | "default" | "warning" | undefined;
     container:
         | "top-full"
@@ -39,16 +43,26 @@ export interface ReactNotificationOptions {
     slidingEnter?: TransitionOptions | undefined;
     slidingExit?: TransitionOptions | undefined;
     touchRevert?: TransitionOptions | undefined;
-    touchSlidingExit?: {
-        fade?: TransitionOptions | undefined;
-        swipe?: TransitionOptions | undefined;
-    } | undefined;
+    touchSlidingExit?:
+        | {
+              fade?: TransitionOptions | undefined;
+              swipe?: TransitionOptions | undefined;
+          }
+        | undefined;
     width?: number | undefined;
 }
 
 export interface TransitionOptions {
     duration?: number | undefined;
-    timingFunction?: "ease" | "linear" | "ease-in" | "ease-out" | "ease-in-out" | "step-start" | "step-end" | undefined;
+    timingFunction?:
+        | "ease"
+        | "linear"
+        | "ease-in"
+        | "ease-out"
+        | "ease-in-out"
+        | "step-start"
+        | "step-end"
+        | undefined;
     delay?: number | undefined;
 }
 

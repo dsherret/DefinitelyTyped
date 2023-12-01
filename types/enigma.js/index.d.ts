@@ -58,7 +58,11 @@ declare namespace enigmaJS {
          * @param request is the JSON-RPC request resulting in this error. You may use .retry() to retry sending it to QIX Engine.
          * @param error is whatever the previous interceptor resolved with.
          */
-        onFulfilled?(session: ISession, request: any, result: any): Promise<any>;
+        onFulfilled?(
+            session: ISession,
+            request: any,
+            result: any,
+        ): Promise<any>;
     }
 
     interface IRequestInterceptors {
@@ -176,7 +180,10 @@ declare namespace enigmaJS {
          * @param event - Event that triggers the function
          * @param func - Called function
          */
-        on(event: "opened" | "closed" | "suspended" | "resumed" | string, func: any): void;
+        on(
+            event: "opened" | "closed" | "suspended" | "resumed" | string,
+            func: any,
+        ): void;
     }
 
     interface IGeneratedAPI {

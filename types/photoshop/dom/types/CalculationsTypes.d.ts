@@ -1,5 +1,10 @@
 import { Channel } from "../Channel";
-import { CalculationsBlendMode, CalculationsChannel, CalculationsLayer, CalculationsResult } from "../Constants";
+import {
+    CalculationsBlendMode,
+    CalculationsChannel,
+    CalculationsLayer,
+    CalculationsResult,
+} from "../Constants";
 import { Document } from "../Document";
 import { Layer } from "../Layer";
 /**

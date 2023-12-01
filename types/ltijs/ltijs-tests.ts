@@ -65,7 +65,7 @@ const ltiAdvanced = Provider.setup(
             secure: true,
             sameSite: "None",
         },
-        serverAddon: app => {},
+        serverAddon: (app) => {},
     },
 );
 

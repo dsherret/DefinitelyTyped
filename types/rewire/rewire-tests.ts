@@ -19,7 +19,9 @@ myModule.__set__({
 
 myModule.__set__({
     console: {
-        log() {/* be quiet */},
+        log() {
+            /* be quiet */
+        },
     },
     process: {
         argv: ["testArg1", "testArg2"],
@@ -39,10 +41,11 @@ myModule.__with__({
 });
 // now port is the previous value again
 
-myModule.__with__({
-    port: 3000,
-})(() => {
-}).then(() => {
-    // now port is the previous value again
-});
+myModule
+    .__with__({
+        port: 3000,
+    })(() => {})
+    .then(() => {
+        // now port is the previous value again
+    });
 // port is still 3000 here because the promise hasn't been resolved yet

@@ -40,7 +40,11 @@ declare namespace Steam {
         webLogOn(callback: (cookie: any[]) => void): void;
 
         joinChat(chatId: string): void;
-        sendMessage(source: any, message: string, entryType: EChatEntryType): void;
+        sendMessage(
+            source: any,
+            message: string,
+            entryType: EChatEntryType,
+        ): void;
 
         setPersonaState(state: EPersonaState): void;
         setPersonaName(name: string): void;

@@ -5,7 +5,10 @@ import metascraper = require("metascraper");
 
 declare namespace getData {
     type PickDefaultFunction = (sizes: FaviconSize[]) => FaviconSize;
-    type PickFunction = (sizes: FaviconSize[], pickDefault: PickDefaultFunction) => FaviconSize;
+    type PickFunction = (
+        sizes: FaviconSize[],
+        pickDefault: PickDefaultFunction,
+    ) => FaviconSize;
 
     interface FaviconSize {
         rel?: string | undefined;

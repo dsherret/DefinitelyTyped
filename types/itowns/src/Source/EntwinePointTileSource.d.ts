@@ -36,7 +36,10 @@ declare class EntwinePointTileSource extends Source {
     // TODO: Maybe templating on Source
     fetcher: (url: string, options?: RequestInit) => Promise<ArrayBuffer>;
     // TODO: Maybe templating on Source
-    parse: (buffer: ArrayBuffer, options: ParsingOptions) => Promise<THREE.BufferGeometry>;
+    parse: (
+        buffer: ArrayBuffer,
+        options: ParsingOptions,
+    ) => Promise<THREE.BufferGeometry>;
     // TODO: Maybe templating on Source on whenReady promise
     whenReady: Promise<EntwinePointTileSource>;
 

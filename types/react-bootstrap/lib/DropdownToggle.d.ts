@@ -1,7 +1,8 @@
 import * as React from "react";
 
 declare namespace DropdownToggle {
-    export interface DropdownToggleProps extends React.HTMLProps<DropdownToggle> {
+    export interface DropdownToggleProps
+        extends React.HTMLProps<DropdownToggle> {
         bsRole?: string | undefined;
         noCaret?: boolean | undefined;
         open?: boolean | undefined;

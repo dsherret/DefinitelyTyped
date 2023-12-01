@@ -14,6 +14,14 @@ Truncate("<p><div>hello world</div></p>", 6, {
     ellipsis: "---",
 });
 
-Truncate("a good little fox is <span>a good</span> little forest creature", 26, { truncateLastWord: false }); // $ExpectType string
+Truncate(
+    "a good little fox is <span>a good</span> little forest creature",
+    26,
+    { truncateLastWord: false },
+); // $ExpectType string
 
-Truncate("a good little fox is <span>a good</span> little forest creature", 29, { truncateLastWord: false, slop: 2 }); // $ExpectType string
+Truncate(
+    "a good little fox is <span>a good</span> little forest creature",
+    29,
+    { truncateLastWord: false, slop: 2 },
+); // $ExpectType string

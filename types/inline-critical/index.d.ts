@@ -12,7 +12,11 @@ export = inline;
  * // ignoring stylesheets matching regex
  * const inlined = inline(html, critical, {ignore: [/bootstrap/]})
  */
-declare function inline(html: string, styles: string, options?: inline.Options): string;
+declare function inline(
+    html: string,
+    styles: string,
+    options?: inline.Options,
+): string;
 
 declare namespace inline {
     interface Options {

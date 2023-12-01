@@ -1,4 +1,12 @@
-import { add, createScope, disable, enable, enabled, FeatureFlagScope, merge } from "@carbon/feature-flags";
+import {
+    add,
+    createScope,
+    disable,
+    enable,
+    enabled,
+    FeatureFlagScope,
+    merge,
+} from "@carbon/feature-flags";
 
 add("feature-flag-a", false);
 

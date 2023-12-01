@@ -2,7 +2,7 @@ import { createServer, Server } from "http";
 import serveHandler from "serve-handler";
 
 const serveDirectory = (path: string, port: number) =>
-    new Promise<Server>(resolve => {
+    new Promise<Server>((resolve) => {
         const server = createServer((req, res) =>
             serveHandler(req, res, {
                 public: path,
@@ -21,7 +21,7 @@ const serveDirectory = (path: string, port: number) =>
                 symlinks: false,
                 trailingSlash: false,
                 unlisted: ["/not-me"],
-            })
+            }),
         );
 
         server.listen(port, () => resolve(server));

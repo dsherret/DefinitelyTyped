@@ -13,7 +13,11 @@ declare global {
 
         type DynamicChild =
             | Child
-            | ((currentPage: number, pageCount: number, pageSize: PDFMake.ContextPageSize) => Child);
+            | ((
+                  currentPage: number,
+                  pageCount: number,
+                  pageSize: PDFMake.ContextPageSize,
+              ) => Child);
 
         interface ElementChildrenAttribute {
             children: DynamicChild;
@@ -24,7 +28,12 @@ declare global {
         type EleNoChidlren<Props = {}> = Props;
 
         interface IntrinsicElements {
-            document: Ele<Omit<PDFMake.TDocumentDefinitions, "content" | "header" | "footer">>;
+            document: Ele<
+                Omit<
+                    PDFMake.TDocumentDefinitions,
+                    "content" | "header" | "footer"
+                >
+            >;
             header: Ele;
             footer: Ele;
             content: Ele;
@@ -32,14 +41,21 @@ declare global {
             text: Ele<Omit<PDFMake.ContentText, "text">>;
             ol: Ele<Omit<PDFMake.ContentOrderedList, "ol">>;
             ul: Ele<Omit<PDFMake.ContentUnorderedList, "ul">>;
-            table: Ele<Omit<PDFMake.ContentTable, "table"> & Omit<PDFMake.Table, "body">>;
+            table: Ele<
+                Omit<PDFMake.ContentTable, "table"> &
+                    Omit<PDFMake.Table, "body">
+            >;
             row: Ele<Element>;
             cell: Ele<Element>;
             columns: Ele<Omit<PDFMake.ContentColumns, "columns">>;
             column: Ele<{ width: number | string }>;
 
-            image: EleNoChidlren<Omit<PDFMake.ContentImage, "image"> & { src: string }>;
-            qr: EleNoChidlren<Omit<PDFMake.ContentQr, "qr"> & { content: string }>;
+            image: EleNoChidlren<
+                Omit<PDFMake.ContentImage, "image"> & { src: string }
+            >;
+            qr: EleNoChidlren<
+                Omit<PDFMake.ContentQr, "qr"> & { content: string }
+            >;
             svg: EleNoChidlren<{
                 content: string;
                 width?: number | undefined;

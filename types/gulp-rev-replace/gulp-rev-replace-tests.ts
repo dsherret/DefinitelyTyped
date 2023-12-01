@@ -4,7 +4,8 @@ import rev = require("gulp-rev");
 import useref = require("gulp-useref");
 
 gulp.task("index", () => {
-    return gulp.src("src/index.html")
+    return gulp
+        .src("src/index.html")
         .pipe(useref()) // Concatenate with gulp-useref
         .pipe(rev()) // Rename the concatenated files
         .pipe(revReplace()) // Substitute in new filenames
@@ -17,16 +18,19 @@ var opt = {
 };
 
 gulp.task("revision", () =>
-    gulp.src(["dist/**/*.css", "dist/**/*.js"])
+    gulp
+        .src(["dist/**/*.css", "dist/**/*.js"])
         .pipe(rev())
         .pipe(gulp.dest(opt.distFolder))
         .pipe(rev.manifest())
-        .pipe(gulp.dest(opt.distFolder)));
+        .pipe(gulp.dest(opt.distFolder)),
+);
 
 gulp.task("revreplace", () => {
     var manifest = gulp.src("./" + opt.distFolder + "/rev-manifest.json");
 
-    return gulp.src(opt.srcFolder + "/index.html")
+    return gulp
+        .src(opt.srcFolder + "/index.html")
         .pipe(revReplace({ manifest: manifest }))
         .pipe(gulp.dest(opt.distFolder));
 });
@@ -41,11 +45,14 @@ function replaceJsIfMap(filename: string): string {
 gulp.task("revreplace", () => {
     var manifest = gulp.src("./" + opt.distFolder + "/rev-manifest.json");
 
-    return gulp.src(opt.distFolder + "**/*.js")
-        .pipe(revReplace({
-            manifest: manifest,
-            modifyUnreved: replaceJsIfMap,
-            modifyReved: replaceJsIfMap,
-        }))
+    return gulp
+        .src(opt.distFolder + "**/*.js")
+        .pipe(
+            revReplace({
+                manifest: manifest,
+                modifyUnreved: replaceJsIfMap,
+                modifyReved: replaceJsIfMap,
+            }),
+        )
         .pipe(gulp.dest(opt.distFolder));
 });

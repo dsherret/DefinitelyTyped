@@ -27,12 +27,17 @@ interface ViewPager extends HummerComponent {
      *
      * @param callback 回调。参数position:当前位置；view:当前控件，当view为null时说明要创建view。最后返回view。
      */
-    onItemView(cb: (currentIndex: number, view: undefined | HummerComponent) => HummerComponent): void;
+    onItemView(
+        cb: (
+            currentIndex: number,
+            view: undefined | HummerComponent,
+        ) => HummerComponent,
+    ): void;
 }
 declare const ViewPager: {
     prototype: ViewPager;
     /**
      * 可自动轮播滚动的翻页组件。
      */
-    new(): ViewPager;
+    new (): ViewPager;
 };

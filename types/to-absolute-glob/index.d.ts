@@ -1,4 +1,7 @@
-declare function toAbsoluteGlob(pattern: string, options?: toAbsoluteGlob.Options): string;
+declare function toAbsoluteGlob(
+    pattern: string,
+    options?: toAbsoluteGlob.Options,
+): string;
 declare namespace toAbsoluteGlob {
     interface Options {
         cwd?: string | undefined;

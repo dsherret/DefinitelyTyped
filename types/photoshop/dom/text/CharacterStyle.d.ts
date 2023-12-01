@@ -223,14 +223,18 @@ export declare class CharacterStyle {
      * @minVersion 24.1
      */
     get middleEasternTextDirection(): Constants.MiddleEasternTextDirection;
-    set middleEasternTextDirection(middleEasternTextDirection: Constants.MiddleEasternTextDirection);
+    set middleEasternTextDirection(
+        middleEasternTextDirection: Constants.MiddleEasternTextDirection,
+    );
     /**
      * The text digits type to use (Middle Eastern features)
      * @default LTRARABIC
      * @minVersion 24.1
      */
     get middleEasternDigitsType(): Constants.MiddleEasternDigitsType;
-    set middleEasternDigitsType(middleEasternDigitsType: Constants.MiddleEasternDigitsType);
+    set middleEasternDigitsType(
+        middleEasternDigitsType: Constants.MiddleEasternDigitsType,
+    );
     /**
      * Use fractional widths for the text.
      * @default false

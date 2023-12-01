@@ -17,7 +17,9 @@ declare namespace GoogleAppsScript {
             setFunctionName(functionName: string): Action;
             setLoadIndicator(loadIndicator: LoadIndicator): Action;
             setParameters(parameters: { [key: string]: string }): Action;
-            /** @deprecated DO NOT USE */ setMethodName(functionName: string): Action;
+            /** @deprecated DO NOT USE */ setMethodName(
+                functionName: string,
+            ): Action;
         }
         /**
          * The response object that may be returned from a callback function (e.g., a form response handler)
@@ -98,7 +100,10 @@ declare namespace GoogleAppsScript {
          */
         interface Button {
             setAuthorizationAction(action: AuthorizationAction): Button;
-            setComposeAction(action: Action, composedEmailType: ComposedEmailType): Button;
+            setComposeAction(
+                action: Action,
+                composedEmailType: ComposedEmailType,
+            ): Button;
             setOnClickAction(action: Action): Button;
             setOnClickOpenLinkAction(action: Action): Button;
             setOpenLink(openLink: OpenLink): Button;
@@ -147,7 +152,10 @@ declare namespace GoogleAppsScript {
          */
         interface CardAction {
             setAuthorizationAction(action: AuthorizationAction): CardAction;
-            setComposeAction(action: Action, composedEmailType: ComposedEmailType): CardAction;
+            setComposeAction(
+                action: Action,
+                composedEmailType: ComposedEmailType,
+            ): CardAction;
             setOnClickAction(action: Action): CardAction;
             setOnClickOpenLinkAction(action: Action): CardAction;
             setOpenLink(openLink: OpenLink): CardAction;
@@ -206,7 +214,9 @@ declare namespace GoogleAppsScript {
             addWidget(widget: Widget): CardSection;
             setCollapsible(collapsible: boolean): CardSection;
             setHeader(header: string): CardSection;
-            setNumUncollapsibleWidgets(numUncollapsibleWidgets: Integer): CardSection;
+            setNumUncollapsibleWidgets(
+                numUncollapsibleWidgets: Integer,
+            ): CardSection;
         }
         /**
          * CardService provides the ability to create generic cards used across different Google
@@ -359,7 +369,9 @@ declare namespace GoogleAppsScript {
          */
         interface ComposeActionResponseBuilder {
             build(): ComposeActionResponse;
-            setGmailDraft(draft: Gmail.GmailDraft): ComposeActionResponseBuilder;
+            setGmailDraft(
+                draft: Gmail.GmailDraft,
+            ): ComposeActionResponseBuilder;
         }
         /**
          * An enum value that specifies whether the composed email is a standalone or reply draft.
@@ -431,7 +443,10 @@ declare namespace GoogleAppsScript {
         interface Image {
             setAltText(altText: string): Image;
             setAuthorizationAction(action: AuthorizationAction): Image;
-            setComposeAction(action: Action, composedEmailType: ComposedEmailType): Image;
+            setComposeAction(
+                action: Action,
+                composedEmailType: ComposedEmailType,
+            ): Image;
             setImageUrl(url: string): Image;
             setOnClickAction(action: Action): Image;
             setOnClickOpenLinkAction(action: Action): Image;
@@ -449,7 +464,10 @@ declare namespace GoogleAppsScript {
         interface ImageButton {
             setAltText(altText: string): ImageButton;
             setAuthorizationAction(action: AuthorizationAction): ImageButton;
-            setComposeAction(action: Action, composedEmailType: ComposedEmailType): ImageButton;
+            setComposeAction(
+                action: Action,
+                composedEmailType: ComposedEmailType,
+            ): ImageButton;
             setIcon(icon: Icon): ImageButton;
             setIconUrl(url: string): ImageButton;
             setOnClickAction(action: Action): ImageButton;
@@ -487,7 +505,10 @@ declare namespace GoogleAppsScript {
             setAuthorizationAction(action: AuthorizationAction): KeyValue;
             setBottomLabel(text: string): KeyValue;
             setButton(button: Button): KeyValue;
-            setComposeAction(action: Action, composedEmailType: ComposedEmailType): KeyValue;
+            setComposeAction(
+                action: Action,
+                composedEmailType: ComposedEmailType,
+            ): KeyValue;
             setContent(text: string): KeyValue;
             setIcon(icon: Icon): KeyValue;
             setIconAltText(altText: string): KeyValue;
@@ -652,7 +673,9 @@ declare namespace GoogleAppsScript {
          */
         interface SuggestionsResponseBuilder {
             build(): SuggestionsResponse;
-            setSuggestions(suggestions: Suggestions): SuggestionsResponseBuilder;
+            setSuggestions(
+                suggestions: Suggestions,
+            ): SuggestionsResponseBuilder;
         }
         /**
          * A UI element that supports being toggled on or off. This can only be used within a KeyValue widget.
@@ -693,7 +716,10 @@ declare namespace GoogleAppsScript {
         interface TextButton {
             setAuthorizationAction(action: AuthorizationAction): TextButton;
             setBackgroundColor(backgroundColor: string): TextButton;
-            setComposeAction(action: Action, composedEmailType: ComposedEmailType): TextButton;
+            setComposeAction(
+                action: Action,
+                composedEmailType: ComposedEmailType,
+            ): TextButton;
             setDisabled(disabled: boolean): TextButton;
             setOnClickAction(action: Action): TextButton;
             setOnClickOpenLinkAction(action: Action): TextButton;
@@ -786,7 +812,9 @@ declare namespace GoogleAppsScript {
          */
         interface UniversalActionResponseBuilder {
             build(): UniversalActionResponse;
-            displayAddOnCards(cardObjects: Card[]): UniversalActionResponseBuilder;
+            displayAddOnCards(
+                cardObjects: Card[],
+            ): UniversalActionResponseBuilder;
             setOpenLink(openLink: OpenLink): UniversalActionResponseBuilder;
         }
         /**
@@ -836,7 +864,9 @@ declare namespace GoogleAppsScript {
             setUpdateDraftBccRecipientsAction(
                 updateDraftBccRecipientsAction: UpdateDraftBccRecipientsAction,
             ): UpdateDraftActionResponseBuilder;
-            setUpdateDraftBodyAction(updateDraftBodyAction: UpdateDraftBodyAction): UpdateDraftActionResponseBuilder;
+            setUpdateDraftBodyAction(
+                updateDraftBodyAction: UpdateDraftBodyAction,
+            ): UpdateDraftActionResponseBuilder;
             setUpdateDraftCcRecipientsAction(
                 updateDraftCcRecipientsAction: UpdateDraftCcRecipientsAction,
             ): UpdateDraftActionResponseBuilder;
@@ -851,22 +881,31 @@ declare namespace GoogleAppsScript {
          * Represents an action that updates the email draft body.
          */
         interface UpdateDraftBodyAction {
-            addUpdateContent(content: string, contentType: ContentType): UpdateDraftBodyAction;
-            setUpdateType(updateType: UpdateDraftBodyType): UpdateDraftBodyAction;
+            addUpdateContent(
+                content: string,
+                contentType: ContentType,
+            ): UpdateDraftBodyAction;
+            setUpdateType(
+                updateType: UpdateDraftBodyType,
+            ): UpdateDraftBodyAction;
         }
 
         /**
          * Sets an action that updates the email Bcc recipients of a draft.
          */
         interface UpdateDraftBccRecipientsAction {
-            addUpdateBccRecipients(bccRecipientEmails: string[]): UpdateDraftBccRecipientsAction;
+            addUpdateBccRecipients(
+                bccRecipientEmails: string[],
+            ): UpdateDraftBccRecipientsAction;
         }
 
         /**
          * Sets an action that updates the Cc recipients of a draft.
          */
         interface UpdateDraftCcRecipientsAction {
-            addUpdateCcRecipients(ccRecipientEmails: string[]): UpdateDraftCcRecipientsAction;
+            addUpdateCcRecipients(
+                ccRecipientEmails: string[],
+            ): UpdateDraftCcRecipientsAction;
         }
 
         /**
@@ -880,7 +919,9 @@ declare namespace GoogleAppsScript {
          * Updates the To recipients of an email draft.
          */
         interface UpdateDraftToRecipientsAction {
-            addUpdateToRecipients(toRecipientEmails: string[]): UpdateDraftToRecipientsAction;
+            addUpdateToRecipients(
+                toRecipientEmails: string[],
+            ): UpdateDraftToRecipientsAction;
         }
         /**
          * The fixed footer shown at the bottom of an add-on Card.
@@ -901,10 +942,14 @@ declare namespace GoogleAppsScript {
          * A builder for CalendarEventActionResponse objects.
          */
         interface CalendarEventActionResponseBuilder {
-            addAttachments(attachments: Attachment[]): CalendarEventActionResponseBuilder;
+            addAttachments(
+                attachments: Attachment[],
+            ): CalendarEventActionResponseBuilder;
             addAttendees(emails: string[]): CalendarEventActionResponseBuilder;
             build(): CalendarEventActionResponse;
-            setConferenceData(conferenceData: Conference_Data.ConferenceData): CalendarEventActionResponseBuilder;
+            setConferenceData(
+                conferenceData: Conference_Data.ConferenceData,
+            ): CalendarEventActionResponseBuilder;
         }
 
         /**
@@ -924,7 +969,9 @@ declare namespace GoogleAppsScript {
         interface DateTimePicker {
             setFieldName(fieldName: string): DateTimePicker;
             setOnChangeAction(action: Action): DateTimePicker;
-            setTimeZoneOffsetInMins(timeZoneOffsetMins: Integer): DateTimePicker;
+            setTimeZoneOffsetInMins(
+                timeZoneOffsetMins: Integer,
+            ): DateTimePicker;
             setTitle(title: string): DateTimePicker;
             setValueInMsSinceEpoch(valueMsEpoch: number): DateTimePicker;
             setValueInMsSinceEpoch(valueMsEpoch: string): DateTimePicker;
@@ -940,7 +987,10 @@ declare namespace GoogleAppsScript {
             setAuthorizationAction(action: AuthorizationAction): DecoratedText;
             setBottomLabel(text: string): DecoratedText;
             setButton(button: Button): DecoratedText;
-            setComposeAction(action: Action, composedEmailType: ComposedEmailType): DecoratedText;
+            setComposeAction(
+                action: Action,
+                composedEmailType: ComposedEmailType,
+            ): DecoratedText;
             setEndIcon(endIcon: IconImage): DecoratedText;
             setIcon(icon: Icon): DecoratedText;
             setIconAltText(altText: string): DecoratedText;
@@ -959,8 +1009,7 @@ declare namespace GoogleAppsScript {
          * A horizontal divider.
          */
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface Divider {
-        }
+        interface Divider {}
 
         /**
          * An enum that represents the border types that can be applied to widgets.
@@ -1113,7 +1162,10 @@ declare namespace GoogleAppsScript {
             /**
              * Sets an action that composes a draft email when the object is clicked.
              */
-            setComposeAction(action: Action, composedEmailType: ComposedEmailType): Grid;
+            setComposeAction(
+                action: Action,
+                composedEmailType: ComposedEmailType,
+            ): Grid;
             /**
              * The number of columns to display in the grid.
              */
@@ -1141,7 +1193,9 @@ declare namespace GoogleAppsScript {
          */
         interface DriveItemsSelectedActionResponseBuilder {
             build(): DriveItemsSelectedActionResponse;
-            requestFileScope(itemId: string): DriveItemsSelectedActionResponseBuilder;
+            requestFileScope(
+                itemId: string,
+            ): DriveItemsSelectedActionResponseBuilder;
         }
 
         /**
@@ -1184,8 +1238,7 @@ declare namespace GoogleAppsScript {
          * Base class for all widgets that can be added to a Card.
          */
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface Widget {
-        }
+        interface Widget {}
     }
 }
 

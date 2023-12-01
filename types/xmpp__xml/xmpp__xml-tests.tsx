@@ -8,7 +8,9 @@ const message = (
     <message to={recipient}>
         <body>{1 + 2}</body>
         <days>
-            {days.map(day => <day>${day}</day>)}
+            {days.map((day) => (
+                <day>${day}</day>
+            ))}
         </days>
     </message>
 );
@@ -21,4 +23,8 @@ message.append(
 );
 
 // read
-JSON.parse(message.getChild("myevent", "xmpp:example.org")!.getChildText("json", "urn:xmpp:json:0")!);
+JSON.parse(
+    message
+        .getChild("myevent", "xmpp:example.org")!
+        .getChildText("json", "urn:xmpp:json:0")!,
+);

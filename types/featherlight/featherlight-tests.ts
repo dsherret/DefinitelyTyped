@@ -141,7 +141,7 @@ new $.featherlight($("<span>Foo!</span>"), changedOptions).close();
 // Note: Unfortunately $.featherlight.contentFilters.feed = .. doesn't seem to work
 $.featherlight.contentFilters["feed"] = {
     regex: /^feed:/,
-    process: function(url: string) {
+    process: function (url: string) {
         return $("Loading...");
     },
 };

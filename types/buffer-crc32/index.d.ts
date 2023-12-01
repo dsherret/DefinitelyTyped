@@ -23,7 +23,10 @@ export = crc32;
  * partialCrc = crc32(' ', partialCrc);
  * const finalCrc = crc32('bros', partialCrc); // -> <Buffer 47 fa 55 70>
  */
-declare function crc32(input: string | Buffer, partialCrc?: Buffer | number): Buffer;
+declare function crc32(
+    input: string | Buffer,
+    partialCrc?: Buffer | number,
+): Buffer;
 
 declare namespace crc32 {
     /**
@@ -36,7 +39,10 @@ declare namespace crc32 {
      * const buf = Buffer.from([0x00, 0x73, 0x75, 0x70, 0x20, 0x62, 0x72, 0x6f, 0x00]);
      * crc32.signed(buf); // -> -1805997238
      */
-    function signed(buffer: string | Buffer, partialCrc?: Buffer | number): number;
+    function signed(
+        buffer: string | Buffer,
+        partialCrc?: Buffer | number,
+    ): number;
 
     /**
      * Convenience method that returns an unsigned int instead of a `Buffer`.
@@ -48,5 +54,8 @@ declare namespace crc32 {
      * const buf = Buffer.from([0x00, 0x73, 0x75, 0x70, 0x20, 0x62, 0x72, 0x6f, 0x00]);
      * crc32.unsigned(buf); // -> 2488970058
      */
-    function unsigned(buffer: string | Buffer, partialCrc?: Buffer | number): number;
+    function unsigned(
+        buffer: string | Buffer,
+        partialCrc?: Buffer | number,
+    ): number;
 }

@@ -2,7 +2,10 @@ import * as mc from "mojang-minecraft";
 
 const overworld = mc.world.getDimension("overworld");
 
-export async function updateScore(log: (message: string, status?: number) => void, targetLocation: mc.Location) {
+export async function updateScore(
+    log: (message: string, status?: number) => void,
+    targetLocation: mc.Location,
+) {
     const req = new mcnet.HttpRequest("http://localhost:3000/updateScore");
 
     req.body = JSON.stringify({
@@ -22,12 +25,20 @@ export default class SampleManager {
     tickCount = 0;
 
     _availableFuncs: {
-        [name: string]: Array<(log: (message: string, status?: number) => void, location: mc.Location) => void>;
+        [name: string]: Array<
+            (
+                log: (message: string, status?: number) => void,
+                location: mc.Location,
+            ) => void
+        >;
     };
 
     pendingFuncs: Array<{
         name: string;
-        func: (log: (message: string, status?: number) => void, location: mc.Location) => void;
+        func: (
+            log: (message: string, status?: number) => void,
+            location: mc.Location,
+        ) => void;
         location: mc.Location;
     }> = [];
 
@@ -50,12 +61,18 @@ export default class SampleManager {
         if (message.startsWith("howto") && chatEvent.sender) {
             const nearbyBlock = chatEvent.sender.getBlockFromViewVector();
             if (!nearbyBlock) {
-                this.gameplayLogger("Please look at the block where you want me to run this.");
+                this.gameplayLogger(
+                    "Please look at the block where you want me to run this.",
+                );
                 return;
             }
 
             const nearbyBlockLoc = nearbyBlock.location;
-            const nearbyLoc = new mc.Location(nearbyBlockLoc.x, nearbyBlockLoc.y + 1, nearbyBlockLoc.z);
+            const nearbyLoc = new mc.Location(
+                nearbyBlockLoc.x,
+                nearbyBlockLoc.y + 1,
+                nearbyBlockLoc.z,
+            );
 
             const sampleId = message.substring(5).trim();
 
@@ -72,7 +89,11 @@ export default class SampleManager {
                     if (sampleFuncKey.toLowerCase() === sampleId) {
                         const sampleFunc = this._availableFuncs[sampleFuncKey];
 
-                        this.runSample(sampleFuncKey + this.tickCount, sampleFunc, nearbyLoc);
+                        this.runSample(
+                            sampleFuncKey + this.tickCount,
+                            sampleFunc,
+                            nearbyLoc,
+                        );
 
                         return;
                     }
@@ -85,11 +106,20 @@ export default class SampleManager {
 
     runSample(
         sampleId: string,
-        snippetFunctions: Array<(log: (message: string, status?: number) => void, location: mc.Location) => void>,
+        snippetFunctions: Array<
+            (
+                log: (message: string, status?: number) => void,
+                location: mc.Location,
+            ) => void
+        >,
         targetLocation: mc.Location,
     ) {
         for (let i = snippetFunctions.length - 1; i >= 0; i--) {
-            this.pendingFuncs.push({ name: sampleId, func: snippetFunctions[i], location: targetLocation });
+            this.pendingFuncs.push({
+                name: sampleId,
+                func: snippetFunctions[i],
+                location: targetLocation,
+            });
         }
     }
 
@@ -117,7 +147,12 @@ export default class SampleManager {
     }
 
     registerSamples(sampleSet: {
-        [name: string]: Array<(log: (message: string, status?: number) => void, location: mc.Location) => void>;
+        [name: string]: Array<
+            (
+                log: (message: string, status?: number) => void,
+                location: mc.Location,
+            ) => void
+        >;
     }) {
         for (const sampleKey in sampleSet) {
             if (sampleKey.length > 1 && sampleSet[sampleKey]) {
@@ -130,7 +165,12 @@ export default class SampleManager {
 import * as mcnet from "mojang-net";
 
 const mojangNetAdminTestFuncs: {
-    [name: string]: Array<(log: (message: string, status?: number) => void, location: mc.Location) => void>;
+    [name: string]: Array<
+        (
+            log: (message: string, status?: number) => void,
+            location: mc.Location,
+        ) => void
+    >;
 } = {
     updateScore: [updateScore],
 };

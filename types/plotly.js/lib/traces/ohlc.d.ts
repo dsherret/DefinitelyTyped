@@ -25,7 +25,13 @@ export type HoverInfo =
     | "none"
     | "skip";
 
-export type Dash = "solid" | "dot" | "dash" | "longdash" | "dashdot" | "longdashdot";
+export type Dash =
+    | "solid"
+    | "dot"
+    | "dash"
+    | "longdash"
+    | "dashdot"
+    | "longdashdot";
 
 export type XCalendar =
     | "gregorian"
@@ -76,19 +82,19 @@ export interface OhlcData {
     increasing: {
         line?:
             | {
-                color?: string | undefined;
-                width?: number | undefined;
-                dash?: Dash | undefined;
-            }
+                  color?: string | undefined;
+                  width?: number | undefined;
+                  dash?: Dash | undefined;
+              }
             | undefined;
     };
     decreasing: {
         line?:
             | {
-                color?: string | undefined;
-                width?: number | undefined;
-                dash?: Dash | undefined;
-            }
+                  color?: string | undefined;
+                  width?: number | undefined;
+                  dash?: Dash | undefined;
+              }
             | undefined;
     };
 
@@ -97,10 +103,10 @@ export interface OhlcData {
         bordercolor?: string | string[] | undefined;
         font?:
             | {
-                family?: string | string[] | undefined;
-                size?: number | undefined;
-                color?: string | string[] | undefined;
-            }
+                  family?: string | string[] | undefined;
+                  size?: number | undefined;
+                  color?: string | string[] | undefined;
+              }
             | undefined;
         align?: "left" | "right" | "auto" | undefined;
         namelength?: number | number[] | undefined;

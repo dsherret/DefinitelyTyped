@@ -15,14 +15,16 @@ SwaggerUI({
     plugins: [
         () => {
             return {
-                afterLoad: (system: any) => console.log("Plugin system:", system),
+                afterLoad: (system: any) =>
+                    console.log("Plugin system:", system),
             };
         },
     ],
     presets: [
         () => {
             return {
-                afterLoad: (system: any) => console.log("Preset system:", system),
+                afterLoad: (system: any) =>
+                    console.log("Preset system:", system),
             };
         },
     ],
@@ -67,14 +69,22 @@ SwaggerUI({
     },
 
     oauth2RedirectUrl: `${window.location.protocol}//${window.location.host}/oauth2-redirect.html`,
-    requestInterceptor: a => a,
-    responseInterceptor: a => a,
+    requestInterceptor: (a) => a,
+    responseInterceptor: (a) => a,
     showMutatedRequest: true,
-    supportedSubmitMethods: ["get", "put", "post", "delete", "options", "patch", "trace"],
+    supportedSubmitMethods: [
+        "get",
+        "put",
+        "post",
+        "delete",
+        "options",
+        "patch",
+        "trace",
+    ],
     validatorUrl: "http://www.example.com",
     withCredentials: true,
 
-    modelPropertyMacro: a => a,
+    modelPropertyMacro: (a) => a,
     parameterMacro: (op, param) => 0,
 
     persistAuthorization: false,

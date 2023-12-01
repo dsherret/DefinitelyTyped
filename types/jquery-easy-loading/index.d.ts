@@ -165,7 +165,9 @@ interface JQuery {
      * @param {Object} [options] Initialization options. Extends `Loading.defaults`
      * @return {jQuery}
      */
-    loading(options?: JQueryEasyLoading.Options | JQueryEasyLoading.Command): JQuery;
+    loading(
+        options?: JQueryEasyLoading.Options | JQueryEasyLoading.Command,
+    ): JQuery;
 
     /**
      * Return the loading object associated to the element or initialize it
@@ -178,7 +180,9 @@ interface JQuery {
      * plugin restarted
      * @return {Loading}
      */
-    Loading(options?: JQueryEasyLoading.Options): JQueryEasyLoading.LoadingObject;
+    Loading(
+        options?: JQueryEasyLoading.Options,
+    ): JQueryEasyLoading.LoadingObject;
 }
 
 declare var factory: (root?: any, jQuery?: JQueryStatic) => JQueryStatic;

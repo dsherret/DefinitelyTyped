@@ -16,11 +16,15 @@ interface SharedProps {
     wrapText?: boolean | undefined;
 }
 
-export interface CodeSnippetDivProps extends SharedProps, Omit<ReactDivAttr, "children"> {
+export interface CodeSnippetDivProps
+    extends SharedProps,
+        Omit<ReactDivAttr, "children"> {
     type?: "single" | null | undefined;
 }
 
-export interface CodeSnippetMultiProps extends SharedProps, Omit<ReactDivAttr, "children"> {
+export interface CodeSnippetMultiProps
+    extends SharedProps,
+        Omit<ReactDivAttr, "children"> {
     maxCollapsedNumberOfRows?: number | undefined;
     maxExpandedNumberOfRows?: number | undefined;
     minCollapsedNumberOfRows?: number | undefined;
@@ -28,7 +32,9 @@ export interface CodeSnippetMultiProps extends SharedProps, Omit<ReactDivAttr, "
     type: "multi";
 }
 
-export interface CodeSnippetInlineProps extends SharedProps, Omit<CopyProps, "children" | "type"> {
+export interface CodeSnippetInlineProps
+    extends SharedProps,
+        Omit<CopyProps, "children" | "type"> {
     type: "inline";
 }
 

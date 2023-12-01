@@ -1,11 +1,19 @@
 import * as React from "react";
-import { InjectedUpdateProps, useSWUpdateChecker, withSWUpdateChecker } from "service-worker-updater";
+import {
+    InjectedUpdateProps,
+    useSWUpdateChecker,
+    withSWUpdateChecker,
+} from "service-worker-updater";
 
 const HookExample: React.FC = () => {
     const [hasUpdate, updateHandler] = useSWUpdateChecker();
 
     if (hasUpdate) {
-        return <button type="button" onClick={updateHandler}>update</button>;
+        return (
+            <button type="button" onClick={updateHandler}>
+                update
+            </button>
+        );
     } else {
         return null;
     }
@@ -19,7 +27,11 @@ class HOCExample extends React.Component<HOCExampleProps> {
     render() {
         const { n, hasUpdate, updateHandler } = this.props;
         if (hasUpdate) {
-            return <button type="button" onClick={updateHandler}>update</button>;
+            return (
+                <button type="button" onClick={updateHandler}>
+                    update
+                </button>
+            );
         } else {
             return <span>{`n is ${n}`}</span>;
         }

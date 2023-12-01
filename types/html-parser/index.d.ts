@@ -25,7 +25,11 @@ export interface RemovalCallback {
     docTypes?: Callback | boolean;
 }
 
-export function parse(htmlString: string, callbacks?: CallbacksOption, regex?: RegExpOptions): void;
+export function parse(
+    htmlString: string,
+    callbacks?: CallbacksOption,
+    regex?: RegExpOptions,
+): void;
 
 export function parseFile(
     fileName: string,
@@ -34,4 +38,7 @@ export function parseFile(
     callback: Callback,
 ): void;
 
-export function sanitize(htmlString: string, removalCallbacks?: RemovalCallback): string;
+export function sanitize(
+    htmlString: string,
+    removalCallbacks?: RemovalCallback,
+): string;

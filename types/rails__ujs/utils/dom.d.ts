@@ -3,7 +3,10 @@ export interface SelectorObject {
     exclude: string;
 }
 
-export function matches(element: Element, selector: SelectorObject | string): boolean;
+export function matches(
+    element: Element,
+    selector: SelectorObject | string,
+): boolean;
 
 export function getData(element: Element, key: string): unknown;
 export function setData(element: Element, key: string, value: unknown): void;

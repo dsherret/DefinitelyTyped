@@ -1,6 +1,12 @@
 import * as React from "react";
 import { SwipeableViewsProps } from "react-swipeable-views";
-import { checkIndexBounds, computeIndex, constant, getDisplaySameSlide, mod } from "react-swipeable-views-core";
+import {
+    checkIndexBounds,
+    computeIndex,
+    constant,
+    getDisplaySameSlide,
+    mod,
+} from "react-swipeable-views-core";
 
 const oldProps: SwipeableViewsProps = {
     index: 1,

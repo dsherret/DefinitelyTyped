@@ -1,6 +1,16 @@
 import { assertions, script } from "lab";
 
-const { experiment, describe, suite, test, it, before, beforeEach, after, afterEach } = script();
+const {
+    experiment,
+    describe,
+    suite,
+    test,
+    it,
+    before,
+    beforeEach,
+    after,
+    afterEach,
+} = script();
 const expect = assertions.expect;
 const fail = assertions.fail;
 
@@ -27,11 +37,10 @@ experiment("math", () => {
     });
 
     test("returns true when 1 + 1 equals 2", () => {
-        return Promise.resolve()
-            .then((aValue) => {
-                const expectedValue = aValue;
-                expect(aValue).to.equal(expectedValue);
-            });
+        return Promise.resolve().then((aValue) => {
+            const expectedValue = aValue;
+            expect(aValue).to.equal(expectedValue);
+        });
     });
 });
 

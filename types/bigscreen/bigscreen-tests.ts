@@ -1,18 +1,18 @@
 import BigScreen = require("bigscreen");
 
-BigScreen.onchange = function(element: Element) {
+BigScreen.onchange = function (element: Element) {
     console.log("Full-screen element " + element + " changed.");
 };
 
-BigScreen.onenter = function(element: Element) {
+BigScreen.onenter = function (element: Element) {
     console.log(BigScreen.element + " entered full-screen.");
 };
 
-BigScreen.onexit = function() {
+BigScreen.onexit = function () {
     console.log("Exited full-screen.");
 };
 
-BigScreen.onerror = function(element: Element, reason: string) {
+BigScreen.onerror = function (element: Element, reason: string) {
     console.log("Error sending " + element + " into full-screen: " + reason);
 };
 

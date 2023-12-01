@@ -1,4 +1,7 @@
-import { AutoScalingScaleInHandler, AutoScalingScaleInResult } from "aws-lambda";
+import {
+    AutoScalingScaleInHandler,
+    AutoScalingScaleInResult,
+} from "aws-lambda";
 
 const handler: AutoScalingScaleInHandler = async (event, context, callback) => {
     str = event.AutoScalingGroupARN;

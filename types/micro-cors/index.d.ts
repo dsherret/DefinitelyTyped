@@ -9,6 +9,8 @@ interface Options {
     allowCredentials?: boolean | undefined;
 }
 
-declare function micro_cors(options?: Options): (handler: RequestHandler) => RequestHandler;
+declare function micro_cors(
+    options?: Options,
+): (handler: RequestHandler) => RequestHandler;
 
 export = micro_cors;

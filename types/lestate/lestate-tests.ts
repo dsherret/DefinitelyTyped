@@ -15,5 +15,5 @@ const currentDescription = State.getDescription();
 
 State.createListener({
     id: 0,
-    selector: state => ({ test: state.test }),
+    selector: (state) => ({ test: state.test }),
 });

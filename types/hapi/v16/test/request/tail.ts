@@ -4,7 +4,7 @@ import * as Hapi from "hapi";
 const server = new Hapi.Server();
 server.connection({ port: 80 });
 
-const get: Hapi.RouteHandler = function(request, reply) {
+const get: Hapi.RouteHandler = function (request, reply) {
     const dbTail = request.tail("write to database");
 
     var db: any;

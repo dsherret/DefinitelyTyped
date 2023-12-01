@@ -18,6 +18,9 @@ interface AxiosCancelOptions {
     debug: boolean;
 }
 
-declare function axiosCancel(axiosStatic: AxiosStatic, options?: AxiosCancelOptions): void;
+declare function axiosCancel(
+    axiosStatic: AxiosStatic,
+    options?: AxiosCancelOptions,
+): void;
 
 export default axiosCancel;

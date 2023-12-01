@@ -54,26 +54,26 @@ export interface ChartOptionsProps {
     /** custom scale props */
     scaleProps?:
         | (() => {
-            className: string;
-            fill: string;
-        })
+              className: string;
+              fill: string;
+          })
         | undefined;
     /** custom shape props */
     shapeProps?: (() => { className: string }) | undefined;
     /** custom captions props */
     captionProps?:
         | (() => {
-            className: string;
-            textAnchor: string;
-            fontSize: number;
-            fontFamily: string;
-        })
+              className: string;
+              textAnchor: string;
+              fontSize: number;
+              fontFamily: string;
+          })
         | undefined;
     /** custom dot props */
     dotProps?:
         | (() => {
-            className: string;
-        })
+              className: string;
+          })
         | undefined;
 }
 

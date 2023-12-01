@@ -5,10 +5,19 @@ import { callback } from "./core";
 export type ApplePayLineItemType = "final" | "pending";
 
 // See https://developer.apple.com/documentation/apple_pay_on_the_web/applepaypaymenttiming
-export type ApplePayPaymentTiming = "immediate" | "recurring" | "deferred" | "automaticReload";
+export type ApplePayPaymentTiming =
+    | "immediate"
+    | "recurring"
+    | "deferred"
+    | "automaticReload";
 
 // See https://developer.apple.com/documentation/apple_pay_on_the_web/applepayrecurringpaymentdateunit
-export type ApplePayRecurringPaymentDateUnit = "year" | "month" | "day" | "hour" | "minute";
+export type ApplePayRecurringPaymentDateUnit =
+    | "year"
+    | "month"
+    | "day"
+    | "hour"
+    | "minute";
 
 // See https://developer.apple.com/documentation/apple_pay_on_the_web/applepaylineitem
 export interface ApplePayLineItem {
@@ -148,7 +157,11 @@ export class ApplePaySession {
         newLineItems: any,
     ): void;
 
-    completeShippingMethodSelection(status: ApplePayStatusCodes, newTotal: any, newLineItems: any): void;
+    completeShippingMethodSelection(
+        status: ApplePayStatusCodes,
+        newTotal: any,
+        newLineItems: any,
+    ): void;
 
     oncancel: (event: any) => void;
 
@@ -234,15 +247,20 @@ export interface ApplePay {
      *   // { total: { }, countryCode: 'US', currencyCode: 'USD', merchantCapabilities: [ ], supportedNetworks: [ ] }
      */
     createPaymentRequest(
-        paymentRequest:
-            & Omit<
-                ApplePayPaymentRequest,
-                "countryCode" | "currencyCode" | "merchantCapabilities" | "supportedNetworks"
-            >
-            & Partial<
+        paymentRequest: Omit<
+            ApplePayPaymentRequest,
+            | "countryCode"
+            | "currencyCode"
+            | "merchantCapabilities"
+            | "supportedNetworks"
+        > &
+            Partial<
                 Pick<
                     ApplePayPaymentRequest,
-                    "countryCode" | "currencyCode" | "merchantCapabilities" | "supportedNetworks"
+                    | "countryCode"
+                    | "currencyCode"
+                    | "merchantCapabilities"
+                    | "supportedNetworks"
                 >
             >,
     ): ApplePayPaymentRequest;
@@ -279,7 +297,11 @@ export interface ApplePay {
      * });
      */
     performValidation(
-        options: { validationURL: string; displayName?: string | undefined; merchantIdentifier?: string | undefined },
+        options: {
+            validationURL: string;
+            displayName?: string | undefined;
+            merchantIdentifier?: string | undefined;
+        },
         callback: callback,
     ): void;
     performValidation(options: {
@@ -312,9 +334,15 @@ export interface ApplePay {
      *  };
      * });
      */
-    tokenize(options: { token: any }, callback: callback<ApplePayPayload>): void;
+    tokenize(
+        options: { token: any },
+        callback: callback<ApplePayPayload>,
+    ): void;
     tokenize(options: { token: any }): Promise<ApplePayPayload>;
 }
 
 export function create(options: { client: Client }): Promise<ApplePay>;
-export function create(options: { client: Client }, callback?: callback<ApplePay>): void;
+export function create(
+    options: { client: Client },
+    callback?: callback<ApplePay>,
+): void;

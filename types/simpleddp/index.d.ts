@@ -8,7 +8,7 @@ export {};
 type OptionalSpread<ST> = ST extends undefined ? [] : [ST];
 
 interface SocketProvider {
-    new(url: string): SocketProviderInstance;
+    new (url: string): SocketProviderInstance;
 }
 
 interface SocketProviderInstance {
@@ -75,7 +75,11 @@ export default class simpleDDP {
     /**
      * Calls a remote method with arguments passed in array.
      */
-    apply(method: string, params?: object | unknown[], atBeginning?: boolean): Promise<unknown>;
+    apply(
+        method: string,
+        params?: object | unknown[],
+        atBeginning?: boolean,
+    ): Promise<unknown>;
     /**
      * Connects to the ddp server.
      * The method is called automatically by the class constructor if the autoConnect option is set to true (default behavior).

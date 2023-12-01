@@ -297,7 +297,10 @@ export interface helpers {
      *   Must include `u` if provided to support Unicode escapes.
      * @returns RegExp string with Unicode brace groups in the format `\uxxxx[\uxxxx]`.
      */
-    replaceUnicodeCodePointEscapes(str: string, options?: ReplaceUnicodeCodePointEscapesOptions): string;
+    replaceUnicodeCodePointEscapes(
+        str: string,
+        options?: ReplaceUnicodeCodePointEscapesOptions,
+    ): string;
 }
 
 /**
@@ -314,7 +317,10 @@ export interface helpers {
  * @param options.transpile Babel transpilation options - see `Babel.TransformOptions`.
  * @returns Babel transpiler result for file.
  */
-export function transpile(code: string, options?: Options): Babel.BabelFileResult;
+export function transpile(
+    code: string,
+    options?: Options,
+): Babel.BabelFileResult;
 
 /**
  * Compiles CoffeeScript to JavaScript code, then outputs it as a string.
@@ -332,7 +338,10 @@ export function transpile(code: string, options?: Options): Babel.BabelFileResul
  * If `options.sourceMap` is `true`, this returns a `{js, v3SourceMap, sourceMap}` object, where `sourceMap` is a
  * `SourceMap` object handy for doing programmatic lookups.
  */
-export function compile(code: string, options: SourceMapOptions): CodeWithSourceMap;
+export function compile(
+    code: string,
+    options: SourceMapOptions,
+): CodeWithSourceMap;
 export function compile(code: string, options?: Options): string;
 
 /**
@@ -428,7 +437,11 @@ export interface require {
  * @param options.inlineMap If true, output the source map as a Base64-encoded string in a comment at the bottom.
  * @param options.sourceMap If true, output a source map object with the code.
  */
-export function _compileRawFileContent(raw: string, filename: string, options?: Options): string;
+export function _compileRawFileContent(
+    raw: string,
+    filename: string,
+    options?: Options,
+): string;
 
 /**
  * Reads and compiles a CoffeeScript file using `fs.readFileSync`.
@@ -572,7 +585,11 @@ export interface LineMap {
      * @param options.noReplace If `true`, column replacement is allowed.
      * @returns Added source location data.
      */
-    add: (column: number, source: SourceLocation, options?: { noReplace: boolean }) => SourceLocation | undefined;
+    add: (
+        column: number,
+        source: SourceLocation,
+        options?: { noReplace: boolean },
+    ) => SourceLocation | undefined;
     /**
      * Fetch source location data for a specific column.
      *
@@ -619,7 +636,11 @@ export interface SourceMap {
      * @param [options.sourceRoot] Property `sourceRoot` in source map.
      * @returns Added source location data.
      */
-    generate: (column: number, source: SourceLocation, options?: { noReplace: boolean }) => string;
+    generate: (
+        column: number,
+        source: SourceLocation,
+        options?: { noReplace: boolean },
+    ) => string;
     /**
      * VLQ encoding in reverse byte order.
      *

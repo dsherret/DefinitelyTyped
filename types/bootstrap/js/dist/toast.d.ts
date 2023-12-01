@@ -1,4 +1,7 @@
-import BaseComponent, { GetInstanceFactory, GetOrCreateInstanceFactory } from "./base-component";
+import BaseComponent, {
+    GetInstanceFactory,
+    GetOrCreateInstanceFactory,
+} from "./base-component";
 
 declare class Toast extends BaseComponent {
     /**
@@ -11,7 +14,10 @@ declare class Toast extends BaseComponent {
      * Static method which allows you to get the scrollspy instance associated with a
      * DOM element, or create a new one in case it wasn’t initialised
      */
-    static getOrCreateInstance: GetOrCreateInstanceFactory<Toast, Partial<Toast.Options>>;
+    static getOrCreateInstance: GetOrCreateInstanceFactory<
+        Toast,
+        Partial<Toast.Options>
+    >;
 
     static jQueryInterface: Toast.jQueryInterface;
 
@@ -91,7 +97,9 @@ declare namespace Toast {
         delay: number;
     }
 
-    type jQueryInterface = (config?: Partial<Options> | "show" | "hide" | "dispose") => JQuery;
+    type jQueryInterface = (
+        config?: Partial<Options> | "show" | "hide" | "dispose",
+    ) => JQuery;
 }
 
 export default Toast;

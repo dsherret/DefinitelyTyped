@@ -5,12 +5,7 @@ import * as React from "react";
 class MyTable1 extends React.Component {
     render(): React.ReactElement {
         return (
-            <Table
-                rowsCount={100}
-                rowHeight={50}
-                width={1000}
-                height={500}
-            >
+            <Table rowsCount={100} rowHeight={50} width={1000} height={500}>
                 // add columns
             </Table>
         );
@@ -21,16 +16,8 @@ class MyTable1 extends React.Component {
 class MyTable2 extends React.Component {
     render(): React.ReactElement {
         return (
-            <Table
-                rowsCount={100}
-                rowHeight={50}
-                width={1000}
-                height={500}
-            >
-                <Column
-                    cell={<Cell>Basic content</Cell>}
-                    width={200}
-                />
+            <Table rowsCount={100} rowHeight={50} width={1000} height={500}>
+                <Column cell={<Cell>Basic content</Cell>} width={200} />
             </Table>
         );
     }
@@ -147,7 +134,7 @@ class MyTable4 extends React.Component<{}, MyTable4State> {
                 width={1000}
                 height={500}
             >
-                {["name", "email"].map(field => (
+                {["name", "email"].map((field) => (
                     <Column
                         key={field}
                         header={<Cell>{field}</Cell>}
@@ -177,12 +164,30 @@ class MyTable5 extends React.Component {
                 onScrollStart={(x: number, y: number) => {}}
                 onScrollEnd={(x: number, y: number) => {}}
                 onContentHeightChange={(newHeight: number) => {}}
-                onRowClick={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onRowDoubleClick={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onRowMouseDown={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onRowMouseEnter={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onRowMouseLeave={(event: React.SyntheticEvent<Table>, rowIndex: number) => {}}
-                onColumnResizeEndCallback={(newColumnWidth: number, columnKey: string) => {}}
+                onRowClick={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onRowDoubleClick={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onRowMouseDown={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onRowMouseEnter={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onRowMouseLeave={(
+                    event: React.SyntheticEvent<Table>,
+                    rowIndex: number,
+                ) => {}}
+                onColumnResizeEndCallback={(
+                    newColumnWidth: number,
+                    columnKey: string,
+                ) => {}}
             >
                 // add columns
             </Table>

@@ -24,7 +24,12 @@ function testCompareVersionToPattern() {
     var familyMatch: boolean = false;
     var minMatch: boolean = true;
 
-    var result = deployJava.compareVersionToPattern(version, patternArray, familyMatch, minMatch);
+    var result = deployJava.compareVersionToPattern(
+        version,
+        patternArray,
+        familyMatch,
+        minMatch,
+    );
 }
 
 /**

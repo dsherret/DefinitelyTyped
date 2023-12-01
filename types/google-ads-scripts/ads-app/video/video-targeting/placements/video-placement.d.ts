@@ -34,7 +34,8 @@ declare namespace GoogleAdsScripts {
          *        .withUrl('"http://www.site.com"')    // required
          *        .build();                            // create the placement
          */
-        interface VideoPlacementBuilder extends Base.Builder<VideoPlacementOperation> {
+        interface VideoPlacementBuilder
+            extends Base.Builder<VideoPlacementOperation> {
             /** Builds the excluded video placement. */
             exclude(): ExcludedVideoPlacementOperation;
             /** Sets the URL of the placement. */
@@ -50,10 +51,12 @@ declare namespace GoogleAdsScripts {
          *        var videoPlacement = videoPlacementIterator.next();
          *      }
          */
-        interface VideoPlacementIterator extends Base.Iterator<VideoPlacement> {}
+        interface VideoPlacementIterator
+            extends Base.Iterator<VideoPlacement> {}
 
         /** An operation representing creation of a new video placement. */
-        interface VideoPlacementOperation extends Base.Operation<VideoPlacement> {}
+        interface VideoPlacementOperation
+            extends Base.Operation<VideoPlacement> {}
 
         /**
          * Fetches video placements. Supports filtering and sorting.
@@ -72,13 +75,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoPlacementSelector
-            extends
-                Base.Selector<VideoPlacementIterator>,
+            extends Base.Selector<VideoPlacementIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

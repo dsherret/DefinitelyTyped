@@ -6,7 +6,9 @@ export {};
 /**
  * The built-in Omit doesn't error out if omitted key doesn't exist on the main type.
  */
-type StrictOmit<T, K extends keyof T> = T extends any ? Pick<T, Exclude<keyof T, K>> : never;
+type StrictOmit<T, K extends keyof T> = T extends any
+    ? Pick<T, Exclude<keyof T, K>>
+    : never;
 
 // Function that returns getters, which are turned into injected props.
 interface MapStateToProps<TInjectedPropNames extends string | number | symbol> {
@@ -22,7 +24,9 @@ interface MapStateToProps<TInjectedPropNames extends string | number | symbol> {
 // Injects props and removes them from the prop requirements.
 // Will not pass through the injected props if they are passed in during
 // render. Also adds new prop requirements from TNeedsProps.
-interface ComponentConnector<TInjectedPropNames extends string | number | symbol> {
+interface ComponentConnector<
+    TInjectedPropNames extends string | number | symbol,
+> {
     // Use "= any" so that if component prop type cannot be inferred (e.g.
     // if using "createReactClass", then we'll end up with
     // ComponentClass<any>, instead of ComponentClass<{}>.

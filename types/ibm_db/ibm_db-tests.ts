@@ -20,21 +20,24 @@ ibmdb.open(
         });
 
         // ibmdb.ODBCResult
-        conn.queryResult("select 1 from sysibm.sysdummy1", async (err, data) => {
-            data.getColumnMetadataSync();
-            data.fetchAll({ fetchMode: 3 }, (err, data) => {
-                //
-            });
-            // $ExpectType Error | undefined
-            const connErr = await conn.close();
-            if (connErr) {
-                // $ExpectType Error
-                connErr;
-            } else {
-                // $ExpectType undefined
-                connErr;
-            }
-        });
+        conn.queryResult(
+            "select 1 from sysibm.sysdummy1",
+            async (err, data) => {
+                data.getColumnMetadataSync();
+                data.fetchAll({ fetchMode: 3 }, (err, data) => {
+                    //
+                });
+                // $ExpectType Error | undefined
+                const connErr = await conn.close();
+                if (connErr) {
+                    // $ExpectType Error
+                    connErr;
+                } else {
+                    // $ExpectType undefined
+                    connErr;
+                }
+            },
+        );
     },
 );
 
@@ -65,13 +68,9 @@ testPool();
 /** imdb.ODBCStatement */
 const service = new ibmdb.ODBCStatement();
 service.executeSync();
-service.executeSync(
-    ["test"],
-);
+service.executeSync(["test"]);
 service._executeSync();
-service._executeSync(
-    ["test"],
-);
+service._executeSync(["test"]);
 
 /** ibm.Database */
 new ibmdb.Database({

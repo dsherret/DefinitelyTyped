@@ -27,7 +27,9 @@ export interface DisplayMarker {
 
     // Event Subscription
     /** Invoke the given callback when the state of the marker changes. */
-    onDidChange(callback: (event: DisplayMarkerChangedEvent) => void): Disposable;
+    onDidChange(
+        callback: (event: DisplayMarkerChangedEvent) => void,
+    ): Disposable;
 
     /** Invoke the given callback when the marker is destroyed. */
     onDidDestroy(callback: () => void): Disposable;
@@ -88,25 +90,35 @@ export interface DisplayMarker {
     getScreenRange(): Range;
 
     /** Modifies the buffer range of this marker. */
-    setBufferRange(bufferRange: RangeCompatible, properties?: { reversed: boolean }): void;
+    setBufferRange(
+        bufferRange: RangeCompatible,
+        properties?: { reversed: boolean },
+    ): void;
 
     /** Modifies the screen range of this marker. */
     setScreenRange(
         screenRange: RangeCompatible,
-        options?: { reversed?: boolean | undefined; clipDirection?: "backward" | "forward" | "closest" | undefined },
+        options?: {
+            reversed?: boolean | undefined;
+            clipDirection?: "backward" | "forward" | "closest" | undefined;
+        },
     ): void;
 
     /**
      *  Retrieves the screen position of the marker's start. This will always be
      *  less than or equal to the result of DisplayMarker::getEndScreenPosition.
      */
-    getStartScreenPosition(options?: { clipDirection: "backward" | "forward" | "closest" }): Point;
+    getStartScreenPosition(options?: {
+        clipDirection: "backward" | "forward" | "closest";
+    }): Point;
 
     /**
      *  Retrieves the screen position of the marker's end. This will always be
      *  greater than or equal to the result of DisplayMarker::getStartScreenPosition.
      */
-    getEndScreenPosition(options?: { clipDirection: "backward" | "forward" | "closest" }): Point;
+    getEndScreenPosition(options?: {
+        clipDirection: "backward" | "forward" | "closest";
+    }): Point;
 
     /** Retrieves the buffer position of the marker's head. */
     getHeadBufferPosition(): Point;
@@ -115,7 +127,9 @@ export interface DisplayMarker {
     setHeadBufferPosition(bufferPosition: PointCompatible): void;
 
     /** Retrieves the screen position of the marker's head. */
-    getHeadScreenPosition(options?: { clipDirection: "backward" | "forward" | "closest" }): Point;
+    getHeadScreenPosition(options?: {
+        clipDirection: "backward" | "forward" | "closest";
+    }): Point;
 
     /** Sets the screen position of the marker's head. */
     setHeadScreenPosition(
@@ -130,7 +144,9 @@ export interface DisplayMarker {
     setTailBufferPosition(bufferPosition: PointCompatible): void;
 
     /** Retrieves the screen position of the marker's tail. */
-    getTailScreenPosition(options?: { clipDirection: "backward" | "forward" | "closest" }): Point;
+    getTailScreenPosition(options?: {
+        clipDirection: "backward" | "forward" | "closest";
+    }): Point;
 
     /** Sets the screen position of the marker's tail. */
     setTailScreenPosition(

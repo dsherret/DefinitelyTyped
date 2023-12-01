@@ -323,7 +323,11 @@ export default class AmGraph {
      * Graph will call this function and pass reference to GraphDataItem and formatted text as attributes.
      * This function should return string which will be displayed as label.
      */
-    labelFunction(value: number, valueText: string, valueAxis: ValueAxis): string;
+    labelFunction(
+        value: number,
+        valueText: string,
+        valueAxis: ValueAxis,
+    ): string;
     labelFunction(valueText: string, data: Date, valueAxis: ValueAxis): string;
     /**
      * Offset of data label.

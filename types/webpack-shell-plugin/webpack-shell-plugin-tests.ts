@@ -11,10 +11,10 @@ const plugins: Plugin[] = [
     new WebpackShellPlugin({}),
     new WebpackShellPlugin(options),
     new WebpackShellPlugin({
-        onBuildStart: ["echo \"Starting\""],
+        onBuildStart: ['echo "Starting"'],
         onBuildEnd: ["python script.py && node script.js"],
         dev: false,
-        onBuildExit: ["echo \"Exit\"", "echo \"Done\""],
+        onBuildExit: ['echo "Exit"', 'echo "Done"'],
         safe: true,
     }),
 ];

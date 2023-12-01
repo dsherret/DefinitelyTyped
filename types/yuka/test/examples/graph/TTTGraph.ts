@@ -71,7 +71,12 @@ export class TTTGraph extends Graph<TTTNode, TTTEdge> {
 
                     // link the current node to the next one
 
-                    const edge = new TTTEdge(nodeIndex, activeNodeIndex, i, activePlayer);
+                    const edge = new TTTEdge(
+                        nodeIndex,
+                        activeNodeIndex,
+                        i,
+                        activePlayer,
+                    );
                     this.addEdge(edge);
                     // check if the next node represents a finished game
                     if (nextNode.finished) {
@@ -81,13 +86,23 @@ export class TTTGraph extends Graph<TTTNode, TTTEdge> {
                         weights.push(nextNode.weight);
                     } else {
                         // if not, recursively call "generate()" to continue the build of the graph
-                        weights.push(this.generate(activeNodeIndex, this.nextPlayer(activePlayer)));
+                        weights.push(
+                            this.generate(
+                                activeNodeIndex,
+                                this.nextPlayer(activePlayer),
+                            ),
+                        );
                     }
                 } else {
                     // there is already a node representing the next board
                     // in this case we should link to it with a new edge and update the weights
 
-                    const edge = new TTTEdge(nodeIndex, activeNodeIndex, i, activePlayer);
+                    const edge = new TTTEdge(
+                        nodeIndex,
+                        activeNodeIndex,
+                        i,
+                        activePlayer,
+                    );
                     this.addEdge(edge);
 
                     const nextNode = this.getNode(activeNodeIndex);
@@ -169,6 +184,10 @@ export class TTTGraph extends Graph<TTTNode, TTTEdge> {
     // called for node that represents an end of the game (win/draw)
 
     computeWeight(node: TTTNode) {
-        node.weight = node.win ? ((node.winPlayer === this.aiPlayer) ? 100 : -100) : 0;
+        node.weight = node.win
+            ? node.winPlayer === this.aiPlayer
+                ? 100
+                : -100
+            : 0;
     }
 }

@@ -3,7 +3,10 @@ import path = require("path");
 import { Options, render } from "runmd";
 
 // $ExpectType string
-render("# Development", { lame: true, inputName: `test/${path.basename(__filename)}` });
+render("# Development", {
+    lame: true,
+    inputName: `test/${path.basename(__filename)}`,
+});
 // $ExpectType string
 render("# Development", {});
 // $ExpectType string

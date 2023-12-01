@@ -1,13 +1,13 @@
 import * as React from "react";
 
-declare class FileInput extends React.Component<FileInput.Props> {
-}
+declare class FileInput extends React.Component<FileInput.Props> {}
 
 declare namespace FileInput {
     type Format = "buffer" | "binary" | "url" | "text";
     type Result = [ProgressEvent, File];
 
-    interface Props extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+    interface Props
+        extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
         /**
          * what format the `FileReader` should read the file as
          * (i.e., `'buffer'`, `'binary'`, `'url'`, `'text'`).
@@ -34,7 +34,10 @@ declare namespace FileInput {
          * @param event The event that triggered file changes
          * @param results The array of files
          */
-        onChange(event: React.ChangeEvent<HTMLInputElement>, results: Result[]): void;
+        onChange(
+            event: React.ChangeEvent<HTMLInputElement>,
+            results: Result[],
+        ): void;
     }
 }
 

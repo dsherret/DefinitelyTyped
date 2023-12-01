@@ -27,7 +27,8 @@ declare namespace GoogleAdsScripts {
             TimeOut: "TIMEOUT";
         };
 
-        type ExecutionResultStatusType = typeof ExecutionResultStatus[keyof typeof ExecutionResultStatus];
+        type ExecutionResultStatusType =
+            (typeof ExecutionResultStatus)[keyof typeof ExecutionResultStatus];
 
         interface ExecutionResult {
             /** Returns the customer ID of the account. */

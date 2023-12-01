@@ -19,28 +19,69 @@ interface State {
 interface GroupedStates {
     [key: string]: State[];
 }
-type StringPropertyNames<T> = { [K in keyof T]: T[K] extends string ? K : never }[keyof T];
+type StringPropertyNames<T> = {
+    [K in keyof T]: T[K] extends string ? K : never;
+}[keyof T];
 type StateKeysValid = StringPropertyNames<State>;
 const options: State[] = [
-    { name: "Alabama", population: 4780127, capital: "Montgomery", region: "South", setValue: () => {} },
-    { name: "Alaska", population: 710249, capital: "Juneau", region: "West", setValue: () => {} },
-    { name: "Arizona", population: 6392307, capital: "Phoenix", region: "West", setValue: () => {} },
-    { name: "Arkansas", population: 2915958, capital: "Little Rock", region: "South", setValue: () => {} },
-    { name: "California", population: 37254503, capital: "Sacramento", region: "West", setValue: () => {} },
-    { name: "Colorado", population: 5029324, capital: "Denver", region: "West", setValue: () => {} },
+    {
+        name: "Alabama",
+        population: 4780127,
+        capital: "Montgomery",
+        region: "South",
+        setValue: () => {},
+    },
+    {
+        name: "Alaska",
+        population: 710249,
+        capital: "Juneau",
+        region: "West",
+        setValue: () => {},
+    },
+    {
+        name: "Arizona",
+        population: 6392307,
+        capital: "Phoenix",
+        region: "West",
+        setValue: () => {},
+    },
+    {
+        name: "Arkansas",
+        population: 2915958,
+        capital: "Little Rock",
+        region: "South",
+        setValue: () => {},
+    },
+    {
+        name: "California",
+        population: 37254503,
+        capital: "Sacramento",
+        region: "West",
+        setValue: () => {},
+    },
+    {
+        name: "Colorado",
+        population: 5029324,
+        capital: "Denver",
+        region: "West",
+        setValue: () => {},
+    },
 ];
 
-const stateNames = options.map(o => o.name);
+const stateNames = options.map((o) => o.name);
 
-const groups: GroupedStates = options.reduce((accum: GroupedStates, option: State) => {
-    const optKey = option.name.slice(0, 1).toLowerCase();
-    if (accum[optKey] !== undefined) {
-        accum[optKey].push(option);
-    } else {
-        accum[optKey] = [option];
-    }
-    return accum;
-}, {});
+const groups: GroupedStates = options.reduce(
+    (accum: GroupedStates, option: State) => {
+        const optKey = option.name.slice(0, 1).toLowerCase();
+        if (accum[optKey] !== undefined) {
+            accum[optKey].push(option);
+        } else {
+            accum[optKey] = [option];
+        }
+        return accum;
+    },
+    {},
+);
 
 class BasicExample extends React.Component {
     state = {
@@ -83,7 +124,9 @@ class BasicExample extends React.Component {
                     options={stateNames}
                     placeholder="Choose a name"
                     multiple
-                    filterBy={(option, props) => props.text.indexOf(option) !== -1}
+                    filterBy={(option, props) =>
+                        props.text.indexOf(option) !== -1
+                    }
                 />
                 <Typeahead
                     labelKey="name"
@@ -96,14 +139,18 @@ class BasicExample extends React.Component {
                     labelKey="name"
                     multiple={multiple}
                     options={options}
-                    filterBy={(option, props) => props.text.indexOf(option.name) !== -1}
+                    filterBy={(option, props) =>
+                        props.text.indexOf(option.name) !== -1
+                    }
                     placeholder="Choose a state..."
                 />
                 <Typeahead
                     labelKey="name"
                     multiple={multiple}
                     options={options}
-                    filterBy={(option, { text }) => text.indexOf(option.name) !== -1}
+                    filterBy={(option, { text }) =>
+                        text.indexOf(option.name) !== -1
+                    }
                     placeholder="Choose a state..."
                 />
                 <Typeahead
@@ -123,15 +170,25 @@ class BasicExample extends React.Component {
                     renderMenu={(results, menuProps) => (
                         <Menu {...menuProps} maxHeight="300px">
                             {results.map((result, index) => (
-                                <MenuItem option={result} position={index} key={index}>
+                                <MenuItem
+                                    option={result}
+                                    position={index}
+                                    key={index}
+                                >
                                     {result.customOption && "New: "}
-                                    <Highlighter search={menuProps.text || ""}>{result.name}</Highlighter>
+                                    <Highlighter search={menuProps.text || ""}>
+                                        {result.name}
+                                    </Highlighter>
                                 </MenuItem>
                             ))}
                         </Menu>
                     )}
                 />
-                <Typeahead labelKey="name" options={options} placeholder="Choose a state...">
+                <Typeahead
+                    labelKey="name"
+                    options={options}
+                    placeholder="Choose a state..."
+                >
                     <Menu id="menu-id">
                         {options.map((o, idx) => (
                             <MenuItem key={idx} option={o} position={idx}>
@@ -167,7 +224,9 @@ class BasicExample extends React.Component {
                     labelKey="name"
                     options={options}
                     placeholder="Choose a state..."
-                    renderInput={inputProps => <TypeaheadInputSingle {...inputProps} />}
+                    renderInput={(inputProps) => (
+                        <TypeaheadInputSingle {...inputProps} />
+                    )}
                 />
                 <Typeahead
                     labelKey="name"
@@ -177,48 +236,44 @@ class BasicExample extends React.Component {
                 />
                 <button
                     onClick={(e) => {
-                        typeaheadRef.current
-                            && typeaheadRef.current.blur();
+                        typeaheadRef.current && typeaheadRef.current.blur();
                     }}
                 >
                     Hide
                 </button>
                 <button
                     onClick={(e) => {
-                        typeaheadRef.current
-                            && typeaheadRef.current.clear();
+                        typeaheadRef.current && typeaheadRef.current.clear();
                     }}
                 >
                     Toggle
                 </button>
                 <button
                     onClick={(e) => {
-                        typeaheadRef.current
-                            && typeaheadRef.current.focus();
+                        typeaheadRef.current && typeaheadRef.current.focus();
                     }}
                 >
                     Toggle
                 </button>
                 <button
                     onClick={(e) => {
-                        typeaheadRef.current
-                            && typeaheadRef.current.hideMenu();
+                        typeaheadRef.current && typeaheadRef.current.hideMenu();
                     }}
                 >
                     Hide
                 </button>
                 <button
                     onClick={(e) => {
-                        typeaheadRef.current
-                            && typeaheadRef.current.toggleMenu();
+                        typeaheadRef.current &&
+                            typeaheadRef.current.toggleMenu();
                     }}
                 >
                     Toggle
                 </button>
                 <button
                     onClick={(e) => {
-                        typeaheadRef.current
-                            && typeaheadRef.current.getInput().select();
+                        typeaheadRef.current &&
+                            typeaheadRef.current.getInput().select();
                     }}
                 >
                     Toggle

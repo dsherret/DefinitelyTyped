@@ -1,4 +1,9 @@
-import { activateRoom, ActivateRoomResponse, AuthInfo, initBot } from "symphony-api-client-node";
+import {
+    activateRoom,
+    ActivateRoomResponse,
+    AuthInfo,
+    initBot,
+} from "symphony-api-client-node";
 
 initBot("/config.json")
     .then((authTokens: AuthInfo) => {

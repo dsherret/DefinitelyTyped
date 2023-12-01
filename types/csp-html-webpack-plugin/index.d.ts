@@ -40,9 +40,13 @@ declare namespace CspHtmlWebpackPlugin {
 
     // HtmlWebpackPlugin v3 and v4 use different hook interfaces. Figure out
     // which we're using and infer the generic type variable inside.
-    type HtmlPluginData = HtmlWebpackPlugin.Hooks extends HtmlPluginDataHookV3<infer T> ? T
-        : HtmlWebpackPlugin.Hooks extends HtmlPluginDataHookV4<infer U> ? U
-        : any; // Fallback when nothing works.
+    type HtmlPluginData = HtmlWebpackPlugin.Hooks extends HtmlPluginDataHookV3<
+        infer T
+    >
+        ? T
+        : HtmlWebpackPlugin.Hooks extends HtmlPluginDataHookV4<infer U>
+          ? U
+          : any; // Fallback when nothing works.
 
     /**
      * Additional options. Defaults are:
@@ -72,7 +76,10 @@ declare namespace CspHtmlWebpackPlugin {
          * * If `enabled` is set the false, it will disable generating a CSP for
          *   all instances of HtmlWebpackPlugin in your webpack config.
          */
-        enabled?: boolean | ((htmlPluginData: HtmlPluginData) => boolean) | undefined;
+        enabled?:
+            | boolean
+            | ((htmlPluginData: HtmlPluginData) => boolean)
+            | undefined;
         /**
          * The hashing method. Your node version must also accept this hashing
          * method.
@@ -94,9 +101,9 @@ declare namespace CspHtmlWebpackPlugin {
 declare module "html-webpack-plugin" {
     interface Options {
         cspPlugin?:
-            | CspHtmlWebpackPlugin.AdditionalOptions & {
-                policy?: CspHtmlWebpackPlugin.Policy | undefined;
-            }
+            | (CspHtmlWebpackPlugin.AdditionalOptions & {
+                  policy?: CspHtmlWebpackPlugin.Policy | undefined;
+              })
             | undefined;
     }
 }

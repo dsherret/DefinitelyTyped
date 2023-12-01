@@ -10,28 +10,34 @@ interface StarRatingComponentProps {
     /** number of icons in rating, default `5` */
     starCount?: number | undefined;
 
-    onStarClick?: ((nextValue: number, prevValue: number, name: string) => void) | undefined;
+    onStarClick?:
+        | ((nextValue: number, prevValue: number, name: string) => void)
+        | undefined;
 
-    onStarHover?: ((nextValue: number, prevValue: number, name: string) => void) | undefined;
+    onStarHover?:
+        | ((nextValue: number, prevValue: number, name: string) => void)
+        | undefined;
 
-    onStarHoverOut?: ((nextValue: number, prevValue: number, name: string) => void) | undefined;
+    onStarHoverOut?:
+        | ((nextValue: number, prevValue: number, name: string) => void)
+        | undefined;
 
     /** render method for the full-star icon */
     renderStarIcon?:
         | ((
-            nextValue: number,
-            prevValue: number,
-            name: string,
-        ) => React.ReactNode | string)
+              nextValue: number,
+              prevValue: number,
+              name: string,
+          ) => React.ReactNode | string)
         | undefined;
 
     /** render method for the half-star icon */
     renderStarIconHalf?:
         | ((
-            nextValue: number,
-            prevValue: number,
-            name: string,
-        ) => React.ReactNode | string)
+              nextValue: number,
+              prevValue: number,
+              name: string,
+          ) => React.ReactNode | string)
         | undefined;
 
     /** color of selected icons */
@@ -44,8 +50,6 @@ interface StarRatingComponentProps {
     editing?: boolean | undefined;
 }
 
-declare class StarRatingComponent extends React.Component<
-    StarRatingComponentProps
-> {}
+declare class StarRatingComponent extends React.Component<StarRatingComponentProps> {}
 
 export = StarRatingComponent;

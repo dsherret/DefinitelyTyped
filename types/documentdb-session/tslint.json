@@ -1,6 +1,6 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "no-irregular-whitespace": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "no-irregular-whitespace": false
+  }
 }

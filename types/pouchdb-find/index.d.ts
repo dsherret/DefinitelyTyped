@@ -25,7 +25,14 @@ declare namespace PouchDB {
             $exists?: boolean | undefined;
 
             /** One of: "null", "boolean", "number", "string", "array", or "object". */
-            $type?: "null" | "boolean" | "number" | "string" | "array" | "object" | undefined;
+            $type?:
+                | "null"
+                | "boolean"
+                | "number"
+                | "string"
+                | "array"
+                | "object"
+                | undefined;
 
             /** The document field must exist in the list provided. */
             $in?: any[] | undefined;
@@ -81,7 +88,9 @@ declare namespace PouchDB {
             fields?: string[] | undefined;
 
             /** Defines a list of fields defining how you want to sort. Note that sorted fields also have to be selected in the selector. */
-            sort?: Array<string | { [propName: string]: "asc" | "desc" }> | undefined;
+            sort?:
+                | Array<string | { [propName: string]: "asc" | "desc" }>
+                | undefined;
 
             /** Maximum number of documents to return. */
             limit?: number | undefined;
@@ -160,20 +169,37 @@ declare namespace PouchDB {
 
     interface Database<Content extends {} = {}> {
         /** Query the API to find some documents. */
-        find(request: Find.FindRequest<Content>, callback: Core.Callback<Find.FindResponse<Content>>): void;
-        find(request?: Find.FindRequest<Content>): Promise<Find.FindResponse<Content>>;
+        find(
+            request: Find.FindRequest<Content>,
+            callback: Core.Callback<Find.FindResponse<Content>>,
+        ): void;
+        find(
+            request?: Find.FindRequest<Content>,
+        ): Promise<Find.FindResponse<Content>>;
 
         /** Create an index if it doesn't exist, or do nothing if it already exists. */
-        createIndex(index: Find.CreateIndexOptions, callback: Core.Callback<Find.CreateIndexResponse<Content>>): void;
-        createIndex(index?: Find.CreateIndexOptions): Promise<Find.CreateIndexResponse<Content>>;
+        createIndex(
+            index: Find.CreateIndexOptions,
+            callback: Core.Callback<Find.CreateIndexResponse<Content>>,
+        ): void;
+        createIndex(
+            index?: Find.CreateIndexOptions,
+        ): Promise<Find.CreateIndexResponse<Content>>;
 
         /** Get a list of all the indexes you've created. Also tells you about the special _all_docs index, i.e. the default index on the _id field. */
-        getIndexes(callback: Core.Callback<Find.GetIndexesResponse<Content>>): void;
+        getIndexes(
+            callback: Core.Callback<Find.GetIndexesResponse<Content>>,
+        ): void;
         getIndexes(): Promise<Find.GetIndexesResponse<Content>>;
 
         /** Delete an index and clean up any leftover data on the disk. */
-        deleteIndex(index: Find.DeleteIndexOptions, callback: Core.Callback<Find.DeleteIndexResponse<Content>>): void;
-        deleteIndex(index?: Find.DeleteIndexOptions): Promise<Find.DeleteIndexResponse<Content>>;
+        deleteIndex(
+            index: Find.DeleteIndexOptions,
+            callback: Core.Callback<Find.DeleteIndexResponse<Content>>,
+        ): void;
+        deleteIndex(
+            index?: Find.DeleteIndexOptions,
+        ): Promise<Find.DeleteIndexResponse<Content>>;
     }
 }
 

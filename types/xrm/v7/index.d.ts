@@ -72,7 +72,9 @@ declare namespace Xrm {
              *
              * @return  An array of attribute.
              */
-            getAttribute(delegateFunction: Collection.MatchingDelegate<Page.Attribute>): Page.Attribute[];
+            getAttribute(
+                delegateFunction: Collection.MatchingDelegate<Page.Attribute>,
+            ): Page.Attribute[];
 
             /**
              * Gets all controls.
@@ -116,7 +118,9 @@ declare namespace Xrm {
              *
              * @return  An array of control.
              */
-            getControl(delegateFunction: Collection.MatchingDelegate<Page.Control>): Page.Control[];
+            getControl(
+                delegateFunction: Collection.MatchingDelegate<Page.Control>,
+            ): Page.Control[];
         };
 
         /**
@@ -138,7 +142,11 @@ declare namespace Xrm {
              * @param   {function()}    yesCloseCallback    The "OK" callback.
              * @param   {function()}    noCloseCallback     The "Cancel" callback.
              */
-            confirmDialog(message: string, yesCloseCallback: () => void, noCloseCallback: () => void): void;
+            confirmDialog(
+                message: string,
+                yesCloseCallback: () => void,
+                noCloseCallback: () => void,
+            ): void;
 
             /**
              * Query if 'entityType' is an Activity entity.
@@ -204,7 +212,12 @@ declare namespace Xrm {
              *                                              data (identical to this method's webResourceData parameter)
              *                                              formid
              */
-            openWebResource(webResourceName: string, webResourceData?: string, width?: number, height?: number): Window;
+            openWebResource(
+                webResourceName: string,
+                webResourceData?: string,
+                width?: number,
+                height?: number,
+            ): Window;
         };
     }
 
@@ -444,7 +457,11 @@ declare namespace Xrm {
          */
         refreshRibbon(): void;
 
-        setFormNotification(message: string, level: Page.ui.FormNotificationLevel | string, uniqueId: string): boolean;
+        setFormNotification(
+            message: string,
+            level: Page.ui.FormNotificationLevel | string,
+            uniqueId: string,
+        ): boolean;
 
         process: Page.ui.ProcessManager;
 
@@ -488,7 +505,10 @@ declare namespace Xrm {
          * @param   {number}    errorCode   The error code.
          * @param   {string}    message     The message.
          */
-        export type ErrorCallbackDelegate = (errorCode: number, message: string) => void;
+        export type ErrorCallbackDelegate = (
+            errorCode: number,
+            message: string,
+        ) => void;
 
         /**
          * Interface for Xrm.Page.data promises.
@@ -500,7 +520,10 @@ declare namespace Xrm {
              * @param   {SuccessCallbackDelegate}   successCallback   The success callback.
              * @param   {ErrorCallbackDelegate}     errorCallback     The error callback.
              */
-            then(successCallback: SuccessCallbackDelegate, errorCallback: ErrorCallbackDelegate): void;
+            then(
+                successCallback: SuccessCallbackDelegate,
+                errorCallback: ErrorCallbackDelegate,
+            ): void;
         }
     }
 
@@ -1407,7 +1430,10 @@ declare namespace Xrm {
                  * @param   {string}    processId           The Id of the process to make the active process.
                  * @param   {function}  callbackFunction    (Optional) a function to call when the operation is complete.
                  */
-                setActiveProcess(processId: string, callbackFunction?: ProcessCallbackDelegate): void;
+                setActiveProcess(
+                    processId: string,
+                    callbackFunction?: ProcessCallbackDelegate,
+                ): void;
 
                 /**
                  * Returns a Stage object representing the active stage.
@@ -1422,7 +1448,10 @@ declare namespace Xrm {
                  * @param   {string}    stageId             the Id of the stage to make the active stage.
                  * @param   {function}  callbackFunction    (Optional) a function to call when the operation is complete.
                  */
-                setActiveStage(stageId: string, callbackFunction?: ProcessCallbackDelegate): void;
+                setActiveStage(
+                    stageId: string,
+                    callbackFunction?: ProcessCallbackDelegate,
+                ): void;
 
                 /**
                  * Use this method to get a collection of stages currently in the active path with methods to interact with the
@@ -1449,7 +1478,11 @@ declare namespace Xrm {
                  *                                      list of enabled processes is the same ones a user can see in the UI if they
                  *                                      want to change the process manually.
                  */
-                getEnabledProcesses(callbackFunction: (enabledProcesses: ProcessDictionary) => void): void;
+                getEnabledProcesses(
+                    callbackFunction: (
+                        enabledProcesses: ProcessDictionary,
+                    ) => void,
+                ): void;
 
                 /**
                  * Use this method to get the currently selected stage.

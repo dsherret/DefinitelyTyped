@@ -28,7 +28,11 @@ export { default as Vocabulary } from "./entity/model/Vocabulary";
 export { default as VocabularyElement } from "./entity/model/VocabularyElement";
 export { eventToHashedId } from "./hash_generator/EPCISEventToHashedString";
 export { default as capture } from "./request/capture";
-export { loadSchema, validateAgainstSchema, validateEpcisDocument } from "./schema/validator";
+export {
+    loadSchema,
+    validateAgainstSchema,
+    validateEpcisDocument,
+} from "./schema/validator";
 export * from "./settings";
 export { default as setup } from "./setup";
 export * from "./utils/constants";

@@ -59,10 +59,12 @@ export interface Props {
     autoDeploy?: boolean | undefined;
     onLoadComplete?:
         | ((
-            arg: { parameters: string; files: Files } | { error: any },
-        ) => unknown)
+              arg: { parameters: string; files: Files } | { error: any },
+          ) => unknown)
         | undefined;
-    afterDeploy?: ((sandboxUrl: string, sandboxId: string) => unknown) | undefined;
+    afterDeploy?:
+        | ((sandboxUrl: string, sandboxId: string) => unknown)
+        | undefined;
     afterDeployError?: ((error: Error) => unknown) | undefined;
     providedFiles?: Files | undefined;
     children: (obj: {
@@ -73,7 +75,14 @@ export interface Props {
     }) => React.ReactNode;
     style?: object | undefined;
     extensions?: string[] | undefined;
-    template?: "create-react-app" | "create-react-app-typescript" | "vue-cli" | undefined;
+    template?:
+        | "create-react-app"
+        | "create-react-app-typescript"
+        | "vue-cli"
+        | undefined;
 }
 
-export default class CodeSandboxDeployer extends React.Component<Props, State> {}
+export default class CodeSandboxDeployer extends React.Component<
+    Props,
+    State
+> {}

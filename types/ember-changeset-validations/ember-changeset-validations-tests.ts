@@ -50,7 +50,12 @@ assertType<EmberArray<unknown>>(wrapInArray([1, "2", 3, "4", 5]));
 
 assertType<ValidatorMapFunc>(validateFormat({ type: "email" }));
 
-assertType<ValidatorMapFunc>(validatePresence({ presence: true, message: "{description} should be present" }));
+assertType<ValidatorMapFunc>(
+    validatePresence({
+        presence: true,
+        message: "{description} should be present",
+    }),
+);
 assertType<ValidatorMapFunc>(validatePresence(true));
 
 assertType<ValidatorMapFunc>(validateConfirmation({ on: "password" }));

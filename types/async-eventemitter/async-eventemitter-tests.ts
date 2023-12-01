@@ -25,14 +25,14 @@ ee.emit("premature-resolve", 1);
 (async () => {
     // await new Promise((resolve) => ee.emit("async", undefined, resolve));  // fail
     // await new Promise((resolve) => ee.emit("premature-resolve", undefined, resolve));  // Should fail
-    await new Promise(resolve => ee.emit("premature-resolve", 1, resolve));
+    await new Promise((resolve) => ee.emit("premature-resolve", 1, resolve));
 })();
 
 ee.on("is-empty", () => {});
-ee.on("async", async data => {
+ee.on("async", async (data) => {
     `Reach the end of async function and ${data}`;
 });
 ee.on("premature-resolve", async (data, resolve) => {
     if (resolve) resolve(true);
-    "does not reach here";
+    ("does not reach here");
 });

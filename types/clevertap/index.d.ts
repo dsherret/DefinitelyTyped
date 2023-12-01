@@ -1,7 +1,10 @@
-type RequireAtLeastOne<T, Keys extends keyof T = keyof T> =
-    & Pick<T, Exclude<keyof T, Keys>>
-    & {
-        [K in Keys]-?: Required<Pick<T, K>> & Partial<Pick<T, Exclude<Keys, K>>>;
+type RequireAtLeastOne<T, Keys extends keyof T = keyof T> = Pick<
+    T,
+    Exclude<keyof T, Keys>
+> &
+    {
+        [K in Keys]-?: Required<Pick<T, K>> &
+            Partial<Pick<T, Exclude<Keys, K>>>;
     }[Keys];
 
 type Callback = (res: any) => void;
@@ -111,10 +114,22 @@ interface TargetOptions {
 }
 
 interface CleverTap {
-    upload(data: UploadData[], options?: UploadOptions, callback?: Callback): Promise<any>;
+    upload(
+        data: UploadData[],
+        options?: UploadOptions,
+        callback?: Callback,
+    ): Promise<any>;
     profile(options: ProfileOptions, callback?: Callback): Promise<any>;
-    profiles(query: Query, options?: QueryOptions, callback?: Callback): Promise<any>;
-    events(query: Query, options?: QueryOptions, callback?: Callback): Promise<any>;
+    profiles(
+        query: Query,
+        options?: QueryOptions,
+        callback?: Callback,
+    ): Promise<any>;
+    events(
+        query: Query,
+        options?: QueryOptions,
+        callback?: Callback,
+    ): Promise<any>;
     targets(
         action: "create" | "estimate",
         payload: TargetCreatePayload,
@@ -151,7 +166,11 @@ declare enum REGIONS {
 /**
  * @default region=REGIONS.EUROPE
  */
-declare function init(accountId: string, accountPasscode: string, region?: REGIONS): CleverTap;
+declare function init(
+    accountId: string,
+    accountPasscode: string,
+    region?: REGIONS,
+): CleverTap;
 
 export {
     Callback,

@@ -6,7 +6,12 @@ export interface Blake2Options extends TransformOptions {
     digestLength: number;
 }
 
-export type Blake2Algorithm = "blake2b" | "blake2bp" | "blake2s" | "blake2sp" | "bypass";
+export type Blake2Algorithm =
+    | "blake2b"
+    | "blake2bp"
+    | "blake2s"
+    | "blake2sp"
+    | "bypass";
 
 export class Hash extends Transform {
     constructor(algorithm: Blake2Algorithm, options?: Blake2Options);
@@ -19,10 +24,17 @@ export class Hash extends Transform {
     copy(): this;
 }
 
-export function createHash(algorithm: Blake2Algorithm, options?: Blake2Options): Hash;
+export function createHash(
+    algorithm: Blake2Algorithm,
+    options?: Blake2Options,
+): Hash;
 
 export class KeyedHash extends Transform {
-    constructor(algorithm: Blake2Algorithm, key: Buffer, options?: Blake2Options);
+    constructor(
+        algorithm: Blake2Algorithm,
+        key: Buffer,
+        options?: Blake2Options,
+    );
 
     update(buf: Buffer): this;
 
@@ -32,4 +44,8 @@ export class KeyedHash extends Transform {
     copy(): this;
 }
 
-export function createKeyedHash(algorithm: Blake2Algorithm, key: Buffer, options?: Blake2Options): KeyedHash;
+export function createKeyedHash(
+    algorithm: Blake2Algorithm,
+    key: Buffer,
+    options?: Blake2Options,
+): KeyedHash;

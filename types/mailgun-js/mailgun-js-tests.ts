@@ -13,7 +13,11 @@ const mailgun2 = new mailgunFactory2({
     domain: "auth.domain",
 });
 
-const logger = (httpOptions: mailgunFactory.LoggerHttpOptions, payload: string, form: FormData) => {};
+const logger = (
+    httpOptions: mailgunFactory.LoggerHttpOptions,
+    payload: string,
+    form: FormData,
+) => {};
 
 const mailgun3 = new mailgunFactory2({
     apiKey: "auth.api_key",
@@ -28,7 +32,7 @@ mailgun.messages().send(
     {
         to: "fixture.message.to",
     },
-    err => {
+    (err) => {
         console.log;
     },
 );
@@ -85,47 +89,62 @@ const exampleSendDataWithTemplate2: mailgunFactory.messages.SendTemplateData = {
     },
 };
 
-const exampleBatchDataWithRecipientVariables1: mailgunFactory.messages.BatchData = {
-    to: "someone@email.com",
-    subject: "Hello, %recipient.name%",
-    text: "You have %recipient.invitations% new invitations",
-    "recipient-variables": {
-        "alice@example.com": {
-            name: "Alice",
-            invitations: 3,
+const exampleBatchDataWithRecipientVariables1: mailgunFactory.messages.BatchData =
+    {
+        to: "someone@email.com",
+        subject: "Hello, %recipient.name%",
+        text: "You have %recipient.invitations% new invitations",
+        "recipient-variables": {
+            "alice@example.com": {
+                name: "Alice",
+                invitations: 3,
+            },
+            "bob@example.com": {
+                name: "Bob",
+                invitations: 2,
+            },
         },
-        "bob@example.com": {
-            name: "Bob",
-            invitations: 2,
-        },
-    },
-};
+    };
 
-const exampleBatchDataWithRecipientVariables2: mailgunFactory.messages.BatchData = {
-    to: "someone@email.com",
-    subject: "Hello, %recipient.name%",
-    text: "You have %recipient.invitations% new invitations",
-    "recipient-variables": JSON.stringify({
-        "alice@example.com": {
-            name: "Alice",
-            invitations: 3,
-        },
-    }),
-};
+const exampleBatchDataWithRecipientVariables2: mailgunFactory.messages.BatchData =
+    {
+        to: "someone@email.com",
+        subject: "Hello, %recipient.name%",
+        text: "You have %recipient.invitations% new invitations",
+        "recipient-variables": JSON.stringify({
+            "alice@example.com": {
+                name: "Alice",
+                invitations: 3,
+            },
+        }),
+    };
 
-const exampleSendDataTemplateResponse: Promise<mailgunFactory.messages.SendResponse> = mailgun
-    .messages()
-    .send(exampleSendDataWithTemplate);
+const exampleSendDataTemplateResponse: Promise<mailgunFactory.messages.SendResponse> =
+    mailgun.messages().send(exampleSendDataWithTemplate);
 
 let validationResultPromise: Promise<mailgunFactory.validation.ValidateResponse>;
 validationResultPromise = mailgun.validate("foo@mailgun.net");
 validationResultPromise = mailgun.validate("foo@mailgun.net", true);
-validationResultPromise = mailgun.validate("foo@mailgun.net", true, { mailbox_verification: true });
-validationResultPromise = mailgun.validate("foo@mailgun.net", { mailbox_verification: false, api_key: "..." });
+validationResultPromise = mailgun.validate("foo@mailgun.net", true, {
+    mailbox_verification: true,
+});
+validationResultPromise = mailgun.validate("foo@mailgun.net", {
+    mailbox_verification: false,
+    api_key: "...",
+});
 mailgun.validate("foo@mailgun.net", (error, body) => {});
 mailgun.validate("foo@mailgun.net", true, (error, body) => {});
-mailgun.validate("foo@mailgun.net", true, { mailbox_verification: true }, (error, body) => {});
-mailgun.validate("foo@mailgun.net", { mailbox_verification: false, api_key: "..." }, (error, body) => {});
+mailgun.validate(
+    "foo@mailgun.net",
+    true,
+    { mailbox_verification: true },
+    (error, body) => {},
+);
+mailgun.validate(
+    "foo@mailgun.net",
+    { mailbox_verification: false, api_key: "..." },
+    (error, body) => {},
+);
 
 const validationResult6: mailgunFactory.validation.ValidateResponse = {
     address: "foo@mailgun.net",
@@ -143,7 +162,9 @@ const validationResult6: mailgunFactory.validation.ValidateResponse = {
 
 // Generic requests
 mailgun.get("/samples.mailgun.org/stats", (error: any, body: any) => {});
-const response1: Promise<any> = mailgun.get("/samples.mailgun.org/stats", { event: ["sent", "delivered"] });
+const response1: Promise<any> = mailgun.get("/samples.mailgun.org/stats", {
+    event: ["sent", "delivered"],
+});
 const response2: Promise<any> = mailgun.get("/samples.mailgun.org/stats");
 
 const list = mailgun.lists("example@mailgun.net");
@@ -152,24 +173,37 @@ const list = mailgun.lists("example@mailgun.net");
 list.delete((error, body) => {});
 
 // Creating a mailing list with a single member
-list.members().create({ address: "simple@example.net", name: "Simple Example", subscribed: true });
+list.members().create({
+    address: "simple@example.net",
+    name: "Simple Example",
+    subscribed: true,
+});
 
 // Adding multiple members to a list
-list.members().add({
-    members: [{ address: "Jane Doe <janedoe@example.net>", subscribed: true }, {
-        address: "John Doe <johndoe@example.net>",
-        subscribed: false,
-    }],
-}, (error, data) => {});
+list.members().add(
+    {
+        members: [
+            { address: "Jane Doe <janedoe@example.net>", subscribed: true },
+            {
+                address: "John Doe <johndoe@example.net>",
+                subscribed: false,
+            },
+        ],
+    },
+    (error, data) => {},
+);
 
 // Listing members of a list
 list.members().list((error, members) => {});
 
 // Updating an existing member of a list
-list.members("johndoe@example.net").update({
-    name: "John D.",
-    subscribed: true,
-}, (error, data) => {});
+list.members("johndoe@example.net").update(
+    {
+        name: "John D.",
+        subscribed: true,
+    },
+    (error, data) => {},
+);
 
 // Deleting a member of a list
 list.members("janedoe@example.net").delete((error, body) => {});

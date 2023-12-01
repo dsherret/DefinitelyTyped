@@ -3,20 +3,20 @@ $("#foo"); // => element with ID "foo"
 $("<p>Hello</p>"); // => the new P element
 $("<p />", { text: "Hello", id: "greeting", css: { color: "darkblue" } });
 
-Zepto(function($) {
+Zepto(function ($) {
     alert("Ready to Zepto!");
 });
 
 $.camelCase("hello-there"); // => "helloThere"
 $.camelCase("helloThere"); // => "helloThere"
 
-$.each(["a", "b", "c"], function(index, item): boolean {
+$.each(["a", "b", "c"], function (index, item): boolean {
     console.log("item %d is: %s", index, item);
     return true;
 });
 
 var hash = { name: "zepto.js", size: "micro" };
-$.each(hash, function(key, value) {
+$.each(hash, function (key, value) {
     console.log("%s: %s", key, value);
     return true;
 });
@@ -26,8 +26,8 @@ var target = { one: "patridge" },
 
 $.extend(target, source);
 
-$.fn.empty = function() {
-    return this.each(function() {
+$.fn.empty = function () {
+    return this.each(function () {
         this.innerHTML = "";
     });
 };
@@ -66,7 +66,7 @@ elem.css("background-color", ""); // remove property
 // set multiple properties:
 elem.css({ backgroundColor: "#8EE", fontSize: 28 });
 
-$("form input").each(function(index) {
+$("form input").each(function (index) {
     console.log("input %d is: %o", index, this);
     return true;
 });
@@ -82,8 +82,11 @@ $("#foo").height(); // => 123
 $(window).height(); // => 838 (viewport height)
 $(document).height(); // => 22302
 
-$(".comment p").html(function(idx, oldHtml) {
-    return oldHtml.replace(/(^|\W)@(\w{1,15})/g, "$1@<a href=\"http://twitter.com/$2\">$2</a>");
+$(".comment p").html(function (idx, oldHtml) {
+    return oldHtml.replace(
+        /(^|\W)@(\w{1,15})/g,
+        '$1@<a href="http://twitter.com/$2">$2</a>',
+    );
 });
 
 $("li:nth-child(2)").index();
@@ -94,9 +97,12 @@ $("<p>See the following table:</p>").insertBefore("table");
 
 $("li").last();
 
-elements.map(function() {
-    return $(this).text();
-}).get().join(", ");
+elements
+    .map(function () {
+        return $(this).text();
+    })
+    .get()
+    .join(", ");
 
 $("dl dt").next(); // => the DD elements
 
@@ -136,7 +142,7 @@ $("code").wrap("<div class=highlight><pre /></div>");
 
 // wrap all form inputs in a span with classname
 // corresponding to input type:
-$("input").wrap(function(index) {
+$("input").wrap(function (index) {
     return "<span class=" + this.type + "field />";
 });
 // => <span class=textfield><input type=text /></span>,
@@ -158,48 +164,46 @@ $("ol li").wrapInner("<p><em /></p>");
 $.Event("mylib:change", { bubbles: false });
 
 var obj = { name: "Zepto" };
-var handler = function(e: Event) {
+var handler = function (e: Event) {
     console.log("hello from + ", this.name);
     return true;
 };
 
 // ensures that the handler will be executed in the context of `obj`:
-$(document).on("click", <(e: Event) => boolean> $.proxy(handler, obj));
+$(document).on("click", <(e: Event) => boolean>$.proxy(handler, obj));
 
 elem = $("#content");
 // observe all clicks inside #content:
-elem.on("click", function(e) {
+elem.on("click", function (e) {
     return true;
 });
 // observe clicks inside navigation links in #content
-elem.on("click", "nav a", function(e) {
+elem.on("click", "nav a", function (e) {
     return true;
 });
 // all clicks inside links in the document
-$(document).on("click", "a", function(e) {
+$(document).on("click", "a", function (e) {
     return true;
 });
 
 // add a handler for a custom event
-$(document).on(
-    "mylib:change",
-    <(e: Event) => boolean> function(e: Event, from: any, to: any) {
+$(document).on("mylib:change", <(e: Event) => boolean>(
+    function (e: Event, from: any, to: any) {
         console.log("change on %o with data %s, %s", e.target, from, to);
         return true;
-    },
-);
+    }
+));
 // trigger the custom event
 $(document.body).trigger("mylib:change", ["one", "two"]);
 
-$(document).on(
-    "ajaxBeforeSend",
-    <(e: Event) => boolean> function(e: Event, xhr: any, options: any) {
+$(document).on("ajaxBeforeSend", <(e: Event) => boolean>(
+    function (e: Event, xhr: any, options: any) {
         // This gets fired for every Ajax request performed on the page.
         // The xhr object and $.ajax() options are available for editing.
         // Return false to cancel this request.
         return true;
-    },
-);
+    }
+));
 
 $.ajax({
     type: "GET",
@@ -210,13 +214,13 @@ $.ajax({
     dataType: "json",
     timeout: 300,
     context: $("body"),
-    success: function(data) {
+    success: function (data) {
         // Supposing this JSON payload was received:
         //   {"project": {"id": 42, "html": "<div>..." }}
         // append the HTML to context object.
         this.append(data.project.html);
     },
-    error: function(xhr, type) {
+    error: function (xhr, type) {
         alert("Ajax error!");
     },
 });
@@ -230,16 +234,16 @@ $.ajax({
     contentType: "application/json",
 });
 
-$.get("/whatevs.html", function(response) {
+$.get("/whatevs.html", function (response) {
     $(document.body).append(response);
 });
 
-$.getJSON("/awesome.json", function(data) {
+$.getJSON("/awesome.json", function (data) {
     console.log(data);
 });
 
 // fetch data from another domain with JSONP
-$.getJSON("//example.com/awesome.json?callback=?", function(remoteData) {
+$.getJSON("//example.com/awesome.json?callback=?", function (remoteData) {
     console.log(remoteData);
 });
 
@@ -258,11 +262,11 @@ $.param({ foo: "bar", nested: { will: "not be ignored" } });
 $.param({ foo: "bar", nested: { will: "be ignored" } }, true);
 // => "foo=bar&nested=[object+Object]"
 
-$.post("/create", { sample: "payload" }, function(response) {
+$.post("/create", { sample: "payload" }, function (response) {
     // process response
 });
 
-$.post("/create", $("#some_form").serialize(), function(response) {
+$.post("/create", $("#some_form").serialize(), function (response) {
     // ...
 });
 
@@ -276,7 +280,7 @@ $.fx.off = true;
 $.fx.speeds._default = 500;
 $.fx.speeds.fast = 100;
 $.fx.speeds.slow = 1000;
-(<any> $.fx.speeds).custom = 20;
+(<any>$.fx.speeds).custom = 20;
 
 $("#some_element").animate(
     {

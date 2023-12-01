@@ -160,8 +160,16 @@ declare namespace ATEM {
     class FileUploader {
         constructor(atem: ATEM);
         uploadFromPNGFile(path: string): void;
-        uploadFromPNGBuffer(pngBuffer: Buffer, bankIndex?: number, frameIndex?: number): PNG;
-        convertPNGToYUV422(width: number, height: number, data: number[]): Buffer;
+        uploadFromPNGBuffer(
+            pngBuffer: Buffer,
+            bankIndex?: number,
+            frameIndex?: number,
+        ): PNG;
+        convertPNGToYUV422(
+            width: number,
+            height: number,
+            data: number[],
+        ): Buffer;
     }
 
     enum Model {
@@ -230,10 +238,16 @@ declare class ATEM {
     //
 
     /** Route the specified input channel to the program bus for that Mix Effect (the LIVE output) */
-    changeProgramInput(channel: ATEM.VisionChannelNumber, me?: ATEM.MixEffect): void;
+    changeProgramInput(
+        channel: ATEM.VisionChannelNumber,
+        me?: ATEM.MixEffect,
+    ): void;
 
     /** Route the specified input channel to the preview bus for that Mix Effect */
-    changePreviewInput(channel: ATEM.VisionChannelNumber, me?: ATEM.MixEffect): void;
+    changePreviewInput(
+        channel: ATEM.VisionChannelNumber,
+        me?: ATEM.MixEffect,
+    ): void;
 
     /** Changes the input channel that routes to the specified aux bus */
     changeAuxInput(aux: number, input: ATEM.VisionChannelNumber): void;
@@ -263,13 +277,24 @@ declare class ATEM {
     //
 
     /** equivilant of pressing ON AIR on the mixer (for that USK) */
-    changeUpstreamKeyState(uskNum: number, onAir: boolean, me?: ATEM.MixEffect): void;
+    changeUpstreamKeyState(
+        uskNum: number,
+        onAir: boolean,
+        me?: ATEM.MixEffect,
+    ): void;
 
     /** if true: the next transition will fade the BKGD */
-    changeUpstreamKeyNextBackground(nextTransFadesBkgd: boolean, me?: ATEM.MixEffect): void;
+    changeUpstreamKeyNextBackground(
+        nextTransFadesBkgd: boolean,
+        me?: ATEM.MixEffect,
+    ): void;
 
     /** if true: the next transition will fade this USK */
-    changeUpstreamKeyNextState(uskNum: number, nextTransFadesUSK: boolean, me?: ATEM.MixEffect): void;
+    changeUpstreamKeyNextState(
+        uskNum: number,
+        nextTransFadesUSK: boolean,
+        me?: ATEM.MixEffect,
+    ): void;
 
     //
     // DSK
@@ -289,15 +314,25 @@ declare class ATEM {
     //
 
     changeAudioMasterGain(gain: number): void;
-    changeAudioChannelGain(channel: ATEM.AudioChannelNumber, gain: number): void;
-    changeAudioChannelState(channel: ATEM.AudioChannelNumber, status: boolean): void;
+    changeAudioChannelGain(
+        channel: ATEM.AudioChannelNumber,
+        gain: number,
+    ): void;
+    changeAudioChannelState(
+        channel: ATEM.AudioChannelNumber,
+        status: boolean,
+    ): void;
     sendAudioLevelNumber(enable?: boolean): void;
 
     //
     // macros
     //
 
-    startRecordMacro(macroId: number, name?: string, description?: string): void;
+    startRecordMacro(
+        macroId: number,
+        name?: string,
+        description?: string,
+    ): void;
     stopRecordMacro(): void;
     runMacro(macroId: number): void;
     deleteMacro(macroId: number): void;
@@ -310,13 +345,23 @@ declare class ATEM {
     unlockMediaPool(bankIndex: number): void;
 
     /** @deprecated use `ATEM.FileUploader` */
-    fileSendNotice(id: [unknown, unknown], bankIndex: number, frameIndex: number, size: number, mode?: number): void;
+    fileSendNotice(
+        id: [unknown, unknown],
+        bankIndex: number,
+        frameIndex: number,
+        size: number,
+        mode?: number,
+    ): void;
 
     /** @deprecated use `ATEM.FileUploader` */
     sendFileData(id: [unknown, unknown], buffer: Buffer): void;
 
     /** @deprecated use `ATEM.FileUploader` */
-    sendFileDescription(id: [unknown, unknown], name: string, hash: Buffer): void;
+    sendFileDescription(
+        id: [unknown, unknown],
+        name: string,
+        hash: Buffer,
+    ): void;
 
     //
     // event listeners
@@ -324,7 +369,10 @@ declare class ATEM {
 
     on: {
         /** called when a state packet is received from the ATEM */
-        (event: "stateChanged", callback: (error?: Error, state?: ATEM.State) => void): void;
+        (
+            event: "stateChanged",
+            callback: (error?: Error, state?: ATEM.State) => void,
+        ): void;
 
         /** called when a ping packet is received from the ATEM at an interval of one second */
         (event: "ping", callback: () => void): void;
@@ -333,7 +381,10 @@ declare class ATEM {
         (event: "connect", callback: (error: null) => void): void;
 
         /** called when we detect that we cannot communicate to the ATEM within `RECONNECT_INTERVAL` seconds */
-        (event: "disconnect", callback: (error: null, state: null) => void): void;
+        (
+            event: "disconnect",
+            callback: (error: null, state: null) => void,
+        ): void;
     };
     once: ATEM["on"];
 }

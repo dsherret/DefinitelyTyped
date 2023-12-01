@@ -21,7 +21,12 @@ function transformHeadersAsync(req: Request, res: Response) {
 
 mung.headersAsync(transformHeadersAsync);
 
-function transformChunk(chunk: string | Buffer, encoding: string | null, req: Request, res: Response) {
+function transformChunk(
+    chunk: string | Buffer,
+    encoding: string | null,
+    req: Request,
+    res: Response,
+) {
     return "chunk";
 }
 

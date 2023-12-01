@@ -2,7 +2,7 @@ import wol = require("wake_on_lan");
 
 wol.wake("20:DE:20:DE:20:DE");
 
-let errFunc: wol.ErrorCallback = function(error: any) {
+let errFunc: wol.ErrorCallback = function (error: any) {
     if (error) {
         // handle error
     } else {
@@ -12,8 +12,17 @@ let errFunc: wol.ErrorCallback = function(error: any) {
 
 var opts: wol.WakeOptions = { address: "192.168.1.1" };
 var opts1: wol.WakeOptions = { address: "192.168.1.1", num_packets: 3 };
-var opts2: wol.WakeOptions = { address: "192.168.1.1", num_packets: 3, interval: 4 };
-var opts3: wol.WakeOptions = { address: "192.168.1.1", num_packets: 3, interval: 4, port: 5 };
+var opts2: wol.WakeOptions = {
+    address: "192.168.1.1",
+    num_packets: 3,
+    interval: 4,
+};
+var opts3: wol.WakeOptions = {
+    address: "192.168.1.1",
+    num_packets: 3,
+    interval: 4,
+    port: 5,
+};
 var opts4: wol.WakeOptions = { address: "192.168.1.1" };
 var opts5: wol.WakeOptions = { address: "192.168.1.1", interval: 4 };
 var opts6: wol.WakeOptions = { address: "192.168.1.1", port: 5 };

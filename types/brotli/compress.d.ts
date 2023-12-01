@@ -16,6 +16,9 @@ interface CompressOptions {
     lgwin?: number | undefined;
 }
 
-declare function compress(buffer: Buffer, options?: CompressOptions): Uint8Array;
+declare function compress(
+    buffer: Buffer,
+    options?: CompressOptions,
+): Uint8Array;
 
 export = compress;

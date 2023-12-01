@@ -17,7 +17,7 @@ type VertexData = Object;
  * Graph constructor function.
  */
 interface GraphConstructor {
-    new(): Graph;
+    new (): Graph;
 }
 
 /**
@@ -32,7 +32,7 @@ interface Graph {
  * Vertex constructor function.
  */
 interface VertexConstructor {
-    new(obj?: VertexData): Vertex;
+    new (obj?: VertexData): Vertex;
 }
 
 /**

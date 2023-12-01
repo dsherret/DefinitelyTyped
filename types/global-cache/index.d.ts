@@ -56,4 +56,11 @@ export function has(key: Primitive): boolean;
 export function set(key: Primitive, value: unknown): boolean;
 export function setIfMissingThenGet<T>(key: Primitive, valueThunk: () => T): T;
 
-export type Primitive = number | string | boolean | bigint | symbol | null | undefined;
+export type Primitive =
+    | number
+    | string
+    | boolean
+    | bigint
+    | symbol
+    | null
+    | undefined;

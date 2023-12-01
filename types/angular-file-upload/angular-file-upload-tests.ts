@@ -1,10 +1,13 @@
 import * as angular from "angular";
-import { FileItem, FileUploader, FileUploaderFactory } from "angular-file-upload";
+import {
+    FileItem,
+    FileUploader,
+    FileUploaderFactory,
+} from "angular-file-upload";
 
-angular.module("app", ["angularFileUpload"])
-    .controller("AppController", ["FileUploader", (
-        FileUploader: FileUploaderFactory,
-    ) => {
+angular.module("app", ["angularFileUpload"]).controller("AppController", [
+    "FileUploader",
+    (FileUploader: FileUploaderFactory) => {
         const uploader: FileUploader = new FileUploader({
             url: "upload.php",
         });
@@ -26,7 +29,11 @@ angular.module("app", ["angularFileUpload"])
         });
 
         // an async filter
-        const asyncFilter = (item: File, options: {}, deferred: angular.IDeferred<any>) => {
+        const asyncFilter = (
+            item: File,
+            options: {},
+            deferred: angular.IDeferred<any>,
+        ) => {
             console.log("asyncFilter");
             setTimeout(deferred.resolve, 1e3);
         };
@@ -37,7 +44,11 @@ angular.module("app", ["angularFileUpload"])
 
         // CALLBACKS
 
-        uploader.onWhenAddingFileFailed = (item, /*{File|FileLikeObject}*/ filter, options) => {
+        uploader.onWhenAddingFileFailed = (
+            item,
+            /*{File|FileLikeObject}*/ filter,
+            options,
+        ) => {
             console.info("onWhenAddingFileFailed", item, filter, options);
         };
         uploader.onAfterAddingFile = (fileItem) => {
@@ -72,4 +83,5 @@ angular.module("app", ["angularFileUpload"])
         };
 
         console.info("uploader", uploader);
-    }]);
+    },
+]);

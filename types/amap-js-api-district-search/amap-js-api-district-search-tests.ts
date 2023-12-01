@@ -54,14 +54,17 @@ districtSearch.setSubdistrict(3);
 // @ts-expect-error
 districtSearch.setSubdistrict(4);
 
-districtSearch.on("complete", (event: AMap.DistrictSearch.EventMap["complete"]) => {
-    // $ExpectType "complete"
-    event.type;
-    // $ExpectType string
-    event.info;
-    // $ExpectType District[]
-    event.districtList;
-});
+districtSearch.on(
+    "complete",
+    (event: AMap.DistrictSearch.EventMap["complete"]) => {
+        // $ExpectType "complete"
+        event.type;
+        // $ExpectType string
+        event.info;
+        // $ExpectType District[]
+        event.districtList;
+    },
+);
 
 districtSearch.on("error", (event: AMap.DistrictSearch.EventMap["error"]) => {
     // $ExpectType "error"

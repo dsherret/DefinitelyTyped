@@ -24,26 +24,32 @@ type EffectTypes =
 type ThrowErrorKey = typeof throwErrorKey;
 type EffectTypesWithErrorKey = EffectTypes | ThrowErrorKey | END["type"];
 
-declare function throwError<TMessage>(message?: TMessage): Effect<ThrowErrorKey, TMessage>;
+declare function throwError<TMessage>(
+    message?: TMessage,
+): Effect<ThrowErrorKey, TMessage>;
 declare function stub<TArgs extends any[], TReturn>(
     genFunc: (...args: TArgs) => Generator<TReturn, any, any> | TReturn,
     ...args: TArgs
 ): () => TReturn;
 type Options<TLookup, TEffects> =
     | {
-        mapping: KeyValuePairs<TLookup, any>;
-        collected?: Array<Effect<TEffects> | Array<Effect<TEffects>>>;
-        maxSteps?: number;
-    }
+          mapping: KeyValuePairs<TLookup, any>;
+          collected?: Array<Effect<TEffects> | Array<Effect<TEffects>>>;
+          maxSteps?: number;
+      }
     | KeyValuePairs<TLookup, any>
     | any[][]; // This is loose, but covers `const sagaEnv = [...]` then call `collectPuts(fn, sagaEnv)` case. Other inference only works with double nested array passed inline rather than via a predefined variable.
-declare function createSagaTestEngine<const TEffectConstraint extends EffectTypes>(
+declare function createSagaTestEngine<
+    const TEffectConstraint extends EffectTypes,
+>(
     effects?: Readonly<TEffectConstraint[]>,
 ): (
     genFunc: (...genArgs: any[]) => Iterator<unknown, any, unknown>,
     opts: Options<Effect<EffectTypesWithErrorKey>, TEffectConstraint>,
     ...initialArgs: any[]
-) => Array<Effect<TEffectConstraint, any> | Array<Effect<TEffectConstraint, any>>>;
+) => Array<
+    Effect<TEffectConstraint, any> | Array<Effect<TEffectConstraint, any>>
+>;
 declare function collectPuts(
     genFunc: (...genArgs: any[]) => Iterator<unknown, any, unknown>,
     opts: Options<Effect<EffectTypesWithErrorKey, any>, "PUT">,
@@ -60,4 +66,11 @@ declare function collectCallsAndPuts(
     ...initialArgs: any[]
 ): Array<Effect<"PUT" | "CALL", any> | Array<Effect<"PUT" | "CALL", any>>>;
 
-export { collectCalls, collectCallsAndPuts, collectPuts, createSagaTestEngine, stub, throwError };
+export {
+    collectCalls,
+    collectCallsAndPuts,
+    collectPuts,
+    createSagaTestEngine,
+    stub,
+    throwError,
+};

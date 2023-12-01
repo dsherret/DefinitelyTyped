@@ -37,25 +37,47 @@ export class Query<T> extends Readable implements Promise<T> {
 
     skip(value: number): Query<T>;
 
-    sort(keyOrList: string | Object[] | Object, direction?: "ASC" | "DESC" | number): Query<T>;
+    sort(
+        keyOrList: string | Object[] | Object,
+        direction?: "ASC" | "DESC" | number,
+    ): Query<T>;
 
-    run(options?: ExecuteOptions, callback?: (err: Error, records: T[]) => void): Query<T>;
+    run(
+        options?: ExecuteOptions,
+        callback?: (err: Error, records: T[]) => void,
+    ): Query<T>;
 
-    execute(options?: ExecuteOptions, callback?: (err: Error, records: T[]) => void): Query<T>;
+    execute(
+        options?: ExecuteOptions,
+        callback?: (err: Error, records: T[]) => void,
+    ): Query<T>;
 
-    exec(options?: ExecuteOptions, callback?: (err: Error, records: T[]) => void): Query<T>;
+    exec(
+        options?: ExecuteOptions,
+        callback?: (err: Error, records: T[]) => void,
+    ): Query<T>;
 
     del(type?: string, callback?: (err: Error, ret: RecordResult) => void): any;
     del(callback?: (err: Error, ret: RecordResult) => void): any;
 
-    delete(type?: string, callback?: (err: Error, ret: RecordResult) => void): any;
+    delete(
+        type?: string,
+        callback?: (err: Error, ret: RecordResult) => void,
+    ): any;
     delete(callback?: (err: Error, ret: RecordResult) => void): any;
 
-    destroy(type?: string, callback?: (err: Error, ret: RecordResult) => void): Promise<RecordResult[]>;
-    destroy(callback?: (err: Error, ret: RecordResult) => void): Promise<RecordResult[]>;
+    destroy(
+        type?: string,
+        callback?: (err: Error, ret: RecordResult) => void,
+    ): Promise<RecordResult[]>;
+    destroy(
+        callback?: (err: Error, ret: RecordResult) => void,
+    ): Promise<RecordResult[]>;
     destroy(error?: Error): this;
 
-    explain(callback?: (err: Error, info: ExplainInfo) => void): Promise<ExplainInfo>;
+    explain(
+        callback?: (err: Error, info: ExplainInfo) => void,
+    ): Promise<ExplainInfo>;
 
     // @ts-ignore conflicts with built-in Readable.map
     map(callback: (currentValue: Object) => void): Promise<any>;
@@ -73,7 +95,10 @@ export class Query<T> extends Readable implements Promise<T> {
         type: string,
         callback?: (err: Error, records: RecordResult[]) => void,
     ): Promise<RecordResult[]>;
-    update(mapping: any, callback?: (err: Error, records: RecordResult[]) => void): Promise<RecordResult[]>;
+    update(
+        mapping: any,
+        callback?: (err: Error, records: RecordResult[]) => void,
+    ): Promise<RecordResult[]>;
 
     where(conditions: Object | string): Query<T>;
 
@@ -81,7 +106,9 @@ export class Query<T> extends Readable implements Promise<T> {
 
     [Symbol.toStringTag]: "Promise";
 
-    catch<TResult>(onrejected?: (reason: any) => PromiseLike<TResult> | TResult): Promise<T | TResult>;
+    catch<TResult>(
+        onrejected?: (reason: any) => PromiseLike<TResult> | TResult,
+    ): Promise<T | TResult>;
 
     then<TResult1, TResult2>(
         onfulfilled?: (value: T) => PromiseLike<TResult1> | TResult1,

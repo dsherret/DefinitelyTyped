@@ -6,7 +6,7 @@ import { Queue } from "promise-the-world/queue";
 const { defer, queue, delay, mutex } = promiseTheWorld;
 
 function deferTest(): Promise<string> {
-    const foo: boolean = <any> {};
+    const foo: boolean = <any>{};
     const deferred: Deferred<string> = defer<string>();
 
     if (foo) {

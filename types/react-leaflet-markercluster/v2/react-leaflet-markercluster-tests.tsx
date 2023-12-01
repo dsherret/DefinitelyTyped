@@ -26,6 +26,8 @@ const MarkerCluster = (
             color: "blue",
             opacity: 0.5,
         }}
-        iconCreateFunction={cluster => Leaflet.divIcon({ html: `<b>${cluster.getChildCount()}</b>` })}
+        iconCreateFunction={(cluster) =>
+            Leaflet.divIcon({ html: `<b>${cluster.getChildCount()}</b>` })
+        }
     />
 );

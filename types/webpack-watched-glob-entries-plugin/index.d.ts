@@ -6,7 +6,11 @@ interface PluginOptions {
 }
 
 declare class WebpackWatchedGlobEntries extends Plugin {
-    static getEntries(globs: string[], globOptions?: IOptions, pluginOptions?: PluginOptions): EntryFunc;
+    static getEntries(
+        globs: string[],
+        globOptions?: IOptions,
+        pluginOptions?: PluginOptions,
+    ): EntryFunc;
     static getFiles(
         globString: string,
         globOptions?: IOptions,

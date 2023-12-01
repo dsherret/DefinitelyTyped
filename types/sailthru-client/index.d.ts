@@ -4,7 +4,10 @@ import * as Restler from "restler";
 export {};
 
 interface RestlerResult {
-    on(eventName: string, listener: (data?: any, response?: http.ServerResponse) => void): RestlerResult;
+    on(
+        eventName: string,
+        listener: (data?: any, response?: http.ServerResponse) => void,
+    ): RestlerResult;
 }
 
 export type SailthruError = {
@@ -21,27 +24,44 @@ export interface PurchaseItem {
     url: string;
     tags?: string[] | undefined;
     vars?: object | undefined;
-    images?: {
-        full?: {
-            url: string;
-        } | undefined;
-        thumb?: {
-            url: string;
-        } | undefined;
-    } | undefined;
+    images?:
+        | {
+              full?:
+                  | {
+                        url: string;
+                    }
+                  | undefined;
+              thumb?:
+                  | {
+                        url: string;
+                    }
+                  | undefined;
+          }
+        | undefined;
 }
 
 export type SailthruResponse = object | string;
 
-export type SailthruCallback = (err: SailthruError, response: SailthruResponse) => void;
+export type SailthruCallback = (
+    err: SailthruError,
+    response: SailthruResponse,
+) => void;
 
 /**
  * API client version
  */
 export const VERSION: string;
 
-export function createSailthruClient(apiKey: string, apiSecret: string, apiUrl?: string): SailthruClient;
-export function createClient(apiKey: string, apiSecret: string, apiUrl?: string): SailthruClient;
+export function createSailthruClient(
+    apiKey: string,
+    apiSecret: string,
+    apiUrl?: string,
+): SailthruClient;
+export function createClient(
+    apiKey: string,
+    apiSecret: string,
+    apiUrl?: string,
+): SailthruClient;
 
 export interface SailthruClient {
     logging: boolean;
@@ -62,11 +82,7 @@ export interface SailthruClient {
      * @param data provide the API options, as outlined in the GET section of the documentation for that endpoint
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    apiGet(
-        action: string,
-        data: object,
-        callback: SailthruCallback,
-    ): void;
+    apiGet(action: string, data: object, callback: SailthruCallback): void;
 
     /**
      * Perform an arbitrary API DELETE request to Sailthru.
@@ -74,11 +90,7 @@ export interface SailthruClient {
      * @param data provide the API options, as outlined in the DELETE section of the documentation for that endpoint
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    apiDelete(
-        action: string,
-        data: object,
-        callback?: SailthruCallback,
-    ): void;
+    apiDelete(action: string, data: object, callback?: SailthruCallback): void;
 
     /**
      * Perform an arbitrary API POST request to Sailthru.
@@ -86,11 +98,7 @@ export interface SailthruClient {
      * @param data provide the API options, as outlined in the POST section of the documentation for that endpoint
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    apiPost(
-        action: string,
-        data: object,
-        callback: SailthruCallback,
-    ): void;
+    apiPost(action: string, data: object, callback: SailthruCallback): void;
 
     /**
      * Perform an arbitrary API POST request to Sailthru.
@@ -127,11 +135,7 @@ export interface SailthruClient {
      * @param email valid email address to send the message to
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    send(
-        template: string,
-        email: string,
-        callback: SailthruCallback,
-    ): void;
+    send(template: string, email: string, callback: SailthruCallback): void;
 
     /**
      * Send a single message to email, using the given template.
@@ -180,30 +184,21 @@ export interface SailthruClient {
      * @param send_id the send ID which was in the response of a previous send call
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    getSend(
-        send_id: string,
-        callback: SailthruCallback,
-    ): void;
+    getSend(send_id: string, callback: SailthruCallback): void;
 
     /**
      * Cancels the scheduled send which is identified by “send_id”. Note that you can only cancel sends which were scheduled in the future with the “schedule_time” parameters.
      * @param send_id the send ID which was in the response of a previous send call
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    cancelSend(
-        send_id: string,
-        callback: SailthruCallback,
-    ): void;
+    cancelSend(send_id: string, callback: SailthruCallback): void;
 
     /**
      * Return a user profile by looking up via a Sailthru ID (sid).
      * @param sid the sailthru id for a given user
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    getUserBySid(
-        sid: string,
-        callback: SailthruCallback,
-    ): void;
+    getUserBySid(sid: string, callback: SailthruCallback): void;
 
     /**
      * Return a user profile by looking up via a given key and ID.
@@ -211,11 +206,7 @@ export interface SailthruClient {
      * @param key specify which type of key was provided in the “id” parameter
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    getUserByKey(
-        id: string,
-        key: string,
-        callback: SailthruCallback,
-    ): void;
+    getUserByKey(id: string, key: string, callback: SailthruCallback): void;
 
     /**
      * Return a user profile by looking up via a given key and ID.
@@ -264,70 +255,49 @@ export interface SailthruClient {
      * @param blastId the blast ID which was in the response of a previous blast call
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    getBlast(
-        blastId: string | number,
-        callback: SailthruCallback,
-    ): void;
+    getBlast(blastId: string | number, callback: SailthruCallback): void;
 
     /**
      * Delete a previously created campaign, by blast ID. This cannot be undone.
      * @param blastId the blast ID which was in the response of a previous blast call
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    deleteBlast(
-        blastId: string | number,
-        callback: SailthruCallback,
-    ): void;
+    deleteBlast(blastId: string | number, callback: SailthruCallback): void;
 
     /**
      * Unschedule a previously scheduled campaign, by blast ID.
      * @param blastId the blast ID which was in the response of a previous blast call
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    unscheduleBlast(
-        blastId: string | number,
-        callback: SailthruCallback,
-    ): void;
+    unscheduleBlast(blastId: string | number, callback: SailthruCallback): void;
 
     /**
      * Pause a currently sending created campaign, by blast ID.
      * @param blastId the blast ID which was in the response of a previous blast call
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    pauseBlast(
-        blastId: string | number,
-        callback: SailthruCallback,
-    ): void;
+    pauseBlast(blastId: string | number, callback: SailthruCallback): void;
 
     /**
      * Resume a previously paused campaign, by blast ID.
      * @param blastId the blast ID which was in the response of a previous blast call
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    resumeBlast(
-        blastId: string | number,
-        callback: SailthruCallback,
-    ): void;
+    resumeBlast(blastId: string | number, callback: SailthruCallback): void;
 
     /**
      * Cancel a campaign which is currently sending, by blast ID. This cannot be undone.
      * @param blastId the blast ID which was in the response of a previous blast call
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    cancelBlast(
-        blastId: string | number,
-        callback: SailthruCallback,
-    ): void;
+    cancelBlast(blastId: string | number, callback: SailthruCallback): void;
 
     /**
      * Modify an existing campaign by setting any field.
      * @param blastId the blast ID which was in the response of a previous blast call
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    updateBlast(
-        blastId: string | number,
-        callback: SailthruCallback,
-    ): void;
+    updateBlast(blastId: string | number, callback: SailthruCallback): void;
 
     /**
      * Modify an existing campaign by setting any field.
@@ -480,28 +450,20 @@ export interface SailthruClient {
      * @param template the name of the template
      * @param callbacka standard callback function which will be invoked after the API server responds
      */
-    deleteTemplate(
-        template: string,
-        callback: SailthruCallback,
-    ): void;
+    deleteTemplate(template: string, callback: SailthruCallback): void;
 
     /**
      * Return a list of all the lists in your account.
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    getLists(
-        callback: SailthruCallback,
-    ): void;
+    getLists(callback: SailthruCallback): void;
 
     /**
      * Delete a list from your account, and remove all record of it from your user profiles. This cannot be undone.
      * @param list the name of an existing list in your account
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    deleteList(
-        list: string,
-        callback: SailthruCallback,
-    ): void;
+    deleteList(list: string, callback: SailthruCallback): void;
 
     /**
      * Create a new content item.
@@ -509,11 +471,7 @@ export interface SailthruClient {
      * @param url the URL of the content item, which will be used as its unique identifier
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    pushContent(
-        title: string,
-        url: string,
-        callback: SailthruCallback,
-    ): void;
+    pushContent(title: string, url: string, callback: SailthruCallback): void;
 
     /**
      * Create a new content item.
@@ -560,50 +518,35 @@ export interface SailthruClient {
      * @param data provide stats API options, as outlined in the stats GET documentation
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    stats(
-        data: object,
-        callback: SailthruCallback,
-    ): void;
+    stats(data: object, callback: SailthruCallback): void;
 
     /**
      * Fetch stats for a List within Sailthru.
      * @param options provide stats API options, as outlined in the stats GET documentation
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    statsList(
-        options: object,
-        callback: SailthruCallback,
-    ): void;
+    statsList(options: object, callback: SailthruCallback): void;
 
     /**
      * Fetch stats for a campaign send, or aggregate campaign data over a time period.
      * @param options provide stats API options, as outlined in the stats GET documentation
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    statsBlast(
-        options: object,
-        callback: SailthruCallback,
-    ): void;
+    statsBlast(options: object, callback: SailthruCallback): void;
 
     /**
      * Fetch the status of a job
      * @param job the job ID which was returned from a previous job POST
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    getJobStatus(
-        job: string,
-        callback: SailthruCallback,
-    ): void;
+    getJobStatus(job: string, callback: SailthruCallback): void;
 
     /**
      * Create a new job with specific options.
      * @param job the name of the job to create
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    processJob(
-        job: string,
-        callback: SailthruCallback,
-    ): void;
+    processJob(job: string, callback: SailthruCallback): void;
 
     /**
      * Create a new job with specific options.
@@ -611,11 +554,7 @@ export interface SailthruClient {
      * @param options provide additional job API options, as outlined in the job POST documentation
      * @param callback a standard callback function which will be invoked after the API server responds
      */
-    processJob(
-        job: string,
-        options: object,
-        callback: SailthruCallback,
-    ): void;
+    processJob(job: string, options: object, callback: SailthruCallback): void;
 
     /**
      * Create a new job with specific options.
@@ -672,7 +611,10 @@ export interface SailthruClient {
      * @param action API action to get rate limit information
      * @param method API method to get rate limit information
      */
-    getLastRateLimitInfo(action: string, method: string): {
+    getLastRateLimitInfo(
+        action: string,
+        method: string,
+    ): {
         limit: number;
         remaining: number;
         reset: number;

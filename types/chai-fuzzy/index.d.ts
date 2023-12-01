@@ -51,7 +51,11 @@ declare global {
             /**
              * Check the first level of the container for a value like the one provided.
              */
-            notContainOneLike(actual: any, expected: any, message?: string): void;
+            notContainOneLike(
+                actual: any,
+                expected: any,
+                message?: string,
+            ): void;
             /**
              * Check that the given javascript object is like the JSON-ified expected
              * value. Useful for checking stringification and parsing of an object.

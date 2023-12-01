@@ -2,13 +2,15 @@ import gql = require("nanographql");
 
 // TemplateStringArray query test
 const templateStringQueryFactory = gql`
-query($name: String!) {
-    movie (name: $name) {
-        releaseDate
+    query ($name: String!) {
+        movie(name: $name) {
+            releaseDate
+        }
     }
-}
 `;
-const templatedQuery = templateStringQueryFactory({ name: "Back to the Future" });
+const templatedQuery = templateStringQueryFactory({
+    name: "Back to the Future",
+});
 JSON.parse(templatedQuery);
 
 // string query test

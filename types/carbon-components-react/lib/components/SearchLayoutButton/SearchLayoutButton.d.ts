@@ -10,7 +10,9 @@ export interface SearchLayoutButtonProps {
     iconDescriptionGrid?: string | undefined;
     iconDescriptionList?: string | undefined;
     labelText?: string | undefined;
-    onChangeFormat?(data: { format: NonNullable<SearchLayoutButtonProps["format"]> }): void;
+    onChangeFormat?(data: {
+        format: NonNullable<SearchLayoutButtonProps["format"]>;
+    }): void;
 }
 
 /**

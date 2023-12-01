@@ -31,9 +31,11 @@ declare namespace locale {
          * Add custom lookups or overwrite the default ones
          * @default undefined
          */
-        lookups?: {
-            [key: string]: (req: Request) => string;
-        } | undefined;
+        lookups?:
+            | {
+                  [key: string]: (req: Request) => string;
+              }
+            | undefined;
 
         /**
          * The name of the cookie that contains the locale for the cookie lookup.
@@ -44,33 +46,41 @@ declare namespace locale {
          *
          * @default {name: 'locale'}
          */
-        cookie?: {
-            [key: string]: unknown;
-        } | undefined;
+        cookie?:
+            | {
+                  [key: string]: unknown;
+              }
+            | undefined;
 
         /**
          * The name of the query string parameter that contains the locale for the query lookup.
          * @default {name: 'locale'}
          */
-        query?: {
-            [key: string]: unknown;
-        } | undefined;
+        query?:
+            | {
+                  [key: string]: unknown;
+              }
+            | undefined;
 
         /**
          * A mapping of hostnames to locales for the hostname lookup.
          * @default {}
          */
-        hostname?: {
-            [locale: string]: string;
-        } | undefined;
+        hostname?:
+            | {
+                  [locale: string]: string;
+              }
+            | undefined;
 
         /**
          * Maps lookup results that return only a language to a full locale.
          * @default {}
          */
-        map?: {
-            [language: string]: string;
-        } | undefined;
+        map?:
+            | {
+                  [language: string]: string;
+              }
+            | undefined;
 
         /**
          * The default locale for the default lookup.

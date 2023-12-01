@@ -7,12 +7,16 @@ function TestRemoteFileDetector() {
         .build();
 
     const fileDetector: remote.FileDetector = new remote.FileDetector();
-    fileDetector.handleFile(driver, "path/to/file").then((path: string) => {/* empty */});
+    fileDetector.handleFile(driver, "path/to/file").then((path: string) => {
+        /* empty */
+    });
 }
 
 function TestSeleniumServer() {
     const pathToJar = "/path/to/jar";
-    const seleniumServer: remote.SeleniumServer = new remote.SeleniumServer(pathToJar);
+    const seleniumServer: remote.SeleniumServer = new remote.SeleniumServer(
+        pathToJar,
+    );
 }
 
 function TestSeleniumServerOptions() {
@@ -25,5 +29,8 @@ function TestSeleniumServerOptions() {
         env: { test1: "test1", test2: "test2" },
         stdio: "inherit",
     };
-    const seleniumServer: remote.SeleniumServer = new remote.SeleniumServer(pathToJar, options);
+    const seleniumServer: remote.SeleniumServer = new remote.SeleniumServer(
+        pathToJar,
+        options,
+    );
 }

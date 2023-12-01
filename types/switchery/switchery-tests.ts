@@ -4,7 +4,9 @@
 import { default as Switchery } from "switchery";
 
 function multipleSwitches() {
-    var elems = Array.prototype.slice.call(document.querySelectorAll(".js-switch"));
+    var elems = Array.prototype.slice.call(
+        document.querySelectorAll(".js-switch"),
+    );
 
     elems.forEach((html: Element) => {
         var switchery = new Switchery(html);
@@ -31,7 +33,10 @@ function coloredSwitch() {
     switchery = new Switchery(elem, { secondaryColor: "#bbf0f0" });
 
     // Since version 0.6.3, you're even allowed to change the jack color from JS, as follows:
-    switchery = new Switchery(elem, { jackColor: "#fffc00", jackSecondaryColor: "#41b7f1" });
+    switchery = new Switchery(elem, {
+        jackColor: "#fffc00",
+        jackSecondaryColor: "#41b7f1",
+    });
 }
 
 function switchSizes() {
@@ -46,8 +51,12 @@ function checkingState() {
 
     // On click:
 
-    var clickCheckbox = <HTMLInputElement> document.querySelector(".js-check-click");
-    var clickButton = <HTMLInputElement> document.querySelector(".js-check-click-button");
+    var clickCheckbox = <HTMLInputElement>(
+        document.querySelector(".js-check-click")
+    );
+    var clickButton = <HTMLInputElement>(
+        document.querySelector(".js-check-click-button")
+    );
 
     clickButton.addEventListener("click", () => {
         alert(clickCheckbox.checked);
@@ -55,9 +64,11 @@ function checkingState() {
 
     // On change:
 
-    var changeCheckbox = <HTMLInputElement> document.querySelector(".js-check-change");
+    var changeCheckbox = <HTMLInputElement>(
+        document.querySelector(".js-check-change")
+    );
 
-    changeCheckbox.onchange = function() {
+    changeCheckbox.onchange = function () {
         alert(changeCheckbox.checked);
     };
 }

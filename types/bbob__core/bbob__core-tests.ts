@@ -4,10 +4,11 @@ import core, { Plugin, Plugins } from "@bbob/core";
 
 const stringify = (val: any) => JSON.stringify(val);
 
-const process = (plugins: Plugins, input: string) => core(plugins).process(input, { render: stringify });
+const process = (plugins: Plugins, input: string) =>
+    core(plugins).process(input, { render: stringify });
 
 // $ExpectType ProcessResponse
-const response = process([], "[style size=\"15px\"]Large Text[/style]");
+const response = process([], '[style size="15px"]Large Text[/style]');
 
 // $ExpectType string
 response.html;
@@ -16,7 +17,7 @@ response.html;
 response.tree;
 
 const testPlugin: () => Plugin = () => (tree) =>
-    tree.walk(node => {
+    tree.walk((node) => {
         return node;
     });
 

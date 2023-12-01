@@ -35,7 +35,10 @@ declare interface IXDomain {
      * @param event
      * @param handler
      */
-    on(event: "log" | "warn" | "timeout", handler: (message?: string) => any): void;
+    on(
+        event: "log" | "warn" | "timeout",
+        handler: (message?: string) => any,
+    ): void;
     cookies: XDomainCookies;
 }
 

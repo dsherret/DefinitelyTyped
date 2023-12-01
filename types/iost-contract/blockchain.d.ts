@@ -7,7 +7,11 @@ declare namespace IOSTContract {
         publisher(): string;
         contractOwner(): string;
         call(contract: string, abi: string, args: string[] | string): string[];
-        callWithAuth(contract: string, abi: string, args: string[] | string): string[];
+        callWithAuth(
+            contract: string,
+            abi: string,
+            args: string[] | string,
+        ): string[];
         requireAuth(account: string, permission: string): boolean;
         receipt(data: string): void;
         event(data: string): void;

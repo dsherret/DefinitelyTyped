@@ -5,8 +5,7 @@ import { Component } from "angular-es";
 @Component({
     selector: "",
 })
-class MyComponentController {
-}
+class MyComponentController {}
 
 //
 // @Config
@@ -14,8 +13,7 @@ class MyComponentController {
 import { Config } from "angular-es";
 
 @Config()
-class MyConfig {
-}
+class MyConfig {}
 
 //
 // @Constant
@@ -34,8 +32,7 @@ class MyConstant {
 import { Controller } from "angular-es";
 
 @Controller("MyController")
-class MyController {
-}
+class MyController {}
 
 //
 // @Decorator
@@ -43,8 +40,7 @@ class MyController {
 import { Decorator } from "angular-es";
 
 @Decorator("MyServiceDecorator")
-class MyServiceDecorator {
-}
+class MyServiceDecorator {}
 
 //
 // @Directive
@@ -52,8 +48,7 @@ class MyServiceDecorator {
 import { Directive } from "angular-es";
 
 @Directive("MyDirective")
-class MyDirective {
-}
+class MyDirective {}
 
 //
 // @Factory
@@ -61,8 +56,7 @@ class MyDirective {
 import { Factory } from "angular-es";
 
 @Factory("MyFactory")
-class MyFactory {
-}
+class MyFactory {}
 
 //
 // @Filter
@@ -70,8 +64,7 @@ class MyFactory {
 import { Filter } from "angular-es";
 
 @Filter("MyFilter")
-class MyFilter {
-}
+class MyFilter {}
 
 //
 // @Inject
@@ -81,11 +74,9 @@ import { Inject } from "angular-es";
 @Inject("fooBar")
 class MyFooService {
     @Inject("bazBar")
-    myMethod(bazBar: Object) {
-    }
+    myMethod(bazBar: Object) {}
 
-    constructor(fooBar: Object) {
-    }
+    constructor(fooBar: Object) {}
 }
 
 //
@@ -109,8 +100,7 @@ import { Module } from "angular-es";
 
 @Module("my.module")
 @Service("MyModuleService")
-class MyModuleService {
-}
+class MyModuleService {}
 
 //
 // @Provider
@@ -118,8 +108,7 @@ class MyModuleService {
 import { Provider } from "angular-es";
 
 @Provider("MyProvider")
-class MyProvider {
-}
+class MyProvider {}
 
 //
 // @Run
@@ -127,8 +116,7 @@ class MyProvider {
 import { Run } from "angular-es";
 
 @Run()
-class MyRunBlock {
-}
+class MyRunBlock {}
 
 //
 // @Service
@@ -136,13 +124,11 @@ class MyRunBlock {
 import { Service } from "angular-es";
 
 @Service("MyService")
-class MyService {
-}
+class MyService {}
 //
 // @Value
 //
 import { Value } from "angular-es";
 
 @Value("MyValue")
-class MyValue {
-}
+class MyValue {}

@@ -22,7 +22,9 @@ declare namespace googlefc {
     /**
      * A function that determines whether to proceed with Funding Choices messaging. This functionality is supported for all message types.
      */
-    let controlledMessagingFunction: undefined | ((message: { proceed(shouldProceed: boolean): void }) => any);
+    let controlledMessagingFunction:
+        | undefined
+        | ((message: { proceed(shouldProceed: boolean): void }) => any);
 
     type CallbackQueueType =
         | "CONSENT_API_READY"
@@ -30,7 +32,9 @@ declare namespace googlefc {
         | "AD_BLOCK_DATA_READY"
         | "INITIAL_CCPA_DATA_READY";
 
-    type CallbackQueueArray = Array<(() => any) | Partial<Record<CallbackQueueType, () => any>>>;
+    type CallbackQueueArray = Array<
+        (() => any) | Partial<Record<CallbackQueueType, () => any>>
+    >;
 
     /**
      * Reference to the callback queue for asynchronous execution of consent and ad blocking related queries.
@@ -113,6 +117,8 @@ declare namespace googlefc {
          * Once the user interacts with the confirmation dialog, the provided callback function
          * will be called with true if the user decides to opt-out, and false otherwise.
          */
-        function openConfirmationDialog(callback: (userOptedOut: boolean) => any): void;
+        function openConfirmationDialog(
+            callback: (userOptedOut: boolean) => any,
+        ): void;
     }
 }

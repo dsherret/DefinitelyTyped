@@ -117,10 +117,19 @@ export class TestSettings<T extends HTMLElement> {
             selectorSort: "th, td",
             serverSideSorting: true,
             showProcessing: true,
-            sortAppend: [[1, 0], [2, 1]],
-            sortForce: [[0, 1], [1, 1]],
+            sortAppend: [
+                [1, 0],
+                [2, 1],
+            ],
+            sortForce: [
+                [0, 1],
+                [1, 1],
+            ],
             sortInitialOrder: "asc",
-            sortList: [[0, 1], [1, 1]],
+            sortList: [
+                [0, 1],
+                [1, 1],
+            ],
             sortLocaleCompare: true,
             sortMultiSortKey: "bubbles",
             sortReset: true,
@@ -265,7 +274,7 @@ export class TestSettings<T extends HTMLElement> {
             },
             filter_external: ".external",
             filter_filteredRow: "filtered",
-            filter_filterLabel: "Filter \"{{label}}\" column by...",
+            filter_filterLabel: 'Filter "{{label}}" column by...',
             filter_formatter: {},
             filter_functions: {},
             filter_hideEmpty: true,
@@ -289,7 +298,11 @@ export class TestSettings<T extends HTMLElement> {
             filter_searchDelay: 300,
             filter_searchFiltered: true,
             filter_selectSource: {
-                ".model-number": ["1|Awesome 1.x", "2|Awesome 2.x", "3|Awesome 3.x"],
+                ".model-number": [
+                    "1|Awesome 1.x",
+                    "2|Awesome 2.x",
+                    "3|Awesome 3.x",
+                ],
             },
             filter_selectSourceSeparator: "|",
             filter_serversideFiltering: true,
@@ -342,7 +355,11 @@ export class TestSettings<T extends HTMLElement> {
         /**
          * Per-row filter-classes
          */
-        widgetOptions.filter_cssFilter = ["first-filter", "second-filter", "third-filter"];
+        widgetOptions.filter_cssFilter = [
+            "first-filter",
+            "second-filter",
+            "third-filter",
+        ];
 
         /**
          * Filter-formaters
@@ -354,152 +371,117 @@ export class TestSettings<T extends HTMLElement> {
                 cell;
                 // $ExpectType number
                 index;
-                return $.tablesorter.filterFormatter.html5Number(
-                    cell,
-                    index,
-                    {
-                        addToggle: true,
-                        cellText: "Age",
-                        compare: ["<", ">", "="],
-                        delayed: true,
-                        disabled: true,
-                        exactMatch: true,
-                        min: 100,
-                        max: 1000,
-                        skipTest: true,
-                        step: 10,
-                        value: 110,
-                    },
-                );
+                return $.tablesorter.filterFormatter.html5Number(cell, index, {
+                    addToggle: true,
+                    cellText: "Age",
+                    compare: ["<", ">", "="],
+                    delayed: true,
+                    disabled: true,
+                    exactMatch: true,
+                    min: 100,
+                    max: 1000,
+                    skipTest: true,
+                    step: 10,
+                    value: 110,
+                });
             },
             1: (cell, index) => {
                 // $ExpectType JQuery<HTMLElement>
                 cell;
                 // $ExpectType number
                 index;
-                return $.tablesorter.filterFormatter.html5Range(
-                    cell,
-                    index,
-                    {
-                        allText: "all",
-                        cellText: "Medals",
-                        compare: "<",
-                        delayed: false,
-                        exactMatch: false,
-                        min: 1,
-                        max: 200,
-                        skipTest: true,
-                        step: 1,
-                        value: 1,
-                        valueToHeader: false,
-                    },
-                );
+                return $.tablesorter.filterFormatter.html5Range(cell, index, {
+                    allText: "all",
+                    cellText: "Medals",
+                    compare: "<",
+                    delayed: false,
+                    exactMatch: false,
+                    min: 1,
+                    max: 200,
+                    skipTest: true,
+                    step: 1,
+                    value: 1,
+                    valueToHeader: false,
+                });
             },
             2: (cell, index) =>
-                $.tablesorter.filterFormatter.html5Color(
-                    cell,
-                    index,
-                    {
-                        addToggle: true,
-                        disabled: true,
-                        exactMatch: true,
-                        skipTest: true,
-                        value: "#999999",
-                        valueToHeader: true,
-                    },
-                ),
+                $.tablesorter.filterFormatter.html5Color(cell, index, {
+                    addToggle: true,
+                    disabled: true,
+                    exactMatch: true,
+                    skipTest: true,
+                    value: "#999999",
+                    valueToHeader: true,
+                }),
             3: (cell, index) =>
-                $.tablesorter.filterFormatter.uiSpinner(
-                    cell,
-                    index,
-                    {
-                        addToggle: true,
-                        cellText: "Level",
-                        compare: "=",
-                        delayed: true,
-                        disabled: true,
-                        exactMatch: true,
-                        min: 0,
-                        max: 100,
-                        step: 1,
-                        value: 1,
-                        culture: "de",
-                    },
-                ),
+                $.tablesorter.filterFormatter.uiSpinner(cell, index, {
+                    addToggle: true,
+                    cellText: "Level",
+                    compare: "=",
+                    delayed: true,
+                    disabled: true,
+                    exactMatch: true,
+                    min: 0,
+                    max: 100,
+                    step: 1,
+                    value: 1,
+                    culture: "de",
+                }),
             4: (cell, index) =>
-                $.tablesorter.filterFormatter.uiSlider(
-                    cell,
-                    index,
-                    {
-                        allText: "all",
-                        cellText: "Height",
-                        compare: ["<", ">"],
-                        delayed: true,
-                        exactMatch: true,
-                        min: 0,
-                        max: 3,
-                        step: 0.01,
-                        value: 1.60,
-                        valueToHeader: true,
-                    },
-                ),
+                $.tablesorter.filterFormatter.uiSlider(cell, index, {
+                    allText: "all",
+                    cellText: "Height",
+                    compare: ["<", ">"],
+                    delayed: true,
+                    exactMatch: true,
+                    min: 0,
+                    max: 3,
+                    step: 0.01,
+                    value: 1.6,
+                    valueToHeader: true,
+                }),
             5: (cell, index) =>
-                $.tablesorter.filterFormatter.uiRange(
-                    cell,
-                    index,
-                    {
-                        delayed: true,
-                        min: 0,
-                        max: 1000000,
-                        valueToHeader: false,
-                    },
-                ),
+                $.tablesorter.filterFormatter.uiRange(cell, index, {
+                    delayed: true,
+                    min: 0,
+                    max: 1000000,
+                    valueToHeader: false,
+                }),
             6: (cell, index) =>
-                $.tablesorter.filterFormatter.uiDateCompare(
-                    cell,
-                    index,
-                    {
-                        cellText: "Joindate",
-                        compare: ["<", ">"],
-                        endOfDay: true,
-                    },
-                ),
+                $.tablesorter.filterFormatter.uiDateCompare(cell, index, {
+                    cellText: "Joindate",
+                    compare: ["<", ">"],
+                    endOfDay: true,
+                }),
             7: (cell, index) =>
-                $.tablesorter.filterFormatter.uiDatepicker(
-                    cell,
-                    index,
-                    {
-                        endOfDay: true,
-                        from: new Date(),
-                        to: new Date(),
-                        textFrom: "From",
-                        textTo: "To",
-                        maxDate: new Date(1989, 1, 1),
-                    },
-                ),
+                $.tablesorter.filterFormatter.uiDatepicker(cell, index, {
+                    endOfDay: true,
+                    from: new Date(),
+                    to: new Date(),
+                    textFrom: "From",
+                    textTo: "To",
+                    maxDate: new Date(1989, 1, 1),
+                }),
             8: (cell, index) =>
-                $.tablesorter.filterFormatter.select2(
-                    cell,
-                    index,
-                    {
-                        cellText: "Gender",
-                        exactMatch: true,
-                        value: "other",
-                        data: [
-                            {
-                                id: "other",
-                                text: "Other",
-                            },
-                        ],
-                    },
-                ),
+                $.tablesorter.filterFormatter.select2(cell, index, {
+                    cellText: "Gender",
+                    exactMatch: true,
+                    value: "other",
+                    data: [
+                        {
+                            id: "other",
+                            text: "Other",
+                        },
+                    ],
+                }),
         };
 
         /**
          * Creating filter-controls without options
          */
         widgetOptions.filter_formatter = {
-            "*": (cell, index) => $.tablesorter.filterFormatter.select2(cell, index),
+            "*": (cell, index) =>
+                $.tablesorter.filterFormatter.select2(cell, index),
         };
 
         /**
@@ -610,7 +592,11 @@ export class TestSettings<T extends HTMLElement> {
             column;
             // $ExpectType boolean
             onlyAvail;
-            const values = $.tablesorter.filter.getOptions(table, column, onlyAvail);
+            const values = $.tablesorter.filter.getOptions(
+                table,
+                column,
+                onlyAvail,
+            );
             return values;
         };
 
@@ -800,50 +786,55 @@ export class TestSettings<T extends HTMLElement> {
          * Returning an object
          * With all available options
          */
-        pagerSettings.ajaxProcessing =
-            widgetOptions.pager_ajaxProcessing =
-                (data, table, request) => {
-                    // $ExpectType any
-                    data;
-                    // $ExpectType T
-                    table;
-                    // $ExpectType jqXHR<any>
-                    request;
-                    return ({ total: 1, filteredRows: 1, headers: ["ID"], output: "", rows: [["1"]] });
-                };
+        pagerSettings.ajaxProcessing = widgetOptions.pager_ajaxProcessing = (
+            data,
+            table,
+            request,
+        ) => {
+            // $ExpectType any
+            data;
+            // $ExpectType T
+            table;
+            // $ExpectType jqXHR<any>
+            request;
+            return {
+                total: 1,
+                filteredRows: 1,
+                headers: ["ID"],
+                output: "",
+                rows: [["1"]],
+            };
+        };
 
         /**
          * With all required options
          */
-        pagerSettings.ajaxProcessing =
-            widgetOptions.pager_ajaxProcessing =
-                () => {
-                    return {
-                        total: 1,
-                    };
+        pagerSettings.ajaxProcessing = widgetOptions.pager_ajaxProcessing =
+            () => {
+                return {
+                    total: 1,
                 };
+            };
 
         /**
          * Returning an array
          * With the total amount of rows only
          */
-        pagerSettings.ajaxProcessing =
-            widgetOptions.pager_ajaxProcessing =
-                () => [1];
+        pagerSettings.ajaxProcessing = widgetOptions.pager_ajaxProcessing =
+            () => [1];
 
         /**
          * With the rows as a jQuery-object
          */
-        pagerSettings.ajaxProcessing =
-            widgetOptions.pager_ajaxProcessing =
-                (data) => [1, $(data.rows), ["ID", "Medals", "Exp"]];
+        pagerSettings.ajaxProcessing = widgetOptions.pager_ajaxProcessing = (
+            data,
+        ) => [1, $(data.rows), ["ID", "Medals", "Exp"]];
 
         /**
          * With the records in an array
          */
-        pagerSettings.ajaxProcessing =
-            widgetOptions.pager_ajaxProcessing =
-                () => [1, [[1, 1000, "John Doe"]], ["ID", "Medals", "Name"]];
+        pagerSettings.ajaxProcessing = widgetOptions.pager_ajaxProcessing =
+            () => [1, [[1, 1000, "John Doe"]], ["ID", "Medals", "Name"]];
 
         /**
          * Setting elements for the pager
@@ -902,34 +893,24 @@ export class TestSettings<T extends HTMLElement> {
          * Setting a page-reset
          * Using an exact number
          */
-        pagerSettings.pageReset =
-            widgetOptions.pager_pageReset =
-                3;
+        pagerSettings.pageReset = widgetOptions.pager_pageReset = 3;
 
         /**
          * Enabling/disabling page-reset
          */
-        pagerSettings.pageReset =
-            widgetOptions.pager_pageReset =
-                true;
-        pagerSettings.pageReset =
-            widgetOptions.pager_pageReset =
-                false;
+        pagerSettings.pageReset = widgetOptions.pager_pageReset = true;
+        pagerSettings.pageReset = widgetOptions.pager_pageReset = false;
 
         /**
          * Setting the initial page-size
          * Using an exact number
          */
-        pagerSettings.size =
-            widgetOptions.pager_size =
-                20;
+        pagerSettings.size = widgetOptions.pager_size = 20;
 
         /**
          * Using "all"
          */
-        pagerSettings.size =
-            widgetOptions.pager_size =
-                "all";
+        pagerSettings.size = widgetOptions.pager_size = "all";
 
         $<T>("#myTable").tablesorter(settings).tablesorterPager(pagerSettings);
     }

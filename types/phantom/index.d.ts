@@ -1,14 +1,19 @@
-export function create(args?: string[], config?: {
-    phantomPath?: string | undefined;
-    shimPath?: string | undefined;
-    logger?: {
-        info?: winstonLeveledLogMethod | undefined;
-        debug?: winstonLeveledLogMethod | undefined;
-        error?: winstonLeveledLogMethod | undefined;
-        warn?: winstonLeveledLogMethod | undefined;
-    } | undefined;
-    logLevel?: "debug" | "info" | "warn" | "error" | undefined;
-}): Promise<PhantomJS>;
+export function create(
+    args?: string[],
+    config?: {
+        phantomPath?: string | undefined;
+        shimPath?: string | undefined;
+        logger?:
+            | {
+                  info?: winstonLeveledLogMethod | undefined;
+                  debug?: winstonLeveledLogMethod | undefined;
+                  error?: winstonLeveledLogMethod | undefined;
+                  warn?: winstonLeveledLogMethod | undefined;
+              }
+            | undefined;
+        logLevel?: "debug" | "info" | "warn" | "error" | undefined;
+    },
+): Promise<PhantomJS>;
 
 export interface winstonLeveledLogMethod {
     (message: string, callback: (...args: any[]) => void): any;
@@ -18,7 +23,9 @@ export interface winstonLeveledLogMethod {
 }
 
 export interface PhantomJS {
-    callback(fn: (pageNum: number, numPages: number) => string): IPhantomCallback;
+    callback(
+        fn: (pageNum: number, numPages: number) => string,
+    ): IPhantomCallback;
     createPage(): Promise<WebPage>;
     exit(returnValue?: number): void;
 }
@@ -54,15 +61,46 @@ export interface WebPage {
         runOnPhantom: false,
         listener: (status: "success" | "fail") => void,
     ): Promise<{ pageId: string }>;
-    on(event: "onLoadFinished", listener: (status: "success" | "fail") => void): Promise<{ pageId: string }>;
-    on(event: "onAlert", runOnPhantom: false, listener: (msg: string) => void): Promise<{ pageId: string }>;
-    on(event: "onAlert", listener: (msg: string) => void): Promise<{ pageId: string }>;
-    on(event: "onCallback", runOnPhantom: false, listener: (data: any) => void): Promise<{ pageId: string }>;
-    on(event: "onCallback", listener: (data: any) => void): Promise<{ pageId: string }>;
-    on(event: "onClosing", runOnPhantom: false, listener: (closingPage: any) => void): Promise<{ pageId: string }>;
-    on(event: "onClosing", listener: (closingPage: any) => void): Promise<{ pageId: string }>;
-    on(event: "onConfirm", runOnPhantom: false, listener: (msg: string) => void): Promise<{ pageId: string }>;
-    on(event: "onConfirm", listener: (msg: string) => void): Promise<{ pageId: string }>;
+    on(
+        event: "onLoadFinished",
+        listener: (status: "success" | "fail") => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onAlert",
+        runOnPhantom: false,
+        listener: (msg: string) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onAlert",
+        listener: (msg: string) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onCallback",
+        runOnPhantom: false,
+        listener: (data: any) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onCallback",
+        listener: (data: any) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onClosing",
+        runOnPhantom: false,
+        listener: (closingPage: any) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onClosing",
+        listener: (closingPage: any) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onConfirm",
+        runOnPhantom: false,
+        listener: (msg: string) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onConfirm",
+        listener: (msg: string) => void,
+    ): Promise<{ pageId: string }>;
     on(
         event: "onConsoleMessage",
         runOnPhantom: false,
@@ -75,18 +113,45 @@ export interface WebPage {
     on(
         event: "onError",
         runOnPhantom: false,
-        listener: (msg: string, trace: Array<{ file: string; line: string; function: string }>) => void,
+        listener: (
+            msg: string,
+            trace: Array<{ file: string; line: string; function: string }>,
+        ) => void,
     ): Promise<{ pageId: string }>;
     on(
         event: "onError",
-        listener: (msg: string, trace: Array<{ file: string; line: string; function: string }>) => void,
+        listener: (
+            msg: string,
+            trace: Array<{ file: string; line: string; function: string }>,
+        ) => void,
     ): Promise<{ pageId: string }>;
-    on(event: "onFilePicker", runOnPhantom: false, listener: (oldFile: any) => void): Promise<{ pageId: string }>;
-    on(event: "onFilePicker", listener: (oldFile: any) => void): Promise<{ pageId: string }>;
-    on(event: "onInitialized", runOnPhantom: false, listener: () => void): Promise<{ pageId: string }>;
-    on(event: "onInitialized", listener: () => void): Promise<{ pageId: string }>;
-    on(event: "onLoadStarted", runOnPhantom: false, listener: () => void): Promise<{ pageId: string }>;
-    on(event: "onLoadStarted", listener: () => void): Promise<{ pageId: string }>;
+    on(
+        event: "onFilePicker",
+        runOnPhantom: false,
+        listener: (oldFile: any) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onFilePicker",
+        listener: (oldFile: any) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onInitialized",
+        runOnPhantom: false,
+        listener: () => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onInitialized",
+        listener: () => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onLoadStarted",
+        runOnPhantom: false,
+        listener: () => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onLoadStarted",
+        listener: () => void,
+    ): Promise<{ pageId: string }>;
     on(
         event: "onNavigationRequested",
         runOnPhantom: false,
@@ -120,40 +185,74 @@ export interface WebPage {
             main: boolean,
         ) => void,
     ): Promise<{ pageId: string }>;
-    on(event: "onPageCreated", runOnPhantom: false, listener: (newPage: any) => void): Promise<{ pageId: string }>;
-    on(event: "onPageCreated", listener: (newPage: any) => void): Promise<{ pageId: string }>;
+    on(
+        event: "onPageCreated",
+        runOnPhantom: false,
+        listener: (newPage: any) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onPageCreated",
+        listener: (newPage: any) => void,
+    ): Promise<{ pageId: string }>;
     on(
         event: "onPrompt",
         runOnPhantom: false,
         listener: (msg: string, defaultVal: string) => void,
     ): Promise<{ pageId: string }>;
-    on(event: "onPrompt", listener: (msg: string, defaultVal: string) => void): Promise<{ pageId: string }>;
     on(
-        event: "onResourceError",
-        runOnPhantom: false,
-        listener: (resourceError: { id: string; url: string; errorCode: number; errorString: string }) => void,
+        event: "onPrompt",
+        listener: (msg: string, defaultVal: string) => void,
     ): Promise<{ pageId: string }>;
     on(
         event: "onResourceError",
-        listener: (resourceError: { id: string; url: string; errorCode: number; errorString: string }) => void,
+        runOnPhantom: false,
+        listener: (resourceError: {
+            id: string;
+            url: string;
+            errorCode: number;
+            errorString: string;
+        }) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onResourceError",
+        listener: (resourceError: {
+            id: string;
+            url: string;
+            errorCode: number;
+            errorString: string;
+        }) => void,
     ): Promise<{ pageId: string }>;
     on(
         event: "onResourceReceived",
         runOnPhantom: false,
         listener: (response: IResponse) => void,
     ): Promise<{ pageId: string }>;
-    on(event: "onResourceReceived", listener: (response: IResponse) => void): Promise<{ pageId: string }>;
+    on(
+        event: "onResourceReceived",
+        listener: (response: IResponse) => void,
+    ): Promise<{ pageId: string }>;
     on(
         event: "onResourceTimeout",
         runOnPhantom: false,
-        listener: (request: IRequestData & { errorCode: number; errorString: string }) => void,
+        listener: (
+            request: IRequestData & { errorCode: number; errorString: string },
+        ) => void,
     ): Promise<{ pageId: string }>;
     on(
         event: "onResourceTimeout",
-        listener: (request: IRequestData & { errorCode: number; errorString: string }) => void,
+        listener: (
+            request: IRequestData & { errorCode: number; errorString: string },
+        ) => void,
     ): Promise<{ pageId: string }>;
-    on(event: "onUrlChanged", runOnPhantom: false, listener: (targetUrl: string) => void): Promise<{ pageId: string }>;
-    on(event: "onUrlChanged", listener: (targetUrl: string) => void): Promise<{ pageId: string }>;
+    on(
+        event: "onUrlChanged",
+        runOnPhantom: false,
+        listener: (targetUrl: string) => void,
+    ): Promise<{ pageId: string }>;
+    on(
+        event: "onUrlChanged",
+        listener: (targetUrl: string) => void,
+    ): Promise<{ pageId: string }>;
     off(
         event:
             | "onResourceRequested"
@@ -179,16 +278,39 @@ export interface WebPage {
 
     evaluate<R>(callback: () => R): Promise<R>;
     evaluate<T, R>(callback: (arg: T) => R, arg: T): Promise<R>;
-    evaluate<T1, T2, R>(callback: (arg1: T1, arg2: T2) => R, arg1: T1, arg2: T2): Promise<R>;
-    evaluate<T1, T2, T3, R>(callback: (arg1: T1, arg2: T2, arg3: T3) => R, arg1: T1, arg2: T2, arg3: T3): Promise<R>;
+    evaluate<T1, T2, R>(
+        callback: (arg1: T1, arg2: T2) => R,
+        arg1: T1,
+        arg2: T2,
+    ): Promise<R>;
+    evaluate<T1, T2, T3, R>(
+        callback: (arg1: T1, arg2: T2, arg3: T3) => R,
+        arg1: T1,
+        arg2: T2,
+        arg3: T3,
+    ): Promise<R>;
     evaluate<R>(callback: (...args: any[]) => R, ...args: any[]): Promise<R>;
     includeJs(url: string): Promise<void>;
     injectJs(filename: string): Promise<boolean>;
-    sendEvent(mouseEventType: string, mouseX?: number, mouseY?: number, button?: string): Promise<void>;
-    sendEvent(keyboardEventType: string, key: string, null1?: void, null2?: void, modifier?: number): Promise<void>;
+    sendEvent(
+        mouseEventType: string,
+        mouseX?: number,
+        mouseY?: number,
+        button?: string,
+    ): Promise<void>;
+    sendEvent(
+        keyboardEventType: string,
+        key: string,
+        null1?: void,
+        null2?: void,
+        modifier?: number,
+    ): Promise<void>;
 
     render(filename: string): Promise<void>;
-    render(filename: string, options?: { format?: string | undefined; quality?: string | undefined }): Promise<void>;
+    render(
+        filename: string,
+        options?: { format?: string | undefined; quality?: string | undefined },
+    ): Promise<void>;
     renderBase64(type: string): Promise<string>;
 
     setContent(html: string, url: string): Promise<string>;
@@ -208,9 +330,15 @@ export interface WebPage {
             | "url"
             | "windowName",
     ): Promise<string>;
-    property(key: "framesName" | "pagesWindowName" | "pages"): Promise<string[]>;
-    property(key: "canGoBack" | "canGoForward" | "navigationLocked" | "ownsPages"): Promise<boolean>;
-    property(key: "framesCount" | "offlineStorageQuota" | "zoomFactor"): Promise<number>;
+    property(
+        key: "framesName" | "pagesWindowName" | "pages",
+    ): Promise<string[]>;
+    property(
+        key: "canGoBack" | "canGoForward" | "navigationLocked" | "ownsPages",
+    ): Promise<boolean>;
+    property(
+        key: "framesCount" | "offlineStorageQuota" | "zoomFactor",
+    ): Promise<number>;
     property(key: "clipRect"): Promise<{
         top: number;
         left: number;
@@ -258,20 +386,27 @@ export interface IPaperSizeOptions {
     height?: string | undefined;
     format?: "A3" | "A4" | "A5" | "Legal" | "Letter" | "Tabloid" | undefined;
     orientation?: "portrait" | "landscape" | undefined;
-    margin?: string | {
-        top?: string | undefined;
-        left?: string | undefined;
-        bottom?: string | undefined;
-        right?: string | undefined;
-    } | undefined;
-    header?: {
-        height: string;
-        contents: IPhantomCallback;
-    } | undefined;
-    footer?: {
-        height: string;
-        contents: IPhantomCallback;
-    } | undefined;
+    margin?:
+        | string
+        | {
+              top?: string | undefined;
+              left?: string | undefined;
+              bottom?: string | undefined;
+              right?: string | undefined;
+          }
+        | undefined;
+    header?:
+        | {
+              height: string;
+              contents: IPhantomCallback;
+          }
+        | undefined;
+    footer?:
+        | {
+              height: string;
+              contents: IPhantomCallback;
+          }
+        | undefined;
 }
 
 export interface IOpenWebPageSettings {

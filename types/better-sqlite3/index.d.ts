@@ -2,7 +2,11 @@
 
 // FIXME: Is this `any` really necessary?
 type VariableArgFunction = (...params: any[]) => unknown;
-type ArgumentTypes<F extends VariableArgFunction> = F extends (...args: infer A) => unknown ? A : never;
+type ArgumentTypes<F extends VariableArgFunction> = F extends (
+    ...args: infer A
+) => unknown
+    ? A
+    : never;
 type ElementOf<T> = T extends Array<infer E> ? E : T;
 
 declare namespace BetterSqlite3 {
@@ -58,12 +62,18 @@ declare namespace BetterSqlite3 {
 
         prepare<BindParameters extends unknown[] | {} = unknown[]>(
             source: string,
-        ): BindParameters extends unknown[] ? Statement<BindParameters> : Statement<[BindParameters]>;
+        ): BindParameters extends unknown[]
+            ? Statement<BindParameters>
+            : Statement<[BindParameters]>;
         transaction<F extends VariableArgFunction>(fn: F): Transaction<F>;
         exec(source: string): this;
         pragma(source: string, options?: Database.PragmaOptions): unknown;
         function(name: string, cb: (...params: unknown[]) => unknown): this;
-        function(name: string, options: Database.RegistrationOptions, cb: (...params: unknown[]) => unknown): this;
+        function(
+            name: string,
+            options: Database.RegistrationOptions,
+            cb: (...params: unknown[]) => unknown,
+        ): this;
         aggregate<T>(
             name: string,
             options: Database.RegistrationOptions & {
@@ -77,14 +87,17 @@ declare namespace BetterSqlite3 {
         loadExtension(path: string): this;
         close(): this;
         defaultSafeIntegers(toggleState?: boolean): this;
-        backup(destinationFile: string, options?: Database.BackupOptions): Promise<Database.BackupMetadata>;
+        backup(
+            destinationFile: string,
+            options?: Database.BackupOptions,
+        ): Promise<Database.BackupMetadata>;
         table(name: string, options: VirtualTableOptions): this;
         unsafeMode(unsafe?: boolean): this;
         serialize(options?: Database.SerializeOptions): Buffer;
     }
 
     interface DatabaseConstructor {
-        new(filename: string | Buffer, options?: Database.Options): Database;
+        new (filename: string | Buffer, options?: Database.Options): Database;
         (filename: string, options?: Database.Options): Database;
         prototype: Database;
 
@@ -109,7 +122,9 @@ declare namespace Database {
         readonly?: boolean | undefined;
         fileMustExist?: boolean | undefined;
         timeout?: number | undefined;
-        verbose?: ((message?: unknown, ...additionalArgs: unknown[]) => void) | undefined;
+        verbose?:
+            | ((message?: unknown, ...additionalArgs: unknown[]) => void)
+            | undefined;
         nativeBinding?: string | undefined;
     }
 
@@ -139,11 +154,13 @@ declare namespace Database {
     }
 
     type SqliteError = typeof SqliteError;
-    type Statement<BindParameters extends unknown[] | {} = unknown[]> = BindParameters extends unknown[]
-        ? BetterSqlite3.Statement<BindParameters>
-        : BetterSqlite3.Statement<[BindParameters]>;
+    type Statement<BindParameters extends unknown[] | {} = unknown[]> =
+        BindParameters extends unknown[]
+            ? BetterSqlite3.Statement<BindParameters>
+            : BetterSqlite3.Statement<[BindParameters]>;
     type ColumnDefinition = BetterSqlite3.ColumnDefinition;
-    type Transaction<T extends VariableArgFunction = VariableArgFunction> = BetterSqlite3.Transaction<T>;
+    type Transaction<T extends VariableArgFunction = VariableArgFunction> =
+        BetterSqlite3.Transaction<T>;
     type Database = BetterSqlite3.Database;
 }
 

@@ -11,7 +11,7 @@ class LRU extends Map<string, ejs.TemplateFunction> {
 const fileName = "test.ejs";
 const people = ["geddy", "neil", "alex"];
 const data = { people };
-const template = "<%= people.join(\", \"); %>";
+const template = '<%= people.join(", "); %>';
 const options = { filename: fileName };
 let result: string;
 let ejsFunction: ejs.TemplateFunction;
@@ -45,15 +45,26 @@ ejsFunction = ejs.compile(read(fileName, "utf8"));
 ejsFunction = ejs.compile(template);
 ejsFunction = ejs.compile(template, options);
 ejsFunction = ejs.compile(template, { cache: true, filename: fileName });
-ejsFunction = ejs.compile(template, { cache: true, filename: fileName, root: "./" });
-ejsFunction = ejs.compile(template, { cache: true, filename: fileName, root: ["./"] });
+ejsFunction = ejs.compile(template, {
+    cache: true,
+    filename: fileName,
+    root: "./",
+});
+ejsFunction = ejs.compile(template, {
+    cache: true,
+    filename: fileName,
+    root: ["./"],
+});
 ejsFunction = ejs.compile(template, { context: { foo: "FOO" } });
 ejsFunction = ejs.compile(template, { compileDebug: false });
 ejsFunction = ejs.compile(template, { client: true });
-ejsFunction = ejs.compile("<$= people.join(\", \"); $>", { delimiter: "$" });
-ejsFunction = ejs.compile("<%= locals.people.join(\", \"); %>", { _with: false });
-ejsFunction = ejs.compile("<%= locals.people.join(\", \"); %>", { strict: true });
-ejsFunction = ejs.compile("<%= it.people.join(\", \"); %>", { _with: false, localsName: "it" });
+ejsFunction = ejs.compile('<$= people.join(", "); $>', { delimiter: "$" });
+ejsFunction = ejs.compile('<%= locals.people.join(", "); %>', { _with: false });
+ejsFunction = ejs.compile('<%= locals.people.join(", "); %>', { strict: true });
+ejsFunction = ejs.compile('<%= it.people.join(", "); %>', {
+    _with: false,
+    localsName: "it",
+});
 ejsFunction = ejs.compile(template, { rmWhitespace: true });
 const customEscape = (str: string) => (!str ? "" : str.toUpperCase());
 ejsFunction = ejs.compile(template, { escape: customEscape });

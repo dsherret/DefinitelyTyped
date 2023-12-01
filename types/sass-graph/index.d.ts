@@ -31,14 +31,20 @@ declare namespace SassGraph {
          * @param {string}   filepath Path to the file to visit
          * @param {Function} callback Called when a node is visited
          */
-        visitAncestors(filepath: string, callback: (edge: string, node: Node) => any): void;
+        visitAncestors(
+            filepath: string,
+            callback: (edge: string, node: Node) => any,
+        ): void;
 
         /**
          * Visits all files that are descendents of the provided file
          * @param {string}   filepath Path to the file to visit
          * @param {Function} callback Called when a node is visited
          */
-        visitDescendents(filepath: string, callback: (edge: string, node: Node) => any): void;
+        visitDescendents(
+            filepath: string,
+            callback: (edge: string, node: Node) => any,
+        ): void;
 
         /**
          * A generic visitor that uses an edgeCallback to find the edges to traverse

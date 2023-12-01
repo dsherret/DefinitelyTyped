@@ -2,7 +2,7 @@ import si = require("search-index");
 
 si(); // $ExpectType Promise<SearchIndex>
 
-si().then(db => {
+si().then((db) => {
     db.QUERY([]); // $ExpectType Promise<QueryResult>
     db.SEARCH({ VALUE: "value", FIELD: "field" }); // $ExpectType Promise<QueryResult>
     db.ALL_DOCUMENTS(); // $ExpectType Promise<AllDocumentsResultItem[]>

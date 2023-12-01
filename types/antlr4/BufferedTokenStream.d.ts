@@ -102,7 +102,11 @@ export default class BufferedTokenStream extends TokenStream {
 
     getSourceName(): string;
 
-    filterForChannel(left: number, right: number, channel: number): Token[] | null;
+    filterForChannel(
+        left: number,
+        right: number,
+        channel: number,
+    ): Token[] | null;
 
     /**
      * Get the text of all tokens in this buffer.

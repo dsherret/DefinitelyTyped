@@ -10,7 +10,10 @@ export function get(options?: Options): Promise<ProfileData>;
  * Update profile information for the authenticated user.
  * @async
  */
-export function set(updateOptions: UpdateProfileData, options?: Options): Promise<ProfileData>;
+export function set(
+    updateOptions: UpdateProfileData,
+    options?: Options,
+): Promise<ProfileData>;
 
 /**
  * Fetch a list of all of the authentication tokens the authenticated user has.
@@ -22,7 +25,10 @@ export function listTokens(options?: Options): Promise<Token[]>;
  * Remove a specific authentication token.
  * @async
  */
-export function removeToken(tokenOrKey: string, options?: Options): Promise<void>;
+export function removeToken(
+    tokenOrKey: string,
+    options?: Options,
+): Promise<void>;
 
 /**
  * Create a new authentication token, possibly with restrictions.
@@ -42,7 +48,9 @@ export function createToken(
  */
 export function adduser(
     opener: (url: string) => Promise<void>,
-    prompter: (creds: ProfileAuthCredentials) => Promise<ProfileAuthCredentials>,
+    prompter: (
+        creds: ProfileAuthCredentials,
+    ) => Promise<ProfileAuthCredentials>,
     opts?: Options,
 ): Promise<ProfileAuthToken>;
 
@@ -52,7 +60,9 @@ export function adduser(
  */
 export function login(
     opener: (url: string) => Promise<void>,
-    prompter: (creds: ProfileAuthCredentials) => Promise<ProfileAuthCredentials>,
+    prompter: (
+        creds: ProfileAuthCredentials,
+    ) => Promise<ProfileAuthCredentials>,
     opts?: Options,
 ): Promise<ProfileAuthToken>;
 
@@ -60,14 +70,20 @@ export function login(
  * Tries to login using new web based login, if that fails it falls back to using the legacy CouchDB APIs.
  * @async
  */
-export function loginWeb(opener: (url: string) => Promise<void>, opts?: Options): Promise<ProfileAuthToken>;
+export function loginWeb(
+    opener: (url: string) => Promise<void>,
+    opts?: Options,
+): Promise<ProfileAuthToken>;
 
 /**
  * Tries to create a user new web based login,
  * if that fails it falls back to using the legacy CouchDB APIs.
  * @async
  */
-export function adduserWeb(opener: (url: string) => Promise<void>, opts?: Options): Promise<ProfileAuthToken>;
+export function adduserWeb(
+    opener: (url: string) => Promise<void>,
+    opts?: Options,
+): Promise<ProfileAuthToken>;
 
 /**
  * Creates a new user on the server along with a fresh bearer token for future authentication as this user.
@@ -153,9 +169,10 @@ export interface ProfileData {
     github?: string | undefined;
 }
 
-export type UpdateProfileData =
-    & Partial<Omit<ProfileData, "tfa" | "created" | "updated" | "email_verified">>
-    & UpdateOptions;
+export type UpdateProfileData = Partial<
+    Omit<ProfileData, "tfa" | "created" | "updated" | "email_verified">
+> &
+    UpdateOptions;
 
 export interface UpdateOptions {
     /**
@@ -175,9 +192,9 @@ export type TFAStatus =
     | null
     | false
     | {
-        pending: boolean;
-        [key: string]: any;
-    }
+          pending: boolean;
+          [key: string]: any;
+      }
     | [string, string]
     | string;
 
@@ -225,7 +242,15 @@ export interface Token {
     cidr_whitelist: string[];
 }
 
-export type LogLevel = "error" | "warn" | "notice" | "http" | "timing" | "info" | "verbose" | "silly";
+export type LogLevel =
+    | "error"
+    | "warn"
+    | "notice"
+    | "http"
+    | "timing"
+    | "info"
+    | "verbose"
+    | "silly";
 
 declare global {
     namespace NodeJS {

@@ -146,7 +146,11 @@ export interface EIP712TypedData {
 }
 
 export namespace TypedDataUtils {
-    function encodeData(primaryType: string, data: EIP712Message, types: EIP712Types): Buffer;
+    function encodeData(
+        primaryType: string,
+        data: EIP712Message,
+        types: EIP712Types,
+    ): Buffer;
 
     function encodeType(primaryType: string, types: EIP712Types): string;
 
@@ -155,7 +159,11 @@ export namespace TypedDataUtils {
         types: EIP712Types,
     ): string[];
 
-    function hashStruct(primaryType: string, data: EIP712Message, types: EIP712Types): Buffer;
+    function hashStruct(
+        primaryType: string,
+        data: EIP712Message,
+        types: EIP712Types,
+    ): Buffer;
 
     function hashType(primaryType: string, types: EIP712Types): Buffer;
 

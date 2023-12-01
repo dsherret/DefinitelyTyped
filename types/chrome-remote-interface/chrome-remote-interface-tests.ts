@@ -17,7 +17,8 @@ function assertType<T>(value: T): T {
         client.on("Debugger.resumed", () => {});
         client.on("Network.requestWillBeSent.123", (params) => {});
         client.on("event", (message) => {
-            if (message.method === "Network.requestWillBeSent") {}
+            if (message.method === "Network.requestWillBeSent") {
+            }
         });
         const { Network, Page, Runtime } = client;
         await Network.enable();
@@ -39,18 +40,22 @@ function assertType<T>(value: T): T {
             params.request.url;
             unsubscribe();
         });
-        const unsubscribeAlt = client["Network.requestWillBeSent"]((params, sessionId) => {
-            params.request.url;
-            unsubscribeAlt();
-        });
+        const unsubscribeAlt = client["Network.requestWillBeSent"](
+            (params, sessionId) => {
+                params.request.url;
+                unsubscribeAlt();
+            },
+        );
         const unsubscribe2 = Network.requestWillBeSent((params) => {
             params.request.url;
             unsubscribe2();
         });
-        const unsubscribeAlt2 = client["Network.requestWillBeSent"]((params) => {
-            params.request.url;
-            unsubscribeAlt2();
-        });
+        const unsubscribeAlt2 = client["Network.requestWillBeSent"](
+            (params) => {
+                params.request.url;
+                unsubscribeAlt2();
+            },
+        );
         const unsubscribe3 = Page.frameResized(() => {
             unsubscribe3();
         });
@@ -58,7 +63,9 @@ function assertType<T>(value: T): T {
             unsubscribeAlt3();
         });
         await Runtime.enable();
-        const loc = await Runtime.evaluate({ expression: "window.location.toString()" });
+        const loc = await Runtime.evaluate({
+            expression: "window.location.toString()",
+        });
         const targets = await CDP.List(cdpPort);
         for (const target of targets) {
             if (target.url.startsWith("https://github.com")) {
@@ -71,27 +78,55 @@ function assertType<T>(value: T): T {
             client.send("Page.navigate", { url: "https://github.com" }),
         );
         assertType<Promise<Protocol.Page.NavigateResponse>>(
-            client.send("Page.navigate", { url: "https://github.com" }, "sessionId"),
+            client.send(
+                "Page.navigate",
+                { url: "https://github.com" },
+                "sessionId",
+            ),
         );
         client.send(
             "Page.navigate",
-            (error: boolean | Error, response: Protocol.Page.NavigateResponse | CDP.SendError | undefined) => {},
+            (
+                error: boolean | Error,
+                response:
+                    | Protocol.Page.NavigateResponse
+                    | CDP.SendError
+                    | undefined,
+            ) => {},
         );
         client.send(
             "Page.navigate",
             { url: "https://github.com" },
-            (error: boolean | Error, response: Protocol.Page.NavigateResponse | CDP.SendError | undefined) => {},
+            (
+                error: boolean | Error,
+                response:
+                    | Protocol.Page.NavigateResponse
+                    | CDP.SendError
+                    | undefined,
+            ) => {},
         );
         client.send(
             "Page.navigate",
             { url: "https://github.com" },
             "sessionId",
-            (error: boolean | Error, response: Protocol.Page.NavigateResponse | CDP.SendError | undefined) => {},
+            (
+                error: boolean | Error,
+                response:
+                    | Protocol.Page.NavigateResponse
+                    | CDP.SendError
+                    | undefined,
+            ) => {},
         );
         // @ts-expect-error
-        client.send("Page.navigate", (error: boolean, response: CDP.SendError) => {});
+        client.send(
+            "Page.navigate",
+            (error: boolean, response: CDP.SendError) => {},
+        );
         // @ts-expect-error
-        client.send("Page.navigate", (error: boolean, response: Protocol.Page.NavigateResponse) => {});
+        client.send(
+            "Page.navigate",
+            (error: boolean, response: Protocol.Page.NavigateResponse) => {},
+        );
     } finally {
         if (client) {
             await client.close();
@@ -100,17 +135,18 @@ function assertType<T>(value: T): T {
 })();
 
 CDP.Activate({ id: "CC46FBFA-3BDA-493B-B2E4-2BE6EB0D97EC" }, (err) => {
-    if (!err) {}
+    if (!err) {
+    }
 });
 
 (() => {
     const cdpPort = { port: 9223 };
-    CDP(cdpPort, client => {
+    CDP(cdpPort, (client) => {
         CDP.List(cdpPort, (err, targets) => {
             if (!err) {
                 for (const target of targets) {
                     if (target.url.startsWith("https://github.com")) {
-                        CDP.Close({ id: target.id }, err => {});
+                        CDP.Close({ id: target.id }, (err) => {});
                     }
                 }
             }
@@ -120,12 +156,12 @@ CDP.Activate({ id: "CC46FBFA-3BDA-493B-B2E4-2BE6EB0D97EC" }, (err) => {
 })();
 
 (() => {
-    CDP(client => {
+    CDP((client) => {
         CDP.List((err, targets) => {
             if (!err) {
                 for (const target of targets) {
                     if (target.url.startsWith("https://github.com")) {
-                        CDP.Close({ id: target.id }, err => {});
+                        CDP.Close({ id: target.id }, (err) => {});
                     }
                 }
             }
@@ -137,17 +173,19 @@ CDP.Activate({ id: "CC46FBFA-3BDA-493B-B2E4-2BE6EB0D97EC" }, (err) => {
 (async () => {
     CDP.New((err, target) => {
         if (!err && target.url.startsWith("https://github.com")) {
-            CDP.Close({ id: target.id }, err => {});
+            CDP.Close({ id: target.id }, (err) => {});
         }
     });
 
     CDP.New({ url: "https://github.com" }, (err, target) => {
         if (!err && target.url.startsWith("https://github.com")) {
-            CDP.Close({ id: target.id }, err => {});
+            CDP.Close({ id: target.id }, (err) => {});
         }
     });
 
-    const target: CDP.Target | undefined = await CDP.New({ url: "https://github.com" });
+    const target: CDP.Target | undefined = await CDP.New({
+        url: "https://github.com",
+    });
 })();
 
 (() => {
@@ -159,5 +197,6 @@ CDP.Activate({ id: "CC46FBFA-3BDA-493B-B2E4-2BE6EB0D97EC" }, (err) => {
 })();
 
 CDP.Version((err, info) => {
-    if (!err) {}
+    if (!err) {
+    }
 });

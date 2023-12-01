@@ -19,12 +19,18 @@ declare namespace AMap {
          * 返回当前集合中所有的图层
          */
         getLayers(): L[];
-        getLayer(finder: (this: null, item: L, index: number, list: L[]) => boolean): L | null;
+        getLayer(
+            finder: (this: null, item: L, index: number, list: L[]) => boolean,
+        ): L | null;
         /**
          * 判断传入的图层实例是否在集合中
          * @param layer 目标图层
          */
-        hasLayer(layer: L | ((this: null, item: L, index: number, list: L[]) => boolean)): boolean;
+        hasLayer(
+            layer:
+                | L
+                | ((this: null, item: L, index: number, list: L[]) => boolean),
+        ): boolean;
         /**
          *     从集合中删除传入的图层实例
          * @param layer 图层
@@ -44,7 +50,10 @@ declare namespace AMap {
          * @param iterator 迭代回调
          * @param context 执行上下文
          */
-        eachLayer<C = L>(iterator: (this: C, layer: L, index: number, list: L[]) => void, context?: C): void;
+        eachLayer<C = L>(
+            iterator: (this: C, layer: L, index: number, list: L[]) => void,
+            context?: C,
+        ): void;
 
         // overwrite
         setMap(map?: Map): this;

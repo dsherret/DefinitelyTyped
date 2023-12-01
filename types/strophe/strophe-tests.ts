@@ -27,7 +27,9 @@ function onOwnMessage(msg: Element): boolean {
             .cnode(own)
             .up()
             .c("error", { type: "cancel", code: "501" })
-            .c("feature-not-implemented", { xmlns: "urn:ietf:params:xml:ns:xmpp-stanzas" });
+            .c("feature-not-implemented", {
+                xmlns: "urn:ietf:params:xml:ns:xmpp-stanzas",
+            });
 
         connection.sendIQ(iq);
     }
@@ -113,7 +115,10 @@ function onRoomPresence(stanza: Element, room: Strophe.MUC.XmppRoom): boolean {
     return true;
 }
 
-function onRoomRoster(occupants: Strophe.MUC.OccupantMap, room: Strophe.MUC.XmppRoom): boolean {
+function onRoomRoster(
+    occupants: Strophe.MUC.OccupantMap,
+    room: Strophe.MUC.XmppRoom,
+): boolean {
     for (const nick of Object.keys(occupants)) {
         const occupant = occupants[nick];
         console.log(occupant.nick, occupant.show, occupant.status);
@@ -122,6 +127,12 @@ function onRoomRoster(occupants: Strophe.MUC.OccupantMap, room: Strophe.MUC.Xmpp
 }
 
 connection.muc.init(connection);
-connection.muc.join("room", "nick", onRoomMessage, onRoomPresence, onRoomRoster);
+connection.muc.join(
+    "room",
+    "nick",
+    onRoomMessage,
+    onRoomPresence,
+    onRoomRoster,
+);
 
 Strophe.SASLPlain.test = () => false;

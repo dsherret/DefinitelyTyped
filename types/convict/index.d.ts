@@ -73,7 +73,12 @@ declare namespace convict {
          * If omitted, format will be set to the value of Object.prototype.toString.call
          * for the default value
          */
-        format?: PredefinedFormat | any[] | ((val: any) => asserts val is T) | ((val: any) => void) | undefined;
+        format?:
+            | PredefinedFormat
+            | any[]
+            | ((val: any) => asserts val is T)
+            | ((val: any) => void)
+            | undefined;
         env?: string | undefined;
         arg?: string | undefined;
         sensitive?: boolean | undefined;
@@ -87,7 +92,9 @@ declare namespace convict {
 
     interface InternalSchema<T> {
         _cvtProperties: {
-            [K in keyof T]: T[K] extends object ? InternalSchema<T[K]> : { default: T[K] };
+            [K in keyof T]: T[K] extends object
+                ? InternalSchema<T[K]>
+                : { default: T[K] };
         };
     }
 
@@ -99,19 +106,23 @@ declare namespace convict {
     // Taken from https://twitter.com/diegohaz/status/1309489079378219009
     type PathImpl<T, K extends keyof T> = K extends string
         ? T[K] extends Record<string, any>
-            ? T[K] extends ArrayLike<any> ? K | `${K}.${PathImpl<T[K], Exclude<keyof T[K], keyof any[]>>}`
-            : K | `${K}.${PathImpl<T[K], keyof T[K]>}`
-        : K
+            ? T[K] extends ArrayLike<any>
+                ? K | `${K}.${PathImpl<T[K], Exclude<keyof T[K], keyof any[]>>}`
+                : K | `${K}.${PathImpl<T[K], keyof T[K]>}`
+            : K
         : never;
 
     type Path<T> = PathImpl<T, keyof T> | keyof T;
 
     type PathValue<T, P extends Path<T>> = P extends `${infer K}.${infer Rest}`
-        ? K extends keyof T ? Rest extends Path<T[K]> ? PathValue<T[K], Rest>
+        ? K extends keyof T
+            ? Rest extends Path<T[K]>
+                ? PathValue<T[K], Rest>
+                : never
             : never
-        : never
-        : P extends keyof T ? T[P]
-        : never;
+        : P extends keyof T
+          ? T[P]
+          : never;
 
     interface Config<T> {
         /**
@@ -120,7 +131,11 @@ declare namespace convict {
          */
         get<K extends Path<T> | null | undefined = undefined>(
             name?: K,
-        ): K extends null | undefined ? T : K extends Path<T> ? PathValue<T, K> : never;
+        ): K extends null | undefined
+            ? T
+            : K extends Path<T>
+              ? PathValue<T, K>
+              : never;
 
         /**
          * @returns the default value of the name property. name can use dot
@@ -128,7 +143,11 @@ declare namespace convict {
          */
         default<K extends Path<T> | null | undefined = undefined>(
             name?: K,
-        ): K extends null | undefined ? T : K extends Path<T> ? PathValue<T, K> : never;
+        ): K extends null | undefined
+            ? T
+            : K extends Path<T>
+              ? PathValue<T, K>
+              : never;
 
         /**
          * @returns true if the property name is defined, or false otherwise
@@ -145,7 +164,10 @@ declare namespace convict {
          * nested values, e.g. "database.port". If objects in the chain don't yet
          * exist, they will be initialized to empty objects
          */
-        set<K extends Path<T> | string>(name: K, value: K extends Path<T> ? PathValue<T, K> : any): Config<T>;
+        set<K extends Path<T> | string>(
+            name: K,
+            value: K extends Path<T> ? PathValue<T, K> : any,
+        ): Config<T>;
 
         /**
          * Loads and merges a JavaScript object into config
@@ -204,7 +226,10 @@ interface convict {
     addFormat(format: convict.Format): void;
     addFormats(formats: { [name: string]: convict.Format }): void;
     addParser(parsers: convict.Parser | convict.Parser[]): void;
-    <T>(config: convict.Schema<T> | string, opts?: convict.Options): convict.Config<T>;
+    <T>(
+        config: convict.Schema<T> | string,
+        opts?: convict.Options,
+    ): convict.Config<T>;
 }
 declare var convict: convict;
 export = convict;

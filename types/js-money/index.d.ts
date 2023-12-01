@@ -14,7 +14,11 @@ declare class Money {
     amount: number;
     currency: string;
     static fromInteger(amount: number, currency: string | Currency): Money;
-    static fromDecimal(amount: number, currency: string | Currency, rounder?: Rounders | RoundFunction): Money;
+    static fromDecimal(
+        amount: number,
+        currency: string | Currency,
+        rounder?: Rounders | RoundFunction,
+    ): Money;
     equals(other: Money): boolean;
     add(other: Money): Money;
     subtract(other: Money): Money;

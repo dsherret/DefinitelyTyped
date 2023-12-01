@@ -60,14 +60,33 @@ export interface ConvertUnknownOptions {
     bom?: boolean | string | undefined;
 }
 
-export function detect(data: IntArrayType | string, encodings?: Encoding | Encoding[]): EncodingDetection;
-export function convert(data: IntArrayType, to: Encoding, from?: Encoding): number[];
+export function detect(
+    data: IntArrayType | string,
+    encodings?: Encoding | Encoding[],
+): EncodingDetection;
+export function convert(
+    data: IntArrayType,
+    to: Encoding,
+    from?: Encoding,
+): number[];
 export function convert(data: string, to: Encoding, from?: Encoding): string;
-export function convert(data: IntArrayType | string, options: ConvertStringOptions): string;
-export function convert(data: IntArrayType | string, options: ConvertArrayBufferOptions): ArrayBuffer;
-export function convert(data: IntArrayType | string, options: ConvertArrayOptions): number[];
+export function convert(
+    data: IntArrayType | string,
+    options: ConvertStringOptions,
+): string;
+export function convert(
+    data: IntArrayType | string,
+    options: ConvertArrayBufferOptions,
+): ArrayBuffer;
+export function convert(
+    data: IntArrayType | string,
+    options: ConvertArrayOptions,
+): number[];
 export function convert(data: string, options: ConvertUnknownOptions): string;
-export function convert(data: IntArrayType, options: ConvertUnknownOptions): number[];
+export function convert(
+    data: IntArrayType,
+    options: ConvertUnknownOptions,
+): number[];
 export function urlEncode(data: IntArrayType): string;
 export function urlDecode(data: string): number[];
 export function base64Encode(data: IntArrayType): string;

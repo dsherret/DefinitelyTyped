@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/react-responsive",
-    "version": "8.0.9999",
-    "projects": [
-        "https://github.com/contra/react-responsive"
-    ],
-    "dependencies": {
-        "@types/react": "*"
+  "private": true,
+  "name": "@types/react-responsive",
+  "version": "8.0.9999",
+  "projects": [
+    "https://github.com/contra/react-responsive"
+  ],
+  "dependencies": {
+    "@types/react": "*"
+  },
+  "devDependencies": {
+    "@types/react-responsive": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Alexey Svetliakov",
+      "githubUsername": "asvetliakov"
     },
-    "devDependencies": {
-        "@types/react-responsive": "workspace:."
+    {
+      "name": "Alec Hill",
+      "githubUsername": "alechill"
     },
-    "owners": [
-        {
-            "name": "Alexey Svetliakov",
-            "githubUsername": "asvetliakov"
-        },
-        {
-            "name": "Alec Hill",
-            "githubUsername": "alechill"
-        },
-        {
-            "name": "Javier Gonzalez",
-            "githubUsername": "xaviergonz"
-        }
-    ]
+    {
+      "name": "Javier Gonzalez",
+      "githubUsername": "xaviergonz"
+    }
+  ]
 }

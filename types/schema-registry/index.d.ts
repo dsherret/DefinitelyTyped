@@ -35,7 +35,10 @@ export class RegistryClient {
 
     request: (options: object, expectedStatusCode: number) => RegistryRequest;
     isAlive: () => RegistryRequest;
-    registerSubjectVersion: (subject: string, schema: object) => RegistryRequest;
+    registerSubjectVersion: (
+        subject: string,
+        schema: object,
+    ) => RegistryRequest;
     getVersionsForSubject: (subject: string) => RegistryRequest;
     getConfig: () => RegistryRequest;
     setConfig: (config: object) => RegistryRequest;
@@ -43,8 +46,14 @@ export class RegistryClient {
     getSubjectConfig: (subject: string) => RegistryRequest;
     getSchemaById: (id: number) => RegistryRequest;
     getSubjects: () => RegistryRequest;
-    getSubjectSchemaForVersion: (subject: string, version: number) => RegistryRequest;
+    getSubjectSchemaForVersion: (
+        subject: string,
+        version: number,
+    ) => RegistryRequest;
     getLatestSubjectSchema: (subject: string) => RegistryRequest;
-    checkSubjectRegistration: (subject: string, schema: object) => RegistryRequest;
+    checkSubjectRegistration: (
+        subject: string,
+        schema: object,
+    ) => RegistryRequest;
     constructor(config: RegistryClientConfig);
 }

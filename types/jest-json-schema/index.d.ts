@@ -12,4 +12,7 @@ declare global {
 
 export const matchers: jest.ExpectExtendMap;
 export type Options = ajv.Options & { AjvClass?: any };
-export function matchersWithOptions(options: Options, extendAjv?: (ajv: ajv.Ajv) => void): jest.ExpectExtendMap;
+export function matchersWithOptions(
+    options: Options,
+    extendAjv?: (ajv: ajv.Ajv) => void,
+): jest.ExpectExtendMap;

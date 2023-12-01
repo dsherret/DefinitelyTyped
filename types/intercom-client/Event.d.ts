@@ -10,7 +10,10 @@ interface EmailIdId {
 
 export type EventIdentifier = IntercomUserIdId | UserIdId | EmailIdId;
 
-export interface Event extends Partial<UserIdId>, Partial<IntercomUserIdId>, Partial<EmailIdId> {
+export interface Event
+    extends Partial<UserIdId>,
+        Partial<IntercomUserIdId>,
+        Partial<EmailIdId> {
     readonly id: string;
     created_at: number;
     event_name: string;
@@ -23,8 +26,13 @@ export type ListParam = EventIdentifier & {
 };
 
 export interface List {
-    "type": "event.list";
-    "total_count": number;
-    "events": (Event)[];
-    "pages": { "next"?: string | undefined; "page": number; "per_page": number; "total_pages": number };
+    type: "event.list";
+    total_count: number;
+    events: Event[];
+    pages: {
+        next?: string | undefined;
+        page: number;
+        per_page: number;
+        total_pages: number;
+    };
 }

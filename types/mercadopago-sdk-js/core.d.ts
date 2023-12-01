@@ -140,11 +140,19 @@ declare namespace mercadopagocore {
 
     interface MercadoPagoCore {
         getIdentificationTypes(): Promise<IdentificationTypesResponse[]>;
-        getPaymentMethods(paymentMethodsParams: PaymentMethodsParams): Promise<PaymentMethodsResponse>;
+        getPaymentMethods(
+            paymentMethodsParams: PaymentMethodsParams,
+        ): Promise<PaymentMethodsResponse>;
         getIssuers(issuersParams: IssuersParams): Promise<IssuersResponse[]>;
-        getInstallments(installmentsParams: InstallmentsParams): Promise<InstallmentsResponse[]>;
-        createCardToken(cardTokenParams: CardTokenParams): Promise<shared.CardTokenResponse>;
-        updateCardToken(CardTokenUpdateParams: CardTokenUpdateParams): Promise<shared.CardTokenResponse>;
+        getInstallments(
+            installmentsParams: InstallmentsParams,
+        ): Promise<InstallmentsResponse[]>;
+        createCardToken(
+            cardTokenParams: CardTokenParams,
+        ): Promise<shared.CardTokenResponse>;
+        updateCardToken(
+            CardTokenUpdateParams: CardTokenUpdateParams,
+        ): Promise<shared.CardTokenResponse>;
 
         fields: fields.Fields;
 

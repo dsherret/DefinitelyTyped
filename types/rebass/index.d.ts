@@ -9,7 +9,11 @@ type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 
 export interface BaseProps extends React.RefAttributes<any> {
     as?: React.ElementType | undefined;
-    css?: StyledComponents.CSSObject | StyledComponents.FlattenSimpleInterpolation | string | undefined;
+    css?:
+        | StyledComponents.CSSObject
+        | StyledComponents.FlattenSimpleInterpolation
+        | string
+        | undefined;
 }
 
 /**
@@ -20,11 +24,14 @@ export interface BaseProps extends React.RefAttributes<any> {
 export type SxStyleProp =
     | SystemStyleObject
     | Record<
-        string,
-        | SystemStyleObject
-        | ResponsiveStyleValue<number | string>
-        | Record<string, SystemStyleObject | ResponsiveStyleValue<number | string>>
-    >;
+          string,
+          | SystemStyleObject
+          | ResponsiveStyleValue<number | string>
+          | Record<
+                string,
+                SystemStyleObject | ResponsiveStyleValue<number | string>
+            >
+      >;
 
 export interface SxProps {
     /**
@@ -34,47 +41,62 @@ export interface SxProps {
 }
 
 interface BoxKnownProps
-    extends
-        BaseProps,
+    extends BaseProps,
         StyledSystem.SpaceProps,
         StyledSystem.LayoutProps,
         StyledSystem.TypographyProps,
         StyledSystem.ColorProps,
         StyledSystem.FlexboxProps,
-        SxProps
-{
+        SxProps {
     variant?: StyledSystem.ResponsiveValue<string> | undefined;
     tx?: string | undefined;
 }
-export interface BoxProps extends BoxKnownProps, Omit<React.HTMLProps<HTMLDivElement>, keyof BoxKnownProps> {}
+export interface BoxProps
+    extends BoxKnownProps,
+        Omit<React.HTMLProps<HTMLDivElement>, keyof BoxKnownProps> {}
 export const Box: React.FunctionComponent<BoxProps>;
 
-interface ButtonKnownProps extends BoxKnownProps, StyledSystem.FontWeightProps, StyledSystem.ButtonStyleProps {}
+interface ButtonKnownProps
+    extends BoxKnownProps,
+        StyledSystem.FontWeightProps,
+        StyledSystem.ButtonStyleProps {}
 export interface ButtonProps
-    extends ButtonKnownProps, Omit<React.HTMLProps<HTMLButtonElement>, keyof ButtonKnownProps>
-{}
+    extends ButtonKnownProps,
+        Omit<React.HTMLProps<HTMLButtonElement>, keyof ButtonKnownProps> {}
 export const Button: React.FunctionComponent<ButtonProps>;
 
-export interface CardProps extends BoxKnownProps, Omit<React.HTMLProps<HTMLDivElement>, keyof BoxKnownProps> {}
+export interface CardProps
+    extends BoxKnownProps,
+        Omit<React.HTMLProps<HTMLDivElement>, keyof BoxKnownProps> {}
 export const Card: React.FunctionComponent<CardProps>;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface FlexKnownProps extends BoxKnownProps {}
-export interface FlexProps extends FlexKnownProps, Omit<React.HTMLProps<HTMLDivElement>, keyof FlexKnownProps> {}
+export interface FlexProps
+    extends FlexKnownProps,
+        Omit<React.HTMLProps<HTMLDivElement>, keyof FlexKnownProps> {}
 export const Flex: React.FunctionComponent<FlexProps>;
 
-export interface ImageProps extends BoxKnownProps, Omit<React.HTMLProps<HTMLImageElement>, keyof BoxKnownProps> {}
+export interface ImageProps
+    extends BoxKnownProps,
+        Omit<React.HTMLProps<HTMLImageElement>, keyof BoxKnownProps> {}
 export const Image: React.FunctionComponent<ImageProps>;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface LinkKnownProps extends BoxKnownProps {}
-export interface LinkProps extends LinkKnownProps, Omit<React.HTMLProps<HTMLAnchorElement>, keyof LinkKnownProps> {}
+export interface LinkProps
+    extends LinkKnownProps,
+        Omit<React.HTMLProps<HTMLAnchorElement>, keyof LinkKnownProps> {}
 export const Link: React.FunctionComponent<LinkProps>;
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface TextKnownProps extends BoxKnownProps {}
-export interface TextProps extends TextKnownProps, Omit<React.HTMLProps<HTMLDivElement>, keyof TextKnownProps> {}
+export interface TextProps
+    extends TextKnownProps,
+        Omit<React.HTMLProps<HTMLDivElement>, keyof TextKnownProps> {}
 export const Text: React.FunctionComponent<TextProps>;
 
-export interface HeadingProps extends TextKnownProps, Omit<React.HTMLProps<HTMLHeadingElement>, keyof TextKnownProps> {}
+export interface HeadingProps
+    extends TextKnownProps,
+        Omit<React.HTMLProps<HTMLHeadingElement>, keyof TextKnownProps> {}
 export const Heading: React.FunctionComponent<HeadingProps>;

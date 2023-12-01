@@ -6,7 +6,11 @@ declare module "express-session" {
         login(callback: Function): void;
         login(extend: Object, callback: (err?: any) => void): void;
         login(role: string, callback: (err?: any) => void): void;
-        login(role: string, extend: Object, callback: (err?: any) => void): void;
+        login(
+            role: string,
+            extend: Object,
+            callback: (err?: any) => void,
+        ): void;
         logout(callback: (err?: any) => void): void;
         isLoggedIn(role?: string): boolean;
         isGuest(): boolean;
@@ -24,7 +28,17 @@ export interface SessionOptions {
     maxFreshTimeout?: number | undefined;
 }
 
-export function main(session: typeof expressSession, options?: SessionOptions): express.RequestHandler;
-export function isLoggedIn(errorCallback?: (err?: any) => void): express.RequestHandler;
-export function isFresh(errorCallback?: (err?: any) => void): express.RequestHandler;
-export function checkRole(role: string, errorCallback?: (err?: any) => void): express.RequestHandler;
+export function main(
+    session: typeof expressSession,
+    options?: SessionOptions,
+): express.RequestHandler;
+export function isLoggedIn(
+    errorCallback?: (err?: any) => void,
+): express.RequestHandler;
+export function isFresh(
+    errorCallback?: (err?: any) => void,
+): express.RequestHandler;
+export function checkRole(
+    role: string,
+    errorCallback?: (err?: any) => void,
+): express.RequestHandler;

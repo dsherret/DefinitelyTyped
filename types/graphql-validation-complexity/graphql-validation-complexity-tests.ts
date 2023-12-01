@@ -6,5 +6,6 @@ createComplexityLimitRule(1000, {
     onCost: (cost) => {
         console.log("query cost:", cost);
     },
-    formatErrorMessage: (cost) => `query with cost ${cost} exceeds complexity limit`,
+    formatErrorMessage: (cost) =>
+        `query with cost ${cost} exceeds complexity limit`,
 });

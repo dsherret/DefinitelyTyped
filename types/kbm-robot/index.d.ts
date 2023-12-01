@@ -18,7 +18,10 @@ declare const kbmRobot: KBMRobot;
 export = kbmRobot;
 
 type _MouseButton = "1" | "2" | "3";
-type MouseButton = _MouseButton | `${_MouseButton}${_MouseButton}` | `${_MouseButton}${_MouseButton}${_MouseButton}`;
+type MouseButton =
+    | _MouseButton
+    | `${_MouseButton}${_MouseButton}`
+    | `${_MouseButton}${_MouseButton}${_MouseButton}`;
 
 type Key =
     | "VK_ENTER"

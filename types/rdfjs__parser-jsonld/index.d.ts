@@ -8,7 +8,9 @@ export interface ParserOptions {
     factory?: DataFactory | undefined;
 }
 
-export default class Parser<Q extends BaseQuad = Quad> implements Sink<EventEmitter, Stream<Q>> {
+export default class Parser<Q extends BaseQuad = Quad>
+    implements Sink<EventEmitter, Stream<Q>>
+{
     constructor(options?: ParserOptions);
 
     import(stream: EventEmitter, options?: ParserOptions): Stream<Q>;

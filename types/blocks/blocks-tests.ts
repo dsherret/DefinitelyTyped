@@ -2,13 +2,13 @@ function test_blocks_methods() {
     var extended: Object;
     blocks.extend(extended, new Object());
 
-    blocks.each([3, 1, 4], function(value, index, collection) {
+    blocks.each([3, 1, 4], function (value, index, collection) {
         // value is the current item (3, 1 and 4)
         // index is the current index (0, 1 and 2)
         // collection points to the array passed to the function - [3, 1, 4]
     });
 
-    blocks.eachRight([3, 1, 4], function(value, index, collection) {
+    blocks.eachRight([3, 1, 4], function (value, index, collection) {
         // value is the current item (4, 1 and 3)
         // index is the current index (2, 1 and 0)
         // collection points to the array passed to the function - [3, 1, 4]
@@ -53,17 +53,23 @@ function test_blocks_methods() {
     blocks.is([], "array");
     // -> true
 
-    blocks.is(function() {}, "object");
+    blocks.is(function () {}, "object");
     // -> false
 
-    blocks.has({
-        price: undefined,
-    }, "price");
+    blocks.has(
+        {
+            price: undefined,
+        },
+        "price",
+    );
     // -> true
 
-    blocks.has({
-        price: 314,
-    }, "ratio");
+    blocks.has(
+        {
+            price: 314,
+        },
+        "ratio",
+    );
     // -> false
 
     blocks.unwrap(blocks.observable(314));
@@ -154,7 +160,9 @@ function test_blocks_methods() {
     blocks.query({
         items: ["John", "Alf", "Mega"],
         alertIndex: (e: any) => {
-            alert("Clicked an item with index:" + blocks.context(e.target).$index);
+            alert(
+                "Clicked an item with index:" + blocks.context(e.target).$index,
+            );
         },
     });
 
@@ -227,7 +235,7 @@ function test_Model() {
         }),
 
         fullName: App.Property({
-            value: function() {
+            value: function () {
                 return this.firstName() + " " + this.lastName();
             },
         }),
@@ -256,7 +264,7 @@ function test_Collection() {
         }),
 
         fullName: App.Property({
-            value: function() {
+            value: function () {
                 return this.firstName() + " " + this.lastName();
             },
         }),
@@ -271,13 +279,16 @@ function test_Collection() {
     });
 
     App.View("Profiles", {
-        users: Users([{
-            firstName: "John",
-            lastName: "Doe",
-        }, {
-            firstName: "Johna",
-            lastName: "Doa",
-        }]),
+        users: Users([
+            {
+                firstName: "John",
+                lastName: "Doe",
+            },
+            {
+                firstName: "Johna",
+                lastName: "Doa",
+            },
+        ]),
     });
 }
 

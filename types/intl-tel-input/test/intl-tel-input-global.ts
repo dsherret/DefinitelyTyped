@@ -32,7 +32,9 @@ window.intlTelInput(input).destroy();
 const extension = window.intlTelInput(input).getExtension();
 
 const intlNumber = window.intlTelInput(input).getNumber();
-const ntlNumber = window.intlTelInput(input).getNumber(intlTelInputUtils.numberFormat.NATIONAL);
+const ntlNumber = window
+    .intlTelInput(input)
+    .getNumber(intlTelInputUtils.numberFormat.NATIONAL);
 
 const numberType = window.intlTelInput(input).getNumberType();
 if (numberType === intlTelInputUtils.numberType.MOBILE) {
@@ -70,7 +72,7 @@ window.intlTelInput(input, {
 
 window.intlTelInput(input, {
     initialCountry: "auto",
-    geoIpLookup: callback => {
+    geoIpLookup: (callback) => {
         const countryCode = "XY";
         callback(countryCode);
     },
@@ -104,9 +106,17 @@ const iti = window.intlTelInputGlobals.getInstance(input);
 iti.isValidNumber(); // etc
 
 // $ExpectType string
-intlTelInputUtils.formatNumber("07733123456", "gb", intlTelInputUtils.numberFormat.INTERNATIONAL);
+intlTelInputUtils.formatNumber(
+    "07733123456",
+    "gb",
+    intlTelInputUtils.numberFormat.INTERNATIONAL,
+);
 // $ExpectType string
-intlTelInputUtils.getExampleNumber("gb", false, intlTelInputUtils.numberType.MOBILE);
+intlTelInputUtils.getExampleNumber(
+    "gb",
+    false,
+    intlTelInputUtils.numberType.MOBILE,
+);
 // $ExpectType numberType
 intlTelInputUtils.getNumberType("07733123456", "gb");
 // $ExpectType string

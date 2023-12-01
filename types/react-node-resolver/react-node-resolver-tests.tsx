@@ -7,7 +7,7 @@ interface Props {
 
 export default class ScrollSpy extends React.Component<Props> {
     nav: HTMLElement | undefined;
-    getElements: React.RefCallback<HTMLElement> = ref => {
+    getElements: React.RefCallback<HTMLElement> = (ref) => {
         if (!ref) return;
         this.nav = ref;
     };

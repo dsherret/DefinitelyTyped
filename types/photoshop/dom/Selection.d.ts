@@ -168,7 +168,11 @@ export declare class Selection {
      * @async
      * @minVersion 25.0
      */
-    load(from: Channel | Layer, mode?: Constants.SelectionType, invert?: boolean): Promise<void>;
+    load(
+        from: Channel | Layer,
+        mode?: Constants.SelectionType,
+        invert?: boolean,
+    ): Promise<void>;
     /**
      * Create a work path from the active selection.
      *

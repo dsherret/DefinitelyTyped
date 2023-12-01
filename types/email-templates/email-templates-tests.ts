@@ -32,12 +32,17 @@ const emailNoTransporter = new Email({
 email.juiceResources("<p>bob</p><style>div{color:red;}</style><div/>");
 email.render("mars/html.pug");
 email.render("mars/html.pug", locals);
-const sendPromise: Promise<any> = email.send({ template: "mars", message: { to: "elon@spacex.com" }, locals });
-email.send({ template: "mars", message: { to: "elon@spacex.com" }, locals })
-    .then(res => {
+const sendPromise: Promise<any> = email.send({
+    template: "mars",
+    message: { to: "elon@spacex.com" },
+    locals,
+});
+email
+    .send({ template: "mars", message: { to: "elon@spacex.com" }, locals })
+    .then((res) => {
         res; // $ExpectType any
     })
-    .catch(err => {
+    .catch((err) => {
         err; // $ExpectType any
     });
 
@@ -65,10 +70,12 @@ const emailOptions: Email.EmailOptions<Locals> = {
     },
     message: {
         to: "recipient@example.org",
-        attachments: [{
-            filename: "hello.txt",
-            content: "an attachment",
-        }],
+        attachments: [
+            {
+                filename: "hello.txt",
+                content: "an attachment",
+            },
+        ],
     },
 };
 
@@ -76,7 +83,7 @@ withTransportInstance.send(emailOptions);
 
 email.renderAll("mars");
 const promise = email.renderAll("mars", locals);
-promise.then(value => {
+promise.then((value) => {
     const subject: string | undefined = value.subject;
     const html: string | undefined = value.html;
     const text: string | undefined = value.text;

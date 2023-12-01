@@ -17,7 +17,9 @@ class MyComponent extends React.Component {
     };
 
     private addNotification() {
-        this.notification = this.notificationSystem.addNotification(this.notification);
+        this.notification = this.notificationSystem.addNotification(
+            this.notification,
+        );
     }
 
     componentDidMount() {
@@ -26,12 +28,15 @@ class MyComponent extends React.Component {
 
     render() {
         const style: NotificationSystem.Style = {
-            NotificationItem: { // Override the notification item
-                DefaultStyle: { // Applied to every notification, regardless of the notification level
+            NotificationItem: {
+                // Override the notification item
+                DefaultStyle: {
+                    // Applied to every notification, regardless of the notification level
                     margin: "10px 5px 2px 1px",
                 },
 
-                success: { // Applied only to the success notification item
+                success: {
+                    // Applied only to the success notification item
                     color: "red",
                 },
             },

@@ -32,7 +32,10 @@ function animate() {
     entityManager.update(delta);
 }
 
-function sync(entity: YUKA.GameEntity, renderComponent: { matrix: YUKA.Matrix4 }) {
+function sync(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrix: YUKA.Matrix4 },
+) {
     renderComponent.matrix.copy(entity.worldMatrix);
 }
 
@@ -40,7 +43,7 @@ function generateTarget() {
     // generate a random point on a sphere
 
     const radius = 2;
-    const phi = Math.acos((2 * Math.random()) - 1);
+    const phi = Math.acos(2 * Math.random() - 1);
     const theta = Math.random() * Math.PI * 2;
 
     target.position.fromSpherical(radius, phi, theta);

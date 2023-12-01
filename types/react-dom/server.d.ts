@@ -40,7 +40,9 @@ export interface RenderToPipeableStreamOptions {
 
 export interface PipeableStream {
     abort: (reason?: unknown) => void;
-    pipe: <Writable extends NodeJS.WritableStream>(destination: Writable) => Writable;
+    pipe: <Writable extends NodeJS.WritableStream>(
+        destination: Writable,
+    ) => Writable;
 }
 
 /**
@@ -51,7 +53,10 @@ export interface PipeableStream {
  * @param children
  * @param options
  */
-export function renderToPipeableStream(children: ReactNode, options?: RenderToPipeableStreamOptions): PipeableStream;
+export function renderToPipeableStream(
+    children: ReactNode,
+    options?: RenderToPipeableStreamOptions,
+): PipeableStream;
 
 /**
  * Render a React element to its initial HTML. This should only be used on the server.
@@ -72,7 +77,9 @@ export function renderToString(element: ReactElement): string;
  *
  * @deprecated
  */
-export function renderToNodeStream(element: ReactElement): NodeJS.ReadableStream;
+export function renderToNodeStream(
+    element: ReactElement,
+): NodeJS.ReadableStream;
 
 /**
  * Similar to `renderToString`, except this doesn't create extra DOM attributes
@@ -87,7 +94,9 @@ export function renderToStaticMarkup(element: ReactElement): string;
  * such as `data-reactid`, that React uses internally. The HTML output by this stream
  * is exactly equal to what `ReactDOMServer.renderToStaticMarkup()` would return.
  */
-export function renderToStaticNodeStream(element: ReactElement): NodeJS.ReadableStream;
+export function renderToStaticNodeStream(
+    element: ReactElement,
+): NodeJS.ReadableStream;
 
 export interface RenderToReadableStreamOptions {
     identifierPrefix?: string;

@@ -15,7 +15,11 @@ declare namespace jsrsasign.KJUR.asn1.tsp {
      *                                 micros: 500});
      */
     class Accuracy extends ASN1Object {
-        constructor(params?: { seconds: number; millis: number; micros: number });
+        constructor(params?: {
+            seconds: number;
+            millis: number;
+            micros: number;
+        });
         getEncodedHex(): string;
     }
 }

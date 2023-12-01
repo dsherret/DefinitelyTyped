@@ -37,7 +37,10 @@ export interface Customize extends Values<Setting<any>> {
     utils: Utils;
     ensure(element: string | JQuery): JQuery;
     dirtyValues(options?: DirtyValuesOptions): Record<string, any>;
-    requestChangesetUpdate(changes?: Record<string, any>, args?: RequestChangesetUpdateOptions): JQuery.Promise<any>;
+    requestChangesetUpdate(
+        changes?: Record<string, any>,
+        args?: RequestChangesetUpdateOptions,
+    ): JQuery.Promise<any>;
     get(): Record<string, any>;
     defaultConstructor: Setting<Class>;
     control: Values<Control>;
@@ -50,7 +53,9 @@ export interface Customize extends Values<Setting<any>> {
     panelConstructor: Panel_Constructor;
     sectionConstructor: Section_Constructor;
     _handleSettingValidities(args: HandleSettingValiditiesArgs): void;
-    findControlsForSettings(settingIds: readonly string[]): Record<string, Control>;
+    findControlsForSettings(
+        settingIds: readonly string[],
+    ): Record<string, Control>;
     reflowPaneContents(): void;
     state: Values<Class>;
     settings: any; // TODO

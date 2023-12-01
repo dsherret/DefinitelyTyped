@@ -40,7 +40,11 @@ client.init("api-key", {
     clientIp: "test",
     automaticPerformanceCustomTimings: true,
 });
-client.init("api-key", { allowInsecureSubmissions: true, disablePulse: false }, { some: "data" });
+client.init(
+    "api-key",
+    { allowInsecureSubmissions: true, disablePulse: false },
+    { some: "data" },
+);
 
 client.withCustomData({ some: "data" });
 client.withCustomData(() => {
@@ -65,7 +69,14 @@ client.setUser("username");
 client.setUser("username", true);
 client.setUser("username", false, "user@email.com", "Robert Raygun");
 client.setUser("username", false, "user@email.com", "Robert Raygun", "Robert");
-client.setUser("username", false, "user@email.com", "Robert Raygun", "Robert", "8ae89fc9-1144-42d6-9629-bf085dab18d2");
+client.setUser(
+    "username",
+    false,
+    "user@email.com",
+    "Robert Raygun",
+    "Robert",
+    "8ae89fc9-1144-42d6-9629-bf085dab18d2",
+);
 
 client.resetAnonymousUser();
 client.setVersion("1.2.3.4");
@@ -82,11 +93,11 @@ client.onBeforeSend((payload: RaygunPayload) => {
     return payload;
 });
 
-client.groupingKey(payload => {
+client.groupingKey((payload) => {
     return payload.Details.Error.Message;
 });
 
-client.onBeforeXHR(xhr => {
+client.onBeforeXHR((xhr) => {
     console.log(xhr.response);
 });
 

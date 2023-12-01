@@ -1,17 +1,17 @@
 {
-    "private": true,
-    "name": "@types/shorten-css-hex",
-    "version": "1.1.9999",
-    "projects": [
-        "https://github.com/dustinspecker/shorten-css-hex"
-    ],
-    "devDependencies": {
-        "@types/shorten-css-hex": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Ivan Nikolić",
-            "githubUsername": "niksy"
-        }
-    ]
+  "private": true,
+  "name": "@types/shorten-css-hex",
+  "version": "1.1.9999",
+  "projects": [
+    "https://github.com/dustinspecker/shorten-css-hex"
+  ],
+  "devDependencies": {
+    "@types/shorten-css-hex": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Ivan Nikolić",
+      "githubUsername": "niksy"
+    }
+  ]
 }

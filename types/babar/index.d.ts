@@ -1,4 +1,12 @@
-type color = "yellow" | "cyan" | "white" | "magenta" | "green" | "red" | "grey" | "blue";
+type color =
+    | "yellow"
+    | "cyan"
+    | "white"
+    | "magenta"
+    | "green"
+    | "red"
+    | "grey"
+    | "blue";
 
 interface Options {
     caption?: string | undefined;
@@ -13,6 +21,9 @@ interface Options {
     minY?: number | undefined;
     maxY?: number | undefined;
 }
-declare function babar(points: ReadonlyArray<[number, number]>, options?: Options): string;
+declare function babar(
+    points: ReadonlyArray<[number, number]>,
+    options?: Options,
+): string;
 
 export = babar;

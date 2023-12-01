@@ -3,4 +3,7 @@ import { TransactionResponse } from "./interaction";
 
 export function getFlowBalance(address: Address): Promise<string>;
 
-export function mintFlow(recipient: Address, amount: string): Promise<TransactionResponse>;
+export function mintFlow(
+    recipient: Address,
+    amount: string,
+): Promise<TransactionResponse>;

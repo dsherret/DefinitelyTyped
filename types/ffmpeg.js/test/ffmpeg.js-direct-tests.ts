@@ -25,7 +25,14 @@ ffmpeg({
 
 ffmpeg({
     mounts: [{ type: "NODEFS", opts: { root: "." }, mountpoint: "/data" }],
-    arguments: ["-i", "/data/test.webm", "-c:v", "libvpx", "-an", "/data/out.webm"],
+    arguments: [
+        "-i",
+        "/data/test.webm",
+        "-c:v",
+        "libvpx",
+        "-an",
+        "/data/out.webm",
+    ],
     stdin: () => {},
 });
 

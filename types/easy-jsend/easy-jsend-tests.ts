@@ -13,19 +13,19 @@ jSend.init({ partial: true });
 
 var app = express();
 
-app.get("/success", function(req, res, next) {
+app.get("/success", function (req, res, next) {
     res.success("Success");
 });
 
-app.get("/fail", function(req, res, next) {
+app.get("/fail", function (req, res, next) {
     res.fail("fail");
 });
 
-app.get("/error", function(req, res, next) {
+app.get("/error", function (req, res, next) {
     res.error("error");
 });
 
-app.get("/partial", function(req, res, next) {
+app.get("/partial", function (req, res, next) {
     res.partial({
         offset: 10,
         limit: 50,
@@ -34,7 +34,7 @@ app.get("/partial", function(req, res, next) {
     });
 });
 
-app.get("/partial", function(req, res, next) {
+app.get("/partial", function (req, res, next) {
     res.makePartial({
         model: Model,
         search: {},

@@ -6,6 +6,9 @@ declare namespace emailCheck {
     }
 }
 
-declare function emailCheck(email: string, options?: emailCheck.EmailCheckOptions): Promise<boolean>;
+declare function emailCheck(
+    email: string,
+    options?: emailCheck.EmailCheckOptions,
+): Promise<boolean>;
 
 export = emailCheck;

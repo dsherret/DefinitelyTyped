@@ -39,7 +39,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** Builder for ProductCustomLabel objects. */
-        interface ProductCustomLabelBuilder extends Base.Builder<ProductCustomLabelOperation> {
+        interface ProductCustomLabelBuilder
+            extends Base.Builder<ProductCustomLabelOperation> {
             /** Specifies the bid of the product custom label. */
             withBid(bid: number): this;
             /** Specifies the type of custom label and return the product custom label builder. */
@@ -49,6 +50,7 @@ declare namespace GoogleAdsScripts {
         }
 
         /** An operation representing creation of a new product custom label. */
-        interface ProductCustomLabelOperation extends Base.Operation<ProductCustomLabel> {}
+        interface ProductCustomLabelOperation
+            extends Base.Operation<ProductCustomLabel> {}
     }
 }

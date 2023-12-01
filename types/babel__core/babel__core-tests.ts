@@ -57,14 +57,20 @@ babel.transformFromAst(parsedAst!, sourceCode, options, (err, result) => {
     const { body } = ast!.program;
 });
 
-const transformFromAstSyncResult = babel.transformFromAstSync(parsedAst!, sourceCode, options);
+const transformFromAstSyncResult = babel.transformFromAstSync(
+    parsedAst!,
+    sourceCode,
+    options,
+);
 const { code, map, ast } = transformFromAstSyncResult!;
 const { body } = ast!.program;
 
-babel.transformFromAstAsync(parsedAst!, sourceCode, options).then(transformFromAstAsyncResult => {
-    const { code, map, ast } = transformFromAstAsyncResult!;
-    const { body } = ast!.program;
-});
+babel
+    .transformFromAstAsync(parsedAst!, sourceCode, options)
+    .then((transformFromAstAsyncResult) => {
+        const { code, map, ast } = transformFromAstAsyncResult!;
+        const { body } = ast!.program;
+    });
 
 const pluginPath = babel.resolvePlugin("plugin-name", "babelrcPath");
 const presetPath = babel.resolvePreset("preset-name", "babelrcPath");
@@ -77,7 +83,13 @@ checkOptions({ envName: "banana" });
 // @ts-expect-error
 checkOptions({ envName: null });
 checkOptions({ caller: { name: "@babel/register" } });
-checkOptions({ caller: { name: "babel-jest", supportsStaticESM: false, supportsTopLevelAwait: true } });
+checkOptions({
+    caller: {
+        name: "babel-jest",
+        supportsStaticESM: false,
+        supportsTopLevelAwait: true,
+    },
+});
 // don't add an index signature; users should augment the interface instead if they need to
 // @ts-expect-error
 checkOptions({ caller: { name: "", tomato: true } });
@@ -90,9 +102,11 @@ checkOptions({ exclude: 256 });
 checkOptions({ include: [/node_modules/, new RegExp("bower_components")] });
 // @ts-expect-error
 checkOptions({ include: [null] });
-checkOptions({ test: fileName => (fileName ? fileName.endsWith("mjs") : false) });
+checkOptions({
+    test: (fileName) => (fileName ? fileName.endsWith("mjs") : false),
+});
 // @ts-expect-error
-checkOptions({ test: fileName => fileName && fileName.endsWith("mjs") });
+checkOptions({ test: (fileName) => fileName && fileName.endsWith("mjs") });
 checkOptions({
     overrides: [
         {
@@ -113,7 +127,7 @@ checkOptions({
 checkConfigFunction(() => {});
 // you technically can do that though you probably shouldn't
 checkConfigFunction(() => ({}));
-checkConfigFunction(api => {
+checkConfigFunction((api) => {
     api.assertVersion(7);
     api.assertVersion("^7.2");
 
@@ -134,7 +148,7 @@ checkConfigFunction(api => {
     api.env("development");
     api.env(["production", "test"]);
     // $ExpectType 42
-    api.env(name => 42);
+    api.env((name) => 42);
 
     // $ExpectType string
     api.version;

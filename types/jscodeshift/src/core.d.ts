@@ -45,7 +45,9 @@ declare namespace core {
 
     interface Core {
         (source: string, options?: Options): Collection.Collection<any>;
-        (source: ASTNode | ASTNode[] | ASTPath | ASTPath[]): Collection.Collection<any>;
+        (
+            source: ASTNode | ASTNode[] | ASTPath | ASTPath[],
+        ): Collection.Collection<any>;
 
         registerMethods: typeof Collection.registerMethods;
 
@@ -79,7 +81,9 @@ declare namespace core {
         withParser(parser: string | Parser): JSCodeshift;
     }
 
-    type JSCodeshift = Core & typeof recast.types.namedTypes & typeof recast.types.builders;
+    type JSCodeshift = Core &
+        typeof recast.types.namedTypes &
+        typeof recast.types.builders;
     type Collection<T = any> = Collection.Collection<T>;
 
     interface API {
@@ -100,7 +104,11 @@ declare namespace core {
          * If nothing is returned, the file is not supposed to be transformed (which is ok).
          */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        (file: FileInfo, api: API, options: Options): string | null | undefined | void;
+        (
+            file: FileInfo,
+            api: API,
+            options: Options,
+        ): string | null | undefined | void;
     }
 
     type ASTNode = astTypes.namedTypes.ASTNode;
@@ -114,14 +122,16 @@ declare namespace core {
     type AssignmentPattern = astTypes.namedTypes.AssignmentPattern;
     type AwaitExpression = astTypes.namedTypes.AwaitExpression;
     type BigIntLiteral = astTypes.namedTypes.BigIntLiteral;
-    type BigIntLiteralTypeAnnotation = astTypes.namedTypes.BigIntLiteralTypeAnnotation;
+    type BigIntLiteralTypeAnnotation =
+        astTypes.namedTypes.BigIntLiteralTypeAnnotation;
     type BigIntTypeAnnotation = astTypes.namedTypes.BigIntTypeAnnotation;
     type BinaryExpression = astTypes.namedTypes.BinaryExpression;
     type BindExpression = astTypes.namedTypes.BindExpression;
     type Block = astTypes.namedTypes.Block;
     type BlockStatement = astTypes.namedTypes.BlockStatement;
     type BooleanLiteral = astTypes.namedTypes.BooleanLiteral;
-    type BooleanLiteralTypeAnnotation = astTypes.namedTypes.BooleanLiteralTypeAnnotation;
+    type BooleanLiteralTypeAnnotation =
+        astTypes.namedTypes.BooleanLiteralTypeAnnotation;
     type BooleanTypeAnnotation = astTypes.namedTypes.BooleanTypeAnnotation;
     type BreakStatement = astTypes.namedTypes.BreakStatement;
     type CallExpression = astTypes.namedTypes.CallExpression;
@@ -148,8 +158,10 @@ declare namespace core {
     type Declaration = astTypes.namedTypes.Declaration;
     type DeclareClass = astTypes.namedTypes.DeclareClass;
     type DeclaredPredicate = astTypes.namedTypes.DeclaredPredicate;
-    type DeclareExportAllDeclaration = astTypes.namedTypes.DeclareExportAllDeclaration;
-    type DeclareExportDeclaration = astTypes.namedTypes.DeclareExportDeclaration;
+    type DeclareExportAllDeclaration =
+        astTypes.namedTypes.DeclareExportAllDeclaration;
+    type DeclareExportDeclaration =
+        astTypes.namedTypes.DeclareExportDeclaration;
     type DeclareFunction = astTypes.namedTypes.DeclareFunction;
     type DeclareInterface = astTypes.namedTypes.DeclareInterface;
     type DeclareModule = astTypes.namedTypes.DeclareModule;
@@ -178,10 +190,12 @@ declare namespace core {
     type ExportAllDeclaration = astTypes.namedTypes.ExportAllDeclaration;
     type ExportBatchSpecifier = astTypes.namedTypes.ExportBatchSpecifier;
     type ExportDeclaration = astTypes.namedTypes.ExportDeclaration;
-    type ExportDefaultDeclaration = astTypes.namedTypes.ExportDefaultDeclaration;
+    type ExportDefaultDeclaration =
+        astTypes.namedTypes.ExportDefaultDeclaration;
     type ExportDefaultSpecifier = astTypes.namedTypes.ExportDefaultSpecifier;
     type ExportNamedDeclaration = astTypes.namedTypes.ExportNamedDeclaration;
-    type ExportNamespaceSpecifier = astTypes.namedTypes.ExportNamespaceSpecifier;
+    type ExportNamespaceSpecifier =
+        astTypes.namedTypes.ExportNamespaceSpecifier;
     type ExportSpecifier = astTypes.namedTypes.ExportSpecifier;
     type Expression = astTypes.namedTypes.Expression;
     type ExpressionStatement = astTypes.namedTypes.ExpressionStatement;
@@ -206,14 +220,16 @@ declare namespace core {
     type ImportDeclaration = astTypes.namedTypes.ImportDeclaration;
     type ImportDefaultSpecifier = astTypes.namedTypes.ImportDefaultSpecifier;
     type ImportExpression = astTypes.namedTypes.ImportExpression;
-    type ImportNamespaceSpecifier = astTypes.namedTypes.ImportNamespaceSpecifier;
+    type ImportNamespaceSpecifier =
+        astTypes.namedTypes.ImportNamespaceSpecifier;
     type ImportSpecifier = astTypes.namedTypes.ImportSpecifier;
     type InferredPredicate = astTypes.namedTypes.InferredPredicate;
     type InterfaceDeclaration = astTypes.namedTypes.InterfaceDeclaration;
     type InterfaceExtends = astTypes.namedTypes.InterfaceExtends;
     type InterfaceTypeAnnotation = astTypes.namedTypes.InterfaceTypeAnnotation;
     type InterpreterDirective = astTypes.namedTypes.InterpreterDirective;
-    type IntersectionTypeAnnotation = astTypes.namedTypes.IntersectionTypeAnnotation;
+    type IntersectionTypeAnnotation =
+        astTypes.namedTypes.IntersectionTypeAnnotation;
     type JSXAttribute = astTypes.namedTypes.JSXAttribute;
     type JSXClosingElement = astTypes.namedTypes.JSXClosingElement;
     type JSXClosingFragment = astTypes.namedTypes.JSXClosingFragment;
@@ -244,12 +260,15 @@ declare namespace core {
     type Noop = astTypes.namedTypes.Noop;
     type NullableTypeAnnotation = astTypes.namedTypes.NullableTypeAnnotation;
     type NullLiteral = astTypes.namedTypes.NullLiteral;
-    type NullLiteralTypeAnnotation = astTypes.namedTypes.NullLiteralTypeAnnotation;
+    type NullLiteralTypeAnnotation =
+        astTypes.namedTypes.NullLiteralTypeAnnotation;
     type NullTypeAnnotation = astTypes.namedTypes.NullTypeAnnotation;
-    type NumberLiteralTypeAnnotation = astTypes.namedTypes.NumberLiteralTypeAnnotation;
+    type NumberLiteralTypeAnnotation =
+        astTypes.namedTypes.NumberLiteralTypeAnnotation;
     type NumberTypeAnnotation = astTypes.namedTypes.NumberTypeAnnotation;
     type NumericLiteral = astTypes.namedTypes.NumericLiteral;
-    type NumericLiteralTypeAnnotation = astTypes.namedTypes.NumericLiteralTypeAnnotation;
+    type NumericLiteralTypeAnnotation =
+        astTypes.namedTypes.NumericLiteralTypeAnnotation;
     type ObjectExpression = astTypes.namedTypes.ObjectExpression;
     type ObjectMethod = astTypes.namedTypes.ObjectMethod;
     type ObjectPattern = astTypes.namedTypes.ObjectPattern;
@@ -259,10 +278,12 @@ declare namespace core {
     type ObjectTypeIndexer = astTypes.namedTypes.ObjectTypeIndexer;
     type ObjectTypeInternalSlot = astTypes.namedTypes.ObjectTypeInternalSlot;
     type ObjectTypeProperty = astTypes.namedTypes.ObjectTypeProperty;
-    type ObjectTypeSpreadProperty = astTypes.namedTypes.ObjectTypeSpreadProperty;
+    type ObjectTypeSpreadProperty =
+        astTypes.namedTypes.ObjectTypeSpreadProperty;
     type OpaqueType = astTypes.namedTypes.OpaqueType;
     type OptionalCallExpression = astTypes.namedTypes.OptionalCallExpression;
-    type OptionalMemberExpression = astTypes.namedTypes.OptionalMemberExpression;
+    type OptionalMemberExpression =
+        astTypes.namedTypes.OptionalMemberExpression;
     type ParenthesizedExpression = astTypes.namedTypes.ParenthesizedExpression;
     type Pattern = astTypes.namedTypes.Pattern;
     type Position = astTypes.namedTypes.Position;
@@ -285,13 +306,15 @@ declare namespace core {
     type SpreadPropertyPattern = astTypes.namedTypes.SpreadPropertyPattern;
     type Statement = astTypes.namedTypes.Statement;
     type StringLiteral = astTypes.namedTypes.StringLiteral;
-    type StringLiteralTypeAnnotation = astTypes.namedTypes.StringLiteralTypeAnnotation;
+    type StringLiteralTypeAnnotation =
+        astTypes.namedTypes.StringLiteralTypeAnnotation;
     type StringTypeAnnotation = astTypes.namedTypes.StringTypeAnnotation;
     type Super = astTypes.namedTypes.Super;
     type SwitchCase = astTypes.namedTypes.SwitchCase;
     type SwitchStatement = astTypes.namedTypes.SwitchStatement;
     type SymbolTypeAnnotation = astTypes.namedTypes.SymbolTypeAnnotation;
-    type TaggedTemplateExpression = astTypes.namedTypes.TaggedTemplateExpression;
+    type TaggedTemplateExpression =
+        astTypes.namedTypes.TaggedTemplateExpression;
     type TemplateElement = astTypes.namedTypes.TemplateElement;
     type TemplateLiteral = astTypes.namedTypes.TemplateLiteral;
     type ThisExpression = astTypes.namedTypes.ThisExpression;
@@ -303,22 +326,30 @@ declare namespace core {
     type TSAsExpression = astTypes.namedTypes.TSAsExpression;
     type TSBigIntKeyword = astTypes.namedTypes.TSBigIntKeyword;
     type TSBooleanKeyword = astTypes.namedTypes.TSBooleanKeyword;
-    type TSCallSignatureDeclaration = astTypes.namedTypes.TSCallSignatureDeclaration;
+    type TSCallSignatureDeclaration =
+        astTypes.namedTypes.TSCallSignatureDeclaration;
     type TSConditionalType = astTypes.namedTypes.TSConditionalType;
     type TSConstructorType = astTypes.namedTypes.TSConstructorType;
-    type TSConstructSignatureDeclaration = astTypes.namedTypes.TSConstructSignatureDeclaration;
+    type TSConstructSignatureDeclaration =
+        astTypes.namedTypes.TSConstructSignatureDeclaration;
     type TSDeclareFunction = astTypes.namedTypes.TSDeclareFunction;
     type TSDeclareMethod = astTypes.namedTypes.TSDeclareMethod;
     type TSEnumDeclaration = astTypes.namedTypes.TSEnumDeclaration;
     type TSEnumMember = astTypes.namedTypes.TSEnumMember;
     type TSExportAssignment = astTypes.namedTypes.TSExportAssignment;
-    type TSExpressionWithTypeArguments = astTypes.namedTypes.TSExpressionWithTypeArguments;
-    type TSExternalModuleReference = astTypes.namedTypes.TSExternalModuleReference;
+    type TSExpressionWithTypeArguments =
+        astTypes.namedTypes.TSExpressionWithTypeArguments;
+    type TSExternalModuleReference =
+        astTypes.namedTypes.TSExternalModuleReference;
     type TSFunctionType = astTypes.namedTypes.TSFunctionType;
-    type TSHasOptionalTypeAnnotation = astTypes.namedTypes.TSHasOptionalTypeAnnotation;
-    type TSHasOptionalTypeParameterInstantiation = astTypes.namedTypes.TSHasOptionalTypeParameterInstantiation;
-    type TSHasOptionalTypeParameters = astTypes.namedTypes.TSHasOptionalTypeParameters;
-    type TSImportEqualsDeclaration = astTypes.namedTypes.TSImportEqualsDeclaration;
+    type TSHasOptionalTypeAnnotation =
+        astTypes.namedTypes.TSHasOptionalTypeAnnotation;
+    type TSHasOptionalTypeParameterInstantiation =
+        astTypes.namedTypes.TSHasOptionalTypeParameterInstantiation;
+    type TSHasOptionalTypeParameters =
+        astTypes.namedTypes.TSHasOptionalTypeParameters;
+    type TSImportEqualsDeclaration =
+        astTypes.namedTypes.TSImportEqualsDeclaration;
     type TSImportType = astTypes.namedTypes.TSImportType;
     type TSIndexedAccessType = astTypes.namedTypes.TSIndexedAccessType;
     type TSIndexSignature = astTypes.namedTypes.TSIndexSignature;
@@ -332,7 +363,8 @@ declare namespace core {
     type TSModuleBlock = astTypes.namedTypes.TSModuleBlock;
     type TSModuleDeclaration = astTypes.namedTypes.TSModuleDeclaration;
     type TSNamedTupleMember = astTypes.namedTypes.TSNamedTupleMember;
-    type TSNamespaceExportDeclaration = astTypes.namedTypes.TSNamespaceExportDeclaration;
+    type TSNamespaceExportDeclaration =
+        astTypes.namedTypes.TSNamespaceExportDeclaration;
     type TSNeverKeyword = astTypes.namedTypes.TSNeverKeyword;
     type TSNonNullExpression = astTypes.namedTypes.TSNonNullExpression;
     type TSNullKeyword = astTypes.namedTypes.TSNullKeyword;
@@ -355,8 +387,10 @@ declare namespace core {
     type TSTypeLiteral = astTypes.namedTypes.TSTypeLiteral;
     type TSTypeOperator = astTypes.namedTypes.TSTypeOperator;
     type TSTypeParameter = astTypes.namedTypes.TSTypeParameter;
-    type TSTypeParameterDeclaration = astTypes.namedTypes.TSTypeParameterDeclaration;
-    type TSTypeParameterInstantiation = astTypes.namedTypes.TSTypeParameterInstantiation;
+    type TSTypeParameterDeclaration =
+        astTypes.namedTypes.TSTypeParameterDeclaration;
+    type TSTypeParameterInstantiation =
+        astTypes.namedTypes.TSTypeParameterInstantiation;
     type TSTypePredicate = astTypes.namedTypes.TSTypePredicate;
     type TSTypeQuery = astTypes.namedTypes.TSTypeQuery;
     type TSTypeReference = astTypes.namedTypes.TSTypeReference;
@@ -370,8 +404,10 @@ declare namespace core {
     type TypeCastExpression = astTypes.namedTypes.TypeCastExpression;
     type TypeofTypeAnnotation = astTypes.namedTypes.TypeofTypeAnnotation;
     type TypeParameter = astTypes.namedTypes.TypeParameter;
-    type TypeParameterDeclaration = astTypes.namedTypes.TypeParameterDeclaration;
-    type TypeParameterInstantiation = astTypes.namedTypes.TypeParameterInstantiation;
+    type TypeParameterDeclaration =
+        astTypes.namedTypes.TypeParameterDeclaration;
+    type TypeParameterInstantiation =
+        astTypes.namedTypes.TypeParameterInstantiation;
     type UnaryExpression = astTypes.namedTypes.UnaryExpression;
     type UnionTypeAnnotation = astTypes.namedTypes.UnionTypeAnnotation;
     type UpdateExpression = astTypes.namedTypes.UpdateExpression;

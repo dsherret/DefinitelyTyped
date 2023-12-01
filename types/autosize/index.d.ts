@@ -16,7 +16,9 @@ export as namespace autosize;
  * // from a jQuery collection
  * autosize($('textarea'));
  */
-declare function autosize<T extends ArrayLike<Element> | Element>(elements: T): T;
+declare function autosize<T extends ArrayLike<Element> | Element>(
+    elements: T,
+): T;
 
 declare namespace autosize {
     /**

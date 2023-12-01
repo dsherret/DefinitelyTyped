@@ -19,7 +19,10 @@ class UserModel implements IUser {
     public username: string;
     public password: string;
 
-    static findOne(user: IUser, callback: (err: Error, user: UserModel) => void): void {
+    static findOne(
+        user: IUser,
+        callback: (err: Error, user: UserModel) => void,
+    ): void {
         callback(null, new UserModel());
     }
 
@@ -39,7 +42,7 @@ declare global {
 // Sample from https://github.com/jaredhanson/passport-local#configure-strategy
 passport.use(
     new local.Strategy((username: any, password: any, done: any) => {
-        UserModel.findOne({ username: username }, function(err, user) {
+        UserModel.findOne({ username: username }, function (err, user) {
             if (err) {
                 return done(err);
             }
@@ -62,8 +65,8 @@ passport.use(
         {
             passReqToCallback: true,
         },
-        function(req, username, password, done) {
-            UserModel.findOne({ username: username }, function(err, user) {
+        function (req, username, password, done) {
+            UserModel.findOne({ username: username }, function (err, user) {
                 if (err) {
                     return done(err);
                 }
@@ -84,6 +87,10 @@ passport.use(
 
 // Sample from https://github.com/jaredhanson/passport-local#authenticate-requests
 var app = express();
-app.post("/login", passport.authenticate("local", { failureRedirect: "/login" }), function(req, res) {
-    res.redirect("/");
-});
+app.post(
+    "/login",
+    passport.authenticate("local", { failureRedirect: "/login" }),
+    function (req, res) {
+        res.redirect("/");
+    },
+);

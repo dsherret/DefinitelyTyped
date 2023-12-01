@@ -1,10 +1,10 @@
 import gitBranchIs = require("git-branch-is");
 
 gitBranchIs("master").then(
-    result => {
+    (result) => {
         result; // $ExpectType string
     },
-    err => {
+    (err) => {
         err; // $ExpectType any
     },
 );
@@ -16,11 +16,11 @@ gitBranchIs("master", (err, result) => {
     }
 });
 
-gitBranchIs(branchName => /^master$/.test(branchName)).then(
-    result => {
+gitBranchIs((branchName) => /^master$/.test(branchName)).then(
+    (result) => {
         result; // $ExpectType string
     },
-    err => {
+    (err) => {
         err; // $ExpectType any
     },
 );
@@ -42,10 +42,10 @@ gitBranchIs.getBranch(
 );
 
 gitBranchIs.getBranch({}).then(
-    result => {
+    (result) => {
         result; // $ExpectType string
     },
-    err => {
+    (err) => {
         err; // $ExpectType any
     },
 );

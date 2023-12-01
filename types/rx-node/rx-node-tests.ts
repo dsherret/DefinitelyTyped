@@ -2,11 +2,11 @@
     var source = Rx.Observable.return(42);
     var emitter = RxNode.toEventEmitter(source, "data");
 
-    emitter.on("data", function(data: number) {
+    emitter.on("data", function (data: number) {
         console.log("Data: " + data);
     });
 
-    emitter.on("end", function() {
+    emitter.on("end", function () {
         console.log("End");
     });
 
@@ -14,16 +14,19 @@
     emitter.publish();
 }
 {
-    var subscription = RxNode.fromStream<string>(process.stdin, "end")
-        .subscribe(function(x) {
-            console.log(x);
-        });
+    var subscription = RxNode.fromStream<string>(
+        process.stdin,
+        "end",
+    ).subscribe(function (x) {
+        console.log(x);
+    });
 }
 {
-    var subscription = RxNode.fromReadableStream(process.stdin)
-        .subscribe(function(x) {
+    var subscription = RxNode.fromReadableStream(process.stdin).subscribe(
+        function (x) {
             console.log(x);
-        });
+        },
+    );
 }
 {
     var readline = require("readline");
@@ -33,16 +36,16 @@
         input: fs.createReadStream("sample.txt"),
     });
 
-    var subscription = RxNode.fromReadLineStream(rl)
-        .subscribe(function(x) {
-            console.log(x);
-        });
+    var subscription = RxNode.fromReadLineStream(rl).subscribe(function (x) {
+        console.log(x);
+    });
 }
 {
-    var subscription = RxNode.fromWritableStream(process.stdout)
-        .subscribe(function(x) {
+    var subscription = RxNode.fromWritableStream(process.stdout).subscribe(
+        function (x) {
             console.log(x);
-        });
+        },
+    );
 }
 {
     var source = Rx.Observable.range(0, 5);

@@ -1,22 +1,19 @@
 import page, { Callback, Context } from "page";
 
 const index: Callback = () => {
-    document.querySelector("p")!
-        .textContent = "viewing index";
+    document.querySelector("p")!.textContent = "viewing index";
 };
 const about: Callback = () => {
-    document.querySelector("p")!
-        .textContent = "viewing about";
+    document.querySelector("p")!.textContent = "viewing about";
 };
 
-function callback(ctx: Context, next: () => void) {
-}
+function callback(ctx: Context, next: () => void) {}
 
 const customCallback: Callback = callback;
 
 const contact: Callback = (ctx) => {
-    document.querySelector("p")!
-        .textContent = "viewing contact " + (ctx.params.contactName || "");
+    document.querySelector("p")!.textContent =
+        "viewing contact " + (ctx.params.contactName || "");
 };
 const load: Callback = (ctx, next) => {
     // check if we have .state.avatar already available
@@ -50,13 +47,11 @@ function text(str: string) {
 
 function index2() {
     text("Click a user below to load their avatar");
-    (<HTMLElement> document.querySelector("img"))
-        .style.display = "none";
+    (<HTMLElement>document.querySelector("img")).style.display = "none";
 }
 
 function notfound() {
-    document.querySelector("p")!
-        .textContent = "not found";
+    document.querySelector("p")!.textContent = "not found";
 }
 
 // ***********************************************************************
@@ -68,7 +63,7 @@ page("/", index);
 page("/about", about);
 page("/contact", contact);
 page("/contact/:contactName", contact);
-page("/contact/inline/:contactName", ctx => {});
+page("/contact/inline/:contactName", (ctx) => {});
 page();
 page({
     click: false,

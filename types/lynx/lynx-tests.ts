@@ -23,8 +23,6 @@ metrics.send({
 const r = new Stream.Readable();
 const w = new Stream.Writable();
 
-r
-    .pipe(metrics)
-    .pipe(w);
+r.pipe(metrics).pipe(w);
 
 metrics.close();

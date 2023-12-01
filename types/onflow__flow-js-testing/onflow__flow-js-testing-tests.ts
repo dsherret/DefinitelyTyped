@@ -40,10 +40,13 @@ createAccount({ name: "Will" });
 // $ExpectType Promise<string>
 createAccount({ name: "Will", keys: [{ privateKey: "...private key..." }] });
 
-(async () => {
+async () => {
     // $ExpectType Promise<string>
-    createAccount({ name: "Will", keys: [await pubFlowKey({ privateKey: "...private key..." })] });
-});
+    createAccount({
+        name: "Will",
+        keys: [await pubFlowKey({ privateKey: "...private key..." })],
+    });
+};
 
 // @ts-expect-error
 createAccount(1);
@@ -200,7 +203,11 @@ shallResolve(1);
 /** Scripts */
 
 // $ExpectType Promise<ScriptResponse>
-executeScript({ name: "get_greeting", args: ["0x02fadds834n31g8e"], transformers: [(code: string): string => code] });
+executeScript({
+    name: "get_greeting",
+    args: ["0x02fadds834n31g8e"],
+    transformers: [(code: string): string => code],
+});
 
 // $ExpectType Promise<ScriptResponse>
 executeScript({ code: "...script code...", args: ["0x02fadds834n31g8e"] });
@@ -233,7 +240,11 @@ sendTransaction({
 });
 
 // $ExpectType Promise<TransactionResponse>
-sendTransaction({ code: "...transaction code...", args: ["Hello World"], signers: ["0x02fadds834n31g8e"] });
+sendTransaction({
+    code: "...transaction code...",
+    args: ["Hello World"],
+    signers: ["0x02fadds834n31g8e"],
+});
 
 // $ExpectType Promise<TransactionResponse>
 sendTransaction("set_greeting", [], ["Hello World"]);
@@ -250,7 +261,9 @@ sendTransaction("set_greeting", 1);
 getTemplate("../cadence/contracts.HelloWorld.cdc");
 
 // $ExpectType Promise<string>
-getTemplate("../cadence/contracts.HelloWorld.cdc", { "0xHelloWorld": "0x02fadds834n31g8e" });
+getTemplate("../cadence/contracts.HelloWorld.cdc", {
+    "0xHelloWorld": "0x02fadds834n31g8e",
+});
 
 // @ts-expect-error
 getTemplate("../cadence/contracts.HelloWorld.cdc", 1);
@@ -259,7 +272,10 @@ getTemplate("../cadence/contracts.HelloWorld.cdc", 1);
 getContractCode({ name: "HelloWorld" });
 
 // $ExpectType Promise<string>
-getContractCode({ name: "HelloWorld", addressMap: { "0xHelloMars": "0x02fadds834n31g8e" } });
+getContractCode({
+    name: "HelloWorld",
+    addressMap: { "0xHelloMars": "0x02fadds834n31g8e" },
+});
 
 // @ts-expect-error
 getContractCode({});
@@ -268,7 +284,10 @@ getContractCode({});
 getTransactionCode({ name: "set_greeting" });
 
 // $ExpectType Promise<string>
-getTransactionCode({ name: "set_greeting", addressMap: { "0xHelloWorld": "0x02fadds834n31g8e" } });
+getTransactionCode({
+    name: "set_greeting",
+    addressMap: { "0xHelloWorld": "0x02fadds834n31g8e" },
+});
 
 // @ts-expect-error
 getTransactionCode({});
@@ -277,7 +296,10 @@ getTransactionCode({});
 getScriptCode({ name: "get_greeting" });
 
 // $ExpectType Promise<string>
-getScriptCode({ name: "get_greeting", addressMap: { "0xHelloWorld": "0x02fadds834n31g8e" } });
+getScriptCode({
+    name: "get_greeting",
+    addressMap: { "0xHelloWorld": "0x02fadds834n31g8e" },
+});
 
 // @ts-expect-error
 getScriptCode({});

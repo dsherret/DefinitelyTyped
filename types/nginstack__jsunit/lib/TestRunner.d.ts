@@ -4,7 +4,10 @@ declare function TestRunner(
     opt_products?: number | string,
 ): void;
 declare class TestRunner {
-    constructor(opt_rootClasses?: number | string, opt_products?: number | string);
+    constructor(
+        opt_rootClasses?: number | string,
+        opt_products?: number | string,
+    );
     rootClasses: string;
     vfs: DataSet;
     suitesCache: {};
@@ -33,7 +36,11 @@ declare class TestRunner {
     tree: DataSet;
     private testIdsToSuites_;
     runTests(testIds: any[]): void;
-    runTestsOnCluster(testIds: string[], cluster: any[], opt_options?: any): any;
+    runTestsOnCluster(
+        testIds: string[],
+        cluster: any[],
+        opt_options?: any,
+    ): any;
     updateClusterStatus(mapReduceJobId: number, total: number): void;
     syncTreeClusterOutput(result: any): void;
     clearLastResults(): void;
@@ -41,7 +48,15 @@ declare class TestRunner {
     getTestIdsByClass(classKey: number): any[];
 }
 declare namespace TestRunner {
-    export { Event, run, RunModes, runOnCluster, RunResult, TestResult, TestSuiteInfo };
+    export {
+        Event,
+        run,
+        RunModes,
+        runOnCluster,
+        RunResult,
+        TestResult,
+        TestSuiteInfo,
+    };
 }
 import DataSet = require("@nginstack/engine/lib/dataset/DataSet.js");
 type Event = import("@nginstack/engine/lib/event/LegacyEvent");
@@ -56,7 +71,11 @@ declare function run(opt_options?: {
     onAfterTestCase?: () => any;
     cluster?: any[];
 }): RunResult;
-declare function runOnCluster(tests: any[], cluster: any[], opt_async?: boolean): any;
+declare function runOnCluster(
+    tests: any[],
+    cluster: any[],
+    opt_async?: boolean,
+): any;
 interface TestSuiteInfo {
     name: string;
     key?: number;

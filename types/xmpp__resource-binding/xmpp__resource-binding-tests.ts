@@ -30,7 +30,7 @@ const caller = iqCaller({ middleware: mw, entity: ent }); // $ExpectType IQCalle
 resourceBinding({ streamFeatures: sf, iqCaller: caller }); // $ExpectType void
 resourceBinding({ streamFeatures: sf, iqCaller: caller }, new Element("foo")); // $ExpectType void
 // $ExpectType void
-resourceBinding({ streamFeatures: sf, iqCaller: caller }, async bind => {
+resourceBinding({ streamFeatures: sf, iqCaller: caller }, async (bind) => {
     bind; // $ExpectType (resource: Node) => Promise<string>
     const jid = await bind(new Element("foo")); // $ExpectType string
 });

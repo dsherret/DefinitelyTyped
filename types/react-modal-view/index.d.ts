@@ -23,7 +23,10 @@ export default class Modal extends Component<ModalProps> {
 
     handleBeforeComponentUpdate(props: ModalProps): void;
 
-    handleComponentUpdate(prevProps: ModalProps, prevState: { visible: boolean }): void;
+    handleComponentUpdate(
+        prevProps: ModalProps,
+        prevState: { visible: boolean },
+    ): void;
 
     handleCloseBtnClick(e: MouseEvent): void;
 

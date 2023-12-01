@@ -108,15 +108,31 @@ export namespace DaDataApi {
         divisions?: unknown;
     }
 
-    type AddressBounds = "country" | "region" | "area" | "city" | "settlement" | "street" | "houses";
+    type AddressBounds =
+        | "country"
+        | "region"
+        | "area"
+        | "city"
+        | "settlement"
+        | "street"
+        | "houses";
 
     type PartyType = "LEGAL" | "INDIVIDUAL";
 
     type PartyBranchType = "MAIN" | "BRANCH";
 
-    type PartyStatus = "ACTIVE" | "LIQUIDATING" | "LIQUIDATED" | "REORGANIZING" | "BANKRUPT";
+    type PartyStatus =
+        | "ACTIVE"
+        | "LIQUIDATING"
+        | "LIQUIDATED"
+        | "REORGANIZING"
+        | "BANKRUPT";
 
-    interface PartyAddress extends Omit<Address, "qc" | "house_cadnum" | "stead_kladr_id" | "floor" | "flat_price"> {
+    interface PartyAddress
+        extends Omit<
+            Address,
+            "qc" | "house_cadnum" | "stead_kladr_id" | "floor" | "flat_price"
+        > {
         qc: "0" | "1" | "3";
         house_cadnum: Nullable<string>;
         floor: Nullable<string>;
@@ -189,7 +205,13 @@ export namespace DaDataApi {
         qc: null;
     }
 
-    type BankType = "BANK" | "BANK_BRANCH" | "NKO" | "NKO_BRANCH" | "RKC" | "OTHER";
+    type BankType =
+        | "BANK"
+        | "BANK_BRANCH"
+        | "NKO"
+        | "NKO_BRANCH"
+        | "RKC"
+        | "OTHER";
 
     type BankStatus = "ACTIVE" | "LIQUIDATING" | "LIQUIDATED";
 

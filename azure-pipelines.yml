@@ -17,13 +17,13 @@ jobs:
       - script: |
           npm install -g $(jq -r '.packageManager' < package.json)
           pnpm --version
-        displayName: 'Setup pnpm'
+        displayName: "Setup pnpm"
 
       - script: ./scripts/pnpm-install.sh
-        displayName: 'pnpm install'
+        displayName: "pnpm install"
 
       - script: pnpm ls
-        displayName: 'pnpm ls'
+        displayName: "pnpm ls"
 
       - script: |
           if [[ $BUILD_REASON == "Schedule" ]]; then git config --global user.email "types@microsoft.com" && git config --global user.name "TypeScript Bot" && pnpm run update-codeowners; fi
@@ -31,13 +31,13 @@ jobs:
 
           pnpm run test-all
 
-        displayName: 'pnpm run test-all'
+        displayName: "pnpm run test-all"
 
       - task: PublishPipelineArtifact@1
         condition: eq(variables['System.debug'], 'true')
         inputs:
-          targetPath: '$(Pipeline.Workspace)'
-          publishLocation: 'pipeline'
+          targetPath: "$(Pipeline.Workspace)"
+          publishLocation: "pipeline"
 
 trigger:
   - master

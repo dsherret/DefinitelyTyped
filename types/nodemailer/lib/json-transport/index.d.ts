@@ -32,7 +32,9 @@ declare namespace JSONTransport {
     }
 }
 
-declare class JSONTransport implements Transport<JSONTransport.SentMessageInfo> {
+declare class JSONTransport
+    implements Transport<JSONTransport.SentMessageInfo>
+{
     options: JSONTransport.Options;
 
     logger: shared.Logger;
@@ -46,7 +48,10 @@ declare class JSONTransport implements Transport<JSONTransport.SentMessageInfo> 
     /** Compiles a mailcomposer message and forwards it to handler that sends it */
     send(
         mail: MailMessage<JSONTransport.SentMessageInfo>,
-        callback: (err: Error | null, info: JSONTransport.SentMessageInfo) => void,
+        callback: (
+            err: Error | null,
+            info: JSONTransport.SentMessageInfo,
+        ) => void,
     ): void;
 }
 

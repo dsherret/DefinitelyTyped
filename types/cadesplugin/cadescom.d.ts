@@ -104,7 +104,9 @@ declare namespace CAdESCOM {
     }
 
     interface CPHashedData {
-        Algorithm: CADES_Common.ValuesOf<CADESCOM_HASH_ALGORITHM & CAPICOM.CAPICOM_HASH_ALGORITHM>;
+        Algorithm: CADES_Common.ValuesOf<
+            CADESCOM_HASH_ALGORITHM & CAPICOM.CAPICOM_HASH_ALGORITHM
+        >;
         DataEncoding: CADES_Common.ValuesOf<CADESCOM_CONTENT_ENCODING_TYPE>;
         Value: string;
 
@@ -122,6 +124,10 @@ declare namespace CAdESCOM {
     interface RawSignature {
         SignHash(hash: CPHashedData, certificate?: string): string;
 
-        VerifyHash(hash: CPHashedData, certificate: CAPICOM.Certificate, signature: string): void;
+        VerifyHash(
+            hash: CPHashedData,
+            certificate: CAPICOM.Certificate,
+            signature: string,
+        ): void;
     }
 }

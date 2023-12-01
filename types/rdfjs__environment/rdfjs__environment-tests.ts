@@ -25,19 +25,10 @@ declare class BarFactory {
     static exports: ["bar"];
 }
 
-const dataEnv = new Environment([
-    DatasetFactory,
-    DataFactory,
-]);
+const dataEnv = new Environment([DatasetFactory, DataFactory]);
 
-let environment = new Environment([
-    FooFactory,
-    BarFactory,
-]);
-environment = new Environment([
-    FooFactory,
-    BarFactory,
-], { bind: true });
+let environment = new Environment([FooFactory, BarFactory]);
+environment = new Environment([FooFactory, BarFactory], { bind: true });
 
 // @ts-expect-error
 environment.init();
@@ -45,17 +36,15 @@ environment.init();
 const foo: string = environment.foo("10");
 const bar: number = environment.bar(10);
 
-const envWithDefaults = new Environment([
-    FormatsFactory,
-    NamespaceFactory,
-]);
+const envWithDefaults = new Environment([FormatsFactory, NamespaceFactory]);
 
 const { formats, namespace } = envWithDefaults;
 
 const env = new Environment([TermMapSetFactory]);
 
-const node: NamedNode = <any> {};
-const termMap = env.termMap([ // $ExpectType TermMap<NamedNode<string>, string>
+const node: NamedNode = <any>{};
+const termMap = env.termMap([
+    // $ExpectType TermMap<NamedNode<string>, string>
     [node, "foo"],
     [node, "bar"],
 ]);
@@ -66,10 +55,10 @@ function formatsImport() {
 
     env.formats.import({});
 
-    const parsers: SinkMap<EventEmitter, Stream> = <any> {};
+    const parsers: SinkMap<EventEmitter, Stream> = <any>{};
     env.formats.import({ parsers });
 
-    const serializers: SinkMap<Stream, EventEmitter> = <any> {};
+    const serializers: SinkMap<Stream, EventEmitter> = <any>{};
     env.formats.import({ serializers });
 
     env.formats.import({ parsers, serializers });
@@ -86,19 +75,15 @@ class InitOnly {
         return this;
     }
 }
-const envOneFactoryInitOnly = new Environment([
-    FormatsFactory,
-    InitOnly,
-]);
+const envOneFactoryInitOnly = new Environment([FormatsFactory, InitOnly]);
 
 envOneFactoryInitOnly.formats.import(envOneFactoryInitOnly.formats);
 
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-function customFactory<F extends FactoryConstructor>(...additionalFactories: F[]) {
-    return new Environment([
-        DataFactory,
-        ...additionalFactories,
-    ]);
+function customFactory<F extends FactoryConstructor>(
+    ...additionalFactories: F[]
+) {
+    return new Environment([DataFactory, ...additionalFactories]);
 }
 
 function testCustomFactoryMethod() {

@@ -1,4 +1,10 @@
-import EmberObject, { computed, get, getProperties, set, setProperties } from "@ember/object";
+import EmberObject, {
+    computed,
+    get,
+    getProperties,
+    set,
+    setProperties,
+} from "@ember/object";
 import { addObserver, removeObserver } from "@ember/object/observers";
 import { assertType } from "./lib/assert";
 
@@ -36,7 +42,7 @@ myComponent.set("foo", "baz");
 const person = EmberObject.create({
     name: "Fred",
     age: 29,
-    capitalized: computed<string>(function() {
+    capitalized: computed<string>(function () {
         return this.get("name").toUpperCase();
     }),
 });
@@ -55,14 +61,28 @@ function testGet() {
 
 function testGetProperties() {
     assertType<{ name: string }>(getProperties(person, "name"));
-    assertType<{ name: string; age: number }>(getProperties(person, "name", "age"));
-    assertType<{ name: string; age: number }>(getProperties(person, ["name", "age"]));
-    assertType<{ name: string; age: number; capitalized: string }>(getProperties(person, "name", "age", "capitalized"));
+    assertType<{ name: string; age: number }>(
+        getProperties(person, "name", "age"),
+    );
+    assertType<{ name: string; age: number }>(
+        getProperties(person, ["name", "age"]),
+    );
+    assertType<{ name: string; age: number; capitalized: string }>(
+        getProperties(person, "name", "age", "capitalized"),
+    );
     assertType<{ name: string }>(person.getProperties("name"));
-    assertType<{ name: string; age: number }>(person.getProperties("name", "age"));
-    assertType<{ name: string; age: number }>(person.getProperties(["name", "age"]));
-    assertType<{ name: string; age: number; capitalized: string }>(person.getProperties("name", "age", "capitalized"));
-    assertType<{ name: string; age: number }>(getProperties(pojo, "name", "age"));
+    assertType<{ name: string; age: number }>(
+        person.getProperties("name", "age"),
+    );
+    assertType<{ name: string; age: number }>(
+        person.getProperties(["name", "age"]),
+    );
+    assertType<{ name: string; age: number; capitalized: string }>(
+        person.getProperties("name", "age", "capitalized"),
+    );
+    assertType<{ name: string; age: number }>(
+        getProperties(pojo, "name", "age"),
+    );
 }
 
 function testSet() {
@@ -77,12 +97,22 @@ function testSet() {
 
 function testSetProperties() {
     assertType<{ name: string }>(setProperties(person, { name: "Joe" }));
-    assertType<{ name: string; age: number }>(setProperties(person, { name: "Joe", age: 35 }));
-    assertType<{ name: string; capitalized: string }>(setProperties(person, { name: "Joe", capitalized: "JOE" }));
+    assertType<{ name: string; age: number }>(
+        setProperties(person, { name: "Joe", age: 35 }),
+    );
+    assertType<{ name: string; capitalized: string }>(
+        setProperties(person, { name: "Joe", capitalized: "JOE" }),
+    );
     assertType<{ name: string }>(person.setProperties({ name: "Joe" }));
-    assertType<{ name: string; age: number }>(person.setProperties({ name: "Joe", age: 35 }));
-    assertType<{ name: string; capitalized: string }>(person.setProperties({ name: "Joe", capitalized: "JOE" }));
-    assertType<{ name: string; age: number }>(setProperties(pojo, { name: "Joe", age: 35 }));
+    assertType<{ name: string; age: number }>(
+        person.setProperties({ name: "Joe", age: 35 }),
+    );
+    assertType<{ name: string; capitalized: string }>(
+        person.setProperties({ name: "Joe", capitalized: "JOE" }),
+    );
+    assertType<{ name: string; age: number }>(
+        setProperties(pojo, { name: "Joe", age: 35 }),
+    );
 }
 
 function testDynamic() {

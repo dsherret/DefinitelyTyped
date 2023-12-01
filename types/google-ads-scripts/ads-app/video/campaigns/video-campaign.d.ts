@@ -80,7 +80,9 @@ declare namespace GoogleAdsScripts {
                 bidModifier?: number,
             ): AdScheduleOperation;
             /** Adds a excluded placement list to this campaign. */
-            addExcludedPlacementList(excludedPlacementList: ExcludedPlacementList): void;
+            addExcludedPlacementList(
+                excludedPlacementList: ExcludedPlacementList,
+            ): void;
             /** Creates a language target in this campaign from a plain JavaScript object. */
             addLanguage(languageObject: LanguageObject): LanguageOperation;
             /** Creates a language target in this campaign from language ID. */
@@ -92,20 +94,33 @@ declare namespace GoogleAdsScripts {
             /** Creates a location target in this campaign from a location. */
             addLocation(location: TargetedLocation): TargetedLocationOperation;
             /** Creates a location target in this campaign from a location JSON. */
-            addLocation(location: { id: number; bidModifier?: number | undefined }): TargetedLocationOperation;
+            addLocation(location: {
+                id: number;
+                bidModifier?: number | undefined;
+            }): TargetedLocationOperation;
             /** Creates a location target in this campaign from a location ID and bid modifier. */
-            addLocation(locationId: number, bidModifier: number): TargetedLocationOperation;
+            addLocation(
+                locationId: number,
+                bidModifier: number,
+            ): TargetedLocationOperation;
             /** Adds a negative keyword list to this campaign. */
-            addNegativeKeywordList(negativeKeywordList: NegativeKeywordList): void;
+            addNegativeKeywordList(
+                negativeKeywordList: NegativeKeywordList,
+            ): void;
             /** Creates a proximity target in this campaign from a proximity object. */
-            addProximity(proximity: TargetedProximityObject): TargetedProximityOperation;
+            addProximity(
+                proximity: TargetedProximityObject,
+            ): TargetedProximityOperation;
             /** Creates a proximity target in this campaign. */
             addProximity(
                 latitude: number,
                 longitude: number,
                 radius: number,
                 radiusUnits: string,
-                optArgs?: { bidModifier?: number | undefined; address?: AddressObject | undefined },
+                optArgs?: {
+                    bidModifier?: number | undefined;
+                    address?: AddressObject | undefined;
+                },
             ): TargetedProximityOperation;
             /** Applies a label to the video campaign. */
             applyLabel(name: string): void;
@@ -114,17 +129,27 @@ declare namespace GoogleAdsScripts {
             /** Enables the video campaign. */
             enable(): void;
             /** Creates a content label exclusion in this campaign from content label type. */
-            excludeContentLabel(contentLabelType: string): ExcludedContentLabelOperation;
+            excludeContentLabel(
+                contentLabelType: string,
+            ): ExcludedContentLabelOperation;
             /** Creates a content label exclusion in this campaign. */
-            excludeContentLabel(contentLabelType: ExcludedContentLabelObject): ExcludedContentLabelOperation;
+            excludeContentLabel(
+                contentLabelType: ExcludedContentLabelObject,
+            ): ExcludedContentLabelOperation;
             /** Creates a content label exclusion in this campaign from an existing content label object. */
-            excludeContentLabel(contentLabel: ExcludedContentLabel): ExcludedContentLabelOperation;
+            excludeContentLabel(
+                contentLabel: ExcludedContentLabel,
+            ): ExcludedContentLabelOperation;
             /** Creates a location exclusion in this campaign. */
-            excludeLocation(location: ExcludedLocation): ExcludedLocationOperation;
+            excludeLocation(
+                location: ExcludedLocation,
+            ): ExcludedLocationOperation;
             /** Creates a location exclusion in this campaign. */
             excludeLocation(locationId: number): ExcludedLocationOperation;
             /** Creates a location exclusion in this campaign for the specified JSON. */
-            excludeLocation(location: TargetedLocationObject): ExcludedLocationOperation;
+            excludeLocation(
+                location: TargetedLocationObject,
+            ): ExcludedLocationOperation;
             /** Returns a selector of excluded placement lists associated with this campaign. */
             excludedPlacementLists(): ExcludedPlacementListSelector;
             /** Returns the ad rotation type of the campaign. */
@@ -164,11 +189,15 @@ declare namespace GoogleAdsScripts {
             /** Pauses the video campaign. */
             pause(): void;
             /** Removes a excluded placement list from this campaign. */
-            removeExcludedPlacementList(excludedPlacementList: ExcludedPlacementList): void;
+            removeExcludedPlacementList(
+                excludedPlacementList: ExcludedPlacementList,
+            ): void;
             /** Removes a label from the video campaign. */
             removeLabel(name: string): void;
             /** Removes a negative keyword list from this campaign. */
-            removeNegativeKeywordList(negativeKeywordList: NegativeKeywordList): void;
+            removeNegativeKeywordList(
+                negativeKeywordList: NegativeKeywordList,
+            ): void;
             /** Sets the ad rotation type of the campaign. */
             setAdRotationType(adRotationType: string): void;
             /** Sets the campaign's end date from either an object containing year, month, and day fields, or an 8-digit string in YYYYMMDD format. */
@@ -225,13 +254,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoCampaignSelector
-            extends
-                Base.Selector<VideoCampaignIterator>,
+            extends Base.Selector<VideoCampaignIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

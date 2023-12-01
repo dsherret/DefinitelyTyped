@@ -32,7 +32,9 @@ export function getNodeName(node: Node): string {
 
 export function getNodePathName(typeChecker: TypeChecker, node: Node): string {
     try {
-        return typeChecker.getFullyQualifiedName(typeChecker.getSymbolOfExpando(node, true)!);
+        return typeChecker.getFullyQualifiedName(
+            typeChecker.getSymbolOfExpando(node, true)!,
+        );
     } catch (e) {
         let curr = node;
         const path: string[] = [];
@@ -58,7 +60,11 @@ export function getNodePathName(typeChecker: TypeChecker, node: Node): string {
     }
 }
 
-export function removeCommentsRecursive(root: Node, context: TransformationContext, __typeChecker: TypeChecker) {
+export function removeCommentsRecursive(
+    root: Node,
+    context: TransformationContext,
+    __typeChecker: TypeChecker,
+) {
     const visit = (c: Node): Node => {
         if (c.getStart() === root.getStart()) {
             setTextRange(c, { pos: c.getStart(), end: c.getEnd() });
@@ -93,21 +99,36 @@ const rootFolder = join(__dirname, "../../");
 
 export function nodeWarning(node: Node, text: string): void {
     const file = node.getSourceFile();
-    const { line, character } = getLineAndCharacterOfPosition(file, node.getStart(file, false));
+    const { line, character } = getLineAndCharacterOfPosition(
+        file,
+        node.getStart(file, false),
+    );
     console.warn(
-        `WARN[${file.fileName.replace(rootFolder, "")}:${line + 1}:${character + 1}] ${text} "${getNodeName(node)}"`,
+        `WARN[${file.fileName.replace(rootFolder, "")}:${line + 1}:${
+            character + 1
+        }] ${text} "${getNodeName(node)}"`,
     );
 }
 
 export function nodeInfo(node: Node, text: string): void {
     const file = node.getSourceFile();
-    const { line, character } = getLineAndCharacterOfPosition(file, node.getStart(file, false));
+    const { line, character } = getLineAndCharacterOfPosition(
+        file,
+        node.getStart(file, false),
+    );
     console.log(
-        `INFO[${file.fileName.replace(rootFolder, "")}:${line + 1}:${character + 1}] ${text} "${getNodeName(node)}"`,
+        `INFO[${file.fileName.replace(rootFolder, "")}:${line + 1}:${
+            character + 1
+        }] ${text} "${getNodeName(node)}"`,
     );
 }
 
-export function isNamedModuleDeclaration(node: Node): node is ModuleDeclaration {
-    return isModuleDeclaration(node) && !(node.flags & NodeFlags.Namespace)
-        && !(node.flags & NodeFlags.GlobalAugmentation);
+export function isNamedModuleDeclaration(
+    node: Node,
+): node is ModuleDeclaration {
+    return (
+        isModuleDeclaration(node) &&
+        !(node.flags & NodeFlags.Namespace) &&
+        !(node.flags & NodeFlags.GlobalAugmentation)
+    );
 }

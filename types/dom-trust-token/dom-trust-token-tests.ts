@@ -1,9 +1,15 @@
 const responsePromises: Array<Promise<Response>> = [
     fetch("/issue", { trustToken: { type: "token-request" } }),
     fetch("/redeem", { trustToken: { type: "token-redemption" } }),
-    fetch("/redeem", { trustToken: { type: "token-redemption", refreshPolicy: "refresh" } }),
+    fetch("/redeem", {
+        trustToken: { type: "token-redemption", refreshPolicy: "refresh" },
+    }),
     fetch("/sign", {
-        trustToken: { type: "send-redemption-record", signRequestData: "omit", issuers: ["https://issuer.test"] },
+        trustToken: {
+            type: "send-redemption-record",
+            signRequestData: "omit",
+            issuers: ["https://issuer.test"],
+        },
     }),
     fetch("/sign", {
         trustToken: {
@@ -26,6 +32,8 @@ xhr.setTrustToken({
 });
 const err: DOMException = xhr.trustTokenOperationError;
 
-document.createElement("iframe").trustToken = "{\"type\": \"token-request\"}";
+document.createElement("iframe").trustToken = '{"type": "token-request"}';
 
-const hasTrustTokenPromise: Promise<boolean> = document.hasTrustToken("https://issuer.test");
+const hasTrustTokenPromise: Promise<boolean> = document.hasTrustToken(
+    "https://issuer.test",
+);

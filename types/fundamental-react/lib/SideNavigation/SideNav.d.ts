@@ -43,8 +43,12 @@ export type SideNavListItemProps = {
 
 declare class SideNav extends React.Component<SideNavProps> {
     static displayName: "SideNav";
-    static List: React.ComponentClass<SideNavListProps> & { displayName: "SideNav.List" };
-    static ListItem: React.ComponentClass<SideNavListItemProps> & { displayName: "SideNav.ListItem" };
+    static List: React.ComponentClass<SideNavListProps> & {
+        displayName: "SideNav.List";
+    };
+    static ListItem: React.ComponentClass<SideNavListItemProps> & {
+        displayName: "SideNav.ListItem";
+    };
 }
 
 export default SideNav;

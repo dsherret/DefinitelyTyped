@@ -1,10 +1,10 @@
 /*!
-* Product: Dynamsoft Web Twain
-* Web Site: http://www.dynamsoft.com
-*
-* Copyright 2019, Dynamsoft Corporation
-* Author: Dynamsoft Support Team
-*/
+ * Product: Dynamsoft Web Twain
+ * Web Site: http://www.dynamsoft.com
+ *
+ * Copyright 2019, Dynamsoft Corporation
+ * Author: Dynamsoft Support Team
+ */
 
 declare enum EnumDWT_OCRLanguage {
     OCRL_ENG = "eng",
@@ -68,7 +68,11 @@ interface OCR {
      * @param {function} optionalAsyncFailureFunc optional. The function to call when the download fails. Please refer to the function prototype OnFailure.
      * @return {boolean}
      */
-    Download(remoteFile: string, optionalAsyncSuccessFunc?: () => void, optionalAsyncFailureFunc?: () => void): void;
+    Download(
+        remoteFile: string,
+        optionalAsyncSuccessFunc?: () => void,
+        optionalAsyncFailureFunc?: () => void,
+    ): void;
 
     /**
      *  Downloads and deploys the OCR language package on the local system.
@@ -92,7 +96,11 @@ interface OCR {
      * @param {function} AsyncFailureFunc  The function to call when OCR operation fails. Please refer to the function prototype OnOCRFailure.
      * @return {boolean}
      */
-    Recognize(sImageIndex: number, optionalAsyncSuccessFunc?: () => void, optionalAsyncFailureFunc?: () => void): void;
+    Recognize(
+        sImageIndex: number,
+        optionalAsyncSuccessFunc?: () => void,
+        optionalAsyncFailureFunc?: () => void,
+    ): void;
 
     /**
      *  Peforms OCR on the given rectangle on a specified image.
@@ -137,7 +145,10 @@ interface OCR {
      * @param {function} AsyncFailureFunc  The function to call when OCR operation fails. Please refer to the function prototype OnOCRFailure.
      * @return {boolean}
      */
-    RecognizeSelectedImages(optionalAsyncSuccessFunc?: () => void, optionalAsyncFailureFunc?: () => void): void;
+    RecognizeSelectedImages(
+        optionalAsyncSuccessFunc?: () => void,
+        optionalAsyncFailureFunc?: () => void,
+    ): void;
 
     /**
      *  Specifies a font to be used by OCR when Addon.OCR.SetIfUseDetectedFont is set to false.

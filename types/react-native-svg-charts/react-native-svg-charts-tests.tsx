@@ -3,11 +3,20 @@ import { curveNatural } from "d3-shape";
 import * as React from "react";
 import { View } from "react-native";
 import { LinearGradientProps, Stop } from "react-native-svg";
-import { BarChart, Decorators, Grid, StackedAreaChart, StackedBarChart, XAxis } from "react-native-svg-charts";
+import {
+    BarChart,
+    Decorators,
+    Grid,
+    StackedAreaChart,
+    StackedBarChart,
+    XAxis,
+} from "react-native-svg-charts";
 
 // Inlined https://github.com/react-native-svg/react-native-svg/pull/1652
 declare const Defs: React.ComponentClass<{ children?: React.ReactNode }>;
-declare const LinearGradient: React.ComponentClass<React.PropsWithChildren<LinearGradientProps>>;
+declare const LinearGradient: React.ComponentClass<
+    React.PropsWithChildren<LinearGradientProps>
+>;
 
 interface Data {
     time: number;
@@ -27,7 +36,10 @@ class Example extends React.Component<Props> {
             style={{ height: 200 }}
             data={data}
             keys={["totalMemoryConsumption", "privateMemoryConsumption"]}
-            colors={["url(#totalMemoryConsumption)", "url(#privateMemoryConsumption)"]}
+            colors={[
+                "url(#totalMemoryConsumption)",
+                "url(#privateMemoryConsumption)",
+            ]}
             contentInset={{ top: 20 }}
             curve={curveNatural}
             showGrid={true}
@@ -36,11 +48,23 @@ class Example extends React.Component<Props> {
             numberOfTicks={10}
         >
             <Defs key="defs">
-                <LinearGradient id="totalMemoryConsumption" x1="0%" y1="0%" x2="0%" y2="100%">
+                <LinearGradient
+                    id="totalMemoryConsumption"
+                    x1="0%"
+                    y1="0%"
+                    x2="0%"
+                    y2="100%"
+                >
                     <Stop offset="0%" stopColor="#4ccfef" stopOpacity={0.9} />
                     <Stop offset="100%" stopColor="#182b41" stopOpacity={0.9} />
                 </LinearGradient>
-                <LinearGradient id="privateMemoryConsumption" x1="0%" y1="0%" x2="0%" y2="100%">
+                <LinearGradient
+                    id="privateMemoryConsumption"
+                    x1="0%"
+                    y1="0%"
+                    x2="0%"
+                    y2="100%"
+                >
                     <Stop offset="0%" stopColor="#a1d343" stopOpacity={0.8} />
                     <Stop offset="100%" stopColor="#a1d343" stopOpacity={0.3} />
                 </LinearGradient>
@@ -52,7 +76,7 @@ class Example extends React.Component<Props> {
                 scale={scaleTime}
                 contentInset={{ left: 10, right: 10 }}
                 svg={{
-                    fillOpacity: .2,
+                    fillOpacity: 0.2,
                     fill: "#fff",
                     fontFamily: "Regular",
                     fontSize: 10,
@@ -62,11 +86,11 @@ class Example extends React.Component<Props> {
             <Grid
                 direction="BOTH"
                 ticks={[20, 40, 60, 80]}
-                x={x => x * width}
-                y={y => y * width}
+                x={(x) => x * width}
+                y={(y) => y * width}
                 svg={{
                     stroke: "#fff",
-                    strokeOpacity: .2,
+                    strokeOpacity: 0.2,
                 }}
                 belowChart={true}
             />

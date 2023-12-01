@@ -1,7 +1,11 @@
 import * as R from "ramda";
 
-(() => {
-    function Circle(this: { r: number; metaInfo?: string; area: () => number }, r: number, metaInfo?: string) {
+() => {
+    function Circle(
+        this: { r: number; metaInfo?: string; area: () => number },
+        r: number,
+        metaInfo?: string,
+    ) {
         this.r = r;
         this.metaInfo = metaInfo;
         return this;
@@ -19,11 +23,14 @@ import * as R from "ramda";
 
     // $ExpectType { r: number; metaInfo?: string | undefined; area: () => number; }
     const circleObject1 = circleN(10, "Some additional information");
-});
+};
 
-(() => {
+() => {
     class Circle {
-        constructor(private readonly r: number, readonly metaInfo?: string) {}
+        constructor(
+            private readonly r: number,
+            readonly metaInfo?: string,
+        ) {}
 
         area() {
             return Math.PI * Math.pow(this.r, 2);
@@ -38,4 +45,4 @@ import * as R from "ramda";
 
     // $ExpectType Circle
     const circleObject1 = circleN(10, "Some additional information");
-});
+};

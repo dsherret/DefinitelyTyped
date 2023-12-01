@@ -1,6 +1,11 @@
 export interface AdministrationType {
     create(name: string, id: string, kwparams: {}): string;
-    join(fullName: string, meetingID: string, password: string, kwparams: {}): string;
+    join(
+        fullName: string,
+        meetingID: string,
+        password: string,
+        kwparams: {},
+    ): string;
     end(meetingID: string, password: string): string;
 }
 export interface ApiType {

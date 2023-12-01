@@ -32,31 +32,81 @@ value = crc.crc32("three", value);
 value.toString(16);
 
 // `crc.*`:
-expectType<typeof crc.crc1>(expectType<typeof import("crc/crc1").default>(crc.crc1));
-expectType<typeof crc.crc8>(expectType<typeof import("crc/crc8").default>(crc.crc8));
-expectType<typeof crc.crc81wire>(expectType<typeof import("crc/crc81wire").default>(crc.crc81wire));
+expectType<typeof crc.crc1>(
+    expectType<typeof import("crc/crc1").default>(crc.crc1),
+);
+expectType<typeof crc.crc8>(
+    expectType<typeof import("crc/crc8").default>(crc.crc8),
+);
+expectType<typeof crc.crc81wire>(
+    expectType<typeof import("crc/crc81wire").default>(crc.crc81wire),
+);
 
-expectType<typeof crc.crc16>(expectType<typeof import("crc/crc16").default>(crc.crc16));
-expectType<typeof crc.crc16ccitt>(expectType<typeof import("crc/crc16ccitt").default>(crc.crc16ccitt));
-expectType<typeof crc.crc16kermit>(expectType<typeof import("crc/crc16kermit").default>(crc.crc16kermit));
-expectType<typeof crc.crc16modbus>(expectType<typeof import("crc/crc16modbus").default>(crc.crc16modbus));
-expectType<typeof crc.crc16xmodem>(expectType<typeof import("crc/crc16xmodem").default>(crc.crc16xmodem));
+expectType<typeof crc.crc16>(
+    expectType<typeof import("crc/crc16").default>(crc.crc16),
+);
+expectType<typeof crc.crc16ccitt>(
+    expectType<typeof import("crc/crc16ccitt").default>(crc.crc16ccitt),
+);
+expectType<typeof crc.crc16kermit>(
+    expectType<typeof import("crc/crc16kermit").default>(crc.crc16kermit),
+);
+expectType<typeof crc.crc16modbus>(
+    expectType<typeof import("crc/crc16modbus").default>(crc.crc16modbus),
+);
+expectType<typeof crc.crc16xmodem>(
+    expectType<typeof import("crc/crc16xmodem").default>(crc.crc16xmodem),
+);
 
-expectType<typeof crc.crc24>(expectType<typeof import("crc/crc24").default>(crc.crc24));
-expectType<typeof crc.crc32>(expectType<typeof import("crc/crc32").default>(crc.crc32));
-expectType<typeof crc.crcjam>(expectType<typeof import("crc/crcjam").default>(crc.crcjam));
+expectType<typeof crc.crc24>(
+    expectType<typeof import("crc/crc24").default>(crc.crc24),
+);
+expectType<typeof crc.crc32>(
+    expectType<typeof import("crc/crc32").default>(crc.crc32),
+);
+expectType<typeof crc.crcjam>(
+    expectType<typeof import("crc/crcjam").default>(crc.crcjam),
+);
 
 // `crc.default.*`:
-expectType<typeof crc.crc1>(expectType<typeof import("crc/crc1").default>(crc.default.crc1));
-expectType<typeof crc.crc8>(expectType<typeof import("crc/crc8").default>(crc.default.crc8));
-expectType<typeof crc.crc81wire>(expectType<typeof import("crc/crc81wire").default>(crc.default.crc81wire));
+expectType<typeof crc.crc1>(
+    expectType<typeof import("crc/crc1").default>(crc.default.crc1),
+);
+expectType<typeof crc.crc8>(
+    expectType<typeof import("crc/crc8").default>(crc.default.crc8),
+);
+expectType<typeof crc.crc81wire>(
+    expectType<typeof import("crc/crc81wire").default>(crc.default.crc81wire),
+);
 
-expectType<typeof crc.crc16>(expectType<typeof import("crc/crc16").default>(crc.default.crc16));
-expectType<typeof crc.crc16ccitt>(expectType<typeof import("crc/crc16ccitt").default>(crc.default.crc16ccitt));
-expectType<typeof crc.crc16kermit>(expectType<typeof import("crc/crc16kermit").default>(crc.default.crc16kermit));
-expectType<typeof crc.crc16modbus>(expectType<typeof import("crc/crc16modbus").default>(crc.default.crc16modbus));
-expectType<typeof crc.crc16xmodem>(expectType<typeof import("crc/crc16xmodem").default>(crc.default.crc16xmodem));
+expectType<typeof crc.crc16>(
+    expectType<typeof import("crc/crc16").default>(crc.default.crc16),
+);
+expectType<typeof crc.crc16ccitt>(
+    expectType<typeof import("crc/crc16ccitt").default>(crc.default.crc16ccitt),
+);
+expectType<typeof crc.crc16kermit>(
+    expectType<typeof import("crc/crc16kermit").default>(
+        crc.default.crc16kermit,
+    ),
+);
+expectType<typeof crc.crc16modbus>(
+    expectType<typeof import("crc/crc16modbus").default>(
+        crc.default.crc16modbus,
+    ),
+);
+expectType<typeof crc.crc16xmodem>(
+    expectType<typeof import("crc/crc16xmodem").default>(
+        crc.default.crc16xmodem,
+    ),
+);
 
-expectType<typeof crc.crc24>(expectType<typeof import("crc/crc24").default>(crc.default.crc24));
-expectType<typeof crc.crc32>(expectType<typeof import("crc/crc32").default>(crc.default.crc32));
-expectType<typeof crc.crcjam>(expectType<typeof import("crc/crcjam").default>(crc.default.crcjam));
+expectType<typeof crc.crc24>(
+    expectType<typeof import("crc/crc24").default>(crc.default.crc24),
+);
+expectType<typeof crc.crc32>(
+    expectType<typeof import("crc/crc32").default>(crc.default.crc32),
+);
+expectType<typeof crc.crcjam>(
+    expectType<typeof import("crc/crcjam").default>(crc.default.crcjam),
+);

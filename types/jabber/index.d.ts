@@ -14,7 +14,11 @@ declare class Jabber {
     /**
      * Create word of certain length
      */
-    createWord(length: number, capitalize?: boolean, avoidThemeWords?: boolean): string;
+    createWord(
+        length: number,
+        capitalize?: boolean,
+        avoidThemeWords?: boolean,
+    ): string;
     /**
      * Create paragraph of certain number of words
      */

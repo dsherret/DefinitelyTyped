@@ -219,7 +219,7 @@ map = new L.Map(htmlElement, mapOptions);
 let doesItHaveLayer: boolean;
 doesItHaveLayer = map.hasLayer(L.tileLayer(""));
 
-map.on("zoomanim", e => {
+map.on("zoomanim", (e) => {
     e; // $ExpectType ZoomAnimEvent
 });
 
@@ -229,22 +229,34 @@ map.once({
 });
 
 map.off("moveend");
-map.off("resize", e => {
+map.off("resize", (e) => {
     e; // $ExpectType ResizeEvent
 });
-map.off("baselayerchange", e => {
-    e; // $ExpectType LayersControlEvent
-}, {});
+map.off(
+    "baselayerchange",
+    (e) => {
+        e; // $ExpectType LayersControlEvent
+    },
+    {},
+);
 
 map.removeEventListener("loading");
-map.removeEventListener("dblclick", e => {
+map.removeEventListener("dblclick", (e) => {
     e; // $ExpectType LeafletMouseEvent
 });
-map.removeEventListener("locationerror", e => {
-    e; // $ExpectType ErrorEvent
-}, {});
+map.removeEventListener(
+    "locationerror",
+    (e) => {
+        e; // $ExpectType ErrorEvent
+    },
+    {},
+);
 
-map.panInside(latLng, { padding: [50, 50], paddingBottomRight: point, paddingTopLeft: [100, 100] });
+map.panInside(latLng, {
+    padding: [50, 50],
+    paddingBottomRight: point,
+    paddingTopLeft: [100, 100],
+});
 map.panInside(latLng, {
     padding: [50, 50],
     paddingBottomRight: point,
@@ -370,10 +382,16 @@ tileLayerOptions.bounds = latLngBoundsLiteral;
 
 let tileLayer: L.TileLayer;
 tileLayer = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png");
-tileLayer = L.tileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", tileLayerOptions);
+tileLayer = L.tileLayer(
+    "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+    tileLayerOptions,
+);
 
 tileLayer = new L.TileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png");
-tileLayer = new L.TileLayer("http://{s}.tile.osm.org/{z}/{x}/{y}.png", tileLayerOptions);
+tileLayer = new L.TileLayer(
+    "http://{s}.tile.osm.org/{z}/{x}/{y}.png",
+    tileLayerOptions,
+);
 
 // imageOverlay
 let imageOverlayOptions: L.ImageOverlayOptions;
@@ -413,7 +431,9 @@ imageOverlay = L.imageOverlay(
 imageOverlay.setOpacity(100);
 imageOverlay.bringToFront();
 imageOverlay.bringToBack();
-imageOverlay.setUrl("https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png");
+imageOverlay.setUrl(
+    "https://www.google.ru/images/branding/googlelogo/2x/googlelogo_color_120x44dp.png",
+);
 imageOverlay.setBounds(imageOverlayBounds);
 imageOverlay.setZIndex(1);
 imageOverlayBounds = imageOverlay.getBounds();
@@ -429,9 +449,12 @@ svgOverlayOptions = {
 };
 
 let svgOverlayBounds = latLngBounds;
-const svgSvgElement: SVGSVGElement = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+const svgSvgElement: SVGSVGElement = document.createElementNS(
+    "http://www.w3.org/2000/svg",
+    "svg",
+);
 const svgString =
-    "<svg viewBox=\"0 0 120 120\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"><circle cx=\"60\" cy=\"60\" r=\"50\"/></svg>";
+    '<svg viewBox="0 0 120 120" version="1.1" xmlns="http://www.w3.org/2000/svg"><circle cx="60" cy="60" r="50"/></svg>';
 
 let svgOverlay: L.SVGOverlay;
 svgOverlay = L.svgOverlay(svgString, svgOverlayBounds);
@@ -459,12 +482,21 @@ videoOverlayOptions = {
 };
 
 let videoOverlayBounds = latLngBounds;
-const videoOverlayUrls = ["https://www.mapbox.com/bites/00188/patricia_nasa.webm"];
+const videoOverlayUrls = [
+    "https://www.mapbox.com/bites/00188/patricia_nasa.webm",
+];
 const videoElement = document.createElement("video");
 
 let videoOverlay: L.VideoOverlay;
-videoOverlay = L.videoOverlay("https://www.mapbox.com/bites/00188/patricia_nasa.webm", videoOverlayBounds);
-videoOverlay = L.videoOverlay(videoOverlayUrls, videoOverlayBounds, videoOverlayOptions);
+videoOverlay = L.videoOverlay(
+    "https://www.mapbox.com/bites/00188/patricia_nasa.webm",
+    videoOverlayBounds,
+);
+videoOverlay = L.videoOverlay(
+    videoOverlayUrls,
+    videoOverlayBounds,
+    videoOverlayOptions,
+);
 videoOverlay = L.videoOverlay(videoElement, videoOverlayBounds, {
     autoplay: true,
 });
@@ -481,11 +513,11 @@ videoOverlay = videoOverlay.setStyle(videoOverlayOptions);
 
 const eventHandler = () => {};
 const leafletMouseEvent: L.LeafletMouseEvent = {} as L.LeafletMouseEvent;
-const leafletKeyboardEvent: L.LeafletKeyboardEvent = {} as L.LeafletKeyboardEvent;
+const leafletKeyboardEvent: L.LeafletKeyboardEvent =
+    {} as L.LeafletKeyboardEvent;
 const leafletEvent: L.LeafletEvent = {} as L.LeafletEvent;
 const domEvent: Event = {} as Event;
-L.DomEvent
-    .on(htmlElement, "click", eventHandler)
+L.DomEvent.on(htmlElement, "click", eventHandler)
     .addListener(htmlElement, "click", eventHandler)
     .off(htmlElement, "click", eventHandler)
     .removeListener(htmlElement, "click", eventHandler)
@@ -582,7 +614,12 @@ map = map
     .panTo(latLngTuple, panOptions)
     .panBy(point)
     .panBy(pointTuple)
-    .panBy(pointTuple, { animate: false, duration: 1, easeLinearity: 1, noMoveStart: true })
+    .panBy(pointTuple, {
+        animate: false,
+        duration: 1,
+        easeLinearity: 1,
+        noMoveStart: true,
+    })
     .setMaxBounds(latLngBounds)
     .setMaxBounds(latLngBoundsLiteral)
     .setMinZoom(5)
@@ -630,11 +667,19 @@ let threeCoords: [number, number, number] = [1, 2, 3];
 latLng = L.GeoJSON.coordsToLatLng(threeCoords);
 threeCoords = L.GeoJSON.latLngToCoords(latLng) as [number, number, number];
 
-let nestedTwoCoords = [[12, 13], [13, 14], [14, 15]];
+let nestedTwoCoords = [
+    [12, 13],
+    [13, 14],
+    [14, 15],
+];
 const nestedLatLngs: L.LatLng[] = L.GeoJSON.coordsToLatLngs(nestedTwoCoords, 1);
 nestedTwoCoords = L.GeoJSON.latLngsToCoords(nestedLatLngs, 1);
 
-const geojsonOptions: L.GeoJSONOptions = { interactive: true, bubblingMouseEvents: false, markersInheritOptions: true };
+const geojsonOptions: L.GeoJSONOptions = {
+    interactive: true,
+    bubblingMouseEvents: false,
+    markersInheritOptions: true,
+};
 const geojson = new L.GeoJSON(null, geojsonOptions);
 
 geojson.toGeoJSON();
@@ -660,8 +705,16 @@ class MyMarker extends L.Marker {
         const speed = 1000;
 
         if (L.DomUtil.TRANSITION) {
-            if (this.getElement()) this.getElement().style.setProperty(L.DomUtil.TRANSITION, `all ${speed}ms linear`);
-            if (this._shadow) this._shadow.style.setProperty(L.DomUtil.TRANSITION, `all ${speed}ms linear`);
+            if (this.getElement())
+                this.getElement().style.setProperty(
+                    L.DomUtil.TRANSITION,
+                    `all ${speed}ms linear`,
+                );
+            if (this._shadow)
+                this._shadow.style.setProperty(
+                    L.DomUtil.TRANSITION,
+                    `all ${speed}ms linear`,
+                );
         }
     }
 }
@@ -723,16 +776,27 @@ L.marker([1, 2], {
     icon: L.divIcon({
         className: "my-icon-class",
     }),
-}).setIcon(L.icon({
-    iconUrl: "my-icon.png",
-})).setIcon(L.divIcon({
-    className: "my-div-icon",
-}));
+})
+    .setIcon(
+        L.icon({
+            iconUrl: "my-icon.png",
+        }),
+    )
+    .setIcon(
+        L.divIcon({
+            className: "my-div-icon",
+        }),
+    );
 
 let polygon: L.Polygon;
 
 // simple polygon
-const simplePolygonLatLngs: L.LatLngExpression[] = [[37, -109.05], [41, -109.03], [41, -102.05], [37, -102.04]];
+const simplePolygonLatLngs: L.LatLngExpression[] = [
+    [37, -109.05],
+    [41, -109.03],
+    [41, -102.05],
+    [37, -102.04],
+];
 polygon = L.polygon(simplePolygonLatLngs);
 polygon = new L.Polygon(simplePolygonLatLngs);
 polygon.setLatLngs(simplePolygonLatLngs);
@@ -740,33 +804,66 @@ const simplePolygonLatLngs2: L.LatLng[] = polygon.getLatLngs() as L.LatLng[];
 
 // complex polygon (polygon with holes)
 const complexPolygonLatLngs: L.LatLngExpression[][] = [
-    [[37, -109.05], [41, -109.03], [41, -102.05], [37, -102.04]], // outer ring
-    [[37.29, -108.58], [40.71, -108.58], [40.71, -102.50], [37.29, -102.50]], // hole
+    [
+        [37, -109.05],
+        [41, -109.03],
+        [41, -102.05],
+        [37, -102.04],
+    ], // outer ring
+    [
+        [37.29, -108.58],
+        [40.71, -108.58],
+        [40.71, -102.5],
+        [37.29, -102.5],
+    ], // hole
 ];
 polygon = L.polygon(complexPolygonLatLngs);
 polygon = new L.Polygon(complexPolygonLatLngs);
 polygon.setLatLngs(complexPolygonLatLngs);
-const complexPolygonLatLngs2: L.LatLng[][] = polygon.getLatLngs() as L.LatLng[][];
+const complexPolygonLatLngs2: L.LatLng[][] =
+    polygon.getLatLngs() as L.LatLng[][];
 
 // multi polygon
 const multiPolygonLatLngs: L.LatLngExpression[][][] = [
-    [ // first polygon
-        [[37, -109.05], [41, -109.03], [41, -102.05], [37, -102.04]], // outer ring
-        [[37.29, -108.58], [40.71, -108.58], [40.71, -102.50], [37.29, -102.50]], // hole
+    [
+        // first polygon
+        [
+            [37, -109.05],
+            [41, -109.03],
+            [41, -102.05],
+            [37, -102.04],
+        ], // outer ring
+        [
+            [37.29, -108.58],
+            [40.71, -108.58],
+            [40.71, -102.5],
+            [37.29, -102.5],
+        ], // hole
     ],
-    [ // second polygon
-        [[41, -111.03], [45, -111.04], [45, -104.05], [41, -104.05]],
+    [
+        // second polygon
+        [
+            [41, -111.03],
+            [45, -111.04],
+            [45, -104.05],
+            [41, -104.05],
+        ],
     ],
 ];
 polygon = L.polygon(multiPolygonLatLngs);
 polygon = new L.Polygon(multiPolygonLatLngs);
 polygon.setLatLngs(multiPolygonLatLngs);
-const multiPolygonLatLngs2: L.LatLng[][][] = polygon.getLatLngs() as L.LatLng[][][];
+const multiPolygonLatLngs2: L.LatLng[][][] =
+    polygon.getLatLngs() as L.LatLng[][][];
 
 let polyline: L.Polyline;
 
 // simple polyline
-const simplePolylineLatLngs: L.LatLngExpression[] = [[45.51, -122.68, 100], [37.77, -122.43], [34.04, -118.2, 200]]; // mix in some altitudes
+const simplePolylineLatLngs: L.LatLngExpression[] = [
+    [45.51, -122.68, 100],
+    [37.77, -122.43],
+    [34.04, -118.2, 200],
+]; // mix in some altitudes
 polyline = L.polyline(simplePolylineLatLngs);
 polyline = new L.Polyline(simplePolylineLatLngs);
 polyline.setLatLngs(simplePolylineLatLngs);
@@ -775,15 +872,24 @@ const simplePolylineLatLngs2: L.LatLng[] = polyline.getLatLngs() as L.LatLng[];
 
 // multi polyline
 const multiPolylineLatLngs: L.LatLngExpression[][] = [
-    [[45.51, -122.68], [37.77, -122.43], [34.04, -118.2]],
-    [[40.78, -73.91], [41.83, -87.62], [32.76, -96.72]],
+    [
+        [45.51, -122.68],
+        [37.77, -122.43],
+        [34.04, -118.2],
+    ],
+    [
+        [40.78, -73.91],
+        [41.83, -87.62],
+        [32.76, -96.72],
+    ],
 ];
 polyline = L.polyline(multiPolylineLatLngs);
 polyline = new L.Polyline(multiPolylineLatLngs);
 polyline.setLatLngs(multiPolylineLatLngs);
 const segment = polyline.getLatLngs() as L.LatLng[][];
 polyline.addLatLng([40.78, -73.91], segment[1]);
-const multiPolylineLatLngs2: L.LatLng[][] = polyline.getLatLngs() as L.LatLng[][];
+const multiPolylineLatLngs2: L.LatLng[][] =
+    polyline.getLatLngs() as L.LatLng[][];
 
 const obj1 = {
     prop1: 1,
@@ -807,15 +913,18 @@ const obj5 = {
 
 const extended0: typeof obj1 = L.Util.extend(obj1);
 const extended1: typeof obj1 & typeof obj2 = L.Util.extend(obj1, obj2);
-const extended2: typeof obj1 & typeof obj2 & typeof obj3 = L.Util.extend(obj1, obj2, obj3);
-const extended3: typeof obj1 & typeof obj2 & typeof obj3 & typeof obj4 = L.Util.extend(obj1, obj2, obj3, obj4);
-const extended4: typeof obj1 & typeof obj2 & typeof obj3 & typeof obj4 & typeof obj5 = L.Util.extend(
+const extended2: typeof obj1 & typeof obj2 & typeof obj3 = L.Util.extend(
     obj1,
     obj2,
     obj3,
-    obj4,
-    obj5,
 );
+const extended3: typeof obj1 & typeof obj2 & typeof obj3 & typeof obj4 =
+    L.Util.extend(obj1, obj2, obj3, obj4);
+const extended4: typeof obj1 &
+    typeof obj2 &
+    typeof obj3 &
+    typeof obj4 &
+    typeof obj5 = L.Util.extend(obj1, obj2, obj3, obj4, obj5);
 
 L.Util.create({});
 L.Util.create(null, { foo: { writable: true, value: "bar" } });
@@ -840,22 +949,25 @@ L.Util.template("template", {});
 L.Util.isArray({});
 L.Util.indexOf([], {});
 L.Util.requestAnimFrame(() => {});
-L.Util.requestAnimFrame(timestamp => console.log(timestamp), {});
+L.Util.requestAnimFrame((timestamp) => console.log(timestamp), {});
 L.Util.requestAnimFrame(() => {}, {}, true);
 L.Util.cancelAnimFrame(1);
 L.Util.emptyImageUrl;
 
 const extendedRoot0: typeof obj1 = L.extend(obj1);
 const extendedRoot1: typeof obj1 & typeof obj2 = L.extend(obj1, obj2);
-const extendedRoot2: typeof obj1 & typeof obj2 & typeof obj3 = L.extend(obj1, obj2, obj3);
-const extendedRoot3: typeof obj1 & typeof obj2 & typeof obj3 & typeof obj4 = L.extend(obj1, obj2, obj3, obj4);
-const extendedRoot4: typeof obj1 & typeof obj2 & typeof obj3 & typeof obj4 & typeof obj5 = L.extend(
+const extendedRoot2: typeof obj1 & typeof obj2 & typeof obj3 = L.extend(
     obj1,
     obj2,
     obj3,
-    obj4,
-    obj5,
 );
+const extendedRoot3: typeof obj1 & typeof obj2 & typeof obj3 & typeof obj4 =
+    L.extend(obj1, obj2, obj3, obj4);
+const extendedRoot4: typeof obj1 &
+    typeof obj2 &
+    typeof obj3 &
+    typeof obj4 &
+    typeof obj5 = L.extend(obj1, obj2, obj3, obj4, obj5);
 
 L.bind(fnWithArguments, {}, {} as L.DoneCallback, {} as HTMLElement);
 L.stamp({});
@@ -865,13 +977,17 @@ interface MyProperties {
     testProperty: string;
 }
 
-(L.polygon(simplePolygonLatLngs) as L.Polygon<MyProperties>).feature.properties.testProperty = "test";
+(
+    L.polygon(simplePolygonLatLngs) as L.Polygon<MyProperties>
+).feature.properties.testProperty = "test";
 
-(L.marker([1, 2], {
-    icon: L.icon({
-        iconUrl: "my-icon.png",
-    }),
-}) as L.Marker<MyProperties>).feature.properties.testProperty = "test";
+(
+    L.marker([1, 2], {
+        icon: L.icon({
+            iconUrl: "my-icon.png",
+        }),
+    }) as L.Marker<MyProperties>
+).feature.properties.testProperty = "test";
 
 let lg = L.layerGroup();
 lg = L.layerGroup([new L.Layer(), new L.Layer()]);
@@ -922,8 +1038,16 @@ export class ExtendedTileLayer extends L.TileLayer {
         // adapted from TileLayer's implementation
         const tile = document.createElement("img");
 
-        L.DomEvent.on(tile, "load", L.Util.bind(this._tileOnLoad, this, done, tile));
-        L.DomEvent.on(tile, "error", L.Util.bind(this._tileOnError, this, done, tile));
+        L.DomEvent.on(
+            tile,
+            "load",
+            L.Util.bind(this._tileOnLoad, this, done, tile),
+        );
+        L.DomEvent.on(
+            tile,
+            "error",
+            L.Util.bind(this._tileOnError, this, done, tile),
+        );
 
         return tile;
     }

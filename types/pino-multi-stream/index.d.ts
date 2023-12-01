@@ -8,11 +8,15 @@ import {
 import stream = require("stream");
 
 declare namespace pinoms {
-    type Streams = Array<{ stream: PinoDestinationStream | NodeJS.WritableStream; level?: Level | undefined }>;
+    type Streams = Array<{
+        stream: PinoDestinationStream | NodeJS.WritableStream;
+        level?: Level | undefined;
+    }>;
     interface LoggerOptions extends PinoLoggerOptions {
         streams?: Streams | undefined;
     }
-    interface PrettyStreamOptions extends Pick<PinoLoggerOptions, "prettyPrint"> {
+    interface PrettyStreamOptions
+        extends Pick<PinoLoggerOptions, "prettyPrint"> {
         /**
          * Allows to optionally define which prettifier module to use
          */
@@ -26,7 +30,10 @@ declare namespace pinoms {
 
     const stdSerializers: typeof pinoStdSerializers;
 
-    function multistream(streams: Streams, opts?: MultiStreamOptions): stream.Writable;
+    function multistream(
+        streams: Streams,
+        opts?: MultiStreamOptions,
+    ): stream.Writable;
     function prettyStream(opts?: PrettyStreamOptions): PinoDestinationStream;
     type Level = PinoLevel;
     type Logger = PinoLogger;

@@ -5,13 +5,15 @@ const app = new Koa();
 
 const ONE_DAY = 24 * 3600 * 1000;
 
-app.use(session({
-    key: "SESSID",
-    cookie: {
-        maxAge: ONE_DAY,
-        httpOnly: false,
-    },
-}));
+app.use(
+    session({
+        key: "SESSID",
+        cookie: {
+            maxAge: ONE_DAY,
+            httpOnly: false,
+        },
+    }),
+);
 
 app.use((ctx) => {
     if (ctx.path === "/favicon.ico") return; // ignore favicon

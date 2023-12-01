@@ -5,7 +5,10 @@ export interface Options {
 export abstract class Generator {
     addRaw(input: string): void;
 
-    addRule(selectors: string | string[], declarationList: Record<string, string>): void;
+    addRule(
+        selectors: string | string[],
+        declarationList: Record<string, string>,
+    ): void;
 
     openBlock(type: string, props?: string): void;
 

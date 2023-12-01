@@ -33,9 +33,11 @@ declare namespace Kakao {
          */
         function request(settings: {
             url: string; // Kakao REST API urls
-            data?: {
-                [key: string]: any;
-            } | undefined;
+            data?:
+                | {
+                      [key: string]: any;
+                  }
+                | undefined;
             files?: FileList | File[] | Blob[] | undefined;
             success?: RequestSuccessCallback | undefined;
             fail?: RequestFailCallback | undefined;
@@ -49,9 +51,11 @@ declare namespace Kakao {
 
         interface AuthStatusObject {
             status: "connected" | "not_connected";
-            user?: {
-                [key: string]: any;
-            } | undefined;
+            user?:
+                | {
+                      [key: string]: any;
+                  }
+                | undefined;
         }
 
         interface AuthSuccessObject {
@@ -88,7 +92,9 @@ declare namespace Kakao {
             size?: AuthButtonSize | undefined; // default 'medium'
             success?: ((authObj: AuthSuccessObject) => void) | undefined;
             fail?: ((errorObj: AuthError) => void) | undefined;
-            always?: ((param: AuthSuccessObject | AuthError) => void) | undefined;
+            always?:
+                | ((param: AuthSuccessObject | AuthError) => void)
+                | undefined;
             scope?: string | undefined; // additional agreement key ex) account_email,gender
             persistAccessToken?: boolean | undefined; // default true
             throughTalk?: boolean | undefined; // default true
@@ -102,12 +108,16 @@ declare namespace Kakao {
          */
         function getRefreshToken(): void;
 
-        function getStatusInfo(callback: (object: AuthStatusObject) => void): void;
+        function getStatusInfo(
+            callback: (object: AuthStatusObject) => void,
+        ): void;
 
         function login(settings: {
             success?: ((authObj: AuthSuccessObject) => void) | undefined;
             fail?: ((errorObj: AuthError) => void) | undefined;
-            always?: ((param: AuthSuccessObject | AuthError) => void) | undefined;
+            always?:
+                | ((param: AuthSuccessObject | AuthError) => void)
+                | undefined;
             scope?: string | undefined; // additional agreement key ex) account_email,gender
             persistAccessToken?: boolean | undefined; // default true
             throughTalk?: boolean | undefined; // default true
@@ -116,7 +126,9 @@ declare namespace Kakao {
         function loginForm(settings: {
             success?: ((authObj: AuthSuccessObject) => void) | undefined;
             fail?: ((errorObj: AuthError) => void) | undefined;
-            always?: ((param: AuthSuccessObject | AuthError) => void) | undefined;
+            always?:
+                | ((param: AuthSuccessObject | AuthError) => void)
+                | undefined;
             scope?: string | undefined; // additional agreement key ex) account_email,gender
             persistAccessToken?: boolean | undefined; // default true
         }): void;
@@ -199,8 +211,8 @@ declare namespace Kakao {
             callback?: LinkCallback | undefined;
             serverCallbackArgs?:
                 | {
-                    [key: string]: any;
-                }
+                      [key: string]: any;
+                  }
                 | string
                 | undefined; // reference https://developers.kakao.com/docs/latest/ko/message/js#set-kakaolink-callback
         }
@@ -270,15 +282,17 @@ declare namespace Kakao {
         function createCustomButton(settings: {
             container: string | HTMLElement;
             templateId: number;
-            templateArgs?: {
-                [key: string]: any;
-            } | undefined;
+            templateArgs?:
+                | {
+                      [key: string]: any;
+                  }
+                | undefined;
             installTalk?: boolean | undefined; // default false
             callback?: LinkCallback | undefined;
             serverCallbackArgs?:
                 | {
-                    [key: string]: any;
-                }
+                      [key: string]: any;
+                  }
                 | string
                 | undefined; // reference https://developers.kakao.com/docs/latest/ko/message/js#set-kakaolink-callback
         }): void;
@@ -293,22 +307,26 @@ declare namespace Kakao {
             container: string | HTMLElement;
             requestUrl: string;
             templateId?: number | undefined;
-            templateArgs?: {
-                [key: string]: any;
-            } | undefined;
+            templateArgs?:
+                | {
+                      [key: string]: any;
+                  }
+                | undefined;
             installTalk?: boolean | undefined; // default false
             callback?: LinkCallback | undefined;
             serverCallbackArgs?:
                 | {
-                    [key: string]: any;
-                }
+                      [key: string]: any;
+                  }
                 | string
                 | undefined;
         }): void;
 
         function deleteImage(settings: { imageUrl: string }): Promise<unknown>;
 
-        function scrapImage(settings: { imageUrl: string }): Promise<ImageInfos>;
+        function scrapImage(settings: {
+            imageUrl: string;
+        }): Promise<ImageInfos>;
 
         function sendCustom(settings: {
             templateId: number;
@@ -319,8 +337,8 @@ declare namespace Kakao {
             callback?: LinkCallback | undefined;
             serverCallbackArgs?:
                 | {
-                    [key: string]: any;
-                }
+                      [key: string]: any;
+                  }
                 | string
                 | undefined;
         }): void;
@@ -330,15 +348,17 @@ declare namespace Kakao {
         function sendScrap(settings: {
             requestUrl: string;
             templateId?: number | undefined;
-            templateArgs?: {
-                [key: string]: any;
-            } | undefined;
+            templateArgs?:
+                | {
+                      [key: string]: any;
+                  }
+                | undefined;
             installTalk?: boolean | undefined; // default false
             callback?: LinkCallback | undefined;
             serverCallbackArgs?:
                 | {
-                    [key: string]: any;
-                }
+                      [key: string]: any;
+                  }
                 | string
                 | undefined;
         }): void;
@@ -397,12 +417,14 @@ declare namespace Kakao {
             install?: boolean | undefined;
             url?: string | undefined;
             text?: string | undefined;
-            urlInfo?: {
-                title: string;
-                desc?: string | undefined;
-                name?: string | undefined;
-                images?: string[] | undefined;
-            } | undefined;
+            urlInfo?:
+                | {
+                      title: string;
+                      desc?: string | undefined;
+                      name?: string | undefined;
+                      images?: string[] | undefined;
+                  }
+                | undefined;
         }): void;
 
         function share(settings: {

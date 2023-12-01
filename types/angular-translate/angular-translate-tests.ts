@@ -7,7 +7,8 @@ app.factory("customLoader", ($q: angular.IQService) => {
     return (options: any) => {
         var dfd: angular.IDeferred<string> = $q.defer();
         dfd.resolve(
-            "whatever you wanted to translate, I simply know nothing about the language with the key " + options.key,
+            "whatever you wanted to translate, I simply know nothing about the language with the key " +
+                options.key,
         );
         return dfd.promise;
     };
@@ -36,15 +37,18 @@ interface Scope extends ng.IScope {
     changeLanguage(key: any): void;
 }
 
-app.controller("Ctrl", ($scope: Scope, $translate: angular.translate.ITranslateService) => {
-    $scope["changeLanguage"] = function(key: any) {
-        $translate.onReady().then(() => {
-            if ($translate.isReady()) {
-                $translate.use(key);
-            }
-        });
-    };
-}).run(($filter: ng.IFilterService) => {
+app.controller(
+    "Ctrl",
+    ($scope: Scope, $translate: angular.translate.ITranslateService) => {
+        $scope["changeLanguage"] = function (key: any) {
+            $translate.onReady().then(() => {
+                if ($translate.isReady()) {
+                    $translate.use(key);
+                }
+            });
+        };
+    },
+).run(($filter: ng.IFilterService) => {
     var x: string;
     x = $filter("translate")("something");
     x = $filter("translate")("something", {});

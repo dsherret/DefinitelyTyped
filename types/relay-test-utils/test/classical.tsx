@@ -1,11 +1,15 @@
 import React from "react";
 import { createFragmentContainer, graphql, QueryRenderer } from "react-relay";
-import { createMockEnvironment, MockPayloadGenerator, unwrapContainer } from "relay-test-utils";
+import {
+    createMockEnvironment,
+    MockPayloadGenerator,
+    unwrapContainer,
+} from "relay-test-utils";
 
 // @ExpectType MockEnvironment
 const environment = createMockEnvironment();
 
-environment.mock.resolveMostRecentOperation(operation => {
+environment.mock.resolveMostRecentOperation((operation) => {
     return MockPayloadGenerator.generate(operation);
 });
 

@@ -34,7 +34,7 @@ function test_object() {
         useMasterKey: true,
         sessionToken: "sometoken",
         cascadeSave: false,
-    }).then(result => result);
+    }).then((result) => result);
 
     if (!game.isNew()) {
         console.error("Game should be new");
@@ -97,10 +97,14 @@ function test_query() {
     const query = new Parse.Query(GameScore);
     query.equalTo("playerName", "Dan Stemkoski");
     query.notEqualTo("playerName", "Michael Yabuti");
-    query.fullText("playerName", "dan", { language: "en", caseSensitive: false, diacriticSensitive: true });
+    query.fullText("playerName", "dan", {
+        language: "en",
+        caseSensitive: false,
+        diacriticSensitive: true,
+    });
     query.greaterThan("playerAge", 18);
-    query.eachBatch(objs => Promise.resolve(), { batchSize: 10 });
-    query.each(score => Promise.resolve());
+    query.eachBatch((objs) => Promise.resolve(), { batchSize: 10 });
+    query.each((score) => Promise.resolve());
     query.hint("_id_");
     query.explain(true);
     query.limit(10);
@@ -126,10 +130,18 @@ function test_query() {
 
     query.containedBy("place", ["1", "2"]);
     // Finds scores from any of Jonathan, Dario, or Shawn
-    query.containedIn("playerName", ["Jonathan Walsh", "Dario Wunsch", "Shawn Simon"]);
+    query.containedIn("playerName", [
+        "Jonathan Walsh",
+        "Dario Wunsch",
+        "Shawn Simon",
+    ]);
 
     // Finds scores from anyone who is neither Jonathan, Dario, nor Shawn
-    query.notContainedIn("playerName", ["Jonathan Walsh", "Dario Wunsch", "Shawn Simon"]);
+    query.notContainedIn("playerName", [
+        "Jonathan Walsh",
+        "Dario Wunsch",
+        "Shawn Simon",
+    ]);
 
     // Finds objects that have the score set
     query.exists("score");
@@ -257,39 +269,48 @@ async function test_query_promise() {
     }
 
     await getQuery.map((score, index) => score.increment("score", index));
-    await getQuery.reduce((accum, score, index) => (accum += score.get("score")), 0);
-    await getQuery.reduce((accum, score, index) => (accum += score.get("score")), 0, { batchSize: 200 });
-    await getQuery.filter(scores => scores.get("score") > 0);
-    await getQuery.filter(scores => scores.get("score") > 0, { batchSize: 10 });
+    await getQuery.reduce(
+        (accum, score, index) => (accum += score.get("score")),
+        0,
+    );
+    await getQuery.reduce(
+        (accum, score, index) => (accum += score.get("score")),
+        0,
+        { batchSize: 200 },
+    );
+    await getQuery.filter((scores) => scores.get("score") > 0);
+    await getQuery.filter((scores) => scores.get("score") > 0, {
+        batchSize: 10,
+    });
 }
 
 async function test_live_query() {
     const subscription = await new Parse.Query("Test").subscribe();
-    subscription.on("close", object => {
+    subscription.on("close", (object) => {
         // $ExpectType Object<Attributes>
         object;
     });
-    subscription.on("create", object => {
+    subscription.on("create", (object) => {
         // $ExpectType Object<Attributes>
         object;
     });
-    subscription.on("delete", object => {
+    subscription.on("delete", (object) => {
         // $ExpectType Object<Attributes>
         object;
     });
-    subscription.on("enter", object => {
+    subscription.on("enter", (object) => {
         // $ExpectType Object<Attributes>
         object;
     });
-    subscription.on("leave", object => {
+    subscription.on("leave", (object) => {
         // $ExpectType Object<Attributes>
         object;
     });
-    subscription.on("open", object => {
+    subscription.on("open", (object) => {
         // $ExpectType Object<Attributes>
         object;
     });
-    subscription.on("update", object => {
+    subscription.on("update", (object) => {
         // $ExpectType Object<Attributes>
         object;
     });
@@ -303,7 +324,10 @@ function test_anonymous_utils() {
     // $ExpectType boolean
     Parse.AnonymousUtils.isLinked(new Parse.User());
     // $ExpectType Promise<User<Attributes>>
-    Parse.AnonymousUtils.link(new Parse.User(), { useMasterKey: true, sessionToken: "" });
+    Parse.AnonymousUtils.link(new Parse.User(), {
+        useMasterKey: true,
+        sessionToken: "",
+    });
     // $ExpectType Promise<User<Attributes>>
     Parse.AnonymousUtils.logIn({ useMasterKey: true, sessionToken: "" });
 }
@@ -313,7 +337,7 @@ function return_a_query(): Parse.Query {
 }
 
 function test_each() {
-    new Parse.Query(Game).each(game => {
+    new Parse.Query(Game).each((game) => {
         // $ExpectType Game
         game;
     });
@@ -337,14 +361,16 @@ function test_file() {
         () => {
             // The file has been saved to Parse.
         },
-        error => {
+        (error) => {
             // The file either could n ot be read, or could not be saved to Parse.
         },
     );
 
-    Parse.Cloud.httpRequest({ url: file.url() }).then((response: Parse.Cloud.HttpResponse) => {
-        // result
-    });
+    Parse.Cloud.httpRequest({ url: file.url() }).then(
+        (response: Parse.Cloud.HttpResponse) => {
+            // result
+        },
+    );
 
     // TODO: Check
 
@@ -436,19 +462,19 @@ function test_user_acl_roles() {
     }
 
     Parse.User.become("session-token-here").then(
-        user => {
+        (user) => {
             // The current user is now set to user.
         },
-        error => {
+        (error) => {
             // The token could not be validated.
         },
     );
 
     Parse.User.hydrate({}).then(
-        user => {
+        (user) => {
             // The current user is now set to user.
         },
-        error => {
+        (error) => {
             // The token could not be validated.
         },
     );
@@ -459,14 +485,14 @@ function test_user_acl_roles() {
     game.save().then((game: Game) => {});
     game.save(null, { useMasterKey: true });
     game.save({ score: "10" }, { useMasterKey: true }).then(
-        game => {
+        (game) => {
             // Update game then revert it to the last saved state.
             game.set("score", "20");
             game.revert("score");
             game.revert("score", "ACL");
             game.revert();
         },
-        error => {
+        (error) => {
             // The save failed
         },
     );
@@ -485,19 +511,19 @@ function test_user_acl_roles() {
     game.setACL(groupACL);
 
     Parse.User.requestPasswordReset("email@example.com").then(
-        data => {
+        (data) => {
             // The current user is now set to user.
         },
-        error => {
+        (error) => {
             // The token could not be validated.
         },
     );
 
     Parse.User.requestEmailVerification("email@example.com").then(
-        data => {
+        (data) => {
             // The current user is now set to user.
         },
-        error => {
+        (error) => {
             // The token could not be validated.
         },
     );
@@ -508,7 +534,7 @@ function test_user_acl_roles() {
     role.getRoles().add(role);
     role.save();
 
-    Parse.User.logOut().then(data => {
+    Parse.User.logOut().then((data) => {
         // logged out
     });
 }
@@ -530,7 +556,9 @@ function test_facebook_util() {
             }
         },
         error: (user: Parse.User, error: any) => {
-            alert("User cancelled the Facebook login or did not fully authorize.");
+            alert(
+                "User cancelled the Facebook login or did not fully authorize.",
+            );
         },
     });
 
@@ -542,14 +570,18 @@ function test_facebook_util() {
                 alert("Woohoo, user logged in with Facebook!");
             },
             error: (user: any, error: any) => {
-                alert("User cancelled the Facebook login or did not fully authorize.");
+                alert(
+                    "User cancelled the Facebook login or did not fully authorize.",
+                );
             },
         });
     }
 
     Parse.FacebookUtils.unlink(user, {
         success: (user: Parse.User) => {
-            alert("The user is no longer associated with their Facebook account.");
+            alert(
+                "The user is no longer associated with their Facebook account.",
+            );
         },
     });
 }
@@ -582,54 +614,83 @@ async function test_cloud_functions() {
     await Parse.Cloud.run<() => boolean>("SomeFunction", null);
 
     // $ExpectType boolean
-    await Parse.Cloud.run<() => boolean>("SomeFunction", null, { useMasterKey: true });
+    await Parse.Cloud.run<() => boolean>("SomeFunction", null, {
+        useMasterKey: true,
+    });
 
     // $ExpectType number
-    await Parse.Cloud.run<(params: { paramA: string }) => number>("SomeFunction", { paramA: "hello" });
+    await Parse.Cloud.run<(params: { paramA: string }) => number>(
+        "SomeFunction",
+        { paramA: "hello" },
+    );
 
     // @ts-expect-error
-    await Parse.Cloud.run<(params: { paramA: string }) => number>("SomeFunction");
+    await Parse.Cloud.run<(params: { paramA: string }) => number>(
+        "SomeFunction",
+    );
 
     // @ts-expect-error
-    await Parse.Cloud.run<(params: { paramA: string }) => number>("SomeFunction", { paramZ: "hello" });
+    await Parse.Cloud.run<(params: { paramA: string }) => number>(
+        "SomeFunction",
+        { paramZ: "hello" },
+    );
 
     // @ts-expect-error
-    await Parse.Cloud.run<(params: { paramA: string }) => number>("SomeFunction", null, { useMasterKey: true });
+    await Parse.Cloud.run<(params: { paramA: string }) => number>(
+        "SomeFunction",
+        null,
+        { useMasterKey: true },
+    );
 
     // @ts-expect-error
     await Parse.Cloud.run<(params: string) => any>("SomeFunction", "hello");
 
-    Parse.Cloud.afterDelete("MyCustomClass", (request: Parse.Cloud.AfterDeleteRequest) => {
-        // result
-    });
+    Parse.Cloud.afterDelete(
+        "MyCustomClass",
+        (request: Parse.Cloud.AfterDeleteRequest) => {
+            // result
+        },
+    );
 
-    Parse.Cloud.afterSave("MyCustomClass", (request: Parse.Cloud.AfterSaveRequest) => {
-        if (!request.context) {
-            throw new Error("Request context should be defined");
-        }
-        // result
-    });
+    Parse.Cloud.afterSave(
+        "MyCustomClass",
+        (request: Parse.Cloud.AfterSaveRequest) => {
+            if (!request.context) {
+                throw new Error("Request context should be defined");
+            }
+            // result
+        },
+    );
 
-    Parse.Cloud.beforeDelete("MyCustomClass", (request: Parse.Cloud.BeforeDeleteRequest) => {
-        // result
-    });
+    Parse.Cloud.beforeDelete(
+        "MyCustomClass",
+        (request: Parse.Cloud.BeforeDeleteRequest) => {
+            // result
+        },
+    );
 
-    Parse.Cloud.beforeDelete("MyCustomClass", async (request: Parse.Cloud.BeforeDeleteRequest) => {
-        // result
-    });
+    Parse.Cloud.beforeDelete(
+        "MyCustomClass",
+        async (request: Parse.Cloud.BeforeDeleteRequest) => {
+            // result
+        },
+    );
 
     interface BeforeSaveObject {
         immutable: boolean;
     }
 
-    Parse.Cloud.beforeSave("MyCustomClass", async request => {
+    Parse.Cloud.beforeSave("MyCustomClass", async (request) => {
         if (request.object.isNew()) {
-            if (!request.object.has("immutable")) throw new Error("Field immutable is required");
+            if (!request.object.has("immutable"))
+                throw new Error("Field immutable is required");
         } else {
             const original = request.original;
             if (original == null) {
                 // When the object is not new, request.original must be defined
-                throw new Error("Original must me defined for an existing object");
+                throw new Error(
+                    "Original must me defined for an existing object",
+                );
             }
 
             if (original.get("immutable") !== request.object.get("immutable")) {
@@ -641,36 +702,50 @@ async function test_cloud_functions() {
         }
     });
 
-    Parse.Cloud.beforeFind("MyCustomClass", (request: Parse.Cloud.BeforeFindRequest) => {
-        const query = request.query; // the Parse.Query
-        const user = request.user; // the user
-        const isMaster = request.master; // if the query is run with masterKey
-        const isCount = request.count; // if the query is a count operation (available on parse-server 2.4.0 or up)
-        const isGet = request.isGet; // if the query is a get operation
+    Parse.Cloud.beforeFind(
+        "MyCustomClass",
+        (request: Parse.Cloud.BeforeFindRequest) => {
+            const query = request.query; // the Parse.Query
+            const user = request.user; // the user
+            const isMaster = request.master; // if the query is run with masterKey
+            const isCount = request.count; // if the query is a count operation (available on parse-server 2.4.0 or up)
+            const isGet = request.isGet; // if the query is a get operation
 
-        // All possible read preferences
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.Primary;
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.PrimaryPreferred;
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.Secondary;
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.SecondaryPreferred;
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.Nearest;
-    });
+            // All possible read preferences
+            request.readPreference = Parse.Cloud.ReadPreferenceOption.Primary;
+            request.readPreference =
+                Parse.Cloud.ReadPreferenceOption.PrimaryPreferred;
+            request.readPreference = Parse.Cloud.ReadPreferenceOption.Secondary;
+            request.readPreference =
+                Parse.Cloud.ReadPreferenceOption.SecondaryPreferred;
+            request.readPreference = Parse.Cloud.ReadPreferenceOption.Nearest;
+        },
+    );
 
-    Parse.Cloud.beforeFind("MyCustomClass", (request: Parse.Cloud.BeforeFindRequest) => {
-        const query = request.query; // the Parse.Query
+    Parse.Cloud.beforeFind(
+        "MyCustomClass",
+        (request: Parse.Cloud.BeforeFindRequest) => {
+            const query = request.query; // the Parse.Query
 
-        return new Parse.Query("QueryMe!");
-    });
+            return new Parse.Query("QueryMe!");
+        },
+    );
 
-    Parse.Cloud.beforeFind("MyCustomClass", async (request: Parse.Cloud.BeforeFindRequest) => {
-        const query = request.query; // the Parse.Query
+    Parse.Cloud.beforeFind(
+        "MyCustomClass",
+        async (request: Parse.Cloud.BeforeFindRequest) => {
+            const query = request.query; // the Parse.Query
 
-        return new Parse.Query("QueryMe, IN THE FUTURE!");
-    });
+            return new Parse.Query("QueryMe, IN THE FUTURE!");
+        },
+    );
 
-    Parse.Cloud.afterFind("MyCustomClass", async (request: Parse.Cloud.AfterFindRequest) => {
-        return new Parse.Object("MyCustomClass");
-    });
+    Parse.Cloud.afterFind(
+        "MyCustomClass",
+        async (request: Parse.Cloud.AfterFindRequest) => {
+            return new Parse.Object("MyCustomClass");
+        },
+    );
 
     Parse.Cloud.beforeLogin((request: Parse.Cloud.TriggerRequest) => {
         return Promise.resolve();
@@ -690,9 +765,13 @@ async function test_cloud_functions() {
 
     Parse.Cloud.beforeSaveFile((request: Parse.Cloud.FileTriggerRequest) => {});
 
-    Parse.Cloud.beforeDeleteFile((request: Parse.Cloud.FileTriggerRequest) => {});
+    Parse.Cloud.beforeDeleteFile(
+        (request: Parse.Cloud.FileTriggerRequest) => {},
+    );
 
-    Parse.Cloud.afterDeleteFile((request: Parse.Cloud.FileTriggerRequest) => {});
+    Parse.Cloud.afterDeleteFile(
+        (request: Parse.Cloud.FileTriggerRequest) => {},
+    );
 
     Parse.Cloud.define("AFunc", (request: Parse.Cloud.FunctionRequest) => {
         return "Some result";
@@ -731,7 +810,7 @@ async function test_cloud_functions() {
         },
     );
 
-    Parse.Cloud.define("AFunc", request => {
+    Parse.Cloud.define("AFunc", (request) => {
         // $ExpectType Params
         request.params;
 
@@ -739,20 +818,23 @@ async function test_cloud_functions() {
         request.params.anything;
     });
 
-    Parse.Cloud.define<() => void>("AFunc", request => {
+    Parse.Cloud.define<() => void>("AFunc", (request) => {
         // $ExpectType {}
         request.params;
     });
 
-    Parse.Cloud.define<(params: { something: string }) => number>("AFunc", request => {
-        // $ExpectType { something: string; }
-        request.params;
+    Parse.Cloud.define<(params: { something: string }) => number>(
+        "AFunc",
+        (request) => {
+            // $ExpectType { something: string; }
+            request.params;
 
-        // @ts-expect-error
-        request.params.somethingElse;
+            // @ts-expect-error
+            request.params.somethingElse;
 
-        return 123;
-    });
+            return 123;
+        },
+    );
 
     // @ts-expect-error
     Parse.Cloud.define("AFunc");
@@ -767,11 +849,11 @@ async function test_cloud_functions() {
         request.message("Message to associate with this job run");
     });
 
-    Parse.Cloud.startJob("AJob", {}).then(v => v);
+    Parse.Cloud.startJob("AJob", {}).then((v) => v);
 
-    Parse.Cloud.getJobStatus("AJob").then(v => v);
+    Parse.Cloud.getJobStatus("AJob").then((v) => v);
 
-    Parse.Cloud.getJobsData().then(v => v);
+    Parse.Cloud.getJobsData().then((v) => v);
 }
 
 class PlaceObject extends Parse.Object {}
@@ -788,7 +870,8 @@ function test_geo_points() {
     point = new Parse.GeoPoint(40.0, -30.0);
     point = new Parse.GeoPoint({ latitude: 40.0, longitude: -30.0 });
 
-    const userObject = Parse.User.current<Parse.User<{ location: Parse.GeoPoint }>>()!;
+    const userObject =
+        Parse.User.current<Parse.User<{ location: Parse.GeoPoint }>>()!;
 
     // User's location
     const userGeoPoint = userObject.get("location");
@@ -806,7 +889,9 @@ function test_geo_points() {
     const query2 = new Parse.Query(PlaceObject);
     query2.withinGeoBox("location", southwestOfSF, northeastOfSF);
 
-    const query3 = new Parse.Query("PlaceObject").find().then((o: Parse.Object[]) => {});
+    const query3 = new Parse.Query("PlaceObject")
+        .find()
+        .then((o: Parse.Object[]) => {});
 }
 
 function test_push() {
@@ -1025,17 +1110,26 @@ async function test_schema(
     schema.addDate("field", { defaultValue: notDate });
 
     schema.addFile("field");
-    schema.addFile("field", { defaultValue: new Parse.File("myfile", []), required: true });
+    schema.addFile("field", {
+        defaultValue: new Parse.File("myfile", []),
+        required: true,
+    });
     // @ts-expect-error
     schema.addFile("field", { defaultValue: notFile });
 
     schema.addGeoPoint("field");
-    schema.addGeoPoint("field", { defaultValue: new Parse.GeoPoint(), required: true });
+    schema.addGeoPoint("field", {
+        defaultValue: new Parse.GeoPoint(),
+        required: true,
+    });
     // @ts-expect-error
     schema.addGeoPoint("field", { defaultValue: notGeopoint });
 
     schema.addPolygon("field");
-    schema.addPolygon("field", { defaultValue: new Parse.Polygon([]), required: true });
+    schema.addPolygon("field", {
+        defaultValue: new Parse.Polygon([]),
+        required: true,
+    });
     // @ts-expect-error
     schema.addPolygon("field", { defaultValue: notPolygon });
 
@@ -1051,7 +1145,10 @@ async function test_schema(
     /**
      * @todo Infer defaultValue type from targetClass
      */
-    schema.addPointer("field", "_User", { defaultValue: new Parse.User().toPointer(), required: true });
+    schema.addPointer("field", "_User", {
+        defaultValue: new Parse.User().toPointer(),
+        required: true,
+    });
     // @ts-expect-error
     schema.addPointer("field", { defaultValue: notPointer });
 
@@ -1069,12 +1166,12 @@ async function test_schema(
 
     schema.deleteField("defaultFieldString");
     schema.deleteIndex("testIndex");
-    schema.delete().then(results => {});
+    schema.delete().then((results) => {});
     // $ExpectType RestSchema
     await schema.get();
-    schema.purge().then(results => {});
-    schema.save().then(results => {});
-    schema.update().then(results => {});
+    schema.purge().then((results) => {});
+    schema.save().then((results) => {});
+    schema.update().then((results) => {});
 
     function testGenericType() {
         interface iTestAttributes {
@@ -1145,17 +1242,26 @@ function testObject() {
         new Parse.Object<{ example: boolean }>("TestObject", { example: true });
 
         // $ExpectType Object<{ example: string; }>
-        new Parse.Object("TestObject", { example: "hello" }, { ignoreValidation: true });
+        new Parse.Object(
+            "TestObject",
+            { example: "hello" },
+            { ignoreValidation: true },
+        );
 
         // @ts-expect-error
         new Parse.Object<{ example: string }>("TestObject");
 
         // @ts-expect-error
-        new Parse.Object<{ example: boolean }>("TestObject", { example: "hello" });
+        new Parse.Object<{ example: boolean }>("TestObject", {
+            example: "hello",
+        });
     }
 
     function testStaticMethods() {
-        async function testSaveAll(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: string }>) {
+        async function testSaveAll(
+            objUntyped: Parse.Object,
+            objTyped: Parse.Object<{ example: string }>,
+        ) {
             // $ExpectType Object<Attributes>[]
             await Parse.Object.saveAll([objUntyped]);
 
@@ -1163,14 +1269,20 @@ function testObject() {
             await Parse.Object.saveAll([objTyped]);
 
             // $ExpectType [Object<Attributes>, Object<{ example: string; }>]
-            await Parse.Object.saveAll<[typeof objUntyped, typeof objTyped]>([objUntyped, objTyped]);
+            await Parse.Object.saveAll<[typeof objUntyped, typeof objTyped]>([
+                objUntyped,
+                objTyped,
+            ]);
 
             // @ts-expect-error
             await Parse.Object.saveAll([123]);
         }
     }
 
-    function testAttributes(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: string }>) {
+    function testAttributes(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: string }>,
+    ) {
         // $ExpectType any
         objUntyped.attributes.whatever;
 
@@ -1181,7 +1293,10 @@ function testObject() {
         objTyped.attributes.other;
     }
 
-    function testAdd(objUntyped: Parse.Object, objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>) {
+    function testAdd(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>,
+    ) {
         // $ExpectType false | Object<Attributes>
         objUntyped.add("whatever", "hello");
 
@@ -1198,7 +1313,10 @@ function testObject() {
         objTyped.add("whatever", "hello");
     }
 
-    function testAddAll(objUntyped: Parse.Object, objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>) {
+    function testAddAll(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>,
+    ) {
         // $ExpectType false | Object<Attributes>
         objUntyped.addAll("whatever", ["hello", 100]);
 
@@ -1235,7 +1353,10 @@ function testObject() {
         objTyped.addAllUnique("whatever", ["hello"]);
     }
 
-    function testAddUnique(objUntyped: Parse.Object, objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>) {
+    function testAddUnique(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>,
+    ) {
         // $ExpectType false | Object<Attributes>
         objUntyped.addUnique("whatever", "hello");
 
@@ -1252,7 +1373,10 @@ function testObject() {
         objTyped.addUnique("whatever", "hello");
     }
 
-    function testDirty(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: string }>) {
+    function testDirty(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: string }>,
+    ) {
         // $ExpectType boolean
         objUntyped.dirty();
 
@@ -1269,7 +1393,10 @@ function testObject() {
         objTyped.dirty("other");
     }
 
-    function testEquals(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: string }>) {
+    function testEquals(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: string }>,
+    ) {
         // $ExpectType boolean
         objUntyped.equals(objTyped);
 
@@ -1280,7 +1407,10 @@ function testObject() {
         objUntyped.equals("blah");
     }
 
-    function testEscape(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: string }>) {
+    function testEscape(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: string }>,
+    ) {
         // $ExpectType string
         objUntyped.escape("whatever");
 
@@ -1291,7 +1421,10 @@ function testObject() {
         objTyped.escape("other");
     }
 
-    function testFetchWithInclude(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: string }>) {
+    function testFetchWithInclude(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: string }>,
+    ) {
         // $ExpectType Promise<Object<Attributes>>
         objUntyped.fetchWithInclude("whatever");
 
@@ -1329,7 +1462,10 @@ function testObject() {
         Parse.Object.fetchAllWithInclude([objTyped], "notAnAttribute");
     }
 
-    function testGet(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: number }>) {
+    function testGet(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: number }>,
+    ) {
         // $ExpectType any
         objUntyped.get("whatever");
 
@@ -1340,7 +1476,10 @@ function testObject() {
         objTyped.get("other");
     }
 
-    function testHas(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: number }>) {
+    function testHas(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: number }>,
+    ) {
         // $ExpectType boolean
         objUntyped.has("whatever");
 
@@ -1351,7 +1490,10 @@ function testObject() {
         objTyped.has("other");
     }
 
-    function testIncrement(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: number }>) {
+    function testIncrement(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: number }>,
+    ) {
         // $ExpectType false | Object<Attributes>
         objUntyped.increment("whatever");
 
@@ -1371,7 +1513,10 @@ function testObject() {
         objTyped.increment("other");
     }
 
-    function testDecrement(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: number }>) {
+    function testDecrement(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: number }>,
+    ) {
         // $ExpectType false | Object<Attributes>
         objUntyped.decrement("whatever");
 
@@ -1391,7 +1536,10 @@ function testObject() {
         objTyped.decrement("other");
     }
 
-    function testNewInstance(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: number }>) {
+    function testNewInstance(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: number }>,
+    ) {
         // $ExpectType Object<Attributes>
         objUntyped.newInstance();
 
@@ -1399,7 +1547,10 @@ function testObject() {
         objTyped.newInstance();
     }
 
-    function testOp(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: number }>) {
+    function testOp(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: number }>,
+    ) {
         // $ExpectType any
         objUntyped.op("whatever");
 
@@ -1410,7 +1561,10 @@ function testObject() {
         objTyped.op("other");
     }
 
-    function testRelation(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: number; rel: Parse.Relation }>) {
+    function testRelation(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: number; rel: Parse.Relation }>,
+    ) {
         // $ExpectType Relation<Object<Attributes>, Object<Attributes>>
         objUntyped.relation("whatever");
 
@@ -1424,7 +1578,10 @@ function testObject() {
         objTyped.relation("other");
     }
 
-    function testRemove(objUntyped: Parse.Object, objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>) {
+    function testRemove(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>,
+    ) {
         // $ExpectType false | Object<Attributes>
         objUntyped.remove("whatever", "hello");
 
@@ -1441,7 +1598,10 @@ function testObject() {
         objTyped.remove("whatever", "hello");
     }
 
-    function testRemoveAll(objUntyped: Parse.Object, objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>) {
+    function testRemoveAll(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ stringList: string[]; thing: boolean }>,
+    ) {
         // $ExpectType false | Object<Attributes>
         objUntyped.removeAll("whatever", ["hello", 100]);
 
@@ -1458,7 +1618,10 @@ function testObject() {
         objTyped.removeAll("whatever", ["hello"]);
     }
 
-    function testRevert(objUntyped: Parse.Object, objTyped: Parse.Object<{ thingOne: number; thingTwo: boolean }>) {
+    function testRevert(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ thingOne: number; thingTwo: boolean }>,
+    ) {
         // $ExpectType void
         objUntyped.revert();
 
@@ -1616,7 +1779,10 @@ function testObject() {
         someParseFile: Parse.File;
     }
 
-    function testToJSON(objUntyped: Parse.Object, objTyped: Parse.Object<AttributesAllTypes>) {
+    function testToJSON(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<AttributesAllTypes>,
+    ) {
         // $ExpectType ToJSON<Attributes> & JSONBaseAttributes
         const JSONUntyped = objUntyped.toJSON();
         // $ExpectType string
@@ -1670,7 +1836,10 @@ function testObject() {
         JSONTyped.someParseFile;
     }
 
-    function testUnset(objUntyped: Parse.Object, objTyped: Parse.Object<{ example: string }>) {
+    function testUnset(
+        objUntyped: Parse.Object,
+        objTyped: Parse.Object<{ example: string }>,
+    ) {
         // $ExpectType false | Object<Attributes>
         objUntyped.unset("whatever");
 
@@ -1798,7 +1967,11 @@ function testQuery() {
         // $ExpectType Query<MySubClass>
         query.containedBy("attribute1", ["a", "b", "c"]);
         // $ExpectType Query<MySubClass>
-        query.containedBy("attribute3", ["objectId1", "objectId2", "objectId3"]);
+        query.containedBy("attribute3", [
+            "objectId1",
+            "objectId2",
+            "objectId3",
+        ]);
         // @ts-expect-error
         query.containedBy("attribute2", ["a", "b", "c"]);
         // @ts-expect-error
@@ -1809,7 +1982,11 @@ function testQuery() {
         // $ExpectType Query<MySubClass>
         query.containedIn("attribute1", ["a", "b", "c"]);
         // $ExpectType Query<MySubClass>
-        query.containedIn("attribute3", ["objectId1", "objectId2", "objectId3"]);
+        query.containedIn("attribute3", [
+            "objectId1",
+            "objectId2",
+            "objectId3",
+        ]);
         // @ts-expect-error
         query.containedIn("attribute2", ["a", "b", "c"]);
         // @ts-expect-error
@@ -1843,15 +2020,35 @@ function testQuery() {
         query.doesNotExist("nonexistentProp");
 
         // $ExpectType Query<MySubClass>
-        query.doesNotMatchKeyInQuery("attribute1", "x", new Parse.Query(AnotherSubClass));
+        query.doesNotMatchKeyInQuery(
+            "attribute1",
+            "x",
+            new Parse.Query(AnotherSubClass),
+        );
         // @ts-expect-error
-        query.doesNotMatchKeyInQuery("unexistenProp", "x", new Parse.Query(AnotherSubClass));
+        query.doesNotMatchKeyInQuery(
+            "unexistenProp",
+            "x",
+            new Parse.Query(AnotherSubClass),
+        );
         // @ts-expect-error
-        query.doesNotMatchKeyInQuery("attribute1", "unknownKey", new Parse.Query(AnotherSubClass));
+        query.doesNotMatchKeyInQuery(
+            "attribute1",
+            "unknownKey",
+            new Parse.Query(AnotherSubClass),
+        );
         // $ExpectType Query<MySubClass>
-        query.doesNotMatchKeyInQuery("objectId", "x", new Parse.Query(AnotherSubClass));
+        query.doesNotMatchKeyInQuery(
+            "objectId",
+            "x",
+            new Parse.Query(AnotherSubClass),
+        );
         // $ExpectType Query<MySubClass>
-        query.doesNotMatchKeyInQuery("updatedAt", "x", new Parse.Query(AnotherSubClass));
+        query.doesNotMatchKeyInQuery(
+            "updatedAt",
+            "x",
+            new Parse.Query(AnotherSubClass),
+        );
 
         // $ExpectType Query<MySubClass>
         query.doesNotMatchQuery("attribute1", new Parse.Query("Example"));
@@ -1947,11 +2144,23 @@ function testQuery() {
         query.matches("nonexistentProp", /a regex/);
 
         // $ExpectType Query<MySubClass>
-        query.matchesKeyInQuery("attribute1", "x", new Parse.Query(AnotherSubClass));
+        query.matchesKeyInQuery(
+            "attribute1",
+            "x",
+            new Parse.Query(AnotherSubClass),
+        );
         // @ts-expect-error
-        query.matchesKeyInQuery("nonexistentProp", "x", new Parse.Query(AnotherSubClass));
+        query.matchesKeyInQuery(
+            "nonexistentProp",
+            "x",
+            new Parse.Query(AnotherSubClass),
+        );
         // @ts-expect-error
-        query.matchesKeyInQuery("attribute1", "unknownKey", new Parse.Query(AnotherSubClass));
+        query.matchesKeyInQuery(
+            "attribute1",
+            "unknownKey",
+            new Parse.Query(AnotherSubClass),
+        );
 
         // $ExpectType Query<MySubClass>
         query.matchesQuery("attribute1", new Parse.Query("Example"));
@@ -1996,9 +2205,17 @@ function testQuery() {
         query.withCount(true);
 
         // $ExpectType Query<MySubClass>
-        query.withinGeoBox("attribute1", new Parse.GeoPoint(), new Parse.GeoPoint());
+        query.withinGeoBox(
+            "attribute1",
+            new Parse.GeoPoint(),
+            new Parse.GeoPoint(),
+        );
         // @ts-expect-error
-        query.withinGeoBox("nonexistentProp", new Parse.GeoPoint(), new Parse.GeoPoint());
+        query.withinGeoBox(
+            "nonexistentProp",
+            new Parse.GeoPoint(),
+            new Parse.GeoPoint(),
+        );
 
         // $ExpectType Query<MySubClass>
         query.withinKilometers("attribute1", new Parse.GeoPoint(), 100);
@@ -2060,7 +2277,10 @@ function testRole() {
         new Parse.Role<{ example: string }>("TestRole", acl);
     }
 
-    function testAttributes(roleUntyped: Parse.Role, roleTyped: Parse.Role<{ example: number }>) {
+    function testAttributes(
+        roleUntyped: Parse.Role,
+        roleTyped: Parse.Role<{ example: number }>,
+    ) {
         // $ExpectType Attributes
         roleUntyped.attributes;
 
@@ -2176,11 +2396,8 @@ function testEventuallyQueue() {
 
 function LiveQueryEvents() {
     function testLiveQueryEvents() {
-        Parse.LiveQuery.on("open", () => {
-        });
-        Parse.LiveQuery.on("close", () => {
-        });
-        Parse.LiveQuery.on("error", (error) => {
-        });
+        Parse.LiveQuery.on("open", () => {});
+        Parse.LiveQuery.on("close", () => {});
+        Parse.LiveQuery.on("error", (error) => {});
     }
 }

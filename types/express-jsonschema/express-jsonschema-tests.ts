@@ -1,10 +1,19 @@
-import { addSchemaProperties, JsonSchemaCustomPropertyError, JsonSchemaValidation, validate } from "express-jsonschema";
+import {
+    addSchemaProperties,
+    JsonSchemaCustomPropertyError,
+    JsonSchemaValidation,
+    validate,
+} from "express-jsonschema";
 
 import { NextFunction, Request, Response } from "express";
 import { JSONSchema4 } from "json-schema";
 
 let jsonSchema: JSONSchema4;
-let expressMiddleware: (req: Request, res: Response, next: NextFunction) => void;
+let expressMiddleware: (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+) => void;
 
 jsonSchema = {
     id: "foo",
@@ -22,9 +31,7 @@ jsonSchema = {
     minLength: 7,
     pattern: "baz",
     additionalItems: true,
-    items: [
-        { items: [{ minLength: 4 }] },
-    ],
+    items: [{ items: [{ minLength: 4 }] }],
     maxItems: 4,
     minItems: 5,
     uniqueItems: true,

@@ -1,4 +1,5 @@
-angular.module("app", ["ngIdle"])
+angular
+    .module("app", ["ngIdle"])
     .config([
         "KeepaliveProvider",
         "IdleProvider",
@@ -8,7 +9,9 @@ angular.module("app", ["ngIdle"])
             idleProvider: angular.idle.IIdleProvider,
             titleProvider: angular.idle.ITitleProvider,
         ) => {
-            idleProvider.interrupt("mousemove keydown DOMMouseScroll mousewheel mousedown");
+            idleProvider.interrupt(
+                "mousemove keydown DOMMouseScroll mousewheel mousedown",
+            );
             idleProvider.idle(5);
             idleProvider.timeout(5);
             idleProvider.keepalive(true);

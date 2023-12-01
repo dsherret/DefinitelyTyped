@@ -171,7 +171,10 @@ webAuth.renewAuth(
     (err, authResult) => {},
 );
 
-webAuth.changePassword({ connection: "the_connection", email: "me@example.com" }, err => {});
+webAuth.changePassword(
+    { connection: "the_connection", email: "me@example.com" },
+    (err) => {},
+);
 
 webAuth.passwordlessStart(
     {
@@ -222,13 +225,16 @@ webAuth.client.login(
 // @ts-expect-error
 webAuth.popup.buildPopupHandler();
 webAuth.popup.preload({});
-webAuth.popup.authorize({ domain: "", redirectUri: "", responseType: "code" }, (err, result) => {
-    if (err) /* handle error */ return;
-    // do something with results
-    if (result) {
-        // ...
-    }
-});
+webAuth.popup.authorize(
+    { domain: "", redirectUri: "", responseType: "code" },
+    (err, result) => {
+        if (err) /* handle error */ return;
+        // do something with results
+        if (result) {
+            // ...
+        }
+    },
+);
 webAuth.popup.loginWithCredentials({}, (err, data) => {
     if (err) /* handle error */ return;
     // do something with data
@@ -240,10 +246,13 @@ webAuth.popup.passwordlessVerify(
         // do something with data
     },
 );
-webAuth.popup.signupAndLogin({ email: "", password: "", connection: "" }, (err, data) => {
-    if (err) /* handle error */ return;
-    // do something with data
-});
+webAuth.popup.signupAndLogin(
+    { email: "", password: "", connection: "" },
+    (err, data) => {
+        if (err) /* handle error */ return;
+        // do something with data
+    },
+);
 
 webAuth.redirect.signupAndLogin(
     {
@@ -261,7 +270,15 @@ webAuth.redirect.signupAndLogin(
     },
 );
 
-webAuth.login({ username: "bar", password: "foo", state: "1234", onRedirecting: () => {} }, (err, data) => {});
+webAuth.login(
+    {
+        username: "bar",
+        password: "foo",
+        state: "1234",
+        onRedirecting: () => {},
+    },
+    (err, data) => {},
+);
 
 // cross-origin verification
 webAuth.crossOriginVerification();
@@ -298,7 +315,7 @@ webAuth.checkSession({}, (err, authResult: auth0.Auth0Result) => {
     }
 });
 
-const input: HTMLInputElement = document.querySelector("input[name=\"captcha\"]");
+const input: HTMLInputElement = document.querySelector('input[name="captcha"]');
 // $ExpectType Captcha
 webAuth.renderCaptcha(input);
 // $ExpectType Captcha
@@ -307,11 +324,11 @@ webAuth.renderCaptcha(input, {});
 webAuth.renderCaptcha(input, {
     lang: "pl",
     templates: {
-        error: error => {
+        error: (error) => {
             return "error";
         },
-        auth0: challenge => "auth0",
-        recaptcha_v2: challenge => "recaptcha_v2",
+        auth0: (challenge) => "auth0",
+        recaptcha_v2: (challenge) => "recaptcha_v2",
     },
 });
 // $ExpectType Captcha
@@ -320,14 +337,14 @@ webAuth.renderCaptcha(
     {
         lang: "pl",
         templates: {
-            error: error => {
+            error: (error) => {
                 return "error";
             },
-            auth0: challenge => "auth0",
-            recaptcha_v2: challenge => "recaptcha_v2",
+            auth0: (challenge) => "auth0",
+            recaptcha_v2: (challenge) => "recaptcha_v2",
         },
     },
-    error => {
+    (error) => {
         if (error) {
             // handle error
         }
@@ -335,7 +352,7 @@ webAuth.renderCaptcha(
 );
 
 // $ExpectType void
-webAuth.renderCaptcha(input).reload(err => {
+webAuth.renderCaptcha(input).reload((err) => {
     if (err) {
         // handle error
     }
@@ -413,9 +430,18 @@ authentication.dbConnection.signup({});
 // @ts-expect-error
 authentication.dbConnection.signup({ connection: "bla", email: "blabla" });
 // @ts-expect-error
-authentication.dbConnection.signup({ connection: "bla", email: "blabla", password: "123456" });
+authentication.dbConnection.signup({
+    connection: "bla",
+    email: "blabla",
+    password: "123456",
+});
 authentication.dbConnection.signup(
-    { connection: "bla", email: "blabla", password: "123456", username: "blabla" },
+    {
+        connection: "bla",
+        email: "blabla",
+        password: "123456",
+        username: "blabla",
+    },
     (auth0Error, results) => {
         if (auth0Error) {
             const { error, errorDescription } = auth0Error;
@@ -441,9 +467,15 @@ authentication.dbConnection.signup(
         console.assert(data.email !== null);
     },
 );
-authentication.dbConnection.changePassword({ connection: "bla", email: "blabla" }, () => {});
+authentication.dbConnection.changePassword(
+    { connection: "bla", email: "blabla" },
+    () => {},
+);
 
-authentication.passwordless.start({ connection: "bla", send: "link" }, () => {});
+authentication.passwordless.start(
+    { connection: "bla", send: "link" },
+    () => {},
+);
 authentication.passwordless.verify(
     { connection: "bla", verificationCode: "asdfasd", email: "me@example.com" },
     () => {},

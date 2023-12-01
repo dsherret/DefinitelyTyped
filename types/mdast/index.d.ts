@@ -1,4 +1,9 @@
-import type { Data as UnistData, Literal as UnistLiteral, Node as UnistNode, Parent as UnistParent } from "unist";
+import type {
+    Data as UnistData,
+    Literal as UnistLiteral,
+    Node as UnistNode,
+    Parent as UnistParent,
+} from "unist";
 
 // ## Enumeration
 
@@ -175,7 +180,8 @@ export interface BlockContentMap {
  * To register custom mdast nodes, add them to {@link DefinitionContentMap}.
  * They will be automatically added here.
  */
-export type DefinitionContent = DefinitionContentMap[keyof DefinitionContentMap];
+export type DefinitionContent =
+    DefinitionContentMap[keyof DefinitionContentMap];
 
 /**
  * Registry of all mdast nodes that can occur where {@link DefinitionContent}
@@ -205,7 +211,8 @@ export interface DefinitionContentMap {
  * To register custom mdast nodes, add them to {@link FrontmatterContentMap}.
  * They will be automatically added here.
  */
-export type FrontmatterContent = FrontmatterContentMap[keyof FrontmatterContentMap];
+export type FrontmatterContent =
+    FrontmatterContentMap[keyof FrontmatterContentMap];
 
 /**
  * Registry of all mdast nodes that can occur where {@link FrontmatterContent}
@@ -454,7 +461,10 @@ export type Parents = Extract<Nodes, UnistParent>;
  * {@link FrontmatterContent}, or {@link DefinitionContent}.
  * They will be automatically added here.
  */
-export type TopLevelContent = BlockContent | FrontmatterContent | DefinitionContent;
+export type TopLevelContent =
+    | BlockContent
+    | FrontmatterContent
+    | DefinitionContent;
 
 // ## Abstract nodes
 

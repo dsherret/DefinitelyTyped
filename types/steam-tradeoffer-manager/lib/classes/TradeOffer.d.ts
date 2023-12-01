@@ -145,7 +145,11 @@ declare class TradeOffer {
      * - `inventory` - An array of the user's inventory items, as `EconItem` objects
      * - `currencies` - An array of the user's currency items, as `EconItem` objects
      */
-    getPartnerInventoryContents(appid: number, contextid: number, callback: TradeOfferManager.InventoryCallback): void;
+    getPartnerInventoryContents(
+        appid: number,
+        contextid: number,
+        callback: TradeOfferManager.InventoryCallback,
+    ): void;
 
     /**
      * Gets the contents of your trading partner's inventory for a particular app and context.
@@ -158,7 +162,11 @@ declare class TradeOffer {
      * - `currencies` - An array of the user's currency items, as `EconItem` objects
      * @deprecated Use getPartnerInventoryContents instead.
      */
-    loadPartnerInventory(appid: number, contextid: number, callback: TradeOfferManager.InventoryCallback): void;
+    loadPartnerInventory(
+        appid: number,
+        contextid: number,
+        callback: TradeOfferManager.InventoryCallback,
+    ): void;
 
     /**
      * Adds a given item to a new trade offer. The item object should be in the same format as is returned by the Steam inventory.
@@ -261,7 +269,11 @@ declare class TradeOffer {
      * - `them` - An object containing the other user's user data
      */
     getUserDetails(
-        callback: (err: Error | null, me: TradeOffer.UserDetails, them: TradeOffer.UserDetails) => void,
+        callback: (
+            err: Error | null,
+            me: TradeOffer.UserDetails,
+            them: TradeOffer.UserDetails,
+        ) => void,
     ): void;
 
     /**
@@ -283,14 +295,14 @@ declare class TradeOffer {
     send(
         callback?: (
             err:
-                | TradeOfferManager.EResultError & {
-                    cause?:
-                        | "TradeBan"
-                        | "NewDevice"
-                        | "TargetCannotTrade"
-                        | "OfferLimitExceeded"
-                        | "ItemServerUnavailable";
-                }
+                | (TradeOfferManager.EResultError & {
+                      cause?:
+                          | "TradeBan"
+                          | "NewDevice"
+                          | "TargetCannotTrade"
+                          | "OfferLimitExceeded"
+                          | "ItemServerUnavailable";
+                  })
                 | null,
             status: "pending" | "sent",
         ) => void,
@@ -302,7 +314,9 @@ declare class TradeOffer {
      * @param callback - Optional. A callback to be invoked when complete.
      * - `err` - An `Error` object on failure, `null` on success
      */
-    cancel(callback?: (err: TradeOfferManager.EResultError | null) => void): void;
+    cancel(
+        callback?: (err: TradeOfferManager.EResultError | null) => void,
+    ): void;
 
     /**
      * Alias of {@link cancel}
@@ -310,7 +324,9 @@ declare class TradeOffer {
      * @param callback - Optional. A callback to be invoked when complete.
      * - `err` - An `Error` object on failure, `null` on success
      */
-    decline(callback?: (err: TradeOfferManager.EResultError | null) => void): void;
+    decline(
+        callback?: (err: TradeOfferManager.EResultError | null) => void,
+    ): void;
 
     /**
      * Accepts an offer that was sent to us. Once the callback fires, you can call getReceivedItems to get details about the items you received,
@@ -333,7 +349,11 @@ declare class TradeOffer {
     accept(
         skipStateUpdate?: boolean,
         callback?: (
-            err: TradeOfferManager.EResultError & { cause?: "TradeBan" | "NewDevice" | "TargetCannotTrade" } | null,
+            err:
+                | (TradeOfferManager.EResultError & {
+                      cause?: "TradeBan" | "NewDevice" | "TargetCannotTrade";
+                  })
+                | null,
             status: "pending" | "accepted" | "escrow",
         ) => void,
     ): void;
@@ -357,7 +377,11 @@ declare class TradeOffer {
      */
     accept(
         callback?: (
-            err: TradeOfferManager.EResultError & { cause?: "TradeBan" | "NewDevice" | "TargetCannotTrade" } | null,
+            err:
+                | (TradeOfferManager.EResultError & {
+                      cause?: "TradeBan" | "NewDevice" | "TargetCannotTrade";
+                  })
+                | null,
             status: "pending" | "accepted" | "escrow",
         ) => void,
     ): void;
@@ -381,7 +405,9 @@ declare class TradeOffer {
      * @param callback - Required. A callback to be invoked when complete.
      * - `err` - An `Error` object on failure, `null` on success
      */
-    update(callback: (err: TradeOfferManager.EResultError | null) => void): void;
+    update(
+        callback: (err: TradeOfferManager.EResultError | null) => void,
+    ): void;
 
     /**
      * Can be called on an accepted offer to retrieve item data about the items you received, including names, descriptions,
@@ -392,7 +418,10 @@ declare class TradeOffer {
      * - `err` - An `Error` object on failure, `null` on success
      * - `items` - An array of `EconItem` objects that you received
      */
-    getReceivedItems(getActions: boolean, callback: (err: Error | null, items: CEconItem[]) => void): void;
+    getReceivedItems(
+        getActions: boolean,
+        callback: (err: Error | null, items: CEconItem[]) => void,
+    ): void;
 
     /**
      * Can be called on an accepted offer to retrieve item data about the items you received, including names, descriptions,
@@ -402,7 +431,9 @@ declare class TradeOffer {
      * - `err` - An `Error` object on failure, `null` on success
      * - `items` - An array of `EconItem` objects that you received
      */
-    getReceivedItems(callback: (err: Error | null, items: CEconItem[]) => void): void;
+    getReceivedItems(
+        callback: (err: Error | null, items: CEconItem[]) => void,
+    ): void;
 
     /**
      * Gets detailed information for the items exchanged in this trade, including old and new asset IDs. This can be called for any
@@ -474,7 +505,10 @@ declare class TradeOffer {
      * - `receivedItems` - An array of `EconItem` objects for items you received in this trade (see below)
      * - `sentItems` - An array of `EconItem` objects for items you lost in this trade (see below)
      */
-    getExchangeDetails(getDetailsIfFailed: boolean, callback: TradeOffer.ExchangeDetailsCallback): void;
+    getExchangeDetails(
+        getDetailsIfFailed: boolean,
+        callback: TradeOffer.ExchangeDetailsCallback,
+    ): void;
 }
 
 declare namespace TradeOffer {

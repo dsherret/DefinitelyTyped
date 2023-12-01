@@ -83,6 +83,15 @@ export function authenticate(
 
 export function getBewit(uri: string, options: BewitOptions): string;
 
-export function header(uri: string, method: string, options?: HeaderOptions): Header;
+export function header(
+    uri: string,
+    method: string,
+    options?: HeaderOptions,
+): Header;
 
-export function message(host: string, port: number, message: string, options?: MessageOptions): Message;
+export function message(
+    host: string,
+    port: number,
+    message: string,
+    options?: MessageOptions,
+): Message;

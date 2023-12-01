@@ -12,12 +12,23 @@ export default class CrossZone extends Behaviour {
     /**
      * Constructs a CrossZone behaviour instance.
      */
-    constructor(zone: Zone, crossType?: string, life?: number, easing?: EasingFunction, isEnabled?: boolean);
+    constructor(
+        zone: Zone,
+        crossType?: string,
+        life?: number,
+        easing?: EasingFunction,
+        isEnabled?: boolean,
+    );
 
     /**
      * Resets the behaviour properties.
      */
-    reset(zone: Zone, crossType?: EasingFunction, life?: number, easing?: EasingFunction): void;
+    reset(
+        zone: Zone,
+        crossType?: EasingFunction,
+        life?: number,
+        easing?: EasingFunction,
+    ): void;
     reset(life?: number, easing?: EasingFunction): void;
 
     /**

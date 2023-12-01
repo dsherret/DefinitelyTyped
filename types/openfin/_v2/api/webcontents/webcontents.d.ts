@@ -2,14 +2,21 @@ import { Identity } from "../../identity";
 import Transport from "../../transport/transport";
 import { EmitterBase } from "../base";
 import { WebContentsEventMapping } from "../events/webcontents";
-import { Area, FindInPageOptions, PrinterInfo, PrintOptions } from "../window/window";
+import {
+    Area,
+    FindInPageOptions,
+    PrinterInfo,
+    PrintOptions,
+} from "../window/window";
 declare type ImageFormat = "bmp" | "jpg" | "png";
 export interface CapturePageOptions {
     area?: Area | undefined;
     format?: ImageFormat | undefined;
     quality?: number | undefined;
 }
-export declare class WebContents<T extends WebContentsEventMapping> extends EmitterBase<T> {
+export declare class WebContents<
+    T extends WebContentsEventMapping,
+> extends EmitterBase<T> {
     entityType: string;
     constructor(wire: Transport, identity: Identity, entityType: string);
     capturePage(options?: CapturePageOptions): Promise<string>;
@@ -25,9 +32,7 @@ export declare class WebContents<T extends WebContentsEventMapping> extends Emit
     findInPage(searchTerm: string, options?: FindInPageOptions): Promise<void>;
     stopFindInPage(action: string): Promise<void>;
     getPrinters(): Promise<PrinterInfo>;
-    focus({ emitSynthFocused }?: {
-        emitSynthFocused: boolean;
-    }): Promise<void>;
+    focus({ emitSynthFocused }?: { emitSynthFocused: boolean }): Promise<void>;
     showDeveloperTools(): Promise<void>;
 }
 export {};

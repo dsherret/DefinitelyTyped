@@ -114,7 +114,11 @@ interface WebPage {
     // evaluate<T1, T2, T3, R>(callback: (arg1: T1, arg2: T2, arg3: T3) => R, arg1: T1, arg2: T2, arg3: T3): Promise<R>;
     // evaluate<R>(callback: (...args: any[]) => R, ...args: any[]): Promise<R>;
     evaluate<R>(callback: (...args: any[]) => R, ...args: any[]): R;
-    evaluateAsync(fn: (...args: any[]) => void, delayMilli: number, ...args: any[]): void;
+    evaluateAsync(
+        fn: (...args: any[]) => void,
+        delayMilli: number,
+        ...args: any[]
+    ): void;
     evaluateJavaScript(str: string): any; // :TODO: elaborate this when documentation improves
     getPage(windowName: string): WebPage;
     go(index: number): void;
@@ -126,9 +130,24 @@ interface WebPage {
     injectJs(filename: string): boolean;
     // open(url: string): Promise<string>;
     open(url: string, callback?: (status: string) => any): Promise<string>;
-    open(url: string, method: string, callback: (status: string) => any): Promise<string>; // maybe data is missing
-    open(url: string, method: string, data: any, callback?: (status: string) => any): Promise<string>;
-    open(url: string, method: string, data: any, headers: any, callback: (status: string) => any): Promise<string>;
+    open(
+        url: string,
+        method: string,
+        callback: (status: string) => any,
+    ): Promise<string>; // maybe data is missing
+    open(
+        url: string,
+        method: string,
+        data: any,
+        callback?: (status: string) => any,
+    ): Promise<string>;
+    open(
+        url: string,
+        method: string,
+        data: any,
+        headers: any,
+        callback: (status: string) => any,
+    ): Promise<string>;
     openUrl(url: string, httpConf: HttpConf, settings: any): Promise<string>; // :TODO: elaborate this when documentation improves
     release(): void; // DEPRECATED
     reload(): void;
@@ -145,10 +164,32 @@ interface WebPage {
     ): Promise<void>;
     renderBase64(type: string): Promise<string>;
     renderBase64(format: string): string;
-    sendEvent(mouseEventType: string, mouseX?: number, mouseY?: number, button?: string): Promise<void>;
-    sendEvent(keyboardEventType: string, key: string, null1?: null, null2?: null, modifier?: number): Promise<void>;
-    sendEvent(mouseEventType: string, mouseX?: number, mouseY?: number, button?: string): void;
-    sendEvent(keyboardEventType: string, keyOrKeys: any, aNull?: any, bNull?: any, modifier?: number): void;
+    sendEvent(
+        mouseEventType: string,
+        mouseX?: number,
+        mouseY?: number,
+        button?: string,
+    ): Promise<void>;
+    sendEvent(
+        keyboardEventType: string,
+        key: string,
+        null1?: null,
+        null2?: null,
+        modifier?: number,
+    ): Promise<void>;
+    sendEvent(
+        mouseEventType: string,
+        mouseX?: number,
+        mouseY?: number,
+        button?: string,
+    ): void;
+    sendEvent(
+        keyboardEventType: string,
+        keyOrKeys: any,
+        aNull?: any,
+        bNull?: any,
+        modifier?: number,
+    ): void;
     setContent(html: string, url: string): Promise<string>;
     setContent(content: string, url: string): void;
     stop(): void;
@@ -172,25 +213,45 @@ interface WebPage {
     onInitialized(): any;
     onLoadFinished(status: string): any;
     onLoadStarted(): any;
-    onNavigationRequested(url: string, type: string, willNavigate: boolean, main: boolean): any;
+    onNavigationRequested(
+        url: string,
+        type: string,
+        willNavigate: boolean,
+        main: boolean,
+    ): any;
     onPageCreated(newPage: WebPage): any;
     onPrompt(msg: string, defaultVal: string): string;
     onResourceError(resourceError: ResourceError): any;
     onResourceReceived(response: ResourceResponse): any;
-    onResourceRequested(requestData: ResourceRequest, networkRequest: NetworkRequest): any;
+    onResourceRequested(
+        requestData: ResourceRequest,
+        networkRequest: NetworkRequest,
+    ): any;
     onUrlChanged(targetUrl: string): any;
 
     // Callback triggers
     closing(closingPage: WebPage): void;
     initialized(): void;
     javaScriptAlertSent(msg: string): void;
-    javaScriptConsoleMessageSent(msg: string, lineNum?: number, sourceId?: string): void;
+    javaScriptConsoleMessageSent(
+        msg: string,
+        lineNum?: number,
+        sourceId?: string,
+    ): void;
     loadFinished(status: string): void;
     loadStarted(): void;
-    navigationRequested(url: string, type: string, willNavigate: boolean, main: boolean): void;
+    navigationRequested(
+        url: string,
+        type: string,
+        willNavigate: boolean,
+        main: boolean,
+    ): void;
     rawPageCreated(newPage: WebPage): void;
     resourceReceived(response: ResourceResponse): void;
-    resourceRequested(requestData: ResourceRequest, networkRequest: NetworkRequest): void;
+    resourceRequested(
+        requestData: ResourceRequest,
+        networkRequest: NetworkRequest,
+    ): void;
     urlChanged(targetUrl: string): void;
 }
 
@@ -290,7 +351,10 @@ interface FileSystem {
     // File Functions
     // open(path: string, mode: string): IStream;
     // open(path: string, options: { mode: string; charset?: string; }): IStream;
-    open(path: string, mode: string | { mode: string; charset?: string | undefined }): Stream;
+    open(
+        path: string,
+        mode: string | { mode: string; charset?: string | undefined },
+    ): Stream;
     read(path: string): string;
     write(path: string, content: string, mode: string): void;
     size(path: string): number;
@@ -316,10 +380,16 @@ interface WebServer {
     registerFile(urlpath: string, filePath: string): void;
     registerPathHandler(
         urlpath: string,
-        handlerCallback: (request: WebServerRequest, response: WebServerResponse) => void,
+        handlerCallback: (
+            request: WebServerRequest,
+            response: WebServerResponse,
+        ) => void,
     ): void;
     port: number;
-    listen(port: number | string, cb?: (request: WebServerRequest, response: WebServerResponse) => void): boolean;
+    listen(
+        port: number | string,
+        cb?: (request: WebServerRequest, response: WebServerResponse) => void,
+    ): boolean;
     // listen(ipAddressPort: string, cb?: (request: IWebServerRequest, response: IWebServerResponse) => void): boolean;
     close(): void;
 }
@@ -359,8 +429,7 @@ interface Size {
     height: number;
 }
 
-interface ClipRect extends TopLeft, Size {
-}
+interface ClipRect extends TopLeft, Size {}
 
 interface Cookie {
     name: string;

@@ -15,7 +15,8 @@ let n: number = interest.getInterestLifetimeMilliseconds();
 blob = interest.getApplicationParameters();
 n = interest.getIncomingFaceId();
 
-interest = interest.setName(name)
+interest = interest
+    .setName(name)
     .setCanBePrefix(true)
     .setMustBeFresh(true)
     .setForwardingHint(fh)

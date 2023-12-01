@@ -1,6 +1,6 @@
 import { ActivationFunction } from "vscode-notebook-renderer";
 
-const activate: ActivationFunction<{ cool: boolean }> = context => {
+const activate: ActivationFunction<{ cool: boolean }> = (context) => {
     const prevState = context.getState();
 
     // @ts-expect-error
@@ -19,14 +19,17 @@ const activate: ActivationFunction<{ cool: boolean }> = context => {
         context.postMessage("hello world");
     }
     if (context.onDidReceiveMessage) {
-        context.onDidReceiveMessage(message => {
+        context.onDidReceiveMessage((message) => {
             // $ExpectType any
             message;
         });
     }
 
     return {
-        renderOutputItem({ mime, metadata, id, text, json, blob, data }, element) {
+        renderOutputItem(
+            { mime, metadata, id, text, json, blob, data },
+            element,
+        ) {
             // $ExpectType string
             id;
             // $ExpectType HTMLElement
@@ -56,7 +59,7 @@ const activate: ActivationFunction<{ cool: boolean }> = context => {
 
 import "vscode-notebook-renderer/preload";
 
-onDidReceiveKernelMessage(msg => {
+onDidReceiveKernelMessage((msg) => {
     // $ExpectType any
     msg;
 

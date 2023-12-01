@@ -63,7 +63,7 @@ import {
     asyncResource.emitDestroy();
 
     AsyncResource.bind(
-        function() {
+        function () {
             this.a; // $ExpectType number
         },
         "test",
@@ -79,10 +79,14 @@ import {
     const exitResult: number = ctx.exit((a: number) => {
         return 42;
     }, 1);
-    const runResult: number = ctx.run("test", (a: number) => {
-        const store: string | undefined = ctx.getStore();
-        return 42;
-    }, 1);
+    const runResult: number = ctx.run(
+        "test",
+        (a: number) => {
+            const store: string | undefined = ctx.getStore();
+            return 42;
+        },
+        1,
+    );
     ctx.enterWith("test");
 }
 
@@ -93,8 +97,11 @@ import {
 
 {
     const asyncLocalStorage = new AsyncLocalStorage<number>();
-    const runInAsyncScope = asyncLocalStorage.run(123, () => AsyncLocalStorage.snapshot());
-    const result = asyncLocalStorage.run(321, () => { // $ExpectType number | undefined
+    const runInAsyncScope = asyncLocalStorage.run(123, () =>
+        AsyncLocalStorage.snapshot(),
+    );
+    const result = asyncLocalStorage.run(321, () => {
+        // $ExpectType number | undefined
         return runInAsyncScope(() => asyncLocalStorage.getStore());
     });
 }

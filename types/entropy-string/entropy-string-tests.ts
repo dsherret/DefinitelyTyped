@@ -6,7 +6,11 @@ console.log(entropy.string());
 const entropy2 = new Entropy({ total: 1e6, risk: 1e9 });
 console.log(entropy2.string());
 
-const entropy3 = new Entropy({ total: 1e6, risk: 1e9, charset: "0123456789ABCDEF" });
+const entropy3 = new Entropy({
+    total: 1e6,
+    risk: 1e9,
+    charset: "0123456789ABCDEF",
+});
 console.log(entropy3.string());
 
 const entropy4 = new Entropy({ charset: new CharSet("0123456789ABCDEF") });

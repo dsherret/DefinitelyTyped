@@ -129,7 +129,11 @@ declare namespace bearcat {
          * @param   context object
          * @api     public
          */
-        define(id: string, factory: ParamClassFunc, context: object | null): void;
+        define(
+            id: string,
+            factory: ParamClassFunc,
+            context: object | null,
+        ): void;
 
         /**
          * Bearcat add module(bean) to IoC container through $ annotation function.
@@ -328,7 +332,9 @@ declare namespace bearcat {
          * @param   beanFactoryPostProcessor
          * @api     public
          */
-        addBeanFactoryPostProcessor(beanFactoryPostProcessor: BeanPostProcessor): void;
+        addBeanFactoryPostProcessor(
+            beanFactoryPostProcessor: BeanPostProcessor,
+        ): void;
 
         /**
          * ApplicationContext get beanFactoryPostProcessors.
@@ -457,7 +463,11 @@ declare namespace bearcat {
          * @param   context context object
          * @api     public
          */
-        define(id: string, factory: ConstructorFunction, context?: object | null): void;
+        define(
+            id: string,
+            factory: ConstructorFunction,
+            context?: object | null,
+        ): void;
 
         /**
          * ApplicationContext service locator pattern define module.
@@ -716,7 +726,11 @@ declare namespace bearcat {
          * @param   metaObject
          * @api     public
          */
-        registerModel(beanName: string, modelId: string, metaObject: object): void;
+        registerModel(
+            beanName: string,
+            modelId: string,
+            metaObject: object,
+        ): void;
 
         /**
          * BeanFactory register constraint through metaObject into BeanFactory.
@@ -726,7 +740,11 @@ declare namespace bearcat {
          * @param   metaObject
          * @api     public
          */
-        registerConstraint(beanName: string, cid: string, metaObject: object): void;
+        registerConstraint(
+            beanName: string,
+            cid: string,
+            metaObject: object,
+        ): void;
 
         /**
          * BeanFactory instantiating singletion beans in advance.
@@ -1051,7 +1069,11 @@ declare namespace bearcat {
          * @param   metaObjects
          * @api     public
          */
-        getRecursiveScanPath(cpath: string, scanPaths: string[], metaObjects: object): void;
+        getRecursiveScanPath(
+            cpath: string,
+            scanPaths: string[],
+            metaObjects: object,
+        ): void;
     }
 
     interface MetaLoader {

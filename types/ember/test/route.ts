@@ -40,7 +40,11 @@ Route.extend({
 });
 
 Route.extend({
-    resetController(controller: Ember.Controller, isExiting: boolean, transition: boolean) {
+    resetController(
+        controller: Ember.Controller,
+        isExiting: boolean,
+        transition: boolean,
+    ) {
         if (isExiting) {
             //   controller.set('page', 1);
         }

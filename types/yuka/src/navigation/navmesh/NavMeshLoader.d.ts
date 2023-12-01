@@ -40,5 +40,9 @@ export class NavMeshLoader {
      * @param [options] - The (optional) configuration object.
      * @return A promise representing the parsing process.
      */
-    parse(arrayBuffer: ArrayBuffer, url?: string, options?: NavMeshLoaderOptions): Promise<NavMesh>;
+    parse(
+        arrayBuffer: ArrayBuffer,
+        url?: string,
+        options?: NavMeshLoaderOptions,
+    ): Promise<NavMesh>;
 }

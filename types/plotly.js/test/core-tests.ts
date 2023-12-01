@@ -104,35 +104,11 @@ const layout = {
             "2017-02-15",
         ],
         close: [
-            116.019997,
-            116.610001,
-            117.910004,
-            118.989998,
-            119.110001,
-            119.75,
-            119.25,
-            119.040001,
-            120,
-            119.989998,
-            119.779999,
-            120,
-            120.080002,
-            119.970001,
-            121.879997,
-            121.940002,
-            121.949997,
-            121.629997,
-            121.349998,
-            128.75,
-            128.529999,
-            129.080002,
-            130.289993,
-            131.529999,
-            132.039993,
-            132.419998,
-            132.119995,
-            133.289993,
-            135.020004,
+            116.019997, 116.610001, 117.910004, 118.989998, 119.110001, 119.75,
+            119.25, 119.040001, 120, 119.989998, 119.779999, 120, 120.080002,
+            119.970001, 121.879997, 121.940002, 121.949997, 121.629997,
+            121.349998, 128.75, 128.529999, 129.080002, 130.289993, 131.529999,
+            132.039993, 132.419998, 132.119995, 133.289993, 135.020004,
             135.509995,
         ],
         decreasing: {
@@ -141,36 +117,12 @@ const layout = {
             },
         },
         high: [
-            116.510002,
-            116.860001,
-            118.160004,
-            119.43,
-            119.379997,
-            119.93,
-            119.300003,
-            119.620003,
-            120.239998,
-            120.5,
-            120.089996,
-            120.449997,
-            120.809998,
-            120.099998,
-            122.099998,
-            122.440002,
-            122.349998,
-            121.629997,
-            121.389999,
-            130.490005,
-            129.389999,
-            129.190002,
-            130.5,
-            132.089996,
-            132.220001,
-            132.449997,
-            132.940002,
-            133.820007,
-            135.089996,
-            136.270004,
+            116.510002, 116.860001, 118.160004, 119.43, 119.379997, 119.93,
+            119.300003, 119.620003, 120.239998, 120.5, 120.089996, 120.449997,
+            120.809998, 120.099998, 122.099998, 122.440002, 122.349998,
+            121.629997, 121.389999, 130.490005, 129.389999, 129.190002, 130.5,
+            132.089996, 132.220001, 132.449997, 132.940002, 133.820007,
+            135.089996, 136.270004,
         ],
         increasing: {
             line: {
@@ -178,68 +130,20 @@ const layout = {
             },
         },
         low: [
-            115.75,
-            115.809998,
-            116.470001,
-            117.940002,
-            118.300003,
-            118.599998,
-            118.209999,
-            118.809998,
-            118.220001,
-            119.709999,
-            119.370003,
-            119.730003,
-            119.769997,
-            119.5,
-            120.279999,
-            121.599998,
-            121.599998,
-            120.660004,
-            120.620003,
-            127.010002,
-            127.779999,
-            128.160004,
-            128.899994,
-            130.449997,
-            131.220001,
-            131.119995,
-            132.050003,
-            132.75,
-            133.25,
-            134.619995,
+            115.75, 115.809998, 116.470001, 117.940002, 118.300003, 118.599998,
+            118.209999, 118.809998, 118.220001, 119.709999, 119.370003,
+            119.730003, 119.769997, 119.5, 120.279999, 121.599998, 121.599998,
+            120.660004, 120.620003, 127.010002, 127.779999, 128.160004,
+            128.899994, 130.449997, 131.220001, 131.119995, 132.050003, 132.75,
+            133.25, 134.619995,
         ],
         open: [
-            115.849998,
-            115.919998,
-            116.779999,
-            117.949997,
-            118.769997,
-            118.739998,
-            118.900002,
-            119.110001,
-            118.339996,
-            120,
-            119.400002,
-            120.449997,
-            120,
-            119.550003,
-            120.419998,
-            121.669998,
-            122.139999,
-            120.93,
-            121.150002,
-            127.029999,
-            127.980003,
-            128.309998,
-            129.130005,
-            130.539993,
-            131.350006,
-            131.649994,
-            132.460007,
-            133.080002,
-            133.470001,
-            135.520004,
+            115.849998, 115.919998, 116.779999, 117.949997, 118.769997,
+            118.739998, 118.900002, 119.110001, 118.339996, 120, 119.400002,
+            120.449997, 120, 119.550003, 120.419998, 121.669998, 122.139999,
+            120.93, 121.150002, 127.029999, 127.980003, 128.309998, 129.130005,
+            130.539993, 131.350006, 131.649994, 132.460007, 133.080002,
+            133.470001, 135.520004,
         ],
         type: "candlestick",
         xaxis: "x",
@@ -318,10 +222,34 @@ const layout = {
     ];
 
     const ultimateColors = [
-        ["rgb(56, 75, 126)", "rgb(18, 36, 37)", "rgb(34, 53, 101)", "rgb(36, 55, 57)", "rgb(6, 4, 4)"],
-        ["rgb(177, 127, 38)", "rgb(205, 152, 36)", "rgb(99, 79, 37)", "rgb(129, 180, 179)", "rgb(124, 103, 37)"],
-        ["rgb(33, 75, 99)", "rgb(79, 129, 102)", "rgb(151, 179, 100)", "rgb(175, 49, 35)", "rgb(36, 73, 147)"],
-        ["rgb(146, 123, 21)", "rgb(177, 180, 34)", "rgb(206, 206, 40)", "rgb(175, 51, 21)", "rgb(35, 36, 21)"],
+        [
+            "rgb(56, 75, 126)",
+            "rgb(18, 36, 37)",
+            "rgb(34, 53, 101)",
+            "rgb(36, 55, 57)",
+            "rgb(6, 4, 4)",
+        ],
+        [
+            "rgb(177, 127, 38)",
+            "rgb(205, 152, 36)",
+            "rgb(99, 79, 37)",
+            "rgb(129, 180, 179)",
+            "rgb(124, 103, 37)",
+        ],
+        [
+            "rgb(33, 75, 99)",
+            "rgb(79, 129, 102)",
+            "rgb(151, 179, 100)",
+            "rgb(175, 49, 35)",
+            "rgb(36, 73, 147)",
+        ],
+        [
+            "rgb(146, 123, 21)",
+            "rgb(177, 180, 34)",
+            "rgb(206, 206, 40)",
+            "rgb(175, 51, 21)",
+            "rgb(35, 36, 21)",
+        ],
     ];
 
     const data: Array<Partial<PieData>> = [
@@ -400,7 +328,15 @@ const layout = {
     const data: Array<Partial<PieData>> = [
         {
             values: [16, 15, 12, 6, 5, 4, 42],
-            labels: ["US", "China", "European Union", "Russian Federation", "Brazil", "India", "Rest of World"],
+            labels: [
+                "US",
+                "China",
+                "European Union",
+                "Russian Federation",
+                "Brazil",
+                "India",
+                "Rest of World",
+            ],
             domain: { column: 0 },
             name: "GHG Emissions",
             hoverinfo: "label+percent+name",
@@ -409,7 +345,15 @@ const layout = {
         },
         {
             values: [27, 11, 25, 8, 1, 3, 25],
-            labels: ["US", "China", "European Union", "Russian Federation", "Brazil", "India", "Rest of World"],
+            labels: [
+                "US",
+                "China",
+                "European Union",
+                "Russian Federation",
+                "Brazil",
+                "India",
+                "Rest of World",
+            ],
             text: "CO2",
             textposition: "inside",
             domain: { column: 1 },
@@ -457,7 +401,12 @@ const layout = {
         {
             type: "pie",
             values: [2, 3, 4, 4],
-            labels: ["Wages", "Operating expenses", "Cost of sales", "Insurance"],
+            labels: [
+                "Wages",
+                "Operating expenses",
+                "Cost of sales",
+                "Insurance",
+            ],
             textinfo: "label+percent",
             textposition: "outside",
             automargin: true,
@@ -479,7 +428,12 @@ const layout = {
         {
             type: "pie",
             values: [2, 3, 4, 4],
-            labels: ["Wages", "Operating expenses", "Cost of sales", "Insurance"],
+            labels: [
+                "Wages",
+                "Operating expenses",
+                "Cost of sales",
+                "Insurance",
+            ],
             textinfo: "label+percent",
             insidetextorientation: "radial",
         },
@@ -708,9 +662,11 @@ function rand() {
 (() => {
     // Plotly.toImage will turn the plot in the given div into a data URL string
     // toImage takes the div as the first argument and an object specifying image properties as the other
-    Plotly.toImage(graphDiv, { format: "png", width: 800, height: 600 }).then(dataUrl => {
-        // use the dataUrl
-    });
+    Plotly.toImage(graphDiv, { format: "png", width: 800, height: 600 }).then(
+        (dataUrl) => {
+            // use the dataUrl
+        },
+    );
 })();
 //////////////////////////////////////////////////////////////////////
 
@@ -719,7 +675,12 @@ function rand() {
 (() => {
     // Plotly.toImage will turn the plot in the given div into a data URL string
     // toImage takes the div as the first argument and an object specifying image properties as the other
-    Plotly.toImage(graphDiv, { format: "png", width: 800, height: 600, scale: 2 }).then(dataUrl => {
+    Plotly.toImage(graphDiv, {
+        format: "png",
+        width: 800,
+        height: 600,
+        scale: 2,
+    }).then((dataUrl) => {
         // use the dataUrl
     });
 })();
@@ -730,7 +691,10 @@ function rand() {
 (() => {
     // Plotly.toImage will turn the plot data into a data URL string
     // toImage takes the data as the first argument and an object specifying image properties as the other
-    Plotly.toImage({ data, layout }, { format: "png", width: 800, height: 600, scale: 2 }).then(dataUrl => {
+    Plotly.toImage(
+        { data, layout },
+        { format: "png", width: 800, height: 600, scale: 2 },
+    ).then((dataUrl) => {
         // use the dataUrl
     });
 })();
@@ -740,7 +704,12 @@ function rand() {
 // Plotly.downloadImage
 (() => {
     // downloadImage will accept the div as the first argument and an object specifying image properties as the other
-    Plotly.downloadImage(graphDiv, { format: "png", width: 800, height: 600, filename: "newplot" });
+    Plotly.downloadImage(graphDiv, {
+        format: "png",
+        width: 800,
+        height: 600,
+        filename: "newplot",
+    });
 })();
 //////////////////////////////////////////////////////////////////////
 
@@ -749,9 +718,18 @@ function rand() {
 (() => {
     const n = 100;
     const frames = [
-        { name: "sine", data: [{ x: new Array<number>(100), y: new Array<number>(n) }] },
-        { name: "cosine", data: [{ x: new Array<number>(100), y: new Array<number>(n) }] },
-        { name: "circle", data: [{ x: new Array<number>(100), y: new Array<number>(n) }] },
+        {
+            name: "sine",
+            data: [{ x: new Array<number>(100), y: new Array<number>(n) }],
+        },
+        {
+            name: "cosine",
+            data: [{ x: new Array<number>(100), y: new Array<number>(n) }],
+        },
+        {
+            name: "circle",
+            data: [{ x: new Array<number>(100), y: new Array<number>(n) }],
+        },
     ];
 
     for (let i = 0; i < n; i++) {
@@ -785,7 +763,7 @@ function rand() {
             type: "scatter",
         },
     ]);
-    myPlot.on("plotly_click", data => {
+    myPlot.on("plotly_click", (data) => {
         let pn = 0;
         let tn = 0;
         let colors = [] as string[];
@@ -800,7 +778,7 @@ function rand() {
         Plotly.restyle("myDiv", update, [tn]);
     });
 
-    myPlot.on("plotly_hover", data => {
+    myPlot.on("plotly_hover", (data) => {
         let pn = 0;
         let tn = 0;
         let colors = [] as string[];
@@ -815,7 +793,7 @@ function rand() {
         Plotly.restyle("myDiv", update, [tn]);
     });
 
-    myPlot.on("plotly_unhover", data => {
+    myPlot.on("plotly_unhover", (data) => {
         let pn = 0;
         let tn = 0;
         let colors = [] as string[];
@@ -830,7 +808,7 @@ function rand() {
         Plotly.restyle("myDiv", update, [tn]);
     });
 
-    myPlot.on("plotly_selected", data => {
+    myPlot.on("plotly_selected", (data) => {
         const x = [] as Datum[];
         const y = [] as Datum[];
         const N = 1000;
@@ -840,7 +818,7 @@ function rand() {
         const colors = [] as string[];
         for (let i = 0; i < N; i++) colors.push(color1Light);
 
-        data.points.forEach(pt => {
+        data.points.forEach((pt) => {
             x.push(pt.x);
             y.push(pt.y);
             colors[pt.pointNumber] = color1;
@@ -863,17 +841,24 @@ function rand() {
         );
     });
 
-    myPlot.on("plotly_restyle", data => {
+    myPlot.on("plotly_restyle", (data) => {
         console.log("restyling");
     });
 
     myPlot.on("plotly_doubleclick", () => {
-        const orgColors = ["#00000", "#00000", "#00000", "#00000", "#00000", "#00000"];
+        const orgColors = [
+            "#00000",
+            "#00000",
+            "#00000",
+            "#00000",
+            "#00000",
+            "#00000",
+        ];
         const update = { marker: { color: orgColors, size: 16 } };
         Plotly.restyle("myDiv", update);
     });
 
-    myPlot.on("plotly_beforeplot", event => {
+    myPlot.on("plotly_beforeplot", (event) => {
         console.log("plotting");
         const okToPlot = true;
         return okToPlot;
@@ -883,32 +868,38 @@ function rand() {
         console.log("done plotting");
     });
 
-    myPlot.on("plotly_animatingframe", event => {
-        console.log(`animating ${event.frame.name} with ${event.animation.transition.easing}`);
+    myPlot.on("plotly_animatingframe", (event) => {
+        console.log(
+            `animating ${event.frame.name} with ${event.animation.transition.easing}`,
+        );
     });
 
-    myPlot.on("plotly_legendclick", event => {
+    myPlot.on("plotly_legendclick", (event) => {
         console.log("clicked on legend");
         const clickVal = true;
         return clickVal;
     });
 
-    myPlot.on("plotly_legenddoubleclick", event => {
+    myPlot.on("plotly_legenddoubleclick", (event) => {
         console.log("dbl clicked on legend");
         const dblClickVal = true;
         return dblClickVal;
     });
 
-    myPlot.on("plotly_sliderchange", event => {
-        console.log(`Slider at [${event.slider.x},${event.slider.y} with ${event.step.method}`);
+    myPlot.on("plotly_sliderchange", (event) => {
+        console.log(
+            `Slider at [${event.slider.x},${event.slider.y} with ${event.step.method}`,
+        );
     });
 
-    myPlot.on("plotly_sliderstart", event => {
+    myPlot.on("plotly_sliderstart", (event) => {
         console.log(`Slider at [${event.slider.x},${event.slider.y}`);
     });
 
-    myPlot.on("plotly_sliderend", event => {
-        console.log(`Slider at [${event.slider.x},${event.slider.y} with ${event.step.method}`);
+    myPlot.on("plotly_sliderend", (event) => {
+        console.log(
+            `Slider at [${event.slider.x},${event.slider.y} with ${event.step.method}`,
+        );
     });
 
     myPlot.on("plotly_beforeexport", () => {

@@ -27,9 +27,17 @@ export interface Options {
 }
 
 export interface JsonLdProcessor {
-    compact(input: JsonLdDocument, context: ContextDefinition, options?: Options): Promise<JsonLdObj>;
+    compact(
+        input: JsonLdDocument,
+        context: ContextDefinition,
+        options?: Options,
+    ): Promise<JsonLdObj>;
     expand(input: JsonLdDocument, options?: Options): Promise<JsonLdArray>;
-    flatten(input: JsonLdDocument, context?: ContextDefinition | null, options?: Options): Promise<JsonLdObj>;
+    flatten(
+        input: JsonLdDocument,
+        context?: ContextDefinition | null,
+        options?: Options,
+    ): Promise<JsonLdObj>;
 }
 
 export interface RemoteDocument {

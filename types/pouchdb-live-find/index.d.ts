@@ -2,14 +2,18 @@
 declare namespace PouchDB {
     namespace LiveFind {
         interface RequestDef<Content extends {}>
-            extends Pick<Find.FindRequest<Content>, Exclude<keyof Find.FindRequest<Content>, "use_index">>
-        {
+            extends Pick<
+                Find.FindRequest<Content>,
+                Exclude<keyof Find.FindRequest<Content>, "use_index">
+            > {
             aggregate?: boolean | undefined; // if true outputs an aggregate list on every update event
         }
 
         interface PaginateOptions<Content extends {}>
-            extends Pick<Find.FindRequest<Content>, "sort" | "skip" | "limit">
-        {}
+            extends Pick<
+                Find.FindRequest<Content>,
+                "sort" | "skip" | "limit"
+            > {}
 
         interface UpdateEvent {
             action: "REMOVE" | "ADD" | "UPDATE";
@@ -20,7 +24,10 @@ declare namespace PouchDB {
         interface LiveFeed<Content extends {} = {}> {
             on(event: "ready" | "cancelled", listener: () => void): this;
             on(event: "error", listener: (err: any) => void): this;
-            on(event: "update", listener: (event: UpdateEvent, list: any) => void): this;
+            on(
+                event: "update",
+                listener: (event: UpdateEvent, list: any) => void,
+            ): this;
         }
 
         interface LiveFeed<Content extends {} = {}> extends EventEmitter {
@@ -35,7 +42,9 @@ declare namespace PouchDB {
         }
     }
     interface Database<Content extends {} = {}> {
-        liveFind(requestDef: LiveFind.RequestDef<Content>): LiveFind.LiveFeed<Content>;
+        liveFind(
+            requestDef: LiveFind.RequestDef<Content>,
+        ): LiveFind.LiveFeed<Content>;
     }
 }
 

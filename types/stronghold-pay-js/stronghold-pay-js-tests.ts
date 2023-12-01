@@ -1,7 +1,10 @@
 import Stronghold = require("stronghold-pay-js");
 
 function test_add_payment_source() {
-    const client = Stronghold.Pay({ publishableKey: "publishableKey", environment: Stronghold.ENVIRONMENT.sandbox });
+    const client = Stronghold.Pay({
+        publishableKey: "publishableKey",
+        environment: Stronghold.ENVIRONMENT.sandbox,
+    });
 
     client.addPaymentSource("customer_token", {
         onSuccess: (paymentSource) => {
@@ -13,7 +16,10 @@ function test_add_payment_source() {
 }
 
 function test_update_payment_source() {
-    const client = Stronghold.Pay({ publishableKey: "publishableKey", environment: Stronghold.ENVIRONMENT.sandbox });
+    const client = Stronghold.Pay({
+        publishableKey: "publishableKey",
+        environment: Stronghold.ENVIRONMENT.sandbox,
+    });
 
     client.updatePaymentSource("customer_token", {
         paymentSourceId: "payment_source_id",
@@ -26,7 +32,10 @@ function test_update_payment_source() {
 }
 
 function test_charge() {
-    const client = Stronghold.Pay({ publishableKey: "publishableKey", environment: Stronghold.ENVIRONMENT.sandbox });
+    const client = Stronghold.Pay({
+        publishableKey: "publishableKey",
+        environment: Stronghold.ENVIRONMENT.sandbox,
+    });
 
     client.charge("customer_token", {
         charge: {
@@ -51,7 +60,10 @@ function test_charge() {
 }
 
 function test_tip() {
-    const client = Stronghold.Pay({ publishableKey: "publishableKey", environment: Stronghold.ENVIRONMENT.sandbox });
+    const client = Stronghold.Pay({
+        publishableKey: "publishableKey",
+        environment: Stronghold.ENVIRONMENT.sandbox,
+    });
 
     client.tip("customer_token", {
         authorizeOnly: true,

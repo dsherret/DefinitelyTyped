@@ -9,7 +9,14 @@ export default class LineZone extends Zone {
      * or
      * var lineZone = new System.LineZone(new System.Vector3D(0,0,0),new System.Vector3D(100,100,0));
      */
-    constructor(x1: VectorOrNumber, y1: VectorOrNumber, z1?: number, x2?: number, y2?: number, z2?: number);
+    constructor(
+        x1: VectorOrNumber,
+        y1: VectorOrNumber,
+        z1?: number,
+        x2?: number,
+        y2?: number,
+        z2?: number,
+    );
     /**
      * Returns true to indicate this is a LineZone.
      */

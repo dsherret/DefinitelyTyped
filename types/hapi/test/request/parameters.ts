@@ -1,5 +1,12 @@
 // https://github.com/hapijs/hapi/blob/master/API.md#-requestparams
-import { Lifecycle, Request, ResponseToolkit, Server, ServerOptions, ServerRoute } from "hapi";
+import {
+    Lifecycle,
+    Request,
+    ResponseToolkit,
+    Server,
+    ServerOptions,
+    ServerRoute,
+} from "hapi";
 
 const options: ServerOptions = {
     port: 8000,

@@ -55,13 +55,38 @@ export class Font {
         y: number | undefined,
         fontSize: number | undefined,
         options: RenderOptions | undefined,
-        callback: (glyph: Glyph, x: number, y: number, fontSize: number, options?: RenderOptions) => void,
+        callback: (
+            glyph: Glyph,
+            x: number,
+            y: number,
+            fontSize: number,
+            options?: RenderOptions,
+        ) => void,
     ): number;
-    getAdvanceWidth(text: string, fontSize?: number, options?: RenderOptions): number;
+    getAdvanceWidth(
+        text: string,
+        fontSize?: number,
+        options?: RenderOptions,
+    ): number;
     getEnglishName(name: string): string;
-    getKerningValue(leftGlyph: Glyph | number, rightGlyph: Glyph | number): number;
-    getPath(text: string, x: number, y: number, fontSize: number, options?: RenderOptions): Path;
-    getPaths(text: string, x: number, y: number, fontSize: number, options?: RenderOptions): Path[];
+    getKerningValue(
+        leftGlyph: Glyph | number,
+        rightGlyph: Glyph | number,
+    ): number;
+    getPath(
+        text: string,
+        x: number,
+        y: number,
+        fontSize: number,
+        options?: RenderOptions,
+    ): Path;
+    getPaths(
+        text: string,
+        x: number,
+        y: number,
+        fontSize: number,
+        options?: RenderOptions,
+    ): Path[];
     glyphIndexToName(gid: number): string;
     glyphNames: GlyphNames;
     hasChar(c: string): boolean;
@@ -78,10 +103,8 @@ export class Font {
     validate(): void;
 }
 
-export type FontConstructorOptions =
-    & FontConstructorOptionsBase
-    & Partial<FontOptions>
-    & {
+export type FontConstructorOptions = FontConstructorOptionsBase &
+    Partial<FontOptions> & {
         glyphs: Glyph[];
     };
 
@@ -180,11 +203,29 @@ export class Glyph {
 
     addUnicode(unicode: number): void;
     getBoundingBox(): BoundingBox;
-    getPath(x?: number, y?: number, fontSize?: number, options?: RenderOptions, font?: Font): Path;
+    getPath(
+        x?: number,
+        y?: number,
+        fontSize?: number,
+        options?: RenderOptions,
+        font?: Font,
+    ): Path;
     getContours(): Contour;
     getMetrics(): Metrics;
-    draw(ctx: CanvasRenderingContext2D, x?: number, y?: number, fontSize?: number, options?: RenderOptions): void;
-    drawPoints(ctx: CanvasRenderingContext2D, x?: number, y?: number, fontSize?: number, options?: RenderOptions): void;
+    draw(
+        ctx: CanvasRenderingContext2D,
+        x?: number,
+        y?: number,
+        fontSize?: number,
+        options?: RenderOptions,
+    ): void;
+    drawPoints(
+        ctx: CanvasRenderingContext2D,
+        x?: number,
+        y?: number,
+        fontSize?: number,
+        options?: RenderOptions,
+    ): void;
     drawMetrics(
         ctx: CanvasRenderingContext2D,
         x?: number,
@@ -250,8 +291,8 @@ export interface RenderOptions {
     tracking?: number | undefined;
     features?:
         | {
-            [key: string]: boolean;
-        }
+              [key: string]: boolean;
+          }
         | undefined;
 }
 
@@ -279,11 +320,25 @@ export class Path {
     stroke: string | null;
     strokeWidth: number;
     constructor();
-    bezierCurveTo(x1: number, y1: number, x2: number, y2: number, x: number, y: number): void;
+    bezierCurveTo(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        x: number,
+        y: number,
+    ): void;
     close: () => void;
     closePath(): void;
     commands: PathCommand[];
-    curveTo: (x1: number, y1: number, x2: number, y2: number, x: number, y: number) => void;
+    curveTo: (
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        x: number,
+        y: number,
+    ) => void;
     draw(ctx: CanvasRenderingContext2D): void;
     extend(pathOrCommands: Path | PathCommand[] | BoundingBox): void;
     getBoundingBox(): BoundingBox;
@@ -299,34 +354,34 @@ export class Path {
 
 export type PathCommand =
     | {
-        type: "M";
-        x: number;
-        y: number;
-    }
+          type: "M";
+          x: number;
+          y: number;
+      }
     | {
-        type: "L";
-        x: number;
-        y: number;
-    }
+          type: "L";
+          x: number;
+          y: number;
+      }
     | {
-        type: "C";
-        x1: number;
-        y1: number;
-        x2: number;
-        y2: number;
-        x: number;
-        y: number;
-    }
+          type: "C";
+          x1: number;
+          y1: number;
+          x2: number;
+          y2: number;
+          x: number;
+          y: number;
+      }
     | {
-        type: "Q";
-        x1: number;
-        y1: number;
-        x: number;
-        y: number;
-    }
+          type: "Q";
+          x1: number;
+          y1: number;
+          x: number;
+          y: number;
+      }
     | {
-        type: "Z";
-    };
+          type: "Z";
+      };
 
 /******************************************
  * UTIL CLASSES
@@ -342,8 +397,24 @@ export class BoundingBox {
     addPoint(x: number, y: number): void;
     addX(x: number): void;
     addY(y: number): void;
-    addBezier(x0: number, y0: number, x1: number, y1: number, x2: number, y2: number, x: number, y: number): void;
-    addQuad(x0: number, y0: number, x1: number, y1: number, x: number, y: number): void;
+    addBezier(
+        x0: number,
+        y0: number,
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        x: number,
+        y: number,
+    ): void;
+    addQuad(
+        x0: number,
+        y0: number,
+        x1: number,
+        y1: number,
+        x: number,
+        y: number,
+    ): void;
 }
 
 export interface Encoding {
@@ -359,7 +430,10 @@ export type Substitution = (font: Font) => any;
  * STATIC
  ******************************************/
 
-export function load(url: string, callback: (error: any, font?: Font) => void): void;
+export function load(
+    url: string,
+    callback: (error: any, font?: Font) => void,
+): void;
 export function load(url: string): Promise<Font>;
 
 export function loadSync(

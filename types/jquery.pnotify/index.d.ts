@@ -1,7 +1,13 @@
 /// <reference types="jquery"/>
 
 type NoticeTypeOptions = "notice" | "info" | "success" | "error";
-type StylingOptions = "brighttheme" | "jqueryui" | "bootstrap2" | "bootstrap3" | "fontawesome" | PNotifyStyling;
+type StylingOptions =
+    | "brighttheme"
+    | "jqueryui"
+    | "bootstrap2"
+    | "bootstrap3"
+    | "fontawesome"
+    | PNotifyStyling;
 type StateOptions = "initializing" | "opening" | "open" | "closing" | "closed";
 
 interface PNotifyStack {
@@ -94,19 +100,23 @@ interface PNotifyButtons {
     /**
      * The various displayed text, helps facilitating internationalization.
      */
-    labels?: {
-        close?: string | undefined;
-        stick?: string | undefined;
-        unstick?: string | undefined;
-    } | undefined;
+    labels?:
+        | {
+              close?: string | undefined;
+              stick?: string | undefined;
+              unstick?: string | undefined;
+          }
+        | undefined;
     /**
      * The classes to use for button icons. Leave them null to use the classes from the styling you're using.
      */
-    classes?: {
-        closer?: string | undefined;
-        pin_up?: string | undefined;
-        pin_down?: string | undefined;
-    } | undefined;
+    classes?:
+        | {
+              closer?: string | undefined;
+              pin_up?: string | undefined;
+              pin_down?: string | undefined;
+          }
+        | undefined;
 }
 
 interface PNotifyOptions {
@@ -143,17 +153,19 @@ interface PNotifyOptions {
      */
     cornerclass?: string | undefined;
 
-    nonblock?: {
-        /**
-         * Create a non-blocking notice. It lets the user click elements underneath it.
-         */
-        nonblock?: boolean | undefined;
+    nonblock?:
+        | {
+              /**
+               * Create a non-blocking notice. It lets the user click elements underneath it.
+               */
+              nonblock?: boolean | undefined;
 
-        /**
-         * The opacity of the notice (if it's non-blocking) when the mouse is over it.
-         */
-        nonblock_opacity?: number | undefined;
-    } | undefined;
+              /**
+               * The opacity of the notice (if it's non-blocking) when the mouse is over it.
+               */
+              nonblock_opacity?: number | undefined;
+          }
+        | undefined;
 
     /**
      * Display a pull down menu to redisplay previous notices, and place the notice in the history.
@@ -205,25 +217,27 @@ interface PNotifyOptions {
      */
     shadow?: boolean | undefined;
 
-    buttons?: {
-        /**
-         * Provide a button for the user to manually close the notice.
-         */
-        closer?: boolean | undefined;
-        /**
-         * Only show the closer button on hover.
-         */
-        closer_hover?: boolean | undefined;
+    buttons?:
+        | {
+              /**
+               * Provide a button for the user to manually close the notice.
+               */
+              closer?: boolean | undefined;
+              /**
+               * Only show the closer button on hover.
+               */
+              closer_hover?: boolean | undefined;
 
-        /**
-         * Provide a button for the user to manually stick the notice.
-         */
-        sticker?: boolean | undefined;
-        /**
-         * Only show the sticker button on hover.
-         */
-        sticker_hover?: boolean | undefined;
-    } | undefined;
+              /**
+               * Provide a button for the user to manually stick the notice.
+               */
+              sticker?: boolean | undefined;
+              /**
+               * Only show the sticker button on hover.
+               */
+              sticker_hover?: boolean | undefined;
+          }
+        | undefined;
 
     /**
      * After a delay, remove the notice, set to false for sticky note.
@@ -313,7 +327,7 @@ interface PNotify {
 }
 
 interface PNotifyConstructor {
-    new(options?: PNotifyOptions): PNotify;
+    new (options?: PNotifyOptions): PNotify;
 
     /**
      * Remove all notices.

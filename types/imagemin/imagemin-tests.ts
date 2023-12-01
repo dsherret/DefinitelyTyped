@@ -1,8 +1,10 @@
 import imagemin, { Result } from "imagemin";
 
-imagemin(["*.png"], { destination: "dist", plugins: [] }).then((results: Result[]) => {
-    /* ... */
-});
+imagemin(["*.png"], { destination: "dist", plugins: [] }).then(
+    (results: Result[]) => {
+        /* ... */
+    },
+);
 
 imagemin
     .buffer(

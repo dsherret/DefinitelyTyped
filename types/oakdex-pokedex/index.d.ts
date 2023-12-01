@@ -59,13 +59,15 @@ export interface PokemonVariation {
     weight_us?: string | undefined;
     weight_eu?: string | undefined;
     base_stats?: StatObject | undefined;
-    pokeathlon_stats?: {
-        speed?: number[] | undefined;
-        power?: number[] | undefined;
-        stamina?: number[] | undefined;
-        skill?: number[] | undefined;
-        jump?: number[] | undefined;
-    } | undefined;
+    pokeathlon_stats?:
+        | {
+              speed?: number[] | undefined;
+              power?: number[] | undefined;
+              stamina?: number[] | undefined;
+              skill?: number[] | undefined;
+              jump?: number[] | undefined;
+          }
+        | undefined;
     abilities?: string[] | undefined;
     image_suffix?: string | undefined;
 }
@@ -119,13 +121,15 @@ export interface Pokemon {
     color: string;
     base_friendship: number;
     base_stats: StatObject;
-    pokeathlon_stats?: {
-        speed?: number[] | undefined;
-        power?: number[] | undefined;
-        stamina?: number[] | undefined;
-        skill?: number[] | undefined;
-        jump?: number[] | undefined;
-    } | undefined;
+    pokeathlon_stats?:
+        | {
+              speed?: number[] | undefined;
+              power?: number[] | undefined;
+              stamina?: number[] | undefined;
+              skill?: number[] | undefined;
+              jump?: number[] | undefined;
+          }
+        | undefined;
     mega_evolutions: MegaEvolution[];
     variation_names?: Translations | undefined;
     variations: PokemonVariation[];
@@ -172,10 +176,12 @@ export interface Move {
     affected_by_snatch: boolean;
     affected_by_mirror_move: boolean;
     affected_by_kings_rock: boolean;
-    in_battle_properties?: {
-        increased_critical_hit_ratio?: boolean | undefined;
-        status_conditions?: MoveStatusCondition[] | undefined;
-    } | undefined;
+    in_battle_properties?:
+        | {
+              increased_critical_hit_ratio?: boolean | undefined;
+              status_conditions?: MoveStatusCondition[] | undefined;
+          }
+        | undefined;
     stat_modifiers?: MoveStatModifier[] | undefined;
 }
 
@@ -307,7 +313,9 @@ export interface Conditions {
 
 export function resetPokemon(): void;
 
-export function importPokemon(customPokemon: string[] | string | Pokemon[]): void;
+export function importPokemon(
+    customPokemon: string[] | string | Pokemon[],
+): void;
 
 export function findPokemon(idOrName: string | number): Pokemon | null;
 

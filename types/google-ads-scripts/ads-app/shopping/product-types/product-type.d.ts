@@ -38,7 +38,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** Builder for ProductType objects. */
-        interface ProductTypeBuilder extends Base.Builder<ProductTypeOperation> {
+        interface ProductTypeBuilder
+            extends Base.Builder<ProductTypeOperation> {
             /** Specifies the bid of the product type. */
             withBid(bid: number): this;
             /** Specifies the value of the product type. */

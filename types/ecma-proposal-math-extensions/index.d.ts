@@ -12,7 +12,13 @@ interface Math {
      * @param outHigh The upper bound of the output range.
      * @return The input value scaled to the output range.
      */
-    scale(x: number, inLow: number, inHigh: number, outLow: number, outHigh: number): number;
+    scale(
+        x: number,
+        inLow: number,
+        inHigh: number,
+        outLow: number,
+        outHigh: number,
+    ): number;
     /**
      * Scales a floating point value between `inLow` and `inHigh` to the range of `outLow` to `outHigh`.
      * @param x The numeric value in the input range to scale.
@@ -22,7 +28,13 @@ interface Math {
      * @param outHigh The upper bound of the output range.
      * @return The input value scaled to the output range.
      */
-    fscale(x: number, inLow: number, inHigh: number, outLow: number, outHigh: number): number;
+    fscale(
+        x: number,
+        inLow: number,
+        inHigh: number,
+        outLow: number,
+        outHigh: number,
+    ): number;
     /**
      * Clamps an incoming value `x` to a range between `lower` and `upper`.
      * @param x The value to clamp.

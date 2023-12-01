@@ -36,7 +36,10 @@ export interface Root {
  *
  * @see https://reactjs.org/docs/concurrent-mode-reference.html#createroot
  */
-export function createRoot(container: Element | DocumentFragment, options?: RootOptions): Root;
+export function createRoot(
+    container: Element | DocumentFragment,
+    options?: RootOptions,
+): Root;
 
 /**
  * Same as `createRoot()`, but is used to hydrate a container whose HTML contents were rendered by ReactDOMServer.

@@ -30,7 +30,11 @@ export interface FormatConfiguration {
     tagName: keyof HTMLElementTagNameMap & string;
     className: string | null;
     title: string;
-    keywords?: [string] | [string, string] | [string, string, string] | undefined;
+    keywords?:
+        | [string]
+        | [string, string]
+        | [string, string, string]
+        | undefined;
     object?: boolean | undefined;
     /**
      * Maps react prop name to html attribute name.
@@ -57,7 +61,12 @@ export interface NamedFormatConfiguration extends FormatConfiguration {
  *
  * @returns A new `Value` with the format applied.
  */
-export function applyFormat(value: Value, format: Format, startIndex?: number, endIndex?: number): Value;
+export function applyFormat(
+    value: Value,
+    format: Format,
+    startIndex?: number,
+    endIndex?: number,
+): Value;
 
 /**
  * Combine all Rich Text values into one. This is similar to
@@ -79,7 +88,10 @@ export function concat(...values: readonly Value[]): Value;
  *
  * @returns Active format object of the specified type, or undefined.
  */
-export function getActiveFormat(value: Value, formatType: string): Format | undefined;
+export function getActiveFormat(
+    value: Value,
+    formatType: string,
+): Format | undefined;
 
 /**
  * Gets the all format objects at the start of the selection.
@@ -89,7 +101,10 @@ export function getActiveFormat(value: Value, formatType: string): Format | unde
  *
  * @return Active format objects.
  */
-export function getActiveFormats(value: Value, EMPTY_ACTIVE_FORMATS?: Format[]): Format[];
+export function getActiveFormats(
+    value: Value,
+    EMPTY_ACTIVE_FORMATS?: Format[],
+): Format[];
 
 /**
  * Gets the active object, if there is any.
@@ -123,7 +138,12 @@ export function getTextContent(value: Value): string;
  *
  * @returns A new `Value` with the value inserted.
  */
-export function insert(value: Value, valueToInsert: Value, startIndex?: number, endIndex?: number): Value;
+export function insert(
+    value: Value,
+    valueToInsert: Value,
+    startIndex?: number,
+    endIndex?: number,
+): Value;
 
 /**
  * Insert a `Format` as an object into a Rich Text value at the given
@@ -172,7 +192,10 @@ export function isEmpty(value: Value): boolean;
  *
  * @returns A new combined `Value`.
  */
-export function join(values: readonly Value[], separator?: Value | string): Value;
+export function join(
+    values: readonly Value[],
+    separator?: Value | string,
+): Value;
 
 /**
  * Registers a new format provided a unique name and an object defining its
@@ -183,7 +206,10 @@ export function join(values: readonly Value[], separator?: Value | string): Valu
  *
  * @returns `NamedFormatConfiguration` if successful, otherwise `undefined`.
  */
-export function registerFormatType(name: string, config: FormatConfiguration): NamedFormatConfiguration | undefined;
+export function registerFormatType(
+    name: string,
+    config: FormatConfiguration,
+): NamedFormatConfiguration | undefined;
 
 /**
  * Remove content from a Rich Text value between the given `startIndex` and
@@ -195,7 +221,11 @@ export function registerFormatType(name: string, config: FormatConfiguration): N
  *
  * @returns A new `Value` with the content removed.
  */
-export function remove(value: Value, startIndex?: number, endIndex?: number): Value;
+export function remove(
+    value: Value,
+    startIndex?: number,
+    endIndex?: number,
+): Value;
 
 /**
  * Remove any format object from a Rich Text value by type from the given
@@ -209,7 +239,12 @@ export function remove(value: Value, startIndex?: number, endIndex?: number): Va
  *
  * @returns A new `value` with the format applied.
  */
-export function removeFormat(value: Value, formatType: string, startIndex?: number, endIndex?: number): Value;
+export function removeFormat(
+    value: Value,
+    formatType: string,
+    startIndex?: number,
+    endIndex?: number,
+): Value;
 
 /**
  * Search a Rich Text value and replace the match(es) with `replacement`. This
@@ -240,7 +275,11 @@ export function replace(
  *
  * @returns A new extracted value.
  */
-export function slice(value: Value, startIndex?: number, endIndex?: number): Value;
+export function slice(
+    value: Value,
+    startIndex?: number,
+    endIndex?: number,
+): Value;
 
 /**
  * Split a Rich Text value in two at the given `startIndex` and `endIndex`, or
@@ -253,7 +292,11 @@ export function slice(value: Value, startIndex?: number, endIndex?: number): Val
  *
  * @returns An array of new values.
  */
-export function split(value: Value, separator?: string | number, limit?: number): Value[];
+export function split(
+    value: Value,
+    separator?: string | number,
+    limit?: number,
+): Value[];
 
 /**
  * Create an HTML string from a Rich Text value. If a `multilineTag` is
@@ -261,7 +304,10 @@ export function split(value: Value, separator?: string | number, limit?: number)
  *
  * @returns HTML string.
  */
-export function toHTMLString(args: { value: Value; multilineTag?: keyof HTMLElementTagNameMap | undefined }): string;
+export function toHTMLString(args: {
+    value: Value;
+    multilineTag?: keyof HTMLElementTagNameMap | undefined;
+}): string;
 
 /**
  * Toggles a format object to a Rich Text value at the current selection.
@@ -281,4 +327,6 @@ export function toggleFormat(value: Value, format: Format): Value;
  * @returns The previous format value, if it has been successfully
  *   unregistered; otherwise `undefined`.
  */
-export function unregisterFormatType(name: string): NamedFormatConfiguration | undefined;
+export function unregisterFormatType(
+    name: string,
+): NamedFormatConfiguration | undefined;

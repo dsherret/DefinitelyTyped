@@ -12,7 +12,11 @@ interface TypeInfo {
 }
 
 declare namespace nopt {
-    export function clean(data: CommandData, types: FlagTypeMap, typeDefs?: TypeDefs): string;
+    export function clean(
+        data: CommandData,
+        types: FlagTypeMap,
+        typeDefs?: TypeDefs,
+    ): string;
     export var typeDefs: TypeDefs;
 }
 
@@ -24,7 +28,12 @@ interface ShortFlags {
     [k: string]: string[] | string;
 }
 
-declare function nopt(types: FlagTypeMap, shorthands?: ShortFlags, args?: string[], slice?: number): OptionsParsed;
+declare function nopt(
+    types: FlagTypeMap,
+    shorthands?: ShortFlags,
+    args?: string[],
+    slice?: number,
+): OptionsParsed;
 
 interface OptionsParsed {
     [k: string]: any;

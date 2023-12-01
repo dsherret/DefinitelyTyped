@@ -40,14 +40,16 @@ declare class HammerInstance {
 
 // Gesture Options : https://github.com/EightMedia/hammer.js/wiki/Getting-Started#gesture-options
 interface HammerOptions {
-    behavior?: {
-        contentZooming?: string | undefined;
-        tapHighlightColor?: string | undefined;
-        touchAction?: string | undefined;
-        touchCallout?: string | undefined;
-        userDrag?: string | undefined;
-        userSelect?: string | undefined;
-    } | undefined;
+    behavior?:
+        | {
+              contentZooming?: string | undefined;
+              tapHighlightColor?: string | undefined;
+              touchAction?: string | undefined;
+              touchCallout?: string | undefined;
+              userDrag?: string | undefined;
+              userSelect?: string | undefined;
+          }
+        | undefined;
     doubleTapDistance?: number | undefined;
     doubleTapInterval?: number | undefined;
     drag?: boolean | undefined;
@@ -123,12 +125,9 @@ interface HammerEvent {
     preventDefault(): void;
 }
 
-declare enum HammerPointerType {
-}
-declare enum HammerDirectionType {
-}
-declare enum HammerTouchEventState {
-}
+declare enum HammerPointerType {}
+declare enum HammerDirectionType {}
+declare enum HammerTouchEventState {}
 
 interface JQuery {
     hammer(options?: HammerOptions): JQuery;

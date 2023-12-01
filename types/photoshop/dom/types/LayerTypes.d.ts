@@ -148,5 +148,7 @@ export interface GroupLayerCreateOptions extends LayerCreateOptionsBase {
  * - GroupLayerCreateOptions
  * @minVersion 22.5
  */
-export declare type LayerCreateOptions = PixelLayerCreateOptions | GroupLayerCreateOptions;
+export declare type LayerCreateOptions =
+    | PixelLayerCreateOptions
+    | GroupLayerCreateOptions;
 export {};

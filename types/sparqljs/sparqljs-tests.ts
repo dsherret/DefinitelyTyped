@@ -12,8 +12,8 @@ function officialExamples() {
     const SparqlParser = SparqlJs.Parser;
     const parser = new SparqlParser();
     const parsedQuery = parser.parse(
-        "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-            + "SELECT * { ?mickey foaf:name \"Mickey Mouse\"@en; foaf:knows ?other. }",
+        "PREFIX foaf: <http://xmlns.com/foaf/0.1/> " +
+            'SELECT * { ?mickey foaf:name "Mickey Mouse"@en; foaf:knows ?other. }',
     );
 
     // Regenerate a SPARQL query from a JSON object
@@ -77,26 +77,24 @@ function basicQueries() {
             ],
         },
         reduced: false,
-        group: [
-            { expression: var1 },
-            { expression: var2 },
+        group: [{ expression: var1 }, { expression: var2 }],
+        having: [
+            {
+                type: "functionCall",
+                function: "isIRI",
+                args: [foo],
+            },
         ],
-        having: [{
-            type: "functionCall",
-            function: "isIRI",
-            args: [foo],
-        }],
-        order: [{
-            expression: var1,
-            descending: true,
-        }],
+        order: [
+            {
+                expression: var1,
+                descending: true,
+            },
+        ],
         limit: 100,
         offset: 10,
         where: [bgpPattern],
-        values: [
-            { x: foo, y: bar },
-            { x: foo },
-        ],
+        values: [{ x: foo, y: bar }, { x: foo }],
     };
 
     const construct: SparqlJs.ConstructQuery = {

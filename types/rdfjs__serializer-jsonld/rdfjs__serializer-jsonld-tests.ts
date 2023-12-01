@@ -13,5 +13,9 @@ const sink: Sink<Stream, EventEmitter> = serializer1;
 
 const eventEmitter1: EventEmitter = serializer1.import(stream);
 const eventEmitter2: EventEmitter = serializer1.import(stream, {});
-const eventEmitter3: EventEmitter = serializer1.import(stream, { encoding: "string" });
-const eventEmitter4: EventEmitter = serializer1.import(stream, { encoding: "object" });
+const eventEmitter3: EventEmitter = serializer1.import(stream, {
+    encoding: "string",
+});
+const eventEmitter4: EventEmitter = serializer1.import(stream, {
+    encoding: "object",
+});

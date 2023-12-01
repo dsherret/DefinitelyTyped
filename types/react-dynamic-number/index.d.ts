@@ -2,12 +2,18 @@ import * as React from "react";
 
 export type Omit<T, K extends keyof T> = Pick<
     T,
-    ({ [P in keyof T]: P } & { [P in K]: never } & { [x: string]: never; [x: number]: never })[keyof T]
+    ({ [P in keyof T]: P } & { [P in K]: never } & {
+        [x: string]: never;
+        [x: number]: never;
+    })[keyof T]
 >;
 
 export type BaseInputProps = Partial<
     Omit<
-        React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+        React.DetailedHTMLProps<
+            React.InputHTMLAttributes<HTMLInputElement>,
+            HTMLInputElement
+        >,
         "ref" | "value" | "onChange" | "placeholder"
     >
 >;
@@ -22,7 +28,11 @@ export interface DynamicNumberProps extends BaseInputProps {
     negative?: boolean | undefined;
     placeholder?: string | undefined;
     onChange?:
-        | ((event: React.ChangeEvent<HTMLInputElement>, modelValue: number, viewValue: string) => void)
+        | ((
+              event: React.ChangeEvent<HTMLInputElement>,
+              modelValue: number,
+              viewValue: string,
+          ) => void)
         | undefined;
 }
 

@@ -4,15 +4,14 @@ declare namespace GoogleAdsScripts {
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
         interface AccountSnippet extends Snippet {}
 
-        interface AccountSnippetIterator extends Base.Iterator<AccountSnippet> {}
+        interface AccountSnippetIterator
+            extends Base.Iterator<AccountSnippet> {}
 
         interface AccountSnippetSelector
-            extends
-                Base.Selector<AccountSnippetIterator>,
+            extends Base.Selector<AccountSnippetIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

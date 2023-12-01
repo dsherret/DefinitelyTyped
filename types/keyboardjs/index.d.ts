@@ -42,7 +42,11 @@ declare namespace keyboardjs {
      * @param pressed Callback that gets executed when the keyComboState is 'pressed', can be null.
      * @param released Callback that gets executed when the keyComboState is 'released', can be null.
      */
-    function unbind(keyCombo: string | string[], pressed?: Callback | null, released?: Callback): void;
+    function unbind(
+        keyCombo: string | string[],
+        pressed?: Callback | null,
+        released?: Callback,
+    ): void;
     let off: typeof bind;
     let removeListener: typeof bind;
 
@@ -60,7 +64,10 @@ declare namespace keyboardjs {
      * @param identifier The name of the context the callback should be in. If the context doesn't exists, it will be created.
      * @param inContextCallBack The callback function. Will be executed in the given context.
      */
-    function withContext(identifier: string, inContextCallBack: () => void): void;
+    function withContext(
+        identifier: string,
+        inContextCallBack: () => void,
+    ): void;
     /**
      * Returns the context KeyboardJS currently operates in.
      */

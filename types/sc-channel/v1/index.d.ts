@@ -11,7 +11,11 @@ declare class SCChannel extends Emitter {
     batch: boolean;
     data: any;
 
-    constructor(name: string, client: SCChannel.SCClient, options?: SCChannel.SCChannelOptions);
+    constructor(
+        name: string,
+        client: SCChannel.SCClient,
+        options?: SCChannel.SCChannelOptions,
+    );
 
     setOptions(options?: SCChannel.SCChannelOptions): void;
     getState(): SCChannel.ChannelState;
@@ -47,7 +51,11 @@ declare namespace SCChannel {
         unsubscribe(channelName: string): void;
         isSubscribed(channelName: string, includePending?: boolean): boolean;
 
-        publish(channelName: string, data: any, callback?: (err?: Error) => void): void;
+        publish(
+            channelName: string,
+            data: any,
+            callback?: (err?: Error) => void,
+        ): void;
 
         watch(channelName: string, handler: HandlerFunction): void;
         unwatch(channelName: string, handler?: HandlerFunction): void;

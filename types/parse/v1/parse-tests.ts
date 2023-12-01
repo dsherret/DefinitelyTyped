@@ -73,7 +73,11 @@ function test_query() {
     const query = new Parse.Query(GameScore);
     query.equalTo("playerName", "Dan Stemkoski");
     query.notEqualTo("playerName", "Michael Yabuti");
-    query.fullText("playerName", "dan", { language: "en", caseSensitive: false, diacriticSensitive: true });
+    query.fullText("playerName", "dan", {
+        language: "en",
+        caseSensitive: false,
+        diacriticSensitive: true,
+    });
     query.greaterThan("playerAge", 18);
     query.limit(10);
     query.skip(10);
@@ -97,10 +101,18 @@ function test_query() {
     query.greaterThanOrEqualTo("wins", 50);
 
     // Finds scores from any of Jonathan, Dario, or Shawn
-    query.containedIn("playerName", ["Jonathan Walsh", "Dario Wunsch", "Shawn Simon"]);
+    query.containedIn("playerName", [
+        "Jonathan Walsh",
+        "Dario Wunsch",
+        "Shawn Simon",
+    ]);
 
     // Finds scores from anyone who is neither Jonathan, Dario, nor Shawn
-    query.notContainedIn("playerName", ["Jonathan Walsh", "Dario Wunsch", "Shawn Simon"]);
+    query.notContainedIn("playerName", [
+        "Jonathan Walsh",
+        "Dario Wunsch",
+        "Shawn Simon",
+    ]);
 
     // Finds objects that have the score set
     query.exists("score");
@@ -159,15 +171,15 @@ function test_collections() {
 
     collection = query.collection();
 
-    collection.comparator = object => {
+    collection.comparator = (object) => {
         return object.get("temperature");
     };
 
     collection.add([{ name: "Duke" }, { name: "Scarlett" }]);
 
     collection.fetch().then(
-        data => {},
-        error => {
+        (data) => {},
+        (error) => {
             console.log("Error: " + error.code + " " + error.message);
         },
     );
@@ -199,14 +211,16 @@ function test_file() {
         () => {
             // The file has been saved to Parse.
         },
-        error => {
+        (error) => {
             // The file either could n ot be read, or could not be saved to Parse.
         },
     );
 
-    Parse.Cloud.httpRequest({ url: file.url() }).then((response: Parse.Cloud.HttpResponse) => {
-        // result
-    });
+    Parse.Cloud.httpRequest({ url: file.url() }).then(
+        (response: Parse.Cloud.HttpResponse) => {
+            // result
+        },
+    );
 
     // TODO: Check
 }
@@ -268,10 +282,10 @@ function test_user_acl_roles() {
     }
 
     Parse.User.become("session-token-here").then(
-        function(user) {
+        function (user) {
             // The current user is now set to user.
         },
-        function(error) {
+        function (error) {
             // The token could not be validated.
         },
     );
@@ -282,12 +296,12 @@ function test_user_acl_roles() {
     game.save().then((game: Game) => {});
     game.save(null, { useMasterKey: true });
     game.save({ score: "10" }, { useMasterKey: true }).then(
-        function(game) {
+        function (game) {
             // Update game then revert it to the last saved state.
             game.set("score", "20");
             game.revert();
         },
-        function(error) {
+        function (error) {
             // The save failed
         },
     );
@@ -306,10 +320,10 @@ function test_user_acl_roles() {
     game.setACL(groupACL);
 
     Parse.User.requestPasswordReset("email@example.com").then(
-        function(data) {
+        function (data) {
             // The current user is now set to user.
         },
-        function(error) {
+        function (error) {
             // The token could not be validated.
         },
     );
@@ -320,7 +334,7 @@ function test_user_acl_roles() {
     role.getRoles().add(role);
     role.save();
 
-    Parse.User.logOut().then(function(data) {
+    Parse.User.logOut().then(function (data) {
         // logged out
     });
 }
@@ -342,7 +356,9 @@ function test_facebook_util() {
             }
         },
         error: (user: Parse.User, error: any) => {
-            alert("User cancelled the Facebook login or did not fully authorize.");
+            alert(
+                "User cancelled the Facebook login or did not fully authorize.",
+            );
         },
     });
 
@@ -354,14 +370,18 @@ function test_facebook_util() {
                 alert("Woohoo, user logged in with Facebook!");
             },
             error: (user: any, error: any) => {
-                alert("User cancelled the Facebook login or did not fully authorize.");
+                alert(
+                    "User cancelled the Facebook login or did not fully authorize.",
+                );
             },
         });
     }
 
     Parse.FacebookUtils.unlink(user, {
         success: (user: Parse.User) => {
-            alert("The user is no longer associated with their Facebook account.");
+            alert(
+                "The user is no longer associated with their Facebook account.",
+            );
         },
     });
 }
@@ -378,17 +398,26 @@ function test_cloud_functions() {
         },
     );
 
-    Parse.Cloud.afterDelete("MyCustomClass", (request: Parse.Cloud.AfterDeleteRequest) => {
-        // result
-    });
+    Parse.Cloud.afterDelete(
+        "MyCustomClass",
+        (request: Parse.Cloud.AfterDeleteRequest) => {
+            // result
+        },
+    );
 
-    Parse.Cloud.afterSave("MyCustomClass", (request: Parse.Cloud.AfterSaveRequest) => {
-        // result
-    });
+    Parse.Cloud.afterSave(
+        "MyCustomClass",
+        (request: Parse.Cloud.AfterSaveRequest) => {
+            // result
+        },
+    );
 
     Parse.Cloud.beforeDelete(
         "MyCustomClass",
-        (request: Parse.Cloud.BeforeDeleteRequest, response: Parse.Cloud.BeforeDeleteResponse) => {
+        (
+            request: Parse.Cloud.BeforeDeleteRequest,
+            response: Parse.Cloud.BeforeDeleteResponse,
+        ) => {
             // result
         },
     );
@@ -398,9 +427,13 @@ function test_cloud_functions() {
 
     Parse.Cloud.beforeSave(
         "MyCustomClass",
-        (request: Parse.Cloud.BeforeSaveRequest, response: Parse.Cloud.BeforeSaveResponse) => {
+        (
+            request: Parse.Cloud.BeforeSaveRequest,
+            response: Parse.Cloud.BeforeSaveResponse,
+        ) => {
             if (request.object.isNew()) {
-                if (!request.object.has("immutable")) return response.error("Field immutable is required");
+                if (!request.object.has("immutable"))
+                    return response.error("Field immutable is required");
             } else {
                 const original = request.original;
                 if (original == null) {
@@ -411,28 +444,39 @@ function test_cloud_functions() {
                     );
                 }
 
-                if (original.get("immutable") !== request.object.get("immutable")) {
-                    return response.error(CUSTOM_ERROR_IMMUTABLE_FIELD, "This field cannot be changed");
+                if (
+                    original.get("immutable") !==
+                    request.object.get("immutable")
+                ) {
+                    return response.error(
+                        CUSTOM_ERROR_IMMUTABLE_FIELD,
+                        "This field cannot be changed",
+                    );
                 }
             }
             response.success();
         },
     );
 
-    Parse.Cloud.beforeFind("MyCustomClass", (request: Parse.Cloud.BeforeFindRequest) => {
-        let query = request.query; // the Parse.Query
-        let user = request.user; // the user
-        let isMaster = request.master; // if the query is run with masterKey
-        let isCount = request.count; // if the query is a count operation (available on parse-server 2.4.0 or up)
-        let isGet = request.isGet; // if the query is a get operation
+    Parse.Cloud.beforeFind(
+        "MyCustomClass",
+        (request: Parse.Cloud.BeforeFindRequest) => {
+            let query = request.query; // the Parse.Query
+            let user = request.user; // the user
+            let isMaster = request.master; // if the query is run with masterKey
+            let isCount = request.count; // if the query is a count operation (available on parse-server 2.4.0 or up)
+            let isGet = request.isGet; // if the query is a get operation
 
-        // All possible read preferences
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.Primary;
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.PrimaryPreferred;
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.Secondary;
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.SecondaryPreferred;
-        request.readPreference = Parse.Cloud.ReadPreferenceOption.Nearest;
-    });
+            // All possible read preferences
+            request.readPreference = Parse.Cloud.ReadPreferenceOption.Primary;
+            request.readPreference =
+                Parse.Cloud.ReadPreferenceOption.PrimaryPreferred;
+            request.readPreference = Parse.Cloud.ReadPreferenceOption.Secondary;
+            request.readPreference =
+                Parse.Cloud.ReadPreferenceOption.SecondaryPreferred;
+            request.readPreference = Parse.Cloud.ReadPreferenceOption.Nearest;
+        },
+    );
 }
 
 class PlaceObject extends Parse.Object {}
@@ -458,7 +502,9 @@ function test_geo_points() {
     const query2 = new Parse.Query(PlaceObject);
     query2.withinGeoBox("location", southwestOfSF, northeastOfSF);
 
-    const query3 = new Parse.Query("PlaceObject").find().then((o: Parse.Object[]) => {});
+    const query3 = new Parse.Query("PlaceObject")
+        .find()
+        .then((o: Parse.Object[]) => {});
 }
 
 function test_push() {
@@ -490,10 +536,10 @@ function test_push() {
             },
         },
         {
-            success: function() {
+            success: function () {
                 // Push was successful
             },
-            error: function(error: any) {
+            error: function (error: any) {
                 // Handle error
             },
         },
@@ -509,10 +555,10 @@ function test_promise() {
     let resolved = Parse.Promise.as(true);
     let rejected = Parse.Promise.error("an error object");
     Parse.Promise.when([resolved, rejected]).then(
-        function() {
+        function () {
             // success
         },
-        function() {
+        function () {
             // failed
         },
     );

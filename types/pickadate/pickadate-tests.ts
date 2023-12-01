@@ -134,10 +134,7 @@ $(".datepicker").pickadate({
 
 // Using JavaScript dates
 $(".datepicker").pickadate({
-    disable: [
-        new Date(2013, 3, 13),
-        new Date(2013, 3, 29),
-    ],
+    disable: [new Date(2013, 3, 13), new Date(2013, 3, 29)],
 });
 
 // Using arrays formatted as [YEAR,MONTH,DATE]
@@ -151,18 +148,12 @@ $(".datepicker").pickadate({
 
 // Using integers as days of the week (1 to 7)
 $(".datepicker").pickadate({
-    disable: [
-        1,
-        4,
-        7,
-    ],
+    disable: [1, 4, 7],
 });
 
 // Using objects as a range of dates
 $(".datepicker").pickadate({
-    disable: [
-        { from: [2016, 2, 14], to: [2016, 2, 27] },
-    ],
+    disable: [{ from: [2016, 2, 14], to: [2016, 2, 27] }],
 });
 
 // Enable only a specific or arbitrary set of dates by setting true as the first item in the collection
@@ -210,22 +201,22 @@ $(".datepicker").pickadate({
 
 // Fire off events as the user interacts with the picker
 $(".datepicker").pickadate({
-    onStart: function() {
+    onStart: function () {
         console.log("Hello there :)");
     },
-    onRender: function() {
+    onRender: function () {
         console.log("Whoa.. rendered anew");
     },
-    onOpen: function() {
+    onOpen: function () {
         console.log("Opened up");
     },
-    onClose: function() {
+    onClose: function () {
         console.log("Closed now");
     },
-    onStop: function() {
+    onStop: function () {
         console.log("See ya.");
     },
-    onSet: function(context) {
+    onSet: function (context) {
         console.log("Just set stuff:", context);
     },
 });
@@ -262,10 +253,20 @@ $(".timepicker").pickatime({
 // The formatLabel option is unique. It can contain HTML and it can also
 // be a function if you want to create the label during run-time:
 $(".timepicker").pickatime({
-    formatLabel: function(time) {
+    formatLabel: function (time) {
         var hours = (time.pick - this.get("now").pick) / 60,
-            label = hours < 0 ? " !hours to now" : hours > 0 ? " !hours from now" : "now";
-        return "h:i a <sm!all>" + (hours ? Math.abs(hours) : "") + label + "</sm!all>";
+            label =
+                hours < 0
+                    ? " !hours to now"
+                    : hours > 0
+                      ? " !hours from now"
+                      : "now";
+        return (
+            "h:i a <sm!all>" +
+            (hours ? Math.abs(hours) : "") +
+            label +
+            "</sm!all>"
+        );
     },
 });
 
@@ -311,10 +312,7 @@ $(".timepicker").pickatime({
 
 // Using JavaScript dates
 $(".timepicker").pickatime({
-    disable: [
-        new Date(2016, 3, 20, 4, 30),
-        new Date(2016, 3, 20, 9),
-    ],
+    disable: [new Date(2016, 3, 20, 4, 30), new Date(2016, 3, 20, 9)],
 });
 
 // Using arrays formatted as [HOUR,MINUTE]
@@ -329,32 +327,17 @@ $(".timepicker").pickatime({
 
 // Using integers as hours (0 to 23)
 $(".timepicker").pickatime({
-    disable: [
-        3,
-        5,
-        7,
-    ],
+    disable: [3, 5, 7],
 });
 
 // Using objects as a range of times
 $(".timepicker").pickatime({
-    disable: [
-        { from: [2, 0], to: [5, 30] },
-    ],
+    disable: [{ from: [2, 0], to: [5, 30] }],
 });
 
 // Enable only a specific or arbitrary set of times by setting true as the first item in the collection
 $(".timepicker").pickatime({
-    disable: [
-        true,
-        3,
-        5,
-        7,
-        [0, 30],
-        [2, 0],
-        [8, 30],
-        [9, 0],
-    ],
+    disable: [true, 3, 5, 7, [0, 30], [2, 0], [8, 30], [9, 0]],
 });
 
 // Enable times that fall within a range of disabled times by adding
@@ -387,22 +370,22 @@ $(".timepicker").pickatime({
 
 // Fire off events as the user interacts with the picker
 $(".timepicker").pickatime({
-    onStart: function() {
+    onStart: function () {
         console.log("Hello there :)");
     },
-    onRender: function() {
+    onRender: function () {
         console.log("Whoa.. rendered anew");
     },
-    onOpen: function() {
+    onOpen: function () {
         console.log("Opened up");
     },
-    onClose: function() {
+    onClose: function () {
         console.log("Closed now");
     },
-    onStop: function() {
+    onStop: function () {
         console.log("See ya.");
     },
-    onSet: function(context) {
+    onSet: function (context) {
         console.log("Just set stuff:", context);
     },
 });
@@ -427,8 +410,8 @@ $input.pickadate("stop");
 $input.pickadate("render");
 $input.pickadate("get");
 $input.pickadate("set", "highlight", 1429970887654);
-$input.pickadate("on", "open", function() {});
-$input.pickadate("on", "close", function() {});
+$input.pickadate("on", "open", function () {});
+$input.pickadate("on", "close", function () {});
 $input.pickadate("off", "open", "close");
 $input.pickadate("trigger", "open");
 
@@ -443,7 +426,7 @@ picker.close();
 picker.close(true);
 
 picker.open(false);
-$(document).on("click", function() {
+$(document).on("click", function () {
     picker.close();
 });
 
@@ -488,11 +471,14 @@ picker.set({
 picker.set("disable", "flip", { muted: true });
 
 // Multiple at once
-picker.set({
-    select: [1988, 7, 14],
-    view: new Date(1988, 7, 14),
-    max: 4,
-}, { muted: true });
+picker.set(
+    {
+        select: [1988, 7, 14],
+        view: new Date(1988, 7, 14),
+        max: 4,
+    },
+    { muted: true },
+);
 
 // Clear the value in the picker’s input element.
 picker.set("clear");
@@ -673,11 +659,7 @@ picker.set("disable", [
     new Date(2015, 9, 24),
 ]);
 
-picker.set("enable", [
-    [2016, 9, 9],
-    [2016, 9, 13],
-    new Date(2015, 9, 20),
-]);
+picker.set("enable", [[2016, 9, 9], [2016, 9, 13], new Date(2015, 9, 20)]);
 
 // Disable/enable ranges of dates
 picker.set("disable", [
@@ -689,10 +671,7 @@ picker.set("disable", [
     { from: [2016, 2, 14], to: [2016, 2, 27] },
 ]);
 
-picker.set("enable", [
-    4,
-    { from: [2016, 2, 24], to: [2016, 2, 27] },
-]);
+picker.set("enable", [4, { from: [2016, 2, 24], to: [2016, 2, 27] }]);
 
 // "Flip" the enabled and disabled dates:
 picker.set("disable", "flip");
@@ -718,11 +697,7 @@ picker.set("disable", [
     new Date(2015, 9, 13, 12, 30),
 ]);
 
-picker.set("enable", [
-    [4, 30],
-    [6, 0],
-    new Date(2015, 9, 13, 9),
-]);
+picker.set("enable", [[4, 30], [6, 0], new Date(2015, 9, 13, 9)]);
 
 // Disable/enable ranges of times
 picker.set("disable", [
@@ -734,10 +709,7 @@ picker.set("disable", [
     { from: [10, 30], to: [18, 0] },
 ]);
 
-picker.set("enable", [
-    4,
-    { from: [14, 0], to: [16, 30] },
-]);
+picker.set("enable", [4, { from: [14, 0], to: [16, 30] }]);
 
 // "Flip" the enabled and disabled times:
 picker.set("disable", "flip");
@@ -784,57 +756,57 @@ picker.set("interval", 20);
 picker.set("interval", 120);
 
 picker.on({
-    open: function() {
+    open: function () {
         console.log("Opened up!");
     },
-    close: function() {
+    close: function () {
         console.log("Closed now");
     },
-    render: function() {
+    render: function () {
         console.log("Just rendered anew");
     },
-    stop: function() {
+    stop: function () {
         console.log("See ya");
     },
-    set: function(thingSet) {
+    set: function (thingSet) {
         console.log("Set stuff:", thingSet);
     },
 });
 
 $(".datepicker").pickadate({
-    onOpen: function() {
+    onOpen: function () {
         console.log("Opened up!");
     },
-    onClose: function() {
+    onClose: function () {
         console.log("Closed now");
     },
-    onRender: function() {
+    onRender: function () {
         console.log("Just rendered anew");
     },
-    onStart: function() {
+    onStart: function () {
         console.log("Hello there :)");
     },
-    onStop: function() {
+    onStop: function () {
         console.log("See ya");
     },
-    onSet: function(thingSet) {
+    onSet: function (thingSet) {
         console.log("Set stuff:", thingSet);
     },
 });
 
-picker.on("open", function() {
+picker.on("open", function () {
     console.log("Even when I’m opened, I’m not logged..");
 });
 picker.off("open");
 
 // Trigger an event’s callbacks that have been queued up
-picker.on("open", function() {
+picker.on("open", function () {
     console.log("This logs without opening!");
 });
 picker.trigger("open");
 
 // Optionally, you can also pass some data to the method being triggered
-picker.on("open", function(data) {
+picker.on("open", function (data) {
     console.log("This logs without opening with this data:", data);
 });
 picker.trigger("open", { some: "value" });

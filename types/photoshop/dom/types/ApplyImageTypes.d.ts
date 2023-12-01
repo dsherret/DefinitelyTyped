@@ -1,5 +1,9 @@
 import { Channel } from "../Channel";
-import { ApplyImageBlendMode, ApplyImageChannel, ApplyImageLayer } from "../Constants";
+import {
+    ApplyImageBlendMode,
+    ApplyImageChannel,
+    ApplyImageLayer,
+} from "../Constants";
 import { Document } from "../Document";
 import { Layer } from "../Layer";
 /**

@@ -63,7 +63,9 @@ export interface SharedProps {
      * onChange is called when the input value changes and
      * returns a string which corresponds to the new input value
      */
-    onChange?: (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
+    onChange?: (
+        event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    ) => void;
     /**
      * onEditMode is a callback function triggered when the display
      * component is clicked and edit mode is toggled on
@@ -110,7 +112,10 @@ export interface EditTextProps extends SharedProps {
      * Sets the props passed to the edit button. This can be any valid DOM attribute,
      * default: {}
      */
-    editButtonProps?: React.DetailedHTMLProps<React.ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>;
+    editButtonProps?: React.DetailedHTMLProps<
+        React.ButtonHTMLAttributes<HTMLButtonElement>,
+        HTMLButtonElement
+    >;
 }
 
 export interface EditTextareaProps extends SharedProps {

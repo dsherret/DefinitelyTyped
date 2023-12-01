@@ -5,7 +5,10 @@ import { EmitterSubscription } from "react-native";
  * @param appId   appstore的应用id
  * @param version  本地版本
  */
-export function checkUpdate(appId: string, version: string): Promise<{
+export function checkUpdate(
+    appId: string,
+    version: string,
+): Promise<{
     code: number;
     msg: string;
     version?: undefined;
@@ -24,4 +27,6 @@ export function upgrade(apkUrl: string): void;
  * android apk下载回调 android only
  * @param callBack
  */
-export function addDownListener(callBack: (progress: number) => void): EmitterSubscription;
+export function addDownListener(
+    callBack: (progress: number) => void,
+): EmitterSubscription;

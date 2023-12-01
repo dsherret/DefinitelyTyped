@@ -1,4 +1,10 @@
-import { CanBeInvalid, DefaultValidity, IfValid, Invalid, Valid } from "./_util";
+import {
+    CanBeInvalid,
+    DefaultValidity,
+    IfValid,
+    Invalid,
+    Valid,
+} from "./_util";
 import { ConversionAccuracy } from "./datetime";
 import { NumberingSystem } from "./misc";
 
@@ -76,7 +82,9 @@ export type DurationInput = Duration | number | DurationLikeObject;
  */
 export type DurationLike = Duration | DurationLikeObject | number;
 
-export type DurationMaybeValid = CanBeInvalid extends true ? (Duration<Valid> | Duration<Invalid>) : Duration;
+export type DurationMaybeValid = CanBeInvalid extends true
+    ? Duration<Valid> | Duration<Invalid>
+    : Duration;
 
 /**
  * A Duration object represents a period of time, like "2 months" or "1 day, 1 hour".
@@ -126,7 +134,10 @@ export class Duration<IsValid extends boolean = DefaultValidity> {
      * @param opts.numberingSystem - the numbering system to use
      * @param opts.conversionAccuracy - the conversion system to use. Defaults to 'casual'.
      */
-    static fromObject(obj: DurationLikeObject, opts?: DurationOptions): Duration<Valid>;
+    static fromObject(
+        obj: DurationLikeObject,
+        opts?: DurationOptions,
+    ): Duration<Valid>;
 
     /**
      * Create a Duration from DurationLike.
@@ -176,7 +187,10 @@ export class Duration<IsValid extends boolean = DefaultValidity> {
      * @example
      * Duration.fromISOTime('T1100').toObject() //=> { hours: 11, minutes: 0, seconds: 0 }
      */
-    static fromISOTime(text: string, opts?: DurationOptions): DurationMaybeValid;
+    static fromISOTime(
+        text: string,
+        opts?: DurationOptions,
+    ): DurationMaybeValid;
 
     /**
      * Create an invalid Duration.
@@ -229,7 +243,10 @@ export class Duration<IsValid extends boolean = DefaultValidity> {
      * @example
      * Duration.fromObject({ years: 1, days: 6, seconds: 2 }).toFormat("M S") //=> "12 518402000"
      */
-    toFormat(fmt: string, opts?: { floor?: boolean | undefined }): IfValid<string, "Invalid Duration", IsValid>;
+    toFormat(
+        fmt: string,
+        opts?: { floor?: boolean | undefined },
+    ): IfValid<string, "Invalid Duration", IsValid>;
 
     /**
      * Returns a string representation of a Duration with all units included

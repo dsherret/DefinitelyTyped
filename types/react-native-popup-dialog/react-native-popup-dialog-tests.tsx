@@ -39,28 +39,44 @@ class Test extends React.Component<any> {
                     title="Show Fading Dialog"
                 />
                 <Button
-                    onPress={() => this.showPopupDialog(this.scalingPopupDialog)}
+                    onPress={() =>
+                        this.showPopupDialog(this.scalingPopupDialog)
+                    }
                     title="Show Scaling Dialog"
                 />
                 <Button
-                    onPress={() => this.showPopupDialog(this.slidingPopupDialog)}
+                    onPress={() =>
+                        this.showPopupDialog(this.slidingPopupDialog)
+                    }
                     title="Show Sliding Dialog"
                 />
 
                 <Dialog
-                    ref={(popupDialog) => this.fadingPopupDialog = popupDialog}
-                    dialogTitle={<DialogTitle title="Popup Dialog - Fade Animation" />}
+                    ref={(popupDialog) =>
+                        (this.fadingPopupDialog = popupDialog)
+                    }
+                    dialogTitle={
+                        <DialogTitle title="Popup Dialog - Fade Animation" />
+                    }
                     dialogAnimation={fadeAnimation}
                 />
                 <Dialog
-                    ref={(popupDialog) => this.scalingPopupDialog = popupDialog}
-                    dialogTitle={<DialogTitle title="Popup Dialog - Scale Animation" />}
+                    ref={(popupDialog) =>
+                        (this.scalingPopupDialog = popupDialog)
+                    }
+                    dialogTitle={
+                        <DialogTitle title="Popup Dialog - Scale Animation" />
+                    }
                     dialogAnimation={scaleAnimation}
                     footer={
                         <DialogFooter>
                             <DialogButton
                                 text="CLOSE"
-                                onPress={(event) => this.dismissPopupDialog(this.scalingPopupDialog)}
+                                onPress={(event) =>
+                                    this.dismissPopupDialog(
+                                        this.scalingPopupDialog,
+                                    )
+                                }
                                 textStyle={{ color: "red" }}
                                 bordered
                                 key="button-1"
@@ -74,8 +90,12 @@ class Test extends React.Component<any> {
                     }
                 />
                 <Dialog
-                    ref={(popupDialog) => this.slidingPopupDialog = popupDialog}
-                    dialogTitle={<DialogTitle title="Popup Dialog - Slide Animation" />}
+                    ref={(popupDialog) =>
+                        (this.slidingPopupDialog = popupDialog)
+                    }
+                    dialogTitle={
+                        <DialogTitle title="Popup Dialog - Slide Animation" />
+                    }
                     width={300}
                     height={300}
                     dialogAnimation={slideAnimation}
@@ -98,8 +118,7 @@ class Test extends React.Component<any> {
                     }}
                     onHardwareBackPress={() => true}
                 >
-                    <DialogContent>
-                    </DialogContent>
+                    <DialogContent></DialogContent>
                 </Dialog>
             </View>
         );

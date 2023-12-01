@@ -24,11 +24,11 @@ let post = store.createRecord("post", {
 });
 
 post.save(); // => POST to '/posts'
-post.save().then(saved => {
+post.save().then((saved) => {
     assertType<Post>(saved);
 });
 
-store.findRecord("post", 1).then(function(post) {
+store.findRecord("post", 1).then(function (post) {
     post.get("title"); // => "Rails is Omakase"
     post.set("title", "A new post");
     post.save(); // => PATCH to '/posts/1'
@@ -47,13 +47,13 @@ declare module "ember-data" {
     }
 }
 
-store.queryRecord("user", {}).then(function(user) {
+store.queryRecord("user", {}).then(function (user) {
     let username = user.get("username");
     console.log(`Currently logged in as ${username}`);
 });
 
 store.findAll("post"); // => GET /posts
-store.findAll("author", { reload: true }).then(function(authors) {
+store.findAll("author", { reload: true }).then(function (authors) {
     authors.getEach("id"); // ['first', 'second']
 });
 store.findAll("post", {
@@ -81,14 +81,14 @@ declare module "ember-data" {
 }
 
 const messages = store.peekAll("message");
-messages.forEach(function(message) {
+messages.forEach(function (message) {
     message.set("hasBeenSeen", true);
 });
 messages.save();
 
 const people = store.peekAll("user");
 people.get("isUpdating"); // false
-people.update().then(function() {
+people.update().then(function () {
     people.get("isUpdating"); // false
 });
 people.get("isUpdating"); // true
@@ -146,16 +146,16 @@ const tom = store
             email: "tomster@example.com",
         },
     })
-    .then(function(users) {
+    .then(function (users) {
         return users.get("firstObject");
     });
 
 // GET /users?isAdmin=true
 const admins = store.query("user", { isAdmin: true });
-admins.then(function() {
+admins.then(function () {
     console.log(admins.get("length")); // 42
 });
-admins.update().then(function() {
+admins.update().then(function () {
     admins.get("isUpdating"); // false
     console.log(admins.get("length")); // 123
 });

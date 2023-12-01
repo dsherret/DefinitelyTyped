@@ -37,7 +37,12 @@ export class Source extends L.Layer {
     removeSubLayer(name: string): void;
     refreshOverlay(): void;
     identify(evt: any): void;
-    getFeatureInfo(point: any, latLng: L.LatLng, layers: any, callback: any): void;
+    getFeatureInfo(
+        point: any,
+        latLng: L.LatLng,
+        layers: any,
+        callback: any,
+    ): void;
     ajax(url: string, callback: any): void;
     getIdentifyLayers(): any;
     getFeatureInfoParams(point: any, layers: any): any;

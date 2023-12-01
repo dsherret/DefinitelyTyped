@@ -5,6 +5,8 @@ import express = require("express");
  * if path does not start with `servedPath`
  * Useful for development.
  */
-declare function redirectServedPathMiddleware(servedPath: string): express.Handler;
+declare function redirectServedPathMiddleware(
+    servedPath: string,
+): express.Handler;
 
 export = redirectServedPathMiddleware;

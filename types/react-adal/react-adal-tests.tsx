@@ -1,5 +1,12 @@
 import * as React from "react";
-import { AdalConfig, adalFetch, adalGetToken, AuthenticationContext, runWithAdal, withAdalLogin } from "react-adal";
+import {
+    AdalConfig,
+    adalFetch,
+    adalGetToken,
+    AuthenticationContext,
+    runWithAdal,
+    withAdalLogin,
+} from "react-adal";
 
 const resourceUrl = "https://graph.microsoft.net";
 
@@ -28,9 +35,13 @@ class App extends React.Component {
 }
 
 // user must login to use the app
-runWithAdal(authContext, () => {
-    //  ReactDOM.render(<App />, document.getElementById('react-app') as HTMLElement);
-}, false);
+runWithAdal(
+    authContext,
+    () => {
+        //  ReactDOM.render(<App />, document.getElementById('react-app') as HTMLElement);
+    },
+    false,
+);
 
 const withAdalLoginApi = withAdalLogin(authContext, resourceUrl);
 
@@ -58,7 +69,11 @@ const ProtectedPage2: React.FC = (props) => {
     return null;
 };
 
-const AdalProtectedPage1 = withAdalLoginApi(ProtectedPage1, () => <Loading />, () => <ErrorPage />);
+const AdalProtectedPage1 = withAdalLoginApi(
+    ProtectedPage1,
+    () => <Loading />,
+    () => <ErrorPage />,
+);
 const AdalProtectedPage2 = withAdalLoginApi(
     ProtectedPage2,
     () => <h4>loading...</h4>,
@@ -66,19 +81,26 @@ const AdalProtectedPage2 = withAdalLoginApi(
 );
 
 // user must login to use only specific pages
-runWithAdal(authContext, () => {
-    const routes = (
-        <div>
-            {/* @ts-expect-error */}
-            <Route exact={true} path="/" component={SignInPage} />
-            {/* @ts-expect-error */}
-            <Route path="/private1" component={AdalProtectedPage1} />
-            {/* @ts-expect-error */}
-            <Route path="/private2" component={AdalProtectedPage2} />
-        </div>
-    );
-    // @ts-expect-error
-    const App = <ConnectedRouter history={{} as any} children={routes} />;
-    // @ts-expect-error
-    ReactDOM.render(<App />, document.getElementById("react-app") as HTMLElement);
-}, true);
+runWithAdal(
+    authContext,
+    () => {
+        const routes = (
+            <div>
+                {/* @ts-expect-error */}
+                <Route exact={true} path="/" component={SignInPage} />
+                {/* @ts-expect-error */}
+                <Route path="/private1" component={AdalProtectedPage1} />
+                {/* @ts-expect-error */}
+                <Route path="/private2" component={AdalProtectedPage2} />
+            </div>
+        );
+        // @ts-expect-error
+        const App = <ConnectedRouter history={{} as any} children={routes} />;
+        // @ts-expect-error
+        ReactDOM.render(
+            <App />,
+            document.getElementById("react-app") as HTMLElement,
+        );
+    },
+    true,
+);

@@ -76,7 +76,9 @@ declare function encodeURI(uri: string): string;
  * Encodes a text string as a valid component of a Uniform Resource Identifier (URI).
  * @param uriComponent A value representing an encoded URI component.
  */
-declare function encodeURIComponent(uriComponent: string | number | boolean): string;
+declare function encodeURIComponent(
+    uriComponent: string | number | boolean,
+): string;
 
 declare type PropertyKey = string | number | symbol;
 
@@ -126,7 +128,7 @@ interface Object {
 }
 
 interface ObjectConstructor {
-    new(value?: any): Object;
+    new (value?: any): Object;
     (): any;
     (value: any): any;
 
@@ -145,7 +147,10 @@ interface ObjectConstructor {
      * @param o Object that contains the property.
      * @param p Name of the property.
      */
-    getOwnPropertyDescriptor(o: any, p: PropertyKey): PropertyDescriptor | undefined;
+    getOwnPropertyDescriptor(
+        o: any,
+        p: PropertyKey,
+    ): PropertyDescriptor | undefined;
 
     /**
      * Returns the names of the own properties of an object. The own properties of an object are those that are defined directly
@@ -165,7 +170,10 @@ interface ObjectConstructor {
      * @param o Object to use as a prototype. May be null
      * @param properties JavaScript object that contains one or more property descriptors.
      */
-    create(o: object | null, properties: PropertyDescriptorMap & ThisType<any>): any;
+    create(
+        o: object | null,
+        properties: PropertyDescriptorMap & ThisType<any>,
+    ): any;
 
     /**
      * Adds a property to an object, or modifies attributes of an existing property.
@@ -173,14 +181,21 @@ interface ObjectConstructor {
      * @param p The property name.
      * @param attributes Descriptor for the property. It can be for a data property or an accessor property.
      */
-    defineProperty(o: any, p: PropertyKey, attributes: PropertyDescriptor & ThisType<any>): any;
+    defineProperty(
+        o: any,
+        p: PropertyKey,
+        attributes: PropertyDescriptor & ThisType<any>,
+    ): any;
 
     /**
      * Adds one or more properties to an object, and/or modifies attributes of existing properties.
      * @param o Object on which to add or modify the properties. This can be a native JavaScript object or a DOM object.
      * @param properties JavaScript object that contains one or more descriptor objects. Each descriptor object describes a data property or an accessor property.
      */
-    defineProperties(o: any, properties: PropertyDescriptorMap & ThisType<any>): any;
+    defineProperties(
+        o: any,
+        properties: PropertyDescriptorMap & ThisType<any>,
+    ): any;
 
     /**
      * Prevents the modification of attributes of existing properties, and prevents the addition of new properties.
@@ -284,7 +299,7 @@ interface FunctionConstructor {
      * Creates a new function.
      * @param args A list of arguments the function accepts.
      */
-    new(...args: string[]): Function;
+    new (...args: string[]): Function;
     (...args: string[]): Function;
     readonly prototype: Function;
 }
@@ -294,16 +309,20 @@ interface FunctionConstructor {
 /**
  * Extracts the type of the 'this' parameter of a function type, or 'unknown' if the function type has no 'this' parameter.
  */
-type ThisParameterType<T> = T extends (this: unknown, ...args: any[]) => any ? unknown
-    : T extends (this: infer U, ...args: any[]) => any ? U
-    : unknown;
+type ThisParameterType<T> = T extends (this: unknown, ...args: any[]) => any
+    ? unknown
+    : T extends (this: infer U, ...args: any[]) => any
+      ? U
+      : unknown;
 
 /**
  * Removes the 'this' parameter from a function type.
  */
-type OmitThisParameter<T> = unknown extends ThisParameterType<T> ? T
-    : T extends (...args: infer A) => infer R ? (...args: A) => R
-    : T;
+type OmitThisParameter<T> = unknown extends ThisParameterType<T>
+    ? T
+    : T extends (...args: infer A) => infer R
+      ? (...args: A) => R
+      : T;
 
 interface CallableFunction extends Function {
     /**
@@ -312,14 +331,22 @@ interface CallableFunction extends Function {
      * @param args An array of argument values to be passed to the function.
      */
     apply<T, R>(this: (this: T) => R, thisArg: T): R;
-    apply<T, A extends any[], R>(this: (this: T, ...args: A) => R, thisArg: T, args: A): R;
+    apply<T, A extends any[], R>(
+        this: (this: T, ...args: A) => R,
+        thisArg: T,
+        args: A,
+    ): R;
 
     /**
      * Calls the function with the specified object as the this value and the specified rest arguments as the arguments.
      * @param thisArg The object to be used as the this object.
      * @param args Argument values to be passed to the function.
      */
-    call<T, A extends any[], R>(this: (this: T, ...args: A) => R, thisArg: T, ...args: A): R;
+    call<T, A extends any[], R>(
+        this: (this: T, ...args: A) => R,
+        thisArg: T,
+        ...args: A
+    ): R;
 
     /**
      * For a given function, creates a bound function that has the same body as the original function.
@@ -347,14 +374,25 @@ interface CallableFunction extends Function {
         arg2: A2,
     ): (...args: A) => R;
     bind<T, A0, A1, A2, A3, A extends any[], R>(
-        this: (this: T, arg0: A0, arg1: A1, arg2: A2, arg3: A3, ...args: A) => R,
+        this: (
+            this: T,
+            arg0: A0,
+            arg1: A1,
+            arg2: A2,
+            arg3: A3,
+            ...args: A
+        ) => R,
         thisArg: T,
         arg0: A0,
         arg1: A1,
         arg2: A2,
         arg3: A3,
     ): (...args: A) => R;
-    bind<T, AX, R>(this: (this: T, ...args: AX[]) => R, thisArg: T, ...args: AX[]): (...args: AX[]) => R;
+    bind<T, AX, R>(
+        this: (this: T, ...args: AX[]) => R,
+        thisArg: T,
+        ...args: AX[]
+    ): (...args: AX[]) => R;
 }
 
 interface NewableFunction extends Function {
@@ -363,15 +401,23 @@ interface NewableFunction extends Function {
      * @param thisArg The object to be used as the this object.
      * @param args An array of argument values to be passed to the function.
      */
-    apply<T>(this: new() => T, thisArg: T): void;
-    apply<T, A extends any[]>(this: new(...args: A) => T, thisArg: T, args: A): void;
+    apply<T>(this: new () => T, thisArg: T): void;
+    apply<T, A extends any[]>(
+        this: new (...args: A) => T,
+        thisArg: T,
+        args: A,
+    ): void;
 
     /**
      * Calls the function with the specified object as the this value and the specified rest arguments as the arguments.
      * @param thisArg The object to be used as the this object.
      * @param args Argument values to be passed to the function.
      */
-    call<T, A extends any[]>(this: new(...args: A) => T, thisArg: T, ...args: A): void;
+    call<T, A extends any[]>(
+        this: new (...args: A) => T,
+        thisArg: T,
+        ...args: A
+    ): void;
 
     /**
      * For a given function, creates a bound function that has the same body as the original function.
@@ -380,29 +426,37 @@ interface NewableFunction extends Function {
      * @param args Arguments to bind to the parameters of the function.
      */
     bind<T>(this: T, thisArg: any): T;
-    bind<A0, A extends any[], R>(this: new(arg0: A0, ...args: A) => R, thisArg: any, arg0: A0): new(...args: A) => R;
+    bind<A0, A extends any[], R>(
+        this: new (arg0: A0, ...args: A) => R,
+        thisArg: any,
+        arg0: A0,
+    ): new (...args: A) => R;
     bind<A0, A1, A extends any[], R>(
-        this: new(arg0: A0, arg1: A1, ...args: A) => R,
+        this: new (arg0: A0, arg1: A1, ...args: A) => R,
         thisArg: any,
         arg0: A0,
         arg1: A1,
-    ): new(...args: A) => R;
+    ): new (...args: A) => R;
     bind<A0, A1, A2, A extends any[], R>(
-        this: new(arg0: A0, arg1: A1, arg2: A2, ...args: A) => R,
+        this: new (arg0: A0, arg1: A1, arg2: A2, ...args: A) => R,
         thisArg: any,
         arg0: A0,
         arg1: A1,
         arg2: A2,
-    ): new(...args: A) => R;
+    ): new (...args: A) => R;
     bind<A0, A1, A2, A3, A extends any[], R>(
-        this: new(arg0: A0, arg1: A1, arg2: A2, arg3: A3, ...args: A) => R,
+        this: new (arg0: A0, arg1: A1, arg2: A2, arg3: A3, ...args: A) => R,
         thisArg: any,
         arg0: A0,
         arg1: A1,
         arg2: A2,
         arg3: A3,
-    ): new(...args: A) => R;
-    bind<AX, R>(this: new(...args: AX[]) => R, thisArg: any, ...args: AX[]): new(...args: AX[]) => R;
+    ): new (...args: A) => R;
+    bind<AX, R>(
+        this: new (...args: AX[]) => R,
+        thisArg: any,
+        ...args: AX[]
+    ): new (...args: AX[]) => R;
 }
 
 interface IArguments {
@@ -471,7 +525,10 @@ interface String {
      * @param searchValue A string to search for.
      * @param replacer A function that returns the replacement text.
      */
-    replace(searchValue: string | RegExp, replacer: (substring: string, ...args: any[]) => string): string;
+    replace(
+        searchValue: string | RegExp,
+        replacer: (substring: string, ...args: any[]) => string,
+    ): string;
 
     /**
      * Finds the first substring match in a regular expression search.
@@ -535,7 +592,7 @@ interface String {
 }
 
 interface StringConstructor {
-    new(value?: any): String;
+    new (value?: any): String;
     (value?: any): string;
     readonly prototype: String;
     fromCharCode(...codes: number[]): string;
@@ -552,7 +609,7 @@ interface Boolean {
 }
 
 interface BooleanConstructor {
-    new(value?: any): Boolean;
+    new (value?: any): Boolean;
     <T>(value?: T): boolean;
     readonly prototype: Boolean;
 }
@@ -631,8 +688,7 @@ interface TemplateStringsArray extends ReadonlyArray<string> {
  * If you need to declare that a given property exists on `import.meta`,
  * this type may be augmented via interface merging.
  */
-interface ImportMeta {
-}
+interface ImportMeta {}
 
 interface Math {
     /** The mathematical constant e. This is Euler's number, the base of natural logarithms. */
@@ -976,8 +1032,8 @@ interface RegExp {
 }
 
 interface RegExpConstructor {
-    new(pattern: RegExp | string): RegExp;
-    new(pattern: string, flags?: string): RegExp;
+    new (pattern: RegExp | string): RegExp;
+    new (pattern: string, flags?: string): RegExp;
     (pattern: RegExp | string): RegExp;
     (pattern: string, flags?: string): RegExp;
     readonly prototype: RegExp;
@@ -1004,73 +1060,67 @@ interface Error {
 }
 
 interface ErrorConstructor {
-    new(message?: string): Error;
+    new (message?: string): Error;
     (message?: string): Error;
     readonly prototype: Error;
 }
 
 declare var Error: ErrorConstructor;
 
-interface EvalError extends Error {
-}
+interface EvalError extends Error {}
 
 interface EvalErrorConstructor {
-    new(message?: string): EvalError;
+    new (message?: string): EvalError;
     (message?: string): EvalError;
     readonly prototype: EvalError;
 }
 
 declare var EvalError: EvalErrorConstructor;
 
-interface RangeError extends Error {
-}
+interface RangeError extends Error {}
 
 interface RangeErrorConstructor {
-    new(message?: string): RangeError;
+    new (message?: string): RangeError;
     (message?: string): RangeError;
     readonly prototype: RangeError;
 }
 
 declare var RangeError: RangeErrorConstructor;
 
-interface ReferenceError extends Error {
-}
+interface ReferenceError extends Error {}
 
 interface ReferenceErrorConstructor {
-    new(message?: string): ReferenceError;
+    new (message?: string): ReferenceError;
     (message?: string): ReferenceError;
     readonly prototype: ReferenceError;
 }
 
 declare var ReferenceError: ReferenceErrorConstructor;
 
-interface SyntaxError extends Error {
-}
+interface SyntaxError extends Error {}
 
 interface SyntaxErrorConstructor {
-    new(message?: string): SyntaxError;
+    new (message?: string): SyntaxError;
     (message?: string): SyntaxError;
     readonly prototype: SyntaxError;
 }
 
 declare var SyntaxError: SyntaxErrorConstructor;
 
-interface TypeError extends Error {
-}
+interface TypeError extends Error {}
 
 interface TypeErrorConstructor {
-    new(message?: string): TypeError;
+    new (message?: string): TypeError;
     (message?: string): TypeError;
     readonly prototype: TypeError;
 }
 
 declare var TypeError: TypeErrorConstructor;
 
-interface URIError extends Error {
-}
+interface URIError extends Error {}
 
 interface URIErrorConstructor {
-    new(message?: string): URIError;
+    new (message?: string): URIError;
     (message?: string): URIError;
     readonly prototype: URIError;
 }
@@ -1084,21 +1134,32 @@ interface JSON {
      * @param reviver A function that transforms the results. This function is called for each member of the object.
      * If a member contains nested objects, the nested objects are transformed before the parent object is.
      */
-    parse(text: string, reviver?: (this: any, key: string, value: any) => any): any;
+    parse(
+        text: string,
+        reviver?: (this: any, key: string, value: any) => any,
+    ): any;
     /**
      * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
      * @param value A JavaScript value, usually an object or array, to be converted.
      * @param replacer A function that transforms the results.
      * @param space Adds indentation, white space, and line break characters to the return-value JSON text to make it easier to read.
      */
-    stringify(value: any, replacer?: (this: any, key: string, value: any) => any, space?: string | number): string;
+    stringify(
+        value: any,
+        replacer?: (this: any, key: string, value: any) => any,
+        space?: string | number,
+    ): string;
     /**
      * Converts a JavaScript value to a JavaScript Object Notation (JSON) string.
      * @param value A JavaScript value, usually an object or array, to be converted.
      * @param replacer An array of strings and numbers that acts as a approved list for selecting the object properties that will be stringified.
      * @param space Adds indentation, white space, and line break characters to the return-value JSON text to make it easier to read.
      */
-    stringify(value: any, replacer?: Array<number | string> | null, space?: string | number): string;
+    stringify(
+        value: any,
+        replacer?: Array<number | string> | null,
+        space?: string | number,
+    ): string;
 }
 
 /**
@@ -1161,32 +1222,48 @@ interface ReadonlyArray<T> {
      * @param callbackfn A function that accepts up to three arguments. The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    every(callbackfn: (value: T, index: number, array: readonly T[]) => unknown, thisArg?: any): boolean;
+    every(
+        callbackfn: (value: T, index: number, array: readonly T[]) => unknown,
+        thisArg?: any,
+    ): boolean;
     /**
      * Determines whether the specified callback function returns true for any element of an array.
      * @param callbackfn A function that accepts up to three arguments. The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    some(callbackfn: (value: T, index: number, array: readonly T[]) => unknown, thisArg?: any): boolean;
+    some(
+        callbackfn: (value: T, index: number, array: readonly T[]) => unknown,
+        thisArg?: any,
+    ): boolean;
     /**
      * Performs the specified action for each element in an array.
      * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
      * @param thisArg  An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    forEach(callbackfn: (value: T, index: number, array: readonly T[]) => void, thisArg?: any): void;
+    forEach(
+        callbackfn: (value: T, index: number, array: readonly T[]) => void,
+        thisArg?: any,
+    ): void;
     /**
      * Calls a defined callback function on each element of an array, and returns an array that contains the results.
      * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    map<U>(callbackfn: (value: T, index: number, array: readonly T[]) => U, thisArg?: any): U[];
+    map<U>(
+        callbackfn: (value: T, index: number, array: readonly T[]) => U,
+        thisArg?: any,
+    ): U[];
     /**
      * Returns the elements of an array that meet the condition specified in a callback function.
      * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
     filter<S extends T>(
-        callbackfn: (value: T, index: number, array: readonly T[]) => value is S,
+        callbackfn: (
+            value: T,
+            index: number,
+            array: readonly T[],
+        ) => value is S,
         thisArg?: any,
     ): S[];
     /**
@@ -1194,15 +1271,30 @@ interface ReadonlyArray<T> {
      * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    filter(callbackfn: (value: T, index: number, array: readonly T[]) => unknown, thisArg?: any): T[];
+    filter(
+        callbackfn: (value: T, index: number, array: readonly T[]) => unknown,
+        thisArg?: any,
+    ): T[];
     /**
      * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
      * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
      * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
      */
-    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T): T;
     reduce(
-        callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T,
+        callbackfn: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: readonly T[],
+        ) => T,
+    ): T;
+    reduce(
+        callbackfn: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: readonly T[],
+        ) => T,
         initialValue: T,
     ): T;
     /**
@@ -1211,7 +1303,12 @@ interface ReadonlyArray<T> {
      * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
      */
     reduce<U>(
-        callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: readonly T[]) => U,
+        callbackfn: (
+            previousValue: U,
+            currentValue: T,
+            currentIndex: number,
+            array: readonly T[],
+        ) => U,
         initialValue: U,
     ): U;
     /**
@@ -1219,9 +1316,21 @@ interface ReadonlyArray<T> {
      * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
      * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
      */
-    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T): T;
     reduceRight(
-        callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: readonly T[]) => T,
+        callbackfn: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: readonly T[],
+        ) => T,
+    ): T;
+    reduceRight(
+        callbackfn: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: readonly T[],
+        ) => T,
         initialValue: T,
     ): T;
     /**
@@ -1230,7 +1339,12 @@ interface ReadonlyArray<T> {
      * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
      */
     reduceRight<U>(
-        callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: readonly T[]) => U,
+        callbackfn: (
+            previousValue: U,
+            currentValue: T,
+            currentIndex: number,
+            array: readonly T[],
+        ) => U,
         initialValue: U,
     ): U;
 
@@ -1335,51 +1449,89 @@ interface Array<T> {
      * @param callbackfn A function that accepts up to three arguments. The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    every(callbackfn: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;
+    every(
+        callbackfn: (value: T, index: number, array: T[]) => unknown,
+        thisArg?: any,
+    ): boolean;
     /**
      * Determines whether the specified callback function returns true for any element of an array.
      * @param callbackfn A function that accepts up to three arguments. The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    some(callbackfn: (value: T, index: number, array: T[]) => unknown, thisArg?: any): boolean;
+    some(
+        callbackfn: (value: T, index: number, array: T[]) => unknown,
+        thisArg?: any,
+    ): boolean;
     /**
      * Performs the specified action for each element in an array.
      * @param callbackfn  A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.
      * @param thisArg  An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg?: any): void;
+    forEach(
+        callbackfn: (value: T, index: number, array: T[]) => void,
+        thisArg?: any,
+    ): void;
     /**
      * Calls a defined callback function on each element of an array, and returns an array that contains the results.
      * @param callbackfn A function that accepts up to three arguments. The map method calls the callbackfn function one time for each element in the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    map<U>(callbackfn: (value: T, index: number, array: T[]) => U, thisArg?: any): U[];
+    map<U>(
+        callbackfn: (value: T, index: number, array: T[]) => U,
+        thisArg?: any,
+    ): U[];
     /**
      * Returns the elements of an array that meet the condition specified in a callback function.
      * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    filter<S extends T>(callbackfn: (value: T, index: number, array: T[]) => value is S, thisArg?: any): S[];
+    filter<S extends T>(
+        callbackfn: (value: T, index: number, array: T[]) => value is S,
+        thisArg?: any,
+    ): S[];
     /**
      * Returns the elements of an array that meet the condition specified in a callback function.
      * @param callbackfn A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.
      * @param thisArg An object to which the this keyword can refer in the callbackfn function. If thisArg is omitted, undefined is used as the this value.
      */
-    filter(callbackfn: (value: T, index: number, array: T[]) => unknown, thisArg?: any): T[];
+    filter(
+        callbackfn: (value: T, index: number, array: T[]) => unknown,
+        thisArg?: any,
+    ): T[];
     /**
      * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
      * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
      * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
      */
-    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;
-    reduce(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T, initialValue: T): T;
+    reduce(
+        callbackfn: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: T[],
+        ) => T,
+    ): T;
+    reduce(
+        callbackfn: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: T[],
+        ) => T,
+        initialValue: T,
+    ): T;
     /**
      * Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.
      * @param callbackfn A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.
      * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
      */
     reduce<U>(
-        callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U,
+        callbackfn: (
+            previousValue: U,
+            currentValue: T,
+            currentIndex: number,
+            array: T[],
+        ) => U,
         initialValue: U,
     ): U;
     /**
@@ -1387,9 +1539,21 @@ interface Array<T> {
      * @param callbackfn A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.
      * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
      */
-    reduceRight(callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T): T;
     reduceRight(
-        callbackfn: (previousValue: T, currentValue: T, currentIndex: number, array: T[]) => T,
+        callbackfn: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: T[],
+        ) => T,
+    ): T;
+    reduceRight(
+        callbackfn: (
+            previousValue: T,
+            currentValue: T,
+            currentIndex: number,
+            array: T[],
+        ) => T,
         initialValue: T,
     ): T;
     /**
@@ -1398,7 +1562,12 @@ interface Array<T> {
      * @param initialValue If initialValue is specified, it is used as the initial value to start the accumulation. The first call to the callbackfn function provides this value as an argument instead of an array value.
      */
     reduceRight<U>(
-        callbackfn: (previousValue: U, currentValue: T, currentIndex: number, array: T[]) => U,
+        callbackfn: (
+            previousValue: U,
+            currentValue: T,
+            currentIndex: number,
+            array: T[],
+        ) => U,
         initialValue: U,
     ): U;
 
@@ -1406,9 +1575,9 @@ interface Array<T> {
 }
 
 interface ArrayConstructor {
-    new(arrayLength?: number): any[];
-    new<T>(arrayLength: number): T[];
-    new<T>(...items: T[]): T[];
+    new (arrayLength?: number): any[];
+    new <T>(arrayLength: number): T[];
+    new <T>(...items: T[]): T[];
     (arrayLength?: number): any[];
     <T>(arrayLength: number): T[];
     <T>(...items: T[]): T[];
@@ -1427,17 +1596,29 @@ interface TypedPropertyDescriptor<T> {
     set?: (value: T) => void;
 }
 
-declare type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction | void;
-declare type PropertyDecorator = (target: Object, propertyKey: string | symbol) => void;
+declare type ClassDecorator = <TFunction extends Function>(
+    target: TFunction,
+) => TFunction | void;
+declare type PropertyDecorator = (
+    target: Object,
+    propertyKey: string | symbol,
+) => void;
 declare type MethodDecorator = <T>(
     target: Object,
     propertyKey: string | symbol,
     descriptor: TypedPropertyDescriptor<T>,
 ) => TypedPropertyDescriptor<T> | void;
-declare type ParameterDecorator = (target: Object, propertyKey: string | symbol, parameterIndex: number) => void;
+declare type ParameterDecorator = (
+    target: Object,
+    propertyKey: string | symbol,
+    parameterIndex: number,
+) => void;
 
-declare type PromiseConstructorLike = new<T>(
-    executor: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void,
+declare type PromiseConstructorLike = new <T>(
+    executor: (
+        resolve: (value?: T | PromiseLike<T>) => void,
+        reject: (reason?: any) => void,
+    ) => void,
 ) => PromiseLike<T>;
 
 interface PromiseLike<T> {
@@ -1448,8 +1629,14 @@ interface PromiseLike<T> {
      * @returns A Promise for the completion of which ever callback is executed.
      */
     then<TResult1 = T, TResult2 = never>(
-        onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
-        onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null,
+        onfulfilled?:
+            | ((value: T) => TResult1 | PromiseLike<TResult1>)
+            | undefined
+            | null,
+        onrejected?:
+            | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+            | undefined
+            | null,
     ): PromiseLike<TResult1 | TResult2>;
 }
 
@@ -1464,8 +1651,14 @@ interface Promise<T> {
      * @returns A Promise for the completion of which ever callback is executed.
      */
     then<TResult1 = T, TResult2 = never>(
-        onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
-        onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null,
+        onfulfilled?:
+            | ((value: T) => TResult1 | PromiseLike<TResult1>)
+            | undefined
+            | null,
+        onrejected?:
+            | ((reason: any) => TResult2 | PromiseLike<TResult2>)
+            | undefined
+            | null,
     ): Promise<TResult1 | TResult2>;
 
     /**
@@ -1474,7 +1667,10 @@ interface Promise<T> {
      * @returns A Promise for the completion of the callback.
      */
     catch<TResult = never>(
-        onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null,
+        onrejected?:
+            | ((reason: any) => TResult | PromiseLike<TResult>)
+            | undefined
+            | null,
     ): Promise<T | TResult>;
 }
 
@@ -1541,22 +1737,35 @@ type NonNullable<T> = T extends null | undefined ? never : T;
 /**
  * Obtain the parameters of a function type in a tuple
  */
-type Parameters<T extends (...args: any) => any> = T extends (...args: infer P) => any ? P : never;
+type Parameters<T extends (...args: any) => any> = T extends (
+    ...args: infer P
+) => any
+    ? P
+    : never;
 
 /**
  * Obtain the parameters of a constructor function type in a tuple
  */
-type ConstructorParameters<T extends new(...args: any) => any> = T extends new(...args: infer P) => any ? P : never;
+type ConstructorParameters<T extends new (...args: any) => any> =
+    T extends new (...args: infer P) => any ? P : never;
 
 /**
  * Obtain the return type of a function type
  */
-type ReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;
+type ReturnType<T extends (...args: any) => any> = T extends (
+    ...args: any
+) => infer R
+    ? R
+    : any;
 
 /**
  * Obtain the return type of a constructor function type
  */
-type InstanceType<T extends new(...args: any) => any> = T extends new(...args: any) => infer R ? R : any;
+type InstanceType<T extends new (...args: any) => any> = T extends new (
+    ...args: any
+) => infer R
+    ? R
+    : any;
 
 /**
  * Marker for contextual 'this' type
@@ -1592,9 +1801,12 @@ declare namespace Intl {
         resolvedOptions(): ResolvedCollatorOptions;
     }
     var Collator: {
-        new(locales?: string | string[], options?: CollatorOptions): Collator;
+        new (locales?: string | string[], options?: CollatorOptions): Collator;
         (locales?: string | string[], options?: CollatorOptions): Collator;
-        supportedLocalesOf(locales: string | string[], options?: CollatorOptions): string[];
+        supportedLocalesOf(
+            locales: string | string[],
+            options?: CollatorOptions,
+        ): string[];
     };
 
     interface NumberFormatOptions {
@@ -1629,9 +1841,18 @@ declare namespace Intl {
         resolvedOptions(): ResolvedNumberFormatOptions;
     }
     var NumberFormat: {
-        new(locales?: string | string[], options?: NumberFormatOptions): NumberFormat;
-        (locales?: string | string[], options?: NumberFormatOptions): NumberFormat;
-        supportedLocalesOf(locales: string | string[], options?: NumberFormatOptions): string[];
+        new (
+            locales?: string | string[],
+            options?: NumberFormatOptions,
+        ): NumberFormat;
+        (
+            locales?: string | string[],
+            options?: NumberFormatOptions,
+        ): NumberFormat;
+        supportedLocalesOf(
+            locales: string | string[],
+            options?: NumberFormatOptions,
+        ): string[];
     };
 
     interface DateTimeFormatOptions {
@@ -1672,9 +1893,18 @@ declare namespace Intl {
         resolvedOptions(): ResolvedDateTimeFormatOptions;
     }
     var DateTimeFormat: {
-        new(locales?: string | string[], options?: DateTimeFormatOptions): DateTimeFormat;
-        (locales?: string | string[], options?: DateTimeFormatOptions): DateTimeFormat;
-        supportedLocalesOf(locales: string | string[], options?: DateTimeFormatOptions): string[];
+        new (
+            locales?: string | string[],
+            options?: DateTimeFormatOptions,
+        ): DateTimeFormat;
+        (
+            locales?: string | string[],
+            options?: DateTimeFormatOptions,
+        ): DateTimeFormat;
+        supportedLocalesOf(
+            locales: string | string[],
+            options?: DateTimeFormatOptions,
+        ): string[];
     };
 }
 
@@ -1685,7 +1915,11 @@ interface String {
      * @param locales A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used. This parameter must conform to BCP 47 standards; see the Intl.Collator object for details.
      * @param options An object that contains one or more properties that specify comparison options. see the Intl.Collator object for details.
      */
-    localeCompare(that: string, locales?: string | string[], options?: Intl.CollatorOptions): number;
+    localeCompare(
+        that: string,
+        locales?: string | string[],
+        options?: Intl.CollatorOptions,
+    ): number;
 }
 
 interface Number {
@@ -1694,7 +1928,10 @@ interface Number {
      * @param locales A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.
      * @param options An object that contains one or more properties that specify comparison options.
      */
-    toLocaleString(locales?: string | string[], options?: Intl.NumberFormatOptions): string;
+    toLocaleString(
+        locales?: string | string[],
+        options?: Intl.NumberFormatOptions,
+    ): string;
 }
 
 interface Date {
@@ -1703,18 +1940,27 @@ interface Date {
      * @param locales A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.
      * @param options An object that contains one or more properties that specify comparison options.
      */
-    toLocaleString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string;
+    toLocaleString(
+        locales?: string | string[],
+        options?: Intl.DateTimeFormatOptions,
+    ): string;
     /**
      * Converts a date to a string by using the current or specified locale.
      * @param locales A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.
      * @param options An object that contains one or more properties that specify comparison options.
      */
-    toLocaleDateString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string;
+    toLocaleDateString(
+        locales?: string | string[],
+        options?: Intl.DateTimeFormatOptions,
+    ): string;
 
     /**
      * Converts a time to a string by using the current or specified locale.
      * @param locales A locale string or array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.
      * @param options An object that contains one or more properties that specify comparison options.
      */
-    toLocaleTimeString(locales?: string | string[], options?: Intl.DateTimeFormatOptions): string;
+    toLocaleTimeString(
+        locales?: string | string[],
+        options?: Intl.DateTimeFormatOptions,
+    ): string;
 }

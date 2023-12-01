@@ -37,7 +37,13 @@ export function step(edge: number, v: number): number;
  * @param  stop2  - Upper bound of the value's target range
  * @return Remapped number
  */
-export function map(value: number, start1: number, stop1: number, start2: number, stop2: number): number;
+export function map(
+    value: number,
+    start1: number,
+    stop1: number,
+    start2: number,
+    stop2: number,
+): number;
 
 /**
  * Return diagonal of a rectangle.
@@ -57,7 +63,12 @@ export function diagonal(w: number, h: number): number;
  * @param  y2 - Y coord of the second point.
  * @return The computed distance.
  */
-export function distance(x1: number, y1: number, x2: number, y2: number): number;
+export function distance(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+): number;
 
 /**
  * Smooth a value.
@@ -87,7 +98,11 @@ export function normalize(min: number, max: number, x: number): number;
  * @param  precision     - Precision. (default: 2)
  * @return Generated float.
  */
-export function randomFloat(minValue: number, maxValue: number, precision?: number): number;
+export function randomFloat(
+    minValue: number,
+    maxValue: number,
+    precision?: number,
+): number;
 
 /**
  * Generate a random integer
@@ -152,7 +167,11 @@ export function fuzzyEqual(a: number, b: number, epsilon?: number): boolean;
  * @param  epsilon - The epsilon (a small value used in the calculation).
  * @return True if a>b-epsilon.
  */
-export function fuzzyGreaterThan(a: number, b: number, epsilon?: number): boolean;
+export function fuzzyGreaterThan(
+    a: number,
+    b: number,
+    epsilon?: number,
+): boolean;
 
 /**
  * A is fuzzyLessThan B if it is less than B + epsilon.

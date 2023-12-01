@@ -36,7 +36,10 @@ export class Format {
     constructor(opts?: object);
 
     options?: object | undefined;
-    transform: (info: TransformableInfo, opts?: any) => TransformableInfo | boolean;
+    transform: (
+        info: TransformableInfo,
+        opts?: any,
+    ) => TransformableInfo | boolean;
 }
 
 export interface TransformableInfo {

@@ -11,7 +11,6 @@ declare namespace TreeView {
     }
 }
 
-declare class TreeView extends Component<TreeView.TreeProps, any> {
-}
+declare class TreeView extends Component<TreeView.TreeProps, any> {}
 
 export = TreeView;

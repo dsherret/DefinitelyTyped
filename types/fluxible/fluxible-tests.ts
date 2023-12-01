@@ -11,8 +11,7 @@ const TestStore = createStore({
     },
 
     statics: {
-        staticMethod() {
-        },
+        staticMethod() {},
     },
 
     initialize() {},

@@ -23,7 +23,9 @@ declare module "camo" {
     /**
      * Supported types for document properties
      */
-    export type SchemaType = TypeOrArrayOfType<string | number | boolean | Date | Object>;
+    export type SchemaType = TypeOrArrayOfType<
+        string | number | boolean | Date | Object
+    >;
 
     /**
      * Document property with options
@@ -73,7 +75,9 @@ declare module "camo" {
     /**
      * Document property type or options
      */
-    export type SchemaTypeExtended = SchemaTypeConstructor | SchemaTypeOptions<SchemaType>;
+    export type SchemaTypeExtended =
+        | SchemaTypeConstructor
+        | SchemaTypeOptions<SchemaType>;
 
     /**
      * Schema passed to Document.create()
@@ -140,7 +144,11 @@ declare module "camo" {
         /**
          * Index signature
          */
-        [property: string]: SchemaTypeExtended | string | Document<any> | Function;
+        [property: string]:
+            | SchemaTypeExtended
+            | string
+            | Document<any>
+            | Function;
         /**
          * Static method to define the collection name.
          *
@@ -157,7 +165,9 @@ declare module "camo" {
          * @param schema Base schema to create a document.
          * @returns A camo document instance.
          */
-        public static create<StaticSchema extends DocumentSchema>(schema: StaticSchema): Document<StaticSchema>;
+        public static create<StaticSchema extends DocumentSchema>(
+            schema: StaticSchema,
+        ): Document<StaticSchema>;
         /**
          * Saves the document instance to the database.
          */
@@ -221,7 +231,10 @@ declare module "camo" {
          * @param options Database Options for findOneAndDelete method.
          * @returns Number of deleted documents.
          */
-        public static findOneAndDelete(query: any, options?: any): Promise<number>;
+        public static findOneAndDelete(
+            query: any,
+            options?: any,
+        ): Promise<number>;
         /**
          * Number of matching documents without retrieving all the data.
          *

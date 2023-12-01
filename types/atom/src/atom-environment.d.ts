@@ -89,10 +89,14 @@ export interface AtomEnvironment {
      *  Invoke the given callback when there is an unhandled error, but before
      *  the devtools pop open.
      */
-    onWillThrowError(callback: (event: PreventableExceptionThrownEvent) => void): Disposable;
+    onWillThrowError(
+        callback: (event: PreventableExceptionThrownEvent) => void,
+    ): Disposable;
 
     /** Invoke the given callback whenever there is an unhandled error. */
-    onDidThrowError(callback: (event: ExceptionThrownEvent) => void): Disposable;
+    onDidThrowError(
+        callback: (event: ExceptionThrownEvent) => void,
+    ): Disposable;
 
     /**
      *  Invoke the given callback as soon as the shell environment is loaded (or
@@ -201,17 +205,20 @@ export interface AtomEnvironment {
     displayWindow(): Promise<undefined>;
 
     /** Get the dimensions of this window. */
-    getWindowDimensions(): { x: number; y: number; width: number; height: number };
+    getWindowDimensions(): {
+        x: number;
+        y: number;
+        width: number;
+        height: number;
+    };
 
     /** Set the dimensions of the window. */
-    setWindowDimensions(
-        dimensions: {
-            x?: number | undefined;
-            y?: number | undefined;
-            width?: number | undefined;
-            height?: number | undefined;
-        },
-    ): Promise<object>;
+    setWindowDimensions(dimensions: {
+        x?: number | undefined;
+        y?: number | undefined;
+        width?: number | undefined;
+        height?: number | undefined;
+    }): Promise<object>;
 
     // Messaging the User
     /** Visually and audibly trigger a beep. */
@@ -231,21 +238,9 @@ export interface AtomEnvironment {
      *  @param checkboxChecked The checked state of the checkbox if `checkboxLabel` was set.
      *  Otherwise false.
      */
-    confirm(options: ConfirmationOptions, callback: (response: number, checkboxChecked: boolean) => void): void;
-
-    /**
-     *  A flexible way to open a dialog akin to an alert dialog. If a callback
-     *  is provided, then the confirmation will work asynchronously, which is
-     *  recommended.
-     *
-     *  If the dialog is closed (via `Esc` key or `X` in the top corner) without
-     *  selecting a button the first button will be clicked unless a "Cancel" or "No"
-     *  button is provided.
-     *
-     *  Returns the chosen button index number if the buttons option was an array.
-     */
     confirm(
-        options: { message: string; detailedMessage?: string | undefined; buttons?: readonly string[] | undefined },
+        options: ConfirmationOptions,
+        callback: (response: number, checkboxChecked: boolean) => void,
     ): void;
 
     /**
@@ -262,9 +257,28 @@ export interface AtomEnvironment {
     confirm(options: {
         message: string;
         detailedMessage?: string | undefined;
-        buttons?: {
-            [key: string]: () => void;
-        } | undefined;
+        buttons?: readonly string[] | undefined;
+    }): void;
+
+    /**
+     *  A flexible way to open a dialog akin to an alert dialog. If a callback
+     *  is provided, then the confirmation will work asynchronously, which is
+     *  recommended.
+     *
+     *  If the dialog is closed (via `Esc` key or `X` in the top corner) without
+     *  selecting a button the first button will be clicked unless a "Cancel" or "No"
+     *  button is provided.
+     *
+     *  Returns the chosen button index number if the buttons option was an array.
+     */
+    confirm(options: {
+        message: string;
+        detailedMessage?: string | undefined;
+        buttons?:
+            | {
+                  [key: string]: () => void;
+              }
+            | undefined;
     }): number;
 
     // Managing the Dev Tools

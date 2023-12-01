@@ -97,9 +97,7 @@
  *         Firefox v4/OS X  |     undefined    |       1
  *         Firefox v4/Win7  |     undefined    |       3
  */
-declare function normalizeWheel(
-    event: any,
-): {
+declare function normalizeWheel(event: any): {
     spinX: number;
     spinY: number;
     pixelX: number;

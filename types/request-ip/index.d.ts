@@ -9,23 +9,31 @@ interface RequestHeaders extends http.IncomingHttpHeaders {
     "x-cluster-client-ip"?: string | undefined;
     "x-forwarded"?: string | undefined;
     "forwarded-for"?: string | undefined;
-    "forwarded"?: string | undefined;
+    forwarded?: string | undefined;
 }
 
 interface Request {
     headers?: RequestHeaders;
-    connection?: {
-        remoteAddress?: string | undefined;
-        socket?: {
-            remoteAddress?: string | undefined;
-        } | undefined;
-    } | undefined;
-    info?: {
-        remoteAddress?: string | undefined;
-    } | undefined;
-    socket?: {
-        remoteAddress?: string | undefined;
-    } | undefined;
+    connection?:
+        | {
+              remoteAddress?: string | undefined;
+              socket?:
+                  | {
+                        remoteAddress?: string | undefined;
+                    }
+                  | undefined;
+          }
+        | undefined;
+    info?:
+        | {
+              remoteAddress?: string | undefined;
+          }
+        | undefined;
+    socket?:
+        | {
+              remoteAddress?: string | undefined;
+          }
+        | undefined;
 }
 
 interface Options {
@@ -34,7 +42,9 @@ interface Options {
 
 export declare function getClientIp(req: Request): string | null;
 
-export function mw(options?: Options): (req: Request, res: any, next: any) => any;
+export function mw(
+    options?: Options,
+): (req: Request, res: any, next: any) => any;
 
 declare global {
     namespace Express {

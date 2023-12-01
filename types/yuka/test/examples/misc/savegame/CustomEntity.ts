@@ -26,7 +26,7 @@ export class CustomEntity extends GameEntity {
 
     generatePosition(): void {
         const radius = 2;
-        const phi = Math.acos((2 * Math.random()) - 1);
+        const phi = Math.acos(2 * Math.random() - 1);
         const theta = Math.random() * Math.PI * 2;
 
         this.position.fromSpherical(radius, phi, theta);

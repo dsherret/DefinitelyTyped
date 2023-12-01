@@ -15,12 +15,18 @@ cache.set("norway", { capital: "oslo" }, null, (err) => {
 // From https://hapijs.com/api/16.1.1#servercacheprovisionoptions-callback
 
 server.initialize((err) => {
-    server.cache.provision({ engine: require("catbox-memory"), name: "countries" }, (err) => {
-        const cache = server.cache({ cache: "countries", expiresIn: 60 * 60 * 1000 });
-        cache.set("norway", { capital: "oslo" }, null, (err) => {
-            cache.get("norway", (err, value, cached, log) => {
-                // value === { capital: 'oslo' };
+    server.cache.provision(
+        { engine: require("catbox-memory"), name: "countries" },
+        (err) => {
+            const cache = server.cache({
+                cache: "countries",
+                expiresIn: 60 * 60 * 1000,
             });
-        });
-    });
+            cache.set("norway", { capital: "oslo" }, null, (err) => {
+                cache.get("norway", (err, value, cached, log) => {
+                    // value === { capital: 'oslo' };
+                });
+            });
+        },
+    );
 });

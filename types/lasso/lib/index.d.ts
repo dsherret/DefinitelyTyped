@@ -24,9 +24,17 @@ export const lassoResource: LassoResource;
 
 export function getDefaultLasso(): Lasso;
 
-export function create(config?: LassoConfig | string, baseDir?: string, filename?: string): Lasso;
+export function create(
+    config?: LassoConfig | string,
+    baseDir?: string,
+    filename?: string,
+): Lasso;
 
-export function configure(config?: LassoConfig | string, baseDir?: string, filename?: string): void;
+export function configure(
+    config?: LassoConfig | string,
+    baseDir?: string,
+    filename?: string,
+): void;
 
 export function setDevelopmentMode(): void;
 

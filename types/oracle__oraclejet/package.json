@@ -1,24 +1,24 @@
 {
-    "private": true,
-    "name": "@types/oracle__oraclejet",
-    "version": "6.1.9999",
-    "projects": [
-        "https://github.com/oracle/oraclejet"
-    ],
-    "dependencies": {
-        "@types/knockout": "*"
+  "private": true,
+  "name": "@types/oracle__oraclejet",
+  "version": "6.1.9999",
+  "projects": [
+    "https://github.com/oracle/oraclejet"
+  ],
+  "dependencies": {
+    "@types/knockout": "*"
+  },
+  "devDependencies": {
+    "@types/oracle__oraclejet": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Naizam Olakara",
+      "githubUsername": "nolakara"
     },
-    "devDependencies": {
-        "@types/oracle__oraclejet": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Naizam Olakara",
-            "githubUsername": "nolakara"
-        },
-        {
-            "name": "Jing Wu",
-            "githubUsername": "jingxwu"
-        }
-    ]
+    {
+      "name": "Jing Wu",
+      "githubUsername": "jingxwu"
+    }
+  ]
 }

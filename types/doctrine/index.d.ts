@@ -123,8 +123,8 @@ export namespace type {
     }
     export interface FunctionType {
         type: "FunctionType";
-        "this": Type;
-        "new": Type;
+        this: Type;
+        new: Type;
         params: Type[];
         result: Type;
     }
@@ -182,7 +182,10 @@ export namespace type {
     }
 
     export function stringify(type: Type): string;
-    export function parseType(src: string, options?: { midstream: boolean }): Type;
+    export function parseType(
+        src: string,
+        options?: { midstream: boolean },
+    ): Type;
     export function parseParamType(
         src: string,
         options?: { midstream: boolean },

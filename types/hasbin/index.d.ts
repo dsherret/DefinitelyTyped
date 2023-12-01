@@ -9,7 +9,10 @@ declare namespace hasbin {
 
     function every(bins: string[], done: (result: boolean) => void): void;
 
-    function first(bins: string[], done: (result: false | string) => void): void;
+    function first(
+        bins: string[],
+        done: (result: false | string) => void,
+    ): void;
 
     function some(bins: string[], done: (result: boolean) => void): void;
 

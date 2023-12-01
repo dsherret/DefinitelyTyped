@@ -1,6 +1,7 @@
 import * as React from "react";
 
-export interface ContentContainerProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ContentContainerProps
+    extends React.HTMLAttributes<HTMLDivElement> {
     /**
      * The header element to be placed within the header area of the container.
      */

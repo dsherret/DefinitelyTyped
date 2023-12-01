@@ -4,7 +4,9 @@ import * as React from "react";
 
 const ReactSignatureCanvasNoOptions: JSX.Element = <ReactSignatureCanvas />;
 
-const ReactSignatureCanvasDotSizeFunctionOptions: JSX.Element = <ReactSignatureCanvas dotSize={() => 4} />;
+const ReactSignatureCanvasDotSizeFunctionOptions: JSX.Element = (
+    <ReactSignatureCanvas dotSize={() => 4} />
+);
 
 const ReactSignatureCanvasAllOptions: JSX.Element = (
     <ReactSignatureCanvas
@@ -35,13 +37,16 @@ class Example extends React.Component {
     componentDidMount() {
         if (this.canvasRef.current) {
             this.canvasRef.current.clear();
-            this.canvasRef.current.fromData([[new SignaturePad.Point(1, 2, 3)]]);
+            this.canvasRef.current.fromData([
+                [new SignaturePad.Point(1, 2, 3)],
+            ]);
             this.canvasRef.current.fromDataURL("url");
             this.canvasRef.current.fromDataURL("url", { height: 1, width: 4 });
             const isEmptyResult: boolean = this.canvasRef.current.isEmpty();
             this.canvasRef.current.off();
             this.canvasRef.current.on();
-            const toDataResult: SignaturePad.Point[][] = this.canvasRef.current.toData();
+            const toDataResult: SignaturePad.Point[][] =
+                this.canvasRef.current.toData();
             const toDataURLResult: string = this.canvasRef.current.toDataURL();
         }
     }

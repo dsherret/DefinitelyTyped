@@ -1,7 +1,14 @@
 export as namespace skate;
 
 // Public API: mixins
-export { withChildren, withComponent, withContext, withLifecycle, withRenderer, withUpdate } from "./api";
+export {
+    withChildren,
+    withComponent,
+    withContext,
+    withLifecycle,
+    withRenderer,
+    withUpdate,
+} from "./api";
 
 // Public API: utils
 export { define, emit, link, name, prop, props, shadow } from "./api";

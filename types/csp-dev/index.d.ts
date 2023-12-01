@@ -47,7 +47,10 @@ declare class ContentSecurityPolicy {
      * builder.newDirective('default-src', 'self');
      * builder.newDirective('style-src', 'data:');
      */
-    newDirective(directive: ContentSecurityPolicy.Directive, sources: string | readonly string[]): this;
+    newDirective(
+        directive: ContentSecurityPolicy.Directive,
+        sources: string | readonly string[],
+    ): this;
 
     /**
      * Share data as json, spec compliant csp string or html meta tag.

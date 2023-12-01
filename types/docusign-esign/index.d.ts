@@ -23,7 +23,9 @@ export class ApiClient {
         contentTypes: string[],
         accepts: string[],
         returnType: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<any>;
 
     deserialize(response: object, returnType: any): any;
@@ -45,11 +47,18 @@ export class ApiClient {
 
     getBasePath(): string;
 
-    getJWTUri(clientId: string, redirectURI: string, oAuthBasePath: string): string;
+    getJWTUri(
+        clientId: string,
+        redirectURI: string,
+        oAuthBasePath: string,
+    ): string;
 
     getOAuthBasePath(): string;
 
-    getUserInfo(accessToken: string, callback?: (() => void) | ((error: any, response: any) => void)): Promise<any>;
+    getUserInfo(
+        accessToken: string,
+        callback?: (() => void) | ((error: any, response: any) => void),
+    ): Promise<any>;
 
     hasNoInvalidScopes(scopes: string[]): boolean;
 
@@ -121,128 +130,170 @@ export class AccountsApi {
 
     _delete(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     create(
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NewAccountSummary>;
 
     createBrand(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BrandsResponse>;
 
     createCustomField(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     createPermissionProfile(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PermissionProfile>;
 
     deleteBrand(
         accountId: string,
         brandId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteBrandLogoByType(
         accountId: string,
         brandId: string,
         logoType: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteBrands(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BrandsResponse>;
 
     deleteCaptiveRecipient(
         accountId: string,
         recipientPart: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CaptiveRecipientInformation>;
 
     deleteCustomField(
         accountId: string,
         customFieldId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteENoteConfiguration(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deletePermissionProfile(
         accountId: string,
         permissionProfileId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getAccountIdentityVerification(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<AccountIdentityVerificationResponse>;
 
     getAccountInformation(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<AccountInformation>;
 
     getAccountTabSettings(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TabAccountSettings>;
 
     getAllPaymentGatewayAccounts(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PaymentGatewayAccountsInfo>;
 
     getBillingCharges(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingChargeResponse>;
 
     getBrand(
         accountId: string,
         brandId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Brand>;
 
     getBrandExportFile(
         accountId: string,
         brandId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getBrandLogoByType(
         accountId: string,
         brandId: string,
         logoType: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<object>;
 
     getBrandResources(
         accountId: string,
         brandId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BrandResourcesList>;
 
     getBrandResourcesByContentType(
@@ -250,132 +301,180 @@ export class AccountsApi {
         brandId: string,
         resourceContentType: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getConsumerDisclosure(
         accountId: string,
         langCode: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConsumerDisclosure>;
 
     getConsumerDisclosureDefault(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConsumerDisclosure>;
 
     getENoteConfiguration(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ENoteConfiguration>;
 
     getEnvelopePurgeConfiguration(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopePurgeConfiguration>;
 
     getFavoriteTemplates(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<FavoriteTemplatesInfo>;
 
     getNotificationDefaults(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NotificationDefaults>;
 
     getPasswordRules(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<AccountPasswordRules>;
 
     getPasswordRules_0(
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserPasswordRules>;
 
     getPermissionProfile(
         accountId: string,
         permissionProfileId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PermissionProfile>;
 
     getProvisioning(
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ProvisioningInformation>;
 
     getSupportedLanguages(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SupportedLanguages>;
 
     getWatermark(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Watermark>;
 
     getWatermarkPreview(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Watermark>;
 
     listBrands(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BrandsResponse>;
 
     listCustomFields(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     listPermissions(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PermissionProfileInformation>;
 
     listRecipientNamesByEmail(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<RecipientNamesResponse>;
 
     listSettings(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<AccountSettingsInformation>;
 
     listSignatureProviders(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<AccountSignatureProviders>;
 
     listUnsupportedFileTypes(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<FileTypeList>;
 
     unFavoriteTemplate(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<FavoriteTemplatesInfo>;
 
     updateAccountTabSettings(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TabAccountSettings>;
 
     updateBrand(
         accountId: string,
         brandId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Brand>;
 
     updateBrandLogoByType(
@@ -383,77 +482,101 @@ export class AccountsApi {
         accountId: string,
         brandId: string,
         logoType: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateBrandResourcesByContentType(
         accountId: string,
         brandId: string,
         resourceContentType: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BrandResources>;
 
     updateConsumerDisclosure(
         accountId: string,
         langCode: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConsumerDisclosure>;
 
     updateCustomField(
         accountId: string,
         customFieldId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     updateENoteConfiguration(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ENoteConfiguration>;
 
     updateEnvelopePurgeConfiguration(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopePurgeConfiguration>;
 
     updateFavoriteTemplate(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<FavoriteTemplatesInfo>;
 
     updateNotificationDefaults(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NotificationDefaults>;
 
     updatePasswordRules(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<AccountPasswordRules>;
 
     updatePermissionProfile(
         accountId: string,
         permissionProfileId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PermissionProfile>;
 
     updateSettings(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateWatermark(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Watermark>;
 }
 
@@ -464,35 +587,53 @@ export class AuthenticationApi {
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
-    getOAuthToken(callback?: (() => void) | ((error: any, data: any, response: any) => void)): Promise<OauthAccess>;
+    getOAuthToken(
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
+    ): Promise<OauthAccess>;
 
     listSocialLogins(
         accountId: string,
         userId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSocialIdResult>;
 
     login(
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<LoginInformation>;
 
-    revokeOAuthToken(callback?: (() => void) | ((error: any, data: any, response: any) => void)): Promise<void>;
+    revokeOAuthToken(
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
+    ): Promise<void>;
 
     updatePassword(
         loginPart: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateSocialLogin(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 }
 
@@ -501,80 +642,108 @@ export class BillingApi {
 
     getBillingPlan(
         billingPlanId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingPlanResponse>;
 
     getCreditCardInfo(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CreditCardInformation>;
 
     getDowngradeRequestBillingInfo(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DowngradRequestBillingInfoResponse>;
 
     getInvoice(
         accountId: string,
         invoiceId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingInvoice>;
 
     getPayment(
         accountId: string,
         paymentId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingPaymentItem>;
 
     getPlan(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<AccountBillingPlanResponse>;
 
     listBillingPlans(
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingPlansResponse>;
 
     listInvoices(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingInvoicesResponse>;
 
     listInvoicesPastDue(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingInvoicesSummary>;
 
     listPayments(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingPaymentsResponse>;
 
     makePayment(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingPaymentResponse>;
 
     purchaseEnvelopes(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateDowngradeAccountBillingPlan(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DowngradePlanUpdateResponse>;
 
     updatePlan(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BillingPlanUpdateResponse>;
 }
 
@@ -584,52 +753,68 @@ export class BulkEnvelopesApi {
     createBulkSendList(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkSendingList>;
 
     createBulkSendRequest(
         accountId: string,
         bulkSendListId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkSendResponse>;
 
     createBulkSendTestRequest(
         accountId: string,
         bulkSendListId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkSendTestResponse>;
 
     deleteBulkSendList(
         accountId: string,
         bulkSendListId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkSendingListSummaries>;
 
     deleteRecipients(
         accountId: string,
         envelopeId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkRecipientsUpdateResponse>;
 
     get(
         accountId: string,
         batchId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkEnvelopeStatus>;
 
     getBulkSendList(
         accountId: string,
         bulkSendListId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkSendingList>;
 
     getBulkSendLists(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkSendingListSummaries>;
 
     getRecipients(
@@ -637,20 +822,26 @@ export class BulkEnvelopesApi {
         envelopeId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkRecipientsResponse>;
 
     list(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkEnvelopesResponse>;
 
     updateBulkSendList(
         accountId: string,
         bulkSendListId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkSendingList>;
 
     updateRecipients(
@@ -658,7 +849,9 @@ export class BulkEnvelopesApi {
         accountId: string,
         envelopeId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkRecipientsSummaryResponse>;
 }
 
@@ -669,21 +862,27 @@ export class CloudStorageApi {
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CloudStorageProviders>;
 
     deleteProvider(
         accountId: string,
         userId: string,
         serviceId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CloudStorageProviders>;
 
     deleteProviders(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CloudStorageProviders>;
 
     getProvider(
@@ -691,7 +890,9 @@ export class CloudStorageApi {
         userId: string,
         serviceId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CloudStorageProviders>;
 
     list(
@@ -700,7 +901,9 @@ export class CloudStorageApi {
         serviceId: string,
         folderId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ExternalFolder>;
 
     listFolders(
@@ -708,14 +911,18 @@ export class CloudStorageApi {
         userId: string,
         serviceId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ExternalFolder>;
 
     listProviders(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CloudStorageProviders>;
 }
 
@@ -726,14 +933,18 @@ export class CommentsApi {
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CommentHistoryResult>;
 
     getCommentsTranscript(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<object>;
 }
 
@@ -743,108 +954,144 @@ export class ConnectApi {
     createConfiguration(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConnectCustomConfiguration>;
 
     deleteConfiguration(
         accountId: string,
         connectId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteEventFailureLog(
         accountId: string,
         failureId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteEventLog(
         accountId: string,
         logId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteEventLogs(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteMobileNotifiers(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<MobileNotifierConfigurationInformation>;
 
     getConfiguration(
         accountId: string,
         connectId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConnectConfigResults>;
 
     getEventLog(
         accountId: string,
         logId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConnectLog>;
 
     listConfigurations(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConnectConfigResults>;
 
     listEventFailureLogs(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConnectLogs>;
 
     listEventLogs(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConnectLogs>;
 
     listMobileNotifiers(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<MobileNotifierConfigurationInformation>;
 
     listTests(
         accountId: string,
         connectId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ResourceInformation>;
 
     listUsers(
         accountId: string,
         connectId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<IntegratedUserInfoList>;
 
     retryEventForEnvelope(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConnectFailureResults>;
 
     retryEventForEnvelopes(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConnectFailureResults>;
 
     updateConfiguration(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConnectCustomConfiguration>;
 
     updateMobileNotifiers(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<MobileNotifierConfigurationInformation>;
 }
 
@@ -854,32 +1101,42 @@ export class CustomTabsApi {
     _delete(
         accountId: string,
         customTabId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     create(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TabMetadata>;
 
     get(
         accountId: string,
         customTabId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TabMetadata>;
 
     list(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TabMetadataList>;
 
     update(
         accountId: string,
         customTabId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TabMetadata>;
 }
 
@@ -889,38 +1146,58 @@ export class DataFeedApi {
     getDataFeedElement(
         accountId: string,
         dataFeedElementId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 }
 
 export class DiagnosticsApi {
     constructor(apiClient?: ApiClient);
 
-    deleteRequestLogs(callback?: (() => void) | ((error: any, data: any, response: any) => void)): Promise<void>;
+    deleteRequestLogs(
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
+    ): Promise<void>;
 
     getRequestLog(
         requestLogId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<object>;
 
     getRequestLogSettings(
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DiagnosticsSettingsInformation>;
 
     getResources(
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ResourceInformation>;
 
-    getService(callback?: (() => void) | ((error: any, data: any, response: any) => void)): Promise<ServiceInformation>;
+    getService(
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
+    ): Promise<ServiceInformation>;
 
     listRequestLogs(
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ApiRequestLogsResult>;
 
     updateRequestLogSettings(
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DiagnosticsSettingsInformation>;
 }
 
@@ -930,26 +1207,34 @@ export class EmailArchiveApi {
     createBCCEmailArchive(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BccEmailArchive>;
 
     deleteBCCEmailArchive(
         accountId: string,
         bccEmailArchiveId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getBCCEmailArchiveHistoryList(
         accountId: string,
         bccEmailArchiveId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BccEmailArchiveHistoryList>;
 
     getBCCEmailArchiveList(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BccEmailArchiveList>;
 }
 
@@ -959,7 +1244,9 @@ export class EnvelopeApplianceApi {
     getApplianceInfo(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DisplayApplianceInfo>;
 }
 
@@ -968,13 +1255,17 @@ export class EnvelopePurgeConfigurationApi {
 
     getEnvelopePurgeConfiguration(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopePurgeConfiguration>;
 
     updateEnvelopePurgeConfiguration(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopePurgeConfiguration>;
 }
 
@@ -985,7 +1276,9 @@ export class EnvelopesApi {
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentTemplateList>;
 
     applyTemplateToDocument(
@@ -993,33 +1286,43 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentTemplateList>;
 
     createChunkedUpload(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ChunkedUploadResponse>;
 
     createConsoleView(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ViewUrl>;
 
     createCorrectView(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ViewUrl>;
 
     createCustomFields(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     createDocumentFields(
@@ -1027,7 +1330,9 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentFieldsInformation>;
 
     createDocumentResponsiveHtmlPreview(
@@ -1035,7 +1340,9 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentHtmlDefinitions>;
 
     createDocumentTabs(
@@ -1043,75 +1350,97 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     createEditView(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ViewUrl>;
 
     createEmailSettings(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EmailSettings>;
 
     createEnvelope(
         accountId: string,
         options?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeSummary>;
 
     createEnvelopeComments(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CommentHistoryResult>;
 
     createEnvelopeRecipientPreview(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ViewUrl>;
 
     createEnvelopeRecipientSharedView(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ViewUrl>;
 
     createEnvelopeTransferRules(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeTransferRuleInformation>;
 
     createLock(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<LockInformation>;
 
     createRecipient(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Recipients>;
 
     createRecipientProofFileLink(
         accountId: string,
         envelopeId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ProofServiceViewLink>;
 
     createRecipientProofFileResourceToken(
@@ -1119,28 +1448,36 @@ export class EnvelopesApi {
         accountId: string,
         envelopeId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ProofServiceResourceToken>;
 
     createRecipientView(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ViewUrl>;
 
     createResponsiveHtmlPreview(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentHtmlDefinitions>;
 
     createSenderView(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ViewUrl>;
 
     createTabs(
@@ -1148,27 +1485,35 @@ export class EnvelopesApi {
         envelopeId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     deleteAttachments(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeAttachmentsResult>;
 
     deleteChunkedUpload(
         accountId: string,
         chunkedUploadId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ChunkedUploadResponse>;
 
     deleteCustomFields(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     deleteDocumentFields(
@@ -1176,7 +1521,9 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentFieldsInformation>;
 
     deleteDocumentPage(
@@ -1184,7 +1531,9 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         pageNumber: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteDocumentTabs(
@@ -1192,46 +1541,60 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     deleteDocuments(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeDocumentsResult>;
 
     deleteEmailSettings(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EmailSettings>;
 
     deleteEnvelopeTransferRules(
         accountId: string,
         envelopeTransferRuleId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteLock(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<LockInformation>;
 
     deleteRecipient(
         accountId: string,
         envelopeId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Recipients>;
 
     deleteRecipients(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Recipients>;
 
     deleteTabs(
@@ -1239,7 +1602,9 @@ export class EnvelopesApi {
         envelopeId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     deleteTemplatesFromDocument(
@@ -1247,34 +1612,44 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         templateId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getAttachment(
         accountId: string,
         envelopeId: string,
         attachmentId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getAttachments(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeAttachmentsResult>;
 
     getChunkedUpload(
         accountId: string,
         chunkedUploadId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ChunkedUploadResponse>;
 
     getCommentsTranscript(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<object>;
 
     getConsumerDisclosure(
@@ -1283,7 +1658,9 @@ export class EnvelopesApi {
         recipientId: string,
         langCode: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConsumerDisclosure>;
 
     getConsumerDisclosureDefault(
@@ -1291,7 +1668,9 @@ export class EnvelopesApi {
         envelopeId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ConsumerDisclosure>;
 
     getDocument(
@@ -1299,7 +1678,9 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback: DocumentOptions,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<string>;
 
     getDocumentPageImage(
@@ -1308,7 +1689,9 @@ export class EnvelopesApi {
         documentId: string,
         pageNumber: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<string>;
 
     getDocumentTabs(
@@ -1316,57 +1699,75 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     getEmailSettings(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EmailSettings>;
 
     getEnvelope(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Envelope>;
 
     getEnvelopeDocumentHtmlDefinitions(
         accountId: string,
         envelopeId: string,
         documentId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentHtmlDefinitionOriginals>;
 
     getEnvelopeHtmlDefinitions(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentHtmlDefinitionOriginals>;
 
     getEnvelopeTransferRules(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeTransferRuleInformation>;
 
     getFormData(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeFormData>;
 
     getLock(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<LockInformation>;
 
     getNotificationSettings(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Notification>;
 
     getPageTabs(
@@ -1374,7 +1775,9 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         pageNumber: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     getPages(
@@ -1382,14 +1785,18 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PageImages>;
 
     getRecipientDocumentVisibility(
         accountId: string,
         envelopeId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentVisibilityList>;
 
     getRecipientInitialsImage(
@@ -1397,14 +1804,18 @@ export class EnvelopesApi {
         envelopeId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<string>;
 
     getRecipientSignature(
         accountId: string,
         envelopeId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSignature>;
 
     getRecipientSignatureImage(
@@ -1412,65 +1823,85 @@ export class EnvelopesApi {
         envelopeId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<string>;
 
     getTabsBlob(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getTemplateRecipientDocumentVisibility(
         accountId: string,
         templateId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentVisibilityList>;
 
     listAuditEvents(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeAuditEventResponse>;
 
     listCustomFields(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFieldsEnvelope>;
 
     listDocumentFields(
         accountId: string,
         envelopeId: string,
         documentId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentFieldsInformation>;
 
     listDocuments(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeDocumentsResult>;
 
     listRecipients(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Recipients>;
 
     listStatus(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopesInformation>;
 
     listStatusChanges(
         accountId: string,
         optsOrCallback: EnvelopesFilters,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopesInformation>;
 
     listTabs(
@@ -1478,14 +1909,18 @@ export class EnvelopesApi {
         envelopeId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     listTemplates(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TemplateInformation>;
 
     listTemplatesForDocument(
@@ -1493,7 +1928,9 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TemplateInformation>;
 
     putAttachment(
@@ -1501,14 +1938,18 @@ export class EnvelopesApi {
         envelopeId: string,
         attachmentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeAttachmentsResult>;
 
     putAttachments(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeAttachmentsResult>;
 
     rotateDocumentPage(
@@ -1517,21 +1958,27 @@ export class EnvelopesApi {
         documentId: string,
         pageNumber: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     update(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeUpdateSummary>;
 
     updateChunkedUpload(
         accountId: string,
         chunkedUploadId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ChunkedUploadResponse>;
 
     updateChunkedUploadPart(
@@ -1539,21 +1986,27 @@ export class EnvelopesApi {
         chunkedUploadId: string,
         chunkedUploadPartSeq: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ChunkedUploadResponse>;
 
     updateCustomFields(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     updateDocument(
         accountId: string,
         envelopeId: string,
         documentId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeDocument>;
 
     updateDocumentFields(
@@ -1561,7 +2014,9 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentFieldsInformation>;
 
     updateDocumentTabs(
@@ -1569,48 +2024,62 @@ export class EnvelopesApi {
         envelopeId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     updateDocuments(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeDocumentsResult>;
 
     updateEmailSettings(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EmailSettings>;
 
     updateEnvelopeTransferRule(
         accountId: string,
         envelopeTransferRuleId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeTransferRule>;
 
     updateEnvelopeTransferRules(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeTransferRuleInformation>;
 
     updateLock(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<LockInformation>;
 
     updateNotificationSettings(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Notification>;
 
     updateRecipientDocumentVisibility(
@@ -1618,35 +2087,45 @@ export class EnvelopesApi {
         envelopeId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentVisibilityList>;
 
     updateRecipientInitialsImage(
         accountId: string,
         envelopeId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateRecipientSignatureImage(
         accountId: string,
         envelopeId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateRecipients(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<RecipientsUpdateSummary>;
 
     updateRecipientsDocumentVisibility(
         accountId: string,
         envelopeId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentVisibilityList>;
 
     updateTabs(
@@ -1654,13 +2133,17 @@ export class EnvelopesApi {
         envelopeId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     updateTabsBlob(
         accountId: string,
         envelopeId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateTemplateRecipientDocumentVisibility(
@@ -1668,14 +2151,18 @@ export class EnvelopesApi {
         templateId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TemplateDocumentVisibilityList>;
 
     updateTemplateRecipientsDocumentVisibility(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TemplateDocumentVisibilityList>;
 }
 
@@ -1704,14 +2191,18 @@ export class FoldersApi {
         accountId: string,
         folderId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<FoldersResponse>;
 
     search(
         accountId: string,
         searchFolderId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<FolderItemResponse>;
 }
 
@@ -1721,66 +2212,86 @@ export class GroupsApi {
     createGroups(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<GroupInformation>;
 
     deleteBrands(
         accountId: string,
         groupId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BrandsResponse>;
 
     deleteGroupUsers(
         accountId: string,
         groupId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UsersResponse>;
 
     deleteGroups(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<GroupInformation>;
 
     getBrands(
         accountId: string,
         groupId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BrandsResponse>;
 
     listGroupUsers(
         accountId: string,
         groupId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UsersResponse>;
 
     listGroups(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<GroupInformation>;
 
     updateBrands(
         accountId: string,
         groupId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BrandsResponse>;
 
     updateGroupUsers(
         accountId: string,
         groupId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UsersResponse>;
 
     updateGroups(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<GroupInformation>;
 }
 
@@ -1789,52 +2300,72 @@ export class NotaryApi {
 
     createNotary(
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Notary>;
 
     createNotaryJurisdictions(
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NotaryJurisdiction>;
 
     deleteNotaryJurisdiction(
         jurisdictionId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getNotary(
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NotaryResult>;
 
     getNotaryJurisdiction(
         jurisdictionId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NotaryJurisdiction>;
 
     getNotaryJurisdictionSeal(
         jurisdictionId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getNotaryJurisdictions(
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NotaryJurisdictionList>;
 
     listNotaryJournals(
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NotaryJournalList>;
 
     updateNotary(
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Notary>;
 
     updateNotaryJurisdiction(
         jurisdictionId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NotaryJurisdiction>;
 }
 
@@ -1844,13 +2375,17 @@ export class OrganizationsApi {
     deleteReport(
         organizationId: string,
         reportCorrelationId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getReport(
         organizationId: string,
         reportCorrelationId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 }
 
@@ -1860,51 +2395,67 @@ export class PowerFormsApi {
     createPowerForm(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PowerForm>;
 
     deletePowerForm(
         accountId: string,
         powerFormId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deletePowerForms(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PowerFormsResponse>;
 
     getPowerForm(
         accountId: string,
         powerFormId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PowerForm>;
 
     getPowerFormData(
         accountId: string,
         powerFormId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PowerFormsFormDataResponse>;
 
     listPowerFormSenders(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PowerFormSendersResponse>;
 
     listPowerForms(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PowerFormsResponse>;
 
     updatePowerForm(
         accountId: string,
         powerFormId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PowerForm>;
 }
 
@@ -1914,58 +2465,76 @@ export class SigningGroupsApi {
     createList(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SigningGroupInformation>;
 
     deleteList(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SigningGroupInformation>;
 
     deleteUsers(
         accountId: string,
         signingGroupId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SigningGroupUsers>;
 
     get(
         accountId: string,
         signingGroupId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SigningGroup>;
 
     list(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SigningGroupInformation>;
 
     listUsers(
         accountId: string,
         signingGroupId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SigningGroupUsers>;
 
     update(
         accountId: string,
         signingGroupId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SigningGroup>;
 
     updateList(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SigningGroupInformation>;
 
     updateUsers(
         accountId: string,
         signingGroupId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<SigningGroupUsers>;
 }
 
@@ -1976,7 +2545,9 @@ export class TemplatesApi {
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     createDocumentFields(
@@ -1984,28 +2555,36 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentFieldsInformation>;
 
     createEditView(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ViewUrl>;
 
     createLock(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<LockInformation>;
 
     createRecipients(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Recipients>;
 
     createTabs(
@@ -2013,13 +2592,17 @@ export class TemplatesApi {
         templateId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     createTemplate(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TemplateSummary>;
 
     createTemplateDocumentResponsiveHtmlPreview(
@@ -2027,7 +2610,9 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentHtmlDefinitions>;
 
     createTemplateDocumentTabs(
@@ -2035,35 +2620,45 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     createTemplateRecipientPreview(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ViewUrl>;
 
     createTemplateResponsiveHtmlPreview(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentHtmlDefinitions>;
 
     deleteBulkRecipients(
         accountId: string,
         templateId: string,
         recipientId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkRecipientsUpdateResponse>;
 
     deleteCustomFields(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     deleteDocumentFields(
@@ -2071,7 +2666,9 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentFieldsInformation>;
 
     deleteDocumentPage(
@@ -2080,14 +2677,18 @@ export class TemplatesApi {
         documentId: string,
         pageNumber: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteDocuments(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TemplateDocumentsResult>;
 
     deleteGroupShare(
@@ -2095,14 +2696,18 @@ export class TemplatesApi {
         templateId: string,
         templatePart: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<GroupInformation>;
 
     deleteLock(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<LockInformation>;
 
     deleteRecipient(
@@ -2110,14 +2715,18 @@ export class TemplatesApi {
         templateId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Recipients>;
 
     deleteRecipients(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Recipients>;
 
     deleteTabs(
@@ -2125,7 +2734,9 @@ export class TemplatesApi {
         templateId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     deleteTemplateDocumentTabs(
@@ -2133,14 +2744,18 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     get(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeTemplate>;
 
     getDocument(
@@ -2148,7 +2763,9 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<string>;
 
     getDocumentPageImage(
@@ -2157,7 +2774,9 @@ export class TemplatesApi {
         documentId: string,
         pageNumber: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<string>;
 
     getDocumentTabs(
@@ -2165,19 +2784,25 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     getLock(
         accountId: string,
         templateId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<LockInformation>;
 
     getNotificationSettings(
         accountId: string,
         templateId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Notification>;
 
     getPageTabs(
@@ -2185,7 +2810,9 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         pageNumber: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     getPages(
@@ -2193,20 +2820,26 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PageImages>;
 
     getTemplateDocumentHtmlDefinitions(
         accountId: string,
         templateId: string,
         documentId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentHtmlDefinitionOriginals>;
 
     getTemplateHtmlDefinitions(
         accountId: string,
         templateId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentHtmlDefinitionOriginals>;
 
     listBulkRecipients(
@@ -2214,34 +2847,44 @@ export class TemplatesApi {
         templateId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkRecipientsResponse>;
 
     listCustomFields(
         accountId: string,
         templateId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     listDocumentFields(
         accountId: string,
         templateId: string,
         documentId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentFieldsInformation>;
 
     listDocuments(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TemplateDocumentsResult>;
 
     listRecipients(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Recipients>;
 
     listTabs(
@@ -2249,13 +2892,17 @@ export class TemplatesApi {
         templateId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     listTemplates(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeTemplateResults>;
 
     rotateDocumentPage(
@@ -2264,14 +2911,18 @@ export class TemplatesApi {
         documentId: string,
         pageNumber: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     update(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TemplateUpdateSummary>;
 
     updateBulkRecipients(
@@ -2279,14 +2930,18 @@ export class TemplatesApi {
         templateId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<BulkRecipientsSummaryResponse>;
 
     updateCustomFields(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomFields>;
 
     updateDocument(
@@ -2294,7 +2949,9 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<EnvelopeDocument>;
 
     updateDocumentFields(
@@ -2302,14 +2959,18 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<DocumentFieldsInformation>;
 
     updateDocuments(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<TemplateDocumentsResult>;
 
     updateGroupShare(
@@ -2317,28 +2978,36 @@ export class TemplatesApi {
         templateId: string,
         templatePart: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<GroupInformation>;
 
     updateLock(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<LockInformation>;
 
     updateNotificationSettings(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Notification>;
 
     updateRecipients(
         accountId: string,
         templateId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<RecipientsUpdateSummary>;
 
     updateTabs(
@@ -2346,7 +3015,9 @@ export class TemplatesApi {
         templateId: string,
         recipientId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 
     updateTemplateDocumentTabs(
@@ -2354,7 +3025,9 @@ export class TemplatesApi {
         templateId: string,
         documentId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Tabs>;
 }
 
@@ -2363,7 +3036,9 @@ export class TrustServiceProvidersApi {
 
     getSealProviders(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<AccountSeals>;
 }
 
@@ -2373,52 +3048,68 @@ export class UsersApi {
     _delete(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UsersResponse>;
 
     create(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<NewUsersSummary>;
 
     createSignatures(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSignaturesInformation>;
 
     deleteContactWithId(
         accountId: string,
         contactId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ContactUpdateResponse>;
 
     deleteContacts(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ContactUpdateResponse>;
 
     deleteCustomSettings(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomSettingsInformation>;
 
     deleteProfileImage(
         accountId: string,
         userId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteSignature(
         accountId: string,
         userId: string,
         signatureId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     deleteSignatureImage(
@@ -2426,47 +3117,61 @@ export class UsersApi {
         userId: string,
         signatureId: string,
         imageType: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSignature>;
 
     getContactById(
         accountId: string,
         contactId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ContactGetResponse>;
 
     getInformation(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserInformation>;
 
     getProfile(
         accountId: string,
         userId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserProfile>;
 
     getProfileImage(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<string>;
 
     getSettings(
         accountId: string,
         userId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSettingsInformation>;
 
     getSignature(
         accountId: string,
         userId: string,
         signatureId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSignature>;
 
     getSignatureImage(
@@ -2475,65 +3180,85 @@ export class UsersApi {
         signatureId: string,
         imageType: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<string>;
 
     list(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserInformationList>;
 
     listCustomSettings(
         accountId: string,
         userId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomSettingsInformation>;
 
     listSignatures(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSignaturesInformation>;
 
     postContacts(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ContactUpdateResponse>;
 
     putContacts(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<ContactUpdateResponse>;
 
     updateCustomSettings(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<CustomSettingsInformation>;
 
     updateProfile(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateProfileImage(
         accountId: string,
         userId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateSettings(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     updateSignature(
@@ -2541,7 +3266,9 @@ export class UsersApi {
         userId: string,
         signatureId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSignature>;
 
     updateSignatureImage(
@@ -2550,27 +3277,35 @@ export class UsersApi {
         signatureId: string,
         imageType: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSignature>;
 
     updateSignatures(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserSignaturesInformation>;
 
     updateUser(
         accountId: string,
         userId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserInformation>;
 
     updateUsers(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<UserInformationList>;
 }
 
@@ -2580,20 +3315,26 @@ export class WorkspacesApi {
     createWorkspace(
         accountId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Workspace>;
 
     createWorkspaceFile(
         accountId: string,
         workspaceId: string,
         folderId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<WorkspaceItem>;
 
     deleteWorkspace(
         accountId: string,
         workspaceId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Workspace>;
 
     deleteWorkspaceFolderItems(
@@ -2601,13 +3342,17 @@ export class WorkspacesApi {
         workspaceId: string,
         folderId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<void>;
 
     getWorkspace(
         accountId: string,
         workspaceId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Workspace>;
 
     getWorkspaceFile(
@@ -2616,7 +3361,9 @@ export class WorkspacesApi {
         folderId: string,
         fileId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<null>;
 
     listWorkspaceFilePages(
@@ -2625,7 +3372,9 @@ export class WorkspacesApi {
         folderId: string,
         fileId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<PageImages>;
 
     listWorkspaceFolderItems(
@@ -2633,19 +3382,25 @@ export class WorkspacesApi {
         workspaceId: string,
         folderId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<WorkspaceFolderContents>;
 
     listWorkspaces(
         accountId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<WorkspaceList>;
 
     updateWorkspace(
         accountId: string,
         workspaceId: string,
         optsOrCallback?: any,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<Workspace>;
 
     updateWorkspaceFile(
@@ -2653,7 +3408,9 @@ export class WorkspacesApi {
         workspaceId: string,
         folderId: string,
         fileId: string,
-        callback?: (() => void) | ((error: any, data: any, response: any) => void),
+        callback?:
+            | (() => void)
+            | ((error: any, data: any, response: any) => void),
     ): Promise<WorkspaceItem>;
 }
 
@@ -2927,7 +3684,9 @@ export interface AccountBillingPlanResponse {
     /**
      * Information about the bank that processes direct debits for the payment plan.
      */
-    directDebitProcessorInformation?: DirectDebitProcessorInformation | undefined;
+    directDebitProcessorInformation?:
+        | DirectDebitProcessorInformation
+        | undefined;
     downgradePlanInformation?: DowngradePlanUpdateResponse | undefined;
     /**
      * The payment method used for the billing plan. Valid values are:
@@ -2953,7 +3712,8 @@ export interface AccountBillingPlanResponse {
     /**
      * A list of billing plans that the current billing plan can be rolled into.
      */
-    successorPlans?: /* Contains information about a billing plan. */ BillingPlan[] | undefined;
+    successorPlans?: /* Contains information about a billing plan. */
+    BillingPlan[] | undefined;
 }
 
 /**
@@ -3376,9 +4136,11 @@ export interface AccountInformation {
      */
     docuSignLandingUrl?: string | undefined;
 
-    dssValues?: {
-        [name: string]: string;
-    } | undefined;
+    dssValues?:
+        | {
+              [name: string]: string;
+          }
+        | undefined;
     /**
      * When **true**, the ability to send envelopes is blocked. When **false**, envelopes can be sent.
      */
@@ -3485,7 +4247,8 @@ export interface AccountNotification {
     /**
      * A complex element that specifies reminder settings for the envelope
      */
-    reminders?: /* A complex element that specifies reminder settings for the envelope. */ Reminders | undefined;
+    reminders?: /* A complex element that specifies reminder settings for the envelope. */
+    Reminders | undefined;
     /**
      * When **true**, the user can override envelope expirations.
      */
@@ -3552,7 +4315,9 @@ export interface AccountPasswordRules {
     /**
      * Metadata that indicates whether the `lockoutDurationMinutes` property is editable.
      */
-    lockoutDurationMinutesMetadata?: AccountPasswordLockoutDurationMinutes | undefined;
+    lockoutDurationMinutesMetadata?:
+        | AccountPasswordLockoutDurationMinutes
+        | undefined;
     /**
      * The interval associated with the user lockout after a failed login attempt.
      *
@@ -3566,7 +4331,9 @@ export interface AccountPasswordRules {
     /**
      * Metadata that indicates whether the `lockoutDurationType` property is editable.
      */
-    lockoutDurationTypeMetadata?: AccountPasswordLockoutDurationType | undefined;
+    lockoutDurationTypeMetadata?:
+        | AccountPasswordLockoutDurationType
+        | undefined;
     /**
      * The minimum number of days after a password is set before it can be changed. This value can be `0` or more days. The default value is `0`.
      */
@@ -3574,7 +4341,9 @@ export interface AccountPasswordRules {
     /**
      * Metadata that indicates whether the `minimumPasswordAgeDays` property is editable.
      */
-    minimumPasswordAgeDaysMetadata?: AccountPasswordMinimumPasswordAgeDays | undefined;
+    minimumPasswordAgeDaysMetadata?:
+        | AccountPasswordMinimumPasswordAgeDays
+        | undefined;
     /**
      * The minimum number of characters in the password. This value must be a number between `6` and `15`. The default value is `6`.
      */
@@ -3638,7 +4407,7 @@ export interface AccountPasswordRules {
      */
     questionsRequiredMetadata?: /* Information about the number of password questions required (0 to 4) to confirm a user's identity when a user needs to reset their password.
      */
-        AccountPasswordQuestionsRequired | undefined;
+    AccountPasswordQuestionsRequired | undefined;
 }
 
 export interface AccountPasswordStrengthType {
@@ -5044,7 +5813,8 @@ export interface AccountSettingsInformation {
     /**
      * The billing address for the account.
      */
-    billingAddress?: /* Contains address information. */ AddressInformation | undefined;
+    billingAddress?: /* Contains address information. */
+    AddressInformation | undefined;
     /**
      * Metadata that indicates whether the `billingAddress` property is editable.
      */
@@ -7376,7 +8146,8 @@ export interface AccountSharedAccess {
     /**
      * A list of shared access information of envelope and templates for the users specified in the request.
      */
-    sharedAccess?: /* Information about shared items. */ MemberSharedItems[] | undefined;
+    sharedAccess?: /* Information about shared items. */
+    MemberSharedItems[] | undefined;
     /**
      * The starting index position of the current result set.
      */
@@ -7419,7 +8190,8 @@ export interface AccountSignatureProvider {
     /**
      * Reserved for DocuSign.
      */
-    signatureProviderOptionsMetadata?: /* Reserved for DocuSign. */ AccountSignatureProviderOption[] | undefined;
+    signatureProviderOptionsMetadata?: /* Reserved for DocuSign. */
+    AccountSignatureProviderOption[] | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -7900,9 +8672,11 @@ export interface Accounts {
      */
     docuSignLandingUrl?: string | undefined;
 
-    dssValues?: {
-        [name: string]: string;
-    } | undefined;
+    dssValues?:
+        | {
+              [name: string]: string;
+          }
+        | undefined;
     /**
      * When **true**, the ability to send envelopes is blocked. When **false**, envelopes can be sent.
      */
@@ -8060,7 +8834,8 @@ export interface AddressInformationInput {
      * **Note:** If country is US (United States), `stateOrProvince` codes are validated. Otherwise, `stateOrProvince` is treated as a non-validated string used to specify a state,
      * province, or region.
      */
-    addressInformation?: /* Contains address information. */ AddressInformation | undefined;
+    addressInformation?: /* Contains address information. */
+    AddressInformation | undefined;
     /**
      * Specifies the display level for the recipient. Valid values are:
      * * `ReadOnly`
@@ -8096,7 +8871,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `accessCode` property is editable. Read only.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. When set to **true**, the access code will be added to the email sent to the recipient. This nullifies the security measure of `accessCode` on the recipient.
      */
@@ -8144,7 +8920,8 @@ export interface Agent {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -8165,7 +8942,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `email` property is editable. Read only.
      */
-    emailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional complex type that sets a specific email subject and body for this recipient's notification email.
      *
@@ -8223,7 +9001,8 @@ export interface Agent {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The recipient's first name. Maximum Length: 50 characters.
      */
@@ -8231,7 +9010,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `firstame` property is editable. Read only.
      */
-    firstNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    firstNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -8239,7 +9019,8 @@ export interface Agent {
     /**
      * Reserved for DocuSign.
      */
-    fullNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fullNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the authentication check to use. This value must match one of the authentication types that the account uses.
      * The names of these authentication types appear in the web console sending export interface in the Identify list for a recipient.
@@ -8257,7 +9038,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `idCheckConfigurationName` property is editable. Read only.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object that contains input information related to a recipient ID check.
      */
@@ -8276,7 +9058,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `lastName` property is editable. Read only.
      */
-    lastNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lastNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -8294,7 +9077,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A note sent to the recipient in the signing email.
      * This note is unique to this recipient.
@@ -8309,7 +9093,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `note` property is editable. Read only.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When `idCheckConfigurationName` is set to `Phone Auth $`, you use this complex type to provide the recipient authentication method details.
      * It contains the following elements:
@@ -8363,7 +9148,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient is required to use the specified ID check method (including Phone and SMS authentication) to validate their identity.
      */
@@ -8371,7 +9157,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `requireIdLookup` property is editable. Read only.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element. Specifies the role name associated with the recipient.<br/><br/>This property is required when you are working with template recipients.
      */
@@ -8383,7 +9170,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The UTC DateTime when the envelope was sent. Read only.
      */
@@ -8404,7 +9192,8 @@ export interface Agent {
     /**
      * Metadata that indicates whether the `signingGroupId` property is editable. Read only.
      */
-    signingGroupIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signingGroupIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The name of the signing group.
      *
@@ -8494,7 +9283,8 @@ export interface ApiRequestLogsResult {
     /**
      * Reserved: TBD
      */
-    apiRequestLogs?: /* Contains API request log information. */ ApiRequestLog[] | undefined;
+    apiRequestLogs?: /* Contains API request log information. */
+    ApiRequestLog[] | undefined;
 }
 /**
  * Contains information about an APP store product.
@@ -8527,7 +9317,8 @@ export interface AppStoreReceipt {
 export interface Approve {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -8567,7 +9358,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -8582,7 +9374,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -8590,7 +9383,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -8630,7 +9424,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -8638,7 +9433,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -8646,7 +9442,8 @@ export interface Approve {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -8654,7 +9451,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -8665,7 +9463,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -8676,7 +9475,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -8684,7 +9484,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      *  Specifies the approval text that displays in the tab.
      */
@@ -8692,7 +9493,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `buttonText` property is editable.
      */
-    buttonTextMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    buttonTextMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -8700,7 +9502,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -8710,7 +9513,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab ID for the custom tab to be applied. You can only use this when adding new tabs for a recipient.
      * When used, the new tab inherits all of the properties of the custom tab.
@@ -8719,7 +9523,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -8729,7 +9534,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -8775,11 +9581,13 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -8805,7 +9613,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`,
      * the group by which to place the guided form HTML block.
@@ -8814,7 +9623,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -8822,7 +9632,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -8830,7 +9641,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -8838,7 +9650,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -8846,7 +9659,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -8866,7 +9680,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -8880,11 +9695,13 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -8899,7 +9716,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -8907,7 +9725,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -8915,7 +9734,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -8926,7 +9746,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -8937,7 +9758,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -8945,7 +9767,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -8953,7 +9776,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -8961,7 +9785,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -8969,7 +9794,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -8977,7 +9803,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -8985,7 +9812,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -8995,7 +9823,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the vertical offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -9005,7 +9834,8 @@ export interface Approve {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface AskAnAdmin {
@@ -9099,7 +9929,8 @@ export interface AuthenticationStatus {
      * - `FailureDescription`: A string containing the details about a failed authentication.
      * - `VendorFailureStatusCode`: A string containing the vendor's status code for a failed authentication.
      */
-    accessCodeResult?: /* Information about the result of an event. */ EventResult | undefined;
+    accessCodeResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * The result of an age verification check. It returns:
      *
@@ -9108,25 +9939,30 @@ export interface AuthenticationStatus {
      * - `FailureDescription`: A string containing the details about a failed authentication.
      * - `VendorFailureStatusCode`: A string containing the vendor's status code for a failed authentication.
      */
-    ageVerifyResult?: /* Information about the result of an event. */ EventResult | undefined;
+    ageVerifyResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * Deprecated.
      */
-    anySocialIDResult?: /* Information about the result of an event. */ EventResult | undefined;
+    anySocialIDResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * Deprecated.
      */
-    facebookResult?: /* Information about the result of an event. */ EventResult | undefined;
+    facebookResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * Deprecated.
      */
-    googleResult?: /* Information about the result of an event. */ EventResult | undefined;
+    googleResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * The result of an [Identity Verification][IDV] workflow.
      *
      * [IDV]: /esign/restapi/Accounts/IdentityVerifications/
      */
-    identityVerificationResult?: /* Information about the result of an event. */ EventResult | undefined;
+    identityVerificationResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * The result of an ID lookup authentication check. It returns:
      *
@@ -9135,7 +9971,8 @@ export interface AuthenticationStatus {
      * - `FailureDescription`: A string containing the details about a failed authentication.
      * - `VendorFailureStatusCode`: A string containing the vendor's status code for a failed authentication.
      */
-    idLookupResult?: /* Information about the result of an event. */ EventResult | undefined;
+    idLookupResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * The result of the user's answers to ID challenge questions. It returns:
      *
@@ -9144,15 +9981,18 @@ export interface AuthenticationStatus {
      * - `FailureDescription`: A string containing the details about a failed authentication.
      * - `VendorFailureStatusCode`: A string containing the vendor's status code for a failed authentication.
      */
-    idQuestionsResult?: /* Information about the result of an event. */ EventResult | undefined;
+    idQuestionsResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * Deprecated.
      */
-    linkedinResult?: /* Information about the result of an event. */ EventResult | undefined;
+    linkedinResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * Deprecated.
      */
-    liveIDResult?: /* Information about the result of an event. */ EventResult | undefined;
+    liveIDResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * The result of an Office of Foreign Asset Control (OFAC) check. It returns:
      *
@@ -9161,11 +10001,13 @@ export interface AuthenticationStatus {
      * - `FailureDescription`: A string containing the details about a failed authentication.
      * - `VendorFailureStatusCode`: A string containing the vendor's status code for a failed authentication.
      */
-    ofacResult?: /* Information about the result of an event. */ EventResult | undefined;
+    ofacResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * Deprecated.
      */
-    openIDResult?: /* Information about the result of an event. */ EventResult | undefined;
+    openIDResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * The result of the user's attempt to authenticate by using two-factor authentication (2FA) through phone messaging. It returns:
      *
@@ -9174,7 +10016,8 @@ export interface AuthenticationStatus {
      * - `FailureDescription`: A string containing the details about a failed authentication.
      * - `VendorFailureStatusCode`: A string containing the vendor's status code for a failed authentication.
      */
-    phoneAuthResult?: /* Information about the result of an event. */ EventResult | undefined;
+    phoneAuthResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * Success/failure result of authentication using sign-in with a Salesforce account. It returns:
      *
@@ -9183,15 +10026,18 @@ export interface AuthenticationStatus {
      * - `FailureDescription`: A string containing the details about a failed authentication.
      * - `VendorFailureStatusCode`: A string containing the vendor's status code for a failed authentication.
      */
-    salesforceResult?: /* Information about the result of an event. */ EventResult | undefined;
+    salesforceResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * The result of the user's attempt to authenticate by using a signature provider.
      */
-    signatureProviderResult?: /* Information about the result of an event. */ EventResult | undefined;
+    signatureProviderResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * The result of the user's attempt to authenticate by using two-factor authentication (2FA) through SMS messaging on a mobile phone.
      */
-    smsAuthResult?: /* Information about the result of an event. */ EventResult | undefined;
+    smsAuthResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * The result of a Student Authentication Network (STAN) authentication check. It returns:
      *
@@ -9200,15 +10046,18 @@ export interface AuthenticationStatus {
      * - `FailureDescription`: A string containing the details about a failed authentication.
      * - `VendorFailureStatusCode`: A string containing the vendor's status code for a failed authentication.
      */
-    sTANPinResult?: /* Information about the result of an event. */ EventResult | undefined;
+    sTANPinResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * Deprecated.
      */
-    twitterResult?: /* Information about the result of an event. */ EventResult | undefined;
+    twitterResult?: /* Information about the result of an event. */
+    EventResult | undefined;
     /**
      * Deprecated.
      */
-    yahooResult?: /* Information about the result of an event. */ EventResult | undefined;
+    yahooResult?: /* Information about the result of an event. */
+    EventResult | undefined;
 }
 /**
  * The `EmailArchive` resource provides methods for managing your email archive configuration, which consists of the BCC email address or addresses
@@ -9501,7 +10350,8 @@ export interface BillingChargeResponse {
     /**
      * Reserved: TBD
      */
-    billingChargeItems?: /* Contains information about a billing charge. */ BillingCharge[] | undefined;
+    billingChargeItems?: /* Contains information about a billing charge. */
+    BillingCharge[] | undefined;
 }
 
 export interface BillingDiscount {
@@ -9533,7 +10383,8 @@ export interface BillingInvoice {
     /**
      * Reserved: TBD
      */
-    invoiceItems?: /* Contains information about an item on a billing invoice. */ BillingInvoiceItem[] | undefined;
+    invoiceItems?: /* Contains information about an item on a billing invoice. */
+    BillingInvoiceItem[] | undefined;
     /**
      * Reserved: TBD
      */
@@ -9652,7 +10503,8 @@ export interface BillingPaymentResponse {
     /**
      * Reserved: TBD
      */
-    billingPayments?: /* Contains information on a billing plan. */ BillingPayment[] | undefined;
+    billingPayments?: /* Contains information on a billing plan. */
+    BillingPayment[] | undefined;
 }
 /**
  * Defines a billing payments response object.
@@ -9678,7 +10530,8 @@ export interface BillingPlan {
     /**
      * Reserved for DocuSign.
      */
-    appStoreProducts?: /* Contains information about an APP store product. */ AppStoreProduct[] | undefined;
+    appStoreProducts?: /* Contains information about an APP store product. */
+    AppStoreProduct[] | undefined;
     /**
      * Contains the `currencyCode` and `currencySymbol` for the alternate currency values for `envelopeFee`, `fixedFee`, and `seatFee` that are configured for this plan feature set.
      */
@@ -9738,7 +10591,7 @@ export interface BillingPlan {
      */
     planFeatureSets?: /* This object provides details about a feature set, or add-on product that is associated with an account.
         It is reserved for DocuSign internal use only. */
-        FeatureSet[] | undefined;
+    FeatureSet[] | undefined;
     /**
      * DocuSign's id for the account plan.
      */
@@ -9747,7 +10600,8 @@ export interface BillingPlan {
     /**
      * A complex type that returns information about any seat discounts. It contains the information `BeginSeatCount`, `EndSeatCount` and `SeatDiscountPercent`.
      */
-    seatDiscounts?: /* This object contains information about a seat discount. */ SeatDiscount[] | undefined;
+    seatDiscounts?: /* This object contains information about a seat discount. */
+    SeatDiscount[] | undefined;
     /**
      * The support incident fee charged for each support incident.
      *
@@ -9765,7 +10619,8 @@ export interface BillingPlan {
  * This object contains details about a billing plan.
  */
 export interface BillingPlanInformation {
-    appStoreReceipt?: /* Contains information about an APP store receipt. */ AppStoreReceipt | undefined;
+    appStoreReceipt?: /* Contains information about an APP store receipt. */
+    AppStoreReceipt | undefined;
     /**
      * The billing address for the account.
      */
@@ -9885,11 +10740,13 @@ export interface BillingPlanResponse {
     /**
      * An object that contains details about the billing plan.
      */
-    billingPlan?: /* Contains information about a billing plan. */ BillingPlan | undefined;
+    billingPlan?: /* Contains information about a billing plan. */
+    BillingPlan | undefined;
     /**
      * A list of billing plans that the current billing plan can be rolled into.
      */
-    successorPlans?: /* Contains information about a billing plan. */ BillingPlan[] | undefined;
+    successorPlans?: /* Contains information about a billing plan. */
+    BillingPlan[] | undefined;
 }
 /**
  * Defines a billing plan update response object.
@@ -9903,7 +10760,8 @@ export interface BillingPlanUpdateResponse {
      */
     accountPaymentMethod?: string | undefined;
 
-    billingPlanPreview?: /* Information used to provide a preview of a billing plan. */ BillingPlanPreview | undefined;
+    billingPlanPreview?: /* Information used to provide a preview of a billing plan. */
+    BillingPlanPreview | undefined;
     /**
      * Specifies the ISO currency code for the account.
      */
@@ -9965,7 +10823,8 @@ export interface BillingPlans {
     /**
      * An object that contains details about the billing plan.
      */
-    billingPlan?: /* Contains information about an account billing plan. */ AccountBillingPlan | undefined;
+    billingPlan?: /* Contains information about an account billing plan. */
+    AccountBillingPlan | undefined;
     /**
      * A complex type that has information about the credit card used to pay for this account.
      */
@@ -10005,7 +10864,8 @@ export interface BillingPlans {
     /**
      * A list of billing plans that the current billing plan can be rolled into.
      */
-    successorPlans?: /* Contains information about a billing plan. */ BillingPlan[] | undefined;
+    successorPlans?: /* Contains information about a billing plan. */
+    BillingPlan[] | undefined;
 }
 /**
  * Defines a billing plans response object.
@@ -10014,7 +10874,8 @@ export interface BillingPlansResponse {
     /**
      * Reserved: TBD
      */
-    billingPlans?: /* Contains information about a billing plan. */ BillingPlan[] | undefined;
+    billingPlans?: /* Contains information about a billing plan. */
+    BillingPlan[] | undefined;
 }
 
 export interface BillingPrice {
@@ -10102,7 +10963,8 @@ export interface Brand {
      * - Header background
      * - Header text
      */
-    colors?: /* A name-value pair that describes an item and provides a value for the item. */ NameValue[] | undefined;
+    colors?: /* A name-value pair that describes an item and provides a value for the item. */
+    NameValue[] | undefined;
     /**
      * The two-letter code for the language that you want to use as the brand default. The supported languages are:
      *
@@ -10192,11 +11054,13 @@ export interface Brand {
     /**
      * An array of `brandLink` objects that contain information about the links that the brand uses.
      */
-    links?: /* Information about a link that a brand uses. */ BrandLink[] | undefined;
+    links?: /* Information about a link that a brand uses. */
+    BrandLink[] | undefined;
     /**
      * The URIs for retrieving the logos that are associated with the brand.
      */
-    logos?: /* Information about the logos associated with the brand. */ BrandLogos | undefined;
+    logos?: /* Information about the logos associated with the brand. */
+    BrandLogos | undefined;
     /**
      * An object containing the URLs for the four DocuSign master resource files that the brand uses for sending, signing, email messages, and captive (embedded) signing.
      * You can modify the default email messages and formats in these file to customize the user experience.
@@ -10365,7 +11229,8 @@ export interface BrandsRequest {
     /**
      * A list of brands.
      */
-    brands?: /* This request object contains information about a specific brand. */ BrandRequest[] | undefined;
+    brands?: /* This request object contains information about a specific brand. */
+    BrandRequest[] | undefined;
 }
 
 export interface BrandsResponse {
@@ -10581,7 +11446,9 @@ export interface BulkRecipient {
      */
     phoneNumber?: string | undefined;
 
-    recipientSignatureProviderInfo?: BulkRecipientSignatureProvider[] | undefined;
+    recipientSignatureProviderInfo?:
+        | BulkRecipientSignatureProvider[]
+        | undefined;
 
     rowNumber?: string | undefined;
     /**
@@ -10760,7 +11627,7 @@ export interface BulkSendingCopy {
      */
     customFields?: /* This object contains details about a custom field for a bulk send copy. In a bulk send request, each custom field in the bulk send list
         must match a custom field in the envelope or template that you want to send. */
-        BulkSendingCopyCustomField[] | undefined;
+    BulkSendingCopyCustomField[] | undefined;
     /**
      * The email body for this copy of the envelope.
      */
@@ -10773,7 +11640,8 @@ export interface BulkSendingCopy {
     /**
      * Information about the recipients associated with this copy of the envelope.
      */
-    recipients?: /* This object contains details about a bulk send recipient. */ BulkSendingCopyRecipient[] | undefined;
+    recipients?: /* This object contains details about a bulk send recipient. */
+    BulkSendingCopyRecipient[] | undefined;
 }
 /**
  * This object contains details about a custom field for a bulk send copy. In a bulk send request, each custom field in the bulk send list must match a
@@ -11080,7 +11948,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `accessCode` property is editable. Read only.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. When set to **true**, the access code will be added to the email sent to the recipient. This nullifies the security measure of `accessCode` on the recipient.
      */
@@ -11130,7 +11999,8 @@ export interface CarbonCopy {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -11151,7 +12021,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `email` property is editable. Read only.
      */
-    emailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional complex type that sets a specific email subject and body for this recipient's notification email.
      *
@@ -11208,7 +12079,8 @@ export interface CarbonCopy {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The recipient's first name. Maximum Length: 50 characters.
      */
@@ -11216,7 +12088,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `firstame` property is editable. Read only.
      */
-    firstNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    firstNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -11224,7 +12097,8 @@ export interface CarbonCopy {
     /**
      * Reserved for DocuSign.
      */
-    fullNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fullNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the authentication check to use. This value must match one of the authentication types that the account uses. The names of these authentication
      * types appear in the web console sending export interface in the Identify list for a recipient. This setting overrides any default authentication setting. Valid values are:
@@ -11241,7 +12115,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `idCheckConfigurationName` property is editable. Read only.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object that contains input information related to a recipient ID check.
      */
@@ -11270,7 +12145,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `lastName` property is editable. Read only.
      */
-    lastNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lastNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -11288,7 +12164,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A note sent to the recipient in the signing email.
      * This note is unique to this recipient.
@@ -11303,7 +12180,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `note` property is editable. Read only.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When `idCheckConfigurationName` is set to `Phone Auth $`, you use this complex type to provide the recipient authentication method details. It contains the following elements:
      *
@@ -11358,7 +12236,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient is required to use the specified ID check method (including Phone and SMS authentication) to validate their identity.
      */
@@ -11366,7 +12245,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `requireIdLookup` property is editable. Read only.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element. Specifies the role name associated with the recipient.<br/><br/>This property is required when you are working with template recipients.
      */
@@ -11378,7 +12258,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The UTC DateTime when the envelope was sent. Read only.
      */
@@ -11398,7 +12279,8 @@ export interface CarbonCopy {
     /**
      * Metadata that indicates whether the `signingGroupId` property is editable. Read only.
      */
-    signingGroupIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signingGroupIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The name of the signing group.
      *
@@ -11483,7 +12365,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `accessCode` property is editable. Read only.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. When set to **true**, the access code will be added to the email sent to the recipient. This nullifies the security measure of `accessCode` on the recipient.
      */
@@ -11541,7 +12424,8 @@ export interface CertifiedDelivery {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -11560,7 +12444,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `email` property is editable. Read only.
      */
-    emailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional complex type that sets a specific email subject and body for this recipient's notification email.
      *
@@ -11617,7 +12502,8 @@ export interface CertifiedDelivery {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The recipient's first name. Maximum Length: 50 characters.
      */
@@ -11625,7 +12511,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `firstame` property is editable. Read only.
      */
-    firstNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    firstNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -11633,7 +12520,8 @@ export interface CertifiedDelivery {
     /**
      * Reserved for DocuSign.
      */
-    fullNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fullNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the authentication check to use. This value must match one of the authentication types that the account uses. The names of these authentication
      * types appear in the web console sending export interface in the Identify list for a recipient. This setting overrides any default authentication setting. Valid values are:
@@ -11650,7 +12538,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `idCheckConfigurationName` property is editable. Read only.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object that contains input information related to a recipient ID check.
      */
@@ -11679,7 +12568,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `lastName` property is editable. Read only.
      */
-    lastNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lastNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -11697,7 +12587,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A note sent to the recipient in the signing email.
      * This note is unique to this recipient.
@@ -11712,7 +12603,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `note` property is editable. Read only.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When `idCheckConfigurationName` is set to `Phone Auth $`, you use this complex type to provide the recipient authentication method details. It contains the following elements:
      *
@@ -11766,7 +12658,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient is required to use the specified ID check method (including Phone and SMS authentication) to validate their identity.
      */
@@ -11774,7 +12667,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `requireIdLookup` property is editable. Read only.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element. Specifies the role name associated with the recipient.<br/><br/>This property is required when you are working with template recipients.
      */
@@ -11786,7 +12680,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The UTC DateTime when the envelope was sent. Read only.
      */
@@ -11807,7 +12702,8 @@ export interface CertifiedDelivery {
     /**
      * Metadata that indicates whether the `signingGroupId` property is editable. Read only.
      */
-    signingGroupIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signingGroupIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The name of the signing group.
      *
@@ -11878,7 +12774,8 @@ export interface CertifiedDelivery {
 export interface Checkbox {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` property
      * for an anchor tab to be created. The default value is **false**.
@@ -11918,7 +12815,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -11933,7 +12831,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -11941,7 +12840,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -11981,7 +12881,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -11989,7 +12890,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -11997,7 +12899,8 @@ export interface Checkbox {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -12005,7 +12908,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -12016,7 +12920,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -12027,7 +12932,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -12035,7 +12941,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -12043,7 +12950,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -12053,7 +12961,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab ID for the custom tab to apply. This property can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all custom tab properties.
@@ -12062,7 +12971,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -12072,7 +12982,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -12118,11 +13029,13 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -12148,7 +13061,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`,
      * the group by which to place the guided form HTML block.
@@ -12157,7 +13071,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -12165,7 +13080,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -12173,7 +13089,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -12181,7 +13098,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -12189,7 +13107,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer cannot change the data of the custom tab.
      */
@@ -12197,7 +13116,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -12213,7 +13133,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located.
      * For supplemental documents, this value must be `1`.
@@ -12222,7 +13143,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope,
      * each `recipientId` must be unique, but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -12236,11 +13158,13 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property does not apply to `checkbox` tabs. Check boxes are always optional.
      */
@@ -12248,7 +13172,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -12256,7 +13181,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When **true**, the checkbox is selected.
      */
@@ -12264,7 +13190,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `selected` property is editable.
      */
-    selectedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    selectedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When **true**, this tab is shared.
      */
@@ -12272,7 +13199,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -12287,7 +13215,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -12295,7 +13224,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -12303,7 +13233,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -12314,7 +13245,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -12325,7 +13257,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -12333,7 +13266,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -12341,7 +13275,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -12349,7 +13284,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -12357,7 +13293,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -12365,7 +13302,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -12373,7 +13311,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -12383,7 +13322,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -12391,7 +13331,8 @@ export interface Checkbox {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 /**
  * An object that contains information about the chunked upload part.
@@ -12548,7 +13489,8 @@ export interface CloudStorage {
     /**
      * A list of objects that contain information about a file or folder in cloud storage.
      */
-    items?: /* This object contains information about a file or folder in cloud storage. */ ExternalFile[] | undefined;
+    items?: /* This object contains information about a file or folder in cloud storage. */
+    ExternalFile[] | undefined;
     /**
      * The name of the cloud storage item.
      */
@@ -12738,9 +13680,11 @@ export interface CommentPublish {
      */
     text?: string | undefined;
 
-    threadAnchorKeys?: {
-        [name: string]: string;
-    } | undefined;
+    threadAnchorKeys?:
+        | {
+              [name: string]: string;
+          }
+        | undefined;
     /**
      * The unique identifier for the comment thread.
      */
@@ -12752,7 +13696,8 @@ export interface CommentPublish {
 export interface CommentThread {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -12792,7 +13737,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -12807,7 +13753,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -12815,7 +13762,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -12855,7 +13803,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -12863,7 +13812,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -12871,7 +13821,8 @@ export interface CommentThread {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -12879,7 +13830,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -12890,7 +13842,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -12901,7 +13854,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -12909,7 +13863,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of comment tabs that contain information about users' comments on documents.
      */
@@ -12921,7 +13876,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -12931,7 +13887,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -12940,7 +13897,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a
@@ -12950,7 +13908,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -12996,11 +13955,13 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -13026,7 +13987,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`,
      * the group by which to place the guided form HTML block.
@@ -13035,7 +13997,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -13043,7 +14006,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -13051,7 +14015,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -13059,7 +14024,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -13067,7 +14033,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -13087,7 +14054,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique, b
      * ut there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -13101,11 +14069,13 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -13120,7 +14090,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -13128,7 +14099,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -13136,7 +14108,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -13147,7 +14120,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -13158,7 +14132,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -13166,7 +14141,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -13174,7 +14150,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -13182,7 +14159,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the comment thread.
      */
@@ -13194,7 +14172,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -13202,7 +14181,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -13210,7 +14190,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -13220,7 +14201,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -13228,7 +14210,8 @@ export interface CommentThread {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 /**
  * Details about envelope comments.
@@ -13320,7 +14303,8 @@ export interface CommentsPublish {
 export interface Company {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the
      * `anchorString` property for an anchor tab to be created. The default value is **false**.
@@ -13360,7 +14344,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -13375,7 +14360,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -13383,7 +14369,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -13423,7 +14410,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -13431,7 +14419,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -13439,7 +14428,8 @@ export interface Company {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -13447,7 +14437,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -13458,7 +14449,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -13469,7 +14461,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -13477,7 +14470,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the field appears normally while the recipient is adding or modifying the information in the field, but the data is not visible
      * (the characters are hidden by asterisks) to any other signer or the sender.
@@ -13491,7 +14485,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `concealValueOnDocument` property is editable.
      */
-    concealValueOnDocumentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    concealValueOnDocumentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -13499,7 +14494,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -13509,7 +14505,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used,
      * the new tab inherits all the custom tab properties.
@@ -13518,7 +14515,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, disables the auto sizing of single line text boxes in the signing screen when the signer enters data.
      * If disabled users will only be able enter as much data as the text box can hold. By default this is false. This property only affects single line text boxes.
@@ -13527,7 +14525,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `disableAutoSize` property is editable.
      */
-    disableAutoSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    disableAutoSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a
@@ -13537,7 +14536,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -13583,11 +14583,13 @@ export interface Company {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -13613,7 +14615,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`,
      * the group by which to place the guided form HTML block.
@@ -13622,7 +14625,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -13630,7 +14634,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -13638,7 +14643,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -13646,7 +14652,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -13654,7 +14661,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -13666,7 +14674,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional value that describes the maximum length of the property when the property is a string.
      */
@@ -13674,7 +14683,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `maxLength` property is editable.
      */
-    maxLengthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maxLengthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -13690,7 +14700,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The initial value of the tab when it was sent to the recipient.
      */
@@ -13698,7 +14709,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `originalValue` property is editable.
      */
-    originalValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    originalValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located.
      * For supplemental documents, this value must be `1`.
@@ -13707,7 +14719,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -13721,11 +14734,13 @@ export interface Company {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -13733,7 +14748,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -13748,7 +14764,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -13756,7 +14773,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -13764,7 +14782,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -13775,7 +14794,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -13786,7 +14806,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -13794,7 +14815,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -13802,7 +14824,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -13810,7 +14833,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -13818,7 +14842,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -13826,7 +14851,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -13834,7 +14860,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -13842,7 +14869,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -13852,7 +14880,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -13860,7 +14889,8 @@ export interface Company {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 /**
  * This object contains information about a [composite template][composite], which you can use to to apply multiple templates to a single envelope,
@@ -14387,11 +15417,13 @@ export interface ConnectEvents {
     /**
      * A list of Connect failure logs.
      */
-    failures?: /* Contains information about a Connect log entry. */ ConnectLog[] | undefined;
+    failures?: /* Contains information about a Connect log entry. */
+    ConnectLog[] | undefined;
     /**
      * A list of Connect general logs.
      */
-    logs?: /* Contains information about a Connect log entry. */ ConnectLog[] | undefined;
+    logs?: /* Contains information about a Connect log entry. */
+    ConnectLog[] | undefined;
     /**
      * The count of records in the log list.
      */
@@ -14435,7 +15467,8 @@ export interface ConnectFailureResults {
     /**
      * Details about a Connect failure result.
      */
-    retryQueue?: /* This object contains details about a Connect failure result. */ ConnectFailureResult[] | undefined;
+    retryQueue?: /* This object contains details about a Connect failure result. */
+    ConnectFailureResult[] | undefined;
 }
 /**
  * Contains information about a Connect log entry.
@@ -14537,11 +15570,13 @@ export interface ConnectLogs {
     /**
      * A list of Connect failure logs.
      */
-    failures?: /* Contains information about a Connect log entry. */ ConnectLog[] | undefined;
+    failures?: /* Contains information about a Connect log entry. */
+    ConnectLog[] | undefined;
     /**
      * A list of Connect general logs.
      */
-    logs?: /* Contains information about a Connect log entry. */ ConnectLog[] | undefined;
+    logs?: /* Contains information about a Connect log entry. */
+    ConnectLog[] | undefined;
     /**
      * The count of records in the log list.
      */
@@ -15187,7 +16222,8 @@ export interface CreditCardInformation {
     /**
      * A complex element containing the credit card billing address information.
      */
-    address?: /* Contains address information. */ AddressInformation | undefined;
+    address?: /* Contains address information. */
+    AddressInformation | undefined;
     /**
      * The credit card number.
      */
@@ -15680,7 +16716,8 @@ export interface CustomTabs {
     /**
      * Metadata that indicates whether the `stampType` property is editable.
      */
-    stampTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    stampTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -15747,7 +16784,8 @@ export interface CustomTabs {
 export interface Date {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -15787,7 +16825,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -15802,7 +16841,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -15810,7 +16850,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -15850,7 +16891,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -15858,7 +16900,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -15866,7 +16909,8 @@ export interface Date {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -15874,7 +16918,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -15885,7 +16930,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -15896,7 +16942,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -15904,7 +16951,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the field appears normally while the recipient is adding or modifying the information in the field, but the data is not visible
      * (the characters are hidden by asterisks) to any other signer or the sender.
@@ -15918,7 +16966,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `concealValueOnDocument` property is editable.
      */
-    concealValueOnDocumentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    concealValueOnDocumentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -15926,7 +16975,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -15936,7 +16986,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab ID for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used, the new tab inherits all
      * the custom tab properties.
@@ -15945,7 +16996,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, disables the auto sizing of single line text boxes in the signing screen when the signer enters data. If disabled users will only be able enter
      * as much data as the text box can hold. By default this is false. This property only affects single line text boxes.
@@ -15954,7 +17006,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `disableAutoSize` property is editable.
      */
-    disableAutoSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    disableAutoSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId` property
@@ -15964,7 +17017,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -16010,11 +17064,13 @@ export interface Date {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -16040,7 +17096,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -16048,7 +17105,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -16056,7 +17114,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -16064,7 +17123,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -16072,7 +17132,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -16080,7 +17141,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -16092,7 +17154,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional value that describes the maximum length of the property when the property is a string.
      */
@@ -16100,7 +17163,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `maxLength` property is editable.
      */
-    maxLengthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maxLengthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -16116,7 +17180,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The initial value of the tab when it was sent to the recipient.
      */
@@ -16124,7 +17189,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `originalValue` property is editable.
      */
-    originalValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    originalValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located.
      * For supplemental documents, this value must be `1`.
@@ -16133,7 +17199,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -16147,11 +17214,13 @@ export interface Date {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and shared is true, information must be entered in this field to complete the envelope.
      */
@@ -16159,7 +17228,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `requireAll` property is editable.
      */
-    requireAllMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireAllMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -16167,7 +17237,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -16175,7 +17246,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender must populate the tab before an envelope can be sent using the template.
      *
@@ -16187,7 +17259,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `senderRequired` property is editable.
      */
-    senderRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this custom tab is shared.
      */
@@ -16195,7 +17268,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -16210,7 +17284,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -16218,7 +17293,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -16226,7 +17302,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -16237,7 +17314,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -16248,7 +17326,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -16256,7 +17335,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -16264,7 +17344,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -16272,7 +17353,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -16280,7 +17362,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -16288,7 +17371,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The message displayed if the custom tab fails input validation (either custom of embedded).
      */
@@ -16296,7 +17380,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `validationMessage` property is editable.
      */
-    validationMessageMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationMessageMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A regular expression used to validate input for the tab.
      */
@@ -16304,7 +17389,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `validationPattern` property is editable.
      */
-    validationPatternMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationPatternMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -16312,7 +17398,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -16320,7 +17407,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -16330,7 +17418,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -16338,7 +17427,8 @@ export interface Date {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 /**
  * A tab that displays the date that the recipient signed the
@@ -16347,7 +17437,8 @@ export interface Date {
 export interface DateSigned {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -16387,7 +17478,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -16402,7 +17494,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -16410,7 +17503,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -16450,7 +17544,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -16458,7 +17553,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -16466,7 +17562,8 @@ export interface DateSigned {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -16474,7 +17571,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -16485,7 +17583,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -16496,7 +17595,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -16504,7 +17604,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -16512,7 +17613,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -16522,7 +17624,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -16531,7 +17634,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -16541,7 +17645,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -16587,11 +17692,13 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -16617,7 +17724,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -16625,7 +17733,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -16633,7 +17742,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -16641,7 +17751,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -16649,7 +17760,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -16657,7 +17769,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -16677,7 +17790,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located.
      * For supplemental documents, this value must be `1`.
@@ -16686,7 +17800,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -16700,11 +17815,13 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -16719,7 +17836,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -16727,7 +17845,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -16735,7 +17854,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -16746,7 +17866,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -16757,7 +17878,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -16765,7 +17887,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -16773,7 +17896,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -16781,7 +17905,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -16789,7 +17914,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -16797,7 +17923,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -16805,7 +17932,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -16813,7 +17941,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -16823,7 +17952,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -16831,7 +17961,8 @@ export interface DateSigned {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 /**
  * Specifies the area in which a date stamp is placed. This parameter uses pixel positioning to draw a rectangle at the center of the stamp area.
@@ -16870,7 +18001,8 @@ export interface DateStampProperties {
 export interface Decline {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` property
      * or an anchor tab to be created. The default value is **false**.
@@ -16910,7 +18042,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -16925,7 +18058,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -16933,7 +18067,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -16973,7 +18108,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -16981,7 +18117,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -16989,7 +18126,8 @@ export interface Decline {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -16997,7 +18135,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -17008,7 +18147,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -17019,7 +18159,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -17027,7 +18168,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      *  Specifies the decline text displayed in the tab.
      */
@@ -17035,7 +18177,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `buttonText` property is editable.
      */
-    buttonTextMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    buttonTextMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -17043,7 +18186,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -17053,7 +18197,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used,
      * the new tab inherits all the custom tab properties.
@@ -17062,7 +18207,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The reason the recipient declined the document.
      */
@@ -17070,7 +18216,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `declineReason` property is editable.
      */
-    declineReasonMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    declineReasonMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -17080,7 +18227,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -17126,11 +18274,13 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -17156,7 +18306,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -17164,7 +18315,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -17172,7 +18324,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -17180,7 +18333,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -17188,7 +18342,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -17196,7 +18351,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -17217,7 +18373,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -17231,11 +18388,13 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -17250,7 +18409,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -17258,7 +18418,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -17266,7 +18427,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -17277,7 +18439,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -17288,7 +18451,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -17296,7 +18460,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -17304,7 +18469,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -17312,7 +18478,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -17320,7 +18487,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -17328,7 +18496,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -17336,7 +18505,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -17346,7 +18516,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -17354,7 +18525,8 @@ export interface Decline {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface DiagnosticsSettingsInformation {
@@ -17458,9 +18630,11 @@ export interface DirectDebitProcessorInformation {
 
 export interface DisplayApplianceDocument {
     attachmentDescription?: string | undefined;
-    documentId?: /* Integer that identifies the document in the envelope.*/ string | undefined;
+    documentId?: /* Integer that identifies the document in the envelope.*/
+    string | undefined;
     documentType?: string | undefined;
-    envelopeId?: /*The envelope's GUID. \n\nExample: `93be49ab-afa0-4adf-933c-f752070d71ec`*/ string | undefined;
+    envelopeId?: /*The envelope's GUID. \n\nExample: `93be49ab-afa0-4adf-933c-f752070d71ec`*/
+    string | undefined;
     externalDocumentId?: string | undefined;
     latestPDFId?: string | undefined;
     name?: string | undefined;
@@ -17469,7 +18643,8 @@ export interface DisplayApplianceDocument {
 
 export interface DisplayApplianceDocumentPage {
     docPageCountTotal?: number | undefined;
-    documentId?: /*Integer that identifies the document in the envelope.*/ string | undefined;
+    documentId?: /*Integer that identifies the document in the envelope.*/
+    string | undefined;
     documentName?: string | undefined;
     extension?: string | undefined;
     height72DPI?: number | undefined;
@@ -17487,8 +18662,9 @@ export interface DisplayApplianceEnvelope {
     convertPdfFields?: /*Boolean that specifies whether to enable PDF form fields to
             get converted to DocuSign secure fields when the document is added or
             uploaded to an envelope.*/
-        boolean | undefined;
-    envelopeId?: /*The envelope's GUID. \n\nExample: `93be49ab-afa0-4adf-933c-f752070d71ec` */ string | undefined;
+    boolean | undefined;
+    envelopeId?: /*The envelope's GUID. \n\nExample: `93be49ab-afa0-4adf-933c-f752070d71ec` */
+    string | undefined;
     envelopeType?: string | undefined;
     includeSigsBeforeComplete?: boolean | undefined;
     isConcatMode?: boolean | undefined;
@@ -17500,7 +18676,7 @@ export interface DisplayApplianceEnvelope {
     status?: /*The status of the item. */ string | undefined;
     userId?: /*The ID of the user to access. Generally this is the ID of the current authenticated user, but if the authenticated user is an Administrator on the account,
         `userId` can represent another user whom the Administrator is accessing. */
-        string | undefined;
+    string | undefined;
 }
 
 export interface DisplayApplianceInfo {
@@ -18102,7 +19278,8 @@ export interface Draw {
 
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -18142,7 +19319,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -18157,7 +19335,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -18165,7 +19344,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -18205,7 +19385,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -18213,7 +19394,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -18221,7 +19403,8 @@ export interface Draw {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -18229,7 +19412,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -18240,7 +19424,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -18251,7 +19436,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -18259,7 +19445,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -18269,7 +19456,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used, the new tab
      * inherits all the custom tab properties.
@@ -18278,7 +19466,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -18288,7 +19477,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -18302,7 +19492,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -18310,7 +19501,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -18318,7 +19510,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -18326,7 +19519,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer cannot change the data of the custom tab.
      */
@@ -18334,7 +19528,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -18350,7 +19545,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -18364,11 +19560,13 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -18376,7 +19574,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When **true**, the tab is shared.
      */
@@ -18384,7 +19583,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -18394,7 +19594,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -18402,7 +19603,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -18410,11 +19612,13 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -18425,7 +19629,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -18433,7 +19638,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -18441,7 +19647,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -18449,7 +19656,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -18457,7 +19665,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     useBackgroundAsCanvas?: string | undefined;
     /**
@@ -18467,7 +19676,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -18477,7 +19687,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -18485,7 +19696,8 @@ export interface Draw {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -18553,7 +19765,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `accessCode` property is editable. Read only.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. When set to **true**, the access code will be added to the email sent to the recipient. This nullifies the security measure of `accessCode` on the recipient.
      */
@@ -18601,7 +19814,8 @@ export interface Editor {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -18622,7 +19836,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `email` property is editable. Read only.
      */
-    emailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional complex type that sets a specific email subject and body for this recipient's notification email.
      *
@@ -18669,7 +19884,8 @@ export interface Editor {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The recipient's first name.
      *
@@ -18679,7 +19895,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `firstame` property is editable. Read only.
      */
-    firstNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    firstNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -18687,7 +19904,8 @@ export interface Editor {
     /**
      * Reserved for DocuSign.
      */
-    fullNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fullNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the authentication check to use. This value must match one of the authentication types that the account uses. The names of these authentication
      * types appear in the web console sending export interface in the Identify list for a recipient. This setting overrides any default authentication setting. Valid values are:
@@ -18704,7 +19922,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `idCheckConfigurationName` property is editable. Read only.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object that contains input information related to a recipient ID check.
      */
@@ -18723,7 +19942,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `lastName` property is editable. Read only.
      */
-    lastNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lastNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -18741,7 +19961,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A note sent to the recipient in the signing email.
      * This note is unique to this recipient.
@@ -18756,7 +19977,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `note` property is editable. Read only.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When `idCheckConfigurationName` is set to `Phone Auth $`, you use this complex type to provide the recipient authentication method details. It contains the following elements:
      *
@@ -18808,7 +20030,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient is required to use the specified ID check method (including Phone and SMS authentication) to validate their identity.
      */
@@ -18816,7 +20039,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `requireIdLookup` property is editable. Read only.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element. Specifies the role name associated with the recipient.<br/><br/>This property is required when you are working with template recipients.
      */
@@ -18828,7 +20052,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The UTC DateTime when the envelope was sent. Read only.
      */
@@ -18848,7 +20073,8 @@ export interface Editor {
     /**
      * Metadata that indicates whether the `signingGroupId` property is editable. Read only.
      */
-    signingGroupIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signingGroupIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The name of the signing group.
      *
@@ -18926,7 +20152,8 @@ export interface Editor {
 export interface Email {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -18966,7 +20193,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -18981,7 +20209,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -18989,7 +20218,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -19029,7 +20259,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -19037,7 +20268,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -19045,7 +20277,8 @@ export interface Email {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -19053,7 +20286,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -19064,7 +20298,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -19075,7 +20310,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -19083,7 +20319,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the field appears normally while the recipient is adding or modifying the information in the field, but the data is not visible
      * (the characters are hidden by asterisks) to any other signer or the sender.
@@ -19097,7 +20334,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `concealValueOnDocument` property is editable.
      */
-    concealValueOnDocumentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    concealValueOnDocumentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -19105,7 +20343,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -19115,7 +20354,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used, the new tab
      * inherits all the custom tab properties.
@@ -19124,7 +20364,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, disables the auto sizing of single line text boxes in the signing screen when the signer enters data. If disabled users will only be a
      * ble enter as much data as the text box can hold. By default this is false. This property only affects single line text boxes.
@@ -19133,7 +20374,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `disableAutoSize` property is editable.
      */
-    disableAutoSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    disableAutoSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -19143,7 +20385,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -19189,11 +20432,13 @@ export interface Email {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -19219,7 +20464,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -19227,7 +20473,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -19235,7 +20482,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -19243,7 +20491,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -19251,7 +20500,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -19259,7 +20509,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -19271,7 +20522,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional value that describes the maximum length of the property when the property is a string.
      */
@@ -19279,7 +20531,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `maxLength` property is editable.
      */
-    maxLengthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maxLengthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -19295,7 +20548,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The initial value of the tab when it was sent to the recipient.
      */
@@ -19303,7 +20557,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `originalValue` property is editable.
      */
-    originalValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    originalValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located.
      * For supplemental documents, this value must be `1`.
@@ -19312,7 +20567,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -19326,11 +20582,13 @@ export interface Email {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and shared is true, information must be entered in this field to complete the envelope.
      */
@@ -19338,7 +20596,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `requireAll` property is editable.
      */
-    requireAllMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireAllMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -19346,7 +20605,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -19354,7 +20614,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender must populate the tab before an envelope can be sent using the template.
      *
@@ -19366,7 +20627,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `senderRequired` property is editable.
      */
-    senderRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is shared.
      */
@@ -19374,7 +20636,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -19389,7 +20652,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -19397,7 +20661,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -19405,7 +20670,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -19416,7 +20682,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -19427,7 +20694,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -19435,7 +20703,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -19443,7 +20712,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -19451,7 +20721,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -19459,7 +20730,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -19467,7 +20739,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The message displayed if the custom tab fails input validation (either custom of embedded).
      */
@@ -19475,7 +20748,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `validationMessage` property is editable.
      */
-    validationMessageMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationMessageMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A regular expression used to validate input for the tab.
      */
@@ -19483,7 +20757,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `validationPattern` property is editable.
      */
-    validationPatternMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationPatternMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -19491,7 +20766,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -19499,7 +20775,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -19509,7 +20786,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -19517,7 +20795,8 @@ export interface Email {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -19527,7 +20806,8 @@ export interface Email {
 export interface EmailAddress {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` property
      * for an anchor tab to be created. The default value is **false**.
@@ -19567,7 +20847,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -19582,7 +20863,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -19590,7 +20872,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -19630,7 +20913,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -19638,7 +20922,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -19646,7 +20931,8 @@ export interface EmailAddress {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -19654,7 +20940,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -19665,7 +20952,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -19676,7 +20964,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -19684,7 +20973,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -19692,7 +20982,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -19702,7 +20993,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This property can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -19711,7 +21003,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -19721,7 +21014,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -19767,11 +21061,13 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -19797,7 +21093,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -19805,7 +21102,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -19813,7 +21111,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -19821,7 +21120,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -19829,7 +21129,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -19837,7 +21138,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -19857,7 +21159,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located.
      * For supplemental documents, this value must be `1`.
@@ -19866,7 +21169,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -19880,11 +21184,13 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -19899,7 +21205,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -19907,7 +21214,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -19915,7 +21223,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -19926,7 +21235,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -19937,7 +21247,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -19945,7 +21256,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -19953,7 +21265,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -19961,7 +21274,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -19969,7 +21283,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -19977,7 +21292,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -19985,7 +21301,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -19993,7 +21310,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -20003,7 +21321,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -20011,7 +21330,8 @@ export interface EmailAddress {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface EmailSettings {
@@ -20028,7 +21348,8 @@ export interface EmailSettings {
      * **Example**: if your account has BCC for Email Archive set up for the email address archive@mycompany.com and you send an envelope using the BCC Email
      * Override to send a BCC email to salesarchive@mycompany.com, then a copy of the envelope is only sent to the salesarchive@mycompany.com email address.
      */
-    bccEmailAddresses?: /* Contains information about the BCC email address. */ BccEmailAddress[] | undefined;
+    bccEmailAddresses?: /* Contains information about the BCC email address. */
+    BccEmailAddress[] | undefined;
     /**
      * The Reply To email address to use for email replies, instead of the one that is configured at the account level. DocuSign verifies that the email address
      * is in a correct format, but does not verify that it is active. Maximum Length: 100 characters.
@@ -20125,7 +21446,7 @@ export interface Envelope {
      */
     customFields?: /* An `accountCustomField` is an envelope custom field that you set at the account level. Applying custom fields enables account administators
         to group and manage envelopes.  */
-        AccountCustomFields | undefined;
+    AccountCustomFields | undefined;
     /**
      * The URI for retrieving custom fields.
      */
@@ -20188,11 +21509,13 @@ export interface Envelope {
     /**
      * An array of attachment objects that provide information about the attachments that are associated with the envelope.
      */
-    envelopeAttachments?: /* Contains information about an attachment. */ Attachment[] | undefined;
+    envelopeAttachments?: /* Contains information about an attachment. */
+    Attachment[] | undefined;
     /**
      * An array containing information about the documents that are included in the envelope.
      */
-    envelopeDocuments?: /* This object contains details about the envelope document. */ EnvelopeDocument[] | undefined;
+    envelopeDocuments?: /* This object contains details about the envelope document. */
+    EnvelopeDocument[] | undefined;
     /**
      * The envelope's GUID.
      *
@@ -20240,7 +21563,8 @@ export interface Envelope {
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * When set to **true**, indicates that users have added comments to the envelope.
      */
@@ -20284,7 +21608,8 @@ export interface Envelope {
     /**
      * Provides lock information about an envelope that a user has locked.
      */
-    lockInformation?: /* This section provides information about envelope locks. */ EnvelopeLocks | undefined;
+    lockInformation?: /* This section provides information about envelope locks. */
+    EnvelopeLocks | undefined;
     /**
      * When set to **true**, prevents senders from changing the contents of `emailBlurb` and `emailSubject` properties for the envelope.
      *
@@ -20399,7 +21724,8 @@ export interface Envelope {
      */
     voidedReason?: string | undefined;
 
-    workflow?: /* A complex element that specifies the workflow settings for the envelope. */ Workflow | undefined;
+    workflow?: /* A complex element that specifies the workflow settings for the envelope. */
+    Workflow | undefined;
 }
 
 export interface EnvelopeAttachment {
@@ -20469,7 +21795,8 @@ export interface EnvelopeAttachmentsRequest {
     /**
      * An object that contains information about the attachment.
      */
-    attachments?: /* Contains information about an attachment. */ Attachment[] | undefined;
+    attachments?: /* Contains information about an attachment. */
+    Attachment[] | undefined;
 }
 
 export interface EnvelopeAttachmentsResult {
@@ -20808,7 +22135,8 @@ export interface EnvelopeDefinition {
     /**
      * An array of attachment objects containing details about any envelope attachments.
      */
-    attachments?: /* Contains information about an attachment. */ Attachment[] | undefined;
+    attachments?: /* Contains information about an attachment. */
+    Attachment[] | undefined;
     /**
      * The URI for retrieving the envelope attachments.
      */
@@ -20862,7 +22190,7 @@ export interface EnvelopeDefinition {
      */
     customFields?: /* An `accountCustomField` is an envelope custom field that you set at the account level. Applying custom fields enables account administators to group
         and manage envelopes.  */
-        AccountCustomFields | undefined;
+    AccountCustomFields | undefined;
     /**
      * The URI for retrieving custom fields.
      */
@@ -20934,11 +22262,13 @@ export interface EnvelopeDefinition {
     /**
      * An array of attachment objects that provide information about the attachments that are associated with the envelope.
      */
-    envelopeAttachments?: /* Contains information about an attachment. */ Attachment[] | undefined;
+    envelopeAttachments?: /* Contains information about an attachment. */
+    Attachment[] | undefined;
     /**
      * An array containing information about the documents that are included in the envelope.
      */
-    envelopeDocuments?: /* This object contains details about the envelope document. */ EnvelopeDocument[] | undefined;
+    envelopeDocuments?: /* This object contains details about the envelope document. */
+    EnvelopeDocument[] | undefined;
     /**
      * The envelope's GUID.
      *
@@ -20968,11 +22298,13 @@ export interface EnvelopeDefinition {
     /**
      * This optional object is used to register a webhook that will receive status changes for this envelope.
      */
-    eventNotification?: /* Register a Connect webhook for a specific envelope */ EventNotification | undefined;
+    eventNotification?: /* Register a Connect webhook for a specific envelope */
+    EventNotification | undefined;
     /**
      * An array of `eventNotification` objects.
      */
-    eventNotifications?: /* Register a Connect webhook for a specific envelope */ EventNotification[] | undefined;
+    eventNotifications?: /* Register a Connect webhook for a specific envelope */
+    EventNotification[] | undefined;
     /**
      * An integer specifying the number of days that a sent envelope remains active before it expires. A negative number in a response indicates that the envelope has already expired.
      */
@@ -20994,7 +22326,8 @@ export interface EnvelopeDefinition {
     /**
      * An array of folders that the envelope belongs to.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * When set to **true**, indicates that users have added comments to the envelope.
      */
@@ -21038,7 +22371,8 @@ export interface EnvelopeDefinition {
     /**
      * Provides lock information about an envelope that a user has locked.
      */
-    lockInformation?: /* This section provides information about envelope locks. */ EnvelopeLocks | undefined;
+    lockInformation?: /* This section provides information about envelope locks. */
+    EnvelopeLocks | undefined;
     /**
      * When set to **true**, prevents senders from changing the contents of `emailBlurb` and `emailSubject` properties for the envelope.
      *
@@ -21173,7 +22507,8 @@ export interface EnvelopeDefinition {
      */
     voidedReason?: string | undefined;
 
-    workflow?: /* A complex element that specifies the workflow settings for the envelope. */ Workflow | undefined;
+    workflow?: /* A complex element that specifies the workflow settings for the envelope. */
+    Workflow | undefined;
 }
 
 /**
@@ -21198,7 +22533,8 @@ export interface EnvelopeDocument {
     /**
      * Metadata that indicates if the sender can edit the `authoritativeCopy` property. Not applicable for template documents.
      */
-    authoritativeCopyMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    authoritativeCopyMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     availableDocumentTypes?:
         | /* This object contains information about the type of signature. */ SignatureType[]
@@ -21229,7 +22565,8 @@ export interface EnvelopeDocument {
     /**
      * Metadata that indicates if the sender can edit the `display` property. Not applicable for template documents.
      */
-    displayMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    displayMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object containing information about the custom fields on the document.
      */
@@ -21259,7 +22596,8 @@ export interface EnvelopeDocument {
     /**
      * Metadata that indicates if the sender can edit the `includeInDowload` property. Not applicable for template documents.
      */
-    includeInDownloadMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    includeInDownloadMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The document's file name.
      *
@@ -21269,7 +22607,8 @@ export interface EnvelopeDocument {
     /**
      * Metadata that indicates if the sender can edit the `name` property. Not applicable for template documents.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * (Optional) The order in which to sort the results.
      *
@@ -21303,7 +22642,8 @@ export interface EnvelopeDocument {
     /**
      * Metadata that indicates if the sender can edit the `signerMustAcknowledge` property. Not applicable for template documents.
      */
-    signerMustAcknowledgeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signerMustAcknowledgeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     sizeBytes?: string | undefined;
     /**
@@ -21617,7 +22957,8 @@ export interface EnvelopeDocumentTabs {
      *
      * [view]: https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipientTabs/create/#/definitions/view
      */
-    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */ View[] | undefined;
+    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */
+    View[] | undefined;
     /**
      * A list of
      * [Zip tabs][zip].
@@ -21661,7 +23002,8 @@ export interface EnvelopeDocuments {
     /**
      * An array of document objects.
      */
-    envelopeDocuments?: /* This object contains details about the envelope document. */ EnvelopeDocument[] | undefined;
+    envelopeDocuments?: /* This object contains details about the envelope document. */
+    EnvelopeDocument[] | undefined;
     /**
      * The envelope ID of the envelope status that failed to post.
      */
@@ -21672,7 +23014,8 @@ export interface EnvelopeDocumentsResult {
     /**
      * An array containing information about the documents that are included in the envelope.
      */
-    envelopeDocuments?: /* This object contains details about the envelope document. */ EnvelopeDocument[] | undefined;
+    envelopeDocuments?: /* This object contains details about the envelope document. */
+    EnvelopeDocument[] | undefined;
     /**
      * The envelope's GUID.
      *
@@ -21698,7 +23041,8 @@ export interface EnvelopeEmailSettings {
      * **Example**: if your account has BCC for Email Archive set up for the email address archive@mycompany.com and you send an envelope using the BCC Email
      * Override to send a BCC email to salesarchive@mycompany.com, then a copy of the envelope is only sent to the salesarchive@mycompany.com email address.
      */
-    bccEmailAddresses?: /* Contains information about the BCC email address. */ BccEmailAddress[] | undefined;
+    bccEmailAddresses?: /* Contains information about the BCC email address. */
+    BccEmailAddress[] | undefined;
     /**
      * The Reply To email address to use for email replies, instead of the one that is configured at the account level. DocuSign verifies that the email address
      * is in a correct format, but does not verify that it is active. Maximum Length: 100 characters.
@@ -21774,7 +23118,8 @@ export interface EnvelopeHtmlDefinitions {
 export interface EnvelopeId {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -21814,7 +23159,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -21829,7 +23175,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -21837,7 +23184,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -21877,7 +23225,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -21885,7 +23234,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -21893,7 +23243,8 @@ export interface EnvelopeId {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -21901,7 +23252,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -21912,7 +23264,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -21923,7 +23276,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -21931,7 +23285,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -21939,7 +23294,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -21949,7 +23305,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used, the new tab
      * inherits all the custom tab properties.
@@ -21958,7 +23315,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId` property that specifies
@@ -21968,7 +23326,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -22014,11 +23373,13 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -22044,7 +23405,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -22052,7 +23414,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -22060,7 +23423,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -22068,7 +23432,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -22076,7 +23441,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -22084,7 +23450,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -22104,7 +23471,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located.
      * For supplemental documents, this value must be `1`.
@@ -22113,7 +23481,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -22127,11 +23496,13 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -22146,7 +23517,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -22154,7 +23526,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -22162,7 +23535,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -22173,7 +23547,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -22184,7 +23559,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -22192,7 +23568,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -22200,7 +23577,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -22208,7 +23586,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -22216,7 +23595,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -22224,7 +23604,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -22232,7 +23613,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -22242,7 +23624,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -22250,7 +23633,8 @@ export interface EnvelopeId {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -22341,7 +23725,8 @@ export interface EnvelopeNotificationRequest {
     /**
      * A complex element that specifies reminder settings for the envelope
      */
-    reminders?: /* A complex element that specifies reminder settings for the envelope. */ Reminders | undefined;
+    reminders?: /* A complex element that specifies reminder settings for the envelope. */
+    Reminders | undefined;
     /**
      * When set to **true**, the account default notification settings are used for the envelope, overriding the reminders and expirations settings. When set to **false**,
      * the reminders and expirations settings specified in this request are used.
@@ -22647,7 +24032,8 @@ export interface EnvelopeRecipientTabs {
      *
      * [view]: https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipientTabs/create/#/definitions/view
      */
-    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */ View[] | undefined;
+    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */
+    View[] | undefined;
     /**
      * A list of
      * [Zip tabs][zip].
@@ -22669,20 +24055,20 @@ export interface EnvelopeRecipients {
      */
     agents?: /* Contains information about an agent recipient. An agent is a recipient who can add name and email information for recipients that appear after
         the agent in routing order. */
-        Agent[] | undefined;
+    Agent[] | undefined;
     /**
      * A list of carbon copy recipients assigned to the documents.
      */
     carbonCopies?: /* Contains information about a carbon copy recipient. Carbon copy recipients get a copy of the envelope but don't need to sign, initial,
         date or add information to any of the documents.  */
-        CarbonCopy[] | undefined;
+    CarbonCopy[] | undefined;
     /**
      * A complex type containing information on a recipient the must receive the completed documents for the envelope to be completed, but the recipient does
      * not need to sign, initial, date, or add information to any of the documents.
      */
     certifiedDeliveries?: /* Contains information about a certified delivery recipient. Certified delivery recipients must receive the completed documents
         for the envelope to be completed. However, they don't need to sign, initial, date or add information to any of the documents. */
-        CertifiedDelivery[] | undefined;
+    CertifiedDelivery[] | undefined;
     /**
      * The routing order of the current recipient. If this value equals a particular signer's routing order, it indicates that the envelope has been sent to that recipient,
      * but he or she has not completed the required actions.
@@ -22695,7 +24081,7 @@ export interface EnvelopeRecipients {
         and access rights for the envelope as the sender. They can make changes to the envelope as if they were using the Correct feature. This recipient can add name
         and email information, add or change the routing order and set authentication options for the remaining recipients. Additionally, this recipient can edit
         signature/initial tabs and text tabs for the remaining recipients. */
-        Editor[] | undefined;
+    Editor[] | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -22713,7 +24099,7 @@ export interface EnvelopeRecipients {
      */
     intermediaries?: /* Contains information about an intermediary recipient. An intermediary is a recipient who can, but is not required to, add name and email information for
          recipients at the same or subsequent level in the routing order, unless subsequent agents, editors or intermediaries are added. */
-        Intermediary[] | undefined;
+    Intermediary[] | undefined;
     /**
      * The number of recipients in the envelope.
      */
@@ -22731,7 +24117,7 @@ export interface EnvelopeRecipients {
      */
     witnesses?: /* A complex type containing information about a witness recipient. Witnesses are recipients whose signatures affirm that the identified signers have signed the
         documents in the envelope. */
-        Witness[] | undefined;
+    Witness[] | undefined;
 }
 
 /**
@@ -22882,7 +24268,7 @@ export interface EnvelopeTemplate {
      */
     customFields?: /* An `accountCustomField` is an envelope custom field that you set at the account level. Applying custom fields enables account
         administators to group and manage envelopes.  */
-        AccountCustomFields | undefined;
+    AccountCustomFields | undefined;
     /**
      * The URI for retrieving custom fields.
      */
@@ -22952,11 +24338,13 @@ export interface EnvelopeTemplate {
     /**
      * An array of attachment objects that provide information about the attachments that are associated with the envelope.
      */
-    envelopeAttachments?: /* Contains information about an attachment. */ Attachment[] | undefined;
+    envelopeAttachments?: /* Contains information about an attachment. */
+    Attachment[] | undefined;
     /**
      * An array containing information about the documents that are included in the envelope.
      */
-    envelopeDocuments?: /* This object contains details about the envelope document. */ EnvelopeDocument[] | undefined;
+    envelopeDocuments?: /* This object contains details about the envelope document. */
+    EnvelopeDocument[] | undefined;
     /**
      * The envelope's GUID.
      *
@@ -23014,7 +24402,8 @@ export interface EnvelopeTemplate {
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * When set to **true**, indicates that users have added comments to the envelope.
      */
@@ -23068,7 +24457,8 @@ export interface EnvelopeTemplate {
     /**
      * Provides lock information about an envelope that a user has locked.
      */
-    lockInformation?: /* This section provides information about envelope locks. */ EnvelopeLocks | undefined;
+    lockInformation?: /* This section provides information about envelope locks. */
+    EnvelopeLocks | undefined;
     /**
      * When set to **true**, prevents senders from changing the contents of `emailBlurb` and `emailSubject` properties for the envelope.
      *
@@ -23110,7 +24500,8 @@ export interface EnvelopeTemplate {
     /**
      * An array of PowerForm objects.
      */
-    powerForms?: /* Contains details about a PowerForm. */ PowerForm[] | undefined;
+    powerForms?: /* Contains details about a PowerForm. */
+    PowerForm[] | undefined;
     /**
      * The date that a purge was completed.
      */
@@ -23225,7 +24616,8 @@ export interface EnvelopeTemplateResults {
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * The URI for the next chunk of records based on the search request. It is `null` if this is the last set of results for the search.
      */
@@ -23255,7 +24647,8 @@ export interface EnvelopeTemplates {
     /**
      * An array of `templateSummary` objects that contain information about templates.
      */
-    templates?: /* Summary of a template request. */ TemplateSummary[] | undefined;
+    templates?: /* Summary of a template request. */
+    TemplateSummary[] | undefined;
 }
 
 export interface EnvelopeTransactionStatus {
@@ -23311,7 +24704,8 @@ export interface EnvelopeTransferRule {
     /**
      * Information about the group that triggers the transfer.
      */
-    fromGroup?: /* This object contains information about a group. */ Group | undefined;
+    fromGroup?: /* This object contains information about a group. */
+    Group | undefined;
     /**
      * Information about the user who triggers the transfer.
      */
@@ -23327,7 +24721,8 @@ export interface EnvelopeTransferRule {
     /**
      * Information about the destination folder to which the envelope is transferred.
      */
-    toFolder?: /* This object contains details about a folder. */ Folder | undefined;
+    toFolder?: /* This object contains details about a folder. */
+    Folder | undefined;
     /**
      * Information about the user to which the envelope is transferred.
      */
@@ -23394,7 +24789,8 @@ export interface EnvelopeTransferRuleRequest {
     /**
      * Information about the group that triggers the transfer.
      */
-    fromGroups?: /* This object contains information about a group. */ Group[] | undefined;
+    fromGroups?: /* This object contains information about a group. */
+    Group[] | undefined;
     /**
      * Information about the user who triggers the transfer.
      */
@@ -23410,7 +24806,8 @@ export interface EnvelopeTransferRuleRequest {
     /**
      * Information about the destination folder to which the envelope is transferred.
      */
-    toFolder?: /* This object contains details about a folder. */ Folder | undefined;
+    toFolder?: /* This object contains details about a folder. */
+    Folder | undefined;
     /**
      * Information about the user to which the envelope is transferred.
      */
@@ -23475,7 +24872,8 @@ export interface EnvelopeUpdateSummary {
     /**
      * Provides lock information about an envelope that a user has locked.
      */
-    lockInformation?: /* This section provides information about envelope locks. */ EnvelopeLocks | undefined;
+    lockInformation?: /* This section provides information about envelope locks. */
+    EnvelopeLocks | undefined;
     /**
      * Shows the current purge state for the envelope. The possible values are:
      *
@@ -23599,7 +24997,7 @@ export interface Envelopes {
      */
     customFields?: /* An `accountCustomField` is an envelope custom field that you set at the account level. Applying custom fields enables account administators
         to group and manage envelopes.  */
-        AccountCustomFields | undefined;
+    AccountCustomFields | undefined;
     /**
      * The URI for retrieving custom fields.
      */
@@ -23666,11 +25064,13 @@ export interface Envelopes {
     /**
      * An array of attachment objects that provide information about the attachments that are associated with the envelope.
      */
-    envelopeAttachments?: /* Contains information about an attachment. */ Attachment[] | undefined;
+    envelopeAttachments?: /* Contains information about an attachment. */
+    Attachment[] | undefined;
     /**
      * An array containing information about the documents that are included in the envelope.
      */
-    envelopeDocuments?: /* This object contains details about the envelope document. */ EnvelopeDocument[] | undefined;
+    envelopeDocuments?: /* This object contains details about the envelope document. */
+    EnvelopeDocument[] | undefined;
     /**
      * The envelope's GUID.
      *
@@ -23718,7 +25118,8 @@ export interface Envelopes {
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * When set to **true**, indicates that users have added comments to the envelope.
      */
@@ -23762,7 +25163,8 @@ export interface Envelopes {
     /**
      * Provides lock information about an envelope that a user has locked.
      */
-    lockInformation?: /* This section provides information about envelope locks. */ EnvelopeLocks | undefined;
+    lockInformation?: /* This section provides information about envelope locks. */
+    EnvelopeLocks | undefined;
     /**
      * When set to **true**, prevents senders from changing the contents of `emailBlurb` and `emailSubject` properties for the envelope.
      *
@@ -23920,7 +25322,8 @@ export interface EnvelopesInformation {
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * The last time that a query was performed.
      */
@@ -23962,7 +25365,8 @@ export interface EventNotification {
      *
      * To receive notifications, you must include either an `envelopeEvents` node or a `recipientEvents` node. You do not need to specify both.
      */
-    envelopeEvents?: /* For which envelope events should your webhook be called? */ EnvelopeEvent[] | undefined;
+    envelopeEvents?: /* For which envelope events should your webhook be called? */
+    EnvelopeEvent[] | undefined;
 
     eventData?: ConnectEventData | undefined;
     /**
@@ -24220,7 +25624,8 @@ export interface ExternalFolder {
      */
     id?: string | undefined;
 
-    items?: /* This object contains information about a file or folder in cloud storage. */ ExternalFile[] | undefined;
+    items?: /* This object contains information about a file or folder in cloud storage. */
+    ExternalFile[] | undefined;
 
     name?: string | undefined;
     /**
@@ -24431,7 +25836,8 @@ export interface Filter {
 export interface FirstName {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -24471,7 +25877,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -24486,7 +25893,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -24494,7 +25902,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -24534,7 +25943,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -24542,7 +25952,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -24550,7 +25961,8 @@ export interface FirstName {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -24558,7 +25970,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -24569,7 +25982,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -24580,7 +25994,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -24588,7 +26003,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -24596,7 +26012,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -24606,7 +26023,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab ID for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -24615,7 +26033,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId` property
@@ -24625,7 +26044,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -24671,11 +26091,13 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -24701,7 +26123,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -24709,7 +26132,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -24717,7 +26141,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -24725,7 +26150,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -24733,7 +26159,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -24741,7 +26168,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -24761,7 +26189,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -24769,7 +26198,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -24783,11 +26213,13 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -24802,7 +26234,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -24810,7 +26243,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -24818,7 +26252,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -24829,7 +26264,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -24840,7 +26276,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -24848,7 +26285,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -24856,7 +26294,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -24864,7 +26303,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -24872,7 +26312,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -24880,7 +26321,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -24888,7 +26330,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -24896,7 +26339,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -24906,7 +26350,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -24914,7 +26359,8 @@ export interface FirstName {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -24930,7 +26376,8 @@ export interface Folder {
     /**
      * An object used to present a filtered view of the items in a folder.
      */
-    filter?: /* Use this object to create a filtered view of the items in a folder. */ Filter | undefined;
+    filter?: /* Use this object to create a filtered view of the items in a folder. */
+    Filter | undefined;
     /**
      * The id of the folder.
      */
@@ -24938,11 +26385,13 @@ export interface Folder {
     /**
      * A list of envelopes and templates that the folder contains.
      */
-    folderItems?: /* Information about folder item results. */ FolderItemV2[] | undefined;
+    folderItems?: /* Information about folder item results. */
+    FolderItemV2[] | undefined;
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * When set to **true**, the current user has access to the folder.
      */
@@ -25003,7 +26452,8 @@ export interface FolderItemResponse {
     /**
      * A list of the envelopes in the specified folder or folders.
      */
-    folderItems?: /* Information about folder item results. */ FolderItemV2[] | undefined;
+    folderItems?: /* Information about folder item results. */
+    FolderItemV2[] | undefined;
     /**
      * The URI for the next chunk of records based on the search request. It is `null` if this is the last set of results for the search.
      */
@@ -25120,11 +26570,13 @@ export interface FolderItemsResponse {
     /**
      * An array containing PowerForm data.
      */
-    envelopes?: /*  This object describes an envelope. */ EnvelopeSummary[] | undefined;
+    envelopes?: /*  This object describes an envelope. */
+    EnvelopeSummary[] | undefined;
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * The URI for the next chunk of records based on the search request. It is `null` if this is the last set of results for the search.
      */
@@ -25184,11 +26636,13 @@ export interface FolderSharedItem {
     /**
      * A list of groups that share the folder.
      */
-    sharedGroups?: /* Information about items shared among groups. */ MemberGroupSharedItem[] | undefined;
+    sharedGroups?: /* Information about items shared among groups. */
+    MemberGroupSharedItem[] | undefined;
     /**
      * A list of users that share the folder.
      */
-    sharedUsers?: /* Information about a shared item. */ UserSharedItem[] | undefined;
+    sharedUsers?: /* Information about a shared item. */
+    UserSharedItem[] | undefined;
     /**
      * A URI containing the user ID.
      */
@@ -25210,7 +26664,8 @@ export interface FoldersRequest {
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      *  The id of the folder that the envelope is being moved from.
      */
@@ -25225,11 +26680,13 @@ export interface FoldersResponse {
     /**
      * An array containing PowerForm data.
      */
-    envelopes?: /*  This object describes an envelope. */ EnvelopeSummary[] | undefined;
+    envelopes?: /*  This object describes an envelope. */
+    EnvelopeSummary[] | undefined;
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * The URI for the next chunk of records based on the search request. It is `null` if this is the last set of results for the search.
      */
@@ -25340,7 +26797,8 @@ export interface FormDataItem {
 export interface FormulaTab {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -25380,7 +26838,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -25395,7 +26854,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -25403,7 +26863,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -25443,7 +26904,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -25451,7 +26913,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -25459,7 +26922,8 @@ export interface FormulaTab {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -25467,7 +26931,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -25478,7 +26943,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -25489,7 +26955,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -25497,7 +26964,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the field appears normally while the recipient is adding or modifying the information in the field, but the data is not visible
      * (the characters are hidden by asterisks) to any other signer or the sender.
@@ -25511,7 +26979,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `concealValueOnDocument` property is editable.
      */
-    concealValueOnDocumentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    concealValueOnDocumentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -25519,7 +26988,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -25529,7 +26999,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used,
      * the new tab inherits all the custom tab properties.
@@ -25538,7 +27009,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, disables the auto sizing of single line text boxes in the signing screen when the signer enters data.
      * If disabled users will only be able enter as much data as the text box can hold. By default this is false. This property only affects single line text boxes.
@@ -25547,7 +27019,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `disableAutoSize` property is editable.
      */
-    disableAutoSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    disableAutoSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId` property
@@ -25557,7 +27030,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -25603,11 +27077,13 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -25633,7 +27109,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -25641,7 +27118,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -25649,7 +27127,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -25657,7 +27136,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the formula
      * for calculating the value of
@@ -25692,7 +27172,8 @@ export interface FormulaTab {
     /**
      * Metadata indicating if the sender can edit the `formula` property.
      */
-    formulaMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formulaMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -25700,7 +27181,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * If this is a regular formula (no `paymentDetails` property is present):
      *
@@ -25716,7 +27198,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `hidden` property is editable.
      */
-    hiddenMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    hiddenMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, sets this as a payment tab. Can only be used with Text, Number, Formula, or List tabs. The value of the tab must be a number.
      */
@@ -25724,7 +27207,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `isPaymentAmount` property is editable.
      */
-    isPaymentAmountMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    isPaymentAmountMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -25732,7 +27216,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -25744,7 +27229,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional value that describes the maximum length of the property when the property is a string.
      */
@@ -25752,7 +27238,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `maxLength` property is editable.
      */
-    maxLengthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maxLengthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -25768,7 +27255,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The initial value of the tab when it was sent to the recipient.
      */
@@ -25776,7 +27264,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `originalValue` property is editable.
      */
-    originalValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    originalValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -25784,7 +27273,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates
      * that this formula tab
@@ -25809,11 +27299,13 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and shared is true, information must be entered in this field to complete the envelope.
      */
@@ -25821,7 +27313,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `requireAll` property is editable.
      */
-    requireAllMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireAllMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -25829,7 +27322,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -25837,7 +27331,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The number of decimal places to round to.
      */
@@ -25845,7 +27340,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `roundDecimalPlaces` property is editable.
      */
-    roundDecimalPlacesMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    roundDecimalPlacesMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender must populate the tab before an envelope can be sent using the template.
      *
@@ -25857,7 +27353,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `senderRequired` property is editable.
      */
-    senderRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this custom tab is shared.
      */
@@ -25865,7 +27362,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -25880,7 +27378,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -25888,7 +27387,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -25896,7 +27396,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -25907,7 +27408,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -25918,7 +27420,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -25926,7 +27429,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -25934,7 +27438,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -25942,7 +27447,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -25950,7 +27456,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -25958,7 +27465,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The message displayed if the custom tab fails input validation (either custom of embedded).
      */
@@ -25966,7 +27474,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `validationMessage` property is editable.
      */
-    validationMessageMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationMessageMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A regular expression used to validate input for the tab.
      */
@@ -25974,7 +27483,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `validationPattern` property is editable.
      */
-    validationPatternMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationPatternMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -25982,7 +27492,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -25990,7 +27501,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -26000,7 +27512,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -26008,7 +27521,8 @@ export interface FormulaTab {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 /**
  * A tab that displays the recipient's full name.
@@ -26016,7 +27530,8 @@ export interface FormulaTab {
 export interface FullName {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -26056,7 +27571,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -26071,7 +27587,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -26079,7 +27596,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -26119,7 +27637,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -26127,7 +27646,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -26135,7 +27655,8 @@ export interface FullName {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -26143,7 +27664,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -26154,7 +27676,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -26165,7 +27688,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -26173,7 +27697,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -26181,7 +27706,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -26191,7 +27717,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab ID for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -26200,7 +27727,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId` property
@@ -26210,7 +27738,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -26256,11 +27785,13 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -26286,7 +27817,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -26294,7 +27826,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -26302,7 +27835,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -26310,7 +27844,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -26318,7 +27853,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -26326,7 +27862,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -26346,7 +27883,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -26354,7 +27892,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId`
      * must be unique, but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -26368,11 +27907,13 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -26387,7 +27928,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -26395,7 +27937,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -26403,7 +27946,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -26414,7 +27958,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -26425,7 +27970,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -26433,7 +27979,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -26441,7 +27988,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -26449,7 +27997,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -26457,7 +28006,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -26465,7 +28015,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -26473,7 +28024,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -26481,7 +28033,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -26491,7 +28044,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -26499,7 +28053,8 @@ export interface FullName {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface GraphicsContext {
@@ -26592,7 +28147,8 @@ export interface GroupInformation {
     /**
      * A collection group objects containing information about the groups.
      */
-    groups?: /* This object contains information about a group. */ Group[] | undefined;
+    groups?: /* This object contains information about a group. */
+    Group[] | undefined;
     /**
      * The URI for the next chunk of records based on the search request. It is `null` if this is the last set of results for the search.
      */
@@ -26660,7 +28216,8 @@ export interface Groups {
     /**
      * A collection group objects containing information about the groups.
      */
-    groups?: /* This object contains information about a group. */ Group[] | undefined;
+    groups?: /* This object contains information about a group. */
+    Group[] | undefined;
     /**
      * The URI for the next chunk of records based on the search request. It is `null` if this is the last set of results for the search.
      */
@@ -26764,7 +28321,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `accessCode` property is editable. Read only.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. When set to **true**, the access code will be added to the email sent to the recipient. This nullifies the security measure of `accessCode` on the recipient.
      */
@@ -26831,7 +28389,8 @@ export interface InPersonSigner {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -26853,7 +28412,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `email` property is editable. Read only.
      */
-    emailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional complex type that sets a specific email subject and body for this recipient's notification email.
      *
@@ -26910,7 +28470,8 @@ export interface InPersonSigner {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The email address of the signing host.
      * This is the DocuSign user that is hosting the in-person signing session.
@@ -26924,7 +28485,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `hostEmail` property is editable.
      */
-    hostEmailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    hostEmailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the signing host.
      * This is the DocuSign user that is hosting the in-person signing session.
@@ -26938,7 +28500,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `hostName` property is editable.
      */
-    hostNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    hostNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the authentication check to use. This value must match one of the authentication types that the account uses. The names of these authentication
      * types appear in the web console sending export interface in the Identify list for a recipient. This setting overrides any default authentication setting. Valid values are:
@@ -26955,7 +28518,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `idCheckConfigurationName` property is editable. Read only.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object that contains input information related to a recipient ID check.
      */
@@ -26978,7 +28542,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `inPersonSigningType` property is editable.
      */
-    inPersonSigningTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    inPersonSigningTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -26999,7 +28564,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Information about the notary host. The following information is required when using the eNotary in-person signing flow:
      *
@@ -27018,7 +28584,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `note` property is editable. Read only.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When `idCheckConfigurationName` is set to `Phone Auth $`, you use this complex type to provide the recipient authentication method details. It contains the following elements:
      *
@@ -27079,7 +28646,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient is required to use the specified ID check method (including Phone and SMS authentication) to validate their identity.
      */
@@ -27087,7 +28655,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `requireIdLookup` property is editable. Read only.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * By default, DocuSign signers create electronic signatures. This field can be used to require the signer to use a SAFE-BioPharma digital certificate for signing.
      *
@@ -27118,7 +28687,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The UTC DateTime when the envelope was sent. Read only.
      */
@@ -27145,7 +28715,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates if the sender can edit the in-person signer's email address.
      */
-    signerEmailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signerEmailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The signer's first name.
      */
@@ -27153,7 +28724,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates if the `signerFirstName` property is editable.
      */
-    signerFirstNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signerFirstNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The signer's last name.
      */
@@ -27161,7 +28733,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `signerLastName` property is editable.
      */
-    signerLastNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signerLastNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The in-person signer's full legal name.
      *
@@ -27174,7 +28747,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `signerName` property is editable.
      */
-    signerNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signerNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and the feature is enabled in the sender's account, the signing recipient is required to draw signatures and initials at each
      * signature/initial tab (instead of adopting a signature/initial style or only drawing a signature/initial once).
@@ -27183,7 +28757,8 @@ export interface InPersonSigner {
     /**
      * Metadata that indicates whether the `signInEachLocation` property is editable. Read only.
      */
-    signInEachLocationMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signInEachLocationMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Not applicable. You cannot use a signing group for an in-person signer.
      */
@@ -27191,7 +28766,8 @@ export interface InPersonSigner {
     /**
      * Not applicable.
      */
-    signingGroupIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signingGroupIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Not applicable.
      */
@@ -27265,7 +28841,8 @@ export interface InPersonSigner {
 export interface InitialHere {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -27305,7 +28882,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -27320,7 +28898,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -27328,7 +28907,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -27368,7 +28948,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -27376,7 +28957,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -27384,7 +28966,8 @@ export interface InitialHere {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -27392,7 +28975,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -27403,7 +28987,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -27414,7 +28999,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -27422,7 +29008,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -27432,7 +29019,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used,
      * the new tab inherits all the custom tab properties.
@@ -27441,7 +29029,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId` property
@@ -27451,7 +29040,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -27465,7 +29055,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -27473,7 +29064,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -27481,7 +29073,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -27489,7 +29082,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -27505,7 +29099,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient does not need to complete this tab to complete the signing process.
      */
@@ -27513,7 +29108,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `optional` property is editable.
      */
-    optionalMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    optionalMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -27521,7 +29117,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -27535,11 +29132,13 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Sets the size of the tab. This field accepts values from `0.5` to `1.0`, where `1.0` represents full size and `0.5` is 50% of full size.
      */
@@ -27547,7 +29146,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `scaleValue` property is editable.
      */
-    scaleValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    scaleValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -27562,7 +29162,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -27570,7 +29171,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -27578,7 +29180,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -27589,7 +29192,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -27600,7 +29204,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -27608,7 +29213,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -27616,7 +29222,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -27624,7 +29231,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -27632,7 +29240,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -27640,7 +29249,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -27650,7 +29260,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -27658,7 +29269,8 @@ export interface InitialHere {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface InlineTemplate {
@@ -27668,7 +29280,7 @@ export interface InlineTemplate {
      */
     customFields?: /* An `accountCustomField` is an envelope custom field that you set at the account level. Applying custom fields enables account administators to
         group and manage envelopes.  */
-        AccountCustomFields | undefined;
+    AccountCustomFields | undefined;
     /**
      * A complex element that contains details about the documents associated with the envelope.
      */
@@ -27738,7 +29350,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `accessCode` property is editable. Read only.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. When set to **true**, the access code will be added to the email sent to the recipient. This nullifies the security measure of `accessCode` on the recipient.
      */
@@ -27786,7 +29399,8 @@ export interface Intermediary {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -27807,7 +29421,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `email` property is editable. Read only.
      */
-    emailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional complex type that sets a specific email subject and body for this recipient's notification email.
      *
@@ -27864,7 +29479,8 @@ export interface Intermediary {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The recipient's first name. Maximum Length: 50 characters.
      */
@@ -27872,7 +29488,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `firstame` property is editable. Read only.
      */
-    firstNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    firstNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -27880,7 +29497,8 @@ export interface Intermediary {
     /**
      * Reserved for DocuSign.
      */
-    fullNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fullNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the authentication check to use. This value must match one of the authentication types that the account uses. The names of these authentication types
      * appear in the web console sending export interface in the Identify list for a recipient. This setting overrides any default authentication setting. Valid values are:
@@ -27897,7 +29515,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `idCheckConfigurationName` property is editable. Read only.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object that contains input information related to a recipient ID check.
      */
@@ -27916,7 +29535,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `lastName` property is editable. Read only.
      */
-    lastNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lastNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -27934,7 +29554,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A note sent to the recipient in the signing email.
      * This note is unique to this recipient.
@@ -27949,7 +29570,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `note` property is editable. Read only.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When `idCheckConfigurationName` is set to `Phone Auth $`, you use this complex type to provide the recipient authentication method details.
      * It contains the following elements:
@@ -28002,7 +29624,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient is required to use the specified ID check method (including Phone and SMS authentication) to validate their identity.
      */
@@ -28010,7 +29633,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `requireIdLookup` property is editable. Read only.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element. Specifies the role name associated with the recipient.<br/><br/>This property is required when you are working with template recipients.
      */
@@ -28022,7 +29646,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The UTC DateTime when the envelope was sent. Read only.
      */
@@ -28042,7 +29667,8 @@ export interface Intermediary {
     /**
      * Metadata that indicates whether the `signingGroupId` property is editable. Read only.
      */
-    signingGroupIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signingGroupIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The name of the signing group.
      *
@@ -28129,7 +29755,8 @@ export interface Invoices {
     /**
      * Reserved: TBD
      */
-    invoiceItems?: /* Contains information about an item on a billing invoice. */ BillingInvoiceItem[] | undefined;
+    invoiceItems?: /* Contains information about an item on a billing invoice. */
+    BillingInvoiceItem[] | undefined;
     /**
      * Reserved: TBD
      */
@@ -28177,7 +29804,8 @@ export interface Jurisdiction {
 export interface LastName {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -28217,7 +29845,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -28232,7 +29861,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -28240,7 +29870,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -28280,7 +29911,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -28288,7 +29920,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -28296,7 +29929,8 @@ export interface LastName {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -28304,7 +29938,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -28315,7 +29950,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -28326,7 +29962,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -28334,7 +29971,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -28342,7 +29980,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -28352,7 +29991,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -28361,7 +30001,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -28371,7 +30012,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -28417,11 +30059,13 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -28447,7 +30091,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -28455,7 +30100,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -28463,7 +30109,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -28471,7 +30118,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -28479,7 +30127,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -28487,7 +30136,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -28507,7 +30157,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -28515,7 +30166,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId`
      * must be unique, but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -28529,11 +30181,13 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -28548,7 +30202,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -28556,7 +30211,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -28564,7 +30220,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -28575,7 +30232,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -28586,7 +30244,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -28594,7 +30253,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -28602,7 +30262,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -28610,7 +30271,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -28618,7 +30280,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -28626,7 +30289,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -28634,7 +30298,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -28642,7 +30307,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -28652,7 +30318,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -28660,7 +30327,8 @@ export interface LastName {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -28673,7 +30341,8 @@ export interface LastName {
 export interface List {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` property
      * for an anchor tab to be created. The default value is **false**.
@@ -28713,7 +30382,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -28728,7 +30398,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -28736,7 +30407,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -28776,7 +30448,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -28784,7 +30457,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -28792,7 +30466,8 @@ export interface List {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -28800,7 +30475,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -28811,7 +30487,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -28822,7 +30499,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -28830,7 +30508,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -28838,7 +30517,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -28848,7 +30528,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab ID for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used,
      * the new tab inherits all the custom tab properties.
@@ -28857,7 +30538,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId` property
@@ -28867,7 +30549,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -28913,11 +30596,13 @@ export interface List {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -28943,7 +30628,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -28951,7 +30637,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -28959,7 +30646,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -28967,7 +30655,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -28975,7 +30664,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -28983,7 +30673,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The list of values that can be selected by senders. The list values are separated by semi-colons. Example: [one;two;three;four]
      *
@@ -28998,7 +30689,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `listSelectedValue` property is editable.
      */
-    listSelectedValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    listSelectedValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -29010,7 +30702,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -29026,7 +30719,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -29040,11 +30734,13 @@ export interface List {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and shared is true, information must be entered in this field to complete the envelope.
      */
@@ -29052,7 +30748,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `requireAll` property is editable.
      */
-    requireAllMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireAllMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -29060,7 +30757,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -29068,7 +30766,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender must populate the tab before an envelope can be sent using the template.
      *
@@ -29080,7 +30779,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `senderRequired` property is editable.
      */
-    senderRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this custom tab is shared.
      */
@@ -29088,7 +30788,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -29103,7 +30804,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -29111,7 +30813,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -29119,7 +30822,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -29130,7 +30834,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -29141,7 +30846,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -29149,7 +30855,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -29157,7 +30864,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -29165,7 +30873,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -29173,7 +30882,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -29181,7 +30891,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The value to use when the item is selected.
      */
@@ -29189,7 +30900,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -29197,7 +30909,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -29207,7 +30920,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -29215,7 +30929,8 @@ export interface List {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -29275,13 +30990,16 @@ export interface ListItem {
     /**
      * Metadata that indicates whether the `selected` property is editable.
      */
-    selectedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    selectedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the text that is shown in the dropdown list.
      */
     text?: string | undefined;
 
-    textMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    textMetadata?: /* Metadata about a property. */
+        | PropertyMetadata
+        | undefined;
     /**
      * Specifies the value that is used when the list item is selected.
      */
@@ -29289,7 +31007,8 @@ export interface ListItem {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface LocalePolicy {
@@ -29637,7 +31356,8 @@ export interface MemberGroupSharedItem {
     /**
      * The group sharing the item.
      */
-    group?: /* This object contains information about a group. */ Group | undefined;
+    group?: /* This object contains information about a group. */
+    Group | undefined;
     /**
      * How the item is shared. One of:
      *
@@ -29655,7 +31375,8 @@ export interface MemberSharedItems {
     /**
      * List of information about shared envelopes.
      */
-    envelopes?: /* Information about the shared item. */ SharedItem[] | undefined;
+    envelopes?: /* Information about the shared item. */
+    SharedItem[] | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -29669,7 +31390,8 @@ export interface MemberSharedItems {
     /**
      * List of information about shared templates.
      */
-    templates?: /* Information about shared templates. */ TemplateSharedItem[] | undefined;
+    templates?: /* Information about shared templates. */
+    TemplateSharedItem[] | undefined;
     /**
      * Information about the user requesting sharing information.
      */
@@ -29687,7 +31409,8 @@ export interface MergeField {
     /**
      * Metadata that indicates if the sender can edit the `allowSenderToEdit` property.
      */
-    allowSenderToEditMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    allowSenderToEditMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * If you are using merge fields, this property specifies the type of the merge field. The only supported value is `salesforce`.
      */
@@ -29695,7 +31418,8 @@ export interface MergeField {
     /**
      * Metadata that indicates if the sender can edit the `configurationType` property.
      */
-    configurationTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    configurationTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Sets the object associated with the custom tab. Currently this is the Salesforce object.
      */
@@ -29707,11 +31431,13 @@ export interface MergeField {
     /**
      * Reserved for DocuSign.
      */
-    pathExtendedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pathExtendedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `path` property is editable.
      */
-    pathMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pathMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the row number in a Salesforce table that the merge field value corresponds to.
      */
@@ -29727,7 +31453,8 @@ export interface MergeField {
     /**
      * Metadata that indicates if the sender can edit the `writeBack` property.
      */
-    writeBackMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    writeBackMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface MobileNotifierConfiguration {
@@ -29924,7 +31651,8 @@ export interface NewAccountSummary {
      */
     baseUrl?: string | undefined;
 
-    billingPlanPreview?: /* Information used to provide a preview of a billing plan. */ BillingPlanPreview | undefined;
+    billingPlanPreview?: /* Information used to provide a preview of a billing plan. */
+    BillingPlanPreview | undefined;
     /**
      * Specifies the user ID of the new user.
      */
@@ -30016,7 +31744,8 @@ export interface NewUsersSummary {
 export interface Notarize {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -30056,7 +31785,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -30071,7 +31801,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -30079,7 +31810,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -30119,7 +31851,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -30127,7 +31860,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -30135,7 +31869,8 @@ export interface Notarize {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -30143,7 +31878,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -30154,7 +31890,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -30165,7 +31902,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -30173,7 +31911,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -30183,7 +31922,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -30192,7 +31932,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -30202,7 +31943,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -30216,7 +31958,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -30224,7 +31967,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -30232,7 +31976,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -30240,7 +31985,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer cannot change the data of the custom tab.
      */
@@ -30248,7 +31994,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -30264,7 +32011,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -30278,11 +32026,13 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -30290,7 +32040,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -30305,7 +32056,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -30313,7 +32065,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -30321,7 +32074,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -30332,7 +32086,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -30340,7 +32095,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -30348,7 +32104,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -30356,7 +32113,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -30364,7 +32122,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -30372,7 +32131,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -30382,7 +32142,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -30390,7 +32151,8 @@ export interface Notarize {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface Notary {
@@ -30431,7 +32193,8 @@ export interface NotaryHost {
     /**
      * Metadata that indicates whether the `accessCode` property is editable. Read only.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. When set to **true**, the access code will be added to the email sent to the recipient. This nullifies the security measure of `accessCode` on the recipient.
      */
@@ -30479,7 +32242,8 @@ export interface NotaryHost {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -30500,7 +32264,8 @@ export interface NotaryHost {
     /**
      * Metadata that indicates whether the `email` property is editable. Read only.
      */
-    emailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional complex type that sets a specific email subject and body for this recipient's notification email.
      *
@@ -30547,7 +32312,8 @@ export interface NotaryHost {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     hostRecipientId?: string | undefined;
     /**
@@ -30566,7 +32332,8 @@ export interface NotaryHost {
     /**
      * Metadata that indicates whether the `idCheckConfigurationName` property is editable. Read only.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object that contains input information related to a recipient ID check.
      */
@@ -30595,7 +32362,8 @@ export interface NotaryHost {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A note sent to the notary in the signing email.
      * This note is visible only to this notary.
@@ -30606,7 +32374,8 @@ export interface NotaryHost {
     /**
      * Metadata that indicates whether the `note` property is editable. Read only.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When `idCheckConfigurationName` is set to `Phone Auth $`, you use this complex type to provide the recipient authentication method details. It contains the following elements:
      *
@@ -30659,7 +32428,8 @@ export interface NotaryHost {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient is required to use the specified ID check method (including Phone and SMS authentication) to validate their identity.
      */
@@ -30667,7 +32437,8 @@ export interface NotaryHost {
     /**
      * Metadata that indicates whether the `requireIdLookup` property is editable. Read only.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element. Specifies the role name associated with the recipient.<br/><br/>This property is required when you are working with template recipients.
      */
@@ -30679,7 +32450,8 @@ export interface NotaryHost {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The UTC DateTime when the envelope was sent. Read only.
      */
@@ -30699,7 +32471,8 @@ export interface NotaryHost {
     /**
      * Metadata that indicates whether the `signingGroupId` property is editable. Read only.
      */
-    signingGroupIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signingGroupIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The name of the signing group.
      *
@@ -30928,7 +32701,8 @@ export interface NotaryResult {
 export interface Note {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` property
      * for an anchor tab to be created. The default value is **false**.
@@ -30968,7 +32742,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -30983,7 +32758,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -30991,7 +32767,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -31031,7 +32808,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -31039,7 +32817,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -31047,7 +32826,8 @@ export interface Note {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -31055,7 +32835,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -31066,7 +32847,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -31077,7 +32859,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -31085,7 +32868,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -31093,7 +32877,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -31103,7 +32888,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -31112,7 +32898,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -31122,7 +32909,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -31168,11 +32956,13 @@ export interface Note {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -31198,7 +32988,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -31206,7 +32997,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -31214,7 +33006,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -31222,7 +33015,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -31230,7 +33024,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -31238,7 +33033,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -31258,7 +33054,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -31266,7 +33063,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -31280,11 +33078,13 @@ export interface Note {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this custom tab is shared.
      */
@@ -31292,7 +33092,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -31307,7 +33108,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -31315,7 +33117,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -31323,7 +33126,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -31334,7 +33138,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -31345,7 +33150,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -31353,7 +33159,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -31361,7 +33168,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -31369,7 +33177,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -31377,7 +33186,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -31385,7 +33195,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -31393,7 +33204,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -31401,7 +33213,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -31411,7 +33224,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -31419,7 +33233,8 @@ export interface Note {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -31435,7 +33250,8 @@ export interface Notification {
     /**
      * A complex element that specifies reminder settings for the envelope
      */
-    reminders?: /* A complex element that specifies reminder settings for the envelope. */ Reminders | undefined;
+    reminders?: /* A complex element that specifies reminder settings for the envelope. */
+    Reminders | undefined;
     /**
      * When set to **true**, the account default notification settings are used for the envelope, overriding the reminders and expirations settings. When set to **false**,
      * the reminders and expirations settings specified in this request are used.
@@ -31470,7 +33286,7 @@ export interface NotificationDefaultSettings {
     signerEmailNotifications?: /* An array of email notifications that specifies the email the user receives when they are a sender. When the specific email notification is
         set to true, the user receives those types of email notifications from DocuSign. The user inherits the default account sender email notification settings when the user is created.
         */
-        SignerEmailNotifications | undefined;
+    SignerEmailNotifications | undefined;
 }
 
 /**
@@ -31498,7 +33314,8 @@ export interface NotificationDefaults {
 export interface Number {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` property
      * for an anchor tab to be created. The default value is **false**.
@@ -31538,7 +33355,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -31553,7 +33371,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -31561,7 +33380,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -31601,7 +33421,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -31609,7 +33430,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -31617,7 +33439,8 @@ export interface Number {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -31625,7 +33448,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -31636,7 +33460,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -31647,7 +33472,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -31655,7 +33481,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the field appears normally while the recipient is adding or modifying the information in the field, but the data is not visible (the characters are
      * hidden by asterisks) to any other signer or the sender.
@@ -31669,7 +33496,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `concealValueOnDocument` property is editable.
      */
-    concealValueOnDocumentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    concealValueOnDocumentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -31677,7 +33505,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -31687,7 +33516,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign generated custom tab ID for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used, the new tab inherits all the
      * custom tab properties.
@@ -31696,7 +33526,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, disables the auto sizing of single line text boxes in the signing screen when the signer enters data. If disabled users will only be able enter as
      * much data as the text box can hold. By default this is false. This property only affects single line text boxes.
@@ -31705,7 +33536,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `disableAutoSize` property is editable.
      */
-    disableAutoSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    disableAutoSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId` property that
@@ -31715,7 +33547,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -31761,11 +33594,13 @@ export interface Number {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -31791,7 +33626,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -31799,7 +33635,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -31807,7 +33644,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -31815,7 +33653,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the formula
      * for calculating the value of
@@ -31850,7 +33689,8 @@ export interface Number {
     /**
      * Metadata indicating if the sender can edit the `formula` property.
      */
-    formulaMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formulaMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -31858,7 +33698,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, sets this as a payment tab. Can only be used with Text, Number, Formula, or List tabs. The value of the tab must be a number.
      */
@@ -31866,7 +33707,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `isPaymentAmount` property is editable.
      */
-    isPaymentAmountMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    isPaymentAmountMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -31874,7 +33716,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -31886,7 +33729,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional value that describes the maximum length of the property when the property is a string.
      */
@@ -31894,7 +33738,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `maxLength` property is editable.
      */
-    maxLengthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maxLengthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -31910,7 +33755,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The initial value of the tab when it was sent to the recipient.
      */
@@ -31918,7 +33764,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `originalValue` property is editable.
      */
-    originalValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    originalValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -31926,7 +33773,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -31940,11 +33788,13 @@ export interface Number {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and shared is true, information must be entered in this field to complete the envelope.
      */
@@ -31952,7 +33802,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `requireAll` property is editable.
      */
-    requireAllMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireAllMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -31960,7 +33811,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -31968,7 +33820,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender must populate the tab before an envelope can be sent using the template.
      *
@@ -31980,7 +33833,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `senderRequired` property is editable.
      */
-    senderRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this custom tab is shared.
      */
@@ -31988,7 +33842,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -32003,7 +33858,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -32011,7 +33867,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -32019,7 +33876,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -32030,7 +33888,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -32041,7 +33900,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -32049,7 +33909,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -32057,7 +33918,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -32065,7 +33927,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -32073,7 +33936,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -32081,7 +33945,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The message displayed if the custom tab fails input validation (either custom of embedded).
      */
@@ -32089,7 +33954,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `validationMessage` property is editable.
      */
-    validationMessageMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationMessageMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A regular expression used to validate input for the tab.
      */
@@ -32097,7 +33963,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `validationPattern` property is editable.
      */
-    validationPatternMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationPatternMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -32105,7 +33972,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -32113,7 +33981,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -32123,7 +33992,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -32131,7 +34001,8 @@ export interface Number {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface OauthAccess {
@@ -32142,7 +34013,8 @@ export interface OauthAccess {
     /**
      * A Base64-encoded representation of the attachment that is used to upload and download the file. File attachments may be up to 50 MB in size.
      */
-    data?: /* A name-value pair that describes an item and provides a value for the item. */ NameValue[] | undefined;
+    data?: /* A name-value pair that describes an item and provides a value for the item. */
+    NameValue[] | undefined;
 
     expires_in?: string | undefined;
 
@@ -32348,7 +34220,8 @@ export interface PaymentDetails {
     /**
      * Metadata that indicates whether the `currencyCode` property is editable.
      */
-    currencyCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    currencyCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The customer ID.
      */
@@ -32387,7 +34260,8 @@ export interface PaymentDetails {
     /**
      * Metadata that indicates whether the `gatewayAccountId` property is editable.
      */
-    gatewayAccountIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    gatewayAccountIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Display name of the gateway connected to sender's Docusign account.
      *
@@ -32558,7 +34432,7 @@ export interface PaymentGatewayAccount {
      */
     supportedPaymentMethodsWithOptions?: /* This object contains information about a payment method that the gateway accepts and the payment options that are compatible with it.
      */
-        PaymentMethodWithOptions[] | undefined;
+    PaymentMethodWithOptions[] | undefined;
 }
 
 export interface PaymentGatewayAccountSetting {
@@ -32661,7 +34535,7 @@ export interface PaymentGatewayAccounts {
      */
     supportedPaymentMethodsWithOptions?: /* This object contains information about a payment method that the gateway accepts and the payment options that are compatible with it.
      */
-        PaymentMethodWithOptions[] | undefined;
+    PaymentMethodWithOptions[] | undefined;
 }
 
 /**
@@ -32738,7 +34612,8 @@ export interface PaymentProcessorInformation {
     /**
      * The mailing address associated with the payment processor.
      */
-    address?: /* Contains address information. */ AddressInformation | undefined;
+    address?: /* Contains address information. */
+    AddressInformation | undefined;
     /**
      * The id of the billing agreement.
      */
@@ -32849,7 +34724,7 @@ export interface PlanInformation {
      * Reserved for DocuSign.
      */
     planFeatureSets?: /* This object provides details about a feature set, or add-on product that is associated with an account. It is reserved for DocuSign internal use only. */
-        FeatureSet[] | undefined;
+    FeatureSet[] | undefined;
     /**
      * DocuSign's id for the account plan.
      */
@@ -32874,7 +34749,8 @@ export interface PolyLine {
 export interface PolyLineOverlay {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` property
      * for an anchor tab to be created. The default value is **false**.
@@ -32914,7 +34790,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -32929,7 +34806,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -32937,7 +34815,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -32977,7 +34856,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -32985,7 +34865,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -32993,7 +34874,8 @@ export interface PolyLineOverlay {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -33001,7 +34883,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -33012,7 +34895,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -33023,7 +34907,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -33031,7 +34916,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -33041,7 +34927,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -33050,7 +34937,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -33060,7 +34948,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -33074,7 +34963,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -33082,7 +34972,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -33090,7 +34981,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains details about the style used for the strike through graphic.
      */
@@ -33102,7 +34994,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer cannot change the data of the custom tab.
      */
@@ -33110,7 +35003,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -33126,7 +35020,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `overlayType` property is editable.
      */
-    overlayTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    overlayTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number being accessed.
      */
@@ -33134,7 +35029,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of `polyLine` objects that contain x- and y-coordinates representing the locations of the lines.
      */
@@ -33152,11 +35048,13 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, indicates that the tab is shared.
      */
@@ -33164,7 +35062,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -33179,7 +35078,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -33187,7 +35087,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -33195,7 +35096,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -33213,7 +35115,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -33221,7 +35124,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -33229,7 +35133,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -33237,7 +35142,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -33245,7 +35151,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -33253,7 +35160,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -33263,7 +35171,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -33271,7 +35180,8 @@ export interface PolyLineOverlay {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -33367,7 +35277,7 @@ export interface PowerForm {
      */
     recipients?: /* **Note**: For a self-service PowerForm on a website, you can specify the intended recipients generically (for example, use `Member` as the `Name`),
         and omit personal details such as `email`. */
-        PowerFormRecipient[] | undefined;
+    PowerFormRecipient[] | undefined;
     /**
      * The sender's name.
      */
@@ -33683,7 +35593,7 @@ export interface PowerForms {
      */
     recipients?: /* **Note**: For a self-service PowerForm on a website, you can specify the intended recipients generically (for example, use `Member` as the `Name`),
         and omit personal details such as `email`. */
-        PowerFormRecipient[] | undefined;
+    PowerFormRecipient[] | undefined;
     /**
      * The name of the sender.
      *
@@ -33739,7 +35649,8 @@ export interface PowerFormsRequest {
     /**
      * An array of PowerForm objects.
      */
-    powerForms?: /* Contains details about a PowerForm. */ PowerForm[] | undefined;
+    powerForms?: /* Contains details about a PowerForm. */
+    PowerForm[] | undefined;
 }
 
 /**
@@ -33757,7 +35668,8 @@ export interface PowerFormsResponse {
     /**
      * An array of PowerForm objects.
      */
-    powerForms?: /* Contains details about a PowerForm. */ PowerForm[] | undefined;
+    powerForms?: /* Contains details about a PowerForm. */
+    PowerForm[] | undefined;
     /**
      * The URI for the prior chunk of records based on the search request. It is `null` if this is the first set of results for the search.
      */
@@ -33874,7 +35786,8 @@ export interface PurchasedEnvelopesInformation {
 export interface Radio {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -33914,7 +35827,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -33929,7 +35843,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -33937,7 +35852,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -33977,7 +35893,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -33985,7 +35902,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -33993,7 +35911,8 @@ export interface Radio {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -34001,7 +35920,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -34012,7 +35932,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -34023,7 +35944,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -34031,7 +35953,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -34077,11 +36000,13 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -34107,7 +36032,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -34115,7 +36041,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer cannot change the data of the custom tab.
      */
@@ -34123,7 +36050,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the page number on which the tab is located.
      * Must be 1 for supplemental documents.
@@ -34132,7 +36060,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -34140,7 +36069,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the radio button is selected.
      */
@@ -34148,7 +36078,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `selected` property is editable.
      */
-    selectedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    selectedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The status of the item.
      */
@@ -34156,7 +36087,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -34164,7 +36096,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -34175,7 +36108,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -34183,7 +36117,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -34191,7 +36126,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -34201,7 +36137,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -34209,7 +36146,8 @@ export interface Radio {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -34228,7 +36166,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -34238,7 +36177,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -34248,7 +36188,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the group. The search_text provided in the call automatically performs a wild card search on group_name.
      */
@@ -34256,7 +36197,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `groupName` property is editable.
      */
-    groupNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    groupNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the locations and status for radio buttons that are grouped together.
      */
@@ -34274,11 +36216,13 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and shared is true, information must be entered in this field to complete the envelope.
      */
@@ -34286,7 +36230,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `requireAll` property is editable.
      */
-    requireAllMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireAllMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -34294,7 +36239,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this custom tab is shared.
      */
@@ -34302,7 +36248,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -34310,7 +36257,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -34318,7 +36266,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -34326,7 +36275,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -34334,7 +36284,8 @@ export interface RadioGroup {
     /**
      * Metadata that indicates whether the `tooltip` property is editable.
      */
-    tooltipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tooltipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface RecipientAttachment {
@@ -34386,7 +36337,8 @@ export interface RecipientEmailNotification {
     /**
      * Metadata that indicates whether the `emailBody` property can be edited.
      */
-    emailBodyMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailBodyMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The subject line for the email notification.
      */
@@ -34394,7 +36346,8 @@ export interface RecipientEmailNotification {
     /**
      * Metadata that indicates whether the `emailSubject` property can be edited.
      */
-    emailSubjectMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailSubjectMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The language to use for the standard email format and signing view for a recipient.
      *
@@ -34412,7 +36365,8 @@ export interface RecipientEmailNotification {
     /**
      * Metadata that indicates whether the `supportedLanguage` property can be edited.
      */
-    supportedLanguageMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    supportedLanguageMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface RecipientEvent {
@@ -34563,7 +36517,8 @@ export interface RecipientPhoneAuthentication {
     /**
      * Metadata that indicates whether the `recipMayProvideNumber` property can be edited.
      */
-    recipMayProvideNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipMayProvideNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -34571,7 +36526,8 @@ export interface RecipientPhoneAuthentication {
     /**
      * Reserved for DocuSign.
      */
-    recordVoicePrintMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recordVoicePrintMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array containing a list of phone numbers that the recipient can use for SMS text authentication.
      */
@@ -34579,7 +36535,8 @@ export interface RecipientPhoneAuthentication {
     /**
      * Metadata that indicates whether the `senderProvidedNumbers` property can be edited.
      */
-    senderProvidedNumbersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderProvidedNumbersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      *  Reserved for DocuSign.
      */
@@ -34587,7 +36544,8 @@ export interface RecipientPhoneAuthentication {
     /**
      * Reserved for DocuSign.
      */
-    validateRecipProvidedNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validateRecipProvidedNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -34694,7 +36652,8 @@ export interface RecipientSMSAuthentication {
     /**
      * Metadata that indicates whether the `senderProvidedNumbers` property can be edited.
      */
-    senderProvidedNumbersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderProvidedNumbersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -34747,7 +36706,8 @@ export interface RecipientSignatureProvider {
     /**
      * Metadata that indicates whether the `signatureProviderName` property is editable.
      */
-    signatureProviderNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signatureProviderNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Not applicable for this object.
      */
@@ -34766,7 +36726,8 @@ export interface RecipientSignatureProviderOptions {
     /**
      * Reserved for DocuSign.
      */
-    cpfNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    cpfNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A pre-shared secret that the signer must enter to complete the signing process. Eg last six digits of the signer's government ID or Social Security number.
      * Or a newly created pre-shared secret for the transaction. Note: some signature providers may require an exact (case-sensitive) match if alphabetic characters
@@ -34776,7 +36737,8 @@ export interface RecipientSignatureProviderOptions {
     /**
      * Metadata that indicates whether the `oneTimePassword` property is editable.
      */
-    oneTimePasswordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    oneTimePasswordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The role or capacity of the signing recipient. Examples: Manager, Approver, etc.
      */
@@ -34784,7 +36746,8 @@ export interface RecipientSignatureProviderOptions {
     /**
      * Metadata that indicates whether the `signerRole` property is editable.
      */
-    signerRoleMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signerRoleMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The mobile phone number used to send the recipient an access code for the signing ceremony. Format: a string starting with +, then the country code
      * followed by the full mobile phone number without any spaces or special characters. Omit leading zeroes before a city code.
@@ -34965,13 +36928,13 @@ export interface Recipients {
      */
     agents?: /* Contains information about an agent recipient. An agent is a recipient who can add name and email information for recipients that appear after the
         agent in routing order. */
-        Agent[] | undefined;
+    Agent[] | undefined;
     /**
      * A list of carbon copy recipients assigned to the documents.
      */
     carbonCopies?: /* Contains information about a carbon copy recipient. Carbon copy recipients get a copy of the envelope but don't need to sign, initial,
         date or add information to any of the documents.  */
-        CarbonCopy[] | undefined;
+    CarbonCopy[] | undefined;
     /**
      * A complex type containing information on a recipient the must receive the completed documents for the envelope to be completed, but the recipient
      * does not need to sign, initial, date, or add information to any of the documents.
@@ -34989,7 +36952,7 @@ export interface Recipients {
         Editors have the same management and access rights for the envelope as the sender. They can make changes to the envelope as if they were using the Correct feature.
         This recipient can add name and email information, add or change the routing order and set authentication options for the remaining recipients.
         Additionally, this recipient can edit signature/initial tabs and text tabs for the remaining recipients. */
-        Editor[] | undefined;
+    Editor[] | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -35023,7 +36986,7 @@ export interface Recipients {
      */
     witnesses?: /* A complex type containing information about a witness recipient. Witnesses are recipients whose signatures affirm that the identified
         signers have signed the documents in the envelope. */
-        Witness[] | undefined;
+    Witness[] | undefined;
 }
 
 /**
@@ -35194,9 +37157,11 @@ export interface Seal {
     /**
      * Electronic seal configuration  properties
      */
-    configuration?: {
-        [name: string]: string;
-    } | undefined;
+    configuration?:
+        | {
+              [name: string]: string;
+          }
+        | undefined;
     /**
      * Electronic Seal identifier
      */
@@ -35250,7 +37215,8 @@ export interface SealSign {
     /**
      * Not applicable.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Not applicable.
      */
@@ -35288,7 +37254,8 @@ export interface SealSign {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -35320,7 +37287,8 @@ export interface SealSign {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Not applicable.
      */
@@ -35328,7 +37296,8 @@ export interface SealSign {
     /**
      * Not applicable.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Not applicable.
      */
@@ -35358,7 +37327,8 @@ export interface SealSign {
     /**
      * Not applicable.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Not applicable.
      */
@@ -35412,7 +37382,8 @@ export interface SealSign {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Not applicable.
      */
@@ -35420,7 +37391,8 @@ export interface SealSign {
     /**
      * Not applicable.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element. Specifies the role name associated with the recipient.<br/><br/>This property is required when you are working with template recipients.
      */
@@ -35435,7 +37407,8 @@ export interface SealSign {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Not applicable.
      */
@@ -35697,7 +37670,8 @@ export interface SharedItem {
 export interface SignHere {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the
      * `anchorString` property for an anchor tab to be created. The default value is **false**.
@@ -35737,7 +37711,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -35752,7 +37727,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -35760,7 +37736,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an
      * [anchor tab][AnchorTab] to be created. The default value is **false**.
@@ -35800,7 +37777,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -35808,7 +37786,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -35816,7 +37795,8 @@ export interface SignHere {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -35824,7 +37804,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -35835,7 +37816,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -35846,7 +37828,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -35854,7 +37837,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -35864,7 +37848,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -35873,7 +37858,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the document ID number that the tab is placed on. This must refer to an existing Document's ID attribute.
      */
@@ -35881,7 +37867,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -35896,7 +37883,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -35904,7 +37892,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -35912,7 +37901,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -35920,7 +37910,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**,  the tab contains a visual representation for an electronic seal in a document.
      */
@@ -35940,7 +37931,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient does not need to complete this tab to complete the signing process.
      */
@@ -35948,7 +37940,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `optional` property is editable.
      */
-    optionalMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    optionalMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the page number on which the tab is located.
      * Must be 1 for supplemental documents.
@@ -35957,7 +37950,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId`
      * must be unique, but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -35971,11 +37965,13 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Sets the size of the tab. This field accepts values from `0.5` to `1.0`, where `1.0` represents full size and `0.5` is 50% of full size.
      */
@@ -35983,7 +37979,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `scaleValue` property is editable.
      */
-    scaleValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    scaleValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
 
@@ -35999,7 +37996,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `stampType` property is editable.
      */
-    stampTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    stampTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The status of the tab. Possible values are:
      *
@@ -36012,7 +38010,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -36020,7 +38019,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -36028,7 +38028,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -36039,7 +38040,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -36050,7 +38052,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -36058,7 +38061,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -36066,7 +38070,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -36074,7 +38079,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -36082,7 +38088,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -36090,7 +38097,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -36100,7 +38108,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the vertical offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -36123,7 +38132,8 @@ export interface SignHere {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface SignatureProperties {
@@ -36190,7 +38200,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `accessCode` property is editable. Read only.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. When set to **true**, the access code will be added to the email sent to the recipient. This nullifies the security measure of `accessCode` on the recipient.
      */
@@ -36268,7 +38279,8 @@ export interface Signer {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -36287,7 +38299,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `email` property is editable. Read only.
      */
-    emailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional complex type that sets a specific email subject and body for this recipient's notification email.
      *
@@ -36345,7 +38358,8 @@ export interface Signer {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The recipient's first name. Maximum Length: 50 characters.
      */
@@ -36353,7 +38367,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `firstame` property is editable. Read only.
      */
-    firstNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    firstNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -36361,7 +38376,8 @@ export interface Signer {
     /**
      * Reserved for DocuSign.
      */
-    fullNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fullNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the authentication check to use. This value must match one of the authentication types that the account uses.
      * The names of these authentication types appear in the web console sending export interface in the Identify list for a recipient.
@@ -36379,7 +38395,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `idCheckConfigurationName` property is editable. Read only.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object that contains input information related to a recipient ID check.
      */
@@ -36400,7 +38417,7 @@ export interface Signer {
         [IdentityVerifications](https://developers.docusign.com/esign-rest-api/reference/Accounts/IdentityVerifications) resource for more information
         on how to retrieve workflow IDs available for an account. This can be used in addition to other
         [recipient authentication](https://support.docusign.com/en/guides/ndse-user-guide-recipient-authentication) methods.  */
-        RecipientIdentityVerification | undefined;
+    RecipientIdentityVerification | undefined;
     /**
      * When set to **true** and the envelope recipient creates a DocuSign account after signing, the Manage Account Email Notification settings are used as the
      * default settings for the recipient's account.
@@ -36413,7 +38430,8 @@ export interface Signer {
     /**
      * Reserved for DocuSign.
      */
-    isBulkRecipientMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    isBulkRecipientMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The recipient's last name.
      */
@@ -36421,7 +38439,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `lastName` property is editable. Read only.
      */
-    lastNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lastNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -36439,7 +38458,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A note sent to the recipient in the signing email.
      * This note is unique to this recipient.
@@ -36454,7 +38474,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `note` property is editable. Read only.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When `idCheckConfigurationName` is set to `Phone Auth $`, you use this complex type to provide the recipient authentication method details.
      * It contains the following elements:
@@ -36519,7 +38540,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient is required to use the specified ID check method (including Phone and SMS authentication) to validate their identity.
      */
@@ -36527,7 +38549,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `requireIdLookup` property is editable. Read only.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * By default, DocuSign signers create electronic signatures. This field can be used to require the signer to use a SAFE-BioPharma digital certificate for signing.
      *
@@ -36558,7 +38581,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The UTC DateTime when the envelope was sent. Read only.
      */
@@ -36581,7 +38605,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `signInEachLocation` property is editable. Read only.
      */
-    signInEachLocationMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signInEachLocationMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The ID of the [signing group](https://support.docusign.com/en/guides/ndse-user-guide-signing-groups).
      *
@@ -36593,7 +38618,8 @@ export interface Signer {
     /**
      * Metadata that indicates whether the `signingGroupId` property is editable. Read only.
      */
-    signingGroupIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signingGroupIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The name of the signing group.
      *
@@ -36666,7 +38692,8 @@ export interface Signer {
 export interface SignerAttachment {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` p
      * roperty for an anchor tab to be created. The default value is **false**.
@@ -36706,7 +38733,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -36721,7 +38749,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -36729,7 +38758,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -36769,7 +38799,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -36777,7 +38808,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -36785,7 +38817,8 @@ export interface SignerAttachment {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -36793,7 +38826,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -36804,7 +38838,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -36815,7 +38850,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -36823,7 +38859,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -36833,7 +38870,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -36842,7 +38880,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -36852,7 +38891,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -36867,7 +38907,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -36875,7 +38916,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -36883,7 +38925,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -36891,7 +38934,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -36907,7 +38951,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient does not need to complete this tab to complete the signing process.
      */
@@ -36915,7 +38960,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `optional` property is editable.
      */
-    optionalMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    optionalMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -36923,7 +38969,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -36937,11 +38984,13 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Sets the size of the tab. This field accepts values from `0.5` to `1.0`, where `1.0` represents full size and `0.5` is 50% of full size.
      */
@@ -36949,7 +38998,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `scaleValue` property is editable.
      */
-    scaleValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    scaleValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -36964,7 +39014,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -36972,7 +39023,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -36980,7 +39032,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -36991,7 +39044,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -37002,7 +39056,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -37010,7 +39065,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -37018,7 +39074,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -37026,7 +39083,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -37034,7 +39092,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -37042,7 +39101,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -37052,7 +39112,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -37060,7 +39121,8 @@ export interface SignerAttachment {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -37294,7 +39356,8 @@ export interface SmartContractInformation {
 export interface SmartSection {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` property
      * for an anchor tab to be created. The default value is **false**.
@@ -37334,7 +39397,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -37349,7 +39413,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -37357,7 +39422,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -37397,7 +39463,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -37405,7 +39472,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -37413,7 +39481,8 @@ export interface SmartSection {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -37421,7 +39490,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -37432,7 +39502,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -37443,7 +39514,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When **true**, the `startAnchor` and `endAnchor` for the Smart Section must match both the case and the content of the strings in the HTML.
      */
@@ -37455,7 +39527,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -37465,7 +39538,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -37474,7 +39548,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object defines how the HTML section inside the `startAnchor` and `endAnchor` displays.
      */
@@ -37490,7 +39565,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the end of the area in the HTML where the display settings will be applied. If you do not specify an end anchor, the end of the document will be used by default.
      *
@@ -37514,7 +39590,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -37522,7 +39599,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -37530,7 +39608,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -37538,7 +39617,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer cannot change the data of the custom tab.
      */
@@ -37546,7 +39626,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -37565,7 +39646,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `overlayType` property is editable.
      */
-    overlayTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    overlayTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number being accessed.
      */
@@ -37573,7 +39655,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -37587,11 +39670,13 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When **true**, removes the end anchor string for the Smart Section from the HTML, preventing it from displaying.
      */
@@ -37607,7 +39692,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -37633,7 +39719,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -37641,7 +39728,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -37649,7 +39737,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -37667,7 +39756,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -37675,7 +39765,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -37683,7 +39774,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -37691,7 +39783,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -37699,7 +39792,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -37707,7 +39801,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -37717,7 +39812,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -37725,7 +39821,8 @@ export interface SmartSection {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface SmartSectionAnchorPosition {
@@ -37869,7 +39966,8 @@ export interface SocialAuthentication {
 export interface Ssn {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString`
      * property for an anchor tab to be created. The default value is **false**.
@@ -37909,7 +40007,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -37924,7 +40023,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -37932,7 +40032,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -37972,7 +40073,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -37980,7 +40082,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -37988,7 +40091,8 @@ export interface Ssn {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -37996,7 +40100,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -38007,7 +40112,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -38018,7 +40124,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -38026,7 +40133,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the field appears normally while the recipient is adding or modifying the information in the field, but the data is
      * not visible (the characters are hidden by asterisks) to any other signer or the sender.
@@ -38040,7 +40148,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `concealValueOnDocument` property is editable.
      */
-    concealValueOnDocumentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    concealValueOnDocumentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -38048,7 +40157,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -38058,7 +40168,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -38067,7 +40178,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, disables the auto sizing of single line text boxes in the signing screen when the signer enters data.
      * If disabled users will only be able enter as much data as the text box can hold. By default this is false. This property only affects single line text boxes.
@@ -38076,7 +40188,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `disableAutoSize` property is editable.
      */
-    disableAutoSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    disableAutoSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -38086,7 +40199,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -38132,11 +40246,13 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -38162,7 +40278,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the
      * `formPageLabel`, the group by which to place the guided form HTML block.
@@ -38171,7 +40288,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -38179,7 +40297,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -38187,7 +40306,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -38195,7 +40315,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -38203,7 +40324,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -38215,7 +40337,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional value that describes the maximum length of the property when the property is a string.
      */
@@ -38223,7 +40346,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `maxLength` property is editable.
      */
-    maxLengthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maxLengthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -38239,7 +40363,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The initial value of the tab when it was sent to the recipient.
      */
@@ -38247,7 +40372,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `originalValue` property is editable.
      */
-    originalValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    originalValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -38255,7 +40381,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -38269,11 +40396,13 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and shared is true, information must be entered in this field to complete the envelope.
      */
@@ -38281,7 +40410,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `requireAll` property is editable.
      */
-    requireAllMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireAllMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -38289,7 +40419,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -38297,7 +40428,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender must populate the tab before an envelope can be sent using the template.
      *
@@ -38309,7 +40441,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `senderRequired` property is editable.
      */
-    senderRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this custom tab is shared.
      */
@@ -38317,7 +40450,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -38332,7 +40466,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -38340,7 +40475,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -38348,7 +40484,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -38359,7 +40496,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -38370,7 +40508,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -38378,7 +40517,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -38386,7 +40526,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -38394,7 +40535,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -38402,7 +40544,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -38410,7 +40553,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The message displayed if the custom tab fails input validation (either custom of embedded).
      */
@@ -38418,7 +40562,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `validationMessage` property is editable.
      */
-    validationMessageMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationMessageMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A regular expression used to validate input for the tab.
      */
@@ -38426,7 +40571,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `validationPattern` property is editable.
      */
-    validationPatternMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationPatternMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -38434,7 +40580,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -38442,7 +40589,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -38452,7 +40600,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -38460,7 +40609,8 @@ export interface Ssn {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface Ssn4InformationInput {
@@ -38825,7 +40975,8 @@ export interface TabAccountSettings {
 export interface TabGroup {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the
      * `anchorString` property for an anchor tab to be created. The default value is **false**.
@@ -38865,7 +41016,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -38880,7 +41032,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -38888,7 +41041,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -38928,7 +41082,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -38936,7 +41091,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -38944,7 +41100,8 @@ export interface TabGroup {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -38952,7 +41109,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -38963,7 +41121,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -38974,7 +41133,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -38982,7 +41142,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -38992,7 +41153,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -39001,7 +41163,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -39011,7 +41174,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -39025,7 +41189,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -39033,7 +41198,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -39041,7 +41207,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A unique identifier for a tab group. To assign a tab to the `tabGroup`, you assign the `TabGroupLabel` to the `tab.TabGroupLabels` array.
      */
@@ -39049,7 +41216,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `groupLabel` property is editable.
      */
-    groupLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    groupLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The rule that is selected by default when a user is adding validation for a tab group in the UI.
      */
@@ -39057,7 +41225,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `groupRule` property is editable.
      */
-    groupRuleMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    groupRuleMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -39065,7 +41234,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The maximum number of tabs within the `tabGroup` that should be checked, populated, or signed. This property is used for validation.
      */
@@ -39073,7 +41243,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `maximumAllowed` property is editable.
      */
-    maximumAllowedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maximumAllowedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -39089,7 +41260,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `minimumRequired` property is editable.
      */
-    minimumRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    minimumRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number being accessed.
      */
@@ -39097,7 +41269,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -39111,11 +41284,13 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -39130,7 +41305,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -39138,7 +41314,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -39146,7 +41323,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -39157,7 +41335,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The scope of the tab group. Possible values are:
      *
@@ -39168,7 +41347,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `tabScope` property is editable.
      */
-    tabScopeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabScopeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -39176,7 +41356,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -39184,7 +41365,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -39192,7 +41374,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -39200,7 +41383,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The message displayed if the custom tab fails input validation (either custom of embedded).
      */
@@ -39208,7 +41392,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `validationMessage` property is editable.
      */
-    validationMessageMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationMessageMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -39216,7 +41401,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -39226,7 +41412,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -39234,7 +41421,8 @@ export interface TabGroup {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface TabMetadata {
@@ -39538,7 +41726,8 @@ export interface TabMetadata {
     /**
      * Metadata that indicates whether the `stampType` property is editable.
      */
-    stampTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    stampTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -39771,7 +41960,7 @@ export interface Tabs {
      * [number]: https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipientTabs/create/#/definitions/number
      */
     numberTabs?: // eslint-disable-next-line @typescript-eslint/ban-types
-        Number[] | undefined;
+    Number[] | undefined;
     /**
      * This type of tab enables the recipient to strike through document text. This value can't be set.
      */
@@ -39850,7 +42039,8 @@ export interface Tabs {
      *
      * [view]: https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipientTabs/create/#/definitions/view
      */
-    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */ View[] | undefined;
+    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */
+    View[] | undefined;
     /**
      * A list of
      * [Zip tabs][zip].
@@ -40434,7 +42624,8 @@ export interface TemplateDocumentTabs {
      *
      * [view]: https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipientTabs/create/#/definitions/view
      */
-    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */ View[] | undefined;
+    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */
+    View[] | undefined;
     /**
      * A list of
      * [Zip tabs][zip].
@@ -40492,7 +42683,8 @@ export interface TemplateDocuments {
     /**
      * An array of document objects that contain information about the documents associated with the template.
      */
-    templateDocuments?: /* This object contains details about the envelope document. */ EnvelopeDocument[] | undefined;
+    templateDocuments?: /* This object contains details about the envelope document. */
+    EnvelopeDocument[] | undefined;
     /**
      * The id of the template. If a value is not provided, DocuSign generates a value.
      */
@@ -40503,7 +42695,8 @@ export interface TemplateDocumentsResult {
     /**
      * An array of document objects that contain information about the documents associated with the template.
      */
-    templateDocuments?: /* This object contains details about the envelope document. */ EnvelopeDocument[] | undefined;
+    templateDocuments?: /* This object contains details about the envelope document. */
+    EnvelopeDocument[] | undefined;
     /**
      * The id of the template.
      */
@@ -40521,7 +42714,8 @@ export interface TemplateInformation {
     /**
      * An array of `templateSummary` objects that contain information about templates.
      */
-    templates?: /* Summary of a template request. */ TemplateSummary[] | undefined;
+    templates?: /* Summary of a template request. */
+    TemplateSummary[] | undefined;
 }
 /**
  * This section provides information about template locks. You use template locks to prevent others from making changes to a template while you are modifying it.
@@ -40587,7 +42781,8 @@ export interface TemplateNotificationRequest {
     /**
      * A complex element that specifies reminder settings for the envelope
      */
-    reminders?: /* A complex element that specifies reminder settings for the envelope. */ Reminders | undefined;
+    reminders?: /* A complex element that specifies reminder settings for the envelope. */
+    Reminders | undefined;
     /**
      * When set to **true**, the account default notification settings are used for the envelope, overriding the reminders and expirations settings.
      * When set to **false**, the reminders and expirations settings specified in this request are used.
@@ -40852,7 +43047,8 @@ export interface TemplateRecipientTabs {
      *
      * [view]: https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipientTabs/create/#/definitions/view
      */
-    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */ View[] | undefined;
+    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */
+    View[] | undefined;
     /**
      * A list of
      * [Zip tabs][zip].
@@ -40874,13 +43070,13 @@ export interface TemplateRecipients {
      */
     agents?: /* Contains information about an agent recipient. An agent is a recipient who can add name and email information for recipients that appear after
         the agent in routing order. */
-        Agent[] | undefined;
+    Agent[] | undefined;
     /**
      * A list of carbon copy recipients assigned to the documents.
      */
     carbonCopies?: /* Contains information about a carbon copy recipient. Carbon copy recipients get a copy of the envelope but don't need to sign, initial,
         date or add information to any of the documents.  */
-        CarbonCopy[] | undefined;
+    CarbonCopy[] | undefined;
     /**
      * A complex type containing information on a recipient the must receive the completed documents for the envelope to be completed, but the recipient does not need to sign,
      * initial, date, or add information to any of the documents.
@@ -40898,7 +43094,7 @@ export interface TemplateRecipients {
         Editors have the same management and access rights for the envelope as the sender. They can make changes to the envelope as if they were using the Correct feature.
         This recipient can add name and email information, add or change the routing order and set authentication options for the remaining recipients. Additionally,
         this recipient can edit signature/initial tabs and text tabs for the remaining recipients. */
-        Editor[] | undefined;
+    Editor[] | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -40916,7 +43112,7 @@ export interface TemplateRecipients {
      */
     intermediaries?: /* Contains information about an intermediary recipient. An intermediary is a recipient who can, but is not required to,
                         add name and email information for recipients at the same or subsequent level in the routing order, unless subsequent agents, editors or intermediaries are added. */
-        Intermediary[] | undefined;
+    Intermediary[] | undefined;
     /**
      * The number of recipients in the envelope.
      */
@@ -40935,7 +43131,7 @@ export interface TemplateRecipients {
      */
     witnesses?: /* A complex type containing information about a witness recipient. Witnesses are recipients whose signatures affirm that the identified signers
         have signed the documents in the envelope. */
-        Witness[] | undefined;
+    Witness[] | undefined;
 }
 
 /**
@@ -41081,11 +43277,13 @@ export interface TemplateSharedItem {
     /**
      * List of groups that share the template.
      */
-    sharedGroups?: /* Information about items shared among groups. */ MemberGroupSharedItem[] | undefined;
+    sharedGroups?: /* Information about items shared among groups. */
+    MemberGroupSharedItem[] | undefined;
     /**
      * List of users that share the template.
      */
-    sharedUsers?: /* Information about a shared item. */ UserSharedItem[] | undefined;
+    sharedUsers?: /* Information about a shared item. */
+    UserSharedItem[] | undefined;
     /**
      * The unique identifier of the template. If this is not provided, DocuSign will generate a value.
      */
@@ -41407,7 +43605,8 @@ export interface TemplateTabs {
      *
      * [view]: https://developers.docusign.com/esign-rest-api/reference/Envelopes/EnvelopeRecipientTabs/create/#/definitions/view
      */
-    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */ View[] | undefined;
+    viewTabs?: /* This tab is used with the Approve tab to handle supplemental documents. */
+    View[] | undefined;
     /**
      * A list of
      * [Zip tabs][zip].
@@ -41442,7 +43641,8 @@ export interface TemplateUpdateSummary {
     /**
      * Provides lock information about an envelope that a user has locked.
      */
-    lockInformation?: /* This section provides information about envelope locks. */ EnvelopeLocks | undefined;
+    lockInformation?: /* This section provides information about envelope locks. */
+    EnvelopeLocks | undefined;
     /**
      * Shows the current purge state for the envelope. The possible values are:
      *
@@ -41589,7 +43789,7 @@ export interface Templates {
      */
     customFields?: /* An `accountCustomField` is an envelope custom field that you set at the account level.
           Applying custom fields enables account administators to group and manage envelopes.  */
-        AccountCustomFields | undefined;
+    AccountCustomFields | undefined;
     /**
      * The URI for retrieving custom fields.
      */
@@ -41659,11 +43859,13 @@ export interface Templates {
     /**
      * An array of attachment objects that provide information about the attachments that are associated with the envelope.
      */
-    envelopeAttachments?: /* Contains information about an attachment. */ Attachment[] | undefined;
+    envelopeAttachments?: /* Contains information about an attachment. */
+    Attachment[] | undefined;
     /**
      * An array containing information about the documents that are included in the envelope.
      */
-    envelopeDocuments?: /* This object contains details about the envelope document. */ EnvelopeDocument[] | undefined;
+    envelopeDocuments?: /* This object contains details about the envelope document. */
+    EnvelopeDocument[] | undefined;
     /**
      * The envelope ID of the envelope status that failed to post.
      */
@@ -41725,7 +43927,8 @@ export interface Templates {
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * When set to **true**, indicates that users have added comments to the envelope.
      */
@@ -41783,7 +43986,8 @@ export interface Templates {
     /**
      * Provides lock information about an envelope that a user has locked.
      */
-    lockInformation?: /* This section provides information about envelope locks. */ EnvelopeLocks | undefined;
+    lockInformation?: /* This section provides information about envelope locks. */
+    EnvelopeLocks | undefined;
     /**
      * When set to **true**, prevents senders from changing the contents of `emailBlurb` and `emailSubject` properties for the envelope.
      *
@@ -41833,7 +44037,8 @@ export interface Templates {
     /**
      * An array of PowerForm objects that contain information about any PowerForms that are included in the template.
      */
-    powerForms?: /* Contains details about a PowerForm. */ PowerForm[] | undefined;
+    powerForms?: /* Contains details about a PowerForm. */
+    PowerForm[] | undefined;
     /**
      * The date that a purge was completed.
      */
@@ -41946,7 +44151,8 @@ export interface Templates {
  */
 export interface Text {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**,
      * the text string in a document must match the case of the `anchorString` property for an anchor tab to be created. The default value is **false**.
@@ -41986,7 +44192,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -42001,7 +44208,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -42009,7 +44217,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -42049,7 +44258,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -42057,7 +44267,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -42065,7 +44276,8 @@ export interface Text {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -42073,7 +44285,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -42084,7 +44297,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -42095,7 +44309,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -42103,7 +44318,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the field appears normally while the recipient is adding or modifying the information in the field,
      * but the data is not visible (the characters are hidden by asterisks) to any other signer or the sender.
@@ -42117,7 +44333,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `concealValueOnDocument` property is editable.
      */
-    concealValueOnDocumentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    concealValueOnDocumentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -42125,7 +44342,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -42135,7 +44353,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -42144,7 +44363,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, disables the auto sizing of single line text boxes in the signing screen when the signer enters data.
      * If disabled users will only be able enter as much data as the text box can hold. By default this is false. This property only affects single line text boxes.
@@ -42153,7 +44373,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `disableAutoSize` property is editable.
      */
-    disableAutoSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    disableAutoSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a
@@ -42163,7 +44384,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -42209,11 +44431,13 @@ export interface Text {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -42239,7 +44463,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render.
      * The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
@@ -42248,7 +44473,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -42256,7 +44482,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -42264,7 +44491,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the formula
      * for calculating the value of
@@ -42299,7 +44527,8 @@ export interface Text {
     /**
      * Metadata indicating if the sender can edit the `formula` property.
      */
-    formulaMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formulaMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -42307,7 +44536,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, sets this as a payment tab. Can only be used with Text, Number, Formula, or List tabs. The value of the tab must be a number.
      */
@@ -42315,7 +44545,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `isPaymentAmount` property is editable.
      */
-    isPaymentAmountMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    isPaymentAmountMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -42323,7 +44554,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -42335,7 +44567,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional value that describes the maximum length of the property when the property is a string.
      */
@@ -42343,7 +44576,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `maxLength` property is editable.
      */
-    maxLengthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maxLengthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -42359,7 +44593,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The initial value of the tab when it was sent to the recipient.
      */
@@ -42367,7 +44602,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `originalValue` property is editable.
      */
-    originalValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    originalValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -42375,7 +44611,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -42389,11 +44626,13 @@ export interface Text {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and shared is true, information must be entered in this field to complete the envelope.
      */
@@ -42401,7 +44640,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `requireAll` property is editable.
      */
-    requireAllMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireAllMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -42409,7 +44649,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -42417,7 +44658,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender must populate the tab before an envelope can be sent using the template.
      *
@@ -42429,7 +44671,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `senderRequired` property is editable.
      */
-    senderRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this custom tab is shared.
      */
@@ -42437,7 +44680,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -42452,7 +44696,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -42460,7 +44705,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -42468,7 +44714,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -42479,7 +44726,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -42490,7 +44738,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -42498,7 +44747,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -42506,7 +44756,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -42514,7 +44765,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -42522,7 +44774,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -42530,7 +44783,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The message displayed if the custom tab fails input validation (either custom of embedded).
      */
@@ -42538,7 +44792,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `validationMessage` property is editable.
      */
-    validationMessageMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationMessageMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A regular expression used to validate input for the tab.
      */
@@ -42546,7 +44801,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `validationPattern` property is editable.
      */
-    validationPatternMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationPatternMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -42554,7 +44810,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -42562,7 +44819,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -42572,7 +44830,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -42580,7 +44839,8 @@ export interface Text {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -42625,7 +44885,8 @@ export interface TextCustomField {
 export interface Title {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the
      * `anchorString` property for an anchor tab to be created. The default value is **false**.
@@ -42665,7 +44926,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -42680,7 +44942,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -42688,7 +44951,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -42728,7 +44992,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -42736,7 +45001,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -42744,7 +45010,8 @@ export interface Title {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -42752,7 +45019,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -42763,7 +45031,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -42774,7 +45043,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -42782,7 +45052,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the field appears normally while the recipient is adding or modifying the information in the field, but the data is not visible
      * (the characters are hidden by asterisks) to any other signer or the sender.
@@ -42796,7 +45067,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `concealValueOnDocument` property is editable.
      */
-    concealValueOnDocumentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    concealValueOnDocumentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -42804,7 +45076,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -42814,7 +45087,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign generated custom tab ID for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -42823,7 +45097,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, disables the auto sizing of single line text boxes in the signing screen when the signer enters data.
      * If disabled users will only be able enter as much data as the text box can hold. By default this is false. This property only affects single line text boxes.
@@ -42832,7 +45107,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `disableAutoSize` property is editable.
      */
-    disableAutoSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    disableAutoSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId`
@@ -42842,7 +45118,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -42888,11 +45165,13 @@ export interface Title {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -42918,7 +45197,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`,
      * the group by which to place the guided form HTML block.
@@ -42927,7 +45207,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -42935,7 +45216,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -42943,7 +45225,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -42951,7 +45234,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -42959,7 +45243,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -42971,7 +45256,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional value that describes the maximum length of the property when the property is a string.
      */
@@ -42979,7 +45265,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `maxLength` property is editable.
      */
-    maxLengthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maxLengthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -42995,7 +45282,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The initial value of the tab when it was sent to the recipient.
      */
@@ -43003,7 +45291,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `originalValue` property is editable.
      */
-    originalValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    originalValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -43011,7 +45300,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs. Within an envelope, each `recipientId` must be unique,
      * but there is no uniqueness requirement across envelopes. For example, many envelopes assign the first recipient a `recipientId` of `1`.
@@ -43025,11 +45315,13 @@ export interface Title {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -43037,7 +45329,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -43052,7 +45345,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -43060,7 +45354,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -43068,7 +45363,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -43079,7 +45375,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -43090,7 +45387,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -43098,7 +45396,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -43106,7 +45405,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -43114,7 +45414,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -43122,7 +45423,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -43130,7 +45432,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -43138,7 +45441,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -43146,7 +45450,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -43156,7 +45461,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -43164,7 +45470,8 @@ export interface Title {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -43403,12 +45710,14 @@ export interface UserInformation {
      *
      * When setting a user's group, only the `groupId` is required.
      */
-    groupList?: /* This object contains information about a group. */ Group[] | undefined;
+    groupList?: /* This object contains information about a group. */
+    Group[] | undefined;
     /**
      * Specifies the email for the signing host. It is a Required element for In Person Signers recipient Type.
      * Maximum Length: 100 characters.
      */
-    homeAddress?: /* Contains address information. */ AddressInformation | undefined;
+    homeAddress?: /* Contains address information. */
+    AddressInformation | undefined;
     /**
      * The URI for retrieving the image of the user's initials.
      */
@@ -43533,7 +45842,8 @@ export interface UserInformation {
      */
     userType?: string | undefined;
 
-    workAddress?: /* Contains address information. */ AddressInformation | undefined;
+    workAddress?: /* Contains address information. */
+    AddressInformation | undefined;
 }
 
 /**
@@ -43610,7 +45920,8 @@ export interface UserProfile {
     /**
      * The user's address.
      */
-    address?: /* Contains address information. */ AddressInformation | undefined;
+    address?: /* Contains address information. */
+    AddressInformation | undefined;
     /**
      * Indicates the authentication methods that the user uses. These properties cannot be modified by the PUT operation.
      */
@@ -43669,7 +45980,8 @@ export interface UserProfiles {
     /**
      * The user's address.
      */
-    address?: /* Contains address information. */ AddressInformation | undefined;
+    address?: /* Contains address information. */
+    AddressInformation | undefined;
     /**
      * Indicates the authentication methods that the user uses. These properties cannot be modified by the PUT operation.
      */
@@ -44205,7 +46517,7 @@ export interface UserSettingsInformation {
     signerEmailNotifications?: /* An array of email notifications that specifies the email the user receives when they are a sender.
         When the specific email notification is set to true, the user receives those types of email notifications from DocuSign.
         The user inherits the default account sender email notification settings when the user is created. */
-        SignerEmailNotifications | undefined;
+    SignerEmailNotifications | undefined;
     /**
      * When **true**, this user gets supplemental documents when downloading documents.
      */
@@ -44991,11 +47303,13 @@ export interface Users {
      *
      * When setting a user's group, only the `groupId` is required.
      */
-    groupList?: /* This object contains information about a group. */ Group[] | undefined;
+    groupList?: /* This object contains information about a group. */
+    Group[] | undefined;
     /**
      * The user's physical home address.
      */
-    homeAddress?: /* Contains address information. */ AddressInformation | undefined;
+    homeAddress?: /* Contains address information. */
+    AddressInformation | undefined;
     /**
      * The URI for retrieving the image of the user's initials.
      */
@@ -45124,7 +47438,8 @@ export interface Users {
     /**
      * The user's physical work address.
      */
-    workAddress?: /* Contains address information. */ AddressInformation | undefined;
+    workAddress?: /* Contains address information. */
+    AddressInformation | undefined;
 }
 
 export interface UsersResponse {
@@ -45164,7 +47479,8 @@ export interface UsersResponse {
 export interface View {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**, the text string in a document must match the case of the `anchorString` property for an
      * anchor tab to be created. The default value is **false**.
@@ -45204,7 +47520,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -45219,7 +47536,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -45227,7 +47545,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -45267,7 +47586,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -45275,7 +47595,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -45283,7 +47604,8 @@ export interface View {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -45291,7 +47613,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -45302,7 +47625,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -45313,7 +47637,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -45321,7 +47646,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text to display on the button.
      */
@@ -45329,7 +47655,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `buttonText` property is editable.
      */
-    buttonTextMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    buttonTextMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -45337,7 +47664,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -45347,7 +47675,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient. When used,
      * the new tab inherits all the custom tab properties.
@@ -45356,7 +47685,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647. The value is encoded as a string without commas.
      * The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope. Tab definitions include a `documentId` property that specifies
@@ -45366,7 +47696,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -45412,11 +47743,13 @@ export interface View {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -45442,7 +47775,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`,
      * the group by which to place the guided form HTML block.
@@ -45451,7 +47785,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -45459,7 +47794,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -45467,7 +47803,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -45475,7 +47812,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -45483,7 +47821,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -45503,7 +47842,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique id for the recipient. It is used by the tab element to indicate which recipient is to sign the Document.
      */
@@ -45516,11 +47856,13 @@ export interface View {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient must click the **View** button for the supporting document prior to completing the signing process.
      */
@@ -45528,7 +47870,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient must read through the document.
      */
@@ -45547,7 +47890,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the
      * `Tab.TabGroupLabels` array.
@@ -45556,7 +47900,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -45564,7 +47909,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -45575,7 +47921,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -45586,7 +47933,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -45594,7 +47942,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -45602,7 +47951,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -45610,7 +47960,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -45618,7 +47969,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -45626,7 +47978,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -45634,7 +47987,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -45644,7 +47998,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -45652,7 +48007,8 @@ export interface View {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 export interface ViewUrl {
@@ -45755,7 +48111,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `accessCode` property is editable. Read only.
      */
-    accessCodeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    accessCodeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. When set to **true**, the access code will be added to the email sent to the recipient. This nullifies the security measure of `accessCode`
      * on the recipient.
@@ -45834,7 +48191,8 @@ export interface Witness {
     /**
      * Reserved for DocuSign.
      */
-    deliveryMethodMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    deliveryMethodMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     designatorId?: string | undefined;
 
@@ -45854,7 +48212,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `email` property is editable. Read only.
      */
-    emailMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    emailMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional complex type that sets a specific email subject and body for this recipient's notification email.
      *
@@ -45912,7 +48271,8 @@ export interface Witness {
     /**
      * Reserved for DocuSign.
      */
-    faxNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    faxNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The recipient's first name. Maximum Length: 50 characters.
      */
@@ -45920,7 +48280,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `firstame` property is editable. Read only.
      */
-    firstNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    firstNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -45928,7 +48289,8 @@ export interface Witness {
     /**
      * Reserved for DocuSign.
      */
-    fullNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fullNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The name of the authentication check to use. This value must match one of the authentication types that the account uses.
      * The names of these authentication types appear in the web console sending export interface in the Identify list for a recipient.
@@ -45947,7 +48309,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `idCheckConfigurationName` property is editable. Read only.
      */
-    idCheckConfigurationNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    idCheckConfigurationNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An object that contains input information related to a recipient ID check.
      */
@@ -45976,7 +48339,8 @@ export interface Witness {
     /**
      * Reserved for DocuSign.
      */
-    isBulkRecipientMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    isBulkRecipientMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The recipient's last name.
      */
@@ -45984,7 +48348,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `lastName` property is editable. Read only.
      */
-    lastNameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lastNameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -46002,7 +48367,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A note sent to the recipient in the signing email.
      * This note is unique to this recipient.
@@ -46017,7 +48383,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `note` property is editable. Read only.
      */
-    noteMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    noteMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When `idCheckConfigurationName` is set to `Phone Auth $`, you use this complex type to provide the recipient authentication method details.
      * It contains the following elements:
@@ -46082,7 +48449,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `recipientType` property is editable. Read only.
      */
-    recipientTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the recipient is required to use the specified ID check method (including Phone and SMS authentication) to validate their identity.
      */
@@ -46090,7 +48458,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `requireIdLookup` property is editable. Read only.
      */
-    requireIdLookupMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireIdLookupMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * By default, DocuSign signers create electronic signatures. This field can be used to require the signer to use a SAFE-BioPharma digital certificate for signing.
      *
@@ -46121,7 +48490,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `routingOrder` property is editable. Read only.
      */
-    routingOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    routingOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The UTC DateTime when the envelope was sent. Read only.
      */
@@ -46144,7 +48514,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `signInEachLocation` property is editable. Read only.
      */
-    signInEachLocationMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signInEachLocationMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The ID of the [signing group](https://support.docusign.com/en/guides/ndse-user-guide-signing-groups).
      *
@@ -46156,7 +48527,8 @@ export interface Witness {
     /**
      * Metadata that indicates whether the `signingGroupId` property is editable. Read only.
      */
-    signingGroupIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    signingGroupIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional. The name of the signing group.
      *
@@ -46651,7 +49023,8 @@ export interface WorkspaceList {
     /**
      * A list of workspaces.
      */
-    workspaces?: /* A DocuSign workspace is a collaboration area for sharing files and data. */ Workspace[] | undefined;
+    workspaces?: /* A DocuSign workspace is a collaboration area for sharing files and data. */
+    Workspace[] | undefined;
 }
 
 /**
@@ -46887,7 +49260,8 @@ export interface Workspaces {
 export interface Zip {
     anchorAllowWhiteSpaceInCharacters?: string | undefined;
 
-    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorAllowWhiteSpaceInCharactersMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are placed. When **true**,
      * the text string in a document must match the case of the `anchorString` property for an anchor tab to be created. The default value is **false**.
@@ -46927,7 +49301,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `anchorCaseSensitive` property is editable.
      */
-    anchorCaseSensitiveMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorCaseSensitiveMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property controls how [anchor tabs][AnchorTabs] are aligned in relation to the anchor text. Possible values are :
      *
@@ -46942,7 +49317,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `anchorHorizontalAlignment` property is editable.
      */
-    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorHorizontalAlignmentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this tab is ignored if the `anchorString` is not found in the document.
      */
@@ -46950,7 +49326,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `anchorIgnoreIfNotPresent` property is editable.
      */
-    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorIgnoreIfNotPresentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the text string in a document must match the value of the `anchorString` property in its entirety for an [anchor tab][AnchorTab] to be created.
      * The default value is **false**.
@@ -46990,7 +49367,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `anchorMatchWholeWord` property is editable.
      */
-    anchorMatchWholeWordMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorMatchWholeWordMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the string to find in the document and use as the basis for tab placement.
      */
@@ -46998,7 +49376,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `anchorString` property is editable.
      */
-    anchorStringMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorStringMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -47006,7 +49385,8 @@ export interface Zip {
     /**
      * Reserved for DocuSign.
      */
-    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorTabProcessorVersionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the units of the X and Y offset. Units may be pixels, millimeters, centimeters, or inches.
      */
@@ -47014,7 +49394,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `anchorUnits` property is editable.
      */
-    anchorUnitsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorUnitsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the X axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -47025,7 +49406,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `anchorXOffset` property is editable.
      */
-    anchorXOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorXOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the Y axis location of the tab in `anchorUnits` relative to the `anchorString`.
      *
@@ -47036,7 +49418,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `anchorYOffset` property is editable.
      */
-    anchorYOffsetMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    anchorYOffsetMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is bold.
      */
@@ -47044,7 +49427,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `bold` property is editable.
      */
-    boldMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    boldMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the field appears normally while the recipient is adding or modifying the information in the field,
      * but the data is not visible (the characters are hidden by asterisks) to any other signer or the sender.
@@ -47058,7 +49442,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `concealValueOnDocument` property is editable.
      */
-    concealValueOnDocumentMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    concealValueOnDocumentMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields this is the `tabLabel` of the parent tab that controls this tab's visibility.
      */
@@ -47066,7 +49451,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `conditionalParentLabel` property is editable.
      */
-    conditionalParentLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * For conditional fields, this is the value of the parent tab that controls the tab's visibility.
      *
@@ -47076,7 +49462,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `conditionalParentValue` property is editable.
      */
-    conditionalParentValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    conditionalParentValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The DocuSign-generated custom tab id for the custom tab to be applied. This can only be used when adding new tabs for a recipient.
      * When used, the new tab inherits all the custom tab properties.
@@ -47085,7 +49472,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `customTabId` property is editable.
      */
-    customTabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    customTabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, disables the auto sizing of single line text boxes in the signing screen when the signer enters data.
      * If disabled users will only be able enter as much data as the text box can hold. By default this is false.
@@ -47095,7 +49483,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `disableAutoSize` property is editable.
      */
-    disableAutoSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    disableAutoSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The `documentId` is set by the API client. It is an integer that falls between `1` and 2,147,483,647.
      * The value is encoded as a string without commas. The values `1`, `2`, `3`, and so on are typically used to identify the first few documents in an envelope.
@@ -47105,7 +49494,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `documentId` property is editable.
      */
-    documentIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    documentIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This object describes errors that occur. It is only valid for responses and ignored in requests.
      */
@@ -47151,11 +49541,13 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `fontColor` property is editable.
      */
-    fontColorMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontColorMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `font` property is editable.
      */
-    fontMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The font size used for the information in the tab. Possible values are:
      *
@@ -47181,7 +49573,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `fontSize` property is editable.
      */
-    fontSizeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    fontSizeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which the guided form HTML should render. The order is relative to the `formPageLabel`, the group by which to place the guided form HTML block.
      */
@@ -47189,7 +49582,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `formOrder` property is editable.
      */
-    formOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A string specifying the group in which to place the guided form HTML. Each group displays as a separate guided forms page in the signing experience.
      */
@@ -47197,7 +49591,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `formPageLabel` property is editable.
      */
-    formPageLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An integer specifying the order in which to present the guided form pages.
      */
@@ -47205,7 +49600,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `fromPageNumber` property is editable.
      */
-    formPageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    formPageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The height of the tab in pixels.
      */
@@ -47213,7 +49609,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `height` property is editable.
      */
-    heightMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    heightMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is italic.
      */
@@ -47221,7 +49618,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `italic` property is editable.
      */
-    italicMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    italicMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Reserved for DocuSign.
      */
@@ -47233,7 +49631,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `locked` property is editable.
      */
-    lockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    lockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An optional value that describes the maximum length of the property when the property is a string.
      */
@@ -47241,7 +49640,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `maxLength` property is editable.
      */
-    maxLengthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    maxLengthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Contains the information necessary to map the tab to a field in SalesForce.
      */
@@ -47257,7 +49657,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `name` property is editable. Read only.
      */
-    nameMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    nameMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The initial value of the tab when it was sent to the recipient.
      */
@@ -47265,7 +49666,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `originalValue` property is editable.
      */
-    originalValueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    originalValueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The page number on which the tab is located. For supplemental documents, this value must be `1`.
      */
@@ -47273,7 +49675,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `pageNumber` property is editable.
      */
-    pageNumberMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    pageNumberMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A local reference that senders use to map recipients to other objects, such as specific document tabs.
      * Within an envelope, each `recipientId` must be unique, but there is no uniqueness requirement across envelopes.
@@ -47288,11 +49691,13 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `recipientIdGuid` property is editable.
      */
-    recipientIdGuidMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdGuidMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Metadata that indicates whether the `recipientId` property is editable.
      */
-    recipientIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    recipientIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true** and shared is true, information must be entered in this field to complete the envelope.
      */
@@ -47300,7 +49705,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `requireAll` property is editable.
      */
-    requireAllMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireAllMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the signer is required to fill out this tab.
      */
@@ -47308,7 +49714,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `required` property is editable.
      */
-    requiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Optional element for field markup. When set to **true**, the signer is required to initial when they modify a shared field.
      */
@@ -47316,7 +49723,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `requireInitialOnSharedChange` property is editable.
      */
-    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    requireInitialOnSharedChangeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender must populate the tab before an envelope can be sent using the template.
      *
@@ -47328,7 +49736,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `senderRequired` property is editable.
      */
-    senderRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    senderRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, this custom tab is shared.
      */
@@ -47336,7 +49745,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `shared` property is editable.
      */
-    sharedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    sharedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 
     smartContractInformation?: SmartContractInformation | undefined;
     /**
@@ -47351,7 +49761,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `status` property is editable.
      */
-    statusMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    statusMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * An array of tab group labels that uniquely identify tab groups. To assign a tab to a `tabGroup`, you assign the `TabGroupLabel` to the `Tab.TabGroupLabels` array.
      */
@@ -47359,7 +49770,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `tabGroupLabels` property is editable.
      */
-    tabGroupLabelsMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabGroupLabelsMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The unique identifier for the tab.
      */
@@ -47367,7 +49779,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `tabId` property is editable.
      */
-    tabIdMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabIdMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The label associated with the tab. This value may be an empty string.
      * If no value is provided, the tab type is used as the value.
@@ -47378,7 +49791,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `tabLabel` property is editable.
      */
-    tabLabelMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabLabelMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A positive integer that sets the order the tab is navigated to during signing.
      *
@@ -47389,7 +49803,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `tabOrder` property is editable.
      */
-    tabOrderMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabOrderMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Indicates the type of tab (for example, `signHere` or `initialHere`).
      */
@@ -47397,7 +49812,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `tabType` property is editable.
      */
-    tabTypeMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    tabTypeMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender cannot change any attributes of the recipient. Used only when working with template recipients.
      */
@@ -47405,7 +49821,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `templateLocked` property is editable.
      */
-    templateLockedMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateLockedMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the sender may not remove the recipient. Used only when working with template recipients.
      */
@@ -47413,7 +49830,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `templateRequired` property is editable.
      */
-    templateRequiredMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    templateRequiredMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The text of a tooltip that appears when a user hovers over a form field or tab.
      */
@@ -47421,7 +49839,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `toolTip` property is editable.
      */
-    toolTipMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    toolTipMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, the information in the tab is underlined.
      */
@@ -47429,7 +49848,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `underline` property is editable.
      */
-    underlineMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    underlineMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * When set to **true**, ZIP+4 format is used.
      */
@@ -47437,7 +49857,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `useDash4` property is editable.
      */
-    useDash4Metadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    useDash4Metadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The message displayed if the custom tab fails input validation (either custom of embedded).
      */
@@ -47445,7 +49866,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `validationMessage` property is editable.
      */
-    validationMessageMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationMessageMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * A regular expression used to validate input for the tab.
      */
@@ -47453,7 +49875,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `validationPattern` property is editable.
      */
-    validationPatternMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    validationPatternMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * Specifies the value of the tab.
      */
@@ -47461,7 +49884,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `value` property is editable.
      */
-    valueMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    valueMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * The width of the tab in pixels.
      */
@@ -47469,7 +49893,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `width` property is editable.
      */
-    widthMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    widthMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This property indicates the horizontal offset of the object on the page.
      * DocuSign uses 72 DPI when determining position.
@@ -47479,7 +49904,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `xPosition` property is editable.
      */
-    xPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    xPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
     /**
      * This indicates the vertical offset of the object on the page. DocuSign uses 72 DPI when determining position.
      */
@@ -47487,7 +49913,8 @@ export interface Zip {
     /**
      * Metadata that indicates whether the `yPosition` property is editable.
      */
-    yPositionMetadata?: /* Metadata about a property. */ PropertyMetadata | undefined;
+    yPositionMetadata?: /* Metadata about a property. */
+    PropertyMetadata | undefined;
 }
 
 /**
@@ -47501,11 +49928,13 @@ export interface Folders {
     /**
      * A list of envelopes in this folder.
      */
-    envelopes?: /*  This object describes an envelope. */ EnvelopeSummary[] | undefined;
+    envelopes?: /*  This object describes an envelope. */
+    EnvelopeSummary[] | undefined;
     /**
      * A list of folder objects.
      */
-    folders?: /* This object contains details about a folder. */ Folder[] | undefined;
+    folders?: /* This object contains details about a folder. */
+    Folder[] | undefined;
     /**
      * The URI for the next chunk of records based on the search request. It is `null` if this is the last set of results for the search.
      */

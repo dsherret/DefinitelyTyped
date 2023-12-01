@@ -16,12 +16,16 @@ declare namespace RewireInterfaces {
          * Returns a function which - when being called - sets obj, executes the given callback and reverts obj. If callback returns a promise, obj is only reverted after
          * the promise has been resolved or rejected. For your convenience the returned function passes the received promise through.
          */
-        __with__(obj: { [variable: string]: any }): (callback: () => any) => any;
+        __with__(obj: {
+            [variable: string]: any;
+        }): (callback: () => any) => any;
     }
 }
 
 /**
  * Returns a rewired version of the module found at filename. Use rewire() exactly like require().
  */
-declare function rewire<T = { [key: string]: any }>(filename: string): RewireInterfaces.RewiredModule & T;
+declare function rewire<T = { [key: string]: any }>(
+    filename: string,
+): RewireInterfaces.RewiredModule & T;
 export = rewire;

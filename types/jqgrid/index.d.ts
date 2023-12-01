@@ -18,7 +18,15 @@ interface JQueryJqGridColumn {
      * @param rdata the data row which will be inserted in the row. This parameter is array of type name:value, where name is the name in colModel
      * @returns {}
      */
-    cellattr?: ((rowId: any, val: any, rowObject: any, cm: any, rdata: any) => string) | undefined;
+    cellattr?:
+        | ((
+              rowId: any,
+              val: any,
+              rowObject: any,
+              cm: any,
+              rdata: any,
+          ) => string)
+        | undefined;
 
     /**
      * This option allow to add classes to the column. If more than one class will be used a space should be set.
@@ -61,7 +69,11 @@ interface JQueryJqGridColumn {
         | "checkbox"
         | "select"
         | "actions"
-        | ((cellvalue: any, options: { rowId: any; colModel: any }, rowObject: any) => any)
+        | ((
+              cellvalue: any,
+              options: { rowId: any; colModel: any },
+              rowObject: any,
+          ) => any)
         | undefined;
 
     /**
@@ -341,7 +353,9 @@ interface JQueryJqGridOptions {
      * @param e  is the event object
      * @returns {}
      */
-    onRightClickRow?: ((rowid: any, iRow: number, iCol: number, e: Event) => void) | undefined;
+    onRightClickRow?:
+        | ((rowid: any, iRow: number, iCol: number, e: Event) => void)
+        | undefined;
 
     /**
      * Raised immediately after row was clicked.
@@ -408,7 +422,12 @@ interface JQuery {
      * @param extraparam an array of type name: value. When set these values are posted along with the other values to the server.
      * @returns {}
      */
-    saveRow(rowid: string, successfunc?: (response: any) => boolean, url?: string, extraparam?: any): void;
+    saveRow(
+        rowid: string,
+        successfunc?: (response: any) => boolean,
+        url?: string,
+        extraparam?: any,
+    ): void;
 
     /**
      * Saves the edited row.
@@ -418,7 +437,12 @@ interface JQuery {
      * @param extraparam
      * @returns {}
      */
-    saveRow(rowid: string, successfunc?: boolean, url?: string, extraparam?: any): void;
+    saveRow(
+        rowid: string,
+        successfunc?: boolean,
+        url?: string,
+        extraparam?: any,
+    ): void;
 
     /**
      * Sets a particular parameter.

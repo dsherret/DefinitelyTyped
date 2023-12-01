@@ -21,19 +21,25 @@ export interface PlotParams {
      * @param figure Object with three keys corresponding to input props: data, layout and frames.
      * @param graphDiv Reference to the DOM node into which the figure was rendered.
      */
-    onInitialized?: ((figure: Readonly<Figure>, graphDiv: Readonly<HTMLElement>) => void) | undefined;
+    onInitialized?:
+        | ((figure: Readonly<Figure>, graphDiv: Readonly<HTMLElement>) => void)
+        | undefined;
     /**
      * Callback executed when when a plot is updated due to new data or layout, or when user interacts with a plot.
      * @param figure Object with three keys corresponding to input props: data, layout and frames.
      * @param graphDiv Reference to the DOM node into which the figure was rendered.
      */
-    onUpdate?: ((figure: Readonly<Figure>, graphDiv: Readonly<HTMLElement>) => void) | undefined;
+    onUpdate?:
+        | ((figure: Readonly<Figure>, graphDiv: Readonly<HTMLElement>) => void)
+        | undefined;
     /**
      * Callback executed when component unmounts, before Plotly.purge strips the graphDiv of all private attributes.
      * @param figure Object with three keys corresponding to input props: data, layout and frames.
      * @param graphDiv Reference to the DOM node into which the figure was rendered.
      */
-    onPurge?: ((figure: Readonly<Figure>, graphDiv: Readonly<HTMLElement>) => void) | undefined;
+    onPurge?:
+        | ((figure: Readonly<Figure>, graphDiv: Readonly<HTMLElement>) => void)
+        | undefined;
     /**
      * Callback executed when a plotly.js API method rejects
      * @param err Error
@@ -63,33 +69,58 @@ export interface PlotParams {
     onAfterExport?: (() => void) | undefined;
     onAfterPlot?: (() => void) | undefined;
     onAnimated?: (() => void) | undefined;
-    onAnimatingFrame?: ((event: Readonly<Plotly.FrameAnimationEvent>) => void) | undefined;
+    onAnimatingFrame?:
+        | ((event: Readonly<Plotly.FrameAnimationEvent>) => void)
+        | undefined;
     onAnimationInterrupted?: (() => void) | undefined;
     onAutoSize?: (() => void) | undefined;
     onBeforeExport?: (() => void) | undefined;
-    onBeforeHover?: ((event: Readonly<Plotly.PlotMouseEvent>) => boolean) | undefined;
-    onButtonClicked?: ((event: Readonly<Plotly.ButtonClickEvent>) => void) | undefined;
+    onBeforeHover?:
+        | ((event: Readonly<Plotly.PlotMouseEvent>) => boolean)
+        | undefined;
+    onButtonClicked?:
+        | ((event: Readonly<Plotly.ButtonClickEvent>) => void)
+        | undefined;
     onClick?: ((event: Readonly<Plotly.PlotMouseEvent>) => void) | undefined;
-    onClickAnnotation?: ((event: Readonly<Plotly.ClickAnnotationEvent>) => void) | undefined;
+    onClickAnnotation?:
+        | ((event: Readonly<Plotly.ClickAnnotationEvent>) => void)
+        | undefined;
     onDeselect?: (() => void) | undefined;
     onDoubleClick?: (() => void) | undefined;
     onFramework?: (() => void) | undefined;
     onHover?: ((event: Readonly<Plotly.PlotHoverEvent>) => void) | undefined;
-    onLegendClick?: ((event: Readonly<Plotly.LegendClickEvent>) => boolean) | undefined;
-    onLegendDoubleClick?: ((event: Readonly<Plotly.LegendClickEvent>) => boolean) | undefined;
-    onRelayout?: ((event: Readonly<Plotly.PlotRelayoutEvent>) => void) | undefined;
-    onRestyle?: ((event: Readonly<Plotly.PlotRestyleEvent>) => void) | undefined;
+    onLegendClick?:
+        | ((event: Readonly<Plotly.LegendClickEvent>) => boolean)
+        | undefined;
+    onLegendDoubleClick?:
+        | ((event: Readonly<Plotly.LegendClickEvent>) => boolean)
+        | undefined;
+    onRelayout?:
+        | ((event: Readonly<Plotly.PlotRelayoutEvent>) => void)
+        | undefined;
+    onRestyle?:
+        | ((event: Readonly<Plotly.PlotRestyleEvent>) => void)
+        | undefined;
     onRedraw?: (() => void) | undefined;
-    onSelected?: ((event: Readonly<Plotly.PlotSelectionEvent>) => void) | undefined;
-    onSelecting?: ((event: Readonly<Plotly.PlotSelectionEvent>) => void) | undefined;
-    onSliderChange?: ((event: Readonly<Plotly.SliderChangeEvent>) => void) | undefined;
-    onSliderEnd?: ((event: Readonly<Plotly.SliderEndEvent>) => void) | undefined;
-    onSliderStart?: ((event: Readonly<Plotly.SliderStartEvent>) => void) | undefined;
+    onSelected?:
+        | ((event: Readonly<Plotly.PlotSelectionEvent>) => void)
+        | undefined;
+    onSelecting?:
+        | ((event: Readonly<Plotly.PlotSelectionEvent>) => void)
+        | undefined;
+    onSliderChange?:
+        | ((event: Readonly<Plotly.SliderChangeEvent>) => void)
+        | undefined;
+    onSliderEnd?:
+        | ((event: Readonly<Plotly.SliderEndEvent>) => void)
+        | undefined;
+    onSliderStart?:
+        | ((event: Readonly<Plotly.SliderStartEvent>) => void)
+        | undefined;
     onTransitioning?: (() => void) | undefined;
     onTransitionInterrupted?: (() => void) | undefined;
     onUnhover?: ((event: Readonly<Plotly.PlotMouseEvent>) => void) | undefined;
     onWebGlContextLost?: (() => void) | undefined;
 }
 
-export default class Plot extends React.PureComponent<PlotParams> {
-}
+export default class Plot extends React.PureComponent<PlotParams> {}

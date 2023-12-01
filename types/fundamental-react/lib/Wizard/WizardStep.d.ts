@@ -17,7 +17,15 @@ export interface WizardStepProps {
     /** Menu to show instead of triggering a click even. Used mostly for stacking steps. */
     menu?: React.ReactNode;
     /** (standalone only) Step appearance modifiers. */
-    modifiers?: Array<"completed" | "current" | "upcoming" | "no-label" | "stacked" | "stacked-top" | "active">;
+    modifiers?: Array<
+        | "completed"
+        | "current"
+        | "upcoming"
+        | "no-label"
+        | "stacked"
+        | "stacked-top"
+        | "active"
+    >;
     /** (integrated only) Label to use on the next step button. */
     nextLabel?: string;
     /** Label to use as the optional text in step header. */

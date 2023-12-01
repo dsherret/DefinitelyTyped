@@ -23,7 +23,11 @@ describe("mock-when test", () => {
     it("Supports jest matchers:", () => {
         const fn = jest.fn();
         when(fn)
-            .calledWith(expect.anything(), expect.any(Number), expect.arrayContaining([false]))
+            .calledWith(
+                expect.anything(),
+                expect.any(Number),
+                expect.arrayContaining([false]),
+            )
             .mockReturnValue("yay!");
 
         const result = fn("whatever", 100, [true, false]);
@@ -60,7 +64,9 @@ describe("mock-when test", () => {
     it("should support resetWhenMocks when implementation mocked", () => {
         const fn = jest.fn();
 
-        when(fn).mockImplementation(() => 1).resetWhenMocks();
+        when(fn)
+            .mockImplementation(() => 1)
+            .resetWhenMocks();
     });
 
     it("Supports compound declarations:", () => {
@@ -169,7 +175,7 @@ describe("mock-when test", () => {
     });
 
     it("should support resetAllWhenMocks", () => {
-        const fn = jest.fn(_ => "initial");
+        const fn = jest.fn((_) => "initial");
 
         when(fn).expectCalledWith(1).mockReturnValueOnce("x");
 
@@ -203,7 +209,9 @@ describe("mock-when test", () => {
     });
 
     it("allows mocked modules", () => {
-        when(toBeMocked).calledWith("another one").mockReturnValue("another one");
+        when(toBeMocked)
+            .calledWith("another one")
+            .mockReturnValue("another one");
 
         expect(toBeMocked("another one")).toEqual("another one");
     });
@@ -212,12 +220,14 @@ describe("mock-when test", () => {
         const fn = jest.fn<string, [{ [key: string]: boolean }, number]>();
         const allValuesTrue = when((arg: { [key: string]: boolean }) =>
             Object.keys(arg)
-                .map(k => arg[k])
-                .every(Boolean)
+                .map((k) => arg[k])
+                .every(Boolean),
         );
         const numberDivisibleBy3 = when((arg: number) => arg % 3 === 0);
 
-        when(fn).calledWith(allValuesTrue, numberDivisibleBy3).mockReturnValue("yay!");
+        when(fn)
+            .calledWith(allValuesTrue, numberDivisibleBy3)
+            .mockReturnValue("yay!");
 
         expect(fn({ foo: true, bar: true }, 9)).toEqual("yay!");
         expect(fn({ foo: true, bar: false }, 9)).toEqual(undefined);
@@ -239,8 +249,8 @@ describe("mock-when test", () => {
         const fn = jest.fn<string, [{ [key: string]: boolean }, number]>();
         const allValuesTrue = when((arg: { [key: string]: boolean }) =>
             Object.keys(arg)
-                .map(k => arg[k])
-                .every(Boolean)
+                .map((k) => arg[k])
+                .every(Boolean),
         );
 
         when(fn).calledWith(allValuesTrue, 10).mockReturnValue("yay!");
@@ -254,7 +264,9 @@ describe("mock-when test", () => {
 
     it("supports allArgs", () => {
         const fn = jest.fn<string, [] | [number] | [number, number]>();
-        const allArgsMatcher = when.allArgs((args: number[]) => args.length === 1);
+        const allArgsMatcher = when.allArgs(
+            (args: number[]) => args.length === 1,
+        );
 
         when(fn).calledWith(allArgsMatcher).mockReturnValue("yay!");
 
@@ -271,13 +283,19 @@ describe("mock-when test", () => {
         // @ts-expect-error
         when.allArgs((args: number) => args > 0);
 
-        when.allArgs((args: number[], equals) => args.length > 0 && equals(args, expect.arrayContaining([123])));
+        when.allArgs(
+            (args: number[], equals) =>
+                args.length > 0 && equals(args, expect.arrayContaining([123])),
+        );
     });
 
     it("supports default methods", () => {
         const fn = jest.fn<string, [string]>();
 
-        when(fn).calledWith("foo").mockReturnValue("special").defaultReturnValue("default");
+        when(fn)
+            .calledWith("foo")
+            .mockReturnValue("special")
+            .defaultReturnValue("default");
 
         expect(fn("foo")).toEqual("special");
         expect(fn("bar")).toEqual("default");
@@ -286,6 +304,9 @@ describe("mock-when test", () => {
             throw new Error(`Wrong args: ${JSON.stringify(args, null, 2)}`);
         }
 
-        when(fn).calledWith("foo").mockReturnValue("bar").defaultImplementation(unsupportedCallError);
+        when(fn)
+            .calledWith("foo")
+            .mockReturnValue("bar")
+            .defaultImplementation(unsupportedCallError);
     });
 });

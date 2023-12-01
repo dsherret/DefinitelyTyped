@@ -6,7 +6,9 @@ import * as core from "express-serve-static-core";
 
 export = historyApiFallback;
 
-declare function historyApiFallback(options?: historyApiFallback.Options): core.RequestHandler;
+declare function historyApiFallback(
+    options?: historyApiFallback.Options,
+): core.RequestHandler;
 
 declare namespace historyApiFallback {
     interface Options {

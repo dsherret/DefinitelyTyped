@@ -229,7 +229,11 @@ posix.openlog("foobar", { xxx: 1 }, "local0");
 posix.openlog("foobar", {}, "xxx");
 
 // $ExpectType void
-posix.openlog("test-node-syslog", { cons: true, ndelay: true, pid: true }, "local0");
+posix.openlog(
+    "test-node-syslog",
+    { cons: true, ndelay: true, pid: true },
+    "local0",
+);
 
 // $ExpectType LogMask
 posix.setlogmask({ info: 1, debug: 1 });

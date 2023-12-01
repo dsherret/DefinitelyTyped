@@ -5,7 +5,10 @@ declare namespace Oidc {
 
     class DefaultPromise {
         constructor(promise: any);
-        then(successCallback: (value?: any) => void, errorCallback: (reason?: any) => void): DefaultPromise;
+        then(
+            successCallback: (value?: any) => void,
+            errorCallback: (reason?: any) => void,
+        ): DefaultPromise;
         catch(errorCallback: () => void): DefaultPromise;
     }
 
@@ -25,7 +28,7 @@ declare namespace Oidc {
     }
 
     interface OidcClient_Static {
-        new(settings: OidcClientSettings): OidcTokenManager;
+        new (settings: OidcClientSettings): OidcTokenManager;
     }
 
     interface OidcClient {
@@ -38,9 +41,20 @@ declare namespace Oidc {
         loadAuthorizationEndpoint(): void;
         createTokenRequestAsync(): DefaultPromise;
         createLogoutRequestAsync(id_token_hint: string): DefaultPromise;
-        validateIdTokenAsync(id_token: string, nonce: string, access_token: string): DefaultPromise;
-        validateAccessTokenAsync(id_token_contents: string, access_token: string): DefaultPromise;
-        validateIdTokenAndAccessTokenAsync(id_token: string, nonce: string, access_token: string): DefaultPromise;
+        validateIdTokenAsync(
+            id_token: string,
+            nonce: string,
+            access_token: string,
+        ): DefaultPromise;
+        validateAccessTokenAsync(
+            id_token_contents: string,
+            access_token: string,
+        ): DefaultPromise;
+        validateIdTokenAndAccessTokenAsync(
+            id_token: string,
+            nonce: string,
+            access_token: string,
+        ): DefaultPromise;
         processResponseAsync(queryString: string): DefaultPromise;
     }
 
@@ -74,7 +88,7 @@ declare namespace Oidc {
     }
 
     interface OidcTokenManager_Static {
-        new(settings?: OidcTokenManagerSettings): OidcTokenManager;
+        new (settings?: OidcTokenManagerSettings): OidcTokenManager;
         setPromiseFactory(promiseFactory: DefaultPromiseFactory): void;
         setHttpRequest(httpRequest: DefaultHttpRequest): void;
     }

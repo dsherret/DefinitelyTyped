@@ -20,7 +20,7 @@ Diff.diffChars(one, other, (err, value) => {
 });
 
 const diffArraysResult = Diff.diffArrays(["a", "b", "c"], ["a", "c", "d"]);
-diffArraysResult.forEach(result => {
+diffArraysResult.forEach((result) => {
     result.added; // $ExpectType boolean | undefined
     result.removed; // $ExpectType boolean | undefined
     result.value; // $ExpectType string[]
@@ -40,7 +40,7 @@ const arrayOptions: Diff.ArrayOptions<DiffObj, DiffObj> = {
     },
 };
 const arrayChanges = Diff.diffArrays([a, b, c], [a, b, d], arrayOptions);
-arrayChanges.forEach(result => {
+arrayChanges.forEach((result) => {
     result.added; // $ExpectType boolean | undefined
     result.removed; // $ExpectType boolean | undefined
     result.value; // $ExpectType DiffObj[]
@@ -64,7 +64,7 @@ changes = obj.diff(one, other);
 examineChanges(changes);
 
 function examineChanges(diff: Diff.Change[]) {
-    diff.forEach(part => {
+    diff.forEach((part) => {
         part.added; // $ExpectType boolean | undefined
         part.removed; // $ExpectType boolean | undefined
         part.value; // $ExpectType string
@@ -72,23 +72,42 @@ function examineChanges(diff: Diff.Change[]) {
     });
 }
 
-function verifyPatchMethods(oldStr: string, newStr: string, uniDiff: Diff.ParsedDiff) {
+function verifyPatchMethods(
+    oldStr: string,
+    newStr: string,
+    uniDiff: Diff.ParsedDiff,
+) {
     const verifyPatch = Diff.parsePatch(
-        Diff.createTwoFilesPatch("oldFile.ts", "newFile.ts", oldStr, newStr, "old", "new", {
-            context: 1,
-        }),
+        Diff.createTwoFilesPatch(
+            "oldFile.ts",
+            "newFile.ts",
+            oldStr,
+            newStr,
+            "old",
+            "new",
+            {
+                context: 1,
+            },
+        ),
     );
 
     if (
-        JSON.stringify(verifyPatch[0], Object.keys(verifyPatch[0]).sort())
-            !== JSON.stringify(uniDiff, Object.keys(uniDiff).sort())
+        JSON.stringify(verifyPatch[0], Object.keys(verifyPatch[0]).sort()) !==
+        JSON.stringify(uniDiff, Object.keys(uniDiff).sort())
     ) {
         throw new Error("Patch did not match uniDiff");
     }
 }
-function verifyApplyMethods(oldStr: string, newStr: string, uniDiffStr: string) {
+function verifyApplyMethods(
+    oldStr: string,
+    newStr: string,
+    uniDiffStr: string,
+) {
     const uniDiff = Diff.parsePatch(uniDiffStr)[0];
-    const verifyApply = [Diff.applyPatch(oldStr, uniDiff), Diff.applyPatch(oldStr, [uniDiff])];
+    const verifyApply = [
+        Diff.applyPatch(oldStr, uniDiff),
+        Diff.applyPatch(oldStr, [uniDiff]),
+    ];
     const options: Diff.ApplyPatchesOptions = {
         loadFile(index, callback) {
             index; // $ExpectType ParsedDiff
@@ -103,7 +122,7 @@ function verifyApplyMethods(oldStr: string, newStr: string, uniDiffStr: string) 
                 throw err;
             }
 
-            verifyApply.forEach(result => {
+            verifyApply.forEach((result) => {
                 if (result !== newStr) {
                     throw new Error("Result did not match newStr");
                 }
@@ -121,10 +140,20 @@ function verifyApplyMethods(oldStr: string, newStr: string, uniDiffStr: string) 
     Diff.applyPatches(uniDiffStr, options);
 }
 
-const uniDiffPatch = Diff.structuredPatch("oldFile.ts", "newFile.ts", one, other, "old", "new", {
-    context: 1,
-});
+const uniDiffPatch = Diff.structuredPatch(
+    "oldFile.ts",
+    "newFile.ts",
+    one,
+    other,
+    "old",
+    "new",
+    {
+        context: 1,
+    },
+);
 verifyPatchMethods(one, other, uniDiffPatch);
 
-const uniDiffStr = Diff.createPatch("file.ts", one, other, "old", "new", { context: 1 });
+const uniDiffStr = Diff.createPatch("file.ts", one, other, "old", "new", {
+    context: 1,
+});
 verifyApplyMethods(one, other, uniDiffStr);

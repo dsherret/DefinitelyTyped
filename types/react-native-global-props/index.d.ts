@@ -26,7 +26,9 @@ export function setCustomText(customTextProps: TextProps): void;
 
 export function setCustomImage(customImageProps: ImageProps): void;
 
-export function setCustomTouchableHighlight(customTouchableHighlightProps: TouchableHighlightProps): void;
+export function setCustomTouchableHighlight(
+    customTouchableHighlightProps: TouchableHighlightProps,
+): void;
 
 export function setCustomTouchableNativeFeedback(
     customTouchableNativeFeedbackProps: TouchableNativeFeedbackProps,
@@ -36,17 +38,27 @@ export function setCustomTouchableWithoutFeedback(
     customTouchableWithoutFeedbackProps: TouchableWithoutFeedbackProps,
 ): void;
 
-export function setCustomTouchableOpacity(customTouchableOpacityProps: TouchableOpacityProps): void;
+export function setCustomTouchableOpacity(
+    customTouchableOpacityProps: TouchableOpacityProps,
+): void;
 
-export function setCustomActivityIndicator(customActivityIndicatorProps: ActivityIndicatorProps): void;
+export function setCustomActivityIndicator(
+    customActivityIndicatorProps: ActivityIndicatorProps,
+): void;
 
-export function setCustomKeyboardAvoidingView(customKeyboardAvoidingViewProps: KeyboardAvoidingViewProps): void;
+export function setCustomKeyboardAvoidingView(
+    customKeyboardAvoidingViewProps: KeyboardAvoidingViewProps,
+): void;
 
 export function setCustomModal(customModalProps: ModalProps): void;
 
-export function setCustomRefreshControl(customRefreshControlProps: RefreshControlProps): void;
+export function setCustomRefreshControl(
+    customRefreshControlProps: RefreshControlProps,
+): void;
 
-export function setCustomScrollView(customScrollViewProps: ScrollViewProps): void;
+export function setCustomScrollView(
+    customScrollViewProps: ScrollViewProps,
+): void;
 
 export function setCustomSlider(customSliderProps: SliderProps): void;
 

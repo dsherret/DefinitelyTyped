@@ -12,8 +12,7 @@ const context = {
 
 // Dummy console. Comment it out if you want to run this code and see output
 class DummyConsole {
-    log(...args: string[]) {
-    }
+    log(...args: string[]) {}
 }
 
 const console = new DummyConsole();
@@ -30,62 +29,77 @@ function calculateAge(age1: number, age2: number): Promise<any> {
 /* Type testing */
 
 // $ExpectType Promise<any>
-jexl.eval("assoc[.first == \"Lana\"].last", context);
+jexl.eval('assoc[.first == "Lana"].last', context);
 
 // $ExpectType any
-jexl.evalSync("assoc[.first == \"Lana\"].last");
+jexl.evalSync('assoc[.first == "Lana"].last');
 
 // $ExpectType Promise<any>
 jexl.eval("age * (3 - 1)", context);
 
 // $ExpectType Promise<any>
-jexl.eval("name.first + \" \" + name[\"la\" + \"st\"]", context);
+jexl.eval('name.first + " " + name["la" + "st"]', context);
 
 // $ExpectType Promise<any>
-jexl.eval("assoc[.last == \"Figgis\"].first == \"Cyril\" && assoc[.last == \"Poovey\"].first == \"Pam\"", context);
+jexl.eval(
+    'assoc[.last == "Figgis"].first == "Cyril" && assoc[.last == "Poovey"].first == "Pam"',
+    context,
+);
 
 // $ExpectType Promise<any>
 jexl.eval("assoc[1]", context);
 
 // $ExpectType Promise<any>
-jexl.eval("age > 62 ? \"retired\" : \"working\"", context);
+jexl.eval('age > 62 ? "retired" : "working"', context);
 
 // $ExpectType void
 jexl.addTransform("upper", (val) => val.toUpperCase());
 // $ExpectType Promise<any>
-jexl.eval("\"duchess\"|upper + \" \" + name.last|upper", context);
+jexl.eval('"duchess"|upper + " " + name.last|upper', context);
 
 // $ExpectType void
-jexl.addTransform("getStat", async (val, stat) => dbSelectByLastName(val, stat));
+jexl.addTransform("getStat", async (val, stat) =>
+    dbSelectByLastName(val, stat),
+);
 // $ExpectType Promise<any>
-jexl.eval("name.last|getStat(\"weight\")", context);
+jexl.eval('name.last|getStat("weight")', context);
 
 // $ExpectType void
-jexl.addBinaryOp("_=", 20, (left, right) => left.toLowerCase() === right.toLowerCase());
+jexl.addBinaryOp(
+    "_=",
+    20,
+    (left, right) => left.toLowerCase() === right.toLowerCase(),
+);
 // $ExpectType Promise<any>
-jexl.eval("\"Guest\" _= \"gUeSt\"");
+jexl.eval('"Guest" _= "gUeSt"');
 
 /* Example - runnable code */
 (async function testStuff() {
     // Filter an array asynchronously...
-    jexl.eval("assoc[.first == \"Lana\"].last", context).then(filterArray => {
+    jexl.eval('assoc[.first == "Lana"].last', context).then((filterArray) => {
         console.log("1. Filter Array", filterArray); // Output: Kane
     });
 
     // Or synchronously!
-    console.log("2. Filter Array Sync", jexl.evalSync("assoc[.first == \"Lana\"].last")); // Output: Kane
+    console.log(
+        "2. Filter Array Sync",
+        jexl.evalSync('assoc[.first == "Lana"].last'),
+    ); // Output: Kane
 
     // Do math
     const match = await jexl.eval("age * (3 - 1)", context);
     console.log("3. Match", match); // Output: 72
 
     // Concatenate
-    const concatenate = await jexl.eval("name.first + \" \" + name[\"la\" + \"st\"]", context);
+    const concatenate = await jexl.eval(
+        'name.first + " " + name["la" + "st"]',
+        context,
+    );
     console.log("4. Concatenate", concatenate); // "Sterling Archer"
 
     // Compound
     const compound = await jexl.eval(
-        "assoc[.last == \"Figgis\"].first == \"Cyril\" && assoc[.last == \"Poovey\"].first == \"Pam\"",
+        'assoc[.last == "Figgis"].first == "Cyril" && assoc[.last == "Poovey"].first == "Pam"',
         context,
     );
     console.log("5. Compound", compound); // true
@@ -95,18 +109,29 @@ jexl.eval("\"Guest\" _= \"gUeSt\"");
     console.log("6. Array Index", arrayIndex); // { first: 'Cyril', last: 'Figgis' }
 
     // Use conditional logic
-    const conditional = await jexl.eval("age > 62 ? \"retired\" : \"working\"", context);
+    const conditional = await jexl.eval(
+        'age > 62 ? "retired" : "working"',
+        context,
+    );
     console.log("7. Conditional", conditional); // "working"
 
     // Transform
     jexl.addTransform("upper", (val) => val.toUpperCase());
-    const transform = await jexl.eval("\"duchess\"|upper + \" \" + name.last|upper", context);
+    const transform = await jexl.eval(
+        '"duchess"|upper + " " + name.last|upper',
+        context,
+    );
     console.log("8. Transform", transform); // "DUCHESS ARCHER"
 
     // Transform asynchronously, with arguments
-    jexl.addTransform("getStat", async (val, stat) => dbSelectByLastName(val, stat));
+    jexl.addTransform("getStat", async (val, stat) =>
+        dbSelectByLastName(val, stat),
+    );
     try {
-        const asyncTransform = await jexl.eval("name.last|getStat(\"weight\")", context);
+        const asyncTransform = await jexl.eval(
+            'name.last|getStat("weight")',
+            context,
+        );
         console.log("9. Async Transform", asyncTransform); // Output: 184
     } catch (e) {
         console.log("Database Error", e.stack);
@@ -114,8 +139,12 @@ jexl.eval("\"Guest\" _= \"gUeSt\"");
 
     // Add your own (a)synchronous operators
     // Here's a case-insensitive string equality
-    jexl.addBinaryOp("_=", 20, (left, right) => left.toLowerCase() === right.toLowerCase());
-    const binaryOp = await jexl.eval("\"Guest\" _= \"gUeSt\"");
+    jexl.addBinaryOp(
+        "_=",
+        20,
+        (left, right) => left.toLowerCase() === right.toLowerCase(),
+    );
+    const binaryOp = await jexl.eval('"Guest" _= "gUeSt"');
     console.log("10. Binary Op", binaryOp); // true
 
     // Function
@@ -124,7 +153,9 @@ jexl.eval("\"Guest\" _= \"gUeSt\"");
     console.log("11. Function", func); // true
 
     // Function asynchronously, with arguments
-    jexl.addFunction("calculateAge", async (age1, age2) => calculateAge(age1, age2));
+    jexl.addFunction("calculateAge", async (age1, age2) =>
+        calculateAge(age1, age2),
+    );
     try {
         const asyncFunc = await jexl.eval("age > calculateAge(20, 21)");
         console.log("12. Async Function", asyncFunc); // false

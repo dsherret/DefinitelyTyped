@@ -41,7 +41,10 @@ export class MeshGeometry {
      * @param [vertices=Float32Array(0)] - The vertex buffer (Float32Array).
      * @param [indices=null] - The index buffer (Uint16Array/Uint32Array).
      */
-    constructor(vertices?: Float32Array, indices?: Uint16Array | Uint32Array | null);
+    constructor(
+        vertices?: Float32Array,
+        indices?: Uint16Array | Uint32Array | null,
+    );
 
     /**
      * Computes the internal bounding volumes of this mesh geometry.

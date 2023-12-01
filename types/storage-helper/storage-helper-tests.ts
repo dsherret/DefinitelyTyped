@@ -1,4 +1,10 @@
-import storageHelper, { clear, getItem, removeItem, setItem, showStorageLogger } from "storage-helper";
+import storageHelper, {
+    clear,
+    getItem,
+    removeItem,
+    setItem,
+    showStorageLogger,
+} from "storage-helper";
 
 storageHelper.setItem("foo", "bar");
 storageHelper.setItem("foo", "baz", true);

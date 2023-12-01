@@ -13,23 +13,28 @@ declare const BaseRouter: {
             history?: unknown[] | undefined;
             // tslint:disable-next-line array-type
             routes: Array<
-                & Readonly<{
+                Readonly<{
                     key: string;
                     name: string;
-                }>
-                & Readonly<{
-                    // tslint:disable-next-line no-redundant-undefined
-                    params?: object | undefined;
-                }>
-                & {
-                    // tslint:disable-next-line no-redundant-undefined
-                    state?: Readonly<any> | PartialState<Readonly<any>> | undefined;
-                }
+                }> &
+                    Readonly<{
+                        // tslint:disable-next-line no-redundant-undefined
+                        params?: object | undefined;
+                    }> & {
+                        // tslint:disable-next-line no-redundant-undefined
+                        state?:
+                            | Readonly<any>
+                            | PartialState<Readonly<any>>
+                            | undefined;
+                    }
             >;
             type: string;
             stale: false;
         }>,
-    >(state: State, action: CommonNavigationAction): State | PartialState<State> | null;
+    >(
+        state: State,
+        action: CommonNavigationAction,
+    ): State | PartialState<State> | null;
     shouldActionChangeFocus(action: CommonNavigationAction): boolean;
 };
 export default BaseRouter;

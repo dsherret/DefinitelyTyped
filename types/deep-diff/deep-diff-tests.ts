@@ -48,7 +48,7 @@ rhs = {
     },
 };
 
-observableDiff(lhs, rhs, d => {
+observableDiff(lhs, rhs, (d) => {
     // Apply all changes except those to the 'name' property...
     if (d.path.length !== 1 || d.path.join(".") !== "name") {
         applyChange(lhs, rhs, d);

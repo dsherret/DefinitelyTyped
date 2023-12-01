@@ -44,21 +44,36 @@ export class BufferedMetricsLogger {
      * the metric. This should be used for sum values such as total hard disk space,
      * process uptime, total number of active users, or number of rows in a database table.
      */
-    gauge(key: string, value: number, tags?: string[], timestamp?: number): void;
+    gauge(
+        key: string,
+        value: number,
+        tags?: string[],
+        timestamp?: number,
+    ): void;
 
     /**
      * Increment the counter by the given value (or 1 by default). Optionally, specify a
      * list of tags to associate with the metric. This is useful for counting things such
      * as incrementing a counter each time a page is requested.
      */
-    increment(key: string, value?: number, tags?: string[], timestamp?: number): void;
+    increment(
+        key: string,
+        value?: number,
+        tags?: string[],
+        timestamp?: number,
+    ): void;
 
     /**
      * Sample a histogram value. Histograms will produce metrics that describe the distribution
      * of the recorded values, namely the minimum, maximum, average, count and the 75th, 85th,
      * 95th and 99th percentiles. Optionally, specify a list of tags to associate with the metric.
      */
-    histogram(key: string, value: number, tags?: string[], timestamp?: number): void;
+    histogram(
+        key: string,
+        value: number,
+        tags?: string[],
+        timestamp?: number,
+    ): void;
 
     /**
      * Calling flush sends any buffered metrics to DataDog. Unless you set flushIntervalSeconds
@@ -77,21 +92,36 @@ export function init(options: BufferedMetricsLoggerOptions): void;
  * the metric. This should be used for sum values such as total hard disk space,
  * process uptime, total number of active users, or number of rows in a database table.
  */
-export function gauge(key: string, value: number, tags?: string[], timestamp?: number): void;
+export function gauge(
+    key: string,
+    value: number,
+    tags?: string[],
+    timestamp?: number,
+): void;
 
 /**
  * Increment the counter by the given value (or 1 by default). Optionally, specify a
  * list of tags to associate with the metric. This is useful for counting things such
  * as incrementing a counter each time a page is requested.
  */
-export function increment(key: string, value?: number, tags?: string[], timestamp?: number): void;
+export function increment(
+    key: string,
+    value?: number,
+    tags?: string[],
+    timestamp?: number,
+): void;
 
 /**
  * Sample a histogram value. Histograms will produce metrics that describe the distribution
  * of the recorded values, namely the minimum, maximum, average, count and the 75th, 85th,
  * 95th and 99th percentiles. Optionally, specify a list of tags to associate with the metric.
  */
-export function histogram(key: string, value: number, tags?: string[], timestamp?: number): void;
+export function histogram(
+    key: string,
+    value: number,
+    tags?: string[],
+    timestamp?: number,
+): void;
 
 /**
  * Calling flush sends any buffered metrics to DataDog. Unless you set flushIntervalSeconds
@@ -99,4 +129,7 @@ export function histogram(key: string, value: number, tags?: string[], timestamp
  * It can be useful to trigger a manual flush by calling if you want to make sure pending
  * metrics have been sent before you quit the application process, for example.
  */
-export function flush(onSuccess?: () => void, onError?: (err: Error) => void): void;
+export function flush(
+    onSuccess?: () => void,
+    onError?: (err: Error) => void,
+): void;

@@ -43,7 +43,9 @@ declare namespace Flex {
         wrap?: boolean | undefined;
     }
 
-    interface Props extends FlexProps, Omit<HTMLProps<HTMLDivElement>, "wrap"> {}
+    interface Props
+        extends FlexProps,
+            Omit<HTMLProps<HTMLDivElement>, "wrap"> {}
 }
 
 declare const Flex: ComponentType<Flex.Props>;

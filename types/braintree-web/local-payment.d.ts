@@ -46,9 +46,9 @@ export interface LocalPaymentStartPaymentOptions {
     fallback?: LocalPaymentFallback | undefined;
     windowOptions?:
         | {
-            width?: number | undefined;
-            height?: number | undefined;
-        }
+              width?: number | undefined;
+              height?: number | undefined;
+          }
         | undefined;
     givenName?: string | undefined;
     surname?: string | undefined;
@@ -60,7 +60,9 @@ export interface LocalPaymentStartPaymentOptions {
     bic?: string | undefined;
     shippingAddressRequired?: boolean | undefined;
     address?: LocalPaymentAddress | undefined;
-    onPaymentStart?: ((data: LocalPaymentStartData, callback: callback) => void) | undefined;
+    onPaymentStart?:
+        | ((data: LocalPaymentStartData, callback: callback) => void)
+        | undefined;
 }
 
 export interface LocalPaymentTokenizeOptions {
@@ -137,8 +139,13 @@ export interface LocalPayment {
      *      });
      * });
      */
-    startPayment(options: LocalPaymentStartPaymentOptions): Promise<LocalPaymentTokenizePayload>;
-    startPayment(options: LocalPaymentStartPaymentOptions, callback?: callback<LocalPaymentTokenizePayload>): void;
+    startPayment(
+        options: LocalPaymentStartPaymentOptions,
+    ): Promise<LocalPaymentTokenizePayload>;
+    startPayment(
+        options: LocalPaymentStartPaymentOptions,
+        callback?: callback<LocalPaymentTokenizePayload>,
+    ): void;
 
     /**
      * Cleanly remove anything set up by {@link module:braintree-web/local-payment.create|create}.
@@ -163,8 +170,13 @@ export interface LocalPayment {
      *  // handle tokenization error
      * });
      */
-    tokenize(params?: LocalPaymentTokenizeOptions): Promise<LocalPaymentTokenizePayload>;
-    tokenize(params?: LocalPaymentTokenizeOptions, callback?: callback<LocalPaymentTokenizePayload>): void;
+    tokenize(
+        params?: LocalPaymentTokenizeOptions,
+    ): Promise<LocalPaymentTokenizePayload>;
+    tokenize(
+        params?: LocalPaymentTokenizeOptions,
+        callback?: callback<LocalPaymentTokenizePayload>,
+    ): void;
 }
 
 /**
@@ -172,5 +184,10 @@ export interface LocalPayment {
  *     client: client
  * }, callback)
  */
-export function create(options: LocalPaymentCreateOptions): Promise<LocalPayment>;
-export function create(options: LocalPaymentCreateOptions, callback: callback<LocalPayment>): void;
+export function create(
+    options: LocalPaymentCreateOptions,
+): Promise<LocalPayment>;
+export function create(
+    options: LocalPaymentCreateOptions,
+    callback: callback<LocalPayment>,
+): void;

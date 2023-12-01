@@ -159,7 +159,7 @@ new ValidatedMethod({
 new ValidatedMethod({
     name: "methodWithFaultySchemaMixin",
     // @ts-expect-error
-    mixins: [args => args, () => {}],
+    mixins: [(args) => args, () => {}],
     run() {
         return "result";
     },
@@ -168,7 +168,7 @@ new ValidatedMethod({
 // identity function is legal mixin
 new ValidatedMethod({
     name: "methodWithIdentityMixin",
-    mixins: [args => args],
+    mixins: [(args) => args],
     validate: null,
     run() {
         return "result";
@@ -176,7 +176,9 @@ new ValidatedMethod({
 });
 
 // mixin for specific type only works on that type
-function numberToStringMixin(options: ValidatedMethodOptions<any, (arg: number) => string>) {
+function numberToStringMixin(
+    options: ValidatedMethodOptions<any, (arg: number) => string>,
+) {
     return options;
 }
 

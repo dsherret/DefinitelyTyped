@@ -1,21 +1,47 @@
 import { Buffer } from "buffer/";
 
-export function createWallet(config: WalletConfig, credentials: WalletCredentials): Promise<void>;
-export function openWallet(config: WalletConfig, credentials: OpenWalletCredentials): Promise<WalletHandle>;
+export function createWallet(
+    config: WalletConfig,
+    credentials: WalletCredentials,
+): Promise<void>;
+export function openWallet(
+    config: WalletConfig,
+    credentials: OpenWalletCredentials,
+): Promise<WalletHandle>;
 export function closeWallet(wh: WalletHandle): Promise<void>;
-export function deleteWallet(config: WalletConfig, credentials: WalletCredentials): Promise<void>;
+export function deleteWallet(
+    config: WalletConfig,
+    credentials: WalletCredentials,
+): Promise<void>;
 export function importWallet(
     config: WalletConfig,
     credentials: WalletCredentials,
     importConfig: WalletExportImportConfig,
 ): Promise<void>;
-export function exportWallet(wh: WalletHandle, exportConfig: WalletExportImportConfig): Promise<void>;
-export function createAndStoreMyDid(wh: WalletHandle, did: DidConfig): Promise<[Did, Verkey]>;
+export function exportWallet(
+    wh: WalletHandle,
+    exportConfig: WalletExportImportConfig,
+): Promise<void>;
+export function createAndStoreMyDid(
+    wh: WalletHandle,
+    did: DidConfig,
+): Promise<[Did, Verkey]>;
 export function keyForLocalDid(wh: WalletHandle, did: Did): Promise<Verkey>;
 export function listMyDidsWithMeta(wh: WalletHandle): Promise<DidWithMeta[]>;
-export function cryptoAnonCrypt(recipientVk: Verkey, messageRaw: Buffer): Promise<Buffer>;
-export function cryptoSign(wh: WalletHandle, signerVk: Verkey, messageRaw: Buffer): Promise<Buffer>;
-export function cryptoVerify(signerVk: Verkey, messageRaw: Buffer, signatureRaw: Buffer): Promise<boolean>;
+export function cryptoAnonCrypt(
+    recipientVk: Verkey,
+    messageRaw: Buffer,
+): Promise<Buffer>;
+export function cryptoSign(
+    wh: WalletHandle,
+    signerVk: Verkey,
+    messageRaw: Buffer,
+): Promise<Buffer>;
+export function cryptoVerify(
+    signerVk: Verkey,
+    messageRaw: Buffer,
+    signatureRaw: Buffer,
+): Promise<boolean>;
 export function createKey(wh: WalletHandle, key: KeyConfig): Promise<Verkey>;
 export function packMessage(
     wh: WalletHandle,
@@ -24,11 +50,36 @@ export function packMessage(
     senderVk: Verkey | null,
 ): Promise<Buffer>;
 export function unpackMessage(wh: WalletHandle, jwe: Buffer): Promise<Buffer>;
-export function addWalletRecord(wh: WalletHandle, type: string, id: string, value: string, tags: Tags): Promise<void>;
-export function updateWalletRecordValue(wh: WalletHandle, type: string, id: string, value: string): Promise<void>;
-export function updateWalletRecordTags(wh: WalletHandle, type: string, id: string, tags: Tags): Promise<void>;
-export function addWalletRecordTags(wh: WalletHandle, type: string, id: string, tags: Tags): Promise<void>;
-export function deleteWalletRecord(wh: WalletHandle, type: string, id: string): Promise<void>;
+export function addWalletRecord(
+    wh: WalletHandle,
+    type: string,
+    id: string,
+    value: string,
+    tags: Tags,
+): Promise<void>;
+export function updateWalletRecordValue(
+    wh: WalletHandle,
+    type: string,
+    id: string,
+    value: string,
+): Promise<void>;
+export function updateWalletRecordTags(
+    wh: WalletHandle,
+    type: string,
+    id: string,
+    tags: Tags,
+): Promise<void>;
+export function addWalletRecordTags(
+    wh: WalletHandle,
+    type: string,
+    id: string,
+    tags: Tags,
+): Promise<void>;
+export function deleteWalletRecord(
+    wh: WalletHandle,
+    type: string,
+    id: string,
+): Promise<void>;
 export function getWalletRecord(
     wh: WalletHandle,
     type: string,
@@ -47,9 +98,15 @@ export function fetchWalletSearchNextRecords(
     count: number,
 ): Promise<WalletRecordSearch>;
 export function closeWalletSearch(sh: SearchHandle): Promise<void>;
-export function createPoolLedgerConfig(configName: string, config?: PoolConfig): Promise<void>;
+export function createPoolLedgerConfig(
+    configName: string,
+    config?: PoolConfig,
+): Promise<void>;
 export function deletePoolLedgerConfig(configName: string): Promise<void>;
-export function openPoolLedger(configName: string, config?: RuntimePoolConfig): Promise<PoolHandle>;
+export function openPoolLedger(
+    configName: string,
+    config?: RuntimePoolConfig,
+): Promise<PoolHandle>;
 export function closePoolLedger(poolHandle: PoolHandle): Promise<void>;
 export function setProtocolVersion(version: number): Promise<void>;
 export function buildNymRequest(
@@ -59,30 +116,66 @@ export function buildNymRequest(
     alias: string,
     role: NymRole | null,
 ): Promise<LedgerRequest>;
-export function buildGetNymRequest(submitterDid: Did | null, targetDid: Did): Promise<LedgerRequest>;
+export function buildGetNymRequest(
+    submitterDid: Did | null,
+    targetDid: Did,
+): Promise<LedgerRequest>;
 export function buildGetTxnRequest(
     submitterDid: Did | null,
     ledgerType: "DOMAIN" | "POOL" | "CONFIG",
     seqNo: number,
 ): Promise<LedgerRequest>;
-export function parseGetNymResponse(response: LedgerResponse): Promise<GetNymResponse>;
-export function buildSchemaRequest(submitterDid: Did, schema: Schema): Promise<LedgerRequest>;
-export function buildGetSchemaRequest(submitterDid: Did | null, schemaId: SchemaId): Promise<LedgerRequest>;
-export function parseGetSchemaResponse(response: LedgerResponse): Promise<[SchemaId, Schema]>;
-export function buildCredDefRequest(submitterDid: Did, credDef: CredDef): Promise<LedgerRequest>;
-export function buildGetCredDefRequest(submitterDid: Did | null, credDefId: CredDefId): Promise<LedgerRequest>;
-export function parseGetCredDefResponse(response: LedgerResponse): Promise<[CredDefId, CredDef]>;
+export function parseGetNymResponse(
+    response: LedgerResponse,
+): Promise<GetNymResponse>;
+export function buildSchemaRequest(
+    submitterDid: Did,
+    schema: Schema,
+): Promise<LedgerRequest>;
+export function buildGetSchemaRequest(
+    submitterDid: Did | null,
+    schemaId: SchemaId,
+): Promise<LedgerRequest>;
+export function parseGetSchemaResponse(
+    response: LedgerResponse,
+): Promise<[SchemaId, Schema]>;
+export function buildCredDefRequest(
+    submitterDid: Did,
+    credDef: CredDef,
+): Promise<LedgerRequest>;
+export function buildGetCredDefRequest(
+    submitterDid: Did | null,
+    credDefId: CredDefId,
+): Promise<LedgerRequest>;
+export function parseGetCredDefResponse(
+    response: LedgerResponse,
+): Promise<[CredDefId, CredDef]>;
 
 // Logging
 export function setLogger(
-    logFn: (level: number, target: string, message: string, modulePath: string, file: string, line: number) => void,
+    logFn: (
+        level: number,
+        target: string,
+        message: string,
+        modulePath: string,
+        file: string,
+        line: number,
+    ) => void,
 ): void;
 export function setDefaultLogger(pattern: "trace" | "info" | "debug"): void;
 
 // Revocation Ledger methods
-export function buildRevocRegDefRequest(submitterDid: Did, data: RevocRegDef): Promise<LedgerRequest>;
-export function buildGetRevocRegDefRequest(submitterDid: Did | null, revRegId: RevRegId): Promise<LedgerRequest>;
-export function parseGetRevocRegDefResponse(response: LedgerResponse): Promise<[RevRegId, RevocRegDef]>;
+export function buildRevocRegDefRequest(
+    submitterDid: Did,
+    data: RevocRegDef,
+): Promise<LedgerRequest>;
+export function buildGetRevocRegDefRequest(
+    submitterDid: Did | null,
+    revRegId: RevRegId,
+): Promise<LedgerRequest>;
+export function parseGetRevocRegDefResponse(
+    response: LedgerResponse,
+): Promise<[RevRegId, RevocRegDef]>;
 export function buildRevocRegEntryRequest(
     submitterDid: Did,
     revRegId: RevRegId,
@@ -94,26 +187,41 @@ export function buildGetRevocRegRequest(
     revRegId: RevRegId,
     timestamp: number,
 ): Promise<LedgerRequest>;
-export function parseGetRevocRegResponse(response: LedgerResponse): Promise<[RevRegId, RevocReg, number]>;
+export function parseGetRevocRegResponse(
+    response: LedgerResponse,
+): Promise<[RevRegId, RevocReg, number]>;
 export function buildGetRevocRegDeltaRequest(
     submitterDid: Did | null,
     revRegId: RevRegId,
     from: number | null,
     to: number,
 ): Promise<LedgerRequest>;
-export function parseGetRevocRegDeltaResponse(response: LedgerResponse): Promise<[RevRegId, RevocRegDelta, number]>;
+export function parseGetRevocRegDeltaResponse(
+    response: LedgerResponse,
+): Promise<[RevRegId, RevocRegDelta, number]>;
 
-export function signRequest(wh: WalletHandle, submitterDid: Did, request: LedgerRequest): Promise<SignedLedgerRequest>;
+export function signRequest(
+    wh: WalletHandle,
+    submitterDid: Did,
+    request: LedgerRequest,
+): Promise<SignedLedgerRequest>;
 export function signAndSubmitRequest(
     poolHandle: PoolHandle,
     walletHandle: WalletHandle,
     submitterDid: Did,
     request: LedgerRequest,
 ): Promise<LedgerResponse>;
-export function submitRequest(poolHandle: PoolHandle, request: LedgerRequest): Promise<LedgerResponse>;
+export function submitRequest(
+    poolHandle: PoolHandle,
+    request: LedgerRequest,
+): Promise<LedgerResponse>;
 
-export function buildGetTxnAuthorAgreementRequest(submitterDid: Did | null): Promise<LedgerRequest>;
-export function buildGetAcceptanceMechanismsRequest(submitterDid: Did | null): Promise<LedgerRequest>;
+export function buildGetTxnAuthorAgreementRequest(
+    submitterDid: Did | null,
+): Promise<LedgerRequest>;
+export function buildGetAcceptanceMechanismsRequest(
+    submitterDid: Did | null,
+): Promise<LedgerRequest>;
 export function appendTxnAuthorAgreementAcceptanceToRequest(
     request: LedgerRequest,
     text: string,
@@ -124,7 +232,9 @@ export function appendTxnAuthorAgreementAcceptanceToRequest(
 ): Promise<LedgerRequest>;
 export function abbreviateVerkey(did: Did, fullVerkey: Verkey): Promise<Verkey>;
 export function generateNonce(): Promise<string>;
-export function generateWalletKey(config?: GenerateWalletKeyConfig): Promise<string>;
+export function generateWalletKey(
+    config?: GenerateWalletKeyConfig,
+): Promise<string>;
 export function buildAttribRequest(
     submitterDid: Did,
     targetDid: Did,
@@ -174,7 +284,10 @@ export function issuerCreateAndStoreRevocReg(
     tailsWriterHandle: BlobWriterHandle,
 ): Promise<[RevRegId, RevocRegDef, RevocRegDelta]>;
 
-export function issuerCreateCredentialOffer(wh: WalletHandle, credDefId: CredDefId): Promise<CredOffer>;
+export function issuerCreateCredentialOffer(
+    wh: WalletHandle,
+    credDefId: CredDefId,
+): Promise<CredOffer>;
 export function issuerCreateCredential(
     wh: WalletHandle,
     credOffer: CredOffer,
@@ -196,7 +309,10 @@ export function issuerMergeRevocationRegistryDeltas(
 ): Promise<RevocRegDelta>;
 
 // ---- PROVER ---- //
-export function proverCreateMasterSecret(wh: WalletHandle, masterSecretId: string): Promise<string>;
+export function proverCreateMasterSecret(
+    wh: WalletHandle,
+    masterSecretId: string,
+): Promise<string>;
 export function proverCreateCredentialReq(
     wh: WalletHandle,
     proverDid: Did,
@@ -212,13 +328,25 @@ export function proverStoreCredential(
     credDef: CredDef,
     revRegDef: RevocRegDef | null,
 ): Promise<CredentialId>;
-export function proverGetCredentials(wh: WalletHandle, filter: GetCredentialsFilter): Promise<IndyCredentialInfo[]>;
-export function proverGetCredential(wh: WalletHandle, credId: string): Promise<IndyCredentialInfo>;
+export function proverGetCredentials(
+    wh: WalletHandle,
+    filter: GetCredentialsFilter,
+): Promise<IndyCredentialInfo[]>;
+export function proverGetCredential(
+    wh: WalletHandle,
+    credId: string,
+): Promise<IndyCredentialInfo>;
 // TODO: proverSearchCredentials
 // TODO: proverFetchCredentials
 // TODO: proverCloseCredentialsSearch
-export function proverDeleteCredential(wh: WalletHandle, credId: string): Promise<void>;
-export function proverGetCredentialsForProofReq(wh: WalletHandle, proofRequest: IndyProofRequest): Promise<ProofCred>;
+export function proverDeleteCredential(
+    wh: WalletHandle,
+    credId: string,
+): Promise<void>;
+export function proverGetCredentialsForProofReq(
+    wh: WalletHandle,
+    proofRequest: IndyProofRequest,
+): Promise<ProofCred>;
 export function proverSearchCredentialsForProofReq(
     wh: WalletHandle,
     proofRequest: IndyProofRequest,
@@ -229,7 +357,9 @@ export function proverFetchCredentialsForProofReq(
     itemReferent: string,
     count: number,
 ): Promise<IndyCredential[]>;
-export function proverCloseCredentialsSearchForProofReq(sh: SearchHandle): Promise<void>;
+export function proverCloseCredentialsSearchForProofReq(
+    sh: SearchHandle,
+): Promise<void>;
 export function proverCreateProof(
     wh: WalletHandle,
     proofRequest: IndyProofRequest,
@@ -261,8 +391,14 @@ export function createRevocationState(
 // -------------------------------------------- //
 // --------------- BLOB STORAGE --------------- //
 // -------------------------------------------- //
-export function openBlobStorageWriter(type: string, tailsWriterConfig: TailsWriterConfig): Promise<BlobWriterHandle>;
-export function openBlobStorageReader(type: string, tailsReaderConfig: TailsReaderConfig): Promise<BlobReaderHandle>;
+export function openBlobStorageWriter(
+    type: string,
+    tailsWriterConfig: TailsWriterConfig,
+): Promise<BlobWriterHandle>;
+export function openBlobStorageReader(
+    type: string,
+    tailsReaderConfig: TailsReaderConfig,
+): Promise<BlobReaderHandle>;
 
 export type WalletHandle = number;
 export type SearchHandle = number;
@@ -319,8 +455,8 @@ export interface WalletCredentials {
     key: string;
     storage_credentials?:
         | {
-            [key: string]: unknown;
-        }
+              [key: string]: unknown;
+          }
         | undefined;
     key_derivation_method?: KeyDerivationMethod | undefined;
 }
@@ -581,7 +717,11 @@ export interface IndyRequestedCredentials {
         [key: string]: string;
     };
     requested_attributes: {
-        [key: string]: { cred_id: string; timestamp?: number | undefined; revealed: boolean };
+        [key: string]: {
+            cred_id: string;
+            timestamp?: number | undefined;
+            revealed: boolean;
+        };
     };
     requested_predicates: {
         [key: string]: { cred_id: string; timestamp?: number | undefined };
@@ -689,8 +829,8 @@ export interface WalletRecord {
     value?: string | undefined;
     tags?:
         | {
-            [key: string]: string | undefined;
-        }
+              [key: string]: string | undefined;
+          }
         | undefined;
 }
 
@@ -712,4 +852,9 @@ export interface DidWithMeta {
     tempVerkey?: Verkey | undefined;
 }
 
-export type NymRole = "TRUSTEE" | "STEWARD" | "TRUST_ANCHOR" | "ENDORSER" | "NETWORK_MONITOR";
+export type NymRole =
+    | "TRUSTEE"
+    | "STEWARD"
+    | "TRUST_ANCHOR"
+    | "ENDORSER"
+    | "NETWORK_MONITOR";

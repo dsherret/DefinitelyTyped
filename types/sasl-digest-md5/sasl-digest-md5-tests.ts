@@ -23,8 +23,26 @@ m.name;
 m.clientFirst;
 // $ExpectType string
 m.response({ serviceType: "s", host: "h", username: "u", password: "p" });
-m.response({ serviceType: "s", host: "h", username: "u", password: "p", serviceName: "sn" });
-m.response({ serviceType: "s", host: "h", username: "u", password: "p", realm: "r" });
-m.response({ serviceType: "s", host: "h", username: "u", password: "p", authzid: "a" });
+m.response({
+    serviceType: "s",
+    host: "h",
+    username: "u",
+    password: "p",
+    serviceName: "sn",
+});
+m.response({
+    serviceType: "s",
+    host: "h",
+    username: "u",
+    password: "p",
+    realm: "r",
+});
+m.response({
+    serviceType: "s",
+    host: "h",
+    username: "u",
+    password: "p",
+    authzid: "a",
+});
 // $ExpectType DigestMd5Mechanism
 m.challenge("challenge");

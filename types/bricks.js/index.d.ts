@@ -7,13 +7,22 @@ declare namespace Bricks {
         resize(flag?: boolean): Instance;
 
         on(event: "pack" | "update", listener: () => any): Instance;
-        on(event: "resize", listener: (sizeDetail: SizeDetail) => any): Instance;
+        on(
+            event: "resize",
+            listener: (sizeDetail: SizeDetail) => any,
+        ): Instance;
 
         once(event: "pack" | "update", listener: () => any): Instance;
-        once(event: "resize", listener: (sizeDetail: SizeDetail) => any): Instance;
+        once(
+            event: "resize",
+            listener: (sizeDetail: SizeDetail) => any,
+        ): Instance;
 
         off(event: "pack" | "update", listener?: () => any): Instance;
-        off(event: "resize", listener?: (sizeDetail: SizeDetail) => any): Instance;
+        off(
+            event: "resize",
+            listener?: (sizeDetail: SizeDetail) => any,
+        ): Instance;
     }
 
     interface Options {

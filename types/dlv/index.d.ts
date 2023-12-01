@@ -4,4 +4,8 @@
  * undefined
  */
 export = dlv;
-declare function dlv(object: object, key: string | Array<string | number>, defaultValue?: any): any;
+declare function dlv(
+    object: object,
+    key: string | Array<string | number>,
+    defaultValue?: any,
+): any;

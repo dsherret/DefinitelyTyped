@@ -24,8 +24,8 @@ export declare enum Area {
     S7AreaPA = 0x82,
     S7AreaMK = 0x83,
     S7AreaDB = 0x84,
-    S7AreaCT = 0x1C,
-    S7AreaTM = 0x1D,
+    S7AreaCT = 0x1c,
+    S7AreaTM = 0x1d,
 }
 
 export declare enum WordLen {
@@ -34,8 +34,8 @@ export declare enum WordLen {
     S7WLWord = 0x04,
     S7WLDWord = 0x06,
     S7WLReal = 0x08,
-    S7WLCounter = 0x1C,
-    S7WLTimer = 0x1D,
+    S7WLCounter = 0x1c,
+    S7WLTimer = 0x1d,
 }
 
 export declare enum BlockType {
@@ -50,12 +50,12 @@ export declare enum BlockType {
 
 export declare enum SubBlockType {
     SubBlk_OB = 0x08,
-    SubBlk_DB = 0x0A,
-    SubBlk_SDB = 0x0B,
-    SubBlk_FC = 0x0C,
-    SubBlk_SFC = 0x0D,
-    SubBlk_FB = 0x0E,
-    SubBlk_SFB = 0x0F,
+    SubBlk_DB = 0x0a,
+    SubBlk_SDB = 0x0b,
+    SubBlk_FC = 0x0c,
+    SubBlk_SFC = 0x0d,
+    SubBlk_FB = 0x0e,
+    SubBlk_SFB = 0x0f,
 }
 
 export declare enum LangType {
@@ -100,7 +100,7 @@ interface MultiVarsWriteResult {
 }
 
 interface S7Client_Static {
-    new(): S7Client;
+    new (): S7Client;
 
     // Static members here ...
 }
@@ -127,7 +127,12 @@ interface S7Client {
      * If callback is not set the function is blocking and returns true on success or false on error.
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      */
-    ConnectTo(ip: string, rack: number, slot: number, callback?: (err: any) => void): boolean;
+    ConnectTo(
+        ip: string,
+        rack: number,
+        slot: number,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * Sets internally ip, localTSAP, remoteTSAP coordinates.
@@ -217,7 +222,12 @@ interface S7Client {
      * If callback is not set the function is blocking and returns a buffer object on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    DBRead(dbNumber: number, start: number, size: number, callback?: (err: any, data: any) => void): Buffer | boolean;
+    DBRead(
+        dbNumber: number,
+        start: number,
+        size: number,
+        callback?: (err: any, data: any) => void,
+    ): Buffer | boolean;
 
     /**
      * This is a lean function of WriteArea() to write PLC DB.
@@ -230,7 +240,13 @@ interface S7Client {
      * If callback is not set the function is blocking and returns true on success or false on error.
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      */
-    DBWrite(dbNumber: number, start: number, size: number, buffer: Buffer, callback?: (err: any) => void): boolean;
+    DBWrite(
+        dbNumber: number,
+        start: number,
+        size: number,
+        buffer: Buffer,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * This is a lean function of ReadArea() to read PLC process outputs.
@@ -241,7 +257,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns a buffer object on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    ABRead(start: number, size: number, callback?: (err: any, data: Buffer) => void): Buffer | boolean;
+    ABRead(
+        start: number,
+        size: number,
+        callback?: (err: any, data: Buffer) => void,
+    ): Buffer | boolean;
 
     /**
      * This is a lean function of WriteArea() to write PLC process outputs.
@@ -253,7 +273,12 @@ interface S7Client {
      * If callback is not set the function is blocking and returns true on success or false on error.
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      */
-    ABWrite(start: number, size: number, buffer: Buffer, callback?: (err: any) => void): boolean;
+    ABWrite(
+        start: number,
+        size: number,
+        buffer: Buffer,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * This is a lean function of ReadArea() to read PLC process inputs.
@@ -264,7 +289,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns a buffer object on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    EBRead(start: number, size: number, callback?: (err: any, data: Buffer) => void): Buffer | boolean;
+    EBRead(
+        start: number,
+        size: number,
+        callback?: (err: any, data: Buffer) => void,
+    ): Buffer | boolean;
 
     /**
      * This is a lean function of WriteArea() to write PLC process inputs.
@@ -276,7 +305,12 @@ interface S7Client {
      * If callback is not set the function is blocking and returns true on success or false on error.
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      */
-    EBWrite(start: number, size: number, buffer: Buffer, callback?: (err: any) => void): boolean;
+    EBWrite(
+        start: number,
+        size: number,
+        buffer: Buffer,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * This is a lean function of ReadArea() to read PLC Merkers.
@@ -287,7 +321,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns a buffer object on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    MBRead(start: number, size: number, callback?: (err: any, data: Buffer) => void): Buffer | boolean;
+    MBRead(
+        start: number,
+        size: number,
+        callback?: (err: any, data: Buffer) => void,
+    ): Buffer | boolean;
 
     /**
      * This is a lean function of WriteArea() to write PLC Merkers.
@@ -299,7 +337,12 @@ interface S7Client {
      * If callback is not set the function is blocking and returns true on success or false on error.
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      */
-    MBWrite(start: number, size: number, buffer: Buffer, callback?: (err: any) => void): boolean;
+    MBWrite(
+        start: number,
+        size: number,
+        buffer: Buffer,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * This is a lean function of ReadArea() to read PLC Timers.
@@ -310,7 +353,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns a buffer object on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    TMRead(start: number, size: number, callback?: (err: any, data: Buffer) => void): Buffer | boolean;
+    TMRead(
+        start: number,
+        size: number,
+        callback?: (err: any, data: Buffer) => void,
+    ): Buffer | boolean;
 
     /**
      * This is a lean function of WriteArea() to write PLC Timers.
@@ -322,7 +369,12 @@ interface S7Client {
      * If callback is not set the function is blocking and returns true on success or false on error.
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      */
-    TMWrite(start: number, size: number, buffer: Buffer, callback?: (err: any) => void): boolean;
+    TMWrite(
+        start: number,
+        size: number,
+        buffer: Buffer,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * This is a lean function of ReadArea() to read PLC Counters.
@@ -333,7 +385,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns a buffer object on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    CTRead(start: number, size: number, callback?: (err: any, data: Buffer) => void): Buffer | boolean;
+    CTRead(
+        start: number,
+        size: number,
+        callback?: (err: any, data: Buffer) => void,
+    ): Buffer | boolean;
 
     /**
      * This is a lean function of WriteArea() to write PLC Counters.
@@ -345,7 +401,12 @@ interface S7Client {
      * If callback is not set the function is blocking and returns true on success or false on error.
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      */
-    CTWrite(start: number, size: number, buffer: Buffer, callback?: (err: any) => void): boolean;
+    CTWrite(
+        start: number,
+        size: number,
+        buffer: Buffer,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * This is function allows to read different kind of variables from a PLC in a single call. With it you can read DB,
@@ -390,7 +451,10 @@ interface S7Client {
      * If callback is not set the function is blocking and returns an array on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    ListBlocksOfType(blockType: BlockType, callback?: (err: any, data: any) => void): any | boolean;
+    ListBlocksOfType(
+        blockType: BlockType,
+        callback?: (err: any, data: any) => void,
+    ): any | boolean;
 
     /**
      * Returns an object with detailed information about a given AG block. This function is very useful if you need to read or write
@@ -401,7 +465,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns an object (see below) on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    GetAgBlockInfo(blockType: BlockType, blockNum: number, callback?: (err: any, data: any) => void): any | boolean;
+    GetAgBlockInfo(
+        blockType: BlockType,
+        blockNum: number,
+        callback?: (err: any, data: any) => void,
+    ): any | boolean;
 
     /**
      * Returns detailed information about a block present in a user buffer. This function is usually used in conjunction with FullUpload().
@@ -421,7 +489,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns a Buffer object on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    FullUpload(blockType: BlockType, blockNum: number, callback?: (err: any, data: Object) => void): Object | boolean;
+    FullUpload(
+        blockType: BlockType,
+        blockNum: number,
+        callback?: (err: any, data: Object) => void,
+    ): Object | boolean;
 
     /**
      * Uploads a block body from AG. Only the block body (but header and footer) is copied into the user buffer.
@@ -431,7 +503,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns a Buffer object on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    Upload(blockType: BlockType, blockNum: number, callback?: (err: any, data: Object) => void): Object | boolean;
+    Upload(
+        blockType: BlockType,
+        blockNum: number,
+        callback?: (err: any, data: Object) => void,
+    ): Object | boolean;
 
     /**
      * Downloads a block into AG. A whole block (including header and footer) must be available into the user buffer.
@@ -442,7 +518,11 @@ interface S7Client {
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      * If the parameter blockNum is -1, the block number is not changed else the block is downloaded with the provided number (just like a “Download As…”).
      */
-    Download(blockNum: number, buffer: Buffer, callback?: (err: any) => void): boolean;
+    Download(
+        blockNum: number,
+        buffer: Buffer,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * Deletes a block into AG.
@@ -453,7 +533,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns true on success or false on error.
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      */
-    Delete(blockType: BlockType, blockNum: number, callback?: (err: any) => void): boolean;
+    Delete(
+        blockType: BlockType,
+        blockNum: number,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * Uploads a DB from AG. This function is equivalent to Upload() with BlockType = Block_DB but it uses a different approach
@@ -465,7 +549,10 @@ interface S7Client {
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      * This function first gathers the DB size via GetAgBlockInfo() then calls DBRead().
      */
-    DBGet(dbNumber: number, callback?: (err: any, data: Buffer) => void): Buffer | boolean;
+    DBGet(
+        dbNumber: number,
+        callback?: (err: any, data: Buffer) => void,
+    ): Buffer | boolean;
 
     /**
      * Fills a DB in AG with a given byte without the need of specifying its size.
@@ -475,7 +562,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns true on success or false on error.
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      */
-    DBFill(dbNumber: number, fillChar: string, callback?: (err: any) => void): boolean;
+    DBFill(
+        dbNumber: number,
+        fillChar: string,
+        callback?: (err: any) => void,
+    ): boolean;
 
     // API - Date/Time functions
 
@@ -521,7 +612,11 @@ interface S7Client {
      * If callback is not set the function is blocking and returns a buffer on success or false on error.
      * If callback is set the function is non-blocking and an error and result argument is given to the callback.
      */
-    ReadSZL(id: number, index: number, callback?: (err: any, data: any) => void): Buffer | boolean;
+    ReadSZL(
+        id: number,
+        index: number,
+        callback?: (err: any, data: any) => void,
+    ): Buffer | boolean;
 
     /**
      * Reads the directory of the partial lists.
@@ -610,7 +705,10 @@ interface S7Client {
      * If callback is set the function is non-blocking and an error argument is given to the callback.
      * A password accepted by a PLC is an 8 chars string, a longer password will be trimmed, and a shorter one will be "right space padded".
      */
-    SetSessionPassword(password: string, callback?: (err: any) => void): boolean;
+    SetSessionPassword(
+        password: string,
+        callback?: (err: any) => void,
+    ): boolean;
 
     /**
      * Clears the password set for the current session (logout).

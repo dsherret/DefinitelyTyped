@@ -37,7 +37,9 @@ import {
 } from "redux-form/immutable";
 
 import libActions from "redux-form/lib/actions";
-import LibField, { WrappedFieldProps as LibWrappedFieldProps } from "redux-form/lib/Field";
+import LibField, {
+    WrappedFieldProps as LibWrappedFieldProps,
+} from "redux-form/lib/Field";
 import LibFormSection from "redux-form/lib/FormSection";
 import libFormValueSelector from "redux-form/lib/formValueSelector";
 import libReducer from "redux-form/lib/reducer";
@@ -62,7 +64,9 @@ interface TestFormComponentProps {
 
 type InjectedProps = InjectedFormProps<TestFormData, TestFormComponentProps>;
 
-class TestFormComponent extends React.Component<TestFormComponentProps & InjectedProps> {
+class TestFormComponent extends React.Component<
+    TestFormComponentProps & InjectedProps
+> {
     render() {
         const { form, initialValues, error } = this.props;
         const foo = initialValues.foo;
@@ -71,34 +75,44 @@ class TestFormComponent extends React.Component<TestFormComponentProps & Injecte
     }
 }
 
-const TestFormRequired = reduxForm<TestFormData, TestFormComponentProps>({})(TestFormComponent);
-const TestForm = reduxForm<TestFormData, TestFormComponentProps>({ form: "test" })(TestFormComponent);
-const TestFormImmRequired = immutableReduxForm<TestFormData, TestFormComponentProps>({})(TestFormComponent);
-const TestFormImm = immutableReduxForm<TestFormData, TestFormComponentProps>({ form: "test" })(TestFormComponent);
+const TestFormRequired = reduxForm<TestFormData, TestFormComponentProps>({})(
+    TestFormComponent,
+);
+const TestForm = reduxForm<TestFormData, TestFormComponentProps>({
+    form: "test",
+})(TestFormComponent);
+const TestFormImmRequired = immutableReduxForm<
+    TestFormData,
+    TestFormComponentProps
+>({})(TestFormComponent);
+const TestFormImm = immutableReduxForm<TestFormData, TestFormComponentProps>({
+    form: "test",
+})(TestFormComponent);
 
-const TestFormStatelessComponent: React.FunctionComponent<TestFormComponentProps & InjectedProps> = (
-    { form, initialValues },
-) => {
+const TestFormStatelessComponent: React.FunctionComponent<
+    TestFormComponentProps & InjectedProps
+> = ({ form, initialValues }) => {
     const foo = initialValues.foo;
     return null;
 };
 
-const TestFormStatelessRequired = reduxForm<TestFormData, TestFormComponentProps>({})(TestFormStatelessComponent);
-const TestFormStateless = reduxForm<TestFormData, TestFormComponentProps>({ form: "test" })(TestFormStatelessComponent);
+const TestFormStatelessRequired = reduxForm<
+    TestFormData,
+    TestFormComponentProps
+>({})(TestFormStatelessComponent);
+const TestFormStateless = reduxForm<TestFormData, TestFormComponentProps>({
+    form: "test",
+})(TestFormStatelessComponent);
 
 /* formValues decorator */
 
-const ItemList = formValues<TestFormData>("foo")(
-    ({ foo }) => {
-        return null;
-    },
-);
+const ItemList = formValues<TestFormData>("foo")(({ foo }) => {
+    return null;
+});
 
-const ItemListObj = formValues({ fooBar: "foo" })(
-    ({ fooBar }) => {
-        return null;
-    },
-);
+const ItemListObj = formValues({ fooBar: "foo" })(({ fooBar }) => {
+    return null;
+});
 
 /* Custom FormSection */
 
@@ -107,7 +121,10 @@ interface MyFormSectionProps {
     foo: string;
 }
 
-const MyFormSection: React.FunctionComponent<MyFormSectionProps> = ({ children, foo }) => null;
+const MyFormSection: React.FunctionComponent<MyFormSectionProps> = ({
+    children,
+    foo,
+}) => null;
 
 /* Custom Field */
 
@@ -135,10 +152,12 @@ const MyField: React.FunctionComponent<MyFieldProps> = ({
     input.onFocus({} as React.FocusEvent<HTMLDivElement>);
     return null;
 };
-const FieldCustom = Field as new() => GenericField<MyFieldCustomProps>;
+const FieldCustom = Field as new () => GenericField<MyFieldCustomProps>;
 
 type FieldProps = BaseFieldProps<MyFieldCustomProps> & MyFieldCustomProps;
-const FieldCustomComp: React.FunctionComponent<FieldProps> = props => <FieldCustom {...props} component={MyField} />;
+const FieldCustomComp: React.FunctionComponent<FieldProps> = (props) => (
+    <FieldCustom {...props} component={MyField} />
+);
 
 const MyFieldImm: React.FunctionComponent<MyFieldProps> = ({
     children,
@@ -146,7 +165,8 @@ const MyFieldImm: React.FunctionComponent<MyFieldProps> = ({
     meta,
     foo,
 }) => null;
-const FieldImmutableCustom = ImmutableField as new() => GenericField<MyFieldCustomProps>;
+const FieldImmutableCustom =
+    ImmutableField as new () => GenericField<MyFieldCustomProps>;
 
 /* Custom Fields */
 
@@ -159,13 +179,13 @@ const MyFields: React.FunctionComponent<MyFieldsCustomProps> = ({
     children,
     foo,
 }) => null;
-const FieldsCustom = Fields as new() => GenericFields<MyFieldsCustomProps>;
+const FieldsCustom = Fields as new () => GenericFields<MyFieldsCustomProps>;
 
 /* FieldArray */
 
-const MyArrayField: React.FunctionComponent<React.PropsWithChildren<WrappedFieldArrayProps>> = ({
-    children,
-}) => null;
+const MyArrayField: React.FunctionComponent<
+    React.PropsWithChildren<WrappedFieldArrayProps>
+> = ({ children }) => null;
 
 /* Custom FieldArray */
 
@@ -179,14 +199,14 @@ interface MyFieldArrayCustomProps {
     bar: number;
 }
 
-const MyCustomArrayField: React.FunctionComponent<MyFieldArrayCustomProps & WrappedFieldArrayProps<MyFieldValue>> = ({
-    children,
-    fields,
-    foo,
-    bar,
-}) => null;
+const MyCustomArrayField: React.FunctionComponent<
+    MyFieldArrayCustomProps & WrappedFieldArrayProps<MyFieldValue>
+> = ({ children, fields, foo, bar }) => null;
 
-const FieldArrayCustom = FieldArray as new() => GenericFieldArray<MyFieldValue, MyFieldArrayCustomProps>;
+const FieldArrayCustom = FieldArray as new () => GenericFieldArray<
+    MyFieldValue,
+    MyFieldArrayCustomProps
+>;
 
 /* Tests */
 const TestForms: React.FunctionComponent = () => {
@@ -224,19 +244,23 @@ const testFormWithInitialValuesDecorator = reduxForm<MultivalueFormData>({
 
 // Specifying form data type *is* required here, because type inference will guess the type of
 // the form data type parameter to be {foo: string}. The result of validate does not contain "foo"
-const testFormWithInitialValuesAndValidationDecorator = reduxForm<MultivalueFormData>({
-    form: "testWithValidation",
-    initialValues: {
-        foo: "A Foo is here",
-    },
-    validate: (values, props) => {
-        return {
-            bar: "Bad foo",
-        };
-    },
-});
+const testFormWithInitialValuesAndValidationDecorator =
+    reduxForm<MultivalueFormData>({
+        form: "testWithValidation",
+        initialValues: {
+            foo: "A Foo is here",
+        },
+        validate: (values, props) => {
+            return {
+                bar: "Bad foo",
+            };
+        },
+    });
 
-const testFormWithChangeFunctionDecorator = reduxForm<TestFormData, TestFormComponentProps>({
+const testFormWithChangeFunctionDecorator = reduxForm<
+    TestFormData,
+    TestFormComponentProps
+>({
     form: "testWithValidation",
     onChange: (
         values: Partial<TestFormData>,
@@ -260,11 +284,19 @@ const Test = reduxForm<TestFormData>({
     }) => true,
 })(
     class Test extends React.Component<TestProps> {
-        handleSubmitForm = (values: Partial<TestFormData>, dispatch: Dispatch<any>, props: {}) => {};
+        handleSubmitForm = (
+            values: Partial<TestFormData>,
+            dispatch: Dispatch<any>,
+            props: {},
+        ) => {};
 
         render() {
             const { handleSubmit } = this.props;
-            const FormCustom = Form as new() => GenericForm<TestFormData, {}, string>;
+            const FormCustom = Form as new () => GenericForm<
+                TestFormData,
+                {},
+                string
+            >;
 
             return (
                 <div>
@@ -282,21 +314,25 @@ const Test = reduxForm<TestFormData>({
                                 component="input"
                             />
 
-                            <Field
-                                name="field2"
-                                component="textarea"
-                            />
+                            <Field name="field2" component="textarea" />
 
-                            <Field
-                                name="field3"
-                                component="select"
-                            />
+                            <Field name="field3" component="select" />
 
                             <Field
                                 name="field4"
                                 component="input"
-                                onChange={(event, newValue, previousValue, fieldName) => {}}
-                                onBlur={(event, newValue, previousValue, fieldName) => {}}
+                                onChange={(
+                                    event,
+                                    newValue,
+                                    previousValue,
+                                    fieldName,
+                                ) => {}}
+                                onBlur={(
+                                    event,
+                                    newValue,
+                                    previousValue,
+                                    fieldName,
+                                ) => {}}
                             />
 
                             <ImmutableField
@@ -316,10 +352,7 @@ const Test = reduxForm<TestFormData>({
                                 foo="bar"
                             />
 
-                            <FieldCustomComp
-                                name="field_4_comp"
-                                foo="bar"
-                            />
+                            <FieldCustomComp name="field_4_comp" foo="bar" />
 
                             <FieldImmutableCustom
                                 name="field4"
@@ -373,13 +406,19 @@ const Test = reduxForm<TestFormData>({
     },
 );
 
-reducer({}, {
-    type: "ACTION",
-});
+reducer(
+    {},
+    {
+        type: "ACTION",
+    },
+);
 
 reducer.plugin({
     myForm: (state: any, action: FormAction) => {
-        if (action.type === actionTypes.CHANGE && action.meta.form === "securitySettings") {
+        if (
+            action.type === actionTypes.CHANGE &&
+            action.meta.form === "securitySettings"
+        ) {
             return {
                 ...state,
                 values: {
@@ -403,21 +442,24 @@ try {
 
 /* Test using versions imported directly/as defaults from lib */
 const DefaultField = (
-    <LibField
-        name="defaultfield"
-        component="input"
-        type="text"
-    />
+    <LibField name="defaultfield" component="input" type="text" />
 );
 
-libReducer({}, {
-    type: "ACTION",
-});
+libReducer(
+    {},
+    {
+        type: "ACTION",
+    },
+);
 
 const DefaultFormSection = <LibFormSection name="defaultformsection" />;
 
-const TestLibFormRequired = libReduxForm<TestFormData, TestFormComponentProps>({})(TestFormComponent);
-const TestLibForm = libReduxForm<TestFormData, TestFormComponentProps>({ form: "test" })(TestFormComponent);
+const TestLibFormRequired = libReduxForm<TestFormData, TestFormComponentProps>(
+    {},
+)(TestFormComponent);
+const TestLibForm = libReduxForm<TestFormData, TestFormComponentProps>({
+    form: "test",
+})(TestFormComponent);
 
 const testSubmit = submit("test");
 const testLibSubmit = libActions.submit("test");
@@ -434,12 +476,14 @@ try {
 type HandleSubmitTestProps = {} & InjectedFormProps<TestFormData>;
 const HandleSubmitTestForm = reduxForm<TestFormData>({
     form: "test",
-})(
-    (props: HandleSubmitTestProps) => <form onSubmit={props.handleSubmit} />,
-);
+})((props: HandleSubmitTestProps) => <form onSubmit={props.handleSubmit} />);
 
 class HandleSubmitTest extends React.Component {
-    handleSubmit = (values: Partial<TestFormData>, dispatch: Dispatch<any>, props: {}) => {};
+    handleSubmit = (
+        values: Partial<TestFormData>,
+        dispatch: Dispatch<any>,
+        props: {},
+    ) => {};
     render() {
         return <HandleSubmitTestForm onSubmit={this.handleSubmit} />;
     }
@@ -451,7 +495,8 @@ class FormNameTest extends React.Component {
             <FormName>
                 {({ form, sectionPrefix }) => (
                     <span>
-                        Form name is {form} and section prefix is {sectionPrefix}
+                        Form name is {form} and section prefix is{" "}
+                        {sectionPrefix}
                     </span>
                 )}
             </FormName>
@@ -472,19 +517,31 @@ new SubmissionError({
 });
 
 // Test forms with custom error format.
-const HandleSubmitTestForm2 = reduxForm<TestFormData, {}, string[]>({ form: "test" })(
-    (props: InjectedFormProps<TestFormData, {}, string[]>) => <form onSubmit={props.handleSubmit} />,
-);
+const HandleSubmitTestForm2 = reduxForm<TestFormData, {}, string[]>({
+    form: "test",
+})((props: InjectedFormProps<TestFormData, {}, string[]>) => (
+    <form onSubmit={props.handleSubmit} />
+));
 
 class HandleSubmitTest2 extends React.Component {
-    handleSubmit = (values: Partial<TestFormData>, dispatch: Dispatch<any>, props: {}) => {};
+    handleSubmit = (
+        values: Partial<TestFormData>,
+        dispatch: Dispatch<any>,
+        props: {},
+    ) => {};
     render() {
         return <HandleSubmitTestForm2 onSubmit={this.handleSubmit} />;
     }
 }
 
-type InjectedProps2 = InjectedFormProps<TestFormData, TestFormComponentProps, string[]>;
-class TestFormComponent2 extends React.Component<TestFormComponentProps & InjectedProps2> {
+type InjectedProps2 = InjectedFormProps<
+    TestFormData,
+    TestFormComponentProps,
+    string[]
+>;
+class TestFormComponent2 extends React.Component<
+    TestFormComponentProps & InjectedProps2
+> {
     render() {
         const { error, initialValues, handleSubmit } = this.props;
         error.concat(["error is a string array"]);
@@ -500,7 +557,7 @@ class TestReduxFormContext extends React.Component {
     render() {
         return (
             <ReduxFormContext.Consumer>
-                {values => <div>{values.form}</div>}
+                {(values) => <div>{values.form}</div>}
             </ReduxFormContext.Consumer>
         );
     }

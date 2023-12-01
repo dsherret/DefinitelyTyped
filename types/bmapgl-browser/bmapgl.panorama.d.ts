@@ -71,8 +71,15 @@ declare namespace BMapGL {
     }
     class PanoramaService {
         constructor();
-        getPanoramaById(id: string, callback: (data: PanoramaData) => void): void;
-        getPanoramaByLocation(point: Point, radius?: number, callback?: (data: PanoramaData) => void): void;
+        getPanoramaById(
+            id: string,
+            callback: (data: PanoramaData) => void,
+        ): void;
+        getPanoramaByLocation(
+            point: Point,
+            radius?: number,
+            callback?: (data: PanoramaData) => void,
+        ): void;
     }
     interface PanoramaData {
         id: string;

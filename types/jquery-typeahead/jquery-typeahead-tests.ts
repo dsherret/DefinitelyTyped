@@ -227,9 +227,14 @@ let t2 = $.typeahead({
     callback: {
         onNavigateAfter: (node, lis, a, item, query, event) => {
             if (~[38, 40].indexOf(event.keyCode)) {
-                const resultList = node.closest("form").find("ul.typeahead__list");
+                const resultList = node
+                    .closest("form")
+                    .find("ul.typeahead__list");
                 const activeLi = lis.filter("li.active");
-                const offsetTop = activeLi[0] && activeLi[0].offsetTop - (resultList.height() / 2) || 0;
+                const offsetTop =
+                    (activeLi[0] &&
+                        activeLi[0].offsetTop - resultList.height() / 2) ||
+                    0;
 
                 resultList.scrollTop(offsetTop);
             }
@@ -242,8 +247,7 @@ let t2 = $.typeahead({
 
             let text = "";
             if (result.length > 0 && result.length < resultCount) {
-                text =
-                    `Showing <strong>${result.length}</strong> of <strong>${resultCount}</strong> elements matching "${query}"`;
+                text = `Showing <strong>${result.length}</strong> of <strong>${resultCount}</strong> elements matching "${query}"`;
             } else if (result.length > 0) {
                 text = `Showing <strong>${result.length}</strong> elements matching "${query}"`;
             } else {
@@ -253,7 +257,11 @@ let t2 = $.typeahead({
         },
         onMouseEnter: (node, a, item, event) => {
             if (item.group === "country") {
-                $(a).append(`<span class="flag-chart flag-${item.display.replace(" ", "-").toLowerCase()}"></span>`);
+                $(a).append(
+                    `<span class="flag-chart flag-${item.display
+                        .replace(" ", "-")
+                        .toLowerCase()}"></span>`,
+                );
             }
         },
         onMouseLeave: (node, a, item, event) => {

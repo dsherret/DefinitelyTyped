@@ -115,7 +115,9 @@ declare namespace googletag {
      *
      * @see [Share secure signals with bidders](https://support.google.com/admanager/answer/10488752)
      */
-    const secureSignalProviders: secureSignals.SecureSignalProvidersArray | secureSignals.SecureSignalProvider[];
+    const secureSignalProviders:
+        | secureSignals.SecureSignalProvidersArray
+        | secureSignals.SecureSignalProvider[];
 
     /**
      * Returns a reference to the {@link CompanionAdsService}.
@@ -147,7 +149,10 @@ declare namespace googletag {
      * @param div ID of the div that will contain this ad unit or OutOfPageFormat.
      * @returns The newly created slot, or `null` if a slot cannot be created.
      */
-    function defineOutOfPageSlot(adUnitPath: string, div: string | enums.OutOfPageFormat): Slot | null;
+    function defineOutOfPageSlot(
+        adUnitPath: string,
+        div: string | enums.OutOfPageFormat,
+    ): Slot | null;
     function defineOutOfPageSlot(adUnitPath: string): Slot;
 
     /**
@@ -163,9 +168,17 @@ declare namespace googletag {
      * @param div ID of the div that will contain this ad unit.
      * @returns The newly created slot, or `null` if a slot cannot be created.
      */
-    function defineSlot(adUnitPath: string, size: GeneralSize, div: string): Slot | null;
+    function defineSlot(
+        adUnitPath: string,
+        size: GeneralSize,
+        div: string,
+    ): Slot | null;
     function defineSlot(adUnitPath: string, size: GeneralSize): Slot;
-    function defineUnit(adUnitPath: string, size: GeneralSize, div: string): Slot | null;
+    function defineUnit(
+        adUnitPath: string,
+        size: GeneralSize,
+        div: string,
+    ): Slot | null;
     function defineUnit(adUnitPath: string, size: GeneralSize): Slot;
 
     /**
@@ -486,7 +499,12 @@ declare namespace googletag {
          * @param div Either the ID of the div containing the slot or the div element itself.
          * @param clickUrl The click URL to use on this slot.
          */
-        display(adUnitPath: string, size: GeneralSize, div?: string | Element, clickUrl?: string): void;
+        display(
+            adUnitPath: string,
+            size: GeneralSize,
+            div?: string | Element,
+            clickUrl?: string,
+        ): void;
 
         /**
          * Enables lazy loading in GPT as defined by the config object.
@@ -770,7 +788,9 @@ declare namespace googletag {
          * @param privacySettings Object containing privacy settings config.
          * @returns The service object on which the function was called.
          */
-        setPrivacySettings(privacySettings: PrivacySettingsConfig): PubAdsService;
+        setPrivacySettings(
+            privacySettings: PrivacySettingsConfig,
+        ): PubAdsService;
 
         /**
          * Sets the value for the publisher-provided ID.
@@ -1051,7 +1071,10 @@ declare namespace googletag {
          * @param slotSize The sizes of the slot for this mapping entry.
          * @returns A reference to this builder.
          */
-        addSize(viewportSize: SingleSizeArray, slotSize: GeneralSize): SizeMappingBuilder;
+        addSize(
+            viewportSize: SingleSizeArray,
+            slotSize: GeneralSize,
+        ): SizeMappingBuilder;
 
         /**
          * Builds a size map specification from the mappings added to this builder.
@@ -1344,7 +1367,10 @@ declare namespace googletag {
          * @param collapseBeforeAdFetch Whether to collapse the slot even before an ad is fetched. Ignored if collapse is not `true`.
          * @returns The slot object on which the method was called.
          */
-        setCollapseEmptyDiv(collapse: boolean, collapseBeforeAdFetch?: boolean): Slot;
+        setCollapseEmptyDiv(
+            collapse: boolean,
+            collapseBeforeAdFetch?: boolean,
+        ): Slot;
 
         /**
          * Sets general configuration options for this slot.
@@ -2026,7 +2052,9 @@ declare namespace googletag {
          * Interface for returning a secure signal for a specific bidder or provider.
          * One of `id` or `networkCode` must be provided, but not both.
          */
-        type SecureSignalProvider = (BidderSignalProvider & { networkCode?: never }) | PublisherSignalProvider;
+        type SecureSignalProvider =
+            | (BidderSignalProvider & { networkCode?: never })
+            | PublisherSignalProvider;
 
         /**
          * Returns a secure signal for a specific bidder.

@@ -65,25 +65,37 @@ osrm.route({ coordinates }, { format: "json_buffer" }, (err, result) => {
     result;
 });
 
-osrm.route({ coordinates, skip_waypoints: true }, { format: "json_buffer" }, (err, result) => {
-    // $ExpectType Buffer
-    result;
-});
+osrm.route(
+    { coordinates, skip_waypoints: true },
+    { format: "json_buffer" },
+    (err, result) => {
+        // $ExpectType Buffer
+        result;
+    },
+);
 
 // Nearest
 osrm.nearest({ coordinates, number: 3, bearings }, (err, response) => {
     console.log(response.waypoints); // array of Waypoint objects
 });
 
-osrm.nearest({ coordinates, number: 3, bearings }, { format: "object" }, (err, response) => {
-    // $ExpectType NearestResults
-    response;
-});
+osrm.nearest(
+    { coordinates, number: 3, bearings },
+    { format: "object" },
+    (err, response) => {
+        // $ExpectType NearestResults
+        response;
+    },
+);
 
-osrm.nearest({ coordinates, number: 3, bearings }, { format: "json_buffer" }, (err, response) => {
-    // $ExpectType Buffer
-    response;
-});
+osrm.nearest(
+    { coordinates, number: 3, bearings },
+    { format: "json_buffer" },
+    (err, response) => {
+        // $ExpectType Buffer
+        response;
+    },
+);
 
 // Table
 osrm.table({ coordinates, exclude }, (err, response) => {
@@ -97,10 +109,14 @@ osrm.table({ coordinates, exclude }, { format: "object" }, (err, response) => {
     response;
 });
 
-osrm.table({ coordinates, exclude }, { format: "json_buffer" }, (err, response) => {
-    // $ExpectType Buffer
-    response;
-});
+osrm.table(
+    { coordinates, exclude },
+    { format: "json_buffer" },
+    (err, response) => {
+        // $ExpectType Buffer
+        response;
+    },
+);
 
 // Table Distances
 osrm.table({ coordinates, annotations: ["distance"] }, (err, response) => {
@@ -110,19 +126,25 @@ osrm.table({ coordinates, annotations: ["distance"] }, (err, response) => {
 });
 
 // Table Durations
-osrm.table({ coordinates, annotations: ["duration"], scale_factor: 1 / 60 }, (err, response) => {
-    console.log(response.durations); // array of arrays, matrix in row-major order (in minutes)
-    console.log(response.sources); // array of Waypoint objects
-    console.log(response.destinations); // array of Waypoint objects
-});
+osrm.table(
+    { coordinates, annotations: ["duration"], scale_factor: 1 / 60 },
+    (err, response) => {
+        console.log(response.durations); // array of arrays, matrix in row-major order (in minutes)
+        console.log(response.sources); // array of Waypoint objects
+        console.log(response.destinations); // array of Waypoint objects
+    },
+);
 
 // Table Durations and Distances
-osrm.table({ coordinates, annotations: ["distance", "duration"] }, (err, response) => {
-    console.log(response.durations); // array of arrays, matrix in row-major order
-    console.log(response.distances); // array of arrays, matrix in row-major order
-    console.log(response.sources); // array of Waypoint objects
-    console.log(response.destinations); // array of Waypoint objects
-});
+osrm.table(
+    { coordinates, annotations: ["distance", "duration"] },
+    (err, response) => {
+        console.log(response.durations); // array of arrays, matrix in row-major order
+        console.log(response.distances); // array of arrays, matrix in row-major order
+        console.log(response.sources); // array of Waypoint objects
+        console.log(response.destinations); // array of Waypoint objects
+    },
+);
 
 // Tile
 osrm.tile([0, 0, 0], (err, response) => {
@@ -147,15 +169,23 @@ osrm.match({ coordinates, timestamps, exclude }, (err, response) => {
     console.log(response.matchings); // array of Route objects
 });
 
-osrm.match({ coordinates, timestamps, exclude }, { format: "object" }, (err, response) => {
-    // $ExpectType MatchResults
-    response;
-});
+osrm.match(
+    { coordinates, timestamps, exclude },
+    { format: "object" },
+    (err, response) => {
+        // $ExpectType MatchResults
+        response;
+    },
+);
 
-osrm.match({ coordinates, timestamps, exclude }, { format: "json_buffer" }, (err, response) => {
-    // $ExpectType Buffer
-    response;
-});
+osrm.match(
+    { coordinates, timestamps, exclude },
+    { format: "json_buffer" },
+    (err, response) => {
+        // $ExpectType Buffer
+        response;
+    },
+);
 
 // Trip
 osrm.trip({ coordinates, exclude }, (err, response) => {
@@ -169,14 +199,21 @@ osrm.trip({ coordinates, exclude }, { format: "object" }, (err, response) => {
     response;
 });
 
-osrm.trip({ coordinates, exclude }, { format: "json_buffer" }, (err, response) => {
-    // $ExpectType Buffer
-    response;
-});
+osrm.trip(
+    { coordinates, exclude },
+    { format: "json_buffer" },
+    (err, response) => {
+        // $ExpectType Buffer
+        response;
+    },
+);
 
 // Round Trip
-osrm.trip({ coordinates, source: "first", destination: "last", roundtrip: false }, (err, response) => {
-    if (err) throw err;
-    console.log(response.waypoints); // array of Waypoint objects
-    console.log(response.trips); // array of Route objects
-});
+osrm.trip(
+    { coordinates, source: "first", destination: "last", roundtrip: false },
+    (err, response) => {
+        if (err) throw err;
+        console.log(response.waypoints); // array of Waypoint objects
+        console.log(response.trips); // array of Route objects
+    },
+);

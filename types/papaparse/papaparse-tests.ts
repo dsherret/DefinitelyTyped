@@ -28,7 +28,8 @@ Papa.parse("3,3,3", {
 
 // $ExpectType ParseResult<unknown>
 Papa.parse("3,3,3", {
-    dynamicTyping: (field: string | number): boolean => /headerName/i.test(field.toString()),
+    dynamicTyping: (field: string | number): boolean =>
+        /headerName/i.test(field.toString()),
 });
 
 // $ExpectType ParseResult<unknown>
@@ -198,7 +199,7 @@ Papa.parse(Papa.NODE_STREAM_INPUT);
 const readable = new Readable();
 const rows = ["1,2,3", "4,5,6"];
 
-rows.forEach(r => {
+rows.forEach((r) => {
     readable.push(r);
 });
 
@@ -282,7 +283,9 @@ Papa.unparse([{ a: 1, b: 1, c: 1 }], {});
 Papa.unparse([{ a: 1, b: 1, c: 1 }], { quotes: false });
 Papa.unparse([{ a: 1, b: 1, c: 1 }], { quotes: [false, true, true] });
 Papa.unparse([{ a: 1, b: 1, c: 1 }], { escapeFormulae: false });
-Papa.unparse([{ a: 1, b: 1, c: 1 }], { escapeFormulae: /^[=+\-@\t\r](?![\d.]*$)/ });
+Papa.unparse([{ a: 1, b: 1, c: 1 }], {
+    escapeFormulae: /^[=+\-@\t\r](?![\d.]*$)/,
+});
 Papa.unparse(
     [
         [1, 2, 3],
@@ -303,7 +306,7 @@ Papa.unparse(
         data: [],
     },
     {
-        quotes: value => typeof value === "string",
+        quotes: (value) => typeof value === "string",
     },
 );
 

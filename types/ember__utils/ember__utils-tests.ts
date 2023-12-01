@@ -1,6 +1,14 @@
-import { compare, isBlank, isEmpty, isEqual, isNone, isPresent, typeOf } from "@ember/utils";
+import {
+    compare,
+    isBlank,
+    isEmpty,
+    isEqual,
+    isNone,
+    isPresent,
+    typeOf,
+} from "@ember/utils";
 
-(function() {
+(function () {
     /** isNone */
     const maybeUndefined: string | undefined = "not actually undefined";
     if (isNone(maybeUndefined)) {
@@ -12,10 +20,10 @@ import { compare, isBlank, isEmpty, isEqual, isNone, isPresent, typeOf } from "@
     isNone(undefined); // $ExpectType boolean
     isNone(""); // $ExpectType boolean
     isNone([]); // $ExpectType boolean
-    isNone(function() {}); // $ExpectType boolean
+    isNone(function () {}); // $ExpectType boolean
 })();
 
-(function() {
+(function () {
     /** isPresent */
     isPresent(); // $ExpectType boolean
     isPresent(null); // $ExpectType boolean
@@ -29,18 +37,19 @@ import { compare, isBlank, isEmpty, isEqual, isNone, isPresent, typeOf } from "@
     isPresent(true); // $ExpectType boolean
     isPresent("string"); // $ExpectType boolean
     isPresent(0); // $ExpectType boolean
-    isPresent(function() {}); // $ExpectType boolean
+    isPresent(function () {}); // $ExpectType boolean
     isPresent({}); // $ExpectType boolean
     isPresent(false); // $ExpectType boolean
     isPresent("\n\t Hello"); // $ExpectType boolean
     isPresent([1, 2, 3]); // $ExpectType boolean
 })();
 
-(function() {
+(function () {
     /** typeOf */
     let x = "something" as unknown;
     typeOf(x); // $ExpectType AllTypeNames
-    if (typeOf(x) === "object") {}
+    if (typeOf(x) === "object") {
+    }
     typeOf(null); // $ExpectType "null"
     typeOf(undefined); // $ExpectType "undefined"
     typeOf("michael"); // $ExpectType "string"
@@ -82,19 +91,22 @@ import { compare, isBlank, isEmpty, isEqual, isNone, isPresent, typeOf } from "@
     typeOf(new Error("teamocil"));
 })();
 
-(function() {
+(function () {
     /** isEqual */
     isEqual("foo", "bar"); // $ExpectType boolean
     isEqual(14, 37); // $ExpectType boolean
     isEqual(14, "1"); // $ExpectType boolean
-    isEqual(() => 4, () => 37); // $ExpectType boolean
+    isEqual(
+        () => 4,
+        () => 37,
+    ); // $ExpectType boolean
     // @ts-expect-error
     isEqual(14);
     // @ts-expect-error
     isEqual();
 })();
 
-(function() {
+(function () {
     /** compare */
     compare("foo", "bar"); // $ExpectType number
     compare(14, 37); // $ExpectType number
@@ -108,7 +120,7 @@ import { compare, isBlank, isEmpty, isEqual, isNone, isPresent, typeOf } from "@
     compare();
 })();
 
-(function() {
+(function () {
     /** isBlank */
 
     isBlank(); // $ExpectType boolean
@@ -124,7 +136,7 @@ import { compare, isBlank, isEmpty, isEqual, isNone, isPresent, typeOf } from "@
     isBlank([1, 2, 3]); // $ExpectType boolean
 })();
 
-(function() {
+(function () {
     /** isEmpty */
 
     isEmpty(); // $ExpectType boolean

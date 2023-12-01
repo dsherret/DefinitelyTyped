@@ -12,13 +12,13 @@ function B_method() {
     // layui.modules['notExists'];
 
     // layui.define
-    layui.define(["layer", "form"], exports => {
+    layui.define(["layer", "form"], (exports) => {
         const layer = layui.layer;
         const form = layui.form;
         layer.msg("Hello World");
         exports("index", {}); // 注意，这里是模块输出的核心，模块名必须和 use 时的模块名一致
     });
-    layui.define(exports => {
+    layui.define((exports) => {
         // 从 layui 2.6 开始，如果你引入的是构建后的 layui.js，里面即包含了 layui 所有的内置模块，无需再指定内置模块。如
         //  需确保您的 layui.js 是引入的构建后的版本（即官网下载或 git 平台的发行版）
         // 直接可得到各种内置模块
@@ -31,7 +31,7 @@ function B_method() {
 
         exports("index", {}); // 注意，这里是模块输出的核心，模块名必须和 use 时的模块名一致
     });
-    layui.define(["layer", "laypage", "mod1"], exports => {
+    layui.define(["layer", "laypage", "mod1"], (exports) => {
         // 此处 mod1 为你的任意扩展模块
         // do something
 
@@ -41,7 +41,7 @@ function B_method() {
     });
 
     // layui 模块的使用
-    layui.use(["mod1", "mod2"], args => {
+    layui.use(["mod1", "mod2"], (args) => {
         // 缺陷1：没法给namespace添加数组支持
         // layui["a"];
         // ……
@@ -66,17 +66,20 @@ function B_method() {
         // do something
     });
     // 通过回调的参数得到模块对象
-    layui.use(["layer", "laydate", "table"], (layer: Layui.Layer, laydate, table) => {
-        // console.log(this.carousel);
-        // 使用 layer
-        layer.msg("test");
+    layui.use(
+        ["layer", "laydate", "table"],
+        (layer: Layui.Layer, laydate, table) => {
+            // console.log(this.carousel);
+            // 使用 layer
+            layer.msg("test");
 
-        // 使用 laydate
-        laydate.render({});
+            // 使用 laydate
+            laydate.render({});
 
-        // 使用 table
-        table.render({});
-    });
+            // 使用 table
+            table.render({});
+        },
+    );
     layui
         .config({
             base: "/res/js/modules/", // 你的扩展模块所在目录
@@ -189,10 +192,10 @@ function B_method() {
     layui.img("", () => 1);
     layui.img(
         "",
-        img => {
+        (img) => {
             img.sizes;
         },
-        e => {},
+        (e) => {},
     );
 
     layui.router(location.hash);
@@ -223,7 +226,7 @@ function B_method() {
     layui.sort([{ a: 3 }, { a: 1 }, { a: 5 }], "a");
     layui.sort([1, 2, 3, 4], "a");
 
-    window.document.onkeydown = e => {
+    window.document.onkeydown = (e) => {
         console.log(e);
         layui.stope(e);
     };
@@ -271,7 +274,7 @@ function carousel() {
             arrow: "always", // 始终显示箭头
             anim: "updown", // 切换动画方式
         });
-        carousel.on("change(test1)", obj => {
+        carousel.on("change(test1)", (obj) => {
             // test1来源于对应HTML容器的 lay-filter="test1" 属性值
             // this.config.width;
             // this.elemItem;
@@ -309,17 +312,23 @@ function colorpicker() {
         colorpicker.render({
             elem: "#test1",
             predefine: true,
-            colors: ["#F00", "#0F0", "#00F", "rgb(255, 69, 0)", "rgba(255, 69, 0, 0.5)"],
+            colors: [
+                "#F00",
+                "#0F0",
+                "#00F",
+                "rgb(255, 69, 0)",
+                "rgba(255, 69, 0, 0.5)",
+            ],
         });
         colorpicker.render({
             elem: "#test1",
-            change: color => {
+            change: (color) => {
                 console.log(color);
             },
         });
         colorpicker.render({
             elem: "#test1",
-            done: color => {
+            done: (color) => {
                 // this.format;
                 // this.change;
                 console.log(color);
@@ -330,9 +339,15 @@ function colorpicker() {
         colorpicker.set({
             elem: "#test1",
             predefine: true,
-            colors: ["#F00", "#0F0", "#00F", "rgb(255, 69, 0)", "rgba(255, 69, 0, 0.5)"],
+            colors: [
+                "#F00",
+                "#0F0",
+                "#00F",
+                "rgb(255, 69, 0)",
+                "rgba(255, 69, 0, 0.5)",
+            ],
         });
-        colorpicker.on("confirm", a => {
+        colorpicker.on("confirm", (a) => {
             console.log(a + ",");
         });
         layui.event("colorpicker", "confirm", [1, 2]);
@@ -474,7 +489,7 @@ function elementTest() {
         const element = layui.element;
         element.config["notExists"];
         //  一些事件监听
-        element.on("tab(demo)", data => {
+        element.on("tab(demo)", (data) => {
             console.log(data);
         });
         element.tabDelete("demo", "xxx"); // 删除 lay-id="xxx" 的这一项
@@ -499,20 +514,20 @@ function elementTest() {
         element.init(); //  更新全部  2.1.6 可用 element.render() 方法替代
         element.render("nav"); //  重新对导航进行渲染。注：layui 2.1.6 版本新增
         element.render("nav", "test1"); //  对 lay-filter="test1" 所在导航重新渲染。注：layui 2.1.6 版本新增
-        element.on("tab(filter)", data => {
+        element.on("tab(filter)", (data) => {
             // console.log(this); //  当前Tab标题所在的原始DOM元素
             console.log(data.index); //  得到当前Tab的所在下标
             console.log(data.elem); //  得到当前的Tab大容器
         });
-        element.on("tabDelete(filter)", data => {
+        element.on("tabDelete(filter)", (data) => {
             // console.log(this); //  当前Tab标题所在的原始DOM元素
             console.log(data.index); //  得到当前Tab的所在下标
             console.log(data.elem); //  得到当前的Tab大容器
         });
-        element.on("nav(filter)", elem => {
+        element.on("nav(filter)", (elem) => {
             console.log(elem); //  得到当前点击的DOM对象
         });
-        element.on("collapse(filter)", data => {
+        element.on("collapse(filter)", (data) => {
             console.log(data.show); // 得到当前面板的展开状态，true或者false
             console.log(data.title); // 得到当前点击面板的标题区域DOM对象
             console.log(data.content); // 得到当前点击面板的内容区域DOM对象
@@ -539,7 +554,7 @@ function flowTest() {
                 // 到达临界点（默认滚动触发），触发下一页
                 const lis: string[] = [];
                 // 以jQuery的Ajax请求为例，请求下一页数据（注意：page是从2开始返回）
-                $.get("/api/list?page=" + page, res => {
+                $.get("/api/list?page=" + page, (res) => {
                     // 假设你的列表返回在data集合中
                     layui.each(res.data, (index, item) => {
                         lis.push(`<li>${item.title}</li>`);
@@ -559,7 +574,7 @@ function formTest() {
         const form = layui.form;
 
         // 监听提交
-        form.on("submit(formDemo)", data => {
+        form.on("submit(formDemo)", (data) => {
             // layer.msg(JSON.stringify(data.field));
             return false;
         });
@@ -568,7 +583,9 @@ function formTest() {
             username: (value: string, item: HTMLElement) => {
                 // value：表单的值、item：表单的DOM对象
 
-                if (!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)) {
+                if (
+                    !new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)
+                ) {
                     return "用户名不能有特殊字符";
                 }
                 if (/(^\_)|(\__)|(\_+$)/.test(value)) {
@@ -595,10 +612,10 @@ function formTest() {
     const t = $(document.body);
     layui.form.getValue("test2");
 
-    layui.form.on("select(select)", data => {
+    layui.form.on("select(select)", (data) => {
         console.log(data);
     });
-    layui.form.on("checkbox(checkbox)", data => {
+    layui.form.on("checkbox(checkbox)", (data) => {
         data.othis.find("");
         console.log(data);
     });
@@ -610,7 +627,7 @@ function formTest() {
 }
 
 function testJquery() {
-    layui.define(exports => {
+    layui.define((exports) => {
         layui.$ = jQuery;
         exports("jquery", jQuery);
     });
@@ -652,16 +669,16 @@ function layTest() {
     layui.lay("").each;
     layui.lay("").addClass("");
     layui.lay("").length;
-    layui.lay("#abc").on("click", e => {
+    layui.lay("#abc").on("click", (e) => {
         console.log();
     });
-    layui.laypage.on(document.getElementById("abc"), "click", e => {
+    layui.laypage.on(document.getElementById("abc"), "click", (e) => {
         console.log(e);
     });
     const eme = document.getElementById("abc");
     if (eme) {
         // let elem: HTMLButtonElement = eme;
-        layui.laypage.on(null, "click", e => {
+        layui.laypage.on(null, "click", (e) => {
             console.log(e);
         });
     }
@@ -719,7 +736,7 @@ function laydateTest() {
                 "2017-8-20": "预发", // 如果为空字符，则默认显示数字+徽章
                 "2017-8-21": "发布",
             },
-            ready: date => {
+            ready: (date) => {
                 ins1.hint("打开"); // 在控件上弹出value值
                 console.log(date); // 得到初始的日期时间对象：{year: 2017, month: 8, date: 18, hours: 0, minutes: 0, seconds: 0}
             },
@@ -779,7 +796,7 @@ function layeditTest() {
 }
 
 function layerTest() {
-    layui.use("layer", layer => {
+    layui.use("layer", (layer) => {
         /*
         如果是页面层
         */
@@ -792,7 +809,7 @@ function layerTest() {
             content: $("#id"), // 这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
         });
         // Ajax获取
-        $.post("url", {}, str => {
+        $.post("url", {}, (str) => {
             layer.open({
                 type: 1,
                 content: str, // 注意，如果str是object，那么需要字符拼接。
@@ -840,7 +857,7 @@ function layerTest() {
             (index, layero) => {
                 // 按钮【按钮一】的回调
             },
-            index => {
+            (index) => {
                 // 按钮【按钮二】的回调
             },
         );
@@ -864,7 +881,7 @@ function layerTest() {
                 // 右上角关闭回调
                 // return false 开启该代码可禁止点击该按钮关闭
             },
-            resizing: layero => {
+            resizing: (layero) => {
                 console.log(layero);
             },
             success: (layero, index) => {
@@ -912,7 +929,7 @@ function layerTest() {
         // eg2
         layer.alert("加了个图标", { icon: 1 }); // 这时如果你也还想执行yes回调，可以放在第三个参数中。
         // eg3
-        layer.alert("有了回调", index => {
+        layer.alert("有了回调", (index) => {
             // do something
 
             layer.close(index);
@@ -920,7 +937,7 @@ function layerTest() {
 
         layer.confirm(1);
         // eg1
-        layer.confirm("is not?", { icon: 3, title: "提示" }, index => {
+        layer.confirm("is not?", { icon: 3, title: "提示" }, (index) => {
             // do something
 
             layer.close(index);
@@ -1037,7 +1054,7 @@ function layerTest() {
             maxmin: true,
             content: "http://www.layui.com",
             zIndex: layer.zIndex, // 重点1
-            success: layero => {
+            success: (layero) => {
                 layer.setTop(layero); // 重点2
                 layero.css("z-index", 0);
             },
@@ -1091,7 +1108,7 @@ function layerTest() {
             maxmin: true,
             content: "http://www.layui.com",
             zIndex: layer.zIndex, // 重点1
-            success: layero => {
+            success: (layero) => {
                 layer.setTop(layero); // 重点2
             },
         });
@@ -1138,7 +1155,7 @@ function layerTest() {
                 },
             ],
         });
-        $.getJSON("/jquery/layer/test/photos.json", json => {
+        $.getJSON("/jquery/layer/test/photos.json", (json) => {
             layer.photos({
                 photos: json,
                 anim: 5, // 0-6的选择，指定弹出图片动画类型，默认随机（请注意，3.0之前的版本用shift参数）
@@ -1175,7 +1192,7 @@ function laytplTest() {
             {
                 name: "贤心",
             },
-            string => {
+            (string) => {
                 console.log(string); // 贤心是一位公猿
             },
         );
@@ -1187,7 +1204,12 @@ function laytplTest() {
         console.log(string); // 贤心是一位公猿
 
         // 如果模板较大，你也可以采用数据的写法，这样会比较直观一些
-        laytpl(["{{ d.name }}是一位公猿", "其它字符 {{ d.content }}  其它字符"].join(""));
+        laytpl(
+            [
+                "{{ d.name }}是一位公猿",
+                "其它字符 {{ d.content }}  其它字符",
+            ].join(""),
+        );
 
         const data = {
             // 数据
@@ -1199,7 +1221,7 @@ function laytplTest() {
         };
         const getTpl = document.body.innerHTML;
         const view = document.getElementById("view");
-        laytpl(getTpl).render(data, html => {
+        laytpl(getTpl).render(data, (html) => {
             if (view) {
                 view["innerHTML"] = html;
             }
@@ -1220,14 +1242,14 @@ function laytplTest() {
         // 分割符将必须采用上述定义的
         laytpl(
             [
-                "<%# let type = \"公\"; %>", // JS 表达式
+                '<%# let type = "公"; %>', // JS 表达式
                 "<% d.name %>是一位<% type %>猿。",
             ].join(""),
         ).render(
             {
                 name: "贤心",
             },
-            string => {
+            (string) => {
                 console.log(string); // 贤心是一位公猿
             },
         );
@@ -1269,7 +1291,7 @@ function SliderTest() {
         const x = slider.render({
             elem: "#slideTest1",
             range: true,
-            change: value => {
+            change: (value) => {
                 // console.log(value[0]); // 得到开始值
                 // console.log(value[1]); // 得到结尾值
                 // do something
@@ -1285,9 +1307,9 @@ function SliderTest() {
 }
 
 function tableTest() {
-    layui.use(a => {
+    layui.use((a) => {
         layui.layer.load(1, {});
-        layui.form.on("", a => {
+        layui.form.on("", (a) => {
             layui.form.val("", {});
         });
         layui.form.getValue("", $(""));
@@ -1299,16 +1321,31 @@ function tableTest() {
                 [
                     // 标题栏
                     { checkbox: true },
-                    { field: "test", title: "abc", width: "12", minWidth: 12, type: "space", templet: "#titleTpl" },
+                    {
+                        field: "test",
+                        title: "abc",
+                        width: "12",
+                        minWidth: 12,
+                        type: "space",
+                        templet: "#titleTpl",
+                    },
                     { LAY_CHECKED: true, fixed: "left", hide: true },
                     {
                         totalRow: { score: "666", experience: "999" },
-                        templet: d => {
+                        templet: (d) => {
                             return d.aa;
                         },
                     },
-                    { totalRowText: "合计：", sort: true, unresize: true, edit: "text" },
-                    { event: "btn01", style: "background-color: #5FB878; color: #fff;" },
+                    {
+                        totalRowText: "合计：",
+                        sort: true,
+                        unresize: true,
+                        edit: "text",
+                    },
+                    {
+                        event: "btn01",
+                        style: "background-color: #5FB878; color: #fff;",
+                    },
                     { align: "left", colspan: 1, rowspan: 2 },
                     {
                         templet() {
@@ -1377,13 +1414,28 @@ function tableTest() {
                 text: {
                     none: "暂无相关数据", // 默认：无数据。
                 },
-                defaultToolbar: ["filter", { title: "123", layEvent: "", icon: "" }],
+                defaultToolbar: [
+                    "filter",
+                    { title: "123", layEvent: "", icon: "" },
+                ],
 
                 cols: [
                     [
                         // {LAY_CHECKED: true,checkbox: true,fixed: "left"}
-                        { field: "id", title: "ID", unresize: true, sort: true, totalRowText: "合计行", rowspan: 2 },
-                        { field: "username", title: "用户名", edit: "text", rowspan: 2 },
+                        {
+                            field: "id",
+                            title: "ID",
+                            unresize: true,
+                            sort: true,
+                            totalRowText: "合计行",
+                            rowspan: 2,
+                        },
+                        {
+                            field: "username",
+                            title: "用户名",
+                            edit: "text",
+                            rowspan: 2,
+                        },
                         { title: "个人信息", colspan: 2, align: "center" },
                         /*
 
@@ -1404,11 +1456,18 @@ function tableTest() {
                             rowspan: 1,
                             templet(d) {
                                 d.LAY_COL.type;
-                                d["你可以用 d.xx 来使用当前行的其他属性"] === undefined;
+                                d["你可以用 d.xx 来使用当前行的其他属性"] ===
+                                    undefined;
                                 return d.LAY_COL.type + d.email;
                             },
                         },
-                        { field: "experience", title: "积分", sort: true, totalRow: true, rowspan: 1 },
+                        {
+                            field: "experience",
+                            title: "积分",
+                            sort: true,
+                            totalRow: true,
+                            rowspan: 1,
+                        },
                     ],
                 ],
                 data: [
@@ -1441,7 +1500,7 @@ function tableTest() {
                 response: {
                     statusCode: 200, // 重新规定成功的状态码为 200，table 组件默认为 0
                 },
-                parseData: res => {
+                parseData: (res) => {
                     // 将原始数据解析成 table 组件所规定的数据
                     return {
                         code: res.status, // 解析接口状态
@@ -1466,7 +1525,7 @@ function tableTest() {
         rendered.setColsWidth();
         rendered.resize();
 
-        layui.table.on("tool(test)", obj => {
+        layui.table.on("tool(test)", (obj) => {
             //  注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
             const data = obj.data; // 获得当前行数据
             const layEvent = obj.event; // 获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
@@ -1476,7 +1535,7 @@ function tableTest() {
                 case "detail":
                     break;
                 case "del":
-                    layui.layer.confirm("真的删除行么", index => {
+                    layui.layer.confirm("真的删除行么", (index) => {
                         obj.del(); // 删除对应行（tr）的DOM结构，并更新缓存
                         layui.layer.close(index);
                         // 向服务端发送删除指令
@@ -1499,7 +1558,7 @@ function tableTest() {
             checkStatus.data.length;
         }
         layui.table.exportFile("id", []);
-        layui.table.on("sort(test)", obj => {
+        layui.table.on("sort(test)", (obj) => {
             // 注：sort 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
             console.log(obj.field); // 当前排序的字段名
             console.log(obj.type); // 当前排序类型：desc（降序）、asc（升序）、null（空对象，默认排序）
@@ -1520,7 +1579,7 @@ function tableTest() {
         });
     });
 
-    layui.table.on("checkbox(test)", obj => {
+    layui.table.on("checkbox(test)", (obj) => {
         const data: Layui.TableOnCheckbox = obj;
         data.del;
         data.checked;
@@ -1529,12 +1588,12 @@ function tableTest() {
         data.update({});
     });
 
-    layui.table.on("toolbar(test)", obj => {
+    layui.table.on("toolbar(test)", (obj) => {
         const data: Layui.TableOnToolbar = obj;
         data.config.autoSort;
         data.event;
     });
-    layui.table.on("tool(test)", obj => {
+    layui.table.on("tool(test)", (obj) => {
         const data: Layui.TableOnTool = obj;
         data.data;
         data.del();
@@ -1543,14 +1602,14 @@ function tableTest() {
         data.update({});
     });
 
-    layui.table.on("row(test)", obj => {
+    layui.table.on("row(test)", (obj) => {
         const data: Layui.TableOnRow = obj;
         data.data;
         data.del();
         data.tr[0];
         data.update({});
     });
-    layui.table.on("edit(test)", obj => {
+    layui.table.on("edit(test)", (obj) => {
         const data: Layui.TableOnEdit = obj;
         data.data;
         data.del();
@@ -1559,7 +1618,7 @@ function tableTest() {
         data.update({});
         data.value;
     });
-    layui.table.on("sort(test)", obj => {
+    layui.table.on("sort(test)", (obj) => {
         const data: Layui.TableOnSort = obj;
         data.field;
         data.type;
@@ -1571,7 +1630,7 @@ function tableTest() {
     });
 
     // 工具条事件
-    layui.table.on("tool(test)", obj => {
+    layui.table.on("tool(test)", (obj) => {
         // 注：tool 是工具条事件名，test 是 table 原始容器的属性 lay-filter="对应的值"
         const data = obj.data; // 获得当前行数据
         const layEvent = obj.event; // 获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
@@ -1582,7 +1641,7 @@ function tableTest() {
             }
             case "del": {
                 // 删除
-                layui.layer.confirm("真的删除行么", index => {
+                layui.layer.confirm("真的删除行么", (index) => {
                     obj.del(); // 删除对应行（tr）的DOM结构，并更新缓存
                     layui.layer.close(index);
                     // 向服务端发送删除指令
@@ -1734,14 +1793,14 @@ function treeTest() {
 
         layui.tree.render({
             elem: "#test1",
-            click: obj => {
+            click: (obj) => {
                 console.log(obj.data); // 得到当前点击的节点数据
                 console.log(obj.state); // 得到当前节点的展开状态：open、close、normal
                 console.log(obj.elem); // 得到当前节点元素
 
                 console.log(obj.data.children); // 当前节点下是否有子节点
             },
-            oncheck: obj => {
+            oncheck: (obj) => {
                 const checkData = tree.getChecked("abcd");
                 checkData[0].checked;
                 tree.setChecked("abcd", [1]);
@@ -1755,7 +1814,7 @@ function treeTest() {
                 console.log(obj.checked); // 得到当前节点的展开状态：open、close、normal
                 console.log(obj.elem); // 得到当前节点元素
             },
-            operate: obj => {
+            operate: (obj) => {
                 const type = obj.type; // 得到操作类型：add、update、del
                 const data = obj.data; // 得到当前节点的数据
                 const elem = obj.elem; // 得到当前节点元素
@@ -1818,12 +1877,12 @@ function uploadTest() {
             size: 0, // 文件限制大小，默认不限制
             number: 0, // 允许同时上传的文件数，默认不限制
             multiple: false, // 是否允许多文件上传，不支持ie8-9
-            before: obj => {
+            before: (obj) => {
                 // obj参数包含的信息，跟 choose回调完全一致，可参见上文。
                 // this.item;
                 layui.layer.load(); // 上传loading
             },
-            allDone: obj => {
+            allDone: (obj) => {
                 // 当文件全部被提交后，才触发
                 console.log(obj.total); // 得到总文件数
                 console.log(obj.successful); // 请求成功的文件数
@@ -1832,7 +1891,7 @@ function uploadTest() {
             progress: (n, elem: HTMLButtonElement, res, index) => {
                 const x: HTMLButtonElement = elem;
                 x.value;
-                x.addEventListener("click", e => 1);
+                x.addEventListener("click", (e) => 1);
                 elem.value;
                 const percent = n + "%"; // 获取进度百分比
                 layui.element.progress("demo", percent); // 可配合 layui 进度条元素使用
@@ -1863,7 +1922,7 @@ function uploadTest() {
                 upload();
                 // 当上传失败时，你可以生成一个“重新上传”的按钮，点击该按钮时，执行 upload() 方法即可实现重新上传
             },
-            choose: obj => {
+            choose: (obj) => {
                 const f = new File(["", ""], "");
                 const formData = new FormData();
                 formData.append(",", f);
@@ -1903,7 +1962,7 @@ function utilTest() {
 
         const x = layui.use(
             "util",
-            util => {
+            (util) => {
                 util.toDateString;
             },
             exported,
@@ -1940,7 +1999,7 @@ function utilTest() {
         // 单个存在
         let x = layui.use(
             "util",
-            util => {
+            (util) => {
                 util.toDateString;
             },
             exported,
@@ -1949,7 +2008,7 @@ function utilTest() {
         // 单个不存在
         x = layui.use(
             "a",
-            util => {
+            (util) => {
                 util.toDateString;
             },
             exported,
@@ -1959,7 +2018,7 @@ function utilTest() {
         // 单个数组存在
         x = layui.use(
             ["util"],
-            util => {
+            (util) => {
                 util.toDateString;
             },
             exported,
@@ -1968,15 +2027,19 @@ function utilTest() {
         // 单个数组不存在
         x = layui.use(
             ["a"],
-            util => {
+            (util) => {
                 util.toDateString;
             },
             exported,
         );
         console.log(x.v);
 
-        x = layui.use(["util", "form", "b"], (a: Layui.Util, b, c) => {}, exported);
-        layui.use(aa => {
+        x = layui.use(
+            ["util", "form", "b"],
+            (a: Layui.Util, b, c) => {},
+            exported,
+        );
+        layui.use((aa) => {
             aa.config;
             aa.time;
         });
@@ -2003,7 +2066,7 @@ function utilTest() {
         // 执行
         util.fixbar({
             bar1: true,
-            click: type => {
+            click: (type) => {
                 console.log(type);
                 if (type === "bar1") {
                     alert("点击了bar1");
@@ -2029,13 +2092,13 @@ function utilTest() {
 
         // 处理属性 为 lay-active 的所有元素事件
         util.event("lay-active", {
-            e1: othis => {
+            e1: (othis) => {
                 alert("触发了事件1");
             },
-            e2: othis => {
+            e2: (othis) => {
                 alert("触发了事件2");
             },
-            e3: othis => {
+            e3: (othis) => {
                 alert("触发了事件3");
             },
         });

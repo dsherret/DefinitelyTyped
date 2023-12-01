@@ -5,6 +5,8 @@ export interface VirtualAnchorElement {
     ownerDocument: Document;
 }
 
-export function useAnchor(
-    param: { editableContentElement: HTMLElement | null; value: Value; settings?: Format },
-): Element | VirtualAnchorElement | undefined | null;
+export function useAnchor(param: {
+    editableContentElement: HTMLElement | null;
+    value: Value;
+    settings?: Format;
+}): Element | VirtualAnchorElement | undefined | null;

@@ -11,14 +11,22 @@ export interface ParcelWatcherEvent {
     path: string;
 }
 
-export type ParcelWatcherBackend = "fs-events" | "watchman" | "inotify" | "windows" | "brute-force";
+export type ParcelWatcherBackend =
+    | "fs-events"
+    | "watchman"
+    | "inotify"
+    | "windows"
+    | "brute-force";
 
 export interface ParcelWatcherOptions {
     ignore?: string[] | undefined;
     backend?: ParcelWatcherBackend | undefined;
 }
 
-export type ParcelWatcherCallback = (error?: Error, events?: ParcelWatcherEvent[]) => any;
+export type ParcelWatcherCallback = (
+    error?: Error,
+    events?: ParcelWatcherEvent[],
+) => any;
 
 export function getEventsSince(
     dirPath: string,
@@ -38,4 +46,8 @@ export function unsubscribe(
     options?: ParcelWatcherOptions,
 ): Promise<void>;
 
-export function writeSnapshot(dirPath: string, snapshotPath: string, options?: ParcelWatcherOptions): Promise<void>;
+export function writeSnapshot(
+    dirPath: string,
+    snapshotPath: string,
+    options?: ParcelWatcherOptions,
+): Promise<void>;

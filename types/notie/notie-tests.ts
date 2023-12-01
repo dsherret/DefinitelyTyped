@@ -1,4 +1,13 @@
-import { alert, confirm, date, force, hideAlerts, input, select, setOptions } from "notie";
+import {
+    alert,
+    confirm,
+    date,
+    force,
+    hideAlerts,
+    input,
+    select,
+    setOptions,
+} from "notie";
 
 // @ts-expect-error
 alert({});

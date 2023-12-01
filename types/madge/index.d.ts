@@ -9,7 +9,10 @@ export = madge;
  * @param config The configuration to use (optional).
  * @returns A Promise resolved with the MadgeInstance object.
  */
-declare function madge(path: madge.MadgePath, config?: madge.MadgeConfig): Promise<madge.MadgeInstance>;
+declare function madge(
+    path: madge.MadgePath,
+    config?: madge.MadgeConfig,
+): Promise<madge.MadgeInstance>;
 
 declare namespace madge {
     /**

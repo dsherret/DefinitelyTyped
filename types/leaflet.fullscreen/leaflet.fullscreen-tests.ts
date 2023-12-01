@@ -16,11 +16,13 @@ const icon: L.Control.Fullscreen = L.control.fullscreen({
 icon.addTo(map);
 
 // My Usage
-L.control.fullscreen({
-    position: "topleft",
-    content: "<i class=\"fa fa-arrows-alt\"></i>",
-    forceSeparateButton: true,
-}).addTo(map);
+L.control
+    .fullscreen({
+        position: "topleft",
+        content: '<i class="fa fa-arrows-alt"></i>',
+        forceSeparateButton: true,
+    })
+    .addTo(map);
 
 // MapOptions initHook
 L.map("map-container", {

@@ -1,7 +1,7 @@
 import * as R from "ramda";
 
 // array
-(() => {
+() => {
     function duplicate(n: number) {
         return [n, n];
     }
@@ -31,10 +31,10 @@ import * as R from "ramda";
     R.chain(duplicateReadonly, [1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
     // $ExpectType number[]
     R.chain(duplicateReadonly)([1, 2, 3]); // => [1, 1, 2, 2, 3, 3]
-});
+};
 
 // monad
-(() => {
+() => {
     abstract class Maybe<A> {
         constructor(public value: A) {}
     }
@@ -63,10 +63,12 @@ import * as R from "ramda";
         }
     }
 
-    const findIndexMaybe = <A>(pred: (value: A) => boolean) => (arr: A[]): Maybe<number> => {
-        const index = arr.findIndex(pred);
-        return index === -1 ? Nothing.of<number>() : Just.of(index);
-    };
+    const findIndexMaybe =
+        <A>(pred: (value: A) => boolean) =>
+        (arr: A[]): Maybe<number> => {
+            const index = arr.findIndex(pred);
+            return index === -1 ? Nothing.of<number>() : Just.of(index);
+        };
 
     const sqrtMaybe = (value: number): Maybe<number> => {
         const result = Math.sqrt(value);
@@ -74,13 +76,16 @@ import * as R from "ramda";
     };
 
     // $ExpectType Maybe<number>
-    R.chain(findIndexMaybe<number>(x => x === 2), Just.of([1, 2, 3]));
+    R.chain(
+        findIndexMaybe<number>((x) => x === 2),
+        Just.of([1, 2, 3]),
+    );
     // $ExpectType Maybe<number>
     R.chain(sqrtMaybe, Just.of(4));
-});
+};
 
 // transducer
-(() => {
+() => {
     interface Score {
         maths: number;
         physics: number;
@@ -99,10 +104,16 @@ import * as R from "ramda";
         return maths + physics + chemistry;
     };
 
-    const assocTotalToScore = (total: number, score: Score): Score => ({ ...score, total });
+    const assocTotalToScore = (total: number, score: Score): Score => ({
+        ...score,
+        total,
+    });
 
     // $ExpectType (r: Score) => Score
-    const calculateAndAssocTotalToScore = R.chain<number, Score, Score>(assocTotalToScore, calculateTotal);
+    const calculateAndAssocTotalToScore = R.chain<number, Score, Score>(
+        assocTotalToScore,
+        calculateTotal,
+    );
     // $ExpectType Score
     const scoreWithTotal = calculateAndAssocTotalToScore(score); // => { maths: 90, physics: 80, chemistry: 70, total: 240 }
-});
+};

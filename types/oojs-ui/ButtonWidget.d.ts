@@ -23,16 +23,13 @@ declare namespace OO.ui {
 
     namespace ButtonWidget {
         interface EventMap
-            extends
-                Widget.EventMap,
+            extends Widget.EventMap,
                 mixin.ButtonElement.EventMap,
                 mixin.LabelElement.EventMap,
-                mixin.FlaggedElement.EventMap
-        {}
+                mixin.FlaggedElement.EventMap {}
 
         interface ConfigOptions
-            extends
-                Widget.ConfigOptions,
+            extends Widget.ConfigOptions,
                 mixin.ButtonElement.ConfigOptions,
                 mixin.IconElement.ConfigOptions,
                 mixin.IndicatorElement.ConfigOptions,
@@ -40,8 +37,7 @@ declare namespace OO.ui {
                 mixin.TitledElement.ConfigOptions,
                 mixin.FlaggedElement.ConfigOptions,
                 mixin.TabIndexedElement.ConfigOptions,
-                mixin.AccessKeyedElement.ConfigOptions
-        {
+                mixin.AccessKeyedElement.ConfigOptions {
             /** Whether button should be shown as active */
             active?: boolean;
             /** Hyperlink to visit when the button is clicked. */
@@ -53,24 +49,23 @@ declare namespace OO.ui {
             /** Relationship attributes for the hyperlink */
             rel?: string | string[];
 
-            flags?: LiteralUnion<mixin.ButtonElement.Flag> | Array<LiteralUnion<mixin.ButtonElement.Flag>>;
+            flags?:
+                | LiteralUnion<mixin.ButtonElement.Flag>
+                | Array<LiteralUnion<mixin.ButtonElement.Flag>>;
         }
 
         interface Static
-            extends
-                Widget.Static,
+            extends Widget.Static,
                 mixin.ButtonElement.Static,
                 mixin.IconElement.Static,
                 mixin.IndicatorElement.Static,
                 mixin.LabelElement.Static,
                 mixin.TitledElement.Static,
                 mixin.FlaggedElement.Static,
-                mixin.AccessKeyedElement.Static
-        {}
+                mixin.AccessKeyedElement.Static {}
 
         interface Props
-            extends
-                Widget.Props,
+            extends Widget.Props,
                 mixin.ButtonElement.Props,
                 mixin.IconElement.Props,
                 mixin.IndicatorElement.Props,
@@ -78,12 +73,10 @@ declare namespace OO.ui {
                 mixin.TitledElement.Props,
                 mixin.FlaggedElement.Props,
                 mixin.TabIndexedElement.Props,
-                mixin.AccessKeyedElement.Props
-        {}
+                mixin.AccessKeyedElement.Props {}
 
         interface Prototype
-            extends
-                Widget.Prototype,
+            extends Widget.Prototype,
                 mixin.ButtonElement.Prototype,
                 mixin.IconElement.Prototype,
                 mixin.IndicatorElement.Prototype,
@@ -91,8 +84,7 @@ declare namespace OO.ui {
                 mixin.TitledElement.Prototype,
                 mixin.FlaggedElement.Prototype,
                 mixin.TabIndexedElement.Prototype,
-                mixin.AccessKeyedElement.Prototype
-        {
+                mixin.AccessKeyedElement.Prototype {
             /**
              * Get hyperlink location.
              *
@@ -156,7 +148,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -167,7 +162,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -175,7 +173,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -184,11 +185,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -204,7 +217,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): ButtonWidget;
+            new (config?: ConfigOptions): ButtonWidget;
             prototype: Prototype;
             static: Static;
             super: Widget.Constructor;

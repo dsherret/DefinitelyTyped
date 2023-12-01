@@ -24,8 +24,16 @@ const noise = new Noise("IK", true); // $ExpectType NoiseState
 new Noise("XX", true); // $ExpectType NoiseState
 // @ts-expect-error
 new Noise("foo", true);
-new Noise("IK", true, { publicKey: Buffer.alloc(32), secretKey: Buffer.alloc(32) }); // $ExpectType NoiseState
-new Noise("IK", true, { publicKey: Buffer.alloc(32), secretKey: Buffer.alloc(32) }, { curve }); // $ExpectType NoiseState
+new Noise("IK", true, {
+    publicKey: Buffer.alloc(32),
+    secretKey: Buffer.alloc(32),
+}); // $ExpectType NoiseState
+new Noise(
+    "IK",
+    true,
+    { publicKey: Buffer.alloc(32), secretKey: Buffer.alloc(32) },
+    { curve },
+); // $ExpectType NoiseState
 
 noise.s; // $ExpectType KeyPair
 buf = noise.s.publicKey;

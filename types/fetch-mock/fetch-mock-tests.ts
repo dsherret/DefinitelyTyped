@@ -65,9 +65,11 @@ calledStatus = fetchMock.called("http://test.com", "GET");
 calledStatus = fetchMock.called("http://test.com", {
     method: "GET",
 });
-calledStatus = fetchMock.called((url: string, opts: fetchMock.MockRequest): boolean => {
-    return true;
-});
+calledStatus = fetchMock.called(
+    (url: string, opts: fetchMock.MockRequest): boolean => {
+        return true;
+    },
+);
 calledStatus = fetchMock.called(fetchMock.MATCHED);
 calledStatus = fetchMock.called(fetchMock.UNMATCHED);
 
@@ -112,28 +114,30 @@ fetchMock.get("http://test.com", 200, { method: "GET", overwriteRoutes: true });
 fetchMock.get("http://test.com", 200, { overwriteRoutes: true });
 fetchMock.post("http://test.com", 200, { method: "POST" });
 fetchMock.post("http://test.com", 200, { method: "POST", body: "abc" });
-fetchMock.post("http://test.com", 200, { method: "POST", body: { foo: "bar" } });
-fetchMock.post("http://test.com", 200, { method: "POST", body: ["foo", "bar"] });
+fetchMock.post("http://test.com", 200, {
+    method: "POST",
+    body: { foo: "bar" },
+});
+fetchMock.post("http://test.com", 200, {
+    method: "POST",
+    body: ["foo", "bar"],
+});
 fetchMock.put("http://test.com", 200, { method: "PUT" });
 fetchMock.delete("http://test.com", 200, { method: "DELETE" });
 fetchMock.head("http://test.com", 200, { method: "HEAD" });
 
-fetchMock
-    .mock("http://test.com", 200)
-    .catch(503);
+fetchMock.mock("http://test.com", 200).catch(503);
 
-fetchMock
-    .mock("http://test.com", 200)
-    .spy();
+fetchMock.mock("http://test.com", 200).spy();
 
 const myMatcher: fetchMock.MockMatcherFunction = (
     url: string,
     opts: fetchMock.MockRequest,
 ) => true;
 
-fetchMock.flush().then(resolved => resolved.forEach(console.log));
-fetchMock.flush().catch(r => r);
-fetchMock.flush(true).catch(r => r);
+fetchMock.flush().then((resolved) => resolved.forEach(console.log));
+fetchMock.flush().catch((r) => r);
+fetchMock.flush(true).catch((r) => r);
 
 fetchMock.get("http://test.com", {
     body: "abc",

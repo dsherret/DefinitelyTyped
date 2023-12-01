@@ -13,16 +13,16 @@ const instance2 = Layzr(options);
 instance.emit("src:before", 4, "yg", () => {});
 
 instance
-    .on("src:before", element => {
+    .on("src:before", (element) => {
         console.log(element);
     })
-    .once("src:before", element => {
+    .once("src:before", (element) => {
         console.log(element);
     })
-    .on("src:after", element => {
+    .on("src:after", (element) => {
         console.log(element);
     })
-    .once("src:after", element => {
+    .once("src:after", (element) => {
         console.log(element);
     })
     .handlers(true)

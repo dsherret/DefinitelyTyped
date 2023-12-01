@@ -1,6 +1,10 @@
 /// <reference types="jquery" />
 
-type SumoSelectEvents = "sumo:opening" | "sumo:opened" | "sumo:closing" | "sumo:closed";
+type SumoSelectEvents =
+    | "sumo:opening"
+    | "sumo:opened"
+    | "sumo:closing"
+    | "sumo:closed";
 
 type Option = Partial<{
     /**

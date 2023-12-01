@@ -71,7 +71,9 @@ interface BootboxPromptOptions extends BootboxBaseOptions<string> {
     inputType?: BootboxInputType | undefined;
     callback: (result: string) => any;
     buttons?: BootboxConfirmPromptButtonMap | undefined;
-    inputOptions?: Array<{ text: string; value: string; group?: string | undefined }> | undefined;
+    inputOptions?:
+        | Array<{ text: string; value: string; group?: string | undefined }>
+        | undefined;
 }
 
 /** Bootbox options available when setting defaults for modals */

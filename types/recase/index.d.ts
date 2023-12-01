@@ -3,7 +3,9 @@ export interface Recase {
     snakeCopy(orig: any): any;
 }
 export function create(opts: {
-    exceptions?: {
-        [origKey: string]: string;
-    } | undefined;
+    exceptions?:
+        | {
+              [origKey: string]: string;
+          }
+        | undefined;
 }): Recase;

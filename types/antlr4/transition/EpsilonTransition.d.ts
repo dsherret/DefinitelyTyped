@@ -7,5 +7,9 @@ export default class EpsilonTransition extends Transition {
 
     constructor(target: ATNState, outermostPrecedenceReturn: number);
 
-    matches(symbol: number, minVocabSymbol: number, maxVocabSymbol: number): false;
+    matches(
+        symbol: number,
+        minVocabSymbol: number,
+        maxVocabSymbol: number,
+    ): false;
 }

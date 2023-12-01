@@ -22,7 +22,11 @@ dust.render("template name", { anyProperty: "anyvalue" }, (err, out) => {});
 dust.render("template name", context, (err, out) => {});
 
 dust.renderSource("template source", { anyProperty: "anyvalue" });
-dust.renderSource("template source", { anyProperty: "anyvalue" }, (err, out) => {});
+dust.renderSource(
+    "template source",
+    { anyProperty: "anyvalue" },
+    (err, out) => {},
+);
 dust.renderSource("template source", context, (err, out) => {});
 dust.renderSource("template source", context);
 

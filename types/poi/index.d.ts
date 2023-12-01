@@ -127,10 +127,10 @@ declare namespace PoiCore {
         interface Pages {
             [pageName: string]:
                 | string
-                | Partial<HtmlWebpackPluginOptions> & {
-                    entry: string;
-                    chunks?: string[] | undefined;
-                };
+                | (Partial<HtmlWebpackPluginOptions> & {
+                      entry: string;
+                      chunks?: string[] | undefined;
+                  });
         }
 
         interface Babel {
@@ -190,7 +190,9 @@ declare namespace PoiCore {
             hot?: boolean | undefined;
             hotOnly?: boolean | undefined;
             hotEntries?: string[] | undefined;
-            historyApiFallback?: WebpackDevServerConfig["historyApiFallback"] | undefined;
+            historyApiFallback?:
+                | WebpackDevServerConfig["historyApiFallback"]
+                | undefined;
             open?: boolean | undefined;
             proxy?: string | WebpackDevServerConfig["proxy"] | undefined;
             https?: WebpackDevServerConfig["https"] | undefined;
@@ -214,11 +216,7 @@ declare namespace PoiCore {
         ): string | null;
         resolve(options?: ConfigLoader.Options): string | null;
 
-        load(
-            files?: readonly string[],
-            cwd?: string,
-            stopDir?: string,
-        ): any;
+        load(files?: readonly string[], cwd?: string, stopDir?: string): any;
         load(options?: ConfigLoader.Options): any;
     }
     namespace ConfigLoader {

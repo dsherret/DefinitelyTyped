@@ -11,10 +11,7 @@ declare function debounce<T extends any[], R>(
     func: (args: Array<[...T]>) => R,
     wait?: number,
     options?: debounce.DebounceOptions & { accumulate: true },
-): (
-    ...args: T
-) => R extends Promise<any> ? R
-    : Promise<R>;
+): (...args: T) => R extends Promise<any> ? R : Promise<R>;
 
 declare function debounce<T extends (...args: any[]) => any>(
     func: T,
@@ -22,7 +19,8 @@ declare function debounce<T extends (...args: any[]) => any>(
     options?: debounce.DebounceOptions,
 ): (
     ...args: Parameters<T>
-) => ReturnType<T> extends Promise<any> ? ReturnType<T>
+) => ReturnType<T> extends Promise<any>
+    ? ReturnType<T>
     : Promise<ReturnType<T>>;
 
 export = debounce;

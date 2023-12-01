@@ -17,19 +17,23 @@ function test_form() {
     $(selector).form("add rule", "field", ["rule1", "rule2"]); // $ExpectType JQuery<HTMLElement>
     // $ExpectType JQuery<HTMLElement>
     $(selector).form("add rule", "field", {
-        rules: [{
-            type: "type",
-            prompt: "prompt",
-        }],
+        rules: [
+            {
+                type: "type",
+                prompt: "prompt",
+            },
+        ],
     });
     $(selector).form("add field", "field", "rule"); // $ExpectType JQuery<HTMLElement>
     $(selector).form("add field", "field", ["rule1", "rule2"]); // $ExpectType JQuery<HTMLElement>
     // $ExpectType JQuery<HTMLElement>
     $(selector).form("add field", "field", {
-        rules: [{
-            type: "type",
-            prompt: "prompt",
-        }],
+        rules: [
+            {
+                type: "type",
+                prompt: "prompt",
+            },
+        ],
     });
     // $ExpectType JQuery<HTMLElement>
     $(selector).form("add fields", {
@@ -43,15 +47,23 @@ function test_form() {
     });
     $(selector).form("remove field", "field"); // $ExpectType JQuery<HTMLElement>
     // $ExpectType JQuery<HTMLElement>
-    $(selector).form("remove rules", "field", [{
-        type: "type",
-        prompt: "prompt",
-    }]);
+    $(selector).form("remove rules", "field", [
+        {
+            type: "type",
+            prompt: "prompt",
+        },
+    ]);
     // $ExpectType JQuery<HTMLElement>
-    $(selector).form("remove rules", ["field1", "field2"], [{
-        type: "type",
-        prompt: "prompt",
-    }]);
+    $(selector).form(
+        "remove rules",
+        ["field1", "field2"],
+        [
+            {
+                type: "type",
+                prompt: "prompt",
+            },
+        ],
+    );
     $(selector).form("remove fields", ["field1", "field2"]); // $ExpectType JQuery<HTMLElement>
     $(selector).form("add prompt", "identifier", "error"); // $ExpectType JQuery<HTMLElement>
     $(selector).form("add prompt", "identifier", ["error1", "error2"]); // $ExpectType JQuery<HTMLElement>
@@ -169,12 +181,16 @@ function test_form() {
                 this; // $ExpectType HTMLElement
                 value; // $ExpectType any
 
-                return !(value === undefined || "" === value || $.isArray(value) && value.length === 0);
+                return !(
+                    value === undefined ||
+                    "" === value ||
+                    ($.isArray(value) && value.length === 0)
+                );
             },
             checked() {
                 this; // $ExpectType HTMLElement
 
-                return ($(this).filter(":checked").length > 0);
+                return $(this).filter(":checked").length > 0;
             },
         },
         selector: {
@@ -209,36 +225,33 @@ function test_form() {
 function adding_rules_programmatically() {
     {
         // lets only validate username to start
-        $(".add.example .ui.form")
-            .form({
-                username: ["empty", "minLength[5]"],
-            });
+        $(".add.example .ui.form").form({
+            username: ["empty", "minLength[5]"],
+        });
     }
     {
         // lets toggle some validation based on button
-        $(".add.example .ui.positive.button")
-            .on("click", () => {
-                $(".add.example .ui.form")
-                    // adding longform
-                    .form("add rule", "gender", {
-                        rules: [
-                            {
-                                type: "empty",
-                                prompt: "Entering your gender is necessary",
-                            },
-                        ],
-                    })
-                    // adding shorthand
-                    .form("add rule", "password", ["empty", "minLength[5]"]);
-            });
+        $(".add.example .ui.positive.button").on("click", () => {
+            $(".add.example .ui.form")
+                // adding longform
+                .form("add rule", "gender", {
+                    rules: [
+                        {
+                            type: "empty",
+                            prompt: "Entering your gender is necessary",
+                        },
+                    ],
+                })
+                // adding shorthand
+                .form("add rule", "password", ["empty", "minLength[5]"]);
+        });
     }
     {
-        $(".add.example .ui.negative.button")
-            .on("click", () => {
-                $(".add.example .ui.form")
-                    // removing multiple at once
-                    .form("remove fields", ["gender", "password"]);
-            });
+        $(".add.example .ui.negative.button").on("click", () => {
+            $(".add.example .ui.form")
+                // removing multiple at once
+                .form("remove fields", ["gender", "password"]);
+        });
     }
 }
 

@@ -11,8 +11,12 @@ function subtract(minuend: number, subtrahend: number) {
 }
 
 beforeEach(() => {
-    jest.spyOn(global, "describe").mockImplementation((title, fn) => (fn as () => void)());
-    jest.spyOn(global, "test").mockImplementation((name, fn) => (fn as () => void)());
+    jest.spyOn(global, "describe").mockImplementation((title, fn) =>
+        (fn as () => void)(),
+    );
+    jest.spyOn(global, "test").mockImplementation((name, fn) =>
+        (fn as () => void)(),
+    );
     global.test.skip = jest.fn((_: string, fn: jest.EmptyFunction) => fn());
     global.test.only = jest.fn((_: string, fn: jest.EmptyFunction) => fn());
 });
@@ -54,8 +58,12 @@ test("array", () => {
 });
 
 test("object", () => {
-    jest.spyOn(global, "describe").mockImplementation((title, fn) => (fn as () => void)());
-    jest.spyOn(global, "test").mockImplementation((name, fn) => (fn as () => void)());
+    jest.spyOn(global, "describe").mockImplementation((title, fn) =>
+        (fn as () => void)(),
+    );
+    jest.spyOn(global, "test").mockImplementation((name, fn) =>
+        (fn as () => void)(),
+    );
 
     const title = "add(augend, addend)";
 
@@ -88,30 +96,21 @@ test("object", () => {
 });
 
 test("no names", () => {
-    cases("foo", () => {}, [
-        {},
-        {},
-    ]);
+    cases("foo", () => {}, [{}, {}]);
 
     expect(global.test.mock.calls[0][0]).toBe("case: 1");
     expect(global.test.mock.calls[1][0]).toBe("case: 2");
 });
 
 test("only", () => {
-    cases("foo", () => {}, [
-        {},
-        { only: true },
-    ]);
+    cases("foo", () => {}, [{}, { only: true }]);
 
     expect(global.test.mock.calls[0][0]).toBe("case: 1");
     expect(global.test.only.mock.calls[0][0]).toBe("case: 2");
 });
 
 test("skip", () => {
-    cases("foo", () => {}, [
-        {},
-        { skip: true },
-    ]);
+    cases("foo", () => {}, [{}, { skip: true }]);
 
     expect(global.test.mock.calls[0][0]).toBe("case: 1");
     expect(global.test.skip.mock.calls[0][0]).toBe("case: 2");

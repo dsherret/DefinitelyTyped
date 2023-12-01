@@ -22,7 +22,7 @@ declare namespace Big {
          *
          * @throws `NaN` on an invalid value.
          */
-        new(value: BigSource): Big;
+        new (value: BigSource): Big;
 
         /**
          * Returns a new instance of a Big number object

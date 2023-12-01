@@ -48,8 +48,7 @@ const boxStyle = variant({
 });
 
 interface BoxProps
-    extends
-        SpaceProps,
+    extends SpaceProps,
         LayoutProps,
         FlexboxProps,
         PositionProps,
@@ -59,8 +58,7 @@ interface BoxProps
         ShadowProps,
         TypographyProps,
         ColorStyleProps,
-        ColorProps
-{
+        ColorProps {
     boxStyle?: string | undefined;
 }
 
@@ -93,20 +91,13 @@ const Grid: React.ComponentType<GridProps> = styled(grid);
 
 interface ButtonProps extends SpaceProps, ButtonStyleProps, ColorProps {}
 
-const testButtonStyles = compose(
-    buttonStyle,
-    space,
-    styles.textColor,
-);
+const testButtonStyles = compose(buttonStyle, space, styles.textColor);
 const TestButton: React.ComponentType<ButtonProps> = styled(testButtonStyles);
 
 interface SpacerProps extends MarginProps, PaddingProps {}
 
 const Spacer: React.ComponentType<SpacerProps> = styled(
-    compose(
-        margin,
-        padding,
-    ),
+    compose(margin, padding),
 );
 
 const test = () => (
@@ -168,11 +159,13 @@ const test = () => (
         <Box m={2} />
         // sets margin value of `-1 * theme.space[2]`
         <Box m={-2} />
-        // sets a margin value of `16px` since it's greater than `theme.space.length`
+        // sets a margin value of `16px` since it's greater than
+        `theme.space.length`
         <Box m={16} />
         // sets margin `'auto'`
         <Box m="auto" />
-        // sets margin `8px` on all viewports and `16px` from the smallest breakpoint and up
+        // sets margin `8px` on all viewports and `16px` from the smallest
+        breakpoint and up
         <Box m={[1, 2]} />
         <Box m={{ sm: 1, md: 2 }} />
         // examples // width `50%`
@@ -181,25 +174,30 @@ const test = () => (
         <Box width={256} />
         // width `'2em'`
         <Box width="2em" />
-        // width `100%` on all viewports and `50%` from the smallest breakpoint and up
+        // width `100%` on all viewports and `50%` from the smallest breakpoint
+        and up
         <Box width={[1, 1 / 2]} />
         <Box width={{ sm: 1, md: 1 / 2 }} />
         <Box boxShadow="1px 1px 1px black" />
         <Box boxShadow={{ sm: "1px 1px 1px black", md: "2px 2px 2px black" }} />
         <Box textShadow="1px 1px 1px black" />
-        <Box textShadow={{ sm: "1px 1px 1px black", md: "2px 2px 2px black" }} />
+        <Box
+            textShadow={{ sm: "1px 1px 1px black", md: "2px 2px 2px black" }}
+        />
         // examples // font-size of `theme.fontSizes[3]`
         <Text fontSize={3} />
         // font-size `32px`
         <Text fontSize={32} />
         // font-size `'2em'`
         <Text fontSize="2em" />
-        // font-size `10px` on all viewports and `12px` from the smallest breakpoint and up
+        // font-size `10px` on all viewports and `12px` from the smallest
+        breakpoint and up
         <Text fontSize={[10, 12]} />
         <Text fontSize={{ sm: 10, md: 12 }} />
         // examples // picks the value defined in `theme.colors['blue']`
         <Box color="blue" />
-        // picks up a nested color value using dot notation // `theme.colors['gray'][0]`
+        // picks up a nested color value using dot notation //
+        `theme.colors['gray'][0]`
         <Box color="gray.0" />
         // raw CSS color value
         <Box color="#00f" />
@@ -370,7 +368,12 @@ const test = () => (
         // top, right, bottom, left (responsive)
         <Box top="0" right="0" bottom="0" left="0" />
         <Box top={["0"]} right={["0"]} bottom={["0"]} left={["0"]} />
-        <Box top={{ sm: "0" }} right={{ sm: "0" }} bottom={{ sm: "0" }} left={{ sm: "0" }} />
+        <Box
+            top={{ sm: "0" }}
+            right={{ sm: "0" }}
+            bottom={{ sm: "0" }}
+            left={{ sm: "0" }}
+        />
         // boxShadow
         <Box boxShadow={1} />
         // backgroundImage, backgroundSize, backgroundPosition, backgroundRepeat
@@ -519,15 +522,12 @@ const customFontStyles = system({
     letterSpacing: true,
 });
 
-const CustomFontGroup = compose(
-    customFontSize,
-    customFontSize,
-);
+const CustomFontGroup = compose(customFontSize, customFontSize);
 
 const centerWithGenerics = style<boolean>({
     prop: "center",
     cssProperty: "justify-content",
-    transformValue: shouldCenter => (shouldCenter ? "center" : "flex-start"),
+    transformValue: (shouldCenter) => (shouldCenter ? "center" : "flex-start"),
 });
 
 const buttonSizes = {
@@ -536,7 +536,10 @@ const buttonSizes = {
     lg: "24px",
 };
 
-const buttonSizeWithGeneric = style<keyof typeof buttonSizes, typeof buttonSizes>({
+const buttonSizeWithGeneric = style<
+    keyof typeof buttonSizes,
+    typeof buttonSizes
+>({
     prop: "size",
     cssProperty: "font-size",
     transformValue: (size, sizes) => sizes && sizes[size],

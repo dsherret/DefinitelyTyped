@@ -46,7 +46,7 @@ resolveAsyncConfigs(config);
 var deferredValueConfig = {
     firstName: "Foo",
     lastName: "Bar",
-    fullName: deferConfig(function() {
+    fullName: deferConfig(function () {
         return this.firstName + " " + this.lastName;
     }),
 };

@@ -24,24 +24,31 @@ interface NotifySettings {
     allow_duplicates?: boolean | undefined;
     newest_on_top?: boolean | undefined;
     showProgressbar?: boolean | undefined;
-    placement?: {
-        from?: string | undefined;
-        align?: string | undefined;
-    } | undefined;
-    offset?: number | {
-        x?: number | undefined;
-        y?: number | undefined;
-    } | undefined;
+    placement?:
+        | {
+              from?: string | undefined;
+              align?: string | undefined;
+          }
+        | undefined;
+    offset?:
+        | number
+        | {
+              x?: number | undefined;
+              y?: number | undefined;
+          }
+        | undefined;
     spacing?: number | undefined;
     z_index?: number | undefined;
     delay?: number | undefined;
     timer?: number | undefined;
     url_target?: string | undefined;
     mouse_over?: string | undefined;
-    animate?: {
-        enter?: string | undefined;
-        exit?: string | undefined;
-    } | undefined;
+    animate?:
+        | {
+              enter?: string | undefined;
+              exit?: string | undefined;
+          }
+        | undefined;
     onShow?: (($ele: JQuery) => void) | undefined;
     onShown?: (($ele: JQuery) => void) | undefined;
     onClose?: (($ele: JQuery) => void) | undefined;

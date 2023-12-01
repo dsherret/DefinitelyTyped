@@ -1,7 +1,10 @@
 export = WordCloud;
 export as namespace WordCloud;
 
-declare function WordCloud(elements: HTMLElement | HTMLElement[], options: WordCloud.Options): void;
+declare function WordCloud(
+    elements: HTMLElement | HTMLElement[],
+    options: WordCloud.Options,
+): void;
 
 declare namespace WordCloud {
     const isSupported: boolean;
@@ -27,7 +30,13 @@ declare namespace WordCloud {
          */
         color?:
             | string
-            | ((word: string, weight: string | number, fontSize: number, distance: number, theta: number) => string)
+            | ((
+                  word: string,
+                  weight: string | number,
+                  fontSize: number,
+                  distance: number,
+                  theta: number,
+              ) => string)
             | undefined;
         /**
          * for DOM clouds, allows the user to define the class of the span elements.Can be a normal class
@@ -36,7 +45,13 @@ declare namespace WordCloud {
          */
         classes?:
             | string
-            | ((word: string, weight: string | number, fontSize: number, distance: number, theta: number) => string)
+            | ((
+                  word: string,
+                  weight: string | number,
+                  fontSize: number,
+                  distance: number,
+                  theta: number,
+              ) => string)
             | undefined;
         /** minimum font size to draw on the canvas. */
         minSize?: number | undefined;
@@ -120,5 +135,9 @@ declare namespace WordCloud {
     }
 
     type ListEntry = [string, number, ...any[]];
-    type EventCallback = (item: ListEntry, dimension: Dimension, event: MouseEvent) => void;
+    type EventCallback = (
+        item: ListEntry,
+        dimension: Dimension,
+        event: MouseEvent,
+    ) => void;
 }

@@ -6,7 +6,10 @@ declare class StrategyInternal extends passport.Strategy {
         options: StrategyInternal.StrategyOptionWithRequest,
         verify: StrategyInternal.VerifyFunctionWithRequest,
     );
-    constructor(options: StrategyInternal.StrategyOption, verify: StrategyInternal.VerifyFunction);
+    constructor(
+        options: StrategyInternal.StrategyOption,
+        verify: StrategyInternal.VerifyFunction,
+    );
 
     name: string;
     authenticate(req: express.Request, options?: object): void;
@@ -17,10 +20,12 @@ declare namespace StrategyInternal {
         id: string;
         displayName: string;
         gender?: string | undefined;
-        ageRange?: {
-            min: number;
-            max?: number | undefined;
-        } | undefined;
+        ageRange?:
+            | {
+                  min: number;
+                  max?: number | undefined;
+              }
+            | undefined;
         profileUrl?: string | undefined;
         username?: string | undefined;
         birthday: string;

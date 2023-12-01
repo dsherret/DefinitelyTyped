@@ -4,7 +4,10 @@ export as namespace Kyujitai;
  * Utility collections for making Japanese text old-fashioned.
  */
 declare class Kyujitai {
-    constructor(options?: Kyujitai.Options, callback?: Kyujitai.InitializeCallback);
+    constructor(
+        options?: Kyujitai.Options,
+        callback?: Kyujitai.InitializeCallback,
+    );
     constructor(callback: Kyujitai.InitializeCallback);
 
     /**

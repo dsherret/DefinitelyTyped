@@ -10,14 +10,12 @@ import { ZebraOptions } from "./ZebraOptions";
  * Represents options for the widgets.
  */
 export interface WidgetOptions<TElement = HTMLElement>
-    extends
-        ColumnOptions,
+    extends ColumnOptions,
         FilterOptions<TElement>,
         ResizingOptions,
         SaveSortOptions,
         StickyHeaderOptions,
         PagerOptions<TElement>,
-        ZebraOptions
-{
+        ZebraOptions {
     [option: string]: any;
 }

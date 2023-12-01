@@ -1,6 +1,14 @@
 declare const Timecode: {
-    (timecode?: Timecode.TIMECODE, frameRate?: Timecode.FRAMERATE, dropFrame?: boolean): Timecode.TimecodeInstance;
-    new(timecode?: Timecode.TIMECODE, frameRate?: Timecode.FRAMERATE, dropFrame?: boolean): Timecode.TimecodeInstance;
+    (
+        timecode?: Timecode.TIMECODE,
+        frameRate?: Timecode.FRAMERATE,
+        dropFrame?: boolean,
+    ): Timecode.TimecodeInstance;
+    new (
+        timecode?: Timecode.TIMECODE,
+        frameRate?: Timecode.FRAMERATE,
+        dropFrame?: boolean,
+    ): Timecode.TimecodeInstance;
 };
 
 declare namespace Timecode {
@@ -15,8 +23,15 @@ declare namespace Timecode {
     }
 
     interface TimecodeInstance {
-        add(timecode: TIMECODE, negative?: boolean, rollOverMaxHours?: number): TimecodeInstance;
-        subtract(timecode: TIMECODE, rollOverMaxHours?: number): TimecodeInstance;
+        add(
+            timecode: TIMECODE,
+            negative?: boolean,
+            rollOverMaxHours?: number,
+        ): TimecodeInstance;
+        subtract(
+            timecode: TIMECODE,
+            rollOverMaxHours?: number,
+        ): TimecodeInstance;
         toDate(): Date;
         toString(options?: string): string;
         valueOf(): number;

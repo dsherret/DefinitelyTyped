@@ -17,11 +17,15 @@ declare module "karma" {
         /** function (browser, result) to customize the name attribute in xml testcase element */
         nameFormatter?: ((browser: any, result: any) => string) | undefined;
         /** function (browser, result) to customize the classname attribute in xml testcase element */
-        classNameFormatter?: ((browser: any, result: any) => string) | undefined;
+        classNameFormatter?:
+            | ((browser: any, result: any) => string)
+            | undefined;
         /** key value pair of properties to add to the <properties> section of the report */
-        properties?: {
-            [key: string]: any;
-        } | undefined;
+        properties?:
+            | {
+                  [key: string]: any;
+              }
+            | undefined;
         /** use '1' if reporting to be per SonarQube 6.2 XML format */
         xmlVersion?: number | null | undefined;
     }

@@ -41,7 +41,9 @@ let iterableIteratorOfNode: IterableIteratorShim<Node>;
 let iterableIteratorOfStringPoint: IterableIteratorShim<[string, Point]>;
 let iterableIteratorOfAny: IterableIteratorShim<any>;
 let iterableIteratorOfPropertyKey: IterableIteratorShim<PropertyKey>;
-let iterableIteratorOfPropertyKeyPoint: IterableIteratorShim<[PropertyKey, Point]>;
+let iterableIteratorOfPropertyKeyPoint: IterableIteratorShim<
+    [PropertyKey, Point]
+>;
 let nodeList: NodeList;
 let pd: PropertyDescriptor = {};
 let pdm: PropertyDescriptorMap = {};
@@ -59,16 +61,16 @@ let promiseOfVoid: Promise<void>;
 point = Object.assign(point, point);
 b = Object.is(point, point);
 Object.setPrototypeOf(point, {});
-pointOrUndef = arrayOfPoint.find(p => b);
-i = arrayOfPoint.findIndex(p => b);
+pointOrUndef = arrayOfPoint.find((p) => b);
+i = arrayOfPoint.findIndex((p) => b);
 arrayOfPoint = arrayOfPoint.fill(point, i, arrayOfPoint.length);
 arrayOfPoint = arrayOfPoint.copyWithin(i, i, i);
 arrayOfPoint = Array.from(arrayOfPoint);
 arrayOfPoint = Array.from(iterableOfPoint);
-arrayOfPoint3D = Array.from(arrayOfPoint, point => point3d);
-arrayOfPoint3D = Array.from(arrayOfPoint, point => point3d, a);
-arrayOfPoint3D = Array.from(iterableOfPoint, point => point3d);
-arrayOfPoint3D = Array.from(iterableOfPoint, point => point3d, a);
+arrayOfPoint3D = Array.from(arrayOfPoint, (point) => point3d);
+arrayOfPoint3D = Array.from(arrayOfPoint, (point) => point3d, a);
+arrayOfPoint3D = Array.from(iterableOfPoint, (point) => point3d);
+arrayOfPoint3D = Array.from(iterableOfPoint, (point) => point3d, a);
 arrayOfPoint = Array.of(point, point);
 i = s.codePointAt(i);
 b = s.includes(s, i);
@@ -141,54 +143,136 @@ iterableIteratorOfPoint = set.keys();
 iterableIteratorOfPoint = set.values();
 promiseLikeOfPoint.then((point: Point) => {});
 promiseLikeOfPoint = promiseLikeOfPoint.then();
-promiseLikeOfPoint = promiseLikeOfPoint.then(p => point);
-promiseLikeOfPoint = promiseLikeOfPoint.then(p => promiseLikeOfPoint);
-promiseLikeOfPoint = promiseLikeOfPoint.then(p => point, e => point);
-promiseLikeOfPoint = promiseLikeOfPoint.then(p => promiseLikeOfPoint, e => point);
-promiseLikeOfPoint = promiseLikeOfPoint.then(p => point, e => promiseLikeOfPoint);
-promiseLikeOfPoint = promiseLikeOfPoint.then(p => point, e => {});
-promiseLikeOfPoint = promiseLikeOfPoint.then(p => promiseLikeOfPoint, e => {});
-promiseLikeOfPoint3D = promiseLikeOfPoint.then(p => point3d);
-promiseLikeOfPoint3D = promiseLikeOfPoint.then(p => promiseLikeOfPoint3D);
-promiseLikeOfPoint3D = promiseLikeOfPoint.then(p => point3d, e => point3d);
-promiseLikeOfPoint3D = promiseLikeOfPoint.then(p => promiseLikeOfPoint3D, e => point3d);
-promiseLikeOfPoint3D = promiseLikeOfPoint.then(p => point3d, e => promiseLikeOfPoint3D);
-promiseLikeOfPoint3D = promiseLikeOfPoint.then(p => point3d, e => {});
-promiseLikeOfPoint3D = promiseLikeOfPoint.then(p => promiseLikeOfPoint3D, e => {});
+promiseLikeOfPoint = promiseLikeOfPoint.then((p) => point);
+promiseLikeOfPoint = promiseLikeOfPoint.then((p) => promiseLikeOfPoint);
+promiseLikeOfPoint = promiseLikeOfPoint.then(
+    (p) => point,
+    (e) => point,
+);
+promiseLikeOfPoint = promiseLikeOfPoint.then(
+    (p) => promiseLikeOfPoint,
+    (e) => point,
+);
+promiseLikeOfPoint = promiseLikeOfPoint.then(
+    (p) => point,
+    (e) => promiseLikeOfPoint,
+);
+promiseLikeOfPoint = promiseLikeOfPoint.then(
+    (p) => point,
+    (e) => {},
+);
+promiseLikeOfPoint = promiseLikeOfPoint.then(
+    (p) => promiseLikeOfPoint,
+    (e) => {},
+);
+promiseLikeOfPoint3D = promiseLikeOfPoint.then((p) => point3d);
+promiseLikeOfPoint3D = promiseLikeOfPoint.then((p) => promiseLikeOfPoint3D);
+promiseLikeOfPoint3D = promiseLikeOfPoint.then(
+    (p) => point3d,
+    (e) => point3d,
+);
+promiseLikeOfPoint3D = promiseLikeOfPoint.then(
+    (p) => promiseLikeOfPoint3D,
+    (e) => point3d,
+);
+promiseLikeOfPoint3D = promiseLikeOfPoint.then(
+    (p) => point3d,
+    (e) => promiseLikeOfPoint3D,
+);
+promiseLikeOfPoint3D = promiseLikeOfPoint.then(
+    (p) => point3d,
+    (e) => {},
+);
+promiseLikeOfPoint3D = promiseLikeOfPoint.then(
+    (p) => promiseLikeOfPoint3D,
+    (e) => {},
+);
 promiseOfPoint.then((point: Point) => {});
 promiseOfPoint = promiseOfPoint.then();
-promiseOfPoint = promiseOfPoint.then(p => point);
-promiseOfPoint = promiseOfPoint.then(p => promiseOfPoint);
-promiseOfPoint = promiseOfPoint.then(p => promiseLikeOfPoint);
-promiseOfPoint = promiseOfPoint.then(p => point, e => point);
-promiseOfPoint = promiseOfPoint.then(p => promiseOfPoint, e => point);
-promiseOfPoint = promiseOfPoint.then(p => promiseLikeOfPoint, e => point);
-promiseOfPoint = promiseOfPoint.then(p => point, e => promiseOfPoint);
-promiseOfPoint = promiseOfPoint.then(p => point, e => promiseLikeOfPoint);
-promiseOfPoint = promiseOfPoint.then(p => point, e => {});
-promiseOfPoint = promiseOfPoint.then(p => promiseOfPoint, e => {});
-promiseOfPoint = promiseOfPoint.then(p => promiseLikeOfPoint, e => {});
-promiseOfPoint3D = promiseOfPoint.then(p => point3d);
-promiseOfPoint3D = promiseOfPoint.then(p => promiseOfPoint3D);
-promiseOfPoint3D = promiseOfPoint.then(p => promiseLikeOfPoint3D);
-promiseOfPoint3D = promiseOfPoint.then(p => point3d, e => point3d);
-promiseOfPoint3D = promiseOfPoint.then(p => promiseOfPoint3D, e => point3d);
-promiseOfPoint3D = promiseOfPoint.then(p => promiseLikeOfPoint3D, e => point3d);
-promiseOfPoint3D = promiseOfPoint.then(p => point3d, e => promiseOfPoint3D);
-promiseOfPoint3D = promiseOfPoint.then(p => point3d, e => promiseLikeOfPoint3D);
-promiseOfPoint3D = promiseOfPoint.then(p => point3d, e => {});
-promiseOfPoint3D = promiseOfPoint.then(p => promiseOfPoint3D, e => {});
-promiseOfPoint3D = promiseOfPoint.then(p => promiseLikeOfPoint3D, e => {});
-promiseOfPoint = promiseOfPoint.catch(e => point);
-promiseOfPoint = promiseOfPoint.catch(e => promiseOfPoint);
-promiseOfPoint = promiseOfPoint.catch(e => promiseLikeOfPoint);
-promiseOfPoint = promiseOfPoint.catch(e => {});
-promiseOfPoint3D = promiseOfPoint3D.catch(e => point3d);
-promiseOfPoint3D = promiseOfPoint3D.catch(e => promiseOfPoint3D);
-promiseOfPoint3D = promiseOfPoint3D.catch(e => promiseLikeOfPoint3D);
+promiseOfPoint = promiseOfPoint.then((p) => point);
+promiseOfPoint = promiseOfPoint.then((p) => promiseOfPoint);
+promiseOfPoint = promiseOfPoint.then((p) => promiseLikeOfPoint);
+promiseOfPoint = promiseOfPoint.then(
+    (p) => point,
+    (e) => point,
+);
+promiseOfPoint = promiseOfPoint.then(
+    (p) => promiseOfPoint,
+    (e) => point,
+);
+promiseOfPoint = promiseOfPoint.then(
+    (p) => promiseLikeOfPoint,
+    (e) => point,
+);
+promiseOfPoint = promiseOfPoint.then(
+    (p) => point,
+    (e) => promiseOfPoint,
+);
+promiseOfPoint = promiseOfPoint.then(
+    (p) => point,
+    (e) => promiseLikeOfPoint,
+);
+promiseOfPoint = promiseOfPoint.then(
+    (p) => point,
+    (e) => {},
+);
+promiseOfPoint = promiseOfPoint.then(
+    (p) => promiseOfPoint,
+    (e) => {},
+);
+promiseOfPoint = promiseOfPoint.then(
+    (p) => promiseLikeOfPoint,
+    (e) => {},
+);
+promiseOfPoint3D = promiseOfPoint.then((p) => point3d);
+promiseOfPoint3D = promiseOfPoint.then((p) => promiseOfPoint3D);
+promiseOfPoint3D = promiseOfPoint.then((p) => promiseLikeOfPoint3D);
+promiseOfPoint3D = promiseOfPoint.then(
+    (p) => point3d,
+    (e) => point3d,
+);
+promiseOfPoint3D = promiseOfPoint.then(
+    (p) => promiseOfPoint3D,
+    (e) => point3d,
+);
+promiseOfPoint3D = promiseOfPoint.then(
+    (p) => promiseLikeOfPoint3D,
+    (e) => point3d,
+);
+promiseOfPoint3D = promiseOfPoint.then(
+    (p) => point3d,
+    (e) => promiseOfPoint3D,
+);
+promiseOfPoint3D = promiseOfPoint.then(
+    (p) => point3d,
+    (e) => promiseLikeOfPoint3D,
+);
+promiseOfPoint3D = promiseOfPoint.then(
+    (p) => point3d,
+    (e) => {},
+);
+promiseOfPoint3D = promiseOfPoint.then(
+    (p) => promiseOfPoint3D,
+    (e) => {},
+);
+promiseOfPoint3D = promiseOfPoint.then(
+    (p) => promiseLikeOfPoint3D,
+    (e) => {},
+);
+promiseOfPoint = promiseOfPoint.catch((e) => point);
+promiseOfPoint = promiseOfPoint.catch((e) => promiseOfPoint);
+promiseOfPoint = promiseOfPoint.catch((e) => promiseLikeOfPoint);
+promiseOfPoint = promiseOfPoint.catch((e) => {});
+promiseOfPoint3D = promiseOfPoint3D.catch((e) => point3d);
+promiseOfPoint3D = promiseOfPoint3D.catch((e) => promiseOfPoint3D);
+promiseOfPoint3D = promiseOfPoint3D.catch((e) => promiseLikeOfPoint3D);
 promiseOfPoint = new Promise<Point>((resolve, reject) => resolve(point));
-promiseOfPoint = new Promise<Point>((resolve, reject) => resolve(promiseOfPoint));
-promiseOfPoint = new Promise<Point>((resolve, reject) => resolve(promiseLikeOfPoint));
+promiseOfPoint = new Promise<Point>((resolve, reject) =>
+    resolve(promiseOfPoint),
+);
+promiseOfPoint = new Promise<Point>((resolve, reject) =>
+    resolve(promiseLikeOfPoint),
+);
 promiseOfPoint = new Promise<Point>((resolve, reject) => reject(e));
 // To prevent UnhandledPromiseRejectionWarning
 promiseOfPoint.catch(() => {});

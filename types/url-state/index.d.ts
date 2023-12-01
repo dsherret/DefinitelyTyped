@@ -12,8 +12,18 @@ interface PushHref extends ReplaceHref {
 }
 
 interface UrlState
-    extends Pick<URL, "href" | "protocol" | "hostname" | "port" | "pathname" | "search" | "hash" | "host" | "origin">
-{
+    extends Pick<
+        URL,
+        | "href"
+        | "protocol"
+        | "hostname"
+        | "port"
+        | "pathname"
+        | "search"
+        | "hash"
+        | "host"
+        | "origin"
+    > {
     readonly back: boolean;
     readonly params: ReturnType<typeof parse>;
 

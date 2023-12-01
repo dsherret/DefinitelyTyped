@@ -22,8 +22,7 @@ declare namespace angularScenario {
         (seconds: number): any;
     }
 
-    export interface Future {
-    }
+    export interface Future {}
 
     export interface testWindow {
         href(): Future;
@@ -60,8 +59,7 @@ declare namespace angularScenario {
         toBeGreaterThan(value: any): void;
     }
 
-    export interface CustomMatchers extends Matchers {
-    }
+    export interface CustomMatchers extends Matchers {}
 
     export interface Expect extends CustomMatchers {
         not(): angularScenario.CustomMatchers;
@@ -101,7 +99,10 @@ declare namespace angularScenario {
         mousedown(): any;
         mouseup(): any;
         query(
-            callback: (selectedDOMElements: JQuery, callbackWhenDone: (objNull: any, futureValue: any) => any) => any,
+            callback: (
+                selectedDOMElements: JQuery,
+                callbackWhenDone: (objNull: any, futureValue: any) => any,
+            ) => any,
         ): any;
         val(): Future;
         text(): Future;
@@ -152,11 +153,19 @@ declare var xit: angularScenario.RunFunctionWithDescription;
 declare var pause: angularScenario.PauseFunction;
 declare var sleep: angularScenario.SleepFunction;
 declare function browser(): angularScenario.Browser;
-declare function expect(expectation: angularScenario.Future): angularScenario.Expect;
+declare function expect(
+    expectation: angularScenario.Future,
+): angularScenario.Expect;
 declare var using: angularScenario.UsingFunction;
 declare var binding: angularScenario.BindingFunction;
 declare function input(ngModelBinding: string): angularScenario.Input;
-declare function repeater(selector: string, repeaterDescription?: string): angularScenario.Repeater;
+declare function repeater(
+    selector: string,
+    repeaterDescription?: string,
+): angularScenario.Repeater;
 declare function select(ngModelBinding: string): angularScenario.Select;
-declare function element(selector: string, elementDescription?: string): angularScenario.Element;
+declare function element(
+    selector: string,
+    elementDescription?: string,
+): angularScenario.Element;
 declare var angular: ng.IAngularStatic;

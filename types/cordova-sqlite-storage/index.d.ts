@@ -10,11 +10,17 @@ declare namespace SQLitePlugin {
     type SuccessCallback = () => void;
     type DatabaseSuccessCallback = (db: Database) => void;
     type StatementSuccessCallback = (results: Results) => void;
-    type TransactionStatementSuccessCallback = (tx: Transaction, results: Results) => void;
+    type TransactionStatementSuccessCallback = (
+        tx: Transaction,
+        results: Results,
+    ) => void;
 
     type ErrorCallback = (err: Error) => void;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    type TransactionStatementErrorCallback = (tx: Transaction, err: Error) => boolean | void;
+    type TransactionStatementErrorCallback = (
+        tx: Transaction,
+        err: Error,
+    ) => boolean | void;
 
     interface OpenArgs {
         name: string;
@@ -50,10 +56,23 @@ declare namespace SQLitePlugin {
     }
 
     interface Database {
-        transaction(fn: TransactionFunction, error?: ErrorCallback, success?: SuccessCallback): void;
-        readTransaction(fn: TransactionFunction, error?: ErrorCallback, success?: SuccessCallback): void;
+        transaction(
+            fn: TransactionFunction,
+            error?: ErrorCallback,
+            success?: SuccessCallback,
+        ): void;
+        readTransaction(
+            fn: TransactionFunction,
+            error?: ErrorCallback,
+            success?: SuccessCallback,
+        ): void;
 
-        executeSql(statement: string, params?: any[], success?: StatementSuccessCallback, error?: ErrorCallback): void;
+        executeSql(
+            statement: string,
+            params?: any[],
+            success?: StatementSuccessCallback,
+            error?: ErrorCallback,
+        ): void;
         sqlBatch(
             sqlStatements: Array<string | [string, any[]]>,
             success?: SuccessCallback,
@@ -64,9 +83,20 @@ declare namespace SQLitePlugin {
     }
 
     interface SQLite {
-        openDatabase(args: OpenArgs, success?: DatabaseSuccessCallback, error?: ErrorCallback): Database;
-        deleteDatabase(args: DeleteArgs, success?: SuccessCallback, error?: ErrorCallback): void;
+        openDatabase(
+            args: OpenArgs,
+            success?: DatabaseSuccessCallback,
+            error?: ErrorCallback,
+        ): Database;
+        deleteDatabase(
+            args: DeleteArgs,
+            success?: SuccessCallback,
+            error?: ErrorCallback,
+        ): void;
         selfTest(success?: SuccessCallback, error?: ErrorCallback): void;
-        echoTest(ok?: (value: string) => void, error?: (msg: string) => void): void;
+        echoTest(
+            ok?: (value: string) => void,
+            error?: (msg: string) => void,
+        ): void;
     }
 }

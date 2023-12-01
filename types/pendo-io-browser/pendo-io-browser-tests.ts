@@ -56,10 +56,7 @@ pendo.stopGuides();
 pendo.setGuidesDisabled(false);
 pendo.startGuides();
 
-pendo.identify(
-    "PUT_VISITOR_ID_HERE",
-    "PUT_ACCOUNT_ID_HERE",
-);
+pendo.identify("PUT_VISITOR_ID_HERE", "PUT_ACCOUNT_ID_HERE");
 
 pendo.identify({
     visitor: {

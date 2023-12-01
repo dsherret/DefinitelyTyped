@@ -16,7 +16,10 @@ export interface MutationConfig<TOperation extends MutationParameters> {
     mutation: GraphQLTaggedNode;
     onError?: ((error: Error) => void) | null | undefined;
     onCompleted?:
-        | ((response: TOperation["response"], errors: readonly PayloadError[] | null | undefined) => void)
+        | ((
+              response: TOperation["response"],
+              errors: readonly PayloadError[] | null | undefined,
+          ) => void)
         | null
         | undefined;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -25,8 +28,15 @@ export interface MutationConfig<TOperation extends MutationParameters> {
      * An object whose type matches the raw response type of the mutation. Make sure you decorate
      * your mutation with `@raw_response_type` if you are using this field.
      */
-    optimisticResponse?: (TOperation["rawResponse"] extends {} ? TOperation["rawResponse"] : never) | undefined;
-    optimisticUpdater?: SelectorStoreUpdater<TOperation["response"]> | null | undefined;
+    optimisticResponse?:
+        | (TOperation["rawResponse"] extends {}
+              ? TOperation["rawResponse"]
+              : never)
+        | undefined;
+    optimisticUpdater?:
+        | SelectorStoreUpdater<TOperation["response"]>
+        | null
+        | undefined;
     updater?: SelectorStoreUpdater<TOperation["response"]> | null | undefined;
     uploadables?: UploadableMap | null | undefined;
     variables: TOperation["variables"];
@@ -37,7 +47,6 @@ export interface MutationConfig<TOperation extends MutationParameters> {
  * environment.
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function commitMutation<TOperation extends MutationParameters = MutationParameters>(
-    environment: Environment,
-    config: MutationConfig<TOperation>,
-): Disposable;
+export function commitMutation<
+    TOperation extends MutationParameters = MutationParameters,
+>(environment: Environment, config: MutationConfig<TOperation>): Disposable;

@@ -2,7 +2,10 @@ import notifier = require("../");
 
 declare class WindowsBalloon {
     constructor(option?: notifier.Option);
-    notify(notification?: WindowsBalloon.Notification, callback?: notifier.NotificationCallback): WindowsBalloon;
+    notify(
+        notification?: WindowsBalloon.Notification,
+        callback?: notifier.NotificationCallback,
+    ): WindowsBalloon;
 }
 
 declare namespace WindowsBalloon {

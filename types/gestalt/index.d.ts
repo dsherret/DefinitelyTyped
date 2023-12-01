@@ -4,29 +4,72 @@ import React = require("react");
  * Helpers
  */
 
-export type AbstractEventHandler<T extends React.SyntheticEvent<HTMLElement> | Event, U = {}> = (
+export type AbstractEventHandler<
+    T extends React.SyntheticEvent<HTMLElement> | Event,
+    U = {},
+> = (
     arg: U & {
         readonly event: T;
     },
 ) => void;
-export type ReactForwardRef<T, P> = React.ForwardRefExoticComponent<React.PropsWithoutRef<P> & React.RefAttributes<T>>;
+export type ReactForwardRef<T, P> = React.ForwardRefExoticComponent<
+    React.PropsWithoutRef<P> & React.RefAttributes<T>
+>;
 
 export type FourDirections = "up" | "right" | "down" | "left";
 
-export type EventHandlerType = (args: { readonly event: React.SyntheticEvent }) => void;
+export type EventHandlerType = (args: {
+    readonly event: React.SyntheticEvent;
+}) => void;
 
 export interface OnNavigationArgs {
     href: string;
     target?: null | "self" | "blank" | undefined;
 }
 
-export type OnNavigationType = (args: OnNavigationArgs) => EventHandlerType | null | undefined;
-export type UnsignedUpTo12 = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-export type SignedUpTo12 = -12 | -11 | -10 | -9 | -8 | -7 | -6 | -5 | -4 | -3 | -2 | -1 | UnsignedUpTo12;
+export type OnNavigationType = (
+    args: OnNavigationArgs,
+) => EventHandlerType | null | undefined;
+export type UnsignedUpTo12 =
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12;
+export type SignedUpTo12 =
+    | -12
+    | -11
+    | -10
+    | -9
+    | -8
+    | -7
+    | -6
+    | -5
+    | -4
+    | -3
+    | -2
+    | -1
+    | UnsignedUpTo12;
 
 export interface BadgeObject {
     text: string;
-    type?: "info" | "error" | "warning" | "success" | "neutral" | "darkWash" | "lightWash" | undefined;
+    type?:
+        | "info"
+        | "error"
+        | "warning"
+        | "success"
+        | "neutral"
+        | "darkWash"
+        | "lightWash"
+        | undefined;
 }
 
 /**
@@ -40,27 +83,31 @@ export interface ActivationCardProps {
     title: string;
     dismissButton?:
         | {
-            accessibilityLabel: string;
-            onDismiss: () => void;
-        }
+              accessibilityLabel: string;
+              onDismiss: () => void;
+          }
         | undefined;
     link?:
         | {
-            accessibilityLabel: string;
-            href: string;
-            label: string;
-            onClick?:
-                | AbstractEventHandler<
-                    | React.MouseEvent<HTMLButtonElement>
-                    | React.MouseEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLButtonElement>,
-                    { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-                >
-                | undefined;
-            rel?: "none" | "nofollow" | undefined;
-            target?: null | "self" | "blank" | undefined;
-        }
+              accessibilityLabel: string;
+              href: string;
+              label: string;
+              onClick?:
+                  | AbstractEventHandler<
+                        | React.MouseEvent<HTMLButtonElement>
+                        | React.MouseEvent<HTMLAnchorElement>
+                        | React.KeyboardEvent<HTMLAnchorElement>
+                        | React.KeyboardEvent<HTMLButtonElement>,
+                        {
+                            dangerouslyDisableOnNavigation?:
+                                | (() => void)
+                                | undefined;
+                        }
+                    >
+                  | undefined;
+              rel?: "none" | "nofollow" | undefined;
+              target?: null | "self" | "blank" | undefined;
+          }
         | undefined;
 }
 
@@ -126,21 +173,62 @@ export interface BadgeProps {
         | undefined;
 }
 
-export type BoxPassthroughProps =
-    & Omit<React.ComponentProps<"div">, "onClick" | "className" | "style" | "ref">
-    & React.RefAttributes<HTMLDivElement>;
+export type BoxPassthroughProps = Omit<
+    React.ComponentProps<"div">,
+    "onClick" | "className" | "style" | "ref"
+> &
+    React.RefAttributes<HTMLDivElement>;
 
 /**
  * Box Props Interface
  * https://gestalt.netlify.app/Box
  */
 export interface BoxProps extends BoxPassthroughProps {
-    alignContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | "stretch" | undefined;
-    alignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    alignSelf?: "auto" | "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    smAlignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    mdAlignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    lgAlignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
+    alignContent?:
+        | "start"
+        | "end"
+        | "center"
+        | "between"
+        | "around"
+        | "evenly"
+        | "stretch"
+        | undefined;
+    alignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    alignSelf?:
+        | "auto"
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    smAlignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    mdAlignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    lgAlignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
 
     /**
      * Changes the underlying DOM element when needed for accessibility or SEO reasons. Note that currently only block-level elements are available.
@@ -161,7 +249,14 @@ export interface BoxProps extends BoxPassthroughProps {
         | "section"
         | "summary"
         | undefined;
-    borderStyle?: "sm" | "lg" | "shadow" | "raisedTopShadow" | "raisedBottomShadow" | "none" | undefined;
+    borderStyle?:
+        | "sm"
+        | "lg"
+        | "shadow"
+        | "raisedTopShadow"
+        | "raisedBottomShadow"
+        | "none"
+        | undefined;
     bottom?: boolean | undefined;
     children?: React.ReactNode | undefined;
     color?:
@@ -200,23 +295,54 @@ export interface BoxProps extends BoxPassthroughProps {
     lgColumn?: UnsignedUpTo12 | undefined;
     dangerouslySetInlineStyle?:
         | {
-            __style: {
-                [key: string]: string | number | undefined;
-            };
-        }
+              __style: {
+                  [key: string]: string | number | undefined;
+              };
+          }
         | undefined;
     direction?: "row" | "column" | undefined;
     smDirection?: "row" | "column" | undefined;
     mdDirection?: "row" | "column" | undefined;
     lgDirection?: "row" | "column" | undefined;
-    display?: "none" | "flex" | "block" | "inlineBlock" | "visuallyHidden" | undefined;
-    smDisplay?: "none" | "flex" | "block" | "inlineBlock" | "visuallyHidden" | undefined;
-    mdDisplay?: "none" | "flex" | "block" | "inlineBlock" | "visuallyHidden" | undefined;
-    lgDisplay?: "none" | "flex" | "block" | "inlineBlock" | "visuallyHidden" | undefined;
+    display?:
+        | "none"
+        | "flex"
+        | "block"
+        | "inlineBlock"
+        | "visuallyHidden"
+        | undefined;
+    smDisplay?:
+        | "none"
+        | "flex"
+        | "block"
+        | "inlineBlock"
+        | "visuallyHidden"
+        | undefined;
+    mdDisplay?:
+        | "none"
+        | "flex"
+        | "block"
+        | "inlineBlock"
+        | "visuallyHidden"
+        | undefined;
+    lgDisplay?:
+        | "none"
+        | "flex"
+        | "block"
+        | "inlineBlock"
+        | "visuallyHidden"
+        | undefined;
     fit?: boolean | undefined;
     flex?: "grow" | "shrink" | "none" | undefined;
     height?: number | string | undefined;
-    justifyContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | undefined;
+    justifyContent?:
+        | "start"
+        | "end"
+        | "center"
+        | "between"
+        | "around"
+        | "evenly"
+        | undefined;
     left?: boolean | undefined;
     margin?: SignedUpTo12 | "auto" | undefined;
     smMargin?: SignedUpTo12 | "auto" | undefined;
@@ -242,8 +368,27 @@ export interface BoxProps extends BoxPassthroughProps {
     maxWidth?: number | string | undefined;
     minHeight?: number | string | undefined;
     minWidth?: number | string | undefined;
-    opacity?: 0 | 0.1 | 0.2 | 0.3 | 0.4 | 0.5 | 0.6 | 0.7 | 0.8 | 0.9 | 1 | undefined;
-    overflow?: "visible" | "hidden" | "scroll" | "scrollX" | "scrollY" | "auto" | undefined;
+    opacity?:
+        | 0
+        | 0.1
+        | 0.2
+        | 0.3
+        | 0.4
+        | 0.5
+        | 0.6
+        | 0.7
+        | 0.8
+        | 0.9
+        | 1
+        | undefined;
+    overflow?:
+        | "visible"
+        | "hidden"
+        | "scroll"
+        | "scrollX"
+        | "scrollY"
+        | "auto"
+        | undefined;
     padding?: UnsignedUpTo12 | undefined;
     smPadding?: UnsignedUpTo12 | undefined;
     mdPadding?: UnsignedUpTo12 | undefined;
@@ -259,7 +404,19 @@ export interface BoxProps extends BoxPassthroughProps {
     position?: "static" | "absolute" | "relative" | "fixed" | undefined;
     right?: boolean | undefined;
     role?: string | undefined;
-    rounding?: "pill" | "circle" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | undefined;
+    rounding?:
+        | "pill"
+        | "circle"
+        | 0
+        | 1
+        | 2
+        | 3
+        | 4
+        | 5
+        | 6
+        | 7
+        | 8
+        | undefined;
     top?: boolean | undefined;
     userSelect?: "auto" | "none" | undefined;
     width?: number | string | undefined;
@@ -293,12 +450,12 @@ export interface ButtonProps {
     name?: string | undefined;
     onClick?:
         | AbstractEventHandler<
-            | React.MouseEvent<HTMLButtonElement>
-            | React.MouseEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLButtonElement>,
-            { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-        >
+              | React.MouseEvent<HTMLButtonElement>
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLButtonElement>,
+              { dangerouslyDisableOnNavigation?: (() => void) | undefined }
+          >
         | undefined;
     rel?: "none" | "nofollow" | undefined;
     role?: "button" | "link" | undefined;
@@ -324,12 +481,12 @@ export interface ActionData {
     label: string;
     onClick?:
         | AbstractEventHandler<
-            | React.MouseEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLAnchorElement>
-            | React.MouseEvent<HTMLButtonElement>
-            | React.KeyboardEvent<HTMLButtonElement>,
-            { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-        >
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>
+              | React.MouseEvent<HTMLButtonElement>
+              | React.KeyboardEvent<HTMLButtonElement>,
+              { dangerouslyDisableOnNavigation?: (() => void) | undefined }
+          >
         | undefined;
     rel?: "none" | "nofollow" | undefined;
     target?: null | "self" | "blank" | undefined;
@@ -345,9 +502,9 @@ export interface CalloutProps {
     type: "error" | "info" | "recommendation" | "success" | "warning";
     dismissButton?:
         | {
-            accessibilityLabel: string;
-            onDismiss: () => void;
-        }
+              accessibilityLabel: string;
+              onDismiss: () => void;
+          }
         | undefined;
     primaryAction?: ActionData | undefined;
     secondaryAction?: ActionData | undefined;
@@ -362,8 +519,16 @@ export interface WashAnimatedProps {
     active?: boolean | undefined;
     children?: React.ReactNode | undefined;
     image?: React.ReactNode | undefined;
-    onMouseEnter?: ((args: { event: React.SyntheticEvent<React.MouseEvent<HTMLDivElement>> }) => void) | undefined;
-    onMouseLeave?: ((args: { event: React.SyntheticEvent<React.MouseEvent<HTMLDivElement>> }) => void) | undefined;
+    onMouseEnter?:
+        | ((args: {
+              event: React.SyntheticEvent<React.MouseEvent<HTMLDivElement>>;
+          }) => void)
+        | undefined;
+    onMouseLeave?:
+        | ((args: {
+              event: React.SyntheticEvent<React.MouseEvent<HTMLDivElement>>;
+          }) => void)
+        | undefined;
 }
 
 /**
@@ -372,7 +537,10 @@ export interface WashAnimatedProps {
  */
 export interface CheckboxProps {
     id: string;
-    onChange: AbstractEventHandler<React.SyntheticEvent<HTMLInputElement>, { checked: boolean }>;
+    onChange: AbstractEventHandler<
+        React.SyntheticEvent<HTMLInputElement>,
+        { checked: boolean }
+    >;
     checked?: boolean | undefined;
     disabled?: boolean | undefined;
     errorMessage?: string | undefined;
@@ -381,7 +549,12 @@ export interface CheckboxProps {
     indeterminate?: boolean | undefined;
     label?: string | undefined;
     name?: string | undefined;
-    onClick?: AbstractEventHandler<React.SyntheticEvent<HTMLInputElement>, { checked: boolean }> | undefined;
+    onClick?:
+        | AbstractEventHandler<
+              React.SyntheticEvent<HTMLInputElement>,
+              { checked: boolean }
+          >
+        | undefined;
     size?: "sm" | "md" | undefined;
     subtext?: string | undefined;
     labelDisplay?: "visible" | "hidden" | undefined;
@@ -410,21 +583,40 @@ export interface ComboBoxProps {
     helperText?: string | undefined;
     inputValue?: string | undefined;
     labelDisplay?: "visible" | "hidden" | undefined;
-    onChange?: ((args: { event: React.SyntheticEvent<HTMLInputElement>; value: string }) => void) | undefined;
+    onChange?:
+        | ((args: {
+              event: React.SyntheticEvent<HTMLInputElement>;
+              value: string;
+          }) => void)
+        | undefined;
     onBlur?:
         | ((args: {
-            event: React.FocusEvent<HTMLInputElement> | React.SyntheticEvent<HTMLInputElement>;
-            value: string;
-        }) => void)
+              event:
+                  | React.FocusEvent<HTMLInputElement>
+                  | React.SyntheticEvent<HTMLInputElement>;
+              value: string;
+          }) => void)
         | undefined;
-    onFocus?: ((args: { event: React.FocusEvent<HTMLInputElement>; value: string }) => void) | undefined;
-    onKeyDown?: ((args: { event: React.KeyboardEvent<HTMLInputElement>; value: string }) => void) | undefined;
+    onFocus?:
+        | ((args: {
+              event: React.FocusEvent<HTMLInputElement>;
+              value: string;
+          }) => void)
+        | undefined;
+    onKeyDown?:
+        | ((args: {
+              event: React.KeyboardEvent<HTMLInputElement>;
+              value: string;
+          }) => void)
+        | undefined;
     onClear?: (() => void) | undefined;
     onSelect?:
         | ((args: {
-            event: React.SyntheticEvent<HTMLInputElement> | React.KeyboardEvent<HTMLInputElement>;
-            item: ComboBoxItemType;
-        }) => void)
+              event:
+                  | React.SyntheticEvent<HTMLInputElement>
+                  | React.KeyboardEvent<HTMLInputElement>;
+              item: ComboBoxItemType;
+          }) => void)
         | undefined;
     placeholder?: string | undefined;
     selectedOption?: ComboBoxItemType | undefined;
@@ -439,7 +631,11 @@ export interface ComboBoxProps {
 export interface CollageProps {
     columns: number;
     height: number;
-    renderImage: (args: { width: number; height: number; index: number }) => React.ReactNode;
+    renderImage: (args: {
+        width: number;
+        height: number;
+        index: number;
+    }) => React.ReactNode;
     width: number;
     cover?: boolean | undefined;
     gutter?: number | undefined;
@@ -619,17 +815,19 @@ export interface DropdownLinkProps {
 
     onClick?:
         | AbstractEventHandler<
-            | React.MouseEvent<HTMLButtonElement>
-            | React.MouseEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLButtonElement>
-            | React.KeyboardEvent<HTMLAnchorElement>,
-            { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-        >
+              | React.MouseEvent<HTMLButtonElement>
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLButtonElement>
+              | React.KeyboardEvent<HTMLAnchorElement>,
+              { dangerouslyDisableOnNavigation?: (() => void) | undefined }
+          >
         | undefined;
 }
 
 export interface DropdownSectionProps {
-    children: React.ReactElement<DropdownItemProps> | ReadonlyArray<React.ReactElement<DropdownItemProps>>;
+    children:
+        | React.ReactElement<DropdownItemProps>
+        | ReadonlyArray<React.ReactElement<DropdownItemProps>>;
     label: string;
 }
 
@@ -650,18 +848,67 @@ export interface FieldsetProps {
  * https://gestalt.netlify.app/Flex
  */
 export interface FlexProps {
-    alignContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | "stretch" | undefined;
-    alignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    alignSelf?: "auto" | "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    smAlignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    mdAlignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    lgAlignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
+    alignContent?:
+        | "start"
+        | "end"
+        | "center"
+        | "between"
+        | "around"
+        | "evenly"
+        | "stretch"
+        | undefined;
+    alignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    alignSelf?:
+        | "auto"
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    smAlignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    mdAlignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    lgAlignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
     children?: React.ReactNode | undefined;
     direction?: "row" | "column" | undefined;
     flex?: "grow" | "shrink" | "none" | undefined;
-    gap?: UnsignedUpTo12 | { row: UnsignedUpTo12; column: UnsignedUpTo12 } | undefined;
+    gap?:
+        | UnsignedUpTo12
+        | { row: UnsignedUpTo12; column: UnsignedUpTo12 }
+        | undefined;
     height?: number | string | undefined;
-    justifyContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | undefined;
+    justifyContent?:
+        | "start"
+        | "end"
+        | "center"
+        | "between"
+        | "around"
+        | "evenly"
+        | undefined;
     maxHeight?: number | string | undefined;
     maxWidth?: number | string | undefined;
     minHeight?: number | string | undefined;
@@ -675,7 +922,14 @@ export interface FlexProps {
 }
 
 export interface FlexItemProps {
-    alignSelf?: "auto" | "start" | "end" | "center" | "baseline" | "stretch" | undefined;
+    alignSelf?:
+        | "auto"
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
     children?: React.ReactNode | undefined;
     flex?: "grow" | "shrink" | "none" | undefined;
     minWidth?: number | string | undefined;
@@ -714,17 +968,18 @@ export interface HelpButtonLinkType {
         | "none"
         | "default"
         | {
-            color: IconProps["color"];
-            size: IconProps["size"];
-        };
+              color: IconProps["color"];
+              size: IconProps["size"];
+          };
     href: string;
     onClick?:
         | AbstractEventHandler<
-            React.MouseEvent<HTMLAnchorElement> | React.KeyboardEvent<HTMLAnchorElement>,
-            {
-                dangerouslyDisableOnNavigation: () => void;
-            }
-        >
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>,
+              {
+                  dangerouslyDisableOnNavigation: () => void;
+              }
+          >
         | undefined;
     text: string;
     ref?: React.Ref<"a">;
@@ -777,14 +1032,14 @@ export interface HelpButtonProps {
      */
     onClick?:
         | AbstractEventHandler<
-            | React.MouseEvent<HTMLDivElement>
-            | React.KeyboardEvent<HTMLDivElement>
-            | React.MouseEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLAnchorElement>,
-            {
-                dangerouslyDisableOnNavigation: () => void;
-            }
-        >
+              | React.MouseEvent<HTMLDivElement>
+              | React.KeyboardEvent<HTMLDivElement>
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>,
+              {
+                  dangerouslyDisableOnNavigation: () => void;
+              }
+          >
         | undefined;
     /**
      * Informational content that's displayed when the user clicks on HelpButton.
@@ -1015,7 +1270,15 @@ export interface IconProps {
  * https://gestalt.netlify.app/IconButton
  */
 export interface IconButtonProps {
-    bgColor?: "transparent" | "darkGray" | "transparentDarkGray" | "gray" | "lightGray" | "white" | "red" | undefined;
+    bgColor?:
+        | "transparent"
+        | "darkGray"
+        | "transparentDarkGray"
+        | "gray"
+        | "lightGray"
+        | "white"
+        | "red"
+        | undefined;
     accessibilityControls?: string | undefined;
     accessibilityExpanded?: boolean | undefined;
     accessibilityHaspopup?: boolean | undefined;
@@ -1025,15 +1288,21 @@ export interface IconButtonProps {
     disabled?: boolean | undefined;
     href?: string | undefined;
     icon?: Icons | undefined;
-    iconColor?: "gray" | "darkGray" | "red" | "white" | "brandPrimary" | undefined;
+    iconColor?:
+        | "gray"
+        | "darkGray"
+        | "red"
+        | "white"
+        | "brandPrimary"
+        | undefined;
     onClick?:
         | AbstractEventHandler<
-            | React.MouseEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLAnchorElement>
-            | React.MouseEvent<HTMLButtonElement>
-            | React.KeyboardEvent<HTMLButtonElement>,
-            { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-        >
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>
+              | React.MouseEvent<HTMLButtonElement>
+              | React.KeyboardEvent<HTMLButtonElement>,
+              { dangerouslyDisableOnNavigation?: (() => void) | undefined }
+          >
         | undefined;
     padding?: 1 | 2 | 3 | 4 | 5 | undefined;
     rel?: "none" | "nofollow" | undefined;
@@ -1042,7 +1311,16 @@ export interface IconButtonProps {
     size?: "xs" | "sm" | "md" | "lg" | "xl" | undefined;
     tabIndex?: -1 | 0 | undefined;
     target?: null | "self" | "blank" | undefined;
-    tooltip?: Pick<TooltipProps, "accessibilityLabel" | "inline" | "idealDirection" | "text" | "zIndex"> | undefined;
+    tooltip?:
+        | Pick<
+              TooltipProps,
+              | "accessibilityLabel"
+              | "inline"
+              | "idealDirection"
+              | "text"
+              | "zIndex"
+          >
+        | undefined;
     type?: "submit" | "button" | undefined;
 }
 
@@ -1058,12 +1336,12 @@ export interface IconButtonFloatingProps {
     icon: Icons;
     onClick?:
         | AbstractEventHandler<
-            | React.MouseEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLAnchorElement>
-            | React.MouseEvent<HTMLButtonElement>
-            | React.KeyboardEvent<HTMLButtonElement>,
-            { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-        >
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>
+              | React.MouseEvent<HTMLButtonElement>
+              | React.KeyboardEvent<HTMLButtonElement>,
+              { dangerouslyDisableOnNavigation?: (() => void) | undefined }
+          >
         | undefined;
     selected?: boolean | undefined;
 }
@@ -1085,8 +1363,12 @@ export interface ImageProps {
     fit?: "cover" | "contain" | "none" | undefined;
     fetchPriority?: "high" | "low" | "auto" | undefined;
     loading?: "eager" | "lazy" | "auto" | undefined;
-    onError?: AbstractEventHandler<React.SyntheticEvent<HTMLImageElement>> | undefined;
-    onLoad?: AbstractEventHandler<React.SyntheticEvent<HTMLImageElement>> | undefined;
+    onError?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLImageElement>>
+        | undefined;
+    onLoad?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLImageElement>>
+        | undefined;
     role?: "img" | "presentation" | undefined;
     sizes?: string | undefined;
     srcSet?: string | undefined;
@@ -1125,7 +1407,10 @@ export interface LetterboxProps {
  * Link Props Interface
  * https://gestalt.netlify.app/Link
  */
-export type ExternalLinkIcon = "none" | "default" | { color: IconProps["color"]; size: TextProps["size"] };
+export type ExternalLinkIcon =
+    | "none"
+    | "default"
+    | { color: IconProps["color"]; size: TextProps["size"] };
 export interface LinkProps {
     href: string;
     accessibilityLabel?: string | undefined;
@@ -1138,16 +1423,33 @@ export interface LinkProps {
      * When supplied, a "visit" icon is shown at the end of Link. See the [externalLinkIcon and rel variant](https://gestalt.pinterest.systems/link#externalLinkIcon-and-rel) to learn more.
      */
     externalLinkIcon?: ExternalLinkIcon | undefined;
-    onBlur?: AbstractEventHandler<React.FocusEvent<HTMLAnchorElement>> | undefined;
+    onBlur?:
+        | AbstractEventHandler<React.FocusEvent<HTMLAnchorElement>>
+        | undefined;
     onClick?:
         | AbstractEventHandler<
-            React.MouseEvent<HTMLAnchorElement> | React.KeyboardEvent<HTMLAnchorElement>,
-            { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-        >
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>,
+              { dangerouslyDisableOnNavigation?: (() => void) | undefined }
+          >
         | undefined;
-    onFocus?: AbstractEventHandler<React.FocusEvent<HTMLAnchorElement>> | undefined;
+    onFocus?:
+        | AbstractEventHandler<React.FocusEvent<HTMLAnchorElement>>
+        | undefined;
     rel?: "none" | "nofollow" | undefined;
-    rounding?: "pill" | "circle" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | undefined;
+    rounding?:
+        | "pill"
+        | "circle"
+        | 0
+        | 1
+        | 2
+        | 3
+        | 4
+        | 5
+        | 6
+        | 7
+        | 8
+        | undefined;
     tapStyle?: "none" | "compress" | undefined;
     target?: null | "self" | "blank" | undefined;
     underline?: "auto" | "none" | "always" | "hover" | undefined;
@@ -1192,10 +1494,23 @@ export interface MasonryProps<T = any> {
     columnWidth?: number | undefined;
     gutterWidth?: number | undefined;
     items: readonly T[];
-    loadItems?: false | ((_arg?: { from: number }) => undefined | boolean | {}) | undefined;
+    loadItems?:
+        | false
+        | ((_arg?: { from: number }) => undefined | boolean | {})
+        | undefined;
     measurementStore?: MasonryCache<T, any>;
-    layout?: "basic" | "basicCentered" | "flexible" | "serverRenderedFlexible" | "uniformRow" | undefined;
-    renderItem: (args: { data: T; itemIdx: number; isMeasuring: boolean }) => React.ReactNode;
+    layout?:
+        | "basic"
+        | "basicCentered"
+        | "flexible"
+        | "serverRenderedFlexible"
+        | "uniformRow"
+        | undefined;
+    renderItem: (args: {
+        data: T;
+        itemIdx: number;
+        isMeasuring: boolean;
+    }) => React.ReactNode;
     flexible?: boolean | undefined;
     minCols?: number | undefined;
     scrollContainer?: (() => HTMLElement) | undefined;
@@ -1307,7 +1622,10 @@ export interface NumberFieldProps {
     /**
      * Callback triggered when the value of the input changes, whether by keyboard entry or the input's arrows.
      */
-    onChange: (args: { event: React.SyntheticEvent<HTMLInputElement>; value: number | undefined }) => void;
+    onChange: (args: {
+        event: React.SyntheticEvent<HTMLInputElement>;
+        value: number | undefined;
+    }) => void;
     /**
      * Indicate if autocomplete should be available to the input.
      */
@@ -1320,7 +1638,15 @@ export interface NumberFieldProps {
     /**
      *  Optionally specify the action label to present for the enter key on virtual keyboards.
      */
-    enterKeyHint?: "enter" | "done" | "go" | "next" | "previous" | "search" | "send" | undefined;
+    enterKeyHint?:
+        | "enter"
+        | "done"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
+        | undefined;
     /**
      * For most cases, pass a string with a helpful error message (be sure to localize!).
      * In certain instances it can be useful to make some text clickable; to suppor this you may instead pass a React.Node to wrap text in Link or TapArea.
@@ -1349,16 +1675,29 @@ export interface NumberFieldProps {
     /**
      * Callback triggered when the user blurs the input.
      */
-    onBlur?: ((args: { event: React.FocusEvent<HTMLInputElement>; value: number | undefined }) => void) | undefined;
+    onBlur?:
+        | ((args: {
+              event: React.FocusEvent<HTMLInputElement>;
+              value: number | undefined;
+          }) => void)
+        | undefined;
     /**
      * Callback triggered when the user focuses the input.
      */
-    onFocus?: ((args: { event: React.FocusEvent<HTMLInputElement>; value: number | undefined }) => void) | undefined;
+    onFocus?:
+        | ((args: {
+              event: React.FocusEvent<HTMLInputElement>;
+              value: number | undefined;
+          }) => void)
+        | undefined;
     /**
      * Callback triggered when the user presses any key while the input is focused.
      */
     onKeyDown?:
-        | ((args: { event: React.KeyboardEvent<HTMLInputElement>; value: number | undefined }) => void)
+        | ((args: {
+              event: React.KeyboardEvent<HTMLInputElement>;
+              value: number | undefined;
+          }) => void)
         | undefined;
     /**
      * Placeholder text shown when the user has not yes input a value.
@@ -1408,10 +1747,21 @@ export interface PageHeaderHelperIconButton {
 }
 export interface PageHeaderAction {
     component?:
-        | React.ReactElement<typeof Button | typeof IconButton | typeof Link | typeof Tooltip | typeof Text>
+        | React.ReactElement<
+              | typeof Button
+              | typeof IconButton
+              | typeof Link
+              | typeof Tooltip
+              | typeof Text
+          >
         | undefined;
     dropdownItems?:
-        | ReadonlyArray<React.ReactElement<DropdownItemProps | DropdownLinkProps, typeof Dropdown>>
+        | ReadonlyArray<
+              React.ReactElement<
+                  DropdownItemProps | DropdownLinkProps,
+                  typeof Dropdown
+              >
+          >
         | undefined;
 }
 
@@ -1429,7 +1779,9 @@ export interface PageHeaderProps {
         text: string;
         href: string;
         onClick?: (args: {
-            event: React.MouseEvent<HTMLAnchorElement> | React.KeyboardEvent<HTMLAnchorElement>;
+            event:
+                | React.MouseEvent<HTMLAnchorElement>
+                | React.KeyboardEvent<HTMLAnchorElement>;
             dangerouslyDisableOnNavigation: () => void;
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         }) => void | undefined;
@@ -1450,12 +1802,26 @@ export interface PageHeaderProps {
 export interface PogProps {
     accessibilityLabel?: string | undefined;
     active?: boolean | undefined;
-    bgColor?: "transparent" | "darkGray" | "transparentDarkGray" | "gray" | "lightGray" | "white" | "red" | undefined;
+    bgColor?:
+        | "transparent"
+        | "darkGray"
+        | "transparentDarkGray"
+        | "gray"
+        | "lightGray"
+        | "white"
+        | "red"
+        | undefined;
     dangerouslySetSvgPath?: { __path: string } | undefined;
     focused?: boolean | undefined;
     hovered?: boolean | undefined;
     icon?: Icons | undefined;
-    iconColor?: "gray" | "darkGray" | "red" | "white" | "brandPrimary" | undefined;
+    iconColor?:
+        | "gray"
+        | "darkGray"
+        | "red"
+        | "white"
+        | "brandPrimary"
+        | undefined;
     padding?: 1 | 2 | 3 | 4 | 5 | undefined;
     selected?: boolean | undefined;
     size?: "xs" | "sm" | "md" | "lg" | "xl" | undefined;
@@ -1500,23 +1866,23 @@ export interface PopoverEducationalProps {
     message?: React.ReactElement<typeof Text> | undefined;
     primaryAction?:
         | {
-            accessibilityLabel?: string | undefined;
-            href?: string | undefined;
-            text: string | undefined;
-            onClick?:
-                | AbstractEventHandler<
-                    | React.MouseEvent<HTMLButtonElement>
-                    | React.MouseEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLButtonElement>,
-                    {
-                        dangerouslyDisableOnNavigation: () => void;
-                    }
-                >
-                | undefined;
-            rel?: "none" | "nofollow" | undefined;
-            target?: null | "self" | "blank" | undefined;
-        }
+              accessibilityLabel?: string | undefined;
+              href?: string | undefined;
+              text: string | undefined;
+              onClick?:
+                  | AbstractEventHandler<
+                        | React.MouseEvent<HTMLButtonElement>
+                        | React.MouseEvent<HTMLAnchorElement>
+                        | React.KeyboardEvent<HTMLAnchorElement>
+                        | React.KeyboardEvent<HTMLButtonElement>,
+                        {
+                            dangerouslyDisableOnNavigation: () => void;
+                        }
+                    >
+                  | undefined;
+              rel?: "none" | "nofollow" | undefined;
+              target?: null | "self" | "blank" | undefined;
+          }
         | undefined;
     role?: "dialog" | "tooltip" | undefined;
     shouldFocus?: boolean | undefined;
@@ -1539,7 +1905,10 @@ export interface PulsarProps {
  */
 export interface RadioButtonProps {
     id: string;
-    onChange: AbstractEventHandler<React.SyntheticEvent<HTMLInputElement>, { checked: boolean }>;
+    onChange: AbstractEventHandler<
+        React.SyntheticEvent<HTMLInputElement>,
+        { checked: boolean }
+    >;
     value: string;
     checked?: boolean | undefined;
     helperText?: string | undefined;
@@ -1568,15 +1937,43 @@ export interface RadioGroupProps {
  * https://gestalt.netlify.app/Row
  */
 export interface RowProps {
-    alignContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | "stretch" | undefined;
-    alignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    alignSelf?: "auto" | "start" | "end" | "center" | "baseline" | "stretch" | undefined;
+    alignContent?:
+        | "start"
+        | "end"
+        | "center"
+        | "between"
+        | "around"
+        | "evenly"
+        | "stretch"
+        | undefined;
+    alignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    alignSelf?:
+        | "auto"
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
     children?: React.ReactNode | undefined;
     fit?: boolean | undefined;
     flex?: "grow" | "shrink" | "none" | undefined;
     gap?: UnsignedUpTo12 | undefined;
     height?: number | string | undefined;
-    justifyContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | undefined;
+    justifyContent?:
+        | "start"
+        | "end"
+        | "center"
+        | "between"
+        | "around"
+        | "evenly"
+        | undefined;
     maxHeight?: number | string | undefined;
     maxWidth?: number | string | undefined;
     minHeight?: number | string | undefined;
@@ -1592,7 +1989,13 @@ export interface RowProps {
 export interface ScrollBoundaryContainerProps {
     children: React.ReactNode;
     height?: number | string | undefined;
-    overflow?: "scroll" | "scrollX" | "scrollY" | "auto" | "visible" | undefined;
+    overflow?:
+        | "scroll"
+        | "scrollX"
+        | "scrollY"
+        | "auto"
+        | "visible"
+        | undefined;
 }
 
 /**
@@ -1605,10 +2008,25 @@ export interface SearchFieldProps {
     id: string;
     autoComplete?: "on" | "off" | "username" | "name" | undefined;
     errorMessage?: string | undefined;
-    onChange: (args: { value: string; syntheticEvent: React.SyntheticEvent<HTMLInputElement> }) => void;
-    onBlur?: ((args: { event: React.SyntheticEvent<HTMLInputElement> }) => void) | undefined;
-    onFocus?: ((args: { value: string; syntheticEvent: React.SyntheticEvent<HTMLInputElement> }) => void) | undefined;
-    onKeyDown?: ((args: { event: React.KeyboardEvent<HTMLInputElement>; value: string }) => void) | undefined;
+    onChange: (args: {
+        value: string;
+        syntheticEvent: React.SyntheticEvent<HTMLInputElement>;
+    }) => void;
+    onBlur?:
+        | ((args: { event: React.SyntheticEvent<HTMLInputElement> }) => void)
+        | undefined;
+    onFocus?:
+        | ((args: {
+              value: string;
+              syntheticEvent: React.SyntheticEvent<HTMLInputElement>;
+          }) => void)
+        | undefined;
+    onKeyDown?:
+        | ((args: {
+              event: React.KeyboardEvent<HTMLInputElement>;
+              value: string;
+          }) => void)
+        | undefined;
     placeholder?: string | undefined;
     size?: "md" | "lg" | undefined;
     value?: string | undefined;
@@ -1621,7 +2039,10 @@ export interface SearchFieldProps {
  */
 export interface SegmentedControlProps {
     items: React.ReactNode[];
-    onChange: (args: { event: React.SyntheticEvent<React.MouseEvent>; activeIndex: number }) => void;
+    onChange: (args: {
+        event: React.SyntheticEvent<React.MouseEvent>;
+        activeIndex: number;
+    }) => void;
     selectedItemIndex: number;
     responsive?: boolean | undefined;
 }
@@ -1633,7 +2054,10 @@ export interface SegmentedControlProps {
 export interface SelectListProps {
     children: React.ReactNode;
     id: string;
-    onChange: (args: { event: React.SyntheticEvent<HTMLElement>; value: string }) => void;
+    onChange: (args: {
+        event: React.SyntheticEvent<HTMLElement>;
+        value: string;
+    }) => void;
     disabled?: boolean | undefined;
     errorMessage?: string | undefined;
     helperText?: string | undefined;
@@ -1697,7 +2121,9 @@ export interface SideNaviationProps {
      */
     showBorder?: boolean | undefined;
     title?: string | undefined;
-    dismissButton?: { accessibilityLabel?: string; onDismiss: () => void } | undefined;
+    dismissButton?:
+        | { accessibilityLabel?: string; onDismiss: () => void }
+        | undefined;
 }
 
 export interface SideNavigationSectionProps {
@@ -1724,9 +2150,15 @@ export interface SideNavigationTopItemProps {
      */
     badge?:
         | {
-            text: string;
-            type?: "info" | "error" | "warning" | "success" | "neutral" | undefined;
-        }
+              text: string;
+              type?:
+                  | "info"
+                  | "error"
+                  | "warning"
+                  | "success"
+                  | "neutral"
+                  | undefined;
+          }
         | undefined;
     /**
      * When supplied, will display a counter. See the [Counter](https://gestalt.pinterest.systems/SideNavigation#Counter) variant to learn more.
@@ -1749,12 +2181,12 @@ export interface SideNavigationTopItemProps {
      */
     onClick?:
         | AbstractEventHandler<
-            | React.MouseEvent<HTMLButtonElement>
-            | React.MouseEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLButtonElement>,
-            { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-        >
+              | React.MouseEvent<HTMLButtonElement>
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLButtonElement>,
+              { dangerouslyDisableOnNavigation?: (() => void) | undefined }
+          >
         | undefined;
 
     /**
@@ -1763,22 +2195,24 @@ export interface SideNavigationTopItemProps {
     label: string;
     primaryAction?:
         | {
-            icon?: "ellipsis" | "edit" | "trash-can";
-            onClick?:
-                | AbstractEventHandler<
-                    | React.MouseEvent<HTMLButtonElement>
-                    | React.MouseEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLButtonElement>
-                >
-                | undefined;
-            tooltip: {
-                accessibilityLabel?: string | undefined;
-                text: string;
-                zIndex?: Indexable | undefined;
-            };
-            dropdownItems?: Array<React.ReactElement<(typeof Dropdown)["Item"]>>;
-        }
+              icon?: "ellipsis" | "edit" | "trash-can";
+              onClick?:
+                  | AbstractEventHandler<
+                        | React.MouseEvent<HTMLButtonElement>
+                        | React.MouseEvent<HTMLAnchorElement>
+                        | React.KeyboardEvent<HTMLAnchorElement>
+                        | React.KeyboardEvent<HTMLButtonElement>
+                    >
+                  | undefined;
+              tooltip: {
+                  accessibilityLabel?: string | undefined;
+                  text: string;
+                  zIndex?: Indexable | undefined;
+              };
+              dropdownItems?: Array<
+                  React.ReactElement<(typeof Dropdown)["Item"]>
+              >;
+          }
         | undefined;
 }
 
@@ -1800,12 +2234,12 @@ export interface SideNavigationNestedItemProps {
      */
     onClick?:
         | AbstractEventHandler<
-            | React.MouseEvent<HTMLButtonElement>
-            | React.MouseEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLButtonElement>,
-            { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-        >
+              | React.MouseEvent<HTMLButtonElement>
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLButtonElement>,
+              { dangerouslyDisableOnNavigation?: (() => void) | undefined }
+          >
         | undefined;
 }
 
@@ -1843,22 +2277,24 @@ export interface SideNavigationNestedGroupProps {
 
     primaryAction?:
         | {
-            icon?: "ellipsis" | "edit" | "trash-can";
-            onClick?:
-                | AbstractEventHandler<
-                    | React.MouseEvent<HTMLButtonElement>
-                    | React.MouseEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLButtonElement>
-                >
-                | undefined;
-            tooltip: {
-                accessibilityLabel?: string | undefined;
-                text: string;
-                zIndex?: Indexable | undefined;
-            };
-            dropdownItems?: Array<React.ReactElement<(typeof Dropdown)["Item"]>>;
-        }
+              icon?: "ellipsis" | "edit" | "trash-can";
+              onClick?:
+                  | AbstractEventHandler<
+                        | React.MouseEvent<HTMLButtonElement>
+                        | React.MouseEvent<HTMLAnchorElement>
+                        | React.KeyboardEvent<HTMLAnchorElement>
+                        | React.KeyboardEvent<HTMLButtonElement>
+                    >
+                  | undefined;
+              tooltip: {
+                  accessibilityLabel?: string | undefined;
+                  text: string;
+                  zIndex?: Indexable | undefined;
+              };
+              dropdownItems?: Array<
+                  React.ReactElement<(typeof Dropdown)["Item"]>
+              >;
+          }
         | undefined;
 }
 
@@ -1892,7 +2328,9 @@ export interface OverlayPanel {
     closeOnOutsideClick?: boolean | undefined;
     footer?: OverlayPanelNodeOrRenderProp | undefined;
     heading?: string | undefined;
-    onAnimationEnd?: (args: { animationState: OnAnimationEndStateType }) => void;
+    onAnimationEnd?: (args: {
+        animationState: OnAnimationEndStateType;
+    }) => void;
     dismissConfirmation?: {
         message?: string | undefined;
         subtext?: string | undefined;
@@ -1901,11 +2339,11 @@ export interface OverlayPanel {
             text?: string | undefined;
             onClick?:
                 | AbstractEventHandler<
-                    | React.MouseEvent<HTMLButtonElement>
-                    | React.MouseEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLButtonElement>
-                >
+                      | React.MouseEvent<HTMLButtonElement>
+                      | React.MouseEvent<HTMLAnchorElement>
+                      | React.KeyboardEvent<HTMLAnchorElement>
+                      | React.KeyboardEvent<HTMLButtonElement>
+                  >
                 | undefined;
         };
         secondaryAction?: {
@@ -1913,11 +2351,11 @@ export interface OverlayPanel {
             text?: string | undefined;
             onClick?:
                 | AbstractEventHandler<
-                    | React.MouseEvent<HTMLButtonElement>
-                    | React.MouseEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLAnchorElement>
-                    | React.KeyboardEvent<HTMLButtonElement>
-                >
+                      | React.MouseEvent<HTMLButtonElement>
+                      | React.MouseEvent<HTMLAnchorElement>
+                      | React.KeyboardEvent<HTMLAnchorElement>
+                      | React.KeyboardEvent<HTMLButtonElement>
+                  >
                 | undefined;
         };
     };
@@ -1933,29 +2371,29 @@ export interface OverlayPanel {
 export interface SlimBannerProps {
     dismissButton?:
         | {
-            accessibilityLabel: string;
-            onDismiss: () => void;
-        }
+              accessibilityLabel: string;
+              onDismiss: () => void;
+          }
         | undefined;
     primaryAction?:
         | {
-            accessibilityLabel: string;
-            disabled?: boolean;
-            href?: string;
-            label: string;
-            onClick?:
-                | AbstractEventHandler<
-                    | React.MouseEvent<HTMLButtonElement>
-                    | React.MouseEvent<HTMLAnchorElement>
-                    | React.MouseEvent<HTMLAnchorElement>
-                    | React.MouseEvent<HTMLButtonElement>,
-                    {
-                        rel?: "none" | "nofollow";
-                        target?: null | "self" | "blank";
-                    }
-                >
-                | undefined;
-        }
+              accessibilityLabel: string;
+              disabled?: boolean;
+              href?: string;
+              label: string;
+              onClick?:
+                  | AbstractEventHandler<
+                        | React.MouseEvent<HTMLButtonElement>
+                        | React.MouseEvent<HTMLAnchorElement>
+                        | React.MouseEvent<HTMLAnchorElement>
+                        | React.MouseEvent<HTMLButtonElement>,
+                        {
+                            rel?: "none" | "nofollow";
+                            target?: null | "self" | "blank";
+                        }
+                    >
+                  | undefined;
+          }
         | undefined;
 
     /**
@@ -1968,9 +2406,10 @@ export interface SlimBannerProps {
         text: string;
         onClick?:
             | AbstractEventHandler<
-                React.MouseEvent<HTMLAnchorElement> | React.KeyboardEvent<HTMLAnchorElement>,
-                { dangerouslyDisableOnNavigation?: (() => void) | undefined }
-            >
+                  | React.MouseEvent<HTMLAnchorElement>
+                  | React.KeyboardEvent<HTMLAnchorElement>,
+                  { dangerouslyDisableOnNavigation?: (() => void) | undefined }
+              >
             | undefined;
     };
     /**
@@ -2014,15 +2453,43 @@ export interface SpinnerProps {
  * https://gestalt.netlify.app/Stack
  */
 export interface StackProps {
-    alignContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | "stretch" | undefined;
-    alignItems?: "start" | "end" | "center" | "baseline" | "stretch" | undefined;
-    alignSelf?: "auto" | "start" | "end" | "center" | "baseline" | "stretch" | undefined;
+    alignContent?:
+        | "start"
+        | "end"
+        | "center"
+        | "between"
+        | "around"
+        | "evenly"
+        | "stretch"
+        | undefined;
+    alignItems?:
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
+    alignSelf?:
+        | "auto"
+        | "start"
+        | "end"
+        | "center"
+        | "baseline"
+        | "stretch"
+        | undefined;
     children?: React.ReactNode | undefined;
     fit?: boolean | undefined;
     flex?: "grow" | "shrink" | "none" | undefined;
     gap?: UnsignedUpTo12 | undefined;
     height?: number | string | undefined;
-    justifyContent?: "start" | "end" | "center" | "between" | "around" | "evenly" | undefined;
+    justifyContent?:
+        | "start"
+        | "end"
+        | "center"
+        | "between"
+        | "around"
+        | "evenly"
+        | undefined;
     maxHeight?: number | string | undefined;
     maxWidth?: number | string | undefined;
     minHeight?: number | string | undefined;
@@ -2036,7 +2503,14 @@ export interface StackProps {
  * https://gestalt.netlify.app/status
  */
 export interface StatusProps {
-    type: "unstarted" | "inProgress" | "halted" | "ok" | "problem" | "canceled" | "warning";
+    type:
+        | "unstarted"
+        | "inProgress"
+        | "halted"
+        | "ok"
+        | "problem"
+        | "canceled"
+        | "warning";
     accessibilityLabel?: string | undefined;
     subtext?: string | undefined;
     title?: string | undefined;
@@ -2062,7 +2536,12 @@ export interface StickyProps {
  */
 export interface SwitchProps {
     id: string;
-    onChange?: AbstractEventHandler<React.SyntheticEvent<HTMLInputElement>, { value: boolean }> | undefined;
+    onChange?:
+        | AbstractEventHandler<
+              React.SyntheticEvent<HTMLInputElement>,
+              { value: boolean }
+          >
+        | undefined;
     disabled?: boolean | undefined;
     name?: string | undefined;
     switched?: boolean | undefined;
@@ -2112,7 +2591,10 @@ export interface TableRowProps {
 }
 
 export interface TableRowDrawerProps {
-    children: React.ReactElement<TableCellProps> | Array<React.ReactElement<TableCellProps>> | undefined;
+    children:
+        | React.ReactElement<TableCellProps>
+        | Array<React.ReactElement<TableCellProps>>
+        | undefined;
     drawerContents: React.ReactNode;
     id: string;
 }
@@ -2126,17 +2608,18 @@ export interface TableRowExpandableProps {
     hoverStyle?: "none" | "gray" | undefined;
     onExpand?:
         | AbstractEventHandler<
-            | React.MouseEvent<HTMLButtonElement>
-            | React.MouseEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLAnchorElement>
-            | React.KeyboardEvent<HTMLButtonElement>
-        >
+              | React.MouseEvent<HTMLButtonElement>
+              | React.MouseEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLAnchorElement>
+              | React.KeyboardEvent<HTMLButtonElement>
+          >
         | undefined;
 }
 
 export interface TableSortableHeaderCellProps extends TableHeaderCellProps {
     onSortChange: AbstractEventHandler<
-        React.MouseEvent<HTMLTableCellElement> | React.KeyboardEvent<HTMLTableCellElement>
+        | React.MouseEvent<HTMLTableCellElement>
+        | React.KeyboardEvent<HTMLTableCellElement>
     >;
     sortOrder: "asc" | "desc";
     status: "active" | "inactive";
@@ -2172,7 +2655,9 @@ export interface TabsProps {
 export interface TagProps {
     accessibilityRemoveIconLabel?: string;
     disabled?: boolean | undefined;
-    onRemove?: AbstractEventHandler<React.MouseEvent<HTMLButtonElement>> | undefined;
+    onRemove?:
+        | AbstractEventHandler<React.MouseEvent<HTMLButtonElement>>
+        | undefined;
     text: string;
     type?: "default" | "error" | "warning";
 }
@@ -2199,16 +2684,57 @@ export interface TapAreaProps {
     fullHeight?: boolean | undefined;
     fullWidth?: boolean | undefined;
     href?: string | undefined;
-    mouseCursor?: "copy" | "grab" | "grabbing" | "move" | "noDrop" | "pointer" | "zoomIn" | "zoomOut" | undefined;
-    onBlur?: AbstractEventHandler<React.FocusEvent<HTMLDivElement | HTMLAnchorElement>> | undefined;
-    onFocus?: AbstractEventHandler<React.FocusEvent<HTMLDivElement | HTMLAnchorElement>> | undefined;
-    onMouseDown?: AbstractEventHandler<React.MouseEvent<HTMLDivElement | HTMLAnchorElement>> | undefined;
-    onMouseEnter?: AbstractEventHandler<React.MouseEvent<HTMLDivElement | HTMLAnchorElement>> | undefined;
-    onMouseLeave?: AbstractEventHandler<React.MouseEvent<HTMLDivElement | HTMLAnchorElement>> | undefined;
+    mouseCursor?:
+        | "copy"
+        | "grab"
+        | "grabbing"
+        | "move"
+        | "noDrop"
+        | "pointer"
+        | "zoomIn"
+        | "zoomOut"
+        | undefined;
+    onBlur?:
+        | AbstractEventHandler<
+              React.FocusEvent<HTMLDivElement | HTMLAnchorElement>
+          >
+        | undefined;
+    onFocus?:
+        | AbstractEventHandler<
+              React.FocusEvent<HTMLDivElement | HTMLAnchorElement>
+          >
+        | undefined;
+    onMouseDown?:
+        | AbstractEventHandler<
+              React.MouseEvent<HTMLDivElement | HTMLAnchorElement>
+          >
+        | undefined;
+    onMouseEnter?:
+        | AbstractEventHandler<
+              React.MouseEvent<HTMLDivElement | HTMLAnchorElement>
+          >
+        | undefined;
+    onMouseLeave?:
+        | AbstractEventHandler<
+              React.MouseEvent<HTMLDivElement | HTMLAnchorElement>
+          >
+        | undefined;
     onTap?: OnTapType | undefined;
     rel?: "none" | "nofollow" | undefined;
     role?: "button" | "link" | undefined;
-    rounding?: "pill" | "circle" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | undefined;
+    rounding?:
+        | "pill"
+        | "circle"
+        | 0
+        | 1
+        | 2
+        | 3
+        | 4
+        | 5
+        | 6
+        | 7
+        | 8
+        | undefined;
     tabIndex?: -1 | 0 | undefined;
     tapStyle?: "none" | "compress" | undefined;
     target?: null | "self" | "blank" | undefined;
@@ -2254,15 +2780,33 @@ export interface MaxLength {
  */
 export interface TextAreaProps {
     id: string;
-    onChange: (args: { event: React.SyntheticEvent<HTMLTextAreaElement>; value: string }) => void;
+    onChange: (args: {
+        event: React.SyntheticEvent<HTMLTextAreaElement>;
+        value: string;
+    }) => void;
     disabled?: boolean | undefined;
     errorMessage?: React.ReactNode | undefined;
     helperText?: string | undefined;
     label?: string | undefined;
     name?: string | undefined;
-    onBlur?: ((args: { event: React.FocusEvent<HTMLTextAreaElement>; value: string }) => void) | undefined;
-    onFocus?: ((args: { event: React.FocusEvent<HTMLTextAreaElement>; value: string }) => void) | undefined;
-    onKeyDown?: ((args: { event: React.KeyboardEvent<HTMLTextAreaElement>; value: string }) => void) | undefined;
+    onBlur?:
+        | ((args: {
+              event: React.FocusEvent<HTMLTextAreaElement>;
+              value: string;
+          }) => void)
+        | undefined;
+    onFocus?:
+        | ((args: {
+              event: React.FocusEvent<HTMLTextAreaElement>;
+              value: string;
+          }) => void)
+        | undefined;
+    onKeyDown?:
+        | ((args: {
+              event: React.KeyboardEvent<HTMLTextAreaElement>;
+              value: string;
+          }) => void)
+        | undefined;
     placeholder?: string | undefined;
     /**
      * Number of text rows to display.
@@ -2285,8 +2829,19 @@ export interface TextAreaProps {
  */
 export interface TextFieldProps {
     id: string;
-    onChange: (args: { event: React.SyntheticEvent<HTMLInputElement>; value: string }) => void;
-    autoComplete?: "bday" | "current-password" | "email" | "new-password" | "on" | "off" | "username" | undefined;
+    onChange: (args: {
+        event: React.SyntheticEvent<HTMLInputElement>;
+        value: string;
+    }) => void;
+    autoComplete?:
+        | "bday"
+        | "current-password"
+        | "email"
+        | "new-password"
+        | "on"
+        | "off"
+        | "username"
+        | undefined;
     /**
      * @default false
      */
@@ -2294,7 +2849,15 @@ export interface TextFieldProps {
     /**
      *  Optionally specify the action label to present for the enter key on virtual keyboards.
      */
-    enterKeyHint?: "enter" | "done" | "go" | "next" | "previous" | "search" | "send" | undefined;
+    enterKeyHint?:
+        | "enter"
+        | "done"
+        | "go"
+        | "next"
+        | "previous"
+        | "search"
+        | "send"
+        | undefined;
     errorMessage?: React.ReactNode | undefined;
     /**
      * More information about how to complete the form field
@@ -2303,9 +2866,24 @@ export interface TextFieldProps {
     maxLength?: MaxLength | undefined;
     label?: string | undefined;
     name?: string | undefined;
-    onBlur?: ((args: { event: React.FocusEvent<HTMLInputElement>; value: string }) => void) | undefined;
-    onFocus?: ((args: { event: React.FocusEvent<HTMLInputElement>; value: string }) => void) | undefined;
-    onKeyDown?: ((args: { event: React.KeyboardEvent<HTMLInputElement>; value: string }) => void) | undefined;
+    onBlur?:
+        | ((args: {
+              event: React.FocusEvent<HTMLInputElement>;
+              value: string;
+          }) => void)
+        | undefined;
+    onFocus?:
+        | ((args: {
+              event: React.FocusEvent<HTMLInputElement>;
+              value: string;
+          }) => void)
+        | undefined;
+    onKeyDown?:
+        | ((args: {
+              event: React.KeyboardEvent<HTMLInputElement>;
+              value: string;
+          }) => void)
+        | undefined;
     placeholder?: string | undefined;
     /**
      * md: 40px, lg: 48px
@@ -2333,20 +2911,21 @@ export interface ToastProps {
     text: string | React.ReactElement<typeof Text>;
     dissmissButton:
         | {
-            accessibilityLabel?: string | undefined;
-            onDismiss: () => void;
-        }
+              accessibilityLabel?: string | undefined;
+              onDismiss: () => void;
+          }
         | undefined;
     helperLink?:
         | {
-            text: string;
-            accessibilityLabel: string;
-            href: string;
-            onClick?: AbstractEventHandler<
-                React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-                { dangerouslyDisableOnNavigation: () => void }
-            >;
-        }
+              text: string;
+              accessibilityLabel: string;
+              href: string;
+              onClick?: AbstractEventHandler<
+                  | React.MouseEvent<HTMLElement>
+                  | React.KeyboardEvent<HTMLElement>,
+                  { dangerouslyDisableOnNavigation: () => void }
+              >;
+          }
         | undefined;
     primaryAction?: {
         accessibilityLabel: string;
@@ -2388,21 +2967,21 @@ export interface UpsellProps {
     message: string | React.ReactElement<typeof Text>;
     dismissButton?:
         | {
-            accessibilityLabel: string;
-            onDismiss: () => void;
-        }
+              accessibilityLabel: string;
+              onDismiss: () => void;
+          }
         | undefined;
     imageData?:
         | {
-            component: React.ReactElement<any, typeof Image | typeof Icon>;
-            width?: number | undefined;
-            mask?:
-                | {
-                    rounding: "circle" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
-                    wash: boolean;
-                }
-                | undefined;
-        }
+              component: React.ReactElement<any, typeof Image | typeof Icon>;
+              width?: number | undefined;
+              mask?:
+                  | {
+                        rounding: "circle" | 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+                        wash: boolean;
+                    }
+                  | undefined;
+          }
         | undefined;
     primaryAction?: ActionData | undefined;
     secondaryAction?: ActionData | undefined;
@@ -2438,36 +3017,94 @@ export interface VideoProps {
     playbackRate?: number | undefined;
     playing?: boolean | undefined;
     preload?: "auto" | "metadata" | "none" | undefined;
-    src: string | ReadonlyArray<{ type: "video/m3u8" | "video/mp4" | "video/ogg"; src: string }>;
+    src:
+        | string
+        | ReadonlyArray<{
+              type: "video/m3u8" | "video/mp4" | "video/ogg";
+              src: string;
+          }>;
     volume?: number | undefined;
     children?: Node | undefined;
     controls?: boolean | undefined;
     disableRemotePlayback?: boolean | undefined;
     crossOrigin?: "anonymous" | "use-credentials" | undefined;
     loop?: boolean | undefined;
-    objectFit?: "fill" | "contain" | "cover" | "none" | "scale-down" | undefined;
+    objectFit?:
+        | "fill"
+        | "contain"
+        | "cover"
+        | "none"
+        | "scale-down"
+        | undefined;
     onDurationChange?:
-        | ((args: { event: React.SyntheticEvent<HTMLVideoElement>; duration: number }) => void)
+        | ((args: {
+              event: React.SyntheticEvent<HTMLVideoElement>;
+              duration: number;
+          }) => void)
         | undefined;
-    onEnded?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>> | undefined;
+    onEnded?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>>
+        | undefined;
     onFullscreenChange?:
-        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>, { fullscreen: boolean }>
+        | AbstractEventHandler<
+              React.SyntheticEvent<HTMLVideoElement>,
+              { fullscreen: boolean }
+          >
         | undefined;
-    onLoadedChange?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>, { loaded: number }> | undefined;
-    onPlay?: AbstractEventHandler<React.SyntheticEvent<HTMLDivElement>> | undefined;
-    onPlayheadDown?: AbstractEventHandler<React.MouseEvent<HTMLDivElement>> | undefined;
-    onPlayheadUp?: AbstractEventHandler<React.MouseEvent<HTMLDivElement>> | undefined;
-    onPause?: AbstractEventHandler<React.SyntheticEvent<HTMLDivElement>> | undefined;
-    onReady?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>> | undefined;
-    onSeek?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>> | undefined;
-    onTimeChange?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>, { time: number }> | undefined;
-    onVolumeChange?: AbstractEventHandler<React.SyntheticEvent<HTMLDivElement>, { volume: number }> | undefined;
-    onError?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>> | undefined;
-    onLoadStart?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>> | undefined;
-    onPlaying?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>> | undefined;
-    onSeeking?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>> | undefined;
-    onStalled?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>> | undefined;
-    onWaiting?: AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>> | undefined;
+    onLoadedChange?:
+        | AbstractEventHandler<
+              React.SyntheticEvent<HTMLVideoElement>,
+              { loaded: number }
+          >
+        | undefined;
+    onPlay?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLDivElement>>
+        | undefined;
+    onPlayheadDown?:
+        | AbstractEventHandler<React.MouseEvent<HTMLDivElement>>
+        | undefined;
+    onPlayheadUp?:
+        | AbstractEventHandler<React.MouseEvent<HTMLDivElement>>
+        | undefined;
+    onPause?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLDivElement>>
+        | undefined;
+    onReady?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>>
+        | undefined;
+    onSeek?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>>
+        | undefined;
+    onTimeChange?:
+        | AbstractEventHandler<
+              React.SyntheticEvent<HTMLVideoElement>,
+              { time: number }
+          >
+        | undefined;
+    onVolumeChange?:
+        | AbstractEventHandler<
+              React.SyntheticEvent<HTMLDivElement>,
+              { volume: number }
+          >
+        | undefined;
+    onError?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>>
+        | undefined;
+    onLoadStart?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>>
+        | undefined;
+    onPlaying?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>>
+        | undefined;
+    onSeeking?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>>
+        | undefined;
+    onStalled?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>>
+        | undefined;
+    onWaiting?:
+        | AbstractEventHandler<React.SyntheticEvent<HTMLVideoElement>>
+        | undefined;
     playsInline?: boolean | undefined;
     poster?: string | undefined;
     startTime?: number | undefined;
@@ -2504,19 +3141,28 @@ export const AvatarGroup: React.FunctionComponent<AvatarGroupProps>;
 export const AvatarPair: React.FunctionComponent<AvatarPairProps>;
 export const Badge: React.FunctionComponent<BadgeProps>;
 export const Box: ReactForwardRef<HTMLDivElement, BoxProps>;
-export const Button: ReactForwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>;
+export const Button: ReactForwardRef<
+    HTMLButtonElement | HTMLAnchorElement,
+    ButtonProps
+>;
 export const ButtonGroup: React.FunctionComponent<ButtonGroupProps>;
 export const Callout: React.FunctionComponent<CalloutProps>;
 export const ComboBox: React.FunctionComponent<ComboBoxProps>;
 export const Checkbox: ReactForwardRef<HTMLInputElement, CheckboxProps>;
 export const Collage: React.FunctionComponent<CollageProps>;
-export const ColorSchemeProvider: React.FunctionComponent<React.PropsWithChildren<ColorSchemeProviderProps>>;
+export const ColorSchemeProvider: React.FunctionComponent<
+    React.PropsWithChildren<ColorSchemeProviderProps>
+>;
 export const Column: React.FunctionComponent<ColumnProps>;
 export const Container: React.FunctionComponent<ContainerProps>;
 export const Datapoint: React.FunctionComponent<DatapointProps>;
 export const ScrollBoundaryContainer: React.FunctionComponent<ScrollBoundaryContainerProps>;
-export const DeviceTypeProvider: React.FunctionComponent<React.PropsWithChildren<DeviceTypeProviderProps>>;
-export const DefaultLabelProvider: React.FunctionComponent<React.PropsWithChildren<DefaultLabelProviderProps>>;
+export const DeviceTypeProvider: React.FunctionComponent<
+    React.PropsWithChildren<DeviceTypeProviderProps>
+>;
+export const DefaultLabelProvider: React.FunctionComponent<
+    React.PropsWithChildren<DefaultLabelProviderProps>
+>;
 export const Divider: React.FunctionComponent;
 
 export interface DropdownSubComponents {
@@ -2524,7 +3170,8 @@ export interface DropdownSubComponents {
     Link: React.FC<DropdownLinkProps>;
     Section: React.FC<DropdownSectionProps>;
 }
-export const Dropdown: React.FunctionComponent<DropdownProps> & DropdownSubComponents;
+export const Dropdown: React.FunctionComponent<DropdownProps> &
+    DropdownSubComponents;
 export const Fieldset: React.FunctionComponent<FieldsetProps>;
 
 export interface FlexSubCompnents {
@@ -2534,7 +3181,10 @@ export const Flex: React.FunctionComponent<FlexProps> & FlexSubCompnents;
 export const Heading: React.FunctionComponent<HeaderProps>;
 export const HelpButton: React.FunctionComponent<HelpButtonProps>;
 export const Icon: React.FunctionComponent<IconProps>;
-export const IconButton: ReactForwardRef<HTMLButtonElement | HTMLAnchorElement, IconButtonProps>;
+export const IconButton: ReactForwardRef<
+    HTMLButtonElement | HTMLAnchorElement,
+    IconButtonProps
+>;
 export const IconButtonFloating: React.FunctionComponent<IconButtonFloatingProps>;
 export const Image: React.FunctionComponent<ImageProps>;
 export const Label: React.FunctionComponent<LabelProps>;
@@ -2544,16 +3194,22 @@ export const Link: ReactForwardRef<HTMLAnchorElement, LinkProps>;
 export interface ListSubCmoponents {
     Item: React.FunctionComponent<React.PropsWithChildren<ListItemProps>>;
 }
-export const List: React.FunctionComponent<React.PropsWithChildren<ListProps>> & ListSubCmoponents;
+export const List: React.FunctionComponent<React.PropsWithChildren<ListProps>> &
+    ListSubCmoponents;
 export const Mask: React.FunctionComponent<MaskProps>;
 export const Masonry: React.FunctionComponent<MasonryProps>;
 export const Modal: ReactForwardRef<HTMLDivElement, ModalProps>;
-export const ModalAlert: React.FunctionComponent<React.PropsWithChildren<ModalAlertProps>>;
+export const ModalAlert: React.FunctionComponent<
+    React.PropsWithChildren<ModalAlertProps>
+>;
 
 export interface ModuleSubComponents {
     Expandable: React.FC<ModuleExpandableProps>;
 }
-export const Module: React.FunctionComponent<React.PropsWithChildren<ModuleProps>> & ModuleSubComponents;
+export const Module: React.FunctionComponent<
+    React.PropsWithChildren<ModuleProps>
+> &
+    ModuleSubComponents;
 export const NumberField: ReactForwardRef<HTMLInputElement, NumberFieldProps>;
 export const OnLinkNavigationProvider: React.FunctionComponent<OnLinkNavigationProviderProps>;
 export const PageHeader: React.FunctionComponent<PageHeaderProps>;
@@ -2566,7 +3222,8 @@ export interface RadioGroupSubCompnents {
     RadioButton: typeof RadioButton;
 }
 
-export const RadioGroup: React.FunctionComponent<RadioGroupProps> & RadioGroupSubCompnents;
+export const RadioGroup: React.FunctionComponent<RadioGroupProps> &
+    RadioGroupSubCompnents;
 export const Row: React.FunctionComponent<RowProps>;
 export const SearchField: ReactForwardRef<HTMLInputElement, SearchFieldProps>;
 export const SegmentedControl: React.FunctionComponent<SegmentedControlProps>;
@@ -2575,7 +3232,8 @@ export interface SelectListSubComponents {
     Option: React.FC<SelectListOptionProps>;
     Group: React.FC<SelectListGroupProps>;
 }
-export const SelectList: React.FunctionComponent<SelectListProps> & SelectListSubComponents;
+export const SelectList: React.FunctionComponent<SelectListProps> &
+    SelectListSubComponents;
 
 export interface SideNavigationSubcomponents {
     Section: React.FC<SideNavigationSectionProps>;
@@ -2584,7 +3242,8 @@ export interface SideNavigationSubcomponents {
     Group: React.FC<SideNavigationNestedGroupProps>;
     NestedGroup: React.FC<SideNavigationNestedGroupProps>;
 }
-export const SideNavigation: React.FunctionComponent<SideNaviationProps> & SideNavigationSubcomponents;
+export const SideNavigation: React.FunctionComponent<SideNaviationProps> &
+    SideNavigationSubcomponents;
 
 export const OverlayPanel: ReactForwardRef<HTMLDivElement, OverlayPanel>;
 export const SlimBanner: React.FunctionComponent<SlimBannerProps>;
@@ -2607,7 +3266,10 @@ export interface TableSubCompnents {
 export const Table: React.FunctionComponent<TableProps> & TableSubCompnents;
 export const Tabs: React.FunctionComponent<TabsProps>;
 export const Tag: React.FunctionComponent<TagProps>;
-export const TapArea: ReactForwardRef<HTMLButtonElement | HTMLAnchorElement, TapAreaProps>;
+export const TapArea: ReactForwardRef<
+    HTMLButtonElement | HTMLAnchorElement,
+    TapAreaProps
+>;
 export const Text: ReactForwardRef<HTMLDivElement | HTMLSpanElement, TextProps>;
 export const TextArea: ReactForwardRef<HTMLTextAreaElement, TextAreaProps>;
 export const TextField: ReactForwardRef<HTMLInputElement, TextFieldProps>;

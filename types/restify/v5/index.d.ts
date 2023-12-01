@@ -93,7 +93,10 @@ export interface Server extends http.Server {
      *                                 if options, the URL to handle, at minimum.
      * @returns                the newly created route.
      */
-    del(opts: string | RegExp | RouteOptions, ...handlers: RequestHandlerType[]): Route | boolean;
+    del(
+        opts: string | RegExp | RouteOptions,
+        ...handlers: RequestHandlerType[]
+    ): Route | boolean;
 
     /**
      * Mounts a chain on the given path against this HTTP verb
@@ -102,7 +105,10 @@ export interface Server extends http.Server {
      *                                 if options, the URL to handle, at minimum.
      * @returns                the newly created route.
      */
-    get(opts: string | RegExp | RouteOptions, ...handlers: RequestHandlerType[]): Route | boolean;
+    get(
+        opts: string | RegExp | RouteOptions,
+        ...handlers: RequestHandlerType[]
+    ): Route | boolean;
 
     /**
      * Mounts a chain on the given path against this HTTP verb
@@ -111,7 +117,10 @@ export interface Server extends http.Server {
      *                                 if options, the URL to handle, at minimum.
      * @returns                the newly created route.
      */
-    head(opts: string | RegExp | RouteOptions, ...handlers: RequestHandlerType[]): Route | boolean;
+    head(
+        opts: string | RegExp | RouteOptions,
+        ...handlers: RequestHandlerType[]
+    ): Route | boolean;
 
     /**
      * Mounts a chain on the given path against this HTTP verb
@@ -120,7 +129,10 @@ export interface Server extends http.Server {
      *                                 if options, the URL to handle, at minimum.
      * @returns                the newly created route.
      */
-    opts(opts: string | RegExp | RouteOptions, ...handlers: RequestHandlerType[]): Route | boolean;
+    opts(
+        opts: string | RegExp | RouteOptions,
+        ...handlers: RequestHandlerType[]
+    ): Route | boolean;
 
     /**
      * Mounts a chain on the given path against this HTTP verb
@@ -129,7 +141,10 @@ export interface Server extends http.Server {
      *                                 if options, the URL to handle, at minimum.
      * @returns                the newly created route.
      */
-    post(opts: string | RegExp | RouteOptions, ...handlers: RequestHandlerType[]): Route | boolean;
+    post(
+        opts: string | RegExp | RouteOptions,
+        ...handlers: RequestHandlerType[]
+    ): Route | boolean;
 
     /**
      * Mounts a chain on the given path against this HTTP verb
@@ -138,7 +153,10 @@ export interface Server extends http.Server {
      *                                 if options, the URL to handle, at minimum.
      * @returns                the newly created route.
      */
-    put(opts: string | RegExp | RouteOptions, ...handlers: RequestHandlerType[]): Route | boolean;
+    put(
+        opts: string | RegExp | RouteOptions,
+        ...handlers: RequestHandlerType[]
+    ): Route | boolean;
 
     /**
      * Mounts a chain on the given path against this HTTP verb
@@ -147,7 +165,10 @@ export interface Server extends http.Server {
      *                                 if options, the URL to handle, at minimum.
      * @returns                the newly created route.
      */
-    patch(opts: string | RegExp | RouteOptions, ...handlers: RequestHandlerType[]): Route | boolean;
+    patch(
+        opts: string | RegExp | RouteOptions,
+        ...handlers: RequestHandlerType[]
+    ): Route | boolean;
 
     /**
      * Minimal port of the functionality offered by Express.js Route Param
@@ -348,10 +369,12 @@ export interface RequestFileInterface {
 export interface RequestAuthorization {
     scheme: string;
     credentials: string;
-    basic?: {
-        username: string;
-        password: string;
-    } | undefined;
+    basic?:
+        | {
+              username: string;
+              password: string;
+          }
+        | undefined;
 }
 
 export interface Request extends http.IncomingMessage {
@@ -636,7 +659,11 @@ export interface Response extends http.ServerResponse {
      * @param    object    value to json.stringify
      * @param    [headers] headers to set on the response
      */
-    json(code: number, object: any, headers?: { [header: string]: string }): any;
+    json(
+        code: number,
+        object: any,
+        headers?: { [header: string]: string },
+    ): any;
 
     /**
      * short hand method for:
@@ -673,7 +700,11 @@ export interface Response extends http.ServerResponse {
      * @param    [headers]  any add'l headers to set
      * @returns  the response object
      */
-    sendRaw(code?: any, body?: any, headers?: { [header: string]: string }): any;
+    sendRaw(
+        code?: any,
+        body?: any,
+        headers?: { [header: string]: string },
+    ): any;
 
     /**
      * sets a header on the response.
@@ -789,7 +820,11 @@ export interface MountOptions {
     versions?: string[] | undefined;
 }
 
-export type FindRouteCallback = (err: Error, route?: Route, params?: any) => void;
+export type FindRouteCallback = (
+    err: Error,
+    route?: Route,
+    params?: any,
+) => void;
 
 export type RequestHandler = (req: Request, res: Response, next: Next) => any;
 export type RequestHandlerType = RequestHandler | RequestHandler[];
@@ -851,7 +886,11 @@ export namespace bunyan {
 
 export function createServer(options?: ServerOptions): Server;
 
-export type Formatter = (req: Request, res: Response, body: any) => string | null;
+export type Formatter = (
+    req: Request,
+    res: Response,
+    body: any,
+) => string | null;
 
 export interface Formatters {
     [contentType: string]: Formatter;
@@ -886,12 +925,16 @@ export namespace plugins {
         /**
          * Checks req.urls query params with strict key/val format and rejects non-strict requests with status code 400.
          */
-        function strictQueryParams(options?: { message: string }): RequestHandler;
+        function strictQueryParams(options?: {
+            message: string;
+        }): RequestHandler;
 
         /**
          * Regexp to capture curl user-agents
          */
-        function userAgentConnection(options?: { userAgentRegExp: any }): RequestHandler;
+        function userAgentConnection(options?: {
+            userAgentRegExp: any;
+        }): RequestHandler;
     }
 
     // *************** This module includes the following header parser plugins:
@@ -949,7 +992,9 @@ export namespace plugins {
     /**
      * Runs first handler that matches to the condition
      */
-    function conditionalHandler(candidates: HandlerCandidate | HandlerCandidate[]): RequestHandler;
+    function conditionalHandler(
+        candidates: HandlerCandidate | HandlerCandidate[],
+    ): RequestHandler;
 
     /**
      * Conditional headers (If-*)
@@ -1040,7 +1085,9 @@ export namespace plugins {
     /**
      * Reads the body of the request.
      */
-    function bodyReader(options?: { maxBodySize?: number | undefined }): RequestHandler;
+    function bodyReader(options?: {
+        maxBodySize?: number | undefined;
+    }): RequestHandler;
 
     interface UrlEncodedBodyParser {
         mapParams?: boolean | undefined;
@@ -1053,14 +1100,18 @@ export namespace plugins {
      * If req.params already contains a given key, that key is skipped and an
      * error is logged.
      */
-    function urlEncodedBodyParser(options?: UrlEncodedBodyParser): RequestHandler[];
+    function urlEncodedBodyParser(
+        options?: UrlEncodedBodyParser,
+    ): RequestHandler[];
 
     /**
      * Parses JSON POST bodies
      */
-    function jsonBodyParser(
-        options?: { mapParams?: boolean | undefined; reviver?: any; overrideParams?: boolean | undefined },
-    ): RequestHandler[];
+    function jsonBodyParser(options?: {
+        mapParams?: boolean | undefined;
+        reviver?: any;
+        overrideParams?: boolean | undefined;
+    }): RequestHandler[];
 
     /**
      * Parses JSONP callback
@@ -1253,7 +1304,10 @@ export namespace plugins {
      * }));
      * ```
      */
-    function metrics(opts: { server: Server }, callback: MetricsCallback): (...args: any[]) => void;
+    function metrics(
+        opts: { server: Server },
+        callback: MetricsCallback,
+    ): (...args: any[]) => void;
 
     /**
      * Parse the client's request for an OAUTH2 access tokensTable
@@ -1335,5 +1389,7 @@ export namespace pre {
     /**
      * Regexp to capture curl user-agents
      */
-    function userAgentConnection(options?: { userAgentRegExp: any }): RequestHandler;
+    function userAgentConnection(options?: {
+        userAgentRegExp: any;
+    }): RequestHandler;
 }

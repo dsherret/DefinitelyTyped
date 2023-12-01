@@ -23,7 +23,7 @@ server.route({
             failAction: "error", // may also be 'ignore' or 'log'
         },
     },
-    handler: function(request, reply) {
+    handler: function (request, reply) {
         // TODO test this
         reply("Hello").state("data", { firstVisit: false });
     },

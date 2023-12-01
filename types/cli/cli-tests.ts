@@ -4,8 +4,8 @@ import * as cli from "cli";
 // Example: https://github.com/node-js-libs/cli/blob/master/examples/cat.js
 // ========================================================================
 
-var output_file = function(file: string) {
-    cli.withInput(file, function(line, sep, eof) {
+var output_file = function (file: string) {
+    cli.withInput(file, function (line, sep, eof) {
         if (!eof) {
             cli.output(line + sep);
         } else if (cli.args.length) {
@@ -37,8 +37,12 @@ cli.parse({
     output: [false, "Write to FILE rather than the console", "file"],
 });
 
-cli.main(function(args, options) {
-    var output = "", i: any, j: any, l: number, output_stream: NodeJS.WritableStream;
+cli.main(function (args, options) {
+    var output = "",
+        i: any,
+        j: any,
+        l: number,
+        output_stream: NodeJS.WritableStream;
 
     if (this.argc) {
         if (options.escape) {
@@ -46,15 +50,15 @@ cli.main(function(args, options) {
                 "\\n": "\n",
                 "\\r": "\r",
                 "\\t": "\t",
-                "\\e": "\e",
+                "\\e": "e",
                 "\\v": "\v",
                 "\\f": "\f",
-                "\\c": "\c",
+                "\\c": "c",
                 "\\b": "\b",
-                "\\a": "\a",
+                "\\a": "a",
                 "\\\\": "\\",
             };
-            var escape = function(str: string) {
+            var escape = function (str: string) {
                 str += "";
                 for (j in replace) {
                     str = str.replace(i, replace[i]);
@@ -106,12 +110,12 @@ console.log(cli.args);
 // cli.option_width = 25;
 
 var long_desc =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's "
-    + "standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make"
-    + " a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, "
-    + "remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing "
-    + "Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions"
-    + " of Lorem Ipsum.";
+    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's " +
+    "standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make" +
+    " a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, " +
+    "remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing " +
+    "Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions" +
+    " of Lorem Ipsum.";
 
 cli.parse({
     foo: ["f", long_desc],
@@ -122,7 +126,7 @@ cli.parse({
 // =============================================================================
 
 var i = 0,
-    interval = setInterval(function() {
+    interval = setInterval(function () {
         cli.progress(++i / 100);
         if (i === 100) {
             clearInterval(interval);
@@ -139,11 +143,13 @@ var options = cli.parse({
     reverse: ["r", "Reverse the results"],
 });
 
-cli.withStdinLines(function(lines, newline) {
+cli.withStdinLines(function (lines, newline) {
     lines.sort(
-        !options.numeric ? null : function(a, b) {
-            return parseInt(a) - parseInt(b);
-        },
+        !options.numeric
+            ? null
+            : function (a, b) {
+                  return parseInt(a) - parseInt(b);
+              },
     );
     if (options.reverse) {
         lines.reverse();
@@ -157,7 +163,7 @@ cli.withStdinLines(function(lines, newline) {
 
 cli.spinner("Working..");
 
-setTimeout(function() {
+setTimeout(function () {
     cli.spinner("Working.. done!", true); // End the spinner
 }, 3000);
 
@@ -171,8 +177,9 @@ cli.parse({
     serve: [false, "Serve static files from PATH", "path", "./public"],
 });
 
-cli.main(function(args, options) {
-    var server: any, middleware: any = [];
+cli.main(function (args, options) {
+    var server: any,
+        middleware: any = [];
 
     if (options.log) {
         this.debug("Enabling logging");
@@ -180,7 +187,9 @@ cli.main(function(args, options) {
     }
 
     this.debug("Serving files from " + options.serve);
-    middleware.push(require("creationix/static")("/", options.serve, "index.html"));
+    middleware.push(
+        require("creationix/static")("/", options.serve, "index.html"),
+    );
 
     server = this.createServer(middleware).listen(options.port);
 

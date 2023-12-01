@@ -4,7 +4,9 @@ import * as Backbone from "backbone";
 
 class TestModel extends Backbone.Model {}
 
-var makeFetchOptions = <TCol extends Backbone.PageableCollection<TestModel>>() => {
+var makeFetchOptions = <
+    TCol extends Backbone.PageableCollection<TestModel>,
+>() => {
     return {
         reset: true,
         url: "example.com",
@@ -26,7 +28,10 @@ namespace InitializingWithNoOption {
 
 namespace InitializingWithOptions {
     class TestCollection extends Backbone.PageableCollection<TestModel> {
-        constructor(models?: TestModel[], options?: Backbone.PageableInitialOptions) {
+        constructor(
+            models?: TestModel[],
+            options?: Backbone.PageableInitialOptions,
+        ) {
             super();
         }
     }
@@ -77,7 +82,10 @@ namespace InitializingWithOptions {
 
 namespace Fetching {
     class TestCollection extends Backbone.PageableCollection<TestModel> {
-        constructor(models?: TestModel[], options?: Backbone.PageableInitialOptions) {
+        constructor(
+            models?: TestModel[],
+            options?: Backbone.PageableInitialOptions,
+        ) {
             super();
         }
     }
@@ -93,7 +101,10 @@ namespace Fetching {
 
 namespace Paging {
     class TestCollection extends Backbone.PageableCollection<TestModel> {
-        constructor(models?: TestModel[], options?: Backbone.PageableInitialOptions) {
+        constructor(
+            models?: TestModel[],
+            options?: Backbone.PageableInitialOptions,
+        ) {
             super();
         }
     }
@@ -151,7 +162,10 @@ namespace Paging {
 
 namespace Parse {
     class TestCollection extends Backbone.PageableCollection<TestModel> {
-        constructor(models?: TestModel[], options?: Backbone.PageableInitialOptions) {
+        constructor(
+            models?: TestModel[],
+            options?: Backbone.PageableInitialOptions,
+        ) {
             super();
         }
     }
@@ -193,7 +207,10 @@ namespace Parse {
 
 namespace Setting {
     class TestCollection extends Backbone.PageableCollection<TestModel> {
-        constructor(models?: TestModel[], options?: Backbone.PageableInitialOptions) {
+        constructor(
+            models?: TestModel[],
+            options?: Backbone.PageableInitialOptions,
+        ) {
             super();
         }
     }
@@ -202,19 +219,27 @@ namespace Setting {
 
     var options = makeFetchOptions<TestCollection>();
 
-    var result1: JQueryXHR | TestCollection = testCollection.setPageSize(1, options);
-
-    var result2: TestCollection = testCollection.setSorting("id", 1, { full: true });
-
-    result1 = testCollection.switchMode(
-        "server",
-        { fetch: true, resetState: true },
+    var result1: JQueryXHR | TestCollection = testCollection.setPageSize(
+        1,
+        options,
     );
+
+    var result2: TestCollection = testCollection.setSorting("id", 1, {
+        full: true,
+    });
+
+    result1 = testCollection.switchMode("server", {
+        fetch: true,
+        resetState: true,
+    });
 }
 
 namespace Syncing {
     class TestCollection extends Backbone.PageableCollection<TestModel> {
-        constructor(models?: TestModel[], options?: Backbone.PageableInitialOptions) {
+        constructor(
+            models?: TestModel[],
+            options?: Backbone.PageableInitialOptions,
+        ) {
             super();
         }
     }
@@ -227,5 +252,6 @@ namespace Syncing {
 }
 
 namespace Confllict {
-    var result: typeof Backbone.PageableCollection = Backbone.PageableCollection.noConflict();
+    var result: typeof Backbone.PageableCollection =
+        Backbone.PageableCollection.noConflict();
 }

@@ -93,7 +93,12 @@ export function len(a: number[]): number;
 /**
  * Performs a linear interpolation between two number]'s.
  */
-export function lerp(out: number[], a: number[], b: number[], t: number): number[];
+export function lerp(
+    out: number[],
+    a: number[],
+    b: number[],
+    t: number,
+): number[];
 
 /**
  * Returns the maximum of two number's.
@@ -128,17 +133,32 @@ export function random(out: number[], scale: number): number[];
 /**
  * Rotate a 3D vector around the x-axis.
  */
-export function rotateX(out: number[], a: number[], b: number[], c: number): number[];
+export function rotateX(
+    out: number[],
+    a: number[],
+    b: number[],
+    c: number,
+): number[];
 
 /**
  * Rotate a 3D vector around the y-axis.
  */
-export function rotateY(out: number[], a: number[], b: number[], c: number): number[];
+export function rotateY(
+    out: number[],
+    a: number[],
+    b: number[],
+    c: number,
+): number[];
 
 /**
  * Rotate a 3D vector around the z-axis.
  */
-export function rotateZ(out: number[], a: number[], b: number[], c: number): number[];
+export function rotateZ(
+    out: number[],
+    a: number[],
+    b: number[],
+    c: number,
+): number[];
 
 /**
  * Math.round the components of a number.
@@ -153,7 +173,12 @@ export function scale(out: number[], a: number[], b: number): number[];
 /**
  * Adds two numbers after scaling the second operand by a scalar value.
  */
-export function scaleAndAdd(out: number[], a: number[], b: number[], scale: number): number[];
+export function scaleAndAdd(
+    out: number[],
+    a: number[],
+    b: number[],
+    scale: number,
+): number[];
 
 /**
  * Set the components of a number to the given values.
@@ -178,14 +203,26 @@ export function sub(out: number[], a: number[], b: number[]): number[];
 /**
  * Transforms the number with a mat3.
  */
-export function transformMat3(out: number[], a: number[], m: number[]): number[];
+export function transformMat3(
+    out: number[],
+    a: number[],
+    m: number[],
+): number[];
 
 /**
  * Transforms the number with a mat4. 4th vector component is implicitly '1'.
  */
-export function transformMat4(out: number[], a: number[], m: number[]): number[];
+export function transformMat4(
+    out: number[],
+    a: number[],
+    m: number[],
+): number[];
 
 /**
  * Transforms the number with a quat.
  */
-export function transformQuat(out: number[], a: number[], q: number[]): number[];
+export function transformQuat(
+    out: number[],
+    a: number[],
+    q: number[],
+): number[];

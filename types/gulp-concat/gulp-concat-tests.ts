@@ -2,9 +2,7 @@ import gulp = require("gulp");
 import concat = require("gulp-concat");
 
 gulp.task("concat:simple", () => {
-    gulp.src(["file*.txt"])
-        .pipe(concat("file.txt"))
-        .pipe(gulp.dest("build"));
+    gulp.src(["file*.txt"]).pipe(concat("file.txt")).pipe(gulp.dest("build"));
 });
 
 gulp.task("concat:newLine", () => {

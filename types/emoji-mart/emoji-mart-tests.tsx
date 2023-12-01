@@ -28,13 +28,15 @@ const CUSTOM_EMOJIS: CustomEmoji[] = [
         name: "Octocat",
         short_names: ["octocat"],
         keywords: ["github"],
-        imageUrl: "https://assets-cdn.github.com/images/icons/emoji/octocat.png?v7",
+        imageUrl:
+            "https://assets-cdn.github.com/images/icons/emoji/octocat.png?v7",
     },
     {
         name: "Squirrel",
         short_names: ["shipit", "squirrel"],
         keywords: ["github"],
-        imageUrl: "https://assets-cdn.github.com/images/icons/emoji/shipit.png?v7",
+        imageUrl:
+            "https://assets-cdn.github.com/images/icons/emoji/shipit.png?v7",
     },
 ];
 
@@ -62,10 +64,21 @@ class Example extends React.Component<{}, State> {
                 </div>
 
                 <div className="row">
-                    {(["native", "apple", "google", "twitter", "emojione", "messenger", "facebook"] as Array<
-                        EmojiProps["set"] | "native"
-                    >).map(set => {
-                        const props = { disabled: !this.state.native && set === this.state.set };
+                    {(
+                        [
+                            "native",
+                            "apple",
+                            "google",
+                            "twitter",
+                            "emojione",
+                            "messenger",
+                            "facebook",
+                        ] as Array<EmojiProps["set"] | "native">
+                    ).map((set) => {
+                        const props = {
+                            disabled:
+                                !this.state.native && set === this.state.set,
+                        };
 
                         if (set === "native" && this.state.native) {
                             props.disabled = true;
@@ -96,7 +109,11 @@ class Example extends React.Component<{}, State> {
                         // NOTE: The original code passes the this.state directly, which includes a potential
                         // invalid 'set' value. The value of 'set' happens to be ignored if native is true, but no
                         // good way to represent it in the typings.
-                        set={this.state.set === "native" ? undefined : this.state.set}
+                        set={
+                            this.state.set === "native"
+                                ? undefined
+                                : this.state.set
+                        }
                         onClick={console.log}
                     />
                 </div>
@@ -133,11 +150,16 @@ const AutoCompleteExample: React.FC = () => {
     }
     return (
         <div>
-            {suggestions.map(emoji => {
+            {suggestions.map((emoji) => {
                 return "native" in emoji && <span>{emoji.native}</span>;
             })}
             {match && <div>{match[0]}</div>}
-            <input type="text" onInput={changed} placeholder="enter a message..." value={search} />
+            <input
+                type="text"
+                onInput={changed}
+                placeholder="enter a message..."
+                value={search}
+            />
         </div>
     );
 };

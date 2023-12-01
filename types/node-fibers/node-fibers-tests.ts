@@ -6,20 +6,20 @@ import Future = require("fibers/future");
 
 function sleep(ms: number) {
     var fiber = Fiber.current;
-    setTimeout(function() {
+    setTimeout(function () {
         fiber.run();
     }, ms);
     Fiber.yield();
 }
 
-Fiber(function() {
+Fiber(function () {
     console.log("wait... " + new Date());
     sleep(1000);
     console.log("ok... " + new Date());
 }).run();
 console.log("back in main");
 
-var inc = Fiber(function(start: any) {
+var inc = Fiber(function (start: any) {
     var total = start;
     while (true) {
         total += Fiber.yield(total);
@@ -34,9 +34,10 @@ for (var ii = inc.run(1); ii <= 10; ii = inc.run(1)) {
 // Fibonacci numbers with each call.
 function Fibonacci() {
     // Create a new fiber which yields sequential Fibonacci numbers
-    var fiber = Fiber(function() {
+    var fiber = Fiber(function () {
         Fiber.yield(0); // F(0) -> 0
-        var prev = 0, curr = 1;
+        var prev = 0,
+            curr = 1;
         while (true) {
             Fiber.yield(curr);
             var tmp = prev + curr;
@@ -54,7 +55,7 @@ for (var ii = seq(); ii <= 1597; ii = seq()) {
     console.log(ii);
 }
 
-var fn = Fiber(function() {
+var fn = Fiber(function () {
     console.log("async work here...");
     Fiber.yield();
     console.log("still working...");
@@ -78,7 +79,7 @@ console.log("done!");
 // demonstrates manually resolving futures.
 function sleep2(ms: number) {
     var future = new Future();
-    setTimeout(function() {
+    setTimeout(function () {
         future.return();
     }, ms);
     return future;

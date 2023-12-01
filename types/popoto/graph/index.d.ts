@@ -233,7 +233,13 @@ export interface Graph {
      * @param values
      * @param isNegative
      */
-    addRelationshipData: (n: any, l: any, callback: () => void, values: any[], isNegative: boolean) => void;
+    addRelationshipData: (
+        n: any,
+        l: any,
+        callback: () => void,
+        values: any[],
+        isNegative: boolean,
+    ) => void;
 
     voronoi: d3.Voronoi<any>;
 

@@ -3,7 +3,7 @@ import * as d3 from "d3";
 declare global {
     namespace CalHeatMap {
         interface CalHeatMapStatic {
-            new(): CalHeatMap;
+            new (): CalHeatMap;
         }
 
         interface CalHeatMap {
@@ -64,7 +64,11 @@ declare global {
              *                                                   All other dates are leaved untouched. That's the one you want to use of you're
              *                                                   populating the calendar in realtime!
              */
-            update(data: string | Object, afterLoad?: boolean | Function, updateMode?: number): void;
+            update(
+                data: string | Object,
+                afterLoad?: boolean | Function,
+                updateMode?: number,
+            ): void;
             /**
              * Change the highlighted dates.
              * Takes an array of Date object. Can also accepts the now string, equivalent to Date.now().
@@ -83,7 +87,10 @@ declare global {
              * @param {} legend Same as legend : an array of thresholds
              * @param {} legendColor Same as legendColors : an object with the heatmap's colors, or an array of 2 colors
              */
-            setLegend(legend?: number[], legendColors?: LegendColor | string[]): void;
+            setLegend(
+                legend?: number[],
+                legendColors?: LegendColor | string[],
+            ): void;
             /**
              * Remove the legend from the calendar
              * Settings are kept and you can re-add the legend with the same settings using showLegend().
@@ -119,7 +126,12 @@ declare global {
             // ================================================
 
             /** DOM node to insert the calendar in. Default: "#cal-heatmap" */
-            itemSelector?: string | HTMLElement | Element | EventTarget | undefined;
+            itemSelector?:
+                | string
+                | HTMLElement
+                | Element
+                | EventTarget
+                | undefined;
 
             /**
              * Type of domain. Default: "hour"

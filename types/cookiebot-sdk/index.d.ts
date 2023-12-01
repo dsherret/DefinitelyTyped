@@ -22,7 +22,11 @@ declare const Cookiebot: {
     getScript(url: string, async: boolean, callback: () => void): void;
     runScripts(): void;
     withdraw(): void;
-    submitCustomConsent(optinPreferences: boolean, optinStatistics: boolean, optinMarketing: boolean): void;
+    submitCustomConsent(
+        optinPreferences: boolean,
+        optinStatistics: boolean,
+        optinMarketing: boolean,
+    ): void;
 };
 
 interface Window {

@@ -18,13 +18,18 @@ export default class App extends React.Component {
                     closeOnEsc
                     closeOnOutsideClick
                     onOpen={(node: HTMLDivElement) => {}}
-                    beforeClose={(node: HTMLDivElement, resetPortalState) => resetPortalState()}
+                    beforeClose={(node: HTMLDivElement, resetPortalState) =>
+                        resetPortalState()
+                    }
                     onClose={() => {}}
                     onUpdate={() => {}}
                 >
                     <PseudoModal>
                         <h2>Pseudo Modal</h2>
-                        <p>This react component is appended to the document body.</p>
+                        <p>
+                            This react component is appended to the document
+                            body.
+                        </p>
                     </PseudoModal>
                 </Portal>
             </div>
@@ -32,7 +37,10 @@ export default class App extends React.Component {
     }
 }
 
-export class PseudoModal extends React.Component<{ children?: React.ReactNode; closePortal?(): void }> {
+export class PseudoModal extends React.Component<{
+    children?: React.ReactNode;
+    closePortal?(): void;
+}> {
     render() {
         return (
             <div>

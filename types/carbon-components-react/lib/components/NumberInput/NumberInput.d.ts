@@ -1,17 +1,31 @@
 import * as React from "react";
-import { ForwardRefReturn, InternationalProps, ReactInputAttr } from "../../../typings/shared";
+import {
+    ForwardRefReturn,
+    InternationalProps,
+    ReactInputAttr,
+} from "../../../typings/shared";
 
 export type NumberInputTranslationKey = "decrement.number" | "increment.number";
 
-type ExcludedInputPropKeys = "aria-label" | "id" | "onChange" | "onClick" | "ref" | "size";
+type ExcludedInputPropKeys =
+    | "aria-label"
+    | "id"
+    | "onChange"
+    | "onClick"
+    | "ref"
+    | "size";
 
 type NumberInputArrowDirection = "up" | "down";
 export type NumberInputOnChangeDataVariant = (
-    evt: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>,
+    evt:
+        | React.ChangeEvent<HTMLInputElement>
+        | React.MouseEvent<HTMLButtonElement>,
     data: { direction: NumberInputArrowDirection; value: number | string },
 ) => void;
 export type NumberInputOnChangeDefaultVariant = (
-    evt: React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLButtonElement>,
+    evt:
+        | React.ChangeEvent<HTMLInputElement>
+        | React.MouseEvent<HTMLButtonElement>,
     direction: NumberInputArrowDirection,
     value: number | string,
 ) => void;
@@ -30,8 +44,8 @@ export type NumberInputOnClickInputVariant = (
 ) => void;
 
 export interface NumberInputProps
-    extends Omit<ReactInputAttr, ExcludedInputPropKeys>, InternationalProps<NumberInputTranslationKey>
-{
+    extends Omit<ReactInputAttr, ExcludedInputPropKeys>,
+        InternationalProps<NumberInputTranslationKey> {
     allowEmpty?: boolean | undefined;
     ariaLabel?: string | undefined;
     helperText?: React.ReactNode | undefined;
@@ -47,7 +61,10 @@ export interface NumberInputProps
     isMobile?: boolean | undefined;
     label?: React.ReactNode | undefined;
     light?: boolean | undefined;
-    onChange?: NumberInputOnChangeDataVariant | NumberInputOnChangeDefaultVariant | undefined;
+    onChange?:
+        | NumberInputOnChangeDataVariant
+        | NumberInputOnChangeDefaultVariant
+        | undefined;
     onClick?:
         | NumberInputOnClickDataVariant
         | NumberInputOnClickDefaultVariant

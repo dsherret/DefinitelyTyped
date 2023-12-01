@@ -27,8 +27,12 @@ export interface ChannelConfiguration {
     origin: string;
     scope: string;
     debugOutput?: boolean | undefined;
-    postMessageObserver?: ((origin: string, message: Message) => void) | undefined;
-    gotMessageObserver?: ((origin: string, message: Message) => void) | undefined;
+    postMessageObserver?:
+        | ((origin: string, message: Message) => void)
+        | undefined;
+    gotMessageObserver?:
+        | ((origin: string, message: Message) => void)
+        | undefined;
     onReady?: ((channel: MessagingChannel) => void) | undefined;
     reconnect?: boolean | undefined;
     publish?: boolean | undefined;

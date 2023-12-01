@@ -1,20 +1,20 @@
 {
-    "private": true,
-    "name": "@types/formdata",
-    "version": "0.10.9999",
-    "projects": [
-        "https://github.com/node-file-api/FormData"
-    ],
-    "dependencies": {
-        "@types/node": "*"
-    },
-    "devDependencies": {
-        "@types/formdata": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Ciarán Ingle",
-            "githubUsername": "inglec-arista"
-        }
-    ]
+  "private": true,
+  "name": "@types/formdata",
+  "version": "0.10.9999",
+  "projects": [
+    "https://github.com/node-file-api/FormData"
+  ],
+  "dependencies": {
+    "@types/node": "*"
+  },
+  "devDependencies": {
+    "@types/formdata": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Ciarán Ingle",
+      "githubUsername": "inglec-arista"
+    }
+  ]
 }

@@ -1,6 +1,7 @@
 import * as React from "react";
 
-export interface FrameComponentProps extends React.IframeHTMLAttributes<HTMLIFrameElement> {
+export interface FrameComponentProps
+    extends React.IframeHTMLAttributes<HTMLIFrameElement> {
     head?: React.ReactNode | undefined;
     mountTarget?: string | undefined;
     initialContent?: string | undefined;

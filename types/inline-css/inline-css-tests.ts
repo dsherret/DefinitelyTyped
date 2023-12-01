@@ -14,6 +14,9 @@ inlineCss(html, { url: "https://example.com", preserveMediaQueries: true }); // 
 inlineCss(html, { url: "https://example.com", applyWidthAttributes: true }); // $ExpectType Promise<string>
 inlineCss(html, { url: "https://example.com", applyTableAttributes: true }); // $ExpectType Promise<string>
 inlineCss(html, { url: "https://example.com", removeHtmlSelectors: true }); // $ExpectType Promise<string>
-inlineCss(html, { url: "https://example.com", codeBlocks: { craze: { start: "<<", end: ">>" } } }); // $ExpectType Promise<string>
+inlineCss(html, {
+    url: "https://example.com",
+    codeBlocks: { craze: { start: "<<", end: ">>" } },
+}); // $ExpectType Promise<string>
 
 inlineCss(html, { url: "https://example.com", xmlMode: true }); // $ExpectType Promise<string>

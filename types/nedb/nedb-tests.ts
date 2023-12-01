@@ -15,14 +15,18 @@ class BaseCollection<T> {
 
     insert(document: T): Promise<T> {
         return new Promise((resolve, reject) => {
-            this.dataStore.insert<T>(document, (err: Error | null, newDoc: T) => { // Callback is optional
-                // newDoc is the newly inserted document, including its _id
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(newDoc);
-                }
-            });
+            this.dataStore.insert<T>(
+                document,
+                (err: Error | null, newDoc: T) => {
+                    // Callback is optional
+                    // newDoc is the newly inserted document, including its _id
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(newDoc);
+                    }
+                },
+            );
         });
     }
 
@@ -40,25 +44,31 @@ class BaseCollection<T> {
 
     countBy(criteria: any): Promise<number> {
         return new Promise((resolve, reject) => {
-            this.dataStore.count(criteria, (err: Error | null, count: number) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(count);
-                }
-            });
+            this.dataStore.count(
+                criteria,
+                (err: Error | null, count: number) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(count);
+                    }
+                },
+            );
         });
     }
 
     findByID(id: string): Promise<T> {
         return new Promise((resolve, reject) => {
-            this.dataStore.findOne<T>({ _id: id }, (err: Error | null, doc: T) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(doc);
-                }
-            });
+            this.dataStore.findOne<T>(
+                { _id: id },
+                (err: Error | null, doc: T) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(doc);
+                    }
+                },
+            );
         });
     }
 
@@ -104,7 +114,11 @@ class BaseCollection<T> {
                 query,
                 updateQuery,
                 { upsert: true },
-                (err: Error | null, numberOfUpdated: number, upsert: boolean) => {
+                (
+                    err: Error | null,
+                    numberOfUpdated: number,
+                    upsert: boolean,
+                ) => {
                     if (err) {
                         reject(err);
                     } else {
@@ -119,7 +133,12 @@ class BaseCollection<T> {
                 query,
                 updateQuery,
                 { upsert: true },
-                (err: Error | null, numberOfUpdated: number, affectedDocs: any, upsert: boolean) => {
+                (
+                    err: Error | null,
+                    numberOfUpdated: number,
+                    affectedDocs: any,
+                    upsert: boolean,
+                ) => {
                     if (err) {
                         reject(err);
                     } else {
@@ -134,25 +153,33 @@ class BaseCollection<T> {
 
     update(query: {}, updateQuery: {}, options?: any): Promise<number> {
         return new Promise((resolve, reject) => {
-            this.dataStore.update(query, updateQuery, options, (err: Error | null, numberOfUpdated: number) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(numberOfUpdated);
-                }
-            });
+            this.dataStore.update(
+                query,
+                updateQuery,
+                options,
+                (err: Error | null, numberOfUpdated: number) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(numberOfUpdated);
+                    }
+                },
+            );
         });
     }
 
     remove(criteria: any): Promise<number> {
         return new Promise((resolve, reject) => {
-            this.dataStore.remove(criteria, (err: Error | null, numberOfDeletedEntrys: number) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(numberOfDeletedEntrys);
-                }
-            });
+            this.dataStore.remove(
+                criteria,
+                (err: Error | null, numberOfDeletedEntrys: number) => {
+                    if (err) {
+                        reject(err);
+                    } else {
+                        resolve(numberOfDeletedEntrys);
+                    }
+                },
+            );
         });
     }
 }
@@ -163,7 +190,8 @@ let db = new Datastore();
 
 // Type 2: Persistent datastore with manual loading
 db = new Datastore({ filename: "path/to/datafile" });
-db.loadDatabase((err) => { // Callback is optional
+db.loadDatabase((err) => {
+    // Callback is optional
     // Now commands will be executed
 });
 
@@ -196,7 +224,8 @@ const doc: any = {
     infos: { name: "nedb" },
 };
 
-db.insert(doc, (err: Error | null, newDoc: any) => { // Callback is optional
+db.insert(doc, (err: Error | null, newDoc: any) => {
+    // Callback is optional
     // newDoc is the newly inserted document, including its _id
     // newDoc has no key called notToBeSaved since its value was undefined
 });
@@ -224,9 +253,12 @@ db.find({ planet: /ar/ }, (err: Error | null, docs: any[]) => {
 });
 
 // Finding all inhabited planets in the solar system
-db.find({ system: "solar", inhabited: true }, (err: Error | null, docs: any[]) => {
-    // docs is an array containing document Earth only
-});
+db.find(
+    { system: "solar", inhabited: true },
+    (err: Error | null, docs: any[]) => {
+        // docs is an array containing document Earth only
+    },
+);
 
 // Use the dot-notation to match fields in subdocuments
 db.find({ "humans.genders": 2 }, (err: Error | null, docs: any[]) => {
@@ -234,18 +266,27 @@ db.find({ "humans.genders": 2 }, (err: Error | null, docs: any[]) => {
 });
 
 // Use the dot-notation to navigate arrays of subdocuments
-db.find({ "completeData.planets.name": "Mars" }, (err: Error | null, docs: any[]) => {
-    // docs contains document 5
-});
+db.find(
+    { "completeData.planets.name": "Mars" },
+    (err: Error | null, docs: any[]) => {
+        // docs contains document 5
+    },
+);
 
-db.find({ "completeData.planets.name": "Jupiter" }, (err: Error | null, docs: any[]) => {
-    // docs is empty
-});
+db.find(
+    { "completeData.planets.name": "Jupiter" },
+    (err: Error | null, docs: any[]) => {
+        // docs is empty
+    },
+);
 
-db.find({ "completeData.planets.0.name": "Earth" }, (err: Error | null, docs: any[]) => {
-    // docs contains document 5
-    // If we had tested against "Mars" docs would be empty because we are matching against a specific array element
-});
+db.find(
+    { "completeData.planets.0.name": "Earth" },
+    (err: Error | null, docs: any[]) => {
+        // docs contains document 5
+        // If we had tested against "Mars" docs would be empty because we are matching against a specific array element
+    },
+);
 
 // You can also deep-compare objects. Don't confuse this with dot-notation!
 db.find({ humans: { genders: 2 } }, (err: Error | null, docs: any[]) => {
@@ -253,8 +294,7 @@ db.find({ humans: { genders: 2 } }, (err: Error | null, docs: any[]) => {
 });
 
 // Find all documents in the collection
-db.find({}, (err: Error | null, docs: any[]) => {
-});
+db.find({}, (err: Error | null, docs: any[]) => {});
 
 // The same rules apply when you want to only find one document
 db.findOne({ _id: "id1" }, (err: Error | null, doc: any) => {
@@ -273,9 +313,12 @@ db.find({ planet: { $gt: "Mercury" } }, (err: Error | null, docs: any[]) => {
 });
 
 // Using $in. $nin is used in the same way
-db.find({ planet: { $in: ["Earth", "Jupiter"] } }, (err: Error | null, docs: any[]) => {
-    // docs contains Earth and Jupiter
-});
+db.find(
+    { planet: { $in: ["Earth", "Jupiter"] } },
+    (err: Error | null, docs: any[]) => {
+        // docs contains Earth and Jupiter
+    },
+);
 
 // Using $exists
 db.find({ satellites: { $exists: true } }, (err: Error | null, docs: any[]) => {
@@ -283,9 +326,12 @@ db.find({ satellites: { $exists: true } }, (err: Error | null, docs: any[]) => {
 });
 
 // Using $regex with another operator
-db.find({ planet: { $regex: /ar/, $nin: ["Jupiter", "Earth"] } }, (err: Error | null, docs: any[]) => {
-    // docs only contains Mars because Earth was excluded from the match by $nin
-});
+db.find(
+    { planet: { $regex: /ar/, $nin: ["Jupiter", "Earth"] } },
+    (err: Error | null, docs: any[]) => {
+        // docs only contains Mars because Earth was excluded from the match by $nin
+    },
+);
 
 // Using an array-specific comparison function
 // Note: you can't use nested comparison functions, e.g. { $size: { $lt: 5 } } will throw an error
@@ -308,40 +354,58 @@ db.find({ satellites: { $lt: "Amos" } }, (err: Error | null, docs: any[]) => {
 });
 
 // This also works with the $in and $nin operator
-db.find({ satellites: { $in: ["Moon", "Deimos"] } }, (err: Error | null, docs: any[]) => {
-    // docs contains Mars (the Earth document is not complete!)
-});
+db.find(
+    { satellites: { $in: ["Moon", "Deimos"] } },
+    (err: Error | null, docs: any[]) => {
+        // docs contains Mars (the Earth document is not complete!)
+    },
+);
 
-db.find({ $or: [{ planet: "Earth" }, { planet: "Mars" }] }, (err: Error | null, docs: any[]) => {
-    // docs contains Earth and Mars
-});
+db.find(
+    { $or: [{ planet: "Earth" }, { planet: "Mars" }] },
+    (err: Error | null, docs: any[]) => {
+        // docs contains Earth and Mars
+    },
+);
 
 db.find({ $not: { planet: "Earth" } }, (err: Error | null, docs: any[]) => {
     // docs contains Mars, Jupiter, Omicron Persei 8
 });
 
-db.find({
-    $where() {
-        return parseInt(Object.keys(this)[0], 10) > 6;
+db.find(
+    {
+        $where() {
+            return parseInt(Object.keys(this)[0], 10) > 6;
+        },
     },
-}, (err: Error | null, docs: any[]) => {
-    // docs with more than 6 properties
-});
+    (err: Error | null, docs: any[]) => {
+        // docs with more than 6 properties
+    },
+);
 
 // You can mix normal queries, comparison queries and logical operators
-db.find({ $or: [{ planet: "Earth" }, { planet: "Mars" }], inhabited: true }, (err: Error | null, docs: any[]) => {
-    // docs contains Earth
-});
+db.find(
+    { $or: [{ planet: "Earth" }, { planet: "Mars" }], inhabited: true },
+    (err: Error | null, docs: any[]) => {
+        // docs contains Earth
+    },
+);
 
 // No query used means all results are returned (before the Cursor modifiers)
-db.find({}).sort({ planet: 1 }).skip(1).limit(2).exec((err: Error | null, docs: any[]) => {
-    // docs is [doc3, doc1]
-});
+db.find({})
+    .sort({ planet: 1 })
+    .skip(1)
+    .limit(2)
+    .exec((err: Error | null, docs: any[]) => {
+        // docs is [doc3, doc1]
+    });
 
 // You can sort in reverse order like this
-db.find({ system: "solar" }).sort({ planet: -1 }).exec((err: Error | null, docs: any[]) => {
-    // docs is [doc1, doc3, doc2]
-});
+db.find({ system: "solar" })
+    .sort({ planet: -1 })
+    .exec((err: Error | null, docs: any[]) => {
+        // docs is [doc1, doc3, doc2]
+    });
 
 // You can sort on one field, then another, and so on like this:
 db.find({}).sort({ firstField: 1, secondField: -1 });
@@ -349,30 +413,48 @@ db.find({}).sort({ firstField: 1, secondField: -1 });
 // Same database as above
 
 // Keeping only the given fields
-db.find({ planet: "Mars" }, { planet: 1, system: 1 }, (err: Error | null, docs: any[]) => {
-    // docs is [{ planet: 'Mars', system: 'solar', _id: 'id1' }]
-});
+db.find(
+    { planet: "Mars" },
+    { planet: 1, system: 1 },
+    (err: Error | null, docs: any[]) => {
+        // docs is [{ planet: 'Mars', system: 'solar', _id: 'id1' }]
+    },
+);
 
 // Keeping only the given fields but removing _id
-db.find({ planet: "Mars" }, { planet: 1, system: 1, _id: 0 }, (err: Error | null, docs: any[]) => {
-    // docs is [{ planet: 'Mars', system: 'solar' }]
-});
+db.find(
+    { planet: "Mars" },
+    { planet: 1, system: 1, _id: 0 },
+    (err: Error | null, docs: any[]) => {
+        // docs is [{ planet: 'Mars', system: 'solar' }]
+    },
+);
 
 // Omitting only the given fields and removing _id
-db.find({ planet: "Mars" }, { planet: 0, system: 0, _id: 0 }, (err: Error | null, docs: any[]) => {
-    // docs is [{ inhabited: false, satellites: ['Phobos', 'Deimos'] }]
-});
+db.find(
+    { planet: "Mars" },
+    { planet: 0, system: 0, _id: 0 },
+    (err: Error | null, docs: any[]) => {
+        // docs is [{ inhabited: false, satellites: ['Phobos', 'Deimos'] }]
+    },
+);
 
 // Failure: using both modes at the same time
-db.find({ planet: "Mars" }, { planet: 0, system: 1 }, (err: Error | null, docs: any[]) => {
-    // err is the error message, docs is undefined
-});
+db.find(
+    { planet: "Mars" },
+    { planet: 0, system: 1 },
+    (err: Error | null, docs: any[]) => {
+        // err is the error message, docs is undefined
+    },
+);
 
 // You can also use it in a Cursor way but this syntax is not compatible with MongoDB
 // If upstream compatibility is important don't use this method
-db.find({ planet: "Mars" }).projection({ planet: 1, system: 1 }).exec((err: Error | null, docs: any[]) => {
-    // docs is [{ planet: 'Mars', system: 'solar', _id: 'id1' }]
-});
+db.find({ planet: "Mars" })
+    .projection({ planet: 1, system: 1 })
+    .exec((err: Error | null, docs: any[]) => {
+        // docs is [{ planet: 'Mars', system: 'solar', _id: 'id1' }]
+    });
 
 // Count all planets in the solar system
 db.count({ system: "solar" }, (err: Error | null, count: number) => {
@@ -391,12 +473,17 @@ db.count({}, (err: Error | null, count: number) => {
 // { _id: 'id4', planet: 'Omicron Persia 8', system: 'futurama', inhabited: true }
 
 // Replace a document by another
-db.update({ planet: "Jupiter" }, { planet: "Pluton" }, {}, (err: Error | null, numReplaced: number) => {
-    // numReplaced = 1
-    // The doc #3 has been replaced by { _id: 'id3', planet: 'Pluton' }
-    // Note that the _id is kept unchanged, and the document has been replaced
-    // (the 'system' and inhabited fields are not here anymore)
-});
+db.update(
+    { planet: "Jupiter" },
+    { planet: "Pluton" },
+    {},
+    (err: Error | null, numReplaced: number) => {
+        // numReplaced = 1
+        // The doc #3 has been replaced by { _id: 'id3', planet: 'Pluton' }
+        // Note that the _id is kept unchanged, and the document has been replaced
+        // (the 'system' and inhabited fields are not here anymore)
+    },
+);
 
 // Set an existing field's value
 db.update(
@@ -410,19 +497,29 @@ db.update(
 );
 
 // Setting the value of a non-existing field in a subdocument by using the dot-notation
-db.update({ planet: "Mars" }, { $set: { "data.satellites": 2, "data.red": true } }, {}, () => {
-    // Mars document now is { _id: 'id1', system: 'solar', inhabited: false
-    //                      , data: { satellites: 2, red: true }
-    //                      }
-    // Not that to set fields in subdocuments, you HAVE to use dot-notation
-    // Using object-notation will just replace the top-level field
-    db.update({ planet: "Mars" }, { $set: { data: { satellites: 3 } } }, {}, () => {
+db.update(
+    { planet: "Mars" },
+    { $set: { "data.satellites": 2, "data.red": true } },
+    {},
+    () => {
         // Mars document now is { _id: 'id1', system: 'solar', inhabited: false
-        //                      , data: { satellites: 3 }
+        //                      , data: { satellites: 2, red: true }
         //                      }
-        // You lost the "data.red" field which is probably not the intended behavior
-    });
-});
+        // Not that to set fields in subdocuments, you HAVE to use dot-notation
+        // Using object-notation will just replace the top-level field
+        db.update(
+            { planet: "Mars" },
+            { $set: { data: { satellites: 3 } } },
+            {},
+            () => {
+                // Mars document now is { _id: 'id1', system: 'solar', inhabited: false
+                //                      , data: { satellites: 3 }
+                //                      }
+                // You lost the "data.red" field which is probably not the intended behavior
+            },
+        );
+    },
+);
 
 // Deleting a field
 db.update({ planet: "Mars" }, { $unset: { planet: true } }, {}, () => {
@@ -446,9 +543,14 @@ db.update(
 
 // If you upsert with a modifier, the upserted doc is the query modified by the modifier
 // This is simpler than it sounds :)
-db.update({ planet: "Pluton" }, { $inc: { distance: 38 } }, { upsert: true }, () => {
-    // A new document { _id: 'id5', planet: 'Pluton', distance: 38 } has been added to the collection
-});
+db.update(
+    { planet: "Pluton" },
+    { $inc: { distance: 38 } },
+    { upsert: true },
+    () => {
+        // A new document { _id: 'id5', planet: 'Pluton', distance: 38 } has been added to the collection
+    },
+);
 
 // If we insert a new document { _id: 'id6', fruits: ['apple', 'orange', 'pear'] } in the collection,
 // let's see how we can modify the array field atomically
@@ -476,15 +578,25 @@ db.update({ _id: "id6" }, { $addToSet: { fruits: "apple" } }, {}, () => {
 db.update({ _id: "id6" }, { $pull: { fruits: "apple" } }, {}, () => {
     // Now the fruits array is ['orange', 'pear']
 });
-db.update({ _id: "id6" }, { $pull: { fruits: { $in: ["apple", "pear"] } } }, {}, () => {
-    // Now the fruits array is ['orange']
-});
+db.update(
+    { _id: "id6" },
+    { $pull: { fruits: { $in: ["apple", "pear"] } } },
+    {},
+    () => {
+        // Now the fruits array is ['orange']
+    },
+);
 
 // $each can be used to $push or $addToSet multiple values at once
 // This example works the same way with $addToSet
-db.update({ _id: "id6" }, { $push: { fruits: { $each: ["banana", "orange"] } } }, {}, () => {
-    // Now the fruits array is ['apple', 'orange', 'pear', 'banana', 'orange']
-});
+db.update(
+    { _id: "id6" },
+    { $push: { fruits: { $each: ["banana", "orange"] } } },
+    {},
+    () => {
+        // Now the fruits array is ['apple', 'orange', 'pear', 'banana', 'orange']
+    },
+);
 
 // Let's use the same example collection as in the "finding document" part
 // { _id: 'id1', planet: 'Mars', system: 'solar', inhabited: false }
@@ -499,27 +611,37 @@ db.remove({ _id: "id2" }, {}, (err: Error | null, numRemoved: number) => {
 });
 
 // Remove multiple documents
-db.remove({ system: "solar" }, { multi: true }, (err: Error | null, numRemoved: number) => {
-    // numRemoved = 3
-    // All planets from the solar system were removed
-});
+db.remove(
+    { system: "solar" },
+    { multi: true },
+    (err: Error | null, numRemoved: number) => {
+        // numRemoved = 3
+        // All planets from the solar system were removed
+    },
+);
 
 db.ensureIndex({ fieldName: "somefield" }, (err: Error | null) => {
     // If there was an error, err is not null
 });
 
 // Using a unique constraint with the index
-db.ensureIndex({ fieldName: "somefield", unique: true }, (err: Error | null) => {
-});
+db.ensureIndex(
+    { fieldName: "somefield", unique: true },
+    (err: Error | null) => {},
+);
 
 // Using a sparse unique index
-db.ensureIndex({ fieldName: "somefield", unique: true, sparse: true }, (err: Error | null) => {
-});
+db.ensureIndex(
+    { fieldName: "somefield", unique: true, sparse: true },
+    (err: Error | null) => {},
+);
 
 // Example of using expireAfterSeconds to remove documents 1 hour
 // after their creation (db's timestampData option is true here)
-db.ensureIndex({ fieldName: "somefield", expireAfterSeconds: 3600 }, (err: Error | null) => {
-});
+db.ensureIndex(
+    { fieldName: "somefield", expireAfterSeconds: 3600 },
+    (err: Error | null) => {},
+);
 
 // Format of the error message when the unique constraint is not met
 db.insert({ somefield: "nedb" }, (err: Error | null) => {
@@ -532,8 +654,7 @@ db.insert({ somefield: "nedb" }, (err: Error | null) => {
 });
 
 // Remove index on field somefield
-db.removeIndex("somefield", (err: Error | null) => {
-});
+db.removeIndex("somefield", (err: Error | null) => {});
 
 db.addListener("compaction.done", () => {});
 db.on("compaction.done", () => {});

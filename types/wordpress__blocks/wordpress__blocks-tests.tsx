@@ -109,12 +109,15 @@ blocks.findTransform(
             },
         },
     ],
-    transform => transform.type === "block",
+    (transform) => transform.type === "block",
 );
 
 declare const RAW_TRANSFORM_ARRAY: Array<blocks.TransformRaw<any>>;
 blocks.findTransform(RAW_TRANSFORM_ARRAY, ({}) => true);
-blocks.findTransform(RAW_TRANSFORM_ARRAY, ({ isMatch }) => isMatch?.(new Node()) ?? true);
+blocks.findTransform(
+    RAW_TRANSFORM_ARRAY,
+    ({ isMatch }) => isMatch?.(new Node()) ?? true,
+);
 
 // $ExpectType string
 blocks.getBlockTransforms("to", "my/foo")[0].blockName;
@@ -335,7 +338,12 @@ blocks.registerBlockType("my/foo", {
 blocks.registerBlockType("my/foo", {
     attributes: {},
     icon: (
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+        >
             <path fill="none" d="M0 0h24v24H0V0z" />
         </svg>
     ),
@@ -444,7 +452,8 @@ blocks.registerBlockType({
             {
                 name: "core/paragraph",
                 attributes: {
-                    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et eros eu felis.",
+                    content:
+                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et eros eu felis.",
                 },
                 innerBlocks: [
                     {
@@ -504,7 +513,8 @@ blocks.registerBlockType(
                 {
                     name: "core/paragraph",
                     attributes: {
-                        content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et eros eu felis.",
+                        content:
+                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent et eros eu felis.",
                     },
                     innerBlocks: [
                         {
@@ -611,7 +621,11 @@ blocks.doBlocksMatchTemplate([BLOCK_INSTANCE]);
 // $ExpectType boolean
 blocks.doBlocksMatchTemplate(
     [BLOCK_INSTANCE, BLOCK_INSTANCE],
-    [["core/test-block"], ["core/test-block-2", {}, [["core/test-block"]]], ["core/test-block-2"]],
+    [
+        ["core/test-block"],
+        ["core/test-block-2", {}, [["core/test-block"]]],
+        ["core/test-block-2"],
+    ],
 );
 
 // $ExpectType BlockInstance<{ [k: string]: any; }>[]
@@ -700,7 +714,10 @@ select("core/blocks").isMatchingSearchTerm("my/foo", "foo");
 select("core/blocks").isMatchingSearchTerm(BLOCK, "foo");
 
 // $ExpectType void
-dispatch("core/blocks").addBlockStyles("my/foo", { name: "foo__bar", label: "Foobar" });
+dispatch("core/blocks").addBlockStyles("my/foo", {
+    name: "foo__bar",
+    label: "Foobar",
+});
 
 // $ExpectType void
 dispatch("core/blocks").setDefaultBlockName("my/foo");

@@ -6,25 +6,29 @@ var app = express();
 
 app.use(serveStatic("/1"));
 app.use(serveStatic("/2", {}));
-app.use(serveStatic("/3", {
-    acceptRanges: true,
-    dotfiles: "ignore",
-    etag: true,
-    extensions: ["html"],
-    fallthrough: true,
-    index: true,
-    lastModified: true,
-    maxAge: 0,
-    redirect: true,
-    setHeaders: function(res, path: string, stat: any) {
-        // $ExpectType Response<any, Record<string, any>, number>
-        res;
-        res.setHeader("Server", "server-static middleware");
-    },
-}));
-app.use(serveStatic("/4", {
-    extensions: false,
-}));
+app.use(
+    serveStatic("/3", {
+        acceptRanges: true,
+        dotfiles: "ignore",
+        etag: true,
+        extensions: ["html"],
+        fallthrough: true,
+        index: true,
+        lastModified: true,
+        maxAge: 0,
+        redirect: true,
+        setHeaders: function (res, path: string, stat: any) {
+            // $ExpectType Response<any, Record<string, any>, number>
+            res;
+            res.setHeader("Server", "server-static middleware");
+        },
+    }),
+);
+app.use(
+    serveStatic("/4", {
+        extensions: false,
+    }),
+);
 
 serveStatic.mime.define({
     "application/babylon": ["babylon"],
@@ -33,7 +37,7 @@ serveStatic.mime.define({
 });
 
 serveStatic("/does-not-assume-express", {
-    setHeaders: function(res) {
+    setHeaders: function (res) {
         // ServerResponse
         res;
         // @ts-expect-error
@@ -45,10 +49,12 @@ http.createServer((req, res) => {
     serveStatic("/works-with-node-server")(req, res, (err?: HttpError) => {});
 });
 
-app.use(serveStatic("/infers-express-response-when-passed-to-express-use", {
-    setHeaders: function(res) {
-        // $ExpectType Response<any, Record<string, any>, number>
-        res;
-        res.set("foo", "bar");
-    },
-}));
+app.use(
+    serveStatic("/infers-express-response-when-passed-to-express-use", {
+        setHeaders: function (res) {
+            // $ExpectType Response<any, Record<string, any>, number>
+            res;
+            res.set("foo", "bar");
+        },
+    }),
+);

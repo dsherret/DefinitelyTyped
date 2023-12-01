@@ -28,7 +28,7 @@ newrelic.finished();
 
 // noticeError()
 try {
-    JSON.parse("{ \"bar\"");
+    JSON.parse('{ "bar"');
 } catch (err) {
     newrelic.noticeError(err);
 }
@@ -42,7 +42,7 @@ newrelic.setCustomAttribute("nodeId", 123);
 newrelic.setCustomAttribute("nodeId", 123, true);
 
 // setErrorHandler()
-newrelic.setErrorHandler(err => {
+newrelic.setErrorHandler((err) => {
     if (err.message !== "foo") {
         return true;
     } else {
@@ -73,7 +73,7 @@ interface ProductContext {
 }
 // getContext(), setAttribute()
 const interaction = newrelic.interaction();
-interaction.getContext<ProductContext>(ctx => {
+interaction.getContext<ProductContext>((ctx) => {
     if (ctx.productId) {
         interaction.setAttribute("productId", ctx.productId);
     }
@@ -84,7 +84,7 @@ interaction.getContext((ctx: ProductContext) => {
     }
 });
 
-interaction.getContext(ctx => {
+interaction.getContext((ctx) => {
     if (ctx.productId) {
         interaction.setAttribute("productId", ctx.productId);
     }
@@ -100,13 +100,24 @@ newrelic.interaction().ignore();
 
 // onEnd(), setAttribute()
 newrelic.interaction().onEnd((ctx: MyAppContext) => {
-    interaction.setAttribute("averageChartLoadTime", ctx.totalChartLoadTime / ctx.chartLoadCount);
+    interaction.setAttribute(
+        "averageChartLoadTime",
+        ctx.totalChartLoadTime / ctx.chartLoadCount,
+    );
 });
 
-newrelic.interaction().onEnd<MyAppContext>(ctx => {
-    interaction.setAttribute("averageChartLoadTime", ctx.totalChartLoadTime / ctx.chartLoadCount);
+newrelic.interaction().onEnd<MyAppContext>((ctx) => {
+    interaction.setAttribute(
+        "averageChartLoadTime",
+        ctx.totalChartLoadTime / ctx.chartLoadCount,
+    );
 });
 
 // setName(), setAttribute(), save()
-newrelic.interaction().setName("loadNextPage").setAttribute("username", "userName").setAttribute("userId", 123).save();
+newrelic
+    .interaction()
+    .setName("loadNextPage")
+    .setAttribute("username", "userName")
+    .setAttribute("userId", 123)
+    .save();
 newrelic.interaction().setName("createSubscription");

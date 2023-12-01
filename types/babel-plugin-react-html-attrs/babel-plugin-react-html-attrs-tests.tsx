@@ -40,7 +40,12 @@ const htmlAttributesTest = (
 
         <fieldset disabled="" />
 
-        <form accept-charset="utf-8" autocomplete="false" enctype="utf-8" novalidate>
+        <form
+            accept-charset="utf-8"
+            autocomplete="false"
+            enctype="utf-8"
+            novalidate
+        >
             <button
                 autofocus
                 disabled
@@ -73,7 +78,15 @@ const htmlAttributesTest = (
                 size="2"
                 step="2"
             />
-            <input autofocus="" checked="" disabled="" formnovalidate="" multiple="" readonly="" required="" />
+            <input
+                autofocus=""
+                checked=""
+                disabled=""
+                formnovalidate=""
+                multiple=""
+                readonly=""
+                required=""
+            />
 
             <label for="input"></label>
 
@@ -81,9 +94,23 @@ const htmlAttributesTest = (
                 <optgroup disabled="" />
                 <option disabled="" selected="" />
             </select>
-            <select autocomplete="false" autofocus="" disabled="" multiple="" required="" />
+            <select
+                autocomplete="false"
+                autofocus=""
+                disabled=""
+                multiple=""
+                required=""
+            />
 
-            <textarea autocomplete="false" autofocus cols="4" maxlength="42" minlength="1" readonly rows="42" />
+            <textarea
+                autocomplete="false"
+                autofocus
+                cols="4"
+                maxlength="42"
+                minlength="1"
+                readonly
+                rows="42"
+            />
             <textarea autofocus="" disabled="" readonly="" required="" />
         </form>
         <form novalidate="" />
@@ -105,17 +132,43 @@ const htmlAttributesTest = (
             <img src="test" width={100} height={100} />
         </picture>
 
-        <img crossorigin="anonymous" referrerpolicy="origin" srcset="test" usemap="test" tabindex="-1" />
+        <img
+            crossorigin="anonymous"
+            referrerpolicy="origin"
+            srcset="test"
+            usemap="test"
+            tabindex="-1"
+        />
 
         <ins datetime="test" />
 
-        <keygen autofocus name="name" challenge="challenge string" keytype="type" keyparams="pqg-params" />
+        <keygen
+            autofocus
+            name="name"
+            challenge="challenge string"
+            keytype="type"
+            keyparams="pqg-params"
+        />
         <keygen autofocus="" disabled="" />
 
-        <video autoplay controlslist="test" crossorigin="test" mediagroup="test" playsinline disablepictureinpicture>
+        <video
+            autoplay
+            controlslist="test"
+            crossorigin="test"
+            mediagroup="test"
+            playsinline
+            disablepictureinpicture
+        >
             <track default="" srclang="en" />
         </video>
-        <video autoplay="" controls="" disablepictureinpicture="" loop="" muted="" playsinline="" />
+        <video
+            autoplay=""
+            controls=""
+            disablepictureinpicture=""
+            loop=""
+            muted=""
+            playsinline=""
+        />
 
         <meter high="42" low="1" min="200" max="500" optimum="123" />
 

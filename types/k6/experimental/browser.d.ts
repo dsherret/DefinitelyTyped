@@ -13,12 +13,17 @@ export type EvaluationArgument = object;
 
 export type PageFunction<Arg, R> = string | ((arg: Unboxed<Arg>) => R);
 
-export type Unboxed<Arg> = Arg extends [infer A0, infer A1] ? [Unboxed<A0>, Unboxed<A1>]
-    : Arg extends [infer A0, infer A1, infer A2] ? [Unboxed<A0>, Unboxed<A1>, Unboxed<A2>]
-    : Arg extends [infer A0, infer A1, infer A2, infer A3] ? [Unboxed<A0>, Unboxed<A1>, Unboxed<A2>, Unboxed<A3>]
-    : Arg extends Array<infer T> ? Array<Unboxed<T>>
-    : Arg extends object ? { [Key in keyof Arg]: Unboxed<Arg[Key]> }
-    : Arg;
+export type Unboxed<Arg> = Arg extends [infer A0, infer A1]
+    ? [Unboxed<A0>, Unboxed<A1>]
+    : Arg extends [infer A0, infer A1, infer A2]
+      ? [Unboxed<A0>, Unboxed<A1>, Unboxed<A2>]
+      : Arg extends [infer A0, infer A1, infer A2, infer A3]
+        ? [Unboxed<A0>, Unboxed<A1>, Unboxed<A2>, Unboxed<A3>]
+        : Arg extends Array<infer T>
+          ? Array<Unboxed<T>>
+          : Arg extends object
+            ? { [Key in keyof Arg]: Unboxed<Arg[Key]> }
+            : Arg;
 
 export interface SelectOptionsObject {
     /**
@@ -54,7 +59,11 @@ export type ResourceType =
 export type MouseButton = "left" | "right" | "middle";
 export type KeyboardModifier = "Alt" | "Control" | "Meta" | "Shift";
 export type ElementState = "attached" | "detached" | "visible" | "hidden";
-export type InputElementState = ElementState | "enabled" | "disabled" | "editable";
+export type InputElementState =
+    | ElementState
+    | "enabled"
+    | "disabled"
+    | "editable";
 export type LifecycleEvent = "load" | "domcontentloaded" | "networkidle";
 
 export interface TimeoutOptions {
@@ -120,16 +129,14 @@ export interface KeyboardModifierOptions {
     modifiers?: KeyboardModifier[];
 }
 
-export type KeyboardPressOptions =
-    & {
-        /**
-         * If set to `true` and a navigation occurs from performing this action, it
-         * will not wait for it to complete. Defaults to `false`.
-         */
-        noWaitAfter?: boolean;
-    }
-    & EventSequenceOptions
-    & TimeoutOptions;
+export type KeyboardPressOptions = {
+    /**
+     * If set to `true` and a navigation occurs from performing this action, it
+     * will not wait for it to complete. Defaults to `false`.
+     */
+    noWaitAfter?: boolean;
+} & EventSequenceOptions &
+    TimeoutOptions;
 
 export type MouseMoveOptions = ElementClickOptions & KeyboardModifierOptions;
 
@@ -568,9 +575,7 @@ export interface Browser {
      * creating a new one.
      * @param options
      */
-    newContext(
-        options?: NewBrowserContextOptions,
-    ): BrowserContext;
+    newContext(options?: NewBrowserContextOptions): BrowserContext;
 
     /**
      * Creates and returns a new `Page` in a new `BrowserContext` if a
@@ -582,9 +587,7 @@ export interface Browser {
      * creating a new one.
      * @param options
      */
-    newPage(
-        options?: NewBrowserContextOptions,
-    ): Page;
+    newPage(options?: NewBrowserContextOptions): Page;
 
     /**
      * Returns the browser application's version.
@@ -709,24 +712,22 @@ export interface BrowserContext {
     /**
      * Sets the `BrowserContext`'s geolocation.
      */
-    setGeolocation(
-        geolocation?: {
-            /**
-             * latitude should be between -90 and 90.
-             */
-            latitude: number;
+    setGeolocation(geolocation?: {
+        /**
+         * latitude should be between -90 and 90.
+         */
+        latitude: number;
 
-            /**
-             * longitude should be between -180 and 180.
-             */
-            longitude: number;
+        /**
+         * longitude should be between -180 and 180.
+         */
+        longitude: number;
 
-            /**
-             * accuracy should only be a non-negative number. Defaults to 0.
-             */
-            accuracy: number;
-        },
-    ): void;
+        /**
+         * accuracy should only be a non-negative number. Defaults to 0.
+         */
+        accuracy: number;
+    }): void;
 
     /**
      * Toggles the `BrowserContext`'s connectivity on/off.
@@ -1060,7 +1061,13 @@ export interface ElementHandle extends JSHandle {
      * @returns List of selected options.
      */
     selectOption(
-        values: string | ElementHandle | SelectOptionsObject | string[] | ElementHandle[] | SelectOptionsObject[],
+        values:
+            | string
+            | ElementHandle
+            | SelectOptionsObject
+            | string[]
+            | ElementHandle[]
+            | SelectOptionsObject[],
         options?: ElementHandleOptions,
     ): string[];
 
@@ -1102,14 +1109,20 @@ export interface ElementHandle extends JSHandle {
      * @param state Wait for element to satisfy this state.
      * @param options Wait options.
      */
-    waitForElementState(state: InputElementState, options?: TimeoutOptions): void;
+    waitForElementState(
+        state: InputElementState,
+        options?: TimeoutOptions,
+    ): void;
 
     /**
      * Returns when the child element matching `selector` satisfies the `state`.
      * @param selector A selector to query for.
      * @param options Wait options.
      */
-    waitForSelector(selector: string, options?: { state?: ElementState } & StrictnessOptions & TimeoutOptions): void;
+    waitForSelector(
+        selector: string,
+        options?: { state?: ElementState } & StrictnessOptions & TimeoutOptions,
+    ): void;
 }
 
 /**
@@ -1135,14 +1148,20 @@ export interface Frame {
      * @param selector The selector to use.
      * @param options The options to use.
      */
-    check(selector: string, options?: ElementClickOptions & StrictnessOptions): void;
+    check(
+        selector: string,
+        options?: ElementClickOptions & StrictnessOptions,
+    ): void;
 
     /**
      * Uncheck the first found element that matches the selector.
      * @param selector The selector to use.
      * @param options The options to use.
      */
-    uncheck(selector: string, options?: ElementClickOptions & StrictnessOptions): void;
+    uncheck(
+        selector: string,
+        options?: ElementClickOptions & StrictnessOptions,
+    ): void;
 
     /**
      * Clicks the element.
@@ -1150,14 +1169,20 @@ export interface Frame {
      * @param options The options to use.
      * @returns A promise that resolves when the element is clicked.
      */
-    click(selector: string, options?: MouseMultiClickOptions & StrictnessOptions): Promise<void>;
+    click(
+        selector: string,
+        options?: MouseMultiClickOptions & StrictnessOptions,
+    ): Promise<void>;
 
     /**
      * Double clicks the element.
      * @param selector The selector to use.
      * @param options The options to use.
      */
-    dblclick(selector: string, options?: MouseClickOptions & MouseMoveOptions & StrictnessOptions): void;
+    dblclick(
+        selector: string,
+        options?: MouseClickOptions & MouseMoveOptions & StrictnessOptions,
+    ): void;
 
     /**
      * Fills out the first element found that matches the selector.
@@ -1165,7 +1190,11 @@ export interface Frame {
      * @param value The value to fill.
      * @param options The options to use.
      */
-    fill(selector: string, value: string, options?: ElementHandleOptions & StrictnessOptions): void;
+    fill(
+        selector: string,
+        value: string,
+        options?: ElementHandleOptions & StrictnessOptions,
+    ): void;
 
     /**
      * Focuses the first element found that matches the selector.
@@ -1179,14 +1208,24 @@ export interface Frame {
      * @param selector The selector to use.
      * @param options The options to use.
      */
-    hover(selector: string, options?: ElementClickOptions & KeyboardModifierOptions & StrictnessOptions): void;
+    hover(
+        selector: string,
+        options?: ElementClickOptions &
+            KeyboardModifierOptions &
+            StrictnessOptions,
+    ): void;
 
     /**
      * Taps the first element found that matches the selector.
      * @param selector The selector to use.
      * @param options The options to use.
      */
-    tap(selector: string, options?: ElementClickOptions & KeyboardModifierOptions & StrictnessOptions): void;
+    tap(
+        selector: string,
+        options?: ElementClickOptions &
+            KeyboardModifierOptions &
+            StrictnessOptions,
+    ): void;
 
     /**
      * Press the given key for the first element found that matches the selector.
@@ -1194,7 +1233,11 @@ export interface Frame {
      * @param key The key to press.
      * @param options The options to use.
      */
-    press(selector: string, key: string, options?: KeyboardPressOptions & StrictnessOptions): void;
+    press(
+        selector: string,
+        key: string,
+        options?: KeyboardPressOptions & StrictnessOptions,
+    ): void;
 
     /**
      * Type the given text for the first element found that matches the selector.
@@ -1202,7 +1245,11 @@ export interface Frame {
      * @param text The text to type.
      * @param options The options to use.
      */
-    type(selector: string, text: string, options?: KeyboardPressOptions & StrictnessOptions): void;
+    type(
+        selector: string,
+        text: string,
+        options?: KeyboardPressOptions & StrictnessOptions,
+    ): void;
 
     /**
      * Select the given options and return the array of option values of the first element
@@ -1213,7 +1260,13 @@ export interface Frame {
      */
     selectOption(
         selector: string,
-        values: string | ElementHandle | SelectOptionsObject | string[] | ElementHandle[] | SelectOptionsObject[],
+        values:
+            | string
+            | ElementHandle
+            | SelectOptionsObject
+            | string[]
+            | ElementHandle[]
+            | SelectOptionsObject[],
         options?: ElementHandleOptions & StrictnessOptions,
     ): string[];
 
@@ -1251,7 +1304,10 @@ export interface Frame {
      * @param pageFunction Function to be evaluated in the page context.
      * @param arg Optional argument to pass to `pageFunction`.
      */
-    evaluateHandle<R, Arg>(pageFunction: PageFunction<Arg, R>, arg?: Arg): JSHandle<R>;
+    evaluateHandle<R, Arg>(
+        pageFunction: PageFunction<Arg, R>,
+        arg?: Arg,
+    ): JSHandle<R>;
 
     /**
      * Get the page that owns frame.
@@ -1335,7 +1391,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns The `innerHTML` attribute of the first element found.
      */
-    innerHTML(selector: string, options?: TimeoutOptions & StrictnessOptions): string;
+    innerHTML(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): string;
 
     /**
      * Get the `innerText` attribute of the first element found that matches the selector.
@@ -1343,7 +1402,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns The `innerText` attribute of the first element found.
      */
-    innerText(selector: string, options?: TimeoutOptions & StrictnessOptions): string;
+    innerText(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): string;
 
     /**
      * Get the text content of the first element found that matches the selector.
@@ -1351,7 +1413,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns The text content of the first element found.
      */
-    textContent(selector: string, options?: TimeoutOptions & StrictnessOptions): string;
+    textContent(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): string;
 
     /**
      * Get the value of an attribute of the first element found that matches the selector.
@@ -1360,7 +1425,11 @@ export interface Frame {
      * @param options The options to use.
      * @returns The value of the attribute.
      */
-    getAttribute(selector: string, name: string, options?: TimeoutOptions & StrictnessOptions): string;
+    getAttribute(
+        selector: string,
+        name: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): string;
 
     /**
      * Get the input value of the first element found that matches the selector.
@@ -1368,7 +1437,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns The input value of the first element found.
      */
-    inputValue(selector: string, options?: TimeoutOptions & StrictnessOptions): string;
+    inputValue(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): string;
 
     /**
      * Get the `checked` attribute of the first checkbox element found that matches the selector.
@@ -1376,7 +1448,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns `true` if the checkbox is checked, `false` otherwise.
      */
-    isChecked(selector: string, options?: TimeoutOptions & StrictnessOptions): boolean;
+    isChecked(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): boolean;
 
     /**
      * Get whether the first element found that matches the selector is disabled or not.
@@ -1384,7 +1459,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns `true` if the element is disabled, `false` otherwise.
      */
-    isDisabled(selector: string, options?: TimeoutOptions & StrictnessOptions): boolean;
+    isDisabled(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): boolean;
 
     /**
      * Get whether the first element found that matches the selector is enabled or not.
@@ -1392,7 +1470,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns `true` if the element is enabled, `false` otherwise.
      */
-    isEnabled(selector: string, options?: TimeoutOptions & StrictnessOptions): boolean;
+    isEnabled(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): boolean;
 
     /**
      * Get whether the first element found that matches the selector is editable or not.
@@ -1400,7 +1481,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns `true` if the element is editable, `false` otherwise.
      */
-    isEditable(selector: string, options?: TimeoutOptions & StrictnessOptions): boolean;
+    isEditable(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): boolean;
 
     /**
      * Get whether the first element found that matches the selector is hidden or not.
@@ -1408,7 +1492,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns `true` if the element is hidden, `false` otherwise.
      */
-    isHidden(selector: string, options?: TimeoutOptions & StrictnessOptions): boolean;
+    isHidden(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): boolean;
 
     /**
      * Get whether the first element found that matches the selector is visible or not.
@@ -1416,7 +1503,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns `true` if the element is visible, `false` otherwise.
      */
-    isVisible(selector: string, options?: TimeoutOptions & StrictnessOptions): boolean;
+    isVisible(
+        selector: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): boolean;
 
     /**
      * Wait for the given function to return a truthy value.
@@ -1450,7 +1540,10 @@ export interface Frame {
      * @param options The options to use.
      * @returns The first element found that matches the selector.
      */
-    waitForSelector(selector: string, options?: ElementStateFilter & TimeoutOptions & StrictnessOptions): ElementHandle;
+    waitForSelector(
+        selector: string,
+        options?: ElementStateFilter & TimeoutOptions & StrictnessOptions,
+    ): ElementHandle;
 
     /**
      * Wait for the given timeout to elapse.
@@ -1492,7 +1585,10 @@ export interface JSHandle<T = any> {
      * @param args The arguments to pass to the page function.
      * @returns A JSHandle of the return value of `pageFunction`.
      */
-    evaluateHandle<R, Arg>(pageFunction: PageFunction<Arg, R>, arg?: Arg): JSHandle<R>;
+    evaluateHandle<R, Arg>(
+        pageFunction: PageFunction<Arg, R>,
+        arg?: Arg,
+    ): JSHandle<R>;
 
     /**
      * Fethes a map with own property names of of the `JSHandle` with their values as
@@ -1568,13 +1664,17 @@ export interface Locator {
      * @param options Options to use.
      * @returns Promise which resolves when the element is successfully clicked.
      */
-    click(options?: MouseMoveOptions & MouseMultiClickOptions & StrictnessOptions): Promise<void>;
+    click(
+        options?: MouseMoveOptions & MouseMultiClickOptions & StrictnessOptions,
+    ): Promise<void>;
 
     /**
      * Mouse double click on the chosen element.
      * @param options Options to use.
      */
-    dblclick(options?: MouseMoveOptions & MouseMultiClickOptions & StrictnessOptions): void;
+    dblclick(
+        options?: MouseMoveOptions & MouseMultiClickOptions & StrictnessOptions,
+    ): void;
 
     /**
      * Use this method to select an `input type="checkbox"`.
@@ -1635,7 +1735,10 @@ export interface Locator {
      * @param value Value to fill for the `input` or `textarea` element.
      * @param options Options to use.
      */
-    fill(value: string, options?: ElementHandleOptions & StrictnessOptions): void;
+    fill(
+        value: string,
+        options?: ElementHandleOptions & StrictnessOptions,
+    ): void;
 
     /**
      * Focuses the element using locator's selector.
@@ -1649,7 +1752,10 @@ export interface Locator {
      * @param options Options to use.
      * @returns Attribute value.
      */
-    getAttribute(name: string, options?: TimeoutOptions & StrictnessOptions): string | null;
+    getAttribute(
+        name: string,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): string | null;
 
     /**
      * Returns the `element.innerHTML`.
@@ -1687,7 +1793,10 @@ export interface Locator {
      * @returns List of selected options.
      */
     selectOption(
-        values: string | string[] | { value?: string; label?: string; index?: number },
+        values:
+            | string
+            | string[]
+            | { value?: string; label?: string; index?: number },
         options?: ElementHandleOptions & StrictnessOptions,
     ): string[];
 
@@ -1724,13 +1833,19 @@ export interface Locator {
      * @param eventInit Event-specific properties.
      * @param options Options to use.
      */
-    dispatchEvent(type: string, eventInit?: EvaluationArgument, options?: TimeoutOptions & StrictnessOptions): void;
+    dispatchEvent(
+        type: string,
+        eventInit?: EvaluationArgument,
+        options?: TimeoutOptions & StrictnessOptions,
+    ): void;
 
     /**
      * Wait for the element to be in a particular state e.g. `visible`.
      * @param options Wait options.
      */
-    waitFor(options?: { state?: ElementState } & TimeoutOptions & StrictnessOptions): void;
+    waitFor(
+        options?: { state?: ElementState } & TimeoutOptions & StrictnessOptions,
+    ): void;
 }
 
 /**
@@ -2087,7 +2202,13 @@ export interface Page {
      * @param type
      */
     emulateVisionDeficiency(
-        type: "none" | "blurredVision" | "deuteranopia" | "protanopia" | "tritanopia" | "achromatopsia",
+        type:
+            | "none"
+            | "blurredVision"
+            | "deuteranopia"
+            | "protanopia"
+            | "tritanopia"
+            | "achromatopsia",
     ): void;
 
     /**
@@ -2110,7 +2231,10 @@ export interface Page {
      * @param pageFunction Function to be evaluated in the page context.
      * @param arg Optional argument to pass to `pageFunction`.
      */
-    evaluateHandle<R, Arg>(pageFunction: PageFunction<Arg, R>, arg?: Arg): JSHandle<R>;
+    evaluateHandle<R, Arg>(
+        pageFunction: PageFunction<Arg, R>,
+        arg?: Arg,
+    ): JSHandle<R>;
 
     /**
      * **NOTE** Use locator-based `locator.fill(value[, options])` instead.
@@ -2625,7 +2749,10 @@ export interface Page {
      * page.evaluate(() => console.log('hello', 5, { foo: 'bar' }));
      * ```
      */
-    on(event: "console", listener: (consoleMessage: ConsoleMessage) => void): void;
+    on(
+        event: "console",
+        listener: (consoleMessage: ConsoleMessage) => void,
+    ): void;
 
     /**
      * Returns the page that opened the current page. The first page that is
@@ -2782,7 +2909,13 @@ export interface Page {
      */
     selectOption(
         selector: string,
-        values: string | ElementHandle | SelectOptionsObject | string[] | ElementHandle[] | SelectOptionsObject[],
+        values:
+            | string
+            | ElementHandle
+            | SelectOptionsObject
+            | string[]
+            | ElementHandle[]
+            | SelectOptionsObject[],
         options?: {
             /**
              * Setting this to `true` will bypass the actionability checks (visible,

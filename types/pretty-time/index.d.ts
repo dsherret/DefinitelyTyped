@@ -31,6 +31,10 @@ type Increment =
     | "week"
     | "weeks";
 
-declare function prettyTime(time: number | number[] | string[], smallest?: Increment | string, digits?: number): string;
+declare function prettyTime(
+    time: number | number[] | string[],
+    smallest?: Increment | string,
+    digits?: number,
+): string;
 
 export = prettyTime;

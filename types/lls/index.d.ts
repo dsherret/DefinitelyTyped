@@ -1,6 +1,6 @@
 declare namespace LargeLocalStorageInterfaces {
     interface LargeLocalStorageService {
-        new(options: Options): LargeLocalStorageService;
+        new (options: Options): LargeLocalStorageService;
 
         initialized: Promise<number>;
 
@@ -77,7 +77,11 @@ declare namespace LargeLocalStorageInterfaces {
         /**
          * Set an attachment for a given document. Identified by docKey and attachKey.
          */
-        setAttachment(docKey: string, attachKey: string, attachment: any): Promise<void>;
+        setAttachment(
+            docKey: string,
+            attachKey: string,
+            attachment: any,
+        ): Promise<void>;
 
         /**
          * Set the contents identified by docKey to data. The document will be created if it does not exist.
@@ -110,8 +114,14 @@ declare namespace LargeLocalStorageInterfaces {
     }
 
     interface Promise<T> {
-        then<U>(onFulfilled?: (value: T) => U | Promise<U>, onRejected?: (error: any) => U | Promise<U>): Promise<U>;
-        then<U>(onFulfilled?: (value: T) => U | Promise<U>, onRejected?: (error: any) => void): Promise<U>;
+        then<U>(
+            onFulfilled?: (value: T) => U | Promise<U>,
+            onRejected?: (error: any) => U | Promise<U>,
+        ): Promise<U>;
+        then<U>(
+            onFulfilled?: (value: T) => U | Promise<U>,
+            onRejected?: (error: any) => void,
+        ): Promise<U>;
         catch<U>(onRejected?: (error: any) => U | Promise<U>): Promise<U>;
     }
 }

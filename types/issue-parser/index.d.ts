@@ -6,9 +6,11 @@ declare function issueParser(
 declare namespace issueParser {
     type Parser = (text: string) => Result;
     interface Overrides {
-        actions?: {
-            [type: string]: readonly string[];
-        } | undefined;
+        actions?:
+            | {
+                  [type: string]: readonly string[];
+              }
+            | undefined;
         delimiters?: string | readonly string[] | undefined;
         mentionsPrefixes?: string | readonly string[] | undefined;
         issuePrefixes?: string | readonly string[] | undefined;

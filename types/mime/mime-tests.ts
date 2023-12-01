@@ -29,5 +29,9 @@ strOrNul = mimelite.getType("foo");
 strOrNul = mimelite.getExtension("mime");
 strOrNul = mimelite.getExtension("bar");
 
-new Mime({ "text/x-abc": ["abc"] }, { "text/y-def": ["def"] }, { "text/y-ghi": ["ghi"] });
+new Mime(
+    { "text/x-abc": ["abc"] },
+    { "text/y-def": ["def"] },
+    { "text/y-ghi": ["ghi"] },
+);
 new Mime({ "text/x-abc": ["abc", "abcd"] });

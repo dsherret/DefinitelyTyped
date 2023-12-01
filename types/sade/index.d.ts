@@ -32,9 +32,17 @@ declare namespace sade {
          * Define one or more aliases for the current Command.
          */
         alias(...names: string[]): Sade;
-        command(str: string, desc?: string, opts?: Readonly<CommandOptions>): Sade;
+        command(
+            str: string,
+            desc?: string,
+            opts?: Readonly<CommandOptions>,
+        ): Sade;
         describe(str: string | readonly string[]): Sade;
-        option(str: string, desc?: string, val?: string | number | boolean): Sade;
+        option(
+            str: string,
+            desc?: string,
+            val?: string | number | boolean,
+        ): Sade;
         action(handler: Handler): Sade;
         example(str: string): Sade;
         version(str: string): Sade;

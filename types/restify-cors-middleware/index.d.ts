@@ -27,5 +27,7 @@ declare namespace corsMiddleware {
     }
 }
 
-declare function corsMiddleware(options: corsMiddleware.Options): corsMiddleware.CorsMiddleware;
+declare function corsMiddleware(
+    options: corsMiddleware.Options,
+): corsMiddleware.CorsMiddleware;
 export = corsMiddleware;

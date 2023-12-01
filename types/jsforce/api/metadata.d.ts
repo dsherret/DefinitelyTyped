@@ -157,7 +157,10 @@ interface DeployOptions {
     singlePackage?: boolean | undefined;
 }
 
-export class AsyncResultLocator<T> extends EventEmitter implements PromiseLike<T> {
+export class AsyncResultLocator<T>
+    extends EventEmitter
+    implements PromiseLike<T>
+{
     check(callback?: Callback<T>): Promise<T>;
 
     complete(callback?: Callback<T>): Promise<T>;
@@ -181,9 +184,16 @@ export class Metadata {
 
     constructor(conn: Connection);
 
-    checkDeployStatus(id: string, includeDetails?: boolean, callback?: Callback<DeployResult>): Promise<DeployResult>;
+    checkDeployStatus(
+        id: string,
+        includeDetails?: boolean,
+        callback?: Callback<DeployResult>,
+    ): Promise<DeployResult>;
 
-    checkRetrieveStatus(id: string, callback?: Callback<RetrieveResult>): Promise<RetrieveResult>;
+    checkRetrieveStatus(
+        id: string,
+        callback?: Callback<RetrieveResult>,
+    ): Promise<RetrieveResult>;
 
     checkStatus(
         ids: string | string[],
@@ -232,7 +242,10 @@ export class Metadata {
         callback?: Callback<AsyncResult>,
     ): DeployResultLocator<AsyncResult>;
 
-    describe(version?: string, callback?: Callback<DescribeMetadataResult>): Promise<DescribeMetadataResult>;
+    describe(
+        version?: string,
+        callback?: Callback<DescribeMetadataResult>,
+    ): Promise<DescribeMetadataResult>;
 
     list(
         queries: ListMetadataQuery | ListMetadataQuery[],
@@ -259,7 +272,10 @@ export class Metadata {
         callback?: Callback<SaveResult>,
     ): Promise<SaveResult>;
 
-    retrieve(request: RetrieveRequest, callback?: Callback<AsyncResult>): RetrieveResultLocator<AsyncResult>;
+    retrieve(
+        request: RetrieveRequest,
+        callback?: Callback<AsyncResult>,
+    ): RetrieveResultLocator<AsyncResult>;
 
     update(
         type: string,

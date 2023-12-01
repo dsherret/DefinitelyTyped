@@ -57,7 +57,12 @@ export class Merge {
     ): any;
     static base(repo: Repository, one: Oid, two: Oid): Promise<Oid>;
     static bases(repo: Repository, one: Oid, two: Oid): Promise<Oidarray>;
-    static commits(repo: Repository, ourCommit: Commit, theirCommit: Commit, options?: MergeOptions): any;
+    static commits(
+        repo: Repository,
+        ourCommit: Commit,
+        theirCommit: Commit,
+        options?: MergeOptions,
+    ): any;
     static fileInitInput(opts: MergeFileInput, version: number): number;
     static initOptions(opts: MergeOptions, version: number): number;
     static trees(

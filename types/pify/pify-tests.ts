@@ -4,7 +4,9 @@ type CallbackFunction = (...args: any[]) => any;
 
 function assert(actual: string, expected: string): void {
     if (actual !== expected) {
-        throw new Error(`${JSON.stringify(actual)} !== ${JSON.stringify(expected)}`);
+        throw new Error(
+            `${JSON.stringify(actual)} !== ${JSON.stringify(expected)}`,
+        );
     }
 }
 
@@ -29,9 +31,13 @@ const fsP = pify(fs);
 fsP.readFile("foo.txt").then((result: string) => assert(result, "foo"));
 
 pify(fs.readFile)("foo.txt").then((result: string) => assert(result, "foo"));
-pify(fs.readFile, { promiseModule: Promise })("bar.txt").then((result: string) => assert(result, "bar"));
+pify(fs.readFile, { promiseModule: Promise })("bar.txt").then(
+    (result: string) => assert(result, "bar"),
+);
 
-pify(fs.exists, { errorFirst: false })("foo.txt").then((result: boolean) => assert(result.toString(), true.toString()));
+pify(fs.exists, { errorFirst: false })("foo.txt").then((result: boolean) =>
+    assert(result.toString(), true.toString()),
+);
 
 // include/exclude with multiple entries
 const module = {

@@ -5,7 +5,10 @@ declare namespace routesVersioning {
         [versionKey: string]: Handler;
     }
 
-    type RoutesVersioningMiddleware = (args: VersionOptions, notFoundMiddleware?: Handler) => Handler;
+    type RoutesVersioningMiddleware = (
+        args: VersionOptions,
+        notFoundMiddleware?: Handler,
+    ) => Handler;
 }
 
 declare function routesVersioning(): routesVersioning.RoutesVersioningMiddleware;

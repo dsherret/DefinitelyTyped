@@ -35,17 +35,30 @@ export function cloneWithShallow(obj: any, keys: string[]): any;
 /**
  * Merge all the properties of source into target.
  */
-export function merge<T1, T2>(target: T1, source: T2, isNullOverride?: boolean, isMergeArrays?: boolean): T1 & T2;
+export function merge<T1, T2>(
+    target: T1,
+    source: T2,
+    isNullOverride?: boolean,
+    isMergeArrays?: boolean,
+): T1 & T2;
 
 /**
  * Apply options to a copy of the defaults.
  */
-export function applyToDefaults<T1, T2>(defaults: T1, options: T2, isNullOverride?: boolean): T1 & T2;
+export function applyToDefaults<T1, T2>(
+    defaults: T1,
+    options: T2,
+    isNullOverride?: boolean,
+): T1 & T2;
 
 /**
  * Apply options to a copy of the defaults.
  */
-export function applyToDefaultsWithShallow<T1, T2>(defaults: T1, options: T2, keys?: string[]): T1 & T2;
+export function applyToDefaultsWithShallow<T1, T2>(
+    defaults: T1,
+    options: T2,
+    keys?: string[],
+): T1 & T2;
 
 /**
  * Perform a deep comparison of the two values.
@@ -70,7 +83,11 @@ export function intersect(array1: any[], array2: any[]): any;
 /**
  * Test if the reference value contains the provided values.
  */
-export function contain(ref: any, values: any, options?: ContainOptions): boolean;
+export function contain(
+    ref: any,
+    values: any,
+    options?: ContainOptions,
+): boolean;
 
 /**
  * Flatten an array.
@@ -85,12 +102,20 @@ export function reach(obj: any, chain: any, options?: ReachOptions): any;
 /**
  * Replace string parameters ({name}) with their corresponding object key values.
  */
-export function reachTemplate(obj: any, template: string, options?: ReachOptions): any;
+export function reachTemplate(
+    obj: any,
+    template: string,
+    options?: ReachOptions,
+): any;
 
 /**
  * Transform an existing object into a new one based on the supplied obj and transform map.
  */
-export function transform(obj: any, transform: any, options?: ReachOptions): any;
+export function transform(
+    obj: any,
+    transform: any,
+    options?: ReachOptions,
+): any;
 
 /**
  * Perform a shallow copy by copying the references of all the top level children.
@@ -161,7 +186,10 @@ export function escapeRegex(regexString: string): string;
  * Print message or throw error if condition fails.
  */
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export function assert(condition: boolean, message: string | Error): void | Error;
+export function assert(
+    condition: boolean,
+    message: string | Error,
+): void | Error;
 
 /**
  * Throw if process.env.NODE_ENV === 'test'. Else display most recent stack and exit process.

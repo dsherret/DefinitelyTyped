@@ -9,8 +9,14 @@ const test = (config: karma.Config) => {
             FirefoxWithMyExtension: {
                 base: "Firefox",
                 extensions: [
-                    path.resolve(__dirname, "helpers/extensions/myCustomExt@suchandsuch.xpi"),
-                    path.resolve(__dirname, "helpers/extensions/myOtherExt@soandso.xpi"),
+                    path.resolve(
+                        __dirname,
+                        "helpers/extensions/myCustomExt@suchandsuch.xpi",
+                    ),
+                    path.resolve(
+                        __dirname,
+                        "helpers/extensions/myOtherExt@soandso.xpi",
+                    ),
                 ],
                 prefs: {
                     "media.navigator.permission.disabled": true,

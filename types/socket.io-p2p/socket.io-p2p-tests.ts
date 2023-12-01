@@ -9,6 +9,6 @@ p2p.on("ready", () => {
     p2p.emit("peer-obj", { peerId: 1 });
 });
 
-p2p.on("peer-msg", data => {
+p2p.on("peer-msg", (data) => {
     console.log(data);
 });

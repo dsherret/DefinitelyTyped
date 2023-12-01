@@ -82,16 +82,14 @@ declare namespace swan {
          * @version 1.4.0
          */
         onProgressUpdate(
-            callback?: (
-                res: {
-                    /** 上传进度百分比 */
-                    progress: number;
-                    /** 已经上传的数据长度，单位 Bytes */
-                    totalBytesSent: number;
-                    /** 预期需要上传的数据总长度，单位 Bytes */
-                    totalBytesExpectedToSend: number;
-                },
-            ) => void,
+            callback?: (res: {
+                /** 上传进度百分比 */
+                progress: number;
+                /** 已经上传的数据长度，单位 Bytes */
+                totalBytesSent: number;
+                /** 预期需要上传的数据总长度，单位 Bytes */
+                totalBytesExpectedToSend: number;
+            }) => void,
         ): void;
         /**
          * 中断下载任务
@@ -130,16 +128,14 @@ declare namespace swan {
          * @version 1.4.0
          */
         onProgressUpdate(
-            callback?: (
-                res: {
-                    /** 下载进度百分比 */
-                    progress: number;
-                    /** 已经下载的数据长度，单位 Bytes */
-                    totalBytesWritten: number;
-                    /** 预期需要下载的数据总长度，单位 Bytes */
-                    totalBytesExpectedToWrite: number;
-                },
-            ) => void,
+            callback?: (res: {
+                /** 下载进度百分比 */
+                progress: number;
+                /** 已经下载的数据长度，单位 Bytes */
+                totalBytesWritten: number;
+                /** 预期需要下载的数据总长度，单位 Bytes */
+                totalBytesExpectedToWrite: number;
+            }) => void,
         ): void;
         /**
          * 中断下载任务
@@ -260,9 +256,11 @@ declare namespace swan {
             edit_tool: string; // 如果参数 detect_risk = true 时，则返回此字段。如果检测身份证被编辑过，该字段指定编辑软件名称，如:Adobe Photoshop CC 2014 (Macintosh),如果没有被编辑过则返回值无此参数。
             log_id: string; // 唯一的log id，用于问题定位。
             words_result_num: number; // 识别结果数，表示words_result的元素个数。
-            words_result: { // 定位和识别结果
+            words_result: {
+                // 定位和识别结果
                 [key: string]: {
-                    location: { // 位置数组（坐标0点为左上角）
+                    location: {
+                        // 位置数组（坐标0点为左上角）
                         left: number; // 表示定位位置的长方形左上顶点的水平坐标。
                         top: number; // 表示定位位置的长方形左上顶点的垂直坐标。
                         width: number; // 表示定位位置的长方形的宽度。
@@ -274,7 +272,8 @@ declare namespace swan {
         }
         interface ocrBankCardResponse {
             log_id: string; // 请求标识码，随机数，唯一。
-            result: { // 返回结果
+            result: {
+                // 返回结果
                 bank_card_number: string; // 银行卡卡号
                 bank_name: string; // 银行名，不能识别时为空 。
                 bank_card_type: string; // 银行卡类型，0: 不能识别; 1: 借记卡; 2: 信用卡 。
@@ -320,11 +319,13 @@ declare namespace swan {
         }
         interface textReviewResponse {
             log_id: string; // 唯一的log id，用于问题定位。
-            result: { // 审核结果详情
+            result: {
+                // 审核结果详情
                 spam: number; // 请求中是否包含违禁，0表示非违禁，1表示违禁，2表示建议人工复审 。
                 reject: any[]; // 审核未通过的类别列表与详情
                 review: any[]; // 待人工复审的类别列表与详情
-                pass: Array<{ // 审核通过的类别列表与详情
+                pass: Array<{
+                    // 审核通过的类别列表与详情
                     label: number; // 请求中的违禁类型
                     score: number; // 违禁检测分，范围 0~1，数值从低到高代表风险程度的高低 。
                     hit: string[]; // 违禁类型对应命中的违禁词集合，可能为空 。
@@ -401,7 +402,8 @@ declare namespace swan {
         interface GeneralIdentifyResponse {
             log_id: number; //     唯一的log id，用于问题定位。
             result_num: number; // 返回结果数目，及result数组中的元素个数。
-            result: Array<{ // 标签结果数组
+            result: Array<{
+                // 标签结果数组
                 keyword: string; // 图片中的物体或场景名称
                 score: number; // 置信度，0-1
                 root: string; // 识别结果的上层标签，有部分钱币、动漫、烟酒等tag无上层标签。
@@ -421,7 +423,8 @@ declare namespace swan {
         }
         interface DetectIdentifyResponse {
             log_id: number; //     唯一的log id，用于问题定位。
-            result: { // 裁剪结果
+            result: {
+                // 裁剪结果
                 left: number; // 表示定位位置的长方形左上顶点的水平坐标。
                 top: number; // 表示定位位置的长方形左上顶点的垂直坐标。
                 width: number; // 表示定位位置的长方形的宽度。
@@ -449,7 +452,8 @@ declare namespace swan {
                 score: number; // 置信度，示例：0.5321
                 year: string; // 年份
             }>;
-            location_result: { // 车在图片中的位置信息
+            location_result: {
+                // 车在图片中的位置信息
                 left: number; // 左起像素位置
                 top: number; // 上起像素位置
                 width: number; // 像素宽
@@ -474,7 +478,8 @@ declare namespace swan {
         interface dishClassifyResponse {
             log_id: number; //     唯一的log id，用于问题定位。
             result_num: number; // 返回结果数目，及result数组中的元素个数。
-            result: Array<{ // 菜品识别结果数组
+            result: Array<{
+                // 菜品识别结果数组
                 name: string; // 菜名，示例：鱼香肉丝。
                 calorie: number; // 卡路里，每100g的卡路里含量。
                 probability: number; // 识别结果中每一行的置信度值，0-1。
@@ -496,7 +501,8 @@ declare namespace swan {
         interface logoClassifyResponse {
             log_id: number; //     唯一的log id，用于问题定位。
             result_num: number; // 识别结果数，标识返回结果数目。
-            result: Array<{ // 菜品识别结果数组
+            result: Array<{
+                // 菜品识别结果数组
                 type: number; // type=0 为1千种高优商标识别结果；type=1 为2万类logo库的结果；其它type为自定义logo库结果。
                 name: number; // 识别的品牌名称
                 probability: number; // 分类结果置信度（0–1.0）
@@ -523,7 +529,8 @@ declare namespace swan {
         interface animalClassifyResponse {
             log_id: number; //     唯一的log id，用于问题定位。
             result_num: number; // 识别结果数，标识返回结果数目。
-            result: Array<{ // 菜品识别结果数组
+            result: Array<{
+                // 菜品识别结果数组
                 name: number; // 动物名称，示例：蒙古马。
                 score: number; // 置信度，示例：0.5321。
             }>;
@@ -541,7 +548,8 @@ declare namespace swan {
         }
         interface plantClassifyResponse {
             log_id: number; //     唯一的log id，用于问题定位。
-            result: Array<{ // 菜品识别结果数组
+            result: Array<{
+                // 菜品识别结果数组
                 name: number; // 植物名称，示例：吉娃莲。
                 score: number; // 置信度，示例：0.5321。
             }>;
@@ -649,7 +657,9 @@ declare namespace swan {
      * 需要用户授权 scope.writePhotosAlbum
      * @version 1.2.0
      */
-    function saveImageToPhotosAlbum(options: SaveImageToPhotosAlbumOptions): void;
+    function saveImageToPhotosAlbum(
+        options: SaveImageToPhotosAlbumOptions,
+    ): void;
     // 媒体-----录音
     interface StartRecordAudioOptions extends BaseOptions {
         /** 录音成功后调用，返回录音文件的临时文件路径，res = {tempFilePath: '录音文件的临时路径'} */
@@ -739,9 +749,13 @@ declare namespace swan {
         /** 录音恢复事件 */
         onResume(callback?: () => void): void;
         /** 录音停止事件，会回调文件地址 */
-        onStop(callback?: (options: OnRecorderManagerStopOptions) => void): void;
+        onStop(
+            callback?: (options: OnRecorderManagerStopOptions) => void,
+        ): void;
         /** 已录制完指定帧大小的文件，会回调录音分片结果数据。如果设置了 frameSize ，则会回调此事件 */
-        onFrameRecorded(callback?: (options: OnFrameRecordedOptions) => void): void;
+        onFrameRecorded(
+            callback?: (options: OnFrameRecordedOptions) => void,
+        ): void;
         /** 录音错误事件, 会回调错误信息 */
         onError(callback?: (err: ErrMsgResponse) => void): void;
     }
@@ -1217,9 +1231,7 @@ declare namespace swan {
     interface RemoveSavedFileOptions extends BaseOptions {
         filePath: string;
         /** 接口调用成功的回调函数 */
-        success?(res: {
-            filePath: string;
-        }): void;
+        success?(res: { filePath: string }): void;
     }
     /**
      * 删除本地存储的文件
@@ -1233,7 +1245,15 @@ declare namespace swan {
         /**
          * 文件类型，指定文件类型打开文件，有效值 doc, xls, ppt, pdf, docx, xlsx, pptx
          */
-        fileType?: "doc" | "xls" | "ppt" | "pdf" | "docx" | "xlsx" | "pptx" | undefined;
+        fileType?:
+            | "doc"
+            | "xls"
+            | "ppt"
+            | "pdf"
+            | "docx"
+            | "xlsx"
+            | "pptx"
+            | undefined;
     }
     /**
      * 新开页面打开文档，支持格式：doc, xls, ppt, pdf, docx, xlsx, pptx
@@ -1409,7 +1429,9 @@ declare namespace swan {
         /**
          * 获取当前地图中心的经纬度，返回的是 gcj02 坐标系，可以用于 swan.openLocation
          */
-        getCenterLocation(options: GetCenterLocationOptions): OpenLocationOptions;
+        getCenterLocation(
+            options: GetCenterLocationOptions,
+        ): OpenLocationOptions;
         /**
          * 将地图中心移动到当前定位点，需要配合map组件的show-location使用
          */
@@ -1521,12 +1543,10 @@ declare namespace swan {
      * @version 1.1.0
      */
     function onNetworkStatusChange(
-        callback: (
-            res: {
-                isConnected: boolean;
-                networkType: networkType;
-            },
-        ) => void,
+        callback: (res: {
+            isConnected: boolean;
+            networkType: networkType;
+        }) => void,
     ): void;
     // 设备-----加速度计
     interface AccelerometerData {
@@ -1737,11 +1757,7 @@ declare namespace swan {
      * @version 1.1.0
      */
     function onBluetoothDeviceFound(
-        callback: (
-            res: {
-                devices: BluetoothDevice[];
-            },
-        ) => void,
+        callback: (res: { devices: BluetoothDevice[] }) => void,
     ): void;
     interface GetConnectedBluetoothDevicesOptions extends BaseOptions {
         services: string[];
@@ -1950,43 +1966,39 @@ declare namespace swan {
      * 监听低功耗蓝牙连接的错误事件，包括设备丢失，连接异常断开等等。
      */
     function onBLEConnectionStateChanged(
-        callback: (
-            res: {
-                /**
-                 * 蓝牙设备 id，参考 device 对象
-                 */
-                deviceId: string;
-                /**
-                 * 连接目前的状态
-                 */
-                connected: boolean;
-            },
-        ) => void,
+        callback: (res: {
+            /**
+             * 蓝牙设备 id，参考 device 对象
+             */
+            deviceId: string;
+            /**
+             * 连接目前的状态
+             */
+            connected: boolean;
+        }) => void,
     ): void;
     /**
      * 监听低功耗蓝牙设备的特征值变化。必须先启用notify接口才能接收到设备推送的notification。
      */
     function onBLECharacteristicValueChange(
-        callback: (
-            res: {
-                /**
-                 * 蓝牙设备 id，参考 device 对象
-                 */
-                deviceId: string;
-                /**
-                 * 特征值所属服务 uuid
-                 */
-                serviceId: string;
-                /**
-                 * 特征值 uuid
-                 */
-                characteristicId: string;
-                /**
-                 * 特征值最新的值
-                 */
-                value: ArrayBuffer;
-            },
-        ) => void,
+        callback: (res: {
+            /**
+             * 蓝牙设备 id，参考 device 对象
+             */
+            deviceId: string;
+            /**
+             * 特征值所属服务 uuid
+             */
+            serviceId: string;
+            /**
+             * 特征值 uuid
+             */
+            characteristicId: string;
+            /**
+             * 特征值最新的值
+             */
+            value: ArrayBuffer;
+        }) => void,
     ): void;
     // #region iBeacon
     interface StartBeaconDiscoveryOptions extends BaseOptions {
@@ -2411,20 +2423,27 @@ declare namespace swan {
         /**
          * 动画效果
          */
-        animation?: {
-            // 动画变化时间，默认0，单位：毫秒
-            duration?: number | undefined;
-            /**
-             * 动画变化方式，默认 linear
-             * 值    说明
-             * 有效值：
-             * linear    动画从头到尾的速度是相同的。
-             * easeIn    动画以低速开始
-             * easeOut    动画以低速结束。
-             * easeInOut    动画以低速开始和结束。
-             */
-            timingFunc?: "linear" | "easeIn" | "easeOut" | "easeInOut" | undefined;
-        } | undefined;
+        animation?:
+            | {
+                  // 动画变化时间，默认0，单位：毫秒
+                  duration?: number | undefined;
+                  /**
+                   * 动画变化方式，默认 linear
+                   * 值    说明
+                   * 有效值：
+                   * linear    动画从头到尾的速度是相同的。
+                   * easeIn    动画以低速开始
+                   * easeOut    动画以低速结束。
+                   * easeInOut    动画以低速开始和结束。
+                   */
+                  timingFunc?:
+                      | "linear"
+                      | "easeIn"
+                      | "easeOut"
+                      | "easeInOut"
+                      | undefined;
+              }
+            | undefined;
     }
 
     /**
@@ -3036,7 +3055,9 @@ declare namespace swan {
         /**
          * 用于设置文字的水平对齐
          */
-        setTextBaseline(textBaseline: "top" | "bottom" | "middle" | "normal"): void;
+        setTextBaseline(
+            textBaseline: "top" | "bottom" | "middle" | "normal",
+        ): void;
         /**
          * 绘制图像，图像保持原始尺寸。
          * @param imageResource 所要绘制的图片资源, 通过chooseImage得到一个文件路径或者一个项目目录内的图片
@@ -3101,7 +3122,13 @@ declare namespace swan {
          * @param y2 第二个控制点的 y 轴坐标
          * @param radius 圆弧的半径
          */
-        arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+        arcTo(
+            x1: number,
+            y1: number,
+            x2: number,
+            y2: number,
+            radius: number,
+        ): void;
         /**
          * 给定的 (x, y) 位置绘制文本描边的方法。
          * @param text 要绘制的文本
@@ -3370,7 +3397,9 @@ declare namespace swan {
     /**
      * 把当前画布的内容导出生成图片，并返回文件路径
      */
-    function canvasToTempFilePath(options: Partial<CanvasToTempFilePathOptions>): void;
+    function canvasToTempFilePath(
+        options: Partial<CanvasToTempFilePathOptions>,
+    ): void;
     interface CanvasImageDataOptions extends BaseOptions {
         /** 画布标识，传入 <canvas /> 的 canvas-id  */
         canvasId: string;
@@ -3865,11 +3894,15 @@ declare namespace swan {
     /**
      *  打开另一个小程序。
      */
-    function navigateToSmartProgram(options: navigateToSmartProgramOptions): void;
+    function navigateToSmartProgram(
+        options: navigateToSmartProgramOptions,
+    ): void;
     /**
      *  返回上一个小程序
      */
-    function navigateBackSmartProgram(options: navigateBackSmartProgramOptions): void;
+    function navigateBackSmartProgram(
+        options: navigateBackSmartProgramOptions,
+    ): void;
     interface MetaDescription extends BaseOptions {
         content?: string | undefined;
     }
@@ -4004,32 +4037,32 @@ declare namespace swan {
         detail: Detail;
     }
 
-    interface BuiltInEvent<T extends EventType, Detail> extends BaseEvent<T, Detail> {}
+    interface BuiltInEvent<T extends EventType, Detail>
+        extends BaseEvent<T, Detail> {}
 
-    interface CustomEvent<T extends string, Detail> extends BaseEvent<T, Detail> {}
+    interface CustomEvent<T extends string, Detail>
+        extends BaseEvent<T, Detail> {}
 
     /**
      * 指定focus时的光标位置
      * @version 1.5.0
      */
-    interface InputEvent extends
-        BuiltInEvent<
+    interface InputEvent
+        extends BuiltInEvent<
             "input",
             {
                 value: string;
                 cursor: number;
             }
-        >
-    {}
+        > {}
 
-    interface FormEvent extends
-        BuiltInEvent<
+    interface FormEvent
+        extends BuiltInEvent<
             "form",
             {
                 value: { [name: string]: string | boolean | number };
             }
-        >
-    {}
+        > {}
 
     interface ScrollEvent extends BuiltInEvent<"scroll", {}> {}
 
@@ -4041,15 +4074,14 @@ declare namespace swan {
         clientY: number;
     }
 
-    interface TouchEvent<T extends TouchEventType> extends
-        BuiltInEvent<
+    interface TouchEvent<T extends TouchEventType>
+        extends BuiltInEvent<
             T,
             {
                 x: number;
                 y: number;
             }
-        >
-    {
+        > {
         touches: Touch[];
         changedTouches: Touch[];
     }
@@ -4149,12 +4181,14 @@ declare namespace swan {
             appId: string;
         };
         /* 插件账号信息（仅在插件中调用时包含这一项）     */
-        plugin?: {
-            /* 插件 appId     */
-            appId: string;
-            /* 插件版本号     */
-            version: string;
-        } | undefined;
+        plugin?:
+            | {
+                  /* 插件 appId     */
+                  appId: string;
+                  /* 插件版本号     */
+                  version: string;
+              }
+            | undefined;
     }
 
     /**
@@ -4221,7 +4255,8 @@ declare namespace swan {
         Data,
         Methods,
         Props,
-    > = CombinedInstance<Instance, Data, Methods, Props> & Component<Data, Props>;
+    > = CombinedInstance<Instance, Data, Methods, Props> &
+        Component<Data, Props>;
 
     // CombinedInstance models the `this`, i.e. instance type for (user defined) component
     type CombinedInstance<
@@ -4231,7 +4266,7 @@ declare namespace swan {
         Props,
     > = Methods & Instance;
 
-    type Prop<T> = (() => T) | { new(...args: any[]): T & object };
+    type Prop<T> = (() => T) | { new (...args: any[]): T & object };
 
     type PropValidator<T> = PropOptions<T> | Prop<T> | Array<Prop<T>>;
 
@@ -4252,7 +4287,9 @@ declare namespace swan {
 
     type ArrayPropsDefinition<T> = Array<keyof T>;
 
-    type PropsDefinition<T> = ArrayPropsDefinition<T> | RecordPropsDefinition<T>;
+    type PropsDefinition<T> =
+        | ArrayPropsDefinition<T>
+        | RecordPropsDefinition<T>;
 
     interface ComponentRelation<D = any, P = any> {
         /** 目标组件的相对关系，可选的值为 parent 、 child 、 ancestor 、 descendant */
@@ -4271,10 +4308,9 @@ declare namespace swan {
         Data,
         Methods,
         Props,
-    > =
-        & object
-        & ComponentOptions<V, Data, Methods, Props>
-        & ThisType<CombinedInstance<V, Data, Methods, Readonly<Props>>>;
+    > = object &
+        ComponentOptions<V, Data, Methods, Props> &
+        ThisType<CombinedInstance<V, Data, Methods, Readonly<Props>>>;
 
     interface ComponentRelation<D = any, P = any> {
         /** 目标组件的相对关系，可选的值为 parent 、 child 、 ancestor 、 descendant */
@@ -4360,19 +4396,19 @@ declare namespace swan {
          */
         options?:
             | Partial<{
-                /**
-                 * 使用外部样式类可以让组件使用指定的组件外样式类，如果希望组件外样式类能够完全影响组件内部，
-                 * 可以将组件构造器中的options.addGlobalClass字段置为true。这个特性从小程序基础库版本 2.2.3 开始支持。
-                 *
-                 * @version 2.2.3
-                 */
-                addGlobalClass: boolean;
-                /**
-                 * 在组件的swan中可以包含 slot 节点，用于承载组件使用者提供的swan结构。
-                 * 默认情况下，一个组件的swan中只能有一个slot。需要使用多slot时，可以在组件js中声明启用。
-                 */
-                multipleSlots: boolean;
-            }>
+                  /**
+                   * 使用外部样式类可以让组件使用指定的组件外样式类，如果希望组件外样式类能够完全影响组件内部，
+                   * 可以将组件构造器中的options.addGlobalClass字段置为true。这个特性从小程序基础库版本 2.2.3 开始支持。
+                   *
+                   * @version 2.2.3
+                   */
+                  addGlobalClass: boolean;
+                  /**
+                   * 在组件的swan中可以包含 slot 节点，用于承载组件使用者提供的swan结构。
+                   * 默认情况下，一个组件的swan中只能有一个slot。需要使用多slot时，可以在组件js中声明启用。
+                   */
+                  multipleSlots: boolean;
+              }>
             | undefined;
 
         /**
@@ -4389,7 +4425,9 @@ declare namespace swan {
          * 类似于mixins和traits的组件间代码复用机制
          * 参见 [behaviors](https://smartprogram.baidu.com/docs/develop/framework/custom-component_behaviors/)
          */
-        behaviors?: Array<(ComponentOptions<Component<object, object>>) | string> | undefined;
+        behaviors?:
+            | Array<ComponentOptions<Component<object, object>> | string>
+            | undefined;
 
         /**
          * 组件生命周期声明对象，组件的生命周期：created、attached、ready、moved、detached将收归到lifetimes字段内进行声明，
@@ -4416,9 +4454,11 @@ declare namespace swan {
     type DataValueType<Def> = Def extends {
         type: (...args: any[]) => infer T;
         value?: infer T | undefined;
-    } ? T
-        : Def extends (...args: any[]) => infer T ? T
-        : never;
+    }
+        ? T
+        : Def extends (...args: any[]) => infer T
+          ? T
+          : never;
 
     /**
      * Component实例方法
@@ -4457,15 +4497,15 @@ declare namespace swan {
             key:
                 | string
                 | {
-                    [key in keyof D]?:
-                        | string
-                        | number
-                        | boolean
-                        | symbol
-                        | object
-                        | null
-                        | any[];
-                },
+                      [key in keyof D]?:
+                          | string
+                          | number
+                          | boolean
+                          | symbol
+                          | object
+                          | null
+                          | any[];
+                  },
             value?: any,
             callback?: () => void,
         ): void;
@@ -4567,9 +4607,7 @@ declare namespace swan {
          * + 此事件需要 return 一个 Object，用于自定义转发内容
          */
         onShareAppMessage?:
-            | ((
-                options?: PageShareAppMessageOptions,
-            ) => ShareAppMessage)
+            | ((options?: PageShareAppMessageOptions) => ShareAppMessage)
             | undefined;
         /**
          * 页面滚动触发事件的处理函数

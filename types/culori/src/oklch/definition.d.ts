@@ -26,6 +26,7 @@ interface OklchDefinitionMixin {
     };
 }
 
-declare const definition: Omit<typeof lch, keyof OklchDefinitionMixin> & OklchDefinitionMixin;
+declare const definition: Omit<typeof lch, keyof OklchDefinitionMixin> &
+    OklchDefinitionMixin;
 
 export default definition;

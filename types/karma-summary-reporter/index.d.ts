@@ -40,9 +40,11 @@ declare module "karma" {
          * * success: used for successful test results
          * * failure: used for failed test results
          */
-        symbols?: {
-            success?: string | undefined;
-            failure?: string | undefined;
-        } | undefined;
+        symbols?:
+            | {
+                  success?: string | undefined;
+                  failure?: string | undefined;
+              }
+            | undefined;
     }
 }

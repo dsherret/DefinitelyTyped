@@ -13,14 +13,11 @@ declare namespace Backgrid {
         footer?: Footer | undefined;
     }
 
-    class Header extends Backbone.View<Backbone.Model> {
-    }
+    class Header extends Backbone.View<Backbone.Model> {}
 
-    class Footer extends Backbone.View<Backbone.Model> {
-    }
+    class Footer extends Backbone.View<Backbone.Model> {}
 
-    class Row extends Backbone.View<Backbone.Model> {
-    }
+    class Row extends Backbone.View<Backbone.Model> {}
 
     class Command {
         moveUp(): boolean;
@@ -69,8 +66,7 @@ declare namespace Backgrid {
         remove();
     }
 
-    class StringCell extends Cell {
-    }
+    class StringCell extends Cell {}
 
     interface ColumnAttr {
         name: string;
@@ -91,11 +87,19 @@ declare namespace Backgrid {
         tagName: string;
 
         initialize(options?: any);
-        insertRow(model: Backbone.Model, collection: Backbone.Collection<Backbone.Model>, options: any);
+        insertRow(
+            model: Backbone.Model,
+            collection: Backbone.Collection<Backbone.Model>,
+            options: any,
+        );
         moveToNextCell(model: Backbone.Model, cell: Column, command: Command);
         refresh(): Body;
         remove(): this;
-        removeRow(model: Backbone.Model, collection: Backbone.Collection<Backbone.Model>, options: any);
+        removeRow(
+            model: Backbone.Model,
+            collection: Backbone.Collection<Backbone.Model>,
+            options: any,
+        );
         render(): this;
     }
 
@@ -111,10 +115,18 @@ declare namespace Backgrid {
         initialize(options: any);
         getSelectedModels(): Backbone.Model[];
         insertColumn(...options: any[]): Grid;
-        insertRow(model: Backbone.Model, collection: Backbone.Collection<Backbone.Model>, options: any);
+        insertRow(
+            model: Backbone.Model,
+            collection: Backbone.Collection<Backbone.Model>,
+            options: any,
+        );
         remove(): this;
         removeColumn(...options: any[]): Grid;
-        removeRow(model: Backbone.Model, collection: Backbone.Collection<Backbone.Model>, options: any);
+        removeRow(
+            model: Backbone.Model,
+            collection: Backbone.Collection<Backbone.Model>,
+            options: any,
+        );
         render(): this;
     }
 }

@@ -417,7 +417,7 @@ export interface DataTypes {
     readonly NoSuchObject: 0x80;
     readonly NoSuchInstance: 0x81;
     readonly EndOfMibView: 0x82;
-    readonly PDUBase: 0xA0;
+    readonly PDUBase: 0xa0;
 }
 
 export interface PduTypes {

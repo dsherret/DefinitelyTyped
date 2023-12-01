@@ -3,17 +3,26 @@
  */
 
 import * as React from "react";
-import Benchmark, { BenchmarkRef, BenchmarkType, BenchResultsType } from "react-component-benchmark";
+import Benchmark, {
+    BenchmarkRef,
+    BenchmarkType,
+    BenchResultsType,
+} from "react-component-benchmark";
 
 // https://github.com/paularmstrong/react-component-benchmark-example/blob/main/src/Result.js
 
 interface ResultInfo {
     component: string;
     result: BenchResultsType;
-    type: typeof BenchmarkType[keyof typeof BenchmarkType];
+    type: (typeof BenchmarkType)[keyof typeof BenchmarkType];
 }
 
-function Result({ component, index, result, type }: ResultInfo & { index: number }) {
+function Result({
+    component,
+    index,
+    result,
+    type,
+}: ResultInfo & { index: number }) {
     return (
         <tbody>
             <tr>
@@ -55,7 +64,9 @@ function Results({ results }: ResultsProps) {
                     <th>p99</th>
                 </tr>
             </thead>
-            {[...results].reverse().map((result, i) => <Result key={i} index={results.length - i} {...result} />)}
+            {[...results].reverse().map((result, i) => (
+                <Result key={i} index={results.length - i} {...result} />
+            ))}
         </table>
     );
 }
@@ -63,20 +74,25 @@ function Results({ results }: ResultsProps) {
 // https://github.com/paularmstrong/react-component-benchmark-example/blob/main/src/TestCases.js
 
 export function Tree({ breadth = 2, depth = 7 }) {
-    return breadth > 0 && depth > 0
-        ? (
-            <div>
-                {Array.from({ length: breadth }).map((_, index) => (
-                    <Tree key={`${breadth}-${depth}-${index}`} breadth={breadth} depth={depth - 1} />
-                ))}
-            </div>
-        )
-        : null;
+    return breadth > 0 && depth > 0 ? (
+        <div>
+            {Array.from({ length: breadth }).map((_, index) => (
+                <Tree
+                    key={`${breadth}-${depth}-${index}`}
+                    breadth={breadth}
+                    depth={depth - 1}
+                />
+            ))}
+        </div>
+    ) : null;
 }
 
 // https://github.com/paularmstrong/react-component-benchmark-example/blob/main/src/App.js
 
-function resultsReducer(state: ResultInfo[] = [], results: ResultInfo | "CLEAR") {
+function resultsReducer(
+    state: ResultInfo[] = [],
+    results: ResultInfo | "CLEAR",
+) {
     if (results === "CLEAR") {
         return [];
     }
@@ -90,7 +106,8 @@ function App() {
 
     const type = BenchmarkType.MOUNT;
 
-    const handleComplete = (result: BenchResultsType) => dispatch({ result, type, component: Tree.name });
+    const handleComplete = (result: BenchResultsType) =>
+        dispatch({ result, type, component: Tree.name });
     const handleStart = () => benchmarkRef.current!.start();
 
     return (

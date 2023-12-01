@@ -4,8 +4,12 @@ import { GraphPointer } from "clownface";
 type Factory<
     OutQuad extends RDF.Quad = RDF.Quad,
     InQuad extends RDF.Quad = RDF.Quad,
-    D extends RDF.DatasetCore<OutQuad, InQuad> = RDF.DatasetCore<OutQuad, InQuad>,
-> = RDF.DataFactory<OutQuad, InQuad> & RDF.DatasetCoreFactory<OutQuad, InQuad, D>;
+    D extends RDF.DatasetCore<OutQuad, InQuad> = RDF.DatasetCore<
+        OutQuad,
+        InQuad
+    >,
+> = RDF.DataFactory<OutQuad, InQuad> &
+    RDF.DatasetCoreFactory<OutQuad, InQuad, D>;
 
 type BlankNodeOf<F extends Factory> = ReturnType<F["blankNode"]>;
 type NamedNodeOf<F extends Factory> = ReturnType<F["namedNode"]>;
@@ -25,7 +29,10 @@ declare namespace ValidationReport {
         readonly path: BlankNodeOf<F> | NamedNodeOf<F> | null;
         readonly focusNode: BlankNodeOf<F> | NamedNodeOf<F> | null;
         readonly severity: NamedNodeOf<F> | null;
-        readonly sourceConstraintComponent: BlankNodeOf<F> | NamedNodeOf<F> | null;
+        readonly sourceConstraintComponent:
+            | BlankNodeOf<F>
+            | NamedNodeOf<F>
+            | null;
         readonly sourceShape: BlankNodeOf<F> | NamedNodeOf<F> | null;
         readonly detail: Array<ValidationResult<F>>;
     }
@@ -39,11 +46,15 @@ declare namespace ValidationReport {
     }
 }
 
-interface ValidationReport<F extends Factory = Factory> extends ValidationReport.ValidationReport<F> {}
+interface ValidationReport<F extends Factory = Factory>
+    extends ValidationReport.ValidationReport<F> {}
 
 // tslint:disable-next-line:no-unnecessary-class
 declare class ValidationReport<F extends Factory = Factory> {
-    constructor(resultQuads: GraphPointer<RDF.BlankNode | RDF.NamedNode>, options: ValidationReport.Options<F>);
+    constructor(
+        resultQuads: GraphPointer<RDF.BlankNode | RDF.NamedNode>,
+        options: ValidationReport.Options<F>,
+    );
 }
 
 export = ValidationReport;

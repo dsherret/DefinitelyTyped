@@ -9,7 +9,7 @@ app.ws.use(async (ctx, next) => {
         console.log(message);
         const server = ctx.app.ws.server;
         if (server) {
-            server.clients.forEach(client => {
+            server.clients.forEach((client) => {
                 if (client !== ctx.websocket) {
                     client.send(message);
                 }
@@ -33,7 +33,7 @@ typedApp.ws.use(async (ctx, next) => {
         console.log(message + ctx.state.persist);
         const server = ctx.app.ws.server;
         if (server) {
-            server.clients.forEach(client => {
+            server.clients.forEach((client) => {
                 if (client !== ctx.websocket) {
                     client.send(message);
                 }
@@ -58,7 +58,7 @@ supportMulterApp.ws.use(async (ctx, next) => {
         console.log(message);
         const server = ctx.app.ws.server;
         if (server) {
-            server.clients.forEach(client => {
+            server.clients.forEach((client) => {
                 if (client !== ctx.websocket) {
                     client.send(message);
                 }

@@ -8,11 +8,13 @@ interface cin {
 
 interface ssn {
     isValid: boolean;
-    person?: {
-        type: string;
-        sex: string;
-        ssn: string;
-    } | undefined;
+    person?:
+        | {
+              type: string;
+              sex: string;
+              ssn: string;
+          }
+        | undefined;
 }
 
 declare let validate: {

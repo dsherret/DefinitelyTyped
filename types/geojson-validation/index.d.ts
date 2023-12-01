@@ -18,7 +18,10 @@ export const allTypes: {
     GeometryObject: GeoJSONValidator;
 };
 
-export function define(type: keyof typeof allTypes, definition: (...args: any[]) => any): boolean;
+export function define(
+    type: keyof typeof allTypes,
+    definition: (...args: any[]) => any,
+): boolean;
 
 export const isPosition: GeoJSONValidator;
 export const isGeoJSONObject: GeoJSONValidator;

@@ -48,7 +48,11 @@ declare namespace MapboxGeocoder {
          * If an object, it will be passed as `options` to the map [`flyTo`](https://docs.mapbox.com/mapbox-gl-js/api/#map#flyto)
          * or [`fitBounds`](https://docs.mapbox.com/mapbox-gl-js/api/#map#fitbounds) method providing control over the animation of the transition. (optional, default true)
          */
-        flyTo?: boolean | mapboxgl.FlyToOptions | mapboxgl.FitBoundsOptions | undefined;
+        flyTo?:
+            | boolean
+            | mapboxgl.FlyToOptions
+            | mapboxgl.FitBoundsOptions
+            | undefined;
         /**
          * a proximity argument: this is a geographical point given as an object with latitude and longitude properties. Search results closer to this point will be given higher priority.
          */
@@ -108,9 +112,9 @@ declare namespace MapboxGeocoder {
          */
         externalGeocoder?:
             | ((
-                searchInput: string,
-                features: GeoJSON.FeatureCollection<GeoJSON.Geometry>,
-            ) => Promise<GeoJSON.FeatureCollection>)
+                  searchInput: string,
+                  features: GeoJSON.FeatureCollection<GeoJSON.Geometry>,
+              ) => Promise<GeoJSON.FeatureCollection>)
             | undefined;
         /**
          * If `true`, enable reverse geocoding mode. In reverse geocoding, search input is expected to be coordinates in the form `lat, lon`, with suggestions being the reverse geocodes.
@@ -244,7 +248,9 @@ declare class MapboxGeocoder implements mapboxgl.IControl {
      * If an object, it will be passed as `options` to the map [`flyTo`](https://docs.mapbox.com/mapbox-gl-js/api/#map#flyto) or [`fitBounds`](https://docs.mapbox.com/mapbox-gl-js/api/#map#fitbounds)
      * method providing control over the animation of the transition.
      */
-    setFlyTo(flyTo: boolean | mapboxgl.FlyToOptions | mapboxgl.FitBoundsOptions): this;
+    setFlyTo(
+        flyTo: boolean | mapboxgl.FlyToOptions | mapboxgl.FitBoundsOptions,
+    ): this;
     /**
      * Get the parameters used to fly to the selected response, if any
      */

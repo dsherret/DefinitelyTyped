@@ -16,7 +16,7 @@ export interface Stanza extends Element {
     // This has to be used for the static class initializer new Client.Stanza(..). If there is a better way feel free to
     // contribute.
     // eslint-disable-next-line @typescript-eslint/no-misused-new
-    new(name: string, attr: any): Stanza;
+    new (name: string, attr: any): Stanza;
     from: string;
     to: string;
     id: string;

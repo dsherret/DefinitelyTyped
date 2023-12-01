@@ -2,11 +2,17 @@ import kcl from "aws-kcl";
 
 // Example used from https://github.com/awslabs/amazon-kinesis-client-nodejs
 const recordProcessor = {
-    initialize(_initializeInput: kcl.InitializeInput, completeCallback: kcl.Callback) {
+    initialize(
+        _initializeInput: kcl.InitializeInput,
+        completeCallback: kcl.Callback,
+    ) {
         completeCallback();
     },
 
-    processRecords(processRecordsInput: kcl.ProcessRecordsInput, completeCallback: kcl.Callback) {
+    processRecords(
+        processRecordsInput: kcl.ProcessRecordsInput,
+        completeCallback: kcl.Callback,
+    ) {
         if (!processRecordsInput || !processRecordsInput.records) {
             completeCallback();
             return;
@@ -35,11 +41,17 @@ const recordProcessor = {
         );
     },
 
-    leaseLost(_leaseLostInput: kcl.LeaseLossInput, completeCallback: kcl.Callback) {
+    leaseLost(
+        _leaseLostInput: kcl.LeaseLossInput,
+        completeCallback: kcl.Callback,
+    ) {
         completeCallback();
     },
 
-    shardEnded(shardEndedInput: kcl.ShardEndedInput, completeCallback: kcl.Callback) {
+    shardEnded(
+        shardEndedInput: kcl.ShardEndedInput,
+        completeCallback: kcl.Callback,
+    ) {
         shardEndedInput.checkpointer.checkpoint((_err?: string) => {
             completeCallback();
         });

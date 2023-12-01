@@ -12,10 +12,12 @@ export type MultiInputProps = {
     placeholder?: string | undefined;
     popoverProps?: any;
     tagProps?: any;
-    validationState?: {
-        state?: any;
-        text?: string | undefined;
-    } | undefined;
+    validationState?:
+        | {
+              state?: any;
+              text?: string | undefined;
+          }
+        | undefined;
     onTagsUpdate?: ((...args: any[]) => any) | undefined;
 } & { [x: string]: any };
 

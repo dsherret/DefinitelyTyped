@@ -1,6 +1,6 @@
 import { Field } from "./Field";
 
-export default function(action: object): Action;
+export default function (action: object): Action;
 
 export interface Action {
     name: string;
@@ -21,7 +21,9 @@ export interface Action {
     getFieldByName(fieldName: string | RegExp): Field | undefined;
     getFieldByClass(fieldClass: string | RegExp): Field | undefined;
     getFieldsByClass(fieldClass: string | RegExp): Field[];
-    getFieldByClasses(fieldClasses: ReadonlyArray<string | RegExp>): Field | undefined;
+    getFieldByClasses(
+        fieldClasses: ReadonlyArray<string | RegExp>,
+    ): Field | undefined;
     getFieldsByClasses(fieldClasses: ReadonlyArray<string | RegExp>): Field[];
     getFieldByType(fieldType: string | RegExp): Field | undefined;
     getFieldsByType(fieldType: string | RegExp): Field[];

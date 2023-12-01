@@ -22,10 +22,12 @@ export interface uiParams<UIStateShape> {
     mergeProps?(stateProps: any, dispatchProps: any, ownProps: any): any;
 
     // optional `options` passed to react-redux @connect
-    options?: {
-        pure?: boolean | undefined;
-        withRef?: boolean | undefined;
-    } | undefined;
+    options?:
+        | {
+              pure?: boolean | undefined;
+              withRef?: boolean | undefined;
+          }
+        | undefined;
 }
 
 export interface ReduxUIProps<UIStateShape> {
@@ -47,4 +49,6 @@ export interface ReduxUIProps<UIStateShape> {
 
 export const reducer: Redux.Reducer<any>;
 
-export default function ui<UIStateShape>(params?: uiParams<UIStateShape>): <T>(component: T) => T;
+export default function ui<UIStateShape>(
+    params?: uiParams<UIStateShape>,
+): <T>(component: T) => T;

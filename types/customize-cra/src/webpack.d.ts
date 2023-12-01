@@ -1,4 +1,9 @@
-import { Configuration as WebpackConfig, Options, Plugin, RuleSetRule } from "webpack";
+import {
+    Configuration as WebpackConfig,
+    Options,
+    Plugin,
+    RuleSetRule,
+} from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import { GenerateSWOptions } from "workbox-webpack-plugin";
 import { OverrideFunc } from "./core";
@@ -13,18 +18,26 @@ export function disableEsLint(): OverrideFunc;
  * if behindFlag is set to true, the report will be created only if
  * the `--analyze` flag is added to the `yarn build` command
  */
-export function addBundleVisualizer(options?: BundleAnalyzerPlugin.Options, behindFlag?: boolean): OverrideFunc;
+export function addBundleVisualizer(
+    options?: BundleAnalyzerPlugin.Options,
+    behindFlag?: boolean,
+): OverrideFunc;
 
 export function addWebpackAlias(aliases: Record<string, string>): OverrideFunc;
 
-export function adjustWorkbox(func: (swPluginOptions: GenerateSWOptions) => GenerateSWOptions): OverrideFunc;
+export function adjustWorkbox(
+    func: (swPluginOptions: GenerateSWOptions) => GenerateSWOptions,
+): OverrideFunc;
 
 export function useEslintRc(configFile?: string): OverrideFunc;
 
 export function enableEslintTypescript(): OverrideFunc;
 
 // TODO: type
-export function addLessLoader(loaderOptions?: any, customCssModules?: any): OverrideFunc;
+export function addLessLoader(
+    loaderOptions?: any,
+    customCssModules?: any,
+): OverrideFunc;
 
 /**
  * to be used to disable chunk according to:
@@ -45,7 +58,9 @@ export function removeModuleScopePlugin(): OverrideFunc;
  * to be used to ignore replace packages with global variable
  * Useful when trying to offload libs to CDN
  */
-export function addWebpackExternals(options: WebpackConfig["externals"]): OverrideFunc;
+export function addWebpackExternals(
+    options: WebpackConfig["externals"],
+): OverrideFunc;
 
 /**
  * Add the provided module to the webpack module rules array.
@@ -55,7 +70,9 @@ export function addWebpackExternals(options: WebpackConfig["externals"]): Overri
  */
 export function addWebpackModuleRule(rule: RuleSetRule): OverrideFunc;
 
-export function addWebpackResolve(resolve: WebpackConfig["resolve"]): OverrideFunc;
+export function addWebpackResolve(
+    resolve: WebpackConfig["resolve"],
+): OverrideFunc;
 
 export function addWebpackPlugin(plugin: Plugin): OverrideFunc;
 
@@ -65,7 +82,9 @@ export function addTslintLoader(x: any): OverrideFunc;
 /**
  * This works by mutating the callback argument! Returning a value has no effect.
  */
-export function adjustStyleLoaders(callback: (loader: Required<RuleSetRule>) => void): OverrideFunc;
+export function adjustStyleLoaders(
+    callback: (loader: Required<RuleSetRule>) => void,
+): OverrideFunc;
 
 /**
  * Override the webpack target.
@@ -90,7 +109,9 @@ export function setWebpackPublicPath(path: string): OverrideFunc;
  * @param splitChunks of optimization.splitChunks
  * @see https://webpack.js.org/plugins/split-chunks-plugin/
  */
-export function setWebpackOptimizationSplitChunks(splitChunks: Options.Optimization["splitChunks"]): OverrideFunc;
+export function setWebpackOptimizationSplitChunks(
+    splitChunks: Options.Optimization["splitChunks"],
+): OverrideFunc;
 
 /**
  * Sets the `stats` object in Webpack config

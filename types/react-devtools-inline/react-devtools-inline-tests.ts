@@ -71,7 +71,10 @@ const storeWithTwoConfigOption = createStore(frontendBridgeWithWall, {
 initializeFE(window, {});
 initializeFE(window, { bridge: frontendBridgeWithoutWall });
 initializeFE(window, { store: storeWithoutConfig });
-initializeFE(window, { bridge: frontendBridgeWithoutWall, store: storeWithoutConfig });
+initializeFE(window, {
+    bridge: frontendBridgeWithoutWall,
+    store: storeWithoutConfig,
+});
 
 // $ExpectType BackendBridge
 const backendBridgeWithoutWall = createBridgeBE(window);
@@ -109,9 +112,15 @@ const browserThemeLight: BrowserTheme = "light";
 const tabIdComponents: TabID = "components";
 const tabIdProfiler: TabID = "profiler";
 
-const viewAttributeSourceString: ViewAttributeSource = (id = 5, path = ["s", "t", "r"]) => {};
+const viewAttributeSourceString: ViewAttributeSource = (
+    id = 5,
+    path = ["s", "t", "r"],
+) => {};
 
-const viewAttributeSourceFunction: ViewAttributeSource = (id = 5, path = [1, 2, 3]) => {};
+const viewAttributeSourceFunction: ViewAttributeSource = (
+    id = 5,
+    path = [1, 2, 3],
+) => {};
 
 const serializedElement: SerializedElement = {
     displayName: "str",
@@ -156,14 +165,29 @@ const inspectedElementObj: InspectedElement = {
     plugins: pluginsObj,
 };
 
-const canViewElementSource: CanViewElementSource = (inspectedElement = inspectedElementObj) => true;
-const viewElementSource: ViewElementSource = (id = 5, inspectedElement = inspectedElementObj) => {};
+const canViewElementSource: CanViewElementSource = (
+    inspectedElement = inspectedElementObj,
+) => true;
+const viewElementSource: ViewElementSource = (
+    id = 5,
+    inspectedElement = inspectedElementObj,
+) => {};
 
-const fetchFileWithCachingFunc: FetchFileWithCaching = (url = "str") => Promise.resolve(url);
+const fetchFileWithCachingFunc: FetchFileWithCaching = (url = "str") =>
+    Promise.resolve(url);
 const context: Context = fetchFileWithCachingFunc;
 
-const hookNode: HooksNode = { id: 1, isStateEditable: true, name: "some-name", value: 4, subHooks: [] };
-const parseHookNames: ParseHookNames = async ([hookNode], fetchFileWithCachingFunc) => null;
+const hookNode: HooksNode = {
+    id: 1,
+    isStateEditable: true,
+    name: "some-name",
+    value: 4,
+    subHooks: [],
+};
+const parseHookNames: ParseHookNames = async (
+    [hookNode],
+    fetchFileWithCachingFunc,
+) => null;
 
 const hookSourceObj: HookSource = {
     lineNumber: 1,
@@ -172,15 +196,19 @@ const hookSourceObj: HookSource = {
     functionName: "str",
 };
 
-const locationKeyToHookSourceAndMetadata: Map<string, HookSourceAndMetadata> = new Map().set("str", {
-    hookSource: hookSourceObj,
-    runtimeSourceCode: "str",
-    runtimeSourceURL: "str",
-    sourceMapJSON: null,
-    sourceMapURL: "str",
-});
+const locationKeyToHookSourceAndMetadata: Map<string, HookSourceAndMetadata> =
+    new Map().set("str", {
+        hookSource: hookSourceObj,
+        runtimeSourceCode: "str",
+        runtimeSourceURL: "str",
+        sourceMapJSON: null,
+        sourceMapURL: "str",
+    });
 
-const parseSourceAndMetadata: ParseSourceAndMetadata = async ([hookNode], locationKeyToHookSourceAndMetadata) => null;
+const parseSourceAndMetadata: ParseSourceAndMetadata = async (
+    [hookNode],
+    locationKeyToHookSourceAndMetadata,
+) => null;
 
 const frontendBridge: FrontendBridge = new Bridge(wall);
 const store = createStore(frontendBridge);
@@ -208,6 +236,10 @@ const props: DevtoolsProps = {
     profilerPortalContainer: document.createElement("div"),
     fetchFileWithCaching: fetchFileWithCachingFunc,
     hookNamesModuleLoaderFunction: () =>
-        Promise.resolve({ parseHookNames, parseSourceAndMetadata, purgeCachedMetadata: () => {} }),
+        Promise.resolve({
+            parseHookNames,
+            parseSourceAndMetadata,
+            purgeCachedMetadata: () => {},
+        }),
     viewUrlSourceFunction: () => {},
 };

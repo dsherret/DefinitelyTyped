@@ -15,6 +15,9 @@ declare namespace PageIcon {
 }
 
 declare module "page-icon" {
-    const mod: (url: string, opts?: PageIcon.FetchOptions) => Promise<PageIcon.Icon>;
+    const mod: (
+        url: string,
+        opts?: PageIcon.FetchOptions,
+    ) => Promise<PageIcon.Icon>;
     export = mod;
 }

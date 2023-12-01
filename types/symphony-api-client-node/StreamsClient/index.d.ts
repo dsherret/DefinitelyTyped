@@ -24,7 +24,9 @@ export interface BaseRoomAttributes {
     multiLateralRoom?: boolean | undefined;
 }
 
-export interface AllRoomAttributes extends BaseRoomAttributes, ImmutableRoomAttributes {}
+export interface AllRoomAttributes
+    extends BaseRoomAttributes,
+        ImmutableRoomAttributes {}
 
 export interface RoomSystemInfo {
     id: string;
@@ -127,10 +129,22 @@ export function activateRoom(streamId: string): Promise<ActivateRoomResponse>;
 export function deactivateRoom(streamId: string): Promise<ActivateRoomResponse>;
 export function getRoomInfo(streamId: string): Promise<RoomInfo>;
 export function getRoomMembers(streamId: string): Promise<RoomMember[]>;
-export function addMemberToRoom(streamId: string, userId: number): Promise<RoomMemberOperationResult>;
-export function removeMemberFromRoom(streamId: string, userId: number): Promise<RoomMemberOperationResult>;
-export function promoteUserToOwner(streamId: string, userId: number): Promise<RoomMemberOperationResult>;
-export function demoteUserFromOwner(streamId: string, userId: number): Promise<RoomMemberOperationResult>;
+export function addMemberToRoom(
+    streamId: string,
+    userId: number,
+): Promise<RoomMemberOperationResult>;
+export function removeMemberFromRoom(
+    streamId: string,
+    userId: number,
+): Promise<RoomMemberOperationResult>;
+export function promoteUserToOwner(
+    streamId: string,
+    userId: number,
+): Promise<RoomMemberOperationResult>;
+export function demoteUserFromOwner(
+    streamId: string,
+    userId: number,
+): Promise<RoomMemberOperationResult>;
 export function searchRooms(
     skip?: number,
     limit?: number,

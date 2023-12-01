@@ -6,15 +6,17 @@ import easySession = require("easy-session"); // Require the module : line 1
 var app = express();
 
 app.use(cookieParser("secreet"));
-app.use(session({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: true,
-}));
+app.use(
+    session({
+        secret: "keyboard cat",
+        resave: false,
+        saveUninitialized: true,
+    }),
+);
 app.use(easySession.main(session));
 
-app.get("/login", function(req, res, next) {
-    req.session.login("user", { email: "email" }, function(err) {
+app.get("/login", function (req, res, next) {
+    req.session.login("user", { email: "email" }, function (err) {
         if (err) {
             res.send(500);
             return;
@@ -23,8 +25,8 @@ app.get("/login", function(req, res, next) {
     });
 });
 
-app.post("/logout", function(req, res, next) {
-    req.session.logout(function(err) {
+app.post("/logout", function (req, res, next) {
+    req.session.logout(function (err) {
         if (err) {
             res.send(500);
             return;
@@ -33,24 +35,24 @@ app.post("/logout", function(req, res, next) {
     });
 });
 
-app.get("/isloggedin", function(req, res, next) {
+app.get("/isloggedin", function (req, res, next) {
     res.send(req.session.isLoggedIn("user"));
 });
 
-app.get("/isfresh", function(req, res, next) {
+app.get("/isfresh", function (req, res, next) {
     res.send(req.session.isFresh());
 });
 
-app.get("/hasrole", function(req, res, next) {
+app.get("/hasrole", function (req, res, next) {
     res.send(req.session.hasRole("user"));
 });
 
-app.post("/setrole", function(req, res, next) {
+app.post("/setrole", function (req, res, next) {
     req.session.setRole(req.query.role as string);
     res.send(200);
 });
 
-app.get("/getrole", function(req, res, next) {
+app.get("/getrole", function (req, res, next) {
     res.send(req.session.getRole());
 });
 

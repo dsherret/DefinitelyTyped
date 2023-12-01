@@ -22,7 +22,7 @@ function example(keybind: AtomKeymap.KeyBinding) {}
 
 ### Exposing Private Methods and Properties
 
-[Declaration Merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) can be used to augment any of the types used within Atom Keymap. As an example, if we wanted to reveal the private ```partialMatchTimeout``` property within the KeymapManager class, then we would create a file with the following contents:
+[Declaration Merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) can be used to augment any of the types used within Atom Keymap. As an example, if we wanted to reveal the private `partialMatchTimeout` property within the KeymapManager class, then we would create a file with the following contents:
 
 ```ts
 // <<filename>>.d.ts

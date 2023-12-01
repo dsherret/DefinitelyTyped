@@ -15,7 +15,12 @@ import {
 // options contains all alert given options
 // message is the alert message
 // close is a function that closes the alert
-const AlertTemplate: React.FC<AlertTemplateProps> = ({ style, options, message, close }) => (
+const AlertTemplate: React.FC<AlertTemplateProps> = ({
+    style,
+    options,
+    message,
+    close,
+}) => (
     <div style={style}>
         {options.type === "info" && "!"}
         {options.type === "success" && ":)"}

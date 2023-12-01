@@ -84,8 +84,21 @@ export declare class Job extends events.EventEmitter {
     static removeBadJob(id: number): void;
     static log(id: number, fn: Function): void;
     static range(from: number, to: number, order: string, fn: Function): void;
-    static rangeByState(state: string, from: number, to: number, order: string, fn: Function): void;
-    static rangeByType(type: string, state: string, from: number, to: number, order: string, fn: Function): void;
+    static rangeByState(
+        state: string,
+        from: number,
+        to: number,
+        order: string,
+        fn: Function,
+    ): void;
+    static rangeByType(
+        type: string,
+        state: string,
+        from: number,
+        to: number,
+        order: string,
+        fn: Function,
+    ): void;
 
     constructor(type: string, data?: any);
     toJSON(): Object;

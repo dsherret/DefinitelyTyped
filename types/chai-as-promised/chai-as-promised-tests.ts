@@ -10,11 +10,19 @@ class TestClass {}
 var thenableNum: PromiseLike<number> = Promise.resolve(3);
 thenableNum = chai.expect(thenableNum).to.eventually.equal(3);
 thenableNum = chai.expect(thenableNum).to.eventually.have.property("foo");
-thenableNum = chai.expect(thenableNum).to.eventually.have.property(Symbol.for("bar"));
+thenableNum = chai
+    .expect(thenableNum)
+    .to.eventually.have.property(Symbol.for("bar"));
 thenableNum = chai.expect(thenableNum).to.eventually.have.ownProperty("foo");
-thenableNum = chai.expect(thenableNum).to.eventually.have.ownProperty(Symbol.for("bar"));
-thenableNum = chai.expect(thenableNum).to.eventually.have.ownPropertyDescriptor("foo");
-thenableNum = chai.expect(thenableNum).to.eventually.have.ownPropertyDescriptor(Symbol.for("bar"));
+thenableNum = chai
+    .expect(thenableNum)
+    .to.eventually.have.ownProperty(Symbol.for("bar"));
+thenableNum = chai
+    .expect(thenableNum)
+    .to.eventually.have.ownPropertyDescriptor("foo");
+thenableNum = chai
+    .expect(thenableNum)
+    .to.eventually.have.ownPropertyDescriptor(Symbol.for("bar"));
 thenableNum = chai.expect(thenableNum).to.become(3);
 thenableNum = chai.expect(thenableNum).to.be.fulfilled;
 thenableNum = chai.expect(thenableNum).to.be.rejected;
@@ -42,18 +50,27 @@ thenableNum = thenableNum.should.be.rejectedWith(Error, "message");
 thenableNum = thenableNum.should.be.rejectedWith(TestClass);
 thenableNum = thenableNum.should.be.rejectedWith(TestClass, /message/);
 thenableNum = thenableNum.should.be.rejectedWith(TestClass, "message");
-thenableNum = thenableNum.should.eventually.equal(3).notify(() => console.log("done"));
-thenableNum = thenableNum.should.be.fulfilled.and.notify(() => console.log("done"));
+thenableNum = thenableNum.should.eventually
+    .equal(3)
+    .notify(() => console.log("done"));
+thenableNum = thenableNum.should.be.fulfilled.and.notify(() =>
+    console.log("done"),
+);
 
 // Complex examples on https://github.com/domenic/chai-as-promised#working-with-non-promisefriendly-test-runners
-thenableNum.should.be.fulfilled.then(() => {
-    thenableNum.should.equal("after");
-}).should.notify(() => console.log("done"));
+thenableNum.should.be.fulfilled
+    .then(() => {
+        thenableNum.should.equal("after");
+    })
+    .should.notify(() => console.log("done"));
 
 Promise.all([
     thenableNum.should.become("happy"),
     thenableNum.should.eventually.have.property("fun times"),
-    thenableNum.should.be.rejectedWith(TypeError, "only joyful types are allowed"),
+    thenableNum.should.be.rejectedWith(
+        TypeError,
+        "only joyful types are allowed",
+    ),
 ]).should.notify(() => console.log("done"));
 
 // Assert API
@@ -61,10 +78,18 @@ var thenableVoid: PromiseLike<void>;
 thenableVoid = chai.assert.eventually.equal(thenableNum, 4, "Message");
 thenableVoid = chai.assert.isFulfilled(thenableNum, "optional message");
 thenableVoid = chai.assert.becomes(thenableNum, "foo", "optional message");
-thenableVoid = chai.assert.doesNotBecome(thenableNum, "foo", "optional message");
+thenableVoid = chai.assert.doesNotBecome(
+    thenableNum,
+    "foo",
+    "optional message",
+);
 thenableVoid = chai.assert.isRejected(thenableNum, "optional message");
 thenableVoid = chai.assert.isRejected(thenableNum, Error, "optional message");
-thenableVoid = chai.assert.isRejected(thenableNum, /error message matcher/, "optional message");
+thenableVoid = chai.assert.isRejected(
+    thenableNum,
+    /error message matcher/,
+    "optional message",
+);
 thenableVoid = chai.assert.eventually.equal(thenableNum, 3);
 thenableVoid = chai.assert.eventually.closeTo(thenableNum, 3.001, 0.1);
 thenableVoid = chai.assert.eventually.property(thenableNum, "foo");

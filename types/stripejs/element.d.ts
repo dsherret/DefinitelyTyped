@@ -32,7 +32,11 @@ export interface ElementFactory {
      */
     create(
         type: ElementType,
-        options: CardElementOptions | IBANElementOptions | IdealBankOptions | PaymentButtonOptions,
+        options:
+            | CardElementOptions
+            | IBANElementOptions
+            | IdealBankOptions
+            | PaymentButtonOptions,
     ): StripeElement;
 }
 
@@ -106,7 +110,16 @@ export interface FontConfigElement {
      * The weight of the font
      * NOTE: This cannot be a number!
      */
-    weight?: "initial" | "inherit" | "bold" | "bolder" | "lighter" | "normal" | "revert" | "unset" | undefined;
+    weight?:
+        | "initial"
+        | "inherit"
+        | "bold"
+        | "bolder"
+        | "lighter"
+        | "normal"
+        | "revert"
+        | "unset"
+        | undefined;
 }
 
 // --- ELEMENT --- //
@@ -134,7 +147,10 @@ export interface StripeElement {
      * @param handler - The handler function that is called when the event fires
      */
     on(event: "blur" | "focus" | "ready", handler: () => void): void;
-    on(event: "click", handler: (event: { preventDefault: () => void }) => void): void;
+    on(
+        event: "click",
+        handler: (event: { preventDefault: () => void }) => void,
+    ): void;
     on(event: "change", handler: (event: OnChange) => void): void;
 
     /**
@@ -171,14 +187,26 @@ export interface StripeElement {
      * NOTE: Updates are merged into the existing configuration
      * @param options - The options that should be used to update the element
      */
-    update(options: CardElementOptions | IBANElementOptions | IdealBankOptions | PaymentButtonOptions): void;
+    update(
+        options:
+            | CardElementOptions
+            | IBANElementOptions
+            | IdealBankOptions
+            | PaymentButtonOptions,
+    ): void;
 }
 
 /**
  * The type of element that can be created by the ElementCreator
  * @see ElementCreator
  */
-export type ElementType = "card" | "cardNumber" | "cardExpiry" | "cardCvc" | "postalCode" | "paymentRequestButton";
+export type ElementType =
+    | "card"
+    | "cardNumber"
+    | "cardExpiry"
+    | "cardCvc"
+    | "postalCode"
+    | "paymentRequestButton";
 
 // --- ELEMENT EVENTS --- //
 export interface OnChange {
@@ -303,20 +331,26 @@ export interface PaymentButtonOptions {
      * Set custom class names on the container DOM element when the Stripe Element is in a
      * particular state.
      */
-    classes?: {
-        base?: string | undefined; /** @default StripeElement */
-        complete?: string | undefined; /** @default StripeElement--complete */
-        focus: string; /** @default StripeElement--focus */
-        invalid: string; /** @default StripeElement--invalid */
-    } | undefined;
+    classes?:
+        | {
+              base?: string | undefined /** @default StripeElement */;
+              complete?:
+                  | string
+                  | undefined /** @default StripeElement--complete */;
+              focus: string /** @default StripeElement--focus */;
+              invalid: string /** @default StripeElement--invalid */;
+          }
+        | undefined;
 
-    style?: {
-        base?: PaymentRequestButtonStyle | undefined;
-        complete?: PaymentRequestButtonStyle | undefined;
-        empty?: PaymentRequestButtonStyle | undefined;
-        invalid?: PaymentRequestButtonStyle | undefined;
-        paymentRequestButton?: PaymentRequestButtonStyle | undefined;
-    } | undefined;
+    style?:
+        | {
+              base?: PaymentRequestButtonStyle | undefined;
+              complete?: PaymentRequestButtonStyle | undefined;
+              empty?: PaymentRequestButtonStyle | undefined;
+              invalid?: PaymentRequestButtonStyle | undefined;
+              paymentRequestButton?: PaymentRequestButtonStyle | undefined;
+          }
+        | undefined;
 }
 
 export interface PaymentRequestButtonStyle {
@@ -348,24 +382,34 @@ export interface BaseOptions {
      * Set custom class names on the container DOM element when the Stripe Element is in a
      * particular state.
      */
-    classes?: {
-        base?: string | undefined; /** @default StripeElement */
-        complete?: string | undefined; /** @default StripeElement--complete */
-        empty?: string | undefined; /** @default StripeElement--empty */
-        focus?: string | undefined; /** @default StripeElement--focus */
-        invalid?: string | undefined; /** @default StripeElement--invalid */
-        webkitAutofill?: string | undefined; /** @default StripeElement--webkit-autofill */
-    } | undefined;
+    classes?:
+        | {
+              base?: string | undefined /** @default StripeElement */;
+              complete?:
+                  | string
+                  | undefined /** @default StripeElement--complete */;
+              empty?: string | undefined /** @default StripeElement--empty */;
+              focus?: string | undefined /** @default StripeElement--focus */;
+              invalid?:
+                  | string
+                  | undefined /** @default StripeElement--invalid */;
+              webkitAutofill?:
+                  | string
+                  | undefined /** @default StripeElement--webkit-autofill */;
+          }
+        | undefined;
 
     /**
      * Customize appearance using CSS properties
      */
-    style?: {
-        base?: StyleAttributes | undefined;
-        complete?: StyleAttributes | undefined;
-        empty?: StyleAttributes | undefined;
-        invalid?: StyleAttributes | undefined;
-    } | undefined;
+    style?:
+        | {
+              base?: StyleAttributes | undefined;
+              complete?: StyleAttributes | undefined;
+              empty?: StyleAttributes | undefined;
+              invalid?: StyleAttributes | undefined;
+          }
+        | undefined;
 
     /**
      * Whether or not the icon should be hidden

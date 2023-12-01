@@ -17,12 +17,12 @@ declare namespace SWPrecacheWebpackPlugin {
         // override sw-precache options
         importScripts?:
             | Array<
-                | string
-                | {
-                    chunkName?: string | undefined;
-                    filename?: string | undefined;
-                }
-            >
+                  | string
+                  | {
+                        chunkName?: string | undefined;
+                        filename?: string | undefined;
+                    }
+              >
             | undefined;
     }
 }

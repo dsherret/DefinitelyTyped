@@ -1,65 +1,79 @@
 declare namespace AP {
-    type RequestOptions =
-        & {
-            /**
-             * The HTTP method name.
-             */
-            type?: "GET" | "HEAD" | "POST" | "PUT" | "DELETE" | "CONNECT" | "OPTIONS" | "PATCH";
+    type RequestOptions = {
+        /**
+         * The HTTP method name.
+         */
+        type?:
+            | "GET"
+            | "HEAD"
+            | "POST"
+            | "PUT"
+            | "DELETE"
+            | "CONNECT"
+            | "OPTIONS"
+            | "PATCH";
 
-            /**
-             * If the request should be cached.
-             */
-            cache?: boolean;
+        /**
+         * If the request should be cached.
+         */
+        cache?: boolean;
 
-            /**
-             * The body of the request; required if type is 'POST' or 'PUT'. Optionally, for 'GET' this will append the object as key=value pairs to the end of the URL query string.
-             */
-            data?: string | object;
+        /**
+         * The body of the request; required if type is 'POST' or 'PUT'. Optionally, for 'GET' this will append the object as key=value pairs to the end of the URL query string.
+         */
+        data?: string | object;
 
-            /**
-             * The content-type string value of the entity body, above; required when data is supplied.
-             */
-            contentType?: string;
+        /**
+         * The content-type string value of the entity body, above; required when data is supplied.
+         */
+        contentType?: string;
 
-            /**
-             * An object containing headers to set; supported headers are: 'Accept', 'If-Match' and 'If-None-Match'.
-             */
-            headers?: { Accept: string; "If-Match": string; "If-None-Match": string };
+        /**
+         * An object containing headers to set; supported headers are: 'Accept', 'If-Match' and 'If-None-Match'.
+         */
+        headers?: {
+            Accept: string;
+            "If-Match": string;
+            "If-None-Match": string;
+        };
 
-            /**
-             * An optional callback function executed when a HTTP status error code is returned.
-             */
-            error?: (xhr: XMLHttpRequest, statusText: string, errorThrown: any) => void;
+        /**
+         * An optional callback function executed when a HTTP status error code is returned.
+         */
+        error?: (
+            xhr: XMLHttpRequest,
+            statusText: string,
+            errorThrown: any,
+        ) => void;
 
-            /**
-             * If this is set to true, the developer acknowledges that the API endpoint which is being called may be in beta state, and thus may also have a shorter deprecation cycle than stable APIs.
-             */
-            experimental?: boolean;
-        }
-        & (
-            | {
-                /**
-                 * An optional callback function executed on a 200 success status code.
-                 */
-                success?: (response: string) => void;
+        /**
+         * If this is set to true, the developer acknowledges that the API endpoint which is being called may be in beta state, and thus may also have a shorter deprecation cycle than stable APIs.
+         */
+        experimental?: boolean;
+    } & (
+        | {
+              /**
+               * An optional callback function executed on a 200 success status code.
+               */
+              success?: (response: string) => void;
 
-                /**
-                 * If this is set to true, the developer is specifying a request for an attachment consisting of binary data (e.g. an image) and the format of the response will be set to "arraybuffer".
-                 */
-                binaryAttachment?: false;
-            }
-            | {
-                /**
-                 * An optional callback function executed on a 200 success status code.
-                 */
-                success?: (response: ArrayBuffer) => void;
+              /**
+               * If this is set to true, the developer is specifying a request for an attachment consisting of binary data (e.g. an image) and the format of the response will be set to "arraybuffer".
+               */
+              binaryAttachment?: false;
+          }
+        | {
+              /**
+               * An optional callback function executed on a 200 success status code.
+               */
+              success?: (response: ArrayBuffer) => void;
 
-                /**
-                 * If this is set to true, the developer is specifying a request for an attachment consisting of binary data (e.g. an image) and the format of the response will be set to "arraybuffer".
-                 */
-                binaryAttachment: true;
-            }
-        );
+              /**
+               * If this is set to true, the developer is specifying a request for an attachment consisting of binary data (e.g. an image) and the format of the response will be set to "arraybuffer".
+               */
+              binaryAttachment: true;
+          }
+    );
 
     function defineGlobal(module: object): void;
     function defineModule(name: string, module: object): void;
@@ -200,7 +214,9 @@ declare namespace AP {
          * });
          */
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        function getMacroData<T extends object>(callback: (data: T) => void): void;
+        function getMacroData<T extends object>(
+            callback: (data: T) => void,
+        ): void;
 
         /**
          * Get the body saved in the saveMacro method.
@@ -233,7 +249,9 @@ declare namespace AP {
          *   }
          * });
          */
-        function onMacroPropertyPanelEvent(eventBindings: Record<string, () => void>): void;
+        function onMacroPropertyPanelEvent(
+            eventBindings: Record<string, () => void>,
+        ): void;
 
         /**
          * Closes the macro property panel, if it is open.
@@ -251,7 +269,10 @@ declare namespace AP {
          *   alert(property);
          * });
          */
-        function getContentProperty(key: string, callback: (property: ContentProperty) => void): void;
+        function getContentProperty(
+            key: string,
+            callback: (property: ContentProperty) => void,
+        ): void;
 
         /**
          * Sets the provided Content Property against the current Content, sending the result to the callback.
@@ -271,7 +292,9 @@ declare namespace AP {
          */
         function setContentProperty(
             contentProperty: ContentProperty,
-            callback: (result: { property: ContentProperty } | { error: string }) => void,
+            callback: (
+                result: { property: ContentProperty } | { error: string },
+            ) => void,
         ): void;
 
         /**
@@ -283,7 +306,10 @@ declare namespace AP {
          *   alert(property);
          * });
          */
-        function syncPropertyFromServer(key: string, callback: (property: ContentProperty) => void): void;
+        function syncPropertyFromServer(
+            key: string,
+            callback: (property: ContentProperty) => void,
+        ): void;
     }
 
     /**
@@ -464,7 +490,10 @@ declare namespace AP {
              * @param error The error to display if no redirect is desired
              * @see InterceptableEvent
              */
-            submitSuccessCallback: (doRedirect: boolean, error?: string) => void;
+            submitSuccessCallback: (
+                doRedirect: boolean,
+                error?: string,
+            ) => void;
 
             /**
              * Used inside an event listener for a `confluence.customcontent.submitError` event to do something before the error is being shown and/or
@@ -473,7 +502,10 @@ declare namespace AP {
              * @param customError The error to show instead of the default Confluence one
              * @see InterceptableEvent
              */
-            submitErrorCallback: (preventDefaultErrorMessage: boolean, customError?: string) => void;
+            submitErrorCallback: (
+                preventDefaultErrorMessage: boolean,
+                customError?: string,
+            ) => void;
 
             /**
              * Used inside an event listener for a `confluence.customcontent.cancel` event to do something before the user is redirected and/or
@@ -511,7 +543,13 @@ declare namespace AP {
             /**
              * Opens the dialog at a preset size: small, medium, large, x-large or fullscreen (with chrome).
              */
-            size?: "small" | "medium" | "large" | "x-large" | "fullscreen" | undefined;
+            size?:
+                | "small"
+                | "medium"
+                | "large"
+                | "x-large"
+                | "fullscreen"
+                | undefined;
 
             /**
              * if size is not set, define the width as a percentage (append a % to the number) or pixels.
@@ -681,7 +719,11 @@ declare namespace AP {
          * @param listener A listener callback to subscribe to the event name
          * @param filter A filter function to filter the events. Callback will always be called when a matching event occurs if the filter is unspecified
          */
-        function onPublic(name: string, listener: (data: object) => void, filter: (toCompare: any) => boolean): void;
+        function onPublic(
+            name: string,
+            listener: (data: object) => void,
+            filter: (toCompare: any) => boolean,
+        ): void;
 
         /**
          * Adds a listener for one occurrence of an event of a particular name.
@@ -702,7 +744,11 @@ declare namespace AP {
          * @param listener A listener callback to subscribe to the event name
          * @param filter A filter function to filter the events. Callback will always be called when a matching event occurs if the filter is unspecified
          */
-        function oncePublic(name: string, listener: (data: object) => void, filter: (toCompare: any) => boolean): void;
+        function oncePublic(
+            name: string,
+            listener: (data: object) => void,
+            filter: (toCompare: any) => boolean,
+        ): void;
 
         /**
          * Adds a listener for all occurrences of any event, regardless of name.
@@ -721,7 +767,10 @@ declare namespace AP {
          * @param listener A listener callback to subscribe for any event name
          * @param filter A filter function to filter the events. Callback will always be called when a matching event occurs if the filter is unspecified
          */
-        function onAnyPublic(listener: (name: string, data: object) => void, filter: (toCompare: any) => boolean): void;
+        function onAnyPublic(
+            listener: (name: string, data: object) => void,
+            filter: (toCompare: any) => boolean,
+        ): void;
 
         /**
          * Removes a particular listener for an event.
@@ -735,7 +784,10 @@ declare namespace AP {
          * @param name The event name to unsubscribe the listener from
          * @param listener The listener callback to unsubscribe from the event name
          */
-        function offPublic(name: string, listener: (data: object) => void): void;
+        function offPublic(
+            name: string,
+            listener: (data: object) => void,
+        ): void;
 
         /**
          * Removes all listeners from an event name, or unsubscribes all event-name-specific listeners if no name if given.
@@ -759,7 +811,9 @@ declare namespace AP {
          * Removes an `anyPublic` event listener.
          * @param listener A listener callback to unsubscribe from any event name
          */
-        function offAnyPublic(listener: (name: string, data: object) => void): void;
+        function offAnyPublic(
+            listener: (name: string, data: object) => void,
+        ): void;
 
         /**
          * Emits an event on this bus, firing listeners by name as well as all 'any' listeners.
@@ -1016,13 +1070,17 @@ declare namespace AP {
          */
         function refreshIssuePage(): void;
 
-        function getWorkflowConfiguration(callback: (workflowConfiguration: WorkflowConfiguration) => void): void;
+        function getWorkflowConfiguration(
+            callback: (workflowConfiguration: WorkflowConfiguration) => void,
+        ): void;
 
         /**
          * Returns whether the current user is permitted to edit the dashboard item
          * @param callback the callback that handles the response
          */
-        function isDashboardItemEditable(callback: (editable: boolean) => void): void;
+        function isDashboardItemEditable(
+            callback: (editable: boolean) => void,
+        ): void;
 
         /**
          * Open the quick create issue dialog. The dialog fields may be pre-filled with supplied data. A callback will be invoked when the dialog is closed and will include an array of issues created.
@@ -1165,7 +1223,12 @@ declare namespace AP {
              */
             | "site";
 
-        type CustomDataBasicValue = string | number | boolean | null | undefined;
+        type CustomDataBasicValue =
+            | string
+            | number
+            | boolean
+            | null
+            | undefined;
         type CustomDataValue = CustomDataBasicValue | CustomDataBasicValue[];
 
         interface NavigatorContext {
@@ -1289,7 +1352,9 @@ declare namespace AP {
          * **contentedit** - the host application is currently editing a page, blog post or other content.
          * @param callback
          */
-        function getLocation(callback: (location: NavigatorLocationContext) => void): void;
+        function getLocation(
+            callback: (location: NavigatorLocationContext) => void,
+        ): void;
 
         /**
          * Navigates the user from the current page to the specified page. This call navigates the host product, not the iframe content.
@@ -1298,7 +1363,10 @@ declare namespace AP {
          * @param target
          * @param context
          */
-        function go(target: NavigatorTargetJira | NavigatorTargetConfluence, context: Partial<NavigatorContext>): void;
+        function go(
+            target: NavigatorTargetJira | NavigatorTargetConfluence,
+            context: Partial<NavigatorContext>,
+        ): void;
 
         /**
          * Triggers a reload of the parent page.
@@ -1315,7 +1383,12 @@ declare namespace AP {
          * @param callback callback to pass the scroll position
          */
         function getPosition(
-            callback: (position: { scrollY: number; scrollX: number; width: number; height: number }) => void,
+            callback: (position: {
+                scrollY: number;
+                scrollX: number;
+                width: number;
+                height: number;
+            }) => void,
         ): void;
 
         /**
@@ -1325,7 +1398,12 @@ declare namespace AP {
          */
         function setVerticalPosition(
             y: number,
-            callback: (position: { scrollY: number; scrollX: number; width: number; height: number }) => void,
+            callback: (position: {
+                scrollY: number;
+                scrollX: number;
+                width: number;
+                height: number;
+            }) => void,
         ): void;
     }
 
@@ -1342,13 +1420,21 @@ declare namespace AP {
          * @deprecated Please use a new method AP.user.getCurrentUser() which will simply return the Atlassian Account ID.
          * @param callback the callback that handles the response
          */
-        function getUser(callback: (user: { id: string; key: string; fullName: string }) => void): void;
+        function getUser(
+            callback: (user: {
+                id: string;
+                key: string;
+                fullName: string;
+            }) => void,
+        ): void;
 
         /**
          * This method retrieves the current user object containing the user's Atlassian Account ID.
          * @param callback the callback that handles the response. A single parameter is passed to the callback. This parameter is an object comprising an attribute "atlassianAccountId".
          */
-        function getCurrentUser(callback: (user: { atlassianAccountId: string }) => void): void;
+        function getCurrentUser(
+            callback: (user: { atlassianAccountId: string }) => void,
+        ): void;
 
         /**
          * Retrieve the current user's timezone. If there is no logged in user, the server timezone is returned.

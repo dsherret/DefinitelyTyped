@@ -9,31 +9,49 @@ function isPromise(v: PromiseLike<any>) {}
 it("test expect()", async () => {
     isType<Chai.Assertion>(expect("Nightwatch.js").to.contain("Nightwatch"));
     isType<Chai.Assertion>(expect(2).to.equal(2));
-    isType<Chai.Assertion>(expect(function() {}).to.not.throw());
+    isType<Chai.Assertion>(expect(function () {}).to.not.throw());
     isType<Chai.Assertion>(expect({ a: 2, b: 1 }).to.have.property("b"));
-    isType<Chai.Assertion>(expect([1, 2]).to.be.an("array").that.does.not.include(3));
-    isType<Chai.Assertion>(expect([1, 2, 3]).to.be.an("array").that.does.include(3));
+    isType<Chai.Assertion>(
+        expect([1, 2]).to.be.an("array").that.does.not.include(3),
+    );
+    isType<Chai.Assertion>(
+        expect([1, 2, 3]).to.be.an("array").that.does.include(3),
+    );
 
     // if element is passed to expect
     const expectAssert = expect(element("selector")).text.equal("something");
     // @ts-expect-error
     isType<Chai.Assertion>(expectAssert);
     isType<ExpectElement>(expectAssert);
-    isType<ExpectElement>(expect(by.xpath("//tagname")).text.equal("something"));
-    isType<ExpectElement>(expect(await element("selector").getWebElement()).text.equal("something"));
-    isType<ExpectElement>(expect(await browser.findElement("selector")).text.equal("something"));
+    isType<ExpectElement>(
+        expect(by.xpath("//tagname")).text.equal("something"),
+    );
+    isType<ExpectElement>(
+        expect(await element("selector").getWebElement()).text.equal(
+            "something",
+        ),
+    );
+    isType<ExpectElement>(
+        expect(await browser.findElement("selector")).text.equal("something"),
+    );
 });
 
 // Expect test for language chains
 it("expect.equal(value)/.contain(value)/.match(regex)", () => {
     browser.expect.element("#main").text.to.equal("The Night Watch");
     browser.expect.element("#main").text.to.contain("The Night Watch");
-    browser.expect.element("#main").to.have.css("display").which.equals("block");
+    browser.expect
+        .element("#main")
+        .to.have.css("display")
+        .which.equals("block");
 
     // with section
     browser.expect.section("@main").text.to.equal("The Night Watch");
     browser.expect.section("@main").text.to.contain("The Night Watch");
-    browser.expect.section("@main").to.have.css("display").which.equals("block");
+    browser.expect
+        .section("@main")
+        .to.have.css("display")
+        .which.equals("block");
 });
 
 it("expect.startWith(value)/.endWith(value)", () => {
@@ -44,24 +62,37 @@ it("expect.startWith(value)/.endWith(value)", () => {
 it("expect.not", () => {
     browser.expect.element("#main").text.to.not.equal("The Night Watch");
     browser.expect.element("#main").text.to.not.contain("The Night Watch");
-    browser.expect.element("#main").to.have.css("display").which.does.not.equal("block");
+    browser.expect
+        .element("#main")
+        .to.have.css("display")
+        .which.does.not.equal("block");
 });
 
 it("expect.before(ms)/.after(ms)", () => {
-    browser.expect.element("#main").text.to.contain("The Night Watch").before(1000);
-    browser.expect.element("#main").text.to.not.contain("The Night Watch").after(500);
+    browser.expect
+        .element("#main")
+        .text.to.contain("The Night Watch")
+        .before(1000);
+    browser.expect
+        .element("#main")
+        .text.to.not.contain("The Night Watch")
+        .after(500);
 });
 
 it("expect.cookie()", () => {
     browser.expect.cookie("cookie-name").to.contain("cookie-value");
     browser.expect.cookie("cookie-name").to.match(/regex/);
-    browser.expect.cookie("loginCookie", "example.org").to.contain("cookie-value");
+    browser.expect
+        .cookie("loginCookie", "example.org")
+        .to.contain("cookie-value");
 });
 
 describe("expect.element()", () => {
     it("have .a(type)", () => {
         browser.expect.element("#q").to.be.an("input");
-        browser.expect.element("#q").to.be.an("input", "Testing if #q is an input");
+        browser.expect
+            .element("#q")
+            .to.be.an("input", "Testing if #q is an input");
         browser.expect.element("#w").to.be.a("span");
     });
 
@@ -76,28 +107,60 @@ describe("expect.element()", () => {
     it("have .attribute()", () => {
         browser.expect.element("body").to.have.attribute("data-attr");
         browser.expect.element("body").to.not.have.attribute("data-attr");
-        browser.expect.element("body").to.not.have.attribute("data-attr", "Testing if body does not have data-attr");
-        browser.expect.element("body").to.have.attribute("data-attr").before(100);
-        browser.expect.element("body").to.have.attribute("data-attr").equals("some attribute");
-        browser.expect.element("body").to.have.attribute("data-attr").not.equals("other attribute");
-        browser.expect.element("body").to.have.attribute("data-attr").which.contains("something");
+        browser.expect
+            .element("body")
+            .to.not.have.attribute(
+                "data-attr",
+                "Testing if body does not have data-attr",
+            );
+        browser.expect
+            .element("body")
+            .to.have.attribute("data-attr")
+            .before(100);
+        browser.expect
+            .element("body")
+            .to.have.attribute("data-attr")
+            .equals("some attribute");
+        browser.expect
+            .element("body")
+            .to.have.attribute("data-attr")
+            .not.equals("other attribute");
+        browser.expect
+            .element("body")
+            .to.have.attribute("data-attr")
+            .which.contains("something");
         browser.expect
             .element("body")
             .to.have.attribute("data-attr")
             .which.matches(/^something\ else/);
         // with assertion before the attribute property
-        browser.expect.element("body").to.contain("Search").with.attribute("placeholder");
+        browser.expect
+            .element("body")
+            .to.contain("Search")
+            .with.attribute("placeholder");
         // with multiple properties
-        browser.expect.element("input[name=q]").to.have.attribute("class").and.attribute("id").contain("searchbox");
+        browser.expect
+            .element("input[name=q]")
+            .to.have.attribute("class")
+            .and.attribute("id")
+            .contain("searchbox");
     });
 
     it("have .css(property)", () => {
         browser.expect.element("#main").to.have.css("display");
-        browser.expect.element("#main").to.have.css("display", "Testing for display");
+        browser.expect
+            .element("#main")
+            .to.have.css("display", "Testing for display");
         browser.expect.element("#main").to.not.have.css("display");
         browser.expect.element("#main").to.have.css("display").before(100);
-        browser.expect.element("#main").to.have.css("display").which.eq("block");
-        browser.expect.element("#main").to.have.css("display").which.contains("some value");
+        browser.expect
+            .element("#main")
+            .to.have.css("display")
+            .which.eq("block");
+        browser.expect
+            .element("#main")
+            .to.have.css("display")
+            .which.contains("some value");
         browser.expect
             .element("#main")
             .to.have.css("display")
@@ -117,15 +180,30 @@ describe("expect.element()", () => {
     });
 
     it("have .property", () => {
-        browser.expect.element("body").to.have.property("className").equals("test-class");
+        browser.expect
+            .element("body")
+            .to.have.property("className")
+            .equals("test-class");
         browser.expect
             .element("body")
             .to.have.property("className")
             .matches(/^something\ else/);
-        browser.expect.element("body").to.not.have.property("classList").equals("test-class");
-        browser.expect.element("body").to.have.property("classList").deep.equal(["class-one", "class-two"]);
-        browser.expect.element("body").to.have.property("classList").contain("class-two");
-        browser.expect.element("body").to.have.domProperty("classList").contain("class-two");
+        browser.expect
+            .element("body")
+            .to.not.have.property("classList")
+            .equals("test-class");
+        browser.expect
+            .element("body")
+            .to.have.property("classList")
+            .deep.equal(["class-one", "class-two"]);
+        browser.expect
+            .element("body")
+            .to.have.property("classList")
+            .contain("class-two");
+        browser.expect
+            .element("body")
+            .to.have.domProperty("classList")
+            .contain("class-two");
     });
 
     it("have .selected", () => {
@@ -137,7 +215,10 @@ describe("expect.element()", () => {
     it("have .text", () => {
         browser.expect.element("#main").text.to.equal("The Night Watch");
         browser.expect.element("#main").text.to.not.equal("The Night Watch");
-        browser.expect.element("#main").text.to.equal("The Night Watch").before(100);
+        browser.expect
+            .element("#main")
+            .text.to.equal("The Night Watch")
+            .before(100);
         browser.expect.element("#main").text.to.contain("The Night Watch");
         browser.expect.element("#main").text.to.match(/The\ Night\ Watch/);
     });
@@ -157,11 +238,25 @@ describe("expect.element()", () => {
 
     it("have .domProperty(property)", () => {
         browser.expect.element("#main").to.have.domProperty("classList");
-        browser.expect.element("#main").to.have.domProperty("classList", "Testing DOM property classList exists");
+        browser.expect
+            .element("#main")
+            .to.have.domProperty(
+                "classList",
+                "Testing DOM property classList exists",
+            );
         browser.expect.element("#main").to.not.have.domProperty("classList");
-        browser.expect.element("#main").to.have.domProperty("classList").before(100);
-        browser.expect.element("#main").to.have.domProperty("classList").which.equals("js-search-input");
-        browser.expect.element("#main").to.have.domProperty("classList").which.includes("search");
+        browser.expect
+            .element("#main")
+            .to.have.domProperty("classList")
+            .before(100);
+        browser.expect
+            .element("#main")
+            .to.have.domProperty("classList")
+            .which.equals("js-search-input");
+        browser.expect
+            .element("#main")
+            .to.have.domProperty("classList")
+            .which.includes("search");
         browser.expect
             .element("#main")
             .to.have.domProperty("classList")
@@ -193,18 +288,22 @@ describe("expect.elements()", () => {
     });
 
     it("selector element properties - all & required", () => {
-        browser.expect.elements({
-            selector: "div",
-            locateStrategy: "css selector",
-            index: 0,
-            timeout: 3000,
-            retryInterval: 1000,
-            suppressNotFoundErrors: false,
-            abortOnFailure: true,
-        }).count.to.equal(10);
-        browser.expect.elements({
-            selector: "div",
-        }).count.to.not.equal(1);
+        browser.expect
+            .elements({
+                selector: "div",
+                locateStrategy: "css selector",
+                index: 0,
+                timeout: 3000,
+                retryInterval: 1000,
+                suppressNotFoundErrors: false,
+                abortOnFailure: true,
+            })
+            .count.to.equal(10);
+        browser.expect
+            .elements({
+                selector: "div",
+            })
+            .count.to.not.equal(1);
     });
 });
 
@@ -222,8 +321,11 @@ it("expect.url()", () => {
 it("chains expect assertions", () => {
     browser
         .navigateTo("https://duckduckgo.com")
-        .expect.element("input[name=q]").with.attribute("placeholder").toContain("Search")
-        .expect.elements("input").count.toEqual(4)
+        .expect.element("input[name=q]")
+        .with.attribute("placeholder")
+        .toContain("Search")
+        .expect.elements("input")
+        .count.toEqual(4)
         .assert.titleContains("Privacy")
         .url("https://google.com");
 
@@ -235,7 +337,9 @@ it("chains expect assertions", () => {
 });
 
 it("works with async/await", async () => {
-    const result = await browser.expect.element("#main").text.to.equal("The Night Watch");
+    const result = await browser.expect
+        .element("#main")
+        .text.to.equal("The Night Watch");
     isNightwatchExpectResult(result);
     isNull(result.value);
 });

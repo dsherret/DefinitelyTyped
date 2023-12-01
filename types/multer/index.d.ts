@@ -45,8 +45,8 @@ declare global {
              */
             files?:
                 | {
-                    [fieldname: string]: Multer.File[];
-                }
+                      [fieldname: string]: Multer.File[];
+                  }
                 | Multer.File[]
                 | undefined;
         }
@@ -192,22 +192,24 @@ declare namespace multer {
          * passed to Busboy directly, and the details of properties can be found
          * at https://github.com/mscdex/busboy#busboy-methods.
          */
-        limits?: {
-            /** Maximum size of each form field name in bytes. (Default: 100) */
-            fieldNameSize?: number | undefined;
-            /** Maximum size of each form field value in bytes. (Default: 1048576) */
-            fieldSize?: number | undefined;
-            /** Maximum number of non-file form fields. (Default: Infinity) */
-            fields?: number | undefined;
-            /** Maximum size of each file in bytes. (Default: Infinity) */
-            fileSize?: number | undefined;
-            /** Maximum number of file fields. (Default: Infinity) */
-            files?: number | undefined;
-            /** Maximum number of parts (non-file fields + files). (Default: Infinity) */
-            parts?: number | undefined;
-            /** Maximum number of headers. (Default: 2000) */
-            headerPairs?: number | undefined;
-        } | undefined;
+        limits?:
+            | {
+                  /** Maximum size of each form field name in bytes. (Default: 100) */
+                  fieldNameSize?: number | undefined;
+                  /** Maximum size of each form field value in bytes. (Default: 1048576) */
+                  fieldSize?: number | undefined;
+                  /** Maximum number of non-file form fields. (Default: Infinity) */
+                  fields?: number | undefined;
+                  /** Maximum size of each file in bytes. (Default: Infinity) */
+                  fileSize?: number | undefined;
+                  /** Maximum number of file fields. (Default: Infinity) */
+                  files?: number | undefined;
+                  /** Maximum number of parts (non-file fields + files). (Default: Infinity) */
+                  parts?: number | undefined;
+                  /** Maximum number of headers. (Default: 2000) */
+                  headerPairs?: number | undefined;
+              }
+            | undefined;
         /** Preserve the full path of the original filename rather than the basename. (Default: false) */
         preservePath?: boolean | undefined;
         /**
@@ -247,7 +249,10 @@ declare namespace multer {
         _handleFile(
             req: Request,
             file: Express.Multer.File,
-            callback: (error?: any, info?: Partial<Express.Multer.File>) => void,
+            callback: (
+                error?: any,
+                info?: Partial<Express.Multer.File>,
+            ) => void,
         ): void;
         /**
          * Remove the file described by `file`, then invoke the callback with.
@@ -280,10 +285,10 @@ declare namespace multer {
         destination?:
             | string
             | ((
-                req: Request,
-                file: Express.Multer.File,
-                callback: (error: Error | null, destination: string) => void,
-            ) => void)
+                  req: Request,
+                  file: Express.Multer.File,
+                  callback: (error: Error | null, destination: string) => void,
+              ) => void)
             | undefined;
         /**
          * A function that determines the name of the uploaded file. If nothing

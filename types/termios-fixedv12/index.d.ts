@@ -45,7 +45,9 @@ export interface termios {
     iflag: { [K in iflags]: boolean };
     oflag: { [K in oflags]: boolean };
     cflag: { [K in cflags]: boolean };
-    lflag: { [K in lflags]: K extends "EXTPROC" ? boolean | undefined : boolean };
+    lflag: {
+        [K in lflags]: K extends "EXTPROC" ? boolean | undefined : boolean;
+    };
     cbaud?:
         | 0
         | 50
@@ -81,6 +83,10 @@ export interface termios {
 }
 export function setattr(
     fd: number,
-    attr: { [K in keyof termios]?: K extends "cbaud" ? termios[K] : Partial<termios[K]> },
+    attr: {
+        [K in keyof termios]?: K extends "cbaud"
+            ? termios[K]
+            : Partial<termios[K]>;
+    },
 ): void;
 export function getattr(fd: number): termios;

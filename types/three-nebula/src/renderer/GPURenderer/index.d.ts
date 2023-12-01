@@ -13,7 +13,11 @@ import { DEFAULT_RENDERER_OPTIONS } from "./common/constants";
  * @author rohan-deshpande <rohan@creativelifeform.com>
  */
 export default class GPURenderer extends BaseRenderer {
-    constructor(container: Container, THREE: Three, options?: typeof DEFAULT_RENDERER_OPTIONS | object);
+    constructor(
+        container: Container,
+        THREE: Three,
+        options?: typeof DEFAULT_RENDERER_OPTIONS | object,
+    );
     isFloatingPointTextureSupported(): boolean;
 }
 

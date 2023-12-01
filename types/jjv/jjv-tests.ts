@@ -37,14 +37,17 @@ env.addSchema("user", {
 // Perform validation against an incomplete user object (errors will be reported)
 errors = env.validate("user", { firstname: "John", lastname: "Smith" });
 
-errors = env.validate({
-    type: "object",
-    properties: {
-        x: { type: "number" },
-        y: { type: "number" },
+errors = env.validate(
+    {
+        type: "object",
+        properties: {
+            x: { type: "number" },
+            y: { type: "number" },
+        },
+        required: ["x", "y"],
     },
-    required: ["x", "y"],
-}, { x: "a" });
+    { x: "a" },
+);
 
 if (errors.validation["x"].type === "string") {
     console.log("x is wrong type");
@@ -60,7 +63,7 @@ env.validate("schemaName", {}, { checkRequired: false });
 
 env.addType("date", (v: any) => !isNaN(Date.parse(v)));
 
-env.addFormat("hexadecimal", (v: any) => (/^[a-fA-F0-9]+$/).test(v));
+env.addFormat("hexadecimal", (v: any) => /^[a-fA-F0-9]+$/.test(v));
 
 env.addCheck("exactLength", (v: any, p: any) => v.length === p);
 

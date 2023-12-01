@@ -21,7 +21,11 @@ export interface VerifyOptions {
     message: string;
 }
 
-export type VerifyCallback = (error: any, user?: any, options?: VerifyOptions) => void;
+export type VerifyCallback = (
+    error: any,
+    user?: any,
+    options?: VerifyOptions,
+) => void;
 
 export type VerifyFunctionWithRequestAndParams = (
     req: Request,
@@ -46,7 +50,12 @@ export type VerifyFunctionWithRequest = (
     done: VerifyCallback,
 ) => void;
 
-export type VerifyFunction = (accessToken: string, refreshToken: string, profile: any, done: VerifyCallback) => void;
+export type VerifyFunction = (
+    accessToken: string,
+    refreshToken: string,
+    profile: any,
+    done: VerifyCallback,
+) => void;
 
 export class Strategy implements Strategy {
     name: string;

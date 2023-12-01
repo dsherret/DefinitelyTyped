@@ -125,14 +125,22 @@ export interface StatePublic<Datum> {
      * @param index
      * @param nodes
      */
-    linkUpdate: (node: HierarchyNode<Datum>, index: number, nodes: Array<HierarchyNode<Datum>>) => void;
+    linkUpdate: (
+        node: HierarchyNode<Datum>,
+        index: number,
+        nodes: Array<HierarchyNode<Datum>>,
+    ) => void;
     /**
      * You can access and modify actual node DOM element in runtime using this method.
      * @param node
      * @param index
      * @param nodes
      */
-    nodeUpdate: (node: HierarchyNode<Datum>, index: number, nodes: Array<HierarchyNode<Datum>>) => void;
+    nodeUpdate: (
+        node: HierarchyNode<Datum>,
+        index: number,
+        nodes: Array<HierarchyNode<Datum>>,
+    ) => void;
     /**
      * Custom handling of node update
      */
@@ -167,7 +175,10 @@ export interface StatePublic<Datum> {
      * @param node1
      * @param node2
      */
-    neighbourMargin: (node1: HierarchyNode<Datum>, node2: HierarchyNode<Datum>) => number;
+    neighbourMargin: (
+        node1: HierarchyNode<Datum>,
+        node2: HierarchyNode<Datum>,
+    ) => number;
     /**
      * Configure margin between two nodes in compact mode, use with caution, it is better to have the same value set for all nodes
      * @param node
@@ -283,7 +294,10 @@ export interface StatePublic<Datum> {
      * Node expand & collapse button content and styling. You can access same helper methods as above
      * @param params
      */
-    buttonContent: (params: { node: HierarchyNode<Datum>; state: State<Datum> }) => string;
+    buttonContent: (params: {
+        node: HierarchyNode<Datum>;
+        state: State<Datum>;
+    }) => string;
     /**
      * Node paging button content and styling. You can access same helper methods as above.
      * @param node
@@ -337,8 +351,14 @@ export interface LayoutBinding<Datum> {
     linkY: (node: HierarchyNode<Datum>) => number;
     linkCompactXStart: (node: HierarchyNode<Datum>) => number;
     linkCompactYStart: (node: HierarchyNode<Datum>) => number;
-    compactLinkMidX: (node: HierarchyNode<Datum>, state: State<Datum>) => number;
-    compactLinkMidY: (node: HierarchyNode<Datum>, state: State<Datum>) => number;
+    compactLinkMidX: (
+        node: HierarchyNode<Datum>,
+        state: State<Datum>,
+    ) => number;
+    compactLinkMidY: (
+        node: HierarchyNode<Datum>,
+        state: State<Datum>,
+    ) => number;
     linkParentX: (node: HierarchyNode<Datum>) => number;
     linkParentY: (node: HierarchyNode<Datum>) => number;
     buttonX: (node: HierarchyNode<Datum>) => number;
@@ -369,19 +389,24 @@ export interface LayoutBinding<Datum> {
     zoomTransform: (params: { centerY: number; scale: number }) => string;
     /** Swaps x and y coordinates */
     swap: (d: Point) => Point;
-    nodeUpdateTransform: (params: { width: number; height: number } & Point) => string;
+    nodeUpdateTransform: (
+        params: { width: number; height: number } & Point,
+    ) => string;
 
     diagonal(source: Point, target: Point, m: Point): string;
 }
 
 // Helper type to remove the need to explicitly declare get / set methods
-export type StateGetSet<T, TSelf> =
-    & { [Property in keyof StatePublic<T>]: () => StatePublic<T>[Property] }
-    & { [Property in keyof StatePublic<T>]: (value: StatePublic<T>[Property]) => TSelf };
+export type StateGetSet<T, TSelf> = {
+    [Property in keyof StatePublic<T>]: () => StatePublic<T>[Property];
+} & {
+    [Property in keyof StatePublic<T>]: (
+        value: StatePublic<T>[Property],
+    ) => TSelf;
+};
 
 // This is separated from the implementation declaration to not have to replicate the propertied of StateGetSet
-export interface OrgChart<Datum> extends StateGetSet<Datum, OrgChart<Datum>> {
-}
+export interface OrgChart<Datum> extends StateGetSet<Datum, OrgChart<Datum>> {}
 
 export class OrgChart<Datum> {
     constructor();
@@ -431,7 +456,14 @@ export class OrgChart<Datum> {
      * This function basically redraws visible graph, based on nodes state
      * @param params
      */
-    update(params: { x0: number; y0: number; width: number; height: number } & Partial<Point>): void;
+    update(
+        params: {
+            x0: number;
+            y0: number;
+            width: number;
+            height: number;
+        } & Partial<Point>,
+    ): void;
 
     /**
      * This function detects whether current browser is edge
@@ -468,7 +500,10 @@ export class OrgChart<Datum> {
      * @param node
      * @param isExpanded
      */
-    setExpansionFlagToChildren(node: HierarchyNode<Datum>, isExpanded: boolean): void;
+    setExpansionFlagToChildren(
+        node: HierarchyNode<Datum>,
+        isExpanded: boolean,
+    ): void;
 
     /**
      * Method which only expands nodes, which have property set "expanded=true"
@@ -510,7 +545,11 @@ export class OrgChart<Datum> {
         params: { animate?: boolean; scale?: boolean };
     }): void;
 
-    fit(params?: { animate?: boolean; nodes?: Iterable<HierarchyNode<Datum>>; scale?: boolean }): this;
+    fit(params?: {
+        animate?: boolean;
+        nodes?: Iterable<HierarchyNode<Datum>>;
+        scale?: boolean;
+    }): this;
 
     /**
      * Load Paging Nodes
@@ -549,17 +588,18 @@ export class OrgChart<Datum> {
      */
     zoomOut(): void;
 
-    toDataUrl(url: string, callback: (result: string | ArrayBuffer) => void): void;
-
-    exportImg(
-        params?: {
-            full?: boolean;
-            scale?: number;
-            onLoad?: (s: string) => void;
-            save?: boolean;
-            backgroundColor?: string;
-        },
+    toDataUrl(
+        url: string,
+        callback: (result: string | ArrayBuffer) => void,
     ): void;
+
+    exportImg(params?: {
+        full?: boolean;
+        scale?: number;
+        onLoad?: (s: string) => void;
+        save?: boolean;
+        backgroundColor?: string;
+    }): void;
 
     exportSvg(): this;
 
@@ -585,7 +625,12 @@ export class OrgChart<Datum> {
      */
     getTextWidth(
         text: string,
-        params: { fontSize?: number; fontWeight?: number; defaultFont?: string; ctx: CanvasRenderingContext2D },
+        params: {
+            fontSize?: number;
+            fontWeight?: number;
+            defaultFont?: string;
+            ctx: CanvasRenderingContext2D;
+        },
     ): number;
 
     /**

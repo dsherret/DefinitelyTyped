@@ -100,7 +100,11 @@ export interface Props {
 
 export type AnimatedType = number | string | null;
 
-export type CallbackFunction = (instance: BasicScroll, percentage: number, props: Props) => void;
+export type CallbackFunction = (
+    instance: BasicScroll,
+    percentage: number,
+    props: Props,
+) => void;
 export type KnownTimings =
     | "backInOut"
     | "backIn"

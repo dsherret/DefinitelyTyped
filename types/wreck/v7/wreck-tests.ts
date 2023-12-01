@@ -1,8 +1,12 @@
 import Wreck = require("wreck");
 
-Wreck.get("https://google.com/", {}, function(err: any, res: any, payload: any) {
-    /* do stuff */
-});
+Wreck.get(
+    "https://google.com/",
+    {},
+    function (err: any, res: any, payload: any) {
+        /* do stuff */
+    },
+);
 
 var method = "GET"; // GET, POST, PUT, DELETE
 var uri = "https://google.com/";
@@ -23,11 +27,11 @@ var options = {
     rejectUnauthorized: true,
 };
 
-var optionalCallback = function(err: any, res: any) {
+var optionalCallback = function (err: any, res: any) {
     /* handle err if it exists, in which case res will be undefined */
 
     // buffer the response stream
-    Wreck.read(res, null, function(err: any, body: any) {
+    Wreck.read(res, null, function (err: any, body: any) {
         /* do stuff */
     });
 };

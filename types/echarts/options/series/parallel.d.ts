@@ -170,193 +170,199 @@ declare namespace echarts {
              *
              * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle
              */
-            lineStyle?: {
-                /**
-                 * Line color.
-                 *
-                 * > Color can be represented in RGB, for example `'rgb(128,
-                 * 128, 128)'`.
-                 * RGBA can be used when you need alpha channel, for example
-                 * `'rgba(128, 128, 128, 0.5)'`.
-                 * You may also use hexadecimal format, for example `'#ccc'`.
-                 * Gradient color and texture are also supported besides single
-                 * colors.
-                 * >
-                 * > [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.lineStyle)
-                 *
-                 * @default
-                 * "#000"
-                 * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.color
-                 */
-                color?: EChartOption.Color | undefined;
+            lineStyle?:
+                | {
+                      /**
+                       * Line color.
+                       *
+                       * > Color can be represented in RGB, for example `'rgb(128,
+                       * 128, 128)'`.
+                       * RGBA can be used when you need alpha channel, for example
+                       * `'rgba(128, 128, 128, 0.5)'`.
+                       * You may also use hexadecimal format, for example `'#ccc'`.
+                       * Gradient color and texture are also supported besides single
+                       * colors.
+                       * >
+                       * > [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.lineStyle)
+                       *
+                       * @default
+                       * "#000"
+                       * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.color
+                       */
+                      color?: EChartOption.Color | undefined;
 
-                /**
-                 * line width.
-                 *
-                 * @default
-                 * 2
-                 * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.width
-                 */
-                width?: number | undefined;
+                      /**
+                       * line width.
+                       *
+                       * @default
+                       * 2
+                       * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.width
+                       */
+                      width?: number | undefined;
 
-                /**
-                 * line type.
-                 *
-                 * Options are:
-                 *
-                 * + `'solid'`
-                 * + `'dashed'`
-                 * + `'dotted'`
-                 *
-                 * @default
-                 * "solid"
-                 * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.type
-                 */
-                type?: string | undefined;
+                      /**
+                       * line type.
+                       *
+                       * Options are:
+                       *
+                       * + `'solid'`
+                       * + `'dashed'`
+                       * + `'dotted'`
+                       *
+                       * @default
+                       * "solid"
+                       * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.type
+                       */
+                      type?: string | undefined;
 
-                /**
-                 * Size of shadow blur.
-                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                 * `shadowOffsetY` to set shadow to component.
-                 *
-                 * For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.lineStyle)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.shadowBlur
-                 */
-                shadowBlur?: number | undefined;
+                      /**
+                       * Size of shadow blur.
+                       * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                       * `shadowOffsetY` to set shadow to component.
+                       *
+                       * For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.lineStyle)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.shadowBlur
+                       */
+                      shadowBlur?: number | undefined;
 
-                /**
-                 * Shadow color. Support same format as `color`.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.shadowColor
-                 */
-                shadowColor?: EChartOption.Color | undefined;
+                      /**
+                       * Shadow color. Support same format as `color`.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.shadowColor
+                       */
+                      shadowColor?: EChartOption.Color | undefined;
 
-                /**
-                 * Offset distance on the horizontal direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.shadowOffsetX
-                 */
-                shadowOffsetX?: number | undefined;
+                      /**
+                       * Offset distance on the horizontal direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.shadowOffsetX
+                       */
+                      shadowOffsetX?: number | undefined;
 
-                /**
-                 * Offset distance on the vertical direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.shadowOffsetY
-                 */
-                shadowOffsetY?: number | undefined;
+                      /**
+                       * Offset distance on the vertical direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.shadowOffsetY
+                       */
+                      shadowOffsetY?: number | undefined;
 
-                /**
-                 * Opacity of the component.
-                 * Supports value from 0 to 1, and the component will not be
-                 * drawn when set to 0.
-                 *
-                 * @default
-                 * 0.45
-                 * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.opacity
-                 */
-                opacity?: number | undefined;
-            } | undefined;
+                      /**
+                       * Opacity of the component.
+                       * Supports value from 0 to 1, and the component will not be
+                       * drawn when set to 0.
+                       *
+                       * @default
+                       * 0.45
+                       * @see https://echarts.apache.org/en/option.html#series-parallel.lineStyle.opacity
+                       */
+                      opacity?: number | undefined;
+                  }
+                | undefined;
 
             /**
              * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis
              */
-            emphasis?: {
-                /**
-                 * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle
-                 */
-                lineStyle?: {
-                    /**
-                     * Line color.
-                     *
-                     * > Color can be represented in RGB, for example `'rgb(128,
-                     * 128, 128)'`.
-                     * RGBA can be used when you need alpha channel, for example
-                     * `'rgba(128, 128, 128, 0.5)'`.
-                     * You may also use hexadecimal format, for example `'#ccc'`.
-                     * Gradient color and texture are also supported besides
-                     * single colors.
-                     * >
-                     * > [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.emphasis.lineStyle)
-                     *
-                     * @default
-                     * "#000"
-                     * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.color
-                     */
-                    color?: EChartOption.Color | undefined;
+            emphasis?:
+                | {
+                      /**
+                       * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle
+                       */
+                      lineStyle?:
+                          | {
+                                /**
+                                 * Line color.
+                                 *
+                                 * > Color can be represented in RGB, for example `'rgb(128,
+                                 * 128, 128)'`.
+                                 * RGBA can be used when you need alpha channel, for example
+                                 * `'rgba(128, 128, 128, 0.5)'`.
+                                 * You may also use hexadecimal format, for example `'#ccc'`.
+                                 * Gradient color and texture are also supported besides
+                                 * single colors.
+                                 * >
+                                 * > [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.emphasis.lineStyle)
+                                 *
+                                 * @default
+                                 * "#000"
+                                 * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.color
+                                 */
+                                color?: EChartOption.Color | undefined;
 
-                    /**
-                     * line width.
-                     *
-                     * @default
-                     * 2
-                     * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.width
-                     */
-                    width?: number | undefined;
+                                /**
+                                 * line width.
+                                 *
+                                 * @default
+                                 * 2
+                                 * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.width
+                                 */
+                                width?: number | undefined;
 
-                    /**
-                     * line type.
-                     *
-                     * Options are:
-                     *
-                     * + `'solid'`
-                     * + `'dashed'`
-                     * + `'dotted'`
-                     *
-                     * @default
-                     * "solid"
-                     * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.type
-                     */
-                    type?: string | undefined;
+                                /**
+                                 * line type.
+                                 *
+                                 * Options are:
+                                 *
+                                 * + `'solid'`
+                                 * + `'dashed'`
+                                 * + `'dotted'`
+                                 *
+                                 * @default
+                                 * "solid"
+                                 * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.type
+                                 */
+                                type?: string | undefined;
 
-                    /**
-                     * Size of shadow blur.
-                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                     * `shadowOffsetY` to set shadow to component.
-                     *
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.emphasis.lineStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                                /**
+                                 * Size of shadow blur.
+                                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                                 * `shadowOffsetY` to set shadow to component.
+                                 *
+                                 * For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.emphasis.lineStyle)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.shadowBlur
+                                 */
+                                shadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow color. Support same format as `color`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.shadowColor
-                     */
-                    shadowColor?: EChartOption.Color | undefined;
+                                /**
+                                 * Shadow color. Support same format as `color`.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.shadowColor
+                                 */
+                                shadowColor?: EChartOption.Color | undefined;
 
-                    /**
-                     * Offset distance on the horizontal direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                                /**
+                                 * Offset distance on the horizontal direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.shadowOffsetX
+                                 */
+                                shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Offset distance on the vertical direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                                /**
+                                 * Offset distance on the vertical direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.shadowOffsetY
+                                 */
+                                shadowOffsetY?: number | undefined;
 
-                    /**
-                     * Opacity of the component.
-                     * Supports value from 0 to 1, and the component will not
-                     * be drawn when set to 0.
-                     *
-                     * @default
-                     * 0.45
-                     * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.opacity
-                     */
-                    opacity?: number | undefined;
-                } | undefined;
-            } | undefined;
+                                /**
+                                 * Opacity of the component.
+                                 * Supports value from 0 to 1, and the component will not
+                                 * be drawn when set to 0.
+                                 *
+                                 * @default
+                                 * 0.45
+                                 * @see https://echarts.apache.org/en/option.html#series-parallel.emphasis.lineStyle.opacity
+                                 */
+                                opacity?: number | undefined;
+                            }
+                          | undefined;
+                  }
+                | undefined;
 
             /**
              * When perform brush selection, the unselected lines will be set
@@ -719,101 +725,107 @@ declare namespace echarts {
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis
                  */
-                emphasis?: {
-                    /**
-                     * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle
-                     */
-                    lineStyle?: {
-                        /**
-                         * Line color.
-                         *
-                         * > Color can be represented in RGB, for example `'rgb(128,
-                         * 128, 128)'`.
-                         * RGBA can be used when you need alpha channel, for
-                         * example `'rgba(128, 128, 128, 0.5)'`.
-                         * You may also use hexadecimal format, for example
-                         * `'#ccc'`.
-                         * Gradient color and texture are also supported besides
-                         * single colors.
-                         * >
-                         * > [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.data.emphasis.lineStyle)
-                         *
-                         * @default
-                         * "#000"
-                         * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.color
-                         */
-                        color?: EChartOption.Color | undefined;
+                emphasis?:
+                    | {
+                          /**
+                           * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle
+                           */
+                          lineStyle?:
+                              | {
+                                    /**
+                                     * Line color.
+                                     *
+                                     * > Color can be represented in RGB, for example `'rgb(128,
+                                     * 128, 128)'`.
+                                     * RGBA can be used when you need alpha channel, for
+                                     * example `'rgba(128, 128, 128, 0.5)'`.
+                                     * You may also use hexadecimal format, for example
+                                     * `'#ccc'`.
+                                     * Gradient color and texture are also supported besides
+                                     * single colors.
+                                     * >
+                                     * > [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.data.emphasis.lineStyle)
+                                     *
+                                     * @default
+                                     * "#000"
+                                     * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.color
+                                     */
+                                    color?: EChartOption.Color | undefined;
 
-                        /**
-                         * line width.
-                         *
-                         * @default
-                         * 2
-                         * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.width
-                         */
-                        width?: number | undefined;
+                                    /**
+                                     * line width.
+                                     *
+                                     * @default
+                                     * 2
+                                     * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.width
+                                     */
+                                    width?: number | undefined;
 
-                        /**
-                         * line type.
-                         *
-                         * Options are:
-                         *
-                         * + `'solid'`
-                         * + `'dashed'`
-                         * + `'dotted'`
-                         *
-                         * @default
-                         * "solid"
-                         * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.type
-                         */
-                        type?: string | undefined;
+                                    /**
+                                     * line type.
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'solid'`
+                                     * + `'dashed'`
+                                     * + `'dotted'`
+                                     *
+                                     * @default
+                                     * "solid"
+                                     * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.type
+                                     */
+                                    type?: string | undefined;
 
-                        /**
-                         * Size of shadow blur.
-                         * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                         * `shadowOffsetY` to set shadow to component.
-                         *
-                         * For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.data.emphasis.lineStyle)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.shadowBlur
-                         */
-                        shadowBlur?: number | undefined;
+                                    /**
+                                     * Size of shadow blur.
+                                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                                     * `shadowOffsetY` to set shadow to component.
+                                     *
+                                     * For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-parallel.parallel.data.emphasis.lineStyle)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.shadowBlur
+                                     */
+                                    shadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow color. Support same format as `color`.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.shadowColor
-                         */
-                        shadowColor?: EChartOption.Color | undefined;
+                                    /**
+                                     * Shadow color. Support same format as `color`.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.shadowColor
+                                     */
+                                    shadowColor?:
+                                        | EChartOption.Color
+                                        | undefined;
 
-                        /**
-                         * Offset distance on the horizontal direction of shadow.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.shadowOffsetX
-                         */
-                        shadowOffsetX?: number | undefined;
+                                    /**
+                                     * Offset distance on the horizontal direction of shadow.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.shadowOffsetX
+                                     */
+                                    shadowOffsetX?: number | undefined;
 
-                        /**
-                         * Offset distance on the vertical direction of shadow.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.shadowOffsetY
-                         */
-                        shadowOffsetY?: number | undefined;
+                                    /**
+                                     * Offset distance on the vertical direction of shadow.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.shadowOffsetY
+                                     */
+                                    shadowOffsetY?: number | undefined;
 
-                        /**
-                         * Opacity of the component.
-                         * Supports value from 0 to 1, and the component will
-                         * not be drawn when set to 0.
-                         *
-                         * @default
-                         * 0.45
-                         * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.opacity
-                         */
-                        opacity?: number | undefined;
-                    } | undefined;
-                } | undefined;
+                                    /**
+                                     * Opacity of the component.
+                                     * Supports value from 0 to 1, and the component will
+                                     * not be drawn when set to 0.
+                                     *
+                                     * @default
+                                     * 0.45
+                                     * @see https://echarts.apache.org/en/option.html#series-parallel.data.emphasis.lineStyle.opacity
+                                     */
+                                    opacity?: number | undefined;
+                                }
+                              | undefined;
+                      }
+                    | undefined;
             }
         }
     }

@@ -10,7 +10,8 @@ export type IDialogScope = angular.dialog.IDialogScope;
 export type IDialogConfirmScope = angular.dialog.IDialogConfirmScope;
 export type IDialogOptions = angular.dialog.IDialogOptions;
 export type IDialogOpenOptions = angular.dialog.IDialogOpenOptions;
-export type IDialogOpenConfirmOptions = angular.dialog.IDialogOpenConfirmOptions;
+export type IDialogOpenConfirmOptions =
+    angular.dialog.IDialogOpenConfirmOptions;
 
 declare module "angular" {
     export namespace dialog {

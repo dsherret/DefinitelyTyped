@@ -1,11 +1,10 @@
 import { TermMapFactory } from "@rdfjs/term-map/Factory.js";
 import { TermSetFactory } from "@rdfjs/term-set/Factory.js";
 
-export interface Factory extends TermSetFactory, TermMapFactory {
-}
+export interface Factory extends TermSetFactory, TermMapFactory {}
 
 interface FactoryCtor {
-    new(): Factory;
+    new (): Factory;
 }
 
 declare const factoryCtor: FactoryCtor;

@@ -1,7 +1,21 @@
 export class Matrix {
-    constructor(a?: number, b?: number, c?: number, d?: number, tx?: number, ty?: number);
+    constructor(
+        a?: number,
+        b?: number,
+        c?: number,
+        d?: number,
+        tx?: number,
+        ty?: number,
+    );
     private data;
-    set(a?: number, b?: number, c?: number, d?: number, tx?: number, ty?: number): Matrix;
+    set(
+        a?: number,
+        b?: number,
+        c?: number,
+        d?: number,
+        tx?: number,
+        ty?: number,
+    ): Matrix;
     translate(dx: number, dy: number): Matrix;
     setTranslation(x: number, y: number): Matrix;
     setRotation(theta: number, scale?: number): Matrix;

@@ -13,7 +13,7 @@ import Graph = structure.Graph;
 
 type Nullable<T> = T | null;
 interface Newable<T> {
-    new(...args: any[]): T;
+    new (...args: any[]): T;
 }
 
 declare namespace driver {
@@ -30,7 +30,10 @@ declare namespace driver {
     }
 
     class RemoteTraversal extends Traversal {
-        constructor(traversers?: Traverser[], sideEffects?: TraversalSideEffects);
+        constructor(
+            traversers?: Traverser[],
+            sideEffects?: TraversalSideEffects,
+        );
     }
 
     class DriverRemoteConnection extends RemoteConnection {
@@ -43,8 +46,14 @@ declare namespace driver {
         commit(): Promise<any>;
         rollback(): Promise<any>;
         close(): Promise<void>;
-        addListener(event: string | symbol, handler: (...args: any[]) => void): void;
-        removeListener(event: string | symbol, handler: (...args: any[]) => void): void;
+        addListener(
+            event: string | symbol,
+            handler: (...args: any[]) => void,
+        ): void;
+        removeListener(
+            event: string | symbol,
+            handler: (...args: any[]) => void,
+        ): void;
     }
 
     interface RequestOptions {
@@ -58,8 +67,16 @@ declare namespace driver {
         constructor(url: string, options?: any);
         open(): Promise<void>;
         isOpen: boolean;
-        submit(message: Bytecode | string, bindings?: any, requestOptions?: RequestOptions): Promise<any>;
-        stream(message: Bytecode | string, bindings?: any, requestOptions?: RequestOptions): any;
+        submit(
+            message: Bytecode | string,
+            bindings?: any,
+            requestOptions?: RequestOptions,
+        ): Promise<any>;
+        stream(
+            message: Bytecode | string,
+            bindings?: any,
+            requestOptions?: RequestOptions,
+        ): any;
         close(): Promise<void>;
         addListener(event: string, handler: (...args: any[]) => void): void;
         removeListener(event: string, handler: (...args: any[]) => void): void;
@@ -133,7 +150,11 @@ declare namespace process {
     }
 
     class Traversal implements AsyncIterableIterator<any> {
-        constructor(graph: Nullable<Graph>, traversalStrategies: Nullable<TraversalStrategies>, bytecode: Bytecode);
+        constructor(
+            graph: Nullable<Graph>,
+            traversalStrategies: Nullable<TraversalStrategies>,
+            bytecode: Bytecode,
+        );
         getBytecode(): Bytecode;
         hasNext(): Promise<boolean>;
         iterate(): Promise<void>;
@@ -252,7 +273,11 @@ declare namespace process {
     };
 
     class GraphTraversal extends Traversal {
-        constructor(graph: Nullable<Graph>, traversalStrategies: Nullable<TraversalStrategies>, bytecode: Bytecode);
+        constructor(
+            graph: Nullable<Graph>,
+            traversalStrategies: Nullable<TraversalStrategies>,
+            bytecode: Bytecode,
+        );
         clone(): this;
         V(...args: any[]): this;
         addE(...args: any[]): this;
@@ -492,10 +517,26 @@ declare namespace process {
     const statics: Statics;
 
     class Translator {
-        constructor(traversalSource: AnonymousTraversalSource | GraphTraversalSource | string);
-        getTraversalSource(): AnonymousTraversalSource | GraphTraversalSource | string;
-        of(traversalSource: AnonymousTraversalSource | GraphTraversalSource | string): void;
-        translate(bytecodeOrTraversal: Bytecode | Traversal, child?: boolean): string;
+        constructor(
+            traversalSource:
+                | AnonymousTraversalSource
+                | GraphTraversalSource
+                | string,
+        );
+        getTraversalSource():
+            | AnonymousTraversalSource
+            | GraphTraversalSource
+            | string;
+        of(
+            traversalSource:
+                | AnonymousTraversalSource
+                | GraphTraversalSource
+                | string,
+        ): void;
+        translate(
+            bytecodeOrTraversal: Bytecode | Traversal,
+            child?: boolean,
+        ): string;
         convert(anyObject: any): string;
     }
 
@@ -503,7 +544,9 @@ declare namespace process {
         traversalSourceClass?: Newable<S>,
     ): AnonymousTraversalSource<S>;
 
-    class AnonymousTraversalSource<S extends GraphTraversalSource = GraphTraversalSource> {
+    class AnonymousTraversalSource<
+        S extends GraphTraversalSource = GraphTraversalSource,
+    > {
         static traversal<S extends GraphTraversalSource>(
             traversalSourceClass?: Newable<S>,
         ): AnonymousTraversalSource<S>;
@@ -555,7 +598,13 @@ declare namespace structure {
     }
 
     class Edge extends Element {
-        constructor(id: number, outV: Vertex, label: string, inV: Vertex, properties?: Property[]);
+        constructor(
+            id: number,
+            outV: Vertex,
+            label: string,
+            inV: Vertex,
+            properties?: Property[],
+        );
         toString(): string;
     }
 
@@ -582,7 +631,12 @@ declare namespace structure {
     }
 
     class VertexProperty extends Element {
-        constructor(id: number, label: string, value: any, properties?: Property[]);
+        constructor(
+            id: number,
+            label: string,
+            value: any,
+            properties?: Property[],
+        );
         toString(): string;
     }
 

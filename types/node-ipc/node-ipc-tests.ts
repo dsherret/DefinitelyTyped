@@ -70,5 +70,8 @@ const myBuffer = new Buffer(6).fill(0);
 declare const socket: Socket;
 ipc.server.emit(socket, myBuffer);
 ipc.server.emit([10, 20, 30]);
-ipc.server.emit({ address: "localhost", port: 8000 }, "message", { id: ipc.config.id, message: "Goodbye" });
+ipc.server.emit({ address: "localhost", port: 8000 }, "message", {
+    id: ipc.config.id,
+    message: "Goodbye",
+});
 ipc.server.off("error", "*");

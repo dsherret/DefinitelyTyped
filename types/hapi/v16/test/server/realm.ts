@@ -2,7 +2,11 @@
 
 import * as Hapi from "hapi";
 
-var registerFunction: Hapi.PluginFunction<{}> = function(server, options, next) {
+var registerFunction: Hapi.PluginFunction<{}> = function (
+    server,
+    options,
+    next,
+) {
     console.log(server.realm.modifiers.route.prefix);
     return next();
 };

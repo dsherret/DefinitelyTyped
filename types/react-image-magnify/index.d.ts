@@ -4,7 +4,8 @@ import * as React from "react";
  * React Image Magnify
  */
 export default function ReactImageMagnify(
-    props: ReactImageMagnifyProps & Readonly<{ children?: React.ReactNode | undefined }>,
+    props: ReactImageMagnifyProps &
+        Readonly<{ children?: React.ReactNode | undefined }>,
 ): React.ReactElement;
 
 export interface CommonImageType {
@@ -158,7 +159,9 @@ export interface ReactImageMagnifyProps {
      * Percentage is based on small image dimension. Number is pixels.
      * Not applied when enlargedImagePosition is set to 'over', the default for touch input.
      */
-    enlargedImageContainerDimensions?: { width: number | string; height: number | string } | undefined;
+    enlargedImageContainerDimensions?:
+        | { width: number | string; height: number | string }
+        | undefined;
 
     /**
      * Render enlarged image into an HTML element of your choosing by specifying the target element id.

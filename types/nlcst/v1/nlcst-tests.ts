@@ -1,4 +1,16 @@
-import { Literal, Paragraph, Parent, Punctuation, Root, Sentence, Source, Symbol, Text, WhiteSpace, Word } from "nlcst";
+import {
+    Literal,
+    Paragraph,
+    Parent,
+    Punctuation,
+    Root,
+    Sentence,
+    Source,
+    Symbol,
+    Text,
+    WhiteSpace,
+    Word,
+} from "nlcst";
 import { Data, Node, Point, Position } from "unist";
 
 const data: Data = {
@@ -75,14 +87,32 @@ const parent: Parent = {
     type: "parent",
     data,
     position,
-    children: [getParagraph(), getSentence(), getWord(), punctuation, source, symbol, text, whiteSpace],
+    children: [
+        getParagraph(),
+        getSentence(),
+        getWord(),
+        punctuation,
+        source,
+        symbol,
+        text,
+        whiteSpace,
+    ],
 };
 
 const root: Root = {
     type: "RootNode",
     data,
     position,
-    children: [getParagraph(), getSentence(), getWord(), punctuation, source, symbol, text, whiteSpace],
+    children: [
+        getParagraph(),
+        getSentence(),
+        getWord(),
+        punctuation,
+        source,
+        symbol,
+        text,
+        whiteSpace,
+    ],
 };
 
 function getParagraph(): Paragraph {

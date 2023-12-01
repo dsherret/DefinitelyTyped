@@ -7,12 +7,14 @@ export interface DispatcherState {
 
 export interface DispatcherOption {
     stores?: StoreClass[] | undefined;
-    errorHandler?: ((e: DispatcherError, context: DispatcherContext) => void) | undefined;
+    errorHandler?:
+        | ((e: DispatcherError, context: DispatcherContext) => void)
+        | undefined;
 }
 
 export interface StoreClass {
     storeName: string;
-    new(): Store;
+    new (): Store;
 }
 
 export interface Store<S = {}> extends EventEmitter {
@@ -44,7 +46,10 @@ export interface DispatcherContext {
     dehydrate(): DispatcherState;
     rehydrate(dispatcherState: DispatcherState): void;
 
-    waitFor(stores: ReadonlyArray<string | StoreClass>, callback: () => void): void;
+    waitFor(
+        stores: ReadonlyArray<string | StoreClass>,
+        callback: () => void,
+    ): void;
     dispatcherInterface: DispatcherInterface;
 }
 

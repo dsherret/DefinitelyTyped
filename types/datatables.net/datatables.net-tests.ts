@@ -35,7 +35,13 @@ const lang: DataTables.LanguageSettings = {
 
 // #region "Column"
 
-const colCreatedCellFunc: DataTables.FunctionColumnCreatedCell = (cell, cellData, rowData, rowIndex, colIndex) => {};
+const colCreatedCellFunc: DataTables.FunctionColumnCreatedCell = (
+    cell,
+    cellData,
+    rowData,
+    rowIndex,
+    colIndex,
+) => {};
 
 const colDataObject: DataTables.ObjectColumnData = {
     _: "phone",
@@ -114,7 +120,10 @@ let col: DataTables.ColumnSettings = {
     orderable: true,
     orderData: 10,
     orderDataType: "dom-checkbox",
-    orderFixed: [[0, "asc"], [1, "desc"]],
+    orderFixed: [
+        [0, "asc"],
+        [1, "desc"],
+    ],
     orderSequence: ["asc", "desc"],
     render: 1,
     searchable: true,
@@ -145,8 +154,14 @@ col = {
 };
 col = {
     orderFixed: {
-        pre: [[0, "asc"], [1, "desc"]],
-        post: [[0, "asc"], [1, "desc"]],
+        pre: [
+            [0, "asc"],
+            [1, "desc"],
+        ],
+        post: [
+            [0, "asc"],
+            [1, "desc"],
+        ],
     },
 };
 
@@ -166,7 +181,10 @@ let colDef: DataTables.ColumnDefsSettings = {
     orderable: true,
     orderData: 10,
     orderDataType: "dom-checkbox",
-    orderFixed: [[0, "asc"], [1, "desc"]],
+    orderFixed: [
+        [0, "asc"],
+        [1, "desc"],
+    ],
     orderSequence: ["asc", "desc"],
     render: 1,
     searchable: true,
@@ -189,21 +207,59 @@ colDef = {
 
 // #region "Callbacks"
 
-const createRowFunc: DataTables.FunctionCreateRow = (row, data, dataIndex, cells) => {};
+const createRowFunc: DataTables.FunctionCreateRow = (
+    row,
+    data,
+    dataIndex,
+    cells,
+) => {};
 const drawCallbackFunc: DataTables.FunctionDrawCallback = (settings) => {};
-const footerCallbackFunc: DataTables.FunctionFooterCallback = (tfoot, data, start, end, display) => {};
+const footerCallbackFunc: DataTables.FunctionFooterCallback = (
+    tfoot,
+    data,
+    start,
+    end,
+    display,
+) => {};
 const formatNumberFunc: DataTables.FunctionFormatNumber = (toForm) => {};
-const headerCallbackFunc: DataTables.FunctionHeaderCallback = (thead, data, start, end, display) => {};
-const infoCallbackFunc: DataTables.FunctionInfoCallback = (settings, start, end, total, pre) => {};
+const headerCallbackFunc: DataTables.FunctionHeaderCallback = (
+    thead,
+    data,
+    start,
+    end,
+    display,
+) => {};
+const infoCallbackFunc: DataTables.FunctionInfoCallback = (
+    settings,
+    start,
+    end,
+    total,
+    pre,
+) => {};
 const initCallbackFunc: DataTables.FunctionInitComplete = (settings, json) => {
     const api = new $.fn.dataTable.Api(settings);
 };
 const preDrawFunc: DataTables.FunctionPreDrawCallback = (settings) => {};
-const rowCallbackFunc: DataTables.FunctionRowCallback = (row, data, index) => {};
-const stateLoadCallbackFunc: DataTables.FunctionStateLoadCallback = (settings) => {};
-const stateLoadedCallbackFunc: DataTables.FunctionStateLoaded = (settings, data) => {};
-const stateSaveCallbackFunc: DataTables.FunctionStateSaveCallback = (settings, data) => {};
-const stateSaveParamsFunc: DataTables.FunctionStateSaveParams = (settings, data) => {};
+const rowCallbackFunc: DataTables.FunctionRowCallback = (
+    row,
+    data,
+    index,
+) => {};
+const stateLoadCallbackFunc: DataTables.FunctionStateLoadCallback = (
+    settings,
+) => {};
+const stateLoadedCallbackFunc: DataTables.FunctionStateLoaded = (
+    settings,
+    data,
+) => {};
+const stateSaveCallbackFunc: DataTables.FunctionStateSaveCallback = (
+    settings,
+    data,
+) => {};
+const stateSaveParamsFunc: DataTables.FunctionStateSaveParams = (
+    settings,
+    data,
+) => {};
 
 // #endregion "Callbacks
 
@@ -221,20 +277,8 @@ ajaxDataFunc = (data) => "";
 
 let config: DataTables.Settings = {
     // columns
-    columns: [
-        col,
-        null,
-        col,
-        null,
-        col,
-        col,
-    ],
-    columnDefs: [
-        null,
-        colDef,
-        colDef,
-        null,
-    ],
+    columns: [col, null, col, null, col, col],
+    columnDefs: [null, colDef, colDef, null],
     // Data
     ajax: "url",
     data: [],
@@ -259,8 +303,14 @@ let config: DataTables.Settings = {
     lengthMenu: [1, 2, 3, 4],
     orderCellsTop: true,
     orderClasses: true,
-    order: [[0, "asc"], [1, "asc"]],
-    orderFixed: [[0, "asc"], [1, "asc"]],
+    order: [
+        [0, "asc"],
+        [1, "asc"],
+    ],
+    orderFixed: [
+        [0, "asc"],
+        [1, "asc"],
+    ],
     orderMulti: true,
     pageLength: 10,
     pagingType: "simple",
@@ -269,7 +319,9 @@ let config: DataTables.Settings = {
     rowId: "custId",
     scrollCollapse: true,
     search: true,
-    searchCols: [{ search: "", smart: true, regex: false, caseInsensitive: true }],
+    searchCols: [
+        { search: "", smart: true, regex: false, caseInsensitive: true },
+    ],
     searchDelay: 10,
     stateDuration: 10,
     tabIndex: 10,
@@ -278,9 +330,15 @@ let config: DataTables.Settings = {
 config = {
     ajax: ajaxFunc,
     deferLoading: [10, 100],
-    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    lengthMenu: [
+        [10, 25, 50, -1],
+        [10, 25, 50, "All"],
+    ],
     order: [0, "asc"],
-    orderFixed: [[0, "asc"], [1, "asc"]],
+    orderFixed: [
+        [0, "asc"],
+        [1, "asc"],
+    ],
     renderer: {
         header: "bootstrap",
         pageButton: "jqueryui",
@@ -370,7 +428,11 @@ draw.$("");
 const initSettings = dt.init();
 
 let i18n: string = dt.i18n("buttons.copy", "Copy to clipboard");
-i18n = dt.i18n("select.rows", { _: "%d rows selected", 1: "1 row selected" }, 0);
+i18n = dt.i18n(
+    "select.rows",
+    { _: "%d rows selected", 1: "1 row selected" },
+    0,
+);
 
 let off = dt.off("event");
 off = dt.off("event", () => {});
@@ -385,10 +447,16 @@ one.$("");
 const order_get = dt.order();
 let order_set = dt.order([0, "asc"]);
 order_set = dt.order([0, "asc"], [1, "desc"]); // TODO: Fíx that
-order_set = dt.order([[0, "asc"], [1, "desc"]]);
+order_set = dt.order([
+    [0, "asc"],
+    [1, "desc"],
+]);
 
 const fixed_get: DataTables.ObjectOrderFixed = dt.order.fixed();
-const fixed_set: DataTables.Api = dt.order.fixed({ pre: [0, "asc"], post: [1, "desc"] });
+const fixed_set: DataTables.Api = dt.order.fixed({
+    pre: [0, "asc"],
+    post: [1, "desc"],
+});
 
 const orderListerner = order_set.order.listener("node", 1, () => {});
 
@@ -431,31 +499,80 @@ state = {
         regex: false,
         caseInsensitive: true,
     },
-    columns: [{
-        visible: true,
-        search: { search: "", smart: true, regex: false, caseInsensitive: true },
-    }, {
-        visible: true,
-        search: { search: "", smart: true, regex: false, caseInsensitive: true },
-    }, {
-        visible: true,
-        search: { search: "", smart: true, regex: false, caseInsensitive: true },
-    }, {
-        visible: true,
-        search: { search: "", smart: true, regex: false, caseInsensitive: true },
-    }, {
-        visible: true,
-        search: { search: "", smart: true, regex: false, caseInsensitive: true },
-    }, {
-        visible: true,
-        search: { search: "", smart: true, regex: false, caseInsensitive: true },
-    }, {
-        visible: true,
-        search: { search: "", smart: true, regex: false, caseInsensitive: true },
-    }, {
-        visible: true,
-        search: { search: "", smart: true, regex: false, caseInsensitive: true },
-    }],
+    columns: [
+        {
+            visible: true,
+            search: {
+                search: "",
+                smart: true,
+                regex: false,
+                caseInsensitive: true,
+            },
+        },
+        {
+            visible: true,
+            search: {
+                search: "",
+                smart: true,
+                regex: false,
+                caseInsensitive: true,
+            },
+        },
+        {
+            visible: true,
+            search: {
+                search: "",
+                smart: true,
+                regex: false,
+                caseInsensitive: true,
+            },
+        },
+        {
+            visible: true,
+            search: {
+                search: "",
+                smart: true,
+                regex: false,
+                caseInsensitive: true,
+            },
+        },
+        {
+            visible: true,
+            search: {
+                search: "",
+                smart: true,
+                regex: false,
+                caseInsensitive: true,
+            },
+        },
+        {
+            visible: true,
+            search: {
+                search: "",
+                smart: true,
+                regex: false,
+                caseInsensitive: true,
+            },
+        },
+        {
+            visible: true,
+            search: {
+                search: "",
+                smart: true,
+                regex: false,
+                caseInsensitive: true,
+            },
+        },
+        {
+            visible: true,
+            search: {
+                search: "",
+                smart: true,
+                regex: false,
+                caseInsensitive: true,
+            },
+        },
+    ],
 };
 state = dt.state.loaded();
 
@@ -489,8 +606,7 @@ const cells_cache = cells.cache("search");
 const select_2 = $("<select />")
     .appendTo("body")
     .on("change", () => {
-        dt
-            .column(0)
+        dt.column(0)
             .search($(this).val() as string)
             .draw();
     });
@@ -506,15 +622,13 @@ const data_3 = dt
     });
 
 const cells_data = cells.data();
-const data_4 = dt
-    .cells(".info")
-    .data();
+const data_4 = dt.cells(".info").data();
 
 console.log(data_4);
 
 const cells_indexes = cells.indexes();
 const columns_d = dt
-    .cells(":contains(\"21\")")
+    .cells(':contains("21")')
     .indexes()
     .pluck("column")
     .sort()
@@ -529,9 +643,7 @@ td.html("Updated");
 dt.cell(td).invalidate().draw();
 
 const cells_nodes = cells.nodes();
-const cells_d = dt
-    .cells(":contains('Not shipped')")
-    .nodes();
+const cells_d = dt.cells(":contains('Not shipped')").nodes();
 
 $(cells_d).addClass("warning");
 
@@ -545,7 +657,7 @@ $("#example").on("click", "tbody td", () => {
 
 cells.every(() => {});
 cells.every((cellRowIdx, cellColIdx, tableLoop, cellLoop) => {});
-cells.every(function(cellRowIdx, cellColIdx, tableLoop, cellLoop) {
+cells.every(function (cellRowIdx, cellColIdx, tableLoop, cellLoop) {
     const cell: DataTables.CellMethods = this;
 });
 
@@ -575,30 +687,26 @@ $("#example tbody").on("click", "td", () => {
 
 const cell_index = cell.index();
 $("#example tbody").on("click", "td", () => {
-    alert("Clicked on cell in visible column: " + dt.cell(this).index().columnVisible);
+    alert(
+        "Clicked on cell in visible column: " +
+            dt.cell(this).index().columnVisible,
+    );
 });
 $("#example tbody").on("click", "td", () => {
-    const rowIdx = dt
-        .cell(this)
-        .index().row;
+    const rowIdx = dt.cell(this).index().row;
 
-    dt.rows(rowIdx)
-        .nodes()
-        .to$()
-        .addClass("clicked");
+    dt.rows(rowIdx).nodes().to$().addClass("clicked");
 });
 
 const cell_invalidate_1 = cell.invalidate();
 const cell_invalidate_2 = cell.invalidate("data");
-$("#example tbody").on("click", "td", function() {
+$("#example tbody").on("click", "td", function () {
     this.innerHTML = (parseInt(this.innerHTML, 10) + 1).toString();
     dt.cell(this).invalidate().draw();
 });
 
 const cell_nodes = cell.node();
-const cell_n = dt
-    .cell("#importantCell")
-    .node();
+const cell_n = dt.cell("#importantCell").node();
 
 $(cell_n).addClass("warning");
 
@@ -623,30 +731,28 @@ columns = dt.columns("selector");
 columns = dt.columns("selector", modifier);
 
 const columns_cache = columns.cache("order");
-dt.columns(".select-filter").eq(0).each((colIdx: any) => {
-    // Create the select list and search operation
-    const select = $("<select />")
-        .appendTo(
-            dt.column(colIdx).footer(),
-        )
-        .on("change", () => {
-            dt
-                .column(colIdx)
-                .search($(this).val() as string)
-                .draw();
-        });
+dt.columns(".select-filter")
+    .eq(0)
+    .each((colIdx: any) => {
+        // Create the select list and search operation
+        const select = $("<select />")
+            .appendTo(dt.column(colIdx).footer())
+            .on("change", () => {
+                dt.column(colIdx)
+                    .search($(this).val() as string)
+                    .draw();
+            });
 
-    // Get the search data for the first column and add to the select list
-    dt
-        .column(colIdx)
-        .cache("search")
-        .sort()
-        .unique()
-        .each((d: any) => {
-            const tag = `<option value="${d}">${d}</option>`;
-            select.append($(tag));
-        });
-});
+        // Get the search data for the first column and add to the select list
+        dt.column(colIdx)
+            .cache("search")
+            .sort()
+            .unique()
+            .each((d: any) => {
+                const tag = `<option value="${d}">${d}</option>`;
+                select.append($(tag));
+            });
+    });
 
 const columns_data = columns.data();
 $("#listData").html(
@@ -673,9 +779,7 @@ const columns_header: HTMLElement = columns.header();
 let columns_indexes = columns.indexes();
 columns_indexes = columns.indexes("visibile");
 const columns_nodes = columns.nodes();
-dt
-    .columns(".ready")
-    .nodes();
+dt.columns(".ready").nodes();
 // .flatten()  // Reduce to a 1D array
 // .to$()      // Convert to a jQuery object
 // .addClass('highlight');
@@ -710,19 +814,15 @@ $("#example tbody").on("click", "td", () => {
 const column_cache = column.cache("order");
 // Create the select list and search operation
 const select = $("<select />")
-    .appendTo(
-        dt.column(0).footer(),
-    )
+    .appendTo(dt.column(0).footer())
     .on("change", () => {
-        dt
-            .column(0)
+        dt.column(0)
             .search($(this).val() as string)
             .draw();
     });
 
 // Get the search data for the first column and add to the select list
-dt
-    .column(0)
+dt.column(0)
     .cache("search")
     .sort()
     .unique()
@@ -733,8 +833,8 @@ dt
 
 const column_data = column.data();
 alert(
-    "Column 4 sum: "
-        + dt
+    "Column 4 sum: " +
+        dt
             .column(4)
             .data()
             .reduce((a: any, b: any) => {
@@ -759,7 +859,7 @@ const column_p = dt.column(0);
 //    );
 
 const column_header: HTMLElement = column.header();
-$("#example tbody").on("click", "td", function() {
+$("#example tbody").on("click", "td", function () {
     const idx = dt.cell(this).index().column;
     const title: HTMLElement = dt.column(idx).header();
 
@@ -776,7 +876,8 @@ alert(idx); // will show 0
 dt.column("0:visible").order("asc");
 
 const column_nodes: DataTables.Api = column.nodes();
-column_nodes.to$() // Convert to a jQuery object
+column_nodes
+    .to$() // Convert to a jQuery object
     .addClass("ready");
 
 const column_search_get = column.search();
@@ -784,44 +885,40 @@ let column_search_set = column.search("string");
 column_search_set = column.search("string", true);
 column_search_set = column.search("string", true, false);
 column_search_set = column.search("string", true, false, true);
-$("#column3_search").on("keyup", function() {
-    dt
-        .columns(3)
+$("#column3_search").on("keyup", function () {
+    dt.columns(3)
         .search((this as HTMLInputElement).value)
         .draw();
 });
 
-dt.columns(".select-filter").eq(0).each((colIdx: any) => {
-    // Create the select list and search operation
-    const select = $("<select />")
-        .appendTo(
-            dt.column(colIdx).footer(),
-        )
-        .on("change", function() {
-            dt
-                .column(colIdx)
-                .search($(this).val() as string)
-                .draw();
-        });
+dt.columns(".select-filter")
+    .eq(0)
+    .each((colIdx: any) => {
+        // Create the select list and search operation
+        const select = $("<select />")
+            .appendTo(dt.column(colIdx).footer())
+            .on("change", function () {
+                dt.column(colIdx)
+                    .search($(this).val() as string)
+                    .draw();
+            });
 
-    // Get the search data for the first column and add to the select list
-    dt
-        .column(colIdx)
-        .cache("search")
-        .sort()
-        .unique()
-        .each((d: any) => {
-            const tag = `<option value="${d}">${d}</option>`;
-            select.append($(tag));
-        });
-});
+        // Get the search data for the first column and add to the select list
+        dt.column(colIdx)
+            .cache("search")
+            .sort()
+            .unique()
+            .each((d: any) => {
+                const tag = `<option value="${d}">${d}</option>`;
+                select.append($(tag));
+            });
+    });
 
 const column_visible_get = column.visible();
 let column_visible_set = column.visible(false);
 column_visible_set = column.visible(false, true);
 alert(
-    "Column index 0 is "
-        + (dt.column(0).visible() ? "visible" : "not visible"),
+    "Column index 0 is " + (dt.column(0).visible() ? "visible" : "not visible"),
 );
 for (let i = 0; i < 4; i++) {
     dt.column(i).visible(false, false);
@@ -830,18 +927,24 @@ dt.columns.adjust().draw(false); // adjust column sizing and redraw
 
 dt.columns().every(() => {});
 dt.columns().every((colIdx, tableLoop, colLoop) => {});
-dt.columns().every(function(colIdx, tableLoop, colLoop) {
+dt.columns().every(function (colIdx, tableLoop, colLoop) {
     const col: DataTables.ColumnMethods = this;
 });
 
 $("#example").on(
     "column-visibility.dt",
-    (e: object, settings: DataTables.Settings, column: number, state: boolean, recalc: boolean | undefined) => {
+    (
+        e: object,
+        settings: DataTables.Settings,
+        column: number,
+        state: boolean,
+        recalc: boolean | undefined,
+    ) => {
         const widthRecalced = recalc || recalc === undefined;
         console.log(
-            `Column ${column} has changed to ${(state ? "visible" : "hidden")} and width ${
-                widthRecalced ? "was" : "was not"
-            } recalculated.`,
+            `Column ${column} has changed to ${
+                state ? "visible" : "hidden"
+            } and width ${widthRecalced ? "was" : "was not"} recalculated.`,
         );
     },
 );
@@ -891,48 +994,49 @@ const rows_12 = dt.rows("selector").nodes();
 const rows_13 = dt.rows.add([{}, {}]);
 dt.rows().every(() => {});
 dt.rows().every((rowIdx, tableLoop, rowLoop) => {});
-dt.rows().every(function(rowIdx, tableLoop, rowLoop) {
+dt.rows().every(function (rowIdx, tableLoop, rowLoop) {
     const row: DataTables.RowMethods = this;
 });
 const rows_14: DataTables.Api = dt.rows("selector").ids();
 const rows_15: DataTables.Api = dt.rows("selector").ids(false);
 
 const table3 = $("#example").DataTable();
-table3.row.add({
-    name: "Tiger Nixon",
-    position: "System Architect",
-    salary: "$3,120",
-    start_date: "2011/04/25",
-    office: "Edinburgh",
-    extn: "5421",
-}).draw();
+table3.row
+    .add({
+        name: "Tiger Nixon",
+        position: "System Architect",
+        salary: "$3,120",
+        start_date: "2011/04/25",
+        office: "Edinburgh",
+        extn: "5421",
+    })
+    .draw();
 
 const table4 = $("#example").DataTable();
-table4.row.add([{
-    name: "Tiger Nixon",
-    position: "System Architect",
-    salary: "$3,120",
-    start_date: "2011/04/25",
-    office: "Edinburgh",
-    extn: "5421",
-}, {
-    name: "Garrett Winters",
-    position: "Director",
-    salary: "$5,300",
-    start_date: "2011/07/25",
-    office: "Edinburgh",
-    extn: "8422",
-}])
+table4.row
+    .add([
+        {
+            name: "Tiger Nixon",
+            position: "System Architect",
+            salary: "$3,120",
+            start_date: "2011/04/25",
+            office: "Edinburgh",
+            extn: "5421",
+        },
+        {
+            name: "Garrett Winters",
+            position: "Director",
+            salary: "$5,300",
+            start_date: "2011/07/25",
+            office: "Edinburgh",
+            extn: "8422",
+        },
+    ])
     .draw();
 
 let pupil: any;
 const table5 = $("#example").DataTable();
-table5.rows.add([
-    pupil,
-    pupil,
-    pupil,
-])
-    .draw();
+table5.rows.add([pupil, pupil, pupil]).draw();
 // .nodes()
 // .to$()
 // .addClass('new');
@@ -952,22 +1056,16 @@ $("#example tbody").on("click", "td.details-control", () => {
     }
 });
 
-dt.row(":eq(0)").child([
-    "First child row",
-    "Second child row",
-    "Third child row",
-])
+dt.row(":eq(0)")
+    .child(["First child row", "Second child row", "Third child row"])
     .show();
 
-dt.rows().eq(0).each((rowIdx: any) => {
-    const tag = `<tr><td>${rowIdx}.1</td><td>${rowIdx}.2</td><td>${rowIdx}.3</td><td>${rowIdx}.4</td></tr>`;
-    dt
-        .row(rowIdx)
-        .child(
-            $(tag),
-        )
-        .show();
-});
+dt.rows()
+    .eq(0)
+    .each((rowIdx: any) => {
+        const tag = `<tr><td>${rowIdx}.1</td><td>${rowIdx}.2</td><td>${rowIdx}.3</td><td>${rowIdx}.4</td></tr>`;
+        dt.row(rowIdx).child($(tag)).show();
+    });
 
 $("#example tbody").on("click", "td.details-control", () => {
     const tr = $(this).parents("tr");
@@ -1022,13 +1120,15 @@ dt.rows().deselect().data();
 let staticFn: DataTables.StaticFunctions;
 
 // With boolean parameter type, always returns DataTables.DataTable[].
-let static_1: DataTables.Api[] = <DataTables.Api[]> staticFn.tables(true);
+let static_1: DataTables.Api[] = <DataTables.Api[]>staticFn.tables(true);
 
 // With object parameter type, returns DataTables.DataTable[] when "api" property is false.
-static_1 = <DataTables.Api[]> staticFn.tables({ visible: true, api: false });
+static_1 = <DataTables.Api[]>staticFn.tables({ visible: true, api: false });
 
 // With object parameter type, returns DataTables.DataTable when "api" property is true.
-const static_2: DataTables.Api = <DataTables.Api> staticFn.tables({ visible: true, api: true });
+const static_2: DataTables.Api = <DataTables.Api>(
+    staticFn.tables({ visible: true, api: true })
+);
 
 const static_3: DataTables.Api = $("selector").DataTable();
 const static_4: DataTables.JQueryDataTables = $("selector").dataTable();
@@ -1038,9 +1138,13 @@ const static_6 = new $.fn.dataTable.Api("selector");
 
 const version: boolean = $.fn.dataTable.versionCheck("1.10.0");
 const isDataTable: boolean = $.fn.dataTable.isDataTable("selector");
-const isDataTable_3: boolean = $.fn.dataTable.isDataTable(dt.row("selector").node());
+const isDataTable_3: boolean = $.fn.dataTable.isDataTable(
+    dt.row("selector").node(),
+);
 const isDataTable_2: boolean = $.fn.dataTable.isDataTable($("selector"));
-const isDataTable_4: boolean = $.fn.dataTable.isDataTable($("selector").dataTable().api());
+const isDataTable_4: boolean = $.fn.dataTable.isDataTable(
+    $("selector").dataTable().api(),
+);
 const escapeRegex: string = $.fn.dataTable.util.escapeRegex("");
 
 const throttle_1 = $.fn.dataTable.util.throttle((data) => {
@@ -1059,9 +1163,10 @@ const defaults_1 = $.fn.dataTable.defaults;
 
 /* Default table settings */
 const defaults_2: DataTables.Settings = {
-    dom: "<'row'<'col-lg-5'f><'col-lg-7'Bl>>"
-        + "<'row'<'col-lg-12't>>"
-        + "<'row'<'col-lg-5'i><'col-lg-7'p>>Ox",
+    dom:
+        "<'row'<'col-lg-5'f><'col-lg-7'Bl>>" +
+        "<'row'<'col-lg-12't>>" +
+        "<'row'<'col-lg-5'i><'col-lg-7'p>>Ox",
     paging: true,
     pagingType: "bootstrap",
     stateSave: true,

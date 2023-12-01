@@ -13,7 +13,8 @@ interface JQuery {
 type CollabModel = gapi.drive.realtime.Model;
 type CollabDoc = gapi.drive.realtime.Document;
 interface CollaborativeObject extends gapi.drive.realtime.CollaborativeObject {}
-interface CollaborativeList<T> extends gapi.drive.realtime.CollaborativeList<T> {}
+interface CollaborativeList<T>
+    extends gapi.drive.realtime.CollaborativeList<T> {}
 interface CollaborativeMap<T> extends gapi.drive.realtime.CollaborativeMap<T> {}
 interface IndexReference<T> extends gapi.drive.realtime.IndexReference<T> {}
 interface CollaborativeString extends gapi.drive.realtime.CollaborativeString {}
@@ -49,26 +50,31 @@ namespace GRealtime {
         defaultTitle: "Default default-doc-title",
 
         // The rest are only defaults
-        afterAuth: function(): void {
+        afterAuth: function (): void {
             console.log("default afterAuth called");
         },
 
-        initializeModel: function(rtmodel: CollabModel): void {
+        initializeModel: function (rtmodel: CollabModel): void {
             console.log("default initializeModel called");
         },
 
-        onFileLoaded: function(rtdoc: CollabDoc): void {
+        onFileLoaded: function (rtdoc: CollabDoc): void {
             console.log("default onFileLoaded called");
         },
     };
 
     export class MyRTLoader {
-        public loader_options: rtclient.LoaderOptions = $.extend({}, default_loader_options);
+        public loader_options: rtclient.LoaderOptions = $.extend(
+            {},
+            default_loader_options,
+        );
         private rtloader_client: rtclient.RealtimeLoader;
 
         // call after setting loader_options appropriately
         authorize() {
-            this.rtloader_client = new rtclient.RealtimeLoader(this.loader_options);
+            this.rtloader_client = new rtclient.RealtimeLoader(
+                this.loader_options,
+            );
             this.rtloader_client.start();
         }
 
@@ -88,13 +94,22 @@ namespace GRealtime {
         protected rtdoc: CollabDoc;
         private readonly myRTLoader = new GRealtime.MyRTLoader();
 
-        newFile(title: string, initializeModel: (x: CollabModel) => void, onFileLoaded: (x: CollabDoc) => void): void {
+        newFile(
+            title: string,
+            initializeModel: (x: CollabModel) => void,
+            onFileLoaded: (x: CollabDoc) => void,
+        ): void {
             var _afterAuth = () => {
-                this.myRTLoader.createNew(title, (file: rtclient.DriveAPIFileResource) => {
-                    console.log(`\n\nThis is the createNew callback. New file's id: ${file.id}\n\n`);
-                    $("#file-id-text-input").val(file.id);
-                    this.myRTLoader.loadAfterAuth(file.id);
-                });
+                this.myRTLoader.createNew(
+                    title,
+                    (file: rtclient.DriveAPIFileResource) => {
+                        console.log(
+                            `\n\nThis is the createNew callback. New file's id: ${file.id}\n\n`,
+                        );
+                        $("#file-id-text-input").val(file.id);
+                        this.myRTLoader.loadAfterAuth(file.id);
+                    },
+                );
             };
 
             var _initializeModel = (model: CollabModel) => {
@@ -120,7 +135,10 @@ namespace GRealtime {
             this.myRTLoader.authorize();
         }
 
-        loadExisting(fileid: string, onFileLoaded: (doc: CollabDoc) => void): void {
+        loadExisting(
+            fileid: string,
+            onFileLoaded: (doc: CollabDoc) => void,
+        ): void {
             rtclient.params.fileIds = fileid;
 
             var _onFileLoaded = (doc: CollabDoc) => {
@@ -153,10 +171,13 @@ namespace GRealtime {
             this.rtmodel.getRoot().set(key, x.pdata);
         }
 
-        bindString(istring: CollaborativeString, $textinput: JQuery): gapi.drive.realtime.databinding.Binding {
+        bindString(
+            istring: CollaborativeString,
+            $textinput: JQuery,
+        ): gapi.drive.realtime.databinding.Binding {
             return gapi.drive.realtime.databinding.bindString(
-                <CollaborativeString> istring,
-                <HTMLInputElement> $textinput[0],
+                <CollaborativeString>istring,
+                <HTMLInputElement>$textinput[0],
             );
         }
     }
@@ -167,15 +188,23 @@ namespace GRealtime {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         listener_or_callback: (e: Event) => void | EventListener,
     ): void {
-        x.addEventListener(gapi.drive.realtime.EventType.TEXT_INSERTED, listener_or_callback);
-        x.addEventListener(gapi.drive.realtime.EventType.TEXT_DELETED, listener_or_callback);
+        x.addEventListener(
+            gapi.drive.realtime.EventType.TEXT_INSERTED,
+            listener_or_callback,
+        );
+        x.addEventListener(
+            gapi.drive.realtime.EventType.TEXT_DELETED,
+            listener_or_callback,
+        );
     }
 }
 
 // Next example from https://developers.google.com/google-apps/realtime/model-events
 
 declare var doc: CollabDoc;
-function displayObjectChangedEvent(evt: gapi.drive.realtime.ObjectChangedEvent) {
+function displayObjectChangedEvent(
+    evt: gapi.drive.realtime.ObjectChangedEvent,
+) {
     var events = evt.events;
     var eventCount = evt.events.length;
     for (var i = 0; i < eventCount; i++) {
@@ -185,4 +214,9 @@ function displayObjectChangedEvent(evt: gapi.drive.realtime.ObjectChangedEvent) 
         console.log("Session ID: " + events[i].sessionId);
     }
 }
-doc.getModel().getRoot().addEventListener(gapi.drive.realtime.EventType.OBJECT_CHANGED, displayObjectChangedEvent);
+doc.getModel()
+    .getRoot()
+    .addEventListener(
+        gapi.drive.realtime.EventType.OBJECT_CHANGED,
+        displayObjectChangedEvent,
+    );

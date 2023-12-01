@@ -4,7 +4,9 @@ import { Agent, ClientRequest, IncomingMessage, RequestOptions } from "http";
 
 export type ScopeCallback = (scoped: ScopedClient) => void;
 export type RequestCallback = (err: any, request: ClientRequest) => void;
-export type ResponseCallback = (cb?: (err: any, response: IncomingMessage, body: string) => void) => ScopedClient;
+export type ResponseCallback = (
+    cb?: (err: any, response: IncomingMessage, body: string) => void,
+) => ScopedClient;
 
 export interface Options extends RequestOptions {
     encoding?: string | undefined;
@@ -22,7 +24,11 @@ export class ScopedClient {
     scope(options: Options, callback?: ScopeCallback): ScopedClient;
     // tslint:disable-next-line unified-signatures
     scope(url: string, callback?: ScopeCallback): ScopedClient;
-    scope(url: string, options: Options, callback?: ScopeCallback): ScopedClient;
+    scope(
+        url: string,
+        options: Options,
+        callback?: ScopeCallback,
+    ): ScopedClient;
     join(suffix: string): string;
     path(p: string): ScopedClient;
     query(key: any, value?: any): ScopedClient;
@@ -36,7 +42,11 @@ export class ScopedClient {
     headers(h: any): ScopedClient;
 
     request(method: string, callback?: RequestCallback): ResponseCallback;
-    request(method: string, reqBody: string, callback?: RequestCallback): ResponseCallback;
+    request(
+        method: string,
+        reqBody: string,
+        callback?: RequestCallback,
+    ): ResponseCallback;
 
     get(callback?: RequestCallback): ResponseCallback;
     get(reqBody: string, callback?: RequestCallback): ResponseCallback;

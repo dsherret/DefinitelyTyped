@@ -1,8 +1,6 @@
-function callbackWithoutData() {
-}
+function callbackWithoutData() {}
 
-function callback(data: jsf.ajax.RequestData) {
-}
+function callback(data: jsf.ajax.RequestData) {}
 
 class RequestOptionsImpl implements jsf.ajax.RequestOptions {
     execute = "@all";

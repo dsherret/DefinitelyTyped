@@ -1,5 +1,11 @@
 import type * as React from "react";
-import type { Animated, LayoutChangeEvent, StyleProp, TextStyle, ViewStyle } from "react-native";
+import type {
+    Animated,
+    LayoutChangeEvent,
+    StyleProp,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
 import type { EdgeInsets } from "react-native-safe-area-context";
 import type {
     Descriptor,
@@ -50,21 +56,28 @@ export declare type StackNavigationEventMap = {
     };
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type StackNavigationHelpers =
-    & NavigationHelpers<ParamListBase, StackNavigationEventMap>
-    & StackActionHelpers<ParamListBase>;
+export declare type StackNavigationHelpers = NavigationHelpers<
+    ParamListBase,
+    StackNavigationEventMap
+> &
+    StackActionHelpers<ParamListBase>;
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type StackNavigationProp<ParamList extends ParamListBase, RouteName extends keyof ParamList = string> =
-    & NavigationProp<
-        ParamList,
-        RouteName,
-        StackNavigationState<ParamList>,
-        StackNavigationOptions,
-        StackNavigationEventMap
-    >
-    & StackActionHelpers<ParamList>;
+export declare type StackNavigationProp<
+    ParamList extends ParamListBase,
+    RouteName extends keyof ParamList = string,
+> = NavigationProp<
+    ParamList,
+    RouteName,
+    StackNavigationState<ParamList>,
+    StackNavigationOptions,
+    StackNavigationEventMap
+> &
+    StackActionHelpers<ParamList>;
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type StackScreenProps<ParamList extends ParamListBase, RouteName extends keyof ParamList = string> = {
+export declare type StackScreenProps<
+    ParamList extends ParamListBase,
+    RouteName extends keyof ParamList = string,
+> = {
     navigation: StackNavigationProp<ParamList, RouteName>;
     route: RouteProp<ParamList, RouteName>;
 };
@@ -74,7 +87,11 @@ export declare type Layout = {
     height: number;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type GestureDirection = "horizontal" | "horizontal-inverted" | "vertical" | "vertical-inverted";
+export declare type GestureDirection =
+    | "horizontal"
+    | "horizontal-inverted"
+    | "vertical"
+    | "vertical-inverted";
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type Scene<T> = {
     /**
@@ -117,7 +134,10 @@ export declare type StackHeaderOptions = {
      * It receives `allowFontScaling`, `onLayout`, `style` and `children` in the options object as an argument.
      * The title string is passed in `children`.
      */
-    headerTitle?: string | ((props: StackHeaderTitleProps) => React.ReactNode) | undefined;
+    headerTitle?:
+        | string
+        | ((props: StackHeaderTitleProps) => React.ReactNode)
+        | undefined;
     /**
      * How to align the the header title.
      * Defaults to `center` on iOS and `left` on Android.
@@ -126,14 +146,18 @@ export declare type StackHeaderOptions = {
     /**
      * Style object for the title component.
      */
-    headerTitleStyle?: Animated.WithAnimatedValue<StyleProp<TextStyle>> | undefined;
+    headerTitleStyle?:
+        | Animated.WithAnimatedValue<StyleProp<TextStyle>>
+        | undefined;
     /**
      * Style object for the container of the `headerTitle` component, for example to add padding.
      * By default, `headerTitleContainerStyle` is with an absolute position style and offsets both `left` and `right`.
      * This may lead to white space or overlap between `headerLeft` and `headerTitle` if a customized `headerLeft` is used.
      * It can be solved by adjusting `left` and `right` style in `headerTitleContainerStyle` and `marginHorizontal` in `headerTitleStyle`.
      */
-    headerTitleContainerStyle?: Animated.WithAnimatedValue<StyleProp<ViewStyle>> | undefined;
+    headerTitleContainerStyle?:
+        | Animated.WithAnimatedValue<StyleProp<ViewStyle>>
+        | undefined;
     /**
      * Tint color for the header.
      */
@@ -172,23 +196,27 @@ export declare type StackHeaderOptions = {
      * Function which returns a React Element to display on the left side of the header.
      * It receives a number of arguments when rendered (`onPress`, `label`, `labelStyle` and more.
      */
-    headerLeft?: ((props: StackHeaderLeftButtonProps) => React.ReactNode) | undefined;
+    headerLeft?:
+        | ((props: StackHeaderLeftButtonProps) => React.ReactNode)
+        | undefined;
     /**
      * Style object for the container of the `headerLeft` component, for example to add padding.
      */
-    headerLeftContainerStyle?: Animated.WithAnimatedValue<StyleProp<ViewStyle>> | undefined;
+    headerLeftContainerStyle?:
+        | Animated.WithAnimatedValue<StyleProp<ViewStyle>>
+        | undefined;
     /**
      * Function which returns a React Element to display on the right side of the header.
      */
     headerRight?:
-        | ((props: {
-            tintColor?: string | undefined;
-        }) => React.ReactNode)
+        | ((props: { tintColor?: string | undefined }) => React.ReactNode)
         | undefined;
     /**
      * Style object for the container of the `headerRight` component, for example to add padding.
      */
-    headerRightContainerStyle?: Animated.WithAnimatedValue<StyleProp<ViewStyle>> | undefined;
+    headerRightContainerStyle?:
+        | Animated.WithAnimatedValue<StyleProp<ViewStyle>>
+        | undefined;
     /**
      * Function which returns a React Element to display custom image in header's back button.
      * It receives the `tintColor` in in the options object as an argument. object.
@@ -205,9 +233,7 @@ export declare type StackHeaderOptions = {
      * You can use this with `headerTransparent` to render a blur view, for example, to create a translucent header.
      */
     headerBackground?:
-        | ((props: {
-            style: StyleProp<ViewStyle>;
-        }) => React.ReactNode)
+        | ((props: { style: StyleProp<ViewStyle> }) => React.ReactNode)
         | undefined;
     /**
      * Style object for the header. You can specify a custom background color here, for example.
@@ -270,101 +296,106 @@ export declare type StackDescriptorMap = {
     [key: string]: StackDescriptor;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type StackNavigationOptions = StackHeaderOptions & Partial<TransitionPreset> & {
-    /**
-     * String that can be displayed in the header as a fallback for `headerTitle`.
-     */
-    title?: string | undefined;
-    /**
-     * Function that given `HeaderProps` returns a React Element to display as a header.
-     */
-    header?: ((props: StackHeaderProps) => React.ReactNode) | undefined;
-    /**
-     * Whether to show the header. The header is shown by default unless `headerMode` was set to `none`.
-     * Setting this to `false` hides the header.
-     */
-    headerShown?: boolean | undefined;
-    /**
-     * Whether a shadow is visible for the card during transitions. Defaults to `true`.
-     */
-    cardShadowEnabled?: boolean | undefined;
-    /**
-     * Whether to have a semi-transparent dark overlay visible under the card during transitions.
-     * Defaults to `true` on Android and `false` on iOS.
-     */
-    cardOverlayEnabled?: boolean | undefined;
-    /**
-     * Function that returns a React Element to display as a overlay for the card.
-     */
-    cardOverlay?:
-        | ((props: {
-            style: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
-        }) => React.ReactNode)
-        | undefined;
-    /**
-     * Style object for the card in stack.
-     * You can provide a custom background color to use instead of the default background here.
-     *
-     * You can also specify `{ backgroundColor: 'transparent' }` to make the previous screen visible underneath.
-     * This is useful to implement things like modal dialogs.
-     * If you use [`react-native-screens`](https://github.com/kmagiera/react-native-screens), you should also specify `mode: 'modal'`
-     * in the stack view config when using a transparent background so previous screens aren't detached.
-     */
-    cardStyle?: StyleProp<ViewStyle> | undefined;
-    /**
-     * Whether transition animation should be enabled the screen.
-     * If you set it to `false`, the screen won't animate when pushing or popping.
-     * Defaults to `true` on Android and iOS, `false` on Web.
-     */
-    animationEnabled?: boolean | undefined;
-    /**
-     * The type of animation to use when this screen replaces another screen. Defaults to `push`.
-     * When `pop` is used, the `pop` animation is applied to the screen being replaced.
-     */
-    animationTypeForReplace?: "push" | "pop" | undefined;
-    /**
-     * Whether you can use gestures to dismiss this screen. Defaults to `true` on iOS, `false` on Android.
-     * Not supported on Web.
-     */
-    gestureEnabled?: boolean | undefined;
-    /**
-     * Object to override the distance of touch start from the edge of the screen to recognize gestures.
-     * Not supported on Web.
-     */
-    gestureResponseDistance?: {
+export declare type StackNavigationOptions = StackHeaderOptions &
+    Partial<TransitionPreset> & {
         /**
-         * Distance for vertical direction. Defaults to 135.
+         * String that can be displayed in the header as a fallback for `headerTitle`.
          */
-        vertical?: number | undefined;
+        title?: string | undefined;
         /**
-         * Distance for horizontal direction. Defaults to 25.
+         * Function that given `HeaderProps` returns a React Element to display as a header.
          */
-        horizontal?: number | undefined;
-    } | undefined;
-    /**
-     * Number which determines the relevance of velocity for the gesture. Defaults to 0.3.
-     * Not supported on Web.
-     */
-    gestureVelocityImpact?: number | undefined;
-    /**
-     * Safe area insets for the screen. This is used to avoid elements like notch and status bar.
-     * By default, the device's safe area insets are automatically detected. You can override the behavior with this option.
-     * For example, to remove the extra spacing for status bar, pass `safeAreaInsets: { top: 0 }`.
-     */
-    safeAreaInsets?: {
-        top?: number | undefined;
-        right?: number | undefined;
-        bottom?: number | undefined;
-        left?: number | undefined;
-    } | undefined;
-    /**
-     * Whether to detach the previous screen from the view hierarchy to save memory.
-     * Set it to `false` if you need the previous screen to be seen through the active screen.
-     * Only applicable if `detachInactiveScreens` isn't set to `false`.
-     * Defaults to `false` for the last screen when mode='modal', otherwise `true`.
-     */
-    detachPreviousScreen?: boolean | undefined;
-};
+        header?: ((props: StackHeaderProps) => React.ReactNode) | undefined;
+        /**
+         * Whether to show the header. The header is shown by default unless `headerMode` was set to `none`.
+         * Setting this to `false` hides the header.
+         */
+        headerShown?: boolean | undefined;
+        /**
+         * Whether a shadow is visible for the card during transitions. Defaults to `true`.
+         */
+        cardShadowEnabled?: boolean | undefined;
+        /**
+         * Whether to have a semi-transparent dark overlay visible under the card during transitions.
+         * Defaults to `true` on Android and `false` on iOS.
+         */
+        cardOverlayEnabled?: boolean | undefined;
+        /**
+         * Function that returns a React Element to display as a overlay for the card.
+         */
+        cardOverlay?:
+            | ((props: {
+                  style: Animated.WithAnimatedValue<StyleProp<ViewStyle>>;
+              }) => React.ReactNode)
+            | undefined;
+        /**
+         * Style object for the card in stack.
+         * You can provide a custom background color to use instead of the default background here.
+         *
+         * You can also specify `{ backgroundColor: 'transparent' }` to make the previous screen visible underneath.
+         * This is useful to implement things like modal dialogs.
+         * If you use [`react-native-screens`](https://github.com/kmagiera/react-native-screens), you should also specify `mode: 'modal'`
+         * in the stack view config when using a transparent background so previous screens aren't detached.
+         */
+        cardStyle?: StyleProp<ViewStyle> | undefined;
+        /**
+         * Whether transition animation should be enabled the screen.
+         * If you set it to `false`, the screen won't animate when pushing or popping.
+         * Defaults to `true` on Android and iOS, `false` on Web.
+         */
+        animationEnabled?: boolean | undefined;
+        /**
+         * The type of animation to use when this screen replaces another screen. Defaults to `push`.
+         * When `pop` is used, the `pop` animation is applied to the screen being replaced.
+         */
+        animationTypeForReplace?: "push" | "pop" | undefined;
+        /**
+         * Whether you can use gestures to dismiss this screen. Defaults to `true` on iOS, `false` on Android.
+         * Not supported on Web.
+         */
+        gestureEnabled?: boolean | undefined;
+        /**
+         * Object to override the distance of touch start from the edge of the screen to recognize gestures.
+         * Not supported on Web.
+         */
+        gestureResponseDistance?:
+            | {
+                  /**
+                   * Distance for vertical direction. Defaults to 135.
+                   */
+                  vertical?: number | undefined;
+                  /**
+                   * Distance for horizontal direction. Defaults to 25.
+                   */
+                  horizontal?: number | undefined;
+              }
+            | undefined;
+        /**
+         * Number which determines the relevance of velocity for the gesture. Defaults to 0.3.
+         * Not supported on Web.
+         */
+        gestureVelocityImpact?: number | undefined;
+        /**
+         * Safe area insets for the screen. This is used to avoid elements like notch and status bar.
+         * By default, the device's safe area insets are automatically detected. You can override the behavior with this option.
+         * For example, to remove the extra spacing for status bar, pass `safeAreaInsets: { top: 0 }`.
+         */
+        safeAreaInsets?:
+            | {
+                  top?: number | undefined;
+                  right?: number | undefined;
+                  bottom?: number | undefined;
+                  left?: number | undefined;
+              }
+            | undefined;
+        /**
+         * Whether to detach the previous screen from the view hierarchy to save memory.
+         * Set it to `false` if you need the previous screen to be seen through the active screen.
+         * Only applicable if `detachInactiveScreens` isn't set to `false`.
+         * Defaults to `false` for the last screen when mode='modal', otherwise `true`.
+         */
+        detachPreviousScreen?: boolean | undefined;
+    };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type StackNavigationConfig = {
     mode?: StackCardMode | undefined;
@@ -399,11 +430,7 @@ export declare type StackHeaderLeftButtonProps = {
     /**
      * Function which returns a React Element to display custom image in header's back button.
      */
-    backImage?:
-        | ((props: {
-            tintColor: string;
-        }) => React.ReactNode)
-        | undefined;
+    backImage?: ((props: { tintColor: string }) => React.ReactNode) | undefined;
     /**
      * Tint color for the header.
      */
@@ -479,13 +506,21 @@ export declare type StackHeaderTitleProps = {
     style?: Animated.WithAnimatedValue<StyleProp<TextStyle>> | undefined;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type TransitionSpec = {
-    animation: "spring";
-    config: Omit<Animated.SpringAnimationConfig, "toValue" | keyof Animated.AnimationConfig>;
-} | {
-    animation: "timing";
-    config: Omit<Animated.TimingAnimationConfig, "toValue" | keyof Animated.AnimationConfig>;
-};
+export declare type TransitionSpec =
+    | {
+          animation: "spring";
+          config: Omit<
+              Animated.SpringAnimationConfig,
+              "toValue" | keyof Animated.AnimationConfig
+          >;
+      }
+    | {
+          animation: "timing";
+          config: Omit<
+              Animated.TimingAnimationConfig,
+              "toValue" | keyof Animated.AnimationConfig
+          >;
+      };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type StackCardInterpolationProps = {
     /**
@@ -501,12 +536,14 @@ export declare type StackCardInterpolationProps = {
      * Values for the current screen the screen after this one in the stack.
      * This can be `undefined` in case the screen animating is the last one.
      */
-    next?: {
-        /**
-         * Animated node representing the progress value of the next screen.
-         */
-        progress: Animated.AnimatedInterpolation;
-    } | undefined;
+    next?:
+        | {
+              /**
+               * Animated node representing the progress value of the next screen.
+               */
+              progress: Animated.AnimatedInterpolation;
+          }
+        | undefined;
     /**
      * The index of the card in the stack.
      */
@@ -562,7 +599,9 @@ export declare type StackCardInterpolatedStyle = {
     shadowStyle?: any;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-export declare type StackCardStyleInterpolator = (props: StackCardInterpolationProps) => StackCardInterpolatedStyle;
+export declare type StackCardStyleInterpolator = (
+    props: StackCardInterpolationProps,
+) => StackCardInterpolatedStyle;
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
 export declare type StackHeaderInterpolationProps = {
     /**
@@ -578,12 +617,14 @@ export declare type StackHeaderInterpolationProps = {
      * Values for the current screen the screen after this one in the stack.
      * This can be `undefined` in case the screen animating is the last one.
      */
-    next?: {
-        /**
-         * Animated node representing the progress value of the next screen.
-         */
-        progress: Animated.AnimatedInterpolation;
-    } | undefined;
+    next?:
+        | {
+              /**
+               * Animated node representing the progress value of the next screen.
+               */
+              progress: Animated.AnimatedInterpolation;
+          }
+        | undefined;
     /**
      * Layout measurements for various items we use for animation.
      */

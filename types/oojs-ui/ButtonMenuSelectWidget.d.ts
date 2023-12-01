@@ -37,7 +37,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.ButtonMenuSelectWidget
      */
-    interface ButtonMenuSelectWidget extends ButtonMenuSelectWidget.Props, ButtonMenuSelectWidget.Prototype {}
+    interface ButtonMenuSelectWidget
+        extends ButtonMenuSelectWidget.Props,
+            ButtonMenuSelectWidget.Prototype {}
 
     namespace ButtonMenuSelectWidget {
         interface ConfigOptions extends ButtonWidget.ConfigOptions {
@@ -47,7 +49,7 @@ declare namespace OO.ui {
              * Class for the menu widget. This
              * must be a subclass of {@link OO.ui.MenuSelectWidget menu select widget}.
              */
-            menuClass?: new(...args: any[]) => any;
+            menuClass?: new (...args: any[]) => any;
             /**
              * Configuration options to pass to {@link OO.ui.MenuSelectWidget menu select widget}.
              */
@@ -79,7 +81,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): ButtonMenuSelectWidget;
+            new (config?: ConfigOptions): ButtonMenuSelectWidget;
             prototype: Prototype;
             static: Static;
             super: ButtonWidget.Constructor;

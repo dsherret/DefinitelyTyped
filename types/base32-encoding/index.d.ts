@@ -30,7 +30,11 @@ export namespace encode {
  * @param output This buffer will be used instead of allocating a new `Buffer` internally.
  * @param offset The offset to write to in `output`.
  */
-export function decode<TOut extends Uint8Array = Buffer>(buffer: Uint8Array, output?: TOut, offset?: number): TOut;
+export function decode<TOut extends Uint8Array = Buffer>(
+    buffer: Uint8Array,
+    output?: TOut,
+    offset?: number,
+): TOut;
 export namespace decode {
     const bytes: number | undefined;
 }

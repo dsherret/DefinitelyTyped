@@ -20,7 +20,9 @@ declare module "leaflet" {
         max_point_interval?: number | undefined;
         marker_options?: GPXMarkerOptions | undefined;
         polyline_options?: PolylineOptions | undefined;
-        gpx_options?: { parseElements: ["track", "route", "waypoint"] } | undefined;
+        gpx_options?:
+            | { parseElements: ["track", "route", "waypoint"] }
+            | undefined;
     }
 
     class GPX extends FeatureGroup {

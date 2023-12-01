@@ -88,7 +88,10 @@ figlet.metadata("JS Block Letters", (err, fontOptions, headerComment) => {
     headerComment;
 });
 // @ts-expect-error
-figlet.metadata("This is random font name which cannot make sense", undefined as any);
+figlet.metadata(
+    "This is random font name which cannot make sense",
+    undefined as any,
+);
 // @ts-expect-error
 figlet.metadata("Alligator", undefined as any, undefined as any);
 

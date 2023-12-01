@@ -138,41 +138,50 @@ $("#smartwizard").smartWizard("loader", "hide");
 /**
  * leaveStep event
  */
-$("#smartwizard").on("leaveStep", (e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) => {
-    // @ExpectedType JQuery<HTMLAnchorElement>
-    anchorObject;
-    // @ExpectedType number
-    currentStepIndex;
-    // @ExpectedType number
-    nextStepIndex;
-    // @ExpectedType number
-    stepDirection;
-});
+$("#smartwizard").on(
+    "leaveStep",
+    (e, anchorObject, currentStepIndex, nextStepIndex, stepDirection) => {
+        // @ExpectedType JQuery<HTMLAnchorElement>
+        anchorObject;
+        // @ExpectedType number
+        currentStepIndex;
+        // @ExpectedType number
+        nextStepIndex;
+        // @ExpectedType number
+        stepDirection;
+    },
+);
 
 /**
  * showStep event
  */
-$("#smartwizard").on("showStep", (e, anchorObject, stepIndex, stepDirection) => {
-    // @ExpectedType Event
-    e;
-    // @ExpectedType JQuery<HTMLAnchorElement>
-    anchorObject;
-    // @ExpectedType number
-    stepIndex;
-    // @ExpectedType number
-    stepDirection;
-});
+$("#smartwizard").on(
+    "showStep",
+    (e, anchorObject, stepIndex, stepDirection) => {
+        // @ExpectedType Event
+        e;
+        // @ExpectedType JQuery<HTMLAnchorElement>
+        anchorObject;
+        // @ExpectedType number
+        stepIndex;
+        // @ExpectedType number
+        stepDirection;
+    },
+);
 
 /**
  * stepContent event
  */
-$("#smartwizard").on("stepContent", (e, anchorObject, stepIndex, stepDirection) => {
-    // @ExpectedType Event
-    e;
-    // @ExpectedType JQuery<HTMLAnchorElement>
-    anchorObject;
-    // @ExpectedType number
-    stepIndex;
-    // @ExpectedType number
-    stepDirection;
-});
+$("#smartwizard").on(
+    "stepContent",
+    (e, anchorObject, stepIndex, stepDirection) => {
+        // @ExpectedType Event
+        e;
+        // @ExpectedType JQuery<HTMLAnchorElement>
+        anchorObject;
+        // @ExpectedType number
+        stepIndex;
+        // @ExpectedType number
+        stepDirection;
+    },
+);

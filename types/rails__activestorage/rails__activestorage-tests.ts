@@ -15,7 +15,7 @@ const delegate: ActiveStorage.DirectUploadDelegate = {
 };
 
 const customHeaders = {
-    "foo": "bar",
+    foo: "bar",
 };
 
 const d = new ActiveStorage.DirectUpload(
@@ -50,7 +50,7 @@ const upload = new BlobUpload({
     },
 });
 
-upload.xhr.addEventListener("progress", event => console.log(event));
+upload.xhr.addEventListener("progress", (event) => console.log(event));
 
 upload.create((error, response) => {
     if (error) {

@@ -2,12 +2,15 @@ import path = require("path");
 import SVGSpritemapPlugin = require("svg-spritemap-webpack-plugin");
 import { Configuration } from "webpack";
 
-((config: Configuration) => {
+(config: Configuration) => {
     // tests
     config.plugins = [
         new SVGSpritemapPlugin(),
         new SVGSpritemapPlugin("images/sprites/**/*.svg"),
-        new SVGSpritemapPlugin(["images/logos/**/*.svg", "images/icons/**/*.svg"]),
+        new SVGSpritemapPlugin([
+            "images/logos/**/*.svg",
+            "images/icons/**/*.svg",
+        ]),
         new SVGSpritemapPlugin("src/**/*.svg", {
             styles: "src/scss/_sprites.scss",
         }),
@@ -44,7 +47,8 @@ import { Configuration } from "webpack";
                     variables: "variables",
                     mixin: "sprite",
                 },
-                callback: content => `[class*="sprite-"] { background-size: cover; } ${content}`,
+                callback: (content) =>
+                    `[class*="sprite-"] { background-size: cover; } ${content}`,
             },
         }),
         new SVGSpritemapPlugin("src/**/*.svg", {
@@ -60,4 +64,4 @@ import { Configuration } from "webpack";
             },
         }),
     ];
-});
+};

@@ -9,10 +9,7 @@ const options: weAccessMiddleware.WeAccessMidOption = {
 };
 
 app.use(
-    weAccessMiddleware(
-        options,
-        e => {
-            console.error(e);
-        },
-    ),
+    weAccessMiddleware(options, (e) => {
+        console.error(e);
+    }),
 );

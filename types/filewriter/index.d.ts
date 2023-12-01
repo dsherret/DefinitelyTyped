@@ -84,7 +84,7 @@ declare var FileSaver: {
      * When the FileSaver constructor is called, the user agent must return a new FileSaver object with readyState set to INIT.
      * This constructor must be visible when the script's global object is either a Window object or an object implementing the WorkerUtils interface.
      */
-    new(data: Blob): FileSaver;
+    new (data: Blob): FileSaver;
 };
 
 /**

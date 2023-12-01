@@ -1,6 +1,9 @@
 import Yayson = require("yayson");
 
-const yayson = Yayson({ adapter: "default" }) || Yayson({ adapter: "sequelize" }) || Yayson();
+const yayson =
+    Yayson({ adapter: "default" }) ||
+    Yayson({ adapter: "sequelize" }) ||
+    Yayson();
 const Adapter = yayson.Adapter;
 const Store = yayson.Store;
 const Presenter = yayson.Presenter;
@@ -17,18 +20,18 @@ function test_store() {
     store.sync({ any: "thing" }).toString();
 
     store.find("mytype", "1234").toString();
-    <[string]> store.findAll("mytype");
+    <[string]>store.findAll("mytype");
 
     store.remove("mytype", "1234");
     store.remove("mytype");
 
     store.reset();
 
-    <Yayson.Record[]> store.records;
+    <Yayson.Record[]>store.records;
     store.records[0].attributes.toString();
     store.records[0].id.toString();
     store.records[0].relationships.toString();
-    <string> store.records[0].type;
+    <string>store.records[0].type;
 
     store.relations["something"];
 }
@@ -38,13 +41,15 @@ function test_presenter_static() {
     Presenter.render({}).toString();
     Presenter.render({}, { meta: {} }).toString();
 
-    <[string]> Presenter.render([]);
-    <[string]> Presenter.render([], { meta: {} });
+    <[string]>Presenter.render([]);
+    <[string]>Presenter.render([], { meta: {} });
 
     const promiseNum: PromiseLike<number> = null;
 
-    Presenter.render(promiseNum).then(data => data.toExponential());
-    Presenter.render(promiseNum, { meta: { so: "meta" } }).then(data => data.toExponential());
+    Presenter.render(promiseNum).then((data) => data.toExponential());
+    Presenter.render(promiseNum, { meta: { so: "meta" } }).then((data) =>
+        data.toExponential(),
+    );
 
     Presenter.toJSON({ any: "thing" }).toString();
     Presenter.toJSON({ other: "thing" }, { meta: { so: "meta" } }).toString();
@@ -56,13 +61,15 @@ function test_presenter_instance() {
     presenter.render({}).toString();
     presenter.render({}, { meta: {} }).toString();
 
-    <[string]> presenter.render([]);
-    <[string]> presenter.render([], { meta: {} });
+    <[string]>presenter.render([]);
+    <[string]>presenter.render([], { meta: {} });
 
     const promiseNum: PromiseLike<number> = null;
 
-    presenter.render(promiseNum).then(data => data.toExponential());
-    presenter.render(promiseNum, { meta: { so: "meta" } }).then(data => data.toExponential());
+    presenter.render(promiseNum).then((data) => data.toExponential());
+    presenter
+        .render(promiseNum, { meta: { so: "meta" } })
+        .then((data) => data.toExponential());
 
     presenter.toJSON({ any: "thing" }).toString();
     presenter.toJSON({ other: "thing" }, { meta: { so: "meta" } }).toString();
@@ -110,5 +117,5 @@ function test_adapter() {
     Adapter.get({ name: "Abraham" }).toString();
     Adapter.get({ name: "Abraham" }, "name").toString();
 
-    <string> Adapter.id({ id: 5 });
+    <string>Adapter.id({ id: 5 });
 }

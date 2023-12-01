@@ -27,7 +27,9 @@ type Upper =
     | "Z";
 
 type Kebab<T extends string> = T extends `${infer L}${Upper}${infer R}`
-    ? T extends `${L}${infer U}${R}` ? `${L}-${Lowercase<U>}${Kebab<R>}` : T
+    ? T extends `${L}${infer U}${R}`
+        ? `${L}-${Lowercase<U>}${Kebab<R>}`
+        : T
     : T;
 
 type KebabKeys<T> = { [K in keyof T as K extends string ? Kebab<K> : K]: T[K] };
@@ -94,219 +96,231 @@ declare namespace ZSoft {
         /**
          * @description Fires the event when custom menu item is clicked.
          */
-        "onMenuClick"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onMenuClick?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event before a cell is rendered.
          */
-        "onCellBeforerender"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCellBeforerender?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when a click occurs to a cell.
          */
-        "onCellClick"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCellClick?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the cell editor is closed.
          */
-        "onCellCloseedit"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCellCloseedit?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when copying (ctrl+c) occurs in a cell.
          */
-        "onCellCopy"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCellCopy?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when mouse is moved out of a cell.
          */
-        "onCellMouseout"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCellMouseout?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when mouse is moved over a cell.
          */
-        "onCellMouseover"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCellMouseover?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the cell editor is opened.
          */
-        "onCellOpenedit"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCellOpenedit?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when pasting (ctrl+p) occurs in a cell.
          */
-        "onCellPaste"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCellPaste?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when right click occurs on a cell.
          */
-        "onCellRightclick"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCellRightclick?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event once before the grid renders.
          */
-        "onGridBeforerender"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridBeforerender?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the  event when the contextmenu is closed.
          */
-        "onGridContextmenuclose"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridContextmenuclose?:
+            | ((this: Window, ev: CustomEvent) => any)
+            | null;
         /**
          * @description Fires the event when the contextmenu is opened.
          */
-        "onGridContextmenuopen"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridContextmenuopen?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when selection is deselected in the grid.
          */
-        "onGridDeselect"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridDeselect?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the pre-rendered grid is finished being hydrated.
          */
-        "onGridHydrate"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridHydrate?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the (Esc) key is pressed.
          */
-        "onGridKeydownesc"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridKeydownesc?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when a page changes in the grid.
          */
-        "onGridPagechange"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridPagechange?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the grid changes to the first page.
          */
-        "onGridPagefirst"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridPagefirst?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the grid changes to the last page.
          */
-        "onGridPagelast"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridPagelast?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the grid changes to the next page.
          */
-        "onGridPagenext"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridPagenext?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the grid changes to the previous page.
          */
-        "onGridPageprev"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridPageprev?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the "page-size" (amount of rows displaying) changes on the grid.
          */
-        "onGridPagesizechange"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridPagesizechange?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the grid ready event when grid is ready.
          */
-        "onGridReady"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridReady?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when the grid is refreshed through grid controls or API method "refresh()".
          */
-        "onGridRefresh"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridRefresh?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event once when grid renders.
          */
-        "onGridRender"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridRender?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when scrolling occurs in grid.
          */
-        "onGridScroll"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridScroll?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when a the grid is searched.
          */
-        "onGridSearch"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridSearch?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when selection is made in the grid.
          */
-        "onGridSelect"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridSelect?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when selecting every cell (ctrl+a) in the grid.
          */
-        "onGridSelectall"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onGridSelectall?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event before a single cell value is changed.
          */
-        "onDataCellBeforechange"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataCellBeforechange?:
+            | ((this: Window, ev: CustomEvent) => any)
+            | null;
         /**
          * @description Fires the event after a single cell value is changed.
          */
-        "onDataCellChange"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataCellChange?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event every time a new dataset is loaded in the grid.
          */
-        "onDataLoad"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataLoad?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event before a record (row) is changed.
          */
-        "onDataRecordBeforechange"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataRecordBeforechange?:
+            | ((this: Window, ev: CustomEvent) => any)
+            | null;
         /**
          * @description Fires the event before a record (row) is deleted from the grid.
          */
-        "onDataRecordBeforedelete"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataRecordBeforedelete?:
+            | ((this: Window, ev: CustomEvent) => any)
+            | null;
         /**
          * @description Fires the event before a new record (row) is added to the grid.
          */
-        "onDataRecordBeforeinsert"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataRecordBeforeinsert?:
+            | ((this: Window, ev: CustomEvent) => any)
+            | null;
         /**
          * @description Fires the event after a record (row) is changed.
          */
-        "onDataRecordChange"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataRecordChange?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when a record (row) is deleted from the grid.
          */
-        "onDataRecordDelete"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataRecordDelete?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event after a new record (row) is added to the grid.
          */
-        "onDataRecordInsert"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataRecordInsert?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires event when the insert dialog is opened
          */
-        "onDataRecordOpeninsert"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onDataRecordOpeninsert?:
+            | ((this: Window, ev: CustomEvent) => any)
+            | null;
         /**
          * @description Fires the "row:click" and "record:click" event when a click occurs on a record (row).
          */
-        "onRowClick"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onRowClick?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when mouse is moved out a record (row).
          */
-        "onRowMouseout"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onRowMouseout?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when mouse is moved over a record (row).
          */
-        "onRowMouseover"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onRowMouseover?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires when the row selector changes
          */
-        "onRowSelect"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onRowSelect?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires event when click on a column.
          */
-        "onColumnClick"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onColumnClick?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when a column is filtered.
          */
-        "onColumnFilter"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onColumnFilter?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires event when mouseout on a column.
          */
-        "onColumnMouseout"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onColumnMouseout?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires event when mouseover on a column.
          */
-        "onColumnMouseover"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onColumnMouseover?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the "card:click" and "record:click" event when a click occurs on a record (card).
          */
-        "onCardClick"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCardClick?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when mouse is moved out a record (card).
          */
-        "onCardMouseout"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCardMouseout?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the event when mouse is moved over a record (card).
          */
-        "onCardMouseover"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onCardMouseover?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires the "row:click" and "record:click" event when a click occurs on a record (row).
          */
-        "onRecordClick"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onRecordClick?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires when the mouse cursor leaves the record (row).
          */
-        "onRecordMouseout"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onRecordMouseout?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires when the mouse cursor enter the record (row).
          */
-        "onRecordMouseover"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onRecordMouseover?: ((this: Window, ev: CustomEvent) => any) | null;
         /**
          * @description Fires event when click on a header cell.
          */
-        "onHeaderClick"?: ((this: Window, ev: CustomEvent) => any) | null;
+        onHeaderClick?: ((this: Window, ev: CustomEvent) => any) | null;
     }
 
     interface CatchAll {
@@ -504,13 +518,29 @@ declare namespace ZSoft {
              * @description The aggregate function, tokenized string, or function to evaluate for the foot cell of the column.
              * If using a function, the function takes the parameters "columnData" and "columnFieldIndex".
              */
-            footCell?: "sum" | "avg" | "max" | "min" | "count" | "tokenized string" | "functionName" | string;
+            footCell?:
+                | "sum"
+                | "avg"
+                | "max"
+                | "min"
+                | "count"
+                | "tokenized string"
+                | "functionName"
+                | string;
 
             /**
              * @description The aggregate function to evaluate for the head cell of the column.
              * If using a function, the function takes the parameters "columnData" and "columnFieldIndex".
              */
-            headCell?: "sum" | "avg" | "max" | "min" | "count" | "tokenized string" | "functionName" | string;
+            headCell?:
+                | "sum"
+                | "avg"
+                | "max"
+                | "min"
+                | "count"
+                | "tokenized string"
+                | "functionName"
+                | string;
 
             /**
              * @description The header name for the column.   If it is not set, the default is to format the "index" value.
@@ -891,7 +921,16 @@ declare namespace ZSoft {
             /**
              * @description Sets the width of the column.
              */
-            width?: "fit" | "fitheader" | "fitcontent" | "stretch" | "10%" | "150px" | "150" | string | number;
+            width?:
+                | "fit"
+                | "fitheader"
+                | "fitcontent"
+                | "stretch"
+                | "10%"
+                | "150px"
+                | "150"
+                | string
+                | number;
         }
 
         interface ZGData {
@@ -1163,7 +1202,16 @@ declare namespace ZSoft {
             /**
              * @description Sets the width each of the columns
              */
-            columnWidth?: "fit" | "fitheader" | "fitcontent" | "stretch" | "10%" | "150px" | "150" | string | number;
+            columnWidth?:
+                | "fit"
+                | "fitheader"
+                | "fitcontent"
+                | "stretch"
+                | "10%"
+                | "150px"
+                | "150"
+                | string
+                | number;
 
             /**
              * @description Specifies the columns of the grid.  More appropriate to use "<zg-column>" in most cases or set the property programmatically.
@@ -1523,7 +1571,15 @@ declare namespace ZSoft {
              * names are also accepted by setting a URL path to your custom css theme file.  For custom themes, on load set "theme"
              * to the path to the custom theme file.  After, set to theme name to switch themes.
              */
-            theme?: "android" | "black" | "default" | "dark" | "ios" | "urlToThemeFile" | "customThemeName" | string;
+            theme?:
+                | "android"
+                | "black"
+                | "default"
+                | "dark"
+                | "ios"
+                | "urlToThemeFile"
+                | "customThemeName"
+                | string;
 
             /**
              * @description Sets the default validation error message
@@ -1594,85 +1650,96 @@ declare namespace ZSoft {
     }
 
     interface ZGBody extends CatchAll, HTMLElement {}
-    interface ZGButton extends ZingGridAttributes.ZGButton, CatchAll, HTMLElement {}
-    interface ZGCaption extends ZingGridAttributes.ZGCaption, CatchAll, HTMLElement {}
+    interface ZGButton
+        extends ZingGridAttributes.ZGButton,
+            CatchAll,
+            HTMLElement {}
+    interface ZGCaption
+        extends ZingGridAttributes.ZGCaption,
+            CatchAll,
+            HTMLElement {}
     interface ZGCard extends ZingGridAttributes.ZGCard, CatchAll, HTMLElement {}
     interface ZGCell extends CatchAll, HTMLElement {}
-    interface ZGCheckbox extends ZingGridAttributes.ZGCheckbox, CatchAll, HTMLElement {}
+    interface ZGCheckbox
+        extends ZingGridAttributes.ZGCheckbox,
+            CatchAll,
+            HTMLElement {}
     interface ZGColgroup extends CatchAll, HTMLElement {}
-    interface ZGColumn extends
-        NonoptionalAttributes,
-        Omit<
-            ZingGridAttributes.ZGColumn,
-            | "accessKey"
-            | "accessKeyLabel"
-            | "animationcancel_event"
-            | "animationend_event"
-            | "animationiteration_event"
-            | "animationstart_event"
-            | "attachInternals"
-            | "autocapitalize"
-            | "beforeinput_event"
-            | "blur"
-            | "click"
-            | "contentEditable"
-            | "contextMenu"
-            | "dataset"
-            | "dir"
-            | "draggable"
-            | "enterKeyHint"
-            | "focus"
-            | "gotpointercapture_event"
-            | "hidden"
-            | "inert"
-            | "innerText"
-            | "input_event"
-            | "inputMode"
-            | "isContentEditable"
-            | "itemId"
-            | "itemProp"
-            | "itemRef"
-            | "itemScope"
-            | "itemType"
-            | "itemValue"
-            | "lang"
-            | "lostpointercapture_event"
-            | "nonce"
-            | "offsetHeight"
-            | "offsetLeft"
-            | "offsetParent"
-            | "offsetTop"
-            | "offsetWidth"
-            | "oncopy"
-            | "oncut"
-            | "onpaste"
-            | "outerText"
-            | "pointercancel_event"
-            | "pointerdown_event"
-            | "pointerenter_event"
-            | "pointerleave_event"
-            | "pointermove_event"
-            | "pointerout_event"
-            | "pointerover_event"
-            | "pointerrawupdate_event"
-            | "pointerup_event"
-            | "spellcheck"
-            | "tabIndex"
-            | "title"
-            | "transitioncancel_event"
-            | "transitionend_event"
-            | "transitionrun_event"
-            | "transitionstart_event"
-            | "translate"
-            | "attributeStyleMap"
-            | "style"
-        >,
-        CatchAll,
-        HTMLElement
-    {}
+    interface ZGColumn
+        extends NonoptionalAttributes,
+            Omit<
+                ZingGridAttributes.ZGColumn,
+                | "accessKey"
+                | "accessKeyLabel"
+                | "animationcancel_event"
+                | "animationend_event"
+                | "animationiteration_event"
+                | "animationstart_event"
+                | "attachInternals"
+                | "autocapitalize"
+                | "beforeinput_event"
+                | "blur"
+                | "click"
+                | "contentEditable"
+                | "contextMenu"
+                | "dataset"
+                | "dir"
+                | "draggable"
+                | "enterKeyHint"
+                | "focus"
+                | "gotpointercapture_event"
+                | "hidden"
+                | "inert"
+                | "innerText"
+                | "input_event"
+                | "inputMode"
+                | "isContentEditable"
+                | "itemId"
+                | "itemProp"
+                | "itemRef"
+                | "itemScope"
+                | "itemType"
+                | "itemValue"
+                | "lang"
+                | "lostpointercapture_event"
+                | "nonce"
+                | "offsetHeight"
+                | "offsetLeft"
+                | "offsetParent"
+                | "offsetTop"
+                | "offsetWidth"
+                | "oncopy"
+                | "oncut"
+                | "onpaste"
+                | "outerText"
+                | "pointercancel_event"
+                | "pointerdown_event"
+                | "pointerenter_event"
+                | "pointerleave_event"
+                | "pointermove_event"
+                | "pointerout_event"
+                | "pointerover_event"
+                | "pointerrawupdate_event"
+                | "pointerup_event"
+                | "spellcheck"
+                | "tabIndex"
+                | "title"
+                | "transitioncancel_event"
+                | "transitionend_event"
+                | "transitionrun_event"
+                | "transitionstart_event"
+                | "translate"
+                | "attributeStyleMap"
+                | "style"
+            >,
+            CatchAll,
+            HTMLElement {}
     interface ZGControlBar extends CatchAll, HTMLElement {}
     interface ZGData extends ZingGridAttributes.ZGData, CatchAll, HTMLElement {}
-    interface ZGDialog extends ZingGridAttributes.ZGDialog, CatchAll, HTMLElement {}
+    interface ZGDialog
+        extends ZingGridAttributes.ZGDialog,
+            CatchAll,
+            HTMLElement {}
     interface ZGEditorRow extends CatchAll, HTMLElement {}
     interface ZGFocus extends CatchAll, HTMLElement {}
     interface ZGFoot extends CatchAll, HTMLElement {}
@@ -1682,20 +1749,32 @@ declare namespace ZSoft {
     interface ZGHeadCell extends CatchAll, HTMLElement {}
     interface ZGHeader extends CatchAll, HTMLElement {}
     interface ZGIcon extends ZingGridAttributes.ZGIcon, CatchAll, HTMLElement {}
-    interface ZGInput extends ZingGridAttributes.ZGInput, CatchAll, HTMLElement {}
+    interface ZGInput
+        extends ZingGridAttributes.ZGInput,
+            CatchAll,
+            HTMLElement {}
     interface ZGLayoutControls extends CatchAll, HTMLElement {}
     interface ZGLoadMask extends CatchAll, HTMLElement {}
     interface ZGMenu extends ZingGridAttributes.ZGMenu, CatchAll, HTMLElement {}
     interface ZGMenuGroup extends CatchAll, HTMLElement {}
     interface ZGMenuItem extends CatchAll, HTMLElement {}
     interface ZGNoData extends CatchAll, HTMLElement {}
-    interface ZGPager extends ZingGridAttributes.ZGPager, CatchAll, HTMLElement {}
-    interface ZGParam extends ZingGridAttributes.ZGParam, CatchAll, HTMLElement {}
+    interface ZGPager
+        extends ZingGridAttributes.ZGPager,
+            CatchAll,
+            HTMLElement {}
+    interface ZGParam
+        extends ZingGridAttributes.ZGParam,
+            CatchAll,
+            HTMLElement {}
     interface ZGRow extends CatchAll, HTMLElement {}
     interface ZGSearch extends CatchAll, HTMLElement {}
     interface ZGSelectorMask extends CatchAll, HTMLElement {}
     interface ZGSeparator extends CatchAll, HTMLElement {}
-    interface ZGSource extends ZingGridAttributes.ZGSource, CatchAll, HTMLElement {}
+    interface ZGSource
+        extends ZingGridAttributes.ZGSource,
+            CatchAll,
+            HTMLElement {}
     interface ZGStatus extends CatchAll, HTMLElement {}
     interface ZGText extends ZingGridAttributes.ZGText, CatchAll, HTMLElement {}
     interface ZGTooltip extends CatchAll, HTMLElement {}
@@ -1841,7 +1920,12 @@ declare namespace ZSoft {
          * @param endRowIndex Optional end cell row for multi-cell selection
          * @param endColIndex Optional end cell column for multi-cell selection
          */
-        select: (rowIndex: string, colIndex: string, endRowIndex?: string, endColIndex?: string) => ZingGrid;
+        select: (
+            rowIndex: string,
+            colIndex: string,
+            endRowIndex?: string,
+            endColIndex?: string,
+        ) => ZingGrid;
 
         /**
          * @description Sets the "selector" attribute
@@ -2035,7 +2119,12 @@ declare namespace ZSoft {
          * @param val New Value
          * @param noDataSource If you only want to update the grid and not the external datasource, set "noDataSource" to "true"
          */
-        updateCellByID: (id: number, fieldIndex: number, val: any, noDataSource: boolean) => ZingGrid;
+        updateCellByID: (
+            id: number,
+            fieldIndex: number,
+            val: any,
+            noDataSource: boolean,
+        ) => ZingGrid;
 
         /**
          * @description Updates a cell in the grid
@@ -2044,7 +2133,12 @@ declare namespace ZSoft {
          * @param val New Value
          * @param noDataSource If you only want to update the grid and not the external datasource, set "noDataSource" to "true"
          */
-        updateCellByPosition: (rowIndex: number, columnIndex: number, val: any, noDataSource: boolean) => ZingGrid;
+        updateCellByPosition: (
+            rowIndex: number,
+            columnIndex: number,
+            val: any,
+            noDataSource: boolean,
+        ) => ZingGrid;
 
         /**
          * @description Updates a record in the grid
@@ -2052,7 +2146,11 @@ declare namespace ZSoft {
          * @param data Data to update
          * @param noDataSource If you only want to update the grid and not the external datasource, set "noDataSource" to "true"
          */
-        updateRecord: (id: string, data: any, noDataSource: boolean) => ZingGrid;
+        updateRecord: (
+            id: string,
+            data: any,
+            noDataSource: boolean,
+        ) => ZingGrid;
 
         /**
          * @description Updates a row in the grid
@@ -2060,7 +2158,11 @@ declare namespace ZSoft {
          * @param data Data to update
          * @param noDataSource If you only want to update the grid and not the external datasource, set "noDataSource" to "true"
          */
-        updateRow: (rowIndex: string, data: any, noDataSource: boolean) => ZingGrid;
+        updateRow: (
+            rowIndex: string,
+            data: any,
+            noDataSource: boolean,
+        ) => ZingGrid;
 
         // ZGSearch
         /**
@@ -2277,7 +2379,9 @@ declare namespace ZSoft {
          * @description Sets the "gridlines" attribute
          * @param type Type of gridlines to set on the grid
          */
-        setGridlines: (type: "both" | "horz" | "horizontal" | "vert" | "vertical") => ZingGrid;
+        setGridlines: (
+            type: "both" | "horz" | "horizontal" | "vert" | "vertical",
+        ) => ZingGrid;
 
         /**
          * @description Sets the "height" attribute
@@ -2513,76 +2617,75 @@ declare namespace ZSoft {
         setCardTemplate: (id: string) => ZingGrid;
     }
 
-    interface ZingGrid extends
-        NonoptionalAttributes,
-        Omit<
-            ZingGridAttributes.ZingGrid,
-            | "accessKey"
-            | "accessKeyLabel"
-            | "animationcancel_event"
-            | "animationend_event"
-            | "animationiteration_event"
-            | "animationstart_event"
-            | "attachInternals"
-            | "autocapitalize"
-            | "beforeinput_event"
-            | "blur"
-            | "click"
-            | "contentEditable"
-            | "contextMenu"
-            | "dataset"
-            | "dir"
-            | "draggable"
-            | "enterKeyHint"
-            | "focus"
-            | "gotpointercapture_event"
-            | "hidden"
-            | "inert"
-            | "innerText"
-            | "input_event"
-            | "inputMode"
-            | "isContentEditable"
-            | "itemId"
-            | "itemProp"
-            | "itemRef"
-            | "itemScope"
-            | "itemType"
-            | "itemValue"
-            | "lang"
-            | "lostpointercapture_event"
-            | "nonce"
-            | "offsetHeight"
-            | "offsetLeft"
-            | "offsetParent"
-            | "offsetTop"
-            | "offsetWidth"
-            | "oncopy"
-            | "oncut"
-            | "onpaste"
-            | "outerText"
-            | "pointercancel_event"
-            | "pointerdown_event"
-            | "pointerenter_event"
-            | "pointerleave_event"
-            | "pointermove_event"
-            | "pointerout_event"
-            | "pointerover_event"
-            | "pointerrawupdate_event"
-            | "pointerup_event"
-            | "spellcheck"
-            | "tabIndex"
-            | "title"
-            | "transitioncancel_event"
-            | "transitionend_event"
-            | "transitionrun_event"
-            | "transitionstart_event"
-            | "translate"
-            | "attributeStyleMap"
-            | "style"
-        >,
-        CatchAll,
-        HTMLElement
-    {}
+    interface ZingGrid
+        extends NonoptionalAttributes,
+            Omit<
+                ZingGridAttributes.ZingGrid,
+                | "accessKey"
+                | "accessKeyLabel"
+                | "animationcancel_event"
+                | "animationend_event"
+                | "animationiteration_event"
+                | "animationstart_event"
+                | "attachInternals"
+                | "autocapitalize"
+                | "beforeinput_event"
+                | "blur"
+                | "click"
+                | "contentEditable"
+                | "contextMenu"
+                | "dataset"
+                | "dir"
+                | "draggable"
+                | "enterKeyHint"
+                | "focus"
+                | "gotpointercapture_event"
+                | "hidden"
+                | "inert"
+                | "innerText"
+                | "input_event"
+                | "inputMode"
+                | "isContentEditable"
+                | "itemId"
+                | "itemProp"
+                | "itemRef"
+                | "itemScope"
+                | "itemType"
+                | "itemValue"
+                | "lang"
+                | "lostpointercapture_event"
+                | "nonce"
+                | "offsetHeight"
+                | "offsetLeft"
+                | "offsetParent"
+                | "offsetTop"
+                | "offsetWidth"
+                | "oncopy"
+                | "oncut"
+                | "onpaste"
+                | "outerText"
+                | "pointercancel_event"
+                | "pointerdown_event"
+                | "pointerenter_event"
+                | "pointerleave_event"
+                | "pointermove_event"
+                | "pointerout_event"
+                | "pointerover_event"
+                | "pointerrawupdate_event"
+                | "pointerup_event"
+                | "spellcheck"
+                | "tabIndex"
+                | "title"
+                | "transitioncancel_event"
+                | "transitionend_event"
+                | "transitionrun_event"
+                | "transitionstart_event"
+                | "translate"
+                | "attributeStyleMap"
+                | "style"
+            >,
+            CatchAll,
+            HTMLElement {}
 }
 
 interface HTMLElementTagNameMap {
@@ -2630,25 +2733,35 @@ declare namespace JSX {
     interface IntrinsicElements {
         "zg-body": ZSoft.CatchAll;
         ZGBody: ZSoft.CatchAll;
-        "zg-button": KebabKeys<ZSoft.ZingGridAttributes.ZGButton> | ZSoft.CatchAll;
+        "zg-button":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZGButton>
+            | ZSoft.CatchAll;
         ZGButton: ZSoft.ZingGridAttributes.ZGButton | ZSoft.CatchAll;
-        "zg-caption": KebabKeys<ZSoft.ZingGridAttributes.ZGCaption> | ZSoft.CatchAll;
+        "zg-caption":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZGCaption>
+            | ZSoft.CatchAll;
         ZGCaption: ZSoft.ZingGridAttributes.ZGCaption | ZSoft.CatchAll;
         "zg-card": KebabKeys<ZSoft.ZingGridAttributes.ZGCard> | ZSoft.CatchAll;
         ZGCard: ZSoft.ZingGridAttributes.ZGCard | ZSoft.CatchAll;
         "zg-cell": ZSoft.CatchAll;
         ZGCell: ZSoft.CatchAll;
-        "zg-checkbox": KebabKeys<ZSoft.ZingGridAttributes.ZGCheckbox> | ZSoft.CatchAll;
+        "zg-checkbox":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZGCheckbox>
+            | ZSoft.CatchAll;
         ZGCheckbox: ZSoft.ZingGridAttributes.ZGCheckbox | ZSoft.CatchAll;
         "zg-colgroup": ZSoft.CatchAll;
         ZGColgroup: ZSoft.CatchAll;
-        "zg-column": KebabKeys<ZSoft.ZingGridAttributes.ZGColumn> | ZSoft.CatchAll;
+        "zg-column":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZGColumn>
+            | ZSoft.CatchAll;
         ZGColumn: ZSoft.ZingGridAttributes.ZGColumn | ZSoft.CatchAll;
         "zg-control-bar": ZSoft.CatchAll;
         ZGControlBar: ZSoft.CatchAll;
         "zg-data": KebabKeys<ZSoft.ZingGridAttributes.ZGData> | ZSoft.CatchAll;
         ZGData: ZSoft.ZingGridAttributes.ZGData | ZSoft.CatchAll;
-        "zg-dialog": KebabKeys<ZSoft.ZingGridAttributes.ZGDialog> | ZSoft.CatchAll;
+        "zg-dialog":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZGDialog>
+            | ZSoft.CatchAll;
         ZGDialog: ZSoft.ZingGridAttributes.ZGDialog | ZSoft.CatchAll;
         "zg-editor-row": ZSoft.CatchAll;
         ZGEditorRow: ZSoft.CatchAll;
@@ -2668,7 +2781,9 @@ declare namespace JSX {
         ZGHeader: ZSoft.CatchAll;
         "zg-icon": KebabKeys<ZSoft.ZingGridAttributes.ZGIcon> | ZSoft.CatchAll;
         ZGIcon: ZSoft.ZingGridAttributes.ZGIcon | ZSoft.CatchAll;
-        "zg-input": KebabKeys<ZSoft.ZingGridAttributes.ZGInput> | ZSoft.CatchAll;
+        "zg-input":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZGInput>
+            | ZSoft.CatchAll;
         ZGInput: ZSoft.ZingGridAttributes.ZGInput | ZSoft.CatchAll;
         "zg-layout-controls": ZSoft.CatchAll;
         ZGLayoutControls: ZSoft.CatchAll;
@@ -2682,9 +2797,13 @@ declare namespace JSX {
         ZGMenuItem: ZSoft.CatchAll;
         "zg-no-data": ZSoft.CatchAll;
         ZGNoData: ZSoft.CatchAll;
-        "zg-pager": KebabKeys<ZSoft.ZingGridAttributes.ZGPager> | ZSoft.CatchAll;
+        "zg-pager":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZGPager>
+            | ZSoft.CatchAll;
         ZGPager: ZSoft.ZingGridAttributes.ZGPager | ZSoft.CatchAll;
-        "zg-param": KebabKeys<ZSoft.ZingGridAttributes.ZGParam> | ZSoft.CatchAll;
+        "zg-param":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZGParam>
+            | ZSoft.CatchAll;
         ZGParam: ZSoft.ZingGridAttributes.ZGParam | ZSoft.CatchAll;
         "zg-row": ZSoft.CatchAll;
         ZGRow: ZSoft.CatchAll;
@@ -2694,7 +2813,9 @@ declare namespace JSX {
         ZGSelectorMask: ZSoft.CatchAll;
         "zg-separator": ZSoft.CatchAll;
         ZGSeparator: ZSoft.CatchAll;
-        "zg-source": KebabKeys<ZSoft.ZingGridAttributes.ZGSource> | ZSoft.CatchAll;
+        "zg-source":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZGSource>
+            | ZSoft.CatchAll;
         ZGSource: ZSoft.ZingGridAttributes.ZGSource | ZSoft.CatchAll;
         "zg-status": ZSoft.CatchAll;
         ZGStatus: ZSoft.CatchAll;
@@ -2702,8 +2823,14 @@ declare namespace JSX {
         ZGText: ZSoft.ZingGridAttributes.ZGText | ZSoft.CatchAll;
         "zg-tooltip": ZSoft.CatchAll;
         ZGTooltip: ZSoft.CatchAll;
-        "zing-grid": KebabKeys<ZSoft.ZingGridAttributes.ZingGrid> | ZSoft.ZingGridEventHandlers | ZSoft.CatchAll;
-        ZingGrid: ZSoft.ZingGridAttributes.ZingGrid | ZSoft.ZingGridEventHandlers | ZSoft.CatchAll;
+        "zing-grid":
+            | KebabKeys<ZSoft.ZingGridAttributes.ZingGrid>
+            | ZSoft.ZingGridEventHandlers
+            | ZSoft.CatchAll;
+        ZingGrid:
+            | ZSoft.ZingGridAttributes.ZingGrid
+            | ZSoft.ZingGridEventHandlers
+            | ZSoft.CatchAll;
     }
 }
 
@@ -2738,7 +2865,11 @@ declare namespace ZingGrid {
      * @param format The tokenized format to format the date
      * @param locale The locale to use for the formatting.  Optional.
      */
-    function formatDate(date: string | Date, format: string, locale?: string): string;
+    function formatDate(
+        date: string | Date,
+        format: string,
+        locale?: string,
+    ): string;
 
     /**
      * @description Formats a Date in from now format
@@ -2793,7 +2924,11 @@ declare namespace ZingGrid {
      * @param scope The scope of the namespace.  When a method within the namespace is called, "this" will be set to the "scope" value.
      * Defaults to the namespace itself. Optional.
      */
-    function registerNamespace(namespace: any, name?: string, scope?: any): void;
+    function registerNamespace(
+        namespace: any,
+        name?: string,
+        scope?: any,
+    ): void;
 
     /**
      * @description Register the life cycle hooks for cell validation. This allows you to import
@@ -2802,7 +2937,11 @@ declare namespace ZingGrid {
      * @param name The name to refer to the validator. Optional.
      * @param scope The scope of the method.  When the method is called "this" will be set to the "scope" value. Optional.
      */
-    function registerValidator(oValidator: any, name?: string, scope?: any): void;
+    function registerValidator(
+        oValidator: any,
+        name?: string,
+        scope?: any,
+    ): void;
 }
 
 declare class ZingGrid extends ZSoft.ZingGrid {}

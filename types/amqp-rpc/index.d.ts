@@ -5,13 +5,17 @@ export interface Options {
     url?: string | undefined;
     exchangeInstance?: any;
     exchange?: string | undefined;
-    exchange_options?: {
-        exclusive?: boolean | undefined;
-        autoDelete?: boolean | undefined;
-    } | undefined;
-    ipml_options?: {
-        defaultExchangeName?: string | undefined;
-    } | undefined;
+    exchange_options?:
+        | {
+              exclusive?: boolean | undefined;
+              autoDelete?: boolean | undefined;
+          }
+        | undefined;
+    ipml_options?:
+        | {
+              defaultExchangeName?: string | undefined;
+          }
+        | undefined;
     conn_options?: any;
 }
 
@@ -55,7 +59,13 @@ export declare class amqpRPC {
     constructor(opt?: Options);
     generateQueueName(type: string): string;
     disconnect(): void;
-    call<T>(cmd: string, params: T, cb?: Callback, context?: any, options?: CallOptions): string;
+    call<T>(
+        cmd: string,
+        params: T,
+        cb?: Callback,
+        context?: any,
+        options?: CallOptions,
+    ): string;
     on<T>(
         cmd: string,
         cb: (param?: T, cb?: Callback, info?: CommandInfo) => void,

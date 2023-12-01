@@ -5,16 +5,29 @@ import * as net from "net";
 
 export type Callback<T> = (value: T) => void;
 export interface AMQPClient extends net.Socket {
-    publish(routingKey: string, body: any, options: {}, callback: (err?: boolean, msg?: string) => void): void;
+    publish(
+        routingKey: string,
+        body: any,
+        options: {},
+        callback: (err?: boolean, msg?: string) => void,
+    ): void;
 
     disconnect(): void;
 
     queue(queueName: string, callback?: Callback<QueueCallback>): AMQPQueue;
-    queue(queueName: string, options: QueueOptions, callback?: Callback<QueueCallback>): AMQPQueue;
+    queue(
+        queueName: string,
+        options: QueueOptions,
+        callback?: Callback<QueueCallback>,
+    ): AMQPQueue;
 
     exchange(callback?: Callback<void>): AMQPExchange;
     exchange(exchangeName: string, callback?: Callback<void>): AMQPExchange;
-    exchange(exchangeName: string, options: ExchangeOptions, callback?: Callback<void>): AMQPExchange;
+    exchange(
+        exchangeName: string,
+        options: ExchangeOptions,
+        callback?: Callback<void>,
+    ): AMQPExchange;
 }
 
 export interface AMQPQueue extends events.EventEmitter {
@@ -23,7 +36,11 @@ export interface AMQPQueue extends events.EventEmitter {
 
     unsubscribe(consumerTag: string): void;
 
-    bind(exchangeName: string, routingKey: string, callback?: Callback<AMQPQueue>): void;
+    bind(
+        exchangeName: string,
+        routingKey: string,
+        callback?: Callback<AMQPQueue>,
+    ): void;
     bind(routingKey: string, callback?: Callback<AMQPQueue>): void;
 
     unbind(exchangeName: string, routingKey: string): void;
@@ -42,9 +59,16 @@ export interface AMQPQueue extends events.EventEmitter {
 }
 
 export interface AMQPExchange extends events.EventEmitter {
-    on(event: "open" | "ack" | "error" | "exchangeBindOk" | "exchangeUnbindOk", callback: Callback<void>): this;
+    on(
+        event: "open" | "ack" | "error" | "exchangeBindOk" | "exchangeUnbindOk",
+        callback: Callback<void>,
+    ): this;
 
-    publish(routingKey: string, message: Buffer | {}, callback: (err?: boolean, msg?: string) => void): void;
+    publish(
+        routingKey: string,
+        message: Buffer | {},
+        callback: (err?: boolean, msg?: string) => void,
+    ): void;
     publish(
         routingKey: string,
         message: Buffer | {},
@@ -63,9 +87,21 @@ export interface AMQPExchange extends events.EventEmitter {
      */
     destroy(ifUnused: boolean): void;
 
-    bind(sourceExchange: string, routingKey: string, callback?: Callback<void>): void;
-    unbind(sourceExchange: string, routingKey: string, callback?: Callback<void>): void;
-    bind_headers(exchange: string, routing: string, callback?: Callback<void>): void;
+    bind(
+        sourceExchange: string,
+        routingKey: string,
+        callback?: Callback<void>,
+    ): void;
+    unbind(
+        sourceExchange: string,
+        routingKey: string,
+        callback?: Callback<void>,
+    ): void;
+    bind_headers(
+        exchange: string,
+        routing: string,
+        callback?: Callback<void>,
+    ): void;
 }
 
 export function createConnection(options: ConnectionOptions): AMQPClient;
@@ -96,13 +132,15 @@ export interface ConnectionOptions {
     vhost?: string | undefined;
     noDelay?: boolean | undefined;
     heartbeat?: number | undefined;
-    ssl?: {
-        enabled: boolean;
-        keyFile?: string | undefined;
-        certFile?: string | undefined;
-        caFile?: string | undefined;
-        rejectUnauthorized?: boolean | undefined;
-    } | undefined;
+    ssl?:
+        | {
+              enabled: boolean;
+              keyFile?: string | undefined;
+              certFile?: string | undefined;
+              caFile?: string | undefined;
+              rejectUnauthorized?: boolean | undefined;
+          }
+        | undefined;
 
     /** Default: 'node-amqp' */
     product?: string | undefined;
@@ -127,18 +165,22 @@ export interface ConnectionOptions {
     /** Default: 1000 */
     reconnectBackoffTime?: number | undefined;
 
-    clientProperties?: {
-        applicationName?: string | undefined;
-        capabilities?: {
-            consumer_cancel_notify?: boolean | undefined;
-        } | undefined;
-        /** Default: 'node-' + process.version */
-        platform?: string | undefined;
-        /** Default: node-amqp */
-        product?: string | undefined;
-        /** Default: 'nodeAMQPVersion' */
-        version?: string | undefined;
-    } | undefined;
+    clientProperties?:
+        | {
+              applicationName?: string | undefined;
+              capabilities?:
+                  | {
+                        consumer_cancel_notify?: boolean | undefined;
+                    }
+                  | undefined;
+              /** Default: 'node-' + process.version */
+              platform?: string | undefined;
+              /** Default: node-amqp */
+              product?: string | undefined;
+              /** Default: 'nodeAMQPVersion' */
+              version?: string | undefined;
+          }
+        | undefined;
 }
 
 export interface QueueOptions {

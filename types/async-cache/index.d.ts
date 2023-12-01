@@ -6,7 +6,7 @@ declare const AsyncCache: AsyncCacheFactory;
 
 interface AsyncCacheFactory {
     <T>(options: AsyncCache.Options<T>): AsyncCache.Cache<T>;
-    new<T>(options: AsyncCache.Options<T>): AsyncCache.Cache<T>;
+    new <T>(options: AsyncCache.Options<T>): AsyncCache.Cache<T>;
 }
 
 declare namespace AsyncCache {
@@ -23,6 +23,9 @@ declare namespace AsyncCache {
     }
 
     interface Options<T> extends LRUOptions<string, T> {
-        load(key: string, callback: (error: any, asyncValue: T, maxAge?: number) => void): void;
+        load(
+            key: string,
+            callback: (error: any, asyncValue: T, maxAge?: number) => void,
+        ): void;
     }
 }

@@ -1,4 +1,9 @@
-import { DecoratorFunction, Parameters, StoryApi, StoryFn } from "@storybook/addons";
+import {
+    DecoratorFunction,
+    Parameters,
+    StoryApi,
+    StoryFn,
+} from "@storybook/addons";
 import { StoryContext } from "@storybook/csf/dist/story";
 import { ComponentType, ReactElement } from "react";
 
@@ -26,9 +31,11 @@ export interface Options {
     propTables?: Array<ComponentType<any>> | false | undefined;
     propTablesExclude?: Array<ComponentType<any>> | undefined;
     styles?: object | undefined;
-    components?: {
-        [key: string]: ComponentType<any>;
-    } | undefined;
+    components?:
+        | {
+              [key: string]: ComponentType<any>;
+          }
+        | undefined;
     /**
      * @deprecated "marksyConf" option has been renamed to "components"
      */
@@ -61,8 +68,15 @@ export function setDefaults(newDefaults: Options): Options;
 
 declare module "@storybook/addons" {
     interface ClientStoryApi<StoryFnReturnType = unknown> {
-        storiesOf(kind: string, module: NodeModule): StoryApi<StoryFnReturnType>;
-        addParameters(parameter: Parameters & { info: Options }): StoryApi<StoryFnReturnType>;
-        addDecorator(decorator: DecoratorFunction<StoryFnReturnType>): StoryApi<StoryFnReturnType>;
+        storiesOf(
+            kind: string,
+            module: NodeModule,
+        ): StoryApi<StoryFnReturnType>;
+        addParameters(
+            parameter: Parameters & { info: Options },
+        ): StoryApi<StoryFnReturnType>;
+        addDecorator(
+            decorator: DecoratorFunction<StoryFnReturnType>,
+        ): StoryApi<StoryFnReturnType>;
     }
 }

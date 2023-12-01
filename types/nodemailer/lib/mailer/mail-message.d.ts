@@ -18,9 +18,13 @@ declare class MailMessage<T = any> {
         callback: (err: Error | null, value?: any) => any,
     ): Promise<any>;
 
-    resolveAll(callback: (err?: Error | null, data?: Mail.Options) => void): void;
+    resolveAll(
+        callback: (err?: Error | null, data?: Mail.Options) => void,
+    ): void;
 
-    normalize(callback: (err?: Error | null, data?: Mail.Options) => void): void;
+    normalize(
+        callback: (err?: Error | null, data?: Mail.Options) => void,
+    ): void;
 
     setMailerHeader(): void;
 

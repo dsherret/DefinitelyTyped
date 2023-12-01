@@ -76,7 +76,8 @@ declare namespace makeObjectStruct {
     }
 
     type ObjectDescriptor<TObj> = ReadonlyArray<
-        ObjectDescriptorTuple<TObj, keyof TObj> | ObjectDescriptorMap<TObj, keyof TObj>
+        | ObjectDescriptorTuple<TObj, keyof TObj>
+        | ObjectDescriptorMap<TObj, keyof TObj>
     >;
 
     type ObjectDescriptorTuple<TObj, TKey> = TKey extends keyof TObj
@@ -187,11 +188,16 @@ declare namespace makeObjectStruct {
      * @param itemCodec May be any varstruct compatible codec, including a `VarArray`.
      * As long as it can encode every element in the array.
      */
-    function VarArray<T>(lengthCodec: Codec<number>, itemCodec: Codec<T>): Codec<T[]>;
+    function VarArray<T>(
+        lengthCodec: Codec<number>,
+        itemCodec: Codec<T>,
+    ): Codec<T[]>;
     /**
      * Creates codec that encodes an array with *fixed* length and *various* types.
      */
-    function Sequence<TCodecs extends readonly [...Array<Codec<any>>]>(itemCodecs: TCodecs): Codec<CodecTypes<TCodecs>>;
+    function Sequence<TCodecs extends readonly [...Array<Codec<any>>]>(
+        itemCodecs: TCodecs,
+    ): Codec<CodecTypes<TCodecs>>;
 
     /**
      * Creates a *fixed* length buffer codec.
@@ -233,7 +239,10 @@ declare namespace makeObjectStruct {
      * @param lengthCodec May be variable length itself, but must encode an integer.
      * @param [encoding='utf-8'] The encoding of the string.
      */
-    function VarString(lengthCodec: Codec<number>, encoding?: string): Codec<string>;
+    function VarString(
+        lengthCodec: Codec<number>,
+        encoding?: string,
+    ): Codec<string>;
 
     /**
      * Creates a codec that will call `checkValueCallback` before encode and after decode.
@@ -241,19 +250,25 @@ declare namespace makeObjectStruct {
      * @param valueCodec The codec for the value.
      * @param checkValueCallback Should throw error if the given `value` is wrong.
      */
-    function Bound<T>(valueCodec: Codec<T>, checkValueCallback: (value: T) => asserts value is T): Codec<T>;
+    function Bound<T>(
+        valueCodec: Codec<T>,
+        checkValueCallback: (value: T) => asserts value is T,
+    ): Codec<T>;
 
     /**
      * Creates a codec that will encode `constantValue` every time (and will throw
      * if given any value other than `constantValue`), and will decode `constantValue`
      * if it exists (throwing otherwise).
      */
-    function Value<T>(valueCodec: Codec<T>, constantValue: T): Codec<T | undefined>;
+    function Value<T>(
+        valueCodec: Codec<T>,
+        constantValue: T,
+    ): Codec<T | undefined>;
 }
 
-type CodecType<T> = T extends makeObjectStruct.Codec<infer TCodec> ? TCodec : never;
-type CodecTypes<Tuple extends readonly [...any[]]> =
-    & {
-        [k in keyof Tuple]: CodecType<Tuple[k]>;
-    }
-    & { length: Tuple["length"] };
+type CodecType<T> = T extends makeObjectStruct.Codec<infer TCodec>
+    ? TCodec
+    : never;
+type CodecTypes<Tuple extends readonly [...any[]]> = {
+    [k in keyof Tuple]: CodecType<Tuple[k]>;
+} & { length: Tuple["length"] };

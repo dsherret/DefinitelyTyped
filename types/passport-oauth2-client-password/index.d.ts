@@ -18,11 +18,18 @@ interface VerifyFunctionWithRequest {
 }
 
 interface VerifyFunction {
-    (clientId: string, clientSecret: string, done: (error: any, client?: any, info?: any) => void): void;
+    (
+        clientId: string,
+        clientSecret: string,
+        done: (error: any, client?: any, info?: any) => void,
+    ): void;
 }
 
 declare class Strategy extends passport.Strategy {
-    constructor(options: StrategyOptionsWithRequestInterface, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: StrategyOptionsWithRequestInterface,
+        verify: VerifyFunctionWithRequest,
+    );
     constructor(verify: VerifyFunction);
 
     name: string;

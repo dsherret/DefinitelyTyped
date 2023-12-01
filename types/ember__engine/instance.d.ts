@@ -21,4 +21,6 @@ export default class EngineInstance extends EmberObject {
     boot(): Promise<EngineInstance>;
 }
 
-export default interface EngineInstance extends RegistryProxyMixin, ContainerProxyMixin {}
+export default interface EngineInstance
+    extends RegistryProxyMixin,
+        ContainerProxyMixin {}

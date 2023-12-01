@@ -5,8 +5,10 @@ import { default as MediaPlaceholder } from "../media-placeholder";
 
 declare namespace MediaUpload {
     interface Props<T extends boolean>
-        extends Pick<MediaPlaceholder.Props<T>, "addToGallery" | "allowedTypes" | "multiple" | "onSelect" | "value">
-    {
+        extends Pick<
+            MediaPlaceholder.Props<T>,
+            "addToGallery" | "allowedTypes" | "multiple" | "onSelect" | "value"
+        > {
         children?: never | undefined;
         /**
          * If `true`, the component will initiate all the states required to represent a gallery. By
@@ -34,6 +36,8 @@ declare namespace MediaUpload {
         title?: string | undefined;
     }
 }
-declare function MediaUpload<T extends boolean = false>(props: MediaUpload.Props<T>): JSX.Element;
+declare function MediaUpload<T extends boolean = false>(
+    props: MediaUpload.Props<T>,
+): JSX.Element;
 
 export default MediaUpload;

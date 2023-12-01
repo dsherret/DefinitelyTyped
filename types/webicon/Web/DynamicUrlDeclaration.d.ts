@@ -4,7 +4,8 @@ import { UrlDeclarationBase } from "./UrlDeclarationBase";
 /**
  * Represents a dynamically generated url.
  */
-export interface DynamicUrlDeclaration<T = undefined> extends UrlDeclarationBase {
+export interface DynamicUrlDeclaration<T = undefined>
+    extends UrlDeclarationBase {
     /**
      * Either the actual url or a function for generating the url.
      */

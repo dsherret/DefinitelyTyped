@@ -16,7 +16,7 @@ declare namespace Moon {
     }
 
     interface MoonConstructor {
-        new<Props extends string = never, Data = {}, Methods = {}>(
+        new <Props extends string = never, Data = {}, Methods = {}>(
             options?: ConstructorOptions<Props, Data, Methods>,
         ): Instance<Data & Methods & Record<Props, any>>;
     }
@@ -33,13 +33,19 @@ declare namespace Moon {
         directive(name: string, action: (el: any, val: any) => void): void;
     }
 
-    type ConstructorOptions<Props extends string, Data, Methods> =
-        & ComponentOptionsProperties<Props, (() => Data) | Data, Methods>
-        & ThisType<Instance<Data & Methods & Record<Props, any>>>;
+    type ConstructorOptions<
+        Props extends string,
+        Data,
+        Methods,
+    > = ComponentOptionsProperties<Props, (() => Data) | Data, Methods> &
+        ThisType<Instance<Data & Methods & Record<Props, any>>>;
 
-    type ComponentOptions<Props extends string, Data, Methods> =
-        & ComponentOptionsProperties<Props, () => Data, Methods>
-        & ThisType<Instance<Data & Methods & Record<Props, any>>>;
+    type ComponentOptions<
+        Props extends string,
+        Data,
+        Methods,
+    > = ComponentOptionsProperties<Props, () => Data, Methods> &
+        ThisType<Instance<Data & Methods & Record<Props, any>>>;
 
     interface ComponentOptionsProperties<Props extends string, Data, Methods> {
         el?: string | HTMLElement | undefined;
@@ -55,7 +61,12 @@ declare namespace Moon {
     }
 
     interface CreateElement {
-        (tag: "#text", attrs: Record<string, any>, metadata?: any, children?: string): VDomElement;
+        (
+            tag: "#text",
+            attrs: Record<string, any>,
+            metadata?: any,
+            children?: string,
+        ): VDomElement;
         (
             tag: string | Instance<object>,
             attrs: Record<string, any>,

@@ -200,7 +200,9 @@ jQuery(function( $ ) {
      */
     /* eslint-disable @definitelytyped/no-unnecessary-generics */
     // tslint:disable-next-line:unified-signatures
-    <TElement = HTMLElement>(callback: (this: Document, $: JQueryStatic) => void): JQuery<TElement>;
+    <TElement = HTMLElement>(
+        callback: (this: Document, $: JQueryStatic) => void,
+    ): JQuery<TElement>;
     /* eslint-enable @definitelytyped/no-unnecessary-generics */
     /**
      * Return a collection of matched elements either found in the DOM based on passed argument(s) or created by passing an HTML string.
@@ -358,7 +360,9 @@ $.ajax({ data: myData });
      * @deprecated ​ Deprecated since 3.3. Internal. See \`{@link https://github.com/jquery/jquery/issues/3384 }\`.
      */
     camelCase(value: string): string;
-    cleanData(elems: ArrayLike<Element | Document | Window | JQuery.PlainObject>): void;
+    cleanData(
+        elems: ArrayLike<Element | Document | Window | JQuery.PlainObject>,
+    ): void;
     /**
      * Check to see if a DOM element is a descendant of another DOM element.
      * @param container The DOM element that may contain the other element.
@@ -461,7 +465,11 @@ $( "button" ).click( function() {
     // `unified-signatures` is disabled so that behavior when passing `undefined` to `value` can be documented. Unifying the signatures
     // results in potential confusion for users from an unexpected parameter.
     // tslint:disable-next-line:unified-signatures
-    data(element: Element | Document | Window | JQuery.PlainObject, key: string, value: undefined): any;
+    data(
+        element: Element | Document | Window | JQuery.PlainObject,
+        key: string,
+        value: undefined,
+    ): any;
     /**
      * Returns value at named data store for the element, as set by `jQuery.data(element, name, value)`, or the full data store for the element.
      * @param element The DOM element to query for the data.
@@ -509,7 +517,10 @@ $( "span:last" ).text( jQuery.data( div, "test" ).last );
 </html>
 ```
      */
-    data(element: Element | Document | Window | JQuery.PlainObject, key?: string): any;
+    data(
+        element: Element | Document | Window | JQuery.PlainObject,
+        key?: string,
+    ): any;
     /**
      * Execute the next function on the queue for the matched element.
      * @param element A DOM element from which to remove and execute a queued function.
@@ -619,7 +630,10 @@ $.each( [ "a", "b", "c" ], function( i, l ){
 });
 ```
      */
-    each<T>(array: ArrayLike<T>, callback: (this: T, indexInArray: number, value: T) => any): ArrayLike<T>;
+    each<T>(
+        array: ArrayLike<T>,
+        callback: (this: T, indexInArray: number, value: T) => any,
+    ): ArrayLike<T>;
     /**
      * A generic iterator function, which can be used to seamlessly iterate over both objects and arrays. Arrays and array-like objects with a length property (such as a function's arguments object) are iterated by numeric index, from 0 to length-1. Other objects are iterated via their named properties.
      * @param obj The object to iterate over.
@@ -677,7 +691,10 @@ $.each({ name: "John", lang: "JS" }, function( k, v ) {
 });
 ```
      */
-    each<T, K extends keyof T>(obj: T, callback: (this: T[K], propertyName: K, valueOfProperty: T[K]) => any): T;
+    each<T, K extends keyof T>(
+        obj: T,
+        callback: (this: T[K], propertyName: K, valueOfProperty: T[K]) => any,
+    ): T;
     /**
      * Takes a string and throws an exception containing it.
      * @param message The message to send out.
@@ -861,7 +878,14 @@ $( "#log" ).append( JSON.stringify( object1 ) );
 </html>
 ```
      */
-    extend<T, U, V, W, X>(deep: true, target: T, object1: U, object2: V, object3: W, object4: X): T & U & V & W & X;
+    extend<T, U, V, W, X>(
+        deep: true,
+        target: T,
+        object1: U,
+        object2: V,
+        object3: W,
+        object4: X,
+    ): T & U & V & W & X;
     /**
      * Merge the contents of two or more objects together into the first object.
      * @param deep If true, the merge becomes recursive (aka. deep copy). Passing false for this argument is not supported.
@@ -906,7 +930,13 @@ $( "#log" ).append( JSON.stringify( object1 ) );
 </html>
 ```
      */
-    extend<T, U, V, W>(deep: true, target: T, object1: U, object2: V, object3: W): T & U & V & W;
+    extend<T, U, V, W>(
+        deep: true,
+        target: T,
+        object1: U,
+        object2: V,
+        object3: W,
+    ): T & U & V & W;
     /**
      * Merge the contents of two or more objects together into the first object.
      * @param deep If true, the merge becomes recursive (aka. deep copy). Passing false for this argument is not supported.
@@ -1288,7 +1318,13 @@ $( "#log" ).append( "<div><b>settings -- </b>" + JSON.stringify( settings ) + "<
 </html>
 ```
      */
-    extend<T, U, V, W, X>(target: T, object1: U, object2: V, object3: W, object4: X): T & U & V & W & X;
+    extend<T, U, V, W, X>(
+        target: T,
+        object1: U,
+        object2: V,
+        object3: W,
+        object4: X,
+    ): T & U & V & W & X;
     /**
      * Merge the contents of two or more objects together into the first object.
      * @param target An object that will receive the new properties if additional objects are passed in or that will
@@ -1362,7 +1398,12 @@ $( "#log" ).append( "<div><b>settings -- </b>" + JSON.stringify( settings ) + "<
 </html>
 ```
      */
-    extend<T, U, V, W>(target: T, object1: U, object2: V, object3: W): T & U & V & W;
+    extend<T, U, V, W>(
+        target: T,
+        object1: U,
+        object2: V,
+        object3: W,
+    ): T & U & V & W;
     /**
      * Merge the contents of two or more objects together into the first object.
      * @param target An object that will receive the new properties if additional objects are passed in or that will
@@ -1627,7 +1668,11 @@ $.get( "test.php", function( data ) {
      */
     get(
         url: string,
-        data_success: JQuery.PlainObject | string | JQuery.jqXHR.DoneCallback | null,
+        data_success:
+            | JQuery.PlainObject
+            | string
+            | JQuery.jqXHR.DoneCallback
+            | null,
         dataType: string,
     ): JQuery.jqXHR;
     /**
@@ -1662,7 +1707,10 @@ $.get( "test.cgi", { name: "John", time: "2pm" } )
   });
 ```
      */
-    get(url: string, success_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string): JQuery.jqXHR;
+    get(
+        url: string,
+        success_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string,
+    ): JQuery.jqXHR;
     /**
      * Load data from the server using a HTTP GET request.
      * @param url_settings _&#x40;param_ `url_settings`
@@ -1689,7 +1737,11 @@ $.get( "test.php" );
      * @see \`{@link https://api.jquery.com/jQuery.getJSON/ }\`
      * @since 1.0
      */
-    getJSON(url: string, data: JQuery.PlainObject | string, success: JQuery.jqXHR.DoneCallback): JQuery.jqXHR;
+    getJSON(
+        url: string,
+        data: JQuery.PlainObject | string,
+        success: JQuery.jqXHR.DoneCallback,
+    ): JQuery.jqXHR;
     /**
      * Load JSON-encoded data from the server using a GET HTTP request.
      * @param url A string containing the URL to which the request is sent.
@@ -1759,7 +1811,10 @@ $.getJSON( "test.js", { name: "John", time: "2pm" } )
 });
 ```
      */
-    getJSON(url: string, success_data?: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string): JQuery.jqXHR;
+    getJSON(
+        url: string,
+        success_data?: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string,
+    ): JQuery.jqXHR;
     /**
      * Load a JavaScript file from the server using a GET HTTP request, then execute it.
      * @param url A string containing the URL to which the request is sent.
@@ -1833,14 +1888,19 @@ $.getScript( url, function() {
 </html>
 ```
      */
-    getScript(url: string, success?: JQuery.jqXHR.DoneCallback<string | undefined>): JQuery.jqXHR<string | undefined>;
+    getScript(
+        url: string,
+        success?: JQuery.jqXHR.DoneCallback<string | undefined>,
+    ): JQuery.jqXHR<string | undefined>;
     /**
      * Load a JavaScript file from the server using a GET HTTP request, then execute it.
      * @see \`{@link https://api.jquery.com/jQuery.getScript/ }\`
      * @since 1.12
      * @since 2.2
      */
-    getScript(options: JQuery.UrlAjaxSettings): JQuery.jqXHR<string | undefined>;
+    getScript(
+        options: JQuery.UrlAjaxSettings,
+    ): JQuery.jqXHR<string | undefined>;
     /**
      * Execute some JavaScript code globally.
      * @param code The JavaScript code to execute.
@@ -1926,7 +1986,11 @@ $.grep( [ 0, 1, 2 ], function( n, i ) {
 }, true );
 ```
      */
-    grep<T>(array: ArrayLike<T>, funсtion: (elementOfArray: T, indexInArray: number) => boolean, invert?: boolean): T[];
+    grep<T>(
+        array: ArrayLike<T>,
+        funсtion: (elementOfArray: T, indexInArray: number) => boolean,
+        invert?: boolean,
+    ): T[];
     /**
      * Determine whether an element has any jQuery data associated with it.
      * @param element A DOM element to be checked for data.
@@ -2396,7 +2460,11 @@ var keys = $.map( dimensions, function( value, key ) {
      */
     map<T, K extends keyof T, TReturn>(
         obj: T,
-        callback: (this: Window, propertyOfObject: T[K], key: K) => JQuery.TypeOrArray<TReturn> | null | undefined,
+        callback: (
+            this: Window,
+            propertyOfObject: T[K],
+            key: K,
+        ) => JQuery.TypeOrArray<TReturn> | null | undefined,
     ): TReturn[];
     /**
      * Merge the contents of two arrays together into the first array.
@@ -2585,7 +2653,10 @@ $.param({ a: { b: 1, c: 2 }, d: [ 3, 4, { e: 5 } ] });
 </html>
 ```
      */
-    param(obj: any[] | JQuery.PlainObject | JQuery, traditional?: boolean): string;
+    param(
+        obj: any[] | JQuery.PlainObject | JQuery,
+        traditional?: boolean,
+    ): string;
     /**
      * Parses a string into an array of DOM nodes.
      * @param data HTML string to be parsed
@@ -2594,7 +2665,11 @@ $.param({ a: { b: 1, c: 2 }, d: [ 3, 4, { e: 5 } ] });
      * @see \`{@link https://api.jquery.com/jQuery.parseHTML/ }\`
      * @since 1.8
      */
-    parseHTML(data: string, context: Document | null | undefined, keepScripts: boolean): JQuery.Node[];
+    parseHTML(
+        data: string,
+        context: Document | null | undefined,
+        keepScripts: boolean,
+    ): JQuery.Node[];
     /**
      * Parses a string into an array of DOM nodes.
      * @param data HTML string to be parsed
@@ -2644,7 +2719,10 @@ $( "<ol></ol>" )
 </html>
 ```
      */
-    parseHTML(data: string, context_keepScripts?: Document | null | boolean): JQuery.Node[];
+    parseHTML(
+        data: string,
+        context_keepScripts?: Document | null | boolean,
+    ): JQuery.Node[];
     /**
      * Takes a well-formed JSON string and returns the resulting JavaScript value.
      * @param json The JSON string to parse.
@@ -2739,7 +2817,11 @@ $.post( "test.php", { func: "getNameAndTime" }, function( data ) {
      */
     post(
         url: string,
-        data_success: JQuery.PlainObject | string | JQuery.jqXHR.DoneCallback | null,
+        data_success:
+            | JQuery.PlainObject
+            | string
+            | JQuery.jqXHR.DoneCallback
+            | null,
         dataType: string,
     ): JQuery.jqXHR;
     /**
@@ -2822,7 +2904,10 @@ $( "#searchForm" ).submit(function( event ) {
 </html>
 ```
      */
-    post(url: string, success_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string): JQuery.jqXHR;
+    post(
+        url: string,
+        success_data: JQuery.jqXHR.DoneCallback | JQuery.PlainObject | string,
+    ): JQuery.jqXHR;
     /**
      * Load data from the server using a HTTP POST request.
      * @param url_settings _&#x40;param_ `url_settings`
@@ -2974,7 +3059,12 @@ $.post( "test.php" );
      * @since 1.9
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
-    proxy<TReturn, A, B>(funсtion: (a: A, b: B) => TReturn, context: null | undefined, a: A, b: B): () => TReturn;
+    proxy<TReturn, A, B>(
+        funсtion: (a: A, b: B) => TReturn,
+        context: null | undefined,
+        a: A,
+        b: B,
+    ): () => TReturn;
     /**
      * Takes a function and returns a new one that will always have a particular context.
      * @param funсtion The function whose context will be changed.
@@ -2984,7 +3074,11 @@ $.post( "test.php" );
      * @since 1.9
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
-    proxy<TReturn, A>(funсtion: (a: A) => TReturn, context: null | undefined, a: A): () => TReturn;
+    proxy<TReturn, A>(
+        funсtion: (a: A) => TReturn,
+        context: null | undefined,
+        a: A,
+    ): () => TReturn;
     /**
      * Takes a function and returns a new one that will always have a particular context.
      * @param funсtion The function whose context will be changed.
@@ -2993,7 +3087,10 @@ $.post( "test.php" );
      * @since 1.9
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
-    proxy<TReturn>(funсtion: () => TReturn, context: null | undefined): () => TReturn;
+    proxy<TReturn>(
+        funсtion: () => TReturn,
+        context: null | undefined,
+    ): () => TReturn;
 
     // #endregion
 
@@ -3135,7 +3232,11 @@ $.post( "test.php" );
      * @since 1.9
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
-    proxy<TReturn, A, T>(funсtion: (a: A, t: T) => TReturn, context: null | undefined, a: A): (t: T) => TReturn;
+    proxy<TReturn, A, T>(
+        funсtion: (a: A, t: T) => TReturn,
+        context: null | undefined,
+        a: A,
+    ): (t: T) => TReturn;
     /**
      * Takes a function and returns a new one that will always have a particular context.
      * @param funсtion The function whose context will be changed.
@@ -3144,7 +3245,10 @@ $.post( "test.php" );
      * @since 1.9
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
-    proxy<TReturn, T>(funсtion: (t: T) => TReturn, context: null | undefined): (t: T) => TReturn;
+    proxy<TReturn, T>(
+        funсtion: (t: T) => TReturn,
+        context: null | undefined,
+    ): (t: T) => TReturn;
 
     // #endregion
 
@@ -3167,7 +3271,17 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, F, G, T, U>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T, u: U) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+            u: U,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3299,7 +3413,10 @@ $.post( "test.php" );
      * @since 1.9
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
-    proxy<TReturn, T, U>(funсtion: (t: T, u: U) => TReturn, context: null | undefined): (t: T, u: U) => TReturn;
+    proxy<TReturn, T, U>(
+        funсtion: (t: T, u: U) => TReturn,
+        context: null | undefined,
+    ): (t: T, u: U) => TReturn;
 
     // #endregion
 
@@ -3322,7 +3439,18 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, F, G, T, U, V>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T, u: U, v: V) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+            u: U,
+            v: V,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3347,7 +3475,17 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, F, T, U, V>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, f: F, t: T, u: U, v: V) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+            u: U,
+            v: V,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3480,7 +3618,19 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, F, G, T, U, V, W>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T, u: U, v: V, w: W) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3505,7 +3655,18 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, F, T, U, V, W>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, f: F, t: T, u: U, v: V, w: W) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3528,7 +3689,17 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, T, U, V, W>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, t: T, u: U, v: V, w: W) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3638,7 +3809,20 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, F, G, T, U, V, W, X>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3663,7 +3847,19 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, F, T, U, V, W, X>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, f: F, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3686,7 +3882,18 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, T, U, V, W, X>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3707,7 +3914,17 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, T, U, V, W, X>(
-        funсtion: (a: A, b: B, c: C, d: D, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3796,7 +4013,21 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, F, G, T, U, V, W, X, Y>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3821,7 +4052,20 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, F, T, U, V, W, X, Y>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, f: F, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3844,7 +4088,19 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, T, U, V, W, X, Y>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3865,7 +4121,18 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, T, U, V, W, X, Y>(
-        funсtion: (a: A, b: B, c: C, d: D, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -3884,7 +4151,17 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, T, U, V, W, X, Y>(
-        funсtion: (a: A, b: B, c: C, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -4033,7 +4310,21 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, E, T, U, V, W, X, Y, Z>(
-        funсtion: (a: A, b: B, c: C, d: D, e: E, t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+            z: Z,
+            ...args: any[]
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -4054,7 +4345,20 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, D, T, U, V, W, X, Y, Z>(
-        funсtion: (a: A, b: B, c: C, d: D, t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+            z: Z,
+            ...args: any[]
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -4073,7 +4377,19 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, C, T, U, V, W, X, Y, Z>(
-        funсtion: (a: A, b: B, c: C, t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            c: C,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+            z: Z,
+            ...args: any[]
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -4090,7 +4406,18 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, B, T, U, V, W, X, Y, Z>(
-        funсtion: (a: A, b: B, t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn,
+        funсtion: (
+            a: A,
+            b: B,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+            z: Z,
+            ...args: any[]
+        ) => TReturn,
         context: null | undefined,
         a: A,
         b: B,
@@ -4105,7 +4432,17 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, A, T, U, V, W, X, Y, Z>(
-        funсtion: (a: A, t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn,
+        funсtion: (
+            a: A,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+            z: Z,
+            ...args: any[]
+        ) => TReturn,
         context: null | undefined,
         a: A,
     ): (t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn;
@@ -4118,7 +4455,16 @@ $.post( "test.php" );
      * @deprecated ​ Deprecated since 3.3. Use \`{@link Function#bind }\`.
      */
     proxy<TReturn, T, U, V, W, X, Y, Z>(
-        funсtion: (t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn,
+        funсtion: (
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+            z: Z,
+            ...args: any[]
+        ) => TReturn,
         context: null | undefined,
     ): (t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn;
 
@@ -4292,7 +4638,16 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, G>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, g: G) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -4436,7 +4791,15 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -5125,7 +5488,11 @@ $( "#test" )
 </html>
 ```
      */
-    proxy<TContext, TReturn, A>(funсtion: (this: TContext, a: A) => TReturn, context: TContext, a: A): () => TReturn;
+    proxy<TContext, TReturn, A>(
+        funсtion: (this: TContext, a: A) => TReturn,
+        context: TContext,
+        a: A,
+    ): () => TReturn;
     /**
      * Takes a function and returns a new one that will always have a particular context.
      * @param funсtion The function whose context will be changed.
@@ -5253,7 +5620,10 @@ $( "#test" )
 </html>
 ```
      */
-    proxy<TContext, TReturn>(funсtion: (this: TContext) => TReturn, context: TContext): () => TReturn;
+    proxy<TContext, TReturn>(
+        funсtion: (this: TContext) => TReturn,
+        context: TContext,
+    ): () => TReturn;
 
     // #endregion
 
@@ -5395,7 +5765,17 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, G, T>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -5539,7 +5919,16 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, T>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, t: T) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -5681,7 +6070,15 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, T>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, t: T) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -6360,7 +6757,10 @@ $( "#test" )
 </html>
 ```
      */
-    proxy<TContext, TReturn, T>(funсtion: (this: TContext, t: T) => TReturn, context: TContext): (t: T) => TReturn;
+    proxy<TContext, TReturn, T>(
+        funсtion: (this: TContext, t: T) => TReturn,
+        context: TContext,
+    ): (t: T) => TReturn;
 
     // #endregion
 
@@ -6502,7 +6902,18 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, G, T, U>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T, u: U) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+            u: U,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -6646,7 +7057,17 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, T, U>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, t: T, u: U) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+            u: U,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -6788,7 +7209,16 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, T, U>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, t: T, u: U) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+            u: U,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -6928,7 +7358,15 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, T, U>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, t: T, u: U) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            t: T,
+            u: U,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -7612,7 +8050,19 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, G, T, U, V>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T, u: U, v: V) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+            u: U,
+            v: V,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -7756,7 +8206,18 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, T, U, V>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, t: T, u: U, v: V) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+            u: U,
+            v: V,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -7898,7 +8359,17 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, T, U, V>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, t: T, u: U, v: V) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+            u: U,
+            v: V,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -8038,7 +8509,16 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, T, U, V>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, t: T, u: U, v: V) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            t: T,
+            u: U,
+            v: V,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -8176,7 +8656,15 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, T, U, V>(
-        funсtion: (this: TContext, a: A, b: B, c: C, t: T, u: U, v: V) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            t: T,
+            u: U,
+            v: V,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -8722,7 +9210,20 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, G, T, U, V, W>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T, u: U, v: V, w: W) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -8866,7 +9367,19 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, T, U, V, W>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, t: T, u: U, v: V, w: W) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -9008,7 +9521,18 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, T, U, V, W>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, t: T, u: U, v: V, w: W) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -9148,7 +9672,17 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, T, U, V, W>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, t: T, u: U, v: V, w: W) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -9286,7 +9820,16 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, T, U, V, W>(
-        funсtion: (this: TContext, a: A, b: B, c: C, t: T, u: U, v: V, w: W) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -9422,7 +9965,15 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, T, U, V, W>(
-        funсtion: (this: TContext, a: A, b: B, t: T, u: U, v: V, w: W) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -9832,7 +10383,21 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, G, T, U, V, W, X>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, g: G, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            g: G,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -9976,7 +10541,20 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, T, U, V, W, X>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -10118,7 +10696,19 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, T, U, V, W, X>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -10258,7 +10848,18 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, T, U, V, W, X>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -10396,7 +10997,17 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, T, U, V, W, X>(
-        funсtion: (this: TContext, a: A, b: B, c: C, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -10532,7 +11143,16 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, T, U, V, W, X>(
-        funсtion: (this: TContext, a: A, b: B, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -10666,7 +11286,15 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, T, U, V, W, X>(
-        funсtion: (this: TContext, a: A, t: T, u: U, v: V, w: W, x: X) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+        ) => TReturn,
         context: TContext,
         a: A,
     ): (t: T, u: U, v: V, w: W, x: X) => TReturn;
@@ -11101,7 +11729,21 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, F, T, U, V, W, X, Y>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, f: F, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            f: F,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -11243,7 +11885,20 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, E, T, U, V, W, X, Y>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, e: E, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            e: E,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -11383,7 +12038,19 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, D, T, U, V, W, X, Y>(
-        funсtion: (this: TContext, a: A, b: B, c: C, d: D, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            d: D,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -11521,7 +12188,18 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, C, T, U, V, W, X, Y>(
-        funсtion: (this: TContext, a: A, b: B, c: C, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            c: C,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -11657,7 +12335,17 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, T, U, V, W, X, Y>(
-        funсtion: (this: TContext, a: A, b: B, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -11791,7 +12479,16 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, T, U, V, W, X, Y>(
-        funсtion: (this: TContext, a: A, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: TContext,
         a: A,
     ): (t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn;
@@ -11923,7 +12620,15 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, T, U, V, W, X, Y>(
-        funсtion: (this: TContext, t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn,
+        funсtion: (
+            this: TContext,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+        ) => TReturn,
         context: TContext,
     ): (t: T, u: U, v: V, w: W, x: X, y: Y) => TReturn;
 
@@ -12842,7 +13547,19 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, B, T, U, V, W, X, Y, Z>(
-        funсtion: (this: TContext, a: A, b: B, t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            b: B,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+            z: Z,
+            ...args: any[]
+        ) => TReturn,
         context: TContext,
         a: A,
         b: B,
@@ -12976,7 +13693,18 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, A, T, U, V, W, X, Y, Z>(
-        funсtion: (this: TContext, a: A, t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn,
+        funсtion: (
+            this: TContext,
+            a: A,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+            z: Z,
+            ...args: any[]
+        ) => TReturn,
         context: TContext,
         a: A,
     ): (t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn;
@@ -13108,7 +13836,17 @@ $( "#test" )
 ```
      */
     proxy<TContext, TReturn, T, U, V, W, X, Y, Z>(
-        funсtion: (this: TContext, t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn,
+        funсtion: (
+            this: TContext,
+            t: T,
+            u: U,
+            v: V,
+            w: W,
+            x: X,
+            y: Y,
+            z: Z,
+            ...args: any[]
+        ) => TReturn,
         context: TContext,
     ): (t: T, u: U, v: V, w: W, x: X, y: Y, z: Z, ...args: any[]) => TReturn;
 
@@ -13298,7 +14036,11 @@ $( "#test" ).on( "click", jQuery.proxy( obj, "test" ) );
 </html>
 ```
      */
-    proxy<TContext>(context: TContext, name: keyof TContext, ...additionalArguments: any[]): (...args: any[]) => any;
+    proxy<TContext>(
+        context: TContext,
+        name: keyof TContext,
+        ...additionalArguments: any[]
+    ): (...args: any[]) => any;
 
     // #endregion
 
@@ -13543,7 +14285,10 @@ $( "span:eq(3)" ).text( "" + jQuery.data( div, "test2" ) );
 </html>
 ```
      */
-    removeData(element: Element | Document | Window | JQuery.PlainObject, name?: string): void;
+    removeData(
+        element: Element | Document | Window | JQuery.PlainObject,
+        name?: string,
+    ): void;
     /**
      * Creates an object containing a set of properties ready to be used in the definition of custom animations.
      * @param duration A string or number determining how long the animation will run.
@@ -13584,7 +14329,10 @@ $( "span:eq(3)" ).text( "" + jQuery.data( div, "test2" ) );
      * @since 1.1
      */
     speed<TElement extends Element = HTMLElement>(
-        duration_complete_settings?: JQuery.Duration | ((this: TElement) => void) | JQuery.SpeedSettings<TElement>,
+        duration_complete_settings?:
+            | JQuery.Duration
+            | ((this: TElement) => void)
+            | JQuery.SpeedSettings<TElement>,
     ): JQuery.EffectsOptions<TElement>;
     /**
      * Remove the whitespace from the beginning and end of a string.
@@ -13790,17 +14538,7 @@ $.when( $.ajax( "/page1.php" ), $.ajax( "/page2.php" ) )
         deferredT: JQuery.Promise<TR1, TJ1> | JQuery.Thenable<TR1> | TR1,
         deferredU: JQuery.Promise<UR1, UJ1> | JQuery.Thenable<UR1> | UR1,
         deferredV: JQuery.Promise<VR1, VJ1> | JQuery.Thenable<VR1> | VR1,
-    ): JQuery.Promise3<
-        TR1,
-        TJ1,
-        never,
-        UR1,
-        UJ1,
-        never,
-        VR1,
-        VJ1,
-        never
-    >;
+    ): JQuery.Promise3<TR1, TJ1, never, UR1, UJ1, never, VR1, VJ1, never>;
     /**
      * Provides a way to execute callback functions based on zero or more Thenable objects, usually Deferred objects that represent asynchronous events.
      * @see \`{@link https://api.jquery.com/jQuery.when/ }\`
@@ -13825,14 +14563,7 @@ $.when( $.ajax( "/page1.php" ), $.ajax( "/page2.php" ) )
     when<TR1, UR1, TJ1 = any, UJ1 = any>(
         deferredT: JQuery.Promise<TR1, TJ1> | JQuery.Thenable<TR1> | TR1,
         deferredU: JQuery.Promise<UR1, UJ1> | JQuery.Thenable<UR1> | UR1,
-    ): JQuery.Promise2<
-        TR1,
-        TJ1,
-        never,
-        UR1,
-        UJ1,
-        never
-    >;
+    ): JQuery.Promise2<TR1, TJ1, never, UR1, UJ1, never>;
     /**
      * Provides a way to execute callback functions based on zero or more Thenable objects, usually Deferred objects that represent asynchronous events.
      * @see \`{@link https://api.jquery.com/jQuery.when/ }\`
@@ -13858,17 +14589,7 @@ $.when( $.ajax( "/page1.php" ), $.ajax( "/page2.php" ) )
         deferredT:
             | JQuery.Promise3<TR1, TJ1, any, TR2, TJ2, any, TR3, TJ3, any>
             | JQuery.Promise2<TR1, TJ1, any, TR2, TJ2, any>,
-    ): JQuery.Promise3<
-        TR1,
-        TJ1,
-        never,
-        TR2,
-        TJ2,
-        never,
-        TR3,
-        TJ3,
-        never
-    >;
+    ): JQuery.Promise3<TR1, TJ1, never, TR2, TJ2, never, TR3, TJ3, never>;
     /**
      * Provides a way to execute callback functions based on zero or more Thenable objects, usually Deferred objects that represent asynchronous events.
      * @see \`{@link https://api.jquery.com/jQuery.when/ }\`
@@ -13916,7 +14637,9 @@ $.when( $.ajax( "/page1.php" ), $.ajax( "/page2.php" ) )
 ```
      */
     when<TR1 = never, TJ1 = never>(
-        ...deferreds: Array<JQuery.Promise<TR1, TJ1> | JQuery.Thenable<TR1> | TR1>
+        ...deferreds: Array<
+            JQuery.Promise<TR1, TJ1> | JQuery.Thenable<TR1> | TR1
+        >
     ): JQuery.Promise<TR1, TJ1, never>;
     /**
      * Provides a way to execute callback functions based on zero or more Thenable objects, usually Deferred objects that represent asynchronous events.

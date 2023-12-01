@@ -3,7 +3,7 @@ import * as ReactDOM from "react-dom";
 import { Editor, EditorProps } from "react-draft-wysiwyg";
 
 const RenderWithHandleKeyCommand = () => {
-    const handleKeyCommand: EditorProps["handleKeyCommand"] = command => {
+    const handleKeyCommand: EditorProps["handleKeyCommand"] = (command) => {
         if (command === "bold") {
             return "handled";
         }
@@ -14,4 +14,7 @@ const RenderWithHandleKeyCommand = () => {
     return <Editor handleKeyCommand={handleKeyCommand} />;
 };
 
-ReactDOM.render(<RenderWithHandleKeyCommand />, document.getElementById("target"));
+ReactDOM.render(
+    <RenderWithHandleKeyCommand />,
+    document.getElementById("target"),
+);

@@ -16,7 +16,11 @@ export type MimeWordEncoding = "Q" | "B";
  * libmime.encodeWord('See on õhin test', 'Q');
  * // --> =?UTF-8?Q?See_on_=C3=B5hin_test?=
  */
-export function encodeWord(data: string | Buffer, mimeWordEncoding?: MimeWordEncoding, maxLength?: number): string;
+export function encodeWord(
+    data: string | Buffer,
+    mimeWordEncoding?: MimeWordEncoding,
+    maxLength?: number,
+): string;
 
 /**
  * Encodes non ascii sequences in a string to mime words.
@@ -33,7 +37,11 @@ export function encodeWords(
     maxLength?: number,
     fromCharset?: string,
 ): string;
-export function encodeWords(data: string | Buffer, mimeWordEncoding?: MimeWordEncoding, fromCharset?: string): string;
+export function encodeWords(
+    data: string | Buffer,
+    mimeWordEncoding?: MimeWordEncoding,
+    fromCharset?: string,
+): string;
 
 /**
  * Decode a complete mime word encoded string.
@@ -43,7 +51,11 @@ export function encodeWords(data: string | Buffer, mimeWordEncoding?: MimeWordEn
  * @param str Mime word encoded string.
  * @returns Decoded unicode string.
  */
-export function decodeWord(charset: string, mimeWordEncoding: MimeWordEncoding, str: string): string;
+export function decodeWord(
+    charset: string,
+    mimeWordEncoding: MimeWordEncoding,
+    str: string,
+): string;
 
 /**
  * Decodes a string that might include one or several mime words. If no mime words are found from the string,
@@ -71,7 +83,11 @@ export function decodeWords(str: string): string;
  * // Content-Type: multipart/alternative;
  * //      boundary="----zzzz----"
  */
-export function foldLines(str: string, lineLength?: number, afterSpace?: boolean): string;
+export function foldLines(
+    str: string,
+    lineLength?: number,
+    afterSpace?: boolean,
+): string;
 
 /**
  * Adds soft line breaks to content marked with `format=flowed` to ensure that no line
@@ -98,7 +114,10 @@ export function decodeFlowed(str: string, delSp?: boolean): string;
  *
  * @param headerLine Single header line, might include linebreaks as well if folded.
  */
-export function decodeHeader(headerLine: string): { key: string; value: string };
+export function decodeHeader(headerLine: string): {
+    key: string;
+    value: string;
+};
 
 /**
  * Parses a block of header lines. Does not decode mime words as every header might have its own

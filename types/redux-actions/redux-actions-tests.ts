@@ -2,18 +2,16 @@ import * as ReduxActions from "redux-actions";
 
 let state: number;
 
-const incrementAction: () => ReduxActions.Action<number> = ReduxActions.createAction<number>(
-    "INCREMENT",
-    () => 1,
-);
+const incrementAction: () => ReduxActions.Action<number> =
+    ReduxActions.createAction<number>("INCREMENT", () => 1);
 
-const multiplyAction: (...args: number[]) => ReduxActions.Action<number> = ReduxActions.createAction<number>(
-    "MULTIPLY",
-);
+const multiplyAction: (...args: number[]) => ReduxActions.Action<number> =
+    ReduxActions.createAction<number>("MULTIPLY");
 
 const actionHandler = ReduxActions.handleAction<number, number>(
     "INCREMENT",
-    (state: number, action: ReduxActions.Action<number>) => state + action.payload,
+    (state: number, action: ReduxActions.Action<number>) =>
+        state + action.payload,
     0,
 );
 
@@ -36,61 +34,99 @@ const actionHandlerWithReduceMap = ReduxActions.handleAction<number, number>(
 state = actionHandlerWithReduceMap(undefined, multiplyAction(10));
 state = actionHandlerWithReduceMap(0, multiplyAction(10));
 
-const actionsHandler = ReduxActions.handleActions({
-    INCREMENT: (state: number, action: ReduxActions.Action<number>) => state + action.payload,
-    MULTIPLY: (state: number, action: ReduxActions.Action<number>) => state * action.payload,
-}, 0);
+const actionsHandler = ReduxActions.handleActions(
+    {
+        INCREMENT: (state: number, action: ReduxActions.Action<number>) =>
+            state + action.payload,
+        MULTIPLY: (state: number, action: ReduxActions.Action<number>) =>
+            state * action.payload,
+    },
+    0,
+);
 
 state = actionsHandler(undefined, incrementAction());
 state = actionsHandler(0, incrementAction());
 
-const actionsHandlerWithInitialState = ReduxActions.handleActions({
-    INCREMENT: {
-        next: (state: number, action: ReduxActions.Action<number>) => state + action.payload,
+const actionsHandlerWithInitialState = ReduxActions.handleActions(
+    {
+        INCREMENT: {
+            next: (state: number, action: ReduxActions.Action<number>) =>
+                state + action.payload,
+        },
+        MULTIPLY: {
+            next: (state: number, action: ReduxActions.Action<number>) =>
+                state * action.payload,
+        },
     },
-    MULTIPLY: {
-        next: (state: number, action: ReduxActions.Action<number>) => state * action.payload,
-    },
-}, 0);
+    0,
+);
 
 state = actionsHandlerWithInitialState(undefined, incrementAction());
 state = actionsHandlerWithInitialState(0, incrementAction());
 
-const actionsHandlerWithRecursiveReducerMap = ReduxActions.handleActions<number, number>({
-    ADJUST: {
-        UP: (state: number, action: ReduxActions.Action<number>) => state + action.payload,
-        DOWN: (state: number, action: ReduxActions.Action<number>) => state - action.payload,
+const actionsHandlerWithRecursiveReducerMap = ReduxActions.handleActions<
+    number,
+    number
+>(
+    {
+        ADJUST: {
+            UP: (state: number, action: ReduxActions.Action<number>) =>
+                state + action.payload,
+            DOWN: (state: number, action: ReduxActions.Action<number>) =>
+                state - action.payload,
+        },
     },
-}, 0);
+    0,
+);
 
-state = actionsHandlerWithRecursiveReducerMap(undefined, { type: "ADJUST/UP", payload: 1 });
-state = actionsHandlerWithRecursiveReducerMap(0, { type: "ADJUST/UP", payload: 1 });
+state = actionsHandlerWithRecursiveReducerMap(undefined, {
+    type: "ADJUST/UP",
+    payload: 1,
+});
+state = actionsHandlerWithRecursiveReducerMap(0, {
+    type: "ADJUST/UP",
+    payload: 1,
+});
 
 const actionsHandlerWithOptions = ReduxActions.handleActions(
     {
-        INCREMENT: (state: number, action: ReduxActions.Action<number>) => state + action.payload,
-        MULTIPLY: (state: number, action: ReduxActions.Action<number>) => state * action.payload,
+        INCREMENT: (state: number, action: ReduxActions.Action<number>) =>
+            state + action.payload,
+        MULTIPLY: (state: number, action: ReduxActions.Action<number>) =>
+            state * action.payload,
     },
     0,
     { prefix: "TEST" },
 );
 
-state = actionsHandlerWithOptions(undefined, { type: "TEST/INCREMENT", payload: 1 });
+state = actionsHandlerWithOptions(undefined, {
+    type: "TEST/INCREMENT",
+    payload: 1,
+});
 state = actionsHandlerWithOptions(0, { type: "TEST/INCREMENT", payload: 1 });
 
-const actionsHandlerWithRecursiveReducerMapAndOptions = ReduxActions.handleActions<number, number>(
-    {
-        ADJUST: {
-            UP: (state: number, action: ReduxActions.Action<number>) => state + action.payload,
-            DOWN: (state: number, action: ReduxActions.Action<number>) => state - action.payload,
+const actionsHandlerWithRecursiveReducerMapAndOptions =
+    ReduxActions.handleActions<number, number>(
+        {
+            ADJUST: {
+                UP: (state: number, action: ReduxActions.Action<number>) =>
+                    state + action.payload,
+                DOWN: (state: number, action: ReduxActions.Action<number>) =>
+                    state - action.payload,
+            },
         },
-    },
-    0,
-    { namespace: "--" },
-);
+        0,
+        { namespace: "--" },
+    );
 
-state = actionsHandlerWithRecursiveReducerMapAndOptions(undefined, { type: "ADJUST--UP", payload: 1 });
-state = actionsHandlerWithRecursiveReducerMapAndOptions(0, { type: "ADJUST--UP", payload: 1 });
+state = actionsHandlerWithRecursiveReducerMapAndOptions(undefined, {
+    type: "ADJUST--UP",
+    payload: 1,
+});
+state = actionsHandlerWithRecursiveReducerMapAndOptions(0, {
+    type: "ADJUST--UP",
+    payload: 1,
+});
 
 // ----------------------------------------------------------------------------------------------------
 
@@ -119,14 +155,16 @@ const richerAction: ReduxActions.ActionMeta<TypedState, MetaType> = {
     },
 };
 
-const typedIncrementAction: () => ReduxActions.Action<TypedPayload> = ReduxActions.createAction<TypedPayload>(
-    "INCREMENT",
-    () => ({ increase: 1 }),
-);
+const typedIncrementAction: () => ReduxActions.Action<TypedPayload> =
+    ReduxActions.createAction<TypedPayload>("INCREMENT", () => ({
+        increase: 1,
+    }));
 
 const typedActionHandler = ReduxActions.handleAction<TypedState, TypedPayload>(
     "INCREMENT",
-    (state: TypedState, action: ReduxActions.Action<TypedPayload>) => ({ value: state.value + 1 }),
+    (state: TypedState, action: ReduxActions.Action<TypedPayload>) => ({
+        value: state.value + 1,
+    }),
     { value: 1 },
 );
 
@@ -136,13 +174,12 @@ actionNoArgs.payload.increase = 1;
 typedState = typedActionHandler(undefined, actionNoArgs);
 typedState = typedActionHandler({ value: 0 }, actionNoArgs);
 
-const typedIncrementAction1TypedArg: (value: number) => ReduxActions.Action<TypedPayload> = ReduxActions.createAction<
+const typedIncrementAction1TypedArg: (
+    value: number,
+) => ReduxActions.Action<TypedPayload> = ReduxActions.createAction<
     TypedPayload,
     number
->(
-    "INCREMENT",
-    amount => ({ increase: amount }),
-);
+>("INCREMENT", (amount) => ({ increase: amount }));
 
 const actionFrom1Arg = typedIncrementAction1TypedArg(10);
 actionFrom1Arg.payload.increase === 10;
@@ -150,17 +187,22 @@ actionFrom1Arg.payload.increase === 10;
 const typedIncrementAction2TypedArgs: (
     numericAmount: number,
     stringAmount: string,
-) => ReduxActions.Action<TypedPayload> = ReduxActions.createAction<TypedPayload, number, string>(
-    "INCREMENT",
-    (numericAmount, stringAmount) => ({ increase: numericAmount + parseInt(stringAmount, 10) }),
-);
+) => ReduxActions.Action<TypedPayload> = ReduxActions.createAction<
+    TypedPayload,
+    number,
+    string
+>("INCREMENT", (numericAmount, stringAmount) => ({
+    increase: numericAmount + parseInt(stringAmount, 10),
+}));
 
 const actionFrom2Args = typedIncrementAction2TypedArgs(10, "100");
 actionFrom1Arg.payload.increase === 110;
 
 const typedActionHandlerReducerMap = ReduxActions.handleActions(
     {
-        INCREMENT: (state: TypedState, action: ReduxActions.Action<any>) => ({ value: state.value + 1 }),
+        INCREMENT: (state: TypedState, action: ReduxActions.Action<any>) => ({
+            value: state.value + 1,
+        }),
     },
     { value: 1 },
 );
@@ -168,22 +210,38 @@ const typedActionHandlerReducerMap = ReduxActions.handleActions(
 typedState = typedActionHandlerReducerMap(undefined, actionFrom1Arg);
 typedState = typedActionHandlerReducerMap({ value: 0 }, actionFrom1Arg);
 
-const typedIncrementByActionWithMetaAnyArgs: (...args: any[]) => ReduxActions.ActionMeta<TypedPayload, MetaType> =
+const typedIncrementByActionWithMetaAnyArgs: (
+    ...args: any[]
+) => ReduxActions.ActionMeta<TypedPayload, MetaType> =
     ReduxActions.createAction<TypedPayload, MetaType>(
         "INCREMENT_BY",
-        amount => ({ increase: amount }),
+        (amount) => ({ increase: amount }),
         (_, remote) => ({ remote }),
     );
 
-const actionMetaFromAnyArgs = typedIncrementByActionWithMetaAnyArgs(10, true, "nic", "cage");
+const actionMetaFromAnyArgs = typedIncrementByActionWithMetaAnyArgs(
+    10,
+    true,
+    "nic",
+    "cage",
+);
 actionMetaFromAnyArgs.payload.increase === 10;
 actionMetaFromAnyArgs.meta.remote;
 
-const typedActionHandlerWithMeta = ReduxActions.handleAction<TypedState, TypedPayload, MetaType>(
+const typedActionHandlerWithMeta = ReduxActions.handleAction<
+    TypedState,
+    TypedPayload,
+    MetaType
+>(
     "INCREMENT_BY",
     {
-        next(state: TypedState, action: ReduxActions.ActionMeta<TypedPayload, MetaType>) {
-            return action.meta.remote ? state : { value: state.value + action.payload.increase };
+        next(
+            state: TypedState,
+            action: ReduxActions.ActionMeta<TypedPayload, MetaType>,
+        ) {
+            return action.meta.remote
+                ? state
+                : { value: state.value + action.payload.increase };
         },
         throw(state: TypedState) {
             return state;
@@ -192,14 +250,29 @@ const typedActionHandlerWithMeta = ReduxActions.handleAction<TypedState, TypedPa
     { value: 1 },
 );
 
-typedState = typedActionHandlerWithMeta(undefined, typedIncrementByActionWithMetaAnyArgs(10));
-typedState = typedActionHandlerWithMeta({ value: 0 }, typedIncrementByActionWithMetaAnyArgs(10));
+typedState = typedActionHandlerWithMeta(
+    undefined,
+    typedIncrementByActionWithMetaAnyArgs(10),
+);
+typedState = typedActionHandlerWithMeta(
+    { value: 0 },
+    typedIncrementByActionWithMetaAnyArgs(10),
+);
 
-const typedActionHandlerReducerMetaMap = ReduxActions.handleActions<TypedState, TypedPayload, MetaType>(
+const typedActionHandlerReducerMetaMap = ReduxActions.handleActions<
+    TypedState,
+    TypedPayload,
+    MetaType
+>(
     {
         INCREMENT_BY: {
-            next(state: TypedState, action: ReduxActions.ActionMeta<TypedPayload, MetaType>) {
-                return action.meta.remote ? state : { value: state.value + action.payload.increase };
+            next(
+                state: TypedState,
+                action: ReduxActions.ActionMeta<TypedPayload, MetaType>,
+            ) {
+                return action.meta.remote
+                    ? state
+                    : { value: state.value + action.payload.increase };
             },
             throw(state: TypedState) {
                 return state;
@@ -210,13 +283,18 @@ const typedActionHandlerReducerMetaMap = ReduxActions.handleActions<TypedState, 
 );
 
 typedState = typedActionHandlerReducerMetaMap(undefined, actionMetaFromAnyArgs);
-typedState = typedActionHandlerReducerMetaMap({ value: 0 }, actionMetaFromAnyArgs);
+typedState = typedActionHandlerReducerMetaMap(
+    { value: 0 },
+    actionMetaFromAnyArgs,
+);
 
-const typedActionWithMeta1TypedArg: (value: number) => ReduxActions.ActionMeta<TypedPayload, MetaType> = ReduxActions
-    .createAction(
+const typedActionWithMeta1TypedArg: (
+    value: number,
+) => ReduxActions.ActionMeta<TypedPayload, MetaType> =
+    ReduxActions.createAction(
         "INCREMENT_BY",
-        amount => ({ increase: amount }),
-        amount => ({ remote: true }),
+        (amount) => ({ increase: amount }),
+        (amount) => ({ remote: true }),
     );
 
 const actionMetaFrom1Arg = typedActionWithMeta1TypedArg(10);
@@ -228,17 +306,21 @@ typedState = typedActionHandlerReducerMetaMap({ value: 0 }, actionMetaFrom1Arg);
 const typedActionWithMeta2TypedArgs: (
     value: number,
     remote: boolean,
-) => ReduxActions.ActionMeta<TypedPayload, MetaType> = ReduxActions.createAction(
-    "INCREMENT_BY",
-    (amount, remote) => ({ increase: amount }),
-    (amount, remote) => ({ remote }),
-);
+) => ReduxActions.ActionMeta<TypedPayload, MetaType> =
+    ReduxActions.createAction(
+        "INCREMENT_BY",
+        (amount, remote) => ({ increase: amount }),
+        (amount, remote) => ({ remote }),
+    );
 
 const actionMetaFrom2Args = typedActionWithMeta2TypedArgs(10, true);
 actionMetaFrom2Args.payload.increase === 10;
 actionMetaFrom2Args.meta.remote;
 
-typedState = typedActionHandlerReducerMetaMap({ value: 0 }, actionMetaFrom2Args);
+typedState = typedActionHandlerReducerMetaMap(
+    { value: 0 },
+    actionMetaFrom2Args,
+);
 
 const act0 = ReduxActions.createAction("ACTION0");
 // https://github.com/redux-utilities/redux-actions/blob/v2.3.0/src/__tests__/createAction-test.js#L111
@@ -248,7 +330,9 @@ act0().payload === undefined;
 act0({ foo: "bar" }).payload.foo === "bar";
 
 // https://github.com/redux-utilities/redux-actions/blob/v2.3.0/src/__tests__/createAction-test.js#L122
-const act0_meta = ReduxActions.createAction("ACTION0_META", null, () => ({ foo: "bar" }));
+const act0_meta = ReduxActions.createAction("ACTION0_META", null, () => ({
+    foo: "bar",
+}));
 act0_meta().payload; // $ExpectType any
 act0_meta().meta.foo === "bar";
 
@@ -256,16 +340,27 @@ const act1 = ReduxActions.createAction<string>("ACTION1");
 act1("hello").payload; // $ExpectType string
 act1("hello").payload === "hello";
 
-const act1_meta = ReduxActions.createAction("ACTION1_META", null, (foo: string) => ({ foo }));
+const act1_meta = ReduxActions.createAction(
+    "ACTION1_META",
+    null,
+    (foo: string) => ({ foo }),
+);
 act1_meta("hello").payload; // $ExpectType any
 act1_meta("hello").payload === "hello";
 act1_meta("hello").meta.foo === "hello";
 
-const act1_type_meta = ReduxActions.createAction("ACTION1_TYPE_META", (x: number) => x, () => ({ foo: "bar" }));
+const act1_type_meta = ReduxActions.createAction(
+    "ACTION1_TYPE_META",
+    (x: number) => x,
+    () => ({ foo: "bar" }),
+);
 act1_type_meta(42).payload; // $ExpectType number
 act1_type_meta(42).meta.foo === "bar";
 
-const act1_identity = ReduxActions.createAction("ACTION1_IDENTITY", (x: string) => x);
+const act1_identity = ReduxActions.createAction(
+    "ACTION1_IDENTITY",
+    (x: string) => x,
+);
 act1_identity("hello").payload; // $ExpectType string
 act1_identity("hello").payload === "hello";
 
@@ -275,11 +370,19 @@ act2({ load: true }).payload.load; // $ExpectType boolean
 const act3 = ReduxActions.createAction("ACTION3", (s: string) => ({ s }));
 act3("hello").payload.s === "hello";
 
-const act4 = ReduxActions.createAction("ACTION4", null, (x1: string, x2: number) => ({}));
+const act4 = ReduxActions.createAction(
+    "ACTION4",
+    null,
+    (x1: string, x2: number) => ({}),
+);
 act4("hello", 42).payload; // $ExpectType any
 Object.getOwnPropertyNames(act4("hello", 42).payload).length === 2;
 
-const act5 = ReduxActions.createAction("ACTION5", null, (...args: any[]) => ({}));
+const act5 = ReduxActions.createAction(
+    "ACTION5",
+    null,
+    (...args: any[]) => ({}),
+);
 act5("hello", 42).payload; // $ExpectType any
 Object.getOwnPropertyNames(act5("hello", 42).payload).length === 2;
 
@@ -299,7 +402,9 @@ interface Actions1Payload {
     [key: string]: number;
 }
 const { actions1_actionOne } = ReduxActions.createActions({
-    ACTION_ONE: (key: string, value: number): Actions1Payload => ({ [key]: value }),
+    ACTION_ONE: (key: string, value: number): Actions1Payload => ({
+        [key]: value,
+    }),
 });
 actions1_actionOne("value", 1).payload; // $ExpectType Actions1Payload
 actions1_actionOne("value", 1).payload.value === 1;
@@ -307,29 +412,51 @@ actions1_actionOne("value", 1).payload.value === 1;
 const options: ReduxActions.Options = {
     prefix: "TEST",
 };
-const { actions2_actionOne } = ReduxActions.createActions<any>("ACTION_ONE", options);
+const { actions2_actionOne } = ReduxActions.createActions<any>(
+    "ACTION_ONE",
+    options,
+);
 actions2_actionOne("value").payload; // $ExpectType any
 actions2_actionOne("value").type === "TEST/ACTION_ONE";
 
-ReduxActions.handleAction<{ hello: string }, string>(act1, (state, action) => {
-    return { hello: action.payload };
-}, { hello: "greetings" });
-
-ReduxActions.handleAction<{ hello: { load: boolean } }, { load: boolean }>(act2, (state, action) => {
-    return { hello: action.payload };
-}, { hello: { load: true } });
-
-ReduxActions.handleAction(act3, (state, action) => {
-    return { hello: action.payload.s };
-}, { hello: "greetings" });
-
-ReduxActions.handleAction(ReduxActions.combineActions(act1, act3, act2), (state, action) => state + 1, 0);
-
-ReduxActions.handleActions({
-    [`${ReduxActions.combineActions(act1, act3, act2)}`](state, action) {
-        return state + 1;
+ReduxActions.handleAction<{ hello: string }, string>(
+    act1,
+    (state, action) => {
+        return { hello: action.payload };
     },
-}, 0);
+    { hello: "greetings" },
+);
+
+ReduxActions.handleAction<{ hello: { load: boolean } }, { load: boolean }>(
+    act2,
+    (state, action) => {
+        return { hello: action.payload };
+    },
+    { hello: { load: true } },
+);
+
+ReduxActions.handleAction(
+    act3,
+    (state, action) => {
+        return { hello: action.payload.s };
+    },
+    { hello: "greetings" },
+);
+
+ReduxActions.handleAction(
+    ReduxActions.combineActions(act1, act3, act2),
+    (state, action) => state + 1,
+    0,
+);
+
+ReduxActions.handleActions(
+    {
+        [`${ReduxActions.combineActions(act1, act3, act2)}`](state, action) {
+            return state + 1;
+        },
+    },
+    0,
+);
 
 /* can't do this until it lands in 2.2, HKTs
 ReduxActions.handleAction(act, (state, action) => {

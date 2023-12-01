@@ -12,7 +12,9 @@ export function clusterPoints(options: {
     pointKey: string;
     valueFunction?: ((row: any) => number) | undefined;
     radiusFunction: (row: any) => number;
-    aggregateFunction?: ((srcRow: any, cmpRow: any, aggRow: any) => void) | undefined;
+    aggregateFunction?:
+        | ((srcRow: any, cmpRow: any, aggRow: any) => void)
+        | undefined;
     mapUnitsPerPixel: number;
     marginPixels?: number | undefined;
 }): Array<{}>;
@@ -233,7 +235,15 @@ export class geometry {
      * callback. Return true from in the callback will break the iteration.
      * @param {function} action Callback with the signature action(setIdx, idx, x, y, set).
      */
-    foreachVertex(action: (setIdx: number, idx: number, x: number, y: number, s: number[]) => void): void;
+    foreachVertex(
+        action: (
+            setIdx: number,
+            idx: number,
+            x: number,
+            y: number,
+            s: number[],
+        ) => void,
+    ): void;
 
     /**
      * Returns the geometry's bounding box as an envelope.
@@ -321,7 +331,12 @@ export class geometry {
      * index of the point in the set, pt is the point object, and distance
      * is the distance of the point to the reference point in map units.
      */
-    findNearestVertex(pt: point): { setIdx: number; ptIdx: number; pt: point; distance: number };
+    findNearestVertex(pt: point): {
+        setIdx: number;
+        ptIdx: number;
+        pt: point;
+        distance: number;
+    };
 
     /**
      * Finds point along boundary of geometry nearest to the given point
@@ -333,7 +348,10 @@ export class geometry {
      * index of the point in the set, pt is the point object, and distance
      * is the distance of the point to the reference point in map units.
      */
-    findNearestSegment(pt: point, close?: boolean): { setIdx: number; ptIdx: number; pt: point; distance: number };
+    findNearestSegment(
+        pt: point,
+        close?: boolean,
+    ): { setIdx: number; ptIdx: number; pt: point; distance: number };
 
     /**
      * Finds coordinates in map units of the midpoint of this geometry. If
@@ -709,7 +727,12 @@ export namespace point {
      * @param {number} y2 The y coordinate for the second point.
      * @returns {number} Distance in coordinate units.
      */
-    export function distance(x1: number, y1: number, x2: number, y2: number): number;
+    export function distance(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+    ): number;
 
     /**
      * Computes the midpoint of two points.
@@ -719,7 +742,12 @@ export namespace point {
      * @param {number} y2 The y coordinate for the second point.
      * @return {point} Midpoint point.
      */
-    export function midpoint(x1: number, y1: number, x2: number, y2: number): point;
+    export function midpoint(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+    ): point;
 }
 
 /**
@@ -805,7 +833,11 @@ export namespace sphericalMercator {
      * @param {number} z The z coordinate.
      * @returns {envelope} Envelope of the tile in map units.
      */
-    export function getQuadTreeNodeToMapEnvelope(x: number, y: number, z: number): envelope;
+    export function getQuadTreeNodeToMapEnvelope(
+        x: number,
+        y: number,
+        z: number,
+    ): envelope;
 
     /**
      * Gets the envelope in map units of tiles in the quadtree from an
@@ -814,7 +846,10 @@ export namespace sphericalMercator {
      * @param {number} z Zoom level with which to test for intersection.
      * @returns {envelope} The envelope in map units of the tiles.
      */
-    export function getQuadTreeNodeRangeFromEnvelope(env: envelope, z: number): envelope;
+    export function getQuadTreeNodeRangeFromEnvelope(
+        env: envelope,
+        z: number,
+    ): envelope;
 
     /**
      * Gets projected map units per pixel for a given zoom level.
@@ -839,7 +874,10 @@ export namespace sphericalMercator {
      * @param {number} z Reference zoom level.
      * @returns {number} Meters per pixel multiplier.
      */
-    export function getActualUnitsPerPixel(mapPt: point, zoomLevel: number): number;
+    export function getActualUnitsPerPixel(
+        mapPt: point,
+        zoomLevel: number,
+    ): number;
 
     /**
      * Gets the optimal zoom level for a given envelope in map units
@@ -848,7 +886,10 @@ export namespace sphericalMercator {
      * @param {envelope} envelopeDevice Envelope in pixels of visible area.
      * @returns {number} Optimal zoom level for viewing envelopeMap.
      */
-    export function getBestFitZoomLevelByExtents(envelopeMap: envelope, envelopeDevice: envelope): number;
+    export function getBestFitZoomLevelByExtents(
+        envelopeMap: envelope,
+        envelopeDevice: envelope,
+    ): number;
 
     /**
      * Gets a quad-key from x, y, and z coordinates.
@@ -864,7 +905,11 @@ export namespace sphericalMercator {
      * @param {string} key Reference quad-key.
      * @return {object} JavaScript object of the form {x,y,z}.
      */
-    export function getXYZFromQuadKey(key: string): { x: number; y: number; z: number };
+    export function getXYZFromQuadKey(key: string): {
+        x: number;
+        y: number;
+        z: number;
+    };
 
     /**
      * Project a point from latitude/longitude to Spherical Mercator.
@@ -995,7 +1040,9 @@ export class styledGeometry {
      * create repeating animation.
      * @param {function} Function with the signature animation(pathElement, loopback).
      */
-    setAnimation(action: (pathElement: HTMLElement, loopback: () => void) => void): void;
+    setAnimation(
+        action: (pathElement: HTMLElement, loopback: () => void) => void,
+    ): void;
 
     /**
      * Renders this geometry as an SVG path. Note: We attach original
@@ -1091,7 +1138,11 @@ export namespace tile {
      * A tile layer is a view on the map containing an array of rectangular content.
      */
     export class layer {
-        constructor(id: string, useBackdrop?: boolean, maxConcurrentRequests?: number);
+        constructor(
+            id: string,
+            useBackdrop?: boolean,
+            maxConcurrentRequests?: number,
+        );
 
         /**
          * @param {number} m - number for margin in pixels
@@ -1259,7 +1310,9 @@ export namespace tile {
          * tiles loaded and tiles total parameters.
          * @param {function} action Callback of the signature action(tileLoaded, tilesTotal).
          */
-        setNotifyLoadingQueueProgressAction(action: (tilesLoaded: number, tilesTotal: number) => void): void;
+        setNotifyLoadingQueueProgressAction(
+            action: (tilesLoaded: number, tilesTotal: number) => void,
+        ): void;
 
         /**
          * Sets optional request processor for this tile layer. This is
@@ -1291,7 +1344,11 @@ export namespace tile {
          * @param {number} endZoomLevel Maximum zoom level for which to
          * fetch content.
          */
-        preload(extents: envelope, startZoomLevel: number, endZoomLevel: number): void;
+        preload(
+            extents: envelope,
+            startZoomLevel: number,
+            endZoomLevel: number,
+        ): void;
 
         /**
          * Composes an array of quadtiles with composition information and
@@ -1312,7 +1369,10 @@ export namespace tile {
          * collection respectively, and ulX and ulY are the offset in pixels
          * of the upper left tile from the upper left target extents.
          */
-        compose(extentsMapUnits: envelope, extentsDeviceUnits: envelope): {
+        compose(
+            extentsMapUnits: envelope,
+            extentsDeviceUnits: envelope,
+        ): {
             quadCollection: tile.quad[];
             endpointCollection: string[];
             idxMinX: number;
@@ -1333,23 +1393,26 @@ export namespace tile {
      * in the knockout binding.
      */
     export class layerOptions {
-        constructor(id: string, options: {
-            useBackdrop?: boolean | undefined;
-            maxConcurrentRequests?: number | undefined;
-            requestor?: tile.requestor | undefined;
-            descriptor?: any;
-            renderer?: tile.renderer | undefined;
-            requestProcessor?: any;
-            visible?: boolean | undefined;
-            opacity?: number | undefined;
-            minZoomLevel?: number | undefined;
-            maxZoomLevel?: number | undefined;
-            tileBleedPix?: number | undefined;
-            retainInterlevelContent?: boolean | undefined;
-            enableTileFadeIn?: boolean | undefined;
-            notifyErrorAction?: ((msg?: string) => void) | undefined;
-            notifyLoadingQueueHasEmptiedAction?: (() => void) | undefined;
-        });
+        constructor(
+            id: string,
+            options: {
+                useBackdrop?: boolean | undefined;
+                maxConcurrentRequests?: number | undefined;
+                requestor?: tile.requestor | undefined;
+                descriptor?: any;
+                renderer?: tile.renderer | undefined;
+                requestProcessor?: any;
+                visible?: boolean | undefined;
+                opacity?: number | undefined;
+                minZoomLevel?: number | undefined;
+                maxZoomLevel?: number | undefined;
+                tileBleedPix?: number | undefined;
+                retainInterlevelContent?: boolean | undefined;
+                enableTileFadeIn?: boolean | undefined;
+                notifyErrorAction?: ((msg?: string) => void) | undefined;
+                notifyLoadingQueueHasEmptiedAction?: (() => void) | undefined;
+            },
+        );
 
         /**
          * Returns the underlying tile layer.
@@ -1447,10 +1510,19 @@ export namespace tile {
      */
     export class renderer {
         constructor(options?: {
-            renderPoint?: ((pt: point, context: CanvasRenderingContext2D) => void) | undefined;
-            renderGeometry?: ((shape: geometry, context: CanvasRenderingContext2D) => void) | undefined;
+            renderPoint?:
+                | ((pt: point, context: CanvasRenderingContext2D) => void)
+                | undefined;
+            renderGeometry?:
+                | ((shape: geometry, context: CanvasRenderingContext2D) => void)
+                | undefined;
             renderBitmap?:
-                | ((img: HTMLElement, context: CanvasRenderingContext2D, contextSize: number, bleed: number) => void)
+                | ((
+                      img: HTMLElement,
+                      context: CanvasRenderingContext2D,
+                      contextSize: number,
+                      bleed: number,
+                  ) => void)
                 | undefined;
         });
 
@@ -1462,7 +1534,9 @@ export namespace tile {
          * where shape is the point object to be rendered and context is the
          * canvas context on which to render.
          */
-        setRenderPoint(func: (pt: point, context: CanvasRenderingContext2D) => void): void;
+        setRenderPoint(
+            func: (pt: point, context: CanvasRenderingContext2D) => void,
+        ): void;
 
         /**
          * Sets render geometry function which takes a geometry and canvas
@@ -1473,7 +1547,9 @@ export namespace tile {
          * where shape is the geometry to render and context is the canvas
          * context on which to render.
          */
-        setRenderGeometry(func: (shape: geometry, context: CanvasRenderingContext2D) => void): void;
+        setRenderGeometry(
+            func: (shape: geometry, context: CanvasRenderingContext2D) => void,
+        ): void;
 
         /**
          * Sets the render bitmap function which takes a bitmap image and
@@ -1485,7 +1561,12 @@ export namespace tile {
          * in pixels and bleed is the margin around each tile to bleed.
          */
         setRenderBitmap(
-            func: (img: HTMLElement, context: CanvasRenderingContext2D, contextSize: number, bleed: number) => void,
+            func: (
+                img: HTMLElement,
+                context: CanvasRenderingContext2D,
+                contextSize: number,
+                bleed: number,
+            ) => void,
         ): void;
     }
 
@@ -1754,11 +1835,14 @@ export namespace tile {
      * The bitmap or vector tile requestor using MapDotNet REST services.
      */
     export class requestorMDNRest extends requestor {
-        constructor(endpoint: string, options?: {
-            dataFormat?: string | undefined;
-            timeoutMs?: number | undefined;
-            maxAvailableZoomLevel?: number | undefined;
-        });
+        constructor(
+            endpoint: string,
+            options?: {
+                dataFormat?: string | undefined;
+                timeoutMs?: number | undefined;
+                maxAvailableZoomLevel?: number | undefined;
+            },
+        );
 
         /**
          * Gets uri endpoint for the MapDotNet REST service.
@@ -1772,20 +1856,23 @@ export namespace tile {
      * MapDotNet UX REST map service.
      */
     export class descriptorMDNRestMap {
-        constructor(mapId: string, options?: {
-            version?: string | undefined;
-            imageType?: string | undefined;
-            bleedRatio?: number | undefined;
-            mapCacheOption?: string | undefined;
-            mapCacheName?: string | undefined;
-            useQuadKeyForMapCacheName?: boolean | undefined;
-            backgroundColorStr?: string | undefined;
-            layerVisibility?: {} | undefined;
-            layerOutline?: {} | undefined;
-            layerFill?: {} | undefined;
-            layerWhere?: {} | undefined;
-            tag?: string | undefined;
-        });
+        constructor(
+            mapId: string,
+            options?: {
+                version?: string | undefined;
+                imageType?: string | undefined;
+                bleedRatio?: number | undefined;
+                mapCacheOption?: string | undefined;
+                mapCacheName?: string | undefined;
+                useQuadKeyForMapCacheName?: boolean | undefined;
+                backgroundColorStr?: string | undefined;
+                layerVisibility?: {} | undefined;
+                layerOutline?: {} | undefined;
+                layerFill?: {} | undefined;
+                layerWhere?: {} | undefined;
+                tag?: string | undefined;
+            },
+        );
 
         /**
          * Sets the flag to suspend descriptor change notifications. If
@@ -1929,7 +2016,14 @@ export namespace tile {
          * @param {number} b Blue level.
          * @param {number} thk Outline thickness in pixels.
          */
-        setLayerOutline(layerId: string, a: number, r: number, g: number, b: number, thk: number): void;
+        setLayerOutline(
+            layerId: string,
+            a: number,
+            r: number,
+            g: number,
+            b: number,
+            thk: number,
+        ): void;
 
         /**
          * Gets a layer's outline color and thickness.
@@ -1948,7 +2042,13 @@ export namespace tile {
          * @param {number} g Green level.
          * @param {number} b Blue level.
          */
-        setLayerFill(layerId: string, a: number, r: number, g: number, b: number): void;
+        setLayerFill(
+            layerId: string,
+            a: number,
+            r: number,
+            g: number,
+            b: number,
+        ): void;
 
         /**
          * Sets a layer's fill color as a SQL expression.
@@ -2020,13 +2120,17 @@ export namespace tile {
      * a MapDotNet REST feature service.
      */
     export class descriptorMDNRestFeature {
-        constructor(mapId: string, layerId: string, options?: {
-            version?: string | undefined;
-            bleedRatio?: number | undefined;
-            fieldNames?: string[] | undefined;
-            clipToRenderBounds?: boolean | undefined;
-            simplifyEnabled?: boolean | undefined;
-        });
+        constructor(
+            mapId: string,
+            layerId: string,
+            options?: {
+                version?: string | undefined;
+                bleedRatio?: number | undefined;
+                fieldNames?: string[] | undefined;
+                clipToRenderBounds?: boolean | undefined;
+                simplifyEnabled?: boolean | undefined;
+            },
+        );
 
         /**
          * Gets the map ID.
@@ -2124,11 +2228,15 @@ export namespace tile {
      * Nokia, etc.
      */
     export class requestorOpen extends requestor {
-        constructor(endpoint: string, subdomains: string[], options?: {
-            dataFormat?: string | undefined;
-            timeoutMs?: number | undefined;
-            maxAvailableZoomLevel?: number | undefined;
-        });
+        constructor(
+            endpoint: string,
+            subdomains: string[],
+            options?: {
+                dataFormat?: string | undefined;
+                timeoutMs?: number | undefined;
+                maxAvailableZoomLevel?: number | undefined;
+            },
+        );
     }
 
     /**
@@ -2236,8 +2344,12 @@ interface beginDigitizeOptions {
     shapeType: string;
     geometryStyle?: geometryStyle | undefined;
     styledGeometry?: styledGeometry | undefined;
-    nodeTapAndHoldAction?: ((setIdx: number, idx: number) => boolean) | undefined;
-    nodeMoveAction?: ((x: number, y: number, actionType: string) => any) | undefined;
+    nodeTapAndHoldAction?:
+        | ((setIdx: number, idx: number) => boolean)
+        | undefined;
+    nodeMoveAction?:
+        | ((x: number, y: number, actionType: string) => any)
+        | undefined;
     shapeChangeAction?: (() => void) | undefined;
     envelopeEndAction?: ((env: envelope) => void) | undefined;
     circleEndAction?: ((circle: geometry.polygon) => void) | undefined;
@@ -2276,7 +2388,11 @@ interface mapsjsWidget {
      * @param {number} [durationMs] Duration in miliseconds.
      * @param {function} [completeAction] Callback to perform on animaton complete.
      */
-    setMapCenterAnimate(center: point, durationMs?: number, completeAction?: () => void): void;
+    setMapCenterAnimate(
+        center: point,
+        durationMs?: number,
+        completeAction?: () => void,
+    ): void;
 
     /**
      * Sets the map center to the current geolocation if supported. The map is
@@ -2284,7 +2400,10 @@ interface mapsjsWidget {
      * @param {number} [durationMs] Duration in miliseconds.
      * @param {function} [completeAction] Callback to perform on animaton complete.
      */
-    setMapCenterToGeolocationAnimate(durationMs?: number, completeAction?: () => void): void;
+    setMapCenterToGeolocationAnimate(
+        durationMs?: number,
+        completeAction?: () => void,
+    ): void;
 
     /**
      * Offsets the current map center by the specified deltas in pixels.
@@ -2299,7 +2418,11 @@ interface mapsjsWidget {
      * @param {number} [dy] offset y in pixels.
      * @param {number} [durationMs] animation duration in mS.
      */
-    offsetMapCenterByPixelDeltaAnimate(dx: number, dy: number, durationMs?: number): void;
+    offsetMapCenterByPixelDeltaAnimate(
+        dx: number,
+        dy: number,
+        durationMs?: number,
+    ): void;
 
     /**
      * Gets the current zoom level.
@@ -2332,7 +2455,11 @@ interface mapsjsWidget {
      * @param {function} [completeAction] Function to call when the animation
      * completes with signature completeAction().
      */
-    setZoomLevelAnimate(zl: number, durationMs?: number, completeAction?: () => void): void;
+    setZoomLevelAnimate(
+        zl: number,
+        durationMs?: number,
+        completeAction?: () => void,
+    ): void;
 
     /**
      * Changes the current zoom level.
@@ -2356,7 +2483,12 @@ interface mapsjsWidget {
      * @param {function} [completeAction] Function to call after the animation
      * completes with signature completeAction().
      */
-    flyTo(center: point, zl: number, durationMs?: number, completeAction?: () => void): void;
+    flyTo(
+        center: point,
+        zl: number,
+        durationMs?: number,
+        completeAction?: () => void,
+    ): void;
 
     /**
      * Gets the current map extents in spherical mercator units.
@@ -2527,7 +2659,11 @@ interface mapsjsWidget {
      * @param {number} mapUnitsX The new x coordinate in map units.
      * @param {number} mapUnitsY The new y coordinate in map units.
      */
-    moveFixedContentElement(element: HTMLElement, mapUnitsX: number, mapUnitsY: number): void;
+    moveFixedContentElement(
+        element: HTMLElement,
+        mapUnitsX: number,
+        mapUnitsY: number,
+    ): void;
 
     /**
      * Removes a fixed content element.
@@ -2636,7 +2772,9 @@ interface mapsjsWidget {
      * the form { centerX, centerY, centerLat, centerLon, zoomLevel, mapScale,
      * mapScaleProjected, mapUnitsPerPixel, extents }.
      */
-    setExtentChangeCompleteAction(action: (vals: extentChangeStatsObj) => void): void;
+    setExtentChangeCompleteAction(
+        action: (vals: extentChangeStatsObj) => void,
+    ): void;
 
     /**
      * Set the function called when map content (map tiles and fixed elements) are
@@ -2646,7 +2784,9 @@ interface mapsjsWidget {
      * completes repositioning with signature action(object) where object
      * is of the form { centerX, centerY, zoomLevel, mapUnitsPerPixel }.
      */
-    setContentRepositionAction(action: (vals: repositionStatsObj) => void): void;
+    setContentRepositionAction(
+        action: (vals: repositionStatsObj) => void,
+    ): void;
 
     /**
      * Sets function called when map is clicked or tapped.
@@ -2682,6 +2822,13 @@ interface mapsjsWidget {
 
 interface JQuery {
     rimMap(): JQuery;
-    rimMap(command: any, param?: any, param2?: any, param3?: any, param4?: any, param5?: any): JQuery;
+    rimMap(
+        command: any,
+        param?: any,
+        param2?: any,
+        param3?: any,
+        param4?: any,
+        param5?: any,
+    ): JQuery;
     getMapsjs(): any;
 }

@@ -51,5 +51,9 @@ declare global {
     function tileToLng(x: number, params: MapZoomTileParameters): number;
     function tileToLat(y: number, params: MapZoomTileParameters): number;
 
-    function pointToTileId(params: MapZoomTileParameters, x: number, y: number): string;
+    function pointToTileId(
+        params: MapZoomTileParameters,
+        x: number,
+        y: number,
+    ): string;
 }

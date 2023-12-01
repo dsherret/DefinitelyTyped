@@ -14,6 +14,9 @@ declare namespace ntqdm {
 }
 
 /** Adds a timed progress bar to iterables */
-declare function ntqdm<T>(iter: Iterable<T>, par?: Partial<ntqdm.TqdmOptions>): IterableIterator<T>;
+declare function ntqdm<T>(
+    iter: Iterable<T>,
+    par?: Partial<ntqdm.TqdmOptions>,
+): IterableIterator<T>;
 
 export = ntqdm;

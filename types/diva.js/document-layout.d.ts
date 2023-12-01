@@ -1,4 +1,11 @@
-import { Dimensions, Offset, PageGroup, PageInfo, Region, RendererConfig } from "./interfaces";
+import {
+    Dimensions,
+    Offset,
+    PageGroup,
+    PageInfo,
+    Region,
+    RendererConfig,
+} from "./interfaces";
 
 export default class DocumentLayout {
     dimensions: Dimensions;

@@ -140,4 +140,8 @@ export class UserAgent {
     parse(source: string): Details;
 }
 
-export function express(): (req: Request, res: Response, next?: NextFunction) => void;
+export function express(): (
+    req: Request,
+    res: Response,
+    next?: NextFunction,
+) => void;

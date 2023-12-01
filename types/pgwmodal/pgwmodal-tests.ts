@@ -14,7 +14,8 @@ function test_open(): void {
 
     $j.pgwModal({
         url: "modal-test.php",
-        loadingContent: "<span style=\"text-align:center\">Loading in progress</span>",
+        loadingContent:
+            '<span style="text-align:center">Loading in progress</span>',
         closable: false,
         titleBar: false,
     });

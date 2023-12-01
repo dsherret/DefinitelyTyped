@@ -12,7 +12,7 @@ rollADie({ element, numberOfDice: 2, callback: cb, noSound: true }); // $ExpectT
 rollADie({
     element,
     numberOfDice: 1,
-    callback: values => {
+    callback: (values) => {
         values; // $ExpectType number[]
     },
     noSound: true,

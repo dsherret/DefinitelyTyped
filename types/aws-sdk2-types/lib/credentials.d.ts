@@ -13,7 +13,11 @@ export class Credentials {
      * @param {string} secretAccessKey - The AWS secret access key.
      * @param {string} sessionToken - The optional AWS session token.
      */
-    constructor(accessKeyId: string, secretAccessKey: string, sessionToken?: string);
+    constructor(
+        accessKeyId: string,
+        secretAccessKey: string,
+        sessionToken?: string,
+    );
     /**
      * Gets the existing credentials, refreshing them if they are not yet loaded or have expired.
      * Users should call this method before using refresh(), as this will not attempt to reload

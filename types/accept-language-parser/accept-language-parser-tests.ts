@@ -29,9 +29,17 @@ const parsed: AcceptLanguageParser.Language[] = AcceptLanguageParser.parse();
 const pick1: string | null = AcceptLanguageParser.pick([""], "");
 const pick2: string | null = AcceptLanguageParser.pick([""], [l1, l2, l3]);
 const pick3: string | null = AcceptLanguageParser.pick([""], "", {});
-const pick4: string | null = AcceptLanguageParser.pick([""], "", { loose: true });
-const pick5: Lang | null = AcceptLanguageParser.pick<Lang>([enUs, koKr], [l1, l2, l3]);
-const pick6: Lang | null = AcceptLanguageParser.pick([enUs, koKr], [l1, l2, l3]);
+const pick4: string | null = AcceptLanguageParser.pick([""], "", {
+    loose: true,
+});
+const pick5: Lang | null = AcceptLanguageParser.pick<Lang>(
+    [enUs, koKr],
+    [l1, l2, l3],
+);
+const pick6: Lang | null = AcceptLanguageParser.pick(
+    [enUs, koKr],
+    [l1, l2, l3],
+);
 
 const pickOptions: AcceptLanguageParser.PickOptions = {
     loose: true,

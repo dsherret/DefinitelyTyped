@@ -2,28 +2,27 @@ import nsg = require("node-sprite-generator");
 import express = require("express");
 const app = express();
 
-app.use(nsg.middleware({
-    src: [
-        "images/sprite/*.png",
-    ],
-    spritePath: "images/sprite.png",
-    stylesheetPath: "stylus/sprite.styl",
-}));
+app.use(
+    nsg.middleware({
+        src: ["images/sprite/*.png"],
+        spritePath: "images/sprite.png",
+        stylesheetPath: "stylus/sprite.styl",
+    }),
+);
+
+nsg(
+    {
+        src: ["images/sprite/*.png"],
+        spritePath: "images/sprite.png",
+        stylesheetPath: "stylus/sprite.styl",
+    },
+    (err) => {
+        console.log("Sprite generated!");
+    },
+);
 
 nsg({
-    src: [
-        "images/sprite/*.png",
-    ],
-    spritePath: "images/sprite.png",
-    stylesheetPath: "stylus/sprite.styl",
-}, err => {
-    console.log("Sprite generated!");
-});
-
-nsg({
-    src: [
-        "public/images/sprite/*.png",
-    ],
+    src: ["public/images/sprite/*.png"],
     spritePath: "public/images/all-icons.png",
     stylesheetPath: "public/stylesheets/all-icons.css",
     layout: "diagonal",

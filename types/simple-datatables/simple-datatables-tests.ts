@@ -50,9 +50,9 @@ const datatable = new DataTable("#myTable", {
 // Events
 // ------
 datatable.on("datatable.init", () => {});
-datatable.on("datatable.page", page => {});
+datatable.on("datatable.page", (page) => {});
 datatable.on("datatable.sort", (column, direction) => {});
-datatable.on("datatable.perpage", perpage => {});
+datatable.on("datatable.perpage", (perpage) => {});
 datatable.on("datatable.search", (query, matched) => {});
 
 // ----
@@ -115,7 +115,14 @@ datatable.insert([
 datatable.insert({
     headings: ["Name", "Position", "Town", "Ext.", "Start Date", "Salary"],
     data: [
-        ["Cedric Kelly", "Senior Javascript Developer", "Edinburgh", "6224", "2012/03/29", "$433,060"],
+        [
+            "Cedric Kelly",
+            "Senior Javascript Developer",
+            "Edinburgh",
+            "6224",
+            "2012/03/29",
+            "$433,060",
+        ],
         ["Airi Satou", "Accountant", "Tokyo", "5407", "2008/11/28", "$162,700"],
     ],
 });

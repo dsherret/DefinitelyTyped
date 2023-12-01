@@ -80,7 +80,10 @@ declare namespace massive {
         getPkCriteria(record: object): object;
 
         /** Insert a record or records into the table. */
-        insert(data: object | any[], options?: GenericQueryOptions): Promise<any>;
+        insert(
+            data: object | any[],
+            options?: GenericQueryOptions,
+        ): Promise<any>;
 
         /**
          * Update a document, adding new information and changing existing information.
@@ -88,7 +91,11 @@ declare namespace massive {
          * If calling modify with a criteria object for a non-document table, the criteria will be tested against the entire row (as opposed to the document body as it is for document tables).
          * To test elements of the JSON field in a non-document table with a criteria object, use a JSON path string.
          */
-        modify(criteria: object | UUID, changes: object, field?: string): Promise<any>;
+        modify(
+            criteria: object | UUID,
+            changes: object,
+            field?: string,
+        ): Promise<any>;
 
         /**
          * Performs an upsert.
@@ -107,7 +114,11 @@ declare namespace massive {
          * May be invoked with a complete record (including primary key), or with a criteria object and a map of fields to new values.
          * Multi-row updates are only possible through the latter usage.
          */
-        update(criteria: object, fields: object, options?: GenericQueryOptions): void;
+        update(
+            criteria: object,
+            fields: object,
+            options?: GenericQueryOptions,
+        ): void;
     }
 
     interface EntitySpecification {
@@ -146,21 +157,30 @@ declare namespace massive {
          *
          * @param criteria A criteria object or primary key value.
          */
-        find(criteria: object | UUID, options?: GenericQueryOptions): Promise<any>;
+        find(
+            criteria: object | UUID,
+            options?: GenericQueryOptions,
+        ): Promise<any>;
 
         /**
          * Find a document by searching in the body.
          *
          * @param criteria A criteria object or primary key value.
          */
-        findDoc(criteria?: object | UUID, options?: GenericQueryOptions): Promise<any>;
+        findDoc(
+            criteria?: object | UUID,
+            options?: GenericQueryOptions,
+        ): Promise<any>;
 
         /**
          * Return a single record.
          *
          * @param criteria A criteria object or primary key value.
          */
-        findOne(criteria?: object | UUID, options?: GenericQueryOptions): Promise<any>;
+        findOne(
+            criteria?: object | UUID,
+            options?: GenericQueryOptions,
+        ): Promise<any>;
 
         /**
          * Determine whether criteria represent a search by primary key.
@@ -171,13 +191,23 @@ declare namespace massive {
         /**
          * Perform a full-text search on queryable fields. If options.document is true, looks in the document body fields instead of the table columns.
          */
-        search(plan: SearchDefinition, options?: GenericQueryOptions): Promise<any>;
+        search(
+            plan: SearchDefinition,
+            options?: GenericQueryOptions,
+        ): Promise<any>;
 
         /** Shortcut to perform a full text search on a document table. */
-        searchDoc(plan: SearchDefinition, options?: GenericQueryOptions): Promise<any>;
+        searchDoc(
+            plan: SearchDefinition,
+            options?: GenericQueryOptions,
+        ): Promise<any>;
 
         /** Run a query with a raw SQL predicate, eg: db.mytable.where('id=$1', [123]).then(...); */
-        where(conditions: string, params?: any, options?: GenericQueryOptions): Promise<any>;
+        where(
+            conditions: string,
+            params?: any,
+            options?: GenericQueryOptions,
+        ): Promise<any>;
     }
 
     /** Represents a SELECT query. */
@@ -186,7 +216,11 @@ declare namespace massive {
          * @param source Database object to query.
          * @param criteria A criteria object, prebuilt predicate, or primitive pk value.
          */
-        constructor(source: Queryable, criteria: object | UUID, options?: GenericQueryOptions);
+        constructor(
+            source: Queryable,
+            criteria: object | UUID,
+            options?: GenericQueryOptions,
+        );
 
         /** Format this object into a SQL SELECT. */
         format(): string;
@@ -198,7 +232,11 @@ declare namespace massive {
          * @param source Database object to query.
          * @param record A map of field names to values to be inserted, or an array of same.
          */
-        constructor(source: Queryable, record: object | any[], options?: GenericQueryOptions);
+        constructor(
+            source: Queryable,
+            record: object | any[],
+            options?: GenericQueryOptions,
+        );
 
         /** Format this object into a SQL SELECT. */
         format(): string;
@@ -211,7 +249,12 @@ declare namespace massive {
          * @param changes A map of field names to new values.
          * @param criteria A criteria object.
          */
-        constructor(source: Queryable, changes: object, criteria: object, options?: GenericQueryOptions);
+        constructor(
+            source: Queryable,
+            changes: object,
+            criteria: object,
+            options?: GenericQueryOptions,
+        );
 
         /** Format this object into a SQL SELECT. */
         format(): string;
@@ -223,7 +266,11 @@ declare namespace massive {
          * @param source Database object to query.
          * @param criteria A criteria object.
          */
-        constructor(source: Queryable, criteria?: object, options?: GenericQueryOptions);
+        constructor(
+            source: Queryable,
+            criteria?: object,
+            options?: GenericQueryOptions,
+        );
 
         /** Format this object into a SQL SELECT. */
         format(): string;
@@ -233,7 +280,11 @@ declare namespace massive {
         /**
          * @param connection A connection object or connection string
          */
-        constructor(connection: object | string, loader?: Loader, driverConfig?: object);
+        constructor(
+            connection: object | string,
+            loader?: Loader,
+            driverConfig?: object,
+        );
 
         /** Attach an entity to the connected instance. */
         attach(ctor: any, ...sources: any[]): Promise<any[]>;
@@ -266,7 +317,11 @@ declare namespace massive {
         listViews(): Promise<any[]>;
 
         /** Execute a query. */
-        query(query: Select | Insert | Update | Delete | string, params?: any, options?: QueryOptions): Promise<any>;
+        query(
+            query: Select | Insert | Update | Delete | string,
+            params?: any,
+            options?: QueryOptions,
+        ): Promise<any>;
 
         /**
          * Synchronize the database API with the current state by scanning for tables, views, functions, and scripts.

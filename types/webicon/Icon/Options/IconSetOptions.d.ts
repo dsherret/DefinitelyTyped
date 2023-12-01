@@ -6,7 +6,11 @@ import { SizeableOptions } from "./SizeableOptions";
 /**
  * Provides options for svg-icon sets.
  */
-export interface IconSetOptions extends IconOptions, SvgIcon, SizeableOptions, Downloadable {
+export interface IconSetOptions
+    extends IconOptions,
+        SvgIcon,
+        SizeableOptions,
+        Downloadable {
     /**
      * A value indicating whether the icons are loaded separately.
      */

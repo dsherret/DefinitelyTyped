@@ -66,7 +66,10 @@ let resultContainer = document.getElementById("panel");
 
 // Create container for the "Capture" button
 let containerNode = document.createElement("div");
-containerNode.setAttribute("style", "position:absolute;top:0;left:0;background-color:#fff; padding:10px;");
+containerNode.setAttribute(
+    "style",
+    "position:absolute;top:0;left:0;background-color:#fff; padding:10px;",
+);
 containerNode.className = "btn-group";
 
 // Create the "Capture" button
@@ -117,7 +120,7 @@ router.calculateRoute(
     (result: H.service.RoutingService.RoutingServiceResult) => {
         console.log(result.routes[0]);
     },
-    error => {
+    (error) => {
         console.log(error);
     },
 );
@@ -130,20 +133,20 @@ places.request(
         at: "52.5044,13.3909",
         q: "pizza",
     },
-    response => {
+    (response) => {
         console.log(response);
         const items = response.results.items;
         places.follow(
             items[0].href,
-            resp => {
+            (resp) => {
                 console.log(resp);
             },
-            resp => {
+            (resp) => {
                 console.log("ERROR: " + resp);
             },
         );
     },
-    error => {
+    (error) => {
         console.log("ERROR: " + error);
     },
 );
@@ -154,11 +157,11 @@ let geocodingParams: H.service.ServiceParameters = {
 };
 geocoder.geocode(
     geocodingParams,
-    result => {
+    (result) => {
         console.log(result);
         console.log(result.Response.View[0].Result[0].Location.DisplayPosition);
     },
-    error => {
+    (error) => {
         console.log(error);
     },
 );
@@ -172,11 +175,11 @@ let calculateIsoline: H.service.ServiceParameters = {
 };
 enterprieseRouter.calculateIsoline(
     calculateIsoline,
-    result => {
+    (result) => {
         console.log(result);
         console.log(result.Response.isolines[0]);
     },
-    error => {
+    (error) => {
         console.log(error);
     },
 );

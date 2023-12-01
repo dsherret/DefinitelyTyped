@@ -6,7 +6,10 @@ export as namespace Headroom;
  * Shows header when scrolling up
  */
 declare class Headroom {
-    constructor(element: HTMLElement | Node, options?: Headroom.HeadroomOptions);
+    constructor(
+        element: HTMLElement | Node,
+        options?: Headroom.HeadroomOptions,
+    );
 
     /**
      *  Default options
@@ -44,48 +47,50 @@ declare namespace Headroom {
         /** scroll tolerance in px before state changes or you can specify tolerance individually for up/down scroll */
         tolerance?: Tolerance | number | undefined;
         /** css classes to apply multiple classes are also supported with a space-separated list */
-        classes?: {
-            /**
-             * when element is initialised
-             * @default 'headroom'
-             */
-            initial?: string | undefined;
-            /**
-             * when scrolling up
-             * @default 'headroom--pinned'
-             */
-            pinned?: string | undefined;
-            /**
-             * when scrolling down
-             * @default 'headroom--unpinned'
-             */
-            unpinned?: string | undefined;
-            /**
-             * when above offset
-             * @default 'headroom--top'
-             */
-            top?: string | undefined;
-            /**
-             * when below offset
-             * @default 'headroom--not-top'
-             */
-            notTop?: string | undefined;
-            /**
-             * when at bottom of scroll area
-             * @default 'headroom--bottom'
-             */
-            bottom?: string | undefined;
-            /**
-             * when not at bottom of scroll area
-             * @default 'headroom--not-bottom'
-             */
-            notBottom?: string | undefined;
-            /**
-             * when frozen method has been called
-             * @default 'headroom--frozen'
-             */
-            frozen?: string | undefined;
-        } | undefined;
+        classes?:
+            | {
+                  /**
+                   * when element is initialised
+                   * @default 'headroom'
+                   */
+                  initial?: string | undefined;
+                  /**
+                   * when scrolling up
+                   * @default 'headroom--pinned'
+                   */
+                  pinned?: string | undefined;
+                  /**
+                   * when scrolling down
+                   * @default 'headroom--unpinned'
+                   */
+                  unpinned?: string | undefined;
+                  /**
+                   * when above offset
+                   * @default 'headroom--top'
+                   */
+                  top?: string | undefined;
+                  /**
+                   * when below offset
+                   * @default 'headroom--not-top'
+                   */
+                  notTop?: string | undefined;
+                  /**
+                   * when at bottom of scroll area
+                   * @default 'headroom--bottom'
+                   */
+                  bottom?: string | undefined;
+                  /**
+                   * when not at bottom of scroll area
+                   * @default 'headroom--not-bottom'
+                   */
+                  notBottom?: string | undefined;
+                  /**
+                   * when frozen method has been called
+                   * @default 'headroom--frozen'
+                   */
+                  frozen?: string | undefined;
+              }
+            | undefined;
         /**
          * element to listen to scroll events on
          * @default window

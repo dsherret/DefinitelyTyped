@@ -8,7 +8,10 @@ declare class DataExporter {
     dataSet: DataSet;
     addField(field: DataExporterFieldDef): void;
     getField(fieldIdxOrName: number | string): DataExporterFieldDef;
-    formatFieldValue(field: DataExporterFieldDef, showLookupKeys?: boolean): string;
+    formatFieldValue(
+        field: DataExporterFieldDef,
+        showLookupKeys?: boolean,
+    ): string;
     private _getLookupValue;
     orderedGroupFields(): Array<{
         fieldName: string;
@@ -16,7 +19,13 @@ declare class DataExporter {
     }>;
 }
 declare namespace DataExporter {
-    export { DataExporterFieldDef, DataSet, exportedFileLifetime, purgeExpiredExportedFiles, tempExportDir };
+    export {
+        DataExporterFieldDef,
+        DataSet,
+        exportedFileLifetime,
+        purgeExpiredExportedFiles,
+        tempExportDir,
+    };
 }
 type DataSet = import("@nginstack/engine/lib/dataset/DataSet");
 declare let tempExportDir: string;

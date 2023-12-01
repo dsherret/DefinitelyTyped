@@ -14,7 +14,12 @@ async function main() {
     const vehicle = await tjs.vehicleAsync(options);
     const vehicleData = await tjs.vehicleDataAsync(options);
     const chargeState = await tjs.chargeStateAsync(options);
-    await tjs.homelinkAsync(options, 36.98765432109876, -77.12345678901234, "token");
+    await tjs.homelinkAsync(
+        options,
+        36.98765432109876,
+        -77.12345678901234,
+        "token",
+    );
 }
 
 main();

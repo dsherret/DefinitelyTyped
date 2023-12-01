@@ -14,7 +14,11 @@ const someOptions2: humps.HumpsOptions = {
 };
 const someOptions3: humps.HumpsOptions = {
     separator: "-",
-    process(key: string, convert: humps.HumpsProcessorParameter, options?: humps.HumpsOptions) {
+    process(
+        key: string,
+        convert: humps.HumpsProcessorParameter,
+        options?: humps.HumpsOptions,
+    ) {
         return /^[A-Z0-9_]+$/.test(key) ? key : convert(key, options);
     },
 };

@@ -25,7 +25,8 @@ const config: FieldsConfig<FieldTypes> = {
         isGreaterThan: {
             message: "This field must be greater than 7",
             value: 7,
-            validateIf: ({ isDirty, fields }) => isDirty && fields.bar.some(b => b === "test"),
+            validateIf: ({ isDirty, fields }) =>
+                isDirty && fields.bar.some((b) => b === "test"),
         },
     },
     bar: {},
@@ -54,19 +55,22 @@ function onUpdate(context: FormContext<FieldTypes>): void {
 }
 
 const extraValidators: ValidatorsProviderProps<FieldTypes>["validators"] = {
-    isEven: config => value => (Number(value) % 2 !== 0 ? config.message : null),
-    isOdd: (config, { errors, fields, isDirty }: ValidatorContext<FieldTypes>) => value => {
-        if (!isDirty) {
-            return null;
-        }
-        if (!fields.foo) {
-            return null;
-        }
-        if (errors.foo) {
-            return `Please address these errors ${errors.foo}`;
-        }
-        return Number(value) % 2 !== 1 ? config.message : null;
-    },
+    isEven: (config) => (value) =>
+        Number(value) % 2 !== 0 ? config.message : null,
+    isOdd:
+        (config, { errors, fields, isDirty }: ValidatorContext<FieldTypes>) =>
+        (value) => {
+            if (!isDirty) {
+                return null;
+            }
+            if (!fields.foo) {
+                return null;
+            }
+            if (errors.foo) {
+                return `Please address these errors ${errors.foo}`;
+            }
+            return Number(value) % 2 !== 1 ? config.message : null;
+        },
 };
 
 const configWithCustomValidators: FieldsConfig<FieldTypes> = {
@@ -78,8 +82,17 @@ const configWithCustomValidators: FieldsConfig<FieldTypes> = {
     },
 };
 const FormTest = () => (
-    <Form onChange={onChange} onReset={onReset} onSubmit={onSubmit} onUpdate={onUpdate}>
-        <Validation config={config} initialValues={initialValues} transforms={transforms}>
+    <Form
+        onChange={onChange}
+        onReset={onReset}
+        onSubmit={onSubmit}
+        onUpdate={onUpdate}
+    >
+        <Validation
+            config={config}
+            initialValues={initialValues}
+            transforms={transforms}
+        >
             {({ dirty, errors, fields }: ValidationContext<FieldTypes>) => (
                 <div>
                     <label>Input</label>

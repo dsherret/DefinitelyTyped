@@ -1,6 +1,8 @@
 import ON_DEATH = require("death");
 
-const unsub1: () => void = ON_DEATH((value: "SIGINT" | "SIGTERM" | "SIGQUIT") => {});
+const unsub1: () => void = ON_DEATH(
+    (value: "SIGINT" | "SIGTERM" | "SIGQUIT") => {},
+);
 
 const unsub2: () => void = ON_DEATH({
     debug: true,

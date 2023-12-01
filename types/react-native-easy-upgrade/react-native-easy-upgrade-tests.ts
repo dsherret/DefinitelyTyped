@@ -41,7 +41,10 @@ async function startUpgrade() {
             "Find a new version: " + updateInfo.latestVersion,
             "Whether to upgrade app?",
             [
-                { text: "Ask me later", onPress: () => console.log("Ask me later pressed") },
+                {
+                    text: "Ask me later",
+                    onPress: () => console.log("Ask me later pressed"),
+                },
                 {
                     text: "Upgrade",
                     onPress: () => {

@@ -79,11 +79,7 @@ declare namespace NodeIRC {
          * @param nick - nickname
          * @param opts
          */
-        constructor(
-            server: string,
-            nick: string,
-            opts?: IClientOpts,
-        );
+        constructor(server: string, nick: string, opts?: IClientOpts);
 
         /**
          * Send a raw message to the server; generally speaking, it’s best
@@ -91,20 +87,14 @@ declare namespace NodeIRC {
          * @param command - irc command
          * @param args - command arguments (splat)
          */
-        public send(
-            command: string,
-            ...args: string[]
-        ): void;
+        public send(command: string, ...args: string[]): void;
 
         /**
          * Join the specified channel
          * @param channel - channel to join
          * @param callback
          */
-        public join(
-            channel: string,
-            callback?: handlers.IJoinChannel,
-        ): void;
+        public join(channel: string, callback?: handlers.IJoinChannel): void;
 
         /**
          * Part the specified channel
@@ -123,10 +113,7 @@ declare namespace NodeIRC {
          * @param target - nick or channel
          * @param message - message to send
          */
-        public say(
-            target: string,
-            message: string,
-        ): void;
+        public say(target: string, message: string): void;
 
         /**
          * Send a CTCP message to the specified target
@@ -134,41 +121,28 @@ declare namespace NodeIRC {
          * @param type - "privmsg" for PRIVMSG, anything else for NOTICE
          * @param text - CTCP message
          */
-        public ctcp(
-            target: string,
-            type: string,
-            text: string,
-        ): void;
+        public ctcp(target: string, type: string, text: string): void;
 
         /**
          * Send an action to the specified target
          * @param target - target
          * @param message - message
          */
-        public action(
-            target: string,
-            message: string,
-        ): void;
+        public action(target: string, message: string): void;
 
         /**
          * Send a notice to the specified target.
          * @param target - nick or channel
          * @param message - message to send
          */
-        public notice(
-            target: string,
-            message: string,
-        ): void;
+        public notice(target: string, message: string): void;
 
         /**
          * Request a whois for the specified nick
          * @param nick - nickname
          * @param callback
          */
-        public whois(
-            nick: string,
-            callback: handlers.IWhois,
-        ): void;
+        public whois(nick: string, callback: handlers.IWhois): void;
 
         /**
          * Request a channel listing from the server. The arguments for this
@@ -179,9 +153,7 @@ declare namespace NodeIRC {
          *
          * @param args - arguments
          */
-        public list(
-            ...args: string[]
-        ): void;
+        public list(...args: string[]): void;
 
         /**
          * Connect to the server. Use when `autoConnect` is false.
@@ -198,10 +170,7 @@ declare namespace NodeIRC {
          * @param message - message to send
          * @param callback
          */
-        public disconnect(
-            message: string,
-            callback: () => void,
-        ): void;
+        public disconnect(message: string, callback: () => void): void;
 
         /**
          * Activate flood protection “after the fact”. You can also use
@@ -210,9 +179,7 @@ declare namespace NodeIRC {
          * interval.
          * @param interval - ms to wait between messages
          */
-        public activateFloodProtection(
-            interval: number,
-        ): void;
+        public activateFloodProtection(interval: number): void;
     }
 
     /** Client options object */
@@ -546,11 +513,7 @@ declare namespace NodeIRC {
              * @param reason - part reason
              * @param message - raw message
              */
-            (
-                nick: string,
-                reason: string,
-                message: IMessage,
-            ): void;
+            (nick: string, reason: string, message: IMessage): void;
         }
 
         /**
@@ -585,12 +548,7 @@ declare namespace NodeIRC {
              * @param reason - kick reason
              * @param message - raw message
              */
-            (
-                nick: string,
-                by: string,
-                reason: string,
-                message: IMessage,
-            ): void;
+            (nick: string, by: string, reason: string, message: IMessage): void;
         }
 
         /**
@@ -606,12 +564,7 @@ declare namespace NodeIRC {
              * @param text - message text
              * @param message - raw message
              */
-            (
-                nick: string,
-                to: string,
-                text: string,
-                message: IMessage,
-            ): void;
+            (nick: string, to: string, text: string, message: IMessage): void;
         }
 
         /**
@@ -626,12 +579,7 @@ declare namespace NodeIRC {
              * @param text - message text
              * @param message - raw message
              */
-            (
-                nick: string,
-                to: string,
-                text: string,
-                message: IMessage,
-            ): void;
+            (nick: string, to: string, text: string, message: IMessage): void;
         }
 
         /**
@@ -732,12 +680,7 @@ declare namespace NodeIRC {
              * @param to - recievier
              * @param message - raw message
              */
-            (
-                from: string,
-                to: string,
-                text: string,
-                message: IMessage,
-            ): void;
+            (from: string, to: string, text: string, message: IMessage): void;
 
             (
                 from: string,
@@ -829,9 +772,7 @@ declare namespace NodeIRC {
             /**
              * @param list - channels
              */
-            (
-                list: IChannel[],
-            ): void;
+            (list: IChannel[]): void;
         }
 
         /**
@@ -866,12 +807,7 @@ declare namespace NodeIRC {
              * @param text - text
              * @param message - raw message
              */
-            (
-                from: string,
-                to: string,
-                text: string,
-                message: IMessage,
-            ): void;
+            (from: string, to: string, text: string, message: IMessage): void;
         }
     }
 }

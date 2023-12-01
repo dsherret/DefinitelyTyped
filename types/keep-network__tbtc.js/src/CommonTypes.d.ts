@@ -12,7 +12,7 @@ export class Web3 {
     defaultBlock: string | number;
     readonly currentProvider: any;
     setProvider(provider: any): boolean;
-    BatchRequest: new() => any;
+    BatchRequest: new () => any;
     static readonly providers: any;
 
     utils: any;
@@ -52,12 +52,7 @@ export interface AbiItem {
 }
 
 export class Contract {
-    constructor(
-        provider: any,
-        abi: AbiItem[],
-        address?: string,
-        options?: any,
-    );
+    constructor(provider: any, abi: AbiItem[], address?: string, options?: any);
 
     private _address: string;
     private _jsonInterface: AbiItem[];
@@ -76,10 +71,7 @@ export class Contract {
 
     methods: any;
 
-    once(
-        event: string,
-        callback: (error: Error, event: any) => void,
-    ): void;
+    once(event: string, callback: (error: Error, event: any) => void): void;
     once(
         event: string,
         options: any,
@@ -116,6 +108,8 @@ export interface DepositBaseClass {
     constructFundingProof(
         bitcoinTransaction: Omit<FoundTransaction, "value">,
         confirmations: number,
-    ): Promise<[Buffer, Buffer, Buffer, Buffer, number, Buffer, string, Buffer]>;
+    ): Promise<
+        [Buffer, Buffer, Buffer, Buffer, number, Buffer, string, Buffer]
+    >;
     getLatestRedemptionDetails(): Promise<null | RedemptionDetails>;
 }

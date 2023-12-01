@@ -3,7 +3,10 @@
 declare namespace AMap {
     namespace Geocoder {
         interface EventMap {
-            complete: Event<"complete", GeocodeResult | {} | ReGeocodeResult | BatchReGeocodeResult>;
+            complete: Event<
+                "complete",
+                GeocodeResult | {} | ReGeocodeResult | BatchReGeocodeResult
+            >;
             error: Event<"error", { info: string }>;
         }
         interface Options {
@@ -334,7 +337,10 @@ declare namespace AMap {
          */
         getLocation(
             address: string | string[],
-            callback: (status: Geocoder.SearchStatus, result: Geocoder.GeocodeResult | string) => void,
+            callback: (
+                status: Geocoder.SearchStatus,
+                result: Geocoder.GeocodeResult | string,
+            ) => void,
         ): void;
         /**
          * 设置地址描述所在城市
@@ -348,7 +354,10 @@ declare namespace AMap {
          */
         getAddress(
             location: LocationValue,
-            callback: (status: Geocoder.SearchStatus, result: Geocoder.ReGeocodeResult | string) => void,
+            callback: (
+                status: Geocoder.SearchStatus,
+                result: Geocoder.ReGeocodeResult | string,
+            ) => void,
         ): void;
         /**
          * 根据给定坐标进行解析
@@ -357,7 +366,10 @@ declare namespace AMap {
          */
         getAddress(
             locations: LocationValue[],
-            callback: (status: Geocoder.SearchStatus, result: Geocoder.BatchReGeocodeResult | string) => void,
+            callback: (
+                status: Geocoder.SearchStatus,
+                result: Geocoder.BatchReGeocodeResult | string,
+            ) => void,
         ): void;
 
         // internal

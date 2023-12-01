@@ -1,4 +1,10 @@
-import { email, phonecall, text, textWithoutEncoding, web } from "react-native-communications";
+import {
+    email,
+    phonecall,
+    text,
+    textWithoutEncoding,
+    web,
+} from "react-native-communications";
 
 phonecall("123456789", true);
 

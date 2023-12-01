@@ -385,7 +385,12 @@ declare namespace DAO {
         Connect: string;
         readonly Connection: Connection;
         readonly Containers: Containers;
-        CreateProperty(Name?: string, Type?: DataTypeEnum, Value?: any, DDL?: boolean): Property;
+        CreateProperty(
+            Name?: string,
+            Type?: DataTypeEnum,
+            Value?: any,
+            DDL?: boolean,
+        ): Property;
         CreateQueryDef(Name?: string, SQLText?: string): QueryDef;
         CreateRelation(
             Name?: string,
@@ -401,7 +406,11 @@ declare namespace DAO {
         ): TableDef;
         DesignMasterID: string;
         Execute(Query: string, Options?: RecordsetOptionEnum): void;
-        MakeReplica(PathName: string, Description: string, Options?: ReplicaTypeEnum): void;
+        MakeReplica(
+            PathName: string,
+            Description: string,
+            Options?: ReplicaTypeEnum,
+        ): void;
         readonly Name: string;
         NewPassword(bstrOld: string, bstrNew: string): void;
         OpenRecordset(
@@ -418,7 +427,10 @@ declare namespace DAO {
         readonly Recordsets: Recordsets;
         readonly Relations: Relations;
         readonly ReplicaID: string;
-        Synchronize(DbPathName: string, ExchangeType?: SynchronizeTypeEnum): void;
+        Synchronize(
+            DbPathName: string,
+            ExchangeType?: SynchronizeTypeEnum,
+        ): void;
         readonly TableDefs: TableDefs;
         readonly Transactions: boolean;
         readonly Updatable: boolean;
@@ -465,8 +477,17 @@ declare namespace DAO {
          * * the password, in the form `;pwd=MyNewPassword'`
          * * both the constant and a password, e.g. `dbLangGreek + ';pwd=MyNewPassword'`
          */
-        CreateDatabase(Name: string, Locale: LanguageConstants | string, Option?: DatabaseTypeEnum): Database;
-        CreateWorkspace(Name: string, UserName: string, Password: string, UseType?: WorkspaceTypeEnum): Workspace;
+        CreateDatabase(
+            Name: string,
+            Locale: LanguageConstants | string,
+            Option?: DatabaseTypeEnum,
+        ): Database;
+        CreateWorkspace(
+            Name: string,
+            UserName: string,
+            Password: string,
+            UseType?: WorkspaceTypeEnum,
+        ): Workspace;
         readonly DefaultPassword: string;
         DefaultType: number;
         readonly DefaultUser: string;
@@ -487,9 +508,19 @@ declare namespace DAO {
             ReadOnly?: boolean,
             Connect?: string,
         ): Connection;
-        OpenDatabase(Name: string, Exclusive?: boolean, ReadOnly?: boolean, Connect?: string): Database;
+        OpenDatabase(
+            Name: string,
+            Exclusive?: boolean,
+            ReadOnly?: boolean,
+            Connect?: string,
+        ): Database;
         readonly Properties: Properties;
-        RegisterDatabase(Dsn: string, Driver: string, Silent: boolean, Attributes: string): void;
+        RegisterDatabase(
+            Dsn: string,
+            Driver: string,
+            Silent: boolean,
+            Attributes: string,
+        ): void;
         RepairDatabase(Name: string): void;
         Rollback(): void;
         SetOption(Option: SetOptionEnum, Value: any): void;
@@ -503,7 +534,12 @@ declare namespace DAO {
         private constructor();
         readonly AllPermissions: number;
         readonly Container: string;
-        CreateProperty(Name?: string, Type?: DataTypeEnum, Value?: any, DDL?: boolean): Property;
+        CreateProperty(
+            Name?: string,
+            Type?: DataTypeEnum,
+            Value?: any,
+            DDL?: boolean,
+        ): Property;
         readonly DateCreated: VarDate;
         readonly LastUpdated: VarDate;
         readonly Name: string;
@@ -547,7 +583,12 @@ declare namespace DAO {
         readonly CollatingOrder: number;
         readonly CollectionIndex: number;
         readonly ComplexType: ComplexType;
-        CreateProperty(Name?: string, Type?: DataTypeEnum, Value?: any, DDL?: boolean): Property;
+        CreateProperty(
+            Name?: string,
+            Type?: DataTypeEnum,
+            Value?: any,
+            DDL?: boolean,
+        ): Property;
         readonly DataUpdatable: boolean;
         DefaultValue: any;
         Expression: string;
@@ -606,7 +647,12 @@ declare namespace DAO {
         private constructor();
         Clustered: boolean;
         CreateField(Name?: string): Field;
-        CreateProperty(Name?: string, Type?: DataTypeEnum, Value?: any, DDL?: boolean): Property;
+        CreateProperty(
+            Name?: string,
+            Type?: DataTypeEnum,
+            Value?: any,
+            DDL?: boolean,
+        ): Property;
         readonly DistinctCount: number;
         Fields: Fields;
         readonly Foreign: boolean;
@@ -670,7 +716,12 @@ declare namespace DAO {
         Cancel(): void;
         Close(): void;
         Connect: string;
-        CreateProperty(Name?: string, Type?: DataTypeEnum, Value?: any, DDL?: boolean): Property;
+        CreateProperty(
+            Name?: string,
+            Type?: DataTypeEnum,
+            Value?: any,
+            DDL?: boolean,
+        ): Property;
         readonly DateCreated: VarDate;
         Execute(Options?: RecordsetOptionEnum): void;
         readonly Fields: Fields;
@@ -679,7 +730,11 @@ declare namespace DAO {
         MaxRecords: number;
         Name: string;
         ODBCTimeout: number;
-        OpenRecordset(Type?: RecordsetTypeEnum, Options?: RecordsetOptionEnum, LockEdit?: LockTypeEnum): Recordset;
+        OpenRecordset(
+            Type?: RecordsetTypeEnum,
+            Options?: RecordsetOptionEnum,
+            LockEdit?: LockTypeEnum,
+        ): Recordset;
         readonly Parameters: Parameters;
         Prepare: QueryDefStateEnum;
         readonly Properties: Properties;
@@ -750,7 +805,10 @@ declare namespace DAO {
         readonly NoMatch: boolean;
         readonly ODBCFetchCount: number;
         readonly ODBCFetchDelay: number;
-        OpenRecordset(Type?: RecordsetTypeEnum, Options?: RecordsetOptionEnum): Recordset;
+        OpenRecordset(
+            Type?: RecordsetTypeEnum,
+            Options?: RecordsetOptionEnum,
+        ): Recordset;
         readonly Parent: Database;
         PercentPosition: number;
         readonly Properties: Properties;
@@ -828,13 +886,21 @@ declare namespace DAO {
         Connect: string;
         CreateField(Name?: string, Type?: DataTypeEnum, Size?: number): Field;
         CreateIndex(Name?: string): Index;
-        CreateProperty(Name?: string, Type?: DataTypeEnum, Value?: any, DDL?: boolean): Property;
+        CreateProperty(
+            Name?: string,
+            Type?: DataTypeEnum,
+            Value?: any,
+            DDL?: boolean,
+        ): Property;
         readonly DateCreated: VarDate;
         readonly Fields: Fields;
         readonly Indexes: Indexes;
         readonly LastUpdated: VarDate;
         Name: string;
-        OpenRecordset(Type?: RecordsetTypeEnum, Options?: RecordsetOptionEnum): Recordset;
+        OpenRecordset(
+            Type?: RecordsetTypeEnum,
+            Options?: RecordsetOptionEnum,
+        ): Recordset;
         readonly Properties: Properties;
         readonly RecordCount: number;
         RefreshLink(): void;
@@ -891,7 +957,11 @@ declare namespace DAO {
          * * the password, in the form `;pwd=MyNewPassword'`
          * * both the constant and a password, e.g. `dbLangGreek + ';pwd=MyNewPassword'`
          */
-        CreateDatabase(Name: string, Connect: string, Option?: DatabaseTypeEnum): Database;
+        CreateDatabase(
+            Name: string,
+            Connect: string,
+            Option?: DatabaseTypeEnum,
+        ): Database;
         CreateGroup(Name?: string, PID?: string): Group;
         CreateUser(Name?: string, PID?: string, Password?: string): User;
         readonly Databases: Databases;
@@ -911,7 +981,12 @@ declare namespace DAO {
             ReadOnly?: boolean,
             Connect?: string,
         ): Connection;
-        OpenDatabase(Name: string, Exclusive?: boolean, ReadOnly?: boolean, Connect?: string): Database;
+        OpenDatabase(
+            Name: string,
+            Exclusive?: boolean,
+            ReadOnly?: boolean,
+            Connect?: string,
+        ): Database;
         readonly Properties: Properties;
         Rollback(): void;
         readonly Type: number;

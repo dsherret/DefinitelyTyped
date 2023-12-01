@@ -245,7 +245,9 @@ declare namespace swaggerJSDoc {
         examples?: { [key: string]: Example | Reference } | undefined;
         requestBodies?: { [key: string]: RequestBody | Reference } | undefined;
         headers?: { [key: string]: Header | Reference } | undefined;
-        securitySchemes?: { [key: string]: SecurityScheme | Reference } | undefined;
+        securitySchemes?:
+            | { [key: string]: SecurityScheme | Reference }
+            | undefined;
         links?: { [key: string]: Link | Reference } | undefined;
         callbacks?: { [key: string]: Callback | Reference } | undefined;
         [key: string]: any;

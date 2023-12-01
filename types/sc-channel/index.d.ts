@@ -13,7 +13,12 @@ declare class SCChannel<T> extends AsyncIterableStream<T> {
     state: SCChannel.ChannelState;
     options: object;
 
-    constructor(name: string, client: SCChannel.Client, eventDemux: StreamDemux<T>, dataStream: AsyncIterableStream<T>);
+    constructor(
+        name: string,
+        client: SCChannel.Client,
+        eventDemux: StreamDemux<T>,
+        dataStream: AsyncIterableStream<T>,
+    );
 
     createAsyncIterator(timeout?: number): AsyncIterableStream.AsyncIterator<T>;
 

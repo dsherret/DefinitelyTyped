@@ -18,7 +18,11 @@ interface $persist {
     <T>(value: T): persistInterceptor<T>;
 }
 
-type persist = <T>(key: string, { get, set }: { get(): T; set(val: T): void }, storage: SimpleStorage) => void;
+type persist = <T>(
+    key: string,
+    { get, set }: { get(): T; set(val: T): void },
+    storage: SimpleStorage,
+) => void;
 
 declare module "alpinejs" {
     interface Alpine {

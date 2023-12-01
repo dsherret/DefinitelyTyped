@@ -4,45 +4,89 @@ declare namespace CKEDITOR {
     }
 
     interface domStatic {
-        comment: { new(comment: string | Node, ownerDocument?: dom.document): dom.comment };
-        document: { new(domDocument: Document): dom.document };
-        documentFragment: { new<T extends Event | EventTarget = Node>(nodeOrDoc: T): dom.documentFragment<T> };
-        domObject: { new<T extends Event | EventTarget = Node>(nativeDomObject: T): dom.domObject<T> };
+        comment: {
+            new (
+                comment: string | Node,
+                ownerDocument?: dom.document,
+            ): dom.comment;
+        };
+        document: { new (domDocument: Document): dom.document };
+        documentFragment: {
+            new <T extends Event | EventTarget = Node>(
+                nodeOrDoc: T,
+            ): dom.documentFragment<T>;
+        };
+        domObject: {
+            new <T extends Event | EventTarget = Node>(
+                nativeDomObject: T,
+            ): dom.domObject<T>;
+        };
         element: {
-            new(element: string | HTMLElement, ownerDocument?: dom.document): dom.element;
+            new (
+                element: string | HTMLElement,
+                ownerDocument?: dom.document,
+            ): dom.element;
             // static method
             clearAllMarkers(database: unknown): unknown;
 
-            clearMarkers(database: unknown, element: dom.element, removeFromDatabase: boolean): void;
+            clearMarkers(
+                database: unknown,
+                element: dom.element,
+                removeFromDatabase: boolean,
+            ): void;
 
             createFromHtml(html: string): dom.element;
 
             get(element: string | HTMLElement | dom.element): dom.element;
 
-            setMarker(database: unknown, element: dom.element, name: string, value: unknown): dom.element;
+            setMarker(
+                database: unknown,
+                element: dom.element,
+                name: string,
+                value: unknown,
+            ): dom.element;
         };
-        elementPath: { new(startNode: dom.element, root?: dom.element): dom.elementPath };
+        elementPath: {
+            new (startNode: dom.element, root?: dom.element): dom.elementPath;
+        };
         event: {
-            new(domEvent: Event | EventTarget): dom.event<Event | EventTarget, dom.node<Event | EventTarget>>;
+            new (
+                domEvent: Event | EventTarget,
+            ): dom.event<Event | EventTarget, dom.node<Event | EventTarget>>;
         };
-        iterator: { new(range: dom.range): dom.iterator };
-        node: { new(domNode: Event | EventTarget): dom.node<Event | EventTarget> };
-        nodeList: { new(nativeList: NodeList): dom.nodeList<Event | EventTarget> };
+        iterator: { new (range: dom.range): dom.iterator };
+        node: {
+            new (domNode: Event | EventTarget): dom.node<Event | EventTarget>;
+        };
+        nodeList: {
+            new (nativeList: NodeList): dom.nodeList<Event | EventTarget>;
+        };
         range: {
-            new(root: dom.element | dom.document): dom.range;
+            new (root: dom.element | dom.document): dom.range;
             mergeRanges(ranges: dom.range[]): dom.range[];
         };
-        rangeList: { new(ranges?: dom.range | dom.range[]): dom.rangeList };
-        selection: { new(target: dom.document | dom.element | dom.selection): dom.selection };
-        text: { new(text: Text | string, ownerDocument?: dom.document): dom.text };
+        rangeList: { new (ranges?: dom.range | dom.range[]): dom.rangeList };
+        selection: {
+            new (
+                target: dom.document | dom.element | dom.selection,
+            ): dom.selection;
+        };
+        text: {
+            new (text: Text | string, ownerDocument?: dom.document): dom.text;
+        };
         walker: {
-            new(range: dom.range): dom.walker;
+            new (range: dom.range): dom.walker;
             validEmptyBlockContainers: { [key: string]: unknown };
-            blockBoundary(customNodeNames: unknown): (node: dom.node) => boolean;
+            blockBoundary(
+                customNodeNames: unknown,
+            ): (node: dom.node) => boolean;
 
             bogus(isReject?: boolean): (node: dom.node) => boolean;
 
-            bookmark(contentOnly?: boolean, isReject?: boolean): (node: dom.node) => boolean;
+            bookmark(
+                contentOnly?: boolean,
+                isReject?: boolean,
+            ): (node: dom.node) => boolean;
 
             editable(isReject?: boolean): (node: dom.node) => boolean;
 
@@ -54,13 +98,16 @@ declare namespace CKEDITOR {
 
             listItemBoundary(): (node: dom.node) => boolean;
 
-            nodeType(type: number, isReject?: boolean): (node: dom.node) => boolean;
+            nodeType(
+                type: number,
+                isReject?: boolean,
+            ): (node: dom.node) => boolean;
 
             temp(isReject?: boolean): (node: dom.node) => boolean;
 
             whitespaces(isReject?: boolean): (node: dom.node) => boolean;
         };
-        window: { new(domWindow: Window): dom.window };
+        window: { new (domWindow: Window): dom.window };
     }
 
     namespace dom {
@@ -101,7 +148,8 @@ declare namespace CKEDITOR {
         }
 
         /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dom_comment.html */
-        interface comment<T extends Event | EventTarget = Node> extends node<T> {
+        interface comment<T extends Event | EventTarget = Node>
+            extends node<T> {
             readonly type: number;
             getOuterHtml(): string;
         }
@@ -152,14 +200,16 @@ declare namespace CKEDITOR {
         }
 
         /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dom_documentFragment.html */
-        interface documentFragment<T extends Event | EventTarget = Node> extends node<T> {
+        interface documentFragment<T extends Event | EventTarget = Node>
+            extends node<T> {
             readonly type: number;
 
             insertAfterNode(node: node): void;
         }
 
         /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dom_domObject.html */
-        interface domObject<T extends Event | EventTarget = Node> extends CKEDITOR.event {
+        interface domObject<T extends Event | EventTarget = Node>
+            extends CKEDITOR.event {
             readonly $: T;
 
             clearCustomData(): void;
@@ -197,7 +247,10 @@ declare namespace CKEDITOR {
 
             contains(node: node): boolean;
 
-            copyAttributes(dest: element, skipAttributes: { [key: string]: string }): void;
+            copyAttributes(
+                dest: element,
+                skipAttributes: { [key: string]: string },
+            ): void;
 
             data(name: string, value?: string | false): string;
 
@@ -213,7 +266,11 @@ declare namespace CKEDITOR {
 
             focusPrevious(ignoreChildren?: boolean, indexToUse?: number): void;
 
-            forEach(callback: (node: node) => void, type?: number, skipRoot?: boolean): void;
+            forEach(
+                callback: (node: node) => void,
+                type?: number,
+                skipRoot?: boolean,
+            ): void;
 
             getAttribute(name: string): string;
 
@@ -304,7 +361,11 @@ declare namespace CKEDITOR {
 
             renameNode(newTag: string): void;
 
-            scrollIntoParent(parent: element | window, alignToTop: boolean, hscroll: boolean): void;
+            scrollIntoParent(
+                parent: element | window,
+                alignToTop: boolean,
+                hscroll: boolean,
+            ): void;
 
             scrollIntoView(alignToTop?: boolean): void;
 
@@ -344,7 +405,12 @@ declare namespace CKEDITOR {
             compare(otherPath: elementPath): boolean;
 
             contains(
-                query: string | string[] | ((element: element) => boolean) | { [key: string]: unknown } | element,
+                query:
+                    | string
+                    | string[]
+                    | ((element: element) => boolean)
+                    | { [key: string]: unknown }
+                    | element,
                 excludeRoot?: boolean,
                 fromTop?: boolean,
             ): element;
@@ -355,7 +421,10 @@ declare namespace CKEDITOR {
         }
 
         /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dom_event.html */
-        interface event<T extends Event | EventTarget = Event, U extends node<Event | EventTarget> = node<T>> {
+        interface event<
+            T extends Event | EventTarget = Event,
+            U extends node<Event | EventTarget> = node<T>,
+        > {
             readonly $: T;
 
             getKey(): number;
@@ -400,7 +469,8 @@ declare namespace CKEDITOR {
         }
 
         /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_dom_node.html */
-        interface node<T extends Event | EventTarget = Node> extends domObject<T> {
+        interface node<T extends Event | EventTarget = Node>
+            extends domObject<T> {
             type: number;
 
             appendTo(element: element): element;
@@ -411,15 +481,24 @@ declare namespace CKEDITOR {
 
             hasNext(): boolean;
 
-            insertAfter(node: node<Event | EventTarget>): node<Event | EventTarget>;
+            insertAfter(
+                node: node<Event | EventTarget>,
+            ): node<Event | EventTarget>;
 
-            insertBefore(node: node<Event | EventTarget>): node<Event | EventTarget>;
+            insertBefore(
+                node: node<Event | EventTarget>,
+            ): node<Event | EventTarget>;
 
-            insertBeforeMe(node: node<Event | EventTarget>): node<Event | EventTarget>;
+            insertBeforeMe(
+                node: node<Event | EventTarget>,
+            ): node<Event | EventTarget>;
 
             getAddress(normalized?: boolean): number[];
 
-            getAscendant(reference: string, includeSelf?: boolean): node<Event | EventTarget>;
+            getAscendant(
+                reference: string,
+                includeSelf?: boolean,
+            ): node<Event | EventTarget>;
 
             getCommonAncestor(node: node<Event | EventTarget>): void;
 
@@ -427,12 +506,16 @@ declare namespace CKEDITOR {
 
             getIndex(normalized?: boolean): number;
 
-            getNext(evaluator?: (node: node<Event | EventTarget>) => boolean): node<Event | EventTarget>;
+            getNext(
+                evaluator?: (node: node<Event | EventTarget>) => boolean,
+            ): node<Event | EventTarget>;
 
             getNextSourceNode(
                 startFromSibling?: boolean,
                 nodeType?: number,
-                guard?: node<Event | EventTarget> | ((node: node<Event | EventTarget>) => boolean),
+                guard?:
+                    | node<Event | EventTarget>
+                    | ((node: node<Event | EventTarget>) => boolean),
             ): node<Event | EventTarget>;
 
             getParent(allowFragmentParent?: boolean): element;
@@ -446,7 +529,9 @@ declare namespace CKEDITOR {
             getPreviousSourceNode(
                 startFromSibling?: boolean,
                 nodeType?: number,
-                guard?: node<Event | EventTarget> | ((node: node<Event | EventTarget>) => boolean),
+                guard?:
+                    | node<Event | EventTarget>
+                    | ((node: node<Event | EventTarget>) => boolean),
             ): node<Event | EventTarget>;
 
             hasAscendant(name: string, includeSelf: boolean): boolean;
@@ -483,7 +568,10 @@ declare namespace CKEDITOR {
             readonly startContainer: element | text;
             readonly startOffset: number;
 
-            checkBoundaryOfElement(element: element, checkType: number): boolean;
+            checkBoundaryOfElement(
+                element: element,
+                checkType: number,
+            ): boolean;
 
             checkEndOfBlock(): boolean;
 
@@ -509,13 +597,19 @@ declare namespace CKEDITOR {
 
             enlarge(unit: number, excludeBrs?: boolean): void;
 
-            extractContents(mergeThen?: boolean, cloneId?: boolean): documentFragment;
+            extractContents(
+                mergeThen?: boolean,
+                cloneId?: boolean,
+            ): documentFragment;
 
             fixBlock(isStart: boolean, blockTag: string): element;
 
             getBoundaryNodes(): { startNode: node; endNode: node };
 
-            getCommonAncestor(includeSelf?: boolean, ignoreTextNode?: boolean): element;
+            getCommonAncestor(
+                includeSelf?: boolean,
+                ignoreTextNode?: boolean,
+            ): element;
 
             getEnclosedNode(): node;
 
@@ -543,13 +637,19 @@ declare namespace CKEDITOR {
 
             moveToBookmark(bookmark: bookmark | bookmark2): void;
 
-            moveToClosestEditablePosition(element?: element, isMoveForward?: boolean): boolean;
+            moveToClosestEditablePosition(
+                element?: element,
+                isMoveForward?: boolean,
+            ): boolean;
 
             moveToElementEditEnd(target: element): boolean;
 
             moveToElementEditStart(target: element): boolean;
 
-            moveToElementEditablePosition(element: element, isMoveToEnd: boolean): boolean;
+            moveToElementEditablePosition(
+                element: element,
+                isMoveToEnd: boolean,
+            ): boolean;
 
             moveToPosition(node: node, position: number): void;
 
@@ -583,7 +683,11 @@ declare namespace CKEDITOR {
 
             setStartBefore(node: node): void;
 
-            shrink(mode: number, selectContents?: boolean, options?: boolean | shrinkOptions): void;
+            shrink(
+                mode: number,
+                selectContents?: boolean,
+                options?: boolean | shrinkOptions,
+            ): void;
 
             splitBlock(cloneId?: boolean): void;
 

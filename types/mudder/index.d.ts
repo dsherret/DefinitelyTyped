@@ -4,7 +4,10 @@ export class SymbolTable {
     maxBase: number;
     isPrefixCode: boolean;
 
-    constructor(symbols: string | readonly string[], map?: Record<string, number> | Map<string, number>);
+    constructor(
+        symbols: string | readonly string[],
+        map?: Record<string, number> | Map<string, number>,
+    );
 
     numberToDigits(num: number, base?: number): number[];
     digitsToString(digits: readonly number[]): string;

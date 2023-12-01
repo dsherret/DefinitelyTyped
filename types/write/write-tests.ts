@@ -31,7 +31,12 @@ write("1.txt", arr, (err, result) => {
 });
 
 // $ExpectType void
-write("1.txt", text, { newline: true, overwrite: true, increment: true }, () => "ok");
+write(
+    "1.txt",
+    text,
+    { newline: true, overwrite: true, increment: true },
+    () => "ok",
+);
 
 let { path, data } = write.sync("1.txt", arr);
 // $ExpectType string

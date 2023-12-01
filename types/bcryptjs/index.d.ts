@@ -3,7 +3,9 @@
  * Please note: It is highly important that the PRNG used is cryptographically secure and that it is seeded properly!
  * @param  random Function taking the number of bytes to generate as its sole argument, returning the corresponding array of cryptographically secure random byte values.
  */
-export declare function setRandomFallback(random: (random: number) => number[]): void;
+export declare function setRandomFallback(
+    random: (random: number) => number[],
+): void;
 
 /**
  * Synchronously generates a salt.
@@ -24,14 +26,19 @@ export declare function genSalt(rounds?: number): Promise<string>;
  * Asynchronously generates a salt.
  * @param callback Callback receiving the error, if any, and the resulting salt
  */
-export declare function genSalt(callback: (err: Error | null, salt: string) => void): void;
+export declare function genSalt(
+    callback: (err: Error | null, salt: string) => void,
+): void;
 
 /**
  * Asynchronously generates a salt.
  * @param  rounds   Number of rounds to use, defaults to 10 if omitted
  * @param  callback Callback receiving the error, if any, and the resulting salt
  */
-export declare function genSalt(rounds: number, callback: (err: Error | null, salt: string) => void): void;
+export declare function genSalt(
+    rounds: number,
+    callback: (err: Error | null, salt: string) => void,
+): void;
 
 /**
  * Synchronously generates a hash for the given string.
@@ -113,7 +120,10 @@ export declare function getSalt(hash: string): string;
  * @param b Byte array
  * @param len Maximum input length
  */
-export declare function encodeBase64(b: Readonly<ArrayLike<number>>, len: number): string;
+export declare function encodeBase64(
+    b: Readonly<ArrayLike<number>>,
+    len: number,
+): string;
 
 /**
  * Decodes a base64 encoded string to up to len bytes of output, using the custom bcrypt alphabet.

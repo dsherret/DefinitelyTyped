@@ -8,7 +8,7 @@ declare namespace sprite {
          * The spriter's constructor (always the entry point)
          * @param config Main configuration for the spriting process
          */
-        new(config: Config): SVGSpriter;
+        new (config: Config): SVGSpriter;
     }
 
     interface SVGSpriter {
@@ -83,62 +83,77 @@ declare namespace sprite {
         /**
          * SVG shape ID related options
          */
-        id?: {
-            /**
-             * Separator for directory name traversal
-             */
-            separator?: string | undefined;
-            /**
-             * SVG shape ID generator callback
-             */
-            generator?: string | ((svg: string, file: File) => string) | undefined;
-            /**
-             * File name separator for shape states (e.g. ':hover')
-             */
-            pseudo?: string | undefined;
-            /**
-             * Whitespace replacement for shape IDs
-             */
-            whitespace?: string | undefined;
-        } | undefined;
+        id?:
+            | {
+                  /**
+                   * Separator for directory name traversal
+                   */
+                  separator?: string | undefined;
+                  /**
+                   * SVG shape ID generator callback
+                   */
+                  generator?:
+                      | string
+                      | ((svg: string, file: File) => string)
+                      | undefined;
+                  /**
+                   * File name separator for shape states (e.g. ':hover')
+                   */
+                  pseudo?: string | undefined;
+                  /**
+                   * Whitespace replacement for shape IDs
+                   */
+                  whitespace?: string | undefined;
+              }
+            | undefined;
         /**
          * Dimension related options
          */
-        dimension?: {
-            /**
-             * Max. shape width
-             */
-            maxWidth?: number | undefined;
-            /**
-             * Max. shape height
-             */
-            maxHeight?: number | undefined;
-            /**
-             * Floating point precision
-             */
-            precision?: number | undefined;
-            /**
-             * Width and height attributes on embedded shapes
-             */
-            attributes?: boolean | undefined;
-        } | undefined;
+        dimension?:
+            | {
+                  /**
+                   * Max. shape width
+                   */
+                  maxWidth?: number | undefined;
+                  /**
+                   * Max. shape height
+                   */
+                  maxHeight?: number | undefined;
+                  /**
+                   * Floating point precision
+                   */
+                  precision?: number | undefined;
+                  /**
+                   * Width and height attributes on embedded shapes
+                   */
+                  attributes?: boolean | undefined;
+              }
+            | undefined;
         /**
          * Spacing related options
          */
-        spacing?: {
-            /**
-             * Padding around all shapes
-             */
-            padding?: number | number[] | undefined;
-            /**
-             * Padding strategy (similar to CSS `box-sizing`)
-             */
-            box?: string | undefined;
-        } | undefined;
+        spacing?:
+            | {
+                  /**
+                   * Padding around all shapes
+                   */
+                  padding?: number | number[] | undefined;
+                  /**
+                   * Padding strategy (similar to CSS `box-sizing`)
+                   */
+                  box?: string | undefined;
+              }
+            | undefined;
         /**
          * List of transformations / optimizations
          */
-        transform?: Array<string | CustomConfigurationTransform | CustomCallbackTransform> | undefined;
+        transform?:
+            | Array<
+                  | string
+                  | CustomConfigurationTransform
+                  | CustomCallbackTransform
+              >
+            | undefined;
         /**
          * Path to YAML file with meta / accessibility data
          */
@@ -158,7 +173,9 @@ declare namespace sprite {
      */
     interface CustomConfigurationTransform {
         [transformationName: string]: {
-            plugins?: Array<{ [transformationName: string]: boolean }> | undefined;
+            plugins?:
+                | Array<{ [transformationName: string]: boolean }>
+                | undefined;
         };
     }
 
@@ -287,7 +304,9 @@ declare namespace sprite {
          * which all reside in the directory tmpl/css. Example: {css: true, scss: {dest: '_sprite.scss'}}
          * @default {}
          */
-        render?: { [key: string]: RenderingConfiguration | boolean } | undefined;
+        render?:
+            | { [key: string]: RenderingConfiguration | boolean }
+            | undefined;
         /**
          * Enabling this will trigger the creation of an HTML document demoing the usage of the sprite. Please see below for details on [rendering configurations](#rendering-configurations).
          * @default false

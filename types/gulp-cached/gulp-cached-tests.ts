@@ -2,14 +2,11 @@ import * as gulp from "gulp";
 import cached = require("gulp-cached");
 
 // Usage
-gulp.src("*.ts")
-    .pipe(cached("ts-cache"));
+gulp.src("*.ts").pipe(cached("ts-cache"));
 
-gulp.src("*.ts")
-    .pipe(cached("ts-cache", {}));
+gulp.src("*.ts").pipe(cached("ts-cache", {}));
 
-gulp.src("*.ts")
-    .pipe(cached("ts-cache", { optimizeMemory: true }));
+gulp.src("*.ts").pipe(cached("ts-cache", { optimizeMemory: true }));
 
 // Clearing the whole cache
 cached.caches = {};

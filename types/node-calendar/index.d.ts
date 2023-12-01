@@ -209,7 +209,10 @@ declare module "node-calendar" {
          * @param {number} month
          *  Month for which the calendar should be generated.
          */
-        monthdays2calendar(year: number, month: number): IMonthGrid<[number, number]>;
+        monthdays2calendar(
+            year: number,
+            month: number,
+        ): IMonthGrid<[number, number]>;
 
         /**
          * The specified year ready for formatting. The return value is an array
@@ -249,7 +252,10 @@ declare module "node-calendar" {
          * @param {number} width
          *  The number of months to include in each row. Default: 3
          */
-        yeardays2calendar(year: number, width?: number): IYearGrid<[number, number]>;
+        yeardays2calendar(
+            year: number,
+            width?: number,
+        ): IYearGrid<[number, number]>;
     }
 
     /**
@@ -313,7 +319,9 @@ declare module "node-calendar" {
      * @return {number}
      *  Unix timestamp from GMT.
      */
-    export function timegm(timegmt: [number, number, number, number, number, number]): number;
+    export function timegm(
+        timegmt: [number, number, number, number, number, number],
+    ): number;
 
     /**
      * @param {number} year

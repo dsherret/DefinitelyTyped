@@ -6,19 +6,27 @@ export type SubActionProps<
     Namespace extends string | undefined,
     OwnAction extends string,
 > = {
-    [k in SubActions[number]]: `${Namespace extends string ? `${Namespace}/` : ""}${OwnAction}_${k}`;
+    [k in SubActions[number]]: `${Namespace extends string
+        ? `${Namespace}/`
+        : ""}${OwnAction}_${k}`;
 };
 
-export type NamespaceString<Namespace extends Action | string> = Namespace extends Action ? Namespace["ACTION"]
-    : Namespace;
+export type NamespaceString<Namespace extends Action | string> =
+    Namespace extends Action ? Namespace["ACTION"] : Namespace;
 
-export type WithNamespace<OwnAction extends string, Namespace extends string | undefined> = Namespace extends string
-    ? `${Namespace}/${OwnAction}`
-    : OwnAction;
+export type WithNamespace<
+    OwnAction extends string,
+    Namespace extends string | undefined,
+> = Namespace extends string ? `${Namespace}/${OwnAction}` : OwnAction;
 
-export interface PlainAction<OwnAction extends string, Namespace extends string | undefined> {
+export interface PlainAction<
+    OwnAction extends string,
+    Namespace extends string | undefined,
+> {
     ACTION: WithNamespace<OwnAction, Namespace>;
-    defineAction: defineChildAction & defineChildActionWithNamespace & defineChildActionWithSubactionsAndNamespace;
+    defineAction: defineChildAction &
+        defineChildActionWithNamespace &
+        defineChildActionWithSubactionsAndNamespace;
     toString: () => WithNamespace<OwnAction, Namespace>;
 }
 
@@ -28,11 +36,18 @@ export type Action<
     Namespace extends string | undefined = undefined,
     SubActions extends SubAction[] = SubAction[],
 > = SubAction extends string
-    ? PlainAction<OwnAction, Namespace> & SubActionProps<SubAction, SubActions, Namespace, OwnAction>
+    ? PlainAction<OwnAction, Namespace> &
+          SubActionProps<SubAction, SubActions, Namespace, OwnAction>
     : PlainAction<OwnAction, Namespace>;
 
-export function defineAction<OwnAction extends string>(actionType: OwnAction): Action<OwnAction>;
-export function defineAction<OwnAction extends string, SubAction extends string, SubActions extends SubAction[]>(
+export function defineAction<OwnAction extends string>(
+    actionType: OwnAction,
+): Action<OwnAction>;
+export function defineAction<
+    OwnAction extends string,
+    SubAction extends string,
+    SubActions extends SubAction[],
+>(
     actionType: OwnAction,
     subactions: SubActions,
 ): Action<OwnAction, SubAction, undefined, SubActions>;
@@ -46,17 +61,26 @@ export function defineAction<
     subactions: SubActions,
     namespace: Namespace,
 ): Action<OwnAction, SubAction, NamespaceString<Namespace>, SubActions>;
-export function defineAction<OwnAction extends string, Namespace extends string | Action>(
+export function defineAction<
+    OwnAction extends string,
+    Namespace extends string | Action,
+>(
     actionType: OwnAction,
     namespace: Namespace,
 ): Action<OwnAction, string, NamespaceString<Namespace>, []>;
 
-export type defineChildAction = <Parent extends Action, OwnAction extends string>(
+export type defineChildAction = <
+    Parent extends Action,
+    OwnAction extends string,
+>(
     this: Parent,
     actionType: OwnAction,
 ) => Action<OwnAction, string, Parent["ACTION"], []>;
 
-export type defineChildActionWithNamespace = <OwnAction extends string, Namespace extends string | Action>(
+export type defineChildActionWithNamespace = <
+    OwnAction extends string,
+    Namespace extends string | Action,
+>(
     this: Action,
     actionType: OwnAction,
     namespace: Namespace,

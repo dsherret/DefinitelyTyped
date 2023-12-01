@@ -45,7 +45,12 @@ export { AABB } from "./math/AABB";
 export { BoundingSphere } from "./math/BoundingSphere";
 export { BVH } from "./math/BVH";
 export { BVHNode } from "./math/BVH";
-export { ConvexHull, Face as CHFace, Vertex as CHVertex, VertexList as CHVertexList } from "./math/ConvexHull";
+export {
+    ConvexHull,
+    Face as CHFace,
+    Vertex as CHVertex,
+    VertexList as CHVertexList,
+} from "./math/ConvexHull";
 export { HalfEdge } from "./math/HalfEdge";
 export { LineSegment } from "./math/LineSegment";
 export { MathUtils } from "./math/MathUtils";

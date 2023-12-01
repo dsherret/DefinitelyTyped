@@ -10,11 +10,9 @@ declare namespace MergeIntoFile {
         src: string[];
         dest:
             | string
-            | ((
-                code: string,
-            ) => {
-                [key: string]: string;
-            });
+            | ((code: string) => {
+                  [key: string]: string;
+              });
     }>;
 
     /**
@@ -55,8 +53,8 @@ declare namespace MergeIntoFile {
          */
         transform?:
             | {
-                [key: string]: (code: string) => string;
-            }
+                  [key: string]: (code: string) => string;
+              }
             | undefined;
         /**
          * A function for change output file name with hash
@@ -78,7 +76,10 @@ declare namespace MergeIntoFile {
  */
 declare class MergeIntoFile extends Plugin {
     static getHashOfRelatedFile(assets: any, fileName: string): string | null;
-    constructor(options: MergeIntoFile.Options, onComplete?: (files: { [key: string]: string }) => void);
+    constructor(
+        options: MergeIntoFile.Options,
+        onComplete?: (files: { [key: string]: string }) => void,
+    );
     /** Hook into the Webpack compiler */
     apply(compiler: Compiler): void;
 }

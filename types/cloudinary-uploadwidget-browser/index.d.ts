@@ -5,25 +5,38 @@ interface CloudinaryBase {
 
     createUploadWidget(
         options: CloudinaryUploadWidgetOptions,
-        resultCallback?: (error: string | null, result: CloudinaryEvent) => void,
+        resultCallback?: (
+            error: string | null,
+            result: CloudinaryEvent,
+        ) => void,
     ): CloudinaryUploadWidget;
 
     openUploadWidget(
         options: CloudinaryUploadWidgetOptions,
-        resultCallback?: (error: string | null, result: CloudinaryEvent) => void,
+        resultCallback?: (
+            error: string | null,
+            result: CloudinaryEvent,
+        ) => void,
     ): CloudinaryUploadWidget;
 
     applyUploadWidget(
         element: HTMLElement,
         options: CloudinaryUploadWidgetOptions,
-        resultCallback?: (error: string | null, result: CloudinaryEvent) => void,
+        resultCallback?: (
+            error: string | null,
+            result: CloudinaryEvent,
+        ) => void,
     ): CloudinaryUploadWidget;
 }
 
 interface CloudinaryUploadWidget {
     open(files?: string): void;
     close(options?: { quiet: boolean }): void;
-    update(options: Partial<Omit<CloudinaryUploadWidgetOptions, NotSupportedForUpdates>>): void;
+    update(
+        options: Partial<
+            Omit<CloudinaryUploadWidgetOptions, NotSupportedForUpdates>
+        >,
+    ): void;
     hide(): void;
     show(): void;
     minimize(): void;
@@ -33,18 +46,23 @@ interface CloudinaryUploadWidget {
     isDestroyed(): boolean;
 }
 
-type NotSupportedForUpdates = "secure" | "uploadSignature" | "getTags" | "preBatch" | "inlineContainer" | "fieldName";
+type NotSupportedForUpdates =
+    | "secure"
+    | "uploadSignature"
+    | "getTags"
+    | "preBatch"
+    | "inlineContainer"
+    | "fieldName";
 
-type CloudinaryUploadWidgetOptions =
-    & RequiredParameters
-    & WidgetParameters
-    & CroppingParameters
-    & SourcesParameters
-    & UploadParameters
-    & ClientParameters
-    & PageParameters
-    & CustomizationParameters
-    & AdvancedParameters;
+type CloudinaryUploadWidgetOptions = RequiredParameters &
+    WidgetParameters &
+    CroppingParameters &
+    SourcesParameters &
+    UploadParameters &
+    ClientParameters &
+    PageParameters &
+    CustomizationParameters &
+    AdvancedParameters;
 
 interface RequiredParameters {
     cloudName: string;
@@ -88,7 +106,10 @@ interface UploadParameters {
     context?: Record<string, any> | undefined;
     uploadSignature?:
         | string
-        | ((callback: (result: string) => void, params: CloudinaryUploadWidgetOptions) => void)
+        | ((
+              callback: (result: string) => void,
+              params: CloudinaryUploadWidgetOptions,
+          ) => void)
         | undefined;
     uploadSignatureTimestamp?: number | undefined;
 }
@@ -126,10 +147,21 @@ interface CustomizationParameters {
 interface AdvancedParameters {
     showPoweredBy?: boolean | undefined;
     autoMinimize?: boolean | undefined;
-    getTags?: ((cb: (tags: readonly string[]) => void, prefix: string) => void) | undefined;
-    getUploadPresets?: ((cb: (presets: readonly string[]) => void) => void) | undefined;
-    preBatch?: ((cb: (options?: { cancel: boolean }) => void, data: { [key: string]: any }) => void) | undefined;
-    prepareUploadParams?: ((cb: (results: any) => void, params: any) => void) | undefined;
+    getTags?:
+        | ((cb: (tags: readonly string[]) => void, prefix: string) => void)
+        | undefined;
+    getUploadPresets?:
+        | ((cb: (presets: readonly string[]) => void) => void)
+        | undefined;
+    preBatch?:
+        | ((
+              cb: (options?: { cancel: boolean }) => void,
+              data: { [key: string]: any },
+          ) => void)
+        | undefined;
+    prepareUploadParams?:
+        | ((cb: (results: any) => void, params: any) => void)
+        | undefined;
     language?: string | undefined;
     showAdvancedOptions?: boolean | undefined;
     showCompletedButton?: boolean | undefined;

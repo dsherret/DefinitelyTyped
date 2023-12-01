@@ -439,7 +439,11 @@ interface QUnitStatic extends QUnitAssert {
      * @param expected Number of assertions in this test
      * @param test Function to close over assertions
      */
-    asyncTest(name: string, expected: number, test: (assert: QUnitAssert) => any): any;
+    asyncTest(
+        name: string,
+        expected: number,
+        test: (assert: QUnitAssert) => any,
+    ): any;
 
     /**
      * Add an asynchronous test to run. The test must include a call to start().
@@ -500,7 +504,11 @@ interface QUnitStatic extends QUnitAssert {
      * @param expected Number of assertions in this test
      * @param test Function to close over assertions
      */
-    test(title: string, expected: number, test: (assert: QUnitAssert) => any): any;
+    test(
+        title: string,
+        expected: number,
+        test: (assert: QUnitAssert) => any,
+    ): any;
 
     /**
      * @param title Title of unit being tested
@@ -566,7 +574,11 @@ declare function equal(actual: any, expected: any, message?: string): any;
  * @param expected Known comparison value
  * @param message A short description of the assertion
  */
-declare function notDeepEqual(actual: any, expected: any, message?: string): any;
+declare function notDeepEqual(
+    actual: any,
+    expected: any,
+    message?: string,
+): any;
 
 /**
  * A non-strict comparison assertion, checking for inequality.
@@ -594,7 +606,11 @@ declare function notEqual(actual: any, expected: any, message?: string): any;
  * @param expected Known comparison value
  * @param message A short description of the assertion
  */
-declare function notStrictEqual(actual: any, expected: any, message?: string): any;
+declare function notStrictEqual(
+    actual: any,
+    expected: any,
+    message?: string,
+): any;
 
 /**
  * A boolean assertion, equivalent to CommonJS’s assert.ok() and JUnit’s assertTrue().
@@ -695,7 +711,9 @@ declare function log(callback: (details: LogCallbackObject) => any): any;
  *
  * @param callback Callback to execute.
  */
-declare function moduleDone(callback: (details: ModuleDoneCallbackObject) => any): any;
+declare function moduleDone(
+    callback: (details: ModuleDoneCallbackObject) => any,
+): any;
 
 /**
  * Register a callback to fire whenever a module begins.
@@ -709,14 +727,18 @@ declare function moduleStart(callback: (name: string) => any): any;
  *
  * @param callback Callback to execute.
  */
-declare function testDone(callback: (details: TestDoneCallbackObject) => any): any;
+declare function testDone(
+    callback: (details: TestDoneCallbackObject) => any,
+): any;
 
 /**
  * Register a callback to fire whenever a test begins.
  *
  * @param callback Callback to execute.
  */
-declare function testStart(callback: (details: TestStartCallbackObject) => any): any;
+declare function testStart(
+    callback: (details: TestStartCallbackObject) => any,
+): any;
 
 /* TEST */
 
@@ -730,7 +752,11 @@ declare function testStart(callback: (details: TestStartCallbackObject) => any):
  * @param expected Number of assertions in this test
  * @param test Function to close over assertions
  */
-declare function asyncTest(name: string, expected?: any, test?: (assert: QUnitAssert) => any): any;
+declare function asyncTest(
+    name: string,
+    expected?: any,
+    test?: (assert: QUnitAssert) => any,
+): any;
 
 /**
  * Add an asynchronous test to run. The test must include a call to start().
@@ -741,7 +767,10 @@ declare function asyncTest(name: string, expected?: any, test?: (assert: QUnitAs
  * @param name Title of unit being tested
  * @param test Function to close over assertions
  */
-declare function asyncTest(name: string, test: (assert: QUnitAssert) => any): any;
+declare function asyncTest(
+    name: string,
+    test: (assert: QUnitAssert) => any,
+): any;
 
 /**
  * Specify how many assertions are expected to run within a test.
@@ -770,7 +799,11 @@ declare function expect(amount: number): any;
  * @param expected Number of assertions in this test
  * @param test Function to close over assertions
  */
-declare function test(title: string, expected: number, test: (assert?: QUnitAssert) => any): any;
+declare function test(
+    title: string,
+    expected: number,
+    test: (assert?: QUnitAssert) => any,
+): any;
 
 /**
  * @param title Title of unit being tested
@@ -778,7 +811,11 @@ declare function test(title: string, expected: number, test: (assert?: QUnitAsse
  */
 declare function test(title: string, test: (assert?: QUnitAssert) => any): any;
 
-declare function notPropEqual(actual: any, expected: any, message?: string): any;
+declare function notPropEqual(
+    actual: any,
+    expected: any,
+    message?: string,
+): any;
 
 declare function propEqual(actual: any, expected: any, message?: string): any;
 

@@ -1,4 +1,7 @@
-import BaseComponent, { GetInstanceFactory, GetOrCreateInstanceFactory } from "./base-component";
+import BaseComponent, {
+    GetInstanceFactory,
+    GetOrCreateInstanceFactory,
+} from "./base-component";
 
 declare class ScrollSpy extends BaseComponent {
     /**
@@ -11,7 +14,10 @@ declare class ScrollSpy extends BaseComponent {
      * Static method which allows you to get the scrollspy instance associated with
      * a DOM element, or create a new one in case it wasn’t initialised
      */
-    static getOrCreateInstance: GetOrCreateInstanceFactory<ScrollSpy, Partial<ScrollSpy.Options>>;
+    static getOrCreateInstance: GetOrCreateInstanceFactory<
+        ScrollSpy,
+        Partial<ScrollSpy.Options>
+    >;
 
     static jQueryInterface: ScrollSpy.jQueryInterface;
 
@@ -21,7 +27,10 @@ declare class ScrollSpy extends BaseComponent {
      * @link https://getbootstrap.com/docs/5.0/getting-started/javascript/#default-settings
      */
     static Default: ScrollSpy.Options;
-    constructor(element: string | Element, options?: Partial<ScrollSpy.Options>);
+    constructor(
+        element: string | Element,
+        options?: Partial<ScrollSpy.Options>,
+    );
 
     /**
      * When using scrollspy in conjunction with adding or removing of
@@ -85,7 +94,9 @@ declare namespace ScrollSpy {
         threshold?: number[] | string;
     }
 
-    type jQueryInterface = (config?: Partial<Options> | "refresh" | "dispose") => JQuery;
+    type jQueryInterface = (
+        config?: Partial<Options> | "refresh" | "dispose",
+    ) => JQuery;
 }
 
 export default ScrollSpy;

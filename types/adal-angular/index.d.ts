@@ -50,7 +50,10 @@ declare class AuthenticationContext {
      * @param resource Resource URI identifying the target resource.
      * @param callback The callback provided by the caller. It will be called with token or error.
      */
-    acquireToken(resource: string, callback: AuthenticationContext.TokenCallback): void;
+    acquireToken(
+        resource: string,
+        callback: AuthenticationContext.TokenCallback,
+    ): void;
     /**
      * Acquires token (interactive flow using a popup window) by sending request to AAD to obtain a new token.
      * @param resource Resource URI identifying the target resource.
@@ -132,7 +135,11 @@ declare class AuthenticationContext {
      * @param message Message to log.
      * @param error Error to log.
      */
-    log(level: AuthenticationContext.LoggingLevel, message: string, error: any): void;
+    log(
+        level: AuthenticationContext.LoggingLevel,
+        message: string,
+        error: any,
+    ): void;
     /**
      * Logs messages when logging level is set to 0.
      * @param message Message to log.
@@ -230,7 +237,10 @@ declare namespace AuthenticationContext {
         error: any,
     ) => void;
 
-    type UserCallback = (errorDesc: string | null, user: UserInfo | null) => void;
+    type UserCallback = (
+        errorDesc: string | null,
+        user: UserInfo | null,
+    ) => void;
 
     /**
      * Configuration options for Authentication Context

@@ -1,7 +1,9 @@
 import { create, Field, fields, FormBound, validators, widgets } from "forms";
 
 const complexForm = create({
-    name: fields.string({ required: validators.required("%s is required, silly!") }),
+    name: fields.string({
+        required: validators.required("%s is required, silly!"),
+    }),
     email: fields.email({ required: true, label: "Email Address" }),
     website: fields.url(),
     password: fields.password({ required: true }),
@@ -9,8 +11,12 @@ const complexForm = create({
         required: true,
         validators: [validators.matchField("password")],
     }),
-    phone_1: fields.string({ validators: [validators.requiresFieldIfEmpty("phone_2")] }),
-    phone_2: fields.string({ validators: [validators.requiresFieldIfEmpty("phone_1")] }),
+    phone_1: fields.string({
+        validators: [validators.requiresFieldIfEmpty("phone_2")],
+    }),
+    phone_2: fields.string({
+        validators: [validators.requiresFieldIfEmpty("phone_1")],
+    }),
     options: fields.string({
         choices: {
             one: "option one",
@@ -18,13 +24,15 @@ const complexForm = create({
             three: "option three",
         },
         widget: widgets.select(),
-        validators: [(form, field, callback) => {
-            if (field.data === "two") {
-                callback("two?! are you crazy?!");
-            } else {
-                callback();
-            }
-        }],
+        validators: [
+            (form, field, callback) => {
+                if (field.data === "two") {
+                    callback("two?! are you crazy?!");
+                } else {
+                    callback();
+                }
+            },
+        ],
     }),
     more_options: fields.array({
         choices: { one: "item 1", two: "item 2", three: "item 3" },
@@ -73,20 +81,32 @@ const bootstrapOutput = complexForm.toHTML((name, object) => {
     const validationclass = object.error ? "has-error" : "";
     const label = object.labelHTML(name);
     const widget = object.widget.toHTML(name, object);
-    const error = object.error ? `<div class="alert alert-error help-block">${object.error}</div>` : "";
+    const error = object.error
+        ? `<div class="alert alert-error help-block">${object.error}</div>`
+        : "";
 
     return `<div class="form-group row ${validationclass}">${label}${widget}${error}</div>`;
 });
 
 const simpleForm = create({
-    name: fields.string({ required: validators.required("%s is required, silly!") }),
+    name: fields.string({
+        required: validators.required("%s is required, silly!"),
+    }),
     email: fields.email({ required: true, label: "Email Address" }),
 });
 
-const boundSimpleForm: FormBound<{ name: Field<string>; email: Field<string> }> = simpleForm.bind({ foo: 123 });
+const boundSimpleForm: FormBound<{
+    name: Field<string>;
+    email: Field<string>;
+}> = simpleForm.bind({ foo: 123 });
 
-simpleForm.handle({ name: "foo" }, {
-    success: (form: FormBound<{ name: Field<string>; email: Field<string> }>) => {
-        const name: string = form.data.name;
+simpleForm.handle(
+    { name: "foo" },
+    {
+        success: (
+            form: FormBound<{ name: Field<string>; email: Field<string> }>,
+        ) => {
+            const name: string = form.data.name;
+        },
     },
-});
+);

@@ -20,7 +20,10 @@ declare namespace English {
     }
 
     interface Library extends Language.Library {
-        given(step: string | string[] | RegExp | RegExp[], fn?: (this: StepFn, ...args: any[]) => Promise<void>): this;
+        given(
+            step: string | string[] | RegExp | RegExp[],
+            fn?: (this: StepFn, ...args: any[]) => Promise<void>,
+        ): this;
         given(
             step: string | string[] | RegExp | RegExp[],
             fn?: (this: StepFn, next: (err?: Error) => void) => void,
@@ -31,15 +34,33 @@ declare namespace English {
         ): this;
         given(
             step: string | string[] | RegExp | RegExp[],
-            fn?: (this: StepFn, arg1: any, arg2: any, next: (err?: Error) => void) => void,
+            fn?: (
+                this: StepFn,
+                arg1: any,
+                arg2: any,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         given(
             step: string | string[] | RegExp | RegExp[],
-            fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, next: (err?: Error) => void) => void,
+            fn?: (
+                this: StepFn,
+                arg1: any,
+                arg2: any,
+                arg3: any,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         given(
             step: string | string[] | RegExp | RegExp[],
-            fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, arg4: any, next: (err?: Error) => void) => void,
+            fn?: (
+                this: StepFn,
+                arg1: any,
+                arg2: any,
+                arg3: any,
+                arg4: any,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         given(
             step: string | string[] | RegExp | RegExp[],
@@ -66,7 +87,10 @@ declare namespace English {
                 next: (err?: Error) => void,
             ) => void,
         ): this;
-        when(step: string | string[] | RegExp | RegExp[], fn?: (this: StepFn, ...args: any[]) => Promise<void>): this;
+        when(
+            step: string | string[] | RegExp | RegExp[],
+            fn?: (this: StepFn, ...args: any[]) => Promise<void>,
+        ): this;
         when(
             step: string | string[] | RegExp | RegExp[],
             fn?: (this: StepFn, next: (err?: Error) => void) => void,
@@ -77,15 +101,33 @@ declare namespace English {
         ): this;
         when(
             step: string | string[] | RegExp | RegExp[],
-            fn?: (this: StepFn, arg1: any, arg2: any, next: (err?: Error) => void) => void,
+            fn?: (
+                this: StepFn,
+                arg1: any,
+                arg2: any,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         when(
             step: string | string[] | RegExp | RegExp[],
-            fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, next: (err?: Error) => void) => void,
+            fn?: (
+                this: StepFn,
+                arg1: any,
+                arg2: any,
+                arg3: any,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         when(
             step: string | string[] | RegExp | RegExp[],
-            fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, arg4: any, next: (err?: Error) => void) => void,
+            fn?: (
+                this: StepFn,
+                arg1: any,
+                arg2: any,
+                arg3: any,
+                arg4: any,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         when(
             step: string | string[] | RegExp | RegExp[],
@@ -112,7 +154,10 @@ declare namespace English {
                 next: (err?: Error) => void,
             ) => void,
         ): this;
-        then(step: string | string[] | RegExp | RegExp[], fn?: (this: StepFn, ...args: any[]) => Promise<void>): this;
+        then(
+            step: string | string[] | RegExp | RegExp[],
+            fn?: (this: StepFn, ...args: any[]) => Promise<void>,
+        ): this;
         then(
             step: string | string[] | RegExp | RegExp[],
             fn?: (this: StepFn, next: (err?: Error) => void) => void,
@@ -123,15 +168,33 @@ declare namespace English {
         ): this;
         then(
             step: string | string[] | RegExp | RegExp[],
-            fn?: (this: StepFn, arg1: any, arg2: any, next: (err?: Error) => void) => void,
+            fn?: (
+                this: StepFn,
+                arg1: any,
+                arg2: any,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         then(
             step: string | string[] | RegExp | RegExp[],
-            fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, next: (err?: Error) => void) => void,
+            fn?: (
+                this: StepFn,
+                arg1: any,
+                arg2: any,
+                arg3: any,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         then(
             step: string | string[] | RegExp | RegExp[],
-            fn?: (this: StepFn, arg1: any, arg2: any, arg3: any, arg4: any, next: (err?: Error) => void) => void,
+            fn?: (
+                this: StepFn,
+                arg1: any,
+                arg2: any,
+                arg3: any,
+                arg4: any,
+                next: (err?: Error) => void,
+            ) => void,
         ): this;
         then(
             step: string | string[] | RegExp | RegExp[],

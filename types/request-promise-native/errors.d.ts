@@ -7,7 +7,11 @@ export interface RequestError extends Error {
     response: rp.FullResponse;
 }
 export interface RequestErrorConstructor {
-    new(cause: any, options: rp.Options, response: rp.FullResponse): RequestError;
+    new (
+        cause: any,
+        options: rp.Options,
+        response: rp.FullResponse,
+    ): RequestError;
     (cause: any, options: rp.Options, response: rp.FullResponse): RequestError;
     prototype: RequestError;
 }
@@ -20,8 +24,18 @@ export interface StatusCodeError extends Error {
     response: rp.FullResponse;
 }
 export interface StatusCodeErrorConstructor extends Error {
-    new(statusCode: number, body: any, options: rp.Options, response: rp.FullResponse): StatusCodeError;
-    (statusCode: number, body: any, options: rp.Options, response: rp.FullResponse): StatusCodeError;
+    new (
+        statusCode: number,
+        body: any,
+        options: rp.Options,
+        response: rp.FullResponse,
+    ): StatusCodeError;
+    (
+        statusCode: number,
+        body: any,
+        options: rp.Options,
+        response: rp.FullResponse,
+    ): StatusCodeError;
     prototype: StatusCodeError;
 }
 export const StatusCodeError: StatusCodeErrorConstructor;
@@ -33,8 +47,16 @@ export interface TransformError extends Error {
     response: rp.FullResponse;
 }
 export interface TransformErrorConstructor extends Error {
-    new(cause: any, options: rp.Options, response: rp.FullResponse): TransformError;
-    (cause: any, options: rp.Options, response: rp.FullResponse): TransformError;
+    new (
+        cause: any,
+        options: rp.Options,
+        response: rp.FullResponse,
+    ): TransformError;
+    (
+        cause: any,
+        options: rp.Options,
+        response: rp.FullResponse,
+    ): TransformError;
     prototype: TransformError;
 }
 export const TransformError: TransformErrorConstructor;

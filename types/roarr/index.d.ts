@@ -28,7 +28,9 @@ export interface MessageType {
     version: string;
 }
 
-export type TranslateMessageFunctionType = (message: MessageType) => MessageType;
+export type TranslateMessageFunctionType = (
+    message: MessageType,
+) => MessageType;
 
 export interface Logger {
     (
@@ -72,7 +74,9 @@ export interface LoggerType extends Logger {
      *
      * @see https://www.npmjs.com/package/roarr#child
      */
-    child(contextOrFunction: TranslateMessageFunctionType | MessageContextType): LoggerType;
+    child(
+        contextOrFunction: TranslateMessageFunctionType | MessageContextType,
+    ): LoggerType;
 
     /**
      * Returns the current context.

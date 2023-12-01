@@ -70,7 +70,13 @@ export interface SwitchEvent extends Omit<CommonEvent, "position" | "state"> {
 }
 
 // TODO 为各事件设置专属的事件池
-export type EventInView = "touch" | "tap" | "longPress" | "pan" | "swipe" | "pinch";
+export type EventInView =
+    | "touch"
+    | "tap"
+    | "longPress"
+    | "pan"
+    | "swipe"
+    | "pinch";
 export type EventInText = "touch" | "tap" | "longPress" | "pan" | "pinch";
 export type EventInImage = "touch" | "tap" | "longPress" | "pan" | "pinch";
 export type EventInScroller = "scroll";

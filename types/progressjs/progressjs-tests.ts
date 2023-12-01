@@ -16,19 +16,23 @@ progressJs().setOption("theme", "black");
 progressJs().setOption("overlayMode", true);
 progressJs().setOption("considerTransition", false);
 
-progressJs().setOptions({ "theme": "black", "overlayMode": true });
-progressJs().setOptions({ "theme": "black", "overlayMode": true });
-progressJs().setOptions({ "theme": "black", "overlayMode": true, "considerTransition": false });
-progressJs().setOptions({ "overlayMode": true });
+progressJs().setOptions({ theme: "black", overlayMode: true });
+progressJs().setOptions({ theme: "black", overlayMode: true });
+progressJs().setOptions({
+    theme: "black",
+    overlayMode: true,
+    considerTransition: false,
+});
+progressJs().setOptions({ overlayMode: true });
 
-progressJs().onbeforeend(function() {
+progressJs().onbeforeend(function () {
     alert("before end");
 });
 
-progressJs().onbeforestart(function() {
+progressJs().onbeforestart(function () {
     alert("before start");
 });
 
-progressJs().onprogress(function(targetElm, percent) {
+progressJs().onprogress(function (targetElm, percent) {
     alert("progress changed to:" + percent);
 });

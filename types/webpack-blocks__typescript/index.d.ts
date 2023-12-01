@@ -7,7 +7,12 @@ declare namespace typescript {
         babelrc?: boolean | undefined;
         presets?:
             | string[][]
-            | Array<Array<{ targets?: string | undefined; modules?: boolean | undefined }>>
+            | Array<
+                  Array<{
+                      targets?: string | undefined;
+                      modules?: boolean | undefined;
+                  }>
+              >
             | undefined;
     }
 

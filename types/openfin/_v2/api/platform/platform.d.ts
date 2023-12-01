@@ -81,7 +81,10 @@ export default class PlatformModule extends Base {
      * @tutorial Platform.startFromManifest
      * @static
      */
-    startFromManifest(manifestUrl: string, opts?: RvmLaunchOptions): Promise<Platform>;
+    startFromManifest(
+        manifestUrl: string,
+        opts?: RvmLaunchOptions,
+    ): Promise<Platform>;
 }
 /** Manages the life cycle of windows and views in the application.
  *
@@ -103,14 +106,19 @@ export declare class Platform extends EmitterBase<PlatformEvents> {
      * @return { Promise<View> }
      * @tutorial Platform.createView
      */
-    createView(viewOptions: ViewCreationOptions, target?: Identity): Promise<View>;
+    createView(
+        viewOptions: ViewCreationOptions,
+        target?: Identity,
+    ): Promise<View>;
     /**
      * Creates a new Window.
      * @param { Window~options } options Window creation options
      * @return { Promise<_Window> }
      * @tutorial Platform.createWindow
      */
-    createWindow(options: PlatformWindowCreationOptions): Promise<_Window & Identity>;
+    createWindow(
+        options: PlatformWindowCreationOptions,
+    ): Promise<_Window & Identity>;
     /**
      * Closes current platform, all its windows, and their views.
      * @return { Promise<void> }
@@ -152,7 +160,10 @@ export declare class Platform extends EmitterBase<PlatformEvents> {
      * @return { Promise<Platform> }
      * @tutorial Platform.applySnapshot
      */
-    applySnapshot(requestedSnapshot: Snapshot | string, options?: ApplySnapshotOptions): Promise<Platform>;
+    applySnapshot(
+        requestedSnapshot: Snapshot | string,
+        options?: ApplySnapshotOptions,
+    ): Promise<Platform>;
     launchLegacyManifest: (manifestUrl: string) => Promise<Platform>;
     /**
      * Retrieves a manifest by url and launches a legacy application manifest or snapshot into the platform.  Returns a promise that

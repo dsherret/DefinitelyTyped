@@ -7,8 +7,8 @@ const extent = new itowns.Extent(
     "EPSG:3857",
     -20026376.39,
     20026376.39,
-    -20048966.10,
-    20048966.10,
+    -20048966.1,
+    20048966.1,
 );
 
 // `viewerDiv` will contain iTowns' rendering area (`<canvas>`)
@@ -21,7 +21,13 @@ const view = new itowns.PlanarView(viewerDiv, extent, {
     disableSkirt: true,
     maxSubdivisionLevel: 10,
     camera: { type: itowns.CAMERA_TYPE.ORTHOGRAPHIC },
-    placement: new itowns.Extent("EPSG:3857", -20000000, 20000000, -8000000, 20000000),
+    placement: new itowns.Extent(
+        "EPSG:3857",
+        -20000000,
+        20000000,
+        -8000000,
+        20000000,
+    ),
     controls: {
         // Faster zoom in/out speed
         zoomFactor: 3,

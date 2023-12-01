@@ -4,7 +4,11 @@ declare namespace CKEDITOR {
     }
 
     interface editorConstructor extends eventConstructor<editor> {
-        new(instanceConfig?: config, element?: dom.element, mode?: number): editor;
+        new (
+            instanceConfig?: config,
+            element?: dom.element,
+            mode?: number,
+        ): editor;
     }
 
     /** https://com/docs/ckeditor4/latest/api/CKEDITOR_editor.html */
@@ -44,7 +48,10 @@ declare namespace CKEDITOR {
         readonly window: dom.window;
         readonly _: CKEditorPluginsEditorInternal;
 
-        addCommand(commandName: string, commandDefinition: command | commandDefinition | styleCommand): void;
+        addCommand(
+            commandName: string,
+            commandDefinition: command | commandDefinition | styleCommand,
+        ): void;
 
         addContentsCss(cssPath: string): void;
 
@@ -62,7 +69,10 @@ declare namespace CKEDITOR {
 
         applyStyle(style: style): void;
 
-        attachStyleStateChange(style: style, callback: (state: number) => void): void;
+        attachStyleStateChange(
+            style: style,
+            callback: (state: number) => void,
+        ): void;
 
         checkDirty(): boolean;
 
@@ -91,7 +101,10 @@ declare namespace CKEDITOR {
         execCommand(commandName: string, data?: unknown): boolean;
 
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        extractSelectedHtml(toString?: boolean, removeEmptyBlock?: boolean): dom.documentFragment | string | void;
+        extractSelectedHtml(
+            toString?: boolean,
+            removeEmptyBlock?: boolean,
+        ): dom.documentFragment | string | void;
 
         focus(): void;
 
@@ -102,7 +115,10 @@ declare namespace CKEDITOR {
             callback: (data: unknown) => void,
         ): void;
 
-        getColorFromDialog(callback: (color: string) => void, scope?: { [key: string]: unknown }): void;
+        getColorFromDialog(
+            callback: (color: string) => void,
+            scope?: { [key: string]: unknown },
+        ): void;
 
         getCommand(commandName: string): command;
 
@@ -122,7 +138,9 @@ declare namespace CKEDITOR {
 
         getSnapshot(): string;
 
-        getStylesSet(callback: (stylesDefinitions: style.definition[]) => void): void;
+        getStylesSet(
+            callback: (stylesDefinitions: style.definition[]) => void,
+        ): void;
 
         getUiColor(): string;
 
@@ -138,7 +156,12 @@ declare namespace CKEDITOR {
 
         openDialog(dialogName: string, callback: () => void): dialog;
 
-        popup(url: string, width?: number | string, height?: number | string, options?: string): void;
+        popup(
+            url: string,
+            width?: number | string,
+            height?: number | string,
+            options?: string,
+        ): void;
 
         removeMenuItem(name: string): void;
 
@@ -148,7 +171,12 @@ declare namespace CKEDITOR {
 
         resetUndo(): void;
 
-        resize(width: number | string, height: number | string, isContentHeight?: boolean, resizeInner?: boolean): void;
+        resize(
+            width: number | string,
+            height: number | string,
+            isContentHeight?: boolean,
+            resizeInner?: boolean,
+        ): void;
 
         restoreRealElement(fakeElement: dom.element): dom.element;
 
@@ -191,15 +219,23 @@ declare namespace CKEDITOR {
     interface CKEditorPluginsEditorInstance {}
 
     interface eventObject {
-        activeEnterModeChange?: ((evt: eventInfo<eventData>) => void) | undefined;
-        activeFilterChange?: ((event: eventInfo<eventData>) => void) | undefined;
+        activeEnterModeChange?:
+            | ((evt: eventInfo<eventData>) => void)
+            | undefined;
+        activeFilterChange?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
         afterCommandExec?: ((event: eventInfo<eventData>) => void) | undefined;
         afterInsertHtml?: ((event: eventInfo<eventData>) => void) | undefined;
         afterPaste?: ((event: eventInfo<eventData>) => void) | undefined;
-        afterPasteFromWord?: ((event: eventInfo<eventData>) => void) | undefined;
+        afterPasteFromWord?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
         afterSetData?: ((event: eventInfo<eventData>) => void) | undefined;
         afterUndoImage?: ((event: eventInfo<eventData>) => void) | undefined;
-        ariaEditorHelpLabel?: ((event: eventInfo<eventData>) => void) | undefined;
+        ariaEditorHelpLabel?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
         ariaWidget?: ((event: eventInfo<eventData>) => void) | undefined;
         autogrow?: ((event: eventInfo<eventData>) => void) | undefined;
 
@@ -214,10 +250,16 @@ declare namespace CKEDITOR {
         change?: ((event: eventInfo<eventData>) => void) | undefined;
         configLoaded?: ((event: eventInfo<eventData>) => void) | undefined;
         contentDirChanged?: ((event: eventInfo<eventData>) => void) | undefined;
-        contentDom?: ((event: eventInfo<editor.events.contentDom>) => void) | undefined;
-        contentDomInvalidated?: ((event: eventInfo<eventData>) => void) | undefined;
+        contentDom?:
+            | ((event: eventInfo<editor.events.contentDom>) => void)
+            | undefined;
+        contentDomInvalidated?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
         contentDomUnload?: ((event: eventInfo<eventData>) => void) | undefined;
-        customConfigLoaded?: ((event: eventInfo<eventData>) => void) | undefined;
+        customConfigLoaded?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
 
         dataFiltered?: ((event: eventInfo<eventData>) => void) | undefined;
         dataReady?: ((event: eventInfo<eventData>) => void) | undefined;
@@ -230,11 +272,19 @@ declare namespace CKEDITOR {
         dragstart?: ((event: eventInfo<eventData>) => void) | undefined;
         drop?: ((event: eventInfo<eventData>) => void) | undefined;
 
-        elementsPathUpdate?: ((event: eventInfo<eventData>) => void) | undefined;
+        elementsPathUpdate?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
 
-        fileUploadRequest?: ((event: eventInfo<editor.events.fileUploadRequest>) => void) | undefined;
-        fileUploadResponse?: ((event: eventInfo<eventData>) => void) | undefined;
-        floatingSpaceLayout?: ((event: eventInfo<eventData>) => void) | undefined;
+        fileUploadRequest?:
+            | ((event: eventInfo<editor.events.fileUploadRequest>) => void)
+            | undefined;
+        fileUploadResponse?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
+        floatingSpaceLayout?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
         focus?: ((event: eventInfo<eventData>) => void) | undefined;
 
         getData?: ((event: eventInfo<eventData>) => void) | undefined;
@@ -257,14 +307,18 @@ declare namespace CKEDITOR {
 
         notificationHide?: ((event: eventInfo<eventData>) => void) | undefined;
         notificationShow?: ((event: eventInfo<eventData>) => void) | undefined;
-        notificationUpdate?: ((event: eventInfo<eventData>) => void) | undefined;
+        notificationUpdate?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
 
         paste?: ((event: eventInfo<eventData>) => void) | undefined;
         pasteFromWord?: ((event: eventInfo<eventData>) => void) | undefined;
         pluginsLoaded?: ((event: eventInfo<eventData>) => void) | undefined;
 
         readOnly?: ((event: eventInfo<eventData>) => void) | undefined;
-        removeFormatCleanup?: ((event: eventInfo<eventData>) => void) | undefined;
+        removeFormatCleanup?:
+            | ((event: eventInfo<eventData>) => void)
+            | undefined;
         required?: ((event: eventInfo<eventData>) => void) | undefined;
         resize?: ((event: eventInfo<eventData>) => void) | undefined;
 

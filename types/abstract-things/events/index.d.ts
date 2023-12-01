@@ -23,5 +23,9 @@ export default class EventEmitter {
     once(eventName: string, listener: Listener): Stoppable;
 
     emit(event: string, ...args: any): void;
-    emitWithContext(ctx: EventEmitterContext, eventName: string, ...args: any): void;
+    emitWithContext(
+        ctx: EventEmitterContext,
+        eventName: string,
+        ...args: any
+    ): void;
 }

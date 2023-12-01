@@ -1,7 +1,12 @@
 /// <reference types="backbone" />
 /// <reference types="lodash" />
 
-import { Attachment, Attachments, PostImage, Query } from "./components/media-models";
+import {
+    Attachment,
+    Attachments,
+    PostImage,
+    Query,
+} from "./components/media-models";
 import {
     Frame,
     FrameOptions,

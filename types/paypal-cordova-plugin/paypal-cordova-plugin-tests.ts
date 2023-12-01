@@ -17,7 +17,15 @@ var paymentDetails_shipping: string = paymentDetails.shipping;
 var paymentDetails_tax: string = paymentDetails.tax;
 
 var shippingAddress: PayPalShippingAddress;
-shippingAddress = new PayPalShippingAddress("name", "line1", "line2", "city", "state", "postalCode", "countryCode");
+shippingAddress = new PayPalShippingAddress(
+    "name",
+    "line1",
+    "line2",
+    "city",
+    "state",
+    "postalCode",
+    "countryCode",
+);
 
 var shippingAddress_recipientName: string = shippingAddress.recipientName;
 var shippingAddress_line1: string = shippingAddress.line1;
@@ -29,7 +37,13 @@ var shippingAddress_countryCode: string = shippingAddress.countryCode;
 
 var payment: PayPalPayment;
 payment = new PayPalPayment("10.00", "USD", "description", "Auth");
-payment = new PayPalPayment("10.00", "USD", "description", "Auth", paymentDetails);
+payment = new PayPalPayment(
+    "10.00",
+    "USD",
+    "description",
+    "Auth",
+    paymentDetails,
+);
 
 var payment_amount: string = payment.amount;
 var payment_currency: string = payment.currency;
@@ -67,16 +81,19 @@ config = new PayPalConfiguration(null);
 config = new PayPalConfiguration(configOptions);
 
 var config_defaultUserEmail: string = config.defaultUserEmail;
-var config_defaultUserPhoneCountryCode: string = config.defaultUserPhoneCountryCode;
+var config_defaultUserPhoneCountryCode: string =
+    config.defaultUserPhoneCountryCode;
 var config_defaultUserPhoneNumber: string = config.defaultUserPhoneNumber;
 var config_merchantName: string = config.merchantName;
 var config_merchantPrivacyPolicyURL: string = config.merchantPrivacyPolicyURL;
 var config_merchantUserAgreementURL: string = config.merchantUserAgreementURL;
 var config_acceptCreditCards: boolean = config.acceptCreditCards;
-var config_payPalShippingAddressOption: number = config.payPalShippingAddressOption;
+var config_payPalShippingAddressOption: number =
+    config.payPalShippingAddressOption;
 var config_rememberUser: boolean = config.rememberUser;
 var config_languageOrLocale: string = config.languageOrLocale;
-var config_disableBlurWhenBackgrounding: boolean = config.disableBlurWhenBackgrounding;
+var config_disableBlurWhenBackgrounding: boolean =
+    config.disableBlurWhenBackgrounding;
 var config_presentingInPopover: boolean = config.presentingInPopover;
 var config_forceDefaultsInSandbox: boolean = config.forceDefaultsInSandbox;
 var config_sandboxUserPasword: string = config.sandboxUserPassword;
@@ -91,8 +108,22 @@ var apiModule: PayPalCordovaPlugin.PayPalMobileStatic = PayPalMobile;
 apiModule.version((result: string) => {});
 apiModule.init(clientIds, () => {});
 apiModule.prepareToRender("environment", config, () => {});
-apiModule.renderSinglePaymentUI(payment, (result: any) => {}, (cancelReason: string) => {});
-apiModule.applicationCorrelationIDForEnvironment("environment", (applicationCorrelationId: string) => {});
+apiModule.renderSinglePaymentUI(
+    payment,
+    (result: any) => {},
+    (cancelReason: string) => {},
+);
+apiModule.applicationCorrelationIDForEnvironment(
+    "environment",
+    (applicationCorrelationId: string) => {},
+);
 apiModule.clientMetadataID((clientMetadataId: string) => {});
-apiModule.renderFuturePaymentUI((result: any) => {}, (cancelReason: string) => {});
-apiModule.renderProfileSharingUI(["openid", "profile", "email"], (result: any) => {}, (cancelReason: string) => {});
+apiModule.renderFuturePaymentUI(
+    (result: any) => {},
+    (cancelReason: string) => {},
+);
+apiModule.renderProfileSharingUI(
+    ["openid", "profile", "email"],
+    (result: any) => {},
+    (cancelReason: string) => {},
+);

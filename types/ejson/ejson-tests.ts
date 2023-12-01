@@ -22,7 +22,7 @@ function testImportedClone() {
 }
 
 function testParse() {
-    var str: string = "{a:\"a\"}";
+    var str: string = '{a:"a"}';
     importedParse(str);
 }
 
@@ -43,7 +43,10 @@ function testStringifyCanonical() {
 
 function testStringifyOptions() {
     var obj: any = { a: "a" };
-    var retval: string = importedStringify(obj, { canonical: true, indent: "hello" });
+    var retval: string = importedStringify(obj, {
+        canonical: true,
+        indent: "hello",
+    });
 }
 
 function testToJSONValue() {
@@ -52,7 +55,7 @@ function testToJSONValue() {
 }
 
 function testFromJSONValue() {
-    var str: string = "{a:\"a\"}";
+    var str: string = '{a:"a"}';
     importedFromJSONValue(str);
 }
 

@@ -21,7 +21,12 @@ declare function inspect(value: unknown, options?: inspect.Options): string;
  * @param colors see {@link inspect.Options#colors}
  * @returns a string representation of {@link value}
  */
-declare function inspect(value: unknown, showHidden?: boolean, depth?: number, colors?: boolean): string;
+declare function inspect(
+    value: unknown,
+    showHidden?: boolean,
+    depth?: number,
+    colors?: boolean,
+): string;
 
 /**
  * Objects and types used for {@link inspect}.
@@ -32,55 +37,53 @@ declare namespace inspect {
     /**
      * Type of options passed into {@link inspect}.
      */
-    type Options =
-        & {
-            /**
-             * Whether to show non-enumerable properties.
-             *
-             * @default false
-             */
-            readonly showHidden?: boolean | undefined;
-            /**
-             * Depth to expand nested objects up to.
-             *
-             * @default 2
-             */
-            readonly depth?: number | undefined;
-            /**
-             * Whether to use custom inspect functions of objects if available.
-             *
-             * The custom inspect function type is {@link CustomInspect}.
-             *
-             * @default true
-             */
-            readonly customInspect?: boolean | undefined;
-        }
-        & (
-            | {
-                /**
-                 * Whether to use colors. The colors are from {@link colors} and {@link styles}.
-                 * If `true`, it is effectively the same as passing `stylizeWithColor` to {@link Options#stylize}.
-                 *
-                 * Mutually exclusive with {@link Options#stylize}.
-                 *
-                 * @default false
-                 * @see https://github.com/deecewan/browser-util-inspect/blob/master/index.js the source code for `stylizeWithColor`
-                 */
-                readonly colors?: boolean | undefined;
-                readonly stylize?: undefined;
-            }
-            | {
-                readonly colors?: undefined;
-                /**
-                 * Custom function for styling the output.
-                 *
-                 * Mutually exclusive with {@link Options#colors}.
-                 *
-                 * @default undefined
-                 */
-                readonly stylize?: Stylizer | undefined;
-            }
-        );
+    type Options = {
+        /**
+         * Whether to show non-enumerable properties.
+         *
+         * @default false
+         */
+        readonly showHidden?: boolean | undefined;
+        /**
+         * Depth to expand nested objects up to.
+         *
+         * @default 2
+         */
+        readonly depth?: number | undefined;
+        /**
+         * Whether to use custom inspect functions of objects if available.
+         *
+         * The custom inspect function type is {@link CustomInspect}.
+         *
+         * @default true
+         */
+        readonly customInspect?: boolean | undefined;
+    } & (
+        | {
+              /**
+               * Whether to use colors. The colors are from {@link colors} and {@link styles}.
+               * If `true`, it is effectively the same as passing `stylizeWithColor` to {@link Options#stylize}.
+               *
+               * Mutually exclusive with {@link Options#stylize}.
+               *
+               * @default false
+               * @see https://github.com/deecewan/browser-util-inspect/blob/master/index.js the source code for `stylizeWithColor`
+               */
+              readonly colors?: boolean | undefined;
+              readonly stylize?: undefined;
+          }
+        | {
+              readonly colors?: undefined;
+              /**
+               * Custom function for styling the output.
+               *
+               * Mutually exclusive with {@link Options#colors}.
+               *
+               * @default undefined
+               */
+              readonly stylize?: Stylizer | undefined;
+          }
+    );
     /**
      * Union of output types for styling.
      */
@@ -137,7 +140,11 @@ declare namespace inspect {
      * @param options the {@link Options} passed into {@link inspect}
      * @returns a custom string or object representation of `this`
      */
-    type CustomInspect = (this: unknown, depth: number, options: Options) => unknown;
+    type CustomInspect = (
+        this: unknown,
+        depth: number,
+        options: Options,
+    ) => unknown;
 
     /**
      * Effect type. Two Select Graphic Rendition (SGR) codes are expected.

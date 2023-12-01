@@ -77,8 +77,16 @@ declare module "url" {
         parseQueryString: false | undefined,
         slashesDenoteHost?: boolean,
     ): UrlWithStringQuery;
-    function parse(urlString: string, parseQueryString: true, slashesDenoteHost?: boolean): UrlWithParsedQuery;
-    function parse(urlString: string, parseQueryString: boolean, slashesDenoteHost?: boolean): Url;
+    function parse(
+        urlString: string,
+        parseQueryString: true,
+        slashesDenoteHost?: boolean,
+    ): UrlWithParsedQuery;
+    function parse(
+        urlString: string,
+        parseQueryString: boolean,
+        slashesDenoteHost?: boolean,
+    ): Url;
     /**
      * The `url.format()` method returns a formatted URL string derived from`urlObject`.
      *
@@ -812,7 +820,12 @@ declare module "url" {
          * @param thisArg To be used as `this` value for when `fn` is called
          */
         forEach<TThis = this>(
-            callback: (this: TThis, value: string, name: string, searchParams: URLSearchParams) => void,
+            callback: (
+                this: TThis,
+                value: string,
+                name: string,
+                searchParams: URLSearchParams,
+            ) => void,
             thisArg?: TThis,
         ): void;
         /**
@@ -918,7 +931,8 @@ declare module "url" {
         var URL: typeof globalThis extends {
             onmessage: any;
             URL: infer T;
-        } ? T
+        }
+            ? T
             : typeof _URL;
         /**
          * `URLSearchParams` class is a global reference for `require('url').URLSearchParams`
@@ -928,7 +942,8 @@ declare module "url" {
         var URLSearchParams: typeof globalThis extends {
             onmessage: any;
             URLSearchParams: infer T;
-        } ? T
+        }
+            ? T
             : typeof _URLSearchParams;
     }
 }

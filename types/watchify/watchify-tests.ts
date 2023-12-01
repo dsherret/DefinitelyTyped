@@ -2,7 +2,11 @@ import browserify = require("browserify");
 import watchify = require("watchify");
 import fs = require("fs");
 
-const setupWatchifyTest = (srcPath: string, opts: watchify.Options, stream: NodeJS.ReadWriteStream) => {
+const setupWatchifyTest = (
+    srcPath: string,
+    opts: watchify.Options,
+    stream: NodeJS.ReadWriteStream,
+) => {
     // new syntax
     let bfyWatched = browserify(srcPath, {
         cache: watchify.args.cache,
@@ -32,10 +36,10 @@ const b = browserify({
 });
 
 b.on("update", bundle);
-b.on("update", ids => {});
-b.on("bytes", bytes => {});
-b.on("time", time => {});
-b.on("log", msg => {});
+b.on("update", (ids) => {});
+b.on("bytes", (bytes) => {});
+b.on("time", (time) => {});
+b.on("log", (msg) => {});
 
 bundle();
 

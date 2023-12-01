@@ -1,40 +1,40 @@
 import keyboardJS = require("keyboardjs");
 
-keyboardJS.bind("a", e => {
+keyboardJS.bind("a", (e) => {
     console.log("a is pressed");
 });
 
-keyboardJS.on("a + b", e => {
+keyboardJS.on("a + b", (e) => {
     console.log("a and b is pressed");
 });
 
-keyboardJS.addListener("a + b > c", e => {
+keyboardJS.addListener("a + b > c", (e) => {
     console.log("a and b then c is pressed");
 });
 
-keyboardJS.bind(["a + b > c", "z + y > z"], e => {
+keyboardJS.bind(["a + b > c", "z + y > z"], (e) => {
     console.log("a and b then c or z and y then z is pressed");
 });
 
-keyboardJS.bind("", e => {
+keyboardJS.bind("", (e) => {
     console.log("any key was pressed");
 });
 
 keyboardJS.bind(
     "a",
-    e => {
+    (e) => {
         console.log("a is pressed");
     },
-    e => {
+    (e) => {
         console.log("a is released");
     },
 );
 
-keyboardJS.bind("a", null, e => {
+keyboardJS.bind("a", null, (e) => {
     console.log("a is released");
 });
 
-keyboardJS.bind("a", e => {
+keyboardJS.bind("a", (e) => {
     if (e) {
         e.preventRepeat();
         console.log("a is pressed");
@@ -52,9 +52,9 @@ keyboardJS.setContext("index");
 const contextName = keyboardJS.getContext();
 
 keyboardJS.withContext(contextName, () => {
-    keyboardJS.bind("7", e => {});
-    keyboardJS.bind("8", e => {});
-    keyboardJS.bind("9", e => {});
+    keyboardJS.bind("7", (e) => {});
+    keyboardJS.bind("8", (e) => {});
+    keyboardJS.bind("9", (e) => {});
 });
 
 keyboardJS.pause();

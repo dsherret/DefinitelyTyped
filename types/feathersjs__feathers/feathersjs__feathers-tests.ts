@@ -11,9 +11,11 @@ interface Services {
 
 const app = feathers<Services>();
 
-app.service("users").get(0).then(u => {
-    const user: User = u;
-});
+app.service("users")
+    .get(0)
+    .then((u) => {
+        const user: User = u;
+    });
 
 app.service("users").hooks({
     before: {

@@ -6,7 +6,15 @@ declare module "atom" {
         "tool-bar.visible": boolean;
 
         /** Icon size. - default: "24px" */
-        "tool-bar.iconSize": "12px" | "14px" | "16px" | "18px" | "21px" | "24px" | "28px" | "32px";
+        "tool-bar.iconSize":
+            | "12px"
+            | "14px"
+            | "16px"
+            | "18px"
+            | "21px"
+            | "24px"
+            | "28px"
+            | "32px";
 
         /** Position of tool-bar. - default: "Top"  */
         "tool-bar.position": "Top" | "Right" | "Bottom" | "Left";

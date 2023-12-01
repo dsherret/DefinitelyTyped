@@ -95,9 +95,13 @@ export const eventHandlers: Array<
 
 /** Contains a list of common event handler props, grouped into types. */
 export const eventHandlersByType: {
-    animation: Array<"onAnimationStart" | "onAnimationEnd" | "onAnimationIteration">;
+    animation: Array<
+        "onAnimationStart" | "onAnimationEnd" | "onAnimationIteration"
+    >;
     clipboard: Array<"onCopy" | "onCut" | "onPaste">;
-    composition: Array<"onCompositionEnd" | "onCompositionStart" | "onCompositionUpdate">;
+    composition: Array<
+        "onCompositionEnd" | "onCompositionStart" | "onCompositionUpdate"
+    >;
     focus: Array<"onFocus" | "onBlur">;
     form: Array<"onChange" | "onInput" | "onSubmit">;
     image: Array<"onLoad" | "onError">;
@@ -149,7 +153,9 @@ export const eventHandlersByType: {
         | "onMouseUp"
     >;
     selection: Array<"onSelect">;
-    touch: Array<"onTouchCancel" | "onTouchEnd" | "onTouchMove" | "onTouchStart">;
+    touch: Array<
+        "onTouchCancel" | "onTouchEnd" | "onTouchMove" | "onTouchStart"
+    >;
     transition: Array<"onTransitionEnd">;
     ui: Array<"onScroll">;
     wheel: Array<"onWheel">;
@@ -160,7 +166,9 @@ export const eventHandlersByType: {
  * @param node The visited JSXOpeningElement node object.
  * @returns The element's tag name.
  */
-export function elementType(node: ESTreeJSX.JSXOpeningElement | ESTreeJSX.JSXOpeningFragment): string;
+export function elementType(
+    node: ESTreeJSX.JSXOpeningElement | ESTreeJSX.JSXOpeningFragment,
+): string;
 
 /**
  * Returns the value of a given attribute. Different types of attributes have
@@ -171,7 +179,9 @@ export function elementType(node: ESTreeJSX.JSXOpeningElement | ESTreeJSX.JSXOpe
  * @param prop The JSXAttribute collected by AST parser.
  * @returns The value of the prop.
  */
-export function getLiteralPropValue(prop: ESTreeJSX.JSXAttribute): ESTree.Literal["value"];
+export function getLiteralPropValue(
+    prop: ESTreeJSX.JSXAttribute,
+): ESTree.Literal["value"];
 
 /**
  * Returns the JSXAttribute itself or `undefined`, indicating the prop is not

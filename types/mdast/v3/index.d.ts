@@ -157,15 +157,25 @@ export interface RowContentMap {
     tableCell: TableCell;
 }
 
-export type Content = TopLevelContent | ListContent | TableContent | RowContent | PhrasingContent;
+export type Content =
+    | TopLevelContent
+    | ListContent
+    | TableContent
+    | RowContent
+    | PhrasingContent;
 
-export type TopLevelContent = BlockContent | FrontmatterContent | DefinitionContent;
+export type TopLevelContent =
+    | BlockContent
+    | FrontmatterContent
+    | DefinitionContent;
 
 export type BlockContent = BlockContentMap[keyof BlockContentMap];
 
-export type FrontmatterContent = FrontmatterContentMap[keyof FrontmatterContentMap];
+export type FrontmatterContent =
+    FrontmatterContentMap[keyof FrontmatterContentMap];
 
-export type DefinitionContent = DefinitionContentMap[keyof DefinitionContentMap];
+export type DefinitionContent =
+    DefinitionContentMap[keyof DefinitionContentMap];
 
 export type ListContent = ListContentMap[keyof ListContentMap];
 
@@ -175,7 +185,8 @@ export type RowContent = RowContentMap[keyof RowContentMap];
 
 export type PhrasingContent = PhrasingContentMap[keyof PhrasingContentMap];
 
-export type StaticPhrasingContent = StaticPhrasingContentMap[keyof StaticPhrasingContentMap];
+export type StaticPhrasingContent =
+    StaticPhrasingContentMap[keyof StaticPhrasingContentMap];
 
 export interface Parent extends UnistParent {
     children: Content[];

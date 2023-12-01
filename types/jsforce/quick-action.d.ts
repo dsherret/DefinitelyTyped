@@ -7,14 +7,19 @@ export class QuickAction {
      * @param contextId Id of record
      * @param callback Callback function
      */
-    defaultValues(contextId: string, callback?: Callback<Record>): Promise<Record>;
+    defaultValues(
+        contextId: string,
+        callback?: Callback<Record>,
+    ): Promise<Record>;
     /** Retrieve default field values in the action */
     defaultValues(callback?: Callback<Record>): Promise<Record>;
     /**
      * Describe the action's information (including layout, etc.)
      * @param callback Callback function
      */
-    describe(callback?: Callback<QuickActionDescribeInfo>): Promise<QuickActionDescribeInfo>;
+    describe(
+        callback?: Callback<QuickActionDescribeInfo>,
+    ): Promise<QuickActionDescribeInfo>;
     /**
      * Execute the action for given context id and record information
      * @param contextId Context record ID of the action

@@ -101,9 +101,7 @@ sha.getSync("./file", { error: true });
 // $ExpectType Transform
 const s = sha.stream("1a2b3c4d");
 
-fs.createReadStream("./file")
-    .pipe(s)
-    .pipe(fs.createWriteStream("dest"));
+fs.createReadStream("./file").pipe(s).pipe(fs.createWriteStream("dest"));
 
 // @ts-expect-error
 sha.stream({ name: "hello" });

@@ -256,5 +256,8 @@ declare namespace ICheck {
 
 interface JQuery {
     iCheck(options?: ICheck.Options): this;
-    iCheck<T extends keyof ICheck.Methods>(method: T, callback?: ICheck.Methods[T]): this;
+    iCheck<T extends keyof ICheck.Methods>(
+        method: T,
+        callback?: ICheck.Methods[T],
+    ): this;
 }

@@ -47,7 +47,10 @@ declare namespace Router {
         _matchedRouteName: string | undefined;
     }
 
-    export type RouterContext<StateT = any, CustomT = {}> = Koa.ParameterizedContext<
+    export type RouterContext<
+        StateT = any,
+        CustomT = {},
+    > = Koa.ParameterizedContext<
         StateT,
         CustomT & IRouterParamContext<StateT, CustomT>
     >;
@@ -62,7 +65,11 @@ declare namespace Router {
     >;
 
     export interface IParamMiddleware<STateT = any, CustomT = {}> {
-        (param: string, ctx: RouterContext<STateT, CustomT>, next: () => Promise<any>): any;
+        (
+            param: string,
+            ctx: RouterContext<STateT, CustomT>,
+            next: () => Promise<any>,
+        ): any;
     }
 
     export interface IRouterAllowedMethodsOptions {
@@ -119,7 +126,12 @@ declare namespace Router {
         regexp: RegExp;
         path: string;
 
-        constructor(path: string | RegExp, methods: string[], middleware: Router.IMiddleware, opts?: ILayerOptions);
+        constructor(
+            path: string | RegExp,
+            methods: string[],
+            middleware: Router.IMiddleware,
+            opts?: ILayerOptions,
+        );
         constructor(
             path: string | RegExp,
             methods: string[],
@@ -135,7 +147,11 @@ declare namespace Router {
         /**
          * Returns map of URL parameters for given `path` and `paramNames`.
          */
-        params(path: string | RegExp, captures: string[], existingParams?: Object): Object;
+        params(
+            path: string | RegExp,
+            captures: string[],
+            existingParams?: Object,
+        ): Object;
 
         /**
          * Returns array of regexp url path captures.
@@ -175,7 +191,9 @@ declare class Router<StateT = any, CustomT = {}> {
      * sequentially, requests start at the first middleware and work their way
      * "down" the middleware stack.
      */
-    use(...middleware: Array<Router.IMiddleware<StateT, CustomT>>): Router<StateT, CustomT>;
+    use(
+        ...middleware: Array<Router.IMiddleware<StateT, CustomT>>
+    ): Router<StateT, CustomT>;
     use(
         path: string | string[] | RegExp,
         ...middleware: Array<Router.IMiddleware<StateT, CustomT>>
@@ -465,14 +483,20 @@ declare class Router<StateT = any, CustomT = {}> {
      * an `Allow` header containing the allowed methods, as well as responding
      * with `405 Method Not Allowed` and `501 Not Implemented` as appropriate.
      */
-    allowedMethods(options?: Router.IRouterAllowedMethodsOptions): Router.IMiddleware<StateT, CustomT>;
+    allowedMethods(
+        options?: Router.IRouterAllowedMethodsOptions,
+    ): Router.IMiddleware<StateT, CustomT>;
 
     /**
      * Redirect `source` to `destination` URL with optional 30x status `code`.
      *
      * Both `source` and `destination` can be route names.
      */
-    redirect(source: string, destination: string, code?: number): Router<StateT, CustomT>;
+    redirect(
+        source: string,
+        destination: string,
+        code?: number,
+    ): Router<StateT, CustomT>;
 
     /**
      * Create and register a route.
@@ -480,7 +504,9 @@ declare class Router<StateT = any, CustomT = {}> {
     register(
         path: string | RegExp,
         methods: string[],
-        middleware: Router.IMiddleware<StateT, CustomT> | Array<Router.IMiddleware<StateT, CustomT>>,
+        middleware:
+            | Router.IMiddleware<StateT, CustomT>
+            | Array<Router.IMiddleware<StateT, CustomT>>,
         opts?: Router.ILayerOptions,
     ): Router.Layer;
 
@@ -519,7 +545,10 @@ declare class Router<StateT = any, CustomT = {}> {
     /**
      * Run middleware for named route parameters. Useful for auto-loading or validation.
      */
-    param(param: string, middleware: Router.IParamMiddleware<StateT, CustomT>): Router<StateT, CustomT>;
+    param(
+        param: string,
+        middleware: Router.IParamMiddleware<StateT, CustomT>,
+    ): Router<StateT, CustomT>;
 
     /**
      * Generate URL from url pattern and given `params`.

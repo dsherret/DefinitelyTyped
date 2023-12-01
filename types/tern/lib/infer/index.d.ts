@@ -4,7 +4,7 @@ export {};
 
 // #### Context ####
 interface ContextConstructor {
-    new(defs: any[], parent: Server): Context;
+    new (defs: any[], parent: Server): Context;
 }
 export const Context: ContextConstructor;
 export interface Context {
@@ -37,18 +37,27 @@ export function analyze(ast: ESTree.Program, name: string, scope?: Scope): void;
  * context won’t be back where it was before the file was analyzed — but it prevents most of the
  * noticeable inaccuracies that re-analysis tends to produce.
  */
-export function purgeTypes(origins: string[], start?: number, end?: number): void;
+export function purgeTypes(
+    origins: string[],
+    start?: number,
+    end?: number,
+): void;
 /**
  * Cleaning up variables is slightly trickier than cleaning up types. This does a first pass over the given scope,
  * and marks variables defined by the given origins. This is indended to be followed by a call to `analyze` and then a call to `purgeMarkedVariables`.
  */
-export function markVariablesDefinedBy(scope: Scope, origins: string[], start?: number, end?: number): void;
+export function markVariablesDefinedBy(
+    scope: Scope,
+    origins: string[],
+    start?: number,
+    end?: number,
+): void;
 /** Purges variables that were marked by a call to markVariablesDefinedBy and not re-defined in the meantime. */
 export function purgeMarkedVariables(): void;
 
 // #### Types ####
 interface ObjConstructor {
-    new(proto: object | true | null, name?: string): Obj;
+    new (proto: object | true | null, name?: string): Obj;
 }
 /** Constructor for the type that represents JavaScript objects. `proto` may be another object, or `true` as a short-hand for `Object.prototype`, or `null` for prototype-less objects. */
 export const Obj: ObjConstructor;
@@ -79,7 +88,13 @@ export interface Obj extends IType {
 }
 
 interface FnConstructor {
-    new(name: string | undefined, self: AVal, args: AVal[], argNames: string[], retval: AVal): Fn;
+    new (
+        name: string | undefined,
+        self: AVal,
+        args: AVal[],
+        argNames: string[],
+        retval: AVal,
+    ): Fn;
 }
 /** Constructor for the type that implements functions. Inherits from `Obj`. The `AVal` types are used to track the input and output types of the function. */
 export const Fn: FnConstructor;
@@ -98,7 +113,7 @@ export interface Fn extends Obj {
 }
 
 interface PrimConstructor {
-    new(proto: object | null, name?: string): Prim;
+    new (proto: object | null, name?: string): Prim;
 }
 export const Prim: PrimConstructor;
 export interface Prim extends IType {
@@ -114,7 +129,7 @@ export interface Prim extends IType {
 
 interface ArrConstructor {
     /** Constructor that creates an array type with the given content type. */
-    new(contentType?: AVal): Arr;
+    new (contentType?: AVal): Arr;
 }
 export const Arr: ArrConstructor;
 export interface Arr extends Obj {
@@ -122,7 +137,7 @@ export interface Arr extends Obj {
     getType(): Arr;
 }
 interface TypeConstructor {
-    new(): Type;
+    new (): Type;
 }
 export const Type: TypeConstructor;
 export type Type = Obj | Prim;
@@ -147,7 +162,7 @@ export interface IType extends ANull {
 // #### Abstract Values ####
 
 interface AValConstructor {
-    new(): AVal;
+    new (): AVal;
 }
 export const AVal: AValConstructor;
 
@@ -248,7 +263,7 @@ export interface ANull {
 
 // #### Constraints ####
 interface ConstraintConstructor {
-    new(methods: { [key: string]: any }): { new(): Constraint };
+    new (methods: { [key: string]: any }): { new (): Constraint };
 }
 /**
  * This is a constructor-constructor for constraints. It’ll create a
@@ -265,8 +280,8 @@ export interface Constraint extends ANull {
 
 // #### Scopes ####
 interface ScopeConstructor {
-    new(): Scope;
-    new(parent: Scope, originNode: ESTree.Node): Scope;
+    new (): Scope;
+    new (parent: Scope, originNode: ESTree.Node): Scope;
 }
 export const Scope: ScopeConstructor;
 export interface Scope extends Obj {
@@ -310,7 +325,10 @@ export function findClosestExpression(
     scope?: Scope,
 ): { node: ESTree.Node; state: Scope } | null;
 /** Determine an expression for the given node and scope (as returned by the functions above). Will return an `AVal` or plain `Type`. */
-export function expressionType(expr: { node: ESTree.Node; state: Scope | null }): AVal | Type;
+export function expressionType(expr: {
+    node: ESTree.Node;
+    state: Scope | null;
+}): AVal | Type;
 /** Find the scope at a given position in the syntax tree. The `scope` parameter can be used to override the scope used for code that isn’t wrapped in any function. */
 export function scopeAt(ast: ESTree.Program, pos: number, scope?: Scope): Scope;
 /**

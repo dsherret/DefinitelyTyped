@@ -81,7 +81,10 @@ declare namespace SailsIOJS {
         on(event: "connect", cb: () => any): Socket;
         on(event: "disconnect", cb: () => any): Socket;
         on(event: "reconnecting", cb: (numAttempts: number) => any): Socket;
-        on(event: "reconnect", cb: (transport: string, numAttempts: number) => any): Socket;
+        on(
+            event: "reconnect",
+            cb: (transport: string, numAttempts: number) => any,
+        ): Socket;
         on(event: "error", cb: (err: any) => any): Socket;
         off(event: string, cb: (...args: any[]) => any): Socket;
         removeAllListeners(): Socket;

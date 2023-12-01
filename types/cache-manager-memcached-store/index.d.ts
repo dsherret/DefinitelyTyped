@@ -23,7 +23,11 @@ interface CacheManagerMemcachedStoreConstructor {
 }
 
 declare module "cache-manager" {
-    function caching(IConfig: CacheManagerMemcachedStoreConfig | (StoreConfig & CacheOptions)): Cache;
+    function caching(
+        IConfig:
+            | CacheManagerMemcachedStoreConfig
+            | (StoreConfig & CacheOptions),
+    ): Cache;
 }
 
 declare const methods: CacheManagerMemcachedStoreConstructor;

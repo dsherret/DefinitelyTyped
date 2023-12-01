@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/formidable",
-    "version": "3.4.9999",
-    "projects": [
-        "https://github.com/node-formidable/formidable"
-    ],
-    "dependencies": {
-        "@types/node": "*"
+  "private": true,
+  "name": "@types/formidable",
+  "version": "3.4.9999",
+  "projects": [
+    "https://github.com/node-formidable/formidable"
+  ],
+  "dependencies": {
+    "@types/node": "*"
+  },
+  "devDependencies": {
+    "@types/formidable": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Wim Looman",
+      "githubUsername": "Nemo157"
     },
-    "devDependencies": {
-        "@types/formidable": "workspace:."
+    {
+      "name": "Martin Badin",
+      "githubUsername": "martin-badin"
     },
-    "owners": [
-        {
-            "name": "Wim Looman",
-            "githubUsername": "Nemo157"
-        },
-        {
-            "name": "Martin Badin",
-            "githubUsername": "martin-badin"
-        },
-        {
-            "name": "devLana",
-            "githubUsername": "devLana"
-        }
-    ]
+    {
+      "name": "devLana",
+      "githubUsername": "devLana"
+    }
+  ]
 }

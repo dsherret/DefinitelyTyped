@@ -1,7 +1,10 @@
 import { Artist, Div, Vex, VexTab } from "vextab";
 
 const artist = new Artist(10, 10, 600, { scale: 0.8 });
-const renderer = new Vex.Flow.Renderer(document.createElement("div"), Vex.Flow.Renderer.Backends.SVG);
+const renderer = new Vex.Flow.Renderer(
+    document.createElement("div"),
+    Vex.Flow.Renderer.Backends.SVG,
+);
 
 // $ExpectType void
 artist.reset();
@@ -157,7 +160,9 @@ vexTab.parseABC({ command: "bar" });
 vexTab.parseStaveElements([{ command: "bar" }]);
 
 // $ExpectType void
-vexTab.parseStaveText(["q =|: (5/2.5/3.7/4) :8 7-5h6/3 ^3^ 5h6-7/5 ^3^ :q 7V/4 |"]);
+vexTab.parseStaveText([
+    "q =|: (5/2.5/3.7/4) :8 7-5h6/3 ^3^ 5h6-7/5 ^3^ :q 7V/4 |",
+]);
 
 // $ExpectType void
 vexTab.generate();

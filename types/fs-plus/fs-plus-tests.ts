@@ -5,8 +5,8 @@ const homeDir = fs.getHomeDirectory();
 
 console.log(fs.absolute("~") === fs.realpathSync(homeDir));
 console.log(
-    fs.absolute(path.join("~", "does", "not", "exist"))
-        === path.join(homeDir, "does", "not", "exist"),
+    fs.absolute(path.join("~", "does", "not", "exist")) ===
+        path.join(homeDir, "does", "not", "exist"),
 );
 
 console.log(fs.normalize("~/foo") === path.join(homeDir, "foo"));
@@ -14,8 +14,8 @@ console.log(fs.normalize("~/foo") === path.join(homeDir, "foo"));
 console.log(fs.tildify(homeDir) === "~");
 
 console.log(
-    fs.getAppDataDirectory()
-        === path.join(fs.getHomeDirectory(), "Library", "Application Support"),
+    fs.getAppDataDirectory() ===
+        path.join(fs.getHomeDirectory(), "Library", "Application Support"),
 );
 
 console.log(fs.isAbsolute("/a/b/c"));
@@ -24,7 +24,7 @@ console.log(fs.existsSync("/a/b/c"));
 
 console.log(fs.isDirectorySync("/a/b/c"));
 
-fs.isDirectory("a/b/c", result => {
+fs.isDirectory("a/b/c", (result) => {
     console.log(result);
 });
 
@@ -32,7 +32,7 @@ console.log(fs.isFileSync("/a/b/c"));
 
 console.log(fs.isSymbolicLinkSync("/a/b/c"));
 
-fs.isSymbolicLink("a/b/c", result => {
+fs.isSymbolicLink("a/b/c", (result) => {
     console.log(result);
 });
 
@@ -62,13 +62,13 @@ console.log(fs.listTreeSync("/a/b").indexOf("c") === 0);
 
 fs.moveSync("/a/b", "a/c");
 
-fs.move("/a/b", "a/c", err => {
+fs.move("/a/b", "a/c", (err) => {
     console.log(err);
 });
 
 fs.removeSync("/a/b");
 
-fs.remove("/a/b", err => {
+fs.remove("/a/b", (err) => {
     console.log(err);
 });
 
@@ -76,19 +76,19 @@ fs.writeFileSync("a/b/c", "data");
 fs.writeFileSync("a/b/c", "data", "utf8");
 fs.writeFileSync("a/b/c", "data", { encoding: "utf8" });
 
-fs.writeFile("a/b/c", "data", err => {
+fs.writeFile("a/b/c", "data", (err) => {
     console.log(err);
 });
-fs.writeFile("a/b/c", "data", "utf8", err => {
+fs.writeFile("a/b/c", "data", "utf8", (err) => {
     console.log(err);
 });
-fs.writeFile("a/b/c", "data", { encoding: "utf8" }, err => {
+fs.writeFile("a/b/c", "data", { encoding: "utf8" }, (err) => {
     console.log(err);
 });
 
 fs.copySync("/a/b", "a/c");
 
-fs.copy("/a/b", "a/c", err => {
+fs.copy("/a/b", "a/c", (err) => {
     console.log(err);
 });
 
@@ -97,16 +97,16 @@ fs.copyFileSync("/a/b", "a/c", 32 * 1024);
 
 fs.makeTreeSync("/a/b");
 
-fs.makeTree("/a/b", err => {
+fs.makeTree("/a/b", (err) => {
     console.log(err);
 });
 
 fs.traverseTreeSync(
     "a/b/c",
-    file => {
+    (file) => {
         console.log("file", file);
     },
-    dir => {
+    (dir) => {
         console.log("directory", dir);
         return true;
     },
@@ -114,13 +114,13 @@ fs.traverseTreeSync(
 
 fs.traverseTree(
     "a/b/c",
-    file => {
+    (file) => {
         console.log("file", file);
     },
-    dir => {
+    (dir) => {
         console.log("directory", dir);
     },
-    err => {
+    (err) => {
         console.error(err);
     },
 );

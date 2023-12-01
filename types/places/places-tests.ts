@@ -4,7 +4,7 @@ import * as places from "places";
 const options: places.PlacesOptions = {
     appId: "your app Id",
     apiKey: "your api key",
-    container: "<input type=\"search\" id=\"address\">",
+    container: '<input type="search" id="address">',
 };
 
 const autompleteOptions: places.AutompleteOptions = {

@@ -73,10 +73,19 @@ class ExampleFull extends React.Component {
                 onPageChange={(page: number) => {}}
                 onPageSizeChange={(pageSize: number, props: any) => {}}
                 onColumnOrderChange={(index: number, dropIndex: number) => {}}
-                onColumnResize={(firstCol: any, firstSize: number, secondCol: any, secondSize: number) => {}}
+                onColumnResize={(
+                    firstCol: any,
+                    firstSize: number,
+                    secondCol: any,
+                    secondSize: number,
+                ) => {}}
                 onSelectionChange={(newSelectedId: string, data: any) => {}}
                 onSortChange={(sortInfo: any) => {}}
-                onFilter={(column: any, value: any, allFilterValues: any[]) => {}}
+                onFilter={(
+                    column: any,
+                    value: any,
+                    allFilterValues: any[],
+                ) => {}}
             />
         );
     }

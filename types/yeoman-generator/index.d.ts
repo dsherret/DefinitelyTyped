@@ -85,17 +85,18 @@ declare namespace Generator {
     /**
      * Provides options for registering a prompt.
      */
-    type QuestionRegistrationOptions<T extends Answers = Answers> = Question<T> & {
-        /**
-         * The storage to store the answers.
-         */
-        storage?: Storage | undefined;
+    type QuestionRegistrationOptions<T extends Answers = Answers> =
+        Question<T> & {
+            /**
+             * The storage to store the answers.
+             */
+            storage?: Storage | undefined;
 
-        /**
-         * A value indicating whether an option should be exported for this question.
-         */
-        exportOption?: boolean | object | undefined;
-    };
+            /**
+             * A value indicating whether an option should be exported for this question.
+             */
+            exportOption?: boolean | object | undefined;
+        };
 
     /**
      * Represents an answer-hash.
@@ -105,7 +106,10 @@ declare namespace Generator {
     /**
      * Provides a set of questions.
      */
-    type Questions<A extends Answers = Answers> = Question<A> | Array<Question<A>> | Observable<Question<A>>;
+    type Questions<A extends Answers = Answers> =
+        | Question<A>
+        | Array<Question<A>>
+        | Observable<Question<A>>;
 
     /**
      * Provides options for performing installations.
@@ -154,7 +158,12 @@ declare namespace Generator {
         /**
          * The type of the argument.
          */
-        type?: typeof String | typeof Number | typeof Array | typeof Object | undefined;
+        type?:
+            | typeof String
+            | typeof Number
+            | typeof Array
+            | typeof Object
+            | undefined;
 
         /**
          * The default value of the argument.
@@ -169,7 +178,11 @@ declare namespace Generator {
         /**
          * The type of the option.
          */
-        type: typeof Boolean | typeof String | typeof Number | ((opt: string) => any);
+        type:
+            | typeof Boolean
+            | typeof String
+            | typeof Number
+            | ((opt: string) => any);
 
         /**
          * The option name alias (example `-h` and --help`).
@@ -201,7 +214,7 @@ declare namespace Generator {
      * Represents a generator-constructor.
      */
     interface GeneratorConstructor {
-        new(...args: any[]): Generator<any>;
+        new (...args: any[]): Generator<any>;
     }
 
     /**
@@ -309,7 +322,9 @@ declare namespace Generator {
         /**
          * A method for determining whether the template should be rendered.
          */
-        when?: ((templateData: TemplateData, generator: T) => boolean) | undefined;
+        when?:
+            | ((templateData: TemplateData, generator: T) => boolean)
+            | undefined;
 
         /**
          * The template file, absolute or relative to {@link Generator.templatePath `templatePath()`}.
@@ -339,8 +354,14 @@ declare namespace Generator {
  *
  * Every generator should extend this base class.
  */
-declare class Generator<T extends Generator.GeneratorOptions = Generator.GeneratorOptions> extends EventEmitter {
-    constructor(args: string | string[], options: T, features?: Generator.GeneratorFeatures);
+declare class Generator<
+    T extends Generator.GeneratorOptions = Generator.GeneratorOptions,
+> extends EventEmitter {
+    constructor(
+        args: string | string[],
+        options: T,
+        features?: Generator.GeneratorFeatures,
+    );
 
     /**
      * The current Environment being run.
@@ -446,7 +467,10 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * Either returns this generator or the newly created generator.
      */
     composeWith(
-        generators: Array<Generator.CompositionOptions | string> | Generator.CompositionOptions | string,
+        generators:
+            | Array<Generator.CompositionOptions | string>
+            | Generator.CompositionOptions
+            | string,
         options?: Generator.GeneratorOptions,
         returnNewGenerator?: false,
     ): this;
@@ -510,7 +534,11 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * @param key The key in which the options are stored inside the `json`.
      * @param lodashPath A value indicating whether the {@link key `key`} argument should be treated as a lodash path.
      */
-    createStorage(storagePath: string, key?: string, lodashPath?: boolean): Storage;
+    createStorage(
+        storagePath: string,
+        key?: string,
+        lodashPath?: boolean,
+    ): Storage;
 
     /**
      * Convenience debug method.
@@ -558,7 +586,9 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
     /**
      * Prompt user to answer questions.
      */
-    prompt<T extends InquirerAnswers>(questions: Generator.Questions<T>): Promise<T>;
+    prompt<T extends InquirerAnswers>(
+        questions: Generator.Questions<T>,
+    ): Promise<T>;
 
     /**
      * Queues the basic tasks of the generator.
@@ -574,7 +604,9 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * @param reject A callback for handling rejections.
      */
     queueMethod(
-        method: ((...args: any[]) => any) | Record<string, (...args: any[]) => any>,
+        method:
+            | ((...args: any[]) => any)
+            | Record<string, (...args: any[]) => any>,
         methodName?: string,
         queueName?: string,
         reject?: Generator.Callback,
@@ -593,7 +625,10 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * @param taskGroup An object containing tasks.
      * @param taskOptions The options for creating the tasks.
      */
-    queueTaskGroup(taskGroup: Record<string, (...args: any[]) => any>, taskOptions?: Generator.TaskOptions): void;
+    queueTaskGroup(
+        taskGroup: Record<string, (...args: any[]) => any>,
+        taskOptions?: Generator.TaskOptions,
+    ): void;
 
     /**
      * Adds a transform stream to the commit stream.
@@ -852,7 +887,11 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * @param args A list of arguments to pass to the program
      * @param opt Any cross-spawn options.
      */
-    spawnCommandSync(command: string, args: string[], opt?: SpawnSyncOptions): any;
+    spawnCommandSync(
+        command: string,
+        args: string[],
+        opt?: SpawnSyncOptions,
+    ): any;
 
     // actions/install mixin
     /**
@@ -865,7 +904,11 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * @param options Options to pass to `dargs` as arguments
      * @param spawnOptions Options to pass {@link spawn `child_process.spawn`}.
      */
-    bowerInstall(components?: string | string[], options?: object, spawnOptions?: SpawnOptions): void;
+    bowerInstall(
+        components?: string | string[],
+        options?: object,
+        spawnOptions?: SpawnOptions,
+    ): void;
 
     /**
      * @deprecated
@@ -896,7 +939,11 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * @param options Options to pass to `dargs` as arguments
      * @param spawnOptions Options to pass {@link spawn `child_process.spawn`}.
      */
-    npmInstall(packages?: string | string[], options?: object, spawnOptions?: SpawnOptions): void;
+    npmInstall(
+        packages?: string | string[],
+        options?: object,
+        spawnOptions?: SpawnOptions,
+    ): void;
 
     /**
      * @deprecated
@@ -927,7 +974,11 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * @param options Options to pass to `dargs` as arguments
      * @param spawnOptions Options to pass {@link spawn `child_process.spawn`}.
      */
-    yarnInstall(packages?: string | string[], options?: object, spawnOptions?: SpawnOptions): void;
+    yarnInstall(
+        packages?: string | string[],
+        options?: object,
+        spawnOptions?: SpawnOptions,
+    ): void;
 
     // actions/package.json
     /**
@@ -939,7 +990,9 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * @returns
      * The newly added dependencies.
      */
-    addDependencies(dependencies: Record<string, string> | string | string[]): Promise<Record<string, string>>;
+    addDependencies(
+        dependencies: Record<string, string> | string | string[],
+    ): Promise<Record<string, string>>;
 
     /**
      * Adds development-dependencies to the destination `package.json`.
@@ -950,7 +1003,9 @@ declare class Generator<T extends Generator.GeneratorOptions = Generator.Generat
      * @returns
      * The newly added development-dependencies.
      */
-    addDevDependencies(devDependencies: Record<string, string> | string | string[]): Promise<Record<string, string>>;
+    addDevDependencies(
+        devDependencies: Record<string, string> | string | string[],
+    ): Promise<Record<string, string>>;
 
     // actions/user mixin
     readonly user: {

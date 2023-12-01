@@ -1,4 +1,9 @@
-import { ConnectionStatus, DuplexConnection, Encodable, Frame } from "rsocket-types";
+import {
+    ConnectionStatus,
+    DuplexConnection,
+    Encodable,
+    Frame,
+} from "rsocket-types";
 
 import { Flowable } from "rsocket-flowable";
 import { Encoders } from "./RSocketEncoding";
@@ -67,7 +72,11 @@ export interface Options {
  * have failed and the connection is set to the ERROR status.
  */
 export default class RSocketResumableTransport implements DuplexConnection {
-    constructor(source: () => DuplexConnection, options: Options, encoders?: Encoders<any>);
+    constructor(
+        source: () => DuplexConnection,
+        options: Options,
+        encoders?: Encoders<any>,
+    );
     close(): void;
     connect(): void;
     connectionStatus(): Flowable<ConnectionStatus>;

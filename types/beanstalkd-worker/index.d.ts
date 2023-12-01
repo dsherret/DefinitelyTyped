@@ -1,4 +1,7 @@
-import BeanstalkdClient, { BeanstalkdJobState, BeanstalkdJobStats } from "beanstalkd";
+import BeanstalkdClient, {
+    BeanstalkdJobState,
+    BeanstalkdJobStats,
+} from "beanstalkd";
 
 export = BeanstalkdWorker;
 
@@ -66,7 +69,11 @@ declare class BeanstalkdWorker {
      * @param jobId The job id to wait for.
      * @param onPoll The poll handler called on each check.
      */
-    done(tube: string, jobId: string, onPoll?: BeanstalkdWorker.JobPollHandler): Promise<void>;
+    done(
+        tube: string,
+        jobId: string,
+        onPoll?: BeanstalkdWorker.JobPollHandler,
+    ): Promise<void>;
 
     /** Enable handlers and start processing jobs, make sure handlers are setup before calling start. */
     start(): void;
@@ -197,7 +204,11 @@ declare namespace BeanstalkdWorker {
          * @param payload The message payload.
          * @param options The options for the new job.
          */
-        spawn(tube: string, payload: object, options?: BeanstalkdSpawnOptions): Promise<Job>;
+        spawn(
+            tube: string,
+            payload: object,
+            options?: BeanstalkdSpawnOptions,
+        ): Promise<Job>;
 
         /**
          * Spawn a new child Job on given Tube and make this Job to wait for its resolution.
@@ -207,7 +218,11 @@ declare namespace BeanstalkdWorker {
          * @param payload The message payload.
          * @param options The options for the new job.
          */
-        child(tube: string, payload: object, options?: BeanstalkdSpawnOptions): Promise<void>;
+        child(
+            tube: string,
+            payload: object,
+            options?: BeanstalkdSpawnOptions,
+        ): Promise<void>;
 
         /**
          * Wait for the given job on specifed tube to be done.

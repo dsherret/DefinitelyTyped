@@ -1,5 +1,8 @@
 import * as React from "react";
-import ReactNotification, { ReactNotificationOptions, store } from "react-notifications-component";
+import ReactNotification, {
+    ReactNotificationOptions,
+    store,
+} from "react-notifications-component";
 
 const SampleNotification = () => {
     store.addNotification({

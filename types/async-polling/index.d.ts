@@ -1,5 +1,12 @@
 declare namespace AsyncPolling {
-    export type EventName = "run" | "start" | "error" | "result" | "end" | "schedule" | "stop";
+    export type EventName =
+        | "run"
+        | "start"
+        | "error"
+        | "result"
+        | "end"
+        | "schedule"
+        | "stop";
 }
 
 declare function AsyncPolling<Result>(

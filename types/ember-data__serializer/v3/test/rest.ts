@@ -1,5 +1,7 @@
 import Model from "@ember-data/model";
-import RESTSerializer, { EmbeddedRecordsMixin } from "@ember-data/serializer/rest";
+import RESTSerializer, {
+    EmbeddedRecordsMixin,
+} from "@ember-data/serializer/rest";
 import EmberObject from "@ember/object";
 import { ModelSchema } from "ember-data";
 

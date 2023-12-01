@@ -12,11 +12,19 @@ declare namespace ContentType {
     }
 
     interface MediaTypeStatic {
-        new(s: string, p?: any): MediaType;
+        new (s: string, p?: any): MediaType;
         parseMedia(type: string): MediaType;
-        splitQuotedString(str: string, delimiter?: string, quote?: string): string[];
+        splitQuotedString(
+            str: string,
+            delimiter?: string,
+            quote?: string,
+        ): string[];
         splitContentTypes(str: string): string[];
-        select(availableTypes: MediaType[], acceptedTypes: MediaType[], options?: SelectOptions): string;
+        select(
+            availableTypes: MediaType[],
+            acceptedTypes: MediaType[],
+            options?: SelectOptions,
+        ): string;
         mediaCmp(a: MediaType, b: MediaType): number;
     }
 }

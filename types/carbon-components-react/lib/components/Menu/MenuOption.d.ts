@@ -19,7 +19,11 @@ export interface MenuOptionProps extends Omit<ReactLIAttr, ExcludedPropKeys> {
     kind?: "danger" | "default" | undefined;
     label: string;
     level?: number | undefined; // set by context menu parent component
-    onClick?(evt: React.MouseEvent<HTMLLIElement> | React.KeyboardEvent<HTMLLIElement>): void;
+    onClick?(
+        evt:
+            | React.MouseEvent<HTMLLIElement>
+            | React.KeyboardEvent<HTMLLIElement>,
+    ): void;
     renderIcon?: React.ComponentType | undefined;
     shortcut?: React.ReactNode | undefined;
 }

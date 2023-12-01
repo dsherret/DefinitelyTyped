@@ -10,10 +10,10 @@ const options: metascraperClearbit.Options = {
     },
 };
 
-metascraper([metascraperClearbit()])({ html, url }).then(data => {
+metascraper([metascraperClearbit()])({ html, url }).then((data) => {
     data;
 });
 
-metascraper([metascraperClearbit(options)])({ html, url }).then(data => {
+metascraper([metascraperClearbit(options)])({ html, url }).then((data) => {
     data;
 });

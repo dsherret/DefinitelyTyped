@@ -2,7 +2,8 @@
 
 const shell = new ActiveXObject("Shell.Application");
 
-const getWindowsFolder = () => shell.NameSpace(Shell32.ShellSpecialFolderConstants.ssfWINDOWS);
+const getWindowsFolder = () =>
+    shell.NameSpace(Shell32.ShellSpecialFolderConstants.ssfWINDOWS);
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/gg537735(v=vs.85).aspx
 (() => {
@@ -15,7 +16,12 @@ const getWindowsFolder = () => shell.NameSpace(Shell32.ShellSpecialFolderConstan
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774065(v=vs.85).aspx
 (() => {
-    const folder = shell.BrowseForFolder(0, "Example", 0, Shell32.ShellSpecialFolderConstants.ssfWINDOWS);
+    const folder = shell.BrowseForFolder(
+        0,
+        "Example",
+        0,
+        Shell32.ShellSpecialFolderConstants.ssfWINDOWS,
+    );
 })();
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/gg537736(v=vs.85).aspx
@@ -52,7 +58,13 @@ shell.ServiceStart("Messenger", true);
 shell.ServiceStop("Messenger", true);
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/gg537745(v=vs.85).aspx
-shell.ShellExecute("notepad.exe", "", "", "open", Shell32.ShellExecuteShow.Normal);
+shell.ShellExecute(
+    "notepad.exe",
+    "",
+    "",
+    "open",
+    Shell32.ShellExecuteShow.Normal,
+);
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/gg537746(v=vs.85).aspx?cs-save-lang=1&cs-lang=jscript#code-snippet-1
 shell.ShowBrowserBar(Shell32.ExplorerBarCLSID.Favorites, true);
@@ -69,12 +81,17 @@ shell.NameSpace(`c:\\windows`)!.CopyHere("c:\\autoexec.bat");
     const folder = shell.NameSpace("c:\\windows");
     const folderItem = folder ? folder.ParseName("clock.avi") : undefined;
     if (folder && folderItem) {
-        const info = folder.GetDetailsOf(folderItem, Shell32.FileSystemDetails.Type);
+        const info = folder.GetDetailsOf(
+            folderItem,
+            Shell32.FileSystemDetails.Type,
+        );
     }
 })();
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb787874(v=vs.85).aspx
-shell.NameSpace("c:\\windows")!.MoveHere("c:\\temp.txt", Shell32.FileOperationFlag.FOF_NOCONFIRMATION);
+shell
+    .NameSpace("c:\\windows")!
+    .MoveHere("c:\\temp.txt", Shell32.FileOperationFlag.FOF_NOCONFIRMATION);
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb787876(v=vs.85).aspx
 shell.NameSpace("c:\\")!.NewFolder("TestFolder");
@@ -87,7 +104,9 @@ shell.NameSpace("c:\\")!.NewFolder("TestFolder");
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb787880(v=vs.85).aspx
 (() => {
-    const folder = shell.NameSpace(Shell32.ShellSpecialFolderConstants.ssfPROGRAMS);
+    const folder = shell.NameSpace(
+        Shell32.ShellSpecialFolderConstants.ssfPROGRAMS,
+    );
     WScript.Echo(folder!.ParentFolder.Title);
 })();
 
@@ -106,15 +125,21 @@ shell.NameSpace("c:\\")!.NewFolder("TestFolder");
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb787812(v=vs.85).aspx
 (() => {
     const parentFolder = getWindowsFolder();
-    const folderItem = parentFolder ? parentFolder.ParseName("system32") : undefined;
+    const folderItem = parentFolder
+        ? parentFolder.ParseName("system32")
+        : undefined;
     const folder = folderItem ? folderItem.GetFolder : undefined;
 })();
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb787814(v=vs.85).aspx
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb787824(v=vs.85).aspx
 (() => {
-    const folder = shell.NameSpace(Shell32.ShellSpecialFolderConstants.ssfPROGRAMS);
-    const folderItem = folder ? folder.ParseName("Internet Explorer.lnk") : undefined;
+    const folder = shell.NameSpace(
+        Shell32.ShellSpecialFolderConstants.ssfPROGRAMS,
+    );
+    const folderItem = folder
+        ? folder.ParseName("Internet Explorer.lnk")
+        : undefined;
     if (folderItem && folderItem.IsLink) {
         const link = folderItem.GetLink;
     }
@@ -146,7 +171,9 @@ shell.NameSpace("c:\\")!.NewFolder("TestFolder");
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb787827(v=vs.85).aspx
 (() => {
     const rootFolder = shell.NameSpace("C:\\");
-    const folderItem = rootFolder ? rootFolder.ParseName("autoexec.bat") : undefined;
+    const folderItem = rootFolder
+        ? rootFolder.ParseName("autoexec.bat")
+        : undefined;
     if (folderItem) {
         const oldName = folderItem.Name;
         folderItem.Name = "test.bat";
@@ -194,7 +221,9 @@ shell.NameSpace("c:\\")!.NewFolder("TestFolder");
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb787794(v=vs.85).aspx
 (() => {
-    const folder = shell.NameSpace(Shell32.ShellSpecialFolderConstants.ssfDRIVES);
+    const folder = shell.NameSpace(
+        Shell32.ShellSpecialFolderConstants.ssfDRIVES,
+    );
     if (folder) {
         folder.Items().InvokeVerbEx();
     }
@@ -203,7 +232,9 @@ shell.NameSpace("c:\\")!.NewFolder("TestFolder");
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774170(v=vs.85).aspx
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774174(v=vs.85).aspx
 (() => {
-    const folder = shell.NameSpace(Shell32.ShellSpecialFolderConstants.ssfPROGRAMS);
+    const folder = shell.NameSpace(
+        Shell32.ShellSpecialFolderConstants.ssfPROGRAMS,
+    );
     const verbs = folder ? folder.Self.Verbs() : undefined;
     if (verbs) {
         const verb = verbs.Item(0);
@@ -218,7 +249,10 @@ shell.NameSpace("c:\\")!.NewFolder("TestFolder");
     if (folder) {
         const folderItems = folder.Items();
         WScript.Echo(folderItems.Count);
-        folderItems.Filter(Shell32.ShellFolderEnumerationFlags.SHCONTF_NONFOLDERS, "*.txt");
+        folderItems.Filter(
+            Shell32.ShellFolderEnumerationFlags.SHCONTF_NONFOLDERS,
+            "*.txt",
+        );
         WScript.Echo(folderItems.Count);
     }
 })();
@@ -241,7 +275,9 @@ shell.NameSpace("c:\\")!.NewFolder("TestFolder");
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774158(v=vs.85).aspx
 (() => {
-    const folder = shell.NameSpace(Shell32.ShellSpecialFolderConstants.ssfCONTROLS);
+    const folder = shell.NameSpace(
+        Shell32.ShellSpecialFolderConstants.ssfCONTROLS,
+    );
     if (folder) {
         const verbs = folder.Self.Verbs();
         WScript.Echo(verbs.Count);
@@ -249,8 +285,12 @@ shell.NameSpace("c:\\")!.NewFolder("TestFolder");
 })();
 
 const getIELink = () => {
-    const folder = shell.NameSpace(Shell32.ShellSpecialFolderConstants.ssfPROGRAMS);
-    const folderItem = folder ? folder.ParseName("Internet Explorer.lnk") : undefined;
+    const folder = shell.NameSpace(
+        Shell32.ShellSpecialFolderConstants.ssfPROGRAMS,
+    );
+    const folderItem = folder
+        ? folder.ParseName("Internet Explorer.lnk")
+        : undefined;
     return {
         link: folderItem ? folderItem.GetLink : undefined,
         folderItem,
@@ -409,7 +449,8 @@ const buildHotkey = (
     }
 })();
 
-const collectionToArray = <T>(col: any): T[] => { // eslint-disable-line @definitelytyped/no-unnecessary-generics
+const collectionToArray = <T>(col: any): T[] => {
+    // eslint-disable-line @definitelytyped/no-unnecessary-generics
     const results: T[] = [];
     const enumerator = new Enumerator<T>(col);
     enumerator.moveFirst();
@@ -424,7 +465,7 @@ interface String {
     endsWith(searchString: string, length?: number): boolean;
 }
 if (!String.prototype.endsWith) {
-    String.prototype.endsWith = function(search, this_len) {
+    String.prototype.endsWith = function (search, this_len) {
         if (this_len === undefined || this_len > this.length) {
             this_len = this.length;
         }
@@ -434,19 +475,27 @@ if (!String.prototype.endsWith) {
 
 // shell.Windows() includes items other than Explorer windows, such as Internet Explorer tabs
 const getExplorerWindows = () =>
-    collectionToArray<SHDocVw.InternetExplorer>(shell.Windows())
-        .filter(x => x.FullName.toLowerCase().endsWith("explorer.exe"));
+    collectionToArray<SHDocVw.InternetExplorer>(shell.Windows()).filter((x) =>
+        x.FullName.toLowerCase().endsWith("explorer.exe"),
+    );
 
 const getFolderViews = () =>
-    getExplorerWindows()
-        .map(x => x.Document as Shell32.ShellFolderView);
+    getExplorerWindows().map((x) => x.Document as Shell32.ShellFolderView);
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774045(v=vs.85).aspx
 (() => {
-    getFolderViews().forEach(x =>
-        ActiveXObject.on(x, "SelectionChanged", function(this: Shell32.ShellFolderView) {
-            WScript.Echo(`Selection change in ${this.Folder.Title} -- count: ${this.SelectedItems().Count}`);
-        })
+    getFolderViews().forEach((x) =>
+        ActiveXObject.on(
+            x,
+            "SelectionChanged",
+            function (this: Shell32.ShellFolderView) {
+                WScript.Echo(
+                    `Selection change in ${this.Folder.Title} -- count: ${
+                        this.SelectedItems().Count
+                    }`,
+                );
+            },
+        ),
     );
 })();
 
@@ -458,28 +507,39 @@ WScript.Echo(shell.Windows().Count);
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774043(v=vs.85).aspx
 (() => {
-    getFolderViews().forEach(x => WScript.Echo(`${x.Folder.Title} -- ${x.SelectedItems().Count} selected items`));
+    getFolderViews().forEach((x) =>
+        WScript.Echo(
+            `${x.Folder.Title} -- ${x.SelectedItems().Count} selected items`,
+        ),
+    );
 })();
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774047(v=vs.85).aspx
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774022(v=vs.85).aspx
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774053(v=vs.85).aspx
 (() => {
-    const folderView = getExplorerWindows()[0].Document as Shell32.ShellFolderView;
+    const folderView = getExplorerWindows()[0]
+        .Document as Shell32.ShellFolderView;
     const folder = folderView.Folder;
     if (folder) {
         const folderItem = folder.Self;
-        folderView.SelectItem(folder.Self, Shell32.ShellFolderViewSelectItem.Focus);
+        folderView.SelectItem(
+            folder.Self,
+            Shell32.ShellFolderViewSelectItem.Focus,
+        );
     }
     WScript.Echo(folderView.ViewOptions);
 })();
 
 // https://msdn.microsoft.com/en-us/library/windows/desktop/bb774020(v=vs.85).aspx
 (() => {
-    const folderView = getExplorerWindows()[0].Document as Shell32.ShellFolderView;
+    const folderView = getExplorerWindows()[0]
+        .Document as Shell32.ShellFolderView;
     const focusedItem = folderView.FocusedItem;
     if (focusedItem) {
-        WScript.Echo(`Focused item in first Excplorer window -- ${focusedItem.Path}`);
+        WScript.Echo(
+            `Focused item in first Excplorer window -- ${focusedItem.Path}`,
+        );
     }
 })();
 
@@ -487,7 +547,11 @@ WScript.Echo(shell.Windows().Count);
     const router = new ActiveXObject("Shell.FolderView");
     const folder = getFolderViews()[0];
     router.SetFolderView(folder);
-    ActiveXObject.on(router, "EnumDone", () => WScript.Echo("Current folder view was finisehd enumerating"));
-    ActiveXObject.on(router, "SelectionChanged", () => WScript.Echo("Selection changed in current folder view"));
+    ActiveXObject.on(router, "EnumDone", () =>
+        WScript.Echo("Current folder view was finisehd enumerating"),
+    );
+    ActiveXObject.on(router, "SelectionChanged", () =>
+        WScript.Echo("Selection changed in current folder view"),
+    );
     // the folder view monitored by the ShellFolderViewOC object can be changed via SetFolderView without disconnecting and reconnecting the handlers
 })();

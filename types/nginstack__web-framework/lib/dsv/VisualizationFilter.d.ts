@@ -1,5 +1,9 @@
 export = VisualizationFilter;
-declare function VisualizationFilter(name: string, type: string, size: number): void;
+declare function VisualizationFilter(
+    name: string,
+    type: string,
+    size: number,
+): void;
 declare class VisualizationFilter {
     constructor(name: string, type: string, size: number);
     name: string;

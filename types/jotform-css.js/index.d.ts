@@ -3,7 +3,7 @@ declare global {
 }
 
 export interface CssJsConstructor {
-    new(): CssJs;
+    new (): CssJs;
 }
 
 export const cssjs: CssJsConstructor;
@@ -29,12 +29,20 @@ export interface CssJs {
     /**
      * returns the rule having given directive
      */
-    findCorrespondingRule(rules: string, directive: string, value?: string): string | boolean;
+    findCorrespondingRule(
+        rules: string,
+        directive: string,
+        value?: string,
+    ): string | boolean;
 
     /**
      * Finds styles that have given selector, compress them and returns them
      */
-    findBySelector(cssObject: CssJs, selector: string, contains?: boolean): CssJs;
+    findBySelector(
+        cssObject: CssJs,
+        selector: string,
+        contains?: boolean,
+    ): CssJs;
 
     /**
      * deletes cssObjects having given selector, and returns new array
@@ -57,7 +65,11 @@ export interface CssJs {
      * @param reverse [optional], if given true, first parameter will be traversed on reversed order
      * effectively giving priority to the styles in newArray
      */
-    intelligentMerge(cssObject: CssJs, newArray: CssJs, reverse?: boolean): void;
+    intelligentMerge(
+        cssObject: CssJs,
+        newArray: CssJs,
+        reverse?: boolean,
+    ): void;
 
     /**
      * inserts new css objects into a bigger css object with same selectors grouped together
@@ -66,7 +78,11 @@ export interface CssJs {
      * @param reverse reverse [optional] default is false, if given, cssObject will be reversly traversed
      * resulting more priority in minimalObject's styles
      */
-    intelligentCSSPush(cssObject: CssJs, minimalObject: CssJs, reverse?: boolean): void;
+    intelligentCSSPush(
+        cssObject: CssJs,
+        minimalObject: CssJs,
+        reverse?: boolean,
+    ): void;
 
     /**
      * Filter outs rule objects whose type param equal to DELETED

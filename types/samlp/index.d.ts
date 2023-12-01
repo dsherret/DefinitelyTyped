@@ -7,7 +7,10 @@ declare module "samlp" {
 
     export function auth(options: IdPOptions): express.Handler;
     export function logout(options: IdPOptions): express.Handler;
-    export function parseRequest(req: express.Request, callback: (err: any, data: SamlRequest) => void): void;
+    export function parseRequest(
+        req: express.Request,
+        callback: (err: any, data: SamlRequest) => void,
+    ): void;
     export function getSamlResponse(
         options: IdPOptions,
         user: any,
@@ -53,10 +56,12 @@ declare module "samlp" {
         profileMapper?: ProfileMapperConstructor | undefined;
         redirectEndpointPath?: string | undefined;
         postEndpointPath?: string | undefined;
-        logoutEndpointPaths?: {
-            redirect?: string | undefined;
-            post?: string | undefined;
-        } | undefined;
+        logoutEndpointPaths?:
+            | {
+                  redirect?: string | undefined;
+                  post?: string | undefined;
+              }
+            | undefined;
     }
 
     export interface SamlRequest {

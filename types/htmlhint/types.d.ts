@@ -24,7 +24,11 @@ export interface Ruleset {
     "head-script-disabled"?: boolean;
     "href-abs-or-rel"?: "abs" | "rel";
     "id-class-ad-disabled"?: boolean;
-    "id-class-value"?: "underline" | "dash" | "hump" | { regId: RegExp; message: string };
+    "id-class-value"?:
+        | "underline"
+        | "dash"
+        | "hump"
+        | { regId: RegExp; message: string };
     "id-unique"?: boolean;
     "inline-script-disabled"?: boolean;
     "inline-style-disabled"?: boolean;

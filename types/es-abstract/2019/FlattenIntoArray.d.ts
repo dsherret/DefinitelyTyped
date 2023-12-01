@@ -1,4 +1,6 @@
-type NestedReadonlyNumberRecordOrArray<T> = Readonly<Record<number, T | readonly unknown[]>>;
+type NestedReadonlyNumberRecordOrArray<T> = Readonly<
+    Record<number, T | readonly unknown[]>
+>;
 
 declare function FlattenIntoArray<T>(
     target: Record<number, T>,
@@ -7,7 +9,12 @@ declare function FlattenIntoArray<T>(
     start: number,
     depth: number,
 ): number;
-declare function FlattenIntoArray<T, S, THIS_ARG, AS extends NestedReadonlyNumberRecordOrArray<S>>(
+declare function FlattenIntoArray<
+    T,
+    S,
+    THIS_ARG,
+    AS extends NestedReadonlyNumberRecordOrArray<S>,
+>(
     target: Record<number, T>,
     source: AS,
     sourceLen: number,
@@ -21,13 +28,24 @@ declare function FlattenIntoArray<T, S, THIS_ARG, AS extends NestedReadonlyNumbe
     ) => T | ReadonlyArray<S | readonly unknown[]>,
     thisArg: THIS_ARG,
 ): number;
-declare function FlattenIntoArray<T, S, THIS_ARG, AS extends NestedReadonlyNumberRecordOrArray<S>, U>(
+declare function FlattenIntoArray<
+    T,
+    S,
+    THIS_ARG,
+    AS extends NestedReadonlyNumberRecordOrArray<S>,
+    U,
+>(
     target: Record<number, T>,
     source: AS,
     sourceLen: number,
     start: number,
     depth: number,
-    mapperFunction: (this: THIS_ARG, element: S | U, sourceIndex: number, source: AS) => T | U,
+    mapperFunction: (
+        this: THIS_ARG,
+        element: S | U,
+        sourceIndex: number,
+        source: AS,
+    ) => T | U,
     thisArg: THIS_ARG,
 ): number;
 export = FlattenIntoArray;

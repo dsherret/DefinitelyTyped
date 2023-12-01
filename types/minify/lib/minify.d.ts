@@ -46,12 +46,12 @@ export interface Options {
      */
     img?:
         | {
-            /**
-             * bigger images are not base64 in the CSS
-             * @default 4096
-             */
-            maxSize?: number | undefined;
-        }
+              /**
+               * bigger images are not base64 in the CSS
+               * @default 4096
+               */
+              maxSize?: number | undefined;
+          }
         | undefined;
 }
 

@@ -1,15 +1,18 @@
 mapkit.init({
     language: "en",
-    authorizationCallback: done => {
+    authorizationCallback: (done) => {
         done("my-map-token");
     },
 });
 
-const map: mapkit.Map = new mapkit.Map(document.querySelector<HTMLElement>(".test"), {
-    isZoomEnabled: true,
-    isRotationEnabled: false,
-    tintColor: "green",
-});
+const map: mapkit.Map = new mapkit.Map(
+    document.querySelector<HTMLElement>(".test"),
+    {
+        isZoomEnabled: true,
+        isRotationEnabled: false,
+        tintColor: "green",
+    },
+);
 
 const colors = mapkit.Map.ColorSchemes.Dark;
 
@@ -35,21 +38,27 @@ map.setCameraDistanceAnimated(0);
 const cameraZoomRange: mapkit.CameraZoomRange = map.cameraZoomRange;
 map.setCameraZoomRangeAnimated(cameraZoomRange);
 
-const mapPointsOfInteresetFilter: mapkit.PointOfInterestFilter = map.pointOfInterestFilter;
+const mapPointsOfInteresetFilter: mapkit.PointOfInterestFilter =
+    map.pointOfInterestFilter;
 
 let markerAnnotation: mapkit.MarkerAnnotation;
 let circleOverlay: mapkit.CircleOverlay;
 let itemCollection: mapkit.ItemCollection;
 map.addItems([markerAnnotation, circleOverlay, itemCollection]);
-const addResult: Array<mapkit.Annotation | mapkit.Overlay | mapkit.ItemCollection> | mapkit.ItemCollection = map
-    .addItems(itemCollection);
+const addResult:
+    | Array<mapkit.Annotation | mapkit.Overlay | mapkit.ItemCollection>
+    | mapkit.ItemCollection = map.addItems(itemCollection);
 map.removeItems([markerAnnotation, circleOverlay, itemCollection]);
-const removeResult: Array<mapkit.Annotation | mapkit.Overlay | mapkit.ItemCollection> | mapkit.ItemCollection = map
-    .removeItems(itemCollection);
+const removeResult:
+    | Array<mapkit.Annotation | mapkit.Overlay | mapkit.ItemCollection>
+    | mapkit.ItemCollection = map.removeItems(itemCollection);
 
 const cameraBoundaryDescription: mapkit.CameraBoundaryDescription = {
     mapRect: new mapkit.MapRect(0, 0, 0, 0),
-    region: new mapkit.CoordinateRegion(new mapkit.Coordinate(0, 0), new mapkit.CoordinateSpan(0, 0)),
+    region: new mapkit.CoordinateRegion(
+        new mapkit.Coordinate(0, 0),
+        new mapkit.CoordinateSpan(0, 0),
+    ),
 };
 
 let coordinateRegion: mapkit.CoordinateRegion;
@@ -65,26 +74,39 @@ lineGradient.addColorStopAtIndex(0, "");
 const searchAutocompleteOptions: mapkit.SearchAutocompleteOptions = {
     language: "",
     coordinate: new mapkit.Coordinate(0, 0),
-    region: new mapkit.CoordinateRegion(new mapkit.Coordinate(0, 0), new mapkit.CoordinateSpan(0, 0)),
+    region: new mapkit.CoordinateRegion(
+        new mapkit.Coordinate(0, 0),
+        new mapkit.CoordinateSpan(0, 0),
+    ),
     includeAddresses: false,
     includePointsOfInterest: false,
     includeQueries: false,
-    pointOfInterestFilter: mapkit.PointOfInterestFilter.filterIncludingAllCategories,
+    pointOfInterestFilter:
+        mapkit.PointOfInterestFilter.filterIncludingAllCategories,
     limitToCountries: "",
 };
 
 let filter: mapkit.PointOfInterestFilter;
-filter = mapkit.PointOfInterestFilter.including([mapkit.PointOfInterestCategory.Airport]);
-filter = mapkit.PointOfInterestFilter.excluding([mapkit.PointOfInterestCategory.Airport]);
+filter = mapkit.PointOfInterestFilter.including([
+    mapkit.PointOfInterestCategory.Airport,
+]);
+filter = mapkit.PointOfInterestFilter.excluding([
+    mapkit.PointOfInterestCategory.Airport,
+]);
 filter = mapkit.PointOfInterestFilter.filterIncludingAllCategories;
 filter = mapkit.PointOfInterestFilter.filterExcludingAllCategories;
-const filterIncludes: boolean = filter.includesCategory(mapkit.PointOfInterestCategory.Airport);
-const filterExcludes: boolean = filter.excludesCategory(mapkit.PointOfInterestCategory.Airport);
+const filterIncludes: boolean = filter.includesCategory(
+    mapkit.PointOfInterestCategory.Airport,
+);
+const filterExcludes: boolean = filter.excludesCategory(
+    mapkit.PointOfInterestCategory.Airport,
+);
 
 const poiSearch = new mapkit.PointsOfInterestSearch();
 const searchRegion: mapkit.CoordinateRegion = poiSearch.region;
 const searchCenter: mapkit.Coordinate = poiSearch.center;
-const searchPointOfInterestFilter: mapkit.PointOfInterestFilter = poiSearch.pointOfInterestFilter;
+const searchPointOfInterestFilter: mapkit.PointOfInterestFilter =
+    poiSearch.pointOfInterestFilter;
 const searchLanguage: string = poiSearch.language;
 const searchMaxRadius: number = poiSearch.MaxRadius;
 const searchResult: number = poiSearch.search({});
@@ -94,8 +116,12 @@ const pointOfInterestSearchOptions: mapkit.PointsOfInterestSearchOptions = {
     language: "",
     center: new mapkit.Coordinate(0, 0),
     radius: 0,
-    region: new mapkit.CoordinateRegion(new mapkit.Coordinate(0, 0), new mapkit.CoordinateSpan(0, 0)),
-    pointOfInterestFilter: mapkit.PointOfInterestFilter.filterIncludingAllCategories,
+    region: new mapkit.CoordinateRegion(
+        new mapkit.Coordinate(0, 0),
+        new mapkit.CoordinateSpan(0, 0),
+    ),
+    pointOfInterestFilter:
+        mapkit.PointOfInterestFilter.filterIncludingAllCategories,
 };
 
 let pointsOfInterestSearchDelegate: mapkit.PointsOfInterestSearchDelegate;
@@ -114,7 +140,10 @@ const etaRequestOptions: mapkit.EtaRequestOptions = {
 };
 
 const directions = new mapkit.Directions();
-const directionsResult: number = directions.eta(etaRequestOptions, (error: Error, data: mapkit.EtaResponse) => {});
+const directionsResult: number = directions.eta(
+    etaRequestOptions,
+    (error: Error, data: mapkit.EtaResponse) => {},
+);
 
 const etaResponse: mapkit.EtaResponse = {
     request: etaRequestOptions,
@@ -129,7 +158,10 @@ const etaResult: mapkit.EtaResult = {
 };
 
 let newCameraZoomRange = new mapkit.CameraZoomRange(0, 0);
-newCameraZoomRange = new mapkit.CameraZoomRange({ minCameraDistance: 0, maxCameraDistance: 0 });
+newCameraZoomRange = new mapkit.CameraZoomRange({
+    minCameraDistance: 0,
+    maxCameraDistance: 0,
+});
 const minCameraDistance: number = newCameraZoomRange.minCameraDistance;
 const maxCameraDistance: number = newCameraZoomRange.maxCameraDistance;
 

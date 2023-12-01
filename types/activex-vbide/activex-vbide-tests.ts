@@ -19,7 +19,9 @@ for (const project of collectionToArray(app.VBE.VBProjects)) {
     WScript.Echo(`Name: ${project.Name}`);
 
     for (const reference of collectionToArray(project.References)) {
-        WScript.Echo(`     ${reference.Name} ${reference.Major}.${reference.Minor} -- ${reference.FullPath}`);
+        WScript.Echo(
+            `     ${reference.Name} ${reference.Major}.${reference.Minor} -- ${reference.FullPath}`,
+        );
     }
 }
 

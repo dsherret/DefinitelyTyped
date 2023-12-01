@@ -10,7 +10,10 @@ declare module "angular" {
         }
 
         interface IHttpBuffer {
-            append(config: ng.IRequestConfig, deferred: { resolve(data: any): void; reject(data: any): void }): void;
+            append(
+                config: ng.IRequestConfig,
+                deferred: { resolve(data: any): void; reject(data: any): void },
+            ): void;
             rejectAll(reason?: any): void;
             retryAll(updater?: Function): void;
         }

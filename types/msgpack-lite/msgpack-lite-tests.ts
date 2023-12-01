@@ -51,24 +51,31 @@ function readingFromStream() {
 // https://github.com/kawanet/msgpack-lite#decoding-messagepack-bytes-array
 function decodingBytesArray() {
     // decode() accepts Buffer instance per default
-    msgpack.decode(new Buffer([0x81, 0xA3, 0x66, 0x6F, 0x6F, 0xA3, 0x62, 0x61, 0x72]));
+    msgpack.decode(
+        new Buffer([0x81, 0xa3, 0x66, 0x6f, 0x6f, 0xa3, 0x62, 0x61, 0x72]),
+    );
 
     // decode() also accepts Array instance
-    msgpack.decode([0x81, 0xA3, 0x66, 0x6F, 0x6F, 0xA3, 0x62, 0x61, 0x72]);
+    msgpack.decode([0x81, 0xa3, 0x66, 0x6f, 0x6f, 0xa3, 0x62, 0x61, 0x72]);
 
     // decode() accepts raw Uint8Array instance as well
-    msgpack.decode(new Uint8Array([0x81, 0xA3, 0x66, 0x6F, 0x6F, 0xA3, 0x62, 0x61, 0x72]));
+    msgpack.decode(
+        new Uint8Array([0x81, 0xa3, 0x66, 0x6f, 0x6f, 0xa3, 0x62, 0x61, 0x72]),
+    );
 }
 
 // https://github.com/kawanet/msgpack-lite#custom-extension-types-codecs
 function customExtensionTypes() {
     class MyVector {
-        constructor(public x: number, public y: number) {}
+        constructor(
+            public x: number,
+            public y: number,
+        ) {}
     }
 
     const codec = msgpack.createCodec();
-    codec.addExtPacker(0x3F, MyVector, myVectorPacker);
-    codec.addExtUnpacker(0x3F, myVectorUnpacker);
+    codec.addExtPacker(0x3f, MyVector, myVectorPacker);
+    codec.addExtUnpacker(0x3f, myVectorUnpacker);
 
     const data = new MyVector(1, 2);
     const encoded = msgpack.encode(data, { codec });

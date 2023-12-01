@@ -13,7 +13,12 @@ export function createTerminal(
 ): Terminal;
 
 export function getParentTerminalInfo(
-    callback: (error: any, codename?: string, name?: string, pid?: number) => void,
+    callback: (
+        error: any,
+        codename?: string,
+        name?: string,
+        pid?: number,
+    ) => void,
 ): void;
 
 export function getDetectedTerminal(

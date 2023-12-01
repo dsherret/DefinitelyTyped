@@ -11,7 +11,7 @@ $("#example-fade").tipsy({ fade: true });
 $("#example-custom-attribute").tipsy({ title: "id" });
 
 $("#example-callback").tipsy({
-    title: function() {
+    title: function () {
         return this.getAttribute("original-title").toUpperCase();
     },
 });
@@ -22,7 +22,7 @@ $("#example-html").tipsy({ html: true });
 
 $("#example-delay").tipsy({ delayIn: 500, delayOut: 1000 });
 
-$(function() {
+$(function () {
     $("#focus-example [title]").tipsy({ trigger: "focus", gravity: "w" });
 });
 

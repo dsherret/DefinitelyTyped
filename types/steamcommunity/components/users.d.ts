@@ -97,5 +97,10 @@ export interface Users {
      * @param [options]
      * @param callback
      */
-    sendImageToUser(userID: userid, imageContentsBuffer: Buffer, options: any, callback: Callback): void;
+    sendImageToUser(
+        userID: userid,
+        imageContentsBuffer: Buffer,
+        options: any,
+        callback: Callback,
+    ): void;
 }

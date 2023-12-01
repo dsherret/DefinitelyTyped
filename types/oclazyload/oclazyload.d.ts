@@ -9,7 +9,11 @@ declare namespace oc {
          * @param config Options to be used when loading the modules
          */
         load(
-            module: string | ITypedModuleConfig | IModuleConfig | Array<string | ITypedModuleConfig | IModuleConfig>,
+            module:
+                | string
+                | ITypedModuleConfig
+                | IModuleConfig
+                | Array<string | ITypedModuleConfig | IModuleConfig>,
             config?: IOptionsConfig,
         ): ng.IPromise<any>;
 

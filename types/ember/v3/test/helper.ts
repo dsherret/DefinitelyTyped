@@ -1,10 +1,12 @@
 import Ember from "ember";
 
-const FormatCurrencyHelper = Ember.Helper.helper((params: [number], hash: { currency: string }) => {
-    const cents = params[0];
-    const currency = hash.currency;
-    return `${currency}${cents * 0.01}`;
-});
+const FormatCurrencyHelper = Ember.Helper.helper(
+    (params: [number], hash: { currency: string }) => {
+        const cents = params[0];
+        const currency = hash.currency;
+        return `${currency}${cents * 0.01}`;
+    },
+);
 
 class User extends Ember.Object {
     email: string;
@@ -22,9 +24,12 @@ declare module "@ember/service" {
 
 const CurrentUserEmailHelper = Ember.Helper.extend({
     session: Ember.inject.service("session"),
-    onNewUser: Ember.observer("session.currentUser", function(this: Ember.Helper) {
-        this.recompute();
-    }),
+    onNewUser: Ember.observer(
+        "session.currentUser",
+        function (this: Ember.Helper) {
+            this.recompute();
+        },
+    ),
     compute(): string {
         return this.get("session").get("currentUser").get("email");
     },

@@ -27,7 +27,7 @@ const proc = appdmg({
     },
 });
 
-proc.on("progress", info => {
+proc.on("progress", (info) => {
     if (info.type === "step-begin") {
         process.stdout.write(`${info.title}... `);
     }
@@ -41,7 +41,7 @@ proc.on("finish", () => {
     console.log("Installer was created successfully!");
 });
 
-proc.on("error", err => {
+proc.on("error", (err) => {
     console.error("Installer could not be created", err);
     process.exit(1);
 });

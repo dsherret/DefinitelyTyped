@@ -15,7 +15,10 @@ export function time(timeOffset?: number): number;
  * @param [timeOffset=0] - If you know how far off your clock is from the Steam servers, put the offset here in seconds
  * @returns the generated auth code
  */
-export function generateAuthCode(secret: string, timeOffset?: number | TimeOffsetFunction): string;
+export function generateAuthCode(
+    secret: string,
+    timeOffset?: number | TimeOffsetFunction,
+): string;
 
 /**
  * Generate a Steam-style TOTP authentication code.
@@ -23,7 +26,10 @@ export function generateAuthCode(secret: string, timeOffset?: number | TimeOffse
  * @param [timeOffset=0] - If you know how far off your clock is from the Steam servers, put the offset here in seconds
  * @returns the generated auth code
  */
-export function getAuthCode(secret: string, timeOffset?: number | TimeOffsetFunction): string;
+export function getAuthCode(
+    secret: string,
+    timeOffset?: number | TimeOffsetFunction,
+): string;
 
 /**
  * Generate a base64 confirmation key for use with mobile trade confirmations. The key can only be used once.
@@ -33,7 +39,11 @@ export function getAuthCode(secret: string, timeOffset?: number | TimeOffsetFunc
  * "conf" to load the confirmations page, "details" to load details about a trade, "allow" to confirm a trade, "cancel" to cancel it.
  * @returns the generated confirmation key
  */
-export function generateConfirmationKey(identitySecret: Buffer | string, time: number, tag: string): string;
+export function generateConfirmationKey(
+    identitySecret: Buffer | string,
+    time: number,
+    tag: string,
+): string;
 
 /**
  * Generate a base64 confirmation key for use with mobile trade confirmations. The key can only be used once.
@@ -43,7 +53,11 @@ export function generateConfirmationKey(identitySecret: Buffer | string, time: n
  * "conf" to load the confirmations page, "details" to load details about a trade, "allow" to confirm a trade, "cancel" to cancel it.
  * @returns the generated confirmation key
  */
-export function getConfirmationKey(identitySecret: Buffer | string, time: number, tag: string): string;
+export function getConfirmationKey(
+    identitySecret: Buffer | string,
+    time: number,
+    tag: string,
+): string;
 
 /**
  * Requests the time offset from the Steam API.
@@ -51,7 +65,9 @@ export function getConfirmationKey(identitySecret: Buffer | string, time: number
  * @param [timeOffset=0] - If you know how far off your clock is from the Steam servers, put the offset here in seconds
  * @returns the time offset
  */
-export function getTimeOffset(callback: (error: Error, offset?: number, elapsedTime?: number) => void): void;
+export function getTimeOffset(
+    callback: (error: Error, offset?: number, elapsedTime?: number) => void,
+): void;
 
 /**
  * Get a standardized device ID based on your SteamID.

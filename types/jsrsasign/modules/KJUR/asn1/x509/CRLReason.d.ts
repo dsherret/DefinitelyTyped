@@ -30,6 +30,10 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
      * new KJUR.asn1.x509.CRLReason({extname:'cRLReason',code:4})
      */
     class cRLReason extends ASN1Object {
-        constructor(params?: { extname?: string; code: number; critical?: boolean });
+        constructor(params?: {
+            extname?: string;
+            code: number;
+            critical?: boolean;
+        });
     }
 }

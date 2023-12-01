@@ -9,7 +9,8 @@ declare module "underscore" {
         string: UnderscoreStringStatic;
     }
 
-    export interface UnderscoreStringStatic extends UnderscoreStringStaticExports {
+    export interface UnderscoreStringStatic
+        extends UnderscoreStringStaticExports {
         /**
          * Tests if string contains a substring.
          * ('foobar', 'ob') => true
@@ -141,7 +142,12 @@ declare module "underscore" {
          * @param howmany
          * @param substr
          */
-        splice(str: string, i: number, howmany: number, substr?: string): string;
+        splice(
+            str: string,
+            i: number,
+            howmany: number,
+            substr?: string,
+        ): string;
 
         /**
          * Insert a string at index.
@@ -345,7 +351,12 @@ declare module "underscore" {
          * @param padStr
          * @param type
          */
-        pad(str: string, length: number, padStr?: string, type?: string): string;
+        pad(
+            str: string,
+            length: number,
+            padStr?: string,
+            type?: string,
+        ): string;
 
         /**
          * Left-pad a string.
@@ -434,7 +445,12 @@ declare module "underscore" {
          * @param dsep
          * @param tsep
          */
-        numberFormat(number: number, dec?: number, dsep?: string, tsep?: string): string;
+        numberFormat(
+            number: number,
+            dec?: number,
+            dsep?: string,
+            tsep?: string,
+        ): string;
 
         /**
          * Searches a string from left to right for a pattern.
@@ -485,7 +501,12 @@ declare module "underscore" {
          * @param lastSeparator
          * @param serial
          */
-        toSentence(array: any[], separator?: string, lastSeparator?: string, serial?: boolean): string;
+        toSentence(
+            array: any[],
+            separator?: string,
+            lastSeparator?: string,
+            serial?: boolean,
+        ): string;
 
         /**
          * The same as toSentence, but uses ', ' as default for lastSeparator.
@@ -493,7 +514,11 @@ declare module "underscore" {
          * @param separator
          * @param lastSeparator
          */
-        toSentenceSerial(array: any[], separator?: string, lastSeparator?: string): string;
+        toSentenceSerial(
+            array: any[],
+            separator?: string,
+            lastSeparator?: string,
+        ): string;
 
         /**
          * Transform text into a URL slug. Replaces whitespaces, accentuated, and special characters with a dash.
@@ -573,7 +598,11 @@ declare module "underscore" {
          * @param trueValues
          * @param falseValues
          */
-        toBoolean(str: string, trueValues?: any[], falseValues?: any[]): boolean;
+        toBoolean(
+            str: string,
+            trueValues?: any[],
+            falseValues?: any[],
+        ): boolean;
     }
 }
 

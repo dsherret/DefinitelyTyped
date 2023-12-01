@@ -9,7 +9,11 @@ declare namespace MusicKit {
      * A protocol for music items that your app can fetch by using a catalog charts request.
      * https://developer.apple.com/documentation/musickit/musiccatalogchartrequestable
      */
-    type MusicCatalogChartRequestable = "albums" | "music-videos" | "playlists" | "songs";
+    type MusicCatalogChartRequestable =
+        | "albums"
+        | "music-videos"
+        | "playlists"
+        | "songs";
 
     /**
      * The rating of the content that potentially plays while playing a resource.
@@ -52,7 +56,10 @@ declare namespace MusicKit {
         type: string;
         href: string;
         attributes?: Record<string, any>;
-        relationships?: Record<string, Relationship<Resource> | Array<Relationship<Resource>>>;
+        relationships?: Record<
+            string,
+            Relationship<Resource> | Array<Relationship<Resource>>
+        >;
         meta?: Record<string, any>;
         views?: Record<string, View<Resource>>;
     }
@@ -386,7 +393,12 @@ declare namespace MusicKit {
             isChart: boolean;
             lastModifiedDate?: string;
             name: string;
-            playlistType: "editorial" | "external" | "personal-mix" | "replay" | "user-shared";
+            playlistType:
+                | "editorial"
+                | "external"
+                | "personal-mix"
+                | "replay"
+                | "user-shared";
             url: string;
             trackTypes: Array<"music-videos" | "songs">;
         };
@@ -525,7 +537,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        activities(ids: string[], parameters?: QueryParameters): Promise<Activities[]>;
+        activities(
+            ids: string[],
+            parameters?: QueryParameters,
+        ): Promise<Activities[]>;
         /**
          * Fetch an activity using its identifier.
          *
@@ -561,7 +576,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        appleCurator(id: string, parameters?: QueryParameters): Promise<Curators>;
+        appleCurator(
+            id: string,
+            parameters?: QueryParameters,
+        ): Promise<Curators>;
         /**
          * Fetch one or more Apple curators using their identifiers.
          *
@@ -569,7 +587,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        appleCurators(ids: string[], parameters?: QueryParameters): Promise<AppleCurators[]>;
+        appleCurators(
+            ids: string[],
+            parameters?: QueryParameters,
+        ): Promise<AppleCurators[]>;
         /**
          * Fetch an artist using its identifier.
          *
@@ -585,7 +606,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        artists(ids: string[], parameters?: QueryParameters): Promise<Artists[]>;
+        artists(
+            ids: string[],
+            parameters?: QueryParameters,
+        ): Promise<Artists[]>;
         /**
          * Fetch one or more charts.
          *
@@ -597,19 +621,21 @@ declare namespace MusicKit {
         charts(
             types: MusicCatalogChartRequestable[],
             parameters?: QueryParameters,
-        ): Promise<
-            {
-                [key in MusicCatalogChartRequestable]: Array<
-                    SearchChartResult<
-                        key extends "albums" ? Albums
-                            : key extends "music-videos" ? MusicVideos
-                            : key extends "playlists" ? Playlists
-                            : key extends "songs" ? Songs
-                            : never
-                    >
-                >;
-            }
-        >;
+        ): Promise<{
+            [key in MusicCatalogChartRequestable]: Array<
+                SearchChartResult<
+                    key extends "albums"
+                        ? Albums
+                        : key extends "music-videos"
+                          ? MusicVideos
+                          : key extends "playlists"
+                            ? Playlists
+                            : key extends "songs"
+                              ? Songs
+                              : never
+                >
+            >;
+        }>;
         /**
          * Fetch a curator using its identifier.
          *
@@ -625,7 +651,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        curators(ids: string[], parameters?: QueryParameters): Promise<Curators[]>;
+        curators(
+            ids: string[],
+            parameters?: QueryParameters,
+        ): Promise<Curators[]>;
         /**
          * Fetch a genre using its identifier.
          *
@@ -660,7 +689,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        musicVideo(id: string, parameters?: QueryParameters): Promise<MusicVideos>;
+        musicVideo(
+            id: string,
+            parameters?: QueryParameters,
+        ): Promise<MusicVideos>;
         /**
          * Fetch one or more music videos using their identifiers.
          *
@@ -668,7 +700,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        musicVideos(ids: string[], parameters?: QueryParameters): Promise<MusicVideos[]>;
+        musicVideos(
+            ids: string[],
+            parameters?: QueryParameters,
+        ): Promise<MusicVideos[]>;
         /**
          * Fetch a playlist using its identifier.
          *
@@ -684,7 +719,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        playlists(ids: string[], parameters?: QueryParameters): Promise<Playlists[]>;
+        playlists(
+            ids: string[],
+            parameters?: QueryParameters,
+        ): Promise<Playlists[]>;
         /**
          * Fetch the recently played resources for the user.
          *
@@ -699,7 +737,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        recommendation(id: string, parameters?: QueryParameters): Promise<PersonalRecommendation>;
+        recommendation(
+            id: string,
+            parameters?: QueryParameters,
+        ): Promise<PersonalRecommendation>;
         /**
          * Fetch one or more recommendations using their identifiers.
          *
@@ -707,7 +748,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        recommendations(ids: string[], parameters?: QueryParameters): Promise<PersonalRecommendation[]>;
+        recommendations(
+            ids: string[],
+            parameters?: QueryParameters,
+        ): Promise<PersonalRecommendation[]>;
 
         /**
          * Search the catalog using a query.
@@ -791,7 +835,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        stations(ids: string[], parameters?: QueryParameters): Promise<Stations[]>;
+        stations(
+            ids: string[],
+            parameters?: QueryParameters,
+        ): Promise<Stations[]>;
         /**
          * Fetch a storefront using its identifier.
          *
@@ -799,7 +846,10 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        storefront(id: string, parameters?: QueryParameters): Promise<Storefronts>;
+        storefront(
+            id: string,
+            parameters?: QueryParameters,
+        ): Promise<Storefronts>;
         /**
          * Fetch one or more storefronts using their identifiers.
          *
@@ -807,6 +857,9 @@ declare namespace MusicKit {
          * @param parameters A query parameters object that is serialized and passed
          * directly to the Apple Music API.
          */
-        storefronts(ids: string[], parameters?: QueryParameters): Promise<Storefronts[]>;
+        storefronts(
+            ids: string[],
+            parameters?: QueryParameters,
+        ): Promise<Storefronts[]>;
     }
 }

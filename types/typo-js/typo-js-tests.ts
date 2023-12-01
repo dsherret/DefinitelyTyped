@@ -38,7 +38,7 @@ const suggestionsLimit3: string[] = dict3.suggest("tryed", 10);
 const dict4 = new Typo("en_GB", null, null, {
     dictionaryPath: "/dictionaries",
     asyncLoad: true,
-    loadedCallback: cbDict => {
+    loadedCallback: (cbDict) => {
         const hasLoaded: boolean = cbDict.loaded;
         const isValid: boolean = cbDict.check("tried");
         const suggestions: string[] = cbDict.suggest("tryed");

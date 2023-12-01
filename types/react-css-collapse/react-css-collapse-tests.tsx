@@ -5,9 +5,7 @@ import { render } from "react-dom";
 
 const TestOpen: FC = () => (
     <Collapse isOpen>
-        <div>
-            i am open
-        </div>
+        <div>i am open</div>
     </Collapse>
 );
 

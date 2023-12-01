@@ -68,7 +68,11 @@ declare module "vm" {
          * If this option is not specified, calls to `import()` will reject with `ERR_VM_DYNAMIC_IMPORT_CALLBACK_MISSING`.
          */
         importModuleDynamically?:
-            | ((specifier: string, script: Script, importAttributes: ImportAttributes) => Module)
+            | ((
+                  specifier: string,
+                  script: Script,
+                  importAttributes: ImportAttributes,
+              ) => Module)
             | undefined;
     }
     interface RunningScriptOptions extends BaseOptions {
@@ -111,7 +115,8 @@ declare module "vm" {
         cachedData?: ScriptOptions["cachedData"];
         importModuleDynamically?: ScriptOptions["importModuleDynamically"];
     }
-    interface RunningCodeInNewContextOptions extends RunningScriptInNewContextOptions {
+    interface RunningCodeInNewContextOptions
+        extends RunningScriptInNewContextOptions {
         cachedData?: ScriptOptions["cachedData"];
         importModuleDynamically?: ScriptOptions["importModuleDynamically"];
     }
@@ -150,18 +155,18 @@ declare module "vm" {
         origin?: string | undefined;
         codeGeneration?:
             | {
-                /**
-                 * If set to false any calls to eval or function constructors (Function, GeneratorFunction, etc)
-                 * will throw an EvalError.
-                 * @default true
-                 */
-                strings?: boolean | undefined;
-                /**
-                 * If set to false any attempt to compile a WebAssembly module will throw a WebAssembly.CompileError.
-                 * @default true
-                 */
-                wasm?: boolean | undefined;
-            }
+                  /**
+                   * If set to false any calls to eval or function constructors (Function, GeneratorFunction, etc)
+                   * will throw an EvalError.
+                   * @default true
+                   */
+                  strings?: boolean | undefined;
+                  /**
+                   * If set to false any attempt to compile a WebAssembly module will throw a WebAssembly.CompileError.
+                   * @default true
+                   */
+                  wasm?: boolean | undefined;
+              }
             | undefined;
         /**
          * If set to `afterEvaluate`, microtasks will be run immediately after the script has run.
@@ -226,7 +231,10 @@ declare module "vm" {
          * @param contextifiedObject A `contextified` object as returned by the `vm.createContext()` method.
          * @return the result of the very last statement executed in the script.
          */
-        runInContext(contextifiedObject: Context, options?: RunningScriptOptions): any;
+        runInContext(
+            contextifiedObject: Context,
+            options?: RunningScriptOptions,
+        ): any;
         /**
          * First contextifies the given `contextObject`, runs the compiled code contained
          * by the `vm.Script` object within the created context, and returns the result.
@@ -253,7 +261,10 @@ declare module "vm" {
          * @param contextObject An object that will be `contextified`. If `undefined`, a new object will be created.
          * @return the result of the very last statement executed in the script.
          */
-        runInNewContext(contextObject?: Context, options?: RunningScriptInNewContextOptions): any;
+        runInNewContext(
+            contextObject?: Context,
+            options?: RunningScriptInNewContextOptions,
+        ): any;
         /**
          * Runs the compiled code contained by the `vm.Script` within the context of the
          * current `global` object. Running code does not have access to local scope, but _does_ have access to the current `global` object.
@@ -382,7 +393,10 @@ declare module "vm" {
      * @since v0.3.1
      * @return contextified object.
      */
-    function createContext(sandbox?: Context, options?: CreateContextOptions): Context;
+    function createContext(
+        sandbox?: Context,
+        options?: CreateContextOptions,
+    ): Context;
     /**
      * Returns `true` if the given `object` object has been `contextified` using {@link createContext}.
      * @since v0.11.7
@@ -415,7 +429,11 @@ declare module "vm" {
      * @param contextifiedObject The `contextified` object that will be used as the `global` when the `code` is compiled and run.
      * @return the result of the very last statement executed in the script.
      */
-    function runInContext(code: string, contextifiedObject: Context, options?: RunningCodeOptions | string): any;
+    function runInContext(
+        code: string,
+        contextifiedObject: Context,
+        options?: RunningCodeOptions | string,
+    ): any;
     /**
      * The `vm.runInNewContext()` first contextifies the given `contextObject` (or
      * creates a new `contextObject` if passed as `undefined`), compiles the `code`,
@@ -511,7 +529,10 @@ declare module "vm" {
      * @param code The JavaScript code to compile and run.
      * @return the result of the very last statement executed in the script.
      */
-    function runInThisContext(code: string, options?: RunningCodeOptions | string): any;
+    function runInThisContext(
+        code: string,
+        options?: RunningCodeOptions | string,
+    ): any;
     /**
      * Compiles the given code into the provided context (if no context is
      * supplied, the current context is used), and returns it wrapped inside a
@@ -584,7 +605,9 @@ declare module "vm" {
      * @since v13.10.0
      * @experimental
      */
-    function measureMemory(options?: MeasureMemoryOptions): Promise<MemoryMeasurement>;
+    function measureMemory(
+        options?: MeasureMemoryOptions,
+    ): Promise<MemoryMeasurement>;
     interface ModuleEvaluateOptions {
         timeout?: RunningScriptOptions["timeout"] | undefined;
         breakOnSigint?: RunningScriptOptions["breakOnSigint"] | undefined;
@@ -598,7 +621,13 @@ declare module "vm" {
             attributes: ImportAttributes;
         },
     ) => Module | Promise<Module>;
-    type ModuleStatus = "unlinked" | "linking" | "linked" | "evaluating" | "evaluated" | "errored";
+    type ModuleStatus =
+        | "unlinked"
+        | "linking"
+        | "linked"
+        | "evaluating"
+        | "evaluated"
+        | "errored";
     /**
      * This feature is only available with the `--experimental-vm-modules` command
      * flag enabled.
@@ -810,8 +839,12 @@ declare module "vm" {
         /**
          * Called during evaluation of this module to initialize the `import.meta`.
          */
-        initializeImportMeta?: ((meta: ImportMeta, module: SourceTextModule) => void) | undefined;
-        importModuleDynamically?: ScriptOptions["importModuleDynamically"] | undefined;
+        initializeImportMeta?:
+            | ((meta: ImportMeta, module: SourceTextModule) => void)
+            | undefined;
+        importModuleDynamically?:
+            | ScriptOptions["importModuleDynamically"]
+            | undefined;
     }
     /**
      * This feature is only available with the `--experimental-vm-modules` command

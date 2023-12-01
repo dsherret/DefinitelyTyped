@@ -36,9 +36,21 @@ interface JQueryStatic {
     isScrollToFixed(el: {}): JQuery;
     isScrollToFixed(el: JQuery): JQuery;
 
-    ScrollToFixed(el: Element, options: ScrollToFixed.ScrollToFixedOptions): void;
-    ScrollToFixed(el: Element, options: ScrollToFixed.ScrollToFixedOptions): JQuery;
-    ScrollToFixed(el: Element[], options: ScrollToFixed.ScrollToFixedOptions): JQuery;
+    ScrollToFixed(
+        el: Element,
+        options: ScrollToFixed.ScrollToFixedOptions,
+    ): void;
+    ScrollToFixed(
+        el: Element,
+        options: ScrollToFixed.ScrollToFixedOptions,
+    ): JQuery;
+    ScrollToFixed(
+        el: Element[],
+        options: ScrollToFixed.ScrollToFixedOptions,
+    ): JQuery;
     ScrollToFixed(el: {}, options: ScrollToFixed.ScrollToFixedOptions): JQuery;
-    ScrollToFixed(el: JQuery, options: ScrollToFixed.ScrollToFixedOptions): JQuery;
+    ScrollToFixed(
+        el: JQuery,
+        options: ScrollToFixed.ScrollToFixedOptions,
+    ): JQuery;
 }

@@ -57,11 +57,27 @@ declare namespace NodePersist {
 
         valuesWithKeyMatch(match?: RegExp | string): Promise<any[]>;
 
-        set(key: string, value: any, options?: DatumOptions): Promise<WriteFileResult>;
-        setItem(key: string, value: any, options?: DatumOptions): Promise<WriteFileResult>;
+        set(
+            key: string,
+            value: any,
+            options?: DatumOptions,
+        ): Promise<WriteFileResult>;
+        setItem(
+            key: string,
+            value: any,
+            options?: DatumOptions,
+        ): Promise<WriteFileResult>;
 
-        update(key: string, value: any, options?: DatumOptions): Promise<WriteFileResult>;
-        updateItem(key: string, value: any, options?: DatumOptions): Promise<WriteFileResult>;
+        update(
+            key: string,
+            value: any,
+            options?: DatumOptions,
+        ): Promise<WriteFileResult>;
+        updateItem(
+            key: string,
+            value: any,
+            options?: DatumOptions,
+        ): Promise<WriteFileResult>;
 
         get(key: string): Promise<any>;
         getItem(key: string): Promise<any>;
@@ -110,15 +126,33 @@ declare namespace NodePersist {
     function values(filter?: FilterFunction<Datum>): Promise<any[]>;
     function length(filter?: FilterFunction<Datum>): Promise<number>;
 
-    function forEach(callback: (data: Datum) => Promise<void> | void): Promise<void>;
+    function forEach(
+        callback: (data: Datum) => Promise<void> | void,
+    ): Promise<void>;
 
     function valuesWithKeyMatch(match?: RegExp | string): Promise<any[]>;
 
-    function set(key: string, value: any, options?: DatumOptions): Promise<WriteFileResult>;
-    function setItem(key: string, value: any, options?: DatumOptions): Promise<WriteFileResult>;
+    function set(
+        key: string,
+        value: any,
+        options?: DatumOptions,
+    ): Promise<WriteFileResult>;
+    function setItem(
+        key: string,
+        value: any,
+        options?: DatumOptions,
+    ): Promise<WriteFileResult>;
 
-    function update(key: string, value: any, options?: DatumOptions): Promise<WriteFileResult>;
-    function updateItem(key: string, value: any, options?: DatumOptions): Promise<WriteFileResult>;
+    function update(
+        key: string,
+        value: any,
+        options?: DatumOptions,
+    ): Promise<WriteFileResult>;
+    function updateItem(
+        key: string,
+        value: any,
+        options?: DatumOptions,
+    ): Promise<WriteFileResult>;
 
     function get(key: string): Promise<any>;
     function getItem(key: string): Promise<any>;
@@ -140,7 +174,10 @@ declare namespace NodePersist {
 
     function ensureDirectory(dir: string): Promise<EnsureDirectoryResult>;
     function readDirectory(dir: string): Promise<Datum[]>;
-    function readFile(file: string, options?: DatumOptions): Promise<Datum | string>;
+    function readFile(
+        file: string,
+        options?: DatumOptions,
+    ): Promise<Datum | string>;
     function writeFile(file: string, content: Datum): Promise<WriteFileResult>;
 
     function stringify(obj: any): string;

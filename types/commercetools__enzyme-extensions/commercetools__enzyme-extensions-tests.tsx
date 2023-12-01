@@ -16,8 +16,9 @@ function Child(props: ChildProps) {
     return <div>{props.cb()}</div>;
 }
 
-enzyme.shallow(<App />)
+enzyme
+    .shallow(<App />)
     .find(Child)
-    .drill(props => props.cb());
+    .drill((props) => props.cb());
 
 enzyme.shallow(<App />).until(Child);

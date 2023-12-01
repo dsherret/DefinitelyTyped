@@ -2,16 +2,16 @@
 
 import Q = require("q");
 
-Q(8).then(x => console.log(x.toExponential()));
+Q(8).then((x) => console.log(x.toExponential()));
 Q().then(() => console.log("nothing"));
 
-var delay = function(delay: number) {
+var delay = function (delay: number) {
     var d = Q.defer<void>();
     setTimeout(d.resolve, delay);
     return d.promise;
 };
 
-Q.when(delay(1000), function(val: void) {
+Q.when(delay(1000), function (val: void) {
     console.log("Hello, World!");
     return;
 });
@@ -20,67 +20,66 @@ Q.when(delay(1000), function(val: void) {
 var otherPromise = Q.defer<string>().promise;
 Q.defer<string>().resolve(otherPromise);
 
-Q.timeout(Q(new Date()), 1000, "My dates never arrived. :(").then(d => d.toJSON());
+Q.timeout(Q(new Date()), 1000, "My dates never arrived. :(").then((d) =>
+    d.toJSON(),
+);
 
-Q.delay(Q(8), 1000).then(x => x.toExponential());
-Q.delay(8, 1000).then(x => x.toExponential());
-Q.delay(Q("asdf"), 1000).then(x => x.length);
-Q.delay("asdf", 1000).then(x => x.length);
+Q.delay(Q(8), 1000).then((x) => x.toExponential());
+Q.delay(8, 1000).then((x) => x.toExponential());
+Q.delay(Q("asdf"), 1000).then((x) => x.length);
+Q.delay("asdf", 1000).then((x) => x.length);
 
 var eventualAdd = Q.promised((a?: number, b?: number) => a + b);
-eventualAdd(Q(1), Q(2)).then(x => x.toExponential());
+eventualAdd(Q(1), Q(2)).then((x) => x.toExponential());
 
 function eventually<T>(eventually: T) {
     return Q.delay(eventually, 1000);
 }
 
 var x = Q.all([1, 2, 3].map(eventually));
-Q.when(x, function(x) {
+Q.when(x, function (x) {
     console.log(x);
 });
 
-Q.all([
-    eventually(10),
-    eventually(20),
-]).spread(function(x: number, y: number) {
+Q.all([eventually(10), eventually(20)]).spread(function (x: number, y: number) {
     console.log(x, y);
 });
 
-Q.all([
-    eventually(10),
-    eventually(20),
-]).then(function(results) {
+Q.all([eventually(10), eventually(20)]).then(function (results) {
     let [x, y] = results;
     console.log(x, y);
 });
 
-Q.fcall(function() {})
-    .then(function() {})
-    .then(function() {})
-    .then(function() {})
-    .then(function(value4) {
-        // Do something with value4
-    }, function(error) {
-        // Handle any error from step1 through step4
-    }).done();
+Q.fcall(function () {})
+    .then(function () {})
+    .then(function () {})
+    .then(function () {})
+    .then(
+        function (value4) {
+            // Do something with value4
+        },
+        function (error) {
+            // Handle any error from step1 through step4
+        },
+    )
+    .done();
 
-Q.allResolved([])
-    .then(function(promises: Array<Q.Promise<any>>) {
-        promises.forEach(function(promise) {
-            if (promise.isFulfilled()) {
-                var value = promise.valueOf();
-            } else {
-                var exception = promise.valueOf().exception;
-            }
-        });
+Q.allResolved([]).then(function (promises: Array<Q.Promise<any>>) {
+    promises.forEach(function (promise) {
+        if (promise.isFulfilled()) {
+            var value = promise.valueOf();
+        } else {
+            var exception = promise.valueOf().exception;
+        }
     });
+});
 
 Q(42)
     .tap(() => "hello")
-    .tap(x => {
+    .tap((x) => {
         console.log(x);
     })
-    .then(x => {
+    .then((x) => {
         console.log("42 == " + x);
     });
 
@@ -90,45 +89,51 @@ declare function returnsNumPromise(text: string): Q.Promise<number>;
 declare function returnsNumPromise(text: string): JQueryPromise<number>;
 
 Q<number[]>(arrayPromise) // type specification required
-    .then(arr => arr.join(","))
+    .then((arr) => arr.join(","))
     .then<number>(returnsNumPromise) // requires specification
-    .then(num => num.toFixed());
+    .then((num) => num.toFixed());
 
 declare var jPromise: JQueryPromise<string>;
 
 // if jQuery promises definition supported generics, this could be more interesting example
-Q<string>(jPromise).then(str => str.split(","));
+Q<string>(jPromise).then((str) => str.split(","));
 jPromise.then(returnsNumPromise);
 
 // watch the typing flow through from jQueryPromise to Q.Promise
-Q(jPromise).then(str => str.split(","));
+Q(jPromise).then((str) => str.split(","));
 
 declare var promiseArray: Array<Q.IPromise<number>>;
-var qPromiseArray = promiseArray.map(p => Q<number>(p));
+var qPromiseArray = promiseArray.map((p) => Q<number>(p));
 var myNums: any[] = [2, 3, Q(4), 5, Q(6), Q(7)];
 
-Q.all(promiseArray).then(nums => nums.map(num => num.toPrecision(2)).join(","));
+Q.all(promiseArray).then((nums) =>
+    nums.map((num) => num.toPrecision(2)).join(","),
+);
 
-Q.all<number>(myNums).then(nums => nums.map(Math.round));
+Q.all<number>(myNums).then((nums) => nums.map(Math.round));
 
-Q.fbind((dateString?: string) => new Date(dateString), "11/11/1991")().then(d => d.toLocaleDateString());
+Q.fbind((dateString?: string) => new Date(dateString), "11/11/1991")().then(
+    (d) => d.toLocaleDateString(),
+);
 
-Q.when(8, num => num + "!");
-Q.when(Q(8), num => num + "!").then(str => str.split(","));
+Q.when(8, (num) => num + "!");
+Q.when(Q(8), (num) => num + "!").then((str) => str.split(","));
 var voidPromise: Q.Promise<void> = Q.when();
 
 declare function saveToDisk(): Q.Promise<any>;
 declare function saveToCloud(): Q.Promise<any>;
-Q.allSettled([saveToDisk(), saveToCloud()]).spread(function(disk: any, cloud: any) {
-    console.log("saved to disk:", disk.state === "fulfilled");
-    console.log("saved to cloud:", cloud.state === "fulfilled");
+Q.allSettled([saveToDisk(), saveToCloud()])
+    .spread(function (disk: any, cloud: any) {
+        console.log("saved to disk:", disk.state === "fulfilled");
+        console.log("saved to cloud:", cloud.state === "fulfilled");
 
-    if (disk.state === "fulfilled") {
-        console.log("value was " + disk.value);
-    } else if (disk.state === "rejected") {
-        console.log("rejected because " + disk.reason);
-    }
-}).done();
+        if (disk.state === "fulfilled") {
+            console.log("value was " + disk.value);
+        } else if (disk.state === "rejected") {
+            console.log("rejected because " + disk.reason);
+        }
+    })
+    .done();
 
 var nodeStyle = (input: string, cb: Function) => {
     cb(null, input);
@@ -149,7 +154,7 @@ class Repo {
         var result = this.items;
 
         for (var key in options) {
-            result = result.filter(i => i[key] == options[key]);
+            result = result.filter((i) => i[key] == options[key]);
         }
 
         return Q(result);
@@ -202,18 +207,18 @@ namespace TestCanRethrowRejectedPromises {
 var y1 = Q().then(() => {
     var s = Q("hello");
     var n = Q(1);
-    return <[typeof s, typeof n]> [s, n];
+    return <[typeof s, typeof n]>[s, n];
 });
 
 var y2 = Q().then(() => {
     var s = "hello";
     var n = Q(1);
-    return <[typeof s, typeof n]> [s, n];
+    return <[typeof s, typeof n]>[s, n];
 });
 
 var p1: Q.Promise<[string, number]> = y1.all();
-var p2: Q.Promise<[string, number]> = y1.then(val => Q.all(val));
+var p2: Q.Promise<[string, number]> = y1.then((val) => Q.all(val));
 var p3: Q.Promise<[string, number]> = Q.all(y1);
 var p4: Q.Promise<[string, number]> = y2.all();
-var p5: Q.Promise<[string, number]> = y2.then(val => Q.all(val));
+var p5: Q.Promise<[string, number]> = y2.then((val) => Q.all(val));
 var p6: Q.Promise<[string, number]> = Q.all(y2);

@@ -43,4 +43,7 @@ interface ConfirmOptions extends AlertOptions {
 }
 
 export function alert(message: string, options?: AlertOptions): Promise<void>;
-export function confirm(message: string, options?: ConfirmOptions): Promise<boolean>;
+export function confirm(
+    message: string,
+    options?: ConfirmOptions,
+): Promise<boolean>;

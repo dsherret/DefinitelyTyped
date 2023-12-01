@@ -92,7 +92,7 @@ export interface SubmoduleDocNode {
 }
 
 function isModuleNode(node: object): node is ModuleDocNode {
-    return ("type" in node) && (node as any).type === "module";
+    return "type" in node && (node as any).type === "module";
 }
 
 function trimEmptyModule(node: DocRoot | ModuleDocNode): boolean {
@@ -106,16 +106,27 @@ function trimEmptyModule(node: DocRoot | ModuleDocNode): boolean {
         }
         node.modules = newModules;
     }
-    return !!node.classes?.length || !!node.methods?.length || !!node.modules?.length
-        || !!(isModuleNode(node) && node.properties?.length);
+    return (
+        !!node.classes?.length ||
+        !!node.methods?.length ||
+        !!node.modules?.length ||
+        !!(isModuleNode(node) && node.properties?.length)
+    );
 }
 
 function fixupModuleStructure(node: DocRoot): void {
-    function getClass(node: ModuleDocNode | DocRoot, className: string): ClassDocNode {
+    function getClass(
+        node: ModuleDocNode | DocRoot,
+        className: string,
+    ): ClassDocNode {
         return node.classes!.find(({ name }) => name === className)!;
     }
 
-    function getModule(node: SubmoduleDocNode, modName: string, allowMiscs = false): ModuleDocNode {
+    function getModule(
+        node: SubmoduleDocNode,
+        modName: string,
+        allowMiscs = false,
+    ): ModuleDocNode {
         const ret = node?.modules?.find(({ name }) => name === modName);
         if (!ret && allowMiscs) {
             return node.miscs?.find(({ name }) => name === modName)!;
@@ -126,7 +137,10 @@ function fixupModuleStructure(node: DocRoot): void {
         return ret;
     }
 
-    function getPropertyModule(node: ModuleDocNode, modName: string): PropertyDocNode {
+    function getPropertyModule(
+        node: ModuleDocNode,
+        modName: string,
+    ): PropertyDocNode {
         return node.properties!.find(({ name }) => name === modName)!;
     }
 
@@ -134,7 +148,11 @@ function fixupModuleStructure(node: DocRoot): void {
         node.modules.find(({ name }) => name === oldName)!.name = newName;
     }
 
-    function renameClass(module: ModuleDocNode | DocRoot, oldName: string, newName: string): void {
+    function renameClass(
+        module: ModuleDocNode | DocRoot,
+        oldName: string,
+        newName: string,
+    ): void {
         const moduleClass = getClass(module, oldName);
         moduleClass.name = newName;
         moduleClass.methods?.forEach((method) => {
@@ -145,7 +163,11 @@ function fixupModuleStructure(node: DocRoot): void {
         });
     }
 
-    function unnestSubmodule(modName: string, subs: string[][], allowMisc = false): ModuleDocNode {
+    function unnestSubmodule(
+        modName: string,
+        subs: string[][],
+        allowMisc = false,
+    ): ModuleDocNode {
         const module = getModule(node, modName);
         module.methods ??= [];
         module.classes ??= [];
@@ -186,7 +208,11 @@ function fixupModuleStructure(node: DocRoot): void {
         a.properties = a.properties.concat(b.properties ?? []);
     }
 
-    function mergeClasses(module: ModuleDocNode | DocRoot, target: string, other: string): void {
+    function mergeClasses(
+        module: ModuleDocNode | DocRoot,
+        target: string,
+        other: string,
+    ): void {
         const a = getClass(module, target);
         const b = getClass(module, other);
         a.methods ??= [];
@@ -205,7 +231,11 @@ function fixupModuleStructure(node: DocRoot): void {
     unnestSubmodule("dgram", [["`node:dgram`_module_functions"]]);
 
     // FS is split into 2 modules, callback based, and promise based.
-    unnestSubmodule("fs", [["callback_api"], ["synchronous_api"], ["common_objects"]]);
+    unnestSubmodule("fs", [
+        ["callback_api"],
+        ["synchronous_api"],
+        ["common_objects"],
+    ]);
 
     // yet another rename
     renameModule("performance_measurement_apis", "perf_hooks");
@@ -221,7 +251,10 @@ function fixupModuleStructure(node: DocRoot): void {
 
     // some of the methods of Http2ServerResponse are incorrectly nested under the `req` property.
     const http2Module = getModule(node, "http2");
-    const httpResponseClass = getClass(http2Module, "http2.Http2ServerResponse");
+    const httpResponseClass = getClass(
+        http2Module,
+        "http2.Http2ServerResponse",
+    );
     httpResponseClass.methods = httpResponseClass.methods!.concat(
         http2Module.properties!.find(({ name }) => name === "req")?.methods!,
     );
@@ -240,14 +273,22 @@ function fixupModuleStructure(node: DocRoot): void {
     });
 
     // un-nest crypto methods
-    unnestSubmodule("crypto", [["`node:crypto`_module_methods_and_properties"]]);
+    unnestSubmodule("crypto", [
+        ["`node:crypto`_module_methods_and_properties"],
+    ]);
 
     // un-nest process methods
-    unnestSubmodule("child_process", [["asynchronous_process_creation"], ["synchronous_process_creation"]]);
+    unnestSubmodule("child_process", [
+        ["asynchronous_process_creation"],
+        ["synchronous_process_creation"],
+    ]);
 
     // yup, another rename..
     renameModule("modules:_`node:module`_api", "module");
-    unnestSubmodule("module", [["the_`module`_object"], ["source_map_v3_support"]]);
+    unnestSubmodule("module", [
+        ["the_`module`_object"],
+        ["source_map_v3_support"],
+    ]);
 
     // un-nest methods into main
     unnestSubmodule("v8", [["serialization_api"]]);
@@ -255,12 +296,18 @@ function fixupModuleStructure(node: DocRoot): void {
     // un-nest legacy and whatwg into main
     unnestSubmodule("url", [["legacy_url_api"], ["the_whatwg_url_api"]]);
     const urlClass = getClass(getModule(node, "url"), "URL");
-    urlClass.classMethods = urlClass.methods?.filter(m => m.textRaw.startsWith("`URL"));
+    urlClass.classMethods = urlClass.methods?.filter((m) =>
+        m.textRaw.startsWith("`URL"),
+    );
 
     // methods are incorrectly nested
     const asyncHooks = getModule(node, "async_hooks");
     const asyncHookClass = getClass(asyncHooks, "AsyncHook");
-    asyncHooks.methods!.push(...asyncHookClass.methods!.filter(({ textRaw }) => textRaw.includes("async_hooks")));
+    asyncHooks.methods!.push(
+        ...asyncHookClass.methods!.filter(({ textRaw }) =>
+            textRaw.includes("async_hooks"),
+        ),
+    );
     asyncHooks.classes = []; // remove existing classes as they are weird redirects.
     mergeModules("async_hooks", "asynchronous_context_tracking");
 
@@ -273,7 +320,9 @@ function fixupModuleStructure(node: DocRoot): void {
         name: "BufferConstructor",
         type: "class",
         methods: bufferClass.classMethods,
-        properties: bufferClass.properties?.filter(p => p.name === "poolSize"),
+        properties: bufferClass.properties?.filter(
+            (p) => p.name === "poolSize",
+        ),
     });
 
     unnestSubmodule("diagnostics_channel", [["public_api"]]);
@@ -290,12 +339,16 @@ function fixupModuleStructure(node: DocRoot): void {
 
     unnestModule(["dns", "dns_promises_api"], "dns/promises");
     // unnestModule(['stream', 'types_of_streams', 'streams_promises_api'], 'stream/promises');
-    unnestSubmodule("stream", [
-        ["API for stream consumers", "readable_streams"],
-        ["API for stream consumers", "writable_streams"],
-        ["API for stream consumers", "duplex_and_transform_streams"],
-        ["API for stream implementers", "implementing_a_transform_stream"],
-    ], true);
+    unnestSubmodule(
+        "stream",
+        [
+            ["API for stream consumers", "readable_streams"],
+            ["API for stream consumers", "writable_streams"],
+            ["API for stream consumers", "duplex_and_transform_streams"],
+            ["API for stream implementers", "implementing_a_transform_stream"],
+        ],
+        true,
+    );
 
     const dnsPromises = getModule(node, "dns/promises");
     renameClass(dnsPromises, "dnsPromises.Resolver", "Resolver");
@@ -317,11 +370,13 @@ function fixupModuleStructure(node: DocRoot): void {
     const process = node.globals.find(({ name }) => name === "Process");
     node.modules.push({
         name: "process",
-        classes: [{
-            ...process,
-            name: "Process",
-            type: "class",
-        }],
+        classes: [
+            {
+                ...process,
+                name: "Process",
+                type: "class",
+            },
+        ],
         type: "module",
     });
 }
@@ -335,14 +390,13 @@ function trimDocs(root: DocRoot): void {
 function simpleHTTPGet(url: string): Promise<string> {
     let out = Buffer.from("");
     return new Promise((resolve, reject) => {
-        get(url, res => {
+        get(url, (res) => {
             res.on("data", (data: Buffer) => {
                 out = Buffer.concat([out, data]);
             })
                 .once("end", () => resolve(out.toString()))
                 .once("error", reject);
-        })
-            .once("error", reject);
+        }).once("error", reject);
     });
 }
 
@@ -353,13 +407,17 @@ export async function loadDocs(): Promise<DocRoot> {
     const path = resolve(__dirname, `docs-${version}.json`);
 
     if (!version) {
-        console.error(`Must specify "VERSION" env variable eg. "VERSION=16.6.0"`);
+        console.error(
+            `Must specify "VERSION" env variable eg. "VERSION=16.6.0"`,
+        );
         process.exit(1);
     }
 
     if (!existsSync(path)) {
         console.log("Downloading docs...");
-        const data = await simpleHTTPGet(`https://nodejs.org/dist/v${version}/docs/api/all.json`);
+        const data = await simpleHTTPGet(
+            `https://nodejs.org/dist/v${version}/docs/api/all.json`,
+        );
         console.log("Docs downloaded");
         docs = JSON.parse(data);
         writeFileSync(path, JSON.stringify(docs));

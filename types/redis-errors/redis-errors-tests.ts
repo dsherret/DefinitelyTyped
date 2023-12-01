@@ -1,4 +1,10 @@
-import { AbortError, InterruptError, ParserError, RedisError, ReplyError } from "redis-errors";
+import {
+    AbortError,
+    InterruptError,
+    ParserError,
+    RedisError,
+    ReplyError,
+} from "redis-errors";
 
 const err = new RedisError("some error");
 

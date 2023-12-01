@@ -16,8 +16,7 @@ class TestImageMagnify extends React.Component {
                     width: 1200,
                     height: 1800,
                 }}
-            >
-            </ReactImageMagnify>
+            ></ReactImageMagnify>
         );
     }
 }
@@ -26,7 +25,10 @@ const App: React.FC = () => {
     return (
         <div>
             <ReactImageMagnify
-                enlargedImageContainerDimensions={{ width: "100%", height: "100%" }}
+                enlargedImageContainerDimensions={{
+                    width: "100%",
+                    height: "100%",
+                }}
                 smallImage={{
                     alt: "Testing",
                     isFluidWidth: false,
@@ -39,8 +41,7 @@ const App: React.FC = () => {
                     height: 1200,
                     src: "https://ethanselzer.github.io/react-image-magnify/static/media/wristwatch_1200.c9182206.jpg",
                 }}
-            >
-            </ReactImageMagnify>
+            ></ReactImageMagnify>
         </div>
     );
 };

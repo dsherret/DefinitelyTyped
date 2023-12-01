@@ -65,7 +65,10 @@ export interface Spreadsheet {
  * }
  * ```
  */
-export function getWorksheet(spreadsheetId: string, worksheetTitle: string): Promise<Worksheet>;
+export function getWorksheet(
+    spreadsheetId: string,
+    worksheetTitle: string,
+): Promise<Worksheet>;
 
 /*
  * Returns the contents of a worksheet, specified by its ID.
@@ -91,7 +94,10 @@ export function getWorksheet(spreadsheetId: string, worksheetTitle: string): Pro
  * }
  * ```
  */
-export function getWorksheetById(spreadsheetId: string, worksheetId: string): Promise<WorksheetFromId>;
+export function getWorksheetById(
+    spreadsheetId: string,
+    worksheetId: string,
+): Promise<WorksheetFromId>;
 
 /*
  * Returns information about a spreadsheet including a list of worksheets.

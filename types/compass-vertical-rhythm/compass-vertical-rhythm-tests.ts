@@ -1,5 +1,9 @@
 import compassVerticalRhythm = require("compass-vertical-rhythm");
-import { Options, VerticalRhythm, VerticalRhythmStyles } from "compass-vertical-rhythm";
+import {
+    Options,
+    VerticalRhythm,
+    VerticalRhythmStyles,
+} from "compass-vertical-rhythm";
 
 // $ExpectType VerticalRhythm
 compassVerticalRhythm({});

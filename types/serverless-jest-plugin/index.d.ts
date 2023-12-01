@@ -11,7 +11,11 @@ declare class ServerlessJestPlugin implements Plugin {
 }
 
 declare namespace ServerlessJestPlugin {
-    function getWrapper(modName: string, modPath: string, handler: string): lw.Wrapped<any, any>;
+    function getWrapper(
+        modName: string,
+        modPath: string,
+        handler: string,
+    ): lw.Wrapped<any, any>;
 
     const lambdaWrapper: typeof lw;
 }

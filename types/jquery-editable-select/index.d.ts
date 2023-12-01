@@ -31,13 +31,17 @@ interface JQuery {
      *
      * @param options Options setting the editable select behavior
      */
-    editableSelect(options?: JQueryEditableSelect.EditableSelectOptions): JQuery;
+    editableSelect(
+        options?: JQueryEditableSelect.EditableSelectOptions,
+    ): JQuery;
     /**
      * Manually shows/hide/filters/clears/destorys the dropdown list.
      *
      * @param action Action to apply
      */
-    editableSelect(action: "show" | "hide" | "filter" | "clear" | "destroy"): void;
+    editableSelect(
+        action: "show" | "hide" | "filter" | "clear" | "destroy",
+    ): void;
     /**
      * Manually sets the value of the text field to the value of the $element passed as parameter.
      *

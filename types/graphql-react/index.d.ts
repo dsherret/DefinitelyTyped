@@ -16,13 +16,11 @@ export interface GraphQLCacheValue<T> {
     fetchError: null | string;
     httpError: null | HttpError;
     parseError: null | string;
-    graphQLErrors:
-        | null
-        | Array<{
-            message: string;
-            path: string[];
-            locations: Array<{ column: number; line: number }>;
-        }>;
+    graphQLErrors: null | Array<{
+        message: string;
+        path: string[];
+        locations: Array<{ column: number; line: number }>;
+    }>;
     data: T;
 }
 

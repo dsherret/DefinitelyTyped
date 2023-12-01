@@ -7,5 +7,8 @@ import * as ESTree from "estree";
  * @param ast [ESTree.Expression] An esprima expression derived from parse.body[].expression
  * @param vars Named variables, objects or functions which may be referenced in the expression.
  */
-declare function evaluate(ast: ESTree.Expression, vars: { [name: string]: any }): any;
+declare function evaluate(
+    ast: ESTree.Expression,
+    vars: { [name: string]: any },
+): any;
 export = evaluate;

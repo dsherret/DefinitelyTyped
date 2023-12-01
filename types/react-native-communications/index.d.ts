@@ -8,5 +8,8 @@ export function email(
     body: string | null,
 ): void;
 export function text(phoneNumber?: string | null, body?: string | null): void;
-export function textWithoutEncoding(phoneNumber?: string | null, body?: string | null): void;
+export function textWithoutEncoding(
+    phoneNumber?: string | null,
+    body?: string | null,
+): void;
 export function web(address?: string | null): void;

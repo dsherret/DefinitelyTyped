@@ -15,6 +15,9 @@ declare namespace gh {
     }
 }
 
-declare function gh(url: string | { url: string }, options?: gh.Options): gh.Result | null;
+declare function gh(
+    url: string | { url: string },
+    options?: gh.Options,
+): gh.Result | null;
 
 export = gh;

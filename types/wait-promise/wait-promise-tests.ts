@@ -19,9 +19,6 @@ async function testExamples() {
             .and(exampleVoidFn)
             .until(() => true),
     ];
-    await wait
-        .every(500)
-        .and(exampleVoidFn)
-        .forward();
+    await wait.every(500).and(exampleVoidFn).forward();
     await wait.sleep(200);
 }

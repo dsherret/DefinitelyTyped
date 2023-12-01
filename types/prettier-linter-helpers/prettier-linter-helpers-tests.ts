@@ -4,7 +4,7 @@ declare function log(...args: Array<string | number>): void;
 
 showInvisibles(" some string ");
 
-generateDifferences("abc", "def").forEach(difference => {
+generateDifferences("abc", "def").forEach((difference) => {
     const { operation, offset, deleteText = "", insertText = "" } = difference;
 
     switch (operation) {

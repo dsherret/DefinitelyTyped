@@ -9,7 +9,12 @@ export default class Behaviour {
     /**
      * Constructs a Behaviour instance.
      */
-    constructor(life?: number, easing?: EasingFunction, type?: BEHAVIOUR_TYPES, isEnabled?: boolean);
+    constructor(
+        life?: number,
+        easing?: EasingFunction,
+        type?: BEHAVIOUR_TYPES,
+        isEnabled?: boolean,
+    );
 
     id: string;
     age: number;
@@ -44,7 +49,11 @@ export default class Behaviour {
      * Internally calls the mutate method to change properties on the target
      * Will not do so if the behaviour is disabled
      */
-    applyBehaviour(target: Particle | Emitter, time: number, index: number): void;
+    applyBehaviour(
+        target: Particle | Emitter,
+        time: number,
+        index: number,
+    ): void;
     /**
      * Change the target's properties according to specific behaviour logic.
      */

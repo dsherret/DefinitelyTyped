@@ -1,4 +1,7 @@
-declare function globParent(pattern: string, options?: globParent.Options): string;
+declare function globParent(
+    pattern: string,
+    options?: globParent.Options,
+): string;
 
 declare namespace globParent {
     interface Options {

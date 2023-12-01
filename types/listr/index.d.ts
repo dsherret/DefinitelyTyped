@@ -5,8 +5,17 @@ import * as stream from "stream";
 
 declare namespace Listr {
     type ListrContext = any;
-    type ListrRendererValue<Ctx> = "silent" | "default" | "verbose" | ListrRendererClass<Ctx>;
-    type ListrTaskResult<Ctx> = string | Promise<any> | Listr<Ctx> | stream.Readable | Observable<any>;
+    type ListrRendererValue<Ctx> =
+        | "silent"
+        | "default"
+        | "verbose"
+        | ListrRendererClass<Ctx>;
+    type ListrTaskResult<Ctx> =
+        | string
+        | Promise<any>
+        | Listr<Ctx>
+        | stream.Readable
+        | Observable<any>;
 
     interface ListrOptions<Ctx = ListrContext> {
         concurrent?: boolean | number | undefined;
@@ -23,19 +32,37 @@ declare namespace Listr {
     interface ListrTask<Ctx = ListrContext> {
         title: string;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        task: (ctx: Ctx, task: ListrTaskWrapper<Ctx>) => void | ListrTaskResult<Ctx>;
+        task: (
+            ctx: Ctx,
+            task: ListrTaskWrapper<Ctx>,
+        ) => void | ListrTaskResult<Ctx>;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        skip?: ((ctx: Ctx) => void | boolean | string | Promise<undefined | boolean | string>) | undefined;
-        enabled?: ((ctx: Ctx) => boolean | Promise<boolean> | Observable<boolean>) | undefined;
+        skip?:
+            | ((
+                  ctx: Ctx,
+              ) =>
+                  | void
+                  | boolean
+                  | string
+                  | Promise<undefined | boolean | string>)
+            | undefined;
+        enabled?:
+            | ((ctx: Ctx) => boolean | Promise<boolean> | Observable<boolean>)
+            | undefined;
     }
 
     interface ListrTaskObject<Ctx> extends Observable<ListrEvent> {
         title: string;
         output?: string | undefined;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        task: (ctx: Ctx, task: ListrTaskWrapper<Ctx>) => void | ListrTaskResult<Ctx>;
+        task: (
+            ctx: Ctx,
+            task: ListrTaskWrapper<Ctx>,
+        ) => void | ListrTaskResult<Ctx>;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        skip: (ctx: Ctx) => void | boolean | string | Promise<undefined | boolean | string>;
+        skip: (
+            ctx: Ctx,
+        ) => void | boolean | string | Promise<undefined | boolean | string>;
         subtasks: ReadonlyArray<ListrTaskWrapper<Ctx>>;
         state: string;
         check: (ctx: Ctx) => void;
@@ -66,16 +93,24 @@ declare namespace Listr {
     }
     interface ListrRendererClass<Ctx> {
         nonTTY: boolean;
-        new(tasks: ReadonlyArray<ListrTaskObject<Ctx>>, options: ListrOptions<Ctx>): ListrRenderer;
+        new (
+            tasks: ReadonlyArray<ListrTaskObject<Ctx>>,
+            options: ListrOptions<Ctx>,
+        ): ListrRenderer;
     }
 }
 
 declare class Listr<Ctx = Listr.ListrContext> {
-    constructor(tasks?: ReadonlyArray<Listr.ListrTask<Ctx>>, options?: Listr.ListrOptions<Ctx>);
+    constructor(
+        tasks?: ReadonlyArray<Listr.ListrTask<Ctx>>,
+        options?: Listr.ListrOptions<Ctx>,
+    );
     constructor(options?: Listr.ListrOptions<Ctx>);
     tasks: ReadonlyArray<Listr.ListrTaskWrapper<Ctx>>;
     setRenderer(value: Listr.ListrRendererValue<Ctx>): void;
-    add(tasks: Listr.ListrTask<Ctx> | ReadonlyArray<Listr.ListrTask<Ctx>>): void;
+    add(
+        tasks: Listr.ListrTask<Ctx> | ReadonlyArray<Listr.ListrTask<Ctx>>,
+    ): void;
     render(): void;
     run(ctx?: Ctx): Promise<Ctx>;
 }

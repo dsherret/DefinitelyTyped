@@ -336,7 +336,12 @@ declare namespace my {
         /** 选择类型，值为single（单选）或者 multi（多选） */
         chooseType: "single" | "multi" | string;
         /** 包含手机通讯录联系人的模式：默认为不包含（none）、或者仅仅包含双向通讯录联系人（known）、或者包含手机通讯录联系人（all） */
-        includeMobileContactMode?: "none" | "known" | "all" | string | undefined;
+        includeMobileContactMode?:
+            | "none"
+            | "known"
+            | "all"
+            | string
+            | undefined;
         /** 是否包含自己 */
         includeMe?: boolean | undefined;
         /** 最大选择人数，仅 chooseType 为 multi 时才有效 */
@@ -344,9 +349,7 @@ declare namespace my {
         /** 多选达到上限的文案，仅 chooseType 为 multi 时才有效 */
         multiChooseMaxTips?: string | undefined;
 
-        success(result: {
-            contactsDicArray: ContactsDic[];
-        }): void;
+        success(result: { contactsDicArray: ContactsDic[] }): void;
     }
     /**
      * 唤起选人组件，默认只包含支付宝联系人，可以通过修改参数包含手机通讯录联系人或者双向通讯录联系人。
@@ -385,7 +388,12 @@ declare namespace my {
          * 4. yyyy-MM （最低基础库：1.1.1, 可用 canIUse('datePicker.object.format.yyyy-MM') 判断）
          * 5. yyyy （最低基础库：1.1.1,可用 canIUse('datePicker.object.format.yyyy') 判断）
          */
-        format: "yyyy-MM-dd" | "HH:mm" | "yyyy-MM-dd HH:mm" | "yyyy-MM" | "yyyy";
+        format:
+            | "yyyy-MM-dd"
+            | "HH:mm"
+            | "yyyy-MM-dd HH:mm"
+            | "yyyy-MM"
+            | "yyyy";
         /** 初始选择的日期时间，默认当前时间 */
         currentDate: string;
         /** 最小日期时间 */
@@ -446,7 +454,9 @@ declare namespace my {
      *
      * 注意: export 方法每次调用后会清掉之前的动画操作
      */
-    function createAnimation(options: Partial<CreateAnimationOptions>): Animation;
+    function createAnimation(
+        options: Partial<CreateAnimationOptions>,
+    ): Animation;
     /** 动画实例可以调用以下方法来描述动画，调用结束后会返回自身，支持链式调用的写法。 */
     interface Animation {
         /**
@@ -602,11 +612,21 @@ declare namespace my {
          * textAlign 是 Canvas 2D API 描述绘制文本时，文本的对齐方式的属性。注意，该对齐是基于
          * CanvasRenderingContext2D.fillText 方法的x的值。所以如果 textAlign="center"，那么该文本将画在 x-50%*width
          */
-        setTextAlign(textAlign: "left" | "right" | "center" | "start" | "end"): void;
+        setTextAlign(
+            textAlign: "left" | "right" | "center" | "start" | "end",
+        ): void;
         /**
          * textBaseline 是 Canvas 2D API 描述绘制文本时，当前文本基线的属性。
          */
-        setTextBaseline(textBaseline: "top" | "hanging" | "middle" | "alphabetic" | "ideographic" | "bottom"): void;
+        setTextBaseline(
+            textBaseline:
+                | "top"
+                | "hanging"
+                | "middle"
+                | "alphabetic"
+                | "ideographic"
+                | "bottom",
+        ): void;
         /**
          * 设置填充色。
          *
@@ -627,7 +647,12 @@ declare namespace my {
          * @param blur 0~100 阴影的模糊级别，值越大越模糊
          * @param color 阴影颜色
          */
-        setShadow(offsetX: number, offsetY: number, blur: number, color: Color): void;
+        setShadow(
+            offsetX: number,
+            offsetY: number,
+            blur: number,
+            color: Color,
+        ): void;
 
         /**
          * 创建一个线性的渐变色。
@@ -637,7 +662,12 @@ declare namespace my {
          * @param x1 终点 x 坐标
          * @param y1 终点 y 坐标
          */
-        createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasAction;
+        createLinearGradient(
+            x0: number,
+            y0: number,
+            x1: number,
+            y1: number,
+        ): CanvasAction;
 
         /**
          * 创建一个圆形的渐变色。
@@ -768,7 +798,13 @@ declare namespace my {
          * @param sAngle
          * @param eAngle
          */
-        arc(x: number, y: number, r: number, sAngle: number, eAngle: number): void;
+        arc(
+            x: number,
+            y: number,
+            r: number,
+            sAngle: number,
+            eAngle: number,
+        ): void;
 
         /**
          * 创建三次方贝塞尔曲线路径。
@@ -780,7 +816,14 @@ declare namespace my {
          * @param x
          * @param y
          */
-        bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+        bezierCurveTo(
+            cp1x: number,
+            cp1y: number,
+            cp2x: number,
+            cp2y: number,
+            x: number,
+            y: number,
+        ): void;
 
         /**
          * 将当前创建的路径设置为当前剪切路径。
@@ -845,7 +888,13 @@ declare namespace my {
          * @param width 图像宽度
          * @param height 图像高度
          */
-        drawImage(imageResource: string, x: number, y: number, width: number, height: number): void;
+        drawImage(
+            imageResource: string,
+            x: number,
+            y: number,
+            width: number,
+            height: number,
+        ): void;
 
         /**
          * 设置全局画笔透明度。
@@ -1230,7 +1279,9 @@ declare namespace my {
      * 打开当前用户的某个商户的券列表
      * 有关支付宝卡包详细功能，见[支付宝卡包产品介绍](https://docs.alipay.com/mini/introduce/voucher)
      */
-    function openMerchantVoucherList(options: OpenMerchantVoucherListOptions): void;
+    function openMerchantVoucherList(
+        options: OpenMerchantVoucherListOptions,
+    ): void;
 
     interface OpenVoucherDetailOptions1 extends BaseOptions {
         passId: string; // 券实例Id，调用券发放接口可以获取该参数（如果传入了partnerId和serialNumber则不需传入）
@@ -1243,7 +1294,9 @@ declare namespace my {
      * 打开当前用户的某张券的详情页（非口碑）
      * 有关支付宝卡包详细功能，见[支付宝卡包产品介绍](https://docs.alipay.com/mini/introduce/voucher)
      */
-    function openVoucherDetail(options: OpenVoucherDetailOptions1 | OpenVoucherDetailOptions2): void;
+    function openVoucherDetail(
+        options: OpenVoucherDetailOptions1 | OpenVoucherDetailOptions2,
+    ): void;
 
     interface OpenKBVoucherDetailOptions1 extends BaseOptions {
         passId: string; // 卡实例Id（如果传入了partnerId和serialNumber则不需传入）
@@ -1256,7 +1309,9 @@ declare namespace my {
      * 打开当前用户的某张券的详情页（口碑）
      * 有关支付宝卡包详细功能，见[支付宝卡包产品介绍](https://docs.alipay.com/mini/introduce/voucher)
      */
-    function openKBVoucherDetail(options: OpenKBVoucherDetailOptions1 | OpenKBVoucherDetailOptions2): void;
+    function openKBVoucherDetail(
+        options: OpenKBVoucherDetailOptions1 | OpenKBVoucherDetailOptions2,
+    ): void;
 
     /**
      * 打开支付宝票列表。
@@ -1271,7 +1326,9 @@ declare namespace my {
      * 打开某个商户的票列表
      * 有关支付宝卡包详细功能，见[支付宝卡包产品介绍](https://docs.alipay.com/mini/introduce/voucher)
      */
-    function openMerchantTicketList(options: OpenMerchantTicketListOptions): void;
+    function openMerchantTicketList(
+        options: OpenMerchantTicketListOptions,
+    ): void;
 
     interface OpenTicketDetailOptions1 extends BaseOptions {
         passId: string; // 卡实例Id（如果传入了partnerId和serialNumber则不需要传入passId）
@@ -1285,7 +1342,9 @@ declare namespace my {
      *
      * 有关支付宝卡包详细功能，见[支付宝卡包产品介绍](https://docs.alipay.com/mini/introduce/voucher)
      */
-    function openTicketDetail(options: OpenTicketDetailOptions1 | OpenTicketDetailOptions2): void;
+    function openTicketDetail(
+        options: OpenTicketDetailOptions1 | OpenTicketDetailOptions2,
+    ): void;
     // #endregion
 
     // #region 会员开卡授权 https://docs.alipay.com/mini/api/add-card-auth
@@ -1506,7 +1565,13 @@ declare namespace my {
     // #endregion
 
     // #region 文本风险识别 https://docs.alipay.com/mini/api/text-identification
-    type TextRiskIdentificationType = "keyword" | "0" | "1" | "2" | "3" | string;
+    type TextRiskIdentificationType =
+        | "keyword"
+        | "0"
+        | "1"
+        | "2"
+        | "3"
+        | string;
     interface TextRiskIdentificationOptions extends BaseOptions {
         /**
          * 需要进行风险识别的文本内容
@@ -1546,7 +1611,9 @@ declare namespace my {
     /**
      * 文本风险识别， **支付宝客户端10.1.10及以上版本支持。**详细接入参考[指引](https://docs.alipay.com/mini/introduce/text-identification)
      */
-    function textRiskIdentification(options: TextRiskIdentificationOptions): void;
+    function textRiskIdentification(
+        options: TextRiskIdentificationOptions,
+    ): void;
     // #endregion
 
     // #region 小程序跳转 https://docs.alipay.com/mini/api/open-miniprogram
@@ -1582,7 +1649,9 @@ declare namespace my {
     /**
      * 跳转回上一个小程序，只有当另一个小程序跳转到当前小程序时才会能调用成功
      */
-    function navigateBackMiniProgram(options: NavigateBackMiniProgramOptions): void;
+    function navigateBackMiniProgram(
+        options: NavigateBackMiniProgramOptions,
+    ): void;
     // #endregion
 
     // #region webview组件控制 https://docs.alipay.com/mini/api/webview-context
@@ -1673,7 +1742,9 @@ declare namespace my {
      * 保存在线图片到手机相册。文档详见(https://opendocs.alipay.com/mini/api/media/image/my.saveImagetophotosalbum)
      * @param options
      */
-    function saveImageToPhotosAlbum(options: SaveImageToPhotosAlbumOptions): void;
+    function saveImageToPhotosAlbum(
+        options: SaveImageToPhotosAlbumOptions,
+    ): void;
 
     interface CompressImageOptions extends BaseOptions {
         /**
@@ -1955,18 +2026,20 @@ declare namespace my {
         /**
          * 需要街道级别逆地理的才会有的字段,街道门牌信息，结构是：{ street, number } (type > 1生效)
          */
-        streetNumber?: {
-            street: string;
-            number: string;
-        } | undefined;
+        streetNumber?:
+            | {
+                  street: string;
+                  number: string;
+              }
+            | undefined;
         /**
          * 需要POI级别逆地理的才会有的字段, 定位点附近的 POI 信息，结构是：{ name, address } （type > 2生效）
          */
         pois?:
             | Array<{
-                name: string;
-                address: string;
-            }>
+                  name: string;
+                  address: string;
+              }>
             | undefined;
     }
     interface GetLocationOptions extends BaseOptions {
@@ -2287,7 +2360,14 @@ declare namespace my {
             networkType: NetworkType;
         }): void;
     }
-    type NetworkType = "UNKNOWN" | "NOTREACHABLE" | "WIFI" | "3G" | "2G" | "4G" | "WWAN";
+    type NetworkType =
+        | "UNKNOWN"
+        | "NOTREACHABLE"
+        | "WIFI"
+        | "3G"
+        | "2G"
+        | "4G"
+        | "WWAN";
     function getNetworkType(options: GetNetworkTypeOptions): void;
 
     /**
@@ -2310,9 +2390,7 @@ declare namespace my {
 
     // #region 剪贴板 https://docs.alipay.com/mini/api/clipboard
     interface GetClipboardOptions extends BaseOptions {
-        success?(res: {
-            text: string;
-        }): void;
+        success?(res: { text: string }): void;
     }
     function getClipboard(options: GetClipboardOptions): void;
 
@@ -2501,7 +2579,9 @@ declare namespace my {
     /**
      * 初始化小程序蓝牙模块，生效周期为调用 my.openBluetoothAdapter 至调用 my.closeBluetoothAdapter 或小程序被销毁为止。 在小程序蓝牙适配器模块生效期间，开发者可以正常调用下面的小程序API，并会收到蓝牙模块相关的 on 事件回调。
      */
-    function openBluetoothAdapter(options: Partial<OpenBluetoothAdapterOptions>): void;
+    function openBluetoothAdapter(
+        options: Partial<OpenBluetoothAdapterOptions>,
+    ): void;
 
     interface CloseBluetoothAdapterOptions extends BaseOptions {
         success(res: any): void;
@@ -2527,7 +2607,9 @@ declare namespace my {
     /**
      * 获取本机蓝牙适配器状态
      */
-    function getBluetoothAdapterState(options: GetBluetoothAdapterStateOptions): void;
+    function getBluetoothAdapterState(
+        options: GetBluetoothAdapterStateOptions,
+    ): void;
 
     interface StartBluetoothDevicesDiscoveryOptions extends BaseOptions {
         /**
@@ -2547,7 +2629,9 @@ declare namespace my {
     /**
      * 开始搜寻附近的蓝牙外围设备。搜索结果将在 my.onBluetoothDeviceFound 事件中返回。
      */
-    function startBluetoothDevicesDiscovery(options: StartBluetoothDevicesDiscoveryOptions): void;
+    function startBluetoothDevicesDiscovery(
+        options: StartBluetoothDevicesDiscoveryOptions,
+    ): void;
 
     interface StopBluetoothDevicesDiscoveryOptions extends BaseOptions {
         success(res: ErrMsgResponse): void;
@@ -2555,7 +2639,9 @@ declare namespace my {
     /**
      * 停止搜寻附近的蓝牙外围设备。请在确保找到需要连接的设备后调用该方法停止搜索。
      */
-    function stopBluetoothDevicesDiscovery(options: StopBluetoothDevicesDiscoveryOptions): void;
+    function stopBluetoothDevicesDiscovery(
+        options: StopBluetoothDevicesDiscoveryOptions,
+    ): void;
 
     /**
      * 蓝牙设备信息
@@ -2613,7 +2699,9 @@ declare namespace my {
     /**
      * 获取处于已连接状态的设备。
      */
-    function getConnectedBluetoothDevices(options: GetConnectedBluetoothDevicesOptions): void;
+    function getConnectedBluetoothDevices(
+        options: GetConnectedBluetoothDevicesOptions,
+    ): void;
 
     interface BLEDeviceOptions extends BaseOptions {
         /**
@@ -2692,7 +2780,9 @@ declare namespace my {
     /**
      * 读取低功耗蓝牙设备特征值中的数据。调用后在 my.onBLECharacteristicValueChange() 事件中接收数据返回。
      */
-    function readBLECharacteristicValue(options: ReadBLECharacteristicValueOptions): void;
+    function readBLECharacteristicValue(
+        options: ReadBLECharacteristicValueOptions,
+    ): void;
 
     interface NotifyBLECharacteristicValueChangeOptions extends BaseOptions {
         /**
@@ -2716,7 +2806,9 @@ declare namespace my {
          */
         state?: boolean | undefined;
     }
-    function notifyBLECharacteristicValueChange(optons: NotifyBLECharacteristicValueChangeOptions): void;
+    function notifyBLECharacteristicValueChange(
+        optons: NotifyBLECharacteristicValueChangeOptions,
+    ): void;
 
     interface NotifyBLECharacteristicValueChangedOptions extends BaseOptions {
         /**
@@ -2744,7 +2836,9 @@ declare namespace my {
     /**
      * 启用低功耗蓝牙设备特征值变化时的 notify 功能。注意：设备的特征值必须支持 notify/indicate 才可以成功调用，具体参照 characteristic 的 properties 属性 另外，必须先启用 notify 才能监听到设备 characteristicValueChange 事件。
      */
-    function notifyBLECharacteristicValueChanged(options: NotifyBLECharacteristicValueChangedOptions): void;
+    function notifyBLECharacteristicValueChanged(
+        options: NotifyBLECharacteristicValueChangedOptions,
+    ): void;
 
     interface GetBLEDeviceServicesOptions extends BaseOptions {
         /**
@@ -2829,17 +2923,19 @@ declare namespace my {
     /**
      * 获取蓝牙设备所有 characteristic（特征值）
      */
-    function getBLEDeviceCharacteristics(options: GetBLEDeviceCharacteristicsOptions): void;
+    function getBLEDeviceCharacteristics(
+        options: GetBLEDeviceCharacteristicsOptions,
+    ): void;
 
     interface OnBluetoothDeviceFoundOptions extends BaseOptions {
-        success?(res: {
-            devices: BluetoothDevice[];
-        }): void;
+        success?(res: { devices: BluetoothDevice[] }): void;
     }
     /**
      * 搜索到新的蓝牙设备时触发此事件。
      */
-    function onBluetoothDeviceFound(options: OnBluetoothDeviceFoundOptions): void;
+    function onBluetoothDeviceFound(
+        options: OnBluetoothDeviceFoundOptions,
+    ): void;
 
     /**
      * 移除寻找到新的蓝牙设备事件的监听。
@@ -2869,7 +2965,9 @@ declare namespace my {
     /**
      * 监听低功耗蓝牙设备的特征值变化的事件。
      */
-    function onBLECharacteristicValueChange(options: OnBLECharacteristicValueChangeOptions): void;
+    function onBLECharacteristicValueChange(
+        options: OnBLECharacteristicValueChangeOptions,
+    ): void;
 
     interface OnBLEConnectionStateChangedOptions extends BaseOptions {
         success?(res: {
@@ -2891,7 +2989,9 @@ declare namespace my {
     /**
      * 监听低功耗蓝牙连接的错误事件，包括设备丢失，连接异常断开等。
      */
-    function onBLEConnectionStateChanged(options: OnBLEConnectionStateChangedOptions): void;
+    function onBLEConnectionStateChanged(
+        options: OnBLEConnectionStateChangedOptions,
+    ): void;
 
     /**
      * 移除低功耗蓝牙连接状态变化事件的监听。
@@ -2911,7 +3011,9 @@ declare namespace my {
     /**
      * 监听本机蓝牙状态变化的事件。
      */
-    function onBluetoothAdapterStateChange(callback: (res: BluetoothAdapterState) => void): void;
+    function onBluetoothAdapterStateChange(
+        callback: (res: BluetoothAdapterState) => void,
+    ): void;
 
     /**
      * 移除本机蓝牙状态变化的事件的监听。
@@ -2977,9 +3079,7 @@ declare namespace my {
     function getBeacons(options: GetBeaconsOptions): void;
 
     interface BeaconUpdateOptions extends BaseOptions {
-        success?(res: {
-            beacons: Beacon[];
-        }): void;
+        success?(res: { beacons: Beacon[] }): void;
     }
     /**
      * 监听 iBeacon 设备的更新事件
@@ -3198,10 +3298,7 @@ declare namespace my {
          * @param data object 以 key，value 的形式表示将 this.data 中的 key 对应的值改变成 value
          * @param [callback] callback 是一个回调函数，在这次setData对界面渲染完毕后调用
          */
-        setData(
-            data: any,
-            callback?: () => void,
-        ): void;
+        setData(data: any, callback?: () => void): void;
         hasBehavior(behavior: any): boolean;
         triggerEvent(
             name: string,

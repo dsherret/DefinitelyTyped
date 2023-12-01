@@ -22,9 +22,13 @@ declare class DataSource {
     private specializeFiltersAndColumns_;
     getQuery(filters: DataSourceFilters, columns: DataSourceColumns): string;
     mountDataSet(ds: DataSet): DataSet;
-    createFilters(jsonFilters: DataSourceFilterDef[] | any[]): DataSourceFilters;
+    createFilters(
+        jsonFilters: DataSourceFilterDef[] | any[],
+    ): DataSourceFilters;
     createFiltersFromMap(filtersMap: { [x: string]: any }): DataSourceFilters;
-    createColumns(jsonColumns: DataSourceColumnDef[] | any[]): DataSourceColumns;
+    createColumns(
+        jsonColumns: DataSourceColumnDef[] | any[],
+    ): DataSourceColumns;
     private checkFilterClassKey_;
     private checkFilters_;
     private validadeGetQueryReturn_;
@@ -42,7 +46,14 @@ declare class DataSource {
     ): DataSourceResult;
 }
 declare namespace DataSource {
-    export { ColumnOps, DataSourceColumnDef, DataSourceDef, DataSourceFilterDef, list, loadDefinitionFile };
+    export {
+        ColumnOps,
+        DataSourceColumnDef,
+        DataSourceDef,
+        DataSourceFilterDef,
+        list,
+        loadDefinitionFile,
+    };
 }
 type DataSourceDef = import("./DataSourceDef");
 import DataSourceFilters = require("./DataSourceFilters.js");

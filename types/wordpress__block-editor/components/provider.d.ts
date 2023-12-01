@@ -35,7 +35,9 @@ declare namespace BlockEditorProvider {
          * except for the first.
          */
         onInput?(blocks: BlockInstance[]): void;
-        settings?: Partial<EditorSettings & EditorBlockListSettings> | undefined;
+        settings?:
+            | Partial<EditorSettings & EditorBlockListSettings>
+            | undefined;
         useSubRegistry?: boolean | undefined;
         /**
          * The current array of blocks.

@@ -45,17 +45,41 @@ export namespace Submodule {
 }
 
 export class Submodule {
-    static addSetup(repo: Repository, url: string, path: string, useGitLink: number): Promise<Submodule>;
+    static addSetup(
+        repo: Repository,
+        url: string,
+        path: string,
+        useGitLink: number,
+    ): Promise<Submodule>;
     static foreach(repo: Repository, callback?: Function): Promise<number>;
     static lookup(repo: Repository, name: string): Promise<Submodule>;
     static resolveUrl(repo: Repository, url: string): Promise<Buf>;
     static setBranch(repo: Repository, name: string, branch: string): number;
-    static setFetchRecurseSubmodules(repo: Repository, name: string, fetchRecurseSubmodules: number): number;
-    static setIgnore(repo: Repository, name: string, ignore: number): Promise<number>;
-    static setUpdate(repo: Repository, name: string, update: number): Promise<number>;
+    static setFetchRecurseSubmodules(
+        repo: Repository,
+        name: string,
+        fetchRecurseSubmodules: number,
+    ): number;
+    static setIgnore(
+        repo: Repository,
+        name: string,
+        ignore: number,
+    ): Promise<number>;
+    static setUpdate(
+        repo: Repository,
+        name: string,
+        update: number,
+    ): Promise<number>;
     static setUrl(repo: Repository, name: string, url: string): Promise<number>;
-    static status(repo: Repository, name: string, ignore: number): Promise<number>;
-    static updateInitOptions(opts: SubmoduleUpdateOptions, version: number): number;
+    static status(
+        repo: Repository,
+        name: string,
+        ignore: number,
+    ): Promise<number>;
+    static updateInitOptions(
+        opts: SubmoduleUpdateOptions,
+        version: number,
+    ): number;
 
     addFinalize(): Promise<number>;
     addToIndex(writeIndex: number): Promise<number>;

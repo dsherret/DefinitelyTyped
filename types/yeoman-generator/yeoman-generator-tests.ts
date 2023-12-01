@@ -7,36 +7,34 @@ import Storage = require("yeoman-generator/lib/util/storage");
 
 class MyES2015GeneratorWithFeatures extends Base {
     constructor(args: any, options: Base.GeneratorOptions) {
-        super(args, options, { customInstallTask: true, customCommitTask: true });
+        super(args, options, {
+            customInstallTask: true,
+            customCommitTask: true,
+        });
     }
 
-    customInstallTask() {
-    }
+    customInstallTask() {}
 
-    customCommitTask() {
-    }
+    customCommitTask() {}
 }
 
 class MyES2015Generator extends Base {}
 
-const generator = new MyES2015Generator(
-    ["arg1", "arg2"],
-    {
-        opt1: "foo",
-        opt2: 3,
-        opt3: false,
-        customPriorities: [
-            {
-                priorityName: "build",
-                before: "writing",
-            },
-            {
-                priorityName: "cleanup",
-                before: "end",
-            },
-        ],
-    },
-);
+const generator = new MyES2015Generator(["arg1", "arg2"], {
+    opt1: "foo",
+    opt2: 3,
+    opt3: false,
+    customPriorities: [
+        {
+            priorityName: "build",
+            before: "writing",
+        },
+        {
+            priorityName: "cleanup",
+            before: "end",
+        },
+    ],
+});
 
 const eventEmitter: EventEmitter = generator;
 
@@ -59,12 +57,10 @@ generator._templateData("lint.ruleset");
 
 generator.queueBasicTasks();
 generator.queueMethod(() => {});
-generator.queueTask(
-    {
-        method: () => {},
-        taskName: "nothing",
-    },
-);
+generator.queueTask({
+    method: () => {},
+    taskName: "nothing",
+});
 generator.queueTaskGroup(
     {
         install: () => {},
@@ -138,17 +134,23 @@ async function install() {
     generator.scheduleInstallTask("installer", "pkg");
     generator.scheduleInstallTask("installer", ["pkg1", "pkg2"]);
     generator.scheduleInstallTask("installer", "pkg", {});
-    generator.scheduleInstallTask("installer", "pkg", { "custom-option": 3 }, { cwd: "." });
+    generator.scheduleInstallTask(
+        "installer",
+        "pkg",
+        { "custom-option": 3 },
+        { cwd: "." },
+    );
 }
 
 const composed1: Base = generator.composeWith("bootstrap", { sass: true });
-const composed2: Base = generator.composeWith(require.resolve("generator-bootstrap/app/main.js"), { sass: true });
-const composed3: Base = generator.composeWith(
-    {
-        Generator: MyES2015Generator,
-        path: "./my-es2015-generator/lib/generators/app/index.js",
-    },
+const composed2: Base = generator.composeWith(
+    require.resolve("generator-bootstrap/app/main.js"),
+    { sass: true },
 );
+const composed3: Base = generator.composeWith({
+    Generator: MyES2015Generator,
+    path: "./my-es2015-generator/lib/generators/app/index.js",
+});
 // $ExpectType MyES2015Generator
 generator.composeWith("bootstrap", {}, false);
 // $ExpectType MyES2015Generator
@@ -219,19 +221,22 @@ const answers: Promise<Answers> = generator.prompt([]);
 const answers2: Promise<Answers> = generator.prompt([{ store: true }]);
 const answers3: Promise<Answers> = generator.prompt([{ type: "input" }]);
 const answers4: Promise<Answers> = generator.prompt({ type: "input" });
-const answers5: Promise<Answers> = generator.prompt({ type: "input", store: false });
+const answers5: Promise<Answers> = generator.prompt({
+    type: "input",
+    store: false,
+});
 
-generator.registerPriorities(
-    [
-        {
-            priorityName: "cleanup",
-            queueName: "my#cleanup",
-            before: "end",
-        },
-    ],
-);
+generator.registerPriorities([
+    {
+        priorityName: "cleanup",
+        queueName: "my#cleanup",
+        before: "end",
+    },
+]);
 
-generator.registerConfigPrompts([{ storage: generator.config, exportOption: true, type: "input" }]);
+generator.registerConfigPrompts([
+    { storage: generator.config, exportOption: true, type: "input" },
+]);
 generator.queueTransformStream([]);
 
 const rootGeneratorName: string = generator.rootGeneratorName();
@@ -260,10 +265,15 @@ const tPath3: string = generator.templatePath(...["many", "parts"]);
 const usage: string = generator.usage();
 
 generator.copyDestination("LICENSE", "packages/test/LICENSE");
-generator.copyTemplate("LICENSE", "packages/test/LICENSE", {}, {
-    AuthorName: "John Doe",
-    Year: new Date().getFullYear(),
-});
+generator.copyTemplate(
+    "LICENSE",
+    "packages/test/LICENSE",
+    {},
+    {
+        AuthorName: "John Doe",
+        Year: new Date().getFullYear(),
+    },
+);
 generator.deleteDestination(".eslintrc.js");
 generator.readDestination("README.md");
 generator.renderTemplate("package.json", "package.json", "package");

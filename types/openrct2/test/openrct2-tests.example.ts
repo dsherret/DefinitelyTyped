@@ -8,7 +8,7 @@ function register() {
         ui.activateTool({
             id: TOOL_ID,
             cursor: "cross_hair",
-            onDown: e => {
+            onDown: (e) => {
                 if (e.entityId) {
                     getOrOpen(e.entityId);
                 }
@@ -54,7 +54,8 @@ function open() {
                 y: 20,
                 width: 290,
                 height: 575,
-                onClick: (i, c) => console.log(`Clicked item ${i} in column ${c}`),
+                onClick: (i, c) =>
+                    console.log(`Clicked item ${i} in column ${c}`),
             },
         ],
         onClose: () => {
@@ -84,7 +85,8 @@ function open() {
             return;
         }
 
-        const sep = (text: string) => ({ type: "seperator", text } as any as ListViewItemSeperator);
+        const sep = (text: string) =>
+            ({ type: "seperator", text }) as any as ListViewItemSeperator;
 
         let data: ListViewItem[] = [
             sep("Entity"),
@@ -104,7 +106,12 @@ function open() {
                     ["Vehicle object id", car.vehicleObject.toString()],
                     ["Sprite type", car.spriteType.toString()],
                     ["Num. of seats", car.numSeats.toString()],
-                    ["Next car on train", car.nextCarOnTrain == null ? "null" : car.nextCarOnTrain.toString()],
+                    [
+                        "Next car on train",
+                        car.nextCarOnTrain == null
+                            ? "null"
+                            : car.nextCarOnTrain.toString(),
+                    ],
                     ["Next car on ride", car.nextCarOnRide.toString()],
                     ["Previous car on ride", car.previousCarOnRide.toString()],
                     ["Current station", car.currentStation.toString()],
@@ -116,10 +123,18 @@ function open() {
                         "Colours",
                         `body: ${car.colours.body}, trim: ${car.colours.trim}, ternary: ${car.colours.ternary}`,
                     ],
-                    ["Powered acceleration:", car.poweredAcceleration.toString()],
+                    [
+                        "Powered acceleration:",
+                        car.poweredAcceleration.toString(),
+                    ],
                     ["Powered max. speed:", car.poweredMaxSpeed.toString()],
                     ["Status:", car.status.toString()],
-                    ["Peeps:", car.peeps.map(p => (p == null) ? "null" : p.toString()).toString()],
+                    [
+                        "Peeps:",
+                        car.peeps
+                            .map((p) => (p == null ? "null" : p.toString()))
+                            .toString(),
+                    ],
                     ["", ""],
                     [
                         "Track location",
@@ -135,9 +150,18 @@ function open() {
                 data = data.concat([
                     ["", ""],
                     sep("VehicleObject"),
-                    ["Rotation frame mask:", vehicleObject.rotationFrameMask.toString()],
-                    ["Num. of vertical frames:", vehicleObject.numVerticalFrames.toString()],
-                    ["Num. of horizontal frames:", vehicleObject.numHorizontalFrames.toString()],
+                    [
+                        "Rotation frame mask:",
+                        vehicleObject.rotationFrameMask.toString(),
+                    ],
+                    [
+                        "Num. of vertical frames:",
+                        vehicleObject.numVerticalFrames.toString(),
+                    ],
+                    [
+                        "Num. of horizontal frames:",
+                        vehicleObject.numHorizontalFrames.toString(),
+                    ],
                     ["Spacing:", vehicleObject.spacing.toString()],
                     ["Car mass:", vehicleObject.carMass.toString()],
                     ["Tab height:", vehicleObject.tabHeight.toString()],
@@ -145,22 +169,52 @@ function open() {
                     ["", ""],
                     ["Sprite flags:", vehicleObject.spriteFlags.toString()],
                     ["Sprite width:", vehicleObject.spriteWidth.toString()],
-                    ["Sprite height:", vehicleObject.spriteHeightPositive.toString()],
+                    [
+                        "Sprite height:",
+                        vehicleObject.spriteHeightPositive.toString(),
+                    ],
                     ["Animation:", vehicleObject.animation.toString()],
                     ["Flags:", vehicleObject.flags.toString()],
                     // Here are many image id properties not included.
                     ["", ""],
-                    ["Num. of vehicle images:", vehicleObject.noVehicleImages.toString()],
-                    ["Num. of seating rows:", vehicleObject.noSeatingRows.toString()],
-                    ["Spinning inertia:", vehicleObject.spinningInertia.toString()],
-                    ["Spinning friction:", vehicleObject.spinningFriction.toString()],
-                    ["Friction sound id:", vehicleObject.frictionSoundId.toString()],
-                    ["Logflume reverser vehicle:", vehicleObject.logFlumeReverserVehicleType.toString()],
+                    [
+                        "Num. of vehicle images:",
+                        vehicleObject.noVehicleImages.toString(),
+                    ],
+                    [
+                        "Num. of seating rows:",
+                        vehicleObject.noSeatingRows.toString(),
+                    ],
+                    [
+                        "Spinning inertia:",
+                        vehicleObject.spinningInertia.toString(),
+                    ],
+                    [
+                        "Spinning friction:",
+                        vehicleObject.spinningFriction.toString(),
+                    ],
+                    [
+                        "Friction sound id:",
+                        vehicleObject.frictionSoundId.toString(),
+                    ],
+                    [
+                        "Logflume reverser vehicle:",
+                        vehicleObject.logFlumeReverserVehicleType.toString(),
+                    ],
                     ["Sound range:", vehicleObject.soundRange.toString()],
-                    ["Double sound frequency:", vehicleObject.doubleSoundFrequency.toString()],
+                    [
+                        "Double sound frequency:",
+                        vehicleObject.doubleSoundFrequency.toString(),
+                    ],
                     ["", ""],
-                    ["Powered acceleration:", vehicleObject.poweredAcceleration.toString()],
-                    ["Powered max speed:", vehicleObject.poweredMaxSpeed.toString()],
+                    [
+                        "Powered acceleration:",
+                        vehicleObject.poweredAcceleration.toString(),
+                    ],
+                    [
+                        "Powered max speed:",
+                        vehicleObject.poweredMaxSpeed.toString(),
+                    ],
                     ["Car visual:", vehicleObject.carVisual.toString()],
                     ["Effect visual:", vehicleObject.effectVisual.toString()],
                     ["Draw order:", vehicleObject.drawOrder.toString()],
@@ -177,11 +231,25 @@ function open() {
                     ["", ""],
                     ["Capacity:", rideObject.capacity.toString()],
                     ["Flags:", rideObject.flags.toString()],
-                    ["Ride type:", rideObject.rideType.map(r => (r == null) ? "null" : r.toString()).toString()],
+                    [
+                        "Ride type:",
+                        rideObject.rideType
+                            .map((r) => (r == null ? "null" : r.toString()))
+                            .toString(),
+                    ],
                     ["", ""],
-                    ["Min. cars in train:", rideObject.minCarsInTrain.toString()],
-                    ["Max. cars in train:", rideObject.maxCarsInTrain.toString()],
-                    ["Cars per flatride:", rideObject.carsPerFlatRide.toString()],
+                    [
+                        "Min. cars in train:",
+                        rideObject.minCarsInTrain.toString(),
+                    ],
+                    [
+                        "Max. cars in train:",
+                        rideObject.maxCarsInTrain.toString(),
+                    ],
+                    [
+                        "Cars per flatride:",
+                        rideObject.carsPerFlatRide.toString(),
+                    ],
                     ["Seatless cars:", rideObject.zeroCars.toString()],
                     ["", ""],
                     ["Tab vehicle:", rideObject.tabVehicle.toString()],
@@ -191,11 +259,23 @@ function open() {
                     ["Third vehicle:", rideObject.thirdVehicle.toString()],
                     ["Rear vehicle:", rideObject.rearVehicle.toString()],
                     ["", ""],
-                    ["Excitement multiplier:", rideObject.excitementMultiplier.toString()],
-                    ["Intensity multiplier:", rideObject.intensityMultiplier.toString()],
-                    ["Nausea multiplier:", rideObject.nauseaMultiplier.toString()],
+                    [
+                        "Excitement multiplier:",
+                        rideObject.excitementMultiplier.toString(),
+                    ],
+                    [
+                        "Intensity multiplier:",
+                        rideObject.intensityMultiplier.toString(),
+                    ],
+                    [
+                        "Nausea multiplier:",
+                        rideObject.nauseaMultiplier.toString(),
+                    ],
                     ["Max height:", rideObject.maxHeight.toString()],
-                    ["Shop items:", `${rideObject.shopItem}, ${rideObject.shopItemSecondary}`],
+                    [
+                        "Shop items:",
+                        `${rideObject.shopItem}, ${rideObject.shopItemSecondary}`,
+                    ],
                 ]);
         }
 

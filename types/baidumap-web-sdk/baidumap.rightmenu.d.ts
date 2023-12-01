@@ -33,7 +33,11 @@ declare namespace BMap {
         iconUrl?: string | undefined;
     }
     class MenuItem {
-        constructor(text: string, callback: (point: Point) => void, opts?: MenuItemOptions);
+        constructor(
+            text: string,
+            callback: (point: Point) => void,
+            opts?: MenuItemOptions,
+        );
         setText(text: string): void;
         setIcon(iconUrl: string): void;
         enable(): void;
@@ -46,8 +50,18 @@ declare namespace BMap {
         removeItem(item: MenuItem): void;
         addSeparator(): void;
         removeSeparator(index: number): void;
-        onopen: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
-        onclose: (event: { type: string; target: any; point: Point; pixel: Pixel }) => void;
+        onopen: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
+        onclose: (event: {
+            type: string;
+            target: any;
+            point: Point;
+            pixel: Pixel;
+        }) => void;
     }
 }
 declare const BMAP_CONTEXT_MENU_ICON_ZOOMIN: string;

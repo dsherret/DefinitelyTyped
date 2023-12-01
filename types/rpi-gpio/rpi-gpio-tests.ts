@@ -15,16 +15,16 @@ gpio.setup(1, gpio.DIR_IN, "both");
 gpio.setup(1, gpio.DIR_IN, "both", () => {});
 
 gpio.write(7, true);
-gpio.write(7, true, err => {});
+gpio.write(7, true, (err) => {});
 
 gpio.output(7, true);
-gpio.output(7, true, err => {});
+gpio.output(7, true, (err) => {});
 
 gpio.read(7, (err, value) => {});
 
 gpio.input(7, (err, value) => {});
 
-gpio.destroy(err => {});
+gpio.destroy((err) => {});
 
 gpio.reset();
 

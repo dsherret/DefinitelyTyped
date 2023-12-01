@@ -6,10 +6,10 @@ import { Validation } from "./vuelidate";
 
 declare module "vue/types/vue" {
     type ValidationProperties<V> = {
-        [P in Exclude<keyof V, "$v" | "$parent" | "$root" | "$children">]?:
-            & Validation
-            & ValidationProperties<V[P]>
-            & ValidationEvaluation;
+        [P in Exclude<
+            keyof V,
+            "$v" | "$parent" | "$root" | "$children"
+        >]?: Validation & ValidationProperties<V[P]> & ValidationEvaluation;
     };
 
     interface ValidationGroups {

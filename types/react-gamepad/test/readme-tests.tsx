@@ -18,7 +18,11 @@ class App extends React.Component {
         console.log(buttonName, down);
     }
 
-    axisChangeHandler(axisName: Axis, value: number, previousValue: number): void {
+    axisChangeHandler(
+        axisName: Axis,
+        value: number,
+        previousValue: number,
+    ): void {
         console.log(axisName, value);
     }
 
@@ -54,9 +58,9 @@ console.log(<App />);
     deadZone={Number()}
     layout={layouts.XBOX}
     onConnect={(gamepadIndex: number) => {}}
-    onDisconnect={gamepadIndex => {}}
-    onButtonDown={buttonName => {}}
-    onButtonUp={buttonName => {}}
+    onDisconnect={(gamepadIndex) => {}}
+    onButtonDown={(buttonName) => {}}
+    onButtonUp={(buttonName) => {}}
     onButtonChange={(buttonName, pressed) => {}}
     onAxisChange={(axisName, value, previousValue) => {}}
     onA={() => {}}

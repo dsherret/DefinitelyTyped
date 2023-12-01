@@ -57,7 +57,10 @@ declare class Key {
         /** @default 'public_pkcs8' */
         selector?: Key.PEMKeySelector,
     ): string;
-    toString(format: Exclude<Key.SerializableFormat, "pem">, selector: Key.KeySelector): string;
+    toString(
+        format: Exclude<Key.SerializableFormat, "pem">,
+        selector: Key.KeySelector,
+    ): string;
 }
 
 declare namespace Key {
@@ -84,5 +87,9 @@ declare namespace Key {
      * Note these refer specifically to different ASN encodings for PEM encoded keys
      * and are not compatible with non-PEM output types.
      */
-    type PEMKeySelector = "public_pkcs1" | "public_pkcs8" | "private_pkcs1" | "private_pkcs8";
+    type PEMKeySelector =
+        | "public_pkcs1"
+        | "public_pkcs8"
+        | "private_pkcs1"
+        | "private_pkcs8";
 }

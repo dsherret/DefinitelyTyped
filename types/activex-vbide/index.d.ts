@@ -155,8 +155,18 @@ declare namespace VBIDE {
         readonly CodePaneView: vbext_CodePaneview;
         readonly Collection: CodePanes;
         readonly CountOfVisibleLines: number;
-        GetSelection(StartLine: number, StartColumn: number, EndLine: number, EndColumn: number): void;
-        SetSelection(StartLine: number, StartColumn: number, EndLine: number, EndColumn: number): void;
+        GetSelection(
+            StartLine: number,
+            StartColumn: number,
+            EndLine: number,
+            EndColumn: number,
+        ): void;
+        SetSelection(
+            StartLine: number,
+            StartColumn: number,
+            EndLine: number,
+            EndColumn: number,
+        ): void;
         Show(): void;
         TopLine: number;
         readonly VBE: VBE;
@@ -236,7 +246,12 @@ declare namespace VBIDE {
         private constructor();
         readonly Application: Application;
         readonly Collection: Properties;
-        IndexedValue(Index1: any, Index2?: any, Index3?: any, Index4?: any): any;
+        IndexedValue(
+            Index1: any,
+            Index2?: any,
+            Index3?: any,
+            Index4?: any,
+        ): any;
         readonly Name: string;
         readonly NumIndices: number;
         Object: any;
@@ -383,7 +398,13 @@ declare namespace VBIDE {
 
     interface Windows {
         readonly Count: number;
-        CreateToolWindow(AddInInst: AddIn, ProgId: string, Caption: string, GuidPosition: string, DocObj: any): Window;
+        CreateToolWindow(
+            AddInInst: AddIn,
+            ProgId: string,
+            Caption: string,
+            GuidPosition: string,
+            DocObj: any,
+        ): Window;
         Item(index: any): Window;
         readonly Parent: Application;
         readonly VBE: VBE;
@@ -398,19 +419,29 @@ interface ActiveXObject {
         argNames: ["CommandBarControl", "handled", "CancelDefault"],
         handler: (
             this: VBIDE.CommandBarEvents,
-            parameter: { readonly CommandBarControl: any; readonly handled: boolean; readonly CancelDefault: boolean },
+            parameter: {
+                readonly CommandBarControl: any;
+                readonly handled: boolean;
+                readonly CancelDefault: boolean;
+            },
         ) => void,
     ): void;
     on(
         obj: VBIDE.References,
         event: "ItemAdded" | "ItemRemoved",
         argNames: ["Reference"],
-        handler: (this: VBIDE.References, parameter: { readonly Reference: VBIDE.Reference }) => void,
+        handler: (
+            this: VBIDE.References,
+            parameter: { readonly Reference: VBIDE.Reference },
+        ) => void,
     ): void;
     on(
         obj: VBIDE.ReferencesEvents,
         event: "ItemAdded" | "ItemRemoved",
         argNames: ["Reference"],
-        handler: (this: VBIDE.ReferencesEvents, parameter: { readonly Reference: VBIDE.Reference }) => void,
+        handler: (
+            this: VBIDE.ReferencesEvents,
+            parameter: { readonly Reference: VBIDE.Reference },
+        ) => void,
     ): void;
 }

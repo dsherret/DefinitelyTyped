@@ -10,7 +10,9 @@ import {
     Variables,
 } from "relay-runtime";
 
-export type OperationMockResolver = (operation: OperationDescriptor) => GraphQLResponse | Error | null;
+export type OperationMockResolver = (
+    operation: OperationDescriptor,
+) => GraphQLResponse | Error | null;
 
 export interface MockFunctions {
     clearCache: () => void;
@@ -24,18 +26,36 @@ export interface MockFunctions {
         variables: Variables,
         cacheConfig?: CacheConfig,
     ) => boolean;
-    reject: (request: ConcreteRequest | OperationDescriptor, error: Error | string) => void;
-    nextValue: (request: ConcreteRequest | OperationDescriptor, payload: GraphQLSingularResponse) => void;
+    reject: (
+        request: ConcreteRequest | OperationDescriptor,
+        error: Error | string,
+    ) => void;
+    nextValue: (
+        request: ConcreteRequest | OperationDescriptor,
+        payload: GraphQLSingularResponse,
+    ) => void;
     complete: (request: ConcreteRequest | OperationDescriptor) => void;
-    resolve: (request: ConcreteRequest | OperationDescriptor, payload: GraphQLSingularResponse) => void;
+    resolve: (
+        request: ConcreteRequest | OperationDescriptor,
+        payload: GraphQLSingularResponse,
+    ) => void;
     getAllOperations: () => readonly OperationDescriptor[];
-    findOperation: (findFn: (operation: OperationDescriptor) => boolean) => OperationDescriptor;
-    queuePendingOperation: (query: GraphQLTaggedNode, variables: Variables) => void;
+    findOperation: (
+        findFn: (operation: OperationDescriptor) => boolean,
+    ) => OperationDescriptor;
+    queuePendingOperation: (
+        query: GraphQLTaggedNode,
+        variables: Variables,
+    ) => void;
     getMostRecentOperation: () => OperationDescriptor;
     resolveMostRecentOperation: (
-        payload: GraphQLSingularResponse | ((operation: OperationDescriptor) => GraphQLSingularResponse),
+        payload:
+            | GraphQLSingularResponse
+            | ((operation: OperationDescriptor) => GraphQLSingularResponse),
     ) => void;
-    rejectMostRecentOperation: (error: Error | ((operation: OperationDescriptor) => Error)) => void;
+    rejectMostRecentOperation: (
+        error: Error | ((operation: OperationDescriptor) => Error),
+    ) => void;
     queueOperationResolver: (resolver: OperationMockResolver) => void;
 }
 
@@ -82,6 +102,8 @@ export interface RelayMockEnvironment extends MockEnvironment, IEnvironment {}
  * - rejectMostRecentOperation(...) - should reject the most recent operation
  *   with a specific error
  */
-export function createMockEnvironment(config?: Partial<EnvironmentConfig>): RelayMockEnvironment;
+export function createMockEnvironment(
+    config?: Partial<EnvironmentConfig>,
+): RelayMockEnvironment;
 
 export {};

@@ -5,7 +5,11 @@ import * as React from "react";
 function test() {
     return (
         <Gradient name="rainbow">
-            <BigText text="I love TypeScript" backgroundColor="black" align="center" />
+            <BigText
+                text="I love TypeScript"
+                backgroundColor="black"
+                align="center"
+            />
         </Gradient>
     );
 }

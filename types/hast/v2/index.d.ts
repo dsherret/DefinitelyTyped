@@ -1,4 +1,8 @@
-import { Literal as UnistLiteral, Node as UnistNode, Parent as UnistParent } from "unist";
+import {
+    Literal as UnistLiteral,
+    Node as UnistNode,
+    Parent as UnistParent,
+} from "unist";
 
 export { UnistNode as Node };
 
@@ -118,7 +122,13 @@ export interface Element extends Parent {
  * Represents information associated with an element.
  */
 export interface Properties {
-    [PropertyName: string]: boolean | number | string | null | undefined | Array<string | number>;
+    [PropertyName: string]:
+        | boolean
+        | number
+        | string
+        | null
+        | undefined
+        | Array<string | number>;
 }
 
 /**

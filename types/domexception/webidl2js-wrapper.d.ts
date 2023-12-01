@@ -19,7 +19,10 @@ export function isImpl(obj: unknown): obj is DOMExceptionImpl;
  *
  * @throws {TypeError} If `obj` is not a `DOMException` wrapper instance provided by this package.
  */
-export function convert(obj: unknown, options?: WebIDLConversionOptions): DOMExceptionImpl;
+export function convert(
+    obj: unknown,
+    options?: WebIDLConversionOptions,
+): DOMExceptionImpl;
 
 /**
  * Creates a new `DOMException` instance.

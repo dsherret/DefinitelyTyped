@@ -21,7 +21,10 @@ declare namespace node_geocoder {
 
     interface BaseOptions {
         provider: string;
-        fetch?: (url: RequestInfo, init?: RequestInit) => Promise<Response> | undefined;
+        fetch?: (
+            url: RequestInfo,
+            init?: RequestInit,
+        ) => Promise<Response> | undefined;
         timeout?: number | undefined;
         formatterPattern?: string | undefined;
         formatter?: any;
@@ -83,9 +86,8 @@ declare namespace node_geocoder {
         host?: string | undefined;
     }
 
-    type Options =
-        & BaseOptions
-        & (
+    type Options = BaseOptions &
+        (
             | GenericOptions
             | HereOptions
             | OpenStreetMapOptions
@@ -106,17 +108,17 @@ declare namespace node_geocoder {
         longitude?: number | undefined;
         extra?:
             | {
-                googlePlaceId?: string | undefined;
-                confidence?: number | undefined;
-            }
+                  googlePlaceId?: string | undefined;
+                  confidence?: number | undefined;
+              }
             | undefined;
         administrativeLevels?:
             | {
-                level1long?: string | undefined;
-                level1short?: string | undefined;
-                level2long?: string | undefined;
-                level2short?: string | undefined;
-            }
+                  level1long?: string | undefined;
+                  level1short?: string | undefined;
+                  level2long?: string | undefined;
+                  level2short?: string | undefined;
+              }
             | undefined;
         city?: string | undefined;
         streetName?: string | undefined;
@@ -147,12 +149,23 @@ declare namespace node_geocoder {
     }
 
     class Geocoder {
-        geocode(query: string | Query, cb?: (err: any, data: Entry[]) => void): Promise<Entry[]>;
-        batchGeocode(queries: string[] | Query[], cb?: (err: any, data: BatchResult[]) => void): Promise<BatchResult[]>;
-        reverse(loc: Location, cb?: (err: any, data: Entry[]) => void): Promise<Entry[]>;
+        geocode(
+            query: string | Query,
+            cb?: (err: any, data: Entry[]) => void,
+        ): Promise<Entry[]>;
+        batchGeocode(
+            queries: string[] | Query[],
+            cb?: (err: any, data: BatchResult[]) => void,
+        ): Promise<BatchResult[]>;
+        reverse(
+            loc: Location,
+            cb?: (err: any, data: Entry[]) => void,
+        ): Promise<Entry[]>;
     }
 }
 
-declare function node_geocoder(options: node_geocoder.Options): node_geocoder.Geocoder;
+declare function node_geocoder(
+    options: node_geocoder.Options,
+): node_geocoder.Geocoder;
 
 export = node_geocoder;

@@ -9,7 +9,10 @@ declare namespace j {
          * will happen against the jfp object only.
          */
         (alias: string, ...args: any[]): JfpCurriedOutput<any>;
-        (externalFunction: (...args: any[]) => any, ...args: any[]): JfpCurriedOutput<any>;
+        (
+            externalFunction: (...args: any[]) => any,
+            ...args: any[]
+        ): JfpCurriedOutput<any>;
     }
 
     interface JfpCurriedOutput<T> {}
@@ -136,7 +139,11 @@ declare namespace j {
         /**
          * Takes multiple partitions of a list using a partitioning predicate and criteria
          */
-        multiPartition(predicate: (criterion: any, value: any) => boolean, criteria: any[], list: any[]): any[][];
+        multiPartition(
+            predicate: (criterion: any, value: any) => boolean,
+            criteria: any[],
+            list: any[],
+        ): any[][];
 
         /**
          * Counts number of list values which satisfy predicate
@@ -160,7 +167,10 @@ declare namespace j {
          * @param reducer Function to reduce values with
          * @param values Array to reduce
          */
-        reduce(reducer: (condition1: any, condition2: any) => any, values: any[]): any;
+        reduce(
+            reducer: (condition1: any, condition2: any) => any,
+            values: any[],
+        ): any;
 
         /**
          * Reduces array using reducer function
@@ -168,7 +178,11 @@ declare namespace j {
          * @param values Array to reduce
          * @param initialCondition Initial value to use in first reduction application
          */
-        reduce(reducer: (condition1: any, condition2: any) => any, values: any[], initialCondition: any): any;
+        reduce(
+            reducer: (condition1: any, condition2: any) => any,
+            values: any[],
+            initialCondition: any,
+        ): any;
 
         /**
          * Returns all but the first element of array
@@ -259,7 +273,11 @@ declare namespace j {
          * @param preferredValue Preferred value
          * @param predicateValue Boolean switch to return default or preferred value
          */
-        eitherIf(defaultValue: any, preferredValue: any, predicateValue: boolean): any;
+        eitherIf(
+            defaultValue: any,
+            preferredValue: any,
+            predicateValue: boolean,
+        ): any;
 
         /**
          * Returns provided value if truthy, otherwise returns default value
@@ -267,7 +285,11 @@ declare namespace j {
          * @param preferredValue Preferred value
          * @param predicate Predicate function preferred value is tested against
          */
-        eitherWhen(defaultValue: any, preferredValue: any, predicate: (value: any) => boolean): any;
+        eitherWhen(
+            defaultValue: any,
+            preferredValue: any,
+            predicate: (value: any) => boolean,
+        ): any;
 
         /**
          * Returns preferred value if truthy, otherwise null
@@ -288,14 +310,21 @@ declare namespace j {
          * @param userFn
          * @param value
          */
-        shortCircuit(defaultValue: any, userFn: (...args: any[]) => any, value: any): any;
+        shortCircuit(
+            defaultValue: any,
+            userFn: (...args: any[]) => any,
+            value: any,
+        ): any;
 
         /**
          * Executes function when condition is true
          * @param predicateValue Value to set behavior execution
          * @param userFunction Behavior to execute
          */
-        when(predicateValue: boolean, userFunction: (...args: any[]) => any): any;
+        when(
+            predicateValue: boolean,
+            userFunction: (...args: any[]) => any,
+        ): any;
 
         /**
          * Executes function when condition is true
@@ -303,7 +332,11 @@ declare namespace j {
          * @param userFunction Behavior to execute
          * @param ...args arguments for userFunction
          */
-        when(predicateValue: boolean, userFunction: (...args: any[]) => any, ...args: any[]): any;
+        when(
+            predicateValue: boolean,
+            userFunction: (...args: any[]) => any,
+            ...args: any[]
+        ): any;
     }
 
     interface JfpStatic {
@@ -340,7 +373,9 @@ declare namespace j {
          * Composes a set of functions into a new single function
          * @param ...args Arguments for compose
          */
-        compose(...args: Array<(...args: any[]) => any>): (...args: any[]) => any;
+        compose(
+            ...args: Array<(...args: any[]) => any>
+        ): (...args: any[]) => any;
 
         /**
          * Counts the number of arguments in a function declaration
@@ -355,7 +390,10 @@ declare namespace j {
          */
         curry(userFn: (...args: any[]) => any): (...args: any[]) => any;
         curry(userFn: (...args: any[]) => any): any;
-        curry(userFn: (...args: any[]) => any, ...args: any[]): (...args: any[]) => any;
+        curry(
+            userFn: (...args: any[]) => any,
+            ...args: any[]
+        ): (...args: any[]) => any;
         curry(userFn: (...args: any[]) => any, ...args: any[]): any;
 
         /**
@@ -382,7 +420,10 @@ declare namespace j {
          * @param ...args Values to apply
          */
         partial(userFn: (...args: any[]) => any): (...args: any[]) => any;
-        partial(userFn: (...args: any[]) => any, ...args: any[]): (...args: any[]) => any;
+        partial(
+            userFn: (...args: any[]) => any,
+            ...args: any[]
+        ): (...args: any[]) => any;
 
         /**
          * Pipelines or chains functions producing a single final output
@@ -419,7 +460,11 @@ declare namespace j {
          * @param leftArgs
          * @param rightArgs
          */
-        splitPartial(userFn: (...args: any[]) => any, leftArgs: any[], rightArgs: any[]): (...args: any[]) => any;
+        splitPartial(
+            userFn: (...args: any[]) => any,
+            leftArgs: any[],
+            rightArgs: any[],
+        ): (...args: any[]) => any;
     }
 
     // Predicate functions
@@ -552,12 +597,17 @@ declare namespace j {
         /**
          * Composes functions together in common nested order
          */
-        compose(...args: Array<(...args: any[]) => any>): (...args: any[]) => any;
+        compose(
+            ...args: Array<(...args: any[]) => any>
+        ): (...args: any[]) => any;
 
         /**
          * Curries passed function and applies optional arguments
          */
-        curry(fn: (...args: any[]) => any, ...args: any[]): (...args: any[]) => any;
+        curry(
+            fn: (...args: any[]) => any,
+            ...args: any[]
+        ): (...args: any[]) => any;
 
         /**
          * Returns either typed value based on type parameter
@@ -572,7 +622,10 @@ declare namespace j {
         /**
          * Returns a partially applied function with remaining arguments reversed
          */
-        partialReverse(fn: (...args: any[]) => any, ...args: any[]): (...args: any[]) => any;
+        partialReverse(
+            fn: (...args: any[]) => any,
+            ...args: any[]
+        ): (...args: any[]) => any;
 
         /**
          * Passes chains functions together with an initial arguments
@@ -582,7 +635,9 @@ declare namespace j {
         /**
          * Composes functions executing from left to right
          */
-        rcompose(...args: Array<(...args: any[]) => any>): (...args: any[]) => any;
+        rcompose(
+            ...args: Array<(...args: any[]) => any>
+        ): (...args: any[]) => any;
 
         /**
          * Executes a trampolined tail-optimized recursive function
@@ -810,6 +865,8 @@ declare namespace j {
         /**
          * Creates composite predicate which performs each check on a value and then conjoins the result
          */
-        composePredicate(...args: Array<(...args: any[]) => boolean>): (...args: any[]) => boolean;
+        composePredicate(
+            ...args: Array<(...args: any[]) => boolean>
+        ): (...args: any[]) => boolean;
     }
 }

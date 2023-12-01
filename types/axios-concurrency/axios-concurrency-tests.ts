@@ -1,9 +1,15 @@
 import axios from "axios";
-import { ConcurrencyManager, ConcurrencyManagerInstance } from "axios-concurrency";
+import {
+    ConcurrencyManager,
+    ConcurrencyManagerInstance,
+} from "axios-concurrency";
 
 const axiosInstance = axios.create({});
 
-const manager: ConcurrencyManagerInstance = ConcurrencyManager(axiosInstance, 1);
+const manager: ConcurrencyManagerInstance = ConcurrencyManager(
+    axiosInstance,
+    1,
+);
 
 // $ExpectType void
 manager.detach();

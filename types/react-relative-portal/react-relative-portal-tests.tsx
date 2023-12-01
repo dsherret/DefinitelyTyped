@@ -6,7 +6,15 @@ import RelativePortal = require("react-relative-portal");
         <div>portalled content</div>
     </RelativePortal>
 
-    <RelativePortal component="div" className="portal" fullWidth left={1} onOutClick={() => {}} right={2} top={3}>
+    <RelativePortal
+        component="div"
+        className="portal"
+        fullWidth
+        left={1}
+        onOutClick={() => {}}
+        right={2}
+        top={3}
+    >
         <div>portalled content</div>
     </RelativePortal>
 </React.Fragment>;

@@ -45,14 +45,20 @@ export type Attachment = Backbone.Model & {
      */
     parse: (response: Record<string, unknown>) => Record<string, unknown>;
 
-    saveCompat: (data: AttachmentOptionsData, options: Record<string, unknown>) => Promise<any>;
+    saveCompat: (
+        data: AttachmentOptionsData,
+        options: Record<string, unknown>,
+    ) => Promise<any>;
 
     /**
      * Create a new model on the static 'all' attachments collection and return it.
      */
     create: (attrs: Record<string, unknown>) => Attachment;
 
-    get: (id: string, attachment: Backbone.Model | undefined) => any & MemoizedFunction;
+    get: (
+        id: string,
+        attachment: Backbone.Model | undefined,
+    ) => any & MemoizedFunction;
 };
 
 /**
@@ -76,12 +82,18 @@ export type Attachments = Backbone.Collection<Attachment> & {
     /**
      * Add or remove an attachment to the collection depending on its validity.
      */
-    validate: (attachment: Attachment, options: Backbone.Silenceable) => Attachments;
+    validate: (
+        attachment: Attachment,
+        options: Backbone.Silenceable,
+    ) => Attachments;
 
     /**
      * Add or remove all attachments from another collection depending on each one's validity.
      */
-    validateAll: (attachments: Attachment[], options: Backbone.Silenceable) => Attachments;
+    validateAll: (
+        attachments: Attachment[],
+        options: Backbone.Silenceable,
+    ) => Attachments;
 
     /**
      * Start observing another attachments collection change events
@@ -139,7 +151,10 @@ export type Attachments = Backbone.Collection<Attachment> & {
      * passing through the JSON response. We override this to add attributes to
      * the collection items.
      */
-    parse: (response: Record<string, unknown>, xhr: unknown) => Record<string, unknown>;
+    parse: (
+        response: Record<string, unknown>,
+        xhr: unknown,
+    ) => Record<string, unknown>;
 
     /**
      * If this collection is sorted by `menuOrder`, recalculates and saves
@@ -153,7 +168,11 @@ export type Attachments = Backbone.Collection<Attachment> & {
      * Used as the default comparator for instances of wp.media.model.Attachments
      * and its subclasses.
      */
-    comparator(a: Backbone.Model, b: Backbone.Model, options: Record<string, unknown>): number;
+    comparator(
+        a: Backbone.Model,
+        b: Backbone.Model,
+        options: Record<string, unknown>,
+    ): number;
 
     filters: AttachmentFilters;
 };

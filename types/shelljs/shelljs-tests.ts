@@ -13,10 +13,15 @@ shell.cp("-R", "stuff/*", "out/Release");
 
 // Replace macros in each .js file
 shell.cd("lib");
-shell.ls("*.js").forEach(file => {
+shell.ls("*.js").forEach((file) => {
     shell.sed("-i", "BUILD_VERSION", "v0.1.2", file);
     shell.sed("-i", /.*REMOVE_THIS_LINE.*\n/, "", file);
-    shell.sed("-i", /.*REPLACE_LINE_WITH_MACRO.*\n/, shell.cat("macro.js"), file);
+    shell.sed(
+        "-i",
+        /.*REPLACE_LINE_WITH_MACRO.*\n/,
+        shell.cat("macro.js"),
+        file,
+    );
 });
 
 shell.cd("..");
@@ -27,7 +32,7 @@ shell.config.execPath = shell.which("node");
 shell.which("node");
 
 // Run external tool synchronously
-if (shell.exec("git commit -am \"Auto-commit\"").code !== 0) {
+if (shell.exec('git commit -am "Auto-commit"').code !== 0) {
     shell.echo("Error: Git commit failed");
     shell.exit(1);
 }
@@ -110,9 +115,13 @@ const unknownUntilRuntime = shell.exec("node --version", { async: isAsync });
 shell.exec("node --version", { silent: true }, (code, stdout, stderr) => {
     const version = stdout;
 });
-shell.exec("node --version", { silent: true, async: true, cwd: "/usr/local/bin" }, (code, stdout, stderr) => {
-    const version = stdout;
-});
+shell.exec(
+    "node --version",
+    { silent: true, async: true, cwd: "/usr/local/bin" },
+    (code, stdout, stderr) => {
+        const version = stdout;
+    },
+);
 shell.exec("node --version", (code, stdout, stderr) => {
     const version = stdout;
 });
@@ -152,8 +161,15 @@ shell.touch("-c", "/Users/brandom/test1", "/Users/brandom/test2");
 shell.touch("-c", ["/Users/brandom/test1", "/Users/brandom/test2"]);
 
 shell.touch({ "-r": "/some/file.txt" }, "/Users/brandom/test1");
-shell.touch({ "-r": "/some/file.txt" }, "/Users/brandom/test1", "/Users/brandom/test2");
-shell.touch({ "-r": "/oome/file.txt" }, ["/Users/brandom/test1", "/Users/brandom/test2"]);
+shell.touch(
+    { "-r": "/some/file.txt" },
+    "/Users/brandom/test1",
+    "/Users/brandom/test2",
+);
+shell.touch({ "-r": "/oome/file.txt" }, [
+    "/Users/brandom/test1",
+    "/Users/brandom/test2",
+]);
 
 shell.head({ "-n": 1 }, "file*.txt");
 shell.head("file1", "file2");

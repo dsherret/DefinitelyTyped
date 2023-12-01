@@ -52,9 +52,11 @@ interface CommonWidgetProps {
      *
      * https://community.algolia.com/react-instantsearch/guide/i18n.html
      */
-    translations?: {
-        [key: string]: string | ((...args: any[]) => any);
-    } | undefined;
+    translations?:
+        | {
+              [key: string]: string | ((...args: any[]) => any);
+          }
+        | undefined;
 }
 
 export class Breadcrumb extends React.Component<any> {}
@@ -83,7 +85,9 @@ export interface HitsPerPageProps {
     defaultRefinement: number;
     id?: string;
     className?: string;
-    transformItems?(items: Array<RefinementItem<number>>): Array<RefinementItem<number>>;
+    transformItems?(
+        items: Array<RefinementItem<number>>,
+    ): Array<RefinementItem<number>>;
 }
 export class HitsPerPage extends React.Component<HitsPerPageProps> {}
 export class InfiniteHits extends React.Component<any> {}
@@ -95,7 +99,9 @@ export interface MenuSelectProps {
     className?: string;
     defaultRefinement?: string;
     limit?: number;
-    transformItems?(items: Array<RefinementItem<string>>): Array<RefinementItem<string>>;
+    transformItems?(
+        items: Array<RefinementItem<string>>,
+    ): Array<RefinementItem<string>>;
     translations?: { seeAllOption?: string };
 }
 export class MenuSelect extends React.Component<MenuSelectProps> {}
@@ -123,10 +129,18 @@ export interface SearchBoxProps extends CommonWidgetProps {
     reset?: JSX.Element | undefined;
     loadingIndicator?: JSX.Element | undefined;
 
-    onSubmit?: ((event: React.SyntheticEvent<HTMLFormElement>) => any) | undefined;
-    onReset?: ((event: React.SyntheticEvent<HTMLFormElement>) => any) | undefined;
-    onChange?: ((event: React.SyntheticEvent<HTMLInputElement>) => any) | undefined;
-    onKeyDown?: ((event: React.KeyboardEvent<HTMLInputElement>) => any) | undefined;
+    onSubmit?:
+        | ((event: React.SyntheticEvent<HTMLFormElement>) => any)
+        | undefined;
+    onReset?:
+        | ((event: React.SyntheticEvent<HTMLFormElement>) => any)
+        | undefined;
+    onChange?:
+        | ((event: React.SyntheticEvent<HTMLInputElement>) => any)
+        | undefined;
+    onKeyDown?:
+        | ((event: React.KeyboardEvent<HTMLInputElement>) => any)
+        | undefined;
 }
 /**
  * The SearchBox component displays a search box that lets the user search for a specific query.
@@ -142,8 +156,12 @@ export interface RelevantSortComponentProps {
  * The RelevantSort component displays an informative banner and a button that toggle the `relevancyStrictness` between 0 and the value setted on the dashboard.
  */
 export class RelevantSort extends React.Component<{
-    buttonTextComponent?: React.FunctionComponent<RelevantSortComponentProps> | undefined;
-    textComponent?: React.FunctionComponent<RelevantSortComponentProps> | undefined;
+    buttonTextComponent?:
+        | React.FunctionComponent<RelevantSortComponentProps>
+        | undefined;
+    textComponent?:
+        | React.FunctionComponent<RelevantSortComponentProps>
+        | undefined;
 }> {}
 
 export interface SortByProps {
@@ -151,16 +169,25 @@ export interface SortByProps {
     defaultRefinement: string;
     id?: string;
     className?: string;
-    transformItems?(items: Array<RefinementItem<string>>): Array<RefinementItem<string>>;
+    transformItems?(
+        items: Array<RefinementItem<string>>,
+    ): Array<RefinementItem<string>>;
 }
 export class SortBy extends React.Component<SortByProps> {}
 /**
  * The Stats component displays the total number of matching hits and the time it took to get them (time spent in the Algolia server).
  */
 export class Stats extends React.Component<{
-    translations?: {
-        [key: string]: (n: number, ms: number, nSortedHits: number, areHitsSorted: boolean) => string;
-    } | undefined;
+    translations?:
+        | {
+              [key: string]: (
+                  n: number,
+                  ms: number,
+                  nSortedHits: number,
+                  areHitsSorted: boolean,
+              ) => string;
+          }
+        | undefined;
 }> {}
 export class ToggleRefinement extends React.Component<any> {}
 
@@ -170,7 +197,9 @@ export class QueryRuleCustomData extends React.Component<any> {}
 
 // helper functions
 export function getInsightsAnonymousUserToken(): string | undefined;
-export function createClassNames(baseName: string): (...elements: string[]) => string | string[];
+export function createClassNames(
+    baseName: string,
+): (...elements: string[]) => string | string[];
 
 export interface VoiceSearchHelperParams {
     searchAsYouSpeak: boolean;
@@ -179,7 +208,13 @@ export interface VoiceSearchHelperParams {
     onStateChange: () => void;
 }
 
-export type Status = "initial" | "askingPermission" | "waiting" | "recognizing" | "finished" | "error";
+export type Status =
+    | "initial"
+    | "askingPermission"
+    | "waiting"
+    | "recognizing"
+    | "finished"
+    | "error";
 
 export interface VoiceListeningState {
     status: Status;
@@ -205,7 +240,9 @@ export interface VoiceSearchHelper {
     dispose: () => void;
 }
 
-export function createVoiceSearchHelper(params: VoiceSearchHelperParams): VoiceSearchHelper;
+export function createVoiceSearchHelper(
+    params: VoiceSearchHelperParams,
+): VoiceSearchHelper;
 
 export function createInfiniteHitsSessionStorageCache(...args: any[]): any;
 

@@ -54,9 +54,9 @@ const d3ForceLayoutAllOptions: d3Force.D3ForceLayoutOptions = {
     radialX: undefined,
     radialY: undefined,
 
-    ready: function() {},
-    stop: function() {},
-    tick: function() {},
+    ready: function () {},
+    stop: function () {},
+    tick: function () {},
 
     randomize: false,
 

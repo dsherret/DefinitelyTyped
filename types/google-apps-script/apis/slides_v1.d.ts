@@ -4,12 +4,18 @@ declare namespace GoogleAppsScript {
             namespace Presentations {
                 interface PagesCollection {
                     // Gets the latest version of the specified page in the presentation.
-                    get(presentationId: string, pageObjectId: string): Slides.Schema.Page;
+                    get(
+                        presentationId: string,
+                        pageObjectId: string,
+                    ): Slides.Schema.Page;
                     // Generates a thumbnail of the latest version of the specified page in the
                     // presentation and returns a URL to the thumbnail image.
                     // This request counts as an [expensive read request](/slides/limits) for
                     // quota purposes.
-                    getThumbnail(presentationId: string, pageObjectId: string): Slides.Schema.Thumbnail;
+                    getThumbnail(
+                        presentationId: string,
+                        pageObjectId: string,
+                    ): Slides.Schema.Thumbnail;
                     // Generates a thumbnail of the latest version of the specified page in the
                     // presentation and returns a URL to the thumbnail image.
                     // This request counts as an [expensive read request](/slides/limits) for
@@ -22,7 +28,9 @@ declare namespace GoogleAppsScript {
                 }
             }
             interface PresentationsCollection {
-                Pages?: Slides.Collection.Presentations.PagesCollection | undefined;
+                Pages?:
+                    | Slides.Collection.Presentations.PagesCollection
+                    | undefined;
                 // Applies one or more updates to the presentation.
                 // Each request is validated before
                 // being applied. If any request is not valid, then the entire request will
@@ -49,7 +57,9 @@ declare namespace GoogleAppsScript {
                 // Otherwise, a new ID is generated. Other fields in the request, including
                 // any provided content, are ignored.
                 // Returns the created presentation.
-                create(resource: Schema.Presentation): Slides.Schema.Presentation;
+                create(
+                    resource: Schema.Presentation,
+                ): Slides.Schema.Presentation;
                 // Gets the latest version of the specified presentation.
                 get(presentationId: string): Slides.Schema.Presentation;
             }
@@ -93,7 +103,9 @@ declare namespace GoogleAppsScript {
                 position?: number | undefined;
             }
             interface CreateImageRequest {
-                elementProperties?: Slides.Schema.PageElementProperties | undefined;
+                elementProperties?:
+                    | Slides.Schema.PageElementProperties
+                    | undefined;
                 objectId?: string | undefined;
                 url?: string | undefined;
             }
@@ -102,7 +114,9 @@ declare namespace GoogleAppsScript {
             }
             interface CreateLineRequest {
                 category?: string | undefined;
-                elementProperties?: Slides.Schema.PageElementProperties | undefined;
+                elementProperties?:
+                    | Slides.Schema.PageElementProperties
+                    | undefined;
                 lineCategory?: string | undefined;
                 objectId?: string | undefined;
             }
@@ -116,7 +130,9 @@ declare namespace GoogleAppsScript {
                 textRange?: Slides.Schema.Range | undefined;
             }
             interface CreateShapeRequest {
-                elementProperties?: Slides.Schema.PageElementProperties | undefined;
+                elementProperties?:
+                    | Slides.Schema.PageElementProperties
+                    | undefined;
                 objectId?: string | undefined;
                 shapeType?: string | undefined;
             }
@@ -125,7 +141,9 @@ declare namespace GoogleAppsScript {
             }
             interface CreateSheetsChartRequest {
                 chartId?: number | undefined;
-                elementProperties?: Slides.Schema.PageElementProperties | undefined;
+                elementProperties?:
+                    | Slides.Schema.PageElementProperties
+                    | undefined;
                 linkingMode?: string | undefined;
                 objectId?: string | undefined;
                 spreadsheetId?: string | undefined;
@@ -136,15 +154,21 @@ declare namespace GoogleAppsScript {
             interface CreateSlideRequest {
                 insertionIndex?: number | undefined;
                 objectId?: string | undefined;
-                placeholderIdMappings?: Slides.Schema.LayoutPlaceholderIdMapping[] | undefined;
-                slideLayoutReference?: Slides.Schema.LayoutReference | undefined;
+                placeholderIdMappings?:
+                    | Slides.Schema.LayoutPlaceholderIdMapping[]
+                    | undefined;
+                slideLayoutReference?:
+                    | Slides.Schema.LayoutReference
+                    | undefined;
             }
             interface CreateSlideResponse {
                 objectId?: string | undefined;
             }
             interface CreateTableRequest {
                 columns?: number | undefined;
-                elementProperties?: Slides.Schema.PageElementProperties | undefined;
+                elementProperties?:
+                    | Slides.Schema.PageElementProperties
+                    | undefined;
                 objectId?: string | undefined;
                 rows?: number | undefined;
             }
@@ -152,7 +176,9 @@ declare namespace GoogleAppsScript {
                 objectId?: string | undefined;
             }
             interface CreateVideoRequest {
-                elementProperties?: Slides.Schema.PageElementProperties | undefined;
+                elementProperties?:
+                    | Slides.Schema.PageElementProperties
+                    | undefined;
                 id?: string | undefined;
                 objectId?: string | undefined;
                 source?: string | undefined;
@@ -331,7 +357,9 @@ declare namespace GoogleAppsScript {
             interface PageBackgroundFill {
                 propertyState?: string | undefined;
                 solidFill?: Slides.Schema.SolidFill | undefined;
-                stretchedPictureFill?: Slides.Schema.StretchedPictureFill | undefined;
+                stretchedPictureFill?:
+                    | Slides.Schema.StretchedPictureFill
+                    | undefined;
             }
             interface PageElement {
                 description?: string | undefined;
@@ -355,7 +383,9 @@ declare namespace GoogleAppsScript {
             }
             interface PageProperties {
                 colorScheme?: Slides.Schema.ColorScheme | undefined;
-                pageBackgroundFill?: Slides.Schema.PageBackgroundFill | undefined;
+                pageBackgroundFill?:
+                    | Slides.Schema.PageBackgroundFill
+                    | undefined;
             }
             interface ParagraphMarker {
                 bullet?: Slides.Schema.Bullet | undefined;
@@ -436,47 +466,109 @@ declare namespace GoogleAppsScript {
             interface Request {
                 createImage?: Slides.Schema.CreateImageRequest | undefined;
                 createLine?: Slides.Schema.CreateLineRequest | undefined;
-                createParagraphBullets?: Slides.Schema.CreateParagraphBulletsRequest | undefined;
+                createParagraphBullets?:
+                    | Slides.Schema.CreateParagraphBulletsRequest
+                    | undefined;
                 createShape?: Slides.Schema.CreateShapeRequest | undefined;
-                createSheetsChart?: Slides.Schema.CreateSheetsChartRequest | undefined;
+                createSheetsChart?:
+                    | Slides.Schema.CreateSheetsChartRequest
+                    | undefined;
                 createSlide?: Slides.Schema.CreateSlideRequest | undefined;
                 createTable?: Slides.Schema.CreateTableRequest | undefined;
                 createVideo?: Slides.Schema.CreateVideoRequest | undefined;
                 deleteObject?: Slides.Schema.DeleteObjectRequest | undefined;
-                deleteParagraphBullets?: Slides.Schema.DeleteParagraphBulletsRequest | undefined;
-                deleteTableColumn?: Slides.Schema.DeleteTableColumnRequest | undefined;
-                deleteTableRow?: Slides.Schema.DeleteTableRowRequest | undefined;
+                deleteParagraphBullets?:
+                    | Slides.Schema.DeleteParagraphBulletsRequest
+                    | undefined;
+                deleteTableColumn?:
+                    | Slides.Schema.DeleteTableColumnRequest
+                    | undefined;
+                deleteTableRow?:
+                    | Slides.Schema.DeleteTableRowRequest
+                    | undefined;
                 deleteText?: Slides.Schema.DeleteTextRequest | undefined;
-                duplicateObject?: Slides.Schema.DuplicateObjectRequest | undefined;
+                duplicateObject?:
+                    | Slides.Schema.DuplicateObjectRequest
+                    | undefined;
                 groupObjects?: Slides.Schema.GroupObjectsRequest | undefined;
-                insertTableColumns?: Slides.Schema.InsertTableColumnsRequest | undefined;
-                insertTableRows?: Slides.Schema.InsertTableRowsRequest | undefined;
+                insertTableColumns?:
+                    | Slides.Schema.InsertTableColumnsRequest
+                    | undefined;
+                insertTableRows?:
+                    | Slides.Schema.InsertTableRowsRequest
+                    | undefined;
                 insertText?: Slides.Schema.InsertTextRequest | undefined;
-                mergeTableCells?: Slides.Schema.MergeTableCellsRequest | undefined;
-                refreshSheetsChart?: Slides.Schema.RefreshSheetsChartRequest | undefined;
-                replaceAllShapesWithImage?: Slides.Schema.ReplaceAllShapesWithImageRequest | undefined;
-                replaceAllShapesWithSheetsChart?: Slides.Schema.ReplaceAllShapesWithSheetsChartRequest | undefined;
-                replaceAllText?: Slides.Schema.ReplaceAllTextRequest | undefined;
+                mergeTableCells?:
+                    | Slides.Schema.MergeTableCellsRequest
+                    | undefined;
+                refreshSheetsChart?:
+                    | Slides.Schema.RefreshSheetsChartRequest
+                    | undefined;
+                replaceAllShapesWithImage?:
+                    | Slides.Schema.ReplaceAllShapesWithImageRequest
+                    | undefined;
+                replaceAllShapesWithSheetsChart?:
+                    | Slides.Schema.ReplaceAllShapesWithSheetsChartRequest
+                    | undefined;
+                replaceAllText?:
+                    | Slides.Schema.ReplaceAllTextRequest
+                    | undefined;
                 replaceImage?: Slides.Schema.ReplaceImageRequest | undefined;
                 rerouteLine?: Slides.Schema.RerouteLineRequest | undefined;
-                ungroupObjects?: Slides.Schema.UngroupObjectsRequest | undefined;
-                unmergeTableCells?: Slides.Schema.UnmergeTableCellsRequest | undefined;
-                updateImageProperties?: Slides.Schema.UpdateImagePropertiesRequest | undefined;
-                updateLineCategory?: Slides.Schema.UpdateLineCategoryRequest | undefined;
-                updateLineProperties?: Slides.Schema.UpdateLinePropertiesRequest | undefined;
-                updatePageElementAltText?: Slides.Schema.UpdatePageElementAltTextRequest | undefined;
-                updatePageElementTransform?: Slides.Schema.UpdatePageElementTransformRequest | undefined;
-                updatePageElementsZOrder?: Slides.Schema.UpdatePageElementsZOrderRequest | undefined;
-                updatePageProperties?: Slides.Schema.UpdatePagePropertiesRequest | undefined;
-                updateParagraphStyle?: Slides.Schema.UpdateParagraphStyleRequest | undefined;
-                updateShapeProperties?: Slides.Schema.UpdateShapePropertiesRequest | undefined;
-                updateSlidesPosition?: Slides.Schema.UpdateSlidesPositionRequest | undefined;
-                updateTableBorderProperties?: Slides.Schema.UpdateTableBorderPropertiesRequest | undefined;
-                updateTableCellProperties?: Slides.Schema.UpdateTableCellPropertiesRequest | undefined;
-                updateTableColumnProperties?: Slides.Schema.UpdateTableColumnPropertiesRequest | undefined;
-                updateTableRowProperties?: Slides.Schema.UpdateTableRowPropertiesRequest | undefined;
-                updateTextStyle?: Slides.Schema.UpdateTextStyleRequest | undefined;
-                updateVideoProperties?: Slides.Schema.UpdateVideoPropertiesRequest | undefined;
+                ungroupObjects?:
+                    | Slides.Schema.UngroupObjectsRequest
+                    | undefined;
+                unmergeTableCells?:
+                    | Slides.Schema.UnmergeTableCellsRequest
+                    | undefined;
+                updateImageProperties?:
+                    | Slides.Schema.UpdateImagePropertiesRequest
+                    | undefined;
+                updateLineCategory?:
+                    | Slides.Schema.UpdateLineCategoryRequest
+                    | undefined;
+                updateLineProperties?:
+                    | Slides.Schema.UpdateLinePropertiesRequest
+                    | undefined;
+                updatePageElementAltText?:
+                    | Slides.Schema.UpdatePageElementAltTextRequest
+                    | undefined;
+                updatePageElementTransform?:
+                    | Slides.Schema.UpdatePageElementTransformRequest
+                    | undefined;
+                updatePageElementsZOrder?:
+                    | Slides.Schema.UpdatePageElementsZOrderRequest
+                    | undefined;
+                updatePageProperties?:
+                    | Slides.Schema.UpdatePagePropertiesRequest
+                    | undefined;
+                updateParagraphStyle?:
+                    | Slides.Schema.UpdateParagraphStyleRequest
+                    | undefined;
+                updateShapeProperties?:
+                    | Slides.Schema.UpdateShapePropertiesRequest
+                    | undefined;
+                updateSlidesPosition?:
+                    | Slides.Schema.UpdateSlidesPositionRequest
+                    | undefined;
+                updateTableBorderProperties?:
+                    | Slides.Schema.UpdateTableBorderPropertiesRequest
+                    | undefined;
+                updateTableCellProperties?:
+                    | Slides.Schema.UpdateTableCellPropertiesRequest
+                    | undefined;
+                updateTableColumnProperties?:
+                    | Slides.Schema.UpdateTableColumnPropertiesRequest
+                    | undefined;
+                updateTableRowProperties?:
+                    | Slides.Schema.UpdateTableRowPropertiesRequest
+                    | undefined;
+                updateTextStyle?:
+                    | Slides.Schema.UpdateTextStyleRequest
+                    | undefined;
+                updateVideoProperties?:
+                    | Slides.Schema.UpdateVideoPropertiesRequest
+                    | undefined;
             }
             interface RerouteLineRequest {
                 objectId?: string | undefined;
@@ -485,15 +577,25 @@ declare namespace GoogleAppsScript {
                 createImage?: Slides.Schema.CreateImageResponse | undefined;
                 createLine?: Slides.Schema.CreateLineResponse | undefined;
                 createShape?: Slides.Schema.CreateShapeResponse | undefined;
-                createSheetsChart?: Slides.Schema.CreateSheetsChartResponse | undefined;
+                createSheetsChart?:
+                    | Slides.Schema.CreateSheetsChartResponse
+                    | undefined;
                 createSlide?: Slides.Schema.CreateSlideResponse | undefined;
                 createTable?: Slides.Schema.CreateTableResponse | undefined;
                 createVideo?: Slides.Schema.CreateVideoResponse | undefined;
-                duplicateObject?: Slides.Schema.DuplicateObjectResponse | undefined;
+                duplicateObject?:
+                    | Slides.Schema.DuplicateObjectResponse
+                    | undefined;
                 groupObjects?: Slides.Schema.GroupObjectsResponse | undefined;
-                replaceAllShapesWithImage?: Slides.Schema.ReplaceAllShapesWithImageResponse | undefined;
-                replaceAllShapesWithSheetsChart?: Slides.Schema.ReplaceAllShapesWithSheetsChartResponse | undefined;
-                replaceAllText?: Slides.Schema.ReplaceAllTextResponse | undefined;
+                replaceAllShapesWithImage?:
+                    | Slides.Schema.ReplaceAllShapesWithImageResponse
+                    | undefined;
+                replaceAllShapesWithSheetsChart?:
+                    | Slides.Schema.ReplaceAllShapesWithSheetsChartResponse
+                    | undefined;
+                replaceAllText?:
+                    | Slides.Schema.ReplaceAllTextResponse
+                    | undefined;
             }
             interface RgbColor {
                 blue?: number | undefined;
@@ -525,16 +627,22 @@ declare namespace GoogleAppsScript {
                 link?: Slides.Schema.Link | undefined;
                 outline?: Slides.Schema.Outline | undefined;
                 shadow?: Slides.Schema.Shadow | undefined;
-                shapeBackgroundFill?: Slides.Schema.ShapeBackgroundFill | undefined;
+                shapeBackgroundFill?:
+                    | Slides.Schema.ShapeBackgroundFill
+                    | undefined;
             }
             interface SheetsChart {
                 chartId?: number | undefined;
                 contentUrl?: string | undefined;
-                sheetsChartProperties?: Slides.Schema.SheetsChartProperties | undefined;
+                sheetsChartProperties?:
+                    | Slides.Schema.SheetsChartProperties
+                    | undefined;
                 spreadsheetId?: string | undefined;
             }
             interface SheetsChartProperties {
-                chartImageProperties?: Slides.Schema.ImageProperties | undefined;
+                chartImageProperties?:
+                    | Slides.Schema.ImageProperties
+                    | undefined;
             }
             interface Size {
                 height?: Slides.Schema.Dimension | undefined;
@@ -559,15 +667,21 @@ declare namespace GoogleAppsScript {
             }
             interface Table {
                 columns?: number | undefined;
-                horizontalBorderRows?: Slides.Schema.TableBorderRow[] | undefined;
+                horizontalBorderRows?:
+                    | Slides.Schema.TableBorderRow[]
+                    | undefined;
                 rows?: number | undefined;
-                tableColumns?: Slides.Schema.TableColumnProperties[] | undefined;
+                tableColumns?:
+                    | Slides.Schema.TableColumnProperties[]
+                    | undefined;
                 tableRows?: Slides.Schema.TableRow[] | undefined;
                 verticalBorderRows?: Slides.Schema.TableBorderRow[] | undefined;
             }
             interface TableBorderCell {
                 location?: Slides.Schema.TableCellLocation | undefined;
-                tableBorderProperties?: Slides.Schema.TableBorderProperties | undefined;
+                tableBorderProperties?:
+                    | Slides.Schema.TableBorderProperties
+                    | undefined;
             }
             interface TableBorderFill {
                 solidFill?: Slides.Schema.SolidFill | undefined;
@@ -584,7 +698,9 @@ declare namespace GoogleAppsScript {
                 columnSpan?: number | undefined;
                 location?: Slides.Schema.TableCellLocation | undefined;
                 rowSpan?: number | undefined;
-                tableCellProperties?: Slides.Schema.TableCellProperties | undefined;
+                tableCellProperties?:
+                    | Slides.Schema.TableCellProperties
+                    | undefined;
                 text?: Slides.Schema.TextContent | undefined;
             }
             interface TableCellBackgroundFill {
@@ -597,7 +713,9 @@ declare namespace GoogleAppsScript {
             }
             interface TableCellProperties {
                 contentAlignment?: string | undefined;
-                tableCellBackgroundFill?: Slides.Schema.TableCellBackgroundFill | undefined;
+                tableCellBackgroundFill?:
+                    | Slides.Schema.TableCellBackgroundFill
+                    | undefined;
             }
             interface TableColumnProperties {
                 columnWidth?: Slides.Schema.Dimension | undefined;
@@ -610,7 +728,9 @@ declare namespace GoogleAppsScript {
             interface TableRow {
                 rowHeight?: Slides.Schema.Dimension | undefined;
                 tableCells?: Slides.Schema.TableCell[] | undefined;
-                tableRowProperties?: Slides.Schema.TableRowProperties | undefined;
+                tableRowProperties?:
+                    | Slides.Schema.TableRowProperties
+                    | undefined;
             }
             interface TableRowProperties {
                 minRowHeight?: Slides.Schema.Dimension | undefined;
@@ -642,7 +762,9 @@ declare namespace GoogleAppsScript {
                 smallCaps?: boolean | undefined;
                 strikethrough?: boolean | undefined;
                 underline?: boolean | undefined;
-                weightedFontFamily?: Slides.Schema.WeightedFontFamily | undefined;
+                weightedFontFamily?:
+                    | Slides.Schema.WeightedFontFamily
+                    | undefined;
             }
             interface ThemeColorPair {
                 color?: Slides.Schema.RgbColor | undefined;
@@ -713,26 +835,34 @@ declare namespace GoogleAppsScript {
                 borderPosition?: string | undefined;
                 fields?: string | undefined;
                 objectId?: string | undefined;
-                tableBorderProperties?: Slides.Schema.TableBorderProperties | undefined;
+                tableBorderProperties?:
+                    | Slides.Schema.TableBorderProperties
+                    | undefined;
                 tableRange?: Slides.Schema.TableRange | undefined;
             }
             interface UpdateTableCellPropertiesRequest {
                 fields?: string | undefined;
                 objectId?: string | undefined;
-                tableCellProperties?: Slides.Schema.TableCellProperties | undefined;
+                tableCellProperties?:
+                    | Slides.Schema.TableCellProperties
+                    | undefined;
                 tableRange?: Slides.Schema.TableRange | undefined;
             }
             interface UpdateTableColumnPropertiesRequest {
                 columnIndices?: number[] | undefined;
                 fields?: string | undefined;
                 objectId?: string | undefined;
-                tableColumnProperties?: Slides.Schema.TableColumnProperties | undefined;
+                tableColumnProperties?:
+                    | Slides.Schema.TableColumnProperties
+                    | undefined;
             }
             interface UpdateTableRowPropertiesRequest {
                 fields?: string | undefined;
                 objectId?: string | undefined;
                 rowIndices?: number[] | undefined;
-                tableRowProperties?: Slides.Schema.TableRowProperties | undefined;
+                tableRowProperties?:
+                    | Slides.Schema.TableRowProperties
+                    | undefined;
             }
             interface UpdateTextStyleRequest {
                 cellLocation?: Slides.Schema.TableCellLocation | undefined;

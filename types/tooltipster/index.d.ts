@@ -110,7 +110,11 @@ declare namespace JQueryTooltipster {
          * @default null
          */
         functionFormat?:
-            | ((instance: ITooltipsterInstance, helper: ITooltipsterHelper, content: any) => string | JQuery)
+            | ((
+                  instance: ITooltipsterInstance,
+                  helper: ITooltipsterHelper,
+                  content: any,
+              ) => string | JQuery)
             | undefined;
 
         /**
@@ -122,10 +126,10 @@ declare namespace JQueryTooltipster {
          */
         functionPosition?:
             | ((
-                instance: ITooltipsterInstance,
-                helper: ITooltipsterHelper,
-                position: ITooltipPosition,
-            ) => ITooltipPosition)
+                  instance: ITooltipsterInstance,
+                  helper: ITooltipsterHelper,
+                  position: ITooltipPosition,
+              ) => ITooltipPosition)
             | undefined;
 
         /**
@@ -248,62 +252,66 @@ declare namespace JQueryTooltipster {
          * allows you to reactivate the triggers of your choice to create a customized behavior. Only applies
          * if 'trigger' is set to 'custom'. See http://iamceege.github.io/tooltipster/#triggers.
          */
-        triggerClose?: {
-            /**
-             * When a mouse click happens anywhere in the page. However, if the interactive option is set to true,
-             * a click happening inside the tooltip will not close it.
-             */
-            click?: boolean | undefined;
-            /**
-             * When the mouse goes away from the origin. The delay option is taken into account as the delay before
-             * closing.
-             */
-            mouseleave?: boolean | undefined;
-            /**
-             * When the origin is clicked by a mouse. This mimics a behavior that browsers usually have and is meant
-             * to be used with the mouseenter open trigger.
-             */
-            originClick?: boolean | undefined;
-            /**
-             * When scrolling happens in the window or in a scrollable area which is a parent of the origin.
-             */
-            scroll?: boolean | undefined;
-            /**
-             * When the finger taps (ie presses and releases) anywhere in the touch screen.
-             */
-            tap?: boolean | undefined;
-            /**
-             * When the finger is removed from the touch screen or if the interaction was stopped by the device. The
-             * delayTouch option is taken into account as the delay before closing.
-             */
-            touchleave?: boolean | undefined;
-        } | undefined;
+        triggerClose?:
+            | {
+                  /**
+                   * When a mouse click happens anywhere in the page. However, if the interactive option is set to true,
+                   * a click happening inside the tooltip will not close it.
+                   */
+                  click?: boolean | undefined;
+                  /**
+                   * When the mouse goes away from the origin. The delay option is taken into account as the delay before
+                   * closing.
+                   */
+                  mouseleave?: boolean | undefined;
+                  /**
+                   * When the origin is clicked by a mouse. This mimics a behavior that browsers usually have and is meant
+                   * to be used with the mouseenter open trigger.
+                   */
+                  originClick?: boolean | undefined;
+                  /**
+                   * When scrolling happens in the window or in a scrollable area which is a parent of the origin.
+                   */
+                  scroll?: boolean | undefined;
+                  /**
+                   * When the finger taps (ie presses and releases) anywhere in the touch screen.
+                   */
+                  tap?: boolean | undefined;
+                  /**
+                   * When the finger is removed from the touch screen or if the interaction was stopped by the device. The
+                   * delayTouch option is taken into account as the delay before closing.
+                   */
+                  touchleave?: boolean | undefined;
+              }
+            | undefined;
 
         /**
          * When 'trigger' is set to 'custom', all built-in open triggers are disabled by default. This option
          * allows you to reactivate the triggers of your choice to create a customized behavior. Only applies
          * if 'trigger' is set to 'custom'. See http://iamceege.github.io/tooltipster/#triggers.
          */
-        triggerOpen?: {
-            /**
-             * When the origin is clicked by a mouse.
-             */
-            click?: boolean | undefined;
-            /**
-             * When a mouse comes over the origin. The delay option is taken into account as the delay before
-             * opening.
-             */
-            mouseenter?: boolean | undefined;
-            /**
-             * When the origin is pressed on a touch screen. The delayTouch option is taken into account as the
-             * delay before opening.
-             */
-            touchstart?: boolean | undefined;
-            /**
-             * When the origin is tapped (ie pressed and then released) on a touch screen.
-             */
-            tap?: boolean | undefined;
-        } | undefined;
+        triggerOpen?:
+            | {
+                  /**
+                   * When the origin is clicked by a mouse.
+                   */
+                  click?: boolean | undefined;
+                  /**
+                   * When a mouse comes over the origin. The delay option is taken into account as the delay before
+                   * opening.
+                   */
+                  mouseenter?: boolean | undefined;
+                  /**
+                   * When the origin is pressed on a touch screen. The delayTouch option is taken into account as the
+                   * delay before opening.
+                   */
+                  touchstart?: boolean | undefined;
+                  /**
+                   * When the origin is tapped (ie pressed and then released) on a touch screen.
+                   */
+                  tap?: boolean | undefined;
+              }
+            | undefined;
 
         /**
          * Plays a subtle animation when the content of the tooltip is updated (if the tooltip is open). You
@@ -327,7 +335,10 @@ declare namespace JQueryTooltipster {
         zIndex?: number | undefined;
     }
 
-    type TooltipsterStandardCallbackFunction = (instance: ITooltipsterInstance, helper: ITooltipsterHelper) => void;
+    type TooltipsterStandardCallbackFunction = (
+        instance: ITooltipsterInstance,
+        helper: ITooltipsterHelper,
+    ) => void;
 
     interface ITooltipsterHelper {
         origin: HTMLElement;
@@ -504,11 +515,17 @@ declare namespace JQueryTooltipster {
          * Handle Tooltipster's `on` event coming from any instance. See http://iamceege.github.io/tooltipster/#events
          * for a complete description of available events.
          */
-        on(eventName: string, callback: (e: JQueryEventObject) => void): ITooltipsterInstance;
+        on(
+            eventName: string,
+            callback: (e: JQueryEventObject) => void,
+        ): ITooltipsterInstance;
         /**
          * Handle Tooltipster's `one` event coming from any instance.
          */
-        one(eventName: string, callback: (e: JQueryEventObject) => void): ITooltipsterInstance;
+        one(
+            eventName: string,
+            callback: (e: JQueryEventObject) => void,
+        ): ITooltipsterInstance;
         /**
          * Handle Tooltipster's `off` event coming from any instance.
          */
@@ -522,7 +539,9 @@ declare namespace JQueryTooltipster {
          * Opens the tooltip. The `callback` function argument is optional (see its input signature) and, if provided,
          * is called when the opening animation has ended
          */
-        open(callback?: TooltipsterStandardCallbackFunction): ITooltipsterInstance;
+        open(
+            callback?: TooltipsterStandardCallbackFunction,
+        ): ITooltipsterInstance;
 
         /**
          * Returns the value of an option.
@@ -563,7 +582,10 @@ declare namespace JQueryTooltipster {
          * Closes the tooltip. When the animation is over, its HTML element is destroyed (definitely removed from the
          * DOM). The `callback` function argument is optional.
          */
-        (method: "close", callback?: TooltipsterStandardCallbackFunction): JQuery;
+        (
+            method: "close",
+            callback?: TooltipsterStandardCallbackFunction,
+        ): JQuery;
 
         /**
          * Returns a tooltip's current content. If the selector matches multiple origins, only the value of the first
@@ -612,11 +634,19 @@ declare namespace JQueryTooltipster {
          * Handle Tooltipster's `on` event coming from any instance. See http://iamceege.github.io/tooltipster/#events
          * for a complete description of available events.
          */
-        (method: "on", eventName: string, callback: (e: JQueryEventObject) => void): JQuery;
+        (
+            method: "on",
+            eventName: string,
+            callback: (e: JQueryEventObject) => void,
+        ): JQuery;
         /**
          * Handle Tooltipster's `one` event coming from any instance.
          */
-        (method: "one", eventName: string, callback: (e: JQueryEventObject) => void): JQuery;
+        (
+            method: "one",
+            eventName: string,
+            callback: (e: JQueryEventObject) => void,
+        ): JQuery;
         /**
          * Handle Tooltipster's `off` event coming from any instance.
          */
@@ -630,7 +660,10 @@ declare namespace JQueryTooltipster {
          * Opens the tooltip. The `callback` function argument is optional (see its input signature) and, if provided,
          * is called when the opening animation has ended
          */
-        (method: "open", callback?: TooltipsterStandardCallbackFunction): JQuery;
+        (
+            method: "open",
+            callback?: TooltipsterStandardCallbackFunction,
+        ): JQuery;
 
         /**
          * Returns the value of an option.
@@ -677,11 +710,17 @@ declare namespace JQueryTooltipster {
          * Handle Tooltipster's `on` event coming from any instance. See http://iamceege.github.io/tooltipster/#events
          * for a complete description of available events.
          */
-        on(eventName: string, callback: (e: ITooltipEvent) => void): ITooltipsterStatic;
+        on(
+            eventName: string,
+            callback: (e: ITooltipEvent) => void,
+        ): ITooltipsterStatic;
         /**
          * Handle Tooltipster's `one` event coming from any instance.
          */
-        one(eventName: string, callback: (e: ITooltipEvent) => void): ITooltipsterStatic;
+        one(
+            eventName: string,
+            callback: (e: ITooltipEvent) => void,
+        ): ITooltipsterStatic;
         /**
          * Handle Tooltipster's `off` event coming from any instance.
          */

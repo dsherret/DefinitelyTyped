@@ -50,4 +50,6 @@ declare function valvelet<TFn extends (...args: any[]) => unknown>(
     size?: number,
 ): (
     ...args: Parameters<TFn>
-) => ReturnType<TFn> extends PromiseLike<infer TRetVal> ? Promise<TRetVal> : Promise<ReturnType<TFn>>;
+) => ReturnType<TFn> extends PromiseLike<infer TRetVal>
+    ? Promise<TRetVal>
+    : Promise<ReturnType<TFn>>;

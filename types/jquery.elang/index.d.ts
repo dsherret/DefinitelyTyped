@@ -300,5 +300,11 @@ interface IFnNewInstance {
 }
 
 interface IFnJQuery {
-    fnPlugin(context: JQuery, options: any, command: string, pluginName: string, pluginDataAttribute: string): JQuery;
+    fnPlugin(
+        context: JQuery,
+        options: any,
+        command: string,
+        pluginName: string,
+        pluginDataAttribute: string,
+    ): JQuery;
 }

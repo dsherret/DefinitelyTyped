@@ -10,6 +10,9 @@ declare namespace jsrsasign.KJUR.asn1.cades {
      * ```
      */
     class SignatureTimeStamp extends cms.Attribute {
-        constructor(params?: { res: string | ASN1Object; tst: string | ASN1Object });
+        constructor(params?: {
+            res: string | ASN1Object;
+            tst: string | ASN1Object;
+        });
     }
 }

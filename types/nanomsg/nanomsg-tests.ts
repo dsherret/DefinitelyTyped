@@ -7,12 +7,12 @@ pub.bind(addr); // $ExpectType number | null
 sub.connect(addr); // $ExpectType number | null
 
 // $ExpectType Socket
-sub.on("data", buf => {
+sub.on("data", (buf) => {
     console.log(String(buf));
     pub.close(); // $ExpectType void
     sub.close(); // $ExpectType void
 });
 
-setTimeout(_ => {
+setTimeout((_) => {
     pub.send("Hello from nanomsg!"); // $ExpectType number
 }, 100);

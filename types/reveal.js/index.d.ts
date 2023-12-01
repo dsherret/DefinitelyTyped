@@ -12,8 +12,8 @@ export = Reveal;
  * @see {@link https://revealjs.com/api/}
  */
 declare const Reveal: {
-    new(options?: Reveal.Options): Reveal.Api;
-    new(revealElement: HTMLElement, options: Reveal.Options): Reveal.Api;
+    new (options?: Reveal.Options): Reveal.Api;
+    new (revealElement: HTMLElement, options: Reveal.Options): Reveal.Api;
 } & Reveal.Api;
 
 declare namespace Reveal {
@@ -97,7 +97,12 @@ declare namespace Reveal {
          * @param fragmentIndex - Index of a fragment within the target slide to activate
          * @param origin - Origin for use in multimaster environments
          */
-        slide(horizontalIndex?: number, verticalIndex?: number, fragmentIndex?: number, origin?: number): void;
+        slide(
+            horizontalIndex?: number,
+            verticalIndex?: number,
+            fragmentIndex?: number,
+            origin?: number,
+        ): void;
 
         /**
          * Navigate to the left slide
@@ -406,7 +411,10 @@ declare namespace Reveal {
          *
          * @param slide - Slide to show
          */
-        loadSlide(slide: HTMLElement, options?: { excludeIframes?: boolean }): void;
+        loadSlide(
+            slide: HTMLElement,
+            options?: { excludeIframes?: boolean },
+        ): void;
 
         /**
          * Unloads and hides the given slide. This is called when the
@@ -653,7 +661,9 @@ declare namespace Reveal {
          * @param callback
          */
         addKeyBinding(
-            binding: string | { keyCode: number; key: string; description: string },
+            binding:
+                | string
+                | { keyCode: number; key: string; description: string },
             callback: (event: KeyboardEvent) => void,
         ): void;
 
@@ -688,7 +698,10 @@ declare namespace Reveal {
          * @param [presentationHeight=dom.wrapper.offsetHeight]
          * @returns the computed pixel size of the slides
          */
-        getComputedSlideSize(presentationWidth?: number, presentationHeight?: number): ComputedSlideSize;
+        getComputedSlideSize(
+            presentationWidth?: number,
+            presentationHeight?: number,
+        ): ComputedSlideSize;
 
         /**
          * Returns the current scale of the presentation content
@@ -942,7 +955,10 @@ declare namespace Reveal {
          *
          * @defaultValue `null`
          */
-        keyboardCondition?: null | "focused" | ((event: KeyboardEvent) => boolean);
+        keyboardCondition?:
+            | null
+            | "focused"
+            | ((event: KeyboardEvent) => boolean);
 
         /**
          * Disables the default reveal.js slide layout (scaling and centering)
@@ -1253,7 +1269,13 @@ declare namespace Reveal {
          *
          * @defaultValue `fade`
          */
-        backgroundTransition?: "none" | "fade" | "slide" | "convex" | "concave" | "zoom";
+        backgroundTransition?:
+            | "none"
+            | "fade"
+            | "slide"
+            | "convex"
+            | "concave"
+            | "zoom";
 
         // background
         // https://revealjs.com/backgrounds/#parallax-background
@@ -1283,7 +1305,14 @@ declare namespace Reveal {
          *
          * @defaultValue ``
          */
-        parallaxBackgroundRepeat?: "repeat" | "repeat-x" | "repeat-y" | "no-repeat" | "initial" | "inherit" | "";
+        parallaxBackgroundRepeat?:
+            | "repeat"
+            | "repeat-x"
+            | "repeat-y"
+            | "no-repeat"
+            | "initial"
+            | "inherit"
+            | "";
 
         /**
          * Parallax background position

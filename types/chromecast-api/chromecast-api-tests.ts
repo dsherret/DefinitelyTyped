@@ -46,85 +46,73 @@ client.on("device", (device) => {
     device.friendlyName;
     device.host;
 
-    device.play(testMedia, { startTime: 20 }, (err) => {
-    });
+    device.play(testMedia, { startTime: 20 }, (err) => {});
     device.play(testMedia, { startTime: 20 });
-    device.play(testMedia, (err) => {
-    });
+    device.play(testMedia, (err) => {});
     device.play(testMedia);
 
     device.play(
         "http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4",
         { startTime: 20 },
-        (err) => {
+        (err) => {},
+    );
+    device.play(
+        "http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4",
+        {
+            startTime: 20,
         },
     );
-    device.play("http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4", {
-        startTime: 20,
-    });
-    device.play("http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4", (err) => {
-    });
-    device.play("http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4");
+    device.play(
+        "http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4",
+        (err) => {},
+    );
+    device.play(
+        "http://commondatastorage.googleapis.com/gtv-videos-bucket/big_buck_bunny_1080p.mp4",
+    );
 
-    device.getStatus((err, status) => {
-    });
+    device.getStatus((err, status) => {});
 
-    device.getReceiverStatus((err, status) => {
-    });
+    device.getReceiverStatus((err, status) => {});
 
     device.seekTo(50);
-    device.seekTo(50, (err) => {
-    });
+    device.seekTo(50, (err) => {});
 
-    device.seek(10, (err) => {
-    });
+    device.seek(10, (err) => {});
     device.seek(10);
 
     device.pause();
-    device.pause((err) => {
-    });
+    device.pause((err) => {});
 
     device.unpause();
-    device.unpause((err) => {
-    });
+    device.unpause((err) => {});
 
     device.resume();
-    device.resume((err) => {
-    });
+    device.resume((err) => {});
 
-    device.getVolume((err, volume) => {
-    });
+    device.getVolume((err, volume) => {});
 
     device.setVolume(0.5);
-    device.setVolume(0.5, (err) => {
-    });
+    device.setVolume(0.5, (err) => {});
 
     device.stop();
-    device.stop((err) => {
-    });
+    device.stop((err) => {});
 
     device.setVolumeMuted(false);
-    device.setVolumeMuted(false, (err) => {
-    });
+    device.setVolumeMuted(false, (err) => {});
 
     device.subtitlesOff();
-    device.subtitlesOff((err) => {
-    });
+    device.subtitlesOff((err) => {});
 
     device.changeSubtitles(2);
-    device.changeSubtitles(2, (err) => {
-    });
+    device.changeSubtitles(2, (err) => {});
 
     device.changeSubtitleSize(0.5);
-    device.changeSubtitleSize(0.5, (err) => {
-    });
+    device.changeSubtitleSize(0.5, (err) => {});
 
-    device.getCurrentTime((err, time) => {
-    });
+    device.getCurrentTime((err, time) => {});
 
     device.close();
-    device.close(() => {
-    });
+    device.close(() => {});
 
     device.on("connected", () => {});
     device.on("finished", () => {});

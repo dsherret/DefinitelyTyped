@@ -42,11 +42,11 @@ const secureFormsOptions = {
     fonts: [
         {
             family: "Family 1",
-            src: "url(http://family1) type(\"woff2\")",
+            src: 'url(http://family1) type("woff2")',
         },
         {
             family: "Family 2",
-            src: "url(http://family2) type(\"woff2\")",
+            src: 'url(http://family2) type("woff2")',
         },
     ],
 };

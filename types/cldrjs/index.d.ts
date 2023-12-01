@@ -223,7 +223,7 @@ declare namespace self {
          *
          * @returns {cldr.CldrStatic} The instance of {@link cldr.CldrStatic} class.
          */
-        new(locale: string): CldrStatic;
+        new (locale: string): CldrStatic;
 
         /**
          * Allow user to override locale separator "-" (default) | "_".

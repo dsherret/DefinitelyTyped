@@ -17,7 +17,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.NumberInputWidget
      */
-    interface NumberInputWidget extends NumberInputWidget.Props, NumberInputWidget.Prototype {}
+    interface NumberInputWidget
+        extends NumberInputWidget.Props,
+            NumberInputWidget.Prototype {}
 
     namespace NumberInputWidget {
         interface ConfigOptions extends TextInputWidget.ConfigOptions {
@@ -54,7 +56,8 @@ declare namespace OO.ui {
         type Props = TextInputWidget.Props;
 
         // HACK: Omit to fix LSP violation
-        interface Prototype extends Omit<TextInputWidget.Prototype, "getRange"> {
+        interface Prototype
+            extends Omit<TextInputWidget.Prototype, "getRange"> {
             /** @deprecated */
             setAllowInteger(flag: boolean): void;
             /** @deprecated */
@@ -89,7 +92,11 @@ declare namespace OO.ui {
              * @param step If specified, the field only accepts values that are multiples
              *  of this.
              */
-            setStep(buttonStep?: number, pageStep?: number, step?: number | null): void;
+            setStep(
+                buttonStep?: number,
+                pageStep?: number,
+                step?: number | null,
+            ): void;
 
             /**
              * Get the current stepping values
@@ -115,7 +122,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): NumberInputWidget;
+            new (config?: ConfigOptions): NumberInputWidget;
             prototype: Prototype;
             static: Static;
             super: TextInputWidget.Constructor;

@@ -13,7 +13,7 @@ const importer = mysqlImport.config({
     user: "user",
     password: "test",
     database: "database",
-    onerror: err => {},
+    onerror: (err) => {},
 });
 
 importer.import("sql-file-path"); // $ExpectType Promise<void>

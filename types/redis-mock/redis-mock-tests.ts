@@ -12,14 +12,10 @@ const args: any[] = [];
 const options: redis.ClientOpts = {};
 let client: redis.RedisClient;
 let info: redis.ServerInfo;
-const resCallback: (err: Error, res: any) => void = () => {
-};
-const numCallback: (err: Error, res: number) => void = () => {
-};
-const strCallback: (err: Error, res: string) => void = () => {
-};
-const messageHandler: (channel: string, message: any) => void = () => {
-};
+const resCallback: (err: Error, res: any) => void = () => {};
+const numCallback: (err: Error, res: number) => void = () => {};
+const strCallback: (err: Error, res: string) => void = () => {};
+const messageHandler: (channel: string, message: any) => void = () => {};
 
 // ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----
 
@@ -101,7 +97,8 @@ client.publish(str, value);
 client.subscribe(str);
 
 // Multi
-client.multi()
+client
+    .multi()
     .scard(str)
     .smembers(str)
     .keys("*", resCallback)

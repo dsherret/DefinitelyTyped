@@ -14,10 +14,12 @@ const store1: Store = new pgSession({
 });
 
 const app = express();
-app.use(session({
-    store: store1,
-    secret: "foo",
-}));
+app.use(
+    session({
+        store: store1,
+        secret: "foo",
+    }),
+);
 
 const store2: Store = new pgSession({
     conString: "postgres://postgres@localhost:5432/foo",
@@ -43,7 +45,7 @@ store4.close();
 
 store4.pruneSessions();
 
-store4.pruneSessions(err => console.log(err));
+store4.pruneSessions((err) => console.log(err));
 
 const store5 = new pgSession({
     disableTouch: true,

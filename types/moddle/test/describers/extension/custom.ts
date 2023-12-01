@@ -5,12 +5,8 @@ export default {
     types: [
         {
             name: "CustomRoot",
-            superClass: [
-                "Base",
-            ],
-            extends: [
-                "b:Root",
-            ],
+            superClass: ["Base"],
+            extends: ["b:Root"],
             properties: [
                 {
                     name: "customAttr",
@@ -36,9 +32,7 @@ export default {
         },
         {
             name: "CustomGeneric",
-            superClass: [
-                "Element",
-            ],
+            superClass: ["Element"],
             properties: [
                 {
                     name: "count",
@@ -49,9 +43,7 @@ export default {
         },
         {
             name: "Property",
-            superClass: [
-                "Element",
-            ],
+            superClass: ["Element"],
             properties: [
                 {
                     name: "key",

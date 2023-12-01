@@ -34,6 +34,9 @@ interface Options {
  * @param dir The directory to start at. Defaults to the current working directory.
  * @param options Optional settings for the walk.
  */
-declare function pathsGenerator(dir?: string, options?: Options): AsyncGenerator<string, void, void>;
+declare function pathsGenerator(
+    dir?: string,
+    options?: Options,
+): AsyncGenerator<string, void, void>;
 
 export = pathsGenerator;

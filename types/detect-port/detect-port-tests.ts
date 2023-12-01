@@ -19,10 +19,10 @@ function* yieldSyntax() {
  */
 detect()
     .then((_port: number) => {})
-    .catch(err => {});
+    .catch((err) => {});
 detect(port)
     .then((_port: number) => {})
-    .catch(err => {});
+    .catch((err) => {});
 
 /**
  * port config usage
@@ -31,7 +31,7 @@ detect({ hostname, callback: (err: Error, _port: number) => {} });
 detect({ port, hostname, callback: (err: Error, _port: number) => {} });
 detect({ hostname })
     .then((_port: number) => {})
-    .catch(err => {});
+    .catch((err) => {});
 detect({ port, hostname })
     .then((_port: number) => {})
-    .catch(err => {});
+    .catch((err) => {});

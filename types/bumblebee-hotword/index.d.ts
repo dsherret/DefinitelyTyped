@@ -16,7 +16,10 @@ declare class Bumblebee extends EventEmitter {
     detectionCallback(keyword: string): void;
     errorCallback(e: Error): void;
     audioProcessCallback(data: any, sampleRate: any): void;
-    audioAnalyserCallback(audioAnalyser: AnalyserNode, gainNode: GainNode): void;
+    audioAnalyserCallback(
+        audioAnalyser: AnalyserNode,
+        gainNode: GainNode,
+    ): void;
     start(): void;
     setMuted(muted: boolean): void;
     setMicVolume(vol: number): void;
@@ -30,7 +33,10 @@ declare namespace Bumblebee {
             downsamplerScript: string,
             errorCallback: (e: Error) => void,
             audioProcessCallback: (data: any) => void,
-            audioContextCallback: (analyzer: AnalyserNode, gainNode: GainNode) => void,
+            audioContextCallback: (
+                analyzer: AnalyserNode,
+                gainNode: GainNode,
+            ) => void,
         ): void;
         stop(): void;
     }

@@ -4,10 +4,12 @@ import { Readable } from "stream";
 
 interface BigPipeOption {
     skipAnalysis?: boolean | undefined;
-    tpl?: {
-        _default?: string | undefined;
-        quickling?: string | undefined;
-    } | undefined;
+    tpl?:
+        | {
+              _default?: string | undefined;
+              quickling?: string | undefined;
+          }
+        | undefined;
 }
 
 type Callback = (done: (err: any, data: any) => any) => any;
@@ -48,7 +50,10 @@ declare namespace yogBigpipe {
 
         addPagelet(obj: AddPageletConfig): void;
 
-        isQuicklingWidget(item: { "mode": Pagelet.mode; [key: string]: any }): void;
+        isQuicklingWidget(item: {
+            mode: Pagelet.mode;
+            [key: string]: any;
+        }): void;
 
         render(): void;
 
@@ -71,7 +76,7 @@ declare namespace yogBigpipe {
         _markPageletRendered(pagelet: Pagelet): void;
     }
 
-    type PageletConstructor<T> = new(obj: PageletOption) => T;
+    type PageletConstructor<T> = new (obj: PageletOption) => T;
 
     interface PageletOption {
         id: string;

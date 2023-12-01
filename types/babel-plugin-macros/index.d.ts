@@ -27,4 +27,7 @@ declare namespace babelPluginMacros {
     function createMacro(handler: MacroHandler, options?: Options): any;
 }
 
-declare function babelPluginMacros(babel: typeof Babel, options: any): Babel.PluginObj;
+declare function babelPluginMacros(
+    babel: typeof Babel,
+    options: any,
+): Babel.PluginObj;

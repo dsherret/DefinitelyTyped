@@ -50,13 +50,16 @@ const MyComponent = () => (
 
 function testCreateWaitingContext() {
     const { createWaitingContext } = useWait();
-    const { startWaiting, endWaiting, isWaiting, Wait } = createWaitingContext("creating user");
+    const { startWaiting, endWaiting, isWaiting, Wait } =
+        createWaitingContext("creating user");
     return (
         <div>
             <Wait fallback={<Spinner />}>
                 <button onClick={startWaiting}>Create user</button>
             </Wait>
-            <button disabled={isWaiting()} onClick={endWaiting}>Cancel</button>
+            <button disabled={isWaiting()} onClick={endWaiting}>
+                Cancel
+            </button>
         </div>
     );
 }
@@ -65,7 +68,9 @@ function testWaiters() {
     const { waiters } = useWait();
     return (
         <ul>
-            {waiters.map((waiter, index) => <li key={index}>{waiter}</li>)}
+            {waiters.map((waiter, index) => (
+                <li key={index}>{waiter}</li>
+            ))}
         </ul>
     );
 }

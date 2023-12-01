@@ -1,9 +1,12 @@
 import * as React from "react";
 import styled from "styled-components";
-import Modal, { BaseModalBackground as BackgroundComponent, ModalProvider } from "styled-react-modal";
+import Modal, {
+    BaseModalBackground as BackgroundComponent,
+    ModalProvider,
+} from "styled-react-modal";
 
 const background = styled.div`
-    background: rgba(0,0,0,.3);
+    background: rgba(0, 0, 0, 0.3);
 `;
 
 // Padding through a custom backgroundComponent
@@ -46,9 +49,7 @@ const test2 = (
 // Minimal Setup
 const test3 = (
     <ModalProvider>
-        <Modal isOpen={true}>
-            Modal Content!
-        </Modal>
+        <Modal isOpen={true}>Modal Content!</Modal>
     </ModalProvider>
 );
 
@@ -58,7 +59,10 @@ const StyledModal = Modal.styled`
 
 const test4 = (
     <ModalProvider>
-        <StyledModal isOpen={true} onBackgroundClick={() => console.log("Background click!")}>
+        <StyledModal
+            isOpen={true}
+            onBackgroundClick={() => console.log("Background click!")}
+        >
             Modal Content!
         </StyledModal>
     </ModalProvider>

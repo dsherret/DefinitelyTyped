@@ -20,10 +20,7 @@ class Test extends React.Component<any> {
     render() {
         return (
             <View>
-                <Button
-                    onPress={() => this.showToast()}
-                    title="Show Toast"
-                />
+                <Button onPress={() => this.showToast()} title="Show Toast" />
             </View>
         );
     }

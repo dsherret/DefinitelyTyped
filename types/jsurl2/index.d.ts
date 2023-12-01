@@ -19,11 +19,18 @@ export interface ParseOptions {
 }
 
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics -- allows the user to specify a specific type that they expect the string to parse to
-export function parse<T extends object>(urlFragment: string, options?: ParseOptions): T;
+export function parse<T extends object>(
+    urlFragment: string,
+    options?: ParseOptions,
+): T;
 
 /**
  * Same as `parse`, but returns `defaultValue` instead of throwing on error.
  */
-export function tryParse<T extends object>(urlFragment: string, defaultValue: T, options?: ParseOptions): T;
+export function tryParse<T extends object>(
+    urlFragment: string,
+    defaultValue: T,
+    options?: ParseOptions,
+): T;
 
 export as namespace JSURL2;

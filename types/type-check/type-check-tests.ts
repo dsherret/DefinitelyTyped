@@ -62,11 +62,11 @@ typeCheck("RegExp{source: String, ...}", { source: "re" }); // false
 
 console.log("===>testing custom types");
 // Custom types:
-var opt = <TypeCheck.Options> {
+var opt = <TypeCheck.Options>{
     customTypes: {
         Even: {
             typeOf: "Number",
-            validate: function(x: number) {
+            validate: function (x: number) {
                 console.log("=>testing even");
                 return x % 2 === 0;
             },
@@ -75,11 +75,11 @@ var opt = <TypeCheck.Options> {
 };
 typeCheck("Even", 2, opt); // true
 
-opt = <TypeCheck.Options> {
+opt = <TypeCheck.Options>{
     customTypes: {
         Odd: {
             typeOf: "Number",
-            validate: function(x: number) {
+            validate: function (x: number) {
                 console.log("=>testing odd");
                 return x % 2 !== 0;
             },
@@ -90,8 +90,12 @@ typeCheck("Odd", 3, opt); // true
 
 console.log("===>testing nested types");
 // Nested:
-var type = "{a: (String, [Number], {y: Array, ...}), b: Error{message: String, ...}}";
-typeCheck(type, { a: ["hi", [1, 2, 3], { y: [1, "ms"] }], b: new Error("oh no") }); // true
+var type =
+    "{a: (String, [Number], {y: Array, ...}), b: Error{message: String, ...}}";
+typeCheck(type, {
+    a: ["hi", [1, 2, 3], { y: [1, "ms"] }],
+    b: new Error("oh no"),
+}); // true
 
 console.log("===>testing parseType function");
 // parseType(type);

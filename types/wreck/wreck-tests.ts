@@ -23,7 +23,7 @@ var options = {
     rejectUnauthorized: true,
 };
 
-var optionalCallback = function(err: any, res: any) {
+var optionalCallback = function (err: any, res: any) {
     /* handle err if it exists, in which case res will be undefined */
 
     // buffer the response stream

@@ -35,7 +35,11 @@ declare namespace urlencode {
      * @param obj Query Object
      * @param charsetParam The charset for parsing
      */
-    function stringify(obj: any, prefix?: charsetParam, charsetParam?: charsetParam): string;
+    function stringify(
+        obj: any,
+        prefix?: charsetParam,
+        charsetParam?: charsetParam,
+    ): string;
 }
 
 export = urlencode;

@@ -5,7 +5,10 @@ export class AtlasTexture extends Texture {
     private mSubTextures;
     private __parseAtlasData;
     getTexture(name: string): Texture;
-    getTextures(nameMask?: string | null, outTextures?: Texture[] | null): Texture[];
+    getTextures(
+        nameMask?: string | null,
+        outTextures?: Texture[] | null,
+    ): Texture[];
     get subTextures(): any;
 }
 import { Texture } from "./Texture";

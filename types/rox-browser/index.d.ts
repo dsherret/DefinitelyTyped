@@ -88,9 +88,18 @@ declare namespace Rox {
      * Note that you might have to call unfreeze after setting custom properties such as email after login
      * https://docs.cloudbees.com/docs/cloudbees-feature-flags/latest/feature-releases/custom-properties
      */
-    function setCustomNumberProperty(name: string, value: number | ((context?: unknown) => number)): void;
-    function setCustomStringProperty(name: string, value: string | ((context?: unknown) => string)): void;
-    function setCustomBooleanProperty(name: string, value: boolean | ((context?: unknown) => boolean)): void;
+    function setCustomNumberProperty(
+        name: string,
+        value: number | ((context?: unknown) => number),
+    ): void;
+    function setCustomStringProperty(
+        name: string,
+        value: string | ((context?: unknown) => string),
+    ): void;
+    function setCustomBooleanProperty(
+        name: string,
+        value: boolean | ((context?: unknown) => boolean),
+    ): void;
 
     // https://docs.cloudbees.com/docs/cloudbees-feature-flags-api/latest/api-reference/javascript-browser-api#_setuserspaceunhandlederrorhandler
     function setUserspaceUnhandledErrorHandler(
@@ -258,17 +267,29 @@ declare namespace Rox {
         /**
          * Getting boolean value of a flag
          */
-        function isEnabled(nameSpacedFlagName: string, defaultValue: boolean, context?: unknown): boolean;
+        function isEnabled(
+            nameSpacedFlagName: string,
+            defaultValue: boolean,
+            context?: unknown,
+        ): boolean;
 
         /**
          * Getting string value of a string flag
          */
-        function value(nameSpacedFlagName: string, defaultValue: string, context?: unknown): string;
+        function value(
+            nameSpacedFlagName: string,
+            defaultValue: string,
+            context?: unknown,
+        ): string;
 
         /**
          * Getting string value of a number flag
          */
-        function getNumber(nameSpacedFlagName: string, defaultValue: number, context?: unknown): number;
+        function getNumber(
+            nameSpacedFlagName: string,
+            defaultValue: number,
+            context?: unknown,
+        ): number;
     }
 
     const flags: readonly Flag[];

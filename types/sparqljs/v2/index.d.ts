@@ -1,12 +1,12 @@
 export const Parser: {
-    new(
+    new (
         prefixes?: { [prefix: string]: string },
         baseIRI?: string,
     ): SparqlParser;
 };
 
 export const Generator: {
-    new(options?: GeneratorOptions): SparqlGenerator;
+    new (options?: GeneratorOptions): SparqlGenerator;
 };
 
 export interface GeneratorOptions {
@@ -37,10 +37,12 @@ export interface SelectQuery extends BaseQuery {
     queryType: "SELECT";
     variables: Variable[] | ["*"];
     distinct?: boolean | undefined;
-    from?: {
-        default: string[];
-        named: string[];
-    } | undefined;
+    from?:
+        | {
+              default: string[];
+              named: string[];
+          }
+        | undefined;
     reduced?: boolean | undefined;
     group?: Grouping[] | undefined;
     having?: Expression[] | undefined;

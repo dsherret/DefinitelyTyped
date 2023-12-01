@@ -14,12 +14,14 @@ interface AutoLaunchOptions {
     /**
      * For Mac-only options.
      */
-    mac?: {
-        /**
-         * By default, AppleScript is used to add a Login Item. If this is `true`, Launch Agent will be used to auto-launch your app. Defaults is `false`.
-         */
-        useLaunchAgent?: boolean | undefined;
-    } | undefined;
+    mac?:
+        | {
+              /**
+               * By default, AppleScript is used to add a Login Item. If this is `true`, Launch Agent will be used to auto-launch your app. Defaults is `false`.
+               */
+              useLaunchAgent?: boolean | undefined;
+          }
+        | undefined;
 }
 
 declare class AutoLaunch {

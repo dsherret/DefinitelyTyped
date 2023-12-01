@@ -11,7 +11,10 @@ const didShow: Promise<boolean> = SafariView.show({
 
 const listener = (): void => {};
 
-const subscription: EmitterSubscription = SafariView.addEventListener("onShow", listener);
+const subscription: EmitterSubscription = SafariView.addEventListener(
+    "onShow",
+    listener,
+);
 
 SafariView.removeEventListener("onShow", listener);
 

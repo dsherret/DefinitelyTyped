@@ -26,6 +26,9 @@ declare namespace pkginfo {
     function factory(opts: Options, callback: Callback): () => void;
 }
 
-declare function pkginfo(opts: pkginfo.Options, callback: pkginfo.Callback): void;
+declare function pkginfo(
+    opts: pkginfo.Options,
+    callback: pkginfo.Callback,
+): void;
 
 export = pkginfo;

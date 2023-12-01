@@ -22,10 +22,14 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.PopupTagMultiselectWidget
      */
-    interface PopupTagMultiselectWidget extends PopupTagMultiselectWidget.Props, PopupTagMultiselectWidget.Prototype {}
+    interface PopupTagMultiselectWidget
+        extends PopupTagMultiselectWidget.Props,
+            PopupTagMultiselectWidget.Prototype {}
 
     namespace PopupTagMultiselectWidget {
-        interface ConfigOptions extends TagMultiselectWidget.ConfigOptions, mixin.PopupElement.ConfigOptions {
+        interface ConfigOptions
+            extends TagMultiselectWidget.ConfigOptions,
+                mixin.PopupElement.ConfigOptions {
             /**
              * An overlay for the popup.
              * See <https://www.mediawiki.org/wiki/OOUI/Concepts#Overlays>.
@@ -48,7 +52,9 @@ declare namespace OO.ui {
             $overlay: JQuery;
         }
 
-        interface Prototype extends TagMultiselectWidget.Prototype, mixin.PopupElement {
+        interface Prototype
+            extends TagMultiselectWidget.Prototype,
+                mixin.PopupElement {
             /**
              * Respond to popup toggle event
              *
@@ -75,7 +81,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): PopupTagMultiselectWidget;
+            new (config?: ConfigOptions): PopupTagMultiselectWidget;
             prototype: Prototype;
             static: Static;
             super: TagMultiselectWidget.Constructor;

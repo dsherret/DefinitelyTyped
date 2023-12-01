@@ -69,7 +69,12 @@ if (elem.requestFullscreen) {
 
 window.onload = () => {
     navigator.geolocation.getCurrentPosition((position) => {
-        console.log("lat", position.coords.latitude, "lon", position.coords.longitude);
+        console.log(
+            "lat",
+            position.coords.latitude,
+            "lon",
+            position.coords.longitude,
+        );
     });
 };
 
@@ -104,16 +109,20 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
         multiple_mounts: true,
         source: "network",
     },
-    platforms: [{
-        nacl_arch: "x86-64",
-        sub_package_path: "_platform_specific/x86-64/",
-    }, {
-        nacl_arch: "x86-32",
-        sub_package_path: "_platform_specific/x86-32/",
-    }, {
-        nacl_arch: "arm",
-        sub_package_path: "_platform_specific/arm/",
-    }],
+    platforms: [
+        {
+            nacl_arch: "x86-64",
+            sub_package_path: "_platform_specific/x86-64/",
+        },
+        {
+            nacl_arch: "x86-32",
+            sub_package_path: "_platform_specific/x86-32/",
+        },
+        {
+            nacl_arch: "arm",
+            sub_package_path: "_platform_specific/arm/",
+        },
+    ],
     permissions: [
         "https://www.google-analytics.com/*",
         "http://localhost:8080/*",
@@ -194,10 +203,12 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
         "tts",
         "syncFileSystem",
         {
-            usbDevices: [{
-                vendorId: 10168,
-                productId: 493,
-            }],
+            usbDevices: [
+                {
+                    vendorId: 10168,
+                    productId: 493,
+                },
+            ],
         },
     ],
     storage: {
@@ -221,15 +232,11 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
     url_handlers: {
         wiki_article: {
             title: "View Wikipedia article",
-            matches: [
-                "*://en.wikipedia.org/wiki/*",
-            ],
+            matches: ["*://en.wikipedia.org/wiki/*"],
         },
         mobile_wiki_article: {
             title: "View Wikipedia article",
-            matches: [
-                "*://en.m.wikipedia.org/wiki/*",
-            ],
+            matches: ["*://en.m.wikipedia.org/wiki/*"],
         },
         google_drive_open: {
             matches: ["https://api.chromerestclient.com/GDrive.html*"],
@@ -239,7 +246,11 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
     sockets: {
         tcpServer: { listen: "" },
         tcp: { connect: ["*:5555", "*:5559"] },
-        udp: { bind: ["*:5554", "*:5556"], multicastMembership: "", send: ["*:5554", "*:5556"] },
+        udp: {
+            bind: ["*:5554", "*:5556"],
+            multicastMembership: "",
+            send: ["*:5554", "*:5556"],
+        },
     },
     optional_permissions: [
         "debugger",
@@ -252,12 +263,16 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
     webview: {
         partitions: [
             {
-                "name": "blockable",
-                "accessible_resources": ["browser.css", "blocked.css", "blocked.html"],
+                name: "blockable",
+                accessible_resources: [
+                    "browser.css",
+                    "blocked.css",
+                    "blocked.html",
+                ],
             },
             {
-                "accessible_resources": ["player.*", "migrate.*"],
-                "name": "player",
+                accessible_resources: ["player.*", "migrate.*"],
+                name: "player",
             },
         ],
     },
@@ -288,21 +303,15 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
         },
     },
     sandbox: {
-        content_security_policy:
-            `sandbox allow-scripts allow-popups; script-src 'self' 'unsafe-inline' 'unsafe - eval' https://ssl.google-analytics.com/ga.js;`,
+        content_security_policy: `sandbox allow-scripts allow-popups; script-src 'self' 'unsafe-inline' 'unsafe - eval' https://ssl.google-analytics.com/ga.js;`,
         pages: ["sandbox.html"],
     },
     file_handlers: {
         image: {
-            types: [
-                "image/png",
-                "image/jpeg",
-            ],
+            types: ["image/png", "image/jpeg"],
         },
         text: {
-            types: [
-                "text/*",
-            ],
+            types: ["text/*"],
             extensions: [
                 "abap",
                 "as",
@@ -380,10 +389,7 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
             ],
         },
         any: {
-            extensions: [
-                "skrifa",
-                "skrup",
-            ],
+            extensions: ["skrifa", "skrup"],
         },
         cab: {
             extensions: ["cab"],
@@ -407,7 +413,11 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
         },
         lha: {
             extensions: ["lha", "lzh"],
-            types: ["application/x-lha", "application/x-lzh", "application/x-lzh-compressed"],
+            types: [
+                "application/x-lha",
+                "application/x-lzh",
+                "application/x-lzh-compressed",
+            ],
         },
         lz4: {
             extensions: ["lz4"],
@@ -427,11 +437,18 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
         },
         rpm: {
             extensions: ["rpm"],
-            types: ["application/x-rpm", "application/x-redhat-package-manager"],
+            types: [
+                "application/x-rpm",
+                "application/x-redhat-package-manager",
+            ],
         },
         tar: {
             extensions: ["gtar", "tar", "tgz", "tbz2", "txz", "tz"],
-            types: ["application/x-tar", "application/x-gtar", "application/x-gtar-compressed"],
+            types: [
+                "application/x-tar",
+                "application/x-gtar",
+                "application/x-gtar-compressed",
+            ],
         },
         xz: {
             extensions: ["lzma", "xz"],
@@ -439,7 +456,10 @@ const ManifestJSONTest1: chrome.runtime.Manifest = {
         },
         zip: {
             extensions: ["apk", "crx", "jar"],
-            types: ["application/java-archive", "application/x-chrome-extension"],
+            types: [
+                "application/java-archive",
+                "application/x-chrome-extension",
+            ],
         },
     },
     requirements: {
@@ -503,16 +523,20 @@ chrome.alarms.onAlarm.addListener((alarm) => {
 cwindow.WindowType.PANEL;
 cwindow.State.FULLSCREEN;
 
-chrome.app.runtime.onLaunched.addListener(function() {
-    chrome.app.window.create("index.html", {
-        "left": 10,
-        "top": 10,
-        "width": 400,
-        "height": 500,
-        "frame": "none",
-    }, (win) => {
-        win.onClosed.addListener(() => {});
-    });
+chrome.app.runtime.onLaunched.addListener(function () {
+    chrome.app.window.create(
+        "index.html",
+        {
+            left: 10,
+            top: 10,
+            width: 400,
+            height: 500,
+            frame: "none",
+        },
+        (win) => {
+            win.onClosed.addListener(() => {});
+        },
+    );
 });
 
 const createOptions: chrome.app.CreateWindowOptions = {
@@ -527,11 +551,17 @@ const createOptions: chrome.app.CreateWindowOptions = {
 };
 
 // Create new window on app launch
-chrome.app.runtime.onLaunched.addListener((launchData: chrome.app.runtime.LaunchData) => {
-    chrome.app.window.create("app/url", createOptions, (created_window: chrome.app.AppWindow) => {
-        return;
-    });
-});
+chrome.app.runtime.onLaunched.addListener(
+    (launchData: chrome.app.runtime.LaunchData) => {
+        chrome.app.window.create(
+            "app/url",
+            createOptions,
+            (created_window: chrome.app.AppWindow) => {
+                return;
+            },
+        );
+    },
+);
 
 chrome.app.runtime.onRestarted.addListener(() => {
     return;
@@ -563,7 +593,8 @@ currentWindow.onRestored.addListener(() => {
 });
 
 // check platform capabilities
-var visibleEverywhere: boolean = chrome.app.window.canSetVisibleOnAllWorkspaces();
+var visibleEverywhere: boolean =
+    chrome.app.window.canSetVisibleOnAllWorkspaces();
 
 let serviceId: any = null;
 
@@ -573,8 +604,8 @@ const runApp = () => {
         frame: "none",
         alphaEnabled: true, // Permission: 'app.window.alpha'
         bounds: {
-            "width": 1024,
-            "height": 768,
+            width: 1024,
+            height: 768,
         },
     };
 
@@ -588,18 +619,24 @@ const runApp = () => {
     chrome.app.window.create("test.html", options, (theWindow) => {
         // Test setShape as provided by the permission 'app.window.shape'
         theWindow.setShape([{ left: 100, top: 50, width: 50, height: 100 }]);
-        theWindow.setShape([{ left: 100, top: 50, width: 50, height: 100 }, {
-            left: 200,
-            top: 100,
-            width: 50,
-            height: 50,
-        }]);
+        theWindow.setShape([
+            { left: 100, top: 50, width: 50, height: 100 },
+            {
+                left: 200,
+                top: 100,
+                width: 50,
+                height: 50,
+            },
+        ]);
         theWindow.onClosed.addListener(() => {
             if (serviceId) {
                 console.log("Unregistering service: " + serviceId);
-                chrome.bluetoothLowEnergy.unregisterService(serviceId, (status) => {
-                    console.log("Unregister service status = " + status);
-                });
+                chrome.bluetoothLowEnergy.unregisterService(
+                    serviceId,
+                    (status) => {
+                        console.log("Unregister service status = " + status);
+                    },
+                );
             }
         });
     });
@@ -657,8 +694,8 @@ var view = new Uint8Array(buffer);
 // constants taken from here:
 // https://github.com/ytai/ioio/wiki/
 view[2] = 4;
-view[3] = pin << 2 | level;
-level = (level == 0) ? 1 : 0;
+view[3] = (pin << 2) | level;
+level = level == 0 ? 1 : 0;
 
 var connectToDevice = (result: chrome.bluetooth.Device[]) => {
     if (chrome.runtime.lastError) {
@@ -670,7 +707,9 @@ var connectToDevice = (result: chrome.bluetooth.Device[]) => {
         return;
     }
     for (const device of result) {
-        console.log("Connecting to device: " + device.name + " @ " + device.address);
+        console.log(
+            "Connecting to device: " + device.name + " @ " + device.address,
+        );
         chrome.bluetoothSocket.create((socket) => {
             chrome.bluetoothSocket.connect(
                 socket.socketId,
@@ -684,14 +723,16 @@ var connectToDevice = (result: chrome.bluetooth.Device[]) => {
 
 var connectCallback = (socket: chrome.sockets.CreateInfo) => {
     if (socket) {
-        console.log("Connected!  Socket ID is: " + socket.socketId + " on service ");
+        console.log(
+            "Connected!  Socket ID is: " + socket.socketId + " on service ",
+        );
         // Set pin0 as output.
         var buffer = new ArrayBuffer(2);
         var view = new Uint8Array(buffer);
         // constants taken from here:
         // https://github.com/ytai/ioio/wiki/
         view[0] = 3;
-        view[1] = pin << 2 | 2;
+        view[1] = (pin << 2) | 2;
         chrome.bluetoothSocket.send(socket.socketId, buffer, (bytes) => {
             if (chrome.runtime.lastError) {
                 console.log("Write error: " + chrome.runtime.lastError.message);
@@ -723,7 +764,9 @@ chrome.bluetooth.onDeviceAdded.addListener((device) => {
     // The device has a service with the desired UUID.
     chrome.bluetoothLowEnergy.connect(device.address, () => {
         if (chrome.runtime.lastError) {
-            console.log("Failed to connect: " + chrome.runtime.lastError.message);
+            console.log(
+                "Failed to connect: " + chrome.runtime.lastError.message,
+            );
             return;
         }
         // Connected! Do stuff...
@@ -734,19 +777,34 @@ const uuid = "1105";
 
 chrome.bluetooth.getDevices((devices) => {
     chrome.bluetoothSocket.create((createInfo) => {
-        chrome.bluetoothSocket.connect(createInfo.socketId, devices[0].address, uuid, () => {
-            if (chrome.runtime.lastError) {
-                console.log("Connection failed: " + chrome.runtime.lastError.message);
-            } else {
-                chrome.bluetoothSocket.send(createInfo.socketId, new ArrayBuffer(4096), (bytes_sent) => {
-                    if (chrome.runtime.lastError) {
-                        console.log("Send failed: " + chrome.runtime.lastError.message);
-                    } else {
-                        console.log("Sent " + bytes_sent + " bytes");
-                    }
-                });
-            }
-        });
+        chrome.bluetoothSocket.connect(
+            createInfo.socketId,
+            devices[0].address,
+            uuid,
+            () => {
+                if (chrome.runtime.lastError) {
+                    console.log(
+                        "Connection failed: " +
+                            chrome.runtime.lastError.message,
+                    );
+                } else {
+                    chrome.bluetoothSocket.send(
+                        createInfo.socketId,
+                        new ArrayBuffer(4096),
+                        (bytes_sent) => {
+                            if (chrome.runtime.lastError) {
+                                console.log(
+                                    "Send failed: " +
+                                        chrome.runtime.lastError.message,
+                                );
+                            } else {
+                                console.log("Sent " + bytes_sent + " bytes");
+                            }
+                        },
+                    );
+                }
+            },
+        );
         chrome.bluetoothSocket.onReceive.addListener((receiveInfo) => {
             if (receiveInfo.socketId != createInfo.socketId) {
                 return;
@@ -768,11 +826,14 @@ chrome.browser.openTab({ url: "https://github.com" }, () => {});
 // #region chrome.certificateProvider
 
 const requestId = 555;
-chrome.certificateProvider.requestPin({ signRequestId: requestId }, (codeVal) => {
-    if (codeVal) {
-        return codeVal.userInput;
-    }
-});
+chrome.certificateProvider.requestPin(
+    { signRequestId: requestId },
+    (codeVal) => {
+        if (codeVal) {
+            return codeVal.userInput;
+        }
+    },
+);
 
 chrome.certificateProvider.stopPinRequest({ signRequestId: requestId }, () => {
     if (chrome.runtime.lastError) {
@@ -780,28 +841,37 @@ chrome.certificateProvider.stopPinRequest({ signRequestId: requestId }, () => {
     }
 });
 
-chrome.certificateProvider.onCertificatesRequested.addListener((certifictes, callback) => {
-    for (const cert of certifictes) {
-        if (cert.supportedHashes !== undefined && cert.certificate !== undefined) {
-            cert.supportedHashes.map(hash => {
-                return [hash, cert.certificate];
-            });
+chrome.certificateProvider.onCertificatesRequested.addListener(
+    (certifictes, callback) => {
+        for (const cert of certifictes) {
+            if (
+                cert.supportedHashes !== undefined &&
+                cert.certificate !== undefined
+            ) {
+                cert.supportedHashes.map((hash) => {
+                    return [hash, cert.certificate];
+                });
+            }
         }
-    }
-});
+    },
+);
 
-chrome.certificateProvider.onSignDigestRequested.addListener((signRequest, signCallback) => {
-    if (signRequest.hash == "SHA1") {
-        signCallback(signRequest.certificate);
-    }
-});
+chrome.certificateProvider.onSignDigestRequested.addListener(
+    (signRequest, signCallback) => {
+        if (signRequest.hash == "SHA1") {
+            signCallback(signRequest.certificate);
+        }
+    },
+);
 
 // #endregion
 
 // #region chrome.clipboard
 
 const copyTextData = (text: string) => {
-    var input = document.getElementById("copy_text") as HTMLInputElement || new HTMLInputElement();
+    var input =
+        (document.getElementById("copy_text") as HTMLInputElement) ||
+        new HTMLInputElement();
     input.value = text;
     input.focus();
     input.select();
@@ -824,9 +894,14 @@ function setImageDataClipboard(
         var arrayBuffer = oReq.response;
         if (arrayBuffer) {
             if (additionalItems) {
-                chrome.clipboard.setImageData(arrayBuffer, imageType, additionalItems, () => {
-                    return;
-                });
+                chrome.clipboard.setImageData(
+                    arrayBuffer,
+                    imageType,
+                    additionalItems,
+                    () => {
+                        return;
+                    },
+                );
             } else {
                 chrome.clipboard.setImageData(arrayBuffer, imageType);
             }
@@ -863,7 +938,10 @@ chrome.contextMenus.onClicked.addListener((info) => {
 // #region chrome.desktopCapture
 
 chrome.desktopCapture.chooseDesktopMedia(["screen", "window", "tab"], () => {});
-chrome.desktopCapture.chooseDesktopMedia([chrome.desktopCapture.DesktopCaptureSourceType.AUDIO], () => {});
+chrome.desktopCapture.chooseDesktopMedia(
+    [chrome.desktopCapture.DesktopCaptureSourceType.AUDIO],
+    () => {},
+);
 
 // #endregion
 
@@ -877,16 +955,19 @@ chrome.dns.resolve("github.com", (info) => {
 
 // #region chrome.documentScan
 
-chrome.documentScan.scan({
-    maxImages: 100,
-    mimeTypes: ["image/jpeg"],
-}, (results) => {
-    results.dataUrls.map(urlData => {
-        var scannedImage = document.createElement("img");
-        scannedImage.title = "Mime type: " + results.mimeType;
-        scannedImage.src = urlData;
-    });
-});
+chrome.documentScan.scan(
+    {
+        maxImages: 100,
+        mimeTypes: ["image/jpeg"],
+    },
+    (results) => {
+        results.dataUrls.map((urlData) => {
+            var scannedImage = document.createElement("img");
+            scannedImage.title = "Mime type: " + results.mimeType;
+            scannedImage.src = urlData;
+        });
+    },
+);
 
 // #endregion
 
@@ -896,7 +977,10 @@ chrome.documentScan.scan({
 const deviceAttr = chrome.enterprise.deviceAttributes;
 
 if (deviceAttr.getDirectoryDeviceId && deviceAttr.getDeviceAssetId) {
-    if (deviceAttr.getDeviceSerialNumber && deviceAttr.getDeviceAnnotatedLocation) {
+    if (
+        deviceAttr.getDeviceSerialNumber &&
+        deviceAttr.getDeviceAnnotatedLocation
+    ) {
         void deviceAttr.getDirectoryDeviceId;
         void deviceAttr.getDeviceAssetId;
         void deviceAttr.getDeviceSerialNumber;
@@ -908,9 +992,15 @@ if (deviceAttr.getDirectoryDeviceId && deviceAttr.getDeviceAssetId) {
 chrome.enterprise.deviceAttributes.getDirectoryDeviceId((deviceId) => {
     return deviceId.substring(0, deviceId.length - 1);
 });
-chrome.enterprise.deviceAttributes.getDeviceSerialNumber((sn) => console.log(sn.trim()));
-chrome.enterprise.deviceAttributes.getDeviceAssetId((assetId) => console.log(assetId.toLowerCase()));
-chrome.enterprise.deviceAttributes.getDeviceAnnotatedLocation((loc) => loc.charAt(0));
+chrome.enterprise.deviceAttributes.getDeviceSerialNumber((sn) =>
+    console.log(sn.trim()),
+);
+chrome.enterprise.deviceAttributes.getDeviceAssetId((assetId) =>
+    console.log(assetId.toLowerCase()),
+);
+chrome.enterprise.deviceAttributes.getDeviceAnnotatedLocation((loc) =>
+    loc.charAt(0),
+);
 
 // ENTERPRISE - PLATFORM KEYS
 
@@ -922,10 +1012,18 @@ if (chrome.enterprise.platformKeys.getTokens as any) {
     }
 }
 const tokenId = "tokenid....";
-chrome.enterprise.platformKeys.importCertificate(tokenId, new ArrayBuffer(8), () => {});
+chrome.enterprise.platformKeys.importCertificate(
+    tokenId,
+    new ArrayBuffer(8),
+    () => {},
+);
 chrome.enterprise.platformKeys.getCertificates(tokenId, (certificates) => {
     certificates.map((cert) => {
-        chrome.enterprise.platformKeys.removeCertificate(tokenId, cert, () => {});
+        chrome.enterprise.platformKeys.removeCertificate(
+            tokenId,
+            cert,
+            () => {},
+        );
     });
 });
 chrome.enterprise.platformKeys.getTokens((tokens) => {
@@ -938,14 +1036,19 @@ chrome.enterprise.platformKeys.getTokens((tokens) => {
             name: "SHA-1",
         },
     };
-    tokens.map(token => {
-        token.subtleCrypto.generateKey(algorithm, false, ["sign"]).then((val) => {
-        });
+    tokens.map((token) => {
+        token.subtleCrypto
+            .generateKey(algorithm, false, ["sign"])
+            .then((val) => {});
     });
 });
 
 chrome.enterprise.platformKeys.challengeKey(
-    { scope: "MACHINE", challenge: new Uint8Array(), registerKey: { algorithm: "ECDSA" } },
+    {
+        scope: "MACHINE",
+        challenge: new Uint8Array(),
+        registerKey: { algorithm: "ECDSA" },
+    },
     () => {},
 );
 
@@ -981,7 +1084,19 @@ chrome.fileBrowserHandler.onExecute.addListener((id, details) => {
 
 ((): void => {
     var accepts: chrome.fileSystem.AcceptOptions[] = [
-        { mimeTypes: ["text/*"], extensions: ["js", "css", "txt", "html", "xml", "tsv", "csv", "rtf"] },
+        {
+            mimeTypes: ["text/*"],
+            extensions: [
+                "js",
+                "css",
+                "txt",
+                "html",
+                "xml",
+                "tsv",
+                "csv",
+                "rtf",
+            ],
+        },
     ];
     var chooseOption: chrome.fileSystem.ChooseEntryOptions = {
         type: "openFile",
@@ -996,7 +1111,10 @@ chrome.fileBrowserHandler.onExecute.addListener((id, details) => {
         var retainedId = chrome.fileSystem.retainEntry(entry);
         chrome.fileSystem.isRestorable(retainedId, (isRestorable: boolean) => {
             if (isRestorable) {
-                chrome.fileSystem.restoreEntry(retainedId, (restoredEntry: Entry) => {});
+                chrome.fileSystem.restoreEntry(
+                    retainedId,
+                    (restoredEntry: Entry) => {},
+                );
             }
         });
 
@@ -1005,16 +1123,19 @@ chrome.fileBrowserHandler.onExecute.addListener((id, details) => {
     });
 })();
 chrome.app.runtime.onLaunched.addListener(() => {
-    chrome.app.window.create("index.html", { width: 100, height: 100 }, win => {
-        var fs = win.contentWindow.chrome.fileSystem;
-        fs.chooseEntry({ type: "saveFile" }, (entry) => {
-            fs.getWritableEntry(entry, (writableEntry) => {
-                var id = fs.retainEntry(entry);
-                chrome.storage.local.set({ id: id }, () => {
+    chrome.app.window.create(
+        "index.html",
+        { width: 100, height: 100 },
+        (win) => {
+            var fs = win.contentWindow.chrome.fileSystem;
+            fs.chooseEntry({ type: "saveFile" }, (entry) => {
+                fs.getWritableEntry(entry, (writableEntry) => {
+                    var id = fs.retainEntry(entry);
+                    chrome.storage.local.set({ id: id }, () => {});
                 });
             });
-        });
-    });
+        },
+    );
 });
 
 // #endregion
@@ -1045,33 +1166,35 @@ chrome.hid.getDevices({}, () => {});
 chrome.hid.onDeviceAdded.addListener(() => {});
 chrome.hid.onDeviceRemoved.addListener(() => {});
 
-chrome.hid.getDevices({
-    filters: [
-        { vendorId: 5 },
-    ],
-}, (devices) => {
-    const productId = devices[0].productId;
-    chrome.hid.getUserSelectedDevices((selectedDevices) => {
-        const hmm = selectedDevices.productId == productId
-            ? selectedDevices.vendorId
-            : selectedDevices.maxFeatureReportSize;
-    });
-    chrome.hid.connect(devices[0].deviceId, (connectInfo) => {
-        if (!connectInfo) {
-            console.warn("Unable to connect to device.");
-        }
-        const connection = connectInfo.connectionId;
-    });
-    chrome.hid.getUserSelectedDevices({ "multiple": false }, (devices) => {
-        if (chrome.runtime.lastError != undefined) {
-            console.warn(
-                "chrome.hid.getUserSelectedDevices error: "
-                    + chrome.runtime.lastError.message,
-            );
-            return;
-        }
-    });
-});
+chrome.hid.getDevices(
+    {
+        filters: [{ vendorId: 5 }],
+    },
+    (devices) => {
+        const productId = devices[0].productId;
+        chrome.hid.getUserSelectedDevices((selectedDevices) => {
+            const hmm =
+                selectedDevices.productId == productId
+                    ? selectedDevices.vendorId
+                    : selectedDevices.maxFeatureReportSize;
+        });
+        chrome.hid.connect(devices[0].deviceId, (connectInfo) => {
+            if (!connectInfo) {
+                console.warn("Unable to connect to device.");
+            }
+            const connection = connectInfo.connectionId;
+        });
+        chrome.hid.getUserSelectedDevices({ multiple: false }, (devices) => {
+            if (chrome.runtime.lastError != undefined) {
+                console.warn(
+                    "chrome.hid.getUserSelectedDevices error: " +
+                        chrome.runtime.lastError.message,
+                );
+                return;
+            }
+        });
+    },
+);
 
 // #endregion
 
@@ -1118,7 +1241,11 @@ chrome.instanceID.getID((instanceId) => {
         chrome.instanceID.getCreationTime((creationTime) => {
             if (creationTime !== 0) {
                 chrome.instanceID.getToken(
-                    { "authorizedEntity": "1", "scope": "GCM", "options": { "foo": "1" } },
+                    {
+                        authorizedEntity: "1",
+                        scope: "GCM",
+                        options: { foo: "1" },
+                    },
                     (token) => {
                         return token;
                     },
@@ -1142,38 +1269,46 @@ chrome.management.getSelf((result) => {
     if (result.isApp) {
         return "Of course!";
     } else {
-        chrome.management.uninstallSelf({
-            showConfirmDialog: false,
-        }, () => console.log("Goodbye"));
+        chrome.management.uninstallSelf(
+            {
+                showConfirmDialog: false,
+            },
+            () => console.log("Goodbye"),
+        );
     }
 });
 // #endregion
 
 // #region chrome.mdns
+chrome.mdns.onServiceList.addListener(() => {}, {
+    serviceType: "definitelyTyped._tcp.local",
+});
 chrome.mdns.onServiceList.addListener(
-    () => {},
-    { "serviceType": "definitelyTyped._tcp.local" },
+    function (services) {
+        chrome.mdns.forceDiscovery(() => {
+            return chrome.mdns.MAX_SERVICE_INSTANCES_PER_EVENT === 2048;
+        });
+    },
+    { serviceType: "_googlecast._tcp.local" },
 );
-chrome.mdns.onServiceList.addListener(function(services) {
-    chrome.mdns.forceDiscovery(() => {
-        return chrome.mdns.MAX_SERVICE_INSTANCES_PER_EVENT === 2048;
-    });
-}, { "serviceType": "_googlecast._tcp.local" });
 // #endregion
 
 // #region chrome.mediaGalleries
 
 chrome.fileSystem.getVolumeList((volumes) => {
-    chrome.fileSystem.requestFileSystem({
-        volumeId: volumes[0].volumeId,
-    }, (fs) => {
-        const mData = chrome.mediaGalleries.getMediaFileSystemMetadata(fs);
-        chrome.mediaGalleries.addGalleryWatch(mData.galleryId, (result) => {
-            if (result.success) {
-                console.log("Media gallery id", result.galleryId);
-            }
-        });
-    });
+    chrome.fileSystem.requestFileSystem(
+        {
+            volumeId: volumes[0].volumeId,
+        },
+        (fs) => {
+            const mData = chrome.mediaGalleries.getMediaFileSystemMetadata(fs);
+            chrome.mediaGalleries.addGalleryWatch(mData.galleryId, (result) => {
+                if (result.success) {
+                    console.log("Media gallery id", result.galleryId);
+                }
+            });
+        },
+    );
 });
 
 // #endregion
@@ -1200,26 +1335,22 @@ const TLSFormatExample = {
             AutoConnect: false,
             EAP: {
                 ClientCertPattern: {
-                    EnrollmentURI: [
-                        "http://fetch-my-certificate.com",
-                    ],
-                    IssuerCARef: [
-                        "{6ed8dce9-64c8-d568-d225d7e467e37828}",
-                    ],
+                    EnrollmentURI: ["http://fetch-my-certificate.com"],
+                    IssuerCARef: ["{6ed8dce9-64c8-d568-d225d7e467e37828}"],
                 },
-                "ClientCertType": "Pattern",
-                "Outer": "EAP-TLS",
-                "ServerCARef": "{6ed8dce9-64c8-d568-d225d7e467e37828}",
-                "UseSystemCAs": true,
+                ClientCertType: "Pattern",
+                Outer: "EAP-TLS",
+                ServerCARef: "{6ed8dce9-64c8-d568-d225d7e467e37828}",
+                UseSystemCAs: true,
             },
-            "HiddenSSID": false,
-            "SSID": "MyTTLSNetwork",
-            "Security": "WPA-EAP",
+            HiddenSSID: false,
+            SSID: "MyTTLSNetwork",
+            Security: "WPA-EAP",
         },
     } as chrome.networking.onc.NetworkConfigProperties,
 };
 
-chrome.networking.onc.getNetworks({ "networkType": "All" }, (networkList) => {
+chrome.networking.onc.getNetworks({ networkType: "All" }, (networkList) => {
     console.log("Length of Network list: " + networkList.length);
     for (let networkObj of networkList) {
         console.log("GUID: " + networkObj.GUID);
@@ -1242,15 +1373,18 @@ chrome.networking.onc.getNetworks({ "networkType": "All" }, (networkList) => {
             const wifiState = state.WiFi || {};
             return wifiState.TetheringState;
         });
-        chrome.networking.onc.getManagedProperties(networkObj.GUID || "", (result) => {
-            const wifiResult = result.WiFi;
-            if (wifiResult !== undefined) {
-                const managed = wifiResult.HexSSID;
-                if (managed !== undefined) {
-                    return managed.UserPolicy;
+        chrome.networking.onc.getManagedProperties(
+            networkObj.GUID || "",
+            (result) => {
+                const wifiResult = result.WiFi;
+                if (wifiResult !== undefined) {
+                    const managed = wifiResult.HexSSID;
+                    if (managed !== undefined) {
+                        return managed.UserPolicy;
+                    }
                 }
-            }
-        });
+            },
+        );
     }
 });
 
@@ -1260,26 +1394,27 @@ chrome.networking.onc.getNetworks({ "networkType": "All" }, (networkList) => {
 
 let nID: string;
 
-chrome.notifications.create({
-    type: "basic",
-    iconUrl: "stay_hydrated.png",
-    title: "Time to Hydrate",
-    message: "Everyday I'm Guzzlin'!",
-    buttons: [
-        { title: "Keep it Flowing." },
-    ],
-    priority: 0,
-}, (notificationId) => {
-    nID = notificationId;
-    chrome.notifications.update(nID, {
-        title: "Updated title",
-    });
-    chrome.notifications.onButtonClicked.addListener((_id, buttonIndex) => {
-        if (buttonIndex === 0) {
-            chrome.notifications.clear(nID, function() {});
-        }
-    });
-});
+chrome.notifications.create(
+    {
+        type: "basic",
+        iconUrl: "stay_hydrated.png",
+        title: "Time to Hydrate",
+        message: "Everyday I'm Guzzlin'!",
+        buttons: [{ title: "Keep it Flowing." }],
+        priority: 0,
+    },
+    (notificationId) => {
+        nID = notificationId;
+        chrome.notifications.update(nID, {
+            title: "Updated title",
+        });
+        chrome.notifications.onButtonClicked.addListener((_id, buttonIndex) => {
+            if (buttonIndex === 0) {
+                chrome.notifications.clear(nID, function () {});
+            }
+        });
+    },
+);
 
 // #endregion
 
@@ -1307,8 +1442,7 @@ function requestCA1(): chrome.platformKeys.ClientCertificateRequest {
 }
 chrome.platformKeys.selectClientCertificates(
     { interactive: false, request: requestCA1() },
-    (matches) => {
-    },
+    (matches) => {},
 );
 
 const requestECDSA: chrome.platformKeys.ClientCertificateRequest = {
@@ -1323,10 +1457,10 @@ chrome.platformKeys.selectClientCertificates(
 );
 
 if (
-    chrome.platformKeys.subtleCrypto
-    && chrome.platformKeys.subtleCrypto()
-    && chrome.platformKeys.subtleCrypto().sign
-    && chrome.platformKeys.subtleCrypto().exportKey
+    chrome.platformKeys.subtleCrypto &&
+    chrome.platformKeys.subtleCrypto() &&
+    chrome.platformKeys.subtleCrypto().sign &&
+    chrome.platformKeys.subtleCrypto().exportKey
 ) {
     void chrome.platformKeys.subtleCrypto().sign;
     void chrome.platformKeys.subtleCrypto().exportKey;
@@ -1350,15 +1484,16 @@ chrome.platformKeys.getKeyPair(
         };
 
         if (
-            expectedAlgorithm === publicKey.algorithm
-            && privateKey
-            && expectedAlgorithm === privateKey.algorithm
+            expectedAlgorithm === publicKey.algorithm &&
+            privateKey &&
+            expectedAlgorithm === privateKey.algorithm
         ) {
             if (publicKey.type === "public" && privateKey.type === "private") {
                 console.log("All okay!");
             }
         }
-        chrome.platformKeys.subtleCrypto()
+        chrome.platformKeys
+            .subtleCrypto()
             .exportKey("spki", publicKey)
             .then((actualPublicKeySpki) => {
                 if (new ArrayBuffer(100) === actualPublicKeySpki) {
@@ -1371,12 +1506,9 @@ var details = {
     serverCertificateChain: [data.client_1_issuer_dn.buffer],
     hostname: "l1_leaf",
 };
-chrome.platformKeys.verifyTLSServerCertificate(
-    details,
-    (result) => {
-        return result.trusted;
-    },
-);
+chrome.platformKeys.verifyTLSServerCertificate(details, (result) => {
+    return result.trusted;
+});
 // #endregion
 
 // #region chrome.permissions
@@ -1397,11 +1529,11 @@ chrome.permissions.getAll((permissions) => {
             return removed ? "It was removed" : "It was not removed";
         });
     }
-    chrome.permissions.contains({ origins: ["chrome://favicon/"] }, (doIHaveIt) => doIHaveIt ? "yes" : "neh");
-    chrome.permissions.request(
-        { permissions: ["audio"] },
-        () => {},
+    chrome.permissions.contains(
+        { origins: ["chrome://favicon/"] },
+        (doIHaveIt) => (doIHaveIt ? "yes" : "neh"),
     );
+    chrome.permissions.request({ permissions: ["audio"] }, () => {});
 });
 
 // #endregion
@@ -1415,11 +1547,13 @@ chrome.power.requestKeepAwake("display");
 
 // #region chrome.runtime
 
-chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
-    sendResponse({
-        "result": "Ops, I don't understand this message",
-    });
-});
+chrome.runtime.onMessageExternal.addListener(
+    (request, sender, sendResponse) => {
+        sendResponse({
+            result: "Ops, I don't understand this message",
+        });
+    },
+);
 chrome.runtime.sendMessage(
     chrome.runtime.id,
     { myCustomMessage: "tra laa la" },
@@ -1430,9 +1564,14 @@ chrome.runtime.sendMessage(
 );
 
 chrome.runtime.getPackageDirectoryEntry((pentry) => {
-    pentry.getFile("manifest.json", undefined, (file) => {
-        return file.name;
-    }, err => console.error(err));
+    pentry.getFile(
+        "manifest.json",
+        undefined,
+        (file) => {
+            return file.name;
+        },
+        (err) => console.error(err),
+    );
 });
 
 chrome.runtime.reload();
@@ -1522,22 +1661,33 @@ function test_socketsTcp(): void {
     chrome.sockets.tcp.disconnect(socketId, () => {});
 
     // send
-    chrome.sockets.tcp.send(socketId, buffer, (info: chrome.sockets.SendInfo) => {});
+    chrome.sockets.tcp.send(
+        socketId,
+        buffer,
+        (info: chrome.sockets.SendInfo) => {},
+    );
 
     // close
     chrome.sockets.tcp.close(socketId);
     chrome.sockets.tcp.close(socketId, () => {});
 
     // getInfo
-    chrome.sockets.tcp.getInfo(socketId, (info: chrome.sockets.SocketInfo) => {});
+    chrome.sockets.tcp.getInfo(
+        socketId,
+        (info: chrome.sockets.SocketInfo) => {},
+    );
 
     // getSockets
     chrome.sockets.tcp.getSockets((infos: chrome.sockets.SocketInfo[]) => {});
 }
 
 function test_socketsTcpEvents(): void {
-    chrome.sockets.tcp.onReceive.addListener((info: chrome.sockets.ReceiveEventArgs) => {});
-    chrome.sockets.tcp.onReceiveError.addListener((info: chrome.sockets.ReceiveErrorEventArgs) => {});
+    chrome.sockets.tcp.onReceive.addListener(
+        (info: chrome.sockets.ReceiveEventArgs) => {},
+    );
+    chrome.sockets.tcp.onReceiveError.addListener(
+        (info: chrome.sockets.ReceiveErrorEventArgs) => {},
+    );
 }
 
 function testSocketsTcpTypes(): void {
@@ -1597,14 +1747,23 @@ function test_socketsUdp(): void {
     chrome.sockets.udp.bind(socketId, "0.0.0.0", 8080, (result) => {});
 
     // send
-    chrome.sockets.udp.send(socketId, buffer, "172.21.0.1", 10080, (info: chrome.sockets.SendInfo) => {});
+    chrome.sockets.udp.send(
+        socketId,
+        buffer,
+        "172.21.0.1",
+        10080,
+        (info: chrome.sockets.SendInfo) => {},
+    );
 
     // close
     chrome.sockets.udp.close(socketId);
     chrome.sockets.udp.close(socketId, () => {});
 
     // getInfo
-    chrome.sockets.udp.getInfo(socketId, (info: chrome.sockets.SocketInfo) => {});
+    chrome.sockets.udp.getInfo(
+        socketId,
+        (info: chrome.sockets.SocketInfo) => {},
+    );
 
     // getSockets
     chrome.sockets.udp.getSockets((infos: chrome.sockets.SocketInfo[]) => {});
@@ -1626,8 +1785,12 @@ function test_socketsUdp(): void {
 }
 
 function test_socketsUdpEvents(): void {
-    chrome.sockets.udp.onReceive.addListener((info: chrome.sockets.ReceiveEventArgs) => {});
-    chrome.sockets.udp.onReceiveError.addListener((info: chrome.sockets.ReceiveErrorEventArgs) => {});
+    chrome.sockets.udp.onReceive.addListener(
+        (info: chrome.sockets.ReceiveEventArgs) => {},
+    );
+    chrome.sockets.udp.onReceiveError.addListener(
+        (info: chrome.sockets.ReceiveErrorEventArgs) => {},
+    );
 }
 
 function testSocketsUdpTypes(): void {
@@ -1683,7 +1846,13 @@ function test_socketsTcpServer(): void {
 
     // listen
     chrome.sockets.tcpServer.listen(socketId, "0.0.0.0", 80, (result) => {});
-    chrome.sockets.tcpServer.listen(socketId, "0.0.0.0", 80, 128, (result) => {});
+    chrome.sockets.tcpServer.listen(
+        socketId,
+        "0.0.0.0",
+        80,
+        128,
+        (result) => {},
+    );
 
     // disconnect
     chrome.sockets.tcp.disconnect(socketId);
@@ -1694,15 +1863,22 @@ function test_socketsTcpServer(): void {
     chrome.sockets.udp.close(socketId, () => {});
 
     // getInfo
-    chrome.sockets.udp.getInfo(socketId, (info: chrome.sockets.SocketInfo) => {});
+    chrome.sockets.udp.getInfo(
+        socketId,
+        (info: chrome.sockets.SocketInfo) => {},
+    );
 
     // getSockets
     chrome.sockets.tcp.getSockets((infos: chrome.sockets.SocketInfo[]) => {});
 }
 
 function test_socketsTcpServerEvents(): void {
-    chrome.sockets.tcpServer.onAccept.addListener((info: chrome.sockets.AcceptEventArgs) => {});
-    chrome.sockets.tcpServer.onAcceptError.addListener((info: chrome.sockets.AcceptErrorEventArgs) => {});
+    chrome.sockets.tcpServer.onAccept.addListener(
+        (info: chrome.sockets.AcceptEventArgs) => {},
+    );
+    chrome.sockets.tcpServer.onAcceptError.addListener(
+        (info: chrome.sockets.AcceptErrorEventArgs) => {},
+    );
 }
 
 function testSocketsTcpServerTypes(): void {
@@ -1731,9 +1907,14 @@ function testSocketsTcpServerTypes(): void {
 }
 
 chrome.sockets.udp.create({}, (createInfo) => {
-    chrome.sockets.udp.bind(createInfo["socketId"], "192.168.1.22", 0, (result) => {
-        (result >= 0) ? createInfo["socketId"] : null;
-    });
+    chrome.sockets.udp.bind(
+        createInfo["socketId"],
+        "192.168.1.22",
+        0,
+        (result) => {
+            result >= 0 ? createInfo["socketId"] : null;
+        },
+    );
 });
 
 // #endregion
@@ -1746,7 +1927,7 @@ chrome.storage.local.clear(() => {});
 chrome.storage.local.get("test", () => {});
 chrome.storage.local.get(() => {});
 chrome.storage.local.getBytesInUse((bytesInUse) => {
-    return (bytesInUse > 100);
+    return bytesInUse > 100;
 });
 chrome.storage.local.set({ data: "example" }, () => {
     console.log("done");
@@ -1758,7 +1939,7 @@ chrome.storage.sync.clear(() => {});
 chrome.storage.sync.get("test", () => {});
 chrome.storage.sync.get(() => {});
 chrome.storage.sync.getBytesInUse((bytesInUse) => {
-    return (bytesInUse > 100);
+    return bytesInUse > 100;
 });
 chrome.storage.sync.set({ data: "example" }, () => {
     console.log("done");
@@ -1768,7 +1949,7 @@ chrome.storage.sync.set({ data: "example" }, () => {
 chrome.storage.managed.get("test", () => {});
 chrome.storage.managed.get(() => {});
 chrome.storage.managed.getBytesInUse((bytesInUse) => {
-    return (bytesInUse > 100);
+    return bytesInUse > 100;
 });
 // chrome.storage.managed.set({ data: 'example' }, () => { console.log('done'); }); // Should not be allowed
 
@@ -1795,18 +1976,21 @@ chrome.syncFileSystem.getConflictResolutionPolicy((policy) => {
 // #region chrome.system.*
 
 function getPowerSourceInfo() {
-    chrome.system.powerSource.getPowerSourceInfo(info => {
+    chrome.system.powerSource.getPowerSourceInfo((info) => {
         if (info === undefined) {
             return true;
         }
-        if (info.length === 1 && info[0].type !== chrome.system.powerSource.PowerSourceType.mains) {
+        if (
+            info.length === 1 &&
+            info[0].type !== chrome.system.powerSource.PowerSourceType.mains
+        ) {
             return false;
         }
     });
 }
 
 function onPowerChanged() {
-    chrome.system.powerSource.onPowerChanged.addListener(info => {
+    chrome.system.powerSource.onPowerChanged.addListener((info) => {
         if (info[0].active) {
             return true;
         }
@@ -1815,9 +1999,11 @@ function onPowerChanged() {
 }
 
 async function logDisplayActiveState() {
-    const displays: chrome.system.display.DisplayInfo[] = await new Promise(res => {
-        chrome.system.display.getInfo(res);
-    });
+    const displays: chrome.system.display.DisplayInfo[] = await new Promise(
+        (res) => {
+            chrome.system.display.getInfo(res);
+        },
+    );
     displays.forEach((display: chrome.system.display.DisplayInfo) => {
         console.log("activeState: ", display.activeState);
     });
@@ -1839,7 +2025,7 @@ async function getCpuInfo() {
         });
     }
 
-    chrome.system.cpu.getInfo(cpuInfo => {
+    chrome.system.cpu.getInfo((cpuInfo) => {
         logCpuInfo(cpuInfo);
     });
 
@@ -1871,14 +2057,20 @@ chrome.usb.onDeviceRemoved.addListener((device) => {
     // tslint:disable-next-line:no-dynamic-delete
     delete devices[device.device];
 });
-chrome.usb.getUserSelectedDevices({
-    "multiple": false,
-}, (selected_devices) => {
-    if (chrome.runtime.lastError != undefined) {
-        console.warn("chrome.usb.getUserSelectedDevices error: " + chrome.runtime.lastError.message);
-        return;
-    }
-});
+chrome.usb.getUserSelectedDevices(
+    {
+        multiple: false,
+    },
+    (selected_devices) => {
+        if (chrome.runtime.lastError != undefined) {
+            console.warn(
+                "chrome.usb.getUserSelectedDevices error: " +
+                    chrome.runtime.lastError.message,
+            );
+            return;
+        }
+    },
+);
 
 // #endregion
 
@@ -1892,7 +2084,7 @@ chrome.virtualKeyboard.restrictFeatures(
         handwritingEnabled: false,
     },
     (update) => {
-        if (update.autoCompleteEnabled = false) {
+        if ((update.autoCompleteEnabled = false)) {
             return true;
         }
     },
@@ -1910,7 +2102,12 @@ const vpnParams = {
     reconnect: true,
 };
 chrome.vpnProvider.onConfigCreated.addListener((id, name, data) => {
-    console.log("Connected: ", id.toLowerCase(), name.toUpperCase(), JSON.stringify(data));
+    console.log(
+        "Connected: ",
+        id.toLowerCase(),
+        name.toUpperCase(),
+        JSON.stringify(data),
+    );
 });
 chrome.vpnProvider.createConfig("Local VPN", (id) => {
     chrome.vpnProvider.setParameters(vpnParams, () => {
@@ -1919,10 +2116,12 @@ chrome.vpnProvider.createConfig("Local VPN", (id) => {
             throw chrome.runtime.lastError;
         }
         chrome.vpnProvider.notifyConnectionStateChanged("connected", () => {
-            chrome.vpnProvider.onPacketReceived.addListener(data => {
+            chrome.vpnProvider.onPacketReceived.addListener((data) => {
                 return data.byteLength > 0 ? data : undefined;
             });
-            chrome.vpnProvider.onConfigRemoved.addListener(id => id.toUpperCase());
+            chrome.vpnProvider.onConfigRemoved.addListener((id) =>
+                id.toUpperCase(),
+            );
             chrome.vpnProvider.onPlatformMessage.addListener((id, message) => {
                 if (typeof id === "string") {
                     return message === "connected";
@@ -1939,17 +2138,23 @@ chrome.vpnProvider.createConfig("Local VPN", (id) => {
 // #endregion
 
 // #region chrome.wallpaper
-chrome.wallpaper.setWallpaper({
-    url: "chrome://favicon/iconurl/https://www.google.com/favicon.ico",
-    layout: "CENTER_CROPPED",
-    filename: "test_wallpaper",
-}, (thumbnail) => {
-    const imageUrl = thumbnail;
-});
-chrome.wallpaper.setWallpaper({
-    layout: chrome.wallpaper.WallpaperLayout.STRETCH,
-    filename: "test_wallpaper2",
-}, () => {});
+chrome.wallpaper.setWallpaper(
+    {
+        url: "chrome://favicon/iconurl/https://www.google.com/favicon.ico",
+        layout: "CENTER_CROPPED",
+        filename: "test_wallpaper",
+    },
+    (thumbnail) => {
+        const imageUrl = thumbnail;
+    },
+);
+chrome.wallpaper.setWallpaper(
+    {
+        layout: chrome.wallpaper.WallpaperLayout.STRETCH,
+        filename: "test_wallpaper2",
+    },
+    () => {},
+);
 // #endregion
 
 // #region chrome.webViewRequest & WebView
@@ -2014,21 +2219,19 @@ onload = () => {
         },
     );
     webview.focus();
-    var blob = new Blob(["<html><body>Blob content</body></html>"], { type: "text/html" });
+    var blob = new Blob(["<html><body>Blob content</body></html>"], {
+        type: "text/html",
+    });
     var blobURL = URL.createObjectURL(blob);
     webview.src = blobURL;
     webview.onloadstop = null;
     const rule = {
         conditions: [
-            new chrome.webViewRequest.RequestMatcher(
-                {
-                    url: { urlContains: "guest" },
-                },
-            ),
+            new chrome.webViewRequest.RequestMatcher({
+                url: { urlContains: "guest" },
+            }),
         ],
-        actions: [
-            new chrome.webViewRequest.CancelRequest(),
-        ],
+        actions: [new chrome.webViewRequest.CancelRequest()],
     };
     webview.request.onRequest.addRules([rule]);
     webview.addEventListener("loadabort", (e) => {
@@ -2051,25 +2254,27 @@ onload = () => {
     });
     webview.insertCSS({ code: "" }, () => {});
     webview.loadDataWithBaseUrl(
-        "data:text/html;base64,PGh0bWw+CiAgVGhpcyBpcy"
-            + "BhIHRlc3QuPGJyPgogIDxpbWcgc3JjPSJ0ZXN0LmJtcCI+PGJyPgo8L2h0bWw+Cg==",
+        "data:text/html;base64,PGh0bWw+CiAgVGhpcyBpcy" +
+            "BhIHRlc3QuPGJyPgogIDxpbWcgc3JjPSJ0ZXN0LmJtcCI+PGJyPgo8L2h0bWw+Cg==",
         "https://github.com/",
         "chrome://favicon",
     );
     document.body.appendChild(webview);
     webview.onconsolemessage = () => {};
     webview.onloadstop = () => {
-        webview.request.onCompleted.addListener((details) => {
-            if (details.url) {
-                return true;
-            }
-        }, { urls: ["<all_urls>"] });
+        webview.request.onCompleted.addListener(
+            (details) => {
+                if (details.url) {
+                    return true;
+                }
+            },
+            { urls: ["<all_urls>"] },
+        );
     };
     webview.setAttribute("src", WEBVIEW_SRC);
     webview.partition = "partitionFromManifest";
     webview.removeAttribute("src");
-    webview.insertCSS({ code: "" }, () => {
-    });
+    webview.insertCSS({ code: "" }, () => {});
 };
 
 wve.request.onBeforeRequest.addListener(
@@ -2083,38 +2288,38 @@ wve.request.onBeforeRequest.addListener(
 const rule: chrome.webViewRequest.OnRequestRule = {
     conditions: [
         // new chrome.webViewRequest.CancelRequest(), // This is incompatible - should break it :)
-        new chrome.webViewRequest.RequestMatcher({ url: { hostSuffix: "example.com" } }),
+        new chrome.webViewRequest.RequestMatcher({
+            url: { hostSuffix: "example.com" },
+        }),
     ],
     actions: [
         new chrome.webViewRequest.CancelRequest(),
         new chrome.webViewRequest.IgnoreRules({
-            "lowerPriorityThan": 1000,
+            lowerPriorityThan: 1000,
         }),
         new chrome.webViewRequest.SendMessageToExtension({
-            "message": JSON.stringify({
-                "type": "error",
-                "action": "cancelled",
+            message: JSON.stringify({
+                type: "error",
+                action: "cancelled",
             }),
         }),
     ],
 };
 
 new chrome.webViewRequest.RequestMatcher({
-    "url": { "urlMatches": ".*" },
-    "resourceType": [
-        "image",
-    ],
+    url: { urlMatches: ".*" },
+    resourceType: ["image"],
 });
 
 new chrome.webViewRequest.RedirectRequest({ redirectUrl: "http://127.0.0.1" });
 
 new chrome.webViewRequest.RedirectByRegEx({
-    "from": "^.*:\/\/([^/]*)[^#?]*\/([^#?]*)([#?].*)?$",
-    "to": "http://dummyimage.com/xga/000/0f0.png&text=BLOCKED:$1/.../$2",
+    from: "^.*://([^/]*)[^#?]*/([^#?]*)([#?].*)?$",
+    to: "http://dummyimage.com/xga/000/0f0.png&text=BLOCKED:$1/.../$2",
 });
 
 new chrome.webViewRequest.RequestMatcher({
-    "url": { "hostSuffix": "dummyimage.com" },
+    url: { hostSuffix: "dummyimage.com" },
 });
 
 wve.request.onRequest.addRules([rule]);
@@ -2134,25 +2339,26 @@ function CreateWebViewAndGuest() {
         webview.removeEventListener("loadabort", onLoadAbort);
     };
 
-    webview.src = "data:text/html,<!DOCTYPE html>\n"
-        + "<style>\n"
-        + "select {\n"
-        + "  position: absolute;\n"
-        + "  top: 9px;\n"
-        + "  left: 9px;\n"
-        + "  height: 25px;\n"
-        + "  width: 80px;\n"
-        + "}\n"
-        + "</style>\n"
-        + "<html>\n"
-        + "  <body>\n"
-        + "    <select>\n"
-        + "      <option selected>Apple</option>\n"
-        + "      <option>Orange</option>\n"
-        + "      <option>Banana</option>\n"
-        + "    </select>\n"
-        + "  </body>\n"
-        + "</html>\n";
+    webview.src =
+        "data:text/html,<!DOCTYPE html>\n" +
+        "<style>\n" +
+        "select {\n" +
+        "  position: absolute;\n" +
+        "  top: 9px;\n" +
+        "  left: 9px;\n" +
+        "  height: 25px;\n" +
+        "  width: 80px;\n" +
+        "}\n" +
+        "</style>\n" +
+        "<html>\n" +
+        "  <body>\n" +
+        "    <select>\n" +
+        "      <option selected>Apple</option>\n" +
+        "      <option>Orange</option>\n" +
+        "      <option>Banana</option>\n" +
+        "    </select>\n" +
+        "  </body>\n" +
+        "</html>\n";
 
     return webview;
 }

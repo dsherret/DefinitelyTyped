@@ -31,9 +31,18 @@ declare namespace createjs {
         static getBackIn(amount: number): (amount: number) => number;
         static getBackInOut(amount: number): (amount: number) => number;
         static getBackOut(amount: number): (amount: number) => number;
-        static getElasticIn(amplitude: number, period: number): (amount: number) => number;
-        static getElasticInOut(amplitude: number, period: number): (amount: number) => number;
-        static getElasticOut(amplitude: number, period: number): (amount: number) => number;
+        static getElasticIn(
+            amplitude: number,
+            period: number,
+        ): (amount: number) => number;
+        static getElasticInOut(
+            amplitude: number,
+            period: number,
+        ): (amount: number) => number;
+        static getElasticOut(
+            amplitude: number,
+            period: number,
+        ): (amount: number) => number;
         static getPowIn(pow: number): (amount: number) => number;
         static getPowInOut(pow: number): (amount: number) => number;
         static getPowOut(pow: number): (amount: number) => number;
@@ -82,7 +91,14 @@ declare namespace createjs {
     };
 
     export class TweenStep {
-        constructor(prev: TweenStep, t: number, d: number, props: TweenProps, ease: Function, passive: boolean);
+        constructor(
+            prev: TweenStep,
+            t: number,
+            d: number,
+            props: TweenProps,
+            ease: Function,
+            passive: boolean,
+        );
 
         next: TweenStep;
         prev: TweenStep;
@@ -95,7 +111,13 @@ declare namespace createjs {
     }
 
     export class TweenAction {
-        constructor(prev: TweenAction, t: number, scope: any, funct: Function, params: any[]);
+        constructor(
+            prev: TweenAction,
+            t: number,
+            scope: any,
+            funct: Function,
+            params: any[],
+        );
 
         next: TweenAction;
         prev: TweenAction;
@@ -115,7 +137,14 @@ declare namespace createjs {
         static install(): Object;
         static init(tween: Tween, prop: string, value: any): void;
         static step(tween: Tween, step: TweenStep, props: TweenProps): void;
-        static change(tween: Tween, step: TweenStep, prop: string, value: any, ratio: number, end: boolean): void;
+        static change(
+            tween: Tween,
+            step: TweenStep,
+            prop: string,
+            value: any,
+            ratio: number,
+            end: boolean,
+        ): void;
         static debug(guideData: any, ctx: any, higlight: number[]): void;
     }
 
@@ -187,7 +216,11 @@ declare namespace createjs {
         wait(duration: number, passive?: boolean): Tween;
         to(props: any, duration?: number, ease?: Function): Tween;
         label(name: string): Tween;
-        call(callback: (...params: any[]) => void, params?: any[], scope?: any): Tween;
+        call(
+            callback: (...params: any[]) => void,
+            params?: any[],
+            scope?: any,
+        ): Tween;
         set(props: any, target?: any): Tween;
         play(tween?: Tween): Tween;
         pause(tween?: Tween): Tween;

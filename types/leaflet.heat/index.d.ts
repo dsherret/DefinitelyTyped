@@ -22,5 +22,8 @@ declare module "leaflet" {
         setLatLngs(latlngs: Array<LatLng | HeatLatLngTuple>): HeatLayer;
     }
 
-    function heatLayer(latlngs: Array<LatLng | HeatLatLngTuple>, options: HeatMapOptions): HeatLayer;
+    function heatLayer(
+        latlngs: Array<LatLng | HeatLatLngTuple>,
+        options: HeatMapOptions,
+    ): HeatLayer;
 }

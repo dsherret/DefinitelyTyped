@@ -22,10 +22,10 @@ function test3() {
 
 function test4() {
     const sock = zeromq.socket(zeromq.types.pull);
-    sock.bind("tcp://127.0.0.1", err => {
+    sock.bind("tcp://127.0.0.1", (err) => {
         sock.send("some work");
     });
-    sock.unbind("tcp://127.0.0.1", err => {
+    sock.unbind("tcp://127.0.0.1", (err) => {
         //
     });
 }
@@ -34,7 +34,7 @@ function test5() {
     const sock = zeromq.socket(zeromq.types.pull, {
         linger: 1,
     });
-    sock.bind("tcp://127.0.0.1", err => {
+    sock.bind("tcp://127.0.0.1", (err) => {
         sock.send("some work");
     });
     sock.monitor();
@@ -44,7 +44,7 @@ function test5() {
 
 function test6() {
     const sock = zeromq.socket(zeromq.types.dealer);
-    sock.bind("tcp://127.0.0.1", err => {
+    sock.bind("tcp://127.0.0.1", (err) => {
         sock.send("some work");
     });
     sock.pause();

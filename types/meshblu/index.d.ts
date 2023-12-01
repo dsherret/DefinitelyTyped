@@ -65,7 +65,10 @@ declare namespace Meshblu {
          * @param fn The callback to be called. It should take one parameter, result.
          * @returns This Connection.
          */
-        update(data: UpdateData, fn: (result: UpdateSuccess) => void): Connection;
+        update(
+            data: UpdateData,
+            fn: (result: UpdateSuccess) => void,
+        ): Connection;
 
         /**
          * Register a new device record.
@@ -73,7 +76,10 @@ declare namespace Meshblu {
          * @param fn The callback to be called. It should take one parameter, result.
          * @returns This Connection.
          */
-        register(data: RegisterData, fn: (result: RegisterResponse) => void): Connection;
+        register(
+            data: RegisterData,
+            fn: (result: RegisterResponse) => void,
+        ): Connection;
 
         /**
          * Removes a device record.
@@ -105,7 +111,10 @@ declare namespace Meshblu {
          * @param fn The callback to be called. It should take one parameter, result.
          * @returns This Connection.
          */
-        devices(data: Color, fn: (result: DeviceResponse[]) => void): Connection;
+        devices(
+            data: Color,
+            fn: (result: DeviceResponse[]) => void,
+        ): Connection;
 
         /**
          * Returns device messages as they are sent and received.
@@ -121,7 +130,10 @@ declare namespace Meshblu {
          * @param fn The callback to be called. It should take one parameter, result.
          * @returns This Connection.
          */
-        unsubscribe(data: UnsubscribeData, fn: (result: any) => void): Connection;
+        unsubscribe(
+            data: UnsubscribeData,
+            fn: (result: any) => void,
+        ): Connection;
 
         /**
          * Send a meshblu data message.
@@ -144,14 +156,20 @@ declare namespace Meshblu {
          * @param data
          * @param fn The callback to be called. It should take one parameter, result.
          */
-        generateAndStoreToken(data: Device, fn: (result: ConnectionOptions) => void): void;
+        generateAndStoreToken(
+            data: Device,
+            fn: (result: ConnectionOptions) => void,
+        ): void;
 
         /**
          * Remove a session token from a device.
          * @param data
          * @param fn The callback to be called. It should take one parameter, result.
          */
-        revokeToken(data: ConnectionOptions, fn: (result: Device) => void): void;
+        revokeToken(
+            data: ConnectionOptions,
+            fn: (result: Device) => void,
+        ): void;
 
         /**
          * @param uuid
@@ -159,7 +177,10 @@ declare namespace Meshblu {
          *     which will be null if there was no problem, and one parameter, publicKey,
          *     of type NodeRSA.
          */
-        getPublicKey(uuid: string, fn: (err: Error, publicKey: any) => void): void;
+        getPublicKey(
+            uuid: string,
+            fn: (err: Error, publicKey: any) => void,
+        ): void;
 
         /*
          * Lack of documentation about these api functions.

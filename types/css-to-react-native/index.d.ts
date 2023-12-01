@@ -6,6 +6,13 @@ export interface Style {
 
 export function getPropertyName(name: string): string;
 
-export function getStylesForProperty(name: string, value: string, allowShorthand?: boolean): Style;
+export function getStylesForProperty(
+    name: string,
+    value: string,
+    allowShorthand?: boolean,
+): Style;
 
-export default function transform(styleTuples: StyleTuple[], shorthandBlacklist?: string[]): Style;
+export default function transform(
+    styleTuples: StyleTuple[],
+    shorthandBlacklist?: string[],
+): Style;

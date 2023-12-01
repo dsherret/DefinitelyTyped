@@ -32,13 +32,25 @@ declare namespace BMap {
     }
     class LocalSearch {
         constructor(location: Map | Point | string, opts?: LocalSearchOptions);
-        search(keyword: string | string[], option?: LocalSearchSearchOptions): void;
-        searchInBounds(keyword: string | string[], bounds: Bounds, option?: {
-            customData: any;
-        }): void;
-        searchNearby(keyword: string | string[], center: LocalResultPoi | string | Point, radius: number, option?: {
-            customData: any;
-        }): void;
+        search(
+            keyword: string | string[],
+            option?: LocalSearchSearchOptions,
+        ): void;
+        searchInBounds(
+            keyword: string | string[],
+            bounds: Bounds,
+            option?: {
+                customData: any;
+            },
+        ): void;
+        searchNearby(
+            keyword: string | string[],
+            center: LocalResultPoi | string | Point,
+            radius: number,
+            option?: {
+                customData: any;
+            },
+        ): void;
         getResults(): LocalResult | LocalResult[];
         clearResults(): void;
         gotoPage(page: number): void;
@@ -49,10 +61,16 @@ declare namespace BMap {
         setLocation(location: Map | Point | string): void;
         setPageCapacity(capacity: number): void;
         getPageCapacity(): number;
-        setSearchCompleteCallback(callback: (results: LocalResult | LocalResult[]) => void): void;
+        setSearchCompleteCallback(
+            callback: (results: LocalResult | LocalResult[]) => void,
+        ): void;
         setMarkersSetCallback(callback: (pois: LocalResultPoi[]) => void): void;
-        setInfoHtmlSetCallback(callback: (poi: LocalResultPoi, html: HTMLElement) => void): void;
-        setResultsHtmlSetCallback(callback: (container: HTMLElement) => void): void;
+        setInfoHtmlSetCallback(
+            callback: (poi: LocalResultPoi, html: HTMLElement) => void,
+        ): void;
+        setResultsHtmlSetCallback(
+            callback: (container: HTMLElement) => void,
+        ): void;
         getStatus(): ServiceStatusCode;
     }
     type LineType = number;
@@ -64,7 +82,10 @@ declare namespace BMap {
         getPlan(i: number): RoutePlan;
     }
     class BusLineSearch {
-        constructor(location: Map | Point | string, opts?: BusLineSearchOptions);
+        constructor(
+            location: Map | Point | string,
+            opts?: BusLineSearchOptions,
+        );
         getBusList(keyword: string): void;
         getBusLine(busLstItem: BusListItem): void;
         clearResults(): void;
@@ -73,42 +94,67 @@ declare namespace BMap {
         setLocation(location: Map | Point | string): void;
         getStatus(): ServiceStatusCode;
         toString(): string;
-        setGetBusListCompleteCallback(callback: (rs: BusListResult) => void): void;
+        setGetBusListCompleteCallback(
+            callback: (rs: BusListResult) => void,
+        ): void;
         setGetBusLineCompleteCallback(callback: (rs: BusLine) => void): void;
-        setBusListHtmlSetCallback(callback: (container: HTMLElement) => void): void;
-        setBusLineHtmlSetCallback(callback: (container: HTMLElement) => void): void;
+        setBusListHtmlSetCallback(
+            callback: (container: HTMLElement) => void,
+        ): void;
+        setBusLineHtmlSetCallback(
+            callback: (container: HTMLElement) => void,
+        ): void;
         setPolylinesSetCallback(callback: (ply: Polyline) => void): void;
         setMarkersSetCallback(callback: (markers: Marker[]) => void): void;
     }
     interface LocalSearchOptions {
         renderOptions?: RenderOptions | undefined;
         onMarkersSet?: ((pois: LocalResultPoi[]) => void) | undefined;
-        onInfoHtmlSet?: ((poi: LocalResultPoi, html: HTMLElement) => void) | undefined;
+        onInfoHtmlSet?:
+            | ((poi: LocalResultPoi, html: HTMLElement) => void)
+            | undefined;
         onResultsHtmlSet?: ((container: HTMLElement) => void) | undefined;
         pageCapacity?: number | undefined;
         onSearchComplete?: ((results: LocalResult[]) => void) | undefined;
     }
     class DrivingRoute {
         constructor(location: Map | Point | string, opts?: DrivingRouteOptions);
-        search(start: string | Point | LocalResultPoi, end: string | Point | LocalResultPoi): void;
+        search(
+            start: string | Point | LocalResultPoi,
+            end: string | Point | LocalResultPoi,
+        ): void;
         getResults(): DrivingRouteResult;
         clearResults(): void;
         enableAutoViewport(): void;
         disableAutoViewport(): void;
         setLocation(location: Map | Point | string): void;
         setPolicy(policy: DrivingPolicy): void;
-        setSearchCompleteCallback(callback: (results: DrivingRouteResult) => void): void;
+        setSearchCompleteCallback(
+            callback: (results: DrivingRouteResult) => void,
+        ): void;
         setMarkersSetCallback(callback: (pois: LocalResultPoi[]) => void): void;
-        setInfoHtmlSetCallback(callback: (poi: LocalResultPoi, html: HTMLElement) => void): void;
+        setInfoHtmlSetCallback(
+            callback: (poi: LocalResultPoi, html: HTMLElement) => void,
+        ): void;
         setPolylinesSetCallback(callback: (routes: Route[]) => void): void;
-        setResultsHtmlSetCallback(callback: (container: HTMLElement) => void): void;
+        setResultsHtmlSetCallback(
+            callback: (container: HTMLElement) => void,
+        ): void;
         getStatus(): ServiceStatusCode;
         toString(): string;
     }
     class Geocoder {
         constructor();
-        getPoint(address: string, callback: (point: Point) => void, city: string): void;
-        getLocation(point: Point, callback: (result: GeocoderResult) => void, opts?: LocationOptions): void;
+        getPoint(
+            address: string,
+            callback: (point: Point) => void,
+            city: string,
+        ): void;
+        getLocation(
+            point: Point,
+            callback: (result: GeocoderResult) => void,
+            opts?: LocationOptions,
+        ): void;
     }
     interface BusLineSearchOptions {
         renderOptions?: RenderOptions | undefined;
@@ -129,7 +175,9 @@ declare namespace BMap {
         policy?: DrivingPolicy | undefined;
         onSearchComplete?: ((results: DrivingRouteResult) => void) | undefined;
         onMarkersSet?: ((pois: LocalResultPoi[]) => void) | undefined;
-        onInfoHtmlSet?: ((poi: LocalResultPoi, html: HTMLElement) => void) | undefined;
+        onInfoHtmlSet?:
+            | ((poi: LocalResultPoi, html: HTMLElement) => void)
+            | undefined;
         onPolylinesSet?: ((routes: Route[]) => void) | undefined;
         onResultsHtmlSet?: ((container: HTMLElement) => void) | undefined;
     }
@@ -253,11 +301,19 @@ declare namespace BMap {
         setInputValue(keyword: string): void;
         dispose(): void;
         onconfirm: (event: { type: string; target: any; item: any }) => void;
-        onhighlight: (event: { type: string; target: any; fromitem: any; toitem: any }) => void;
+        onhighlight: (event: {
+            type: string;
+            target: any;
+            fromitem: any;
+            toitem: any;
+        }) => void;
     }
     class TransitRoute {
         constructor(location: Map | Point | string, opts?: TransitRouteOptions);
-        search(start: string | Point | LocalResultPoi, end: string | Point | LocalResultPoi): void;
+        search(
+            start: string | Point | LocalResultPoi,
+            end: string | Point | LocalResultPoi,
+        ): void;
         getResults(): TransitRouteResult;
         clearResults(): void;
         enableAutoViewport(): void;
@@ -265,11 +321,19 @@ declare namespace BMap {
         setPageCapacity(capacity: number): void;
         setLocation(location: Map | Point | string): void;
         setPolicy(policy: TransitPolicy): void;
-        setSearchCompleteCallback(callback: (results: TransitRouteResult) => void): void;
+        setSearchCompleteCallback(
+            callback: (results: TransitRouteResult) => void,
+        ): void;
         setMarkersSetCallback(callback: (pois: LocalResultPoi[]) => void): void;
-        setInfoHtmlSetCallback(callback: (poi: LocalResultPoi, html: HTMLElement) => void): void;
-        setPolylinesSetCallback(callback: (lines: Line[], routes: Route[]) => void): void;
-        setResultsHtmlSetCallback(callback: (container: HTMLElement) => void): void;
+        setInfoHtmlSetCallback(
+            callback: (poi: LocalResultPoi, html: HTMLElement) => void,
+        ): void;
+        setPolylinesSetCallback(
+            callback: (lines: Line[], routes: Route[]) => void,
+        ): void;
+        setResultsHtmlSetCallback(
+            callback: (container: HTMLElement) => void,
+        ): void;
         getStatus(): ServiceStatusCode;
         toString(): string;
     }
@@ -296,8 +360,12 @@ declare namespace BMap {
         policy?: TransitPolicy | undefined;
         pageCapacity?: number | undefined;
         onSearchComplete?: ((result: TransitRouteResult) => void) | undefined;
-        onMarkersSet?: ((pois: LocalResultPoi[], transfers: LocalResultPoi[]) => void) | undefined;
-        onInfoHtmlSet?: ((poi: LocalResultPoi, html: HTMLElement) => void) | undefined;
+        onMarkersSet?:
+            | ((pois: LocalResultPoi[], transfers: LocalResultPoi[]) => void)
+            | undefined;
+        onInfoHtmlSet?:
+            | ((poi: LocalResultPoi, html: HTMLElement) => void)
+            | undefined;
         onPolylinesSet?: ((lines: Line[]) => void) | undefined;
         onResultsHtmlSet?: ((container: HTMLElement) => void) | undefined;
     }
@@ -329,7 +397,10 @@ declare namespace BMap {
     type RouteType = number;
     class Geolocation {
         constructor();
-        getCurrentPosition(callback: (result: GeolocationResult) => void, opts?: PositionOptions): void;
+        getCurrentPosition(
+            callback: (result: GeolocationResult) => void,
+            opts?: PositionOptions,
+        ): void;
         getStatus(): ServiceStatusCode;
     }
     interface AutocompleteResult {
@@ -366,10 +437,7 @@ declare namespace BMap {
             points: Point[],
             from: number,
             to: number,
-            callback: (result: {
-                points: Point[];
-                status: number;
-            }) => void,
+            callback: (result: { points: Point[]; status: number }) => void,
         ): void;
     }
     interface TransitRoutePlan {
@@ -383,17 +451,26 @@ declare namespace BMap {
     }
     class WalkingRoute {
         constructor(location: Map | Point | string, opts?: WalkingRouteOptions);
-        search(start: string | Point | LocalResultPoi, end: string | Point | LocalResultPoi): void;
+        search(
+            start: string | Point | LocalResultPoi,
+            end: string | Point | LocalResultPoi,
+        ): void;
         getResults(): WalkingRouteResult;
         clearResults(): void;
         enableAutoViewport(): void;
         disableAutoViewport(): void;
         setLocation(location: Map | Point | string): void;
-        setSearchCompleteCallback(callback: (result: WalkingRouteResult) => void): void;
+        setSearchCompleteCallback(
+            callback: (result: WalkingRouteResult) => void,
+        ): void;
         setMarkersSetCallback(callback: (pois: LocalResultPoi[]) => void): void;
-        setInfoHtmlSetCallback(callback: (poi: LocalResultPoi, html: HTMLElement) => void): void;
+        setInfoHtmlSetCallback(
+            callback: (poi: LocalResultPoi, html: HTMLElement) => void,
+        ): void;
         setPolylinesSetCallback(callback: (routes: Route[]) => void): void;
-        setResultsHtmlSetCallback(callback: (container: HTMLElement) => void): void;
+        setResultsHtmlSetCallback(
+            callback: (container: HTMLElement) => void,
+        ): void;
         getStatus(): ServiceStatusCode;
         toString(): string;
     }
@@ -418,7 +495,9 @@ declare namespace BMap {
         onSearchComplete?: ((result: WalkingRouteResult) => void) | undefined;
         onMarkersSet?: ((pois: LocalResultPoi[]) => void) | undefined;
         onPolylinesSet?: ((routes: Route[]) => void) | undefined;
-        onInfoHtmlSet?: ((poi: LocalResultPoi, html: HTMLElement) => void) | undefined;
+        onInfoHtmlSet?:
+            | ((poi: LocalResultPoi, html: HTMLElement) => void)
+            | undefined;
         onResultsHtmlSet?: ((container: HTMLElement) => void) | undefined;
     }
     type HighlightModes = number;

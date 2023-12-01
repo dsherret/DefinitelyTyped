@@ -5,8 +5,7 @@ interface HTMLCanvasElement {
 
 // https://html.spec.whatwg.org/multipage/canvas.html#offscreencanvasrenderingcontext2d
 interface OffscreenCanvasRenderingContext2D
-    extends
-        CanvasState,
+    extends CanvasState,
         CanvasTransform,
         CanvasCompositing,
         CanvasImageSmoothing,
@@ -20,14 +19,13 @@ interface OffscreenCanvasRenderingContext2D
         CanvasImageData,
         CanvasPathDrawingStyles,
         CanvasTextDrawingStyles,
-        CanvasPath
-{
+        CanvasPath {
     readonly canvas: OffscreenCanvas;
 }
 
 declare var OffscreenCanvasRenderingContext2D: {
     prototype: OffscreenCanvasRenderingContext2D;
-    new(): OffscreenCanvasRenderingContext2D;
+    new (): OffscreenCanvasRenderingContext2D;
 };
 
 // https://html.spec.whatwg.org/multipage/canvas.html#the-offscreencanvas-interface
@@ -47,20 +45,39 @@ interface OffscreenCanvas extends EventTarget {
         contextAttributes?: WebGLContextAttributes,
     ): ImageBitmapRenderingContext | null;
 
-    getContext(contextId: "webgl", contextAttributes?: WebGLContextAttributes): WebGLRenderingContext | null;
+    getContext(
+        contextId: "webgl",
+        contextAttributes?: WebGLContextAttributes,
+    ): WebGLRenderingContext | null;
 
-    getContext(contextId: "webgl2", contextAttributes?: WebGLContextAttributes): WebGL2RenderingContext | null;
+    getContext(
+        contextId: "webgl2",
+        contextAttributes?: WebGLContextAttributes,
+    ): WebGL2RenderingContext | null;
 
-    convertToBlob(options?: { type?: string | undefined; quality?: number | undefined }): Promise<Blob>;
+    convertToBlob(options?: {
+        type?: string | undefined;
+        quality?: number | undefined;
+    }): Promise<Blob>;
 
     transferToImageBitmap(): ImageBitmap;
 }
 
 // https://html.spec.whatwg.org/multipage/canvas.html#canvasdrawimage
 interface CanvasDrawImage {
-    drawImage(image: CanvasImageSource | OffscreenCanvas, dx: number, dy: number): void;
+    drawImage(
+        image: CanvasImageSource | OffscreenCanvas,
+        dx: number,
+        dy: number,
+    ): void;
 
-    drawImage(image: CanvasImageSource | OffscreenCanvas, dx: number, dy: number, dw: number, dh: number): void;
+    drawImage(
+        image: CanvasImageSource | OffscreenCanvas,
+        dx: number,
+        dy: number,
+        dw: number,
+        dh: number,
+    ): void;
 
     drawImage(
         image: CanvasImageSource | OffscreenCanvas,
@@ -76,7 +93,9 @@ interface CanvasDrawImage {
 }
 
 // https://html.spec.whatwg.org/multipage/imagebitmap-and-animations.html#dom-createimagebitmap
-declare function createImageBitmap(image: ImageBitmapSource | OffscreenCanvas): Promise<ImageBitmap>;
+declare function createImageBitmap(
+    image: ImageBitmapSource | OffscreenCanvas,
+): Promise<ImageBitmap>;
 declare function createImageBitmap(
     image: ImageBitmapSource | OffscreenCanvas,
     sx: number,
@@ -87,23 +106,39 @@ declare function createImageBitmap(
 
 // OffscreenCanvas should be a part of Transferable => extend all postMessage methods
 interface Worker {
-    postMessage(message: any, transfer?: Array<Transferable | OffscreenCanvas>): void;
+    postMessage(
+        message: any,
+        transfer?: Array<Transferable | OffscreenCanvas>,
+    ): void;
 }
 
 interface DedicatedWorkerGlobalScope {
-    postMessage(message: any, transfer?: Array<Transferable | OffscreenCanvas>): void;
+    postMessage(
+        message: any,
+        transfer?: Array<Transferable | OffscreenCanvas>,
+    ): void;
 }
 
 interface ServiceWorker {
-    postMessage(message: any, transfer?: Array<Transferable | OffscreenCanvas>): void;
+    postMessage(
+        message: any,
+        transfer?: Array<Transferable | OffscreenCanvas>,
+    ): void;
 }
 
 interface MessagePort {
-    postMessage(message: any, transfer?: Array<Transferable | OffscreenCanvas>): void;
+    postMessage(
+        message: any,
+        transfer?: Array<Transferable | OffscreenCanvas>,
+    ): void;
 }
 
 interface Window {
-    postMessage(message: any, targetOrigin: string, transfer?: Array<Transferable | OffscreenCanvas>): void;
+    postMessage(
+        message: any,
+        targetOrigin: string,
+        transfer?: Array<Transferable | OffscreenCanvas>,
+    ): void;
 }
 
 declare function postMessage(
@@ -114,7 +149,7 @@ declare function postMessage(
 
 declare var OffscreenCanvas: {
     prototype: OffscreenCanvas;
-    new(width: number, height: number): OffscreenCanvas;
+    new (width: number, height: number): OffscreenCanvas;
 };
 
 interface WebGL2RenderingContextBase {

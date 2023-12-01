@@ -135,7 +135,9 @@ export interface ThreeDSecureVerifyOptions {
     billingAddress?: ThreeDSecureBillingAddress | undefined;
     additionalInformation?: ThreeDSecureAdditionalInformation | undefined;
     /** @deprecated Only to be used for 3DS 1.0 integrations. */
-    addFrame?: ((err?: BraintreeError, iframe?: HTMLIFrameElement) => void) | undefined;
+    addFrame?:
+        | ((err?: BraintreeError, iframe?: HTMLIFrameElement) => void)
+        | undefined;
     /** @deprecated Only to be used for 3DS 1.0 integrations. */
     removeFrame?: (() => void) | undefined;
 }
@@ -182,12 +184,22 @@ export interface ThreeDSecureCreateOptions {
      *
      * 2-inline-iframe - A 3D Secure v2.0 integration that provides the authentication iframe directly to the merchant.
      */
-    version?: 1 | "1" | 2 | "2" | "2-bootstrap3-modal" | "2-inline-iframe" | undefined;
+    version?:
+        | 1
+        | "1"
+        | 2
+        | "2"
+        | "2-bootstrap3-modal"
+        | "2-inline-iframe"
+        | undefined;
     client?: Client | undefined;
 }
 
 export interface ThreeDSecure {
-    addFrameCallback: (err?: BraintreeError, iframe?: HTMLIFrameElement) => void;
+    addFrameCallback: (
+        err?: BraintreeError,
+        iframe?: HTMLIFrameElement,
+    ) => void;
 
     /**
      * @description The callback used for options.removeFrame in {@link ThreeDSecure#verifyCard|verifyCard}.
@@ -231,8 +243,13 @@ export interface ThreeDSecure {
      *   }
      * });
      */
-    verifyCard(options: ThreeDSecureVerifyOptions): Promise<ThreeDSecureVerifyPayload>;
-    verifyCard(options: ThreeDSecureVerifyOptions, callback: callback<ThreeDSecureVerifyPayload>): void;
+    verifyCard(
+        options: ThreeDSecureVerifyOptions,
+    ): Promise<ThreeDSecureVerifyPayload>;
+    verifyCard(
+        options: ThreeDSecureVerifyOptions,
+        callback: callback<ThreeDSecureVerifyPayload>,
+    ): void;
 
     /**
      * Cancel the 3DS flow and return the verification payload if available.
@@ -268,7 +285,10 @@ export interface ThreeDSecure {
      * });
      */
     prepareLookup(options: { nonce: string; bin: string }): Promise<string>;
-    prepareLookup(options: { nonce: string; bin: string }, callback: callback<string>): void;
+    prepareLookup(
+        options: { nonce: string; bin: string },
+        callback: callback<string>,
+    ): void;
 
     /**
      * Cleanly tear down anything set up by {@link module:braintree-web/three-d-secure.create|create}
@@ -279,20 +299,32 @@ export interface ThreeDSecure {
      * Subscribes a handler function to a named event.
      * Documentation link: https://braintree.github.io/braintree-web/current/ThreeDSecure.html#on
      */
-    on(event: ThreeDSecureEvent, handler: (data?: any, next?: () => void) => void): void;
+    on(
+        event: ThreeDSecureEvent,
+        handler: (data?: any, next?: () => void) => void,
+    ): void;
     /**
      * Subscribes a function to execute when lookup completes.
      * The first argument, `data`, is a ThreeDSecureVerificationData object, and the second argument, `next`, is a callback. `next` must be called to continue.
      * See https://braintree.github.io/braintree-web/current/ThreeDSecure.html#event:lookup-complete,
      * and https://developer.paypal.com/braintree/docs/guides/3d-secure/migration/javascript/v3#hosted-fields.
      */
-    on(event: "lookup-complete", handler: (data?: ThreeDSecureVerificationData, next?: () => void) => void): void;
+    on(
+        event: "lookup-complete",
+        handler: (
+            data?: ThreeDSecureVerificationData,
+            next?: () => void,
+        ) => void,
+    ): void;
 
     /**
      * Unsubscribes the handler function to a named event.
      * Documentation link: https://braintree.github.io/braintree-web/current/ThreeDSecure.html#off
      */
-    off(event: ThreeDSecureEvent, handler: (data?: any, next?: () => void) => void): void;
+    off(
+        event: ThreeDSecureEvent,
+        handler: (data?: any, next?: () => void) => void,
+    ): void;
 }
 
 /**
@@ -300,5 +332,10 @@ export interface ThreeDSecure {
  *   client: client
  * }, callback);
  */
-export function create(options: ThreeDSecureCreateOptions): Promise<ThreeDSecure>;
-export function create(options: ThreeDSecureCreateOptions, callback: callback<ThreeDSecure>): void;
+export function create(
+    options: ThreeDSecureCreateOptions,
+): Promise<ThreeDSecure>;
+export function create(
+    options: ThreeDSecureCreateOptions,
+    callback: callback<ThreeDSecure>,
+): void;

@@ -43,10 +43,11 @@ declare namespace parseChangelog {
 // This type declaration reflects this.
 declare function parseChangelog(
     options:
-        | (
-            & Partial<Exclude<parseChangelog.Options, "filePath" | "text">>
-            & (Pick<parseChangelog.Options, "filePath"> | Pick<parseChangelog.Options, "text">)
-        )
+        | (Partial<Exclude<parseChangelog.Options, "filePath" | "text">> &
+              (
+                  | Pick<parseChangelog.Options, "filePath">
+                  | Pick<parseChangelog.Options, "text">
+              ))
         | string,
     callback?: (error: string | null, result: parseChangelog.Changelog) => void,
 ): Promise<parseChangelog.Changelog>;

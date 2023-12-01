@@ -21,7 +21,11 @@ interface NumberConstructor {
 interface StringConstructor {
     of(charset: string): StringConstructor;
     of(length: number, charset: string): StringConstructor;
-    of(minLength: number, maxLength: number, charset: string): StringConstructor;
+    of(
+        minLength: number,
+        maxLength: number,
+        charset: string,
+    ): StringConstructor;
 }
 
 interface ArrayConstructor {

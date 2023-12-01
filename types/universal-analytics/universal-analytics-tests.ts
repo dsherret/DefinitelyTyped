@@ -9,33 +9,71 @@ visitor = ua("UA-XXXX-XX", "CUSTOM_USERID_1", { strictCidFormat: false });
 visitor = ua("UA-XXXX-XX", { https: true });
 
 visitor.pageview("/", "http://peaksandpies.com", "Welcome").send();
-visitor.pageview("/", "http://peaksandpies.com", "Welcome", err => {});
-visitor.pageview({ dp: "/", dt: "Welcome", dh: "http://peaksandpies.com" }).send();
-visitor.pageview(null, err => {});
+visitor.pageview("/", "http://peaksandpies.com", "Welcome", (err) => {});
+visitor
+    .pageview({ dp: "/", dt: "Welcome", dh: "http://peaksandpies.com" })
+    .send();
+visitor.pageview(null, (err) => {});
 
 visitor.pv("/", "http://peaksandpies.com", "Welcome").send();
-visitor.pv("/", "http://peaksandpies.com", "Welcome", err => {});
+visitor.pv("/", "http://peaksandpies.com", "Welcome", (err) => {});
 visitor.pv({ dp: "/", dt: "Welcome", dh: "http://peaksandpies.com" }).send();
-visitor.pv(null, err => {});
+visitor.pv(null, (err) => {});
 
 visitor.screenview("Home Screen", "App Name").send();
-visitor.screenview("Home Screen", "App Name", err => {}).send();
+visitor.screenview("Home Screen", "App Name", (err) => {}).send();
 visitor.screenview({ cd: "Home Screen", an: "App Name" }).send();
-visitor.screenview(null, err => {});
+visitor.screenview(null, (err) => {});
 
 visitor.event("Event Category", "Event Action").send();
 visitor.event("Event Category", "Event Action", "…and a label", 42).send();
-visitor.event("Event Category", "Event Action", "…and a label", 42, err => {});
-visitor.event("Event Category", "Event Action", "…and a label", 42, { p: "/contact" }, err => {});
-visitor.event({ ec: "Event Category", ea: "Event Action", el: "…and a label", ev: 42, dp: "/contact" }).send();
-visitor.event("Navigation clicks", null, err => {});
+visitor.event(
+    "Event Category",
+    "Event Action",
+    "…and a label",
+    42,
+    (err) => {},
+);
+visitor.event(
+    "Event Category",
+    "Event Action",
+    "…and a label",
+    42,
+    { p: "/contact" },
+    (err) => {},
+);
+visitor
+    .event({
+        ec: "Event Category",
+        ea: "Event Action",
+        el: "…and a label",
+        ev: 42,
+        dp: "/contact",
+    })
+    .send();
+visitor.event("Navigation clicks", null, (err) => {});
 
 visitor.e("Event Category", "Event Action").send();
 visitor.e("Event Category", "Event Action", "…and a label", 42).send();
-visitor.e("Event Category", "Event Action", "…and a label", 42, err => {});
-visitor.e("Event Category", "Event Action", "…and a label", 42, { p: "/contact" }, err => {});
-visitor.e({ ec: "Event Category", ea: "Event Action", el: "…and a label", ev: 42, dp: "/contact" }).send();
-visitor.e("Navigation clicks", null, err => {});
+visitor.e("Event Category", "Event Action", "…and a label", 42, (err) => {});
+visitor.e(
+    "Event Category",
+    "Event Action",
+    "…and a label",
+    42,
+    { p: "/contact" },
+    (err) => {},
+);
+visitor
+    .e({
+        ec: "Event Category",
+        ea: "Event Action",
+        el: "…and a label",
+        ev: 42,
+        dp: "/contact",
+    })
+    .send();
+visitor.e("Navigation clicks", null, (err) => {});
 
 visitor
     .transaction("trans-12345", 500)
@@ -44,7 +82,13 @@ visitor
     .send();
 
 visitor
-    .transaction({ ti: "trans-12345", tr: 500, ts: 50, tt: 100, ta: "Partner 13" })
+    .transaction({
+        ti: "trans-12345",
+        tr: 500,
+        ts: 50,
+        tt: 100,
+        ta: "Partner 13",
+    })
     .item({ ip: 300, iq: 1, ic: "item-54321", in: "Item 54321", iv: "Blue" })
     .item({ ip: 200, iq: 2, ic: "item-41325", in: "Item 41325", iv: "XXL" })
     .send();
@@ -61,7 +105,7 @@ visitor
     .i({ ip: 200, iq: 2, ic: "item-41325", in: "Item 41325", iv: "XXL" })
     .send();
 
-visitor.transaction(null, err => {});
+visitor.transaction(null, (err) => {});
 
 visitor.exception("StackOverflow Error").send();
 visitor.exception("StackOverflow Error", true, () => {});
@@ -73,9 +117,14 @@ visitor.item(449.99, 1, "ID54321", "T-Shirt", "Blue", { ti: "123456" }).send();
 
 visitor.pageview("/").send();
 visitor.pageview("/").pageview("/contact").send();
-visitor.pageview("/landing-page-1").event("Testing", "Button color", "Blue").send();
+visitor
+    .pageview("/landing-page-1")
+    .event("Testing", "Button color", "Blue")
+    .send();
 visitor.pageview("/landing-page-1").send();
-visitor.event("Testing", "Button color", "Blue", 42, { p: "/landing-page-1" }).send();
+visitor
+    .event("Testing", "Button color", "Blue", 42, { p: "/landing-page-1" })
+    .send();
 
 visitor
     .event({ ec: "Mail Server", ea: "New Team Member Notification sent" })

@@ -19,9 +19,20 @@ export class Casper {
     bypass(nb: number): Casper;
     click(selector: string, X?: number | string, Y?: number | string): boolean;
     clickLabel(label: string, tag?: string): boolean;
-    capture(targetFilePath: string, clipRect?: ClipRect, imgOptions?: ImgOptions): Casper;
-    captureBase64(format: string, area?: string | ClipRect | CasperSelector): string;
-    captureSelector(targetFile: string, selector: string, imgOptions?: ImgOptions): Casper;
+    capture(
+        targetFilePath: string,
+        clipRect?: ClipRect,
+        imgOptions?: ImgOptions,
+    ): Casper;
+    captureBase64(
+        format: string,
+        area?: string | ClipRect | CasperSelector,
+    ): string;
+    captureSelector(
+        targetFile: string,
+        selector: string,
+        imgOptions?: ImgOptions,
+    ): Casper;
     clear(): Casper;
     clearCache(): Casper;
     clearMemoryCache(): Casper;
@@ -29,7 +40,10 @@ export class Casper {
     debugPage(): Casper;
     die(message: string, status?: number): Casper;
     download(url: string, target: string, method?: string, data?: any): Casper;
-    each<T>(array: T[], fn: (this: Casper, item: T, index: number) => void): Casper;
+    each<T>(
+        array: T[],
+        fn: (this: Casper, item: T, index: number) => void,
+    ): Casper;
     eachThen(array: any[], then?: FunctionThen): Casper;
     echo(message: string, style?: string): Casper;
     evaluate<T>(fn: (...args: any[]) => T, ...args: any[]): T;
@@ -54,7 +68,12 @@ export class Casper {
     getHTML(selector?: string, outer?: boolean): string;
     getPageContent(): string;
     getTitle(): string;
-    mouseEvent(type: string, selector: string, X?: number | string, Y?: number | string): boolean;
+    mouseEvent(
+        type: string,
+        selector: string,
+        X?: number | string,
+        Y?: number | string,
+    ): boolean;
     newPage(): any;
     open(location: string, settings: OpenSettings): Casper;
     reload(then?: FunctionThen): Casper;
@@ -79,8 +98,16 @@ export class Casper {
     thenClick(selector: string, then?: FunctionThen): Casper;
     thenEvaluate(fn: () => any, ...args: any[]): Casper;
     thenOpen(location: string, then?: (response: HttpResponse) => void): Casper;
-    thenOpen(location: string, options?: OpenSettings, then?: (response: HttpResponse) => void): Casper;
-    thenOpenAndEvaluate(location: string, then?: FunctionThen, ...args: any[]): Casper;
+    thenOpen(
+        location: string,
+        options?: OpenSettings,
+        then?: (response: HttpResponse) => void,
+    ): Casper;
+    thenOpenAndEvaluate(
+        location: string,
+        then?: FunctionThen,
+        ...args: any[]
+    ): Casper;
     toString(): string;
     unwait(): Casper;
     // 2017-10-19 Doc said returning String but code return Casper object.
@@ -95,7 +122,11 @@ export class Casper {
         timeout?: number,
         details?: any,
     ): Casper;
-    waitForAlert(then: FunctionThen, onTimeout?: FunctionOnTimeout, timeout?: number): Casper;
+    waitForAlert(
+        then: FunctionThen,
+        onTimeout?: FunctionOnTimeout,
+        timeout?: number,
+    ): Casper;
     waitForExec(
         command: string | null,
         parameter: string[],
@@ -115,21 +146,54 @@ export class Casper {
         onTimeout?: Function,
         timeout?: number,
     ): Casper;
-    waitForUrl(url: RegExp | string, then?: FunctionThen, onTimeout?: FunctionOnTimeout, timeout?: number): Casper;
-    waitForSelector(selector: string, then?: FunctionThen, onTimeout?: FunctionOnTimeout, timeout?: number): Casper;
-    waitWhileSelector(selector: string, then?: FunctionThen, onTimeout?: FunctionOnTimeout, timeout?: number): Casper;
+    waitForUrl(
+        url: RegExp | string,
+        then?: FunctionThen,
+        onTimeout?: FunctionOnTimeout,
+        timeout?: number,
+    ): Casper;
+    waitForSelector(
+        selector: string,
+        then?: FunctionThen,
+        onTimeout?: FunctionOnTimeout,
+        timeout?: number,
+    ): Casper;
+    waitWhileSelector(
+        selector: string,
+        then?: FunctionThen,
+        onTimeout?: FunctionOnTimeout,
+        timeout?: number,
+    ): Casper;
     waitForSelectorTextChange(
         selectors: string,
         then?: FunctionThen,
         onTimeout?: FunctionOnTimeout,
         timeout?: number,
     ): Casper;
-    waitForText(pattern: RegExp | string, then?: FunctionThen, onTimeout?: FunctionOnTimeout, timeout?: number): Casper;
-    waitUntilVisible(selector: string, then?: FunctionThen, onTimeout?: FunctionOnTimeout, timeout?: number): Casper;
-    waitWhileVisible(selector: string, then?: FunctionThen, onTimeout?: FunctionOnTimeout, timeout?: number): Casper;
+    waitForText(
+        pattern: RegExp | string,
+        then?: FunctionThen,
+        onTimeout?: FunctionOnTimeout,
+        timeout?: number,
+    ): Casper;
+    waitUntilVisible(
+        selector: string,
+        then?: FunctionThen,
+        onTimeout?: FunctionOnTimeout,
+        timeout?: number,
+    ): Casper;
+    waitWhileVisible(
+        selector: string,
+        then?: FunctionThen,
+        onTimeout?: FunctionOnTimeout,
+        timeout?: number,
+    ): Casper;
     warn(message: string): Casper;
     withFrame(frameInfo: string | number, then: FunctionThen): Casper;
-    withPopup(popupInfo: RegExp | string | number | FindByUrlNameTitle, step: FunctionThen): Casper;
+    withPopup(
+        popupInfo: RegExp | string | number | FindByUrlNameTitle,
+        step: FunctionThen,
+    ): Casper;
     withSelectorScope(selector: string, then: FunctionThen): Casper;
     zoom(factor: number): Casper;
     // do not exists anymore
@@ -139,7 +203,11 @@ export class Casper {
 }
 
 export type FunctionThen = (this: Casper, response: HttpResponse) => void;
-export type FunctionOnTimeout = (this: Casper, timeout: number, details: any) => void;
+export type FunctionOnTimeout = (
+    this: Casper,
+    timeout: number,
+    details: any,
+) => void;
 // not visible in doc
 // interface QtRuntimeObject {id?: any; url?: string;}
 // see modules/pagestack.js in casperjs
@@ -270,25 +338,55 @@ export interface Colorizer {
 export interface Tester {
     assert(condition: boolean, message?: string): any;
     assertDoesntExist(selector: string, message?: string): any;
-    assertElementCount(selctor: string, expected: number, message?: string): any;
+    assertElementCount(
+        selctor: string,
+        expected: number,
+        message?: string,
+    ): any;
     assertEquals(testValue: any, expected: any, message?: string): any;
     assertEval(fn: Function, message: string, args: any): any;
-    assertEvalEquals(fn: Function, expected: any, message?: string, args?: any): any;
+    assertEvalEquals(
+        fn: Function,
+        expected: any,
+        message?: string,
+        args?: any,
+    ): any;
     assertExists(selector: string, message?: string): any;
     assertFalsy(subject: any, message?: string): any;
     assertField(inputName: string, expected: string, message?: string): any;
-    assertFieldName(inputName: string, expected: string, message?: string, options?: any): any;
-    assertFieldCSS(cssSelector: string, expected: string, message?: string): any;
-    assertFieldXPath(xpathSelector: string, expected: string, message?: string): any;
+    assertFieldName(
+        inputName: string,
+        expected: string,
+        message?: string,
+        options?: any,
+    ): any;
+    assertFieldCSS(
+        cssSelector: string,
+        expected: string,
+        message?: string,
+    ): any;
+    assertFieldXPath(
+        xpathSelector: string,
+        expected: string,
+        message?: string,
+    ): any;
     assertHttpStatus(status: number, message?: string): any;
     assertMatch(subject: any, pattern: RegExp, message?: string): any;
     assertNot(subject: any, message?: string): any;
     assertNotEquals(testValue: any, expected: any, message?: string): any;
     assertNotVisible(selector: string, message?: string): any;
     assertRaises(fn: Function, args: any[], message?: string): any;
-    assertSelectorDoesntHaveText(selector: string, text: string, message?: string): any;
+    assertSelectorDoesntHaveText(
+        selector: string,
+        text: string,
+        message?: string,
+    ): any;
     assertSelectorExists(selector: string, message?: string): any;
-    assertSelectorHasText(selector: string, text: string, message?: string): any;
+    assertSelectorHasText(
+        selector: string,
+        text: string,
+        message?: string,
+    ): any;
     assertResourceExists(testFx: Function, message?: string): any;
     assertTextExists(expected: string, message?: string): any;
     assertTextDoesntExist(unexpected: string, message: string): any;

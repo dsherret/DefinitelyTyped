@@ -4,7 +4,7 @@ const video = videojs("myvideo", {
     autoplay: true,
 });
 
-video.ready(function() {
+video.ready(function () {
     this.hotkeys({
         volumeStep: 0.1,
         seekStep: 1,
@@ -18,7 +18,8 @@ video.ready(function() {
         enableInactiveFocus: false,
         skipInitialFocus: false,
         captureDocumentHotkeys: false,
-        documentHotkeysFocusElementFilter: (e: HTMLElement) => e.tagName === "main",
+        documentHotkeysFocusElementFilter: (e: HTMLElement) =>
+            e.tagName === "main",
         enableJogStyle: false,
         playPauseKey: (e: KeyboardEvent) => e.key === "f",
         rewindKey: (e: KeyboardEvent) => e.key === "f",
@@ -27,11 +28,14 @@ video.ready(function() {
         volumeDownKey: (e: KeyboardEvent) => e.key === "f",
         muteKey: (e: KeyboardEvent) => e.key === "f",
         fullscreenKey: (event, player) => {
-            return !player.isFullscreen() && (event.key === "F" || (event.ctrlKey && event.key === "Enter"));
+            return (
+                !player.isFullscreen() &&
+                (event.key === "F" || (event.ctrlKey && event.key === "Enter"))
+            );
         },
         customKeys: {
             ctrldKey: {
-                key: event => {
+                key: (event) => {
                     return event.ctrlKey && event.key === "D";
                 },
                 handler: (player, options, event) => {

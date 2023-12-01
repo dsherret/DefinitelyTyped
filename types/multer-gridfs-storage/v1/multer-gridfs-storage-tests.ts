@@ -35,8 +35,7 @@ const urlOnly = new MulterGridfsStorage({
     url: "",
 });
 
-function noop() {
-}
+function noop() {}
 // Extends event emitter
 gfsCtr.on("connection", noop);
 urlCtr.addListener("conection", noop);

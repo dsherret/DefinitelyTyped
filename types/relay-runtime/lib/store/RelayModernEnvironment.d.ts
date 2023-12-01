@@ -1,5 +1,10 @@
 import { HandlerProvider } from "../handlers/RelayDefaultHandlerProvider";
-import { GraphQLResponse, Network, PayloadData, UploadableMap } from "../network/RelayNetworkTypes";
+import {
+    GraphQLResponse,
+    Network,
+    PayloadData,
+    UploadableMap,
+} from "../network/RelayNetworkTypes";
 import { RelayObservable } from "../network/RelayObservable";
 import { Disposable, RenderPolicy } from "../util/RelayRuntimeTypes";
 import { TaskScheduler } from "./RelayModernQueryExecutor";
@@ -32,7 +37,10 @@ export interface EnvironmentConfig {
     readonly network: Network;
     readonly scheduler?: TaskScheduler | null | undefined;
     readonly store: Store;
-    readonly missingFieldHandlers?: readonly MissingFieldHandler[] | null | undefined;
+    readonly missingFieldHandlers?:
+        | readonly MissingFieldHandler[]
+        | null
+        | undefined;
     readonly operationTracker?: OperationTracker | null | undefined;
     readonly getDataID?: GetDataID | null | undefined;
     readonly UNSTABLE_defaultRenderPolicy?: RenderPolicy | null | undefined;
@@ -53,13 +61,22 @@ export default class RelayModernEnvironment implements Environment {
     isRequestActive(requestIdentifier: string): boolean;
     applyUpdate(optimisticUpdate: OptimisticUpdateFunction): Disposable;
     revertUpdate(update: OptimisticUpdateFunction): void;
-    replaceUpdate(update: OptimisticUpdateFunction, newUpdate: OptimisticUpdateFunction): void;
+    replaceUpdate(
+        update: OptimisticUpdateFunction,
+        newUpdate: OptimisticUpdateFunction,
+    ): void;
     applyMutation(optimisticConfig: OptimisticResponseConfig): Disposable;
     check(operation: OperationDescriptor): OperationAvailability;
-    commitPayload(operationDescriptor: OperationDescriptor, payload: PayloadData): void;
+    commitPayload(
+        operationDescriptor: OperationDescriptor,
+        payload: PayloadData,
+    ): void;
     commitUpdate(updater: StoreUpdater): void;
     lookup(readSelector: SingularReaderSelector): Snapshot;
-    subscribe(snapshot: Snapshot, callback: (snapshot: Snapshot) => void): Disposable;
+    subscribe(
+        snapshot: Snapshot,
+        callback: (snapshot: Snapshot) => void,
+    ): Disposable;
     retain(operation: OperationDescriptor): Disposable;
     isServer(): boolean;
     execute(data: {

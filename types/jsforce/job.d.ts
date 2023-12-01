@@ -11,7 +11,13 @@ export interface JobInfo {
 }
 
 export class Job extends EventEmitter {
-    constructor(bulk: Bulk, type?: string, operation?: string, options?: BulkOptions, jobId?: string);
+    constructor(
+        bulk: Bulk,
+        type?: string,
+        operation?: string,
+        options?: BulkOptions,
+        jobId?: string,
+    );
 
     abort(callback?: (err: Error, jobInfo: JobInfo) => void): Promise<any>;
     batch(batchId: string): Batch;
@@ -19,6 +25,8 @@ export class Job extends EventEmitter {
     close(callback?: (err: Error, jobInfo: JobInfo) => void): Promise<JobInfo>;
     createBatch(): Batch;
     info(callback?: (err: Error, jobInfo: JobInfo) => void): Promise<JobInfo>;
-    list(callback?: (err: Error, jobInfo: BatchInfo) => void): Promise<BatchInfo[]>;
+    list(
+        callback?: (err: Error, jobInfo: BatchInfo) => void,
+    ): Promise<BatchInfo[]>;
     open(callback?: (err: Error, jobInfo: JobInfo) => void): Promise<JobInfo>;
 }

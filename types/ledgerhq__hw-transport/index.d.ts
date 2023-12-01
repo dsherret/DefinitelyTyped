@@ -4,9 +4,17 @@ declare class Transport<TDescriptor extends Descriptor = string> {
     constructor();
     static isSupported(): Promise<boolean>;
     static list(): Promise<readonly Descriptor[]>;
-    static listen(observer: Observer<DescriptorEvent<Descriptor>>): Subscription;
-    static open(descriptor: Descriptor, timeout?: number): Promise<Transport<typeof descriptor>>;
-    static create(openTimeout?: number, listenTimeout?: number): Promise<Transport<Descriptor>>;
+    static listen(
+        observer: Observer<DescriptorEvent<Descriptor>>,
+    ): Subscription;
+    static open(
+        descriptor: Descriptor,
+        timeout?: number,
+    ): Promise<Transport<typeof descriptor>>;
+    static create(
+        openTimeout?: number,
+        listenTimeout?: number,
+    ): Promise<Transport<Descriptor>>;
     exchange(apdu: Buffer): Promise<Buffer>;
     setScrambleKey(key: string): void;
     close(): Promise<void>;
@@ -28,7 +36,11 @@ declare class Transport<TDescriptor extends Descriptor = string> {
         data?: Buffer,
         statusList?: readonly number[],
     ): Promise<Buffer>;
-    decorateAppAPIMethods(self: any, methods: string[], scrambleKey: string): void;
+    decorateAppAPIMethods(
+        self: any,
+        methods: string[],
+        scrambleKey: string,
+    ): void;
 }
 
 export type Device = any;

@@ -14,13 +14,20 @@ declare module "needle" {
 
         type ReadableStream = NodeJS.ReadableStream;
 
-        type NeedleCallback = (error: Error, response: NeedleResponse, body: any) => void;
+        type NeedleCallback = (
+            error: Error,
+            response: NeedleResponse,
+            body: any,
+        ) => void;
 
         interface Cookies {
             [name: string]: any;
         }
 
-        type NeedleOptions = RequestOptions & ResponseOptions & RedirectOptions & https.RequestOptions;
+        type NeedleOptions = RequestOptions &
+            ResponseOptions &
+            RedirectOptions &
+            https.RequestOptions;
 
         interface RequestOptions {
             open_timeout?: number | undefined;
@@ -82,30 +89,84 @@ declare module "needle" {
             [key: string]: any;
         }
 
-        type BodyData = Buffer | KeyValue | NodeJS.ReadableStream | string | null;
+        type BodyData =
+            | Buffer
+            | KeyValue
+            | NodeJS.ReadableStream
+            | string
+            | null;
 
         interface NeedleStatic {
             defaults(options: NeedleOptions): void;
 
             head(url: string, callback?: NeedleCallback): ReadableStream;
-            head(url: string, options?: NeedleOptions, callback?: NeedleCallback): ReadableStream;
+            head(
+                url: string,
+                options?: NeedleOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
             get(url: string, callback?: NeedleCallback): ReadableStream;
-            get(url: string, options?: NeedleOptions, callback?: NeedleCallback): ReadableStream;
+            get(
+                url: string,
+                options?: NeedleOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
-            post(url: string, data: BodyData, callback?: NeedleCallback): ReadableStream;
-            post(url: string, data: BodyData, options?: NeedleOptions, callback?: NeedleCallback): ReadableStream;
+            post(
+                url: string,
+                data: BodyData,
+                callback?: NeedleCallback,
+            ): ReadableStream;
+            post(
+                url: string,
+                data: BodyData,
+                options?: NeedleOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
-            put(url: string, data: BodyData, callback?: NeedleCallback): ReadableStream;
-            put(url: string, data: BodyData, options?: NeedleOptions, callback?: NeedleCallback): ReadableStream;
+            put(
+                url: string,
+                data: BodyData,
+                callback?: NeedleCallback,
+            ): ReadableStream;
+            put(
+                url: string,
+                data: BodyData,
+                options?: NeedleOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
-            patch(url: string, data: BodyData, callback?: NeedleCallback): ReadableStream;
-            patch(url: string, data: BodyData, options?: NeedleOptions, callback?: NeedleCallback): ReadableStream;
+            patch(
+                url: string,
+                data: BodyData,
+                callback?: NeedleCallback,
+            ): ReadableStream;
+            patch(
+                url: string,
+                data: BodyData,
+                options?: NeedleOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
-            delete(url: string, data: BodyData, callback?: NeedleCallback): ReadableStream;
-            delete(url: string, data: BodyData, options?: NeedleOptions, callback?: NeedleCallback): ReadableStream;
+            delete(
+                url: string,
+                data: BodyData,
+                callback?: NeedleCallback,
+            ): ReadableStream;
+            delete(
+                url: string,
+                data: BodyData,
+                options?: NeedleOptions,
+                callback?: NeedleCallback,
+            ): ReadableStream;
 
-            request(method: string, url: string, data: BodyData, callback?: NeedleCallback): ReadableStream;
+            request(
+                method: string,
+                url: string,
+                data: BodyData,
+                callback?: NeedleCallback,
+            ): ReadableStream;
             request(
                 method: string,
                 url: string,

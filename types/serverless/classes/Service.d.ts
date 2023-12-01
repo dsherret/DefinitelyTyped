@@ -16,8 +16,8 @@ declare class Service {
             };
             Outputs?:
                 | {
-                    [key: string]: any;
-                }
+                      [key: string]: any;
+                  }
                 | undefined;
         };
 
@@ -34,13 +34,17 @@ declare class Service {
     service: string | null;
     plugins: string[];
     pluginsData: { [key: string]: any };
-    functions: { [key: string]: Serverless.FunctionDefinitionHandler | Serverless.FunctionDefinitionImage };
+    functions: {
+        [key: string]:
+            | Serverless.FunctionDefinitionHandler
+            | Serverless.FunctionDefinitionImage;
+    };
     resources:
         | {
-            Resources: {
-                [key: string]: any;
-            };
-        }
+              Resources: {
+                  [key: string]: any;
+              };
+          }
         | { [key: string]: any };
     package: { [key: string]: any };
     configValidationMode: string;
@@ -60,8 +64,15 @@ declare class Service {
     getServiceName(): string;
     getAllFunctions(): string[];
     getAllFunctionsNames(): string[];
-    getFunction(functionName: string): Serverless.FunctionDefinitionHandler | Serverless.FunctionDefinitionImage;
-    getEventInFunction(eventName: string, functionName: string): Serverless.Event;
+    getFunction(
+        functionName: string,
+    ):
+        | Serverless.FunctionDefinitionHandler
+        | Serverless.FunctionDefinitionImage;
+    getEventInFunction(
+        eventName: string,
+        functionName: string,
+    ): Serverless.Event;
     getAllEventsInFunction(functionName: string): Serverless.Event[];
 
     mergeResourceArrays(): void;

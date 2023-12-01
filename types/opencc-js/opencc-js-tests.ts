@@ -9,6 +9,11 @@ OpenCC.CustomConverter([]);
 OpenCC.CustomConverter([["a", "b"]]);
 
 declare const rootNode: Element;
-const handler = OpenCC.HTMLConverter(OpenCC.Converter({}), rootNode, "zh-CN", "zh-TW");
+const handler = OpenCC.HTMLConverter(
+    OpenCC.Converter({}),
+    rootNode,
+    "zh-CN",
+    "zh-TW",
+);
 handler.convert();
 handler.restore();

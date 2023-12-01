@@ -3,7 +3,9 @@ import { PluginCreator } from "postcss";
 declare namespace extractImports {
     interface Options {
         failOnWrongOrder?: boolean | undefined;
-        createImportedName?: ((importName: string, importPath: string) => string) | undefined;
+        createImportedName?:
+            | ((importName: string, importPath: string) => string)
+            | undefined;
     }
 }
 

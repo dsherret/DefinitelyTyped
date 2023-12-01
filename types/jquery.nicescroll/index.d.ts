@@ -41,27 +41,41 @@ declare namespace JQueryNiceScroll {
         dblclickzoom?: boolean | undefined;
         gesturezoom?: boolean | undefined;
         grabcursorenabled?: boolean | undefined;
-        autohidemode?: "leave" | "scroll" | "cursor" | "hidden" | boolean | undefined;
+        autohidemode?:
+            | "leave"
+            | "scroll"
+            | "cursor"
+            | "hidden"
+            | boolean
+            | undefined;
         background?: string | undefined;
         iframeautoresize?: boolean | undefined;
         cursorminheight?: number | undefined;
         preservenativescrolling?: boolean | undefined;
-        railoffset?: boolean | {
-            top?: number | undefined;
-            left?: number | undefined;
-        } | undefined;
-        railhoffset?: boolean | {
-            top?: number | undefined;
-            left?: number | undefined;
-        } | undefined;
+        railoffset?:
+            | boolean
+            | {
+                  top?: number | undefined;
+                  left?: number | undefined;
+              }
+            | undefined;
+        railhoffset?:
+            | boolean
+            | {
+                  top?: number | undefined;
+                  left?: number | undefined;
+              }
+            | undefined;
         bouncescroll?: boolean | undefined;
         spacebarenabled?: boolean | undefined;
-        railpadding?: {
-            top: number;
-            right: number;
-            left: number;
-            bottom: number;
-        } | undefined;
+        railpadding?:
+            | {
+                  top: number;
+                  right: number;
+                  left: number;
+                  bottom: number;
+              }
+            | undefined;
         disableoutline?: boolean | undefined;
         horizrailenabled?: boolean | undefined;
         railalign?: "right" | "left" | "top" | "bottom" | undefined;
@@ -77,8 +91,26 @@ declare namespace JQueryNiceScroll {
         hidecursordelay?: number | undefined;
         nativeparentscrolling?: boolean | undefined;
         enablescrollonselection?: boolean | undefined;
-        overflowx?: "auto" | "hidden" | "inherit" | "initial" | "overlay" | "scroll" | "unset" | "visible" | undefined;
-        overflowy?: "auto" | "hidden" | "inherit" | "initial" | "overlay" | "scroll" | "unset" | "visible" | undefined;
+        overflowx?:
+            | "auto"
+            | "hidden"
+            | "inherit"
+            | "initial"
+            | "overlay"
+            | "scroll"
+            | "unset"
+            | "visible"
+            | undefined;
+        overflowy?:
+            | "auto"
+            | "hidden"
+            | "inherit"
+            | "initial"
+            | "overlay"
+            | "scroll"
+            | "unset"
+            | "visible"
+            | undefined;
         cursordragspeed?: number | undefined;
         rtlmode?: "auto" | boolean | undefined;
         cursordragontouch?: boolean | undefined;
@@ -93,7 +125,12 @@ declare namespace JQueryNiceScroll {
 }
 
 interface JQuery {
-    niceScroll(options?: JQueryNiceScroll.NiceScrollOptions): JQueryNiceScroll.NiceScroll;
-    niceScroll(wrapper: string, options: JQueryNiceScroll.NiceScrollOptions): JQueryNiceScroll.NiceScroll;
+    niceScroll(
+        options?: JQueryNiceScroll.NiceScrollOptions,
+    ): JQueryNiceScroll.NiceScroll;
+    niceScroll(
+        wrapper: string,
+        options: JQueryNiceScroll.NiceScrollOptions,
+    ): JQueryNiceScroll.NiceScroll;
     getNiceScroll(index?: number): JQueryNiceScroll.NiceScroll;
 }

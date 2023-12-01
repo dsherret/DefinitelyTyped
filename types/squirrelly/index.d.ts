@@ -15,14 +15,25 @@ export interface NativeHelper {
 
 export type Blocks = Record<string, () => string>;
 export type SqrlFn = (options: object, Sqrl: any) => string;
-export type HelperCallback = (args: string[], content: () => string, blocks: Blocks) => string;
+export type HelperCallback = (
+    args: string[],
+    content: () => string,
+    blocks: Blocks,
+) => string;
 
-export function __express(filePath: string, options: object, callback: (...args: any[]) => any): void;
+export function __express(
+    filePath: string,
+    options: object,
+    callback: (...args: any[]) => any,
+): void;
 
 export function autoEscaping<T extends boolean>(bool: T): T;
 export function Compile(str: string): SqrlFn;
 export function defaultTags(tagArray: string[]): void;
-export function defineFilter(name: string, callback: (str: string) => string): void;
+export function defineFilter(
+    name: string,
+    callback: (str: string) => string,
+): void;
 export function defineHelper(name: string, callback: HelperCallback): void;
 export function defineNativeHelper(name: string, obj: NativeHelper): void;
 export function definePartial(name: string, str: string): void;

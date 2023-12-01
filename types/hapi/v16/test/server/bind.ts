@@ -6,11 +6,15 @@ interface HandlerThis {
     message: string;
 }
 
-const handler: Hapi.RouteHandler = function(this: HandlerThis, request, reply) {
+const handler: Hapi.RouteHandler = function (
+    this: HandlerThis,
+    request,
+    reply,
+) {
     return reply(this.message);
 };
 
-var register: Hapi.PluginFunction<{}> = function(server, options, next) {
+var register: Hapi.PluginFunction<{}> = function (server, options, next) {
     const bind: HandlerThis = {
         message: "hello",
     };

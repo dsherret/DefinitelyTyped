@@ -19,8 +19,12 @@ export interface SwaggerUIProps {
     url?: string | undefined;
     layout?: string | undefined;
     onComplete?: ((system: System) => void) | undefined;
-    requestInterceptor?: ((req: Request) => Request | Promise<Request>) | undefined;
-    responseInterceptor?: ((res: Response) => Response | Promise<Response>) | undefined;
+    requestInterceptor?:
+        | ((req: Request) => Request | Promise<Request>)
+        | undefined;
+    responseInterceptor?:
+        | ((res: Response) => Response | Promise<Response>)
+        | undefined;
     docExpansion?: "list" | "full" | "none" | undefined;
     defaultModelExpandDepth?: number | undefined;
     defaultModelsExpandDepth?: number | undefined;

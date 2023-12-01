@@ -24,7 +24,11 @@ export interface InterpolatorFactory<T, U> {
 
 export type NumberValue = number | { valueOf(): number };
 
-export type UnknownReturnType<Unknown, DefaultUnknown> = [Unknown] extends [never] ? DefaultUnknown : Unknown;
+export type UnknownReturnType<Unknown, DefaultUnknown> = [Unknown] extends [
+    never,
+]
+    ? DefaultUnknown
+    : Unknown;
 
 /**
  * A helper interface for a continuous scale defined over a numeric domain.
@@ -172,7 +176,12 @@ export interface ScaleContinuousNumeric<Range, Output, Unknown = never> {
  * If specifier uses the format type s, the scale will return a SI-prefix format based on the larger absolute value of start and stop.
  * If the specifier already specifies a precision, this method is equivalent to locale.format.
  */
-export function tickFormat(start: number, stop: number, count: number, specifier?: string): (d: NumberValue) => string;
+export function tickFormat(
+    start: number,
+    stop: number,
+    count: number,
+    specifier?: string,
+): (d: NumberValue) => string;
 
 // -------------------------------------------------------------------------------
 // Linear Scale Factory
@@ -197,7 +206,8 @@ export function tickFormat(start: number, stop: number, count: number, specifier
  * If range element and output element type differ, the interpolator factory used with the scale must match this behavior and
  * convert the interpolated range element to a corresponding output element.
  */
-export interface ScaleLinear<Range, Output, Unknown = never> extends ScaleContinuousNumeric<Range, Output, Unknown> {
+export interface ScaleLinear<Range, Output, Unknown = never>
+    extends ScaleContinuousNumeric<Range, Output, Unknown> {
     /**
      * Returns the scale’s current interpolator factory, which defaults to interpolate.
      */
@@ -230,7 +240,9 @@ export interface ScaleLinear<Range, Output, Unknown = never> extends ScaleContin
      *
      * @param interpolate An interpolation factory. The generics for Range and Output of the scale must correspond to the interpolation factory applied to the scale.
      */
-    interpolate<NewOutput>(interpolate: InterpolatorFactory<Range, NewOutput>): ScaleLinear<Range, NewOutput, Unknown>;
+    interpolate<NewOutput>(
+        interpolate: InterpolatorFactory<Range, NewOutput>,
+    ): ScaleLinear<Range, NewOutput, Unknown>;
 
     /**
      * Returns the current unknown value, which defaults to undefined.
@@ -241,7 +253,9 @@ export interface ScaleLinear<Range, Output, Unknown = never> extends ScaleContin
      *
      * @param value The output value of the scale for undefined (or NaN) input values.
      */
-    unknown<NewUnknown>(value: NewUnknown): ScaleLinear<Range, Output, NewUnknown>;
+    unknown<NewUnknown>(
+        value: NewUnknown,
+    ): ScaleLinear<Range, Output, NewUnknown>;
 }
 
 /**
@@ -312,7 +326,8 @@ export function scaleLinear<Range, Output = Range, Unknown = never>(
  * If range element and output element type differ, the interpolator factory used with the scale must match this behavior and
  * convert the interpolated range element to a corresponding output element.
  */
-export interface ScalePower<Range, Output, Unknown = never> extends ScaleContinuousNumeric<Range, Output, Unknown> {
+export interface ScalePower<Range, Output, Unknown = never>
+    extends ScaleContinuousNumeric<Range, Output, Unknown> {
     /**
      * Returns the scale’s current interpolator factory, which defaults to interpolate.
      */
@@ -345,7 +360,9 @@ export interface ScalePower<Range, Output, Unknown = never> extends ScaleContinu
      *
      * @param interpolate An interpolation factory. The generics for Range and Output of the scale must correspond to the interpolation factory applied to the scale.
      */
-    interpolate<NewOutput>(interpolate: InterpolatorFactory<Range, NewOutput>): ScalePower<Range, NewOutput, Unknown>;
+    interpolate<NewOutput>(
+        interpolate: InterpolatorFactory<Range, NewOutput>,
+    ): ScalePower<Range, NewOutput, Unknown>;
 
     /**
      * If exponent is not specified, returns the current exponent, which defaults to 1.
@@ -367,7 +384,9 @@ export interface ScalePower<Range, Output, Unknown = never> extends ScaleContinu
      *
      * @param value The output value of the scale for undefined (or NaN) input values.
      */
-    unknown<NewUnknown>(value: NewUnknown): ScalePower<Range, Output, NewUnknown>;
+    unknown<NewUnknown>(
+        value: NewUnknown,
+    ): ScalePower<Range, Output, NewUnknown>;
 }
 
 /**
@@ -490,8 +509,7 @@ export function scaleSqrt<Range, Output = Range, Unknown = never>(
  * convert the interpolated range element to a corresponding output element.
  */
 export interface ScaleLogarithmic<Range, Output, Unknown = never>
-    extends ScaleContinuousNumeric<Range, Output, Unknown>
-{
+    extends ScaleContinuousNumeric<Range, Output, Unknown> {
     /**
      * Returns a copy of the scale’s current domain.
      */
@@ -609,7 +627,9 @@ export interface ScaleLogarithmic<Range, Output, Unknown = never>
      *
      * @param value The output value of the scale for undefined (or NaN) input values.
      */
-    unknown<NewUnknown>(value: NewUnknown): ScaleLogarithmic<Range, Output, NewUnknown>;
+    unknown<NewUnknown>(
+        value: NewUnknown,
+    ): ScaleLogarithmic<Range, Output, NewUnknown>;
 }
 
 /**
@@ -679,7 +699,8 @@ export function scaleLog<Range, Output = Range, Unknown = never>(
  * If range element and output element type differ, the interpolator factory used with the scale must match this behavior and
  * convert the interpolated range element to a corresponding output element.
  */
-export interface ScaleSymLog<Range, Output, Unknown = never> extends ScaleContinuousNumeric<Range, Output, Unknown> {
+export interface ScaleSymLog<Range, Output, Unknown = never>
+    extends ScaleContinuousNumeric<Range, Output, Unknown> {
     /**
      * Returns a number format function suitable for displaying a tick value, automatically computing the appropriate precision based on the fixed interval between tick values.
      *
@@ -717,7 +738,9 @@ export interface ScaleSymLog<Range, Output, Unknown = never> extends ScaleContin
      *
      * @param value The output value of the scale for undefined (or NaN) input values.
      */
-    unknown<NewUnknown>(value: NewUnknown): ScaleSymLog<Range, Output, NewUnknown>;
+    unknown<NewUnknown>(
+        value: NewUnknown,
+    ): ScaleSymLog<Range, Output, NewUnknown>;
 }
 
 /**
@@ -897,13 +920,16 @@ export interface ScaleIdentity<Unknown = never> {
  *
  * @param range Array of range values.
  */
-export function scaleIdentity<Unknown = never>(range?: Iterable<NumberValue>): ScaleIdentity<Unknown>;
+export function scaleIdentity<Unknown = never>(
+    range?: Iterable<NumberValue>,
+): ScaleIdentity<Unknown>;
 
 // -------------------------------------------------------------------------------
 // Radial Scale Factory
 // -------------------------------------------------------------------------------
 
-export interface ScaleRadial<Range, Output, Unknown = never> extends ScaleContinuousNumeric<Range, Output, Unknown> {
+export interface ScaleRadial<Range, Output, Unknown = never>
+    extends ScaleContinuousNumeric<Range, Output, Unknown> {
     /**
      * Returns the current unknown value, which defaults to undefined.
      */
@@ -913,7 +939,9 @@ export interface ScaleRadial<Range, Output, Unknown = never> extends ScaleContin
      *
      * @param value The output value of the scale for undefined (or NaN) input values.
      */
-    unknown<NewUnknown>(value: NewUnknown): ScaleRadial<Range, Output, NewUnknown>;
+    unknown<NewUnknown>(
+        value: NewUnknown,
+    ): ScaleRadial<Range, Output, NewUnknown>;
 }
 
 /**
@@ -1086,7 +1114,9 @@ export interface ScaleTime<Range, Output, Unknown = never> {
      *
      * @param interpolate An interpolation factory. The generics for Range and Output of the scale must correspond to the interpolation factory applied to the scale.
      */
-    interpolate<NewOutput>(interpolate: InterpolatorFactory<Range, NewOutput>): ScaleTime<Range, NewOutput, Unknown>;
+    interpolate<NewOutput>(
+        interpolate: InterpolatorFactory<Range, NewOutput>,
+    ): ScaleTime<Range, NewOutput, Unknown>;
 
     /**
      * Returns representative dates from the scale’s domain. The returned tick values are uniformly-spaced (mostly),
@@ -1211,7 +1241,9 @@ export interface ScaleTime<Range, Output, Unknown = never> {
      *
      * @param value The output value of the scale for undefined (or NaN) input values.
      */
-    unknown<NewUnknown>(value: NewUnknown): ScaleTime<Range, Output, NewUnknown>;
+    unknown<NewUnknown>(
+        value: NewUnknown,
+    ): ScaleTime<Range, Output, NewUnknown>;
 }
 
 /**
@@ -1376,7 +1408,8 @@ export interface ScaleSequentialBase<Output, Unknown = never> {
     copy(): this;
 }
 
-export interface ScaleSequential<Output, Unknown = never> extends ScaleSequentialBase<Output, Unknown> {
+export interface ScaleSequential<Output, Unknown = never>
+    extends ScaleSequentialBase<Output, Unknown> {
     /**
      * Returns the current interpolator underlying the scale.
      */
@@ -1394,7 +1427,9 @@ export interface ScaleSequential<Output, Unknown = never> extends ScaleSequentia
      *
      * @param interpolator An interpolator function mapping a value from the [0, 1] interval to an output value.
      */
-    interpolator<NewOutput>(interpolator: (t: number) => NewOutput): ScaleSequential<NewOutput, Unknown>;
+    interpolator<NewOutput>(
+        interpolator: (t: number) => NewOutput,
+    ): ScaleSequential<NewOutput, Unknown>;
 
     /**
      * Returns the current unknown value, which defaults to undefined.
@@ -1541,7 +1576,8 @@ export function scaleSequentialSymlog<Output, Unknown = never>(
     interpolator: (t: number) => Output,
 ): ScaleSequential<Output, Unknown>;
 
-export interface ScaleSequentialQuantile<Output, Unknown = never> extends ScaleSequentialBase<Output, Unknown> {
+export interface ScaleSequentialQuantile<Output, Unknown = never>
+    extends ScaleSequentialBase<Output, Unknown> {
     /**
      * Returns an array of n + 1 quantiles.
      * For example, if n = 4, returns an array of five numbers: the minimum value, the first quartile, the median, the third quartile, and the maximum.
@@ -1565,7 +1601,9 @@ export interface ScaleSequentialQuantile<Output, Unknown = never> extends ScaleS
      *
      * @param interpolator An interpolator function mapping a value from the [0, 1] interval to an output value.
      */
-    interpolator<NewOutput>(interpolator: (t: number) => NewOutput): ScaleSequentialQuantile<NewOutput, Unknown>;
+    interpolator<NewOutput>(
+        interpolator: (t: number) => NewOutput,
+    ): ScaleSequentialQuantile<NewOutput, Unknown>;
 
     /**
      * Returns the current unknown value, which defaults to undefined.
@@ -1576,7 +1614,9 @@ export interface ScaleSequentialQuantile<Output, Unknown = never> extends ScaleS
      *
      * @param value The output value of the scale for undefined (or NaN) input values.
      */
-    unknown<NewUnknown>(value: NewUnknown): ScaleSequentialQuantile<Output, NewUnknown>;
+    unknown<NewUnknown>(
+        value: NewUnknown,
+    ): ScaleSequentialQuantile<Output, NewUnknown>;
 }
 
 /**
@@ -1964,7 +2004,9 @@ export interface ScaleQuantize<Range, Unknown = never> {
  *
  * @param range Array of range values.
  */
-export function scaleQuantize<Range = number, Unknown = never>(range?: Iterable<Range>): ScaleQuantize<Range, Unknown>;
+export function scaleQuantize<Range = number, Unknown = never>(
+    range?: Iterable<Range>,
+): ScaleQuantize<Range, Unknown>;
 /**
  * Constructs a new quantize scale with the specified domain and range.
  * Thus, the default quantize scale is equivalent to the Math.round function.
@@ -2077,7 +2119,9 @@ export interface ScaleQuantile<Range, Unknown = never> {
  *
  * @param range Array of range values.
  */
-export function scaleQuantile<Range = number, Unknown = never>(range?: Iterable<Range>): ScaleQuantile<Range, Unknown>;
+export function scaleQuantile<Range = number, Unknown = never>(
+    range?: Iterable<Range>,
+): ScaleQuantile<Range, Unknown>;
 /**
  * Constructs a new quantile scale with the specified domain and range.
  * The quantile scale is invalid until both a domain and range are specified.
@@ -2109,7 +2153,11 @@ export function scaleQuantile<Range, Unknown = never>(
  * The second generic corresponds to the data type of range values.
  * The third generic corresponds to the data type of the unknown value.
  */
-export interface ScaleThreshold<Domain extends number | string | Date, Range, Unknown = never> {
+export interface ScaleThreshold<
+    Domain extends number | string | Date,
+    Range,
+    Unknown = never,
+> {
     /**
      * Given a value in the input domain, returns the corresponding value in the output range.
      *
@@ -2167,7 +2215,9 @@ export interface ScaleThreshold<Domain extends number | string | Date, Range, Un
      *
      * @param value The output value of the scale for undefined (or NaN) input values.
      */
-    unknown<NewUnknown>(value: NewUnknown): ScaleThreshold<Domain, Range, NewUnknown>;
+    unknown<NewUnknown>(
+        value: NewUnknown,
+    ): ScaleThreshold<Domain, Range, NewUnknown>;
 }
 
 /**
@@ -2182,9 +2232,11 @@ export interface ScaleThreshold<Domain extends number | string | Date, Range, Un
  *
  * @param range Array of range values.
  */
-export function scaleThreshold<Domain extends number | string | Date = number, Range = number, Unknown = never>(
-    range?: Iterable<Range>,
-): ScaleThreshold<Domain, Range, Unknown>;
+export function scaleThreshold<
+    Domain extends number | string | Date = number,
+    Range = number,
+    Unknown = never,
+>(range?: Iterable<Range>): ScaleThreshold<Domain, Range, Unknown>;
 /**
  * Constructs a new threshold scale with the specified domain and range.
  * Thus, the default threshold scale is equivalent to the Math.round function for numbers; for example threshold(0.49) returns 0, and threshold(0.51) returns 1.
@@ -2196,7 +2248,11 @@ export function scaleThreshold<Domain extends number | string | Date = number, R
  * @param domain Array of domain values.
  * @param range Array of range values.
  */
-export function scaleThreshold<Domain extends number | string | Date, Range, Unknown = never>(
+export function scaleThreshold<
+    Domain extends number | string | Date,
+    Range,
+    Unknown = never,
+>(
     domain: Iterable<Domain>,
     range: Iterable<Range>,
 ): ScaleThreshold<Domain, Range, Unknown>;
@@ -2216,7 +2272,11 @@ export function scaleThreshold<Domain extends number | string | Date, Range, Unk
  * The second generic corresponds to the data type of range values.
  * The third generic corresponds to the data type of the unknown value.
  */
-export interface ScaleOrdinal<Domain extends { toString(): string }, Range, Unknown = never> {
+export interface ScaleOrdinal<
+    Domain extends { toString(): string },
+    Range,
+    Unknown = never,
+> {
     /**
      * Given a value in the input domain, returns the corresponding value in the output range.
      * If the given value is not in the scale’s domain, returns the unknown; or, if the unknown value is implicit (the default),
@@ -2275,7 +2335,8 @@ export interface ScaleOrdinal<Domain extends { toString(): string }, Range, Unkn
      */
     unknown<NewUnknown>(
         value: NewUnknown,
-    ): NewUnknown extends { name: "implicit" } ? ScaleOrdinal<Domain, Range>
+    ): NewUnknown extends { name: "implicit" }
+        ? ScaleOrdinal<Domain, Range>
         : ScaleOrdinal<Domain, Range, NewUnknown>;
 
     /**
@@ -2293,7 +2354,9 @@ export interface ScaleOrdinal<Domain extends { toString(): string }, Range, Unkn
  *
  * @param range An optional array of range values to initialize the scale with.
  */
-export function scaleOrdinal<Range>(range?: Iterable<Range>): ScaleOrdinal<string, Range>;
+export function scaleOrdinal<Range>(
+    range?: Iterable<Range>,
+): ScaleOrdinal<string, Range>;
 /**
  * Constructs a new ordinal scale with the specified range.
  * The domain defaults to the empty array.
@@ -2305,9 +2368,11 @@ export function scaleOrdinal<Range>(range?: Iterable<Range>): ScaleOrdinal<strin
  *
  * @param range An optional array of range values to initialize the scale with.
  */
-export function scaleOrdinal<Domain extends { toString(): string }, Range, Unknown = never>(
-    range?: Iterable<Range>,
-): ScaleOrdinal<Domain, Range, Unknown>;
+export function scaleOrdinal<
+    Domain extends { toString(): string },
+    Range,
+    Unknown = never,
+>(range?: Iterable<Range>): ScaleOrdinal<Domain, Range, Unknown>;
 /**
  * Constructs a new ordinal scale with the specified domain and range.
  *
@@ -2318,7 +2383,11 @@ export function scaleOrdinal<Domain extends { toString(): string }, Range, Unkno
  * @param domain Array of domain values.
  * @param range An optional array of range values to initialize the scale with.
  */
-export function scaleOrdinal<Domain extends { toString(): string }, Range, Unknown = never>(
+export function scaleOrdinal<
+    Domain extends { toString(): string },
+    Range,
+    Unknown = never,
+>(
     domain: Iterable<Domain>,
     range: Iterable<Range>,
 ): ScaleOrdinal<Domain, Range, Unknown>;

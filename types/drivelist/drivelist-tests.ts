@@ -2,7 +2,7 @@ import * as drivelist from "drivelist";
 
 drivelist.list((error, drives) => {
     if (!error) {
-        drives.forEach(drive => {
+        drives.forEach((drive) => {
             const {
                 enumerator,
                 busType,
@@ -39,7 +39,7 @@ drivelist.list((error, drives) => {
             logicalBlockSize; // $ExpectType number | null
 
             mountpoints; //  $ExpectType MountPoint[]
-            mountpoints.forEach(mountpoint => {
+            mountpoints.forEach((mountpoint) => {
                 const { path, label } = mountpoint;
 
                 path; // $ExpectType string

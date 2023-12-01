@@ -12,6 +12,8 @@ declare namespace tap {
     }
 }
 
-declare function tap(tapFunction: (file: Vinyl, t?: {}) => void): NodeJS.ReadWriteStream;
+declare function tap(
+    tapFunction: (file: Vinyl, t?: {}) => void,
+): NodeJS.ReadWriteStream;
 
 export = tap;

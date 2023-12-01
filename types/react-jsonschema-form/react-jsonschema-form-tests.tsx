@@ -13,7 +13,9 @@ import Form, {
     WidgetProps,
     withTheme,
 } from "react-jsonschema-form";
-import SchemaField, { SchemaFieldProps } from "react-jsonschema-form/lib/components/fields/SchemaField";
+import SchemaField, {
+    SchemaFieldProps,
+} from "react-jsonschema-form/lib/components/fields/SchemaField";
 
 import {
     ADDITIONAL_PROPERTY_FLAG,
@@ -62,7 +64,9 @@ const ExampleFieldTemplate = (_props: FieldTemplateProps) => null;
 
 const ExampleArrayFieldTemplate = ({ items }: ArrayFieldTemplateProps) => (
     <div>
-        {items.map(element => <div key={element.key}>{element.children}</div>)}
+        {items.map((element) => (
+            <div key={element.key}>{element.children}</div>
+        ))}
     </div>
 );
 
@@ -138,7 +142,7 @@ export class Example extends React.Component<any, IExampleState> {
                         noHtml5Validate={false}
                         formData={this.state}
                         ErrorList={ErrorListExample}
-                        onChange={formData => this.setState({ formData })}
+                        onChange={(formData) => this.setState({ formData })}
                         customFormats={{
                             "phone-us": /\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{4}$/,
                         }}
@@ -184,28 +188,28 @@ export const FuncExample = (props: FuncExampleProps) => {
     );
 };
 
-export const BooleanCustomWidget: React.FC<WidgetProps> = props => (
+export const BooleanCustomWidget: React.FC<WidgetProps> = (props) => (
     <input
         onFocus={() => props.onFocus("id", true)}
         onBlur={() => props.onFocus("id", true)}
     />
 );
 
-export const NumberCustomWidget: React.FC<WidgetProps> = props => (
+export const NumberCustomWidget: React.FC<WidgetProps> = (props) => (
     <input
         onFocus={() => props.onFocus("id", 0)}
         onBlur={() => props.onFocus("id", 0)}
     />
 );
 
-export const StringCustomWidget: React.FC<WidgetProps> = props => (
+export const StringCustomWidget: React.FC<WidgetProps> = (props) => (
     <input
         onFocus={() => props.onFocus("id", "value")}
         onBlur={() => props.onFocus("id", "value")}
     />
 );
 
-export const NullCustomWidget: React.FC<WidgetProps> = props => (
+export const NullCustomWidget: React.FC<WidgetProps> = (props) => (
     <input
         onFocus={() => props.onFocus("id", null)}
         onBlur={() => props.onFocus("id", null)}
@@ -231,7 +235,11 @@ export const ExternalFormSubmissionExample = () => {
 
     return (
         <Form schema={schema} ref={formRef}>
-            <button onClick={formRef.current ? formRef.current.submit : undefined}>FancySubmitButton</button>
+            <button
+                onClick={formRef.current ? formRef.current.submit : undefined}
+            >
+                FancySubmitButton
+            </button>
         </Form>
     );
 };
@@ -256,7 +264,10 @@ export const retrieveSchemaExample = (schema: JSONSchema6) => {
     return retrieveSchema(schema);
 };
 
-export const getValidationDataExample = (formData: any, schema: JSONSchema6) => {
+export const getValidationDataExample = (
+    formData: any,
+    schema: JSONSchema6,
+) => {
     return validateFormData(formData, schema);
 };
 

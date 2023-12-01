@@ -23,6 +23,9 @@ interface PluginEvents {
 }
 /* Cypress definitions - end */
 
-declare function addMatchImageSnapshotPlugin(on: PluginEvents, config: {}): void;
+declare function addMatchImageSnapshotPlugin(
+    on: PluginEvents,
+    config: {},
+): void;
 
 export { addMatchImageSnapshotPlugin };

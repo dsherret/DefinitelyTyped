@@ -24,7 +24,13 @@ app.listen(8000, function () {
 /// <reference types="express" />
 
 declare module "swagger-express-middleware" {
-    import { Application, Request, RequestHandler, Response, Router } from "express";
+    import {
+        Application,
+        Request,
+        RequestHandler,
+        Response,
+        Router,
+    } from "express";
     import SwaggerParser = require("swagger-parser");
 
     let s: s.SwaggerMiddlewareConstructor;
@@ -38,7 +44,12 @@ declare module "swagger-express-middleware" {
             ): SwaggerMiddleware;
         }
         interface SwaggerMiddlewareConstructorCallback {
-            (err: any, middleware: SwaggerMiddleware, api: SwaggerObject, parser: SwaggerParser): void;
+            (
+                err: any,
+                middleware: SwaggerMiddleware,
+                api: SwaggerObject,
+                parser: SwaggerParser,
+            ): void;
         }
 
         export interface SwaggerMiddleware {
@@ -171,31 +182,45 @@ declare module "swagger-express-middleware" {
             /** The storage engine to use for uploaded files. */
             storage?: StorageEngine | undefined;
             /** An object specifying the size limits of the following optional properties. This object is passed to busboy directly, and the details of properties can be found on https://github.com/mscdex/busboy#busboy-methods */
-            limits?: {
-                /** Max field name size (Default: 100 bytes) */
-                fieldNameSize?: number | undefined;
-                /** Max field value size (Default: 1MB) */
-                fieldSize?: number | undefined;
-                /** Max number of non- file fields (Default: Infinity) */
-                fields?: number | undefined;
-                /** For multipart forms, the max file size (in bytes)(Default: Infinity) */
-                fileSize?: number | undefined;
-                /** For multipart forms, the max number of file fields (Default: Infinity) */
-                files?: number | undefined;
-                /** For multipart forms, the max number of parts (fields + files)(Default: Infinity) */
-                parts?: number | undefined;
-                /** For multipart forms, the max number of header key=> value pairs to parse Default: 2000(same as node's http). */
-                headerPairs?: number | undefined;
-            } | undefined;
+            limits?:
+                | {
+                      /** Max field name size (Default: 100 bytes) */
+                      fieldNameSize?: number | undefined;
+                      /** Max field value size (Default: 1MB) */
+                      fieldSize?: number | undefined;
+                      /** Max number of non- file fields (Default: Infinity) */
+                      fields?: number | undefined;
+                      /** For multipart forms, the max file size (in bytes)(Default: Infinity) */
+                      fileSize?: number | undefined;
+                      /** For multipart forms, the max number of file fields (Default: Infinity) */
+                      files?: number | undefined;
+                      /** For multipart forms, the max number of parts (fields + files)(Default: Infinity) */
+                      parts?: number | undefined;
+                      /** For multipart forms, the max number of header key=> value pairs to parse Default: 2000(same as node's http). */
+                      headerPairs?: number | undefined;
+                  }
+                | undefined;
             /** A function to control which files to upload and which to skip. */
             fileFilter?:
-                | ((req: Request, file: File, callback: (error: Error, acceptFile: boolean) => void) => void)
+                | ((
+                      req: Request,
+                      file: File,
+                      callback: (error: Error, acceptFile: boolean) => void,
+                  ) => void)
                 | undefined;
         }
 
         interface StorageEngine {
-            _handleFile(req: Request, file: File, callback: (error?: any, info?: File) => void): void;
-            _removeFile(req: Request, file: File, callback: (error: Error) => void): void;
+            _handleFile(
+                req: Request,
+                file: File,
+                callback: (error?: any, info?: File) => void,
+            ): void;
+            _removeFile(
+                req: Request,
+                file: File,
+                callback: (error: Error) => void,
+            ): void;
         }
 
         export interface File {
@@ -240,7 +265,14 @@ declare module "swagger-express-middleware" {
             /**
              * function to verify body content, the parsing can be aborted by throwing an error.
              */
-            verify?: ((req: Request, res: Response, buf: Buffer, encoding: string) => void) | undefined;
+            verify?:
+                | ((
+                      req: Request,
+                      res: Response,
+                      buf: Buffer,
+                      encoding: string,
+                  ) => void)
+                | undefined;
         }
 
         interface CookieParserOptionItem {
@@ -279,7 +311,14 @@ declare module "swagger-express-middleware" {
              * The verify option, if supplied, is called as verify(req, res, buf, encoding), where buf is a Buffer of the raw request body and encoding is the encoding of the request.
              * The parsing can be aborted by throwing an error.
              */
-            verify?: ((req: Request, res: Response, buf: Buffer, encoding: string) => void) | undefined;
+            verify?:
+                | ((
+                      req: Request,
+                      res: Response,
+                      buf: Buffer,
+                      encoding: string,
+                  ) => void)
+                | undefined;
             /**
              * only parse objects and arrays. (default: true)
              */
@@ -311,7 +350,14 @@ declare module "swagger-express-middleware" {
             /**
              * function to verify body content, the parsing can be aborted by throwing an error.
              */
-            verify?: ((req: Request, res: Response, buf: Buffer, encoding: string) => void) | undefined;
+            verify?:
+                | ((
+                      req: Request,
+                      res: Response,
+                      buf: Buffer,
+                      encoding: string,
+                  ) => void)
+                | undefined;
             /**
              * the default charset to parse as, if not specified in content-type. (default: 'utf-8')
              */
@@ -341,7 +387,14 @@ declare module "swagger-express-middleware" {
             /**
              * function to verify body content, the parsing can be aborted by throwing an error.
              */
-            verify?: ((req: Request, res: Response, buf: Buffer, encoding: string) => void) | undefined;
+            verify?:
+                | ((
+                      req: Request,
+                      res: Response,
+                      buf: Buffer,
+                      encoding: string,
+                  ) => void)
+                | undefined;
             /**
              * parse extended syntax with the qs module.
              */
@@ -397,7 +450,7 @@ declare module "swagger-express-middleware" {
             get?: OperationObject | undefined;
             put?: OperationObject | undefined;
             post?: OperationObject | undefined;
-            "delete"?: OperationObject | undefined;
+            delete?: OperationObject | undefined;
             options?: OperationObject | undefined;
             head?: OperationObject | undefined;
             patch?: OperationObject | undefined;
@@ -425,7 +478,7 @@ declare module "swagger-express-middleware" {
 
         export interface ResponsesObject {
             [index: string]: Response | any;
-            "default": Response;
+            default: Response;
         }
 
         type Response = ResponseObject | ReferenceObject;
@@ -445,8 +498,7 @@ declare module "swagger-express-middleware" {
             [index: string]: HeaderObject;
         }
 
-        export interface HeaderObject extends ItemsObject {
-        }
+        export interface HeaderObject extends ItemsObject {}
 
         export interface ExampleObject {
             [index: string]: any;
@@ -460,7 +512,7 @@ declare module "swagger-express-middleware" {
             type: string;
             description?: string | undefined;
             name: string;
-            "in": string;
+            in: string;
             flow: string;
             authorizationUrl: string;
             tokenUrl: string;
@@ -485,7 +537,7 @@ declare module "swagger-express-middleware" {
             format?: string | undefined;
             items?: ItemsObject | undefined;
             collectionFormat?: string | undefined;
-            "default"?: any;
+            default?: any;
             maximum?: number | undefined;
             exclusiveMaximum: boolean;
             minimum?: number | undefined;
@@ -496,7 +548,7 @@ declare module "swagger-express-middleware" {
             maxItems?: number | undefined;
             minItems?: number | undefined;
             uniqueItems?: boolean | undefined;
-            "enum"?: any[] | undefined;
+            enum?: any[] | undefined;
             multipleOf?: number | undefined;
         }
 
@@ -508,7 +560,7 @@ declare module "swagger-express-middleware" {
 
         export interface ParameterObject {
             name: string;
-            "in": string;
+            in: string;
             description?: string | undefined;
             required?: boolean | undefined;
         }
@@ -517,7 +569,9 @@ declare module "swagger-express-middleware" {
             schema: SchemaObject;
         }
 
-        export interface GeneralParameterObject extends ParameterObject, ItemsObject {
+        export interface GeneralParameterObject
+            extends ParameterObject,
+                ItemsObject {
             allowEmptyValue?: boolean | undefined;
         }
 
@@ -562,19 +616,27 @@ declare module "swagger-express-middleware" {
             minProperties?: number | undefined;
             required?: string[] | undefined;
             additionalProperties?: boolean | IJsonSchema | undefined;
-            definitions?: {
-                [name: string]: IJsonSchema;
-            } | undefined;
-            properties?: {
-                [name: string]: IJsonSchema;
-            } | undefined;
-            patternProperties?: {
-                [name: string]: IJsonSchema;
-            } | undefined;
-            dependencies?: {
-                [name: string]: IJsonSchema | string[];
-            } | undefined;
-            "enum"?: any[] | undefined;
+            definitions?:
+                | {
+                      [name: string]: IJsonSchema;
+                  }
+                | undefined;
+            properties?:
+                | {
+                      [name: string]: IJsonSchema;
+                  }
+                | undefined;
+            patternProperties?:
+                | {
+                      [name: string]: IJsonSchema;
+                  }
+                | undefined;
+            dependencies?:
+                | {
+                      [name: string]: IJsonSchema | string[];
+                  }
+                | undefined;
+            enum?: any[] | undefined;
             type?: string | string[] | undefined;
             allOf?: IJsonSchema[] | undefined;
             anyOf?: IJsonSchema[] | undefined;

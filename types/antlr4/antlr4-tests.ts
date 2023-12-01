@@ -51,7 +51,9 @@ const testTokenSourceInstance = new TestTokenSource();
 const tokenInstance = new Token();
 
 // BufferedTokenStream
-const bufferedTokenStreamInstance = new BufferedTokenStream(testTokenSourceInstance);
+const bufferedTokenStreamInstance = new BufferedTokenStream(
+    testTokenSourceInstance,
+);
 bufferedTokenStreamInstance.mark(); // $ExpectType number
 bufferedTokenStreamInstance.release(0); // $ExpectType number
 bufferedTokenStreamInstance.reset(); // $ExpectType void
@@ -103,7 +105,16 @@ commonTokenInstance.clone(); // $ExpectType CommonToken
 // CommonTokenFactory
 CommonTokenFactory.DEFAULT; // $ExpectType CommonTokenFactory
 const commonTokenFactoryInstance = new CommonTokenFactory(true);
-commonTokenFactoryInstance.create([lexerInstance, inputStreamInstance], undefined, null, 0, 0, 0, 0, 0); // $ExpectType CommonToken
+commonTokenFactoryInstance.create(
+    [lexerInstance, inputStreamInstance],
+    undefined,
+    null,
+    0,
+    0,
+    0,
+    0,
+    0,
+); // $ExpectType CommonToken
 commonTokenFactoryInstance.create([null, null], undefined, null, 0, 0, 0, 0, 0); // $ExpectType CommonToken
 commonTokenFactoryInstance.create(undefined, undefined, null, 0, 0, 0, 0, 0); // $ExpectType CommonToken
 commonTokenFactoryInstance.create(undefined, 0, null, 0, 0, 0, 0, 0); // $ExpectType CommonToken
@@ -189,7 +200,11 @@ parserInstance.getTokenStream(); // $ExpectType CommonTokenStream
 parserInstance.setTokenStream(commonTokenStreamInstance); // $ExpectType void
 parserInstance.getCurrentToken(); // $ExpectType Token
 parserInstance.notifyErrorListeners("", tokenInstance); // $ExpectType void
-parserInstance.notifyErrorListeners("", tokenInstance, recognitionExceptionInstance); // $ExpectType void
+parserInstance.notifyErrorListeners(
+    "",
+    tokenInstance,
+    recognitionExceptionInstance,
+); // $ExpectType void
 parserInstance.consume(); // $ExpectType Token
 parserInstance.addContextToParseTree(); // $ExpectType void
 parserInstance.enterRule(parserRuleContextInstance, 0); // $ExpectType void
@@ -396,7 +411,8 @@ export interface PostfixExpressionContext extends antlr4.ParserRuleContext {
     getAltNumber(): any;
 }
 
-export interface ArgumentExpressionListContext extends antlr4.ParserRuleContext {
+export interface ArgumentExpressionListContext
+    extends antlr4.ParserRuleContext {
     assignmentExpression(): AssignmentExpressionContext;
 
     argumentExpressionList(): ArgumentExpressionListContext;
@@ -492,7 +508,8 @@ export interface CastExpressionContext extends antlr4.ParserRuleContext {
     getAltNumber(): any;
 }
 
-export interface MultiplicativeExpressionContext extends antlr4.ParserRuleContext {
+export interface MultiplicativeExpressionContext
+    extends antlr4.ParserRuleContext {
     castExpression(): CastExpressionContext;
 
     multiplicativeExpression(): MultiplicativeExpressionContext;
@@ -866,7 +883,8 @@ export interface DeclarationSpecifiersContext extends antlr4.ParserRuleContext {
     getAltNumber(): any;
 }
 
-export interface DeclarationSpecifiers2Context extends antlr4.ParserRuleContext {
+export interface DeclarationSpecifiers2Context
+    extends antlr4.ParserRuleContext {
     removeLastChild(): any;
 
     getChildCount(): any;
@@ -1006,7 +1024,8 @@ export interface TypeSpecifierContext extends antlr4.ParserRuleContext {
     getAltNumber(): any;
 }
 
-export interface StructOrUnionSpecifierContext extends antlr4.ParserRuleContext {
+export interface StructOrUnionSpecifierContext
+    extends antlr4.ParserRuleContext {
     structOrUnion(): StructOrUnionContext;
 
     structDeclarationList(): StructDeclarationListContext;
@@ -1094,7 +1113,8 @@ export interface StructDeclarationContext extends antlr4.ParserRuleContext {
     getAltNumber(): any;
 }
 
-export interface SpecifierQualifierListContext extends antlr4.ParserRuleContext {
+export interface SpecifierQualifierListContext
+    extends antlr4.ParserRuleContext {
     typeSpecifier(): TypeSpecifierContext;
 
     specifierQualifierList(): SpecifierQualifierListContext;
@@ -1390,7 +1410,8 @@ export interface DirectDeclaratorContext extends antlr4.ParserRuleContext {
     getAltNumber(): any;
 }
 
-export interface GccDeclaratorExtensionContext extends antlr4.ParserRuleContext {
+export interface GccDeclaratorExtensionContext
+    extends antlr4.ParserRuleContext {
     gccAttributeSpecifier(): GccAttributeSpecifierContext;
 
     removeLastChild(): any;
@@ -1468,7 +1489,8 @@ export interface GccAttributeContext extends antlr4.ParserRuleContext {
     getAltNumber(): any;
 }
 
-export interface NestedParenthesesBlockContext extends antlr4.ParserRuleContext {
+export interface NestedParenthesesBlockContext
+    extends antlr4.ParserRuleContext {
     removeLastChild(): any;
 
     getChildCount(): any;
@@ -1664,7 +1686,8 @@ export interface AbstractDeclaratorContext extends antlr4.ParserRuleContext {
     getAltNumber(): any;
 }
 
-export interface DirectAbstractDeclaratorContext extends antlr4.ParserRuleContext {
+export interface DirectAbstractDeclaratorContext
+    extends antlr4.ParserRuleContext {
     abstractDeclarator(): AbstractDeclaratorContext;
 
     typeQualifierList(): TypeQualifierListContext;
@@ -1822,7 +1845,8 @@ export interface DesignatorContext extends antlr4.ParserRuleContext {
     getAltNumber(): any;
 }
 
-export interface StaticAssertDeclarationContext extends antlr4.ParserRuleContext {
+export interface StaticAssertDeclarationContext
+    extends antlr4.ParserRuleContext {
     constantExpression(): ConstantExpressionContext;
 
     removeLastChild(): any;

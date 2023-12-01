@@ -34,7 +34,11 @@ export interface SignalSubscribersResponse {
     data: SignalSubscriber[];
 }
 
-export function listSignals(skip: number, limit: number, sessionToken: string): Promise<Signal[]>;
+export function listSignals(
+    skip: number,
+    limit: number,
+    sessionToken: string,
+): Promise<Signal[]>;
 export function getSignal(id: string, sessionToken: string): Promise<Signal>;
 export function createSignal(
     name: string,
@@ -43,7 +47,10 @@ export function createSignal(
     companyWide: boolean,
     sessionToken: string,
 ): Promise<Signal>;
-export function deleteSignal(id: string, sessionToken: string): Promise<DeleteOperationResult>;
+export function deleteSignal(
+    id: string,
+    sessionToken: string,
+): Promise<DeleteOperationResult>;
 export function updateSignal(
     id: string,
     name?: string,

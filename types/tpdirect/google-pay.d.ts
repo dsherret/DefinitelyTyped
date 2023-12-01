@@ -31,16 +31,17 @@ interface GooglePay {
          */
         getPrimeCallback?:
             | ((
-                err: {
-                    status: number;
-                    msg: string;
-                    originalError: string | Error;
-                },
-                prime: Pick<BaseResult, "prime">,
-                result: Pick<BaseResult, "client_ip"> & MerchantReferenceInfo & {
-                    card_info: CardInfoV1;
-                },
-            ) => void)
+                  err: {
+                      status: number;
+                      msg: string;
+                      originalError: string | Error;
+                  },
+                  prime: Pick<BaseResult, "prime">,
+                  result: Pick<BaseResult, "client_ip"> &
+                      MerchantReferenceInfo & {
+                          card_info: CardInfoV1;
+                      },
+              ) => void)
             | undefined;
     }): void;
 

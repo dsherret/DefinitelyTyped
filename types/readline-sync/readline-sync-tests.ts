@@ -1,8 +1,11 @@
 import readlineSync = require("readline-sync");
 
-const result: string = readlineSync.question("Which program starts do you want? ", {
-    defaultInput: "firefox",
-});
+const result: string = readlineSync.question(
+    "Which program starts do you want? ",
+    {
+        defaultInput: "firefox",
+    },
+);
 
 const result2: string = readlineSync.prompt({ prompt: "$$" });
 
@@ -41,11 +44,17 @@ const result4: {} = readlineSync.setDefaultOptions({
 
 const result5: string = readlineSync.questionEMail("Enter email");
 
-const result6: string = readlineSync.questionNewPassword("PASSWORD: ", { charlist: "$<a-z>#$@%" });
+const result6: string = readlineSync.questionNewPassword("PASSWORD: ", {
+    charlist: "$<a-z>#$@%",
+});
 
-const result7: number = readlineSync.questionInt("Enter an integer", { limitMessage: "Enter a valid integer" });
+const result7: number = readlineSync.questionInt("Enter an integer", {
+    limitMessage: "Enter a valid integer",
+});
 
-const result8: number = readlineSync.questionFloat("Enter a float", { limitMessage: "Enter a valid float" });
+const result8: number = readlineSync.questionFloat("Enter a float", {
+    limitMessage: "Enter a valid float",
+});
 
 const result9: string = readlineSync.questionPath("Save to: ", {
     isDirectory: true,
@@ -62,7 +71,8 @@ readlineSync.promptCL((command: string, arg1: string, arg2: string) => {
 });
 
 readlineSync.promptCL({
-    add: (element: string) => { // It's called by also "ADD", "Add", "aDd", etc..
+    add: (element: string) => {
+        // It's called by also "ADD", "Add", "aDd", etc..
         console.log(element + " is added.");
     },
     copy: (from: string, to: string) => {
@@ -87,14 +97,22 @@ readlineSync.promptCLLoop({
 
 const result10: string = readlineSync.promptSimShell();
 
-const result11: boolean | string = readlineSync.keyInYN("Do you want to install this?");
+const result11: boolean | string = readlineSync.keyInYN(
+    "Do you want to install this?",
+);
 
-const result12: boolean = readlineSync.keyInYNStrict("Do you want to install this?", { guide: true });
+const result12: boolean = readlineSync.keyInYNStrict(
+    "Do you want to install this?",
+    { guide: true },
+);
 
 readlineSync.keyInPause({ guide: true });
 
 const frameworks = ["Express", "hapi", "flatiron", "MEAN.JS", "locomotive"];
-const result13: number = readlineSync.keyInSelect(frameworks, "Which framework?");
+const result13: number = readlineSync.keyInSelect(
+    frameworks,
+    "Which framework?",
+);
 
 const result14: string = readlineSync.getRawInput();
 

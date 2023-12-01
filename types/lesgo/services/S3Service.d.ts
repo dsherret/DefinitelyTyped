@@ -13,5 +13,8 @@ export default class S3Service {
 
     constructor(opts?: S3ServiceParams);
 
-    getObject(key: S3.ObjectKey, bucketName: S3.BucketName): Promise<S3.GetObjectOutput>;
+    getObject(
+        key: S3.ObjectKey,
+        bucketName: S3.BucketName,
+    ): Promise<S3.GetObjectOutput>;
 }

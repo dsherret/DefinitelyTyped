@@ -1,7 +1,11 @@
 interface FuzzySet {
     get(candidate: string): Array<[number, string]> | null;
 
-    get<DEFAULT>(candidate: string, def?: DEFAULT, minScore?: number): Array<[number, string]> | DEFAULT;
+    get<DEFAULT>(
+        candidate: string,
+        def?: DEFAULT,
+        minScore?: number,
+    ): Array<[number, string]> | DEFAULT;
 
     add(value: string): false | undefined;
 

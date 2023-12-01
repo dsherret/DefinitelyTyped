@@ -2,7 +2,7 @@ import * as piSPI from "pi-spi";
 
 var spi: piSPI.SPI = piSPI.initialize("test");
 var b: Buffer = new Buffer("Hello, World!");
-var cb = function(error: Error, data: Buffer): void {};
+var cb = function (error: Error, data: Buffer): void {};
 
 spi.bitOrder(piSPI.order.LSB_FIRST);
 spi.bitOrder(piSPI.order.MSB_FIRST);

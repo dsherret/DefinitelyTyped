@@ -11,10 +11,10 @@ const emitter = degit("user/repo", {
     mode: "git",
 });
 
-emitter.on("info", info => {
+emitter.on("info", (info) => {
     console.log(info.message);
 });
-emitter.on("warn", info => {
+emitter.on("warn", (info) => {
     console.log(info.message);
 });
 

@@ -1,4 +1,4 @@
-export default function(link: object): Link;
+export default function (link: object): Link;
 
 export interface Link {
     rel: string[];

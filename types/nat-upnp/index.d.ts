@@ -9,17 +9,17 @@ export interface StandardOpts {
         | number
         | null
         | {
-            port?: number | undefined;
-            host?: string | undefined;
-        }
+              port?: number | undefined;
+              host?: string | undefined;
+          }
         | undefined;
     private?:
         | number
         | null
         | {
-            port?: number | undefined;
-            host?: string | undefined;
-        }
+              port?: number | undefined;
+              host?: string | undefined;
+          }
         | undefined;
     protocol?: string | undefined;
 }
@@ -100,7 +100,11 @@ export interface Device {
      * @param args key-value pair arguments of said action
      * @param callback Callback to be run when completed, or on error
      */
-    run(action: string, args: Array<[string, string | number]>, callback: CB<RawResponse>): void;
+    run(
+        action: string,
+        args: Array<[string, string | number]>,
+        callback: CB<RawResponse>,
+    ): void;
 }
 
 // Note for the SSDP class/interface
@@ -162,7 +166,10 @@ export interface Client {
      * @param options Specify which port mapping to remove
      * @param [callback] Callback to be run when completed, or on error
      */
-    portUnmapping(options: DeletePortMappingOpts, callback?: CB<RawResponse>): void;
+    portUnmapping(
+        options: DeletePortMappingOpts,
+        callback?: CB<RawResponse>,
+    ): void;
     /**
      * Get a list of existing mappings
      * @param callback Callback to be run when completed, or on error

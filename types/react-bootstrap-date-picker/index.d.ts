@@ -1,4 +1,10 @@
-import { ComponentClass, FocusEventHandler, FunctionComponent, HTMLAttributes, ReactNode } from "react";
+import {
+    ComponentClass,
+    FocusEventHandler,
+    FunctionComponent,
+    HTMLAttributes,
+    ReactNode,
+} from "react";
 
 export as namespace DatePicker;
 
@@ -36,6 +42,9 @@ declare namespace DatePicker {
         weekStartsOnMonday?: boolean | undefined;
         showTodayButton?: boolean | undefined;
         todayButtonLabel?: string | undefined;
-        customControl?: FunctionComponent<any> | ComponentClass<any> | undefined;
+        customControl?:
+            | FunctionComponent<any>
+            | ComponentClass<any>
+            | undefined;
     }
 }

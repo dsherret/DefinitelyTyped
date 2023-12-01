@@ -1,7 +1,10 @@
 $("#phone").intlTelInput();
 
 $("#phone").intlTelInput({
-    customPlaceholder: function(selectedCountryPlaceholder, selectedCountryData) {
+    customPlaceholder: function (
+        selectedCountryPlaceholder,
+        selectedCountryData,
+    ) {
         return "e.g. " + selectedCountryPlaceholder;
     },
 });
@@ -11,11 +14,14 @@ $("#phone").intlTelInput({
 });
 
 $("#phone").intlTelInput({
-    geoIpLookup: function(callback) {
-        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-            let countryCode = (resp && resp.country) ? <string> resp.country : "";
-            callback(countryCode);
-        });
+    geoIpLookup: function (callback) {
+        $.get("http://ipinfo.io", function () {}, "jsonp").always(
+            function (resp) {
+                let countryCode =
+                    resp && resp.country ? <string>resp.country : "";
+                callback(countryCode);
+            },
+        );
     },
 });
 
@@ -24,15 +30,20 @@ $("#phone").intlTelInput("destroy");
 let extension = $("#phone").intlTelInput("getExtension");
 
 let intlNumber = $("#phone").intlTelInput("getNumber");
-let ntlNumber = $("#phone").intlTelInput("getNumber", intlTelInputUtils.numberFormat.NATIONAL);
+let ntlNumber = $("#phone").intlTelInput(
+    "getNumber",
+    intlTelInputUtils.numberFormat.NATIONAL,
+);
 
 let numberType = $("#phone").intlTelInput("getNumberType");
-if (numberType === intlTelInputUtils.numberType.MOBILE) {}
+if (numberType === intlTelInputUtils.numberType.MOBILE) {
+}
 
 let selectedCountryData = $("#phone").intlTelInput("getSelectedCountryData");
 
 let error = $("#phone").intlTelInput("getValidationError");
-if (error === intlTelInputUtils.validationError.TOO_SHORT) {}
+if (error === intlTelInputUtils.validationError.TOO_SHORT) {
+}
 
 let isValid = $("#phone").intlTelInput("isValidNumber");
 
@@ -50,11 +61,13 @@ $("#phone").intlTelInput({
 
 $("#phone").intlTelInput({
     initialCountry: "auto",
-    geoIpLookup: function(callback) {
-        $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
-            let countryCode = (resp && resp.country) ? resp.country : "";
-            callback(countryCode);
-        });
+    geoIpLookup: function (callback) {
+        $.get("http://ipinfo.io", function () {}, "jsonp").always(
+            function (resp) {
+                let countryCode = resp && resp.country ? resp.country : "";
+                callback(countryCode);
+            },
+        );
     },
     utilsScript: "../../build/js/utils.js",
 });

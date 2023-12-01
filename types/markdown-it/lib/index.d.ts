@@ -85,7 +85,10 @@ declare namespace MarkdownIt {
          * externally. If result starts with <pre... internal wrapper is skipped.
          * @default null
          */
-        highlight?: ((str: string, lang: string, attrs: string) => string) | null | undefined;
+        highlight?:
+            | ((str: string, lang: string, attrs: string) => string)
+            | null
+            | undefined;
     }
 
     type PluginSimple = (md: MarkdownIt) => void;
@@ -94,11 +97,17 @@ declare namespace MarkdownIt {
 }
 
 interface MarkdownItConstructor {
-    new(): MarkdownIt;
-    new(presetName: MarkdownIt.PresetName, options?: MarkdownIt.Options): MarkdownIt;
-    new(options: MarkdownIt.Options): MarkdownIt;
+    new (): MarkdownIt;
+    new (
+        presetName: MarkdownIt.PresetName,
+        options?: MarkdownIt.Options,
+    ): MarkdownIt;
+    new (options: MarkdownIt.Options): MarkdownIt;
     (): MarkdownIt;
-    (presetName: MarkdownIt.PresetName, options?: MarkdownIt.Options): MarkdownIt;
+    (
+        presetName: MarkdownIt.PresetName,
+        options?: MarkdownIt.Options,
+    ): MarkdownIt;
     (options: MarkdownIt.Options): MarkdownIt;
 }
 

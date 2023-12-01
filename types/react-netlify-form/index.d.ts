@@ -17,7 +17,10 @@ export interface NetlifyFormProps {
     children: (state: NetlifyFormState) => React.ReactElement;
 }
 
-declare class NetlifyForm extends React.Component<NetlifyFormProps, NetlifyFormState> {
+declare class NetlifyForm extends React.Component<
+    NetlifyFormProps,
+    NetlifyFormState
+> {
     constructor(props: NetlifyFormProps);
     render(): React.ReactElement;
 }

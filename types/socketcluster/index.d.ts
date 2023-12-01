@@ -56,13 +56,34 @@ declare class SocketCluster extends EventEmitter {
     on(event: "fail", listener: (err: Error) => void): this;
     on(event: "warning", listener: (warning: Error) => void): this;
     on(event: "ready", listener: () => void): this;
-    on(event: "workerStart", listener: (workerInfo: WorkerStartInfo) => void): this;
-    on(event: "workerExit", listener: (workerInfo: SocketCluster.WorkerExitInfo) => void): this;
-    on(event: "brokerStart", listener: (brokerInfo: SocketCluster.BrokerStartInfo) => void): this;
-    on(event: "brokerExit", listener: (brokerInfo: SocketCluster.BrokerExitInfo) => void): this;
-    on(event: "workerClusterStart", listener: (workerClusterInfo: WorkerClusterStartInfo) => void): this;
-    on(event: "workerClusterReady", listener: (workerClusterInfo: WorkerClusterReadyInfo) => void): this;
-    on(event: "workerClusterExit", listener: (workerClusterInfo: WorkerClusterExitInfo) => void): this;
+    on(
+        event: "workerStart",
+        listener: (workerInfo: WorkerStartInfo) => void,
+    ): this;
+    on(
+        event: "workerExit",
+        listener: (workerInfo: SocketCluster.WorkerExitInfo) => void,
+    ): this;
+    on(
+        event: "brokerStart",
+        listener: (brokerInfo: SocketCluster.BrokerStartInfo) => void,
+    ): this;
+    on(
+        event: "brokerExit",
+        listener: (brokerInfo: SocketCluster.BrokerExitInfo) => void,
+    ): this;
+    on(
+        event: "workerClusterStart",
+        listener: (workerClusterInfo: WorkerClusterStartInfo) => void,
+    ): this;
+    on(
+        event: "workerClusterReady",
+        listener: (workerClusterInfo: WorkerClusterReadyInfo) => void,
+    ): this;
+    on(
+        event: "workerClusterExit",
+        listener: (workerClusterInfo: WorkerClusterExitInfo) => void,
+    ): this;
 
     run(): void;
 
@@ -71,7 +92,11 @@ declare class SocketCluster extends EventEmitter {
         data: any,
         callback?: (err: Error, responseData: any, workerId: number) => void,
     ): void;
-    sendToBroker(brokerId: number, data: any, callback?: (err: Error | null, responseData: any) => void): void;
+    sendToBroker(
+        brokerId: number,
+        data: any,
+        callback?: (err: Error | null, responseData: any) => void,
+    ): void;
 
     killWorkers(options?: KillWorkersOptions): void;
     killBrokers(): void;

@@ -27,7 +27,9 @@ S("foobar").chompLeft("bar").s; // 'foobar'
 S("foobar").chompRight("bar").s; // 'foo'
 S("foobar").chompRight("foo").s; // 'foobar'
 
-var str = S("  String   \t libraries are   \n\n\t fun\n!  ").collapseWhitespace().s; // 'String libraries are fun !'
+var str = S(
+    "  String   \t libraries are   \n\n\t fun\n!  ",
+).collapseWhitespace().s; // 'String libraries are fun !'
 
 S("JavaScript is one of the best languages!").contains("one"); // true
 
@@ -113,7 +115,8 @@ S("My name is JP").left(2).s; // 'My'
 S("Hi").left(0).s; // ''
 S("My name is JP").left(-2).s; // 'JP', same as right(2)
 
-var stuff = "My name is JP\nJavaScript is my fav language\r\nWhat is your fav language?";
+var stuff =
+    "My name is JP\nJavaScript is my fav language\r\nWhat is your fav language?";
 var lines = S(stuff).lines();
 console.dir(lines);
 /*
@@ -142,16 +145,16 @@ S("hello").padRight(6).s; // 'hello '
 S("hello").padRight(10, ".").s; // 'hello.....'
 
 S("'a','b','c'").parseCSV(",", "'"); // ['a', 'b', 'c'])
-S("\"a\",\"b\",\"c\"").parseCSV(); // ['a', 'b', 'c'])
+S('"a","b","c"').parseCSV(); // ['a', 'b', 'c'])
 S("a,b,c").parseCSV(",", null); // ['a', 'b', 'c'])
 S("'a,','b','c'").parseCSV(",", "'"); // ['a,', 'b', 'c'])
-S("\"a\",\"b\",4,\"c\"").parseCSV(",", null); // ['"a"', '"b"', '4', '"c"'])
-S("\"a\",\"b\",\"4\",\"c\"").parseCSV(); // ['a', 'b', '4', 'c'])
-S("\"a\",\"b\",       \"4\",\"c\"").parseCSV(); // ['a', 'b', '4', 'c'])
-S("\"a\",\"b\",       4,\"c\"").parseCSV(",", null); // [ '"a"', '"b"', '       4', '"c"' ])
-S("\"a\",\"b\\\"\",\"d\",\"c\"").parseCSV(); // ['a', 'b"', 'd', 'c'])
-S("\"a\",\"b\\\"\",\"d\",\"c\"").parseCSV(); // ['a', 'b"', 'd', 'c'])
-S("\"a\na\",\"b\",\"c\"\n\"a\", \"\"\"b\nb\", \"a\"").parseCSV(",", "\"", "\"", "\n"); // [ [ 'a\na', 'b', 'c' ], [ 'a', '"b\nb', 'a' ] ]
+S('"a","b",4,"c"').parseCSV(",", null); // ['"a"', '"b"', '4', '"c"'])
+S('"a","b","4","c"').parseCSV(); // ['a', 'b', '4', 'c'])
+S('"a","b",       "4","c"').parseCSV(); // ['a', 'b', '4', 'c'])
+S('"a","b",       4,"c"').parseCSV(",", null); // [ '"a"', '"b"', '       4', '"c"' ])
+S('"a","b\\"","d","c"').parseCSV(); // ['a', 'b"', 'd', 'c'])
+S('"a","b\\"","d","c"').parseCSV(); // ['a', 'b"', 'd', 'c'])
+S('"a\na","b","c"\n"a", """b\nb", "a"').parseCSV(",", '"', '"', "\n"); // [ [ 'a\na', 'b', 'c' ], [ 'a', '"b\nb', 'a' ] ]
 
 S(" ").repeat(5).s; // '     '
 S("*").repeat(3).s; // '***'
@@ -235,7 +238,12 @@ S(["a", "b", "c"]).toCSV().s; // '"a","b","c"'
 S(["a", "b", "c"]).toCSV(":").s; // '"a":"b":"c"'
 S(["a", "b", "c"]).toCSV(":", null).s; // 'a:b:c')
 S(["a", "b", "c"]).toCSV("*", "'").s; // "'a'*'b'*'c'"
-S(["a\"", "b", 4, "c"]).toCSV({ delimiter: ",", qualifier: "\"", escape: "\\", encloseNumbers: false }).s; // '"a\\"","b",4,"c"'
+S(['a"', "b", 4, "c"]).toCSV({
+    delimiter: ",",
+    qualifier: '"',
+    escape: "\\",
+    encloseNumbers: false,
+}).s; // '"a\\"","b",4,"c"'
 S({ firstName: "JP", lastName: "Richardson" }).toCSV({ keys: true }).s; // '"firstName","lastName"'
 S({ firstName: "JP", lastName: "Richardson" }).toCSV().s; // '"JP","Richardson"'
 
@@ -285,11 +293,11 @@ S("&lt;div&gt;hi&lt;/div&gt;").unescapeHTML().s; // <div>hi</div>
 S("Venkat").wrapHTML().s; // <span>Venkat</span>
 S("Venkat").wrapHTML("div").s; // <div>Venkat</div>
 S("Venkat").wrapHTML("div", {
-    "class": "left bullet",
+    class: "left bullet",
 }).s; // <div class="left bullet">Venkat</div>
 S("Venkat").wrapHTML("div", {
-    "id": "content",
-    "class": "left bullet",
+    id: "content",
+    class: "left bullet",
 }).s; // <div id="content" class="left bullet">Venkat</div>
 
 S.VERSION; // 1.0.0

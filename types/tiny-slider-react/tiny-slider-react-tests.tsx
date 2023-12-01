@@ -1,5 +1,8 @@
 import * as React from "react";
-import TinySlider, { TinySliderInfo, TinySliderSettings } from "tiny-slider-react";
+import TinySlider, {
+    TinySliderInfo,
+    TinySliderSettings,
+} from "tiny-slider-react";
 
 const settings: TinySliderSettings = {
     startIndex: 1,
@@ -27,6 +30,8 @@ function handleIndexChanged(info: TinySliderInfo) {
 
 const MyComponent = (
     <TinySlider settings={settings} onIndexChanged={handleIndexChanged}>
-        {[1, 2, 3].map(el => <div key={el}>(el)</div>)}
+        {[1, 2, 3].map((el) => (
+            <div key={el}>(el)</div>
+        ))}
     </TinySlider>
 );

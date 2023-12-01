@@ -10,17 +10,19 @@ export as namespace RussianNounsJS;
 /**
  * Case
  */
-export const Case: { [key in keyof typeof CaseEnum]: typeof CaseEnum[key] };
+export const Case: { [key in keyof typeof CaseEnum]: (typeof CaseEnum)[key] };
 
 /**
  * Gender
  */
-export const Gender: { [key in keyof typeof GenderEnum]: typeof GenderEnum[key] };
+export const Gender: {
+    [key in keyof typeof GenderEnum]: (typeof GenderEnum)[key];
+};
 
 /**
  * Cases
  */
-export const CASES: Array<typeof CaseEnum[keyof typeof CaseEnum]>;
+export const CASES: Array<(typeof CaseEnum)[keyof typeof CaseEnum]>;
 
 /**
  * Интерфейс с именованными параметрами для создания лемм.

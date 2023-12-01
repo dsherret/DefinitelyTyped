@@ -21,7 +21,10 @@ export class RelyingParty {
         requestOrUrl: object | string,
         callback: (
             err: OpenIdError | null,
-            result?: { authenticated: boolean; claimedIdentifier?: string | undefined },
+            result?: {
+                authenticated: boolean;
+                claimedIdentifier?: string | undefined;
+            },
         ) => void,
     ): void;
 }

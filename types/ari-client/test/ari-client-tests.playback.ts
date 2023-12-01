@@ -7,40 +7,48 @@ import util = require("util");
 Ari.connect("http://ari.js:8088", "user", "secret", (err, client) => {
     // Use once to start the application
     client.once("StasisStart", (event, incoming) => {
-        incoming.answer(err => {
+        incoming.answer((err) => {
             // Referencing client instance of incoming channel.
             const playback = incoming._client.Playback();
 
             // Play demo greeting and register dtmf event listeners
-            incoming.play({ media: "sound:demo-congrats" }, playback, (err, playback) => {
-                registerDtmfListeners(err, playback, incoming);
-            });
+            incoming.play(
+                { media: "sound:demo-congrats" },
+                playback,
+                (err, playback) => {
+                    registerDtmfListeners(err, playback, incoming);
+                },
+            );
         });
     });
 
-    const registerDtmfListeners = (err: Error, playback: Playback, incoming: Channel) => {
+    const registerDtmfListeners = (
+        err: Error,
+        playback: Playback,
+        incoming: Channel,
+    ) => {
         incoming.on("ChannelDtmfReceived", (event, channel) => {
             const digit = event.digit;
 
             switch (digit) {
                 case "5":
-                    playback.control({ operation: "pause" }, err => {});
+                    playback.control({ operation: "pause" }, (err) => {});
                     break;
                 case "8":
-                    playback.control({ operation: "unpause" }, err => {});
+                    playback.control({ operation: "unpause" }, (err) => {});
                     break;
                 case "4":
-                    playback.control({ operation: "reverse" }, err => {});
+                    playback.control({ operation: "reverse" }, (err) => {});
                     break;
                 case "6":
-                    playback.control({ operation: "forward" }, err => {});
+                    playback.control({ operation: "forward" }, (err) => {});
                     break;
                 case "2":
-                    playback.control({ operation: "restart" }, err => {});
+                    playback.control({ operation: "restart" }, (err) => {});
                     break;
                 case "#":
-                    playback.control({ operation: "stop" }, err => {});
-                    incoming.hangup(err => {
+                    playback.control({ operation: "stop" }, (err) => {});
+                    incoming.hangup((err) => {
                         process.exit(0);
                     });
                     break;

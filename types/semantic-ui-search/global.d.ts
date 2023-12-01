@@ -29,11 +29,20 @@ declare namespace SemanticUI {
         /**
          * Search remote endpoint for specified query and display results
          */
-        (behavior: "search remote", query: string, callback?: () => void): JQuery;
+        (
+            behavior: "search remote",
+            query: string,
+            callback?: () => void,
+        ): JQuery;
         /**
          * Search object for specified query and return results
          */
-        (behavior: "search object", query: string, object: any, searchFields: string[]): any;
+        (
+            behavior: "search object",
+            query: string,
+            object: any,
+            searchFields: string[],
+        ): any;
         /**
          * Cancels current remote search request
          */
@@ -94,8 +103,16 @@ declare namespace SemanticUI {
          * Removes all events
          */
         (behavior: "destroy"): JQuery;
-        <K extends keyof SearchSettings>(behavior: "setting", name: K, value?: undefined): SearchSettings._Impl[K];
-        <K extends keyof SearchSettings>(behavior: "setting", name: K, value: SearchSettings._Impl[K]): JQuery;
+        <K extends keyof SearchSettings>(
+            behavior: "setting",
+            name: K,
+            value?: undefined,
+        ): SearchSettings._Impl[K];
+        <K extends keyof SearchSettings>(
+            behavior: "setting",
+            name: K,
+            value: SearchSettings._Impl[K],
+        ): JQuery;
         (behavior: "setting", value: SearchSettings): JQuery;
         (settings?: SearchSettings): JQuery;
     }
@@ -106,44 +123,43 @@ declare namespace SemanticUI {
     type SearchSettings = SearchSettings.Param;
 
     namespace SearchSettings {
-        type Param =
-            & (
-                | Pick<_Impl, "apiSettings">
-                | Pick<_Impl, "type">
-                | Pick<_Impl, "minCharacters">
-                | Pick<_Impl, "transition">
-                | Pick<_Impl, "duration">
-                | Pick<_Impl, "maxResults">
-                | Pick<_Impl, "cache">
-                | Pick<_Impl, "source">
-                | Pick<_Impl, "selectFirstResult">
-                | Pick<_Impl, "showNoResults">
-                | Pick<_Impl, "searchFullText">
-                | Pick<_Impl, "fields">
-                | Pick<_Impl, "searchFields">
-                | Pick<_Impl, "hideDelay">
-                | Pick<_Impl, "searchDelay">
-                | Pick<_Impl, "easing">
-                | Pick<_Impl, "onSelect">
-                | Pick<_Impl, "onResultsAdd">
-                | Pick<_Impl, "onSearchQuery">
-                | Pick<_Impl, "onResults">
-                | Pick<_Impl, "onResultsOpen">
-                | Pick<_Impl, "onResultsClose">
-                | Pick<_Impl, "templates">
-                | Pick<_Impl, "regExp">
-                | Pick<_Impl, "selector">
-                | Pick<_Impl, "metadata">
-                | Pick<_Impl, "className">
-                | Pick<_Impl, "error">
-                | Pick<_Impl, "namespace">
-                | Pick<_Impl, "name">
-                | Pick<_Impl, "silent">
-                | Pick<_Impl, "debug">
-                | Pick<_Impl, "performance">
-                | Pick<_Impl, "verbose">
-            )
-            & Partial<Pick<_Impl, keyof _Impl>>;
+        type Param = (
+            | Pick<_Impl, "apiSettings">
+            | Pick<_Impl, "type">
+            | Pick<_Impl, "minCharacters">
+            | Pick<_Impl, "transition">
+            | Pick<_Impl, "duration">
+            | Pick<_Impl, "maxResults">
+            | Pick<_Impl, "cache">
+            | Pick<_Impl, "source">
+            | Pick<_Impl, "selectFirstResult">
+            | Pick<_Impl, "showNoResults">
+            | Pick<_Impl, "searchFullText">
+            | Pick<_Impl, "fields">
+            | Pick<_Impl, "searchFields">
+            | Pick<_Impl, "hideDelay">
+            | Pick<_Impl, "searchDelay">
+            | Pick<_Impl, "easing">
+            | Pick<_Impl, "onSelect">
+            | Pick<_Impl, "onResultsAdd">
+            | Pick<_Impl, "onSearchQuery">
+            | Pick<_Impl, "onResults">
+            | Pick<_Impl, "onResultsOpen">
+            | Pick<_Impl, "onResultsClose">
+            | Pick<_Impl, "templates">
+            | Pick<_Impl, "regExp">
+            | Pick<_Impl, "selector">
+            | Pick<_Impl, "metadata">
+            | Pick<_Impl, "className">
+            | Pick<_Impl, "error">
+            | Pick<_Impl, "namespace">
+            | Pick<_Impl, "name">
+            | Pick<_Impl, "silent">
+            | Pick<_Impl, "debug">
+            | Pick<_Impl, "performance">
+            | Pick<_Impl, "verbose">
+        ) &
+            Partial<Pick<_Impl, keyof _Impl>>;
 
         interface _Impl {
             type: string;
@@ -350,21 +366,20 @@ declare namespace SemanticUI {
         type FieldsSettings = FieldsSettings.Param;
 
         namespace FieldsSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "categories">
-                    | Pick<_Impl, "categoryName">
-                    | Pick<_Impl, "categoryResults">
-                    | Pick<_Impl, "description">
-                    | Pick<_Impl, "image">
-                    | Pick<_Impl, "price">
-                    | Pick<_Impl, "results">
-                    | Pick<_Impl, "title">
-                    | Pick<_Impl, "action">
-                    | Pick<_Impl, "actionText">
-                    | Pick<_Impl, "actionURL">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "categories">
+                | Pick<_Impl, "categoryName">
+                | Pick<_Impl, "categoryResults">
+                | Pick<_Impl, "description">
+                | Pick<_Impl, "image">
+                | Pick<_Impl, "price">
+                | Pick<_Impl, "results">
+                | Pick<_Impl, "title">
+                | Pick<_Impl, "action">
+                | Pick<_Impl, "actionText">
+                | Pick<_Impl, "actionURL">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -439,14 +454,13 @@ declare namespace SemanticUI {
         type TemplatesSettings = TemplatesSettings.Param;
 
         namespace TemplatesSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "escape">
-                    | Pick<_Impl, "message">
-                    | Pick<_Impl, "category">
-                    | Pick<_Impl, "standard">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "escape">
+                | Pick<_Impl, "message">
+                | Pick<_Impl, "category">
+                | Pick<_Impl, "standard">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 escape(string: string): string;
@@ -459,12 +473,8 @@ declare namespace SemanticUI {
         type RegExpSettings = RegExpSettings.Param;
 
         namespace RegExpSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "escape">
-                    | Pick<_Impl, "beginsWith">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "escape"> | Pick<_Impl, "beginsWith">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -481,15 +491,14 @@ declare namespace SemanticUI {
         type SelectorSettings = SelectorSettings.Param;
 
         namespace SelectorSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "prompt">
-                    | Pick<_Impl, "searchButton">
-                    | Pick<_Impl, "results">
-                    | Pick<_Impl, "category">
-                    | Pick<_Impl, "result">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "prompt">
+                | Pick<_Impl, "searchButton">
+                | Pick<_Impl, "results">
+                | Pick<_Impl, "category">
+                | Pick<_Impl, "result">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -518,12 +527,8 @@ declare namespace SemanticUI {
         type MetadataSettings = MetadataSettings.Param;
 
         namespace MetadataSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "cache">
-                    | Pick<_Impl, "results">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "cache"> | Pick<_Impl, "results">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -540,15 +545,14 @@ declare namespace SemanticUI {
         type ClassNameSettings = ClassNameSettings.Param;
 
         namespace ClassNameSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "active">
-                    | Pick<_Impl, "empty">
-                    | Pick<_Impl, "focus">
-                    | Pick<_Impl, "loading">
-                    | Pick<_Impl, "pressed">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "active">
+                | Pick<_Impl, "empty">
+                | Pick<_Impl, "focus">
+                | Pick<_Impl, "loading">
+                | Pick<_Impl, "pressed">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -577,17 +581,16 @@ declare namespace SemanticUI {
         type ErrorSettings = ErrorSettings.Param;
 
         namespace ErrorSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "source">
-                    | Pick<_Impl, "noResults">
-                    | Pick<_Impl, "logging">
-                    | Pick<_Impl, "noTemplate">
-                    | Pick<_Impl, "serverError">
-                    | Pick<_Impl, "maxResults">
-                    | Pick<_Impl, "method">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "source">
+                | Pick<_Impl, "noResults">
+                | Pick<_Impl, "logging">
+                | Pick<_Impl, "noTemplate">
+                | Pick<_Impl, "serverError">
+                | Pick<_Impl, "maxResults">
+                | Pick<_Impl, "method">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**

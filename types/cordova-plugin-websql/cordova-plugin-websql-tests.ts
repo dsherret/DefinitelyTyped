@@ -5,7 +5,7 @@ db.transaction(
         tx.executeSql("INSERT INTO Sample VALUES...");
     },
     (err: SqlError) => {
-        if (err.code = SqlError.SYNTAX_ERR) {
+        if ((err.code = SqlError.SYNTAX_ERR)) {
             alert("Error " + err.message);
         }
     },

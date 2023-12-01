@@ -23,9 +23,12 @@ class ComplexForm extends React.PureComponent {
                 <Formol
                     item={item}
                     validator={({ firstname, lastname }) => ({
-                        firstname: (firstname ? firstname.length : 0) + (lastname ? lastname.length : 0) <= 6
-                            ? "Your full name must be greater than 6 characters."
-                            : null,
+                        firstname:
+                            (firstname ? firstname.length : 0) +
+                                (lastname ? lastname.length : 0) <=
+                            6
+                                ? "Your full name must be greater than 6 characters."
+                                : null,
                     })}
                 >
                     <Field name="firstname" required>
@@ -37,7 +40,11 @@ class ComplexForm extends React.PureComponent {
                     <Field
                         name="birth"
                         type="calendar"
-                        validator={v => (new Date(v) < new Date("1950-01-01") ? "You can’t be too old" : "")}
+                        validator={(v) =>
+                            new Date(v) < new Date("1950-01-01")
+                                ? "You can’t be too old"
+                                : ""
+                        }
                     >
                         Day of birth
                     </Field>
@@ -66,24 +73,39 @@ class ComplexForm extends React.PureComponent {
                     </Field>
                     <Conditional
                         show={({ address: { continent } }) =>
-                            ["Asia", "North America", "South America"].indexOf(continent) !== -1}
+                            ["Asia", "North America", "South America"].indexOf(
+                                continent,
+                            ) !== -1
+                        }
                     >
-                        <Field name="fastShipping" type="switch" title="Fast shipping includes an extra cost">
+                        <Field
+                            name="fastShipping"
+                            type="switch"
+                            title="Fast shipping includes an extra cost"
+                        >
                             Fast shipping
                         </Field>
                     </Conditional>
                     <Conditional
-                        value={({ firstname, lastname, address: { zip, city, continent } }) =>
-                            (firstname ? firstname.length : 0)
-                            + (lastname ? lastname.length : 0)
-                            + (zip ? zip.length : 0)
-                            + (city ? city.length : 0)
-                            + (continent ? continent.length : 0)}
+                        value={({
+                            firstname,
+                            lastname,
+                            address: { zip, city, continent },
+                        }) =>
+                            (firstname ? firstname.length : 0) +
+                            (lastname ? lastname.length : 0) +
+                            (zip ? zip.length : 0) +
+                            (city ? city.length : 0) +
+                            (continent ? continent.length : 0)
+                        }
                     >
                         <Field
                             name="price"
                             type="money"
-                            title={"This price equals the number of letters " + "in this form (because why not)"}
+                            title={
+                                "This price equals the number of letters " +
+                                "in this form (because why not)"
+                            }
                             max={100}
                             disabled
                             readOnly

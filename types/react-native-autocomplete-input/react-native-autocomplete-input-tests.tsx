@@ -18,16 +18,18 @@ const AutocompleteExample: React.FC = () => {
         <Autocomplete
             containerStyle={{ backgroundColor: "#fff" }}
             hideResults={false}
-            data={data.filter(d => d.value.toLowerCase().includes(value.toLowerCase()))}
+            data={data.filter((d) =>
+                d.value.toLowerCase().includes(value.toLowerCase()),
+            )}
             value={value}
             inputContainerStyle={{ backgroundColor: "#fff" }}
             listContainerStyle={{ backgroundColor: "#fff" }}
             listStyle={{ backgroundColor: "#fff" }}
-            onShowResults={showResults => null}
-            onStartShouldSetResponderCapture={event => false}
-            renderTextInput={props => <TextInput {...props} />}
+            onShowResults={(showResults) => null}
+            onStartShouldSetResponderCapture={(event) => false}
+            renderTextInput={(props) => <TextInput {...props} />}
             flatListProps={{
-                keyExtractor: item => item.id,
+                keyExtractor: (item) => item.id,
                 renderItem: ({ item }) => (
                     <TouchableOpacity onPress={() => setValue(item.value)}>
                         <Text>{item.value}</Text>
@@ -48,7 +50,9 @@ const AutocompleteCustomResultList: React.FC = () => {
             data={data}
             renderResultList={({ data, style }) => (
                 <View style={style}>
-                    {data.map((item, index) => <Text key={index}>{item}</Text>)}
+                    {data.map((item, index) => (
+                        <Text key={index}>{item}</Text>
+                    ))}
                 </View>
             )}
         />

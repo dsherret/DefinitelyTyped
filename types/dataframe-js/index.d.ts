@@ -9,5 +9,17 @@ import Stat from "./modules/stat";
 import * as Reusables from "./reusables";
 import Row from "./row";
 import * as Symbol from "./symbol";
-export { DataFrame, Errors, GroupedDataFrame, Io, Matrix, Reusables, Row, SQL, sqlParser, Stat, Symbol };
+export {
+    DataFrame,
+    Errors,
+    GroupedDataFrame,
+    Io,
+    Matrix,
+    Reusables,
+    Row,
+    SQL,
+    sqlParser,
+    Stat,
+    Symbol,
+};
 export default DataFrame;

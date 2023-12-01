@@ -1,4 +1,7 @@
-import { ACTIONS, BlackjackEnvironment } from "../monteCarloSimulation/BlackjackEnvironment";
+import {
+    ACTIONS,
+    BlackjackEnvironment,
+} from "../monteCarloSimulation/BlackjackEnvironment";
 import { Simulator } from "../monteCarloSimulation/Simulator";
 import { Player } from "./Player";
 
@@ -27,7 +30,9 @@ export class AI extends Player {
         } else {
             const usableAce = this.hasUsableAce();
             const sumDealer = this.dealer.getSum();
-            const state = `${sum}-${sumDealer === 11 ? 1 : sumDealer}-${Number(usableAce)}`;
+            const state = `${sum}-${sumDealer === 11 ? 1 : sumDealer}-${Number(
+                usableAce,
+            )}`;
             return this.policy[state];
         }
     }

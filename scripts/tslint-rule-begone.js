@@ -6,7 +6,7 @@ import sh from "shelljs";
 /**
  * @param {string} filePath
  */
-const parseAndReadFileContents = filePath => {
+const parseAndReadFileContents = (filePath) => {
     try {
         return parse(fs.readFileSync(filePath).toString()) ?? {};
     } catch {
@@ -19,10 +19,7 @@ const parseAndReadFileContents = filePath => {
  * @param {unknown} contents
  */
 const writeFileFormatted = (filePath, contents) => {
-    fs.writeFileSync(
-        filePath,
-        JSON.stringify(contents, null, 4),
-    );
+    fs.writeFileSync(filePath, JSON.stringify(contents, null, 4));
 };
 
 const [, , ...tslintRuleNames] = process.argv;
@@ -49,7 +46,11 @@ const typeNames = fs.readdirSync("types");
 for (const typeName of typeNames) {
     const typeDirectory = path.join("types", typeName);
     try {
-        typeNames.push(...fs.readdirSync(typeDirectory).map(childDirectory => path.join(typeName, childDirectory)));
+        typeNames.push(
+            ...fs
+                .readdirSync(typeDirectory)
+                .map((childDirectory) => path.join(typeName, childDirectory)),
+        );
     } catch {}
 
     const tslintFilePath = path.join(typeDirectory, "tslint.json");
@@ -76,7 +77,9 @@ for (const typeName of typeNames) {
     console.log(`Re-writing ${typeName}...`);
 
     if (Object.keys(tslintData.rules).length === 0) {
-        console.log(`\t${tslintFilePath} has no remaining rules; deleting rules property.`);
+        console.log(
+            `\t${tslintFilePath} has no remaining rules; deleting rules property.`,
+        );
         delete tslintData.rules;
     } else {
         console.log(`\t${tslintFilePath} has remaining rules.`);

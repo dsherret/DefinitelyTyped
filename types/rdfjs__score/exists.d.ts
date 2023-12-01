@@ -17,7 +17,11 @@ interface PredicateExists {
     predicate: Term;
 }
 
-type ExistsCriteria = SubjectExists | GraphExists | PredicateExists | ObjectExists;
+type ExistsCriteria =
+    | SubjectExists
+    | GraphExists
+    | PredicateExists
+    | ObjectExists;
 
 declare const exists: ScoreFn<[ExistsCriteria]>;
 export default exists;

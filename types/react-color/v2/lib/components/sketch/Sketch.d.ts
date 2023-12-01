@@ -22,7 +22,9 @@ export interface SketchPickerProps extends RenderersProps, CustomPickerProps {
     presetColors?: PresetColor[] | undefined;
     width?: string | undefined;
     styles?: Partial<Classes<SketchPickerStylesProps>> | undefined;
-    onSwatchHover?: ((color: ColorState, event: MouseEvent) => void) | undefined;
+    onSwatchHover?:
+        | ((color: ColorState, event: MouseEvent) => void)
+        | undefined;
 }
 
 export default class SketchPicker extends Component<SketchPickerProps> {}

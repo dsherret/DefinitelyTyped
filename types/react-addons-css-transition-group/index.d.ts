@@ -11,7 +11,8 @@ declare module "react" {
         appearActive?: string | undefined;
     }
 
-    export interface CSSTransitionGroupProps extends HTMLTransitionGroupProps<ReactCSSTransitionGroup> {
+    export interface CSSTransitionGroupProps
+        extends HTMLTransitionGroupProps<ReactCSSTransitionGroup> {
         transitionName: string | CSSTransitionGroupTransitionName;
         transitionAppear?: boolean | undefined;
         transitionAppearTimeout?: number | undefined;

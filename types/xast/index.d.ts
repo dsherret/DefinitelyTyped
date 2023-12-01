@@ -1,4 +1,9 @@
-import type { Data as UnistData, Literal as UnistLiteral, Node as UnistNode, Parent as UnistParent } from "unist";
+import type {
+    Data as UnistData,
+    Literal as UnistLiteral,
+    Node as UnistNode,
+    Parent as UnistParent,
+} from "unist";
 
 // ## Interfaces
 

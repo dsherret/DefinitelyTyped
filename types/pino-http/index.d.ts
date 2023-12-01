@@ -3,7 +3,10 @@ import { DestinationStream, Level, Logger, LoggerOptions } from "pino";
 
 export = PinoHttp;
 
-declare function PinoHttp(opts?: PinoHttp.Options, stream?: DestinationStream): PinoHttp.HttpLogger;
+declare function PinoHttp(
+    opts?: PinoHttp.Options,
+    stream?: DestinationStream,
+): PinoHttp.HttpLogger;
 declare function PinoHttp(stream?: DestinationStream): PinoHttp.HttpLogger;
 
 declare namespace PinoHttp {
@@ -24,12 +27,18 @@ declare namespace PinoHttp {
         useLevel?: Level | undefined;
         stream?: DestinationStream | undefined;
         autoLogging?: boolean | AutoLoggingOptions | undefined;
-        customLogLevel?: ((res: ServerResponse, error: Error) => Level) | undefined;
+        customLogLevel?:
+            | ((res: ServerResponse, error: Error) => Level)
+            | undefined;
         customSuccessMessage?: ((res: ServerResponse) => string) | undefined;
-        customErrorMessage?: ((error: Error, res: ServerResponse) => string) | undefined;
+        customErrorMessage?:
+            | ((error: Error, res: ServerResponse) => string)
+            | undefined;
         customAttributeKeys?: CustomAttributeKeys | undefined;
         wrapSerializers?: boolean | undefined;
-        reqCustomProps?: ((req: IncomingMessage, res: ServerResponse) => object) | undefined;
+        reqCustomProps?:
+            | ((req: IncomingMessage, res: ServerResponse) => object)
+            | undefined;
         quietReqLogger?: boolean | undefined;
     }
 

@@ -1,7 +1,11 @@
 import Integer = require("integer");
 
 type VariableArgFunction = (...params: any[]) => any;
-type ArgumentTypes<F extends VariableArgFunction> = F extends (...args: infer A) => any ? A : never;
+type ArgumentTypes<F extends VariableArgFunction> = F extends (
+    ...args: infer A
+) => any
+    ? A
+    : never;
 
 declare namespace MocBetterSqlite3 {
     interface Statement<BindParameters extends any[]> {
@@ -46,22 +50,31 @@ declare namespace MocBetterSqlite3 {
 
         prepare<BindParameters extends any[] | {} = any[]>(
             source: string,
-        ): BindParameters extends any[] ? Statement<BindParameters> : Statement<[BindParameters]>;
+        ): BindParameters extends any[]
+            ? Statement<BindParameters>
+            : Statement<[BindParameters]>;
         transaction<F extends VariableArgFunction>(fn: F): Transaction<F>;
         exec(source: string): this;
         pragma(source: string, options?: Database.PragmaOptions): any;
         checkpoint(databaseName?: string): this;
         function(name: string, cb: (...params: any[]) => any): this;
-        function(name: string, options: Database.RegistrationOptions, cb: (...params: any[]) => any): this;
+        function(
+            name: string,
+            options: Database.RegistrationOptions,
+            cb: (...params: any[]) => any,
+        ): this;
         aggregate(name: string, options: Database.AggregateOptions): this;
         loadExtension(path: string): this;
         close(): this;
         defaultSafeIntegers(toggleState?: boolean): this;
-        backup(destinationFile: string, options?: Database.BackupOptions): Promise<Database.BackupMetadata>;
+        backup(
+            destinationFile: string,
+            options?: Database.BackupOptions,
+        ): Promise<Database.BackupMetadata>;
     }
 
     interface DatabaseConstructor {
-        new(filename: string, options?: Database.Options): Database;
+        new (filename: string, options?: Database.Options): Database;
         (filename: string, options?: Database.Options): Database;
         prototype: Database;
 
@@ -88,7 +101,9 @@ declare namespace Database {
         readonly?: boolean | undefined;
         fileMustExist?: boolean | undefined;
         timeout?: number | undefined;
-        verbose?: ((message?: any, ...additionalArgs: any[]) => void) | undefined;
+        verbose?:
+            | ((message?: any, ...additionalArgs: any[]) => void)
+            | undefined;
     }
 
     interface PragmaOptions {
@@ -118,9 +133,10 @@ declare namespace Database {
 
     type Integer = typeof Integer;
     type SqliteError = typeof SqliteError;
-    type Statement<BindParameters extends any[] | {} = any[]> = BindParameters extends any[]
-        ? MocBetterSqlite3.Statement<BindParameters>
-        : MocBetterSqlite3.Statement<[BindParameters]>;
+    type Statement<BindParameters extends any[] | {} = any[]> =
+        BindParameters extends any[]
+            ? MocBetterSqlite3.Statement<BindParameters>
+            : MocBetterSqlite3.Statement<[BindParameters]>;
     type ColumnDefinition = MocBetterSqlite3.ColumnDefinition;
     type Transaction = MocBetterSqlite3.Transaction<VariableArgFunction>;
     type Database = MocBetterSqlite3.Database;

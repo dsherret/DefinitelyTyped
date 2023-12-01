@@ -21,8 +21,16 @@ declare module "call-bind" {
         target: (this: T, ...args: A) => R,
         thisArg: T,
     ): (...args: A) => R;
-    function callBind<T, AX extends readonly unknown[], A extends readonly unknown[], R>(
-        originalFunction: (this: T, ...args: readonly [...bound: AX, ...args: A]) => R,
+    function callBind<
+        T,
+        AX extends readonly unknown[],
+        A extends readonly unknown[],
+        R,
+    >(
+        originalFunction: (
+            this: T,
+            ...args: readonly [...bound: AX, ...args: A]
+        ) => R,
         thisArg: T,
         ...bound: AX
     ): (...args: A) => R;
@@ -47,7 +55,12 @@ declare module "call-bind" {
             target: (this: T, ...args: A) => R,
             thisArg: T,
         ): (args: Readonly<A>) => R;
-        function apply<T, A1 extends readonly unknown[], A2 extends readonly unknown[], R>(
+        function apply<
+            T,
+            A1 extends readonly unknown[],
+            A2 extends readonly unknown[],
+            R,
+        >(
             originalFunction: (this: T, ...args: readonly [...A1, ...A2]) => R,
             thisArg: T,
             ...args: A1

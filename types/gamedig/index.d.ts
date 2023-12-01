@@ -1,10 +1,16 @@
 declare class Gamedig {
     constructor(runnerOpts?: { listenUdpPort?: number | undefined });
     query(options: Gamedig.QueryOptions): Promise<Gamedig.QueryResult>;
-    query(options: Gamedig.QueryOptions, callback: (error: Error, state: Gamedig.QueryResult) => void): void;
+    query(
+        options: Gamedig.QueryOptions,
+        callback: (error: Error, state: Gamedig.QueryResult) => void,
+    ): void;
 
     static query(options: Gamedig.QueryOptions): Promise<Gamedig.QueryResult>;
-    static query(options: Gamedig.QueryOptions, callback: (error: Error, state: Gamedig.QueryResult) => void): void;
+    static query(
+        options: Gamedig.QueryOptions,
+        callback: (error: Error, state: Gamedig.QueryResult) => void,
+    ): void;
     static getInstance(): Gamedig;
 }
 declare namespace Gamedig {

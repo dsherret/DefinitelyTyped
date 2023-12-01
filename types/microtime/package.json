@@ -1,17 +1,17 @@
 {
-    "private": true,
-    "name": "@types/microtime",
-    "version": "2.1.9999",
-    "projects": [
-        "https://github.com/wadey/node-microtime"
-    ],
-    "devDependencies": {
-        "@types/microtime": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Kovács Vince",
-            "githubUsername": "vincekovacs"
-        }
-    ]
+  "private": true,
+  "name": "@types/microtime",
+  "version": "2.1.9999",
+  "projects": [
+    "https://github.com/wadey/node-microtime"
+  ],
+  "devDependencies": {
+    "@types/microtime": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Kovács Vince",
+      "githubUsername": "vincekovacs"
+    }
+  ]
 }

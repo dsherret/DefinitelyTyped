@@ -34,8 +34,15 @@ declare namespace expressWs {
         getWss(): ws.Server;
     }
 
-    type WebsocketRequestHandler = (ws: ws, req: express.Request, next: express.NextFunction) => void;
-    type WebsocketMethod<T> = (route: core.PathParams, ...middlewares: WebsocketRequestHandler[]) => T;
+    type WebsocketRequestHandler = (
+        ws: ws,
+        req: express.Request,
+        next: express.NextFunction,
+    ) => void;
+    type WebsocketMethod<T> = (
+        route: core.PathParams,
+        ...middlewares: WebsocketRequestHandler[]
+    ) => T;
 
     interface WithWebsocketMethod {
         ws: WebsocketMethod<this>;

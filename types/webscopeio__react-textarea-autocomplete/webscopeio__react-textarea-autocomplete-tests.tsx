@@ -11,10 +11,14 @@ interface ItemProps {
 }
 
 const Item: React.FC<ItemProps> = (props: ItemProps) => {
-    return <div className={`item${props.selected ? " selected" : ""}`}>props</div>;
+    return (
+        <div className={`item${props.selected ? " selected" : ""}`}>props</div>
+    );
 };
 
-type MyTextAreaProps = { myCustomTextAreaProp: string } & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
+type MyTextAreaProps = {
+    myCustomTextAreaProp: string;
+} & React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 const MyTextArea: React.FC<MyTextAreaProps> = (props: MyTextAreaProps) => {
     return <textarea {...props} />;
@@ -51,9 +55,10 @@ class Autocomplete extends React.Component {
                 minChar={0}
                 trigger={{
                     ":": {
-                        dataProvider: token => {
-                            return this.names
-                                .filter((name) => name.startsWith(token));
+                        dataProvider: (token) => {
+                            return this.names.filter((name) =>
+                                name.startsWith(token),
+                            );
                         },
                         component: Item,
                         output: (item, token) => item,
@@ -89,10 +94,16 @@ class Autocomplete extends React.Component {
                 textAreaComponent={MyTextArea}
                 myCustomTextAreaProp="hello"
                 renderToBody={false}
-                onItemHighlighted={(evt: { currentTrigger: string; item: string | null }) => {
+                onItemHighlighted={(evt: {
+                    currentTrigger: string;
+                    item: string | null;
+                }) => {
                     console.log(evt);
                 }}
-                onItemSelected={(evt: { currentTrigger: string; item: string }) => {
+                onItemSelected={(evt: {
+                    currentTrigger: string;
+                    item: string;
+                }) => {
                     console.log(evt);
                 }}
             />

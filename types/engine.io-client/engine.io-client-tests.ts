@@ -40,7 +40,7 @@ socket.on("error", (err) => {
 });
 
 server = engine.listen(8000, { pingTimeout: 100, pingInterval: 30 });
-server.on("connection", socket => {
+server.on("connection", (socket) => {
     socket.send("hello");
 });
 

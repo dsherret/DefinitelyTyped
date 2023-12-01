@@ -9,7 +9,11 @@ interface StoreJSStatic {
     has(key: string): boolean;
     remove(key: string): void;
     clear(): void;
-    transact(key: string, defaultVal: any, transactionFn?: (val: any) => void): void;
+    transact(
+        key: string,
+        defaultVal: any,
+        transactionFn?: (val: any) => void,
+    ): void;
     getAll(): any;
     forEach(command: (key: string, value: any) => void): void;
     serialize(value: any): string;

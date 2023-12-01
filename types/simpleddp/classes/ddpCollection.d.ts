@@ -48,7 +48,10 @@ export class ddpCollection<T> {
     /**
      * Returns change observer.
      */
-    onChange(f: (data: CollectionChangeEvent<T>) => void, filter?: (data: T) => boolean): ddpOnChange;
+    onChange(
+        f: (data: CollectionChangeEvent<T>) => void,
+        filter?: (data: T) => boolean,
+    ): ddpOnChange;
     /**
      * Returns reactive collection object.
      */

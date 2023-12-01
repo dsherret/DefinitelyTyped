@@ -1,7 +1,11 @@
 export = abbrev;
 
-declare function abbrev(words: readonly abbrev.Abbreviable[]): { [abbreviation: string]: string };
-declare function abbrev(...words: readonly abbrev.Abbreviable[]): { [abbreviation: string]: string };
+declare function abbrev(words: readonly abbrev.Abbreviable[]): {
+    [abbreviation: string]: string;
+};
+declare function abbrev(...words: readonly abbrev.Abbreviable[]): {
+    [abbreviation: string]: string;
+};
 
 declare namespace abbrev {
     function monkeyPatch(): void;

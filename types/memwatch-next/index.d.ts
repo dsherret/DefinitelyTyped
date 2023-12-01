@@ -1,5 +1,7 @@
 declare module "memwatch-next" {
-    type EventCallback = (data: LeakInformation | StatsInformation | Object) => void;
+    type EventCallback = (
+        data: LeakInformation | StatsInformation | Object,
+    ) => void;
 
     /**
      * Compare the state of your heap between two points in time, telling you what has been allocated, and what has been released.

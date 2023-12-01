@@ -112,26 +112,29 @@ import JsenSettings = jsen.JsenSettings;
         console.assert(!validate([123]));
         console.assert(!validate([{}]));
         console.assert(
-            !validate([{
-                strProp: "value",
-                boolProp: 123,
-            }]),
+            !validate([
+                {
+                    strProp: "value",
+                    boolProp: 123,
+                },
+            ]),
         );
 
-        console.assert(validate([{
-            strProp: "value",
-            boolProp: false,
-        }]));
+        console.assert(
+            validate([
+                {
+                    strProp: "value",
+                    boolProp: false,
+                },
+            ]),
+        );
     }
 
     // items: array
     {
         const schema = {
             type: "array",
-            items: [
-                { type: "string" },
-                { type: "number" },
-            ],
+            items: [{ type: "string" }, { type: "number" }],
         };
 
         const validate = jsen(schema);
@@ -163,10 +166,7 @@ import JsenSettings = jsen.JsenSettings;
         console.assert(validate([1]));
         console.assert(validate([1, 2, 3]));
 
-        schema.items = [
-            { type: "string" },
-            { type: "number" },
-        ];
+        schema.items = [{ type: "string" }, { type: "number" }];
         validate = jsen(schema);
 
         console.assert(!validate(["a", 1, 2]));
@@ -199,10 +199,7 @@ import JsenSettings = jsen.JsenSettings;
 
         // when `items` is an array, any other positional
         // data item must validate against `additionalItems`
-        schema.items = [
-            { type: "string" },
-            { type: "boolean" },
-        ];
+        schema.items = [{ type: "string" }, { type: "boolean" }];
         validate = jsen(schema);
 
         console.assert(!validate(["abc", false, "def"]));
@@ -301,15 +298,7 @@ import JsenSettings = jsen.JsenSettings;
     // does not modify initial defined value
     {
         const validate = jsen({ type: "string", default: "abc" });
-        const initials = [
-            null,
-            "",
-            "string value",
-            true,
-            false,
-            123,
-            Math.PI,
-        ];
+        const initials = [null, "", "string value", true, false, 123, Math.PI];
 
         let obj: any;
 
@@ -322,11 +311,7 @@ import JsenSettings = jsen.JsenSettings;
     // returns a copy of initial defined value
     {
         const validate = jsen({ type: "string", default: "abc" });
-        const initials = [
-            {},
-            [],
-            new Date(),
-        ];
+        const initials = [{}, [], new Date()];
 
         let obj: any;
 
@@ -395,7 +380,9 @@ import JsenSettings = jsen.JsenSettings;
             let def = validate.build();
 
             console.assert(def !== schema.default);
-            console.assert(JSON.stringify(def) === JSON.stringify(schema.default));
+            console.assert(
+                JSON.stringify(def) === JSON.stringify(schema.default),
+            );
         });
     }
 
@@ -435,31 +422,35 @@ import JsenSettings = jsen.JsenSettings;
                         f: {
                             type: "array",
                             default: [{}, {}],
-                            items: [{
-                                type: "object",
-                                properties: {
-                                    g: {
-                                        type: "string",
-                                        default: "yes",
+                            items: [
+                                {
+                                    type: "object",
+                                    properties: {
+                                        g: {
+                                            type: "string",
+                                            default: "yes",
+                                        },
                                     },
                                 },
-                            }, {
-                                type: "object",
-                                properties: {
-                                    g: {
-                                        type: "integer",
-                                        default: 0,
+                                {
+                                    type: "object",
+                                    properties: {
+                                        g: {
+                                            type: "integer",
+                                            default: 0,
+                                        },
                                     },
                                 },
-                            }, {
-                                type: "object",
-                                properties: {
-                                    g: {
-                                        type: "boolean",
-                                        default: true,
+                                {
+                                    type: "object",
+                                    properties: {
+                                        g: {
+                                            type: "boolean",
+                                            default: true,
+                                        },
                                     },
                                 },
-                            }],
+                            ],
                         },
                         h: {
                             type: "array",
@@ -504,20 +495,16 @@ import JsenSettings = jsen.JsenSettings;
             c: {
                 d: false,
                 e: new Date("05/14/2015"),
-                f: [
-                    { g: "yes" },
-                    { g: 0 },
-                ],
-                h: [
-                    { i: { foo: "bar" } },
-                    { i: { foo: "bar" } },
-                ],
+                f: [{ g: "yes" }, { g: 0 }],
+                h: [{ i: { foo: "bar" } }, { i: { foo: "bar" } }],
                 i: null,
             },
         };
 
         const validate = jsen(schema);
-        console.assert(JSON.stringify(validate.build()) === JSON.stringify(expected));
+        console.assert(
+            JSON.stringify(validate.build()) === JSON.stringify(expected),
+        );
     }
 
     // merges default values with the initial values
@@ -590,7 +577,10 @@ import JsenSettings = jsen.JsenSettings;
 
         schemas.forEach((schema, index) => {
             let validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build(defaults[index])) === JSON.stringify(expected[index]));
+            console.assert(
+                JSON.stringify(validate.build(defaults[index])) ===
+                    JSON.stringify(expected[index]),
+            );
         });
     }
 
@@ -628,7 +618,9 @@ import JsenSettings = jsen.JsenSettings;
             const expected = { foo: "bar" };
 
             const validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build()) === JSON.stringify(expected));
+            console.assert(
+                JSON.stringify(validate.build()) === JSON.stringify(expected),
+            );
         }
 
         // does not recursively assign defaults of children if parent default is not an object
@@ -646,7 +638,9 @@ import JsenSettings = jsen.JsenSettings;
             const expected: any = [];
 
             const validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build()) === JSON.stringify(expected));
+            console.assert(
+                JSON.stringify(validate.build()) === JSON.stringify(expected),
+            );
         }
     }
 
@@ -665,23 +659,29 @@ import JsenSettings = jsen.JsenSettings;
             const expected: any = [];
 
             const validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build()) === JSON.stringify(expected));
+            console.assert(
+                JSON.stringify(validate.build()) === JSON.stringify(expected),
+            );
         }
 
         // adds new elements to default array: items schema is an array
         {
             const schema: any = {
                 default: [],
-                items: [{
-                    type: "string",
-                    default: "bar",
-                }],
+                items: [
+                    {
+                        type: "string",
+                        default: "bar",
+                    },
+                ],
             };
 
             const expected = ["bar"];
 
             const validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build()) === JSON.stringify(expected));
+            console.assert(
+                JSON.stringify(validate.build()) === JSON.stringify(expected),
+            );
         }
 
         // adds default values to already existing child items of compatible type only: items schema is an object
@@ -701,7 +701,9 @@ import JsenSettings = jsen.JsenSettings;
             const expected: any = [{ foo: "bar" }, null, []];
 
             const validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build()) === JSON.stringify(expected));
+            console.assert(
+                JSON.stringify(validate.build()) === JSON.stringify(expected),
+            );
         }
 
         // adds default values to already existing child items of compatible type only: items schema is an array
@@ -726,7 +728,9 @@ import JsenSettings = jsen.JsenSettings;
             const expected = [{ foo: "bar" }, null, {}, 123];
 
             const validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build()) === JSON.stringify(expected));
+            console.assert(
+                JSON.stringify(validate.build()) === JSON.stringify(expected),
+            );
         }
 
         // does not assign default child items if parent default is not an array
@@ -742,7 +746,9 @@ import JsenSettings = jsen.JsenSettings;
             const expected = "foobar";
 
             const validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build()) === JSON.stringify(expected));
+            console.assert(
+                JSON.stringify(validate.build()) === JSON.stringify(expected),
+            );
         }
     }
 
@@ -755,7 +761,10 @@ import JsenSettings = jsen.JsenSettings;
 
             const validate = jsen(schema);
 
-            console.assert(JSON.stringify(validate.build(initial)) === JSON.stringify(initial));
+            console.assert(
+                JSON.stringify(validate.build(initial)) ===
+                    JSON.stringify(initial),
+            );
             console.assert(validate.build(initial) !== initial);
         }
 
@@ -800,7 +809,10 @@ import JsenSettings = jsen.JsenSettings;
             const expected = { foo: 1, bar: 2 };
 
             const validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build(initial)) === JSON.stringify(expected));
+            console.assert(
+                JSON.stringify(validate.build(initial)) ===
+                    JSON.stringify(expected),
+            );
         }
 
         // excludes when schema.additionalProperties = false
@@ -816,7 +828,10 @@ import JsenSettings = jsen.JsenSettings;
             const expected = { foo: 1 };
 
             const validate = jsen(schema);
-            console.assert(JSON.stringify(validate.build(initial)) === JSON.stringify(expected));
+            console.assert(
+                JSON.stringify(validate.build(initial)) ===
+                    JSON.stringify(expected),
+            );
         }
 
         // removes from the initial object when schema.additionalProperties = false and options.copy = false
@@ -873,7 +888,9 @@ import JsenSettings = jsen.JsenSettings;
 
             const validate = jsen(schema);
             console.assert(
-                JSON.stringify(validate.build(initial, { additionalProperties: false })) === JSON.stringify(expected),
+                JSON.stringify(
+                    validate.build(initial, { additionalProperties: false }),
+                ) === JSON.stringify(expected),
             );
         }
     }
@@ -905,8 +922,7 @@ import JsenSettings = jsen.JsenSettings;
 
     // function
     {
-        const func = () => {
-        };
+        const func = () => {};
         console.assert(clone(func) === func);
     }
 
@@ -1023,10 +1039,8 @@ import JsenSettings = jsen.JsenSettings;
 
     // function
     {
-        const f1 = () => {
-        };
-        const f2 = () => {
-        };
+        const f1 = () => {};
+        const f2 = () => {};
         const f3 = f1;
 
         // two functions are only equal if they
@@ -1037,8 +1051,7 @@ import JsenSettings = jsen.JsenSettings;
 
     // array
     {
-        const f = () => {
-        };
+        const f = () => {};
         const obj1 = { a: 123, b: "abc", c: f };
         const obj2 = { a: 123, b: "abc", c: f };
         const arr1 = [1, "a", f, obj1];
@@ -1145,7 +1158,9 @@ import JsenSettings = jsen.JsenSettings;
         console.assert(validate.errors.length === 1);
 
         console.assert(validate.errors !== previous);
-        console.assert(JSON.stringify(validate.errors) === JSON.stringify(previous));
+        console.assert(
+            JSON.stringify(validate.errors) === JSON.stringify(previous),
+        );
     }
 
     // error object
@@ -1181,50 +1196,45 @@ import JsenSettings = jsen.JsenSettings;
                 properties: {
                     a: {
                         type: "array",
-                        items: [{
-                            type: "object",
-                            properties: {
-                                b: {
-                                    multipleOf: 7,
+                        items: [
+                            {
+                                type: "object",
+                                properties: {
+                                    b: {
+                                        multipleOf: 7,
+                                    },
                                 },
                             },
-                        }],
-                    },
-                },
-            },
-
-            {
-                allOf: [
-                    { minimum: 5 },
-                    { maximum: 10 },
-                ],
-            },
-
-            {
-                type: "object",
-                properties: {
-                    a: {
-                        anyOf: [
-                            { type: "string" },
-                            { type: "number" },
                         ],
                     },
                 },
             },
 
             {
+                allOf: [{ minimum: 5 }, { maximum: 10 }],
+            },
+
+            {
+                type: "object",
+                properties: {
+                    a: {
+                        anyOf: [{ type: "string" }, { type: "number" }],
+                    },
+                },
+            },
+
+            {
                 type: "array",
-                items: [{
-                    type: "object",
-                    properties: {
-                        a: {
-                            oneOf: [
-                                { type: "boolean" },
-                                { type: "null" },
-                            ],
+                items: [
+                    {
+                        type: "object",
+                        properties: {
+                            a: {
+                                oneOf: [{ type: "boolean" }, { type: "null" }],
+                            },
                         },
                     },
-                }],
+                ],
             },
 
             {
@@ -1364,7 +1374,9 @@ import JsenSettings = jsen.JsenSettings;
 
                 expectedKeywords[index].forEach((keyword, kindex) => {
                     try {
-                        console.assert(validate.errors[kindex].keyword === keyword);
+                        console.assert(
+                            validate.errors[kindex].keyword === keyword,
+                        );
                     } catch (e) {
                         // console.log(index);
                         // console.log(validate.errors);
@@ -1536,12 +1548,7 @@ import JsenSettings = jsen.JsenSettings;
             },
         ];
 
-        const data = [
-            undefined,
-            {},
-            [{ a: {} }],
-            { a: { c: 123 } },
-        ];
+        const data = [undefined, {}, [{ a: {} }], { a: { c: 123 } }];
 
         const expectedMessages = [
             "string is invalid",
@@ -1557,7 +1564,9 @@ import JsenSettings = jsen.JsenSettings;
 
             console.assert(!valid);
             console.assert(validate.errors.length === 1);
-            console.assert(validate.errors[0].message === expectedMessages[index]);
+            console.assert(
+                validate.errors[0].message === expectedMessages[index],
+            );
             // });
         });
     }
@@ -1569,85 +1578,121 @@ import JsenSettings = jsen.JsenSettings;
             const schemas: any = [
                 {
                     type: "string",
-                    messages: { type: "custom message for keyword \"type\"" },
+                    messages: { type: 'custom message for keyword "type"' },
                 },
                 {
                     enum: [1, 2, 3],
-                    messages: { enum: "custom message for keyword \"enum\"" },
+                    messages: { enum: 'custom message for keyword "enum"' },
                 },
                 {
                     minimum: 3,
-                    messages: { minimum: "custom message for keyword \"minimum\"" },
+                    messages: {
+                        minimum: 'custom message for keyword "minimum"',
+                    },
                 },
                 {
                     minimum: 3,
                     exclusiveMinimum: true,
-                    messages: { exclusiveMinimum: "custom message for keyword \"exclusiveMinimum\"" },
+                    messages: {
+                        exclusiveMinimum:
+                            'custom message for keyword "exclusiveMinimum"',
+                    },
                 },
                 {
                     maximum: 10,
-                    messages: { maximum: "custom message for keyword \"maximum\"" },
+                    messages: {
+                        maximum: 'custom message for keyword "maximum"',
+                    },
                 },
                 {
                     maximum: 10,
                     exclusiveMaximum: true,
-                    messages: { exclusiveMaximum: "custom message for keyword \"exclusiveMaximum\"" },
+                    messages: {
+                        exclusiveMaximum:
+                            'custom message for keyword "exclusiveMaximum"',
+                    },
                 },
                 {
                     multipleOf: 5,
-                    messages: { multipleOf: "custom message for keyword \"multipleOf\"" },
+                    messages: {
+                        multipleOf: 'custom message for keyword "multipleOf"',
+                    },
                 },
                 {
                     minLength: 3,
-                    messages: { minLength: "custom message for keyword \"minLength\"" },
+                    messages: {
+                        minLength: 'custom message for keyword "minLength"',
+                    },
                 },
                 {
                     maxLength: 5,
-                    messages: { maxLength: "custom message for keyword \"maxLength\"" },
+                    messages: {
+                        maxLength: 'custom message for keyword "maxLength"',
+                    },
                 },
                 {
                     pattern: "\\d+",
-                    messages: { pattern: "custom message for keyword \"pattern\"" },
+                    messages: {
+                        pattern: 'custom message for keyword "pattern"',
+                    },
                 },
                 {
                     format: "email",
-                    messages: { format: "custom message for keyword \"format\"" },
+                    messages: { format: 'custom message for keyword "format"' },
                 },
                 {
                     minItems: 1,
-                    messages: { minItems: "custom message for keyword \"minItems\"" },
+                    messages: {
+                        minItems: 'custom message for keyword "minItems"',
+                    },
                 },
                 {
                     maxItems: 1,
-                    messages: { maxItems: "custom message for keyword \"maxItems\"" },
+                    messages: {
+                        maxItems: 'custom message for keyword "maxItems"',
+                    },
                 },
                 {
                     additionalItems: false,
                     items: [{ type: "string" }],
-                    messages: { additionalItems: "custom message for keyword \"additionalItems\"" },
+                    messages: {
+                        additionalItems:
+                            'custom message for keyword "additionalItems"',
+                    },
                 },
                 {
                     uniqueItems: true,
-                    messages: { uniqueItems: "custom message for keyword \"uniqueItems\"" },
+                    messages: {
+                        uniqueItems: 'custom message for keyword "uniqueItems"',
+                    },
                 },
                 {
                     minProperties: 1,
-                    messages: { minProperties: "custom message for keyword \"minProperties\"" },
+                    messages: {
+                        minProperties:
+                            'custom message for keyword "minProperties"',
+                    },
                 },
                 {
                     maxProperties: 1,
-                    messages: { maxProperties: "custom message for keyword \"maxProperties\"" },
+                    messages: {
+                        maxProperties:
+                            'custom message for keyword "maxProperties"',
+                    },
                 },
                 {
                     required: ["foo"],
-                    messages: { required: "custom message for keyword \"required\"" },
+                    messages: {
+                        required: 'custom message for keyword "required"',
+                    },
                 },
                 {
                     required: ["foo"],
                     properties: {
                         foo: {
                             messages: {
-                                required: "custom message for keyword \"required\"",
+                                required:
+                                    'custom message for keyword "required"',
                             },
                         },
                     },
@@ -1657,41 +1702,45 @@ import JsenSettings = jsen.JsenSettings;
                     properties: {
                         foo: {
                             messages: {
-                                required: "this custom message for keyword \"required\" is assigned",
+                                required:
+                                    'this custom message for keyword "required" is assigned',
                             },
                         },
                     },
-                    messages: { required: "this custom message for keyword \"required\" is NOT assigned" },
+                    messages: {
+                        required:
+                            'this custom message for keyword "required" is NOT assigned',
+                    },
                 },
                 {
                     additionalProperties: false,
-                    messages: { additionalProperties: "custom message for keyword \"additionalProperties\"" },
+                    messages: {
+                        additionalProperties:
+                            'custom message for keyword "additionalProperties"',
+                    },
                 },
                 {
                     dependencies: {
                         foo: ["bar"],
                     },
-                    messages: { dependencies: "custom message for keyword \"dependencies\"" },
+                    messages: {
+                        dependencies:
+                            'custom message for keyword "dependencies"',
+                    },
                 },
                 {
-                    anyOf: [
-                        { type: "string" },
-                        { type: "integer" },
-                    ],
-                    messages: { anyOf: "custom message for keyword \"anyOf\"" },
+                    anyOf: [{ type: "string" }, { type: "integer" }],
+                    messages: { anyOf: 'custom message for keyword "anyOf"' },
                 },
                 {
-                    oneOf: [
-                        { type: "string" },
-                        { type: "integer" },
-                    ],
-                    messages: { oneOf: "custom message for keyword \"oneOf\"" },
+                    oneOf: [{ type: "string" }, { type: "integer" }],
+                    messages: { oneOf: 'custom message for keyword "oneOf"' },
                 },
                 {
                     not: {
                         type: "string",
                     },
-                    messages: { not: "custom message for keyword \"not\"" },
+                    messages: { not: 'custom message for keyword "not"' },
                 },
             ];
 
@@ -1756,7 +1805,10 @@ import JsenSettings = jsen.JsenSettings;
                 let valid = validate(data[index]);
 
                 console.assert(!valid);
-                console.assert(validate.errors[validate.errors.length - 1].message === expectedMessages[index]);
+                console.assert(
+                    validate.errors[validate.errors.length - 1].message ===
+                        expectedMessages[index],
+                );
             });
         }
 
@@ -1785,12 +1837,14 @@ import JsenSettings = jsen.JsenSettings;
         // does not use custom messages on keyword: items (array)
         {
             const schema = {
-                items: [{
-                    type: "string",
-                    messages: {
-                        type: "will be assigned",
+                items: [
+                    {
+                        type: "string",
+                        messages: {
+                            type: "will be assigned",
+                        },
                     },
-                }],
+                ],
                 messages: {
                     items: "will not be assigned",
                 },
@@ -1953,10 +2007,12 @@ const doesNotThrow = (func: Function) => {
             },
         };
 
-        console.assert(doesNotThrow(() => {
-            let validate = jsen(schema);
-            console.assert(validate({ 123: true }));
-        }));
+        console.assert(
+            doesNotThrow(() => {
+                let validate = jsen(schema);
+                console.assert(validate({ 123: true }));
+            }),
+        );
     }
 
     // Fix cannot dereference schema when ids change resolution scope (#14)
@@ -1971,12 +2027,14 @@ const doesNotThrow = (func: Function) => {
             },
         };
 
-        console.assert(doesNotThrow(() => {
-            let validate = jsen(schema);
+        console.assert(
+            doesNotThrow(() => {
+                let validate = jsen(schema);
 
-            console.assert(validate("abc"));
-            console.assert(!validate(123));
-        }));
+                console.assert(validate("abc"));
+                console.assert(!validate(123));
+            }),
+        );
 
         schema = {
             $ref: "#child/definitions/subchild",
@@ -1992,9 +2050,11 @@ const doesNotThrow = (func: Function) => {
             },
         };
 
-        console.assert(doesThrow(() => {
-            let validate = jsen(schema);
-        }));
+        console.assert(
+            doesThrow(() => {
+                let validate = jsen(schema);
+            }),
+        );
     }
 
     // Fix recursive calls to the same cached $ref validator resets the error object
@@ -2041,7 +2101,11 @@ const doesNotThrow = (func: Function) => {
 
         console.assert(validate("http://google.com"));
         console.assert(validate("ftp://my-site"));
-        console.assert(validate("custom://my-site/long/$cr@mbl3d/u_r-l?with=query%20string"));
+        console.assert(
+            validate(
+                "custom://my-site/long/$cr@mbl3d/u_r-l?with=query%20string",
+            ),
+        );
         console.assert(validate("//no-scheme-here"));
 
         console.assert(!validate(""));
@@ -2055,8 +2119,12 @@ const doesNotThrow = (func: Function) => {
     {
         const schema = { format: "email" };
         const validate = jsen(schema);
-        const maxLongHostname1 = new Array(5).join("." + new Array(64).join("a")).substr(1); // 255 chars (4 groups x 63 chars)
-        const maxLongHostname2 = new Array(9).join("." + new Array(32).join("a")).substr(1); // 255 chars (8 groups x 31 chars)
+        const maxLongHostname1 = new Array(5)
+            .join("." + new Array(64).join("a"))
+            .substr(1); // 255 chars (4 groups x 63 chars)
+        const maxLongHostname2 = new Array(9)
+            .join("." + new Array(32).join("a"))
+            .substr(1); // 255 chars (8 groups x 31 chars)
 
         console.assert(validate("me@domain"));
         console.assert(
@@ -2066,7 +2134,11 @@ const doesNotThrow = (func: Function) => {
         );
         console.assert(validate("me@domain.with.multiple.subdomains"));
         console.assert(validate("me@domain-parts.may.contain-dashes"));
-        console.assert(validate("me@a-single-domain-part-can-be-up-to-sixty-three-characters-long63"));
+        console.assert(
+            validate(
+                "me@a-single-domain-part-can-be-up-to-sixty-three-characters-long63",
+            ),
+        );
         console.assert(validate("me@" + maxLongHostname1));
         console.assert(validate("me@" + maxLongHostname2));
 
@@ -2075,7 +2147,11 @@ const doesNotThrow = (func: Function) => {
         console.assert(!validate("me@no_underscores+or?special$chars"));
         console.assert(!validate("me@ends-with-dash-"));
         console.assert(!validate("me@-starts-with-dash"));
-        console.assert(!validate("me@asingle-domain-part-cannot-be-longer-than-sixty-three-characters"));
+        console.assert(
+            !validate(
+                "me@asingle-domain-part-cannot-be-longer-than-sixty-three-characters",
+            ),
+        );
 
         // These verify that a hostname cannot be longer than 255 chars in total. However,
         // maximum string length verification cannot be performed in the same regex, so
@@ -2156,14 +2232,22 @@ const doesNotThrow = (func: Function) => {
     {
         const schema = { format: "hostname" },
             validate = jsen(schema),
-            maxLong1 = new Array(5).join("." + new Array(64).join("a")).substr(1), // 255 chars (4 groups x 63 chars)
-            maxLong2 = new Array(9).join("." + new Array(32).join("a")).substr(1); // 255 chars (8 groups x 31 chars)
+            maxLong1 = new Array(5)
+                .join("." + new Array(64).join("a"))
+                .substr(1), // 255 chars (4 groups x 63 chars)
+            maxLong2 = new Array(9)
+                .join("." + new Array(32).join("a"))
+                .substr(1); // 255 chars (8 groups x 31 chars)
 
         console.assert(validate("my.host"));
         console.assert(validate("host"));
         console.assert(validate("domain.with.multiple.subdomains"));
         console.assert(validate("domain-parts.may.contain-dashes"));
-        console.assert(validate("a-single-domain-part-can-be-up-to-sixty-three-characters-long63"));
+        console.assert(
+            validate(
+                "a-single-domain-part-can-be-up-to-sixty-three-characters-long63",
+            ),
+        );
         console.assert(validate(maxLong1));
         console.assert(validate(maxLong2));
 
@@ -2173,7 +2257,11 @@ const doesNotThrow = (func: Function) => {
         console.assert(!validate("no_underscores+or?special$chars"));
         console.assert(!validate("ends-with-dash-"));
         console.assert(!validate("-starts-with-dash"));
-        console.assert(!validate("asingle-domain-part-cannot-be-longer-than-sixty-three-characters"));
+        console.assert(
+            !validate(
+                "asingle-domain-part-cannot-be-longer-than-sixty-three-characters",
+            ),
+        );
 
         // These verify that a hostname cannot be longer than 255 chars in total. However,
         // maximum string length verification cannot be performed in the same regex, so
@@ -2389,8 +2477,8 @@ const doesNotThrow = (func: Function) => {
 
         console.assert(!ret); // false
         console.assert(
-            JSON.stringify(validate.errors)
-                === JSON.stringify([
+            JSON.stringify(validate.errors) ===
+                JSON.stringify([
                     { path: "test1", keyword: "type" },
                     { path: "test2", keyword: "type" },
                     { path: "test3", keyword: "type" },
@@ -2406,8 +2494,8 @@ const doesNotThrow = (func: Function) => {
 
         console.assert(!ret); // false
         console.assert(
-            JSON.stringify(validate.errors)
-                === JSON.stringify([{ path: "test1", keyword: "type" }]),
+            JSON.stringify(validate.errors) ===
+                JSON.stringify([{ path: "test1", keyword: "type" }]),
         );
     }
 
@@ -2446,8 +2534,8 @@ const doesNotThrow = (func: Function) => {
 
         console.assert(!ret);
         console.assert(
-            JSON.stringify(validate.errors)
-                === JSON.stringify([
+            JSON.stringify(validate.errors) ===
+                JSON.stringify([
                     { path: "test1", keyword: "type" },
                     { path: "test2.foo", keyword: "required" },
                     { path: "test4.0.foo", keyword: "required" },
@@ -2664,10 +2752,7 @@ const doesNotThrow = (func: Function) => {
     // allOf
     {
         const schema = {
-                allOf: [
-                    { type: "number" },
-                    { type: "integer" },
-                ],
+                allOf: [{ type: "number" }, { type: "integer" }],
             },
             validate = jsen(schema);
 
@@ -2682,10 +2767,7 @@ const doesNotThrow = (func: Function) => {
     // anyOf
     {
         const schema = {
-                anyOf: [
-                    { type: "string" },
-                    { type: "number" },
-                ],
+                anyOf: [{ type: "string" }, { type: "number" }],
             },
             validate = jsen(schema);
 
@@ -3028,7 +3110,9 @@ const doesNotThrow = (func: Function) => {
         console.assert(!validate({ a: "abc", b: 123, c: true }));
 
         console.assert(validate({ a: "abc", b: 123 }));
-        console.assert(jsen({ type: "object", additionalProperties: false })({}));
+        console.assert(
+            jsen({ type: "object", additionalProperties: false })({}),
+        );
     }
 
     // additionalProperties as schema
@@ -3066,7 +3150,9 @@ const doesNotThrow = (func: Function) => {
 
         console.assert(validate({ a: "abc" }));
         console.assert(validate({ b: 123 }));
-        console.assert(validate({ a: "abc", b: 123, bar: Math.E, baz: Math.PI }));
+        console.assert(
+            validate({ a: "abc", b: 123, bar: Math.E, baz: Math.PI }),
+        );
         console.assert(validate({ a: "abc", baz: 123, c: true }));
 
         schema.additionalProperties = false;
@@ -3076,7 +3162,9 @@ const doesNotThrow = (func: Function) => {
         console.assert(!validate({ a: "abc", bar: 123, c: true }));
 
         console.assert(validate({ a: "abc", baz: 123 }));
-        console.assert(jsen({ type: "object", additionalProperties: false })({}));
+        console.assert(
+            jsen({ type: "object", additionalProperties: false })({}),
+        );
     }
 
     // patternProperties
@@ -3202,54 +3290,56 @@ const doesNotThrow = (func: Function) => {
 {
     // throws if string is not in correct format
     {
-        console.assert(doesThrow(
-            jsen({ $ref: "" }),
-        ));
+        console.assert(doesThrow(jsen({ $ref: "" })));
 
-        console.assert(doesThrow(
-            jsen({ $ref: "#double//slash" }),
-        ));
+        console.assert(doesThrow(jsen({ $ref: "#double//slash" })));
 
-        console.assert(doesThrow(
-            jsen({ $ref: "#ends/with/slash/" }),
-        ));
+        console.assert(doesThrow(jsen({ $ref: "#ends/with/slash/" })));
 
-        console.assert(doesThrow(
-            // invalid reference, non-existent schema properties
-            jsen({ $ref: "#a/b/c" }),
-        ));
+        console.assert(
+            doesThrow(
+                // invalid reference, non-existent schema properties
+                jsen({ $ref: "#a/b/c" }),
+            ),
+        );
 
-        console.assert(doesNotThrow(
-            // schema resolves to itself
-            jsen({ $ref: "#" }),
-        ));
+        console.assert(
+            doesNotThrow(
+                // schema resolves to itself
+                jsen({ $ref: "#" }),
+            ),
+        );
 
-        console.assert(doesNotThrow(
-            jsen({
-                a: {
-                    b: {
-                        c: {
-                            type: "any",
+        console.assert(
+            doesNotThrow(
+                jsen({
+                    a: {
+                        b: {
+                            c: {
+                                type: "any",
+                            },
                         },
                     },
-                },
-                $ref: "#/a/b/c",
-            }),
-        ));
+                    $ref: "#/a/b/c",
+                }),
+            ),
+        );
 
-        console.assert(doesNotThrow(
-            jsen({
-                arr: [
-                    { value: { type: "string" } },
-                    { value: { type: "number" } },
-                    { value: { type: "boolean" } },
-                ],
-                type: "object",
-                properties: {
-                    a: { $ref: "#arr/2/value" },
-                },
-            }),
-        ));
+        console.assert(
+            doesNotThrow(
+                jsen({
+                    arr: [
+                        { value: { type: "string" } },
+                        { value: { type: "number" } },
+                        { value: { type: "boolean" } },
+                    ],
+                    type: "object",
+                    properties: {
+                        a: { $ref: "#arr/2/value" },
+                    },
+                }),
+            ),
+        );
     }
 
     // external schema
@@ -3286,9 +3376,7 @@ const doesNotThrow = (func: Function) => {
         {
             const schema = { $ref: "#external" };
 
-            console.assert(doesNotThrow(
-                jsen(schema),
-            ));
+            console.assert(doesNotThrow(jsen(schema)));
         }
 
         // own property takes precendence over external schema
@@ -3418,7 +3506,18 @@ const doesNotThrow = (func: Function) => {
     {
         const inputs = [
                 [1, "a", 3, false, null, undefined],
-                ["abc", 123, true, 123, false, Math.PI, "abc", true, null, null],
+                [
+                    "abc",
+                    123,
+                    true,
+                    123,
+                    false,
+                    Math.PI,
+                    "abc",
+                    true,
+                    null,
+                    null,
+                ],
             ],
             expected = [
                 [1, "a", 3, false, null, undefined],
@@ -3426,7 +3525,10 @@ const doesNotThrow = (func: Function) => {
             ];
 
         for (let i = 0; i < inputs.length; i++) {
-            console.assert(JSON.stringify(jsen.unique(inputs[i])) === JSON.stringify(expected[i]));
+            console.assert(
+                JSON.stringify(jsen.unique(inputs[i])) ===
+                    JSON.stringify(expected[i]),
+            );
         }
     }
 
@@ -3454,7 +3556,9 @@ const doesNotThrow = (func: Function) => {
                 { a: 1, b: undefined },
             ];
 
-        console.assert(JSON.stringify(jsen.unique(input)) === JSON.stringify(expected));
+        console.assert(
+            JSON.stringify(jsen.unique(input)) === JSON.stringify(expected),
+        );
     }
 
     // unique.findIndex
@@ -3467,7 +3571,10 @@ const doesNotThrow = (func: Function) => {
                     return obj1.a === obj2.a && obj1.b === obj2.b;
                 };
 
-            console.assert(jsen.unique.findIndex(arr, { a: 1, b: 2 }, comparator) === expected);
+            console.assert(
+                jsen.unique.findIndex(arr, { a: 1, b: 2 }, comparator) ===
+                    expected,
+            );
         }
 
         // returns -1 when item cannot be found
@@ -3478,7 +3585,10 @@ const doesNotThrow = (func: Function) => {
                     return obj1.a === obj2.a && obj1.b === obj2.b;
                 };
 
-            console.assert(jsen.unique.findIndex(arr, { a: 1, b: null }, comparator) === expected);
+            console.assert(
+                jsen.unique.findIndex(arr, { a: 1, b: null }, comparator) ===
+                    expected,
+            );
         }
     }
 }

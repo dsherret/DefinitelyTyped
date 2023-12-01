@@ -53,7 +53,10 @@ function demo_box(inst: nacl.Nacl): void {
     const cipher = inst.crypto_box(msg, nonce, rcpt.boxPk, sender.boxSk);
     inst.crypto_box_open(cipher, nonce, sender.boxPk, rcpt.boxSk); // $ExpectType Uint8Array
 
-    const senderPrecompute = inst.crypto_box_precompute(rcpt.boxPk, sender.boxSk);
+    const senderPrecompute = inst.crypto_box_precompute(
+        rcpt.boxPk,
+        sender.boxSk,
+    );
     const rcptPrecompute = inst.crypto_box_precompute(sender.boxPk, rcpt.boxSk);
     const cipher2 = inst.crypto_box_precomputed(msg, nonce, senderPrecompute);
     inst.crypto_box_open_precomputed(cipher2, nonce, rcptPrecompute); // $ExpectType Uint8Array

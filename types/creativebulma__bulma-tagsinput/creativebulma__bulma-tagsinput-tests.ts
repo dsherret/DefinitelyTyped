@@ -32,8 +32,12 @@ input = new BulmaTagsInput("#id", { searchOn: "text" });
 input = new BulmaTagsInput("#id", { searchOn: "value" });
 input = new BulmaTagsInput("#id", { selectable: false });
 input = new BulmaTagsInput("#id", { source: ["", { text: "", value: "" }] });
-input = new BulmaTagsInput("#id", { source: () => ["", { text: "", value: "" }] });
-input = new BulmaTagsInput("#id", { source: Promise.resolve(["", { text: "", value: "" }]) });
+input = new BulmaTagsInput("#id", {
+    source: () => ["", { text: "", value: "" }],
+});
+input = new BulmaTagsInput("#id", {
+    source: Promise.resolve(["", { text: "", value: "" }]),
+});
 input = new BulmaTagsInput("#id", { tagClass: "" });
 input = new BulmaTagsInput("#id", { trim: false });
 
@@ -69,16 +73,16 @@ input
 const value: string | string[] = input.value;
 
 let bulmaItem: BulmaTagsInput.BulmaTagsInputItem;
-input.on("before.add", item => {
+input.on("before.add", (item) => {
     if (typeof item !== "string") bulmaItem = item;
 });
 input.on("after.add", ({ item }) => {
     if (typeof item !== "string") bulmaItem = item;
 });
-input.on("before.remove", item => {
+input.on("before.remove", (item) => {
     if (typeof item !== "string") bulmaItem = item;
 });
-input.on("after.remove", item => {
+input.on("after.remove", (item) => {
     if (typeof item !== "string") bulmaItem = item;
 });
 input.on("before.flush", ([item]) => {
@@ -100,16 +104,16 @@ input.on("after.unselect", ({ item }) => {
     if (typeof item !== "string") bulmaItem = item;
 });
 
-input.once("before.add", item => {
+input.once("before.add", (item) => {
     if (typeof item !== "string") bulmaItem = item;
 });
 input.once("after.add", ({ item }) => {
     if (typeof item !== "string") bulmaItem = item;
 });
-input.once("before.remove", item => {
+input.once("before.remove", (item) => {
     if (typeof item !== "string") bulmaItem = item;
 });
-input.once("after.remove", item => {
+input.once("after.remove", (item) => {
     if (typeof item !== "string") bulmaItem = item;
 });
 input.once("before.flush", ([item]) => {

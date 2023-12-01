@@ -75,47 +75,75 @@ declare module "angular" {
             // grid item height in mobile display. true- to use the calculated height by sizeY given
 
             // options to pass to resizable handler
-            resizable?: {
-                // whether the items are resizable
-                enabled?: boolean | undefined;
+            resizable?:
+                | {
+                      // whether the items are resizable
+                      enabled?: boolean | undefined;
 
-                // location of the resize handles
-                // e.g // ['s', 'e', 'n', 'w', 'se', 'ne', 'sw', 'nw']
-                handles?: string[] | undefined;
+                      // location of the resize handles
+                      // e.g // ['s', 'e', 'n', 'w', 'se', 'ne', 'sw', 'nw']
+                      handles?: string[] | undefined;
 
-                // optional callback fired when drag is started
-                start?(event: IAngularEvent, $element: IAugmentedJQuery, options: any): void;
+                      // optional callback fired when drag is started
+                      start?(
+                          event: IAngularEvent,
+                          $element: IAugmentedJQuery,
+                          options: any,
+                      ): void;
 
-                // optional callback fired when item is resized
-                resize?(event: IAngularEvent, $element: IAugmentedJQuery, options: any): void;
+                      // optional callback fired when item is resized
+                      resize?(
+                          event: IAngularEvent,
+                          $element: IAugmentedJQuery,
+                          options: any,
+                      ): void;
 
-                // optional callback fired when item is finished dragging
-                stop?(event: IAngularEvent, $element: IAugmentedJQuery, options: any): void;
-            } | undefined;
+                      // optional callback fired when item is finished dragging
+                      stop?(
+                          event: IAngularEvent,
+                          $element: IAugmentedJQuery,
+                          options: any,
+                      ): void;
+                  }
+                | undefined;
 
             // options to pass to draggable handler
-            draggable?: {
-                // whether the items are resizable
-                enabled?: boolean | undefined;
+            draggable?:
+                | {
+                      // whether the items are resizable
+                      enabled?: boolean | undefined;
 
-                // Distance in pixels from the edge of the viewport after which the viewport should scroll, relative to pointer
-                scrollSensitivity?: number | undefined;
+                      // Distance in pixels from the edge of the viewport after which the viewport should scroll, relative to pointer
+                      scrollSensitivity?: number | undefined;
 
-                // Speed at which the window should scroll once the mouse pointer gets within scrollSensitivity distance
-                scrollSpeed?: number | undefined;
+                      // Speed at which the window should scroll once the mouse pointer gets within scrollSensitivity distance
+                      scrollSpeed?: number | undefined;
 
-                // optional selector for drag handle
-                handle?: string | undefined;
+                      // optional selector for drag handle
+                      handle?: string | undefined;
 
-                // optional callback fired when drag is started
-                start?(event: IAngularEvent, $element: IAugmentedJQuery, options: any): void;
+                      // optional callback fired when drag is started
+                      start?(
+                          event: IAngularEvent,
+                          $element: IAugmentedJQuery,
+                          options: any,
+                      ): void;
 
-                // optional callback fired when item is moved,
-                drag?(event: IAngularEvent, $element: IAugmentedJQuery, options: any): void;
+                      // optional callback fired when item is moved,
+                      drag?(
+                          event: IAngularEvent,
+                          $element: IAugmentedJQuery,
+                          options: any,
+                      ): void;
 
-                // optional callback fired when item is finished dragging
-                stop?(event: IAngularEvent, $element: IAugmentedJQuery, options: any): void;
-            } | undefined;
+                      // optional callback fired when item is finished dragging
+                      stop?(
+                          event: IAngularEvent,
+                          $element: IAugmentedJQuery,
+                          options: any,
+                      ): void;
+                  }
+                | undefined;
         }
 
         interface StandardGridsterItem {

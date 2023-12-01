@@ -25,10 +25,20 @@ const chartConfig: zc.graphset[] = [
         },
         series: [
             {
-                values: ["Jon", "Anderson", "January 25, 1950", "United Kingdom"],
+                values: [
+                    "Jon",
+                    "Anderson",
+                    "January 25, 1950",
+                    "United Kingdom",
+                ],
             },
             {
-                values: ["Steve", "Hogarth", "January 25, 1950", "United Kingdom"],
+                values: [
+                    "Steve",
+                    "Hogarth",
+                    "January 25, 1950",
+                    "United Kingdom",
+                ],
             },
             {
                 values: ["Jim", "Carrey", "June 12, 1972", "United States"],
@@ -43,10 +53,20 @@ const chartConfig: zc.graphset[] = [
                 values: ["Kate", "Moss", "January 16, 1974", "United Kingdom"],
             },
             {
-                values: ["David", "Chokachi", "January 16, 1968", "United States"],
+                values: [
+                    "David",
+                    "Chokachi",
+                    "January 16, 1968",
+                    "United States",
+                ],
             },
             {
-                values: ["Josie", "Davis", "January 16, 1973", "United Kingdom"],
+                values: [
+                    "Josie",
+                    "Davis",
+                    "January 16, 1973",
+                    "United Kingdom",
+                ],
             },
             {
                 values: ["Alex", "Morgan", "July 2, 1989", "United States"],
@@ -58,7 +78,12 @@ const chartConfig: zc.graphset[] = [
                 values: ["Tony", "Bennett", "August 3, 1926", "United States"],
             },
             {
-                values: ["Martha", "Stewart", "August 3, 1941", "United States"],
+                values: [
+                    "Martha",
+                    "Stewart",
+                    "August 3, 1941",
+                    "United States",
+                ],
             },
             {
                 values: ["Tom", "Brady", "August 3, 1977", "United States"],

@@ -1,8 +1,24 @@
 import * as React from "react";
-import { Image, ImageSourcePropType, ScrollView, StatusBar, View } from "react-native";
-import Canvas, { Image as CanvasImage, ImageData, Path2D } from "react-native-canvas";
+import {
+    Image,
+    ImageSourcePropType,
+    ScrollView,
+    StatusBar,
+    View,
+} from "react-native";
+import Canvas, {
+    Image as CanvasImage,
+    ImageData,
+    Path2D,
+} from "react-native-canvas";
 
-const Example = ({ sample, children }: { sample: ImageSourcePropType; children: React.ReactNode }) => (
+const Example = ({
+    sample,
+    children,
+}: {
+    sample: ImageSourcePropType;
+    children: React.ReactNode;
+}) => (
     <View>
         <View>{children}</View>
         <View>
@@ -23,7 +39,7 @@ class CanvasTest extends React.Component {
         context.fillStyle = "purple";
         context.fillRect(0, 0, 100, 100);
 
-        context.getImageData(0, 0, 100, 100).then(imageData => {
+        context.getImageData(0, 0, 100, 100).then((imageData) => {
             const data = Object.values(imageData.data);
             const length = Object.keys(data).length;
             for (let i = 0; i < length; i += 4) {

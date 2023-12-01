@@ -52,54 +52,34 @@ declare namespace wx {
     // 所有菜单项列表
     // 基本类
     type menuBase =
-        | "menuItem:exposeArticle"
-        | // 举报
-        "menuItem:setFont"
-        | // 调整字体
-        "menuItem:dayMode"
-        | // 日间模式
-        "menuItem:nightMode"
-        | // 夜间模式
-        "menuItem:refresh"
-        | // 刷新
-        "menuItem:profile"
-        | // 查看公众号（已添加）
-        "menuItem:addContact"; // 查看公众号（未添加）
+        | "menuItem:exposeArticle" // 举报
+        | "menuItem:setFont" // 调整字体
+        | "menuItem:dayMode" // 日间模式
+        | "menuItem:nightMode" // 夜间模式
+        | "menuItem:refresh" // 刷新
+        | "menuItem:profile" // 查看公众号（已添加）
+        | "menuItem:addContact"; // 查看公众号（未添加）
     // 传播类
     type menuShare =
-        | "menuItem:share:appMessage"
-        | // 发送给朋友
-        "menuItem:share:timeline"
-        | // 分享到朋友圈
-        "menuItem:share:qq"
-        | // 分享到QQ
-        "menuItem:share:weiboApp"
-        | // 分享到Weibo
-        "menuItem:favorite"
-        | // 收藏
-        "menuItem:share:facebook"
-        | // 分享到FB
-        "menuItem:share:QZone"; // 分享到 QQ 空间
+        | "menuItem:share:appMessage" // 发送给朋友
+        | "menuItem:share:timeline" // 分享到朋友圈
+        | "menuItem:share:qq" // 分享到QQ
+        | "menuItem:share:weiboApp" // 分享到Weibo
+        | "menuItem:favorite" // 收藏
+        | "menuItem:share:facebook" // 分享到FB
+        | "menuItem:share:QZone"; // 分享到 QQ 空间
 
     // 保护类
     type menuProtected =
-        | "menuItem:editTag"
-        | // 编辑标签
-        "menuItem:delete"
-        | // 删除
-        "menuItem:copyUrl"
-        | // 复制链接
-        "menuItem:originPage"
-        | // 原网页
-        "menuItem:readMode"
-        | // 阅读模式
-        "menuItem:openWithQQBrowser"
-        | // 在QQ浏览器中打开
-        "menuItem:openWithSafari"
-        | // 在Safari中打开
-        "menuItem:share:email"
-        | // 邮件
-        "menuItem:share:brand"; // 一些特殊公众号
+        | "menuItem:editTag" // 编辑标签
+        | "menuItem:delete" // 删除
+        | "menuItem:copyUrl" // 复制链接
+        | "menuItem:originPage" // 原网页
+        | "menuItem:readMode" // 阅读模式
+        | "menuItem:openWithQQBrowser" // 在QQ浏览器中打开
+        | "menuItem:openWithSafari" // 在Safari中打开
+        | "menuItem:share:email" // 邮件
+        | "menuItem:share:brand"; // 一些特殊公众号
 
     type menuList = Array<menuBase | menuProtected | menuShare>;
 
@@ -129,7 +109,10 @@ declare namespace wx {
         jsApiList: jsApiList; // 需要检测的JS接口列表，所有JS接口列表见附录2,
         // 以键值对的形式返回，可用的api值true，不可用为false
         // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-        success(res: { checkResult: { [api: string]: boolean }; errMsg: string }): void;
+        success(res: {
+            checkResult: { [api: string]: boolean };
+            errMsg: string;
+        }): void;
     }
     /**
      * 判断当前客户端版本是否支持指定JS接口
@@ -352,9 +335,7 @@ declare namespace wx {
     interface ItranslateVoice extends BaseParams {
         localId: string; // 需要识别的音频的本地Id，由录音相关接口获得
         isShowProgressTips: number; // 默认为1，显示进度提示
-        success(res: {
-            translateResult: string;
-        }): void;
+        success(res: { translateResult: string }): void;
     }
     /**
      * 识别音频并返回识别结果接口
@@ -512,9 +493,7 @@ declare namespace wx {
         nonceStr: string; // 卡券签名随机串
         signType: string; // 签名方式，默认'SHA1'
         cardSign: string; // 卡券签名
-        success(res: {
-            cardList: string[];
-        }): void;
+        success(res: { cardList: string[] }): void;
     }
     /**
      * 拉取适用卡券列表并获取用户选择信息

@@ -60,23 +60,48 @@ declare namespace exorcist {
          * `missing-map` emitted if no map was found in the stream and `errorOnMissing` is falsy
          * (the src is still piped through in this case, but no map file is written).
          */
-        addListener(event: "missing-map", listener: (missingMapMessage: string) => void): Stream;
+        addListener(
+            event: "missing-map",
+            listener: (missingMapMessage: string) => void,
+        ): Stream;
         /**
          * `missing-map` emitted if no map was found in the stream and `errorOnMissing` is falsy
          * (the src is still piped through in this case, but no map file is written).
          */
-        on(event: "missing-map", listener: (missingMapMessage: string) => void): Stream;
+        on(
+            event: "missing-map",
+            listener: (missingMapMessage: string) => void,
+        ): Stream;
         /**
          * `missing-map` emitted if no map was found in the stream and `errorOnMissing` is falsy
          * (the src is still piped through in this case, but no map file is written).
          */
-        once(event: "missing-map", listener: (missingMapMessage: string) => void): Stream;
-        removeListener(event: "missing-map", listener: (missingMapMessage: string) => void): Stream;
-        off(event: "missing-map", listener: (missingMapMessage: string) => void): Stream;
-        listeners(event: "missing-map"): Array<(missingMapMessage: string) => void>;
-        rawListeners(event: "missing-map"): Array<(missingMapMessage: string) => void>;
+        once(
+            event: "missing-map",
+            listener: (missingMapMessage: string) => void,
+        ): Stream;
+        removeListener(
+            event: "missing-map",
+            listener: (missingMapMessage: string) => void,
+        ): Stream;
+        off(
+            event: "missing-map",
+            listener: (missingMapMessage: string) => void,
+        ): Stream;
+        listeners(
+            event: "missing-map",
+        ): Array<(missingMapMessage: string) => void>;
+        rawListeners(
+            event: "missing-map",
+        ): Array<(missingMapMessage: string) => void>;
         emit(event: "missing-map", missingMapMessage: string): boolean;
-        prependListener(event: "missing-map", listener: (missingMapMessage: string) => void): Stream;
-        prependOnceListener(event: "missing-map", listener: (missingMapMessage: string) => void): Stream;
+        prependListener(
+            event: "missing-map",
+            listener: (missingMapMessage: string) => void,
+        ): Stream;
+        prependOnceListener(
+            event: "missing-map",
+            listener: (missingMapMessage: string) => void,
+        ): Stream;
     };
 }

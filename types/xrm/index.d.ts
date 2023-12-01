@@ -356,7 +356,9 @@ declare namespace Xrm {
          * @param setting Name of the configuration setting.
          * @see {@link XrmEnum.AdvancedConfigSettingOption}
          */
-        getAdvancedConfigSetting(setting: "MaxChildIncidentNumber" | "MaxIncidentMergeNumber"): number;
+        getAdvancedConfigSetting(
+            setting: "MaxChildIncidentNumber" | "MaxIncidentMergeNumber",
+        ): number;
 
         /**
          * Gets client's base URL for Dynamics CRM
@@ -957,15 +959,25 @@ declare namespace Xrm {
         type DataLoadEventHandler = (context: DataLoadEventContext) => void;
 
         type SaveEventHandler = (context: SaveEventContext) => void;
-        type SaveEventHandlerAsync = (context: SaveEventContextAsync) => PromiseLike<void>;
+        type SaveEventHandlerAsync = (
+            context: SaveEventContextAsync,
+        ) => PromiseLike<void>;
 
         type PostSaveEventHandler = (context: EventContext) => void;
 
-        type ProcessStatusChangeHandler = (context: ProcessStatusChangedEventContext) => void;
-        type StageChangeEventHandler = (context: StageChangeEventContext) => void;
-        type StageSelectedEventHandler = (context: StageSelectedEventContext) => void;
+        type ProcessStatusChangeHandler = (
+            context: ProcessStatusChangedEventContext,
+        ) => void;
+        type StageChangeEventHandler = (
+            context: StageChangeEventContext,
+        ) => void;
+        type StageSelectedEventHandler = (
+            context: StageSelectedEventContext,
+        ) => void;
 
-        type LookupTagClickHandler = (context: LookupTagClickEventContext) => void;
+        type LookupTagClickHandler = (
+            context: LookupTagClickEventContext,
+        ) => void;
 
         namespace Attribute {
             type ChangeEventHandler = (context: ChangeEventContext) => void;
@@ -978,13 +990,19 @@ declare namespace Xrm {
         }
 
         namespace KbSearchControl {
-            type PostSearchEventHandler = (context: PostSearchEventContext) => void;
+            type PostSearchEventHandler = (
+                context: PostSearchEventContext,
+            ) => void;
             interface PostSearchEventContext extends EventContext {}
 
-            type ResultOpenedEventHandler = (context: ResultOpenedEventContext) => void;
+            type ResultOpenedEventHandler = (
+                context: ResultOpenedEventContext,
+            ) => void;
             interface ResultOpenedEventContext extends EventContext {}
 
-            type SelectionEventHandler = (context: SelectionEventContext) => void;
+            type SelectionEventHandler = (
+                context: SelectionEventContext,
+            ) => void;
             interface SelectionEventContext extends EventContext {}
         }
     }
@@ -1135,7 +1153,9 @@ declare namespace Xrm {
          * @returns An array of attribute.
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/collections External Link: Collections (Client API reference)}
          */
-        getAttribute(delegateFunction: Collection.MatchingDelegate<Attributes.Attribute>): Attributes.Attribute[];
+        getAttribute(
+            delegateFunction: Collection.MatchingDelegate<Attributes.Attribute>,
+        ): Attributes.Attribute[];
 
         /**
          * Gets all controls.
@@ -1179,7 +1199,9 @@ declare namespace Xrm {
          * @returns An array of control.
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/collections External Link: Collections (Client API reference)}
          */
-        getControl(delegateFunction: Collection.MatchingDelegate<Controls.Control>): Controls.Control[];
+        getControl(
+            delegateFunction: Collection.MatchingDelegate<Controls.Control>,
+        ): Controls.Control[];
     }
 
     /**
@@ -1192,7 +1214,9 @@ declare namespace Xrm {
          * The function will be added to the bottom of the event handler pipeline.
          * @see {@link https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/reference/formcontext-ui/addonload External Link: ui.addOnLoad (Client API reference)}
          */
-        addOnLoad(handler: Events.LoadEventHandler | Events.LoadEventHandlerAsync): void;
+        addOnLoad(
+            handler: Events.LoadEventHandler | Events.LoadEventHandlerAsync,
+        ): void;
 
         /**
          * Displays a form level notification. Any number of notifications can be displayed and will remain until removed using clearFormNotification.
@@ -1205,7 +1229,11 @@ declare namespace Xrm {
          * @param uniqueId Unique identifier for the notification which is used with clearFormNotification to remove the notification.
          * @returns true if it succeeds, otherwise false.
          */
-        setFormNotification(message: string, level: FormNotificationLevel, uniqueId: string): boolean;
+        setFormNotification(
+            message: string,
+            level: FormNotificationLevel,
+            uniqueId: string,
+        ): boolean;
 
         /**
          * Clears the form notification described by uniqueId.
@@ -1269,7 +1297,9 @@ declare namespace Xrm {
          * Removes a function from the form OnLoad event.
          * @see {@link https://learn.microsoft.com/power-apps/developer/model-driven-apps/clientapi/reference/formcontext-ui/removeonload External Link: ui.removeOnLoad (Client API reference)}
          */
-        removeOnLoad(handler: Events.LoadEventHandler | Events.LoadEventHandlerAsync): void;
+        removeOnLoad(
+            handler: Events.LoadEventHandler | Events.LoadEventHandlerAsync,
+        ): void;
 
         /**
          * Sets the name of the table to be displayed on the form.
@@ -1391,7 +1421,10 @@ declare namespace Xrm {
          * @returns Returns an object with .then() function. The parameter to the delegate is an array of numbers representing the valid status transitions.
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/xrm-utility/getallowedstatustransitions External Link: getAllowedStatusTransitions (Client API reference)}
          */
-        getAllowedStatusTransitions(entityName: string, stateCode: number): PromiseLike<number[]>;
+        getAllowedStatusTransitions(
+            entityName: string,
+            stateCode: number,
+        ): PromiseLike<number[]>;
 
         /**
          * Returns the entity metadata for the specified entity.
@@ -1399,7 +1432,10 @@ declare namespace Xrm {
          * @param attributes The attributes to get metadata for.
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/xrm-utility/getentitymetadata External Link: getEntityMetadata}
          */
-        getEntityMetadata(entityName: string, attributes?: string[]): Async.PromiseLike<Metadata.EntityMetadata>;
+        getEntityMetadata(
+            entityName: string,
+            attributes?: string[],
+        ): Async.PromiseLike<Metadata.EntityMetadata>;
 
         /**
          * The method provides access to the global context without going through the form context.
@@ -1438,14 +1474,19 @@ declare namespace Xrm {
          * @see {@link https://learn.microsoft.com/en-us/dynamics365/customerengagement/on-premises/customize/actions External Link: Actions overview}
          * @see {@link https://learn.microsoft.com/en-us/dynamics365/customerengagement/on-premises/developer/create-own-actions External Link: Create your own actions}
          */
-        invokeProcessAction(name: string, parameters: Collection.Dictionary<any>): Async.PromiseLike<any>;
+        invokeProcessAction(
+            name: string,
+            parameters: Collection.Dictionary<any>,
+        ): Async.PromiseLike<any>;
 
         /**
          * Opens a lookup control to select one or more items.
          * @param lookupOptions Defines the options for opening the lookup dialog
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/xrm-utility/lookupobjects External Link: lookupObjects (Client API reference)}
          */
-        lookupObjects(lookupOptions: LookupOptions): Async.PromiseLike<LookupValue[]>;
+        lookupObjects(
+            lookupOptions: LookupOptions,
+        ): Async.PromiseLike<LookupValue[]>;
 
         /**
          * Refreshes the parent grid containing the specified record.
@@ -1479,7 +1520,11 @@ declare namespace Xrm {
          * @param yesCloseCallback The "OK" callback.
          * @param noCloseCallback The "Cancel" callback.
          */
-        confirmDialog(message: string, yesCloseCallback: () => void, noCloseCallback: () => void): void;
+        confirmDialog(
+            message: string,
+            yesCloseCallback: () => void,
+            noCloseCallback: () => void,
+        ): void;
 
         /**
          * Query if 'entityType' is an Activity entity.
@@ -1542,7 +1587,12 @@ declare namespace Xrm {
          * * data (identical to this method's webResourceData parameter)
          * * formid
          */
-        openWebResource(webResourceName: string, webResourceData?: string, width?: number, height?: number): Window;
+        openWebResource(
+            webResourceName: string,
+            webResourceData?: string,
+            width?: number,
+            height?: number,
+        ): Window;
     }
 
     /**
@@ -1671,7 +1721,10 @@ declare namespace Xrm {
          * @deprecated Use {@link Xrm.WebApi.deleteRecord} instead.
          * @see {@link https://learn.microsoft.com/en-us/power-platform/important-changes-coming#some-client-apis-are-deprecated External Link: Deprecated Client APIs}
          */
-        deleteRecord(entityType: string, id: string): Async.PromiseLike<Async.OfflineOperationSuccessCallbackObject>;
+        deleteRecord(
+            entityType: string,
+            id: string,
+        ): Async.PromiseLike<Async.OfflineOperationSuccessCallbackObject>;
     }
 
     /**
@@ -1757,12 +1810,17 @@ declare namespace Xrm {
                 onFulfilled?: (value: T) => U | PromiseLike<U>,
                 onRejected?: (error: any) => U | PromiseLike<U>,
             ): PromiseLike<U>;
-            then<U>(onFulfilled?: (value: T) => U | PromiseLike<U>, onRejected?: (error: any) => void): PromiseLike<U>;
+            then<U>(
+                onFulfilled?: (value: T) => U | PromiseLike<U>,
+                onRejected?: (error: any) => void,
+            ): PromiseLike<U>;
 
             /**
              * UNDOCUMENTED (Web Client only) Add handlers to be called when the Deferred object is rejected.
              */
-            fail<U>(onRejected?: (reason: ErrorResponse) => U | PromiseLike<U>): PromiseLike<U>;
+            fail<U>(
+                onRejected?: (reason: ErrorResponse) => U | PromiseLike<U>,
+            ): PromiseLike<U>;
 
             /**
              * UNDOCUMENTED (Web Client only): Add handlers to be called when the Deferred object is either resolved or rejected.
@@ -1772,12 +1830,16 @@ declare namespace Xrm {
             /**
              * UNDOCUMENTED (Unified Client only): Add handlers to be called when the Deferred object is rejected.
              */
-            catch<U>(onRejected?: (reason: ErrorResponse) => U | PromiseLike<U>): PromiseLike<U>;
+            catch<U>(
+                onRejected?: (reason: ErrorResponse) => U | PromiseLike<U>,
+            ): PromiseLike<U>;
 
             /**
              * UNDOCUMENTED (Unified Client only): Add handlers to be called when the Deferred object is either resolved or rejected.
              */
-            finally<U>(finallyCallback: () => U | PromiseLike<U>): PromiseLike<U>;
+            finally<U>(
+                finallyCallback: () => U | PromiseLike<U>,
+            ): PromiseLike<U>;
         }
     }
 
@@ -1812,7 +1874,8 @@ declare namespace Xrm {
          * Defines item collections that are index-able by string
          * @param Generic type parameter.
          */
-        type StringIndexableItemCollection<T> = Dictionary<T> & ItemCollection<T>;
+        type StringIndexableItemCollection<T> = Dictionary<T> &
+            ItemCollection<T>;
 
         /**
          * Collections are structures to provide access to data that represent an array, but without the ability to modify the data in the array.
@@ -1900,13 +1963,15 @@ declare namespace Xrm {
         /**
          * @deprecated Use {@link Xrm.Controls.AddControlNotificationOptions} instead.
          */
-        interface AddControlNotificationOptions extends Controls.AddControlNotificationOptions {}
+        interface AddControlNotificationOptions
+            extends Controls.AddControlNotificationOptions {}
 
         /**
          * Interface to define the actions on a control notification
          * @deprecated Use {@link Xrm.Controls.ControlNotificationAction} instead.
          */
-        interface ControlNotificationAction extends Controls.ControlNotificationAction {}
+        interface ControlNotificationAction
+            extends Controls.ControlNotificationAction {}
 
         /**
          * Interface for an entity's form selector item.
@@ -2057,13 +2122,15 @@ declare namespace Xrm {
          * Interface for a process stage change event context
          * @deprecated Use {@link Xrm.Events.StageChangeEventContext} instead.
          */
-        interface StageChangeEventContext extends Events.StageChangeEventContext {}
+        interface StageChangeEventContext
+            extends Events.StageChangeEventContext {}
 
         /**
          * Interface for a process stage select event context
          * @deprecated  Use {@link Xrm.Events.StageSelectedEventContext} instead.
          */
-        interface StageSelectedEventContext extends Events.StageSelectedEventContext {}
+        interface StageSelectedEventContext
+            extends Events.StageSelectedEventContext {}
 
         /**
          * Type for a context-sensitive handler.
@@ -2089,13 +2156,15 @@ declare namespace Xrm {
          * Interface for UI elements which can have the visibility value read.
          * @deprecated Use {@link Xrm.Controls.UiCanGetVisibleElement} instead.
          */
-        interface UiCanGetVisibleElement extends Controls.UiCanGetVisibleElement {}
+        interface UiCanGetVisibleElement
+            extends Controls.UiCanGetVisibleElement {}
 
         /**
          * Interface for UI elements which can have the visibility value updated.
          * @deprecated Use {@link Xrm.Controls.UiCanSetVisibleElement} instead.
          */
-        interface UiCanSetVisibleElement extends Controls.UiCanSetVisibleElement {}
+        interface UiCanSetVisibleElement
+            extends Controls.UiCanSetVisibleElement {}
 
         /**
          * Base interface for standard UI elements.
@@ -2132,7 +2201,8 @@ declare namespace Xrm {
          * Interface for showAutoComplete argument
          * @deprecated Use {@link Xrm.Controls.AutoCompleteResultSet} instead.
          */
-        interface AutoCompleteResultSet extends Controls.AutoCompleteResultSet {}
+        interface AutoCompleteResultSet
+            extends Controls.AutoCompleteResultSet {}
 
         /**
          * Interface for a Lookup value.
@@ -2177,7 +2247,8 @@ declare namespace Xrm {
          * @see {@link Attribute}
          * @deprecated Use {@link Xrm.Attributes.EnumAttribute} instead.
          */
-        interface EnumAttribute extends Attributes.EnumAttribute<number | boolean> {}
+        interface EnumAttribute
+            extends Attributes.EnumAttribute<number | boolean> {}
 
         /**
          * Interface for a Boolean attribute.
@@ -2223,13 +2294,15 @@ declare namespace Xrm {
          * Interface for process stage change event arguments.
          * @deprecated Use {@link Xrm.Events.StageChangeEventArguments} instead.
          */
-        interface StageChangeEventArguments extends Events.StageChangeEventArguments {}
+        interface StageChangeEventArguments
+            extends Events.StageChangeEventArguments {}
 
         /**
          * Interface for process stage selected event arguments.
          * @deprecated Use {@link Xrm.Events.StageSelectedEventArguments} instead.
          */
-        interface StageSelectedEventArguments extends Events.StageSelectedEventArguments {}
+        interface StageSelectedEventArguments
+            extends Events.StageSelectedEventArguments {}
 
         /**
          * Interface for Xrm.Page.ui controls.
@@ -2365,7 +2438,8 @@ declare namespace Xrm {
              * * StatusCodeName
              * @deprecated Use {@link Xrm.ProcessFlow.GetProcessInstancesDelegate} instead.
              */
-            type GetProcessInstancesDelegate = ProcessFlow.GetProcessInstancesDelegate;
+            type GetProcessInstancesDelegate =
+                ProcessFlow.GetProcessInstancesDelegate;
 
             /**
              * Called when method to set active process is complete
@@ -2375,7 +2449,8 @@ declare namespace Xrm {
              * * invalid        (The processInstanceId isn’t valid or the process isn’t enabled.)
              * @deprecated Use {@link Xrm.ProcessFlow.SetProcessInstanceDelegate} instead.
              */
-            type SetProcessInstanceDelegate = ProcessFlow.SetProcessInstanceDelegate;
+            type SetProcessInstanceDelegate =
+                ProcessFlow.SetProcessInstanceDelegate;
 
             /**
              * Called when process change methods have completed.
@@ -2399,7 +2474,8 @@ declare namespace Xrm {
              * * finished
              * @deprecated Use {@link Xrm.ProcessFlow.ProcessSetStatusDelegate} instead.
              */
-            type ProcessSetStatusDelegate = ProcessFlow.ProcessSetStatusDelegate;
+            type ProcessSetStatusDelegate =
+                ProcessFlow.ProcessSetStatusDelegate;
 
             /**
              * Represents a key-value pair, where the key is the Process Flow's ID, and the value is the name thereof.
@@ -2563,7 +2639,13 @@ declare namespace Xrm {
          * String attribute formats for Attributes.Attribute.getFormat(), used by {@link Attributes.StringAttribute StringAttribute}.
          * @see {@link XrmEnum.StringAttributeFormat}
          */
-        type StringAttributeFormat = "email" | "phone" | "text" | "textarea" | "tickersymbol" | "url";
+        type StringAttributeFormat =
+            | "email"
+            | "phone"
+            | "text"
+            | "textarea"
+            | "tickersymbol"
+            | "url";
 
         /**
          * Attribute types for {@link Attributes.Attribute.setDisplayState()}.
@@ -2816,7 +2898,8 @@ declare namespace Xrm {
          * Common interface for enumeration attributes (MultiOptionSet, OptionSet and Boolean).
          * @see {@link Attribute}
          */
-        interface EnumAttribute<T extends number[] | number | boolean> extends Attribute<T> {
+        interface EnumAttribute<T extends number[] | number | boolean>
+            extends Attribute<T> {
             /**
              * Gets the initial value of the attribute.
              * @returns The initial value.
@@ -2869,7 +2952,8 @@ declare namespace Xrm {
          * Interface an OptionSet attribute.
          * @see {@link EnumAttribute}
          */
-        interface OptionSetAttribute<T extends number = number> extends EnumAttribute<T> {
+        interface OptionSetAttribute<T extends number = number>
+            extends EnumAttribute<T> {
             /**
              * Gets the attribute format.
              * @returns The format of the attribute.
@@ -2930,7 +3014,8 @@ declare namespace Xrm {
          * Interface an OptionSet attribute.
          * @see {@link EnumAttribute}
          */
-        interface MultiSelectOptionSetAttribute extends EnumAttribute<number[]> {
+        interface MultiSelectOptionSetAttribute
+            extends EnumAttribute<number[]> {
             /**
              * Gets the attribute format.
              * @returns The format of the attribute.
@@ -3098,7 +3183,9 @@ declare namespace Xrm {
         /**
          * Base interface for standard UI elements.
          */
-        interface UiStandardElement extends UiCanGetVisibleElement, UiLabelElement {
+        interface UiStandardElement
+            extends UiCanGetVisibleElement,
+                UiLabelElement {
             /**
              * Sets the visibility state.
              * @param visible true to show, false to hide.
@@ -3298,8 +3385,11 @@ declare namespace Xrm {
          * @see {@link Control}
          */
         interface StandardControl
-            extends Control, UiStandardElement, UiFocusable, UiCanGetDisabledElement, UiCanSetDisabledElement
-        {
+            extends Control,
+                UiStandardElement,
+                UiFocusable,
+                UiCanGetDisabledElement,
+                UiCanSetDisabledElement {
             /**
              * Clears the notification identified by uniqueId.
              * @param uniqueId (Optional) Unique identifier.
@@ -3885,19 +3975,25 @@ declare namespace Xrm {
              * Adds an event handler to the PostSearch event.
              * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/addonpostsearch External Link: addOnPostSearch (Client API reference)}
              */
-            addOnPostSearch(handler: Events.KbSearchControl.PostSearchEventHandler): void;
+            addOnPostSearch(
+                handler: Events.KbSearchControl.PostSearchEventHandler,
+            ): void;
 
             /**
              * Adds an event handler to the OnResultOpened event.
              * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/addonresultopened External Link: addOnResultOpened (Client API reference)}
              */
-            addOnResultOpened(handler: Events.KbSearchControl.ResultOpenedEventHandler): void;
+            addOnResultOpened(
+                handler: Events.KbSearchControl.ResultOpenedEventHandler,
+            ): void;
 
             /**
              * Adds an event handler to the OnSelection event.
              * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/addonselection External Link: addOnSelection (Client API reference)}
              */
-            addOnSelection(handler: Events.KbSearchControl.SelectionEventHandler): void;
+            addOnSelection(
+                handler: Events.KbSearchControl.SelectionEventHandler,
+            ): void;
 
             /**
              * Gets the text used as the search criteria for the knowledge base management control.
@@ -3925,28 +4021,37 @@ declare namespace Xrm {
              * @returns Status of opening the specified search result. Returns 1 if successful; 0 if unsuccessful. The method will return -1 if the specified resultNumber value is not present, or if the specified mode value is invalid.
              * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/opensearchresult External Link: openSearchResult (Client API reference)}
              */
-            openSearchResult(resultNumber: number, mode?: XrmEnum.OpenSearchResultMode): boolean;
+            openSearchResult(
+                resultNumber: number,
+                mode?: XrmEnum.OpenSearchResultMode,
+            ): boolean;
 
             /**
              * Removes an event handler from the PostSearch event.
              * @param handler The function to remove from the PostSearch event.
              * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/removeonpostsearch External Link: removeOnPostSearch (Client API reference)}
              */
-            removeOnPostSearch(handler: Events.KbSearchControl.PostSearchEventHandler): void;
+            removeOnPostSearch(
+                handler: Events.KbSearchControl.PostSearchEventHandler,
+            ): void;
 
             /**
              * Removes an event handler from the OnResultOpened event.
              * @param handler The function to remove from the OnResultOpened event.
              * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/removeonresultopened External Link: removeOnResultOpened (Client API reference)}
              */
-            removeOnResultOpened(handler: Events.KbSearchControl.ResultOpenedEventHandler): void;
+            removeOnResultOpened(
+                handler: Events.KbSearchControl.ResultOpenedEventHandler,
+            ): void;
 
             /**
              * Removes an event handler from the OnResultSelection event.
              * @param handler The function to remove from the OnSelection event.
              * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/controls/removeonselection External Link: removeOnSelection (Client API reference)}
              */
-            removeOnSelection(handler: Events.KbSearchControl.SelectionEventHandler): void;
+            removeOnSelection(
+                handler: Events.KbSearchControl.SelectionEventHandler,
+            ): void;
 
             /**
              * Sets the text used as the search criteria for the knowledge base search control.
@@ -4053,15 +4158,13 @@ declare namespace Xrm {
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/formcontext-ui-quickforms External Link: formContext.ui.quickForms (Client API reference)}
          */
         interface QuickFormControl
-            extends
-                Control,
+            extends Control,
                 UiLabelElement,
                 UiFocusable,
                 UiCanGetDisabledElement,
                 UiCanSetDisabledElement,
                 UiCanGetVisibleElement,
-                UiCanSetVisibleElement
-        {
+                UiCanSetVisibleElement {
             /**
              * Gets the constituent controls in a quick view control.
              * @returns An array of controls.
@@ -4354,7 +4457,9 @@ declare namespace Xrm {
             actions: Array<() => void>;
         }
 
-        interface ProcessControl extends UiCanGetVisibleElement, UiCanSetVisibleElement {
+        interface ProcessControl
+            extends UiCanGetVisibleElement,
+                UiCanSetVisibleElement {
             /**
              * Sets display state of the process flow control.
              * @param displayState Display state of the process flow control, as either "expanded" or "collapsed"
@@ -4372,7 +4477,11 @@ declare namespace Xrm {
              * @param parentStage ID of the parent stage.
              * @param nextStage ID of the next stage.
              */
-            reflow(updateUI: boolean, parentStage: string, nextStage: string): void;
+            reflow(
+                updateUI: boolean,
+                parentStage: string,
+                nextStage: string,
+            ): void;
         }
 
         /**
@@ -4482,7 +4591,9 @@ declare namespace Xrm {
          * Adds a handler to be called when the record is saved.
          * @param handler The handler.
          */
-        addOnSave(handler: Events.SaveEventHandler | Events.SaveEventHandlerAsync): void;
+        addOnSave(
+            handler: Events.SaveEventHandler | Events.SaveEventHandlerAsync,
+        ): void;
 
         /**
          * Gets an serialized-XML string representing data that will be passed to the server upon saving the record.
@@ -4541,7 +4652,9 @@ declare namespace Xrm {
          * Removes the handler from the "on save" event.
          * @param handler The handler.
          */
-        removeOnSave(handler: Events.SaveEventHandler | Events.SaveEventHandlerAsync): void;
+        removeOnSave(
+            handler: Events.SaveEventHandler | Events.SaveEventHandlerAsync,
+        ): void;
 
         /**
          * Saves the record synchronously with the options to close the form or open a new form after the save is completed.
@@ -4699,20 +4812,28 @@ declare namespace Xrm {
              * @param processId The Id of the process to make the active process.
              * @param callbackFunction (Optional) a function to call when the operation is complete.
              */
-            setActiveProcess(processId: string, callbackFunction?: ProcessCallbackDelegate): void;
+            setActiveProcess(
+                processId: string,
+                callbackFunction?: ProcessCallbackDelegate,
+            ): void;
 
             /**
              * Returns all process instances for the entity record that the calling user has access to.
              * @param callbackFunction (Optional) a function to call when the operation is complete.
              */
-            getProcessInstances(callbackFunction?: GetProcessInstancesDelegate): void;
+            getProcessInstances(
+                callbackFunction?: GetProcessInstancesDelegate,
+            ): void;
 
             /**
              * Sets a process instance as the active instance
              * @param processInstanceId The Id of the process instance to make the active instance.
              * @param callbackFunction (Optional) a function to call when the operation is complete.
              */
-            setActiveProcessInstance(processInstanceId: string, callbackFunction?: SetProcessInstanceDelegate): void;
+            setActiveProcessInstance(
+                processInstanceId: string,
+                callbackFunction?: SetProcessInstanceDelegate,
+            ): void;
 
             /**
              * Returns a Stage object representing the active stage.
@@ -4725,7 +4846,10 @@ declare namespace Xrm {
              * @param stageId the Id of the stage to make the active stage.
              * @param callbackFunction (Optional) a function to call when the operation is complete.
              */
-            setActiveStage(stageId: string, callbackFunction?: ProcessCallbackDelegate): void;
+            setActiveStage(
+                stageId: string,
+                callbackFunction?: ProcessCallbackDelegate,
+            ): void;
 
             /**
              * Use this method to get a collection of stages currently in the active path with methods to interact with the
@@ -4750,7 +4874,9 @@ declare namespace Xrm {
              *                         list of enabled processes is the same ones a user can see in the UI if they
              *                         want to change the process manually.
              */
-            getEnabledProcesses(callbackFunction: (enabledProcesses: ProcessDictionary) => void): void;
+            getEnabledProcesses(
+                callbackFunction: (enabledProcesses: ProcessDictionary) => void,
+            ): void;
 
             /**
              * Use this method to get the currently selected stage.
@@ -4768,7 +4894,9 @@ declare namespace Xrm {
              *                anonymous function if you may later want to remove the
              *                event handler.
              */
-            addOnPreProcessStatusChange(handler: Events.ProcessStatusChangeHandler): void;
+            addOnPreProcessStatusChange(
+                handler: Events.ProcessStatusChangeHandler,
+            ): void;
 
             /**
              * Use this to add a function as an event handler for the OnPreStageChange event so that it will be called before the
@@ -4792,7 +4920,9 @@ declare namespace Xrm {
              *                anonymous function if you may later want to remove the
              *                event handler.
              */
-            addOnProcessStatusChange(handler: Events.ProcessStatusChangeHandler): void;
+            addOnProcessStatusChange(
+                handler: Events.ProcessStatusChangeHandler,
+            ): void;
 
             /**
              * Use this to add a function as an event handler for the OnStageChange event so that it will be called when the
@@ -4823,21 +4953,27 @@ declare namespace Xrm {
              * @param handler If an anonymous function is set using the addOnPreProcessStatusChange method it
              *                cannot be removed using this method.
              */
-            removeOnPreProcessStatusChange(handler: Events.ProcessStatusChangeHandler): void;
+            removeOnPreProcessStatusChange(
+                handler: Events.ProcessStatusChangeHandler,
+            ): void;
 
             /**
              * Use this to remove a function as an event handler for the OnPreStageChange event.
              * @param handler If an anonymous function is set using the addOnPreStageChange method it
              *                cannot be removed using this method.
              */
-            removeOnPreStageChange(handler: Events.StageChangeEventHandler): void;
+            removeOnPreStageChange(
+                handler: Events.StageChangeEventHandler,
+            ): void;
 
             /**
              * Use this to remove a function as an event handler for the OnProcessStatusChange event.
              * @param handler If an anonymous function is set using the addOnProcessStatusChange method it
              *                cannot be removed using this method.
              */
-            removeOnProcessStatusChange(handler: Events.ProcessStatusChangeHandler): void;
+            removeOnProcessStatusChange(
+                handler: Events.ProcessStatusChangeHandler,
+            ): void;
 
             /**
              * Use this to remove a function as an event handler for the OnStageChange event.
@@ -4851,7 +4987,9 @@ declare namespace Xrm {
              * @param handler If an anonymous function is set using the addOnStageChange method it
              *                cannot be removed using this method.
              */
-            removeOnStageSelected(handler: Events.StageSelectedEventHandler): void;
+            removeOnStageSelected(
+                handler: Events.StageSelectedEventHandler,
+            ): void;
 
             /**
              * Progresses to the next stage.
@@ -4888,7 +5026,10 @@ declare namespace Xrm {
              * @param status The new status for the process
              * @param callbackFunction (Optional) a function to call when the operation is complete.
              */
-            setStatus(status: ProcessStatus, callbackFunction?: ProcessSetStatusDelegate): void;
+            setStatus(
+                status: ProcessStatus,
+                callbackFunction?: ProcessSetStatusDelegate,
+            ): void;
         }
 
         /**
@@ -5594,12 +5735,17 @@ declare namespace Xrm {
          * Displays an error dialog.
          * @param errorOptions An object to specify the options for error dialog.
          */
-        openErrorDialog(errorOptions: Navigation.ErrorDialogOptions): Async.PromiseLike<any>;
+        openErrorDialog(
+            errorOptions: Navigation.ErrorDialogOptions,
+        ): Async.PromiseLike<any>;
 
         /**
          * Opens a file.
          */
-        openFile(file: Navigation.FileDetails, openFileOptions?: XrmEnum.OpenFileOptions): void;
+        openFile(
+            file: Navigation.FileDetails,
+            openFileOptions?: XrmEnum.OpenFileOptions,
+        ): void;
 
         /**
          * Opens an entity form or a quick create form.
@@ -5614,7 +5760,10 @@ declare namespace Xrm {
          * @param url URL to open.
          * @param openUrlOptions Options to open the URL
          */
-        openUrl(url: string, openUrlOptions?: Navigation.DialogSizeOptions): void;
+        openUrl(
+            url: string,
+            openUrlOptions?: Navigation.DialogSizeOptions,
+        ): void;
 
         /**
          * Opens an HTML web resource.
@@ -5858,7 +6007,9 @@ declare namespace Xrm {
          * Invokes the device camera to capture an image.
          * @returns On success, returns Base64 encoded file
          */
-        captureImage(imageOptions?: Device.CaptureImageOptions): Async.PromiseLike<Device.CaptureFileResponse>;
+        captureImage(
+            imageOptions?: Device.CaptureImageOptions,
+        ): Async.PromiseLike<Device.CaptureFileResponse>;
 
         /**
          * Invokes the device camera to capture video.
@@ -5882,7 +6033,9 @@ declare namespace Xrm {
          * Opens a dialog box to select files from your computer (web client) or mobile device (mobile clients).
          * @returns On success, returns an array of files
          */
-        pickFile(pickFileOptions?: Device.PickFileOptions): Async.PromiseLike<Device.CaptureFileResponse[]>;
+        pickFile(
+            pickFileOptions?: Device.PickFileOptions,
+        ): Async.PromiseLike<Device.CaptureFileResponse[]>;
     }
 
     /**
@@ -6011,7 +6164,10 @@ declare namespace Xrm {
          * @returns On success, returns a promise object containing the attributes specified earlier in the description of the successCallback parameter.
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/xrm-webapi/createrecord External Link: createRecord (Client API reference)}
          */
-        createRecord(entityLogicalName: string, record: any): Async.PromiseLike<CreateResponse>;
+        createRecord(
+            entityLogicalName: string,
+            record: any,
+        ): Async.PromiseLike<CreateResponse>;
 
         /**
          * Deletes an entity record.
@@ -6020,7 +6176,10 @@ declare namespace Xrm {
          * @returns On success, returns a promise object containing the attributes specified earlier in the description of the successCallback parameter.
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/xrm-webapi/deleterecord External Link: deleteRecord (Client API reference)}
          */
-        deleteRecord(entityLogicalName: string, id: string): Async.PromiseLike<string>;
+        deleteRecord(
+            entityLogicalName: string,
+            id: string,
+        ): Async.PromiseLike<string>;
 
         /**
          * Retrieves an entity record.
@@ -6041,7 +6200,11 @@ declare namespace Xrm {
          * @returns On success, returns a promise containing a JSON object with the retrieved attributes and their values.
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/xrm-webapi/retrieverecord External Link: retrieveRecord (Client API reference)}
          */
-        retrieveRecord(entityLogicalName: string, id: string, options?: string): Async.PromiseLike<any>;
+        retrieveRecord(
+            entityLogicalName: string,
+            id: string,
+            options?: string,
+        ): Async.PromiseLike<any>;
 
         /**
          * Retrieves a collection of entity records.
@@ -6073,7 +6236,11 @@ declare namespace Xrm {
          * @returns On success, returns a promise object containing the attributes specified earlier in the description of the successCallback parameter.
          * @see {@link https://learn.microsoft.com/en-us/power-apps/developer/model-driven-apps/clientapi/reference/xrm-webapi/updaterecord External Link: updateRecord (Client API reference)}
          */
-        updateRecord(entityLogicalName: string, id: string, data: any): Async.PromiseLike<any>;
+        updateRecord(
+            entityLogicalName: string,
+            id: string,
+            data: any,
+        ): Async.PromiseLike<any>;
     }
 
     /**
@@ -6203,7 +6370,8 @@ declare namespace Xrm {
         /**
          * Defines methods single side pane.
          */
-        interface PaneObject extends Omit<PaneOptions, "isSelected" | "hideHeader"> {
+        interface PaneObject
+            extends Omit<PaneOptions, "isSelected" | "hideHeader"> {
             /**
              * Closes the side pane and removes it from the side bar.
              */
@@ -6239,7 +6407,9 @@ declare namespace Xrm {
          * @param notification The notification to add.
          * @returns On success, returns a promise object containing a GUID value to uniquely identify the notification as described earlier in the description of the successCallback parameter.
          */
-        addGlobalNotification(notification: App.Notification): Async.PromiseLike<string>;
+        addGlobalNotification(
+            notification: App.Notification,
+        ): Async.PromiseLike<string>;
 
         /**
          * Clears a notification in the app.
@@ -6262,7 +6432,9 @@ declare namespace Xrm {
              * Provides all the information to create side panes.
              * @param paneOptions The ID to use to clear a specific notification that was set using addGlobalNotification.
              */
-            createPane(paneOptions?: App.PaneOptions): Async.PromiseLike<App.PaneObject>;
+            createPane(
+                paneOptions?: App.PaneOptions,
+            ): Async.PromiseLike<App.PaneObject>;
 
             /**
              * @returns a collection containing all active panes.

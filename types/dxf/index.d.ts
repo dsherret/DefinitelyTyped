@@ -15,7 +15,16 @@ import toSVG from "./toSVG";
 import colors from "./util/colors";
 import * as Utils from "./Utils";
 
-export { colors, config, denormalise, groupEntitiesByLayer, Helper, parseString, toPolylines, toSVG };
+export {
+    colors,
+    config,
+    denormalise,
+    groupEntitiesByLayer,
+    Helper,
+    parseString,
+    toPolylines,
+    toSVG,
+};
 
 export { Blocks, Entities, Header, Information, Layers, Styles, Tables, Utils };
 

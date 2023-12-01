@@ -1,12 +1,6 @@
-declare function binarySearch(
-    arr: readonly string[],
-    val: string,
-): number;
+declare function binarySearch(arr: readonly string[], val: string): number;
 
-declare function binarySearch(
-    arr: readonly number[],
-    val: number,
-): number;
+declare function binarySearch(arr: readonly number[], val: number): number;
 
 declare function binarySearch<T>(
     arr: readonly T[],

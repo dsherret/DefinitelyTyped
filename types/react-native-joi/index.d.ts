@@ -12,18 +12,21 @@ export type Types =
     | "object"
     | "string";
 
-export type LanguageOptions = string | boolean | null | {
-    [key: string]: LanguageOptions;
-};
+export type LanguageOptions =
+    | string
+    | boolean
+    | null
+    | {
+          [key: string]: LanguageOptions;
+      };
 
-export type LanguageRootOptions =
-    & {
-        root?: string | undefined;
-        key?: string | undefined;
-        messages?: { wrapArrays?: boolean | undefined } | undefined;
-    }
-    & Partial<Record<Types, LanguageOptions>>
-    & { [key: string]: LanguageOptions };
+export type LanguageRootOptions = {
+    root?: string | undefined;
+    key?: string | undefined;
+    messages?: { wrapArrays?: boolean | undefined } | undefined;
+} & Partial<Record<Types, LanguageOptions>> & {
+        [key: string]: LanguageOptions;
+    };
 
 export interface ValidationOptions {
     /**
@@ -48,7 +51,10 @@ export interface ValidationOptions {
      * - when an object:
      *      - objects - set to true to remove unknown keys from objects
      */
-    stripUnknown?: boolean | { arrays?: boolean | undefined; objects?: boolean | undefined } | undefined;
+    stripUnknown?:
+        | boolean
+        | { arrays?: boolean | undefined; objects?: boolean | undefined }
+        | undefined;
     /**
      * overrides individual error messages. Defaults to no override ({}).
      */
@@ -237,12 +243,20 @@ export type ValidationErrorFunction = (
     errors: ValidationErrorItem[],
 ) => string | ValidationErrorItem | ValidationErrorItem[] | Error;
 
-export interface ValidationResult<T> extends Pick<Promise<T>, "then" | "catch"> {
+export interface ValidationResult<T>
+    extends Pick<Promise<T>, "then" | "catch"> {
     error: ValidationError;
     value: T;
 }
 
-export type SchemaLike = string | number | boolean | object | null | Schema | SchemaMap;
+export type SchemaLike =
+    | string
+    | number
+    | boolean
+    | object
+    | null
+    | Schema
+    | SchemaMap;
 
 export interface SchemaMap {
     [key: string]: SchemaLike | SchemaLike[];
@@ -268,8 +282,15 @@ export interface AnySchema extends JoiObject {
      * Validates a value using the schema and options.
      */
     validate<T>(value: T, options?: ValidationOptions): ValidationResult<T>;
-    validate<T, R>(value: T, callback: (err: ValidationError, value: T) => R): R;
-    validate<T, R>(value: T, options: ValidationOptions, callback: (err: ValidationError, value: T) => R): R;
+    validate<T, R>(
+        value: T,
+        callback: (err: ValidationError, value: T) => R,
+    ): R;
+    validate<T, R>(
+        value: T,
+        options: ValidationOptions,
+        callback: (err: ValidationError, value: T) => R,
+    ): R;
 
     /**
      * Whitelists a value
@@ -695,7 +716,11 @@ export interface StringSchema extends AnySchema {
 
 export interface SymbolSchema extends AnySchema {
     // TODO: support number and symbol index
-    map(iterable: Iterable<[string | number | boolean | symbol, symbol]> | { [key: string]: symbol }): this;
+    map(
+        iterable:
+            | Iterable<[string | number | boolean | symbol, symbol]>
+            | { [key: string]: symbol },
+    ): this;
 }
 
 export interface ArraySchema extends AnySchema {
@@ -1016,8 +1041,7 @@ export interface AlternativesSchema extends AnySchema {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface LazySchema extends AnySchema {
-}
+export interface LazySchema extends AnySchema {}
 
 export interface Reference extends JoiObject {
     (value: any, validationOptions: ValidationOptions): any;
@@ -1036,7 +1060,12 @@ export type ExtensionBoundSchema = Schema & {
      * @param state - should the context passed into the `validate` function in a custom rule
      * @param options - should the context passed into the `validate` function in a custom rule
      */
-    createError(type: string, context: Context, state: State, options: ValidationOptions): Err;
+    createError(
+        type: string,
+        context: Context,
+        state: State,
+        options: ValidationOptions,
+    ): Err;
 };
 
 export interface Rules<P extends object = any> {
@@ -1044,7 +1073,13 @@ export interface Rules<P extends object = any> {
     params?: ObjectSchema | { [key in keyof P]: SchemaLike } | undefined;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     setup?(this: ExtensionBoundSchema, params: P): Schema | void;
-    validate?(this: ExtensionBoundSchema, params: P, value: any, state: State, options: ValidationOptions): any;
+    validate?(
+        this: ExtensionBoundSchema,
+        params: P,
+        value: any,
+        state: State,
+        options: ValidationOptions,
+    ): any;
     description?: string | ((params: P) => string) | undefined;
 }
 
@@ -1052,8 +1087,18 @@ export interface Extension {
     name: string;
     base?: Schema | undefined;
     language?: LanguageOptions | undefined;
-    coerce?(this: ExtensionBoundSchema, value: any, state: State, options: ValidationOptions): any;
-    pre?(this: ExtensionBoundSchema, value: any, state: State, options: ValidationOptions): any;
+    coerce?(
+        this: ExtensionBoundSchema,
+        value: any,
+        state: State,
+        options: ValidationOptions,
+    ): any;
+    pre?(
+        this: ExtensionBoundSchema,
+        value: any,
+        state: State,
+        options: ValidationOptions,
+    ): any;
     describe?(this: Schema, description: Description): Description;
     rules?: Rules[] | undefined;
 }
@@ -1150,8 +1195,16 @@ export function lazy(cb: () => Schema, options?: LazyOptions): LazySchema;
 /**
  * Validates a value using the given schema and options.
  */
-export function validate<T>(value: T, schema: SchemaLike, options?: ValidationOptions): ValidationResult<T>;
-export function validate<T, R>(value: T, schema: SchemaLike, callback: (err: ValidationError, value: T) => R): R;
+export function validate<T>(
+    value: T,
+    schema: SchemaLike,
+    options?: ValidationOptions,
+): ValidationResult<T>;
+export function validate<T, R>(
+    value: T,
+    schema: SchemaLike,
+    callback: (err: ValidationError, value: T) => R,
+): R;
 export function validate<T, R>(
     value: T,
     schema: SchemaLike,
@@ -1171,7 +1224,11 @@ export function compile(schema: SchemaLike): Schema;
  * @param schema - the schema object.
  * @param message - optional message string prefix added in front of the error message. may also be an Error object.
  */
-export function assert(value: any, schema: SchemaLike, message?: string | Error): void;
+export function assert(
+    value: any,
+    schema: SchemaLike,
+    message?: string | Error,
+): void;
 
 /**
  * Validates a value against a schema, returns valid object, and throws if validation fails where:
@@ -1180,7 +1237,11 @@ export function assert(value: any, schema: SchemaLike, message?: string | Error)
  * @param schema - the schema object.
  * @param message - optional message string prefix added in front of the error message. may also be an Error object.
  */
-export function attempt<T>(value: T, schema: SchemaLike, message?: string | Error): T;
+export function attempt<T>(
+    value: T,
+    schema: SchemaLike,
+    message?: string | Error,
+): T;
 
 /**
  * Generates a reference to the value of the named key.
@@ -1201,7 +1262,10 @@ export function reach(schema: ObjectSchema, path: string | string[]): Schema;
 /**
  * Creates a new Joi instance customized with the extension(s) you provide included.
  */
-export function extend(extension: Extension | Extension[], ...extensions: Array<Extension | Extension[]>): any;
+export function extend(
+    extension: Extension | Extension[],
+    ...extensions: Array<Extension | Extension[]>
+): any;
 
 // --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
@@ -1313,8 +1377,14 @@ export function concat<T>(schema: T): T;
 /**
  * Converts the type into an alternatives type where the conditions are merged into the type definition where:
  */
-export function when(ref: string | Reference, options: WhenOptions): AlternativesSchema;
-export function when(ref: Schema, options: WhenSchemaOptions): AlternativesSchema;
+export function when(
+    ref: string | Reference,
+    options: WhenOptions,
+): AlternativesSchema;
+export function when(
+    ref: Schema,
+    options: WhenSchemaOptions,
+): AlternativesSchema;
 
 /**
  * Overrides the key name in error messages.

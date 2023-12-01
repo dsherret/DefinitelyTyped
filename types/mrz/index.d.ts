@@ -8,7 +8,12 @@ export interface Result {
      * * SWISS_DRIVING_LICENSE
      * * FRENCH_NATIONAL_ID
      */
-    format: "TD1" | "TD2" | "TD3" | "SWISS_DRIVING_LICENSE" | "FRENCH_NATIONAL_ID";
+    format:
+        | "TD1"
+        | "TD2"
+        | "TD3"
+        | "SWISS_DRIVING_LICENSE"
+        | "FRENCH_NATIONAL_ID";
     /** `true` if all fields are valid. `false` otherwise. */
     valid: boolean;
     /**

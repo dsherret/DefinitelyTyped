@@ -64,11 +64,20 @@ export interface DecoratorOptions<T> extends Options<T> {
     forwardRef?: boolean | undefined;
 }
 
-export type TrackingInfo<T, P, S> = T | ((props: P, state: S, args: any[any], [value, err]: [any, any]) => T | Falsy);
+export type TrackingInfo<T, P, S> =
+    | T
+    | ((
+          props: P,
+          state: S,
+          args: any[any],
+          [value, err]: [any, any],
+      ) => T | Falsy);
 
 // Duplicated from ES6 lib to remove the `void` typing, otherwise `track` can’t be used as a HOC function that passes
 // through a JSX component that be used without casting.
-type ClassDecorator = <TFunction extends Function>(target: TFunction) => TFunction;
+type ClassDecorator = <TFunction extends Function>(
+    target: TFunction,
+) => TFunction;
 type MethodDecorator = <T>(
     target: object,
     propertyKey: string | symbol,

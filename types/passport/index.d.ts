@@ -28,7 +28,11 @@ declare global {
              *     });
              */
             login(user: User, done: (err: any) => void): void;
-            login(user: User, options: passport.LogInOptions, done: (err: any) => void): void;
+            login(
+                user: User,
+                options: passport.LogInOptions,
+                done: (err: any) => void,
+            ): void;
             /**
              * Initiate a login session for `user`.
              *
@@ -45,17 +49,27 @@ declare global {
              *     });
              */
             logIn(user: User, done: (err: any) => void): void;
-            logIn(user: User, options: passport.LogInOptions, done: (err: any) => void): void;
+            logIn(
+                user: User,
+                options: passport.LogInOptions,
+                done: (err: any) => void,
+            ): void;
 
             /**
              * Terminate an existing login session.
              */
-            logout(options: passport.LogOutOptions, done: (err: any) => void): void;
+            logout(
+                options: passport.LogOutOptions,
+                done: (err: any) => void,
+            ): void;
             logout(done: (err: any) => void): void;
             /**
              * Terminate an existing login session.
              */
-            logOut(options: passport.LogOutOptions, done: (err: any) => void): void;
+            logOut(
+                options: passport.LogOutOptions,
+                done: (err: any) => void,
+            ): void;
             logOut(done: (err: any) => void): void;
 
             /**
@@ -82,7 +96,11 @@ import express = require("express");
 
 declare namespace passport {
     type DoneCallback = (err: any, user?: Express.User | false | null) => void;
-    type DeserializeUserFunction = (serializedUser: unknown, req: express.Request, done: DoneCallback) => void;
+    type DeserializeUserFunction = (
+        serializedUser: unknown,
+        req: express.Request,
+        done: DoneCallback,
+    ) => void;
     /**
      * An optional callback supplied to allow the application to override
      * the default manner in which authentication attempts are handled.  The
@@ -450,7 +468,10 @@ declare namespace passport {
          * @example
          * app.get('/oauth/callback/twitter', passport.authorize('twitter'));
          */
-        authorize(strategy: string | string[], callback?: AuthorizeCallback | ((...args: any[]) => any)): AuthorizeRet;
+        authorize(
+            strategy: string | string[],
+            callback?: AuthorizeCallback | ((...args: any[]) => any),
+        ): AuthorizeRet;
         authorize(
             strategy: string | string[],
             options: AuthorizeOptions,
@@ -465,7 +486,12 @@ declare namespace passport {
          *       done(null, user.id);
          *     });
          */
-        serializeUser<TID>(fn: (user: Express.User, done: (err: any, id?: TID) => void) => void): void;
+        serializeUser<TID>(
+            fn: (
+                user: Express.User,
+                done: (err: any, id?: TID) => void,
+            ) => void,
+        ): void;
         /**
          * Registers a function used to serialize user objects into the session.
          *
@@ -476,16 +502,26 @@ declare namespace passport {
          *     });
          */
         serializeUser<TID, TR extends IncomingMessage = express.Request>(
-            fn: (req: TR, user: Express.User, done: (err: any, id?: TID) => void) => void,
+            fn: (
+                req: TR,
+                user: Express.User,
+                done: (err: any, id?: TID) => void,
+            ) => void,
         ): void;
         /**
          * Private implementation that traverses the chain of serializers,
          * attempting to serialize a user.
          */
-        serializeUser<User extends Express.User = Express.User, Request extends IncomingMessage = express.Request>(
+        serializeUser<
+            User extends Express.User = Express.User,
+            Request extends IncomingMessage = express.Request,
+        >(
             user: User,
             req: Request,
-            done: (err: any, serializedUser?: number | NonNullable<unknown>) => any,
+            done: (
+                err: any,
+                serializedUser?: number | NonNullable<unknown>,
+            ) => any,
         ): void;
         /**
          * Private implementation that traverses the chain of serializers,
@@ -495,7 +531,10 @@ declare namespace passport {
          */
         serializeUser<User extends Express.User = Express.User>(
             user: User,
-            done: (err: any, serializedUser?: number | NonNullable<unknown>) => any,
+            done: (
+                err: any,
+                serializedUser?: number | NonNullable<unknown>,
+            ) => any,
         ): void;
         /**
          * Registers a function used to deserialize user objects out of the session.
@@ -508,7 +547,12 @@ declare namespace passport {
          *       });
          *     });
          */
-        deserializeUser<TID>(fn: (id: TID, done: (err: any, user?: Express.User | false | null) => void) => void): void;
+        deserializeUser<TID>(
+            fn: (
+                id: TID,
+                done: (err: any, user?: Express.User | false | null) => void,
+            ) => void,
+        ): void;
         /**
          * Registers a function used to deserialize user objects out of the session.
          *
@@ -521,13 +565,20 @@ declare namespace passport {
          *     });
          */
         deserializeUser<TID, TR extends IncomingMessage = express.Request>(
-            fn: (req: TR, id: TID, done: (err: any, user?: Express.User | false | null) => void) => void,
+            fn: (
+                req: TR,
+                id: TID,
+                done: (err: any, user?: Express.User | false | null) => void,
+            ) => void,
         ): void;
         /**
          * Private implementation that traverses the chain of deserializers,
          * attempting to deserialize a user.
          */
-        deserializeUser<User extends Express.User = Express.User, Request extends IncomingMessage = express.Request>(
+        deserializeUser<
+            User extends Express.User = Express.User,
+            Request extends IncomingMessage = express.Request,
+        >(
             serializedUser: NonNullable<unknown>,
             req: Request,
             done: (err: any, user?: User | false) => any,
@@ -578,7 +629,9 @@ declare namespace passport {
          *       });
          *     });
          */
-        transformAuthInfo(fn: (info: any, done: (err: any, info: any) => void) => void): void;
+        transformAuthInfo(
+            fn: (info: any, done: (err: any, info: any) => void) => void,
+        ): void;
         /**
          * Private implementation that traverses the chain of transformers,
          * attempting to transform auth info.
@@ -586,10 +639,16 @@ declare namespace passport {
          * If no transformers are registered (or they all pass),
          * the default behavior is to use the un-transformed info as-is.
          */
-        transformAuthInfo<InitialInfo = unknown, Request extends IncomingMessage = express.Request>(
+        transformAuthInfo<
+            InitialInfo = unknown,
+            Request extends IncomingMessage = express.Request,
+        >(
             info: unknown,
             req: Request,
-            done: (err: any, transformedAuthInfo?: InitialInfo | NonNullable<unknown>) => any,
+            done: (
+                err: any,
+                transformedAuthInfo?: InitialInfo | NonNullable<unknown>,
+            ) => any,
         ): void;
         /**
          * Private implementation that traverses the chain of transformers,
@@ -602,7 +661,10 @@ declare namespace passport {
          */
         transformAuthInfo<InitialInfo = unknown>(
             info: unknown,
-            done: (err: any, transformedAuthInfo?: InitialInfo | NonNullable<unknown>) => any,
+            done: (
+                err: any,
+                transformedAuthInfo?: InitialInfo | NonNullable<unknown>,
+            ) => any,
         ): void;
     }
 
@@ -610,7 +672,7 @@ declare namespace passport {
         /**
          * Create a new `Authenticator` object.
          */
-        Authenticator: { new(): Authenticator };
+        Authenticator: { new (): Authenticator };
         /**
          * Create a new `Authenticator` object.
          */
@@ -618,7 +680,7 @@ declare namespace passport {
         /**
          * Creates an instance of `Strategy`.
          */
-        Strategy: { new(): Strategy & StrategyCreatedStatic };
+        Strategy: { new (): Strategy & StrategyCreatedStatic };
         strategies: {
             /**
              *  Create a new `SessionStrategy` object.
@@ -654,8 +716,11 @@ declare namespace passport {
              *          Default `'passport'`.
              */
             SessionStrategy: {
-                new(deserializeUser: DeserializeUserFunction): SessionStrategy;
-                new(options: SessionStrategyOptions, deserializeUser: DeserializeUserFunction): SessionStrategy;
+                new (deserializeUser: DeserializeUserFunction): SessionStrategy;
+                new (
+                    options: SessionStrategyOptions,
+                    deserializeUser: DeserializeUserFunction,
+                ): SessionStrategy;
             };
         };
     }
@@ -668,7 +733,11 @@ declare namespace passport {
          * This function must be overridden by subclasses.  In abstract form, it always
          * throws an exception.
          */
-        authenticate(this: StrategyCreated<this>, req: express.Request, options?: any): any;
+        authenticate(
+            this: StrategyCreated<this>,
+            req: express.Request,
+            options?: any,
+        ): any;
     }
 
     interface SessionStrategy extends Strategy {
@@ -706,7 +775,10 @@ declare namespace passport {
          * @example
          * passport.authenticate('session');
          */
-        authenticate(req: IncomingMessage, options?: Pick<AuthenticateOptions, "pauseStream">): void;
+        authenticate(
+            req: IncomingMessage,
+            options?: Pick<AuthenticateOptions, "pauseStream">,
+        ): void;
     }
 
     interface StrategyCreatedStatic {
@@ -727,7 +799,10 @@ declare namespace passport {
          *
          * Strategies should call this function to fail an authentication attempt.
          */
-        fail(challenge?: StrategyFailure | string | number, status?: number): void;
+        fail(
+            challenge?: StrategyFailure | string | number,
+            status?: number,
+        ): void;
         /**
          * Redirect to `url` with optional `status`, defaulting to 302.
          *
@@ -764,25 +839,29 @@ declare namespace passport {
         username?: string | undefined;
         name?:
             | {
-                familyName: string;
-                givenName: string;
-                middleName?: string | undefined;
-            }
+                  familyName: string;
+                  givenName: string;
+                  middleName?: string | undefined;
+              }
             | undefined;
         emails?:
             | Array<{
-                value: string;
-                type?: string | undefined;
-            }>
+                  value: string;
+                  type?: string | undefined;
+              }>
             | undefined;
         photos?:
             | Array<{
-                value: string;
-            }>
+                  value: string;
+              }>
             | undefined;
     }
 
-    interface Framework<InitializeRet = any, AuthenticateRet = any, AuthorizeRet = AuthenticateRet> {
+    interface Framework<
+        InitializeRet = any,
+        AuthenticateRet = any,
+        AuthorizeRet = AuthenticateRet,
+    > {
         /**
          * Passport initialization.
          *
@@ -822,7 +901,11 @@ declare namespace passport {
          *     });
          */
         initialize(
-            passport: Authenticator<InitializeRet, AuthenticateRet, AuthorizeRet>,
+            passport: Authenticator<
+                InitializeRet,
+                AuthenticateRet,
+                AuthorizeRet
+            >,
             options?: any,
         ): (...args: any[]) => InitializeRet;
         /**
@@ -881,7 +964,11 @@ declare namespace passport {
          *     passport.authenticate('twitter');
          */
         authenticate(
-            passport: Authenticator<InitializeRet, AuthenticateRet, AuthorizeRet>,
+            passport: Authenticator<
+                InitializeRet,
+                AuthenticateRet,
+                AuthorizeRet
+            >,
             name: string,
             options?: any,
             callback?: (...args: any[]) => any,
@@ -909,7 +996,11 @@ declare namespace passport {
          * app.get('/oauth/callback/twitter', passport.authorize('twitter'));
          */
         authorize?(
-            passport: Authenticator<InitializeRet, AuthenticateRet, AuthorizeRet>,
+            passport: Authenticator<
+                InitializeRet,
+                AuthenticateRet,
+                AuthorizeRet
+            >,
             name: string,
             options?: any,
             callback?: (...args: any[]) => any,

@@ -19,7 +19,10 @@ export function useNotification(): NotificationsContextType;
 
 export const NotificationsProvider: React.FC<{
     /** Render prop which passes down removeNotification function and notification payload */
-    renderNotification(args: { removeNotification: () => void; payload: NotificationPayload }): JSX.Element;
+    renderNotification(args: {
+        removeNotification: () => void;
+        payload: NotificationPayload;
+    }): JSX.Element;
     /** Fixed position where all notifications are displayed */
     position?: [string, string, string, string] | undefined;
     /** Duration of the show and hide animations in milliseconds */

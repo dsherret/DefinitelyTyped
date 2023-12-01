@@ -4,7 +4,13 @@ interface Select2QueryOptions {
     term?: string | undefined;
     page?: number | undefined;
     context?: any;
-    callback?: ((result: { results: any; more?: boolean | undefined; context?: any }) => void) | undefined;
+    callback?:
+        | ((result: {
+              results: any;
+              more?: boolean | undefined;
+              context?: any;
+          }) => void)
+        | undefined;
     element?: JQuery | undefined;
 }
 
@@ -47,28 +53,43 @@ interface Select2Options {
     closeOnSelect?: boolean | undefined;
     openOnEnter?: boolean | undefined;
     id?: ((object: any) => string) | undefined;
-    matcher?: ((term: string, text: string, option: any) => boolean) | undefined;
+    matcher?:
+        | ((term: string, text: string, option: any) => boolean)
+        | undefined;
     formatSelection?:
-        | ((object: any, container: JQuery, escapeMarkup: (markup: string) => string) => string)
+        | ((
+              object: any,
+              container: JQuery,
+              escapeMarkup: (markup: string) => string,
+          ) => string)
         | undefined;
     formatResult?:
-        | ((object: any, container: JQuery, query: any, escapeMarkup: (markup: string) => string) => string)
+        | ((
+              object: any,
+              container: JQuery,
+              query: any,
+              escapeMarkup: (markup: string) => string,
+          ) => string)
         | undefined;
     formatResultCssClass?: ((object: any) => string) | undefined;
     formatNoMatches?: ((term: string) => string) | undefined;
     formatSearching?: (() => string) | undefined;
-    formatInputTooShort?: ((term: string, minLength: number) => string) | undefined;
+    formatInputTooShort?:
+        | ((term: string, minLength: number) => string)
+        | undefined;
     formatSelectionTooBig?: ((maxSize: number) => string) | undefined;
     formatLoadMore?: ((pageNumber: number) => string) | undefined;
     createSearchChoice?: ((term: string, data: any) => any) | undefined;
-    initSelection?: ((element: JQuery, callback: (data: any) => void) => void) | undefined;
+    initSelection?:
+        | ((element: JQuery, callback: (data: any) => void) => void)
+        | undefined;
     tokenizer?:
         | ((
-            input: string,
-            selection: any[],
-            selectCallback: (token?: any) => void,
-            options: Select2Options,
-        ) => string | undefined | null)
+              input: string,
+              selection: any[],
+              selectCallback: (token?: any) => void,
+              options: Select2Options,
+          ) => string | undefined | null)
         | undefined;
     tokenSeparators?: string[] | undefined;
     query?: ((options: Select2QueryOptions) => void) | undefined;
@@ -80,7 +101,9 @@ interface Select2Options {
     dropdownCss?: any;
     dropdownCssClass?: any;
     escapeMarkup?: ((markup: string) => string) | undefined;
-    nextSearchTerm?: ((selectedObject: object, currentSearchTerm: string) => string) | undefined;
+    nextSearchTerm?:
+        | ((selectedObject: object, currentSearchTerm: string) => string)
+        | undefined;
 }
 
 interface Select2JQueryEventObject extends JQueryEventObject {
@@ -185,7 +208,11 @@ interface Select2Plugin {
 
 interface JQuery {
     select2: Select2Plugin;
-    off(events?: "change", selector?: any, handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
+    off(
+        events?: "change",
+        selector?: any,
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
 
     on(
         events: "change",
@@ -193,17 +220,57 @@ interface JQuery {
         data?: any,
         handler?: (eventObject: Select2JQueryEventObject) => any,
     ): JQuery;
-    on(events: "change", selector?: string, handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "change", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-opening", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-open", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-close", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-highlight", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-selecting", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-clearing", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-removing", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-removed", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-loaded", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-focus", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
-    on(events: "select2-blur", handler?: (eventObject: Select2JQueryEventObject) => any): JQuery;
+    on(
+        events: "change",
+        selector?: string,
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "change",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-opening",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-open",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-close",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-highlight",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-selecting",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-clearing",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-removing",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-removed",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-loaded",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-focus",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
+    on(
+        events: "select2-blur",
+        handler?: (eventObject: Select2JQueryEventObject) => any,
+    ): JQuery;
 }

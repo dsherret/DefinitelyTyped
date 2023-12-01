@@ -118,7 +118,10 @@ declare module "module" {
              * @param lineNumber The 1-indexed line number of the call site in the generated source
              * @param columnNumber The 1-indexed column number of the call site in the generated source
              */
-            findOrigin(lineNumber: number, columnNumber: number): SourceOrigin | {};
+            findOrigin(
+                lineNumber: number,
+                columnNumber: number,
+            ): SourceOrigin | {};
         }
         /** @deprecated Use `ImportAttributes` instead */
         interface ImportAssertions extends ImportAttributes {}
@@ -248,7 +251,10 @@ declare module "module" {
         type LoadHook = (
             url: string,
             context: LoadHookContext,
-            nextLoad: (url: string, context?: LoadHookContext) => LoadFnOutput | Promise<LoadFnOutput>,
+            nextLoad: (
+                url: string,
+                context?: LoadHookContext,
+            ) => LoadFnOutput | Promise<LoadFnOutput>,
         ) => LoadFnOutput | Promise<LoadFnOutput>;
     }
     interface RegisterOptions<Data> {
@@ -269,7 +275,10 @@ declare module "module" {
             parentURL?: string | URL,
             options?: RegisterOptions<Data>,
         ): void;
-        static register<Data = any>(specifier: string | URL, options?: RegisterOptions<Data>): void;
+        static register<Data = any>(
+            specifier: string | URL,
+            options?: RegisterOptions<Data>,
+        ): void;
         constructor(id: string, parent?: Module);
     }
     global {

@@ -54,7 +54,7 @@ describe("Included matchers:", () => {
 
         it("should work for optional values", () => {
             var opt: string | undefined = "s";
-            expect(opt as (string | undefined)).toEqual(undefined);
+            expect(opt as string | undefined).toEqual(undefined);
         });
     });
 
@@ -94,14 +94,16 @@ describe("Included matchers:", () => {
     });
 
     it("The 'toBeTruthy' matcher is for boolean casting testing", () => {
-        var a: string | undefined, foo = "foo";
+        var a: string | undefined,
+            foo = "foo";
 
         expect(foo).toBeTruthy();
         expect(a).not.toBeTruthy();
     });
 
     it("The 'toBeFalsy' matcher is for boolean casting testing", () => {
-        var a: string | undefined, foo = "foo";
+        var a: string | undefined,
+            foo = "foo";
 
         expect(a).toBeFalsy();
         expect(foo).not.toBeFalsy();
@@ -271,7 +273,9 @@ describe("Pending specs", () => {
 });
 
 describe("A spy", () => {
-    var foo: any, bar: any, baz: any = null;
+    var foo: any,
+        bar: any,
+        baz: any = null;
 
     beforeEach(() => {
         foo = {
@@ -308,7 +312,7 @@ describe("A spy", () => {
         expect(bar).toBeNull();
     });
 
-    it("tracks if it was called at all", function() {
+    it("tracks if it was called at all", function () {
         foo.setBar();
 
         expect(foo.setBar.calls.any()).toEqual(true);
@@ -392,7 +396,10 @@ describe("A spy, when configured to fake a series of return values", () => {
             },
         };
 
-        spyOn(foo, "getBar").and.returnValues("fetched first", "fetched second");
+        spyOn(foo, "getBar").and.returnValues(
+            "fetched first",
+            "fetched second",
+        );
 
         foo.setBar(123);
     });
@@ -481,9 +488,11 @@ describe("A spy, when configured with multiple actions", () => {
             },
         };
 
-        spyOn(foo, "getBar").and.callThrough().and.callFake(() => {
-            fakeCalled = true;
-        });
+        spyOn(foo, "getBar")
+            .and.callThrough()
+            .and.callFake(() => {
+                fakeCalled = true;
+            });
 
         foo.setBar(123);
         fetchedBar = foo.getBar();
@@ -507,7 +516,8 @@ describe("A spy, when configured with multiple actions", () => {
 });
 
 describe("A spy", () => {
-    var foo: any, bar: any = null;
+    var foo: any,
+        bar: any = null;
 
     beforeEach(() => {
         foo = {
@@ -532,7 +542,8 @@ describe("A spy", () => {
 });
 
 describe("A spy", () => {
-    var foo: any, bar: any = null;
+    var foo: any,
+        bar: any = null;
 
     beforeEach(() => {
         foo = {
@@ -579,21 +590,31 @@ describe("A spy", () => {
     it("can provide the context and arguments to all calls", () => {
         foo.setBar(123);
 
-        expect(foo.setBar.calls.all()).toEqual([{ object: foo, args: [123], returnValue: undefined }]);
+        expect(foo.setBar.calls.all()).toEqual([
+            { object: foo, args: [123], returnValue: undefined },
+        ]);
     });
 
     it("has a shortcut to the most recent call", () => {
         foo.setBar(123);
         foo.setBar(456, "baz");
 
-        expect(foo.setBar.calls.mostRecent()).toEqual({ object: foo, args: [456, "baz"], returnValue: undefined });
+        expect(foo.setBar.calls.mostRecent()).toEqual({
+            object: foo,
+            args: [456, "baz"],
+            returnValue: undefined,
+        });
     });
 
     it("has a shortcut to the first call", () => {
         foo.setBar(123);
         foo.setBar(456, "baz");
 
-        expect(foo.setBar.calls.first()).toEqual({ object: foo, args: [123], returnValue: undefined });
+        expect(foo.setBar.calls.first()).toEqual({
+            object: foo,
+            args: [123],
+            returnValue: undefined,
+        });
     });
 
     it("can be reset", () => {
@@ -667,7 +688,12 @@ describe("Multiple spies, when created manually", () => {
     var el: jasmine.SpyObj<Element>;
 
     beforeEach(() => {
-        tapeSpy = jasmine.createSpyObj<Tape>("tape", ["play", "pause", "stop", "rewind"]);
+        tapeSpy = jasmine.createSpyObj<Tape>("tape", [
+            "play",
+            "pause",
+            "stop",
+            "rewind",
+        ]);
         tape = tapeSpy;
         (tape as { isPlaying: boolean }).isPlaying = false;
         el = jasmine.createSpyObj<Element>("Element", ["hasAttribute"]);
@@ -747,7 +773,10 @@ describe("jasmine.any", () => {
                 return true;
             });
 
-            expect(foo).toHaveBeenCalledWith(jasmine.any(Number), jasmine.any(Function));
+            expect(foo).toHaveBeenCalledWith(
+                jasmine.any(Number),
+                jasmine.any(Function),
+            );
         });
     });
 });
@@ -773,27 +802,33 @@ describe("jasmine.objectContaining", () => {
         // mismatching types on known properties
 
         // this does not cause an error as the compiler cannot infer the type completely
-        expect(foo).not.toEqual(jasmine.objectContaining({
-            a: 37,
-            foo: 2,
-        }));
+        expect(foo).not.toEqual(
+            jasmine.objectContaining({
+                a: 37,
+                foo: 2,
+            }),
+        );
 
         // this causes an error as `b` defined as number in fooType
         // @ts-expect-error
-        expect(foo).not.toEqual(jasmine.objectContaining({
-            a: 37,
-            b: "123",
-        }));
+        expect(foo).not.toEqual(
+            jasmine.objectContaining({
+                a: 37,
+                b: "123",
+            }),
+        );
     });
 
     it("matches objects with the exact property names when providing a generic type", () => {
         // explicitly providing the type on objectContaining makes the guard more precise
         // as misspelled properties are detected as well
-        expect(foo).not.toEqual(jasmine.objectContaining<fooType>({
-            bar: "",
-            // @ts-expect-error
-            foo: 1,
-        }));
+        expect(foo).not.toEqual(
+            jasmine.objectContaining<fooType>({
+                bar: "",
+                // @ts-expect-error
+                foo: 1,
+            }),
+        );
     });
 
     describe("when used with a spy", () => {
@@ -804,12 +839,16 @@ describe("jasmine.objectContaining", () => {
                 bar: "baz",
             });
 
-            expect(callback).toHaveBeenCalledWith(jasmine.objectContaining({
-                bar: "baz",
-            }));
-            expect(callback).not.toHaveBeenCalledWith(jasmine.objectContaining({
-                c: 37,
-            }));
+            expect(callback).toHaveBeenCalledWith(
+                jasmine.objectContaining({
+                    bar: "baz",
+                }),
+            );
+            expect(callback).not.toHaveBeenCalledWith(
+                jasmine.objectContaining({
+                    c: 37,
+                }),
+            );
         });
     });
 });
@@ -835,8 +874,12 @@ describe("jasmine.arrayContaining", () => {
 
             callback([1, 2, 3, 4]);
 
-            expect(callback).toHaveBeenCalledWith(jasmine.arrayContaining([4, 2, 3]));
-            expect(callback).not.toHaveBeenCalledWith(jasmine.arrayContaining([5, 2]));
+            expect(callback).toHaveBeenCalledWith(
+                jasmine.arrayContaining([4, 2, 3]),
+            );
+            expect(callback).not.toHaveBeenCalledWith(
+                jasmine.arrayContaining([5, 2]),
+            );
         });
     });
 });
@@ -862,8 +905,12 @@ describe("jasmine.arrayWithExactContents", () => {
 
             callback([1, 2, 3, 4]);
 
-            expect(callback).toHaveBeenCalledWith(jasmine.arrayWithExactContents([1, 2, 3, 4]));
-            expect(callback).not.toHaveBeenCalledWith(jasmine.arrayWithExactContents([5, 2]));
+            expect(callback).toHaveBeenCalledWith(
+                jasmine.arrayWithExactContents([1, 2, 3, 4]),
+            );
+            expect(callback).not.toHaveBeenCalledWith(
+                jasmine.arrayWithExactContents([5, 2]),
+            );
         });
     });
 });
@@ -969,7 +1016,10 @@ describe("Fail", () => {
 
 // test based on http://jasmine.github.io/2.2/custom_equality.html
 describe("custom equality", () => {
-    var myCustomEquality: jasmine.CustomEqualityTester = function(first: any, second: any): boolean | void {
+    var myCustomEquality: jasmine.CustomEqualityTester = function (
+        first: any,
+        second: any,
+    ): boolean | void {
         if (typeof first === "string" && typeof second === "string") {
             return first[0] === second[1];
         }
@@ -990,35 +1040,60 @@ describe("custom equality", () => {
 
 // test based on http://jasmine.github.io/2.2/custom_matcher.html
 var customMatchers: jasmine.CustomMatcherFactories = {
-    toBeGoofy: (util: jasmine.MatchersUtil, customEqualityTesters: jasmine.CustomEqualityTester[]) => {
+    toBeGoofy: (
+        util: jasmine.MatchersUtil,
+        customEqualityTesters: jasmine.CustomEqualityTester[],
+    ) => {
         return {
-            compare: (actual: any, expected: any): jasmine.CustomMatcherResult => {
+            compare: (
+                actual: any,
+                expected: any,
+            ): jasmine.CustomMatcherResult => {
                 if (expected === undefined) {
                     expected = "";
                 }
                 var result: jasmine.CustomMatcherResult = { pass: false };
 
-                result.pass = util.equals(actual.hyuk, "gawrsh" + expected, customEqualityTesters);
+                result.pass = util.equals(
+                    actual.hyuk,
+                    "gawrsh" + expected,
+                    customEqualityTesters,
+                );
 
                 if (result.pass) {
-                    result.message = "Expected " + actual + " not to be quite so goofy";
+                    result.message =
+                        "Expected " + actual + " not to be quite so goofy";
                 } else {
-                    result.message = "Expected " + actual + " to be goofy, but it was not very goofy";
+                    result.message =
+                        "Expected " +
+                        actual +
+                        " to be goofy, but it was not very goofy";
                 }
 
                 return result;
             },
         };
     },
-    toBeWithinRange: (util: jasmine.MatchersUtil, customEqualityTesters: jasmine.CustomEqualityTester[]) => {
+    toBeWithinRange: (
+        util: jasmine.MatchersUtil,
+        customEqualityTesters: jasmine.CustomEqualityTester[],
+    ) => {
         return {
-            compare: (actual: any, floor: number, ceiling: number): jasmine.CustomMatcherResult => {
+            compare: (
+                actual: any,
+                floor: number,
+                ceiling: number,
+            ): jasmine.CustomMatcherResult => {
                 const pass = actual >= floor && actual <= ceiling;
                 const message = `expected ${actual} to be within range ${floor}-${ceiling}`;
                 return { message, pass };
             },
 
-            negativeCompare: (actual: any, floor: number, ceiling: number): jasmine.CustomMatcherResult => {
+            negativeCompare: (
+                actual: any,
+                floor: number,
+                ceiling: number,
+            ): jasmine.CustomMatcherResult => {
                 const pass = actual < floor && actual > ceiling;
                 const message = `expected ${actual} not to be within range ${floor}-${ceiling}`;
                 return { message, pass };
@@ -1038,7 +1113,11 @@ var customMatchers: jasmine.CustomMatcherFactories = {
 declare namespace jasmine {
     interface Matchers<T> {
         toBeGoofy(expected?: jasmine.Expected<T>): boolean;
-        toBeWithinRange(expected?: jasmine.Expected<T>, floor?: number, ceiling?: number): boolean;
+        toBeWithinRange(
+            expected?: jasmine.Expected<T>,
+            floor?: number,
+            ceiling?: number,
+        ): boolean;
     }
 }
 
@@ -1064,7 +1143,10 @@ describe("Custom matcher: 'toBeGoofy'", () => {
     });
 
     it("can use the custom negativeCompare method", () => {
-        const matcher = customMatchers["toBeWithinRange"](jasmine.matchersUtil, []);
+        const matcher = customMatchers["toBeWithinRange"](
+            jasmine.matchersUtil,
+            [],
+        );
         const result = matcher.negativeCompare!(1, 2, 3);
 
         expect(result.pass).toBe(false);
@@ -1084,7 +1166,9 @@ describe("Custom matcher: 'toBeGoofy'", () => {
         const result = matcher.compare(actual, null);
 
         expect(result.pass).toBe(false);
-        expect(result.message).toBe("Expected " + actual + " to be goofy, but it was not very goofy");
+        expect(result.message).toBe(
+            "Expected " + actual + " to be goofy, but it was not very goofy",
+        );
     });
 });
 
@@ -1095,27 +1179,47 @@ var myReporter: jasmine.CustomReporter = {
     },
 
     suiteStarted: (result: jasmine.CustomReporterResult) => {
-        console.log("Suite started: " + result.description + " whose full description is: " + result.fullName);
+        console.log(
+            "Suite started: " +
+                result.description +
+                " whose full description is: " +
+                result.fullName,
+        );
     },
 
     specStarted: (result: jasmine.CustomReporterResult) => {
-        console.log("Spec started: " + result.description + " whose full description is: " + result.fullName);
+        console.log(
+            "Spec started: " +
+                result.description +
+                " whose full description is: " +
+                result.fullName,
+        );
     },
 
     specDone: (result: jasmine.CustomReporterResult) => {
         console.log("Spec: " + result.description + " was " + result.status);
-        for (var i = 0; result.failedExpectations && i < result.failedExpectations.length; i += 1) {
+        for (
+            var i = 0;
+            result.failedExpectations && i < result.failedExpectations.length;
+            i += 1
+        ) {
             console.log("Failure: " + result.failedExpectations[i].message);
             console.log("Actual: " + result.failedExpectations[i].actual);
             console.log("Expected: " + result.failedExpectations[i].expected);
             console.log(result.failedExpectations[i].stack);
         }
-        console.log(result.passedExpectations && result.passedExpectations.length);
+        console.log(
+            result.passedExpectations && result.passedExpectations.length,
+        );
     },
 
     suiteDone: (result: jasmine.CustomReporterResult) => {
         console.log("Suite: " + result.description + " was " + result.status);
-        for (var i = 0; result.failedExpectations && i < result.failedExpectations.length; i += 1) {
+        for (
+            var i = 0;
+            result.failedExpectations && i < result.failedExpectations.length;
+            i += 1
+        ) {
             console.log("AfterAll " + result.failedExpectations[i].message);
             console.log(result.failedExpectations[i].stack);
         }
@@ -1147,9 +1251,12 @@ describe("Randomize Tests", () => {
 });
 
 // dest spces copied from jasmine project (https://github.com/jasmine/jasmine/blob/master/spec/core/SpecSpec.js)
-describe("createSpyObj", function() {
-    it("should create an object with spy methods and corresponding return values when you call jasmine.createSpyObj() with an object", function() {
-        var spyObj = jasmine.createSpyObj("BaseName", { "method1": 42, "method2": "special sauce" });
+describe("createSpyObj", function () {
+    it("should create an object with spy methods and corresponding return values when you call jasmine.createSpyObj() with an object", function () {
+        var spyObj = jasmine.createSpyObj("BaseName", {
+            method1: 42,
+            method2: "special sauce",
+        });
 
         expect(spyObj.method1()).toEqual(42);
         expect(spyObj.method1.and.identity()).toEqual("BaseName.method1");
@@ -1158,16 +1265,22 @@ describe("createSpyObj", function() {
         expect(spyObj.method2.and.identity()).toEqual("BaseName.method2");
     });
 
-    it("should create an object with a bunch of spy methods when you call jasmine.createSpyObj()", function() {
+    it("should create an object with a bunch of spy methods when you call jasmine.createSpyObj()", function () {
         var spyObj = jasmine.createSpyObj("BaseName", ["method1", "method2"]);
 
-        expect(spyObj).toEqual({ method1: jasmine.any(Function), method2: jasmine.any(Function) });
+        expect(spyObj).toEqual({
+            method1: jasmine.any(Function),
+            method2: jasmine.any(Function),
+        });
         expect(spyObj.method1.and.identity()).toEqual("BaseName.method1");
         expect(spyObj.method2.and.identity()).toEqual("BaseName.method2");
     });
 
-    it("should allow you to omit the baseName and takes only an object", function() {
-        var spyObj = jasmine.createSpyObj({ "method1": 42, "method2": "special sauce" });
+    it("should allow you to omit the baseName and takes only an object", function () {
+        var spyObj = jasmine.createSpyObj({
+            method1: 42,
+            method2: "special sauce",
+        });
 
         expect(spyObj.method1()).toEqual(42);
         expect(spyObj.method1.and.identity()).toEqual("unknown.method1");
@@ -1176,24 +1289,31 @@ describe("createSpyObj", function() {
         expect(spyObj.method2.and.identity()).toEqual("unknown.method2");
     });
 
-    it("should allow you to omit the baseName and takes only a list of methods", function() {
+    it("should allow you to omit the baseName and takes only a list of methods", function () {
         var spyObj = jasmine.createSpyObj(["method1", "method2"]);
 
-        expect(spyObj).toEqual({ method1: jasmine.any(Function), method2: jasmine.any(Function) });
+        expect(spyObj).toEqual({
+            method1: jasmine.any(Function),
+            method2: jasmine.any(Function),
+        });
         expect(spyObj.method1.and.identity()).toEqual("unknown.method1");
         expect(spyObj.method2.and.identity()).toEqual("unknown.method2");
     });
 
-    it("should throw if you pass an empty array argument", function() {
-        expect(function() {
+    it("should throw if you pass an empty array argument", function () {
+        expect(function () {
             jasmine.createSpyObj("BaseName", []);
-        }).toThrow("createSpyObj requires a non-empty array or object of method names to create spies for");
+        }).toThrow(
+            "createSpyObj requires a non-empty array or object of method names to create spies for",
+        );
     });
 
-    it("should throw if you pass an empty object argument", function() {
-        expect(function() {
+    it("should throw if you pass an empty object argument", function () {
+        expect(function () {
             jasmine.createSpyObj("BaseName", {});
-        }).toThrow("createSpyObj requires a non-empty array or object of method names to create spies for");
+        }).toThrow(
+            "createSpyObj requires a non-empty array or object of method names to create spies for",
+        );
     });
 });
 

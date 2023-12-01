@@ -43,9 +43,17 @@ export class Service {
 
     private readonly __serviceMainUnified: any;
 
-    constructor(busId: string, activityManager?: ActivityManager, options?: ServiceOptions);
+    constructor(
+        busId: string,
+        activityManager?: ActivityManager,
+        options?: ServiceOptions,
+    );
 
-    call(uri: string, args: Record<string, any>, callback: (message: Message) => void): void;
+    call(
+        uri: string,
+        args: Record<string, any>,
+        callback: (message: Message) => void,
+    ): void;
 
     cancelSubscription(handle: any, ls2Message: any): void;
 

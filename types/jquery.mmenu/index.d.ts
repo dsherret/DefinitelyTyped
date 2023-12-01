@@ -193,7 +193,10 @@ declare namespace JQueryMmenu {
          */
         setSelected(li: JQuery, selected?: boolean): void;
         /** @see setSelected() */
-        bind(methodName: "setSelected", callback: (li: JQuery, selected?: boolean) => void): void;
+        bind(
+            methodName: "setSelected",
+            callback: (li: JQuery, selected?: boolean) => void,
+        ): void;
 
         /**
          * Trigger this method to update the appearance for the menu.
@@ -210,7 +213,10 @@ interface JQuery {
      */
     mmenu(): JQuery;
     mmenu(options: JQueryMmenu.Options): JQuery;
-    mmenu(options: JQueryMmenu.Options, configurations: JQueryMmenu.Configurations): JQuery;
+    mmenu(
+        options: JQueryMmenu.Options,
+        configurations: JQueryMmenu.Configurations,
+    ): JQuery;
 
     /**
      * Return the mmenu object

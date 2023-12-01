@@ -10,7 +10,9 @@ import { FlexboxPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const ButtonGroup: React.FunctionComponent<ButtonGroupProps>;
-export interface ButtonGroupProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface ButtonGroupProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     color?: ButtonGroupColors | undefined;
     size?: ButtonGroupSizes | undefined;
     stackFor?: Breakpoints | undefined;

@@ -6,7 +6,10 @@ const reduxPromiseListener = createReduxPromiseListener();
 export const promiseListener = reduxPromiseListener;
 
 declare var rootReducer: (state: any, action: any) => any;
-const store = createStore(rootReducer, applyMiddleware(reduxPromiseListener.middleware));
+const store = createStore(
+    rootReducer,
+    applyMiddleware(reduxPromiseListener.middleware),
+);
 
 declare const actionMatcher: (action: AnyAction) => boolean;
 
@@ -26,12 +29,12 @@ const action = promiseListener.createAsyncFunction({
     start: API_REQUEST,
     resolve: API_SUCCESS,
     reject: API_FAILURE,
-    setPayload: action => ({
+    setPayload: (action) => ({
         ...action,
         input: "additional data",
     }),
-    getPayload: action => action.result,
-    getError: action => action.errors,
+    getPayload: (action) => action.result,
+    getError: (action) => action.errors,
 });
 
 // $ExpectType Promise<any>
@@ -89,7 +92,11 @@ action2.asyncFunction("test");
 type action2Ret = ReturnType<typeof action2.asyncFunction>;
 
 // $ExpectType AsyncFunction<number>
-const action3 = promiseListener.createAsyncFunction<ActionRequest, ActionSuccess, ActionError>({
+const action3 = promiseListener.createAsyncFunction<
+    ActionRequest,
+    ActionSuccess,
+    ActionError
+>({
     start: API_REQUEST,
     resolve: API_SUCCESS,
     reject: API_FAILURE,
@@ -97,7 +104,7 @@ const action3 = promiseListener.createAsyncFunction<ActionRequest, ActionSuccess
         ...action,
         input: "additional data",
     }),
-    getError: action => action.errors,
+    getError: (action) => action.errors,
 });
 
 // $ExpectType Promise<number>
@@ -125,7 +132,11 @@ interface ActionSuccessWithoutPayload {
 }
 
 // $ExpectType AsyncFunction<unknown>
-const action5 = promiseListener.createAsyncFunction<ActionRequest, ActionSuccessWithoutPayload, ActionError>({
+const action5 = promiseListener.createAsyncFunction<
+    ActionRequest,
+    ActionSuccessWithoutPayload,
+    ActionError
+>({
     start: API_REQUEST,
     resolve: API_SUCCESS,
     reject: API_FAILURE,
@@ -133,7 +144,7 @@ const action5 = promiseListener.createAsyncFunction<ActionRequest, ActionSuccess
         ...action,
         input: "additional data",
     }),
-    getError: action => action.errors,
+    getError: (action) => action.errors,
 });
 
 // $ExpectType Promise<unknown>

@@ -9,7 +9,9 @@ export interface OpaqueFileSizes {
  * Captures JS and CSS asset sizes inside the passed `buildFolder`. Save the
  * result value to compare it after the build.
  */
-export function measureFileSizesBeforeBuild(buildFolder: string): Promise<OpaqueFileSizes>;
+export function measureFileSizesBeforeBuild(
+    buildFolder: string,
+): Promise<OpaqueFileSizes>;
 
 /**
  * Prints the JS and CSS asset sizes after the build, and includes a size

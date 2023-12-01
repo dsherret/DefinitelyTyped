@@ -68,7 +68,10 @@ export declare class Terminal {
 
     // NodeJS Stream interface
 
-    pipe<T extends NodeJS.WritableStream>(destination: T, options?: { end?: boolean | undefined }): T;
+    pipe<T extends NodeJS.WritableStream>(
+        destination: T,
+        options?: { end?: boolean | undefined },
+    ): T;
 
     // NodeJS EventEmitter interface
 
@@ -86,16 +89,31 @@ export declare class Terminal {
  * Creates a new pseudo-terminal, spawns a child process, and associates it with the slave
  * end of the pseudo-terminal.
  */
-export declare function createTerminal(file?: string, args?: string[], opt?: TerminalOptions): Terminal;
+export declare function createTerminal(
+    file?: string,
+    args?: string[],
+    opt?: TerminalOptions,
+): Terminal;
 /** Alias for [[createTerminal]]. */
-export declare function fork(file?: string, args?: string[], opt?: TerminalOptions): Terminal;
+export declare function fork(
+    file?: string,
+    args?: string[],
+    opt?: TerminalOptions,
+): Terminal;
 /** Alias for [[createTerminal]]. */
-export declare function spawn(file?: string, args?: string[], opt?: TerminalOptions): Terminal;
+export declare function spawn(
+    file?: string,
+    args?: string[],
+    opt?: TerminalOptions,
+): Terminal;
 /**
  * Creates a new pseudo-terminal.
  * This function is not available on Windows, use [[fork]] there instead.
  */
-export declare function open(opt?: { cols?: number | undefined; rows?: number | undefined }): Terminal;
+export declare function open(opt?: {
+    cols?: number | undefined;
+    rows?: number | undefined;
+}): Terminal;
 
 // Internal stuff that probably isn't very useful but is exported by pty.js
 export declare namespace native {

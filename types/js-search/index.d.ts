@@ -1,8 +1,6 @@
 declare module "js-search" {
     class Search {
-        constructor(
-            uidFieldName: string | string[],
-        );
+        constructor(uidFieldName: string | string[]);
 
         public indexStrategy: IIndexStrategy;
         public sanitizer: ISanitizer;
@@ -46,16 +44,9 @@ declare module "js-search" {
     }
 
     interface ISearchIndex {
-        indexDocument(
-            token: string,
-            uid: string,
-            document: Object,
-        ): void;
+        indexDocument(token: string, uid: string, document: Object): void;
 
-        search(
-            tokens: string[],
-            corpus: Object[],
-        ): Object[];
+        search(tokens: string[], corpus: Object[]): Object[];
     }
 
     type ITfIdfTokenMap = {

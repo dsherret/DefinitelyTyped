@@ -220,7 +220,12 @@ app.get("/de", (_req: Express.Request, res: i18n.Response) => {
     res.__mf("Hello {name}, how was your %s?", "test", { name: "Marcus" }); // --> Hallo Marcus, wie war dein test?
 
     // now check out a plural rule
-    res.__mf("{N, plural, one{# cat} few{# cats} many{# cats} others{# cats}}", { N: 1 });
+    res.__mf(
+        "{N, plural, one{# cat} few{# cats} many{# cats} others{# cats}}",
+        {
+            N: 1,
+        },
+    );
 });
 
 /**

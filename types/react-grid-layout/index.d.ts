@@ -158,11 +158,13 @@ declare namespace ReactGridLayout {
          * Configuration of a dropping element. Dropping element is a "virtual" element
          * which appears when you drag over some element from outside.
          */
-        droppingItem?: {
-            i: string;
-            w: number;
-            h: number;
-        } | undefined;
+        droppingItem?:
+            | {
+                  i: string;
+                  w: number;
+                  h: number;
+              }
+            | undefined;
 
         /**
          * If true, the layout will compact vertically.
@@ -247,7 +249,10 @@ declare namespace ReactGridLayout {
         /**
          * Defines custom component for resize handle
          */
-        resizeHandle?: React.ReactNode | ((resizeHandle: ResizeHandle) => React.ReactNode) | undefined;
+        resizeHandle?:
+            | React.ReactNode
+            | ((resizeHandle: ResizeHandle) => React.ReactNode)
+            | undefined;
 
         /**
          * Calls when drag starts.
@@ -289,7 +294,9 @@ declare namespace ReactGridLayout {
          * This callback should return an object to dynamically change the droppingItem size
          * Return false to short-circuit the dragover
          */
-        onDropDragOver?(e: DragOverEvent): { w?: number; h?: number } | false | undefined;
+        onDropDragOver?(
+            e: DragOverEvent,
+        ): { w?: number; h?: number } | false | undefined;
 
         /**
          * Ref for getting a reference for the grid's wrapping div.
@@ -363,7 +370,10 @@ declare namespace ReactGridLayout {
          * Padding inside the container [x, y] in px
          * e.g. [10, 10]
          */
-        containerPadding?: [number, number] | { [P: string]: [number, number] } | undefined;
+        containerPadding?:
+            | [number, number]
+            | { [P: string]: [number, number] }
+            | undefined;
 
         /**
          * Layouts is an object mapping breakpoints to layouts.
@@ -377,7 +387,10 @@ declare namespace ReactGridLayout {
          * Margin between items [x, y] in px
          * e.g. [10, 10]
          */
-        margin?: [number, number] | { [P: string]: [number, number] } | undefined;
+        margin?:
+            | [number, number]
+            | { [P: string]: [number, number] }
+            | undefined;
 
         /**
          * Calls back with breakpoint and new number pf cols.

@@ -1,4 +1,8 @@
-function eventMap(ev: Event, errorEv: SpeechRecognitionErrorEvent, srEvent: SpeechRecognitionEvent): void {
+function eventMap(
+    ev: Event,
+    errorEv: SpeechRecognitionErrorEvent,
+    srEvent: SpeechRecognitionEvent,
+): void {
     const speechRecognitionEventMap: SpeechRecognitionEventMap = {
         audioend: ev,
         audiostart: ev,
@@ -71,11 +75,20 @@ const speechRecognitionEventInit: SpeechRecognitionEventInit = {
     results: speechRecognitionResultList,
 };
 
-const speechRecognitionEvent = new SpeechRecognitionEvent("type", speechRecognitionEventInit);
-const speechRecognitionEvent2 = new webkitSpeechRecognitionEvent("type", speechRecognitionEventInit);
+const speechRecognitionEvent = new SpeechRecognitionEvent(
+    "type",
+    speechRecognitionEventInit,
+);
+const speechRecognitionEvent2 = new webkitSpeechRecognitionEvent(
+    "type",
+    speechRecognitionEventInit,
+);
 
 const speechRecognitionErrorEventInit: SpeechRecognitionErrorEventInit = {
     error: "aborted",
     message: "abcde",
 };
-const speechRecognitionErrorEvent = new SpeechRecognitionErrorEvent("type", speechRecognitionErrorEventInit);
+const speechRecognitionErrorEvent = new SpeechRecognitionErrorEvent(
+    "type",
+    speechRecognitionErrorEventInit,
+);

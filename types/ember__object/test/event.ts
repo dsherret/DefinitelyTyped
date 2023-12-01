@@ -49,9 +49,15 @@ function testEvented() {
         })
         .off("event", {}, () => {});
 
-    person.on("greet", target, "hi").one("greet", target, "hi").off("event", target, "hi");
+    person
+        .on("greet", target, "hi")
+        .one("greet", target, "hi")
+        .off("event", target, "hi");
 
-    person.on("greet", target, target.hi).one("greet", target, target.hi).off("event", target, target.hi);
+    person
+        .on("greet", target, target.hi)
+        .one("greet", target, target.hi)
+        .off("event", target, target.hi);
 
     person.greet();
 }

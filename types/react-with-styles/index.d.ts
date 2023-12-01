@@ -22,7 +22,9 @@ type Nullable<T> = T | null | undefined;
 interface Styles {
     [key: string]: Nullable<
         CSSProperties & {
-            [pseudoSelectorOrMediaQuery: string]: CSSProperties[keyof CSSProperties] | CSSProperties;
+            [pseudoSelectorOrMediaQuery: string]:
+                | CSSProperties[keyof CSSProperties]
+                | CSSProperties;
         }
     >;
 }
@@ -33,12 +35,23 @@ interface WithStylesOptions {
 }
 
 type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
-type ComponentClassProps<C> = C extends new(props: infer P, context?: any) => any ? P : never;
-type SFCProps<C> = C extends (props: infer P & { children?: React.ReactNode | undefined }, context?: any) => any ? P
+type ComponentClassProps<C> = C extends new (
+    props: infer P,
+    context?: any,
+) => any
+    ? P
     : never;
-type ElementProps<C> = C extends React.ComponentClass<any> ? ComponentClassProps<C>
-    : C extends React.FC<any> ? SFCProps<C>
-    : any;
+type SFCProps<C> = C extends (
+    props: infer P & { children?: React.ReactNode | undefined },
+    context?: any,
+) => any
+    ? P
+    : never;
+type ElementProps<C> = C extends React.ComponentClass<any>
+    ? ComponentClassProps<C>
+    : C extends React.FC<any>
+      ? SFCProps<C>
+      : any;
 type ElementConfig<C> = JSX.LibraryManagedAttributes<C, ElementProps<C>>;
 
 declare function withStyles<T = Theme>(
@@ -50,4 +63,13 @@ declare function withStyles<T = Theme>(
 
 declare function css(...styles: any[]): object;
 
-export { css, CSSProperties, Styles, Theme, withStyles, WithStylesOptions, WithStylesProps, withStylesPropTypes };
+export {
+    css,
+    CSSProperties,
+    Styles,
+    Theme,
+    withStyles,
+    WithStylesOptions,
+    WithStylesProps,
+    withStylesPropTypes,
+};

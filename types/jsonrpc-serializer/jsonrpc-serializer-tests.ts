@@ -54,7 +54,7 @@ const request2 = jrs.request("request-id", "request-method");
 
 // ---> "{\"jsonrpc\":\"2.0\",\"id\":\"request-id\",\"method:\":\"request-method\"}"
 
-const ok1 = "{\"jsonrpc\":\"2.0\",\"id\":\"request-id\",\"result\":\"success!!\"}";
+const ok1 = '{"jsonrpc":"2.0","id":"request-id","result":"success!!"}';
 
 const response1 = jrs.deserialize(ok1);
 

@@ -5,6 +5,9 @@ interface Options {
     duration?: number | undefined;
 }
 
-declare function scrollToElement(selector: string | HTMLElement | Element, options?: Options): void;
+declare function scrollToElement(
+    selector: string | HTMLElement | Element,
+    options?: Options,
+): void;
 
 export = scrollToElement;

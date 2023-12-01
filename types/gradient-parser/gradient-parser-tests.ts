@@ -1,6 +1,8 @@
 import gradient = require("gradient-parser");
 
-let ast: gradient.GradientNode[] = gradient.parse("linear-gradient(30deg, #000, transparent)");
+let ast: gradient.GradientNode[] = gradient.parse(
+    "linear-gradient(30deg, #000, transparent)",
+);
 gradient.stringify(ast); // $ExpectType string
 
 ast = [

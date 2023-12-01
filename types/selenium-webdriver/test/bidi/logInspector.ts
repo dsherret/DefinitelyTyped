@@ -11,7 +11,10 @@ async function TestLogInspector() {
     await logInspector.close();
     await driver.close();
 
-    async function checkForLog(expectedText: string, timeout: number): Promise<void> {
+    async function checkForLog(
+        expectedText: string,
+        timeout: number,
+    ): Promise<void> {
         const findLog = new Promise<void>((resolve) => {
             logInspector.onLog(({ text }) => {
                 if (text === expectedText) {

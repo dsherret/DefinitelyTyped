@@ -88,7 +88,11 @@ interface plupload_event_FileUploaded {
 }
 
 interface plupload_event_ChunkUploaded {
-    (uploader: plupload.Uploader, file: any, response: plupload_chunk_response): any;
+    (
+        uploader: plupload.Uploader,
+        file: any,
+        response: plupload_chunk_response,
+    ): any;
 }
 
 interface plupload_event_Error {
@@ -632,7 +636,12 @@ declare namespace plupload {
      * @param {Function} callback Function to call when event occurs.
      * @param {String} (optional) key that might be used to add specifity to the event record.
      */
-    function addEvent(obj: any, name: string, callback: Function, key?: string): any;
+    function addEvent(
+        obj: any,
+        name: string,
+        callback: Function,
+        key?: string,
+    ): any;
 
     /**
      * Remove event handler from the specified object. If third argument (callback)
@@ -644,7 +653,11 @@ declare namespace plupload {
      * @param {String} name Name of event listener to remove.
      * @param {Function|String} (optional) might be a callback or unique key to match.
      */
-    function removeEvent(obj: any, name: string, optional?: Function | string): any;
+    function removeEvent(
+        obj: any,
+        name: string,
+        optional?: Function | string,
+    ): any;
 
     /**
      * Remove all kind of events from the specified object

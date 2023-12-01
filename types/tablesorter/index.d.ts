@@ -225,14 +225,23 @@ declare global {
          */
         tablesorterPager(options?: PagerConfiguration<TElement>): this;
 
-        trigger<T extends keyof TriggerNameMap<TElement>>(name: T, extraParameters: TriggerNameMap<TElement>[T]): this;
+        trigger<T extends keyof TriggerNameMap<TElement>>(
+            name: T,
+            extraParameters: TriggerNameMap<TElement>[T],
+        ): this;
 
         trigger(name: ParameterlessTriggerNameMap): this;
 
         bind(name: EventMap, callback: TablesorterEventHandler<TElement>): this;
-        bind(name: ConfigEventMap, callback: ConfigEventHandler<TElement>): this;
+        bind(
+            name: ConfigEventMap,
+            callback: ConfigEventHandler<TElement>,
+        ): this;
         bind(name: "filterStart", callback: FilterEventHandler<TElement>): this;
         bind(name: PagerEventMap, callback: PagerEventHandler<TElement>): this;
-        bind(name: "stickyHeadersInit", callback: CommonEventHandler<TElement>): this;
+        bind(
+            name: "stickyHeadersInit",
+            callback: CommonEventHandler<TElement>,
+        ): this;
     }
 }

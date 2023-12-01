@@ -15,21 +15,27 @@ export type CollectionCellSizeAndPosition = {
     x: number;
     y: number;
 };
-export type CollectionCellSizeAndPositionGetter = (params: Index) => CollectionCellSizeAndPosition;
+export type CollectionCellSizeAndPositionGetter = (
+    params: Index,
+) => CollectionCellSizeAndPosition;
 
 export type CollectionCellGroupRendererParams = {
     cellSizeAndPositionGetter: CollectionCellSizeAndPositionGetter;
     indices: number[];
     cellRenderer: CollectionCellRenderer;
 };
-export type CollectionCellGroupRenderer = (params: CollectionCellGroupRendererParams) => React.ReactNode[];
+export type CollectionCellGroupRenderer = (
+    params: CollectionCellGroupRendererParams,
+) => React.ReactNode[];
 export type CollectionCellRendererParams = {
     index: number;
     isScrolling: boolean;
     key: number;
     style: React.CSSProperties;
 };
-export type CollectionCellRenderer = (params: CollectionCellRendererParams) => React.ReactNode;
+export type CollectionCellRenderer = (
+    params: CollectionCellRendererParams,
+) => React.ReactNode;
 export type CollectionProps = {
     "aria-label"?: string | undefined;
     /**

@@ -39,12 +39,23 @@ export class Repository {
     /**
      * Creates a branch with the passed in name pointing to the commit
      */
-    static discover(startPath: string, acrossFs: number, ceilingDirs: string): Promise<string>;
+    static discover(
+        startPath: string,
+        acrossFs: number,
+        ceilingDirs: string,
+    ): Promise<string>;
     static init(path: string, isBare: number): Promise<Repository>;
-    static initExt(repoPath: string, options?: RepositoryInitOptions): Promise<Repository>;
+    static initExt(
+        repoPath: string,
+        options?: RepositoryInitOptions,
+    ): Promise<Repository>;
     static open(path: string): Promise<Repository>;
     static openBare(barePath: string): Promise<Repository>;
-    static openExt(path: string, flags?: number, ceilingDirs?: string): Promise<Repository>;
+    static openExt(
+        path: string,
+        flags?: number,
+        ceilingDirs?: string,
+    ): Promise<Repository>;
     static openFromWorktree(wt: Worktree): Promise<Repository>;
     static wrapOdb(odb: Odb): Promise<Repository>;
 
@@ -83,7 +94,11 @@ export class Repository {
     /**
      * Creates a branch with the passed in name pointing to the commit
      */
-    createBranch(name: string, commit: Commit | string | Oid, force?: boolean): Promise<Reference>;
+    createBranch(
+        name: string,
+        commit: Commit | string | Oid,
+        force?: boolean,
+    ): Promise<Reference>;
     /**
      * Look up a refs's commit.
      */
@@ -121,11 +136,18 @@ export class Repository {
      * Retrieve the tree represented by the oid.
      */
     getTree(string: string | Oid): Promise<Tree>;
-    createTag(string: string | Oid, name: string, message: string): Promise<Tag>;
+    createTag(
+        string: string | Oid,
+        name: string,
+        message: string,
+    ): Promise<Tag>;
     /**
      * Creates a new lightweight tag
      */
-    createLightweightTag(string: string | Oid, name: string): Promise<Reference>;
+    createLightweightTag(
+        string: string | Oid,
+        name: string,
+    ): Promise<Reference>;
     /**
      * Retrieve the tag represented by the oid.
      */
@@ -166,16 +188,27 @@ export class Repository {
         message: string,
         Tree: Tree | Oid | string,
         parents: Array<string | Commit | Oid>,
-        onSignature: (
-            data: string,
-        ) =>
-            | Promise<{ code: Error.CODE; field?: string | undefined; signedData: string }>
-            | { code: Error.CODE; field?: string | undefined; signedData: string },
+        onSignature: (data: string) =>
+            | Promise<{
+                  code: Error.CODE;
+                  field?: string | undefined;
+                  signedData: string;
+              }>
+            | {
+                  code: Error.CODE;
+                  field?: string | undefined;
+                  signedData: string;
+              },
     ): Promise<Oid>;
     /**
      * Creates a new commit on HEAD from the list of passed in files
      */
-    createCommitOnHead(filesToAdd: string[], author: Signature, committer: Signature, message: string): Promise<Oid>;
+    createCommitOnHead(
+        filesToAdd: string[],
+        author: Signature,
+        committer: Signature,
+        message: string,
+    ): Promise<Oid>;
     /**
      * Create a blob from a buffer
      */
@@ -238,19 +271,32 @@ export class Repository {
     /**
      * This will set the HEAD to point to the reference and then attempt to update the index and working tree to match the content of the latest commit on that reference
      */
-    checkoutRef(reference: Reference, opts?: CheckoutOptions): Promise<Reference>;
+    checkoutRef(
+        reference: Reference,
+        opts?: CheckoutOptions,
+    ): Promise<Reference>;
     /**
      * This will set the HEAD to point to the local branch and then attempt to update the index and working tree to match the content of the latest commit on that branch
      */
-    checkoutBranch(branch: string | Reference, opts?: CheckoutOptions): Promise<Reference>;
+    checkoutBranch(
+        branch: string | Reference,
+        opts?: CheckoutOptions,
+    ): Promise<Reference>;
     /**
      * Stages or unstages line selection of a specified file
      */
-    stageFilemode(filePath: string | string[], stageNew: boolean): Promise<number>;
+    stageFilemode(
+        filePath: string | string[],
+        stageNew: boolean,
+    ): Promise<number>;
     /**
      * Stages or unstages line selection of a specified file
      */
-    stageLines(filePath: string, newLines: DiffLine[], isStaged: boolean): Promise<number>;
+    stageLines(
+        filePath: string,
+        newLines: DiffLine[],
+        isStaged: boolean,
+    ): Promise<number>;
     /**
      * Returns true if the repository is in the default NONE state.
      */

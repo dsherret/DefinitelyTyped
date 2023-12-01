@@ -19,10 +19,13 @@ interface Props {
     symbol: symbol;
     instanceOf: TestClass;
     oneOf: "a" | "b" | "c";
-    oneOfType: string | boolean | {
-        foo?: string | null | undefined;
-        bar: number;
-    };
+    oneOfType:
+        | string
+        | boolean
+        | {
+              foo?: string | null | undefined;
+              bar: number;
+          };
     numberOrFalse: false | number;
     nodeOrRenderFn?: ReactNode | (() => ReactNode) | undefined;
     arrayOf: boolean[];
@@ -71,21 +74,27 @@ const propTypes: PropTypesMap = {
     instanceOf: PropTypes.instanceOf(TestClass).isRequired,
     oneOf: PropTypes.oneOf<"a" | "b" | "c">(["a", "b", "c"]).isRequired,
     oneOfType: PropTypes.oneOfType(arrayOfTypes).isRequired,
-    numberOrFalse: PropTypes.oneOfType([PropTypes.oneOf<false>([false]), PropTypes.number]).isRequired,
+    numberOrFalse: PropTypes.oneOfType([
+        PropTypes.oneOf<false>([false]),
+        PropTypes.number,
+    ]).isRequired,
     // The generic function type (() => any) is assignable to ReactNode because ReactNode extends the empty object type {}
     // Which widens the array literal of validators to just Array<Requireable<() => any>>
     // It's too risky to change ReactNode to exclude {} even though it's invalid, as it's required for children-as-function props to work
     // So we assert the explicit tuple type
-    nodeOrRenderFn: PropTypes.oneOfType(
-        [PropTypes.node, PropTypes.func] as [PropTypes.Requireable<ReactNode>, PropTypes.Requireable<() => any>],
-    ),
+    nodeOrRenderFn: PropTypes.oneOfType([PropTypes.node, PropTypes.func] as [
+        PropTypes.Requireable<ReactNode>,
+        PropTypes.Requireable<() => any>,
+    ]),
     arrayOf: PropTypes.arrayOf(PropTypes.bool.isRequired).isRequired,
     objectOf: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
     shape: PropTypes.shape(innerProps).isRequired,
     optionalNumber: PropTypes.number,
     nullableNumber: (() => null) as PropTypes.Validator<number | null>,
     undefinableNumber: (() => null) as PropTypes.Validator<number | undefined>,
-    customProp: (() => null) as PropTypes.Validator<typeof uniqueType | undefined>,
+    customProp: (() => null) as PropTypes.Validator<
+        typeof uniqueType | undefined
+    >,
     component: PropTypes.elementType.isRequired,
 };
 
@@ -106,17 +115,23 @@ const propTypesWithoutAnnotation = {
     // required generic specification because of array type widening
     oneOf: PropTypes.oneOf<"a" | "b" | "c">(["a", "b", "c"]).isRequired,
     oneOfType: PropTypes.oneOfType(arrayOfTypes).isRequired,
-    numberOrFalse: PropTypes.oneOfType([PropTypes.oneOf<false>([false]), PropTypes.number]).isRequired,
-    nodeOrRenderFn: PropTypes.oneOfType(
-        [PropTypes.node, PropTypes.func] as [PropTypes.Requireable<ReactNode>, PropTypes.Requireable<() => any>],
-    ),
+    numberOrFalse: PropTypes.oneOfType([
+        PropTypes.oneOf<false>([false]),
+        PropTypes.number,
+    ]).isRequired,
+    nodeOrRenderFn: PropTypes.oneOfType([PropTypes.node, PropTypes.func] as [
+        PropTypes.Requireable<ReactNode>,
+        PropTypes.Requireable<() => any>,
+    ]),
     arrayOf: PropTypes.arrayOf(PropTypes.bool.isRequired).isRequired,
     objectOf: PropTypes.objectOf(PropTypes.number.isRequired).isRequired,
     shape: PropTypes.shape(innerProps).isRequired,
     optionalNumber: PropTypes.number,
     nullableNumber: (() => null) as PropTypes.Validator<number | null>,
     undefinableNumber: (() => null) as PropTypes.Validator<number | undefined>,
-    customProp: (() => null) as PropTypes.Validator<typeof uniqueType | undefined>,
+    customProp: (() => null) as PropTypes.Validator<
+        typeof uniqueType | undefined
+    >,
     component: PropTypes.elementType.isRequired,
 };
 
@@ -140,52 +155,70 @@ type ExtractedArrayProps = PropTypes.InferType<(typeof arrayOfTypes)[number]>;
 type ExtractedInnerProps = PropTypes.InferProps<typeof innerProps>;
 
 type ExtractedProps = PropTypes.InferProps<typeof propTypes>;
-type ExtractedPropsFromOuterProps = PropTypes.InferProps<typeof outerPropTypes>["props"];
+type ExtractedPropsFromOuterProps = PropTypes.InferProps<
+    typeof outerPropTypes
+>["props"];
 type ExtractedPartialProps = PropTypes.InferProps<typeof partialPropTypes>;
 
-type ExtractedPropsWithoutAnnotation = PropTypes.InferProps<typeof propTypesWithoutAnnotation>;
+type ExtractedPropsWithoutAnnotation = PropTypes.InferProps<
+    typeof propTypesWithoutAnnotation
+>;
 type ExtractedPropsFromOuterPropsWithoutAnnotation = PropTypes.InferProps<
     typeof outerPropTypesWithoutAnnotation
 >["props"];
 
 // $ExpectType true
-type ExtractPropsMatch = ExtractedProps extends ExtractedPropsWithoutAnnotation ? true : false;
+type ExtractPropsMatch = ExtractedProps extends ExtractedPropsWithoutAnnotation
+    ? true
+    : false;
 // $ExpectType true
-type ExtractPropsMatch2 = ExtractedPropsWithoutAnnotation extends ExtractedProps ? true : false;
+type ExtractPropsMatch2 = ExtractedPropsWithoutAnnotation extends ExtractedProps
+    ? true
+    : false;
 // $ExpectType true
 type ExtractPropsMatch3 = ExtractedProps extends Props ? true : false;
 // $ExpectType true
-type ExtractPropsMatch4 = Props extends ExtractedPropsWithoutAnnotation ? true : false;
-// $ExpectType true
-type ExtractFromOuterPropsMatch = ExtractedPropsFromOuterProps extends ExtractedPropsFromOuterPropsWithoutAnnotation
+type ExtractPropsMatch4 = Props extends ExtractedPropsWithoutAnnotation
     ? true
     : false;
 // $ExpectType true
-type ExtractFromOuterPropsMatch2 = ExtractedPropsFromOuterPropsWithoutAnnotation extends ExtractedPropsFromOuterProps
+type ExtractFromOuterPropsMatch =
+    ExtractedPropsFromOuterProps extends ExtractedPropsFromOuterPropsWithoutAnnotation
+        ? true
+        : false;
+// $ExpectType true
+type ExtractFromOuterPropsMatch2 =
+    ExtractedPropsFromOuterPropsWithoutAnnotation extends ExtractedPropsFromOuterProps
+        ? true
+        : false;
+// $ExpectType true
+type ExtractFromOuterPropsMatch3 = ExtractedPropsFromOuterProps extends Props
     ? true
     : false;
 // $ExpectType true
-type ExtractFromOuterPropsMatch3 = ExtractedPropsFromOuterProps extends Props ? true : false;
-// $ExpectType true
-type ExtractFromOuterPropsMatch4 = Props extends ExtractedPropsFromOuterPropsWithoutAnnotation ? true : false;
+type ExtractFromOuterPropsMatch4 =
+    Props extends ExtractedPropsFromOuterPropsWithoutAnnotation ? true : false;
 
 // $ExpectType false
 type ExtractPropsMismatch = ExtractedPartialProps extends Props ? true : false;
 
-PropTypes.checkPropTypes({ xs: PropTypes.array }, { xs: [] }, "location", "componentName");
+PropTypes.checkPropTypes(
+    { xs: PropTypes.array },
+    { xs: [] },
+    "location",
+    "componentName",
+);
 PropTypes.resetWarningCache();
 
 // This would be the type that JSX sees
-type Defaultize<T, D> =
-    & Pick<T, Exclude<keyof T, keyof D>>
-    & Partial<Pick<T, Extract<keyof T, keyof D>>>
-    & Partial<Pick<D, Exclude<keyof D, keyof T>>>;
+type Defaultize<T, D> = Pick<T, Exclude<keyof T, keyof D>> &
+    Partial<Pick<T, Extract<keyof T, keyof D>>> &
+    Partial<Pick<D, Exclude<keyof D, keyof T>>>;
 
 // This would be the type inside the component
-type Undefaultize<T, D> =
-    & Pick<T, Exclude<keyof T, keyof D>>
-    & { [K in Extract<keyof T, keyof D>]-?: Exclude<T[K], undefined> }
-    & Required<Pick<D, Exclude<keyof D, keyof T>>>;
+type Undefaultize<T, D> = Pick<T, Exclude<keyof T, keyof D>> & {
+    [K in Extract<keyof T, keyof D>]-?: Exclude<T[K], undefined>;
+} & Required<Pick<D, Exclude<keyof D, keyof T>>>;
 
 const componentPropTypes = {
     fi: PropTypes.func.isRequired,
@@ -201,8 +234,14 @@ const componentDefaultProps = {
     bat: ["This", "is", "a", "string"],
 };
 
-type DefaultizedProps = Defaultize<PropTypes.InferProps<typeof componentPropTypes>, typeof componentDefaultProps>;
-type UndefaultizedProps = Undefaultize<PropTypes.InferProps<typeof componentPropTypes>, typeof componentDefaultProps>;
+type DefaultizedProps = Defaultize<
+    PropTypes.InferProps<typeof componentPropTypes>,
+    typeof componentDefaultProps
+>;
+type UndefaultizedProps = Undefaultize<
+    PropTypes.InferProps<typeof componentPropTypes>,
+    typeof componentDefaultProps
+>;
 
 // $ExpectType true
 type DefaultizedPropsTest = {
@@ -211,7 +250,9 @@ type DefaultizedPropsTest = {
     bar: number;
     baz?: boolean | null | undefined;
     bat?: ReactNode | undefined;
-} extends DefaultizedProps ? true : false;
+} extends DefaultizedProps
+    ? true
+    : false;
 // $ExpectType true
 type UndefaultizedPropsTest = {
     fi: (...args: any[]) => any;
@@ -219,4 +260,6 @@ type UndefaultizedPropsTest = {
     bar: number;
     baz: boolean;
     bat: Exclude<ReactNode, undefined>;
-} extends UndefaultizedProps ? true : false;
+} extends UndefaultizedProps
+    ? true
+    : false;

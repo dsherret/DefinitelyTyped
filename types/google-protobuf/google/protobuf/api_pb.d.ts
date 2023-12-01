@@ -17,15 +17,22 @@ export class Api extends jspb.Message {
     clearOptionsList(): Api;
     getOptionsList(): google_protobuf_type_pb.Option[];
     setOptionsList(value: google_protobuf_type_pb.Option[]): Api;
-    addOptions(value?: google_protobuf_type_pb.Option, index?: number): google_protobuf_type_pb.Option;
+    addOptions(
+        value?: google_protobuf_type_pb.Option,
+        index?: number,
+    ): google_protobuf_type_pb.Option;
 
     getVersion(): string;
     setVersion(value: string): Api;
 
     hasSourceContext(): boolean;
     clearSourceContext(): Api;
-    getSourceContext(): google_protobuf_source_context_pb.SourceContext | undefined;
-    setSourceContext(value?: google_protobuf_source_context_pb.SourceContext): Api;
+    getSourceContext():
+        | google_protobuf_source_context_pb.SourceContext
+        | undefined;
+    setSourceContext(
+        value?: google_protobuf_source_context_pb.SourceContext,
+    ): Api;
 
     clearMixinsList(): Api;
     getMixinsList(): Mixin[];
@@ -39,10 +46,18 @@ export class Api extends jspb.Message {
     toObject(includeInstance?: boolean): Api.AsObject;
     static toObject(includeInstance: boolean, msg: Api): Api.AsObject;
     static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
-    static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
-    static serializeBinaryToWriter(message: Api, writer: jspb.BinaryWriter): void;
+    static extensionsBinary: {
+        [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>;
+    };
+    static serializeBinaryToWriter(
+        message: Api,
+        writer: jspb.BinaryWriter,
+    ): void;
     static deserializeBinary(bytes: Uint8Array): Api;
-    static deserializeBinaryFromReader(message: Api, reader: jspb.BinaryReader): Api;
+    static deserializeBinaryFromReader(
+        message: Api,
+        reader: jspb.BinaryReader,
+    ): Api;
 }
 
 export namespace Api {
@@ -51,7 +66,9 @@ export namespace Api {
         methodsList: Method.AsObject[];
         optionsList: google_protobuf_type_pb.Option.AsObject[];
         version: string;
-        sourceContext?: google_protobuf_source_context_pb.SourceContext.AsObject | undefined;
+        sourceContext?:
+            | google_protobuf_source_context_pb.SourceContext.AsObject
+            | undefined;
         mixinsList: Mixin.AsObject[];
         syntax: google_protobuf_type_pb.Syntax;
     };
@@ -76,7 +93,10 @@ export class Method extends jspb.Message {
     clearOptionsList(): Method;
     getOptionsList(): google_protobuf_type_pb.Option[];
     setOptionsList(value: google_protobuf_type_pb.Option[]): Method;
-    addOptions(value?: google_protobuf_type_pb.Option, index?: number): google_protobuf_type_pb.Option;
+    addOptions(
+        value?: google_protobuf_type_pb.Option,
+        index?: number,
+    ): google_protobuf_type_pb.Option;
 
     getSyntax(): google_protobuf_type_pb.Syntax;
     setSyntax(value: google_protobuf_type_pb.Syntax): Method;
@@ -85,10 +105,18 @@ export class Method extends jspb.Message {
     toObject(includeInstance?: boolean): Method.AsObject;
     static toObject(includeInstance: boolean, msg: Method): Method.AsObject;
     static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
-    static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
-    static serializeBinaryToWriter(message: Method, writer: jspb.BinaryWriter): void;
+    static extensionsBinary: {
+        [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>;
+    };
+    static serializeBinaryToWriter(
+        message: Method,
+        writer: jspb.BinaryWriter,
+    ): void;
     static deserializeBinary(bytes: Uint8Array): Method;
-    static deserializeBinaryFromReader(message: Method, reader: jspb.BinaryReader): Method;
+    static deserializeBinaryFromReader(
+        message: Method,
+        reader: jspb.BinaryReader,
+    ): Method;
 }
 
 export namespace Method {
@@ -114,10 +142,18 @@ export class Mixin extends jspb.Message {
     toObject(includeInstance?: boolean): Mixin.AsObject;
     static toObject(includeInstance: boolean, msg: Mixin): Mixin.AsObject;
     static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
-    static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
-    static serializeBinaryToWriter(message: Mixin, writer: jspb.BinaryWriter): void;
+    static extensionsBinary: {
+        [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>;
+    };
+    static serializeBinaryToWriter(
+        message: Mixin,
+        writer: jspb.BinaryWriter,
+    ): void;
     static deserializeBinary(bytes: Uint8Array): Mixin;
-    static deserializeBinaryFromReader(message: Mixin, reader: jspb.BinaryReader): Mixin;
+    static deserializeBinaryFromReader(
+        message: Mixin,
+        reader: jspb.BinaryReader,
+    ): Mixin;
 }
 
 export namespace Mixin {

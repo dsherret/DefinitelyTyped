@@ -82,7 +82,10 @@ export interface Transaction {
 export interface Client extends EventEmitter {
     connect(): void;
     close(): void;
-    create(path: string, callback: (error: Error | Exception, path: string) => void): void;
+    create(
+        path: string,
+        callback: (error: Error | Exception, path: string) => void,
+    ): void;
     create(
         path: string,
         dataOrAclsOrmode1: Buffer | ACL[] | number,
@@ -102,37 +105,77 @@ export interface Client extends EventEmitter {
         callback: (error: Error | Exception, path: string) => void,
     ): void;
     remove(path: string, callback: (error: Error | Exception) => void): void;
-    remove(path: string, version: number, callback: (error: Error | Exception) => void): void;
-    exists(path: string, callback: (error: Error | Exception, stat: Stat) => void): void;
+    remove(
+        path: string,
+        version: number,
+        callback: (error: Error | Exception) => void,
+    ): void;
+    exists(
+        path: string,
+        callback: (error: Error | Exception, stat: Stat) => void,
+    ): void;
     exists(
         path: string,
         watcher: (event: Event) => void,
         callback: (error: Error | Exception, stat: Stat) => void,
     ): void;
-    getChildren(path: string, callback: (error: Error | Exception, children: string[], stat: Stat) => void): void;
+    getChildren(
+        path: string,
+        callback: (
+            error: Error | Exception,
+            children: string[],
+            stat: Stat,
+        ) => void,
+    ): void;
     getChildren(
         path: string,
         watcher: (event: Event) => void,
-        callback: (error: Error | Exception, children: string[], stat: Stat) => void,
+        callback: (
+            error: Error | Exception,
+            children: string[],
+            stat: Stat,
+        ) => void,
     ): void;
-    getData(path: string, callback: (error: Error | Exception, data: Buffer, stat: Stat) => void): void;
+    getData(
+        path: string,
+        callback: (error: Error | Exception, data: Buffer, stat: Stat) => void,
+    ): void;
     getData(
         path: string,
         watcher: (event: Event) => void,
         callback: (error: Error | Exception, data: Buffer, stat: Stat) => void,
     ): void;
-    setData(path: string, data: Buffer | null, callback: (error: Error | Exception, stat: Stat) => void): void;
+    setData(
+        path: string,
+        data: Buffer | null,
+        callback: (error: Error | Exception, stat: Stat) => void,
+    ): void;
     setData(
         path: string,
         data: Buffer | null,
         version: number,
         callback: (error: Error | Exception, stat: Stat) => void,
     ): void;
-    getACL(path: string, callback: (error: Error | Exception, acls: ACL[], stat: Stat) => void): void;
-    setACL(path: string, acls: ACL[], callback: (error: Error | Exception, stat: Stat) => void): void;
-    setACL(path: string, acls: ACL[], version: number, callback: (error: Error | Exception, stat: Stat) => void): void;
+    getACL(
+        path: string,
+        callback: (error: Error | Exception, acls: ACL[], stat: Stat) => void,
+    ): void;
+    setACL(
+        path: string,
+        acls: ACL[],
+        callback: (error: Error | Exception, stat: Stat) => void,
+    ): void;
+    setACL(
+        path: string,
+        acls: ACL[],
+        version: number,
+        callback: (error: Error | Exception, stat: Stat) => void,
+    ): void;
     transaction(): Transaction;
-    mkdirp(path: string, callback: (error: Error | Exception, path: string) => void): void;
+    mkdirp(
+        path: string,
+        callback: (error: Error | Exception, path: string) => void,
+    ): void;
     mkdirp(
         path: string,
         dataOrAclsOrmode1: Buffer | ACL[] | number,
@@ -159,19 +202,37 @@ export interface Client extends EventEmitter {
 
     on(event: "state", cb: (state: State) => void): this;
     on(
-        event: "connected" | "connectedReadOnly" | "disconnected" | "expired" | "authenticationFailed" | string,
+        event:
+            | "connected"
+            | "connectedReadOnly"
+            | "disconnected"
+            | "expired"
+            | "authenticationFailed"
+            | string,
         cb: () => void,
     ): this;
 
     once(event: "state", cb: (state: State) => void): this;
     once(
-        event: "connected" | "connectedReadOnly" | "disconnected" | "expired" | "authenticationFailed" | string,
+        event:
+            | "connected"
+            | "connectedReadOnly"
+            | "disconnected"
+            | "expired"
+            | "authenticationFailed"
+            | string,
         cb: () => void,
     ): this;
 
     addListener(event: "state", cb: (state: State) => void): this;
     addListener(
-        event: "connected" | "connectedReadOnly" | "disconnected" | "expired" | "authenticationFailed" | string,
+        event:
+            | "connected"
+            | "connectedReadOnly"
+            | "disconnected"
+            | "expired"
+            | "authenticationFailed"
+            | string,
         cb: () => void,
     ): this;
 }
@@ -182,7 +243,10 @@ export interface Option {
     retries: number;
 }
 
-export function createClient(connectionString: string, options?: Partial<Option>): Client;
+export function createClient(
+    connectionString: string,
+    options?: Partial<Option>,
+): Client;
 
 export const CreateMode: {
     PERSISTENT: number;

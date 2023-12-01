@@ -30,7 +30,12 @@ export interface EscapeFunctions {
      * @param stringifyObjects If true, don't convert objects into SQL lists
      * @param timeZone Convert dates from UTC to the given timezone.
      */
-    format(sql: string, values: any[], stringifyObjects?: boolean, timeZone?: string): string;
+    format(
+        sql: string,
+        values: any[],
+        stringifyObjects?: boolean,
+        timeZone?: string,
+    ): string;
 }
 
 /**
@@ -40,7 +45,11 @@ export interface EscapeFunctions {
  * @param stringifyObjects If true, don't convert objects into SQL lists
  * @param timeZone Convert dates from UTC to the given timezone.
  */
-export function escape(value: any, stringifyObjects?: boolean, timeZone?: string): string;
+export function escape(
+    value: any,
+    stringifyObjects?: boolean,
+    timeZone?: string,
+): string;
 
 /**
  * Escape an untrusted string to be used as a SQL identifier (database,
@@ -58,9 +67,16 @@ export function escapeId(value: string, forbidQualified?: boolean): string;
  * @param stringifyObjects If true, don't convert objects into SQL lists
  * @param timeZone Convert dates from UTC to the given timezone.
  */
-export function format(sql: string, values: any[], stringifyObjects?: boolean, timeZone?: string): string;
+export function format(
+    sql: string,
+    values: any[],
+    stringifyObjects?: boolean,
+    timeZone?: string,
+): string;
 
-export function createConnection(connectionUri: string | ConnectionConfig): Connection;
+export function createConnection(
+    connectionUri: string | ConnectionConfig,
+): Connection;
 
 export function createPool(config: PoolConfig | string): Pool;
 
@@ -79,7 +95,12 @@ export function raw(sql: string): {
 export interface Connection extends EscapeFunctions, events.EventEmitter {
     config: ConnectionConfig;
 
-    state: "connected" | "authenticated" | "disconnected" | "protocol_error" | string;
+    state:
+        | "connected"
+        | "authenticated"
+        | "disconnected"
+        | "protocol_error"
+        | string;
 
     threadId: number | null;
 
@@ -87,19 +108,31 @@ export interface Connection extends EscapeFunctions, events.EventEmitter {
 
     connect(callback?: (err: MysqlError, ...args: any[]) => void): void;
 
-    connect(options: any, callback?: (err: MysqlError, ...args: any[]) => void): void;
+    connect(
+        options: any,
+        callback?: (err: MysqlError, ...args: any[]) => void,
+    ): void;
 
-    changeUser(options: ConnectionOptions, callback?: (err: MysqlError) => void): void;
+    changeUser(
+        options: ConnectionOptions,
+        callback?: (err: MysqlError) => void,
+    ): void;
     changeUser(callback: (err: MysqlError) => void): void;
 
-    beginTransaction(options?: QueryOptions, callback?: (err: MysqlError) => void): void;
+    beginTransaction(
+        options?: QueryOptions,
+        callback?: (err: MysqlError) => void,
+    ): void;
 
     beginTransaction(callback: (err: MysqlError) => void): void;
 
     commit(options?: QueryOptions, callback?: (err: MysqlError) => void): void;
     commit(callback: (err: MysqlError) => void): void;
 
-    rollback(options?: QueryOptions, callback?: (err: MysqlError) => void): void;
+    rollback(
+        options?: QueryOptions,
+        callback?: (err: MysqlError) => void,
+    ): void;
     rollback(callback: (err: MysqlError) => void): void;
 
     query: QueryFunction;
@@ -107,7 +140,10 @@ export interface Connection extends EscapeFunctions, events.EventEmitter {
     ping(options?: QueryOptions, callback?: (err: MysqlError) => void): void;
     ping(callback: (err: MysqlError) => void): void;
 
-    statistics(options?: QueryOptions, callback?: (err: MysqlError) => void): void;
+    statistics(
+        options?: QueryOptions,
+        callback?: (err: MysqlError) => void,
+    ): void;
     statistics(callback: (err: MysqlError) => void): void;
 
     /**
@@ -156,7 +192,9 @@ export interface PoolConnection extends Connection {
 export interface Pool extends EscapeFunctions, events.EventEmitter {
     config: PoolActualConfig;
 
-    getConnection(callback: (err: MysqlError, connection: PoolConnection) => void): void;
+    getConnection(
+        callback: (err: MysqlError, connection: PoolConnection) => void,
+    ): void;
 
     acquireConnection(
         connection: PoolConnection,
@@ -195,9 +233,14 @@ export interface PoolCluster extends events.EventEmitter {
      */
     remove(pattern: string): void;
 
-    getConnection(callback: (err: MysqlError, connection: PoolConnection) => void): void;
+    getConnection(
+        callback: (err: MysqlError, connection: PoolConnection) => void,
+    ): void;
 
-    getConnection(pattern: string, callback: (err: MysqlError, connection: PoolConnection) => void): void;
+    getConnection(
+        pattern: string,
+        callback: (err: MysqlError, connection: PoolConnection) => void,
+    ): void;
 
     getConnection(
         pattern: string,
@@ -264,14 +307,18 @@ export interface Query {
 
     on(ev: "error", callback: (err: MysqlError) => void): Query;
 
-    on(ev: "fields", callback: (fields: FieldInfo[], index: number) => void): Query;
+    on(
+        ev: "fields",
+        callback: (fields: FieldInfo[], index: number) => void,
+    ): Query;
 
     on(ev: "packet", callback: (packet: any) => void): Query;
 
     on(ev: "end", callback: () => void): Query;
 }
 
-export interface GeometryType extends Array<{ x: number; y: number } | GeometryType> {
+export interface GeometryType
+    extends Array<{ x: number; y: number } | GeometryType> {
     x: number;
     y: number;
 }
@@ -279,17 +326,21 @@ export interface GeometryType extends Array<{ x: number; y: number } | GeometryT
 export type TypeCast =
     | boolean
     | ((
-        field: UntypedFieldInfo & {
-            type: string;
-            length: number;
-            string(): null | string;
-            buffer(): null | Buffer;
-            geometry(): null | GeometryType;
-        },
-        next: () => void,
-    ) => any);
+          field: UntypedFieldInfo & {
+              type: string;
+              length: number;
+              string(): null | string;
+              buffer(): null | Buffer;
+              geometry(): null | GeometryType;
+          },
+          next: () => void,
+      ) => any);
 
-export type queryCallback = (err: MysqlError | null, results?: any, fields?: FieldInfo[]) => void;
+export type queryCallback = (
+    err: MysqlError | null,
+    results?: any,
+    fields?: FieldInfo[],
+) => void;
 
 // values can be non [], see custom format (https://github.com/mysqljs/mysql#custom-format)
 export interface QueryFunction {
@@ -297,7 +348,11 @@ export interface QueryFunction {
 
     (options: string | QueryOptions, callback?: queryCallback): Query;
 
-    (options: string | QueryOptions, values: any, callback?: queryCallback): Query;
+    (
+        options: string | QueryOptions,
+        values: any,
+        callback?: queryCallback,
+    ): Query;
 }
 
 export interface QueryOptions {
@@ -465,7 +520,10 @@ export interface ConnectionConfig extends ConnectionOptions {
      * Force date types (TIMESTAMP, DATETIME, DATE) to be returned as strings rather then inflated into JavaScript
      * Date objects. Can be true/false or an array of type names to keep as strings. (Default: false)
      */
-    dateStrings?: boolean | Array<"TIMESTAMP" | "DATETIME" | "DATE"> | undefined;
+    dateStrings?:
+        | boolean
+        | Array<"TIMESTAMP" | "DATETIME" | "DATE">
+        | undefined;
 
     /**
      * This will print all incoming and outgoing packets on stdout.
@@ -494,7 +552,12 @@ export interface ConnectionConfig extends ConnectionOptions {
     /**
      * object with ssl parameters or a string containing name of ssl profile
      */
-    ssl?: string | (tls.SecureContextOptions & { rejectUnauthorized?: boolean | undefined }) | undefined;
+    ssl?:
+        | string
+        | (tls.SecureContextOptions & {
+              rejectUnauthorized?: boolean | undefined;
+          })
+        | undefined;
 }
 
 export interface PoolSpecificConfig {
@@ -523,8 +586,7 @@ export interface PoolSpecificConfig {
     queueLimit?: number | undefined;
 }
 
-export interface PoolConfig extends PoolSpecificConfig, ConnectionConfig {
-}
+export interface PoolConfig extends PoolSpecificConfig, ConnectionConfig {}
 
 export interface PoolActualConfig extends PoolSpecificConfig {
     connectionConfig: ConnectionConfig;

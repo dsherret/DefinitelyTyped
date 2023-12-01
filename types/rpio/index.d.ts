@@ -190,7 +190,11 @@ interface Rpio {
      * @param cb - callback with the pin that changed
      * @param direction - POLL_LOW | POLL_HIGH | POLL_BOTH, default = POLL_BOTH
      */
-    poll(pin: number, cb: RPIO.CallbackFunction | null, direction?: number): void;
+    poll(
+        pin: number,
+        cb: RPIO.CallbackFunction | null,
+        direction?: number,
+    ): void;
 
     /**
      * Indicate that the pin will no longer be used, and clear any poll
@@ -262,7 +266,11 @@ interface Rpio {
      * @param length - the max number of bits to read, default = buffer.length
      * @returns a status code
      */
-    i2cReadRegisterRestart(register: number, buffer: Buffer, length?: number): RPIO.I2cStatusCode;
+    i2cReadRegisterRestart(
+        register: number,
+        buffer: Buffer,
+        length?: number,
+    ): RPIO.I2cStatusCode;
 
     /*
      * Write cmdlen commands from cmdbuf to device before issuing a repeated
@@ -273,7 +281,12 @@ interface Rpio {
      * @param rlen
      * @returns a status code
      */
-    i2cWriteReadRestart(cmdbuf: Buffer, cmdlen: number, rbuf: Buffer, rlen: number): RPIO.I2cStatusCode;
+    i2cWriteReadRestart(
+        cmdbuf: Buffer,
+        cmdlen: number,
+        rbuf: Buffer,
+        rlen: number,
+    ): RPIO.I2cStatusCode;
 
     /**
      * Set the baud rate.
@@ -551,9 +564,9 @@ declare namespace RPIO {
      * Return codes for I2C read and write operations.
      */
     enum I2cStatusCode {
-        OK = 0x00, /*!< Success */
-        ERROR_NACK = 0x01, /*!< Received a NACK */
-        ERROR_CLKT = 0x02, /*!< Received Clock Stretch Timeout */
-        ERROR_DATA = 0x04, /*!< Not all data is sent / received */
+        OK = 0x00 /*!< Success */,
+        ERROR_NACK = 0x01 /*!< Received a NACK */,
+        ERROR_CLKT = 0x02 /*!< Received Clock Stretch Timeout */,
+        ERROR_DATA = 0x04 /*!< Not all data is sent / received */,
     }
 }

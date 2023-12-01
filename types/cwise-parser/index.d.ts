@@ -13,5 +13,7 @@ declare namespace cwise_parser {
     }
 }
 
-declare function cwise_parser<T>(func: (a: number, ...args: T[]) => any): cwise_parser.CompiledRoutine;
+declare function cwise_parser<T>(
+    func: (a: number, ...args: T[]) => any,
+): cwise_parser.CompiledRoutine;
 export = cwise_parser;

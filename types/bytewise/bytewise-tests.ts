@@ -7,4 +7,6 @@ bytewise.encode([1, 2, 3]);
 bytewise.decode(bytewise.encode([1, 2, 3]));
 
 // $ExpectType Buffer
-bytewise.encode(bytewise.sorts.array.bound.lower(["123", -1, 0x123, Buffer.from("test")]));
+bytewise.encode(
+    bytewise.sorts.array.bound.lower(["123", -1, 0x123, Buffer.from("test")]),
+);

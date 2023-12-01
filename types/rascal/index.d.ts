@@ -42,21 +42,21 @@ export interface ConnectionAttributes {
     loggableUrl?: string | undefined;
     options?:
         | {
-            heartbeat?: number | undefined;
-            timeout?: number | undefined;
-            channelMax?: number | undefined;
-            connection_timeout?: number | undefined;
-            [key: string]: any;
-        }
+              heartbeat?: number | undefined;
+              timeout?: number | undefined;
+              channelMax?: number | undefined;
+              connection_timeout?: number | undefined;
+              [key: string]: any;
+          }
         | undefined;
     socketOptions?:
         | {
-            timeout?: number | undefined;
-            clientProperties?: {
-                connection_name?: string | undefined;
-                [key: string]: string | undefined;
-            };
-        }
+              timeout?: number | undefined;
+              clientProperties?: {
+                  connection_name?: string | undefined;
+                  [key: string]: string | undefined;
+              };
+          }
         | undefined;
 }
 
@@ -88,40 +88,40 @@ export interface VhostConfig {
     namespace?: string | boolean | undefined;
     publicationChannelPools?:
         | {
-            regularPool?: ChannelPoolConfig | undefined;
-            confirmPool?: ChannelPoolConfig | undefined;
-        }
+              regularPool?: ChannelPoolConfig | undefined;
+              confirmPool?: ChannelPoolConfig | undefined;
+          }
         | undefined;
     connection?: ConnectionConfig | undefined;
     connections?: ConnectionConfig[] | undefined;
     connectionStrategy?: "random" | "fixed" | undefined;
     exchanges?:
         | {
-            [key: string]: ExchangeConfig;
-        }
+              [key: string]: ExchangeConfig;
+          }
         | Array<string | ExchangeConfig>
         | undefined;
     queues?:
         | {
-            [key: string]: QueueConfig;
-        }
+              [key: string]: QueueConfig;
+          }
         | Array<string | QueueConfig>
         | undefined;
     bindings?:
         | {
-            [key: string]: BindingConfig;
-        }
+              [key: string]: BindingConfig;
+          }
         | Array<string | BindingConfig>
         | undefined;
     publications?:
         | {
-            [key: string]: PublicationConfig;
-        }
+              [key: string]: PublicationConfig;
+          }
         | undefined;
     subscriptions?:
         | {
-            [key: string]: SubscriptionConfig;
-        }
+              [key: string]: SubscriptionConfig;
+          }
         | undefined;
 }
 
@@ -146,11 +146,11 @@ export interface Encryption {
 export interface Redelivery {
     counters?:
         | {
-            [key: string]: {
-                type: "stub" | "inMemory" | "inMemoryCluster";
-                size?: number | undefined;
-            };
-        }
+              [key: string]: {
+                  type: "stub" | "inMemory" | "inMemoryCluster";
+                  size?: number | undefined;
+              };
+          }
         | undefined;
 }
 
@@ -180,40 +180,40 @@ export interface SubscriptionConfig {
     autoCreated?: boolean | undefined;
     redeliveries?:
         | {
-            counter: string;
-            limit: number;
-            timeout?: number | undefined;
-        }
+              counter: string;
+              limit: number;
+              timeout?: number | undefined;
+          }
         | undefined;
 }
 
 interface BrokerConfig {
     vhosts?:
         | {
-            [key: string]: VhostConfig;
-        }
+              [key: string]: VhostConfig;
+          }
         | undefined;
     publications?:
         | {
-            [key: string]: PublicationConfig;
-        }
+              [key: string]: PublicationConfig;
+          }
         | undefined;
     subscriptions?:
         | {
-            [key: string]: SubscriptionConfig;
-        }
+              [key: string]: SubscriptionConfig;
+          }
         | undefined;
     redeliveries?: Redelivery | undefined;
     recovery?:
         | {
-            [key: string]: Recovery | Recovery[];
-        }
+              [key: string]: Recovery | Recovery[];
+          }
         | undefined;
     defaults?: VhostConfig | undefined;
     encryption?:
         | {
-            [key: string]: Encryption;
-        }
+              [key: string]: Encryption;
+          }
         | undefined;
 }
 
@@ -437,28 +437,58 @@ export class SubscriberSessionAsPromised extends EventEmitter {
     name: string;
     cancel(): Promise<void>;
 
-    on(event: "message", listener: (message: Message, content: any, ackOrNackFn: AckOrNack) => void): this;
+    on(
+        event: "message",
+        listener: (
+            message: Message,
+            content: any,
+            ackOrNackFn: AckOrNack,
+        ) => void,
+    ): this;
     on(event: "error" | "cancelled", listener: (err: Error) => void): this;
     on(
-        event: "invalid_content" | "redeliveries_exceeded" | "redeliveries_error",
-        listener: (err: Error, message: Message, ackOrNackFn: AckOrNack) => void,
+        event:
+            | "invalid_content"
+            | "redeliveries_exceeded"
+            | "redeliveries_error",
+        listener: (
+            err: Error,
+            message: Message,
+            ackOrNackFn: AckOrNack,
+        ) => void,
     ): this;
 }
 
 declare class BrokerAsPromised extends EventEmitter {
     readonly config: BrokerConfig;
-    static create(config: BrokerConfig, components?: any): Promise<BrokerAsPromised>;
+    static create(
+        config: BrokerConfig,
+        components?: any,
+    ): Promise<BrokerAsPromised>;
     constructor(broker: Broker);
     connect(name: string): Promise<Connection>;
     nuke(): Promise<void>;
     purge(): Promise<void>;
     shutdown(): Promise<void>;
     bounce(): Promise<void>;
-    publish(name: string, message: any, overrides?: PublicationConfig | string): Promise<PublicationSession>;
-    forward(name: string, message: any, overrides?: PublicationConfig | string): Promise<PublicationSession>;
+    publish(
+        name: string,
+        message: any,
+        overrides?: PublicationConfig | string,
+    ): Promise<PublicationSession>;
+    forward(
+        name: string,
+        message: any,
+        overrides?: PublicationConfig | string,
+    ): Promise<PublicationSession>;
     unsubscribeAll(): Promise<void>;
-    subscribe(name: string, overrides?: SubscriptionConfig): Promise<SubscriberSessionAsPromised>;
-    subscribeAll(filter?: (config: SubscriptionConfig) => boolean): Promise<SubscriberSessionAsPromised[]>;
+    subscribe(
+        name: string,
+        overrides?: SubscriptionConfig,
+    ): Promise<SubscriberSessionAsPromised>;
+    subscribeAll(
+        filter?: (config: SubscriptionConfig) => boolean,
+    ): Promise<SubscriberSessionAsPromised[]>;
 }
 
 export class SubscriptionSession extends EventEmitter {
@@ -466,36 +496,64 @@ export class SubscriptionSession extends EventEmitter {
     isCancelled(): boolean;
     cancel(next: ErrorCb): void;
 
-    on(event: "message", listener: (message: Message, content: any, ackOrNackFn: AckOrNack) => void): this;
+    on(
+        event: "message",
+        listener: (
+            message: Message,
+            content: any,
+            ackOrNackFn: AckOrNack,
+        ) => void,
+    ): this;
     on(event: "error" | "cancelled", listener: (err: Error) => void): this;
     on(
-        event: "invalid_content" | "redeliveries_exceeded" | "redeliveries_error",
-        listener: (err: Error, message: Message, ackOrNackFn: AckOrNack) => void,
+        event:
+            | "invalid_content"
+            | "redeliveries_exceeded"
+            | "redeliveries_error",
+        listener: (
+            err: Error,
+            message: Message,
+            ackOrNackFn: AckOrNack,
+        ) => void,
     ): this;
 }
 
 type Cb<E, A> = (...x: [E, never] | [null, A]) => void;
 type ErrorCb = (x: Error | null) => void;
 type CreateCb = (...x: [Error, Broker] | [null, Broker]) => void;
-type ConnectCb = (...x: [Error, null] | [Error, Connection] | [null, Connection]) => void;
+type ConnectCb = (
+    ...x: [Error, null] | [Error, Connection] | [null, Connection]
+) => void;
 
 declare class Broker extends EventEmitter {
     readonly config: BrokerConfig;
     static create(config: BrokerConfig, next: CreateCb): void;
-    static create(config: BrokerConfig, components: unknown, next: CreateCb): void;
+    static create(
+        config: BrokerConfig,
+        components: unknown,
+        next: CreateCb,
+    ): void;
     connect(name: string, next: ConnectCb): void;
     nuke(next: ErrorCb): void;
     purge(next: ErrorCb): void;
     shutdown(next: ErrorCb): void;
     bounce(next: ErrorCb): void;
-    publish(name: string, message: any, next: Cb<Error, PublicationSession>): void;
+    publish(
+        name: string,
+        message: any,
+        next: Cb<Error, PublicationSession>,
+    ): void;
     publish(
         name: string,
         message: any,
         overrides: PublicationConfig | string,
         next: Cb<Error, PublicationSession>,
     ): void;
-    forward(name: string, message: any, next: Cb<Error, PublicationSession>): void;
+    forward(
+        name: string,
+        message: any,
+        next: Cb<Error, PublicationSession>,
+    ): void;
     forward(
         name: string,
         message: any,
@@ -503,9 +561,16 @@ declare class Broker extends EventEmitter {
         next: Cb<Error, PublicationSession>,
     ): void;
     subscribe(name: string, next: Cb<Error, SubscriptionSession>): void;
-    subscribe(name: string, overrides: SubscriptionConfig | string, next: Cb<Error, SubscriptionSession>): void;
+    subscribe(
+        name: string,
+        overrides: SubscriptionConfig | string,
+        next: Cb<Error, SubscriptionSession>,
+    ): void;
     subscribeAll(next: Cb<Error, SubscriptionSession[]>): void;
-    subscribeAll(filter: (config: SubscriptionConfig) => boolean, next: Cb<Error, SubscriptionSession[]>): void;
+    subscribeAll(
+        filter: (config: SubscriptionConfig) => boolean,
+        next: Cb<Error, SubscriptionSession[]>,
+    ): void;
     unsubscribeAll(next: ErrorCb): void;
 }
 
@@ -521,7 +586,10 @@ export class PublicationSession extends EventEmitter {
 }
 
 export class Vhost extends EventEmitter {
-    static create(config: VhostConfig, next: (err?: Error, vhost?: Vhost) => void): void;
+    static create(
+        config: VhostConfig,
+        next: (err?: Error, vhost?: Vhost) => void,
+    ): void;
     init(next: (err?: Error, vhost?: Vhost) => void): Vhost;
     shutdown(next: (err?: Error) => void): void;
     nuke(next: (err?: Error) => void): void;
@@ -541,9 +609,16 @@ export class Vhost extends EventEmitter {
 }
 
 declare function createBroker(config: BrokerConfig, next: CreateCb): void;
-declare function createBroker(config: BrokerConfig, components: unknown, next: CreateCb): void;
+declare function createBroker(
+    config: BrokerConfig,
+    components: unknown,
+    next: CreateCb,
+): void;
 
-declare function createBrokerAsPromised(config: BrokerConfig, components?: unknown): Promise<BrokerAsPromised>;
+declare function createBrokerAsPromised(
+    config: BrokerConfig,
+    components?: unknown,
+): Promise<BrokerAsPromised>;
 
 declare function withDefaultConfig(config: BrokerConfig): BrokerConfig;
 

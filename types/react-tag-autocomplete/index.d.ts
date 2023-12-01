@@ -138,13 +138,17 @@ export interface ReactTagsProps {
      * a suggestion and the current query and must return a boolean value.
      * If no function is supplied the default filter is applied. Default: null.
      */
-    suggestionsFilter?: ((suggestion: Tag, query: string) => boolean) | undefined;
+    suggestionsFilter?:
+        | ((suggestion: Tag, query: string) => boolean)
+        | undefined;
     /**
      * A callback function to apply a custom filter to the suggestions. The callback receives two arguments;
      * a query and the input suggestions and must return a new array of suggestion items.
      * Using this option you can filter and sort suggestions.
      */
-    suggestionsTransform?: ((query: string, suggestions: Tag[]) => Tag[]) | undefined;
+    suggestionsTransform?:
+        | ((query: string, suggestions: Tag[]) => Tag[])
+        | undefined;
     /**
      * Provide a custom tag component to render. Default: null.
      */

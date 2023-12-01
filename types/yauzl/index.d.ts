@@ -6,7 +6,13 @@ import { Readable } from "stream";
 export abstract class RandomAccessReader extends EventEmitter {
     _readStreamForRange(start: number, end: number): void;
     createReadStream(options: { start: number; end: number }): void;
-    read(buffer: Buffer, offset: number, length: number, position: number, callback: (err: Error | null) => void): void;
+    read(
+        buffer: Buffer,
+        offset: number,
+        length: number,
+        position: number,
+        callback: (err: Error | null) => void,
+    ): void;
     close(callback: (err: Error | null) => void): void;
 }
 
@@ -72,7 +78,10 @@ export class ZipFile extends EventEmitter {
         options: ZipFileOptions,
         callback: (err: Error | null, stream: Readable) => void,
     ): void;
-    openReadStream(entry: Entry, callback: (err: Error | null, stream: Readable) => void): void;
+    openReadStream(
+        entry: Entry,
+        callback: (err: Error | null, stream: Readable) => void,
+    ): void;
     close(): void;
     readEntry(): void;
 }
@@ -85,16 +94,33 @@ export interface Options {
     strictFileNames?: boolean | undefined;
 }
 
-export function open(path: string, options: Options, callback?: (err: Error | null, zipfile: ZipFile) => void): void;
-export function open(path: string, callback?: (err: Error | null, zipfile: ZipFile) => void): void;
-export function fromFd(fd: number, options: Options, callback?: (err: Error | null, zipfile: ZipFile) => void): void;
-export function fromFd(fd: number, callback?: (err: Error | null, zipfile: ZipFile) => void): void;
+export function open(
+    path: string,
+    options: Options,
+    callback?: (err: Error | null, zipfile: ZipFile) => void,
+): void;
+export function open(
+    path: string,
+    callback?: (err: Error | null, zipfile: ZipFile) => void,
+): void;
+export function fromFd(
+    fd: number,
+    options: Options,
+    callback?: (err: Error | null, zipfile: ZipFile) => void,
+): void;
+export function fromFd(
+    fd: number,
+    callback?: (err: Error | null, zipfile: ZipFile) => void,
+): void;
 export function fromBuffer(
     buffer: Buffer,
     options: Options,
     callback?: (err: Error | null, zipfile: ZipFile) => void,
 ): void;
-export function fromBuffer(buffer: Buffer, callback?: (err: Error | null, zipfile: ZipFile) => void): void;
+export function fromBuffer(
+    buffer: Buffer,
+    callback?: (err: Error | null, zipfile: ZipFile) => void,
+): void;
 export function fromRandomAccessReader(
     reader: RandomAccessReader,
     totalSize: number,

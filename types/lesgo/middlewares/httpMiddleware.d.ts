@@ -5,7 +5,9 @@ import { ErrorHttpMiddleware } from "./errorHttpResponseMiddleware";
 import { NormalizeHttpMiddleware } from "./normalizeHttpRequestMiddleware";
 import { SuccessHttpMiddleware } from "./successHttpResponseMiddleware";
 
-export type HttpMiddleware = NormalizeHttpMiddleware & SuccessHttpMiddleware & ErrorHttpMiddleware;
+export type HttpMiddleware = NormalizeHttpMiddleware &
+    SuccessHttpMiddleware &
+    ErrorHttpMiddleware;
 
 export interface HttpMiddlewareOptions {
     headers?: Record<string, string>;
@@ -17,4 +19,6 @@ export interface HttpMiddlewareOptions {
     event?: any;
 }
 
-export default function httpMiddleware(opts?: HttpMiddlewareOptions): HttpMiddleware;
+export default function httpMiddleware(
+    opts?: HttpMiddlewareOptions,
+): HttpMiddleware;

@@ -8,7 +8,7 @@ declare const fernet: fernet;
 type fernet = fernet.FernetConstructor & fernet.Fernet;
 
 declare namespace fernet {
-    type FernetConstructor = new(options?: Options) => Fernet;
+    type FernetConstructor = new (options?: Options) => Fernet;
     interface Fernet {
         Hex: typeof Hex;
         Base64: typeof Base64;
@@ -80,7 +80,7 @@ declare namespace fernet {
         secret?: string;
     }
 
-    type SecretConstructor = new(secret64: string) => Secret;
+    type SecretConstructor = new (secret64: string) => Secret;
     interface Secret {
         readonly signingKeyHex: string;
         readonly signingKey: CryptoJS.lib.WordArray;
@@ -88,7 +88,7 @@ declare namespace fernet {
         readonly encryptionKey: CryptoJS.lib.WordArray;
     }
 
-    type TokenConstructor = new(options?: TokenOptions) => Token;
+    type TokenConstructor = new (options?: TokenOptions) => Token;
     interface Token {
         secret?: Secret | undefined;
         encoded?: boolean | undefined;

@@ -1,5 +1,11 @@
 import { Component, ReactNode } from "react";
-import { GestureResponderHandlers, ListViewProperties, StyleProp, TextInputProperties, ViewStyle } from "react-native";
+import {
+    GestureResponderHandlers,
+    ListViewProperties,
+    StyleProp,
+    TextInputProperties,
+    ViewStyle,
+} from "react-native";
 
 export interface AutocompleteProps<T> extends TextInputProperties {
     /**
@@ -48,7 +54,9 @@ export interface AutocompleteProps<T> extends TextInputProperties {
      * function
      * onStartShouldSetResponderCapture will be passed to the result list view container (onStartShouldSetResponderCapture).
      */
-    onStartShouldSetResponderCapture?: GestureResponderHandlers["onStartShouldSetResponderCapture"] | undefined;
+    onStartShouldSetResponderCapture?:
+        | GestureResponderHandlers["onStartShouldSetResponderCapture"]
+        | undefined;
 
     /**
      * function

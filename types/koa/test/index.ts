@@ -18,7 +18,7 @@ const app = new Koa<{}, DbBaseContext>();
 
 app.context.db = () => {};
 
-app.use(async ctx => {
+app.use(async (ctx) => {
     if (ctx.errors) {
         ctx.throw(ctx.errors[0], 400);
     }
@@ -32,7 +32,7 @@ app.use(async (ctx, next) => {
     }
 });
 
-app.use<{}, UserContext>(async ctx => {
+app.use<{}, UserContext>(async (ctx) => {
     console.log(ctx.db);
     ctx.user = {};
 });
@@ -47,7 +47,7 @@ app.use((ctx: Koa.Context, next) => {
     });
 });
 
-app.use(ctx => {
+app.use((ctx) => {
     ctx.accepts(); // $ExpectType string[]
     ctx.accepts(""); // $ExpectType string | false
     ctx.accepts([""]); // $ExpectType string | false
@@ -68,7 +68,7 @@ app.use(ctx => {
 });
 
 // response
-app.use(ctx => {
+app.use((ctx) => {
     ctx.body = "Hello World";
     ctx.body = ctx.URL.toString();
 });

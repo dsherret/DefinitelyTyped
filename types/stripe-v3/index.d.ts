@@ -12,17 +12,32 @@ declare namespace stripe {
             element: elements.Element,
             options?: TokenOptions | BankAccountTokenOptions,
         ): Promise<TokenResponse>;
-        createToken(name: "bank_account", options: BankAccountTokenOptions): Promise<TokenResponse>;
-        createToken(name: "pii", options: PiiTokenOptions): Promise<TokenResponse>;
-        createSource(element: elements.Element, options?: { owner?: OwnerInfo | undefined }): Promise<SourceResponse>;
+        createToken(
+            name: "bank_account",
+            options: BankAccountTokenOptions,
+        ): Promise<TokenResponse>;
+        createToken(
+            name: "pii",
+            options: PiiTokenOptions,
+        ): Promise<TokenResponse>;
+        createSource(
+            element: elements.Element,
+            options?: { owner?: OwnerInfo | undefined },
+        ): Promise<SourceResponse>;
         createSource(options: SourceOptions): Promise<SourceResponse>;
         retrieveSource(options: RetrieveSourceOptions): Promise<SourceResponse>;
         // We use function overloading instead of a union here to ensure that redirectToCheckout can only be
         // called with either the server options or the client options - not a mix of both.
-        redirectToCheckout(options: StripeClientCheckoutOptions): Promise<StripeRedirectResponse>;
+        redirectToCheckout(
+            options: StripeClientCheckoutOptions,
+        ): Promise<StripeRedirectResponse>;
         // tslint:disable-next-line unified-signatures
-        redirectToCheckout(options: StripeServerCheckoutOptions): Promise<StripeRedirectResponse>;
-        paymentRequest(options: paymentRequest.StripePaymentRequestOptions): paymentRequest.StripePaymentRequest;
+        redirectToCheckout(
+            options: StripeServerCheckoutOptions,
+        ): Promise<StripeRedirectResponse>;
+        paymentRequest(
+            options: paymentRequest.StripePaymentRequestOptions,
+        ): paymentRequest.StripePaymentRequest;
         createPaymentMethod(
             type: paymentMethod.paymentMethodType,
             element: elements.Element,
@@ -55,9 +70,7 @@ declare namespace stripe {
             data?: ConfirmCardPaymentData,
             options?: ConfirmCardPaymentOptions,
         ): Promise<PaymentIntentResponse>;
-        handleCardAction(
-            clientSecret: string,
-        ): Promise<PaymentIntentResponse>;
+        handleCardAction(clientSecret: string): Promise<PaymentIntentResponse>;
         confirmSepaDebitPayment(
             clientSecret: string,
             data?: ConfirmSepaDebitPaymentData,
@@ -78,9 +91,7 @@ declare namespace stripe {
             data?: ConfirmCardSetupData,
             options?: ConfirmCardSetupOptions,
         ): Promise<SetupIntentResponse>;
-        retrieveSetupIntent(
-            clientSecret: string,
-        ): Promise<SetupIntentResponse>;
+        retrieveSetupIntent(clientSecret: string): Promise<SetupIntentResponse>;
         confirmSepaDebitSetup(
             clientSecret: string,
             data?: ConfirmSepaDebitSetupData,
@@ -108,9 +119,11 @@ declare namespace stripe {
         ): Promise<VerificationSessionResult>;
     }
 
-    type StripeRedirectResponse = never | {
-        error: Error;
-    };
+    type StripeRedirectResponse =
+        | never
+        | {
+              error: Error;
+          };
 
     type billingAddressCollectionType = "required" | "auto" | "";
 
@@ -229,28 +242,49 @@ declare namespace stripe {
 
     interface SourceOptions {
         type: string;
-        flow?: "redirect" | "receiver" | "code_verification" | "none" | undefined;
-        sepa_debit?: {
-            iban: string;
-        } | undefined;
+        flow?:
+            | "redirect"
+            | "receiver"
+            | "code_verification"
+            | "none"
+            | undefined;
+        sepa_debit?:
+            | {
+                  iban: string;
+              }
+            | undefined;
         currency?: string | undefined;
         amount?: number | undefined;
         owner?: OwnerInfo | undefined;
         mandate?: SourceMandate | undefined;
         metadata?: {} | undefined;
         statement_descriptor?: string | undefined;
-        redirect?: {
-            return_url: string;
-        } | undefined;
+        redirect?:
+            | {
+                  return_url: string;
+              }
+            | undefined;
         token?: string | undefined;
         usage?: "reusable" | "single_use" | undefined;
-        three_d_secure?: {
-            card: string;
-        } | undefined;
-        sofort?: {
-            country: string;
-            preferred_language?: "de" | "en" | "es" | "it" | "fr" | "nl" | "pl" | undefined;
-        } | undefined;
+        three_d_secure?:
+            | {
+                  card: string;
+              }
+            | undefined;
+        sofort?:
+            | {
+                  country: string;
+                  preferred_language?:
+                      | "de"
+                      | "en"
+                      | "es"
+                      | "it"
+                      | "fr"
+                      | "nl"
+                      | "pl"
+                      | undefined;
+              }
+            | undefined;
     }
 
     interface Token {
@@ -285,22 +319,28 @@ declare namespace stripe {
             verified_name: string | null;
             verified_phone: string | null;
         };
-        sepa_debit?: {
-            bank_code: string | null;
-            country: string | null;
-            fingerprint: string;
-            last4: string;
-            mandate_reference: string;
-        } | undefined;
+        sepa_debit?:
+            | {
+                  bank_code: string | null;
+                  country: string | null;
+                  fingerprint: string;
+                  last4: string;
+                  mandate_reference: string;
+              }
+            | undefined;
         card?: Card | undefined;
         status?: string | undefined;
-        redirect?: {
-            status: string;
-            url: string;
-        } | undefined;
-        three_d_secure?: {
-            authenticated: boolean;
-        } | undefined;
+        redirect?:
+            | {
+                  status: string;
+                  url: string;
+              }
+            | undefined;
+        three_d_secure?:
+            | {
+                  authenticated: boolean;
+              }
+            | undefined;
     }
 
     interface SourceResponse {
@@ -380,7 +420,12 @@ declare namespace stripe {
         source?: Source | undefined;
     }
 
-    type statusType = "new" | "validated" | "verified" | "verification_failed" | "errored";
+    type statusType =
+        | "new"
+        | "validated"
+        | "verified"
+        | "verification_failed"
+        | "errored";
     interface BankAccount {
         id: string;
         object: string;
@@ -395,7 +440,14 @@ declare namespace stripe {
         status: statusType;
     }
 
-    type brandType = "Visa" | "American Express" | "MasterCard" | "Discover" | "JCB" | "Diners Club" | "Unknown";
+    type brandType =
+        | "Visa"
+        | "American Express"
+        | "MasterCard"
+        | "Discover"
+        | "JCB"
+        | "Diners Club"
+        | "Unknown";
     type checkType = "pass" | "fail" | "unavailable" | "unchecked";
     type fundingType = "credit" | "debit" | "prepaid" | "unknown";
     type tokenizationType = "apple_pay" | "android_pay";
@@ -423,7 +475,12 @@ declare namespace stripe {
         metadata: any;
         name?: string | undefined;
         tokenization_method?: tokenizationType | undefined;
-        three_d_secure?: "required" | "recommended" | "optional" | "not_supported" | undefined;
+        three_d_secure?:
+            | "required"
+            | "recommended"
+            | "optional"
+            | "not_supported"
+            | undefined;
     }
 
     interface RetrieveSourceOptions {
@@ -530,12 +587,14 @@ declare namespace stripe {
          * Use this parameter to supply additional data relevant to
          * the payment method, such as billing details
          */
-        payment_method_data?: {
-            /**
-             * The billing details associated with the card. [Recommended]
-             */
-            billing_details?: BillingDetails | undefined;
-        } | undefined;
+        payment_method_data?:
+            | {
+                  /**
+                   * The billing details associated with the card. [Recommended]
+                   */
+                  billing_details?: BillingDetails | undefined;
+              }
+            | undefined;
         /**
          * The shipping details for the payment, if collected. [Recommended]
          */
@@ -552,7 +611,8 @@ declare namespace stripe {
         save_payment_method?: boolean | undefined;
     }
 
-    interface HandleCardPaymentWithoutElementsOptions extends HandleCardPaymentOptions {
+    interface HandleCardPaymentWithoutElementsOptions
+        extends HandleCardPaymentOptions {
         /**
          * Only one of payment_method_data and payment_method is required.
          * Use payment_method to specify an existing PaymentMethod to use
@@ -563,19 +623,23 @@ declare namespace stripe {
          * Use this parameter to supply additional data relevant to
          * the payment method, such as billing details
          */
-        payment_method_data?: {
-            /**
-             * The billing details associated with the card. [Recommended]
-             */
-            billing_details?: BillingDetails | undefined;
-            card?: {
-                /**
-                 * Converts the provided token into a PaymentMethod to
-                 * use for the payment.
-                 */
-                token: string;
-            } | undefined;
-        } | undefined;
+        payment_method_data?:
+            | {
+                  /**
+                   * The billing details associated with the card. [Recommended]
+                   */
+                  billing_details?: BillingDetails | undefined;
+                  card?:
+                      | {
+                            /**
+                             * Converts the provided token into a PaymentMethod to
+                             * use for the payment.
+                             */
+                            token: string;
+                        }
+                      | undefined;
+              }
+            | undefined;
         /**
          * Instead of payment_method, the ID of a Source may be passed in.
          * (Note that this is undocumented as of August 2019).
@@ -594,23 +658,28 @@ declare namespace stripe {
          * See the use case sections below for details.
          * Recomended
          */
-        payment_method?: string | {
-            /*
-             * Uses the provided card or cardNumber Element to create a
-             * PaymentMethod to use for confirmation.
-             */
-            card: elements.Element | {
-                /*
-                 * Converts the provided token into a PaymentMethod to use for
-                 * confirmation.
-                 */
-                token: string;
-            };
-            /**
-             * The billing_details associated with the card.
-             */
-            billing_details?: BillingDetails | undefined;
-        } | undefined;
+        payment_method?:
+            | string
+            | {
+                  /*
+                   * Uses the provided card or cardNumber Element to create a
+                   * PaymentMethod to use for confirmation.
+                   */
+                  card:
+                      | elements.Element
+                      | {
+                            /*
+                             * Converts the provided token into a PaymentMethod to use for
+                             * confirmation.
+                             */
+                            token: string;
+                        };
+                  /**
+                   * The billing_details associated with the card.
+                   */
+                  billing_details?: BillingDetails | undefined;
+              }
+            | undefined;
         /**
          * The shipping details for the payment, if collected.
          * Recomended
@@ -651,24 +720,29 @@ declare namespace stripe {
          * by passing data directly and to supply additional required billing
          * details:
          */
-        payment_method?: string | {
-            /**
-             * An iban Element.
-             */
-            sepa_debit: elements.Element | {
-                /*
-                 * An IBAN account number.
-                 */
-                iban: string;
-            };
-            /**
-             * The customer's billing_details. name and email are required.
-             */
-            billing_details: {
-                name: string;
-                email: string;
-            };
-        } | undefined;
+        payment_method?:
+            | string
+            | {
+                  /**
+                   * An iban Element.
+                   */
+                  sepa_debit:
+                      | elements.Element
+                      | {
+                            /*
+                             * An IBAN account number.
+                             */
+                            iban: string;
+                        };
+                  /**
+                   * The customer's billing_details. name and email are required.
+                   */
+                  billing_details: {
+                      name: string;
+                      email: string;
+                  };
+              }
+            | undefined;
     }
 
     interface HandleCardSetupOptions {
@@ -676,14 +750,17 @@ declare namespace stripe {
          * Use this parameter to supply additional data relevant to
          * the payment method, such as billing details.
          */
-        payment_method_data?: {
-            /**
-             * The billing details associated with the card. [Recommended]
-             */
-            billing_details?: BillingDetails | undefined;
-        } | undefined;
+        payment_method_data?:
+            | {
+                  /**
+                   * The billing details associated with the card. [Recommended]
+                   */
+                  billing_details?: BillingDetails | undefined;
+              }
+            | undefined;
     }
-    interface HandleCardSetupOptionsWithoutElementsOptions extends HandleCardPaymentOptions {
+    interface HandleCardSetupOptionsWithoutElementsOptions
+        extends HandleCardPaymentOptions {
         /**
          * Only one of payment_method_data and payment_method is required.
          * Use payment_method to specify an existing PaymentMethod to use
@@ -703,12 +780,14 @@ declare namespace stripe {
          * Use this parameter to supply additional data relevant to
          * the payment method, such as billing details
          */
-        payment_method_data?: {
-            /**
-             * The billing details associated with the card. [Recommended]
-             */
-            billing_details?: BillingDetails | undefined;
-        } | undefined;
+        payment_method_data?:
+            | {
+                  /**
+                   * The billing details associated with the card. [Recommended]
+                   */
+                  billing_details?: BillingDetails | undefined;
+              }
+            | undefined;
         /**
          * The shipping details for the payment, if collected. [Recommended]
          */
@@ -729,7 +808,8 @@ declare namespace stripe {
         setup_future_usage?: string | undefined;
     }
 
-    interface ConfirmPaymentIntentWithoutElementsOptions extends ConfirmPaymentIntentOptions {
+    interface ConfirmPaymentIntentWithoutElementsOptions
+        extends ConfirmPaymentIntentOptions {
         /**
          * Only one of payment_method_data and payment_method is required.
          * Use payment_method to specify an existing PaymentMethod to use
@@ -740,19 +820,23 @@ declare namespace stripe {
          * Use this parameter to supply additional data relevant to
          * the payment method, such as billing details
          */
-        payment_method_data?: {
-            /**
-             * The billing details associated with the card. [Recommended]
-             */
-            billing_details?: BillingDetails | undefined;
-            card?: {
-                /**
-                 * Converts the provided token into a PaymentMethod to
-                 * use for the payment.
-                 */
-                token: string;
-            } | undefined;
-        } | undefined;
+        payment_method_data?:
+            | {
+                  /**
+                   * The billing details associated with the card. [Recommended]
+                   */
+                  billing_details?: BillingDetails | undefined;
+                  card?:
+                      | {
+                            /**
+                             * Converts the provided token into a PaymentMethod to
+                             * use for the payment.
+                             */
+                            token: string;
+                        }
+                      | undefined;
+              }
+            | undefined;
     }
 
     interface ConfirmSofortPaymentOptions extends ConfirmPaymentIntentOptions {
@@ -763,10 +847,10 @@ declare namespace stripe {
         payment_method?:
             | string
             | {
-                sofort?: {
-                    country?: string;
-                };
-            };
+                  sofort?: {
+                      country?: string;
+                  };
+              };
     }
 
     interface ConfirmCardSetupData {
@@ -776,23 +860,28 @@ declare namespace stripe {
          * additional data relevant to the PaymentMethod, such as billing
          * details:
          */
-        payment_method?: string | {
-            /*
-             * Uses the provided card or cardNumber Element to create a
-             * PaymentMethod to use for confirmation.
-             */
-            card: elements.Element | {
-                /*
-                 * Converts the provided token into a PaymentMethod to use for
-                 * confirmation.
-                 */
-                token: string;
-            };
-            /**
-             * The billing_details associated with the card.
-             */
-            billing_details?: BillingDetails | undefined;
-        } | undefined;
+        payment_method?:
+            | string
+            | {
+                  /*
+                   * Uses the provided card or cardNumber Element to create a
+                   * PaymentMethod to use for confirmation.
+                   */
+                  card:
+                      | elements.Element
+                      | {
+                            /*
+                             * Converts the provided token into a PaymentMethod to use for
+                             * confirmation.
+                             */
+                            token: string;
+                        };
+                  /**
+                   * The billing_details associated with the card.
+                   */
+                  billing_details?: BillingDetails | undefined;
+              }
+            | undefined;
     }
     interface ConfirmCardSetupOptions {
         /*
@@ -809,24 +898,29 @@ declare namespace stripe {
          * by passing data directly and to supply additional required billing
          * details:
          */
-        payment_method?: string | {
-            /**
-             * An iban Element.
-             */
-            sepa_debit: elements.Element | {
-                /*
-                 * An IBAN account number.
-                 */
-                iban: string;
-            };
-            /**
-             * The customer's billing_details. name and email are required.
-             */
-            billing_details: {
-                name: string;
-                email: string;
-            };
-        } | undefined;
+        payment_method?:
+            | string
+            | {
+                  /**
+                   * An iban Element.
+                   */
+                  sepa_debit:
+                      | elements.Element
+                      | {
+                            /*
+                             * An IBAN account number.
+                             */
+                            iban: string;
+                        };
+                  /**
+                   * The customer's billing_details. name and email are required.
+                   */
+                  billing_details: {
+                      name: string;
+                      email: string;
+                  };
+              }
+            | undefined;
     }
 
     interface PaymentMethodResponse {
@@ -865,7 +959,8 @@ declare namespace stripe {
             shippingOptions?: ShippingOption[] | undefined;
         }
 
-        interface StripePaymentRequestOptions extends StripePaymentRequestUpdateOptions {
+        interface StripePaymentRequestOptions
+            extends StripePaymentRequestUpdateOptions {
             country: string;
             requestPayerName?: boolean | undefined;
             requestPayerEmail?: boolean | undefined;
@@ -917,29 +1012,44 @@ declare namespace stripe {
             source: Source;
         }
 
-        interface StripePaymentMethodPaymentResponse extends StripePaymentResponse {
+        interface StripePaymentMethodPaymentResponse
+            extends StripePaymentResponse {
             paymentMethod: paymentMethod.PaymentMethod;
         }
 
         interface StripePaymentRequest {
-            canMakePayment(): Promise<{ applePay?: boolean | undefined; googlePay?: boolean | undefined } | null>;
+            canMakePayment(): Promise<{
+                applePay?: boolean | undefined;
+                googlePay?: boolean | undefined;
+            } | null>;
             show(): void;
             update(options: StripePaymentRequestUpdateOptions): void;
-            on(event: "token", handler: (response: StripeTokenPaymentResponse) => void): void;
-            on(event: "source", handler: (response: StripeSourcePaymentResponse) => void): void;
-            on(event: "paymentmethod", handler: (response: StripePaymentMethodPaymentResponse) => void): void;
+            on(
+                event: "token",
+                handler: (response: StripeTokenPaymentResponse) => void,
+            ): void;
+            on(
+                event: "source",
+                handler: (response: StripeSourcePaymentResponse) => void,
+            ): void;
+            on(
+                event: "paymentmethod",
+                handler: (response: StripePaymentMethodPaymentResponse) => void,
+            ): void;
             on(event: "cancel", handler: () => void): void;
             on(
                 event: "shippingaddresschange",
-                handler: (
-                    response: { updateWith: (options: UpdateDetails) => void; shippingAddress: ShippingAddress },
-                ) => void,
+                handler: (response: {
+                    updateWith: (options: UpdateDetails) => void;
+                    shippingAddress: ShippingAddress;
+                }) => void,
             ): void;
             on(
                 event: "shippingoptionchange",
-                handler: (
-                    response: { updateWith: (options: UpdateDetails) => void; shippingOption: ShippingOption },
-                ) => void,
+                handler: (response: {
+                    updateWith: (options: UpdateDetails) => void;
+                    shippingOption: ShippingOption;
+                }) => void,
             ): void;
         }
     }
@@ -958,9 +1068,15 @@ declare namespace stripe {
             // Cannot find name 'HTMLElement'
             mount(domElement: any): void;
             on(event: eventTypes, handler: handler): void;
-            on(event: "click", handler: (response: { preventDefault: () => void }) => void): void;
+            on(
+                event: "click",
+                handler: (response: { preventDefault: () => void }) => void,
+            ): void;
             addEventListener(event: eventTypes, handler: handler): void;
-            addEventListener(event: "click", handler: (response: { preventDefault: () => void }) => void): void;
+            addEventListener(
+                event: "click",
+                handler: (response: { preventDefault: () => void }) => void,
+            ): void;
             focus(): void;
             blur(): void;
             clear(): void;
@@ -1001,27 +1117,33 @@ declare namespace stripe {
         }
 
         interface ElementsOptions {
-            classes?: {
-                base?: string | undefined;
-                complete?: string | undefined;
-                empty?: string | undefined;
-                focus?: string | undefined;
-                invalid?: string | undefined;
-                webkitAutofill?: string | undefined;
-            } | undefined;
+            classes?:
+                | {
+                      base?: string | undefined;
+                      complete?: string | undefined;
+                      empty?: string | undefined;
+                      focus?: string | undefined;
+                      invalid?: string | undefined;
+                      webkitAutofill?: string | undefined;
+                  }
+                | undefined;
             hidePostalCode?: boolean | undefined;
             hideIcon?: boolean | undefined;
             showIcon?: boolean | undefined;
             iconStyle?: "solid" | "default" | undefined;
             placeholder?: string | undefined;
             placeholderCountry?: string | undefined;
-            style?: {
-                base?: Style | undefined;
-                complete?: Style | undefined;
-                empty?: Style | undefined;
-                invalid?: Style | undefined;
-                paymentRequestButton?: PaymentRequestButtonStyleOptions | undefined;
-            } | undefined;
+            style?:
+                | {
+                      base?: Style | undefined;
+                      complete?: Style | undefined;
+                      empty?: Style | undefined;
+                      invalid?: Style | undefined;
+                      paymentRequestButton?:
+                          | PaymentRequestButtonStyleOptions
+                          | undefined;
+                  }
+                | undefined;
             value?: string | { [objectKey: string]: string } | undefined;
             paymentRequest?: paymentRequest.StripePaymentRequest | undefined;
             supportedCountries?: string[] | undefined;
@@ -1237,7 +1359,9 @@ declare namespace stripe {
              * If present, this property tells you what actions you need to take in order
              * for your customer to fulfill a payment using the provided source.
              */
-            next_action: PaymentIntentNextActionUseStripeSdk | PaymentIntentNextActionRedirectToUrl;
+            next_action:
+                | PaymentIntentNextActionUseStripeSdk
+                | PaymentIntentNextActionRedirectToUrl;
 
             /**
              * The account (if any) for which the funds of the PaymentIntent are intended.
@@ -1449,12 +1573,26 @@ declare namespace stripe {
                     | "declined_by_network"
                     | "not_sent_to_network"
                     | "reversed_after_approval";
-                reason: "highest_risk_level" | "elevated_risk_level" | "rule" | null;
-                risk_level: "normal" | "elevated" | "highest" | "not_assessed" | "unknown";
+                reason:
+                    | "highest_risk_level"
+                    | "elevated_risk_level"
+                    | "rule"
+                    | null;
+                risk_level:
+                    | "normal"
+                    | "elevated"
+                    | "highest"
+                    | "not_assessed"
+                    | "unknown";
                 risk_score: number;
                 rule?: string | undefined;
                 seller_message: string;
-                type: "authorized" | "manual_review" | "issuer_declined" | "blocked" | "invalid";
+                type:
+                    | "authorized"
+                    | "manual_review"
+                    | "issuer_declined"
+                    | "blocked"
+                    | "invalid";
             } | null;
 
             /**
@@ -1760,7 +1898,10 @@ declare namespace stripe {
              */
             generated_from: {
                 charge?: string | null | undefined;
-                payment_method_details?: PaymentMethodDetails | null | undefined;
+                payment_method_details?:
+                    | PaymentMethodDetails
+                    | null
+                    | undefined;
             };
 
             /**
@@ -1771,9 +1912,11 @@ declare namespace stripe {
             /**
              * Contains details on how this Card maybe be used for 3D Secure authentication.
              */
-            three_d_secure_usage?: {
-                supported?: boolean | undefined;
-            } | undefined;
+            three_d_secure_usage?:
+                | {
+                      supported?: boolean | undefined;
+                  }
+                | undefined;
 
             /**
              * If this Card is part of a card wallet, this contains the details of
@@ -2041,7 +2184,9 @@ declare namespace stripe {
              * If present, this property tells you what actions you need to take in
              * order for your customer to continue payment setup.
              */
-            next_action: SetupIntentNextActionUseStripeSdk | SetupIntentNextActionRedirectToUrl;
+            next_action:
+                | SetupIntentNextActionUseStripeSdk
+                | SetupIntentNextActionRedirectToUrl;
 
             /**
              * The account (if any) for which the setup is intended.

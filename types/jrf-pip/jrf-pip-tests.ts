@@ -64,8 +64,7 @@ async function sendMesToGroupUsers(): Promise<void> {
     };
 
     // Callback function. It will work after the completion of sending the message.
-    const cb = (stackError: StackError<User>): void => {
-    };
+    const cb = (stackError: StackError<User>): void => {};
 
     // Starting parallel iterative processing
     // An array of arrayValues is specified for processing
@@ -119,7 +118,8 @@ async function sendMesToGroupUsersSyncStyle(): Promise<void> {
         parallel: 2000,
         cycleTimeout: 100,
     };
-    const stackError: Array<StackError<User>> | undefined = await parallelProcessing(params);
+    const stackError: Array<StackError<User>> | undefined =
+        await parallelProcessing(params);
 }
 
 function generateUsers(count: number = 10000): User[] {
@@ -131,8 +131,7 @@ function generateUsers(count: number = 10000): User[] {
         groupUsers.push({
             id: i,
             sex,
-            sendMes(iteration: number): void {
-            },
+            sendMes(iteration: number): void {},
         });
     }
 
@@ -142,5 +141,4 @@ function generateUsers(count: number = 10000): User[] {
 Promise.resolve()
     .then(sendMesToGroupUsers)
     .then(sendMesToGroupUsersSyncStyle)
-    .catch(e => {
-    });
+    .catch((e) => {});

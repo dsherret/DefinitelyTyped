@@ -1,4 +1,7 @@
-import { NormalizationOperation, NormalizationSplitOperation } from "./NormalizationNode";
+import {
+    NormalizationOperation,
+    NormalizationSplitOperation,
+} from "./NormalizationNode";
 import { ReaderFragment, ReaderInlineDataFragment } from "./ReaderNode";
 
 /**
@@ -27,24 +30,24 @@ export interface ConcreteUpdatableQuery {
  */
 export type RequestParameters =
     | {
-        readonly id: string;
-        readonly text: null;
-        // common fields
-        readonly name: string;
-        readonly operationKind: string; // 'mutation' | 'query' | 'subscription';
-        readonly providedVariables?: ProvidedVariablesType;
-        readonly metadata: { [key: string]: unknown };
-    }
+          readonly id: string;
+          readonly text: null;
+          // common fields
+          readonly name: string;
+          readonly operationKind: string; // 'mutation' | 'query' | 'subscription';
+          readonly providedVariables?: ProvidedVariablesType;
+          readonly metadata: { [key: string]: unknown };
+      }
     | {
-        readonly cacheID: string;
-        readonly id: null;
-        readonly text: string | null;
-        // common fields
-        readonly name: string;
-        readonly operationKind: string; // 'mutation' | 'query' | 'subscription';
-        readonly providedVariables?: ProvidedVariablesType;
-        readonly metadata: { [key: string]: unknown };
-    };
+          readonly cacheID: string;
+          readonly id: null;
+          readonly text: string | null;
+          // common fields
+          readonly name: string;
+          readonly operationKind: string; // 'mutation' | 'query' | 'subscription';
+          readonly providedVariables?: ProvidedVariablesType;
+          readonly metadata: { [key: string]: unknown };
+      };
 
 export type GeneratedNode =
     | ConcreteRequest

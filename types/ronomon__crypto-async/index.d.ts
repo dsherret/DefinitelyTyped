@@ -103,7 +103,11 @@ export function cipher(
     cb: (error: Error | undefined, targetSize: number) => void,
 ): void;
 
-export function hash(algorithm: string, source: Buffer, cb: (error: Error | undefined, hash: Buffer) => void): void;
+export function hash(
+    algorithm: string,
+    source: Buffer,
+    cb: (error: Error | undefined, hash: Buffer) => void,
+): void;
 
 export function hash(
     algorithm: string,

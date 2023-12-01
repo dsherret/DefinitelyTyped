@@ -18,7 +18,9 @@ declare var $: (arg?: any) => JQuery;
     });
 
     new URI();
-    new URI("http://user:pass@example.org:80/foo/bar.html?foo=bar&bar=baz#frag");
+    new URI(
+        "http://user:pass@example.org:80/foo/bar.html?foo=bar&bar=baz#frag",
+    );
     new URI({
         protocol: "http",
         username: "user",
@@ -47,14 +49,22 @@ declare var $: (arg?: any) => JQuery;
 
     URI("http://example.org/foo/hello.html").segment("bar");
     URI("http://example.org/foo/hello.html").segment(0, "bar");
-    URI("http://example.org/foo/hello.html").segment(["foo", "bar", "foobar.html"]);
+    URI("http://example.org/foo/hello.html").segment([
+        "foo",
+        "bar",
+        "foobar.html",
+    ]);
 
     URI("http://example.org/foo/hello.html").segment(0);
     URI("http://example.org/foo/hello.html").segment(100);
 
     URI("http://example.org/foo/hello.html").segmentCoded("foo bar");
     URI("http://example.org/foo/hello.html").segmentCoded(0, "foo bar");
-    URI("http://example.org/foo/hello.html").segmentCoded(["foo bar", "bar foo", "foo bar.html"]);
+    URI("http://example.org/foo/hello.html").segmentCoded([
+        "foo bar",
+        "bar foo",
+        "foo bar.html",
+    ]);
 
     const withDuplicates = URI("?bar=1&bar=1")
         .duplicateQueryParameters(true)
@@ -80,7 +90,9 @@ declare var $: (arg?: any) => JQuery;
     );
 
     // Basic URITemplate type usage
-    URI("http://user:pass@example.org:80/foo/bar.html?foo=bar&bar=baz#frag").equals(
+    URI(
+        "http://user:pass@example.org:80/foo/bar.html?foo=bar&bar=baz#frag",
+    ).equals(
         URITemplate("http://user:pass@example.org:80{/p*}{?q*}{#h}").expand({
             p: ["foo", "bar.html"],
             q: { foo: "bar", bar: "baz" },
@@ -89,26 +101,32 @@ declare var $: (arg?: any) => JQuery;
     );
 
     // Using a callback for a specific key value.
-    URI("http://user:pass@example.org:80/foo/bar.html?foo=bar&bar=baz#frag").equals(
+    URI(
+        "http://user:pass@example.org:80/foo/bar.html?foo=bar&bar=baz#frag",
+    ).equals(
         URITemplate("http://user:pass@example.org:80{/p*}{?q*}{#h}").expand({
-            p: key => ["foo", "bar.html"],
+            p: (key) => ["foo", "bar.html"],
             q: { foo: "bar", bar: "baz" },
             h: "frag",
         }),
     );
 
     // Using a callback for entire data parameter.
-    URI("http://user:pass@example.org:80/foo/bar.html?foo=bar&bar=baz#frag").equals(
-        URITemplate("http://user:pass@example.org:80{/p*}{?q*}{#h}").expand(key => {
-            switch (key) {
-                case "p":
-                    return ["foo", "bar.html"];
-                case "1":
-                    return { foo: "bar", bar: "baz" };
-                case "h":
-                    return "frag";
-            }
-        }),
+    URI(
+        "http://user:pass@example.org:80/foo/bar.html?foo=bar&bar=baz#frag",
+    ).equals(
+        URITemplate("http://user:pass@example.org:80{/p*}{?q*}{#h}").expand(
+            (key) => {
+                switch (key) {
+                    case "p":
+                        return ["foo", "bar.html"];
+                    case "1":
+                        return { foo: "bar", bar: "baz" };
+                    case "h":
+                        return "frag";
+                }
+            },
+        ),
     );
 
     // Supports null/undefined values for certain keys
@@ -230,14 +248,29 @@ declare var $: (arg?: any) => JQuery;
         removed: undefined,
         removedList: [undefined, undefined, undefined],
     };
-    test(URI.buildQuery(buildQueryData), "foo=bar&hello=world&hello=mars&bam=&yup");
-    test(URI.buildQuery(buildQueryData, true), "foo=bar&hello=world&hello=mars&hello=mars&bam=&yup");
+    test(
+        URI.buildQuery(buildQueryData),
+        "foo=bar&hello=world&hello=mars&bam=&yup",
+    );
+    test(
+        URI.buildQuery(buildQueryData, true),
+        "foo=bar&hello=world&hello=mars&hello=mars&bam=&yup",
+    );
     test(URI.buildQuery({ space: "hello space" }, false), "space=hello+space");
-    test(URI.buildQuery({ space: "hello space" }, false, false), "space=hello%20space");
+    test(
+        URI.buildQuery({ space: "hello space" }, false, false),
+        "space=hello%20space",
+    );
     test(URI.buildQuery({ habitable: false }), "habitable=false");
     test(URI.buildQuery({ orbit: 687 }), "orbit=687");
-    test(URI.buildQuery({ gas: [96, 1.9, 1.8, 0.146, 0.0] }), "gas=96&gas=1.9&gas=1.8&gas=0.146&gas=0");
-    test(URI.buildQuery({ prediction: [true, false, true] }), "prediction=true&prediction=false");
+    test(
+        URI.buildQuery({ gas: [96, 1.9, 1.8, 0.146, 0.0] }),
+        "gas=96&gas=1.9&gas=1.8&gas=0.146&gas=0",
+    );
+    test(
+        URI.buildQuery({ prediction: [true, false, true] }),
+        "prediction=true&prediction=false",
+    );
     test(
         URI.buildQuery({ silly: [Infinity, NaN, { a: 1 }, new RegExp("")] }),
         "silly=Infinity&silly=NaN&silly=%5Bobject+Object%5D&silly=%2F%28%3F%3A%29%2F",
@@ -263,8 +296,8 @@ declare var $: (arg?: any) => JQuery;
     From: https://medialize.github.io/URI.js/docs.html#accessors-search
     */
     const u = new URI("mailto:mail@example.org");
-    u.query(qs => qs);
-    u.search(qs => qs);
+    u.query((qs) => qs);
+    u.search((qs) => qs);
     u.query(() => undefined);
     u.search(() => undefined);
     u.query(() => {
@@ -278,8 +311,12 @@ declare var $: (arg?: any) => JQuery;
     Tests for URI.withinString()
     From: https://medialize.github.io/URI.js/docs.html#static-withinString
     */
-    const decorate = (url: string, start: number, end: number, source: string) =>
-        [url, start, end, source.length].join();
+    const decorate = (
+        url: string,
+        start: number,
+        end: number,
+        source: string,
+    ) => [url, start, end, source.length].join();
     const source = "A www.example.com B";
 
     test(URI.withinString(source, decorate), "A www.example.com,2,17,19 B");

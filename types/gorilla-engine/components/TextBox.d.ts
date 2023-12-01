@@ -1,5 +1,11 @@
 declare namespace GorillaEngine.UI {
-    interface TextBoxProps extends Font, Clickable, Bounds, Background, Margin, Keyable {
+    interface TextBoxProps
+        extends Font,
+            Clickable,
+            Bounds,
+            Background,
+            Margin,
+            Keyable {
         text: string;
         palceholder: string;
         unit: string;

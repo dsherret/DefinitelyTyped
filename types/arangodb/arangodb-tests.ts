@@ -87,42 +87,41 @@ bananas.ensureIndex({
 const router = createRouter();
 module.context.use(router);
 
-router.get("/", (req, res) => {
-    if (req.cookie("sid", { secret: "keyboardcat" })) {
-        res.set("content-type", "text/plain");
-        res.write("Welcome back, Commander");
-    } else {
-        res.json({ success: false });
-    }
-})
+router
+    .get("/", (req, res) => {
+        if (req.cookie("sid", { secret: "keyboardcat" })) {
+            res.set("content-type", "text/plain");
+            res.write("Welcome back, Commander");
+        } else {
+            res.json({ success: false });
+        }
+    })
     .queryParam("noJoi", {
         validate(value) {
             return { value };
         },
     });
 
-router.put(
-    (request: Foxx.Request, response: Foxx.Response) => {
-        try {
-            // $ExpectType string
-            const id = db._executeTransaction({
-                collections: {
-                    read: "users",
-                    write: ["groups", "member"],
-                    allowImplicit: false,
-                },
-                action: (params) => {
-                    return "1234";
-                },
-                params: JSON.parse(request.body),
-            });
-            response.json({ id });
-        } catch (e) {
-            e.error = true;
-            response.json(e);
-        }
-    },
-);
+router.put((request: Foxx.Request, response: Foxx.Response) => {
+    try {
+        // $ExpectType string
+        const id = db._executeTransaction({
+            collections: {
+                read: "users",
+                write: ["groups", "member"],
+                allowImplicit: false,
+            },
+            action: (params) => {
+                return "1234";
+            },
+            params: JSON.parse(request.body),
+        });
+        response.json({ id });
+    } catch (e) {
+        e.error = true;
+        response.json(e);
+    }
+});
 
 router.use((req, res, next) => {
     if (req.is("json")) res.throw("too many requests");
@@ -146,8 +145,8 @@ router.use((req, res, next) => {
     if (!req.auth || !req.auth.basic) {
         res.throw(401);
     } else if (
-        req.auth.basic.username !== "admin"
-        || req.auth.basic.password !== "hunter2"
+        req.auth.basic.username !== "admin" ||
+        req.auth.basic.password !== "hunter2"
     ) {
         res.throw(403);
     }
@@ -157,11 +156,9 @@ router.use((req, res, next) => {
 console.log(
     query`
         FOR u IN users
-        ${
-        aql.literal(
+        ${aql.literal(
             Math.random() < 0.5 ? "FILTER u.admin" : "FILTER !u.admin",
-        )
-    }
+        )}
         RETURN u
     `.toArray(),
 );

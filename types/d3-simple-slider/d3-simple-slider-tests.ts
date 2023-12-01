@@ -22,7 +22,9 @@ axisScaleNumber = scaleLinear();
 let containerElement: d3SimpleSlider.SliderContainerElement;
 const svg: SVGSVGElement = select<SVGSVGElement, any>("svg").node()!; // mock
 const g: SVGGElement = select<SVGGElement, any>("g").node()!; // mock
-const canvas: HTMLCanvasElement = select<HTMLCanvasElement, any>("canvas").node()!; // mock
+const canvas: HTMLCanvasElement = select<HTMLCanvasElement, any>(
+    "canvas",
+).node()!; // mock
 
 containerElement = svg;
 containerElement = g;
@@ -33,8 +35,10 @@ containerElement = canvas; // fails, incompatible type
 // Test Slider Generators
 // --------------------------------------------------------------------------
 
-let topSlider: d3SimpleSlider.Slider<number> = d3SimpleSlider.sliderTop(scaleLinear());
-let leftSlider: d3SimpleSlider.Slider<number> = d3SimpleSlider.sliderLeft(scaleLinear());
+let topSlider: d3SimpleSlider.Slider<number> =
+    d3SimpleSlider.sliderTop(scaleLinear());
+let leftSlider: d3SimpleSlider.Slider<number> =
+    d3SimpleSlider.sliderLeft(scaleLinear());
 
 // --------------------------------------------------------------------------
 // Test Configure Slider
@@ -66,16 +70,17 @@ const tickValues: number[] | null = topSlider.tickValues();
 topSlider = topSlider.tickFormat(format(",.0f"));
 topSlider = topSlider.tickFormat(null);
 
-const formatFn: ((domainValue: number, index: number) => string) | null = topSlider.tickFormat();
+const formatFn: ((domainValue: number, index: number) => string) | null =
+    topSlider.tickFormat();
 
 leftSlider.tickFormat((d, i) => "#" + i);
-leftSlider.tickFormat(d => d + "!");
+leftSlider.tickFormat((d) => d + "!");
 
 // on(...) ----------------------------------------------------------------
 
 let listener: undefined | ((val: number) => void);
 
-topSlider = topSlider.on("click", val => {
+topSlider = topSlider.on("click", (val) => {
     console.log("onclick print val: ", val);
 });
 
@@ -94,15 +99,24 @@ topSlider = topSlider.on("click", null); // check chaining return type by re-ass
 // Test Apply Slider
 // --------------------------------------------------------------------------
 
-const gSelection: Selection<SVGGElement, any, any, any> = select<SVGGElement, any>("g");
+const gSelection: Selection<SVGGElement, any, any, any> = select<
+    SVGGElement,
+    any
+>("g");
 
 gSelection.call(topSlider);
 
-const svgSelection: Selection<SVGSVGElement, any, any, any> = select<SVGSVGElement, any>("svg");
+const svgSelection: Selection<SVGSVGElement, any, any, any> = select<
+    SVGSVGElement,
+    any
+>("svg");
 
 svgSelection.call(leftSlider);
 
-const canvasSelection: Selection<HTMLCanvasElement, any, any, any> = select<HTMLCanvasElement, any>("canvas");
+const canvasSelection: Selection<HTMLCanvasElement, any, any, any> = select<
+    HTMLCanvasElement,
+    any
+>("canvas");
 
 // @ts-expect-error
 canvasSelection.call(leftSlider); // fails, incompatible context container element

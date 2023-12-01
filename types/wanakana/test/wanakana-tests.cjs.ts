@@ -1,5 +1,11 @@
 import wanakana = require("wanakana");
-import { bind, ROMANIZATIONS, TO_KANA_METHODS, unbind, VERSION } from "wanakana";
+import {
+    bind,
+    ROMANIZATIONS,
+    TO_KANA_METHODS,
+    unbind,
+    VERSION,
+} from "wanakana";
 
 wanakana.isJapanese("泣き虫。！〜２￥ｚｅｎｋａｋｕ"); // $ExpectType boolean
 wanakana.isKana("あーア"); // $ExpectType boolean

@@ -11,7 +11,11 @@ declare class Client extends Socket {
     constructor(transportSocket: Duplex, options?: SocketOptions);
 
     send(headers?: any, options?: Client.SendOptions): Writable;
-    sendFrame(command: string, headers?: any, options?: Client.SendOptions): Writable;
+    sendFrame(
+        command: string,
+        headers?: any,
+        options?: Client.SendOptions,
+    ): Writable;
     sendString(
         headers?: any,
         body?: any,
@@ -19,11 +23,21 @@ declare class Client extends Socket {
         callback?: (error?: Error | null) => void,
     ): void;
 
-    connect(headers?: any, callback?: (err: Error | null, client: Client) => void): void;
+    connect(
+        headers?: any,
+        callback?: (err: Error | null, client: Client) => void,
+    ): void;
     disconnect(callback?: (error: Error | null, client: Client) => void): void;
 
-    subscribe(headers?: any, messageListener?: Client.MessageCallback): Subscription;
-    setImplicitSubscription(id: number, ack?: Client.Ack, messageListener?: Client.MessageCallback): Subscription;
+    subscribe(
+        headers?: any,
+        messageListener?: Client.MessageCallback,
+    ): Subscription;
+    setImplicitSubscription(
+        id: number,
+        ack?: Client.Ack,
+        messageListener?: Client.MessageCallback,
+    ): Subscription;
     getSubscription(id: number): Subscription;
 
     begin(headers?: any): Transaction;
@@ -41,7 +55,10 @@ declare class Client extends Socket {
         callback?: (error?: Error | null) => void,
     ): void;
 
-    readEmptyBody(frame: IncomingFrameStream, callback?: (client: Client) => void): void;
+    readEmptyBody(
+        frame: IncomingFrameStream,
+        callback?: (client: Client) => void,
+    ): void;
 
     getOptions(): SocketOptions;
 }

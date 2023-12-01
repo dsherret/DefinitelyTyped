@@ -2,8 +2,14 @@
 
 import { EventEmitter } from "events";
 
-export type NextFunction<TOutput> = (err?: Error | null, result?: TOutput) => void;
-export type Filter<TInput = any, TOutput = any> = (input: TInput, next: NextFunction<TOutput>) => void;
+export type NextFunction<TOutput> = (
+    err?: Error | null,
+    result?: TOutput,
+) => void;
+export type Filter<TInput = any, TOutput = any> = (
+    input: TInput,
+    next: NextFunction<TOutput>,
+) => void;
 export type Predicate<TInput = any> = (input: TInput) => boolean;
 
 export class Pipeline<TInput, TOutput> extends EventEmitter {
@@ -17,5 +23,7 @@ export class Pipeline<TInput, TOutput> extends EventEmitter {
 }
 
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function create<TInput, TOutput>(name: string): Pipeline<TInput, TOutput>;
+export function create<TInput, TOutput>(
+    name: string,
+): Pipeline<TInput, TOutput>;
 export function breakIf(predicate: Predicate): Filter;

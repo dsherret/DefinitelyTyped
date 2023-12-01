@@ -23,11 +23,17 @@ declare module "angular" {
             /**
              * String HTML content, or function that returns an HTML string
              */
-            template?: string | { (params: IStateParamsService): string } | undefined;
+            template?:
+                | string
+                | { (params: IStateParamsService): string }
+                | undefined;
             /**
              * String URL path to template file OR Function, returns URL path string
              */
-            templateUrl?: string | { (params: IStateParamsService): string } | undefined;
+            templateUrl?:
+                | string
+                | { (params: IStateParamsService): string }
+                | undefined;
             /**
              * Function, returns HTML content string
              */
@@ -39,12 +45,19 @@ declare module "angular" {
             /**
              * A controller paired to the state. Function, annotated array or name as String
              */
-            controller?: Function | string | Array<string | Function> | undefined;
+            controller?:
+                | Function
+                | string
+                | Array<string | Function>
+                | undefined;
             controllerAs?: string | undefined;
             /**
              * Function (injectable), returns the actual controller function or string.
              */
-            controllerProvider?: Function | Array<string | Function> | undefined;
+            controllerProvider?:
+                | Function
+                | Array<string | Function>
+                | undefined;
 
             /**
              * Specifies the parent state of this state
@@ -106,7 +119,10 @@ declare module "angular" {
         interface IStateProvider extends angular.IServiceProvider {
             state(name: string, config: IState): IStateProvider;
             state(config: IState): IStateProvider;
-            decorator(name?: string, decorator?: (state: IState, parent: Function) => any): any;
+            decorator(
+                name?: string,
+                decorator?: (state: IState, parent: Function) => any,
+            ): any;
         }
 
         interface IUrlMatcher {
@@ -149,7 +165,11 @@ declare module "angular" {
              *
              * @returns {IUrlMatcherFactory} Returns $urlMatcherFactoryProvider.
              */
-            type(name: string, definition: IType, inlineAnnotedDefinitionFn?: any[]): IUrlMatcherFactory;
+            type(
+                name: string,
+                definition: IType,
+                inlineAnnotedDefinitionFn?: any[],
+            ): IUrlMatcherFactory;
             /**
              * Registers a custom Type object that can be used to generate URLs with typed parameters.
              *
@@ -158,7 +178,11 @@ declare module "angular" {
              *
              * @returns {IUrlMatcherFactory} Returns $urlMatcherFactoryProvider.
              */
-            type(name: string, definition: IType, definitionFn?: (...args: any[]) => IType): IUrlMatcherFactory;
+            type(
+                name: string,
+                definition: IType,
+                definitionFn?: (...args: any[]) => IType,
+            ): IUrlMatcherFactory;
             /**
              * Defines whether URL matching should be case sensitive (the default behavior), or not.
              *
@@ -253,12 +277,36 @@ declare module "angular" {
              *
              * @param options Options object.
              */
-            go(to: string, params?: {}, options?: IStateOptions): angular.IPromise<any>;
-            go(to: IState, params?: {}, options?: IStateOptions): angular.IPromise<any>;
-            transitionTo(state: string, params?: {}, updateLocation?: boolean): angular.IPromise<any>;
-            transitionTo(state: IState, params?: {}, updateLocation?: boolean): angular.IPromise<any>;
-            transitionTo(state: string, params?: {}, options?: IStateOptions): angular.IPromise<any>;
-            transitionTo(state: IState, params?: {}, options?: IStateOptions): angular.IPromise<any>;
+            go(
+                to: string,
+                params?: {},
+                options?: IStateOptions,
+            ): angular.IPromise<any>;
+            go(
+                to: IState,
+                params?: {},
+                options?: IStateOptions,
+            ): angular.IPromise<any>;
+            transitionTo(
+                state: string,
+                params?: {},
+                updateLocation?: boolean,
+            ): angular.IPromise<any>;
+            transitionTo(
+                state: IState,
+                params?: {},
+                updateLocation?: boolean,
+            ): angular.IPromise<any>;
+            transitionTo(
+                state: string,
+                params?: {},
+                options?: IStateOptions,
+            ): angular.IPromise<any>;
+            transitionTo(
+                state: IState,
+                params?: {},
+                options?: IStateOptions,
+            ): angular.IPromise<any>;
             includes(state: string, params?: {}): boolean;
             includes(state: string, params?: {}, options?: any): boolean;
             is(state: string, params?: {}): boolean;
@@ -304,9 +352,17 @@ declare module "angular" {
              */
             sync(): void;
             listen(): Function;
-            href(urlMatcher: IUrlMatcher, params?: IStateParamsService, options?: IHrefOptions): string;
+            href(
+                urlMatcher: IUrlMatcher,
+                params?: IStateParamsService,
+                options?: IHrefOptions,
+            ): string;
             update(read?: boolean): void;
-            push(urlMatcher: IUrlMatcher, params?: IStateParamsService, options?: IHrefOptions): void;
+            push(
+                urlMatcher: IUrlMatcher,
+                params?: IStateParamsService,
+                options?: IHrefOptions,
+            ): void;
         }
 
         interface IUiViewScrollProvider {

@@ -29,7 +29,8 @@ const songResponse: AppleMusicApi.SongResponse = {
                 name: "Invitation (Live)",
                 isrc: "FR5FH1300035",
                 hasLyrics: false,
-                albumName: "Live At the Olympia - June 27, 2012 (Live) [feat. Yusef Lateef]",
+                albumName:
+                    "Live At the Olympia - June 27, 2012 (Live) [feat. Yusef Lateef]",
                 playParams: {
                     id: "897072750",
                     kind: "song",
@@ -98,8 +99,16 @@ const AlbumResponse: AppleMusicApi.AlbumResponse = {
                 artists: {
                     href: "/v1/catalog/us/albums/724267459/artists",
                     data: [
-                        { id: "117975", type: "artists", href: "/v1/catalog/us/artists/117975" },
-                        { id: "125367", type: "artists", href: "/v1/catalog/us/artists/125367" },
+                        {
+                            id: "117975",
+                            type: "artists",
+                            href: "/v1/catalog/us/artists/117975",
+                        },
+                        {
+                            id: "125367",
+                            type: "artists",
+                            href: "/v1/catalog/us/artists/125367",
+                        },
                     ],
                 },
                 tracks: {
@@ -475,7 +484,10 @@ const PlaylistResponse: AppleMusicApi.PlaylistResponse = {
                 name: "Vol de nuit",
                 playlistType: "editorial",
                 curatorName: "Apple Music",
-                playParams: { id: "pl.faeb447ec5a341ef83e7e65189bd1c63", kind: "playlist" },
+                playParams: {
+                    id: "pl.faeb447ec5a341ef83e7e65189bd1c63",
+                    kind: "playlist",
+                },
                 description: {
                     standard:
                         "Reflective indie, dreamlike folk, sophisticated jazz funk, muted electronics—take a journey through late-night sounds and understated grooves, current and past, with this distraction-free soundtrack tailor-made for reading relaxing, or just getting your work done. Our editors regularly update this playlist with new music. If you hear something you like, add it to your library.",

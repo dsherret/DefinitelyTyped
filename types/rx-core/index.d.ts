@@ -3,10 +3,22 @@ declare namespace Rx {
      * Promise A+
      */
     interface IPromise<T> {
-        then<R>(onFulfilled: (value: T) => IPromise<R>, onRejected: (reason: any) => IPromise<R>): IPromise<R>;
-        then<R>(onFulfilled: (value: T) => IPromise<R>, onRejected?: (reason: any) => R): IPromise<R>;
-        then<R>(onFulfilled: (value: T) => R, onRejected: (reason: any) => IPromise<R>): IPromise<R>;
-        then<R>(onFulfilled?: (value: T) => R, onRejected?: (reason: any) => R): IPromise<R>;
+        then<R>(
+            onFulfilled: (value: T) => IPromise<R>,
+            onRejected: (reason: any) => IPromise<R>,
+        ): IPromise<R>;
+        then<R>(
+            onFulfilled: (value: T) => IPromise<R>,
+            onRejected?: (reason: any) => R,
+        ): IPromise<R>;
+        then<R>(
+            onFulfilled: (value: T) => R,
+            onRejected: (reason: any) => IPromise<R>,
+        ): IPromise<R>;
+        then<R>(
+            onFulfilled?: (value: T) => R,
+            onRejected?: (reason: any) => R,
+        ): IPromise<R>;
     }
 
     interface IDisposable {
@@ -39,10 +51,19 @@ declare namespace Rx {
         amb(rightSource: IPromise<T> | Observable<T>): Observable<T>;
         onErrorResumeNext(second: IPromise<T> | Observable<T>): Observable<T>;
         bufferWithCount(count: number, skip?: number): Observable<T[]>;
-        windowWithCount(count: number, skip?: number): Observable<Observable<T>>;
+        windowWithCount(
+            count: number,
+            skip?: number,
+        ): Observable<Observable<T>>;
         defaultIfEmpty(defaultValue?: T): Observable<T>;
-        distinct(skipParameter: boolean, valueSerializer: (value: T) => string): Observable<T>;
-        distinct<TKey>(keySelector?: (value: T) => TKey, keySerializer?: (key: TKey) => string): Observable<T>;
+        distinct(
+            skipParameter: boolean,
+            valueSerializer: (value: T) => string,
+        ): Observable<T>;
+        distinct<TKey>(
+            keySelector?: (value: T) => TKey,
+            keySerializer?: (key: TKey) => string,
+        ): Observable<T>;
         groupBy<TKey, TElement>(
             keySelector: (value: T) => TKey,
             skipElementSelector?: boolean,
@@ -56,13 +77,17 @@ declare namespace Rx {
         groupByUntil<TKey, TDuration>(
             keySelector: (value: T) => TKey,
             skipElementSelector: boolean,
-            durationSelector: (group: GroupedObservable<TKey, T>) => Observable<TDuration>,
+            durationSelector: (
+                group: GroupedObservable<TKey, T>,
+            ) => Observable<TDuration>,
             keySerializer?: (key: TKey) => string,
         ): Observable<GroupedObservable<TKey, T>>;
         groupByUntil<TKey, TElement, TDuration>(
             keySelector: (value: T) => TKey,
             elementSelector: (value: T) => TElement,
-            durationSelector: (group: GroupedObservable<TKey, TElement>) => Observable<TDuration>,
+            durationSelector: (
+                group: GroupedObservable<TKey, TElement>,
+            ) => Observable<TDuration>,
             keySerializer?: (key: TKey) => string,
         ): Observable<GroupedObservable<TKey, TElement>>;
     }
@@ -74,10 +99,14 @@ declare namespace Rx {
         ): Observable<TSource>;
         amb<T>(...sources: Array<IPromise<T>>): Observable<T>;
         amb<T>(...sources: Array<Observable<T>>): Observable<T>;
-        amb<T>(sources: Array<IPromise<T>> | Array<Observable<T>>): Observable<T>;
+        amb<T>(
+            sources: Array<IPromise<T>> | Array<Observable<T>>,
+        ): Observable<T>;
         onErrorResumeNext<T>(...sources: Array<IPromise<T>>): Observable<T>;
         onErrorResumeNext<T>(...sources: Array<Observable<T>>): Observable<T>;
-        onErrorResumeNext<T>(sources: Array<IPromise<T>> | Array<Observable<T>>): Observable<T>;
+        onErrorResumeNext<T>(
+            sources: Array<IPromise<T>> | Array<Observable<T>>,
+        ): Observable<T>;
     }
 
     interface GroupedObservable<TKey, TElement> extends Observable<TElement> {

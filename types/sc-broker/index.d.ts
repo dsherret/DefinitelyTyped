@@ -37,7 +37,10 @@ export interface SCBrokerServer extends EventEmitter {
     once(event: "exit", listener: (data: ExitData) => void): this;
 
     removeListener(event: "error", listener: (err?: Error) => void): this;
-    removeListener(event: "brokerMessage", listener: BrokerMessageListener): this;
+    removeListener(
+        event: "brokerMessage",
+        listener: BrokerMessageListener,
+    ): this;
     removeListener(event: "ready", listener: (data: any) => void): this;
     removeListener(event: "exit", listener: (data: ExitData) => void): this;
 
@@ -46,7 +49,10 @@ export interface SCBrokerServer extends EventEmitter {
     off(event: "ready", listener: (data: any) => void): this;
     off(event: "exit", listener: (data: ExitData) => void): this;
 
-    sendToBroker(data: any, callback?: (err: Error | null, data: any, brokerId: string) => void): void;
+    sendToBroker(
+        data: any,
+        callback?: (err: Error | null, data: any, brokerId: string) => void,
+    ): void;
 
     destroy(): void;
 }
@@ -119,13 +125,20 @@ export interface SCBrokerClient extends EventEmitter {
     on(event: "warning", listener: (warning?: Error) => void): this;
     on(event: "ready", listener: (data: any) => void): this;
     on(event: "message", listener: (channel: string, data: any) => void): this;
-    on(event: "subscribeFail", listener: (err: Error | null, channel: string) => void): this;
+    on(
+        event: "subscribeFail",
+        listener: (err: Error | null, channel: string) => void,
+    ): this;
     on(event: "subscribe", listener: (channel: string) => void): this;
     on(event: "unsubscribe", listener: () => void): this;
 
     isConnected(): boolean;
 
-    subscribe(channel: string, ackCallback: (err?: Error) => void, force?: boolean): void;
+    subscribe(
+        channel: string,
+        ackCallback: (err?: Error) => void,
+        force?: boolean,
+    ): void;
     unsubscribe(channel: string, ackCallback: (err?: Error) => void): void;
 
     subscriptions(includePending?: boolean): string[];
@@ -135,20 +148,42 @@ export interface SCBrokerClient extends EventEmitter {
 
     send(data: any, callback: (err?: Error) => void): void;
 
-    set(keyChain: KeyChain, value: any, getValue?: boolean, callback?: (err?: Error) => void): void;
+    set(
+        keyChain: KeyChain,
+        value: any,
+        getValue?: boolean,
+        callback?: (err?: Error) => void,
+    ): void;
     set(keyChain: KeyChain, value: any, callback?: (err?: Error) => void): void;
 
     expire(keys: Keys, seconds: number, callback?: (err?: Error) => void): void;
     unexpire(keys: Keys, callback?: (err?: Error) => void): void;
     getExpiry(key: Key, callback?: (err?: Error) => void): number;
 
-    add(keyChain: KeyChain, value: any, getValue?: boolean, callback?: (err?: Error) => void): void;
+    add(
+        keyChain: KeyChain,
+        value: any,
+        getValue?: boolean,
+        callback?: (err?: Error) => void,
+    ): void;
     add(keyChain: KeyChain, value: any, callback?: (err?: Error) => void): void;
 
-    concat(keyChain: KeyChain, value: any, getValue?: boolean, callback?: (err?: Error) => void): void;
-    concat(keyChain: KeyChain, value: any, callback?: (err?: Error) => void): void;
+    concat(
+        keyChain: KeyChain,
+        value: any,
+        getValue?: boolean,
+        callback?: (err?: Error) => void,
+    ): void;
+    concat(
+        keyChain: KeyChain,
+        value: any,
+        callback?: (err?: Error) => void,
+    ): void;
 
-    get(keyChain: KeyChain, callback: (err: Error | null, value: any) => void): void;
+    get(
+        keyChain: KeyChain,
+        callback: (err: Error | null, value: any) => void,
+    ): void;
 
     getRange(
         keyChain: KeyChain,
@@ -156,23 +191,44 @@ export interface SCBrokerClient extends EventEmitter {
         toIndex: number,
         callback: (err: Error | null, value: any) => void,
     ): void;
-    getRange(keyChain: KeyChain, fromIndex: number, callback: (err: Error | null, value: any) => void): void;
+    getRange(
+        keyChain: KeyChain,
+        fromIndex: number,
+        callback: (err: Error | null, value: any) => void,
+    ): void;
 
     getAll(callback: (err: Error | null, value: any[] | object) => void): void;
 
-    count(keyChain: KeyChain, callback: (err: Error | null, value: number) => void): void;
+    count(
+        keyChain: KeyChain,
+        callback: (err: Error | null, value: number) => void,
+    ): void;
 
     exec(
         query: (datamap: FlexiMap) => void,
         options?: QueryOptions,
         callback?: (err: Error | null, data: any) => void,
     ): void;
-    exec(query: (datamap: FlexiMap) => void, callback: (err: Error | null, data: any) => void): void;
+    exec(
+        query: (datamap: FlexiMap) => void,
+        callback: (err: Error | null, data: any) => void,
+    ): void;
 
-    query(query: (datamap: FlexiMap) => void, data?: any, callback?: (err: Error | null, data: any) => void): void;
-    query(query: (datamap: FlexiMap) => void, callback: (err: Error | null, data: any) => void): void;
+    query(
+        query: (datamap: FlexiMap) => void,
+        data?: any,
+        callback?: (err: Error | null, data: any) => void,
+    ): void;
+    query(
+        query: (datamap: FlexiMap) => void,
+        callback: (err: Error | null, data: any) => void,
+    ): void;
 
-    remove(keyChain: KeyChain, getValue?: boolean, callback?: (err?: Error) => void): void;
+    remove(
+        keyChain: KeyChain,
+        getValue?: boolean,
+        callback?: (err?: Error) => void,
+    ): void;
     remove(keyChain: KeyChain, callback?: (err?: Error) => void): void;
 
     removeRange(
@@ -182,17 +238,36 @@ export interface SCBrokerClient extends EventEmitter {
         getValue?: boolean,
         callback?: (err?: Error) => void,
     ): void;
-    removeRange(keyChain: KeyChain, fromIndex: number, toIndex?: number, callback?: (err?: Error) => void): void;
-    removeRange(keyChain: KeyChain, fromIndex: number, callback?: (err?: Error) => void): void;
+    removeRange(
+        keyChain: KeyChain,
+        fromIndex: number,
+        toIndex?: number,
+        callback?: (err?: Error) => void,
+    ): void;
+    removeRange(
+        keyChain: KeyChain,
+        fromIndex: number,
+        callback?: (err?: Error) => void,
+    ): void;
 
     removeAll(callback?: (err: Error) => void): void;
 
-    splice(keyChain: KeyChain, options?: SpliceOptions, callback?: (err?: Error) => void): void;
+    splice(
+        keyChain: KeyChain,
+        options?: SpliceOptions,
+        callback?: (err?: Error) => void,
+    ): void;
     splice(keyChain: KeyChain, callback?: (err?: Error) => void): void;
 
-    pop(keyChain: KeyChain, callback: (err: Error | null, data: any) => void): void;
+    pop(
+        keyChain: KeyChain,
+        callback: (err: Error | null, data: any) => void,
+    ): void;
 
-    hasKey(keyChain: KeyChain, callback: (err: Error | null, data: boolean) => void): void;
+    hasKey(
+        keyChain: KeyChain,
+        callback: (err: Error | null, data: boolean) => void,
+    ): void;
 
     extractKeys(keyChain: KeyChain): string[];
 

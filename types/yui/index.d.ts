@@ -4,7 +4,12 @@ interface YUI {
     Test: YUITest.YUITestStatic;
     Assert: YUITest.IAssert;
 
-    add(name: string, fn: (Y: YUI, name: string) => any, version: string, details?: Y.IConfig): YUI;
+    add(
+        name: string,
+        fn: (Y: YUI, name: string) => any,
+        version: string,
+        details?: Y.IConfig,
+    ): YUI;
 
     mix(
         receiver: Function,

@@ -36,23 +36,27 @@ debug("Too many tomsters!", "foo");
 // @ts-expect-error
 registerWarnHandler();
 registerWarnHandler(() => {}); // $ExpectType void
-registerWarnHandler((message, options, next) => { // $ExpectType void
+registerWarnHandler((message, options, next) => {
+    // $ExpectType void
     message; // $ExpectType string
     options; // $ExpectType { id: string; } | undefined
     next; // $ExpectType (message: string, options?: { id: string; } | undefined) => void
 });
-registerWarnHandler((message, options, next) => { // $ExpectType void
+registerWarnHandler((message, options, next) => {
+    // $ExpectType void
     message; // $ExpectType string
     options; // $ExpectType { id: string; } | undefined
     // @ts-expect-error
     next();
 });
-registerWarnHandler((message, options, next) => { // $ExpectType void
+registerWarnHandler((message, options, next) => {
+    // $ExpectType void
     message; // $ExpectType string
     options; // $ExpectType { id: string; } | undefined
     next(message); // $ExpectType void
 });
-registerWarnHandler((message, options, next) => { // $ExpectType void
+registerWarnHandler((message, options, next) => {
+    // $ExpectType void
     message; // $ExpectType string
     options; // $ExpectType { id: string; } | undefined
     next(message, options); // $ExpectType void
@@ -62,23 +66,27 @@ registerWarnHandler((message, options, next) => { // $ExpectType void
 // @ts-expect-error
 registerDeprecationHandler();
 registerDeprecationHandler(() => {}); // $ExpectType void
-registerDeprecationHandler((message, options, next) => { // $ExpectType void
+registerDeprecationHandler((message, options, next) => {
+    // $ExpectType void
     message; // $ExpectType string
     options; // $ExpectType { id: string; until: string; } | undefined
     next; // $ExpectType (message: string, options?: { id: string; until: string; } | undefined) => void
 });
-registerDeprecationHandler((message, options, next) => { // $ExpectType void
+registerDeprecationHandler((message, options, next) => {
+    // $ExpectType void
     message; // $ExpectType string
     options; // $ExpectType { id: string; until: string; } | undefined
     // @ts-expect-error
     next();
 });
-registerDeprecationHandler((message, options, next) => { // $ExpectType void
+registerDeprecationHandler((message, options, next) => {
+    // $ExpectType void
     message; // $ExpectType string
     options; // $ExpectType { id: string; until: string; } | undefined
     next(message); // $ExpectType void
 });
-registerDeprecationHandler((message, options, next) => { // $ExpectType void
+registerDeprecationHandler((message, options, next) => {
+    // $ExpectType void
     message; // $ExpectType string
     options; // $ExpectType { id: string; until: string; } | undefined
     next(message, options); // $ExpectType void

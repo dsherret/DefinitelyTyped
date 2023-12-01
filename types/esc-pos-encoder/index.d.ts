@@ -36,7 +36,14 @@ type sizeType = "small" | "normal";
 type alignType = "left" | "center" | "right";
 type verticalAlignType = "top" | "bottom";
 
-type symbologyType = "upca" | "upce" | "ean13" | "ean8" | "coda39" | "itf" | "codabar";
+type symbologyType =
+    | "upca"
+    | "upce"
+    | "ean13"
+    | "ean8"
+    | "coda39"
+    | "itf"
+    | "codabar";
 
 type qrSizeType = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 type qrErrorLevelType = "l" | "m" | "q" | "h";
@@ -54,7 +61,11 @@ declare class EscPosEncoder {
 
     align(value: alignType): EscPosEncoder;
 
-    barcode(value: string, symbology: symbologyType, height: number): EscPosEncoder;
+    barcode(
+        value: string,
+        symbology: symbologyType,
+        height: number,
+    ): EscPosEncoder;
 
     bold(value?: boolean): EscPosEncoder;
 
@@ -64,7 +75,13 @@ declare class EscPosEncoder {
 
     encode(): Uint8Array;
 
-    image(element: any, width: number, height: number, algorithm?: imgAlgType, threshold?: number): EscPosEncoder;
+    image(
+        element: any,
+        width: number,
+        height: number,
+        algorithm?: imgAlgType,
+        threshold?: number,
+    ): EscPosEncoder;
 
     initialize(): EscPosEncoder;
 
@@ -74,7 +91,12 @@ declare class EscPosEncoder {
 
     newline(): EscPosEncoder;
 
-    qrcode(value: string, model?: 1 | 2, size?: qrSizeType, errorLevel?: qrErrorLevelType): EscPosEncoder;
+    qrcode(
+        value: string,
+        model?: 1 | 2,
+        size?: qrSizeType,
+        errorLevel?: qrErrorLevelType,
+    ): EscPosEncoder;
 
     raw(data: readonly number[] | Uint8Array): EscPosEncoder;
 
@@ -110,7 +132,9 @@ declare class EscPosEncoder {
             verticalAlign?: verticalAlignType;
             width?: number;
         }>,
-        data: ReadonlyArray<ReadonlyArray<string | ((encoder: EscPosEncoder) => EscPosEncoder)>>,
+        data: ReadonlyArray<
+            ReadonlyArray<string | ((encoder: EscPosEncoder) => EscPosEncoder)>
+        >,
     ): EscPosEncoder;
 
     rule(options: { style?: styleType; width?: number }): EscPosEncoder;

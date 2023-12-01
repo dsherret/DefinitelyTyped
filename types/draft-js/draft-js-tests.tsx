@@ -50,13 +50,20 @@ class HandleSpan extends React.Component<{ children?: React.ReactNode }> {
     }
 }
 
-class RichEditorExample extends React.Component<{}, { editorState: EditorState }> {
+class RichEditorExample extends React.Component<
+    {},
+    { editorState: EditorState }
+> {
     static initState() {
-        const sampleMarkup = "<b>Bold text</b>, <i>Italic text</i><br/ ><br />"
-            + "<a href=\"http://www.facebook.com\">Example link</a><br /><br/ >"
-            + "<img src=\"image.png\" height=\"112\" width=\"200\" />";
+        const sampleMarkup =
+            "<b>Bold text</b>, <i>Italic text</i><br/ ><br />" +
+            '<a href="http://www.facebook.com">Example link</a><br /><br/ >' +
+            '<img src="image.png" height="112" width="200" />';
         const blocksFromHTML = convertFromHTML(sampleMarkup);
-        const state = ContentState.createFromBlockArray(blocksFromHTML.contentBlocks, blocksFromHTML.entityMap);
+        const state = ContentState.createFromBlockArray(
+            blocksFromHTML.contentBlocks,
+            blocksFromHTML.entityMap,
+        );
         const decorator = new CompositeDecorator([
             {
                 strategy: (
@@ -82,7 +89,8 @@ class RichEditorExample extends React.Component<{}, { editorState: EditorState }
     editorElement: HTMLElement;
     editorContainer: HTMLElement;
 
-    onChange: (editorState: EditorState) => void = (editorState: EditorState) => this.setState({ editorState });
+    onChange: (editorState: EditorState) => void = (editorState: EditorState) =>
+        this.setState({ editorState });
 
     keyBindingFn(e: SyntheticKeyboardEvent): string {
         if (e.keyCode === KEYCODES.ENTER) {
@@ -96,7 +104,10 @@ class RichEditorExample extends React.Component<{}, { editorState: EditorState }
                 const endKey = selectionState.getEndKey();
                 const endOffset = selectionState.getEndOffset();
                 const endBlock = contentState.getBlockForKey(endKey);
-                if (isHeaderBlock(endBlock) && endOffset === endBlock.getText().length) {
+                if (
+                    isHeaderBlock(endBlock) &&
+                    endOffset === endBlock.getText().length
+                ) {
                     return SPLIT_HEADER_BLOCK;
                 }
             }
@@ -117,7 +128,11 @@ class RichEditorExample extends React.Component<{}, { editorState: EditorState }
         this.editorContainer = this.editor?.editorContainer;
     };
 
-    handleKeyCommand = (command: EditorCommand, editorState: EditorState, eventTimeStamp: number) => {
+    handleKeyCommand = (
+        command: EditorCommand,
+        editorState: EditorState,
+        eventTimeStamp: number,
+    ) => {
         if (command === SPLIT_HEADER_BLOCK) {
             this.onChange(this.splitHeaderToNewBlock());
             return "handled";
@@ -134,21 +149,37 @@ class RichEditorExample extends React.Component<{}, { editorState: EditorState }
     };
 
     toggleBlockType: (blockType: string) => void = (blockType: string) => {
-        this.onChange(RichUtils.toggleBlockType(this.state.editorState, blockType));
+        this.onChange(
+            RichUtils.toggleBlockType(this.state.editorState, blockType),
+        );
     };
 
-    toggleInlineStyle: (inlineStyle: string) => void = (inlineStyle: string) => {
-        this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle));
+    toggleInlineStyle: (inlineStyle: string) => void = (
+        inlineStyle: string,
+    ) => {
+        this.onChange(
+            RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle),
+        );
     };
 
-    toggleCodeBlockLanguage: (language: string) => void = (language: string) => {
+    toggleCodeBlockLanguage: (language: string) => void = (
+        language: string,
+    ) => {
         const { editorState } = this.state;
         const contentState = editorState.getCurrentContent();
         const selection = editorState.getSelection();
 
-        const blockData = Immutable.Map<string, string>([["language", language]]);
-        const contentWithData = Modifier.setBlockData(contentState, selection, blockData);
-        this.onChange(EditorState.push(editorState, contentWithData, "change-block-data"));
+        const blockData = Immutable.Map<string, string>([
+            ["language", language],
+        ]);
+        const contentWithData = Modifier.setBlockData(
+            contentState,
+            selection,
+            blockData,
+        );
+        this.onChange(
+            EditorState.push(editorState, contentWithData, "change-block-data"),
+        );
     };
 
     splitHeaderToNewBlock(): EditorState {
@@ -156,7 +187,10 @@ class RichEditorExample extends React.Component<{}, { editorState: EditorState }
         const selection = editorState.getSelection();
 
         // Add a new block after the cursor
-        const contentWithBlock = Modifier.splitBlock(editorState.getCurrentContent(), selection);
+        const contentWithBlock = Modifier.splitBlock(
+            editorState.getCurrentContent(),
+            selection,
+        );
 
         // Change the new block type to be normal 'unstyled' text,
         const newBlock = contentWithBlock.getBlockAfter(selection.getEndKey());
@@ -171,10 +205,17 @@ class RichEditorExample extends React.Component<{}, { editorState: EditorState }
         );
 
         // push the new state with 'insert-characters' to preserve the undo/redo stack
-        const stateWithNewline = EditorState.push(editorState, contentWithUnstyledBlock, "insert-characters");
+        const stateWithNewline = EditorState.push(
+            editorState,
+            contentWithUnstyledBlock,
+            "insert-characters",
+        );
 
         // manually move the cursor to the next line (as expected)
-        const nextState = EditorState.forceSelection(stateWithNewline, SelectionState.createEmpty(newBlock.getKey()));
+        const nextState = EditorState.forceSelection(
+            stateWithNewline,
+            SelectionState.createEmpty(newBlock.getKey()),
+        );
 
         return nextState;
     }
@@ -185,21 +226,25 @@ class RichEditorExample extends React.Component<{}, { editorState: EditorState }
         let className = "RichEditor-editor";
         var contentState = this.state.editorState.getCurrentContent();
         if (!contentState.hasText()) {
-            if (
-                contentState
-                    .getBlockMap()
-                    .first()
-                    .getType() !== "unstyled"
-            ) {
+            if (contentState.getBlockMap().first().getType() !== "unstyled") {
                 className += " RichEditor-hidePlaceholder";
             }
         }
 
         return (
             <div className="RichEditor-root">
-                <BlockStyleControls editorState={this.state.editorState} onToggle={this.toggleBlockType} />
-                <InlineStyleControls editorState={this.state.editorState} onToggle={this.toggleInlineStyle} />
-                <CodeBlockTypeControl editorState={this.state.editorState} onToggle={this.toggleCodeBlockLanguage} />
+                <BlockStyleControls
+                    editorState={this.state.editorState}
+                    onToggle={this.toggleBlockType}
+                />
+                <InlineStyleControls
+                    editorState={this.state.editorState}
+                    onToggle={this.toggleInlineStyle}
+                />
+                <CodeBlockTypeControl
+                    editorState={this.state.editorState}
+                    onToggle={this.toggleCodeBlockLanguage}
+                />
                 <div className={className}>
                     <Editor
                         blockStyleFn={getBlockStyle}
@@ -224,7 +269,7 @@ class RichEditorExample extends React.Component<{}, { editorState: EditorState }
 const styleMap: DraftStyleMap = {
     CODE: {
         backgroundColor: "rgba(0, 0, 0, 0.05)",
-        fontFamily: "\"Inconsolata\", \"Menlo\", \"Consolas\", monospace",
+        fontFamily: '"Inconsolata", "Menlo", "Consolas", monospace',
         fontSize: 16,
         padding: 2,
     },
@@ -265,7 +310,10 @@ class StyleButton extends React.Component<Props> {
         }
 
         return (
-            <span className={className} onMouseDown={e => this.onToggle(e as any)}>
+            <span
+                className={className}
+                onMouseDown={(e) => this.onToggle(e as any)}
+            >
                 {this.props.label}
             </span>
         );
@@ -300,7 +348,10 @@ const isHeaderBlock = (block: ContentBlock): boolean => {
     }
 };
 
-const BlockStyleControls = (props: { editorState: EditorState; onToggle: (blockType: string) => void }) => {
+const BlockStyleControls = (props: {
+    editorState: EditorState;
+    onToggle: (blockType: string) => void;
+}) => {
     const { editorState } = props;
     const selection = editorState.getSelection();
     const blockType = editorState
@@ -330,11 +381,14 @@ var INLINE_STYLES = [
     { label: "Monospace", style: "CODE" },
 ];
 
-const InlineStyleControls = (props: { editorState: EditorState; onToggle: (blockType: string) => void }) => {
+const InlineStyleControls = (props: {
+    editorState: EditorState;
+    onToggle: (blockType: string) => void;
+}) => {
     var currentStyle = props.editorState.getCurrentInlineStyle();
     return (
         <div className="RichEditor-controls">
-            {INLINE_STYLES.map(type => (
+            {INLINE_STYLES.map((type) => (
                 <StyleButton
                     key={type.label}
                     active={currentStyle.has(type.style)}
@@ -354,7 +408,10 @@ const SUPPORTED_LANGUAGES = [
     { label: "C++", value: "c++" },
 ];
 
-const CodeBlockTypeControl = (props: { editorState: EditorState; onToggle: (blockType: string) => void }) => {
+const CodeBlockTypeControl = (props: {
+    editorState: EditorState;
+    onToggle: (blockType: string) => void;
+}) => {
     const { editorState } = props;
     const selection = editorState.getSelection();
     const block = editorState
@@ -380,15 +437,16 @@ const CodeBlockTypeControl = (props: { editorState: EditorState; onToggle: (bloc
     }
 };
 
-ReactDOM.render(
-    <RichEditorExample />,
-    document.getElementById("target"),
-);
+ReactDOM.render(<RichEditorExample />, document.getElementById("target"));
 
 const editorState = EditorState.createEmpty();
 
 const selection = editorState.getSelection();
-const newSelection = selection.merge({ focusKey: "8ajs", focusOffset: 0, isBackward: true });
+const newSelection = selection.merge({
+    focusKey: "8ajs",
+    focusOffset: 0,
+    isBackward: true,
+});
 EditorState.forceSelection(editorState, newSelection);
 
 const contentState = editorState.getCurrentContent();
@@ -404,11 +462,13 @@ rawContentState.blocks.forEach((block: RawDraftContentBlock) => {
         console.log(entityType, entityMutability, offset, length);
     });
 
-    block.inlineStyleRanges.forEach((inlineStyleRange: RawDraftInlineStyleRange) => {
-        const { offset, length } = inlineStyleRange;
-        const inlineStyle: DraftInlineStyleType = inlineStyleRange.style;
-        console.log(inlineStyle, offset, length);
-    });
+    block.inlineStyleRanges.forEach(
+        (inlineStyleRange: RawDraftInlineStyleRange) => {
+            const { offset, length } = inlineStyleRange;
+            const inlineStyle: DraftInlineStyleType = inlineStyleRange.style;
+            console.log(inlineStyle, offset, length);
+        },
+    );
 
     if (block.type === "code-block" && block.data.language) {
         console.log(block.data.language);

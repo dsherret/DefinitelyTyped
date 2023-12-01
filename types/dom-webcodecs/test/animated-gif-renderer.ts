@@ -38,22 +38,21 @@ function renderImage(result: ImageDecodeResult) {
     }
 
     // Decode the next frame ahead of display so it's ready in time.
-    imageDecoder!.decode({ frameIndex: ++imageIndex })
-        .then(
-            nextResult =>
-                setTimeout(
-                    () => {
-                        renderImage(nextResult);
-                    },
-                    result.image.duration! / 1000.0,
-                ),
+    imageDecoder!
+        .decode({ frameIndex: ++imageIndex })
+        .then((nextResult) =>
+            setTimeout(() => {
+                renderImage(nextResult);
+            }, result.image.duration! / 1000.0),
         )
-        .catch(e => {
+        .catch((e) => {
             // We can end up requesting an imageIndex past the end since we're using
             // a ReadableStrem from fetch(), when this happens just wrap around.
             if (e instanceof RangeError) {
                 imageIndex = 0;
-                imageDecoder!.decode({ frameIndex: imageIndex }).then(renderImage);
+                imageDecoder!
+                    .decode({ frameIndex: imageIndex })
+                    .then(renderImage);
             } else {
                 throw e;
             }
@@ -88,7 +87,7 @@ function logMetadata() {
         log("");
     }
 
-    imageDecoder!.completed.then(_ => {
+    imageDecoder!.completed.then((_) => {
         log("Final metadata after all data received:");
         log("imageDecoder.complete = " + imageDecoder!.complete);
         logTracks();
@@ -101,11 +100,14 @@ function decodeImage(imageByteStream: ReadableStream<Uint8Array>) {
         return;
     }
 
-    imageDecoder = new ImageDecoder({ data: imageByteStream, type: "image/gif" });
+    imageDecoder = new ImageDecoder({
+        data: imageByteStream,
+        type: "image/gif",
+    });
     imageDecoder.tracks.ready.then(logMetadata);
     imageDecoder.decode({ frameIndex: imageIndex }).then(renderImage);
 }
 
-fetch("giphy.gif").then(response => decodeImage(response.body!));
+fetch("giphy.gif").then((response) => decodeImage(response.body!));
 
 export {};

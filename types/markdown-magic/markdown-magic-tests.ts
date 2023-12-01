@@ -5,12 +5,17 @@ import markdownMagic = require("markdown-magic");
 import fs = require("fs");
 
 const markdownPath = path.join(__dirname, "README.md");
-const markdownPaths = [path.join(__dirname, "README.md"), path.join(__dirname, "README2.md")];
+const markdownPaths = [
+    path.join(__dirname, "README.md"),
+    path.join(__dirname, "README2.md"),
+];
 
 markdownMagic(markdownPath);
 markdownMagic(markdownPaths);
 
-const customPlugin = function customPlugin(pluginOptions: any): markdownMagic.TransformFunction {
+const customPlugin = function customPlugin(
+    pluginOptions: any,
+): markdownMagic.TransformFunction {
     const defaultOptions = {
         addNewLine: false,
     };
@@ -51,7 +56,7 @@ const customConfig: markdownMagic.Configuration = {
 /* This example callback automatically updates Readme.md and commits the changes */
 const callback: markdownMagic.Callback = function autoGitCommit(err, output) {
     // output is array of file information
-    output.forEach(data => {
+    output.forEach((data) => {
         const mdPath = data.outputFilePath;
         if (!mdPath) return false;
     });

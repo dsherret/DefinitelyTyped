@@ -55,7 +55,9 @@ axisScaleString = scalePoint();
 let containerElement: d3Axis.AxisContainerElement;
 const svg: SVGSVGElement = select<SVGSVGElement, any>("svg").node()!; // mock
 const g: SVGGElement = select<SVGGElement, any>("g").node()!; // mock
-const canvas: HTMLCanvasElement = select<HTMLCanvasElement, any>("canvas").node()!; // mock
+const canvas: HTMLCanvasElement = select<HTMLCanvasElement, any>(
+    "canvas",
+).node()!; // mock
 
 containerElement = svg;
 containerElement = g;
@@ -66,10 +68,12 @@ containerElement = canvas; // fails, incompatible type
 // Test Axis Generators
 // --------------------------------------------------------------------------
 
-let topAxis: d3Axis.Axis<number | { valueOf(): number }> = d3Axis.axisTop(scaleLinear());
+let topAxis: d3Axis.Axis<number | { valueOf(): number }> =
+    d3Axis.axisTop(scaleLinear());
 let rightAxis: d3Axis.Axis<Date> = d3Axis.axisRight<Date>(scaleTime());
 let bottomAxis: d3Axis.Axis<string> = d3Axis.axisBottom(scaleOrdinal<number>());
-let leftAxis: d3Axis.Axis<number | { valueOf(): number }> = d3Axis.axisLeft(scaleLinear());
+let leftAxis: d3Axis.Axis<number | { valueOf(): number }> =
+    d3Axis.axisLeft(scaleLinear());
 
 // --------------------------------------------------------------------------
 // Test Configure Axis
@@ -78,14 +82,16 @@ let leftAxis: d3Axis.Axis<number | { valueOf(): number }> = d3Axis.axisLeft(scal
 // scale(...) ----------------------------------------------------------------
 
 leftAxis = leftAxis.scale(scalePow());
-const powerScale: ScalePower<number, number> = leftAxis.scale<ScalePower<number, number>>();
+const powerScale: ScalePower<number, number> =
+    leftAxis.scale<ScalePower<number, number>>();
 
 bottomAxis = bottomAxis.scale(scaleOrdinal<number>());
 // @ts-expect-error
 bottomAxis = bottomAxis.scale(scalePow()); // fails, domain of scale incompatible with domain of axis
 
 const axisScale: d3Axis.AxisScale<string> = bottomAxis.scale();
-const ordinalScale: ScaleOrdinal<string, number> = bottomAxis.scale<ScaleOrdinal<string, number>>();
+const ordinalScale: ScaleOrdinal<string, number> =
+    bottomAxis.scale<ScaleOrdinal<string, number>>();
 
 // ticks(...) ----------------------------------------------------------------
 
@@ -116,10 +122,11 @@ const tickValues: Date[] | null = rightAxis.tickValues();
 topAxis = topAxis.tickFormat(format(",.0f"));
 topAxis = topAxis.tickFormat(null);
 
-const formatFn: ((domainValue: string, index: number) => string) | null = bottomAxis.tickFormat();
+const formatFn: ((domainValue: string, index: number) => string) | null =
+    bottomAxis.tickFormat();
 
 bottomAxis.tickFormat((d, i) => "#" + i);
-bottomAxis.tickFormat(d => d + "!");
+bottomAxis.tickFormat((d) => d + "!");
 
 // tickSize(...) ----------------------------------------------------------------
 
@@ -150,19 +157,28 @@ num = rightAxis.offset();
 // Test Apply Axis
 // --------------------------------------------------------------------------
 
-const gSelection: Selection<SVGGElement, any, any, any> = select<SVGGElement, any>("g");
+const gSelection: Selection<SVGGElement, any, any, any> = select<
+    SVGGElement,
+    any
+>("g");
 const gTransition = gSelection.transition();
 
 gSelection.call(topAxis);
 gTransition.call(topAxis);
 
-const svgSelection: Selection<SVGSVGElement, any, any, any> = select<SVGSVGElement, any>("svg");
+const svgSelection: Selection<SVGSVGElement, any, any, any> = select<
+    SVGSVGElement,
+    any
+>("svg");
 const svgTransition = svgSelection.transition();
 
 svgSelection.call(leftAxis);
 svgTransition.call(leftAxis);
 
-const pathSelection: Selection<SVGPathElement, any, any, any> = select<SVGPathElement, any>("path");
+const pathSelection: Selection<SVGPathElement, any, any, any> = select<
+    SVGPathElement,
+    any
+>("path");
 const pathTransition = svgSelection.transition();
 
 // // @ts-expect-error
@@ -170,7 +186,10 @@ const pathTransition = svgSelection.transition();
 // // @ts-expect-error
 // pathSelection.call(bottomAxis);
 
-const canvasSelection: Selection<HTMLCanvasElement, any, any, any> = select<HTMLCanvasElement, any>("canvas");
+const canvasSelection: Selection<HTMLCanvasElement, any, any, any> = select<
+    HTMLCanvasElement,
+    any
+>("canvas");
 const canvasTransition = canvasSelection.transition();
 
 // @ts-expect-error

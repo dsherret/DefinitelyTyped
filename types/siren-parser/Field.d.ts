@@ -1,4 +1,4 @@
-export default function(field: object): Field;
+export default function (field: object): Field;
 
 export interface Field {
     name: string;

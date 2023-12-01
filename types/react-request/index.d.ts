@@ -22,7 +22,12 @@ export interface FetchRequestProps extends RequestInit {
     url: string;
 }
 
-export type ResponseType = "arrayBuffer" | "blob" | "formData" | "json" | "text";
+export type ResponseType =
+    | "arrayBuffer"
+    | "blob"
+    | "formData"
+    | "json"
+    | "text";
 
 export interface FetchProps<T = any> extends FetchRequestProps {
     afterFetch?: ((args: FetchResponse<T>) => void) | undefined;

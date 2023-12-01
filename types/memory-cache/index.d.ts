@@ -1,7 +1,12 @@
 // Originally imported from: https://github.com/soywiz/typescript-node-definitions/memory-cache.d.ts
 
 export class CacheClass<K, V> {
-    put(key: K, value: V, time?: number, timeoutCallback?: (key: K, value: V) => void): V;
+    put(
+        key: K,
+        value: V,
+        time?: number,
+        timeoutCallback?: (key: K, value: V) => void,
+    ): V;
     get(key: K): V | null;
     del(key: K): boolean;
     clear(): void;
@@ -18,7 +23,10 @@ export class CacheClass<K, V> {
      * @returns The new size of the cache
      * @see {@link https://github.com/ptarjan/node-cache#importjson--functionjson-string-options--skipduplicates-boolean-}
      */
-    importJson(json: string, options?: { skipDuplicates?: boolean | undefined }): number;
+    importJson(
+        json: string,
+        options?: { skipDuplicates?: boolean | undefined },
+    ): number;
     /**
      * @returns A JSON string representing all the cache data
      */
@@ -27,7 +35,12 @@ export class CacheClass<K, V> {
 
 export const Cache: typeof CacheClass;
 
-export function put<V>(key: any, value: V, time?: number, timeoutCallback?: (key: any, value: any) => void): V;
+export function put<V>(
+    key: any,
+    value: V,
+    time?: number,
+    timeoutCallback?: (key: any, value: any) => void,
+): V;
 export function get(key: any): any;
 export function del(key: any): boolean;
 export function clear(): void;
@@ -44,7 +57,10 @@ export function keys(): any[];
  * @returns The new size of the cache
  * @see {@link https://github.com/ptarjan/node-cache#importjson--functionjson-string-options--skipduplicates-boolean-}
  */
-export function importJson(json: string, options?: { skipDuplicates?: boolean | undefined }): number;
+export function importJson(
+    json: string,
+    options?: { skipDuplicates?: boolean | undefined },
+): number;
 /**
  * @returns A JSON string representing all the cache data
  */

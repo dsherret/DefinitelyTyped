@@ -32,9 +32,14 @@ youtubedl.exec(videoUrl, args, options, (err: any, output: string[]) => {
     console.log(output.join("\n"));
 });
 
-youtubedl.getInfo(videoUrl, args, options, (err: any, output: youtubedl.Info) => {
-    console.log("_filename: " + output._filename);
-});
+youtubedl.getInfo(
+    videoUrl,
+    args,
+    options,
+    (err: any, output: youtubedl.Info) => {
+        console.log("_filename: " + output._filename);
+    },
+);
 
 youtubedl.getInfo(videoUrl, args, (err: any, output: youtubedl.Info) => {
     console.log("_filename: " + output._filename);

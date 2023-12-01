@@ -1,6 +1,9 @@
 // Last module patch version validated against: 1.3.2
 
-import { ThresholdCountGenerator, ThresholdNumberArrayGenerator } from "d3-array";
+import {
+    ThresholdCountGenerator,
+    ThresholdNumberArrayGenerator,
+} from "d3-array";
 import { MultiPolygon } from "geojson";
 
 /**
@@ -71,7 +74,9 @@ export interface Contours {
     /**
      * Returns the current threshold generator, which by default implements Sturges’ formula.
      */
-    thresholds(): ThresholdCountGenerator<number> | ThresholdNumberArrayGenerator<number>;
+    thresholds():
+        | ThresholdCountGenerator<number>
+        | ThresholdNumberArrayGenerator<number>;
     /**
      * Sets the threshold generator to use the specified count and returns this contour generator.
      * The input values’ extent will be uniformly divided into approximately count bins.
@@ -103,7 +108,11 @@ export interface Contours {
      * @param thresholds A threshold generator function. The threshold generator function is passed the array of input values
      * as its argument and returns either an array of calculated thresholds, or the count of thresholds to use.
      */
-    thresholds(thresholds: ThresholdCountGenerator<number> | ThresholdNumberArrayGenerator<number>): this;
+    thresholds(
+        thresholds:
+            | ThresholdCountGenerator<number>
+            | ThresholdNumberArrayGenerator<number>,
+    ): this;
 }
 
 /**
@@ -201,7 +210,9 @@ export interface ContourDensity<Datum = [number, number]> {
     /**
      * Returns the current threshold generator, which by default generates about twenty nicely-rounded density thresholds.
      */
-    thresholds(): ThresholdCountGenerator<number> | ThresholdNumberArrayGenerator<number>;
+    thresholds():
+        | ThresholdCountGenerator<number>
+        | ThresholdNumberArrayGenerator<number>;
     /**
      * Sets the threshold generator to use the specified count and returns this density contour estimator.
      * Approximately count uniformly-spaced nicely-rounded thresholds will be generated.
@@ -233,7 +244,11 @@ export interface ContourDensity<Datum = [number, number]> {
      * @param thresholds A threshold generator function. The threshold generator function is passed the array of input values
      * as its argument and returns either an array of calculated thresholds, or the count of thresholds to use.
      */
-    thresholds(thresholds: ThresholdCountGenerator<number> | ThresholdNumberArrayGenerator<number>): this;
+    thresholds(
+        thresholds:
+            | ThresholdCountGenerator<number>
+            | ThresholdNumberArrayGenerator<number>,
+    ): this;
 
     /**
      * Returns the current bandwidth, which defaults to 20.4939….
@@ -259,4 +274,6 @@ export interface ContourDensity<Datum = [number, number]> {
  * Important: ensure that the x- and y-accessor functions are configured to
  * match the data type used for the generic Datum.
  */
-export function contourDensity<Datum = [number, number]>(): ContourDensity<Datum>;
+export function contourDensity<
+    Datum = [number, number],
+>(): ContourDensity<Datum>;

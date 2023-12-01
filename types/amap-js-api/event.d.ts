@@ -95,6 +95,10 @@ declare namespace AMap {
          * @param eventName 事件名称
          * @param data 事件数据
          */
-        function trigger(instance: EventEmitter, eventName: string, data?: any): void;
+        function trigger(
+            instance: EventEmitter,
+            eventName: string,
+            data?: any,
+        ): void;
     }
 }

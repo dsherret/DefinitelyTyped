@@ -22,13 +22,13 @@ register3({ cache: false });
 register3({
     ignore: [
         /regex/,
-        filepath => {
+        (filepath) => {
             return filepath !== "/path/to/es6-file.js";
         },
     ],
     only: [
         /my_es6_folder/,
-        filepath => {
+        (filepath) => {
             return filepath === "/path/to/es6-file.js";
         },
     ],

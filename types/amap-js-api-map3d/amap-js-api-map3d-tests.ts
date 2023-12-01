@@ -29,7 +29,11 @@ testAmbientLight.setColor([0.1, 1, 0.5]);
 testAmbientLight.setIntensity(1);
 
 // $ExpectType DirectionLight
-const testDirectionLight = new AMap.Lights.DirectionLight([1, 2, 3], [1, 2, 3], 1);
+const testDirectionLight = new AMap.Lights.DirectionLight(
+    [1, 2, 3],
+    [1, 2, 3],
+    1,
+);
 
 // $ExpectType void
 testDirectionLight.setColor([1, 2, 3]);

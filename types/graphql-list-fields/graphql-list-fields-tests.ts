@@ -1,6 +1,11 @@
 import getFieldNames = require("graphql-list-fields");
 
-import { GraphQLID, GraphQLObjectType, GraphQLSchema, GraphQLString } from "graphql";
+import {
+    GraphQLID,
+    GraphQLObjectType,
+    GraphQLSchema,
+    GraphQLString,
+} from "graphql";
 
 const schema = new GraphQLSchema({
     query: new GraphQLObjectType({

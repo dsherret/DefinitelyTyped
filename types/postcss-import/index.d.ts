@@ -57,16 +57,21 @@ declare namespace atImport {
          */
         resolve?:
             | ((
-                id: string,
-                basedir: string,
-                importOptions: AtImportOptions,
-            ) => string | string[] | PromiseLike<string | string[]>)
+                  id: string,
+                  basedir: string,
+                  importOptions: AtImportOptions,
+              ) => string | string[] | PromiseLike<string | string[]>)
             | undefined;
 
         /**
          * You can overwrite the default loading way by setting this option. This function gets `(filename, importOptions)` arguments and returns content or promised content.
          */
-        load?: ((filename: string, importOptions: AtImportOptions) => string | Promise<string>) | undefined;
+        load?:
+            | ((
+                  filename: string,
+                  importOptions: AtImportOptions,
+              ) => string | Promise<string>)
+            | undefined;
 
         /**
          * By default, similar files (based on the same content) are being skipped. It's to optimize output and skip similar files like `normalize.css` for example. If this behavior is not what you

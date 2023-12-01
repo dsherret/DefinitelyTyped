@@ -1,6 +1,9 @@
 import * as React from "react";
 import { UncontrolledReactSVGPanZoom } from "react-svg-pan-zoom";
-import { ReactSvgPanZoomLoader, SvgLoaderSelectElement } from "react-svg-pan-zoom-loader";
+import {
+    ReactSvgPanZoomLoader,
+    SvgLoaderSelectElement,
+} from "react-svg-pan-zoom-loader";
 
 const Example1 = () => (
     <ReactSvgPanZoomLoader
@@ -20,7 +23,11 @@ const Example2 = () => (
         src="file/path/image.svg"
         proxy={
             <>
-                <SvgLoaderSelectElement selector="#tree" onClick={() => console.log("click")} stroke="#000" />
+                <SvgLoaderSelectElement
+                    selector="#tree"
+                    onClick={() => console.log("click")}
+                    stroke="#000"
+                />
             </>
         }
         render={(content) => (

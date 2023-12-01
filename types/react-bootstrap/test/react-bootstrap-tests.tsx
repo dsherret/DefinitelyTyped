@@ -86,7 +86,6 @@ export class ReactBootstrapTest extends Component {
                 {innerDropdown}
                 {innerRadio}
                 {innerCheckbox}
-
                 <div style={style}>
                     <ButtonToolbar>
                         <Button>Default</Button>
@@ -98,10 +97,11 @@ export class ReactBootstrapTest extends Component {
                         <Button bsStyle="link">Link</Button>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <ButtonToolbar>
-                        <Button bsStyle="primary" bsSize="large">Large button</Button>
+                        <Button bsStyle="primary" bsSize="large">
+                            Large button
+                        </Button>
                         <Button bsSize="large">Large button</Button>
                     </ButtonToolbar>
                     <ButtonToolbar>
@@ -109,36 +109,44 @@ export class ReactBootstrapTest extends Component {
                         <Button>Default button</Button>
                     </ButtonToolbar>
                     <ButtonToolbar>
-                        <Button bsStyle="primary" bsSize="small">Small button</Button>
+                        <Button bsStyle="primary" bsSize="small">
+                            Small button
+                        </Button>
                         <Button bsSize="small">Small button</Button>
                     </ButtonToolbar>
                     <ButtonToolbar>
-                        <Button bsStyle="primary" bsSize="xsmall">Extra small button</Button>
+                        <Button bsStyle="primary" bsSize="xsmall">
+                            Extra small button
+                        </Button>
                         <Button bsSize="xsmall">Extra small button</Button>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <Well>
-                        <Button bsStyle="primary" bsSize="large" block>Block level button</Button>
-                        <Button bsSize="large" block>Block level button</Button>
+                        <Button bsStyle="primary" bsSize="large" block>
+                            Block level button
+                        </Button>
+                        <Button bsSize="large" block>
+                            Block level button
+                        </Button>
                     </Well>
                 </div>
-
                 <div style={style}>
                     <ButtonToolbar>
-                        <Button bsStyle="primary" bsSize="large" active>Primary button</Button>
-                        <Button bsSize="large" active>Button</Button>
+                        <Button bsStyle="primary" bsSize="large" active>
+                            Primary button
+                        </Button>
+                        <Button bsSize="large" active>
+                            Button
+                        </Button>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <ButtonToolbar>
                         <Button href="#">Link</Button>
                         <Button>Button</Button>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <ButtonGroup>
                         <Button>Left</Button>
@@ -146,14 +154,14 @@ export class ReactBootstrapTest extends Component {
                         <Button>Right</Button>
                     </ButtonGroup>
                 </div>
-
                 <div style={style}>
                     <ButtonToolbar>
                         <Button disabled>Disabled button</Button>
-                        <Button bsStyle="large" disabled>Disabled large button</Button>
+                        <Button bsStyle="large" disabled>
+                            Disabled large button
+                        </Button>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <ButtonToolbar>
                         <ButtonGroup>
@@ -172,9 +180,7 @@ export class ReactBootstrapTest extends Component {
                         </ButtonGroup>
                     </ButtonToolbar>
                 </div>
-
                 // TODO: Start here
-
                 <div style={style}>
                     <ButtonToolbar>
                         <ButtonGroup bsSize="large">
@@ -208,38 +214,51 @@ export class ReactBootstrapTest extends Component {
                         </ButtonGroup>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <ButtonGroup vertical>
                         <Button>Button</Button>
                         <Button>Button</Button>
-                        <DropdownButton title="Dropdown" id="bg-vertical-dropdown-1">
+                        <DropdownButton
+                            title="Dropdown"
+                            id="bg-vertical-dropdown-1"
+                        >
                             <MenuItem eventKey="1">Dropdown link</MenuItem>
                             <MenuItem eventKey="2">Dropdown link</MenuItem>
                         </DropdownButton>
                         <Button>Button</Button>
                         <Button>Button</Button>
-                        <DropdownButton title="Dropdown" id="bg-vertical-dropdown-2">
+                        <DropdownButton
+                            title="Dropdown"
+                            id="bg-vertical-dropdown-2"
+                        >
                             <MenuItem eventKey="1">Dropdown link</MenuItem>
                             <MenuItem eventKey="2">Dropdown link</MenuItem>
                         </DropdownButton>
-                        <DropdownButton title="Dropdown" id="bg-vertical-dropdown-3">
+                        <DropdownButton
+                            title="Dropdown"
+                            id="bg-vertical-dropdown-3"
+                        >
                             <MenuItem eventKey="1">Dropdown link</MenuItem>
                             <MenuItem eventKey="2">Dropdown link</MenuItem>
                         </DropdownButton>
                     </ButtonGroup>
                 </div>
-
                 <div style={style}>
-                    <DropdownButton bsStyle={"default"} title={"hello"} key={0} id={"0"}>
+                    <DropdownButton
+                        bsStyle={"default"}
+                        title={"hello"}
+                        key={0}
+                        id={"0"}
+                    >
                         <MenuItem eventKey="1">Action</MenuItem>
                         <MenuItem eventKey="2">Another action</MenuItem>
-                        <MenuItem eventKey="3" active>Active Item</MenuItem>
+                        <MenuItem eventKey="3" active>
+                            Active Item
+                        </MenuItem>
                         <MenuItem divider />
                         <MenuItem eventKey="4">Separated link</MenuItem>
                     </DropdownButton>
                 </div>
-
                 <div style={style}>
                     <div className="clearfix">
                         <ul className="dropdown-menu open">
@@ -252,30 +271,28 @@ export class ReactBootstrapTest extends Component {
                             <MenuItem title="See? I have a title.">
                                 link with title
                             </MenuItem>
-                            <MenuItem eventKey={1} href="#someHref" onSelect={this.callback}>
+                            <MenuItem
+                                eventKey={1}
+                                href="#someHref"
+                                onSelect={this.callback}
+                            >
                                 link that alerts
                             </MenuItem>
                         </ul>
                     </div>
                 </div>
-
                 <div style={style}>
                     <Panel onClick={this.callback}>
-                        <Panel.Body>
-                            Basic panel example
-                        </Panel.Body>
+                        <Panel.Body>Basic panel example</Panel.Body>
                     </Panel>
                 </div>
-
                 <div style={style}>
                     <div>
                         <Panel>
                             <Panel.Heading>
                                 Panel heading without title
                             </Panel.Heading>
-                            <Panel.Body>
-                                Panel content
-                            </Panel.Body>
+                            <Panel.Body>Panel content</Panel.Body>
                         </Panel>
                         <Panel>
                             <Panel.Heading>
@@ -283,70 +300,76 @@ export class ReactBootstrapTest extends Component {
                                     Panel heading with a title
                                 </Panel.Title>
                             </Panel.Heading>
-                            <Panel.Body>
-                                Panel content
-                            </Panel.Body>
+                            <Panel.Body>Panel content</Panel.Body>
                         </Panel>
                     </div>
                 </div>
-
                 <div style={style}>
                     <Panel>
                         <Panel.Body>Panel content</Panel.Body>
                         <Panel.Footer>Panel footer</Panel.Footer>
                     </Panel>
                 </div>
-
                 <div style={style}>
                     <Panel bsClass="custom-class">
                         <Panel.Body>Panel content</Panel.Body>
                         <Panel.Footer>Panel footer</Panel.Footer>
                     </Panel>
                 </div>
-
                 <div style={style}>
                     <div>
                         <Panel bsStyle="primary">
                             <Panel.Heading>
-                                <Panel.Title componentClass="h3">Panel heading</Panel.Title>
+                                <Panel.Title componentClass="h3">
+                                    Panel heading
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>Panel content</Panel.Body>
                         </Panel>
 
                         <Panel bsStyle="success">
                             <Panel.Heading>
-                                <Panel.Title componentClass="h3">Panel heading</Panel.Title>
+                                <Panel.Title componentClass="h3">
+                                    Panel heading
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>Panel content</Panel.Body>
                         </Panel>
 
                         <Panel bsStyle="info">
                             <Panel.Heading>
-                                <Panel.Title componentClass="h3">Panel heading</Panel.Title>
+                                <Panel.Title componentClass="h3">
+                                    Panel heading
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>Panel content</Panel.Body>
                         </Panel>
 
                         <Panel bsStyle="warning">
                             <Panel.Heading>
-                                <Panel.Title componentClass="h3">Panel heading</Panel.Title>
+                                <Panel.Title componentClass="h3">
+                                    Panel heading
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>Panel content</Panel.Body>
                         </Panel>
 
                         <Panel bsStyle="danger">
                             <Panel.Heading>
-                                <Panel.Title componentClass="h3">Panel heading</Panel.Title>
+                                <Panel.Title componentClass="h3">
+                                    Panel heading
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body>Panel content</Panel.Body>
                         </Panel>
                     </div>
                 </div>
-
                 <div style={style}>
                     <Panel>
                         <Panel.Heading>Panel heading</Panel.Heading>
-                        <Panel.Body>Some default panel content here.</Panel.Body>
+                        <Panel.Body>
+                            Some default panel content here.
+                        </Panel.Body>
                         <ListGroup>
                             <ListGroupItem>Item 1</ListGroupItem>
                             <ListGroupItem>Item 2</ListGroupItem>
@@ -355,14 +378,14 @@ export class ReactBootstrapTest extends Component {
                         <Panel.Body>Some more panel content here.</Panel.Body>
                     </Panel>
                 </div>
-
                 <div style={style}>
                     <Panel id="collapsible-panel-example-1" expanded={true}>
                         <Panel.Collapse>
                             <Panel.Body>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                                sapiente ea proident.
+                                Anim pariatur cliche reprehenderit, enim eiusmod
+                                high life accusamus terry richardson ad squid.
+                                Nihil anim keffiyeh helvetica, craft beer labore
+                                wes anderson cred nesciunt sapiente ea proident.
                             </Panel.Body>
                         </Panel.Collapse>
                     </Panel>
@@ -374,27 +397,32 @@ export class ReactBootstrapTest extends Component {
                         </Panel.Heading>
                         <Panel.Collapse>
                             <Panel.Body>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                                sapiente ea proident.
+                                Anim pariatur cliche reprehenderit, enim eiusmod
+                                high life accusamus terry richardson ad squid.
+                                Nihil anim keffiyeh helvetica, craft beer labore
+                                wes anderson cred nesciunt sapiente ea proident.
                             </Panel.Body>
                         </Panel.Collapse>
                     </Panel>
                     <Panel id="collapsible-panel-example-3" defaultExpanded>
                         <Panel.Heading>
-                            <Panel.Title>Title that functions as a collapse toggle</Panel.Title>
-                            <Panel.Toggle componentClass="a">My own toggle</Panel.Toggle>
+                            <Panel.Title>
+                                Title that functions as a collapse toggle
+                            </Panel.Title>
+                            <Panel.Toggle componentClass="a">
+                                My own toggle
+                            </Panel.Toggle>
                         </Panel.Heading>
                         <Panel.Collapse>
                             <Panel.Body>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt
-                                sapiente ea proident.
+                                Anim pariatur cliche reprehenderit, enim eiusmod
+                                high life accusamus terry richardson ad squid.
+                                Nihil anim keffiyeh helvetica, craft beer labore
+                                wes anderson cred nesciunt sapiente ea proident.
                             </Panel.Body>
                         </Panel.Collapse>
                     </Panel>
                 </div>
-
                 <div style={style}>
                     <PanelGroup
                         accordion
@@ -404,45 +432,56 @@ export class ReactBootstrapTest extends Component {
                     >
                         <Panel eventKey="1">
                             <Panel.Heading>
-                                <Panel.Title toggle>Panel heading 1</Panel.Title>
+                                <Panel.Title toggle>
+                                    Panel heading 1
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body collapsible>Panel content 1</Panel.Body>
                         </Panel>
                         <Panel eventKey="2">
                             <Panel.Heading>
-                                <Panel.Title toggle>Panel heading 2</Panel.Title>
+                                <Panel.Title toggle>
+                                    Panel heading 2
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body collapsible>Panel content 2</Panel.Body>
                         </Panel>
                     </PanelGroup>
                 </div>
-
                 <div style={style}>
                     <Accordion>
                         <Panel eventKey="1">
-                            <Panel.Heading>Collapsible Group Item #1</Panel.Heading>
+                            <Panel.Heading>
+                                Collapsible Group Item #1
+                            </Panel.Heading>
                             <Panel.Body>
-                                farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+                                farm-to-table, raw denim aesthetic synth
+                                nesciunt you probably haven't heard of them
                                 accusamus labore sustainable VHS.
                             </Panel.Body>
                         </Panel>
                         <Panel eventKey="2">
-                            <Panel.Heading>Collapsible Group Item #2</Panel.Heading>
+                            <Panel.Heading>
+                                Collapsible Group Item #2
+                            </Panel.Heading>
                             <Panel.Body>
-                                farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+                                farm-to-table, raw denim aesthetic synth
+                                nesciunt you probably haven't heard of them
                                 accusamus labore sustainable VHS.
                             </Panel.Body>
                         </Panel>
                         <Panel eventKey="3">
-                            <Panel.Heading>Collapsible Group Item #3</Panel.Heading>
+                            <Panel.Heading>
+                                Collapsible Group Item #3
+                            </Panel.Heading>
                             <Panel.Body>
-                                farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them
+                                farm-to-table, raw denim aesthetic synth
+                                nesciunt you probably haven't heard of them
                                 accusamus labore sustainable VHS.
                             </Panel.Body>
                         </Panel>
                     </Accordion>
                 </div>
-
                 <div>
                     <PanelGroup
                         accordion
@@ -451,66 +490,92 @@ export class ReactBootstrapTest extends Component {
                     >
                         <Panel eventKey="1">
                             <Panel.Heading>
-                                <Panel.Title toggle>Panel heading 1</Panel.Title>
+                                <Panel.Title toggle>
+                                    Panel heading 1
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body collapsible>Panel content 1</Panel.Body>
                         </Panel>
                         <Panel eventKey="2">
                             <Panel.Heading>
-                                <Panel.Title toggle>Panel heading 2</Panel.Title>
+                                <Panel.Title toggle>
+                                    Panel heading 2
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body collapsible>Panel content 2</Panel.Body>
                         </Panel>
                     </PanelGroup>
                 </div>
-
                 <div>
                     <PanelGroup accordion id="accordion-example">
                         <Panel eventKey="1">
                             <Panel.Heading>
-                                <Panel.Title toggle>Collapsible Group Item #1</Panel.Title>
+                                <Panel.Title toggle>
+                                    Collapsible Group Item #1
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body collapsible>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                Anim pariatur cliche reprehenderit, enim eiusmod
+                                high life accusamus terry richardson ad squid. 3
+                                wolf moon officia aute, non cupidatat skateboard
+                                dolor brunch. Food truck quinoa nesciunt laborum
+                                eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+                                put a bird on it squid single-origin coffee
+                                nulla assumenda shoreditch et. Nihil anim
+                                keffiyeh helvetica, craft beer labore wes
+                                anderson cred nesciunt sapiente ea proident. Ad
+                                vegan excepteur butcher vice lomo. Leggings
+                                occaecat craft beer farm-to-table, raw denim
+                                aesthetic synth nesciunt you probably haven't
+                                heard of them accusamus labore sustainable VHS.
                             </Panel.Body>
                         </Panel>
                         <Panel eventKey="2">
                             <Panel.Heading>
-                                <Panel.Title toggle>Collapsible Group Item #2</Panel.Title>
+                                <Panel.Title toggle>
+                                    Collapsible Group Item #2
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body collapsible>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                Anim pariatur cliche reprehenderit, enim eiusmod
+                                high life accusamus terry richardson ad squid. 3
+                                wolf moon officia aute, non cupidatat skateboard
+                                dolor brunch. Food truck quinoa nesciunt laborum
+                                eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+                                put a bird on it squid single-origin coffee
+                                nulla assumenda shoreditch et. Nihil anim
+                                keffiyeh helvetica, craft beer labore wes
+                                anderson cred nesciunt sapiente ea proident. Ad
+                                vegan excepteur butcher vice lomo. Leggings
+                                occaecat craft beer farm-to-table, raw denim
+                                aesthetic synth nesciunt you probably haven't
+                                heard of them accusamus labore sustainable VHS.
                             </Panel.Body>
                         </Panel>
                         <Panel eventKey="3">
                             <Panel.Heading>
-                                <Panel.Title toggle>Collapsible Group Item #3</Panel.Title>
+                                <Panel.Title toggle>
+                                    Collapsible Group Item #3
+                                </Panel.Title>
                             </Panel.Heading>
                             <Panel.Body collapsible>
-                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                Anim pariatur cliche reprehenderit, enim eiusmod
+                                high life accusamus terry richardson ad squid. 3
+                                wolf moon officia aute, non cupidatat skateboard
+                                dolor brunch. Food truck quinoa nesciunt laborum
+                                eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+                                put a bird on it squid single-origin coffee
+                                nulla assumenda shoreditch et. Nihil anim
+                                keffiyeh helvetica, craft beer labore wes
+                                anderson cred nesciunt sapiente ea proident. Ad
+                                vegan excepteur butcher vice lomo. Leggings
+                                occaecat craft beer farm-to-table, raw denim
+                                aesthetic synth nesciunt you probably haven't
+                                heard of them accusamus labore sustainable VHS.
                             </Panel.Body>
                         </Panel>
                     </PanelGroup>
                 </div>
-
                 <div style={style}>
                     <div className="static-modal">
                         <Modal.Dialog
@@ -537,7 +602,6 @@ export class ReactBootstrapTest extends Component {
                         </Modal.Dialog>
                     </div>
                 </div>
-
                 <div style={style}>
                     <Modal show={false} onHide={() => ({})} style={style}>
                         <Modal.Header closeButton>
@@ -545,7 +609,10 @@ export class ReactBootstrapTest extends Component {
                         </Modal.Header>
                         <Modal.Body bsClass="custom-class">
                             <h4>Text in a modal</h4>
-                            <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                            <p>
+                                Duis mollis, est non commodo luctus, nisi erat
+                                porttitor ligula.
+                            </p>
 
                             <h4>Popover in a modal</h4>
                             <p>
@@ -574,7 +641,6 @@ export class ReactBootstrapTest extends Component {
                         </Modal.Footer>
                     </Modal>
                 </div>
-
                 <div style={style} className="static-tooltip">
                     <div>
                         <Tooltip placement="right" className="in">
@@ -594,11 +660,9 @@ export class ReactBootstrapTest extends Component {
                         </Tooltip>
                     </div>
                 </div>
-
                 <div style={style}>
                     <Overlay>Overlay</Overlay>
                 </div>
-
                 <div style={style}>
                     <ButtonToolbar>
                         <OverlayTrigger placement="left" overlay={tooltip}>
@@ -618,15 +682,19 @@ export class ReactBootstrapTest extends Component {
                         </OverlayTrigger>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <div style={{ height: 120, position: "relative" }}>
-                        <Popover placement="right" positionLeft={200} positionTop={50} title="Popover right">
-                            And here's some <strong>amazing</strong> content. It's very engaging. right?
+                        <Popover
+                            placement="right"
+                            positionLeft={200}
+                            positionTop={50}
+                            title="Popover right"
+                        >
+                            And here's some <strong>amazing</strong> content.
+                            It's very engaging. right?
                         </Popover>
                     </div>
                 </div>
-
                 <div style={style}>
                     <ButtonToolbar>
                         <OverlayTrigger
@@ -634,7 +702,8 @@ export class ReactBootstrapTest extends Component {
                             placement="left"
                             overlay={
                                 <Popover title="Popover left">
-                                    <strong>Holy guacamole!</strong> Check this info.
+                                    <strong>Holy guacamole!</strong> Check this
+                                    info.
                                 </Popover>
                             }
                         >
@@ -645,7 +714,8 @@ export class ReactBootstrapTest extends Component {
                             placement="top"
                             overlay={
                                 <Popover title="Popover top">
-                                    <strong>Holy guacamole!</strong> Check this info.
+                                    <strong>Holy guacamole!</strong> Check this
+                                    info.
                                 </Popover>
                             }
                         >
@@ -656,7 +726,8 @@ export class ReactBootstrapTest extends Component {
                             placement="bottom"
                             overlay={
                                 <Popover title="Popover bottom">
-                                    <strong>Holy guacamole!</strong> Check this info.
+                                    <strong>Holy guacamole!</strong> Check this
+                                    info.
                                 </Popover>
                             }
                         >
@@ -667,7 +738,8 @@ export class ReactBootstrapTest extends Component {
                             placement="right"
                             overlay={
                                 <Popover title="Popover right">
-                                    <strong>Holy guacamole!</strong> Check this info.
+                                    <strong>Holy guacamole!</strong> Check this
+                                    info.
                                 </Popover>
                             }
                         >
@@ -675,7 +747,6 @@ export class ReactBootstrapTest extends Component {
                         </OverlayTrigger>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <ButtonToolbar>
                         <OverlayTrigger
@@ -683,7 +754,8 @@ export class ReactBootstrapTest extends Component {
                             placement="bottom"
                             overlay={
                                 <Popover title="Popover bottom">
-                                    <strong>Holy guacamole!</strong> Check this info.
+                                    <strong>Holy guacamole!</strong> Check this
+                                    info.
                                 </Popover>
                             }
                         >
@@ -694,7 +766,8 @@ export class ReactBootstrapTest extends Component {
                             placement="bottom"
                             overlay={
                                 <Popover title="Popover bottom">
-                                    <strong>Holy guacamole!</strong> Check this info.
+                                    <strong>Holy guacamole!</strong> Check this
+                                    info.
                                 </Popover>
                             }
                         >
@@ -705,7 +778,8 @@ export class ReactBootstrapTest extends Component {
                             placement="bottom"
                             overlay={
                                 <Popover title="Popover bottom">
-                                    <strong>Holy guacamole!</strong> Check this info.
+                                    <strong>Holy guacamole!</strong> Check this
+                                    info.
                                 </Popover>
                             }
                         >
@@ -716,11 +790,14 @@ export class ReactBootstrapTest extends Component {
                             placement="bottom"
                             overlay={
                                 <Popover title="Popover bottom">
-                                    <strong>Holy guacamole!</strong> Check this info.
+                                    <strong>Holy guacamole!</strong> Check this
+                                    info.
                                 </Popover>
                             }
                         >
-                            <Button bsStyle="default">Click or hover or focus</Button>
+                            <Button bsStyle="default">
+                                Click or hover or focus
+                            </Button>
                         </OverlayTrigger>
                         <OverlayTrigger
                             trigger="click"
@@ -728,7 +805,8 @@ export class ReactBootstrapTest extends Component {
                             placement="bottom"
                             overlay={
                                 <Popover title="Popover bottom">
-                                    <strong>Holy guacamole!</strong> Check this info.
+                                    <strong>Holy guacamole!</strong> Check this
+                                    info.
                                 </Popover>
                             }
                         >
@@ -736,15 +814,12 @@ export class ReactBootstrapTest extends Component {
                         </OverlayTrigger>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <ProgressBar now={60} />
                 </div>
-
                 <div style={style}>
                     <ProgressBar now={60} label="%(percent)s%" />
                 </div>
-
                 <div style={style}>
                     <div>
                         <ProgressBar bsStyle="success" now={40} />
@@ -753,7 +828,6 @@ export class ReactBootstrapTest extends Component {
                         <ProgressBar bsStyle="danger" now={80} />
                     </div>
                 </div>
-
                 <div style={style}>
                     <div>
                         <ProgressBar striped bsStyle="success" now={40} />
@@ -762,51 +836,89 @@ export class ReactBootstrapTest extends Component {
                         <ProgressBar striped bsStyle="danger" now={80} />
                     </div>
                 </div>
-
                 <div style={style}>
                     <ProgressBar active now={45} />
                 </div>
-
                 <div style={style}>
                     <ProgressBar>
-                        <ProgressBar striped bsStyle="success" now={35} key={1} />
+                        <ProgressBar
+                            striped
+                            bsStyle="success"
+                            now={35}
+                            key={1}
+                        />
                         <ProgressBar bsStyle="warning" now={20} key={2} />
                         <ProgressBar active bsStyle="danger" now={10} key={3} />
                     </ProgressBar>
                 </div>
-
                 <div style={style}>
                     <Nav bsStyle="pills" activeKey={1} onSelect={this.callback}>
-                        <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
-                        <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-                        <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+                        <NavItem eventKey={1} href="/home">
+                            NavItem 1 content
+                        </NavItem>
+                        <NavItem eventKey={2} title="Item">
+                            NavItem 2 content
+                        </NavItem>
+                        <NavItem eventKey={3} disabled>
+                            NavItem 3 content
+                        </NavItem>
                     </Nav>
                 </div>
-
                 <div style={style}>
-                    <Nav bsStyle="pills" stacked activeKey={1} onSelect={this.callback}>
-                        <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
-                        <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-                        <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+                    <Nav
+                        bsStyle="pills"
+                        stacked
+                        activeKey={1}
+                        onSelect={this.callback}
+                    >
+                        <NavItem eventKey={1} href="/home">
+                            NavItem 1 content
+                        </NavItem>
+                        <NavItem eventKey={2} title="Item">
+                            NavItem 2 content
+                        </NavItem>
+                        <NavItem eventKey={3} disabled>
+                            NavItem 3 content
+                        </NavItem>
                     </Nav>
                 </div>
-
                 <div style={style}>
                     <div>
-                        <Nav bsStyle="tabs" justified activeKey={1} onSelect={this.callback}>
-                            <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
-                            <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-                            <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+                        <Nav
+                            bsStyle="tabs"
+                            justified
+                            activeKey={1}
+                            onSelect={this.callback}
+                        >
+                            <NavItem eventKey={1} href="/home">
+                                NavItem 1 content
+                            </NavItem>
+                            <NavItem eventKey={2} title="Item">
+                                NavItem 2 content
+                            </NavItem>
+                            <NavItem eventKey={3} disabled>
+                                NavItem 3 content
+                            </NavItem>
                         </Nav>
                         <br />
-                        <Nav bsStyle="pills" justified activeKey={1} onSelect={this.callback}>
-                            <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
-                            <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-                            <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
+                        <Nav
+                            bsStyle="pills"
+                            justified
+                            activeKey={1}
+                            onSelect={this.callback}
+                        >
+                            <NavItem eventKey={1} href="/home">
+                                NavItem 1 content
+                            </NavItem>
+                            <NavItem eventKey={2} title="Item">
+                                NavItem 2 content
+                            </NavItem>
+                            <NavItem eventKey={3} disabled>
+                                NavItem 3 content
+                            </NavItem>
                         </Nav>
                     </div>
                 </div>
-
                 <div style={style}>
                     <Navbar brand="React-Bootstrap">
                         <Navbar.Header>
@@ -817,22 +929,40 @@ export class ReactBootstrapTest extends Component {
                         </Navbar.Header>
                         <Navbar.Collapse>
                             <Nav>
-                                <NavItem eventKey={1} href="#">Link</NavItem>
-                                <NavItem eventKey={2} href="#">Link</NavItem>
-                                <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
+                                <NavItem eventKey={1} href="#">
+                                    Link
+                                </NavItem>
+                                <NavItem eventKey={2} href="#">
+                                    Link
+                                </NavItem>
+                                <NavDropdown
+                                    eventKey={3}
+                                    title="Dropdown"
+                                    id="basic-nav-dropdown"
+                                >
                                     <MenuItem eventKey="1">Action</MenuItem>
-                                    <MenuItem eventKey="2">Another action</MenuItem>
-                                    <MenuItem eventKey="3">Something else here</MenuItem>
+                                    <MenuItem eventKey="2">
+                                        Another action
+                                    </MenuItem>
+                                    <MenuItem eventKey="3">
+                                        Something else here
+                                    </MenuItem>
                                     <MenuItem divider />
-                                    <MenuItem eventKey="4">Separated link</MenuItem>
+                                    <MenuItem eventKey="4">
+                                        Separated link
+                                    </MenuItem>
                                 </NavDropdown>
                             </Nav>
                             <Navbar.Text>
-                                Signed in as: <Navbar.Link href="#">Mark Otto</Navbar.Link>
+                                Signed in as:{" "}
+                                <Navbar.Link href="#">Mark Otto</Navbar.Link>
                             </Navbar.Text>
                             <Navbar.Form pullRight>
                                 <FormGroup>
-                                    <FormControl type="text" placeholder="Search" />
+                                    <FormControl
+                                        type="text"
+                                        placeholder="Search"
+                                    />
                                 </FormGroup>{" "}
                                 <Button type="submit">Submit</Button>
                             </Navbar.Form>
@@ -842,45 +972,58 @@ export class ReactBootstrapTest extends Component {
                         </Navbar.Collapse>
                     </Navbar>
                 </div>
-
                 <div style={style}>
                     <Navbar brand="React-Bootstrap" inverse toggleNavKey={0}>
                         <Nav right eventKey={0}>
                             {/* This is the eventKey referenced */}
-                            <NavItem eventKey={1} href="#">Link</NavItem>
-                            <NavItem eventKey={2} href="#">Link</NavItem>
+                            <NavItem eventKey={1} href="#">
+                                Link
+                            </NavItem>
+                            <NavItem eventKey={2} href="#">
+                                Link
+                            </NavItem>
                         </Nav>
                     </Navbar>
                 </div>
-
                 <div style={style}>
                     <Pager>
-                        <Pager.Item href="#">Previous</Pager.Item> <Pager.Item href="#">Next</Pager.Item>
+                        <Pager.Item href="#">Previous</Pager.Item>{" "}
+                        <Pager.Item href="#">Next</Pager.Item>
                     </Pager>
                 </div>
-
                 <div style={style}>
                     <Pager>
-                        <Pager.Item previous href="#">&larr; Previous Page</Pager.Item>
-                        <Pager.Item next href="#">Next Page &rarr;</Pager.Item>
+                        <Pager.Item previous href="#">
+                            &larr; Previous Page
+                        </Pager.Item>
+                        <Pager.Item next href="#">
+                            Next Page &rarr;
+                        </Pager.Item>
                     </Pager>
                 </div>
-
                 <div style={style}>
                     <Pager>
-                        <Pager.Item previous href="#">&larr; Previous</Pager.Item>
-                        <Pager.Item disabled next href="#">Next &rarr;</Pager.Item>
+                        <Pager.Item previous href="#">
+                            &larr; Previous
+                        </Pager.Item>
+                        <Pager.Item disabled next href="#">
+                            Next &rarr;
+                        </Pager.Item>
                     </Pager>
                 </div>
-
                 <div style={style}>
                     <Tabs defaultActiveKey={1} animation={false}>
-                        <Tab eventKey={1} title="Tab 1">Tab 1 content</Tab>
-                        <Tab eventKey={2} title="Tab 2">Tab 2 content</Tab>
-                        <Tab eventKey={3} title="Tab 3" disabled>Tab 3 content</Tab>
+                        <Tab eventKey={1} title="Tab 1">
+                            Tab 1 content
+                        </Tab>
+                        <Tab eventKey={2} title="Tab 2">
+                            Tab 2 content
+                        </Tab>
+                        <Tab eventKey={3} title="Tab 3" disabled>
+                            Tab 3 content
+                        </Tab>
                     </Tabs>
                 </div>
-
                 <div style={style}>
                     <Tabs defaultActiveKey={1} animation={true}>
                         <Tab
@@ -898,22 +1041,24 @@ export class ReactBootstrapTest extends Component {
                         >
                             Tab 1 content
                         </Tab>
-                        <Tab eventKey={2} title="Tab 2">Tab 2 content</Tab>
-                        <Tab eventKey={3} title="Tab 3" disabled>Tab 3 content</Tab>
+                        <Tab eventKey={2} title="Tab 2">
+                            Tab 2 content
+                        </Tab>
+                        <Tab eventKey={3} title="Tab 3" disabled>
+                            Tab 3 content
+                        </Tab>
                     </Tabs>
                 </div>
-
                 <div style={style}>
-                    <Tab.Container id="left-tabs-example" defaultActiveKey="first">
+                    <Tab.Container
+                        id="left-tabs-example"
+                        defaultActiveKey="first"
+                    >
                         <Row className="clearfix">
                             <Col sm={4}>
                                 <Nav bsStyle="pills" stacked>
-                                    <NavItem eventKey="first">
-                                        Tab 1
-                                    </NavItem>
-                                    <NavItem eventKey="second">
-                                        Tab 2
-                                    </NavItem>
+                                    <NavItem eventKey="first">Tab 1</NavItem>
+                                    <NavItem eventKey="second">Tab 2</NavItem>
                                 </Nav>
                             </Col>
                             <Col sm={8}>
@@ -929,28 +1074,32 @@ export class ReactBootstrapTest extends Component {
                         </Row>
                     </Tab.Container>
                 </div>
-
                 <div style={style}>
                     <Pager>
                         <PageItem href="#">Previous</PageItem>
                         <PageItem href="#">Next</PageItem>
                     </Pager>
                 </div>
-
                 <div style={style}>
                     <Pager>
-                        <PageItem previous href="#">&larr; Previous Page</PageItem>
-                        <PageItem next href="#">Next Page &rarr;</PageItem>
+                        <PageItem previous href="#">
+                            &larr; Previous Page
+                        </PageItem>
+                        <PageItem next href="#">
+                            Next Page &rarr;
+                        </PageItem>
                     </Pager>
                 </div>
-
                 <div style={style}>
                     <Pager>
-                        <PageItem previous href="#">&larr; Previous</PageItem>
-                        <PageItem disabled next href="#">Next &rarr;</PageItem>
+                        <PageItem previous href="#">
+                            &larr; Previous
+                        </PageItem>
+                        <PageItem disabled next href="#">
+                            Next &rarr;
+                        </PageItem>
                     </Pager>
                 </div>
-
                 <div style={style}>
                     <div>
                         <Pagination bsSize="large">{null}</Pagination>
@@ -974,39 +1123,61 @@ export class ReactBootstrapTest extends Component {
                         </Pagination>
                     </div>
                 </div>
-
                 <div style={style}>
                     <Alert bsStyle="warning">
-                        <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+                        <strong>Holy guacamole!</strong> Best check yo self,
+                        you're not looking too good.
                     </Alert>
                 </div>
-
                 <div style={style}>
                     <Carousel>
                         <Carousel.Item>
-                            <img width={900} height={500} alt="900x500" src="/assets/carousel.png" />
+                            <img
+                                width={900}
+                                height={500}
+                                alt="900x500"
+                                src="/assets/carousel.png"
+                            />
                             <Carousel.Caption>
                                 <h3>First slide label</h3>
-                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                <p>
+                                    Nulla vitae elit libero, a pharetra augue
+                                    mollis interdum.
+                                </p>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <img width={900} height={500} alt="900x500" src="/assets/carousel.png" />
+                            <img
+                                width={900}
+                                height={500}
+                                alt="900x500"
+                                src="/assets/carousel.png"
+                            />
                             <Carousel.Caption>
                                 <h3>Second slide label</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit.
+                                </p>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <img width={900} height={500} alt="900x500" src="/assets/carousel.png" />
+                            <img
+                                width={900}
+                                height={500}
+                                alt="900x500"
+                                src="/assets/carousel.png"
+                            />
                             <Carousel.Caption>
                                 <h3>Third slide label</h3>
-                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                <p>
+                                    Praesent commodo cursus magna, vel
+                                    scelerisque nisl consectetur.
+                                </p>
                             </Carousel.Caption>
                         </Carousel.Item>
                     </Carousel>
                 </div>
-
                 <div style={style}>
                     <Grid>
                         <Row className="show-grid">
@@ -1032,7 +1203,9 @@ export class ReactBootstrapTest extends Component {
 
                         <Row className="show-grid">
                             <Col xs={6} xsOffset={6}>
-                                <code>&lt;{"Col xs={6} xsOffset={6}"} /&gt;</code>
+                                <code>
+                                    &lt;{"Col xs={6} xsOffset={6}"} /&gt;
+                                </code>
                             </Col>
                         </Row>
 
@@ -1046,23 +1219,33 @@ export class ReactBootstrapTest extends Component {
                         </Row>
                     </Grid>
                 </div>
-
                 <div style={style}>
                     <Grid>
                         <Row>
                             <Col xs={6} md={3}>
-                                <Thumbnail href="#" alt="171x180" src="thumbnail.png" />
+                                <Thumbnail
+                                    href="#"
+                                    alt="171x180"
+                                    src="thumbnail.png"
+                                />
                             </Col>
                             <Col xs={6} md={3}>
-                                <Thumbnail href="#" alt="171x180" src="thumbnail.png" />
+                                <Thumbnail
+                                    href="#"
+                                    alt="171x180"
+                                    src="thumbnail.png"
+                                />
                             </Col>
                             <Col xs={6} md={3}>
-                                <Thumbnail href="#" alt="171x180" src="thumbnail.png" />
+                                <Thumbnail
+                                    href="#"
+                                    alt="171x180"
+                                    src="thumbnail.png"
+                                />
                             </Col>
                         </Row>
                     </Grid>
                 </div>
-
                 <div style={style}>
                     <ListGroup>
                         <ListGroupItem>Item 1</ListGroupItem>
@@ -1070,7 +1253,6 @@ export class ReactBootstrapTest extends Component {
                         <ListGroupItem>...</ListGroupItem>
                     </ListGroup>
                 </div>
-
                 <div style={style}>
                     <ListGroup>
                         <ListGroupItem href="#link1">Link 1</ListGroupItem>
@@ -1080,15 +1262,17 @@ export class ReactBootstrapTest extends Component {
                         </ListGroupItem>
                     </ListGroup>
                 </div>
-
                 <div style={style}>
                     <ListGroup>
-                        <ListGroupItem href="#" active>Link 1</ListGroupItem>
+                        <ListGroupItem href="#" active>
+                            Link 1
+                        </ListGroupItem>
                         <ListGroupItem href="#">Link 2</ListGroupItem>
-                        <ListGroupItem href="#" disabled>Link 3</ListGroupItem>
+                        <ListGroupItem href="#" disabled>
+                            Link 3
+                        </ListGroupItem>
                     </ListGroup>
                 </div>
-
                 <div style={style}>
                     <ListGroup>
                         <ListGroupItem bsStyle="success">Success</ListGroupItem>
@@ -1097,15 +1281,19 @@ export class ReactBootstrapTest extends Component {
                         <ListGroupItem bsStyle="danger">Danger</ListGroupItem>
                     </ListGroup>
                 </div>
-
                 <div style={style}>
                     <ListGroup>
-                        <ListGroupItem header="Heading 1">Some body text</ListGroupItem>
-                        <ListGroupItem header="Heading 2" href="#">Linked item</ListGroupItem>
-                        <ListGroupItem header="Heading 3" bsStyle="danger">Danger styling</ListGroupItem>
+                        <ListGroupItem header="Heading 1">
+                            Some body text
+                        </ListGroupItem>
+                        <ListGroupItem header="Heading 2" href="#">
+                            Linked item
+                        </ListGroupItem>
+                        <ListGroupItem header="Heading 3" bsStyle="danger">
+                            Danger styling
+                        </ListGroupItem>
                     </ListGroup>
                 </div>
-
                 <div style={style}>
                     <div>
                         <h1>
@@ -1128,7 +1316,6 @@ export class ReactBootstrapTest extends Component {
                         </p>
                     </div>
                 </div>
-
                 <div style={style}>
                     <div>
                         <Label bsStyle="default">Default</Label>&nbsp;
@@ -1139,30 +1326,30 @@ export class ReactBootstrapTest extends Component {
                         <Label bsStyle="danger">Danger</Label>
                     </div>
                 </div>
-
                 <div style={style}>
                     <p>
                         Badges <Badge>42</Badge>
                     </p>
                 </div>
-
                 <div style={style}>
                     <Jumbotron>
                         <h1>Hello, world!</h1>
                         <p>
-                            This is a simple hero unit, a simple jumbotron-style component for calling extra attention
-                            to featured content or information.
+                            This is a simple hero unit, a simple jumbotron-style
+                            component for calling extra attention to featured
+                            content or information.
                         </p>
                         <p>
                             <Button bsStyle="primary">Learn more</Button>
                         </p>
                     </Jumbotron>
                 </div>
-
                 <div style={style}>
-                    <Image src="https://placeholdit.imgix.net/~text?txtsize=33&txt=AUDIO&w=150&h=150" rounded />
+                    <Image
+                        src="https://placeholdit.imgix.net/~text?txtsize=33&txt=AUDIO&w=150&h=150"
+                        rounded
+                    />
                 </div>
-
                 <div style={style}>
                     <div>
                         <ResponsiveEmbed a16by9>
@@ -1176,24 +1363,20 @@ export class ReactBootstrapTest extends Component {
                         </ResponsiveEmbed>
                     </div>
                 </div>
-
                 <div style={style}>
                     <PageHeader>
                         Example page header <small>Subtext for header</small>
                     </PageHeader>
                 </div>
-
                 <div style={style}>
                     <Well>Look I'm in a well!</Well>
                 </div>
-
                 <div style={style}>
                     <div>
                         <Well bsSize="large">Look I'm in a large well!</Well>
                         <Well bsSize="small">Look I'm in a small well!</Well>
                     </div>
                 </div>
-
                 <div style={style}>
                     <div>
                         <ButtonToolbar>
@@ -1230,7 +1413,6 @@ export class ReactBootstrapTest extends Component {
                         </ButtonToolbar>
                     </div>
                 </div>
-
                 <div style={style}>
                     <Table striped bordered condensed hover>
                         <thead>
@@ -1262,7 +1444,6 @@ export class ReactBootstrapTest extends Component {
                         </tbody>
                     </Table>
                 </div>
-
                 <div style={style}>
                     <Table responsive>
                         <thead>
@@ -1307,10 +1488,11 @@ export class ReactBootstrapTest extends Component {
                         </tbody>
                     </Table>
                 </div>
-
                 <div style={style}>
                     <FormGroup validationState="success">
-                        <ControlLabel>Working example with validation</ControlLabel>
+                        <ControlLabel>
+                            Working example with validation
+                        </ControlLabel>
                         <FormControl
                             type="text"
                             value="hello"
@@ -1319,10 +1501,11 @@ export class ReactBootstrapTest extends Component {
                             onChange={this.callback}
                         />
                         <FormControl.Feedback />
-                        <HelpBlock>Validation is based on string length.</HelpBlock>
+                        <HelpBlock>
+                            Validation is based on string length.
+                        </HelpBlock>
                     </FormGroup>
                 </div>
-
                 <div style={style}>
                     <form>
                         <FormGroup>
@@ -1331,16 +1514,24 @@ export class ReactBootstrapTest extends Component {
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Email address</ControlLabel>
-                            <FormControl type="email" placeholder="Enter email" />
+                            <FormControl
+                                type="email"
+                                placeholder="Enter email"
+                            />
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>Pass</ControlLabel>
-                            <FormControl type="password" placeholder="Password" />
+                            <FormControl
+                                type="password"
+                                placeholder="Password"
+                            />
                         </FormGroup>
                         <FormGroup>
                             <ControlLabel>File</ControlLabel>
                             <FormControl type="file" />
-                            <HelpBlock>[Optional] Block level help text</HelpBlock>
+                            <HelpBlock>
+                                [Optional] Block level help text
+                            </HelpBlock>
                         </FormGroup>
                         <Checkbox checked readOnly>
                             Checkbox
@@ -1350,18 +1541,23 @@ export class ReactBootstrapTest extends Component {
                         </Radio>
                         <FormGroup>
                             <ControlLabel>Select</ControlLabel>
-                            <FormControl componentClass="select" placeholder="select">
+                            <FormControl
+                                componentClass="select"
+                                placeholder="select"
+                            >
                                 <option value="select">select</option>
                                 <option value="other">...</option>
                             </FormControl>
                         </FormGroup>
                         <FormGroup controlId="formControlsTextarea">
                             <ControlLabel>Textarea</ControlLabel>
-                            <FormControl componentClass="textarea" placeholder="textarea" />
+                            <FormControl
+                                componentClass="textarea"
+                                placeholder="textarea"
+                            />
                         </FormGroup>
                     </form>
                 </div>
-
                 <div style={style}>
                     <form>
                         <FormGroup>
@@ -1432,67 +1628,104 @@ export class ReactBootstrapTest extends Component {
                         </FormGroup>
                     </form>
                 </div>
-
                 <div style={style}>
                     <form>
                         <FormGroup bsSize="large">
                             <FormControl type="text" placeholder="Large text" />
                         </FormGroup>
                         <FormGroup>
-                            <FormControl type="text" placeholder="Normal text" />
+                            <FormControl
+                                type="text"
+                                placeholder="Normal text"
+                            />
                         </FormGroup>
                         <FormGroup bsSize="small">
                             <FormControl type="text" placeholder="Small text" />
                         </FormGroup>
                     </form>
                 </div>
-
                 <div style={style}>
                     <form>
-                        <FormGroup controlId="formValidationSuccess1" validationState="success">
+                        <FormGroup
+                            controlId="formValidationSuccess1"
+                            validationState="success"
+                        >
                             <ControlLabel>Input with success</ControlLabel>
                             <FormControl type="text" />
-                            <HelpBlock>Help text with validation state.</HelpBlock>
+                            <HelpBlock>
+                                Help text with validation state.
+                            </HelpBlock>
                         </FormGroup>
 
-                        <FormGroup controlId="formValidationWarning1" validationState="warning">
+                        <FormGroup
+                            controlId="formValidationWarning1"
+                            validationState="warning"
+                        >
                             <ControlLabel>Input with warning</ControlLabel>
                             <FormControl type="text" />
                         </FormGroup>
 
-                        <FormGroup controlId="formValidationError1" validationState="error">
+                        <FormGroup
+                            controlId="formValidationError1"
+                            validationState="error"
+                        >
                             <ControlLabel>Input with error</ControlLabel>
                             <FormControl type="text" />
                         </FormGroup>
 
-                        <FormGroup controlId="formValidationSuccess2" validationState="success">
-                            <ControlLabel>Input with success and feedback icon</ControlLabel>
+                        <FormGroup
+                            controlId="formValidationSuccess2"
+                            validationState="success"
+                        >
+                            <ControlLabel>
+                                Input with success and feedback icon
+                            </ControlLabel>
                             <FormControl type="text" />
                             <FormControl.Feedback />
                         </FormGroup>
 
-                        <FormGroup controlId="formValidationWarning2" validationState="warning">
-                            <ControlLabel>Input with warning and feedback icon</ControlLabel>
+                        <FormGroup
+                            controlId="formValidationWarning2"
+                            validationState="warning"
+                        >
+                            <ControlLabel>
+                                Input with warning and feedback icon
+                            </ControlLabel>
                             <FormControl type="text" />
                             <FormControl.Feedback />
                         </FormGroup>
 
-                        <FormGroup controlId="formValidationError2" validationState="error">
-                            <ControlLabel>Input with error and feedback icon</ControlLabel>
+                        <FormGroup
+                            controlId="formValidationError2"
+                            validationState="error"
+                        >
+                            <ControlLabel>
+                                Input with error and feedback icon
+                            </ControlLabel>
                             <FormControl type="text" />
                             <FormControl.Feedback />
                         </FormGroup>
 
-                        <FormGroup controlId="formValidationSuccess3" validationState="success">
-                            <ControlLabel>Input with success and custom feedback icon</ControlLabel>
+                        <FormGroup
+                            controlId="formValidationSuccess3"
+                            validationState="success"
+                        >
+                            <ControlLabel>
+                                Input with success and custom feedback icon
+                            </ControlLabel>
                             <FormControl type="text" />
                             <FormControl.Feedback>
                                 <Glyphicon glyph="music" />
                             </FormControl.Feedback>
                         </FormGroup>
 
-                        <FormGroup controlId="formValidationWarning3" validationState="warning">
-                            <ControlLabel>Input group with warning</ControlLabel>
+                        <FormGroup
+                            controlId="formValidationWarning3"
+                            validationState="warning"
+                        >
+                            <ControlLabel>
+                                Input group with warning
+                            </ControlLabel>
                             <InputGroup>
                                 <InputGroup.Addon>@</InputGroup.Addon>
                                 <FormControl type="text" />
@@ -1501,7 +1734,10 @@ export class ReactBootstrapTest extends Component {
                         </FormGroup>
 
                         <Form componentClass="fieldset" horizontal>
-                            <FormGroup controlId="formValidationError3" validationState="error">
+                            <FormGroup
+                                controlId="formValidationError3"
+                                validationState="error"
+                            >
                                 <Col componentClass={ControlLabel} xs={3}>
                                     Input with error
                                 </Col>
@@ -1511,7 +1747,10 @@ export class ReactBootstrapTest extends Component {
                                 </Col>
                             </FormGroup>
 
-                            <FormGroup controlId="formValidationSuccess4" validationState="success">
+                            <FormGroup
+                                controlId="formValidationSuccess4"
+                                validationState="success"
+                            >
                                 <Col componentClass={ControlLabel} xs={3}>
                                     Input group with success
                                 </Col>
@@ -1526,12 +1765,21 @@ export class ReactBootstrapTest extends Component {
                         </Form>
 
                         <Form componentClass="fieldset" inline>
-                            <FormGroup controlId="formValidationWarning4" validationState="warning">
-                                <ControlLabel>Input with warning</ControlLabel> <FormControl type="text" />
+                            <FormGroup
+                                controlId="formValidationWarning4"
+                                validationState="warning"
+                            >
+                                <ControlLabel>Input with warning</ControlLabel>{" "}
+                                <FormControl type="text" />
                                 <FormControl.Feedback />
                             </FormGroup>{" "}
-                            <FormGroup controlId="formValidationError4" validationState="error">
-                                <ControlLabel>Input group with error</ControlLabel>{" "}
+                            <FormGroup
+                                controlId="formValidationError4"
+                                validationState="error"
+                            >
+                                <ControlLabel>
+                                    Input group with error
+                                </ControlLabel>{" "}
                                 <InputGroup>
                                     <InputGroup.Addon>@</InputGroup.Addon>
                                     <FormControl type="text" />
@@ -1552,19 +1800,12 @@ export class ReactBootstrapTest extends Component {
 
                         {/* This requires React 15's <span>-less spaces to be exactly correct. */}
                         <FormGroup validationState="success">
-                            <Checkbox inline>
-                                Checkbox
-                            </Checkbox>{" "}
-                            <Checkbox inline>
-                                with
-                            </Checkbox>{" "}
-                            <Checkbox inline>
-                                success
-                            </Checkbox>
+                            <Checkbox inline>Checkbox</Checkbox>{" "}
+                            <Checkbox inline>with</Checkbox>{" "}
+                            <Checkbox inline>success</Checkbox>
                         </FormGroup>
                     </form>
                 </div>
-
                 <div style={style}>
                     <Form>
                         <FormGroup controlId="formBasicText">
@@ -1575,17 +1816,29 @@ export class ReactBootstrapTest extends Component {
                         </FormGroup>
 
                         <FormGroup>
-                            <Checkbox name="checkbox" inline>1</Checkbox> <Checkbox name="checkbox" inline>2</Checkbox>
-                            {" "}
-                            <Checkbox name="checkbox" inline>3</Checkbox>
+                            <Checkbox name="checkbox" inline>
+                                1
+                            </Checkbox>{" "}
+                            <Checkbox name="checkbox" inline>
+                                2
+                            </Checkbox>{" "}
+                            <Checkbox name="checkbox" inline>
+                                3
+                            </Checkbox>
                         </FormGroup>
                         <FormGroup>
-                            <Radio name="radio" inline>1</Radio> <Radio name="radio" inline>2</Radio>{" "}
-                            <Radio name="radio" inline>3</Radio>
+                            <Radio name="radio" inline>
+                                1
+                            </Radio>{" "}
+                            <Radio name="radio" inline>
+                                2
+                            </Radio>{" "}
+                            <Radio name="radio" inline>
+                                3
+                            </Radio>
                         </FormGroup>
                     </Form>
                 </div>
-
                 <div style={style}>
                     <Media>
                         <Media.Left align="top">
@@ -1599,17 +1852,20 @@ export class ReactBootstrapTest extends Component {
                         <Media.Body>
                             <Media.Heading>Top aligned media</Media.Heading>
                             <p>
-                                Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
-                                nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                                Cras purus odio, vestibulum in vulputate at,
+                                tempus viverra turpis. Fusce condimentum nunc ac
+                                nisi vulputate fringilla. Donec lacinia congue
+                                felis in faucibus.
                             </p>
                             <p>
-                                Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis
-                                natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+                                Donec sed odio dui. Nullam quis risus eget urna
+                                mollis ornare vel eu leo. Cum sociis natoque
+                                penatibus et magnis dis parturient montes,
+                                nascetur ridiculus mus.
                             </p>
                         </Media.Body>
                     </Media>
                 </div>
-
                 <div>
                     <ButtonToolbar>
                         <ToggleButtonGroup
@@ -1620,9 +1876,7 @@ export class ReactBootstrapTest extends Component {
                             <ToggleButton value={1} bsSize="small" active>
                                 Checkbox 1 (pre-checked)
                             </ToggleButton>
-                            <ToggleButton value={2}>
-                                Checkbox 2
-                            </ToggleButton>
+                            <ToggleButton value={2}>Checkbox 2</ToggleButton>
                             <ToggleButton value={3}>
                                 Checkbox 3 (pre-checked)
                             </ToggleButton>
@@ -1635,28 +1889,18 @@ export class ReactBootstrapTest extends Component {
                             name="options"
                             defaultValue={1}
                         >
-                            <ToggleButton
-                                value={1}
-                                bsSize="large"
-                            >
+                            <ToggleButton value={1} bsSize="large">
                                 Radio 1 (pre-checked)
                             </ToggleButton>
-                            <ToggleButton
-                                value={2}
-                                bsSize="small"
-                            >
+                            <ToggleButton value={2} bsSize="small">
                                 Radio 2
                             </ToggleButton>
-                            <ToggleButton
-                                value={3}
-                                bsSize="xsmall"
-                            >
+                            <ToggleButton value={3} bsSize="xsmall">
                                 Radio 3
                             </ToggleButton>
                         </ToggleButtonGroup>
                     </ButtonToolbar>
                 </div>
-
                 <div style={style}>
                     <Collapse>Collapse</Collapse>
                 </div>

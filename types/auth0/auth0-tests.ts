@@ -8,7 +8,10 @@ const management = new auth0.ManagementClient({
     domain: "{YOUR_ACCOUNT}.auth0.com",
 });
 
-const uManagement = new auth0.ManagementClient<{ aTest: string }, { uTest: string }>({
+const uManagement = new auth0.ManagementClient<
+    { aTest: string },
+    { uTest: string }
+>({
     token: "{YOUR_API_V2_TOKEN}",
     domain: "{YOUR_ACCOUNT}.auth0.com",
 });
@@ -30,34 +33,42 @@ management.getUsers((err: Error, users: auth0.User[]) => {
 // Using a Promise.
 management
     .getUsers()
-    .then(users => {
+    .then((users) => {
         console.log(users);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error.
     });
 
 // Search users without paging - callback style
-management.getUsers({ search_engine: "v3", q: "name:\"jane\"", per_page: 25 }, (err: Error, users: auth0.User[]) => {
-    if (err) {
-        // Handle error
-    }
-    console.log(users);
-});
+management.getUsers(
+    { search_engine: "v3", q: 'name:"jane"', per_page: 25 },
+    (err: Error, users: auth0.User[]) => {
+        if (err) {
+            // Handle error
+        }
+        console.log(users);
+    },
+);
 
 // Search users without paging - promise style
 management
-    .getUsers({ search_engine: "v3", q: "name:\"jane\"", per_page: 25 })
-    .then(users => {
+    .getUsers({ search_engine: "v3", q: 'name:"jane"', per_page: 25 })
+    .then((users) => {
         console.log(users);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error
     });
 
 // Search users with paging - callback style
 management.getUsers(
-    { search_engine: "v3", q: "name:\"jane\"", per_page: 25, include_totals: true },
+    {
+        search_engine: "v3",
+        q: 'name:"jane"',
+        per_page: 25,
+        include_totals: true,
+    },
     (err: Error, userPage: auth0.UserPage) => {
         if (err) {
             // Handle error
@@ -68,11 +79,16 @@ management.getUsers(
 
 // Search users with paging - promise style
 management
-    .getUsers({ search_engine: "v3", q: "name:\"jane\"", per_page: 25, include_totals: true })
+    .getUsers({
+        search_engine: "v3",
+        q: 'name:"jane"',
+        per_page: 25,
+        include_totals: true,
+    })
     .then((users: auth0.UserPage) => {
         console.log(users.total);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error
     });
 
@@ -87,10 +103,10 @@ management.getUser({ id: "user_id" }, (err: Error, user: auth0.User) => {
 // Using a Promise.
 management
     .getUser({ id: "user_id" })
-    .then(user => {
+    .then((user) => {
         console.log(user);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error.
     });
 
@@ -108,7 +124,7 @@ management
     .then(() => {
         console.log("deleted");
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error.
     });
 
@@ -117,37 +133,41 @@ management
         connection: "My-Connection",
         email: "hi@me.co",
     })
-    .then(user => {
+    .then((user) => {
         console.log(user);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error.
     });
 
 // Link users
 management
     .createUser({ connection: "email", email: "hi@me.co", user_id: "my_id" })
-    .catch(err => console.error("Cannot create E-mail user", err))
-    .then(emailUser => {
+    .catch((err) => console.error("Cannot create E-mail user", err))
+    .then((emailUser) => {
         if (!emailUser) return;
         management
             .createUser({ connection: "sms", phone_number: "+1234567890" })
-            .catch(err => console.error("Cannot create SMS user", err))
-            .then(smsUser => {
+            .catch((err) => console.error("Cannot create SMS user", err))
+            .then((smsUser) => {
                 if (!smsUser) return;
                 const userId = emailUser.user_id!;
                 const params = { user_id: smsUser.user_id!, provider: "sms" };
                 management
                     .linkUsers(userId, params)
-                    .catch(err => console.error("Cannot link E-mail and SMS users", err))
-                    .then(linkedUsers => console.log(linkedUsers));
+                    .catch((err) =>
+                        console.error("Cannot link E-mail and SMS users", err),
+                    )
+                    .then((linkedUsers) => console.log(linkedUsers));
             });
     });
 
 // Fetch a user's organizations
-management.users.getUserOrganizations({ id: "my_id" }).then((organizations: auth0.Organization[]) => {
-    console.log(organizations);
-});
+management.users
+    .getUserOrganizations({ id: "my_id" })
+    .then((organizations: auth0.Organization[]) => {
+        console.log(organizations);
+    });
 
 // Fetch a user's organizations using cb style
 management.users.getUserOrganizations({ id: "my_id" }, (err, orgs) => {
@@ -163,10 +183,10 @@ auth.requestChangePasswordEmail({
     connection: "My-Connection",
     email: "hi@me.co",
 })
-    .then(response => {
+    .then((response) => {
         console.log(response);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error.
     });
 
@@ -200,22 +220,28 @@ auth.tokens
     .then(() => {
         console.log("Successful");
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error.
     });
 
 // Password Grant
-auth.passwordGrant({ username: "username", password: "password" }).then((response: auth0.TokenResponse) => {
-    console.log(response);
-});
-auth.passwordGrant({ username: "username", password: "password" }, (err, response: auth0.TokenResponse) => {
-    console.log(response);
-});
-auth.passwordGrant({ username: "username", password: "password" }, { forwardedFor: "12.34.56.78" }).then(
+auth.passwordGrant({ username: "username", password: "password" }).then(
     (response: auth0.TokenResponse) => {
         console.log(response);
     },
 );
+auth.passwordGrant(
+    { username: "username", password: "password" },
+    (err, response: auth0.TokenResponse) => {
+        console.log(response);
+    },
+);
+auth.passwordGrant(
+    { username: "username", password: "password" },
+    { forwardedFor: "12.34.56.78" },
+).then((response: auth0.TokenResponse) => {
+    console.log(response);
+});
 auth.passwordGrant(
     { username: "username", password: "password" },
     { forwardedFor: "12.34.56.78" },
@@ -225,12 +251,17 @@ auth.passwordGrant(
 );
 
 // SMS/Email OTP Login
-auth.requestEmailCode({ email: "hi@me.co", authParams: {} }).then((response: any) => {
-    console.log(response);
-});
-auth.requestEmailCode({ email: "hi@me.co", authParams: {} }, (response: any) => {
-    console.log(response);
-});
+auth.requestEmailCode({ email: "hi@me.co", authParams: {} }).then(
+    (response: any) => {
+        console.log(response);
+    },
+);
+auth.requestEmailCode(
+    { email: "hi@me.co", authParams: {} },
+    (response: any) => {
+        console.log(response);
+    },
+);
 
 auth.requestSMSCode({ phone_number: "+1234567890" }, (response: any) => {
     console.log(response);
@@ -239,38 +270,57 @@ auth.requestSMSCode({ phone_number: "+1234567890" }).then((response: any) => {
     console.log(response);
 });
 
-auth.verifyEmailCode({ email: "hi@me.co", otp: "password" }).then((response: any) => {
-    console.log(response);
-});
-auth.verifyEmailCode({ email: "hi@me.co", otp: "password" }, (response: any) => {
-    console.log(response);
-});
+auth.verifyEmailCode({ email: "hi@me.co", otp: "password" }).then(
+    (response: any) => {
+        console.log(response);
+    },
+);
+auth.verifyEmailCode(
+    { email: "hi@me.co", otp: "password" },
+    (response: any) => {
+        console.log(response);
+    },
+);
 
-auth.verifySMSCode({ username: "+1234567890", password: "password" }).then((response: any) => {
-    console.log(response);
-});
-auth.verifySMSCode({ username: "+1234567890", password: "password" }, (response: any) => {
-    console.log(response);
-});
+auth.verifySMSCode({ username: "+1234567890", password: "password" }).then(
+    (response: any) => {
+        console.log(response);
+    },
+);
+auth.verifySMSCode(
+    { username: "+1234567890", password: "password" },
+    (response: any) => {
+        console.log(response);
+    },
+);
 
-auth.verifySMSCode({ username: "+1234567890", otp: "password" }).then((response: any) => {
-    console.log(response);
-});
-auth.verifySMSCode({ username: "+1234567890", otp: "password" }, (response: any) => {
-    console.log(response);
-});
+auth.verifySMSCode({ username: "+1234567890", otp: "password" }).then(
+    (response: any) => {
+        console.log(response);
+    },
+);
+auth.verifySMSCode(
+    { username: "+1234567890", otp: "password" },
+    (response: any) => {
+        console.log(response);
+    },
+);
 
 // Get management client access token
 management
     .getAccessToken()
-    .then(token => console.log(token))
-    .catch(err => console.log("Error: " + err));
+    .then((token) => console.log(token))
+    .catch((err) => console.log("Error: " + err));
 
 // Update a user
 management.updateUser({ id: "user_id" }, { email: "hi@me.co" });
 
 // Update a user using callback
-management.updateUser({ id: "user_id" }, { email: "hi@me.co" }, (err: Error, users: auth0.User) => {});
+management.updateUser(
+    { id: "user_id" },
+    { email: "hi@me.co" },
+    (err: Error, users: auth0.User) => {},
+);
 
 // Update user metadata
 management.updateUserMetadata({ id: "user_id" }, { key: "value" });
@@ -292,84 +342,137 @@ management.updateUserMetadata(
 uManagement.updateUserMetadata({ id: "user_id" }, { uTest: "value" });
 
 // Update user metadata using callback
-management.updateUserMetadata({ id: "user_id" }, { key: "value" }, (err: Error, users: auth0.User) => {});
+management.updateUserMetadata(
+    { id: "user_id" },
+    { key: "value" },
+    (err: Error, users: auth0.User) => {},
+);
 
 // Update app metadata
 management.updateAppMetadata({ id: "user_id" }, { key: "value" });
 
 // Update app metadata using callback
-management.updateAppMetadata({ id: "user_id" }, { key: "value" }, (err: Error, users: auth0.User) => {});
+management.updateAppMetadata(
+    { id: "user_id" },
+    { key: "value" },
+    (err: Error, users: auth0.User) => {},
+);
 
 management.getUsersByEmail("email@address.com", (err, users) => {
     console.log(users);
 });
 
-management.getUsersByEmail("email@address.com").then(users => {
+management.getUsersByEmail("email@address.com").then((users) => {
     console.log(users);
 });
 
-management.getUserLogs({ id: "user_id" }).then(roles => console.log(roles));
+management.getUserLogs({ id: "user_id" }).then((roles) => console.log(roles));
 management.getUserLogs({ id: "user_id" }, (err, data) => console.log(data));
-management.getUserLogs({ id: "user_id", per_page: 3 }).then(roles => console.log(roles));
-management.getUserLogs({ id: "user_id", per_page: 3 }, (err, data) => console.log(data));
-management.getUserLogs({ id: "user_id", include_totals: true }).then(rolePage => console.log(rolePage));
-management.getUserLogs({ id: "user_id", include_totals: true }, (err, data) => console.log(data));
+management
+    .getUserLogs({ id: "user_id", per_page: 3 })
+    .then((roles) => console.log(roles));
+management.getUserLogs({ id: "user_id", per_page: 3 }, (err, data) =>
+    console.log(data),
+);
+management
+    .getUserLogs({ id: "user_id", include_totals: true })
+    .then((rolePage) => console.log(rolePage));
+management.getUserLogs({ id: "user_id", include_totals: true }, (err, data) =>
+    console.log(data),
+);
 
-management.getUserRoles({ id: "user_id" }).then(roles => console.log(roles));
+management.getUserRoles({ id: "user_id" }).then((roles) => console.log(roles));
 management.getUserRoles({ id: "user_id" }, (err, data) => console.log(data));
-management.getUserRoles({ id: "user_id", per_page: 3 }).then(roles => console.log(roles));
-management.getUserRoles({ id: "user_id", per_page: 3 }, (err, data) => console.log(data));
-management.getUserRoles({ id: "user_id", include_totals: true }).then(rolePage => console.log(rolePage));
-management.getUserRoles({ id: "user_id", include_totals: true }, (err, data) => console.log(data));
+management
+    .getUserRoles({ id: "user_id", per_page: 3 })
+    .then((roles) => console.log(roles));
+management.getUserRoles({ id: "user_id", per_page: 3 }, (err, data) =>
+    console.log(data),
+);
+management
+    .getUserRoles({ id: "user_id", include_totals: true })
+    .then((rolePage) => console.log(rolePage));
+management.getUserRoles({ id: "user_id", include_totals: true }, (err, data) =>
+    console.log(data),
+);
 
 management
     .removeRolesFromUser({ id: "user_id" }, { roles: ["role_id"] })
     .then(() => console.log("It worked"))
-    .catch(err => console.log("Something went wrong " + err));
-management.removeRolesFromUser({ id: "user_id" }, { roles: ["role_id"] }, err => {
-    if (err) {
-        console.error("Something went wrong " + err);
-    } else {
-        console.log("It worked");
-    }
-});
+    .catch((err) => console.log("Something went wrong " + err));
+management.removeRolesFromUser(
+    { id: "user_id" },
+    { roles: ["role_id"] },
+    (err) => {
+        if (err) {
+            console.error("Something went wrong " + err);
+        } else {
+            console.log("It worked");
+        }
+    },
+);
 
 management
     .assignRolestoUser({ id: "user_id" }, { roles: ["role_id"] })
     .then(() => console.log("It worked"))
-    .catch(err => console.log("Something went wrong " + err));
-management.assignRolestoUser({ id: "user_id" }, { roles: ["role_id"] }, err => {
-    if (err) {
-        console.error("Something went wrong " + err);
-    } else {
-        console.log("It worked");
-    }
-});
+    .catch((err) => console.log("Something went wrong " + err));
+management.assignRolestoUser(
+    { id: "user_id" },
+    { roles: ["role_id"] },
+    (err) => {
+        if (err) {
+            console.error("Something went wrong " + err);
+        } else {
+            console.log("It worked");
+        }
+    },
+);
 
-management.getUserPermissions({ id: "user_id" }).then(permissions => console.log(permissions));
-management.getUserPermissions({ id: "user_id" }, (err, data) => console.log(data));
-management.getUserPermissions({ id: "user_id", per_page: 3 }).then(permissions => console.log(permissions));
-management.getUserPermissions({ id: "user_id", per_page: 3 }, (err, data) => console.log(data));
+management
+    .getUserPermissions({ id: "user_id" })
+    .then((permissions) => console.log(permissions));
+management.getUserPermissions({ id: "user_id" }, (err, data) =>
+    console.log(data),
+);
+management
+    .getUserPermissions({ id: "user_id", per_page: 3 })
+    .then((permissions) => console.log(permissions));
+management.getUserPermissions({ id: "user_id", per_page: 3 }, (err, data) =>
+    console.log(data),
+);
 management
     .getUserPermissions({ id: "user_id", include_totals: true })
-    .then(permissionPage => console.log(permissionPage));
-management.getUserPermissions({ id: "user_id", include_totals: true }, (err, data) => console.log(data));
+    .then((permissionPage) => console.log(permissionPage));
+management.getUserPermissions(
+    { id: "user_id", include_totals: true },
+    (err, data) => console.log(data),
+);
 
 management
     .removePermissionsFromUser(
         { id: "user_id" },
         {
-            permissions: [{ permission_name: "god:mode", resource_server_identifier: "https://my.api.com" }],
+            permissions: [
+                {
+                    permission_name: "god:mode",
+                    resource_server_identifier: "https://my.api.com",
+                },
+            ],
         },
     )
     .then(() => console.log("It worked"))
-    .catch(err => console.log("Something went wrong " + err));
+    .catch((err) => console.log("Something went wrong " + err));
 management.removePermissionsFromUser(
     { id: "user_id" },
     {
-        permissions: [{ permission_name: "god:mode", resource_server_identifier: "https://my.api.com" }],
+        permissions: [
+            {
+                permission_name: "god:mode",
+                resource_server_identifier: "https://my.api.com",
+            },
+        ],
     },
-    err => {
+    (err) => {
         if (err) {
             console.error("Something went wrong " + err);
         } else {
@@ -382,17 +485,27 @@ management
     .assignPermissionsToUser(
         { id: "user_id" },
         {
-            permissions: [{ permission_name: "god:mode", resource_server_identifier: "https://my.api.com" }],
+            permissions: [
+                {
+                    permission_name: "god:mode",
+                    resource_server_identifier: "https://my.api.com",
+                },
+            ],
         },
     )
     .then(() => console.log("It worked"))
-    .catch(err => console.log("Something went wrong " + err));
+    .catch((err) => console.log("Something went wrong " + err));
 management.assignPermissionsToUser(
     { id: "user_id" },
     {
-        permissions: [{ permission_name: "god:mode", resource_server_identifier: "https://my.api.com" }],
+        permissions: [
+            {
+                permission_name: "god:mode",
+                resource_server_identifier: "https://my.api.com",
+            },
+        ],
     },
-    err => {
+    (err) => {
         if (err) {
             console.error("Something went wrong " + err);
         } else {
@@ -438,10 +551,16 @@ management.createPasswordChangeTicket(
 );
 
 // Link users
-management.linkUsers("primaryId", { user_id: "secondaryId" }).then((result: any) => console.log(result));
+management
+    .linkUsers("primaryId", { user_id: "secondaryId" })
+    .then((result: any) => console.log(result));
 
 // Link users with callback
-management.linkUsers("primaryId", { user_id: "secondaryId" }, (err: Error, result: any) => {});
+management.linkUsers(
+    "primaryId",
+    { user_id: "secondaryId" },
+    (err: Error, result: any) => {},
+);
 
 // Get all clients (with promise)
 management
@@ -449,7 +568,7 @@ management
     .then((clients: auth0.Client[]) => {
         console.log(clients);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error
     });
 
@@ -462,21 +581,26 @@ management
     .then((clients: auth0.Client[]) => {
         console.log(clients);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error
     });
 
 // Get all clients with pagination and totals using a callback
-management.getClients({ page: 0, per_page: 5, include_totals: true }, (err, pagedClients) => {
-    // $ExpectType ClientsPaged
-    pagedClients;
-});
+management.getClients(
+    { page: 0, per_page: 5, include_totals: true },
+    (err, pagedClients) => {
+        // $ExpectType ClientsPaged
+        pagedClients;
+    },
+);
 
 // Get all clients with pagination and totals returning a Promise
-management.getClients({ page: 0, per_page: 5, include_totals: true }).then(pagedClients => {
-    // $ExpectType ClientsPaged
-    pagedClients;
-});
+management
+    .getClients({ page: 0, per_page: 5, include_totals: true })
+    .then((pagedClients) => {
+        // $ExpectType ClientsPaged
+        pagedClients;
+    });
 
 // Connections
 // Get all Connections with promise
@@ -485,7 +609,7 @@ management
     .then((connections: auth0.Connection[]) => {
         console.log(connections);
     })
-    .catch(err => {
+    .catch((err) => {
         // error handler
     });
 
@@ -498,17 +622,22 @@ management
     .then((connections: auth0.Connection[]) => {
         console.log(connections);
     })
-    .catch(err => {
+    .catch((err) => {
         // error handler
     });
 
 // Get all Connections with params (with promise)
 management
-    .getConnections({ name: "connectionName", strategy: "auth0", include_fields: true, fields: ["id", "name"] })
+    .getConnections({
+        name: "connectionName",
+        strategy: "auth0",
+        include_fields: true,
+        fields: ["id", "name"],
+    })
     .then((connections: auth0.Connection[]) => {
         console.log(connections);
     })
-    .catch(err => {
+    .catch((err) => {
         // error handler
     });
 
@@ -519,7 +648,7 @@ management
     .then((rules: auth0.Rule[]) => {
         console.log(rules);
     })
-    .catch(err => {
+    .catch((err) => {
         // error handler
     });
 
@@ -532,7 +661,7 @@ management
     .then((rules: auth0.Rule[]) => {
         console.log(rules);
     })
-    .catch(err => {
+    .catch((err) => {
         // error handler
     });
 
@@ -543,12 +672,14 @@ management
     .then((resourceServers: auth0.ResourceServer[]) => {
         console.log(resourceServers);
     })
-    .catch(err => {
+    .catch((err) => {
         // error handler
     });
 
 // Get all Resource Servers with callback
-management.getResourceServers((err: Error, resourceServers: auth0.ResourceServer[]) => {});
+management.getResourceServers(
+    (err: Error, resourceServers: auth0.ResourceServer[]) => {},
+);
 
 // Get all Resource Servers with promise and pagination
 management
@@ -556,7 +687,7 @@ management
     .then((resourceServers: auth0.ResourceServer[]) => {
         console.log(resourceServers);
     })
-    .catch(err => {
+    .catch((err) => {
         // error handler
     });
 
@@ -570,37 +701,63 @@ management.getClients(
 management.getClientGrants();
 
 // Get all client grants (with callback)
-management.getClientGrants((err: Error, data: auth0.ClientGrant[]) => console.log(data));
+management.getClientGrants((err: Error, data: auth0.ClientGrant[]) =>
+    console.log(data),
+);
 
 // Get all client data with params
-management.getClientGrants({ per_page: 1 }).then((data: auth0.ClientGrant[]) => console.log(data));
-management.getClientGrants({ per_page: 12 }, (err: Error, data: auth0.ClientGrant[]) => console.log(data));
+management
+    .getClientGrants({ per_page: 1 })
+    .then((data: auth0.ClientGrant[]) => console.log(data));
+management.getClientGrants(
+    { per_page: 12 },
+    (err: Error, data: auth0.ClientGrant[]) => console.log(data),
+);
 
-management.getClientGrants({ page: 12 }).then((data: auth0.ClientGrant[]) => console.log(data));
-management.getClientGrants({ page: 12 }, (err: Error, data) => console.log(data));
+management
+    .getClientGrants({ page: 12 })
+    .then((data: auth0.ClientGrant[]) => console.log(data));
+management.getClientGrants({ page: 12 }, (err: Error, data) =>
+    console.log(data),
+);
 
-management.getClientGrants({ audience: "audience" }).then((data: auth0.ClientGrant[]) => console.log(data));
-management.getClientGrants({ audience: "audience" }, (err: Error, data: auth0.ClientGrant[]) => console.log(data));
+management
+    .getClientGrants({ audience: "audience" })
+    .then((data: auth0.ClientGrant[]) => console.log(data));
+management.getClientGrants(
+    { audience: "audience" },
+    (err: Error, data: auth0.ClientGrant[]) => console.log(data),
+);
 
-management.getClientGrants({ client_id: "client_id" }).then((data: auth0.ClientGrant[]) => console.log(data));
-management.getClientGrants({ client_id: "client_id" }, (err: Error, data: auth0.ClientGrant[]) => console.log(data));
+management
+    .getClientGrants({ client_id: "client_id" })
+    .then((data: auth0.ClientGrant[]) => console.log(data));
+management.getClientGrants(
+    { client_id: "client_id" },
+    (err: Error, data: auth0.ClientGrant[]) => console.log(data),
+);
 
-management.getClientGrants({ include_totals: true }).then((data: auth0.ClientGrantPage) => console.log(data));
-management.getClientGrants({ include_totals: true }, (err: Error, data: auth0.ClientGrantPage) => console.log(data));
+management
+    .getClientGrants({ include_totals: true })
+    .then((data: auth0.ClientGrantPage) => console.log(data));
+management.getClientGrants(
+    { include_totals: true },
+    (err: Error, data: auth0.ClientGrantPage) => console.log(data),
+);
 
 // Jobs
 management
     .getJob({
         id: "job_id",
     })
-    .then(job => console.log((job as auth0.ExportUsersJob).fields));
+    .then((job) => console.log((job as auth0.ExportUsersJob).fields));
 
 // job.type can be used as a discriminator for automatic type assertion (no casting needed)
 management
     .getJob({
         id: "job_id",
     })
-    .then(job => {
+    .then((job) => {
         if (job.type === "users_export") {
             console.log(job.fields);
         }
@@ -617,20 +774,23 @@ management
     .getJob({
         id: "job_id",
     })
-    .then(job => console.log((job as auth0.ImportUsersJob).send_completion_email));
+    .then((job) =>
+        console.log((job as auth0.ImportUsersJob).send_completion_email),
+    );
 
 management.getJob(
     {
         id: "job_id",
     },
-    (err, data) => console.log((data as auth0.ImportUsersJob).send_completion_email),
+    (err, data) =>
+        console.log((data as auth0.ImportUsersJob).send_completion_email),
 );
 
 management
     .getJob({
         id: "job_id",
     })
-    .then(job => console.log((job as auth0.VerificationEmailJob).id));
+    .then((job) => console.log((job as auth0.VerificationEmailJob).id));
 
 management.getJob(
     {
@@ -645,7 +805,7 @@ management
         connection_id: "con_id",
         upsert: true,
     })
-    .then(results => console.log(results));
+    .then((results) => console.log(results));
 
 management
     .importUsersJob({
@@ -653,7 +813,7 @@ management
         connection_id: "con_id",
         upsert: true,
     })
-    .then(results => console.log(results));
+    .then((results) => console.log(results));
 
 management.importUsers(
     {
@@ -689,7 +849,7 @@ management
         format: "json",
         limit: 500,
     })
-    .then(results => console.log(results));
+    .then((results) => console.log(results));
 
 management.exportUsers(
     {
@@ -706,7 +866,7 @@ management
         client_id: "client_id",
         user_id: "user_id",
     })
-    .then(results => console.log(results));
+    .then((results) => console.log(results));
 
 management.sendEmailVerification(
     {
@@ -717,13 +877,17 @@ management.sendEmailVerification(
 );
 
 // Roles
-management.getRoles().then(roles => console.log(roles));
+management.getRoles().then((roles) => console.log(roles));
 management.getRoles((err, data) => console.log(data));
-management.getRoles({ name_filter: "Admin" }).then(roles => console.log(roles));
+management
+    .getRoles({ name_filter: "Admin" })
+    .then((roles) => console.log(roles));
 management.getRoles({ name_filter: "Admin" }, (err, data) => console.log(data));
-management.getRoles({ per_page: 12 }).then(roles => console.log(roles));
+management.getRoles({ per_page: 12 }).then((roles) => console.log(roles));
 management.getRoles({ per_page: 12 }, (err, data) => console.log(data));
-management.getRoles({ include_totals: true }).then(rolePage => console.log(rolePage));
+management
+    .getRoles({ include_totals: true })
+    .then((rolePage) => console.log(rolePage));
 management.getRoles({ include_totals: true }, (err, data) => console.log(data));
 
 management
@@ -731,7 +895,7 @@ management
         name: "Admin",
         description: "I have all the power",
     })
-    .then(role => console.log(role));
+    .then((role) => console.log(role));
 management.createRole(
     {
         name: "Admin",
@@ -740,14 +904,14 @@ management.createRole(
     (err, data) => console.log(data),
 );
 
-management.getRole({ id: "role_id" }).then(role => console.log(role));
+management.getRole({ id: "role_id" }).then((role) => console.log(role));
 management.getRole({ id: "role_id" }, (err, data) => console.log(data));
 
 management
     .deleteRole({ id: "role_id" })
     .then(() => console.log("It worked"))
-    .catch(err => console.error("Something went wrong " + err));
-management.deleteRole({ id: "role_id" }, err => {
+    .catch((err) => console.error("Something went wrong " + err));
+management.deleteRole({ id: "role_id" }, (err) => {
     if (err) {
         console.error("Something went wrong " + err);
     } else {
@@ -762,7 +926,7 @@ management
             name: "The new name",
         },
     )
-    .then(role => console.log(role));
+    .then((role) => console.log(role));
 management.updateRole(
     { id: "role_id" },
     {
@@ -771,29 +935,52 @@ management.updateRole(
     (err, data) => console.log(data),
 );
 
-management.getPermissionsInRole({ id: "role_id" }).then(permissions => console.log(permissions));
-management.getPermissionsInRole({ id: "role_id" }, (err, data) => console.log(data));
-management.getPermissionsInRole({ id: "role_id", per_page: 8 }).then(permissions => console.log(permissions));
-management.getPermissionsInRole({ id: "role_id", per_page: 8 }, (err, data) => console.log(data));
-management.getPermissionsInRole({ id: "role_id", include_totals: true }).then(permissions => console.log(permissions));
-management.getPermissionsInRole({ id: "role_id", include_totals: true }, (err, data) => console.log(data));
+management
+    .getPermissionsInRole({ id: "role_id" })
+    .then((permissions) => console.log(permissions));
+management.getPermissionsInRole({ id: "role_id" }, (err, data) =>
+    console.log(data),
+);
+management
+    .getPermissionsInRole({ id: "role_id", per_page: 8 })
+    .then((permissions) => console.log(permissions));
+management.getPermissionsInRole({ id: "role_id", per_page: 8 }, (err, data) =>
+    console.log(data),
+);
+management
+    .getPermissionsInRole({ id: "role_id", include_totals: true })
+    .then((permissions) => console.log(permissions));
+management.getPermissionsInRole(
+    { id: "role_id", include_totals: true },
+    (err, data) => console.log(data),
+);
 
 management
     .removePermissionsFromRole(
         { id: "role_id" },
         {
-            permissions: [{ permission_name: "eat:cake", resource_server_identifier: "https://my.api.com" }],
+            permissions: [
+                {
+                    permission_name: "eat:cake",
+                    resource_server_identifier: "https://my.api.com",
+                },
+            ],
         },
     )
     .then(() => console.log("It worked"))
-    .catch(err => console.log("Something went wrong " + err));
+    .catch((err) => console.log("Something went wrong " + err));
 
 management.removePermissionsFromRole(
     { id: "role_id" },
     {
-        permissions: [{ permission_name: "eat:cake", resource_server_identifier: "https://my.api.com" }],
+        permissions: [
+            {
+                permission_name: "eat:cake",
+                resource_server_identifier: "https://my.api.com",
+            },
+        ],
     },
-    err => {
+    (err) => {
         if (err) {
             console.error("Something went wrong " + err);
         } else {
@@ -806,18 +993,28 @@ management
     .addPermissionsInRole(
         { id: "role_id" },
         {
-            permissions: [{ permission_name: "eat:cake", resource_server_identifier: "https://my.api.com" }],
+            permissions: [
+                {
+                    permission_name: "eat:cake",
+                    resource_server_identifier: "https://my.api.com",
+                },
+            ],
         },
     )
     .then(() => console.log("It worked"))
-    .catch(err => console.log("Something went wrong " + err));
+    .catch((err) => console.log("Something went wrong " + err));
 
 management.addPermissionsInRole(
     { id: "role_id" },
     {
-        permissions: [{ permission_name: "eat:cake", resource_server_identifier: "https://my.api.com" }],
+        permissions: [
+            {
+                permission_name: "eat:cake",
+                resource_server_identifier: "https://my.api.com",
+            },
+        ],
     },
-    err => {
+    (err) => {
         if (err) {
             console.error("Something went wrong " + err);
         } else {
@@ -826,12 +1023,23 @@ management.addPermissionsInRole(
     },
 );
 
-management.getUsersInRole({ id: "role_id" }).then(users => console.log(users));
+management
+    .getUsersInRole({ id: "role_id" })
+    .then((users) => console.log(users));
 management.getUsersInRole({ id: "role_id" }, (err, data) => console.log(data));
-management.getUsersInRole({ id: "role_id", per_page: 8 }).then(users => console.log(users));
-management.getUsersInRole({ id: "role_id", per_page: 8 }, (err, data) => console.log(data));
-management.getUsersInRole({ id: "role_id", include_totals: true }).then(userPage => console.log(userPage));
-management.getUsersInRole({ id: "role_id", include_totals: true }, (err, data) => console.log(data));
+management
+    .getUsersInRole({ id: "role_id", per_page: 8 })
+    .then((users) => console.log(users));
+management.getUsersInRole({ id: "role_id", per_page: 8 }, (err, data) =>
+    console.log(data),
+);
+management
+    .getUsersInRole({ id: "role_id", include_totals: true })
+    .then((userPage) => console.log(userPage));
+management.getUsersInRole(
+    { id: "role_id", include_totals: true },
+    (err, data) => console.log(data),
+);
 
 management.createClient({
     name: "client",
@@ -851,59 +1059,76 @@ management.createClient({
         subject: "subject",
     },
 });
-management.createEmailTemplate({ name: "template_name" }).then(data => {
+management.createEmailTemplate({ name: "template_name" }).then((data) => {
     console.log(data);
 });
-management.createEmailTemplate({ name: "template_name" }, err => {
+management.createEmailTemplate({ name: "template_name" }, (err) => {
     console.log(err);
 });
-management.getEmailTemplate({ name: "template_name" }).then(data => {
+management.getEmailTemplate({ name: "template_name" }).then((data) => {
     console.log(data);
 });
 management.getEmailTemplate({ name: "template_name" }, (err, data) => {
     console.log(data);
 });
-management.updateEmailTemplate({ name: "template_name" }, { type: "type" }).then(data => {
-    console.log(data);
-});
-management.updateEmailTemplate({ name: "template_name" }, { type: "type" }, (err, data) => {
-    console.log(data);
-});
+management
+    .updateEmailTemplate({ name: "template_name" }, { type: "type" })
+    .then((data) => {
+        console.log(data);
+    });
+management.updateEmailTemplate(
+    { name: "template_name" },
+    { type: "type" },
+    (err, data) => {
+        console.log(data);
+    },
+);
 
 management
     .getUserBlocks({ id: "user_id" })
-    .then(response => {
-        response.blocked_for.forEach(blockedFor => console.log(`${blockedFor.identifier}:${blockedFor.ip}`));
+    .then((response) => {
+        response.blocked_for.forEach((blockedFor) =>
+            console.log(`${blockedFor.identifier}:${blockedFor.ip}`),
+        );
     })
-    .catch(err => console.log("Error: " + err));
+    .catch((err) => console.log("Error: " + err));
 
 management.getUserBlocks({ id: "user_id" }, (err, response) => {
     if (err) {
         console.log("Error: " + err);
         return;
     }
-    response.blocked_for.forEach(blockedFor => console.log(`${blockedFor.identifier}:${blockedFor.ip}`));
+    response.blocked_for.forEach((blockedFor) =>
+        console.log(`${blockedFor.identifier}:${blockedFor.ip}`),
+    );
 });
 
 management
     .getUserBlocksByIdentifier({ identifier: "email" })
-    .then(response => {
-        response.blocked_for.forEach(blockedFor => console.log(`${blockedFor.identifier}:${blockedFor.ip}`));
+    .then((response) => {
+        response.blocked_for.forEach((blockedFor) =>
+            console.log(`${blockedFor.identifier}:${blockedFor.ip}`),
+        );
     })
-    .catch(err => console.log("Error: " + err));
+    .catch((err) => console.log("Error: " + err));
 
-management.getUserBlocksByIdentifier({ identifier: "email" }, (err, response) => {
-    if (err) {
-        console.log("Error: " + err);
-        return;
-    }
-    response.blocked_for.forEach(blockedFor => console.log(`${blockedFor.identifier}:${blockedFor.ip}`));
-});
+management.getUserBlocksByIdentifier(
+    { identifier: "email" },
+    (err, response) => {
+        if (err) {
+            console.log("Error: " + err);
+            return;
+        }
+        response.blocked_for.forEach((blockedFor) =>
+            console.log(`${blockedFor.identifier}:${blockedFor.ip}`),
+        );
+    },
+);
 
 management
     .unblockUser({ id: "user_id" })
-    .then(response => console.log(response))
-    .catch(err => console.log("Error: " + err));
+    .then((response) => console.log(response))
+    .catch((err) => console.log("Error: " + err));
 
 management.unblockUser({ id: "user_id" }, (err, response) => {
     if (err) {
@@ -915,8 +1140,8 @@ management.unblockUser({ id: "user_id" }, (err, response) => {
 
 management
     .unblockUserByIdentifier({ identifier: "email" })
-    .then(response => console.log(response))
-    .catch(err => console.log("Error: " + err));
+    .then((response) => console.log(response))
+    .catch((err) => console.log("Error: " + err));
 
 management.unblockUserByIdentifier({ identifier: "email" }, (err, response) => {
     if (err) {
@@ -927,61 +1152,100 @@ management.unblockUserByIdentifier({ identifier: "email" }, (err, response) => {
 });
 
 // Rules configurations
-management.setRulesConfig({ key: "test" }, { value: "test" }).then(config => console.log(config));
-management.setRulesConfig({ key: "test" }, { value: "test" }, (err, config) => console.log(config));
+management
+    .setRulesConfig({ key: "test" }, { value: "test" })
+    .then((config) => console.log(config));
+management.setRulesConfig({ key: "test" }, { value: "test" }, (err, config) =>
+    console.log(config),
+);
 
 management.deleteRulesConfig({ key: "test" }).then(() => {});
-management.deleteRulesConfig({ key: "test" }, err => {});
+management.deleteRulesConfig({ key: "test" }, (err) => {});
 
-management.getRulesConfigs().then(configs => console.log(configs));
+management.getRulesConfigs().then((configs) => console.log(configs));
 management.getRulesConfigs((err, configs) => console.log(configs));
 
 // Custom Domains
-management.createCustomDomain({ domain: "auth0.com", type: "auth0_managed_certs" }).then(domain => console.log(domain));
+management
+    .createCustomDomain({ domain: "auth0.com", type: "auth0_managed_certs" })
+    .then((domain) => console.log(domain));
 management.createCustomDomain(
     { domain: "auth0.com", type: "auth0_managed_certs" },
     (err, domain) => console.log(domain),
 );
 
-management.getCustomDomains().then(domains => console.log(domains));
+management.getCustomDomains().then((domains) => console.log(domains));
 management.getCustomDomains((err, domains) => console.log(domains));
 
-management.getCustomDomain({ id: "cd_0000000000000001" }).then(domain => console.log(domain));
-management.getCustomDomain({ id: "cd_0000000000000001" }, (err, domain) => console.log(domain));
+management
+    .getCustomDomain({ id: "cd_0000000000000001" })
+    .then((domain) => console.log(domain));
+management.getCustomDomain({ id: "cd_0000000000000001" }, (err, domain) =>
+    console.log(domain),
+);
 
 management
     .verifyCustomDomain({ id: "cd_0000000000000001" })
-    .then(domainVerification => console.log(domainVerification));
+    .then((domainVerification) => console.log(domainVerification));
 management.verifyCustomDomain(
     { id: "cd_0000000000000001" },
     (err, domainVerification) => console.log(domainVerification),
 );
 
-management.deleteCustomDomain({ id: "cd_0000000000000001" }).then(() => console.log("deleted"));
-management.deleteCustomDomain({ id: "cd_0000000000000001" }, err => console.log("deleted"));
+management
+    .deleteCustomDomain({ id: "cd_0000000000000001" })
+    .then(() => console.log("deleted"));
+management.deleteCustomDomain({ id: "cd_0000000000000001" }, (err) =>
+    console.log("deleted"),
+);
 
 // User enrollment
-management.getGuardianEnrollment({ id: "cd_0000000000000001" }).then(enrollment => console.log(enrollment));
-management.getGuardianEnrollment({ id: "cd_0000000000000001" }, (err, enrollment) => console.log(enrollment));
+management
+    .getGuardianEnrollment({ id: "cd_0000000000000001" })
+    .then((enrollment) => console.log(enrollment));
+management.getGuardianEnrollment(
+    { id: "cd_0000000000000001" },
+    (err, enrollment) => console.log(enrollment),
+);
 
-management.getGuardianEnrollments({ id: "cd_0000000000000001" }).then(enrollments => console.log(enrollments));
-management.getGuardianEnrollments({ id: "cd_0000000000000001" }, (err, enrollments) => console.log(enrollments));
+management
+    .getGuardianEnrollments({ id: "cd_0000000000000001" })
+    .then((enrollments) => console.log(enrollments));
+management.getGuardianEnrollments(
+    { id: "cd_0000000000000001" },
+    (err, enrollments) => console.log(enrollments),
+);
 
-management.deleteGuardianEnrollment({ id: "cd_0000000000000001" }).then(() => console.log("deleted"));
-management.deleteGuardianEnrollment({ id: "cd_0000000000000001" }, err => console.log("deleted error"));
+management
+    .deleteGuardianEnrollment({ id: "cd_0000000000000001" })
+    .then(() => console.log("deleted"));
+management.deleteGuardianEnrollment({ id: "cd_0000000000000001" }, (err) =>
+    console.log("deleted error"),
+);
 
 management
     .createGuardianEnrollmentTicket({ user_id: "user_id", send_mail: true })
-    .then(results => console.log(results));
-management.createGuardianEnrollmentTicket({ user_id: "user_id", send_mail: true }, (err, data) => console.log(data));
+    .then((results) => console.log(results));
+management.createGuardianEnrollmentTicket(
+    { user_id: "user_id", send_mail: true },
+    (err, data) => console.log(data),
+);
 
 // MFA invalidate remember browser
-management.invalidateRememberBrowser({ id: "cd_0000000000000001" }).then(() => console.log("mfa resetter"));
-management.invalidateRememberBrowser({ id: "cd_0000000000000001" }, err => console.log("mfa resetter error"));
+management
+    .invalidateRememberBrowser({ id: "cd_0000000000000001" })
+    .then(() => console.log("mfa resetter"));
+management.invalidateRememberBrowser({ id: "cd_0000000000000001" }, (err) =>
+    console.log("mfa resetter error"),
+);
 
 // Grants
 // $ExpectType Promise<GrantResponse[]>
-management.getGrants({ user_id: "user_id", client_id: "client_id", audience: "audience" });
+management.getGrants({
+    user_id: "user_id",
+    client_id: "client_id",
+    audience: "audience",
+});
 management.getGrants(
     { user_id: "user_id", client_id: "client_id", audience: "audience" },
     (err, grants) =>
@@ -990,18 +1254,32 @@ management.getGrants(
 );
 
 // $ExpectType Promise<GrantResponse[]>
-management.getGrants({ user_id: "user_id", client_id: "client_id", audience: "audience", page: 2, per_page: 5 });
+management.getGrants({
+    user_id: "user_id",
+    client_id: "client_id",
+    audience: "audience",
+    page: 2,
+    per_page: 5,
+});
 management.getGrants(
-    { user_id: "user_id", client_id: "client_id", audience: "audience", page: 2, per_page: 5 },
+    {
+        user_id: "user_id",
+        client_id: "client_id",
+        audience: "audience",
+        page: 2,
+        per_page: 5,
+    },
     (err, grants) =>
         // $ExpectType GrantResponse[]
         grants,
 );
 
 // Logs
-management.getLog({ id: "cd_0000000000000001" }).then(log => console.log(log));
-management.getLog({ id: "cd_0000000000000001" }, log => console.log(log));
-management.getLogs().then(logs => console.log(logs));
+management
+    .getLog({ id: "cd_0000000000000001" })
+    .then((log) => console.log(log));
+management.getLog({ id: "cd_0000000000000001" }, (log) => console.log(log));
+management.getLogs().then((logs) => console.log(logs));
 management
     .getLogs({
         fields: "audience",
@@ -1014,8 +1292,8 @@ management
         sort: "audience",
         take: 42,
     })
-    .then(logs => console.log(logs));
-management.getLogs(logs => console.log(logs));
+    .then((logs) => console.log(logs));
+management.getLogs((logs) => console.log(logs));
 management.getLogs(
     {
         fields: "audience",
@@ -1028,11 +1306,11 @@ management.getLogs(
         sort: "audience",
         take: 42,
     },
-    logs => console.log(logs),
+    (logs) => console.log(logs),
 );
 
 // Log streams
-management.getLogStreams().then(logStreams => console.log(logStreams));
+management.getLogStreams().then((logStreams) => console.log(logStreams));
 management.getLogStreams((err, logStreams) => console.log(logStreams));
 
 const authentication = new auth0.AuthenticationClient({
@@ -1044,15 +1322,18 @@ authentication
         refresh_token: "{YOUR_REFRESH_TOKEN}",
         client_id: "{OPTIONAL_CLIENT_ID}",
     })
-    .then(tokenResponse => {
+    .then((tokenResponse) => {
         console.log(tokenResponse);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error.
     });
 
 authentication.refreshToken(
-    { refresh_token: "{YOUR_REFRESH_TOKEN}", client_id: "{OPTIONAL_CLIENT_ID}" },
+    {
+        refresh_token: "{YOUR_REFRESH_TOKEN}",
+        client_id: "{OPTIONAL_CLIENT_ID}",
+    },
     (err, tokenResponse) => {
         if (err) {
             // Handle error.
@@ -1071,20 +1352,23 @@ oauthAuthenticator
     .refreshToken({
         refresh_token: "{YOUR_REFRESH_TOKEN}",
     })
-    .then(tokenResponse => {
+    .then((tokenResponse) => {
         console.log(tokenResponse);
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error.
     });
-oauthAuthenticator.refreshToken({ refresh_token: "{YOUR_REFRESH_TOKEN}" }, (err, tokenResponse) => {
-    if (err) {
-        // Handle error.
-    }
-    console.log(tokenResponse);
-});
+oauthAuthenticator.refreshToken(
+    { refresh_token: "{YOUR_REFRESH_TOKEN}" },
+    (err, tokenResponse) => {
+        if (err) {
+            // Handle error.
+        }
+        console.log(tokenResponse);
+    },
+);
 
-(async () => {
+async () => {
     const signInUserData: auth0.SignInOptions = {
         username: "{YOUR_USERNAME}",
         otp: "123456",
@@ -1125,10 +1409,14 @@ oauthAuthenticator.refreshToken({ refresh_token: "{YOUR_REFRESH_TOKEN}" }, (err,
         err; // $ExpectType Error
         message; // $ExpectType string
     });
-    authentication.passwordless.sendEmail(emailUserData, options, (err, message) => {
-        err; // $ExpectType Error
-        message; // $ExpectType string
-    });
+    authentication.passwordless.sendEmail(
+        emailUserData,
+        options,
+        (err, message) => {
+            err; // $ExpectType Error
+            message; // $ExpectType string
+        },
+    );
 
     await authentication.passwordless.sendSMS(smsUserData);
     await authentication.passwordless.sendSMS(smsUserData, options);
@@ -1136,22 +1424,32 @@ oauthAuthenticator.refreshToken({ refresh_token: "{YOUR_REFRESH_TOKEN}" }, (err,
         err; // $ExpectType Error
         message; // $ExpectType string
     });
-    authentication.passwordless.sendSMS(smsUserData, options, (err, message) => {
-        err; // $ExpectType Error
-        message; // $ExpectType string
-    });
-});
+    authentication.passwordless.sendSMS(
+        smsUserData,
+        options,
+        (err, message) => {
+            err; // $ExpectType Error
+            message; // $ExpectType string
+        },
+    );
+};
 
 async function signupTest(): Promise<void> {
-    const signupResult = await authentication.database.signUp({ email: "email", password: "password" });
+    const signupResult = await authentication.database.signUp({
+        email: "email",
+        password: "password",
+    });
     signupResult._id; // $ExpectType string | undefined
     signupResult.email; // $ExpectType string | undefined
     signupResult.email_verified; // $ExpectType boolean | undefined
 
-    authentication.database.signUp({ email: "email", password: "password" }, (err, data) => {
-        err; // $ExpectType Error
-        data; // $ExpectType User<AppMetadata, UserMetadata>
-    });
+    authentication.database.signUp(
+        { email: "email", password: "password" },
+        (err, data) => {
+            err; // $ExpectType Error
+            data; // $ExpectType User<AppMetadata, UserMetadata>
+        },
+    );
 }
 
 const decoded = idToken.decode("{YOUR_API_V2_TOKEN}"); // $ExpectType DecodedToken
@@ -1160,7 +1458,7 @@ decoded.header; // $ExpectType any
 decoded.payload; // $ExpectType any
 decoded.signature; // $ExpectType string
 
-(() => {
+() => {
     const defaultOptions = {
         issuer: "issuer",
         audience: ["clientId", "clientIdAlt"],
@@ -1168,7 +1466,7 @@ decoded.signature; // $ExpectType string
     };
     idToken.validate("{YOUR_API_V2_TOKEN}"); // $ExpectType DecodedToken
     idToken.validate("{YOUR_API_V2_TOKEN}", defaultOptions); // $ExpectType DecodedToken
-});
+};
 
 // Token manager
 const tokenManager = new auth0.TokensManager({
@@ -1185,7 +1483,7 @@ tokenManager.revokeRefreshToken(
         client_id: "{OPTIONAL_CLIENT_ID}",
         client_secret: "{OPTIONAL_CLIENT_SECRET}",
     },
-    err => {
+    (err) => {
         if (err) {
             // Handle error.
         }
@@ -1203,7 +1501,7 @@ tokenManager
     .then(() => {
         console.log("Successful");
     })
-    .catch(err => {
+    .catch((err) => {
         // Handle the error.
     });
 
@@ -1219,81 +1517,108 @@ management.organizations.getAll((err, organizations: auth0.Organization[]) => {
 /**
  * Get All Organizations returning a Promise
  */
-management.organizations.getAll().then((organizations: auth0.Organization[]) => {
-    console.log({ organizations });
-});
+management.organizations
+    .getAll()
+    .then((organizations: auth0.Organization[]) => {
+        console.log({ organizations });
+    });
 
 /**
  * Get All Organizations with pagination using a callback
  */
-management.organizations.getAll({ page: 0, per_page: 5 }, (err, organizations: auth0.Organization[]) => {
-    console.log({ organizations });
-});
+management.organizations.getAll(
+    { page: 0, per_page: 5 },
+    (err, organizations: auth0.Organization[]) => {
+        console.log({ organizations });
+    },
+);
 
 /**
  * Get All Organizations with pagination returning a Promise
  */
-management.organizations.getAll({ page: 0, per_page: 5 }).then((organizations: auth0.Organization[]) => {
-    console.log({ organizations });
-});
+management.organizations
+    .getAll({ page: 0, per_page: 5 })
+    .then((organizations: auth0.Organization[]) => {
+        console.log({ organizations });
+    });
 
 /**
  * Get All Organizations with pagination and totals using a callback
  */
-management.organizations.getAll({ page: 0, per_page: 5, include_totals: true }, (err, pagedOrganizations) => {
-    // $ExpectType OrganizationsPaged
-    pagedOrganizations;
-});
+management.organizations.getAll(
+    { page: 0, per_page: 5, include_totals: true },
+    (err, pagedOrganizations) => {
+        // $ExpectType OrganizationsPaged
+        pagedOrganizations;
+    },
+);
 
 /**
  * Get All Organizations with pagination and totals returning a Promise
  */
-management.organizations.getAll({ page: 0, per_page: 5, include_totals: true }).then(pagedOrganizations => {
-    // $ExpectType OrganizationsPaged
-    pagedOrganizations;
-});
+management.organizations
+    .getAll({ page: 0, per_page: 5, include_totals: true })
+    .then((pagedOrganizations) => {
+        // $ExpectType OrganizationsPaged
+        pagedOrganizations;
+    });
 
 /**
  * Get All Organizations with checkpoint pagination using a callback
  */
-management.organizations.getAll({ take: 5, from: "" }, (err, organizations: auth0.Organization[]) => {
-    console.log({ organizations });
-});
+management.organizations.getAll(
+    { take: 5, from: "" },
+    (err, organizations: auth0.Organization[]) => {
+        console.log({ organizations });
+    },
+);
 
 /**
  * Get All Organizations with checkpoint pagination returning a Promise
  */
-management.organizations.getAll({ take: 5, from: "" }).then((organizations: auth0.Organization[]) => {
-    console.log({ organizations });
-});
+management.organizations
+    .getAll({ take: 5, from: "" })
+    .then((organizations: auth0.Organization[]) => {
+        console.log({ organizations });
+    });
 
 /**
  * Get an Organization by ID using a callback
  */
-management.organizations.getByID({ id: "" }, (err, organization: auth0.Organization) => {
-    console.log({ organization });
-});
+management.organizations.getByID(
+    { id: "" },
+    (err, organization: auth0.Organization) => {
+        console.log({ organization });
+    },
+);
 
 /**
  * Get an Organization by ID returning a Promise
  */
-management.organizations.getByID({ id: "" }).then((organization: auth0.Organization) => {
-    console.log({ organization });
-});
+management.organizations
+    .getByID({ id: "" })
+    .then((organization: auth0.Organization) => {
+        console.log({ organization });
+    });
 
 /**
  * Get an Organization by name using a callback
  */
-management.organizations.getByName({ name: "" }, (err, organization: auth0.Organization) => {
-    console.log({ organization });
-});
+management.organizations.getByName(
+    { name: "" },
+    (err, organization: auth0.Organization) => {
+        console.log({ organization });
+    },
+);
 
 /**
  * Get an Organization by name returning a Promise
  */
-management.organizations.getByName({ name: "" }).then((organization: auth0.Organization) => {
-    console.log({ organization });
-});
+management.organizations
+    .getByName({ name: "" })
+    .then((organization: auth0.Organization) => {
+        console.log({ organization });
+    });
 
 /**
  * Create an Organization using a callback
@@ -1317,9 +1642,11 @@ management.organizations.create(
 /**
  * Create an Organization returning a Promise
  */
-management.organizations.create({ name: "test_organization" }).then((organization: auth0.Organization) => {
-    console.log({ organization });
-});
+management.organizations
+    .create({ name: "test_organization" })
+    .then((organization: auth0.Organization) => {
+        console.log({ organization });
+    });
 
 /**
  * Update an Organization using a callback
@@ -1344,7 +1671,7 @@ management.organizations
 /**
  * Delete an Organization using a callback
  */
-management.organizations.delete({ id: "organization_id" }, err => {});
+management.organizations.delete({ id: "organization_id" }, (err) => {});
 
 /**
  * Delete an Organization returning a Promise
@@ -1402,7 +1729,10 @@ management.organizations.getEnabledConnection(
  * Get an Organization's Enabled Connection returning a Promise
  */
 management.organizations
-    .getEnabledConnection({ id: "organization_id", connection_id: "connection_id" })
+    .getEnabledConnection({
+        id: "organization_id",
+        connection_id: "connection_id",
+    })
     .then((connection: auth0.OrganizationConnection) => {
         console.log({ connection });
     });
@@ -1433,13 +1763,19 @@ management.organizations
 /**
  * Remove an Organization's Enabled Connection using a callback
  */
-management.organizations.removeEnabledConnection({ id: "organization_id", connection_id: "connection_id" }, err => {});
+management.organizations.removeEnabledConnection(
+    { id: "organization_id", connection_id: "connection_id" },
+    (err) => {},
+);
 
 /**
  * Remove an Organization's Enabled Connection returning a Promise
  */
 management.organizations
-    .removeEnabledConnection({ id: "organization_id", connection_id: "connection_id" })
+    .removeEnabledConnection({
+        id: "organization_id",
+        connection_id: "connection_id",
+    })
     .then(() => {});
 
 /**
@@ -1468,32 +1804,42 @@ management.organizations
 /**
  * Get an Organization's Members using a callback
  */
-management.organizations.getMembers({ id: "organization_id" }, (err, members: auth0.OrganizationMember[]) => {
-    console.log({ members });
-});
+management.organizations.getMembers(
+    { id: "organization_id" },
+    (err, members: auth0.OrganizationMember[]) => {
+        console.log({ members });
+    },
+);
 
 /**
  * Get a paged result of an Organization's Members using a callback
  */
-management.organizations.getMembers({ id: "organization_id", include_totals: true }, (err, pagedMembers) => {
-    // $ExpectType OrganizationMembersPaged
-    pagedMembers;
-});
+management.organizations.getMembers(
+    { id: "organization_id", include_totals: true },
+    (err, pagedMembers) => {
+        // $ExpectType OrganizationMembersPaged
+        pagedMembers;
+    },
+);
 
 /**
  * Get an Organization's Members returning a Promise
  */
-management.organizations.getMembers({ id: "organization_id" }).then((members: auth0.OrganizationMember[]) => {
-    console.log({ members });
-});
+management.organizations
+    .getMembers({ id: "organization_id" })
+    .then((members: auth0.OrganizationMember[]) => {
+        console.log({ members });
+    });
 
 /**
  * Get a paged result of an Organization's members returning a promise.
  */
-management.organizations.getMembers({ id: "organization_id", include_totals: true }).then(pagedMembers => {
-    // $ExpectType OrganizationMembersPaged
-    pagedMembers;
-});
+management.organizations
+    .getMembers({ id: "organization_id", include_totals: true })
+    .then((pagedMembers) => {
+        // $ExpectType OrganizationMembersPaged
+        pagedMembers;
+    });
 
 /**
  * Get an Organization's Members with pagination using a callback
@@ -1536,22 +1882,34 @@ management.organizations
 /**
  * Add Organization's Members using a callback
  */
-management.organizations.addMembers({ id: "organization_id" }, { members: ["user_id"] }, err => {});
+management.organizations.addMembers(
+    { id: "organization_id" },
+    { members: ["user_id"] },
+    (err) => {},
+);
 
 /**
  * Add Organization's Members returning a Promise
  */
-management.organizations.addMembers({ id: "organization_id" }, { members: ["user_id"] }).then(() => {});
+management.organizations
+    .addMembers({ id: "organization_id" }, { members: ["user_id"] })
+    .then(() => {});
 
 /**
  * Remove Organization's Members using a callback
  */
-management.organizations.removeMembers({ id: "organization_id" }, { members: ["user_id"] }, err => {});
+management.organizations.removeMembers(
+    { id: "organization_id" },
+    { members: ["user_id"] },
+    (err) => {},
+);
 
 /**
  * Remove Organization's Members returning a Promise
  */
-management.organizations.removeMembers({ id: "organization_id" }, { members: ["user_id"] }).then(() => {});
+management.organizations
+    .removeMembers({ id: "organization_id" }, { members: ["user_id"] })
+    .then(() => {});
 
 /**
  * Get Organization Invitations using a callback
@@ -1606,7 +1964,12 @@ management.organizations.getInvitations(
  * Get Organization Invitations with pagination and totals returning a Promise
  */
 management.organizations
-    .getInvitations({ id: "organization_id", per_page: 2, page: 1, include_totals: true })
+    .getInvitations({
+        id: "organization_id",
+        per_page: 2,
+        page: 1,
+        include_totals: true,
+    })
     .then((pagedInvitations: auth0.OrganizationInvitationsPaged) => {
         // $ExpectType OrganizationInvitationsPaged
         pagedInvitations;
@@ -1616,7 +1979,12 @@ management.organizations
  * Get Organization Invitations with properties using a callback
  */
 management.organizations.getInvitations(
-    { id: "organization_id", fields: "client_id", include_fields: false, sort: "" },
+    {
+        id: "organization_id",
+        fields: "client_id",
+        include_fields: false,
+        sort: "",
+    },
     (err, invitations: auth0.OrganizationInvitation[]) => {
         console.log(invitations);
     },
@@ -1626,7 +1994,12 @@ management.organizations.getInvitations(
  * Get Organization Invitations with properties returning a Promise
  */
 management.organizations
-    .getInvitations({ id: "organization_id", fields: "client_id", include_fields: false, sort: "" })
+    .getInvitations({
+        id: "organization_id",
+        fields: "client_id",
+        include_fields: false,
+        sort: "",
+    })
     .then((invitations: auth0.OrganizationInvitation[]) => {
         console.log(invitations);
     });
@@ -1635,7 +2008,12 @@ management.organizations
  * Get Organization Invitation using a callback
  */
 management.organizations.getInvitation(
-    { id: "organization_id", invitation_id: "invitation_id", fields: "client_id", include_fields: false },
+    {
+        id: "organization_id",
+        invitation_id: "invitation_id",
+        fields: "client_id",
+        include_fields: false,
+    },
     (err, invitation: auth0.OrganizationInvitation) => {
         console.log(invitation);
     },
@@ -1660,7 +2038,11 @@ management.organizations
  */
 management.organizations.createInvitation(
     { id: "organization_id" },
-    { client_id: "client_id", invitee: { email: "invitee_email" }, inviter: { name: "inviter_name" } },
+    {
+        client_id: "client_id",
+        invitee: { email: "invitee_email" },
+        inviter: { name: "inviter_name" },
+    },
     (err, invitation: auth0.OrganizationInvitation) => {
         console.log(invitation);
     },
@@ -1672,7 +2054,11 @@ management.organizations.createInvitation(
 management.organizations
     .createInvitation(
         { id: "organization_id" },
-        { client_id: "client_id", invitee: { email: "invitee_email" }, inviter: { name: "inviter_name" } },
+        {
+            client_id: "client_id",
+            invitee: { email: "invitee_email" },
+            inviter: { name: "inviter_name" },
+        },
     )
     .then((invitation: auth0.OrganizationInvitation) => {
         console.log(invitation);
@@ -1681,19 +2067,27 @@ management.organizations
 /**
  * Delete an Organization Invitation using a callback
  */
-management.organizations.deleteInvitation({ id: "organization_id", invitation_id: "invitation_id" }, err => {});
+management.organizations.deleteInvitation(
+    { id: "organization_id", invitation_id: "invitation_id" },
+    (err) => {},
+);
 
 /**
  * Delete an Organization Invitation returning a Promise
  */
-management.organizations.deleteInvitation({ id: "organization_id", invitation_id: "invitation_id" }).then(() => {});
+management.organizations
+    .deleteInvitation({ id: "organization_id", invitation_id: "invitation_id" })
+    .then(() => {});
 
 /**
  * Get Organization Member Roles using a callback
  */
-management.organizations.getMemberRoles({ id: "organization_id", user_id: "user_id" }, (err, roles: auth0.Role[]) => {
-    console.log(roles);
-});
+management.organizations.getMemberRoles(
+    { id: "organization_id", user_id: "user_id" },
+    (err, roles: auth0.Role[]) => {
+        console.log(roles);
+    },
+);
 
 /**
  * Get a paged result of an Organization Member Roles using a callback
@@ -1709,7 +2103,11 @@ management.organizations.getMemberRoles(
  * Get a paged result of an Organization Member Roles returning a Promise
  */
 management.organizations
-    .getMemberRoles({ id: "organization_id", user_id: "user_id", include_totals: true })
+    .getMemberRoles({
+        id: "organization_id",
+        user_id: "user_id",
+        include_totals: true,
+    })
     .then((pagedRoles: Omit<auth0.RolePage, "length">) => {
         console.log(pagedRoles);
     });
@@ -1728,7 +2126,12 @@ management.organizations.getMemberRoles(
  * Organization Member Roles with pagination returning a Promise
  */
 management.organizations
-    .getMemberRoles({ id: "organization_id", user_id: "user_id", page: 0, per_page: 2 })
+    .getMemberRoles({
+        id: "organization_id",
+        user_id: "user_id",
+        page: 0,
+        per_page: 2,
+    })
     .then((roles: auth0.Role[]) => {
         console.log(roles);
     });
@@ -1739,14 +2142,17 @@ management.organizations
 management.organizations.addMemberRoles(
     { id: "organization_id", user_id: "user_id" },
     { roles: ["role_id"] },
-    err => {},
+    (err) => {},
 );
 
 /**
  * Add an Organization Member Role returning a Promise
  */
 management.organizations
-    .addMemberRoles({ id: "organization_id", user_id: "user_id" }, { roles: ["role_id"] })
+    .addMemberRoles(
+        { id: "organization_id", user_id: "user_id" },
+        { roles: ["role_id"] },
+    )
     .then(() => {});
 
 /**
@@ -1755,26 +2161,34 @@ management.organizations
 management.organizations.removeMemberRoles(
     { id: "organization_id", user_id: "user_id" },
     { roles: ["role_id"] },
-    err => {},
+    (err) => {},
 );
 
 /**
  * Remove an Organization Member Role returning a Promise
  */
 management.organizations
-    .removeMemberRoles({ id: "organization_id", user_id: "user_id" }, { roles: ["role_id"] })
+    .removeMemberRoles(
+        { id: "organization_id", user_id: "user_id" },
+        { roles: ["role_id"] },
+    )
     .then(() => {});
 
 // Device Credentials
-management.getDeviceCredentials({ user_id: "user_id" }).then(deviceCredentials => {
-    deviceCredentials; // $ExpectType DeviceCredential[]
-});
-management.getDeviceCredentials({ user_id: "user_id" }, (err, deviceCredentials) => {
-    deviceCredentials; // $ExpectType DeviceCredential[]
-});
+management
+    .getDeviceCredentials({ user_id: "user_id" })
+    .then((deviceCredentials) => {
+        deviceCredentials; // $ExpectType DeviceCredential[]
+    });
+management.getDeviceCredentials(
+    { user_id: "user_id" },
+    (err, deviceCredentials) => {
+        deviceCredentials; // $ExpectType DeviceCredential[]
+    },
+);
 
 management.deleteDeviceCredential({ id: "id" }).then(() => {});
-management.deleteDeviceCredential({ id: "id" }, err => {});
+management.deleteDeviceCredential({ id: "id" }, (err) => {});
 
 // Fetch a user's authentication methods
 management.users
@@ -1797,7 +2211,10 @@ management.users.getAuthenticationMethods(
 
 // Fetch a user's authentication method by id
 management.users
-    .getAuthenticationMethodById({ id: "my_id", authentication_method_id: "authentication_method_id" })
+    .getAuthenticationMethodById({
+        id: "my_id",
+        authentication_method_id: "authentication_method_id",
+    })
     .then((authenticationMethod: auth0.AuthenticationMethod) => {
         console.log(authenticationMethod);
     });
@@ -1816,7 +2233,10 @@ management.users.getAuthenticationMethodById(
 
 // Delete a user's authentication methods
 management.users
-    .deleteAuthenticationMethodById({ id: "my_id", authentication_method_id: "authentication_method_id" })
+    .deleteAuthenticationMethodById({
+        id: "my_id",
+        authentication_method_id: "authentication_method_id",
+    })
     .then(() => {});
 
 // Delete a user's authentication methods using cb style
@@ -1840,21 +2260,25 @@ management.users.deleteAuthenticationMethods({ id: "my_id" }, (err: Error) => {
 });
 
 // Retrieve all multi-factor authentication configurations
-management.getGuardianFactors().then((guardianFactor: auth0.GuardianFactor[]) => {
-    console.log(guardianFactor);
-});
+management
+    .getGuardianFactors()
+    .then((guardianFactor: auth0.GuardianFactor[]) => {
+        console.log(guardianFactor);
+    });
 
 // Retrieve all multi-factor authentication configurations using cb style
-management.getGuardianFactors((err: Error, guardianFactor: auth0.GuardianFactor[]) => {
-    if (err) {
-        throw err;
-    }
+management.getGuardianFactors(
+    (err: Error, guardianFactor: auth0.GuardianFactor[]) => {
+        if (err) {
+            throw err;
+        }
 
-    console.log(guardianFactor);
-});
+        console.log(guardianFactor);
+    },
+);
 
 // Regenerates recover-code
-management.users.regenerateRecoveryCode({ id: "my_id" }).then(res => {
+management.users.regenerateRecoveryCode({ id: "my_id" }).then((res) => {
     console.log(res.recovery_code);
 });
 

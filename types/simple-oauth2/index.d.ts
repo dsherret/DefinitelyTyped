@@ -45,47 +45,54 @@ export interface ModuleOptions<ClientIdName extends string = "client_id"> {
      * Defaults to header.Accept = "application/json"
      */
     http?:
-        | Omit<WreckHttpOptions, "baseUrl" | "headers" | "redirects" | "json"> & {
-            baseUrl?: undefined;
-            headers?: {
-                /**
-                 * Acceptable http response content type. Defaults to application/json
-                 */
-                accept?: string;
-                /**
-                 * Always overriden by the library to properly send the required credentials on each scenario
-                 */
-                authorization?: string;
-                [key: string]: unknown;
-            } | undefined;
-            /**
-             * Number or redirects to follow. Defaults to false (no redirects)
-             */
-            redirects?: false | number | undefined;
-            /**
-             * JSON response parsing mode. Defaults to strict
-             */
-            json?: boolean | "strict" | "force" | undefined;
-        }
+        | (Omit<
+              WreckHttpOptions,
+              "baseUrl" | "headers" | "redirects" | "json"
+          > & {
+              baseUrl?: undefined;
+              headers?:
+                  | {
+                        /**
+                         * Acceptable http response content type. Defaults to application/json
+                         */
+                        accept?: string;
+                        /**
+                         * Always overriden by the library to properly send the required credentials on each scenario
+                         */
+                        authorization?: string;
+                        [key: string]: unknown;
+                    }
+                  | undefined;
+              /**
+               * Number or redirects to follow. Defaults to false (no redirects)
+               */
+              redirects?: false | number | undefined;
+              /**
+               * JSON response parsing mode. Defaults to strict
+               */
+              json?: boolean | "strict" | "force" | undefined;
+          })
         | undefined;
-    options?: {
-        /** Scope separator character. Some providers may require a different separator. Defaults to empty space */
-        scopeSeparator?: string | undefined;
-        /**
-         * Setup how credentials are encoded when options.authorizationMethod is header.
-         * Use loose if your provider doesn't conform to the OAuth 2.0 specification.
-         * Defaults to strict
-         */
-        credentialsEncodingMode?: "strict" | "loose" | undefined;
-        /** Format of data sent in the request body. Defaults to form. */
-        bodyFormat?: "form" | "json" | undefined;
-        /**
-         * Indicates the method used to send the client.id/client.secret authorization params at the token request.
-         * If set to body, the bodyFormat option will be used to format the credentials.
-         * Defaults to header
-         */
-        authorizationMethod?: "header" | "body" | undefined;
-    } | undefined;
+    options?:
+        | {
+              /** Scope separator character. Some providers may require a different separator. Defaults to empty space */
+              scopeSeparator?: string | undefined;
+              /**
+               * Setup how credentials are encoded when options.authorizationMethod is header.
+               * Use loose if your provider doesn't conform to the OAuth 2.0 specification.
+               * Defaults to strict
+               */
+              credentialsEncodingMode?: "strict" | "loose" | undefined;
+              /** Format of data sent in the request body. Defaults to form. */
+              bodyFormat?: "form" | "json" | undefined;
+              /**
+               * Indicates the method used to send the client.id/client.secret authorization params at the token request.
+               * If set to body, the bodyFormat option will be used to format the credentials.
+               * Defaults to header
+               */
+              authorizationMethod?: "header" | "body" | undefined;
+          }
+        | undefined;
 }
 
 export type TokenType = "access_token" | "refresh_token";
@@ -115,9 +122,12 @@ export interface AccessToken {
      * @param [params.scope] String or array of strings representing the application privileges
      * @param [httpOptions] Optional http options passed through the underlying http library
      */
-    refresh(params?: {
-        scope?: string | string[] | undefined;
-    }, httpOptions?: WreckHttpOptions): Promise<AccessToken>;
+    refresh(
+        params?: {
+            scope?: string | string[] | undefined;
+        },
+        httpOptions?: WreckHttpOptions,
+    ): Promise<AccessToken>;
 
     /**
      * Revokes either the access or refresh token depending on the {tokenType} value
@@ -144,15 +154,17 @@ export interface WreckHttpOptions {
     redirect303?: boolean | undefined;
     beforeRedirect?:
         | ((
-            redirectMethod: string,
-            statusCode: number,
-            location: string,
-            resHeaders: { [key: string]: unknown },
-            redirectOptions: unknown,
-            next: () => {},
-        ) => void)
+              redirectMethod: string,
+              statusCode: number,
+              location: string,
+              resHeaders: { [key: string]: unknown },
+              redirectOptions: unknown,
+              next: () => {},
+          ) => void)
         | undefined;
-    redirected?: ((statusCode: number, location: string, req: unknown) => void) | undefined;
+    redirected?:
+        | ((statusCode: number, location: string, req: unknown) => void)
+        | undefined;
     timeout?: number | undefined;
     maxBytes?: number | undefined;
     rejectUnauthorized?: boolean | undefined;
@@ -184,16 +196,14 @@ export class AuthorizationCode<ClientIdName extends string = "client_id"> {
      * @return the absolute authorization url
      */
     authorizeURL(
-        params?:
-            & {
-                /** A string that represents the Client-ID */
-                [key in ClientIdName]?: string;
-            }
-            & {
-                redirect_uri?: string | undefined;
-                scope?: string | string[] | undefined;
-                state?: string | undefined;
-            },
+        params?: {
+            /** A string that represents the Client-ID */
+            [key in ClientIdName]?: string;
+        } & {
+            redirect_uri?: string | undefined;
+            scope?: string | string[] | undefined;
+            state?: string | undefined;
+        },
     ): string;
 
     /**
@@ -205,7 +215,10 @@ export class AuthorizationCode<ClientIdName extends string = "client_id"> {
      * @param [params.scope] String or array of strings representing the application privileges
      * @param [httpOptions] Optional http options passed through the underlying http library
      */
-    getToken(params: AuthorizationTokenConfig, httpOptions?: WreckHttpOptions): Promise<AccessToken>;
+    getToken(
+        params: AuthorizationTokenConfig,
+        httpOptions?: WreckHttpOptions,
+    ): Promise<AccessToken>;
 
     /**
      * Creates a new access token instance from a plain object
@@ -242,7 +255,10 @@ export class ResourceOwnerPassword<ClientIdName extends string = "client_id"> {
      * @param [params.scope] A String or array of strings representing the application privileges
      * @param [httpOptions] Optional http options passed through the underlying http library
      */
-    getToken(params: PasswordTokenConfig, httpOptions?: WreckHttpOptions): Promise<AccessToken>;
+    getToken(
+        params: PasswordTokenConfig,
+        httpOptions?: WreckHttpOptions,
+    ): Promise<AccessToken>;
 
     /**
      * Creates a new access token instance from a plain object
@@ -284,7 +300,10 @@ export class ClientCredentials<ClientIdName extends string = "client_id"> {
      * @param [params.scope] A String or array of strings representing the application privileges
      * @param [httpOptions] Optional http options passed through the underlying http library
      */
-    getToken(params: ClientCredentialTokenConfig, httpOptions?: WreckHttpOptions): Promise<AccessToken>;
+    getToken(
+        params: ClientCredentialTokenConfig,
+        httpOptions?: WreckHttpOptions,
+    ): Promise<AccessToken>;
 
     /**
      * Creates a new access token instance from a plain object

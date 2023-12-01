@@ -15,9 +15,11 @@ declare namespace Card {
         arrow?: Arrow | undefined;
         align?: Align | undefined;
         useHover?: boolean | undefined;
-        style?: {
-            style?: React.CSSProperties | undefined;
-            arrowStyle?: React.CSSProperties | undefined;
-        } | undefined;
+        style?:
+            | {
+                  style?: React.CSSProperties | undefined;
+                  arrowStyle?: React.CSSProperties | undefined;
+              }
+            | undefined;
     }
 }

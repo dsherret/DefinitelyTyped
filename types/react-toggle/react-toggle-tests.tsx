@@ -28,9 +28,7 @@ class Test extends React.Component {
                     disabled
                 />
 
-                <Toggle
-                    icons={false}
-                />
+                <Toggle icons={false} />
             </div>
         );
     }

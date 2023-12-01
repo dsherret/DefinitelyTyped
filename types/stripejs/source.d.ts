@@ -137,7 +137,12 @@ export interface CodeVerification {
     /**
      * The status of the code verification
      */
-    status: "pending" | "attempts_remaining" | "succeeded" | "failed" | "attempts_remaining";
+    status:
+        | "pending"
+        | "attempts_remaining"
+        | "succeeded"
+        | "failed"
+        | "attempts_remaining";
 }
 
 // --- REDIRECT INFORMATION --- //

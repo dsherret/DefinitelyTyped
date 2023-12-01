@@ -22,9 +22,8 @@ const config: Configuration = {
             manifestFirst: true,
             path: "/foo/bar",
             prettyPrint: true,
-            processOutput: (assets) => (
-                "window.assets = " + JSON.stringify(assets)
-            ),
+            processOutput: (assets) =>
+                "window.assets = " + JSON.stringify(assets),
             removeFullPathAutoPrefix: true,
             update: true,
             useCompilerPath: true,

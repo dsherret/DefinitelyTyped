@@ -5,7 +5,9 @@ class TestRequired extends React.Component {
     render() {
         const onAddTag = (tag: { id: string | number; name: string }) => {};
         const onDeleteTag = (i: number) => {};
-        return <ReactTags handleAddition={onAddTag} handleDelete={onDeleteTag} />;
+        return (
+            <ReactTags handleAddition={onAddTag} handleDelete={onDeleteTag} />
+        );
     }
 }
 
@@ -36,8 +38,13 @@ class TestAll extends React.Component {
             { id: 5, name: "Lemons" },
             { id: 6, name: "Apricots", disabled: true },
         ];
-        const suggestionFilter = (tag: { id: string | number; name: string }, query: string) => true;
-        const tagComponent = (props: TagComponentProps) => <button onClick={props.onDelete}>{props.tag.name}</button>;
+        const suggestionFilter = (
+            tag: { id: string | number; name: string },
+            query: string,
+        ) => true;
+        const tagComponent = (props: TagComponentProps) => (
+            <button onClick={props.onDelete}>{props.tag.name}</button>
+        );
         const tags = [
             { id: 1, name: "Apples" },
             { id: 2, name: "Pears" },

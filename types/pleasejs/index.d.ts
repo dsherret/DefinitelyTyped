@@ -14,7 +14,10 @@ declare namespace PleaseJS {
          * @param {MakeSchemeOption} options
          * @returns {Array}
          */
-        make_scheme(base_color: HSV, options?: MakeSchemeOption): Array<string | RGB | HSV>;
+        make_scheme(
+            base_color: HSV,
+            options?: MakeSchemeOption,
+        ): Array<string | RGB | HSV>;
 
         /***
          * convert color name into hex string

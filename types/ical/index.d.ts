@@ -1,6 +1,12 @@
 import { RRule } from "rrule";
 
-export type CalendarComponentType = "VEVENT" | "VTODO" | "VJOURNAL" | "VFREEBUSY" | "VTIMEZONE" | "VALARM";
+export type CalendarComponentType =
+    | "VEVENT"
+    | "VTODO"
+    | "VJOURNAL"
+    | "VFREEBUSY"
+    | "VTIMEZONE"
+    | "VALARM";
 
 export interface ParamList {
     params: { [key: string]: string };

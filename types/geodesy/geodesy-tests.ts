@@ -90,8 +90,18 @@ v1.cross(v2).dot(v3);
  * LatLon
  */
 const latlon = new LatLonEllipsoidalDatum(52.65798, 1.71605);
-const latlonWGS84 = new LatLonEllipsoidalDatum(51.4778, -0.0016, 0, LatLonEllipsoidalDatum.datums.WGS84);
-const pWGS84 = new LatLonEllipsoidalDatum(51.4778, -0.0016, 0, LatLonEllipsoidalDatum.datums.WGS84);
+const latlonWGS84 = new LatLonEllipsoidalDatum(
+    51.4778,
+    -0.0016,
+    0,
+    LatLonEllipsoidalDatum.datums.WGS84,
+);
+const pWGS84 = new LatLonEllipsoidalDatum(
+    51.4778,
+    -0.0016,
+    0,
+    LatLonEllipsoidalDatum.datums.WGS84,
+);
 const pOSGB = pWGS84.convertDatum(LatLonEllipsoidalDatum.datums.OSGB36);
 
 latlon.toCartesian();
@@ -162,7 +172,11 @@ const brng2 = 32.435;
 LatLonSpherical.intersection(point1, brng1, point2, brng2); // 50.9078°N, 004.5084°E
 LatLonSpherical.crossingParallels(point1, point2, 30);
 
-const polygon = [new LatLonSpherical(0, 0), new LatLonSpherical(1, 0), new LatLonSpherical(0, 1)];
+const polygon = [
+    new LatLonSpherical(0, 0),
+    new LatLonSpherical(1, 0),
+    new LatLonSpherical(0, 1),
+];
 LatLonSpherical.areaOf(polygon); // 6.18e9 m²
 LatLonSpherical.areaOf(polygon, 6371e3); // 6.18e9 m²
 

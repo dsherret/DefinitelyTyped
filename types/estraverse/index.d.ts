@@ -68,7 +68,11 @@ declare namespace ESTraverse {
 
     function replace(root: ESTree.Node, visitor: Visitor): ESTree.Node;
 
-    function attachComments(tree: ESTree.Node, providedComments: ESTree.Comment[], tokens: ESTree.Node[]): ESTree.Node;
+    function attachComments(
+        tree: ESTree.Node,
+        providedComments: ESTree.Comment[],
+        tokens: ESTree.Node[],
+    ): ESTree.Node;
 
     function cloneEnvironment(): typeof ESTraverse;
 
@@ -151,17 +155,26 @@ declare namespace ESTraverse {
     interface VisitorKeys extends Record<NodeType, string[]> {}
 
     interface Visitor {
-        enter?:
-            // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            | ((this: Controller, node: ESTree.Node, parent: ESTree.Node | null) => VisitorOption | ESTree.Node | void)
+        enter?: // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+        | ((
+                  this: Controller,
+                  node: ESTree.Node,
+                  parent: ESTree.Node | null,
+              ) => VisitorOption | ESTree.Node | void)
             | undefined;
 
-        leave?:
-            // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            | ((this: Controller, node: ESTree.Node, parent: ESTree.Node | null) => VisitorOption | ESTree.Node | void)
+        leave?: // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+        | ((
+                  this: Controller,
+                  node: ESTree.Node,
+                  parent: ESTree.Node | null,
+              ) => VisitorOption | ESTree.Node | void)
             | undefined;
 
-        fallback?: "iteration" | ((this: Controller, node: ESTree.Node) => string[]) | undefined;
+        fallback?:
+            | "iteration"
+            | ((this: Controller, node: ESTree.Node) => string[])
+            | undefined;
 
         keys?: Record<string, string[]> | undefined;
     }

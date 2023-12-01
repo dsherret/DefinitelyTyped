@@ -5,7 +5,10 @@ export interface MoveEventContext {
 }
 
 export interface MoveEventsBus {
-    on(event: MoveEvents, handler: (context: MoveEventContext) => void): { remove(): void };
+    on(
+        event: MoveEvents,
+        handler: (context: MoveEventContext) => void,
+    ): { remove(): void };
     on(event: MoveEvents[], handler: (context: MoveEventContext) => void): void;
 
     emit(event: MoveEvents | MoveEvents[], context: MoveEventContext): void;

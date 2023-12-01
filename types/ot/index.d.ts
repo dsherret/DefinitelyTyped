@@ -240,7 +240,8 @@ export namespace Client {
      * In the 'AwaitingConfirm' state, there's one operation the client has sent
      * to the server and is still waiting for an acknowledgement.
      */
-    interface AwaitingConfirm extends Sync<AwaitingWithBuffer, AwaitingConfirm, Synchronized> {
+    interface AwaitingConfirm
+        extends Sync<AwaitingWithBuffer, AwaitingConfirm, Synchronized> {
         outstanding: TextOperation;
         resend(client: Client): void;
     }
@@ -249,12 +250,16 @@ export namespace Client {
      * In the 'AwaitingWithBuffer' state, the client is waiting for an operation
      * to be acknowledged by the server while buffering the edits the user makes
      */
-    interface AwaitingWithBuffer extends Sync<AwaitingWithBuffer, AwaitingWithBuffer, AwaitingConfirm> {
+    interface AwaitingWithBuffer
+        extends Sync<AwaitingWithBuffer, AwaitingWithBuffer, AwaitingConfirm> {
         outstanding: TextOperation;
         buffer: TextOperation;
         resend(client: Client): void;
     }
-    function AwaitingWithBuffer(outstanding: TextOperation, buffer: TextOperation): AwaitingWithBuffer;
+    function AwaitingWithBuffer(
+        outstanding: TextOperation,
+        buffer: TextOperation,
+    ): AwaitingWithBuffer;
 }
 
 export class Server {
@@ -279,7 +284,10 @@ export class SimpleTextOperation {
     apply(doc: string): string;
     toString(): string;
     equals(other: SimpleTextOperation): boolean;
-    static transform(a: SimpleTextOperation, b: SimpleTextOperation): [SimpleTextOperation, SimpleTextOperation];
+    static transform(
+        a: SimpleTextOperation,
+        b: SimpleTextOperation,
+    ): [SimpleTextOperation, SimpleTextOperation];
     /**
      * Convert a normal, composable `TextOperation` into an array of
      * `SimpleTextOperation`s.
@@ -308,10 +316,17 @@ export namespace SimpleTextOperation {
     class Noop extends SimpleTextOperation {}
 }
 
-export interface EditorSocketIOServer<S extends { id: string } = any, C = any> extends EventEmitter, Server {
+export interface EditorSocketIOServer<S extends { id: string } = any, C = any>
+    extends EventEmitter,
+        Server {
     // new(document: string, operations: TextOperation[], docId: string, mayWrite?: (_: any, cb: (b: boolean) => void) => void): EditorSocketIOServer;
     addClient(socket: S): void;
-    onOperation(socket: S, revision: number, operation: string, selection: string): void;
+    onOperation(
+        socket: S,
+        revision: number,
+        operation: string,
+        selection: string,
+    ): void;
     updateSelection(socket: S, selection: string): void;
     setName(socket: S, name: string): void;
     getClient(clientId: string): C;
@@ -386,7 +401,10 @@ export class WrappedOperation<T = any> {
     apply(doc: string): string;
     invert(doc: string): WrappedOperation<T>;
     compose(operation: WrappedOperation<T>): WrappedOperation<T>;
-    static transform<T>(left: WrappedOperation<T>, right: WrappedOperation<T>): WrappedOperation<T>;
+    static transform<T>(
+        left: WrappedOperation<T>,
+        right: WrappedOperation<T>,
+    ): WrappedOperation<T>;
 }
 
 export interface ClientAdapter {
@@ -397,7 +415,11 @@ export interface ClientAdapter {
     setSelection(selection?: Selection): void;
     getSelection(): Selection;
     registerCallbacks(callbacks: ClientAdapterCallbacks): void;
-    setOtherSelection(selection: Selection, color: string, otherClientId: string): Mark;
+    setOtherSelection(
+        selection: Selection,
+        color: string,
+        otherClientId: string,
+    ): Mark;
 }
 
 export interface ClientAdapterCallbacks {
@@ -408,7 +430,11 @@ export interface ClientAdapterCallbacks {
 
 export interface ServerAdapter {
     sendSelection(selection?: Selection): void;
-    sendOperation(revision: number, operation: SerializedTextOperation, selection?: Selection): void;
+    sendOperation(
+        revision: number,
+        operation: SerializedTextOperation,
+        selection?: Selection,
+    ): void;
     registerCallbacks(callbacks: ServerAdapterCallbacks): void;
 }
 
@@ -442,7 +468,12 @@ export class EditorClient extends Client {
     serverAdapter: any;
     editorAdapter: any;
 
-    constructor(revision: number, clients: ClientObj[], serverAdapter: ServerAdapter, editorAdapter: ClientAdapter);
+    constructor(
+        revision: number,
+        clients: ClientObj[],
+        serverAdapter: ServerAdapter,
+        editorAdapter: ClientAdapter,
+    );
 
     // not sure about all those signatures
     addClient(clientId: string, clientObj: ClientObj): void;

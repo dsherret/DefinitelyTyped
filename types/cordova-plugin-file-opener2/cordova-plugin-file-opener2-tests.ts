@@ -15,10 +15,8 @@ cordova.plugins.fileOpener2.open(
     "/sdcard/Download/starwars.pdf", // You can also use a Cordova-style file uri: cdvfile://localhost/persistent/Download/starwars.pdf
     "application/pdf",
     {
-        error: e => {
-        },
-        success: () => {
-        },
+        error: (e) => {},
+        success: () => {},
     },
 );
 
@@ -26,22 +24,18 @@ cordova.plugins.fileOpener2.showOpenWithDialog(
     "/sdcard/Download/starwars.pdf", // You can also use a Cordova-style file uri: cdvfile://localhost/persistent/Download/starwars.pdf
     "application/pdf",
     {
-        error: e => {
-        },
-        success: () => {
-        },
+        error: (e) => {},
+        success: () => {},
     },
 );
 
 cordova.plugins.fileOpener2.uninstall("com.zynga.FarmVille2CountryEscape", {
-    error: e => {
-    },
-    success: () => {
-    },
+    error: (e) => {},
+    success: () => {},
 });
 
 cordova.plugins.fileOpener2.appIsInstalled("com.adobe.reader", {
-    success: res => {
+    success: (res) => {
         if (res.status === 0) {
         } else {
         }

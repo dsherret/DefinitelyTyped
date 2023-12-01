@@ -4,11 +4,19 @@ declare namespace Glider {
     // from JS to TS
     type Selector = Element | string;
 
-    type EasingFunction = (x: number, t: number, b: number, c: number, d: number) => number;
+    type EasingFunction = (
+        x: number,
+        t: number,
+        b: number,
+        c: number,
+        d: number,
+    ) => number;
 
     interface GliderEvent<T = undefined> extends Event {
         detail: T;
-        target: (HTMLElement & { _glider: Glider<HTMLElement> | undefined }) | null;
+        target:
+            | (HTMLElement & { _glider: Glider<HTMLElement> | undefined })
+            | null;
     }
 
     interface GliderEventMap {
@@ -73,9 +81,9 @@ declare namespace Glider {
          */
         arrows?:
             | {
-                prev: Selector | null;
-                next: Selector | null;
-            }
+                  prev: Selector | null;
+                  next: Selector | null;
+              }
             | undefined;
 
         /**
@@ -273,19 +281,25 @@ declare class Glider<T extends HTMLElement = HTMLDivElement> {
     init(): void;
 }
 
-declare function Glider<T extends HTMLElement = HTMLDivElement>(element: T): Glider<T>;
+declare function Glider<T extends HTMLElement = HTMLDivElement>(
+    element: T,
+): Glider<T>;
 
 declare global {
     interface HTMLElement {
         addEventListener<K extends keyof Glider.GliderEventMap>(
             type: K,
-            listener: (event: Glider.GliderEvent<Glider.GliderEventMap[K]>) => void,
+            listener: (
+                event: Glider.GliderEvent<Glider.GliderEventMap[K]>,
+            ) => void,
             options?: boolean | AddEventListenerOptions,
         ): void;
 
         removeEventListener<K extends keyof Glider.GliderEventMap>(
             type: K,
-            listener: (event: Glider.GliderEvent<Glider.GliderEventMap[K]>) => void,
+            listener: (
+                event: Glider.GliderEvent<Glider.GliderEventMap[K]>,
+            ) => void,
             options?: boolean | AddEventListenerOptions,
         ): void;
     }
@@ -293,13 +307,17 @@ declare global {
     interface HTMLDivElement {
         addEventListener<K extends keyof Glider.GliderEventMap>(
             type: K,
-            listener: (event: Glider.GliderEvent<Glider.GliderEventMap[K]>) => void,
+            listener: (
+                event: Glider.GliderEvent<Glider.GliderEventMap[K]>,
+            ) => void,
             options?: boolean | AddEventListenerOptions,
         ): void;
 
         removeEventListener<K extends keyof Glider.GliderEventMap>(
             type: K,
-            listener: (event: Glider.GliderEvent<Glider.GliderEventMap[K]>) => void,
+            listener: (
+                event: Glider.GliderEvent<Glider.GliderEventMap[K]>,
+            ) => void,
             options?: boolean | AddEventListenerOptions,
         ): void;
     }

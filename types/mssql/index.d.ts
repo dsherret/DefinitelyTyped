@@ -31,8 +31,7 @@ export interface ISqlTypeWithTvpType extends ISqlType {
     tvpType: any;
 }
 
-export interface ISqlTypeFactory {
-}
+export interface ISqlTypeFactory {}
 export interface ISqlTypeFactoryWithNoParams extends ISqlTypeFactory {
     (): ISqlTypeWithNoParams;
 }
@@ -148,7 +147,9 @@ export interface IColumnMetadata {
     };
 }
 export interface IResult<T> {
-    recordsets: T extends any[] ? { [P in keyof T]: IRecordSet<T[P]> } : Array<IRecordSet<T>>;
+    recordsets: T extends any[]
+        ? { [P in keyof T]: IRecordSet<T[P]> }
+        : Array<IRecordSet<T>>;
     recordset: IRecordSet<T extends any[] ? T[0] : T>;
     rowsAffected: number[];
     output: { [key: string]: any };
@@ -176,7 +177,8 @@ export declare var ISOLATION_LEVEL: {
     SNAPSHOT: IIsolationLevel;
 };
 
-export interface IOptions extends Omit<tds.ConnectionOptions, "useColumnNames"> {
+export interface IOptions
+    extends Omit<tds.ConnectionOptions, "useColumnNames"> {
     beforeConnect?: void | undefined;
     connectionString?: string | undefined;
     trustedConnection?: boolean | undefined;
@@ -184,7 +186,8 @@ export interface IOptions extends Omit<tds.ConnectionOptions, "useColumnNames"> 
 
 export declare var pool: ConnectionPool;
 
-export interface PoolOpts<T> extends Omit<PoolOptions<T>, "create" | "destroy" | "min" | "max"> {
+export interface PoolOpts<T>
+    extends Omit<PoolOptions<T>, "create" | "destroy" | "min" | "max"> {
     create?: CallbackOrPromise<T> | undefined;
     destroy?: ((resource: T) => any) | undefined;
     min?: number | undefined;
@@ -235,17 +238,38 @@ export declare class ConnectionPool extends events.EventEmitter {
         connectionString: string,
     ): config & { options: IOptions; pool: Partial<PoolOpts<Connection>> };
     public constructor(config: config, callback?: (err?: any) => void);
-    public constructor(connectionString: string, callback?: (err?: any) => void);
+    public constructor(
+        connectionString: string,
+        callback?: (err?: any) => void,
+    );
     public query(command: string): Promise<IResult<any>>;
-    public query(strings: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<any>>;
+    public query(
+        strings: TemplateStringsArray,
+        ...interpolations: any[]
+    ): Promise<IResult<any>>;
     public query<Entity>(command: string): Promise<IResult<Entity>>;
-    public query<Entity>(strings: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<Entity>>;
-    public query<Entity>(command: string, callback: (err?: Error, recordset?: IResult<Entity>) => void): void;
+    public query<Entity>(
+        strings: TemplateStringsArray,
+        ...interpolations: any[]
+    ): Promise<IResult<Entity>>;
+    public query<Entity>(
+        command: string,
+        callback: (err?: Error, recordset?: IResult<Entity>) => void,
+    ): void;
     public batch(batch: string): Promise<IResult<any>>;
-    public batch(strings: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<any>>;
-    public batch(batch: string, callback: (err?: Error, recordset?: IResult<any>) => void): void;
+    public batch(
+        strings: TemplateStringsArray,
+        ...interpolations: any[]
+    ): Promise<IResult<any>>;
+    public batch(
+        batch: string,
+        callback: (err?: Error, recordset?: IResult<any>) => void,
+    ): void;
     public batch<Entity>(batch: string): Promise<IResult<Entity>>;
-    public batch<Entity>(strings: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<Entity>>;
+    public batch<Entity>(
+        strings: TemplateStringsArray,
+        ...interpolations: any[]
+    ): Promise<IResult<Entity>>;
     public connect(): Promise<ConnectionPool>;
     public connect(callback: (err: any) => void): void;
     public close(): Promise<void>;
@@ -271,7 +295,11 @@ export interface IColumn extends ISqlType {
 }
 
 declare class columns extends Array<IColumn> {
-    public add(name: string, type: (() => ISqlType) | ISqlType, options?: IColumnOptions): number;
+    public add(
+        name: string,
+        type: (() => ISqlType) | ISqlType,
+        options?: IColumnOptions,
+    ): number;
 }
 
 type IRow = Array<string | number | boolean | Date | Buffer | undefined | null>;
@@ -331,32 +359,78 @@ export declare class Request extends events.EventEmitter {
     public constructor(transaction: Transaction);
     public constructor(preparedStatement: PreparedStatement);
     public execute(procedure: string): Promise<IProcedureResult<any>>;
-    public execute<Entity>(procedure: string): Promise<IProcedureResult<Entity>>;
     public execute<Entity>(
         procedure: string,
-        callback: (err?: any, recordsets?: IProcedureResult<Entity>, returnValue?: any) => void,
+    ): Promise<IProcedureResult<Entity>>;
+    public execute<Entity>(
+        procedure: string,
+        callback: (
+            err?: any,
+            recordsets?: IProcedureResult<Entity>,
+            returnValue?: any,
+        ) => void,
     ): void;
     public input(name: string, value: any): Request;
-    public input(name: string, type: (() => ISqlType) | ISqlType, value: any): Request;
+    public input(
+        name: string,
+        type: (() => ISqlType) | ISqlType,
+        value: any,
+    ): Request;
     public replaceInput(name: string, value: any): Request;
-    public replaceInput(name: string, type: (() => ISqlType) | ISqlType, value: any): Request;
-    public output(name: string, type: (() => ISqlType) | ISqlType, value?: any): Request;
+    public replaceInput(
+        name: string,
+        type: (() => ISqlType) | ISqlType,
+        value: any,
+    ): Request;
+    public output(
+        name: string,
+        type: (() => ISqlType) | ISqlType,
+        value?: any,
+    ): Request;
     public pipe(stream: NodeJS.WritableStream): NodeJS.WritableStream;
     public query(command: string): Promise<IResult<any>>;
-    public query(command: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<any>>;
+    public query(
+        command: TemplateStringsArray,
+        ...interpolations: any[]
+    ): Promise<IResult<any>>;
     public query<Entity>(command: string): Promise<IResult<Entity>>;
-    public query<Entity>(command: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<Entity>>;
-    public query<Entity>(command: string, callback: (err?: Error, recordset?: IResult<Entity>) => void): void;
+    public query<Entity>(
+        command: TemplateStringsArray,
+        ...interpolations: any[]
+    ): Promise<IResult<Entity>>;
+    public query<Entity>(
+        command: string,
+        callback: (err?: Error, recordset?: IResult<Entity>) => void,
+    ): void;
     public batch(batch: string): Promise<IResult<any>>;
-    public batch(strings: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<any>>;
-    public batch(batch: string, callback: (err?: Error, recordset?: IResult<any>) => void): void;
+    public batch(
+        strings: TemplateStringsArray,
+        ...interpolations: any[]
+    ): Promise<IResult<any>>;
+    public batch(
+        batch: string,
+        callback: (err?: Error, recordset?: IResult<any>) => void,
+    ): void;
     public batch<Entity>(batch: string): Promise<IResult<Entity>>;
-    public batch<Entity>(strings: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<Entity>>;
-    public batch<Entity>(batch: string, callback: (err?: any, recordset?: IResult<Entity>) => void): void;
+    public batch<Entity>(
+        strings: TemplateStringsArray,
+        ...interpolations: any[]
+    ): Promise<IResult<Entity>>;
+    public batch<Entity>(
+        batch: string,
+        callback: (err?: any, recordset?: IResult<Entity>) => void,
+    ): void;
     public bulk(table: Table): Promise<IBulkResult>;
     public bulk(table: Table, options: IBulkOptions): Promise<IBulkResult>;
-    public bulk(table: Table, callback: (err: Error, result: IBulkResult) => void): void;
-    public bulk(table: Table, options: IBulkOptions, callback: (err: Error, result: IBulkResult) => void): void;
+    public bulk(
+        table: Table,
+        callback: (err: Error, result: IBulkResult) => void,
+    ): void;
+    public bulk(
+        table: Table,
+        options: IBulkOptions,
+        callback: (err: Error, result: IBulkResult) => void,
+    ): void;
     public cancel(): void;
     public pause(): boolean;
     public resume(): boolean;
@@ -402,14 +476,29 @@ export declare class PreparedStatement extends events.EventEmitter {
     public stream: any;
     public constructor(connection?: ConnectionPool);
     public constructor(transaction: Transaction);
-    public input(name: string, type: (() => ISqlType) | ISqlType): PreparedStatement;
-    public output(name: string, type: (() => ISqlType) | ISqlType): PreparedStatement;
+    public input(
+        name: string,
+        type: (() => ISqlType) | ISqlType,
+    ): PreparedStatement;
+    public output(
+        name: string,
+        type: (() => ISqlType) | ISqlType,
+    ): PreparedStatement;
     public prepare(statement?: string): Promise<void>;
-    public prepare(statement?: string, callback?: (err?: Error) => void): PreparedStatement;
+    public prepare(
+        statement?: string,
+        callback?: (err?: Error) => void,
+    ): PreparedStatement;
     public execute(values: Object): Promise<IProcedureResult<any>>;
     public execute<Entity>(values: Object): Promise<IProcedureResult<Entity>>;
-    public execute(values: Object, callback: (err?: Error, result?: IProcedureResult<any>) => void): Request;
-    public execute<Entity>(values: Object, callback: (err?: Error, result?: IProcedureResult<Entity>) => void): Request;
+    public execute(
+        values: Object,
+        callback: (err?: Error, result?: IProcedureResult<any>) => void,
+    ): Request;
+    public execute<Entity>(
+        values: Object,
+        callback: (err?: Error, result?: IProcedureResult<Entity>) => void,
+    ): Request;
     public unprepare(): Promise<void>;
     public unprepare(callback: (err?: Error) => void): PreparedStatement;
 }
@@ -420,18 +509,28 @@ export declare class PreparedStatementError extends MSSQLError {}
  * Open global connection pool.
  * @param config Connection configuration object or connection string
  */
-export declare function connect(config: config | string): Promise<ConnectionPool>;
+export declare function connect(
+    config: config | string,
+): Promise<ConnectionPool>;
 
 /**
  * Open global connection pool.
  * @param config Connection configuration object or connection string.
  * @param callback A callback which is called after connection has established, or an error has occurred
  */
-export declare function connect(config: config | string, callback?: (err?: Error) => void): void;
+export declare function connect(
+    config: config | string,
+    callback?: (err?: Error) => void,
+): void;
 
 export declare function query(command: string): Promise<IResult<any>>;
-export declare function query(command: TemplateStringsArray, ...interpolations: any[]): Promise<IResult<any>>;
-export declare function query<Entity>(command: string): Promise<IResult<Entity>>;
+export declare function query(
+    command: TemplateStringsArray,
+    ...interpolations: any[]
+): Promise<IResult<any>>;
+export declare function query<Entity>(
+    command: string,
+): Promise<IResult<Entity>>;
 export declare function query<Entity>(
     command: TemplateStringsArray,
     ...interpolations: any[]

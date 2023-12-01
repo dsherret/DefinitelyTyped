@@ -8,7 +8,10 @@ declare function stringify(
 ): string;
 
 declare namespace stringify {
-    function getSerialize(serializer: EntryProcessor | null, decycler?: EntryProcessor): EntryProcessor;
+    function getSerialize(
+        serializer: EntryProcessor | null,
+        decycler?: EntryProcessor,
+    ): EntryProcessor;
 
     type EntryProcessor = (key: string, value: any) => any;
 }

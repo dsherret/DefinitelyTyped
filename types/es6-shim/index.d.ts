@@ -138,7 +138,11 @@ interface ArrayConstructor {
      * @param mapfn A mapping function to call on every element of the array.
      * @param thisArg Value of 'this' used to invoke the mapfn.
      */
-    from<T, U>(arrayLike: ArrayLike<T>, mapfn: (v: T, k: number) => U, thisArg?: any): U[];
+    from<T, U>(
+        arrayLike: ArrayLike<T>,
+        mapfn: (v: T, k: number) => U,
+        thisArg?: any,
+    ): U[];
 
     /**
      * Creates an array from an iterable object.
@@ -146,7 +150,11 @@ interface ArrayConstructor {
      * @param mapfn A mapping function to call on every element of the array.
      * @param thisArg Value of 'this' used to invoke the mapfn.
      */
-    from<T, U>(iterable: IterableShim<T>, mapfn: (v: T, k: number) => U, thisArg?: any): U[];
+    from<T, U>(
+        iterable: IterableShim<T>,
+        mapfn: (v: T, k: number) => U,
+        thisArg?: any,
+    ): U[];
 
     /**
      * Creates an array from an array-like object.
@@ -177,7 +185,10 @@ interface Array<T> {
      * @param thisArg If provided, it will be used as the this value for each invocation of
      * predicate. If it is not provided, undefined is used instead.
      */
-    find(predicate: (value: T, index: number, obj: T[]) => boolean, thisArg?: any): T | undefined;
+    find(
+        predicate: (value: T, index: number, obj: T[]) => boolean,
+        thisArg?: any,
+    ): T | undefined;
 
     /**
      * Returns the index of the first element in the array where predicate is true, and -1 otherwise.
@@ -507,8 +518,11 @@ interface PromiseConstructor {
      * a resolve callback used to resolve the promise with a value or the result of another promise,
      * and a reject callback used to reject the promise with a provided reason or error.
      */
-    new<T>(
-        executor: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void,
+    new <T>(
+        executor: (
+            resolve: (value?: T | PromiseLike<T>) => void,
+            reject: (reason?: any) => void,
+        ) => void,
     ): Promise<T>;
 
     /**
@@ -560,7 +574,10 @@ declare var Promise: PromiseConstructor;
 interface Map<K, V> {
     clear(): void;
     delete(key: K): boolean;
-    forEach(callbackfn: (value: V, index: K, map: Map<K, V>) => void, thisArg?: any): void;
+    forEach(
+        callbackfn: (value: V, index: K, map: Map<K, V>) => void,
+        thisArg?: any,
+    ): void;
     get(key: K): V | undefined;
     has(key: K): boolean;
     set(key: K, value: V): Map<K, V>;
@@ -571,8 +588,8 @@ interface Map<K, V> {
 }
 
 interface MapConstructor {
-    new<K, V>(): Map<K, V>;
-    new<K, V>(iterable: IterableShim<[K, V]>): Map<K, V>;
+    new <K, V>(): Map<K, V>;
+    new <K, V>(iterable: IterableShim<[K, V]>): Map<K, V>;
     prototype: Map<any, any>;
 }
 
@@ -582,7 +599,10 @@ interface Set<T> {
     add(value: T): Set<T>;
     clear(): void;
     delete(value: T): boolean;
-    forEach(callbackfn: (value: T, index: T, set: Set<T>) => void, thisArg?: any): void;
+    forEach(
+        callbackfn: (value: T, index: T, set: Set<T>) => void,
+        thisArg?: any,
+    ): void;
     has(value: T): boolean;
     size: number;
     entries(): IterableIteratorShim<[T, T]>;
@@ -592,8 +612,8 @@ interface Set<T> {
 }
 
 interface SetConstructor {
-    new<T>(): Set<T>;
-    new<T>(iterable: IterableShim<T>): Set<T>;
+    new <T>(): Set<T>;
+    new <T>(iterable: IterableShim<T>): Set<T>;
     prototype: Set<any>;
 }
 
@@ -607,8 +627,8 @@ interface WeakMap<K extends object, V> {
 }
 
 interface WeakMapConstructor {
-    new<K extends object, V>(): WeakMap<K, V>;
-    new<K extends object, V>(iterable: IterableShim<[K, V]>): WeakMap<K, V>;
+    new <K extends object, V>(): WeakMap<K, V>;
+    new <K extends object, V>(iterable: IterableShim<[K, V]>): WeakMap<K, V>;
     prototype: WeakMap<any, any>;
 }
 
@@ -621,27 +641,43 @@ interface WeakSet<T> {
 }
 
 interface WeakSetConstructor {
-    new<T>(): WeakSet<T>;
-    new<T>(iterable: IterableShim<T>): WeakSet<T>;
+    new <T>(): WeakSet<T>;
+    new <T>(iterable: IterableShim<T>): WeakSet<T>;
     prototype: WeakSet<any>;
 }
 
 declare var WeakSet: WeakSetConstructor;
 
 declare namespace Reflect {
-    function apply(target: Function, thisArgument: any, argumentsList: ArrayLike<any>): any;
+    function apply(
+        target: Function,
+        thisArgument: any,
+        argumentsList: ArrayLike<any>,
+    ): any;
     function construct(target: Function, argumentsList: ArrayLike<any>): any;
-    function defineProperty(target: any, propertyKey: PropertyKey, attributes: PropertyDescriptor): boolean;
+    function defineProperty(
+        target: any,
+        propertyKey: PropertyKey,
+        attributes: PropertyDescriptor,
+    ): boolean;
     function deleteProperty(target: any, propertyKey: PropertyKey): boolean;
     function enumerate(target: any): IterableIteratorShim<any>;
     function get(target: any, propertyKey: PropertyKey, receiver?: any): any;
-    function getOwnPropertyDescriptor(target: any, propertyKey: PropertyKey): PropertyDescriptor;
+    function getOwnPropertyDescriptor(
+        target: any,
+        propertyKey: PropertyKey,
+    ): PropertyDescriptor;
     function getPrototypeOf(target: any): any;
     function has(target: any, propertyKey: PropertyKey): boolean;
     function isExtensible(target: any): boolean;
     function ownKeys(target: any): PropertyKey[];
     function preventExtensions(target: any): boolean;
-    function set(target: any, propertyKey: PropertyKey, value: any, receiver?: any): boolean;
+    function set(
+        target: any,
+        propertyKey: PropertyKey,
+        value: any,
+        receiver?: any,
+    ): boolean;
     function setPrototypeOf(target: any, proto: any): boolean;
 }
 
@@ -657,19 +693,42 @@ declare module "es6-shim" {
     var WeakSet: WeakSetConstructor;
     var Promise: PromiseConstructor;
     namespace Reflect {
-        function apply(target: Function, thisArgument: any, argumentsList: ArrayLike<any>): any;
-        function construct(target: Function, argumentsList: ArrayLike<any>): any;
-        function defineProperty(target: any, propertyKey: PropertyKey, attributes: PropertyDescriptor): boolean;
+        function apply(
+            target: Function,
+            thisArgument: any,
+            argumentsList: ArrayLike<any>,
+        ): any;
+        function construct(
+            target: Function,
+            argumentsList: ArrayLike<any>,
+        ): any;
+        function defineProperty(
+            target: any,
+            propertyKey: PropertyKey,
+            attributes: PropertyDescriptor,
+        ): boolean;
         function deleteProperty(target: any, propertyKey: PropertyKey): boolean;
         function enumerate(target: any): Iterator<any>;
-        function get(target: any, propertyKey: PropertyKey, receiver?: any): any;
-        function getOwnPropertyDescriptor(target: any, propertyKey: PropertyKey): PropertyDescriptor;
+        function get(
+            target: any,
+            propertyKey: PropertyKey,
+            receiver?: any,
+        ): any;
+        function getOwnPropertyDescriptor(
+            target: any,
+            propertyKey: PropertyKey,
+        ): PropertyDescriptor;
         function getPrototypeOf(target: any): any;
         function has(target: any, propertyKey: PropertyKey): boolean;
         function isExtensible(target: any): boolean;
         function ownKeys(target: any): PropertyKey[];
         function preventExtensions(target: any): boolean;
-        function set(target: any, propertyKey: PropertyKey, value: any, receiver?: any): boolean;
+        function set(
+            target: any,
+            propertyKey: PropertyKey,
+            value: any,
+            receiver?: any,
+        ): boolean;
         function setPrototypeOf(target: any, proto: any): boolean;
     }
 }

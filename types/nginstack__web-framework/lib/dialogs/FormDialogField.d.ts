@@ -1,5 +1,10 @@
 export = FormDialogField;
-declare function FormDialogField(name: any, type: any, size: any, ...args: any[]): void;
+declare function FormDialogField(
+    name: any,
+    type: any,
+    size: any,
+    ...args: any[]
+): void;
 declare class FormDialogField {
     constructor(name: any, type: any, size: any, ...args: any[]);
     private registerEvents_;

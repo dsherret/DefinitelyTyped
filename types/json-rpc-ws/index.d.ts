@@ -1,7 +1,11 @@
 import * as ws from "ws";
 
-export function createServer<TConnection extends Connection>(): Server<TConnection>;
-export function createClient<TConnection extends Connection>(): Client<TConnection>;
+export function createServer<
+    TConnection extends Connection,
+>(): Server<TConnection>;
+export function createClient<
+    TConnection extends Connection,
+>(): Client<TConnection>;
 
 export class Server<TConnection extends Connection> extends Base<TConnection> {
     constructor();
@@ -73,7 +77,9 @@ export class Base<TConnection extends Connection> {
     /**
      * Get handler for a given method
      */
-    getHandler<ParamType, ParamCallbackType>(method: string): Handler<TConnection, ParamType, ParamCallbackType>;
+    getHandler<ParamType, ParamCallbackType>(
+        method: string,
+    ): Handler<TConnection, ParamType, ParamCallbackType>;
     /**
      * Get a connection by id
      */
@@ -112,7 +118,11 @@ export interface Payload<ParamType> {
     error?: any;
 }
 
-export type Handler<TConnection extends Connection, ParamType, ParamCallbackType> = (
+export type Handler<
+    TConnection extends Connection,
+    ParamType,
+    ParamCallbackType,
+> = (
     this: TConnection,
     params: ParamType,
     reply: ReplyCallback<ParamCallbackType>,
@@ -122,4 +132,8 @@ export type ReplyCallback<ParamType> = (error: any, params?: ParamType) => void;
 /**
  * Returns a valid jsonrpc2.0 error reply
  */
-export function Errors(type: string, id: string | number | null, data: any): any | null;
+export function Errors(
+    type: string,
+    id: string | number | null,
+    data: any,
+): any | null;

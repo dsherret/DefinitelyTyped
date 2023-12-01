@@ -1,4 +1,11 @@
-import { ComponentType, FocusEventHandler, HTMLProps, KeyboardEventHandler, MouseEventHandler, ReactNode } from "react";
+import {
+    ComponentType,
+    FocusEventHandler,
+    HTMLProps,
+    KeyboardEventHandler,
+    MouseEventHandler,
+    ReactNode,
+} from "react";
 
 declare namespace Modal {
     interface Props extends HTMLProps<HTMLDivElement> {
@@ -8,20 +15,22 @@ declare namespace Modal {
          */
         title: string;
         children: ReactNode;
-        aria?: {
-            /**
-             * If this property is added, it will be added to the modal content
-             * div as aria-labelledby. You are encouraged to use this when the
-             * modal is visually labelled.
-             * @defaultValue "modal-heading"
-             */
-            labelledby?: string | undefined;
-            /**
-             * If this property is added, it will be added to the modal content
-             * div as aria-describedby.
-             */
-            describedby?: string | undefined;
-        } | undefined;
+        aria?:
+            | {
+                  /**
+                   * If this property is added, it will be added to the modal content
+                   * div as aria-labelledby. You are encouraged to use this when the
+                   * modal is visually labelled.
+                   * @defaultValue "modal-heading"
+                   */
+                  labelledby?: string | undefined;
+                  /**
+                   * If this property is added, it will be added to the modal content
+                   * div as aria-describedby.
+                   */
+                  describedby?: string | undefined;
+              }
+            | undefined;
         /**
          * `className` that is applied to the `document.body` while the modal is open.
          * @defaultValue "modal-open"
@@ -79,7 +88,10 @@ declare namespace Modal {
          * The originating event might be different depending on how the modal
          * is closed.
          */
-        onRequestClose: KeyboardEventHandler | MouseEventHandler | FocusEventHandler;
+        onRequestClose:
+            | KeyboardEventHandler
+            | MouseEventHandler
+            | FocusEventHandler;
     }
 }
 declare const Modal: ComponentType<Modal.Props>;

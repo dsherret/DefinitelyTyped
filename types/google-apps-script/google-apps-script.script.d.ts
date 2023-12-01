@@ -74,7 +74,11 @@ declare namespace GoogleAppsScript {
         interface ClockTriggerBuilder {
             after(durationMilliseconds: Integer): ClockTriggerBuilder;
             at(date: Base.Date): ClockTriggerBuilder;
-            atDate(year: Integer, month: Integer, day: Integer): ClockTriggerBuilder;
+            atDate(
+                year: Integer,
+                month: Integer,
+                day: Integer,
+            ): ClockTriggerBuilder;
             atHour(hour: Integer): ClockTriggerBuilder;
             create(): Trigger;
             everyDays(n: Integer): ClockTriggerBuilder;
@@ -208,7 +212,9 @@ declare namespace GoogleAppsScript {
             forDocument(key: string): DocumentTriggerBuilder;
             forForm(form: Forms.Form): FormTriggerBuilder;
             forForm(key: string): FormTriggerBuilder;
-            forSpreadsheet(sheet: Spreadsheet.Spreadsheet): SpreadsheetTriggerBuilder;
+            forSpreadsheet(
+                sheet: Spreadsheet.Spreadsheet,
+            ): SpreadsheetTriggerBuilder;
             forSpreadsheet(key: string): SpreadsheetTriggerBuilder;
             forUserCalendar(emailId: string): CalendarTriggerBuilder;
             timeBased(): ClockTriggerBuilder;

@@ -24,13 +24,15 @@ export interface RequestOptions {
     postTriggerInclude?: string | undefined;
 
     /** Conditions Associated with the request. */
-    accessCondition?: {
-        /** Conditional HTTP method header type. */
-        type: string;
+    accessCondition?:
+        | {
+              /** Conditional HTTP method header type. */
+              type: string;
 
-        /** Conditional HTTP method header value. */
-        condition: string;
-    } | undefined;
+              /** Conditional HTTP method header value. */
+              condition: string;
+          }
+        | undefined;
 
     /** Specifies indexing directives (index, do not index ..etc). */
     indexingDirective?: string | undefined;
@@ -114,7 +116,11 @@ export interface QueryError {
 }
 
 /** The callback to execute after the request execution. */
-export type RequestCallback<TResult> = (error: QueryError, resource: TResult, responseHeaders: any) => void;
+export type RequestCallback<TResult> = (
+    error: QueryError,
+    resource: TResult,
+    responseHeaders: any,
+) => void;
 
 /** Reprents an object with a unique identifier. */
 export interface UniqueId {
@@ -146,17 +152,14 @@ export interface NewDocument extends UniqueId {
 }
 
 /** Represents a document retrieved from storage. */
-export interface RetrievedDocument extends NewDocument, AbstractMeta {
-}
+export interface RetrievedDocument extends NewDocument, AbstractMeta {}
 
 /** Represents the meta data for a database. */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface DatabaseMeta extends AbstractMeta {
-}
+export interface DatabaseMeta extends AbstractMeta {}
 
 /** Represents the meta data for a collection. */
-export interface CollectionMeta extends Collection, AbstractMeta {
-}
+export interface CollectionMeta extends Collection, AbstractMeta {}
 
 /** Represents the meta data for a stored procedure. */
 export interface ProcedureMeta extends AbstractMeta {
@@ -165,8 +168,7 @@ export interface ProcedureMeta extends AbstractMeta {
 
 /** Represents the meta data for a user-defined function. */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface UserDefinedFunctionMeta extends AbstractMeta {
-}
+export interface UserDefinedFunctionMeta extends AbstractMeta {}
 
 /** Represents the meta data for a trigger. */
 export interface TriggerMeta extends AbstractMeta {
@@ -200,8 +202,7 @@ export interface AuthOptions {
 
 /** Represents a DocumentDB stored procecedure. */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface Procedure extends UserScriptable {
-}
+export interface Procedure extends UserScriptable {}
 
 /** Represents a DocumentDB user-defined function. */
 export interface UserDefinedFunction extends UserScriptable {
@@ -248,8 +249,7 @@ export interface Attachment {
     [name: string]: any;
 }
 
-export interface AttachmentMeta extends Attachment, AbstractMeta {
-}
+export interface AttachmentMeta extends Attachment, AbstractMeta {}
 
 export interface Permission extends UniqueId {
     /** The mode of the permission */
@@ -259,8 +259,7 @@ export interface Permission extends UniqueId {
     resource: string;
 }
 
-export interface PermissionMeta extends Permission, AbstractMeta {
-}
+export interface PermissionMeta extends Permission, AbstractMeta {}
 
 /**  The Indexing Policy represents the indexing policy configuration for a collection. */
 export interface IndexingPolicy {
@@ -452,7 +451,9 @@ export class QueryIterator<TResultRow> {
         documentclient: DocumentClient,
         query: DocumentQuery,
         options: FeedOptions,
-        fetchFunctions: RequestCallback<TResultRow> | Array<RequestCallback<TResultRow>>,
+        fetchFunctions:
+            | RequestCallback<TResultRow>
+            | Array<RequestCallback<TResultRow>>,
         resourceLinkopt?: string,
     );
 
@@ -650,7 +651,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<AttachmentMeta>,
     ): void;
-    createAttachment(documentLink: string, body: Attachment, callback: RequestCallback<AttachmentMeta>): void;
+    createAttachment(
+        documentLink: string,
+        body: Attachment,
+        callback: RequestCallback<AttachmentMeta>,
+    ): void;
 
     /**
      * Create an attachment with media file for the document object.
@@ -681,8 +686,15 @@ export class DocumentClient {
      * @param [options] - The request options.
      * @param callback  - The callback for the request.
      */
-    createDatabase(body: UniqueId, options: RequestOptions, callback: RequestCallback<DatabaseMeta>): void;
-    createDatabase(body: UniqueId, callback: RequestCallback<DatabaseMeta>): void;
+    createDatabase(
+        body: UniqueId,
+        options: RequestOptions,
+        callback: RequestCallback<DatabaseMeta>,
+    ): void;
+    createDatabase(
+        body: UniqueId,
+        callback: RequestCallback<DatabaseMeta>,
+    ): void;
 
     /**
      * Creates a collection.
@@ -703,7 +715,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<CollectionMeta>,
     ): void;
-    createCollection(databaseLink: string, body: Collection, callback: RequestCallback<CollectionMeta>): void;
+    createCollection(
+        databaseLink: string,
+        body: Collection,
+        callback: RequestCallback<CollectionMeta>,
+    ): void;
 
     /**
      * Create a StoredProcedure.
@@ -723,7 +739,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<ProcedureMeta>,
     ): void;
-    createStoredProcedure(collectionLink: string, procedure: Procedure, callback: RequestCallback<ProcedureMeta>): void;
+    createStoredProcedure(
+        collectionLink: string,
+        procedure: Procedure,
+        callback: RequestCallback<ProcedureMeta>,
+    ): void;
 
     /**
      * Create a UserDefinedFunction.
@@ -765,7 +785,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<TriggerMeta>,
     ): void;
-    createTrigger(collectionLink: string, trigger: Trigger, callback: RequestCallback<TriggerMeta>): void;
+    createTrigger(
+        collectionLink: string,
+        trigger: Trigger,
+        callback: RequestCallback<TriggerMeta>,
+    ): void;
 
     /**
      * Create a document.
@@ -803,7 +827,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<PermissionMeta>,
     ): void;
-    createPermission(userLink: string, body: Permission, callback: RequestCallback<PermissionMeta>): void;
+    createPermission(
+        userLink: string,
+        body: Permission,
+        callback: RequestCallback<PermissionMeta>,
+    ): void;
 
     /**
      * Create a user
@@ -818,7 +846,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<AbstractMeta>,
     ): void;
-    createUser(databaseLink: string, body: UniqueId, callback: RequestCallback<AbstractMeta>): void;
+    createUser(
+        databaseLink: string,
+        body: UniqueId,
+        callback: RequestCallback<AbstractMeta>,
+    ): void;
 
     /**
      * Execute the StoredProcedure represented by the object.
@@ -845,7 +877,10 @@ export class DocumentClient {
      * @param [options] - The feed options.
      * @returns         - An instance of QueryIterator to handle reading feed.
      */
-    queryDatabases(query: DocumentQuery, options?: FeedOptions): QueryIterator<DatabaseMeta>;
+    queryDatabases(
+        query: DocumentQuery,
+        options?: FeedOptions,
+    ): QueryIterator<DatabaseMeta>;
 
     /**
      * Query the collections for the database.
@@ -854,7 +889,11 @@ export class DocumentClient {
      * @param [options]     - Represents the feed options.
      * @returns             - An instance of queryIterator to handle reading feed.
      */
-    queryCollections(databaseLink: string, query: DocumentQuery, options?: FeedOptions): QueryIterator<CollectionMeta>;
+    queryCollections(
+        databaseLink: string,
+        query: DocumentQuery,
+        options?: FeedOptions,
+    ): QueryIterator<CollectionMeta>;
 
     /**
      * Query the storedProcedures for the collection.
@@ -902,7 +941,11 @@ export class DocumentClient {
      * @param [options]         - Represents the feed options.
      * @returns               - An instance of queryIterator to handle reading feed.
      */
-    queryTriggers(collectionLink: string, query: DocumentQuery, options?: FeedOptions): QueryIterator<TriggerMeta>;
+    queryTriggers(
+        collectionLink: string,
+        query: DocumentQuery,
+        options?: FeedOptions,
+    ): QueryIterator<TriggerMeta>;
 
     /**
      * Query the attachments for the document.
@@ -910,7 +953,11 @@ export class DocumentClient {
      * @param query             - A SQL query.
      * @param [options]         - Represents the feed options.
      */
-    queryAttachments<T>(documentLink: string, query: DocumentQuery, options?: FeedOptions): QueryIterator<T>;
+    queryAttachments<T>(
+        documentLink: string,
+        query: DocumentQuery,
+        options?: FeedOptions,
+    ): QueryIterator<T>;
 
     /**
      * Query the conflicts for the collection.
@@ -918,14 +965,21 @@ export class DocumentClient {
      * @param query             - A SQL query.
      * @param [options]         - Represents the feed options.
      */
-    queryConflicts(collectionLink: string, query: DocumentQuery, options?: FeedOptions): QueryIterator<any>;
+    queryConflicts(
+        collectionLink: string,
+        query: DocumentQuery,
+        options?: FeedOptions,
+    ): QueryIterator<any>;
 
     /**
      * Lists all offers that satisfy a query.
      * @param query     - A SQL query.
      * @param options   - The feed options.
      */
-    queryOffers(query: DocumentQuery, options?: FeedOptions): QueryIterator<any>;
+    queryOffers(
+        query: DocumentQuery,
+        options?: FeedOptions,
+    ): QueryIterator<any>;
 
     /**
      * Query the permission for the user.
@@ -933,7 +987,11 @@ export class DocumentClient {
      * @param query     - A SQL query.
      * @param options   - Feed options.
      */
-    queryPermissions(userLink: string, query: DocumentQuery, options?: FeedOptions): QueryIterator<PermissionMeta>;
+    queryPermissions(
+        userLink: string,
+        query: DocumentQuery,
+        options?: FeedOptions,
+    ): QueryIterator<PermissionMeta>;
 
     /**
      * Query the users for the database.
@@ -941,7 +999,11 @@ export class DocumentClient {
      * @param query         - A SQL query.
      * @param options       - Represents the feed options.
      */
-    queryUsers(databaseLink: string, query: DocumentQuery, options?: FeedOptions): QueryIterator<AbstractMeta>;
+    queryUsers(
+        databaseLink: string,
+        query: DocumentQuery,
+        options?: FeedOptions,
+    ): QueryIterator<AbstractMeta>;
 
     /**
      * Delete the document object.
@@ -949,7 +1011,11 @@ export class DocumentClient {
      * @param [options]     - The request options.
      * @param callback      - The callback for the request.
      */
-    deleteDocument(documentLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
+    deleteDocument(
+        documentLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
     deleteDocument(documentLink: string, callback: RequestCallback<void>): void;
 
     /**
@@ -958,7 +1024,11 @@ export class DocumentClient {
      * @param [options]     - The request options.
      * @param callback      - The callback for the request.
      */
-    deleteDatabase(databaseLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
+    deleteDatabase(
+        databaseLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
     deleteDatabase(databaseLink: string, callback: RequestCallback<void>): void;
 
     /**
@@ -967,8 +1037,15 @@ export class DocumentClient {
      * @param [options]         - The request options.
      * @param callback          - The callback for the request.
      */
-    deleteCollection(collectionLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
-    deleteCollection(collectionLink: string, callback: RequestCallback<void>): void;
+    deleteCollection(
+        collectionLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
+    deleteCollection(
+        collectionLink: string,
+        callback: RequestCallback<void>,
+    ): void;
 
     /**
      * Delete the StoredProcedure object.
@@ -976,8 +1053,15 @@ export class DocumentClient {
      * @param [options]     - The request options.
      * @param callback      - The callback for the request.
      */
-    deleteStoredProcedure(procedureLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
-    deleteStoredProcedure(procedureLink: string, callback: RequestCallback<void>): void;
+    deleteStoredProcedure(
+        procedureLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
+    deleteStoredProcedure(
+        procedureLink: string,
+        callback: RequestCallback<void>,
+    ): void;
 
     /**
      * Delete an attachment
@@ -985,8 +1069,15 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    deleteAttachment(attachmentLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
-    deleteAttachment(attachmentLink: string, callback: RequestCallback<void>): void;
+    deleteAttachment(
+        attachmentLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
+    deleteAttachment(
+        attachmentLink: string,
+        callback: RequestCallback<void>,
+    ): void;
 
     /**
      * Delete a conflict
@@ -994,7 +1085,11 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    deleteConflict(conflictLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
+    deleteConflict(
+        conflictLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
     deleteConflict(conflictLink: string, callback: RequestCallback<void>): void;
 
     /**
@@ -1003,8 +1098,15 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    deletePermission(permissionLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
-    deletePermission(permissionLink: string, callback: RequestCallback<void>): void;
+    deletePermission(
+        permissionLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
+    deletePermission(
+        permissionLink: string,
+        callback: RequestCallback<void>,
+    ): void;
 
     /**
      * Delete a trigger
@@ -1012,7 +1114,11 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    deleteTrigger(triggerLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
+    deleteTrigger(
+        triggerLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
     deleteTrigger(triggerLink: string, callback: RequestCallback<void>): void;
 
     /**
@@ -1021,7 +1127,11 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    deleteUser(userLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
+    deleteUser(
+        userLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
     deleteUser(userLink: string, callback: RequestCallback<void>): void;
 
     /**
@@ -1030,8 +1140,15 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    deleteUserDefinedFunction(udfLink: string, options: RequestOptions, callback: RequestCallback<void>): void;
-    deleteUserDefinedFunction(udfLink: string, callback: RequestCallback<void>): void;
+    deleteUserDefinedFunction(
+        udfLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<void>,
+    ): void;
+    deleteUserDefinedFunction(
+        udfLink: string,
+        callback: RequestCallback<void>,
+    ): void;
 
     /**
      * Replace the document object.
@@ -1065,7 +1182,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<ProcedureMeta>,
     ): void;
-    replaceStoredProcedure(procedureLink: string, procedure: Procedure, callback: RequestCallback<ProcedureMeta>): void;
+    replaceStoredProcedure(
+        procedureLink: string,
+        procedure: Procedure,
+        callback: RequestCallback<ProcedureMeta>,
+    ): void;
 
     /**
      * Replace the attachment object.
@@ -1080,7 +1201,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<AttachmentMeta>,
     ): void;
-    replaceAttachment(attachmentLink: string, attachment: Attachment, callback: RequestCallback<AttachmentMeta>): void;
+    replaceAttachment(
+        attachmentLink: string,
+        attachment: Attachment,
+        callback: RequestCallback<AttachmentMeta>,
+    ): void;
 
     /**
      * Replace the document collection.
@@ -1095,7 +1220,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<CollectionMeta>,
     ): void;
-    replaceCollection(collectionLink: string, collection: Collection, callback: RequestCallback<CollectionMeta>): void;
+    replaceCollection(
+        collectionLink: string,
+        collection: Collection,
+        callback: RequestCallback<CollectionMeta>,
+    ): void;
 
     /**
      * Replace the offer object.
@@ -1103,7 +1232,11 @@ export class DocumentClient {
      * @param offer         - Represent the new offer body.
      * @param callback      - The callback for the request.
      */
-    replaceOffer(offerLink: string, offer: any, callback: RequestCallback<any>): void;
+    replaceOffer(
+        offerLink: string,
+        offer: any,
+        callback: RequestCallback<any>,
+    ): void;
 
     /**
      * Replace the permission object.
@@ -1118,7 +1251,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<PermissionMeta>,
     ): void;
-    replacePermission(permissionLink: string, permission: Permission, callback: RequestCallback<PermissionMeta>): void;
+    replacePermission(
+        permissionLink: string,
+        permission: Permission,
+        callback: RequestCallback<PermissionMeta>,
+    ): void;
 
     /**
      * Replace the trigger object.
@@ -1133,7 +1270,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<TriggerMeta>,
     ): void;
-    replaceTrigger(triggerLink: string, trigger: Trigger, callback: RequestCallback<TriggerMeta>): void;
+    replaceTrigger(
+        triggerLink: string,
+        trigger: Trigger,
+        callback: RequestCallback<TriggerMeta>,
+    ): void;
 
     /**
      * Replace the user object.
@@ -1148,7 +1289,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<AbstractMeta>,
     ): void;
-    replaceUser(userLink: string, user: UniqueId, callback: RequestCallback<AbstractMeta>): void;
+    replaceUser(
+        userLink: string,
+        user: UniqueId,
+        callback: RequestCallback<AbstractMeta>,
+    ): void;
 
     /**
      * Replace the UserDefinedFunction object.
@@ -1175,15 +1320,25 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    readAttachment(attachmentLink: string, options: RequestOptions, callback: RequestCallback<AttachmentMeta>): void;
-    readAttachment(attachmentLink: string, callback: RequestCallback<AttachmentMeta>): void;
+    readAttachment(
+        attachmentLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<AttachmentMeta>,
+    ): void;
+    readAttachment(
+        attachmentLink: string,
+        callback: RequestCallback<AttachmentMeta>,
+    ): void;
 
     /**
      * Get all attachments for this document.
      * @param documentLink      - The self-link of the document.
      * @param options           - The feed options.
      */
-    readAttachments(documentLink: string, options?: FeedOptions): QueryIterator<AttachmentMeta>;
+    readAttachments(
+        documentLink: string,
+        options?: FeedOptions,
+    ): QueryIterator<AttachmentMeta>;
 
     /**
      * Read a collection.
@@ -1191,15 +1346,25 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    readCollection(collectionLink: string, options: RequestOptions, callback: RequestCallback<CollectionMeta>): void;
-    readCollection(collectionLink: string, callback: RequestCallback<CollectionMeta>): void;
+    readCollection(
+        collectionLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<CollectionMeta>,
+    ): void;
+    readCollection(
+        collectionLink: string,
+        callback: RequestCallback<CollectionMeta>,
+    ): void;
 
     /**
      * Get all collections in this database.
      * @param databaseLink      - The self-link of the database.
      * @param options           - The feed options.
      */
-    readCollections(databaseLink: string, options?: FeedOptions): QueryIterator<CollectionMeta>;
+    readCollections(
+        databaseLink: string,
+        options?: FeedOptions,
+    ): QueryIterator<CollectionMeta>;
 
     /**
      * Read a conflict.
@@ -1207,7 +1372,11 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    readConflict(conflictLink: string, options: RequestOptions, callback: RequestCallback<any>): void;
+    readConflict(
+        conflictLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<any>,
+    ): void;
     readConflict(conflictLink: string, callback: RequestCallback<any>): void;
 
     /**
@@ -1215,7 +1384,10 @@ export class DocumentClient {
      * @param collectionLink    - The self-link of the collection.
      * @param options           - The feed options.
      */
-    readConflicts(collectionLink: string, options?: FeedOptions): QueryIterator<any>;
+    readConflicts(
+        collectionLink: string,
+        options?: FeedOptions,
+    ): QueryIterator<any>;
 
     /**
      * Read a database.
@@ -1223,8 +1395,15 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    readDatabase(databaseLink: string, options: RequestOptions, callback: RequestCallback<DatabaseMeta>): void;
-    readDatabase(databaseLink: string, callback: RequestCallback<DatabaseMeta>): void;
+    readDatabase(
+        databaseLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<DatabaseMeta>,
+    ): void;
+    readDatabase(
+        databaseLink: string,
+        callback: RequestCallback<DatabaseMeta>,
+    ): void;
 
     /**
      * List all databases.
@@ -1238,22 +1417,35 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    readDocument(documentLink: string, options: RequestOptions, callback: RequestCallback<RetrievedDocument>): void;
-    readDocument(documentLink: string, callback: RequestCallback<RetrievedDocument>): void;
+    readDocument(
+        documentLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<RetrievedDocument>,
+    ): void;
+    readDocument(
+        documentLink: string,
+        callback: RequestCallback<RetrievedDocument>,
+    ): void;
 
     /**
      * Get all documents in this collection.
      * @param collectionLink    - The self-link of the collection.
      * @param options           - The feed options.
      */
-    readDocuments(collectionLink: string, options?: FeedOptions): QueryIterator<RetrievedDocument>;
+    readDocuments(
+        collectionLink: string,
+        options?: FeedOptions,
+    ): QueryIterator<RetrievedDocument>;
 
     /**
      * Read the media for the attachment object.
      * @param mediaLink     - The media link of the media in the attachment.
      * @param callback      - The callback for the request, the result parameter can be a buffer or a stream depending on the value of MediaReadMode
      */
-    readMedia(mediaLink: string, callback: RequestCallback<Buffer | NodeJS.ReadableStream>): void;
+    readMedia(
+        mediaLink: string,
+        callback: RequestCallback<Buffer | NodeJS.ReadableStream>,
+    ): void;
 
     /**
      * Read an offer.
@@ -1274,15 +1466,25 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    readPermission(permissionLink: string, options: RequestOptions, callback: RequestCallback<PermissionMeta>): void;
-    readPermission(permissionLink: string, callback: RequestCallback<PermissionMeta>): void;
+    readPermission(
+        permissionLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<PermissionMeta>,
+    ): void;
+    readPermission(
+        permissionLink: string,
+        callback: RequestCallback<PermissionMeta>,
+    ): void;
 
     /**
      * Get all permissions for this user.
      * @param userLink          - The self-link of the user.
      * @param feedOptions       - The feed options
      */
-    readPermissions(userLink: string, feedOptions?: FeedOptions): QueryIterator<PermissionMeta>;
+    readPermissions(
+        userLink: string,
+        feedOptions?: FeedOptions,
+    ): QueryIterator<PermissionMeta>;
 
     /**
      * Read a stored procedure
@@ -1290,15 +1492,25 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    readStoredProcedure(sprocLink: string, options: RequestOptions, callback: RequestCallback<ProcedureMeta>): void;
-    readStoredProcedure(sprocLink: string, callback: RequestCallback<ProcedureMeta>): void;
+    readStoredProcedure(
+        sprocLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<ProcedureMeta>,
+    ): void;
+    readStoredProcedure(
+        sprocLink: string,
+        callback: RequestCallback<ProcedureMeta>,
+    ): void;
 
     /**
      * Get all StoredProcedures in this collection.
      * @param collectionLink    - The self-link of the collection.
      * @param options           - The feed options.
      */
-    readStoredProcedures(collectionLink: string, options?: RequestOptions): QueryIterator<ProcedureMeta>;
+    readStoredProcedures(
+        collectionLink: string,
+        options?: RequestOptions,
+    ): QueryIterator<ProcedureMeta>;
 
     /**
      * Reads a trigger object.
@@ -1306,15 +1518,25 @@ export class DocumentClient {
      * @param options           - The request options.
      * @param callback          - The callback for the request.
      */
-    readTrigger(triggerLink: string, options: RequestOptions, callback: RequestCallback<TriggerMeta>): void;
-    readTrigger(triggerLink: string, callback: RequestCallback<TriggerMeta>): void;
+    readTrigger(
+        triggerLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<TriggerMeta>,
+    ): void;
+    readTrigger(
+        triggerLink: string,
+        callback: RequestCallback<TriggerMeta>,
+    ): void;
 
     /**
      * Get all triggers in this collection.
      * @param collectionLink    - The self-link of the collection.
      * @param options           - The feed options.
      */
-    readTriggers(collectionLink: string, options?: FeedOptions): QueryIterator<TriggerMeta>;
+    readTriggers(
+        collectionLink: string,
+        options?: FeedOptions,
+    ): QueryIterator<TriggerMeta>;
 
     /**
      * Reads a user.
@@ -1322,7 +1544,11 @@ export class DocumentClient {
      * @param options   - The request options.
      * @param callback  - The callback for the request.
      */
-    readUser(userLink: string, options: RequestOptions, callback: RequestCallback<AbstractMeta>): void;
+    readUser(
+        userLink: string,
+        options: RequestOptions,
+        callback: RequestCallback<AbstractMeta>,
+    ): void;
     readUser(userLink: string, callback: RequestCallback<AbstractMeta>): void;
 
     /**
@@ -1336,21 +1562,30 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<UserDefinedFunctionMeta>,
     ): void;
-    readUserDefinedFunction(udfLink: string, callback: RequestCallback<UserDefinedFunctionMeta>): void;
+    readUserDefinedFunction(
+        udfLink: string,
+        callback: RequestCallback<UserDefinedFunctionMeta>,
+    ): void;
 
     /**
      * Get all UserDefinedFunctions in this collection.
      * @param collectionLink    - The self-link of the collection.
      * @param options           - The feed options.
      */
-    readUserDefinedFunctions(collectionLink: string, options?: FeedOptions): QueryIterator<UserDefinedFunctionMeta>;
+    readUserDefinedFunctions(
+        collectionLink: string,
+        options?: FeedOptions,
+    ): QueryIterator<UserDefinedFunctionMeta>;
 
     /**
      * Get all users in this database.
      * @param databaseLink      - The self-link of the database.
      * @param feedOptions       - The feed options.
      */
-    readUsers(databaseLink: string, feedOptions?: FeedOptions): QueryIterator<AbstractMeta[]>;
+    readUsers(
+        databaseLink: string,
+        feedOptions?: FeedOptions,
+    ): QueryIterator<AbstractMeta[]>;
 
     /**
      * Update media for the attachment
@@ -1365,7 +1600,11 @@ export class DocumentClient {
         options: MediaOptions,
         callback: RequestCallback<any>,
     ): void;
-    updateMedia(mediaLink: string, readableStream: NodeJS.ReadableStream, callback: RequestCallback<any>): void;
+    updateMedia(
+        mediaLink: string,
+        readableStream: NodeJS.ReadableStream,
+        callback: RequestCallback<any>,
+    ): void;
 
     /**
      * Upsert an attachment for the document object.
@@ -1384,7 +1623,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<AttachmentMeta>,
     ): void;
-    upsertAttachment(documentLink: string, body: Attachment, callback: RequestCallback<AttachmentMeta>): void;
+    upsertAttachment(
+        documentLink: string,
+        body: Attachment,
+        callback: RequestCallback<AttachmentMeta>,
+    ): void;
 
     /**
      * Upsert an attachment for the document object.
@@ -1444,7 +1687,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<PermissionMeta>,
     ): void;
-    upsertPermission(userLink: string, body: Permission, callback: RequestCallback<PermissionMeta>): void;
+    upsertPermission(
+        userLink: string,
+        body: Permission,
+        callback: RequestCallback<PermissionMeta>,
+    ): void;
 
     /**
      * Upsert a StoredProcedure.
@@ -1464,7 +1711,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<ProcedureMeta>,
     ): void;
-    upsertStoredProcedure(collectionLink: string, sproc: Procedure, callback: RequestCallback<ProcedureMeta>): void;
+    upsertStoredProcedure(
+        collectionLink: string,
+        sproc: Procedure,
+        callback: RequestCallback<ProcedureMeta>,
+    ): void;
 
     /**
      * Upsert a trigger.
@@ -1483,7 +1734,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<TriggerMeta>,
     ): void;
-    upsertTrigger(collectionLink: string, trigger: Trigger, callback: RequestCallback<TriggerMeta>): void;
+    upsertTrigger(
+        collectionLink: string,
+        trigger: Trigger,
+        callback: RequestCallback<TriggerMeta>,
+    ): void;
 
     /**
      * Upsert a database user.
@@ -1498,7 +1753,11 @@ export class DocumentClient {
         options: RequestOptions,
         callback: RequestCallback<AbstractMeta>,
     ): void;
-    upsertUser(databaseLink: string, body: UniqueId, callback: RequestCallback<AbstractMeta>): void;
+    upsertUser(
+        databaseLink: string,
+        body: UniqueId,
+        callback: RequestCallback<AbstractMeta>,
+    ): void;
 
     /**
      * Upsert a UserDefinedFunction.
@@ -1528,7 +1787,10 @@ export class DocumentClient {
      * @param options       - The request options
      * @param callback      - The callback for the request
      */
-    getDatabaseAccount(options: DatabaseAccountRequestOptions, callback: RequestCallback<DatabaseAccount>): void;
+    getDatabaseAccount(
+        options: DatabaseAccountRequestOptions,
+        callback: RequestCallback<DatabaseAccount>,
+    ): void;
     getDatabaseAccount(callback: RequestCallback<DatabaseAccount>): void;
 
     /**
@@ -1560,7 +1822,10 @@ export namespace UriFactory {
      * @description Would be used when updating or deleting a DocumentCollection, creating a Document, a StoredProcedure, a
      *              Trigger, a UserDefinedFunction, or when executing a query with CreateDocumentQuery in Azure DocumentDB database service.
      */
-    function createDocumentCollectionUri(databaseId: string, collectionId: string): string;
+    function createDocumentCollectionUri(
+        databaseId: string,
+        collectionId: string,
+    ): string;
     /**
      * Given a database and collection id, this creates a collection link.
      * @param databaseId        -The database id
@@ -1570,7 +1835,11 @@ export namespace UriFactory {
      *                                    being a Uri escaped version of the databaseId, {1} being collectionId and {2} being the documentId
      * @description Would be used when creating an Attachment, or when replacing or deleting a Document in Azure DocumentDB database service
      */
-    function createDocumentUri(databaseId: string, collectionId: string, documentId: string): string;
+    function createDocumentUri(
+        databaseId: string,
+        collectionId: string,
+        documentId: string,
+    ): string;
     /**
      * Given a database, collection and document id, this creates a document link.
      * @param databaseId    -The database Id
@@ -1579,7 +1848,11 @@ export namespace UriFactory {
      * @returns A permission link in the format of dbs/{0}/users/{1}/permissions/{2} with {0} being a Uri escaped version of the databaseId, {1} being userId and {2} being permissionId
      * @description Would be used when replacing or deleting a Permission in Azure DocumentDB database service.
      */
-    function createPermissionUri(databaseId: string, userId: string, permissionId: string): string;
+    function createPermissionUri(
+        databaseId: string,
+        userId: string,
+        permissionId: string,
+    ): string;
 
     /**
      * Given a database, collection and stored proc id, this creates a stored proc link.
@@ -1591,7 +1864,11 @@ export namespace UriFactory {
      *                                    {1} being collectionId and {2} being the storedProcedureId
      * @description Would be used when replacing, executing, or deleting a StoredProcedure in Azure DocumentDB database service.
      */
-    function createStoredProcedureUri(databaseId: string, collectionId: string, storedProcedureId: string): string;
+    function createStoredProcedureUri(
+        databaseId: string,
+        collectionId: string,
+        storedProcedureId: string,
+    ): string;
 
     /**
      * @summary Given a database, collection and trigger id, this creates a trigger link.
@@ -1603,7 +1880,11 @@ export namespace UriFactory {
      *                                    {1} being collectionId and {2} being the triggerId
      * @description Would be used when replacing, executing, or deleting a Trigger in Azure DocumentDB database service
      */
-    function createTriggerUri(databaseId: string, collectionId: string, triggerId: string): string;
+    function createTriggerUri(
+        databaseId: string,
+        collectionId: string,
+        triggerId: string,
+    ): string;
 
     /**
      * @summary Given a database, collection and udf id, this creates a udf link.
@@ -1613,7 +1894,11 @@ export namespace UriFactory {
      * @returns                 -A udf link in the format of dbs/{0}/colls/{1}/udfs/{2} with {0} being a Uri escaped version of the databaseId, {1} being collectionId and {2} being the udfId
      * @description Would be used when replacing, executing, or deleting a UserDefinedFunction in Azure DocumentDB database service
      */
-    function createUserDefinedFunctionUri(databaseId: string, collectionId: string, udfId: string): string;
+    function createUserDefinedFunctionUri(
+        databaseId: string,
+        collectionId: string,
+        udfId: string,
+    ): string;
 
     /**
      * @summary
@@ -1624,7 +1909,11 @@ export namespace UriFactory {
      *                                    with {0} being a Uri escaped version of the databaseId, {1} being collectionId and {2} being the conflictId
      * @description Would be used when creating a Conflict in Azure DocumentDB database service.
      */
-    function createConflictUri(databaseId: string, collectionId: string, conflictId: string): string;
+    function createConflictUri(
+        databaseId: string,
+        collectionId: string,
+        conflictId: string,
+    ): string;
 
     /**
      * @summary Given a database, collection and conflict id, this creates a conflict link.
@@ -1649,11 +1938,18 @@ export namespace UriFactory {
      * @param collectionId      -The collection Id
      * @returns                 -A partition key ranges link in the format of dbs/{0}/colls/{1}/pkranges with {0} being a Uri escaped version of the databaseId and {1} being collectionId
      */
-    function createPartitionKeyRangesUri(databaseId: string, collectionId: string): string;
+    function createPartitionKeyRangesUri(
+        databaseId: string,
+        collectionId: string,
+    ): string;
 }
 
 export type MediaReadMode = "Buffered" | "Streamed";
-export type ConsistencyLevel = "Strong" | "BoundedStaleness" | "Session" | "Eventual";
+export type ConsistencyLevel =
+    | "Strong"
+    | "BoundedStaleness"
+    | "Session"
+    | "Eventual";
 export type IndexingMode = "Consistent" | "Lazy";
 export type IndexKind = "Hash" | "Range" | "Spatial";
 export type PermissionMode = "None" | "Read" | "All";

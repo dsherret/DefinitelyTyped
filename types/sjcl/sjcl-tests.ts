@@ -173,11 +173,7 @@ function testCodecs() {
 
 function testHashes() {
     let hash: sjcl.SjclHash;
-    ba = hash
-        .reset()
-        .update("xxx")
-        .update(ba)
-        .finalize();
+    ba = hash.reset().update("xxx").update(ba).finalize();
 
     hash = new sjcl.hash.sha1();
     hash = new sjcl.hash.sha1(hash);
@@ -265,14 +261,26 @@ function testSymmetric() {
     let ocb2pEnc = sjcl.mode.ocb2progressive.createEncryptor(aes, iv);
     ocb2pEnc = sjcl.mode.ocb2progressive.createEncryptor(aes, iv, ba);
     ocb2pEnc = sjcl.mode.ocb2progressive.createEncryptor(aes, iv, ba, 128);
-    ocb2pEnc = sjcl.mode.ocb2progressive.createEncryptor(aes, iv, ba, 128, false);
+    ocb2pEnc = sjcl.mode.ocb2progressive.createEncryptor(
+        aes,
+        iv,
+        ba,
+        128,
+        false,
+    );
     ba = ocb2pEnc.process(ba);
     ba = ocb2pEnc.finalize();
 
     let ocb2pDec = sjcl.mode.ocb2progressive.createDecryptor(aes, iv);
     ocb2pDec = sjcl.mode.ocb2progressive.createDecryptor(aes, iv, ba);
     ocb2pDec = sjcl.mode.ocb2progressive.createDecryptor(aes, iv, ba, 128);
-    ocb2pDec = sjcl.mode.ocb2progressive.createDecryptor(aes, iv, ba, 128, false);
+    ocb2pDec = sjcl.mode.ocb2progressive.createDecryptor(
+        aes,
+        iv,
+        ba,
+        128,
+        false,
+    );
     ba = ocb2pDec.process(ba);
     ba = ocb2pDec.finalize();
 }
@@ -372,7 +380,10 @@ function testECC() {
 }
 
 function testECCElGamal() {
-    ret = new sjcl.ecc.elGamal.publicKey(sjcl.ecc.curves.c192, new sjcl.ecc.point(sjcl.ecc.curves.c192));
+    ret = new sjcl.ecc.elGamal.publicKey(
+        sjcl.ecc.curves.c192,
+        new sjcl.ecc.point(sjcl.ecc.curves.c192),
+    );
     ret = new sjcl.ecc.elGamal.secretKey(sjcl.ecc.curves.c192, new sjcl.bn(2));
 
     const keys = sjcl.ecc.elGamal.generateKeys(192, 0);
@@ -397,7 +408,10 @@ function testECCElGamal() {
 }
 
 function testECCECDSA() {
-    ret = new sjcl.ecc.ecdsa.publicKey(sjcl.ecc.curves.c192, new sjcl.ecc.point(sjcl.ecc.curves.c192));
+    ret = new sjcl.ecc.ecdsa.publicKey(
+        sjcl.ecc.curves.c192,
+        new sjcl.ecc.point(sjcl.ecc.curves.c192),
+    );
     ret = new sjcl.ecc.ecdsa.secretKey(sjcl.ecc.curves.c192, new sjcl.bn(2));
 
     const keys = sjcl.ecc.ecdsa.generateKeys(192, 0);
@@ -446,6 +460,11 @@ function testConvenience() {
     sjcl.encrypt("xxx", "text", { iv: ba, salt: ba, mode: "gcm" }, x);
     s = sjcl.decrypt(ba, x, { iv: ba, salt: ba, mode: "gcm" }, y);
 
-    sjcl.encrypt("xxx", "text", { iv: ba, salt: ba, mode: "gcm", iter: 200 }, x);
+    sjcl.encrypt(
+        "xxx",
+        "text",
+        { iv: ba, salt: ba, mode: "gcm", iter: 200 },
+        x,
+    );
     s = sjcl.decrypt(ba, x, { iv: ba, salt: ba, mode: "gcm", iter: 200 }, y);
 }

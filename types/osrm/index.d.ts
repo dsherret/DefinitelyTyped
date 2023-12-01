@@ -15,7 +15,10 @@ declare class OSRM {
     /**
      * Returns the fastest route between two or more coordinates while visiting the waypoints in order.
      */
-    route(options: OSRM.RouteOptions, callback: (err: Error, results: OSRM.RouteResults) => void): void;
+    route(
+        options: OSRM.RouteOptions,
+        callback: (err: Error, results: OSRM.RouteResults) => void,
+    ): void;
     route(
         options: OSRM.RouteOptions,
         pluginConfig: OSRM.PluginConfig & { format: "json_buffer" },
@@ -30,7 +33,10 @@ declare class OSRM {
      * Returns Object containing waypoints. waypoints: array of Ẁaypoint objects sorted by distance to the input coordinate.
      * Each object has an additional distance property, which is the distance in meters to the supplied input coordinate.
      */
-    nearest(options: OSRM.NearestOptions, callback: (err: Error, results: OSRM.NearestResults) => void): void;
+    nearest(
+        options: OSRM.NearestOptions,
+        callback: (err: Error, results: OSRM.NearestResults) => void,
+    ): void;
     nearest(
         options: OSRM.NearestOptions,
         pluginConfig: OSRM.PluginConfig & { format: "json_buffer" },
@@ -48,7 +54,10 @@ declare class OSRM {
      * objects describing all destinations in order. fallback_speed_cells: (optional) if fallback_speed is used, will be an
      * array of arrays of row,column values, indicating which cells contain estimated values.
      */
-    table(options: OSRM.TableOptions, callback: (err: Error, results: OSRM.TableResults) => void): void;
+    table(
+        options: OSRM.TableOptions,
+        callback: (err: Error, results: OSRM.TableResults) => void,
+    ): void;
     table(
         options: OSRM.TableOptions,
         pluginConfig: OSRM.PluginConfig & { format: "json_buffer" },
@@ -63,7 +72,11 @@ declare class OSRM {
      * Returns Buffer contains a Protocol Buffer encoded vector tile.
      */
     tile(XYZ: OSRM.Tile, callback: (err: Error, results: Buffer) => void): void;
-    tile(XYZ: OSRM.Tile, pluginConfig: OSRM.PluginConfig, callback: (err: Error, results: Buffer) => void): void;
+    tile(
+        XYZ: OSRM.Tile,
+        pluginConfig: OSRM.PluginConfig,
+        callback: (err: Error, results: Buffer) => void,
+    ): void;
     /**
      * Returns Object containing tracepoints and matchings. tracepoints Array of Ẁaypoint objects representing all points
      * of the trace in order. If the trace point was ommited by map matching because it is an outlier, the entry will be
@@ -72,7 +85,10 @@ declare class OSRM {
      * is an array of Route objects that assemble the trace. Each Route object has an additional confidence property, which
      * is the confidence of the matching. float value between 0 and 1. 1 is very confident that the matching is correct.
      */
-    match(options: OSRM.MatchOptions, callback: (err: Error, results: OSRM.MatchResults) => void): void;
+    match(
+        options: OSRM.MatchOptions,
+        callback: (err: Error, results: OSRM.MatchResults) => void,
+    ): void;
     match(
         options: OSRM.MatchOptions,
         pluginConfig: OSRM.PluginConfig & { format: "json_buffer" },
@@ -89,7 +105,10 @@ declare class OSRM {
      * sub-trip the point was matched to, and 2) waypoint_index: index of the point in the trip. trips: an array of Route
      * objects that assemble the trace.
      */
-    trip(options: OSRM.TripOptions, callback: (err: Error, results: OSRM.TripResults) => void): void;
+    trip(
+        options: OSRM.TripOptions,
+        callback: (err: Error, results: OSRM.TripResults) => void,
+    ): void;
     trip(
         options: OSRM.TripOptions,
         pluginConfig: OSRM.PluginConfig & { format: "json_buffer" },
@@ -577,7 +596,14 @@ declare namespace OSRM {
          */
         annotations?:
             | boolean
-            | Array<("duration" | "nodes" | "distance" | "weight" | "datasources" | "speed")>
+            | Array<
+                  | "duration"
+                  | "nodes"
+                  | "distance"
+                  | "weight"
+                  | "datasources"
+                  | "speed"
+              >
             | boolean;
         /**
          * Returned route geometry format (influences overview and per step). Can also be geojson. (optional, default polyline)
@@ -671,7 +697,7 @@ declare namespace OSRM {
          * Return the requested table or tables in response. Can be ['duration'] (return the duration matrix, default) or
          * ['duration', distance'] (return both the duration matrix and the distance matrix).
          */
-        annotations?: Array<("duration" | "distance")>;
+        annotations?: Array<"duration" | "distance">;
         /**
          * Which classes to exclude.
          */
@@ -694,7 +720,16 @@ declare namespace OSRM {
         /**
          * An array with strings of duration, nodes, distance, weight, datasources, speed or boolean for enabling/disabling all. (optional, default false)
          */
-        annotations?: Array<("duration" | "nodes" | "distance" | "weight" | "datasources" | "speed")> | boolean;
+        annotations?:
+            | Array<
+                  | "duration"
+                  | "nodes"
+                  | "distance"
+                  | "weight"
+                  | "datasources"
+                  | "speed"
+              >
+            | boolean;
         /**
          * Returned route geometry format (influences overview and per step). Can also be geojson. (optional, default polyline)
          */
@@ -748,7 +783,16 @@ declare namespace OSRM {
         /**
          * An array with strings of duration, nodes, distance, weight, datasources, speed or boolean for enabling/disabling all. (optional, default false)
          */
-        annotations?: Array<("duration" | "nodes" | "distance" | "weight" | "datasources" | "speed")> | boolean;
+        annotations?:
+            | Array<
+                  | "duration"
+                  | "nodes"
+                  | "distance"
+                  | "weight"
+                  | "datasources"
+                  | "speed"
+              >
+            | boolean;
         /**
          * Returned route geometry format (influences overview and per step). Can also be geojson. (optional, default polyline)
          */

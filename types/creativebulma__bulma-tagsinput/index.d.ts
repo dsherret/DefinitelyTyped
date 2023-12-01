@@ -240,7 +240,10 @@ declare class BulmaTagsInput {
     /**
      * @param selector query string returning a single Node or directly a Node
      */
-    constructor(selector: string | HTMLInputElement, options?: BulmaTagsInput.BulmaTagsInputOptions);
+    constructor(
+        selector: string | HTMLInputElement,
+        options?: BulmaTagsInput.BulmaTagsInputOptions,
+    );
 
     /**
      * DOM modifications will be observed to detect any new element responding to the given selector
@@ -249,7 +252,10 @@ declare class BulmaTagsInput {
      * @param selector selector can be a query string returning a single Node or a NodeList, directly
      * a Node or a NodeList
      */
-    static attach(selector: string | HTMLInputElement, options?: BulmaTagsInput.BulmaTagsInputOptions): BulmaTagsInput;
+    static attach(
+        selector: string | HTMLInputElement,
+        options?: BulmaTagsInput.BulmaTagsInputOptions,
+    ): BulmaTagsInput;
 
     /**
      * Add given item to the component.
@@ -259,7 +265,12 @@ declare class BulmaTagsInput {
      * You can provide multiple items at once by passing and Array of item or a string with multiple
      * value delimited by delimiter option (default: comma).
      */
-    add(item: string | BulmaTagsInput.BulmaTagsInputItem | Array<string | BulmaTagsInput.BulmaTagsInputItem>): this;
+    add(
+        item:
+            | string
+            | BulmaTagsInput.BulmaTagsInputItem
+            | Array<string | BulmaTagsInput.BulmaTagsInputItem>,
+    ): this;
 
     /**
      * Unselect the current selected tag.
@@ -322,7 +333,12 @@ declare class BulmaTagsInput {
      * You can provide multiple items at once by passing and Array of item or a string with multiple
      * value delimited by delimiter option (default: comma).
      */
-    remove(item: string | BulmaTagsInput.BulmaTagsInputItem | Array<string | BulmaTagsInput.BulmaTagsInputItem>): this;
+    remove(
+        item:
+            | string
+            | BulmaTagsInput.BulmaTagsInputItem
+            | Array<string | BulmaTagsInput.BulmaTagsInputItem>,
+    ): this;
 
     /**
      * Remove all tags at once

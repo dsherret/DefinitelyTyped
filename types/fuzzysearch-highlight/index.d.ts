@@ -7,6 +7,10 @@ declare namespace highlight {
 /**
  * Highlight fuzzy matched text with html.
  */
-declare function highlight(query: string, text: string, opts?: highlight.Options): string | null;
+declare function highlight(
+    query: string,
+    text: string,
+    opts?: highlight.Options,
+): string | null;
 
 export = highlight;

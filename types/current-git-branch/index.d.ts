@@ -1,5 +1,8 @@
 declare namespace CurrentGitBranch {
-    type CurrentGitBranchOptions = CurrentGitBranchOptionsObject | string[] | string;
+    type CurrentGitBranchOptions =
+        | CurrentGitBranchOptionsObject
+        | string[]
+        | string;
     type CurrentGitBranchResult = string | false;
 
     interface CurrentGitBranchOptionsObject {

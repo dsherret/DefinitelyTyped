@@ -37,11 +37,11 @@ declare namespace jsrsasign.KJUR.asn1.ocsp {
             params?:
                 | CertificateRequest
                 | {
-                    namehash: string;
-                    keyhash: string;
-                    serial: string;
-                    alg: string;
-                },
+                      namehash: string;
+                      keyhash: string;
+                      serial: string;
+                      alg: string;
+                  },
         );
 
         /**
@@ -72,7 +72,11 @@ declare namespace jsrsasign.KJUR.asn1.ocsp {
          * o.setByCert("-----BEGIN...", "-----BEGIN..."); // sha1 is used by default
          * o.setByCert("-----BEGIN...", "-----BEGIN...", "sha256");
          */
-        setByCert(issuerCert: string, subjectCert: string, algName?: string): void;
+        setByCert(
+            issuerCert: string,
+            subjectCert: string,
+            algName?: string,
+        ): void;
 
         getEncodedHex(): string;
     }

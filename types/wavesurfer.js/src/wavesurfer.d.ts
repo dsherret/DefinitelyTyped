@@ -56,8 +56,18 @@ export default class WaveSurfer extends Observer {
     destroy(): void;
     destroyPlugin(name: string): WaveSurfer;
     empty(): void;
-    exportImage(format?: string, quality?: number, type?: "dataURL" | "blob"): string | string[] | Promise<Blob[]>;
-    exportPCM(length?: number, accuracy?: number, noWindow?: boolean, start?: number, end?: number): Promise<Peaks>;
+    exportImage(
+        format?: string,
+        quality?: number,
+        type?: "dataURL" | "blob",
+    ): string | string[] | Promise<Blob[]>;
+    exportPCM(
+        length?: number,
+        accuracy?: number,
+        noWindow?: boolean,
+        start?: number,
+        end?: number,
+    ): Promise<Peaks>;
     getActivePlugins(): { [pluginName: string]: boolean };
     getBackgroundColor(): string;
     getCurrentTime(): number;
@@ -76,7 +86,12 @@ export default class WaveSurfer extends Observer {
     initPlugin(name: string): WaveSurfer;
     isPlaying(): boolean;
     isReady: boolean;
-    load(url: string | HTMLMediaElement, peaks?: Peaks, preload?: string, duration?: number): void;
+    load(
+        url: string | HTMLMediaElement,
+        peaks?: Peaks,
+        preload?: string,
+        duration?: number,
+    ): void;
     loadBlob(url: Blob | File): void;
     pause(): void;
     play(start?: number, end?: number): Promise<void> | undefined;
@@ -92,11 +107,17 @@ export default class WaveSurfer extends Observer {
     setPlaybackRate(rate: number): void;
     setPlayEnd(position: number): void;
     /** Set the fill color of the waveform behind the cursor. */
-    setProgressColor(color: string | CanvasGradient, channelIdx?: number | null): void;
+    setProgressColor(
+        color: string | CanvasGradient,
+        channelIdx?: number | null,
+    ): void;
     setSinkId(deviceId: string): Promise<any>;
     setVolume(newVolume: number): void;
     /** Set the fill color of the waveform after the cursor. */
-    setWaveColor(color: string | CanvasGradient, channelIdx?: number | null): void;
+    setWaveColor(
+        color: string | CanvasGradient,
+        channelIdx?: number | null,
+    ): void;
     skip(offset: number): void;
     skipBackward(seconds?: number): void;
     skipForward(seconds?: number): void;

@@ -1,6 +1,6 @@
 var obj = {
-    "first_name": "John",
-    "last_name": "Doe",
+    first_name: "John",
+    last_name: "Doe",
 };
 
 dot.move("first_name", "contact.firstname", obj);
@@ -18,14 +18,16 @@ var src = {
 
 var tgt = { name: "Brandon" };
 
-dot.copy("stuff.phone", "wanna.haves.phone", src, tgt, [(arg: any) => {
-    return arg;
-}]);
+dot.copy("stuff.phone", "wanna.haves.phone", src, tgt, [
+    (arg: any) => {
+        return arg;
+    },
+]);
 
 dot.transfer("stuff.phone", "wanna.haves.phone", src, tgt);
 
 var row = {
-    "id": 2,
+    id: 2,
     "contact.name.first": "John",
     "contact.name.last": "Doe",
     "contact.email": "example@gmail.com",

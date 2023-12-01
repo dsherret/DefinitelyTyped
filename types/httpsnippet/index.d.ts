@@ -11,11 +11,18 @@ declare class HTTPSnippet {
 
     convert(target: string, options?: HTTPSnippet.Options): string | false;
 
-    convert(target: string, client?: string, options?: HTTPSnippet.Options): string | false;
+    convert(
+        target: string,
+        client?: string,
+        options?: HTTPSnippet.Options,
+    ): string | false;
 
     static addTarget(target: HTTPSnippet.Target): void;
 
-    static addTargetClient(target: string, client: HTTPSnippet.TargetClient): void;
+    static addTargetClient(
+        target: string,
+        client: HTTPSnippet.TargetClient,
+    ): void;
 
     static availableTargets: string[];
 

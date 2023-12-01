@@ -2,9 +2,11 @@ export as namespace dagre;
 
 export namespace graphlib {
     class Graph<T = {}> {
-        constructor(
-            opt?: { directed?: boolean | undefined; multigraph?: boolean | undefined; compound?: boolean | undefined },
-        );
+        constructor(opt?: {
+            directed?: boolean | undefined;
+            multigraph?: boolean | undefined;
+            compound?: boolean | undefined;
+        });
 
         graph(): GraphLabel;
         isDirected(): boolean;
@@ -16,13 +18,33 @@ export namespace graphlib {
         edgeCount(): number;
         edges(): Edge[];
         hasEdge(edgeObj: Edge): boolean;
-        hasEdge(outNodeName: string, inNodeName: string, name?: string): boolean;
+        hasEdge(
+            outNodeName: string,
+            inNodeName: string,
+            name?: string,
+        ): boolean;
         inEdges(inNodeName: string, outNodeName?: string): Edge[] | undefined;
         outEdges(outNodeName: string, inNodeName?: string): Edge[] | undefined;
-        removeEdge(outNodeName: string, inNodeName: string, name?: string): Graph<T>;
-        setDefaultEdgeLabel(callback: string | ((v: string, w: string, name?: string) => string | Label)): Graph<T>;
-        setEdge(params: Edge, value?: string | { [key: string]: any }): Graph<T>;
-        setEdge(sourceId: string, targetId: string, value?: string | Label, name?: string): Graph<T>;
+        removeEdge(
+            outNodeName: string,
+            inNodeName: string,
+            name?: string,
+        ): Graph<T>;
+        setDefaultEdgeLabel(
+            callback:
+                | string
+                | ((v: string, w: string, name?: string) => string | Label),
+        ): Graph<T>;
+        setEdge(
+            params: Edge,
+            value?: string | { [key: string]: any },
+        ): Graph<T>;
+        setEdge(
+            sourceId: string,
+            targetId: string,
+            value?: string | Label,
+            name?: string,
+        ): Graph<T>;
 
         children(parentName: string): string | undefined;
         hasNode(name: string): boolean;
@@ -34,7 +56,9 @@ export namespace graphlib {
         predecessors(name: string): Array<Node<T>> | undefined;
         removeNode(name: string): Graph<T>;
         filterNodes(callback: (nodeId: string) => boolean): Graph<T>;
-        setDefaultNodeLabel(callback: string | ((nodeId: string) => string | Label)): Graph<T>;
+        setDefaultNodeLabel(
+            callback: string | ((nodeId: string) => string | Label),
+        ): Graph<T>;
         setNode(name: string, label: string | Label): Graph<T>;
         setParent(childName: string, parentName: string): void;
         sinks(): Array<Node<T>>;
@@ -49,12 +73,28 @@ export namespace graphlib {
 
     namespace alg {
         function components(graph: Graph): string[][];
-        function dijkstra(graph: Graph, source: string, weightFn?: WeightFn, edgeFn?: EdgeFn): any;
-        function dijkstraAll(graph: Graph, weightFn?: WeightFn, edgeFn?: EdgeFn): any;
+        function dijkstra(
+            graph: Graph,
+            source: string,
+            weightFn?: WeightFn,
+            edgeFn?: EdgeFn,
+        ): any;
+        function dijkstraAll(
+            graph: Graph,
+            weightFn?: WeightFn,
+            edgeFn?: EdgeFn,
+        ): any;
         function findCycles(graph: Graph): string[][];
-        function floydWarchall(graph: Graph, weightFn?: WeightFn, edgeFn?: EdgeFn): any;
+        function floydWarchall(
+            graph: Graph,
+            weightFn?: WeightFn,
+            edgeFn?: EdgeFn,
+        ): any;
         function isAcyclic(graph: Graph): boolean;
-        function postorder(graph: Graph, nodeNames: string | string[]): string[];
+        function postorder(
+            graph: Graph,
+            nodeNames: string | string[],
+        ): string[];
         function preorder(graph: Graph, nodeNames: string | string[]): string[];
         function prim<T>(graph: Graph<T>, weightFn?: WeightFn): Graph<T>;
         function tarjam(graph: Graph): string[][];
@@ -97,7 +137,10 @@ export interface EdgeConfig {
     labeloffest?: number | undefined;
 }
 
-export function layout(graph: graphlib.Graph, layout?: GraphLabel & NodeConfig & EdgeConfig): void;
+export function layout(
+    graph: graphlib.Graph,
+    layout?: GraphLabel & NodeConfig & EdgeConfig,
+): void;
 
 export interface Edge {
     v: string;

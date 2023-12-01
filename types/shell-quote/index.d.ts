@@ -1,4 +1,18 @@
-export type ControlOperator = "||" | "&&" | ";;" | "|&" | "<(" | ">>" | ">&" | "&" | ";" | "(" | ")" | "|" | "<" | ">";
+export type ControlOperator =
+    | "||"
+    | "&&"
+    | ";;"
+    | "|&"
+    | "<("
+    | ">>"
+    | ">&"
+    | "&"
+    | ";"
+    | "("
+    | ")"
+    | "|"
+    | "<"
+    | ">";
 
 export type ParseEntry =
     | string

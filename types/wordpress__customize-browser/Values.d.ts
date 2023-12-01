@@ -7,14 +7,21 @@ export class Values<T> extends Class {
     _deferreds: Record<string, JQuery.Deferred<any>>;
     initialize(options?: object): void;
     instance(arg: string): T;
-    instance(...args: Array<string | ((...values: T[]) => void)>): JQuery.Promise<any>;
+    instance(
+        ...args: Array<string | ((...values: T[]) => void)>
+    ): JQuery.Promise<any>;
     value(id: string): T;
     has(id: string): boolean;
     add(item: string | T, itemObject?: T): T;
     create(id: string, value: object): T;
-    each<T>(callback: (context: T, obj: T, key: string) => void, context?: T): void;
+    each<T>(
+        callback: (context: T, obj: T, key: string) => void,
+        context?: T,
+    ): void;
     remove(id: string): void;
-    when(...args: Array<string | ((...values: T[]) => void)>): JQuery.Promise<any>;
+    when(
+        ...args: Array<string | ((...values: T[]) => void)>
+    ): JQuery.Promise<any>;
     _change(): void;
 }
 

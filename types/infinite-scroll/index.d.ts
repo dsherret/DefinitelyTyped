@@ -138,13 +138,24 @@ declare namespace InfiniteScroll {
         button?: string | Element | undefined;
     }
 
-    type Methods = "loadNextPage" | "appendItems" | "getPath" | "getAbsolutePath" | "option" | "destroy";
+    type Methods =
+        | "loadNextPage"
+        | "appendItems"
+        | "getPath"
+        | "getAbsolutePath"
+        | "option"
+        | "destroy";
 
     interface EventsMap {
         scrollThreshold(): void;
         request(path: string, fetchPromise: Promise<Response>): void;
         load(body: string | object, path: string, response: Response): void;
-        append(body: unknown, path: string, items: NodeList, response: Response): void;
+        append(
+            body: unknown,
+            path: string,
+            items: NodeList,
+            response: Response,
+        ): void;
         error(error: Error | string, path: string, response: Response): void;
         last(body: string | object, path: string): void;
         history(title: string, path: string): void;
@@ -190,7 +201,10 @@ declare class InfiniteScroll {
     /** Remove Infinite Scroll functionality completely */
     destroy(): void;
 
-    on<E extends keyof InfiniteScroll.EventsMap & string>(event: E, handler: InfiniteScroll.EventsMap[E]): void;
+    on<E extends keyof InfiniteScroll.EventsMap & string>(
+        event: E,
+        handler: InfiniteScroll.EventsMap[E],
+    ): void;
     once: this["on"];
 
     /**
@@ -220,7 +234,10 @@ declare global {
 
         on<E extends keyof InfiniteScroll.EventsMap & string>(
             event: `${E}.infiniteScroll`,
-            handler: (event: Event, ...params: Parameters<InfiniteScroll.EventsMap[E]>) => void,
+            handler: (
+                event: Event,
+                ...params: Parameters<InfiniteScroll.EventsMap[E]>
+            ) => void,
         ): void;
     }
 }

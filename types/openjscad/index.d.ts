@@ -2,7 +2,10 @@
 
 declare module "three" {
     var CSG: {
-        fromCSG: (csg: CSG, defaultColor: any) => {
+        fromCSG: (
+            csg: CSG,
+            defaultColor: any,
+        ) => {
             colorMesh: THREE.Mesh;
             wireframe: THREE.Mesh;
             boundLen: number;
@@ -203,8 +206,17 @@ declare namespace OpenJsCad {
     function checkResult(result: any): void;
     function resultToCompactBinary(resultin: any): any;
     function resultFromCompactBinary(resultin: any): any;
-    function parseJsCadScriptSync(script: any, mainParameters: any, debugging: any): any;
-    function parseJsCadScriptASync(script: any, mainParameters: any, options: any, callback: any): Worker;
+    function parseJsCadScriptSync(
+        script: any,
+        mainParameters: any,
+        debugging: any,
+    ): any;
+    function parseJsCadScriptASync(
+        script: any,
+        mainParameters: any,
+        options: any,
+        callback: any,
+    ): Worker;
     function getWindowURL(): URL;
     function textToBlobUrl(txt: any): string;
     function revokeBlobUrl(url: any): void;
@@ -271,7 +283,11 @@ declare namespace OpenJsCad {
         private isFirstRender_;
         private outputFileDirEntry;
         private outputFileBlobUrl;
-        constructor(containerdiv: HTMLDivElement, options?: ProcessorOptions, onchange?: EventHandler);
+        constructor(
+            containerdiv: HTMLDivElement,
+            options?: ProcessorOptions,
+            onchange?: EventHandler,
+        );
         static convertToSolid(obj: any): any;
         cleanOption(option: any, deflt: any): any;
         toggleDrawOption(str: any): boolean;
@@ -333,8 +349,17 @@ declare class CxG {
     rotateX(deg: number): CxG;
     rotateY(deg: number): CxG;
     rotateZ(deg: number): CxG;
-    rotate(rotationCenter: CSG.Vector3D, rotationAxis: CSG.Vector3D, degrees: number): CxG;
-    rotateEulerAngles(alpha: number, beta: number, gamma: number, position: number[]): CxG;
+    rotate(
+        rotationCenter: CSG.Vector3D,
+        rotationAxis: CSG.Vector3D,
+        degrees: number,
+    ): CxG;
+    rotateEulerAngles(
+        alpha: number,
+        beta: number,
+        gamma: number,
+        position: number[],
+    ): CxG;
 }
 interface ICenter {
     center(cAxes: string[]): CxG;
@@ -369,17 +394,26 @@ declare class CSG extends CxG implements ICenter {
     expand(radius: number, resolution: number): CSG;
     contract(radius: number, resolution: number): CSG;
     stretchAtPlane(normal: number[], point: number[], length: number): CSG;
-    expandedShell(radius: number, resolution: number, unionWithThis: boolean): CSG;
+    expandedShell(
+        radius: number,
+        resolution: number,
+        unionWithThis: boolean,
+    ): CSG;
     canonicalized(): CSG;
     reTesselated(): CSG;
     getBounds(): CSG.Vector3D[];
     mayOverlap(csg: CSG): boolean;
     cutByPlane(plane: CSG.Plane): CSG;
-    connectTo(myConnector: CSG.Connector, otherConnector: CSG.Connector, mirror: boolean, normalrotation: number): CSG;
+    connectTo(
+        myConnector: CSG.Connector,
+        otherConnector: CSG.Connector,
+        mirror: boolean,
+        normalrotation: number,
+    ): CSG;
     setShared(shared: CSG.Polygon.Shared): CSG;
     setColor(args: any): CSG;
     toCompactBinary(): {
-        "class": string;
+        class: string;
         numPolygons: number;
         numVerticesPerPolygon: Uint32Array;
         polygonPlaneIndexes: Uint32Array;
@@ -407,12 +441,36 @@ declare class CSG extends CxG implements ICenter {
 declare namespace CSG {
     function fnNumberSort(a: any, b: any): number;
     function parseOption(options: any, optionname: any, defaultvalue: any): any;
-    function parseOptionAs3DVector(options: any, optionname: any, defaultvalue: any): Vector3D;
-    function parseOptionAs3DVectorList(options: any, optionname: any, defaultvalue: any): any;
-    function parseOptionAs2DVector(options: any, optionname: any, defaultvalue: any): any;
-    function parseOptionAsFloat(options: any, optionname: any, defaultvalue: any): any;
-    function parseOptionAsInt(options: any, optionname: any, defaultvalue: any): any;
-    function parseOptionAsBool(options: any, optionname: any, defaultvalue: any): any;
+    function parseOptionAs3DVector(
+        options: any,
+        optionname: any,
+        defaultvalue: any,
+    ): Vector3D;
+    function parseOptionAs3DVectorList(
+        options: any,
+        optionname: any,
+        defaultvalue: any,
+    ): any;
+    function parseOptionAs2DVector(
+        options: any,
+        optionname: any,
+        defaultvalue: any,
+    ): any;
+    function parseOptionAsFloat(
+        options: any,
+        optionname: any,
+        defaultvalue: any,
+    ): any;
+    function parseOptionAsInt(
+        options: any,
+        optionname: any,
+        defaultvalue: any,
+    ): any;
+    function parseOptionAsBool(
+        options: any,
+        optionname: any,
+        defaultvalue: any,
+    ): any;
     function cube(options: any): CSG;
     function sphere(options: any): CSG;
     function cylinder(options: any): CSG;
@@ -423,7 +481,14 @@ declare namespace CSG {
      */
     function polyhedron(options: any): CSG;
     function IsFloat(n: any): boolean;
-    function solve2Linear(a: any, b: any, c: any, d: any, u: any, v: any): number[];
+    function solve2Linear(
+        a: any,
+        b: any,
+        c: any,
+        d: any,
+        u: any,
+        v: any,
+    ): number[];
     class Vector3D extends CxG {
         x: number;
         y: number;
@@ -480,7 +545,11 @@ declare namespace CSG {
         static fromObject(obj: any): Plane;
         static EPSILON: number;
         static fromVector3Ds(a: Vector3D, b: Vector3D, c: Vector3D): Plane;
-        static anyPlaneFromVector3Ds(a: Vector3D, b: Vector3D, c: Vector3D): Plane;
+        static anyPlaneFromVector3Ds(
+            a: Vector3D,
+            b: Vector3D,
+            c: Vector3D,
+        ): Plane;
         static fromPoints(a: Vector3D, b: Vector3D, c: Vector3D): Plane;
         static fromNormalAndPoint(normal: Vector3D, point: Vector3D): Plane;
         static fromNormalAndPoint(normal: number[], point: number[]): Plane;
@@ -539,9 +608,23 @@ declare namespace CSG {
          */
         private _addWalls(walls, bottom, top, bFlipped);
         static verticesConvex(vertices: Vertex[], planenormal: any): boolean;
-        static createFromPoints(points: number[][], shared?: CSG.Polygon.Shared, plane?: Plane): Polygon;
-        static isConvexPoint(prevpoint: any, point: any, nextpoint: any, normal: any): boolean;
-        static isStrictlyConvexPoint(prevpoint: any, point: any, nextpoint: any, normal: any): boolean;
+        static createFromPoints(
+            points: number[][],
+            shared?: CSG.Polygon.Shared,
+            plane?: Plane,
+        ): Polygon;
+        static isConvexPoint(
+            prevpoint: any,
+            point: any,
+            nextpoint: any,
+            normal: any,
+        ): boolean;
+        static isStrictlyConvexPoint(
+            prevpoint: any,
+            point: any,
+            nextpoint: any,
+            normal: any,
+        ): boolean;
         toStlString(): string;
     }
 }
@@ -605,7 +688,10 @@ declare namespace CSG {
         polygontreenodes: PolygonTreeNode[];
         constructor(parent: Node);
         invert(): void;
-        clipPolygons(polygontreenodes: PolygonTreeNode[], alsoRemovecoplanarFront: boolean): void;
+        clipPolygons(
+            polygontreenodes: PolygonTreeNode[],
+            alsoRemovecoplanarFront: boolean,
+        ): void;
         clipTo(tree: Tree, alsoRemovecoplanarFront: boolean): void;
         addPolygonTreeNodes(polygontreenodes: PolygonTreeNode[]): void;
         getParentPlaneNormals(normals: Vector3D[], maxdepth: number): void;
@@ -626,7 +712,11 @@ declare namespace CSG {
         static rotationX(degrees: number): Matrix4x4;
         static rotationY(degrees: number): Matrix4x4;
         static rotationZ(degrees: number): Matrix4x4;
-        static rotation(rotationCenter: CSG.Vector3D, rotationAxis: CSG.Vector3D, degrees: number): Matrix4x4;
+        static rotation(
+            rotationCenter: CSG.Vector3D,
+            rotationAxis: CSG.Vector3D,
+            degrees: number,
+        ): Matrix4x4;
         static translation(v: number[]): Matrix4x4;
         static translation(v: Vector3D): Matrix4x4;
         static mirroring(plane: Plane): Matrix4x4;
@@ -714,8 +804,15 @@ declare namespace CSG {
         line2Dto3D(line2d: Line2D): Line3D;
         transform(matrix4x4: Matrix4x4): OrthoNormalBasis;
     }
-    function interpolateBetween2DPointsForY(point1: Vector2D, point2: Vector2D, y: number): number;
-    function reTesselateCoplanarPolygons(sourcepolygons: CSG.Polygon[], destpolygons: CSG.Polygon[]): void;
+    function interpolateBetween2DPointsForY(
+        point1: Vector2D,
+        point2: Vector2D,
+        y: number,
+    ): number;
+    function reTesselateCoplanarPolygons(
+        sourcepolygons: CSG.Polygon[],
+        destpolygons: CSG.Polygon[],
+    ): void;
     class fuzzyFactory {
         multiplier: number;
         lookuptable: any;
@@ -750,7 +847,11 @@ declare namespace CSG {
         roundedCylinder: any;
         _transform(matrix4x4: Matrix4x4): Properties;
         _merge(otherproperties: Properties): Properties;
-        static transformObj(source: any, result: any, matrix4x4: Matrix4x4): void;
+        static transformObj(
+            source: any,
+            result: any,
+            matrix4x4: Matrix4x4,
+        ): void;
         static cloneObj(source: any, result: any): void;
         static addFrom(result: any, otherproperties: Properties): void;
     }
@@ -758,15 +859,43 @@ declare namespace CSG {
         point: Vector3D;
         axisvector: Vector3D;
         normalvector: Vector3D;
-        constructor(point: number[], axisvector: Vector3D, normalvector: number[]);
-        constructor(point: number[], axisvector: number[], normalvector: number[]);
-        constructor(point: number[], axisvector: number[], normalvector: Vector3D);
-        constructor(point: Vector3D, axisvector: number[], normalvector: Vector3D);
-        constructor(point: Vector3D, axisvector: number[], normalvector: number[]);
-        constructor(point: Vector3D, axisvector: Vector3D, normalvector: Vector3D);
+        constructor(
+            point: number[],
+            axisvector: Vector3D,
+            normalvector: number[],
+        );
+        constructor(
+            point: number[],
+            axisvector: number[],
+            normalvector: number[],
+        );
+        constructor(
+            point: number[],
+            axisvector: number[],
+            normalvector: Vector3D,
+        );
+        constructor(
+            point: Vector3D,
+            axisvector: number[],
+            normalvector: Vector3D,
+        );
+        constructor(
+            point: Vector3D,
+            axisvector: number[],
+            normalvector: number[],
+        );
+        constructor(
+            point: Vector3D,
+            axisvector: Vector3D,
+            normalvector: Vector3D,
+        );
         normalized(): Connector;
         transform(matrix4x4: Matrix4x4): Connector;
-        getTransformationTo(other: Connector, mirror: boolean, normalrotation: number): Matrix4x4;
+        getTransformationTo(
+            other: Connector,
+            mirror: boolean,
+            normalrotation: number,
+        ): Matrix4x4;
         axisLine(): Line3D;
         extend(distance: number): Connector;
     }
@@ -775,8 +904,16 @@ declare namespace CSG {
         closed: boolean;
         constructor(connectors: Connector[]);
         static defaultNormal: number[];
-        static fromPath2D(path2D: CSG.Path2D, arg1: any, arg2: any): ConnectorList;
-        static _fromPath2DTangents(path2D: any, start: any, end: any): ConnectorList;
+        static fromPath2D(
+            path2D: CSG.Path2D,
+            arg1: any,
+            arg2: any,
+        ): ConnectorList;
+        static _fromPath2DTangents(
+            path2D: any,
+            start: any,
+            end: any,
+        ): ConnectorList;
         static _fromPath2DExplicit(path2D: any, angleIsh: any): ConnectorList;
         setClosed(bool: boolean): void;
         appendConnector(conn: Connector): void;
@@ -823,7 +960,11 @@ declare namespace CSG {
         appendPoint(point: Vector2D): Path2D;
         appendPoints(points: Vector2D[]): Path2D;
         close(): Path2D;
-        rectangularExtrude(width: number, height: number, resolution: number): CSG;
+        rectangularExtrude(
+            width: number,
+            height: number,
+            resolution: number,
+        ): CSG;
         expandToCAG(pathradius: number, resolution: number): CAG;
         innerToCAG(): CAG;
         transform(matrix4x4: Matrix4x4): Path2D;
@@ -868,14 +1009,18 @@ declare class CAG extends CxG implements ICenter {
     expandedShell(radius: number, resolution: number): CAG;
     expand(radius: number, resolution: number): CAG;
     contract(radius: number, resolution: number): CAG;
-    extrudeInOrthonormalBasis(orthonormalbasis: CSG.OrthoNormalBasis, depth: number, options?: any): CSG;
+    extrudeInOrthonormalBasis(
+        orthonormalbasis: CSG.OrthoNormalBasis,
+        depth: number,
+        options?: any,
+    ): CSG;
     extrudeInPlane(axis1: any, axis2: any, depth: any, options: any): CSG;
     extrude(options: CAG_extrude_options): CSG;
     rotateExtrude(options: any): CSG;
     check(): void;
     canonicalized(): CAG;
     toCompactBinary(): {
-        "class": string;
+        class: string;
         sideVertexIndices: Uint32Array;
         vertexData: Float64Array;
     };

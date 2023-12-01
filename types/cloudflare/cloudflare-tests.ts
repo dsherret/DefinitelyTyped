@@ -81,8 +81,15 @@ cf.dnsRecords.browse("123", {
     invalid: "invalid",
 });
 
-cf.enterpriseZoneWorkersKV.add("account_id", "namespace_id", "key_name", "value");
+cf.enterpriseZoneWorkersKV.add(
+    "account_id",
+    "namespace_id",
+    "key_name",
+    "value",
+);
 // @ts-expect-error
 cf.enterpriseZoneWorkersKV.add("account_id", "namespace_id", "value");
 
-cf.enterpriseZoneWorkersKV.addMulti("account_id", "namespace_id", [{ key: "key", value: "value" }]);
+cf.enterpriseZoneWorkersKV.addMulti("account_id", "namespace_id", [
+    { key: "key", value: "value" },
+]);

@@ -8,9 +8,18 @@ declare namespace milkcocoa {
             options?: {},
             callback?: (err: MilkCocoa.Error.AddAccount, user: User) => void,
         ): void;
-        login(email: string, password: string, callback: (err: MilkCocoa.Error.Login, user: User) => void): void;
+        login(
+            email: string,
+            password: string,
+            callback: (err: MilkCocoa.Error.Login, user: User) => void,
+        ): void;
         logout(callback?: (err: string) => void): void;
-        getCurrentUser(callback: (err: MilkCocoa.Error.GetCurrentUser, user: { id: string }) => void): void;
+        getCurrentUser(
+            callback: (
+                err: MilkCocoa.Error.GetCurrentUser,
+                user: { id: string },
+            ) => void,
+        ): void;
     }
 
     namespace MilkCocoa {
@@ -34,12 +43,18 @@ declare namespace milkcocoa {
     }
 
     interface DataStore {
-        push(object: {}, callback?: (data: DataStoreCallbackData) => void): void;
+        push(
+            object: {},
+            callback?: (data: DataStoreCallbackData) => void,
+        ): void;
         set(id: string, data: {}): void;
         remove(id: string): void;
         send(object: {}): void;
         // event push, remove, set, send
-        on(event: string, callback: (data: DataStoreCallbackData) => void): void;
+        on(
+            event: string,
+            callback: (data: DataStoreCallbackData) => void,
+        ): void;
         off(event: string): void;
         get(id: string, callback: (data: {}) => void): void;
         query(condition?: {}): Query;

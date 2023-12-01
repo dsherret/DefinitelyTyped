@@ -164,10 +164,7 @@ try {
 }
 
 const rstream = fs.createReadStream(join(__dirname, "stream.txt"));
-const data = [
-    "A line",
-    "A second line",
-];
+const data = ["A line", "A second line"];
 
 log.on("message", (gelf) => {
     gelf.level;
@@ -224,7 +221,9 @@ log.write = (chunk) => {
 
 // Force the message to be too big to fit as simple JSON
 // but not so large as to force splitting across multiple chunks
-let full_message = Array(8192 / 16).fill(" 123456789abcdef").join("");
+let full_message = Array(8192 / 16)
+    .fill(" 123456789abcdef")
+    .join("");
 gelf = log._prepGelf(0, "my message", full_message);
 log._send(gelf);
 
@@ -240,7 +239,9 @@ log.write = (chunk) => {
 
 // Force the message to be too big to fit as simple JSON
 // but not so large as to force splitting across multiple chunks
-full_message = Array(8192 / 16).fill(" 123456789abcdef").join("");
+full_message = Array(8192 / 16)
+    .fill(" 123456789abcdef")
+    .join("");
 gelf = log._prepGelf(0, "my message", full_message);
 log._send(gelf);
 
@@ -258,7 +259,7 @@ log.write = (chunk) => {
     chunk[0] === 0x1e;
     chunk[10] === index;
     chunk[11] === expectedChunks;
-    (index + 1) === expectedChunks;
+    index + 1 === expectedChunks;
 };
 
 gelf = log._prepGelf(0, "my message", "full message", { extra: "field" });

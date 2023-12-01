@@ -1,5 +1,12 @@
 import * as React from "react";
-import { FlatListProps, KeyboardAvoidingView, ModalProps, StyleProp, TextStyle, ViewStyle } from "react-native";
+import {
+    FlatListProps,
+    KeyboardAvoidingView,
+    ModalProps,
+    StyleProp,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
 
 export interface ModalFilterPickerOption {
     label: string;
@@ -21,7 +28,9 @@ export interface ModalFilterPickerProps<T extends ModalFilterPickerOption> {
     modal?: ModalProps | undefined;
     selectedOption?: string | undefined;
     flatListProps?: Partial<FlatListProps<T>> | undefined;
-    renderOption?: ((option: T, isSelected: boolean) => JSX.Element) | undefined;
+    renderOption?:
+        | ((option: T, isSelected: boolean) => JSX.Element)
+        | undefined;
     renderList?: (() => JSX.Element) | undefined;
     renderCancelButton?: (() => JSX.Element) | undefined;
     keyboardShouldPersistTaps?: "never" | "always" | "handle" | undefined;
@@ -40,8 +49,8 @@ export interface ModalFilterPickerProps<T extends ModalFilterPickerOption> {
     selectedOptionTextStyle?: StyleProp<TextStyle> | undefined;
 }
 
-declare class ModalFilterPicker<T extends ModalFilterPickerOption> extends React.Component<
-    ModalFilterPickerProps<T>
-> {}
+declare class ModalFilterPicker<
+    T extends ModalFilterPickerOption,
+> extends React.Component<ModalFilterPickerProps<T>> {}
 
 export default ModalFilterPicker;

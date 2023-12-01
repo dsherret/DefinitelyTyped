@@ -12,8 +12,17 @@ export namespace Bitcoin {
         }
 
         namespace ECDSA {
-            function sign(message: Buffer, key: PrivateKey, endian?: "big"): Signature;
-            function verify(hashbuf: Buffer, sig: Signature, pubkey: PublicKey, endian?: "little"): boolean;
+            function sign(
+                message: Buffer,
+                key: PrivateKey,
+                endian?: "big",
+            ): Signature;
+            function verify(
+                hashbuf: Buffer,
+                sig: Signature,
+                pubkey: PublicKey,
+                endian?: "little",
+            ): boolean;
         }
 
         namespace Hash {
@@ -133,7 +142,11 @@ export namespace Bitcoin {
         getSignatures(privateKey: PrivateKey, sigtype?: number): any[];
         applySignature(sig: crypto.Signature): this;
         addInput(input: Transaction.Input): this;
-        addInput(input: Transaction.Input.MultiSigScriptHash, outputScript?: any, satoshis?: any): Transaction;
+        addInput(
+            input: Transaction.Input.MultiSigScriptHash,
+            outputScript?: any,
+            satoshis?: any,
+        ): Transaction;
         addOutput(output: Transaction.Output): this;
         addData(value: Buffer | string): this;
         lockUntilDate(time: Date | number): this;
@@ -211,7 +224,10 @@ export namespace Bitcoin {
 
         derive(arg: string | number, hardened?: boolean): HDPrivateKey;
         deriveChild(arg: string | number, hardened?: boolean): HDPrivateKey;
-        deriveNonCompliantChild(arg: string | number, hardened?: boolean): HDPrivateKey;
+        deriveNonCompliantChild(
+            arg: string | number,
+            hardened?: boolean,
+        ): HDPrivateKey;
 
         toString(): string;
         toObject(): object;
@@ -242,9 +258,18 @@ export namespace Bitcoin {
         const types: {
             DATA_OUT: string;
         };
-        function buildMultisigOut(publicKeys: PublicKey[], threshold: number, opts: object): Script;
+        function buildMultisigOut(
+            publicKeys: PublicKey[],
+            threshold: number,
+            opts: object,
+        ): Script;
         function buildWitnessMultisigOutFromScript(script: Script): Script;
-        function buildMultisigIn(pubkeys: PublicKey[], threshold: number, signatures: Buffer[], opts: object): Script;
+        function buildMultisigIn(
+            pubkeys: PublicKey[],
+            threshold: number,
+            signatures: Buffer[],
+            opts: object,
+        ): Script;
         function buildP2SHMultisigIn(
             pubkeys: PublicKey[],
             threshold: number,
@@ -255,7 +280,10 @@ export namespace Bitcoin {
         function buildPublicKeyOut(pubkey: PublicKey): Script;
         function buildDataOut(data: string | Buffer, encoding?: string): Script;
         function buildScriptHashOut(script: Script): Script;
-        function buildPublicKeyIn(signature: crypto.Signature | Buffer, sigtype: number): Script;
+        function buildPublicKeyIn(
+            signature: crypto.Signature | Buffer,
+            sigtype: number,
+        ): Script;
         function buildPublicKeyHashIn(
             publicKey: PublicKey,
             signature: crypto.Signature | Buffer,
@@ -272,7 +300,13 @@ export namespace Bitcoin {
 
             constructor(data?: string | object);
 
-            verify(scriptSig: any, scriptPubkey: any, tx: Transaction, nin: number, flags: number): boolean;
+            verify(
+                scriptSig: any,
+                scriptPubkey: any,
+                tx: Transaction,
+                nin: number,
+                flags: number,
+            ): boolean;
         }
     }
 
@@ -340,7 +374,10 @@ export namespace Bitcoin {
 
         magicHash(): Buffer;
         sign(privateKey: PrivateKey): string;
-        verify(bitcoinAddress: Address | string, signatureString: string): boolean;
+        verify(
+            bitcoinAddress: Address | string,
+            signatureString: string,
+        ): boolean;
         fromString(str: string): Message;
         fromJSON(json: string): Message;
         toObject(): { message: string };
@@ -367,7 +404,10 @@ export namespace Bitcoin {
 
         function add(data: any): Network;
         function remove(network: Network): void;
-        function get(args: string | number | Network, keys: string | string[]): Network;
+        function get(
+            args: string | number | Network,
+            keys: string | string[],
+        ): Network;
     }
 
     class Address {
@@ -375,7 +415,12 @@ export namespace Bitcoin {
         readonly network: Networks.Network | string;
         readonly type: string;
 
-        static fromString(str: string, network?: any, type?: any, format?: any): Address;
+        static fromString(
+            str: string,
+            network?: any,
+            type?: any,
+            format?: any,
+        ): Address;
         static createMultisig(
             publicKeys: PublicKey[],
             threshold: number,
@@ -386,7 +431,11 @@ export namespace Bitcoin {
         static fromPublicKey(hash: PublicKey): Address;
         static fromPublicKeyHash(hash: Buffer): Address;
 
-        constructor(data: Buffer | Uint8Array | string | object, network?: Networks.Network | string, type?: string);
+        constructor(
+            data: Buffer | Uint8Array | string | object,
+            network?: Networks.Network | string,
+            type?: string,
+        );
 
         toString(encoding?: string): string;
     }

@@ -12,14 +12,14 @@ const month = now.getMonth();
 cal.monthDates(year, month);
 
 // $ExpectType number[][]
-cal.monthDates(year, month, date => date.getTime());
+cal.monthDates(year, month, (date) => date.getTime());
 
 // $ExpectType string[]
 cal.monthDates(
     year,
     month,
-    date => date.getTime(),
-    week => {
+    (date) => date.getTime(),
+    (week) => {
         week; // $ExpectType number[]
         return week.join("</td><td>");
     },
@@ -29,8 +29,9 @@ cal.monthDates(
 cal.monthDates(
     year,
     month,
-    date => (date.getMonth() === month ? date.getDate().toString() : "&nbsp;"),
-    week => {
+    (date) =>
+        date.getMonth() === month ? date.getDate().toString() : "&nbsp;",
+    (week) => {
         week; // $ExpectType string[]
         return week.join("</td><td>");
     },
@@ -40,8 +41,8 @@ cal.monthDates(
 cal.monthDates(
     year,
     month,
-    date => date.getTime(),
-    week => {
+    (date) => date.getTime(),
+    (week) => {
         week; // $ExpectType number[]
         return week.length;
     },

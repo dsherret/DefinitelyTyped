@@ -23,7 +23,10 @@ export function decode(buf: Uint8Array, fromCharset?: string): string;
  * @param fromCharset encoding for the string (optional for data of type String)
  * @return UTF-8 encoded typed array
  */
-export function convert(data: string | Uint8Array, fromCharset: string): Uint8Array;
+export function convert(
+    data: string | Uint8Array,
+    fromCharset: string,
+): Uint8Array;
 
 //// From "./mimecodec.d.ts"
 
@@ -36,7 +39,10 @@ export function convert(data: string | Uint8Array, fromCharset: string): Uint8Ar
  * @param [fromCharset='UTF-8'] Source encoding
  * @return Mime encoded string
  */
-export function mimeEncode(data?: string | Uint8Array, fromCharset?: string): string;
+export function mimeEncode(
+    data?: string | Uint8Array,
+    fromCharset?: string,
+): string;
 
 /**
  * Decodes mime encoded string to an unicode string
@@ -55,7 +61,10 @@ export function mimeDecode(str?: string, fromCharset?: string): string;
  * @param Initial charset, e.g. 'binary'. Defaults to 'UTF-8'
  * @return Base64 encoded string
  */
-export function base64Encode(data: string | Uint8Array, fromCharset?: string): string;
+export function base64Encode(
+    data: string | Uint8Array,
+    fromCharset?: string,
+): string;
 
 /**
  * Decodes a base64 string of any charset into an unicode string
@@ -75,7 +84,10 @@ export function base64Decode(str: string, fromCharset?: string): string;
  * @param [fromCharset='UTF-8'] Original charset of the string
  * @return Mime encoded string
  */
-export function quotedPrintableEncode(data?: string | Uint8Array, fromCharset?: string): string;
+export function quotedPrintableEncode(
+    data?: string | Uint8Array,
+    fromCharset?: string,
+): string;
 
 /**
  * Decodes a string from a quoted printable encoding. This is almost the
@@ -85,7 +97,10 @@ export function quotedPrintableEncode(data?: string | Uint8Array, fromCharset?: 
  * @param [fromCharset='UTF-8'] Original charset of the string
  * @return Mime decoded string
  */
-export function quotedPrintableDecode(str?: string, fromCharset?: string): string;
+export function quotedPrintableDecode(
+    str?: string,
+    fromCharset?: string,
+): string;
 
 /**
  * Encodes a string or an Uint8Array to an UTF-8 MIME Word
@@ -96,7 +111,11 @@ export function quotedPrintableDecode(str?: string, fromCharset?: string): strin
  * @param [fromCharset='UTF-8'] Source sharacter set
  * @return Single or several mime words joined together
  */
-export function mimeWordEncode(data: string | Uint8Array, mimeWordEncoding?: string, fromCharset?: string): string;
+export function mimeWordEncode(
+    data: string | Uint8Array,
+    mimeWordEncoding?: string,
+    fromCharset?: string,
+): string;
 
 /**
  * Finds word sequences with non ascii text and converts these to mime words
@@ -106,7 +125,11 @@ export function mimeWordEncode(data: string | Uint8Array, mimeWordEncoding?: str
  * @param [fromCharset='UTF-8'] Source sharacter set
  * @return String with possible mime words
  */
-export function mimeWordsEncode(data?: string | Uint8Array, mimeWordEncoding?: string, fromCharset?: string): string;
+export function mimeWordsEncode(
+    data?: string | Uint8Array,
+    mimeWordEncoding?: string,
+    fromCharset?: string,
+): string;
 
 /**
  * Decode a complete mime word encoded string
@@ -143,7 +166,11 @@ export function foldLines(str?: string, afterSpace?: boolean): string;
  * @param [fromCharset='UTF-8'] Character set of the value
  * @return encoded and folded header line
  */
-export function headerLineEncode(key: string, value: string | Uint8Array, fromCharset?: string): string;
+export function headerLineEncode(
+    key: string,
+    value: string | Uint8Array,
+    fromCharset?: string,
+): string;
 
 /**
  * The result is not mime word decoded, you need to do your own decoding based
@@ -164,7 +191,9 @@ export function headerLineDecode(headerLine?: string): {
  * @param headers Headers string
  * @return An object of headers, where header keys are object keys. NB! Several values with the same key make up an Array
  */
-export function headerLinesDecode(headers: string): Record<string, string | string[]>;
+export function headerLinesDecode(
+    headers: string,
+): Record<string, string | string[]>;
 
 /**
  * Parses a header value with key=value arguments into a structured

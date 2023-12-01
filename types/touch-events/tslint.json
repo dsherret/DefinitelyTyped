@@ -1,7 +1,7 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "no-var-keyword": false,
-        "triple-equals": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "no-var-keyword": false,
+    "triple-equals": false
+  }
 }

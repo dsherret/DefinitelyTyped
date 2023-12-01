@@ -12,7 +12,10 @@ declare const CsvAsync: {
      * @param input
      * @param options
      */
-    parse(input: string, options?: CsvAsync.CsvParseOptions): Promise<unknown[]>;
+    parse(
+        input: string,
+        options?: CsvAsync.CsvParseOptions,
+    ): Promise<unknown[]>;
 
     /**
      * @param data
@@ -21,7 +24,11 @@ declare const CsvAsync: {
      */
     transform<T = any, U = any>(
         data: T[],
-        handler: (record: T, callback: (err?: Error | null, record?: T) => void, params?: any) => U,
+        handler: (
+            record: T,
+            callback: (err?: Error | null, record?: T) => void,
+            params?: any,
+        ) => U,
         options?: CsvAsync.TransformOptions,
     ): Promise<U[]>;
 
@@ -50,7 +57,15 @@ declare namespace CsvAsync {
 
     type PlainObject<T> = Record<string, T>;
 
-    type RecordDelimiter = string | Buffer | "auto" | "unix" | "mac" | "windows" | "ascii" | "unicode";
+    type RecordDelimiter =
+        | string
+        | Buffer
+        | "auto"
+        | "unix"
+        | "mac"
+        | "windows"
+        | "ascii"
+        | "unicode";
 
     interface CastingContext {
         readonly column?: number | string | undefined;
@@ -188,7 +203,11 @@ declare namespace CsvAsync {
          * in the first CSV line. Defaults to null. Affects the result data set
          * in the sense that records will be objects instead of arrays.
          */
-        columns?: ColumnOption[] | boolean | ((record: any) => ColumnOption[]) | undefined;
+        columns?:
+            | ColumnOption[]
+            | boolean
+            | ((record: any) => ColumnOption[])
+            | undefined;
 
         /**
          * Treat all the characters after this one as a comment.
@@ -318,17 +337,19 @@ declare namespace CsvAsync {
         /**
          * Key-value object which defines custom cast for certain data types
          */
-        cast?: {
-            boolean?: Cast<boolean> | undefined;
-            date?: Cast<Date> | undefined;
-            number?: Cast<number> | undefined;
+        cast?:
+            | {
+                  boolean?: Cast<boolean> | undefined;
+                  date?: Cast<Date> | undefined;
+                  number?: Cast<number> | undefined;
 
-            /**
-             * Custom formatter for generic object values
-             */
-            object?: Cast<Record<string, any>> | undefined;
-            string?: Cast<string> | undefined;
-        } | undefined;
+                  /**
+                   * Custom formatter for generic object values
+                   */
+                  object?: Cast<Record<string, any>> | undefined;
+                  string?: Cast<string> | undefined;
+              }
+            | undefined;
 
         /**
          * List of fields, applied when `transform` returns an object, the order
@@ -338,7 +359,11 @@ declare namespace CsvAsync {
          * see the "header" option on how to print columns names on the
          * first line.
          */
-        columns?: string[] | PlainObject<string> | ParseColumnOption[] | undefined;
+        columns?:
+            | string[]
+            | PlainObject<string>
+            | ParseColumnOption[]
+            | undefined;
 
         /**
          * Set the field delimiter, one character only, defaults to a comma.

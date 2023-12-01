@@ -17,11 +17,11 @@ client.connect({
     invocationContext: {
         asdf: true,
     },
-    onSuccess: o => {
+    onSuccess: (o) => {
         console.log("connected: ", o.invocationContext.asdf);
     },
     mqttVersion: 3,
-    onFailure: e => {
+    onFailure: (e) => {
         console.error("could not connect: ", e.errorMessage);
     },
     hosts: ["localhost", "8.8.8.8"],
@@ -31,11 +31,13 @@ client.connect({
     reconnect: true,
 });
 
-console.log(`created new client on "${client.host}:${client.port}/${client.path}" with id "${client.clientId}"`);
+console.log(
+    `created new client on "${client.host}:${client.port}/${client.path}" with id "${client.clientId}"`,
+);
 
 console.log(`connected?: ${client.isConnected()}`);
 
-client.trace = msg => {
+client.trace = (msg) => {
     console.log(`mqtt trace msg: ${msg}`);
 };
 
@@ -43,18 +45,18 @@ client.startTrace();
 console.log(`trace log: ${client.getTraceLog()}`);
 client.stopTrace();
 
-client.onMessageArrived = msg => {
+client.onMessageArrived = (msg) => {
     console.log(`arrived: ${msg.destinationName}: ${msg.payloadString}`);
     console.log(
         `len: ${msg.payloadBytes.byteLength}, retained: ${msg.retained}, dup: ${msg.duplicate}, qos: ${msg.qos}`,
     );
 };
 
-client.onConnectionLost = err => {
+client.onConnectionLost = (err) => {
     console.log(`connection lost (code ${err.errorCode}): ${err.errorMessage}`);
 };
 
-client.onMessageDelivered = msg => {
+client.onMessageDelivered = (msg) => {
     console.log(`delivered: ${msg.destinationName}: ${msg.payloadString}`);
     console.log(
         `len: ${msg.payloadBytes.byteLength}, retained: ${msg.retained}, dup: ${msg.duplicate}, qos: ${msg.qos}`,
@@ -64,10 +66,10 @@ client.onMessageDelivered = msg => {
 client.subscribe("test/topic", {
     qos: 2,
     invocationContext: { asdf: true },
-    onSuccess: o => {
+    onSuccess: (o) => {
         console.log(`subscribed: ${o.invocationContext.asdf}`);
     },
-    onFailure: e => {
+    onFailure: (e) => {
         console.error("error subscribing: ", e.errorMessage);
     },
     timeout: 10,
@@ -75,10 +77,10 @@ client.subscribe("test/topic", {
 
 client.unsubscribe("test/topic", {
     invocationContext: { asdf: true },
-    onSuccess: o => {
+    onSuccess: (o) => {
         console.log(`subscribed: ${o.invocationContext.asdf}`);
     },
-    onFailure: e => {
+    onFailure: (e) => {
         console.error("error subscribing: ", e.errorMessage);
     },
     timeout: 10,

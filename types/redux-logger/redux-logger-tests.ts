@@ -9,9 +9,9 @@ const loggerSimpleOpts = createLogger({
     logger: console,
     logErrors: true,
     predicate: (getState, action) => true,
-    stateTransformer: state => state,
-    actionTransformer: action => action,
-    errorTransformer: error => error,
+    stateTransformer: (state) => state,
+    actionTransformer: (action) => action,
+    errorTransformer: (error) => error,
     diff: true,
     diffPredicate: (getState, action) => true,
 });
@@ -25,7 +25,8 @@ const loggerCollapsedPredicate = createLogger({
 });
 
 const loggerCollapsedLogEntryPredicate = createLogger({
-    collapsed: (getAction, action, logEntry) => logEntry !== undefined && !logEntry.error,
+    collapsed: (getAction, action, logEntry) =>
+        logEntry !== undefined && !logEntry.error,
 });
 
 const loggerColorsOverallBoolean = createLogger({
@@ -44,10 +45,10 @@ const loggerColorsBoolean = createLogger({
 
 const loggerColorsFunction = createLogger({
     colors: {
-        title: action => "#000",
-        prevState: state => "#000",
-        action: action => "#000",
-        nextState: state => "#000",
+        title: (action) => "#000",
+        prevState: (state) => "#000",
+        action: (action) => "#000",
+        nextState: (state) => "#000",
         error: (error, prevState) => "#000",
     },
 });
@@ -57,14 +58,14 @@ const loggerLevelString = createLogger({
 });
 
 const loggerLevelFunction = createLogger({
-    level: action => "log",
+    level: (action) => "log",
 });
 
 const loggerLevelObjectFunction = createLogger({
     level: {
-        prevState: state => "log",
-        action: action => "log",
-        nextState: state => "log",
+        prevState: (state) => "log",
+        action: (action) => "log",
+        nextState: (state) => "log",
         error: (error, prevState) => "log",
     },
 });

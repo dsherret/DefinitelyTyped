@@ -8,7 +8,9 @@ declare namespace jsrsasign.KJUR.asn1 {
      */
     class Time extends ASN1Object {
         constructor(params?: StringParam & { type?: "gen" | undefined });
-        setTimeParams(timeParams: StringParam | HexParam | DateParam | string): void;
+        setTimeParams(
+            timeParams: StringParam | HexParam | DateParam | string,
+        ): void;
 
         getEncodedHex(): string;
     }

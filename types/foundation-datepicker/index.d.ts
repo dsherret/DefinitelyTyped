@@ -11,7 +11,11 @@ declare namespace FoundationDatepicker {
     }
 
     interface Settings {
-        appendTo?: JQuery.Selector | JQuery.htmlString | JQuery.TypeOrArray<Element | DocumentFragment> | JQuery;
+        appendTo?:
+            | JQuery.Selector
+            | JQuery.htmlString
+            | JQuery.TypeOrArray<Element | DocumentFragment>
+            | JQuery;
         autoShow?: boolean;
         autoclose?: boolean;
         calendarWeeks?: boolean;
@@ -44,8 +48,16 @@ declare namespace FoundationDatepicker {
 }
 
 interface JQuery<TElement = HTMLElement> {
-    fdatepicker(option?: FoundationDatepicker.Settings | "show" | "hide" | "place"): JQuery;
+    fdatepicker(
+        option?: FoundationDatepicker.Settings | "show" | "hide" | "place",
+    ): JQuery;
     fdatepicker(option: "update", value: string | Date): JQuery;
-    on(events: "show" | "hide" | "changeDate", handler: (eventObject: FoundationDatepicker.Event) => void): JQuery;
-    on(events: "outOfRange", handler: (eventObject: FoundationDatepicker.OutOfRangeEvent) => void): JQuery;
+    on(
+        events: "show" | "hide" | "changeDate",
+        handler: (eventObject: FoundationDatepicker.Event) => void,
+    ): JQuery;
+    on(
+        events: "outOfRange",
+        handler: (eventObject: FoundationDatepicker.OutOfRangeEvent) => void,
+    ): JQuery;
 }

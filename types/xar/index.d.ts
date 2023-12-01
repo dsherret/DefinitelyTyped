@@ -16,7 +16,11 @@ export interface PackOptions {
     compression?: Compression | undefined;
 }
 
-export type ExtractCallback = (error: Error | null, file: Record<string, any>, content?: string) => void;
+export type ExtractCallback = (
+    error: Error | null,
+    file: Record<string, any>,
+    content?: string,
+) => void;
 
 export type GetTOCCallback = (
     error: Error | null,

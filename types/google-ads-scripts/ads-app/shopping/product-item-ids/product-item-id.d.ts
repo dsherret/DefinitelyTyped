@@ -37,7 +37,8 @@ declare namespace GoogleAdsScripts {
         }
 
         /** Builder for ProductItemId objects. */
-        interface ProductItemIdBuilder extends Base.Builder<ProductItemIdOperation> {
+        interface ProductItemIdBuilder
+            extends Base.Builder<ProductItemIdOperation> {
             /** Specifies the bid of the product item id. */
             withBid(bid: number): this;
             /** Specifies the value of the product item id. */
@@ -45,6 +46,7 @@ declare namespace GoogleAdsScripts {
         }
 
         /** An operation representing creation of a new product item id. */
-        interface ProductItemIdOperation extends Base.Operation<ProductItemId> {}
+        interface ProductItemIdOperation
+            extends Base.Operation<ProductItemId> {}
     }
 }

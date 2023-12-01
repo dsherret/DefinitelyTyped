@@ -6,7 +6,10 @@ vCard.middleName = "J";
 vCard.lastName = "Nesser";
 vCard.uid = "69531f4a-c34d-4a1e-8922-bd38a9476a53";
 vCard.organization = "ACME Corporation";
-vCard.photo.attachFromUrl("https://avatars2.githubusercontent.com/u/5659221?v=3&s=460", "JPEG");
+vCard.photo.attachFromUrl(
+    "https://avatars2.githubusercontent.com/u/5659221?v=3&s=460",
+    "JPEG",
+);
 vCard.workPhone = "312-555-1212";
 vCard.birthday = new Date(1985, 0, 1);
 vCard.title = "Software Developer";
@@ -26,7 +29,10 @@ vCard.homeFax = "312-555-1616";
 vCard.workFax = "312-555-1717";
 vCard.email = "e.nesser@emailhost.tld";
 vCard.workEmail = "e.nesser@acme-corporation.tld";
-vCard.logo.attachFromUrl("https://avatars2.githubusercontent.com/u/5659221?v=3&s=460", "JPEG");
+vCard.logo.attachFromUrl(
+    "https://avatars2.githubusercontent.com/u/5659221?v=3&s=460",
+    "JPEG",
+);
 vCard.source = "http://mywebpage/myvcard.vcf";
 vCard.homeAddress.label = "Home Address";
 vCard.homeAddress.street = "123 Main Street";
@@ -49,6 +55,14 @@ vCard.photo.embedFromFile("photo.jpg");
 vCard.logo.embedFromFile("logo.jpg");
 vCard.version = "3.0";
 vCard.saveToFile("./eric-nesser.vcf");
-vCard.email = ["e.nesser@emailhost.tld", "e.nesser@emailhost2.tld", "e.nesser@emailhost3.tld"];
+vCard.email = [
+    "e.nesser@emailhost.tld",
+    "e.nesser@emailhost2.tld",
+    "e.nesser@emailhost3.tld",
+];
 vCard.cellPhone = ["312-555-1414", "312-555-1415", "312-555-1416"];
-vCard.workEmail = ["e.nesser@emailhost.tld", "e.nesser@emailhost2.tld", "e.nesser@emailhost3.tld"];
+vCard.workEmail = [
+    "e.nesser@emailhost.tld",
+    "e.nesser@emailhost2.tld",
+    "e.nesser@emailhost3.tld",
+];

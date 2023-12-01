@@ -11,7 +11,12 @@ sdc.close(); // Optional - stop NOW
 
 // Initialization
 const tags: SDC.Tags = { foo: "bar" };
-const udpOptions: SDC.UdpOptions = { host: "statsd.example.com", port: 8124, debug: true, tags };
+const udpOptions: SDC.UdpOptions = {
+    host: "statsd.example.com",
+    port: 8124,
+    debug: true,
+    tags,
+};
 const tcpOptions: SDC.TcpOptions = {
     host: "statsd.example.com",
     port: 8124,
@@ -55,11 +60,11 @@ sdc.set("your.set.tagged", 200, { biz: "baz" });
 
 // Timeouts
 let start = new Date();
-setTimeout(function() {
+setTimeout(function () {
     sdc.timing("random.timeout", start);
 }, 100 * Math.random());
 
-setTimeout(function() {
+setTimeout(function () {
     sdc.timing("random.timeout.tagged", start, { biz: "baz" });
 }, 100 * Math.random());
 
@@ -79,7 +84,7 @@ sdc.formatTags({ biz: "baz" });
 
 // Stopping gracefully
 start = new Date();
-setTimeout(function() {
+setTimeout(function () {
     sdc.timing("random.timeout", start); // 2 - implicitly re-creates socket.
     sdc.close(); // 3 - Closes socket after last use.
 }, 100 * Math.random());

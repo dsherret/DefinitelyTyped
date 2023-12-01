@@ -28,13 +28,13 @@ skmeans(dataMulti, 3, null, null, distance3d);
 
 const res = skmeans(dataUni, 3, null, 10);
 res.test(6);
-res.centroids.forEach(i => () => {
+res.centroids.forEach((i) => () => {
     i + 1;
 });
 
 const res2 = skmeans(dataMulti, 3, null, 10);
 res2.test([6, 1, 3], distance3d);
-res2.centroids.forEach(i => () => {
+res2.centroids.forEach((i) => () => {
     i[0] + i[1];
 });
 

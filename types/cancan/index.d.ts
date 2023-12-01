@@ -12,7 +12,9 @@ declare class CanCan {
         model: any,
         actions: string | readonly string[],
         targets: T | readonly T[] | string | readonly string[],
-        condition?: object | ((performer: any, target: any, options?: any) => boolean),
+        condition?:
+            | object
+            | ((performer: any, target: any, options?: any) => boolean),
     ): void;
 
     can(performer: any, action: string, target: any, options?: any): boolean;

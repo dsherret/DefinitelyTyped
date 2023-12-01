@@ -14,7 +14,7 @@ cy.get("foo").happoScreenshot({
     responsiveInlinedCanvases: true,
     transformDOM: {
         selector: "iframe",
-        transform: element => element,
+        transform: (element) => element,
     },
     includeAllElements: true,
 });
@@ -37,9 +37,12 @@ cy.happoHideDynamicElements({
 // $ExpectType void
 cy.get("foo").happoScreenshot({
     component: "Header",
-    targets: ["chrome-desktop", {
-        name: "dynamic-target",
-        browser: "chrome",
-        viewport: "100x100",
-    }],
+    targets: [
+        "chrome-desktop",
+        {
+            name: "dynamic-target",
+            browser: "chrome",
+            viewport: "100x100",
+        },
+    ],
 });

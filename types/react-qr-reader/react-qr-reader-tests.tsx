@@ -20,11 +20,9 @@ export class Test extends React.Component {
 const test: React.FC = () => {
     const qrRef = React.useRef<QrReader>(null);
 
-    const handleScan = (data: string | null) => {
-    };
+    const handleScan = (data: string | null) => {};
 
-    const handleError = (err: any) => {
-    };
+    const handleError = (err: any) => {};
 
     qrRef.current!.openImageDialog();
 

@@ -88,9 +88,15 @@ const graphDiv = "#test";
                 styles: [
                     { target: "Asia", value: { marker: { color: "red" } } },
                     { target: "Europe", value: { marker: { color: "blue" } } },
-                    { target: "Americas", value: { marker: { color: "orange" } } },
+                    {
+                        target: "Americas",
+                        value: { marker: { color: "orange" } },
+                    },
                     { target: "Africa", value: { marker: { color: "green" } } },
-                    { target: "Oceania", value: { marker: { color: "purple" } } },
+                    {
+                        target: "Oceania",
+                        value: { marker: { color: "purple" } },
+                    },
                 ],
             },
             {
@@ -172,8 +178,28 @@ const graphDiv = "#test";
     const data: Array<Partial<PlotData>> = [
         {
             type: "bar",
-            labels: ["Eve", "Cain", "Seth", "Enos", "Noam", "Abel", "Awan", "Enoch", "Azura"],
-            parents: ["", "Eve", "Eve", "Seth", "Seth", "Eve", "Eve", "Awan", "Eve"],
+            labels: [
+                "Eve",
+                "Cain",
+                "Seth",
+                "Enos",
+                "Noam",
+                "Abel",
+                "Awan",
+                "Enoch",
+                "Azura",
+            ],
+            parents: [
+                "",
+                "Eve",
+                "Eve",
+                "Seth",
+                "Seth",
+                "Eve",
+                "Eve",
+                "Awan",
+                "Eve",
+            ],
             values: [65, 14, 12, 10, 2, 6, 6, 4, 4],
             marker: { line: { width: 2 } },
             offset: -0.25,
@@ -193,7 +219,15 @@ const graphDiv = "#test";
 (() => {
     const data: Array<Partial<PlotData>> = [
         {
-            x: ["2005-01", "2005-02", "2005-03", "2005-04", "2005-05", "2005-06", "2005-07"],
+            x: [
+                "2005-01",
+                "2005-02",
+                "2005-03",
+                "2005-04",
+                "2005-05",
+                "2005-06",
+                "2005-07",
+            ],
             y: [-20, 10, -5, 0, 5, -10, 20],
             type: "scatter",
         },
@@ -260,7 +294,12 @@ const graphDiv = "#test";
     ];
     const template: Template = {
         data: {
-            bar: [{ marker: { color: "#3183BD", opacity: 0.7 }, textposition: "auto" }],
+            bar: [
+                {
+                    marker: { color: "#3183BD", opacity: 0.7 },
+                    textposition: "auto",
+                },
+            ],
             scatter: [
                 {
                     mode: "lines+markers",
@@ -269,7 +308,11 @@ const graphDiv = "#test";
                 },
             ],
         },
-        layout: { barmode: "stack", showlegend: false, xaxis: { tickangle: -45 } },
+        layout: {
+            barmode: "stack",
+            showlegend: false,
+            xaxis: { tickangle: -45 },
+        },
     };
 
     // Test the modebar with practical types.
@@ -305,7 +348,13 @@ const graphDiv = "#test";
         yanchor: "top",
     };
 
-    const layout: Partial<Layout> = { showlegend: true, title: "January 2013 Sales Report", template, modebar, legend };
+    const layout: Partial<Layout> = {
+        showlegend: true,
+        title: "January 2013 Sales Report",
+        template,
+        modebar,
+        legend,
+    };
     const config: Partial<Config> = {
         modeBarButtons: [
             [
@@ -316,9 +365,9 @@ const graphDiv = "#test";
                         width: 857.1,
                         height: 1000,
                         path:
-                            "m214-7h429v214h-429v-214z m500 0h72v500q0 8-6 21t-11 20l-157 156q-5 6-19 12t-22 5v-232q0-22-15-38t-38-16h-322q-22 0-37 16t-16 38v232h-72v-714h72v232q0 22 16 38t37 "
-                            + "16h465q22 0 38-16t15-38v-232z m-214 518v178q0 8-5 13t-13 5h-107q-7 0-13-5t-5-13v-178q0-8 5-13t13-5h107q7 0 13 5t5 13z m357-18v-518q0-22-15-38t-38-16h-750q-23 0-38 "
-                            + "16t-16 38v750q0 22 16 38t38 16h517q23 0 50-12t42-26l156-157q16-15 27-42t11-49z",
+                            "m214-7h429v214h-429v-214z m500 0h72v500q0 8-6 21t-11 20l-157 156q-5 6-19 12t-22 5v-232q0-22-15-38t-38-16h-322q-22 0-37 16t-16 38v232h-72v-714h72v232q0 22 16 38t37 " +
+                            "16h465q22 0 38-16t15-38v-232z m-214 518v178q0 8-5 13t-13 5h-107q-7 0-13-5t-5-13v-178q0-8 5-13t13-5h107q7 0 13 5t5 13z m357-18v-518q0-22-15-38t-38-16h-750q-23 0-38 " +
+                            "16t-16 38v750q0 22 16 38t38 16h517q23 0 50-12t42-26l156-157q16-15 27-42t11-49z",
                         ascent: 850,
                         transform: "matrix(1 0 0 -1 0 850)",
                     },
@@ -343,9 +392,9 @@ const graphDiv = "#test";
                     width: 857.1,
                     height: 1000,
                     path:
-                        "m214-7h429v214h-429v-214z m500 0h72v500q0 8-6 21t-11 20l-157 156q-5 6-19 12t-22 5v-232q0-22-15-38t-38-16h-322q-22 0-37 16t-16 38v232h-72v-714h72v232q0 22 16 38t37 "
-                        + "16h465q22 0 38-16t15-38v-232z m-214 518v178q0 8-5 13t-13 5h-107q-7 0-13-5t-5-13v-178q0-8 5-13t13-5h107q7 0 13 5t5 13z m357-18v-518q0-22-15-38t-38-16h-750q-23 0-38 "
-                        + "16t-16 38v750q0 22 16 38t38 16h517q23 0 50-12t42-26l156-157q16-15 27-42t11-49z",
+                        "m214-7h429v214h-429v-214z m500 0h72v500q0 8-6 21t-11 20l-157 156q-5 6-19 12t-22 5v-232q0-22-15-38t-38-16h-322q-22 0-37 16t-16 38v232h-72v-714h72v232q0 22 16 38t37 " +
+                        "16h465q22 0 38-16t15-38v-232z m-214 518v178q0 8-5 13t-13 5h-107q-7 0-13-5t-5-13v-178q0-8 5-13t13-5h107q7 0 13 5t5 13z m357-18v-518q0-22-15-38t-38-16h-750q-23 0-38 " +
+                        "16t-16 38v750q0 22 16 38t38 16h517q23 0 50-12t42-26l156-157q16-15 27-42t11-49z",
                     ascent: 850,
                     transform: "matrix(1 0 0 -1 0 850)",
                 },
@@ -399,7 +448,7 @@ const graphDiv = "#test";
             name: "group A",
         },
         {
-            y: y.map(e => e + 1),
+            y: y.map((e) => e + 1),
             x,
             type: "box",
             name: "group B",
@@ -702,9 +751,11 @@ function rand() {
 (() => {
     // Plotly.toImage will turn the plot in the given div into a data URL string
     // toImage takes the div as the first argument and an object specifying image properties as the other
-    Plotly.toImage(graphDiv, { format: "png", width: 800, height: 600 }).then(dataUrl => {
-        // use the dataUrl
-    });
+    Plotly.toImage(graphDiv, { format: "png", width: 800, height: 600 }).then(
+        (dataUrl) => {
+            // use the dataUrl
+        },
+    );
 })();
 //////////////////////////////////////////////////////////////////////
 
@@ -712,7 +763,12 @@ function rand() {
 // Plotly.downloadImage
 (() => {
     // downloadImage will accept the div as the first argument and an object specifying image properties as the other
-    Plotly.downloadImage(graphDiv, { format: "png", width: 800, height: 600, filename: "newplot" });
+    Plotly.downloadImage(graphDiv, {
+        format: "png",
+        width: 800,
+        height: 600,
+        filename: "newplot",
+    });
 })();
 //////////////////////////////////////////////////////////////////////
 
@@ -721,9 +777,18 @@ function rand() {
 (() => {
     const n = 100;
     const frames = [
-        { name: "sine", data: [{ x: new Array<number>(100), y: new Array<number>(n) }] },
-        { name: "cosine", data: [{ x: new Array<number>(100), y: new Array<number>(n) }] },
-        { name: "circle", data: [{ x: new Array<number>(100), y: new Array<number>(n) }] },
+        {
+            name: "sine",
+            data: [{ x: new Array<number>(100), y: new Array<number>(n) }],
+        },
+        {
+            name: "cosine",
+            data: [{ x: new Array<number>(100), y: new Array<number>(n) }],
+        },
+        {
+            name: "circle",
+            data: [{ x: new Array<number>(100), y: new Array<number>(n) }],
+        },
     ];
 
     for (let i = 0; i < n; i++) {
@@ -757,7 +822,7 @@ function rand() {
             type: "scatter",
         },
     ]);
-    myPlot.on("plotly_click", data => {
+    myPlot.on("plotly_click", (data) => {
         let pn = 0;
         let tn = 0;
         let colors = [] as string[];
@@ -772,7 +837,7 @@ function rand() {
         Plotly.restyle("myDiv", update, [tn]);
     });
 
-    myPlot.on("plotly_hover", data => {
+    myPlot.on("plotly_hover", (data) => {
         let pn = 0;
         let tn = 0;
         let colors = [] as string[];
@@ -787,7 +852,7 @@ function rand() {
         Plotly.restyle("myDiv", update, [tn]);
     });
 
-    myPlot.on("plotly_unhover", data => {
+    myPlot.on("plotly_unhover", (data) => {
         let pn = 0;
         let tn = 0;
         let colors = [] as string[];
@@ -802,7 +867,7 @@ function rand() {
         Plotly.restyle("myDiv", update, [tn]);
     });
 
-    myPlot.on("plotly_selected", data => {
+    myPlot.on("plotly_selected", (data) => {
         const x = [] as Datum[];
         const y = [] as Datum[];
         const N = 1000;
@@ -812,7 +877,7 @@ function rand() {
         const colors = [] as string[];
         for (let i = 0; i < N; i++) colors.push(color1Light);
 
-        data.points.forEach(pt => {
+        data.points.forEach((pt) => {
             x.push(pt.x);
             y.push(pt.y);
             colors[pt.pointNumber] = color1;
@@ -835,7 +900,7 @@ function rand() {
         );
     });
 
-    myPlot.on("plotly_relayout", eventdata => {
+    myPlot.on("plotly_relayout", (eventdata) => {
         eventdata["xaxis.autorange"]; // $ExpectType boolean | undefined
         eventdata["xaxis.autorange"]; // $ExpectType boolean | undefined
         eventdata["xaxis.range[0]"]; // $ExpectType number | undefined
@@ -844,7 +909,7 @@ function rand() {
         eventdata["yaxis.range[1]"]; // $ExpectType number | undefined
     });
 
-    myPlot.on("plotly_relayouting", eventdata => {
+    myPlot.on("plotly_relayouting", (eventdata) => {
         eventdata["xaxis.autorange"]; // $ExpectType boolean | undefined
         eventdata["xaxis.autorange"]; // $ExpectType boolean | undefined
         eventdata["xaxis.range[0]"]; // $ExpectType number | undefined
@@ -853,17 +918,24 @@ function rand() {
         eventdata["yaxis.range[1]"]; // $ExpectType number | undefined
     });
 
-    myPlot.on("plotly_restyle", data => {
+    myPlot.on("plotly_restyle", (data) => {
         console.log("restyling");
     });
 
     myPlot.on("plotly_doubleclick", () => {
-        const orgColors = ["#00000", "#00000", "#00000", "#00000", "#00000", "#00000"];
+        const orgColors = [
+            "#00000",
+            "#00000",
+            "#00000",
+            "#00000",
+            "#00000",
+            "#00000",
+        ];
         const update = { marker: { color: orgColors, size: 16 } };
         Plotly.restyle("myDiv", update);
     });
 
-    myPlot.on("plotly_beforeplot", event => {
+    myPlot.on("plotly_beforeplot", (event) => {
         console.log("plotting");
         const okToPlot = true;
         return okToPlot;
@@ -873,32 +945,38 @@ function rand() {
         console.log("done plotting");
     });
 
-    myPlot.on("plotly_animatingframe", event => {
-        console.log(`animating ${event.frame.name} with ${event.animation.transition.easing}`);
+    myPlot.on("plotly_animatingframe", (event) => {
+        console.log(
+            `animating ${event.frame.name} with ${event.animation.transition.easing}`,
+        );
     });
 
-    myPlot.on("plotly_legendclick", event => {
+    myPlot.on("plotly_legendclick", (event) => {
         console.log("clicked on legend");
         const clickVal = true;
         return clickVal;
     });
 
-    myPlot.on("plotly_legenddoubleclick", event => {
+    myPlot.on("plotly_legenddoubleclick", (event) => {
         console.log("dbl clicked on legend");
         const dblClickVal = true;
         return dblClickVal;
     });
 
-    myPlot.on("plotly_sliderchange", event => {
-        console.log(`Slider at [${event.slider.x},${event.slider.y} with ${event.step.method}`);
+    myPlot.on("plotly_sliderchange", (event) => {
+        console.log(
+            `Slider at [${event.slider.x},${event.slider.y} with ${event.step.method}`,
+        );
     });
 
-    myPlot.on("plotly_sliderstart", event => {
+    myPlot.on("plotly_sliderstart", (event) => {
         console.log(`Slider at [${event.slider.x},${event.slider.y}`);
     });
 
-    myPlot.on("plotly_sliderend", event => {
-        console.log(`Slider at [${event.slider.x},${event.slider.y} with ${event.step.method}`);
+    myPlot.on("plotly_sliderend", (event) => {
+        console.log(
+            `Slider at [${event.slider.x},${event.slider.y} with ${event.step.method}`,
+        );
     });
 
     myPlot.on("plotly_beforeexport", () => {
@@ -950,19 +1028,29 @@ function rand() {
         },
     ]);
 
-    sunburst.on("plotly_sunburstclick", event => {
-        console.log(`Clicked button ${event.event.button} to navigate to ${event.nextLevel}`);
+    sunburst.on("plotly_sunburstclick", (event) => {
+        console.log(
+            `Clicked button ${event.event.button} to navigate to ${event.nextLevel}`,
+        );
 
         const point = event.points[0];
-        console.log(`Clicked id ${point.id} with label ${point.label} and parent label ${point.parent}`);
-        console.log(`Point is number ${point.pointNumber} on trace ${point.curveNumber}`);
-        console.log(`Click happened while at level *labelled* ${point.entry}, and root *labelled* ${point.root}`);
+        console.log(
+            `Clicked id ${point.id} with label ${point.label} and parent label ${point.parent}`,
+        );
+        console.log(
+            `Point is number ${point.pointNumber} on trace ${point.curveNumber}`,
+        );
+        console.log(
+            `Click happened while at level *labelled* ${point.entry}, and root *labelled* ${point.root}`,
+        );
         console.log(`Point has value ${point.value}`);
         console.log(
             `Point takes up proportions of (previous level, parent, root): (${point.percentEntry}, ${point.percentParent}, ${point.percentRoot})`,
         );
         console.log(`Colored ${point.color} and hover ${point.hovertext}`);
-        console.log(`Can access trace data ${point.data.name} and full data ${point.fullData.name}`);
+        console.log(
+            `Can access trace data ${point.data.name} and full data ${point.fullData.name}`,
+        );
     });
 })();
 
@@ -1058,7 +1146,15 @@ function rand() {
 
     const data: Array<Partial<PlotData>> = [
         {
-            x: ["2005-01", "2005-02", "2005-03", "2005-04", "2005-05", "2005-06", "2005-07"],
+            x: [
+                "2005-01",
+                "2005-02",
+                "2005-03",
+                "2005-04",
+                "2005-05",
+                "2005-06",
+                "2005-07",
+            ],
             y: [-20, 10, -5, 0, 5, -10, 20],
             type: "scatter",
         },
@@ -1069,10 +1165,10 @@ function rand() {
 
 //////////////////////////////////////////////////////////////////////
 // PlotlyIcons
-(() => {
+() => {
     const icon = Plotly.Icons.home;
     const icon2 = Plotly.Icons.undo;
-});
+};
 
 //////////////////////////////////////////////////////////////////////
 // Mapbox plot
@@ -1089,12 +1185,20 @@ function rand() {
 
     const layout: Partial<Layout> = {
         dragmode: "zoom",
-        mapbox: { style: "open-street-map", center: { lat: 0, lon: -0 }, zoom: 3 },
+        mapbox: {
+            style: "open-street-map",
+            center: { lat: 0, lon: -0 },
+            zoom: 3,
+        },
         margin: { r: 0, t: 0, b: 0, l: 0 },
     };
 
     const config: Partial<Config> = {
-        modeBarButtonsToRemove: ["resetViewMapbox", "zoomInMapbox", "zoomOutMapbox"],
+        modeBarButtonsToRemove: [
+            "resetViewMapbox",
+            "zoomInMapbox",
+            "zoomOutMapbox",
+        ],
     };
 
     Plotly.newPlot("myDiv", data, layout);

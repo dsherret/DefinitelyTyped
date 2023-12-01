@@ -28,7 +28,10 @@ export namespace Intel {
 
     interface PlextContainer {
         plext: {
-            plextType: "SYSTEM_BROADCAST" | "SYSTEM_NARROWCAST" | "PLAYER_GENERATED";
+            plextType:
+                | "SYSTEM_BROADCAST"
+                | "SYSTEM_NARROWCAST"
+                | "PLAYER_GENERATED";
             markup: Array<MarkUpPortal | MarkUpPlayer | MarkUpText>;
             team: "RESISTANCE" | "ENLIGHTENED";
             text: string;

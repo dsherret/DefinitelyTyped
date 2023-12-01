@@ -62,4 +62,7 @@ export class LiveReloadServer extends EventEmitter {
 
 export {};
 
-export function createServer(config?: CreateServerConfig, callback?: () => void): LiveReloadServer;
+export function createServer(
+    config?: CreateServerConfig,
+    callback?: () => void,
+): LiveReloadServer;

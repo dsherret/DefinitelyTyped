@@ -5,9 +5,12 @@ export interface LifecycleStateProps<P = {}, S = {}> {
     component: ComponentClass<P, S>;
 }
 
-export interface LifecycleDispatchProps<P = {}, S = {}> extends ComponentLifecycle<P, S> {}
+export interface LifecycleDispatchProps<P = {}, S = {}>
+    extends ComponentLifecycle<P, S> {}
 
-export interface Props<P = {}, S = {}> extends LifecycleStateProps<P, S>, LifecycleDispatchProps<P, S> {}
+export interface Props<P = {}, S = {}>
+    extends LifecycleStateProps<P, S>,
+        LifecycleDispatchProps<P, S> {}
 
 export class LifecycleComponent extends Component<Props<any, any>, any> {}
 

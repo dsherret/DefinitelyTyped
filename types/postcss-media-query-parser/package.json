@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/postcss-media-query-parser",
-    "version": "0.2.9999",
-    "projects": [
-        "https://github.com/dryoma/postcss-media-query-parser"
-    ],
-    "devDependencies": {
-        "@types/postcss-media-query-parser": "workspace:."
+  "private": true,
+  "name": "@types/postcss-media-query-parser",
+  "version": "0.2.9999",
+  "projects": [
+    "https://github.com/dryoma/postcss-media-query-parser"
+  ],
+  "devDependencies": {
+    "@types/postcss-media-query-parser": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Remco Haszing",
+      "githubUsername": "remcohaszing"
     },
-    "owners": [
-        {
-            "name": "Remco Haszing",
-            "githubUsername": "remcohaszing"
-        },
-        {
-            "name": "Masafumi Koba",
-            "githubUsername": "ybiquitous"
-        }
-    ]
+    {
+      "name": "Masafumi Koba",
+      "githubUsername": "ybiquitous"
+    }
+  ]
 }

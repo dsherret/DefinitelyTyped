@@ -24,4 +24,7 @@ export interface SCCBrokerClientOptions {
     brokerRetryDelay?: number | undefined;
 }
 
-export function attach(broker: SCBroker, options: SCCBrokerClientOptions): ClusterBrokerClient;
+export function attach(
+    broker: SCBroker,
+    options: SCCBrokerClientOptions,
+): ClusterBrokerClient;

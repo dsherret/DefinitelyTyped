@@ -66,7 +66,13 @@ interface GulpSpriteSmithOptions {
     cssName: string;
     imgPath?: string;
     padding?: number;
-    algorithm?: "top-down" | "left-right" | "diagonal" | "alt-diagonal" | "binary-tree" | string;
+    algorithm?:
+        | "top-down"
+        | "left-right"
+        | "diagonal"
+        | "alt-diagonal"
+        | "binary-tree"
+        | string;
     algorithmOpts?: {
         sort?: boolean;
     };
@@ -81,7 +87,8 @@ interface GulpSpriteSmithOptions {
     cssOpts?: any;
 }
 
-interface GulpSpriteSmithRetinaOptions extends Omit<GulpSpriteSmithOptions, "cssTemplate"> {
+interface GulpSpriteSmithRetinaOptions
+    extends Omit<GulpSpriteSmithOptions, "cssTemplate"> {
     retinaSrcFilter: string | string[];
     retinaImgName: string;
     retinaImgPath?: string;
@@ -97,9 +104,13 @@ interface GulpSpriteSmithResult extends Transform {
     css: Readable;
 }
 
-declare function gulpSpritesmith(options: GulpSpriteSmithRetinaOptions): GulpSpriteSmithResult;
+declare function gulpSpritesmith(
+    options: GulpSpriteSmithRetinaOptions,
+): GulpSpriteSmithResult;
 // Union type might be better, but in this case it lead to a lot of errors
 // tslint:disable-next-line unified-signatures
-declare function gulpSpritesmith(options: GulpSpriteSmithOptions): GulpSpriteSmithResult;
+declare function gulpSpritesmith(
+    options: GulpSpriteSmithOptions,
+): GulpSpriteSmithResult;
 
 export = gulpSpritesmith;

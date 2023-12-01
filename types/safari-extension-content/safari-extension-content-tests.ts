@@ -20,14 +20,17 @@ safari.self.addEventListener("message", replyToMessage, false);
 document.addEventListener("contextmenu", handleContextMenu, false);
 
 function handleContextMenu(event: MouseEvent) {
-    safari.self.tab.setContextMenuEventUserInfo(event, (<Node> event.target).nodeName);
+    safari.self.tab.setContextMenuEventUserInfo(
+        event,
+        (<Node>event.target).nodeName,
+    );
 }
 
 // https://developer.apple.com/library/safari/documentation/Tools/Conceptual/SafariExtensionGuide/AddingContextualMenuItems/AddingContextualMenuItems.html#//apple_ref/doc/uid/TP40009977-CH4-SW16
 document.addEventListener("contextmenu", handleContextMenu2, false);
 
 function handleContextMenu2(event: MouseEvent) {
-    if ((<Node> event.target).nodeName == "VIDEO") {
+    if ((<Node>event.target).nodeName == "VIDEO") {
         event.preventDefault();
     }
 }

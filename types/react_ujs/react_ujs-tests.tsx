@@ -1,6 +1,11 @@
 import React = require("react");
 import ReactRailsUJS = require("react_ujs");
-import { handleMount, mountComponents, unmountComponents, useContext } from "react_ujs";
+import {
+    handleMount,
+    mountComponents,
+    unmountComponents,
+    useContext,
+} from "react_ujs";
 
 function TestComponent() {
     return <div>Hello world</div>;

@@ -1,8 +1,15 @@
-import { PluginDefinition, PluginParams, WaveSurferPlugin } from "../../types/plugin";
+import {
+    PluginDefinition,
+    PluginParams,
+    WaveSurferPlugin,
+} from "../../types/plugin";
 import Observer from "../util/observer";
 import WaveSurfer from "../wavesurfer";
 
-export default class PlayheadPlugin extends Observer implements WaveSurferPlugin {
+export default class PlayheadPlugin
+    extends Observer
+    implements WaveSurferPlugin
+{
     constructor(params: PlayheadPluginParams, ws: WaveSurfer);
     static create(params: PlayheadPluginParams): PluginDefinition;
     destroy(): void;

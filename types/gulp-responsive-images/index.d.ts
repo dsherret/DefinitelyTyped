@@ -6,15 +6,14 @@ import * as stream from "stream";
 
 export = GulpResponsiveImage;
 
-declare function GulpResponsiveImage(configs: GulpResponsiveImage.Matchers): stream.Transform;
+declare function GulpResponsiveImage(
+    configs: GulpResponsiveImage.Matchers,
+): stream.Transform;
 
 declare namespace GulpResponsiveImage {
     type SamplingFactor = [number, number];
 
-    type Rename =
-        | string
-        | ((path: ParsedPath) => any)
-        | RenameOptions;
+    type Rename = string | ((path: ParsedPath) => any) | RenameOptions;
 
     interface Settings {
         crop?: boolean | undefined;

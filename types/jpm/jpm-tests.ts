@@ -10,20 +10,30 @@ p.destroy();
 
 import * as passwords from "sdk/passwords";
 passwords.search({
-    onComplete: (credentials) => credentials.forEach((cred) => passwords.remove(cred)),
+    onComplete: (credentials) =>
+        credentials.forEach((cred) => passwords.remove(cred)),
     username: "mhamdy",
 });
-passwords.store({ username: "mhamdy", password: "secret", onError: (error) => console.error(error.toString()) });
+passwords.store({
+    username: "mhamdy",
+    password: "secret",
+    onError: (error) => console.error(error.toString()),
+});
 
 import * as pageMod from "sdk/page-mod";
 import * as privateBrowsing from "sdk/private-browsing";
-pageMod.PageMod({ include: "http://example.com", onAttach: (worker) => privateBrowsing.isPrivate(worker) });
+pageMod.PageMod({
+    include: "http://example.com",
+    onAttach: (worker) => privateBrowsing.isPrivate(worker),
+});
 
 import * as requests from "sdk/request";
-requests.Request<{ value: string }>({
-    url: "http://example.com",
-    onComplete: (response) => console.log(response.json["value"]),
-}).get();
+requests
+    .Request<{ value: string }>({
+        url: "http://example.com",
+        onComplete: (response) => console.log(response.json["value"]),
+    })
+    .get();
 
 import * as selection from "sdk/selection";
 selection.on("select", () => {
@@ -50,7 +60,9 @@ storage.storage.x = "hello";
 delete storage.storage.value;
 storage.on("OverQuota", () => {
     if (storage.quotaUsage > 1) {
-        console.log("you no longer have shelves to store anything. Successful!");
+        console.log(
+            "you no longer have shelves to store anything. Successful!",
+        );
     }
 });
 
@@ -68,7 +80,11 @@ timers.clearTimeout(timers.setInterval(() => console.log("hello"), 100));
 timers.clearInterval(timers.setTimeout(() => console.log("hello again"), 100));
 
 import * as action from "sdk/ui/button/action";
-let button = action.ActionButton({ id: "my button", label: "my button", icon: "./myicon.png" });
+let button = action.ActionButton({
+    id: "my button",
+    label: "my button",
+    icon: "./myicon.png",
+});
 button.on("click", (state) => {
     if (state.label == "destroy") {
         button.destroy();

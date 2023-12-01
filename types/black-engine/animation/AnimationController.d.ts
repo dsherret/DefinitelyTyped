@@ -3,7 +3,12 @@ export class AnimationController extends Component {
     private mCurrentAnim;
     getByName(name: string): AnimationInfo;
     remove(name: string): void;
-    add(name: string, textures: Texture[], fps?: number, loop?: boolean): AnimationInfo;
+    add(
+        name: string,
+        textures: Texture[],
+        fps?: number,
+        loop?: boolean,
+    ): AnimationInfo;
     play(name: string): void;
     stop(): void;
     pause(): void;

@@ -28,9 +28,17 @@ export interface LibratoSimulate {
 }
 
 export function configure(config: LibratoConfig | LibratoSimulate): void;
-export function increment(name: string, value?: number, opts?: CustomSource): void;
+export function increment(
+    name: string,
+    value?: number,
+    opts?: CustomSource,
+): void;
 export function measure(name: string, value: number, opts?: CustomSource): void;
-export function timing(name: string, fn: (done: () => void) => void, cb: (err?: Error | null) => void): void;
+export function timing(
+    name: string,
+    fn: (done: () => void) => void,
+    cb: (err?: Error | null) => void,
+): void;
 export function timing(
     name: string,
     fn: (done: () => void) => void,

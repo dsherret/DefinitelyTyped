@@ -16,7 +16,12 @@ declare namespace copy {
      * @param `options` or callback function
      * @param `cb` Callback function if no options are specified
      */
-    function each(files: string[] | File[], dir: string, options: Options, cb: Callback): void;
+    function each(
+        files: string[] | File[],
+        dir: string,
+        options: Options,
+        cb: Callback,
+    ): void;
     function each(files: string[] | File[], dir: string, cb: Callback): void;
 
     /**
@@ -34,7 +39,12 @@ declare namespace copy {
      * @param `options` or callback function
      * @param `cb` Callback function if no options are specified
      */
-    function one(pattern: string | File, dir: string, options: Options, cb: Callback): void;
+    function one(
+        pattern: string | File,
+        dir: string,
+        options: Options,
+        cb: Callback,
+    ): void;
     function one(pattern: string | File, dir: string, cb: Callback): void;
 
     type Callback = (error: Error | null, files?: File[]) => void;
@@ -67,6 +77,10 @@ declare function copy(
     options: copy.Options,
     callback: copy.Callback,
 ): void;
-declare function copy(patterns: string | File | string[] | File[], dir: string, callback: copy.Callback): void;
+declare function copy(
+    patterns: string | File | string[] | File[],
+    dir: string,
+    callback: copy.Callback,
+): void;
 
 export = copy;

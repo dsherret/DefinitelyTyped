@@ -8,10 +8,12 @@ interface Options {
     from?: string | undefined;
     to?: string | undefined;
     safe?: boolean | undefined;
-    map?: {
-        inline?: boolean | undefined;
-        prev?: string | Object | undefined;
-    } | undefined;
+    map?:
+        | {
+              inline?: boolean | undefined;
+              prev?: string | Object | undefined;
+          }
+        | undefined;
 }
 
 interface Result {

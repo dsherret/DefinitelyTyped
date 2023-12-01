@@ -1,6 +1,14 @@
-import { ParseLockfile, ValidateHost, ValidateHttps, ValidateScheme, ValidateUrl } from "lockfile-lint-api";
+import {
+    ParseLockfile,
+    ValidateHost,
+    ValidateHttps,
+    ValidateScheme,
+    ValidateUrl,
+} from "lockfile-lint-api";
 
-const validator = new ValidateHost({ packages: { name: { version: "v1.0.0" } } });
+const validator = new ValidateHost({
+    packages: { name: { version: "v1.0.0" } },
+});
 let result;
 try {
     result = validator.validate(["npm", "meow"]);

@@ -13,7 +13,12 @@ import {
     SourceMapSource,
 } from "webpack-sources";
 
-const tests = (source: Source, options: MapOptions, hash: Hash, sourceMap: RawSourceMap) => {
+const tests = (
+    source: Source,
+    options: MapOptions,
+    hash: Hash,
+    sourceMap: RawSourceMap,
+) => {
     const cachedSource = new CachedSource(source);
     cachedSource.size(); // $ExpectType number
     cachedSource.source(); // $ExpectType string | ArrayBuffer
@@ -45,7 +50,10 @@ const tests = (source: Source, options: MapOptions, hash: Hash, sourceMap: RawSo
     lineToLineMappedSource.map(options); // $ExpectType RawSourceMap | null
     lineToLineMappedSource.sourceAndMap(options); // $ExpectType SourceAndMapResult
 
-    const originalSource = new OriginalSource(lineToLineMappedSource.source(), "originalSource");
+    const originalSource = new OriginalSource(
+        lineToLineMappedSource.source(),
+        "originalSource",
+    );
     originalSource.source(); // $ExpectType string
     originalSource.node(options); // $ExpectType SourceNode
     originalSource.listMap(options); // $ExpectType SourceListMap
@@ -80,7 +88,11 @@ const tests = (source: Source, options: MapOptions, hash: Hash, sourceMap: RawSo
     replaceSource.map(options); // $ExpectType RawSourceMap | null
     replaceSource.sourceAndMap(options); // $ExpectType SourceAndMapResult
 
-    const sourceMapSource = new SourceMapSource(replaceSource.source(), "sourceMapSource", sourceMap);
+    const sourceMapSource = new SourceMapSource(
+        replaceSource.source(),
+        "sourceMapSource",
+        sourceMap,
+    );
     sourceMapSource.source(); // $ExpectType string
     sourceMapSource.node(options); // $ExpectType SourceNode
     sourceMapSource.listMap(options); // $ExpectType SourceListMap

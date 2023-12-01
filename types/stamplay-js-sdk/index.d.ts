@@ -5,7 +5,7 @@ declare namespace Stamplay {
 
     interface Model {
         signup(arg: any): Promise<any>;
-        new(): Model; // This is suspicious, but tests show model instances being constructable...
+        new (): Model; // This is suspicious, but tests show model instances being constructable...
         get(property: string): any;
         set(property: string, value: any): void;
         unset(property: string): void;

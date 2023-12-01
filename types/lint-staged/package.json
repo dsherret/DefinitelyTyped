@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/lint-staged",
-    "version": "13.2.9999",
-    "projects": [
-        "https://github.com/okonet/lint-staged#readme"
-    ],
-    "devDependencies": {
-        "@types/lint-staged": "workspace:."
+  "private": true,
+  "name": "@types/lint-staged",
+  "version": "13.2.9999",
+  "projects": [
+    "https://github.com/okonet/lint-staged#readme"
+  ],
+  "devDependencies": {
+    "@types/lint-staged": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Andrey Okonetchnikov",
+      "githubUsername": "okonet"
     },
-    "owners": [
-        {
-            "name": "Andrey Okonetchnikov",
-            "githubUsername": "okonet"
-        },
-        {
-            "name": "Saiichi Hashimoto",
-            "githubUsername": "saiichihashimoto"
-        }
-    ]
+    {
+      "name": "Saiichi Hashimoto",
+      "githubUsername": "saiichihashimoto"
+    }
+  ]
 }

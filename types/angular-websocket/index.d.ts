@@ -2,8 +2,10 @@ import * as angular from "angular";
 
 export type IWebSocketConfigOptions = angular.websocket.IWebSocketConfigOptions;
 export type IWebSocketProvider = angular.websocket.IWebSocketProvider;
-export type IWebSocketMessageOptions = angular.websocket.IWebSocketMessageOptions;
-export type IWebSocketMessageHandler = angular.websocket.IWebSocketMessageHandler;
+export type IWebSocketMessageOptions =
+    angular.websocket.IWebSocketMessageOptions;
+export type IWebSocketMessageHandler =
+    angular.websocket.IWebSocketMessageHandler;
 export type IWebSocketQueueItem = angular.websocket.IWebSocketQueueItem;
 export type IWebSocket = angular.websocket.IWebSocket;
 
@@ -94,7 +96,10 @@ declare module "angular" {
              * @param event event object
              * @returns this instance, for method chaining
              */
-            onMessage(callback: (event: MessageEvent) => void, options?: IWebSocketMessageOptions): IWebSocket;
+            onMessage(
+                callback: (event: MessageEvent) => void,
+                options?: IWebSocketMessageOptions,
+            ): IWebSocket;
 
             /**
              * Closes the underlying socket, as long as no data is still being sent from the client.
@@ -124,7 +129,7 @@ declare module "angular" {
             /**
              * List of callbacks to be executed when the socket is opened.
              */
-            onOpenCallbacks: Array<((evt: Event) => void)>;
+            onOpenCallbacks: Array<(evt: Event) => void>;
 
             /**
              * List of callbacks to be executed when a message is received from the socket.
@@ -134,12 +139,12 @@ declare module "angular" {
             /**
              * List of callbacks to be executed when an error is received from the socket.
              */
-            onErrorCallbacks: Array<((evt: Event) => void)>;
+            onErrorCallbacks: Array<(evt: Event) => void>;
 
             /**
              * List of callbacks to be executed when the socket is closed.
              */
-            onCloseCallbacks: Array<((evt: CloseEvent) => void)>;
+            onCloseCallbacks: Array<(evt: CloseEvent) => void>;
 
             /**
              * Returns either the readyState value from the underlying WebSocket instance

@@ -62,20 +62,24 @@ function setTheme(shellFrame: IShellFrame) {
         background_TaskPane_TopRightBitmapFile: "TaskPaneTopRight.png",
         background_TaskPane_TopLeftBitmapFile: "TaskPaneTopLeftTile.png",
         background_SearchPane_TopBitmapFile: "SearchPaneTopTile.png",
-        background_SearchPane_DownAndRightBitmapFile: "SearchPaneDownAndRightTile.png",
+        background_SearchPane_DownAndRightBitmapFile:
+            "SearchPaneDownAndRightTile.png",
         background_LoginPane_TopBitmapFile: "LoginPaneTopTile.png",
-        background_LoginPane_DownAndRightBitmapFile: "LoginPaneDownAndRightTile.png",
+        background_LoginPane_DownAndRightBitmapFile:
+            "LoginPaneDownAndRightTile.png",
         last: 0,
     });
 }
 
 function OnNewShellUI(shellUI: IShellUI) {
     shellUI.Events.Register(MFiles.Event.NewShellFrame, newShellFrameHandler);
-    shellUI.Events.Register(MFiles.Event.NewNormalShellFrame, newShellFrameHandler);
+    shellUI.Events.Register(
+        MFiles.Event.NewNormalShellFrame,
+        newShellFrameHandler,
+    );
     if (MFiles.CurrentApplicationPlatform !== MFExtApplicationPlatformWeb) {
         // We are not executing on the web, AxtiveX is available
-        const html =
-            `<object classid='clsid:${MFiles.CLSID.ShellListingCtrl}' style='width: 400px; height: 300px;'> </object>`;
+        const html = `<object classid='clsid:${MFiles.CLSID.ShellListingCtrl}' style='width: 400px; height: 300px;'> </object>`;
     }
 }
 
@@ -83,14 +87,21 @@ function newShellFrameHandler(shellFrame: IShellFrame) {
     shellFrame.Events.Register(MFiles.Event.Started, () => {
         setTheme(shellFrame);
     });
-    shellFrame.Events.Register(MFiles.Event.Started, getShellFrameStartedHandler(shellFrame));
+    shellFrame.Events.Register(
+        MFiles.Event.Started,
+        getShellFrameStartedHandler(shellFrame),
+    );
 }
 
 function getShellFrameStartedHandler(shellFrame: IShellFrame) {
     return () => {
         if (shellFrame.CurrentPath === "") {
             shellFrame.ShowDashboard("home", null);
-            const homeTab = shellFrame.RightPane.AddTab("_home", MFiles.GetStringResource(27664), "_last");
+            const homeTab = shellFrame.RightPane.AddTab(
+                "_home",
+                MFiles.GetStringResource(27664),
+                "_last",
+            );
             homeTab.ShowDashboard("home_right", null);
             homeTab.Visible = true;
             homeTab.Select();

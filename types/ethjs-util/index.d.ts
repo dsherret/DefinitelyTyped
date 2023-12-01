@@ -12,7 +12,11 @@ export function intToBuffer(i: number): Buffer;
 
 export function getBinarySize(str: string): number;
 
-export function arrayContainsArray(superset: any[], subset: any[], some?: boolean): boolean;
+export function arrayContainsArray(
+    superset: any[],
+    subset: any[],
+    some?: boolean,
+): boolean;
 
 export function toUtf8(hex: string): string;
 
@@ -22,6 +26,10 @@ export function fromUtf8(stringValue: string): string;
 
 export function fromAscii(stringValue: string): string;
 
-export function getKeys(params: any[], key: string, allowEmpty?: boolean): any[];
+export function getKeys(
+    params: any[],
+    key: string,
+    allowEmpty?: boolean,
+): any[];
 
 export function isHexString(value: string, length?: number): boolean;

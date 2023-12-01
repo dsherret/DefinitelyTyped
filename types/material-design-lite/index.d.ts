@@ -84,7 +84,10 @@ declare namespace MaterialDesignLite {
          * upgrade. This function should expect 1 parameter - the HTMLElement which
          * got upgraded.
          */
-        registerUpgradedCallback(jsClass: string, callback: (element: HTMLElement) => any): void;
+        registerUpgradedCallback(
+            jsClass: string,
+            callback: (element: HTMLElement) => any,
+        ): void;
 
         /**
          * Registers a class for future use and attempts to upgrade existing DOM.

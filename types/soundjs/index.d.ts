@@ -13,7 +13,11 @@
 declare namespace createjs {
     export class AbstractPlugin {
         // methods
-        create(src: string, startTime: number, duration: number): AbstractSoundInstance;
+        create(
+            src: string,
+            startTime: number,
+            duration: number,
+        ): AbstractSoundInstance;
         getVolume(): number;
         isPreloadComplete(src: string): boolean;
         isPreloadStarted(src: string): boolean;
@@ -27,7 +31,12 @@ declare namespace createjs {
     }
 
     export class AbstractSoundInstance extends EventDispatcher {
-        constructor(src: string, startTime: number, duration: number, playbackResource: Object);
+        constructor(
+            src: string,
+            startTime: number,
+            duration: number,
+            playbackResource: Object,
+        );
 
         // properties
         duration: number;
@@ -88,7 +97,12 @@ declare namespace createjs {
     }
 
     export class FlashAudioSoundInstance extends AbstractSoundInstance {
-        constructor(src: string, startTime: number, duration: number, playbackResource: Object);
+        constructor(
+            src: string,
+            startTime: number,
+            duration: number,
+            playbackResource: Object,
+        );
     }
 
     /**
@@ -130,11 +144,15 @@ declare namespace createjs {
     }
 
     export class HTMLAudioSoundInstance extends AbstractSoundInstance {
-        constructor(src: string, startTime: number, duration: number, playbackResource: Object);
+        constructor(
+            src: string,
+            startTime: number,
+            duration: number,
+            playbackResource: Object,
+        );
     }
 
-    export class HTMLAudioTagPool {
-    }
+    export class HTMLAudioTagPool {}
 
     export class PlayPropsConfig {
         delay: number;
@@ -189,7 +207,12 @@ declare namespace createjs {
         ): AbstractSoundInstance;
         static registerManifest(manifest: Object[], basePath: string): Object;
         static registerPlugins(plugins: any[]): boolean;
-        static registerSound(src: string | Object, id?: string, data?: number | Object, basePath?: string): Object;
+        static registerSound(
+            src: string | Object,
+            id?: string,
+            data?: number | Object,
+            basePath?: string,
+        ): Object;
         static registerSounds(sounds: Object[], basePath?: string): Object[];
         static removeAllSounds(): void;
         static removeManifest(manifest: any[], basePath: string): Object;
@@ -199,8 +222,16 @@ declare namespace createjs {
         static stop(): void;
 
         // EventDispatcher mixins
-        static addEventListener(type: string, listener: (eventObj: Object) => boolean, useCapture?: boolean): Function;
-        static addEventListener(type: string, listener: (eventObj: Object) => void, useCapture?: boolean): Function;
+        static addEventListener(
+            type: string,
+            listener: (eventObj: Object) => boolean,
+            useCapture?: boolean,
+        ): Function;
+        static addEventListener(
+            type: string,
+            listener: (eventObj: Object) => void,
+            useCapture?: boolean,
+        ): Function;
         static addEventListener(
             type: string,
             listener: { handleEvent: (eventObj: Object) => boolean },
@@ -211,13 +242,36 @@ declare namespace createjs {
             listener: { handleEvent: (eventObj: Object) => void },
             useCapture?: boolean,
         ): Object;
-        static dispatchEvent(eventObj: Object | string | Event, target?: Object): boolean;
+        static dispatchEvent(
+            eventObj: Object | string | Event,
+            target?: Object,
+        ): boolean;
         static hasEventListener(type: string): boolean;
-        static off(type: string, listener: (eventObj: Object) => boolean, useCapture?: boolean): void;
-        static off(type: string, listener: (eventObj: Object) => void, useCapture?: boolean): void;
-        static off(type: string, listener: { handleEvent: (eventObj: Object) => boolean }, useCapture?: boolean): void;
-        static off(type: string, listener: { handleEvent: (eventObj: Object) => void }, useCapture?: boolean): void;
-        static off(type: string, listener: Function, useCapture?: boolean): void; // It is necessary for "arguments.callee"
+        static off(
+            type: string,
+            listener: (eventObj: Object) => boolean,
+            useCapture?: boolean,
+        ): void;
+        static off(
+            type: string,
+            listener: (eventObj: Object) => void,
+            useCapture?: boolean,
+        ): void;
+        static off(
+            type: string,
+            listener: { handleEvent: (eventObj: Object) => boolean },
+            useCapture?: boolean,
+        ): void;
+        static off(
+            type: string,
+            listener: { handleEvent: (eventObj: Object) => void },
+            useCapture?: boolean,
+        ): void;
+        static off(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void; // It is necessary for "arguments.callee"
         static on(
             type: string,
             listener: (eventObj: Object) => boolean,
@@ -251,8 +305,16 @@ declare namespace createjs {
             useCapture?: boolean,
         ): Object;
         static removeAllEventListeners(type?: string): void;
-        static removeEventListener(type: string, listener: (eventObj: Object) => boolean, useCapture?: boolean): void;
-        static removeEventListener(type: string, listener: (eventObj: Object) => void, useCapture?: boolean): void;
+        static removeEventListener(
+            type: string,
+            listener: (eventObj: Object) => boolean,
+            useCapture?: boolean,
+        ): void;
+        static removeEventListener(
+            type: string,
+            listener: (eventObj: Object) => void,
+            useCapture?: boolean,
+        ): void;
         static removeEventListener(
             type: string,
             listener: { handleEvent: (eventObj: Object) => boolean },
@@ -263,7 +325,11 @@ declare namespace createjs {
             listener: { handleEvent: (eventObj: Object) => void },
             useCapture?: boolean,
         ): void;
-        static removeEventListener(type: string, listener: Function, useCapture?: boolean): void; // It is necessary for "arguments.callee"
+        static removeEventListener(
+            type: string,
+            listener: Function,
+            useCapture?: boolean,
+        ): void; // It is necessary for "arguments.callee"
         static toString(): string;
         static willTrigger(type: string): boolean;
     }
@@ -292,7 +358,12 @@ declare namespace createjs {
     }
 
     export class WebAudioSoundInstance extends AbstractSoundInstance {
-        constructor(src: string, startTime: number, duration: number, playbackResource: Object);
+        constructor(
+            src: string,
+            startTime: number,
+            duration: number,
+            playbackResource: Object,
+        );
 
         // properties
         static context: AudioContext;

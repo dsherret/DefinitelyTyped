@@ -82,24 +82,24 @@ function SpriteSheetTest(): React.ReactElement {
             backgroundSize={"contain"}
             backgroundRepeat={"repeat-x"}
             backgroundPosition={"center"}
-            getInstance={spritesheet => {
+            getInstance={(spritesheet) => {
                 setInstance(spritesheet);
             }}
-            onClick={spritesheet => console.log("Clicked")}
-            onDoubleClick={spritesheet => console.log("Double Clicked")}
-            onMouseMove={spritesheet => console.log("Moved Mouse")}
-            onMouseEnter={spritesheet => console.log("Mouse Enter")}
-            onMouseLeave={spritesheet => console.log("Mouse Leave")}
-            onMouseOver={spritesheet => console.log("Mouse Over")}
-            onMouseOut={spritesheet => console.log("Mouse Out")}
+            onClick={(spritesheet) => console.log("Clicked")}
+            onDoubleClick={(spritesheet) => console.log("Double Clicked")}
+            onMouseMove={(spritesheet) => console.log("Moved Mouse")}
+            onMouseEnter={(spritesheet) => console.log("Mouse Enter")}
+            onMouseLeave={(spritesheet) => console.log("Mouse Leave")}
+            onMouseOver={(spritesheet) => console.log("Mouse Over")}
+            onMouseOut={(spritesheet) => console.log("Mouse Out")}
             onMouseDown={() => console.log("Mouse Down")}
             onMouseUp={() => console.log("Mouse Up")}
             onInit={() => console.log("Initialized")}
-            onResize={spritesheet => spritesheet.getInfo("width")}
-            onPlay={spritesheet => spritesheet.pause()}
-            onPause={spritesheet => spritesheet.getInfo("isPlaying")}
+            onResize={(spritesheet) => spritesheet.getInfo("width")}
+            onPlay={(spritesheet) => spritesheet.pause()}
+            onPause={(spritesheet) => spritesheet.getInfo("isPlaying")}
             onLoopComplete={() => console.log("Loop Complete")}
-            onEachFrame={spritesheet => spritesheet.getInfo("frame")}
+            onEachFrame={(spritesheet) => spritesheet.getInfo("frame")}
             onEnterFrame={[
                 {
                     frame: 2,

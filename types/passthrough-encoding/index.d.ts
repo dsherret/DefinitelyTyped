@@ -10,7 +10,11 @@
  * console.log(codec.encode(Buffer.from('hello'))) // prints Buffer('hello')
  * console.log(codec.encode('hello')) // prints Buffer('hello')
  */
-export function encode(value: Buffer | string | null | undefined, buffer?: Buffer, offset?: number): Buffer;
+export function encode(
+    value: Buffer | string | null | undefined,
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 export namespace encode {
     const bytes: number;
 }

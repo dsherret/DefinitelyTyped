@@ -6,4 +6,6 @@ export interface ErrorHttpMiddleware {
     onError: MiddlewareFunction<HttpGatewayEvent, any>;
 }
 
-export default function errorHttpResponseMiddleware(opts?: MiddlewareOptions): ErrorHttpMiddleware;
+export default function errorHttpResponseMiddleware(
+    opts?: MiddlewareOptions,
+): ErrorHttpMiddleware;

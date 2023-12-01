@@ -45,7 +45,11 @@ recall("key", 1);
 let elem: HTMLElement | null = setPageElement("#elem", "passage");
 elem = setPageElement("#elem", ["passage1", "passage2"]);
 elem = setPageElement("#elem", "passage", "defaultText");
-elem = setPageElement(document.getElementById("#elem") as HTMLElement, "passage", "defaultText");
+elem = setPageElement(
+    document.getElementById("#elem") as HTMLElement,
+    "passage",
+    "defaultText",
+);
 
 let strArray: string[] = tags("passage");
 strArray = tags("passage1", "pasage2");

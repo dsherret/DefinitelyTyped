@@ -89,7 +89,10 @@ const buf = parseTorrent.toTorrentFile({
     infoHash: "d2474e86c95b19b8bcfdb92bc12c9d44667cfa36",
 });
 
-parseTorrent.remote("d2474e86c95b19b8bcfdb92bc12c9d44667cfa36", (err, parsedTorrent) => {
-    // if (err) throw err
-    // console.log(parsedTorrent)
-});
+parseTorrent.remote(
+    "d2474e86c95b19b8bcfdb92bc12c9d44667cfa36",
+    (err, parsedTorrent) => {
+        // if (err) throw err
+        // console.log(parsedTorrent)
+    },
+);

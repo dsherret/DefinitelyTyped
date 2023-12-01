@@ -74,11 +74,16 @@ interface ObjectFunction {
 type AssertExtended<T extends any[], R> = (...args: [...T, string?]) => R;
 
 type ExtendWithAssert<T> = {
-    [K in keyof T]: T[K] extends (...a: infer U) => infer R ? AssertExtended<U, R> & ExtendWithAssert<T[K]>
+    [K in keyof T]: T[K] extends (...a: infer U) => infer R
+        ? AssertExtended<U, R> & ExtendWithAssert<T[K]>
         : ExtendWithAssert<T[K]>;
 };
 interface AssertFunction {
-    <T>(possibleFalsy: T, message?: string, errorType?: { new(...args: any[]): any }): T;
+    <T>(
+        possibleFalsy: T,
+        message?: string,
+        errorType?: { new (...args: any[]): any },
+    ): T;
 }
 
 interface CheckType {
@@ -88,7 +93,9 @@ interface CheckType {
     null(a: any): a is null;
     undefined(a: any): a is undefined;
     assigned(a: any): boolean;
-    primitive(a: any): a is number | string | boolean | null | undefined | symbol;
+    primitive(
+        a: any,
+    ): a is number | string | boolean | null | undefined | symbol;
     hasLength(a: any, length: number): boolean;
 
     /* String predicates */
@@ -163,7 +170,9 @@ interface CheckType {
     /* Modifiers (some of them in their respected sections) */
     not: CheckTypePredicates & NegationFunction;
     maybe: CheckTypePredicates & MaybeFunction;
-    assert: ExtendWithAssert<CheckTypePredicates> & ExtendWithAssert<Pick<CheckType, "not" | "maybe">> & AssertFunction;
+    assert: ExtendWithAssert<CheckTypePredicates> &
+        ExtendWithAssert<Pick<CheckType, "not" | "maybe">> &
+        AssertFunction;
 
     /* Batch operations */
 
@@ -192,7 +201,10 @@ interface CheckType {
 
     contains(a: string, substring: string): boolean;
     contains(a: object, value: any): boolean;
-    contains<T = any>(a: T[] | Set<T> | Map<any, T> | Iterable<T>, value: T): boolean;
+    contains<T = any>(
+        a: T[] | Set<T> | Map<any, T> | Iterable<T>,
+        value: T,
+    ): boolean;
 
     keyIn(key: number | string, a: string | any[]): boolean;
     keyIn(key: number | string | symbol, a: object): boolean;

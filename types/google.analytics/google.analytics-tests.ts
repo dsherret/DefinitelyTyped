@@ -9,8 +9,10 @@ describe("tester Google Analytics Tracker _gat object", () => {
         gaClassic.async = true;
     });
     it("can set src to string url", () => {
-        gaClassic.src = ("https:" === document.location.protocol ? "https://ssl" : "http://www")
-            + ".google-analytics.com/ga.js";
+        gaClassic.src =
+            ("https:" === document.location.protocol
+                ? "https://ssl"
+                : "http://www") + ".google-analytics.com/ga.js";
     });
     it("can set type", () => {
         gaClassic.type = "text/javascript";
@@ -25,12 +27,31 @@ describe("UniversalAnalytics", () => {
         ga("send", "pageview");
         ga("send", "pageview", { some: "details" });
         ga("send", "event", "Videos", "play", "Fall Campaign");
-        ga("send", { hitType: "event", eventCategory: "Videos", eventAction: "play", eventLabel: "Fall Campaign" });
-        ga("send", "event", "Videos", "play", "Fall Campaign", { nonInteraction: true });
+        ga("send", {
+            hitType: "event",
+            eventCategory: "Videos",
+            eventAction: "play",
+            eventLabel: "Fall Campaign",
+        });
+        ga("send", "event", "Videos", "play", "Fall Campaign", {
+            nonInteraction: true,
+        });
         ga("send", "pageview", "/page");
-        ga("send", "social", { socialNetwork: "facebook", socialAction: "like", socialTarget: "http://foo.com" });
-        ga("send", "social", { socialNetwork: "google+", socialAction: "plus", socialTarget: "http://foo.com" });
-        ga("send", "timing", { timingCategory: "category", timingVar: "lookup", timingValue: 123 });
+        ga("send", "social", {
+            socialNetwork: "facebook",
+            socialAction: "like",
+            socialTarget: "http://foo.com",
+        });
+        ga("send", "social", {
+            socialNetwork: "google+",
+            socialAction: "plus",
+            socialTarget: "http://foo.com",
+        });
+        ga("send", "timing", {
+            timingCategory: "category",
+            timingVar: "lookup",
+            timingValue: 123,
+        });
         ga("send", "timing", {
             timingCategory: "category",
             timingVar: "lookup",
@@ -43,7 +64,7 @@ describe("UniversalAnalytics", () => {
         ga("require", "somePlugin", "option");
         ga("require", "somePlugin", { some: "options" });
         ga("provide", "somePlugin", () => {});
-        ga("provide", "somePlugin", tracker => {});
+        ga("provide", "somePlugin", (tracker) => {});
         ga("provide", "somePlugin", (tracker, options) => {});
 
         ga.create("UA-65432-1", "auto");
@@ -53,7 +74,10 @@ describe("UniversalAnalytics", () => {
         ga.getByName("aNamedTracker");
     });
     it("should excercise Tracker APIs", () => {
-        const tracker: UniversalAnalytics.Tracker = ga.create("UA-65432-1", "auto");
+        const tracker: UniversalAnalytics.Tracker = ga.create(
+            "UA-65432-1",
+            "auto",
+        );
 
         tracker.get("fieldName");
 
@@ -71,7 +95,10 @@ describe("UniversalAnalytics", () => {
     });
 
     it("should exercise Model APIs", () => {
-        const tracker: UniversalAnalytics.Tracker = ga.create("UA-65432-1", "auto");
+        const tracker: UniversalAnalytics.Tracker = ga.create(
+            "UA-65432-1",
+            "auto",
+        );
 
         tracker.set("sendHitTask", (gaHitModel: UniversalAnalytics.Model) => {
             gaHitModel.get("hitPayload");
@@ -117,7 +144,14 @@ describe("tester Google Analytics Code  _gaq object", () => {
         _gaq.push(["_trackPageview"]);
 
         // more details: https://developers.google.com/analytics/devguides/collection/gajs/methods/gaJSApiEventTracking#_trackevent
-        _gaq.push(["_trackEvent", "category", "action_name", undefined, undefined, true]);
+        _gaq.push([
+            "_trackEvent",
+            "category",
+            "action_name",
+            undefined,
+            undefined,
+            true,
+        ]);
 
         _gaq.push(() => {
             const tracker = _gat._getTrackerByName("UA-65432-1");

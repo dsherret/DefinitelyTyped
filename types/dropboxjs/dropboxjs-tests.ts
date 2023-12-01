@@ -6,38 +6,53 @@ browserClient.authenticate((error: any, client: Dropbox.Client) => {
     }
 
     client.onError.addListener((error: any) => {
-        if (window["console"]) { // Skip the "if" in node.js code.
+        if (window["console"]) {
+            // Skip the "if" in node.js code.
             console.error(error);
         }
     });
 
-    client.getAccountInfo((error: Dropbox.ApiError, accountInfo: Dropbox.AccountInfo) => {
-        if (error) {
-            alert(error); // Something went wrong.
-        }
+    client.getAccountInfo(
+        (error: Dropbox.ApiError, accountInfo: Dropbox.AccountInfo) => {
+            if (error) {
+                alert(error); // Something went wrong.
+            }
 
-        alert("Hello, " + accountInfo.name + "!");
-    });
+            alert("Hello, " + accountInfo.name + "!");
+        },
+    );
 
-    client.writeFile("hello_world.txt", "Hello, world!\n", (error: Dropbox.ApiError, stat: Dropbox.File.Stat) => {
-        if (error) {
-            alert(error); // Something went wrong.
-        }
+    client.writeFile(
+        "hello_world.txt",
+        "Hello, world!\n",
+        (error: Dropbox.ApiError, stat: Dropbox.File.Stat) => {
+            if (error) {
+                alert(error); // Something went wrong.
+            }
 
-        alert("File saved as revision " + stat.versionTag);
-    });
+            alert("File saved as revision " + stat.versionTag);
+        },
+    );
 
-    client.readFile("hello_world.txt", (error: Dropbox.ApiError, data: string) => {
-        if (error) {
-            alert(error); // Something went wrong.
-        }
+    client.readFile(
+        "hello_world.txt",
+        (error: Dropbox.ApiError, data: string) => {
+            if (error) {
+                alert(error); // Something went wrong.
+            }
 
-        alert(data); // data has the file's contents
-    });
+            alert(data); // data has the file's contents
+        },
+    );
 
     client.readdir(
         "/",
-        (err: Dropbox.ApiError, filenames: string[], stat: Dropbox.File.Stat, folderEntries: Dropbox.File.Stat[]) => {
+        (
+            err: Dropbox.ApiError,
+            filenames: string[],
+            stat: Dropbox.File.Stat,
+            folderEntries: Dropbox.File.Stat[],
+        ) => {
             if (error) {
                 alert(error); // Something went wrong.
             }

@@ -1,10 +1,17 @@
-import { Plugin, Server, ServerMethodOptions, ServerOptionsCache } from "@hapi/hapi";
+import {
+    Plugin,
+    Server,
+    ServerMethodOptions,
+    ServerOptionsCache,
+} from "@hapi/hapi";
 
 export const name: unique symbol;
 export const sandbox: unique symbol;
 
 export interface ServiceCachingOptions {
-    [methodNameToCache: string]: ServerOptionsCache | Exclude<ServerMethodOptions, "bind">;
+    [methodNameToCache: string]:
+        | ServerOptionsCache
+        | Exclude<ServerMethodOptions, "bind">;
 }
 
 export type ServiceSandbox = boolean | "plugin" | "server";
@@ -20,7 +27,10 @@ export interface ServiceRegistrationObject {
     [serviceMethod: string]: any;
 }
 
-export function ServiceFactory(server: Server, options: object): ServiceRegistrationObject;
+export function ServiceFactory(
+    server: Server,
+    options: object,
+): ServiceRegistrationObject;
 
 // options is any because it's left to the implementer to define based on usage
 export type ServiceOptions = any;
@@ -41,7 +51,11 @@ export class Service {
     teardown?(): void;
 }
 
-export type RegisterServiceConfiguration = typeof ServiceFactory | Service | Service[] | ServiceRegistrationObject;
+export type RegisterServiceConfiguration =
+    | typeof ServiceFactory
+    | Service
+    | Service[]
+    | ServiceRegistrationObject;
 
 export const plugin: Plugin<{}>;
 

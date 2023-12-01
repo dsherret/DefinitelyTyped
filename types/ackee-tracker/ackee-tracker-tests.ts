@@ -27,7 +27,10 @@ const instance2 = ackeeTracker.create("https://example.com", {
     ignoreOwnVisits: false,
 });
 
-instance2.record("hd11f820-68a1-11e6-8047-79c0c2d9bce0", ackeeTracker.attributes(true));
+instance2.record(
+    "hd11f820-68a1-11e6-8047-79c0c2d9bce0",
+    ackeeTracker.attributes(true),
+);
 
 const options: ackeeTracker.TrackingOptions = {
     ignoreLocalhost: true,
@@ -41,4 +44,7 @@ const instance3 = ackeeTracker.create("https://example.com", {
     ignoreOwnVisits: options.ignoreOwnVisits,
 });
 
-instance3.record("https://example.com", ackeeTracker.attributes(options.detailed));
+instance3.record(
+    "https://example.com",
+    ackeeTracker.attributes(options.detailed),
+);

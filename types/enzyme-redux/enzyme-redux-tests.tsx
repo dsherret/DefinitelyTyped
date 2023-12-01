@@ -1,4 +1,9 @@
-import { mountWithState, mountWithStore, shallowWithState, shallowWithStore } from "enzyme-redux";
+import {
+    mountWithState,
+    mountWithStore,
+    shallowWithState,
+    shallowWithStore,
+} from "enzyme-redux";
 import * as React from "react";
 
 const Component = () => <div>component</div>;

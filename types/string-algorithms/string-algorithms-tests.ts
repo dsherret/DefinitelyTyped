@@ -13,7 +13,7 @@ search("", "");
 // $ExpectType number[][]
 radixSort([[1]]);
 // $ExpectType number[][]
-radixSort([[1]], x => x);
+radixSort([[1]], (x) => x);
 // $ExpectType number[][]
 radixSort([{ x: [1] }], ({ x }) => x);
 // @ts-expect-error

@@ -11,10 +11,10 @@ ud.autocomplete("test", (error, results) => {
 
 // Promise
 ud.autocomplete("test")
-    .then(results => {
+    .then((results) => {
         results; // $ExpectType string[]
     })
-    .catch(error => {
+    .catch((error) => {
         error; // $ExpectType any
     });
 
@@ -30,10 +30,10 @@ ud.autocompleteExtra("test", (error, results) => {
 
 // Promise
 ud.autocompleteExtra("test")
-    .then(results => {
+    .then((results) => {
         results; // $ExpectType AutocompleteExtraObject[]
     })
-    .catch(error => {
+    .catch((error) => {
         error; // $ExpectType any
     });
 
@@ -49,10 +49,10 @@ ud.getDefinitionByDefid(217456, (error, result) => {
 
 // Promise
 ud.getDefinitionByDefid(217456)
-    .then(result => {
+    .then((result) => {
         result; // $ExpectType DefinitionObject
     })
-    .catch(error => {
+    .catch((error) => {
         error; // $ExpectType any
     });
 
@@ -67,10 +67,10 @@ ud.random((error, results) => {
 
 // Promise
 ud.random()
-    .then(results => {
+    .then((results) => {
         results; // $ExpectType DefinitionObject[]
     })
-    .catch(error => {
+    .catch((error) => {
         error; // $ExpectType any
     });
 
@@ -85,9 +85,9 @@ ud.wordsOfTheDay((error, results) => {
 
 // Promise
 ud.wordsOfTheDay()
-    .then(results => {
+    .then((results) => {
         results; // $ExpectType DefinitionObject[]
     })
-    .catch(error => {
+    .catch((error) => {
         error; // $ExpectType any
     });

@@ -15,7 +15,7 @@ const sb = new ScrollBooster({
     inputsFocus: true,
     pointerMode: "all",
     scrollMode: "transform",
-    onUpdate: state => {
+    onUpdate: (state) => {
         // state contains useful metrics: position, dragOffset, isDragging, isMoving, borderCollision
         // you can control scroll rendering manually without 'scrollMethod' option:
         if (content) {
@@ -29,12 +29,14 @@ const sb = new ScrollBooster({
     },
     shouldScroll: (_, event) => {
         // disable scroll if clicked on button
-        const isButton = (event.target as HTMLElement).nodeName.toLowerCase() === "button";
+        const isButton =
+            (event.target as HTMLElement).nodeName.toLowerCase() === "button";
         return !isButton;
     },
     onClick: (state, event) => {
         // prevent default link event
-        const isLink = (event.target as HTMLElement).nodeName.toLowerCase() === "link";
+        const isLink =
+            (event.target as HTMLElement).nodeName.toLowerCase() === "link";
         if (isLink) {
             event.preventDefault();
             console.log(state); // ScrollingState object

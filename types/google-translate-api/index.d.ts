@@ -18,5 +18,8 @@ interface TranslateResult {
     };
     raw: string;
 }
-declare function translate(text: string, options?: TranslateOption): Promise<TranslateResult>;
+declare function translate(
+    text: string,
+    options?: TranslateOption,
+): Promise<TranslateResult>;
 export = translate;

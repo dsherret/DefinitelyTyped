@@ -68,11 +68,13 @@ declare namespace spreedly {
         metadata?: { [key: string]: string };
     }
 
-    interface TokenizeCreditCardAdditionalFieldsFullName extends TokenizeCreditCardAdditionalFields {
+    interface TokenizeCreditCardAdditionalFieldsFullName
+        extends TokenizeCreditCardAdditionalFields {
         full_name: string;
     }
 
-    interface TokenizeCreditCardAdditionalFieldsFirstLastNames extends TokenizeCreditCardAdditionalFields {
+    interface TokenizeCreditCardAdditionalFieldsFirstLastNames
+        extends TokenizeCreditCardAdditionalFields {
         first_name: string;
         last_name: string;
     }
@@ -139,7 +141,12 @@ declare namespace spreedly {
         shipping_zip: string | null;
         shipping_country: string | null;
         shipping_phone_number: string | null;
-        payment_method_type: "credit_card" | "bank_account" | "apple_pay" | "google_pay" | "third_party_token";
+        payment_method_type:
+            | "credit_card"
+            | "bank_account"
+            | "apple_pay"
+            | "google_pay"
+            | "third_party_token";
         errors: any[];
         fingerprint: string | null;
         verification_value: string | null;
@@ -218,7 +225,10 @@ declare class SpreedlyPaymentFrame {
      * @param field - The iFrame field to set the type.
      * @param type - The input field type.
      */
-    setFieldType(field: spreedly.SpreedlyField, type: spreedly.SpreedlyFieldType): void;
+    setFieldType(
+        field: spreedly.SpreedlyField,
+        type: spreedly.SpreedlyFieldType,
+    ): void;
 
     /**
      * Style iFrame fields’ label. Although the label for each iFrame field is not displayed, it is still used by screen readers and other accessibility devices.
@@ -270,7 +280,10 @@ declare class SpreedlyPaymentFrame {
      * @param event - Event to listen on.
      * @param callback - Event callback.
      */
-    on(event: "consoleError", callback: (error: spreedly.SpreedlyConsoleError) => void): void;
+    on(
+        event: "consoleError",
+        callback: (error: spreedly.SpreedlyConsoleError) => void,
+    ): void;
 
     /**
      * Triggered when a payment method is not successfully tokenized or recached.
@@ -279,7 +292,10 @@ declare class SpreedlyPaymentFrame {
      * @param event - Event to listen on.
      * @param callback - Event callback.
      */
-    on(event: "errors", callback: (errors: spreedly.SpreedlyError[]) => void): void;
+    on(
+        event: "errors",
+        callback: (errors: spreedly.SpreedlyError[]) => void,
+    ): void;
 
     /**
      * Triggered when an input event occurs in either iFrame field.
@@ -307,7 +323,10 @@ declare class SpreedlyPaymentFrame {
      */
     on(
         event: "paymentMethod" | "recache",
-        callback: (token: string, paymentMethod: spreedly.SpreedlyPaymentMethod) => void,
+        callback: (
+            token: string,
+            paymentMethod: spreedly.SpreedlyPaymentMethod,
+        ) => void,
     ): void;
 
     /**
@@ -326,7 +345,12 @@ declare class SpreedlyPaymentFrame {
      * @param event - Event to listen on.
      * @param callback - Event callback.
      */
-    on(event: "validation", callback: (inputProperties: spreedly.SpreedlyFieldEventInputProperties) => void): void;
+    on(
+        event: "validation",
+        callback: (
+            inputProperties: spreedly.SpreedlyFieldEventInputProperties,
+        ) => void,
+    ): void;
 }
 
 declare var Spreedly: SpreedlyPaymentFrame;

@@ -1,5 +1,10 @@
 declare class BaseLogEntry {
-    constructor(level: string, text: string, timeStamp: Date, stackTrace: string);
+    constructor(
+        level: string,
+        text: string,
+        timeStamp: Date,
+        stackTrace: string,
+    );
 
     readonly level: string;
     readonly text: string;
@@ -8,7 +13,13 @@ declare class BaseLogEntry {
 }
 
 declare class GenericLogEntry extends BaseLogEntry {
-    constructor(level: string, text: string, timeStamp: Date, type: string, stackTrace: string);
+    constructor(
+        level: string,
+        text: string,
+        timeStamp: Date,
+        type: string,
+        stackTrace: string,
+    );
 
     readonly type: string;
 }

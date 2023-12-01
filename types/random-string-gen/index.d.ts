@@ -1,4 +1,11 @@
-type Type = "alphanumeric" | "alphabetic" | "numeric" | "hex" | "binary" | "octal" | "ascii-printable";
+type Type =
+    | "alphanumeric"
+    | "alphabetic"
+    | "numeric"
+    | "hex"
+    | "binary"
+    | "octal"
+    | "ascii-printable";
 type Capitalization = "lowercase" | "uppercase";
 interface GenerateOptions {
     /**
@@ -51,5 +58,7 @@ interface GenerateOptions {
  *
  * @returns a random `string` based on the options set.
  */
-declare function randomString(options?: GenerateOptions | number | string): string;
+declare function randomString(
+    options?: GenerateOptions | number | string,
+): string;
 export = randomString;

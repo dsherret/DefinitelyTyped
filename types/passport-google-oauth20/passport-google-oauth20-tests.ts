@@ -4,7 +4,11 @@ import google = require("passport-google-oauth20");
 
 // Just some test model.
 const User = {
-    findOrCreate(id: string, provider: string, callback: (err: any, user: any) => void): void {
+    findOrCreate(
+        id: string,
+        provider: string,
+        callback: (err: any, user: any) => void,
+    ): void {
         callback(null, { username: "alfred" });
     },
 };

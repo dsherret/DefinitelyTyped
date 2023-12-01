@@ -1,6 +1,13 @@
 import * as React from "react";
 import { render } from "react-dom";
-import { IntlAction, IntlProvider, intlReducer, IntlState, Provider, updateIntl } from "react-intl-redux";
+import {
+    IntlAction,
+    IntlProvider,
+    intlReducer,
+    IntlState,
+    Provider,
+    updateIntl,
+} from "react-intl-redux";
 import { createStore } from "redux";
 
 var action: IntlAction = updateIntl({ locale: "en", messages: {} });

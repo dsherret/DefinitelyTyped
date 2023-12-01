@@ -329,8 +329,7 @@ export type I<T> = T;
  * API for xelib wrapper
  */
 export interface XELib
-    extends
-        I<typeof LoaderState>,
+    extends I<typeof LoaderState>,
         I<typeof GameMode>,
         I<typeof ArchiveType>,
         I<typeof ElementType>,
@@ -338,8 +337,7 @@ export interface XELib
         I<typeof SmashType>,
         I<typeof ValueType>,
         I<typeof ConflictThis>,
-        I<typeof ConflictAll>
-{
+        I<typeof ConflictAll> {
     /**
      * Meta functions
      * @see {@link https://z-edit.github.io#/docs?t=Development%2FAPIs%2Fxelib%2FMeta}
@@ -530,7 +528,11 @@ export interface XELib
      * Extracts container name to destination, replacing existing files if replace is true.
      * Returns true if the container is extracted successfully.
      */
-    ExtractContainer(name: string, destination: string, replace: boolean): boolean;
+    ExtractContainer(
+        name: string,
+        destination: string,
+        replace: boolean,
+    ): boolean;
     /**
      * Extracts file source from container name to destination.
      * Returns true if the file is extracted successfully.
@@ -613,7 +615,11 @@ export interface XELib
      * Traverses path, creating any elements that are not found.
      * Sets the value of the element at the end of the path to value, and returns a handle to it.
      */
-    AddElementValue(id: Zeroable<Handle>, path: string, value: string): ElementHandle;
+    AddElementValue(
+        id: Zeroable<Handle>,
+        path: string,
+        value: string,
+    ): ElementHandle;
     /**
      * Removes the element at path if it exists.
      */
@@ -676,21 +682,41 @@ export interface XELib
     /**
      * Returns true if the array at path contains an item which matches value at subpath.
      */
-    HasArrayItem(id: Zeroable<Handle>, path: string, subpath: string, value: string): boolean;
+    HasArrayItem(
+        id: Zeroable<Handle>,
+        path: string,
+        subpath: string,
+        value: string,
+    ): boolean;
     /**
      * Returns the first item in the array at path which matches value at subpath.
      * Returns 0 if no matching element is found.
      */
-    GetArrayItem(id: Zeroable<Handle>, path: string, subpath: string, value: string): Zeroable<ElementHandle>;
+    GetArrayItem(
+        id: Zeroable<Handle>,
+        path: string,
+        subpath: string,
+        value: string,
+    ): Zeroable<ElementHandle>;
     /**
      * Adds an item to the array at path and sets value at subpath.
      * @returns Handle to the added array item.
      */
-    AddArrayItem(id: Zeroable<Handle>, path: string, subpath: string, value: string): ElementHandle;
+    AddArrayItem(
+        id: Zeroable<Handle>,
+        path: string,
+        subpath: string,
+        value: string,
+    ): ElementHandle;
     /**
      * Removes the first item in the array at path which matches value at subpath.
      */
-    RemoveArrayItem(id: Zeroable<Handle>, path: string, subpath: string, value: string): void;
+    RemoveArrayItem(
+        id: Zeroable<Handle>,
+        path: string,
+        subpath: string,
+        value: string,
+    ): void;
     /**
      * Moves the array item id to position index.
      */
@@ -700,7 +726,11 @@ export interface XELib
      * Records are copied as overrides if asNew is false.
      * @returns Handle to the copied element.
      */
-    CopyElement(id: ElementHandle, id2: ContainerHandle, asNew: boolean): ElementHandle;
+    CopyElement(
+        id: ElementHandle,
+        id2: ContainerHandle,
+        asNew: boolean,
+    ): ElementHandle;
     /**
      * @returns true if id is allowed to reference signature.
      */
@@ -834,7 +864,12 @@ export interface XELib
     /**
      * Resolves the flags element at path, and sets flag name to state.
      */
-    SetFlag(id: Zeroable<Handle>, path: string, name: string, state: boolean): void;
+    SetFlag(
+        id: Zeroable<Handle>,
+        path: string,
+        name: string,
+        state: boolean,
+    ): void;
     /**
      * Resolves the flags element at path, and gets the state of flag name.
      */
@@ -847,7 +882,11 @@ export interface XELib
      * Resolves the flags element at path and sets the enabled flags to flags.
      * Note: This disables any active flags that are not in flags.
      */
-    SetEnabledFlags(id: Zeroable<Handle>, path: string, flags: readonly string[]): void;
+    SetEnabledFlags(
+        id: Zeroable<Handle>,
+        path: string,
+        flags: readonly string[],
+    ): void;
     /**
      * Resolves the flags element at path and returns an array of the names of all of the flags it supports.
      * Flag positions in the array indicate the binary bits they corresponds to.
@@ -987,7 +1026,12 @@ export interface XELib
      * Set the form ID of the record id.
      * @returns Form ID of the record id as a hexadecimal string.
      */
-    SetFormID(id: RecordHandle, newFormID: number, native?: boolean, fixReferences?: boolean): string;
+    SetFormID(
+        id: RecordHandle,
+        newFormID: number,
+        native?: boolean,
+        fixReferences?: boolean,
+    ): string;
     /**
      * Pass 0 as id and a load order formID to perform a lookup by load order form ID.
      * Pass a file handle as id and a file formID to perform a lookup by native (file) form ID.
@@ -1010,7 +1054,11 @@ export interface XELib
      * @returns Array of all REFR records referencing base records with signatures in search found within id.
      * @see GetREFRsOptions
      */
-    GetREFRs(id: Handle, search: string, opts?: GetREFRsOptions): RecordHandle[];
+    GetREFRs(
+        id: Handle,
+        search: string,
+        opts?: GetREFRsOptions,
+    ): RecordHandle[];
     /**
      * @returns Array of handles corresponding to the overrides of record id.
      */
@@ -1036,17 +1084,32 @@ export interface XELib
      * @returns Next record after id which matches search.
      * @returns 0 if no match is found.
      */
-    FindNextRecord(id: Handle, search: string, byEdid: boolean, byName: boolean): Zeroable<RecordHandle>;
+    FindNextRecord(
+        id: Handle,
+        search: string,
+        byEdid: boolean,
+        byName: boolean,
+    ): Zeroable<RecordHandle>;
     /**
      * @returns Previous record after id which matches search.
      * @returns 0 if no match is found.
      */
-    FindPreviousRecord(id: Handle, search: string, byEdid: boolean, byName: boolean): Zeroable<RecordHandle>;
+    FindPreviousRecord(
+        id: Handle,
+        search: string,
+        byEdid: boolean,
+        byName: boolean,
+    ): Zeroable<RecordHandle>;
     /**
      * Excludes results which do not contain search in their LongName.
      * @returns Up to limitTo records matching signature which can be referenced by the file containing id.
      */
-    FindValidReferences(id: FileHandle, signature: string, search: string, limitTo: number): string[];
+    FindValidReferences(
+        id: FileHandle,
+        signature: string,
+        search: string,
+        limitTo: number,
+    ): string[];
     /**
      * References must be built with xelib.BuildReferences to be returned.
      * @returns Array of the records that reference record id.
@@ -1055,7 +1118,11 @@ export interface XELib
     /**
      * Exchanges all references to oldFormID with references to newFormID on record id.
      */
-    ExchangeReferences(id: RecordHandle, oldFormID: number, newFormID: number): void;
+    ExchangeReferences(
+        id: RecordHandle,
+        oldFormID: number,
+        newFormID: number,
+    ): void;
     /**
      * @returns true if record id is a master record.
      */
@@ -1101,7 +1168,10 @@ export interface XELib
      * @see GetNodes
      * @see GetElements
      */
-    GetNodeElements(nodes: NodeTreeHandle, element: ElementHandle): Array<Zeroable<ElementHandle>>;
+    GetNodeElements(
+        nodes: NodeTreeHandle,
+        element: ElementHandle,
+    ): Array<Zeroable<ElementHandle>>;
 
     /**
      * Record value functions
@@ -1214,7 +1284,10 @@ export interface XELib
      * Finds the first item in the `Additional Races` array on `record` matching `value`.
      * @returns Handle to the element if found, else returns 0.
      */
-    GetAdditionalRace(record: RecordHandle, value: string): Zeroable<ElementHandle>;
+    GetAdditionalRace(
+        record: RecordHandle,
+        value: string,
+    ): Zeroable<ElementHandle>;
     /**
      * Adds an value the `Additional Races` array on `record`.
      * @returns Handle to the added Additional Race element.
@@ -1260,7 +1333,13 @@ export interface XELib
      * and `EFIT\Duration` to `value4`.
      * @returns Handle to the added Effect element.
      */
-    AddEffect(record: RecordHandle, value: string, value2: string, value3: string, value4: string): ElementHandle;
+    AddEffect(
+        record: RecordHandle,
+        value: string,
+        value2: string,
+        value3: string,
+        value4: string,
+    ): ElementHandle;
     /**
      * Removes the first item in the `Effects` array on `record` matching `value` at `EFID - Base Effect`.
      */
@@ -1292,13 +1371,21 @@ export interface XELib
      * Finds the first item in the `Leveled List Entries` array on `record` matching `value` at `LVLO\Reference`.
      * @returns Handle to the element if found, else returns 0.
      */
-    GetLeveledEntry(record: RecordHandle, value: string): Zeroable<ElementHandle>;
+    GetLeveledEntry(
+        record: RecordHandle,
+        value: string,
+    ): Zeroable<ElementHandle>;
     /**
      * Adds an item to the `Leveled List Entries` array on `record`,
      * setting `LVLO\Reference` to `value`, `LVLO\Level` to `value2`, and `LVLO\Count` to `value3`.
      * @returns Handle to the added LeveledEntry element.
      */
-    AddLeveledEntry(record: RecordHandle, value: string, value2: string, value3: string): ElementHandle;
+    AddLeveledEntry(
+        record: RecordHandle,
+        value: string,
+        value2: string,
+        value3: string,
+    ): ElementHandle;
     /**
      * Removes the first item in the `Leveled List Entries` array on `record`
      * matching `value` at `LVLO\Reference`.
@@ -1318,7 +1405,11 @@ export interface XELib
      * setting `scriptName` to `value`, and `Flags` to `value2`.
      * @returns Handle to the added Script element.
      */
-    AddScript(record: RecordHandle, value: string, value2: string): ElementHandle;
+    AddScript(
+        record: RecordHandle,
+        value: string,
+        value2: string,
+    ): ElementHandle;
     /**
      * Removes the first item in the `VMAD\Scripts` array on `record` matching `value` at `scriptName`.
      */
@@ -1331,13 +1422,20 @@ export interface XELib
      * Finds the first item in the `Properties` array on `scriptElement` matching `value` at `propertyName`.
      * @returns Handle to the element if found, else returns 0.
      */
-    GetScriptProperty(scriptElement: ElementHandle, value: string): Zeroable<ElementHandle>;
+    GetScriptProperty(
+        scriptElement: ElementHandle,
+        value: string,
+    ): Zeroable<ElementHandle>;
     /**
      * Adds an item to the `Properties` array on `scriptElement`,
      * setting `propertyName` to `value`, and `CNTO\Count` to `value2`.
      * @returns Handle to the added ScriptProperty element.
      */
-    AddScriptProperty(scriptElement: ElementHandle, value: string, value2: string): ElementHandle;
+    AddScriptProperty(
+        scriptElement: ElementHandle,
+        value: string,
+        value2: string,
+    ): ElementHandle;
     /**
      * Removes the first item in the `Properties` array on `scriptElement` matching `value` at `propertyName`.
      */
@@ -1359,7 +1457,13 @@ export interface XELib
      * and `CTDA\Parameter #1` to `value4`.
      * @returns Handle to the added Condition element.
      */
-    AddCondition(record: RecordHandle, value: string, value2: string, value3: string, value4: string): ElementHandle;
+    AddCondition(
+        record: RecordHandle,
+        value: string,
+        value2: string,
+        value3: string,
+        value4: string,
+    ): ElementHandle;
     /**
      * Removes the first item in the `Conditions` array on `record` matching `value` at `CTDA\Function`.
      */

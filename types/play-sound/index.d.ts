@@ -2,7 +2,15 @@
 
 import { ChildProcess, ExecException } from "child_process";
 
-type Players = "mplayer" | "afplay" | "mpg123" | "mpg321" | "play" | "omxplayer" | "aplay" | "cmdmp3";
+type Players =
+    | "mplayer"
+    | "afplay"
+    | "mpg123"
+    | "mpg321"
+    | "play"
+    | "omxplayer"
+    | "aplay"
+    | "cmdmp3";
 
 interface PlayOpts {
     players: Players[];
@@ -24,7 +32,11 @@ declare class Play {
     players: Players[];
     urlRegex: RegExp;
 
-    play(what: string, options?: PlayMethodOptions, next?: (err: ExecException) => void): ChildProcess;
+    play(
+        what: string,
+        options?: PlayMethodOptions,
+        next?: (err: ExecException) => void,
+    ): ChildProcess;
     play(what: string, next?: (err: ExecException) => void): ChildProcess;
 
     test(next?: (err: ExecException) => void): ChildProcess;

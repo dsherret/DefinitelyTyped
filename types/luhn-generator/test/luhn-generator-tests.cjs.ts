@@ -1,5 +1,11 @@
 import luhn = require("luhn-generator/dist/luhn");
-import { checksum, generate, InputOptions, random, validate } from "luhn-generator/dist/luhn";
+import {
+    checksum,
+    generate,
+    InputOptions,
+    random,
+    validate,
+} from "luhn-generator/dist/luhn";
 import luhnCJS = require("luhn-generator");
 import {
     checksum as checksumCJS,

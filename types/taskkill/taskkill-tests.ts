@@ -4,7 +4,7 @@ declare const pid: string;
 declare const name: string;
 declare const options: Options;
 
-(async () => {
+async () => {
     await taskkill(pid, options);
     await taskkill(name, options);
     await taskkill([pid], options);
@@ -13,4 +13,4 @@ declare const options: Options;
     taskkillSync([pid], options);
     await taskkill(pid, { force: true, tree: true });
     taskkillSync(pid, { force: true });
-});
+};

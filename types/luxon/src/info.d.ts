@@ -1,4 +1,9 @@
-import { CalendarSystem, NumberingSystem, StringUnitLength, UnitLength } from "./misc";
+import {
+    CalendarSystem,
+    NumberingSystem,
+    StringUnitLength,
+    UnitLength,
+} from "./misc";
 import { Zone } from "./zone";
 
 export interface InfoOptions {
@@ -103,7 +108,10 @@ export namespace Info {
      * @param opts.locObj - an existing locale object to use.
      * @param opts.outputCalendar - the calendar. Defaults to 'gregory'.
      */
-    function monthsFormat(length?: UnitLength, opts?: InfoCalendarOptions): string[];
+    function monthsFormat(
+        length?: UnitLength,
+        opts?: InfoCalendarOptions,
+    ): string[];
 
     /**
      * Return an array of standalone week names.
@@ -124,7 +132,10 @@ export namespace Info {
      * @example
      * Info.weekdays('short', { locale: 'ar' })[0] //=> 'الاثنين'
      */
-    function weekdays(length?: StringUnitLength, opts?: InfoUnitOptions): string[];
+    function weekdays(
+        length?: StringUnitLength,
+        opts?: InfoUnitOptions,
+    ): string[];
 
     /**
      * Return an array of format week names.
@@ -138,7 +149,10 @@ export namespace Info {
      * @param opts.numberingSystem - the numbering system.
      * @param opts.locObj - an existing locale object to use.
      */
-    function weekdaysFormat(length?: StringUnitLength, opts?: InfoUnitOptions): string[];
+    function weekdaysFormat(
+        length?: StringUnitLength,
+        opts?: InfoUnitOptions,
+    ): string[];
 
     /**
      * Return an array of meridiems.

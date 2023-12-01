@@ -28,5 +28,8 @@ export interface MembersResult {
 }
 
 export interface NamesAndRolesService {
-    getMembers(idtoken: IdToken, filters?: MemberFilters): Promise<MembersResult | false>;
+    getMembers(
+        idtoken: IdToken,
+        filters?: MemberFilters,
+    ): Promise<MembersResult | false>;
 }

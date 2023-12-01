@@ -7,7 +7,10 @@ declare const secretAccessKey: string;
 declare const region: string;
 declare const bucket: string;
 
-const s3 = new S3Client({ credentials: { accessKeyId, secretAccessKey }, region });
+const s3 = new S3Client({
+    credentials: { accessKeyId, secretAccessKey },
+    region,
+});
 
 const s3Upload = multer({
     storage: s3Storage({

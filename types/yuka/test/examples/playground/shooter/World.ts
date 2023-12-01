@@ -29,7 +29,10 @@ class World {
         this.time = new YUKA.Time();
         const player = new Player();
         player.position.set(6, 0, 35);
-        player.head.setRenderComponent({ matrixWorld: new YUKA.Matrix4() }, syncCamera);
+        player.head.setRenderComponent(
+            { matrixWorld: new YUKA.Matrix4() },
+            syncCamera,
+        );
         const weapon = player.weapon;
         const weaponMesh = { matrix: new YUKA.Matrix4() };
         weapon.setRenderComponent(weaponMesh, sync);
@@ -75,7 +78,11 @@ class World {
         this.add(bullet);
     }
 
-    intersectRay(ray: YUKA.Ray, intersectionPoint: YUKA.Vector3, normal: YUKA.Vector3 | null = null) {
+    intersectRay(
+        ray: YUKA.Ray,
+        intersectionPoint: YUKA.Vector3,
+        normal: YUKA.Vector3 | null = null,
+    ) {
         const obstacles = this.obstacles;
         let minDistance = Infinity;
         let closestObstacle = null;
@@ -91,7 +98,9 @@ class World {
                     intersection.normal,
                 ) !== null
             ) {
-                const squaredDistance = intersection.point.squaredDistanceTo(ray.origin);
+                const squaredDistance = intersection.point.squaredDistanceTo(
+                    ray.origin,
+                );
                 if (squaredDistance < minDistance) {
                     minDistance = squaredDistance;
                     closestObstacle = obstacle;
@@ -101,7 +110,7 @@ class World {
                 }
             }
         }
-        return (closestObstacle === null) ? null : closestObstacle;
+        return closestObstacle === null ? null : closestObstacle;
     }
 
     _initGround() {
@@ -131,11 +140,17 @@ class World {
     }
 }
 
-function sync(entity: YUKA.GameEntity, renderComponent: { matrix: YUKA.Matrix4 }) {
+function sync(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrix: YUKA.Matrix4 },
+) {
     renderComponent.matrix.copy(entity.worldMatrix);
 }
 
-function syncCamera(entity: YUKA.GameEntity, renderComponent: { matrixWorld: YUKA.Matrix4 }) {
+function syncCamera(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrixWorld: YUKA.Matrix4 },
+) {
     renderComponent.matrixWorld.copy(entity.worldMatrix);
 }
 

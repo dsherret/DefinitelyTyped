@@ -13,16 +13,21 @@ declare namespace Dropdown {
         onClose?: Function | undefined;
         onSelect?: SelectCallback | undefined;
         onToggle?:
-            | ((isOpen: boolean, event: React.SyntheticEvent, metadata: {
-                source: "select" | "click" | "rootClose" | "keydown";
-            }) => void)
+            | ((
+                  isOpen: boolean,
+                  event: React.SyntheticEvent,
+                  metadata: {
+                      source: "select" | "click" | "rootClose" | "keydown";
+                  },
+              ) => void)
             | undefined;
         open?: boolean | undefined;
         pullRight?: boolean | undefined;
         role?: string | undefined;
     }
 
-    export type DropdownProps = Dropdown.DropdownBaseProps & React.HTMLProps<Dropdown>;
+    export type DropdownProps = Dropdown.DropdownBaseProps &
+        React.HTMLProps<Dropdown>;
 }
 
 declare class Dropdown extends React.Component<Dropdown.DropdownProps> {

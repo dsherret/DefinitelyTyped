@@ -4,11 +4,14 @@ less.render(".class { width: (1 + 1) }").then((output) => {
     console.log(output.css);
 });
 
-less.render("fail").then((output) => {
-    throw new Error("promise should have been rejected");
-}, (error: Less.RenderError) => {
-    console.log("rejected as expected on line number " + error.line);
-});
+less.render("fail").then(
+    (output) => {
+        throw new Error("promise should have been rejected");
+    },
+    (error: Less.RenderError) => {
+        console.log("rejected as expected on line number " + error.line);
+    },
+);
 
 var preProcessor: Less.PreProcessor = {
     process: (src, extra) => {
@@ -22,7 +25,12 @@ var preProcessor: Less.PreProcessor = {
 };
 
 class AliasResolvingFileManager extends less.FileManager {
-    loadFile(filename: string, currentDirectory: string, options: Less.LoadFileOptions, environment: Less.Environment) {
+    loadFile(
+        filename: string,
+        currentDirectory: string,
+        options: Less.LoadFileOptions,
+        environment: Less.Environment,
+    ) {
         filename = filename.replace("foo", "bar");
         return super.loadFile(filename, currentDirectory, options, environment);
     }
@@ -93,9 +101,13 @@ less.refreshStyles();
 
 less.watch();
 
-less.refresh(true, {
-    "@buttonFace": "#5B83AD",
-}, true).then((output) => {
+less.refresh(
+    true,
+    {
+        "@buttonFace": "#5B83AD",
+    },
+    true,
+).then((output) => {
     console.log("successfully refreshed less files");
 });
 

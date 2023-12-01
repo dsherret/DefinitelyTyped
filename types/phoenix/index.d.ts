@@ -1,7 +1,12 @@
 export type PushStatus = "ok" | "error" | "timeout";
 
 export class Push {
-    constructor(channel: Channel, event: string, payload: object, timeout: number);
+    constructor(
+        channel: Channel,
+        event: string,
+        payload: object,
+        timeout: number,
+    );
 
     send(): void;
     resend(timeout: number): void;
@@ -9,10 +14,19 @@ export class Push {
     receive(status: PushStatus, callback: (response?: any) => any): this;
 }
 
-export type ChannelState = "closed" | "errored" | "joined" | "joining" | "leaving";
+export type ChannelState =
+    | "closed"
+    | "errored"
+    | "joined"
+    | "joining"
+    | "leaving";
 
 export class Channel {
-    constructor(topic: string, params?: object | (() => object), socket?: Socket);
+    constructor(
+        topic: string,
+        params?: object | (() => object),
+        socket?: Socket,
+    );
 
     state: ChannelState;
     topic: string;
@@ -20,11 +34,20 @@ export class Channel {
     join(timeout?: number): Push;
     leave(timeout?: number): Push;
 
-    onClose(callback: (payload: any, ref: any, joinRef: any) => void | Promise<void>): number;
+    onClose(
+        callback: (
+            payload: any,
+            ref: any,
+            joinRef: any,
+        ) => void | Promise<void>,
+    ): number;
     onError(callback: (reason?: any) => void | Promise<void>): number;
     onMessage(event: string, payload: any, ref: any): any;
 
-    on(event: string, callback: (response?: any) => void | Promise<void>): number;
+    on(
+        event: string,
+        callback: (response?: any) => void | Promise<void>,
+    ): number;
     off(event: string, ref?: number): void;
 
     push(event: string, payload: object, timeout?: number): Push;
@@ -36,12 +59,18 @@ export type ConnectionState = "connecting" | "open" | "closing" | "closed";
 export interface SocketConnectOption {
     binaryType: BinaryType;
     params: object | (() => object);
-    transport: new(endpoint: string) => object;
+    transport: new (endpoint: string) => object;
     timeout: number;
     heartbeatIntervalMs: number;
     longpollerTimeout: number;
-    encode: (payload: object, callback: (encoded: any) => void | Promise<void>) => void;
-    decode: (payload: string, callback: (decoded: any) => void | Promise<void>) => void;
+    encode: (
+        payload: object,
+        callback: (encoded: any) => void | Promise<void>,
+    ) => void;
+    decode: (
+        payload: string,
+        callback: (decoded: any) => void | Promise<void>,
+    ) => void;
     logger: (kind: string, message: string, data: any) => void;
     reconnectAfterMs: (tries: number) => number;
     rejoinAfterMs: (tries: number) => number;
@@ -57,10 +86,14 @@ export class Socket {
     endPointURL(): string;
 
     connect(params?: any): void;
-    disconnect(callback?: () => void | Promise<void>, code?: number, reason?: string): void;
+    disconnect(
+        callback?: () => void | Promise<void>,
+        code?: number,
+        reason?: string,
+    ): void;
     connectionState(): ConnectionState;
     isConnected(): boolean;
-    replaceTransport(transport: new(endpoint: string) => object): void;
+    replaceTransport(transport: new (endpoint: string) => object): void;
 
     remove(channel: Channel): void;
     channel(topic: string, chanParams?: object): Channel;
@@ -74,7 +107,7 @@ export class Socket {
     onError(
         callback: (
             error: Event | string | number,
-            transport: new(endpoint: string) => object,
+            transport: new (endpoint: string) => object,
             establishedConnections: number,
         ) => void | Promise<void>,
     ): MessageRef;
@@ -162,19 +195,33 @@ export class Presence {
         onLeave?: PresenceOnLeaveCallback,
     ): any;
 
-    static list<T = any>(presences: object, chooser?: (key: string, presence: any) => T): T[];
+    static list<T = any>(
+        presences: object,
+        chooser?: (key: string, presence: any) => T,
+    ): T[];
 }
 
-export type PresenceOnJoinCallback = (key?: string, currentPresence?: any, newPresence?: any) => void;
+export type PresenceOnJoinCallback = (
+    key?: string,
+    currentPresence?: any,
+    newPresence?: any,
+) => void;
 
-export type PresenceOnLeaveCallback = (key?: string, currentPresence?: any, newPresence?: any) => void;
+export type PresenceOnLeaveCallback = (
+    key?: string,
+    currentPresence?: any,
+    newPresence?: any,
+) => void;
 
 export interface PresenceOpts {
     events?: { state: string; diff: string } | undefined;
 }
 
 export class Timer {
-    constructor(callback: () => void | Promise<void>, timerCalc: (tries: number) => number);
+    constructor(
+        callback: () => void | Promise<void>,
+        timerCalc: (tries: number) => number,
+    );
 
     reset(): void;
     scheduleTimeout(): void;

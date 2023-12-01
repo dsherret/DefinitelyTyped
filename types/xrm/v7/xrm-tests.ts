@@ -29,15 +29,24 @@ const selectedGridReferences: Xrm.Page.LookupValue[] = [];
 /// Demonstrate iterator typing with v7.1 additions
 
 grids.forEach((gridControl: Xrm.Page.GridControl) => {
-    gridControl.getGrid().getSelectedRows().forEach((row) => {
-        selectedGridReferences.push(row.getData().getEntity().getEntityReference());
-    });
+    gridControl
+        .getGrid()
+        .getSelectedRows()
+        .forEach((row) => {
+            selectedGridReferences.push(
+                row.getData().getEntity().getEntityReference(),
+            );
+        });
 });
 
 /// Demonstrate generic overload vs typecast
 
-const lookupAttribute = Xrm.Page.getControl("customerid") as Xrm.Page.LookupControl;
-const lookupAttribute2 = Xrm.Page.getControl("customerid") as Xrm.Page.LookupControl;
+const lookupAttribute = Xrm.Page.getControl(
+    "customerid",
+) as Xrm.Page.LookupControl;
+const lookupAttribute2 = Xrm.Page.getControl(
+    "customerid",
+) as Xrm.Page.LookupControl;
 
 /// Demonstrate ES6 String literal syntax
 
@@ -98,8 +107,8 @@ Xrm.Page.data.entity.addOnSave((context) => {
     const eventArgs = context.getEventArgs();
 
     if (
-        eventArgs.getSaveMode() === XrmEnum.SaveMode.AutoSave
-        || eventArgs.getSaveMode() === XrmEnum.SaveMode.SaveAndClose
+        eventArgs.getSaveMode() === XrmEnum.SaveMode.AutoSave ||
+        eventArgs.getSaveMode() === XrmEnum.SaveMode.SaveAndClose
     ) {
         eventArgs.preventDefault();
     }
@@ -113,7 +122,9 @@ alert(`The current entity type is: ${Xrm.Page.data.entity.getEntityName()}`);
 
 /// Demonstrate Optionset Value as int in Turbo Forms
 
-const optionSetAttribute = Xrm.Page.getAttribute("statuscode") as Xrm.Page.OptionSetAttribute;
+const optionSetAttribute = Xrm.Page.getAttribute(
+    "statuscode",
+) as Xrm.Page.OptionSetAttribute;
 const optionValue: number = optionSetAttribute.getOptions()[0].value;
 
 /// Demonstrate Control.setFocus();

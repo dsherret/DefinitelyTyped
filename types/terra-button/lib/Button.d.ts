@@ -30,8 +30,7 @@ type OmittedKeys =
     | "aria-label";
 
 export interface ButtonProps<T extends HTMLButtonElement | HTMLAnchorElement>
-    extends Omit<React.HTMLAttributes<T>, OmittedKeys>
-{
+    extends Omit<React.HTMLAttributes<T>, OmittedKeys> {
     /**
      * Sets the href. When set will render the component as an anchor tag.
      */
@@ -108,7 +107,9 @@ export interface ButtonProps<T extends HTMLButtonElement | HTMLAnchorElement>
     variant?: ButtonVariants | undefined;
 }
 
-export default class Button<T extends HTMLAnchorElement | HTMLButtonElement> extends React.Component<ButtonProps<T>> {
+export default class Button<
+    T extends HTMLAnchorElement | HTMLButtonElement,
+> extends React.Component<ButtonProps<T>> {
     static contextType: typeof ThemeContext;
 
     static Opts: {

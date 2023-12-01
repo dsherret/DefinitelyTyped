@@ -62,9 +62,14 @@ export class Resource<T> extends Request<T> {
 export class Chatter {
     constructor(conn: Connection);
 
-    batch(callback?: Callback<BatchRequestResults>): Promise<BatchRequestResults>;
+    batch(
+        callback?: Callback<BatchRequestResults>,
+    ): Promise<BatchRequestResults>;
 
-    request(params: RequestParams, callback?: Callback<Request<RequestResult>>): Request<RequestResult>;
+    request(
+        params: RequestParams,
+        callback?: Callback<Request<RequestResult>>,
+    ): Request<RequestResult>;
 
     resource(url: string, queryParams?: object): Resource<RequestResult>;
 }

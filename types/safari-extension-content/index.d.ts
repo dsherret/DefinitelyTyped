@@ -82,8 +82,16 @@ interface SafariEventListener extends Function {
 }
 
 interface SafariEventTarget {
-    addEventListener(type: string, listener: SafariEventListener, useCapture?: boolean): void;
-    removeEventListener(type: string, listener: SafariEventListener, useCapture?: boolean): void;
+    addEventListener(
+        type: string,
+        listener: SafariEventListener,
+        useCapture?: boolean,
+    ): void;
+    removeEventListener(
+        type: string,
+        listener: SafariEventListener,
+        useCapture?: boolean,
+    ): void;
 }
 
 interface SafariContentExtension {

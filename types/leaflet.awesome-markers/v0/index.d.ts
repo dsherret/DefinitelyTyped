@@ -5,19 +5,21 @@ declare global {
         namespace AwesomeMarkers {
             var version: string;
 
-            function icon(options: AwesomeMarkers.IconOptions): AwesomeMarkers.Icon;
+            function icon(
+                options: AwesomeMarkers.IconOptions,
+            ): AwesomeMarkers.Icon;
 
             interface IconStatic extends Leaflet.IconStatic {
                 /**
                  * Creates an icon instance with the given options.
                  */
-                new(options: IconOptions): Icon;
+                new (options: IconOptions): Icon;
 
                 Default: {
                     /**
                      * Creates a default icon instance with the given options.
                      */
-                    new(options?: IconOptions): Icon.Default;
+                    new (options?: IconOptions): Icon.Default;
 
                     imagePath: string;
                 };

@@ -11,4 +11,7 @@ export interface KeyPair {
 
 export function generateKeyPair(privateKey?: Buffer | Uint8Array): KeyPair;
 export function generateSeedKeyPair(seed: Buffer | Uint8Array): KeyPair;
-export function dh(publicKey: Buffer | Uint8Array, secretKey: Pick<KeyPair, "secretKey">): Buffer | Uint8Array;
+export function dh(
+    publicKey: Buffer | Uint8Array,
+    secretKey: Pick<KeyPair, "secretKey">,
+): Buffer | Uint8Array;

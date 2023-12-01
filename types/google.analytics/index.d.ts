@@ -5,7 +5,12 @@ declare class Tracker {
     _getVersion(): string;
     _getVisitorCustomVar(index: number): string;
     _setAccount(): string;
-    _setCustomVar(index: number, name: string, value: string, opt_scope?: number): boolean;
+    _setCustomVar(
+        index: number,
+        name: string,
+        value: string,
+        opt_scope?: number,
+    ): boolean;
     _setSampleRate(newRate: string): void;
     _setSessionCookieTimeout(cookieTimeoutMillis: number): void;
     _setSiteSpeedSampleRate(sampleRate: number): void;
@@ -35,7 +40,15 @@ declare namespace UniversalAnalytics {
     // https://developers.google.com/analytics/devguides/collection/analyticsjs/method-reference
 
     // https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference#hitType
-    type HitType = "pageview" | "screenview" | "event" | "transaction" | "item" | "social" | "exception" | "timing";
+    type HitType =
+        | "pageview"
+        | "screenview"
+        | "event"
+        | "transaction"
+        | "item"
+        | "social"
+        | "exception"
+        | "timing";
 
     // https://developers.google.com/analytics/devguides/collection/analyticsjs/field-reference
 
@@ -611,7 +624,10 @@ declare namespace UniversalAnalytics {
         (
             command: "provide",
             pluginName: string,
-            pluginConstructor: (tracker: Tracker, pluginOptions?: Object) => void,
+            pluginConstructor: (
+                tracker: Tracker,
+                pluginOptions?: Object,
+            ) => void,
         ): void;
 
         (
@@ -627,8 +643,17 @@ declare namespace UniversalAnalytics {
 
         (readyCallback: (defaultTracker?: Tracker) => void): void;
 
-        create(trackingId: string, cookieDomain: string, name: string, fieldsObject?: FieldsObject): Tracker;
-        create(trackingId: string, cookieDomain: string, fieldsObject?: FieldsObject): Tracker;
+        create(
+            trackingId: string,
+            cookieDomain: string,
+            name: string,
+            fieldsObject?: FieldsObject,
+        ): Tracker;
+        create(
+            trackingId: string,
+            cookieDomain: string,
+            fieldsObject?: FieldsObject,
+        ): Tracker;
         create(trackingId: string, fieldsObject?: FieldsObject): Tracker;
 
         getAll(): Tracker[];

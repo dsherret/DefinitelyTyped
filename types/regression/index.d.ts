@@ -68,10 +68,7 @@ export interface Result {
 }
 
 export function _round(number: number, precision: number): number;
-export function linear(
-    data: readonly DataPoint[],
-    options?: Options,
-): Result;
+export function linear(data: readonly DataPoint[], options?: Options): Result;
 export function exponential(
     data: readonly DataPoint[],
     options?: Options,
@@ -80,10 +77,7 @@ export function logarithmic(
     data: readonly DataPoint[],
     options?: Options,
 ): Result;
-export function power(
-    data: readonly DataPoint[],
-    options?: Options,
-): Result;
+export function power(data: readonly DataPoint[], options?: Options): Result;
 export function polynomial(
     data: readonly DataPoint[],
     options?: Options,

@@ -19,30 +19,32 @@ const credential: indy.Cred = {
     values: {},
 };
 const revRegs: indy.RevRegs = {
-    "BQ42WeE24jFHeyGg8x9XAz:4:BQ42WeE24jFHeyGg8x9XAz:3:CL:155550:labresult:CL_ACCUM:1-1024": {
-        1615468964: {
-            value: {
-                accum: "10",
-            },
-            ver: "1.0",
-        },
-    },
-};
-const revStates: indy.RevStates = {
-    "BQ42WeE24jFHeyGg8x9XAz:4:BQ42WeE24jFHeyGg8x9XAz:3:CL:155550:labresult:CL_ACCUM:1-1024": {
-        1615468964: {
-            rev_reg: {
+    "BQ42WeE24jFHeyGg8x9XAz:4:BQ42WeE24jFHeyGg8x9XAz:3:CL:155550:labresult:CL_ACCUM:1-1024":
+        {
+            1615468964: {
                 value: {
                     accum: "10",
                 },
                 ver: "1.0",
             },
-            timestamp: 1234,
-            witness: {
-                some: "value",
+        },
+};
+const revStates: indy.RevStates = {
+    "BQ42WeE24jFHeyGg8x9XAz:4:BQ42WeE24jFHeyGg8x9XAz:3:CL:155550:labresult:CL_ACCUM:1-1024":
+        {
+            1615468964: {
+                rev_reg: {
+                    value: {
+                        accum: "10",
+                    },
+                    ver: "1.0",
+                },
+                timestamp: 1234,
+                witness: {
+                    some: "value",
+                },
             },
         },
-    },
 };
 const revRegDef: indy.RevocRegDef = {
     id: "10",
@@ -100,7 +102,12 @@ const schema: indy.Schema = {
     ver: "1.0",
     seqNo: 10,
 };
-const ledgerRequest: indy.LedgerRequest = { identifier: "", operation: {}, protocolVersion: 1, reqId: 100 };
+const ledgerRequest: indy.LedgerRequest = {
+    identifier: "",
+    operation: {},
+    protocolVersion: 1,
+    reqId: 100,
+};
 const credOffer: indy.CredOffer = {} as unknown as indy.CredOffer;
 const credRequest: indy.CredReq = {} as unknown as indy.CredReq;
 const proofReq: indy.IndyProofRequest = {
@@ -166,13 +173,15 @@ const ledgerWriteReply: indy.LedgerWriteReplyResponse = {
             metadata: {
                 taaAcceptance: {
                     mechanism: "accept",
-                    taaDigest: "e546ad2a5311b2020fd80efb4d17ec75f823d26ee2424cf741ee345ede9d3ff3",
+                    taaDigest:
+                        "e546ad2a5311b2020fd80efb4d17ec75f823d26ee2424cf741ee345ede9d3ff3",
                     time: 1615420800,
                 },
                 from: "TL1EaPFCZ8Si5aUrqScBDt",
                 reqId: 1615468667976625000,
                 digest: "70337d6d1f539cc5a6f75b18a76f7edb7d5f630da40d4fef7091e7b3f34fd38a",
-                payloadDigest: "d843ba2af9c6ae3beb0c889e1c8802e89174f5c1636f88b8071503473b1926ab",
+                payloadDigest:
+                    "d843ba2af9c6ae3beb0c889e1c8802e89174f5c1636f88b8071503473b1926ab",
             },
             protocolVersion: 2,
             data: {
@@ -198,16 +207,20 @@ const ledgerReadReply: indy.LedgerReadReplyResponse = {
                 signature:
                     "RFszfgrdWaxPi6UUrwXoip5ctpcxMYbD5kS13bgtdfQNx3RQSpEd5cCYNMbU4AUGJWt5imEJ7kWXzzwNvmWLGzKdcYZxjanbfyftYgnEKxPdhPhcpDyi56C9xdyYssFGZrtadLg6bWRXaCVfhuSmSt66SHXbpsGaEvYaWhetKFi6eb",
                 value: {
-                    txn_root_hash: "4UpqjtRCbKkUxVRBSpg4x9yyKuRWHwkp5TegWCiGFG1o",
-                    state_root_hash: "8h6xGyeaHtM8X1a5TQgjGDLFSUWShsKCzQs3fKpJmyiU",
+                    txn_root_hash:
+                        "4UpqjtRCbKkUxVRBSpg4x9yyKuRWHwkp5TegWCiGFG1o",
+                    state_root_hash:
+                        "8h6xGyeaHtM8X1a5TQgjGDLFSUWShsKCzQs3fKpJmyiU",
                     ledger_id: 1,
-                    pool_state_root_hash: "NCGqbfRWDWtLB2bDuL6TC5BhrRdQMc5MyKdXQqXii44",
+                    pool_state_root_hash:
+                        "NCGqbfRWDWtLB2bDuL6TC5BhrRdQMc5MyKdXQqXii44",
                     timestamp: 1615468964,
                 },
                 participants: ["Node1", "Node2", "Node3"],
             },
             root_hash: "8h6xGyeaHtM8X1a5TQgjGDLFSUWShsKCzQs3fKpJmyiU",
-            proof_nodes: "+QRc+FGAgICAgKAjhAHlsUg90Ze+qFGKL7a3H792uCXMvXQBgJqRnEzrPaB9T3yGi1oxqCdAeo8ZplJs6kjTOqEA/...",
+            proof_nodes:
+                "+QRc+FGAgICAgKAjhAHlsUg90Ze+qFGKL7a3H792uCXMvXQBgJqRnEzrPaB9T3yGi1oxqCdAeo8ZplJs6kjTOqEA/...",
         },
         reqId: 1615468964808503000,
         data: {
@@ -256,7 +269,9 @@ indy.appendTxnAuthorAgreementAcceptanceToRequest(
     "acceptance mechanism label 1",
     123379200,
 );
-indy.issuerCreateAndStoreCredentialDef(10, "myDid", schema, "TAG", "CL", { support_revocation: true });
+indy.issuerCreateAndStoreCredentialDef(10, "myDid", schema, "TAG", "CL", {
+    support_revocation: true,
+});
 indy.buildCredDefRequest("myDid", credDef);
 indy.buildGetCredDefRequest("myDid", "credDefId");
 indy.parseGetCredDefResponse(ledgerReadReply);
@@ -291,7 +306,13 @@ indy.setProtocolVersion(1);
 indy.openPoolLedger("name", { timeout: 1000 });
 indy.closePoolLedger(10);
 indy.proverCreateMasterSecret(10, "masterSecretName");
-indy.proverCreateCredentialReq(10, "proverDid", credOffer, credDef, "master_secret");
+indy.proverCreateCredentialReq(
+    10,
+    "proverDid",
+    credOffer,
+    credDef,
+    "master_secret",
+);
 indy.issuerCreateCredentialOffer(10, "credDefId");
 indy.issuerCreateCredential(
     10,

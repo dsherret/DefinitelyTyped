@@ -1,7 +1,7 @@
 declare namespace MediumEditor {
     export interface MediumEditor {
         // Initialization Functions
-        new(elements: elementType, options?: CoreOptions): MediumEditor;
+        new (elements: elementType, options?: CoreOptions): MediumEditor;
         destroy(): void;
         setup(): void;
         addElements(elements: elementType): void;
@@ -20,14 +20,23 @@ declare namespace MediumEditor {
             listener: EventListenerOrEventListenerObject,
             useCapture: boolean,
         ): MediumEditor;
-        subscribe(name: string, listener: (data: any, editable: HTMLElement) => void): MediumEditor;
-        unsubscribe(name: string, listener: (data: any, editable: HTMLElement) => void): MediumEditor;
+        subscribe(
+            name: string,
+            listener: (data: any, editable: HTMLElement) => void,
+        ): MediumEditor;
+        unsubscribe(
+            name: string,
+            listener: (data: any, editable: HTMLElement) => void,
+        ): MediumEditor;
         trigger(name: string, data: any, editable: HTMLElement): MediumEditor;
 
         // Selection Functions
         checkSelection(): MediumEditor;
         exportSelection(): selectionObject;
-        importSelection(selectionState: selectionObject, favorLaterSelectionAnchor: boolean): void;
+        importSelection(
+            selectionState: selectionObject,
+            favorLaterSelectionAnchor: boolean,
+        ): void;
         getFocusedElement(): HTMLElement;
         getSelectedParentElement(range?: Range): HTMLElement;
         restoreSelection(): void;
@@ -176,7 +185,13 @@ declare namespace MediumEditor {
     }
 
     export type Button = string | ButtonOptions;
-    export type elementType = string | HTMLElement | HTMLElement[] | NodeList | NodeListOf<Element> | HTMLCollection;
+    export type elementType =
+        | string
+        | HTMLElement
+        | HTMLElement[]
+        | NodeList
+        | NodeListOf<Element>
+        | HTMLCollection;
     export interface selectionObject {
         start: number;
         end: number;

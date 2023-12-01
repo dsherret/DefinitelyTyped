@@ -8,9 +8,16 @@ export = InboxSDK;
 export as namespace InboxSDK;
 
 declare namespace InboxSDK {
-    function load(version: number, appId?: string, opts?: LoadOptions): Promise<InboxSDKInstance>;
+    function load(
+        version: number,
+        appId?: string,
+        opts?: LoadOptions,
+    ): Promise<InboxSDKInstance>;
 
-    function loadScript(url: string, options?: LoadScriptOptions): Promise<void>;
+    function loadScript(
+        url: string,
+        options?: LoadScriptOptions,
+    ): Promise<void>;
 
     // // Undocummented
     // var IMPL_VERSION: string;
@@ -64,7 +71,10 @@ declare namespace InboxSDK {
 
             on(name: "destroy", cb: () => void): void;
 
-            on(name: "preautoclose", cb: (event: PreAutoCloseEvent) => void): void;
+            on(
+                name: "preautoclose",
+                cb: (event: PreAutoCloseEvent) => void,
+            ): void;
         }
 
         interface PreAutoCloseEvent {
@@ -100,7 +110,9 @@ declare namespace InboxSDK {
 
     export namespace Compose {
         interface ComposeInstance {
-            registerComposeViewHandler(handler: (composeView: ComposeView) => void): () => void;
+            registerComposeViewHandler(
+                handler: (composeView: ComposeView) => void,
+            ): () => void;
 
             openNewComposeView(): Promise<ComposeView>;
         }
@@ -108,9 +120,13 @@ declare namespace InboxSDK {
         interface ComposeView {
             addButton(buttonDescriptor: ComposeButtonDescriptor): void;
 
-            addComposeNotice(composeNoticeDescriptor: ComposeNoticeDescriptor): Common.SimpleElementView;
+            addComposeNotice(
+                composeNoticeDescriptor: ComposeNoticeDescriptor,
+            ): Common.SimpleElementView;
 
-            addStatusBar(statusBarDescriptor: StatusBarDescriptor): StatusBarView;
+            addStatusBar(
+                statusBarDescriptor: StatusBarDescriptor,
+            ): StatusBarView;
 
             close(): void;
 
@@ -148,7 +164,11 @@ declare namespace InboxSDK {
 
             insertHTMLIntoBodyAtCursor(html: string | HTMLElement): HTMLElement;
 
-            insertLinkChipIntoBodyAtCursor(text: string, url: string, iconUrl: string): HTMLElement;
+            insertLinkChipIntoBodyAtCursor(
+                text: string,
+                url: string,
+                iconUrl: string,
+            ): HTMLElement;
 
             insertLinkIntoBodyAtCursor(text: string, url: string): HTMLElement;
 
@@ -192,11 +212,23 @@ declare namespace InboxSDK {
 
             attachInlineFiles(Files: Blob[]): Promise<void>;
 
-            on(name: "destroy", cb: (event: { messageID: string; closedByInboxSDK: boolean }) => void): void;
+            on(
+                name: "destroy",
+                cb: (event: {
+                    messageID: string;
+                    closedByInboxSDK: boolean;
+                }) => void,
+            ): void;
 
-            on(name: "fullscreenChanged", cb: (event: { fullscreen: boolean }) => void): void;
+            on(
+                name: "fullscreenChanged",
+                cb: (event: { fullscreen: boolean }) => void,
+            ): void;
 
-            on(name: "responseTypeChanged", cb: (event: { isForward: boolean }) => void): void;
+            on(
+                name: "responseTypeChanged",
+                cb: (event: { isForward: boolean }) => void,
+            ): void;
 
             on(
                 name:
@@ -210,17 +242,32 @@ declare namespace InboxSDK {
                 cb: (event: { contact: Common.Contact }) => void,
             ): void;
 
-            on(name: "recipientsChanged", cb: (event: RecipientsChangedEvent) => void): void;
-
-            on(name: "presending", cb: (event: { cancel: () => void }) => void): void;
-
             on(
-                name: "sent",
-                cb: (event: { getThreadID: () => Promise<string>; getMessageID: () => Promise<string> }) => void,
+                name: "recipientsChanged",
+                cb: (event: RecipientsChangedEvent) => void,
             ): void;
 
             on(
-                name: "discard" | "sendCanceled" | "sending" | "bodyChanged" | "minimized" | "restored",
+                name: "presending",
+                cb: (event: { cancel: () => void }) => void,
+            ): void;
+
+            on(
+                name: "sent",
+                cb: (event: {
+                    getThreadID: () => Promise<string>;
+                    getMessageID: () => Promise<string>;
+                }) => void,
+            ): void;
+
+            on(
+                name:
+                    | "discard"
+                    | "sendCanceled"
+                    | "sending"
+                    | "bodyChanged"
+                    | "minimized"
+                    | "restored",
                 cb: () => void,
             ): void;
 
@@ -278,11 +325,15 @@ declare namespace InboxSDK {
 
     export namespace Lists {
         interface ListsInstance {
-            registerThreadRowViewHandler(handler: (threadRowView: ThreadRowView) => any): () => void;
+            registerThreadRowViewHandler(
+                handler: (threadRowView: ThreadRowView) => any,
+            ): () => void;
 
             getSelectedThreadRowViews(): ThreadRowView[];
 
-            registerThreadRowViewSelectionHandler(handler: () => any): () => void;
+            registerThreadRowViewSelectionHandler(
+                handler: () => any,
+            ): () => void;
         }
 
         interface ThreadRowView {
@@ -298,11 +349,15 @@ declare namespace InboxSDK {
 
             // addButton(buttonDescriptor: Stream<ThreadRowButtonDescriptor>): void;
 
-            addActionButton(buttonDescriptor: ThreadRowActionButtonDescriptor): void;
+            addActionButton(
+                buttonDescriptor: ThreadRowActionButtonDescriptor,
+            ): void;
 
             // addActionButton(buttonDescriptor: Stream<ThreadRowActionButtonDescriptor>): void;
 
-            addAttachmentIcon(threadRowAttachmentIconDescriptor: ThreadRowAttachmentIconDescriptor): void;
+            addAttachmentIcon(
+                threadRowAttachmentIconDescriptor: ThreadRowAttachmentIconDescriptor,
+            ): void;
 
             // addAttachmentIcon(threadRowAttachmentIconDescriptor: stream<ThreadRowAttachmentIconDescriptor>): void
 
@@ -310,7 +365,9 @@ declare namespace InboxSDK {
 
             // replaceDate(threadRowDateDescriptor: Stream<ThreadRowDateDescriptor>): void;
 
-            replaceDraftLabel(draftLabelDescriptor: ThreadRowDraftLabelDescriptor): void;
+            replaceDraftLabel(
+                draftLabelDescriptor: ThreadRowDraftLabelDescriptor,
+            ): void;
 
             // replaceDraftLabel(draftLabelDescriptor: Stream<ThreadRowDraftLabelDescriptor>): void;
 
@@ -391,12 +448,14 @@ declare namespace InboxSDK {
             tooltip?: string | undefined;
         }
 
-        interface ThreadRowAttachmentIconUrlDescriptor extends ThreadRowAttachmentIconDescriptorBase {
+        interface ThreadRowAttachmentIconUrlDescriptor
+            extends ThreadRowAttachmentIconDescriptorBase {
             iconUrl: string;
             iconClass?: string | undefined;
         }
 
-        interface ThreadRowAttachmentIconHtmlDescriptor extends ThreadRowAttachmentIconDescriptorBase {
+        interface ThreadRowAttachmentIconHtmlDescriptor
+            extends ThreadRowAttachmentIconDescriptorBase {
             iconHtml: string;
         }
 
@@ -412,11 +471,17 @@ declare namespace InboxSDK {
 
     export namespace Conversations {
         interface ConversationsInstance {
-            registerThreadViewHandler(handler: (threadView: ThreadView) => void): () => void;
+            registerThreadViewHandler(
+                handler: (threadView: ThreadView) => void,
+            ): () => void;
 
-            registerMessageViewHandler(handler: (messageView: MessageView) => void): () => void;
+            registerMessageViewHandler(
+                handler: (messageView: MessageView) => void,
+            ): () => void;
 
-            registerMessageViewHandlerAll(handler: (messageView: MessageView) => void): () => void;
+            registerMessageViewHandlerAll(
+                handler: (messageView: MessageView) => void,
+            ): () => void;
 
             registerFileAttachmentCardViewHandler(
                 handler: (attachmentCardView: AttachmentCardView) => void,
@@ -428,7 +493,9 @@ declare namespace InboxSDK {
 
             addLabel(): Common.SimpleElementView;
 
-            addSidebarContentPanel(contentPanelDescriptor: ContentPanelDescriptor): ContentPanelView;
+            addSidebarContentPanel(
+                contentPanelDescriptor: ContentPanelDescriptor,
+            ): ContentPanelView;
 
             getMessageViews(): MessageView[];
 
@@ -438,7 +505,10 @@ declare namespace InboxSDK {
 
             getThreadIDAsync(): Promise<string>;
 
-            on(name: "contactHover", cb: (event: ContactHoverEvent) => void): void;
+            on(
+                name: "contactHover",
+                cb: (event: ContactHoverEvent) => void,
+            ): void;
 
             on(name: "destroy", cb: () => void): void;
 
@@ -454,10 +524,14 @@ declare namespace InboxSDK {
 
         interface MessageView {
             addAttachmentCardView(
-                cardOptions: AttachmentCardOptions | AttachmentCardNoPreviewOptions,
+                cardOptions:
+                    | AttachmentCardOptions
+                    | AttachmentCardNoPreviewOptions,
             ): AttachmentCardView;
 
-            addAttachmentsToolbarButton(buttonOptions: AttachmentsToolbarButtonDescriptor): void;
+            addAttachmentsToolbarButton(
+                buttonOptions: AttachmentsToolbarButtonDescriptor,
+            ): void;
 
             addToolbarButton(options: MessageViewToolbarButtonDescriptor): void;
 
@@ -483,7 +557,9 @@ declare namespace InboxSDK {
 
             getDateString(): string;
 
-            addAttachmentIcon(iconDescriptor: MessageAttachmentIconDescriptor): void;
+            addAttachmentIcon(
+                iconDescriptor: MessageAttachmentIconDescriptor,
+            ): void;
 
             // addAttachmentIcon(iconDescriptor: Stream<MessageAttachmentIconDescriptor>): void;
 
@@ -491,16 +567,17 @@ declare namespace InboxSDK {
 
             on(
                 name: "viewStateChange",
-                cb: (
-                    event: {
-                        newViewState: MessageViewViewStates;
-                        oldViewState: MessageViewViewStates;
-                        messageView: MessageView;
-                    },
-                ) => void,
+                cb: (event: {
+                    newViewState: MessageViewViewStates;
+                    oldViewState: MessageViewViewStates;
+                    messageView: MessageView;
+                }) => void,
             ): void;
 
-            on(name: "contactHover", cb: (event: ContactHoverEvent) => void): void;
+            on(
+                name: "contactHover",
+                cb: (event: ContactHoverEvent) => void,
+            ): void;
 
             on(name: "destroy" | "load", cb: () => void): void;
 
@@ -521,7 +598,10 @@ declare namespace InboxSDK {
 
             remove(): void;
 
-            on(name: "destroy" | "activate" | "deactivate", cb: () => void): void;
+            on(
+                name: "destroy" | "activate" | "deactivate",
+                cb: () => void,
+            ): void;
 
             destroyed: boolean;
         }
@@ -629,15 +709,19 @@ declare namespace InboxSDK {
             onClick?: (() => void) | undefined;
         }
 
-        interface MessageAttachmentIconUrlDescriptor extends MessageAttachmentIconDescriptorBase {
+        interface MessageAttachmentIconUrlDescriptor
+            extends MessageAttachmentIconDescriptorBase {
             iconUrl: string;
         }
 
-        interface MessageAttachmentIconHtmlDescriptor extends MessageAttachmentIconDescriptorBase {
+        interface MessageAttachmentIconHtmlDescriptor
+            extends MessageAttachmentIconDescriptorBase {
             iconHtml: string;
         }
 
-        type MessageAttachmentIconDescriptor = MessageAttachmentIconUrlDescriptor | MessageAttachmentIconHtmlDescriptor;
+        type MessageAttachmentIconDescriptor =
+            | MessageAttachmentIconUrlDescriptor
+            | MessageAttachmentIconHtmlDescriptor;
 
         interface MessageViewToolbarButtonDescriptor {
             section: "MORE";
@@ -651,21 +735,29 @@ declare namespace InboxSDK {
 
     export namespace Toolbars {
         interface ToolbarsInstance {
-            registerThreadButton(toolbarButtonDescriptor: ToolbarButtonDescriptor): () => void;
+            registerThreadButton(
+                toolbarButtonDescriptor: ToolbarButtonDescriptor,
+            ): () => void;
 
             /**
              * @deprecated use registerThreadButton
              * @param toolbarButtonDescriptor
              */
-            registerToolbarButtonForList(toolbarButtonDescriptor: LegacyToolbarButtonDescriptor): () => void;
+            registerToolbarButtonForList(
+                toolbarButtonDescriptor: LegacyToolbarButtonDescriptor,
+            ): () => void;
 
             /**
              * @deprecated use registerThreadButton
              * @param toolbarButtonDescriptor
              */
-            registerToolbarButtonForThreadView(toolbarButtonDescriptor: LegacyToolbarButtonDescriptor): () => void;
+            registerToolbarButtonForThreadView(
+                toolbarButtonDescriptor: LegacyToolbarButtonDescriptor,
+            ): () => void;
 
-            addToolbarButtonForApp(appToolbarButtonDescriptor: AppToolbarButtonDescriptor): AppToolbarButtonView;
+            addToolbarButtonForApp(
+                appToolbarButtonDescriptor: AppToolbarButtonDescriptor,
+            ): AppToolbarButtonView;
         }
 
         interface ToolbarButtonDescriptor {
@@ -679,7 +771,9 @@ declare namespace InboxSDK {
             hasDropdown?: boolean | undefined;
             hideFor?: ((routeView: Router.RouteView) => void) | undefined;
             orderHint?: number | undefined;
-            keyboardShortcutHandle?: Keyboard.KeyboardShortcutHandle | undefined;
+            keyboardShortcutHandle?:
+                | Keyboard.KeyboardShortcutHandle
+                | undefined;
         }
 
         interface LegacyToolbarButtonDescriptor {
@@ -690,7 +784,9 @@ declare namespace InboxSDK {
             section: SectionNames;
             hasDropdown?: boolean | undefined;
             hideFor?: ((routeView: Router.RouteView) => void) | undefined;
-            keyboardShortcutHandle?: Keyboard.KeyboardShortcutHandle | undefined;
+            keyboardShortcutHandle?:
+                | Keyboard.KeyboardShortcutHandle
+                | undefined;
         }
 
         type ToolbarButtonPosition = "THREAD" | "ROW" | "LIST";
@@ -739,19 +835,33 @@ declare namespace InboxSDK {
 
     export namespace Router {
         interface RouterInstance {
-            createLink(routeID: string | NativeRouteIDs, params: RouteParams): string;
+            createLink(
+                routeID: string | NativeRouteIDs,
+                params: RouteParams,
+            ): string;
 
             goto(routeID: string | NativeRouteIDs, params: RouteParams): void;
 
-            handleCustomRoute(routeID: string, handler: (customRouteView: CustomRouteView) => void): () => void;
+            handleCustomRoute(
+                routeID: string,
+                handler: (customRouteView: CustomRouteView) => void,
+            ): () => void;
 
-            handleAllRoutes(handler: (routeView: RouteView) => void): () => void;
+            handleAllRoutes(
+                handler: (routeView: RouteView) => void,
+            ): () => void;
 
-            handleListRoute(routeID: NativeListRouteIDs, handler: (listRouteView: ListRouteView) => void): () => void;
+            handleListRoute(
+                routeID: NativeListRouteIDs,
+                handler: (listRouteView: ListRouteView) => void,
+            ): () => void;
 
             handleCustomListRoute(
                 routeID: string,
-                handler: (offset: number, max: number) => CustomListDescriptor | Promise<CustomListDescriptor>,
+                handler: (
+                    offset: number,
+                    max: number,
+                ) => CustomListDescriptor | Promise<CustomListDescriptor>,
             ): () => void;
 
             getCurrentRouteView(): RouteView;
@@ -789,7 +899,13 @@ declare namespace InboxSDK {
             destroyed: boolean;
         }
 
-        type RouteTypes = "LIST" | "THREAD" | "SETTINGS" | "CHAT" | "CUSTOM" | "UNKNOWN";
+        type RouteTypes =
+            | "LIST"
+            | "THREAD"
+            | "SETTINGS"
+            | "CHAT"
+            | "CUSTOM"
+            | "UNKNOWN";
 
         interface CustomRouteView extends RouteView {
             getElement(): HTMLElement;
@@ -798,7 +914,9 @@ declare namespace InboxSDK {
         }
 
         interface ListRouteView extends RouteView {
-            addCollapsibleSection(options: SectionDescriptor): CollapsibleSectionView;
+            addCollapsibleSection(
+                options: SectionDescriptor,
+            ): CollapsibleSectionView;
 
             // addCollapsibleSection(options: Stream<SectionDescriptor>): CollapsibleSectionView;
 
@@ -822,7 +940,10 @@ declare namespace InboxSDK {
 
             remove(): void;
 
-            on(name: "destroy" | "expanded" | "collapsed", cb: () => void): void;
+            on(
+                name: "destroy" | "expanded" | "collapsed",
+                cb: () => void,
+            ): void;
         }
 
         interface SectionDescriptor {
@@ -831,7 +952,9 @@ declare namespace InboxSDK {
             titleLinkText?: string | undefined;
             onTitleLinkClick?: (() => void) | undefined;
             hasDropdown?: boolean | undefined;
-            onDropdownClick?: ((event: SectionDropdownClickEvent) => void) | undefined;
+            onDropdownClick?:
+                | ((event: SectionDropdownClickEvent) => void)
+                | undefined;
             tableRows?: RowDescriptor[] | undefined;
             contentElement?: HTMLElement | undefined;
             footerLinkText?: string | undefined;
@@ -941,7 +1064,9 @@ declare namespace InboxSDK {
             iconElement?: HTMLElement | undefined;
         }
 
-        type NavItemDescriptor = NavItemIconUrlDescriptor | NavItemIconHtmlDescriptor;
+        type NavItemDescriptor =
+            | NavItemIconUrlDescriptor
+            | NavItemIconHtmlDescriptor;
 
         interface CreateAccessoryDescriptor {
             type: "CREATE";
@@ -1046,13 +1171,22 @@ declare namespace InboxSDK {
         interface DrawerView {
             close(): void;
 
-            associateComposeView(composeView: Compose.ComposeView, closeWithCompose: boolean): void;
+            associateComposeView(
+                composeView: Compose.ComposeView,
+                closeWithCompose: boolean,
+            ): void;
 
             disassociateComposeView(): void;
 
-            on(name: "destroy" | "slideAnimationDone" | "closing", cb: () => void): void;
+            on(
+                name: "destroy" | "slideAnimationDone" | "closing",
+                cb: () => void,
+            ): void;
 
-            on(name: "preautoclose", cb: (event: Common.PreAutoCloseEvent) => void): void;
+            on(
+                name: "preautoclose",
+                cb: (event: Common.PreAutoCloseEvent) => void,
+            ): void;
 
             destroyed: boolean;
         }
@@ -1104,7 +1238,10 @@ declare namespace InboxSDK {
             el: HTMLElement;
         }
 
-        type MessageDescriptor = MessageDescriptorText | MessageDescriptorHtml | MessageDescriptorHtmlElement;
+        type MessageDescriptor =
+            | MessageDescriptorText
+            | MessageDescriptorHtml
+            | MessageDescriptorHtmlElement;
 
         interface MessageButtonDescriptor {
             onClick(event: any): void;
@@ -1119,15 +1256,18 @@ declare namespace InboxSDK {
             messageKey?: object | string | undefined;
         }
 
-        interface LoadingMessageDescriptorText extends LoadingMessageDescriptorBase {
+        interface LoadingMessageDescriptorText
+            extends LoadingMessageDescriptorBase {
             text: string;
         }
 
-        interface LoadingMessageDescriptorHtml extends LoadingMessageDescriptorBase {
+        interface LoadingMessageDescriptorHtml
+            extends LoadingMessageDescriptorBase {
             html: string;
         }
 
-        interface LoadingMessageDescriptorHtmlElement extends LoadingMessageDescriptorBase {
+        interface LoadingMessageDescriptorHtmlElement
+            extends LoadingMessageDescriptorBase {
             el: HTMLElement;
         }
 
@@ -1148,15 +1288,18 @@ declare namespace InboxSDK {
             messageKey?: object | string | undefined;
         }
 
-        interface SavingMessageDescriptorText extends SavingMessageDescriptorBase {
+        interface SavingMessageDescriptorText
+            extends SavingMessageDescriptorBase {
             text: string;
         }
 
-        interface SavingMessageDescriptorHtml extends SavingMessageDescriptorBase {
+        interface SavingMessageDescriptorHtml
+            extends SavingMessageDescriptorBase {
             html: string;
         }
 
-        interface SavingMessageDescriptorHtmlElement extends SavingMessageDescriptorBase {
+        interface SavingMessageDescriptorHtmlElement
+            extends SavingMessageDescriptorBase {
             el: HTMLElement;
         }
 
@@ -1169,7 +1312,11 @@ declare namespace InboxSDK {
     export namespace Search {
         interface SearchInstance {
             registerSearchSuggestionsProvider(
-                handler: (query: string) => AutocompleteSearchResult[] | Promise<AutocompleteSearchResult[]>,
+                handler: (
+                    query: string,
+                ) =>
+                    | AutocompleteSearchResult[]
+                    | Promise<AutocompleteSearchResult[]>,
             ): void;
 
             registerSearchQueryRewriter(rewriter: SearchQueryRewriter): void;
@@ -1184,17 +1331,21 @@ declare namespace InboxSDK {
             onClick?: (() => void) | undefined;
         }
 
-        interface AutocompleteSearchResultText extends AutocompleteSearchResultBase {
+        interface AutocompleteSearchResultText
+            extends AutocompleteSearchResultBase {
             name: string;
             description: string;
         }
 
-        interface AutocompleteSearchResultHtml extends AutocompleteSearchResultBase {
+        interface AutocompleteSearchResultHtml
+            extends AutocompleteSearchResultBase {
             nameHTML: string;
             descriptionHTML: string;
         }
 
-        type AutocompleteSearchResult = AutocompleteSearchResultText | AutocompleteSearchResultHtml;
+        type AutocompleteSearchResult =
+            | AutocompleteSearchResultText
+            | AutocompleteSearchResultHtml;
 
         interface SearchQueryRewriter {
             term: string;
@@ -1218,7 +1369,9 @@ declare namespace InboxSDK {
 
     export namespace Keyboard {
         interface KeyboardInstance {
-            createShortcutHandle(keyboardShortcutDescriptor: KeyboardShortcutDescriptor): KeyboardShortcutHandle;
+            createShortcutHandle(
+                keyboardShortcutDescriptor: KeyboardShortcutDescriptor,
+            ): KeyboardShortcutHandle;
         }
 
         interface KeyboardShortcutHandle {

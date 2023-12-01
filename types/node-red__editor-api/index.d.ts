@@ -9,7 +9,9 @@ export = editorAPI;
 
 declare namespace editorAPI {
     interface Auth {
-        needsPermission: (permission: string) => (req: Request, res: Response, next: NextFunction) => void;
+        needsPermission: (
+            permission: string,
+        ) => (req: Request, res: Response, next: NextFunction) => void;
     }
     interface EditorAPIModule {
         /**

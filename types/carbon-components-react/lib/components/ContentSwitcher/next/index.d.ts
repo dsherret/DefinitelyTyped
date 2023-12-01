@@ -1,5 +1,9 @@
 import * as React from "react";
-import { ForwardRefReturn, ReactButtonAttr, ReactDivAttr } from "../../../../typings/shared";
+import {
+    ForwardRefReturn,
+    ReactButtonAttr,
+    ReactDivAttr,
+} from "../../../../typings/shared";
 
 export interface ContentSwitcherNextProps {
     children?: React.ReactNode | undefined;
@@ -11,7 +15,8 @@ export interface ContentSwitcherNextProps {
 export declare const ContentSwitcher: React.FC<ContentSwitcherNextProps>;
 
 type ExcludedContentTabsPropsKeys = "aria-label" | "onKeyDown" | "role";
-export interface ContentTabsProps extends Omit<ReactDivAttr, ExcludedContentTabsPropsKeys> {
+export interface ContentTabsProps
+    extends Omit<ReactDivAttr, ExcludedContentTabsPropsKeys> {
     activation?: "automatic" | "manual" | undefined;
     "aria-label": string;
     children?: React.ReactNode | undefined;
@@ -20,12 +25,23 @@ export interface ContentTabsProps extends Omit<ReactDivAttr, ExcludedContentTabs
 
 export declare const ContentTabs: React.FC<ContentTabsProps>;
 
-type ExcludedContentTabPropKeys = "aria-controls" | "aria-selected" | "id" | "onClick" | "role" | "tabIndex" | "type";
-export interface ContentTabProps extends Omit<ReactButtonAttr, ExcludedContentTabPropKeys> {
+type ExcludedContentTabPropKeys =
+    | "aria-controls"
+    | "aria-selected"
+    | "id"
+    | "onClick"
+    | "role"
+    | "tabIndex"
+    | "type";
+export interface ContentTabProps
+    extends Omit<ReactButtonAttr, ExcludedContentTabPropKeys> {
     children?: React.ReactNode | undefined;
 }
 
-export declare const ContentTab: ForwardRefReturn<HTMLButtonElement, ContentTabProps>;
+export declare const ContentTab: ForwardRefReturn<
+    HTMLButtonElement,
+    ContentTabProps
+>;
 
 export interface ContentPanelsProps {
     children?: React.ReactNode | undefined;
@@ -33,9 +49,18 @@ export interface ContentPanelsProps {
 
 export declare const ContentPanels: React.FC<ContentPanelsProps>;
 
-type ExcludedContentPanelPropKeys = "aria-labelledby" | "hidden" | "id" | "role" | "tabIndex";
-export interface ContentPanelProps extends Omit<ReactDivAttr, ExcludedContentPanelPropKeys> {
+type ExcludedContentPanelPropKeys =
+    | "aria-labelledby"
+    | "hidden"
+    | "id"
+    | "role"
+    | "tabIndex";
+export interface ContentPanelProps
+    extends Omit<ReactDivAttr, ExcludedContentPanelPropKeys> {
     children?: React.ReactNode | undefined;
 }
 
-export declare const ContentPanel: ForwardRefReturn<HTMLDivElement, ContentPanelProps>;
+export declare const ContentPanel: ForwardRefReturn<
+    HTMLDivElement,
+    ContentPanelProps
+>;

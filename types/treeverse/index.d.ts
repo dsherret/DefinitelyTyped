@@ -8,7 +8,11 @@
 //   To keep types inferred from usage and remain usable with some ESLint rules (such as: `@typescript-eslint/no-floating-promises`),
 //   it has been decided to allow Promises on the functions only if `getChildren`, which is required, is also one.
 
-export interface BreadthOptions<Node, Value, Children extends Node[] | Promise<Node[]>> {
+export interface BreadthOptions<
+    Node,
+    Value,
+    Children extends Node[] | Promise<Node[]>,
+> {
     /**
      * Filter out child nodes from the traversal.
      * Note that this filters the entire branch of the tree, not just that one node.
@@ -19,7 +23,9 @@ export interface BreadthOptions<Node, Value, Children extends Node[] | Promise<N
      * @param node The node to filter
      * @returns true if the node should be visited, false otherwise
      */
-    filter?: (node: Node) => Children extends Promise<any> ? Promise<boolean> | boolean : boolean;
+    filter?: (
+        node: Node,
+    ) => Children extends Promise<any> ? Promise<boolean> | boolean : boolean;
     /**
      * Get an array of child nodes to process
      *
@@ -38,12 +44,16 @@ export interface BreadthOptions<Node, Value, Children extends Node[] | Promise<N
      * @param node The original node
      * @returns Aa mapped value, or nothing to just leave it as-is
      */
-    visit?: (node: Node) => Children extends Promise<any> ? Promise<Value> | Value : Value;
+    visit?: (
+        node: Node,
+    ) => Children extends Promise<any> ? Promise<Value> | Value : Value;
 }
 
-export interface DepthOptions<Node, Value, Children extends Node[] | Promise<Node[]>>
-    extends BreadthOptions<Node, Value, Children>
-{
+export interface DepthOptions<
+    Node,
+    Value,
+    Children extends Node[] | Promise<Node[]>,
+> extends BreadthOptions<Node, Value, Children> {
     /**
      * Called as we ascend back to the root of the tree.
      *
@@ -54,7 +64,10 @@ export interface DepthOptions<Node, Value, Children extends Node[] | Promise<Nod
      * @param children is an array of child node visit results. If the graph is cyclic, then some children may have been visited but not left.
      * @returns A reduced value, or nothing to leave it as is
      */
-    leave?: (node: Value, children: Value[]) => Children extends Promise<any> ? Promise<Value> | Value : Value;
+    leave?: (
+        node: Value,
+        children: Value[],
+    ) => Children extends Promise<any> ? Promise<Value> | Value : Value;
 }
 
 /**

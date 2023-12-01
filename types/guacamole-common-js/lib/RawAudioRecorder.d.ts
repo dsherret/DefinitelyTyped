@@ -8,7 +8,7 @@ import { OutputStream } from "./OutputStream.d";
  * require any browser-level support for its audio formats.
  */
 export class RawAudioRecorder extends AudioRecorder {
-    static isSupportedType: typeof AudioRecorder["isSupportedType"];
+    static isSupportedType: (typeof AudioRecorder)["isSupportedType"];
 
     /**
      * Returns a list of all mimetypes supported by Guacamole.RawAudioRecorder. Only

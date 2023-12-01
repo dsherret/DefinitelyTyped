@@ -4,9 +4,13 @@ import { Context, Middleware } from "koa";
 type HelmetOptions = Required<Parameters<typeof helmet>>[0];
 
 declare namespace koaHelmet {
-    type KoaHelmetContentSecurityPolicyDirectiveFunction = (ctx: Context) => string;
+    type KoaHelmetContentSecurityPolicyDirectiveFunction = (
+        ctx: Context,
+    ) => string;
 
-    type KoaHelmetCspDirectiveValue = string | KoaHelmetContentSecurityPolicyDirectiveFunction;
+    type KoaHelmetCspDirectiveValue =
+        | string
+        | KoaHelmetContentSecurityPolicyDirectiveFunction;
 
     interface KoaHelmetContentSecurityPolicyDirectives {
         baseUri?: KoaHelmetCspDirectiveValue[] | undefined;
@@ -35,15 +39,21 @@ declare namespace koaHelmet {
 
     interface KoaHelmet {
         (options?: HelmetOptions): Middleware;
-        contentSecurityPolicy(options?: KoaHelmetContentSecurityPolicyConfiguration): Middleware;
-        dnsPrefetchControl(options?: HelmetOptions["dnsPrefetchControl"]): Middleware;
+        contentSecurityPolicy(
+            options?: KoaHelmetContentSecurityPolicyConfiguration,
+        ): Middleware;
+        dnsPrefetchControl(
+            options?: HelmetOptions["dnsPrefetchControl"],
+        ): Middleware;
         expectCt(options?: HelmetOptions["expectCt"]): Middleware;
         frameguard(options?: HelmetOptions["frameguard"]): Middleware;
         hidePoweredBy(options?: HelmetOptions["hidePoweredBy"]): Middleware;
         hsts(options?: HelmetOptions["hsts"]): Middleware;
         ieNoOpen(options?: HelmetOptions["ieNoOpen"]): Middleware;
         noSniff(options?: HelmetOptions["noSniff"]): Middleware;
-        permittedCrossDomainPolicies(options?: HelmetOptions["permittedCrossDomainPolicies"]): Middleware;
+        permittedCrossDomainPolicies(
+            options?: HelmetOptions["permittedCrossDomainPolicies"],
+        ): Middleware;
         referrerPolicy(options?: HelmetOptions["referrerPolicy"]): Middleware;
         xssFilter(options?: HelmetOptions["xssFilter"]): Middleware;
     }

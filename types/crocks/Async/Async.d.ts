@@ -1,6 +1,12 @@
-import { NullaryFunction, UnaryFunction, VariadicFunction } from "../internal/types";
+import {
+    NullaryFunction,
+    UnaryFunction,
+    VariadicFunction,
+} from "../internal/types";
 
-declare function Async(fn: (reject: UnaryFunction, resolve: UnaryFunction) => any): Async;
+declare function Async(
+    fn: (reject: UnaryFunction, resolve: UnaryFunction) => any,
+): Async;
 
 declare class Async {
     map(fn: UnaryFunction): Async;
@@ -12,7 +18,11 @@ declare class Async {
     bichain(fn1: UnaryFunction, fn2: UnaryFunction): Async;
     swap(fn1: UnaryFunction, fn2: UnaryFunction): Async;
     race(val: Async): Async;
-    fork(reject: UnaryFunction, resolve: UnaryFunction, cancel?: NullaryFunction): any;
+    fork(
+        reject: UnaryFunction,
+        resolve: UnaryFunction,
+        cancel?: NullaryFunction,
+    ): any;
     toPromise(): Promise<any>;
     valueOf(): boolean;
     static fromPromise(fn: VariadicFunction): VariadicFunction;

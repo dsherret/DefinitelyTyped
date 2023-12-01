@@ -20,7 +20,11 @@ declare module "angular" {
              * Sets the `options` used to instantiate a `drake`.
              * Refer to the documentation for `dragula` to learn more about the options themselves.
              */
-            options(scope: IScope, name: string, options?: d.DragulaOptions): void;
+            options(
+                scope: IScope,
+                name: string,
+                options?: d.DragulaOptions,
+            ): void;
             /**
              * Destroys a `drake` instance named `name` scoped under `scope`.
              */

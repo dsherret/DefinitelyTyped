@@ -1,5 +1,15 @@
 import { IncomingMessage } from "http";
-import { DefaultOptions, EmitData, EventData, Fields, File, Files, Options, Part, PluginFunction } from "./";
+import {
+    DefaultOptions,
+    EmitData,
+    EventData,
+    Fields,
+    File,
+    Files,
+    Options,
+    Part,
+    PluginFunction,
+} from "./";
 declare class IncomingForm {
     static readonly DEFAULT_OPTIONS: DefaultOptions;
     constructor(options?: Partial<Options>);
@@ -10,7 +20,10 @@ declare class IncomingForm {
      *
      * @link https://github.com/node-formidable/formidable#parserequest-callback
      */
-    parse(request: IncomingMessage, callback: (err: any, fields: Fields, files: Files) => void): void;
+    parse(
+        request: IncomingMessage,
+        callback: (err: any, fields: Fields, files: Files) => void,
+    ): void;
 
     once(name: "end", callback: () => void): void;
     once(name: "error", callback: (err: any) => void): void;
@@ -18,8 +31,14 @@ declare class IncomingForm {
     on(name: "data", callback: (data: EventData) => void): void;
     on(name: "error", callback: (err: any) => void): void;
     on(name: "field", callback: (name: string, value: string) => void): void;
-    on(name: "fileBegin" | "file", callback: (formName: string, file: File) => void): void;
-    on(name: "progress", callback: (bytesReceived: number, bytesExpected: number) => void): void;
+    on(
+        name: "fileBegin" | "file",
+        callback: (formName: string, file: File) => void,
+    ): void;
+    on(
+        name: "progress",
+        callback: (bytesReceived: number, bytesExpected: number) => void,
+    ): void;
     on(name: string, callback: () => void): void;
 
     emit(name: "data", data: EmitData): void;

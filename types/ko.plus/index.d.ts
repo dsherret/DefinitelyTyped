@@ -86,7 +86,13 @@ declare namespace KoPlus {
         //
         done: (callback: (data: any) => void) => Command;
 
-        fail: (callback: (response: any, status?: string, statusText?: string) => void) => Command;
+        fail: (
+            callback: (
+                response: any,
+                status?: string,
+                statusText?: string,
+            ) => void,
+        ) => Command;
 
         always: (callback: Function) => Command;
 
@@ -139,14 +145,16 @@ declare namespace KoPlus {
     //
     // extend the standard KnockoutObservable to add editable functions
     //
-    export interface Editable<T> extends KnockoutObservable<T>, EditableFunctions {
-    }
+    export interface Editable<T>
+        extends KnockoutObservable<T>,
+            EditableFunctions {}
 
     //
     // extend the standard KnockoutObservableArray to add editable functions
     //
-    export interface EditableArray<T> extends KnockoutObservableArray<T>, EditableFunctions {
-    }
+    export interface EditableArray<T>
+        extends KnockoutObservableArray<T>,
+            EditableFunctions {}
 
     // #endregion
 }

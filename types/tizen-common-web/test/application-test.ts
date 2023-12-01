@@ -1,14 +1,30 @@
-import { application, ApplicationControl, ApplicationInformation, WebAPIError } from "tizen-common-web";
+import {
+    application,
+    ApplicationControl,
+    ApplicationInformation,
+    WebAPIError,
+} from "tizen-common-web";
 
 const app = application.getCurrentApplication();
-const watchId = app.addEventListener({ appId: app.appInfo.id, name: "custom_user_event" }, (event, data) => {
-    console.log("Data: " + JSON.stringify(data));
-    // Do something.
-});
+const watchId = app.addEventListener(
+    { appId: app.appInfo.id, name: "custom_user_event" },
+    (event, data) => {
+        console.log("Data: " + JSON.stringify(data));
+        // Do something.
+    },
+);
 
-const appControl = new ApplicationControl("http://tizen.org/appcontrol/operation/pick", "null", "image/jpeg", "null");
+const appControl = new ApplicationControl(
+    "http://tizen.org/appcontrol/operation/pick",
+    "null",
+    "image/jpeg",
+    "null",
+);
 
-function successCB(appInfos: ApplicationInformation[], appControl: ApplicationControl) {
+function successCB(
+    appInfos: ApplicationInformation[],
+    appControl: ApplicationControl,
+) {
     // appControl is same object with the value passed as first parameter to findAppControl().
     const appControlReplyCallback = {
         // Callee sent a reply.
@@ -40,7 +56,9 @@ function successCB(appInfos: ApplicationInformation[], appControl: ApplicationCo
             console.log("Launch application control succeed");
         },
         (e: WebAPIError) => {
-            console.log("Launch application control failed, reason: " + e.message);
+            console.log(
+                "Launch application control failed, reason: " + e.message,
+            );
         },
         appControlReplyCallback,
     );

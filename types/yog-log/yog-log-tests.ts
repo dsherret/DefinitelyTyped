@@ -31,7 +31,11 @@ log.parseStackInfo(new Error());
 
 log.setParams("test", "some");
 
-log.writeLog(0, { escape_msg: false, filename_suffix: "123", errno: 0 }, "test");
+log.writeLog(
+    0,
+    { escape_msg: false, filename_suffix: "123", errno: 0 },
+    "test",
+);
 
 const middleware = yogLog({});
 

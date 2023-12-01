@@ -17,12 +17,17 @@ assert.equal(
 );
 
 assert.equal(
-    JSON.stringify(sortObject({
-        c: 1,
-        b: 1,
-        d: 1,
-        a: 1,
-    }, ["b", "a", "d", "c"])),
+    JSON.stringify(
+        sortObject(
+            {
+                c: 1,
+                b: 1,
+                d: 1,
+                a: 1,
+            },
+            ["b", "a", "d", "c"],
+        ),
+    ),
     JSON.stringify({
         b: 1,
         a: 1,
@@ -38,12 +43,17 @@ function removeKeyAncCompareIndex(keyA: string, keyB: string) {
 }
 
 assert.equal(
-    JSON.stringify(sortObject({
-        "key-1": 1,
-        "key-3": 1,
-        "key-10": 1,
-        "key-2": 1,
-    }, removeKeyAncCompareIndex)),
+    JSON.stringify(
+        sortObject(
+            {
+                "key-1": 1,
+                "key-3": 1,
+                "key-10": 1,
+                "key-2": 1,
+            },
+            removeKeyAncCompareIndex,
+        ),
+    ),
     JSON.stringify({
         "key-1": 1,
         "key-2": 1,

@@ -14,7 +14,11 @@ import { Codec } from "varstruct";
  *
  * const secret = secretBox.encrypt(message, passphrase)
  */
-export function encrypt(message: Buffer, passphrase: string | Buffer, opts?: EncryptOptions): Buffer;
+export function encrypt(
+    message: Buffer,
+    passphrase: string | Buffer,
+    opts?: EncryptOptions,
+): Buffer;
 /**
  * Decrypt secrets. Built on AES-256-GCM and Scrypt.
  *

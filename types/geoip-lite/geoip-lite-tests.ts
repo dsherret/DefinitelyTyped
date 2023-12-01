@@ -14,7 +14,7 @@ if (stringLookup) {
 // start the data update watcher
 geoip.startWatchingDataUpdate();
 
-geoip.startWatchingDataUpdate(err => {
+geoip.startWatchingDataUpdate((err) => {
     if (err) {
         // $ExpectType Error
         err;
@@ -38,6 +38,6 @@ geoip.reloadData();
 geoip.reloadData(() => {});
 
 // Should work with err in callback
-geoip.reloadData(err => {});
+geoip.reloadData((err) => {});
 
 geoip.cmp(1, 2);

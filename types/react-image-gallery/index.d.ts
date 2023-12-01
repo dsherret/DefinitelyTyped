@@ -80,20 +80,38 @@ export interface ReactImageGalleryProps {
     onMouseOver?: React.MouseEventHandler<HTMLDivElement> | undefined;
     onMouseLeave?: React.MouseEventHandler<HTMLDivElement> | undefined;
     onThumbnailError?: React.ReactEventHandler<HTMLImageElement> | undefined;
-    onThumbnailClick?: ((event: React.MouseEvent<HTMLAnchorElement>, index: number) => void) | undefined;
+    onThumbnailClick?:
+        | ((event: React.MouseEvent<HTMLAnchorElement>, index: number) => void)
+        | undefined;
     renderCustomControls?: (() => React.ReactNode) | undefined;
-    renderLeftNav?: ((onClick: React.MouseEventHandler<HTMLElement>, disabled: boolean) => React.ReactNode) | undefined;
+    renderLeftNav?:
+        | ((
+              onClick: React.MouseEventHandler<HTMLElement>,
+              disabled: boolean,
+          ) => React.ReactNode)
+        | undefined;
     renderRightNav?:
-        | ((onClick: React.MouseEventHandler<HTMLElement>, disabled: boolean) => React.ReactNode)
+        | ((
+              onClick: React.MouseEventHandler<HTMLElement>,
+              disabled: boolean,
+          ) => React.ReactNode)
         | undefined;
     renderPlayPauseButton?:
-        | ((onClick: React.MouseEventHandler<HTMLElement>, isPlaying: boolean) => React.ReactNode)
+        | ((
+              onClick: React.MouseEventHandler<HTMLElement>,
+              isPlaying: boolean,
+          ) => React.ReactNode)
         | undefined;
     renderFullscreenButton?:
-        | ((onClick: React.MouseEventHandler<HTMLElement>, isFullscreen: boolean) => React.ReactNode)
+        | ((
+              onClick: React.MouseEventHandler<HTMLElement>,
+              isFullscreen: boolean,
+          ) => React.ReactNode)
         | undefined;
     renderItem?: ((item: ReactImageGalleryItem) => React.ReactNode) | undefined;
-    renderThumbInner?: ((item: ReactImageGalleryItem) => React.ReactNode) | undefined;
+    renderThumbInner?:
+        | ((item: ReactImageGalleryItem) => React.ReactNode)
+        | undefined;
     stopPropagation?: boolean | undefined;
     additionalClass?: string | undefined;
     useTranslate3D?: boolean | undefined;

@@ -52,7 +52,9 @@ PirateBay.getTorrent(15496322);
 // @ts-expect-error
 PirateBay.getTorrent(false);
 // $ExpectType Promise<TorrentDetails>
-PirateBay.getTorrent("https://thepiratebay.org/torrent/15496322/Ubuntu_16.04.1_LTS_Desktop_64-bit");
+PirateBay.getTorrent(
+    "https://thepiratebay.org/torrent/15496322/Ubuntu_16.04.1_LTS_Desktop_64-bit",
+);
 // $ExpectType Promise<TorrentDetails>
 PirateBay.getTorrent({
     name: "ubuntu",

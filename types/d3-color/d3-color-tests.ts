@@ -155,7 +155,12 @@ cString = cCubehelix.formatHex();
 cString = cCubehelix.formatHex8();
 cString = cCubehelix.formatHsl();
 cString = cCubehelix.formatRgb();
-console.log("Channels = (h : %d, s: %d, l: %d)", cCubehelix.h, cCubehelix.s, cCubehelix.l);
+console.log(
+    "Channels = (h : %d, s: %d, l: %d)",
+    cCubehelix.h,
+    cCubehelix.s,
+    cCubehelix.l,
+);
 console.log("Opacity = %d", cCubehelix.opacity);
 
 // Prototype, instanceof and typeguard

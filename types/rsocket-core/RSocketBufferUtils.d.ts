@@ -11,7 +11,11 @@ export function readUInt24BE(buffer: Buffer, offset: number): number;
  * Writes a uint24 to a buffer starting at the given offset, returning the
  * offset of the next byte.
  */
-export function writeUInt24BE(buffer: Buffer, value: number, offset: number): number;
+export function writeUInt24BE(
+    buffer: Buffer,
+    value: number,
+    offset: number,
+): number;
 
 /**
  * Read a uint64 (technically supports up to 53 bits per JS number
@@ -23,7 +27,11 @@ export function readUInt64BE(buffer: Buffer, offset: number): number;
  * Write a uint64 (technically supports up to 53 bits per JS number
  * representation).
  */
-export function writeUInt64BE(buffer: Buffer, value: number, offset: number): number;
+export function writeUInt64BE(
+    buffer: Buffer,
+    value: number,
+    offset: number,
+): number;
 
 /**
  * Determine the number of bytes it would take to encode the given data with the

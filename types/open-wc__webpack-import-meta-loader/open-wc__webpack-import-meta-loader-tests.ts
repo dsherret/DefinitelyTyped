@@ -9,7 +9,10 @@ const configuration: webpack.Configuration = {
             {
                 test: /\.css$/,
                 oneOf: [
-                    { resourceQuery: /global/, use: ["style-loader", "css-loader"] },
+                    {
+                        resourceQuery: /global/,
+                        use: ["style-loader", "css-loader"],
+                    },
                     { use: ["to-string-loader", "css-loader"] },
                 ],
             },

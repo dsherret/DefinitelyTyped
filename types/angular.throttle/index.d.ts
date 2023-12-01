@@ -7,7 +7,10 @@ declare module "angular" {
         throttle: (
             fn: Function,
             throttle: number,
-            options?: { leading?: boolean | undefined; trailing?: boolean | undefined },
+            options?: {
+                leading?: boolean | undefined;
+                trailing?: boolean | undefined;
+            },
         ) => Function;
     }
 }

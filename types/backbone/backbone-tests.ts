@@ -34,7 +34,9 @@ function test_events_shorthands() {
     const channel2 = new PubSub();
     const onChange = () => alert("whatever");
 
-    channel1.on("alert", (eventName: string) => alert("Triggered " + eventName));
+    channel1.on("alert", (eventName: string) =>
+        alert("Triggered " + eventName),
+    );
     channel1.trigger("alert", "an event");
 
     channel1.once("invalid", () => {}, this);
@@ -92,7 +94,10 @@ class SettingDefaults extends Backbone.Model {
     // same patterns could be used for setting 'Router.routes' and 'View.events'
 }
 
-class FullyTyped extends Backbone.Model<{ iLikeBacon: boolean; iLikeToast: boolean }> {
+class FullyTyped extends Backbone.Model<{
+    iLikeBacon: boolean;
+    iLikeToast: boolean;
+}> {
     getILikeBacon(): boolean | undefined {
         return this.get("iLikeBacon");
     }
@@ -105,7 +110,10 @@ class FullyTyped extends Backbone.Model<{ iLikeBacon: boolean; iLikeToast: boole
         return this.set(values);
     }
 
-    setValue(key: keyof { iLikeBacon: boolean; iLikeToast: boolean }, value: any) {
+    setValue(
+        key: keyof { iLikeBacon: boolean; iLikeToast: boolean },
+        value: any,
+    ) {
         return this.set(key, value);
     }
 }
@@ -156,7 +164,9 @@ class PrivateNote extends Note {
 
 function test_models() {
     const sidebar = new Sidebar();
-    sidebar.on("change:color", (model: {}, color: string) => $("#sidebar").css({ background: color }));
+    sidebar.on("change:color", (model: {}, color: string) =>
+        $("#sidebar").css({ background: color }),
+    );
     sidebar.set({ color: "white" });
     sidebar.promptColor();
 
@@ -241,12 +251,15 @@ function test_collection() {
     books.set([{ title: "Title 0", author: "Johan" }]);
     books.reset();
 
-    const book1: Book = new Book({ title: "Title 1", author: "Mike" }, {
-        // We sneak in an arbitrary option to check that
-        // `CombinedModelSetOptions` no longer breaks pre-1.4.4 code
-        // (see #55764 and #46513).
-        testOption: "banana",
-    });
+    const book1: Book = new Book(
+        { title: "Title 1", author: "Mike" },
+        {
+            // We sneak in an arbitrary option to check that
+            // `CombinedModelSetOptions` no longer breaks pre-1.4.4 code
+            // (see #55764 and #46513).
+            testOption: "banana",
+        },
+    );
     books.add(book1);
 
     // Test adding sort option to add.
@@ -262,11 +275,13 @@ function test_collection() {
         throw new Error("Error");
     }
 
-    books.each(book => book.get("title"));
+    books.each((book) => book.get("title"));
 
-    const titles = books.map(book => book.get("title"));
+    const titles = books.map((book) => book.get("title"));
 
-    const publishedBooks = books.filter(book => book.get("published") === true);
+    const publishedBooks = books.filter(
+        (book) => book.get("published") === true,
+    );
 
     const alphabetical = books.sortBy((book: Book): number => 1);
 
@@ -311,24 +326,39 @@ function test_collection() {
     models = books.filter((value: Book, index: number, list: Book[]) => true);
     one = books.find((value: Book, index: number, list: Book[]) => true);
     num = books.findIndex((value: Book, index: number, list: Book[]) => true);
-    num = books.findLastIndex((value: Book, index: number, list: Book[]) => true);
+    num = books.findLastIndex(
+        (value: Book, index: number, list: Book[]) => true,
+    );
     one = books.first();
     models = books.first(3);
-    models = books.foldl((prev: Book[], curr: Book, index: number, list: Book[]) => prev, []);
-    models = books.foldr((prev: Book[], curr: Book, index: number, list: Book[]) => prev, []);
+    models = books.foldl(
+        (prev: Book[], curr: Book, index: number, list: Book[]) => prev,
+        [],
+    );
+    models = books.foldr(
+        (prev: Book[], curr: Book, index: number, list: Book[]) => prev,
+        [],
+    );
     models = books.forEach((value: Book, index: number, list: Book[]) => true);
-    modelsDict = books.groupBy((value: Book, index: number, list: Book[]) => true);
+    modelsDict = books.groupBy(
+        (value: Book, index: number, list: Book[]) => true,
+    );
     modelsDict = books.groupBy("foo");
     one = books.head();
     models = books.head(3);
     bool = books.include(book1);
     bool = books.includes(book1);
-    modelDict = books.indexBy((value: Book, index: number, list: Book[]) => true);
+    modelDict = books.indexBy(
+        (value: Book, index: number, list: Book[]) => true,
+    );
     modelDict = books.indexBy("foo");
     num = books.indexOf(book1, true);
     one = books.initial();
     models = books.initial(3);
-    models = books.inject((prev: Book[], curr: Book, index: number, list: Book[]) => prev, []);
+    models = books.inject(
+        (prev: Book[], curr: Book, index: number, list: Book[]) => prev,
+        [],
+    );
     one = books.invoke("at", 3);
     bool = books.isEmpty();
     one = books.last();
@@ -337,9 +367,17 @@ function test_collection() {
     models = books.map((value: Book, index: number, list: Book[]) => value);
     one = books.max((value: Book, index: number, list: Book[]) => value);
     one = books.min((value: Book, index: number, list: Book[]) => value);
-    [models] = books.partition((value: Book, index: number, list: Book[]) => true);
-    models = books.reduce((prev: Book[], curr: Book, index: number, list: Book[]) => prev, []);
-    models = books.reduceRight((prev: Book[], curr: Book, index: number, list: Book[]) => prev, []);
+    [models] = books.partition(
+        (value: Book, index: number, list: Book[]) => true,
+    );
+    models = books.reduce(
+        (prev: Book[], curr: Book, index: number, list: Book[]) => prev,
+        [],
+    );
+    models = books.reduceRight(
+        (prev: Book[], curr: Book, index: number, list: Book[]) => prev,
+        [],
+    );
     models = books.reject((value: Book, index: number, list: Book[]) => true);
     models = books.rest(3);
     one = books.sample();
@@ -564,8 +602,8 @@ class ModellessView extends Backbone.View {
     }
 }
 
-interface SVGViewOptions extends Backbone.ViewOptions<Backbone.Model, SVGGraphicsElement> {
-}
+interface SVGViewOptions
+    extends Backbone.ViewOptions<Backbone.Model, SVGGraphicsElement> {}
 
 class SVGView extends Backbone.View<Backbone.Model, SVGGraphicsElement> {
     matrix: DOMMatrix | null = null;

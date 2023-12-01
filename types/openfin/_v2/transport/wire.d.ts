@@ -7,7 +7,7 @@ export interface Wire extends EventEmitter {
     shutdown(): Promise<void>;
 }
 export interface WireConstructor {
-    new(onmessage: (data: any) => void): Wire;
+    new (onmessage: (data: any) => void): Wire;
 }
 export interface RuntimeConfig {
     version: string;
@@ -37,13 +37,17 @@ export interface BaseConfig {
     installerUI?: boolean | undefined;
     runtime?: RuntimeConfig | undefined;
     services?: ServiceConfig[] | undefined;
-    appAssets?: [{
-        src: string;
-        alias: string;
-        target: string;
-        version: string;
-        args: string;
-    }] | undefined;
+    appAssets?:
+        | [
+              {
+                  src: string;
+                  alias: string;
+                  target: string;
+                  version: string;
+                  args: string;
+              },
+          ]
+        | undefined;
     customItems?: [any] | undefined;
     timeout?: number | undefined;
 }
@@ -60,14 +64,31 @@ export interface ExternalConfig extends BaseConfig {
     manifestUrl: string;
 }
 export declare type NewConnectConfig = ConfigWithUuid & ConfigWithRuntime;
-export declare type PortDiscoveryConfig = (ExternalConfig & ConfigWithRuntime) | NewConnectConfig;
-export declare type ConnectConfig = ExistingConnectConfig | NewConnectConfig | ExternalConfig;
-export declare type InternalConnectConfig = ExistingConnectConfig | NewConnectConfig;
-export declare function isExternalConfig(config: ConnectConfig): config is ExternalConfig;
-export declare function isExistingConnectConfig(config: any): config is ExistingConnectConfig;
-export declare function isNewConnectConfig(config: any): config is NewConnectConfig;
-export declare function isPortDiscoveryConfig(config: any): config is PortDiscoveryConfig;
-export declare function isInternalConnectConfig(config: any): config is InternalConnectConfig;
+export declare type PortDiscoveryConfig =
+    | (ExternalConfig & ConfigWithRuntime)
+    | NewConnectConfig;
+export declare type ConnectConfig =
+    | ExistingConnectConfig
+    | NewConnectConfig
+    | ExternalConfig;
+export declare type InternalConnectConfig =
+    | ExistingConnectConfig
+    | NewConnectConfig;
+export declare function isExternalConfig(
+    config: ConnectConfig,
+): config is ExternalConfig;
+export declare function isExistingConnectConfig(
+    config: any,
+): config is ExistingConnectConfig;
+export declare function isNewConnectConfig(
+    config: any,
+): config is NewConnectConfig;
+export declare function isPortDiscoveryConfig(
+    config: any,
+): config is PortDiscoveryConfig;
+export declare function isInternalConnectConfig(
+    config: any,
+): config is InternalConnectConfig;
 export declare enum READY_STATE {
     CONNECTING = 0,
     OPEN = 1,

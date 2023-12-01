@@ -71,14 +71,14 @@ io.socket.mightBeAboutToAutoConnect() === false;
 io.socket
     .on("connect", () => {})
     .on("disconnect", () => {})
-    .on("reconnecting", num => {
+    .on("reconnecting", (num) => {
         num = 15;
     })
     .on("reconnect", (transport, num) => {
         transport.toLowerCase();
         num = 16;
     })
-    .on("error", err => {})
+    .on("error", (err) => {})
     .on("any", (a, b, c) => {})
     .removeAllListeners()
     .off("error", () => {})

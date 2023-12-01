@@ -407,29 +407,35 @@ placeSearch.on("complete", (event: AMap.PlaceSearch.EventMap["complete"]) => {
     event.cityList;
 });
 
-placeSearch.on("listElementClick", (event: AMap.PlaceSearch.EventMap["listElementClick"]) => {
-    // $ExpectType MouseEvent
-    event.event;
-    // $ExpectType string
-    event.id;
-    // $ExpectType number
-    event.index;
-    // $ExpectType Marker<any>
-    event.marker;
-    // $ExpectType HTMLLIElement
-    event.listElement;
-});
+placeSearch.on(
+    "listElementClick",
+    (event: AMap.PlaceSearch.EventMap["listElementClick"]) => {
+        // $ExpectType MouseEvent
+        event.event;
+        // $ExpectType string
+        event.id;
+        // $ExpectType number
+        event.index;
+        // $ExpectType Marker<any>
+        event.marker;
+        // $ExpectType HTMLLIElement
+        event.listElement;
+    },
+);
 
-placeSearch.on("markerClick", (event: AMap.PlaceSearch.EventMap["markerClick"]) => {
-    const markerEvent = event.event;
-    // $ExpectType Marker<any>
-    markerEvent.target;
-    // $ExpectType string
-    event.id;
-    // $ExpectType number
-    event.index;
-    // $ExpectType Marker<any>
-    event.marker;
-    // $ExpectType HTMLLIElement
-    event.listElement;
-});
+placeSearch.on(
+    "markerClick",
+    (event: AMap.PlaceSearch.EventMap["markerClick"]) => {
+        const markerEvent = event.event;
+        // $ExpectType Marker<any>
+        markerEvent.target;
+        // $ExpectType string
+        event.id;
+        // $ExpectType number
+        event.index;
+        // $ExpectType Marker<any>
+        event.marker;
+        // $ExpectType HTMLLIElement
+        event.listElement;
+    },
+);

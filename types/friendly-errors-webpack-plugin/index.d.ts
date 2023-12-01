@@ -15,13 +15,17 @@ declare namespace FriendlyErrorsWebpackPlugin {
     }
 
     interface Options {
-        compilationSuccessInfo?: {
-            messages: string[];
-            notes: string[];
-        } | undefined;
+        compilationSuccessInfo?:
+            | {
+                  messages: string[];
+                  notes: string[];
+              }
+            | undefined;
         onErrors?(severity: Severity, errors: string): void;
         clearConsole?: boolean | undefined;
-        additionalFormatters?: Array<(errors: WebpackError[], type: Severity) => string[]> | undefined;
+        additionalFormatters?:
+            | Array<(errors: WebpackError[], type: Severity) => string[]>
+            | undefined;
         additionalTransformers?: Array<(error: any) => any> | undefined;
     }
 

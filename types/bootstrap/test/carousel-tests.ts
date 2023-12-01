@@ -35,7 +35,7 @@ Carousel.VERSION;
 // $ExpectType Options
 Carousel.Default;
 
-element.addEventListener(Carousel.Events.slid, event => {
+element.addEventListener(Carousel.Events.slid, (event) => {
     event.direction; // $ExpectType Direction
     event.relatedTarget; // $ExpectType Element
     event.from; // $ExpectType number
@@ -44,14 +44,14 @@ element.addEventListener(Carousel.Events.slid, event => {
 
 // Ensure that using a string literal as the event type works the same as using
 // the `Carousel.Events` enum.
-element.addEventListener("slid.bs.carousel", event => {
+element.addEventListener("slid.bs.carousel", (event) => {
     event.direction; // $ExpectType Direction
     event.relatedTarget; // $ExpectType Element
     event.from; // $ExpectType number
     event.to; // $ExpectType number
 });
 
-element.addEventListener(Carousel.Events.slide, event => {
+element.addEventListener(Carousel.Events.slide, (event) => {
     event.direction; // $ExpectType Direction
     event.relatedTarget; // $ExpectType Element
     event.from; // $ExpectType number

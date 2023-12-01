@@ -236,7 +236,15 @@ declare namespace Vimeo {
         export type EventCallback<Data = any> = (data: Data) => any;
 
         export type VimeoTimeRange = [number, number];
-        export type VimeoVideoQuality = "auto" | "4K" | "2K" | "1080p" | "720p" | "540p" | "360p" | "240p";
+        export type VimeoVideoQuality =
+            | "auto"
+            | "4K"
+            | "2K"
+            | "1080p"
+            | "720p"
+            | "540p"
+            | "360p"
+            | "240p";
 
         export interface VimeoCuePoint {
             time: number;
@@ -290,7 +298,10 @@ declare namespace Vimeo {
     }
 
     class Player {
-        constructor(element: HTMLIFrameElement | HTMLElement | string, options?: Player.Options);
+        constructor(
+            element: HTMLIFrameElement | HTMLElement | string,
+            options?: Player.Options,
+        );
 
         on<EventName extends keyof Player.EventMap>(
             event: EventName,
@@ -306,7 +317,10 @@ declare namespace Vimeo {
         loadVideo(url: string): Promise<string>;
         loadVideo(options: Player.Options): Promise<{ [prop: string]: any }>;
         ready(): Promise<void>;
-        enableTextTrack(language: string, kind?: Player.TrackKind): Promise<Player.VimeoTextTrack>;
+        enableTextTrack(
+            language: string,
+            kind?: Player.TrackKind,
+        ): Promise<Player.VimeoTextTrack>;
         disableTextTrack(): Promise<void>;
         pause(): Promise<void>;
         play(): Promise<void>;
@@ -323,7 +337,10 @@ declare namespace Vimeo {
         setColor(color: string): Promise<string>;
         getChapters(): Promise<Player.VimeoChapter[]>;
         getCurrentChapter(): Promise<Player.VimeoChapter>;
-        addCuePoint(time: number, data: Player.VimeoCuePointData): Promise<string>;
+        addCuePoint(
+            time: number,
+            data: Player.VimeoCuePointData,
+        ): Promise<string>;
         removeCuePoint(id: string): Promise<string>;
         getCuePoints(): Promise<Player.VimeoCuePoint[]>;
         getBuffered(): Promise<Player.VimeoTimeRange[]>;
@@ -352,9 +369,13 @@ declare namespace Vimeo {
         setVolume(volume: number): Promise<number>;
         getQualities(): Promise<Player.VimeoVideoQualityObject[]>;
         getQuality(): Promise<Player.VimeoVideoQuality>;
-        setQuality(quality: Player.VimeoVideoQuality): Promise<Player.VimeoVideoQuality>;
+        setQuality(
+            quality: Player.VimeoVideoQuality,
+        ): Promise<Player.VimeoVideoQuality>;
         getCameraProps(): Promise<Player.VimeoCameraProps>;
-        setCameraProps(cameraProps: Player.VimeoCameraProps): Promise<Player.VimeoCameraProps>;
+        setCameraProps(
+            cameraProps: Player.VimeoCameraProps,
+        ): Promise<Player.VimeoCameraProps>;
         destroy(): Promise<void>;
     }
 }

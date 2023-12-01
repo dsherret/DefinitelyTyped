@@ -2,7 +2,7 @@
 
 import type { ChildProcess } from "node:child_process";
 
-type Command = (
+type Command =
     | "about" // Get quota information from the remote.
     | "authorize" // Remote authorization.
     | "backend" // Run a backend specific command.
@@ -73,8 +73,7 @@ type Command = (
     | "test" // Run a test command.
     | "touch" // Create new file or change file modification time.
     | "tree" // List the contents of the remote in a tree like fashion.
-    | "version" // Show the version number.
-);
+    | "version"; // Show the version number.
 
 type FnStringOrObjectArgs<R> = (...args: Array<string | object>) => R;
 type ApiFn = FnStringOrObjectArgs<ChildProcess>;
@@ -91,9 +90,10 @@ type PromisesFn = FnStringOrObjectArgs<Promise<Buffer>>;
  * @param args arguments for the API call.
  * @returns the rclone subprocess.
  */
-declare const api: ApiFn & Record<Command, ApiFn> & {
-    /** Promise-based API. */
-    promises: PromisesFn & Record<Command, PromisesFn>;
-};
+declare const api: ApiFn &
+    Record<Command, ApiFn> & {
+        /** Promise-based API. */
+        promises: PromisesFn & Record<Command, PromisesFn>;
+    };
 
 export = api;

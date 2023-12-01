@@ -41,6 +41,9 @@ interface PwdStrengthReturn {
     color: string;
 }
 
-declare function passwordStrength(password: string, options?: PwdStrengthOptions): PwdStrengthReturn;
+declare function passwordStrength(
+    password: string,
+    options?: PwdStrengthOptions,
+): PwdStrengthReturn;
 
 export = passwordStrength;

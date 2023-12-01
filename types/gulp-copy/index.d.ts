@@ -15,7 +15,10 @@ declare function gulpCopy(outDirectory: string): through.ThroughStream;
  *                     does not exist, it will be created atomatically.
  * @param options Override values for available settings.
  */
-declare function gulpCopy(outDirectory: string, options: gulpCopy.GulpCopyOptions): through.ThroughStream;
+declare function gulpCopy(
+    outDirectory: string,
+    options: gulpCopy.GulpCopyOptions,
+): through.ThroughStream;
 
 declare namespace gulpCopy {
     export interface GulpCopyOptions {

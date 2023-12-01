@@ -25,7 +25,12 @@ server.on("request", (request, event, tags) => {
 });
 
 server.on("request-error", (request, err) => {
-    console.log("Error response (500) sent for request: " + request.id + " because: " + err.message);
+    console.log(
+        "Error response (500) sent for request: " +
+            request.id +
+            " because: " +
+            err.message,
+    );
 });
 
 server.on("response", (request) => {

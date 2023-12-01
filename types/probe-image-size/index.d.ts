@@ -6,15 +6,17 @@ import { Transform } from "stream";
 /**
  * Get image size without full download. Supported image types: JPG, GIF, PNG, WebP, BMP, TIFF, SVG, PSD.
  */
-declare function probe(source: string, opts?: needle.NeedleOptions): Promise<probe.ProbeResult>;
-declare function probe(source: NodeJS.ReadableStream, keepOpen?: boolean): Promise<probe.ProbeResult>;
+declare function probe(
+    source: string,
+    opts?: needle.NeedleOptions,
+): Promise<probe.ProbeResult>;
+declare function probe(
+    source: NodeJS.ReadableStream,
+    keepOpen?: boolean,
+): Promise<probe.ProbeResult>;
 
 declare class ProbeError extends Error {
-    constructor(
-        message: string,
-        code?: "ECONTENT" | null,
-        statusCode?: number,
-    );
+    constructor(message: string, code?: "ECONTENT" | null, statusCode?: number);
 }
 
 declare namespace probe {

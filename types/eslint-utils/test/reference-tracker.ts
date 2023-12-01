@@ -14,7 +14,9 @@ utils.ReferenceTracker.READ;
 
 new utils.ReferenceTracker(scope, {});
 new utils.ReferenceTracker(scope, { globalObjectNames: ["Boolean"] });
-new utils.ReferenceTracker(scope, { mode: Math.random() ? "legacy" : "strict" });
+new utils.ReferenceTracker(scope, {
+    mode: Math.random() ? "legacy" : "strict",
+});
 
 const referenceTracker = new utils.ReferenceTracker(scope);
 
@@ -28,14 +30,21 @@ referenceTracker.iterateEsmReferences(traceMap);
 referenceTracker.iterateGlobalReferences(traceMap);
 
 // $ExpectType IterableIterator<TrackedReferences<{ type: string; }>>
-referenceTracker.iterateCjsReferences({ test: { [utils.ReferenceTracker.READ]: { type: "string" } } });
+referenceTracker.iterateCjsReferences({
+    test: { [utils.ReferenceTracker.READ]: { type: "string" } },
+});
 
 // $ExpectType IterableIterator<TrackedReferences<{ type: string; } | { type: number; }>>
 referenceTracker.iterateGlobalReferences({
-    test: { [utils.ReferenceTracker.READ]: { type: "string" }, [utils.ReferenceTracker.CALL]: { type: 6 } },
+    test: {
+        [utils.ReferenceTracker.READ]: { type: "string" },
+        [utils.ReferenceTracker.CALL]: { type: 6 },
+    },
 });
 
-for (const { info, node, path, type } of referenceTracker.iterateCjsReferences(traceMap)) {
+for (const { info, node, path, type } of referenceTracker.iterateCjsReferences(
+    traceMap,
+)) {
     info; // $ExpectType boolean
     node; // $ExpectType Node
     path; // $ExpectType string[]

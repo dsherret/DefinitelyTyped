@@ -89,7 +89,10 @@ declare namespace GoogleAppsScript {
             copy(): Body;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -112,13 +115,22 @@ declare namespace GoogleAppsScript {
             getTextAlignment(): TextAlignment;
             getType(): ElementType;
             insertHorizontalRule(childIndex: Integer): HorizontalRule;
-            insertImage(childIndex: Integer, image: Base.BlobSource): InlineImage;
+            insertImage(
+                childIndex: Integer,
+                image: Base.BlobSource,
+            ): InlineImage;
             insertImage(childIndex: Integer, image: InlineImage): InlineImage;
             insertListItem(childIndex: Integer, listItem: ListItem): ListItem;
             insertListItem(childIndex: Integer, text: string): ListItem;
             insertPageBreak(childIndex: Integer): PageBreak;
-            insertPageBreak(childIndex: Integer, pageBreak: PageBreak): PageBreak;
-            insertParagraph(childIndex: Integer, paragraph: Paragraph): Paragraph;
+            insertPageBreak(
+                childIndex: Integer,
+                pageBreak: PageBreak,
+            ): PageBreak;
+            insertParagraph(
+                childIndex: Integer,
+                paragraph: Paragraph,
+            ): Paragraph;
             insertParagraph(childIndex: Integer, text: string): Paragraph;
             insertTable(childIndex: Integer): Table;
             insertTable(childIndex: Integer, cells: string[][]): Table;
@@ -126,7 +138,10 @@ declare namespace GoogleAppsScript {
             removeChild(child: Element): Body;
             replaceText(searchPattern: string, replacement: string): Element;
             setAttributes(attributes: any): Body;
-            setHeadingAttributes(paragraphHeading: ParagraphHeading, attributes: any): Body;
+            setHeadingAttributes(
+                paragraphHeading: ParagraphHeading,
+                attributes: any,
+            ): Body;
             setMarginBottom(marginBottom: number): Body;
             setMarginLeft(marginLeft: number): Body;
             setMarginRight(marginRight: number): Body;
@@ -176,7 +191,10 @@ declare namespace GoogleAppsScript {
             copy(): ContainerElement;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -432,7 +450,10 @@ declare namespace GoogleAppsScript {
             copy(): Equation;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -463,7 +484,10 @@ declare namespace GoogleAppsScript {
             copy(): EquationFunction;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -599,7 +623,10 @@ declare namespace GoogleAppsScript {
             copy(): FooterSection;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -615,11 +642,17 @@ declare namespace GoogleAppsScript {
             getTextAlignment(): TextAlignment;
             getType(): ElementType;
             insertHorizontalRule(childIndex: Integer): HorizontalRule;
-            insertImage(childIndex: Integer, image: Base.BlobSource): InlineImage;
+            insertImage(
+                childIndex: Integer,
+                image: Base.BlobSource,
+            ): InlineImage;
             insertImage(childIndex: Integer, image: InlineImage): InlineImage;
             insertListItem(childIndex: Integer, listItem: ListItem): ListItem;
             insertListItem(childIndex: Integer, text: string): ListItem;
-            insertParagraph(childIndex: Integer, paragraph: Paragraph): Paragraph;
+            insertParagraph(
+                childIndex: Integer,
+                paragraph: Paragraph,
+            ): Paragraph;
             insertParagraph(childIndex: Integer, text: string): Paragraph;
             insertTable(childIndex: Integer): Table;
             insertTable(childIndex: Integer, cells: string[][]): Table;
@@ -635,7 +668,9 @@ declare namespace GoogleAppsScript {
             /** @deprecated DO NOT USE */ getNextSibling(): Element;
             /** @deprecated DO NOT USE */ getPreviousSibling(): Element;
             /** @deprecated DO NOT USE */ isAtDocumentEnd(): boolean;
-            /** @deprecated DO NOT USE */ setLinkUrl(url: string): FooterSection;
+            /** @deprecated DO NOT USE */ setLinkUrl(
+                url: string,
+            ): FooterSection;
         }
         /**
          * An element representing a footnote. Each Footnote is contained within a ListItem
@@ -668,7 +703,10 @@ declare namespace GoogleAppsScript {
             copy(): FootnoteSection;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -682,7 +720,10 @@ declare namespace GoogleAppsScript {
             getText(): string;
             getTextAlignment(): TextAlignment;
             getType(): ElementType;
-            insertParagraph(childIndex: Integer, paragraph: Paragraph): Paragraph;
+            insertParagraph(
+                childIndex: Integer,
+                paragraph: Paragraph,
+            ): Paragraph;
             insertParagraph(childIndex: Integer, text: string): Paragraph;
             removeChild(child: Element): FootnoteSection;
             removeFromParent(): FootnoteSection;
@@ -693,7 +734,9 @@ declare namespace GoogleAppsScript {
             /** @deprecated DO NOT USE */ getFootnotes(): Footnote[];
             /** @deprecated DO NOT USE */ getLinkUrl(): string;
             /** @deprecated DO NOT USE */ isAtDocumentEnd(): boolean;
-            /** @deprecated DO NOT USE */ setLinkUrl(url: string): FootnoteSection;
+            /** @deprecated DO NOT USE */ setLinkUrl(
+                url: string,
+            ): FootnoteSection;
         }
         /**
          * An enumeration of the supported glyph types.
@@ -739,7 +782,10 @@ declare namespace GoogleAppsScript {
             copy(): HeaderSection;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -755,11 +801,17 @@ declare namespace GoogleAppsScript {
             getTextAlignment(): TextAlignment;
             getType(): ElementType;
             insertHorizontalRule(childIndex: Integer): HorizontalRule;
-            insertImage(childIndex: Integer, image: Base.BlobSource): InlineImage;
+            insertImage(
+                childIndex: Integer,
+                image: Base.BlobSource,
+            ): InlineImage;
             insertImage(childIndex: Integer, image: InlineImage): InlineImage;
             insertListItem(childIndex: Integer, listItem: ListItem): ListItem;
             insertListItem(childIndex: Integer, text: string): ListItem;
-            insertParagraph(childIndex: Integer, paragraph: Paragraph): Paragraph;
+            insertParagraph(
+                childIndex: Integer,
+                paragraph: Paragraph,
+            ): Paragraph;
             insertParagraph(childIndex: Integer, text: string): Paragraph;
             insertTable(childIndex: Integer): Table;
             insertTable(childIndex: Integer, cells: string[][]): Table;
@@ -775,7 +827,9 @@ declare namespace GoogleAppsScript {
             /** @deprecated DO NOT USE */ getNextSibling(): Element;
             /** @deprecated DO NOT USE */ getPreviousSibling(): Element;
             /** @deprecated DO NOT USE */ isAtDocumentEnd(): boolean;
-            /** @deprecated DO NOT USE */ setLinkUrl(url: string): HeaderSection;
+            /** @deprecated DO NOT USE */ setLinkUrl(
+                url: string,
+            ): HeaderSection;
         }
         /**
          * An enumeration of the supported horizontal alignment types.
@@ -917,7 +971,10 @@ declare namespace GoogleAppsScript {
             copy(): ListItem;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAlignment(): HorizontalAlignment;
@@ -945,10 +1002,19 @@ declare namespace GoogleAppsScript {
             getTextAlignment(): TextAlignment;
             getType(): ElementType;
             insertHorizontalRule(childIndex: Integer): HorizontalRule;
-            insertInlineImage(childIndex: Integer, image: Base.BlobSource): InlineImage;
-            insertInlineImage(childIndex: Integer, image: InlineImage): InlineImage;
+            insertInlineImage(
+                childIndex: Integer,
+                image: Base.BlobSource,
+            ): InlineImage;
+            insertInlineImage(
+                childIndex: Integer,
+                image: InlineImage,
+            ): InlineImage;
             insertPageBreak(childIndex: Integer): PageBreak;
-            insertPageBreak(childIndex: Integer, pageBreak: PageBreak): PageBreak;
+            insertPageBreak(
+                childIndex: Integer,
+                pageBreak: PageBreak,
+            ): PageBreak;
             insertText(childIndex: Integer, text: string): Text;
             insertText(childIndex: Integer, text: Text): Text;
             isAtDocumentEnd(): boolean;
@@ -1049,7 +1115,10 @@ declare namespace GoogleAppsScript {
             copy(): Paragraph;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAlignment(): HorizontalAlignment;
@@ -1074,10 +1143,19 @@ declare namespace GoogleAppsScript {
             getTextAlignment(): TextAlignment;
             getType(): ElementType;
             insertHorizontalRule(childIndex: Integer): HorizontalRule;
-            insertInlineImage(childIndex: Integer, image: Base.BlobSource): InlineImage;
-            insertInlineImage(childIndex: Integer, image: InlineImage): InlineImage;
+            insertInlineImage(
+                childIndex: Integer,
+                image: Base.BlobSource,
+            ): InlineImage;
+            insertInlineImage(
+                childIndex: Integer,
+                image: InlineImage,
+            ): InlineImage;
             insertPageBreak(childIndex: Integer): PageBreak;
-            insertPageBreak(childIndex: Integer, pageBreak: PageBreak): PageBreak;
+            insertPageBreak(
+                childIndex: Integer,
+                pageBreak: PageBreak,
+            ): PageBreak;
             insertText(childIndex: Integer, text: string): Text;
             insertText(childIndex: Integer, text: Text): Text;
             isAtDocumentEnd(): boolean;
@@ -1270,8 +1348,15 @@ declare namespace GoogleAppsScript {
          */
         interface RangeBuilder {
             addElement(element: Element): RangeBuilder;
-            addElement(textElement: Text, startOffset: Integer, endOffsetInclusive: Integer): RangeBuilder;
-            addElementsBetween(startElement: Element, endElementInclusive: Element): RangeBuilder;
+            addElement(
+                textElement: Text,
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+            ): RangeBuilder;
+            addElementsBetween(
+                startElement: Element,
+                endElementInclusive: Element,
+            ): RangeBuilder;
             addElementsBetween(
                 startTextElement: Text,
                 startOffset: Integer,
@@ -1337,7 +1422,10 @@ declare namespace GoogleAppsScript {
             copy(): Table;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -1390,7 +1478,10 @@ declare namespace GoogleAppsScript {
             copy(): TableCell;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -1416,11 +1507,17 @@ declare namespace GoogleAppsScript {
             getVerticalAlignment(): VerticalAlignment;
             getWidth(): number;
             insertHorizontalRule(childIndex: Integer): HorizontalRule;
-            insertImage(childIndex: Integer, image: Base.BlobSource): InlineImage;
+            insertImage(
+                childIndex: Integer,
+                image: Base.BlobSource,
+            ): InlineImage;
             insertImage(childIndex: Integer, image: InlineImage): InlineImage;
             insertListItem(childIndex: Integer, listItem: ListItem): ListItem;
             insertListItem(childIndex: Integer, text: string): ListItem;
-            insertParagraph(childIndex: Integer, paragraph: Paragraph): Paragraph;
+            insertParagraph(
+                childIndex: Integer,
+                paragraph: Paragraph,
+            ): Paragraph;
             insertParagraph(childIndex: Integer, text: string): Paragraph;
             insertTable(childIndex: Integer): Table;
             insertTable(childIndex: Integer, cells: string[][]): Table;
@@ -1452,7 +1549,10 @@ declare namespace GoogleAppsScript {
             copy(): TableOfContents;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -1486,7 +1586,10 @@ declare namespace GoogleAppsScript {
             copy(): TableRow;
             editAsText(): Text;
             findElement(elementType: ElementType): RangeElement;
-            findElement(elementType: ElementType, from: RangeElement): RangeElement;
+            findElement(
+                elementType: ElementType,
+                from: RangeElement,
+            ): RangeElement;
             findText(searchPattern: string): RangeElement;
             findText(searchPattern: string, from: RangeElement): RangeElement;
             getAttributes(): any;
@@ -1505,8 +1608,14 @@ declare namespace GoogleAppsScript {
             getTextAlignment(): TextAlignment;
             getType(): ElementType;
             insertTableCell(childIndex: Integer): TableCell;
-            insertTableCell(childIndex: Integer, textContents: string): TableCell;
-            insertTableCell(childIndex: Integer, tableCell: TableCell): TableCell;
+            insertTableCell(
+                childIndex: Integer,
+                textContents: string,
+            ): TableCell;
+            insertTableCell(
+                childIndex: Integer,
+                tableCell: TableCell,
+            ): TableCell;
             isAtDocumentEnd(): boolean;
             merge(): TableRow;
             removeCell(cellIndex: Integer): TableCell;
@@ -1579,29 +1688,73 @@ declare namespace GoogleAppsScript {
             merge(): Text;
             removeFromParent(): Text;
             replaceText(searchPattern: string, replacement: string): Element;
-            setAttributes(startOffset: Integer, endOffsetInclusive: Integer, attributes: any): Text;
+            setAttributes(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                attributes: any,
+            ): Text;
             setAttributes(attributes: any): Text;
-            setBackgroundColor(startOffset: Integer, endOffsetInclusive: Integer, color: string): Text;
+            setBackgroundColor(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                color: string,
+            ): Text;
             setBackgroundColor(color: string): Text;
             setBold(bold: boolean): Text;
-            setBold(startOffset: Integer, endOffsetInclusive: Integer, bold: boolean): Text;
-            setFontFamily(startOffset: Integer, endOffsetInclusive: Integer, fontFamilyName: string): Text;
+            setBold(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                bold: boolean,
+            ): Text;
+            setFontFamily(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                fontFamilyName: string,
+            ): Text;
             setFontFamily(fontFamilyName: string): Text;
             setFontSize(size: Integer): Text;
-            setFontSize(startOffset: Integer, endOffsetInclusive: Integer, size: Integer): Text;
-            setForegroundColor(startOffset: Integer, endOffsetInclusive: Integer, color: string): Text;
+            setFontSize(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                size: Integer,
+            ): Text;
+            setForegroundColor(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                color: string,
+            ): Text;
             setForegroundColor(color: string): Text;
             setItalic(italic: boolean): Text;
-            setItalic(startOffset: Integer, endOffsetInclusive: Integer, italic: boolean): Text;
-            setLinkUrl(startOffset: Integer, endOffsetInclusive: Integer, url: string): Text;
+            setItalic(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                italic: boolean,
+            ): Text;
+            setLinkUrl(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                url: string,
+            ): Text;
             setLinkUrl(url: string): Text;
             setStrikethrough(strikethrough: boolean): Text;
-            setStrikethrough(startOffset: Integer, endOffsetInclusive: Integer, strikethrough: boolean): Text;
+            setStrikethrough(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                strikethrough: boolean,
+            ): Text;
             setText(text: string): Text;
-            setTextAlignment(startOffset: Integer, endOffsetInclusive: Integer, textAlignment: TextAlignment): Text;
+            setTextAlignment(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                textAlignment: TextAlignment,
+            ): Text;
             setTextAlignment(textAlignment: TextAlignment): Text;
             setUnderline(underline: boolean): Text;
-            setUnderline(startOffset: Integer, endOffsetInclusive: Integer, underline: boolean): Text;
+            setUnderline(
+                startOffset: Integer,
+                endOffsetInclusive: Integer,
+                underline: boolean,
+            ): Text;
         }
         /**
          * An enumeration of the type of text alignments.

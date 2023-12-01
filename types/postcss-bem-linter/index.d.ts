@@ -11,7 +11,11 @@ declare namespace bemLinter {
      */
     type Patterns = "suit" | "bem";
 
-    type ComponentSelector = string | ((/** The defined component's name */ componentName: string) => RegExp);
+    type ComponentSelector =
+        | string
+        | ((
+              /** The defined component's name */ componentName: string,
+          ) => RegExp);
 
     /**
      * Describes a custom pattern to be used
@@ -65,12 +69,22 @@ declare namespace bemLinter {
          * instead of having to add a `postcss-bem-linter: ignore` comment above each one.
          * Can be one or a list of either regular expressions, or strings passed to the RegExp constructor
          */
-        ignoreSelectors?: string | readonly string[] | RegExp | readonly RegExp[] | undefined;
+        ignoreSelectors?:
+            | string
+            | readonly string[]
+            | RegExp
+            | readonly RegExp[]
+            | undefined;
         /**
          * Custom properties to ignore.
          * Can be one or a list of either regular expressions, or strings passed to the RegExp constructor
          */
-        ignoreCustomProperties?: string | readonly string[] | RegExp | readonly RegExp[] | undefined;
+        ignoreCustomProperties?:
+            | string
+            | readonly string[]
+            | RegExp
+            | readonly RegExp[]
+            | undefined;
     }
 
     /** Options for pattern presets */
@@ -102,6 +116,8 @@ declare function bemLinter(
 /**
  * @param pattern The pattern to use, either based on a preset or defined from scratch
  */
-declare function bemLinter(pattern: bemLinter.PresetPatternObject | bemLinter.CustomPattern): Plugin | Processor;
+declare function bemLinter(
+    pattern: bemLinter.PresetPatternObject | bemLinter.CustomPattern,
+): Plugin | Processor;
 
 export = bemLinter;

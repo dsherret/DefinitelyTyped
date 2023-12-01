@@ -1,4 +1,10 @@
-import { decode, encode, EncodingProgress, TextDecoder, TextEncoder } from "fastestsmallesttextencoderdecoder";
+import {
+    decode,
+    encode,
+    EncodingProgress,
+    TextDecoder,
+    TextEncoder,
+} from "fastestsmallesttextencoderdecoder";
 
 const bytes = encode("hi"); // $ExpectType Uint8Array
 decode(bytes); // $ExpectType string

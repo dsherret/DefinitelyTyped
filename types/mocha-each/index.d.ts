@@ -16,9 +16,18 @@ declare function forEach(
  * The result is very similar to Mocha's `TestFunction` interface.
  */
 interface ForEachTestFunction {
-    (expectation: string, callback?: (this: Context, ...args: any[]) => any): Test;
-    only(expectation: string, callback?: (this: Context, ...args: any[]) => any): Test;
-    skip(expectation: string, callback?: (this: Context, ...args: any[]) => any): Test;
+    (
+        expectation: string,
+        callback?: (this: Context, ...args: any[]) => any,
+    ): Test;
+    only(
+        expectation: string,
+        callback?: (this: Context, ...args: any[]) => any,
+    ): Test;
+    skip(
+        expectation: string,
+        callback?: (this: Context, ...args: any[]) => any,
+    ): Test;
 }
 
 /**
@@ -26,9 +35,18 @@ interface ForEachTestFunction {
  * The result is almost identical to Mocha's `SuiteFunction` interface.
  */
 interface ForEachDescribeDefinition {
-    (expectation: string, callback?: (this: Context, ...args: any[]) => any): Suite;
-    only(expectation: string, callback?: (this: Context, ...args: any[]) => any): Suite;
-    skip(expectation: string, callback?: (this: Context, ...args: any[]) => any): Suite;
+    (
+        expectation: string,
+        callback?: (this: Context, ...args: any[]) => any,
+    ): Suite;
+    only(
+        expectation: string,
+        callback?: (this: Context, ...args: any[]) => any,
+    ): Suite;
+    skip(
+        expectation: string,
+        callback?: (this: Context, ...args: any[]) => any,
+    ): Suite;
 }
 
 export = forEach;

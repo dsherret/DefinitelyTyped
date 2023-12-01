@@ -21,7 +21,7 @@ class BottomNavigation extends React.Component<Props, State> {
             <TabStack
                 {...this.props}
                 forceSync
-                render={props => {
+                render={(props) => {
                     const ownProps = { ...this.props, ...props };
                     return (
                         <TabView
@@ -29,16 +29,22 @@ class BottomNavigation extends React.Component<Props, State> {
                             key={`transitioner_${this.state.key}`}
                             animationEnabled={false}
                             renderPager={renderSubView(
-                                sceneProps => <View />,
+                                (sceneProps) => (
+                                    <View />
+                                ),
                                 ownProps,
                             )}
                             renderTabBar={renderSubView(
-                                sceneProps => <View />,
+                                (sceneProps) => (
+                                    <View />
+                                ),
                                 ownProps,
                             )}
                             tabBarPosition="bottom"
                             renderScene={renderSubView(
-                                sceneProps => <View />,
+                                (sceneProps) => (
+                                    <View />
+                                ),
                                 ownProps,
                             )}
                         />

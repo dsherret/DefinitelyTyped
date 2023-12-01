@@ -54,7 +54,11 @@ export default class LoggerService {
 
     constructor(opts?: LoggerServiceParams);
 
-    log(level: keyof typeof LogLevels, message: string, extra?: LoggerMeta): void;
+    log(
+        level: keyof typeof LogLevels,
+        message: string,
+        extra?: LoggerMeta,
+    ): void;
 
     error(message: string, extra?: LoggerMeta): void;
 
@@ -66,13 +70,26 @@ export default class LoggerService {
 
     addMeta(meta?: LoggerMeta): void;
 
-    consoleLogger(level: keyof typeof LogLevels, message: RedefinedMessage): void;
+    consoleLogger(
+        level: keyof typeof LogLevels,
+        message: RedefinedMessage,
+    ): void;
 
-    protected checkIsLogRequired(transportName: string, leve: keyof typeof LogLevels): boolean;
+    protected checkIsLogRequired(
+        transportName: string,
+        leve: keyof typeof LogLevels,
+    ): boolean;
 
-    protected structureLogMessage(level: keyof typeof LogLevels, message: string, extra: LoggerMeta): LoggerMessage;
+    protected structureLogMessage(
+        level: keyof typeof LogLevels,
+        message: string,
+        extra: LoggerMeta,
+    ): LoggerMessage;
 
-    protected refineMessagePerTransport(transportName: string, message: RedefinedMessage): RedefinedMessage;
+    protected refineMessagePerTransport(
+        transportName: string,
+        message: RedefinedMessage,
+    ): RedefinedMessage;
 
     protected getTransportByName(transportName: string): LoggerTransport;
 }

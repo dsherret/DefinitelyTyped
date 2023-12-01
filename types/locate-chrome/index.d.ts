@@ -1,3 +1,5 @@
-declare function locateChrome(cb?: (path: string | null) => void): Promise<string | null>;
+declare function locateChrome(
+    cb?: (path: string | null) => void,
+): Promise<string | null>;
 
 export = locateChrome;

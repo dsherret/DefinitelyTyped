@@ -40,7 +40,8 @@ declare namespace GoogleAdsScripts {
          *        var account = accountIterator.next();
          *      }
          */
-        interface ManagedAccountIterator extends Base.Iterator<ManagedAccount> {}
+        interface ManagedAccountIterator
+            extends Base.Iterator<ManagedAccount> {}
 
         /**
          * Fetches accounts. Supports filtering and sorting.
@@ -59,13 +60,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ManagedAccountSelector
-            extends
-                Base.Selector<ManagedAccountIterator>,
+            extends Base.Selector<ManagedAccountIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {
+                Base.SelectorWithLimit {
             /**
              * Executes the function specified by functionName on each ManagedAccount that the AccountSelector matches.
              * Once all the accounts have been processed, the callback function, if specified by `optionalCallbackFunctionName`, is executed once.

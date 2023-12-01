@@ -203,9 +203,7 @@ declare namespace Yoga {
         | typeof EDGE_VERTICAL
         | typeof EDGE_ALL;
 
-    type YogaDisplay =
-        | typeof DISPLAY_FLEX
-        | typeof DISPLAY_NONE;
+    type YogaDisplay = typeof DISPLAY_FLEX | typeof DISPLAY_NONE;
 
     type YogaUnit =
         | typeof UNIT_AUTO

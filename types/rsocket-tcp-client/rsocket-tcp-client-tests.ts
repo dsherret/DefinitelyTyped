@@ -50,7 +50,7 @@ async function send(socket: ReactiveSocket<Buffer, null>): Promise<string> {
                     onSubscribe: () => {
                         console.log("->", request);
                     },
-                    onComplete: response => {
+                    onComplete: (response) => {
                         console.log("<-", response);
                         if (response.data) {
                             resolve(response.data.toString());
@@ -79,5 +79,5 @@ client.connect().subscribe({
         client.close();
         process.exit();
     },
-    onError: error => console.error(error),
+    onError: (error) => console.error(error),
 });

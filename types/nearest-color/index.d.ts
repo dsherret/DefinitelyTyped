@@ -58,7 +58,10 @@ declare namespace _ {
     type NeedleColor = RGB | string;
 
     interface NearestColor<TReturnType extends ColorMatch | string> {
-        (needle: NeedleColor, colors?: readonly ColorSpec[]): TReturnType | null;
+        (
+            needle: NeedleColor,
+            colors?: readonly ColorSpec[],
+        ): TReturnType | null;
     }
 
     const from: NearestColorFrom;

@@ -51,7 +51,14 @@ class CalendarEvent {
     resourceId?: string | undefined;
     tooltip?: string | undefined;
 
-    constructor(_title: string, _start: Date, _endDate: Date, _allDay?: boolean, _desc?: string, _resourceId?: string) {
+    constructor(
+        _title: string,
+        _start: Date,
+        _endDate: Date,
+        _allDay?: boolean,
+        _desc?: string,
+        _resourceId?: string,
+    ) {
         this.title = _title;
         this.allDay = _allDay || false;
         this.start = _start;
@@ -187,7 +194,10 @@ class CalendarResource {
     interface DragAndDropEvent {
         isAllDay: boolean;
     }
-    const DragAndDropCalendar = withDragAndDrop<CalendarEvent, CalendarResource>(MyCalendar);
+    const DragAndDropCalendar = withDragAndDrop<
+        CalendarEvent,
+        CalendarResource
+    >(MyCalendar);
     const handleEventMove = ({ isAllDay }: DragAndDropEvent) => {
         console.log(isAllDay);
     };
@@ -282,7 +292,10 @@ class CalendarResource {
 
 // optional 'localizer' prop
 {
-    ReactDOM.render(<Calendar localizer={momentLocalizer(moment)} />, document.body);
+    ReactDOM.render(
+        <Calendar localizer={momentLocalizer(moment)} />,
+        document.body,
+    );
 }
 
 {
@@ -290,7 +303,9 @@ class CalendarResource {
 
     // Full API Example Test - based on API Documentation
     // http://intljusticemission.github.io/react-big-calendar/examples/index.html#api
-    class FullAPIExample extends React.Component<CalendarProps<CalendarEvent, CalendarResource>> {
+    class FullAPIExample extends React.Component<
+        CalendarProps<CalendarEvent, CalendarResource>
+    > {
         render() {
             return (
                 <MyCalendar
@@ -299,16 +314,20 @@ class CalendarResource {
                     getNow={() => new Date()}
                     view={"day"}
                     events={getEvents()}
-                    onNavigate={(newDate: Date, view: View, action: NavigateAction) => {}}
+                    onNavigate={(
+                        newDate: Date,
+                        view: View,
+                        action: NavigateAction,
+                    ) => {}}
                     onView={(view: View) => {}}
-                    onSelectSlot={slotInfo => {
+                    onSelectSlot={(slotInfo) => {
                         const start = slotInfo.start;
                         const end = slotInfo.end;
                         const slots = slotInfo.slots;
                     }}
-                    onSelectEvent={event => {}}
-                    onKeyPressEvent={event => {}}
-                    onSelecting={slotInfo => {
+                    onSelectEvent={(event) => {}}
+                    onKeyPressEvent={(event) => {}}
+                    onSelecting={(slotInfo) => {
                         const start = slotInfo.start;
                         const end = slotInfo.end;
                         return true;
@@ -320,27 +339,42 @@ class CalendarResource {
                     popup={true}
                     popupOffset={20}
                     onShowMore={(events, date) => {
-                        console.log("onShowMore fired, events: %O, date: %O", events, date);
+                        console.log(
+                            "onShowMore fired, events: %O, date: %O",
+                            events,
+                            date,
+                        );
                     }}
                     doShowMoreDrillDown={true}
                     selectable={true}
                     step={20}
                     rtl={true}
-                    eventPropGetter={(event, start, end, isSelected) => ({ className: "some-class" })}
+                    eventPropGetter={(event, start, end, isSelected) => ({
+                        className: "some-class",
+                    })}
                     titleAccessor={"title"}
                     tooltipAccessor={"tooltip"}
                     allDayAccessor={(event: CalendarEvent) => !!event.allDay}
                     startAccessor={"start"}
-                    endAccessor={(event: CalendarEvent) => event.endDate || event.start}
+                    endAccessor={(event: CalendarEvent) =>
+                        event.endDate || event.start
+                    }
                     min={new Date()}
                     max={new Date()}
                     scrollToTime={new Date()}
                     enableAutoScroll={false}
                     formats={{
                         dateFormat: "h a",
-                        agendaDateFormat: (date: Date, culture?: Culture, localizer?: DateLocalizer) => "some-format",
-                        dayRangeHeaderFormat: (range: DateRange, culture?: Culture, localizer?: DateLocalizer) =>
-                            "some-format",
+                        agendaDateFormat: (
+                            date: Date,
+                            culture?: Culture,
+                            localizer?: DateLocalizer,
+                        ) => "some-format",
+                        dayRangeHeaderFormat: (
+                            range: DateRange,
+                            culture?: Culture,
+                            localizer?: DateLocalizer,
+                        ) => "some-format",
                     }}
                     messages={{
                         date: "Date",
@@ -358,7 +392,7 @@ class CalendarResource {
                         today: "Today",
                         agenda: "Agenda",
                         noEventsInRange: "There are no events in this range.",
-                        showMore: total => `+${total} more`,
+                        showMore: (total) => `+${total} more`,
                     }}
                     timeslots={24}
                     defaultView={"month"}
@@ -379,9 +413,9 @@ class CalendarResource {
                     slotGroupPropGetter={customGroupSlotPropGetter}
                     defaultDate={new Date()}
                     resources={getResources()}
-                    resourceAccessor={event => event.resourceId}
-                    resourceIdAccessor={resource => resource.id}
-                    resourceTitleAccessor={resource => resource.title}
+                    resourceAccessor={(event) => event.resourceId}
+                    resourceIdAccessor={(resource) => resource.id}
+                    resourceTitleAccessor={(resource) => resource.title}
                     style={{ height: 500 }}
                 />
             );
@@ -395,11 +429,32 @@ class CalendarResource {
 // Test fixtures
 function getEvents(): CalendarEvent[] {
     const events: CalendarEvent[] = [
-        new CalendarEvent("All Day Event", new Date(2015, 3, 0), new Date(2015, 3, 0), true),
-        new CalendarEvent("Long Event", new Date(2015, 3, 7), new Date(2015, 3, 10)),
-        new CalendarEvent("DTS STARTS", new Date(2016, 2, 13, 0, 0, 0), new Date(2016, 2, 20, 0, 0, 0)),
-        new CalendarEvent("DTS ENDS", new Date(2016, 10, 6, 0, 0, 0), new Date(2016, 10, 13, 0, 0, 0)),
-        new CalendarEvent("Some Event", new Date(2015, 3, 9, 0, 0, 0), new Date(2015, 3, 9, 0, 0, 0)),
+        new CalendarEvent(
+            "All Day Event",
+            new Date(2015, 3, 0),
+            new Date(2015, 3, 0),
+            true,
+        ),
+        new CalendarEvent(
+            "Long Event",
+            new Date(2015, 3, 7),
+            new Date(2015, 3, 10),
+        ),
+        new CalendarEvent(
+            "DTS STARTS",
+            new Date(2016, 2, 13, 0, 0, 0),
+            new Date(2016, 2, 20, 0, 0, 0),
+        ),
+        new CalendarEvent(
+            "DTS ENDS",
+            new Date(2016, 10, 6, 0, 0, 0),
+            new Date(2016, 10, 13, 0, 0, 0),
+        ),
+        new CalendarEvent(
+            "Some Event",
+            new Date(2015, 3, 9, 0, 0, 0),
+            new Date(2015, 3, 9, 0, 0, 0),
+        ),
         new CalendarEvent(
             "Conference",
             new Date(2015, 3, 11),
@@ -421,7 +476,11 @@ function getEvents(): CalendarEvent[] {
             undefined,
             "Power lunch",
         ),
-        new CalendarEvent("Meeting", new Date(2015, 3, 12, 14, 0, 0, 0), new Date(2015, 3, 12, 15, 0, 0, 0)),
+        new CalendarEvent(
+            "Meeting",
+            new Date(2015, 3, 12, 14, 0, 0, 0),
+            new Date(2015, 3, 12, 15, 0, 0, 0),
+        ),
         new CalendarEvent(
             "Happy Hour",
             new Date(2015, 3, 12, 17, 0, 0, 0),
@@ -429,8 +488,16 @@ function getEvents(): CalendarEvent[] {
             undefined,
             "Most important meal of the day",
         ),
-        new CalendarEvent("Dinner", new Date(2015, 3, 12, 20, 0, 0, 0), new Date(2015, 3, 12, 21, 0, 0, 0)),
-        new CalendarEvent("Birthday Party", new Date(2015, 3, 13, 7, 0, 0), new Date(2015, 3, 13, 10, 30, 0)),
+        new CalendarEvent(
+            "Dinner",
+            new Date(2015, 3, 12, 20, 0, 0, 0),
+            new Date(2015, 3, 12, 21, 0, 0, 0),
+        ),
+        new CalendarEvent(
+            "Birthday Party",
+            new Date(2015, 3, 13, 7, 0, 0),
+            new Date(2015, 3, 13, 10, 30, 0),
+        ),
         new CalendarEvent(
             "Alice's break",
             new Date(2015, 3, 14, 20, 0, 0, 0),
@@ -452,7 +519,10 @@ function getEvents(): CalendarEvent[] {
 }
 
 function getResources(): CalendarResource[] {
-    return [new CalendarResource("alice", "Alice"), new CalendarResource("bob", "Bob")];
+    return [
+        new CalendarResource("alice", "Alice"),
+        new CalendarResource("bob", "Bob"),
+    ];
 }
 
 class EventAgenda extends React.Component<EventProps<CalendarEvent>> {
@@ -504,7 +574,7 @@ const customLayoutAlgorithm: DayLayoutFunction<CalendarEvent> = (args: {
     accessors: any;
 }) => {
     // This is where the events would get styled in an actual algorithm, but for TS test we just want to confirm it returns
-    return args.events.map(e => {
+    return args.events.map((e) => {
         return { event: e, style: {} };
     });
 };
@@ -523,7 +593,8 @@ function EventWrapper(props: EventWrapperProps<CalendarEvent>) {
     return (
         <div style={style}>
             <div>
-                {continuesEarlier}-{label}-{accessors.title && event && accessors.title(event)}
+                {continuesEarlier}-{label}-
+                {accessors.title && event && accessors.title(event)}
             </div>
         </div>
     );
@@ -538,7 +609,9 @@ function ResourceHeader(props: ResourceHeaderProps<CalendarResource>) {
     );
 }
 
-class Toolbar extends React.Component<ToolbarProps<CalendarEvent, CalendarResource>> {
+class Toolbar extends React.Component<
+    ToolbarProps<CalendarEvent, CalendarResource>
+> {
     render() {
         const { date, label, view } = this.props;
         return (
@@ -555,11 +628,17 @@ class Toolbar extends React.Component<ToolbarProps<CalendarEvent, CalendarResour
 {
     const localizer: DateLocalizer = momentLocalizer(moment);
 
-    const header: React.FC<HeaderProps> = ({ date, label, localizer }) => <>Header</>;
-
-    const dateHeader: React.FC<DateHeaderProps> = ({ date, drilldownView, isOffRange, label, onDrillDown }) => (
-        <>DateHeader</>
+    const header: React.FC<HeaderProps> = ({ date, label, localizer }) => (
+        <>Header</>
     );
+
+    const dateHeader: React.FC<DateHeaderProps> = ({
+        date,
+        drilldownView,
+        isOffRange,
+        label,
+        onDrillDown,
+    }) => <>DateHeader</>;
 
     const event: React.FC<EventProps> = ({
         event,
@@ -576,7 +655,11 @@ class Toolbar extends React.Component<ToolbarProps<CalendarEvent, CalendarResour
     };
 
     const Basic = ({ localizer }: CalendarProps) => (
-        <Calendar events={[]} localizer={localizer} components={{ month: { header, dateHeader, event } }} />
+        <Calendar
+            events={[]}
+            localizer={localizer}
+            components={{ month: { header, dateHeader, event } }}
+        />
     );
 
     ReactDOM.render(<Basic localizer={localizer} />, document.body);
@@ -596,7 +679,11 @@ class Toolbar extends React.Component<ToolbarProps<CalendarEvent, CalendarResour
             defaultDate={new Date(2015, 3, 1)}
             localizer={localizer}
             onRangeChange={(range, view) => {
-                console.log("onRangeChange fired, range: %O, view: %O", range, view);
+                console.log(
+                    "onRangeChange fired, range: %O, view: %O",
+                    range,
+                    view,
+                );
             }}
         />
     );
@@ -615,7 +702,7 @@ class MyWorkWeek extends Week {
     }
 }
 
-MyWorkWeek.range = date => {
+MyWorkWeek.range = (date) => {
     const start = date;
     return [start, new Date(start.setDate(start.getDate() + 1))];
 };
@@ -632,7 +719,7 @@ MyWorkWeek.navigate = (date, action) => {
     }
 };
 
-MyWorkWeek.title = date => {
+MyWorkWeek.title = (date) => {
     return `My awesome week: ${date.toLocaleDateString()}`;
 };
 
@@ -644,7 +731,7 @@ class MyWeek extends Week {
     }
 }
 
-MyWeek.range = date => {
+MyWeek.range = (date) => {
     const start = date;
     return [start, new Date(start.setDate(start.getDate() + 1))];
 };
@@ -653,7 +740,7 @@ MyWeek.navigate = (date, action) => {
     return date;
 };
 
-MyWeek.title = date => {
+MyWeek.title = (date) => {
     return `My awesome week: ${date.toLocaleDateString()}`;
 };
 
@@ -667,22 +754,38 @@ class MyDay extends Day {
 
 // Using backgroundEvents
 {
-    ReactDOM.render(<Calendar backgroundEvents={getEvents()} localizer={momentLocalizer(moment)} />, document.body);
+    ReactDOM.render(
+        <Calendar
+            backgroundEvents={getEvents()}
+            localizer={momentLocalizer(moment)}
+        />,
+        document.body,
+    );
 }
 
 // defaultView initializer
 {
     const localizer = dateFnsLocalizer(dateFnsConfig);
 
-    const MonthView = () => <Calendar defaultView={Views.MONTH} localizer={localizer} />;
+    const MonthView = () => (
+        <Calendar defaultView={Views.MONTH} localizer={localizer} />
+    );
 
-    const WeekView = () => <Calendar defaultView={Views.WEEK} localizer={localizer} />;
+    const WeekView = () => (
+        <Calendar defaultView={Views.WEEK} localizer={localizer} />
+    );
 
-    const WorkWeekView = () => <Calendar defaultView={Views.WORK_WEEK} localizer={localizer} />;
+    const WorkWeekView = () => (
+        <Calendar defaultView={Views.WORK_WEEK} localizer={localizer} />
+    );
 
-    const DAYView = () => <Calendar defaultView={Views.DAY} localizer={localizer} />;
+    const DAYView = () => (
+        <Calendar defaultView={Views.DAY} localizer={localizer} />
+    );
 
-    const AgendaView = () => <Calendar defaultView={Views.AGENDA} localizer={localizer} />;
+    const AgendaView = () => (
+        <Calendar defaultView={Views.AGENDA} localizer={localizer} />
+    );
 }
 
 // DateLocalizer API

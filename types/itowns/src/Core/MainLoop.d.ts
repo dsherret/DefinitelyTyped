@@ -3,7 +3,9 @@ import View from "./View";
 
 export const RENDERING_PAUSED: 0;
 export const RENDERING_SCHEDULED: 1;
-export type RenderingState = typeof RENDERING_SCHEDULED | typeof RENDERING_SCHEDULED;
+export type RenderingState =
+    | typeof RENDERING_SCHEDULED
+    | typeof RENDERING_SCHEDULED;
 
 export enum MAIN_LOOP_EVENTS {
     UPDATE_START = "update_start",

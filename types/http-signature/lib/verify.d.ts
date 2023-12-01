@@ -11,7 +11,10 @@ import { ParseResponse } from "./parser";
  * @throws {InvalidAlgorithmError}
  */
 
-export function verifySignature(parsedSignature: ParseResponse, pubkey: string): boolean;
+export function verifySignature(
+    parsedSignature: ParseResponse,
+    pubkey: string,
+): boolean;
 
 /**
  * Verify HMAC against shared secret.
@@ -23,4 +26,7 @@ export function verifySignature(parsedSignature: ParseResponse, pubkey: string):
  * @throws {TypeError} For bad arguments
  * @throws {InvalidAlgorithmError}
  */
-export function verifyHMAC(parsedSignature: ParseResponse, secret: string | Buffer): boolean;
+export function verifyHMAC(
+    parsedSignature: ParseResponse,
+    secret: string | Buffer,
+): boolean;

@@ -1,10 +1,16 @@
 /// <reference types="node"/>
 import { EventEmitter } from "events";
 
-declare class CircuitBreaker<TI extends unknown[] = unknown[], TR = unknown> extends EventEmitter {
+declare class CircuitBreaker<
+    TI extends unknown[] = unknown[],
+    TR = unknown,
+> extends EventEmitter {
     static isOurError(error: any): boolean;
 
-    constructor(action: (...args: TI) => Promise<TR>, options?: CircuitBreaker.Options);
+    constructor(
+        action: (...args: TI) => Promise<TR>,
+        options?: CircuitBreaker.Options,
+    );
 
     readonly name: string;
     readonly group: string;
@@ -104,11 +110,20 @@ declare class CircuitBreaker<TI extends unknown[] = unknown[], TR = unknown> ext
     on(event: "cacheMiss", listener: () => void): this;
     on(event: "reject", listener: (err: Error) => void): this;
     on(event: "timeout", listener: (err: Error) => void): this;
-    on(event: "success", listener: (result: TR, latencyMs: number) => void): this;
+    on(
+        event: "success",
+        listener: (result: TR, latencyMs: number) => void,
+    ): this;
     on(event: "semaphoreLocked", listener: (err: Error) => void): this;
     on(event: "healthCheckFailed", listener: (err: Error) => void): this;
-    on(event: "fallback", listener: (result: unknown, err: Error) => void): this;
-    on(event: "failure", listener: (err: Error, latencyMs: number, args: TI) => void): this;
+    on(
+        event: "fallback",
+        listener: (result: unknown, err: Error) => void,
+    ): this;
+    on(
+        event: "failure",
+        listener: (err: Error, latencyMs: number, args: TI) => void,
+    ): this;
     /* tslint:enable:unified-signatures */
 }
 

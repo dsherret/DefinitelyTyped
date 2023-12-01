@@ -32,7 +32,10 @@ enhancedConfig.env?.BASE_URL;
 
 // takes implicit configuration types
 // $ExpectType EnhancedConfig<{ baseUrl: string; port: number; }>
-enhancedConfig = dotenvPlugin({ baseUrl: "http://example.com", port: 80 }, { path: ".env" });
+enhancedConfig = dotenvPlugin(
+    { baseUrl: "http://example.com", port: 80 },
+    { path: ".env" },
+);
 enhancedConfig.baseUrl; // $ExpectType string
 enhancedConfig.port; // $ExpectType number
 const url = enhancedConfig.env?.BASE_URL as string;

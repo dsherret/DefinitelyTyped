@@ -9,6 +9,8 @@ declare namespace CamouflageRewrite {
     }
 }
 
-declare function CamouflageRewrite(options: CamouflageRewrite.Options): RequestHandler;
+declare function CamouflageRewrite(
+    options: CamouflageRewrite.Options,
+): RequestHandler;
 
 export = CamouflageRewrite;

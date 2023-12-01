@@ -1,10 +1,10 @@
 /*!
-* Product: Dynamsoft Web Twain
-* Web Site: http://www.dynamsoft.com
-*
-* Copyright 2019, Dynamsoft Corporation
-* Author: Dynamsoft Support Team
-*/
+ * Product: Dynamsoft Web Twain
+ * Web Site: http://www.dynamsoft.com
+ *
+ * Copyright 2019, Dynamsoft Corporation
+ * Author: Dynamsoft Support Team
+ */
 
 declare enum EnumDWT_ConvertMode {
     CM_DEFAULT = 0,
@@ -31,7 +31,10 @@ interface PDF {
     Download(
         remoteFile: string,
         optionalAsyncSuccessFunc?: () => void,
-        optionalAsyncFailureFunc?: (errorCode: number, errorString: string) => void,
+        optionalAsyncFailureFunc?: (
+            errorCode: number,
+            errorString: string,
+        ) => void,
     ): boolean;
 
     /**
@@ -48,7 +51,9 @@ interface PDF {
      * @param {EnumDWT_ConvertMode | EnumDWT_ConverMode} convertMode Specifies the image convert mode.
      * @return {boolean}
      */
-    SetConvertMode(convertMode: EnumDWT_ConvertMode | EnumDWT_ConverMode): boolean;
+    SetConvertMode(
+        convertMode: EnumDWT_ConvertMode | EnumDWT_ConverMode,
+    ): boolean;
 
     /**
      *  Set the output resolution for the PDF Rasterizer in Dynamic Web TWAIN.

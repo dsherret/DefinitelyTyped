@@ -4,9 +4,14 @@ const testObject = {
     0: true,
     lol: null,
     phew: 0,
-    yeah: ["ok", undefined, "yep", {
-        something: "something",
-    }],
+    yeah: [
+        "ok",
+        undefined,
+        "yep",
+        {
+            something: "something",
+        },
+    ],
     zzz: {
         ok: {
             watch: "nay-nay",

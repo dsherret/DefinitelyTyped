@@ -45,8 +45,10 @@ if (jsonStore.getItem("mjk") === null) {
 const mjkTest: Person = jsonStore.getItem("mjk");
 
 if (
-    mjkTest === null || mjkTest.givenName !== mjkModel.givenName || mjkTest.middleName !== mjkModel.middleName
-    || mjkTest.familyName !== mjkModel.familyName
+    mjkTest === null ||
+    mjkTest.givenName !== mjkModel.givenName ||
+    mjkTest.middleName !== mjkModel.middleName ||
+    mjkTest.familyName !== mjkModel.familyName
 ) {
     throw new Error(".setItem method is not working!");
 }

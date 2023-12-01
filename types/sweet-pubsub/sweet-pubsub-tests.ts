@@ -98,7 +98,7 @@ pubsub.emit("userCreated userUpdated userDeleted", { a: "yay!" });
 pubsub.off("userCreated userUpdated userDeleted", "label");
 // remove all subscriptions
 
-pubsub.on("pageMounted", name => {
+pubsub.on("pageMounted", (name) => {
     return name;
 });
 pubsub.on("pageMounted:users", () => {

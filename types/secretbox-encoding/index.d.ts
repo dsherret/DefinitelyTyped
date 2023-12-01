@@ -103,7 +103,10 @@ declare namespace createCodec {
          * // encode a value
          * const buffer = codec.encode(Buffer.from('hello world'))
          */
-        encode: { (value: TEnc, buffer?: Buffer, offset?: number): Buffer; bytes: number };
+        encode: {
+            (value: TEnc, buffer?: Buffer, offset?: number): Buffer;
+            bytes: number;
+        };
 
         /**
          * Decode a buffer using
@@ -126,7 +129,10 @@ declare namespace createCodec {
          * // decode a value
          * codec.decode(buffer).toString('utf8') // => 'hello world'
          */
-        decode: { (buffer: BufferWithNonce, start?: number, end?: number): TDec; bytes: number };
+        decode: {
+            (buffer: BufferWithNonce, start?: number, end?: number): TDec;
+            bytes: number;
+        };
     }
 
     type ValueToEncode = Buffer | string | readonly number[] | JSONParsedBuffer;

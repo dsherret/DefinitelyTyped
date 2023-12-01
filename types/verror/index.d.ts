@@ -20,11 +20,17 @@ declare class VError extends Error {
     static fullStack(err: Error): string;
     static findCauseByName(err: Error, name: string): Error | null;
     static hasCauseWithName(err: Error, name: string): boolean;
-    static errorFromList<T extends Error>(errors: T[]): null | T | VError.MultiError;
+    static errorFromList<T extends Error>(
+        errors: T[],
+    ): null | T | VError.MultiError;
     static errorForEach(err: Error, func: (err: Error) => void): void;
 
     cause: () => Error | undefined;
-    constructor(options: VError.Options | Error, message: string, ...params: any[]);
+    constructor(
+        options: VError.Options | Error,
+        message: string,
+        ...params: any[]
+    );
     constructor(message?: string, ...params: any[]);
 }
 

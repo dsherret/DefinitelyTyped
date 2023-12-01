@@ -11,7 +11,12 @@ export function exec(
     stack: object,
 ): void;
 
-export function _logWarn(title: string, stack: object, test: boolean, options: object): void;
+export function _logWarn(
+    title: string,
+    stack: object,
+    test: boolean,
+    options: object,
+): void;
 
 export default interface Scheduler extends Service {
     /**
@@ -49,7 +54,11 @@ export default interface Scheduler extends Service {
      *
      * When first argument is a function it ignores the rest.
      */
-    schedule<T, F extends (this: T, ...args: unknown[]) => void>(target: T, method: F, ...args: Parameters<F>): void;
+    schedule<T, F extends (this: T, ...args: unknown[]) => void>(
+        target: T,
+        method: F,
+        ...args: Parameters<F>
+    ): void;
 
     /**
      * Schedule a unique task into the scheduler.

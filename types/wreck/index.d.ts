@@ -15,15 +15,21 @@ interface RequestOptions {
     redirect303?: boolean | undefined;
     beforeRedirect?:
         | ((
-            redirectMethod: string,
-            statusCode: number,
-            location: string,
-            resHeaders: { [key: string]: any },
-            redirectOptions: any,
-            next: () => {},
-        ) => void)
+              redirectMethod: string,
+              statusCode: number,
+              location: string,
+              resHeaders: { [key: string]: any },
+              redirectOptions: any,
+              next: () => {},
+          ) => void)
         | undefined;
-    redirected?: ((statusCode: number, location: string, req: http.ClientRequest) => void) | undefined;
+    redirected?:
+        | ((
+              statusCode: number,
+              location: string,
+              req: http.ClientRequest,
+          ) => void)
+        | undefined;
     timeout?: number | undefined;
     maxBytes?: number | undefined;
     rejectUnauthorized?: boolean | undefined;
@@ -46,10 +52,18 @@ interface RequestResponse {
     payload: any;
 }
 
-declare type RequestCallback = (uri: string, options: RequestOptions & { payload?: any }) => void;
+declare type RequestCallback = (
+    uri: string,
+    options: RequestOptions & { payload?: any },
+) => void;
 declare type ResponseCallback = (
     err: Boom | undefined,
-    details: { req: http.ClientRequest; res: http.IncomingMessage | undefined; start: number; url: Url.URL },
+    details: {
+        req: http.ClientRequest;
+        res: http.IncomingMessage | undefined;
+        start: number;
+        url: Url.URL;
+    },
 ) => void;
 
 declare class WreckEventEmitter extends events.EventEmitter {
@@ -66,13 +80,31 @@ interface WreckObject {
         options: RequestOptions,
     ) => Promise<http.IncomingMessage> & { req: http.ClientRequest };
 
-    read: (response: http.IncomingMessage, options: ReadOptions) => Promise<any>;
+    read: (
+        response: http.IncomingMessage,
+        options: ReadOptions,
+    ) => Promise<any>;
 
-    get: (uri: string, options: RequestOptions & ReadOptions) => Promise<RequestResponse>;
-    post: (uri: string, options: RequestOptions & ReadOptions) => Promise<RequestResponse>;
-    patch: (uri: string, options: RequestOptions & ReadOptions) => Promise<RequestResponse>;
-    put: (uri: string, options: RequestOptions & ReadOptions) => Promise<RequestResponse>;
-    delete: (uri: string, options: RequestOptions & ReadOptions) => Promise<RequestResponse>;
+    get: (
+        uri: string,
+        options: RequestOptions & ReadOptions,
+    ) => Promise<RequestResponse>;
+    post: (
+        uri: string,
+        options: RequestOptions & ReadOptions,
+    ) => Promise<RequestResponse>;
+    patch: (
+        uri: string,
+        options: RequestOptions & ReadOptions,
+    ) => Promise<RequestResponse>;
+    put: (
+        uri: string,
+        options: RequestOptions & ReadOptions,
+    ) => Promise<RequestResponse>;
+    delete: (
+        uri: string,
+        options: RequestOptions & ReadOptions,
+    ) => Promise<RequestResponse>;
 
     toReadableStream: (payload: any, encoding?: string) => stream.Readable;
 

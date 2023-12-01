@@ -28,22 +28,26 @@ $.notify("hello !!", {
 });
 // add a new style 'foo'
 $.notify.addStyle("foo", {
-    html: "<div>"
-        + "<div class='clearfix'>"
-        + "<div class='title' data-notify-html='title'/>"
-        + "<div class='buttons'>"
-        + "<button class='no'>Cancel</button>"
-        + "<button class='yes' data-notify-text='button'></button>"
-        + "</div>"
-        + "</div>"
-        + "</div>",
+    html:
+        "<div>" +
+        "<div class='clearfix'>" +
+        "<div class='title' data-notify-html='title'/>" +
+        "<div class='buttons'>" +
+        "<button class='no'>Cancel</button>" +
+        "<button class='yes' data-notify-text='button'></button>" +
+        "</div>" +
+        "</div>" +
+        "</div>",
 });
 
-$.notify({
-    title: "Would you like some Foo ?",
-    button: "Confirm",
-}, {
-    style: "foo",
-    autoHide: false,
-    clickToHide: false,
-});
+$.notify(
+    {
+        title: "Would you like some Foo ?",
+        button: "Confirm",
+    },
+    {
+        style: "foo",
+        autoHide: false,
+        clickToHide: false,
+    },
+);

@@ -8,13 +8,13 @@ let clientWithMultipleURLs = ldap.createClient({
     url: ["ldap://127.0.0.1:1389", "ldap://127.0.0.2:1389"],
 });
 
-client.on("connect", socket => {
+client.on("connect", (socket) => {
     // @ts-expect-error
     client.port === 1389;
     client.port === "1389";
     client.host === "127.0.0.1";
 });
-clientWithMultipleURLs.on("connect", socket => {
+clientWithMultipleURLs.on("connect", (socket) => {
     // $ExpectType boolean
     clientWithMultipleURLs.secure;
 });
@@ -35,11 +35,11 @@ client.search("o=example", opts, (err, res): void => {
         return;
     }
 
-    res.on("error", error => {
+    res.on("error", (error) => {
         error.message;
     });
 
-    res.on("searchEntry", entry => {
+    res.on("searchEntry", (entry) => {
         entry.dn;
         entry.attributes[0].values[0];
         entry.attributes[0].vals[0]; // should be marked as deprecated
@@ -49,22 +49,22 @@ client.search("o=example", opts, (err, res): void => {
         entry.pojo.attributes[0].values[0];
     });
 
-    res.on("page", function(result, cb) {
+    res.on("page", function (result, cb) {
         result.status;
 
         cb(); // Only when opts.pagePause == true
     });
 
-    res.on("searchReference", ref => {
+    res.on("searchReference", (ref) => {
         ref.uris;
     });
 
-    res.on("end", res => {
+    res.on("end", (res) => {
         res.status;
     });
 
     // Not a known event, just testing the EventEmitter fallback
-    res.on("unknown-event", value => {
+    res.on("unknown-event", (value) => {
         value.any;
     });
 });
@@ -76,11 +76,11 @@ let change = new ldap.Change({
     },
 });
 
-client.modify("cn=foo, o=example", change, function(err) {
+client.modify("cn=foo, o=example", change, function (err) {
     // nothing
 });
 
-client.exop("1.3.6.1.4.1.4203.1.11.1", Buffer.from("", "hex"), function(err) {
+client.exop("1.3.6.1.4.1.4203.1.11.1", Buffer.from("", "hex"), function (err) {
     // nothing
 });
 
@@ -94,22 +94,8 @@ let equalityFilter = new ldap.EqualityFilter({
 equalityFilter.matches({ cn: "foo" });
 
 let objectGUID = Buffer.from([
-    0x02,
-    0xa9,
-    0xe3,
-    0x6f,
-    0x58,
-    0x11,
-    0x18,
-    0x49,
-    0xb5,
-    0x60,
-    0x60,
-    0xad,
-    0x50,
-    0x86,
-    0x18,
-    0xc9,
+    0x02, 0xa9, 0xe3, 0x6f, 0x58, 0x11, 0x18, 0x49, 0xb5, 0x60, 0x60, 0xad,
+    0x50, 0x86, 0x18, 0xc9,
 ]);
 let equalityFilterBuffer = new ldap.EqualityFilter({
     attribute: "objectGUID",
@@ -196,7 +182,14 @@ server.listen(1389, "127.0.0.1", () => {
 
 let attribute = new ldap.Attribute({
     type: "foo",
-    vals: [42, undefined, null, { key: "value" }, "string", Buffer.from("buffer")],
+    vals: [
+        42,
+        undefined,
+        null,
+        { key: "value" },
+        "string",
+        Buffer.from("buffer"),
+    ],
 });
 // $ExpectType string
 attribute.type;

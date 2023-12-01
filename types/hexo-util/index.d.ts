@@ -20,17 +20,20 @@ export function hash(str: string | ArrayBufferView): Buffer;
 
 export class HashStream extends Transform {}
 
-export function highlight(str: string, options?: {
-    hljs?: boolean | undefined;
-    gutter?: boolean | undefined;
-    wrap?: boolean | undefined;
-    firstLine?: number | undefined;
-    caption?: string | undefined;
-    mark?: number[] | undefined;
-    tab?: string | undefined;
-    lang?: string | undefined;
-    autoDetect?: boolean | undefined;
-}): string;
+export function highlight(
+    str: string,
+    options?: {
+        hljs?: boolean | undefined;
+        gutter?: boolean | undefined;
+        wrap?: boolean | undefined;
+        firstLine?: number | undefined;
+        caption?: string | undefined;
+        mark?: number[] | undefined;
+        tab?: string | undefined;
+        lang?: string | undefined;
+        autoDetect?: boolean | undefined;
+    },
+): string;
 
 export function htmlTag(
     tag: string,
@@ -45,15 +48,23 @@ export interface Pattern<T> {
 }
 
 export const Pattern: {
-    new<T>(rule: Pattern<T> | ((str: string) => T)): Pattern<T>;
-    new(rule: RegExp): Pattern<RegExpMatchArray | null>;
-    new(rule: string): Pattern<{ 0: string; [index: number]: any } & { [name: string]: any } | undefined>;
+    new <T>(rule: Pattern<T> | ((str: string) => T)): Pattern<T>;
+    new (rule: RegExp): Pattern<RegExpMatchArray | null>;
+    new (
+        rule: string,
+    ): Pattern<
+        | ({ 0: string; [index: number]: any } & { [name: string]: any })
+        | undefined
+    >;
 };
 
 export class Permalink {
-    constructor(rule: string, options?: {
-        segments?: { [name: string]: string | RegExp } | undefined;
-    });
+    constructor(
+        rule: string,
+        options?: {
+            segments?: { [name: string]: string | RegExp } | undefined;
+        },
+    );
     rule: string;
     regex: RegExp;
     params: string[];
@@ -62,10 +73,13 @@ export class Permalink {
     stringify(data: { [name: string]: string }): string;
 }
 
-export function slugize(str: string, options?: {
-    separator?: string | undefined;
-    transform?: 1 | 2 | undefined;
-}): string;
+export function slugize(
+    str: string,
+    options?: {
+        separator?: string | undefined;
+        transform?: 1 | 2 | undefined;
+    },
+): string;
 
 export interface hexoSpawnOptions extends SpawnOptions {
     verbose?: boolean | undefined;
@@ -81,7 +95,8 @@ export interface hexoSpawnOverrideStdioOptions extends hexoSpawnOptions {
     stdio: StdioOptions;
 }
 
-export interface hexoSpawnDisableEncodingAndOverrideStdioOptions extends hexoSpawnDisableEncodingOptions {
+export interface hexoSpawnDisableEncodingAndOverrideStdioOptions
+    extends hexoSpawnDisableEncodingOptions {
     stdio: StdioOptions;
 }
 
@@ -95,25 +110,48 @@ export function spawn(
     args: string[],
     options: hexoSpawnOverrideStdioOptions,
 ): Promise<string | undefined>;
-export function spawn(command: string, args: string[], options: hexoSpawnDisableEncodingOptions): Promise<Buffer>;
-export function spawn(command: string, args: string[], options?: hexoSpawnOptions): Promise<string>;
+export function spawn(
+    command: string,
+    args: string[],
+    options: hexoSpawnDisableEncodingOptions,
+): Promise<Buffer>;
+export function spawn(
+    command: string,
+    args: string[],
+    options?: hexoSpawnOptions,
+): Promise<string>;
 
 export function spawn(
     command: string,
     options: hexoSpawnDisableEncodingAndOverrideStdioOptions,
 ): Promise<Buffer | undefined>;
-export function spawn(command: string, options: hexoSpawnOverrideStdioOptions): Promise<string | undefined>;
-export function spawn(command: string, options: hexoSpawnDisableEncodingOptions): Promise<Buffer>;
-export function spawn(command: string, options?: hexoSpawnOptions): Promise<string>;
+export function spawn(
+    command: string,
+    options: hexoSpawnOverrideStdioOptions,
+): Promise<string | undefined>;
+export function spawn(
+    command: string,
+    options: hexoSpawnDisableEncodingOptions,
+): Promise<Buffer>;
+export function spawn(
+    command: string,
+    options?: hexoSpawnOptions,
+): Promise<string>;
 
 export function stripHTML(str: string): string;
 
-export function wordWrap(str: string, options?: {
-    width?: number | undefined;
-}): string;
+export function wordWrap(
+    str: string,
+    options?: {
+        width?: number | undefined;
+    },
+): string;
 
-export function truncate(str: string, options?: {
-    length?: number | undefined;
-    omission?: string | undefined;
-    separator?: string | undefined;
-}): string;
+export function truncate(
+    str: string,
+    options?: {
+        length?: number | undefined;
+        omission?: string | undefined;
+        separator?: string | undefined;
+    },
+): string;

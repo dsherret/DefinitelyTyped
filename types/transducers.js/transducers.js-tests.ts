@@ -11,7 +11,7 @@ const stringAppendThenLengthTransformer: t.CompletingTransformer<
     ["@@transducer/result"]: (s: string) => s.length,
     ["@@transducer/step"]: stringAppendFn,
 };
-const toNumberTransducer: t.Transducer<string, number> = t.map(s => +s);
+const toNumberTransducer: t.Transducer<string, number> = t.map((s) => +s);
 const transducedString1: string = t.transduce(
     ["1", "2"],
     toNumberTransducer,
@@ -24,10 +24,11 @@ const transducedString2: string = t.transduce(
     stringAppendTransformer,
 );
 
-const mapcatted: number[] = t.into([], t.mapcat((s: string) => [1, 2, 3, 4]), [
-    "a",
-    "b",
-]);
+const mapcatted: number[] = t.into(
+    [],
+    t.mapcat((s: string) => [1, 2, 3, 4]),
+    ["a", "b"],
+);
 
 const partitionedIter: Iterator<number[]> = t.toIter(
     [1, 2, 3, 4, 5],

@@ -1,4 +1,12 @@
-import { Callback, Context, S3BatchEvent, S3BatchResult, S3CreateEvent, S3EventRecord, S3Handler } from "aws-lambda";
+import {
+    Callback,
+    Context,
+    S3BatchEvent,
+    S3BatchResult,
+    S3CreateEvent,
+    S3EventRecord,
+    S3Handler,
+} from "aws-lambda";
 
 // TODO: Update test to read event properties, like the user will
 let handler: S3Handler = async (event, context, callback) => {
@@ -22,7 +30,8 @@ const record: S3EventRecord = {
     },
     responseElements: {
         "x-amz-request-id": "C3D13FE58DE4C810",
-        "x-amz-id-2": "FMyUVURIY8/IgAtTv8xRjskZQpcIZ9KG4V5Wp6S7S/JRWeUWerMUE5JgHvANOjpD",
+        "x-amz-id-2":
+            "FMyUVURIY8/IgAtTv8xRjskZQpcIZ9KG4V5Wp6S7S/JRWeUWerMUE5JgHvANOjpD",
     },
     s3: {
         s3SchemaVersion: "1.0",

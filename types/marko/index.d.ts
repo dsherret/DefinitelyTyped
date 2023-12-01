@@ -8,4 +8,8 @@ export interface TemplateOptions {
 }
 
 export function load(templatePath: string, options?: TemplateOptions): Template;
-export function load(templatePath: string, templateSrc: string, options?: TemplateOptions): Template;
+export function load(
+    templatePath: string,
+    templateSrc: string,
+    options?: TemplateOptions,
+): Template;

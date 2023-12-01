@@ -52,7 +52,12 @@ declare namespace Strophe {
              * @param exit_msg - optional exit message.
              * @return iqid - The unique id for the room leave.*
              */
-            leave(room: string, nick: string, handler_cb?: Function, exit_msg?: string): string;
+            leave(
+                room: string,
+                nick: string,
+                handler_cb?: Function,
+                exit_msg?: string,
+            ): string;
 
             /**
              * Send a message to a room.
@@ -81,7 +86,12 @@ declare namespace Strophe {
              * @param msgid - Optional unique ID which will be set as the 'id' attribute of the stanza
              * @return msgiq - the unique id used to send the message
              */
-            groupchat(room: string, message: string, html_message?: string, msgid?: string): string;
+            groupchat(
+                room: string,
+                message: string,
+                html_message?: string,
+                msgid?: string,
+            ): string;
 
             /**
              * Send a mediated invitation.
@@ -101,7 +111,11 @@ declare namespace Strophe {
              * @param reason - Optional reason for joining the room.
              * @return msgiq - the unique id used to send the invitation
              */
-            multipleInvites(room: string, receivers: string[], reason?: string): string;
+            multipleInvites(
+                room: string,
+                receivers: string[],
+                reason?: string,
+            ): string;
 
             /**
              * Send a direct invitation.
@@ -112,7 +126,12 @@ declare namespace Strophe {
              * @param password - Optional password for the room.
              * @return msgiq - the unique id used to send the invitation
              */
-            directInvite(room: string, receiver: string, reason?: string, password?: string): string;
+            directInvite(
+                room: string,
+                receiver: string,
+                reason?: string,
+                password?: string,
+            ): string;
 
             /**
              * Queries a room for a list of occupants
@@ -122,7 +141,11 @@ declare namespace Strophe {
              * @param error_cb - Optional function to handle an error.
              * @return id - the unique id used to send the info request
              */
-            queryOccupants(room: string, success_cb?: (stanza: Element) => any, error_cb?: (error: any) => any): string;
+            queryOccupants(
+                room: string,
+                success_cb?: (stanza: Element) => any,
+                error_cb?: (error: any) => any,
+            ): string;
 
             /**
              * Start a room configuration.
@@ -132,7 +155,11 @@ declare namespace Strophe {
              * @param error_cb - Optional function to handle an error.
              * @return id - the unique id used to send the configuration request
              */
-            configure(room: string, handler_cb?: Function, error_cb?: Function): string;
+            configure(
+                room: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Cancel the room configuration
@@ -151,7 +178,12 @@ declare namespace Strophe {
              * @param error_cb - Optional function to handle an error.
              * @return id - the unique id used to save the configuration.
              */
-            saveConfiguration(room: string, config: any, success_cb?: Function, error_cb?: Function): string;
+            saveConfiguration(
+                room: string,
+                config: any,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Create an instance room.
@@ -161,7 +193,11 @@ declare namespace Strophe {
              * @param error_cb - Optional function to handle an error.
              * @return id - the unique id used to create the chat room.
              */
-            createInstantRoom(room: string, success_cb?: Function, error_cb?: Function): string;
+            createInstantRoom(
+                room: string,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Create a configured room.
@@ -172,7 +208,12 @@ declare namespace Strophe {
              * @param error_cb - Optional function to handle an error.
              * @return id - the unique id used to create the chat room.
              */
-            createConfiguredRoom(room: string, config: any, success_cb: Function, error_cb: Function): string;
+            createConfiguredRoom(
+                room: string,
+                config: any,
+                success_cb: Function,
+                error_cb: Function,
+            ): string;
 
             /**
              * Set the topic of the chat room.
@@ -214,7 +255,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            kick(room: string, nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            kick(
+                room: string,
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Voice a user.
@@ -226,7 +273,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            voice(room: string, nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            voice(
+                room: string,
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Mute a user.
@@ -238,7 +291,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            mute(room: string, nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            mute(
+                room: string,
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Op a user.
@@ -250,7 +309,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            op(room: string, nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            op(
+                room: string,
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * De-Op a user.
@@ -262,7 +327,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            deop(room: string, nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            deop(
+                room: string,
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Changes the affiliation of a member of a MUC room.
@@ -296,7 +367,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            ban(room: string, jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            ban(
+                room: string,
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Member a user.
@@ -308,7 +385,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            member(room: string, jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            member(
+                room: string,
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Revoke a user.
@@ -320,7 +403,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            revoke(room: string, jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            revoke(
+                room: string,
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Owner a user.
@@ -332,7 +421,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            owner(room: string, jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            owner(
+                room: string,
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Admin a user.
@@ -344,7 +439,13 @@ declare namespace Strophe {
              * @param error_cb - Optional callback for error
              * @return iq - the id of the mode change request.
              */
-            owner(room: string, jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            owner(
+                room: string,
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             /**
              * Change the current users nick name.
@@ -362,7 +463,12 @@ declare namespace Strophe {
              * @param show - The new show-text.
              * @param status - The new status-text.
              */
-            setStatus(room: string, user: string, show: string, status: string): void;
+            setStatus(
+                room: string,
+                user: string,
+                show: string,
+                status: string,
+            ): void;
 
             /**
              * Registering with a room.
@@ -372,7 +478,11 @@ declare namespace Strophe {
              * @param handle_cb - Function to call for room list return.
              * @param error_cb - Function to call on error.
              */
-            registrationRequest(room: string, handle_cb: Function, error_cb: Function): void;
+            registrationRequest(
+                room: string,
+                handle_cb: Function,
+                error_cb: Function,
+            ): void;
 
             /**
              * Submits registration form.
@@ -382,7 +492,12 @@ declare namespace Strophe {
              * @param handle_cb - Function to call for room list return.
              * @param error_cb - Function to call on error.
              */
-            submitRegistrationForm(room: string, fields: any, handle_cb: Function, error_cb: Function): void;
+            submitRegistrationForm(
+                room: string,
+                fields: any,
+                handle_cb: Function,
+                error_cb: Function,
+            ): void;
 
             /**
              * List all chat room available on a server.
@@ -391,15 +506,27 @@ declare namespace Strophe {
              * @param handle_cb - Function to call for room list return.
              * @param error_cb - Function to call on error.
              */
-            listRooms(server: string, handle_cb: (stanza: Element) => any, error_cb: (error: any) => any): void;
+            listRooms(
+                server: string,
+                handle_cb: (stanza: Element) => any,
+                error_cb: (error: any) => any,
+            ): void;
         }
 
         interface XmppRoom {
-            join(msg_handler_cb: Function, pres_handler_cb: Function, roster_cb: Function): void;
+            join(
+                msg_handler_cb: Function,
+                pres_handler_cb: Function,
+                roster_cb: Function,
+            ): void;
 
             leave(handler_cb?: Function, exit_msg?: string): void;
 
-            message(message: string, html_message: string, type: "groupchat" | "chat"): string;
+            message(
+                message: string,
+                html_message: string,
+                type: "groupchat" | "chat",
+            ): string;
 
             groupchat(message: string, html_message?: string): string;
 
@@ -419,17 +546,48 @@ declare namespace Strophe {
 
             setTopic(topic: string): string;
 
-            modifyRole(nick: string, role: string, reason?: string, success_cb?: Function, error_cb?: Function): string;
+            modifyRole(
+                nick: string,
+                role: string,
+                reason?: string,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            kick(nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            kick(
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            voice(nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            voice(
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            mute(nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            mute(
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            op(nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            op(
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            deop(nick: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            deop(
+                nick: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             modifyAffiliation(
                 jid: string,
@@ -439,15 +597,40 @@ declare namespace Strophe {
                 error_cb?: Function,
             ): string;
 
-            ban(jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            ban(
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            member(jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            member(
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            revoke(jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            revoke(
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            owner(jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            owner(
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            admin(jid: string, reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            admin(
+                jid: string,
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             changeNick(nick: string): string;
 
@@ -460,7 +643,10 @@ declare namespace Strophe {
              * @param handler - The handler function.
              * @return id - the id of handler.
              */
-            addHandler(handler_type: "presence" | "message" | "roster", handler: Function): number;
+            addHandler(
+                handler_type: "presence" | "message" | "roster",
+                handler: Function,
+            ): number;
 
             /**
              * Removes a handler from the MUC room.
@@ -487,29 +673,79 @@ declare namespace Strophe {
         }
 
         interface Occupant extends OccupantInfo {
-            modifyRole(role: string, reason?: string, success_cb?: Function, error_cb?: Function): string;
+            modifyRole(
+                role: string,
+                reason?: string,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            kick(reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            kick(
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            voice(reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            voice(
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            mute(reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            mute(
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            op(reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            op(
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            deop(reason?: string, handler_cb?: Function, error_cb?: Function): string;
+            deop(
+                reason?: string,
+                handler_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            modifyAffiliation(affiliation: string, reason?: string, success_cb?: Function, error_cb?: Function): string;
+            modifyAffiliation(
+                affiliation: string,
+                reason?: string,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            ban(reason?: string, success_cb?: Function, error_cb?: Function): string;
+            ban(
+                reason?: string,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            member(reason?: string, success_cb?: Function, error_cb?: Function): string;
+            member(
+                reason?: string,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            revoke(reason?: string, success_cb?: Function, error_cb?: Function): string;
+            revoke(
+                reason?: string,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            owner(reason?: string, success_cb?: Function, error_cb?: Function): string;
+            owner(
+                reason?: string,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
-            admin(reason?: string, success_cb?: Function, error_cb?: Function): string;
+            admin(
+                reason?: string,
+                success_cb?: Function,
+                error_cb?: Function,
+            ): string;
 
             update(data: OccupantInfo): void;
         }

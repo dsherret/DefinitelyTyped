@@ -10,10 +10,7 @@ const optionsArray: template.Options[] = [
 
         /** Optional */
         appMountId: "app",
-        appMountIds: [
-            "root0",
-            "root1",
-        ],
+        appMountIds: ["root0", "root1"],
         baseHref: "http://example.com/awesome",
         devServer: "http://localhost:3001",
         googleAnalytics: {
@@ -36,7 +33,8 @@ const optionsArray: template.Options[] = [
         ],
         meta: [
             {
-                description: "A better default template for html-webpack-plugin.",
+                description:
+                    "A better default template for html-webpack-plugin.",
             },
         ],
         mobile: true,
@@ -62,4 +60,6 @@ const optionsArray: template.Options[] = [
     },
 ];
 
-const plugins: HtmlWebpackPlugin[] = optionsArray.map(options => new HtmlWebpackPlugin(options));
+const plugins: HtmlWebpackPlugin[] = optionsArray.map(
+    (options) => new HtmlWebpackPlugin(options),
+);

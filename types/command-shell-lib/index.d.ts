@@ -27,9 +27,15 @@ export function showHelp(commands: CommandsObject): void;
  * Executes the given command (the list of words parsed from the command line input) in the context of the commands
  * describe by the object Commands.
  */
-export function executeCommander(command: readonly string[], commands: CommandsObject): void;
+export function executeCommander(
+    command: readonly string[],
+    commands: CommandsObject,
+): void;
 /** Creates a function that shows the selected branch (attribute) of the config, formatted with the correct indentation. */
-export function showConfig(config: { [name: string]: any }, branch: string): () => void;
+export function showConfig(
+    config: { [name: string]: any },
+    branch: string,
+): () => void;
 /**
  * Initialize the command line client with the given commands and prompt. Each command has the following structure:
  *
@@ -43,7 +49,10 @@ export function showConfig(config: { [name: string]: any }, branch: string): () 
  * number of parameters an error will be raised); the description attribute contains the contents that will be shown
  * in the command help; and the handler is the function that will be called when the command is executed.
  */
-export function initialize(commands: CommandsObject, promptString: string): void;
+export function initialize(
+    commands: CommandsObject,
+    promptString: string,
+): void;
 /** Destroys the underlying readline interface. */
 export function destroy(): void;
 /** Creates a function that prints the provided name. */

@@ -18,8 +18,12 @@ export interface Namespace<N = Record<string, any>> {
 }
 
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function createNamespace<N = Record<string, any>>(name: string): Namespace<N>;
+export function createNamespace<N = Record<string, any>>(
+    name: string,
+): Namespace<N>;
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function getNamespace<N = Record<string, any>>(name: string): Namespace<N> | undefined;
+export function getNamespace<N = Record<string, any>>(
+    name: string,
+): Namespace<N> | undefined;
 export function destroyNamespace(name: string): void;
 export function reset(): void;

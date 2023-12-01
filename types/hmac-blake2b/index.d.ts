@@ -21,7 +21,11 @@ export = hmac;
  *
  * hmac(mac, data, key)
  */
-declare function hmac(out: Uint8Array, data: Uint8Array | readonly Uint8Array[], key: Uint8Array): void;
+declare function hmac(
+    out: Uint8Array,
+    data: Uint8Array | readonly Uint8Array[],
+    key: Uint8Array,
+): void;
 
 declare namespace hmac {
     /** Size of the output MAC in bytes */

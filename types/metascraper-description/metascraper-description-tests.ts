@@ -8,10 +8,10 @@ const options: metascraperDescription.Options = {
     truncateLength: 150,
 };
 
-metascraper([metascraperDescription()])({ html, url }).then(data => {
+metascraper([metascraperDescription()])({ html, url }).then((data) => {
     data;
 });
 
-metascraper([metascraperDescription(options)])({ html, url }).then(data => {
+metascraper([metascraperDescription(options)])({ html, url }).then((data) => {
     data;
 });

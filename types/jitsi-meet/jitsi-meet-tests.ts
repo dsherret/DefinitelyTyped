@@ -76,7 +76,8 @@ const config: Config = {
 
     dropbox: {
         appKey: "<APP_KEY>", // Specify your app key here.
-        redirectURI: "https://jitsi-meet.example.com/subfolder/static/oauth.html",
+        redirectURI:
+            "https://jitsi-meet.example.com/subfolder/static/oauth.html",
     },
     fileRecordingsServiceSharingEnabled: false,
     liveStreamingEnabled: false,
@@ -265,17 +266,33 @@ const interfaceConfig: InterfaceConfig = {
 
     MAXIMUM_ZOOMING_COEFFICIENT: 1.3,
     MOBILE_APP_PROMO: true,
-    MOBILE_DOWNLOAD_LINK_ANDROID: "https://play.google.com/store/apps/details?id=org.jitsi.meet",
-    MOBILE_DOWNLOAD_LINK_F_DROID: "https://f-droid.org/en/packages/org.jitsi.meet/",
-    MOBILE_DOWNLOAD_LINK_IOS: "https://itunes.apple.com/us/app/jitsi-meet/id1165103905",
+    MOBILE_DOWNLOAD_LINK_ANDROID:
+        "https://play.google.com/store/apps/details?id=org.jitsi.meet",
+    MOBILE_DOWNLOAD_LINK_F_DROID:
+        "https://f-droid.org/en/packages/org.jitsi.meet/",
+    MOBILE_DOWNLOAD_LINK_IOS:
+        "https://itunes.apple.com/us/app/jitsi-meet/id1165103905",
     NATIVE_APP_NAME: "Jitsi Meet",
-    OPTIMAL_BROWSERS: ["chrome", "chromium", "firefox", "nwjs", "electron", "safari"],
+    OPTIMAL_BROWSERS: [
+        "chrome",
+        "chromium",
+        "firefox",
+        "nwjs",
+        "electron",
+        "safari",
+    ],
 
     POLICY_LOGO: null,
     PROVIDER_NAME: "Jitsi",
     RECENT_LIST_ENABLED: true,
     REMOTE_THUMBNAIL_RATIO: 1, // 1:1
-    SETTINGS_SECTIONS: ["devices", "language", "moderator", "profile", "calendar"],
+    SETTINGS_SECTIONS: [
+        "devices",
+        "language",
+        "moderator",
+        "profile",
+        "calendar",
+    ],
     SHOW_BRAND_WATERMARK: false,
     SHOW_CHROME_EXTENSION_BANNER: false,
 
@@ -346,9 +363,11 @@ const options: ExternalAPIOptions = {
     onload: () => {
         return;
     },
-    invitees: [{
-        // empty object as this depends on the exact
-    }],
+    invitees: [
+        {
+            // empty object as this depends on the exact
+        },
+    ],
     devices: null,
     userInfo: {
         email: "test@example.com",
@@ -356,7 +375,8 @@ const options: ExternalAPIOptions = {
     },
 };
 
-const JitsiMeetExternalAPI = (window as any).JitsiMeetExternalAPI as JitsiMeetExternalAPIConstructor;
+const JitsiMeetExternalAPI = (window as any)
+    .JitsiMeetExternalAPI as JitsiMeetExternalAPIConstructor;
 
 const api = new JitsiMeetExternalAPI("typescript", options);
 

@@ -1,8 +1,4 @@
-export type LinkEntityType =
-    | "url"
-    | "email"
-    | "hashtag"
-    | "mention";
+export type LinkEntityType = "url" | "email" | "hashtag" | "mention";
 
 export interface FindResultHash {
     /**
@@ -182,7 +178,7 @@ export interface Options {
     validate?:
         | boolean
         | ((href: string, type: LinkEntityType) => boolean)
-        | Partial<Record<LinkEntityType, ((href: string) => boolean)>>
+        | Partial<Record<LinkEntityType, (href: string) => boolean>>
         | null
         | undefined;
 }

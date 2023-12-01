@@ -164,4 +164,6 @@ export class OAuthConnector {
  * @async
  * @param vendorConnector OAuth connector instance to initialize.
  */
-export function createOAuthConnector(vendorConnector: OAuthConnector): Promise<any>;
+export function createOAuthConnector(
+    vendorConnector: OAuthConnector,
+): Promise<any>;

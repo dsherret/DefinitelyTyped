@@ -65,4 +65,7 @@ export interface Result {
  * @param callback RU: Callback-функция EN: Callback-function
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function check<T extends string = "C" | "/">(drive: T, callback: Callback): void;
+export function check<T extends string = "C" | "/">(
+    drive: T,
+    callback: Callback,
+): void;

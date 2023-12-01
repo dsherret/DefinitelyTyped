@@ -17,8 +17,10 @@ import { updatePackage } from "./updatePackage.js";
 
 async function main() {
     const args = await yargs(process.argv.slice(2))
-        .usage(`\`$0 --dt=path-to-dt\` or \`$0 --package=path-to-dt-package\`
-'dt.json' is used as the base tslint config for running the linter.`)
+        .usage(
+            `\`$0 --dt=path-to-dt\` or \`$0 --package=path-to-dt-package\`
+'dt.json' is used as the base tslint config for running the linter.`,
+        )
         .option("package", {
             describe: "Path of DT package.",
             type: "string",
@@ -30,18 +32,27 @@ async function main() {
             conflicts: "package",
         })
         .option("rules", {
-            describe: "Names of the rules to be updated. Leave this empty to update all rules.",
+            describe:
+                "Names of the rules to be updated. Leave this empty to update all rules.",
             type: "array",
             string: true,
             default: [],
         })
-        .check(arg => {
+        .check((arg) => {
             if (!arg.package && !arg.dt) {
-                throw new Error("You must provide either argument 'package' or 'dt'.");
+                throw new Error(
+                    "You must provide either argument 'package' or 'dt'.",
+                );
             }
-            const unsupportedRules = arg.rules.filter(rule => ignoredRules.has(rule));
+            const unsupportedRules = arg.rules.filter((rule) =>
+                ignoredRules.has(rule),
+            );
             if (unsupportedRules.length > 0) {
-                throw new Error(`Rules ${unsupportedRules.join(", ")} are not supported at the moment.`);
+                throw new Error(
+                    `Rules ${unsupportedRules.join(
+                        ", ",
+                    )} are not supported at the moment.`,
+                );
             }
             return true;
         }).argv;
@@ -73,7 +84,10 @@ function dtConfig(updatedRules) {
     // Disable ignored or non-updated rules.
     for (const entry of config.rules.entries()) {
         const [rule, ruleOpts] = entry;
-        if (ignoredRules.has(rule) || (updatedRules.length > 0 && !updatedRules.includes(rule))) {
+        if (
+            ignoredRules.has(rule) ||
+            (updatedRules.length > 0 && !updatedRules.includes(rule))
+        ) {
             ruleOpts.ruleSeverity = "off";
         }
     }

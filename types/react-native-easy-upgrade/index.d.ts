@@ -30,17 +30,20 @@ declare class AppUpgrade {
      * @param fileUrl
      * @param downloadConf
      */
-    downloadFile(fileUrl: string, downloadConf?: {
-        tempDownloadPath: string;
-        downloadTitle?: string | undefined;
-        downloadDescription?: string | undefined;
-        saveAsName?: string | undefined;
-        allowedInRoaming?: boolean | undefined;
-        allowedInMetered?: boolean | undefined;
-        showInDownloads?: boolean | undefined;
-        external?: boolean | undefined;
-        path?: string | undefined;
-    }): void;
+    downloadFile(
+        fileUrl: string,
+        downloadConf?: {
+            tempDownloadPath: string;
+            downloadTitle?: string | undefined;
+            downloadDescription?: string | undefined;
+            saveAsName?: string | undefined;
+            allowedInRoaming?: boolean | undefined;
+            allowedInMetered?: boolean | undefined;
+            showInDownloads?: boolean | undefined;
+            external?: boolean | undefined;
+            path?: string | undefined;
+        },
+    ): void;
 
     /**
      * update app and install

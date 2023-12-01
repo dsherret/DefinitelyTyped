@@ -41,10 +41,11 @@ export interface HelperSignature {
 type GetOrElse<Obj, K, Fallback> = K extends keyof Obj ? Obj[K] : Fallback;
 
 /** Given a signature `S`, get back the `Args` type. */
-type ArgsFor<S> = "Args" extends keyof S ? {
-        Named: GetOrElse<S["Args"], "Named", DefaultNamed>;
-        Positional: GetOrElse<S["Args"], "Positional", []>;
-    }
+type ArgsFor<S> = "Args" extends keyof S
+    ? {
+          Named: GetOrElse<S["Args"], "Named", DefaultNamed>;
+          Positional: GetOrElse<S["Args"], "Positional", []>;
+      }
     : { Named: DefaultNamed; Positional: [] };
 
 interface LegacyArgsFor<T> {
@@ -86,8 +87,8 @@ export interface ExpandSignature<T> {
     Args: unknown extends T // Is this the default (i.e. unspecified) signature?
         ? MissingSignatureArgs // Then return our special "missing signature" type
         : keyof T extends "Args" | "Return" // Is this a `Signature`?
-            ? ArgsFor<T> // Then use `Signature` args
-        : LegacyArgsFor<T>; // Otherwise fall back to classic `Args`.
+          ? ArgsFor<T> // Then use `Signature` args
+          : LegacyArgsFor<T>; // Otherwise fall back to classic `Args`.
     Return: "Return" extends keyof T ? T["Return"] : unknown;
 }
 
@@ -95,8 +96,12 @@ export interface ExpandSignature<T> {
 // compatibility with the existing non-`Signature` definition. When migrating
 // into Ember or otherwise making a breaking change, we can drop the "default"
 // in favor of just using `ExpandSignature`.
-type NamedArgs<S> = unknown extends S ? Record<string, unknown> : ExpandSignature<S>["Args"]["Named"];
-type PositionalArgs<S> = unknown extends S ? unknown[] : ExpandSignature<S>["Args"]["Positional"];
+type NamedArgs<S> = unknown extends S
+    ? Record<string, unknown>
+    : ExpandSignature<S>["Args"]["Named"];
+type PositionalArgs<S> = unknown extends S
+    ? unknown[]
+    : ExpandSignature<S>["Args"]["Positional"];
 
 type Return<S> = GetOrElse<S, "Return", unknown>;
 
@@ -153,7 +158,8 @@ export abstract class FunctionBasedHelperInstance<S> extends Helper<S> {
 // parameters to be preserved when `helper()` is passed a generic function.
 // By making it `abstract` and impossible to subclass (see above), we prevent
 // users from attempting to instantiate a return value from `helper()`.
-export type FunctionBasedHelper<S> = abstract new() => FunctionBasedHelperInstance<S>;
+export type FunctionBasedHelper<S> =
+    abstract new () => FunctionBasedHelperInstance<S>;
 
 /**
  * In many cases, the ceremony of a full `Helper` class is not required.
@@ -170,7 +176,11 @@ export type FunctionBasedHelper<S> = abstract new() => FunctionBasedHelperInstan
  */
 // This overload allows users to write types directly on the callback passed to
 // the `helper` function and infer the resulting type correctly.
-export function helper<P extends DefaultPositional, N = EmptyObject, R = unknown>(
+export function helper<
+    P extends DefaultPositional,
+    N = EmptyObject,
+    R = unknown,
+>(
     helperFn: (positional: P, named: N) => R,
 ): FunctionBasedHelper<{
     Args: {

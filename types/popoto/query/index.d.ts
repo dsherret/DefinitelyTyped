@@ -23,7 +23,9 @@ export namespace Query {
     const COLLECT_RELATIONS_WITH_VALUES: boolean;
     const prefilter: string;
     const prefilterParameters: { [key: string]: any };
-    function applyPrefilters(queryStructure: QueryStructure): typeof queryStructure;
+    function applyPrefilters(
+        queryStructure: QueryStructure,
+    ): typeof queryStructure;
 
     /**
      * Immutable constant object to identify Neo4j internal ID
@@ -45,7 +47,10 @@ export namespace Query {
      */
     function generateTaxonomyCountQuery(label: string): string;
 
-    function generateNegativeQueryElements(): Pick<QueryStructure, "whereElements" | "parameters">;
+    function generateNegativeQueryElements(): Pick<
+        QueryStructure,
+        "whereElements" | "parameters"
+    >;
 
     /**
      * Generate Cypher query match and where elements from root node, selected node and a set of the graph links.
@@ -85,7 +90,11 @@ export namespace Query {
      * @param initialLinks list of links representing the graph to filter.
      * @returns list of relevant links.
      */
-    function getRelevantLinks(rootNode: Node, targetNode: Node, initialLinks: Link[]): Link[];
+    function getRelevantLinks(
+        rootNode: Node,
+        targetNode: Node,
+        initialLinks: Link[],
+    ): Link[];
 
     /**
      * Get the list of link defining the complete path from node to root.

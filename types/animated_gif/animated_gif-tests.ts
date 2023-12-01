@@ -26,17 +26,17 @@ ag.addFrame(imageElement); // $ExpectType void
 declare const imageData: ImageData;
 ag.addFrameImageData(imageData); // $ExpectType void
 
-ag.onRenderProgress(percent => {
+ag.onRenderProgress((percent) => {
     console.log(percent);
 });
 
 ag.isRendering(); // $ExpectType boolean
 
-ag.getBase64GIF(image => {
+ag.getBase64GIF((image) => {
     imageElement.src = image;
 });
 
-ag.getBlobGIF(blob => {
+ag.getBlobGIF((blob) => {
     window.open(URL.createObjectURL(blob));
 });
 

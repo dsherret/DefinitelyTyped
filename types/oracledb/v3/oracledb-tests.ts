@@ -22,8 +22,15 @@ const {
     DB_USER,
 } = process.env;
 
-const initSession = (connection: oracledb.Connection, requestedTag: string, callback: () => void): void => {
-    connection.execute(`alter session set nls_date_format = 'YYYY-MM-DD' nls_language = AMERICAN`, callback);
+const initSession = (
+    connection: oracledb.Connection,
+    requestedTag: string,
+    callback: () => void,
+): void => {
+    connection.execute(
+        `alter session set nls_date_format = 'YYYY-MM-DD' nls_language = AMERICAN`,
+        callback,
+    );
 };
 
 const testBreak = (connection: oracledb.Connection): Promise<void> =>
@@ -38,9 +45,18 @@ const testBreak = (connection: oracledb.Connection): Promise<void> =>
             [2],
             (error: oracledb.DBError): void => {
                 // ORA-01013: user requested cancel of current operation
-                assert(error.message.includes("ORA-01013"), "message not defined for DB error");
-                assert(error.errorNum !== undefined, "errorNum not defined for DB error");
-                assert(error.offset !== undefined, "offset not defined for DB error");
+                assert(
+                    error.message.includes("ORA-01013"),
+                    "message not defined for DB error",
+                );
+                assert(
+                    error.errorNum !== undefined,
+                    "errorNum not defined for DB error",
+                );
+                assert(
+                    error.offset !== undefined,
+                    "offset not defined for DB error",
+                );
 
                 return resolve();
             },
@@ -53,10 +69,14 @@ const testBreak = (connection: oracledb.Connection): Promise<void> =>
         }, 1000);
     });
 
-const testGetStatmentInfo = async (connection: oracledb.Connection): Promise<void> => {
+const testGetStatmentInfo = async (
+    connection: oracledb.Connection,
+): Promise<void> => {
     console.log("Testing connection.getStatementInfo()...");
 
-    const info = await connection.getStatementInfo("SELECT 1 FROM CONNOR_TEST_TABLE WHERE SYSDATE > :myDate");
+    const info = await connection.getStatementInfo(
+        "SELECT 1 FROM CONNOR_TEST_TABLE WHERE SYSDATE > :myDate",
+    );
 
     assert.deepStrictEqual(
         info.metaData[0],
@@ -72,34 +92,42 @@ const testGetStatmentInfo = async (connection: oracledb.Connection): Promise<voi
     );
 
     assert(
-        info.bindNames.findIndex(s => s === "MYDATE") >= 0,
+        info.bindNames.findIndex((s) => s === "MYDATE") >= 0,
         "connection.getStatementInfo() has invalid bindNames field in its response",
     );
-    assert(info.statementType === 1, "connection.getStatementInfo() has invalid statementType field in its response");
+    assert(
+        info.statementType === 1,
+        "connection.getStatementInfo() has invalid statementType field in its response",
+    );
 
     return;
 };
 
-const testQueryStream = async (connection: oracledb.Connection): Promise<void> =>
-    new Promise(resolve => {
+const testQueryStream = async (
+    connection: oracledb.Connection,
+): Promise<void> =>
+    new Promise((resolve) => {
         console.log("Testing connection.queryStream()...");
 
-        const stream = connection.queryStream("SELECT 1 FROM DUAL WHERE 10 < :myValue", {
-            myValue: {
-                dir: oracledb.BIND_IN,
-                maxSize: 50,
-                type: oracledb.NUMBER,
-                val: 20,
+        const stream = connection.queryStream(
+            "SELECT 1 FROM DUAL WHERE 10 < :myValue",
+            {
+                myValue: {
+                    dir: oracledb.BIND_IN,
+                    maxSize: 50,
+                    type: oracledb.NUMBER,
+                    val: 20,
+                },
             },
-        });
+        );
 
         let data = "";
 
-        stream.on("data", chunk => {
+        stream.on("data", (chunk) => {
             data += chunk;
         });
 
-        stream.on("metadata", metadata => {
+        stream.on("metadata", (metadata) => {
             assert.deepStrictEqual(metadata[0], {
                 name: "1",
             });
@@ -109,17 +137,19 @@ const testQueryStream = async (connection: oracledb.Connection): Promise<void> =
             return resolve(JSON.parse(data));
         });
 
-        stream.on("error", err => {
+        stream.on("error", (err) => {
             throw err;
         });
     });
 
-const createAndPopulateLob = (connection: oracledb.Connection): Promise<oracledb.Lob> =>
-    new Promise(resolve => {
+const createAndPopulateLob = (
+    connection: oracledb.Connection,
+): Promise<oracledb.Lob> =>
+    new Promise((resolve) => {
         console.log("Testing connection.createLob()...");
 
-        connection.createLob(oracledb.CLOB).then(lob => {
-            lob.write("abcdefg", "utf-8", err => {
+        connection.createLob(oracledb.CLOB).then((lob) => {
+            lob.write("abcdefg", "utf-8", (err) => {
                 if (err) {
                     throw err;
                 }
@@ -129,7 +159,9 @@ const createAndPopulateLob = (connection: oracledb.Connection): Promise<oracledb
         });
     });
 
-const testResultSet = async (connection: oracledb.Connection): Promise<void> => {
+const testResultSet = async (
+    connection: oracledb.Connection,
+): Promise<void> => {
     console.log("Testing ResultSet...");
 
     const result = await connection.execute(

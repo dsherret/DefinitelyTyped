@@ -1,4 +1,6 @@
-import ContentSwitcher, { ContentSwitcherOptions } from "../content-switcher/content-switcher";
+import ContentSwitcher, {
+    ContentSwitcherOptions,
+} from "../content-switcher/content-switcher";
 
 interface TabOptions extends ContentSwitcherOptions {
     selectorInit: string;
@@ -19,7 +21,10 @@ interface TabOptions extends ContentSwitcherOptions {
 
 declare class Tab extends ContentSwitcher {
     constructor(element: HTMLElement, options?: Partial<TabOptions>);
-    _changeState(detail: { item: HTMLElement }, callback: (...params: any) => void): void;
+    _changeState(
+        detail: { item: HTMLElement },
+        callback: (...params: any) => void,
+    ): void;
     _handleClick(event: MouseEvent): void;
     _handleDocumentClick(event: MouseEvent): void;
     _handleKeyDown(event: KeyboardEvent): void;

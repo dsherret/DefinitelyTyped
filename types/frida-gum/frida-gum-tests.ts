@@ -104,7 +104,7 @@ new NativeCallback(
 );
 
 const otherPuts = new NativeCallback(
-    a => {
+    (a) => {
         return 0;
     },
     "int",
@@ -120,7 +120,11 @@ const nf0 = new NativeFunction(NULL, "void", []);
 nf0({} as any);
 
 // $ExpectType NativeFunction<[number, number], [number | Int64, [number, [NativePointerValue, NativePointerValue]]]>
-const nf1 = new NativeFunction(NULL, ["float", "float"], ["int64", ["bool", ["pointer", "pointer"]]]);
+const nf1 = new NativeFunction(
+    NULL,
+    ["float", "float"],
+    ["int64", ["bool", ["pointer", "pointer"]]],
+);
 // $ExpectType [number, number]
 nf1(int64(0), [+false, [NULL, NULL]]);
 // $ExpectType [number, number]
@@ -132,7 +136,9 @@ const nf2 = new NativeFunction(NULL, "void", ["long", "...", "pointer"]);
 nf2(34, NULL, nf2, { handle: ptr(0xbeef) });
 
 // $ExpectType NativeFunction<number, [NativePointerValue]>
-const puts = new NativeFunction(Module.getExportByName(null, "puts"), "int", ["pointer"]);
+const puts = new NativeFunction(Module.getExportByName(null, "puts"), "int", [
+    "pointer",
+]);
 
 // $ExpectType NativePointer
 const message = Memory.allocUtf8String("Hello!");
@@ -147,7 +153,10 @@ puts.apply(otherPuts, [message]);
 puts(message);
 
 // $ExpectType SystemFunction<number, [NativePointerValue, number]>
-const open = new SystemFunction(Module.getExportByName(null, "open"), "int", ["pointer", "int"]);
+const open = new SystemFunction(Module.getExportByName(null, "open"), "int", [
+    "pointer",
+    "int",
+]);
 
 const path = Memory.allocUtf8String("/etc/hosts");
 
@@ -162,8 +171,7 @@ result.value;
 
 // $ExpectType Promise<void>
 Memory.scan(ptr("0x1234"), Process.pageSize, new MatchPattern("13 37"), {
-    onMatch(address, size) {
-    },
+    onMatch(address, size) {},
 });
 
 // $ExpectType Module
@@ -273,7 +281,7 @@ process (const GumEvent * event,
 `;
 const symbols: CSymbols = {
     // $ExpectType NativeCallback<"void", ["pointer"]>
-    on_interesting_event: new NativeCallback(e => {}, "void", ["pointer"]),
+    on_interesting_event: new NativeCallback((e) => {}, "void", ["pointer"]),
 };
 const cm = new CModule(ccode);
 const cm2 = new CModule(ccode, symbols, {});
@@ -316,56 +324,57 @@ const b = new ObjC.Block(ptr(0x1234));
 b.declare({ retType: "void", argTypes: ["int"] });
 b.declare({ types: "v12@?0i8" });
 
-Java.enumerateClassLoadersSync()
-    .forEach(classLoader => {
-        // $ExpectType ClassFactory
-        const factory = Java.ClassFactory.get(classLoader);
-        interface Props {
-            myMethod: Java.MethodDispatcher;
-            myField: Java.Field<number>;
-        }
-        // $ExpectType Wrapper<Props>
-        const MyJavaClass = factory.use<Props>("my.java.class");
-        // @ts-expect-error
-        factory.use<{ illegal: string }>("");
-        // $ExpectType string
-        MyJavaClass.$className;
+Java.enumerateClassLoadersSync().forEach((classLoader) => {
+    // $ExpectType ClassFactory
+    const factory = Java.ClassFactory.get(classLoader);
+    interface Props {
+        myMethod: Java.MethodDispatcher;
+        myField: Java.Field<number>;
+    }
+    // $ExpectType Wrapper<Props>
+    const MyJavaClass = factory.use<Props>("my.java.class");
+    // @ts-expect-error
+    factory.use<{ illegal: string }>("");
+    // $ExpectType string
+    MyJavaClass.$className;
+    // $ExpectType MethodDispatcher<Props>
+    MyJavaClass.myMethod;
+    // $ExpectType Wrapper<Props>
+    MyJavaClass.myMethod.holder;
+    // $ExpectType Wrapper<Props>
+    MyJavaClass.myMethod.holder.myField.holder.myMethod.holder;
+    MyJavaClass.myMethod.implementation = function (...args) {
         // $ExpectType MethodDispatcher<Props>
-        MyJavaClass.myMethod;
-        // $ExpectType Wrapper<Props>
-        MyJavaClass.myMethod.holder;
-        // $ExpectType Wrapper<Props>
-        MyJavaClass.myMethod.holder.myField.holder.myMethod.holder;
-        MyJavaClass.myMethod.implementation = function(...args) {
-            // $ExpectType MethodDispatcher<Props>
-            this.myMethod;
-            // $ExpectType Field<number, Props>
-            this.myField;
-            // $ExpectType number
-            this.myField.value;
-        };
-        // $ExpectType Wrapper<Props>
-        Java.retain(MyJavaClass);
-        interface AnotherProps {
-            anotherMethod: Java.MethodDispatcher;
-            anotherField: Java.Field<string>;
-        }
-        const MyAnotherJavaClass = factory.use<AnotherProps>("my.another.java.class");
-        // $ExpectType Wrapper<AnotherProps>
-        Java.cast(MyJavaClass, MyAnotherJavaClass);
-    });
+        this.myMethod;
+        // $ExpectType Field<number, Props>
+        this.myField;
+        // $ExpectType number
+        this.myField.value;
+    };
+    // $ExpectType Wrapper<Props>
+    Java.retain(MyJavaClass);
+    interface AnotherProps {
+        anotherMethod: Java.MethodDispatcher;
+        anotherField: Java.Field<string>;
+    }
+    const MyAnotherJavaClass = factory.use<AnotherProps>(
+        "my.another.java.class",
+    );
+    // $ExpectType Wrapper<AnotherProps>
+    Java.cast(MyJavaClass, MyAnotherJavaClass);
+});
 
 Java.perform(() => {
     // $ExpectType void
     Java.deoptimizeBootImage();
 
-    Java.enumerateMethods("*!*game*/i").forEach(group => {
+    Java.enumerateMethods("*!*game*/i").forEach((group) => {
         const factory = Java.ClassFactory.get(group.loader);
-        group.classes.forEach(klass => {
+        group.classes.forEach((klass) => {
             const C = factory.use(klass.name);
-            klass.methods.forEach(methodName => {
+            klass.methods.forEach((methodName) => {
                 const method: Java.MethodDispatcher = C[methodName];
-                method.implementation = function(...args) {
+                method.implementation = function (...args) {
                     return method.apply(this, args);
                 };
             });

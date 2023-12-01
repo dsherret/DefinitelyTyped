@@ -21,4 +21,6 @@ export interface TextMaskInputElement {
     update: (rawValue?: string) => void;
 }
 
-export function createTextMaskInputElement(config: CreateTextMaskConfig): TextMaskInputElement;
+export function createTextMaskInputElement(
+    config: CreateTextMaskConfig,
+): TextMaskInputElement;

@@ -21,5 +21,4 @@ import patchBuilder = require("socketio-wildcard");
 const patch = patchBuilder(clientIo.Manager);
 patch(socket);
 
-socket.on("*", () => {
-});
+socket.on("*", () => {});

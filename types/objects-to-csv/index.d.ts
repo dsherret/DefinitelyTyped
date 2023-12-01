@@ -44,7 +44,11 @@ declare class ObjectsToCsv {
      *   Uses only the first item if false.
      * @returns Data converted to a CSV string.
      */
-    convert(data: object[], header?: boolean, allColumns?: boolean): Promise<string>;
+    convert(
+        data: object[],
+        header?: boolean,
+        allColumns?: boolean,
+    ): Promise<string>;
 }
 
 export = ObjectsToCsv;

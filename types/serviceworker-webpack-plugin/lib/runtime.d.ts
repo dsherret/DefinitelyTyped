@@ -5,7 +5,9 @@ export interface ServiceWorkerWebpackPluginRuntime {
      * @param options Forwarded to `navigator.serviceWorker.register()`
      * @returns A promise if the runtime supports service workers, otherwise false.
      */
-    register(options?: RegistrationOptions): false | Promise<ServiceWorkerRegistration>;
+    register(
+        options?: RegistrationOptions,
+    ): false | Promise<ServiceWorkerRegistration>;
 }
 
 declare const runtime: ServiceWorkerWebpackPluginRuntime;

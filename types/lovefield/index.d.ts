@@ -40,7 +40,10 @@ declare namespace lf {
         gt(operand: ValueLiteral | schema.Column | Binder): Predicate;
         gte(operand: ValueLiteral | schema.Column | Binder): Predicate;
         match(operand: RegExp | Binder): Predicate;
-        between(from: ValueLiteral | Binder, to: ValueLiteral | Binder): Predicate;
+        between(
+            from: ValueLiteral | Binder,
+            to: ValueLiteral | Binder,
+        ): Predicate;
         in(values: Binder | ValueLiteral[]): Predicate;
         isNull(): Predicate;
         isNotNull(): Predicate;
@@ -130,7 +133,10 @@ declare namespace lf {
                 columnName: string,
                 defaultValue: string | boolean | number | Date | ArrayBuffer,
             ): Promise<void>;
-            dropTableColumn(tableName: string, columnName: string): Promise<void>;
+            dropTableColumn(
+                tableName: string,
+                columnName: string,
+            ): Promise<void>;
             renameTableColumn(
                 tableName: string,
                 oldColumnName: string,

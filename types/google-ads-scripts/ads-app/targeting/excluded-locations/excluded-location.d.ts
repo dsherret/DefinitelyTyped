@@ -43,10 +43,12 @@ declare namespace GoogleAdsScripts {
          *        var excludedLocation = excludedLocationIterator.next();
          *      }
          */
-        interface ExcludedLocationIterator extends Base.Iterator<ExcludedLocation> {}
+        interface ExcludedLocationIterator
+            extends Base.Iterator<ExcludedLocation> {}
 
         /** An operation representing creation of a new excluded location. */
-        interface ExcludedLocationOperation extends Base.Operation<ExcludedLocation> {}
+        interface ExcludedLocationOperation
+            extends Base.Operation<ExcludedLocation> {}
 
         /**
          * Fetches excluded locations. Unlike other selectors, does not support filtering or sorting.
@@ -60,6 +62,8 @@ declare namespace GoogleAdsScripts {
          *        var location = locationIterator.next();
          *      }
          */
-        interface ExcludedLocationSelector extends Base.Selector<ExcludedLocationIterator>, Base.SelectorWithLimit {}
+        interface ExcludedLocationSelector
+            extends Base.Selector<ExcludedLocationIterator>,
+                Base.SelectorWithLimit {}
     }
 }

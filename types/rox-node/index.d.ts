@@ -30,7 +30,10 @@ export function setContext(globalContext: unknown): void;
  *
  * https://docs.cloudbees.com/docs/cloudbees-feature-flags-api/latest/api-reference/nodejs-api#_setup
  */
-export function setup(apiKey: string, options?: RoxSetupOptions): Promise<unknown>;
+export function setup(
+    apiKey: string,
+    options?: RoxSetupOptions,
+): Promise<unknown>;
 
 export interface RoxSetupOptions {
     version?: string | undefined;
@@ -83,9 +86,18 @@ export interface RoxReporting {
 /**
  * https://docs.cloudbees.com/docs/cloudbees-feature-flags/latest/feature-releases/custom-properties
  */
-export function setCustomNumberProperty(name: string, value: number | ((context?: unknown) => number)): void;
-export function setCustomStringProperty(name: string, value: string | ((context?: unknown) => string)): void;
-export function setCustomBooleanProperty(name: string, value: boolean | ((context?: unknown) => boolean)): void;
+export function setCustomNumberProperty(
+    name: string,
+    value: number | ((context?: unknown) => number),
+): void;
+export function setCustomStringProperty(
+    name: string,
+    value: string | ((context?: unknown) => string),
+): void;
+export function setCustomBooleanProperty(
+    name: string,
+    value: boolean | ((context?: unknown) => boolean),
+): void;
 
 // https://docs.cloudbees.com/docs/cloudbees-feature-flags-api/latest/api-reference/nodejs-api#_setuserspaceunhandlederrorhandler
 export function setUserspaceUnhandledErrorHandler(
@@ -208,17 +220,29 @@ export namespace dynamicApi {
     /**
      * Getting boolean value of a flag
      */
-    function isEnabled(nameSpacedFlagName: string, defaultValue: boolean, context?: unknown): boolean;
+    function isEnabled(
+        nameSpacedFlagName: string,
+        defaultValue: boolean,
+        context?: unknown,
+    ): boolean;
 
     /**
      * Getting string value of a string flag
      */
-    function value(nameSpacedFlagName: string, defaultValue: string, context?: unknown): string;
+    function value(
+        nameSpacedFlagName: string,
+        defaultValue: string,
+        context?: unknown,
+    ): string;
 
     /**
      * Getting string value of a number flag
      */
-    function getNumber(nameSpacedFlagName: string, defaultValue: number, context?: unknown): number;
+    function getNumber(
+        nameSpacedFlagName: string,
+        defaultValue: number,
+        context?: unknown,
+    ): number;
 }
 
 export const flags: readonly Flag[];

@@ -1,4 +1,10 @@
-import { decrypt, decryptKeyInfo, encrypt, encryptKeyInfo, EncryptOptions } from "xml-encryption";
+import {
+    decrypt,
+    decryptKeyInfo,
+    encrypt,
+    encryptKeyInfo,
+    EncryptOptions,
+} from "xml-encryption";
 
 // no key
 // @ts-expect-error
@@ -8,7 +14,11 @@ decryptKeyInfo("enc", {});
 
 decrypt(
     "enc",
-    { key: "mykey", disallowDecryptionWithInsecureAlgorithm: false, warnInsecureAlgorithm: false },
+    {
+        key: "mykey",
+        disallowDecryptionWithInsecureAlgorithm: false,
+        warnInsecureAlgorithm: false,
+    },
     (err, res) => {
         // $ExpectType string
         const result = res;

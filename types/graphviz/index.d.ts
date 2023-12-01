@@ -4,7 +4,13 @@ export type PossibleValue = string | number | boolean;
 
 export type RenderType = string;
 
-export type RenderEngine = "dot" | "neato" | "circo" | "fdp" | "osage" | "twopi";
+export type RenderEngine =
+    | "dot"
+    | "neato"
+    | "circo"
+    | "fdp"
+    | "osage"
+    | "twopi";
 
 export interface Options {
     [key: string]: PossibleValue;
@@ -71,7 +77,11 @@ export interface Graph extends HasAttributes {
     getNode(id: string): Node | undefined;
     nodeCount(): number;
 
-    addEdge(nodeOne: string | Node, nodeTwo: string | Node, attrs?: Options): Edge;
+    addEdge(
+        nodeOne: string | Node,
+        nodeTwo: string | Node,
+        attrs?: Options,
+    ): Edge;
 
     // Subgraph (cluster) API
     addCluster(id: string): Graph;
@@ -110,4 +120,8 @@ export interface ParseCallback {
     (graph: Graph): void;
 }
 
-export function parse(path: string, callback: ParseCallback, errback?: ErrorCallback): void;
+export function parse(
+    path: string,
+    callback: ParseCallback,
+    errback?: ErrorCallback,
+): void;

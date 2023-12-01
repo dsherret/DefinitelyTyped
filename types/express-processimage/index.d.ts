@@ -10,7 +10,9 @@ declare function processImage(options?: processImage.Options): NextFunction;
 declare namespace processImage {
     interface Options {
         allowedImageSourceContentTypes?: string[] | undefined;
-        allowOperation?: ((operationName: string, ...args: any[]) => boolean) | undefined;
+        allowOperation?:
+            | ((operationName: string, ...args: any[]) => boolean)
+            | undefined;
         /** @default false */
         debug?: boolean | undefined;
         filters?: Record<string, boolean> | undefined;

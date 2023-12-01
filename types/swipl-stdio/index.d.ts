@@ -107,7 +107,13 @@ export class Engine {
 }
 
 export type Term = List | Variable | Compound | Dict;
-export type TermLike = Term | string | number | null | undefined | { toProlog(): string };
+export type TermLike =
+    | Term
+    | string
+    | number
+    | null
+    | undefined
+    | { toProlog(): string };
 
 declare class List {
     items: Term[];

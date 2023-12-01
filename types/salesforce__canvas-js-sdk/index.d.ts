@@ -208,7 +208,11 @@ declare namespace Sfdc {
 
         function identity<T>(obj: T): T;
 
-        function each<T, S = T[]>(obj: T[], it: (this: S, item: T, index: number, obj: T[]) => void, ctx?: S): void;
+        function each<T, S = T[]>(
+            obj: T[],
+            it: (this: S, item: T, index: number, obj: T[]) => void,
+            ctx?: S,
+        ): void;
         function each<T, S = T>(
             obj: Record<string, T>,
             it: (this: S, item: T, key: string, obj: Record<string, T>) => void,
@@ -217,7 +221,11 @@ declare namespace Sfdc {
 
         function startsWithHttp(orig: string, newUrl: string): string;
 
-        function map<T, R, S = T[]>(obj: T[], it: (this: S, item: T, index: number, obj: T[]) => R, ctx?: S): R[];
+        function map<T, R, S = T[]>(
+            obj: T[],
+            it: (this: S, item: T, index: number, obj: T[]) => R,
+            ctx?: S,
+        ): R[];
         function map<T, R, S = T>(
             obj: Record<string, T>,
             it: (this: S, item: T, key: string, obj: Record<string, T>) => R,
@@ -231,7 +239,13 @@ declare namespace Sfdc {
         function toArray(iterable: null | undefined): [];
         function toArray<T>(iterable: ArrayLike<T> | Record<string, T>): T[];
 
-        function size(obj: ArrayLike<unknown> | Record<string, unknown> | null | undefined): number;
+        function size(
+            obj:
+                | ArrayLike<unknown>
+                | Record<string, unknown>
+                | null
+                | undefined,
+        ): number;
 
         function indexOf<T>(arr: ArrayLike<T>, item: T): number;
 
@@ -239,7 +253,10 @@ declare namespace Sfdc {
 
         function remove<T>(arr: ArrayLike<T>, item: T): T[];
 
-        function param(obj: ArrayLike<unknown> | Record<string, unknown>, encode?: boolean): string;
+        function param(
+            obj: ArrayLike<unknown> | Record<string, unknown>,
+            encode?: boolean,
+        ): string;
 
         function objectify(q: string): Record<string, string>;
 
@@ -247,7 +264,10 @@ declare namespace Sfdc {
 
         function query(url: string, q: string): string;
 
-        function extend<A extends Record<string, unknown>, B extends Record<string, unknown>>(a: A, b: B): A & B;
+        function extend<
+            A extends Record<string, unknown>,
+            B extends Record<string, unknown>,
+        >(a: A, b: B): A & B;
         function extend<
             A extends Record<string, unknown>,
             B extends Record<string, unknown>,
@@ -281,7 +301,10 @@ declare namespace Sfdc {
 
         function prototypeOf(obj: unknown): object | null;
 
-        function module(ns: string, decl: Record<string, unknown>): typeof canvas;
+        function module(
+            ns: string,
+            decl: Record<string, unknown>,
+        ): typeof canvas;
 
         function document(): Document;
 
@@ -350,14 +373,20 @@ declare namespace Sfdc {
 
             type Subscription = EventSubscription | StreamSubscription;
 
-            type SubscriptionRef = string | EventSubscriptionRef | StreamSubscriptionRef;
+            type SubscriptionRef =
+                | string
+                | EventSubscriptionRef
+                | StreamSubscriptionRef;
 
             interface Event {
                 readonly name: string;
                 readonly payload: unknown;
             }
 
-            function ctx(callback: (msg: Response<Context | string>) => void, client: Client): void;
+            function ctx(
+                callback: (msg: Response<Context | string>) => void,
+                client: Client,
+            ): void;
 
             function ajax(url: string, settings: AjaxSettings): void;
 
@@ -365,21 +394,36 @@ declare namespace Sfdc {
 
             function version(): Version;
 
-            function resize(client: Client, size?: { height: string; width: string }): void;
+            function resize(
+                client: Client,
+                size?: { height: string; width: string },
+            ): void;
 
             function size(): Size;
 
-            function autogrow(client: Client, enabled?: boolean, interval?: number): void;
+            function autogrow(
+                client: Client,
+                enabled?: boolean,
+                interval?: number,
+            ): void;
 
-            function subscribe(client: Client, subscriptions: Subscription | Subscription[]): void;
+            function subscribe(
+                client: Client,
+                subscriptions: Subscription | Subscription[],
+            ): void;
 
-            function unsubscribe(client: Client, subscriptions: SubscriptionRef | SubscriptionRef[]): void;
+            function unsubscribe(
+                client: Client,
+                subscriptions: SubscriptionRef | SubscriptionRef[],
+            ): void;
 
             function publish(client: Client, event: Event): void;
 
             function signedrequest(req?: SignedRequest): SignedRequest;
 
-            function refreshSignedRequest(cb: (data: Response<{ response: string }>) => void): void;
+            function refreshSignedRequest(
+                cb: (data: Response<{ response: string }>) => void,
+            ): void;
 
             function repost(refresh?: boolean): void;
         }
@@ -445,9 +489,16 @@ declare namespace Sfdc {
 
             type OriginCheckFn = (origin: string, data: string) => boolean;
 
-            function post(message: string, targetUrl: string, target?: Window): void;
+            function post(
+                message: string,
+                targetUrl: string,
+                target?: Window,
+            ): void;
 
-            function receive(callback: Callback, sourceOrigin?: string | OriginCheckFn): void;
+            function receive(
+                callback: Callback,
+                sourceOrigin?: string | OriginCheckFn,
+            ): void;
 
             function remove(): void;
         }

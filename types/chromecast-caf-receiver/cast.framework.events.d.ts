@@ -140,7 +140,13 @@ export enum DetailedErrorCode {
     GENERIC = 999,
 }
 
-export type EndedReason = "END_OF_STREAM" | "ERROR" | "STOPPED" | "INTERRUPTED" | "SKIPPED" | "BREAK_SWITCH";
+export type EndedReason =
+    | "END_OF_STREAM"
+    | "ERROR"
+    | "STOPPED"
+    | "INTERRUPTED"
+    | "SKIPPED"
+    | "BREAK_SWITCH";
 
 /**
  * Event data for @see{@link EventType.SEGMENT_DOWNLOADED} event.
@@ -447,7 +453,11 @@ export class BitrateChangedEvent extends Event {
  * Event data for @see{@link EventType.ERROR} event.
  */
 export class ErrorEvent extends Event {
-    constructor(detailedErrorCode?: DetailedErrorCode, error?: any, reason?: ErrorReason);
+    constructor(
+        detailedErrorCode?: DetailedErrorCode,
+        error?: any,
+        reason?: ErrorReason,
+    );
 
     /**
      * An error code representing the cause of the error.

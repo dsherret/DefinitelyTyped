@@ -4,7 +4,7 @@ QrTerminal.setErrorLevel("H");
 
 QrTerminal.generate("test");
 QrTerminal.generate("test", { small: true });
-QrTerminal.generate("test", { small: true }, qr => {
+QrTerminal.generate("test", { small: true }, (qr) => {
     const double_qr = `${qr}\n${qr}`;
 });
 

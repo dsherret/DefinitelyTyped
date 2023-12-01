@@ -37,7 +37,11 @@ export default class Entity {
      * @param expectedTypes - The list of authorized types.
      * @return the Entity instance
      */
-    generateSetterFunction(field: string, param: any, expectedTypes?: any[]): Entity;
+    generateSetterFunction(
+        field: string,
+        param: any,
+        expectedTypes?: any[],
+    ): Entity;
     /**
      * Generate an add item to a list function that throws if the item type
      * is different from the expected one(s).
@@ -46,7 +50,11 @@ export default class Entity {
      * @param expectedTypes - The list of authorized types.
      * @return the Entity instance
      */
-    generateAddItemToListFunction(listFieldName: string, item: any, expectedTypes?: any[]): Entity;
+    generateAddItemToListFunction(
+        listFieldName: string,
+        item: any,
+        expectedTypes?: any[],
+    ): Entity;
     /**
      * Generate an add items to a list function that throws if the parameter type
      * is different from the expected one(s).
@@ -55,5 +63,9 @@ export default class Entity {
      * @param expectedTypes - The list of authorized types.
      * @return the Entity instance
      */
-    generateAddItemsToListFunction(listFieldName: string, items: any[], expectedTypes?: any[]): Entity;
+    generateAddItemsToListFunction(
+        listFieldName: string,
+        items: any[],
+        expectedTypes?: any[],
+    ): Entity;
 }

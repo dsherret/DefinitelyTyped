@@ -35,8 +35,17 @@ declare class Gpio extends EventEmitter {
      * @param onSetup  callback
      */
     setup(channel: number, onSetup?: ValueCallback<boolean>): void;
-    setup(channel: number, direction?: PinDirection, onSetup?: ValueCallback<boolean>): void;
-    setup(channel: number, direction?: PinDirection, edge?: EDGE, onSetup?: ValueCallback<boolean>): void;
+    setup(
+        channel: number,
+        direction?: PinDirection,
+        onSetup?: ValueCallback<boolean>,
+    ): void;
+    setup(
+        channel: number,
+        direction?: PinDirection,
+        edge?: EDGE,
+        onSetup?: ValueCallback<boolean>,
+    ): void;
     /**
      * Write a value to a channel
      *
@@ -96,7 +105,11 @@ declare class Gpio extends EventEmitter {
          * @param edge
          * @returns Promise
          */
-        setup: (channel: number, direction: PinDirection, edge?: EDGE) => Promise<boolean>;
+        setup: (
+            channel: number,
+            direction: PinDirection,
+            edge?: EDGE,
+        ) => Promise<boolean>;
         /**
          * @see {@link Gpio.write}
          * @param channel

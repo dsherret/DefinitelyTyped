@@ -1,7 +1,14 @@
 export = GoogleImages;
 
 declare namespace GoogleImages {
-    type SearchImageSize = "icon" | "small" | "medium" | "large" | "xlarge" | "xxlarge" | "huge";
+    type SearchImageSize =
+        | "icon"
+        | "small"
+        | "medium"
+        | "large"
+        | "xlarge"
+        | "xxlarge"
+        | "huge";
     type SearchImageType = "clipart" | "face" | "lineart" | "news" | "photo";
     type SearchDominantColor =
         | "black"
@@ -43,5 +50,8 @@ declare namespace GoogleImages {
 declare class GoogleImages {
     constructor(engineId: string, apiKey: string);
 
-    search(searchTerm: string, options?: GoogleImages.SearchOptions): Promise<GoogleImages.Image[]>;
+    search(
+        searchTerm: string,
+        options?: GoogleImages.SearchOptions,
+    ): Promise<GoogleImages.Image[]>;
 }

@@ -1,7 +1,12 @@
 /**
  * Breakpoints enumerable.
  */
-export declare type Breakpoints = "small" | "medium" | "large" | "xlarge" | "xxlarge";
+export declare type Breakpoints =
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge";
 export declare const Breakpoints: {
     SMALL: Breakpoints;
     MEDIUM: Breakpoints;
@@ -12,7 +17,12 @@ export declare const Breakpoints: {
 /**
  * Badge color enumerable.
  */
-export declare type BadgeColors = "info" | "secondary" | "success" | "warning" | "alert";
+export declare type BadgeColors =
+    | "info"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "alert";
 export declare const BadgeColors: {
     INFO: BadgeColors;
     SECONDARY: BadgeColors;
@@ -23,7 +33,12 @@ export declare const BadgeColors: {
 /**
  * Button color enumerable.
  */
-export declare type ButtonColors = "primary" | "secondary" | "success" | "alert" | "warning";
+export declare type ButtonColors =
+    | "primary"
+    | "secondary"
+    | "success"
+    | "alert"
+    | "warning";
 export declare const ButtonColors: {
     PRIMARY: ButtonColors;
     SECONDARY: ButtonColors;
@@ -34,7 +49,12 @@ export declare const ButtonColors: {
 /**
  * Button group color enumerable.
  */
-export declare type ButtonGroupColors = "primary" | "secondary" | "success" | "alert" | "warning";
+export declare type ButtonGroupColors =
+    | "primary"
+    | "secondary"
+    | "success"
+    | "alert"
+    | "warning";
 export declare const ButtonGroupColors: {
     PRIMARY: ButtonColors;
     SECONDARY: ButtonColors;
@@ -45,7 +65,12 @@ export declare const ButtonGroupColors: {
 /**
  * Callout color enumerable.
  */
-export declare type CalloutColors = "primary" | "secondary" | "success" | "warning" | "alert";
+export declare type CalloutColors =
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "alert";
 export declare const CalloutColors: {
     PRIMARY: ButtonColors;
     SECONDARY: ButtonColors;
@@ -56,7 +81,12 @@ export declare const CalloutColors: {
 /**
  * Label color enumerable.
  */
-export declare type LabelColors = "info" | "secondary" | "success" | "warning" | "alert";
+export declare type LabelColors =
+    | "info"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "alert";
 export declare const LabelColors: {
     INFO: BadgeColors;
     SECONDARY: BadgeColors;
@@ -67,7 +97,11 @@ export declare const LabelColors: {
 /**
  * Progress colors enumerable.
  */
-export declare type ProgressColors = "secondary" | "success" | "warning" | "alert";
+export declare type ProgressColors =
+    | "secondary"
+    | "success"
+    | "warning"
+    | "alert";
 export declare const ProgressColors: {
     SECONDARY: ProgressColors;
     SUCCESS: ProgressColors;
@@ -133,7 +167,11 @@ export declare const Sizes: {
 /**
  * Horizontal alignment enumerable.
  */
-export declare type HorizontalAlignments = "center" | "right" | "justify" | "spaced";
+export declare type HorizontalAlignments =
+    | "center"
+    | "right"
+    | "justify"
+    | "spaced";
 export declare const HorizontalAlignments: {
     CENTER: HorizontalAlignments;
     RIGHT: HorizontalAlignments;
@@ -143,7 +181,11 @@ export declare const HorizontalAlignments: {
 /**
  * Vertical alignment enumerable.
  */
-export declare type VerticalAlignments = "top" | "middle" | "bottom" | "stretch";
+export declare type VerticalAlignments =
+    | "top"
+    | "middle"
+    | "bottom"
+    | "stretch";
 export declare const VerticalAlignments: {
     TOP: VerticalAlignments;
     MIDDLE: VerticalAlignments;
@@ -208,7 +250,13 @@ export declare const GutterTypes: {
 /**
  * Extended breakpoints enumerable (includes 'ALL' option, which is useful when breakpoint is not defined).
  */
-export declare type ExtendedBreakpoints = "small" | "medium" | "large" | "xlarge" | "xxlarge" | "all";
+export declare type ExtendedBreakpoints =
+    | "small"
+    | "medium"
+    | "large"
+    | "xlarge"
+    | "xxlarge"
+    | "all";
 export declare const ExtendedBreakpoints: {
     SMALL: ExtendedBreakpoints;
     MEDIUM: ExtendedBreakpoints;

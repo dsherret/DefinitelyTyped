@@ -5,21 +5,24 @@ import * as path from "path";
 
 notifier.notify();
 notifier.notify("Hello there");
-notifier.notify({
-    title: "My awesome title",
-    message: "Hello from node, Mr. User!",
-    icon: path.join(__dirname, "coulson.jpg"), // absolute path (not balloons)
-    sound: true, // Only Notification Center or Windows Toasters
-    wait: true, // wait with callback until user action is taken on notification
-}, function(err: any, response: any) {
-    // response is response from notification
-});
+notifier.notify(
+    {
+        title: "My awesome title",
+        message: "Hello from node, Mr. User!",
+        icon: path.join(__dirname, "coulson.jpg"), // absolute path (not balloons)
+        sound: true, // Only Notification Center or Windows Toasters
+        wait: true, // wait with callback until user action is taken on notification
+    },
+    function (err: any, response: any) {
+        // response is response from notification
+    },
+);
 
-notifier.on("click", function(notifierObject: any, options: any) {
+notifier.on("click", function (notifierObject: any, options: any) {
     // Happens if `wait: true` and user clicks notification
 });
 
-notifier.on("timeout", function(notifierObject: any, options: any) {
+notifier.on("timeout", function (notifierObject: any, options: any) {
     // Happens if `wait: true` and notification closes
 });
 
@@ -57,23 +60,26 @@ const notifier2 = new NotificationCenter2({
     customPath: void 0, // Relative path if you want to use your fork of terminal-notifier
 });
 
-notifier2.notify({
-    title: void 0,
-    subtitle: void 0,
-    message: void 0,
-    sound: false, // Case Sensitive string of sound file (see below)
-    icon: "Terminal Icon", // Set icon? (Absolute path to image)
-    contentImage: void 0, // Attach image? (Absolute path)
-    open: void 0, // URL to open on click
-    wait: false, // if wait for notification to end
-    actions: ["Action 1", "Action 2"],
-    closeLabel: "Close",
-    dropdownLabel: "Dropdown",
-    reply: true,
-    timeout: 10,
-}, function(error: any, response: any) {
-    console.log(response);
-});
+notifier2.notify(
+    {
+        title: void 0,
+        subtitle: void 0,
+        message: void 0,
+        sound: false, // Case Sensitive string of sound file (see below)
+        icon: "Terminal Icon", // Set icon? (Absolute path to image)
+        contentImage: void 0, // Attach image? (Absolute path)
+        open: void 0, // URL to open on click
+        wait: false, // if wait for notification to end
+        actions: ["Action 1", "Action 2"],
+        closeLabel: "Close",
+        dropdownLabel: "Dropdown",
+        reply: true,
+        timeout: 10,
+    },
+    function (error: any, response: any) {
+        console.log(response);
+    },
+);
 
 //
 // Usage WindowsToaster
@@ -86,19 +92,22 @@ const notifier3 = new WindowsToaster2({
     customPath: void 0, // Relative path if you want to use your fork of toast.exe
 });
 
-notifier3.notify({
-    title: void 0,
-    message: void 0,
-    icon: void 0, // absolute path to an icon
-    sound: false, // true | false.
-    wait: false, // if wait for notification to end
-    appID: "",
-    id: 1,
-    install: "/",
-    remove: 1,
-}, function(error: any, response: any) {
-    console.log(response);
-});
+notifier3.notify(
+    {
+        title: void 0,
+        message: void 0,
+        icon: void 0, // absolute path to an icon
+        sound: false, // true | false.
+        wait: false, // if wait for notification to end
+        appID: "",
+        id: 1,
+        install: "/",
+        remove: 1,
+    },
+    function (error: any, response: any) {
+        console.log(response);
+    },
+);
 
 //
 // Usage Growl
@@ -136,15 +145,18 @@ var notifier5 = new WindowsBalloon2({
     customPath: void 0, // Relative path if you want to use your fork of notifu
 });
 
-notifier5.notify({
-    title: void 0,
-    message: void 0,
-    sound: false, // true | false.
-    time: 5000, // How long to show balloons in ms
-    wait: false, // if wait for notification to end
-}, function(error: any, response: any) {
-    console.log(response);
-});
+notifier5.notify(
+    {
+        title: void 0,
+        message: void 0,
+        sound: false, // true | false.
+        time: 5000, // How long to show balloons in ms
+        wait: false, // if wait for notification to end
+    },
+    function (error: any, response: any) {
+        console.log(response);
+    },
+);
 
 //
 // Usage NotifySend

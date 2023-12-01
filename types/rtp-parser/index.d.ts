@@ -185,33 +185,154 @@ interface ParsedRTPType {
     channels?: 1 | 2 | undefined;
 }
 
-declare function parseRtpPayloadType(payloadType: 0): { name: "PCMU"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 1 | 2 | 19): { name: "reserved"; mediaType: "A" };
-declare function parseRtpPayloadType(payloadType: 3): { name: "GSM"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 4): { name: "G723"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 5): { name: "DVI4"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 6): { name: "DVI4"; mediaType: "A"; clockRate: 16000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 7): { name: "LPC"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 8): { name: "PCMA"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 9): { name: "G722"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 10): { name: "L16"; mediaType: "A"; clockRate: 44100; channels: 2 };
-declare function parseRtpPayloadType(payloadType: 11): { name: "L16"; mediaType: "A"; clockRate: 44100; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 12): { name: "QCELP"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 13): { name: "CN"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 14): { name: "MPA"; mediaType: "A"; clockRate: 90000 };
-declare function parseRtpPayloadType(payloadType: 15): { name: "G728"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 16): { name: "DVI4"; mediaType: "A"; clockRate: 11025; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 17): { name: "DVI4"; mediaType: "A"; clockRate: 22050; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 18): { name: "G729"; mediaType: "A"; clockRate: 8000; channels: 1 };
-declare function parseRtpPayloadType(payloadType: 20 | 21 | 22 | 23): { name: "unassigned"; mediaType: "A" };
-declare function parseRtpPayloadType(payloadType: 24 | 27 | 29 | 30): { name: "unassigned"; mediaType: "V" };
-declare function parseRtpPayloadType(payloadType: 25): { name: "CelB"; mediaType: "V"; clockRate: 90000 };
-declare function parseRtpPayloadType(payloadType: 26): { name: "JPEG"; mediaType: "V"; clockRate: 90000 };
-declare function parseRtpPayloadType(payloadType: 28): { name: "nv"; mediaType: "V"; clockRate: 90000 };
-declare function parseRtpPayloadType(payloadType: 31): { name: "H261"; mediaType: "V"; clockRate: 90000 };
-declare function parseRtpPayloadType(payloadType: 32): { name: "MPV"; mediaType: "V"; clockRate: 90000 };
-declare function parseRtpPayloadType(payloadType: 33): { name: "MP2T"; mediaType: "AV"; clockRate: 90000 };
-declare function parseRtpPayloadType(payloadType: 34): { name: "H263"; mediaType: "V"; clockRate: 90000 };
+declare function parseRtpPayloadType(payloadType: 0): {
+    name: "PCMU";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 1 | 2 | 19): {
+    name: "reserved";
+    mediaType: "A";
+};
+declare function parseRtpPayloadType(payloadType: 3): {
+    name: "GSM";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 4): {
+    name: "G723";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 5): {
+    name: "DVI4";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 6): {
+    name: "DVI4";
+    mediaType: "A";
+    clockRate: 16000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 7): {
+    name: "LPC";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 8): {
+    name: "PCMA";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 9): {
+    name: "G722";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 10): {
+    name: "L16";
+    mediaType: "A";
+    clockRate: 44100;
+    channels: 2;
+};
+declare function parseRtpPayloadType(payloadType: 11): {
+    name: "L16";
+    mediaType: "A";
+    clockRate: 44100;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 12): {
+    name: "QCELP";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 13): {
+    name: "CN";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 14): {
+    name: "MPA";
+    mediaType: "A";
+    clockRate: 90000;
+};
+declare function parseRtpPayloadType(payloadType: 15): {
+    name: "G728";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 16): {
+    name: "DVI4";
+    mediaType: "A";
+    clockRate: 11025;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 17): {
+    name: "DVI4";
+    mediaType: "A";
+    clockRate: 22050;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 18): {
+    name: "G729";
+    mediaType: "A";
+    clockRate: 8000;
+    channels: 1;
+};
+declare function parseRtpPayloadType(payloadType: 20 | 21 | 22 | 23): {
+    name: "unassigned";
+    mediaType: "A";
+};
+declare function parseRtpPayloadType(payloadType: 24 | 27 | 29 | 30): {
+    name: "unassigned";
+    mediaType: "V";
+};
+declare function parseRtpPayloadType(payloadType: 25): {
+    name: "CelB";
+    mediaType: "V";
+    clockRate: 90000;
+};
+declare function parseRtpPayloadType(payloadType: 26): {
+    name: "JPEG";
+    mediaType: "V";
+    clockRate: 90000;
+};
+declare function parseRtpPayloadType(payloadType: 28): {
+    name: "nv";
+    mediaType: "V";
+    clockRate: 90000;
+};
+declare function parseRtpPayloadType(payloadType: 31): {
+    name: "H261";
+    mediaType: "V";
+    clockRate: 90000;
+};
+declare function parseRtpPayloadType(payloadType: 32): {
+    name: "MPV";
+    mediaType: "V";
+    clockRate: 90000;
+};
+declare function parseRtpPayloadType(payloadType: 33): {
+    name: "MP2T";
+    mediaType: "AV";
+    clockRate: 90000;
+};
+declare function parseRtpPayloadType(payloadType: 34): {
+    name: "H263";
+    mediaType: "V";
+    clockRate: 90000;
+};
 declare function parseRtpPayloadType(
     payloadType:
         | 35
@@ -271,7 +392,9 @@ declare function parseRtpPayloadType(
         | 94
         | 95,
 ): { name: "unassigned" };
-declare function parseRtpPayloadType(payloadType: 72 | 73 | 74 | 75 | 76): { name: "reserved" };
+declare function parseRtpPayloadType(payloadType: 72 | 73 | 74 | 75 | 76): {
+    name: "reserved";
+};
 declare function parseRtpPayloadType(
     payloadType:
         | 96
@@ -309,4 +432,9 @@ declare function parseRtpPayloadType(
 ): { name: "dynamic" };
 declare function parseRtpPayloadType(payloadType: number): ParsedRTPType;
 
-export { FIXED_HEADER_LENGTH, parseRtpPacket, parseRtpPayloadType, PayloadType };
+export {
+    FIXED_HEADER_LENGTH,
+    parseRtpPacket,
+    parseRtpPayloadType,
+    PayloadType,
+};

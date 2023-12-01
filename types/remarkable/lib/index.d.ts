@@ -29,7 +29,10 @@ declare class Remarkable {
      * Remarkable offers some "presets" as a convenience to quickly enable/disable
      * active syntax rules and options for common use cases.
      */
-    constructor(preset: "commonmark" | "full" | "default", options?: Remarkable.Options);
+    constructor(
+        preset: "commonmark" | "full" | "default",
+        options?: Remarkable.Options,
+    );
 
     /**
      * `"# Remarkable rulezz!"` => `"<h1>Remarkable rulezz!</h1>"`
@@ -169,7 +172,12 @@ declare namespace Remarkable {
         skipEmptyLines: (from: number) => number;
         skipSpaces: (pos: number) => number;
         skipChars: (pos: number, code: number) => number;
-        getLines: (begin: number, end: number, indent: number, keepLastLF: boolean) => string;
+        getLines: (
+            begin: number,
+            end: number,
+            indent: number,
+            keepLastLF: boolean,
+        ) => string;
     }
     interface StateInline {
         src: string;
@@ -283,68 +291,68 @@ declare namespace Remarkable {
      */
     interface Rules {
         [name: string]: Rule | { [name: string]: Rule<ContentToken> };
-        "blockquote_open": Rule<BlockquoteOpenToken>;
-        "blockquote_close": Rule<BlockquoteCloseToken>;
-        "code": Rule<CodeToken>;
-        "fence": Rule<FenceToken>;
-        "fence_custom": { [name: string]: Rule<FenceToken> };
-        "heading_open": Rule<HeadingOpenToken>;
-        "heading_close": Rule<HeadingCloseToken>;
-        "hr": Rule<HrToken>;
-        "bullet_list_open": Rule<BulletListOpenToken>;
-        "bullet_list_close": Rule<BulletListCloseToken>;
-        "list_item_open": Rule<ListItemOpenToken>;
-        "list_item_close": Rule<ListItemCloseToken>;
-        "ordered_list_open": Rule<OrderedListOpenToken>;
-        "ordered_list_close": Rule<OrderedListCloseToken>;
-        "paragraph_open": Rule<ParagraphOpenToken>;
-        "paragraph_close": Rule<ParagraphCloseToken>;
-        "link_open": Rule<LinkOpenToken>;
-        "link_close": Rule<LinkCloseToken>;
-        "image": Rule<ImageToken>;
-        "table_open": Rule<TableOpenToken>;
-        "table_close": Rule<TableCloseToken>;
-        "thead_open": Rule<THeadOpenToken>;
-        "thead_close": Rule<THeadCloseToken>;
-        "tbody_open": Rule<TBodyOpenToken>;
-        "tbody_close": Rule<TBodyCloseToken>;
-        "tr_open": Rule<TROpenToken>;
-        "tr_close": Rule<TRCloseToken>;
-        "th_open": Rule<THOpenToken>;
-        "th_close": Rule<THCloseToken>;
-        "td_open": Rule<TDOpenToken>;
-        "td_close": Rule<TDCloseToken>;
-        "strong_open": Rule<StrongOpenToken>;
-        "strong_close": Rule<StrongCloseToken>;
-        "em_open": Rule<EmOpenToken>;
-        "em_close": Rule<EmCloseToken>;
-        "del_open": Rule<DelOpenToken>;
-        "del_close": Rule<DelCloseToken>;
-        "ins_open": Rule<InsOpenToken>;
-        "ins_close": Rule<InsCloseToken>;
-        "mark_open": Rule<MarkOpenToken>;
-        "mark_close": Rule<MarkCloseToken>;
-        "sub": Rule<SubToken>;
-        "sup": Rule<SupToken>;
-        "hardbreak": Rule<HardbreakToken>;
-        "softbreak": Rule<SoftbreakToken>;
-        "text": Rule<TextToken>;
-        "htmlblock": Rule<HtmlBlockToken>;
-        "htmltag": Rule<HtmlTagToken>;
-        "abbr_open": Rule<AbbrOpenToken>;
-        "abbr_close": Rule<AbbrCloseToken>;
-        "footnote_ref": Rule<FootnoteInlineToken>;
-        "footnote_block_open": Rule<FootnoteBlockOpenToken>;
-        "footnote_block_close": Rule<FootnoteBlockCloseToken>;
-        "footnote_open": Rule<FootnoteOpenToken>;
-        "footnote_close": Rule<FootnoteCloseToken>;
-        "footnote_anchor": Rule<FootnoteAnchorToken>;
-        "dl_open": Rule<DlOpenToken>;
-        "dt_open": Rule<DtOpenToken>;
-        "dd_open": Rule<DdOpenToken>;
-        "dl_close": Rule<DlCloseToken>;
-        "dt_close": Rule<DtCloseToken>;
-        "dd_close": Rule<DdCloseToken>;
+        blockquote_open: Rule<BlockquoteOpenToken>;
+        blockquote_close: Rule<BlockquoteCloseToken>;
+        code: Rule<CodeToken>;
+        fence: Rule<FenceToken>;
+        fence_custom: { [name: string]: Rule<FenceToken> };
+        heading_open: Rule<HeadingOpenToken>;
+        heading_close: Rule<HeadingCloseToken>;
+        hr: Rule<HrToken>;
+        bullet_list_open: Rule<BulletListOpenToken>;
+        bullet_list_close: Rule<BulletListCloseToken>;
+        list_item_open: Rule<ListItemOpenToken>;
+        list_item_close: Rule<ListItemCloseToken>;
+        ordered_list_open: Rule<OrderedListOpenToken>;
+        ordered_list_close: Rule<OrderedListCloseToken>;
+        paragraph_open: Rule<ParagraphOpenToken>;
+        paragraph_close: Rule<ParagraphCloseToken>;
+        link_open: Rule<LinkOpenToken>;
+        link_close: Rule<LinkCloseToken>;
+        image: Rule<ImageToken>;
+        table_open: Rule<TableOpenToken>;
+        table_close: Rule<TableCloseToken>;
+        thead_open: Rule<THeadOpenToken>;
+        thead_close: Rule<THeadCloseToken>;
+        tbody_open: Rule<TBodyOpenToken>;
+        tbody_close: Rule<TBodyCloseToken>;
+        tr_open: Rule<TROpenToken>;
+        tr_close: Rule<TRCloseToken>;
+        th_open: Rule<THOpenToken>;
+        th_close: Rule<THCloseToken>;
+        td_open: Rule<TDOpenToken>;
+        td_close: Rule<TDCloseToken>;
+        strong_open: Rule<StrongOpenToken>;
+        strong_close: Rule<StrongCloseToken>;
+        em_open: Rule<EmOpenToken>;
+        em_close: Rule<EmCloseToken>;
+        del_open: Rule<DelOpenToken>;
+        del_close: Rule<DelCloseToken>;
+        ins_open: Rule<InsOpenToken>;
+        ins_close: Rule<InsCloseToken>;
+        mark_open: Rule<MarkOpenToken>;
+        mark_close: Rule<MarkCloseToken>;
+        sub: Rule<SubToken>;
+        sup: Rule<SupToken>;
+        hardbreak: Rule<HardbreakToken>;
+        softbreak: Rule<SoftbreakToken>;
+        text: Rule<TextToken>;
+        htmlblock: Rule<HtmlBlockToken>;
+        htmltag: Rule<HtmlTagToken>;
+        abbr_open: Rule<AbbrOpenToken>;
+        abbr_close: Rule<AbbrCloseToken>;
+        footnote_ref: Rule<FootnoteInlineToken>;
+        footnote_block_open: Rule<FootnoteBlockOpenToken>;
+        footnote_block_close: Rule<FootnoteBlockCloseToken>;
+        footnote_open: Rule<FootnoteOpenToken>;
+        footnote_close: Rule<FootnoteCloseToken>;
+        footnote_anchor: Rule<FootnoteAnchorToken>;
+        dl_open: Rule<DlOpenToken>;
+        dt_open: Rule<DtOpenToken>;
+        dd_open: Rule<DdOpenToken>;
+        dl_close: Rule<DlCloseToken>;
+        dt_close: Rule<DtCloseToken>;
+        dd_close: Rule<DdCloseToken>;
 
         /**
          * Check to see if `\n` is needed before the next token.
@@ -819,13 +827,27 @@ declare namespace Remarkable {
 }
 
 declare class ParserBlock {
-    tokenize(state: Remarkable.StateBlock, startLine: number, endLine: number): void;
-    parse(str: string, options: Remarkable.Options, env: Remarkable.Env, tokens: [Remarkable.Token]): void;
+    tokenize(
+        state: Remarkable.StateBlock,
+        startLine: number,
+        endLine: number,
+    ): void;
+    parse(
+        str: string,
+        options: Remarkable.Options,
+        env: Remarkable.Env,
+        tokens: [Remarkable.Token],
+    ): void;
 }
 
 declare class ParserInline {
     skipToken(state: Remarkable.StateInline): void;
     tokenize(state: Remarkable.StateInline): void;
-    parse(str: string, options: Remarkable.Options, env: Remarkable.Env, tokens: [Remarkable.Token]): void;
+    parse(
+        str: string,
+        options: Remarkable.Options,
+        env: Remarkable.Env,
+        tokens: [Remarkable.Token],
+    ): void;
     validateLink(url: string): boolean;
 }

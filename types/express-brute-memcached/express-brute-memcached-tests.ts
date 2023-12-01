@@ -9,7 +9,7 @@ var bruteforce = new ExpressBrute(store);
 app.post(
     "/auth",
     bruteforce.prevent, // error 403 if we hit this route too often
-    function(req, res, next) {
+    function (req, res, next) {
         res.send("Success!");
     },
 );

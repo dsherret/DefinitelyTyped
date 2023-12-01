@@ -4,7 +4,9 @@ import { Stream } from "stream";
 
 export = Config;
 
-declare class Config<Definitions extends Config.DefinitionsObject = Config.DefinitionsObject> {
+declare class Config<
+    Definitions extends Config.DefinitionsObject = Config.DefinitionsObject,
+> {
     /**
      * The type definitions passed to `nopt` for CLI option parsing and known
      * configuration validation.
@@ -104,7 +106,10 @@ declare class Config<Definitions extends Config.DefinitionsObject = Config.Defin
      * Load the given key from the config stack.
      * @param [where='cli']
      */
-    get<K extends keyof Definitions>(key: K, where?: Config.ConfType): Config.ConfigValueType<Definitions[K]["type"]>;
+    get<K extends keyof Definitions>(
+        key: K,
+        where?: Config.ConfType,
+    ): Config.ConfigValueType<Definitions[K]["type"]>;
     /**
      * Set the key to the specified value, at the specified level in the config stack.
      * @param [where='cli']
@@ -185,7 +190,11 @@ declare namespace Config {
 
     interface TypeInfo<Type> {
         type: Type;
-        validate: (data: Record<string, any>, k: string, val: string) => boolean;
+        validate: (
+            data: Record<string, any>,
+            k: string,
+            val: string,
+        ) => boolean;
         description: string;
     }
     interface TypeDefs {
@@ -204,29 +213,46 @@ declare namespace Config {
         default?: any;
         deprecated?: boolean;
     }
-    type ConfigValueType<Def extends Definition["type"]> = Def extends string ? Def
+    type ConfigValueType<Def extends Definition["type"]> = Def extends string
+        ? Def
         : Def extends ReadonlyArray<infer T>
-            ? ArrayConstructor extends T ? _ConfigValueType<Exclude<T, ArrayConstructor>>
-            : _ConfigValueType<T>
-        : _ConfigValueType<Def>;
-    type _ConfigValueType<Def> = Def extends string | number | null ? Def
-        : Def extends StringConstructor | typeof import("url") | typeof import("path") | typeof import("semver")
-            ? string
-        : Def extends BooleanConstructor ? boolean
-        : Def extends NumberConstructor | typeof Umask ? number
-        : Def extends typeof Stream ? Stream
-        : Def extends DateConstructor ? Date
-        : Def extends ArrayConstructor ? unknown[]
-        : unknown;
+          ? ArrayConstructor extends T
+              ? _ConfigValueType<Exclude<T, ArrayConstructor>>
+              : _ConfigValueType<T>
+          : _ConfigValueType<Def>;
+    type _ConfigValueType<Def> = Def extends string | number | null
+        ? Def
+        : Def extends
+                | StringConstructor
+                | typeof import("url")
+                | typeof import("path")
+                | typeof import("semver")
+          ? string
+          : Def extends BooleanConstructor
+            ? boolean
+            : Def extends NumberConstructor | typeof Umask
+              ? number
+              : Def extends typeof Stream
+                ? Stream
+                : Def extends DateConstructor
+                  ? Date
+                  : Def extends ArrayConstructor
+                    ? unknown[]
+                    : unknown;
     interface ShortFlags {
         [k: string]: string[] | string;
     }
 
-    interface Options<Definitions extends DefinitionsObject = DefinitionsObject> {
+    interface Options<
+        Definitions extends DefinitionsObject = DefinitionsObject,
+    > {
         definitions: Definitions & DefinitionsObject;
         shorthands: ShortFlags;
         /** Must be provided for `.flat` to work */
-        flatten?: (data: ConfigData["data"], flattened: Record<string, any>) => void;
+        flatten?: (
+            data: ConfigData["data"],
+            flattened: Record<string, any>,
+        ) => void;
         npmPath: string;
 
         cwd?: string;

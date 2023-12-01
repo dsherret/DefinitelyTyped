@@ -1,7 +1,10 @@
 // eslint-disable-next-line @definitelytyped/no-self-import
 import * as self from "@feathersjs/authentication-client";
 
-declare const feathersAuthClient: ((config?: FeathersAuthClientConfig) => () => void) & typeof self;
+declare const feathersAuthClient: ((
+    config?: FeathersAuthClientConfig,
+) => () => void) &
+    typeof self;
 export default feathersAuthClient;
 
 export interface FeathersAuthClientConfig {
@@ -40,7 +43,11 @@ export interface Passport {
 
     authenticate(credentials?: FeathersAuthCredentials): any;
 
-    authenticateSocket(credentials: FeathersAuthCredentials, socket: any, emit: any): any;
+    authenticateSocket(
+        credentials: FeathersAuthCredentials,
+        socket: any,
+        emit: any,
+    ): any;
 
     logoutSocket(socket: any, emit: any): Promise<any>;
 

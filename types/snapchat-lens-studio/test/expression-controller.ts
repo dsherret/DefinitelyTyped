@@ -431,16 +431,13 @@ const {
     ...expressionConfig
 } = script;
 
-type ExpressionInputSet<T extends string> =
-    & {
-        [K in T]: boolean;
-    }
-    & {
-        [K in T as `${K}Scale`]: number;
-    }
-    & {
-        [K in T as `${K}Rename`]: string;
-    };
+type ExpressionInputSet<T extends string> = {
+    [K in T]: boolean;
+} & {
+    [K in T as `${K}Scale`]: number;
+} & {
+    [K in T as `${K}Rename`]: string;
+};
 
 let expressionNames: Array<keyof Expressions> = new Array();
 let expressionWeights: Float32Array;
@@ -449,15 +446,23 @@ let isBlendShapesChecked = false;
 
 if (faceMesh) {
     if (!faceMesh.enabled || !faceMesh.getSceneObject().enabled) {
-        print(`ExpressionController, ERROR: Please enable '${faceMesh.getSceneObject().name}' Scene Object`);
+        print(
+            `ExpressionController, ERROR: Please enable '${
+                faceMesh.getSceneObject().name
+            }' Scene Object`,
+        );
     }
     if (faceMesh.mesh == null) {
         print(
-            `ExpressionController, ERROR: Please set Face Mesh asset for '${faceMesh.getSceneObject().name}' Scene Object`,
+            `ExpressionController, ERROR: Please set Face Mesh asset for '${
+                faceMesh.getSceneObject().name
+            }' Scene Object`,
         );
     }
 } else {
-    print("ExpressionController, ERROR: Please define Face Mesh Scene Object in Advanced section");
+    print(
+        "ExpressionController, ERROR: Please define Face Mesh Scene Object in Advanced section",
+    );
 }
 
 if (!blendShapesComponent) {
@@ -469,8 +474,14 @@ function checkBlendShapes() {
         const blendShapeName = getBlendShapeName(name);
         blendShapeNames.push(blendShapeName);
 
-        if (expressionConfig[name] && !blendShapesComponent.hasBlendShape(blendShapeName)) {
-            print("ExpressionController, ERROR: No blendshape with name " + blendShapeName);
+        if (
+            expressionConfig[name] &&
+            !blendShapesComponent.hasBlendShape(blendShapeName)
+        ) {
+            print(
+                "ExpressionController, ERROR: No blendshape with name " +
+                    blendShapeName,
+            );
         }
     }
 }
@@ -483,13 +494,19 @@ function setBlendShapes() {
     for (let i = 0; i < expressionNames.length; i++) {
         const name = expressionNames[i];
 
-        if (expressionConfig[name] == null || typeof expressionConfig[name] === "undefined") {
+        if (
+            expressionConfig[name] == null ||
+            typeof expressionConfig[name] === "undefined"
+        ) {
             continue;
         }
 
         const blendShapeName = blendShapeNames[i];
 
-        if (blendShapeName && blendShapesComponent.hasBlendShape(blendShapeName)) {
+        if (
+            blendShapeName &&
+            blendShapesComponent.hasBlendShape(blendShapeName)
+        ) {
             setExpressionWeight(
                 blendShapesComponent,
                 blendShapeName,
@@ -507,7 +524,10 @@ function setExpressionWeight(
     scale: number,
 ) {
     const appliedScale = scale || 1.0;
-    const w = (!!expressionWeights && expressionWeights[expressionIndex] * appliedScale) || 0;
+    const w =
+        (!!expressionWeights &&
+            expressionWeights[expressionIndex] * appliedScale) ||
+        0;
     blendComponent.setBlendShape(shapeName, w);
 }
 

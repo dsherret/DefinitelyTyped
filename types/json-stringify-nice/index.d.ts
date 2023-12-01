@@ -34,6 +34,9 @@ export = jsonStringify;
  */
 declare function jsonStringify(
     value: any,
-    replacer?: Array<number | string> | ((this: any, key: string, value: any) => any) | null,
+    replacer?:
+        | Array<number | string>
+        | ((this: any, key: string, value: any) => any)
+        | null,
     space?: string | number,
 ): string;

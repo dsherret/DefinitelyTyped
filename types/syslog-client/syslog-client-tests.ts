@@ -6,6 +6,10 @@ const syslog_client = syslog.createClient("127.0.0.1", {
     rfc3164: false,
     appName: "testapp",
 });
-syslog_client.log("Test message", { severity: syslog.Severity.Warning }, (error: Error | null) => {
-    syslog_client.close();
-});
+syslog_client.log(
+    "Test message",
+    { severity: syslog.Severity.Warning },
+    (error: Error | null) => {
+        syslog_client.close();
+    },
+);

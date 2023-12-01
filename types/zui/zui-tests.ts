@@ -18,7 +18,8 @@ $.zui.store.set("date", { year: 2014, month: 8, day: 6 }); // 将一个对象存
 console.log($.zui.store.get("name")); // 从本地存储获取'name'的值
 console.log($.zui.store.get<any>("date").year); // 从本地存储获取'date'值的year属性
 
-$.zui.store.forEach((key: string, value: any) => { // 遍历所有本地存储的条目
+$.zui.store.forEach((key: string, value: any) => {
+    // 遍历所有本地存储的条目
     console.log(value);
 });
 
@@ -52,7 +53,7 @@ $("#myModal").modal({
 $("#triggerButton").modalTrigger({ title: "新的标题" });
 
 /* 使用触发器对象直接显示 */
-(new $.zui.ModalTrigger({ title: "新的标题" })).show();
+new $.zui.ModalTrigger({ title: "新的标题" }).show();
 $.zui.modalTrigger.show({ title: "标题" });
 
 /**
@@ -64,7 +65,7 @@ $("#myTabLink").tab("show");
 /**
  * tooltip
  */
-$("[data-toggle=\"tooltip\"]").tooltip();
+$('[data-toggle="tooltip"]').tooltip();
 $("#element").tooltip("show");
 $("#element").tooltip("show", "这是新的工具提示内容");
 
@@ -72,7 +73,7 @@ $("#element").tooltip("show", "这是新的工具提示内容");
  * popover
  */
 // 或者在初始化时指定弹出方向
-$("[data-toggle=\"popover\"]").popover({
+$('[data-toggle="popover"]').popover({
     placement: "bottom",
 });
 $("#myPopover").popover("show");
@@ -98,19 +99,17 @@ $(".carousel").carousel();
  * datetime picker
  */
 // 仅选择日期
-$(".form-date").datetimepicker(
-    {
-        language: "zh-CN",
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0,
-        format: "yyyy-mm-dd",
-    },
-);
+$(".form-date").datetimepicker({
+    language: "zh-CN",
+    weekStart: 1,
+    todayBtn: 1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0,
+    format: "yyyy-mm-dd",
+});
 // 选择时间
 $(".form-time").datetimepicker({
     language: "zh-CN",
@@ -125,33 +124,29 @@ $(".form-time").datetimepicker({
     format: "hh:ii",
 });
 // 选择时间和日期
-$(".form-datetime").datetimepicker(
-    {
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        forceParse: 0,
-        showMeridian: 1,
-        format: "yyyy-mm-dd hh:ii",
-    },
-);
+$(".form-datetime").datetimepicker({
+    weekStart: 1,
+    todayBtn: 1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    forceParse: 0,
+    showMeridian: 1,
+    format: "yyyy-mm-dd hh:ii",
+});
 
 // 仅选择日期
-$(".form-date").datetimepicker(
-    {
-        language: "zh-CN",
-        weekStart: 1,
-        todayBtn: 1,
-        autoclose: 1,
-        todayHighlight: 1,
-        startView: 2,
-        minView: 2,
-        forceParse: 0,
-        format: "yyyy-mm-dd",
-    },
-);
+$(".form-date").datetimepicker({
+    language: "zh-CN",
+    weekStart: 1,
+    todayBtn: 1,
+    autoclose: 1,
+    todayHighlight: 1,
+    startView: 2,
+    minView: 2,
+    forceParse: 0,
+    format: "yyyy-mm-dd",
+});
 // 选择时间
 $(".form-time").datetimepicker({
     language: "zh-CN",
@@ -199,11 +194,19 @@ $("#draggableBtn").draggable({
         return true;
     },
     drag: (e: DraggableEvent) => {
-        console.log(`${count++}: 拖动: pos = ${JSON.stringify(e.pos)}, offset = ${JSON.stringify(e.offset)}\n`);
+        console.log(
+            `${count++}: 拖动: pos = ${JSON.stringify(
+                e.pos,
+            )}, offset = ${JSON.stringify(e.offset)}\n`,
+        );
         //        console.log('(' + e.pos.left + ', ' + e.pos.top + ')');
     },
     finish: (e: DraggableEvent) => {
-        console.log(`${count++}: [完毕]：pos = ${JSON.stringify(e.pos)}, offset = ${JSON.stringify(e.offset)}\n`);
+        console.log(
+            `${count++}: [完毕]：pos = ${JSON.stringify(
+                e.pos,
+            )}, offset = ${JSON.stringify(e.offset)}\n`,
+        );
     },
 });
 
@@ -214,25 +217,34 @@ $("#multiDroppableContainer").droppable({
     selector: ".btn-droppable", // 定义允许拖放的元素
     target: ".droppable-target",
     start: () => {
-        $("#multiDroppableContainer .droppable-target").removeClass("panel-warning").removeClass("panel-success").find(
-            ".panel-heading",
-        ).text("拖动到这里吗？");
+        $("#multiDroppableContainer .droppable-target")
+            .removeClass("panel-warning")
+            .removeClass("panel-success")
+            .find(".panel-heading")
+            .text("拖动到这里吗？");
     },
     drop: (event: DroppableEvent) => {
-        $("#multiDroppableContainer .droppable-target").removeClass("panel-success").removeClass("panel-warning");
+        $("#multiDroppableContainer .droppable-target")
+            .removeClass("panel-success")
+            .removeClass("panel-warning");
         if (event.target && event.element) {
             const elementId = event.element.find(".btn-droppable-id").text();
             let msg = "真棒！";
-            event.target.addClass("panel-success").find(".panel-heading").text(
-                `成功将【按钮#${elementId}】拖到目的地。`,
-            );
-            msg += `成功拖动【按钮#${elementId}】到区域${event.target.find(".area-name").text()}`;
+            event.target
+                .addClass("panel-success")
+                .find(".panel-heading")
+                .text(`成功将【按钮#${elementId}】拖到目的地。`);
+            msg += `成功拖动【按钮#${elementId}】到区域${event.target
+                .find(".area-name")
+                .text()}`;
 
             $.zui.messager.show(msg);
         }
     },
     drag: (event: DroppableEvent) => {
-        $("#multiDroppableContainer .droppable-target").removeClass("panel-success").removeClass("panel-warning");
+        $("#multiDroppableContainer .droppable-target")
+            .removeClass("panel-success")
+            .removeClass("panel-warning");
         if (event.target) event.target.addClass("panel-warning");
     },
 });
@@ -261,7 +273,8 @@ $("#selectable").selectable({
     rangeStyle: {
         border: "1px solid red", // 拖选范围指示矩形边框设置为红色
     },
-    finish: (data: SelectableEvent) => { // 选择结束时的回调函数
+    finish: (data: SelectableEvent) => {
+        // 选择结束时的回调函数
         // 所有元素的选中或非选中状态
         console.log(data.selections);
 
@@ -286,29 +299,27 @@ const myImgCutterData = myImgCutter.getData();
 /**
  * treemenu
  */
-const myTreeData = [{
-    title: "水果",
-    url: "http://zui.sexy",
-    open: true,
-    children: [
-        { title: "橘子" },
-        {
-            title: "瓜",
-            children: [
-                { title: "西瓜" },
-                { title: "黄瓜" },
-            ],
-        },
-    ],
-}, {
-    title: "坚果",
-    children: [
-        { title: "向日葵" },
-        { title: "瓜子" },
-    ],
-}, {
-    title: "蔬菜",
-}];
+const myTreeData = [
+    {
+        title: "水果",
+        url: "http://zui.sexy",
+        open: true,
+        children: [
+            { title: "橘子" },
+            {
+                title: "瓜",
+                children: [{ title: "西瓜" }, { title: "黄瓜" }],
+            },
+        ],
+    },
+    {
+        title: "坚果",
+        children: [{ title: "向日葵" }, { title: "瓜子" }],
+    },
+    {
+        title: "蔬菜",
+    },
+];
 
 $("#myTree").tree({ data: myTreeData });
 
@@ -319,7 +330,13 @@ $("table.datatable").datatable({ sortable: true });
 // 使用data参数更新数据：
 $("table.datatable").datatable("load", {
     cols: [
-        { width: 80, text: "#", type: "number", flex: false, colClass: "text-center" },
+        {
+            width: 80,
+            text: "#",
+            type: "number",
+            flex: false,
+            colClass: "text-center",
+        },
         { width: 160, text: "时间", type: "date", flex: false, sort: "down" },
         { width: 80, text: "名称", type: "string", flex: true, colClass: "" },
     ],

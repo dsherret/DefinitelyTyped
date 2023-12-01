@@ -41,7 +41,13 @@ export interface MarkerLayer {
         range: RangeCompatible,
         options?: {
             reversed?: boolean | undefined;
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
             exclusive?: boolean | undefined;
         },
     ): Marker;
@@ -50,7 +56,13 @@ export interface MarkerLayer {
     markPosition(
         position: PointCompatible,
         options?: {
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
             exclusive?: boolean | undefined;
         },
     ): Marker;

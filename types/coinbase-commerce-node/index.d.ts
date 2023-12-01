@@ -9,7 +9,7 @@ interface Options {
     headers: {
         [key: string]: any;
         "Content-Type": "application/json";
-        "Accept": "application/json";
+        Accept: "application/json";
         "User-Agent": string;
         "X-CC-Api-Key": string;
         "X-CC-Version": string;
@@ -29,7 +29,11 @@ type Callback<T> = (error: any, response: T) => void;
 /**
  * Pagination callback.
  */
-type PaginationCallback<T> = (error: any, response: T[], pagination: Pagination) => void;
+type PaginationCallback<T> = (
+    error: any,
+    response: T[],
+    pagination: Pagination,
+) => void;
 
 /**
  * Fiat currency.
@@ -60,7 +64,14 @@ type Timestamp = string;
 /**
  * Payment status.
  */
-type PaymentStatus = "NEW" | "PENDING" | "COMPLETED" | "UNRESOLVED" | "RESOLVED" | "EXPIRED" | "CANCELED";
+type PaymentStatus =
+    | "NEW"
+    | "PENDING"
+    | "COMPLETED"
+    | "UNRESOLVED"
+    | "RESOLVED"
+    | "EXPIRED"
+    | "CANCELED";
 
 /**
  * Crypto pricing object.
@@ -130,7 +141,11 @@ interface PaginationRequest {
  *
  * @link https://commerce.coinbase.com/docs/api/#pagination
  */
-interface Pagination extends Pick<PaginationRequest, "order" | "starting_after" | "ending_before" | "limit"> {
+interface Pagination
+    extends Pick<
+        PaginationRequest,
+        "order" | "starting_after" | "ending_before" | "limit"
+    > {
     total: number;
     yielded: number;
     previous_uri: null | string;
@@ -256,9 +271,11 @@ interface ChargeResource extends BaseCharge {
     /**
      * Associated checkout resource.
      */
-    checkout?: {
-        id: string;
-    } | undefined;
+    checkout?:
+        | {
+              id: string;
+          }
+        | undefined;
 
     /**
      * Array of status update objects.
@@ -277,7 +294,14 @@ interface ChargeResource extends BaseCharge {
         /**
          * Timeline entry context.
          */
-        context?: "UNDERPAID" | "OVERPAID" | "DELAYED" | "MULTIPLE" | "MANUAL" | "OTHER" | undefined;
+        context?:
+            | "UNDERPAID"
+            | "OVERPAID"
+            | "DELAYED"
+            | "MULTIPLE"
+            | "MANUAL"
+            | "OTHER"
+            | undefined;
     }>;
 
     /**
@@ -436,7 +460,12 @@ export namespace Client {
     /**
      * Setup client.
      */
-    function init(apiKey: string, baseApiUrl?: string, apiVersion?: string, timeout?: number): Options;
+    function init(
+        apiKey: string,
+        baseApiUrl?: string,
+        apiVersion?: string,
+        timeout?: number,
+    ): Options;
 }
 
 export namespace resources {
@@ -488,7 +517,10 @@ export namespace resources {
         /**
          * Create a charge.
          */
-        static create(chargeData: CreateCharge, callback?: Callback<Charge>): Promise<Charge>;
+        static create(
+            chargeData: CreateCharge,
+            callback?: Callback<Charge>,
+        ): Promise<Charge>;
 
         /**
          * List charges.
@@ -501,12 +533,18 @@ export namespace resources {
         /**
          * Fetch all charges.
          */
-        static all(paginationOptions: PaginationRequest, callback?: Callback<Charge[]>): Promise<Charge[]>;
+        static all(
+            paginationOptions: PaginationRequest,
+            callback?: Callback<Charge[]>,
+        ): Promise<Charge[]>;
 
         /**
          * Retrieve a charge by ID.
          */
-        static retrieve(chargeId: ChargeResource["id"], callback?: Callback<Charge>): Promise<Charge>;
+        static retrieve(
+            chargeId: ChargeResource["id"],
+            callback?: Callback<Charge>,
+        ): Promise<Charge>;
     }
 
     /**
@@ -523,7 +561,10 @@ export namespace resources {
         /**
          * Create a checkout.
          */
-        static create(checkoutData: CreateCheckout, callback?: Callback<Checkout>): Promise<Checkout>;
+        static create(
+            checkoutData: CreateCheckout,
+            callback?: Callback<Checkout>,
+        ): Promise<Checkout>;
 
         /**
          * List checkouts.
@@ -536,12 +577,18 @@ export namespace resources {
         /**
          * Fetch all checkouts.
          */
-        static all(paginationOptions: PaginationRequest, callback?: Callback<Checkout[]>): Promise<Checkout[]>;
+        static all(
+            paginationOptions: PaginationRequest,
+            callback?: Callback<Checkout[]>,
+        ): Promise<Checkout[]>;
 
         /**
          * Retrieve a checkout by ID.
          */
-        static retrieve(checkoutId: CheckoutResource["id"], callback?: Callback<Checkout>): Promise<Checkout>;
+        static retrieve(
+            checkoutId: CheckoutResource["id"],
+            callback?: Callback<Checkout>,
+        ): Promise<Checkout>;
 
         /**
          * Update a checkout by ID.
@@ -555,7 +602,10 @@ export namespace resources {
         /**
          * Delete a checkout by ID.
          */
-        static deleteById(checkoutId: CheckoutResource["id"], callback?: Callback<Checkout>): Promise<Checkout>;
+        static deleteById(
+            checkoutId: CheckoutResource["id"],
+            callback?: Callback<Checkout>,
+        ): Promise<Checkout>;
     }
 
     /**
@@ -572,7 +622,10 @@ export namespace resources {
         /**
          * Retrieve a event by ID.
          */
-        static retrieve(eventId: EventResource["id"], callback?: Callback<Event>): Promise<Event>;
+        static retrieve(
+            eventId: EventResource["id"],
+            callback?: Callback<Event>,
+        ): Promise<Event>;
 
         /**
          * List events.
@@ -585,7 +638,10 @@ export namespace resources {
         /**
          * Fetch all events.
          */
-        static all(paginationOptions: PaginationRequest, callback?: Callback<Event[]>): Promise<Event[]>;
+        static all(
+            paginationOptions: PaginationRequest,
+            callback?: Callback<Event[]>,
+        ): Promise<Event[]>;
     }
 
     export { Charge, Checkout, Event };
@@ -602,14 +658,30 @@ declare namespace Webhook {
      *
      * @link https://github.com/coinbase/coinbase-commerce-node#verify-signature-header
      */
-    function verifySigHeader(rawBody: string, signature: string, sharedSecret: string): void;
+    function verifySigHeader(
+        rawBody: string,
+        signature: string,
+        sharedSecret: string,
+    ): void;
 
     /**
      * Verify event body.
      *
      * @link https://github.com/coinbase/coinbase-commerce-node/blob/v1.0.4/lib/Webhook.js#L10
      */
-    function verifyEventBody(rawBody: string, signature: string, sharedSecret: string): resources.Event;
+    function verifyEventBody(
+        rawBody: string,
+        signature: string,
+        sharedSecret: string,
+    ): resources.Event;
 }
 
-export { ChargeResource, CheckoutResource, CreateCharge, CreateCheckout, EventResource, Pagination, Webhook };
+export {
+    ChargeResource,
+    CheckoutResource,
+    CreateCharge,
+    CreateCheckout,
+    EventResource,
+    Pagination,
+    Webhook,
+};

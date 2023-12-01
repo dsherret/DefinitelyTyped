@@ -1,10 +1,23 @@
 import * as React from "react";
-import { Direction, ForwardRefReturn, MenuOffsetData, ReactDivAttr, TooltipAlignment } from "../../../typings/shared";
+import {
+    Direction,
+    ForwardRefReturn,
+    MenuOffsetData,
+    ReactDivAttr,
+    TooltipAlignment,
+} from "../../../typings/shared";
 
 // NOTE: The index does not export * on this file because non-default export of Tooltip clashs with Tooltip at the top-level index.
 //       You'll need to export types manually in this directory's index file.
 
-type ExcludedAttributes = "onBlur" | "onChange" | "onContextMenu" | "onFocus" | "onMouseOut" | "onMouseOver" | "role";
+type ExcludedAttributes =
+    | "onBlur"
+    | "onChange"
+    | "onContextMenu"
+    | "onFocus"
+    | "onMouseOut"
+    | "onMouseOver"
+    | "role";
 export type TooltipOnChangeEvent<T extends Element> =
     | React.FocusEvent<T>
     | React.KeyboardEvent<T>
@@ -20,9 +33,15 @@ export interface TooltipProps extends Omit<ReactDivAttr, ExcludedAttributes> {
     iconName?: string | undefined;
     menuOffset?:
         | MenuOffsetData
-        | ((menuBody: HTMLElement, menuDirection: TooltipProps["direction"]) => Required<MenuOffsetData> | undefined)
+        | ((
+              menuBody: HTMLElement,
+              menuDirection: TooltipProps["direction"],
+          ) => Required<MenuOffsetData> | undefined)
         | undefined;
-    onChange?(event: TooltipOnChangeEvent<HTMLDivElement>, data: { open: boolean }): void; // optional/required depending on static carbon lib config
+    onChange?(
+        event: TooltipOnChangeEvent<HTMLDivElement>,
+        data: { open: boolean },
+    ): void; // optional/required depending on static carbon lib config
     open?: boolean | undefined;
     renderIcon?: ForwardRefReturn<unknown, unknown> | undefined;
     selectorPrimaryFocus?: string | undefined;

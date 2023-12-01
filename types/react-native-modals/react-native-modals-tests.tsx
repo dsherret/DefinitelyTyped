@@ -42,7 +42,9 @@ class ImperativeUsageTest extends React.Component<any> {
                 <ModalFooter>
                     <ModalButton
                         text="CLOSE"
-                        onPress={() => this.dismissPopupModal(this.scalingPopupModal)}
+                        onPress={() =>
+                            this.dismissPopupModal(this.scalingPopupModal)
+                        }
                         textStyle={{ color: "red" }}
                         bordered
                         key="button-1"
@@ -51,23 +53,28 @@ class ImperativeUsageTest extends React.Component<any> {
                 </ModalFooter>
             ),
         });
-        this.slidingPopupModal = ModalPortal.show(<ModalContent></ModalContent>, {
-            modalTitle: <ModalTitle title="Popup Modal - Slide Animation" />,
-            width: 300,
-            height: 300,
-            modalAnimation: slideAnimation,
-            modalStyle: styles.testStyle,
-            animationDuration: 150,
-            overlayPointerEvents: "auto",
-            overlayBackgroundColor: "white",
-            overlayOpacity: 0.5,
-            hasOverlay: true,
-            visible: true,
-            onShow: () => console.log("onShow"),
-            onDismiss: () => console.log("onDismiss"),
-            onTouchOutside: () => console.log("onTouchOutside"),
-            onHardwareBackPress: () => true,
-        });
+        this.slidingPopupModal = ModalPortal.show(
+            <ModalContent></ModalContent>,
+            {
+                modalTitle: (
+                    <ModalTitle title="Popup Modal - Slide Animation" />
+                ),
+                width: 300,
+                height: 300,
+                modalAnimation: slideAnimation,
+                modalStyle: styles.testStyle,
+                animationDuration: 150,
+                overlayPointerEvents: "auto",
+                overlayBackgroundColor: "white",
+                overlayOpacity: 0.5,
+                hasOverlay: true,
+                visible: true,
+                onShow: () => console.log("onShow"),
+                onDismiss: () => console.log("onDismiss"),
+                onTouchOutside: () => console.log("onTouchOutside"),
+                onHardwareBackPress: () => true,
+            },
+        );
     }
 
     showPopupModal(popupModal: Modal) {
@@ -85,9 +92,18 @@ class ImperativeUsageTest extends React.Component<any> {
     render() {
         return (
             <View>
-                <Button onPress={() => this.showPopupModal(this.fadingPopupModal)} title="Show Fading Modal" />
-                <Button onPress={() => this.showPopupModal(this.scalingPopupModal)} title="Show Scaling Modal" />
-                <Button onPress={() => this.showPopupModal(this.slidingPopupModal)} title="Show Sliding Modal" />
+                <Button
+                    onPress={() => this.showPopupModal(this.fadingPopupModal)}
+                    title="Show Fading Modal"
+                />
+                <Button
+                    onPress={() => this.showPopupModal(this.scalingPopupModal)}
+                    title="Show Scaling Modal"
+                />
+                <Button
+                    onPress={() => this.showPopupModal(this.slidingPopupModal)}
+                    title="Show Sliding Modal"
+                />
             </View>
         );
     }
@@ -120,14 +136,17 @@ class BasicUsageTest extends React.Component<{}, State> {
                         onPress={() =>
                             this.setState({
                                 showModal: true,
-                            })}
+                            })
+                        }
                         title="Show Fading Modal"
                     />
                 </View>
 
                 <Modal
                     visible={this.state.showModal}
-                    modalTitle={<ModalTitle title="Popup Modal - Slide Animation" />}
+                    modalTitle={
+                        <ModalTitle title="Popup Modal - Slide Animation" />
+                    }
                     footer={
                         <ModalFooter>
                             <ModalButton
@@ -135,17 +154,24 @@ class BasicUsageTest extends React.Component<{}, State> {
                                 onPress={() =>
                                     this.setState({
                                         showModal: false,
-                                    })}
+                                    })
+                                }
                                 textStyle={{ color: "red" }}
                                 bordered
                                 key="button-1"
                             />
-                            <ModalButton text="OK" onPress={() => {}} key="button-2" />
+                            <ModalButton
+                                text="OK"
+                                onPress={() => {}}
+                                key="button-2"
+                            />
                         </ModalFooter>
                     }
-                    modalAnimation={new SlideAnimation({
-                        slideFrom: "top",
-                    })}
+                    modalAnimation={
+                        new SlideAnimation({
+                            slideFrom: "top",
+                        })
+                    }
                 >
                     <ModalContent>
                         <Text>content of the modal</Text>

@@ -16,10 +16,22 @@ declare class ClusterBrokerClient extends EventEmitter {
     constructor(broker: SCBroker, options?: SCCBrokerClientOptions);
 
     on(event: "error", listener: (err: Error) => void): this;
-    on(event: "subscribe", listener: (data: ClientPool.SubscribeData) => void): this;
-    on(event: "subscribeFail", listener: (data: ClientPool.SubscribeFailData) => void): this;
-    on(event: "publish" | "publishFail", listener: (data: ClientPool.PublishData) => void): this;
-    on(event: "message", listener: (channelName: string, packet: any) => void): this;
+    on(
+        event: "subscribe",
+        listener: (data: ClientPool.SubscribeData) => void,
+    ): this;
+    on(
+        event: "subscribeFail",
+        listener: (data: ClientPool.SubscribeFailData) => void,
+    ): this;
+    on(
+        event: "publish" | "publishFail",
+        listener: (data: ClientPool.PublishData) => void,
+    ): this;
+    on(
+        event: "message",
+        listener: (channelName: string, packet: any) => void,
+    ): this;
 
     mapChannelNameToBrokerURI(channelName: string): string;
     setBrokers(sccBrokerURIList: string[]): void;

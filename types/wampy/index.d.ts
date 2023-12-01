@@ -44,8 +44,7 @@ declare namespace wampy {
         onEvent?: EventCallback | undefined;
     }
 
-    interface UnsubscibeCallbacksHash extends SubscribeCallbacksHash {
-    }
+    interface UnsubscibeCallbacksHash extends SubscribeCallbacksHash {}
 
     interface PublishCallbacksHash {
         onSuccess?: Callback | undefined;
@@ -103,7 +102,13 @@ declare namespace wampy {
 
     interface RegisterAdvancedOptions {
         match?: "prefix" | "wildcard" | undefined;
-        invoke?: "single" | "roundrobin" | "random" | "first" | "last" | undefined;
+        invoke?:
+            | "single"
+            | "roundrobin"
+            | "random"
+            | "first"
+            | "last"
+            | undefined;
     }
 
     interface WampyOptions {
@@ -132,8 +137,8 @@ declare namespace wampy {
     }
 
     interface WampyStatic {
-        new(options?: WampyOptions): Wampy;
-        new(url: string, options?: WampyOptions): Wampy;
+        new (options?: WampyOptions): Wampy;
+        new (url: string, options?: WampyOptions): Wampy;
     }
 
     interface Wampy {
@@ -149,7 +154,10 @@ declare namespace wampy {
             callbacks: EventCallback | SubscribeCallbacksHash,
             advancedOptions?: SubscribeAdvancedOptions,
         ): Wampy;
-        unsubscribe(topicURI: string, callbacks?: EventCallback | UnsubscibeCallbacksHash): Wampy;
+        unsubscribe(
+            topicURI: string,
+            callbacks?: EventCallback | UnsubscibeCallbacksHash,
+        ): Wampy;
         publish(
             topicURI: string,
             payload?: Payload,
@@ -172,7 +180,10 @@ declare namespace wampy {
             callbacks: RPCCallback | RegisterCallbacksHash,
             avdancedOptions?: RegisterAdvancedOptions,
         ): Wampy;
-        unregister(topicURI: string, callbacks?: Callback | UnregisterCallbacksHash): Wampy;
+        unregister(
+            topicURI: string,
+            callbacks?: Callback | UnregisterCallbacksHash,
+        ): Wampy;
     }
 }
 

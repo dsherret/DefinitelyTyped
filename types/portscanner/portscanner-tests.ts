@@ -1,4 +1,9 @@
-import { checkPortStatus, findAPortInUse, findAPortNotInUse, Status } from "portscanner";
+import {
+    checkPortStatus,
+    findAPortInUse,
+    findAPortNotInUse,
+    Status,
+} from "portscanner";
 
 declare function assert(cond: boolean): void;
 

@@ -7,10 +7,7 @@ declare namespace iframeResizer {
 
         resize(): void;
 
-        sendMessage(
-            message: any,
-            targetOrigin?: string,
-        ): void;
+        sendMessage(message: any, targetOrigin?: string): void;
     }
 
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -161,11 +158,17 @@ declare namespace iframeResizer {
         /**
          * These option can be used to override the option set in the parent page
          */
-        heightCalculationMethod?: HeightCalculationMethod | (() => number) | undefined;
+        heightCalculationMethod?:
+            | HeightCalculationMethod
+            | (() => number)
+            | undefined;
         /**
          * These option can be used to override the option set in the parent page
          */
-        widthCalculationMethod?: WidthCalculationMethod | (() => number) | undefined;
+        widthCalculationMethod?:
+            | WidthCalculationMethod
+            | (() => number)
+            | undefined;
     }
 
     type HeightCalculationMethod =
@@ -219,28 +222,19 @@ declare namespace iframeResizer {
         /**
          * Scroll the parent page to the coordinates x and y
          */
-        scrollTo(
-            x: number,
-            y: number,
-        ): void;
+        scrollTo(x: number, y: number): void;
 
         /**
          * Scroll the parent page to the coordinates x and y relative to the position of the iFrame.
          */
-        scrollToOffset(
-            x: number,
-            y: number,
-        ): void;
+        scrollToOffset(x: number, y: number): void;
 
         /**
          * Send data to the containing page, message can be any data type that can be serialized into JSON. The `targetOrigin`
          * option is used to restrict where the message is sent to; to stop an attacker mimicking your parent page.
          * See the MDN documentation on postMessage for more details.
          */
-        sendMessage(
-            message: any,
-            targetOrigin?: string,
-        ): void;
+        sendMessage(message: any, targetOrigin?: string): void;
 
         /**
          * Change the method use to workout the height of the iFrame.
@@ -261,10 +255,7 @@ declare namespace iframeResizer {
          * Manually force iFrame to resize. To use passed arguments you need first to disable the `autoResize` option to
          * prevent auto resizing and enable the `sizeWidth` option if you wish to set the width.
          */
-        size(
-            customHeight?: string,
-            customWidth?: string,
-        ): void;
+        size(customHeight?: string, customWidth?: string): void;
     }
 
     interface PageInfo {
@@ -321,7 +312,10 @@ declare namespace iframeResizer {
         x: number;
         y: number;
     }
-    function iframeResizer(options: IFrameOptions, target: string | HTMLElement): IFrameComponent[];
+    function iframeResizer(
+        options: IFrameOptions,
+        target: string | HTMLElement,
+    ): IFrameComponent[];
 }
 // leave this declaration outside the namespace so the 'require'd import is still callable
 declare function iframeResizer(

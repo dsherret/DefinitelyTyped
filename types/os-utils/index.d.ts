@@ -59,7 +59,9 @@ export function freeCommand(callback: (used_mem: number) => any): void;
 /**
  * execute df -k command.
  */
-export function harddrive(callback: (total: number, free: number, used: number) => any): void;
+export function harddrive(
+    callback: (total: number, free: number, used: number) => any,
+): void;
 
 /**
  * return process running current.
@@ -69,7 +71,10 @@ export function getProcesses(callback: (result: string) => any): void;
 /**
  * return process running current.
  */
-export function getProcesses(nProcess: number, callback: (result: string) => any): void;
+export function getProcesses(
+    nProcess: number,
+    callback: (result: string) => any,
+): void;
 
 /**
  * returns all the load average usage for 1, 5 or 15 minutes.

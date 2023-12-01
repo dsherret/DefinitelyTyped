@@ -15,7 +15,10 @@ function testAddComments() {
         return "hello";
     };
 
-    const commands: CommandOption = { "hello :name": helloFunction, howdy: helloFunction };
+    const commands: CommandOption = {
+        "hello :name": helloFunction,
+        howdy: helloFunction,
+    };
     const commands2: CommandOption = { hi: helloFunction };
 
     annyang.addCommands(commands); // $ExpectType void
@@ -67,9 +70,10 @@ function testTrigger() {
     annyang.trigger("Time for some thrilling heroics");
 
     // $ExpectType void
-    annyang.trigger(
-        ["Time for some thrilling heroics", "Time for some thrilling aerobics"],
-    );
+    annyang.trigger([
+        "Time for some thrilling heroics",
+        "Time for some thrilling aerobics",
+    ]);
 }
 
 function testIsListening() {

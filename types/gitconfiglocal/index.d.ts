@@ -10,7 +10,11 @@ declare namespace gitconfig {
     }
 }
 
-declare function gitconfig(dir: string, options: gitconfig.Options, cb: gitconfig.callback): void;
+declare function gitconfig(
+    dir: string,
+    options: gitconfig.Options,
+    cb: gitconfig.callback,
+): void;
 declare function gitconfig(dir: string, cb: gitconfig.callback): void;
 
 export = gitconfig;

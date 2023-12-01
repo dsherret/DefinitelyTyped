@@ -1,8 +1,10 @@
 var schema = {
-    stores: [{
-        name: "todo",
-        keyPath: "timeStamp",
-    }],
+    stores: [
+        {
+            name: "todo",
+            keyPath: "timeStamp",
+        },
+    ],
 };
 
 /**
@@ -11,41 +13,45 @@ var schema = {
  */
 var db = new ydn.db.Storage("todo_2", schema);
 
-var deleteTodo = function(id: any) {
-    db.remove("todo", id).fail(function(e) {
+var deleteTodo = function (id: any) {
+    db.remove("todo", id).fail(function (e) {
         console.error(e);
     });
 
     getAllTodoItems();
 };
 
-var getAllTodoItems = function() {
+var getAllTodoItems = function () {
     var todos = document.getElementById("todoItems");
     todos.innerHTML = "";
 
     var df = db.values("todo");
 
-    df.done(function(items) {
+    df.done(function (items) {
         var n = items.length;
         for (var i = 0; i < n; i++) {
             renderTodo(items[i]);
         }
     });
 
-    df.fail(function(e) {
+    df.fail(function (e) {
         console.error(e);
     });
 };
 
-var renderTodo = function(row: any) {
+var renderTodo = function (row: any) {
     var todos = document.getElementById("todoItems");
     var li = document.createElement("li");
     var a = document.createElement("a");
     var t = document.createTextNode(row.text);
 
-    a.addEventListener("click", function() {
-        deleteTodo(row.timeStamp);
-    }, false);
+    a.addEventListener(
+        "click",
+        function () {
+            deleteTodo(row.timeStamp);
+        },
+        false,
+    );
 
     a.textContent = " [Delete]";
     li.appendChild(t);
@@ -53,14 +59,14 @@ var renderTodo = function(row: any) {
     todos.appendChild(li);
 };
 
-var addTodo = function() {
-    var todo = <HTMLInputElement> document.getElementById("todo");
+var addTodo = function () {
+    var todo = <HTMLInputElement>document.getElementById("todo");
 
     var data = {
-        "text": todo.value,
-        "timeStamp": new Date().getTime(),
+        text: todo.value,
+        timeStamp: new Date().getTime(),
     };
-    db.put("todo", data).fail(function(e) {
+    db.put("todo", data).fail(function (e) {
         console.error(e);
     });
 
@@ -73,6 +79,6 @@ function init() {
     getAllTodoItems();
 }
 
-db.onReady(function() {
+db.onReady(function () {
     init();
 });

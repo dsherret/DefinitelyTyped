@@ -14,14 +14,20 @@ new DexieBatch({ batchSize: 10 }).eachBatch(collection, (items, index) => {
     index; // $ExpectType number
 });
 
-new DexieBatch({ batchSize: 10 }).eachBatchParallel(collection, (items, index) => {
-    items; // $ExpectType string[]
-    index; // $ExpectType number
-});
+new DexieBatch({ batchSize: 10 }).eachBatchParallel(
+    collection,
+    (items, index) => {
+        items; // $ExpectType string[]
+        index; // $ExpectType number
+    },
+);
 
-new DexieBatch({ batchSize: 10 }).eachBatchSerial(collection, (items, index) => {
-    items; // $ExpectType string[]
-    index; // $ExpectType number
-});
+new DexieBatch({ batchSize: 10 }).eachBatchSerial(
+    collection,
+    (items, index) => {
+        items; // $ExpectType string[]
+        index; // $ExpectType number
+    },
+);
 
 new DexieBatch({ batchSize: 10 }).isParallel(); // $ExpectType boolean

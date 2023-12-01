@@ -4,7 +4,7 @@ import * as distMin from "ramda/dist/ramda.min";
 import * as src from "ramda/src";
 import * as srcIndex from "ramda/src/index";
 
-(async () => {
+async () => {
     const Res = await import("ramda");
     const es = await import("ramda/es");
     const esIndex = await import("ramda/es/index");
@@ -18,4 +18,4 @@ import * as srcIndex from "ramda/src/index";
     typeChecker = Res;
     typeChecker = es;
     typeChecker = esIndex;
-});
+};

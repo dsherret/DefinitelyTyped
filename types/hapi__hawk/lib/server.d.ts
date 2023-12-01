@@ -5,8 +5,14 @@ import { Message } from "./client";
 import * as Crypto from "./crypto";
 import * as Utils from "./utils";
 
-export type CredentialsFunc = (id: string) => Promise<Credentials> | Credentials;
-export type NonceFunc = (key: string, nonce: string, ts: string) => Promise<void> | void;
+export type CredentialsFunc = (
+    id: string,
+) => Promise<Credentials> | Credentials;
+export type NonceFunc = (
+    key: string,
+    nonce: string,
+    ts: string,
+) => Promise<void> | void;
 
 export interface AuthenticateOptions {
     /**
@@ -126,6 +132,13 @@ export function authenticatePayload(
     contentType: string,
 ): void;
 
-export function authenticatePayloadHash(calculatedHash: string, artifacts: Crypto.Artifacts): void;
+export function authenticatePayloadHash(
+    calculatedHash: string,
+    artifacts: Crypto.Artifacts,
+): void;
 
-export function header(credentials: Credentials, artifacts: Crypto.Artifacts, options?: HeaderOptions): string;
+export function header(
+    credentials: Credentials,
+    artifacts: Crypto.Artifacts,
+    options?: HeaderOptions,
+): string;

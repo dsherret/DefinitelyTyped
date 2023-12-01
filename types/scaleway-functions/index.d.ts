@@ -5,7 +5,10 @@ export type Handler<TResult = Response | object> = (
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
 ) => void | TResult | Promise<TResult>;
 
-export type Callback<TResult = Response | object> = (error?: Error | string | null, result?: TResult) => void;
+export type Callback<TResult = Response | object> = (
+    error?: Error | string | null,
+    result?: TResult,
+) => void;
 
 // https://github.com/scaleway/scaleway-functions-runtimes/blob/master/events/context.go
 export interface Context {

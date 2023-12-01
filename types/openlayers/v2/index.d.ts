@@ -52,8 +52,7 @@ declare namespace OpenLayers {
         rightTolerance?: number | undefined;
     }
 
-    export interface LayerOptions {
-    }
+    export interface LayerOptions {}
 
     export class Animation {
         // TODO
@@ -158,7 +157,12 @@ declare namespace OpenLayers {
          *     extension event. Extension events are handled before all other
          *     events.
          */
-        register(type: string, obj: any, func: () => void, priority: boolean): void;
+        register(
+            type: string,
+            obj: any,
+            func: () => void,
+            priority: boolean,
+        ): void;
 
         /**
          * APIMethod: registerPriority
@@ -1079,7 +1083,11 @@ declare namespace OpenLayers {
         /**
          * Return whether or not the geometry is at the specified location
          */
-        atPoint(lonlat: LonLat, toleranceLon?: number, toleranceLat?: number): boolean;
+        atPoint(
+            lonlat: LonLat,
+            toleranceLon?: number,
+            toleranceLat?: number,
+        ): boolean;
 
         /**
          * Returns the length of the collection by summing its parts
@@ -1130,12 +1138,20 @@ declare namespace OpenLayers {
         /**
          * Transform a point coordinate from one projection to another. Note that the input point is transformed in place.
          */
-        transform(point: Geometry.Point, source: Projection, dest: OpenLayers.Projection): Object;
+        transform(
+            point: Geometry.Point,
+            source: Projection,
+            dest: OpenLayers.Projection,
+        ): Object;
 
         /**
          * Transform a point coordinate from one projection to another. Note that the input point is transformed in place.
          */
-        transform(point: Object, source: Projection, dest: OpenLayers.Projection): Object;
+        transform(
+            point: Object,
+            source: Projection,
+            dest: OpenLayers.Projection,
+        ): Object;
 
         /**
          * A null transformation useful for defining projection aliases when proj4js is not available:
@@ -1297,7 +1313,11 @@ declare namespace OpenLayers {
         /**
          * Returns whether the bounds object contains the given <OpenLayers.Bounds>.
          */
-        containsBounds(bounds: Bounds, partial: boolean, inclusive: boolean): boolean;
+        containsBounds(
+            bounds: Bounds,
+            partial: boolean,
+            inclusive: boolean,
+        ): boolean;
 
         /**
          * Returns the the quadrant ("br", "tr", "tl", "bl") in which the given
@@ -2223,7 +2243,14 @@ declare namespace OpenLayers {
          * - *dragging* {Boolean} Call setCenter with dragging true. Default is
          * false.
          */
-        pan(dx: number, dy: number, options?: { animate?: boolean | undefined; dragging?: boolean | undefined }): void;
+        pan(
+            dx: number,
+            dy: number,
+            options?: {
+                animate?: boolean | undefined;
+                dragging?: boolean | undefined;
+            },
+        ): void;
 
         /**
          * APIMethod: panTo
@@ -2249,8 +2276,18 @@ declare namespace OpenLayers {
          * forceZoomChange - {Boolean} Specifies whether or not to trigger zoom
          * change events (needed on baseLayer change)
          */
-        setCenter(lonlat: LonLat, zoom?: number, dragging?: boolean, forceZoomChange?: boolean): void;
-        setCenter(lonlat: number[], zoom?: number, dragging?: boolean, forceZoomChange?: boolean): void;
+        setCenter(
+            lonlat: LonLat,
+            zoom?: number,
+            dragging?: boolean,
+            forceZoomChange?: boolean,
+        ): void;
+        setCenter(
+            lonlat: number[],
+            zoom?: number,
+            dragging?: boolean,
+            forceZoomChange?: boolean,
+        ): void;
 
         /**
          * APIMethod: getMinZoom
@@ -2556,8 +2593,7 @@ declare namespace OpenLayers {
         static TILE_HEIGHT: string;
     }
 
-    export class Class {
-    }
+    export class Class {}
 
     export class Date {
         /**
@@ -3087,8 +3123,7 @@ declare namespace OpenLayers {
             // TODO
         }
 
-        export class MultiPoint extends Geometry.Collection {
-        }
+        export class MultiPoint extends Geometry.Collection {}
         // TODO
 
         export class MultiPolygon extends Geometry.Collection {
@@ -3213,8 +3248,7 @@ declare namespace OpenLayers {
             // TODO
         }
 
-        export class SLDSelect {
-        }
+        export class SLDSelect {}
 
         export class Scale {
             // TODO
@@ -3596,8 +3630,7 @@ declare namespace OpenLayers {
         }
     }
 
-    namespace Lang {
-    }
+    namespace Lang {}
 
     namespace Layer {
         export interface WMSGetMapParams {
@@ -3833,7 +3866,12 @@ declare namespace OpenLayers {
              * {Object} Object containing properties tilelon, tilelat, startcol,
              * startrow
              */
-            gridLayout: { tilelon: number; tilelat: number; startcol: number; startrow: number };
+            gridLayout: {
+                tilelon: number;
+                tilelat: number;
+                startcol: number;
+                startrow: number;
+            };
 
             /**
              * Property: rowSign
@@ -3932,7 +3970,11 @@ declare namespace OpenLayers {
              * zoomChanged - {Boolean}
              * dragging - {Boolean}
              */
-            moveTo(bounds: Bounds, zoomChanged: boolean, dragging: boolean): void;
+            moveTo(
+                bounds: Bounds,
+                zoomChanged: boolean,
+                dragging: boolean,
+            ): void;
 
             /**
              * Method: getTileData
@@ -3949,7 +3991,11 @@ declare namespace OpenLayers {
              * i ({Number} x-pixel offset from top left), and j ({Integer} y-pixel
              * offset from top left).
              */
-            private getTileData(loc: LonLat): { tile: Tile; i: number; j: number };
+            private getTileData(loc: LonLat): {
+                tile: Tile;
+                i: number;
+                j: number;
+            };
 
             /**
              * Method: destroyTile
@@ -4066,7 +4112,12 @@ declare namespace OpenLayers {
                 bounds: Bounds,
                 origin: LonLat,
                 resolution: number,
-            ): { tilelon: number; tilelat: number; startcol: number; startrow: number };
+            ): {
+                tilelon: number;
+                tilelat: number;
+                startcol: number;
+                startrow: number;
+            };
 
             getImageSize(): Size;
 
@@ -4160,7 +4211,10 @@ declare namespace OpenLayers {
              * if false, then append to end
              * tileSize - {Object} rendered tile size; object with w and h properties
              */
-            private shiftRow(prepend: boolean, tileSize: { w: number; h: number }): void;
+            private shiftRow(
+                prepend: boolean,
+                tileSize: { w: number; h: number },
+            ): void;
 
             /**
              * Method: shiftColumn
@@ -4171,7 +4225,10 @@ declare namespace OpenLayers {
              * if false, then append to end
              * tileSize - {Object} rendered tile size; object with w and h properties
              */
-            private shiftColumn(prepend: boolean, tileSize: { w: number; h: number }): void;
+            private shiftColumn(
+                prepend: boolean,
+                tileSize: { w: number; h: number },
+            ): void;
 
             /**
              * Method: removeExcessTiles
@@ -4245,8 +4302,18 @@ declare namespace OpenLayers {
              * params - {Object}
              * options - {Object} Hashtable of extra options to tag onto the layer
              */
-            constructor(name: string, url: string, params: Object, options: Object);
-            constructor(name: string, url: string[], params: Object, options: Object);
+            constructor(
+                name: string,
+                url: string,
+                params: Object,
+                options: Object,
+            );
+            constructor(
+                name: string,
+                url: string[],
+                params: Object,
+                options: Object,
+            );
 
             /**
              * APIMethod: destroy
@@ -4389,7 +4456,13 @@ declare namespace OpenLayers {
              * size - {<OpenLayers.Size>} The size (in pixels) of the image
              * options - {Object} Hashtable of extra options to tag onto the layer
              */
-            constructor(name: string, url: string, extent: OpenLayers.Bounds, size: OpenLayers.Size, options: any);
+            constructor(
+                name: string,
+                url: string,
+                extent: OpenLayers.Bounds,
+                size: OpenLayers.Size,
+                options: any,
+            );
 
             /**
              * Method: destroy
@@ -4426,7 +4499,11 @@ declare namespace OpenLayers {
              * zoomChanged - {Boolean}
              * dragging - {Boolean}
              */
-            moveTo(bounds: OpenLayers.Bounds, zoomChanged: boolean, dragging: boolean): void;
+            moveTo(
+                bounds: OpenLayers.Bounds,
+                zoomChanged: boolean,
+                dragging: boolean,
+            ): void;
 
             /**
              * Set the tile size based on the map size.
@@ -4637,7 +4714,12 @@ declare namespace OpenLayers {
              * These options include all properties listed above, plus the ones
              * inherited from superclasses.
              */
-            constructor(name: string, url: string, params: WMSGetMapParams, options: WMSOptions);
+            constructor(
+                name: string,
+                url: string,
+                params: WMSGetMapParams,
+                options: WMSOptions,
+            );
 
             /**
              * Create a clone of this layer

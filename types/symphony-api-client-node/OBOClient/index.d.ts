@@ -16,7 +16,10 @@ export interface OboUser {
 
 export function oboGetAllConnections(status: string): Promise<Connection[]>;
 export function oboGetConnection(userId: string): Promise<Connection>;
-export function oboGetUserIMStreamId(userToken: string, userIds: number[]): Promise<UserId>;
+export function oboGetUserIMStreamId(
+    userToken: string,
+    userIds: number[],
+): Promise<UserId>;
 export function oboSendMessage(
     userToken: string,
     conversationId: string,

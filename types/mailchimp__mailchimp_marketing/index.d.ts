@@ -25,9 +25,21 @@ export interface Config {
     server?: string | undefined;
 }
 
-export type Status = "subscribed" | "unsubscribed" | "cleaned" | "pending" | "transactional";
+export type Status =
+    | "subscribed"
+    | "unsubscribed"
+    | "cleaned"
+    | "pending"
+    | "transactional";
 
-export type HttpMethod = "GET" | "POST" | "PUT" | "PATCH" | "DELETE" | "OPTIONS" | "HEAD";
+export type HttpMethod =
+    | "GET"
+    | "POST"
+    | "PUT"
+    | "PATCH"
+    | "DELETE"
+    | "OPTIONS"
+    | "HEAD";
 
 export type MergeFieldType =
     | "text"
@@ -73,15 +85,15 @@ export interface Body {
     vip?: boolean | undefined;
     location?:
         | {
-            latitude: number;
-            longitude: number;
-        }
+              latitude: number;
+              longitude: number;
+          }
         | undefined;
     marketing_permissions?:
         | Array<{
-            marketing_permission_id: string;
-            enabled: boolean;
-        }>
+              marketing_permission_id: string;
+              enabled: boolean;
+          }>
         | undefined;
     ip_signup?: string | undefined;
     timestamp_signup?: string | undefined;
@@ -1438,7 +1450,8 @@ export namespace lists {
         region: string;
     }
 
-    interface MemberMarketingPermissions extends MemberMarketingPermissionsInput {
+    interface MemberMarketingPermissions
+        extends MemberMarketingPermissionsInput {
         text: string;
     }
 
@@ -1674,7 +1687,10 @@ export namespace lists {
      * @param subscriberHash The MD5 hash of the lowercase version of the list member's email address. This endpoint also accepts a list member's email address or contact_id.
      * @return A {@link https://www.promisejs.org/|Promise}
      */
-    function deleteListMember(listId: string, subscriberHash: string): Promise<{} | ErrorResponse>;
+    function deleteListMember(
+        listId: string,
+        subscriberHash: string,
+    ): Promise<{} | ErrorResponse>;
 
     /**
      * Delete list member
@@ -1683,7 +1699,10 @@ export namespace lists {
      * @param subscriberHash The MD5 hash of the lowercase version of the list member's email address.
      * @return A {@link https://www.promisejs.org/|Promise}
      */
-    function deleteListMemberPermanent(listId: string, subscriberHash: string): Promise<{} | ErrorResponse>;
+    function deleteListMemberPermanent(
+        listId: string,
+        subscriberHash: string,
+    ): Promise<{} | ErrorResponse>;
 
     /**
      * Get the tags on a list member.
@@ -1710,7 +1729,11 @@ export namespace lists {
      * @param body
      * @return A {@link https://www.promisejs.org/|Promise}
      */
-    function updateListMemberTags(listId: string, subscriberHash: string, body: any): Promise<{} | ErrorResponse>;
+    function updateListMemberTags(
+        listId: string,
+        subscriberHash: string,
+        body: any,
+    ): Promise<{} | ErrorResponse>;
 
     /**
      * Get information about all lists in the account.
@@ -1731,7 +1754,9 @@ export namespace lists {
      * @param opts.includeTotalContacts Return the total_contacts field in the stats response, which contains an approximate count of all contacts in any state.
      * @return A {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/SubscriberLists}
      */
-    function getAllLists(opts?: ListOptions): Promise<ListsSuccessResponse | ErrorResponse>;
+    function getAllLists(
+        opts?: ListOptions,
+    ): Promise<ListsSuccessResponse | ErrorResponse>;
 
     /**
      * Get the merge fields for a list.
@@ -1746,7 +1771,10 @@ export namespace lists {
      * @param opts.required Whether to return required merge fields or not.
      * @return A {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/MergeFieldSuccessResponse}
      */
-    function getListMergeFields(listId: string, opts?: ListOptions): Promise<MergeFieldSuccessResponse | ErrorResponse>;
+    function getListMergeFields(
+        listId: string,
+        opts?: ListOptions,
+    ): Promise<MergeFieldSuccessResponse | ErrorResponse>;
 
     /**
      * Add an event for a list member.
@@ -1770,7 +1798,9 @@ export namespace lists {
      * @param listId The unique ID for the list.
      * @return A {@link https://www.promisejs.org/|Promise}, with data of type {@link module:model/GetListInterestCategoriesResponse}
      */
-    function getListInterestCategories(listId: string): Promise<GetListInterestCategoriesResponse | ErrorResponse>;
+    function getListInterestCategories(
+        listId: string,
+    ): Promise<GetListInterestCategoriesResponse | ErrorResponse>;
 
     /**
      * Get a list of interests in a specific interest category.
@@ -2547,7 +2577,9 @@ export namespace campaigns {
      * @param opts Optional parameters, see {@link CampaignsOptions}
      * @return A {@link https://www.promisejs.org/|Promise}, with data of type {@link CampaignsSuccessResponse}
      */
-    function list(opts?: CampaignsOptions): Promise<CampaignsSuccessResponse | ErrorResponse>;
+    function list(
+        opts?: CampaignsOptions,
+    ): Promise<CampaignsSuccessResponse | ErrorResponse>;
 
     /**
      * Get the the HTML and plain-text content for a campaign.

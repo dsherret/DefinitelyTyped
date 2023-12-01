@@ -22,7 +22,10 @@ function test_with_handlers_as_options() {
 
     const port = 2525;
 
-    function onConnect(session: SMTPServerSession, callback: (err?: Error) => void): void {
+    function onConnect(
+        session: SMTPServerSession,
+        callback: (err?: Error) => void,
+    ): void {
         console.log(`[${session.id}] onConnect`);
         callback();
     }
@@ -30,31 +33,54 @@ function test_with_handlers_as_options() {
     function onAuth(
         auth: SMTPServerAuthentication,
         session: SMTPServerSession,
-        callback: (err: Error | undefined, response?: SMTPServerAuthenticationResponse) => void,
+        callback: (
+            err: Error | undefined,
+            response?: SMTPServerAuthenticationResponse,
+        ) => void,
     ): void {
-        if (auth.method === "PLAIN" && auth.username === "username" && auth.password === "password") {
+        if (
+            auth.method === "PLAIN" &&
+            auth.username === "username" &&
+            auth.password === "password"
+        ) {
             callback(undefined, { user: auth.username });
         } else {
             callback(new Error("Invalid username or password"));
         }
     }
 
-    function onMailFrom(from: SMTPServerAddress, session: SMTPServerSession, callback: (err?: Error) => void): void {
+    function onMailFrom(
+        from: SMTPServerAddress,
+        session: SMTPServerSession,
+        callback: (err?: Error) => void,
+    ): void {
         console.log(`[${session.id}] onMailFrom ${from.address}`);
         if (from.address.split("@")[1] === "spammer.com") {
             // code 421 disconnects SMTP session immediately
-            callback(Object.assign(new Error("we do not like spam!"), { responseCode: 421 }));
+            callback(
+                Object.assign(new Error("we do not like spam!"), {
+                    responseCode: 421,
+                }),
+            );
         } else {
             callback();
         }
     }
 
-    function onRcptTo(to: SMTPServerAddress, session: SMTPServerSession, callback: (err?: Error) => void): void {
+    function onRcptTo(
+        to: SMTPServerAddress,
+        session: SMTPServerSession,
+        callback: (err?: Error) => void,
+    ): void {
         console.log(`[${session.id}] onRcptTo ${to.address}`);
         callback();
     }
 
-    function onData(stream: SMTPServerDataStream, session: SMTPServerSession, callback: (err?: Error) => void): void {
+    function onData(
+        stream: SMTPServerDataStream,
+        session: SMTPServerSession,
+        callback: (err?: Error) => void,
+    ): void {
         console.log(`[${session.id}] onData started`);
 
         if (stream.sizeExceeded) {
@@ -65,12 +91,16 @@ function test_with_handlers_as_options() {
         let messageLength = 0;
 
         stream.on("data", (chunk: Buffer) => {
-            console.log(`[${session.id}] onData got data chunk ${chunk.length} bytes`);
+            console.log(
+                `[${session.id}] onData got data chunk ${chunk.length} bytes`,
+            );
             messageLength += chunk.length;
         });
 
         stream.once("end", () => {
-            console.log(`[${session.id}] onData finished after reading ${messageLength} bytes`);
+            console.log(
+                `[${session.id}] onData finished after reading ${messageLength} bytes`,
+            );
             callback();
         });
     }
@@ -101,7 +131,10 @@ function test_with_handlers_as_options() {
 
 function test_with_handlers_in_subclass() {
     class MySMTPServer extends SMTPServer {
-        onConnect(session: SMTPServerSession, callback: (err?: Error) => void): void {
+        onConnect(
+            session: SMTPServerSession,
+            callback: (err?: Error) => void,
+        ): void {
             console.log(`[${session.id}] onConnect`);
             callback();
         }
@@ -109,42 +142,69 @@ function test_with_handlers_in_subclass() {
         onAuth(
             auth: SMTPServerAuthentication,
             session: SMTPServerSession,
-            callback: (err: Error | null | undefined, response?: SMTPServerAuthenticationResponse) => void,
+            callback: (
+                err: Error | null | undefined,
+                response?: SMTPServerAuthenticationResponse,
+            ) => void,
         ): void {
-            if (auth.method === "PLAIN" && auth.username === "username" && auth.password === "password") {
+            if (
+                auth.method === "PLAIN" &&
+                auth.username === "username" &&
+                auth.password === "password"
+            ) {
                 callback(undefined, { user: auth.username });
             } else {
                 callback(new Error("Invalid username or password"));
             }
         }
 
-        onMailFrom(from: SMTPServerAddress, session: SMTPServerSession, callback: (err?: Error) => void): void {
+        onMailFrom(
+            from: SMTPServerAddress,
+            session: SMTPServerSession,
+            callback: (err?: Error) => void,
+        ): void {
             console.log(`[${session.id}] onMailFrom ${from.address}`);
             if (from.address.split("@")[1] === "spammer.com") {
                 // code 421 disconnects SMTP session immediately
-                callback(Object.assign(new Error("we do not like spam!"), { responseCode: 421 }));
+                callback(
+                    Object.assign(new Error("we do not like spam!"), {
+                        responseCode: 421,
+                    }),
+                );
             } else {
                 callback();
             }
         }
 
-        onRcptTo(to: SMTPServerAddress, session: SMTPServerSession, callback: (err?: Error) => void): void {
+        onRcptTo(
+            to: SMTPServerAddress,
+            session: SMTPServerSession,
+            callback: (err?: Error) => void,
+        ): void {
             console.log(`[${session.id}] onRcptTo ${to.address}`);
             callback();
         }
 
-        onData(stream: Readable, session: SMTPServerSession, callback: (err?: Error) => void): void {
+        onData(
+            stream: Readable,
+            session: SMTPServerSession,
+            callback: (err?: Error) => void,
+        ): void {
             console.log(`[${session.id}] onData started`);
 
             let messageLength = 0;
 
             stream.on("data", (chunk: Buffer) => {
-                console.log(`[${session.id}] onData got data chunk ${chunk.length} bytes`);
+                console.log(
+                    `[${session.id}] onData got data chunk ${chunk.length} bytes`,
+                );
                 messageLength += chunk.length;
             });
 
             stream.once("end", () => {
-                console.log(`[${session.id}] onData finished after reading ${messageLength} bytes`);
+                console.log(
+                    `[${session.id}] onData finished after reading ${messageLength} bytes`,
+                );
                 callback();
             });
         }

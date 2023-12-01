@@ -1,7 +1,16 @@
 export interface TdObject {
     "@type": string;
     "@extra"?: string | undefined;
-    [key: string]: TdObject | TdObject[] | number | number[] | string | string[] | boolean | boolean[] | undefined;
+    [key: string]:
+        | TdObject
+        | TdObject[]
+        | number
+        | number[]
+        | string
+        | string[]
+        | boolean
+        | boolean[]
+        | undefined;
 }
 
 /**
@@ -41,7 +50,13 @@ export interface TdOptions {
     /**
      * The initial verbosity level of the JavaScript part of the code (one of 'error', 'warning', 'info', 'log', 'debug').
      */
-    jsLogVerbosityLevel?: "error" | "warning" | "info" | "log" | "debug" | undefined;
+    jsLogVerbosityLevel?:
+        | "error"
+        | "warning"
+        | "info"
+        | "log"
+        | "debug"
+        | undefined;
     /**
      * Pass false to use TDLib without database and secret chats. It will significantly improve loading time, but some functionality will be unavailable.
      */

@@ -55,8 +55,10 @@ if (urlRecord !== null) {
             "query",
             "fragment",
         ] as const
-    ).forEach(override => {
-        whatwgUrl.basicURLParse("http://example.com", { stateOverride: override }); // $ExpectType URLRecord | null
+    ).forEach((override) => {
+        whatwgUrl.basicURLParse("http://example.com", {
+            stateOverride: override,
+        }); // $ExpectType URLRecord | null
     });
     whatwgUrl.serializeURL(urlRecord); // $ExpectType string
     whatwgUrl.serializeURLOrigin(urlRecord); // $ExpectType string
@@ -95,12 +97,12 @@ whatwgUrl.percentDecodeString("foo");
     Uint32Array,
     Float32Array,
     Float64Array,
-].forEach(ctor => {
+].forEach((ctor) => {
     // $ExpectType Uint8Array
     whatwgUrl.percentDecodeBytes(new ctor());
 });
 
-[BigInt64Array, BigUint64Array].forEach(ctor => {
+[BigInt64Array, BigUint64Array].forEach((ctor) => {
     whatwgUrl.percentDecodeBytes(
         // @ts-expect-error
         new ctor(),
@@ -113,7 +115,7 @@ searchParams.forEach((value, name, self) => {
     self; // $ExpectType URLSearchParams
 });
 
-searchParams.forEach(function(value, name, self) {
+searchParams.forEach(function (value, name, self) {
     this; // $ExpectType null
     value; // $ExpectType string
     name; // $ExpectType string

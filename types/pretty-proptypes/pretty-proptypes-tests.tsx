@@ -2,9 +2,11 @@ import PrettyProps, { CommonProps, Inter, Obj } from "pretty-proptypes";
 import * as React from "react";
 
 interface PropsProps {
-    readonly overrides?: {
-        readonly [key: string]: React.ComponentType<CommonProps>;
-    } | undefined;
+    readonly overrides?:
+        | {
+              readonly [key: string]: React.ComponentType<CommonProps>;
+          }
+        | undefined;
     readonly props: {
         readonly component?: Obj | Inter | undefined;
     };

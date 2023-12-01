@@ -26,7 +26,9 @@ interface DefaultWindowOptions extends WindowOption {
     stylesheetUrl: string;
 }
 declare type PlatformProvider = any;
-export declare type OverrideCallback<T extends PlatformProvider> = (arg: PlatformProvider) => T;
+export declare type OverrideCallback<T extends PlatformProvider> = (
+    arg: PlatformProvider,
+) => T;
 export interface InitPlatformOptions {
     overrideCallback: OverrideCallback<any>;
 }
@@ -96,7 +98,10 @@ export default class PlatformModule extends Base {
      * @tutorial Platform.startFromManifest
      * @static
      */
-    startFromManifest(manifestUrl: string, opts?: RvmLaunchOptions): Promise<Platform>;
+    startFromManifest(
+        manifestUrl: string,
+        opts?: RvmLaunchOptions,
+    ): Promise<Platform>;
 }
 /** Manages the life cycle of windows and views in the application.
  *
@@ -118,7 +123,10 @@ export declare class Platform extends EmitterBase<PlatformEvents> {
      * @return { Promise<View> }
      * @tutorial Platform.createView
      */
-    createView(viewOptions: ViewCreationOptions, target?: Identity): Promise<View>;
+    createView(
+        viewOptions: ViewCreationOptions,
+        target?: Identity,
+    ): Promise<View>;
     /**
      * Creates a new Window.
      * @param { Window~options } options Window creation options
@@ -167,7 +175,10 @@ export declare class Platform extends EmitterBase<PlatformEvents> {
      * @return { Promise<Platform> }
      * @tutorial Platform.applySnapshot
      */
-    applySnapshot(requestedSnapshot: Snapshot | string, options?: ApplySnapshotOptions): Promise<Platform>;
+    applySnapshot(
+        requestedSnapshot: Snapshot | string,
+        options?: ApplySnapshotOptions,
+    ): Promise<Platform>;
     /**
      * Retrieves a manifest by url and launches a legacy application manifest or snapshot into the platform.  Returns a promise that
      * resolves to the wrapped Platform.
@@ -206,6 +217,8 @@ export declare class Platform extends EmitterBase<PlatformEvents> {
      * @tutorial Platform.onWindowContextUpdated
      * @experimental
      */
-    onWindowContextUpdated(listener: (newContext: any, oldContext?: any) => any): Promise<boolean>;
+    onWindowContextUpdated(
+        listener: (newContext: any, oldContext?: any) => any,
+    ): Promise<boolean>;
 }
 export {};

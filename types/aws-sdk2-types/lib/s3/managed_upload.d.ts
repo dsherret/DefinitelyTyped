@@ -16,14 +16,19 @@ export class ManagedUpload {
     /**
      * Initiates the managed upload for the payload.
      */
-    send(callback?: (err: AWSError, data: ManagedUpload.SendData) => void): void;
+    send(
+        callback?: (err: AWSError, data: ManagedUpload.SendData) => void,
+    ): void;
     /**
      * Adds a listener that is triggered when theuploader has uploaded more data.
      *
      * @param {string} event - httpUploadProgress: triggered when the uploader has uploaded more data.
      * @param {function} listener - Callback to run when the uploader has uploaded more data.
      */
-    on(event: "httpUploadProgress", listener: (progress: ManagedUpload.Progress) => void): any;
+    on(
+        event: "httpUploadProgress",
+        listener: (progress: ManagedUpload.Progress) => void,
+    ): any;
     /**
      * Default value: 10000
      */

@@ -169,10 +169,9 @@ function creating_an_api() {
     }
 
     function using_urls() {
-        $(".search.button")
-            .api({
-                url: "http://www.google.com?q={value}",
-            });
+        $(".search.button").api({
+            url: "http://www.google.com?q={value}",
+        });
     }
 }
 

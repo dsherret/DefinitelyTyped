@@ -4,7 +4,11 @@ export interface AbstractOptions {
 
 export type ErrorCallback = (err: Error | undefined) => void;
 export type ErrorValueCallback<V> = (err: Error | undefined, value: V) => void;
-export type ErrorKeyValueCallback<K, V> = (err: Error | undefined, key: K, value: V) => void;
+export type ErrorKeyValueCallback<K, V> = (
+    err: Error | undefined,
+    key: K,
+    value: V,
+) => void;
 
 export interface AbstractOpenOptions extends AbstractOptions {
     createIfMissing?: boolean | undefined;
@@ -31,10 +35,17 @@ export interface AbstractLevelDOWN<K = any, V = any> extends AbstractOptions {
     del(key: K, options: AbstractOptions, cb: ErrorCallback): void;
 
     getMany(key: K[], cb: ErrorValueCallback<V[]>): void;
-    getMany(key: K[], options: AbstractGetOptions, cb: ErrorValueCallback<V[]>): void;
+    getMany(
+        key: K[],
+        options: AbstractGetOptions,
+        cb: ErrorValueCallback<V[]>,
+    ): void;
 
     batch(): AbstractChainedBatch<K, V>;
-    batch(array: ReadonlyArray<AbstractBatch<K, V>>, cb: ErrorCallback): AbstractChainedBatch<K, V>;
+    batch(
+        array: ReadonlyArray<AbstractBatch<K, V>>,
+        cb: ErrorCallback,
+    ): AbstractChainedBatch<K, V>;
     batch(
         array: ReadonlyArray<AbstractBatch<K, V>>,
         options: AbstractOptions,
@@ -49,7 +60,7 @@ export interface AbstractLevelDOWN<K = any, V = any> extends AbstractOptions {
 
 export interface AbstractLevelDOWNConstructor {
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    new<K = any, V = any>(location: string): AbstractLevelDOWN<K, V>;
+    new <K = any, V = any>(location: string): AbstractLevelDOWN<K, V>;
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
     <K = any, V = any>(location: string): AbstractLevelDOWN<K, V>;
 }
@@ -80,7 +91,8 @@ export interface DelBatch<K = any, V = any> {
     readonly key: K;
 }
 
-export interface AbstractChainedBatch<K = any, V = any> extends AbstractOptions {
+export interface AbstractChainedBatch<K = any, V = any>
+    extends AbstractOptions {
     put: (key: K, value: V) => this;
     del: (key: K) => this;
     clear: () => this;
@@ -90,7 +102,7 @@ export interface AbstractChainedBatch<K = any, V = any> extends AbstractOptions 
 
 export interface AbstractChainedBatchConstructor {
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    new<K = any, V = any>(db: any): AbstractChainedBatch<K, V>;
+    new <K = any, V = any>(db: any): AbstractChainedBatch<K, V>;
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
     <K = any, V = any>(db: any): AbstractChainedBatch<K, V>;
 }
@@ -103,7 +115,7 @@ export interface AbstractIterator<K, V> extends AbstractOptions {
 
 export interface AbstractIteratorConstructor {
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    new<K = any, V = any>(db: any): AbstractIterator<K, V>;
+    new <K = any, V = any>(db: any): AbstractIterator<K, V>;
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
     <K = any, V = any>(db: any): AbstractIterator<K, V>;
 }

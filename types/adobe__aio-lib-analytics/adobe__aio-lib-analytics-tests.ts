@@ -1,11 +1,7 @@
 import * as adobeAnalytics from "@adobe/aio-lib-analytics";
 
 (async () => {
-    const client = await adobeAnalytics.init(
-        "foo",
-        "bar",
-        "foobar",
-    );
+    const client = await adobeAnalytics.init("foo", "bar", "foobar");
 
     const report = await client.getReport({
         rsid: "foo",
@@ -25,7 +21,7 @@ import * as adobeAnalytics from "@adobe/aio-lib-analytics";
         },
     });
 
-    const rowsValue = report.body.rows?.map(row => {
+    const rowsValue = report.body.rows?.map((row) => {
         return row.value;
     });
 })();

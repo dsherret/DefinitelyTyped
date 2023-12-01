@@ -5,7 +5,13 @@ declare module "joi" {
     interface PhoneNumberOptions {
         defaultCountry?: string[] | string | Reference | undefined;
         strict?: boolean | Reference | undefined;
-        format?: "e164" | "international" | "national" | "rfc3966" | Reference | undefined;
+        format?:
+            | "e164"
+            | "international"
+            | "national"
+            | "rfc3966"
+            | Reference
+            | undefined;
     }
 
     interface StringSchema {

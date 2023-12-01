@@ -15,7 +15,10 @@ import { Commit, Options as ParserOptions } from "conventional-commits-parser";
  * @param parserOpts See the [conventional-commits-parser](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-commits-parser)
  *                   documentation for available options.
  */
-declare function conventionalRecommendedBump(options: Options, parserOpts?: ParserOptions): Promise<Recommendation>;
+declare function conventionalRecommendedBump(
+    options: Options,
+    parserOpts?: ParserOptions,
+): Promise<Recommendation>;
 
 declare namespace conventionalRecommendedBump {
     /**

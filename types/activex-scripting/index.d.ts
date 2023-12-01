@@ -154,10 +154,20 @@ declare namespace Scripting {
     /** Script Encoder Object */
     interface Encoder {
         /** Call the Encoder determined by szExt, passing bstrStreamIn and optional arguments */
-        EncodeScriptFile(szExt: string, bstrStreamIn: string, cFlags: number, bstrDefaultLang: string): string;
+        EncodeScriptFile(
+            szExt: string,
+            bstrStreamIn: string,
+            cFlags: number,
+            bstrDefaultLang: string,
+        ): string;
 
         /** Call the Encoder determined by szExt, passing bstrStreamIn and optional arguments */
-        (szExt: string, bstrStreamIn: string, cFlags: number, bstrDefaultLang: string): string;
+        (
+            szExt: string,
+            bstrStreamIn: string,
+            cFlags: number,
+            bstrDefaultLang: string,
+        ): string;
     }
 
     /** File object */
@@ -248,13 +258,21 @@ declare namespace Scripting {
          * Copy a file
          * @param boolean [OverWriteFiles=true]
          */
-        CopyFile(Source: string, Destination: string, OverWriteFiles?: boolean): void;
+        CopyFile(
+            Source: string,
+            Destination: string,
+            OverWriteFiles?: boolean,
+        ): void;
 
         /**
          * Copy a folder
          * @param boolean [OverWriteFiles=true]
          */
-        CopyFolder(Source: string, Destination: string, OverWriteFiles?: boolean): void;
+        CopyFolder(
+            Source: string,
+            Destination: string,
+            OverWriteFiles?: boolean,
+        ): void;
 
         /** Create a folder */
         CreateFolder(Path: string): Folder;
@@ -264,7 +282,11 @@ declare namespace Scripting {
          * @param boolean [Overwrite=true]
          * @param boolean [Unicode=false]
          */
-        CreateTextFile(FileName: string, Overwrite?: boolean, Unicode?: boolean): TextStream;
+        CreateTextFile(
+            FileName: string,
+            Overwrite?: boolean,
+            Unicode?: boolean,
+        ): TextStream;
 
         /**
          * Delete a file
@@ -327,7 +349,10 @@ declare namespace Scripting {
          * Retrieve the standard input, output or error stream
          * @param boolean [Unicode=false]
          */
-        GetStandardStream(StandardStreamType: StandardStreamTypes, Unicode?: boolean): TextStream;
+        GetStandardStream(
+            StandardStreamType: StandardStreamTypes,
+            Unicode?: boolean,
+        ): TextStream;
 
         /** Generate name that can be used to name a temporary file */
         GetTempName(): string;
@@ -344,7 +369,12 @@ declare namespace Scripting {
          * @param boolean [Create=false]
          * @param Scripting.Tristate [Format=0] **TristateTrue** opens the file as Unicode; **TristateFalse** opens the file as ASCII;  **TristateUseDefault** opens the file with  the system default
          */
-        OpenTextFile(FileName: string, IOMode?: IOMode, Create?: boolean, Format?: Tristate): TextStream;
+        OpenTextFile(
+            FileName: string,
+            IOMode?: IOMode,
+            Create?: boolean,
+            Format?: Tristate,
+        ): TextStream;
     }
 
     /** Folder object */
@@ -366,7 +396,11 @@ declare namespace Scripting {
          * @param boolean [Overwrite=true]
          * @param boolean [Unicode=false]
          */
-        CreateTextFile(FileName: string, Overwrite?: boolean, Unicode?: boolean): TextStream;
+        CreateTextFile(
+            FileName: string,
+            Overwrite?: boolean,
+            Unicode?: boolean,
+        ): TextStream;
 
         /** Date folder was created */
         readonly DateCreated: VarDate;
@@ -500,5 +534,5 @@ interface ActiveXObjectNameMap {
 }
 
 interface EnumeratorConstructor {
-    new<TKey>(dict: Scripting.Dictionary<TKey>): Enumerator<TKey>;
+    new <TKey>(dict: Scripting.Dictionary<TKey>): Enumerator<TKey>;
 }

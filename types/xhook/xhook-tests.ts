@@ -3,7 +3,7 @@ import xhook = require("xhook");
 xhook.disable();
 xhook.enable();
 
-xhook.before(request => {
+xhook.before((request) => {
     console.log(request.url);
 });
 

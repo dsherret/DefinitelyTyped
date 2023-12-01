@@ -5,14 +5,15 @@ export interface RouterProps {
     children: NonNullable<ReactNode>;
     initialEntries?:
         | Array<
-            (string | {
-                pathname: string;
-                search?: string | undefined;
-                hash?: string | undefined;
-                state?: any;
-                key?: string | undefined;
-            })
-        >
+              | string
+              | {
+                    pathname: string;
+                    search?: string | undefined;
+                    hash?: string | undefined;
+                    state?: any;
+                    key?: string | undefined;
+                }
+          >
         | undefined;
     initialIndex?: number | undefined;
     keyLength?: number | undefined;
@@ -41,18 +42,25 @@ export interface RouteComponentProps<T extends Record<string, any> = {}> {
 export interface RouteProps {
     path: string;
     exact?: boolean | undefined;
-    location?: {
-        key?: string | undefined;
-        pathname?: string | undefined;
-    } | undefined;
+    location?:
+        | {
+              key?: string | undefined;
+              pathname?: string | undefined;
+          }
+        | undefined;
     component: React.ComponentType<any>;
 }
 export class Route extends Component<RouteProps> {}
 
 export interface SwitchProps {
-    children?: React.ReactElement<RouteProps> | Array<React.ReactElement<RouteProps>> | undefined;
+    children?:
+        | React.ReactElement<RouteProps>
+        | Array<React.ReactElement<RouteProps>>
+        | undefined;
     notFound?: (() => any) | React.ComponentType<any> | undefined;
 }
 export class Switch extends Component<SwitchProps> {}
 
-export function withRouter(component: ComponentType<any>): (props: any) => JSX.Element;
+export function withRouter(
+    component: ComponentType<any>,
+): (props: any) => JSX.Element;

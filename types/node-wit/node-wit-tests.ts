@@ -11,8 +11,12 @@ const wit = new Wit({
             });
         },
         myAction(request: WitRequest) {
-            console.log(`Session ${request.sessionId} received ${request.text}`);
-            console.log(`The current context is ${JSON.stringify(request.context)}`);
+            console.log(
+                `Session ${request.sessionId} received ${request.text}`,
+            );
+            console.log(
+                `The current context is ${JSON.stringify(request.context)}`,
+            );
             console.log(`Wit extracted ${JSON.stringify(request.entities)}`);
             return Promise.resolve(request.context);
         },
@@ -20,13 +24,15 @@ const wit = new Wit({
     logger: new log.Logger(log.DEBUG),
 });
 
-wit.message("what is the weather in London?", {}).then((res) => {
-    console.log(res.text);
+wit.message("what is the weather in London?", {})
+    .then((res) => {
+        console.log(res.text);
 
-    console.log(res.entities);
-}).catch((err) => {
-    console.log(err);
-});
+        console.log(res.entities);
+    })
+    .catch((err) => {
+        console.log(err);
+    });
 
 const sessionId = "my-user-session-42";
 const context0: WitContext = {};

@@ -14,7 +14,9 @@ export interface MathComponentPropsWithChildren {
     renderError?: ErrorRenderer;
 }
 
-export type MathComponentProps = MathComponentPropsWithMath | MathComponentPropsWithChildren;
+export type MathComponentProps =
+    | MathComponentPropsWithMath
+    | MathComponentPropsWithChildren;
 
 export function BlockMath(props: MathComponentProps): JSX.Element;
 

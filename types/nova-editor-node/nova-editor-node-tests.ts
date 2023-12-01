@@ -4,7 +4,11 @@ const client = new LanguageClient(
     {
         type: "stdio",
         path: `/usr/bin/env`,
-        args: ["bash", "-c", `${nova.extension.path}/run.sh | tee /tmp/nova-typescript.sh.log`],
+        args: [
+            "bash",
+            "-c",
+            `${nova.extension.path}/run.sh | tee /tmp/nova-typescript.sh.log`,
+        ],
         env: {
             WORKSPACE_DIR: nova.workspace.path || "",
         },
@@ -19,11 +23,11 @@ interface TestThisType {
 }
 declare const testThis: TestThisType;
 
-client.onDidStop(err => {
+client.onDidStop((err) => {
     // $ExpectType Error | undefined
     err;
 });
-client.onDidStop(function(err) {
+client.onDidStop(function (err) {
     // $ExpectType Error | undefined
     err;
     // $ExpectType TestThisType
@@ -198,11 +202,11 @@ const p = new Process("/path", {
 
 const parser = new IssueParser("my-issue-matcher");
 
-p.onStdout(line => {
+p.onStdout((line) => {
     parser.pushLine(line);
 });
 
-p.onDidExit(code => {
+p.onDidExit((code) => {
     const issues = parser.issues;
 });
 
@@ -234,8 +238,8 @@ request.actions = [nova.localize("OK"), nova.localize("Ignore")];
 
 const promise = nova.notifications.add(request);
 promise.then(
-    reply => {},
-    error => {},
+    (reply) => {},
+    (error) => {},
 );
 
 /// https://novadocs.panic.com/api-reference/path/
@@ -256,20 +260,20 @@ const options = {
 
 const process = new Process("/usr/bin/env", options);
 
-process.onStdout(line => {});
+process.onStdout((line) => {});
 
 process.start();
 
 process.notify("didSave", { file: "foo.txt" });
 
-process.request("getNames", { sort: "alpha" }).then(reply => {
+process.request("getNames", { sort: "alpha" }).then((reply) => {
     // $ExpectType any
     reply.result;
 });
 
-process.onNotify("didConnect", message => {});
+process.onNotify("didConnect", (message) => {});
 
-process.onRequest("getCount", request => {
+process.onRequest("getCount", (request) => {
     return new Promise((resolve, reject) => {
         resolve({ count: 10 });
     });
@@ -367,7 +371,9 @@ editor.selectedRange = editor.getLineRangeForRange(new Range(4, 2));
 /// https://novadocs.panic.com/api-reference/tree-view/
 
 class MyDataProvider implements TreeDataProvider<{ name: string }> {
-    getChildren(element: { name: string }): Array<{ name: string }> | Promise<Array<{ name: string }>> {
+    getChildren(element: {
+        name: string;
+    }): Array<{ name: string }> | Promise<Array<{ name: string }>> {
         throw new Error("Method not implemented.");
     }
     getTreeItem(element: { name: string }): TreeItem {
@@ -383,11 +389,11 @@ const treeView = new TreeView("my-identifier", {
     dataProvider: new MyDataProvider(),
 });
 
-treeView.onDidChangeSelection(selection => {});
+treeView.onDidChangeSelection((selection) => {});
 
-treeView.onDidExpandElement(element => {});
+treeView.onDidExpandElement((element) => {});
 
-treeView.onDidCollapseElement(element => {});
+treeView.onDidCollapseElement((element) => {});
 
 treeView.onDidChangeVisibility(() => {});
 
@@ -415,13 +421,21 @@ nova.workspace.openFile("file:///tmp/test/txt", { column: 2 });
 nova.workspace.openNewTextDocument();
 nova.workspace.openNewTextDocument({ content: "<!doctype html>" });
 nova.workspace.openNewTextDocument({ syntax: "html" });
-nova.workspace.openNewTextDocument({ content: "<!doctype html>", syntax: "html" });
+nova.workspace.openNewTextDocument({
+    content: "<!doctype html>",
+    syntax: "html",
+});
 nova.workspace.openNewTextDocument({ line: 1 });
 nova.workspace.openNewTextDocument({ line: 1, column: 2 });
 nova.workspace.openNewTextDocument({ syntax: "html", line: 1 });
 // @ts-expect-error
 nova.workspace.openNewTextDocument({ syntax: "html", column: 2 });
-nova.workspace.openNewTextDocument({ content: "<!doctype html>", syntax: "html", line: 1, column: 2 });
+nova.workspace.openNewTextDocument({
+    content: "<!doctype html>",
+    syntax: "html",
+    line: 1,
+    column: 2,
+});
 
 /// https://docs.nova.app/api-reference/configuration/
 
@@ -429,7 +443,7 @@ type ConfigCustomThis = number & { __t: "ConfigCustomThis" };
 const configCustomThis: ConfigCustomThis = 2 as ConfigCustomThis;
 nova.config.observe(
     "apexskier.testConfig",
-    function(newValue: string, oldValue: string) {
+    function (newValue: string, oldValue: string) {
         // $ExpectType string
         newValue;
         // $ExpectType string
@@ -442,7 +456,7 @@ nova.config.observe(
 
 nova.config.observe<string, ConfigCustomThis>(
     "apexskier.testConfig",
-    function(newValue: string, oldValue: string) {
+    function (newValue: string, oldValue: string) {
         // $ExpectType string
         newValue;
         // $ExpectType string
@@ -468,14 +482,17 @@ nova.config.observe(
     configCustomThis,
 );
 
-nova.config.observe("apexskier.testConfig", (newValue: string, oldValue: string) => {
-    // $ExpectType string
-    newValue;
-    // $ExpectType string
-    oldValue;
-    // $ExpectType undefined
-    this;
-});
+nova.config.observe(
+    "apexskier.testConfig",
+    (newValue: string, oldValue: string) => {
+        // $ExpectType string
+        newValue;
+        // $ExpectType string
+        oldValue;
+        // $ExpectType undefined
+        this;
+    },
+);
 
 const tasks: TaskAssistant = { provideTasks: () => [] };
 nova.assistants.registerTaskAssistant(tasks, {

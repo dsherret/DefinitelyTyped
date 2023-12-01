@@ -168,7 +168,11 @@ declare class MultisigHMAC {
      * @param buffer Pass a `Buffer` of length `KEYBYTES` that the key will be written to. This `Buffer`
      * will the be returned instead of a new one.
      */
-    deriveKey(masterSeed: Buffer, index: number, buffer?: Buffer): MultisigHMAC.Key;
+    deriveKey(
+        masterSeed: Buffer,
+        index: number,
+        buffer?: Buffer,
+    ): MultisigHMAC.Key;
 
     /**
      * Independently sign data with a key.
@@ -178,7 +182,11 @@ declare class MultisigHMAC {
      * @param buffer Use provided `Buffer` to store the signature. Must be at least `BYTES` long.
      * @return A `Signature` object. Can be passed to `combine()`.
      */
-    sign(key: MultisigHMAC.Key, data: string | Buffer, buffer?: Buffer): MultisigHMAC.Signature;
+    sign(
+        key: MultisigHMAC.Key,
+        data: string | Buffer,
+        buffer?: Buffer,
+    ): MultisigHMAC.Signature;
 
     /**
      * Combine a list of signatures, which have all been signed independently. Only include each signature
@@ -188,7 +196,10 @@ declare class MultisigHMAC {
      * @param signatures The signatures to combine.
      * @param buffer Will store the aggregate signature. Must be at least `BYTES` long.
      */
-    combine(signatures: readonly MultisigHMAC.Signature[], buffer?: Buffer): MultisigHMAC.Signature;
+    combine(
+        signatures: readonly MultisigHMAC.Signature[],
+        buffer?: Buffer,
+    ): MultisigHMAC.Signature;
 
     /**
      * Verify a `signature` of `data` against a list of `keys`, over a given `threshold`.

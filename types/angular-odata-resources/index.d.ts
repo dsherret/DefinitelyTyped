@@ -9,10 +9,12 @@ declare namespace OData {
          * If true then the trailing slashes from any calculated URL will be stripped (defaults to true)
          */
         stripTrailingSlashes?: boolean | undefined;
-        odata?: {
-            url?: string | undefined;
-            method?: string | undefined;
-        } | undefined;
+        odata?:
+            | {
+                  url?: string | undefined;
+                  method?: string | undefined;
+              }
+            | undefined;
         isodatav4?: boolean | undefined;
     }
 
@@ -77,42 +79,84 @@ declare namespace OData {
     // Also, static calls always return the IResource (or IResourceArray) retrieved
     // https://github.com/angular/angular.js/blob/v1.2.0/src/ngResource/resource.js#L538-L549
     interface IResourceClass<T> {
-        new(dataOrParams?: any): IResource<T>;
+        new (dataOrParams?: any): IResource<T>;
         get(): IResource<T>;
         get(params: Object): IResource<T>;
         get(success: Function, error?: Function): IResource<T>;
         get(params: Object, success: Function, error?: Function): IResource<T>;
-        get(params: Object, data: Object, success?: Function, error?: Function): IResource<T>;
+        get(
+            params: Object,
+            data: Object,
+            success?: Function,
+            error?: Function,
+        ): IResource<T>;
 
         query(): IResourceArray<T>;
         query(params: Object): IResourceArray<T>;
         query(success: Function, error?: Function): IResourceArray<T>;
-        query(params: Object, success: Function, error?: Function): IResourceArray<T>;
-        query(params: Object, data: Object, success?: Function, error?: Function): IResourceArray<T>;
+        query(
+            params: Object,
+            success: Function,
+            error?: Function,
+        ): IResourceArray<T>;
+        query(
+            params: Object,
+            data: Object,
+            success?: Function,
+            error?: Function,
+        ): IResourceArray<T>;
 
         save(): IResource<T>;
         save(data: Object): IResource<T>;
         save(success: Function, error?: Function): IResource<T>;
         save(data: Object, success: Function, error?: Function): IResource<T>;
-        save(params: Object, data: Object, success?: Function, error?: Function): IResource<T>;
+        save(
+            params: Object,
+            data: Object,
+            success?: Function,
+            error?: Function,
+        ): IResource<T>;
 
         update(): IResource<T>;
         update(data: Object): IResource<T>;
         update(success: Function, error?: Function): IResource<T>;
         update(data: Object, success: Function, error?: Function): IResource<T>;
-        update(params: Object, data: Object, success?: Function, error?: Function): IResource<T>;
+        update(
+            params: Object,
+            data: Object,
+            success?: Function,
+            error?: Function,
+        ): IResource<T>;
 
         remove(): IResource<T>;
         remove(params: Object): IResource<T>;
         remove(success: Function, error?: Function): IResource<T>;
-        remove(params: Object, success: Function, error?: Function): IResource<T>;
-        remove(params: Object, data: Object, success?: Function, error?: Function): IResource<T>;
+        remove(
+            params: Object,
+            success: Function,
+            error?: Function,
+        ): IResource<T>;
+        remove(
+            params: Object,
+            data: Object,
+            success?: Function,
+            error?: Function,
+        ): IResource<T>;
 
         delete(): IResource<T>;
         delete(params: Object): IResource<T>;
         delete(success: Function, error?: Function): IResource<T>;
-        delete(params: Object, success: Function, error?: Function): IResource<T>;
-        delete(params: Object, data: Object, success?: Function, error?: Function): IResource<T>;
+        delete(
+            params: Object,
+            success: Function,
+            error?: Function,
+        ): IResource<T>;
+        delete(
+            params: Object,
+            data: Object,
+            success?: Function,
+            error?: Function,
+        ): IResource<T>;
 
         odata(): OData.Provider<T>;
     }
@@ -121,27 +165,54 @@ declare namespace OData {
     // https://github.com/angular/angular.js/blob/v1.2.0/src/ngResource/resource.js#L538-L546
     interface IResource<T> {
         $get(): angular.IPromise<T>;
-        $get(params?: Object, success?: Function, error?: Function): angular.IPromise<T>;
+        $get(
+            params?: Object,
+            success?: Function,
+            error?: Function,
+        ): angular.IPromise<T>;
         $get(success: Function, error?: Function): angular.IPromise<T>;
 
         $query(): angular.IPromise<IResourceArray<T>>;
-        $query(params?: Object, success?: Function, error?: Function): angular.IPromise<IResourceArray<T>>;
-        $query(success: Function, error?: Function): angular.IPromise<IResourceArray<T>>;
+        $query(
+            params?: Object,
+            success?: Function,
+            error?: Function,
+        ): angular.IPromise<IResourceArray<T>>;
+        $query(
+            success: Function,
+            error?: Function,
+        ): angular.IPromise<IResourceArray<T>>;
 
         $save(): angular.IPromise<T>;
-        $save(params?: Object, success?: Function, error?: Function): angular.IPromise<T>;
+        $save(
+            params?: Object,
+            success?: Function,
+            error?: Function,
+        ): angular.IPromise<T>;
         $save(success: Function, error?: Function): angular.IPromise<T>;
 
         $update(): angular.IPromise<T>;
-        $update(params?: Object, success?: Function, error?: Function): angular.IPromise<T>;
+        $update(
+            params?: Object,
+            success?: Function,
+            error?: Function,
+        ): angular.IPromise<T>;
         $update(success: Function, error?: Function): angular.IPromise<T>;
 
         $remove(): angular.IPromise<T>;
-        $remove(params?: Object, success?: Function, error?: Function): angular.IPromise<T>;
+        $remove(
+            params?: Object,
+            success?: Function,
+            error?: Function,
+        ): angular.IPromise<T>;
         $remove(success: Function, error?: Function): angular.IPromise<T>;
 
         $delete(): angular.IPromise<T>;
-        $delete(params?: Object, success?: Function, error?: Function): angular.IPromise<T>;
+        $delete(
+            params?: Object,
+            success?: Function,
+            error?: Function,
+        ): angular.IPromise<T>;
         $delete(success: Function, error?: Function): angular.IPromise<T>;
 
         /** the promise of the original server interaction that created this instance. **/
@@ -193,20 +264,36 @@ declare namespace OData {
     }
 
     interface BinaryOperationFactory {
-        new(propertyOrPredicate: any, valueOrOperator?: any, value?: any): BinaryOperation;
+        new (
+            propertyOrPredicate: any,
+            valueOrOperator?: any,
+            value?: any,
+        ): BinaryOperation;
     }
     class BinaryOperation implements IExecutable {
         private operandA;
         private operandB;
         private filterOperator;
-        constructor(propertyOrPredicate: any, valueOrOperator?: any, value?: any);
+        constructor(
+            propertyOrPredicate: any,
+            valueOrOperator?: any,
+            value?: any,
+        );
         execute(noParenthesis?: any): string;
-        or(propertyOrPredicate: any, operatorOrValue?: any, value?: any): BinaryOperation;
-        and(propertyOrPredicate: any, operatorOrValue?: any, value?: any): BinaryOperation;
+        or(
+            propertyOrPredicate: any,
+            operatorOrValue?: any,
+            value?: any,
+        ): BinaryOperation;
+        and(
+            propertyOrPredicate: any,
+            operatorOrValue?: any,
+            value?: any,
+        ): BinaryOperation;
     }
 
     interface MethodCallFactory {
-        new(methodName: string, ...args: any[]): MethodCall;
+        new (methodName: string, ...args: any[]): MethodCall;
     }
     class MethodCall implements IExecutable {
         private methodName;
@@ -217,20 +304,20 @@ declare namespace OData {
 
     class Operators {
         operators: {
-            "eq": string[];
-            "ne": string[];
-            "gt": string[];
-            "ge": string[];
-            "lt": string[];
-            "le": string[];
-            "and": string[];
-            "or": string[];
-            "not": string[];
-            "add": string[];
-            "sub": string[];
-            "mul": string[];
-            "div": string[];
-            "mod": string[];
+            eq: string[];
+            ne: string[];
+            gt: string[];
+            ge: string[];
+            lt: string[];
+            le: string[];
+            and: string[];
+            or: string[];
+            not: string[];
+            add: string[];
+            sub: string[];
+            mul: string[];
+            div: string[];
+            mod: string[];
         };
         private rtrim;
         private trim(value);
@@ -238,7 +325,7 @@ declare namespace OData {
     }
 
     interface OrderByStatementFactory {
-        new(propertyName: string, sortOrder?: string): OrderByStatement;
+        new (propertyName: string, sortOrder?: string): OrderByStatement;
     }
     class OrderByStatement implements IExecutable {
         private propertyName;
@@ -248,20 +335,36 @@ declare namespace OData {
     }
 
     interface PredicateFactory {
-        new(propertyOrValueOrPredicate: any, valueOrOperator?: any, value?: any): Predicate;
+        new (
+            propertyOrValueOrPredicate: any,
+            valueOrOperator?: any,
+            value?: any,
+        ): Predicate;
         or(orStatements: any[]): IExecutable;
-        create(propertyOrPredicate: any, operatorOrValue?: any, value?: any): IExecutable;
+        create(
+            propertyOrPredicate: any,
+            operatorOrValue?: any,
+            value?: any,
+        ): IExecutable;
         and(andStatements: any): IExecutable;
     }
     class Predicate extends BinaryOperation {
-        constructor(propertyOrValueOrPredicate: any, valueOrOperator?: any, value?: any);
+        constructor(
+            propertyOrValueOrPredicate: any,
+            valueOrOperator?: any,
+            value?: any,
+        );
         static or(orStatements: any[]): IExecutable;
-        static create(propertyOrPredicate: any, operatorOrValue?: any, value?: any): IExecutable;
+        static create(
+            propertyOrPredicate: any,
+            operatorOrValue?: any,
+            value?: any,
+        ): IExecutable;
         static and(andStatements: any): IExecutable;
     }
 
     interface PropertyFactory {
-        new(value: string): Property;
+        new (value: string): Property;
     }
     class Property implements IExecutable {
         private value;
@@ -270,7 +373,7 @@ declare namespace OData {
     }
 
     interface ProviderFactory {
-        new<T>(callback: ProviderCallback<T>): Provider<T>;
+        new <T>(callback: ProviderCallback<T>): Provider<T>;
     }
     interface ProviderCallback<T> {
         (queryString: string, success: () => any, error: () => any): T[];
@@ -309,12 +412,15 @@ declare namespace OData {
         expand(params: string[]): Provider<T>;
         select(...params: string[]): Provider<T>;
         select(params: string[]): Provider<T>;
-        count(success?: (result: ICountResult) => any, error?: () => any): ICountResult;
+        count(
+            success?: (result: ICountResult) => any,
+            error?: () => any,
+        ): ICountResult;
         withInlineCount(): Provider<T>;
     }
 
     interface ValueFactory {
-        new(value: any, type?: string): Value;
+        new (value: any, type?: string): Value;
     }
     class ValueTypes {
         static Boolean: string;

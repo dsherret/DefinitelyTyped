@@ -2,7 +2,10 @@
 
 declare namespace Chai {
     // For BDD APIs
-    interface Assertion extends LanguageChains, NumericComparison, TypeComparison {
+    interface Assertion
+        extends LanguageChains,
+            NumericComparison,
+            TypeComparison {
         oequal(result: any, method?: string): Equal;
         oeql(result: any, method?: string): Equal;
         oeq(result: any, method?: string): Equal;

@@ -12,7 +12,14 @@ declare namespace Emscripten {
 
     type CIntType = "i8" | "i16" | "i32" | "i64";
     type CFloatType = "float" | "double";
-    type CPointerType = "i8*" | "i16*" | "i32*" | "i64*" | "float*" | "double*" | "*";
+    type CPointerType =
+        | "i8*"
+        | "i16*"
+        | "i32*"
+        | "i64*"
+        | "float*"
+        | "double*"
+        | "*";
     type CType = CIntType | CFloatType | CPointerType;
 
     type WebAssemblyImports = Array<{
@@ -49,7 +56,10 @@ interface EmscriptenModule {
     wasmBinary: ArrayBuffer;
 
     destroy(object: object): void;
-    getPreloadedPackage(remotePackageName: string, remotePackageSize: number): ArrayBuffer;
+    getPreloadedPackage(
+        remotePackageName: string,
+        remotePackageSize: number,
+    ): ArrayBuffer;
     instantiateWasm(
         imports: Emscripten.WebAssemblyImports,
         successCallback: (module: WebAssembly.Module) => void,
@@ -153,7 +163,11 @@ declare namespace FS {
     //
     function syncfs(populate: boolean, callback: (e: any) => any): void;
     function syncfs(callback: (e: any) => any, populate?: boolean): void;
-    function mount(type: Emscripten.FileSystemType, opts: any, mountpoint: string): any;
+    function mount(
+        type: Emscripten.FileSystemType,
+        opts: any,
+        mountpoint: string,
+    ): any;
     function unmount(mountpoint: string): void;
 
     function mkdir(path: string, mode?: number): any;
@@ -169,16 +183,33 @@ declare namespace FS {
     function chmod(path: string, mode: number, dontFollow?: boolean): void;
     function lchmod(path: string, mode: number): void;
     function fchmod(fd: number, mode: number): void;
-    function chown(path: string, uid: number, gid: number, dontFollow?: boolean): void;
+    function chown(
+        path: string,
+        uid: number,
+        gid: number,
+        dontFollow?: boolean,
+    ): void;
     function lchown(path: string, uid: number, gid: number): void;
     function fchown(fd: number, uid: number, gid: number): void;
     function truncate(path: string, len: number): void;
     function ftruncate(fd: number, len: number): void;
     function utime(path: string, atime: number, mtime: number): void;
-    function open(path: string, flags: string, mode?: number, fd_start?: number, fd_end?: number): FSStream;
+    function open(
+        path: string,
+        flags: string,
+        mode?: number,
+        fd_start?: number,
+        fd_end?: number,
+    ): FSStream;
     function close(stream: FSStream): void;
     function llseek(stream: FSStream, offset: number, whence: number): any;
-    function read(stream: FSStream, buffer: ArrayBufferView, offset: number, length: number, position?: number): number;
+    function read(
+        stream: FSStream,
+        buffer: ArrayBufferView,
+        offset: number,
+        length: number,
+        position?: number,
+    ): number;
     function write(
         stream: FSStream,
         buffer: ArrayBufferView,
@@ -198,10 +229,23 @@ declare namespace FS {
         flags: number,
     ): any;
     function ioctl(stream: FSStream, cmd: any, arg: any): any;
-    function readFile(path: string, opts: { encoding: "binary"; flags?: string | undefined }): Uint8Array;
-    function readFile(path: string, opts: { encoding: "utf8"; flags?: string | undefined }): string;
-    function readFile(path: string, opts?: { flags?: string | undefined }): Uint8Array;
-    function writeFile(path: string, data: string | ArrayBufferView, opts?: { flags?: string | undefined }): void;
+    function readFile(
+        path: string,
+        opts: { encoding: "binary"; flags?: string | undefined },
+    ): Uint8Array;
+    function readFile(
+        path: string,
+        opts: { encoding: "utf8"; flags?: string | undefined },
+    ): string;
+    function readFile(
+        path: string,
+        opts?: { flags?: string | undefined },
+    ): Uint8Array;
+    function writeFile(
+        path: string,
+        data: string | ArrayBufferView,
+        opts?: { flags?: string | undefined },
+    ): void;
 
     //
     // module-level FS code
@@ -247,13 +291,14 @@ declare var NODEFS: Emscripten.FileSystemType;
 declare var IDBFS: Emscripten.FileSystemType;
 
 // https://emscripten.org/docs/porting/connecting_cpp_and_javascript/Interacting-with-code.html
-type StringToType<R extends any> = R extends Emscripten.JSType ? {
-        number: number;
-        string: string;
-        array: number[] | string[] | boolean[] | Uint8Array | Int8Array;
-        boolean: boolean;
-        null: null;
-    }[R]
+type StringToType<R extends any> = R extends Emscripten.JSType
+    ? {
+          number: number;
+          string: string;
+          array: number[] | string[] | boolean[] | Uint8Array | Int8Array;
+          boolean: boolean;
+          null: null;
+      }[R]
     : never;
 
 type ArgsToType<T extends Array<Emscripten.JSType | null>> = Extract<
@@ -263,7 +308,8 @@ type ArgsToType<T extends Array<Emscripten.JSType | null>> = Extract<
     any[]
 >;
 
-type ReturnToType<R extends Emscripten.JSType | null> = R extends null ? null
+type ReturnToType<R extends Emscripten.JSType | null> = R extends null
+    ? null
     : StringToType<Exclude<R, null>>;
 
 // Below runtime function/variable declarations are exportable by
@@ -301,8 +347,17 @@ declare function ccall<
     opts?: Emscripten.CCallOpts,
 ): ReturnToType<R>;
 
-declare function setValue(ptr: number, value: any, type: Emscripten.CType, noSafe?: boolean): void;
-declare function getValue(ptr: number, type: Emscripten.CType, noSafe?: boolean): number;
+declare function setValue(
+    ptr: number,
+    value: any,
+    type: Emscripten.CType,
+    noSafe?: boolean,
+): void;
+declare function getValue(
+    ptr: number,
+    type: Emscripten.CType,
+    noSafe?: boolean,
+): number;
 
 declare function allocate(
     slab: number[] | ArrayBufferView | number,
@@ -316,27 +371,54 @@ declare function stackSave(): number;
 declare function stackRestore(ptr: number): void;
 
 declare function UTF8ToString(ptr: number, maxBytesToRead?: number): string;
-declare function stringToUTF8(str: string, outPtr: number, maxBytesToRead?: number): void;
+declare function stringToUTF8(
+    str: string,
+    outPtr: number,
+    maxBytesToRead?: number,
+): void;
 declare function lengthBytesUTF8(str: string): number;
 declare function allocateUTF8(str: string): number;
 declare function allocateUTF8OnStack(str: string): number;
 declare function UTF16ToString(ptr: number): string;
-declare function stringToUTF16(str: string, outPtr: number, maxBytesToRead?: number): void;
+declare function stringToUTF16(
+    str: string,
+    outPtr: number,
+    maxBytesToRead?: number,
+): void;
 declare function lengthBytesUTF16(str: string): number;
 declare function UTF32ToString(ptr: number): string;
-declare function stringToUTF32(str: string, outPtr: number, maxBytesToRead?: number): void;
+declare function stringToUTF32(
+    str: string,
+    outPtr: number,
+    maxBytesToRead?: number,
+): void;
 declare function lengthBytesUTF32(str: string): number;
 
-declare function intArrayFromString(stringy: string, dontAddNull?: boolean, length?: number): number[];
+declare function intArrayFromString(
+    stringy: string,
+    dontAddNull?: boolean,
+    length?: number,
+): number[];
 declare function intArrayToString(array: number[]): string;
-declare function writeStringToMemory(str: string, buffer: number, dontAddNull: boolean): void;
+declare function writeStringToMemory(
+    str: string,
+    buffer: number,
+    dontAddNull: boolean,
+): void;
 declare function writeArrayToMemory(array: number[], buffer: number): void;
-declare function writeAsciiToMemory(str: string, buffer: number, dontAddNull: boolean): void;
+declare function writeAsciiToMemory(
+    str: string,
+    buffer: number,
+    dontAddNull: boolean,
+): void;
 
 declare function addRunDependency(id: any): void;
 declare function removeRunDependency(id: any): void;
 
-declare function addFunction(func: (...args: any[]) => any, signature?: string): number;
+declare function addFunction(
+    func: (...args: any[]) => any,
+    signature?: string,
+): number;
 declare function removeFunction(funcPtr: number): void;
 
 declare var ALLOC_NORMAL: number;

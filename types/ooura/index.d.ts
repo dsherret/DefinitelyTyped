@@ -6,11 +6,20 @@ interface Info {
 }
 
 interface realFFT {
-    (dataBuffer: ArrayBuffer, reBuffer: ArrayBuffer, imBuffer: ArrayBuffer): void;
+    (
+        dataBuffer: ArrayBuffer,
+        reBuffer: ArrayBuffer,
+        imBuffer: ArrayBuffer,
+    ): void;
 }
 
 interface complexFFT {
-    (reIpBuffer: ArrayBuffer, imIpBuffer: ArrayBuffer, reOpBuffer: ArrayBuffer, imOpBuffer: ArrayBuffer): void;
+    (
+        reIpBuffer: ArrayBuffer,
+        imIpBuffer: ArrayBuffer,
+        reOpBuffer: ArrayBuffer,
+        imOpBuffer: ArrayBuffer,
+    ): void;
 }
 
 declare class Ooura {

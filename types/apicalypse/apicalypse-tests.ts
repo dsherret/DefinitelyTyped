@@ -28,28 +28,20 @@ Apicalypse()
     .request("/games");
 
 // $ExpectType Promise<any[]>
-Apicalypse()
-    .search("title")
-    .requestAll("/games");
+Apicalypse().search("title").requestAll("/games");
 
 // $ExpectType Promise<any[]>
-Apicalypse()
-    .search("title")
-    .requestAll("/games", {});
+Apicalypse().search("title").requestAll("/games", {});
 
 // $ExpectType Promise<any[]>
-Apicalypse()
-    .search("title")
-    .requestAll("/games", {
-        concurrency: 2,
-        delay: 500,
-    });
+Apicalypse().search("title").requestAll("/games", {
+    concurrency: 2,
+    delay: 500,
+});
 
 // $ExpectType Apicalypse
 Apicalypse().multi([
-    Apicalypse()
-        .query("/games", "game")
-        .where("id == 1081"),
+    Apicalypse().query("/games", "game").where("id == 1081"),
     Apicalypse()
         .query("/achievements", "achievements")
         .where("game_id == 1081"),

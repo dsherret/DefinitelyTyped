@@ -107,7 +107,10 @@ export class ConcatSource extends Source implements SourceAndMapMixin {
     listMap(options: MapOptions): SourceListMap;
 }
 
-export class LineToLineMappedSource extends Source implements SourceAndMapMixin {
+export class LineToLineMappedSource
+    extends Source
+    implements SourceAndMapMixin
+{
     constructor(sourceCode: string, name: string, originalSource: string);
 
     source(): string;

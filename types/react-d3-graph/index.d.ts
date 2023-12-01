@@ -1,16 +1,20 @@
 import { Component, MouseEvent } from "react";
 
-export type NodeLabelProperty<N extends GraphNode> = ((node: N) => string) | keyof N;
-export type LinkLabelProperty<L extends GraphLink> = ((node: L) => string) | keyof L;
+export type NodeLabelProperty<N extends GraphNode> =
+    | ((node: N) => string)
+    | keyof N;
+export type LinkLabelProperty<L extends GraphLink> =
+    | ((node: L) => string)
+    | keyof L;
 
 export type NodeWithExtraParameters = GraphNode & { [key: string]: string };
 
 export type NodeSize =
     | number
     | {
-        width: number;
-        height: number;
-    };
+          width: number;
+          height: number;
+      };
 
 export interface NodeLevelNodeConfiguration {
     color: string;
@@ -61,7 +65,8 @@ export interface LinkLevelLinkConfiguration {
     markerWidth: number;
 }
 
-export interface GraphLevelLinkConfiguration<L extends GraphLink> extends LinkLevelLinkConfiguration {
+export interface GraphLevelLinkConfiguration<L extends GraphLink>
+    extends LinkLevelLinkConfiguration {
     fontSize: number;
     fontWeight: string;
     highlightColor: string;
@@ -150,20 +155,28 @@ export interface GraphEventCallbacks {
     onMouseOverNode: (nodeId: string) => void;
     onMouseOutNode: (nodeId: string) => void;
     onClickLink: (source: string, target: string) => void;
-    onRightClickLink: (event: MouseEvent, source: string, target: string) => void;
+    onRightClickLink: (
+        event: MouseEvent,
+        source: string,
+        target: string,
+    ) => void;
     onMouseOverLink: (source: string, target: string) => void;
     onMouseOutLink: (source: string, target: string) => void;
     onNodePositionChange: (nodeId: string, x: number, y: number) => void;
     onZoomChange: (previousZoom: number, newZoom: number) => void;
 }
 
-export interface GraphProps<N extends GraphNode, L extends GraphLink> extends Partial<GraphEventCallbacks> {
+export interface GraphProps<N extends GraphNode, L extends GraphLink>
+    extends Partial<GraphEventCallbacks> {
     id: string;
     data?: GraphData<N, L> | undefined;
     config?: Partial<GraphConfiguration<N, L>> | undefined;
 }
 
-export class Graph<N extends GraphNode, L extends GraphLink> extends Component<GraphProps<N, L>, any> {
+export class Graph<N extends GraphNode, L extends GraphLink> extends Component<
+    GraphProps<N, L>,
+    any
+> {
     constructor(props: GraphProps<N, L>, ...args: any[]);
 
     UNSAFE_componentWillReceiveProps(nextProps: any): any;

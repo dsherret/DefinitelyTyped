@@ -53,7 +53,9 @@ declare namespace OO.ui {
             move: [item: EventEmitter, index: number, oldIndex: number];
         }
 
-        interface ConfigOptions extends Widget.ConfigOptions, mixin.GroupElement.ConfigOptions {
+        interface ConfigOptions
+            extends Widget.ConfigOptions,
+                mixin.GroupElement.ConfigOptions {
             /**
              * An array of options to add to the select.
              * Options are created with {@link OO.ui.OptionWidget OptionWidget} classes. See
@@ -91,7 +93,9 @@ declare namespace OO.ui {
             $focusOwner: JQuery;
         }
 
-        interface Prototype extends Widget.Prototype, mixin.GroupElement.Prototype {
+        interface Prototype
+            extends Widget.Prototype,
+                mixin.GroupElement.Prototype {
             /**
              * Scroll item into view, preventing spurious mouse highlight actions from happening.
              *
@@ -290,7 +294,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -301,7 +308,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -309,7 +319,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -318,11 +331,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -338,7 +363,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): SelectWidget;
+            new (config?: ConfigOptions): SelectWidget;
             prototype: Prototype;
             static: Static;
             super: Widget.Constructor;

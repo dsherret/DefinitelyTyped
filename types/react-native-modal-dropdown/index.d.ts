@@ -1,5 +1,12 @@
 import * as React from "react";
-import { Constructor, NativeMethodsMixin, StyleProp, TextStyle, ViewProps, ViewStyle } from "react-native";
+import {
+    Constructor,
+    NativeMethodsMixin,
+    StyleProp,
+    TextStyle,
+    ViewProps,
+    ViewStyle,
+} from "react-native";
 
 export interface PositionStyle {
     top?: number | undefined;
@@ -35,11 +42,17 @@ export interface ModalDropdownProps<T = any> extends ViewProps {
     dropdownListProps?: any;
     dropdownTextProps?: any;
     adjustFrame?: ((positionStyle: PositionStyle) => PositionStyle) | undefined;
-    renderRow?: ((option: T, index: string, isSelected: boolean) => React.ReactNode) | undefined;
+    renderRow?:
+        | ((option: T, index: string, isSelected: boolean) => React.ReactNode)
+        | undefined;
     renderRowComponent?: React.ComponentClass | React.FC | undefined;
     renderRowProps?: any;
     renderSeparator?:
-        | ((sectionID: string, index: string, adjacentRowHighlighted: boolean) => React.ReactNode)
+        | ((
+              sectionID: string,
+              index: string,
+              adjacentRowHighlighted: boolean,
+          ) => React.ReactNode)
         | undefined;
     renderButtonText?: ((text: string) => string) | undefined;
     renderRowText?: ((item: T) => string) | undefined;
@@ -55,7 +68,9 @@ export interface ModalDropdownProps<T = any> extends ViewProps {
     numberOfLines?: number | undefined;
 }
 
-export default class ModalDropdown<T = any> extends React.Component<ModalDropdownProps<T>> {
+export default class ModalDropdown<T = any> extends React.Component<
+    ModalDropdownProps<T>
+> {
     show(): void;
     hide(): void;
     select(index: number): void;

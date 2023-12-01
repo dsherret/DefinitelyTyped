@@ -413,7 +413,7 @@ export const selectorsNodes: cssSelectorTokenizer.SelectorsNode[] = [
                     },
                     {
                         type: "attribute",
-                        content: "href=\"#xyz\"",
+                        content: 'href="#xyz"',
                     },
                 ],
             },
@@ -589,7 +589,8 @@ export const selectorsNodes: cssSelectorTokenizer.SelectorsNode[] = [
                     {
                         type: "pseudo-class",
                         name: "--anything-new",
-                        content: "/* here is difficult ')][ .content */\nurl('Hello)World'), \"Hello)\\\".World\"",
+                        content:
+                            "/* here is difficult ')][ .content */\nurl('Hello)World'), \"Hello)\\\".World\"",
                     },
                 ],
             },
@@ -604,7 +605,7 @@ export const selectorsNodes: cssSelectorTokenizer.SelectorsNode[] = [
                     {
                         type: "pseudo-class",
                         name: "import",
-                        content: "\"./module.css\"",
+                        content: '"./module.css"',
                     },
                 ],
             },
@@ -850,7 +851,7 @@ export const selectorsNodes: cssSelectorTokenizer.SelectorsNode[] = [
                     },
                     {
                         type: "invalid",
-                        value: "\"",
+                        value: '"',
                     },
                     {
                         type: "element",
@@ -1033,8 +1034,8 @@ export const valuesNodes: cssSelectorTokenizer.ValuesNode[] = [
                     },
                     {
                         type: "string",
-                        value: "e\" f",
-                        stringType: "\"",
+                        value: 'e" f',
+                        stringType: '"',
                     },
                 ],
             },
@@ -1078,15 +1079,15 @@ export const valuesNodes: cssSelectorTokenizer.ValuesNode[] = [
                     },
                     {
                         type: "url",
-                        url: "e\" f",
-                        stringType: "\"",
+                        url: 'e" f',
+                        stringType: '"',
                         innerSpacingBefore: " ",
                         innerSpacingAfter: " ",
                         after: " ",
                     },
                     {
                         type: "url",
-                        url: "ghi)j\"k",
+                        url: 'ghi)j"k',
                         innerSpacingBefore: " ",
                     },
                 ],
@@ -1170,7 +1171,7 @@ export const valuesNodes: cssSelectorTokenizer.ValuesNode[] = [
                                 nodes: [
                                     {
                                         type: "string",
-                                        stringType: "\"",
+                                        stringType: '"',
                                         value: "a b, c",
                                     },
                                 ],
@@ -1240,7 +1241,7 @@ export const valuesNodes: cssSelectorTokenizer.ValuesNode[] = [
                                 nodes: [
                                     {
                                         type: "url",
-                                        stringType: "\"",
+                                        stringType: '"',
                                         url: "a",
                                         after: " ",
                                     },
@@ -1337,7 +1338,7 @@ export const valuesNodes: cssSelectorTokenizer.ValuesNode[] = [
                 nodes: [
                     {
                         type: "string",
-                        stringType: "\"",
+                        stringType: '"',
                         value: "\\'\"",
                     },
                 ],
@@ -1352,7 +1353,7 @@ export const valuesNodes: cssSelectorTokenizer.ValuesNode[] = [
                 nodes: [
                     {
                         type: "string",
-                        stringType: "\"",
+                        stringType: '"',
                         value: "\u0010",
                     },
                 ],
@@ -1367,7 +1368,7 @@ export const valuesNodes: cssSelectorTokenizer.ValuesNode[] = [
                 nodes: [
                     {
                         type: "string",
-                        stringType: "\"",
+                        stringType: '"',
                         value: "🔎",
                     },
                 ],
@@ -1382,7 +1383,7 @@ export const valuesNodes: cssSelectorTokenizer.ValuesNode[] = [
                 nodes: [
                     {
                         type: "string",
-                        stringType: "\"",
+                        stringType: '"',
                         value: "\n",
                     },
                 ],
@@ -1397,7 +1398,7 @@ export const valuesNodes: cssSelectorTokenizer.ValuesNode[] = [
                 nodes: [
                     {
                         type: "string",
-                        stringType: "\"",
+                        stringType: '"',
                         value: "\n",
                     },
                 ],

@@ -17,10 +17,15 @@ const outputWithOptions = CoffeeScript.compile(coffeeScriptFn, {
 });
 
 // $ExpectType CodeWithSourceMap
-const outputWithSourceMap = CoffeeScript.compile(coffeeScriptFn, { sourceMap: true });
+const outputWithSourceMap = CoffeeScript.compile(coffeeScriptFn, {
+    sourceMap: true,
+});
 
 // @ts-expect-error
 const noOutputGotZero = CoffeeScript.compile();
 
 // @ts-expect-error
-const noOutputGotInvalidOptions = CoffeeScript.compile(coffeeScriptFn, { comments: true, indent: 2 });
+const noOutputGotInvalidOptions = CoffeeScript.compile(coffeeScriptFn, {
+    comments: true,
+    indent: 2,
+});

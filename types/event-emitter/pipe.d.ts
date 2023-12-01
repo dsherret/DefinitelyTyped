@@ -6,5 +6,9 @@ declare namespace pipe {
     }
 }
 
-declare function pipe(source: Emitter, target: Emitter, emitMethodName?: string | symbol): pipe.EmitterPipe;
+declare function pipe(
+    source: Emitter,
+    target: Emitter,
+    emitMethodName?: string | symbol,
+): pipe.EmitterPipe;
 export = pipe;

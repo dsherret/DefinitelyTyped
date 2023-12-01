@@ -37,7 +37,11 @@ export namespace types {
 
         source?: string | undefined;
 
-        constructor(properties: BasePlaylistConstructorProperties & { isMasterPlaylist: boolean });
+        constructor(
+            properties: BasePlaylistConstructorProperties & {
+                isMasterPlaylist: boolean;
+            },
+        );
     }
 
     class MasterPlaylist extends Playlist {
@@ -159,14 +163,16 @@ export namespace types {
             audio?: ReadonlyArray<Rendition<"AUDIO">> | undefined;
             video?: ReadonlyArray<Rendition<"VIDEO">> | undefined;
             subtitles?: ReadonlyArray<Rendition<"SUBTITLES">> | undefined;
-            closedCaptions?: ReadonlyArray<Rendition<"CLOSED-CAPTIONS">> | undefined;
+            closedCaptions?:
+                | ReadonlyArray<Rendition<"CLOSED-CAPTIONS">>
+                | undefined;
             currentRenditions?:
                 | {
-                    audio?: number | undefined;
-                    video?: number | undefined;
-                    subtitles?: number | undefined;
-                    closedCaptions?: number | undefined;
-                }
+                      audio?: number | undefined;
+                      video?: number | undefined;
+                      subtitles?: number | undefined;
+                      closedCaptions?: number | undefined;
+                  }
                 | undefined;
         });
     }
@@ -343,7 +349,10 @@ export namespace types {
 
         byterange?: Byterange | undefined;
 
-        constructor(properties: { uri: string; byterange?: Byterange | undefined });
+        constructor(properties: {
+            uri: string;
+            byterange?: Byterange | undefined;
+        });
     }
 
     class DateRange {
@@ -382,13 +391,21 @@ export namespace types {
 
         lastPart?: number | undefined;
 
-        constructor(properties: { uri: string; lastMSN?: number | undefined; lastPart?: number | undefined });
+        constructor(properties: {
+            uri: string;
+            lastMSN?: number | undefined;
+            lastPart?: number | undefined;
+        });
     }
 }
 
-export function parse(manifest: string): types.MasterPlaylist | types.MediaPlaylist;
+export function parse(
+    manifest: string,
+): types.MasterPlaylist | types.MediaPlaylist;
 
-export function stringify(playlist: types.MasterPlaylist | types.MediaPlaylist): string;
+export function stringify(
+    playlist: types.MasterPlaylist | types.MediaPlaylist,
+): string;
 
 export function setOptions(overrides: Partial<Options>): void;
 

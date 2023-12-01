@@ -25,10 +25,12 @@ declare namespace GoogleAdsScripts {
          *        var excludedVideoGender = excludedVideoGenderIterator.next();
          *      }
          */
-        interface ExcludedVideoGenderIterator extends Base.Iterator<ExcludedVideoGender> {}
+        interface ExcludedVideoGenderIterator
+            extends Base.Iterator<ExcludedVideoGender> {}
 
         /** An operation representing creation of a new excluded video gender. */
-        interface ExcludedVideoGenderOperation extends Base.Operation<ExcludedVideoGender> {}
+        interface ExcludedVideoGenderOperation
+            extends Base.Operation<ExcludedVideoGender> {}
 
         /**
          * Fetches excluded video genders. Supports filtering and sorting.
@@ -46,11 +48,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedVideoGenderSelector
-            extends
-                Base.Selector<ExcludedVideoGenderIterator>,
+            extends Base.Selector<ExcludedVideoGenderIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

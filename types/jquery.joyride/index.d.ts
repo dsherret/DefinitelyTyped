@@ -188,7 +188,9 @@ declare global {
          * @param {JQuery} nextTip Tip object
          * @param {JQuery} el Element
          */
-        postExposeCallback?: ((index: number, nextTip: JQuery, el?: JQuery) => void) | undefined;
+        postExposeCallback?:
+            | ((index: number, nextTip: JQuery, el?: JQuery) => void)
+            | undefined;
 
         /**
          * A method to call before the tour starts (passed index, tip, and cloned exposed element)
@@ -197,7 +199,9 @@ declare global {
          * @param {JQuery} currentTip Current Tip object
          * @param {JQuery} el Element
          */
-        preRideCallback?: ((index: number, currentTip: JQuery, el?: JQuery) => void) | undefined;
+        preRideCallback?:
+            | ((index: number, currentTip: JQuery, el?: JQuery) => void)
+            | undefined;
 
         /**
          * a method to call once the tour closes
@@ -206,7 +210,9 @@ declare global {
          * @param {JQuery} currentTip Current Tip object
          * @param {boolean} isAborted Is Aborted?
          */
-        postRideCallback?: ((index: number, currentTip: JQuery, isAborted?: boolean) => void) | undefined;
+        postRideCallback?:
+            | ((index: number, currentTip: JQuery, isAborted?: boolean) => void)
+            | undefined;
 
         /**
          * A method to call after each step
@@ -215,7 +221,9 @@ declare global {
          * @param {JQuery} currentTip Current Tip object
          * @param {boolean} isAborted Is Aborted?
          */
-        postStepCallback?: ((index: number, currentTip: JQuery, isAborted?: boolean) => void) | undefined;
+        postStepCallback?:
+            | ((index: number, currentTip: JQuery, isAborted?: boolean) => void)
+            | undefined;
 
         /**
          * A method to call before each step
@@ -224,7 +232,9 @@ declare global {
          * @param {JQuery} nextTip Tip object
          * @param {JQuery} el Element
          */
-        preStepCallback?: ((index: number, nextTip: JQuery, el?: JQuery) => void) | undefined;
+        preStepCallback?:
+            | ((index: number, nextTip: JQuery, el?: JQuery) => void)
+            | undefined;
 
         /**
          * HTML segments for tip layout

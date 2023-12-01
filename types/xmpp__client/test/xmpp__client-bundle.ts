@@ -5,7 +5,7 @@ type Cl = XMPP.Client;
 const c = XMPP.client(); // $ExpectType Client
 XMPP.client({ resource: "foo" }); // $ExpectType Client
 XMPP.client({ resource: XMPP.xml("foo") }); // $ExpectType Client
-XMPP.client({ resource: async cb => {} }); // $ExpectType Client
+XMPP.client({ resource: async (cb) => {} }); // $ExpectType Client
 XMPP.client({ credentials: { username: "foo" } }); // $ExpectType Client
 XMPP.client({ credentials: { password: "foo" } }); // $ExpectType Client
 XMPP.client({ credentials: async (cb, mech) => {} }); // $ExpectType Client

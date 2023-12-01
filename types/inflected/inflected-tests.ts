@@ -30,26 +30,29 @@ Inflector.ordinal(1);
 
 Inflector.ordinalize(1);
 
-Inflector.inflections("en", ({ acronym, clear, human, irregular, plural, singular, uncountable }) => {
-    acronym("API");
+Inflector.inflections(
+    "en",
+    ({ acronym, clear, human, irregular, plural, singular, uncountable }) => {
+        acronym("API");
 
-    clear();
-    clear("all");
+        clear();
+        clear("all");
 
-    human("col_rpted_bugs", "Reported bugs");
-    human(/_cnt$/i, "_count");
+        human("col_rpted_bugs", "Reported bugs");
+        human(/_cnt$/i, "_count");
 
-    irregular("octopus", "octopi");
+        irregular("octopus", "octopi");
 
-    plural(/^(ox)$/i, "$1$2en");
-    plural("oxen");
+        plural(/^(ox)$/i, "$1$2en");
+        plural("oxen");
 
-    singular(/^(ox)en/i, "$1");
-    singular("ox");
+        singular(/^(ox)en/i, "$1");
+        singular("ox");
 
-    uncountable("equipment");
-    uncountable("equipment", "snow");
-});
+        uncountable("equipment");
+        uncountable("equipment", "snow");
+    },
+);
 Inflector.inflections(({}) => {});
 Inflector.inflections("en");
 Inflector.inflections();
@@ -67,7 +70,10 @@ Inflector.parameterize("Donald E. Knuth");
 Inflector.parameterize("Donald E. Knuth", {});
 Inflector.parameterize("Donald E. Knuth", { preserveCase: true });
 Inflector.parameterize("Donald E. Knuth", { separator: "+" });
-Inflector.parameterize("Donald E. Knuth", { preserveCase: true, separator: "+" });
+Inflector.parameterize("Donald E. Knuth", {
+    preserveCase: true,
+    separator: "+",
+});
 
 Inflector.constantify("bankAccount");
 

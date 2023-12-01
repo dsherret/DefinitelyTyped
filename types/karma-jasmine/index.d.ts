@@ -6,9 +6,9 @@ declare module "karma" {
     interface ClientOptions {
         jasmine?:
             | (jasmine.Configuration & {
-                /** @deprecated undocumented to be removed */
-                timeoutInterval?: number | undefined;
-            })
+                  /** @deprecated undocumented to be removed */
+                  timeoutInterval?: number | undefined;
+              })
             | undefined;
         /**
          * run a subset of the full set of specs.

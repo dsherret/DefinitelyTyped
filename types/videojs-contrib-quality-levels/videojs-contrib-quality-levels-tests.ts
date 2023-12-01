@@ -1,5 +1,9 @@
 import videojs from "video.js";
-import qualityLevels, { QualityLevel, QualityLevelList, Representation } from "videojs-contrib-quality-levels";
+import qualityLevels, {
+    QualityLevel,
+    QualityLevelList,
+    Representation,
+} from "videojs-contrib-quality-levels";
 
 const video = videojs("id");
 let VERSION: string = qualityLevels.VERSION;
@@ -11,7 +15,7 @@ function getterSetter(value?: boolean): boolean | void {
     if (typeof value === "undefined") return true;
 }
 
-video.ready(function() {
+video.ready(function () {
     qualityLevels.call(this);
     qualityLevels.call(this, {});
 

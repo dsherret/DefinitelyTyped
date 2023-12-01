@@ -54,6 +54,8 @@ declare namespace createDMG {
     type ContentsOptions = Omit<CreateOptions, "contents">;
 }
 
-declare function createDMG(createOptions: createDMG.CreateOptions): Promise<createDMG.CreateOptions>;
+declare function createDMG(
+    createOptions: createDMG.CreateOptions,
+): Promise<createDMG.CreateOptions>;
 
 export = createDMG;

@@ -111,31 +111,33 @@ declare namespace SteamID {
         a = Type.ANON_USER,
     }
 
-    const AccountIDMask = 0xFFFFFFFF;
-    const AccountInstanceMask = 0x000FFFFF;
+    const AccountIDMask = 0xffffffff;
+    const AccountInstanceMask = 0x000fffff;
 
     enum ChatInstanceFlags {
         /**
          * (AccountInstanceMask + 1) >> 1
          */
-        Clan = (0x000FFFFF + 1) >> 1,
+        Clan = (0x000fffff + 1) >> 1,
 
         /**
          * (AccountInstanceMask + 1) >> 2
          */
-        Lobby = (0x000FFFFF + 1) >> 2,
+        Lobby = (0x000fffff + 1) >> 2,
 
         /**
          * (AccountInstanceMask + 1) >> 3
          */
-        MMSLobby = (0x000FFFFF + 1) >> 3,
+        MMSLobby = (0x000fffff + 1) >> 3,
     }
 
     /**
      * Create an individual SteamID in the public universe given an accountid
      * @param accountid - The user's account ID
      */
-    function fromIndividualAccountID(accountid: number | bigint | string): SteamID;
+    function fromIndividualAccountID(
+        accountid: number | bigint | string,
+    ): SteamID;
 }
 
 export = SteamID;

@@ -47,12 +47,22 @@ fs.copy(src, dest, { overwrite: true }).then(() => {
     // stub
 });
 fs.copy(src, dest, errorCallback);
-fs.copy(src, dest, { filter: (src: string, dest: string) => false }, errorCallback);
-fs.copy(src, dest, {
-    overwrite: true,
-    preserveTimestamps: true,
-    filter: (src: string, dest: string) => Promise.resolve(false),
-}, errorCallback);
+fs.copy(
+    src,
+    dest,
+    { filter: (src: string, dest: string) => false },
+    errorCallback,
+);
+fs.copy(
+    src,
+    dest,
+    {
+        overwrite: true,
+        preserveTimestamps: true,
+        filter: (src: string, dest: string) => Promise.resolve(false),
+    },
+    errorCallback,
+);
 
 fs.copySync(src, dest);
 fs.copySync(src, dest, { filter: (src: string, dest: string) => false });
@@ -90,9 +100,14 @@ fs.outputJson(file, data, {
 }).then(() => {
     // stub
 });
-fs.outputJson(file, data, {
-    spaces: 2,
-}, errorCallback);
+fs.outputJson(
+    file,
+    data,
+    {
+        spaces: 2,
+    },
+    errorCallback,
+);
 fs.outputJSON(file, data, errorCallback);
 fs.outputJSON(file, data).then(() => {
     // stub
@@ -207,16 +222,16 @@ fs.lchmodSync(path, modeStr);
 fs.statSync(path);
 fs.lstatSync(path);
 
-fs.read(0, new Buffer(""), 0, 0, null).then(x => {
+fs.read(0, new Buffer(""), 0, 0, null).then((x) => {
     const a = x.buffer;
     const b = x.bytesRead;
 });
 
-fs.write(0, new Buffer(""), 0, 0, null).then(x => {
+fs.write(0, new Buffer(""), 0, 0, null).then((x) => {
     const a = x.buffer;
     const b = x.bytesWritten;
 });
-fs.write(0, new Buffer("")).then(x => {
+fs.write(0, new Buffer("")).then((x) => {
     const a = x.buffer;
     const b = x.bytesWritten;
 });

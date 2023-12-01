@@ -75,7 +75,11 @@ export class PDFTK {
     /**
      * Run the command.
      */
-    output(writeFile: string, outputDest: string, needsOutput?: boolean): Promise<string>;
+    output(
+        writeFile: string,
+        outputDest: string,
+        needsOutput?: boolean,
+    ): Promise<string>;
     output(writeFile?: string): Promise<Buffer>;
     /**
      * Assembles ("concatenate") pages from input PDFs to create a new PDF.
@@ -277,5 +281,7 @@ export interface ConfigureOptions {
     tempDir?: string;
 }
 
-export function input(file: string | Buffer | Buffer[] | Partial<Record<Letter, string | Buffer>>): PDFTK;
+export function input(
+    file: string | Buffer | Buffer[] | Partial<Record<Letter, string | Buffer>>,
+): PDFTK;
 export function configure(opts: ConfigureOptions): void;

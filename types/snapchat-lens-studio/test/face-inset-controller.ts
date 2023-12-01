@@ -92,7 +92,9 @@ function getFillScaledVec3(originalVec3: vec3) {
     }
 
     if (!script.billboard) {
-        print("[FaceInsetController] Please set Billboard to your scene's Billboard. Skipping getFillModePosition().");
+        print(
+            "[FaceInsetController] Please set Billboard to your scene's Billboard. Skipping getFillModePosition().",
+        );
         return originalVec3;
     }
 
@@ -113,5 +115,9 @@ function getFillScaledVec3(originalVec3: vec3) {
         multiplier = screenRatio / imageRatio;
     }
 
-    return new vec3(originalVec3.x * multiplier, originalVec3.y * multiplier, originalVec3.z);
+    return new vec3(
+        originalVec3.x * multiplier,
+        originalVec3.y * multiplier,
+        originalVec3.z,
+    );
 }

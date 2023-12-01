@@ -105,7 +105,10 @@ declare namespace wx {
          * 以键值对的形式返回，可用的 api 值 true，不可用为 false
          * 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
          */
-        success(res: { checkResult: { [methodName: string]: boolean }; errMsg: { msg: string } }): void;
+        success(res: {
+            checkResult: { [methodName: string]: boolean };
+            errMsg: { msg: string };
+        }): void;
     }
 
     /**
@@ -372,7 +375,9 @@ declare namespace wx {
     /**
      * 录音时间超过一分钟没有停止的时候会执行回调
      */
-    function onVoiceRecordEnd(complete: (res: { localId: string }) => void): void;
+    function onVoiceRecordEnd(
+        complete: (res: { localId: string }) => void,
+    ): void;
 
     /**
      * 播放音频
@@ -432,7 +437,9 @@ declare namespace wx {
     /**
      * 获取网络状态, var networkType = res.networkType; 返回网络类型 2g，3g，4g，wifi
      */
-    function getNetworkType(success: (res: { networkType: string }) => void): void;
+    function getNetworkType(
+        success: (res: { networkType: string }) => void,
+    ): void;
 
     interface OpenLocationConfig extends WxBaseRequestConfig {
         latitude?: number | undefined;
@@ -597,7 +604,9 @@ declare namespace wx {
     /**
      * 跳转微信商品页接口
      */
-    function openProductSpecificView(config: OpenProductSpecificViewConfig): void;
+    function openProductSpecificView(
+        config: OpenProductSpecificViewConfig,
+    ): void;
 
     interface ChooseCardConfig extends WxBaseRequestConfig {
         /**

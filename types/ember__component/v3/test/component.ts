@@ -44,7 +44,7 @@ Component.extend({
 Component.extend({
     classNameBindings: ["propertyA", "propertyB"],
     propertyA: "from-a",
-    propertyB: computed(function() {
+    propertyB: computed(function () {
         if (!this.get("propertyA")) {
             return "from-b";
         }

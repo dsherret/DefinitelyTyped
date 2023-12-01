@@ -5,17 +5,19 @@ class ExampleExtension implements ScratchExtension {
         return {
             id: "HelloWorld",
             name: "Hello World",
-            blocks: [{
-                opcode: "helloWorld",
-                blockType: Scratch.BlockType.REPORTER,
-                text: "Return text [input]",
-                arguments: {
-                    input: {
-                        type: Scratch.ArgumentType.STRING,
-                        defaultValue: "Hello World",
+            blocks: [
+                {
+                    opcode: "helloWorld",
+                    blockType: Scratch.BlockType.REPORTER,
+                    text: "Return text [input]",
+                    arguments: {
+                        input: {
+                            type: Scratch.ArgumentType.STRING,
+                            defaultValue: "Hello World",
+                        },
                     },
                 },
-            }],
+            ],
         };
     }
 

@@ -44,13 +44,19 @@ export function captureStderr(opts: CaptureOptions, exec: () => void): string;
  * Captures stdout and stderr into an object for
  * the provided execution scope.
  */
-export function captureStdio(exec: () => void): { stdout: string; stderr: string };
+export function captureStdio(exec: () => void): {
+    stdout: string;
+    stderr: string;
+};
 
 /**
  * Captures stdout and stderr into an object for
  * the provided execution scope.
  */
-export function captureStdio(opts: CaptureOptions, exec: () => void): { stdout: string; stderr: string };
+export function captureStdio(
+    opts: CaptureOptions,
+    exec: () => void,
+): { stdout: string; stderr: string };
 
 /**
  * Captures stdout for the provided execution scope.
@@ -100,12 +106,19 @@ export function hook(
 /**
  * Delegate to #capture with a quiet passthrough.
  */
-export function intercept(stream: NodeJS.WritableStream, exec: () => void): string[];
+export function intercept(
+    stream: NodeJS.WritableStream,
+    exec: () => void,
+): string[];
 
 /**
  * Delegate to #capture with a quiet passthrough.
  */
-export function intercept(stream: NodeJS.WritableStream, opts: CaptureOptions, exec: () => void): string[];
+export function intercept(
+    stream: NodeJS.WritableStream,
+    opts: CaptureOptions,
+    exec: () => void,
+): string[];
 
 /**
  * Delegate to #captureStderr with a quiet passthrough.
@@ -120,12 +133,18 @@ export function interceptStderr(opts: CaptureOptions, exec: () => void): string;
 /**
  * Delegate to #captureStdio with a quiet passthrough.
  */
-export function interceptStdio(exec: () => void): { stdout: string; stderr: string };
+export function interceptStdio(exec: () => void): {
+    stdout: string;
+    stderr: string;
+};
 
 /**
  * Delegate to #captureStdio with a quiet passthrough.
  */
-export function interceptStdio(opts: CaptureOptions, exec: () => void): { stdout: string; stderr: string };
+export function interceptStdio(
+    opts: CaptureOptions,
+    exec: () => void,
+): { stdout: string; stderr: string };
 
 /**
  * Delegate to #captureStdout with a quiet passthrough.
@@ -167,12 +186,19 @@ export function startCapture(
 /**
  * Delegate to #startCapture with a quiet passthrough.
  */
-export function startIntercept(stream: NodeJS.WritableStream, exec: () => void): boolean;
+export function startIntercept(
+    stream: NodeJS.WritableStream,
+    exec: () => void,
+): boolean;
 
 /**
  * Delegate to #startCapture with a quiet passthrough.
  */
-export function startIntercept(stream: NodeJS.WritableStream, opts: CaptureOptions, exec: () => void): boolean;
+export function startIntercept(
+    stream: NodeJS.WritableStream,
+    opts: CaptureOptions,
+    exec: () => void,
+): boolean;
 
 /**
  * Stops a capture on the provided stream.

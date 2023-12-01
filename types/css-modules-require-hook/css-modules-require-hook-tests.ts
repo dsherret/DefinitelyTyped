@@ -39,7 +39,9 @@ hook({
 // https://github.com/css-modules/css-modules-require-hook/blob/master/README.md#tuning-options
 //
 
-hook({/* my option */});
+hook({
+    /* my option */
+});
 
 //
 // https://github.com/css-modules/css-modules-require-hook/blob/master/README.md#devmode-boolean

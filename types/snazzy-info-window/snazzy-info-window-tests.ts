@@ -96,9 +96,11 @@ const dynamicContent = () => {
             },
             afterOpen() {
                 interval = setInterval(() => {
-                    info.setContent(template({
-                        date: new Date(),
-                    }));
+                    info.setContent(
+                        template({
+                            date: new Date(),
+                        }),
+                    );
                 }, 1000);
             },
             afterClose() {
@@ -153,9 +155,10 @@ const jsStyling = () => {
         offset: {
             left: "20px",
         },
-        content: "<div>STYLING</div>"
-            + "<div>WITH</div>"
-            + "<div><strong>JAVASCRIPT</strong></div>",
+        content:
+            "<div>STYLING</div>" +
+            "<div>WITH</div>" +
+            "<div><strong>JAVASCRIPT</strong></div>",
         showCloseButton: false,
         closeOnMapClick: false,
         padding: "48px",

@@ -18,7 +18,10 @@ declare module "lodash" {
     }
 }
 
-declare function matchPattern(sourceData: any, targetPattern: object | string): string | null;
+declare function matchPattern(
+    sourceData: any,
+    targetPattern: object | string,
+): string | null;
 declare namespace matchPattern {
     function use(newLodashModule: _.LoDashStatic): void;
     function getLodashModule(): _.LoDashStatic;

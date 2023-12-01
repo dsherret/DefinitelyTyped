@@ -36,7 +36,15 @@ const awsKey: AwsKey = {
 
 createIamKey(acct, auth, 1, {}, () => {});
 createIamRole(acct, auth, "roleName", "roleType", true, {}, () => {});
-createIamTrustRole(acct, auth, "roleName", "roleType", "trustArn", {}, () => {});
+createIamTrustRole(
+    acct,
+    auth,
+    "roleName",
+    "roleType",
+    "trustArn",
+    {},
+    () => {},
+);
 createKey(acct, auth, 1, {}, () => {});
 createLongTermKey(acct, auth, "iamUserName", {}, () => {});
 deleteIamRole(acct, auth, "roleName", {}, () => {});

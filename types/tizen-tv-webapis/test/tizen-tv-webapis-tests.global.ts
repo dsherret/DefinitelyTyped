@@ -1,4 +1,15 @@
-const { adinfo, appcommon, avplay, avinfo, billing, network, productinfo, sso, tvinfo, widgetdata } = webapis;
+const {
+    adinfo,
+    appcommon,
+    avplay,
+    avinfo,
+    billing,
+    network,
+    productinfo,
+    sso,
+    tvinfo,
+    widgetdata,
+} = webapis;
 adinfo.getVersion(); // $ExpectType string
 appcommon.getVersion(); // $ExpectType string
 avplay.getVersion(); // $ExpectType string

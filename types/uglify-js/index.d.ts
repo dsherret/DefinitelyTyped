@@ -484,4 +484,7 @@ export interface SourceMapOptions {
     content?: RawSourceMap | "inline" | undefined;
 }
 
-export function minify(files: string | string[] | { [file: string]: string }, options?: MinifyOptions): MinifyOutput;
+export function minify(
+    files: string | string[] | { [file: string]: string },
+    options?: MinifyOptions,
+): MinifyOutput;

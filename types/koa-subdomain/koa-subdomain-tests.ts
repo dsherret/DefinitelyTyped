@@ -7,7 +7,7 @@ const router = new Router();
 
 const subdomain = new Subdomain();
 
-router.get("/", async ctx => {
+router.get("/", async (ctx) => {
     ctx.body = "Test";
 });
 

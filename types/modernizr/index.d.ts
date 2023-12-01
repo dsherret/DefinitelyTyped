@@ -429,7 +429,11 @@ interface ModernizrAPI {
 
     _prefixes: string[];
 
-    testAllProps(prop: string, value?: string, skipValueTest?: boolean): boolean;
+    testAllProps(
+        prop: string,
+        value?: string,
+        skipValueTest?: boolean,
+    ): boolean;
 
     testProp(prop: string, value?: string, useValue?: boolean): boolean;
 

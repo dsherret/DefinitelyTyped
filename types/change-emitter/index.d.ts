@@ -5,8 +5,19 @@ declare module "change-emitter" {
     type ListenerOf1<T> = (value: T) => void;
     type ListenerOf2<T1, T2> = (value1: T1, value2: T2) => void;
     type ListenerOf3<T1, T2, T3> = (value1: T1, value2: T2, value3: T3) => void;
-    type ListenerOf4<T1, T2, T3, T4> = (value1: T1, value2: T2, value3: T3, value4: T4) => void;
-    type ListenerOf5<T1, T2, T3, T4, T5> = (value1: T1, value2: T2, value3: T3, value4: T4, value5: T5) => void;
+    type ListenerOf4<T1, T2, T3, T4> = (
+        value1: T1,
+        value2: T2,
+        value3: T3,
+        value4: T4,
+    ) => void;
+    type ListenerOf5<T1, T2, T3, T4, T5> = (
+        value1: T1,
+        value2: T2,
+        value3: T3,
+        value4: T4,
+        value5: T5,
+    ) => void;
 
     interface ChangeEmitter {
         listen(listener: Listener): Unlisten;
@@ -46,7 +57,22 @@ declare module "change-emitter" {
     export function createChangeEmitter(): ChangeEmitter;
     export function createChangeEmitter<T>(): ChangeEmitterOf1<T>;
     export function createChangeEmitter<T1, T2>(): ChangeEmitterOf2<T1, T2>;
-    export function createChangeEmitter<T1, T2, T3>(): ChangeEmitterOf3<T1, T2, T3>;
-    export function createChangeEmitter<T1, T2, T3, T4>(): ChangeEmitterOf4<T1, T2, T3, T4>;
-    export function createChangeEmitter<T1, T2, T3, T4, T5>(): ChangeEmitterOf5<T1, T2, T3, T4, T5>;
+    export function createChangeEmitter<T1, T2, T3>(): ChangeEmitterOf3<
+        T1,
+        T2,
+        T3
+    >;
+    export function createChangeEmitter<T1, T2, T3, T4>(): ChangeEmitterOf4<
+        T1,
+        T2,
+        T3,
+        T4
+    >;
+    export function createChangeEmitter<T1, T2, T3, T4, T5>(): ChangeEmitterOf5<
+        T1,
+        T2,
+        T3,
+        T4,
+        T5
+    >;
 }

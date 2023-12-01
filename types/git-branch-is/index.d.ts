@@ -10,7 +10,10 @@ declare function gitBranchIs(
     branchNameOrTest: gitBranchIs.BranchNameOrTest,
     options?: gitBranchIs.GitBranchIsOptions,
 ): Promise<string>;
-declare function gitBranchIs(branchNameOrTest: gitBranchIs.BranchNameOrTest, callback: gitBranchIs.Callback): void;
+declare function gitBranchIs(
+    branchNameOrTest: gitBranchIs.BranchNameOrTest,
+    callback: gitBranchIs.Callback,
+): void;
 
 declare namespace gitBranchIs {
     /**

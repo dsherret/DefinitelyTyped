@@ -3,11 +3,11 @@ import { layouts, svgArray } from "@mapbox/maki";
 layouts; // $ExpectType string[]
 svgArray; // $ExpectType string[]
 
-layouts.forEach(icon => {
+layouts.forEach((icon) => {
     // $ExpectType string
     icon;
 });
-svgArray.forEach(svg => {
+svgArray.forEach((svg) => {
     // $ExpectType string
     svg;
 });

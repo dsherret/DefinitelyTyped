@@ -39,7 +39,10 @@ const oldestObjAgeId = hifo(highestByAgeAndId, 3); // $ExpectType Hifo<ObjectWit
 oldestObjAgeId.add(people[0]);
 hifo<Person>(hifo.highest("age", "id"), 3); // $ExpectType Hifo<Person>
 hifo(hifo.highest("age", "id"), 3); // $ExpectType Hifo<ObjectWithNumericValue<"age" | "id">>
-hifo((left: { foo: string }, right: { foo: string }) => left.foo.length - right.foo.length); // $ExpectType Hifo<{ foo: string; }>
+hifo(
+    (left: { foo: string }, right: { foo: string }) =>
+        left.foo.length - right.foo.length,
+); // $ExpectType Hifo<{ foo: string; }>
 
 // @ts-expect-error
 hifo<Person>(hifo.highest("name"), 3); // $ExpectType Hifo<Person>

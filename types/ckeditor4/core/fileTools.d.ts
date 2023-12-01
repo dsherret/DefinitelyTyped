@@ -10,20 +10,35 @@ declare namespace CKEDITOR {
     interface fileTools {
         isFileUploadSupported: boolean;
 
-        addUploadWidget(editor: editor, name: string, def: fileTools.uploadWidgetDefinition): void;
+        addUploadWidget(
+            editor: editor,
+            name: string,
+            def: fileTools.uploadWidgetDefinition,
+        ): void;
 
-        bindNotification(editor: editor, fileLoader: fileTools.fileLoader): void;
+        bindNotification(
+            editor: editor,
+            fileLoader: fileTools.fileLoader,
+        ): void;
 
         getUploadUrl(config: { [key: string]: unknown }, type?: string): string;
 
         isTypeSupported(file: Blob, supportedTypes: RegExp): boolean;
 
-        markElement(element: dom.element, widgetName: string, loaderId: number): void;
+        markElement(
+            element: dom.element,
+            widgetName: string,
+            loaderId: number,
+        ): void;
     }
 
     namespace fileTools {
         interface fileLoaderConstructor extends eventConstructor<fileLoader> {
-            new(editor: editor, fileOrData: Blob | string, fileName?: string): fileLoader;
+            new (
+                editor: editor,
+                fileOrData: Blob | string,
+                fileName?: string,
+            ): fileLoader;
         }
         interface fileLoader extends event {
             readonly data: string;
@@ -48,21 +63,29 @@ declare namespace CKEDITOR {
 
             load(): void;
 
-            loadAndUpload(url: string, additionalRequestParameters?: unknown): void;
+            loadAndUpload(
+                url: string,
+                additionalRequestParameters?: unknown,
+            ): void;
 
             update(): void;
 
             upload(url: string, additionalRequestParameters?: unknown): void;
         }
 
-        interface uploadRepositoryConstructor extends eventConstructor<uploadRepository> {
-            new(editor: editor): uploadRepository;
+        interface uploadRepositoryConstructor
+            extends eventConstructor<uploadRepository> {
+            new (editor: editor): uploadRepository;
         }
 
         interface uploadRepository extends event {
             readonly loaders: fileLoader[];
 
-            create(fileOrData: Blob | string, fileName: string, loaderType?: unknown): fileLoader;
+            create(
+                fileOrData: Blob | string,
+                fileName: string,
+                loaderType?: unknown,
+            ): fileLoader;
 
             isFinished(): boolean;
         }

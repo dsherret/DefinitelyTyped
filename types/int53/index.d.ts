@@ -45,7 +45,11 @@ export function readUInt64LE(buffer: Buffer, offset?: number): number;
  * const buf = Buffer.alloc(8)
  * int53.writeInt64BE(0xFFFFFFFFFFF, buf)
  */
-export function writeInt64BE(number: number, buffer: Buffer, offset?: number): void;
+export function writeInt64BE(
+    number: number,
+    buffer: Buffer,
+    offset?: number,
+): void;
 /**
  * Serialize signed 64-bit int encoded as Little Endian (LE).
  *
@@ -55,7 +59,11 @@ export function writeInt64BE(number: number, buffer: Buffer, offset?: number): v
  * const buf = Buffer.alloc(8)
  * int53.writeInt64LE(0xFFFFFFFFFFF, buf)
  */
-export function writeInt64LE(number: number, buffer: Buffer, offset?: number): void;
+export function writeInt64LE(
+    number: number,
+    buffer: Buffer,
+    offset?: number,
+): void;
 /**
  * Serialize unsigned 64-bit int encoded as Big Endian (BE).
  *
@@ -65,7 +73,11 @@ export function writeInt64LE(number: number, buffer: Buffer, offset?: number): v
  * const buf = Buffer.alloc(8)
  * int53.writeUInt64BE(0xFFFFFFFFFFF, buf)
  */
-export function writeUInt64BE(number: number, buffer: Buffer, offset?: number): void;
+export function writeUInt64BE(
+    number: number,
+    buffer: Buffer,
+    offset?: number,
+): void;
 /**
  * Serialize unsigned 64-bit int encoded as Little Endian (LE).
  *
@@ -75,4 +87,8 @@ export function writeUInt64BE(number: number, buffer: Buffer, offset?: number): 
  * const buf = Buffer.alloc(8)
  * int53.writeUInt64LE(0xFFFFFFFFFFF, buf)
  */
-export function writeUInt64LE(number: number, buffer: Buffer, offset?: number): void;
+export function writeUInt64LE(
+    number: number,
+    buffer: Buffer,
+    offset?: number,
+): void;

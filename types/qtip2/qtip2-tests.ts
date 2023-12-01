@@ -73,34 +73,34 @@ function testContentText() {
 
     // Shorthand function
     $a.qtip({
-        content: function(event: Event, api: QTip2.Api) {},
+        content: function (event: Event, api: QTip2.Api) {},
     });
 
     $a.qtip({
-        content: function(event: Event) {
+        content: function (event: Event) {
             return 2;
         },
     });
 
     $a.qtip({
-        content: function() {},
+        content: function () {},
     });
 
     // Regular function
     $a.qtip({
-        content: { text: function(event: Event, api: QTip2.Api) {} },
+        content: { text: function (event: Event, api: QTip2.Api) {} },
     });
 
     $a.qtip({
         content: {
-            text: function(event: Event) {
+            text: function (event: Event) {
                 return 2;
             },
         },
     });
 
     $a.qtip({
-        content: { text: function() {} },
+        content: { text: function () {} },
     });
 
     // Shorthand jQuery elements
@@ -162,30 +162,32 @@ function testContentTitle() {
 
     // Shorthand function
     $a.qtip({
-        content: { title: function(event: Event, api: QTip2.Api) {} },
+        content: { title: function (event: Event, api: QTip2.Api) {} },
     });
 
     $a.qtip({
         content: {
-            title: function(event: Event) {
+            title: function (event: Event) {
                 return 2;
             },
         },
     });
 
     $a.qtip({
-        content: { title: function() {} },
+        content: { title: function () {} },
     });
 
     // Regular function
     $a.qtip({
-        content: { title: { text: function(event: Event, api: QTip2.Api) {} } },
+        content: {
+            title: { text: function (event: Event, api: QTip2.Api) {} },
+        },
     });
 
     $a.qtip({
         content: {
             title: {
-                text: function(event: Event) {
+                text: function (event: Event) {
                     return 2;
                 },
             },
@@ -193,7 +195,7 @@ function testContentTitle() {
     });
 
     $a.qtip({
-        content: { title: { text: function() {} } },
+        content: { title: { text: function () {} } },
     });
 
     // Shorthand jQuery elements
@@ -248,7 +250,7 @@ function testPositionProperty() {
             at: "bottom right",
             container: $(".edwin-odesseiron"),
             viewport: $(".dynaheir"),
-            effect: function(api: QTip2.Api, pos: any, viewport: any) {},
+            effect: function (api: QTip2.Api, pos: any, viewport: any) {},
             adjust: { x: 2 },
         },
     });
@@ -260,7 +262,7 @@ function testPositionProperty() {
             at: true,
             container: false,
             viewport: true,
-            effect: function(api: QTip2.Api, pos: any) {
+            effect: function (api: QTip2.Api, pos: any) {
                 return 2;
             },
             adjust: { y: 2 },
@@ -270,7 +272,7 @@ function testPositionProperty() {
     $a.qtip({
         position: {
             target: "mouse",
-            effect: function(api: QTip2.Api) {},
+            effect: function (api: QTip2.Api) {},
             adjust: { x: 2, y: 2 },
         },
     });
@@ -278,7 +280,7 @@ function testPositionProperty() {
     $a.qtip({
         position: {
             target: false,
-            effect: function() {},
+            effect: function () {},
             adjust: {
                 mouse: true,
                 resize: true,
@@ -312,8 +314,7 @@ function testShowProperty() {
             delay: 42,
             solo: $(".imoen"),
             ready: true,
-            effect: function(offset) {
-            },
+            effect: function (offset) {},
             modal: true,
         },
     });
@@ -338,7 +339,7 @@ function testShowProperty() {
         show: {
             solo: false,
             modal: {
-                effect: function(state) {},
+                effect: function (state) {},
             },
         },
     });
@@ -368,8 +369,7 @@ function testHideProperty() {
             fixed: true,
             leave: "window",
             distance: 32,
-            effect: function(offset) {
-            },
+            effect: function (offset) {},
         },
     });
 
@@ -483,7 +483,7 @@ function allTogetherNow() {
                 resize: true,
                 method: "flip flip",
             },
-            effect: function(api, pos, viewport) {
+            effect: function (api, pos, viewport) {
                 $(this).animate(pos, {
                     duration: 200,
                     queue: false,
@@ -550,62 +550,64 @@ function testApiGetViaObject() {
 
     var api = $a.qtip("api");
 
-    <string | boolean> api.get("id");
-    <boolean> api.get("prerender");
-    <boolean> api.get("overwrite");
-    <boolean> api.get("suppress");
-    <any> api.get("metadata");
+    <string | boolean>api.get("id");
+    <boolean>api.get("prerender");
+    <boolean>api.get("overwrite");
+    <boolean>api.get("suppress");
+    <any>api.get("metadata");
 
-    <QTip2.Content> api.get("content");
-    <QTip2.Text> api.get("content.text");
-    <string> api.get("content.attr");
-    <QTip2.Title> api.get("content.title");
-    <string | JQuery | boolean> api.get("content.button");
+    <QTip2.Content>api.get("content");
+    <QTip2.Text>api.get("content.text");
+    <string>api.get("content.attr");
+    <QTip2.Title>api.get("content.title");
+    <string | JQuery | boolean>api.get("content.button");
 
-    <QTip2.Position> api.get("position");
-    <string | boolean> api.get("position.my");
-    <string | boolean> api.get("position.at");
-    <QTip2.Target | boolean> api.get("position.target");
-    <JQuery | boolean> api.get("position.container");
-    <JQuery | boolean> api.get("position.viewport");
-    <boolean | ((api: any, pos: any, viewport: any) => any)> api.get("position.effect");
-    <QTip2.PositionAdjust> api.get("position.adjust");
+    <QTip2.Position>api.get("position");
+    <string | boolean>api.get("position.my");
+    <string | boolean>api.get("position.at");
+    <QTip2.Target | boolean>api.get("position.target");
+    <JQuery | boolean>api.get("position.container");
+    <JQuery | boolean>api.get("position.viewport");
+    <boolean | ((api: any, pos: any, viewport: any) => any)>(
+        api.get("position.effect")
+    );
+    <QTip2.PositionAdjust>api.get("position.adjust");
 
-    <QTip2.Show> api.get("show");
-    <JQuery | boolean> api.get("show.target");
-    <string | boolean> api.get("show.event");
-    <number> api.get("show.delay");
-    <JQuery | string | boolean> api.get("show.solo");
-    <boolean> api.get("show.ready");
-    <boolean | ((offset: any) => any)> api.get("show.effect");
-    <boolean | QTip2.Modal> api.get("show.modal");
+    <QTip2.Show>api.get("show");
+    <JQuery | boolean>api.get("show.target");
+    <string | boolean>api.get("show.event");
+    <number>api.get("show.delay");
+    <JQuery | string | boolean>api.get("show.solo");
+    <boolean>api.get("show.ready");
+    <boolean | ((offset: any) => any)>api.get("show.effect");
+    <boolean | QTip2.Modal>api.get("show.modal");
 
-    <QTip2.Hide> api.get("hide");
-    <JQuery | boolean> api.get("hide.target");
-    <string | boolean> api.get("hide.event");
-    <number> api.get("hide.delay");
-    <string | boolean> api.get("hide.leave");
-    <number | boolean> api.get("hide.distance");
-    <boolean | ((offset: any) => any)> api.get("hide.effect");
+    <QTip2.Hide>api.get("hide");
+    <JQuery | boolean>api.get("hide.target");
+    <string | boolean>api.get("hide.event");
+    <number>api.get("hide.delay");
+    <string | boolean>api.get("hide.leave");
+    <number | boolean>api.get("hide.distance");
+    <boolean | ((offset: any) => any)>api.get("hide.effect");
 
-    <QTip2.Style> api.get("style");
-    <string | boolean> api.get("style.classes");
-    <boolean> api.get("style.def");
-    <boolean> api.get("style.widget");
-    <string | number | boolean> api.get("style.width");
-    <string | number | boolean> api.get("style.height");
-    <string | boolean | QTip2.Tip> api.get("style.tip");
+    <QTip2.Style>api.get("style");
+    <string | boolean>api.get("style.classes");
+    <boolean>api.get("style.def");
+    <boolean>api.get("style.widget");
+    <string | number | boolean>api.get("style.width");
+    <string | number | boolean>api.get("style.height");
+    <string | boolean | QTip2.Tip>api.get("style.tip");
 
-    <QTip2.Events> api.get("events");
-    <QTip2.EventApiFunc> api.get("events.render");
-    <QTip2.EventApiFunc> api.get("events.show");
-    <QTip2.EventApiFunc> api.get("events.hide");
-    <QTip2.EventApiFunc> api.get("events.toggle");
-    <QTip2.EventApiFunc> api.get("events.visible");
-    <QTip2.EventApiFunc> api.get("events.hidde");
-    <QTip2.EventApiFunc> api.get("events.move");
-    <QTip2.EventApiFunc> api.get("events.focus");
-    <QTip2.EventApiFunc> api.get("events.blur");
+    <QTip2.Events>api.get("events");
+    <QTip2.EventApiFunc>api.get("events.render");
+    <QTip2.EventApiFunc>api.get("events.show");
+    <QTip2.EventApiFunc>api.get("events.hide");
+    <QTip2.EventApiFunc>api.get("events.toggle");
+    <QTip2.EventApiFunc>api.get("events.visible");
+    <QTip2.EventApiFunc>api.get("events.hidde");
+    <QTip2.EventApiFunc>api.get("events.move");
+    <QTip2.EventApiFunc>api.get("events.focus");
+    <QTip2.EventApiFunc>api.get("events.blur");
 }
 
 /**
@@ -614,62 +616,64 @@ function testApiGetViaObject() {
 function testApiGetViaString() {
     $a.qtip({});
 
-    <string | boolean> $a.qtip("option", "id");
-    <boolean> $a.qtip("option", "prerender");
-    <boolean> $a.qtip("option", "overwrite");
-    <boolean> $a.qtip("option", "suppress");
-    <any> $a.qtip("option", "metadata");
+    <string | boolean>$a.qtip("option", "id");
+    <boolean>$a.qtip("option", "prerender");
+    <boolean>$a.qtip("option", "overwrite");
+    <boolean>$a.qtip("option", "suppress");
+    <any>$a.qtip("option", "metadata");
 
-    <QTip2.Content> $a.qtip("option", "content");
-    <QTip2.Text> $a.qtip("option", "content.text");
-    <string> $a.qtip("option", "content.attr");
-    <QTip2.Title> $a.qtip("option", "content.title");
-    <string | JQuery | boolean> $a.qtip("option", "content.button");
+    <QTip2.Content>$a.qtip("option", "content");
+    <QTip2.Text>$a.qtip("option", "content.text");
+    <string>$a.qtip("option", "content.attr");
+    <QTip2.Title>$a.qtip("option", "content.title");
+    <string | JQuery | boolean>$a.qtip("option", "content.button");
 
-    <QTip2.Position> $a.qtip("option", "position");
-    <string | boolean> $a.qtip("option", "position.my");
-    <string | boolean> $a.qtip("option", "position.at");
-    <QTip2.Target | boolean> $a.qtip("option", "position.target");
-    <JQuery | boolean> $a.qtip("option", "position.container");
-    <JQuery | boolean> $a.qtip("option", "position.viewport");
-    <boolean | ((api: any, pos: any, viewport: any) => any)> $a.qtip("option", "position.effect");
-    <QTip2.PositionAdjust> $a.qtip("option", "position.adjust");
+    <QTip2.Position>$a.qtip("option", "position");
+    <string | boolean>$a.qtip("option", "position.my");
+    <string | boolean>$a.qtip("option", "position.at");
+    <QTip2.Target | boolean>$a.qtip("option", "position.target");
+    <JQuery | boolean>$a.qtip("option", "position.container");
+    <JQuery | boolean>$a.qtip("option", "position.viewport");
+    <boolean | ((api: any, pos: any, viewport: any) => any)>(
+        $a.qtip("option", "position.effect")
+    );
+    <QTip2.PositionAdjust>$a.qtip("option", "position.adjust");
 
-    <QTip2.Show> $a.qtip("option", "show");
-    <JQuery | boolean> $a.qtip("option", "show.target");
-    <string | boolean> $a.qtip("option", "show.event");
-    <number> $a.qtip("option", "show.delay");
-    <JQuery | string | boolean> $a.qtip("option", "show.solo");
-    <boolean> $a.qtip("option", "show.ready");
-    <boolean | ((offset: any) => any)> $a.qtip("option", "show.effect");
-    <boolean | QTip2.Modal> $a.qtip("option", "show.modal");
+    <QTip2.Show>$a.qtip("option", "show");
+    <JQuery | boolean>$a.qtip("option", "show.target");
+    <string | boolean>$a.qtip("option", "show.event");
+    <number>$a.qtip("option", "show.delay");
+    <JQuery | string | boolean>$a.qtip("option", "show.solo");
+    <boolean>$a.qtip("option", "show.ready");
+    <boolean | ((offset: any) => any)>$a.qtip("option", "show.effect");
+    <boolean | QTip2.Modal>$a.qtip("option", "show.modal");
 
-    <QTip2.Hide> $a.qtip("option", "hide");
-    <JQuery | boolean> $a.qtip("option", "hide.target");
-    <string | boolean> $a.qtip("option", "hide.event");
-    <number> $a.qtip("option", "hide.delay");
-    <string | boolean> $a.qtip("option", "hide.leave");
-    <number | boolean> $a.qtip("option", "hide.distance");
-    <boolean | ((offset: any) => any)> $a.qtip("option", "hide.effect");
+    <QTip2.Hide>$a.qtip("option", "hide");
+    <JQuery | boolean>$a.qtip("option", "hide.target");
+    <string | boolean>$a.qtip("option", "hide.event");
+    <number>$a.qtip("option", "hide.delay");
+    <string | boolean>$a.qtip("option", "hide.leave");
+    <number | boolean>$a.qtip("option", "hide.distance");
+    <boolean | ((offset: any) => any)>$a.qtip("option", "hide.effect");
 
-    <QTip2.Style> $a.qtip("option", "style");
-    <string | boolean> $a.qtip("option", "style.classes");
-    <boolean> $a.qtip("option", "style.def");
-    <boolean> $a.qtip("option", "style.widget");
-    <string | number | boolean> $a.qtip("option", "style.width");
-    <string | number | boolean> $a.qtip("option", "style.height");
-    <string | boolean | QTip2.Tip> $a.qtip("option", "style.tip");
+    <QTip2.Style>$a.qtip("option", "style");
+    <string | boolean>$a.qtip("option", "style.classes");
+    <boolean>$a.qtip("option", "style.def");
+    <boolean>$a.qtip("option", "style.widget");
+    <string | number | boolean>$a.qtip("option", "style.width");
+    <string | number | boolean>$a.qtip("option", "style.height");
+    <string | boolean | QTip2.Tip>$a.qtip("option", "style.tip");
 
-    <QTip2.Events> $a.qtip("option", "events");
-    <QTip2.EventApiFunc> $a.qtip("option", "events.render");
-    <QTip2.EventApiFunc> $a.qtip("option", "events.show");
-    <QTip2.EventApiFunc> $a.qtip("option", "events.hide");
-    <QTip2.EventApiFunc> $a.qtip("option", "events.toggle");
-    <QTip2.EventApiFunc> $a.qtip("option", "events.visible");
-    <QTip2.EventApiFunc> $a.qtip("option", "events.hidde");
-    <QTip2.EventApiFunc> $a.qtip("option", "events.move");
-    <QTip2.EventApiFunc> $a.qtip("option", "events.focus");
-    <QTip2.EventApiFunc> $a.qtip("option", "events.blur");
+    <QTip2.Events>$a.qtip("option", "events");
+    <QTip2.EventApiFunc>$a.qtip("option", "events.render");
+    <QTip2.EventApiFunc>$a.qtip("option", "events.show");
+    <QTip2.EventApiFunc>$a.qtip("option", "events.hide");
+    <QTip2.EventApiFunc>$a.qtip("option", "events.toggle");
+    <QTip2.EventApiFunc>$a.qtip("option", "events.visible");
+    <QTip2.EventApiFunc>$a.qtip("option", "events.hidde");
+    <QTip2.EventApiFunc>$a.qtip("option", "events.move");
+    <QTip2.EventApiFunc>$a.qtip("option", "events.focus");
+    <QTip2.EventApiFunc>$a.qtip("option", "events.blur");
 }
 
 /**
@@ -681,7 +685,7 @@ function testApiSetViaObject() {
 
     var api = $a.qtip("api");
 
-    <QTip2.Api> api.set({
+    <QTip2.Api>api.set({
         prerender: false,
         id: false,
         overwrite: true,
@@ -705,7 +709,7 @@ function testApiSetViaObject() {
                 resize: true,
                 method: "flip flip",
             },
-            effect: function(api, pos, viewport) {
+            effect: function (api, pos, viewport) {
                 $(this).animate(pos, {
                     duration: 200,
                     queue: false,
@@ -763,63 +767,70 @@ function testApiSetViaObject() {
         },
     });
 
-    <QTip2.Api> api.set("id", <string | boolean> null);
-    <QTip2.Api> api.set("prerender", <boolean> null);
-    <QTip2.Api> api.set("overwrite", <boolean> null);
-    <QTip2.Api> api.set("suppress", <boolean> null);
-    <QTip2.Api> api.set("metadata", <any> null);
+    <QTip2.Api>api.set("id", <string | boolean>null);
+    <QTip2.Api>api.set("prerender", <boolean>null);
+    <QTip2.Api>api.set("overwrite", <boolean>null);
+    <QTip2.Api>api.set("suppress", <boolean>null);
+    <QTip2.Api>api.set("metadata", <any>null);
 
-    <QTip2.Api> api.set("content", <QTip2.Text | QTip2.Content> null);
-    <QTip2.Api> api.set("content.title", <QTip2.Title | { text: QTip2.Title }> null);
-    <QTip2.Api> api.set("content.text", <QTip2.Text> null);
-    <QTip2.Api> api.set("content.attr", <string> null);
-    <QTip2.Api> api.set("content.button", <string | JQuery | boolean> null);
+    <QTip2.Api>api.set("content", <QTip2.Text | QTip2.Content>null);
+    <QTip2.Api>(
+        api.set("content.title", <QTip2.Title | { text: QTip2.Title }>null)
+    );
+    <QTip2.Api>api.set("content.text", <QTip2.Text>null);
+    <QTip2.Api>api.set("content.attr", <string>null);
+    <QTip2.Api>api.set("content.button", <string | JQuery | boolean>null);
 
-    <QTip2.Api> api.set("position", <string | QTip2.Position> null);
-    <QTip2.Api> api.set("position.my", <string | boolean> null);
-    <QTip2.Api> api.set("position.at", <string | boolean> null);
-    <QTip2.Api> api.set("position.target", <QTip2.Target | boolean> null);
-    <QTip2.Api> api.set("position.container", <JQuery | boolean> null);
-    <QTip2.Api> api.set("position.viewport", <JQuery | boolean> null);
-    <QTip2.Api> api.set("position.effect", <boolean | ((api: QTip2.Api, pos: any, viewport: any) => void)> null);
-    <QTip2.Api> api.set("position.adjust", <QTip2.PositionAdjust> null);
+    <QTip2.Api>api.set("position", <string | QTip2.Position>null);
+    <QTip2.Api>api.set("position.my", <string | boolean>null);
+    <QTip2.Api>api.set("position.at", <string | boolean>null);
+    <QTip2.Api>api.set("position.target", <QTip2.Target | boolean>null);
+    <QTip2.Api>api.set("position.container", <JQuery | boolean>null);
+    <QTip2.Api>api.set("position.viewport", <JQuery | boolean>null);
+    <QTip2.Api>(
+        api.set(
+            "position.effect",
+            <boolean | ((api: QTip2.Api, pos: any, viewport: any) => void)>null,
+        )
+    );
+    <QTip2.Api>api.set("position.adjust", <QTip2.PositionAdjust>null);
 
-    <QTip2.Api> api.set("show", <QTip2.Show> null);
-    <QTip2.Api> api.set("show.target", <JQuery | boolean> null);
-    <QTip2.Api> api.set("show.event", <string | boolean> null);
-    <QTip2.Api> api.set("show.delay", <number> null);
-    <QTip2.Api> api.set("show.solo", <JQuery | string | boolean> null);
-    <QTip2.Api> api.set("show.ready", <boolean> null);
-    <QTip2.Api> api.set("show.effect", <boolean | ((offset: any) => void)> null);
-    <QTip2.Api> api.set("show.modal", <boolean | QTip2.Modal> null);
+    <QTip2.Api>api.set("show", <QTip2.Show>null);
+    <QTip2.Api>api.set("show.target", <JQuery | boolean>null);
+    <QTip2.Api>api.set("show.event", <string | boolean>null);
+    <QTip2.Api>api.set("show.delay", <number>null);
+    <QTip2.Api>api.set("show.solo", <JQuery | string | boolean>null);
+    <QTip2.Api>api.set("show.ready", <boolean>null);
+    <QTip2.Api>api.set("show.effect", <boolean | ((offset: any) => void)>null);
+    <QTip2.Api>api.set("show.modal", <boolean | QTip2.Modal>null);
 
-    <QTip2.Api> api.set("hide", <QTip2.Hide> null);
-    <QTip2.Api> api.set("hide.target", <JQuery | boolean> null);
-    <QTip2.Api> api.set("hide.event", <string | boolean> null);
-    <QTip2.Api> api.set("hide.inactive", <number | boolean> null);
-    <QTip2.Api> api.set("hide.fixed", <boolean> null);
-    <QTip2.Api> api.set("hide.leave", <string | boolean> null);
-    <QTip2.Api> api.set("hide.distance", <number | boolean> null);
-    <QTip2.Api> api.set("hide.effect", <boolean | ((offset: any) => void)> null);
+    <QTip2.Api>api.set("hide", <QTip2.Hide>null);
+    <QTip2.Api>api.set("hide.target", <JQuery | boolean>null);
+    <QTip2.Api>api.set("hide.event", <string | boolean>null);
+    <QTip2.Api>api.set("hide.inactive", <number | boolean>null);
+    <QTip2.Api>api.set("hide.fixed", <boolean>null);
+    <QTip2.Api>api.set("hide.leave", <string | boolean>null);
+    <QTip2.Api>api.set("hide.distance", <number | boolean>null);
+    <QTip2.Api>api.set("hide.effect", <boolean | ((offset: any) => void)>null);
 
-    <QTip2.Api> api.set("style", <QTip2.Style> null);
-    <QTip2.Api> api.set("style.classes", <string | boolean> null);
-    <QTip2.Api> api.set("style.def", <boolean> null);
-    <QTip2.Api> api.set("style.widget", <boolean> null);
-    <QTip2.Api> api.set("style.width", <string | number | boolean> null);
-    <QTip2.Api> api.set("style.height", <string | number | boolean> null);
-    <QTip2.Api> api.set("style.tip", <string | boolean | QTip2.Tip> null);
+    <QTip2.Api>api.set("style", <QTip2.Style>null);
+    <QTip2.Api>api.set("style.classes", <string | boolean>null);
+    <QTip2.Api>api.set("style.def", <boolean>null);
+    <QTip2.Api>api.set("style.widget", <boolean>null);
+    <QTip2.Api>api.set("style.width", <string | number | boolean>null);
+    <QTip2.Api>api.set("style.height", <string | number | boolean>null);
+    <QTip2.Api>api.set("style.tip", <string | boolean | QTip2.Tip>null);
 
-    <QTip2.Api> api.set("events", <QTip2.Events> null);
-    <QTip2.Api> api.set("events.render", <QTip2.EventApiFunc> null);
-    <QTip2.Api> api.set("events.show", <QTip2.EventApiFunc> null);
-    <QTip2.Api> api.set("events.hide", <QTip2.EventApiFunc> null);
-    <QTip2.Api> api.set("events.toggle", <QTip2.EventApiFunc> null);
-    <QTip2.Api> api.set("events.visible", <QTip2.EventApiFunc> null);
-    <QTip2.Api> api.set("events.hidden", <QTip2.EventApiFunc> null);
-    <QTip2.Api> api.set("events.move", <QTip2.EventApiFunc> null);
-    <QTip2.Api> api.set("events.focus", <QTip2.EventApiFunc> null);
-    <QTip2.Api> api.set("events.blur", <QTip2.EventApiFunc> null);
+    <QTip2.Api>api.set("events", <QTip2.Events>null);
+    <QTip2.Api>api.set("events.render", <QTip2.EventApiFunc>null);
+    <QTip2.Api>api.set("events.show", <QTip2.EventApiFunc>null);
+    <QTip2.Api>api.set("events.hide", <QTip2.EventApiFunc>null);
+    <QTip2.Api>api.set("events.toggle", <QTip2.EventApiFunc>null);
+    <QTip2.Api>api.set("events.visible", <QTip2.EventApiFunc>null);
+    <QTip2.Api>api.set("events.hidden", <QTip2.EventApiFunc>null);
+    <QTip2.Api>api.set("events.move", <QTip2.EventApiFunc>null);
+    <QTip2.Api>api.set("events.focus", <QTip2.EventApiFunc>null);
+    <QTip2.Api>api.set("events.blur", <QTip2.EventApiFunc>null);
 }
 
 /**
@@ -828,7 +839,7 @@ function testApiSetViaObject() {
 function testApiSetViaString() {
     $a.qtip({});
 
-    <QTip2.Api> $a.qtip("option", {
+    <QTip2.Api>$a.qtip("option", {
         prerender: false,
         id: false,
         overwrite: true,
@@ -852,7 +863,7 @@ function testApiSetViaString() {
                 resize: true,
                 method: "flip flip",
             },
-            effect: function(api: QTip2.Api, pos: any, viewport: any) {
+            effect: function (api: QTip2.Api, pos: any, viewport: any) {
                 $(this).animate(pos, {
                     duration: 200,
                     queue: false,
@@ -910,67 +921,97 @@ function testApiSetViaString() {
         },
     });
 
-    <QTip2.Api> $a.qtip("option", "id", <string | boolean> null);
-    <QTip2.Api> $a.qtip("option", "prerender", <boolean> null);
-    <QTip2.Api> $a.qtip("option", "overwrite", <boolean> null);
-    <QTip2.Api> $a.qtip("option", "suppress", <boolean> null);
-    <QTip2.Api> $a.qtip("option", "metadata", <any> null);
+    <QTip2.Api>$a.qtip("option", "id", <string | boolean>null);
+    <QTip2.Api>$a.qtip("option", "prerender", <boolean>null);
+    <QTip2.Api>$a.qtip("option", "overwrite", <boolean>null);
+    <QTip2.Api>$a.qtip("option", "suppress", <boolean>null);
+    <QTip2.Api>$a.qtip("option", "metadata", <any>null);
 
-    <QTip2.Api> $a.qtip("option", "content", <QTip2.Text | QTip2.Content> null);
-    <QTip2.Api> $a.qtip("option", "content.title", <QTip2.Title | { text: QTip2.Title }> null);
-    <QTip2.Api> $a.qtip("option", "content.text", <QTip2.Text> null);
-    <QTip2.Api> $a.qtip("option", "content.attr", <string> null);
-    <QTip2.Api> $a.qtip("option", "content.button", <string | JQuery | boolean> null);
-
-    <QTip2.Api> $a.qtip("option", "position", <string | QTip2.Position> null);
-    <QTip2.Api> $a.qtip("option", "position.my", <string | boolean> null);
-    <QTip2.Api> $a.qtip("option", "position.at", <string | boolean> null);
-    <QTip2.Api> $a.qtip("option", "position.target", <QTip2.Target | boolean> null);
-    <QTip2.Api> $a.qtip("option", "position.container", <JQuery | boolean> null);
-    <QTip2.Api> $a.qtip("option", "position.viewport", <JQuery | boolean> null);
-    <QTip2.Api> $a.qtip(
-        "option",
-        "position.effect",
-        <boolean | ((api: QTip2.Api, pos: any, viewport: any) => void)> null,
+    <QTip2.Api>$a.qtip("option", "content", <QTip2.Text | QTip2.Content>null);
+    <QTip2.Api>(
+        $a.qtip(
+            "option",
+            "content.title",
+            <QTip2.Title | { text: QTip2.Title }>null,
+        )
     );
-    <QTip2.Api> $a.qtip("option", "position.adjust", <QTip2.PositionAdjust> null);
+    <QTip2.Api>$a.qtip("option", "content.text", <QTip2.Text>null);
+    <QTip2.Api>$a.qtip("option", "content.attr", <string>null);
+    <QTip2.Api>(
+        $a.qtip("option", "content.button", <string | JQuery | boolean>null)
+    );
 
-    <QTip2.Api> $a.qtip("option", "show", <QTip2.Show> null);
-    <QTip2.Api> $a.qtip("option", "show.target", <JQuery | boolean> null);
-    <QTip2.Api> $a.qtip("option", "show.event", <string | boolean> null);
-    <QTip2.Api> $a.qtip("option", "show.delay", <number> null);
-    <QTip2.Api> $a.qtip("option", "show.solo", <JQuery | string | boolean> null);
-    <QTip2.Api> $a.qtip("option", "show.ready", <boolean> null);
-    <QTip2.Api> $a.qtip("option", "show.effect", <boolean | ((offset: any) => void)> null);
-    <QTip2.Api> $a.qtip("option", "show.modal", <boolean | QTip2.Modal> null);
+    <QTip2.Api>$a.qtip("option", "position", <string | QTip2.Position>null);
+    <QTip2.Api>$a.qtip("option", "position.my", <string | boolean>null);
+    <QTip2.Api>$a.qtip("option", "position.at", <string | boolean>null);
+    <QTip2.Api>(
+        $a.qtip("option", "position.target", <QTip2.Target | boolean>null)
+    );
+    <QTip2.Api>$a.qtip("option", "position.container", <JQuery | boolean>null);
+    <QTip2.Api>$a.qtip("option", "position.viewport", <JQuery | boolean>null);
+    <QTip2.Api>(
+        $a.qtip(
+            "option",
+            "position.effect",
+            <boolean | ((api: QTip2.Api, pos: any, viewport: any) => void)>null,
+        )
+    );
+    <QTip2.Api>$a.qtip("option", "position.adjust", <QTip2.PositionAdjust>null);
 
-    <QTip2.Api> $a.qtip("option", "hide", <QTip2.Hide> null);
-    <QTip2.Api> $a.qtip("option", "hide.target", <JQuery | boolean> null);
-    <QTip2.Api> $a.qtip("option", "hide.event", <string | boolean> null);
-    <QTip2.Api> $a.qtip("option", "hide.inactive", <number | boolean> null);
-    <QTip2.Api> $a.qtip("option", "hide.fixed", <boolean> null);
-    <QTip2.Api> $a.qtip("option", "hide.leave", <string | boolean> null);
-    <QTip2.Api> $a.qtip("option", "hide.distance", <number | boolean> null);
-    <QTip2.Api> $a.qtip("option", "hide.effect", <boolean | ((offset: any) => void)> null);
+    <QTip2.Api>$a.qtip("option", "show", <QTip2.Show>null);
+    <QTip2.Api>$a.qtip("option", "show.target", <JQuery | boolean>null);
+    <QTip2.Api>$a.qtip("option", "show.event", <string | boolean>null);
+    <QTip2.Api>$a.qtip("option", "show.delay", <number>null);
+    <QTip2.Api>$a.qtip("option", "show.solo", <JQuery | string | boolean>null);
+    <QTip2.Api>$a.qtip("option", "show.ready", <boolean>null);
+    <QTip2.Api>(
+        $a.qtip(
+            "option",
+            "show.effect",
+            <boolean | ((offset: any) => void)>null,
+        )
+    );
+    <QTip2.Api>$a.qtip("option", "show.modal", <boolean | QTip2.Modal>null);
 
-    <QTip2.Api> $a.qtip("option", "style", <QTip2.Style> null);
-    <QTip2.Api> $a.qtip("option", "style.classes", <string | boolean> null);
-    <QTip2.Api> $a.qtip("option", "style.def", <boolean> null);
-    <QTip2.Api> $a.qtip("option", "style.widget", <boolean> null);
-    <QTip2.Api> $a.qtip("option", "style.width", <string | number | boolean> null);
-    <QTip2.Api> $a.qtip("option", "style.height", <string | number | boolean> null);
-    <QTip2.Api> $a.qtip("option", "style.tip", <string | boolean | QTip2.Tip> null);
+    <QTip2.Api>$a.qtip("option", "hide", <QTip2.Hide>null);
+    <QTip2.Api>$a.qtip("option", "hide.target", <JQuery | boolean>null);
+    <QTip2.Api>$a.qtip("option", "hide.event", <string | boolean>null);
+    <QTip2.Api>$a.qtip("option", "hide.inactive", <number | boolean>null);
+    <QTip2.Api>$a.qtip("option", "hide.fixed", <boolean>null);
+    <QTip2.Api>$a.qtip("option", "hide.leave", <string | boolean>null);
+    <QTip2.Api>$a.qtip("option", "hide.distance", <number | boolean>null);
+    <QTip2.Api>(
+        $a.qtip(
+            "option",
+            "hide.effect",
+            <boolean | ((offset: any) => void)>null,
+        )
+    );
 
-    <QTip2.Api> $a.qtip("option", "events", <QTip2.Events> null);
-    <QTip2.Api> $a.qtip("option", "events.render", <QTip2.EventApiFunc> null);
-    <QTip2.Api> $a.qtip("option", "events.show", <QTip2.EventApiFunc> null);
-    <QTip2.Api> $a.qtip("option", "events.hide", <QTip2.EventApiFunc> null);
-    <QTip2.Api> $a.qtip("option", "events.toggle", <QTip2.EventApiFunc> null);
-    <QTip2.Api> $a.qtip("option", "events.visible", <QTip2.EventApiFunc> null);
-    <QTip2.Api> $a.qtip("option", "events.hidden", <QTip2.EventApiFunc> null);
-    <QTip2.Api> $a.qtip("option", "events.move", <QTip2.EventApiFunc> null);
-    <QTip2.Api> $a.qtip("option", "events.focus", <QTip2.EventApiFunc> null);
-    <QTip2.Api> $a.qtip("option", "events.blur", <QTip2.EventApiFunc> null);
+    <QTip2.Api>$a.qtip("option", "style", <QTip2.Style>null);
+    <QTip2.Api>$a.qtip("option", "style.classes", <string | boolean>null);
+    <QTip2.Api>$a.qtip("option", "style.def", <boolean>null);
+    <QTip2.Api>$a.qtip("option", "style.widget", <boolean>null);
+    <QTip2.Api>(
+        $a.qtip("option", "style.width", <string | number | boolean>null)
+    );
+    <QTip2.Api>(
+        $a.qtip("option", "style.height", <string | number | boolean>null)
+    );
+    <QTip2.Api>(
+        $a.qtip("option", "style.tip", <string | boolean | QTip2.Tip>null)
+    );
+
+    <QTip2.Api>$a.qtip("option", "events", <QTip2.Events>null);
+    <QTip2.Api>$a.qtip("option", "events.render", <QTip2.EventApiFunc>null);
+    <QTip2.Api>$a.qtip("option", "events.show", <QTip2.EventApiFunc>null);
+    <QTip2.Api>$a.qtip("option", "events.hide", <QTip2.EventApiFunc>null);
+    <QTip2.Api>$a.qtip("option", "events.toggle", <QTip2.EventApiFunc>null);
+    <QTip2.Api>$a.qtip("option", "events.visible", <QTip2.EventApiFunc>null);
+    <QTip2.Api>$a.qtip("option", "events.hidden", <QTip2.EventApiFunc>null);
+    <QTip2.Api>$a.qtip("option", "events.move", <QTip2.EventApiFunc>null);
+    <QTip2.Api>$a.qtip("option", "events.focus", <QTip2.EventApiFunc>null);
+    <QTip2.Api>$a.qtip("option", "events.blur", <QTip2.EventApiFunc>null);
 }
 
 /**
@@ -981,66 +1022,66 @@ function testApiViaObject() {
 
     var api = $a.qtip("api");
 
-    <QTip2.Api> api.toggle();
-    <QTip2.Api> api.toggle(true);
-    <QTip2.Api> api.toggle(false, <Event> null);
+    <QTip2.Api>api.toggle();
+    <QTip2.Api>api.toggle(true);
+    <QTip2.Api>api.toggle(false, <Event>null);
 
-    <QTip2.Api> api.show();
-    <QTip2.Api> api.show(<Event> null);
+    <QTip2.Api>api.show();
+    <QTip2.Api>api.show(<Event>null);
 
-    <QTip2.Api> api.hide();
-    <QTip2.Api> api.hide(<Event> null);
+    <QTip2.Api>api.hide();
+    <QTip2.Api>api.hide(<Event>null);
 
-    <QTip2.Api> api.disable();
-    <QTip2.Api> api.disable(true);
+    <QTip2.Api>api.disable();
+    <QTip2.Api>api.disable(true);
 
-    <QTip2.Api> api.enable();
+    <QTip2.Api>api.enable();
 
-    <QTip2.Api> api.reposition();
-    <QTip2.Api> api.reposition(<Event> null);
-    <QTip2.Api> api.reposition(<Event> null, true);
+    <QTip2.Api>api.reposition();
+    <QTip2.Api>api.reposition(<Event>null);
+    <QTip2.Api>api.reposition(<Event>null, true);
 
-    <QTip2.Api> api.focus();
-    <QTip2.Api> api.focus(<Event> null);
+    <QTip2.Api>api.focus();
+    <QTip2.Api>api.focus(<Event>null);
 
-    <QTip2.Api> api.blur();
-    <QTip2.Api> api.blur(<Event> null);
+    <QTip2.Api>api.blur();
+    <QTip2.Api>api.blur(<Event>null);
 
-    <QTip2.Api> api.destroy();
-    <QTip2.Api> api.destroy(true);
+    <QTip2.Api>api.destroy();
+    <QTip2.Api>api.destroy(true);
 }
 
 /**
  * http://qtip2.com/api#api.updating
  */
 function testApiMethodsViaString() {
-    <JQuery> $a.qtip("toggle");
-    <JQuery> $a.qtip("toggle", true);
-    <JQuery> $a.qtip("toggle", true, <Event> null);
+    <JQuery>$a.qtip("toggle");
+    <JQuery>$a.qtip("toggle", true);
+    <JQuery>$a.qtip("toggle", true, <Event>null);
 
-    <JQuery> $a.qtip("show");
-    <JQuery> $a.qtip("show", <Event> null);
+    <JQuery>$a.qtip("show");
+    <JQuery>$a.qtip("show", <Event>null);
 
-    <JQuery> $a.qtip("hide");
-    <JQuery> $a.qtip("hide", <Event> null);
+    <JQuery>$a.qtip("hide");
+    <JQuery>$a.qtip("hide", <Event>null);
 
-    <JQuery> $a.qtip("disable");
-    <JQuery> $a.qtip("disable", true);
+    <JQuery>$a.qtip("disable");
+    <JQuery>$a.qtip("disable", true);
 
-    <JQuery> $a.qtip("enable");
+    <JQuery>$a.qtip("enable");
 
-    <JQuery> $a.qtip("reposition");
-    <JQuery> $a.qtip("reposition", <Event> null);
-    <JQuery> $a.qtip("reposition", <Event> null, true);
+    <JQuery>$a.qtip("reposition");
+    <JQuery>$a.qtip("reposition", <Event>null);
+    <JQuery>$a.qtip("reposition", <Event>null, true);
 
-    <JQuery> $a.qtip("focus");
-    <JQuery> $a.qtip("focus", <Event> null);
+    <JQuery>$a.qtip("focus");
+    <JQuery>$a.qtip("focus", <Event>null);
 
-    <JQuery> $a.qtip("blur");
-    <JQuery> $a.qtip("blur", <Event> null);
+    <JQuery>$a.qtip("blur");
+    <JQuery>$a.qtip("blur", <Event>null);
 
-    <JQuery> $a.qtip("destroy");
-    <JQuery> $a.qtip("destroy", true);
+    <JQuery>$a.qtip("destroy");
+    <JQuery>$a.qtip("destroy", true);
 }
 
 /**

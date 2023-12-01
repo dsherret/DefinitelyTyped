@@ -20,16 +20,22 @@ const createOptions: imageBlobReduce.Options = {
 const imageReducer = imageBlobReduce(createOptions);
 
 imageReducer.use(
-    args => {
+    (args) => {
         console.log(args);
     },
     "arg1",
     "arg2",
 );
 
-imageReducer.before("_calculate_size", env => new Promise(resolve => resolve(env)));
+imageReducer.before(
+    "_calculate_size",
+    (env) => new Promise((resolve) => resolve(env)),
+);
 
-imageReducer.after("_transform", env => new Promise(resolve => resolve(env)));
+imageReducer.after(
+    "_transform",
+    (env) => new Promise((resolve) => resolve(env)),
+);
 
 const blob = new Blob([""], { type: "image/png" });
 

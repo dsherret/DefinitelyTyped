@@ -16,10 +16,12 @@ declare namespace ZC {
     interface EventListenerObject<T extends ZeroClipboardEvent> {
         handleEvent(ev: T): void;
     }
-    type EventListenerOrEventListenerObject<T extends ZeroClipboardEvent> = EventListener<T> | EventListenerObject<T>;
+    type EventListenerOrEventListenerObject<T extends ZeroClipboardEvent> =
+        | EventListener<T>
+        | EventListenerObject<T>;
 
     export interface ZeroClipboardStatic extends ZeroClipboardCommon {
-        new(elements?: Element | List<Element>): ZeroClipboardClient;
+        new (elements?: Element | List<Element>): ZeroClipboardClient;
 
         /**
          * The version of the ZeroClipboard library being used, e.g. "2.0.0".
@@ -182,8 +184,7 @@ declare namespace ZC {
         version: string;
     }
 
-    interface ZeroClipboardBeforeCopyEvent extends ZeroClipboardEvent {
-    }
+    interface ZeroClipboardBeforeCopyEvent extends ZeroClipboardEvent {}
 
     interface ZeroClipboardCopyEvent extends ZeroClipboardEvent {
         clipboardData: {
@@ -258,14 +259,20 @@ declare namespace ZC {
          * @param {string} eventType
          * @param {EventListener<ZeroClipboardEvent>} listener
          */
-        on(eventType: string, listener: EventListenerOrEventListenerObject<ZeroClipboardEvent>): void;
+        on(
+            eventType: string,
+            listener: EventListenerOrEventListenerObject<ZeroClipboardEvent>,
+        ): void;
         /**
          * The ready event is fired when the Flash SWF completes loading and is ready for action. Please note that you need
          * to set most configuration options [with ZeroClipboard.config(...)] before ZeroClipboard.create() is invoked.
          * @param {"ready"} eventType
          * @param {EventListener<ZeroClipboardReadyEvent>} listener
          */
-        on(eventType: "ready", listener: EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>): void;
+        on(
+            eventType: "ready",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>,
+        ): void;
         /**
          * On click, the Flash object will fire off a beforecopy event. This event is generally only used for "UI
          * preparation" if you want to alter anything before the copy event fires.
@@ -274,7 +281,10 @@ declare namespace ZC {
          * @param {"beforecopy"} eventType
          * @param {EventListener<ZeroClipboardBeforeCopyEvent>} listener
          */
-        on(eventType: "beforecopy", listener: EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>): void;
+        on(
+            eventType: "beforecopy",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>,
+        ): void;
         /**
          * On click (and after the beforecopy event), the Flash object will fire off a copy event. If the HTML object has
          * data-clipboard-text or data-clipboard-target, then ZeroClipboard will take care of getting an initial set of
@@ -288,13 +298,19 @@ declare namespace ZC {
          * @param {"copy"} eventType
          * @param {EventListener<ZeroClipboardCopyEvent>} listener
          */
-        on(eventType: "copy", listener: EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>): void;
+        on(
+            eventType: "copy",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>,
+        ): void;
         /**
          * The aftercopy event is fired when the text is copied [or failed to copy] to the clipboard.
          * @param {"aftercopy"} eventType
          * @param {EventListener<ZeroClipboardAfterCopyEvent>} listener
          */
-        on(eventType: "aftercopy", listener: EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>): void;
+        on(
+            eventType: "aftercopy",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>,
+        ): void;
         /**
          * The destroy event is fired when ZeroClipboard.destroy() is invoked.
          * IMPORTANT: Handlers of this event are expected to operate synchronously if they intend to be finished before the
@@ -302,7 +318,10 @@ declare namespace ZC {
          * @param {"destroy"} eventType
          * @param {EventListener<ZeroClipboardDestroyEvent>} listener
          */
-        on(eventType: "destroy", listener: EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>): void;
+        on(
+            eventType: "destroy",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>,
+        ): void;
         /**
          * The error event is fired under a number of conditions, which will be detailed as sub-sections. Some consumers
          * may not consider all error types to be critical, and thus ZeroClipboard does not take it upon itself to implode
@@ -310,42 +329,90 @@ declare namespace ZC {
          * @param {"error"} eventType
          * @param {EventListener<ZeroClipboardErrorEvent>} listener
          */
-        on(eventType: "error", listener: EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>): void;
+        on(
+            eventType: "error",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>,
+        ): void;
         /**
          * Add a set of eventType to listener function/object mappings.
          * @param {EventListener<ZeroClipboardErrorEvent>} listenerObj
          */
         on(listenerObj: {
-            ready?: EventListenerOrEventListenerObject<ZeroClipboardReadyEvent> | undefined;
-            beforecopy?: EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent> | undefined;
-            copy?: EventListenerOrEventListenerObject<ZeroClipboardCopyEvent> | undefined;
-            aftercopy?: EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent> | undefined;
-            destroy?: EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent> | undefined;
-            error?: EventListenerOrEventListenerObject<ZeroClipboardErrorEvent> | undefined;
+            ready?:
+                | EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>
+                | undefined;
+            beforecopy?:
+                | EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>
+                | undefined;
+            copy?:
+                | EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>
+                | undefined;
+            aftercopy?:
+                | EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>
+                | undefined;
+            destroy?:
+                | EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>
+                | undefined;
+            error?:
+                | EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>
+                | undefined;
         }): void;
         /**
          * Remove a listener function/object for an eventType.
          * @param {string} eventType
          * @param {EventListener<ZeroClipboardEvent>} listener
          */
-        off(eventType: "ready", listener: EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>): void;
-        off(eventType: "beforecopy", listener: EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>): void;
-        off(eventType: "copy", listener: EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>): void;
-        off(eventType: "aftercopy", listener: EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>): void;
-        off(eventType: "destroy", listener: EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>): void;
-        off(eventType: "error", listener: EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>): void;
-        off(eventType: string, listener: EventListenerOrEventListenerObject<ZeroClipboardEvent>): void;
+        off(
+            eventType: "ready",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>,
+        ): void;
+        off(
+            eventType: "beforecopy",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>,
+        ): void;
+        off(
+            eventType: "copy",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>,
+        ): void;
+        off(
+            eventType: "aftercopy",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>,
+        ): void;
+        off(
+            eventType: "destroy",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>,
+        ): void;
+        off(
+            eventType: "error",
+            listener: EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>,
+        ): void;
+        off(
+            eventType: string,
+            listener: EventListenerOrEventListenerObject<ZeroClipboardEvent>,
+        ): void;
         /**
          * Remove a set of eventType to listener function/object mappings.
          * @param {EventListener<ZeroClipboardErrorEvent>} listenerObj
          */
         off(listenerObj: {
-            ready?: EventListenerOrEventListenerObject<ZeroClipboardReadyEvent> | undefined;
-            beforecopy?: EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent> | undefined;
-            copy?: EventListenerOrEventListenerObject<ZeroClipboardCopyEvent> | undefined;
-            aftercopy?: EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent> | undefined;
-            destroy?: EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent> | undefined;
-            error?: EventListenerOrEventListenerObject<ZeroClipboardErrorEvent> | undefined;
+            ready?:
+                | EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>
+                | undefined;
+            beforecopy?:
+                | EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>
+                | undefined;
+            copy?:
+                | EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>
+                | undefined;
+            aftercopy?:
+                | EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>
+                | undefined;
+            destroy?:
+                | EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>
+                | undefined;
+            error?:
+                | EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>
+                | undefined;
         }): void;
         /**
          * Remove a set of eventType to listener function/object mappings.
@@ -385,24 +452,66 @@ declare namespace ZC {
          * @param  {string} eventType
          * @return {EventListener<ZeroClipboardEvent>}
          */
-        handlers(eventType: string): Array<EventListenerOrEventListenerObject<ZeroClipboardEvent>>;
-        handlers(eventType: "ready"): Array<EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>>;
-        handlers(eventType: "beforecopy"): Array<EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>>;
-        handlers(eventType: "copy"): Array<EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>>;
-        handlers(eventType: "aftercopy"): Array<EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>>;
-        handlers(eventType: "destroy"): Array<EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>>;
-        handlers(eventType: "error"): Array<EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>>;
+        handlers(
+            eventType: string,
+        ): Array<EventListenerOrEventListenerObject<ZeroClipboardEvent>>;
+        handlers(
+            eventType: "ready",
+        ): Array<EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>>;
+        handlers(
+            eventType: "beforecopy",
+        ): Array<
+            EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>
+        >;
+        handlers(
+            eventType: "copy",
+        ): Array<EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>>;
+        handlers(
+            eventType: "aftercopy",
+        ): Array<
+            EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>
+        >;
+        handlers(
+            eventType: "destroy",
+        ): Array<EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>>;
+        handlers(
+            eventType: "error",
+        ): Array<EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>>;
         /**
          * Retrieves a copy of the map of registered listener functions/objects for ALL event types.
          * @return {Object}
          */
         handlers(): {
-            ready?: Array<EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>> | undefined;
-            beforecopy?: Array<EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>> | undefined;
-            copy?: Array<EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>> | undefined;
-            aftercopy?: Array<EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>> | undefined;
-            destroy?: Array<EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>> | undefined;
-            error?: Array<EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>> | undefined;
+            ready?:
+                | Array<
+                      EventListenerOrEventListenerObject<ZeroClipboardReadyEvent>
+                  >
+                | undefined;
+            beforecopy?:
+                | Array<
+                      EventListenerOrEventListenerObject<ZeroClipboardBeforeCopyEvent>
+                  >
+                | undefined;
+            copy?:
+                | Array<
+                      EventListenerOrEventListenerObject<ZeroClipboardCopyEvent>
+                  >
+                | undefined;
+            aftercopy?:
+                | Array<
+                      EventListenerOrEventListenerObject<ZeroClipboardAfterCopyEvent>
+                  >
+                | undefined;
+            destroy?:
+                | Array<
+                      EventListenerOrEventListenerObject<ZeroClipboardDestroyEvent>
+                  >
+                | undefined;
+            error?:
+                | Array<
+                      EventListenerOrEventListenerObject<ZeroClipboardErrorEvent>
+                  >
+                | undefined;
         };
     }
 

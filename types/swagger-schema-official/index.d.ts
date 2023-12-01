@@ -35,7 +35,14 @@ export interface Header extends BaseSchema {
 
 // ----------------------------- Parameter -----------------------------------
 
-export type ParameterType = "string" | "number" | "integer" | "boolean" | "array" | "object" | "file";
+export type ParameterType =
+    | "string"
+    | "number"
+    | "integer"
+    | "boolean"
+    | "array"
+    | "object"
+    | "file";
 
 export type BaseParameter = {
     name: string;
@@ -66,48 +73,62 @@ export type NumberFormat = {
 
 export type StringFormat = {
     type: "string";
-    format?: "" | "byte" | "binary" | "date" | "date-time" | "password" | undefined;
+    format?:
+        | ""
+        | "byte"
+        | "binary"
+        | "date"
+        | "date-time"
+        | "password"
+        | undefined;
 };
 
-export type SchemaFormatConstraints = GenericFormat | IntegerFormat | NumberFormat | StringFormat;
-export type BaseFormatContrainedParameter = BaseParameter & SchemaFormatConstraints;
-export type ParameterCollectionFormat = "csv" | "ssv" | "tsv" | "pipes" | "multi";
+export type SchemaFormatConstraints =
+    | GenericFormat
+    | IntegerFormat
+    | NumberFormat
+    | StringFormat;
+export type BaseFormatContrainedParameter = BaseParameter &
+    SchemaFormatConstraints;
+export type ParameterCollectionFormat =
+    | "csv"
+    | "ssv"
+    | "tsv"
+    | "pipes"
+    | "multi";
 
-export type QueryParameter =
-    & BaseFormatContrainedParameter
-    & BaseSchema
-    & {
+export type QueryParameter = BaseFormatContrainedParameter &
+    BaseSchema & {
         in: "query";
         allowEmptyValue?: boolean | undefined;
         collectionFormat?: ParameterCollectionFormat | undefined;
     };
 
-export type PathParameter =
-    & BaseFormatContrainedParameter
-    & BaseSchema
-    & {
+export type PathParameter = BaseFormatContrainedParameter &
+    BaseSchema & {
         in: "path";
         required: true;
     };
 
-export type HeaderParameter =
-    & BaseFormatContrainedParameter
-    & BaseSchema
-    & {
+export type HeaderParameter = BaseFormatContrainedParameter &
+    BaseSchema & {
         in: "header";
     };
 
-export type FormDataParameter =
-    & BaseFormatContrainedParameter
-    & BaseSchema
-    & {
+export type FormDataParameter = BaseFormatContrainedParameter &
+    BaseSchema & {
         in: "formData";
         type: ParameterType | "file";
         allowEmptyValue?: boolean | undefined;
         collectionFormat?: ParameterCollectionFormat | undefined;
     };
 
-export type Parameter = BodyParameter | FormDataParameter | QueryParameter | PathParameter | HeaderParameter;
+export type Parameter =
+    | BodyParameter
+    | FormDataParameter
+    | QueryParameter
+    | PathParameter
+    | HeaderParameter;
 
 // ------------------------------- Path --------------------------------------
 export interface Path {
@@ -134,7 +155,9 @@ export interface Operation {
     parameters?: Array<Parameter | Reference> | undefined;
     schemes?: string[] | undefined;
     deprecated?: boolean | undefined;
-    security?: Array<{ [securityDefinitionName: string]: string[] }> | undefined;
+    security?:
+        | Array<{ [securityDefinitionName: string]: string[] }>
+        | undefined;
     tags?: string[] | undefined;
 }
 
@@ -267,9 +290,15 @@ export interface Spec {
     produces?: string[] | undefined;
     paths: { [pathName: string]: Path };
     definitions?: { [definitionsName: string]: Schema } | undefined;
-    parameters?: { [parameterName: string]: BodyParameter | QueryParameter } | undefined;
+    parameters?:
+        | { [parameterName: string]: BodyParameter | QueryParameter }
+        | undefined;
     responses?: { [responseName: string]: Response } | undefined;
-    security?: Array<{ [securityDefinitionName: string]: string[] }> | undefined;
-    securityDefinitions?: { [securityDefinitionName: string]: Security } | undefined;
+    security?:
+        | Array<{ [securityDefinitionName: string]: string[] }>
+        | undefined;
+    securityDefinitions?:
+        | { [securityDefinitionName: string]: Security }
+        | undefined;
     tags?: Tag[] | undefined;
 }

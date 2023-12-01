@@ -4,7 +4,12 @@ import { IncomingForm, Options } from "../";
 export class MultipartParser extends Transform {
     constructor(options?: Partial<Options>);
     _final(callback: () => void): void;
-    _handleCallback(name: string, buffer: Buffer, start?: number, end?: number): void;
+    _handleCallback(
+        name: string,
+        buffer: Buffer,
+        start?: number,
+        end?: number,
+    ): void;
     _transform(buffer: Buffer, _: any, callback: () => void): number;
     explain(): string;
     initWithBoundary(str: string): void;
@@ -36,7 +41,11 @@ export class OctetStreamParser extends PassThrough {
 export class QuerystringParser extends Transform {
     constructor(options?: Partial<Options>);
     _flush(callback: () => void): void;
-    _transform(buffer: Buffer, encoding: BufferEncoding, callback: () => void): void;
+    _transform(
+        buffer: Buffer,
+        encoding: BufferEncoding,
+        callback: () => void,
+    ): void;
 }
 
 export class StreamingQuerystring extends QuerystringParser {
@@ -52,5 +61,9 @@ export class DummyParser extends Transform {
 export class JSONParser extends Transform {
     constructor(options?: Partial<Options>);
     _flush(callback: () => void): void;
-    _transform(chunk: any, encoding: BufferEncoding, callback: () => void): void;
+    _transform(
+        chunk: any,
+        encoding: BufferEncoding,
+        callback: () => void,
+    ): void;
 }

@@ -85,12 +85,14 @@ interface Region {
 }
 
 // exportables
-export interface LatLngBusinessesSearchRequest extends _BusinessesSearchRequest {
+export interface LatLngBusinessesSearchRequest
+    extends _BusinessesSearchRequest {
     latitude: number;
     longitude: number;
 }
 
-export interface LocationBusinessesSearchRequest extends _BusinessesSearchRequest {
+export interface LocationBusinessesSearchRequest
+    extends _BusinessesSearchRequest {
     location: string;
 }
 
@@ -98,7 +100,8 @@ export interface BusinessesSearchResponse extends _BusinessesSearchResponse {
     businesses?: Business[];
 }
 
-export interface BusinessesDetailsSearchResponse extends _BusinessesSearchResponse {
+export interface BusinessesDetailsSearchResponse
+    extends _BusinessesSearchResponse {
     businesses?: BusinessDetails[];
 }
 

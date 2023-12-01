@@ -125,7 +125,10 @@ declare module "angular" {
     interface IControllerService {
         // Although the documentation doesn't state this, locals are optional
         <T>(
-            controllerConstructor: (new(...args: any[]) => T) | ((...args: any[]) => T) | string,
+            controllerConstructor:
+                | (new (...args: any[]) => T)
+                | ((...args: any[]) => T)
+                | string,
             locals?: any,
             bindings?: any,
         ): T;
@@ -198,7 +201,9 @@ declare module "angular" {
             method: string,
             url: string | RegExp | ((url: string) => boolean),
             data?: string | RegExp | object | ((data: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -212,7 +217,9 @@ declare module "angular" {
          */
         expectDELETE(
             url: string | RegExp | ((url: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -226,7 +233,9 @@ declare module "angular" {
          */
         expectGET(
             url: string | RegExp | ((url: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -241,7 +250,9 @@ declare module "angular" {
 
         expectHEAD(
             url: string | RegExp | ((url: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -269,7 +280,9 @@ declare module "angular" {
         expectPATCH(
             url: string | RegExp | ((url: string) => boolean),
             data?: string | RegExp | object | ((data: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -285,7 +298,9 @@ declare module "angular" {
         expectPOST(
             url: string | RegExp | ((url: string) => boolean),
             data?: string | RegExp | object | ((data: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -301,7 +316,9 @@ declare module "angular" {
         expectPUT(
             url: string | RegExp | ((url: string) => boolean),
             data?: string | RegExp | object | ((data: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -328,7 +345,9 @@ declare module "angular" {
             method: string,
             url: string | RegExp | ((url: string) => boolean),
             data?: string | RegExp | object | ((data: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -341,7 +360,9 @@ declare module "angular" {
          */
         whenDELETE(
             url: string | RegExp | ((url: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -355,7 +376,9 @@ declare module "angular" {
          */
         whenGET(
             url: string | RegExp | ((url: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -368,7 +391,9 @@ declare module "angular" {
          */
         whenHEAD(
             url: string | RegExp | ((url: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -395,7 +420,9 @@ declare module "angular" {
         whenPATCH(
             url: string | RegExp | ((url: string) => boolean),
             data?: string | RegExp | object | ((data: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -411,7 +438,9 @@ declare module "angular" {
         whenPOST(
             url: string | RegExp | ((url: string) => boolean),
             data?: string | RegExp | object | ((data: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 
@@ -429,7 +458,9 @@ declare module "angular" {
         whenPUT(
             url: string | RegExp | ((url: string) => boolean),
             data?: string | RegExp | object | ((data: string) => boolean),
-            headers?: mock.IHttpHeaders | ((headers: mock.IHttpHeaders) => boolean),
+            headers?:
+                | mock.IHttpHeaders
+                | ((headers: mock.IHttpHeaders) => boolean),
             keys?: string[],
         ): mock.IRequestHandler;
 

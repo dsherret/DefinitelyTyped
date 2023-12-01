@@ -67,7 +67,13 @@ export namespace IITC {
         | string; /* dummy for future stuff */
     type ModRarity = "COMMON" | "RARE" | "VERY_RARE";
 
-    type ModType = "RES_SHIELD" | "MULTIHACK" | "FORCE_AMP" | "HEATSINK" | "TURRET" | "LINK_AMPLIFIER";
+    type ModType =
+        | "RES_SHIELD"
+        | "MULTIHACK"
+        | "FORCE_AMP"
+        | "HEATSINK"
+        | "TURRET"
+        | "LINK_AMPLIFIER";
 
     interface Resonator {
         energy: number;

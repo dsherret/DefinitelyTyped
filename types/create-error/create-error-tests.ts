@@ -3,10 +3,11 @@ declare function deepEqual<T>(a: T, b: T): void;
 
 // Stub mocha functions
 const { describe, it, before, after, beforeEach, afterEach } = null as any as {
-    [s: string]: ((s: string, cb: (done: any) => void) => void) & ((cb: (done: any) => void) => void) & {
-        only: any;
-        skip: any;
-    };
+    [s: string]: ((s: string, cb: (done: any) => void) => void) &
+        ((cb: (done: any) => void) => void) & {
+            only: any;
+            skip: any;
+        };
 };
 
 import * as createError from "create-error";
@@ -19,9 +20,12 @@ interface MyCustomError extends createError.Error<MyCustomError> {
 }
 var MyCustomError = createError<MyCustomError>("MyCustomError");
 
-interface SubCustomError extends MyCustomError {
-}
-var SubCustomError = createError<SubCustomError>(MyCustomError, "CoolSubError", { messages: [] });
+interface SubCustomError extends MyCustomError {}
+var SubCustomError = createError<SubCustomError>(
+    MyCustomError,
+    "CoolSubError",
+    { messages: [] },
+);
 
 var sub = new SubCustomError("My Message", { someVal: "value" });
 
@@ -34,9 +38,9 @@ equal(sub.someVal, "value"); // true
 
 // Taken and adapted from https://github.com/tgriesser/create-error/blob/0.3.1/test/index.js
 
-describe("create-error", function() {
-    describe("error creation", function() {
-        it("should create a new error", function() {
+describe("create-error", function () {
+    describe("error creation", function () {
+        it("should create a new error", function () {
             var TestingError = createError("TestingError");
             var a = new TestingError("msgA");
             var b = new TestingError("msgB");
@@ -47,46 +51,54 @@ describe("create-error", function() {
             equal(a.stack.length > 0, true);
         });
 
-        it("should attach properties in the second argument", function() {
+        it("should attach properties in the second argument", function () {
             interface TestingError extends createError.Error<TestingError> {
                 anArray: string[];
             }
-            var TestingError = createError<TestingError>("TestingError", { anArray: [] });
+            var TestingError = createError<TestingError>("TestingError", {
+                anArray: [],
+            });
             var a = new TestingError("Test the array");
             deepEqual(a.anArray, []);
         });
 
-        it("should give the name \"CustomError\" if the name is omitted", function() {
+        it('should give the name "CustomError" if the name is omitted', function () {
             var TestingError = createError();
             var a = new TestingError("msg");
             equal(a.name, "CustomError");
         });
 
-        it("should not reference the same property in subsequent errors", function() {
+        it("should not reference the same property in subsequent errors", function () {
             interface TestingError extends createError.Error<TestingError> {
                 anArray: string[];
             }
-            var TestingError = createError<TestingError>("TestingError", { anArray: [] });
+            var TestingError = createError<TestingError>("TestingError", {
+                anArray: [],
+            });
             var a = new TestingError("Test the array");
             a.anArray.push("a");
             var b = new TestingError("");
             deepEqual(b.anArray, []);
         });
 
-        it("should allow for empty objects on the cloned hash", function() {
+        it("should allow for empty objects on the cloned hash", function () {
             interface TestingError extends createError.Error<TestingError> {
                 anEmptyObj: Object;
             }
-            var TestingError = createError<TestingError>("TestingError", { anEmptyObj: Object.create(null) });
+            var TestingError = createError<TestingError>("TestingError", {
+                anEmptyObj: Object.create(null),
+            });
             var a = new TestingError("Test the array");
             deepEqual(a.anEmptyObj, Object.create(null));
         });
 
-        it("attaches attrs in the second arg of the error ctor, #3", function() {
+        it("attaches attrs in the second arg of the error ctor, #3", function () {
             interface RequestError extends createError.Error<RequestError> {
                 status: number;
             }
-            var RequestError = createError<RequestError>("RequestError", { status: 400 });
+            var RequestError = createError<RequestError>("RequestError", {
+                status: 400,
+            });
             var reqErr = new RequestError("404 Error", { status: 404 });
             equal(reqErr.status, 404);
             equal(reqErr.message, "404 Error");
@@ -94,8 +106,8 @@ describe("create-error", function() {
         });
     });
 
-    describe("subclassing errors", function() {
-        it("takes an object in the first argument", function() {
+    describe("subclassing errors", function () {
+        it("takes an object in the first argument", function () {
             var TestingError = createError("TestingError");
             var SubTestingError = createError(TestingError, "SubTestingError");
             var x = new SubTestingError();
@@ -104,25 +116,32 @@ describe("create-error", function() {
             equal(x instanceof Error, true);
         });
 
-        it("attaches the properties appropriately.", function() {
-            interface SubTestingError extends createError.Error<SubTestingError> {
+        it("attaches the properties appropriately.", function () {
+            interface SubTestingError
+                extends createError.Error<SubTestingError> {
                 key: string[];
             }
             var TestingError = createError("TestingError");
-            var SubTestingError = createError<SubTestingError>(TestingError, "SubTestingError", { key: [] });
+            var SubTestingError = createError<SubTestingError>(
+                TestingError,
+                "SubTestingError",
+                { key: [] },
+            );
             var x = new SubTestingError();
             deepEqual(x.key, []);
         });
 
-        it("allows for a default message, #4", function() {
-            var TestingError = createError("TestingError", { message: "Error with testing" });
+        it("allows for a default message, #4", function () {
+            var TestingError = createError("TestingError", {
+                message: "Error with testing",
+            });
             var x = new TestingError();
             equal(x.message, "Error with testing");
         });
     });
 
-    describe("invalid values sent to the second argument", function() {
-        it("should ignore falsy values", function() {
+    describe("invalid values sent to the second argument", function () {
+        it("should ignore falsy values", function () {
             var TestingError = createError("TestingError", "");
             var TestingError2 = createError("TestingError", null);
             var TestingError3 = createError("TestingError", void 0);
@@ -131,11 +150,13 @@ describe("create-error", function() {
             var c = new TestingError3("Test the array");
         });
 
-        it("should ignore arrays", function() {
+        it("should ignore arrays", function () {
             interface TestingError extends createError.Error<TestingError> {
                 anArray: string[];
             }
-            var TestingError = createError<TestingError>("TestingError", [{ anArray: [] }]);
+            var TestingError = createError<TestingError>("TestingError", [
+                { anArray: [] },
+            ]);
             var a = new TestingError("Test the array");
             equal(a.anArray, void 0);
         });

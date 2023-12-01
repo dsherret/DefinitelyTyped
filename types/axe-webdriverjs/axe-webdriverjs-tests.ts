@@ -2,7 +2,11 @@ import { Result, RunOptions, Spec } from "axe-core";
 import { AxeAnalysis, AxeBuilder, BuilderOptions } from "axe-webdriverjs";
 import { Builder, WebDriver } from "selenium-webdriver";
 
-const inTest = async (webDriver: WebDriver, source?: string, builderOptions?: BuilderOptions) => {
+const inTest = async (
+    webDriver: WebDriver,
+    source?: string,
+    builderOptions?: BuilderOptions,
+) => {
     const [builderCalled, builderNewed, ...builders] = [
         AxeBuilder(webDriver),
         new AxeBuilder(webDriver),

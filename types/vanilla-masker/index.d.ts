@@ -37,7 +37,10 @@ declare const VMasker: {
         unMask: () => void;
     };
     toMoney: (value: string | number, options?: MoneyOptions) => string;
-    toPattern: (value: string | number, options?: string | PatternOptions) => string;
+    toPattern: (
+        value: string | number,
+        options?: string | PatternOptions,
+    ) => string;
     toNumber: (value: string | number) => string;
     toAlphaNumeric: (value: string | number) => string;
 };

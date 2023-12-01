@@ -2,7 +2,16 @@ import * as React from "react";
 
 interface InheritedProps extends React.TableHTMLAttributes<HTMLTableElement> {}
 
-export type DataTableSize = "compact" | "lg" | "md" | "normal" | "short" | "sm" | "tall" | "xl" | "xs";
+export type DataTableSize =
+    | "compact"
+    | "lg"
+    | "md"
+    | "normal"
+    | "short"
+    | "sm"
+    | "tall"
+    | "xl"
+    | "xs";
 
 export interface TableCarbonProps {
     isSortable?: boolean | undefined;

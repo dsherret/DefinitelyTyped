@@ -1,6 +1,5 @@
-const isWebmSupported: boolean = window.MediaRecorder.isTypeSupported(
-    "video/webm",
-);
+const isWebmSupported: boolean =
+    window.MediaRecorder.isTypeSupported("video/webm");
 
 const mediaStream = new MediaStream();
 

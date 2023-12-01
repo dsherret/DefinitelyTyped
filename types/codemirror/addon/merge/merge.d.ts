@@ -49,7 +49,7 @@ export interface MergeView {
 }
 
 export interface MergeViewConstructor {
-    new(element: HTMLElement, options?: MergeViewConfiguration): MergeView;
+    new (element: HTMLElement, options?: MergeViewConfiguration): MergeView;
     (element: HTMLElement, options?: MergeViewConfiguration): MergeView;
 }
 
@@ -108,14 +108,14 @@ export interface MergeViewConfiguration extends CodeMirror.EditorConfiguration {
 
     revertChunk?:
         | ((
-            mv: MergeView,
-            from: CodeMirror.Editor,
-            fromStart: CodeMirror.Position,
-            fromEnd: CodeMirror.Position,
-            to: CodeMirror.Editor,
-            toStart: CodeMirror.Position,
-            toEnd: CodeMirror.Position,
-        ) => void)
+              mv: MergeView,
+              from: CodeMirror.Editor,
+              fromStart: CodeMirror.Position,
+              fromEnd: CodeMirror.Position,
+              to: CodeMirror.Editor,
+              toStart: CodeMirror.Position,
+              toEnd: CodeMirror.Position,
+          ) => void)
         | undefined;
 
     /**

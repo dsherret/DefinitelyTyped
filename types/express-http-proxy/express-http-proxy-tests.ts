@@ -8,11 +8,11 @@ app.use("/proxy", proxy("www.google.com"));
 proxy("www.google.com", {});
 
 proxy("www.google.com", {
-    proxyReqPathResolver: req => req.url,
+    proxyReqPathResolver: (req) => req.url,
 });
 
 proxy("www.google.com", {
-    proxyReqPathResolver: async req => req.url,
+    proxyReqPathResolver: async (req) => req.url,
 });
 
 proxy("www.google.com", {
@@ -99,7 +99,10 @@ proxy("www.google.com", {
 
 const proxyOptions: proxy.ProxyOptions = {};
 
-app.use("/proxy/:port", proxy(req => "localhost:" + req.params.port));
+app.use(
+    "/proxy/:port",
+    proxy((req) => "localhost:" + req.params.port),
+);
 
 proxy("www.google.com", {
     filter: (req, res) => {
@@ -108,7 +111,7 @@ proxy("www.google.com", {
 });
 proxy("www.google.com", {
     filter: (req, res) => {
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             resolve(req.method === "GET");
         });
     },
@@ -119,7 +122,7 @@ proxy("www.google.com", {
 });
 
 proxy("www.google.com", {
-    skipToNextHandlerFilter: proxyRes => {
+    skipToNextHandlerFilter: (proxyRes) => {
         return proxyRes.statusCode === 404;
     },
 });

@@ -10,12 +10,14 @@ export interface CalendarBaseProps {
     disablePastDates?: boolean | undefined;
     disableWeekday?: string[] | undefined;
     disableWeekends?: boolean | undefined;
-    localizedText?: {
-        nextMonth?: string | undefined;
-        previousMonth?: string | undefined;
-        show12NextYears?: string | undefined;
-        show12PreviousYears?: string | undefined;
-    } | undefined;
+    localizedText?:
+        | {
+              nextMonth?: string | undefined;
+              previousMonth?: string | undefined;
+              show12NextYears?: string | undefined;
+              show12PreviousYears?: string | undefined;
+          }
+        | undefined;
 }
 
 export type CalendarProps = CalendarBaseProps & {

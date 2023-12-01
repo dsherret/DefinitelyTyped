@@ -7,8 +7,9 @@ function customEventReporter(data: { page?: string | undefined }) {}
     { page: "ClassPage" },
     {
         dispatch: customEventReporter,
-        dispatchOnMount: contextData => ({ event: "pageDataReady" }),
-        process: ownTrackingData => (ownTrackingData.page ? { event: "pageview" } : null),
+        dispatchOnMount: (contextData) => ({ event: "pageDataReady" }),
+        process: (ownTrackingData) =>
+            ownTrackingData.page ? { event: "pageview" } : null,
     },
 )
 class ClassPage extends React.Component<any> {
@@ -22,13 +23,17 @@ class ClassPage extends React.Component<any> {
         // ... other stuff
     }
 
-    @track((_props, _state, [e]) => ({ event: `drag started at ${e.screenX}x${e.screenY}` }))
+    @track((_props, _state, [e]) => ({
+        event: `drag started at ${e.screenX}x${e.screenY}`,
+    }))
     handleDrag(event: any) {
         // no-op
     }
 
     // Only need to cast this to `any` because the settings for this project is to disallow implicit `any`.
-    @track((props: any, state: any) => ({ event: `got ${props.someProp} and clicked ${state.isClicked}` }))
+    @track((props: any, state: any) => ({
+        event: `got ${props.someProp} and clicked ${state.isClicked}`,
+    }))
     render() {
         return <button onClick={this.handleClick}>Click Me!</button>;
     }
@@ -46,11 +51,12 @@ class ClassPage extends React.Component<any> {
     }
 }
 
-const FunctionPage: React.FC<any> = props => {
+const FunctionPage: React.FC<any> = (props) => {
     return (
         <div
             onClick={() => {
-                props.tracking && props.tracking.trackEvent({ action: "click" });
+                props.tracking &&
+                    props.tracking.trackEvent({ action: "click" });
             }}
         />
     );
@@ -88,7 +94,7 @@ const TestHook = track()((props: { foo: string }) => {
     React.useEffect(() =>
         trackEvent({
             action: "useEffect callback",
-        })
+        }),
     );
     return (
         <Track>
@@ -110,7 +116,7 @@ const TestEmptyHook = track()((props: { foo: string }) => {
         trackEvent({
             page: "Home",
             action: "useEffect callback",
-        })
+        }),
     );
     return (
         <Track>

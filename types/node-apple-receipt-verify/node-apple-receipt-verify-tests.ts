@@ -11,14 +11,20 @@ appleReceiptVerify.validate({ receipt: "test-reciept" }, (err, products) => {
         console.error(err.isRetryable);
         return;
     }
-    console.log(products.map((p: appleReceiptVerify.PurchasedProducts) => p.bundleId));
+    console.log(
+        products.map((p: appleReceiptVerify.PurchasedProducts) => p.bundleId),
+    );
 });
 
 appleReceiptVerify
     .validate({ receipt: "test-reciept" })
-    .then(products => {
-        console.log(products.map((p: appleReceiptVerify.PurchasedProducts) => p.productId));
+    .then((products) => {
+        console.log(
+            products.map(
+                (p: appleReceiptVerify.PurchasedProducts) => p.productId,
+            ),
+        );
     })
-    .catch(err => {
+    .catch((err) => {
         console.error(err);
     });

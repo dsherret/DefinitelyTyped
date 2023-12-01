@@ -12,8 +12,16 @@ declare global {
     function postAjax(
         action: string,
         data: any,
-        successCallback: (data: any, textStatus: string, jqXHR: JQuery.jqXHR) => void,
-        errorCallback: (jqXHR: JQuery.jqXHR, textStatus: string, errorThrown: string) => void,
+        successCallback: (
+            data: any,
+            textStatus: string,
+            jqXHR: JQuery.jqXHR,
+        ) => void,
+        errorCallback: (
+            jqXHR: JQuery.jqXHR,
+            textStatus: string,
+            errorThrown: string,
+        ) => void,
     ): any;
 
     function outOfDateUserPrompt(): void;

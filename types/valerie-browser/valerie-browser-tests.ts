@@ -11,45 +11,35 @@ enum enumTest {
  */
 function ObservableValidationTypes() {
     // any
-    var t0 = ko.observable()
-        .validate()
-        .end();
+    var t0 = ko.observable().validate().end();
 
     // string
-    var t1 = ko.observable<string>("")
-        .validate()
-        .end();
+    var t1 = ko.observable<string>("").validate().end();
 
     // number
-    var t2 = ko.observable<number>(0)
-        .validate()
-        .end();
+    var t2 = ko.observable<number>(0).validate().end();
 
     // bool
-    var t3 = ko.observable<boolean>(true)
-        .validate()
-        .end();
+    var t3 = ko.observable<boolean>(true).validate().end();
 
     // date
-    var t4 = ko.observable<Date>(new Date())
-        .validate()
-        .end();
+    var t4 = ko.observable<Date>(new Date()).validate().end();
 
     // enum
-    var t5 = ko.observable<enumTest>(enumTest.male)
-        .validate()
-        .end();
+    var t5 = ko.observable<enumTest>(enumTest.male).validate().end();
 
     // array
-    var t6 = ko.observableArray<any>(<any[]> [])
+    var t6 = ko
+        .observableArray<any>(<any[]>[])
         .validate()
         .end();
 }
 
 function ComputedValidationTests() {
-    var t1 = ko.computed<string>(function() {
-        return "hello world";
-    })
+    var t1 = ko
+        .computed<string>(function () {
+            return "hello world";
+        })
         .validate()
         .end();
 }
@@ -61,32 +51,32 @@ function RuleTests() {
     // valerie supports both value and function arguments in many cases
 
     var stringValue = "";
-    var stringFN = function() {
+    var stringFN = function () {
         return stringValue;
     };
 
     var numberValue = 1;
-    var numberFN = function() {
+    var numberFN = function () {
         return numberValue;
     };
 
     var booleanValue = false;
-    var booleanFN = function() {
+    var booleanFN = function () {
         return booleanValue;
     };
 
     var dateValue = new Date();
-    var dateFN = function() {
+    var dateFN = function () {
         return dateValue;
     };
 
-    var anyValue = <any> {};
-    var anyFN = function() {
+    var anyValue = <any>{};
+    var anyFN = function () {
         return anyValue;
     };
 
-    var arrayValue = <any[]> [];
-    var arrayFN = function() {
+    var arrayValue = <any[]>[];
+    var arrayFN = function () {
         return arrayValue;
     };
 
@@ -94,35 +84,37 @@ function RuleTests() {
 
     // rule tests
 
-    var test_addRule = ko.observable(stringValue)
+    var test_addRule = ko
+        .observable(stringValue)
         .validate()
         .addRule(dummyRule)
         .end();
 
-    var test_applicable = ko.observable(stringValue)
+    var test_applicable = ko
+        .observable(stringValue)
         .validate()
         .applicable(true)
-        .applicable(function() {
+        .applicable(function () {
             return false;
         })
         .end();
 
-    var test_currencyMajor = ko.observable(numberValue)
+    var test_currencyMajor = ko
+        .observable(numberValue)
         .validate()
         .currencyMajor()
         .end();
 
-    var test_currencyMinor = ko.observable(numberValue)
+    var test_currencyMinor = ko
+        .observable(numberValue)
         .validate()
         .currencyMajorMinor()
         .end();
 
-    var test_date = ko.observable(dateValue)
-        .validate()
-        .date()
-        .end();
+    var test_date = ko.observable(dateValue).validate().date().end();
 
-    var test_during = ko.observable(dateValue)
+    var test_during = ko
+        .observable(dateValue)
         .validate()
         .during(dateValue, dateValue)
         .during(dateFN, dateFN)
@@ -130,44 +122,40 @@ function RuleTests() {
         .during(dateFN, dateValue)
         .end();
 
-    var test_earliest = ko.observable(dateValue)
+    var test_earliest = ko
+        .observable(dateValue)
         .validate()
         .earliest(dateValue)
         .end();
 
-    var test_email = ko.observable(stringValue)
-        .validate()
-        .email()
-        .end();
+    var test_email = ko.observable(stringValue).validate().email().end();
 
-    var test_entryformat = ko.observable(stringValue)
+    var test_entryformat = ko
+        .observable(stringValue)
         .validate()
         .entryFormat(stringValue)
         .end();
 
-    var test_expression = ko.observable(stringValue)
+    var test_expression = ko
+        .observable(stringValue)
         .validate()
         .expression(regexpValue)
         .expression(stringValue)
         .end();
 
-    var test_float = ko.observable(numberValue)
-        .validate()
-        .float()
-        .end();
+    var test_float = ko.observable(numberValue).validate().float().end();
 
-    var test_integer = ko.observable(numberValue)
-        .validate()
-        .integer()
-        .end();
+    var test_integer = ko.observable(numberValue).validate().integer().end();
 
-    var test_latest = ko.observable(dateValue)
+    var test_latest = ko
+        .observable(dateValue)
         .validate()
         .latest(dateValue)
         .latest(dateFN)
         .end();
 
-    var test_lengthBetween = ko.observable(stringValue)
+    var test_lengthBetween = ko
+        .observable(stringValue)
         .validate()
         .lengthBetween(numberValue, numberValue)
         .lengthBetween(numberFN, numberFN)
@@ -175,65 +163,72 @@ function RuleTests() {
         .lengthBetween(numberValue, numberFN)
         .end();
 
-    var test_matches = ko.observable(stringValue)
+    var test_matches = ko
+        .observable(stringValue)
         .validate()
         .matches(numberValue)
         .matches(numberFN)
         .end();
 
-    var test_maximum = ko.observable(0)
+    var test_maximum = ko
+        .observable(0)
         .validate()
         .maximum(numberValue)
         .maximum(numberFN)
         .end();
 
-    var test_maximumNumberOfItems = ko.observableArray([])
+    var test_maximumNumberOfItems = ko
+        .observableArray([])
         .validate()
         .maximumNumberOfItems(numberValue)
         .maximumNumberOfItems(numberFN)
         .end();
 
-    var test_minimum = ko.observable(numberValue)
+    var test_minimum = ko
+        .observable(numberValue)
         .validate()
         .minimum(numberValue)
         .minimum(numberFN)
         .end();
 
-    var test_minimumLength = ko.observable("")
+    var test_minimumLength = ko
+        .observable("")
         .validate()
         .minimumLength(numberValue)
         .minimumLength(numberFN)
         .end();
 
-    var test_minimumNumberOfItems = ko.observableArray([])
+    var test_minimumNumberOfItems = ko
+        .observableArray([])
         .validate()
         .minimumNumberOfItems(numberValue)
         .minimumNumberOfItems(numberFN)
         .end();
 
-    var test_name = ko.observable(stringValue)
+    var test_name = ko
+        .observable(stringValue)
         .validate()
         .name(stringValue)
         .end();
 
-    var test_noneOf = ko.observable<any>(numberValue)
+    var test_noneOf = ko
+        .observable<any>(numberValue)
         .validate()
         .noneOf(arrayValue)
         .noneOf(arrayFN)
         .end();
 
-    var test_not = ko.observable(numberValue)
+    var test_not = ko
+        .observable(numberValue)
         .validate()
         .not(anyValue)
         .not(anyFN)
         .end();
 
-    var test_number = ko.observable(numberValue)
-        .validate()
-        .number()
-        .end();
+    var test_number = ko.observable(numberValue).validate().number().end();
 
-    var test_numberOfItems = ko.observableArray(arrayValue)
+    var test_numberOfItems = ko
+        .observableArray(arrayValue)
         .validate()
         .numberOfItems(numberValue, numberValue)
         .numberOfItems(numberFN, numberFN)
@@ -241,18 +236,17 @@ function RuleTests() {
         .numberOfItems(numberValue, numberFN)
         .end();
 
-    var test_oneOf = ko.observable(numberValue)
+    var test_oneOf = ko
+        .observable(numberValue)
         .validate()
         .oneOf(arrayValue)
         .oneOf(arrayFN)
         .end();
 
-    var test_postcode = ko.observable(stringValue)
-        .validate()
-        .postcode()
-        .end();
+    var test_postcode = ko.observable(stringValue).validate().postcode().end();
 
-    var test_range = ko.observable(numberValue)
+    var test_range = ko
+        .observable(numberValue)
         .validate()
         .range(numberValue, numberValue)
         .range(numberValue, numberFN)
@@ -260,32 +254,30 @@ function RuleTests() {
         .range(numberFN, numberFN)
         .end();
 
-    var test_required = ko.observable(anyValue)
-        .validate()
-        .required()
-        .end();
+    var test_required = ko.observable(anyValue).validate().required().end();
 
-    var test_ruleMessage = ko.observable(anyValue)
+    var test_ruleMessage = ko
+        .observable(anyValue)
         .validate()
         .ruleMessage(stringValue)
         .end();
 
-    var test_string = ko.observable(stringValue)
-        .validate()
-        .string()
-        .end();
+    var test_string = ko.observable(stringValue).validate().string().end();
 
-    var test_validateChildProperties = ko.observable(anyValue)
+    var test_validateChildProperties = ko
+        .observable(anyValue)
         .validate()
         .validateChildProperties()
         .end();
 
-    var test_valueFormat = ko.observable(anyValue)
+    var test_valueFormat = ko
+        .observable(anyValue)
         .validate()
         .valueFormat(stringValue)
         .end();
 
-    var test_rule = ko.observable(anyValue)
+    var test_rule = ko
+        .observable(anyValue)
         .validate()
         .rule(() => {
             return anyValue;
@@ -296,9 +288,7 @@ function RuleTests() {
 function ModelValidation() {
     var model = {};
 
-    var validatedModel = valerie.validatableModel(model)
-        .validateAll()
-        .end();
+    var validatedModel = valerie.validatableModel(model).validateAll().end();
 }
 
 function UtilsStaticTests() {
@@ -332,6 +322,6 @@ function ValidationStateStaticTests() {
     var t2 = valerie.validationState.getFor({});
     var t3 = valerie.validationState.has({});
 
-    var state = <Valerie.IValidationState> {};
+    var state = <Valerie.IValidationState>{};
     var t4 = valerie.validationState.setFor({}, state);
 }

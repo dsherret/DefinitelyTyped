@@ -105,7 +105,9 @@ declare namespace GoogleAppsScriptOAuth2 {
         /**
          * Sets additional JWT claims to use for Service Account authorization.
          */
-        setAdditionalClaims(additionalClaims: { [key: string]: string }): OAuth2Service;
+        setAdditionalClaims(additionalClaims: {
+            [key: string]: string;
+        }): OAuth2Service;
         /**
          * Sets the service's authorization base URL (required).
          * For Google services this URL should be `https://accounts.google.com/o/oauth2/auth`.
@@ -178,7 +180,9 @@ declare namespace GoogleAppsScriptOAuth2 {
          * In most cases this should be user properties, but document or script properties may be appropriate
          * if you want to share access across users.
          */
-        setPropertyStore(propertyStore: GoogleAppsScript.Properties.Properties): OAuth2Service;
+        setPropertyStore(
+            propertyStore: GoogleAppsScript.Properties.Properties,
+        ): OAuth2Service;
         /**
          * Sets the URI to redirect to when the OAuth flow has completed. By default the
          * library will provide this value automatically, but in some rare cases you may
@@ -195,7 +199,10 @@ declare namespace GoogleAppsScriptOAuth2 {
          * If the scope value is an array it will be joined using the separator before being sent to the server,
          * which is is a space character by default.
          */
-        setScope(scope: string | readonly string[], separator?: string): OAuth2Service;
+        setScope(
+            scope: string | readonly string[],
+            separator?: string,
+        ): OAuth2Service;
         /**
          * Sets the subject (sub) value to use for Service Account authorization.
          */
@@ -211,7 +218,9 @@ declare namespace GoogleAppsScriptOAuth2 {
         /**
          * Sets an additional function to invoke on the payload of the access token request.
          */
-        setTokenPayloadHandler(tokenHandler: (tokenPayload: TokenPayload) => object): OAuth2Service;
+        setTokenPayloadHandler(
+            tokenHandler: (tokenPayload: TokenPayload) => object,
+        ): OAuth2Service;
         /**
          * Sets the service's token URL (required).
          * For Google services this URL should be `https://accounts.google.com/o/oauth2/token`.

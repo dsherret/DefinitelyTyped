@@ -53,33 +53,53 @@ Akumina.Digispace.AppPart.Eventing.UnSubscribe("", "", ""); // $ExpectType void
 Akumina.Digispace.AppPart.Eventing.ClearSubscribedAndPublished(""); // $ExpectType void
 Akumina.Digispace.AppPart.Eventing.ResetTrackedEvents(new Array<string>()); // $ExpectType void
 
-(new Akumina.Digispace.Data.DataFactory()).SetContextUrl(""); // $ExpectType void
-(new Akumina.Digispace.Data.DataFactory()).LoadLibrarySettings("", true, true); // $ExpectType JQueryDeferred<{}>
-(new Akumina.Digispace.Data.DataFactory()).GetListFields("", true); // $ExpectType JQueryDeferred<{}>
-(new Akumina.Digispace.Data.DataFactory()).GetListsByContentType("", true); // $ExpectType JQueryDeferred<{}>
-(new Akumina.Digispace.Data.DataFactory()).CreateListWithContentType("", "", true, true, true); // $ExpectType JQueryDeferred<{}>
-(new Akumina.Digispace.Data.DataFactory()).GetTermsFromTermSet(""); // $ExpectType JQueryDeferred<{}>
-(new Akumina.Digispace.Data.DataFactory()).ClearAppManagerCacheByKey(""); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.DataFactory()).AddOrEditConfiguration(""); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.DataFactory()).GetUser(""); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.DataFactory()).AddPageWidgets("", "", "", ""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.DataFactory().SetContextUrl(""); // $ExpectType void
+new Akumina.Digispace.Data.DataFactory().LoadLibrarySettings("", true, true); // $ExpectType JQueryDeferred<{}>
+new Akumina.Digispace.Data.DataFactory().GetListFields("", true); // $ExpectType JQueryDeferred<{}>
+new Akumina.Digispace.Data.DataFactory().GetListsByContentType("", true); // $ExpectType JQueryDeferred<{}>
+new Akumina.Digispace.Data.DataFactory().CreateListWithContentType(
+    "",
+    "",
+    true,
+    true,
+    true,
+); // $ExpectType JQueryDeferred<{}>
+new Akumina.Digispace.Data.DataFactory().GetTermsFromTermSet(""); // $ExpectType JQueryDeferred<{}>
+new Akumina.Digispace.Data.DataFactory().ClearAppManagerCacheByKey(""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.DataFactory().AddOrEditConfiguration(""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.DataFactory().GetUser(""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.DataFactory().AddPageWidgets("", "", "", ""); // $ExpectType JQueryDeferred<any>
 
-(new Akumina.Digispace.Data.PageFactory()).CreatePage(""); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.PageFactory()).GetPageVersion(""); // $ExpectType JQueryDeferred<IPageVersionProperties>
-(new Akumina.Digispace.Data.PageFactory()).DeletePageVersion(""); // $ExpectType JQueryDeferred<IPageVersionProperties>
-(new Akumina.Digispace.Data.PageFactory()).SetPagePriorityGroups(new Array<string>()); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.PageFactory()).MarkPageVersionActive(""); // $ExpectType JQueryDeferred<{}>
-(new Akumina.Digispace.Data.PageFactory()).ProvisionPageWidgets("", "", new Array<string>()); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.PageFactory()).GetAllVersionsForPage(""); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.PageFactory()).PageVersionExists(""); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.PageFactory()).AddPageVersion("", ""); // $ExpectType JQueryDeferred<IPageVersion>
+new Akumina.Digispace.Data.PageFactory().CreatePage(""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.PageFactory().GetPageVersion(""); // $ExpectType JQueryDeferred<IPageVersionProperties>
+new Akumina.Digispace.Data.PageFactory().DeletePageVersion(""); // $ExpectType JQueryDeferred<IPageVersionProperties>
+new Akumina.Digispace.Data.PageFactory().SetPagePriorityGroups(
+    new Array<string>(),
+); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.PageFactory().MarkPageVersionActive(""); // $ExpectType JQueryDeferred<{}>
+new Akumina.Digispace.Data.PageFactory().ProvisionPageWidgets(
+    "",
+    "",
+    new Array<string>(),
+); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.PageFactory().GetAllVersionsForPage(""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.PageFactory().PageVersionExists(""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.PageFactory().AddPageVersion("", ""); // $ExpectType JQueryDeferred<IPageVersion>
 Akumina.Digispace.Data.PageFactory.GetPageObjectsCacheKey(); // $ExpectType string
 Akumina.Digispace.Data.PageFactory.GetSavedLayoutsCacheKey(); // $ExpectType string
 Akumina.Digispace.Data.PageFactory.GetPageWidgetsCacheKey(""); // $ExpectType string
 
-(new Akumina.Digispace.Data.Interchange()).RemovePageVersionFromCache("", ""); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.Interchange()).UpdatePagePropertiesInCache(""); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.Interchange()).UpdateWidgetInstanceCacheAsModel("", ""); // $ExpectType JQueryDeferred<any>
-(new Akumina.Digispace.Data.Interchange()).UpdatePageWidgetInstanceCacheAsModel("", "", "", ""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.Interchange().RemovePageVersionFromCache("", ""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.Interchange().UpdatePagePropertiesInCache(""); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.Interchange().UpdateWidgetInstanceCacheAsModel(
+    "",
+    "",
+); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.Interchange().UpdatePageWidgetInstanceCacheAsModel(
+    "",
+    "",
+    "",
+    "",
+); // $ExpectType JQueryDeferred<any>
 
-(new Akumina.Digispace.Data.PageManager()).GetPermissionForPageList("", true); // $ExpectType JQueryDeferred<any>
+new Akumina.Digispace.Data.PageManager().GetPermissionForPageList("", true); // $ExpectType JQueryDeferred<any>

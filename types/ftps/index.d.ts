@@ -58,7 +58,10 @@ declare class FTP {
     rmdir(...paths: string[]): FTP;
     mirror(options: FTP.MirrorOptions): FTP;
 
-    exec(cmdsOrCallback: string | string[] | FTP.FTPCallbackFunction, callback?: FTP.FTPCallbackFunction): any;
+    exec(
+        cmdsOrCallback: string | string[] | FTP.FTPCallbackFunction,
+        callback?: FTP.FTPCallbackFunction,
+    ): any;
     execAsStream(cmds: string | string[]): any;
     // Helpers
     escapeshell(cmd: string): string;

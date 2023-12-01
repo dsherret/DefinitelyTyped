@@ -68,7 +68,10 @@ const CSSoptions: js_beautify.CSSBeautifyOptions = {
 
 const full: string = js_beautify("console.log('Hello world!');", JSoptions);
 
-const markup: string = js_beautify("function render(){return <div> <img src='.' /></div>}", {
-    ...JSoptions,
-    e4x: true,
-});
+const markup: string = js_beautify(
+    "function render(){return <div> <img src='.' /></div>}",
+    {
+        ...JSoptions,
+        e4x: true,
+    },
+);

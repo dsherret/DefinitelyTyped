@@ -1,5 +1,10 @@
 import PdfPrinter = require("pdfmake");
-import { BufferOptions, CustomTableLayout, TDocumentDefinitions, TFontDictionary } from "pdfmake/interfaces";
+import {
+    BufferOptions,
+    CustomTableLayout,
+    TDocumentDefinitions,
+    TFontDictionary,
+} from "pdfmake/interfaces";
 
 const fonts: TFontDictionary = {
     Roboto: {
@@ -28,7 +33,8 @@ const options: BufferOptions = {
     bufferPages: true,
     tableLayouts: customTableLayouts,
     autoPrint: true,
-    progressCallback: progress => console.log("Creating pdf: ", progress * 100, "%..."),
+    progressCallback: (progress) =>
+        console.log("Creating pdf: ", progress * 100, "%..."),
 };
 
 // $ExpectType PDFDocument

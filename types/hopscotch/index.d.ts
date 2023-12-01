@@ -25,14 +25,16 @@ interface HopscotchConfiguration {
     onError?: CallbackNameNamesOrDefinition | undefined;
     onShow?: CallbackNameNamesOrDefinition | undefined;
 
-    i18n?: {
-        nextBtn?: string | undefined;
-        prevBtn?: string | undefined;
-        doneBtn?: string | undefined;
-        skipBtn?: string | undefined;
-        closeTooltip?: string | undefined;
-        stepNums?: string[] | undefined;
-    } | undefined;
+    i18n?:
+        | {
+              nextBtn?: string | undefined;
+              prevBtn?: string | undefined;
+              doneBtn?: string | undefined;
+              skipBtn?: string | undefined;
+              closeTooltip?: string | undefined;
+              stepNums?: string[] | undefined;
+          }
+        | undefined;
 }
 
 interface TourDefinition extends HopscotchConfiguration {

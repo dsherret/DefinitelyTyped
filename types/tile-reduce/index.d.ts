@@ -27,7 +27,10 @@ interface Events {
      *     console.log(`about to process [${ tile }] on worker ${ workerId }`)
      * })
      */
-    on(type: "map", callback: (tile: TileReduce.Tile, workerId: number) => void): Events;
+    on(
+        type: "map",
+        callback: (tile: TileReduce.Tile, workerId: number) => void,
+    ): Events;
 
     /**
      * Reduce Event
@@ -43,7 +46,10 @@ interface Events {
      *     count ++
      * })
      */
-    on(type: "reduce", callback: (result: any, tile: TileReduce.Tile) => void): Events;
+    on(
+        type: "reduce",
+        callback: (result: any, tile: TileReduce.Tile) => void,
+    ): Events;
 
     /**
      * End Event

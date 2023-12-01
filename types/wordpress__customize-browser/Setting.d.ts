@@ -10,7 +10,11 @@ export interface Setting_Options {
 
 export class Setting<T> extends Value<T> {
     defaults: Setting_Options;
-    initialize(id?: string, value?: any, options?: Partial<Setting_Options>): void;
+    initialize(
+        id?: string,
+        value?: any,
+        options?: Partial<Setting_Options>,
+    ): void;
     preview(): void;
     findControls(): Control[];
 }

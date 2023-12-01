@@ -44,7 +44,11 @@ declare class Event {
     timestamp: string;
     data: Fields;
 
-    constructor(libhoney: Libhoney, fields: Fields, dynamicFields: DynamicFields);
+    constructor(
+        libhoney: Libhoney,
+        fields: Fields,
+        dynamicFields: DynamicFields,
+    );
 
     /**
      * Adds a group of field->values to this event.
@@ -78,7 +82,11 @@ declare class Event {
  * Allows piecemeal creation of events.
  */
 declare class Builder {
-    constructor(libhoney: Libhoney, fields: Fields, dynamicFields: DynamicFields);
+    constructor(
+        libhoney: Libhoney,
+        fields: Fields,
+        dynamicFields: DynamicFields,
+    );
     /**
      * Adds a group of field->values to the events created from this builder.
      */
@@ -91,7 +99,10 @@ declare class Builder {
      * Adds a single field->dynamic value function, which is invoked to supply values when events
      * are created from this builder.
      */
-    addDynamicField(name: string, dynamicFieldValue: DynamicFieldValue): Builder;
+    addDynamicField(
+        name: string,
+        dynamicFieldValue: DynamicFieldValue,
+    ): Builder;
     /**
      * Creates and sends an event, including all builder fields/dynFields, as well as anything
      * in the optional data parameter.

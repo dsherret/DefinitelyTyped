@@ -10,5 +10,8 @@ export type BuildInRenderersNames =
     | "Table Row Heatmap"
     | "Exportable TSV";
 
-declare const defaultRenderers: Record<BuildInRenderersNames, React.ComponentType<PivotTableProps>>;
+declare const defaultRenderers: Record<
+    BuildInRenderersNames,
+    React.ComponentType<PivotTableProps>
+>;
 export default defaultRenderers;

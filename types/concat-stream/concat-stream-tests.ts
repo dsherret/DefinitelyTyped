@@ -18,4 +18,6 @@ const myReadable = new MyReadable();
 
 myReadable.pipe(concat((buf) => console.log(buf.toString())));
 myReadable.pipe(concat({}, (buf) => console.log(buf.toString())));
-myReadable.pipe(concat({ encoding: "string" }, (str: string) => console.log(str)));
+myReadable.pipe(
+    concat({ encoding: "string" }, (str: string) => console.log(str)),
+);

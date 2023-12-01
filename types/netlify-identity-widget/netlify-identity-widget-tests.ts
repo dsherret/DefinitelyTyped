@@ -13,7 +13,9 @@ NetlifyIdentityWidget.init({});
 NetlifyIdentityWidget.init({ container: "body" });
 
 // Type 3: Initialize with a specific APIUrl
-NetlifyIdentityWidget.init({ APIUrl: "https://www.example.com/.netlify/functions/identity" });
+NetlifyIdentityWidget.init({
+    APIUrl: "https://www.example.com/.netlify/functions/identity",
+});
 
 // Type 4: Initialize with a logo option
 NetlifyIdentityWidget.init({ logo: true });

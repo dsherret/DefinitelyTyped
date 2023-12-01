@@ -18,9 +18,7 @@ declare namespace swfobject {
             callbackFn?: (callbackObj: ICallbackObj) => void,
         ): void;
 
-        getObjectById(
-            objectIdStr: string,
-        ): HTMLElement;
+        getObjectById(objectIdStr: string): HTMLElement;
 
         embedSWF(
             swfUrlStr: string,
@@ -39,9 +37,7 @@ declare namespace swfobject {
 
         getFlashPlayerVersion(): IFlashPlayerVersion;
 
-        hasFlashPlayerVersion(
-            rv: string,
-        ): boolean;
+        hasFlashPlayerVersion(rv: string): boolean;
 
         createSWF(
             attObj: ISwfObjectAttribute,
@@ -56,9 +52,7 @@ declare namespace swfobject {
             callbackFn?: (callbackObj: ICallbackObj) => void,
         ): void;
 
-        removeSWF(
-            objElemIdStr: string,
-        ): void;
+        removeSWF(objElemIdStr: string): void;
 
         createCSS(
             selStr: string,
@@ -67,17 +61,11 @@ declare namespace swfobject {
             newStyleBoolean?: boolean,
         ): void;
 
-        addDomLoadEvent(
-            fn: () => void,
-        ): void;
+        addDomLoadEvent(fn: () => void): void;
 
-        addLoadEvent(
-            fn: (event?: Event) => void,
-        ): void;
+        addLoadEvent(fn: (event?: Event) => void): void;
 
-        getQueryParamValue(
-            param?: string,
-        ): string;
+        getQueryParamValue(param?: string): string;
     }
 
     export interface IFlashPlayerVersion {

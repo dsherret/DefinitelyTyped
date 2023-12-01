@@ -10,7 +10,7 @@ const rl: readline.ReadLine = readline.createInterface(new stream.Readable());
     };
     const input: NodeJS.ReadableStream = new stream.Readable();
     const output: NodeJS.WritableStream = new stream.Writable();
-    const completer: readline.Completer = str => [["asd"], "asd"];
+    const completer: readline.Completer = (str) => [["asd"], "asd"];
     const terminal = false;
 
     let result: readline.ReadLine;
@@ -28,7 +28,10 @@ const rl: readline.ReadLine = readline.createInterface(new stream.Readable());
     });
     result = readline.createInterface({
         input,
-        completer(str: string, callback: (err: any, result: readline.CompleterResult) => void): any {
+        completer(
+            str: string,
+            callback: (err: any, result: readline.CompleterResult) => void,
+        ): any {
             callback(null, [["test"], "test"]);
         },
     });
@@ -116,7 +119,9 @@ const rl: readline.ReadLine = readline.createInterface(new stream.Readable());
 
 {
     const strm: NodeJS.ReadableStream = new stream.Readable();
-    const readLineInterface: readline.ReadLine = readline.createInterface(new stream.Readable());
+    const readLineInterface: readline.ReadLine = readline.createInterface(
+        new stream.Readable(),
+    );
 
     readline.emitKeypressEvents(strm);
     readline.emitKeypressEvents(strm, readLineInterface);
@@ -226,7 +231,7 @@ const rl: readline.ReadLine = readline.createInterface(new stream.Readable());
 }
 
 {
-    (async () => {
+    async () => {
         const result = readline.createInterface({
             input: process.stdin,
         });
@@ -235,7 +240,7 @@ const rl: readline.ReadLine = readline.createInterface(new stream.Readable());
         for await (const line of result) {
             line; // $ExpectType string
         }
-    });
+    };
 }
 
 {

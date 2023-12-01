@@ -8,10 +8,7 @@ interface Middleware extends BaseMiddleware {
     logger: Logger;
 }
 
-declare function logger(
-    opts?: Options,
-    stream?: DestinationStream,
-): Middleware;
+declare function logger(opts?: Options, stream?: DestinationStream): Middleware;
 declare function logger(stream?: DestinationStream): Middleware;
 
 declare module "koa" {

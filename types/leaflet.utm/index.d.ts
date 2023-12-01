@@ -1,7 +1,13 @@
 import * as L from "leaflet";
 
 declare module "leaflet" {
-    function utm(params: { x: number; y: number; zone: number; band: string; southHemi: boolean }): Utm;
+    function utm(params: {
+        x: number;
+        y: number;
+        zone: number;
+        band: string;
+        southHemi: boolean;
+    }): Utm;
 
     namespace Utm {
         interface ToStringOptions {
@@ -30,7 +36,10 @@ declare module "leaflet" {
         function setDefaultOptions(
             params:
                 | ToStringOptions
-                | ((opts: ToStringOptions, defaultOpts: ToStringOptions) => ToStringOptions)
+                | ((
+                      opts: ToStringOptions,
+                      defaultOpts: ToStringOptions,
+                  ) => ToStringOptions)
                 | null,
         ): void;
     }

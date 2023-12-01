@@ -2,7 +2,7 @@ import * as sass from "node-sass";
 
 console.log(sass.info);
 
-const syncImporter: sass.SyncImporter = function(url, prev) {
+const syncImporter: sass.SyncImporter = function (url, prev) {
     if (url.startsWith("!")) {
         return sass.NULL;
     }
@@ -13,7 +13,7 @@ const syncImporter: sass.SyncImporter = function(url, prev) {
     return { file: [prev, url].join("/") };
 };
 
-const asyncImporter: sass.AsyncImporter = function(url, prev, done) {
+const asyncImporter: sass.AsyncImporter = function (url, prev, done) {
     if (url.startsWith("!")) {
         // shouldn't really call twice, just checking for compiler validity
         done(null);
@@ -43,7 +43,8 @@ const anotherAsyncImporter: sass.AsyncImporter = (url, prev, done) => {
     });
 };
 
-const handleAsyncResult: sass.SassRenderCallback = (error, result) => { // node-style callback from v3.0.0 onwards
+const handleAsyncResult: sass.SassRenderCallback = (error, result) => {
+    // node-style callback from v3.0.0 onwards
     if (error) {
         console.log(error.status, error.column, error.message, error.line);
     } else {
@@ -59,11 +60,16 @@ const syncFunction: Record<string, sass.SyncSassFn> = {
     "pow($base, $exp)"($base, $exp) {
         console.log(this.options.file); // "string"
         console.log(typeof this.callback); // "undefined"
-        if ($base instanceof sass.types.Number && $exp instanceof sass.types.Number) {
+        if (
+            $base instanceof sass.types.Number &&
+            $exp instanceof sass.types.Number
+        ) {
             if ($base.getUnit() !== "" || $exp.getUnit() !== "") {
                 throw new Error("Cannot have units in an exponent");
             }
-            return new sass.types.Number(Math.pow($base.getValue(), $exp.getValue()));
+            return new sass.types.Number(
+                Math.pow($base.getValue(), $exp.getValue()),
+            );
         } else {
             throw new Error("Number expected");
         }
@@ -96,17 +102,27 @@ const syncVarArg: Record<string, sass.SyncSassVarArgFn3> = {
     },
 };
 
-const syncFunctions: Record<string, sass.SyncSassFunction> = { ...syncFunction, ...syncVarArg };
+const syncFunctions: Record<string, sass.SyncSassFunction> = {
+    ...syncFunction,
+    ...syncVarArg,
+};
 
 const asyncFunction: Record<string, sass.AsyncSassFn2> = {
     "pow-async($base, $exp)"($base, $exp, done) {
         console.log(this.options.file); // "string"
         console.log(typeof this.callback); // "function"
-        if ($base instanceof sass.types.Number && $exp instanceof sass.types.Number) {
+        if (
+            $base instanceof sass.types.Number &&
+            $exp instanceof sass.types.Number
+        ) {
             if ($base.getUnit() !== "" || $exp.getUnit() !== "") {
                 done(new sass.types.Error("Cannot have units in an exponent"));
             }
-            done(new sass.types.Number(Math.pow($base.getValue(), $exp.getValue())));
+            done(
+                new sass.types.Number(
+                    Math.pow($base.getValue(), $exp.getValue()),
+                ),
+            );
         } else {
             done(new sass.types.Error("Number expected"));
         }
@@ -144,38 +160,53 @@ const asyncVarArg: Record<string, sass.AsyncSassVarArgFn3> = {
     },
 };
 
-const asyncFunctions: Record<string, sass.AsyncSassFunction> = { ...asyncFunction, ...asyncVarArg };
+const asyncFunctions: Record<string, sass.AsyncSassFunction> = {
+    ...asyncFunction,
+    ...asyncVarArg,
+};
 
-const functions: sass.FunctionDeclarations = { ...syncFunctions, ...asyncFunctions };
+const functions: sass.FunctionDeclarations = {
+    ...syncFunctions,
+    ...asyncFunctions,
+};
 
-sass.render({
-    file: "/path/to/myFile.scss",
-    data: "body{background:blue; a{color:black;}}",
-    functions,
-    importer: [anotherAsyncImporter, asyncImporter, syncImporter],
-    includePaths: ["lib/", "mod/"],
-    outputStyle: "compressed",
-}, handleAsyncResult);
+sass.render(
+    {
+        file: "/path/to/myFile.scss",
+        data: "body{background:blue; a{color:black;}}",
+        functions,
+        importer: [anotherAsyncImporter, asyncImporter, syncImporter],
+        includePaths: ["lib/", "mod/"],
+        outputStyle: "compressed",
+    },
+    handleAsyncResult,
+);
 
 // OR
 
-sass.render({
-    file: "/path/to/myFile.scss",
-    data: "body{background:blue; a{color:black;}}",
-    importer: asyncImporter,
-    includePaths: ["lib/", "mod/"],
-    outputStyle: "compressed",
-}, handleAsyncResult);
+sass.render(
+    {
+        file: "/path/to/myFile.scss",
+        data: "body{background:blue; a{color:black;}}",
+        importer: asyncImporter,
+        includePaths: ["lib/", "mod/"],
+        outputStyle: "compressed",
+    },
+    handleAsyncResult,
+);
 
 // OR
 
-sass.render({
-    file: "/path/to/myFile.scss",
-    data: "body{background:blue; a{color:black;}}",
-    importer: syncImporter,
-    includePaths: ["lib/", "mod/"],
-    outputStyle: "compressed",
-}, handleAsyncResult);
+sass.render(
+    {
+        file: "/path/to/myFile.scss",
+        data: "body{background:blue; a{color:black;}}",
+        importer: syncImporter,
+        includePaths: ["lib/", "mod/"],
+        outputStyle: "compressed",
+    },
+    handleAsyncResult,
+);
 
 // OR
 
@@ -238,12 +269,12 @@ redOpaque.getB(); // 0
 redOpaque.getA(); // 1
 const redTranslucent = sass.types.Color(240, 15, 0, 0.5);
 redTranslucent.getA(); // 0.5
-const redOpaque2 = sass.types.Color(0xF00F00FF);
+const redOpaque2 = sass.types.Color(0xf00f00ff);
 redOpaque2.getR(); // 240
 redOpaque2.getG(); // 15
 redOpaque2.getB(); // 0
 redOpaque2.getA(); // 1
-const redTranslucent2 = sass.types.Color(0xF00F007F);
+const redTranslucent2 = sass.types.Color(0xf00f007f);
 redTranslucent.getA(); // 0.5
 const spaceList1 = sass.types.List(1);
 spaceList1.getLength(); // 1
@@ -294,7 +325,7 @@ const newNumber = new sass.types.Number(5);
 const newDimension = new sass.types.Number(5, "px");
 const newRedOpaque = new sass.types.Color(240, 15, 0);
 const newRedTranslucent = new sass.types.Color(240, 15, 0, 0.5);
-const newRedOpaque2 = new sass.types.Color(0xF00F00FF);
+const newRedOpaque2 = new sass.types.Color(0xf00f00ff);
 const newSpaceList1 = new sass.types.List(1);
 const newSpaceList2 = new sass.types.List(1, false);
 const newCommaList1 = new sass.types.List(2, true);

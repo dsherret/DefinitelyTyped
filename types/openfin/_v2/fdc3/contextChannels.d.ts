@@ -239,7 +239,9 @@ export declare abstract class ChannelBase {
      *
      * @param handler Function that should be called whenever a context is broadcast on this channel.
      */
-    addContextListener(handler: (context: Context) => void): ChannelContextListener;
+    addContextListener(
+        handler: (context: Context) => void,
+    ): ChannelContextListener;
     /**
      * Event that is fired whenever a window joins this channel. This includes switching to/from the default
      * channel.
@@ -247,7 +249,10 @@ export declare abstract class ChannelBase {
      * The event also includes which channel the window was in previously. The `channel` property within the
      * event will always be this channel instance.
      */
-    addEventListener(eventType: "window-added", handler: (event: ChannelWindowAddedEvent) => void): void;
+    addEventListener(
+        eventType: "window-added",
+        handler: (event: ChannelWindowAddedEvent) => void,
+    ): void;
     /**
      * Event that is fired whenever a window leaves this channel. This includes switching to/from the default
      * channel.
@@ -255,9 +260,18 @@ export declare abstract class ChannelBase {
      * The event also includes which channel the window is being added to. The `previousChannel` property within the
      * event will always be this channel instance.
      */
-    addEventListener(eventType: "window-removed", handler: (event: ChannelWindowRemovedEvent) => void): void;
-    removeEventListener(eventType: "window-added", handler: (event: ChannelWindowAddedEvent) => void): void;
-    removeEventListener(eventType: "window-removed", handler: (event: ChannelWindowRemovedEvent) => void): void;
+    addEventListener(
+        eventType: "window-removed",
+        handler: (event: ChannelWindowRemovedEvent) => void,
+    ): void;
+    removeEventListener(
+        eventType: "window-added",
+        handler: (event: ChannelWindowAddedEvent) => void,
+    ): void;
+    removeEventListener(
+        eventType: "window-removed",
+        handler: (event: ChannelWindowRemovedEvent) => void,
+    ): void;
 }
 /**
  * The channel all windows start in.
@@ -352,7 +366,9 @@ export declare function getChannelById(channelId: ChannelId): Promise<Channel>;
  * @throws If `identity` is passed, `TypeError` if `identity` is not a valid
  * {@link https://developer.openfin.co/docs/javascript/stable/global.html#Identity | Identity}.
  */
-export declare function getCurrentChannel(identity?: Identity): Promise<Channel>;
+export declare function getCurrentChannel(
+    identity?: Identity,
+): Promise<Channel>;
 /**
  * Returns an app channel with the given name. Either creates a new channel or returns an existing channel.
  *
@@ -366,4 +382,6 @@ export declare function getCurrentChannel(identity?: Identity): Promise<Channel>
  * @param name The name of the channel. Must not be an empty string.
  * @throws `TypeError` if `name` is not a valid app channel name, i.e., a non-empty string.
  */
-export declare function getOrCreateAppChannel(name: string): Promise<AppChannel>;
+export declare function getOrCreateAppChannel(
+    name: string,
+): Promise<AppChannel>;

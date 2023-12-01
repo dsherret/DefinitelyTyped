@@ -8,7 +8,7 @@ declare module "leaflet" {
      * control editing of geometries. So you can easily build your own UI with your own needs and choices.
      */
     interface EditableStatic {
-        new(map: Map, options: EditOptions): Editable;
+        new (map: Map, options: EditOptions): Editable;
     }
 
     /**

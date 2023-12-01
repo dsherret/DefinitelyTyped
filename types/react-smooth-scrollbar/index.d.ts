@@ -8,7 +8,10 @@ declare namespace Scrollbar {
         /**
          * Pipe to scrollbar.addListener()
          */
-        onScroll?(status: ScrollStatus, scrollbarInstance: SmoothScrollbar): void;
+        onScroll?(
+            status: ScrollStatus,
+            scrollbarInstance: SmoothScrollbar,
+        ): void;
         /**
          * Keep scrollbar tracks visible whether it's scrolling or not
          * @default false

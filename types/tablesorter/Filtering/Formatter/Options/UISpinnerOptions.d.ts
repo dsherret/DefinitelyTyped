@@ -12,13 +12,11 @@ import { UIOptionsBase } from "./UIOptionsBase";
  * Provides options for the ui-slider control.
  */
 export interface UISpinnerOptions
-    extends
-        UIOptionsBase<JQueryUI.SpinnerOptions>,
+    extends UIOptionsBase<JQueryUI.SpinnerOptions>,
         IntervalOptions,
         ControlOptions,
         DefaultValueOptions<number>,
         ToggleableOptions,
         ComparableOptions,
         DelayableOptions,
-        StrictOptions
-{}
+        StrictOptions {}

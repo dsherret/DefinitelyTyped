@@ -1,5 +1,9 @@
 interface Walk {
-    (path?: string, listFolders?: boolean, walkFolder?: (path: string) => boolean): AsyncIterable<string>;
+    (
+        path?: string,
+        listFolders?: boolean,
+        walkFolder?: (path: string) => boolean,
+    ): AsyncIterable<string>;
 }
 
 declare const walk: Walk;

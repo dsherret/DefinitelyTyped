@@ -1,6 +1,11 @@
 import * as React from "react";
 
-export type MeasurementType = "client" | "offset" | "scroll" | "bounds" | "margin";
+export type MeasurementType =
+    | "client"
+    | "offset"
+    | "scroll"
+    | "bounds"
+    | "margin";
 
 interface TopLeft {
     readonly top: number;

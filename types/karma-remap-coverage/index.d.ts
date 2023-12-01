@@ -21,5 +21,7 @@ declare module "karma" {
     }
 
     // remapped reporter types to key-value pairs
-    type KarmaRemapCoverageReporter = Partial<Record<ReporterType, string | null | undefined>>;
+    type KarmaRemapCoverageReporter = Partial<
+        Record<ReporterType, string | null | undefined>
+    >;
 }

@@ -17,6 +17,7 @@ interface LrgbDefinitionMixin {
     serialize: "--srgb-linear";
 }
 
-declare const definition: Omit<typeof rgb, keyof LrgbDefinitionMixin> & LrgbDefinitionMixin;
+declare const definition: Omit<typeof rgb, keyof LrgbDefinitionMixin> &
+    LrgbDefinitionMixin;
 
 export default definition;

@@ -31,7 +31,10 @@ declare class NestDb<G = any> extends EventEmitter {
      * We use an async API for consistency with the rest of the code
      * @param cb Optional callback, signature: err
      */
-    ensureIndex(options: NestDb.EnsureIndexOptions, cb?: (err: Error) => void): void;
+    ensureIndex(
+        options: NestDb.EnsureIndexOptions,
+        cb?: (err: Error) => void,
+    ): void;
 
     /**
      * Remove an index
@@ -72,8 +75,14 @@ declare class NestDb<G = any> extends EventEmitter {
      * Insert one or more new documents
      * @param cb Optional callback, signature: err, insertedDoc
      */
-    insert<T extends G>(newDoc: T, cb?: (err: Error, document: T) => void): void;
-    insert<T extends G>(newDocs: T[], cb?: (err: Error, documents: T[]) => void): void;
+    insert<T extends G>(
+        newDoc: T,
+        cb?: (err: Error, document: T) => void,
+    ): void;
+    insert<T extends G>(
+        newDocs: T[],
+        cb?: (err: Error, documents: T[]) => void,
+    ): void;
 
     /**
      * Count all documents matching the query
@@ -88,7 +97,11 @@ declare class NestDb<G = any> extends EventEmitter {
      * @param query MongoDB-style query
      * @param projection MongoDB-style projection
      */
-    find<T extends G>(query: any, projection: T, callback: (err: Error, documents: T[]) => void): void;
+    find<T extends G>(
+        query: any,
+        projection: T,
+        callback: (err: Error, documents: T[]) => void,
+    ): void;
     find<T extends G>(query: any, projection?: T): NestDb.Cursor<T>;
 
     /**
@@ -96,20 +109,30 @@ declare class NestDb<G = any> extends EventEmitter {
      * If no callback is passed, we return the cursor so that user can limit, skip and finally exec
      * * @param query MongoDB-style query
      */
-    find<T extends G>(query: any, callback: (err: Error, documents: T[]) => void): void;
+    find<T extends G>(
+        query: any,
+        callback: (err: Error, documents: T[]) => void,
+    ): void;
 
     /**
      * Find one document matching the query
      * @param query MongoDB-style query
      * @param projection MongoDB-style projection
      */
-    findOne<T extends G>(query: any, projection: T, callback: (err: Error, document: T) => void): void;
+    findOne<T extends G>(
+        query: any,
+        projection: T,
+        callback: (err: Error, document: T) => void,
+    ): void;
 
     /**
      * Find one document matching the query
      * @param query MongoDB-style query
      */
-    findOne<T extends G>(query: any, callback: (err: Error, document: T) => void): void;
+    findOne<T extends G>(
+        query: any,
+        callback: (err: Error, document: T) => void,
+    ): void;
 
     /**
      * Update all docs matching query v1.7.4 and prior signature.
@@ -147,7 +170,12 @@ declare class NestDb<G = any> extends EventEmitter {
         query: any,
         updateQuery: any,
         options?: NestDb.UpdateOptions,
-        cb?: (err: Error, numberOfUpdated: number, affectedDocuments: any, upsert: boolean) => void,
+        cb?: (
+            err: Error,
+            numberOfUpdated: number,
+            affectedDocuments: any,
+            upsert: boolean,
+        ) => void,
     ): void;
 
     /**
@@ -159,7 +187,11 @@ declare class NestDb<G = any> extends EventEmitter {
      *
      * @api private Use Datastore.remove which has the same signature
      */
-    remove(query: any, options: NestDb.RemoveOptions, cb?: (err: Error, n: number) => void): void;
+    remove(
+        query: any,
+        options: NestDb.RemoveOptions,
+        cb?: (err: Error, n: number) => void,
+    ): void;
     remove(query: any, cb?: (err: Error, n: number) => void): void;
 
     addListener(event: "compaction.done", listener: () => void): this;

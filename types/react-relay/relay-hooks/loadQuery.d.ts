@@ -1,4 +1,9 @@
-import { GraphQLTaggedNode, IEnvironment, OperationType, VariablesOf } from "relay-runtime";
+import {
+    GraphQLTaggedNode,
+    IEnvironment,
+    OperationType,
+    VariablesOf,
+} from "relay-runtime";
 import {
     EnvironmentProviderOptions,
     LoadQueryOptions,

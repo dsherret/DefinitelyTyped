@@ -25,7 +25,11 @@ let time: number;
 time = watch.getTimes()["test.js"];
 
 watch.on("change", (filePath, modifiedTime, explanation) => {
-    console.log(`${filePath} got changed at ${new Date(modifiedTime)}, noticed by ${explanation}`);
+    console.log(
+        `${filePath} got changed at ${new Date(
+            modifiedTime,
+        )}, noticed by ${explanation}`,
+    );
 });
 
 watch.on("remove", (filePath, explanation) => {
@@ -33,7 +37,9 @@ watch.on("remove", (filePath, explanation) => {
 });
 
 watch.on("aggregated", (changes, removals) => {
-    console.log(`watchpack: aggregated ${changes.size} changes and ${removals.size} removals`);
+    console.log(
+        `watchpack: aggregated ${changes.size} changes and ${removals.size} removals`,
+    );
 });
 
 setTimeout(() => {

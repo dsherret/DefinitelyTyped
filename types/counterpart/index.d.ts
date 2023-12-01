@@ -1,4 +1,9 @@
-type NotFoundHandler = (locale: string, key: string, fallback: string, scope: string) => void;
+type NotFoundHandler = (
+    locale: string,
+    key: string,
+    fallback: string,
+    scope: string,
+) => void;
 type LocaleChangeHandler = (newLocale: string, oldLocale: string) => void;
 
 interface Counterpart {
@@ -16,7 +21,9 @@ interface Counterpart {
     setFallbackLocale(value: string | string[]): void;
     registerTranslations(locale: string, data: object): void;
     registerInterpolations(data: object): void;
-    setKeyTransformer(callback: (value: string, options: object) => string): string;
+    setKeyTransformer(
+        callback: (value: string, options: object) => string,
+    ): string;
     localize(date: Date, options: object): string;
     Instance: Counterpart;
     Translator: Counterpart;

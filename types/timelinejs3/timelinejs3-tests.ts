@@ -85,7 +85,13 @@ let timelineOptions: TL.ITimelineOptions = {
     timenav_height_min: 80,
     timenav_height_percentage: 50,
     timenav_mobile_height_percentage: 80,
-    track_events: ["back_to_start", "nav_next", "nav_previous", "zoom_in", "zoom_out"],
+    track_events: [
+        "back_to_start",
+        "nav_next",
+        "nav_previous",
+        "zoom_in",
+        "zoom_out",
+    ],
     width: 768,
     ga_property_id: "234klj23",
     trackResize: true,
@@ -93,7 +99,11 @@ let timelineOptions: TL.ITimelineOptions = {
     slide_default_fade: "0%",
 };
 
-let timeline: TL.ITimeline = new TL.Timeline("timeline-embed", timelineConfig, timelineOptions);
+let timeline: TL.ITimeline = new TL.Timeline(
+    "timeline-embed",
+    timelineConfig,
+    timelineOptions,
+);
 
 timeline.goToId("123");
 timeline.goTo(1);

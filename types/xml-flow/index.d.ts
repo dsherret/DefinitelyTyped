@@ -3,7 +3,10 @@
 import { EventEmitter } from "events";
 import { Readable } from "stream";
 
-declare function flow(infile: Readable, options?: flow.parserOptions): EventEmitter;
+declare function flow(
+    infile: Readable,
+    options?: flow.parserOptions,
+): EventEmitter;
 
 declare namespace flow {
     const NEVER = -1;
@@ -11,7 +14,11 @@ declare namespace flow {
     const ALWAYS = 1;
 
     interface parserOptions {
-        preserveMarkup?: typeof NEVER | typeof SOMETIMES | typeof ALWAYS | undefined;
+        preserveMarkup?:
+            | typeof NEVER
+            | typeof SOMETIMES
+            | typeof ALWAYS
+            | undefined;
         simplifyNodes?: boolean | undefined;
         useArrays?: typeof NEVER | typeof SOMETIMES | typeof ALWAYS | undefined;
         lowercase?: boolean | undefined;

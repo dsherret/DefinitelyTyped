@@ -1,6 +1,12 @@
 /// <reference types='node' />
 
-import { Agent, ClientRequest, IncomingMessage, OutgoingHttpHeaders, RequestOptions } from "http";
+import {
+    Agent,
+    ClientRequest,
+    IncomingMessage,
+    OutgoingHttpHeaders,
+    RequestOptions,
+} from "http";
 
 import { UrlWithStringQuery } from "url";
 
@@ -117,10 +123,7 @@ export class OAuth {
         callback?: dataCallback,
     ): ClientRequest;
 
-    getOAuthRequestToken(
-        extraparams: any,
-        callback: oauth1tokenCallback,
-    ): void;
+    getOAuthRequestToken(extraparams: any, callback: oauth1tokenCallback): void;
     getOAuthRequestToken(callback: oauth1tokenCallback): void;
 
     signUrl(
@@ -156,9 +159,9 @@ export class OAuth {
 
     protected _buildAuthorizationHeaders(orderedParameters: string[][]): string;
 
-    protected _makeArrayOfArgumentsHash(
-        argumentHash: { [key: string]: string | string[] },
-    ): string[][];
+    protected _makeArrayOfArgumentsHash(argumentHash: {
+        [key: string]: string | string[];
+    }): string[][];
 
     protected _sortRequestParams(argument_pairs: string[][]): string[][];
 
@@ -170,7 +173,10 @@ export class OAuth {
         parameters: string,
     ): string;
 
-    protected _createSignature(signatureBase: string, tokenSecret: string): string;
+    protected _createSignature(
+        signatureBase: string,
+        tokenSecret: string,
+    ): string;
 
     protected _getNonce(nonceSize: number): string;
 

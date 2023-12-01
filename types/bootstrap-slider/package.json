@@ -1,24 +1,24 @@
 {
-    "private": true,
-    "name": "@types/bootstrap-slider",
-    "version": "11.0.9999",
-    "projects": [
-        "https://github.com/seiyria/bootstrap-slider"
-    ],
-    "dependencies": {
-        "@types/jquery": "*"
+  "private": true,
+  "name": "@types/bootstrap-slider",
+  "version": "11.0.9999",
+  "projects": [
+    "https://github.com/seiyria/bootstrap-slider"
+  ],
+  "dependencies": {
+    "@types/jquery": "*"
+  },
+  "devDependencies": {
+    "@types/bootstrap-slider": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Daniel Beckwith",
+      "githubUsername": "dbeckwith"
     },
-    "devDependencies": {
-        "@types/bootstrap-slider": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Daniel Beckwith",
-            "githubUsername": "dbeckwith"
-        },
-        {
-            "name": "Leonard Thieu",
-            "githubUsername": "leonard-thieu"
-        }
-    ]
+    {
+      "name": "Leonard Thieu",
+      "githubUsername": "leonard-thieu"
+    }
+  ]
 }

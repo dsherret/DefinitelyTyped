@@ -8,9 +8,16 @@ declare function computed<O1 extends ObservableValue<any>, R>(
     compute: (observable1: ValueOfObservable<O1>) => R,
 ): ObservableValue<R>;
 
-declare function computed<O1 extends ObservableValue<any>, O2 extends ObservableValue<any>, R>(
+declare function computed<
+    O1 extends ObservableValue<any>,
+    O2 extends ObservableValue<any>,
+    R,
+>(
     observables: [O1, O2],
-    compute: (observable1: ValueOfObservable<O1>, observable2: ValueOfObservable<O2>) => R,
+    compute: (
+        observable1: ValueOfObservable<O1>,
+        observable2: ValueOfObservable<O2>,
+    ) => R,
 ): ObservableValue<R>;
 
 declare function computed<

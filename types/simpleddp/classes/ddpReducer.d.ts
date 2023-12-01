@@ -1,7 +1,11 @@
 import { ddpReactiveCollection } from "./ddpReactiveCollection";
 
 export class ddpReducer<T> {
-    constructor(ddpReactiveCollectionInstance: ddpReactiveCollection<T>, reducer: () => void, initialValue: unknown);
+    constructor(
+        ddpReactiveCollectionInstance: ddpReactiveCollection<T>,
+        reducer: () => void,
+        initialValue: unknown,
+    );
     /**
      * Returns reactive reduce.
      */

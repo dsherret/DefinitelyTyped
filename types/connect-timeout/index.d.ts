@@ -33,6 +33,9 @@ declare module "connect-timeout" {
     /**
      * @summary Returns middleware that times out in time milliseconds. time can also be a string accepted by the ms module. On timeout, req will emit "timeout".
      */
-    function e(time: number | string, options?: e.TimeoutOptions): express.RequestHandler;
+    function e(
+        time: number | string,
+        options?: e.TimeoutOptions,
+    ): express.RequestHandler;
     export = e;
 }

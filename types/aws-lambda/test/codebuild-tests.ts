@@ -166,7 +166,11 @@ const CodeBuildCloudWatchStateEvent: CodeBuildCloudWatchStateEvent = {
     },
 };
 
-const eventBridgeHandler: CodeBuildCloudWatchStateHandler = async (event, context, callback) => {
+const eventBridgeHandler: CodeBuildCloudWatchStateHandler = async (
+    event,
+    context,
+    callback,
+) => {
     str = event.account;
     codeBuildStateEventDetail = event.detail;
     str = event.id;
@@ -197,19 +201,30 @@ const eventBridgeHandler: CodeBuildCloudWatchStateHandler = async (event, contex
     str = detail["additional-information"].artifact.location;
     str = detail["additional-information"].environment.image;
     bool = detail["additional-information"].environment["privileged-mode"];
-    strOrUndefined = detail["additional-information"].environment["image-pull-credentials-type"];
+    strOrUndefined =
+        detail["additional-information"].environment[
+            "image-pull-credentials-type"
+        ];
     str = detail["additional-information"].environment["compute-type"];
     str = detail["additional-information"].environment.type;
-    str = detail["additional-information"].environment["environment-variables"][0].name;
-    strOrUndefined = detail["additional-information"].environment["environment-variables"][0].type;
-    str = detail["additional-information"].environment["environment-variables"][0].value;
+    str =
+        detail["additional-information"].environment["environment-variables"][0]
+            .name;
+    strOrUndefined =
+        detail["additional-information"].environment["environment-variables"][0]
+            .type;
+    str =
+        detail["additional-information"].environment["environment-variables"][0]
+            .value;
     str = detail["additional-information"].logs["group-name"];
     str = detail["additional-information"].logs["stream-name"];
     str = detail["additional-information"].logs["deep-link"];
-    strArrayOrUndefined = detail["additional-information"].phases[0]["phase-context"];
+    strArrayOrUndefined =
+        detail["additional-information"].phases[0]["phase-context"];
     str = detail["additional-information"].phases[0]["start-time"];
     strOrUndefined = detail["additional-information"].phases[0]["end-time"];
-    numOrUndefined = detail["additional-information"].phases[0]["duration-in-seconds"];
+    numOrUndefined =
+        detail["additional-information"].phases[0]["duration-in-seconds"];
     str = detail["additional-information"].phases[0]["phase-type"];
     strOrUndefined = detail["additional-information"].phases[0]["phase-status"];
     num = detail["additional-information"]["queued-timeout-in-minutes"];
@@ -219,7 +234,9 @@ const eventBridgeHandler: CodeBuildCloudWatchStateHandler = async (event, contex
 };
 
 export const snsEventCodeBuildStateHandler = async (snsEvent: SNSEvent) => {
-    const event: CodeBuildCloudWatchStateEvent = JSON.parse(snsEvent.Records[0].Sns.Message);
+    const event: CodeBuildCloudWatchStateEvent = JSON.parse(
+        snsEvent.Records[0].Sns.Message,
+    );
 
     codeBuildStateEventDetail = event.detail;
 };

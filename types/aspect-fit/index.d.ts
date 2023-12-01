@@ -3,6 +3,11 @@ interface Output {
     width: number;
     height: number;
 }
-declare function aspectFit(width: number, height: number, parentWidth: number, parentHeight: number): Output;
+declare function aspectFit(
+    width: number,
+    height: number,
+    parentWidth: number,
+    parentHeight: number,
+): Output;
 
 export = aspectFit;

@@ -2,7 +2,9 @@
 
 export = isTypedArray;
 
-declare function isTypedArray(candidate: any): candidate is isTypedArray.TypedArray;
+declare function isTypedArray(
+    candidate: any,
+): candidate is isTypedArray.TypedArray;
 
 declare namespace isTypedArray {
     function strict(candidate: any): candidate is TypedArray;

@@ -8,7 +8,7 @@ function tests_simple() {
     $("#daterange").daterangepicker({
         drops: "auto",
     });
-    $("input[name=\"daterange\"]")
+    $('input[name="daterange"]')
         .daterangepicker({
             timePicker: true,
             timePickerIncrement: 30,
@@ -28,7 +28,10 @@ function tests_simple() {
     $("#reportrange").daterangepicker({
         ranges: {
             Today: [moment(), moment()],
-            Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
+            Yesterday: [
+                moment().subtract(1, "days"),
+                moment().subtract(1, "days"),
+            ],
             "Last 7 Days": [moment().subtract(6, "days"), moment()],
             "Last 30 Days": [moment().subtract(29, "days"), moment()],
             "This Month": [moment().startOf("month"), moment().endOf("month")],
@@ -39,48 +42,57 @@ function tests_simple() {
         },
     });
 
-    $("input[name=\"datefilter\"]").on("apply.daterangepicker", (_event: Event, _picker: DateRangePicker) => {});
+    $('input[name="datefilter"]').on(
+        "apply.daterangepicker",
+        (_event: Event, _picker: DateRangePicker) => {},
+    );
 
-    $("input[name=\"datefilter\"]").on("cancel.daterangepicker", (_event: Event, _picker: DateRangePicker) => {});
+    $('input[name="datefilter"]').on(
+        "cancel.daterangepicker",
+        (_event: Event, _picker: DateRangePicker) => {},
+    );
 
-    $("input[name=\"datefilter\"]").on("showCalendar.daterangepicker", (_event: Event, picker: DateRangePicker) => {
-        picker.startDate; // $ExpectType Moment
-        picker.endDate; // $ExpectType Moment
-        picker.minDate; // $ExpectType Moment
-        picker.maxDate; // $ExpectType Moment
-        picker.showDropdowns; // $ExpectType boolean
-        picker.minYear; // $ExpectType string | number
-        picker.maxYear; // $ExpectType string | number
-        picker.showWeekNumbers; // $ExpectType boolean
-        picker.showISOWeekNumbers; // $ExpectType boolean
-        picker.timePicker; // $ExpectType boolean
-        picker.timePickerIncrement; // $ExpectType number
-        picker.timePicker24Hour; // $ExpectType boolean
-        picker.timePickerSeconds; // $ExpectType boolean
-        picker.ranges; // $ExpectType { [name: string]: [DateOrString, DateOrString]; }
-        picker.showCustomRangeLabel; // $ExpectType boolean
-        picker.alwaysShowCalendars; // $ExpectType boolean
-        picker.opens; // $ExpectType "left" | "right" | "center" || "center" | "left" | "right"
-        picker.drops; // $ExpectType "down" | "up" || "up" | "down"
-        picker.buttonClasses; // $ExpectType string[]
-        picker.applyButtonClasses; // $ExpectType string
-        picker.cancelButtonClasses; // $ExpectType string
-        picker.locale; // $ExpectType Required<Locale>
-        picker.singleDatePicker; // $ExpectType boolean
-        picker.autoApply; // $ExpectType boolean
-        picker.linkedCalendars; // $ExpectType boolean
-        picker.autoUpdateInput; // $ExpectType boolean
-        picker.parentEl; // $ExpectType JQuery<HTMLElement>
-        picker.element; // $ExpectType JQuery<HTMLElement>
-        picker.container; // $ExpectType JQuery<HTMLElement>
-        picker.isShowing; // $ExpectType boolean
-        picker.chosenLabel; // $ExpectType string
-        picker.previousRightTime; // $ExpectType Moment
-        picker.oldStartDate; // $ExpectType Moment
-        picker.oldEndDate; // $ExpectType Moment
-        picker.leftCalendar; // $ExpectType Calendar
-        picker.rightCalendar; // $ExpectType Calendar
-    });
+    $('input[name="datefilter"]').on(
+        "showCalendar.daterangepicker",
+        (_event: Event, picker: DateRangePicker) => {
+            picker.startDate; // $ExpectType Moment
+            picker.endDate; // $ExpectType Moment
+            picker.minDate; // $ExpectType Moment
+            picker.maxDate; // $ExpectType Moment
+            picker.showDropdowns; // $ExpectType boolean
+            picker.minYear; // $ExpectType string | number
+            picker.maxYear; // $ExpectType string | number
+            picker.showWeekNumbers; // $ExpectType boolean
+            picker.showISOWeekNumbers; // $ExpectType boolean
+            picker.timePicker; // $ExpectType boolean
+            picker.timePickerIncrement; // $ExpectType number
+            picker.timePicker24Hour; // $ExpectType boolean
+            picker.timePickerSeconds; // $ExpectType boolean
+            picker.ranges; // $ExpectType { [name: string]: [DateOrString, DateOrString]; }
+            picker.showCustomRangeLabel; // $ExpectType boolean
+            picker.alwaysShowCalendars; // $ExpectType boolean
+            picker.opens; // $ExpectType "left" | "right" | "center" || "center" | "left" | "right"
+            picker.drops; // $ExpectType "down" | "up" || "up" | "down"
+            picker.buttonClasses; // $ExpectType string[]
+            picker.applyButtonClasses; // $ExpectType string
+            picker.cancelButtonClasses; // $ExpectType string
+            picker.locale; // $ExpectType Required<Locale>
+            picker.singleDatePicker; // $ExpectType boolean
+            picker.autoApply; // $ExpectType boolean
+            picker.linkedCalendars; // $ExpectType boolean
+            picker.autoUpdateInput; // $ExpectType boolean
+            picker.parentEl; // $ExpectType JQuery<HTMLElement>
+            picker.element; // $ExpectType JQuery<HTMLElement>
+            picker.container; // $ExpectType JQuery<HTMLElement>
+            picker.isShowing; // $ExpectType boolean
+            picker.chosenLabel; // $ExpectType string
+            picker.previousRightTime; // $ExpectType Moment
+            picker.oldStartDate; // $ExpectType Moment
+            picker.oldEndDate; // $ExpectType Moment
+            picker.leftCalendar; // $ExpectType Calendar
+            picker.rightCalendar; // $ExpectType Calendar
+        },
+    );
 
     $("#demo").daterangepicker(
         {
@@ -96,7 +108,11 @@ function tests_simple() {
 
     $(() => {
         function cb(start: moment.Moment, end: moment.Moment) {
-            $("#reportrange span").html(`${start.format("MMMM D, YYYY")} - ${end.format("MMMM D, YYYY")}`);
+            $("#reportrange span").html(
+                `${start.format("MMMM D, YYYY")} - ${end.format(
+                    "MMMM D, YYYY",
+                )}`,
+            );
         }
         cb(moment().subtract(29, "days"), moment());
 
@@ -104,10 +120,16 @@ function tests_simple() {
             {
                 ranges: {
                     Today: [moment(), moment()],
-                    Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
+                    Yesterday: [
+                        moment().subtract(1, "days"),
+                        moment().subtract(1, "days"),
+                    ],
                     "Last 7 Days": [moment().subtract(6, "days"), moment()],
                     "Last 30 Days": [moment().subtract(29, "days"), moment()],
-                    "This Month": [moment().startOf("month"), moment().endOf("month")],
+                    "This Month": [
+                        moment().startOf("month"),
+                        moment().endOf("month"),
+                    ],
                     "Last Month": [
                         moment().subtract(1, "month").startOf("month"),
                         moment().subtract(1, "month").endOf("month"),
@@ -121,7 +143,10 @@ function tests_simple() {
             {
                 ranges: {
                     Today: [moment(), moment()],
-                    Yesterday: [moment().subtract(1, "days"), moment().subtract(1, "days")],
+                    Yesterday: [
+                        moment().subtract(1, "days"),
+                        moment().subtract(1, "days"),
+                    ],
                     "Last 7 Days": [moment().subtract(6, "days"), moment()],
                     "Last 30 Days": [moment().subtract(29, "days"), moment()],
                 },

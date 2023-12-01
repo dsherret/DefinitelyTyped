@@ -1,7 +1,9 @@
 /**
  * @returns taskFn's resolved promise or array of rejections
  */
-export default function promisePoller<T>(options: PromisePollerOptions<T>): Promise<T>;
+export default function promisePoller<T>(
+    options: PromisePollerOptions<T>,
+): Promise<T>;
 
 export interface PromisePollerOptions<T> {
     /**
@@ -85,7 +87,11 @@ export interface PromisePollerOptions<T> {
      *
      * @default 'fixed-interval'
      */
-    strategy?: "fixed-interval" | "linear-backoff" | "exponential-backoff" | undefined;
+    strategy?:
+        | "fixed-interval"
+        | "linear-backoff"
+        | "exponential-backoff"
+        | undefined;
     /**
      * `strategy: 'linear-backoff'` --
      * The starting value to use for the polling interval

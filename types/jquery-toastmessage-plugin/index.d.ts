@@ -17,9 +17,19 @@ declare namespace JQueryToastmessage {
         (toastOpts: ToastOptions): void;
     }
 
-    type ShowToastCommand = "showNoticeToast" | "showSuccessToast" | "showWarningToast" | "showErrorToast";
+    type ShowToastCommand =
+        | "showNoticeToast"
+        | "showSuccessToast"
+        | "showWarningToast"
+        | "showErrorToast";
     type ToastType = "notice" | "warning" | "error" | "success";
-    type ToastPosition = "top-left" | "top-center" | "top-right" | "middle-left" | "middle-center" | "middle-right";
+    type ToastPosition =
+        | "top-left"
+        | "top-center"
+        | "top-right"
+        | "middle-left"
+        | "middle-center"
+        | "middle-right";
 
     interface ToastOptions {
         /** in effect duration in miliseconds @default 600 */

@@ -37,16 +37,18 @@ declare namespace zumly {
         // Store of all view objects
         views: Record<string, WithRender | string>;
         // Custom transitions
-        transitions?: {
-            // Effects for background views
-            effects: Array<"blur" | "sepia" | "saturate">;
-            // How new injected view is adapted. String. Default 'width'
-            cover: "height" | "width";
-            // Transition duration. Default '1s'
-            duration: string;
-            // Transition ease. Default 'ease-in-out'
-            ease: string;
-        } | undefined;
+        transitions?:
+            | {
+                  // Effects for background views
+                  effects: Array<"blur" | "sepia" | "saturate">;
+                  // How new injected view is adapted. String. Default 'width'
+                  cover: "height" | "width";
+                  // Transition duration. Default '1s'
+                  duration: string;
+                  // Transition ease. Default 'ease-in-out'
+                  ease: string;
+              }
+            | undefined;
         // Activate debug notifications
         debug?: boolean | undefined;
     }

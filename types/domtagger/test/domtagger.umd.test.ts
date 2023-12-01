@@ -1,6 +1,6 @@
 const options: domtagger.Options = {
     attribute(node, name) {
-        return value => {
+        return (value) => {
             const type = typeof value;
             if (type === "boolean" || type === "function") {
                 (node as any)[name] = value;
@@ -13,13 +13,13 @@ const options: domtagger.Options = {
     },
 
     text(node) {
-        return textContent => {
+        return (textContent) => {
             node.textContent = textContent;
         };
     },
 
     any(node, childNodes) {
-        return markup => {
+        return (markup) => {
             switch (node.nodeType) {
                 case Node.ELEMENT_NODE:
                     (node as Element).innerHTML = markup;
@@ -29,9 +29,16 @@ const options: domtagger.Options = {
     },
 };
 
-function createOptions<T extends string>(type: T): domtagger.Options & { type: T } {
+function createOptions<T extends string>(
+    type: T,
+): domtagger.Options & { type: T } {
     return Object.create(options, {
-        type: { value: type, enumerable: true, configurable: true, writable: true },
+        type: {
+            value: type,
+            enumerable: true,
+            configurable: true,
+            writable: true,
+        },
     });
 }
 
@@ -42,9 +49,7 @@ const html = domtagger(createOptions("html"));
 const svg = domtagger(createOptions("svg"));
 
 // $ExpectType HTMLElement
-html`
-    <div class="${"foo"}" />
-`;
+html` <div class="${"foo"}" /> `;
 
 // $ExpectType SVGElement
 svg`

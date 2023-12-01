@@ -4,10 +4,12 @@ declare module "bunyan-config" {
     import * as bunyan from "bunyan";
     interface StreamConfiguration {
         name: string;
-        params?: {
-            host: string;
-            port: number;
-        } | undefined;
+        params?:
+            | {
+                  host: string;
+                  port: number;
+              }
+            | undefined;
     }
 
     interface Stream {

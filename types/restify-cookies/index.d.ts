@@ -21,4 +21,8 @@ declare module "restify" {
     }
 }
 
-export function parse(req: restify.Request, res: restify.Response, next: restify.Next): any;
+export function parse(
+    req: restify.Request,
+    res: restify.Response,
+    next: restify.Next,
+): any;

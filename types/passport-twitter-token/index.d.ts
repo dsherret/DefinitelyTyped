@@ -58,7 +58,12 @@ declare namespace PassportTwitterToken {
     }
 
     interface VerifyFunction {
-        (accessToken: string, accessTokenSecret: string, profile: TwitterProfile, done: DoneCallback): void;
+        (
+            accessToken: string,
+            accessTokenSecret: string,
+            profile: TwitterProfile,
+            done: DoneCallback,
+        ): void;
     }
 
     interface VerifyFunctionWithRequest {
@@ -74,13 +79,24 @@ declare namespace PassportTwitterToken {
     interface StrategyInstance {
         name: string;
         authenticate: (req: express.Request, options?: any) => void;
-        userProfile: (accessToken: string, accessTokenSecret: string, params: any, done: DoneCallback) => void;
+        userProfile: (
+            accessToken: string,
+            accessTokenSecret: string,
+            params: any,
+            done: DoneCallback,
+        ) => void;
     }
 
     interface StrategyStatic {
-        new(options: StrategyOptions, verify: VerifyFunction): StrategyInstance;
+        new (
+            options: StrategyOptions,
+            verify: VerifyFunction,
+        ): StrategyInstance;
 
-        new(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest): StrategyInstance;
+        new (
+            options: StrategyOptionsWithRequest,
+            verify: VerifyFunctionWithRequest,
+        ): StrategyInstance;
     }
 }
 

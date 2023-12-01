@@ -18,7 +18,9 @@ interface CustomComponentProps {
     customProp: string;
 }
 
-class CustomComponent extends React.Component<WrappedFieldProps<any> & CustomComponentProps> {
+class CustomComponent extends React.Component<
+    WrappedFieldProps<any> & CustomComponentProps
+> {
     render() {
         const {
             input,
@@ -36,9 +38,11 @@ class CustomComponent extends React.Component<WrappedFieldProps<any> & CustomCom
     }
 }
 
-class CustomField extends React.Component<BaseFieldProps & CustomComponentProps> {
+class CustomField extends React.Component<
+    BaseFieldProps & CustomComponentProps
+> {
     render() {
-        const F = Field as new() => GenericField<CustomComponentProps, any>;
+        const F = Field as new () => GenericField<CustomComponentProps, any>;
         return <F component={CustomComponent} {...this.props} />;
     }
 }
@@ -55,15 +59,8 @@ class MyForm extends React.Component {
     render() {
         return (
             <div>
-                <Field
-                    name="foo"
-                    component="input"
-                    placeholder="Foo bar"
-                />
-                <CustomField
-                    name="custom"
-                    customProp="Hello"
-                />
+                <Field name="foo" component="input" placeholder="Foo bar" />
+                <CustomField name="custom" customProp="Hello" />
             </div>
         );
     }
@@ -79,11 +76,7 @@ class MyReusableForm extends React.Component<void, undefined> {
     render() {
         return (
             <div>
-                <Field
-                    name="foo"
-                    component="input"
-                    placeholder="Foo bar"
-                />
+                <Field name="foo" component="input" placeholder="Foo bar" />
             </div>
         );
     }
@@ -112,19 +105,35 @@ const InitializeFromStateFormFunction = (props: Props) => {
             <div>
                 <label>First Name</label>
                 <div>
-                    <Field name="firstName" component={input} type="text" placeholder="First Name" />
+                    <Field
+                        name="firstName"
+                        component={input}
+                        type="text"
+                        placeholder="First Name"
+                    />
                 </div>
             </div>
             <div>
-                <button type="submit" disabled={pristine || submitting}>Submit</button>
-                <button type="button" disabled={pristine || submitting} onClick={reset}>Undo Changes</button>
+                <button type="submit" disabled={pristine || submitting}>
+                    Submit
+                </button>
+                <button
+                    type="button"
+                    disabled={pristine || submitting}
+                    onClick={reset}
+                >
+                    Undo Changes
+                </button>
             </div>
         </form>
     );
 };
 
 // Decorate with reduxForm(). It will read the initialValues prop provided by connect()
-const DecoratedInitializeFromStateFormFunction = reduxForm<{}, Props & DispatchProp<any>>({
+const DecoratedInitializeFromStateFormFunction = reduxForm<
+    {},
+    Props & DispatchProp<any>
+>({
     form: "initializeFromState", // a unique identifier for this form
 })(InitializeFromStateFormFunction);
 
@@ -149,18 +158,27 @@ const DecoratedInitializeFromStateFormClass = reduxForm<DataShape, {}, {}>({
 })(InitializeFromStateFormClass);
 
 // You have to connect() to any reducers that you wish to connect to yourself
-const mapStateToProps = (state: any) => ({
-    initialValues: { firstName: state.account.data.firstName }, // pull initial values from account reducer
-} as { initialValues?: Partial<DataShape> | undefined });
-const ConnectedDecoratedInitializeFromStateFormClass = connect(mapStateToProps)(DecoratedInitializeFromStateFormClass);
+const mapStateToProps = (state: any) =>
+    ({
+        initialValues: { firstName: state.account.data.firstName }, // pull initial values from account reducer
+    }) as { initialValues?: Partial<DataShape> | undefined };
+const ConnectedDecoratedInitializeFromStateFormClass = connect(mapStateToProps)(
+    DecoratedInitializeFromStateFormClass,
+);
 
-reducer({}, {
-    type: "ACTION",
-});
+reducer(
+    {},
+    {
+        type: "ACTION",
+    },
+);
 
 reducer.plugin({
     myform: (state: any, action: FormAction) => {
-        if (action.type === actionTypes.CHANGE && action.meta.form === "securitySettings") {
+        if (
+            action.type === actionTypes.CHANGE &&
+            action.meta.form === "securitySettings"
+        ) {
             return {
                 ...state,
                 values: {

@@ -89,7 +89,8 @@ declare namespace GoogleAdsScripts {
          *     .build();
          *  var videoAdGroup = videoAdGroupOperation.getResult()
          */
-        interface VideoAdGroupBuilder extends Base.Builder<VideoAdGroupOperation> {
+        interface VideoAdGroupBuilder
+            extends Base.Builder<VideoAdGroupOperation> {
             /** Sets the video ad group type, either TRUE_VIEW_IN_STREAM, TRUE_VIEW_IN_DISPLAY, NON_SKIPPABLE_IN_STREAM or BUMPER. */
             withAdGroupType(adGroupType: string): this;
             /** Sets the Target CPA bid of the new video ad group to the specified value. */
@@ -137,13 +138,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoAdGroupSelector
-            extends
-                Base.Selector<VideoAdGroupIterator>,
+            extends Base.Selector<VideoAdGroupIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

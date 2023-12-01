@@ -24,7 +24,13 @@ export type CMIVocabularyMode = "normal" | "review" | "browse";
  * SCO. Maybe he just read the table of contents, or the SCO abstract and decided he was not ready. Any algorithm within the SCO may be used to determine when the SCO moves from "not attempted" to
  * "incomplete".
  */
-export type CMIVocabularyStatus = "passed" | "completed" | "failed" | "incomplete" | "browsed" | "not attempted";
+export type CMIVocabularyStatus =
+    | "passed"
+    | "completed"
+    | "failed"
+    | "incomplete"
+    | "browsed"
+    | "not attempted";
 
 /**
  * A set vocabulary phrase. Three possible vocabulary values:
@@ -68,6 +74,13 @@ export type CMIVocabularyInteraction =
     | "performance"
     | "sequencing";
 
-export type CMIVocabularyResult = "correct" | "wrong" | "unanticipated" | "neutral" | CMIDecimal;
+export type CMIVocabularyResult =
+    | "correct"
+    | "wrong"
+    | "unanticipated"
+    | "neutral"
+    | CMIDecimal;
 
-export type CMIVocabularyTimeLimitAction = `${"exit" | "continue"},${"message" | "no message"}`;
+export type CMIVocabularyTimeLimitAction = `${"exit" | "continue"},${
+    | "message"
+    | "no message"}`;

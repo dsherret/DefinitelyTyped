@@ -148,7 +148,9 @@ interface SafariViewController {
      * @param onError The callback function to call in case of an error or if method is unsupported on current platform.
      */
     getViewHandlerPackages(
-        onSuccess: (handlerPackages: SafariViewControllerHandlerPackagesResult) => void,
+        onSuccess: (
+            handlerPackages: SafariViewControllerHandlerPackagesResult,
+        ) => void,
         onError?: (error: unknown) => void,
     ): void;
 
@@ -176,7 +178,10 @@ interface SafariViewController {
      * @param onSuccess The callback function to call after successfully connecting to the custom tabs service.
      * @param onError The callback function to call in case of an error or if method is unsupported on current platform.
      */
-    connectToService(onSuccess?: (result: true) => void, onError?: (error: unknown) => void): void;
+    connectToService(
+        onSuccess?: (result: true) => void,
+        onError?: (error: unknown) => void,
+    ): void;
 
     /**
      * Warm up the browser process. Call this method whenever there's a chance the user will open an external url. See
@@ -188,7 +193,10 @@ interface SafariViewController {
      * @param onSuccess The callback function to call after successfully warming up the browser process.
      * @param onError The callback function to call in case of an error or if method is unsupported on current platform.
      */
-    warmUp(onSuccess?: (result: true) => void, onError?: (error: unknown) => void): void;
+    warmUp(
+        onSuccess?: (result: true) => void,
+        onError?: (error: unknown) => void,
+    ): void;
 
     /**
      * Prepare the selected custom tab implementation to navigate to passed URL. For even better performance optimization,
@@ -203,7 +211,11 @@ interface SafariViewController {
      * @param onError The callback function to call in case custom tab hasn't accepted the URL to launch,
      *                if an error has occurred, or if method is unsupported on current platform.
      */
-    mayLaunchUrl(url: string, onSuccess?: (result: true) => void, onError?: (error: unknown) => void): void;
+    mayLaunchUrl(
+        url: string,
+        onSuccess?: (result: true) => void,
+        onError?: (error: unknown) => void,
+    ): void;
 }
 
 declare var SafariViewController: SafariViewController;

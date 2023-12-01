@@ -12,11 +12,20 @@ type Flattened<R> = {
     value: R;
     stream: R extends Highland.Stream<infer U> ? Flattened<U> : never;
     array: R extends Array<infer U> ? Flattened<U> : never;
-}[R extends any[] ? "array" : R extends Highland.Stream<any> ? "stream" : "value"];
+}[R extends any[]
+    ? "array"
+    : R extends Highland.Stream<any>
+      ? "stream"
+      : "value"];
 
 // Describes a constructor for a particular promise library
 interface PConstructor<T, P extends PromiseLike<T>> {
-    new(executor: (resolve: (value: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void): P;
+    new (
+        executor: (
+            resolve: (value: T | PromiseLike<T>) => void,
+            reject: (reason?: any) => void,
+        ) => void,
+    ): P;
 }
 /**
  * Highland: the high-level streams library
@@ -122,12 +131,22 @@ interface HighlandStatic {
     <R>(): Highland.Stream<R>;
     <R>(source: R[]): Highland.Stream<R>;
     <R>(
-        source: (push: (err: Error | null, x?: R | Highland.Nil) => void, next: () => void) => void,
+        source: (
+            push: (err: Error | null, x?: R | Highland.Nil) => void,
+            next: () => void,
+        ) => void,
     ): Highland.Stream<R>;
 
     <R>(source: Highland.Stream<R>): Highland.Stream<R>;
-    <R>(source: NodeJS.ReadableStream, onFinished?: Highland.OnFinished): Highland.Stream<R>;
-    <R>(source: string, eventEmitter: NodeJS.EventEmitter, mappingHint?: Highland.MappingHint): Highland.Stream<R>;
+    <R>(
+        source: NodeJS.ReadableStream,
+        onFinished?: Highland.OnFinished,
+    ): Highland.Stream<R>;
+    <R>(
+        source: string,
+        eventEmitter: NodeJS.EventEmitter,
+        mappingHint?: Highland.MappingHint,
+    ): Highland.Stream<R>;
 
     // moar (promise for everything?)
     <R>(source: PromiseLike<Highland.Stream<R>>): Highland.Stream<R>;
@@ -214,7 +233,10 @@ interface HighlandStatic {
      * @param {Array | Function | Number} [mappingHint] - how to pass the arguments to the callback
      * @api public
      */
-    wrapCallback(f: Function, mappingHint?: Highland.MappingHint): (...args: any[]) => Highland.Stream<any>;
+    wrapCallback(
+        f: Function,
+        mappingHint?: Highland.MappingHint,
+    ): (...args: any[]) => Highland.Stream<any>;
 
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     // OBJECTS
@@ -689,7 +711,9 @@ declare namespace Highland {
          * @param {Function} f - the function to pass all errors to
          * @api public
          */
-        errors(f: (err: Error, push: (err: Error | null, x?: R) => void) => void): Stream<R>;
+        errors(
+            f: (err: Error, push: (err: Error | null, x?: R) => void) => void,
+        ): Stream<R>;
 
         /**
          * Creates a new Stream including only the values which pass a truth test.
@@ -855,7 +879,9 @@ declare namespace Highland {
          * @param {Function} f - the predicate function
          * @api public
          */
-        pickBy<Prop extends keyof R>(f: (key: Prop, value: R[Prop]) => boolean): Stream<Partial<R>>;
+        pickBy<Prop extends keyof R>(
+            f: (key: Prop, value: R[Prop]) => boolean,
+        ): Stream<Partial<R>>;
 
         /**
          * Retrieves values associated with a given property from all elements in
@@ -1504,7 +1530,10 @@ declare namespace Highland {
          * @api public
          */
         pipe<U>(dest: Stream<U>): Stream<U>;
-        pipe<U extends NodeJS.WritableStream>(dest: U, options?: { end?: boolean | undefined }): U;
+        pipe<U extends NodeJS.WritableStream>(
+            dest: U,
+            options?: { end?: boolean | undefined },
+        ): U;
 
         /**
          * Consumes a single item from the Stream. Unlike consume, this function will
@@ -1617,7 +1646,10 @@ declare namespace Highland {
         continueOnError?: boolean | undefined;
     }
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    type OnFinished = (r: NodeJS.ReadableStream, cb: (...args: any[]) => void) => void | Function | CleanupObject;
+    type OnFinished = (
+        r: NodeJS.ReadableStream,
+        cb: (...args: any[]) => void,
+    ) => void | Function | CleanupObject;
 }
 
 declare var highland: HighlandStatic;

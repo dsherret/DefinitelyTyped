@@ -25,7 +25,11 @@ declare namespace jsrsasign.KJUR.asn1.ocsp {
          * // generate OCSP request using sha1 algorithnm by default.
          * hReq = KJUR.asn1.ocsp.OCSPUtil.getRequestHex("-----BEGIN...", "-----BEGIN...");
          */
-        function getRequestHex(issuerCert: string, subjectCert: string, alg: string): string;
+        function getRequestHex(
+            issuerCert: string,
+            subjectCert: string,
+            alg: string,
+        ): string;
 
         /**
          * parse OCSPResponse

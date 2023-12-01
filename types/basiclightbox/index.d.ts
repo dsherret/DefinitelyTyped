@@ -51,7 +51,10 @@ export interface BasicLightBoxOptions {
  * @param content Content of the lightbox.
  * @param options An object of options.
  */
-export function create(content: string | Element, options?: BasicLightBoxOptions): BasicLightBox;
+export function create(
+    content: string | Element,
+    options?: BasicLightBoxOptions,
+): BasicLightBox;
 
 /**
  * Returns `true` when a lightbox is visible. Also returns true when a lightbox is currently in the process of showing/hiding and not fully visible/hidden, yet.

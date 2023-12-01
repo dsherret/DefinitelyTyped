@@ -51,7 +51,11 @@ declare module "flashpoint-launcher" {
      * @param outDir Directory to output into
      * @param onProgress Function called whenever a new file is extracted
      */
-    function unzipFile(filePath: string, outDir: string, opts: ZipExtractOptions): Promise<void>;
+    function unzipFile(
+        filePath: string,
+        outDir: string,
+        opts: ZipExtractOptions,
+    ): Promise<void>;
 
     /**
      * Gets an extension configuration value given its key
@@ -86,7 +90,10 @@ declare module "flashpoint-launcher" {
          * @param callback Function to run when called
          * @returns Disposable to register to context.subscriptions
          */
-        function registerCommand(command: string, callback: (...args: any[]) => any): Disposable;
+        function registerCommand(
+            command: string,
+            callback: (...args: any[]) => any,
+        ): Disposable;
     }
 
     /** Collection of Game related API functions */
@@ -97,13 +104,19 @@ declare module "flashpoint-launcher" {
          * @param playlistId ID of the Playlist
          * @param join Whether to include Playlist Games in the result
          */
-        function findPlaylist(playlistId: string, join?: boolean): Promise<Playlist | undefined>;
+        function findPlaylist(
+            playlistId: string,
+            join?: boolean,
+        ): Promise<Playlist | undefined>;
         /**
          * Finds a playlist given its name
          * @param playlistName Name of the Playlist
          * @param join Whether to include Playlist Games in the result
          */
-        function findPlaylistByName(playlistName: string, join?: boolean): Promise<Playlist | undefined>;
+        function findPlaylistByName(
+            playlistName: string,
+            join?: boolean,
+        ): Promise<Playlist | undefined>;
         /** Find all Playlists in the database (Playlist Games not returned) */
         function findPlaylists(showExtreme: boolean): Promise<Playlist[]>;
         /**
@@ -116,7 +129,9 @@ declare module "flashpoint-launcher" {
          * @param playlist Playlist ID to remove
          * @returns Playlist that was removed
          */
-        function removePlaylist(playlistId: string): Promise<Playlist | undefined>;
+        function removePlaylist(
+            playlistId: string,
+        ): Promise<Playlist | undefined>;
 
         // Playlist Game
         /**
@@ -124,29 +139,42 @@ declare module "flashpoint-launcher" {
          * @param playlistId Playlist to search
          * @param gameId Game to find
          */
-        function findPlaylistGame(playlistId: string, gameId: string): Promise<PlaylistGame | undefined>;
+        function findPlaylistGame(
+            playlistId: string,
+            gameId: string,
+        ): Promise<PlaylistGame | undefined>;
         /**
          * Removes a Playlist Game entry from a Playlist
          * @param playlistId Playlist to search
          * @param gameId Game to remove
          */
-        function removePlaylistGame(playlistId: string, gameId: string): Promise<PlaylistGame | undefined>;
+        function removePlaylistGame(
+            playlistId: string,
+            gameId: string,
+        ): Promise<PlaylistGame | undefined>;
         /**
          * Update / Create a Playlist Game entry
          * @param playlistGame Playlist Game entry to save
          */
-        function updatePlaylistGame(playlistGame: PlaylistGame): Promise<PlaylistGame>;
+        function updatePlaylistGame(
+            playlistGame: PlaylistGame,
+        ): Promise<PlaylistGame>;
         /**
          * Update / Create many Playlist Game entries in a transaction
          * @param playlistGames Playlist Game entries to save
          */
-        function updatePlaylistGames(playlistGames: PlaylistGame[]): Promise<void>;
+        function updatePlaylistGames(
+            playlistGames: PlaylistGame[],
+        ): Promise<void>;
         /**
          * Adds a Game to a Playlist
          * @param playlistId Playlist to add the Game to
          * @param gameId ID of the Game to add
          */
-        function addPlaylistGame(playlistId: string, gameId: string): Promise<void>;
+        function addPlaylistGame(
+            playlistId: string,
+            gameId: string,
+        ): Promise<void>;
 
         // Games
         /** Returns the total number of games in the database */
@@ -161,7 +189,10 @@ declare module "flashpoint-launcher" {
          * @param opts Filter options
          * @param shallow Whether to return ViewGame or Game objects
          */
-        function findGames<T extends boolean>(opts: FindGamesOpts, shallow: T): Promise<Array<ResponseGameRange<T>>>;
+        function findGames<T extends boolean>(
+            opts: FindGamesOpts,
+            shallow: T,
+        ): Promise<Array<ResponseGameRange<T>>>;
         /**
          * Finds all Games using a Tag
          * @param tag Tag to filter for
@@ -181,7 +212,9 @@ declare module "flashpoint-launcher" {
          * Removes a Game and all its AddApps
          * @param gameId ID of Game to remove
          */
-        function removeGameAndAddApps(gameId: string): Promise<Game | undefined>;
+        function removeGameAndAddApps(
+            gameId: string,
+        ): Promise<Game | undefined>;
 
         // Misc
         /**
@@ -194,7 +227,10 @@ declare module "flashpoint-launcher" {
          * @param jsonData Raw JSON data of the Playlist file
          * @param library Library to use instead of Playlist defined library
          */
-        function createPlaylistFromJson(jsonData: any, library?: string): Playlist;
+        function createPlaylistFromJson(
+            jsonData: any,
+            library?: string,
+        ): Playlist;
         /**
          * Returns whether a game is extreme based on its tags.
          * @param game Game to check
@@ -217,8 +253,14 @@ declare module "flashpoint-launcher" {
         const onDidUpdateGame: Event<{ oldGame: Game; newGame: Game }>;
         const onDidRemoveGame: Event<Game>;
 
-        const onDidUpdatePlaylist: Event<{ oldPlaylist: Playlist; newPlaylist: Playlist }>;
-        const onDidUpdatePlaylistGame: Event<{ oldGame: PlaylistGame; newGame: PlaylistGame }>;
+        const onDidUpdatePlaylist: Event<{
+            oldPlaylist: Playlist;
+            newPlaylist: Playlist;
+        }>;
+        const onDidUpdatePlaylistGame: Event<{
+            oldGame: PlaylistGame;
+            newGame: PlaylistGame;
+        }>;
         const onDidRemovePlaylistGame: Event<PlaylistGame>;
 
         const onWillImportGame: Event<CurationImportState>;
@@ -228,9 +270,14 @@ declare module "flashpoint-launcher" {
     namespace gameData {
         function findOne(id: number): Promise<GameData | undefined>;
         function findGameData(gameId: string): Promise<GameData[]>;
-        function findSourceDataForHashes(hashes: string[]): Promise<SourceData[]>;
+        function findSourceDataForHashes(
+            hashes: string[],
+        ): Promise<SourceData[]>;
         function save(gameData: GameData): Promise<GameData>;
-        function importGameData(gameId: string, filePath: string): Promise<GameData>;
+        function importGameData(
+            gameId: string,
+            filePath: string,
+        ): Promise<GameData>;
         function downloadGameData(gameDataId: number): Promise<void>;
         const onDidImportGameData: Event<GameData>;
     }
@@ -263,7 +310,11 @@ declare module "flashpoint-launcher" {
          * @param categoryName Name of the category to use, Default if none given
          * @param aliases List of extra aliases to register
          */
-        function createTag(name: string, categoryName?: string, aliases?: string[]): Promise<Tag | undefined>;
+        function createTag(
+            name: string,
+            categoryName?: string,
+            aliases?: string[],
+        ): Promise<Tag | undefined>;
         /**
          * Updates a Tag
          * @param tag Tag data to save
@@ -286,7 +337,9 @@ declare module "flashpoint-launcher" {
          * Find a Tag Category by it's ID. (Useful when a Tag doesn't populate it)
          * @param categoryId ID of the Tag Category
          */
-        function getTagCategoryById(categoryId: number): Promise<TagCategory | undefined>;
+        function getTagCategoryById(
+            categoryId: number,
+        ): Promise<TagCategory | undefined>;
         /**
          * Find all Tag Categories
          */
@@ -296,12 +349,17 @@ declare module "flashpoint-launcher" {
          * @param name Name of the Tag Category
          * @param color Color to give the Tag Category
          */
-        function createTagCategory(name: string, color: string): Promise<TagCategory | undefined>;
+        function createTagCategory(
+            name: string,
+            color: string,
+        ): Promise<TagCategory | undefined>;
         /**
          * Update a Tag Category
          * @param tagCategory Tag Category data to save
          */
-        function saveTagCategory(tagCategory: TagCategory): Promise<TagCategory>;
+        function saveTagCategory(
+            tagCategory: TagCategory,
+        ): Promise<TagCategory>;
         /**
          * Removes a Tag Category. All owned Tags are moved to the first available Tag Category.
          * @param tagCategoryId ID of the Tag Category to remove
@@ -330,7 +388,10 @@ declare module "flashpoint-launcher" {
          * @param key Element to update
          * @param val Value to update element with
          */
-        function setStatus<T extends keyof StatusState>(key: T, val: StatusState[T]): void;
+        function setStatus<T extends keyof StatusState>(
+            key: T,
+            val: StatusState[T],
+        ): void;
         /**
          * Gets the status in any Status State
          * @param key Element to view
@@ -347,7 +408,12 @@ declare module "flashpoint-launcher" {
          * @param basePath Override for directory to start in (info is relative to this), Extension path if none given
          * @returns A managed process. Can be passed to removeService.
          */
-        function runService(name: string, info: ProcessInfo, opts: ProcessOpts, basePath?: string): ManagedChildProcess;
+        function runService(
+            name: string,
+            info: ProcessInfo,
+            opts: ProcessOpts,
+            basePath?: string,
+        ): ManagedChildProcess;
         /**
          * Creates a managed process given info, will die when disposed. (Does not start it)
          * @param name Name of the process
@@ -384,19 +450,25 @@ declare module "flashpoint-launcher" {
          * @param options Message box options
          * @returns Button index pressed (0 or cancelId if exited)
          */
-        function showMessageBox(options: ShowMessageBoxOptions): Promise<number>;
+        function showMessageBox(
+            options: ShowMessageBoxOptions,
+        ): Promise<number>;
         /**
          * Opens a save dialog on the client. They can select a file to save to.
          * @param options Save dialog options
          * @returns Path to file chosen, if any
          */
-        function showSaveDialog(options: ShowSaveDialogOptions): Promise<string | undefined>;
+        function showSaveDialog(
+            options: ShowSaveDialogOptions,
+        ): Promise<string | undefined>;
         /**
          * Opens an open dialog on the client. They can select a file for you to open.
          * @param options Open dialog options
          * @returns Path to file(s) chosen, if any
          */
-        function showOpenDialog(options: ShowOpenDialogOptions): Promise<string[] | undefined>;
+        function showOpenDialog(
+            options: ShowOpenDialogOptions,
+        ): Promise<string[] | undefined>;
     }
 
     // Events
@@ -438,16 +510,16 @@ declare module "flashpoint-launcher" {
         filters: FileFilter[];
         properties?:
             | Array<
-                | "openFile"
-                | "openDirectory"
-                | "multiSelections"
-                | "showHiddenFiles"
-                | "createDirectory"
-                | "promptToCreate"
-                | "noResolveAliases"
-                | "treatPackageAsDirectory"
-                | "dontAddToRecent"
-            >
+                  | "openFile"
+                  | "openDirectory"
+                  | "multiSelections"
+                  | "showHiddenFiles"
+                  | "createDirectory"
+                  | "promptToCreate"
+                  | "noResolveAliases"
+                  | "treatPackageAsDirectory"
+                  | "dontAddToRecent"
+              >
             | undefined;
         message?: string | undefined;
     };
@@ -958,7 +1030,10 @@ declare module "flashpoint-launcher" {
         devConsole: string;
     };
 
-    class DisposableChildProcess extends ManagedChildProcess implements Disposable {
+    class DisposableChildProcess
+        extends ManagedChildProcess
+        implements Disposable
+    {
         toDispose: Disposable[];
         isDisposed: boolean;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -981,9 +1056,16 @@ declare module "flashpoint-launcher" {
         /** Fires whenever the status of a process changes. */
         on(event: "change", listener: (newState: ProcessState) => void): this;
         /** Fires whenever the process exits */
-        on(event: "exit", listener: (code: number | null, signal: string | null) => void): this;
+        on(
+            event: "exit",
+            listener: (code: number | null, signal: string | null) => void,
+        ): this;
         emit(event: "change", newState: ProcessState): boolean;
-        emit(event: "exit", code: number | null, signal: string | null): boolean;
+        emit(
+            event: "exit",
+            code: number | null,
+            signal: string | null,
+        ): boolean;
     }
 
     class ManagedChildProcess {
@@ -994,7 +1076,13 @@ declare module "flashpoint-launcher" {
         /** Display name of the service. */
         readonly name: string;
 
-        constructor(id: string, name: string, cwd: string, opts: ProcessOpts, info: ProcessInfo);
+        constructor(
+            id: string,
+            name: string,
+            cwd: string,
+            opts: ProcessOpts,
+            info: ProcessInfo,
+        );
 
         /** Get the process ID (or -1 if the process is not running). */
         getPid(): number;
@@ -1128,7 +1216,11 @@ declare module "flashpoint-launcher" {
          * @param disposables An array to which a disposable will be added.
          * @return A disposable which unsubscribes the event listener.
          */
-        (listener: (e: T) => any, thisArgs?: any, disposables?: Disposable): Disposable;
+        (
+            listener: (e: T) => any,
+            thisArgs?: any,
+            disposables?: Disposable,
+        ): Disposable;
     }
 
     /** Replacement of "object" type. Note: I'm not sure how effective it is though //obelisk */

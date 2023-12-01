@@ -8,7 +8,9 @@ import uri = require("lil-uri");
 // Parser
 //
 
-const url = uri("http://user:pass@example.com:8080/bar/foo.xml?foo=bar&hello=world&#hash=1");
+const url = uri(
+    "http://user:pass@example.com:8080/bar/foo.xml?foo=bar&hello=world&#hash=1",
+);
 
 // $ExpectType string
 url.protocol(); // -> http

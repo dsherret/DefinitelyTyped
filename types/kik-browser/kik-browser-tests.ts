@@ -6,7 +6,7 @@ if (kik.send) {
     // can send messages
 }
 
-kik.getUser(function(user) {
+kik.getUser(function (user) {
     if (!user) {
         // user denied access to their information
     } else {
@@ -23,11 +23,11 @@ if (kik.hasPermission()) {
     // your webpage has permission
 }
 
-kik.getAnonymousUser(function(token) {
+kik.getAnonymousUser(function (token) {
     typeof token; // "string"
 });
 
-kik.sign("my data", function(signedData, username, host) {
+kik.sign("my data", function (signedData, username, host) {
     if (!signedData) {
         // failed to sign
         // perhaps user denied permissions
@@ -41,7 +41,7 @@ kik.sign("my data", function(signedData, username, host) {
     }
 });
 
-kik.anonymousSign("my data", function(signedData, anonToken, host) {
+kik.anonymousSign("my data", function (signedData, anonToken, host) {
     if (!signedData) {
         // failed to sign
     } else {
@@ -78,11 +78,11 @@ kik.metrics.enableGoogleAnalytics("id", "mydomain.com");
 kik.metrics.enableGoogleAnalytics();
 kik.showProfile("kikteam");
 
-kik.pickUsers(function(users) {
+kik.pickUsers(function (users) {
     if (!users) {
         // action was cancelled by user
     } else {
-        users.forEach(function(user) {
+        users.forEach(function (user) {
             typeof user.username; // "string"
             typeof user.fullName; // "string"
             typeof user.firstName; // "string"
@@ -93,29 +93,38 @@ kik.pickUsers(function(users) {
     }
 });
 
-kik.pickUsers({
-    minResults: 2, // number >= 0
-    maxResults: 4, // number >  0
-}, function(users) {
-    // do something with data
-});
+kik.pickUsers(
+    {
+        minResults: 2, // number >= 0
+        maxResults: 4, // number >  0
+    },
+    function (users) {
+        // do something with data
+    },
+);
 
-kik.pickUsers({
-    preselected: [
-        { username: "foo" /*, etc */ },
-        // any user object obtained from previous call to pickUsers
-    ],
-}, function(users) {
-    // do something with data
-});
+kik.pickUsers(
+    {
+        preselected: [
+            { username: "foo" /*, etc */ },
+            // any user object obtained from previous call to pickUsers
+        ],
+    },
+    function (users) {
+        // do something with data
+    },
+);
 
-kik.pickUsers({
-    filterSelf: false,
-}, function(users) {
-    // do something with data
-});
+kik.pickUsers(
+    {
+        filterSelf: false,
+    },
+    function (users) {
+        // do something with data
+    },
+);
 
-kik.photo.get(function(photos) {
+kik.photo.get(function (photos) {
     if (!photos) {
         // action cancelled by user
     } else {
@@ -123,79 +132,85 @@ kik.photo.get(function(photos) {
     }
 });
 
-kik.photo.get({
-    quality: 0.7, // number between 0-1
-    minResults: 2, // number between 1-25
-    maxResults: 25, // number between 1-25
-    maxHeight: 1280, // number in pixels between 0-1280
-    maxWidth: 1280, // number in pixels between 0-1280
-}, function(photos) {
-    // do something with the photos
-});
+kik.photo.get(
+    {
+        quality: 0.7, // number between 0-1
+        minResults: 2, // number between 1-25
+        maxResults: 25, // number between 1-25
+        maxHeight: 1280, // number in pixels between 0-1280
+        maxWidth: 1280, // number in pixels between 0-1280
+    },
+    function (photos) {
+        // do something with the photos
+    },
+);
 
 kik.photo.getFromCamera({
-    onSelect: function(numPhotos) {
+    onSelect: function (numPhotos) {
         // called immediately after the user has selected photos
         // "numPhotos" is the number of photos selected by the user
         // that many "onPhoto" events will be fired after this
         // "onComplete" will fire after all "onPhoto" events are done
     },
-    onPhoto: function(photo, index) {
+    onPhoto: function (photo, index) {
         // "photo" is a data URL representing a single image
         // "photo" may be null if there was an error in processing
         // this will be called once for each image when it is ready
         // "index" is an integer relating to the order of selection
         // event may not come in order so use index if you care
     },
-    onComplete: function(photos) {
+    onComplete: function (photos) {
         // "photos" is list of all photos from all photo events
         // this event is identical to normal callback
     },
-    onCancel: function() {
+    onCancel: function () {
         // the action was cancelled by the user
         // no other events will be called
     },
 });
 
-kik.photo.get({
-    quality: 0.7, // number between 0-1
-    minResults: 2, // number between 1-25
-    maxResults: 25, // number between 1-25
-    maxHeight: 1280, // number in pixels between 0-1280
-    maxWidth: 1280, // number in pixels between 0-1280
-}, function(photos) {
-    // do something with the photos
-});
+kik.photo.get(
+    {
+        quality: 0.7, // number between 0-1
+        minResults: 2, // number between 1-25
+        maxResults: 25, // number between 1-25
+        maxHeight: 1280, // number in pixels between 0-1280
+        maxWidth: 1280, // number in pixels between 0-1280
+    },
+    function (photos) {
+        // do something with the photos
+    },
+);
 
 kik.photo.getFromCamera({
-    onSelect: function(numPhotos) {
+    onSelect: function (numPhotos) {
         // called immediately after the user has selected photos
         // 'numPhotos' is the number of photos selected by the user
         // that many 'onPhoto' events will be fired after this
         // 'onComplete' will fire after all 'onPhoto' events are done
     },
-    onPhoto: function(photo, index) {
+    onPhoto: function (photo, index) {
         // 'photo' is a data URL representing a single image
         // 'photo' may be null if there was an error in processing
         // this will be called once for each image when it is ready
         // 'index' is an integer relating to the order of selection
         // event may not come in order so use index if you care
     },
-    onComplete: function(photos) {
+    onComplete: function (photos) {
         // 'photos' is list of all photos from all photo events
         // this event is identical to normal callback
     },
-    onCancel: function() {
+    onCancel: function () {
         // the action was cancelled by the user
         // no other events will be called
     },
 });
 
-kik.photo.getFromGallery(function(photos) {
+kik.photo.getFromGallery(function (photos) {
     // do something with the photos
 });
 
-kik.photo.saveToGallery("url", function(status) {
+kik.photo.saveToGallery("url", function (status) {
     if (status) {
         // save succeeded
     } else {
@@ -206,7 +221,7 @@ kik.photo.saveToGallery("url", function(status) {
 kik.picker(
     "http://othersite.com/",
     { arbitrary: "request data" },
-    function(response) {
+    function (response) {
         // do something with the picked data!
     },
 );
@@ -218,7 +233,7 @@ if (kik.picker.reply) {
     kik.picker.reply({ arbitrary: "response data" });
 }
 
-kik.ready(function() {
+kik.ready(function () {
     // expensive task that should not block loading
 });
 
@@ -242,7 +257,7 @@ kik.open("http://mysite.com/#response-data");
 
 kik.linkData; // "response-data"
 
-kik.on("linkData", function() {
+kik.on("linkData", function () {
     kik.linkData; // "response-data"
 });
 
@@ -250,10 +265,10 @@ if (kik.browser.background) {
     // the webpage is in the background
 }
 
-kik.browser.on("background", function() {
+kik.browser.on("background", function () {
     // the webpage is now in the background
 });
-kik.browser.on("foreground", function() {
+kik.browser.on("foreground", function () {
     // the webpage has returned to the foreground
 });
 

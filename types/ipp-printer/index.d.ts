@@ -15,7 +15,10 @@ declare class Printer {
     uri: string;
 
     on(event: "job", handler: (job: Printer.Job) => void): Printer;
-    on(event: "operation", handler: (operation: Printer.Operation) => void): Printer;
+    on(
+        event: "operation",
+        handler: (operation: Printer.Operation) => void,
+    ): Printer;
 }
 
 declare namespace Printer {

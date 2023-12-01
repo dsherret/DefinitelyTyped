@@ -73,13 +73,14 @@ describe("FakeRequest", () => {
     beforeEach(() => {
         this.requestTracker = { track: jasmine.createSpy("trackRequest") };
         this.stubTracker = { findStub() {} };
-        const parserInstance = this.parserInstance = jasmine.createSpy("parse");
+        const parserInstance = (this.parserInstance =
+            jasmine.createSpy("parse"));
         this.paramParser = { findParser: () => ({ parse: parserInstance }) };
-        const eventBus = this.fakeEventBus = {
+        const eventBus = (this.fakeEventBus = {
             addEventListener: jasmine.createSpy("addEventListener"),
             trigger: jasmine.createSpy("trigger"),
             removeEventListener: jasmine.createSpy("removeEventListener"),
-        };
+        });
         this.eventBusFactory = () => {
             return eventBus;
         };
@@ -90,7 +91,9 @@ describe("FakeRequest", () => {
             DOMParser: window["DOMParser"],
             ActiveXObject: window["ActiveXObject"],
         };
-        this.FakeRequest = getJasmineRequireObj().AjaxFakeRequest(this.eventBusFactory)(
+        this.FakeRequest = getJasmineRequireObj().AjaxFakeRequest(
+            this.eventBusFactory,
+        )(
             this.fakeGlobal,
             this.requestTracker,
             this.stubTracker,
@@ -106,12 +109,9 @@ describe("FakeRequest", () => {
 
     it("skips XMLHttpRequest attributes that IE does not want copied", () => {
         // use real window here so it will correctly go red on IE if it breaks
-        const FakeRequest = getJasmineRequireObj().AjaxFakeRequest(this.eventBusFactory)(
-            window,
-            this.requestTracker,
-            this.stubTracker,
-            this.paramParser,
-        );
+        const FakeRequest = getJasmineRequireObj().AjaxFakeRequest(
+            this.eventBusFactory,
+        )(window, this.requestTracker, this.stubTracker, this.paramParser);
         const request = new FakeRequest();
 
         expect(request.responseBody).toBeUndefined();
@@ -147,7 +147,9 @@ describe("FakeRequest", () => {
 
         request.overrideMimeType("application/text; charset: utf-8");
 
-        expect(request.overriddenMimeType).toBe("application/text; charset: utf-8");
+        expect(request.overriddenMimeType).toBe(
+            "application/text; charset: utf-8",
+        );
     });
 
     it("saves request headers", () => {
@@ -193,7 +195,9 @@ describe("FakeRequest", () => {
             this.request.open();
 
             expect(this.request.readyState).toBe(1);
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange");
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+            );
         });
 
         it("has a ready state of 0 (uninitialized) when aborted", () => {
@@ -203,7 +207,9 @@ describe("FakeRequest", () => {
             this.request.abort();
 
             expect(this.request.readyState).toBe(0);
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange");
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+            );
         });
 
         it("has a ready state of 1 (sent) when sent", () => {
@@ -214,7 +220,9 @@ describe("FakeRequest", () => {
 
             expect(this.request.readyState).toBe(1);
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("loadstart");
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("readystatechange");
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "readystatechange",
+            );
         });
 
         it("has a ready state of 4 (loaded) when timed out", () => {
@@ -227,7 +235,10 @@ describe("FakeRequest", () => {
             jasmine.clock().uninstall();
 
             expect(this.request.readyState).toBe(4);
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange", "timeout");
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+                "timeout",
+            );
         });
 
         it("has a ready state of 4 (loaded) when network erroring", () => {
@@ -238,7 +249,9 @@ describe("FakeRequest", () => {
             this.request.responseError();
 
             expect(this.request.readyState).toBe(4);
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange");
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+            );
         });
 
         it("has a ready state of 4 (loaded) when responding", () => {
@@ -249,7 +262,9 @@ describe("FakeRequest", () => {
             this.request.respondWith({});
 
             expect(this.request.readyState).toBe(4);
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange");
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+            );
         });
 
         it("has a ready state of 2, then 4 (loaded) when responding", () => {
@@ -259,11 +274,9 @@ describe("FakeRequest", () => {
 
             const request = this.request;
             const events = [];
-            const headers = [
-                { name: "X-Header", value: "foo" },
-            ];
+            const headers = [{ name: "X-Header", value: "foo" }];
 
-            this.fakeEventBus.trigger.and.callFake(event => {
+            this.fakeEventBus.trigger.and.callFake((event) => {
                 if (event === "readystatechange") {
                     events.push({
                         readyState: request.readyState,
@@ -281,11 +294,23 @@ describe("FakeRequest", () => {
             });
 
             expect(this.request.readyState).toBe(4);
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange");
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+            );
             expect(events.length).toBe(2);
             expect(events).toEqual([
-                { readyState: 2, status: 200, statusText: "OK", responseHeaders: headers },
-                { readyState: 4, status: 200, statusText: "OK", responseHeaders: headers },
+                {
+                    readyState: 2,
+                    status: 200,
+                    statusText: "OK",
+                    responseHeaders: headers,
+                },
+                {
+                    readyState: 4,
+                    status: 200,
+                    statusText: "OK",
+                    responseHeaders: headers,
+                },
             ]);
         });
 
@@ -326,14 +351,38 @@ describe("FakeRequest", () => {
     it("registers on-style callback with the event bus", () => {
         this.request = new this.FakeRequest();
 
-        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith("readystatechange", jasmine.any(Function));
-        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith("loadstart", jasmine.any(Function));
-        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith("progress", jasmine.any(Function));
-        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith("abort", jasmine.any(Function));
-        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith("error", jasmine.any(Function));
-        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith("load", jasmine.any(Function));
-        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith("timeout", jasmine.any(Function));
-        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith("loadend", jasmine.any(Function));
+        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith(
+            "readystatechange",
+            jasmine.any(Function),
+        );
+        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith(
+            "loadstart",
+            jasmine.any(Function),
+        );
+        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith(
+            "progress",
+            jasmine.any(Function),
+        );
+        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith(
+            "abort",
+            jasmine.any(Function),
+        );
+        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith(
+            "error",
+            jasmine.any(Function),
+        );
+        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith(
+            "load",
+            jasmine.any(Function),
+        );
+        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith(
+            "timeout",
+            jasmine.any(Function),
+        );
+        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith(
+            "loadend",
+            jasmine.any(Function),
+        );
 
         this.request.onreadystatechange = jasmine.createSpy("readystatechange");
         this.request.onloadstart = jasmine.createSpy("loadstart");
@@ -356,7 +405,10 @@ describe("FakeRequest", () => {
 
         this.request.addEventListener("foo", "bar");
 
-        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith("foo", "bar");
+        expect(this.fakeEventBus.addEventListener).toHaveBeenCalledWith(
+            "foo",
+            "bar",
+        );
     });
 
     it("delegates removeEventListener to the eventBus", () => {
@@ -364,7 +416,10 @@ describe("FakeRequest", () => {
 
         this.request.removeEventListener("foo", "bar");
 
-        expect(this.fakeEventBus.removeEventListener).toHaveBeenCalledWith("foo", "bar");
+        expect(this.fakeEventBus.removeEventListener).toHaveBeenCalledWith(
+            "foo",
+            "bar",
+        );
     });
 
     describe("triggering progress events", () => {
@@ -375,7 +430,9 @@ describe("FakeRequest", () => {
         it("should not trigger any events to start", () => {
             this.request.open();
 
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange");
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+            );
         });
 
         it("should trigger loadstart when sent", () => {
@@ -386,13 +443,21 @@ describe("FakeRequest", () => {
             this.request.send();
 
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("loadstart");
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("readystatechange");
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("progress");
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "readystatechange",
+            );
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "progress",
+            );
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("abort");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("error");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("load");
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("timeout");
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("loadend");
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "timeout",
+            );
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "loadend",
+            );
         });
 
         it("should trigger abort, progress, loadend when aborted", () => {
@@ -403,13 +468,19 @@ describe("FakeRequest", () => {
 
             this.request.abort();
 
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange");
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("loadstart");
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+            );
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "loadstart",
+            );
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("progress");
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("abort");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("error");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("load");
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("timeout");
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "timeout",
+            );
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("loadend");
         });
 
@@ -421,13 +492,19 @@ describe("FakeRequest", () => {
 
             this.request.responseError();
 
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("loadstart");
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange");
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "loadstart",
+            );
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+            );
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("progress");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("abort");
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("error");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("load");
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("timeout");
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "timeout",
+            );
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("loadend");
         });
 
@@ -441,8 +518,13 @@ describe("FakeRequest", () => {
             this.request.responseTimeout();
             jasmine.clock().uninstall();
 
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("loadstart");
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange", "timeout");
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "loadstart",
+            );
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+                "timeout",
+            );
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("progress");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("abort");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("error");
@@ -459,13 +541,19 @@ describe("FakeRequest", () => {
 
             this.request.respondWith({ status: 200 });
 
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("loadstart");
-            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("readystatechange");
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "loadstart",
+            );
+            expect(this.fakeEventBus.trigger).toHaveBeenCalledWith(
+                "readystatechange",
+            );
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("progress");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("abort");
             expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("error");
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("load");
-            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith("timeout");
+            expect(this.fakeEventBus.trigger).not.toHaveBeenCalledWith(
+                "timeout",
+            );
             expect(this.fakeEventBus.trigger).toHaveBeenCalledWith("loadend");
         });
     });
@@ -622,8 +710,14 @@ describe("FakeRequest", () => {
         request2.open();
         request2.send();
 
-        request1.respondWith({ status: 200, responseHeaders: { "X-Foo": "bar" } });
-        request2.respondWith({ status: 200, responseHeaders: { "X-Baz": "quux" } });
+        request1.respondWith({
+            status: 200,
+            responseHeaders: { "X-Foo": "bar" },
+        });
+        request2.respondWith({
+            status: 200,
+            responseHeaders: { "X-Baz": "quux" },
+        });
 
         expect(request1.getAllResponseHeaders()).toBe("X-Foo: bar\r\n");
         expect(request2.getAllResponseHeaders()).toBe("X-Baz: quux\r\n");
@@ -643,7 +737,9 @@ describe("FakeRequest", () => {
             ],
         });
 
-        expect(request.getAllResponseHeaders()).toBe("X-Header-1: foo\r\nX-Header-2: bar\r\nX-Header-1: baz\r\n");
+        expect(request.getAllResponseHeaders()).toBe(
+            "X-Header-1: foo\r\nX-Header-2: bar\r\nX-Header-1: baz\r\n",
+        );
     });
 
     it("sets the content-type header to the specified contentType when no other headers are supplied", () => {
@@ -654,7 +750,9 @@ describe("FakeRequest", () => {
         request.respondWith({ status: 200, contentType: "text/plain" });
 
         expect(request.getResponseHeader("content-type")).toBe("text/plain");
-        expect(request.getAllResponseHeaders()).toBe("Content-Type: text/plain\r\n");
+        expect(request.getAllResponseHeaders()).toBe(
+            "Content-Type: text/plain\r\n",
+        );
     });
 
     it("sets a default content-type header if no contentType and headers are supplied", () => {
@@ -664,8 +762,12 @@ describe("FakeRequest", () => {
 
         request.respondWith({ status: 200 });
 
-        expect(request.getResponseHeader("content-type")).toBe("application/json");
-        expect(request.getAllResponseHeaders()).toBe("Content-Type: application/json\r\n");
+        expect(request.getResponseHeader("content-type")).toBe(
+            "application/json",
+        );
+        expect(request.getAllResponseHeaders()).toBe(
+            "Content-Type: application/json\r\n",
+        );
     });
 
     it("has no responseXML by default", () => {
@@ -683,15 +785,25 @@ describe("FakeRequest", () => {
         request.open();
         request.send();
 
-        request.respondWith({ status: 200, contentType: "text/xml", responseText: "<dom><stuff/></dom>" });
+        request.respondWith({
+            status: 200,
+            contentType: "text/xml",
+            responseText: "<dom><stuff/></dom>",
+        });
 
         if (typeof window["Document"] !== "undefined") {
-            expect(request.responseXML instanceof window["Document"]).toBe(true);
+            expect(request.responseXML instanceof window["Document"]).toBe(
+                true,
+            );
             expect(request.response instanceof window["Document"]).toBe(true);
         } else {
             // IE 8
-            expect(request.responseXML instanceof window["ActiveXObject"]).toBe(true);
-            expect(request.response instanceof window["ActiveXObject"]).toBe(true);
+            expect(request.responseXML instanceof window["ActiveXObject"]).toBe(
+                true,
+            );
+            expect(request.response instanceof window["ActiveXObject"]).toBe(
+                true,
+            );
         }
     });
 
@@ -700,15 +812,25 @@ describe("FakeRequest", () => {
         request.open();
         request.send();
 
-        request.respondWith({ status: 200, contentType: "application/xml", responseText: "<dom><stuff/></dom>" });
+        request.respondWith({
+            status: 200,
+            contentType: "application/xml",
+            responseText: "<dom><stuff/></dom>",
+        });
 
         if (typeof window["Document"] !== "undefined") {
-            expect(request.responseXML instanceof window["Document"]).toBe(true);
+            expect(request.responseXML instanceof window["Document"]).toBe(
+                true,
+            );
             expect(request.response instanceof window["Document"]).toBe(true);
         } else {
             // IE 8
-            expect(request.responseXML instanceof window["ActiveXObject"]).toBe(true);
-            expect(request.response instanceof window["ActiveXObject"]).toBe(true);
+            expect(request.responseXML instanceof window["ActiveXObject"]).toBe(
+                true,
+            );
+            expect(request.response instanceof window["ActiveXObject"]).toBe(
+                true,
+            );
         }
     });
 
@@ -717,15 +839,25 @@ describe("FakeRequest", () => {
         request.open();
         request.send();
 
-        request.respondWith({ status: 200, contentType: "application/text+xml", responseText: "<dom><stuff/></dom>" });
+        request.respondWith({
+            status: 200,
+            contentType: "application/text+xml",
+            responseText: "<dom><stuff/></dom>",
+        });
 
         if (typeof window["Document"] !== "undefined") {
-            expect(request.responseXML instanceof window["Document"]).toBe(true);
+            expect(request.responseXML instanceof window["Document"]).toBe(
+                true,
+            );
             expect(request.response instanceof window["Document"]).toBe(true);
         } else {
             // IE 8
-            expect(request.responseXML instanceof window["ActiveXObject"]).toBe(true);
-            expect(request.response instanceof window["ActiveXObject"]).toBe(true);
+            expect(request.responseXML instanceof window["ActiveXObject"]).toBe(
+                true,
+            );
+            expect(request.response instanceof window["ActiveXObject"]).toBe(
+                true,
+            );
         }
     });
 
@@ -744,7 +876,11 @@ describe("FakeRequest", () => {
         request.open();
         request.send();
 
-        request.respondWith({ status: 200, responseText: "foo", responseType: "" });
+        request.respondWith({
+            status: 200,
+            responseText: "foo",
+            responseType: "",
+        });
 
         expect(request.response).toEqual("foo");
     });
@@ -754,7 +890,11 @@ describe("FakeRequest", () => {
         request.open();
         request.send();
 
-        request.respondWith({ status: 200, responseText: "foo", responseType: "text" });
+        request.respondWith({
+            status: 200,
+            responseText: "foo",
+            responseType: "text",
+        });
 
         expect(request.response).toEqual("foo");
     });
@@ -782,8 +922,9 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
         error = jasmine.createSpy("onFailure");
         complete = jasmine.createSpy("onComplete");
 
-        onreadystatechange = function() {
-            if (this.readyState === (this.DONE || 4)) { // IE 8 doesn't support DONE
+        onreadystatechange = function () {
+            if (this.readyState === (this.DONE || 4)) {
+                // IE 8 doesn't support DONE
                 if (this.status === 200) {
                     success(this.responseText, this.textStatus, this);
                 } else {
@@ -857,7 +998,9 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
                 });
 
                 it("should return the most recent request", () => {
-                    expect(mockAjax.requests.mostRecent()).toEqual(anotherRequest);
+                    expect(mockAjax.requests.mostRecent()).toEqual(
+                        anotherRequest,
+                    );
                 });
             });
 
@@ -939,7 +1082,7 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
                     status: 200,
                     statusText: "OK",
                     contentType: "application/json",
-                    responseText: "{\"foo\":\"bar\"}",
+                    responseText: '{"foo":"bar"}',
                     responseType: "json",
                 };
 
@@ -969,7 +1112,9 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
 
             it("should return a JavaScript object for XHR2 response", () => {
                 const responseText = sharedContext.responseText;
-                expect(success.calls.mostRecent().args[0]).toEqual(responseText);
+                expect(success.calls.mostRecent().args[0]).toEqual(
+                    responseText,
+                );
 
                 expect(response.responseText).toEqual(responseText);
                 expect(response.response).toEqual({ foo: "bar" });
@@ -991,7 +1136,7 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
                     status: 200,
                     statusText: "OK",
                     contentType: "application/json",
-                    responseText: "{\"foo\":\"bar\"}",
+                    responseText: '{"foo":"bar"}',
                     responseType: "json",
                 };
 
@@ -1028,7 +1173,7 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
                 const responseObject = {
                     status: 200,
                     statusText: "OK",
-                    responseText: "[\"foo\"]",
+                    responseText: '["foo"]',
                     responseHeaders: {
                         "X-Header1": "header 1 value",
                         "X-Header2": "header 2 value",
@@ -1040,9 +1185,15 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
             });
 
             it("getResponseHeader should return the each value", () => {
-                expect(response.getResponseHeader("X-Header1")).toBe("header 1 value");
-                expect(response.getResponseHeader("X-Header2")).toBe("header 2 value");
-                expect(response.getResponseHeader("X-Header3")).toBe("header 3 value");
+                expect(response.getResponseHeader("X-Header1")).toBe(
+                    "header 1 value",
+                );
+                expect(response.getResponseHeader("X-Header2")).toBe(
+                    "header 2 value",
+                );
+                expect(response.getResponseHeader("X-Header3")).toBe(
+                    "header 3 value",
+                );
             });
 
             it("getAllResponseHeaders should return all values", () => {
@@ -1067,7 +1218,7 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
                 const responseObject = {
                     status: 200,
                     statusText: "OK",
-                    responseText: "[\"foo\"]",
+                    responseText: '["foo"]',
                     responseHeaders: [
                         { name: "X-Header", value: "header value 1" },
                         { name: "X-Header", value: "header value 2" },
@@ -1078,7 +1229,9 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
             });
 
             it("getResponseHeader should return all values comma separated", () => {
-                expect(response.getResponseHeader("X-Header")).toBe("header value 1, header value 2");
+                expect(response.getResponseHeader("X-Header")).toBe(
+                    "header value 1, header value 2",
+                );
             });
 
             it("getAllResponseHeaders should return all values", () => {
@@ -1103,7 +1256,7 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
                 response = {
                     status: 200,
                     statusText: "OK",
-                    responseText: "{\"foo\": \"valid JSON, dammit.\"}",
+                    responseText: '{"foo": "valid JSON, dammit."}',
                     responseType: "json",
                 };
                 request.respondWith(response);
@@ -1143,7 +1296,7 @@ describe("Jasmine Mock Ajax (for toplevel)", () => {
                 response = {
                     status: 0,
                     statusText: "ABORT",
-                    responseText: "{\"foo\": \"whoops!\"}",
+                    responseText: '{"foo": "whoops!"}',
                     responseType: "json",
                 };
                 request.respondWith(response);
@@ -1272,13 +1425,16 @@ function sharedAjaxResponseBehaviorForZepto_Success(context) {
         });
 
         it("should have the expected content type", () => {
-            expect(xhr.getResponseHeader("Content-Type")).toEqual(context.contentType);
+            expect(xhr.getResponseHeader("Content-Type")).toEqual(
+                context.contentType,
+            );
         });
 
         it("should have the expected xhr2 response", () => {
-            const expected = context.response || context.responseType === "json"
-                ? JSON.parse(context.responseText)
-                : context.responseText;
+            const expected =
+                context.response || context.responseType === "json"
+                    ? JSON.parse(context.responseText)
+                    : context.responseText;
             expect(xhr.response).toEqual(expected);
         });
 
@@ -1304,13 +1460,16 @@ function sharedAjaxResponseBehaviorForZepto_Failure(context) {
         });
 
         it("should have the expected content type", () => {
-            expect(xhr.getResponseHeader("Content-Type")).toEqual(context.contentType);
+            expect(xhr.getResponseHeader("Content-Type")).toEqual(
+                context.contentType,
+            );
         });
 
         it("should have the expected xhr2 response", () => {
-            const expected = context.response || xhr.responseType === "json"
-                ? JSON.parse(xhr.responseText)
-                : xhr.responseText;
+            const expected =
+                context.response || xhr.responseType === "json"
+                    ? JSON.parse(xhr.responseText)
+                    : xhr.responseText;
             expect(xhr.response).toEqual(expected);
         });
 
@@ -1353,7 +1512,9 @@ describe("ParamParser", () => {
                 },
             },
         };
-        const parser = this.parser.findParser({ contentType: () => "application/json" });
+        const parser = this.parser.findParser({
+            contentType: () => "application/json",
+        });
         const parsed = parser.parse(JSON.stringify(data));
 
         expect(parsed).toEqual(data);
@@ -1369,7 +1530,9 @@ describe("ParamParser", () => {
                 },
             },
         };
-        const parser = this.parser.findParser({ contentType: () => "application/json; charset=utf-8" });
+        const parser = this.parser.findParser({
+            contentType: () => "application/json; charset=utf-8",
+        });
         const parsed = parser.parse(JSON.stringify(data));
 
         expect(parsed).toEqual(data);
@@ -1444,7 +1607,10 @@ describe("RequestStub", () => {
                     compare(actual): jasmine.CustomMatcherResult {
                         return {
                             message: "",
-                            pass: actual.matches.apply(actual, Array.prototype.slice.call(arguments, 1)),
+                            pass: actual.matches.apply(
+                                actual,
+                                Array.prototype.slice.call(arguments, 1),
+                            ),
                         };
                     },
                 };
@@ -1504,7 +1670,7 @@ describe("RequestStub", () => {
             status: 200,
             statusText: "OK",
             contentType: "application/json",
-            responseText: "{\"success\": true}",
+            responseText: '{"success": true}',
             responseURL: "http://example.com/foo",
             responseJSON: { success: true },
             responseHeaders: { "X-Example": "a value" },
@@ -1527,7 +1693,7 @@ describe("RequestStub", () => {
             xhr.respondWith({
                 status: 200,
                 contentType: "application/json",
-                responseText: "{\"success\": true}",
+                responseText: '{"success": true}',
                 responseHeaders: { "X-Example": "a value" },
             });
             xhr.responseTimeout();
@@ -1606,7 +1772,10 @@ describe("RequestTracker", () => {
         this.tracker.track({ url: "bar" });
         this.tracker.track({ url: "baz" });
 
-        expect(this.tracker.filter(/ba[rz]/)).toEqual([{ url: "bar" }, { url: "baz" }]);
+        expect(this.tracker.filter(/ba[rz]/)).toEqual([
+            { url: "bar" },
+            { url: "baz" },
+        ]);
     });
 
     it("allows retrieval of all requests that match based on a function", () => {
@@ -1614,7 +1783,7 @@ describe("RequestTracker", () => {
         this.tracker.track({ url: "bar" });
         this.tracker.track({ url: "baz" });
 
-        const func = request => request.url === "bar";
+        const func = (request) => request.url === "bar";
 
         expect(this.tracker.filter(func)).toEqual([{ url: "bar" }]);
     });
@@ -1708,12 +1877,13 @@ describe("EventBus", () => {
 describe("Webmock style mocking", () => {
     let successSpy, response, fakeGlobal, mockAjax; // tslint:disable-line one-variable-per-declaration
 
-    const sendRequest = function(fakeGlobal, url?, method?) {
+    const sendRequest = function (fakeGlobal, url?, method?) {
         url = url || "http://example.com/someApi";
         method = method || "GET";
         const xhr = new fakeGlobal.XMLHttpRequest();
-        xhr.onreadystatechange = args => {
-            if (this.readyState === (this.DONE || 4)) { // IE 8 doesn't support DONE
+        xhr.onreadystatechange = (args) => {
+            if (this.readyState === (this.DONE || 4)) {
+                // IE 8 doesn't support DONE
                 response = this;
                 successSpy();
             }
@@ -1725,11 +1895,15 @@ describe("Webmock style mocking", () => {
 
     beforeEach(() => {
         successSpy = jasmine.createSpy("success");
-        fakeGlobal = { XMLHttpRequest: jasmine.createSpy("realXMLHttpRequest") };
+        fakeGlobal = {
+            XMLHttpRequest: jasmine.createSpy("realXMLHttpRequest"),
+        };
         mockAjax = new MockAjax(fakeGlobal);
         mockAjax.install();
 
-        mockAjax.stubRequest("http://example.com/someApi").andReturn({ responseText: "hi!" });
+        mockAjax
+            .stubRequest("http://example.com/someApi")
+            .andReturn({ responseText: "hi!" });
     });
 
     it("allows a url to be setup as a stub", () => {
@@ -1745,7 +1919,9 @@ describe("Webmock style mocking", () => {
 
     it("should set the contentType", () => {
         sendRequest(fakeGlobal);
-        expect(response.getResponseHeader("Content-Type")).toEqual("application/json");
+        expect(response.getResponseHeader("Content-Type")).toEqual(
+            "application/json",
+        );
     });
 
     it("should set the responseText", () => {
@@ -1769,7 +1945,9 @@ describe("Webmock style mocking", () => {
 
     describe("with another stub for the same url", () => {
         beforeEach(() => {
-            mockAjax.stubRequest("http://example.com/someApi").andReturn({ responseText: "no", status: 403 });
+            mockAjax
+                .stubRequest("http://example.com/someApi")
+                .andReturn({ responseText: "no", status: 403 });
             sendRequest(fakeGlobal);
         });
 
@@ -1784,7 +1962,7 @@ describe("Webmock style mocking", () => {
 });
 
 describe("withMock", () => {
-    const sendRequest = fakeGlobal => {
+    const sendRequest = (fakeGlobal) => {
         const xhr = new fakeGlobal.XMLHttpRequest();
 
         xhr.open("GET", "http://example.com/someApi");
@@ -1792,8 +1970,14 @@ describe("withMock", () => {
     };
 
     it("installs the mock for passed in function, and uninstalls when complete", () => {
-        const xmlHttpRequest = jasmine.createSpyObj("XMLHttpRequest", ["open", "send"]);
-        const xmlHttpRequestCtor = spyOn(window as any, "XMLHttpRequest").and.returnValue(xmlHttpRequest);
+        const xmlHttpRequest = jasmine.createSpyObj("XMLHttpRequest", [
+            "open",
+            "send",
+        ]);
+        const xmlHttpRequestCtor = spyOn(
+            window as any,
+            "XMLHttpRequest",
+        ).and.returnValue(xmlHttpRequest);
         const fakeGlobal = { XMLHttpRequest: xmlHttpRequestCtor };
         const mockAjax = new MockAjax(fakeGlobal);
 
@@ -1807,8 +1991,14 @@ describe("withMock", () => {
     });
 
     it("properly uninstalls when the passed in function throws", () => {
-        const xmlHttpRequest = jasmine.createSpyObj("XMLHttpRequest", ["open", "send"]);
-        const xmlHttpRequestCtor = spyOn(window as any, "XMLHttpRequest").and.returnValue(xmlHttpRequest);
+        const xmlHttpRequest = jasmine.createSpyObj("XMLHttpRequest", [
+            "open",
+            "send",
+        ]);
+        const xmlHttpRequestCtor = spyOn(
+            window as any,
+            "XMLHttpRequest",
+        ).and.returnValue(xmlHttpRequest);
         const fakeGlobal = { XMLHttpRequest: xmlHttpRequestCtor };
         const mockAjax = new MockAjax(fakeGlobal);
 

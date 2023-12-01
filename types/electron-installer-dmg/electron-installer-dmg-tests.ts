@@ -25,7 +25,9 @@ function getContents(): createDMG.Content[] {
     ];
 }
 
-function getContentsWithOpts(opts: createDMG.ContentsOptions): createDMG.Content[] {
+function getContentsWithOpts(
+    opts: createDMG.ContentsOptions,
+): createDMG.Content[] {
     return [
         { x: 448, y: 344, type: "link", path: "/Applications" },
         { x: 192, y: 344, type: "file", path: opts.appPath },

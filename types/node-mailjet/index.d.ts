@@ -1,4 +1,8 @@
-export function connect(apiKey: string, apiSecret: string, options?: ConnectOptions): Email.Client;
+export function connect(
+    apiKey: string,
+    apiSecret: string,
+    options?: ConnectOptions,
+): Email.Client;
 
 export function connect(apiToken: string, options?: ConnectOptions): SMS.Client;
 
@@ -38,7 +42,10 @@ export namespace Email {
 
         request(params: SendParams): Promise<PostResponse>;
 
-        request(params: object, callback?: (error: Error, res: Response) => void): Promise<Response>;
+        request(
+            params: object,
+            callback?: (error: Error, res: Response) => void,
+        ): Promise<Response>;
     }
 
     interface GetResource {
@@ -46,19 +53,28 @@ export namespace Email {
 
         action(action: string): GetResource;
 
-        request(params?: object, callback?: (error: Error, res: GetResponse) => void): Promise<GetResponse>;
+        request(
+            params?: object,
+            callback?: (error: Error, res: GetResponse) => void,
+        ): Promise<GetResponse>;
     }
 
     interface PutResource {
         id(value: string | number): PutResource;
 
-        request(params: object, callback?: (error: Error, res: PutResponse) => void): Promise<PutResponse>;
+        request(
+            params: object,
+            callback?: (error: Error, res: PutResponse) => void,
+        ): Promise<PutResponse>;
     }
 
     interface DeleteResource {
         id(value: string): DeleteResource;
 
-        request(params?: object, callback?: (error: Error, res: DeleteResponse) => void): Promise<DeleteResponse>;
+        request(
+            params?: object,
+            callback?: (error: Error, res: DeleteResponse) => void,
+        ): Promise<DeleteResponse>;
     }
 
     // responses
@@ -109,10 +125,12 @@ export namespace Email {
             Email: string;
             Name?: string | undefined;
         };
-        Sender?: {
-            Email: string;
-            Name?: string | undefined;
-        } | undefined;
+        Sender?:
+            | {
+                  Email: string;
+                  Name?: string | undefined;
+              }
+            | undefined;
         To: SendParamsRecipient[];
         Cc?: SendParamsRecipient[] | undefined;
         Bcc?: SendParamsRecipient[] | undefined;

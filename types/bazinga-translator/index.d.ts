@@ -38,7 +38,12 @@ declare namespace Translator {
          * @param domain   The domain for the message or null to use the default
          * @param locale   The locale or null to use the default
          */
-        add(id: string, message: string, domain?: string, locale?: string): BazingaTranslator;
+        add(
+            id: string,
+            message: string,
+            domain?: string,
+            locale?: string,
+        ): BazingaTranslator;
 
         /**
          * Translates the given message.
@@ -48,7 +53,12 @@ declare namespace Translator {
          * @param domain         The domain for the message or null to guess it
          * @param locale         The locale or null to use the default
          */
-        trans(id: string, parameters?: any, domain?: string, locale?: string): string;
+        trans(
+            id: string,
+            parameters?: any,
+            domain?: string,
+            locale?: string,
+        ): string;
 
         /**
          * Translates the given choice message by choosing a translation according to a number.
@@ -59,7 +69,13 @@ declare namespace Translator {
          * @param domain         The domain for the message or null to guess it
          * @param locale         The locale or null to use the default
          */
-        transChoice(id: string, number: number, parameters?: any, domain?: string, locale?: string): string;
+        transChoice(
+            id: string,
+            number: number,
+            parameters?: any,
+            domain?: string,
+            locale?: string,
+        ): string;
 
         /**
          * Loads translations from JSON.

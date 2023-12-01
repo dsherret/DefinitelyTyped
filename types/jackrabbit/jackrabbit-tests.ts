@@ -32,11 +32,17 @@ fanoutQueue.consume(onMessage, { noAck: true });
 const directExchange = rabbit.direct("direct_logs");
 
 directExchange.publish({ text: "this is a harmless log" }, { key: "info" });
-directExchange.publish({ text: "this one is more important" }, { key: "warning" });
+directExchange.publish(
+    { text: "this one is more important" },
+    { key: "warning" },
+);
 directExchange.publish({ text: "pay attention to me!" }, { key: "error" });
 
 const errorsQueue = directExchange.queue({ exclusive: true, key: "error" });
-const logsQueue = directExchange.queue({ exclusive: true, keys: ["info", "warning"] });
+const logsQueue = directExchange.queue({
+    exclusive: true,
+    keys: ["info", "warning"],
+});
 
 errorsQueue.consume((onMessage, ack) => {});
 logsQueue.consume((onMessage, ack) => {});

@@ -14,7 +14,12 @@ import {
 const createContent: () => Content = () => "allo";
 const content: Content = createContent();
 
-if (typeof content !== "string" && typeof content !== "number" && "stack" in content && content.stack) {
+if (
+    typeof content !== "string" &&
+    typeof content !== "number" &&
+    "stack" in content &&
+    content.stack
+) {
     // $ExpectType ContentStack
     content;
 }
@@ -52,7 +57,11 @@ const dynamicHeaderFooter: TDocumentDefinitions = {
     header: (currentPage, pageCount, pageSize) => [
         // you can apply any logic and return any valid pdfmake element
         { text: "simple text", alignment: currentPage % 2 ? "left" : "right" },
-        { canvas: [{ type: "rect", x: 170, y: 32, w: pageSize.width - 170, h: 40 }] },
+        {
+            canvas: [
+                { type: "rect", x: 170, y: 32, w: pageSize.width - 170, h: 40 },
+            ],
+        },
     ],
     content: "This is an sample PDF printed with pdfMake",
 };
@@ -69,8 +78,16 @@ const pageOrientation: TDocumentDefinitions = {
     pageOrientation: "portrait",
     content: [
         { text: "Text on Portrait" },
-        { text: "Text on Landscape", pageOrientation: "landscape", pageBreak: "before" },
-        { text: "Text on Landscape 2", pageOrientation: "portrait", pageBreak: "after" },
+        {
+            text: "Text on Landscape",
+            pageOrientation: "landscape",
+            pageBreak: "before",
+        },
+        {
+            text: "Text on Landscape 2",
+            pageOrientation: "portrait",
+            pageBreak: "after",
+        },
         { text: "Text on Portrait 2" },
     ],
 };
@@ -92,8 +109,12 @@ const pageBreakBefore: TDocumentDefinitions = {
         { text: "3 Headline", headlineLevel: 1 },
         "Some long text of variable length ...",
     ],
-    pageBreakBefore: (currentNode, followingNodesOnPage, nodesOnNextPage, previousNodesOnPage) =>
-        currentNode.headlineLevel === 1 && followingNodesOnPage.length === 0,
+    pageBreakBefore: (
+        currentNode,
+        followingNodesOnPage,
+        nodesOnNextPage,
+        previousNodesOnPage,
+    ) => currentNode.headlineLevel === 1 && followingNodesOnPage.length === 0,
 };
 
 const qrCodes: TDocumentDefinitions = {
@@ -135,8 +156,7 @@ const fontsUsage: TDocumentDefinitions = {
     content: [
         { text: "First paragraph", font: "Times" },
         {
-            text:
-                "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines",
+            text: "Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines",
         },
     ],
     defaultStyle: {
@@ -357,10 +377,7 @@ const polyLine: CanvasPolyline = {
 
 const styleInheritance: Content = {
     text: "foobar",
-    style: [
-        "stringReference",
-        { bold: true },
-    ],
+    style: ["stringReference", { bold: true }],
 };
 
 const defaultPosition: Content = {
@@ -383,5 +400,8 @@ const singleSideMargins: Content = {
 
 const decorations: Content = [
     { text: "Single decoration", decoration: "underline" },
-    { text: "Multiple decorations", decoration: ["underline", "lineThrough", "overline"] },
+    {
+        text: "Multiple decorations",
+        decoration: ["underline", "lineThrough", "overline"],
+    },
 ];

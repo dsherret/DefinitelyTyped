@@ -101,7 +101,11 @@ interface AlloyController extends Backbone.Events {
      * @param classes Array or space-separated list of classes to apply.
      * @param opts Dictionary of properties to apply after classes have been added.
      */
-    addClass<T extends Titanium.Proxy>(proxy: T, classes: string | string[], opts?: Partial<T>): void;
+    addClass<T extends Titanium.Proxy>(
+        proxy: T,
+        classes: string | string[],
+        opts?: Partial<T>,
+    ): void;
 
     /**
      * Adds a tracked event listeners to a view proxy object. By default, any event listener declared in XML is tracked by Alloy.
@@ -111,7 +115,11 @@ interface AlloyController extends Backbone.Events {
      * @param callback Callback function to invoke when the event is fired.
      * @returns ID attribute of the view object. If one does not exist, Alloy will create a unique ID.
      */
-    addListener(proxy: Titanium.Proxy, type: string, callback: (e: any) => void): string;
+    addListener(
+        proxy: Titanium.Proxy,
+        type: string,
+        callback: (e: any) => void,
+    ): string;
 
     /**
      * Creates a dictionary of properties based on the specified styles.
@@ -170,7 +178,11 @@ interface AlloyController extends Backbone.Events {
      * @param classes Array or space-separated list of classes to remove.
      * @param opts Dictionary of properties to apply after the class removal.
      */
-    removeClass<T extends Titanium.Proxy>(proxy: T, classes: string | string[], opts?: Partial<T>): void;
+    removeClass<T extends Titanium.Proxy>(
+        proxy: T,
+        classes: string | string[],
+        opts?: Partial<T>,
+    ): void;
 
     /**
      * Removes all tracked event listeners or only the ones specified by the parameters.
@@ -183,7 +195,11 @@ interface AlloyController extends Backbone.Events {
      * @param type Name of the event to remove.
      * @param callback Callback to remove.
      */
-    removeListener(proxy: Titanium.Proxy, type?: string, callback?: (e: any) => void): AlloyController;
+    removeListener(
+        proxy: Titanium.Proxy,
+        type?: string,
+        callback?: (e: any) => void,
+    ): AlloyController;
 
     /**
      * Sets the array of TSS classes for the target View object, adding the classes specified and removing any applied classes that are not specified.
@@ -192,7 +208,11 @@ interface AlloyController extends Backbone.Events {
      * @param classes Array or space-separated list of classes to apply after the reset.
      * @param opts Dictionary of properties to apply after the reset.
      */
-    resetClass<T extends Titanium.Proxy>(proxy: T, classes: string | string[], opts?: Partial<T>): void;
+    resetClass<T extends Titanium.Proxy>(
+        proxy: T,
+        classes: string | string[],
+        opts?: Partial<T>,
+    ): void;
 
     /**
      * Applies a set of properties to view elements associated with this controller.

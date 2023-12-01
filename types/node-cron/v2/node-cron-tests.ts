@@ -12,10 +12,14 @@ cron.schedule("1-5 * * * *", () => {
     log("running every minute to 1 from 5");
 });
 
-const task = cron.schedule("* * * * *", () => {
-    log("immediately started");
-    // because of manual call start method
-}, { scheduled: false });
+const task = cron.schedule(
+    "* * * * *",
+    () => {
+        log("immediately started");
+        // because of manual call start method
+    },
+    { scheduled: false },
+);
 
 task.start();
 
@@ -45,9 +49,13 @@ if (valid && !invalid) {
 }
 
 // check timezones are accepted from the string literal
-const task4 = cron.schedule("* * * * *", () => {
-    log("will execute every minute until stopped");
-}, { timezone: "Europe/London" });
+const task4 = cron.schedule(
+    "* * * * *",
+    () => {
+        log("will execute every minute until stopped");
+    },
+    { timezone: "Europe/London" },
+);
 
 task4.destroy();
 

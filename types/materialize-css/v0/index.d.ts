@@ -429,7 +429,12 @@ declare namespace Materialize {
          * @param string className The className to use to format the message to display
          * @param Function completeCallback Callback function to call when the messages completes/hides.
          */
-        toast(message: string | JQuery, displayLength: number, className?: string, completeCallback?: Function): void;
+        toast(
+            message: string | JQuery,
+            displayLength: number,
+            className?: string,
+            completeCallback?: Function,
+        ): void;
 
         /**
          * Fires an event when the page is scrolled to a certain area
@@ -690,7 +695,9 @@ interface JQuery {
      *
      * @param string method name of the method to invoke
      */
-    material_chip(method: string): Materialize.ChipDataObject[] | Materialize.ChipDataObject;
+    material_chip(
+        method: string,
+    ): Materialize.ChipDataObject[] | Materialize.ChipDataObject;
 
     /**
      * Add an autocomplete dropdown below your input to suggest possible values.

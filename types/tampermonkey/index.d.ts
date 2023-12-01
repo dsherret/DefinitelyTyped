@@ -9,7 +9,12 @@ declare namespace Tampermonkey {
      * @param newValue The new value of the key
      * @param remote A boolean indicating whether the change originated from a different userscript instance.
      */
-    type ValueChangeListener = (name: string, oldValue: any, newValue: any, remote: boolean) => void;
+    type ValueChangeListener = (
+        name: string,
+        oldValue: any,
+        newValue: any,
+        remote: boolean,
+    ) => void;
 
     // Response
 
@@ -54,7 +59,9 @@ declare namespace Tampermonkey {
         readonly context: TContext;
     }
 
-    interface ProgressResponse<TContext> extends Response<TContext>, ProgressResponseBase {}
+    interface ProgressResponse<TContext>
+        extends Response<TContext>,
+            ProgressResponseBase {}
 
     // Request
 
@@ -62,7 +69,10 @@ declare namespace Tampermonkey {
         readonly [header: string]: string;
     }
 
-    type RequestEventListener<TResponse> = (this: TResponse, response: TResponse) => void;
+    type RequestEventListener<TResponse> = (
+        this: TResponse,
+        response: TResponse,
+    ) => void;
 
     interface Request<TContext = object> {
         method?: "GET" | "HEAD" | "POST";
@@ -142,7 +152,12 @@ declare namespace Tampermonkey {
          * - `not_succeeded` - the download wasn't started or failed, the
          * details attribute may provide more information
          */
-        error: "not_enabled" | "not_whitelisted" | "not_permitted" | "not_supported" | "not_succeeded";
+        error:
+            | "not_enabled"
+            | "not_whitelisted"
+            | "not_permitted"
+            | "not_supported"
+            | "not_succeeded";
         /** Detail about that error */
         details?: string;
     }
@@ -222,7 +237,10 @@ declare namespace Tampermonkey {
 
     type NotificationOnClick = (this: NotificationThis) => void;
     /** `clicked` is `true` when `text` was set */
-    type NotificationOnDone = (this: NotificationThis, clicked: boolean) => void;
+    type NotificationOnDone = (
+        this: NotificationThis,
+        clicked: boolean,
+    ) => void;
 
     interface Notification {
         /** A string containing the message to display in the notification (optional if highlight is set). */
@@ -333,19 +351,25 @@ declare namespace Tampermonkey {
     }
 
     interface WebRequestRule {
-        selector: {
-            include?: string | string[];
-            match?: string | string[];
-            exclude?: string | string[];
-        } | string;
-        action: string | {
-            cancel?: boolean;
-            redirect?: {
-                url: string;
-                from?: string;
-                to?: string;
-            } | string;
-        };
+        selector:
+            | {
+                  include?: string | string[];
+                  match?: string | string[];
+                  exclude?: string | string[];
+              }
+            | string;
+        action:
+            | string
+            | {
+                  cancel?: boolean;
+                  redirect?:
+                      | {
+                            url: string;
+                            from?: string;
+                            to?: string;
+                        }
+                      | string;
+              };
     }
 
     /**
@@ -431,33 +455,39 @@ declare namespace Tampermonkey {
          * Specifies the URLs for which the rule should be triggered.
          * String value is shortening for `{ include: [selector] }`.
          */
-        selector: string | {
-            /** URLs, patterns, and regexpes for rule triggering. */
-            include?: string | string[];
-            /** URLs and patterns for rule triggering. */
-            match?: string | string[];
-            /** URLs, patterns, and regexpes for not triggering the rule. */
-            exclude?: string | string[];
-        };
+        selector:
+            | string
+            | {
+                  /** URLs, patterns, and regexpes for rule triggering. */
+                  include?: string | string[];
+                  /** URLs and patterns for rule triggering. */
+                  match?: string | string[];
+                  /** URLs, patterns, and regexpes for not triggering the rule. */
+                  exclude?: string | string[];
+              };
         /**
          * Specifies to do with the request.
          * String value `cancel` is shortening for `{ cancel: true }`.
          */
-        action: "cancel" | {
-            /** Whether to cancel the request. */
-            cancel?: boolean;
-            /**
-             * Redirect to some URL which must be included in any
-             * `@match` or `@include` header.
-             * When a string, redirects to a given static URL.
-             */
-            redirect?: string | {
-                /** A RegExp to extract some parts of the URL (for example `"([^:]+)://match.me/(.*)"`). */
-                from: string;
-                /** Pattern for substitution (for example `"$1://redirected.to/$2"`). */
-                to: string;
-            };
-        };
+        action:
+            | "cancel"
+            | {
+                  /** Whether to cancel the request. */
+                  cancel?: boolean;
+                  /**
+                   * Redirect to some URL which must be included in any
+                   * `@match` or `@include` header.
+                   * When a string, redirects to a given static URL.
+                   */
+                  redirect?:
+                      | string
+                      | {
+                            /** A RegExp to extract some parts of the URL (for example `"([^:]+)://match.me/(.*)"`). */
+                            from: string;
+                            /** Pattern for substitution (for example `"$1://redirected.to/$2"`). */
+                            to: string;
+                        };
+              };
     }
 
     type WebRequestListener = (
@@ -559,9 +589,8 @@ declare namespace Tampermonkey {
  * The unsafeWindow object provides full access to the pages JavaScript
  * functions and variables
  */
-declare var unsafeWindow:
-    & Window
-    & Omit<
+declare var unsafeWindow: Window &
+    Omit<
         typeof globalThis,
         | "GM_addElement"
         | "GM_addStyle"
@@ -604,7 +633,10 @@ interface Window {
      * }
      */
     onurlchange: null;
-    addEventListener(type: "urlchange", listener: (urlObject: { url: string }) => void): void;
+    addEventListener(
+        type: "urlchange",
+        listener: (urlObject: { url: string }) => void,
+    ): void;
 }
 
 /**
@@ -625,7 +657,10 @@ interface Window {
  * - [`style` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style)
  * @returns The injected HTML element
  */
-declare function GM_addElement(tagName: string, attributes: object): HTMLElement;
+declare function GM_addElement(
+    tagName: string,
+    attributes: object,
+): HTMLElement;
 
 /**
  * `GM_addElement` allows Tampermonkey scripts to add new elements to the page
@@ -679,7 +714,10 @@ declare function GM_setValue(name: string, value: any): void;
  * @param listener A callback function that will be called when the value of the key changes.
  * @returns A `listenerId` value that can be used to remove the listener later using `GM_removeValueChangeListener`.
  */
-declare function GM_addValueChangeListener(name: string, listener: Tampermonkey.ValueChangeListener): number;
+declare function GM_addValueChangeListener(
+    name: string,
+    listener: Tampermonkey.ValueChangeListener,
+): number;
 
 /**
  * Removes a change listener by its ID.
@@ -694,7 +732,10 @@ declare function GM_removeValueChangeListener(listenerId: number): void;
  * @param defaultValue A default value to be returned if the key does not exist in the extension's storage.
  * @returns The value of the specified key from the extension's storage, or the default value if the key does not exist.
  */
-declare function GM_getValue<TValue>(name: string, defaultValue?: TValue): TValue;
+declare function GM_getValue<TValue>(
+    name: string,
+    defaultValue?: TValue,
+): TValue;
 
 /**
  * Deletes `name` from the userscript's storage.
@@ -745,35 +786,35 @@ declare function GM_getResourceURL(name: string): string;
  */
 declare function GM_registerMenuCommand(
     name: string,
-    onClick: (
-        event: MouseEvent | KeyboardEvent,
-    ) => void,
-    optionsOrAccessKey?: string | {
-        /**
-         * An optional number that was returned by a previous `GM_registerMenuCommand` call.
-         * If specified, the according menu item will be updated with the new options.
-         * If not specified or the menu item can't be found, a new menu item will be created.
-         */
-        id?: number;
-        /**
-         * An optional access key for the menu item. This can be used to create a shortcut for the menu item.
-         * For example, if the access key is "s", the user can select the menu item by pressing "s"
-         * when Tampermonkey's popup-menu is open. Please note that there are browser-wide shortcuts
-         * configurable to open Tampermonkey's popup-menu.
-         */
-        accessKey?: string;
-        /**
-         * An optional boolean parameter that specifies whether the popup menu should be closed
-         * after the menu item is clicked. The default value is `true`. Please note that this setting
-         * has no effect on the menu command section that is added to the page's context menu.
-         */
-        autoClose?: boolean;
-        /**
-         * An optional string that specifies the title of the menu item. This is displayed
-         * as a tooltip when the user hovers the mouse over the menu item.
-         */
-        title?: string;
-    },
+    onClick: (event: MouseEvent | KeyboardEvent) => void,
+    optionsOrAccessKey?:
+        | string
+        | {
+              /**
+               * An optional number that was returned by a previous `GM_registerMenuCommand` call.
+               * If specified, the according menu item will be updated with the new options.
+               * If not specified or the menu item can't be found, a new menu item will be created.
+               */
+              id?: number;
+              /**
+               * An optional access key for the menu item. This can be used to create a shortcut for the menu item.
+               * For example, if the access key is "s", the user can select the menu item by pressing "s"
+               * when Tampermonkey's popup-menu is open. Please note that there are browser-wide shortcuts
+               * configurable to open Tampermonkey's popup-menu.
+               */
+              accessKey?: string;
+              /**
+               * An optional boolean parameter that specifies whether the popup menu should be closed
+               * after the menu item is clicked. The default value is `true`. Please note that this setting
+               * has no effect on the menu command section that is added to the page's context menu.
+               */
+              autoClose?: boolean;
+              /**
+               * An optional string that specifies the title of the menu item. This is displayed
+               * as a tooltip when the user hovers the mouse over the menu item.
+               */
+              title?: string;
+          },
 ): number;
 
 /**
@@ -804,7 +845,9 @@ declare function GM_xmlhttpRequest<TContext = any>( // eslint-disable-line @defi
  * @url https://www.tampermonkey.net/documentation.php#api:GM_download
  * @param details Details about the download.
  */
-declare function GM_download(details: Tampermonkey.DownloadRequest): Tampermonkey.AbortHandle<boolean>;
+declare function GM_download(
+    details: Tampermonkey.DownloadRequest,
+): Tampermonkey.AbortHandle<boolean>;
 /**
  * Downloads a file from a specified URL and save it to the user's local machine.
  * Note: The browser might modify the desired filename. Especially a file extension might
@@ -815,7 +858,10 @@ declare function GM_download(details: Tampermonkey.DownloadRequest): Tampermonke
  *             such as `.txt` or `.pdf`. For security reasons the file extension needs to be whitelisted
  *             at Tampermonkey's options page
  */
-declare function GM_download(url: string, name: string): Tampermonkey.AbortHandle<boolean>;
+declare function GM_download(
+    url: string,
+    name: string,
+): Tampermonkey.AbortHandle<boolean>;
 
 // Tabs
 
@@ -928,7 +974,10 @@ declare function GM_notification(
  * @param data The string to set as the clipboard text.
  * @param info A string expressing the type `text` or `html` or an object.
  */
-declare function GM_setClipboard(data: string, info?: Tampermonkey.ContentType): void;
+declare function GM_setClipboard(
+    data: string,
+    info?: Tampermonkey.ContentType,
+): void;
 
 /**
  * `GM_webRequest` (re-)registers rules for web request manipulations
@@ -1044,7 +1093,10 @@ declare var GM: Readonly<{
      * different browser tabs to communicate with each other.
      * @param name Name of the observed variable
      */
-    addValueChangeListener(name: string, listener: Tampermonkey.ValueChangeListener): Promise<number>;
+    addValueChangeListener(
+        name: string,
+        listener: Tampermonkey.ValueChangeListener,
+    ): Promise<number>;
 
     /** Removes a change listener by its ID */
     removeValueChangeListener(listenerId: number): Promise<void>;
@@ -1067,7 +1119,11 @@ declare var GM: Readonly<{
      * script runs and returns a menu command ID.
      * @param accessKey The key to use for keyboard shortcuts
      */
-    registerMenuCommand(name: string, onClick: () => void, accessKey?: string): Promise<number>;
+    registerMenuCommand(
+        name: string,
+        onClick: () => void,
+        accessKey?: string,
+    ): Promise<number>;
     /**
      *  Unregister a menu command that was previously registered by
      * `GM_registerMenuCommand` or `GM.registerMenuCommand` with the given menu command ID.
@@ -1127,14 +1183,20 @@ declare var GM: Readonly<{
      * @returns Object with the function `close`, the listener `onclose` and a flag
      * called `closed`.
      */
-    openInTab(url: string, options?: Tampermonkey.OpenTabOptions | boolean): Promise<Tampermonkey.OpenTabObject>;
+    openInTab(
+        url: string,
+        options?: Tampermonkey.OpenTabOptions | boolean,
+    ): Promise<Tampermonkey.OpenTabObject>;
 
     /**
      * Shows a HTML5 Desktop notification and/or highlight the current tab.
      * @param ondone If specified used instead of `details.ondone`
      * @returns True if the notification was clicked
      */
-    notification(details: Tampermonkey.NotificationDetails, ondone?: Tampermonkey.NotificationOnDone): Promise<boolean>;
+    notification(
+        details: Tampermonkey.NotificationDetails,
+        ondone?: Tampermonkey.NotificationOnDone,
+    ): Promise<boolean>;
 
     /**
      * Shows a HTML5 Desktop notification and/or highlight the current tab.

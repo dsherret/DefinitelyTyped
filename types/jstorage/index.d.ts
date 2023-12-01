@@ -104,7 +104,10 @@ interface JStorageStatic {
      * @param key Key name
      * @param callback Function to run when the key changes
      */
-    listenKeyChange(key: string, callback: (key: string, value: any) => void): void;
+    listenKeyChange(
+        key: string,
+        callback: (key: string, value: any) => void,
+    ): void;
 
     /**
      * Register change listeners
@@ -112,7 +115,10 @@ interface JStorageStatic {
      * @param key Key name
      * @param callback Function to run when the key changes
      */
-    listenKeyChange<TValue>(key: string, callback: (key: string, value: TValue) => void): void;
+    listenKeyChange<TValue>(
+        key: string,
+        callback: (key: string, value: TValue) => void,
+    ): void;
 
     /**
      * Remove change listeners
@@ -128,7 +134,10 @@ interface JStorageStatic {
      * @param channel Channel name
      * @param callback Function to run when the something is published to the channel
      */
-    subscribe(channel: string, callback: (channel: string, value: any) => void): void;
+    subscribe(
+        channel: string,
+        callback: (channel: string, value: any) => void,
+    ): void;
 
     /**
      * Subscribe to a Publish/Subscribe event stream
@@ -136,7 +145,10 @@ interface JStorageStatic {
      * @param channel Channel name
      * @param callback Function to run when the something is published to the channel
      */
-    subscribe<TValue>(channel: string, callback: (channel: string, value: TValue) => void): void;
+    subscribe<TValue>(
+        channel: string,
+        callback: (channel: string, value: TValue) => void,
+    ): void;
 
     /**
      * Publish data to an event stream

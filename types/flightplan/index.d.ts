@@ -28,9 +28,21 @@ declare namespace FlightplanInterfaces {
         exec(command: string, options?: { exec: any }): CommandResult;
 
         sudo(command: string, options?: SudoOptions): CommandResult;
-        transfer(files: CommandResult, remoteDir: string, options?: CommandOptions): CommandResult[];
-        transfer(files: CommandResult[], remoteDir: string, options?: CommandOptions): CommandResult[];
-        transfer(files: string[], remoteDir: string, options?: CommandOptions): CommandResult[];
+        transfer(
+            files: CommandResult,
+            remoteDir: string,
+            options?: CommandOptions,
+        ): CommandResult[];
+        transfer(
+            files: CommandResult[],
+            remoteDir: string,
+            options?: CommandOptions,
+        ): CommandResult[];
+        transfer(
+            files: string[],
+            remoteDir: string,
+            options?: CommandOptions,
+        ): CommandResult[];
         prompt(message: string, options?: PromptOptions): string;
         waitFor(fn: (done: (result: any) => void) => void): any;
 
@@ -185,7 +197,10 @@ declare namespace FlightplanInterfaces {
 
         target(name: string, options: TargetOptions): Flightplan;
         target(name: string, options: TargetOptions[]): Flightplan;
-        target(name: string, fn: (done: (result: any) => void) => void): Flightplan;
+        target(
+            name: string,
+            fn: (done: (result: any) => void) => void,
+        ): Flightplan;
 
         abort(message?: string): void;
     }

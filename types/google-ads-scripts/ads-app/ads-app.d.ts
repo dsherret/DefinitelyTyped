@@ -43,7 +43,11 @@ declare namespace GoogleAdsScripts {
              * @param backgroundColor Optional. The background color of the new label. The color must be specified in either RGB form (`#RRGGBB` or `#RGB`),
              * or one of the [16 basic CSS color names](https://www.w3.org/TR/css-color-3/#html4). If not specified, the new label will assume an arbitrary background color.
              */
-            createLabel(name: string, description?: string, backgroundColor?: string): void;
+            createLabel(
+                name: string,
+                description?: string,
+                backgroundColor?: string,
+            ): void;
             /** Returns miscellaneous information about the Google Ads account in which the script is currently running. */
             currentAccount(): Account;
             /** Provides access to display criteria that have been added to this account: Audience, DisplayKeyword, Placement, Topic. */
@@ -87,7 +91,10 @@ declare namespace GoogleAdsScripts {
              * @param query GAQL search query.
              * @param optArgs Optional arguments
              */
-            search(query: string, optArgs?: SearchOptionalArguments): SearchRowIterator;
+            search(
+                query: string,
+                optArgs?: SearchOptionalArguments,
+            ): SearchRowIterator;
             /** Provides access to shopping ad group-level targeting criteria, currently just audiences. */
             shoppingAdGroupTargeting(): AccountShoppingAdGroupTargeting;
             /** Returns the selector of all shopping ad groups in the account. */

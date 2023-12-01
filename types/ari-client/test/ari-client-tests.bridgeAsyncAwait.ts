@@ -4,7 +4,11 @@ import Ari, { Bridge, Channel } from "ari-client";
 
 export default async () => {
     try {
-        const client = await Ari.connect("http://ari.js:8088", "user", "secret");
+        const client = await Ari.connect(
+            "http://ari.js:8088",
+            "user",
+            "secret",
+        );
 
         client.on("StasisStart", async (event, incoming) => {
             await incoming.answer();
@@ -14,7 +18,7 @@ export default async () => {
 
         const getOrCreateBridge = async () => {
             const bridges = await client.bridges.list();
-            let bridge = bridges.filter(candidate => {
+            let bridge = bridges.filter((candidate) => {
                 return candidate["bridge_type"] === "holding";
             })[0];
 
@@ -28,10 +32,16 @@ export default async () => {
             }
         };
 
-        const joinHoldingBridgeAndPlayMoh = async (bridge: Bridge, channel: Channel) => {
+        const joinHoldingBridgeAndPlayMoh = async (
+            bridge: Bridge,
+            channel: Channel,
+        ) => {
             bridge.on("ChannelLeftBridge", async (event, instances) => {
                 const holdingBridge = instances.bridge;
-                if (holdingBridge.channels.length === 0 && holdingBridge.id === bridge.id) {
+                if (
+                    holdingBridge.channels.length === 0 &&
+                    holdingBridge.id === bridge.id
+                ) {
                     try {
                         await bridge.destroy();
                     } catch (err) {

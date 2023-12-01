@@ -3,9 +3,9 @@ import validateDatatype = require("rdf-validate-datatype");
 
 const { validateTerm, validateQuad, validators } = validateDatatype;
 
-const term: Term = <any> {};
-const quad: Quad = <any> {};
-const named: NamedNode = <any> {};
+const term: Term = <any>{};
+const quad: Quad = <any>{};
+const named: NamedNode = <any>{};
 
 validators.register(named, (value: string) => true);
 

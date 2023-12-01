@@ -22,7 +22,10 @@ declare namespace Autosuggest {
     /** @internal */
     type Omit<T, K extends keyof T> = Pick<
         T,
-        ({ [P in keyof T]: P } & { [P in K]: never } & { [x: string]: never; [x: number]: never })[keyof T]
+        ({ [P in keyof T]: P } & { [P in K]: never } & {
+            [x: string]: never;
+            [x: number]: never;
+        })[keyof T]
     >;
 
     type FetchRequestedReasons =
@@ -69,9 +72,21 @@ declare namespace Autosuggest {
         ref?: React.Ref<HTMLInputElement> | undefined;
     }
 
-    interface InputProps<TSuggestion> extends Omit<React.InputHTMLAttributes<HTMLElement>, "onChange" | "onBlur"> {
-        onChange: (event: React.FormEvent<HTMLElement>, params: ChangeEvent) => void;
-        onBlur?: ((event: React.FocusEvent<HTMLElement>, params?: BlurEvent<TSuggestion>) => void) | undefined;
+    interface InputProps<TSuggestion>
+        extends Omit<
+            React.InputHTMLAttributes<HTMLElement>,
+            "onChange" | "onBlur"
+        > {
+        onChange: (
+            event: React.FormEvent<HTMLElement>,
+            params: ChangeEvent,
+        ) => void;
+        onBlur?:
+            | ((
+                  event: React.FocusEvent<HTMLElement>,
+                  params?: BlurEvent<TSuggestion>,
+              ) => void)
+            | undefined;
         value: string;
         ref?: React.Ref<HTMLInputElement> | undefined;
     }
@@ -102,7 +117,9 @@ declare namespace Autosuggest {
         | "sectionContainerFirst"
         | "sectionTitle";
 
-    type Theme = Record<string, string | React.CSSProperties> | Partial<Record<ThemeKey, string | React.CSSProperties>>;
+    type Theme =
+        | Record<string, string | React.CSSProperties>
+        | Partial<Record<ThemeKey, string | React.CSSProperties>>;
 
     interface RenderSuggestionsContainerParams {
         containerProps: {
@@ -117,21 +134,39 @@ declare namespace Autosuggest {
     }
 
     // types for functions - allowing reuse externally - e.g. as props and bound in the constructor
-    type GetSectionSuggestions<TSuggestion, TSection> = (section: TSection) => TSuggestion[];
+    type GetSectionSuggestions<TSuggestion, TSection> = (
+        section: TSection,
+    ) => TSuggestion[];
     type GetSuggestionValue<TSuggestion> = (suggestion: TSuggestion) => string;
-    type OnSuggestionHighlighted = (params: SuggestionHighlightedParams) => void;
-    type SuggestionsFetchRequested = (request: SuggestionsFetchRequestedParams) => void;
+    type OnSuggestionHighlighted = (
+        params: SuggestionHighlightedParams,
+    ) => void;
+    type SuggestionsFetchRequested = (
+        request: SuggestionsFetchRequestedParams,
+    ) => void;
     type OnSuggestionsClearRequested = () => void;
     type OnSuggestionSelected<TSuggestion> = (
         event: React.FormEvent<any>,
         data: SuggestionSelectedEventData<TSuggestion>,
     ) => void;
-    type RenderInputComponent = (inputProps: RenderInputComponentProps) => React.ReactNode;
-    type RenderSuggestionsContainer = (params: RenderSuggestionsContainerParams) => React.ReactNode;
+    type RenderInputComponent = (
+        inputProps: RenderInputComponentProps,
+    ) => React.ReactNode;
+    type RenderSuggestionsContainer = (
+        params: RenderSuggestionsContainerParams,
+    ) => React.ReactNode;
     type RenderSectionTitle = (section: any) => React.ReactNode;
-    type RenderSuggestion<TSuggestion> = (suggestion: TSuggestion, params: RenderSuggestionParams) => React.ReactNode;
-    type ShouldKeepSuggestionsOnSelect<TSuggestion> = (suggestion?: TSuggestion) => boolean;
-    type ShouldRenderSuggestions = (value: string, reason: ShouldRenderReasons) => boolean;
+    type RenderSuggestion<TSuggestion> = (
+        suggestion: TSuggestion,
+        params: RenderSuggestionParams,
+    ) => React.ReactNode;
+    type ShouldKeepSuggestionsOnSelect<TSuggestion> = (
+        suggestion?: TSuggestion,
+    ) => boolean;
+    type ShouldRenderSuggestions = (
+        value: string,
+        reason: ShouldRenderReasons,
+    ) => boolean;
 
     interface AutosuggestPropsBase<TSuggestion> {
         /**
@@ -207,7 +242,8 @@ declare namespace Autosuggest {
         theme?: Theme | undefined;
     }
 
-    interface AutosuggestPropsSingleSection<TSuggestion> extends AutosuggestPropsBase<TSuggestion> {
+    interface AutosuggestPropsSingleSection<TSuggestion>
+        extends AutosuggestPropsBase<TSuggestion> {
         /**
          * Set it to true if you'd like to display suggestions in multiple sections (with optional titles).
          */
@@ -218,7 +254,8 @@ declare namespace Autosuggest {
         suggestions: readonly TSuggestion[];
     }
 
-    interface AutosuggestPropsMultiSection<TSuggestion, TSection> extends AutosuggestPropsBase<TSuggestion> {
+    interface AutosuggestPropsMultiSection<TSuggestion, TSection>
+        extends AutosuggestPropsBase<TSuggestion> {
         /**
          * Set it to true if you'd like to display suggestions in multiple sections (with optional titles).
          */
@@ -230,7 +267,9 @@ declare namespace Autosuggest {
         /**
          * Implement it to teach Autosuggest where to find the suggestions for every section.
          */
-        getSectionSuggestions?: GetSectionSuggestions<TSuggestion, TSection> | undefined;
+        getSectionSuggestions?:
+            | GetSectionSuggestions<TSuggestion, TSection>
+            | undefined;
         /**
          * Use your imagination to define how section titles are rendered.
          */

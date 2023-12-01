@@ -1,6 +1,6 @@
 // Create the timer
 $("body").timer(
-    function() {
+    function () {
         console.log("This function just got called");
     },
     10000,

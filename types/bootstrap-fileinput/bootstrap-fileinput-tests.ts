@@ -1,5 +1,8 @@
 $("#input-id").fileinput();
-const plugin = $("#input-id").fileinput({ showUpload: false, previewFileType: "any" });
+const plugin = $("#input-id").fileinput({
+    showUpload: false,
+    previewFileType: "any",
+});
 $("document").on("ready", () => {
     $("#input-id")
         .fileinput({
@@ -26,46 +29,50 @@ $("document").on("ready", () => {
             browseOnZoneClick: true,
         })
         .on("fileuploaded", (event, previewId, index, fileId) => {
-            console.log("File Uploaded", `ID: ${fileId}, Thumb ID: ${previewId}`);
+            console.log(
+                "File Uploaded",
+                `ID: ${fileId}, Thumb ID: ${previewId}`,
+            );
         })
         .on("fileuploaderror", (event, data, msg) => {
-            console.log("File Upload Error", `ID: ${data.fileId}, Thumb ID: ${data.previewId}`);
+            console.log(
+                "File Upload Error",
+                `ID: ${data.fileId}, Thumb ID: ${data.previewId}`,
+            );
         })
-        .on("filebatchuploadcomplete", (event, preview, config, tags, extraData) => {
-            console.log("File Batch Uploaded", preview, config, tags, extraData);
-        });
+        .on(
+            "filebatchuploadcomplete",
+            (event, preview, config, tags, extraData) => {
+                console.log(
+                    "File Batch Uploaded",
+                    preview,
+                    config,
+                    tags,
+                    extraData,
+                );
+            },
+        );
 
     $("#input-id").fileinput("disable");
     $("#input-id").fileinput("enable");
     $("#input-id").fileinput("reset");
     $("#input-id").fileinput("destroy");
-    $("#input-id")
-        .fileinput("destroy")
-        .fileinput({ showPreview: false });
+    $("#input-id").fileinput("destroy").fileinput({ showPreview: false });
     $("#input-id").attr("disabled", "disabled");
     $("#input-id").fileinput("refresh");
-    $("#input-id").fileinput("refresh", { browseLabel: "Select...", removeLabel: "Delete" });
+    $("#input-id").fileinput("refresh", {
+        browseLabel: "Select...",
+        removeLabel: "Delete",
+    });
     $("#input-id")
         .fileinput("refresh", { showCaption: false })
         .fileinput("disable");
-    $("#input-id")
-        .fileinput("clear")
-        .fileinput("disable");
-    $("#input-id")
-        .fileinput("upload")
-        .fileinput("disable");
-    $("#input-id")
-        .fileinput("cancel")
-        .fileinput("disable");
-    $("#input-id")
-        .fileinput("pause")
-        .fileinput("disable");
-    $("#input-id")
-        .fileinput("lock")
-        .fileinput("disable");
-    $("#input-id")
-        .fileinput("resume")
-        .fileinput("unlock");
+    $("#input-id").fileinput("clear").fileinput("disable");
+    $("#input-id").fileinput("upload").fileinput("disable");
+    $("#input-id").fileinput("cancel").fileinput("disable");
+    $("#input-id").fileinput("pause").fileinput("disable");
+    $("#input-id").fileinput("lock").fileinput("disable");
+    $("#input-id").fileinput("resume").fileinput("unlock");
     const fileObj: File = null!;
     $("#input-id").fileinput("addToStack", fileObj);
     $("#input-id").fileinput("addToStack", fileObj, "#input-id");

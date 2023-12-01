@@ -1,4 +1,6 @@
-import SharedGroupPreferences, { SharedGroupPreferenceOptions } from "react-native-shared-group-preferences";
+import SharedGroupPreferences, {
+    SharedGroupPreferenceOptions,
+} from "react-native-shared-group-preferences";
 
 const isAppInstalledAndroid = async (packageName: string) => {
     let appIsInstalled;
@@ -12,12 +14,21 @@ const isAppInstalledAndroid = async (packageName: string) => {
     return appIsInstalled;
 };
 
-const getItem = async (key: string, appGroup: string, options: SharedGroupPreferenceOptions) => {
+const getItem = async (
+    key: string,
+    appGroup: string,
+    options: SharedGroupPreferenceOptions,
+) => {
     const result = await SharedGroupPreferences.getItem(key, appGroup);
     return result;
 };
 
-const setItem = async (key: string, data: any, appGroup: string, options: SharedGroupPreferenceOptions) => {
+const setItem = async (
+    key: string,
+    data: any,
+    appGroup: string,
+    options: SharedGroupPreferenceOptions,
+) => {
     await SharedGroupPreferences.setItem(key, data, appGroup);
 };
 

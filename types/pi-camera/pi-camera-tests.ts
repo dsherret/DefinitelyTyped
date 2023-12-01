@@ -31,7 +31,7 @@ const camera3 = new PiCamera({
 
 camera
     .snap()
-    .then(result => {
+    .then((result) => {
         log(`Your picture was captured ${result}`);
     })
     .catch((error: Error) => {
@@ -40,7 +40,7 @@ camera
 
 camera2
     .record()
-    .then(result => {
+    .then((result) => {
         log(`Your video was captured ${result}`);
     })
     .catch((error: Error) => {
@@ -49,7 +49,7 @@ camera2
 
 camera3
     .snapDataUrl()
-    .then(result => {
+    .then((result) => {
         log(`Your picture was captured ${result}`);
     })
     .catch((error: Error) => {
@@ -58,7 +58,7 @@ camera3
 
 camera3
     .snapDataUrl(1_024 * 1_024 * 10)
-    .then(result => {
+    .then((result) => {
         log(`Your picture was captured ${result}`);
     })
     .catch((error: Error) => {

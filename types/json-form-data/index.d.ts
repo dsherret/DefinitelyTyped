@@ -1,8 +1,21 @@
 interface ValidJSON {
-    [key: string]: ValidJSON | ValidJSON[] | ValidJSONValue | ValidJSONValue[] | FileList;
+    [key: string]:
+        | ValidJSON
+        | ValidJSON[]
+        | ValidJSONValue
+        | ValidJSONValue[]
+        | FileList;
 }
 
-type ValidJSONValue = string | number | boolean | File | Blob | Date | null | undefined;
+type ValidJSONValue =
+    | string
+    | number
+    | boolean
+    | File
+    | Blob
+    | Date
+    | null
+    | undefined;
 
 interface InitialFormData {
     append: FormData["append"];

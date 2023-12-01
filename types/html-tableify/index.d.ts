@@ -7,7 +7,10 @@
  * @param config Table configuration object for data of keys `T`.
  * @return HTML table string.
  */
-declare function tableify<T extends keyof any>(data: Array<tableify.Datum<T>>, config?: tableify.Config<T>): string;
+declare function tableify<T extends keyof any>(
+    data: Array<tableify.Datum<T>>,
+    config?: tableify.Config<T>,
+): string;
 
 declare namespace tableify {
     type Alignment = "center" | "left" | "right";

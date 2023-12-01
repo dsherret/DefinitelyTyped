@@ -2,7 +2,10 @@
 
 export = browserUpdate;
 
-declare function browserUpdate(options?: browserUpdate.Options, test?: boolean): void;
+declare function browserUpdate(
+    options?: browserUpdate.Options,
+    test?: boolean,
+): void;
 
 declare namespace browserUpdate {
     type Options = {
@@ -263,13 +266,11 @@ declare namespace browserUpdate {
         | "x";
 
     type BrowserWithLanguageTextOptions = {
-        [
-            K in DetectedBrowsers as
-                | `text_for_${K}`
-                | `text_for_${K}_in_${string}`
-                | `text_in_${string}`
-                | `text_${string}`
-        ]?: TextConfig | string | undefined;
+        [K in DetectedBrowsers as
+            | `text_for_${K}`
+            | `text_for_${K}_in_${string}`
+            | `text_in_${string}`
+            | `text_${string}`]?: TextConfig | string | undefined;
     };
 
     interface RequiredBrowsers {
@@ -342,8 +343,8 @@ declare namespace browserUpdate {
         bnever?: string | undefined;
     }
 
-    interface ParsedOptions extends
-        WithRequiredProperties<
+    interface ParsedOptions
+        extends WithRequiredProperties<
             Options,
             | "domain"
             | "required"
@@ -356,8 +357,7 @@ declare namespace browserUpdate {
             | "newwindow"
             | "test"
             | "ignorecookie"
-        >
-    {
+        > {
         llfull: string;
         ll: string;
         apiver: number;
@@ -396,7 +396,12 @@ declare namespace browserUpdate {
         mobile: boolean;
         n: DetectedBrowsers;
         no_device_update: boolean;
-        other: "bot" | "TV" | "niche browser" | "mobile without upgrade path or landing page" | false;
+        other:
+            | "bot"
+            | "TV"
+            | "niche browser"
+            | "mobile without upgrade path or landing page"
+            | false;
         t: string;
         v: number;
         vmaj: number;
@@ -412,6 +417,7 @@ declare global {
     }
 }
 
-type WithRequiredProperties<TObj extends object, TReq extends keyof TObj> =
-    & Required<Pick<TObj, TReq>>
-    & Omit<TObj, TReq>;
+type WithRequiredProperties<
+    TObj extends object,
+    TReq extends keyof TObj,
+> = Required<Pick<TObj, TReq>> & Omit<TObj, TReq>;

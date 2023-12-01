@@ -1,5 +1,9 @@
 export as namespace PDFObject;
-export function embed(url: string, target?: any, options?: Options): HTMLElement;
+export function embed(
+    url: string,
+    target?: any,
+    options?: Options,
+): HTMLElement;
 export const pdfobjectversion: "2.2.3";
 export const supportsPDFs: boolean;
 

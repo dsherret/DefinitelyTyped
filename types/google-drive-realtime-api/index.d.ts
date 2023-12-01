@@ -13,7 +13,10 @@
 declare namespace gapi.drive.realtime {
     export type CollaborativeObjectType = "EditableString" | "Map" | "List";
 
-    export type GoogEventHandler = ((evt: ObjectChangedEvent) => void) | ((e: Event) => void) | EventListener;
+    export type GoogEventHandler =
+        | ((evt: ObjectChangedEvent) => void)
+        | ((e: Event) => void)
+        | EventListener;
 
     // Complete
     // https://developers.google.com/google-apps/realtime/reference/gapi.drive.realtime.Collaborator
@@ -74,14 +77,22 @@ declare namespace gapi.drive.realtime {
         // Adds an event listener to the event target. The same handler can only be added once per the type.
         // Even if you add the same handler multiple times using the same type then it will only be called once
         // when the event is dispatched.
-        addEventListener(type: string, listener: GoogEventHandler, opt_capture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: GoogEventHandler,
+            opt_capture?: boolean,
+        ): void;
 
         // Removes all event listeners from this object.
         removeAllEventListeners(): void;
 
         // Removes an event listener from the event target. The handler must be the same object as the one added.
         // If the handler has not been added then nothing is done.
-        removeEventListener(type: string, listener: GoogEventHandler, opt_capture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: GoogEventHandler,
+            opt_capture?: boolean,
+        ): void;
 
         // Returns a string representation of this collaborative object.
         toString(): string;
@@ -171,7 +182,10 @@ declare namespace gapi.drive.realtime {
 
         // Creates an IndexReference at the given {@code index}. If {@code canBeDeleted} is set, then a delete
         // over the index will delete the reference. Otherwise the reference will shift to the beginning of the deleted range.
-        registerReference(index: number, canBeDeleted: boolean): IndexReference<CollaborativeString>;
+        registerReference(
+            index: number,
+            canBeDeleted: boolean,
+        ): IndexReference<CollaborativeString>;
 
         // Deletes the text between startIndex (inclusive) and endIndex (exclusive).
         removeRange(startIndex: number, endIndex: number): void;
@@ -212,7 +226,10 @@ declare namespace gapi.drive.realtime {
         insertAll(index: number, values: V[]): void;
 
         // Returns the last index of the given value, or -1 if it cannot be found.
-        lastIndexOf(value: V, opt_comparatorFn?: (x1: V, x2: V) => boolean): number;
+        lastIndexOf(
+            value: V,
+            opt_comparatorFn?: (x1: V, x2: V) => boolean,
+        ): number;
 
         // Moves a single element in this list (at index) to immediately before destinationIndex.
         // Both indices are with respect to the position of elements before the move.
@@ -230,7 +247,11 @@ declare namespace gapi.drive.realtime {
         // Moves a single element in this list (at index) to immediately before destinationIndex in the list destination.
         // Both indices are with respect to the position of elements before the move.
         // If the provided destination is this list, this function is identical to move(index, destinationIndex).
-        moveToList(index: number, destination: CollaborativeList<V>, destinationIndex: number): void;
+        moveToList(
+            index: number,
+            destination: CollaborativeList<V>,
+            destinationIndex: number,
+        ): void;
 
         // Adds an item to the end of the list.
         // @return the new length of the list
@@ -241,7 +262,10 @@ declare namespace gapi.drive.realtime {
 
         // Creates an IndexReference at the given index. If canBeDeleted is true, then a delete over the index will delete
         // the reference. Otherwise the reference will shift to the beginning of the deleted range.
-        registerReference(index: number, canBeDeleted: boolean): IndexReference<CollaborativeList<V>>;
+        registerReference(
+            index: number,
+            canBeDeleted: boolean,
+        ): IndexReference<CollaborativeList<V>>;
 
         // Removes the item at the given index from the list.
         remove(index: number): void;
@@ -284,7 +308,11 @@ declare namespace gapi.drive.realtime {
         // The same handler can only be added once per the type. Even if you add the same handler multiple times using the
         // same type then it will only be called once when the event is dispatched.
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        addEventListener(type: string, listener: () => void | EventListener, opt_capture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: () => void | EventListener,
+            opt_capture?: boolean,
+        ): void;
 
         // Starts a compound operation. If a name is given, that name will be recorded in the mutation for use in revision
         // history, undo menus, etc. When beginCompoundOperation() is called, all subsequent edits to the data model will
@@ -295,7 +323,10 @@ declare namespace gapi.drive.realtime {
         // will obey the root's opt_isUndoable value.
         // Note that the compound operation MUST start and end in the same synchronous execution block. If this invariant
         // is violated, the data model will become invalid and all future changes will fail.
-        beginCompoundOperation(opt_name?: string, opt_isUndoable?: boolean): void;
+        beginCompoundOperation(
+            opt_name?: string,
+            opt_isUndoable?: boolean,
+        ): void;
 
         // Creates and returns a new collaborative object. This can be used to create custom collaborative objects.
         // For built in types, use the specific create* functions.
@@ -306,7 +337,9 @@ declare namespace gapi.drive.realtime {
         createList<T>(opt_initialValue?: T[]): CollaborativeList<T>;
 
         // Creates a collaborative map.
-        createMap<T>(opt_initialValue?: Array<[string, T]>): CollaborativeMap<T>;
+        createMap<T>(
+            opt_initialValue?: Array<[string, T]>,
+        ): CollaborativeMap<T>;
 
         // Creates a collaborative string.
         createString(opt_initialValue?: string): CollaborativeString;
@@ -329,7 +362,11 @@ declare namespace gapi.drive.realtime {
         // Removes an event listener from the event target. The handler must be the same object as the one added.
         // If the handler has not been added then nothing is done.
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        removeEventListener(type: string, listener: () => void | EventListener, opt_capture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: () => void | EventListener,
+            opt_capture?: boolean,
+        ): void;
 
         // The current server revision number for this model. The revision number begins at 1 (the initial empty model)
         // and is incremented each time the model is changed on the server (either by the current session or any
@@ -486,7 +523,7 @@ declare namespace gapi.drive.realtime {
          boolean
          True if the event originated from a redo call.
          */
-        new(
+        new (
             target: CollaborativeObject,
             sessionId: string,
             userId: string,
@@ -505,7 +542,7 @@ declare namespace gapi.drive.realtime {
         // Array of gapi.drive.realtime.BaseModelEvent
         // The specific events that document the changes that occurred on the object.
         // Value must not be null.
-        new(
+        new (
             target: CollaborativeObject,
             sessionId: string,
             userId: string,
@@ -522,7 +559,7 @@ declare namespace gapi.drive.realtime {
 
     // https://developers.google.com/google-apps/realtime/reference/gapi.drive.realtime.ValuesAddedEvent
     export interface ValuesAddedEvent<V> extends BaseModelEvent {
-        new(
+        new (
             target: CollaborativeObject,
             sessionId: string,
             userId: string,
@@ -548,7 +585,7 @@ declare namespace gapi.drive.realtime {
 
     // https://developers.google.com/google-apps/realtime/reference/gapi.drive.realtime.ValuesRemovedEvent
     export interface ValuesRemovedEvent<V> extends BaseModelEvent {
-        new(
+        new (
             target: CollaborativeObject,
             sessionId: string,
             userId: string,
@@ -594,7 +631,11 @@ declare namespace gapi.drive.realtime {
         // Adds an event listener to the event target. The same handler can only be added once per the type.
         // Even if you add the same handler multiple times using the same type then it will only be called once when
         // the event is dispatched.
-        addEventListener(type: string, listener: GoogEventHandler, opt_capture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: GoogEventHandler,
+            opt_capture?: boolean,
+        ): void;
 
         // Closes the document and disconnects from the server.
         // After this function is called, event listeners will no longer fire and attempts to access the document, model,
@@ -615,7 +656,11 @@ declare namespace gapi.drive.realtime {
 
         // Removes an event listener from the event target. The handler must be the same object as the one added.
         // If the handler has not been added then nothing is done.
-        removeEventListener(type: string, listener: GoogEventHandler, opt_capture?: boolean): void;
+        removeEventListener(
+            type: string,
+            listener: GoogEventHandler,
+            opt_capture?: boolean,
+        ): void;
 
         // Saves a copy of this document to a new file. After this function is called, all changes to this document no
         // longer affect the old document and are instead saved to the new file.
@@ -799,7 +844,10 @@ declare namespace gapi.drive.realtime.databinding {
         unbind(): void;
     }
 
-    export function bindString(s: CollaborativeString, textinput: HTMLInputElement): Binding;
+    export function bindString(
+        s: CollaborativeString,
+        textinput: HTMLInputElement,
+    ): Binding;
 }
 
 // rtclient is a global var introduced by realtime-client-utils.js
@@ -811,7 +859,7 @@ declare namespace rtclient {
         handleErrors(e: gapi.drive.realtime.Error): void;
     }
     interface RealtimeLoaderFactory {
-        new(options: LoaderOptions): RealtimeLoader;
+        new (options: LoaderOptions): RealtimeLoader;
     }
 
     // ***********************************
@@ -879,7 +927,11 @@ declare namespace rtclient {
          * @param mimeType {string} the MIME type of the new file.
          * @param callback {(file:DriveAPIFileResource) => void} the callback to call after creation.
          */
-        createRealtimeFile(title: string, mimeType: string, callback: (file: DriveAPIFileResource) => void): void;
+        createRealtimeFile(
+            title: string,
+            mimeType: string,
+            callback: (file: DriveAPIFileResource) => void,
+        ): void;
     }
 
     export var RealtimeLoader: RealtimeLoaderFactory;

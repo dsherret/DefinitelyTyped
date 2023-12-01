@@ -31,9 +31,7 @@ term.green("My name is %s, I'm %d.\n", "Jack", 32);
 
 // Since v0.16.x, style markup are supported as a shorthand.
 // Those two lines produce the same result.
-term("My name is ")
-    .red("Jack")(" and I'm ")
-    .green("32\n");
+term("My name is ").red("Jack")(" and I'm ").green("32\n");
 term("My name is ^rJack^ and I'm ^g32\n");
 
 // Width and height of the terminal
@@ -171,7 +169,7 @@ const autoComplete1 = [
 ];
 
 term("Please enter your name: ");
-(() => {
+() => {
     const input = term.inputField({
         history: history1,
         autoComplete: autoComplete1,
@@ -179,7 +177,7 @@ term("Please enter your name: ");
     }).promise;
 
     term.green("\nYour name is '%s'\n", input);
-});
+};
 
 const autoCompleter = function autoCompleter(
     inputString: string,
@@ -407,9 +405,7 @@ term.slowTyping(
 
 // low level
 
-term("My name is ")
-    .red("Jack")(" and I'm ")
-    .green("32\n");
+term("My name is ").red("Jack")(" and I'm ").green("32\n");
 term("My name is ^rJack^ and I'm ^g32\n");
 
 term.noFormat.red("hello");
@@ -506,24 +502,35 @@ ScreenBuffer.loadImage(
 );
 
 // Output table (https://github.com/cronvel/terminal-kit/blob/HEAD/doc/high-level.md#table-tablecells--options-)
-term.table([
-    ["header #1", "header #2", "header #3"],
-    ["row #1", "a much bigger cell, a much bigger cell, a much bigger cell... ", "cell"],
-    ["row #2", "cell", "a medium cell"],
-    ["row #3", "cell", "cell"],
-    ["row #4", "cell\nwith\nnew\nlines", "^YThis ^Mis ^Ca ^Rcell ^Gwith ^Bmarkup^R^+!"],
-], {
-    hasBorder: true,
-    contentHasMarkup: true,
-    borderChars: "lightRounded",
-    borderAttr: { color: "blue" },
-    textAttr: { bgColor: "default" },
-    firstCellTextAttr: { bgColor: "blue" },
-    firstRowTextAttr: { bgColor: "yellow" },
-    firstColumnTextAttr: { bgColor: "red" },
-    width: 60,
-    fit: true,
-});
+term.table(
+    [
+        ["header #1", "header #2", "header #3"],
+        [
+            "row #1",
+            "a much bigger cell, a much bigger cell, a much bigger cell... ",
+            "cell",
+        ],
+        ["row #2", "cell", "a medium cell"],
+        ["row #3", "cell", "cell"],
+        [
+            "row #4",
+            "cell\nwith\nnew\nlines",
+            "^YThis ^Mis ^Ca ^Rcell ^Gwith ^Bmarkup^R^+!",
+        ],
+    ],
+    {
+        hasBorder: true,
+        contentHasMarkup: true,
+        borderChars: "lightRounded",
+        borderAttr: { color: "blue" },
+        textAttr: { bgColor: "default" },
+        firstCellTextAttr: { bgColor: "blue" },
+        firstRowTextAttr: { bgColor: "yellow" },
+        firstColumnTextAttr: { bgColor: "red" },
+        width: 60,
+        fit: true,
+    },
+);
 
 term.width; // $ExpectType number
 term.height; // $ExpectType number

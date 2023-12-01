@@ -1,7 +1,7 @@
 import crypto = require("mz/crypto");
 
 // Promise:
-crypto.randomBytes(8).then(buf => {
+crypto.randomBytes(8).then((buf) => {
     buf; // $ExpectType Buffer
 });
 

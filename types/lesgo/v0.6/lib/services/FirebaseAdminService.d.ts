@@ -19,7 +19,10 @@ export default class FirebaseAdmin {
 
     connect(opts: FirebaseAdminOpts): void;
 
-    getAllUsers(maxResults?: number, nextPageToken?: string): Promise<auth.UserRecord[]>;
+    getAllUsers(
+        maxResults?: number,
+        nextPageToken?: string,
+    ): Promise<auth.UserRecord[]>;
 
     createUser(data: UserData): Promise<auth.UserRecord>;
 

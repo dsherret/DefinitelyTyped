@@ -1,6 +1,9 @@
 declare namespace matchdep {
     type FilterConfig = string | object;
-    type FilterFunction = (pattern: string | string[], config?: FilterConfig) => string[];
+    type FilterFunction = (
+        pattern: string | string[],
+        config?: FilterConfig,
+    ) => string[];
 }
 
 declare const matchdep: {

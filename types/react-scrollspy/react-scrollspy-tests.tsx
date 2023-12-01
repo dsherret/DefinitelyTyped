@@ -12,7 +12,11 @@ function TestComponent() {
                 <section id="section-3">section 3</section>
             </div>
 
-            <Scrollspy items={items} currentClassName="is-current" onUpdate={el => console.log(el.id)}>
+            <Scrollspy
+                items={items}
+                currentClassName="is-current"
+                onUpdate={(el) => console.log(el.id)}
+            >
                 <li>
                     <a href="#section-1">section 1</a>
                 </li>

@@ -88,7 +88,11 @@ declare namespace deluge {
         add(
             magnet: string,
             dlPath: string | DownloadOptions,
-            callback: (error: string, result: boolean, response: http.ServerResponse) => void,
+            callback: (
+                error: string,
+                result: boolean,
+                response: http.ServerResponse,
+            ) => void,
         ): void;
         /**
          * Connect the WebUI to the wanted daemon
@@ -97,30 +101,56 @@ declare namespace deluge {
          */
         connect(
             hostID: string,
-            callback: (error: string, result: boolean, response: http.ServerResponse) => void,
+            callback: (
+                error: string,
+                result: boolean,
+                response: http.ServerResponse,
+            ) => void,
         ): void;
         /**
          * Get the list of all the hosts that the WebUI can connect to
          * @param callback
          */
-        getHosts(callback: (error: string, result: Host[], response: http.ServerResponse) => void): void;
+        getHosts(
+            callback: (
+                error: string,
+                result: Host[],
+                response: http.ServerResponse,
+            ) => void,
+        ): void;
         /**
          * Get the list of all torrents and changing data that represents their status in the WebUI
          * @param callback
          */
-        getTorrentRecord(callback: (error: string, result: TorrentRecord, response: http.ServerResponse) => void): void;
+        getTorrentRecord(
+            callback: (
+                error: string,
+                result: TorrentRecord,
+                response: http.ServerResponse,
+            ) => void,
+        ): void;
         /**
          * Check if the WebUI is connected to a deamon. Return true or false as result of the callback.
          * @param callback
          */
-        isConnected(callback: (error: string, result: boolean, response: http.ServerResponse) => void): void;
+        isConnected(
+            callback: (
+                error: string,
+                result: boolean,
+                response: http.ServerResponse,
+            ) => void,
+        ): void;
         /**
          * Set cookies in COOKIE_JAR, cookies is an object with urls as keys, example:
          * {'http://example.org/': 'uid=1234;pass=xxxx;'}
          */
         setCookies(
             cookies: { [key: string]: string },
-            callback: (error: string, result: boolean, response: http.ServerResponse) => void,
+            callback: (
+                error: string,
+                result: boolean,
+                response: http.ServerResponse,
+            ) => void,
         ): void;
     }
 }

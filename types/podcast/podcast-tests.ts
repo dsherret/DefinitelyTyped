@@ -22,12 +22,16 @@ const feedOptions: Podcast.FeedOptions = {
     itunesSummary: "I am a summary",
     itunesOwner: { name: "Max Nowack", email: "max@unsou.de" },
     itunesExplicit: false,
-    itunesCategory: [{
-        text: "Entertainment",
-        subcats: [{
-            text: "Television",
-        }],
-    }],
+    itunesCategory: [
+        {
+            text: "Entertainment",
+            subcats: [
+                {
+                    text: "Television",
+                },
+            ],
+        },
+    ],
     itunesImage: "http://link.to/image.png",
     itunesType: "serial",
 };

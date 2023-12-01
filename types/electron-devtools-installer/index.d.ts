@@ -5,8 +5,11 @@ declare module "electron-devtools-installer" {
     }
 
     // Default installation function
-    export default function(
-        extensionReference: ExtensionReference | string | Array<ExtensionReference | string>,
+    export default function (
+        extensionReference:
+            | ExtensionReference
+            | string
+            | Array<ExtensionReference | string>,
         forceDownload?: boolean,
     ): Promise<string>;
 

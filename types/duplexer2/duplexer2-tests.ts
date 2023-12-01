@@ -32,7 +32,11 @@ duplex.end("", () => {
     console.log("finished ending");
 });
 
-const duplexWithOptions = duplexer2({ readableObjectMode: true, writableObjectMode: true }, writable, readable);
+const duplexWithOptions = duplexer2(
+    { readableObjectMode: true, writableObjectMode: true },
+    writable,
+    readable,
+);
 
 duplexWithOptions.on("data", (e: any) => {
     console.log("got data", JSON.stringify(e));

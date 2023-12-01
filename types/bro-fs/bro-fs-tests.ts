@@ -6,4 +6,4 @@ fs.init({ type: window.TEMPORARY, bytes: 5 * 1024 * 1024 })
     .then(() => fs.readFile("dir/file.txt", { type: "Text" }))
     .then(() => fs.createReadStream())
     .then(() => fs.createWriteStream())
-    .then(content => console.log(content)); // => "hello world"
+    .then((content) => console.log(content)); // => "hello world"

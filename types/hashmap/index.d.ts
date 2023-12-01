@@ -16,7 +16,7 @@ declare class HashMap<TKey, TValue> {
      *
      * @param keysAndValues key1, value1, key2, value2...
      */
-    constructor(...keysAndValues: Array<(TKey | TValue)>);
+    constructor(...keysAndValues: Array<TKey | TValue>);
 
     /**
      * Return value from hashmap.
@@ -133,7 +133,9 @@ declare class HashMap<TKey, TValue> {
      * @param callback Function to be invoked for every hashmap entry.
      * @return Self.
      */
-    forEach(callback: (value: TValue, key: TKey) => void): HashMap<TKey, TValue>;
+    forEach(
+        callback: (value: TValue, key: TKey) => void,
+    ): HashMap<TKey, TValue>;
 }
 
 export = HashMap;

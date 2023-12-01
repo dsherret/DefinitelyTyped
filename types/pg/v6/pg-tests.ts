@@ -3,7 +3,7 @@ import * as pg from "pg";
 var conString = "postgres://username:password@localhost/database";
 
 // https://github.com/brianc/node-pg-types
-pg.types.setTypeParser(20, val => Number(val));
+pg.types.setTypeParser(20, (val) => Number(val));
 
 // Client pooling
 pg.defaults.ssl = true;
@@ -26,7 +26,7 @@ pg.connect(conString, (err, client, done) => {
 
 // Simple
 var client = new pg.Client(conString);
-client.connect(err => {
+client.connect((err) => {
     if (err) {
         return console.error("Could not connect to postgres", err);
     }

@@ -21,7 +21,11 @@ interface ResolveBin {
      * @param opts options
      * @param cb called back with the full path to the bin file of the module or an error if it couldn't be resolved
      */
-    (name: string, opts: Options, cb: (error: Error | null, path: string) => void): void;
+    (
+        name: string,
+        opts: Options,
+        cb: (error: Error | null, path: string) => void,
+    ): void;
 
     /**
      * Synchronous version of resolveBin

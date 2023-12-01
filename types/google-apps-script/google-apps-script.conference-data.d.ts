@@ -37,7 +37,9 @@ declare namespace GoogleAppsScript {
              * https://developers.google.com/apps-script/reference/conference-data/conference-data-builder#addConferenceParameter(ConferenceParameter)
              * @param conferenceParameter The parameter to add.
              */
-            addConferenceParameter(conferenceParameter: ConferenceParameter): ConferenceDataBuilder;
+            addConferenceParameter(
+                conferenceParameter: ConferenceParameter,
+            ): ConferenceDataBuilder;
 
             /**
              * Adds an EntryPoint to this ConferenceData. The maximum number of entry points
@@ -70,7 +72,9 @@ declare namespace GoogleAppsScript {
              * https://developers.google.com/apps-script/reference/conference-data/conference-data-builder#setConferenceSolutionId(String)
              * @param conferenceSolutionId The ID matching the manifest.
              */
-            setConferenceSolutionId(conferenceSolutionId: string): ConferenceDataBuilder;
+            setConferenceSolutionId(
+                conferenceSolutionId: string,
+            ): ConferenceDataBuilder;
 
             /**
              * Sets the ConferenceError of this ConferenceData, indicating that the conference
@@ -156,7 +160,9 @@ declare namespace GoogleAppsScript {
              * https://developers.google.com/apps-script/reference/conference-data/conference-error#setConferenceErrorType(ConferenceErrorType)
              * @param conferenceErrorType The type of error to set.
              */
-            setConferenceErrorType(conferenceErrorType: ConferenceErrorType): ConferenceError;
+            setConferenceErrorType(
+                conferenceErrorType: ConferenceErrorType,
+            ): ConferenceError;
         }
         /**
          * Enum that defines the types of errors that you can specify in a ConferenceError.

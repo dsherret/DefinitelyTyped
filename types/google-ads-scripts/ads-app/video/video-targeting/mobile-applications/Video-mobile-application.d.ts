@@ -36,7 +36,8 @@ declare namespace GoogleAdsScripts {
          *        .withAppId('1-936971630')     // required
          *        .build();                     // create the mobile application
          */
-        interface VideoMobileApplicationBuilder extends Base.Builder<VideoMobileApplicationOperation> {
+        interface VideoMobileApplicationBuilder
+            extends Base.Builder<VideoMobileApplicationOperation> {
             /** Builds the excluded video mobile application. */
             exclude(): ExcludedVideoMobileApplicationOperation;
             /** Sets the ID of the mobile application. */
@@ -52,10 +53,12 @@ declare namespace GoogleAdsScripts {
          *        var videoMobileApplication = videoMobileApplicationIterator.next();
          *      }
          */
-        interface VideoMobileApplicationIterator extends Base.Iterator<VideoMobileApplication> {}
+        interface VideoMobileApplicationIterator
+            extends Base.Iterator<VideoMobileApplication> {}
 
         /** An operation representing creation of a new video mobile application. */
-        interface VideoMobileApplicationOperation extends Base.Operation<VideoMobileApplication> {}
+        interface VideoMobileApplicationOperation
+            extends Base.Operation<VideoMobileApplication> {}
 
         /**
          * Fetches video mobile applications. Supports filtering and sorting.
@@ -74,13 +77,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoMobileApplicationSelector
-            extends
-                Base.Selector<VideoMobileApplicationIterator>,
+            extends Base.Selector<VideoMobileApplicationIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

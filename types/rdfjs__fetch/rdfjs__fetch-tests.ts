@@ -7,7 +7,7 @@ import { Dataset, DatasetCoreFactory, Quad, Stream } from "rdf-js";
 const formats: {
     parsers: SinkMap<EventEmitter, Stream>;
     serializers: SinkMap<EventEmitter, Stream>;
-} = <any> {};
+} = <any>{};
 
 function noOptions(): Promise<RdfFetchResponse> {
     return fetch("http://example.com/");
@@ -34,7 +34,7 @@ interface QuadExt extends Quad {
 interface DatasetX extends Dataset<QuadExt> {
     toCanonical(): string;
 }
-const factory: DatasetCoreFactory<QuadExt, QuadExt, DatasetX> = <any> {};
+const factory: DatasetCoreFactory<QuadExt, QuadExt, DatasetX> = <any>{};
 
 async function fetchDataset(): Promise<DatasetX> {
     const response = await fetch("http://example.com", { formats, factory });

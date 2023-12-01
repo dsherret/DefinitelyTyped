@@ -114,7 +114,10 @@ export namespace promise {
      *       throw Error('two');  // Hides Error: one
      *     });
      */
-    function thenFinally<R>(promise: any, callback: () => R | Promise<R>): Promise<R>;
+    function thenFinally<R>(
+        promise: any,
+        callback: () => R | Promise<R>,
+    ): Promise<R>;
 
     // endregion
 }

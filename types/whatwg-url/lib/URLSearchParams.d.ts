@@ -18,13 +18,23 @@ export function isImpl(obj: unknown): obj is URLSearchParamsImpl;
  *
  * @throws {TypeError} If `obj` is not a `URLSearchParams` wrapper instance provided by this package.
  */
-export function convert(globalObject: object, obj: unknown, { context }?: { context: string }): URLSearchParamsImpl;
+export function convert(
+    globalObject: object,
+    obj: unknown,
+    { context }?: { context: string },
+): URLSearchParamsImpl;
 
-export function createDefaultIterator<TIteratorKind extends "key" | "value" | "key+value">(
+export function createDefaultIterator<
+    TIteratorKind extends "key" | "value" | "key+value",
+>(
     globalObject: object,
     target: URLSearchParamsImpl,
     kind: TIteratorKind,
-): IterableIterator<TIteratorKind extends "key" | "value" ? string : [name: string, value: string]>;
+): IterableIterator<
+    TIteratorKind extends "key" | "value"
+        ? string
+        : [name: string, value: string]
+>;
 
 /**
  * Creates a new `URLSearchParams` instance.
@@ -36,7 +46,10 @@ export function createDefaultIterator<TIteratorKind extends "key" | "value" | "k
 export function create(
     globalObject: object,
     constructorArgs?: readonly [
-        init: ReadonlyArray<[name: string, value: string]> | { readonly [name: string]: string } | string,
+        init:
+            | ReadonlyArray<[name: string, value: string]>
+            | { readonly [name: string]: string }
+            | string,
     ],
     privateData?: { doNotStripQMark?: boolean | undefined },
 ): URLSearchParams;
@@ -51,7 +64,10 @@ export function create(
 export function createImpl(
     globalObject: object,
     constructorArgs?: readonly [
-        init: ReadonlyArray<[name: string, value: string]> | { readonly [name: string]: string } | string,
+        init:
+            | ReadonlyArray<[name: string, value: string]>
+            | { readonly [name: string]: string }
+            | string,
     ],
     privateData?: { doNotStripQMark?: boolean | undefined },
 ): URLSearchParamsImpl;
@@ -65,7 +81,10 @@ export function setup<T extends URLSearchParams>(
     obj: T,
     globalObject: object,
     constructorArgs?: readonly [
-        init: ReadonlyArray<[name: string, value: string]> | { readonly [name: string]: string } | string,
+        init:
+            | ReadonlyArray<[name: string, value: string]>
+            | { readonly [name: string]: string }
+            | string,
     ],
     privateData?: { doNotStripQMark?: boolean | undefined },
 ): T;
@@ -78,8 +97,11 @@ export function setup<T extends URLSearchParams>(
  */
 declare function _new(
     globalObject: object,
-    newTarget?: new(
-        init: ReadonlyArray<[name: string, value: string]> | { readonly [name: string]: string } | string,
+    newTarget?: new (
+        init:
+            | ReadonlyArray<[name: string, value: string]>
+            | { readonly [name: string]: string }
+            | string,
     ) => URLSearchParams,
 ): URLSearchParamsImpl;
 export { _new as new };
@@ -89,4 +111,7 @@ export { _new as new };
  *
  * @throws {Error} If the target `globalObject` doesn't have an `Error` constructor.
  */
-export function install(globalObject: object, globalNames: readonly string[]): void;
+export function install(
+    globalObject: object,
+    globalNames: readonly string[],
+): void;

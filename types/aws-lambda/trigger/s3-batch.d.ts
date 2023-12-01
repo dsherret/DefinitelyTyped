@@ -32,7 +32,10 @@ export interface S3BatchResult {
     results: S3BatchResultResult[];
 }
 
-export type S3BatchResultResultCode = "Succeeded" | "TemporaryFailure" | "PermanentFailure";
+export type S3BatchResultResultCode =
+    | "Succeeded"
+    | "TemporaryFailure"
+    | "PermanentFailure";
 
 export interface S3BatchResultResult {
     taskId: string;

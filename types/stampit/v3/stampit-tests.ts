@@ -1,6 +1,6 @@
 import stampit = require("stampit");
 
-const a = stampit().init(function(options) {
+const a = stampit().init(function (options) {
     const a = options.args[0];
     this.getA = () => {
         return a;
@@ -9,7 +9,7 @@ const a = stampit().init(function(options) {
 a(); // Object -- so far so good.
 a().getA(); // "a"
 
-const b = stampit().init(function() {
+const b = stampit().init(function () {
     const a = "b";
     this.getB = () => {
         return a;
@@ -52,64 +52,84 @@ const myBar = bar({ name: "Moe's" });
 // Silly, but proves that everything is as it should be.
 myBar.add({ name: "Homer" }).open().getMember("Homer");
 
-const myStamp = stampit().methods({
-    foo() {
-        return "foo";
-    },
-    methodOverride() {
-        return false;
-    },
-}).methods({
-    bar() {
-        return "bar";
-    },
-    methodOverride() {
-        return true;
-    },
-});
+const myStamp = stampit()
+    .methods({
+        foo() {
+            return "foo";
+        },
+        methodOverride() {
+            return false;
+        },
+    })
+    .methods({
+        bar() {
+            return "bar";
+        },
+        methodOverride() {
+            return true;
+        },
+    });
 
-myStamp.props({
-    foo: { bar: "bar" },
-    refsOverride: false,
-}).refs({
-    bar: "bar",
-    refsOverride: true,
-});
+myStamp
+    .props({
+        foo: { bar: "bar" },
+        refsOverride: false,
+    })
+    .refs({
+        bar: "bar",
+        refsOverride: true,
+    });
 
-myStamp.init(function() {
-    const secret = "foo";
+myStamp
+    .init(function () {
+        const secret = "foo";
 
-    this.getSecret = () => {
-        return secret;
-    };
-}).init(function() {
-    this.a = true;
-}).init(function() {
-    this.b = true;
-}, function() {
-    this.c = true;
-});
+        this.getSecret = () => {
+            return secret;
+        };
+    })
+    .init(function () {
+        this.a = true;
+    })
+    .init(
+        function () {
+            this.b = true;
+        },
+        function () {
+            this.c = true;
+        },
+    );
 
 let obj = myStamp.create();
 obj.getSecret && obj.a && obj.b && obj.c; // true
 
 const newStamp = stampit({ refs: { defaultNum: 1 } }).compose(myStamp);
 
-const obj1 = stampit().methods({
-    a() {
-        return "a";
-    },
-}, {
-    b() {
-        return "b";
-    },
-}).create();
+const obj1 = stampit()
+    .methods(
+        {
+            a() {
+                return "a";
+            },
+        },
+        {
+            b() {
+                return "b";
+            },
+        },
+    )
+    .create();
 
-const obj2 = stampit().refs({
-    a: "a",
-}, {
-    b: "b",
-}).create();
+const obj2 = stampit()
+    .refs(
+        {
+            a: "a",
+        },
+        {
+            b: "b",
+        },
+    )
+    .create();
 
 obj = defaults.compose(newStamp, membership).create();
 
@@ -122,14 +142,16 @@ Constructor.prototype.foo = function foo() {
 };
 
 // A new stamp to compose with...
-const newskool = stampit().methods({
-    bar: function bar() {
-        return "bar";
-    },
-    // your methods here...
-}).init(function() {
-    this.baz = "baz";
-});
+const newskool = stampit()
+    .methods({
+        bar: function bar() {
+            return "bar";
+        },
+        // your methods here...
+    })
+    .init(function () {
+        this.baz = "baz";
+    });
 
 // Now you can compose those old constructors just like you could
 // with any other stamp...
@@ -153,11 +175,10 @@ interface SomeStamp extends stampit.Stamp {
     (params: { a: number; b: boolean }): SomeStampInstance;
 }
 
-const SomeStamp = stampit()
-    .init(function(params: { a: number; b: boolean }) {
-        this.a = "" + a;
-        this.b = "" + b;
-    }) as SomeStamp;
+const SomeStamp = stampit().init(function (params: { a: number; b: boolean }) {
+    this.a = "" + a;
+    this.b = "" + b;
+}) as SomeStamp;
 
 SomeStamp({ a: 1, b: false }); // $ExpectType SomeStampInstance
 SomeStamp({ a: 1, b: false }).a; // $ExpectType string

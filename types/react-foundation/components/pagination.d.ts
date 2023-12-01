@@ -9,7 +9,9 @@ import { FlexboxPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const Pagination: React.FunctionComponent<PaginationProps>;
-export interface PaginationProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLUListElement> {
+export interface PaginationProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLUListElement> {
     isCentered?: boolean | undefined;
 }
 /**
@@ -19,7 +21,9 @@ export interface PaginationProps extends FlexboxPropTypes, React.HTMLAttributes<
  * @returns {Object}
  */
 export declare const PaginationItem: React.FunctionComponent<PaginationItemProps>;
-export interface PaginationItemProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLLIElement> {
+export interface PaginationItemProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLLIElement> {
     isCurrent?: boolean | undefined;
     isDisabled?: boolean | undefined;
 }

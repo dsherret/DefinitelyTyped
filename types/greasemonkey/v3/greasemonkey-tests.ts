@@ -54,7 +54,9 @@ var prototypeURL: string = GM_getResourceURL("prototype");
 // Utilities
 ////////////////
 
-GM_addStyle("body { color: white; background-color: black; } img { border: 0; }");
+GM_addStyle(
+    "body { color: white; background-color: black; } img { border: 0; }",
+);
 
 GM_log("Hello, World!");
 
@@ -79,7 +81,7 @@ GM_setClipboard("http://www.example.com/short-url-code");
 GM_xmlhttpRequest({
     method: "GET",
     url: "http://www.example.com/",
-    onload: function(response) {
+    onload: function (response) {
         alert(response.responseText);
     },
 });
@@ -91,25 +93,29 @@ GM_xmlhttpRequest({
     url: "http://www.example.net/",
     headers: {
         "User-Agent": "Mozilla/5.0", // If not specified, navigator.userAgent will be used.
-        "Accept": "text/xml", // If not specified, browser defaults will be used.
+        Accept: "text/xml", // If not specified, browser defaults will be used.
     },
-    onload: function(response) {
-        var responseXML = (<any> response).responseXML;
+    onload: function (response) {
+        var responseXML = (<any>response).responseXML;
         // Inject responseXML into existing Object (only appropriate for XML content).
         if (!responseXML) {
-            responseXML = new DOMParser()
-                .parseFromString(response.responseText, "text/xml");
+            responseXML = new DOMParser().parseFromString(
+                response.responseText,
+                "text/xml",
+            );
         }
 
-        GM_log([
-            response.status,
-            response.statusText,
-            response.readyState,
-            response.responseHeaders,
-            response.responseText,
-            response.finalUrl,
-            responseXML,
-        ].join("\n"));
+        GM_log(
+            [
+                response.status,
+                response.statusText,
+                response.readyState,
+                response.responseHeaders,
+                response.responseText,
+                response.finalUrl,
+                responseXML,
+            ].join("\n"),
+        );
     },
 });
 
@@ -122,7 +128,7 @@ GM_xmlhttpRequest({
     headers: {
         "Content-Type": "application/x-www-form-urlencoded",
     },
-    onload: function(response) {
+    onload: function (response) {
         if (response.responseText.indexOf("Logged in as") > -1) {
             location.href = "http://www.example.net/dashboard";
         }
@@ -134,7 +140,7 @@ GM_xmlhttpRequest({
 GM_xmlhttpRequest({
     url: "http://www.example.com",
     method: "HEAD",
-    onload: function(response) {
+    onload: function (response) {
         GM_log(response.responseHeaders);
     },
 });
@@ -203,7 +209,7 @@ var finalUrl: string = syncResult.finalUrl;
 var readyState: number = syncResult.readyState;
 var responseHeaders: string = syncResult.responseHeaders;
 var responseText: string = syncResult.responseText;
-(function() {
+(function () {
     var status: number = syncResult.status;
 })(); // conflict with state defined in lib.d.ts
 var statusText: string = syncResult.statusText;

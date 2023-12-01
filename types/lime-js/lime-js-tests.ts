@@ -23,7 +23,7 @@ transport.onOpen = () => {
         authentication,
         "test",
         (err, session) => {
-            var message: Lime.Message = <Lime.Message> {
+            var message: Lime.Message = <Lime.Message>{
                 id: "123",
                 to: "someone@test.net",
                 type: "text/plain",

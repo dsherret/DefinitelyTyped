@@ -10,13 +10,23 @@ export interface FormAction extends Action {
 /**
  * Inserts an item into a field array at the specified index
  */
-export function arrayInsert(form: string, field: string, index: number, value: any): FormAction;
+export function arrayInsert(
+    form: string,
+    field: string,
+    index: number,
+    value: any,
+): FormAction;
 
 /**
  * Moves an item from one index in the array to another. In effect, it performs a remove and an
  * insert, so the item already at the `to` position will be bumped to a higher index, not overwritten.
  */
-export function arrayMove(form: string, field: string, from: number, to: number): FormAction;
+export function arrayMove(
+    form: string,
+    field: string,
+    from: number,
+    to: number,
+): FormAction;
 
 /**
  * Removes an item from the end of a field array
@@ -31,7 +41,11 @@ export function arrayPush(form: string, field: string, value: any): FormAction;
 /**
  * Removes an item at the specified index from a field array
  */
-export function arrayRemove(form: string, field: string, index: number): FormAction;
+export function arrayRemove(
+    form: string,
+    field: string,
+    index: number,
+): FormAction;
 
 /**
  * Removes all items from a field array
@@ -46,17 +60,32 @@ export function arrayShift(form: string, field: string): FormAction;
 /**
  * ADVANCED USAGE - Inserts and/or removes items from a field array. Works similarly to Array.splice.
  */
-export function arraySplice(form: string, field: string, index: number, removeNum: number, value: any): FormAction;
+export function arraySplice(
+    form: string,
+    field: string,
+    index: number,
+    removeNum: number,
+    value: any,
+): FormAction;
 
 /**
  * Swaps two items at the specified indexes in a field array
  */
-export function arraySwap(form: string, field: string, indexA: number, indexB: number): FormAction;
+export function arraySwap(
+    form: string,
+    field: string,
+    indexA: number,
+    indexB: number,
+): FormAction;
 
 /**
  * Inserts an item at the beginning of a field array
  */
-export function arrayUnshift(form: string, field: string, value: any): FormAction;
+export function arrayUnshift(
+    form: string,
+    field: string,
+    value: any,
+): FormAction;
 
 /**
  * Saves the value to the field and sets its `autofilled` property to `true`.
@@ -66,7 +95,12 @@ export function autofill(form: string, field: string, value: any): FormAction;
 /**
  * Saves the value to the field
  */
-export function blur(form: string, field: string, value: any, touch?: boolean): FormAction;
+export function blur(
+    form: string,
+    field: string,
+    value: any,
+    touch?: boolean,
+): FormAction;
 
 /**
  * Saves the value to the field
@@ -110,7 +144,11 @@ export function initialize(
 /**
  * Registers a field with the form.
  */
-export function registerField(form: string, name: string, type: FieldType): FormAction;
+export function registerField(
+    form: string,
+    name: string,
+    type: FieldType,
+): FormAction;
 
 /**
  * Resets the values in the form back to the values past in with the most recent initialize action.
@@ -129,7 +167,10 @@ export function stopAsyncValidation(form: string, errors?: any): FormAction;
 
 export function setSubmitFailed(form: string, ...fields: string[]): FormAction;
 
-export function setSubmitSucceeded(form: string, ...fields: string[]): FormAction;
+export function setSubmitSucceeded(
+    form: string,
+    ...fields: string[]
+): FormAction;
 
 /**
  * Flips the submitting flag true.
@@ -166,6 +207,14 @@ export function unregisterField(form: string, name: string): FormAction;
  */
 export function untouch(form: string, ...fields: string[]): FormAction;
 
-export function updateSyncErrors(from: string, syncErrors: FormErrors<FormData>, error: any): FormAction;
+export function updateSyncErrors(
+    from: string,
+    syncErrors: FormErrors<FormData>,
+    error: any,
+): FormAction;
 
-export function updateSyncWarnings(form: string, syncWarnings: FormWarnings<FormData>, warning: any): FormAction;
+export function updateSyncWarnings(
+    form: string,
+    syncWarnings: FormWarnings<FormData>,
+    warning: any,
+): FormAction;

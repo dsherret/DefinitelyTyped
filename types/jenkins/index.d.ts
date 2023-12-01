@@ -9,7 +9,10 @@ interface CrumbData {
 
 interface JenkinsClientOptions {
     baseUrl: string;
-    crumbIssuer?: boolean | undefined | ((client: Jenkins) => Promise<CrumbData>);
+    crumbIssuer?:
+        | boolean
+        | undefined
+        | ((client: Jenkins) => Promise<CrumbData>);
     formData?: FormData;
     headers?: any;
 }
@@ -25,8 +28,19 @@ declare class Jenkins {
     info(): Promise<any>;
     build: {
         get(name: string, n: number): Promise<any>;
-        log(name: string, n: number, start?: number, type?: "text" | "html", meta?: boolean): Promise<any>;
-        logStream(name: string, n: number, type?: "text" | "html", delay?: number): Promise<any>;
+        log(
+            name: string,
+            n: number,
+            start?: number,
+            type?: "text" | "html",
+            meta?: boolean,
+        ): Promise<any>;
+        logStream(
+            name: string,
+            n: number,
+            type?: "text" | "html",
+            delay?: number,
+        ): Promise<any>;
         stop(name: string, n: number): Promise<void>;
         term(name: string, n: number): Promise<void>;
     };

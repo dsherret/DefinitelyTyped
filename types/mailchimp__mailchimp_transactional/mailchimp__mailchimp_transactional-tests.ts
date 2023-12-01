@@ -73,15 +73,21 @@ checkType<ExportResponse>(mailchimp.exports.whitelist({ notify_email: "" }));
 checkType<InboundDomainResponse>(mailchimp.inbound.addDomain({ domain: "" }));
 checkType<InboundRouteResponse>(mailchimp.inbound.addRoute({ domain: "" }));
 checkType<InboundDomainResponse>(mailchimp.inbound.checkDomain({ domain: "" }));
-checkType<InboundDomainResponse>(mailchimp.inbound.deleteDomain({ domain: "" }));
+checkType<InboundDomainResponse>(
+    mailchimp.inbound.deleteDomain({ domain: "" }),
+);
 checkType<InboundRouteResponse>(mailchimp.inbound.deleteRoute({ id: "" }));
 checkType<InboundDomainResponse[]>(mailchimp.inbound.domains());
 checkType<InboundRouteResponse[]>(mailchimp.inbound.routes({ domain: "" }));
-checkType<InboundSendRawResponse[]>(mailchimp.inbound.sendRaw({ raw_message: "" }));
+checkType<InboundSendRawResponse[]>(
+    mailchimp.inbound.sendRaw({ raw_message: "" }),
+);
 checkType<InboundRouteResponse>(mailchimp.inbound.updateRoute({ id: "" }));
 
 checkType<IpsInfoResponse>(mailchimp.ips.cancelWarmup({ ip: "" }));
-checkType<IpsCheckCustomDnsResponse>(mailchimp.ips.checkCustomDns({ domain: "", ip: "" }));
+checkType<IpsCheckCustomDnsResponse>(
+    mailchimp.ips.checkCustomDns({ domain: "", ip: "" }),
+);
 checkType<IpsPoolInfoResponse>(mailchimp.ips.createPool({ pool: "" }));
 checkType<IpsDeleteResponse>(mailchimp.ips.delete({ ip: "" }));
 checkType<IpsDeletePoolResponse>(mailchimp.ips.deletePool({ pool: "" }));
@@ -95,17 +101,27 @@ checkType<IpsInfoResponse>(mailchimp.ips.setCustomDns({ domain: "", ip: "" }));
 checkType<IpsInfoResponse>(mailchimp.ips.setPool({ ip: "", pool: "" }));
 checkType<IpsInfoResponse>(mailchimp.ips.startWarmup({ ip: "" }));
 
-checkType<MessagesScheduledMessageResponse[]>(mailchimp.messages.cancelScheduled({ id: "" }));
+checkType<MessagesScheduledMessageResponse[]>(
+    mailchimp.messages.cancelScheduled({ id: "" }),
+);
 checkType<MessagesContentResponse>(mailchimp.messages.content({ id: "" }));
 checkType<MessagesInfoResponse>(mailchimp.messages.info({ id: "" }));
-checkType<MessagesScheduledMessageResponse[]>(mailchimp.messages.listScheduled());
-checkType<MessagesScheduledMessageResponse[]>(mailchimp.messages.listScheduled({ to: "" }));
+checkType<MessagesScheduledMessageResponse[]>(
+    mailchimp.messages.listScheduled(),
+);
+checkType<MessagesScheduledMessageResponse[]>(
+    mailchimp.messages.listScheduled({ to: "" }),
+);
 checkType<MessagesParseResponse>(mailchimp.messages.parse({ raw_message: "" }));
-checkType<MessagesScheduledMessageResponse[]>(mailchimp.messages.reschedule({ id: "", send_at: "" }));
+checkType<MessagesScheduledMessageResponse[]>(
+    mailchimp.messages.reschedule({ id: "", send_at: "" }),
+);
 checkType<MessagesSearchResponse[]>(mailchimp.messages.search());
 checkType<MessagesSearchResponse[]>(mailchimp.messages.search({ limit: 1 }));
 checkType<SearchTimeSeriesResponse[]>(mailchimp.messages.searchTimeSeries());
-checkType<SearchTimeSeriesResponse[]>(mailchimp.messages.searchTimeSeries({ query: "" }));
+checkType<SearchTimeSeriesResponse[]>(
+    mailchimp.messages.searchTimeSeries({ query: "" }),
+);
 checkType<MessagesSendResponse[]>(
     mailchimp.messages.send({
         message: {
@@ -121,7 +137,9 @@ checkType<MessagesSendResponse[]>(
         template_name: "my-template-slug",
         template_content: [],
         message: {
-            to: [{ name: "John Doe", email: "johndoe@example.com", type: "to" }],
+            to: [
+                { name: "John Doe", email: "johndoe@example.com", type: "to" },
+            ],
         },
     }),
 );
@@ -130,7 +148,9 @@ checkType<{}>(mailchimp.messages.sendRaw({ raw_message: "" }));
 checkType<MetadataResponse>(mailchimp.metadata.add({ name: "" }));
 checkType<MetadataResponse>(mailchimp.metadata.delete({ name: "" }));
 checkType<MetadataResponse[]>(mailchimp.metadata.list());
-checkType<MetadataResponse>(mailchimp.metadata.update({ name: "", view_template: "" }));
+checkType<MetadataResponse>(
+    mailchimp.metadata.update({ name: "", view_template: "" }),
+);
 
 checkType<RejectsAddResponse>(mailchimp.rejects.add({ email: "" }));
 checkType<RejectsDeleteResponse>(mailchimp.rejects.delete({ email: "" }));
@@ -143,7 +163,9 @@ checkType<SendersDomainResponse[]>(mailchimp.senders.domains());
 checkType<SendersInfoResponse>(mailchimp.senders.info({ address: "" }));
 checkType<SendersListResponse[]>(mailchimp.senders.list());
 checkType<TimeSeriesResponse[]>(mailchimp.senders.timeSeries({ address: "" }));
-checkType<SendersVerifyDomainResponse>(mailchimp.senders.verifyDomain({ domain: "", mailbox: "" }));
+checkType<SendersVerifyDomainResponse>(
+    mailchimp.senders.verifyDomain({ domain: "", mailbox: "" }),
+);
 
 checkType<SubaccountResponse>(mailchimp.subaccounts.add({ id: "" }));
 checkType<SubaccountResponse>(mailchimp.subaccounts.delete({ id: "" }));
@@ -167,13 +189,20 @@ checkType<TemplateResponse[]>(mailchimp.templates.list());
 checkType<TemplateResponse[]>(mailchimp.templates.list({ label: "" }));
 checkType<TemplateResponse>(mailchimp.templates.publish({ name: "" }));
 checkType<TemplatesRenderResponse>(
-    mailchimp.templates.render({ template_content: [{ name: "", content: "" }], template_name: "" }),
+    mailchimp.templates.render({
+        template_content: [{ name: "", content: "" }],
+        template_name: "",
+    }),
 );
 checkType<TimeSeriesResponse[]>(mailchimp.templates.timeSeries({ name: "" }));
 checkType<TemplateResponse>(mailchimp.templates.update({ name: "" }));
 
-checkType<UrlsTrackingDomainResponse>(mailchimp.urls.addTrackingDomain({ domain: "" }));
-checkType<UrlsTrackingDomainResponse>(mailchimp.urls.checkTrackingDomain({ domain: "" }));
+checkType<UrlsTrackingDomainResponse>(
+    mailchimp.urls.addTrackingDomain({ domain: "" }),
+);
+checkType<UrlsTrackingDomainResponse>(
+    mailchimp.urls.checkTrackingDomain({ domain: "" }),
+);
 checkType<UrlsStatsResponse[]>(mailchimp.urls.list());
 checkType<UrlsStatsResponse[]>(mailchimp.urls.search({ q: "" }));
 checkType<UrlsTimeSeriesResponse[]>(mailchimp.urls.timeSeries({ url: "" }));

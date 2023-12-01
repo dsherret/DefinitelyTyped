@@ -1,4 +1,9 @@
-import type { ComponentClass, CSSProperties, MouseEventHandler, ReactNode } from "react";
+import type {
+    ComponentClass,
+    CSSProperties,
+    MouseEventHandler,
+    ReactNode,
+} from "react";
 
 // See https://github.com/react-bootstrap/react-router-bootstrap/blob/master/src/LinkContainer.js
 interface LinkContainerProps {

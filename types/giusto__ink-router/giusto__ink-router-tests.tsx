@@ -1,4 +1,10 @@
-import { CommandLineRouter, Route, Router, Switch, withRouter } from "@giusto/ink-router";
+import {
+    CommandLineRouter,
+    Route,
+    Router,
+    Switch,
+    withRouter,
+} from "@giusto/ink-router";
 import * as React from "react";
 
 const HomeView = () => {

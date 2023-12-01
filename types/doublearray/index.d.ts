@@ -36,8 +36,16 @@ declare namespace doublearray {
         keys: KeyValue[];
         append(key: string, record: number): DoubleArrayBuilder;
         build(keys?: KeyValue[], sorted?: boolean): DoubleArray;
-        getChildrenInfo(position: number, start: number, length: number): Int32Array;
-        setBC(parent_id: number, children_info: Int32Array, _base: number): void;
+        getChildrenInfo(
+            position: number,
+            start: number,
+            length: number,
+        ): Int32Array;
+        setBC(
+            parent_id: number,
+            children_info: Int32Array,
+            _base: number,
+        ): void;
         findAllocatableBase(children_info: Int32Array): number;
         isUnusedNode(index: number): boolean;
     }
@@ -55,40 +63,148 @@ declare namespace doublearray {
 
     export function builder(initial_size?: number): DoubleArrayBuilder;
     // TODO: Replace to union types in the future.
-    export function load(base_buffer: Int8Array, check_buffer: Int8Array): DoubleArray;
-    export function load(base_buffer: Int8Array, check_buffer: Int16Array): DoubleArray;
-    export function load(base_buffer: Int8Array, check_buffer: Int32Array): DoubleArray;
-    export function load(base_buffer: Int8Array, check_buffer: Uint8Array): DoubleArray;
-    export function load(base_buffer: Int8Array, check_buffer: Uint16Array): DoubleArray;
-    export function load(base_buffer: Int8Array, check_buffer: Uint32Array): DoubleArray;
-    export function load(base_buffer: Int16Array, check_buffer: Int8Array): DoubleArray;
-    export function load(base_buffer: Int16Array, check_buffer: Int16Array): DoubleArray;
-    export function load(base_buffer: Int16Array, check_buffer: Int32Array): DoubleArray;
-    export function load(base_buffer: Int16Array, check_buffer: Uint8Array): DoubleArray;
-    export function load(base_buffer: Int16Array, check_buffer: Uint16Array): DoubleArray;
-    export function load(base_buffer: Int16Array, check_buffer: Uint32Array): DoubleArray;
-    export function load(base_buffer: Int32Array, check_buffer: Int8Array): DoubleArray;
-    export function load(base_buffer: Int32Array, check_buffer: Int16Array): DoubleArray;
-    export function load(base_buffer: Int32Array, check_buffer: Int32Array): DoubleArray;
-    export function load(base_buffer: Int32Array, check_buffer: Uint8Array): DoubleArray;
-    export function load(base_buffer: Int32Array, check_buffer: Uint16Array): DoubleArray;
-    export function load(base_buffer: Int32Array, check_buffer: Uint32Array): DoubleArray;
-    export function load(base_buffer: Uint8Array, check_buffer: Int8Array): DoubleArray;
-    export function load(base_buffer: Uint8Array, check_buffer: Int16Array): DoubleArray;
-    export function load(base_buffer: Uint8Array, check_buffer: Int32Array): DoubleArray;
-    export function load(base_buffer: Uint8Array, check_buffer: Uint8Array): DoubleArray;
-    export function load(base_buffer: Uint8Array, check_buffer: Uint16Array): DoubleArray;
-    export function load(base_buffer: Uint8Array, check_buffer: Uint32Array): DoubleArray;
-    export function load(base_buffer: Uint16Array, check_buffer: Int8Array): DoubleArray;
-    export function load(base_buffer: Uint16Array, check_buffer: Int16Array): DoubleArray;
-    export function load(base_buffer: Uint16Array, check_buffer: Int32Array): DoubleArray;
-    export function load(base_buffer: Uint16Array, check_buffer: Uint8Array): DoubleArray;
-    export function load(base_buffer: Uint16Array, check_buffer: Uint16Array): DoubleArray;
-    export function load(base_buffer: Uint16Array, check_buffer: Uint32Array): DoubleArray;
-    export function load(base_buffer: Uint32Array, check_buffer: Int8Array): DoubleArray;
-    export function load(base_buffer: Uint32Array, check_buffer: Int16Array): DoubleArray;
-    export function load(base_buffer: Uint32Array, check_buffer: Int32Array): DoubleArray;
-    export function load(base_buffer: Uint32Array, check_buffer: Uint8Array): DoubleArray;
-    export function load(base_buffer: Uint32Array, check_buffer: Uint16Array): DoubleArray;
-    export function load(base_buffer: Uint32Array, check_buffer: Uint32Array): DoubleArray;
+    export function load(
+        base_buffer: Int8Array,
+        check_buffer: Int8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int8Array,
+        check_buffer: Int16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int8Array,
+        check_buffer: Int32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int8Array,
+        check_buffer: Uint8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int8Array,
+        check_buffer: Uint16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int8Array,
+        check_buffer: Uint32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int16Array,
+        check_buffer: Int8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int16Array,
+        check_buffer: Int16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int16Array,
+        check_buffer: Int32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int16Array,
+        check_buffer: Uint8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int16Array,
+        check_buffer: Uint16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int16Array,
+        check_buffer: Uint32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int32Array,
+        check_buffer: Int8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int32Array,
+        check_buffer: Int16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int32Array,
+        check_buffer: Int32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int32Array,
+        check_buffer: Uint8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int32Array,
+        check_buffer: Uint16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Int32Array,
+        check_buffer: Uint32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint8Array,
+        check_buffer: Int8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint8Array,
+        check_buffer: Int16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint8Array,
+        check_buffer: Int32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint8Array,
+        check_buffer: Uint8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint8Array,
+        check_buffer: Uint16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint8Array,
+        check_buffer: Uint32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint16Array,
+        check_buffer: Int8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint16Array,
+        check_buffer: Int16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint16Array,
+        check_buffer: Int32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint16Array,
+        check_buffer: Uint8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint16Array,
+        check_buffer: Uint16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint16Array,
+        check_buffer: Uint32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint32Array,
+        check_buffer: Int8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint32Array,
+        check_buffer: Int16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint32Array,
+        check_buffer: Int32Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint32Array,
+        check_buffer: Uint8Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint32Array,
+        check_buffer: Uint16Array,
+    ): DoubleArray;
+    export function load(
+        base_buffer: Uint32Array,
+        check_buffer: Uint32Array,
+    ): DoubleArray;
 }

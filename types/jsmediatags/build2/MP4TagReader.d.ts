@@ -1,4 +1,11 @@
-import { ByteRange, CallbackType, CharsetType, LoadCallbackType, TagFrame, TagType } from "../types";
+import {
+    ByteRange,
+    CallbackType,
+    CharsetType,
+    LoadCallbackType,
+    TagFrame,
+    TagType,
+} from "../types";
 import MediaFileReader from "./MediaFileReader";
 import MediaTagReader from "./MediaTagReader";
 
@@ -7,7 +14,10 @@ export default class MP4TagReader extends MediaTagReader {
 
     static canReadTagFormat(tagIdentifier: number[]): boolean;
 
-    _loadData(mediaFileReader: MediaFileReader, callbacks: LoadCallbackType): void;
+    _loadData(
+        mediaFileReader: MediaFileReader,
+        callbacks: LoadCallbackType,
+    ): void;
 
     _loadAtom(
         mediaFileReader: MediaFileReader,

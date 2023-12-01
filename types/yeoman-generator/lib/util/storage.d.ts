@@ -37,7 +37,12 @@ declare class Storage {
      * @param configPath The filepath used as a storage.
      * @param options Storage options.
      */
-    constructor(name: string, fs: Editor, configPath: string, options?: Storage.StorageOptions);
+    constructor(
+        name: string,
+        fs: Editor,
+        configPath: string,
+        options?: Storage.StorageOptions,
+    );
 
     /**
      * Creates a proxy object.

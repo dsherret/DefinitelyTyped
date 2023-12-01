@@ -43,14 +43,11 @@ access(new Buffer("abc"));
 // $ExpectType Promise<void>
 access(new URL("file:foo/bar"), constants.R_OK);
 
-readFile("bubble", { flag: "a" })
-    .then((b: Buffer) => {});
+readFile("bubble", { flag: "a" }).then((b: Buffer) => {});
 
-readFile(3, { encoding: "utf8" })
-    .then((s: string) => {});
+readFile(3, { encoding: "utf8" }).then((s: string) => {});
 
-readFile("f/f/s", "utf8")
-    .then((s: string) => {});
+readFile("f/f/s", "utf8").then((s: string) => {});
 
 // $ExpectType Promise<void>
 writeFile("a/b/c/d", "1234", "ascii");
@@ -67,20 +64,21 @@ copyFile("src/file", "dest/file", constants.O_APPEND);
 // $ExpectType Promise<void>
 close(4);
 
-open("abc", "r+")
-    .then((fd: number) => {});
+open("abc", "r+").then((fd: number) => {});
 
-open(new Buffer("23434"), constants.O_CREAT)
-    .then((fd: number) => {});
+open(new Buffer("23434"), constants.O_CREAT).then((fd: number) => {});
 
-read(7, new Uint8Array(16), 5, 4, 100)
-    .then(({ bytesRead: number, buffer: Uint8Array }) => {});
+read(7, new Uint8Array(16), 5, 4, 100).then(
+    ({ bytesRead: number, buffer: Uint8Array }) => {},
+);
 
-write(8, new Buffer("test test", "utf-8"), 3, 2, 256)
-    .then(({ bytesWritten: number, buffer: Buffer }) => {});
+write(8, new Buffer("test test", "utf-8"), 3, 2, 256).then(
+    ({ bytesWritten: number, buffer: Buffer }) => {},
+);
 
-write(9, "hello", null, "utf-8")
-    .then(({ bytesWritten: number, buffer: string }) => {});
+write(9, "hello", null, "utf-8").then(
+    ({ bytesWritten: number, buffer: string }) => {},
+);
 
 // $ExpectType Promise<void>
 rename("old", "new");
@@ -94,23 +92,17 @@ mkdir("new/goodies");
 // $ExpectType Promise<void>
 mkdir("candy", "644");
 
-readdir("interesting/stuff")
-    .then((names: string[]) => {});
+readdir("interesting/stuff").then((names: string[]) => {});
 
-readdir("more/stuff", { withFileTypes: true })
-    .then((entries: Dirent[]) => {});
+readdir("more/stuff", { withFileTypes: true }).then((entries: Dirent[]) => {});
 
-readdir("somewhat", "buffer")
-    .then((entries: Buffer[]) => {});
+readdir("somewhat", "buffer").then((entries: Buffer[]) => {});
 
-stat("path/to/file")
-    .then((stats: Stats) => {});
+stat("path/to/file").then((stats: Stats) => {});
 
-lstat("path/to/link")
-    .then((stats: Stats) => {});
+lstat("path/to/link").then((stats: Stats) => {});
 
-fstat(9)
-    .then((stats: Stats) => {});
+fstat(9).then((stats: Stats) => {});
 
 // $ExpectType Promise<void>
 appendFile("log", "1234");
@@ -118,11 +110,9 @@ appendFile("log", "1234");
 // $ExpectType Promise<void>
 appendFile(2, "beep beep");
 
-realpath("fake/path")
-    .then((path: string) => {});
+realpath("fake/path").then((path: string) => {});
 
-realpath("dubious", "buffer")
-    .then((path: Buffer) => {});
+realpath("dubious", "buffer").then((path: Buffer) => {});
 
 // $ExpectType Promise<void>
 link("a", "b");
@@ -130,11 +120,9 @@ link("a", "b");
 // $ExpectType Promise<void>
 unlink("unwanted");
 
-readlink("b")
-    .then((path: string) => {});
+readlink("b").then((path: string) => {});
 
-readlink("foo", "buffer")
-    .then((path: Buffer) => {});
+readlink("foo", "buffer").then((path: Buffer) => {});
 
 // $ExpectType Promise<void>
 chmod("/usr/share/data", 0o700);

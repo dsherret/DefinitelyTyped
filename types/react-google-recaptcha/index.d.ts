@@ -42,8 +42,13 @@ type Size = "compact" | "normal" | "invisible";
 type Badge = "bottomright" | "bottomleft" | "inline";
 
 export interface ReCAPTCHAProps
-    extends Omit<React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, "onChange" | "ref">
-{
+    extends Omit<
+        React.DetailedHTMLProps<
+            React.HTMLAttributes<HTMLDivElement>,
+            HTMLDivElement
+        >,
+        "onChange" | "ref"
+    > {
     /**
      * The API client key
      */

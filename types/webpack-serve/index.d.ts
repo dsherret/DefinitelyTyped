@@ -13,7 +13,10 @@ declare module "webpack" {
     }
 }
 
-declare function WebpackServe(argv: object, options: WebpackServe.Options): Promise<WebpackServe.Result>;
+declare function WebpackServe(
+    argv: object,
+    options: WebpackServe.Options,
+): Promise<WebpackServe.Result>;
 
 declare namespace WebpackServe {
     interface Result {
@@ -21,7 +24,10 @@ declare namespace WebpackServe {
         app: InitializedKoa;
 
         /** A function which binds a serve event-name to a function */
-        on<K extends keyof EventMap>(type: K, callback: (args: EventMap[K]) => void): void;
+        on<K extends keyof EventMap>(
+            type: K,
+            callback: (args: EventMap[K]) => void,
+        ): void;
 
         /** Access to a frozen copy of the internal options object used by the module. */
         options: InitializedOptions;
@@ -29,7 +35,13 @@ declare namespace WebpackServe {
 
     interface Options {
         /** Addon to webpack-serve that allows access to the Koa server instance */
-        add?: ((app: InitializedKoa, middleware: Middleware, options: Options) => void) | undefined;
+        add?:
+            | ((
+                  app: InitializedKoa,
+                  middleware: Middleware,
+                  options: Options,
+              ) => void)
+            | undefined;
 
         /** Custom instance of a webpack compiler */
         compiler?: webpack.Compiler | undefined;
@@ -59,7 +71,14 @@ declare namespace WebpackServe {
         https?: https.ServerOptions | undefined;
 
         /** Level of information for webpack-serve to output */
-        logLevel?: "trace" | "debug" | "info" | "warn" | "error" | "silent" | undefined;
+        logLevel?:
+            | "trace"
+            | "debug"
+            | "info"
+            | "warn"
+            | "error"
+            | "silent"
+            | undefined;
 
         /** Prepend timestamp to each log line */
         logTime?: boolean | undefined;

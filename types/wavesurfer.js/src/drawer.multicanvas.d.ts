@@ -16,7 +16,12 @@ export default class MultiCanvas extends Drawer {
     /** Create the canvas elements and style them. */
     createElements(): void;
     /** Draw a waveform with bars. */
-    drawBars(peaks: Peaks, channelIndex: number, start: number, end: number): void;
+    drawBars(
+        peaks: Peaks,
+        channelIndex: number,
+        start: number,
+        end: number,
+    ): void;
     /** Tell the canvas entries to render their portion of the waveform. */
     drawLine(
         peaks: number[],
@@ -28,11 +33,27 @@ export default class MultiCanvas extends Drawer {
         channelIndex: number,
     ): void;
     /** Draw a waveform. */
-    drawWave(peaks: Peaks, channelIndex: number, start: number, end: number): void;
+    drawWave(
+        peaks: Peaks,
+        channelIndex: number,
+        start: number,
+        end: number,
+    ): void;
     /** Draw a rectangle on the multi-canvas. */
-    fillRect(x: number, y: number, width: number, height: number, radius: number, channelIndex: number): void;
+    fillRect(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        radius: number,
+        channelIndex: number,
+    ): void;
     /** Return image data of the multi-canvas. */
-    getImage(format: string, quality: number, type: string): string | string[] | Promise<string | string[]>;
+    getImage(
+        format: string,
+        quality: number,
+        type: string,
+    ): string | string[] | Promise<string | string[]>;
     /** Returns whether to hide the channel from being drawn based on params. */
     hideChannel(channelIndex: number): void;
     /** Initialize the drawer. */
@@ -50,7 +71,11 @@ export default class MultiCanvas extends Drawer {
     /** Pop single canvas from the list. */
     removeCanvas(): void;
     /** Set the fill styles for a certain entry (wave and progress). */
-    setFillStyles(entry: CanvasEntry, waveColor: string, progressColor: string): void;
+    setFillStyles(
+        entry: CanvasEntry,
+        waveColor: string,
+        progressColor: string,
+    ): void;
     /** Update cursor style. */
     updateCursor(): void;
     /** Update the dimensions of a canvas element. */

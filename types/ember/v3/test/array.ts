@@ -18,7 +18,9 @@ assertType<boolean>(people.isAny("isHappy"));
 assertType<boolean>(people.isAny("isHappy", "false"));
 assertType<Ember.Enumerable<Person>>(people.filterBy("isHappy"));
 assertType<Ember.Enumerable<Person>>(people.rejectBy("isHappy"));
-assertType<Ember.Enumerable<Person>>(people.filter(person => person.get("name") === "Yehuda"));
+assertType<Ember.Enumerable<Person>>(
+    people.filter((person) => person.get("name") === "Yehuda"),
+);
 assertType<typeof people>(people.get("[]"));
 assertType<Person>(people.get("[]").get("firstObject"));
 

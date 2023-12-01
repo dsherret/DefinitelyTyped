@@ -1,7 +1,9 @@
 import Delaunator from "delaunator";
 
 // Zipped points [x0, y0, x1, y1, ...]
-const zippedPoints = [168, 180, 168, 178, 168, 179, 168, 181, 168, 183, 167, 183, 167, 184];
+const zippedPoints = [
+    168, 180, 168, 178, 168, 179, 168, 181, 168, 183, 167, 183, 167, 184,
+];
 const zipped = new Delaunator(zippedPoints);
 
 // Default [x, y]
@@ -36,8 +38,8 @@ const getY = (point: CustomPoint) => point.y;
 
 Delaunator.from(
     customPoints,
-    point => point.x,
-    point => point.y,
+    (point) => point.x,
+    (point) => point.y,
 );
 Delaunator.from(customPoints, getX, getY);
 
@@ -48,7 +50,11 @@ const hull = d.hull; // $ExpectType Uint32Array
 const coords = d.coords; // $ExpectType ArrayLike<number> | Float64Array
 const coordinates: number[][][] = [];
 for (let i = 0; i < triangles.length; i += 3) {
-    coordinates.push([defaultPoints[triangles[i]], defaultPoints[triangles[i + 1]], defaultPoints[triangles[i + 2]]]);
+    coordinates.push([
+        defaultPoints[triangles[i]],
+        defaultPoints[triangles[i + 1]],
+        defaultPoints[triangles[i + 2]],
+    ]);
 }
 
 // Or use Delaunator.coords (but coords is a flat array in the form of [x0, y0, x1, y1, ...])

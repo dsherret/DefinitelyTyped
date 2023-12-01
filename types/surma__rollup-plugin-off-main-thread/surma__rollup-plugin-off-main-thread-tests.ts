@@ -7,7 +7,9 @@ plugin = OMT({
     loader: "self.<%- amdFunctionName %>",
     useEval: true,
     amdFunctionName: "define",
-    prependLoader: (chunk, workerFiles) => chunk.isEntry || workerFiles.indexOf(chunk.facadeModuleId as string) > -1,
+    prependLoader: (chunk, workerFiles) =>
+        chunk.isEntry ||
+        workerFiles.indexOf(chunk.facadeModuleId as string) > -1,
     urlLoaderScheme: "omt",
     silenceESMWorkerWarning: true,
 });

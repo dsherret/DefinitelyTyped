@@ -59,7 +59,8 @@ import {
     TopBarTitle,
 } from "react-foundation";
 
-import { // missing from index?
+import {
+    // missing from index?
     Slider,
     SliderFill,
     SliderHandle,
@@ -347,7 +348,10 @@ export class ReactFoundationTests extends React.Component {
                     className="foo"
                     onClick={(e) => e.pageX}
                 />
-                <Callout color={CalloutColors.SUCCESS} size={CalloutSizes.LARGE} />
+                <Callout
+                    color={CalloutColors.SUCCESS}
+                    size={CalloutSizes.LARGE}
+                />
 
                 <CloseButton />
                 <CloseButton
@@ -1015,10 +1019,7 @@ export class ReactFoundationTests extends React.Component {
                     className="foo"
                     onClick={(e) => e.pageX}
                 />
-                <SwitchInput
-                    type={SwitchInputTypes.CHECKBOX}
-                    id="blah"
-                />
+                <SwitchInput type={SwitchInputTypes.CHECKBOX} id="blah" />
 
                 <SwitchPaddle />
                 <SwitchPaddle
@@ -1289,10 +1290,7 @@ export class ReactFoundationTests extends React.Component {
                     className="foo"
                     onClick={(e) => e.pageX}
                 />
-                <GridContainer
-                    fluid={true}
-                    full={true}
-                />
+                <GridContainer fluid={true} full={true} />
 
                 <Grid />
                 <Grid

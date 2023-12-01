@@ -25,31 +25,52 @@ interface StampSignature {
  * @internal Extracts the `Stamp` type.
  * @template Original The type to extract the `Stamp` type from.
  */
-type StampType<Original> = Original extends /* disallowed types */ [] | bigint ? never
+type StampType<Original> = Original extends /* disallowed types */ [] | bigint
+    ? never
     : stampit.IsADescriptor<Original> extends true
-        ? (Original extends stampit.ExtendedDescriptor<infer Obj, infer Stamp> ? Stamp : never)
-    : unknown extends Original /* is any or unknown */ ? stampit.Stamp<Original>
-    : Original extends StampSignature ? Original
-    : Original extends stampit.ExtendedDescriptor<infer Obj, any> ? stampit.Stamp<Obj>
-    : Original extends Pojo ? stampit.Stamp<Original> /*assume it is the object from a stamp object*/
-    : never;
+      ? Original extends stampit.ExtendedDescriptor<infer Obj, infer Stamp>
+          ? Stamp
+          : never
+      : unknown extends Original /* is any or unknown */
+        ? stampit.Stamp<Original>
+        : Original extends StampSignature
+          ? Original
+          : Original extends stampit.ExtendedDescriptor<infer Obj, any>
+            ? stampit.Stamp<Obj>
+            : Original extends Pojo
+              ? stampit.Stamp<Original> /*assume it is the object from a stamp object*/
+              : never;
 
 /**
  * @internal The type of the object produced by the `Stamp`.
  * @template Original The type (either a `Stamp` or a `ExtendedDescriptor`) to get the object type from.
  */
-type StampObjectType<Original> = Original extends /* disallowed types */ bigint | boolean | number | string | symbol
+type StampObjectType<Original> = Original /* disallowed types */ extends
+    | bigint
+    | boolean
+    | number
+    | string
+    | symbol
     ? never
     : stampit.IsADescriptor<Original> extends true
-        ? (Original extends stampit.ExtendedDescriptor<infer Obj, any> ? Obj : never)
-    : unknown extends Original /* is any or unknown */ ? Original
-    : Original extends StampSignature
-        ? (Original extends stampit.Stamp<infer Obj> /* extended stamps may require infering twice */
-            ? (Obj extends stampit.Stamp<infer Obj> ? Obj : Obj)
-            : any)
-    : Original extends stampit.ExtendedDescriptor<infer Obj, any> ? Obj
-    : Original extends Pojo ? Original
-    : never;
+      ? Original extends stampit.ExtendedDescriptor<infer Obj, any>
+          ? Obj
+          : never
+      : unknown extends Original /* is any or unknown */
+        ? Original
+        : Original extends StampSignature
+          ? Original extends stampit.Stamp<
+                infer Obj
+            > /* extended stamps may require infering twice */
+              ? Obj extends stampit.Stamp<infer Obj>
+                  ? Obj
+                  : Obj
+              : any
+          : Original extends stampit.ExtendedDescriptor<infer Obj, any>
+            ? Obj
+            : Original extends Pojo
+              ? Original
+              : never;
 
 /**
  * A factory function to create plain object instances.
@@ -196,7 +217,9 @@ type ComposeMethod = typeof stampit;
  * @template Obj The type of the object instance being created by the `Stamp` or the type of the `Stamp` being created (when extending a `Stamp`.)
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-declare function stampit<Obj = any>(...composables: stampit.Composable[]): StampType<Obj>;
+declare function stampit<Obj = any>(
+    ...composables: stampit.Composable[]
+): StampType<Obj>;
 
 declare namespace stampit {
     /** A composable object (either a `Stamp` or a `ExtendedDescriptor`.) */
@@ -221,9 +244,14 @@ declare namespace stampit {
         /** A set of static properties that will be added to the `Stamp` by deep property merge. */
         staticDeepProperties?: PropertyMap | undefined /* & ThisType<S> */;
         /** A set of object property descriptors (`PropertyDescriptor`) to apply to the `Stamp`. */
-        staticPropertyDescriptors?: PropertyDescriptorMap | undefined /* & ThisType<S> */;
+        staticPropertyDescriptors?:
+            | PropertyDescriptorMap
+            | undefined /* & ThisType<S> */;
         /** An array of functions that will run in sequence while creating an object instance from a `Stamp`. `Stamp` details and arguments get passed to initializers. */
-        initializers?: Initializer<Obj, S̤t̤a̤m̤p̤> | Array<Initializer<Obj, S̤t̤a̤m̤p̤>> | undefined;
+        initializers?:
+            | Initializer<Obj, S̤t̤a̤m̤p̤>
+            | Array<Initializer<Obj, S̤t̤a̤m̤p̤>>
+            | undefined;
         /** An array of functions that will run in sequence while creating a new `Stamp` from a list of `Composable`s. The resulting `Stamp` and the `Composable`s get passed to composers. */
         composers?: Array<Composer<S̤t̤a̤m̤p̤>> | undefined;
         /** A set of options made available to the `Stamp` and its initializers during object instance creation. These will be copied by assignment. */
@@ -237,7 +265,8 @@ declare namespace stampit {
      * @template Obj The type of the object instance being produced by the `Stamp`.
      * @template S̤t̤a̤m̤p̤ The type of the `Stamp` (when extending a `Stamp`.)
      */
-    interface ExtendedDescriptor<Obj, S̤t̤a̤m̤p̤ extends StampSignature = Stamp<Obj>> extends Descriptor<Obj, S̤t̤a̤m̤p̤> {
+    interface ExtendedDescriptor<Obj, S̤t̤a̤m̤p̤ extends StampSignature = Stamp<Obj>>
+        extends Descriptor<Obj, S̤t̤a̤m̤p̤> {
         /** A set of properties that will be added to new object instances by assignment. */
         props?: PropertyMap | undefined;
         /** A set of properties that will be added to new object instances by deep property merge. */
@@ -247,7 +276,10 @@ declare namespace stampit {
         /** A set of static properties that will be added to the `Stamp` by deep property merge. */
         deepStatics?: PropertyMap | undefined /* & ThisType<S> */;
         /** An array of functions that will run in sequence while creating an object instance from a `Stamp`. `Stamp` details and arguments get passed to initializers. */
-        init?: Initializer<Obj, S̤t̤a̤m̤p̤> | Array<Initializer<Obj, S̤t̤a̤m̤p̤>> | undefined;
+        init?:
+            | Initializer<Obj, S̤t̤a̤m̤p̤>
+            | Array<Initializer<Obj, S̤t̤a̤m̤p̤>>
+            | undefined;
         /** A set of options made available to the `Stamp` and its initializers during object instance creation. These will be copied by assignment. */
         conf?: PropertyMap | undefined /* & ThisType<S> */;
         /** A set of options made available to the `Stamp` and its initializers during object instance creation. These will be deep merged. */
@@ -261,9 +293,14 @@ declare namespace stampit {
      * @template Type A type to check if a ExtendedDescriptor.
      */
     // TODO: Improve test by checking the type of common keys
-    type IsADescriptor<Type> = unknown extends Type ? (keyof Type extends never ? false
-            : keyof Type extends infer K ? (K extends keyof ExtendedDescriptor<unknown> ? true : false)
-            : false)
+    type IsADescriptor<Type> = unknown extends Type
+        ? keyof Type extends never
+            ? false
+            : keyof Type extends infer K
+              ? K extends keyof ExtendedDescriptor<unknown>
+                  ? true
+                  : false
+              : false
         : false;
 
     /**
@@ -273,7 +310,11 @@ declare namespace stampit {
      */
     interface Initializer<Obj, S̤t̤a̤m̤p̤ extends StampSignature> {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        (this: Obj, options: /*_propertyMap*/ any, context: InitializerContext<Obj, S̤t̤a̤m̤p̤>): void | Obj;
+        (
+            this: Obj,
+            options: /*_propertyMap*/ any,
+            context: InitializerContext<Obj, S̤t̤a̤m̤p̤>,
+        ): void | Obj;
     }
 
     /**
@@ -317,7 +358,10 @@ declare namespace stampit {
      * It also has a `.compose()` method which is a copy of the `ComposeMethod` function and a `.compose` accessor to its `Descriptor`.
      * @template Obj The object type that the `Stamp` will create.
      */
-    interface Stamp<Obj> extends FactoryFunction<Obj>, StampChainables<Obj>, StampSignature {
+    interface Stamp<Obj>
+        extends FactoryFunction<Obj>,
+            StampChainables<Obj>,
+            StampSignature {
         /** Just like calling stamp(), stamp.create() invokes the stamp and returns a new instance. */
         create: FactoryFunction<Obj>;
 
@@ -336,7 +380,10 @@ declare namespace stampit {
      * @template This The type to use for `this` within methods.
      * @param methods Object(s) containing map of method names and bodies for delegation.
      */
-    function methods<Obj = any>(this: StampObjectType<Obj>, ...methods: Array<MethodMap<Obj>>): StampType<Obj>;
+    function methods<Obj = any>(
+        this: StampObjectType<Obj>,
+        ...methods: Array<MethodMap<Obj>>
+    ): StampType<Obj>;
 
     /**
      * A shortcut method for stampit().properties()
@@ -366,7 +413,9 @@ declare namespace stampit {
      * @param deepObjects The object(s) to deeply merge for each new object
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function deepProperties<Obj = any>(...deepObjects: PropertyMap[]): StampType<Obj>;
+    function deepProperties<Obj = any>(
+        ...deepObjects: PropertyMap[]
+    ): StampType<Obj>;
 
     /**
      * A shortcut method for stampit().deepProps()
@@ -376,7 +425,9 @@ declare namespace stampit {
      * @param deepObjects The object(s) to deeply merge for each new object
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function deepProps<Obj = any>(...deepObjects: PropertyMap[]): StampType<Obj>;
+    function deepProps<Obj = any>(
+        ...deepObjects: PropertyMap[]
+    ): StampType<Obj>;
 
     /**
      * A shortcut method for stampit().initializers()
@@ -386,13 +437,15 @@ declare namespace stampit {
      * @param functions Initializer functions used to create private data and privileged methods
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function initializers<Obj = any, S̤t̤a̤m̤p̤ extends StampSignature = StampType<Obj>>(
-        ...functions: Array<Initializer<StampObjectType<Obj>, S̤t̤a̤m̤p̤>>
-    ): S̤t̤a̤m̤p̤;
+    function initializers<
+        Obj = any,
+        S̤t̤a̤m̤p̤ extends StampSignature = StampType<Obj>,
+    >(...functions: Array<Initializer<StampObjectType<Obj>, S̤t̤a̤m̤p̤>>): S̤t̤a̤m̤p̤;
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function initializers<Obj = any, S̤t̤a̤m̤p̤ extends StampSignature = StampType<Obj>>(
-        functions: Array<Initializer<StampObjectType<Obj>, S̤t̤a̤m̤p̤>>,
-    ): S̤t̤a̤m̤p̤;
+    function initializers<
+        Obj = any,
+        S̤t̤a̤m̤p̤ extends StampSignature = StampType<Obj>,
+    >(functions: Array<Initializer<StampObjectType<Obj>, S̤t̤a̤m̤p̤>>): S̤t̤a̤m̤p̤;
 
     /**
      * A shortcut method for stampit().init()
@@ -418,7 +471,9 @@ declare namespace stampit {
      * @param statics Object(s) containing map of property names and values to mixin into each new stamp.
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function staticProperties<Obj = any>(...statics: PropertyMap[]): StampType<Obj>;
+    function staticProperties<Obj = any>(
+        ...statics: PropertyMap[]
+    ): StampType<Obj>;
 
     /**
      * A shortcut method for stampit().staticProperties()
@@ -438,7 +493,9 @@ declare namespace stampit {
      * @param deepStatics The object(s) containing static properties to be merged
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function staticDeepProperties<Obj = any>(...deepStatics: PropertyMap[]): StampType<Obj>;
+    function staticDeepProperties<Obj = any>(
+        ...deepStatics: PropertyMap[]
+    ): StampType<Obj>;
 
     /**
      * A shortcut method for stampit().deepStatics()
@@ -448,7 +505,9 @@ declare namespace stampit {
      * @param deepStatics The object(s) containing static properties to be merged
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function deepStatics<Obj = any>(...deepStatics: PropertyMap[]): StampType<Obj>;
+    function deepStatics<Obj = any>(
+        ...deepStatics: PropertyMap[]
+    ): StampType<Obj>;
 
     /**
      * A shortcut method for stampit().composers()
@@ -457,8 +516,12 @@ declare namespace stampit {
      * @template Obj The type of the object instance being produced by the `Stamp`. or the type of the `Stamp` being created.
      * @param functions Composer functions that will run in sequence while creating a new stamp from a list of composables.  The resulting stamp and the composables get passed to composers.
      */
-    function composers<Obj = any>(...functions: Array<Composer<StampType<Obj>>>): StampType<Obj>;
-    function composers<Obj = any>(functions: Array<Composer<StampType<Obj>>>): StampType<Obj>;
+    function composers<Obj = any>(
+        ...functions: Array<Composer<StampType<Obj>>>
+    ): StampType<Obj>;
+    function composers<Obj = any>(
+        functions: Array<Composer<StampType<Obj>>>,
+    ): StampType<Obj>;
 
     /**
      * A shortcut method for stampit().configuration()
@@ -488,7 +551,9 @@ declare namespace stampit {
      * @param deepConfs The object(s) containing metadata properties
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function deepConfiguration<Obj = any>(...deepConfs: PropertyMap[]): StampType<Obj>;
+    function deepConfiguration<Obj = any>(
+        ...deepConfs: PropertyMap[]
+    ): StampType<Obj>;
 
     /**
      * A shortcut method for stampit().deepConf()
@@ -508,7 +573,9 @@ declare namespace stampit {
      * @param descriptors
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function propertyDescriptors<Obj = any>(...descriptors: PropertyDescriptorMap[]): StampType<Obj>;
+    function propertyDescriptors<Obj = any>(
+        ...descriptors: PropertyDescriptorMap[]
+    ): StampType<Obj>;
 
     /**
      * A shortcut method for stampit().staticPropertyDescriptors()
@@ -518,7 +585,9 @@ declare namespace stampit {
      * @param descriptors
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function staticPropertyDescriptors<Obj = any>(...descriptors: PropertyDescriptorMap[]): StampType<Obj>;
+    function staticPropertyDescriptors<Obj = any>(
+        ...descriptors: PropertyDescriptorMap[]
+    ): StampType<Obj>;
 
     /** A function which creates a new `Stamp`s from a list of `Composable`s. */
     const compose: ComposeMethod;

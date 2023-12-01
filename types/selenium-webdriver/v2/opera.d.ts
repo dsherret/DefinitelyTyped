@@ -150,7 +150,9 @@ export class Options {
      *     merge these options into, if any.
      * @return {!capabilities.Capabilities} The capabilities.
      */
-    toCapabilities(opt_capabilities?: webdriver.Capabilities): webdriver.Capabilities;
+    toCapabilities(
+        opt_capabilities?: webdriver.Capabilities,
+    ): webdriver.Capabilities;
 }
 
 export class Driver extends webdriver.WebDriver {

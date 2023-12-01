@@ -8,7 +8,9 @@ import { Point } from "../system/point";
 import { View } from "../view/view";
 import { _Window } from "../window/window";
 import { ApplicationOption } from "./applicationOption";
-export interface TrayIconClickReply extends Point, Reply<"application", "tray-icon-clicked"> {
+export interface TrayIconClickReply
+    extends Point,
+        Reply<"application", "tray-icon-clicked"> {
     button: number;
     monitorInfo: MonitorInfo;
 }
@@ -25,7 +27,10 @@ export interface ApplicationInfo {
 export interface LogInfo {
     logId: string;
 }
-export declare class NavigationRejectedReply extends Reply<"window-navigation-rejected", void> {
+export declare class NavigationRejectedReply extends Reply<
+    "window-navigation-rejected",
+    void
+> {
     sourceName: string;
     url: string;
 }
@@ -177,7 +182,10 @@ export default class ApplicationModule extends Base {
      * @tutorial Application.startFromManifest
      * @static
      */
-    startFromManifest(manifestUrl: string, opts?: RvmLaunchOptions): Promise<Application>;
+    startFromManifest(
+        manifestUrl: string,
+        opts?: RvmLaunchOptions,
+    ): Promise<Application>;
     createFromManifest(manifestUrl: string): Promise<Application>;
     private _createFromManifest;
 }

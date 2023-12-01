@@ -23,12 +23,12 @@ parser.mimeTree;
 // $ExpectType MailParserOptions
 parser.options;
 // $ExpectType MailParser
-parser.on("end", email => {
+parser.on("end", (email) => {
     // $ExpectType ParsedEmail
     const _email = email;
 });
 // $ExpectType MailParser
-parser.on("headers", headers => {
+parser.on("headers", (headers) => {
     // $ExpectType Headers
     const _email = headers;
 });

@@ -7,7 +7,9 @@ export interface TimeBaseProps {
     showMinute?: boolean | undefined;
     showSecond?: boolean | undefined;
     spinners?: boolean | undefined;
-    time?: { hour: string; minute: string; second: string; meridiem: 0 | 1 } | undefined;
+    time?:
+        | { hour: string; minute: string; second: string; meridiem: 0 | 1 }
+        | undefined;
 }
 
 export type TimeProps = TimeBaseProps & {
@@ -16,10 +18,12 @@ export type TimeProps = TimeBaseProps & {
     hoursInputProps?: any;
     hoursUpButtonProps?: any;
     id?: string | undefined;
-    localizedText?: {
-        meridiemAM?: string | undefined;
-        meridiemPM?: string | undefined;
-    } | undefined;
+    localizedText?:
+        | {
+              meridiemAM?: string | undefined;
+              meridiemPM?: string | undefined;
+          }
+        | undefined;
     meridiemDownButtonProps?: any;
     meridiemInputProps?: any;
     meridiemUpButtonProps?: any;
@@ -29,7 +33,14 @@ export type TimeProps = TimeBaseProps & {
     secondsDownButtonProps?: any;
     secondsInputProps?: any;
     secondsUpButtonProps?: any;
-    onChange?: ((time: { hour: string; minute: string; second: string; meridiem: 0 | 1 }) => void) | undefined;
+    onChange?:
+        | ((time: {
+              hour: string;
+              minute: string;
+              second: string;
+              meridiem: 0 | 1;
+          }) => void)
+        | undefined;
 } & { [x: string]: any };
 
 declare class Time extends React.Component<TimeProps> {

@@ -57,7 +57,11 @@ export interface Config {
     getConfNames(): string[];
     getRawConf(): any;
     getUpdateNeededRawConf(): any;
-    enableUpdate(interval: number, all: boolean, cb: (err: any, confs: any) => any): void;
+    enableUpdate(
+        interval: number,
+        all: boolean,
+        cb: (err: any, confs: any) => any,
+    ): void;
     disableUpdate(): void;
     isAutoUpdateEnabled(): boolean;
 }
@@ -107,20 +111,29 @@ export interface Service {
     encoding?: "utf-8" | "GBK" | undefined;
     balance: "random" | "roundrobin" | "hashring";
     protocol: "http" | "https" | "soap" | "redis";
-    headers?: {
-        [key: string]: string | number;
-    } | undefined;
+    headers?:
+        | {
+              [key: string]: string | number;
+          }
+        | undefined;
     query?: any;
     data?: any;
     path?: string | undefined;
 }
 
-export type BalanceContextConstructor = new(serviceID: string, service: Service) => Balance.BalanceContextClass;
+export type BalanceContextConstructor = new (
+    serviceID: string,
+    service: Service,
+) => Balance.BalanceContextClass;
 
 export abstract class Balance {
     constructor();
 
-    abstract fetchServer(balanceContext: Balance.BalanceContextClass, conf: any, prevBackend: Server): Server;
+    abstract fetchServer(
+        balanceContext: Balance.BalanceContextClass,
+        conf: any,
+        prevBackend: Server,
+    ): Server;
 
     getCategory(): any;
 
@@ -198,7 +211,9 @@ export abstract class ConfigNormalizer extends RalModule {
     abstract needUpdate(config?: any): boolean;
 }
 
-export function Middleware(options?: Service): (req: Request, resp: Response, next: NextFunction) => void;
+export function Middleware(
+    options?: Service,
+): (req: Request, resp: Response, next: NextFunction) => void;
 
 export function RALPromise<T>(name: string, options?: {}): Promise<T>;
 export namespace RALPromise {

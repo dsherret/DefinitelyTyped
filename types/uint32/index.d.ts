@@ -29,7 +29,9 @@ export function getByteBigEndian(uint32value: number, byteNo: number): number;
  *  @param uint32value the source to be extracted
  *  @returns the array [highByte, 2ndHighByte, 3rdHighByte, lowByte]
  */
-export function getBytesBigEndian(uint32value: number): [number, number, number, number];
+export function getBytesBigEndian(
+    uint32value: number,
+): [number, number, number, number];
 
 /**
  *  Converts a given uin32 to a hex string including leading zeros.
@@ -114,7 +116,10 @@ export function majority(x: number, y: number, z: number): number;
  *  Adds the given values modulus 2^32.
  *  @returns the sum of the given values modulus 2^32
  */
-export function addMod32(uint32val0: number, ...optionalValues: number[]): number;
+export function addMod32(
+    uint32val0: number,
+    ...optionalValues: number[]
+): number;
 
 /**
  *  Returns the log base 2 of the given value. That is the number of the highest set bit.
@@ -129,4 +134,8 @@ export function log2(uint32val: number): number;
  *  @param factor2 an uint32
  *  @param resultUint32Array2 the Array, where the result will be written to
  */
-export function mult(factor1: number, factor2: number, resultUint32Array2: Uint32Array): void;
+export function mult(
+    factor1: number,
+    factor2: number,
+    resultUint32Array2: Uint32Array,
+): void;

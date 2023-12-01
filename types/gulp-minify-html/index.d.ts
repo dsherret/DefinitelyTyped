@@ -28,6 +28,8 @@ declare namespace minifyHtml {
     }
 }
 
-declare function minifyHtml(options?: minifyHtml.Options): NodeJS.ReadWriteStream;
+declare function minifyHtml(
+    options?: minifyHtml.Options,
+): NodeJS.ReadWriteStream;
 
 export = minifyHtml;

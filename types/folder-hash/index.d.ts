@@ -9,7 +9,10 @@ export interface FolderAndFileOptions {
     ignoreRootName?: boolean | undefined;
 }
 
-export type SymbolicLinkOptions = Omit<FolderAndFileOptions, "exclude" | "include"> & {
+export type SymbolicLinkOptions = Omit<
+    FolderAndFileOptions,
+    "exclude" | "include"
+> & {
     include?: boolean | undefined;
     ignoreTargetPath?: boolean | undefined;
     ignoreTargetContent?: boolean | undefined;
@@ -36,13 +39,20 @@ export interface HashElementNode {
  * @param name element name or an element's path
  * @param options Options object
  */
-export function hashElement(name: string, options?: HashElementOptions): Promise<HashElementNode>;
+export function hashElement(
+    name: string,
+    options?: HashElementOptions,
+): Promise<HashElementNode>;
 /**
  * @param name element name or an element's path
  * @param dir directory that contains the element (generated from name if omitted)
  * @param options Options object
  */
-export function hashElement(name: string, dir?: string, options?: HashElementOptions): Promise<HashElementNode>;
+export function hashElement(
+    name: string,
+    dir?: string,
+    options?: HashElementOptions,
+): Promise<HashElementNode>;
 /**
  * @param name element name or an element's path
  * @param dir directory that contains the element (generated from name if omitted)

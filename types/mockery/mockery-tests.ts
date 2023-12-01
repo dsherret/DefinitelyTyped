@@ -11,7 +11,9 @@ mockery.enable({
 mockery.disable();
 
 var fsMock = {
-    stat: (path: any, cb: any) => {/* your mock code */},
+    stat: (path: any, cb: any) => {
+        /* your mock code */
+    },
 };
 mockery.registerMock("fs", fsMock);
 

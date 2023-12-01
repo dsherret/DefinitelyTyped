@@ -33,10 +33,26 @@ export function readSync(sourceFile: string): ReadableFields;
 export function readBuffer(sourceBuffer: Buffer): Promise<ReadableFields>;
 export function readBufferSync(sourceBuffer: Buffer): ReadableFields;
 
-export function write(sourceFile: string, fields: WritableFields, options?: Options): Promise<Buffer>;
-export function writeSync(sourceFile: string, fields: WritableFields, options?: Options): Buffer;
-export function writeBuffer(sourceBuffer: Buffer, fields: WritableFields, options?: Options): Promise<Buffer>;
-export function writeBufferSync(sourceBuffer: Buffer, fields: WritableFields, options?: Options): Buffer;
+export function write(
+    sourceFile: string,
+    fields: WritableFields,
+    options?: Options,
+): Promise<Buffer>;
+export function writeSync(
+    sourceFile: string,
+    fields: WritableFields,
+    options?: Options,
+): Buffer;
+export function writeBuffer(
+    sourceBuffer: Buffer,
+    fields: WritableFields,
+    options?: Options,
+): Promise<Buffer>;
+export function writeBufferSync(
+    sourceBuffer: Buffer,
+    fields: WritableFields,
+    options?: Options,
+): Buffer;
 
 // Options are not optional here because the callback MUST be defined to avoid a crash
 export function writeAsync(

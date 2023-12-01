@@ -39,9 +39,7 @@ export function create<
     V extends string = "value",
     X extends string = "x",
     Y extends string = "y",
->(
-    configObject: HeatmapConfiguration<V, X, Y>,
-): Heatmap<V, X, Y>;
+>(configObject: HeatmapConfiguration<V, X, Y>): Heatmap<V, X, Y>;
 
 export function register(pluginKey: string, plugin: any): void;
 
@@ -72,7 +70,9 @@ export class Heatmap<V extends string, X extends string, Y extends string> {
      * var dataPoints = [dataPoint, dataPoint, dataPoint, dataPoint];
      * heatmapInstance.addData(dataPoints);
      */
-    addData(dataPoint: DataPoint<V, X, Y> | ReadonlyArray<DataPoint<V, X, Y>>): this;
+    addData(
+        dataPoint: DataPoint<V, X, Y> | ReadonlyArray<DataPoint<V, X, Y>>,
+    ): this;
 
     /**
      * Initialize a heatmap instance with the given dataset. Removes all
@@ -352,7 +352,8 @@ declare global {
         V extends string,
         TLat extends string,
         TLng extends string,
-    > implements Leaflet.ILayer {
+    > implements Leaflet.ILayer
+    {
         /**
          * Initialization function
          */
@@ -366,7 +367,11 @@ declare global {
         /**
          * Experimential... not ready.
          */
-        addData(data: DataPoint<V, TLat, TLng> | ReadonlyArray<DataPoint<V, TLat, TLng>>): void;
+        addData(
+            data:
+                | DataPoint<V, TLat, TLng>
+                | ReadonlyArray<DataPoint<V, TLat, TLng>>,
+        ): void;
 
         /**
          * Create DOM elements for an overlay, adding them to map panes and puts

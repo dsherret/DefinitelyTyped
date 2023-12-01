@@ -1,5 +1,9 @@
 import * as React from "react";
-import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng } from "react-places-autocomplete";
+import PlacesAutocomplete, {
+    geocodeByAddress,
+    geocodeByPlaceId,
+    getLatLng,
+} from "react-places-autocomplete";
 
 class Test extends React.Component {
     state = {
@@ -32,9 +36,16 @@ class Test extends React.Component {
                     value={this.state.address}
                     onChange={this.onChange}
                     googleCallbackName="google_callback_name"
-                    searchOptions={{ componentRestrictions: { country: ["US"] } }}
+                    searchOptions={{
+                        componentRestrictions: { country: ["US"] },
+                    }}
                 >
-                    {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => {
+                    {({
+                        getInputProps,
+                        suggestions,
+                        getSuggestionItemProps,
+                        loading,
+                    }) => {
                         const inputProps = getInputProps({
                             required: true,
                             className: loading ? "is-pending" : "",
@@ -43,10 +54,15 @@ class Test extends React.Component {
                             <>
                                 <input {...inputProps} />
                                 <div>
-                                    {suggestions.map(suggestion => {
-                                        const divProps = getSuggestionItemProps(suggestion, {
-                                            className: suggestion.active ? "active" : "",
-                                        });
+                                    {suggestions.map((suggestion) => {
+                                        const divProps = getSuggestionItemProps(
+                                            suggestion,
+                                            {
+                                                className: suggestion.active
+                                                    ? "active"
+                                                    : "",
+                                            },
+                                        );
                                         return (
                                             <div {...divProps}>
                                                 {suggestion.description}

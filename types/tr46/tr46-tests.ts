@@ -1,4 +1,10 @@
-import { Options, ProcessingOption, toASCII, ToASCIIOptions, toUnicode } from "tr46";
+import {
+    Options,
+    ProcessingOption,
+    toASCII,
+    ToASCIIOptions,
+    toUnicode,
+} from "tr46";
 
 // test type exports
 type PO = ProcessingOption;

@@ -10,7 +10,11 @@ declare class Degit extends EventEmitter {
     /**
      * @async
      */
-    remove(dir: string, dest: string, action: degit.RemoveAction): Promise<void>;
+    remove(
+        dir: string,
+        dest: string,
+        action: degit.RemoveAction,
+    ): Promise<void>;
     on(event: "info" | "warn", callback: (info: degit.Info) => void): this;
 }
 

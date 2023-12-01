@@ -68,5 +68,8 @@ interface JQueryStatic {
      * @param options should be an options object.
      * @returns The element.
      */
-    bootstrapGrowl: (message: string, options?: BootstrapGrowlIfightcrime.Options) => JQuery;
+    bootstrapGrowl: (
+        message: string,
+        options?: BootstrapGrowlIfightcrime.Options,
+    ) => JQuery;
 }

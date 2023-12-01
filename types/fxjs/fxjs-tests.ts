@@ -1,4 +1,16 @@
-import { add, delay, every, filter, find, flat, flatMap, go, log, map, range } from "fxjs";
+import {
+    add,
+    delay,
+    every,
+    filter,
+    find,
+    flat,
+    flatMap,
+    go,
+    log,
+    map,
+    range,
+} from "fxjs";
 
 go([10, 20, 30], (..._: number[]) => log(_));
 add(1, 2);

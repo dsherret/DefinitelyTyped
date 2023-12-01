@@ -44,12 +44,13 @@ namespace nvd3_test_monitoringChart {
     var height = 350;
     var width = 350;
 
-    nv.addGraph(function() {
-        var chart = nv.models.pieChart()
-            .x(function(d) {
+    nv.addGraph(function () {
+        var chart = nv.models
+            .pieChart()
+            .x(function (d) {
                 return d.key;
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d.y;
             })
             .donut(true)
@@ -65,13 +66,14 @@ namespace nvd3_test_monitoringChart {
 
         d3.select("#test1")
             .datum(testdata1)
-            .transition().duration(1200)
+            .transition()
+            .duration(1200)
             .attr("width", width)
             .attr("height", height)
             .call(chart);
 
         // update chart data values randomly
-        setInterval(function() {
+        setInterval(function () {
             if (testdata1[0].y < 100) {
                 testdata1[0].y = testdata1[0].y + 1;
                 testdata1[1].y = testdata1[1].y - 1;
@@ -86,12 +88,13 @@ namespace nvd3_test_monitoringChart {
         return chart;
     });
 
-    nv.addGraph(function() {
-        var chart = nv.models.pieChart()
-            .x(function(d) {
+    nv.addGraph(function () {
+        var chart = nv.models
+            .pieChart()
+            .x(function (d) {
                 return d.key;
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d.y;
             })
             .donut(true)
@@ -104,7 +107,8 @@ namespace nvd3_test_monitoringChart {
 
         d3.select("#test2")
             .datum(testdata2)
-            .transition().duration(1200)
+            .transition()
+            .duration(1200)
             .attr("width", width)
             .attr("height", height)
             .call(chart);
@@ -112,12 +116,13 @@ namespace nvd3_test_monitoringChart {
         return chart;
     });
 
-    nv.addGraph(function() {
-        var chart = nv.models.pieChart()
-            .x(function(d) {
+    nv.addGraph(function () {
+        var chart = nv.models
+            .pieChart()
+            .x(function (d) {
                 return d.key;
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d.y;
             })
             .donut(true)
@@ -130,7 +135,8 @@ namespace nvd3_test_monitoringChart {
 
         d3.select("#test3")
             .datum(testdata3)
-            .transition().duration(1200)
+            .transition()
+            .duration(1200)
             .attr("width", width)
             .attr("height", height)
             .call(chart);

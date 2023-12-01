@@ -26,9 +26,9 @@ patching dependency code.
 
 ```json
 {
-    "compilerOptions": {
-        "types": ["nova-editor"]
-    }
+  "compilerOptions": {
+    "types": ["nova-editor"]
+  }
 }
 ```
 

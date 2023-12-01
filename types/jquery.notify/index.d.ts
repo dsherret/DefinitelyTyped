@@ -12,8 +12,17 @@ interface JQueryNotifyOptions {
 }
 interface JQuery {
     notify(options?: JQueryNotifyOptions): JQueryNotifyWidget;
-    notify(method: string, template: number, params?: object, opts?: JQueryNotifyOptions): JQueryNotifyInstance;
-    notify(method: string, params?: object, opts?: JQueryNotifyOptions): JQueryNotifyInstance;
+    notify(
+        method: string,
+        template: number,
+        params?: object,
+        opts?: JQueryNotifyOptions,
+    ): JQueryNotifyInstance;
+    notify(
+        method: string,
+        params?: object,
+        opts?: JQueryNotifyOptions,
+    ): JQueryNotifyInstance;
 }
 interface JQueryNotifyInstance {
     element: JQuery;
@@ -22,5 +31,4 @@ interface JQueryNotifyInstance {
     close(): void;
     open(): void;
 }
-interface JQueryNotifyWidget extends JQuery {
-}
+interface JQueryNotifyWidget extends JQuery {}

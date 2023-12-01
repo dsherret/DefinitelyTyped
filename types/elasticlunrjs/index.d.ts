@@ -10,7 +10,11 @@ declare namespace elasticlunr {
     class Configuration<T extends {}> {
         constructor(config: string, fields: Array<keyof T>);
 
-        addAllFields2UserConfig(bool: Bool, expand: boolean, fields: Array<keyof T>): void;
+        addAllFields2UserConfig(
+            bool: Bool,
+            expand: boolean,
+            fields: Array<keyof T>,
+        ): void;
 
         buildDefaultConfig(fields: Array<keyof T>): void;
 
@@ -28,7 +32,11 @@ declare namespace elasticlunr {
 
         addDoc(docRef: DocumentReference, doc: T): void;
 
-        addFieldLength(docRef: DocumentReference, fieldName: keyof T, length: number): void;
+        addFieldLength(
+            docRef: DocumentReference,
+            fieldName: keyof T,
+            length: number,
+        ): void;
 
         getDoc(docRef: DocumentReference): T;
 
@@ -42,9 +50,15 @@ declare namespace elasticlunr {
 
         toJSON(): SerialisedDocumentStore<T>;
 
-        updateFieldLength(docRef: DocumentReference, fieldName: keyof T, length: number): void;
+        updateFieldLength(
+            docRef: DocumentReference,
+            fieldName: keyof T,
+            length: number,
+        ): void;
 
-        static load<T>(serialisedData: SerialisedDocumentStore<T>): DocumentStore<T>;
+        static load<T>(
+            serialisedData: SerialisedDocumentStore<T>,
+        ): DocumentStore<T>;
     }
 
     type EventType = "add" | "update" | "remove";
@@ -53,7 +67,12 @@ declare namespace elasticlunr {
     class EventEmitter {
         addListener(e1: EventType, fn: EventHandler): void;
         addListener(e1: EventType, e2: EventType, fn: EventHandler): void;
-        addListener(e1: EventType, e2: EventType, e3: EventType, fn: EventHandler): void;
+        addListener(
+            e1: EventType,
+            e2: EventType,
+            e3: EventType,
+            fn: EventHandler,
+        ): void;
 
         emit(name: EventType, ...args: any[]): void;
 
@@ -131,17 +150,33 @@ declare namespace elasticlunr {
 
         addField(fieldName: keyof T): Index<T>;
 
-        coordNorm(scores: SearchScores, docTokens: IndexTokens, n: number): SearchScores;
+        coordNorm(
+            scores: SearchScores,
+            docTokens: IndexTokens,
+            n: number,
+        ): SearchScores;
 
-        fieldSearch(queryTokens: string[], fieldName: keyof T, config: FieldSearchConfig<T>): SearchScores;
+        fieldSearch(
+            queryTokens: string[],
+            fieldName: keyof T,
+            config: FieldSearchConfig<T>,
+        ): SearchScores;
 
-        fieldSearchStats(docTokens: IndexTokens, token: string, docs: IndexDocuments<T>): void;
+        fieldSearchStats(
+            docTokens: IndexTokens,
+            token: string,
+            docs: IndexDocuments<T>,
+        ): void;
 
         getFields(): Array<keyof T>;
 
         idf(term: string, field: keyof T): number;
 
-        mergeScores(accumScores: SearchScores | null, scores: SearchScores, op: "AND" | "OR"): SearchScores;
+        mergeScores(
+            accumScores: SearchScores | null,
+            scores: SearchScores,
+            op: "AND" | "OR",
+        ): SearchScores;
 
         off(name: EventType, fn: EventHandler): void;
 
@@ -165,7 +200,9 @@ declare namespace elasticlunr {
 
         use(plugin: (...args: any[]) => any, ...args: any[]): void;
 
-        static load<T extends {}>(serialisedData: SerialisedIndexData<T>): Index<T>;
+        static load<T extends {}>(
+            serialisedData: SerialisedIndexData<T>,
+        ): Index<T>;
     }
 
     interface TokenInfo {
@@ -214,9 +251,17 @@ declare namespace elasticlunr {
     };
 
     class InvertedIndex {
-        addToken(token: string, tokenInfo: TokenInfo, root?: InvertedIndexNode): void;
+        addToken(
+            token: string,
+            tokenInfo: TokenInfo,
+            root?: InvertedIndexNode,
+        ): void;
 
-        expandToken(token: string, memo?: string[], root?: InvertedIndexNode): string[];
+        expandToken(
+            token: string,
+            memo?: string[],
+            root?: InvertedIndexNode,
+        ): string[];
 
         getDocFreq(token: string): number;
 
@@ -238,7 +283,11 @@ declare namespace elasticlunr {
     type SerialisedPipeline = string[];
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    type PipelineFunction = (token: string, tokenIndex: number, tokens: string[]) => string | undefined | null | void;
+    type PipelineFunction = (
+        token: string,
+        tokenIndex: number,
+        tokens: string[],
+    ) => string | undefined | null | void;
 
     class Pipeline {
         add(...functions: PipelineFunction[]): void;
@@ -271,7 +320,10 @@ declare namespace elasticlunr {
 
         clone(): SortedSet<T>;
 
-        forEach(fn: (element: T, index: number, collection: T[]) => void, ctx: {}): void;
+        forEach(
+            fn: (element: T, index: number, collection: T[]) => void,
+            ctx: {},
+        ): void;
 
         indexOf(elem: {}): number;
 
@@ -279,7 +331,10 @@ declare namespace elasticlunr {
 
         locationFor(elem: T): number;
 
-        map(fn: (element: T, index: number, collection: T[]) => T, ctx?: {}): T[];
+        map(
+            fn: (element: T, index: number, collection: T[]) => T,
+            ctx?: {},
+        ): T[];
 
         toArray(): T[];
 

@@ -1,17 +1,16 @@
 export {};
 
-type HtmlOrSvgElementTagNameMap =
-    & HTMLElementTagNameMap
-    & Pick<SVGElementTagNameMap, Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>>;
+type HtmlOrSvgElementTagNameMap = HTMLElementTagNameMap &
+    Pick<
+        SVGElementTagNameMap,
+        Exclude<keyof SVGElementTagNameMap, keyof HTMLElementTagNameMap>
+    >;
 
-export type Props<TTagName extends keyof HtmlOrSvgElementTagNameMap> =
-    & {
-        readonly [TAttributeName in keyof HtmlOrSvgElementTagNameMap[TTagName]]?:
-            HtmlOrSvgElementTagNameMap[TTagName][TAttributeName];
-    }
-    & {
-        readonly key?: number | string | undefined;
-    };
+export type Props<TTagName extends keyof HtmlOrSvgElementTagNameMap> = {
+    readonly [TAttributeName in keyof HtmlOrSvgElementTagNameMap[TTagName]]?: HtmlOrSvgElementTagNameMap[TTagName][TAttributeName];
+} & {
+    readonly key?: number | string | undefined;
+};
 
 export interface VNode<TTagName extends keyof HtmlOrSvgElementTagNameMap> {
     readonly name: TTagName;
@@ -34,7 +33,7 @@ export function h(
 export function h<TTagName extends keyof HTMLElementTagNameMap>(
     tagName: TTagName,
     props: Props<TTagName>,
-    children?: Children<(keyof HTMLElementTagNameMap) | "svg">,
+    children?: Children<keyof HTMLElementTagNameMap | "svg">,
 ): VNode<TTagName>;
 
 export function h<TTagName extends keyof SVGElementTagNameMap>(

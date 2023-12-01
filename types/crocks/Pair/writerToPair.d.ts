@@ -6,6 +6,8 @@ import Pair from "./Pair";
  * writerToPair :: Monoid m => (a -> Writer m b) -> a -> Pair m b
  */
 declare function writerToPair(val: Writer): Pair;
-declare function writerToPair(fn: (val: unknown) => Writer): (val: unknown) => Pair;
+declare function writerToPair(
+    fn: (val: unknown) => Writer,
+): (val: unknown) => Pair;
 
 export default writerToPair;

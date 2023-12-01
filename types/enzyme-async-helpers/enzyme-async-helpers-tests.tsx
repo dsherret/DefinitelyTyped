@@ -1,5 +1,10 @@
 import { mount } from "enzyme";
-import { Config, waitForElement, waitForProps, waitForState } from "enzyme-async-helpers";
+import {
+    Config,
+    waitForElement,
+    waitForProps,
+    waitForState,
+} from "enzyme-async-helpers";
 import * as React from "react";
 
 const component = mount(<div>component</div>);

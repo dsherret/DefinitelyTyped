@@ -17,7 +17,11 @@ interface Mixpanel {
      * @param config A dictionary of config options to override
      * @param libraryName The name for the new mixpanel instance that you want created
      */
-    init(token: string, config?: Mixpanel.Config, libraryName?: string): Mixpanel;
+    init(
+        token: string,
+        config?: Mixpanel.Config,
+        libraryName?: string,
+    ): Mixpanel;
 
     /**
      * `push()` keeps the standard async-array-push
@@ -61,7 +65,11 @@ interface Mixpanel {
      * @param properties A set of properties to include with the event you're sending. These describe the user who did the event or details about the event itself.
      * @param callback If provided, the callback function will be called after tracking the event.
      */
-    track(eventName: string, properties?: { [index: string]: any }, callback?: () => void): void;
+    track(
+        eventName: string,
+        properties?: { [index: string]: any },
+        callback?: () => void,
+    ): void;
 
     /**
      * Track an event. With a predefined EventType
@@ -118,7 +126,11 @@ interface Mixpanel {
      * @param eventName The name of the event to track
      * @param properties A properties object or function that returns a dictionary of properties when passed a DOMElement
      */
-    track_links(querySelector: Mixpanel.Query, eventName: string, properties?: { [index: string]: any }): void;
+    track_links(
+        querySelector: Mixpanel.Query,
+        eventName: string,
+        properties?: { [index: string]: any },
+    ): void;
 
     /**
      * Track form submissions. Selector must be a valid query.
@@ -146,7 +158,11 @@ interface Mixpanel {
      * @param eventName The name of the event to track
      * @param properties This can be a set of properties, or a function that returns a set of properties after being passed a DOMElement
      */
-    track_forms(querySelector: Mixpanel.Query, eventName: string, properties?: { [index: string]: any }): void;
+    track_forms(
+        querySelector: Mixpanel.Query,
+        eventName: string,
+        properties?: { [index: string]: any },
+    ): void;
 
     /**
      * Time an event by including the time between this call and a
@@ -185,7 +201,10 @@ interface Mixpanel {
      * @param properties An associative array of properties to store about the user
      * @param daysOrOptions How many days since the user's last visit to store the super properties or the options object which controls persistence
      */
-    register(properties: { [index: string]: any }, daysOrOptions?: number | { persistent?: boolean }): void;
+    register(
+        properties: { [index: string]: any },
+        daysOrOptions?: number | { persistent?: boolean },
+    ): void;
 
     /**
      * Register a set of super properties only once. This will not
@@ -415,7 +434,10 @@ declare namespace Mixpanel {
          * @param callback If provided, the callback will be called after the tracking event
          */
         increment(prop: string, value?: number, callback?: () => void): void;
-        increment(keys: { [index: string]: number }, callback?: () => void): void;
+        increment(
+            keys: { [index: string]: number },
+            callback?: () => void,
+        ): void;
 
         /**
          * Merge a given list with a list-valued people analytics property,
@@ -487,7 +509,11 @@ declare namespace Mixpanel {
          * @param properties An associative array of properties associated with the charge
          * @param callback If provided, the callback will be called when the server responds
          */
-        track_charge(amount: number, properties?: { [index: string]: any }, callback?: () => void): void;
+        track_charge(
+            amount: number,
+            properties?: { [index: string]: any },
+            callback?: () => void,
+        ): void;
 
         /**
          * Permanently clear all revenue report transactions from the

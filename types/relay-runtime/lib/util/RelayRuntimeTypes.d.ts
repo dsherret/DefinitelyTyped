@@ -48,5 +48,8 @@ export interface CacheConfig {
  * Experimental
  */
 export type FetchQueryFetchPolicy = "store-or-network" | "network-only";
-export type FetchPolicy = FetchQueryFetchPolicy | "store-and-network" | "store-only";
+export type FetchPolicy =
+    | FetchQueryFetchPolicy
+    | "store-and-network"
+    | "store-only";
 export type RenderPolicy = "full" | "partial";

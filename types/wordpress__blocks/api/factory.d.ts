@@ -52,10 +52,10 @@ export function createBlocksFromInnerBlocksTemplate(
  * @returns Highest-priority transform candidate.
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function findTransform<T extends Transform, U extends Record<string, any> = Record<string, any>>(
-    transforms: T[],
-    predicate: (transform: T) => boolean,
-): Transform<U> | null;
+export function findTransform<
+    T extends Transform,
+    U extends Record<string, any> = Record<string, any>,
+>(transforms: T[], predicate: (transform: T) => boolean): Transform<U> | null;
 
 /**
  * Returns normal block transforms for a given transform direction, optionally
@@ -67,7 +67,9 @@ export function findTransform<T extends Transform, U extends Record<string, any>
  * @param blockTypeOrName - `BlockInstance` or name.
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function getBlockTransforms<T extends Record<string, any> = Record<string, any>>(
+export function getBlockTransforms<
+    T extends Record<string, any> = Record<string, any>,
+>(
     direction: "to" | "from",
     blockTypeOrName?: string | Block,
 ): Array<Transform<T> & { blockName: string }>;
@@ -80,7 +82,9 @@ export function getBlockTransforms<T extends Record<string, any> = Record<string
  *
  * @returns Block types that ALL blocks in `blocks` can be transformed to.
  */
-export function getPossibleBlockTransformations(blocks: BlockInstance[]): Array<Block<Record<string, any>>>;
+export function getPossibleBlockTransformations(
+    blocks: BlockInstance[],
+): Array<Block<Record<string, any>>>;
 
 /**
  * Switch one or more blocks into one or more blocks of the new block type.
@@ -88,4 +92,7 @@ export function getPossibleBlockTransformations(blocks: BlockInstance[]): Array<
  * @param blocks - One or more `BlockInstance`.
  * @param name - Block name of block to be switched to.
  */
-export function switchToBlockType(blocks: BlockInstance | BlockInstance[], name: string): BlockInstance[] | null;
+export function switchToBlockType(
+    blocks: BlockInstance | BlockInstance[],
+    name: string,
+): BlockInstance[] | null;

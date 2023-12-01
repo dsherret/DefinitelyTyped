@@ -26,7 +26,9 @@ declare namespace renderMathInElement {
          *   {left: "\\[", right: "\\]", display: true}
          * ]
          */
-        delimiters?: readonly RenderMathInElementSpecificOptionsDelimiters[] | undefined;
+        delimiters?:
+            | readonly RenderMathInElementSpecificOptionsDelimiters[]
+            | undefined;
         /**
          * A list of DOM node types to ignore when recursing through
          *
@@ -53,7 +55,8 @@ declare namespace renderMathInElement {
     /**
      * renderMathInElement options contain KaTeX render options and renderMathInElement specific options
      */
-    type RenderMathInElementOptions = KatexOptions & RenderMathInElementSpecificOptions;
+    type RenderMathInElementOptions = KatexOptions &
+        RenderMathInElementSpecificOptions;
 }
 
 /**
@@ -61,7 +64,10 @@ declare namespace renderMathInElement {
  * @param elem HTML element to auto-render
  * @param options Render options
  */
-declare function renderMathInElement(elem: HTMLElement, options?: renderMathInElement.RenderMathInElementOptions): void;
+declare function renderMathInElement(
+    elem: HTMLElement,
+    options?: renderMathInElement.RenderMathInElementOptions,
+): void;
 
 export = renderMathInElement;
 export as namespace renderMathInElement;

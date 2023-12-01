@@ -13,6 +13,9 @@ og.parse("content", {
     strict: true,
 });
 
-og.getHTML("https://github.com/samholmes/node-open-graph/raw/master/test.html", (err, data) => {
-    data; // $ExpectType string | undefined
-});
+og.getHTML(
+    "https://github.com/samholmes/node-open-graph/raw/master/test.html",
+    (err, data) => {
+        data; // $ExpectType string | undefined
+    },
+);

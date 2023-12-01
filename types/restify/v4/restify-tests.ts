@@ -3,7 +3,11 @@ import * as url from "url";
 
 let server = restify.createServer({
     formatters: {
-        "application/foo": function formatFoo(req: restify.Request, res: restify.Response, body: any) {
+        "application/foo": function formatFoo(
+            req: restify.Request,
+            res: restify.Response,
+            body: any,
+        ) {
             if (body instanceof Error) {
                 return body.stack;
             }
@@ -35,8 +39,12 @@ server.pre(restify.pre.sanitizePath());
 
 server.on("someEvent", () => {});
 
-server.use((req: restify.Request, res: restify.Response, next: restify.Next) => {});
-server.use([(req: restify.Request, res: restify.Response, next: restify.Next) => {}]);
+server.use(
+    (req: restify.Request, res: restify.Response, next: restify.Next) => {},
+);
+server.use([
+    (req: restify.Request, res: restify.Response, next: restify.Next) => {},
+]);
 server.use(
     (req: restify.Request, res: restify.Response, next: restify.Next) => {},
     (req: restify.Request, res: restify.Response, next: restify.Next) => {},
@@ -260,22 +268,26 @@ server.use(restify.queryParser());
 server.use(restify.jsonp());
 server.use(restify.gzipResponse());
 server.use(restify.bodyParser());
-server.use(restify.CORS({
-    origins: ["https://foo.com", "http://bar.com", "http://baz.com:8081"],
-    credentials: true,
-    headers: ["x-foo"],
-}));
-server.use(restify.throttle({
-    burst: 100,
-    rate: 50,
-    ip: true,
-    overrides: {
-        "192.168.1.1": {
-            rate: 0,
-            burst: 0,
+server.use(
+    restify.CORS({
+        origins: ["https://foo.com", "http://bar.com", "http://baz.com:8081"],
+        credentials: true,
+        headers: ["x-foo"],
+    }),
+);
+server.use(
+    restify.throttle({
+        burst: 100,
+        rate: 50,
+        ip: true,
+        overrides: {
+            "192.168.1.1": {
+                rate: 0,
+                burst: 0,
+            },
         },
-    },
-}));
+    }),
+);
 
 server.on(
     "after",
@@ -284,15 +296,26 @@ server.on(
     }),
 );
 
-server.on("after", (req: restify.Request, res: restify.Response, route: restify.Route, err: any) => {
-    route.spec.method === "GET";
-    route.spec.name === "routeName";
-    route.spec.path; // $ExpectType string | RegExp
-    route.spec.versions; // $ExpectType string[]
-    restify.auditLogger({ log: () => {} })(req, res, route, err);
-});
+server.on(
+    "after",
+    (
+        req: restify.Request,
+        res: restify.Response,
+        route: restify.Route,
+        err: any,
+    ) => {
+        route.spec.method === "GET";
+        route.spec.name === "routeName";
+        route.spec.path; // $ExpectType string | RegExp
+        route.spec.versions; // $ExpectType string[]
+        restify.auditLogger({ log: () => {} })(req, res, route, err);
+    },
+);
 
-(restify as any).defaultResponseHeaders = function(this: restify.Request, data: any) {
+(restify as any).defaultResponseHeaders = function (
+    this: restify.Request,
+    data: any,
+) {
     this.header("Server", "helloworld");
 };
 
@@ -319,19 +342,40 @@ client = restify.createStringClient({
     version: "",
 });
 
-client.head("test", (err: any, req: restify.Request, res: restify.Response) => {});
-client.put("path", {}, (err: any, req: restify.Request, res: restify.Response, obj: any) => {});
-client.patch("path", {}, (err: any, req: restify.Request, res: restify.Response, obj: any) => {});
-client.del("path", (err: any, req: restify.Request, res: restify.Response) => {});
+client.head(
+    "test",
+    (err: any, req: restify.Request, res: restify.Response) => {},
+);
+client.put(
+    "path",
+    {},
+    (err: any, req: restify.Request, res: restify.Response, obj: any) => {},
+);
+client.patch(
+    "path",
+    {},
+    (err: any, req: restify.Request, res: restify.Response, obj: any) => {},
+);
+client.del(
+    "path",
+    (err: any, req: restify.Request, res: restify.Response) => {},
+);
 
-client.post("/foo", { hello: "world" }, (err: any, req: restify.Request, res: restify.Response, obj: any) => {
-    console.log("%d -> %j", res.statusCode, res.headers);
-    console.log("%j", obj);
-});
+client.post(
+    "/foo",
+    { hello: "world" },
+    (err: any, req: restify.Request, res: restify.Response, obj: any) => {
+        console.log("%d -> %j", res.statusCode, res.headers);
+        console.log("%j", obj);
+    },
+);
 
-client.get("/foo/bar", (err: any, req: restify.Request, res: restify.Response, data: string) => {
-    console.log("%s", data);
-});
+client.get(
+    "/foo/bar",
+    (err: any, req: restify.Request, res: restify.Response, data: string) => {
+        console.log("%s", data);
+    },
+);
 
 const client2 = restify.createClient({
     url: "http://127.0.0.1",

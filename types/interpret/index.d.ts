@@ -12,7 +12,10 @@ export interface ExtensionDescriptor {
     register: RegisterFn;
 }
 
-export type Extension = string | ExtensionDescriptor | Array<string | ExtensionDescriptor>;
+export type Extension =
+    | string
+    | ExtensionDescriptor
+    | Array<string | ExtensionDescriptor>;
 export interface Extensions {
     [extension: string]: Extension | null;
 }

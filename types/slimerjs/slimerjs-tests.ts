@@ -15,14 +15,11 @@ let vUserAgent =
     "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/602.4.8 (KHTML, like Gecko) Version/10.0.3 Safari/602.4.8";
 page.settings.userAgent = vUserAgent;
 
-page.onConsoleMessage = (vMsg) => {
-};
+page.onConsoleMessage = (vMsg) => {};
 
-page.onAlert = (vMsg) => {
-};
+page.onAlert = (vMsg) => {};
 
-page.onLoadStarted = () => {
-};
+page.onLoadStarted = () => {};
 
 page.captureContent = [/json/];
 
@@ -46,8 +43,7 @@ page.onLoadFinished = (vStatus) => {
     phantom.exit();
 };
 
-page.onInitialized = () => {
-};
+page.onInitialized = () => {};
 
 declare const oCookie: Cookie;
 page.onPageCreated = (oPage) => {
@@ -55,7 +51,8 @@ page.onPageCreated = (oPage) => {
 };
 
 page.open(vUrl) // loads a page
-    .then(() => { // executed after loading
+    .then(() => {
+        // executed after loading
         page.viewportSize = { width: 414, height: 736 };
 
         const vFilename = `../data/page01.png`;

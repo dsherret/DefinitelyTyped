@@ -1,4 +1,9 @@
-import { ComponentType, HTMLProps, KeyboardEventHandler, ReactNode } from "react";
+import {
+    ComponentType,
+    HTMLProps,
+    KeyboardEventHandler,
+    ReactNode,
+} from "react";
 
 declare namespace TabbableContainer {
     interface Props extends HTMLProps<HTMLDivElement> {

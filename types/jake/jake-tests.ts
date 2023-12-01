@@ -3,68 +3,70 @@
 import path = require("path");
 
 desc("This is the default task.");
-task("default", function(params) {
+task("default", function (params) {
     console.log("This is the default task.");
 });
 
 desc("This task has prerequisites.");
-task("hasPrereqs", ["foo", "bar", "baz"], function() {
+task("hasPrereqs", ["foo", "bar", "baz"], function () {
     console.log("Ran some prereqs first.");
 });
 
 desc("This is an asynchronous task.");
-task("asyncTask", { async: true }, function() {
+task("asyncTask", { async: true }, function () {
     setTimeout(complete, 1000);
 });
 
 desc("This builds a minified JS file for production.");
-file("foo-minified.js", ["bar", "foo-bar.js", "foo-baz.js"], function() {
+file("foo-minified.js", ["bar", "foo-bar.js", "foo-baz.js"], function () {
     // Code to concat and minify goes here
 });
 
-desc("This creates the bar directory for use with the foo-minified.js file-task.");
+desc(
+    "This creates the bar directory for use with the foo-minified.js file-task.",
+);
 directory("bar");
 
 desc("This is the default task.");
-task("default", function() {
+task("default", function () {
     console.log("This is the default task.");
 });
 
-namespace("foo", function() {
+namespace("foo", function () {
     desc("This the foo:bar task");
-    task("bar", function() {
+    task("bar", function () {
         console.log("doing foo:bar task");
     });
 
     desc("This the foo:baz task");
-    task("baz", ["default", "foo:bar"], function() {
+    task("baz", ["default", "foo:bar"], function () {
         console.log("doing foo:baz task");
     });
 });
 
 desc("This is an awesome task.");
-task("awesome", function(a, b, c) {
+task("awesome", function (a, b, c) {
     console.log(a, b, c);
 });
 
 desc("This is an awesome task.");
-task("awesome", function(a, b, c) {
+task("awesome", function (a, b, c) {
     console.log(a, b, c);
     console.log(process.env.qux, process.env.frang);
 });
 
-jake.addListener("complete", function() {
+jake.addListener("complete", function () {
     process.exit();
 });
 
 desc("Calls the foo:bar task and its prerequisites.");
-task("invokeFooBar", function() {
+task("invokeFooBar", function () {
     // Calls foo:bar and its prereqs
     jake.Task["foo:bar"].invoke();
 });
 
 desc("Calls the foo:bar task and its prerequisites.");
-task("invokeFooBar", function() {
+task("invokeFooBar", function () {
     // Calls foo:bar and its prereqs
     jake.Task["foo:bar"].invoke();
     // Does nothing
@@ -72,13 +74,13 @@ task("invokeFooBar", function() {
 });
 
 desc("Calls the foo:bar task without its prerequisites.");
-task("executeFooBar", function() {
+task("executeFooBar", function () {
     // Calls foo:bar without its prereqs
     jake.Task["foo:baz"].execute();
 });
 
 desc("Calls the foo:bar task without its prerequisites.");
-task("executeFooBar", function() {
+task("executeFooBar", function () {
     // Calls foo:bar without its prereqs
     jake.Task["foo:baz"].execute();
     // Can keep running this over and over
@@ -87,7 +89,7 @@ task("executeFooBar", function() {
 });
 
 desc("Calls the foo:bar task and its prerequisites.");
-task("invokeFooBar", function() {
+task("invokeFooBar", function () {
     // Calls foo:bar and its prereqs
     jake.Task["foo:bar"].invoke();
     // Does nothing
@@ -98,7 +100,7 @@ task("invokeFooBar", function() {
 });
 
 desc("Calls the foo:bar task and its prerequisites.");
-task("invokeFooBar", function() {
+task("invokeFooBar", function () {
     // Calls foo:bar and its prereqs
     jake.Task["foo:bar"].invoke();
     // Does nothing
@@ -109,16 +111,16 @@ task("invokeFooBar", function() {
 });
 
 desc("Passes params on to other tasks.");
-task("passParams", function() {
+task("passParams", function () {
     var t = jake.Task["foo:bar"];
     // Calls foo:bar, passing along current args
     t.invoke.apply(t, arguments);
 });
 
 desc("Calls the async foo:baz task and its prerequisites.");
-task("invokeFooBaz", { async: true }, function() {
+task("invokeFooBaz", { async: true }, function () {
     var t = jake.Task["foo:baz"];
-    t.addListener("complete", function() {
+    t.addListener("complete", function () {
         console.log("Finished executing foo:baz");
         // Maybe run some other code
         // ...
@@ -129,27 +131,27 @@ task("invokeFooBaz", { async: true }, function() {
     t.invoke();
 });
 
-namespace("vronk", function() {
-    task("groo", function() {
+namespace("vronk", function () {
+    task("groo", function () {
         var t = jake.Task["vronk:zong"];
-        t.addListener("error", function(e) {
+        t.addListener("error", function (e) {
             console.log(e.message);
         });
         t.invoke();
     });
 
-    task("zong", function() {
+    task("zong", function () {
         throw new Error("OMFGZONG");
     });
 });
 
 desc("This task fails.");
-task("failTask", function() {
+task("failTask", function () {
     fail("Yikes. Something back happened.");
 });
 
 desc("This task fails with an exit-status of 42.");
-task("failTaskQuestionCustomStatus", function() {
+task("failTaskQuestionCustomStatus", function () {
     fail("What is the answer?", 42);
 });
 
@@ -161,20 +163,24 @@ jake.readdirR("pkg");
 jake.rmRf("pkg");
 
 desc("Runs the Jake tests.");
-task("test", { async: true }, function() {
+task("test", { async: true }, function () {
     var cmds = [
         "node ./tests/parseargs.js",
         "node ./tests/task_base.js",
         "node ./tests/file_task.js",
     ];
-    jake.exec(cmds, function() {
-        console.log("All tests passed.");
-        complete();
-    }, { printStdout: true });
+    jake.exec(
+        cmds,
+        function () {
+            console.log("All tests passed.");
+            complete();
+        },
+        { printStdout: true },
+    );
 });
 
 var ex = jake.createExec(["do_thing.sh"], { printStdout: true });
-ex.addListener("error", function(msg, code) {
+ex.addListener("error", function (msg, code) {
     if (code == 127) {
         console.log("Couldn't find do_thing script, trying do_other_thing");
         ex.append("do_other_thing.sh");
@@ -184,15 +190,19 @@ ex.addListener("error", function(msg, code) {
 });
 ex.run();
 
-task("echo", { async: true }, function() {
-    jake.exec(["echo \"hello\""], function() {
-        jake.logger.log("Done.");
-        complete();
-    }, { printStdout: !jake.program.opts.quiet });
+task("echo", { async: true }, function () {
+    jake.exec(
+        ['echo "hello"'],
+        function () {
+            jake.logger.log("Done.");
+            complete();
+        },
+        { printStdout: !jake.program.opts.quiet },
+    );
 });
 
 function hoge() {
-    var t = new jake.PackageTask("fonebone", "v0.1.2112", function() {
+    var t = new jake.PackageTask("fonebone", "v0.1.2112", function () {
         var fileList = [
             "Jakefile",
             "README.md",
@@ -215,11 +225,8 @@ list.exclude("foo/zoobie.txt");
 list.exclude(/foo\/src.*.txt/);
 console.log(list.toArray());
 
-var t = new jake.TestTask("fonebone", function() {
-    var fileList = [
-        "tests/*",
-        "lib/adapters/**/test.js",
-    ];
+var t = new jake.TestTask("fonebone", function () {
+    var fileList = ["tests/*", "lib/adapters/**/test.js"];
     this.testFiles.include(fileList);
     this.testFiles.exclude("tests/helper.js");
     this.testName = "testMainAndAdapters";
@@ -229,17 +236,17 @@ var assert = require("assert"),
     tests;
 
 tests = {
-    "sync test": function() {
+    "sync test": function () {
         // Assert something
         assert.ok(true);
     },
-    "async test": function(next) {
+    "async test": function (next) {
         // Assert something else
         assert.ok(true);
         // Won't go next until this is called
         next();
     },
-    "another sync test": function() {
+    "another sync test": function () {
         // Assert something else
         assert.ok(true);
     },

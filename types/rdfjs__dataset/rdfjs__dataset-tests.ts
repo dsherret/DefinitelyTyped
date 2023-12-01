@@ -9,7 +9,7 @@ let dataset: RDF.DatasetCore = rdf.dataset();
 
 const env = new Environment([Factory]); // $ExpectType Environment<Factory>
 
-const quads: RDF.Quad[] = <any> {};
+const quads: RDF.Quad[] = <any>{};
 dataset = rdf.dataset(quads);
 
 dataset = new DatasetCore();
@@ -19,5 +19,7 @@ interface CustomQuad extends RDF.BaseQuad {
     foo: string;
 }
 
-const customQuad: CustomQuad = <any> {};
-const customQuadDataset: RDF.DatasetCore<CustomQuad> = rdf.dataset([customQuad]);
+const customQuad: CustomQuad = <any>{};
+const customQuadDataset: RDF.DatasetCore<CustomQuad> = rdf.dataset([
+    customQuad,
+]);

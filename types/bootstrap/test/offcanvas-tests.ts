@@ -31,19 +31,19 @@ Offcanvas.getOrCreateInstance(element, {
 // $ExpectType string
 Offcanvas.VERSION;
 
-element.addEventListener(Offcanvas.Events.hidden, event => {
+element.addEventListener(Offcanvas.Events.hidden, (event) => {
     // do something…
 });
 
-element.addEventListener(Offcanvas.Events.hide, event => {
+element.addEventListener(Offcanvas.Events.hide, (event) => {
     // do something…
 });
 
-element.addEventListener(Offcanvas.Events.show, event => {
+element.addEventListener(Offcanvas.Events.show, (event) => {
     // do something…
 });
 
-element.addEventListener(Offcanvas.Events.shown, event => {
+element.addEventListener(Offcanvas.Events.shown, (event) => {
     // do something…
 });
 

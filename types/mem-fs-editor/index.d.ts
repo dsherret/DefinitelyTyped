@@ -19,11 +19,25 @@ export interface Editor {
 
     write(filepath: string, contents: WriteContents): string;
 
-    writeJSON(filepath: string, contents: any, replacer?: WriteJsonReplacer, space?: WriteJsonSpace): string;
+    writeJSON(
+        filepath: string,
+        contents: any,
+        replacer?: WriteJsonReplacer,
+        space?: WriteJsonSpace,
+    ): string;
 
-    append(filepath: string, contents: WriteContents, options?: AppendOptions): string;
+    append(
+        filepath: string,
+        contents: WriteContents,
+        options?: AppendOptions,
+    ): string;
 
-    extendJSON(filepath: string, contents: any, replacer?: WriteJsonReplacer, space?: WriteJsonSpace): void;
+    extendJSON(
+        filepath: string,
+        contents: any,
+        replacer?: WriteJsonReplacer,
+        space?: WriteJsonSpace,
+    ): void;
 
     delete(filepath: FilePaths, options?: WithGlobOptions): void;
 
@@ -76,7 +90,9 @@ type WriteContents = string | Buffer;
 // #endregion
 
 // #region Editor#writeJSON
-type WriteJsonReplacer = ((key: string, value: any) => any) | Array<string | number>;
+type WriteJsonReplacer =
+    | ((key: string, value: any) => any)
+    | Array<string | number>;
 
 type WriteJsonSpace = number | string;
 // #endregion
@@ -95,7 +111,10 @@ export interface CopyOptions extends WithGlobOptions {
     processDestinationPath?: ((path: string) => string) | undefined;
 }
 
-export type ProcessingFunction = (contents: Buffer, path: string) => WriteContents;
+export type ProcessingFunction = (
+    contents: Buffer,
+    path: string,
+) => WriteContents;
 // #endregion
 
 // #region Editor#commit

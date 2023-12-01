@@ -31,10 +31,17 @@ declare module "vue" {
     }
     interface ComponentCustomProperties {
         $Clipboard: (arg: { text: string }) => Promise<void>;
-        $ImagePreview: (list: Array<{ url?: string; thumbUrl?: string }>, index?: number) => void;
+        $ImagePreview: (
+            list: Array<{ url?: string; thumbUrl?: string }>,
+            index?: number,
+        ) => void;
         $Print: (selector: string | HTMLElement) => void;
         $Export: {
-            excel: (arg: { title: string; columns: Array<{ label: string; prop: string }>; data: any[] }) => void;
+            excel: (arg: {
+                title: string;
+                columns: Array<{ label: string; prop: string }>;
+                data: any[];
+            }) => void;
             xlsx: (raw: File) => Promise<{ results: any[] }>;
         };
         $Log: {

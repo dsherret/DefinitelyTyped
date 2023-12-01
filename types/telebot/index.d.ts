@@ -3,23 +3,27 @@ export = telebot;
 declare namespace telebot {
     interface config {
         token: string; // Required. Telegram Bot API token.
-        polling?: {
-            // Optional. Use polling.
-            interval?: number | undefined; // Optional. How often check updates (in ms).
-            timeout?: number | undefined; // Optional. Update polling timeout (0 - short polling).
-            limit?: number | undefined; // Optional. Limits the number of updates to be retrieved.
-            retryTimeout?: number | undefined; // Optional. Reconnecting timeout (in ms).
-            proxy?: string | undefined; // Optional. An HTTP proxy to be used.
-        } | undefined;
-        webhook?: {
-            // Optional. Use webhook instead of polling.
-            key?: string | undefined; // Optional. Private key for server.
-            cert?: string | undefined; // Optional. key.
-            url?: string | undefined; // HTTPS url to send updates to.
-            host?: string | undefined; // Webhook server host.
-            port?: number | undefined; // Server port.
-            maxConnections?: number | undefined; // Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
-        } | undefined;
+        polling?:
+            | {
+                  // Optional. Use polling.
+                  interval?: number | undefined; // Optional. How often check updates (in ms).
+                  timeout?: number | undefined; // Optional. Update polling timeout (0 - short polling).
+                  limit?: number | undefined; // Optional. Limits the number of updates to be retrieved.
+                  retryTimeout?: number | undefined; // Optional. Reconnecting timeout (in ms).
+                  proxy?: string | undefined; // Optional. An HTTP proxy to be used.
+              }
+            | undefined;
+        webhook?:
+            | {
+                  // Optional. Use webhook instead of polling.
+                  key?: string | undefined; // Optional. Private key for server.
+                  cert?: string | undefined; // Optional. key.
+                  url?: string | undefined; // HTTPS url to send updates to.
+                  host?: string | undefined; // Webhook server host.
+                  port?: number | undefined; // Server port.
+                  maxConnections?: number | undefined; // Optional. Maximum allowed number of simultaneous HTTPS connections to the webhook for update delivery
+              }
+            | undefined;
         allowedUpdates?: string[] | undefined; // Optional. List the types of updates you want your bot to receive. Specify an empty list to receive all updates.
         usePlugins?: string[] | undefined; // Optional. Use build-in plugins from pluginFolder.
         pluginFolder?: string | undefined; // Optional. Plugin folder location relative to telebot package.
@@ -97,11 +101,7 @@ declare class telebot {
         opt?: any,
     ): boolean;
 
-    event(
-        types: string | string[],
-        data: any,
-        self?: any,
-    ): Promise<any>;
+    event(types: string | string[], data: any, self?: any): Promise<any>;
 
     cleanEvent(type: string): boolean;
 
@@ -255,7 +255,11 @@ declare class telebot {
     sendLocation(
         chat_id: number | string,
         coords: [number, number],
-        opt?: { replyToMessage?: number | undefined; replyMarkup?: any; notification?: boolean | undefined },
+        opt?: {
+            replyToMessage?: number | undefined;
+            replyMarkup?: any;
+            notification?: boolean | undefined;
+        },
     ): Promise<any>;
 
     sendVenue(
@@ -276,7 +280,11 @@ declare class telebot {
         number: string,
         firstName: string,
         lastName?: string,
-        opt?: { replyToMessage?: number | undefined; replyMarkup?: any; notification?: boolean | undefined },
+        opt?: {
+            replyToMessage?: number | undefined;
+            replyMarkup?: any;
+            notification?: boolean | undefined;
+        },
     ): Promise<any>;
 
     sendAction(chat_id: number | string, action: string): Promise<boolean>;
@@ -284,7 +292,11 @@ declare class telebot {
     sendGame(
         chat_id: number | string,
         game_short_name: string,
-        opt?: { replyToMessage?: number | undefined; replyMarkup?: any; notification?: boolean | undefined },
+        opt?: {
+            replyToMessage?: number | undefined;
+            replyMarkup?: any;
+            notification?: boolean | undefined;
+        },
     ): Promise<any>;
 
     setGameScore(
@@ -301,7 +313,11 @@ declare class telebot {
 
     getGameHighScores(
         user_id: number,
-        opt?: { chatId?: number | undefined; messageId?: number | undefined; inlineMessageId?: string | undefined },
+        opt?: {
+            chatId?: number | undefined;
+            messageId?: number | undefined;
+            inlineMessageId?: string | undefined;
+        },
     ): Promise<any[]>;
 
     getUserProfilePhotos(
@@ -321,13 +337,21 @@ declare class telebot {
             startParameter: string;
             currency: string;
             prices: any[];
-            photo?: { url?: string | undefined; width?: number | undefined; height?: number | undefined } | undefined;
-            need?: {
-                name?: boolean | undefined;
-                phoneNumber?: boolean | undefined;
-                email?: boolean | undefined;
-                shippingAddress?: boolean | undefined;
-            } | undefined;
+            photo?:
+                | {
+                      url?: string | undefined;
+                      width?: number | undefined;
+                      height?: number | undefined;
+                  }
+                | undefined;
+            need?:
+                | {
+                      name?: boolean | undefined;
+                      phoneNumber?: boolean | undefined;
+                      email?: boolean | undefined;
+                      shippingAddress?: boolean | undefined;
+                  }
+                | undefined;
             isFlexible?: boolean | undefined;
             notification?: boolean | undefined;
             replyToMessage?: number | undefined;
@@ -347,18 +371,23 @@ declare class telebot {
 
     kickChatMember(chat_id: number | string, user_id: number): Promise<boolean>;
 
-    unbanChatMember(chat_id: number | string, user_id: number): Promise<boolean>;
+    unbanChatMember(
+        chat_id: number | string,
+        user_id: number,
+    ): Promise<boolean>;
 
     editMessageText(
-        config: {
-            chatId: number | string;
-            messageId: number;
-            inlineMsgId?: number | undefined;
-        } | {
-            chatId?: number | string | undefined;
-            messageId?: number | undefined;
-            inlineMsgId: number;
-        },
+        config:
+            | {
+                  chatId: number | string;
+                  messageId: number;
+                  inlineMsgId?: number | undefined;
+              }
+            | {
+                  chatId?: number | string | undefined;
+                  messageId?: number | undefined;
+                  inlineMsgId: number;
+              },
         text: string,
         opt?: {
             parseMode?: string | undefined;
@@ -366,28 +395,32 @@ declare class telebot {
     ): Promise<any | boolean>;
 
     editMessageCaption(
-        config: {
-            chatId: number | string;
-            messageId: number;
-            inlineMsgId?: number | undefined;
-        } | {
-            chatId?: number | string | undefined;
-            messageId?: number | undefined;
-            inlineMsgId: number;
-        },
+        config:
+            | {
+                  chatId: number | string;
+                  messageId: number;
+                  inlineMsgId?: number | undefined;
+              }
+            | {
+                  chatId?: number | string | undefined;
+                  messageId?: number | undefined;
+                  inlineMsgId: number;
+              },
         caption: string,
     ): Promise<any | boolean>;
 
     editMessageReplyMarkup(
-        config: {
-            chatId: number | string;
-            messageId: number;
-            inlineMsgId?: number | undefined;
-        } | {
-            chatId?: number | string | undefined;
-            messageId?: number | undefined;
-            inlineMsgId: number;
-        },
+        config:
+            | {
+                  chatId: number | string;
+                  messageId: number;
+                  inlineMsgId?: number | undefined;
+              }
+            | {
+                  chatId?: number | string | undefined;
+                  messageId?: number | undefined;
+                  inlineMsgId: number;
+              },
         replyMarkup: any,
     ): Promise<any | boolean>;
 
@@ -404,7 +437,10 @@ declare class telebot {
     answerShippingQuery(
         shipping_query_id: string,
         ok: boolean,
-        opt?: { shippingOptions?: any[] | undefined; errorMessage?: string | undefined },
+        opt?: {
+            shippingOptions?: any[] | undefined;
+            errorMessage?: string | undefined;
+        },
     ): Promise<boolean>;
 
     answerPreCheckoutQuery(

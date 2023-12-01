@@ -23,6 +23,7 @@ isValid = pwdStrength("P@55w0Rd", {
         minUpperChars: "You should have at least %s uppercase chars.",
         minSpecialChar: "You should have at least %s special char.",
         minSpecialChars: "You should have at least %s special chars.",
-        maxConsecutiveRepeatingChars: "You should have at most %s repeating chars.",
+        maxConsecutiveRepeatingChars:
+            "You should have at most %s repeating chars.",
     },
 });

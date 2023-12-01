@@ -16,25 +16,34 @@ phonon.options({
     },
 });
 
-phonon.navigator().on({
-    page: "pagename",
-    content: "content.html",
-    preventClose: false,
-    readyDelay: 1,
-}, activity => {
-    activity.onCreate(() => {});
-    activity.onReady(() => {});
-    activity.onTransitionEnd(() => {});
-    activity.onClose(self => {});
-    activity.onHidden(() => {});
-    activity.onHashChanged((req1, req2) => {});
-    activity.onTabChanged(() => {});
-});
+phonon.navigator().on(
+    {
+        page: "pagename",
+        content: "content.html",
+        preventClose: false,
+        readyDelay: 1,
+    },
+    (activity) => {
+        activity.onCreate(() => {});
+        activity.onReady(() => {});
+        activity.onTransitionEnd(() => {});
+        activity.onClose((self) => {});
+        activity.onHidden(() => {});
+        activity.onHashChanged((req1, req2) => {});
+        activity.onTabChanged(() => {});
+    },
+);
 
-phonon.navigator().onPage("home").addEvent("create", () => {});
-phonon.navigator().onPage("home").addEvent("close", api => {
-    api.close();
-});
+phonon
+    .navigator()
+    .onPage("home")
+    .addEvent("create", () => {});
+phonon
+    .navigator()
+    .onPage("home")
+    .addEvent("close", (api) => {
+        api.close();
+    });
 
 phonon.navigator().start();
 
@@ -43,10 +52,10 @@ let page: string = phonon.navigator().currentPage;
 page = phonon.navigator().previousPage;
 
 let ev = document.createEvent("");
-document.on("pagecreated", event => {
+document.on("pagecreated", (event) => {
     console.log("global state pagecreated: " + event.detail.page);
 });
-document.on("pagehash", event => {
+document.on("pagehash", (event) => {
     console.log("global state pagehash: " + event.detail.page);
     console.log(event.detail.req[0]);
     console.log(event.detail.req[1]);
@@ -60,9 +69,9 @@ phonon.i18n().bind(() => {});
 phonon.i18n().bind(element);
 phonon.i18n().bind(element, () => {});
 
-phonon.i18n().getAll(json => {});
-phonon.i18n().get("my_key", value => {});
-phonon.i18n().get(["my_key_1", "my_key_two"], values => {});
+phonon.i18n().getAll((json) => {});
+phonon.i18n().get("my_key", (value) => {});
+phonon.i18n().get(["my_key_1", "my_key_two"], (values) => {});
 
 phonon.updateLocale("new-language");
 phonon.i18n().setPreference("fr");
@@ -107,7 +116,7 @@ document.querySelectorAll(".elements").on("tap", () => {});
 element.off("tap", () => {});
 document.querySelectorAll(".elements").off("tap", () => {});
 
-document.on("pageopened", evt => {
+document.on("pageopened", (evt) => {
     console.log(evt.detail.page + " is opened");
 });
 
@@ -131,7 +140,7 @@ pconfirm.on("confirm", () => {});
 pconfirm.on("cancel", () => {});
 
 let pPrompt = phonon.prompt("text", "title", true, "textOk", "textCancel");
-pPrompt.on("confirm", inputValue => {});
+pPrompt.on("confirm", (inputValue) => {});
 pPrompt.on("cancel", () => {});
 
 phonon.indicator("title", true);
@@ -164,7 +173,7 @@ popover.setList([
         value: "tg",
     },
 ]);
-popover.setList(["a", "b", "c"], item => {
+popover.setList(["a", "b", "c"], (item) => {
     const text = typeof item === "string" ? item : item.text;
     const value = typeof item === "string" ? item : item.value;
     return `<li><a class="padded-list" data-value="${value}">${text}</a></li>`;
@@ -176,20 +185,22 @@ popover.attachButton(element, true);
 popover.openFrom(".button-for-popover");
 popover.openFrom(element);
 
-popover.onItemChanged(data => {
+popover.onItemChanged((data) => {
     console.log("onItemChanged");
     console.error(data);
 });
-element.on("itemchanged", event => {
+element.on("itemchanged", (event) => {
     console.log(event.detail);
 });
 
-popover = phonon.popover()
+popover = phonon
+    .popover()
     .setList(["a", "b", "c"])
     .attachButton(".my-button", true)
-    .onItemChanged(data => {
+    .onItemChanged((data) => {
         console.log(data);
-    }).openFrom(".my-button");
+    })
+    .openFrom(".my-button");
 
 // Code examples from http://phonon.quarkdev.com/docs/preloaders
 phonon.preloader("#my-preloader").show();
@@ -215,44 +226,55 @@ phonon.options({
 
 let app = phonon.navigator();
 app.on({ page: "home", preventClose: false, content: null });
-app.on({ page: "pagetwo", preventClose: true, content: "pagetwo.html", readyDelay: 1 }, activity => {
-    let action: string | null = null;
-    const onAction = (evt: any) => {
-        const target = evt.target;
-        action = "ok";
-        if (target.getAttribute("data-order") === "order") {
-            phonon.alert("Thank you for your order!", "Dear customer");
-        } else {
-            phonon.alert("Your order has been canceled.", "Dear customer");
-        }
-    };
-    activity.onCreate(() => {
-        const order = document.querySelector(".order");
-        if (order != null) {
-            order.on("tap", onAction);
-        }
-        const cancel = document.querySelector(".cancel");
-        if (cancel != null) {
-            cancel.on("tap", onAction);
-        }
-    });
-    activity.onClose(self => {
-        if (action !== null) {
-            self.close();
-        } else {
-            phonon.alert("Before leaving this page, you must perform an action.", "Action required");
-        }
-    });
-    activity.onHidden(() => {
-        action = null;
-    });
-    activity.onHashChanged(pizza => {
-        const pizzaElt = document.querySelector(".pizza");
-        if (pizzaElt != null) {
-            pizzaElt.textContent = pizza;
-        }
-    });
-});
+app.on(
+    {
+        page: "pagetwo",
+        preventClose: true,
+        content: "pagetwo.html",
+        readyDelay: 1,
+    },
+    (activity) => {
+        let action: string | null = null;
+        const onAction = (evt: any) => {
+            const target = evt.target;
+            action = "ok";
+            if (target.getAttribute("data-order") === "order") {
+                phonon.alert("Thank you for your order!", "Dear customer");
+            } else {
+                phonon.alert("Your order has been canceled.", "Dear customer");
+            }
+        };
+        activity.onCreate(() => {
+            const order = document.querySelector(".order");
+            if (order != null) {
+                order.on("tap", onAction);
+            }
+            const cancel = document.querySelector(".cancel");
+            if (cancel != null) {
+                cancel.on("tap", onAction);
+            }
+        });
+        activity.onClose((self) => {
+            if (action !== null) {
+                self.close();
+            } else {
+                phonon.alert(
+                    "Before leaving this page, you must perform an action.",
+                    "Action required",
+                );
+            }
+        });
+        activity.onHidden(() => {
+            action = null;
+        });
+        activity.onHashChanged((pizza) => {
+            const pizzaElt = document.querySelector(".pizza");
+            if (pizzaElt != null) {
+                pizzaElt.textContent = pizza;
+            }
+        });
+    },
+);
 app.start();
 
 // Code example from http://phonon.quarkdev.com/App/public/phonon/kitchen-sink/index.html
@@ -272,7 +294,7 @@ phonon.options({
 
 const app2 = phonon.navigator();
 app2.on({ page: "home", content: "home.html" });
-app2.on({ page: "pagedialog", content: "pagedialog.html" }, activity => {
+app2.on({ page: "pagedialog", content: "pagedialog.html" }, (activity) => {
     activity.onCreate(() => {
         const showAlert = document.querySelector("#show-alert");
         if (showAlert) {
@@ -288,7 +310,7 @@ app2.on({ page: "pagedialog", content: "pagedialog.html" }, activity => {
                 confirm.on("confirm", () => {
                     phonon.alert("Confirmed!");
                 });
-                confirm.on("cancel", value => {
+                confirm.on("cancel", (value) => {
                     phonon.alert("Canceled!");
                 });
             });
@@ -298,7 +320,7 @@ app2.on({ page: "pagedialog", content: "pagedialog.html" }, activity => {
         if (showPrompt) {
             showPrompt.on("tap", () => {
                 const prompt = phonon.prompt("Example", "Hello");
-                prompt.on("confirm", value => {
+                prompt.on("confirm", (value) => {
                     phonon.alert(value, "Inserted Value");
                 });
                 prompt.on("cancel", () => {
@@ -310,7 +332,10 @@ app2.on({ page: "pagedialog", content: "pagedialog.html" }, activity => {
         const showIndicator = document.querySelector("#show-indicator");
         if (showIndicator) {
             showIndicator.on("tap", () => {
-                const indicator = phonon.indicator("Please wait 3 seconds", false);
+                const indicator = phonon.indicator(
+                    "Please wait 3 seconds",
+                    false,
+                );
                 window.setTimeout(() => {
                     indicator.close();
                 }, 3000);
@@ -326,65 +351,72 @@ app2.on({ page: "pagegrid", content: "pagegrid.html" });
 app2.on({ page: "pagelist", content: "pagelist.html" });
 app2.on({ page: "pageaccordion", content: "pageaccordion.html" });
 
-app2.on({ page: "pagenotif", content: "pagenotif.html", readyDelay: 500 }, activity => {
-    activity.onCreate(() => {
-        const showAutoNotif = document.querySelector("#show-auto-notif");
-        if (showAutoNotif) {
-            showAutoNotif.on("tap", () => {
-                phonon.notif("HELLO", 3000, false);
-            });
-        }
+app2.on(
+    { page: "pagenotif", content: "pagenotif.html", readyDelay: 500 },
+    (activity) => {
+        activity.onCreate(() => {
+            const showAutoNotif = document.querySelector("#show-auto-notif");
+            if (showAutoNotif) {
+                showAutoNotif.on("tap", () => {
+                    phonon.notif("HELLO", 3000, false);
+                });
+            }
 
-        const showNotif = document.querySelector("#show-notif");
-        if (showNotif) {
-            showNotif.on("tap", () => {
-                phonon.notif("#notif-example").show();
-            });
-        }
+            const showNotif = document.querySelector("#show-notif");
+            if (showNotif) {
+                showNotif.on("tap", () => {
+                    phonon.notif("#notif-example").show();
+                });
+            }
 
-        const showNotifButton = document.querySelector("#show-notif-button");
-        if (showNotifButton) {
-            showNotifButton.on("tap", () => {
-                phonon.notif("HELLO", 3000, true, "Bye");
-            });
-        }
-    });
+            const showNotifButton =
+                document.querySelector("#show-notif-button");
+            if (showNotifButton) {
+                showNotifButton.on("tap", () => {
+                    phonon.notif("HELLO", 3000, true, "Bye");
+                });
+            }
+        });
 
-    activity.onReady(() => {
-        phonon.notif("Welcome!", 3000, true);
-    });
-});
+        activity.onReady(() => {
+            phonon.notif("Welcome!", 3000, true);
+        });
+    },
+);
 
 app2.on({ page: "pagepanel", content: "pagepanel.html" });
 app2.on({ page: "pagepopover", content: "pagepopover.html" });
-app2.on({ page: "pagepreloader", content: "pagepreloader.html" }, activity => {
-    activity.onReady(() => {
-        const myCircle = document.querySelector("#my-circle");
-        if (myCircle) {
-            phonon.preloader(myCircle).show();
-        }
-        const myDeterminate = document.querySelector("#my-determinate");
-        if (myDeterminate) {
-            phonon.preloader(myDeterminate).show();
-        }
-    });
+app2.on(
+    { page: "pagepreloader", content: "pagepreloader.html" },
+    (activity) => {
+        activity.onReady(() => {
+            const myCircle = document.querySelector("#my-circle");
+            if (myCircle) {
+                phonon.preloader(myCircle).show();
+            }
+            const myDeterminate = document.querySelector("#my-determinate");
+            if (myDeterminate) {
+                phonon.preloader(myDeterminate).show();
+            }
+        });
 
-    activity.onHidden(() => {
-        const myCircle = document.querySelector("#my-circle");
-        if (myCircle) {
-            phonon.preloader(myCircle).hide();
-        }
-        const myDeterminate = document.querySelector("#my-determinate");
-        if (myDeterminate) {
-            phonon.preloader(myDeterminate).hide();
-        }
-    });
-});
+        activity.onHidden(() => {
+            const myCircle = document.querySelector("#my-circle");
+            if (myCircle) {
+                phonon.preloader(myCircle).hide();
+            }
+            const myDeterminate = document.querySelector("#my-determinate");
+            if (myDeterminate) {
+                phonon.preloader(myDeterminate).hide();
+            }
+        });
+    },
+);
 
 app2.on({ page: "pagesidepanel", content: "pagesidepanel.html" });
 app2.on({ page: "pagetable", content: "pagetable.html" });
-app2.on({ page: "pagetabs", content: "pagetabs.html" }, activity => {
-    activity.onTabChanged(tabNumber => {
+app2.on({ page: "pagetabs", content: "pagetabs.html" }, (activity) => {
+    activity.onTabChanged((tabNumber) => {
         const tab = document.querySelector(".tab-number");
         if (tab) {
             tab.innerHTML = tabNumber + "";
@@ -409,7 +441,7 @@ phonon.options({
     },
     i18n: null,
 });
-phonon.navigator().on({ page: "home" }, activity => {
+phonon.navigator().on({ page: "home" }, (activity) => {
     activity.onReady(() => {
         // input where user typed words to query
         const input = document.querySelector("#searchJS");
@@ -447,7 +479,7 @@ phonon.options({
 });
 
 let app3 = phonon.navigator();
-app3.on({ page: "home", content: null }, activity => {
+app3.on({ page: "home", content: null }, (activity) => {
     activity.onCreate(() => {
         let element = document.querySelector("#show-alert");
         if (element) {
@@ -463,7 +495,7 @@ app3.on({ page: "home", content: null }, activity => {
                 confirm.on("confirm", () => {
                     phonon.alert("Confirmed!");
                 });
-                confirm.on("cancel", value => {
+                confirm.on("cancel", (value) => {
                     phonon.alert("Canceled!");
                 });
             });
@@ -473,7 +505,7 @@ app3.on({ page: "home", content: null }, activity => {
         if (element) {
             element.on("tap", () => {
                 const prompt = phonon.prompt("Example", "Hello");
-                prompt.on("confirm", value => {
+                prompt.on("confirm", (value) => {
                     phonon.alert(value, "Inserted Value");
                 });
                 prompt.on("cancel", () => {
@@ -485,7 +517,10 @@ app3.on({ page: "home", content: null }, activity => {
         element = document.querySelector("#show-indicator");
         if (element) {
             element.on("tap", () => {
-                const indicator = phonon.indicator("Please wait 3 seconds", false);
+                const indicator = phonon.indicator(
+                    "Please wait 3 seconds",
+                    false,
+                );
                 window.setTimeout(() => {
                     indicator.close();
                 }, 3000);
@@ -506,7 +541,9 @@ let elSetEnUs = document.querySelector(".set-en-us");
 let defaultLocale = "fr";
 
 function setupHTML() {
-    const pref = phonon.i18n().getPreference() ? phonon.i18n().getPreference() : "not used";
+    const pref = phonon.i18n().getPreference()
+        ? phonon.i18n().getPreference()
+        : "not used";
     if (elPrefLang) {
         elPrefLang.textContent = "Preferred language : " + pref;
     }

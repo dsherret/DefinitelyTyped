@@ -12,7 +12,9 @@ export type PreApprovalUpdateResponse = MercadoPagoResponse<
     ExecOptions<DefaultConfigurationOmitQs, UpdatePreApprovalPayload>
 >;
 
-export type PreApprovalGetResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, any>>;
+export type PreApprovalGetResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, any>
+>;
 
 export interface MercadoPagoPreApproval {
     create(

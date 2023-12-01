@@ -28,8 +28,10 @@ const eventArray: IoTEvent<any[]> = [eventObject, eventString, eventNumber];
 const preProvisioningHookEvent: IoTPreProvisioningHookEvent = {
     claimCertificateId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
     certificateId: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    certificatePem: "-----BEGIN CERTIFICATE-----\nXXXXXXXXXXXXXXXXXXXXX\n-----END CERTIFICATE-----\n",
-    templateArn: "arn:aws:iot:region:11111111111:provisioningtemplate/PreProvisioningHookIotTemplate",
+    certificatePem:
+        "-----BEGIN CERTIFICATE-----\nXXXXXXXXXXXXXXXXXXXXX\n-----END CERTIFICATE-----\n",
+    templateArn:
+        "arn:aws:iot:region:11111111111:provisioningtemplate/PreProvisioningHookIotTemplate",
     clientId: "test-13534135",
     parameters: {
         key: "value",
@@ -42,6 +44,10 @@ const preProvisioningHookResult: IoTPreProvisioningHookResult = {
         key: "new value",
     },
 };
-const preProvisioningHookHandler: IoTPreProvisioningHookHandler = async (event, context, callback) => {
+const preProvisioningHookHandler: IoTPreProvisioningHookHandler = async (
+    event,
+    context,
+    callback,
+) => {
     return preProvisioningHookResult;
 };

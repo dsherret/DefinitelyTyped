@@ -52,11 +52,16 @@ authEngine.verifyToken(signedToken, "shhhhh", {}, (err, decoded) => {
 });
 
 // use external time for verifying
-authEngine.verifyToken(signedToken, "shhhhh", { clockTimestamp: 1 }, (err, decoded) => {
-    const result = decoded as TestObject;
+authEngine.verifyToken(
+    signedToken,
+    "shhhhh",
+    { clockTimestamp: 1 },
+    (err, decoded) => {
+        const result = decoded as TestObject;
 
-    console.log(result.foo); // bar
-});
+        console.log(result.foo); // bar
+    },
+);
 
 // invalid token
 authEngine.verifyToken(signedToken, "wrong-secret", {}, (err, decoded) => {
@@ -75,28 +80,48 @@ authEngine.verifyToken(signedToken, cert, {}, (err, decoded) => {
 
 // verify audience
 cert = fs.readFileSync("public.pem"); // get public key
-authEngine.verifyToken(signedToken, cert, { audience: "urn:foo" }, (err, decoded) => {
-    // if audience mismatch, err == invalid audience
-    console.log(err);
-});
+authEngine.verifyToken(
+    signedToken,
+    cert,
+    { audience: "urn:foo" },
+    (err, decoded) => {
+        // if audience mismatch, err == invalid audience
+        console.log(err);
+    },
+);
 
 // verify issuer
 cert = fs.readFileSync("public.pem"); // get public key
-authEngine.verifyToken(signedToken, cert, { audience: "urn:foo", issuer: "urn:issuer" }, (err, decoded) => {
-    // if issuer mismatch, err == invalid issuer
-    console.log(err);
-});
+authEngine.verifyToken(
+    signedToken,
+    cert,
+    { audience: "urn:foo", issuer: "urn:issuer" },
+    (err, decoded) => {
+        // if issuer mismatch, err == invalid issuer
+        console.log(err);
+    },
+);
 
 // verify algorithm
 cert = fs.readFileSync("public.pem"); // get public key
-authEngine.verifyToken(signedToken, cert, { algorithms: ["RS256"] }, (err, decoded) => {
-    // if algorithm mismatch, err == invalid algorithm
-    console.log(err);
-});
+authEngine.verifyToken(
+    signedToken,
+    cert,
+    { algorithms: ["RS256"] },
+    (err, decoded) => {
+        // if algorithm mismatch, err == invalid algorithm
+        console.log(err);
+    },
+);
 
 // verify without expiration check
 cert = fs.readFileSync("public.pem"); // get public key
-authEngine.verifyToken(signedToken, cert, { ignoreExpiration: true }, (err, decoded) => {
-    // if ignoreExpration == false and token is expired, err == expired token
-    console.log(err);
-});
+authEngine.verifyToken(
+    signedToken,
+    cert,
+    { ignoreExpiration: true },
+    (err, decoded) => {
+        // if ignoreExpration == false and token is expired, err == expired token
+        console.log(err);
+    },
+);

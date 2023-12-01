@@ -19,9 +19,14 @@ formData.append(Rails.csrfParam()!, Rails.csrfToken()!);
 formData.append(Rails.csrfParam(), Rails.csrfToken());
 
 Rails.delegate(document, "#batch_checkbox_all", "change", ({ target }) => {
-    Array.from(document.querySelectorAll<HTMLInputElement>(".batch-checkbox input[type=\"checkbox\"]"), content => {
-        content.checked = (target as HTMLInputElement).checked;
-    });
+    Array.from(
+        document.querySelectorAll<HTMLInputElement>(
+            '.batch-checkbox input[type="checkbox"]',
+        ),
+        (content) => {
+            content.checked = (target as HTMLInputElement).checked;
+        },
+    );
 });
 
 Rails.delegate(window, "#batch_checkbox_all", "change", console.log);
@@ -44,9 +49,14 @@ if (element) {
         console.log(event, element);
     });
 
-    Rails.delegate(element, "#batch_checkbox_all", "custom-event", (e: Event) => {
-        console.log(e);
-    });
+    Rails.delegate(
+        element,
+        "#batch_checkbox_all",
+        "custom-event",
+        (e: Event) => {
+            console.log(e);
+        },
+    );
 
     Rails.fire(element, "custom-event", { value: 1 });
 
@@ -66,7 +76,7 @@ if (element) {
 
     Rails.href(element);
 
-    element.addEventListener("click", e => {
+    element.addEventListener("click", (e) => {
         Rails.preventInsignificantClick(e);
         Rails.handleDisabledElement(e);
         Rails.enableElement(e);

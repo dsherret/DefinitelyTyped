@@ -3,7 +3,10 @@
 // This is added because aws-sdk depends on @types/node
 /// <reference types="node" />
 
-import type { ClientConfiguration, Types } from "aws-sdk2-types/clients/rdsdataservice";
+import type {
+    ClientConfiguration,
+    Types,
+} from "aws-sdk2-types/clients/rdsdataservice";
 declare namespace Client {
     type OmittedValues = "database" | "resourceArn" | "secretArn" | "schema";
 
@@ -19,9 +22,9 @@ declare namespace Client {
         engine?: "mysql" | "pg" | undefined;
         formatOptions?:
             | {
-                deserializeDate?: boolean | undefined;
-                treatAsLocalDate?: boolean | undefined;
-            }
+                  deserializeDate?: boolean | undefined;
+                  treatAsLocalDate?: boolean | undefined;
+              }
             | undefined;
     }
 
@@ -30,11 +33,11 @@ declare namespace Client {
         query(
             obj:
                 | {
-                    sql: string;
-                    parameters: [] | unknown;
-                    database?: string | undefined;
-                    hydrateColumnNames?: boolean | undefined;
-                }
+                      sql: string;
+                      parameters: [] | unknown;
+                      database?: string | undefined;
+                      hydrateColumnNames?: boolean | undefined;
+                  }
                 | ((prevResult: { insertId?: any }) => any),
         ): Transaction;
 
@@ -44,7 +47,10 @@ declare namespace Client {
 
     interface iDataAPIClient {
         /* eslint-disable @definitelytyped/no-unnecessary-generics */
-        query<T = any>(sql: string, params?: [] | unknown): Promise<iDataAPIQueryResult<T>>; // params can be [] or {};
+        query<T = any>(
+            sql: string,
+            params?: [] | unknown,
+        ): Promise<iDataAPIQueryResult<T>>; // params can be [] or {};
         query<T = any>(obj: {
             sql: string;
             parameters?: [] | unknown | undefined;
@@ -55,11 +61,19 @@ declare namespace Client {
         transaction(): Transaction; // needs to return an interface with
 
         // promisified versions of the RDSDataService methods
-        batchExecuteStatement: (params: Omit<Types.BatchExecuteStatementRequest, OmittedValues>) => Promise<any>;
+        batchExecuteStatement: (
+            params: Omit<Types.BatchExecuteStatementRequest, OmittedValues>,
+        ) => Promise<any>;
         beginTransaction: () => Promise<Types.BeginTransactionResponse>;
-        commitTransaction: (params: Omit<Types.CommitTransactionRequest, OmittedValues>) => Promise<any>;
-        executeStatement: (params: Omit<Types.ExecuteStatementRequest, OmittedValues>) => Promise<any>;
-        rollbackTransaction: (params: Omit<Types.RollbackTransactionRequest, OmittedValues>) => Promise<any>;
+        commitTransaction: (
+            params: Omit<Types.CommitTransactionRequest, OmittedValues>,
+        ) => Promise<any>;
+        executeStatement: (
+            params: Omit<Types.ExecuteStatementRequest, OmittedValues>,
+        ) => Promise<any>;
+        rollbackTransaction: (
+            params: Omit<Types.RollbackTransactionRequest, OmittedValues>,
+        ) => Promise<any>;
     }
 
     interface iDataAPIQueryResult<T = any> {

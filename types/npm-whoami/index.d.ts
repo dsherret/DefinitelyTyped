@@ -1,6 +1,9 @@
 export = whoami;
 
-declare function whoami(callback: whoami.WhoamiCallback, opts?: whoami.WhoamiOptions): void;
+declare function whoami(
+    callback: whoami.WhoamiCallback,
+    opts?: whoami.WhoamiOptions,
+): void;
 
 declare namespace whoami {
     interface WhoamiCallback {

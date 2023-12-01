@@ -9,11 +9,14 @@ isDataDesc({
 });
 
 // $ExpectType boolean
-isDataDesc({
-    descriptor: {
-        configurable: true,
-        enumerable: true,
-        writable: true,
-        value: true,
+isDataDesc(
+    {
+        descriptor: {
+            configurable: true,
+            enumerable: true,
+            writable: true,
+            value: true,
+        },
     },
-}, "descriptor");
+    "descriptor",
+);

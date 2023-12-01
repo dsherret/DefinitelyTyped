@@ -16,15 +16,15 @@ const arb = new Arborist({
     formatPackageLock: true,
 });
 
-arb.loadActual().then(tree => {
+arb.loadActual().then((tree) => {
     tree; // $ExpectType Node
 });
 
-arb.loadVirtual().then(tree => {
+arb.loadVirtual().then((tree) => {
     tree; // $ExpectType Node
 });
 
-arb.buildIdealTree({}).then(tree => {
+arb.buildIdealTree({}).then((tree) => {
     tree; // $ExpectType Node
 });
 
@@ -33,14 +33,14 @@ arb.reify({
 }).then(() => {});
 
 // root-level
-arb.loadActual().then(async tree => {
+arb.loadActual().then(async (tree) => {
     // query all production dependencies
     const results = await tree.querySelectorAll(".prod");
     console.log(results);
 });
 
 // iterative
-arb.loadActual().then(async tree => {
+arb.loadActual().then(async (tree) => {
     // query for the deduped version of react
     const results = await tree.querySelectorAll("#react:not(:deduped)");
     // query the deduped react for git deps

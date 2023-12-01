@@ -6,7 +6,8 @@ export interface GoogleLoginInfo {
     };
 }
 
-export interface GoogleLoginProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface GoogleLoginProps
+    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     socialId: string;
     scope?: string | undefined;
     fetchBasicProfile?: boolean | undefined;

@@ -6,19 +6,23 @@ declare namespace JsReportDocx {
     }
 
     interface Configuration {
-        preview?: {
-            enabled: true;
-            publicUri: string;
-            showWarning: false;
-        } | undefined;
+        preview?:
+            | {
+                  enabled: true;
+                  publicUri: string;
+                  showWarning: false;
+              }
+            | undefined;
     }
 
     interface DocxTemplate {
         templateAsetShortid?: string | undefined;
-        templateAsset?: {
-            content: string;
-            encoding: string;
-        } | undefined;
+        templateAsset?:
+            | {
+                  content: string;
+                  encoding: string;
+              }
+            | undefined;
     }
 }
 
@@ -28,6 +32,8 @@ declare module "jsreport-core" {
     }
 }
 
-declare function JSReportDocx(cfg?: JsReportDocx.Configuration): ExtensionDefinition;
+declare function JSReportDocx(
+    cfg?: JsReportDocx.Configuration,
+): ExtensionDefinition;
 
 export = JSReportDocx;

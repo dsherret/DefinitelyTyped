@@ -8,9 +8,11 @@ import * as dav from "dav";
         }),
     );
 
-    dav.createAccount({ server: "http://dav.example.com", xhr }).then(account => {
-        account.calendars.forEach(() => {});
-    });
+    dav.createAccount({ server: "http://dav.example.com", xhr }).then(
+        (account) => {
+            account.calendars.forEach(() => {});
+        },
+    );
     const client = new dav.Client(xhr);
 
     client
@@ -18,7 +20,7 @@ import * as dav from "dav";
             server: "http://dav.example.com",
             accountType: "carddav",
         })
-        .then(account => {
+        .then((account) => {
             account.addressBooks.forEach(() => {});
         });
 })();
@@ -171,7 +173,9 @@ dav.debug.enabled = true;
 })();
 
 (() => {
-    const xhr = new dav.transport.Basic(new dav.Credentials({ username: "admin", password: "admin" }));
+    const xhr = new dav.transport.Basic(
+        new dav.Credentials({ username: "admin", password: "admin" }),
+    );
 
     const req: dav.Request = {
         method: "GET",
@@ -187,7 +191,9 @@ dav.debug.enabled = true;
 
 (() => {
     const credentials = new dav.Credentials({
-        clientId: "605300196874-1ki833poa7uqabmh3hq" + "6u1onlqlsi54h.apps.googleusercontent.com",
+        clientId:
+            "605300196874-1ki833poa7uqabmh3hq" +
+            "6u1onlqlsi54h.apps.googleusercontent.com",
         clientSecret: "jQTKlOhF-RclGaGJot3HIcVf",
         redirectUrl: "https://oauth.gaiamobile.org/authenticated",
         tokenUrl: "https://accounts.google.com/o/oauth2/token",
@@ -258,7 +264,9 @@ dav.debug.enabled = true;
         }),
     ];
 
-    reqs.forEach(req => xhr.send(req, "https://mail.mozilla.com/calendars/123.ics"));
+    reqs.forEach((req) =>
+        xhr.send(req, "https://mail.mozilla.com/calendars/123.ics"),
+    );
 })();
 
 (async () => {
@@ -268,25 +276,27 @@ dav.debug.enabled = true;
             password: "xxx",
         }),
     );
-    dav.createAccount({ server: "http://dav.example.com", xhr }).then(account => {
-        dav.listCalendars(account, { xhr }).then(calendars => {
-            calendars.forEach(calendar =>
-                dav.listCalendarObjects(calendar, {
-                    filters: [
-                        {
-                            type: "comp-filter",
-                            attrs: { name: "VCALENDAR" },
-                            children: [
-                                {
-                                    type: "comp-filter",
-                                    attrs: { name: "VEVENT" },
-                                },
-                            ],
-                        },
-                    ],
-                    xhr,
-                })
-            );
-        });
-    });
+    dav.createAccount({ server: "http://dav.example.com", xhr }).then(
+        (account) => {
+            dav.listCalendars(account, { xhr }).then((calendars) => {
+                calendars.forEach((calendar) =>
+                    dav.listCalendarObjects(calendar, {
+                        filters: [
+                            {
+                                type: "comp-filter",
+                                attrs: { name: "VCALENDAR" },
+                                children: [
+                                    {
+                                        type: "comp-filter",
+                                        attrs: { name: "VEVENT" },
+                                    },
+                                ],
+                            },
+                        ],
+                        xhr,
+                    }),
+                );
+            });
+        },
+    );
 })();

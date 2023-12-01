@@ -7,7 +7,7 @@ export interface AutoSuggester {
 }
 
 export interface Constructor<T> {
-    new(...args: any[]): T;
+    new (...args: any[]): T;
 }
 
 export function autosuggester(

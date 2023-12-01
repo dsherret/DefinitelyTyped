@@ -3,19 +3,23 @@ import ROSLIB = require("roslib");
 var ros = new ROSLIB.Ros({
     url: "ws://localhost:9090",
 })
-    .on("connection", function() {
+    .on("connection", function () {
         console.log("Connected to websocket server.");
     })
-    .on("error", function(error: Error) {
+    .on("error", function (error: Error) {
         console.log("Error connecting to websocket server: ", error);
     })
-    .on("close", function() {
+    .on("close", function () {
         console.log("Connection to websocket server closed.");
     });
 
 console.log(`ros.isConnected: ${ros.isConnected}`);
 
-console.log(`ros.transportLibrary: ${ros.transportLibrary.constructor.name ?? ros.transportLibrary}`);
+console.log(
+    `ros.transportLibrary: ${
+        ros.transportLibrary.constructor.name ?? ros.transportLibrary
+    }`,
+);
 
 // Publishing a Topic
 // ------------------
@@ -49,7 +53,7 @@ var listener = new ROSLIB.Topic({
     messageType: "std_msgs/String",
 });
 
-let subscription_callback = function(message: ROSLIB.Message) {
+let subscription_callback = function (message: ROSLIB.Message) {
     console.log("Received message on " + listener.name + ": " + message);
     listener.unsubscribe();
 };
@@ -79,8 +83,13 @@ var request = new ROSLIB.ServiceRequest({
     b: 2,
 });
 
-addTwoIntsClient.callService(request, function(result) {
-    console.log("Result for service call on " + addTwoIntsClient.name + ": " + result.sum);
+addTwoIntsClient.callService(request, function (result) {
+    console.log(
+        "Result for service call on " +
+            addTwoIntsClient.name +
+            ": " +
+            result.sum,
+    );
 });
 
 // Providing a service
@@ -100,7 +109,7 @@ addTwoInts.advertise((req, resp) => {
 // Getting and setting a param value
 // ---------------------------------
 
-ros.getParams(function(params: string[]) {
+ros.getParams(function (params: string[]) {
     console.log(params);
 });
 
@@ -109,8 +118,8 @@ var maxVelX = new ROSLIB.Param({
     name: "max_vel_y",
 });
 
-maxVelX.set(0.8, function(response) {});
-maxVelX.get(function(value) {
+maxVelX.set(0.8, function (response) {});
+maxVelX.get(function (value) {
     console.log("MAX VAL: " + value);
 });
 
@@ -120,8 +129,8 @@ const tfClient = new ROSLIB.TFClient({
     ros: ros,
     fixedFrame: "/world",
 });
-const stub_tfclient_callback = function(transform: ROSLIB.Transform) {};
-const tfclient_callback = function(transform: ROSLIB.Transform) {
+const stub_tfclient_callback = function (transform: ROSLIB.Transform) {};
+const tfclient_callback = function (transform: ROSLIB.Transform) {
     console.log("Received transform: " + transform);
     tfClient.unsubscribe("/transform", stub_tfclient_callback);
 };
@@ -140,7 +149,10 @@ new ROSLIB.Pose({ position: { x: null } });
 new ROSLIB.Pose({ orientation: {} });
 new ROSLIB.Pose({ orientation: { y: -1 } });
 new ROSLIB.Pose({ orientation: { y: null } });
-const pose = new ROSLIB.Pose({ orientation: { w: 0, x: 0, y: 0, z: 0 }, position: { x: 0, y: 0, z: 0 } });
+const pose = new ROSLIB.Pose({
+    orientation: { w: 0, x: 0, y: 0, z: 0 },
+    position: { x: 0, y: 0, z: 0 },
+});
 // $ExpectType Pose
 pose.clone();
 // $ExpectType Vector3

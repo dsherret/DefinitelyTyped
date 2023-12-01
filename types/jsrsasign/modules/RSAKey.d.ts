@@ -9,7 +9,9 @@ declare namespace jsrsasign {
          * @example
          * RSAKey.getHexValueArrayOfChildrenFromHex("3082...") → ["00", "3b42...", ...]
          */
-        static getHexValueArrayOfChildrenFromHex(sPEMPrivateKey: string): string[];
+        static getHexValueArrayOfChildrenFromHex(
+            sPEMPrivateKey: string,
+        ): string[];
 
         /**
          * static method to get array of field positions from hexadecimal PKCS#5 RSA private key.
@@ -101,7 +103,11 @@ declare namespace jsrsasign {
          *        DEFAULT is -1. (NOTE: OpenSSL's default is -2.)
          * @return returns hexadecimal string of signature value.
          */
-        signWithMessageHashPSS(hHash: string, hashAlg: string, sLen: number): string;
+        signWithMessageHashPSS(
+            hHash: string,
+            hashAlg: string,
+            sLen: number,
+        ): string;
 
         /**
          * verifies a sigature for a message string with RSA public key.
@@ -126,7 +132,12 @@ declare namespace jsrsasign {
          *        DEFAULT is -1. (NOTE: OpenSSL's default is -2.)
          * @return returns true if valid, otherwise false
          */
-        verifyPSS(sMsg: string, hSig: string, hashAlg: string, sLen: number): boolean;
+        verifyPSS(
+            sMsg: string,
+            hSig: string,
+            hashAlg: string,
+            sLen: number,
+        ): boolean;
 
         /**
          * verifies a sigature for a message string with RSA public key.
@@ -151,6 +162,11 @@ declare namespace jsrsasign {
          *        DEFAULT is -1 (NOTE: OpenSSL's default is -2.)
          * @return returns true if valid, otherwise false
          */
-        verifyWithMessageHashPSS(hHash: string, hSig: string, hashAlg: string, sLen: number): boolean;
+        verifyWithMessageHashPSS(
+            hHash: string,
+            hSig: string,
+            hashAlg: string,
+            sLen: number,
+        ): boolean;
     }
 }

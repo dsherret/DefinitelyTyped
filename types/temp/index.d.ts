@@ -23,17 +23,26 @@ declare namespace temp {
 
     function track(value?: boolean): typeof temp;
 
-    function mkdir(affixes: string | AffixOptions | undefined, callback: (err: any, dirPath: string) => void): void;
+    function mkdir(
+        affixes: string | AffixOptions | undefined,
+        callback: (err: any, dirPath: string) => void,
+    ): void;
     function mkdir(affixes?: string | AffixOptions): Promise<string>;
 
     function mkdirSync(affixes?: string | AffixOptions): string;
 
-    function open(affixes: string | AffixOptions | undefined, callback: (err: any, result: OpenFile) => void): void;
+    function open(
+        affixes: string | AffixOptions | undefined,
+        callback: (err: any, result: OpenFile) => void,
+    ): void;
     function open(affixes?: string | AffixOptions): Promise<OpenFile>;
 
     function openSync(affixes?: string | AffixOptions): OpenFile;
 
-    function path(affixes?: string | AffixOptions, defaultPrefix?: string): string;
+    function path(
+        affixes?: string | AffixOptions,
+        defaultPrefix?: string,
+    ): string;
 
     function cleanup(callback: (err: any, result: Stats) => void): void;
     function cleanup(): Promise<Stats>;

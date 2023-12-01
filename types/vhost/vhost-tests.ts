@@ -10,10 +10,14 @@ const expressServer = express();
 const connectServer = connect();
 
 // $ExpectType NextHandleFunction
-const handle = vhost("hostname", (_req: Request, _res: ServerResponse, _next: NextFunction) => {
-    // check if vhost property exists on _req
-    if (!_req.vhost) throw new Error("missing vhost property in request argument");
-});
+const handle = vhost(
+    "hostname",
+    (_req: Request, _res: ServerResponse, _next: NextFunction) => {
+        // check if vhost property exists on _req
+        if (!_req.vhost)
+            throw new Error("missing vhost property in request argument");
+    },
+);
 
 // $ExpectType Express
 expressServer.use(handle);

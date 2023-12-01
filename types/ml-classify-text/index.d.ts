@@ -15,11 +15,18 @@ declare class Classifier {
     get model(): Model;
     set model(model: Model | Partial<ModelOptions>);
     train(input: string | string[], label: string): this;
-    predict(input: string, maxMatches?: number, minimumConfidence?: number): Prediction[];
+    predict(
+        input: string,
+        maxMatches?: number,
+        minimumConfidence?: number,
+    ): Prediction[];
     splitWords(input: string): string[];
     tokenize(input: string | string[]): Record<string, number>;
     vectorize(tokens: Record<string, number>): Record<number, number>;
-    cosineSimilarity(v1: Record<number, number>, v2: Record<number, number>): number;
+    cosineSimilarity(
+        v1: Record<number, number>,
+        v2: Record<number, number>,
+    ): number;
 }
 
 declare class Model {

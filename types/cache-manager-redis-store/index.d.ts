@@ -6,7 +6,9 @@ export = methods;
 export {};
 
 declare module "cache-manager" {
-    function caching(IConfig: StoreConfig & CacheOptions): CacheManagerRedisStore.RedisCache;
+    function caching(
+        IConfig: StoreConfig & CacheOptions,
+    ): CacheManagerRedisStore.RedisCache;
 }
 
 declare namespace CacheManagerRedisStore {

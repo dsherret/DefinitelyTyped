@@ -1,5 +1,9 @@
 export default class Configstore {
-    constructor(packageName: string, defaults?: any, options?: ConfigstoreOptions);
+    constructor(
+        packageName: string,
+        defaults?: any,
+        options?: ConfigstoreOptions,
+    );
 
     /**
      * Get the path to the config file. Can be used to show the user

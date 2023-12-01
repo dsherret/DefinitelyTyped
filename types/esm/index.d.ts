@@ -23,5 +23,8 @@ declare namespace Options {
     }
 }
 
-declare function esm(mod: typeof module, options?: Partial<Options.Options>): typeof require;
+declare function esm(
+    mod: typeof module,
+    options?: Partial<Options.Options>,
+): typeof require;
 export = esm;

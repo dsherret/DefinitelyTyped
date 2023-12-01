@@ -5,11 +5,7 @@ import { LiveAnnouncer, LiveMessage, LiveMessenger } from "react-aria-live";
 
 render(
     <LiveAnnouncer>
-        <LiveMessage
-            aria-live="polite"
-            message="hello"
-            clearOnUnmount
-        />
+        <LiveMessage aria-live="polite" message="hello" clearOnUnmount />
     </LiveAnnouncer>,
     document.getElementById("main"),
 );

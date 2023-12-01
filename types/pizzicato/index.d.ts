@@ -31,7 +31,11 @@ export let volume: number;
 
 /** Pizzicato's implementation of events. */
 export interface Events<Name extends string> {
-    on: <Context>(name: Name, callback: (this: Context, ...args: any[]) => void, context?: Context) => void;
+    on: <Context>(
+        name: Name,
+        callback: (this: Context, ...args: any[]) => void,
+        context?: Context,
+    ) => void;
     off: (name: Name) => void;
 }
 
@@ -104,7 +108,9 @@ export type SoundDescription =
 export type SoundEvent = "play" | "pause" | "stop" | "end";
 
 /** A Pizzicato Sound */
-export class Sound<D extends SoundDescription = SoundDescription> implements Events<SoundEvent> {
+export class Sound<D extends SoundDescription = SoundDescription>
+    implements Events<SoundEvent>
+{
     constructor(description?: D, callback?: (error?: Error) => void);
 
     /**
@@ -159,7 +165,11 @@ export class Sound<D extends SoundDescription = SoundDescription> implements Eve
      */
     disconnect(audioNode: AudioNode): this;
 
-    on<Context>(name: SoundEvent, callback: (this: Context) => void, context?: Context): void;
+    on<Context>(
+        name: SoundEvent,
+        callback: (this: Context) => void,
+        context?: Context,
+    ): void;
     off(name: SoundEvent): void;
 }
 
@@ -199,7 +209,11 @@ export class Group implements Events<GroupEvent> {
     /** Remove an effect from the group */
     removeEffect(effect: Effect): this;
 
-    on<Context>(name: GroupEvent, callback: (this: Context) => void, context?: Context): void;
+    on<Context>(
+        name: GroupEvent,
+        callback: (this: Context) => void,
+        context?: Context,
+    ): void;
     off(name: GroupEvent): void;
 }
 
@@ -278,7 +292,9 @@ export namespace Effects {
         mix?: number;
     }
     type Compressor = BaseEffect & Required<CompressorOptions>;
-    const Compressor: Compressor & { new(options?: CompressorOptions): Compressor };
+    const Compressor: Compressor & {
+        new (options?: CompressorOptions): Compressor;
+    };
 
     /**
      * The convolver effect allows the sound to be heard with a certain
@@ -296,7 +312,7 @@ export namespace Effects {
         mix?: number;
     }
     type Convolver = BaseEffect & Required<ConvolverOptions>;
-    const Convolver: Convolver & { new(options: ConvolverOptions): Convolver };
+    const Convolver: Convolver & { new (options: ConvolverOptions): Convolver };
 
     /**
      * The delay effect plays back the sound a certain number of times
@@ -318,7 +334,7 @@ export namespace Effects {
         mix?: number;
     }
     type Delay = BaseEffect & Required<DelayOptions>;
-    const Delay: Delay & { new(options?: DelayOptions): Delay };
+    const Delay: Delay & { new (options?: DelayOptions): Delay };
 
     /** The distortion effect adds a basic "override" to the sound. */
     interface DistortionOptions {
@@ -326,7 +342,9 @@ export namespace Effects {
         gain?: number;
     }
     type Distortion = BaseEffect & Required<DistortionOptions>;
-    const Distortion: Distortion & { new(options?: DistortionOptions): Distortion };
+    const Distortion: Distortion & {
+        new (options?: DistortionOptions): Distortion;
+    };
 
     /**
      * The dub delay effect is similar to a regular Delay effect,
@@ -355,7 +373,7 @@ export namespace Effects {
         cutoff?: number;
     }
     type DubDelay = BaseEffect & Required<DubDelayOptions>;
-    const DubDelay: DubDelay & { new(options?: DubDelayOptions): DubDelay };
+    const DubDelay: DubDelay & { new (options?: DubDelayOptions): DubDelay };
 
     /**
      * The flanger produces a swirling effect by delaying a "copy" of
@@ -389,7 +407,7 @@ export namespace Effects {
         mix?: number;
     }
     type Flanger = BaseEffect & Required<FlangerOptions>;
-    const Flanger: Flanger & { new(options?: FlangerOptions): Flanger };
+    const Flanger: Flanger & { new (options?: FlangerOptions): Flanger };
 
     /**
      * A high-pass filter attenuates signals with a frequency lower than
@@ -410,7 +428,9 @@ export namespace Effects {
         peak?: number;
     }
     type HighPassFilter = BaseEffect & Required<HighPassFilterOptions>;
-    const HighPassFilter: HighPassFilter & { new(options?: HighPassFilterOptions): HighPassFilter };
+    const HighPassFilter: HighPassFilter & {
+        new (options?: HighPassFilterOptions): HighPassFilter;
+    };
 
     /**
      * A low-pass filter passes signals with a frequency lower than a
@@ -431,7 +451,9 @@ export namespace Effects {
         peak?: number;
     }
     type LowPassFilter = BaseEffect & Required<LowPassFilterOptions>;
-    const LowPassFilter: LowPassFilter & { new(options?: LowPassFilterOptions): LowPassFilter };
+    const LowPassFilter: LowPassFilter & {
+        new (options?: LowPassFilterOptions): LowPassFilter;
+    };
 
     /**
      * The ping pong delay effect is similar to a regular Delay effect,
@@ -454,7 +476,9 @@ export namespace Effects {
         mix?: number;
     }
     type PingPongDelay = BaseEffect & Required<PingPongDelayOptions>;
-    const PingPongDelay: PingPongDelay & { new(options?: PingPongDelayOptions): PingPongDelay };
+    const PingPongDelay: PingPongDelay & {
+        new (options?: PingPongDelayOptions): PingPongDelay;
+    };
 
     /**
      * The quadrafuzz effect divides the sound into separate bands and
@@ -472,7 +496,9 @@ export namespace Effects {
         highGain?: number;
     }
     type Quadrafuzz = BaseEffect & Required<QuadrafuzzOptions>;
-    const Quadrafuzz: Quadrafuzz & { new(options?: QuadrafuzzOptions): Quadrafuzz };
+    const Quadrafuzz: Quadrafuzz & {
+        new (options?: QuadrafuzzOptions): Quadrafuzz;
+    };
 
     /**
      * The reverb effect is similar to the convolver effect in that it
@@ -501,7 +527,7 @@ export namespace Effects {
         mix?: number;
     }
     type Reverb = BaseEffect & Required<ReverbOptions>;
-    const Reverb: Reverb & { new(options?: ReverbOptions): Reverb };
+    const Reverb: Reverb & { new (options?: ReverbOptions): Reverb };
 
     /**
      * The ring modulator effect combines two input signals, where one
@@ -525,7 +551,9 @@ export namespace Effects {
         mix?: number;
     }
     type RingModulator = BaseEffect & Required<RingModulatorOptions>;
-    const RingModulator: RingModulator & { new(options?: RingModulatorOptions): RingModulator };
+    const RingModulator: RingModulator & {
+        new (options?: RingModulatorOptions): RingModulator;
+    };
 
     /**
      * The stereo panner is used to adjust the level of a sound through
@@ -539,7 +567,9 @@ export namespace Effects {
         pan?: number;
     }
     type StereoPanner = BaseEffect & Required<StereoPannerOptions>;
-    const StereoPanner: StereoPanner & { new(options?: StereoPannerOptions): StereoPanner };
+    const StereoPanner: StereoPanner & {
+        new (options?: StereoPannerOptions): StereoPanner;
+    };
 
     /** The tremolo effect changes the volume of the sound over time. */
     interface TremoloOptions {
@@ -557,7 +587,7 @@ export namespace Effects {
         mix?: number;
     }
     type Tremolo = BaseEffect & Required<TremoloOptions>;
-    const Tremolo: Tremolo & { new(options?: TremoloOptions): Tremolo };
+    const Tremolo: Tremolo & { new (options?: TremoloOptions): Tremolo };
 }
 
 export as namespace Pizzicato;

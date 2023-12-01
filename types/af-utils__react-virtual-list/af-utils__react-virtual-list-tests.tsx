@@ -11,7 +11,7 @@ const renderList = () => {
             itemData={itemData}
             className="list"
             component={"span"}
-            getKey={i => i + 1}
+            getKey={(i) => i + 1}
             tabIndex={2}
             countOffset
             id={"extraProp"}

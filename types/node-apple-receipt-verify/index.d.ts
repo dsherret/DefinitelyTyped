@@ -79,9 +79,14 @@ export function ServiceUnavailableError(): void;
 
 export function validate(
     options: ValidateOptions,
-    callback: (error: ValidationError, purchasedProducts: PurchasedProducts[]) => void,
+    callback: (
+        error: ValidationError,
+        purchasedProducts: PurchasedProducts[],
+    ) => void,
 ): void;
-export function validate(options: ValidateOptions): Promise<PurchasedProducts[]>;
+export function validate(
+    options: ValidateOptions,
+): Promise<PurchasedProducts[]>;
 
 export function resetConfig(): void;
 

@@ -8,7 +8,11 @@ export = tape;
  * Tests execute serially.
  */
 declare function tape(name: string, cb: tape.TestCase): void;
-declare function tape(name: string, opts: tape.TestOptions, cb: tape.TestCase): void;
+declare function tape(
+    name: string,
+    opts: tape.TestOptions,
+    cb: tape.TestCase,
+): void;
 declare function tape(cb: tape.TestCase): void;
 declare function tape(opts: tape.TestOptions, cb: tape.TestCase): void;
 
@@ -58,7 +62,11 @@ declare namespace tape {
      * Generate a new test that will be skipped over.
      */
     export function skip(name: string, cb: tape.TestCase): void;
-    export function skip(name: string, opts: tape.TestOptions, cb: tape.TestCase): void;
+    export function skip(
+        name: string,
+        opts: tape.TestOptions,
+        cb: tape.TestCase,
+    ): void;
     export function skip(cb: tape.TestCase): void;
     export function skip(opts: tape.TestOptions, cb: tape.TestCase): void;
 
@@ -76,14 +84,21 @@ declare namespace tape {
      * Like test(name?, opts?, cb) except if you use .only this is the only test case that will run for the entire process, all other test cases using tape will be ignored.
      */
     export function only(name: string, cb: tape.TestCase): void;
-    export function only(name: string, opts: tape.TestOptions, cb: tape.TestCase): void;
+    export function only(
+        name: string,
+        opts: tape.TestOptions,
+        cb: tape.TestCase,
+    ): void;
     export function only(cb: tape.TestCase): void;
     export function only(opts: tape.TestOptions, cb: tape.TestCase): void;
 
     /**
      * Create a new test harness instance, which is a function like test(), but with a new pending stack and test state.
      */
-    export function createHarness(opts?: { autoclose?: boolean; noOnly?: boolean }): typeof tape;
+    export function createHarness(opts?: {
+        autoclose?: boolean;
+        noOnly?: boolean;
+    }): typeof tape;
 
     /**
      * Create a memoized test harness instance, which is a function like test(), but with a new pending stack and test state.
@@ -100,7 +115,9 @@ declare namespace tape {
      * Create a stream of output, bypassing the default output stream that writes messages to console.log().
      * By default stream will be a text stream of TAP output, but you can get an object stream instead by setting opts.objectMode to true.
      */
-    export function createStream(opts?: tape.StreamOptions): NodeJS.ReadableStream;
+    export function createStream(
+        opts?: tape.StreamOptions,
+    ): NodeJS.ReadableStream;
 
     export interface Test {
         /**
@@ -169,7 +186,12 @@ declare namespace tape {
         /**
          * Assert that a === b with an optional description msg.
          */
-        equal(actual: any, expected: any, msg?: string, extra?: AssertOptions): void;
+        equal(
+            actual: any,
+            expected: any,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
         equals: Test["equal"];
         isEqual: Test["equal"];
         is: Test["equal"];
@@ -179,7 +201,12 @@ declare namespace tape {
         /**
          * Assert that a !== b with an optional description msg.
          */
-        notEqual(actual: any, expected: any, msg?: string, extra?: AssertOptions): void;
+        notEqual(
+            actual: any,
+            expected: any,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
         notEquals: Test["notEqual"];
         notStrictEqual: Test["notEqual"];
         notStrictEquals: Test["notEqual"];
@@ -192,19 +219,34 @@ declare namespace tape {
         /**
          * Assert that actual == expected with an optional description of the assertion msg.
          */
-        looseEqual(actual: any, expected: any, msg?: string, extra?: AssertOptions): void;
+        looseEqual(
+            actual: any,
+            expected: any,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
         looseEquals: Test["looseEqual"];
 
         /**
          * Assert that actual != expected with an optional description of the assertion msg.
          */
-        notLooseEqual(actual: any, expected: any, msg?: string, extra?: AssertOptions): void;
+        notLooseEqual(
+            actual: any,
+            expected: any,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
         notLooseEquals: Test["looseEqual"];
 
         /**
          * Assert that a and b have the same structure and nested values using node's deepEqual() algorithm with strict comparisons (===) on leaf nodes and an optional description msg.
          */
-        deepEqual(actual: any, expected: any, msg?: string, extra?: AssertOptions): void;
+        deepEqual(
+            actual: any,
+            expected: any,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
         deepEquals: Test["deepEqual"];
         isEquivalent: Test["deepEqual"];
         same: Test["deepEqual"];
@@ -212,7 +254,12 @@ declare namespace tape {
         /**
          * Assert that a and b do not have the same structure and nested values using node's deepEqual() algorithm with strict comparisons (===) on leaf nodes and an optional description msg.
          */
-        notDeepEqual(actual: any, expected: any, msg?: string, extra?: AssertOptions): void;
+        notDeepEqual(
+            actual: any,
+            expected: any,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
         notEquivalent: Test["notDeepEqual"];
         notDeeply: Test["notDeepEqual"];
         notSame: Test["notDeepEqual"];
@@ -224,24 +271,44 @@ declare namespace tape {
         /**
          * Assert that a and b have the same structure and nested values using node's deepEqual() algorithm with loose comparisons (==) on leaf nodes and an optional description msg.
          */
-        deepLooseEqual(actual: any, expected: any, msg?: string, extra?: AssertOptions): void;
+        deepLooseEqual(
+            actual: any,
+            expected: any,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
 
         /**
          * Assert that a and b do not have the same structure and nested values using node's deepEqual() algorithm with loose comparisons (==) on leaf nodes and an optional description msg.
          */
-        notDeepLooseEqual(actual: any, expected: any, msg?: string, extra?: AssertOptions): void;
+        notDeepLooseEqual(
+            actual: any,
+            expected: any,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
 
         /**
          * Assert that the function call fn() throws an exception. expected, if present, must be a RegExp, Function, or Object.
          */
         throws(fn: () => void, msg?: string, extra?: AssertOptions): void;
-        throws(fn: () => void, exceptionExpected: object, msg?: string, extra?: AssertOptions): void;
+        throws(
+            fn: () => void,
+            exceptionExpected: object,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
 
         /**
          * Assert that the function call fn() does not throw an exception.
          */
         doesNotThrow(fn: () => void, msg?: string, extra?: AssertOptions): void;
-        doesNotThrow(fn: () => void, exceptionExpected: RegExp | Function, msg?: string, extra?: AssertOptions): void;
+        doesNotThrow(
+            fn: () => void,
+            exceptionExpected: RegExp | Function,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
 
         /**
          * Print a message without breaking the tap output.
@@ -252,12 +319,22 @@ declare namespace tape {
         /**
          * Assert that string matches the RegExp regexp. Will throw (not just fail) when the first two arguments are the wrong type.
          */
-        match(actual: string, expected: RegExp, msg?: string, extra?: AssertOptions): void;
+        match(
+            actual: string,
+            expected: RegExp,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
 
         /**
          * Assert that string does not match the RegExp regexp. Will throw (not just fail) when the first two arguments are the wrong type.
          */
-        doesNotMatch(actual: string, expected: RegExp, msg?: string, extra?: AssertOptions): void;
+        doesNotMatch(
+            actual: string,
+            expected: RegExp,
+            msg?: string,
+            extra?: AssertOptions,
+        ): void;
 
         /**
          * Register a callback to run after the individual test has completed. Multiple registered teardown callbacks will run in order.

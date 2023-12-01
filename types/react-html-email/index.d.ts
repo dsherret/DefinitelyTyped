@@ -1,4 +1,10 @@
-import type { CSSProperties, FunctionComponent, FunctionComponentElement, ReactElement, ReactNode } from "react";
+import type {
+    CSSProperties,
+    FunctionComponent,
+    FunctionComponentElement,
+    ReactElement,
+    ReactNode,
+} from "react";
 
 export interface AProps {
     children?: ReactNode | undefined;

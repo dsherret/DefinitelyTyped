@@ -27,11 +27,20 @@ export type OnBeforeCaptureResponder = (before: BeforeCapture) => void;
 
 export type OnBeforeDragStartResponder = (start: DragStart) => void;
 
-export type OnDragStartResponder = (start: DragStart, provided: ResponderProvided) => void;
+export type OnDragStartResponder = (
+    start: DragStart,
+    provided: ResponderProvided,
+) => void;
 
-export type OnDragUpdateResponder = (update: DragUpdate, provided: ResponderProvided) => void;
+export type OnDragUpdateResponder = (
+    update: DragUpdate,
+    provided: ResponderProvided,
+) => void;
 
-export type OnDragEndResponder = (result: DropResult, provided: ResponderProvided) => void;
+export type OnDragEndResponder = (
+    result: DropResult,
+    provided: ResponderProvided,
+) => void;
 
 export interface Responders {
     onBeforeCapture?: OnBeforeCaptureResponder | undefined;
@@ -109,7 +118,10 @@ export interface DroppableProps {
     isDropDisabled?: boolean | undefined;
     isCombineEnabled?: boolean | undefined;
     direction?: "vertical" | "horizontal" | undefined;
-    children(provided: DroppableProvided, snapshot: DroppableStateSnapshot): React.ReactElement<HTMLElement>;
+    children(
+        provided: DroppableProvided,
+        snapshot: DroppableStateSnapshot,
+    ): React.ReactElement<HTMLElement>;
 }
 
 export class Droppable extends React.Component<DroppableProps> {}
@@ -197,7 +209,10 @@ export interface DraggableProps {
     index: number;
     isDragDisabled?: boolean | undefined;
     disableInteractiveElementBlocking?: boolean | undefined;
-    children(provided: DraggableProvided, snapshot: DraggableStateSnapshot): React.ReactElement<HTMLElement>;
+    children(
+        provided: DraggableProvided,
+        snapshot: DraggableStateSnapshot,
+    ): React.ReactElement<HTMLElement>;
     type?: TypeId | undefined;
     shouldRespectForcePress?: boolean | undefined;
 }

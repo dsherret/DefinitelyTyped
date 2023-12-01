@@ -12,7 +12,7 @@ const conf: MulterGridfsStorage.FileConfig = {
 const mongoosePromise = mongoose.connect("mongodb://yourhost:27017/database");
 const mgConnectionPromise = mongoose
     .connect("mongodb://yourhost:27017/database")
-    .then(instance => instance.connection);
+    .then((instance) => instance.connection);
 
 declare const db: Db;
 
@@ -71,8 +71,9 @@ const opt5: MulterGridfsStorage.UrlStorageOptions = {
 const cachedStorage = new MulterGridfsStorage(opt5);
 
 // Connection promise
-const dbPromise = MongoClient.connect("mongodb://yourhost:27017/database")
-    .then(client => client.db("database"));
+const dbPromise = MongoClient.connect("mongodb://yourhost:27017/database").then(
+    (client) => client.db("database"),
+);
 
 // Other properties are optional
 const promiseStorage = new MulterGridfsStorage({ db: dbPromise });
@@ -84,10 +85,8 @@ const urlStorage = new MulterGridfsStorage({
 });
 
 // Extends event emitter
-promiseStorage.on("connection", () => {
-});
-urlStorage.addListener("conection", () => {
-});
+promiseStorage.on("connection", () => {});
+urlStorage.addListener("conection", () => {});
 dbStorage.removeAllListeners("conection");
 
 MulterGridfsStorage.cache.connections();

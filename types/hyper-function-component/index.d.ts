@@ -1,18 +1,16 @@
-type HyperFunctionComponent =
-    & ((
-        container: Element,
-        props: HfcProps,
-    ) => {
-        changed: (props: HfcProps) => void;
-        disconnected: () => void;
-    })
-    & {
-        tag: string;
-        hfc: string;
-        ver: string;
-        // [AttrNames, EventNames, SlotNames]
-        names: [string[], string[], string[]];
-    };
+type HyperFunctionComponent = ((
+    container: Element,
+    props: HfcProps,
+) => {
+    changed: (props: HfcProps) => void;
+    disconnected: () => void;
+}) & {
+    tag: string;
+    hfc: string;
+    ver: string;
+    // [AttrNames, EventNames, SlotNames]
+    names: [string[], string[], string[]];
+};
 
 interface HfcProps {
     attrs: { [k: string]: any };

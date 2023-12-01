@@ -40,8 +40,8 @@ declare module "@hapi/catbox-redis" {
              */
             sentinels?:
                 | Array<{
-                    host: string;
-                }>
+                      host: string;
+                  }>
                 | undefined;
             /**
              * the name of the sentinel master.

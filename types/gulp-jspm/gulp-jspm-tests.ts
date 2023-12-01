@@ -2,10 +2,8 @@ import * as gulp from "gulp";
 import gulpJspm = require("gulp-jspm");
 
 // Examples taken from https://www.npmjs.com/package/gulp-jspm
-gulp.task("default", function() {
-    return gulp.src("src/main.js")
-        .pipe(gulpJspm())
-        .pipe(gulp.dest("build/"));
+gulp.task("default", function () {
+    return gulp.src("src/main.js").pipe(gulpJspm()).pipe(gulp.dest("build/"));
 });
 
 // Options

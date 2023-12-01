@@ -10,7 +10,10 @@
 
 export = Blocked;
 
-declare function Blocked(callback: (ms: number) => void, options?: Blocked.Options): NodeJS.Timer;
+declare function Blocked(
+    callback: (ms: number) => void,
+    options?: Blocked.Options,
+): NodeJS.Timer;
 
 declare namespace Blocked {
     interface Options {

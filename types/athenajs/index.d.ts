@@ -14,7 +14,11 @@ export class Scene {
     debug(bool?: boolean): void;
     fadeIn(duration: number): Promise;
     fadeOut(duration: number): Promise;
-    fadeInAndOut(inDuration: number, delay: number, outDuration: number): Promise;
+    fadeInAndOut(
+        inDuration: number,
+        delay: number,
+        outDuration: number,
+    ): Promise;
     getOpacity(): number;
     getPlayTime(): number;
     load(type: string, src: string, id?: string): void;
@@ -52,8 +56,16 @@ export class Drawable {
     notify(id: string, data?: JSObject): void;
     onCollision(object: Drawable): void;
     onEvent(eventType: string, data?: JSObject): void;
-    playSound(id: string, options?: { pan?: boolean | undefined; loop?: false | undefined }): void;
-    setBehavior(behavior: string | { new(sprite: Drawable, options?: JSObject): Behavior }, options?: JSObject): void;
+    playSound(
+        id: string,
+        options?: { pan?: boolean | undefined; loop?: false | undefined },
+    ): void;
+    setBehavior(
+        behavior:
+            | string
+            | { new (sprite: Drawable, options?: JSObject): Behavior },
+        options?: JSObject,
+    ): void;
     setScale(scale: number): void;
     getCurrentWidth(): number;
     getCurrentHeight(): number;
@@ -127,8 +139,21 @@ export class Paint extends Drawable {
         borderSize: number,
     ): void;
     fill(color?: string): void;
-    circle(cx: number, cy: number, r: number, fillStyle?: string, borderWidth?: number, borderStyle?: string): void;
-    rect(x: number, y: number, width: number, height: number, color: string): void;
+    circle(
+        cx: number,
+        cy: number,
+        r: number,
+        fillStyle?: string,
+        borderWidth?: number,
+        borderStyle?: string,
+    ): void;
+    rect(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        color: string,
+    ): void;
     name: string;
     color: string;
 }
@@ -141,7 +166,12 @@ export class BitmapText extends Drawable {
 export class Sprite extends Drawable {
     constructor(type: string, spriteOptions: SpriteOptions);
     addAnimation(name: string, imgPath: string, options: AnimOptions): void;
-    setAnimation(name: string, fn?: Callback, frameNum?: number, revert?: boolean): void;
+    setAnimation(
+        name: string,
+        fn?: Callback,
+        frameNum?: number,
+        revert?: boolean,
+    ): void;
     clearMove(): void;
 }
 
@@ -154,7 +184,13 @@ export class Map {
     constructor(options: MapOptions);
     addObject(obj: Drawable, layerIndex?: number): void;
     addTileSet(tiles: TileDesc[]): void;
-    checkMatrixForCollision(buffer: number[], matrixWidth: number, x: number, y: number, behavior: number): boolean;
+    checkMatrixForCollision(
+        buffer: number[],
+        matrixWidth: number,
+        x: number,
+        y: number,
+        behavior: number,
+    ): boolean;
     clear(tileNum?: number, behavior?: number): void;
     getTileBehaviorAtIndex(col: number, row: number): number;
     getTileIndexFromPixel(x: number, y: number): pixelPos;
@@ -163,7 +199,12 @@ export class Map {
     setData(map: Uint8Array, behaviors: Uint8Array): void;
     setEasing(easing: string): void;
     shift(startLine: number, height: number): void;
-    updateTile(col: number, row: number, tileNum?: number, behavior?: number): void;
+    updateTile(
+        col: number,
+        row: number,
+        tileNum?: number,
+        behavior?: number,
+    ): void;
     duration: number;
     numRows: number;
     numCols: number;
@@ -209,7 +250,10 @@ export interface MapOptions {
 }
 
 export interface FXInstance {
-    addFX(fxName: string, FxClass: { new(options: EffectOptions, display: Display): Effect }): void;
+    addFX(
+        fxName: string,
+        FxClass: { new (options: EffectOptions, display: Display): Effect },
+    ): void;
 }
 
 export const FX: FXInstance;
@@ -223,7 +267,7 @@ export class _FX {
     /**
      * Add a new Effect
      */
-    addFX(fxName: string, FxClass: { new(): Effect }): void;
+    addFX(fxName: string, FxClass: { new (): Effect }): void;
 
     /**
      * Retrieve an effect Class by its name
@@ -233,12 +277,23 @@ export class _FX {
     /**
      * Add a new easing function for other objects to use
      */
-    addEasing(easingName: string, easingFn: (x?: number, t?: number, b?: number, c?: number, d?: number) => void): void;
+    addEasing(
+        easingName: string,
+        easingFn: (
+            x?: number,
+            t?: number,
+            b?: number,
+            c?: number,
+            d?: number,
+        ) => void,
+    ): void;
 
     /**
      * Retrieves an easing function
      */
-    getEasing(easingName: string): (x?: number, t?: number, b?: number, c?: number, d?: number) => void;
+    getEasing(
+        easingName: string,
+    ): (x?: number, t?: number, b?: number, c?: number, d?: number) => void;
 }
 
 export interface EffectOptions {
@@ -264,7 +319,15 @@ export class Effect {
     /**
      * Changes the easing function used for the ffect
      */
-    setEasing(easing: (x?: number, t?: number, b?: number, c?: number, d?: number) => void): void;
+    setEasing(
+        easing: (
+            x?: number,
+            t?: number,
+            b?: number,
+            c?: number,
+            d?: number,
+        ) => void,
+    ): void;
 
     /**
      * Called when the ffect is started.
@@ -283,7 +346,11 @@ export class Effect {
      *
      * This method can be overridden but the super should always be calle first
      */
-    process(ctx: RenderingContext, fxCtx?: RenderingContext, obj?: any): boolean;
+    process(
+        ctx: RenderingContext,
+        fxCtx?: RenderingContext,
+        obj?: any,
+    ): boolean;
 }
 
 // why do we need this ?
@@ -357,7 +424,11 @@ export class Display {
     /**
      * Starts an animation on the display
      */
-    animate(fxName: string, options: EffectOptions, context: RenderingContext): Promise;
+    animate(
+        fxName: string,
+        options: EffectOptions,
+        context: RenderingContext,
+    ): Promise;
 
     /**
      * stops current animation
@@ -369,7 +440,13 @@ export class Display {
     /**
      * Executes an effect on a frame at a given time
      */
-    executeFx(ctx: RenderingContext, fxCtx: RenderingContext, obj: Drawable, time: number, when: string): void;
+    executeFx(
+        ctx: RenderingContext,
+        fxCtx: RenderingContext,
+        obj: Drawable,
+        time: number,
+        when: string,
+    ): void;
 
     /**
      * Clears every display layer and clears fx queues
@@ -422,7 +499,11 @@ export class MapEvent {
     /**
      * Schedule adding a new object to the map
      */
-    scheduleSprite(spriteId: string, spriteOptions: JSObject, delay: number): Drawable;
+    scheduleSprite(
+        spriteId: string,
+        spriteOptions: JSObject,
+        delay: number,
+    ): Drawable;
 
     /**
      * Add a new wave of objects to the map
@@ -499,7 +580,11 @@ export interface _ResourceManager {
     addResources(resource: Res, group?: string): Promise;
     getCanvasFromImage(image: HTMLImageElement): HTMLCanvasElement;
     getResourceById(id: string, group?: string, fullObject?: boolean): any;
-    loadResources(group: string, progressCb?: Callback, errorCb?: Callback): void;
+    loadResources(
+        group: string,
+        progressCb?: Callback,
+        errorCb?: Callback,
+    ): void;
     loadImage(res: Res, group?: string): Promise;
     loadAudio(res: Res, group?: string): Promise;
     newResourceFromPool(id: string): any;
@@ -513,14 +598,14 @@ export interface _InputManager {
      * A list of common keyCodes
      */
     KEYS: {
-        "UP": 38;
-        "DOWN": 40;
-        "LEFT": 37;
-        "RIGHT": 39;
-        "SPACE": 32;
-        "ENTER": 13;
-        "ESCAPE": 27;
-        "CTRL": 17;
+        UP: 38;
+        DOWN: 40;
+        LEFT: 37;
+        RIGHT: 39;
+        SPACE: 32;
+        ENTER: 13;
+        ESCAPE: 27;
+        CTRL: 17;
     };
     /**
      * List of common pad buttons
@@ -602,7 +687,11 @@ export interface _InputManager {
     /**
      * Install callback that gets called when a key is pressed/released
      */
-    installKeyCallback(key: string, event: string, callback: (key: string, event: string) => void): void;
+    installKeyCallback(
+        key: string,
+        event: string,
+        callback: (key: string, event: string) => void,
+    ): void;
     removeKeyCallback(key: string, event: string, callback: () => void): void;
     clearEvents(): void;
 }
@@ -665,7 +754,9 @@ export interface SceneOptions {
 export interface DrawableOptions {
     x?: number | undefined;
     y?: number | undefined;
-    behavior?: { new(sprite: Drawable, options?: JSObject): Behavior } | undefined;
+    behavior?:
+        | { new (sprite: Drawable, options?: JSObject): Behavior }
+        | undefined;
     canCollide?: boolean | undefined;
     canCollideFriendBullet?: boolean | undefined;
     collideGroup?: number | undefined;
@@ -734,12 +825,14 @@ export interface AnimationObject {
         offsetY: number;
         width: number;
         height: number;
-        hitBox?: {
-            x: number;
-            y: number;
-            x2: number;
-            y2: number;
-        } | undefined;
+        hitBox?:
+            | {
+                  x: number;
+                  y: number;
+                  x2: number;
+                  y2: number;
+              }
+            | undefined;
         plane?: number | undefined;
     }>;
     loop?: number | undefined;

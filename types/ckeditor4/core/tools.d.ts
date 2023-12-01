@@ -11,14 +11,14 @@ declare namespace CKEDITOR {
             };
             readonly buffers: {
                 readonly event: {
-                    new(
+                    new (
                         minInterval: number,
                         output: (...args: any[]) => void,
                         contextObj?: object,
                     ): tools.buffers.event;
                 };
                 readonly throttle: {
-                    new(
+                    new (
                         minInterval: number,
                         output: (...args: any[]) => void,
                         contextObj?: object,
@@ -32,7 +32,11 @@ declare namespace CKEDITOR {
 
         arrayCompare(arrayA: unknown[], arrayB: unknown[]): boolean;
 
-        bind(func: (...args: any[]) => void, obj: object, args: unknown[]): (...args: any[]) => void;
+        bind(
+            func: (...args: any[]) => void,
+            obj: object,
+            args: unknown[],
+        ): (...args: any[]) => void;
 
         buildStyleHtml(css: string | string[]): string;
 
@@ -90,7 +94,7 @@ declare namespace CKEDITOR {
 
         createClass(definition: {
             $?: (...args: any[]) => unknown;
-            base?: abstract new(...args: any[]) => any;
+            base?: abstract new (...args: any[]) => any;
             privates?: { [name: string]: (...args: any[]) => unknown };
             proto?: { [name: string]: (...args: any[]) => unknown };
             statics?: { [name: string]: (...args: any[]) => unknown };
@@ -98,7 +102,11 @@ declare namespace CKEDITOR {
 
         cssStyleToDomStyle(cssName: string): string;
 
-        cssVendorPrefix(property: string, value: string, asString?: boolean): { [cssClass: string]: string | number };
+        cssVendorPrefix(
+            property: string,
+            value: string,
+            asString?: boolean,
+        ): { [cssClass: string]: string | number };
 
         debounce(func: () => unknown, milliseconds?: number): () => unknown;
 
@@ -107,7 +115,10 @@ declare namespace CKEDITOR {
         /**
          * @version 4.3.0
          */
-        enableHtml5Elements(doc: Document | DocumentFragment, withAppend?: boolean): void;
+        enableHtml5Elements(
+            doc: Document | DocumentFragment,
+            withAppend?: boolean,
+        ): void;
 
         /**
          * @version 4.5.10
@@ -155,7 +166,10 @@ declare namespace CKEDITOR {
         /**
          * @version 4.5.0
          */
-        getIndex<T>(array: T[], compareFunction: (element: T) => boolean): number;
+        getIndex<T>(
+            array: T[],
+            compareFunction: (element: T) => boolean,
+        ): number;
 
         /**
          * @version 4.7.3
@@ -190,12 +204,18 @@ declare namespace CKEDITOR {
         /**
          * @version 4.8.0
          */
-        keystrokeToArray(lang: { [key: string]: unknown }, keystroke: number): { display: string[]; aria: string[] };
+        keystrokeToArray(
+            lang: { [key: string]: unknown },
+            keystroke: number,
+        ): { display: string[]; aria: string[] };
 
         /**
          * @version 4.8.0
          */
-        keystrokeToString(lang: { [key: string]: unknown }, keystroke: number): { display: string; aria: string };
+        keystrokeToString(
+            lang: { [key: string]: unknown },
+            keystroke: number,
+        ): { display: string; aria: string };
 
         ltrim(str: string): string;
 
@@ -214,7 +234,11 @@ declare namespace CKEDITOR {
         /**
          * @version 4.1.0
          */
-        objectCompare(left: { [key: string]: unknown }, right: { [key: string]: unknown }, onlyLef?: boolean): boolean;
+        objectCompare(
+            left: { [key: string]: unknown },
+            right: { [key: string]: unknown },
+            onlyLef?: boolean,
+        ): boolean;
 
         /**
          * @deprecated 4.12.0
@@ -226,7 +250,11 @@ declare namespace CKEDITOR {
             functionBuilder: (originalFunction: T) => T,
         ): T;
 
-        parseCssText(styleText: string, normalize?: boolean, nativeNormalize?: boolean): { [key: string]: unknown };
+        parseCssText(
+            styleText: string,
+            normalize?: boolean,
+            nativeNormalize?: boolean,
+        ): { [key: string]: unknown };
 
         prototypedCopy(source: { [key: string]: unknown }): {
             [key: string]: unknown;
@@ -258,7 +286,11 @@ declare namespace CKEDITOR {
         /**
          * @version 4.10.0
          */
-        throttle(minInterval: number, output: () => void, contextObject?: unknown): tools.buffers.throttle;
+        throttle(
+            minInterval: number,
+            output: () => void,
+            contextObject?: unknown,
+        ): tools.buffers.throttle;
 
         /**
          * @version 4.5.0
@@ -272,7 +304,10 @@ declare namespace CKEDITOR {
         /**
          * @version 4.1.0
          */
-        writeCssText(styles: { [key: string]: unknown }, sort?: boolean): string;
+        writeCssText(
+            styles: { [key: string]: unknown },
+            sort?: boolean,
+        ): string;
     }
 
     namespace tools {
@@ -297,7 +332,11 @@ declare namespace CKEDITOR {
 
             isArray(object: unknown): boolean;
 
-            map<T, K>(array: T[], fn: (value: T) => K, thisArg?: { [key: string]: unknown }): K[];
+            map<T, K>(
+                array: T[],
+                fn: (value: T) => K,
+                thisArg?: { [key: string]: unknown },
+            ): K[];
 
             reduce<T, K>(
                 array: T[],
@@ -308,7 +347,7 @@ declare namespace CKEDITOR {
         }
 
         interface colorConstructor {
-            new(): color;
+            new (): color;
             namedColors: { [colorName: string]: string };
         }
 
@@ -331,7 +370,10 @@ declare namespace CKEDITOR {
         interface _object {
             findKey(obj: { [key: string]: unknown }, value: unknown): string;
 
-            merge(obj1: { [key: string]: unknown }, obj2: { [key: string]: unknown }): { [key: string]: unknown };
+            merge(
+                obj1: { [key: string]: unknown },
+                obj2: { [key: string]: unknown },
+            ): { [key: string]: unknown };
         }
 
         namespace style {
@@ -356,7 +398,11 @@ declare namespace CKEDITOR {
             }
 
             interface borderConstructor {
-                new(props: { color: string; style: string; width: string }): border;
+                new (props: {
+                    color: string;
+                    style: string;
+                    width: string;
+                }): border;
 
                 fromCssRule(value: string): border;
 

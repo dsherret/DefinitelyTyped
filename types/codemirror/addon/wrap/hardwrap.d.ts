@@ -18,8 +18,16 @@ declare module "../../" {
         /** Wraps the paragraph at the given position. If pos is not given, it defaults to the cursor position. */
         wrapParagraph(pos?: Position, options?: HardwrapOptions): void;
         /** Wraps the given range as one big paragraph. */
-        wrapRange(from: Position, to: Position, options?: HardwrapOptions): void;
+        wrapRange(
+            from: Position,
+            to: Position,
+            options?: HardwrapOptions,
+        ): void;
         /** Wraps the paragraphs in (and overlapping with) the given range individually. */
-        wrapParagraphsInRange(from: Position, to: Position, options?: HardwrapOptions): void;
+        wrapParagraphsInRange(
+            from: Position,
+            to: Position,
+            options?: HardwrapOptions,
+        ): void;
     }
 }

@@ -24,7 +24,10 @@ declare let paramResult: SSM.Types.Parameter;
 declare let paramsResult: SSM.Types.GetParametersResult;
 declare let paramsByPathResult: SSM.Types.ParameterList;
 declare let putParamResult: SSM.Types.PutParameterResult;
-declare let allParamResults: SSM.Types.Parameter | SSM.Types.GetParametersByPathResult | SSM.Types.ParameterList;
+declare let allParamResults:
+    | SSM.Types.Parameter
+    | SSM.Types.GetParametersByPathResult
+    | SSM.Types.ParameterList;
 declare let promiseParamResult: Promise<SSM.Types.Parameter>;
 declare let promiseParamsResult: Promise<SSM.Types.GetParametersResult>;
 declare let promiseParamsByPathResult: Promise<SSM.Types.ParameterList>;

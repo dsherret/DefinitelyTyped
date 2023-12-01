@@ -10,8 +10,18 @@ export = set;
  * @param [options]
  */
 
-declare function set<T extends object, K extends keyof T>(object: T, path: K, value: T[K], options?: set.Options): void;
-declare function set(object: object, path: set.InputType, value: any, options?: set.Options): void;
+declare function set<T extends object, K extends keyof T>(
+    object: T,
+    path: K,
+    value: T[K],
+    options?: set.Options,
+): void;
+declare function set(
+    object: object,
+    path: set.InputType,
+    value: any,
+    options?: set.Options,
+): void;
 
 declare namespace set {
     interface Options {
@@ -41,7 +51,10 @@ declare namespace set {
 
     type InputType = string | symbol | ReadonlyArray<string | symbol>;
 
-    type MergeFunc = <TObject, TSource>(object: TObject, source: TSource) => TObject & TSource;
+    type MergeFunc = <TObject, TSource>(
+        object: TObject,
+        source: TSource,
+    ) => TObject & TSource;
 
     type SplitFunc = (input: string, options?: Options) => string;
 }

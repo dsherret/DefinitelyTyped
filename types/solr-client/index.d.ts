@@ -133,10 +133,24 @@ export interface Query {
 export interface Client {
     basicAuth(username: string, password: string): Client;
     unauth(): Client;
-    add(docs: object[], options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
-    realTimeGet(ids: string | string[], query?: Query, callback?: (err: Error, data: object) => void): ClientRequest;
-    addRemoteResource(options: AddRemoteResourceOptions, callback?: (err: Error, data: object) => void): ClientRequest;
-    commit(options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
+    add(
+        docs: object[],
+        options?: Options,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
+    realTimeGet(
+        ids: string | string[],
+        query?: Query,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
+    addRemoteResource(
+        options: AddRemoteResourceOptions,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
+    commit(
+        options?: Options,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
     prepareCommit(callback?: (err: Error, data: object) => void): ClientRequest;
     softCommit(callback?: (err: Error, data: object) => void): ClientRequest;
     delete(
@@ -152,23 +166,55 @@ export interface Client {
         options?: object,
         callback?: (err: Error, data: object) => void,
     ): ClientRequest;
-    deleteByID(id: string | number, options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
-    deleteByQuery(query: string, options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
-    deleteAll(options?: Options, callback?: (err: Error, data: object) => void): ClientRequest;
-    optimize(options: object, callback?: (err: Error, data: object) => void): ClientRequest;
+    deleteByID(
+        id: string | number,
+        options?: Options,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
+    deleteByQuery(
+        query: string,
+        options?: Options,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
+    deleteAll(
+        options?: Options,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
+    optimize(
+        options: object,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
     rollback(callback?: (err: Error, data: object) => void): ClientRequest;
-    update(data: object, options?: object, callback?: (err: Error, data: object) => void): ClientRequest;
-    search(query: Query, callback?: (err: Error, data: object) => void): ClientRequest;
+    update(
+        data: object,
+        options?: object,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
+    search(
+        query: Query,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
     executeCollection(
         collection: Query | object | string,
         callback?: (err: Error, data: object) => void,
     ): ClientRequest;
     searchAll(callback?: (err: Error, data: object) => void): ClientRequest;
-    get(handler: string, query: Query | object | string, callback?: (err: Error, data: object) => void): ClientRequest;
-    post(handler: string, query: Query | object | string, callback?: (err: Error, data: object) => void): ClientRequest;
+    get(
+        handler: string,
+        query: Query | object | string,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
+    post(
+        handler: string,
+        query: Query | object | string,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
     escapeSpecialChars(s: string): string;
     query(): Query;
-    atomicUpdate(doc: object, callback?: (err: Error, data: object) => void): ClientRequest;
+    atomicUpdate(
+        doc: object,
+        callback?: (err: Error, data: object) => void,
+    ): ClientRequest;
     searchAsync(query: Query): Promise<object>;
 }
 

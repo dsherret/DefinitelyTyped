@@ -114,32 +114,61 @@ const newPolyline = map.editTools.startPolyline();
 newPolyline.enable();
 newPolyline.disable();
 const newPolylineDrawing: boolean = newPolyline.drawing();
-newPolyline.continueForward([L.latLng(43.124, 1.263), L.latLng(43.1236, 1.261), L.latLng(43.12475, 1.262)]);
+newPolyline.continueForward([
+    L.latLng(43.124, 1.263),
+    L.latLng(43.1236, 1.261),
+    L.latLng(43.12475, 1.262),
+]);
 newPolyline.continueBackward([
     L.latLng(43.124, 1.263),
     L.latLng(43.1236, 1.261),
     L.latLng(43.12475, 1.262),
 ]);
-newPolyline.splitShape([L.latLng(43.124, 1.263), L.latLng(43.1236, 1.261), L.latLng(43.12475, 1.262)], 2);
+newPolyline.splitShape(
+    [
+        L.latLng(43.124, 1.263),
+        L.latLng(43.1236, 1.261),
+        L.latLng(43.12475, 1.262),
+    ],
+    2,
+);
 
 const newPolygon = map.editTools.startPolygon();
 newPolygon.enable();
 newPolygon.disable();
 const newPolygonDrawing: boolean = newPolygon.drawing();
-newPolygon.continueForward([L.latLng(43.124, 1.263), L.latLng(43.1236, 1.261), L.latLng(43.12475, 1.262)]);
+newPolygon.continueForward([
+    L.latLng(43.124, 1.263),
+    L.latLng(43.1236, 1.261),
+    L.latLng(43.12475, 1.262),
+]);
 newPolygon.continueBackward([
     L.latLng(43.124, 1.263),
     L.latLng(43.1236, 1.261),
     L.latLng(43.12475, 1.262),
 ]);
-newPolygon.splitShape([L.latLng(43.124, 1.263), L.latLng(43.1236, 1.261), L.latLng(43.12475, 1.262)], 2);
+newPolygon.splitShape(
+    [
+        L.latLng(43.124, 1.263),
+        L.latLng(43.1236, 1.261),
+        L.latLng(43.12475, 1.262),
+    ],
+    2,
+);
 newPolygon.newHole(L.latLng(0, 17));
 
 const newRectangle = map.editTools.startRectangle();
 newRectangle.enable();
 newRectangle.disable();
 const newRectangleDrawing: boolean = newRectangle.drawing();
-newRectangle.splitShape([L.latLng(43.124, 1.263), L.latLng(43.1236, 1.261), L.latLng(43.12475, 1.262)], 2);
+newRectangle.splitShape(
+    [
+        L.latLng(43.124, 1.263),
+        L.latLng(43.1236, 1.261),
+        L.latLng(43.12475, 1.262),
+    ],
+    2,
+);
 
 const newCircle = map.editTools.startCircle();
 newCircle.enable();

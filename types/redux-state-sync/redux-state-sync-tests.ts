@@ -27,9 +27,14 @@ const middleware = createStateSyncMiddleware({
 });
 
 // @ts-expect-error
-const middlewareError = createStateSyncMiddleware({ broadcastChannelOption: null });
+const middlewareError = createStateSyncMiddleware({
+    broadcastChannelOption: null,
+});
 
-function rootReducer(state: TestState = initialState, action: Action): TestState {
+function rootReducer(
+    state: TestState = initialState,
+    action: Action,
+): TestState {
     return state;
 }
 

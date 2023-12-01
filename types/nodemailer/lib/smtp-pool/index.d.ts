@@ -16,11 +16,17 @@ declare namespace SMTPPool {
         dsn?: SMTPConnection.DSNOptions | undefined;
     }
 
-    interface Options extends MailOptions, TransportOptions, SMTPConnection.Options {
+    interface Options
+        extends MailOptions,
+            TransportOptions,
+            SMTPConnection.Options {
         /** set to true to use pooled connections (defaults to false) instead of creating a new connection for every email */
         pool: true;
         service?: string | undefined;
-        getSocket?(options: Options, callback: (err: Error | null, socketOptions: any) => void): void; // TODO http.ClientRequest?
+        getSocket?(
+            options: Options,
+            callback: (err: Error | null, socketOptions: any) => void,
+        ): void; // TODO http.ClientRequest?
         url?: string | undefined;
         /** the count of maximum simultaneous connections to make against the SMTP server (defaults to 5) */
         maxConnections?: number | undefined;
@@ -43,7 +49,10 @@ declare namespace SMTPPool {
 /**
  * Creates a SMTP pool transport object for Nodemailer
  */
-declare class SMTPPool extends EventEmitter implements Transport<SMTPPool.SentMessageInfo> {
+declare class SMTPPool
+    extends EventEmitter
+    implements Transport<SMTPPool.SentMessageInfo>
+{
     options: SMTPPool.Options;
 
     mailer: Mail<SMTPPool.SentMessageInfo>;
@@ -57,7 +66,10 @@ declare class SMTPPool extends EventEmitter implements Transport<SMTPPool.SentMe
     constructor(options?: SMTPPool.Options | string);
 
     /** Placeholder function for creating proxy sockets. This method immediatelly returns without a socket */
-    getSocket(options: SMTPPool.Options, callback: (err: Error | null, socketOptions: any) => void): void;
+    getSocket(
+        options: SMTPPool.Options,
+        callback: (err: Error | null, socketOptions: any) => void,
+    ): void;
 
     /** Sends an e-mail using the selected settings */
     send(

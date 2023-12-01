@@ -59,26 +59,35 @@ equal(
 
 // Inline works with pandoc format e.g. `code`{.lang}
 equal(
-    md().use(highlightjs, { inline: true }).renderInline("`console.log(42)`{.js}"),
-    "<code class=\"language-js\"><span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-number\">42</span>)</code>",
+    md()
+        .use(highlightjs, { inline: true })
+        .renderInline("`console.log(42)`{.js}"),
+    '<code class="language-js"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">42</span>)</code>',
 );
 
 // Inline works with kramdown format e.g. `code`{:.lang}
 equal(
-    md().use(highlightjs, { inline: true }).renderInline("`console.log(42)`{:.js}"),
-    "<code class=\"language-js\"><span class=\"hljs-built_in\">console</span>.log(<span class=\"hljs-number\">42</span>)</code>",
+    md()
+        .use(highlightjs, { inline: true })
+        .renderInline("`console.log(42)`{:.js}"),
+    '<code class="language-js"><span class="hljs-built_in">console</span>.log(<span class="hljs-number">42</span>)</code>',
 );
 
 // Inline is not enabled by default
-equal(md().use(highlightjs).renderInline("`console.log(42)`{.js}"), "<code>console.log(42)</code>{.js}");
+equal(
+    md().use(highlightjs).renderInline("`console.log(42)`{.js}"),
+    "<code>console.log(42)</code>{.js}",
+);
 
 // Inline uses same auto behaviour as blocks.
 equal(
     md().use(highlightjs, { inline: true }).renderInline("`console.log(42)`"),
-    "<code>console.<span class=\"hljs-built_in\">log</span>(<span class=\"hljs-number\">42</span>)</code>",
+    '<code>console.<span class="hljs-built_in">log</span>(<span class="hljs-number">42</span>)</code>',
 );
 
 equal(
-    md().use(highlightjs, { inline: true, auto: false }).renderInline("`console.log(42)`"),
+    md()
+        .use(highlightjs, { inline: true, auto: false })
+        .renderInline("`console.log(42)`"),
     "<code>console.log(42)</code>",
 );

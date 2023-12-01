@@ -6,8 +6,12 @@ declare class AuthEngine implements AuthEngine.AGAuthEngine {
         token: AuthEngine.AuthToken | AuthEngine.SignedAuthToken,
         options?: { [key: string]: any },
     ): Promise<AuthEngine.AuthToken | AuthEngine.SignedAuthToken>;
-    removeToken(name: string): Promise<AuthEngine.AuthToken | AuthEngine.SignedAuthToken | null>;
-    loadToken(name: string): Promise<AuthEngine.AuthToken | AuthEngine.SignedAuthToken | null>;
+    removeToken(
+        name: string,
+    ): Promise<AuthEngine.AuthToken | AuthEngine.SignedAuthToken | null>;
+    loadToken(
+        name: string,
+    ): Promise<AuthEngine.AuthToken | AuthEngine.SignedAuthToken | null>;
 }
 
 export = AuthEngine;

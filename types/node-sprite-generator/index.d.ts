@@ -3,10 +3,20 @@ import * as e from "express";
 export as namespace NodeSpriteGenerator;
 export = NodeSpriteGenerator;
 
-declare function NodeSpriteGenerator(option: NodeSpriteGenerator.Option, callback?: (err: Error) => void): void;
+declare function NodeSpriteGenerator(
+    option: NodeSpriteGenerator.Option,
+    callback?: (err: Error) => void,
+): void;
 
 declare namespace NodeSpriteGenerator {
-    type BuiltinStylesheetFormats = "stylus" | "less" | "sass" | "scss" | "css" | "prefixed-css" | "javascript";
+    type BuiltinStylesheetFormats =
+        | "stylus"
+        | "less"
+        | "sass"
+        | "scss"
+        | "css"
+        | "prefixed-css"
+        | "javascript";
     type BuiltinLayouts = "packed" | "vertical" | "horizontal" | "diagonal";
     type BuiltinCompositors = "canvas" | "gm" | "jimp";
 
@@ -22,7 +32,13 @@ declare namespace NodeSpriteGenerator {
         scaling?: number | undefined;
     }
 
-    type CompositorFilters = "all" | "none" | "sub" | "up" | "average" | "paeth";
+    type CompositorFilters =
+        | "all"
+        | "none"
+        | "sub"
+        | "up"
+        | "average"
+        | "paeth";
     interface CompositorOption {
         compressionLevel?: number | undefined;
         filter?: CompositorFilters | undefined;
@@ -34,8 +50,16 @@ declare namespace NodeSpriteGenerator {
         data: any;
     }
     interface Compositor {
-        readImages(files: string[], callback: (error: Error, images: Image[]) => void): void;
-        render(layout: Layout, spritePath: string, options: CompositorOption, callback: (error: Error) => void): void;
+        readImages(
+            files: string[],
+            callback: (error: Error, images: Image[]) => void,
+        ): void;
+        render(
+            layout: Layout,
+            spritePath: string,
+            options: CompositorOption,
+            callback: (error: Error) => void,
+        ): void;
     }
     interface Layout {
         width: number;
@@ -65,7 +89,11 @@ declare namespace NodeSpriteGenerator {
         src?: string[] | undefined;
         spritePath?: string | undefined;
         stylesheetPath?: string | undefined;
-        stylesheet?: BuiltinStylesheetFormats | StylesheetFunc | string | undefined;
+        stylesheet?:
+            | BuiltinStylesheetFormats
+            | StylesheetFunc
+            | string
+            | undefined;
         stylesheetOptions?: StylesheetOption | undefined;
         layout?: BuiltinLayouts | LayoutFunc | undefined;
         layoutOptions?: LayoutOption | undefined;

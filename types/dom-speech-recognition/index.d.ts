@@ -23,9 +23,15 @@ interface SpeechRecognition extends EventTarget {
     onaudioend: ((this: SpeechRecognition, ev: Event) => any) | null;
     onaudiostart: ((this: SpeechRecognition, ev: Event) => any) | null;
     onend: ((this: SpeechRecognition, ev: Event) => any) | null;
-    onerror: ((this: SpeechRecognition, ev: SpeechRecognitionErrorEvent) => any) | null;
-    onnomatch: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any) | null;
-    onresult: ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any) | null;
+    onerror:
+        | ((this: SpeechRecognition, ev: SpeechRecognitionErrorEvent) => any)
+        | null;
+    onnomatch:
+        | ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any)
+        | null;
+    onresult:
+        | ((this: SpeechRecognition, ev: SpeechRecognitionEvent) => any)
+        | null;
     onsoundend: ((this: SpeechRecognition, ev: Event) => any) | null;
     onsoundstart: ((this: SpeechRecognition, ev: Event) => any) | null;
     onspeechend: ((this: SpeechRecognition, ev: Event) => any) | null;
@@ -36,7 +42,10 @@ interface SpeechRecognition extends EventTarget {
     stop(): void;
     addEventListener<K extends keyof SpeechRecognitionEventMap>(
         type: K,
-        listener: (this: SpeechRecognition, ev: SpeechRecognitionEventMap[K]) => any,
+        listener: (
+            this: SpeechRecognition,
+            ev: SpeechRecognitionEventMap[K],
+        ) => any,
         options?: boolean | AddEventListenerOptions,
     ): void;
     addEventListener(
@@ -46,7 +55,10 @@ interface SpeechRecognition extends EventTarget {
     ): void;
     removeEventListener<K extends keyof SpeechRecognitionEventMap>(
         type: K,
-        listener: (this: SpeechRecognition, ev: SpeechRecognitionEventMap[K]) => any,
+        listener: (
+            this: SpeechRecognition,
+            ev: SpeechRecognitionEventMap[K],
+        ) => any,
         options?: boolean | EventListenerOptions,
     ): void;
     removeEventListener(
@@ -56,7 +68,10 @@ interface SpeechRecognition extends EventTarget {
     ): void;
 }
 
-declare var SpeechRecognition: { prototype: SpeechRecognition; new(): SpeechRecognition };
+declare var SpeechRecognition: {
+    prototype: SpeechRecognition;
+    new (): SpeechRecognition;
+};
 
 // https://wicg.github.io/speech-api/#speechrecognitionevent
 interface SpeechRecognitionEventInit extends EventInit {
@@ -72,7 +87,10 @@ interface SpeechRecognitionEvent extends Event {
 
 declare var SpeechRecognitionEvent: {
     prototype: SpeechRecognitionEvent;
-    new(type: string, eventInitDict: SpeechRecognitionEventInit): SpeechRecognitionEvent;
+    new (
+        type: string,
+        eventInitDict: SpeechRecognitionEventInit,
+    ): SpeechRecognitionEvent;
 };
 
 // https://wicg.github.io/speech-api/#enumdef-speechrecognitionerrorcode
@@ -100,7 +118,10 @@ interface SpeechRecognitionErrorEvent extends Event {
 
 declare var SpeechRecognitionErrorEvent: {
     prototype: SpeechRecognitionErrorEvent;
-    new(type: string, eventInitDict: SpeechRecognitionErrorEventInit): SpeechRecognitionErrorEvent;
+    new (
+        type: string,
+        eventInitDict: SpeechRecognitionErrorEventInit,
+    ): SpeechRecognitionErrorEvent;
 };
 
 // https://wicg.github.io/speech-api/#speechgrammar
@@ -111,7 +132,7 @@ interface SpeechGrammar {
 
 declare var SpeechGrammar: {
     prototype: SpeechGrammar;
-    new(): SpeechGrammar;
+    new (): SpeechGrammar;
 };
 
 // https://wicg.github.io/speech-api/#speechgrammarlist
@@ -123,13 +144,25 @@ interface SpeechGrammarList {
     [index: number]: SpeechGrammar;
 }
 
-declare var SpeechGrammarList: { prototype: SpeechGrammarList; new(): SpeechGrammarList };
+declare var SpeechGrammarList: {
+    prototype: SpeechGrammarList;
+    new (): SpeechGrammarList;
+};
 
 // prefixed global variables in Chrome; should match the equivalents above
 // https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API#chrome_support
-declare var webkitSpeechRecognition: { prototype: SpeechRecognition; new(): SpeechRecognition };
-declare var webkitSpeechGrammarList: { prototype: SpeechGrammarList; new(): SpeechGrammarList };
+declare var webkitSpeechRecognition: {
+    prototype: SpeechRecognition;
+    new (): SpeechRecognition;
+};
+declare var webkitSpeechGrammarList: {
+    prototype: SpeechGrammarList;
+    new (): SpeechGrammarList;
+};
 declare var webkitSpeechRecognitionEvent: {
     prototype: SpeechRecognitionEvent;
-    new(type: string, eventInitDict: SpeechRecognitionEventInit): SpeechRecognitionEvent;
+    new (
+        type: string,
+        eventInitDict: SpeechRecognitionEventInit,
+    ): SpeechRecognitionEvent;
 };

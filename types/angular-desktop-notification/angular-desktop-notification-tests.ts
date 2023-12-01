@@ -4,7 +4,9 @@ angular
     .module("app", ["ngDesktopNotification"])
     .config([
         "desktopNotificationProvider",
-        (desktopNotificationProvider: angular.desktopNotification.IDesktopNotificationProvider) => {
+        (
+            desktopNotificationProvider: angular.desktopNotification.IDesktopNotificationProvider,
+        ) => {
             desktopNotificationProvider.config({
                 autoClose: true,
                 duration: 5,
@@ -14,12 +16,18 @@ angular
     ])
     .controller("AppController", [
         "desktopNotification",
-        (desktopNotification: angular.desktopNotification.IDesktopNotificationService) => {
+        (
+            desktopNotification: angular.desktopNotification.IDesktopNotificationService,
+        ) => {
             // Check support and permission
             const isNotificationSupported = desktopNotification.isSupported();
-            const currentNotificationPermission = desktopNotification.currentPermission();
+            const currentNotificationPermission =
+                desktopNotification.currentPermission();
 
-            if (currentNotificationPermission === desktopNotification.permissions.granted) {
+            if (
+                currentNotificationPermission ===
+                desktopNotification.permissions.granted
+            ) {
                 // Permission granted
             }
 
@@ -28,17 +36,14 @@ angular
                 // Permission granted
                 (permission) => {
                     // Show notification
-                    desktopNotification.show(
-                        "Notification title",
-                        {
-                            tag: "tag",
-                            body: "Notification body",
-                            icon: "https://www.iconurl.com/icon-name.icon-extension",
-                            onClick: () => {
-                                // Notification clicked
-                            },
+                    desktopNotification.show("Notification title", {
+                        tag: "tag",
+                        body: "Notification body",
+                        icon: "https://www.iconurl.com/icon-name.icon-extension",
+                        onClick: () => {
+                            // Notification clicked
                         },
-                    );
+                    });
                 },
                 () => {
                     // No permission granted

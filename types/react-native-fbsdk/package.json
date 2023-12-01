@@ -1,29 +1,29 @@
 {
-    "private": true,
-    "name": "@types/react-native-fbsdk",
-    "version": "3.0.9999",
-    "projects": [
-        "https://github.com/facebook/react-native-fbsdk"
-    ],
-    "dependencies": {
-        "@types/react": "*",
-        "@types/react-native": "*"
+  "private": true,
+  "name": "@types/react-native-fbsdk",
+  "version": "3.0.9999",
+  "projects": [
+    "https://github.com/facebook/react-native-fbsdk"
+  ],
+  "dependencies": {
+    "@types/react": "*",
+    "@types/react-native": "*"
+  },
+  "devDependencies": {
+    "@types/react-native-fbsdk": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Ifiok Jr.",
+      "githubUsername": "ifiokjr"
     },
-    "devDependencies": {
-        "@types/react-native-fbsdk": "workspace:."
+    {
+      "name": "Thibault Malbranche",
+      "githubUsername": "titozzz"
     },
-    "owners": [
-        {
-            "name": "Ifiok Jr.",
-            "githubUsername": "ifiokjr"
-        },
-        {
-            "name": "Thibault Malbranche",
-            "githubUsername": "titozzz"
-        },
-        {
-            "name": "Stuart Forrest",
-            "githubUsername": "stuartforrest-infinity"
-        }
-    ]
+    {
+      "name": "Stuart Forrest",
+      "githubUsername": "stuartforrest-infinity"
+    }
+  ]
 }

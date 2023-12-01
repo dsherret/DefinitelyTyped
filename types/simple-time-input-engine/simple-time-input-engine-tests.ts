@@ -1,6 +1,13 @@
-import { formatTimeForDisplay, parseInputChange } from "simple-time-input-engine";
+import {
+    formatTimeForDisplay,
+    parseInputChange,
+} from "simple-time-input-engine";
 
-const { valid, time } = parseInputChange({ newValue: "6am", previousTime: "10:00", clockMode: 12 });
+const { valid, time } = parseInputChange({
+    newValue: "6am",
+    previousTime: "10:00",
+    clockMode: 12,
+});
 
 console.log(valid); // true
 console.log(time); // "06:00"

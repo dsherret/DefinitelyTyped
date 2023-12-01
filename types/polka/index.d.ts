@@ -10,8 +10,12 @@ declare namespace polka {
     /**
      * A middleware function
      */
-    type Middleware<P extends Params = ParamsDictionary, ResBody = any, ReqBody = any, ReqQuery = Query> =
-        RequestHandler<P, ResBody, ReqBody, ReqQuery>;
+    type Middleware<
+        P extends Params = ParamsDictionary,
+        ResBody = any,
+        ReqBody = any,
+        ReqQuery = Query,
+    > = RequestHandler<P, ResBody, ReqBody, ReqQuery>;
 
     /**
      * Calls the next middleware function in the chain, or throws an error.
@@ -71,7 +75,10 @@ declare namespace polka {
          * Attach middleware(s) and/or sub-application(s) to the server.
          * These will execute before your routes' handlers.
          */
-        use(pattern: string | RegExp, ...handlers: RequestHandler[] | Polka[]): this;
+        use(
+            pattern: string | RegExp,
+            ...handlers: RequestHandler[] | Polka[]
+        ): this;
 
         /**
          * Boots (or creates) the underlying `http.Server` for the first time.
@@ -97,9 +104,16 @@ declare namespace polka {
          */
         server?: Server | undefined;
 
-        find(method: Trouter.HTTPMethod, url: string): Trouter.FindResult<RequestHandler>;
+        find(
+            method: Trouter.HTTPMethod,
+            url: string,
+        ): Trouter.FindResult<RequestHandler>;
 
-        add(method: Trouter.HTTPMethod, pattern: string | RegExp, ...handlers: RequestHandler[]): this;
+        add(
+            method: Trouter.HTTPMethod,
+            pattern: string | RegExp,
+            ...handlers: RequestHandler[]
+        ): this;
 
         all(pattern: string | RegExp, ...handlers: RequestHandler[]): this;
 
@@ -134,7 +148,12 @@ declare namespace polka {
         /**
          * A catch-all error handler; executed whenever a middleware throws an error.
          */
-        onError?(err: Error, req: Request, res: ServerResponse, next: Next): void;
+        onError?(
+            err: Error,
+            req: Request,
+            res: ServerResponse,
+            next: Next,
+        ): void;
 
         /**
          * A handler when no route definitions were matched.

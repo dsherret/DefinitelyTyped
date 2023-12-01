@@ -28,22 +28,14 @@ declare namespace XRay {
     type AbortHandler = (data: unknown[], url: string) => boolean;
 
     interface Instance extends XRayCrawler.Instance {
-        (
-            source: string,
-            selector: Selector,
-        ): InstanceInvocation;
+        (source: string, selector: Selector): InstanceInvocation;
         (
             source: string,
             context: string,
             selector: Selector,
         ): InstanceInvocation;
-        (
-            context: string,
-            selector: Selector,
-        ): InstanceInvocation;
-        (
-            selector: Selector,
-        ): InstanceInvocation;
+        (context: string, selector: Selector): InstanceInvocation;
+        (selector: Selector): InstanceInvocation;
     }
 
     interface InstanceInvocation {

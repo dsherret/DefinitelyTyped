@@ -544,7 +544,9 @@ declare namespace google.payments.api {
          * payment method returned to you in a format you can charge or
          * reference.
          */
-        tokenizationSpecification?: PaymentMethodTokenizationSpecification | undefined;
+        tokenizationSpecification?:
+            | PaymentMethodTokenizationSpecification
+            | undefined;
     }
 
     /**
@@ -1646,7 +1648,12 @@ declare namespace google.payments.api {
      * - `SHIPPING_OPTION`:
      *   Item for shipping option.
      */
-    type DisplayItemType = "LINE_ITEM" | "SUBTOTAL" | "TAX" | "DISCOUNT" | "SHIPPING_OPTION";
+    type DisplayItemType =
+        | "LINE_ITEM"
+        | "SUBTOTAL"
+        | "TAX"
+        | "DISCOUNT"
+        | "SHIPPING_OPTION";
 
     /**
      * Enum string of a display item status.
@@ -1703,7 +1710,12 @@ declare namespace google.payments.api {
      *   Developer will receive callback data in
      *   [[IntermediatePaymentData.paymentMethodData|`IntermediatePaymentData.paymentMethodData`]]
      */
-    type CallbackIntent = "OFFER" | "SHIPPING_ADDRESS" | "SHIPPING_OPTION" | "PAYMENT_AUTHORIZATION" | "PAYMENT_METHOD";
+    type CallbackIntent =
+        | "OFFER"
+        | "SHIPPING_ADDRESS"
+        | "SHIPPING_OPTION"
+        | "PAYMENT_AUTHORIZATION"
+        | "PAYMENT_METHOD";
 
     /**
      * Enum string for the callback trigger.
@@ -1730,7 +1742,11 @@ declare namespace google.payments.api {
      *   accounts, we will call initialize again with data from the new
      *   account.
      */
-    type CallbackTrigger = "OFFER" | "SHIPPING_ADDRESS" | "SHIPPING_OPTION" | "INITIALIZE";
+    type CallbackTrigger =
+        | "OFFER"
+        | "SHIPPING_ADDRESS"
+        | "SHIPPING_OPTION"
+        | "INITIALIZE";
 
     /**
      * Enum string for error reason.
@@ -1897,7 +1913,9 @@ declare namespace google.payments.api {
          *     [insecure browser
          *     context](https://developer.mozilla.org/en-US/docs/Web/Security/Secure_Contexts).
          */
-        isReadyToPay(request: IsReadyToPayRequest): Promise<IsReadyToPayResponse>;
+        isReadyToPay(
+            request: IsReadyToPayRequest,
+        ): Promise<IsReadyToPayResponse>;
 
         /**
          * The convenience method is used to generate a Google Pay payment
@@ -2196,7 +2214,9 @@ declare namespace google.payments.api {
          * including the technical [[PaymentDataError.reason|`reason`]] and a
          * [[PaymentDataError.message|`message`]] to be displayed to the user.
          */
-        (paymentData: PaymentData) => Promise<PaymentAuthorizationResult> | PaymentAuthorizationResult;
+        (
+            paymentData: PaymentData,
+        ) => Promise<PaymentAuthorizationResult> | PaymentAuthorizationResult;
 
     /**
      * This handler is used when payment data changes in the payment sheet

@@ -36,7 +36,7 @@ applyTo({
 /**
  * getWss function returns ws server
  */
-getWss().clients.forEach(ws => {
+getWss().clients.forEach((ws) => {
     if (ws.readyState !== ws.OPEN) {
         ws.terminate();
         return;
@@ -48,7 +48,7 @@ getWss().clients.forEach(ws => {
  * ws method is added to express app instance
  */
 app.ws("/", (ws, req) => {
-    ws.on("message", msg => {
+    ws.on("message", (msg) => {
         console.log(msg);
     });
 });

@@ -4,7 +4,7 @@ interface CSSStyleValue {
 
 declare var CSSStyleValue: {
     prototype: CSSStyleValue;
-    new(): CSSStyleValue;
+    new (): CSSStyleValue;
     parse(property: string, cssText: string): CSSStyleValue;
     parseAll(property: string, cssText: string): CSSStyleValue[];
 };
@@ -16,20 +16,27 @@ interface CSSVariableReferenceValue {
 
 declare var CSSVariableReferenceValue: {
     prototype: CSSVariableReferenceValue;
-    new(variable: string, fallback?: CSSUnparsedValue | null): CSSVariableReferenceValue;
+    new (
+        variable: string,
+        fallback?: CSSUnparsedValue | null,
+    ): CSSVariableReferenceValue;
 };
 
 interface CSSUnparsedValue extends CSSStyleValue {
     readonly length: number;
     forEach(
-        callbackfn: (value: CSSUnparsedSegment, key: number, parent: CSSUnparsedValue) => void,
+        callbackfn: (
+            value: CSSUnparsedSegment,
+            key: number,
+            parent: CSSUnparsedValue,
+        ) => void,
         thisArg?: any,
     ): void;
 }
 
 declare var CSSUnparsedValue: {
     prototype: CSSUnparsedValue;
-    new(members: CSSUnparsedSegment[]): CSSUnparsedValue;
+    new (members: CSSUnparsedSegment[]): CSSUnparsedValue;
 };
 
 interface CSSKeywordValue extends CSSStyleValue {
@@ -38,7 +45,7 @@ interface CSSKeywordValue extends CSSStyleValue {
 
 declare var CSSKeywordValue: {
     prototype: CSSKeywordValue;
-    new(value: string): CSSKeywordValue;
+    new (value: string): CSSKeywordValue;
 };
 
 type CSSNumberOrNumeric = CSSNumberish | CSSNumericValue;
@@ -69,7 +76,7 @@ interface CSSNumericValue extends CSSStyleValue {
 
 declare var CSSNumericValue: {
     prototype: CSSNumericValue;
-    new(): CSSNumericValue;
+    new (): CSSNumericValue;
     parse(cssText: string): CSSNumericValue;
 };
 
@@ -80,7 +87,7 @@ interface CSSUnitValue extends CSSNumericValue {
 
 declare var CSSUnitValue: {
     prototype: CSSUnitValue;
-    new(value: number, unit: string): CSSUnitValue;
+    new (value: number, unit: string): CSSUnitValue;
 };
 
 interface CSSMathValue extends CSSNumericValue {
@@ -89,7 +96,7 @@ interface CSSMathValue extends CSSNumericValue {
 
 declare var CSSMathValue: {
     prototype: CSSMathValue;
-    new(): CSSMathValue;
+    new (): CSSMathValue;
 };
 
 interface CSSMathSum extends CSSMathValue {
@@ -98,7 +105,7 @@ interface CSSMathSum extends CSSMathValue {
 
 declare var CSSMathSum: {
     prototype: CSSMathSum;
-    new(...args: CSSNumberish[]): CSSMathSum;
+    new (...args: CSSNumberish[]): CSSMathSum;
 };
 
 interface CSSMathProduct extends CSSMathValue {
@@ -107,7 +114,7 @@ interface CSSMathProduct extends CSSMathValue {
 
 declare var CSSMathProduct: {
     prototype: CSSMathProduct;
-    new(...args: CSSNumberish[]): CSSMathProduct;
+    new (...args: CSSNumberish[]): CSSMathProduct;
 };
 
 interface CSSMathNegate extends CSSMathValue {
@@ -116,7 +123,7 @@ interface CSSMathNegate extends CSSMathValue {
 
 declare var CSSMathNegate: {
     prototype: CSSMathNegate;
-    new(arg: CSSNumberish): CSSMathNegate;
+    new (arg: CSSNumberish): CSSMathNegate;
 };
 
 interface CSSMathInvert extends CSSMathValue {
@@ -125,7 +132,7 @@ interface CSSMathInvert extends CSSMathValue {
 
 declare var CSSMathInvert: {
     prototype: CSSMathInvert;
-    new(arg: CSSNumberish): CSSMathInvert;
+    new (arg: CSSNumberish): CSSMathInvert;
 };
 
 interface CSSMathMin extends CSSMathValue {
@@ -134,7 +141,7 @@ interface CSSMathMin extends CSSMathValue {
 
 declare var CSSMathMin: {
     prototype: CSSMathMin;
-    new(...args: CSSNumberish[]): CSSMathMin;
+    new (...args: CSSNumberish[]): CSSMathMin;
 };
 
 interface CSSMathMax extends CSSMathValue {
@@ -143,7 +150,7 @@ interface CSSMathMax extends CSSMathValue {
 
 declare var CSSMathMax: {
     prototype: CSSMathMax;
-    new(...args: CSSNumberish[]): CSSMathMax;
+    new (...args: CSSNumberish[]): CSSMathMax;
 };
 
 interface CSSMathClamp extends CSSMathValue {
@@ -154,17 +161,28 @@ interface CSSMathClamp extends CSSMathValue {
 
 declare var CSSMathClamp: {
     prototype: CSSMathClamp;
-    new(lower: CSSNumberish, value: CSSNumberish, upper: CSSNumberish): CSSMathClamp;
+    new (
+        lower: CSSNumberish,
+        value: CSSNumberish,
+        upper: CSSNumberish,
+    ): CSSMathClamp;
 };
 
 interface CSSNumericArray {
     readonly length: number;
-    forEach(callbackfn: (value: CSSNumericValue, key: number, parent: CSSNumericArray) => void, thisArg?: any): void;
+    forEach(
+        callbackfn: (
+            value: CSSNumericValue,
+            key: number,
+            parent: CSSNumericArray,
+        ) => void,
+        thisArg?: any,
+    ): void;
 }
 
 declare var CSSNumericArray: {
     prototype: CSSNumericArray;
-    new(): CSSNumericArray;
+    new (): CSSNumericArray;
 };
 
 interface CSSTransformValue extends CSSStyleValue {
@@ -172,14 +190,18 @@ interface CSSTransformValue extends CSSStyleValue {
     readonly length: number;
     toMatrix(): DOMMatrix;
     forEach(
-        callbackfn: (value: CSSTransformComponent, key: number, parent: CSSTransformValue) => void,
+        callbackfn: (
+            value: CSSTransformComponent,
+            key: number,
+            parent: CSSTransformValue,
+        ) => void,
         thisArg?: any,
     ): void;
 }
 
 declare var CSSTransformValue: {
     prototype: CSSTransformValue;
-    new(transforms: CSSTransformComponent[]): CSSTransformValue;
+    new (transforms: CSSTransformComponent[]): CSSTransformValue;
 };
 
 interface CSSTransformComponent {
@@ -190,7 +212,7 @@ interface CSSTransformComponent {
 
 declare var CSSTransformComponent: {
     prototype: CSSTransformComponent;
-    new(): CSSTransformComponent;
+    new (): CSSTransformComponent;
 };
 
 interface CSSTranslate extends CSSTransformComponent {
@@ -201,7 +223,11 @@ interface CSSTranslate extends CSSTransformComponent {
 
 declare var CSSTranslate: {
     prototype: CSSTranslate;
-    new(x: CSSNumericValue, y: CSSNumericValue, z?: CSSNumericValue): CSSTranslate;
+    new (
+        x: CSSNumericValue,
+        y: CSSNumericValue,
+        z?: CSSNumericValue,
+    ): CSSTranslate;
 };
 
 interface CSSRotate extends CSSTransformComponent {
@@ -213,8 +239,13 @@ interface CSSRotate extends CSSTransformComponent {
 
 declare var CSSRotate: {
     prototype: CSSRotate;
-    new(angle: CSSNumericValue): CSSRotate;
-    new(x: CSSNumberish, y: CSSNumberish, z: CSSNumberish, angle: CSSNumericValue): CSSRotate;
+    new (angle: CSSNumericValue): CSSRotate;
+    new (
+        x: CSSNumberish,
+        y: CSSNumberish,
+        z: CSSNumberish,
+        angle: CSSNumericValue,
+    ): CSSRotate;
 };
 
 interface CSSScale extends CSSTransformComponent {
@@ -225,7 +256,7 @@ interface CSSScale extends CSSTransformComponent {
 
 declare var CSSScale: {
     prototype: CSSScale;
-    new(x: CSSNumberish, y: CSSNumberish, z?: CSSNumberish): CSSScale;
+    new (x: CSSNumberish, y: CSSNumberish, z?: CSSNumberish): CSSScale;
 };
 
 interface CSSSkew extends CSSTransformComponent {
@@ -235,7 +266,7 @@ interface CSSSkew extends CSSTransformComponent {
 
 declare var CSSSkew: {
     prototype: CSSSkew;
-    new(ax: CSSNumericValue, ay: CSSNumericValue): CSSSkew;
+    new (ax: CSSNumericValue, ay: CSSNumericValue): CSSSkew;
 };
 
 interface CSSSkewX extends CSSTransformComponent {
@@ -244,7 +275,7 @@ interface CSSSkewX extends CSSTransformComponent {
 
 declare var CSSSkewX: {
     prototype: CSSSkewX;
-    new(ax: CSSNumericValue): CSSSkewX;
+    new (ax: CSSNumericValue): CSSSkewX;
 };
 
 interface CSSSkewY extends CSSTransformComponent {
@@ -253,7 +284,7 @@ interface CSSSkewY extends CSSTransformComponent {
 
 declare var CSSSkewY: {
     prototype: CSSSkewY;
-    new(ay: CSSNumericValue): CSSSkewY;
+    new (ay: CSSNumericValue): CSSSkewY;
 };
 
 /* Note that skew(x,y) is *not* the same as skewX(x) skewY(y),
@@ -265,7 +296,7 @@ interface CSSPerspective extends CSSTransformComponent {
 
 declare var CSSPerspective: {
     prototype: CSSPerspective;
-    new(length: CSSPerspectiveValue): CSSPerspective;
+    new (length: CSSPerspectiveValue): CSSPerspective;
 };
 
 interface CSSMatrixComponent extends CSSTransformComponent {
@@ -274,19 +305,21 @@ interface CSSMatrixComponent extends CSSTransformComponent {
 
 declare var CSSMatrixComponent: {
     prototype: CSSMatrixComponent;
-    new(matrix: DOMMatrixReadOnly, options?: CSSMatrixComponentOptions): CSSMatrixComponent;
+    new (
+        matrix: DOMMatrixReadOnly,
+        options?: CSSMatrixComponentOptions,
+    ): CSSMatrixComponent;
 };
 
 interface CSSMatrixComponentOptions {
     is2D?: boolean;
 }
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-interface CSSImageValue extends CSSStyleValue {
-}
+interface CSSImageValue extends CSSStyleValue {}
 
 declare var CSSImageValue: {
     prototype: CSSImageValue;
-    new(): CSSImageValue;
+    new (): CSSImageValue;
 };
 
 interface StylePropertyMapReadOnly {
@@ -295,14 +328,18 @@ interface StylePropertyMapReadOnly {
     getAll(property: string): CSSStyleValue[];
     has(property: string): boolean;
     forEach(
-        callbackfn: (value: CSSStyleValue[], key: string, parent: StylePropertyMapReadOnly) => void,
+        callbackfn: (
+            value: CSSStyleValue[],
+            key: string,
+            parent: StylePropertyMapReadOnly,
+        ) => void,
         thisArg?: any,
     ): void;
 }
 
 declare var StylePropertyMapReadOnly: {
     prototype: StylePropertyMapReadOnly;
-    new(): StylePropertyMapReadOnly;
+    new (): StylePropertyMapReadOnly;
 };
 
 interface StylePropertyMap extends StylePropertyMapReadOnly {
@@ -314,7 +351,7 @@ interface StylePropertyMap extends StylePropertyMapReadOnly {
 
 declare var StylePropertyMap: {
     prototype: StylePropertyMap;
-    new(): StylePropertyMap;
+    new (): StylePropertyMap;
 };
 
 interface Element {

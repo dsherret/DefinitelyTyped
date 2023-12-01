@@ -10,7 +10,10 @@ json2mq({ minWidth: 100, maxWidth: 200 });
 json2mq({ minWidth: 100, maxWidth: "20em" });
 // -> '(min-width: 100px) and (max-width: 20em)'
 
-json2mq([{ screen: true, minWidth: 100 }, { handheld: true, orientation: "landscape" }]);
+json2mq([
+    { screen: true, minWidth: 100 },
+    { handheld: true, orientation: "landscape" },
+]);
 // -> 'screen and (min-width: 100px), handheld and (orientation: landscape)'
 
 json2mq({ all: true, monochrome: true });

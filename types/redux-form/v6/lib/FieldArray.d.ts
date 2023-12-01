@@ -51,7 +51,8 @@ interface BaseFieldArrayProps {
 /**
  * Declare FieldArray as this interface to specify the generics.
  */
-export interface GenericFieldArray<T, FieldCustomProps> extends Component<BaseFieldArrayProps & FieldCustomProps> {
+export interface GenericFieldArray<T, FieldCustomProps>
+    extends Component<BaseFieldArrayProps & FieldCustomProps> {
     /**
      * The name prop that you passed in.
      */
@@ -67,13 +68,18 @@ export interface GenericFieldArray<T, FieldCustomProps> extends Component<BaseFi
      * provide a withRef prop, and your component must not be a stateless function
      * component.
      */
-    getRenderedComponent(): Component<WrappedFieldArrayProps<T> & FieldCustomProps>;
+    getRenderedComponent(): Component<
+        WrappedFieldArrayProps<T> & FieldCustomProps
+    >;
 }
 
 /**
  * The FieldArray Instance API.
  */
-export class FieldArray extends Component<any> implements GenericFieldArray<any, any> {
+export class FieldArray
+    extends Component<any>
+    implements GenericFieldArray<any, any>
+{
     /**
      * The name prop that you passed in.
      */
@@ -108,7 +114,9 @@ interface FieldsProps<T> {
     /**
      * A method to iterate over each value of the array.
      */
-    forEach(callback: (name: string, index: number, fields: FieldsProps<T>) => void): void;
+    forEach(
+        callback: (name: string, index: number, fields: FieldsProps<T>) => void,
+    ): void;
 
     /**
      * A method to get a single value from the array value.
@@ -134,7 +142,9 @@ interface FieldsProps<T> {
      * A method to iterate over each value of the array. Returns an array of the
      * results of each call to the callback.
      */
-    map(callback: (name: string, index: number, fields: FieldsProps<T>) => any): any;
+    map(
+        callback: (name: string, index: number, fields: FieldsProps<T>) => any,
+    ): any;
 
     /**
      * A method to move value in array on on different index in the field array

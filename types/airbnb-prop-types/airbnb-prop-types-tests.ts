@@ -17,7 +17,8 @@ AirbnbPropTypes.and([PropTypes.number]);
 // $ExpectType Requireable<number | null | undefined>
 AirbnbPropTypes.and([PropTypes.number, AirbnbPropTypes.nonNegativeInteger]);
 // $ExpectType Validator<number>
-AirbnbPropTypes.and([PropTypes.number, AirbnbPropTypes.integer()], "foo").isRequired;
+AirbnbPropTypes.and([PropTypes.number, AirbnbPropTypes.integer()], "foo")
+    .isRequired;
 
 // $ExpectType Requireable<number>
 AirbnbPropTypes.between({ lt: 1 });
@@ -143,8 +144,15 @@ const props: PropTypes.Requireable<object> = AirbnbPropTypes.object();
 // $ExpectType Requireable<{ foo: string; }>
 AirbnbPropTypes.object<{ foo: string }>();
 
-AirbnbPropTypes.or([PropTypes.bool.isRequired, AirbnbPropTypes.explicitNull().isRequired]);
-AirbnbPropTypes.or([PropTypes.bool, PropTypes.number, PropTypes.arrayOf(PropTypes.string)]);
+AirbnbPropTypes.or([
+    PropTypes.bool.isRequired,
+    AirbnbPropTypes.explicitNull().isRequired,
+]);
+AirbnbPropTypes.or([
+    PropTypes.bool,
+    PropTypes.number,
+    PropTypes.arrayOf(PropTypes.string),
+]);
 AirbnbPropTypes.or([PropTypes.number, PropTypes.string, PropTypes.bool], "foo");
 
 // $ExpectType Requireable<number>
@@ -162,15 +170,26 @@ AirbnbPropTypes.requiredBy("bar", PropTypes.number, 42).isRequired;
 
 validateRequireableTop(AirbnbPropTypes.restrictedProp());
 validateRequireableTop(AirbnbPropTypes.restrictedProp(() => "Error"));
-validateRequireableTop(AirbnbPropTypes.restrictedProp(() => new Error("Error")));
+validateRequireableTop(
+    AirbnbPropTypes.restrictedProp(() => new Error("Error")),
+);
 
-validateRequireableTop(AirbnbPropTypes.sequenceOf({ validator: PropTypes.number }));
-validateRequireableTop(AirbnbPropTypes.sequenceOf({ validator: PropTypes.number }, { validator: PropTypes.string }));
-validateRequireableTop(AirbnbPropTypes.sequenceOf(
-    { validator: PropTypes.number, min: 0, max: 10 },
-    { validator: PropTypes.string },
-    { validator: PropTypes.bool },
-));
+validateRequireableTop(
+    AirbnbPropTypes.sequenceOf({ validator: PropTypes.number }),
+);
+validateRequireableTop(
+    AirbnbPropTypes.sequenceOf(
+        { validator: PropTypes.number },
+        { validator: PropTypes.string },
+    ),
+);
+validateRequireableTop(
+    AirbnbPropTypes.sequenceOf(
+        { validator: PropTypes.number, min: 0, max: 10 },
+        { validator: PropTypes.string },
+        { validator: PropTypes.bool },
+    ),
+);
 
 interface ShapeShape {
     foo: string;

@@ -9,6 +9,8 @@ declare namespace hostValidation {
     }
 }
 
-declare function hostValidation(opts: hostValidation.config): (req: Request, res: Response, next: NextFunction) => void;
+declare function hostValidation(
+    opts: hostValidation.config,
+): (req: Request, res: Response, next: NextFunction) => void;
 
 export = hostValidation;

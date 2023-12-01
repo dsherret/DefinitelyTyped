@@ -1,4 +1,5 @@
-const collectionToArray = <T>(col: any) => { // eslint-disable-line @definitelytyped/no-unnecessary-generics
+const collectionToArray = <T>(col: any) => {
+    // eslint-disable-line @definitelytyped/no-unnecessary-generics
     const results: T[] = [];
     const enumerator = new Enumerator<T>(col);
     enumerator.moveFirst();
@@ -14,9 +15,11 @@ const collectionToArray = <T>(col: any) => { // eslint-disable-line @definitelyt
     const enumUsers = (label: string) => {
         const volume = new ActiveXObject("Microsoft.DiskQuota");
         volume.Initialize(label, true);
-        collectionToArray<DiskQuotaTypeLibrary.DIDiskQuotaUser>(volume).forEach(x => {
-            // Use the QuotaUser object to retrieve or set one or more of the user's disk quota properties
-        });
+        collectionToArray<DiskQuotaTypeLibrary.DIDiskQuotaUser>(volume).forEach(
+            (x) => {
+                // Use the QuotaUser object to retrieve or set one or more of the user's disk quota properties
+            },
+        );
     };
 })();
 
@@ -24,7 +27,7 @@ const collectionToArray = <T>(col: any) => { // eslint-disable-line @definitelyt
 (() => {
     const volume = new ActiveXObject("Microsoft.DiskQuota");
     volume.Initialize("MYDISK", true);
-    ActiveXObject.on(volume, "OnUserNameChanged", ["pUser"], p => {
+    ActiveXObject.on(volume, "OnUserNameChanged", ["pUser"], (p) => {
         // Code to handle the event.
     });
 })();

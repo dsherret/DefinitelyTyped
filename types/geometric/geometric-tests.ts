@@ -1,5 +1,11 @@
 import geometric = require("geometric");
-import { Line, LineInterpolator, Point, Polygon, PolygonInterpolator } from "geometric";
+import {
+    Line,
+    LineInterpolator,
+    Point,
+    Polygon,
+    PolygonInterpolator,
+} from "geometric";
 
 const polygon: Polygon = [
     [0, 0],

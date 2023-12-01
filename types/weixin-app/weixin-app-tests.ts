@@ -1,13 +1,12 @@
 getCurrentPages();
 
-interface MyOwnEvent extends
-    wx.CustomEvent<
+interface MyOwnEvent
+    extends wx.CustomEvent<
         "my-own",
         {
             hello: string;
         }
-    >
-{}
+    > {}
 
 const parentBehavior = Behavior({
     behaviors: ["wx://form-field"],
@@ -27,37 +26,40 @@ const parentBehavior = Behavior({
 });
 
 function createBehaviorWithUnionTypes(n: number) {
-    const properties = n % 2 < 1
-        ? {
-            unionPropA: {
-                type: String,
-            },
-        }
-        : {
-            unionPropB: {
-                type: Number,
-            },
-        };
+    const properties =
+        n % 2 < 1
+            ? {
+                  unionPropA: {
+                      type: String,
+                  },
+              }
+            : {
+                  unionPropB: {
+                      type: Number,
+                  },
+              };
 
-    const data = n % 4 < 2
-        ? {
-            unionDataA: "a",
-        }
-        : {
-            unionDataB: 1,
-        };
+    const data =
+        n % 4 < 2
+            ? {
+                  unionDataA: "a",
+              }
+            : {
+                  unionDataB: 1,
+              };
 
-    const methods = n % 8 < 4
-        ? {
-            unionMethodA(a: number) {
-                return n + 1;
-            },
-        }
-        : {
-            unionMethodB(a: string) {
-                return { value: a };
-            },
-        };
+    const methods =
+        n % 8 < 4
+            ? {
+                  unionMethodA(a: number) {
+                      return n + 1;
+                  },
+              }
+            : {
+                  unionMethodB(a: string) {
+                      return { value: a };
+                  },
+              };
 
     return Behavior({
         properties,
@@ -129,7 +131,7 @@ Component({
             wx.getLogManager().warn("123");
             wx.getLogManager().debug("123");
 
-            this.createIntersectionObserver({}).observe("123", res => {
+            this.createIntersectionObserver({}).observe("123", (res) => {
                 res.id;
             });
         },
@@ -265,7 +267,7 @@ Page({
     onReachBottom: () => {
         // Do something when page reach bottom.
     },
-    onShareAppMessage: res => {
+    onShareAppMessage: (res) => {
         if (res && res.from === "menu") {
             //
         }
@@ -279,7 +281,7 @@ Page({
     onPageScroll() {
         wx.createIntersectionObserver(this, {})
             .relativeToViewport()
-            .observe("div", res => {
+            .observe("div", (res) => {
                 console.log(res.id);
                 console.log(res.dataset);
                 console.log(res.intersectionRatio);
@@ -342,7 +344,7 @@ Page({
     getScrollOffset: () => {
         wx.createSelectorQuery()
             .selectViewport()
-            .scrollOffset(res => {
+            .scrollOffset((res) => {
                 res.id; // 节点的ID
                 res.dataset; // 节点的dataset
                 res.scrollLeft; // 节点的水平滚动位置
@@ -364,7 +366,7 @@ Page({
                     scrollOffset: true,
                     properties: ["scrollX", "scrollY"],
                 },
-                res => {
+                (res) => {
                     // res.
                     res.dataset; // 节点的dataset
                     res.width; // 节点的宽度
@@ -399,7 +401,7 @@ Page({
         wx.createSelectorQuery()
             .selectAll(".a-class")
             .boundingClientRect((rects: wx.NodesRefRect[]) => {
-                rects.forEach(rect => {
+                rects.forEach((rect) => {
                     rect.id; // 节点的ID
                     rect.dataset; // 节点的dataset
                     rect.left; // 节点的左边界坐标
@@ -425,11 +427,11 @@ recorderManager.onResume(() => {
 recorderManager.onPause(() => {
     console.log("recorder pause");
 });
-recorderManager.onStop(res => {
+recorderManager.onStop((res) => {
     console.log("recorder stop", res);
     const { tempFilePath } = res;
 });
-recorderManager.onFrameRecorded(res => {
+recorderManager.onFrameRecorded((res) => {
     const { frameBuffer } = res;
     console.log("frameBuffer.byteLength", frameBuffer.byteLength);
 });
@@ -445,7 +447,7 @@ const options = {
 
 recorderManager.start(options);
 
-wx.onGetWifiList(res => {
+wx.onGetWifiList((res) => {
     if (res.wifiList.length) {
         wx.setWifiList({
             wifiList: [
@@ -464,7 +466,7 @@ wx.onGetWifiList(res => {
 });
 wx.getWifiList();
 
-wx.onWifiConnected(wifi => {
+wx.onWifiConnected((wifi) => {
     // wifi.BSSID
 });
 
@@ -487,13 +489,13 @@ const uploadTask = wx.uploadFile({
     formData: {
         user: "test",
     },
-    success: res => {
+    success: (res) => {
         const data = res.data;
         // do something
     },
 });
 
-uploadTask.onProgressUpdate(res => {
+uploadTask.onProgressUpdate((res) => {
     console.log("上传进度", res.progress);
     console.log("已经上传的数据长度", res.totalBytesSent);
     console.log("预期需要上传的数据总长度", res.totalBytesExpectedToSend);
@@ -503,14 +505,14 @@ uploadTask.abort(); // 取消上传任务
 
 const downloadTask = wx.downloadFile({
     url: "http://example.com/audio/123", // 仅为示例，并非真实的资源
-    success: res => {
+    success: (res) => {
         wx.playVoice({
             filePath: res.tempFilePath,
         });
     },
 });
 
-downloadTask.onProgressUpdate(res => {
+downloadTask.onProgressUpdate((res) => {
     console.log("下载进度", res.progress);
     console.log("已经下载的数据长度", res.totalBytesWritten);
     console.log("预期需要下载的数据总长度", res.totalBytesExpectedToWrite);
@@ -601,7 +603,7 @@ Component({
 
 wx.loadFontFace({
     family: "Bitstream Vera Serif Bold",
-    source: "url(\"https://sungd.github.io/Pacifico.ttf\")",
+    source: 'url("https://sungd.github.io/Pacifico.ttf")',
     success(res) {
         console.log(res.status);
     },

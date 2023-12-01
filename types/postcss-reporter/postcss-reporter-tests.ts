@@ -3,7 +3,7 @@
 import reporter = require("postcss-reporter");
 import formatter = require("postcss-reporter/lib/formatter");
 reporter({
-    formatter: input => {
+    formatter: (input) => {
         return `${input.source} produced ${input.messages.length} messages`;
     },
 });

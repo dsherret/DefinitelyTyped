@@ -3,8 +3,13 @@
 declare module "gulp-angular-templatecache" {
     function templatecache(): NodeJS.ReadWriteStream;
     function templatecache(filename: string): NodeJS.ReadWriteStream;
-    function templatecache(options: templatecache.Options): NodeJS.ReadWriteStream;
-    function templatecache(filename: string, options: templatecache.Options): NodeJS.ReadWriteStream;
+    function templatecache(
+        options: templatecache.Options,
+    ): NodeJS.ReadWriteStream;
+    function templatecache(
+        filename: string,
+        options: templatecache.Options,
+    ): NodeJS.ReadWriteStream;
 
     namespace templatecache {
         interface Options {

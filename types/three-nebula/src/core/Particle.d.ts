@@ -1,4 +1,8 @@
-import { DEFAULT_PARENT, DEFAULT_USE_ALPHA, DEFAULT_USE_COLOR } from "./constants";
+import {
+    DEFAULT_PARENT,
+    DEFAULT_USE_ALPHA,
+    DEFAULT_USE_COLOR,
+} from "./constants";
 
 import Behaviour from "../behaviour/Behaviour";
 import { EasingFunction } from "../ease";

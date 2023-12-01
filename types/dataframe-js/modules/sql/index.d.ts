@@ -32,7 +32,11 @@ declare class SQL {
      * @example
      * DataFrame.renameTable('tmp1', 'notTmp1');
      */
-    static renameTable(tableName: string, replacement: string, overwrite?: boolean): void;
+    static renameTable(
+        tableName: string,
+        replacement: string,
+        overwrite?: boolean,
+    ): void;
     /**
      * List all registered tables.
      * @returns A list of the registered tables.
@@ -48,7 +52,11 @@ declare class SQL {
      * @example
      * DataFrame.registerTable('tmp', df);
      */
-    static registerTable(df: DataFrame, tableName: string, overwrite?: boolean): void;
+    static registerTable(
+        df: DataFrame,
+        tableName: string,
+        overwrite?: boolean,
+    ): void;
     /**
      * Start the SQL module.
      * @param df An instance of DataFrame.

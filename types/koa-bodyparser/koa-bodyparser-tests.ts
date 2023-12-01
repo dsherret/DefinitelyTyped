@@ -6,7 +6,7 @@ const app = new Koa();
 app.use(bodyParser({ strict: false }));
 app.use(bodyParser({ xmlLimit: "2mb" }));
 
-app.use(ctx => {
+app.use((ctx) => {
     console.log(ctx.request.body);
     console.log(ctx.request.rawBody);
 });

@@ -17,7 +17,7 @@ export interface HierarchyLink<Datum> {
 }
 
 export interface HierarchyNode<Datum> {
-    new(data: Datum): this;
+    new (data: Datum): this;
 
     /**
      * The associated data, as specified to the constructor.
@@ -127,7 +127,10 @@ export interface HierarchyNode<Datum> {
      * @param func The specified function is passed the current descendant, the zero-based traversal index, and this node.
      * @param that If that is specified, it is the this context of the callback.
      */
-    each<T = undefined>(func: (this: T, node: this, index: number, thisNode: this) => void, that?: T): this;
+    each<T = undefined>(
+        func: (this: T, node: this, index: number, thisNode: this) => void,
+        that?: T,
+    ): this;
 
     /**
      * Invokes the specified function for node and each descendant in post-order traversal,
@@ -136,7 +139,10 @@ export interface HierarchyNode<Datum> {
      * @param func The specified function is passed the current descendant, the zero-based traversal index, and this node.
      * @param that If that is specified, it is the this context of the callback.
      */
-    eachAfter<T = undefined>(func: (this: T, node: this, index: number, thisNode: this) => void, that?: T): this;
+    eachAfter<T = undefined>(
+        func: (this: T, node: this, index: number, thisNode: this) => void,
+        that?: T,
+    ): this;
 
     /**
      * Invokes the specified function for node and each descendant in pre-order traversal,
@@ -145,7 +151,10 @@ export interface HierarchyNode<Datum> {
      * @param func The specified function is passed the current descendant, the zero-based traversal index, and this node.
      * @param that If that is specified, it is the this context of the callback.
      */
-    eachBefore<T = undefined>(func: (this: T, node: this, index: number, thisNode: this) => void, that?: T): this;
+    eachBefore<T = undefined>(
+        func: (this: T, node: this, index: number, thisNode: this) => void,
+        that?: T,
+    ): this;
 
     /**
      * Return a deep copy of the subtree starting at this node. The returned deep copy shares the same data, however.
@@ -186,7 +195,11 @@ export interface StratifyOperator<Datum> {
     /**
      * Returns the current id accessor, which defaults to: `(d) => d.id`.
      */
-    id(): (d: Datum, i: number, data: Datum[]) => string | null | "" | undefined;
+    id(): (
+        d: Datum,
+        i: number,
+        data: Datum[],
+    ) => string | null | "" | undefined;
     /**
      * Sets the id accessor to the given function.
      * The id accessor is invoked for each element in the input data passed to the stratify operator.
@@ -195,12 +208,22 @@ export interface StratifyOperator<Datum> {
      *
      * @param id The id accessor.
      */
-    id(id: (d: Datum, i: number, data: Datum[]) => string | null | "" | undefined): this;
+    id(
+        id: (
+            d: Datum,
+            i: number,
+            data: Datum[],
+        ) => string | null | "" | undefined,
+    ): this;
 
     /**
      * Returns the current parent id accessor, which defaults to: `(d) => d.parentId`.
      */
-    parentId(): (d: Datum, i: number, data: Datum[]) => string | null | "" | undefined;
+    parentId(): (
+        d: Datum,
+        i: number,
+        data: Datum[],
+    ) => string | null | "" | undefined;
     /**
      * Sets the parent id accessor to the given function.
      * The parent id accessor is invoked for each element in the input data passed to the stratify operator.
@@ -210,7 +233,13 @@ export interface StratifyOperator<Datum> {
      *
      * @param parentId The parent id accessor.
      */
-    parentId(parentId: (d: Datum, i: number, data: Datum[]) => string | null | "" | undefined): this;
+    parentId(
+        parentId: (
+            d: Datum,
+            i: number,
+            data: Datum[],
+        ) => string | null | "" | undefined,
+    ): this;
 
     /**
      * Returns the current path accessor, which defaults to undefined.
@@ -225,7 +254,12 @@ export interface StratifyOperator<Datum> {
      *
      * @param path The path accessor.
      */
-    path(path: ((d: Datum, i: number, data: Datum[]) => string) | null | undefined): this;
+    path(
+        path:
+            | ((d: Datum, i: number, data: Datum[]) => string)
+            | null
+            | undefined,
+    ): this;
 }
 
 /**
@@ -305,7 +339,10 @@ export interface ClusterLayout<Datum> {
     /**
      * Returns the current separation accessor, which defaults to: `(a, b) => a.parent == b.parent ? 1 : 2`.
      */
-    separation(): (a: HierarchyPointNode<Datum>, b: HierarchyPointNode<Datum>) => number;
+    separation(): (
+        a: HierarchyPointNode<Datum>,
+        b: HierarchyPointNode<Datum>,
+    ) => number;
     /**
      * Sets the separation accessor to the specified function and returns this cluster layout.
      * The separation accessor is used to separate neighboring leaves.
@@ -313,7 +350,12 @@ export interface ClusterLayout<Datum> {
      * @param separation The separation function is passed two leaves a and b, and must return the desired separation.
      * The nodes are typically siblings, though the nodes may be more distantly related if the layout decides to place such nodes adjacent.
      */
-    separation(separation: (a: HierarchyPointNode<Datum>, b: HierarchyPointNode<Datum>) => number): this;
+    separation(
+        separation: (
+            a: HierarchyPointNode<Datum>,
+            b: HierarchyPointNode<Datum>,
+        ) => number,
+    ): this;
 }
 
 /**
@@ -363,7 +405,10 @@ export interface TreeLayout<Datum> {
     /**
      * Returns the current separation accessor, which defaults to: `(a, b) => a.parent == b.parent ? 1 : 2`.
      */
-    separation(): (a: HierarchyPointNode<Datum>, b: HierarchyPointNode<Datum>) => number;
+    separation(): (
+        a: HierarchyPointNode<Datum>,
+        b: HierarchyPointNode<Datum>,
+    ) => number;
     /**
      * Sets the separation accessor to the specified function and returns this tree layout.
      * The separation accessor is used to separate neighboring nodes.
@@ -371,7 +416,12 @@ export interface TreeLayout<Datum> {
      * @param separation The separation function is passed two nodes a and b, and must return the desired separation.
      * The nodes are typically siblings, though the nodes may be more distantly related if the layout decides to place such nodes adjacent.
      */
-    separation(separation: (a: HierarchyPointNode<Datum>, b: HierarchyPointNode<Datum>) => number): this;
+    separation(
+        separation: (
+            a: HierarchyPointNode<Datum>,
+            b: HierarchyPointNode<Datum>,
+        ) => number,
+    ): this;
 }
 
 /**
@@ -437,13 +487,27 @@ export interface TreemapLayout<Datum> {
     /**
      * Returns the current tiling method, which defaults to `d3.treemapSquarify` with the golden ratio.
      */
-    tile(): (node: HierarchyRectangularNode<Datum>, x0: number, y0: number, x1: number, y1: number) => void;
+    tile(): (
+        node: HierarchyRectangularNode<Datum>,
+        x0: number,
+        y0: number,
+        x1: number,
+        y1: number,
+    ) => void;
     /**
      * Sets the tiling method to the specified function and returns this treemap layout.
      *
      * @param tile The specified tiling function.
      */
-    tile(tile: (node: HierarchyRectangularNode<Datum>, x0: number, y0: number, x1: number, y1: number) => void): this;
+    tile(
+        tile: (
+            node: HierarchyRectangularNode<Datum>,
+            x0: number,
+            y0: number,
+            x1: number,
+            y1: number,
+        ) => void,
+    ): this;
 
     /**
      * Returns the current size, which defaults to [1, 1].
@@ -502,7 +566,9 @@ export interface TreemapLayout<Datum> {
      *
      * @param padding The specified inner padding function.
      */
-    paddingInner(padding: (node: HierarchyRectangularNode<Datum>) => number): this;
+    paddingInner(
+        padding: (node: HierarchyRectangularNode<Datum>) => number,
+    ): this;
 
     /**
      * Returns the current top padding function.
@@ -519,7 +585,9 @@ export interface TreemapLayout<Datum> {
      *
      * @param padding The specified padding outer function.
      */
-    paddingOuter(padding: (node: HierarchyRectangularNode<Datum>) => number): this;
+    paddingOuter(
+        padding: (node: HierarchyRectangularNode<Datum>) => number,
+    ): this;
 
     /**
      * Returns the current top padding function, which defaults to the constant zero.
@@ -539,7 +607,9 @@ export interface TreemapLayout<Datum> {
      *
      * @param padding The specified top padding function.
      */
-    paddingTop(padding: (node: HierarchyRectangularNode<Datum>) => number): this;
+    paddingTop(
+        padding: (node: HierarchyRectangularNode<Datum>) => number,
+    ): this;
 
     /**
      * Returns the current right padding function, which defaults to the constant zero.
@@ -559,7 +629,9 @@ export interface TreemapLayout<Datum> {
      *
      * @param padding The specified right padding function.
      */
-    paddingRight(padding: (node: HierarchyRectangularNode<Datum>) => number): this;
+    paddingRight(
+        padding: (node: HierarchyRectangularNode<Datum>) => number,
+    ): this;
 
     /**
      * Returns the current bottom padding function, which defaults to the constant zero.
@@ -579,7 +651,9 @@ export interface TreemapLayout<Datum> {
      *
      * @param padding The specified bottom padding function.
      */
-    paddingBottom(padding: (node: HierarchyRectangularNode<Datum>) => number): this;
+    paddingBottom(
+        padding: (node: HierarchyRectangularNode<Datum>) => number,
+    ): this;
 
     /**
      * Returns the current left padding function, which defaults to the constant zero.
@@ -599,7 +673,9 @@ export interface TreemapLayout<Datum> {
      *
      * @param padding The specified left padding function.
      */
-    paddingLeft(padding: (node: HierarchyRectangularNode<Datum>) => number): this;
+    paddingLeft(
+        padding: (node: HierarchyRectangularNode<Datum>) => number,
+    ): this;
 }
 
 /**
@@ -628,7 +704,13 @@ export function treemapBinary(
  * If the sum of the children’s values is less than the specified node’s value (i.e., if the specified node has a non-zero internal value),
  * the remaining empty space will be positioned on the right edge (x1) of the given rectangle.
  */
-export function treemapDice(node: HierarchyRectangularNode<any>, x0: number, y0: number, x1: number, y1: number): void;
+export function treemapDice(
+    node: HierarchyRectangularNode<any>,
+    x0: number,
+    y0: number,
+    x1: number,
+    y1: number,
+): void;
 
 /**
  * Divides the rectangular area specified by x0, y0, x1, y1 vertically according the value of each of the specified node’s children.
@@ -636,7 +718,13 @@ export function treemapDice(node: HierarchyRectangularNode<any>, x0: number, y0:
  * If the sum of the children’s values is less than the specified node’s value (i.e., if the specified node has a non-zero internal value),
  * the remaining empty space will be positioned on the bottom edge (y1) of the given rectangle.
  */
-export function treemapSlice(node: HierarchyRectangularNode<any>, x0: number, y0: number, x1: number, y1: number): void;
+export function treemapSlice(
+    node: HierarchyRectangularNode<any>,
+    x0: number,
+    y0: number,
+    x1: number,
+    y1: number,
+): void;
 
 /**
  * If the specified node has odd depth, delegates to treemapSlice; otherwise delegates to treemapDice.
@@ -651,7 +739,13 @@ export function treemapSliceDice(
 
 // TODO: Test Factory code
 export interface RatioSquarifyTilingFactory {
-    (node: HierarchyRectangularNode<any>, x0: number, y0: number, x1: number, y1: number): void;
+    (
+        node: HierarchyRectangularNode<any>,
+        x0: number,
+        y0: number,
+        x1: number,
+        y1: number,
+    ): void;
 
     /**
      * Specifies the desired aspect ratio of the generated rectangles.
@@ -793,7 +887,9 @@ export interface PackLayout<Datum> {
      *
      * @param radius The specified radius accessor.
      */
-    radius(radius: null | ((node: HierarchyCircularNode<Datum>) => number)): this;
+    radius(
+        radius: null | ((node: HierarchyCircularNode<Datum>) => number),
+    ): this;
 
     /**
      * Returns the current size, which defaults to [1, 1].
@@ -891,7 +987,9 @@ export interface PackCircle {
  *
  * @param circles The specified array of circles to pack.
  */
-export function packSiblings<Datum extends PackRadius>(circles: Datum[]): Array<Datum & PackCircle>;
+export function packSiblings<Datum extends PackRadius>(
+    circles: Datum[],
+): Array<Datum & PackCircle>;
 
 /**
  * Computes the smallest circle that encloses the specified array of circles, each of which must have
@@ -901,4 +999,6 @@ export function packSiblings<Datum extends PackRadius>(circles: Datum[]): Array<
  * @param circles The specified array of circles to pack.
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function packEnclose<Datum extends PackCircle>(circles: Datum[]): PackCircle;
+export function packEnclose<Datum extends PackCircle>(
+    circles: Datum[],
+): PackCircle;

@@ -1,8 +1,17 @@
 import { Handler } from "../handler";
 
-export type CodePipelineCloudWatchPipelineHandler = Handler<CodePipelineCloudWatchPipelineEvent, void>;
+export type CodePipelineCloudWatchPipelineHandler = Handler<
+    CodePipelineCloudWatchPipelineEvent,
+    void
+>;
 
-export type CodePipelineState = "STARTED" | "SUCCEEDED" | "RESUMED" | "FAILED" | "CANCELED" | "SUPERSEDED";
+export type CodePipelineState =
+    | "STARTED"
+    | "SUCCEEDED"
+    | "RESUMED"
+    | "FAILED"
+    | "CANCELED"
+    | "SUPERSEDED";
 
 /**
  * CodePipeline CloudWatch Events

@@ -11,14 +11,21 @@ export interface LayoutEventPayload {
     reason?: string | undefined;
     identity: Identity;
 }
-export declare const addComponentToContentItem: (component: ViewComponent, target: GoldenLayout.ItemConfig) => void;
-export declare const emitLocalEvent: (event: string, identity: Identity, container: HTMLElement) => void;
+export declare const addComponentToContentItem: (
+    component: ViewComponent,
+    target: GoldenLayout.ItemConfig,
+) => void;
+export declare const emitLocalEvent: (
+    event: string,
+    identity: Identity,
+    container: HTMLElement,
+) => void;
 export declare type LayoutPresetTypes = "columns" | "grid" | "rows" | "tabs";
 export declare const getPresetLayoutFunction: {
-    "columns": (components: ViewComponent[]) => GoldenLayout.Config;
-    "grid": (components: ViewComponent[]) => GoldenLayout.Config;
-    "rows": (components: ViewComponent[]) => GoldenLayout.Config;
-    "tabs": (components: ViewComponent[]) => GoldenLayout.Config;
+    columns: (components: ViewComponent[]) => GoldenLayout.Config;
+    grid: (components: ViewComponent[]) => GoldenLayout.Config;
+    rows: (components: ViewComponent[]) => GoldenLayout.Config;
+    tabs: (components: ViewComponent[]) => GoldenLayout.Config;
 };
 export declare const generatePresetLayout: (
     components: ViewComponent[],
@@ -33,8 +40,12 @@ export declare const debounce: <T extends (...args: any[]) => any>(
     resizing: boolean,
 ) => (...args: Parameters<T>) => void;
 export declare const delay: (delay: number) => Promise<unknown>;
-export declare const generateLayout: (componentState: any) => GoldenLayout.Config;
-export declare const getSourceIdentity: (e: JQuery.DragEventBase<HTMLElement, Identity, HTMLElement, HTMLElement>) => {
+export declare const generateLayout: (
+    componentState: any,
+) => GoldenLayout.Config;
+export declare const getSourceIdentity: (
+    e: JQuery.DragEventBase<HTMLElement, Identity, HTMLElement, HTMLElement>,
+) => {
     uuid: string;
     name: string;
 };
@@ -60,11 +71,20 @@ export declare const isSameWindow: (
 export declare const mock: {
     on: () => void;
 };
-export declare const setViewBoundsByRect: (rect: Bounds | ClientRect | DOMRect, ofView: View) => Promise<void>;
+export declare const setViewBoundsByRect: (
+    rect: Bounds | ClientRect | DOMRect,
+    ofView: View,
+) => Promise<void>;
 export declare const getComponentBounds: (bv: ViewComponent) => DOMRect;
-export declare const buildFailedEventPayload: (response: string, identity: Identity) => {
+export declare const buildFailedEventPayload: (
+    response: string,
+    identity: Identity,
+) => {
     success: boolean;
     response: string;
     identity: Identity;
 };
-export declare const promisifyViewLoadEvents: (view: View, windowIdentity: Identity) => Promise<LayoutEventPayload>;
+export declare const promisifyViewLoadEvents: (
+    view: View,
+    windowIdentity: Identity,
+) => Promise<LayoutEventPayload>;

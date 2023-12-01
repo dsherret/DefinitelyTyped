@@ -5,7 +5,10 @@ declare class PiCamera {
     snapDataUrl(maxBuffer?: number): Promise<string>;
     record(): Promise<string>;
     get(prop: PiCamera.ConfigKey): PiCamera.ConfigValue;
-    set(prop: PiCamera.ConfigKey, value: PiCamera.ConfigValue): PiCamera.ConfigValue;
+    set(
+        prop: PiCamera.ConfigKey,
+        value: PiCamera.ConfigValue,
+    ): PiCamera.ConfigValue;
 
     private configToArray(): Array<string | PiCamera.ConfigValue>;
 }

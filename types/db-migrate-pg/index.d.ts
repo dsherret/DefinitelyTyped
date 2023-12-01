@@ -33,7 +33,11 @@ export interface ColumnConstraintOptions {
 }
 
 export class PgDriver extends DbMigrateBase {
-    constructor(connection: pg.Client, schema: string, intern: DbMigrateBase.InternalOptions);
+    constructor(
+        connection: pg.Client,
+        schema: string,
+        intern: DbMigrateBase.InternalOptions,
+    );
     createDatabase(
         dbName: string,
         optionsOrCb: CreateDatabaseOptions | DbMigrateBase.CallbackFunction,
@@ -49,7 +53,10 @@ export class PgDriver extends DbMigrateBase {
         optionsOrCb: CreateSequenceOptions | DbMigrateBase.CallbackFunction,
         callback?: DbMigrateBase.CallbackFunction,
     ): void;
-    switchDatabase(options: string | SwitchDatabaseOptions, callback: DbMigrateBase.CallbackFunction): void;
+    switchDatabase(
+        options: string | SwitchDatabaseOptions,
+        callback: DbMigrateBase.CallbackFunction,
+    ): void;
     dropSequence(
         dbName: string,
         optionsOrCb: DropSequenceOptions | DbMigrateBase.CallbackFunction,
@@ -62,9 +69,21 @@ export class PgDriver extends DbMigrateBase {
         columnName: string,
     ): ColumnConstraint;
 
-    createDatabaseAsync(dbName: string, options?: CreateDatabaseOptions): Promise<any>;
-    dropDatabaseAsync(dbName: string, options?: DropDatabaseOptions): Promise<any>;
-    createSequenceAsync(sqName: string, options?: CreateSequenceOptions): Promise<any>;
+    createDatabaseAsync(
+        dbName: string,
+        options?: CreateDatabaseOptions,
+    ): Promise<any>;
+    dropDatabaseAsync(
+        dbName: string,
+        options?: DropDatabaseOptions,
+    ): Promise<any>;
+    createSequenceAsync(
+        sqName: string,
+        options?: CreateSequenceOptions,
+    ): Promise<any>;
     switchDatabaseAsync(options: string | SwitchDatabaseOptions): Promise<any>;
-    dropSequenceAsync(dbName: string, options?: DropSequenceOptions): Promise<any>;
+    dropSequenceAsync(
+        dbName: string,
+        options?: DropSequenceOptions,
+    ): Promise<any>;
 }

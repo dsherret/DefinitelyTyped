@@ -10,7 +10,10 @@ function TestFirefoxDriver() {
         webdriver.Capabilities.firefox(),
         new http.Executor(new http.HttpClient("http://someurl")),
     );
-    driver = firefox.Driver.createSession(webdriver.Capabilities.firefox(), new remote.DriverService("/dev/null", {}));
+    driver = firefox.Driver.createSession(
+        webdriver.Capabilities.firefox(),
+        new remote.DriverService("/dev/null", {}),
+    );
     let promise1: Promise<string> = driver.installAddon("addon1", true);
     let promise2: Promise<void> = driver.uninstallAddon("addon1");
 

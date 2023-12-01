@@ -32,7 +32,9 @@ export class FileCookieStore extends tough.Store {
         cb: (err: Error | null, cookie: tough.Cookie[]) => void,
     ): void;
 
-    getAllCookies(cb: (err: Error | null, cookies: tough.Cookie[]) => void): void;
+    getAllCookies(
+        cb: (err: Error | null, cookies: tough.Cookie[]) => void,
+    ): void;
 
     putCookie(cookie: tough.Cookie, cb: (err: Error | null) => void): void;
 

@@ -17,7 +17,11 @@ import {
 //
 // angle-picker-control
 //
-<C.AnglePickerControl value={350} label="Test label" onChange={value => console.log(value)} />;
+<C.AnglePickerControl
+    value={350}
+    label="Test label"
+    onChange={(value) => console.log(value)}
+/>;
 
 //
 // animate
@@ -25,7 +29,9 @@ import {
 <C.Animate type="appear" options={{ origin: "top left" }}>
     {({ className }) => <h1 className={className}>Hello World</h1>}
 </C.Animate>;
-<C.Animate type="loading">{({ className }) => <h1 className={className}>Hello World</h1>}</C.Animate>;
+<C.Animate type="loading">
+    {({ className }) => <h1 className={className}>Hello World</h1>}
+</C.Animate>;
 
 //
 // autocomplete
@@ -41,8 +47,8 @@ let record: Value = {
     text: "",
 };
 <C.Autocomplete<MyCompleteOption>
-    onReplace={value => (record = value)}
-    onChange={value => (record = value)}
+    onReplace={(value) => (record = value)}
+    onChange={(value) => (record = value)}
     record={record}
     isSelected={false}
     completers={[
@@ -57,18 +63,20 @@ let record: Value = {
                 { visual: "🍇", name: "Grapes", id: 3 },
             ],
             // Returns a label for an option like "🍊 Orange"
-            getOptionLabel: option => (
+            getOptionLabel: (option) => (
                 <span>
                     <span className="icon">{option.visual}</span>
                     {option.name}
                 </span>
             ),
             // Declares that options should be matched by their name
-            getOptionKeywords: option => [option.name],
+            getOptionKeywords: (option) => [option.name],
             // Declares that the Grapes option is disabled
-            isOptionDisabled: option => option.name === "Grapes",
+            isOptionDisabled: (option) => option.name === "Grapes",
             // Declares completions should be inserted as abbreviations
-            getOptionCompletion: option => <abbr title={option.name}>{option.visual}</abbr>,
+            getOptionCompletion: (option) => (
+                <abbr title={option.name}>{option.visual}</abbr>
+            ),
         },
     ]}
 >
@@ -81,8 +89,7 @@ let record: Value = {
             aria-owns={listBoxId}
             aria-activedescendant={activeId}
             onKeyDown={onKeyDown}
-        >
-        </div>
+        ></div>
     )}
 </C.Autocomplete>;
 
@@ -156,12 +163,16 @@ const buttonGroupRef = createRef<HTMLDivElement>();
 //
 // checkbox-control
 //
-<C.CheckboxControl checked onChange={isChecked => console.log(isChecked)} />;
+<C.CheckboxControl checked onChange={(isChecked) => console.log(isChecked)} />;
 
 //
 // clipboard-button
 //
-<C.ClipboardButton isPrimary text="Copy this" onFinishCopy={() => console.log("copied!")} />;
+<C.ClipboardButton
+    isPrimary
+    text="Copy this"
+    onFinishCopy={() => console.log("copied!")}
+/>;
 
 //
 // color-indicator
@@ -178,7 +189,7 @@ const buttonGroupRef = createRef<HTMLDivElement>();
         { name: "blue", color: "#0000ff" },
     ]}
     value={"#ff0000"}
-    onChange={color => color && console.log(color)}
+    onChange={(color) => color && console.log(color)}
 />;
 
 <C.ColorPalette
@@ -190,14 +201,21 @@ const buttonGroupRef = createRef<HTMLDivElement>();
         { name: "blue", color: "#0000ff" },
     ]}
     value={"#ff0000"}
-    onChange={color => color && console.log(color)}
+    onChange={(color) => color && console.log(color)}
 />;
 
 //
 // color-picker
 //
-<C.ColorPicker color="#ff0000" onChangeComplete={color => console.log(color.hex)} oldHue={3} />;
-<C.ColorPicker onChangeComplete={color => console.log(color.hex)} disableAlpha />;
+<C.ColorPicker
+    color="#ff0000"
+    onChangeComplete={(color) => console.log(color.hex)}
+    oldHue={3}
+/>;
+<C.ColorPicker
+    onChangeComplete={(color) => console.log(color.hex)}
+    disableAlpha
+/>;
 
 //
 // combobox-control
@@ -205,7 +223,7 @@ const buttonGroupRef = createRef<HTMLDivElement>();
 <C.ComboboxControl
     label={"Region"}
     value={"UK"}
-    onChange={value => {
+    onChange={(value) => {
         console.log(value);
     }}
     options={[
@@ -223,10 +241,19 @@ const buttonGroupRef = createRef<HTMLDivElement>();
     label="Fruit"
     options={[
         { key: "apple", name: "Apple", style: { color: "red" } },
-        { key: "banana", name: "Banana", style: { backgroundColor: "yellow" }, className: "my-favorite-fruit" },
-        { key: "papaya", name: "Papaya", style: { color: "orange", backgroundColor: "green" } },
+        {
+            key: "banana",
+            name: "Banana",
+            style: { backgroundColor: "yellow" },
+            className: "my-favorite-fruit",
+        },
+        {
+            key: "papaya",
+            name: "Papaya",
+            style: { color: "orange", backgroundColor: "green" },
+        },
     ]}
-    onChange={v => console.log(v.selectedItem && v.selectedItem.name)}
+    onChange={(v) => console.log(v.selectedItem && v.selectedItem.name)}
 />;
 
 //
@@ -238,9 +265,16 @@ const buttonGroupRef = createRef<HTMLDivElement>();
 //
 // date-time
 //
-<C.DatePicker isInvalidDate={date => isNaN(date.valueOf())} onChange={date => console.log(date.toUpperCase())} />;
-<C.TimePicker currentTime={new Date().toISOString()} onChange={time => console.log(time.toUpperCase())} is12Hour />;
-<C.DateTimePicker onChange={date => console.log(date.toUpperCase())} />;
+<C.DatePicker
+    isInvalidDate={(date) => isNaN(date.valueOf())}
+    onChange={(date) => console.log(date.toUpperCase())}
+/>;
+<C.TimePicker
+    currentTime={new Date().toISOString()}
+    onChange={(time) => console.log(time.toUpperCase())}
+    is12Hour
+/>;
+<C.DateTimePicker onChange={(date) => console.log(date.toUpperCase())} />;
 
 //
 // disabled
@@ -248,14 +282,20 @@ const buttonGroupRef = createRef<HTMLDivElement>();
 <C.Disabled>
     <input type="text" />
 </C.Disabled>;
-<C.Disabled.Consumer>{isDisabled => <button style={{ opacity: isDisabled ? 0.5 : 1 }} />}</C.Disabled.Consumer>;
+<C.Disabled.Consumer>
+    {(isDisabled) => <button style={{ opacity: isDisabled ? 0.5 : 1 }} />}
+</C.Disabled.Consumer>;
 
 //
 // draggable
 //
 <C.Draggable elementId="draggable-panel" transferData={{}}>
     {({ onDraggableStart, onDraggableEnd }) => (
-        <div onDragStart={onDraggableStart} onDragEnd={onDraggableEnd} draggable={true} />
+        <div
+            onDragStart={onDraggableStart}
+            onDragEnd={onDraggableEnd}
+            draggable={true}
+        />
     )}
 </C.Draggable>;
 
@@ -264,9 +304,9 @@ const buttonGroupRef = createRef<HTMLDivElement>();
 //
 <C.DropZoneProvider>
     <C.DropZone
-        onFilesDrop={files => console.log(files.length)}
-        onHTMLDrop={html => console.log(html.toUpperCase())}
-        onDrop={e => console.log(e.dataTransfer.files.length)}
+        onFilesDrop={(files) => console.log(files.length)}
+        onHTMLDrop={(html) => console.log(html.toUpperCase())}
+        onDrop={(e) => console.log(e.dataTransfer.files.length)}
     />
 </C.DropZoneProvider>;
 
@@ -345,7 +385,13 @@ const buttonGroupRef = createRef<HTMLDivElement>();
 //
 // flex
 //
-<C.Flex direction="column" gap={3} align="bottom" justify="left" className="test-classname">
+<C.Flex
+    direction="column"
+    gap={3}
+    align="bottom"
+    justify="left"
+    className="test-classname"
+>
     <C.FlexBlock className="test-classname">Test Flex Block</C.FlexBlock>
     <C.FlexItem className="test-classname">Flex Item 1</C.FlexItem>
     <C.FlexItem>Flex Item 2</C.FlexItem>
@@ -361,13 +407,16 @@ const buttonGroupRef = createRef<HTMLDivElement>();
 <C.FocalPointPicker
     url="/path/to/image"
     value={{ x: 0.5, y: 0.5 }}
-    onChange={value => console.log(`x = ${value.x}, y = ${value.y}`)}
+    onChange={(value) => console.log(`x = ${value.x}, y = ${value.y}`)}
 />;
 
 //
 // focusable-iframe
 //
-<C.FocusableIframe src="/my-iframe-url" onFocus={() => console.log("iframe is focused")} />;
+<C.FocusableIframe
+    src="/my-iframe-url"
+    onFocus={() => console.log("iframe is focused")}
+/>;
 
 //
 // font-size-picker
@@ -387,20 +436,26 @@ const buttonGroupRef = createRef<HTMLDivElement>();
     ]}
     value={16}
     fallbackFontSize={16}
-    onChange={newFontSize => console.log(newFontSize)}
+    onChange={(newFontSize) => console.log(newFontSize)}
 />;
 
 //
 // form-file-upload
 //
-<C.FormFileUpload accept="image/*" icon="welcome-learn-more" onChange={() => console.log("new image")}>
+<C.FormFileUpload
+    accept="image/*"
+    icon="welcome-learn-more"
+    onChange={() => console.log("new image")}
+>
     Upload
 </C.FormFileUpload>;
 <C.FormFileUpload
     multiple
     accept="application/pdf"
     onChange={() => console.log("changed")}
-    render={({ openFileDialog }) => <button onClick={openFileDialog}>Open dialog</button>}
+    render={({ openFileDialog }) => (
+        <button onClick={openFileDialog}>Open dialog</button>
+    )}
 />;
 
 //
@@ -425,7 +480,7 @@ const buttonGroupRef = createRef<HTMLDivElement>();
         },
     ]}
     suggestions={["foo", "bar", "baz", "qux"]}
-    onChange={tokens => console.log(tokens)}
+    onChange={(tokens) => console.log(tokens)}
 />;
 
 //
@@ -476,7 +531,8 @@ const IconFunctionComponent = (props: { foo: number; bar: number }) => (
 // keyboard-shortcuts
 //
 const kbshortcutActionOne = () => console.log("action 1");
-const kbshortcutActionTwo = (event: KeyboardEvent) => console.log("action 1", event);
+const kbshortcutActionTwo = (event: KeyboardEvent) =>
+    console.log("action 1", event);
 const kbshortcuts = {
     "mod+a": kbshortcutActionOne,
     "ctrl+shift+j": kbshortcutActionTwo,
@@ -490,7 +546,12 @@ const kbshortcuts = {
 // menu-group, menu-item
 //
 <C.MenuGroup>
-    <C.MenuItem icon="yes" isSelected={true} onClick={() => console.log("clicked")} isSmall>
+    <C.MenuItem
+        icon="yes"
+        isSelected={true}
+        onClick={() => console.log("clicked")}
+        isSmall
+    >
         Toggle
     </C.MenuItem>
 </C.MenuGroup>;
@@ -519,7 +580,7 @@ const kbshortcuts = {
         },
     ]}
     value="visual"
-    onSelect={value => console.log(`selected value is ${value}`)}
+    onSelect={(value) => console.log(`selected value is ${value}`)}
 />;
 
 //
@@ -528,16 +589,22 @@ const kbshortcuts = {
 <C.Modal
     title="This is my modal"
     isDismissible={true}
-    onRequestClose={(event: ReactKeyboardEvent | ReactMouseEvent | ReactMouseEvent) =>
-        console.log(`The ${event.type} event told me to close myself!`)}
+    onRequestClose={(
+        event: ReactKeyboardEvent | ReactMouseEvent | ReactMouseEvent,
+    ) => console.log(`The ${event.type} event told me to close myself!`)}
 >
-    <button onClick={() => console.log("clicked")}>My custom close button</button>
+    <button onClick={() => console.log("clicked")}>
+        My custom close button
+    </button>
 </C.Modal>;
 
 //
 // navigable-container
 //
-<C.NavigableMenu onNavigate={(idx, el) => console.log(el.nodeName)} orientation="horizontal">
+<C.NavigableMenu
+    onNavigate={(idx, el) => console.log(el.nodeName)}
+    orientation="horizontal"
+>
     <button>Item 1</button>
     <button>Item 2</button>
     <button>Item 3</button>
@@ -587,12 +654,20 @@ const kbshortcuts = {
 // panel
 //
 <C.Panel header="My Panel" className="foo">
-    <C.PanelBody title="Panel Body One" icon={() => <i>icon</i>} initialOpen={true}>
+    <C.PanelBody
+        title="Panel Body One"
+        icon={() => <i>icon</i>}
+        initialOpen={true}
+    >
         <C.PanelRow>My Panel Inputs and Labels</C.PanelRow>
     </C.PanelBody>
 </C.Panel>;
 <C.Panel header="My Other Panel">
-    <C.PanelBody title="Panel Body Two" icon="welcome-widgets-menus" initialOpen={true}>
+    <C.PanelBody
+        title="Panel Body Two"
+        icon="welcome-widgets-menus"
+        initialOpen={true}
+    >
         <C.PanelRow className="foo">My Panel Inputs and Labels</C.PanelRow>
     </C.PanelBody>
 </C.Panel>;
@@ -610,14 +685,14 @@ const kbshortcuts = {
 //
 <C.Popover
     className="my-popover"
-    getAnchorRect={anchorEl => {
+    getAnchorRect={(anchorEl) => {
         if (anchorEl && anchorEl.parentElement) {
             return anchorEl.parentElement.getBoundingClientRect();
         }
     }}
     onClose={() => {}}
     onClickOutside={() => {}}
-    onFocusOutside={e => {
+    onFocusOutside={(e) => {
         if (e.relatedTarget === document.querySelector("#my-element")) return;
     }}
 >
@@ -629,13 +704,16 @@ const kbshortcuts = {
 //
 // query-controls
 //
-<C.QueryControls numberOfItems={3} onNumberOfItemsChange={n => console.log(Math.floor(n))} />;
+<C.QueryControls
+    numberOfItems={3}
+    onNumberOfItemsChange={(n) => console.log(Math.floor(n))}
+/>;
 <C.QueryControls
     orderBy="title"
     order="asc"
     numberOfItems={10}
-    onOrderByChange={orderBy => console.log(orderBy.toUpperCase())}
-    onOrderChange={order => console.log(order.toUpperCase())}
+    onOrderByChange={(orderBy) => console.log(orderBy.toUpperCase())}
+    onOrderChange={(order) => console.log(order.toUpperCase())}
     categoriesList={[
         {
             id: 1,
@@ -654,8 +732,8 @@ const kbshortcuts = {
         },
     ]}
     selectedCategoryId={1}
-    onCategoryChange={categoryId => console.log(Math.floor(categoryId))}
-    onNumberOfItemsChange={n => console.log(Math.floor(n))}
+    onCategoryChange={(categoryId) => console.log(Math.floor(categoryId))}
+    onNumberOfItemsChange={(n) => console.log(Math.floor(n))}
 />;
 
 //
@@ -669,7 +747,7 @@ const kbshortcuts = {
         { label: "Author", value: "a" },
         { label: "Editor", value: "e" },
     ]}
-    onChange={value => value && console.log(value.toUpperCase())}
+    onChange={(value) => value && console.log(value.toUpperCase())}
 />;
 <C.RadioControl
     label="User type"
@@ -679,13 +757,20 @@ const kbshortcuts = {
         { label: "Author", value: { foo: "bar" } },
         { label: "Editor", value: { foo: "baz" } },
     ]}
-    onChange={value => value && console.log(value.foo)}
+    onChange={(value) => value && console.log(value.foo)}
 />;
 
 //
 // range-control
 //
-<C.RangeControl beforeIcon="move" label="Columns" value={5} min={2} max={10} onChange={value => console.log(value)} />;
+<C.RangeControl
+    beforeIcon="move"
+    label="Columns"
+    value={5}
+    min={2}
+    max={10}
+    onChange={(value) => console.log(value)}
+/>;
 
 //
 // resizable-box
@@ -735,7 +820,10 @@ const kbshortcuts = {
 // responsive-wrapper
 //
 <C.ResponsiveWrapper naturalWidth={2000} naturalHeight={680}>
-    <img src="https://s.w.org/style/images/about/WordPress-logotype-standard.png" alt="WordPress" />
+    <img
+        src="https://s.w.org/style/images/about/WordPress-logotype-standard.png"
+        alt="WordPress"
+    />
 </C.ResponsiveWrapper>;
 
 //
@@ -759,7 +847,7 @@ const kbshortcuts = {
         { label: "Medium", value: "50%" },
         { label: "Small", value: "25%" },
     ]}
-    onChange={size => console.log(size)}
+    onChange={(size) => console.log(size)}
 />;
 <C.SelectControl
     label="Size"
@@ -770,7 +858,7 @@ const kbshortcuts = {
         { label: "Medium", value: "50%" },
         { label: "Small", value: "25%" },
     ]}
-    onChange={size => console.log(size)}
+    onChange={(size) => console.log(size)}
 />;
 <C.SelectControl
     label="Size"
@@ -781,7 +869,7 @@ const kbshortcuts = {
         { label: "Medium", value: "50%" },
         { label: "Small", value: "25%" },
     ]}
-    onChange={size => console.log(size)}
+    onChange={(size) => console.log(size)}
 />;
 
 //
@@ -829,7 +917,7 @@ const kbshortcuts = {
 <C.TabPanel
     className="my-tab-panel"
     activeClass="active-tab"
-    onSelect={tabName => console.log(tabName.toUpperCase())}
+    onSelect={(tabName) => console.log(tabName.toUpperCase())}
     tabs={[
         {
             name: "tab1",
@@ -843,19 +931,23 @@ const kbshortcuts = {
         },
     ]}
 >
-    {tab => <p>{tab.title}</p>}
+    {(tab) => <p>{tab.title}</p>}
 </C.TabPanel>;
 
 //
 // text-control
 //
-<C.TextControl label="My text value" value={"foo"} onChange={value => console.log(value.toUpperCase())} />;
+<C.TextControl
+    label="My text value"
+    value={"foo"}
+    onChange={(value) => console.log(value.toUpperCase())}
+/>;
 <C.TextControl
     type="number"
     label="My numeric value"
     hideLabelFromVision
     value={3}
-    onChange={value => console.log(value.toUpperCase())}
+    onChange={(value) => console.log(value.toUpperCase())}
 />;
 
 //
@@ -865,7 +957,7 @@ const kbshortcuts = {
     label="Text"
     help="Enter some text"
     value="hello world"
-    onChange={value => console.log(value.toUpperCase())}
+    onChange={(value) => console.log(value.toUpperCase())}
 />;
 
 //
@@ -876,7 +968,12 @@ const kbshortcuts = {
 //
 // toggle-control
 //
-<C.ToggleControl label="Controlled" checked={true} onChange={isChecked => console.log(isChecked)} disabled={false} />;
+<C.ToggleControl
+    label="Controlled"
+    checked={true}
+    onChange={(isChecked) => console.log(isChecked)}
+    disabled={false}
+/>;
 <C.ToggleControl label="Uncontrolled" />;
 
 //
@@ -936,7 +1033,11 @@ const kbshortcuts = {
 //
 // toolbar-button
 //
-<C.ToolbarButton icon="editor-help" title="Minimal Button" onClick={() => console.log("clicked")} />;
+<C.ToolbarButton
+    icon="editor-help"
+    title="Minimal Button"
+    onClick={() => console.log("clicked")}
+/>;
 <C.ToolbarButton
     className="bar"
     containerClassName="foo"
@@ -987,7 +1088,7 @@ const kbshortcuts = {
 //
 // tree-select
 //
-<C.TreeSelect onChange={id => console.log(id)} />;
+<C.TreeSelect onChange={(id) => console.log(id)} />;
 <C.TreeSelect
     label="Complex tree"
     noOptionLabel="No options"
@@ -1030,13 +1131,16 @@ const kbshortcuts = {
             name: "Childless",
         },
     ]}
-    onChange={id => console.log(id)}
+    onChange={(id) => console.log(id)}
 />;
 
 //
 // isolated-event-container
 //
-<C.IsolatedEventContainer className="component-some_component" onClick={e => console.log(e.currentTarget.nodeName)}>
+<C.IsolatedEventContainer
+    className="component-some_component"
+    onClick={(e) => console.log(e.currentTarget.nodeName)}
+>
     <p>This is an isolated component</p>
 </C.IsolatedEventContainer>;
 
@@ -1072,16 +1176,15 @@ const MySlotFillProvider = () => {
     );
 })();
 <C.Slot name="RichText.ToolbarControls">
-    {fills =>
-        fills.length !== 0
-            ? (
-                <C.DropdownMenu
-                    position="bottom left"
-                    label="More Rich Text Controls"
-                    controls={fills.map(([{ props }]) => props)}
-                />
-            )
-            : null}
+    {(fills) =>
+        fills.length !== 0 ? (
+            <C.DropdownMenu
+                position="bottom left"
+                label="More Rich Text Controls"
+                controls={fills.map(([{ props }]) => props)}
+            />
+        ) : null
+    }
 </C.Slot>;
 
 //
@@ -1096,12 +1199,13 @@ const MySlotFillProvider = () => {
 // higher-order/navigate-regions
 //
 (() => {
-    const EnhancedComponent = C.navigateRegions(({ foo, bar }: { foo: string; bar: number }) => (
-        <div>
-            {foo} and {bar}
-            {" "}
-        </div>
-    ));
+    const EnhancedComponent = C.navigateRegions(
+        ({ foo, bar }: { foo: string; bar: number }) => (
+            <div>
+                {foo} and {bar}{" "}
+            </div>
+        ),
+    );
     <EnhancedComponent foo="hello" bar={123} />;
 })();
 
@@ -1109,12 +1213,13 @@ const MySlotFillProvider = () => {
 // higher-order/with-constrained-tabbing
 //
 (() => {
-    const EnhancedComponent = C.withConstrainedTabbing(({ foo, bar }: { foo: string; bar: number }) => (
-        <div>
-            {foo} and {bar}
-            {" "}
-        </div>
-    ));
+    const EnhancedComponent = C.withConstrainedTabbing(
+        ({ foo, bar }: { foo: string; bar: number }) => (
+            <div>
+                {foo} and {bar}{" "}
+            </div>
+        ),
+    );
     <EnhancedComponent foo="hello" bar={123} />;
 })();
 
@@ -1122,7 +1227,11 @@ const MySlotFillProvider = () => {
 // higher-order/with-fallback-styles
 //
 (() => {
-    const OriginalComponent = (props: { foo: string; bar: string; baz: string }) => <div>{JSON.stringify(props)}</div>;
+    const OriginalComponent = (props: {
+        foo: string;
+        bar: string;
+        baz: string;
+    }) => <div>{JSON.stringify(props)}</div>;
     const EnhancedComponent = C.withFallbackStyles((node, ownProps) => {
         console.log(node.nodeName);
         return {
@@ -1136,11 +1245,16 @@ const MySlotFillProvider = () => {
 // higher-order/with-filters
 //
 (() => {
-    const OriginalComponent = (props: { foo: string; bar: string }) => <div>{JSON.stringify(props)}</div>;
-    const EnhancedComponentSameProps = C.withFilters("myFilter")(OriginalComponent);
+    const OriginalComponent = (props: { foo: string; bar: string }) => (
+        <div>{JSON.stringify(props)}</div>
+    );
+    const EnhancedComponentSameProps =
+        C.withFilters("myFilter")(OriginalComponent);
     <EnhancedComponentSameProps foo="" bar="" />;
 
-    const EnhancedComponentNewProps = C.withFilters<{ baz: number }>("myFilter")(OriginalComponent);
+    const EnhancedComponentNewProps = C.withFilters<{ baz: number }>(
+        "myFilter",
+    )(OriginalComponent);
     <EnhancedComponentNewProps baz={25} />;
 })();
 
@@ -1168,7 +1282,9 @@ const MySlotFillProvider = () => {
             return <div>{this.props.bar}</div>;
         }
     }
-    const EnhancedComponentPredefinedClass = C.withFocusOutside(PredefinedComponentClass);
+    const EnhancedComponentPredefinedClass = C.withFocusOutside(
+        PredefinedComponentClass,
+    );
     <EnhancedComponentPredefinedClass bar={1} />;
 })();
 
@@ -1176,21 +1292,27 @@ const MySlotFillProvider = () => {
 // higher-order/with-focus-return
 //
 (() => {
-    const EnhancedComponentDefaultBehavior = C.withFocusReturn((props: { foo: string; bar: string }) => (
-        <div>{JSON.stringify(props)}</div>
-    ));
+    const EnhancedComponentDefaultBehavior = C.withFocusReturn(
+        (props: { foo: string; bar: string }) => (
+            <div>{JSON.stringify(props)}</div>
+        ),
+    );
     <EnhancedComponentDefaultBehavior foo="foo" bar="bar" />;
 
     const EnhancedComponentCustomBehavior = C.withFocusReturn({
         onFocusReturn() {
             console.log("Hello World!");
         },
-    })((props: { foo: string; bar: string }) => <div>{JSON.stringify(props)}</div>);
-    <EnhancedComponentCustomBehavior foo="foo" bar="bar" />;
-
-    const EnhancedComponentCustomBehaviorDefault = C.withFocusReturn({})((props: { foo: string; bar: string }) => (
+    })((props: { foo: string; bar: string }) => (
         <div>{JSON.stringify(props)}</div>
     ));
+    <EnhancedComponentCustomBehavior foo="foo" bar="bar" />;
+
+    const EnhancedComponentCustomBehaviorDefault = C.withFocusReturn({})(
+        (props: { foo: string; bar: string }) => (
+            <div>{JSON.stringify(props)}</div>
+        ),
+    );
     <EnhancedComponentCustomBehaviorDefault foo="foo" bar="bar" />;
 })();
 
@@ -1198,8 +1320,16 @@ const MySlotFillProvider = () => {
 // higher-order/with-notices
 //
 (() => {
-    const OriginalComponent = (props: { foo: string } & C.withNotices.Props) => (
-        <button onClick={() => props.noticeOperations.createErrorNotice("Hello World!")}>{props.foo}</button>
+    const OriginalComponent = (
+        props: { foo: string } & C.withNotices.Props,
+    ) => (
+        <button
+            onClick={() =>
+                props.noticeOperations.createErrorNotice("Hello World!")
+            }
+        >
+            {props.foo}
+        </button>
     );
     const WrappedComponent = C.withNotices(OriginalComponent);
     <WrappedComponent foo="Hello World!" />;
@@ -1214,11 +1344,15 @@ const MySlotFillProvider = () => {
         debouncedSpeak: any;
         foo: string;
     }
-    const MyComponentWithSpokenMessages = C.withSpokenMessages(({ speak, debouncedSpeak, foo }: Props) => (
-        <div>
-            <button onClick={() => speak("Spoken message")}>Speak</button>
-            <button onClick={() => debouncedSpeak("Delayed message")}>Debounced Speak</button>
-        </div>
-    ));
+    const MyComponentWithSpokenMessages = C.withSpokenMessages(
+        ({ speak, debouncedSpeak, foo }: Props) => (
+            <div>
+                <button onClick={() => speak("Spoken message")}>Speak</button>
+                <button onClick={() => debouncedSpeak("Delayed message")}>
+                    Debounced Speak
+                </button>
+            </div>
+        ),
+    );
     <MyComponentWithSpokenMessages foo="Hello World!" />;
 })();

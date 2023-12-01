@@ -32,24 +32,24 @@ const topLogger: Modifier<"topLogger"> = {
     autoComplete=""
     autoFocus
     calendarClassName=""
-    calendarContainer={props => <div />}
+    calendarContainer={(props) => <div />}
     calendarIconClassname=""
     calendarStartDay={0}
     className=""
     clearButtonClassName=""
     clearButtonTitle=""
     // closeOnScroll={false} // Or as function:
-    closeOnScroll={e => e.target === document}
+    closeOnScroll={(e) => e.target === document}
     customInput={<input />}
     customInputRef=""
     chooseDayAriaLabelPrefix=""
     customTimeInput={<input />}
     dateFormat=""
     dateFormatCalendar=""
-    dayClassName={date => ""}
-    weekDayClassName={date => ""}
-    monthClassName={date => ""}
-    timeClassName={date => ""}
+    dayClassName={(date) => ""}
+    weekDayClassName={(date) => ""}
+    monthClassName={(date) => ""}
+    timeClassName={(date) => ""}
     disabledDayAriaLabelPrefix=""
     disabled
     disabledKeyboardNavigation
@@ -58,12 +58,12 @@ const topLogger: Modifier<"topLogger"> = {
     excludeDates={[new Date()]}
     excludeDateIntervals={[{ start: new Date(), end: new Date() }]}
     excludeTimes={[new Date()]}
-    filterDate={date => true}
-    filterTime={date => true}
+    filterDate={(date) => true}
+    filterTime={(date) => true}
     fixedHeight
     forceShowMonthNavigation
     formatWeekDay={(day) => day[0]}
-    formatWeekNumber={date => 0}
+    formatWeekNumber={(date) => 0}
     highlightDates={[{ someClassName: [new Date()] }]}
     icon=""
     id=""
@@ -85,18 +85,18 @@ const topLogger: Modifier<"topLogger"> = {
     nextMonthButtonLabel=""
     nextYearAriaLabel=""
     nextYearButtonLabel=""
-    onBlur={event => null}
+    onBlur={(event) => null}
     onCalendarClose={() => null}
     onCalendarOpen={() => null}
     onChange={(date: Date | [Date | null, Date | null] | null) => {}}
-    onChangeRaw={event => null}
-    onClickOutside={event => null}
+    onChangeRaw={(event) => null}
+    onClickOutside={(event) => null}
     onDayMouseEnter={(date: Date) => {}}
-    onFocus={event => null}
+    onFocus={(event) => null}
     onInputClick={() => null}
-    onInputError={err => err.code + err.msg}
-    onKeyDown={event => null}
-    onMonthChange={date => null}
+    onInputError={(err) => err.code + err.msg}
+    onKeyDown={(event) => null}
+    onMonthChange={(date) => null}
     onMonthMouseLeave={() => {}}
     onSelect={(date, event) => null}
     onWeekSelect={(firstDayOfWeek, weekNumber, event) => null}
@@ -106,7 +106,7 @@ const topLogger: Modifier<"topLogger"> = {
     peekNextMonth
     placeholderText=""
     popperClassName=""
-    popperContainer={props => <div />}
+    popperContainer={(props) => <div />}
     popperModifiers={[
         {
             name: "offset",
@@ -131,7 +131,7 @@ const topLogger: Modifier<"topLogger"> = {
     previousYearAriaLabel=""
     previousYearButtonLabel=""
     readOnly
-    ref={instance => {
+    ref={(instance) => {
         if (instance !== null) {
             // $ExpectType ReactDatePicker<"offset" | "preventOverflow", true>
             instance;
@@ -205,7 +205,14 @@ const topLogger: Modifier<"topLogger"> = {
     <span />
 </DatePicker>;
 
-<DatePicker minDate={null} maxDate={null} startDate={null} endDate={null} locale={enUS} onChange={() => null} />;
+<DatePicker
+    minDate={null}
+    maxDate={null}
+    startDate={null}
+    endDate={null}
+    locale={enUS}
+    onChange={() => null}
+/>;
 
 <DatePicker formatWeekDay={() => <div />} onChange={() => null} />;
 
@@ -219,7 +226,11 @@ function handleRef(ref: DatePicker | null) {
     }
 }
 
-<CalendarContainer arrowProps={{ someProp: "someValue" }} className="" showPopperArrow>
+<CalendarContainer
+    arrowProps={{ someProp: "someValue" }}
+    className=""
+    showPopperArrow
+>
     <div />
     <span />
 </CalendarContainer>;
@@ -252,8 +263,11 @@ const DatePickerCustomHeader = ({
     nextYearButtonDisabled,
 }: ReactDatePickerCustomHeaderProps) => <div></div>;
 
-<DatePicker onChange={() => {}} renderCustomHeader={props => <DatePickerCustomHeader {...props} />} />;
+<DatePicker
+    onChange={() => {}}
+    renderCustomHeader={(props) => <DatePickerCustomHeader {...props} />}
+/>;
 
 <DatePicker selectsRange onChange={([start]) => start?.getHours()} />;
 
-<DatePicker onChange={date => date?.toISOString()} />;
+<DatePicker onChange={(date) => date?.toISOString()} />;

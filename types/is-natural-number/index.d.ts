@@ -9,6 +9,9 @@ interface Options {
  * Rreturns true if the first argument is one of the natural numbers.
  * If not, or the argument is not a number, it returns false.
  */
-declare function isNaturalNumber(number: number | string, option?: Options): boolean;
+declare function isNaturalNumber(
+    number: number | string,
+    option?: Options,
+): boolean;
 
 export = isNaturalNumber;

@@ -17,10 +17,12 @@ const Post = Class.create<PostInterface>({
         name: String,
         title: {
             type: String,
-            validators: [{
-                type: "minLength",
-                param: 3,
-            }],
+            validators: [
+                {
+                    type: "minLength",
+                    param: 3,
+                },
+            ],
         },
         userId: String,
         publishedAt: Date,
@@ -123,8 +125,10 @@ const User = Class.create<UserInterface>({
         },
     },
     indexes: {
-        fullName: { // Index name.
-            fields: { // List of fields.
+        fullName: {
+            // Index name.
+            fields: {
+                // List of fields.
                 phoneNumber: 1,
                 createdAt: 1,
             },
@@ -194,6 +198,9 @@ post1.name = "New name";
 post1.getModifier(); // {$set: {name: 'New name'}} - it will not override tags
 post1.save();
 
-const user1 = User.findOne({}, {
-    disableEvents: true,
-});
+const user1 = User.findOne(
+    {},
+    {
+        disableEvents: true,
+    },
+);

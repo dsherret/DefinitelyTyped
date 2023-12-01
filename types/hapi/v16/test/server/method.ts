@@ -6,7 +6,7 @@ server.connection({ port: 80 });
 
 // Simple arguments
 
-const add = function(a: number, b: number, next: Hapi.ServerMethodNext) {
+const add = function (a: number, b: number, next: Hapi.ServerMethodNext) {
     return next(null, a + b);
 };
 
@@ -19,7 +19,7 @@ server.methods.sum(4, 5, next);
 
 // Object argument
 
-const addArray = function(array: number[], next: Hapi.ServerMethodNext) {
+const addArray = function (array: number[], next: Hapi.ServerMethodNext) {
     let sum = 0;
     array.forEach((item) => {
         sum += item;
@@ -30,7 +30,7 @@ const addArray = function(array: number[], next: Hapi.ServerMethodNext) {
 
 server.method("sumObj", addArray, {
     cache: { expiresIn: 2000, generateTimeout: 100 },
-    generateKey: function(array) {
+    generateKey: function (array) {
         return array.join(",");
     },
 });
@@ -42,11 +42,14 @@ server.methods.sumObj([5, 6], next);
 
 // Synchronous method with cache
 
-const addSync = function(a: number, b: number) {
+const addSync = function (a: number, b: number) {
     return a + b;
 };
 
-server.method("sumSync", addSync, { cache: { expiresIn: 2000, generateTimeout: 100 }, callback: false });
+server.method("sumSync", addSync, {
+    cache: { expiresIn: 2000, generateTimeout: 100 },
+    callback: false,
+});
 
 var next: Hapi.ServerMethodNext = (err, result) => {
     console.log(result);
@@ -70,12 +73,12 @@ server.method([config]);
 
 // https://github.com/DefinitelyTyped/DefinitelyTyped/issues/18283
 
-const syncX1 = function(arg1: string) {
+const syncX1 = function (arg1: string) {
     return Promise.resolve("some value" + arg1);
 };
 type SyncX1 = typeof syncX1;
 
-const asyncX1 = function(callback: Hapi.ServerMethodNext) {
+const asyncX1 = function (callback: Hapi.ServerMethodNext) {
     callback(null, "result");
 };
 type AsyncX1 = typeof asyncX1;

@@ -17,7 +17,11 @@ declare global {
 import { EventEmitter } from "events";
 import * as http from "http";
 import { ParsedQs } from "qs";
-import { Options as RangeParserOptions, Ranges as RangeParserRanges, Result as RangeParserResult } from "range-parser";
+import {
+    Options as RangeParserOptions,
+    Ranges as RangeParserRanges,
+    Result as RangeParserResult,
+} from "range-parser";
 
 export {};
 
@@ -90,7 +94,10 @@ export type RequestHandlerParams<
     | ErrorRequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>
     | Array<RequestHandler<P> | ErrorRequestHandler<P>>;
 
-type RemoveTail<S extends string, Tail extends string> = S extends `${infer P}${Tail}` ? P : S;
+type RemoveTail<
+    S extends string,
+    Tail extends string,
+> = S extends `${infer P}${Tail}` ? P : S;
 type GetRouteParameter<S extends string> = RemoveTail<
     RemoveTail<RemoveTail<S, `/${string}`>, `-${string}`>,
     `.${string}`
@@ -111,7 +118,15 @@ export type RouteParameters<Route extends string> = string extends Route ? Param
 /* eslint-disable @definitelytyped/no-unnecessary-generics */
 export interface IRouterMatcher<
     T,
-    Method extends "all" | "get" | "post" | "put" | "delete" | "patch" | "options" | "head" = any,
+    Method extends
+        | "all"
+        | "get"
+        | "post"
+        | "put"
+        | "delete"
+        | "patch"
+        | "options"
+        | "head" = any,
 > {
     <
         Route extends string,
@@ -124,7 +139,9 @@ export interface IRouterMatcher<
         // (it's used as the default type parameter for P)
         path: Route,
         // (This generic is meant to be passed explicitly.)
-        ...handlers: Array<RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>>
+        ...handlers: Array<
+            RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+        >
     ): T;
     <
         Path extends string,
@@ -137,7 +154,9 @@ export interface IRouterMatcher<
         // (it's used as the default type parameter for P)
         path: Path,
         // (This generic is meant to be passed explicitly.)
-        ...handlers: Array<RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, LocalsObj>>
+        ...handlers: Array<
+            RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+        >
     ): T;
     <
         P = ParamsDictionary,
@@ -148,7 +167,9 @@ export interface IRouterMatcher<
     >(
         path: PathParams,
         // (This generic is meant to be passed explicitly.)
-        ...handlers: Array<RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>>
+        ...handlers: Array<
+            RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+        >
     ): T;
     <
         P = ParamsDictionary,
@@ -159,7 +180,9 @@ export interface IRouterMatcher<
     >(
         path: PathParams,
         // (This generic is meant to be passed explicitly.)
-        ...handlers: Array<RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, LocalsObj>>
+        ...handlers: Array<
+            RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+        >
     ): T;
     (path: PathParams, subApplication: Application): T;
 }
@@ -176,7 +199,9 @@ export interface IRouterHandler<T, Route extends string = string> {
     >(
         // (This generic is meant to be passed explicitly.)
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        ...handlers: Array<RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>>
+        ...handlers: Array<
+            RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+        >
     ): T;
     <
         P = RouteParameters<Route>,
@@ -187,7 +212,9 @@ export interface IRouterHandler<T, Route extends string = string> {
     >(
         // (This generic is meant to be passed explicitly.)
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        ...handlers: Array<RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, LocalsObj>>
+        ...handlers: Array<
+            RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+        >
     ): T;
     <
         P = ParamsDictionary,
@@ -198,7 +225,9 @@ export interface IRouterHandler<T, Route extends string = string> {
     >(
         // (This generic is meant to be passed explicitly.)
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        ...handlers: Array<RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>>
+        ...handlers: Array<
+            RequestHandler<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+        >
     ): T;
     <
         P = ParamsDictionary,
@@ -209,7 +238,9 @@ export interface IRouterHandler<T, Route extends string = string> {
     >(
         // (This generic is meant to be passed explicitly.)
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        ...handlers: Array<RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, LocalsObj>>
+        ...handlers: Array<
+            RequestHandlerParams<P, ResBody, ReqBody, ReqQuery, LocalsObj>
+        >
     ): T;
 }
 /* eslint-enable @definitelytyped/no-unnecessary-generics */
@@ -248,7 +279,9 @@ export interface IRouter extends RequestHandler {
      *
      * @deprecated since version 4.11
      */
-    param(callback: (name: string, matcher: RegExp) => RequestParamHandler): this;
+    param(
+        callback: (name: string, matcher: RegExp) => RequestParamHandler,
+    ): this;
 
     /**
      * Special-cased "all" method, applying the given route `path`,
@@ -367,7 +400,8 @@ export interface Request<
     ReqBody = any,
     ReqQuery = ParsedQs,
     LocalsObj extends Record<string, any> = Record<string, any>,
-> extends http.IncomingMessage, Express.Request {
+> extends http.IncomingMessage,
+        Express.Request {
     /**
      * Return request header.
      *
@@ -483,7 +517,10 @@ export interface Request<
      * NOTE: remember that ranges are inclusive, so for example "Range: users=0-3"
      * should respond with 4 users when available, not 3.
      */
-    range(size: number, options?: RangeParserOptions): RangeParserRanges | RangeParserResult | undefined;
+    range(
+        size: number,
+        options?: RangeParserOptions,
+    ): RangeParserRanges | RangeParserResult | undefined;
 
     /**
      * Return an array of Accepted media types
@@ -668,7 +705,8 @@ export interface Response<
     ResBody = any,
     LocalsObj extends Record<string, any> = Record<string, any>,
     StatusCode extends number = number,
-> extends http.ServerResponse, Express.Response {
+> extends http.ServerResponse,
+        Express.Response {
     /**
      * Set status `code`.
      */
@@ -810,7 +848,12 @@ export interface Response<
      */
     download(path: string, fn?: Errback): void;
     download(path: string, filename: string, fn?: Errback): void;
-    download(path: string, filename: string, options: DownloadOptions, fn?: Errback): void;
+    download(
+        path: string,
+        filename: string,
+        options: DownloadOptions,
+        fn?: Errback,
+    ): void;
 
     /**
      * Set _Content-Type_ response header with `type` through `mime.lookup()`
@@ -1007,7 +1050,11 @@ export interface Response<
      *  - `cache`     boolean hinting to the engine it should cache
      *  - `filename`  filename of the view being rendered
      */
-    render(view: string, options?: object, callback?: (err: Error, html: string) => void): void;
+    render(
+        view: string,
+        options?: object,
+        callback?: (err: Error, html: string) => void,
+    ): void;
     render(view: string, callback?: (err: Error, html: string) => void): void;
 
     locals: LocalsObj & Locals;
@@ -1044,21 +1091,31 @@ export interface Response<
 
 export interface Handler extends RequestHandler {}
 
-export type RequestParamHandler = (req: Request, res: Response, next: NextFunction, value: any, name: string) => any;
+export type RequestParamHandler = (
+    req: Request,
+    res: Response,
+    next: NextFunction,
+    value: any,
+    name: string,
+) => any;
 
-export type ApplicationRequestHandler<T> =
-    & IRouterHandler<T>
-    & IRouterMatcher<T>
-    & ((...handlers: RequestHandlerParams[]) => T);
+export type ApplicationRequestHandler<T> = IRouterHandler<T> &
+    IRouterMatcher<T> &
+    ((...handlers: RequestHandlerParams[]) => T);
 
 export interface Application<
     LocalsObj extends Record<string, any> = Record<string, any>,
-> extends EventEmitter, IRouter, Express.Application {
+> extends EventEmitter,
+        IRouter,
+        Express.Application {
     /**
      * Express instance itself is a request handler, which could be invoked without
      * third argument.
      */
-    (req: Request | http.IncomingMessage, res: Response | http.ServerResponse): any;
+    (
+        req: Request | http.IncomingMessage,
+        res: Response | http.ServerResponse,
+    ): any;
 
     /**
      * Initialize the server.
@@ -1104,7 +1161,11 @@ export interface Application<
      */
     engine(
         ext: string,
-        fn: (path: string, options: object, callback: (e: any, rendered?: string) => void) => void,
+        fn: (
+            path: string,
+            options: object,
+            callback: (e: any, rendered?: string) => void,
+        ) => void,
     ): this;
 
     /**
@@ -1129,7 +1190,9 @@ export interface Application<
      *
      * @deprecated since version 4.11
      */
-    param(callback: (name: string, matcher: RegExp) => RequestParamHandler): this;
+    param(
+        callback: (name: string, matcher: RegExp) => RequestParamHandler,
+    ): this;
 
     /**
      * Return the app's absolute pathname
@@ -1184,7 +1247,11 @@ export interface Application<
      *      // ...
      *    })
      */
-    render(name: string, options?: object, callback?: (err: Error, html: string) => void): void;
+    render(
+        name: string,
+        options?: object,
+        callback?: (err: Error, html: string) => void,
+    ): void;
     render(name: string, callback: (err: Error, html: string) => void): void;
 
     /**
@@ -1204,7 +1271,12 @@ export interface Application<
      *    http.createServer(app).listen(80);
      *    https.createServer({ ... }, app).listen(443);
      */
-    listen(port: number, hostname: string, backlog: number, callback?: () => void): http.Server;
+    listen(
+        port: number,
+        hostname: string,
+        backlog: number,
+        callback?: () => void,
+    ): http.Server;
     listen(port: number, hostname: string, callback?: () => void): http.Server;
     listen(port: number, callback?: () => void): http.Server;
     listen(callback?: () => void): http.Server;

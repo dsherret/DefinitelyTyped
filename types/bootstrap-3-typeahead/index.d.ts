@@ -8,7 +8,10 @@ declare namespace Bootstrap3Typeahead {
         source?:
             | string[]
             | object[]
-            | ((query?: string, process?: (callback: any) => string | string[] | object[]) => void)
+            | ((
+                  query?: string,
+                  process?: (callback: any) => string | string[] | object[],
+              ) => void)
             | undefined;
 
         /**
@@ -64,7 +67,9 @@ declare namespace Bootstrap3Typeahead {
         /**
          * Call back function to execute after selected an item
          */
-        afterSelect?: ((this: Typeahead, item: string | object) => void) | undefined;
+        afterSelect?:
+            | ((this: Typeahead, item: string | object) => void)
+            | undefined;
 
         /**
          * Adds a delay between lookups
@@ -97,7 +102,9 @@ interface JQuery {
     /**
      * Initialize or destroy Typeahead
      */
-    typeahead(methodOrOptions?: "destroy" | Bootstrap3Typeahead.Options): JQuery;
+    typeahead(
+        methodOrOptions?: "destroy" | Bootstrap3Typeahead.Options,
+    ): JQuery;
 
     /**
      * To get the currently active item

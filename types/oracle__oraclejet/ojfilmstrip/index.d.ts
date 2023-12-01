@@ -5,7 +5,8 @@ import {
     JetElementCustomEvent,
     JetSetPropertyType,
 } from "..";
-export interface ojFilmStrip extends baseComponent<ojFilmStripSettableProperties> {
+export interface ojFilmStrip
+    extends baseComponent<ojFilmStripSettableProperties> {
     arrowPlacement: "adjacent" | "overlay";
     arrowVisibility: "visible" | "hidden" | "hover" | "auto";
     currentItem: {
@@ -22,38 +23,69 @@ export interface ojFilmStrip extends baseComponent<ojFilmStripSettableProperties
         tipArrowNextPage?: string | undefined;
         tipArrowPreviousPage?: string | undefined;
     };
-    onArrowPlacementChanged: ((event: JetElementCustomEvent<ojFilmStrip["arrowPlacement"]>) => any) | null;
-    onArrowVisibilityChanged: ((event: JetElementCustomEvent<ojFilmStrip["arrowVisibility"]>) => any) | null;
-    onCurrentItemChanged: ((event: JetElementCustomEvent<ojFilmStrip["currentItem"]>) => any) | null;
-    onLoopingChanged: ((event: JetElementCustomEvent<ojFilmStrip["looping"]>) => any) | null;
-    onMaxItemsPerPageChanged: ((event: JetElementCustomEvent<ojFilmStrip["maxItemsPerPage"]>) => any) | null;
-    onOrientationChanged: ((event: JetElementCustomEvent<ojFilmStrip["orientation"]>) => any) | null;
+    onArrowPlacementChanged:
+        | ((event: JetElementCustomEvent<ojFilmStrip["arrowPlacement"]>) => any)
+        | null;
+    onArrowVisibilityChanged:
+        | ((
+              event: JetElementCustomEvent<ojFilmStrip["arrowVisibility"]>,
+          ) => any)
+        | null;
+    onCurrentItemChanged:
+        | ((event: JetElementCustomEvent<ojFilmStrip["currentItem"]>) => any)
+        | null;
+    onLoopingChanged:
+        | ((event: JetElementCustomEvent<ojFilmStrip["looping"]>) => any)
+        | null;
+    onMaxItemsPerPageChanged:
+        | ((
+              event: JetElementCustomEvent<ojFilmStrip["maxItemsPerPage"]>,
+          ) => any)
+        | null;
+    onOrientationChanged:
+        | ((event: JetElementCustomEvent<ojFilmStrip["orientation"]>) => any)
+        | null;
     addEventListener<T extends keyof ojFilmStripEventMap>(
         type: T,
         listener: (this: HTMLElement, ev: ojFilmStripEventMap[T]) => any,
         useCapture?: boolean,
     ): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
-    getProperty<T extends keyof ojFilmStripSettableProperties>(property: T): ojFilmStrip[T];
+    addEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        useCapture?: boolean,
+    ): void;
+    getProperty<T extends keyof ojFilmStripSettableProperties>(
+        property: T,
+    ): ojFilmStrip[T];
     getProperty(property: string): any;
     setProperty<T extends keyof ojFilmStripSettableProperties>(
         property: T,
         value: ojFilmStripSettableProperties[T],
     ): void;
-    setProperty<T extends string>(property: T, value: JetSetPropertyType<T, ojFilmStripSettableProperties>): void;
+    setProperty<T extends string>(
+        property: T,
+        value: JetSetPropertyType<T, ojFilmStripSettableProperties>,
+    ): void;
     setProperties(properties: ojFilmStripSettablePropertiesLenient): void;
     getItemsPerPage(): number;
     refresh(): void;
 }
-export interface ojFilmStripEventMap extends baseComponentEventMap<ojFilmStripSettableProperties> {
-    "arrowPlacementChanged": JetElementCustomEvent<ojFilmStrip["arrowPlacement"]>;
-    "arrowVisibilityChanged": JetElementCustomEvent<ojFilmStrip["arrowVisibility"]>;
-    "currentItemChanged": JetElementCustomEvent<ojFilmStrip["currentItem"]>;
-    "loopingChanged": JetElementCustomEvent<ojFilmStrip["looping"]>;
-    "maxItemsPerPageChanged": JetElementCustomEvent<ojFilmStrip["maxItemsPerPage"]>;
-    "orientationChanged": JetElementCustomEvent<ojFilmStrip["orientation"]>;
+export interface ojFilmStripEventMap
+    extends baseComponentEventMap<ojFilmStripSettableProperties> {
+    arrowPlacementChanged: JetElementCustomEvent<ojFilmStrip["arrowPlacement"]>;
+    arrowVisibilityChanged: JetElementCustomEvent<
+        ojFilmStrip["arrowVisibility"]
+    >;
+    currentItemChanged: JetElementCustomEvent<ojFilmStrip["currentItem"]>;
+    loopingChanged: JetElementCustomEvent<ojFilmStrip["looping"]>;
+    maxItemsPerPageChanged: JetElementCustomEvent<
+        ojFilmStrip["maxItemsPerPage"]
+    >;
+    orientationChanged: JetElementCustomEvent<ojFilmStrip["orientation"]>;
 }
-export interface ojFilmStripSettableProperties extends baseComponentSettableProperties {
+export interface ojFilmStripSettableProperties
+    extends baseComponentSettableProperties {
     arrowPlacement: "adjacent" | "overlay";
     arrowVisibility: "visible" | "hidden" | "hover" | "auto";
     currentItem: {
@@ -71,6 +103,7 @@ export interface ojFilmStripSettableProperties extends baseComponentSettableProp
         tipArrowPreviousPage?: string | undefined;
     };
 }
-export interface ojFilmStripSettablePropertiesLenient extends Partial<ojFilmStripSettableProperties> {
+export interface ojFilmStripSettablePropertiesLenient
+    extends Partial<ojFilmStripSettableProperties> {
     [key: string]: any;
 }

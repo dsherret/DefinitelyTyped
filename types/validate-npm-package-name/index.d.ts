@@ -24,6 +24,8 @@ declare namespace validate {
     }
 }
 
-declare function validate(name: string): validate.ValidNames | validate.InvalidNames | validate.LegacyNames;
+declare function validate(
+    name: string,
+): validate.ValidNames | validate.InvalidNames | validate.LegacyNames;
 
 export = validate;

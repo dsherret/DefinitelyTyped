@@ -91,7 +91,9 @@ declare namespace CrossFilter {
         size(): number;
         GroupAll(): GroupAll<T, T>;
         groupAll<TValue>(): GroupAll<T, TValue>;
-        dimension<TDimension>(value: (data: T) => TDimension): Dimension<T, TDimension>;
+        dimension<TDimension>(
+            value: (data: T) => TDimension,
+        ): Dimension<T, TDimension>;
     }
 
     export interface Dimension<T, TDimension> {
@@ -106,7 +108,9 @@ declare namespace CrossFilter {
         bottom(k: number): T[];
         dispose(): void;
         group(): Group<T, TDimension, TDimension>;
-        group<TGroup>(groupValue: (data: TDimension) => TGroup): Group<T, TDimension, TGroup>;
+        group<TGroup>(
+            groupValue: (data: TDimension) => TGroup,
+        ): Group<T, TDimension, TGroup>;
         groupAll(): GroupAll<T, T>;
         groupAll<TValue>(): GroupAll<T, TValue>;
     }

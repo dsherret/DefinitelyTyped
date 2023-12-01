@@ -112,7 +112,10 @@ declare class Watchpack extends EventEmitter {
      * Collects time info objects for all known files and directories
      * This includes info from files not directly watched
      */
-    collectTimeInfoEntries(fileInfoEntries: Map<string, Entry>, directoryInfoEntries: Map<string, Entry>): void;
+    collectTimeInfoEntries(
+        fileInfoEntries: Map<string, Entry>,
+        directoryInfoEntries: Map<string, Entry>,
+    ): void;
 
     /**
      * Returns a `Map` with all known time info objects for files and directories
@@ -141,7 +144,12 @@ declare class Watchpack extends EventEmitter {
 
 declare namespace Watchpack {
     interface WatcherOptions {
-        ignored?: string[] | string | RegExp | ((path: string) => boolean) | undefined;
+        ignored?:
+            | string[]
+            | string
+            | RegExp
+            | ((path: string) => boolean)
+            | undefined;
         poll?: boolean | number | undefined;
         followSymlinks?: boolean;
     }

@@ -17,9 +17,18 @@ const authInput = {
     password: "password",
 };
 const basicAuthInterceptor = new BasicAuthInterceptor(authInput);
-const client: Client = new Client({ baseUrl: "", interceptors: basicAuthInterceptor }); // $ExpectType Client
-client.on("subscribe", (topic: string, topicSubscription: TopicSubscription) => {});
-client.on("unsubscribe", (topic: string, topicSubscription: TopicSubscription) => {});
+const client: Client = new Client({
+    baseUrl: "",
+    interceptors: basicAuthInterceptor,
+}); // $ExpectType Client
+client.on(
+    "subscribe",
+    (topic: string, topicSubscription: TopicSubscription) => {},
+);
+client.on(
+    "unsubscribe",
+    (topic: string, topicSubscription: TopicSubscription) => {},
+);
 
 client.on("poll:start", () => {});
 client.on("poll:stop", () => {});

@@ -10,10 +10,14 @@ import resolveBin from "resolve-bin";
 
 // Asynchronous with options
 (() => {
-    resolveBin("my-package", { executable: "custom-package-name" }, (error, path) => {
-        error; // $ExpectType Error | null
-        path; // $ExpectType string
-    });
+    resolveBin(
+        "my-package",
+        { executable: "custom-package-name" },
+        (error, path) => {
+            error; // $ExpectType Error | null
+            path; // $ExpectType string
+        },
+    );
 })();
 
 // Synchronous

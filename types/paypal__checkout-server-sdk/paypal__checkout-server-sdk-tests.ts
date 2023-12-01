@@ -4,9 +4,17 @@ import paypal = require("@paypal/checkout-server-sdk");
 const clientId = "<<PAYPAL-CLIENT-ID>>";
 const clientSecret = "<<PAYPAL-CLIENT-SECRET>>";
 
-const sandboxEnvironment = new paypal.core.SandboxEnvironment(clientId, clientSecret); // $ExpectType SandboxEnvironment
+const sandboxEnvironment = new paypal.core.SandboxEnvironment(
+    clientId,
+    clientSecret,
+); // $ExpectType SandboxEnvironment
 const liveEnvironment = new paypal.core.LiveEnvironment(clientId, clientSecret); // $ExpectType LiveEnvironment
-const paypalEnvironment = new paypal.core.PayPalEnvironment("clientId", "clientSecret", "baseUrl", "webUrl"); // $ExpectType PayPalEnvironment
+const paypalEnvironment = new paypal.core.PayPalEnvironment(
+    "clientId",
+    "clientSecret",
+    "baseUrl",
+    "webUrl",
+); // $ExpectType PayPalEnvironment
 
 {
     new paypal.core.PayPalHttpClient(sandboxEnvironment);
@@ -16,12 +24,16 @@ const paypalEnvironment = new paypal.core.PayPalEnvironment("clientId", "clientS
 
 const client = new paypal.core.PayPalHttpClient(paypalEnvironment); // $ExpectType PayPalHttpClient
 
-const ordersAuthorizeRequest = new paypal.orders.OrdersAuthorizeRequest("orderId"); // $ExpectType OrdersAuthorizeRequest
+const ordersAuthorizeRequest = new paypal.orders.OrdersAuthorizeRequest(
+    "orderId",
+); // $ExpectType OrdersAuthorizeRequest
 const ordersCaptureRequest = new paypal.orders.OrdersCaptureRequest("orderId"); // $ExpectType OrdersCaptureRequest
 const ordersCreateRequest = new paypal.orders.OrdersCreateRequest(); // $ExpectType OrdersCreateRequest
 const ordersGetRequest = new paypal.orders.OrdersGetRequest("orderId"); // $ExpectType OrdersGetRequest
 const ordersPatchRequest = new paypal.orders.OrdersPatchRequest("orderId"); // $ExpectType OrdersPatchRequest
-const ordersValidateRequest = new paypal.orders.OrdersValidateRequest("orderId"); // $ExpectType OrdersValidateRequest
+const ordersValidateRequest = new paypal.orders.OrdersValidateRequest(
+    "orderId",
+); // $ExpectType OrdersValidateRequest
 
 ordersCreateRequest.requestBody({
     intent: "CAPTURE",
@@ -49,8 +61,10 @@ ordersPatchRequest.requestBody([
     },
 ]);
 
-(async () => {
-    const ordersAuthorizeResponse = await client.execute(ordersAuthorizeRequest);
+async () => {
+    const ordersAuthorizeResponse = await client.execute(
+        ordersAuthorizeRequest,
+    );
     const ordersCaptureResponse = await client.execute(ordersCaptureRequest);
     const ordersCreateResponse = await client.execute(ordersCreateRequest);
     const ordersGetResponse = await client.execute(ordersGetRequest);
@@ -100,7 +114,7 @@ ordersPatchRequest.requestBody([
         result.status; // $ExpectType Status
         result.update_time; // $ExpectType string
     }
-});
+};
 
 {
     client.execute(ordersCreateRequest); // $ExpectType Promise<HttpResponse<any>>
@@ -109,7 +123,9 @@ ordersPatchRequest.requestBody([
     client.getTimeout(); // $ExpectType number
 }
 
-const accessTokenRequest = new paypal.core.AccessTokenRequest(paypalEnvironment); // $ExpectType AccessTokenRequest
+const accessTokenRequest = new paypal.core.AccessTokenRequest(
+    paypalEnvironment,
+); // $ExpectType AccessTokenRequest
 new paypal.core.AccessTokenRequest(paypalEnvironment, "refreshToken"); // $ExpectType AccessTokenRequest
 
 // $ExpectType AccessToken
@@ -130,7 +146,10 @@ const tokecnCache = new paypal.core.TokenCache();
 
 {
     paypal.core.TokenCache.cacheForEnvironment(paypalEnvironment);
-    paypal.core.TokenCache.cacheForEnvironment(paypalEnvironment, "refresh_token");
+    paypal.core.TokenCache.cacheForEnvironment(
+        paypalEnvironment,
+        "refresh_token",
+    );
 
     paypal.core.TokenCache.cacheForEnvironment(sandboxEnvironment);
     paypal.core.TokenCache.cacheForEnvironment(liveEnvironment);
@@ -146,7 +165,10 @@ const tokecnCache = new paypal.core.TokenCache();
     tokecnCache.notify(); // $ExpectType void
 }
 
-const refreshToken = new paypal.core.RefreshTokenRequest(paypalEnvironment, "code"); // $ExpectType RefreshTokenRequest
+const refreshToken = new paypal.core.RefreshTokenRequest(
+    paypalEnvironment,
+    "code",
+); // $ExpectType RefreshTokenRequest
 new paypal.core.RefreshTokenRequest(liveEnvironment, "code"); // $ExpectType RefreshTokenRequest
 new paypal.core.RefreshTokenRequest(sandboxEnvironment, "code"); // $ExpectType RefreshTokenRequest
 
@@ -157,25 +179,44 @@ new paypal.core.RefreshTokenRequest(sandboxEnvironment, "code"); // $ExpectType 
     refreshToken.verb; // $ExpectType "POST"
 }
 
-const authorizationsCaptureRequest = new paypal.payments.AuthorizationsCaptureRequest("authorizationId"); // $ExpectType AuthorizationsCaptureRequest
-const authorizationsGetRequest = new paypal.payments.AuthorizationsGetRequest("authorizationId"); // $ExpectType AuthorizationsGetRequest
-const authorizationsReauthorizeRequest = new paypal.payments.AuthorizationsReauthorizeRequest("authorizationId"); // $ExpectType AuthorizationsReauthorizeRequest
-const authorizationsVoidRequest = new paypal.payments.AuthorizationsVoidRequest("authorizationId"); // $ExpectType AuthorizationsVoidRequest
-const capturesGetRequest = new paypal.payments.CapturesGetRequest("authorizationId"); // $ExpectType CapturesGetRequest
-const capturesRefundRequest = new paypal.payments.CapturesRefundRequest("captureId"); // $ExpectType CapturesRefundRequest
+const authorizationsCaptureRequest =
+    new paypal.payments.AuthorizationsCaptureRequest("authorizationId"); // $ExpectType AuthorizationsCaptureRequest
+const authorizationsGetRequest = new paypal.payments.AuthorizationsGetRequest(
+    "authorizationId",
+); // $ExpectType AuthorizationsGetRequest
+const authorizationsReauthorizeRequest =
+    new paypal.payments.AuthorizationsReauthorizeRequest("authorizationId"); // $ExpectType AuthorizationsReauthorizeRequest
+const authorizationsVoidRequest = new paypal.payments.AuthorizationsVoidRequest(
+    "authorizationId",
+); // $ExpectType AuthorizationsVoidRequest
+const capturesGetRequest = new paypal.payments.CapturesGetRequest(
+    "authorizationId",
+); // $ExpectType CapturesGetRequest
+const capturesRefundRequest = new paypal.payments.CapturesRefundRequest(
+    "captureId",
+); // $ExpectType CapturesRefundRequest
 const refundsGetRequest = new paypal.payments.RefundsGetRequest("refundId"); // $ExpectType RefundsGetRequest
 
-(async () => {
-    const authorizationsCaptureResponse = await client.execute(authorizationsCaptureRequest);
-    const authorizationsGetResponse = await client.execute(authorizationsGetRequest);
-    const authorizationsReauthorizeResponse = await client.execute(authorizationsReauthorizeRequest);
-    const authorizationsVoidResponse = await client.execute(authorizationsVoidRequest);
+async () => {
+    const authorizationsCaptureResponse = await client.execute(
+        authorizationsCaptureRequest,
+    );
+    const authorizationsGetResponse = await client.execute(
+        authorizationsGetRequest,
+    );
+    const authorizationsReauthorizeResponse = await client.execute(
+        authorizationsReauthorizeRequest,
+    );
+    const authorizationsVoidResponse = await client.execute(
+        authorizationsVoidRequest,
+    );
     const capturesGetResponse = await client.execute(capturesGetRequest);
     const capturesRefundResponse = await client.execute(capturesRefundRequest);
     const refundsGetResponse = await client.execute(refundsGetRequest);
 
     if (authorizationsCaptureResponse.result) {
-        const result = authorizationsCaptureResponse.result as paypal.payments.Capture;
+        const result =
+            authorizationsCaptureResponse.result as paypal.payments.Capture;
         result.amount; // $ExpectType Money
         result.create_time; // $ExpectType string
         result.custom_id; // $ExpectType string
@@ -241,4 +282,4 @@ const refundsGetRequest = new paypal.payments.RefundsGetRequest("refundId"); // 
         result.status; // $ExpectType Status
         result.update_time; // $ExpectType string
     }
-});
+};

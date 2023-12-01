@@ -6,6 +6,10 @@ useNotification().removeNotification("2020-04-06T21:31:29.000Z")();
 
 <NotificationsProvider
     renderNotification={({ removeNotification, payload }) => {
-        return React.createElement("span", { onClick: removeNotification }, `<pre>${JSON.stringify(payload)}</pre>`);
+        return React.createElement(
+            "span",
+            { onClick: removeNotification },
+            `<pre>${JSON.stringify(payload)}</pre>`,
+        );
     }}
 />;

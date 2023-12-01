@@ -1,9 +1,18 @@
 import * as React from "react";
-import { ImageSourcePropType, StyleProp, TextStyle, ViewStyle } from "react-native";
+import {
+    ImageSourcePropType,
+    StyleProp,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
 import XDateLocaleConfig = require("xdate");
 
 export class LocaleConfig extends XDateLocaleConfig {
-    static locales: { [key: string]: typeof XDateLocaleConfig.locales[string] & { today: string } };
+    static locales: {
+        [key: string]: (typeof XDateLocaleConfig.locales)[string] & {
+            today: string;
+        };
+    };
 }
 
 export interface DateObject {
@@ -121,7 +130,12 @@ export interface PeriodMarking {
     disabled?: boolean | undefined;
 }
 
-export type Marking = CustomMarking | DotMarking | MultiDotMarking | MultiPeriodMarking | PeriodMarking;
+export type Marking =
+    | CustomMarking
+    | DotMarking
+    | MultiDotMarking
+    | MultiPeriodMarking
+    | PeriodMarking;
 
 export interface CustomMarkingProps {
     markingType: "custom";
@@ -222,7 +236,10 @@ export interface CalendarBaseProps {
     /**
      *  Provide custom day rendering component.
      */
-    dayComponent?: React.Component<DayComponentProps> | React.FC<DayComponentProps> | undefined;
+    dayComponent?:
+        | React.Component<DayComponentProps>
+        | React.FC<DayComponentProps>
+        | undefined;
 
     /**
      *  Disable days by default. Default = false
@@ -323,7 +340,9 @@ export interface CalendarBaseProps {
     /**
      *  Replace default arrows with custom ones (direction can be 'left' or 'right')
      */
-    renderArrow?: ((direction: "left" | "right") => React.ReactNode) | undefined;
+    renderArrow?:
+        | ((direction: "left" | "right") => React.ReactNode)
+        | undefined;
 
     /**
      *  Show week numbers to the left. Default = false
@@ -353,13 +372,13 @@ export interface CalendarBaseProps {
     /**
      * Allow rendering of a totally custom header
      */
-    customHeader?: ((props: HeaderComponentProps) => React.ReactNode) | undefined;
+    customHeader?:
+        | ((props: HeaderComponentProps) => React.ReactNode)
+        | undefined;
 }
 
-export type CalendarProps =
-    & CalendarMarkingProps
-    & CalendarBaseProps
-    & {
+export type CalendarProps = CalendarMarkingProps &
+    CalendarBaseProps & {
         /**
          * Enable the option to swipe between months. Default = false
          */
@@ -420,7 +439,9 @@ export interface CalendarListBaseProps extends CalendarBaseProps {
     selected?: string | undefined;
 }
 
-export class CalendarList extends React.Component<CalendarMarkingProps & CalendarListBaseProps> {}
+export class CalendarList extends React.Component<
+    CalendarMarkingProps & CalendarListBaseProps
+> {}
 
 export interface AgendaThemeStyle extends CalendarTheme {
     agendaDayNumColor?: string | undefined;
@@ -521,7 +542,9 @@ export interface AgendaProps<TItem> {
      *  Specify how each day should be rendered.
      *  Date can be undefined if the item has not property date.
      */
-    renderDay?: ((date: DateObject | undefined, item: TItem) => React.ReactNode) | undefined;
+    renderDay?:
+        | ((date: DateObject | undefined, item: TItem) => React.ReactNode)
+        | undefined;
 
     /**
      *  Specify what should be rendered instead of ActivityIndicator
@@ -568,7 +591,9 @@ export interface AgendaProps<TItem> {
      */
     theme?: AgendaThemeStyle | undefined;
 }
-export class Agenda<TItem> extends React.Component<AgendaProps<TItem> & CalendarMarkingProps> {}
+export class Agenda<TItem> extends React.Component<
+    AgendaProps<TItem> & CalendarMarkingProps
+> {}
 
 export interface TimelineEvent {
     start: string;
@@ -667,7 +692,9 @@ export interface WeekCalendarProps extends CalendarListBaseProps {
     allowShadow?: boolean;
 }
 
-export class WeekCalendar extends React.Component<CalendarMarkingProps & WeekCalendarProps> {}
+export class WeekCalendar extends React.Component<
+    CalendarMarkingProps & WeekCalendarProps
+> {}
 
 export type Positions = "closed" | "open";
 
@@ -714,4 +741,6 @@ export interface ExpandableCalendarProps extends CalendarListBaseProps {
     closeThreshold?: number;
 }
 
-export class ExpandableCalendar extends React.Component<CalendarMarkingProps & ExpandableCalendarProps> {}
+export class ExpandableCalendar extends React.Component<
+    CalendarMarkingProps & ExpandableCalendarProps
+> {}

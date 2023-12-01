@@ -62,11 +62,16 @@ export interface Platform {
 
     platformPrivateKey(): Promise<string | false>;
 
-    platformAuthConfig(method: string, key: string): Promise<PlatformAuthConfig | boolean>;
+    platformAuthConfig(
+        method: string,
+        key: string,
+    ): Promise<PlatformAuthConfig | boolean>;
 
     platformAuthEndpoint(authEndpoint?: string): Promise<string | boolean>;
 
-    platformAccessTokenEndpoint(accesstokenEndpoint?: string): Promise<string | boolean>;
+    platformAccessTokenEndpoint(
+        accesstokenEndpoint?: string,
+    ): Promise<string | boolean>;
 
     platformAccessToken(scopes: string): Promise<string | false>;
 

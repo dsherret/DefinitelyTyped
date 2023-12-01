@@ -9,7 +9,13 @@ export default class Rotation extends Initializer {
     /**
      * Constructs a Rotation property instance.
      */
-    constructor(x?: number, y?: number, z?: number, useEmitterRotation?: boolean, isEnabled?: boolean);
+    constructor(
+        x?: number,
+        y?: number,
+        z?: number,
+        useEmitterRotation?: boolean,
+        isEnabled?: boolean,
+    );
 
     /**
      * Sets the particle's initial rotation.

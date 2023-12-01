@@ -19,7 +19,11 @@ declare class TextBuffer {
 
     setEmptyCellAttr(attr: ScreenBuffer.Attributes | number): void;
 
-    setAttrAt(attr: ScreenBuffer.Attributes | number, x: number, y: number): void;
+    setAttrAt(
+        attr: ScreenBuffer.Attributes | number,
+        x: number,
+        y: number,
+    ): void;
     setAttrCodeAt(attr: number, x: number, y: number): void;
 
     setAttrRegion(
@@ -56,16 +60,14 @@ declare class TextBuffer {
 
     iterate(
         options: { finalCall: boolean },
-        callback: (
-            cellData: {
-                offset: number;
-                x: number;
-                y: number;
-                text: string;
-                attr: number;
-                misc: any;
-            },
-        ) => void,
+        callback: (cellData: {
+            offset: number;
+            x: number;
+            y: number;
+            text: string;
+            attr: number;
+            misc: any;
+        }) => void,
     ): void;
 
     draw(options?: ScreenBuffer.DrawOptions): void;

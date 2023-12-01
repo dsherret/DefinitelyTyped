@@ -22,7 +22,12 @@ declare namespace Device {
         subtitles_style?: {
             backgroundColor?: string;
             foregroundColor?: string;
-            edgeType?: "NONE" | "OUTLINE" | "DROP_SHADOW" | "RAISED" | "DEPRESSED";
+            edgeType?:
+                | "NONE"
+                | "OUTLINE"
+                | "DROP_SHADOW"
+                | "RAISED"
+                | "DEPRESSED";
             edgeColor?: string;
             fontScale?: number;
             fontStyle?: "NORMAL" | "BOLD" | "ITALIC" | "BOLD_ITALIC";
@@ -61,7 +66,7 @@ declare namespace Device {
         title?: string;
         subtitle?: string;
         images?: readonly Image[];
-        releaseDate?: string; /* ISO 8601 */
+        releaseDate?: string /* ISO 8601 */;
     }
 
     interface MovieMediaMetadata {
@@ -70,7 +75,7 @@ declare namespace Device {
         subtitle?: string;
         studio?: string;
         images?: readonly Image[];
-        releaseDate?: string; /* ISO 8601 */
+        releaseDate?: string /* ISO 8601 */;
     }
 
     interface TvShowMediaMetadata {
@@ -80,7 +85,7 @@ declare namespace Device {
         season?: number;
         episode?: number;
         images?: readonly Image[];
-        originalAirDate?: string; /* ISO 8601 */
+        originalAirDate?: string /* ISO 8601 */;
     }
 
     interface MusicTrackMediaMetadata {
@@ -93,7 +98,7 @@ declare namespace Device {
         trackNumber?: number;
         discNumber?: number;
         images?: readonly Image[];
-        releaseDate?: string; /* ISO 8601 */
+        releaseDate?: string /* ISO 8601 */;
     }
 
     interface PhotoMediaMetadata {
@@ -105,7 +110,7 @@ declare namespace Device {
         longitude?: number;
         width?: number;
         height?: number;
-        creationDateTime?: string; /* ISO 8601 */
+        creationDateTime?: string /* ISO 8601 */;
     }
 
     interface DeviceStatus {
@@ -113,8 +118,7 @@ declare namespace Device {
         playbackRate: number;
         playerState: "IDLE" | "PLAYING" | "PAUSED" | "BUFFERING";
         currentTime: number;
-        supportedMediaCommands:
-            number; /* Flags using bits: 1 Pause; 2 Seek; 4 Stream volume; 8 Stream mute; 16 Skip forward; 32 Skip backward */
+        supportedMediaCommands: number /* Flags using bits: 1 Pause; 2 Seek; 4 Stream volume; 8 Stream mute; 16 Skip forward; 32 Skip backward */;
         volume: DeviceVolume;
         media?: {
             contentId: string;
@@ -127,11 +131,10 @@ declare namespace Device {
                 | MusicTrackMediaMetadata
                 | PhotoMediaMetadata;
             duration?: number;
-            customData?:
-                object; /* Application-specific blob of data defined by either the sender application or the receiver application */
+            customData?: object /* Application-specific blob of data defined by either the sender application or the receiver application */;
         };
         idleReason?: "CANCELLED" | "INTERRUPTED" | "FINISHED" | "ERROR";
-        customData?: object; /* Application-specific blob of data defined by the receiver application */
+        customData?: object /* Application-specific blob of data defined by the receiver application */;
     }
 }
 
@@ -151,17 +154,24 @@ declare class Device extends EventEmitter {
         options: Device.PlaybackOptions,
         callback?: (error?: Error) => void,
     ): void;
-    play(resource: string | Device.MediaResource, callback?: (error?: Error) => void): void;
+    play(
+        resource: string | Device.MediaResource,
+        callback?: (error?: Error) => void,
+    ): void;
 
     /**
      * Gets the current status of the cast device including data about current media playback.
      */
-    getStatus(callback?: (error?: Error, status?: Device.DeviceStatus) => void): void;
+    getStatus(
+        callback?: (error?: Error, status?: Device.DeviceStatus) => void,
+    ): void;
 
     /**
      * Gets the current status of the cast device including data about current media playback.
      */
-    getReceiverStatus(callback?: (error?: Error, status?: Device.DeviceStatus) => void): void;
+    getReceiverStatus(
+        callback?: (error?: Error, status?: Device.DeviceStatus) => void,
+    ): void;
 
     /**
      * Seek to the specificTime in seconds.
@@ -191,7 +201,9 @@ declare class Device extends EventEmitter {
     /**
      * Gets the volume of the current playback, if any.
      */
-    getVolume(callback?: (error?: Error, volume?: Device.DeviceVolume) => void): void;
+    getVolume(
+        callback?: (error?: Error, volume?: Device.DeviceVolume) => void,
+    ): void;
 
     /**
      * Set the volume to a specific level (from 0.0 to 1.0).
@@ -221,7 +233,10 @@ declare class Device extends EventEmitter {
     /**
      * Choose the subtitles font size with fontSize. The default is 1.0.
      */
-    changeSubtitleSize(fontScale: number, callback?: (error?: Error) => void): void;
+    changeSubtitleSize(
+        fontScale: number,
+        callback?: (error?: Error) => void,
+    ): void;
 
     /**
      * Get the current time of the media playing (in seconds). It's a shortcut for getting the currentTime from the status.

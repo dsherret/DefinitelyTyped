@@ -17,7 +17,8 @@ class Example extends React.Component {
                         content="Hello"
                         config={{
                             plugins: "autolink link image lists print preview",
-                            toolbar: "undo redo | bold italic | alignleft aligncenter alignright",
+                            toolbar:
+                                "undo redo | bold italic | alignleft aligncenter alignright",
                         }}
                         onChange={(e, editor) => this._onChangeTextarea(e)}
                     />
@@ -25,10 +26,7 @@ class Example extends React.Component {
                 <div>
                     <h3>TinyMCE Inline</h3>
 
-                    <TinyMCE
-                        config={{ inline: true }}
-                        content="Click here!"
-                    />
+                    <TinyMCE config={{ inline: true }} content="Click here!" />
                 </div>
             </div>
         );

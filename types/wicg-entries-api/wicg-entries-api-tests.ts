@@ -1,5 +1,8 @@
-const isDirectoryEntry = (entry: FileSystemEntry): entry is FileSystemDirectoryEntry => entry.isDirectory;
-const isFileEntry = (entry: FileSystemEntry): entry is FileSystemFileEntry => entry.isFile;
+const isDirectoryEntry = (
+    entry: FileSystemEntry,
+): entry is FileSystemDirectoryEntry => entry.isDirectory;
+const isFileEntry = (entry: FileSystemEntry): entry is FileSystemFileEntry =>
+    entry.isFile;
 
 const resolveFile = (entry: File) => undefined;
 const resolveEntry = (entry: FileSystemEntry) => undefined;
@@ -16,7 +19,7 @@ filesystem.name: ${entry.filesystem.name}
 };
 
 const walkDirectoryReader = (reader: FileSystemDirectoryReader) => {
-    reader.readEntries(entries => {
+    reader.readEntries((entries) => {
         if (entries.length === 0) return;
         for (const entry of entries) {
             if (isDirectoryEntry(entry)) {
@@ -25,11 +28,16 @@ const walkDirectoryReader = (reader: FileSystemDirectoryReader) => {
             console.log(stringifyEntry(entry));
         }
     });
-    reader.readEntries(entries => console.log(entries.length), errorHandler);
+    reader.readEntries((entries) => console.log(entries.length), errorHandler);
 };
 
 const validGetDirectoryCalls = (entry: FileSystemDirectoryEntry) => {
-    entry.getDirectory("dir", { create: false, exclusive: false }, resolveEntry, errorHandler);
+    entry.getDirectory(
+        "dir",
+        { create: false, exclusive: false },
+        resolveEntry,
+        errorHandler,
+    );
     entry.getDirectory("dir", { create: false }, resolveEntry, errorHandler);
     entry.getDirectory("dir", { exclusive: false }, resolveEntry, errorHandler);
     entry.getDirectory("dir", {}, resolveEntry, errorHandler);
@@ -40,7 +48,12 @@ const validGetDirectoryCalls = (entry: FileSystemDirectoryEntry) => {
 };
 
 const validGetFileCalls = (entry: FileSystemDirectoryEntry) => {
-    entry.getFile("dir", { create: false, exclusive: false }, resolveEntry, errorHandler);
+    entry.getFile(
+        "dir",
+        { create: false, exclusive: false },
+        resolveEntry,
+        errorHandler,
+    );
     entry.getFile("dir", { create: false }, resolveEntry, errorHandler);
     entry.getFile("dir", { exclusive: false }, resolveEntry, errorHandler);
     entry.getFile("dir", {}, resolveEntry, errorHandler);

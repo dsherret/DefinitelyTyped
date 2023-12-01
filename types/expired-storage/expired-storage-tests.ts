@@ -21,8 +21,10 @@ expiredStorage.setJson("mjk", mjkModel, 1);
 const mjkTest = expiredStorage.getJson("mjk");
 
 if (
-    typeof mjkTest === "undefined" || mjkTest.firstName !== mjkModel.firstName
-    || mjkTest.middleName !== mjkModel.middleName || mjkTest.familyName !== mjkModel.familyName
+    typeof mjkTest === "undefined" ||
+    mjkTest.firstName !== mjkModel.firstName ||
+    mjkTest.middleName !== mjkModel.middleName ||
+    mjkTest.familyName !== mjkModel.familyName
 ) {
     throw new Error(".setJson method is not working!");
 }
@@ -38,7 +40,9 @@ expiredStorage.setItem("apc", "brena", 2);
 const goBackToSleep = expiredStorage.peek("apc");
 
 if (!goBackToSleep.isExpired && goBackToSleep.value !== "brena") {
-    throw new Error(".peek -- we have expired early... or our value was incorrect...");
+    throw new Error(
+        ".peek -- we have expired early... or our value was incorrect...",
+    );
 }
 
 do {
@@ -62,7 +66,9 @@ expiredStorage.updateExpiration("puscifer", 5000);
 const checkKeyTime = expiredStorage.getTimeLeft("puscifer");
 
 if (checkKeyTime && checkKeyTime >= 10000) {
-    throw new Error(".updateExpiration method is broken -- or .getTimeLeft method is broken.");
+    throw new Error(
+        ".updateExpiration method is broken -- or .getTimeLeft method is broken.",
+    );
 }
 
 if (!expiredStorage.isExpired("mjk")) {

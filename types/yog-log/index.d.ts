@@ -51,7 +51,9 @@ interface LogInfo {
 
 type LogInput = string | LogInfo | Error;
 
-declare function yog_log(config?: LogConfig): (req: Request, resp: Response, next: NextFunction) => any;
+declare function yog_log(
+    config?: LogConfig,
+): (req: Request, resp: Response, next: NextFunction) => any;
 
 declare namespace yog_log {
     class Logger {
@@ -108,7 +110,11 @@ declare namespace yog_log {
         setParams(name: string, value: any): void;
 
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        writeLog(intLevel: LevelInt, options: WriteLogConfig, log_format: string): void | false;
+        writeLog(
+            intLevel: LevelInt,
+            options: WriteLogConfig,
+            log_format: string,
+        ): void | false;
     }
 
     function getLogger(config?: LogConfig): Logger;

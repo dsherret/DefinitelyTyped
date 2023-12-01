@@ -1,4 +1,11 @@
-import { completionItem, install, log, parseEnv, TabtabEnv, uninstall } from "tabtab";
+import {
+    completionItem,
+    install,
+    log,
+    parseEnv,
+    TabtabEnv,
+    uninstall,
+} from "tabtab";
 import minimist = require("minimist");
 
 // $ExpectType CompletionItem
@@ -43,7 +50,8 @@ const completion = (env: TabtabEnv) => {
         "someCommand:someCommand is some kind of command with a description",
         {
             name: "someOtherCommand:hey",
-            description: "You must add a description for items with \":\" in them",
+            description:
+                'You must add a description for items with ":" in them',
         },
         "anotherOne",
     ]);
@@ -75,7 +83,7 @@ const run = (): Promise<void> => {
     // The completion command is added automatically by tabtab when the program
     // is completed.
     if (cmd === "completion") {
-        return new Promise<void>(res => {
+        return new Promise<void>((res) => {
             const env = parseEnv(process.env);
             completion(env);
             res();
@@ -85,4 +93,4 @@ const run = (): Promise<void> => {
     return new Promise<void>((_, rej) => rej());
 };
 
-run().catch(e => console.error(e));
+run().catch((e) => console.error(e));

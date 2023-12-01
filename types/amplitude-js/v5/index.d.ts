@@ -1,6 +1,10 @@
 export as namespace amplitude;
 
-export type Callback = (responseCode: number, responseBody: string, details?: { reason: string }) => void;
+export type Callback = (
+    responseCode: number,
+    responseBody: string,
+    details?: { reason: string },
+) => void;
 export type LogReturn = number | undefined;
 
 export interface Config {
@@ -30,21 +34,23 @@ export interface Config {
     sessionTimeout?: number | undefined;
     sameSiteCookie?: "Lax" | "Strict" | "None" | undefined;
     useNativeDeviceInfo?: boolean | undefined;
-    trackingOptions?: {
-        city?: boolean | undefined;
-        country?: boolean | undefined;
-        carrier?: boolean | undefined;
-        device_manufacturer?: boolean | undefined;
-        device_model?: boolean | undefined;
-        dma?: boolean | undefined;
-        ip_address?: boolean | undefined;
-        language?: boolean | undefined;
-        os_name?: boolean | undefined;
-        os_version?: boolean | undefined;
-        platform?: boolean | undefined;
-        region?: boolean | undefined;
-        version_name?: boolean | undefined;
-    } | undefined;
+    trackingOptions?:
+        | {
+              city?: boolean | undefined;
+              country?: boolean | undefined;
+              carrier?: boolean | undefined;
+              device_manufacturer?: boolean | undefined;
+              device_model?: boolean | undefined;
+              dma?: boolean | undefined;
+              ip_address?: boolean | undefined;
+              language?: boolean | undefined;
+              os_name?: boolean | undefined;
+              os_version?: boolean | undefined;
+              platform?: boolean | undefined;
+              region?: boolean | undefined;
+              version_name?: boolean | undefined;
+          }
+        | undefined;
     unsetParamsReferrerOnNewSession?: boolean | undefined;
     unsentKey?: string | undefined;
     unsentIdentifyKey?: string | undefined;
@@ -57,11 +63,20 @@ export class Identify {
     /** Append a value or values to a user property */
     append(key: string, value: number | string | any[] | object): Identify;
     /** Prepend a value or values to a user property */
-    prepend(key: string, value: boolean | number | string | any[] | object): Identify;
+    prepend(
+        key: string,
+        value: boolean | number | string | any[] | object,
+    ): Identify;
     /** Sets the value of a given user property */
-    set(key: string, value: boolean | number | string | any[] | object): Identify;
+    set(
+        key: string,
+        value: boolean | number | string | any[] | object,
+    ): Identify;
     /** Sets the value of a given user property only once */
-    setOnce(key: string, value: boolean | number | string | any[] | object): Identify;
+    setOnce(
+        key: string,
+        value: boolean | number | string | any[] | object,
+    ): Identify;
     /** Unset and remove a user property */
     unset(key: string): Identify;
 }
@@ -79,7 +94,12 @@ export class AmplitudeClient {
 
     options: Config;
 
-    init(apiKey: string, userId?: string, config?: Config, callback?: (client: AmplitudeClient) => void): void;
+    init(
+        apiKey: string,
+        userId?: string,
+        config?: Config,
+        callback?: (client: AmplitudeClient) => void,
+    ): void;
 
     setVersionName(versionName: string): void;
 
@@ -104,10 +124,20 @@ export class AmplitudeClient {
     setGroup(groupType: string, groupName: string | string[]): void;
 
     logEvent(event: string, data?: any, callback?: Callback): LogReturn;
-    logEventWithGroups(event: string, data?: any, groups?: any, callback?: Callback): LogReturn;
+    logEventWithGroups(
+        event: string,
+        data?: any,
+        groups?: any,
+        callback?: Callback,
+    ): LogReturn;
     logRevenueV2(revenue_obj: Revenue): LogReturn;
     logRevenue(pric: number, quantity: number, product: string): LogReturn;
-    logEventWithTimestamp(event: string, data?: any, timestamp?: number, callback?: Callback): LogReturn;
+    logEventWithTimestamp(
+        event: string,
+        data?: any,
+        timestamp?: number,
+        callback?: Callback,
+    ): LogReturn;
 
     Identify: typeof Identify;
     Revenue: typeof Revenue;
@@ -175,12 +205,21 @@ export function setGroup(groupType: string, groupName: string | string[]): void;
 /**
  * @deprecated Please use amplitude.getInstance().logEvent(eventType, eventProperties, opt_callback);
  */
-export function logEvent(event: string, data?: any, callback?: Callback): LogReturn;
+export function logEvent(
+    event: string,
+    data?: any,
+    callback?: Callback,
+): LogReturn;
 
 /**
  * Log an event with eventType, eventProperties, and groups
  */
-export function logEventWithGroups(event: string, data?: any, groups?: any, callback?: Callback): LogReturn;
+export function logEventWithGroups(
+    event: string,
+    data?: any,
+    groups?: any,
+    callback?: Callback,
+): LogReturn;
 /**
  * @deprecated Please use amplitude.getInstance().logRevenueV2(revenue_obj);
  */
@@ -188,8 +227,17 @@ export function logRevenueV2(revenue_obj: Revenue): LogReturn;
 /**
  * @deprecated Please use amplitude.getInstance().logRevenueV2(revenue_obj);
  */
-export function logRevenue(pric: number, quantity: number, product: string): LogReturn;
-export function logEventWithTimestamp(event: string, data?: any, timestamp?: number, callback?: Callback): LogReturn;
+export function logRevenue(
+    pric: number,
+    quantity: number,
+    product: string,
+): LogReturn;
+export function logEventWithTimestamp(
+    event: string,
+    data?: any,
+    timestamp?: number,
+    callback?: Callback,
+): LogReturn;
 
 export function getInstance(instanceName?: string): AmplitudeClient;
 export const __VERSION__: string;

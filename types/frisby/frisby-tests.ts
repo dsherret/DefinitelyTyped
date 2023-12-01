@@ -19,36 +19,36 @@ frisby
 frisby
     .get(URL + "/users/3.json")
     .promise()
-    .then(response => {
+    .then((response) => {
         response.json;
     });
 
 frisby
     .get(URL + "/users/3.json")
-    .then(response => {
+    .then((response) => {
         return response.responseTime;
     })
     .promise()
-    .then(responseTime => {
+    .then((responseTime) => {
         const time: number = responseTime;
     });
 
 frisby
     .get(URL + "/users/3.json")
-    .then(response => {
+    .then((response) => {
         return response.responseTime;
     })
-    .then(responseTime => {
+    .then((responseTime) => {
         const time: number = responseTime;
     })
     .done(() => {});
 
 frisby
     .get(URL + "/users/3.json")
-    .then(async response => {
+    .then(async (response) => {
         return response.responseTime;
     })
-    .then(async responseTime => {
+    .then(async (responseTime) => {
         const time: number = responseTime;
     })
     .done(() => {});
@@ -62,5 +62,5 @@ frisby
 frisby
     .get(URL + "/users/3.json")
     .expect("json", { id: 1 })
-    .catch(err => {})
+    .catch((err) => {})
     .done(() => {});

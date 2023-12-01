@@ -9,9 +9,17 @@ export class AnnotatedCommit {
      * @param remoteUrl -     url of the remote
      * @param id - the commit object id of the remote branch
      */
-    static fromFetchhead(repo: Repository, branchName: string, remoteUrl: string, id: Oid): Promise<AnnotatedCommit>;
+    static fromFetchhead(
+        repo: Repository,
+        branchName: string,
+        remoteUrl: string,
+        id: Oid,
+    ): Promise<AnnotatedCommit>;
     static fromRef(repo: Repository, ref: Reference): Promise<AnnotatedCommit>;
-    static fromRevspec(repo: Repository, revspec: string): Promise<AnnotatedCommit>;
+    static fromRevspec(
+        repo: Repository,
+        revspec: string,
+    ): Promise<AnnotatedCommit>;
     static lookup(repo: Repository, id: Oid): Promise<AnnotatedCommit>;
 
     id(): Oid;

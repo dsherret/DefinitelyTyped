@@ -5,7 +5,16 @@ import { Readable } from "stream";
 
 interface LineByLineReaderOptions {
     /** The encoding to use. */
-    encoding?: "ascii" | "utf8" | "utf16le" | "ucs2" | "base64" | "latin1" | "binary" | "hex" | undefined;
+    encoding?:
+        | "ascii"
+        | "utf8"
+        | "utf16le"
+        | "ucs2"
+        | "base64"
+        | "latin1"
+        | "binary"
+        | "hex"
+        | undefined;
     /** If set to true, empty lines do not emit the "line" event. */
     skipEmptyLines?: boolean | undefined;
 }

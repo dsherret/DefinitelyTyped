@@ -8,7 +8,12 @@ export default class RadialVelocity extends Velocity {
     /**
      * Constructs a RadialVelocity initializer.
      */
-    constructor(radius?: number, vector3d?: Vector3D, theta?: number, isEnabled?: boolean);
+    constructor(
+        radius?: number,
+        vector3d?: Vector3D,
+        theta?: number,
+        isEnabled?: boolean,
+    );
     /**
      * @description Velocity radius span.
      */

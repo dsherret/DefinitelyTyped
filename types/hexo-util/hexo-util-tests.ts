@@ -41,7 +41,8 @@ directory = camelCaseKeys({ _foo_bar: "test", __bar_baz: "foo" });
 directory = camelCaseKeys({ fooBar: "test" });
 
 escapeDiacritic("Hell\u00F2 w\u00F2rld") === "Hello world";
-escapeHTML("<p>Hello \"world\".</p>") === "&lt;p&gt;Hello &quot;world&quot;.&lt;&#x2F;p&gt;";
+escapeHTML('<p>Hello "world".</p>') ===
+    "&lt;p&gt;Hello &quot;world&quot;.&lt;&#x2F;p&gt;";
 escapeRegExp("hello*world") === "hello\\*world";
 
 const sha1 = (content: string) => {
@@ -85,37 +86,22 @@ string = highlight(
 );
 
 string = highlight(
-    [
-        "const string = `",
-        "  Multi",
-        "  line",
-        "  string",
-        "`",
-    ].join("\n"),
+    ["const string = `", "  Multi", "  line", "  string", "`"].join("\n"),
     { lang: "js" },
 );
 
 string = highlight(
-    [
-        "const string = `",
-        "  Multi",
-        "",
-        "  string",
-        "`",
-    ].join("\n"),
+    ["const string = `", "  Multi", "", "  string", "`"].join("\n"),
     { lang: "js" },
 );
 
 string = highlight(
-    [
-        "\"use strict\";",
-        "const string = `",
-        "  Multi",
-        "",
-        "  string",
-        "`",
-    ].join("\n"),
-    { autoDetect: true },
+    ['"use strict";', "const string = `", "  Multi", "", "  string", "`"].join(
+        "\n",
+    ),
+    {
+        autoDetect: true,
+    },
 );
 
 string = highlight(
@@ -125,16 +111,18 @@ string = highlight(
         "sugar is sweet",
         "and so are you",
     ].join("\n"),
-    { mark: [1, 3, 5] },
+    {
+        mark: [1, 3, 5],
+    },
 );
 
-string.includes("class=\"line marked\">roses");
-string.includes("class=\"line\">violets");
-string.includes("class=\"line marked\">sugar");
-string.includes("class=\"line\">and");
+string.includes('class="line marked">roses');
+string.includes('class="line">violets');
+string.includes('class="line marked">sugar');
+string.includes('class="line">and');
 
-const gutterStart = "<td class=\"gutter\"><pre>";
-const codeStart = "<td class=\"code\"><pre>";
+const gutterStart = '<td class="gutter"><pre>';
+const codeStart = '<td class="code"><pre>';
 
 string = highlight(
     [
@@ -144,13 +132,16 @@ string = highlight(
         "    return false;",
         "}",
     ].join("\n"),
-    { hljs: true, lang: "javascript" },
+    {
+        hljs: true,
+        lang: "javascript",
+    },
 );
 
 string.includes(gutterStart);
 string.includes(codeStart);
-string.includes("code class=\"hljs javascript\"");
-string.includes("class=\"hljs-function\"");
+string.includes('code class="hljs javascript"');
+string.includes('class="hljs-function"');
 
 string = highlight(
     [
@@ -160,13 +151,17 @@ string = highlight(
         "    return false;",
         "}",
     ].join("\n"),
-    { hljs: true, gutter: false, lang: "javascript" },
+    {
+        hljs: true,
+        gutter: false,
+        lang: "javascript",
+    },
 );
 
 !string.includes(gutterStart);
 !string.includes(codeStart);
-string.includes("code class=\"hljs javascript\"");
-string.includes("class=\"hljs-function\"");
+string.includes('code class="hljs javascript"');
+string.includes('class="hljs-function"');
 
 string = htmlTag("hr");
 string = htmlTag("img", { src: "http://placekitten.com/200/300" });
@@ -222,7 +217,7 @@ string = htmlTag("ul", {}, "<li>Hello!</il>", false);
 }
 
 {
-    const pattern = new Pattern(str => {
+    const pattern = new Pattern((str) => {
         str === "foo";
         return {};
     });
@@ -274,7 +269,7 @@ slugize("Hello World", { transform: 1 }) === "hello-world";
 slugize("Hello World", { transform: 2 }) === "HELLO-WORLD";
 slugize("遊戲") === "遊戲";
 
-(async () => {
+async () => {
     const fixturePath = join(__dirname, "spawn_test.txt");
 
     string = await spawn("cat", [fixturePath]);
@@ -290,13 +285,19 @@ slugize("遊戲") === "遊戲";
     buffer = await spawn("cat", [fixturePath], { encoding: null });
 
     await spawn("echo", ["something"], { stdio: "inherit" });
-});
+};
 
 string = truncate("Once upon a time in a world far far away");
 string = truncate("Once upon");
 string = truncate("Once upon a time in a world far far away", { length: 17 });
-string = truncate("Once upon a time in a world far far away", { length: 17, separator: " " });
-string = truncate("And they found that many people were sleeping better.", { length: 25, omission: "... (continued)" });
+string = truncate("Once upon a time in a world far far away", {
+    length: 17,
+    separator: " ",
+});
+string = truncate("And they found that many people were sleeping better.", {
+    length: 25,
+    omission: "... (continued)",
+});
 
 string = wordWrap("Once upon a time");
 string = wordWrap(

@@ -29,18 +29,41 @@ client.organizations.list().then(zendeskCallback);
 client.organizations.show(123, zendeskCallback);
 client.organizations.show(123).then(zendeskCallback);
 client.organizations.create({ organization: { name: "foo" } }, zendeskCallback);
-client.organizations.create({ organization: { name: "foo" } }).then(zendeskCallback);
-client.organizations.createMany({ organizations: [{ name: "foo" }, { name: "bar" }] }, zendeskCallback);
-client.organizations.createMany({ organizations: [{ name: "foo" }, { name: "bar" }] }).then(zendeskCallback);
-client.organizations.update(123, { organization: { notes: "foo" } }, zendeskCallback);
-client.organizations.update(123, { organization: { notes: "foo" } }).then(zendeskCallback);
+client.organizations
+    .create({ organization: { name: "foo" } })
+    .then(zendeskCallback);
+client.organizations.createMany(
+    { organizations: [{ name: "foo" }, { name: "bar" }] },
+    zendeskCallback,
+);
+client.organizations
+    .createMany({ organizations: [{ name: "foo" }, { name: "bar" }] })
+    .then(zendeskCallback);
+client.organizations.update(
+    123,
+    { organization: { notes: "foo" } },
+    zendeskCallback,
+);
+client.organizations
+    .update(123, { organization: { notes: "foo" } })
+    .then(zendeskCallback);
 client.organizations.updateMany(
-    { organizations: [{ id: 123, notes: "foo" }, { id: 456, notes: "bar" }] },
+    {
+        organizations: [
+            { id: 123, notes: "foo" },
+            { id: 456, notes: "bar" },
+        ],
+    },
     zendeskCallback,
 );
-client.organizations.updateMany({ organizations: [{ id: 123, notes: "foo" }, { id: 456, notes: "bar" }] }).then(
-    zendeskCallback,
-);
+client.organizations
+    .updateMany({
+        organizations: [
+            { id: 123, notes: "foo" },
+            { id: 456, notes: "bar" },
+        ],
+    })
+    .then(zendeskCallback);
 client.organizations.delete(123, zendeskCallback);
 client.organizations.delete(123).then(zendeskCallback);
 client.organizations.search({ external_id: 123 }, zendeskCallback);
@@ -63,8 +86,13 @@ client.requests.listByOrganization(123, zendeskCallback);
 client.requests.listByOrganization(123).then(zendeskCallback);
 client.requests.getRequest(123, zendeskCallback);
 client.requests.getRequest(123).then(zendeskCallback);
-client.requests.create({ request: { subject: "foo", comment: {} } }, zendeskCallback);
-client.requests.create({ request: { subject: "foo", comment: {} } }).then(zendeskCallback);
+client.requests.create(
+    { request: { subject: "foo", comment: {} } },
+    zendeskCallback,
+);
+client.requests
+    .create({ request: { subject: "foo", comment: {} } })
+    .then(zendeskCallback);
 client.requests.update(123, { request: {} }, zendeskCallback);
 client.requests.update(123, { request: {} }).then(zendeskCallback);
 client.requests.listComments(123, zendeskCallback);
@@ -87,18 +115,31 @@ client.attachments.upload(
     },
 );
 
-const { r2: { upload: { token } } } = await (async () => {
+const {
+    r2: {
+        upload: { token },
+    },
+} = await (async () => {
     const r1: Attachments.ShowResponseModel = await client.attachments.show(1);
-    const r2: Attachments.UploadResponseModel = await client.attachments.upload("/path/to/file", {
-        filename: "filename",
-    });
-    const r3: Attachments.UploadResponseModel = await client.attachments.upload(Buffer.alloc(8), {
-        filename: "filename",
-    });
-    const r4: Attachments.UploadResponseModel = await client.attachments.upload(Buffer.from("Test"), {
-        filename: "filename",
-        binary: true,
-    });
+    const r2: Attachments.UploadResponseModel = await client.attachments.upload(
+        "/path/to/file",
+        {
+            filename: "filename",
+        },
+    );
+    const r3: Attachments.UploadResponseModel = await client.attachments.upload(
+        Buffer.alloc(8),
+        {
+            filename: "filename",
+        },
+    );
+    const r4: Attachments.UploadResponseModel = await client.attachments.upload(
+        Buffer.from("Test"),
+        {
+            filename: "filename",
+            binary: true,
+        },
+    );
 
     return { r1, r2, r3, r4 };
 })();
@@ -128,15 +169,20 @@ client.tickets.show(123, zendeskCallback);
 client.tickets.show(123).then(zendeskCallback);
 client.tickets.showMany([123, 234], zendeskCallback);
 client.tickets.showMany([123, 234]).then(zendeskCallback);
-client.tickets.create({
-    ticket: {
-        comment: {
-            uploads: [token],
+client.tickets.create(
+    {
+        ticket: {
+            comment: {
+                uploads: [token],
+            },
         },
     },
-}, zendeskCallback);
+    zendeskCallback,
+);
 client.tickets.create({ ticket: { comment: {} } }).then(zendeskCallback);
-client.tickets.create({ ticket: { comment: {}, requester: { name: "" } } }).then(zendeskCallback);
+client.tickets
+    .create({ ticket: { comment: {}, requester: { name: "" } } })
+    .then(zendeskCallback);
 client.tickets.createMany({ tickets: [{ comment: {} }] }, zendeskCallback);
 client.tickets.createMany({ tickets: [{ comment: {} }] }).then(zendeskCallback);
 client.tickets.update(123, { ticket: {} }, zendeskCallback);
@@ -185,8 +231,13 @@ client.groups.assignable(zendeskCallback);
 client.groups.assignable().then(zendeskCallback);
 client.groups.show(123, zendeskCallback);
 client.groups.show(123).then(zendeskCallback);
-client.groups.create({ group: { name: "foo", default: false, description: "bar" } }, zendeskCallback);
-client.groups.create({ group: { name: "foo", default: false, description: "bar" } }).then(zendeskCallback);
+client.groups.create(
+    { group: { name: "foo", default: false, description: "bar" } },
+    zendeskCallback,
+);
+client.groups
+    .create({ group: { name: "foo", default: false, description: "bar" } })
+    .then(zendeskCallback);
 client.groups.update(123, { group: { name: "foo" } }, zendeskCallback);
 client.groups.update(123, { group: { name: "foo" } }).then(zendeskCallback);
 client.groups.delete(123, zendeskCallback);
@@ -212,7 +263,9 @@ client.users.createMany({ users: [{ name: "foo" }] }).then(zendeskCallback);
 client.users.createOrUpdate({ user: { name: "foo" } }, zendeskCallback);
 client.users.createOrUpdate({ user: { name: "foo" } }).then(zendeskCallback);
 client.users.createOrUpdateMany({ users: [{ name: "foo" }] }, zendeskCallback);
-client.users.createOrUpdateMany({ users: [{ name: "foo" }] }).then(zendeskCallback);
+client.users
+    .createOrUpdateMany({ users: [{ name: "foo" }] })
+    .then(zendeskCallback);
 client.users.update(123, { user: {} }, zendeskCallback);
 client.users.update(123, { user: {} }).then(zendeskCallback);
 client.users.updateMany([123, 234], { users: [{}, {}] }, zendeskCallback);
@@ -243,8 +296,14 @@ client.useridentities.list(123, zendeskCallback);
 client.useridentities.list(123).then(zendeskCallback);
 client.useridentities.show(123, 234, zendeskCallback);
 client.useridentities.show(123, 234).then(zendeskCallback);
-client.useridentities.create(123, { identity: { type: "email", value: "foo@example.com" } }, zendeskCallback);
-client.useridentities.create(123, { identity: { type: "email", value: "foo@example.com" } }).then(zendeskCallback);
+client.useridentities.create(
+    123,
+    { identity: { type: "email", value: "foo@example.com" } },
+    zendeskCallback,
+);
+client.useridentities
+    .create(123, { identity: { type: "email", value: "foo@example.com" } })
+    .then(zendeskCallback);
 client.useridentities.update(123, 234, { identity: {} }, zendeskCallback);
 client.useridentities.update(123, 234, { identity: {} }).then(zendeskCallback);
 client.useridentities.makePrimary(123, 234, zendeskCallback);

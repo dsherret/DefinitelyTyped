@@ -28,7 +28,10 @@ declare namespace GoogleAppsScript {
             put(key: string, value: string): void;
             put(key: string, value: string, expirationInSeconds: Integer): void;
             putAll(values: { [key: string]: any }): void;
-            putAll(values: { [key: string]: any }, expirationInSeconds: Integer): void;
+            putAll(
+                values: { [key: string]: any },
+                expirationInSeconds: Integer,
+            ): void;
             remove(key: string): void;
             removeAll(keys: string[]): void;
         }

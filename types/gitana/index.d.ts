@@ -157,7 +157,12 @@ declare namespace Gitana {
 
         addFeature(featureId: string, featureConfig: any): any;
 
-        attach(attachmentId: string, contentType: any, data: any, filename: any): NodeAttachment;
+        attach(
+            attachmentId: string,
+            contentType: any,
+            data: any,
+            filename: any,
+        ): NodeAttachment;
 
         attachment(attachmentId: string): NodeAttachment;
 
@@ -657,9 +662,17 @@ declare namespace Gitana {
 
         checkMessagePermissions(checks: any, callback: any): any;
 
-        checkPageRenditionAuthorities(deploymentKey: any, checks: any, callback: any): any;
+        checkPageRenditionAuthorities(
+            deploymentKey: any,
+            checks: any,
+            callback: any,
+        ): any;
 
-        checkPageRenditionPermissions(deploymentKey: any, checks: any, callback: any): any;
+        checkPageRenditionPermissions(
+            deploymentKey: any,
+            checks: any,
+            callback: any,
+        ): any;
 
         checkRegistrationAuthorities(checks: any, callback: any): any;
 
@@ -717,7 +730,11 @@ declare namespace Gitana {
 
         queryMessages(query: any, pagination: any): MessageMap;
 
-        queryPageRenditions(deploymentKey: any, query: any, pagination: any): any;
+        queryPageRenditions(
+            deploymentKey: any,
+            query: any,
+            pagination: any,
+        ): any;
 
         queryRegistrations(query: any, pagination: any): any;
 
@@ -1185,7 +1202,12 @@ declare namespace Gitana {
 
         getUri(): string;
 
-        graphqlQuery(query: any, operationName: any, variables: any, callback: any): any;
+        graphqlQuery(
+            query: any,
+            operationName: any,
+            variables: any,
+            callback: any,
+        ): any;
 
         graphqlSchema(callback: any): any;
 
@@ -1439,7 +1461,11 @@ declare namespace Gitana {
 
         readJob(jobId: string): Job;
 
-        waitForJobCompletion(jobId: string, callback: jobCallback<this>, progressCallback?: any): Cluster;
+        waitForJobCompletion(
+            jobId: string,
+            callback: jobCallback<this>,
+            progressCallback?: any,
+        ): Cluster;
 
         static extend(_instance: any, _static: any, ...args: any[]): any;
 
@@ -2089,7 +2115,12 @@ declare namespace Gitana {
 
         listGroups(pagination: any): any;
 
-        listMembers(group: any, filter: any, pagination: any, indirect: any): any;
+        listMembers(
+            group: any,
+            filter: any,
+            pagination: any,
+            indirect: any,
+        ): any;
 
         listPrincipals(pagination: any, options: any): any;
 
@@ -2783,7 +2814,11 @@ declare namespace Gitana {
 
         constructor(branch: any, object: any);
 
-        associate(targetNodeId: string | Node, object: any, undirected: boolean): this;
+        associate(
+            targetNodeId: string | Node,
+            object: any,
+            undirected: boolean,
+        ): this;
 
         associateOf(sourceNode: Node, object: any, undirected: boolean): this;
 
@@ -2807,7 +2842,11 @@ declare namespace Gitana {
 
         find(config: any, pagination: any): NodeMap;
 
-        findRelatives(config: any, associationConfig: any, pagination: any): NodeMap;
+        findRelatives(
+            config: any,
+            associationConfig: any,
+            pagination: any,
+        ): NodeMap;
 
         getType(): string;
 
@@ -2859,7 +2898,11 @@ declare namespace Gitana {
 
         traverse(config: any): TraversalResults;
 
-        unassociate(targetNodeId: string | Node, type: any, undirected: any): this;
+        unassociate(
+            targetNodeId: string | Node,
+            type: any,
+            undirected: any,
+        ): this;
 
         unlock(): this;
 
@@ -3413,9 +3456,15 @@ declare namespace Gitana {
 
         checkAuthenticationGrantPermissions(checks: any, callback: any): any;
 
-        checkBillingProviderConfigurationAuthorities(checks: any, callback: any): any;
+        checkBillingProviderConfigurationAuthorities(
+            checks: any,
+            callback: any,
+        ): any;
 
-        checkBillingProviderConfigurationPermissions(checks: any, callback: any): any;
+        checkBillingProviderConfigurationPermissions(
+            checks: any,
+            callback: any,
+        ): any;
 
         checkClientAuthorities(checks: any, callback: any): any;
 
@@ -3553,15 +3602,28 @@ declare namespace Gitana {
 
         createWorkflow(workflowModelId: any, object: any): any;
 
-        createWorkflowComment(workflowId: any, workflowTaskId: any, object: any): any;
+        createWorkflowComment(
+            workflowId: any,
+            workflowTaskId: any,
+            object: any,
+        ): any;
 
         createWorkflowModel(id: any, object: any): any;
 
         del(): any;
 
-        executeReport(reportId: any, config: any, pagination: any, callback: any): any;
+        executeReport(
+            reportId: any,
+            config: any,
+            pagination: any,
+            callback: any,
+        ): any;
 
-        exportDownloadUrl(exportId: any, index: any, useDispositionHeader: any): any;
+        exportDownloadUrl(
+            exportId: any,
+            index: any,
+            useDispositionHeader: any,
+        ): any;
 
         findAccessPolicies(ref: any, pagination: any): any;
 
@@ -3645,7 +3707,11 @@ declare namespace Gitana {
 
         loadInfo(callback: any): any;
 
-        loadWorkflowHistory(workflowId: any, pagination: any, callback: any): any;
+        loadWorkflowHistory(
+            workflowId: any,
+            pagination: any,
+            callback: any,
+        ): any;
 
         logout(expireAccessToken: any): any;
 
@@ -3719,7 +3785,9 @@ declare namespace Gitana {
 
         readAuthenticationGrant(authenticationGrantId: any): any;
 
-        readBillingProviderConfiguration(billingProviderConfigurationId: any): any;
+        readBillingProviderConfiguration(
+            billingProviderConfigurationId: any,
+        ): any;
 
         readClient(clientId: any): any;
 
@@ -3775,7 +3843,10 @@ declare namespace Gitana {
 
         readWorkflowComment(workflowCommentId: any): any;
 
-        readWorkflowModel(workflowModelId: any, workflowModelVersionId: any): any;
+        readWorkflowModel(
+            workflowModelId: any,
+            workflowModelVersionId: any,
+        ): any;
 
         readWorkflowTask(workflowTaskId: any): any;
 
@@ -4227,17 +4298,44 @@ declare namespace Gitana {
 
         readRelease(releaseId: string): Release;
 
-        startChanges(sourceBranchId: string, targetBranchId: string, optionsOrCallback?: any, callback?: any): any;
+        startChanges(
+            sourceBranchId: string,
+            targetBranchId: string,
+            optionsOrCallback?: any,
+            callback?: any,
+        ): any;
 
-        startCopyFrom(sourceBranchId: string, targetBranchId: string, config: any, callback: any): any;
+        startCopyFrom(
+            sourceBranchId: string,
+            targetBranchId: string,
+            config: any,
+            callback: any,
+        ): any;
 
-        startCreateBranch(branchId: string, changesetId: string, object: any, callback: any): any;
+        startCreateBranch(
+            branchId: string,
+            changesetId: string,
+            object: any,
+            callback: any,
+        ): any;
 
-        startCreateRelease(object: string, sourceId: string, callback: any): any;
+        startCreateRelease(
+            object: string,
+            sourceId: string,
+            callback: any,
+        ): any;
 
-        startDiff(sourceBranchId: string, targetBranchId: string, callback: any): any;
+        startDiff(
+            sourceBranchId: string,
+            targetBranchId: string,
+            callback: any,
+        ): any;
 
-        startMerge(sourceBranchId: string, targetBranchId: string, callback: any): any;
+        startMerge(
+            sourceBranchId: string,
+            targetBranchId: string,
+            callback: any,
+        ): any;
 
         static extend(_instance: any, _static: any, ...args: any[]): any;
 
@@ -4761,7 +4859,11 @@ declare namespace Gitana {
 
         listAllocatedDomainObjects(callback: any, pagination: any): any;
 
-        listAllocatedObjects(callback: any, objectType: any, pagination: any): any;
+        listAllocatedObjects(
+            callback: any,
+            objectType: any,
+            pagination: any,
+        ): any;
 
         listAllocatedRegistrarObjects(callback: any, pagination: any): any;
 
@@ -5125,9 +5227,20 @@ declare namespace Gitana {
 
         clone(): any;
 
-        createAutoClientMapping(host: any, applicationId: any, clientKey: any, authGrantKey: any, object: any): any;
+        createAutoClientMapping(
+            host: any,
+            applicationId: any,
+            clientKey: any,
+            authGrantKey: any,
+            object: any,
+        ): any;
 
-        createTrustedDomainMapping(host: any, scope: any, platformId: any, object: any): any;
+        createTrustedDomainMapping(
+            host: any,
+            scope: any,
+            platformId: any,
+            object: any,
+        ): any;
 
         getType(): any;
 
@@ -5454,17 +5567,51 @@ declare class Gitana {
 
     getStackInfo(): any;
 
-    gitanaDelete(url: any, params: any, successCallback: any, failureCallback: any): any;
+    gitanaDelete(
+        url: any,
+        params: any,
+        successCallback: any,
+        failureCallback: any,
+    ): any;
 
-    gitanaDownload(url: any, params: any, successCallback: any, failureCallback: any): any;
+    gitanaDownload(
+        url: any,
+        params: any,
+        successCallback: any,
+        failureCallback: any,
+    ): any;
 
-    gitanaGet(url: any, params: any, headers: any, successCallback: any, failureCallback: any): any;
+    gitanaGet(
+        url: any,
+        params: any,
+        headers: any,
+        successCallback: any,
+        failureCallback: any,
+    ): any;
 
-    gitanaPatch(url: any, params: any, jsonData: any, successCallback: any, failureCallback: any): any;
+    gitanaPatch(
+        url: any,
+        params: any,
+        jsonData: any,
+        successCallback: any,
+        failureCallback: any,
+    ): any;
 
-    gitanaPost(url: any, params: any, jsonData: any, successCallback: any, failureCallback: any): any;
+    gitanaPost(
+        url: any,
+        params: any,
+        jsonData: any,
+        successCallback: any,
+        failureCallback: any,
+    ): any;
 
-    gitanaPut(url: any, params: any, jsonData: any, successCallback: any, failureCallback: any): any;
+    gitanaPut(
+        url: any,
+        params: any,
+        jsonData: any,
+        successCallback: any,
+        failureCallback: any,
+    ): any;
 
     gitanaRequest(
         method: any,
@@ -5477,7 +5624,14 @@ declare class Gitana {
         failureCallback: any,
     ): any;
 
-    gitanaUpload(url: any, params: any, contentType: any, data: any, successCallback: any, failureCallback: any): any;
+    gitanaUpload(
+        url: any,
+        params: any,
+        contentType: any,
+        data: any,
+        successCallback: any,
+        failureCallback: any,
+    ): any;
 
     refreshAuthentication(callback: any): void;
 
@@ -5595,9 +5749,17 @@ declare class Gitana {
 
     static btoa(string: any): any;
 
-    static configureRequestHeaders(method: any, url: any, headers: any, options: any): void;
+    static configureRequestHeaders(
+        method: any,
+        url: any,
+        headers: any,
+        options: any,
+    ): void;
 
-    static connect(config: string | connectionObject, callback: gitanaCallback<AppHelper>): AppHelper;
+    static connect(
+        config: string | connectionObject,
+        callback: gitanaCallback<AppHelper>,
+    ): AppHelper;
 
     static contains(a: any, obj: any): any;
 
@@ -5633,7 +5795,13 @@ declare class Gitana {
 
     static getNumberOfKeys(map: any): any;
 
-    static handleJobCompletion(chain: any, cluster: any, jobId: any, synchronous: any, reportFn: any): any;
+    static handleJobCompletion(
+        chain: any,
+        cluster: any,
+        jobId: any,
+        synchronous: any,
+        reportFn: any,
+    ): any;
 
     static implement(...args: any[]): any;
 
@@ -5673,7 +5841,13 @@ declare class Gitana {
 
     static streamDownload(attachment: any, callback: any): void;
 
-    static streamUpload(driver: any, readStream: any, uploadUri: any, contentType: any, callback: any): any;
+    static streamUpload(
+        driver: any,
+        readStream: any,
+        uploadUri: any,
+        contentType: any,
+        callback: any,
+    ): any;
 
     static stringify(object: any, pretty: any): any;
 
@@ -5687,7 +5861,13 @@ declare class Gitana {
 
     static valueOf(type: any): any;
 
-    static writeCookie(name: any, value: any, path: any, days: any, domain: any): void;
+    static writeCookie(
+        name: any,
+        value: any,
+        path: any,
+        days: any,
+        domain: any,
+    ): void;
 }
 
 declare global {

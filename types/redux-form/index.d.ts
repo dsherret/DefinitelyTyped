@@ -6,11 +6,9 @@ export interface ErrorOther<T = string> {
     _error?: T | undefined;
 }
 
-export type FormErrors<FormData = {}, T = string> =
-    & {
-        [P in keyof FormData]?: ReactElement | T;
-    }
-    & ErrorOther<T>;
+export type FormErrors<FormData = {}, T = string> = {
+    [P in keyof FormData]?: ReactElement | T;
+} & ErrorOther<T>;
 
 export interface WarningOther<T = void> {
     _warning?: T | undefined;
@@ -27,7 +25,10 @@ export interface RegisteredFieldState {
 
 export type Omit<T, K extends keyof T> = Pick<
     T,
-    ({ [P in keyof T]: P } & { [P in K]: never } & { [x: string]: never; [x: number]: never })[keyof T]
+    ({ [P in keyof T]: P } & { [P in K]: never } & {
+        [x: string]: never;
+        [x: number]: never;
+    })[keyof T]
 >;
 
 export * from "./lib/actions";

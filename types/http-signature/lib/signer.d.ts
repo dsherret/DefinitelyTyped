@@ -10,16 +10,19 @@ export interface Signature {
 
 export type RequestSignerOptions =
     | {
-        keyId: string;
-        key: string | Buffer;
-        /** Required for HMAC */
-        algorithm?: string | undefined;
-        /** Not required for HMAC */
-        keyPassphrase?: string | undefined;
-    }
+          keyId: string;
+          key: string | Buffer;
+          /** Required for HMAC */
+          algorithm?: string | undefined;
+          /** Not required for HMAC */
+          keyPassphrase?: string | undefined;
+      }
     | {
-        sign(data: string, callback: (error: any, sig?: Signature) => void): void;
-    };
+          sign(
+              data: string,
+              callback: (error: any, sig?: Signature) => void,
+          ): void;
+      };
 
 /** @see {@link createSigner} */
 declare class _RequestSigner {
@@ -104,7 +107,10 @@ export interface SignOptions {
  * @throws {sshpk.KeyParseError} If key was bad
  * @throws {MissingHeaderError} If a header to be signed was specified but was not present
  */
-export function signRequest(request: ClientRequest, options: SignOptions): boolean;
+export function signRequest(
+    request: ClientRequest,
+    options: SignOptions,
+): boolean;
 
 // To avoid exporting _RequestSigner (not actually exposed by the library)
 export {};

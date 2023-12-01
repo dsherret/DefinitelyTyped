@@ -1,5 +1,13 @@
 import * as React from "react";
-import Tour, { Arrow, Badge, Close, Controls, CustomHelperProps, Dot, Navigation } from "reactour";
+import Tour, {
+    Arrow,
+    Badge,
+    Close,
+    Controls,
+    CustomHelperProps,
+    Dot,
+    Navigation,
+} from "reactour";
 
 class CustomTour extends React.Component<{}, { isTourOpen: boolean }> {
     ref = React.createRef<Tour>();
@@ -54,7 +62,10 @@ class CustomTour extends React.Component<{}, { isTourOpen: boolean }> {
     render() {
         return (
             <div>
-                <button className="opener" onClick={() => this.setState({ isTourOpen: true })}>
+                <button
+                    className="opener"
+                    onClick={() => this.setState({ isTourOpen: true })}
+                >
                     Open
                 </button>
                 <Tour
@@ -67,16 +78,27 @@ class CustomTour extends React.Component<{}, { isTourOpen: boolean }> {
                         {
                             content: ({ close, goTo, inDOM, step }) => (
                                 <div>
-                                    <Close onClick={close} className="something" />
+                                    <Close
+                                        onClick={close}
+                                        className="something"
+                                    />
                                     <Controls className="im-a-div">
-                                        <Arrow onClick={() => goTo(0)} label="Go to first step" />
+                                        <Arrow
+                                            onClick={() => goTo(0)}
+                                            label="Go to first step"
+                                        />
                                         <Arrow
                                             className="hello"
                                             inverted
                                             onClick={() => goTo(2)}
                                             label={<pre>Go to next step</pre>}
                                         />
-                                        <Arrow disabled onClick={() => console.log("do nothing")} />
+                                        <Arrow
+                                            disabled
+                                            onClick={() =>
+                                                console.log("do nothing")
+                                            }
+                                        />
                                     </Controls>
                                     <Navigation className="im-a-div">
                                         <Dot
@@ -87,7 +109,8 @@ class CustomTour extends React.Component<{}, { isTourOpen: boolean }> {
                                             accentColor="#000"
                                         />
                                     </Navigation>
-                                    {inDOM ? "Is in DOM" : "Not in DOM"}, step: {step}
+                                    {inDOM ? "Is in DOM" : "Not in DOM"}, step:{" "}
+                                    {step}
                                 </div>
                             ),
                             selector: "button.opener",
@@ -119,7 +142,7 @@ class CustomTour extends React.Component<{}, { isTourOpen: boolean }> {
                     disableDotsNavigation={false}
                     disableInteraction
                     disableKeyboardNavigation={["esc"]}
-                    getCurrentStep={currentStep => console.log(currentStep)}
+                    getCurrentStep={(currentStep) => console.log(currentStep)}
                     goToStep={4}
                     highlightedMaskClassName="mask-hi"
                     inViewThreshold={10}
@@ -127,9 +150,11 @@ class CustomTour extends React.Component<{}, { isTourOpen: boolean }> {
                     maskClassName="mask"
                     maskSpace={10}
                     nextButton="Next"
-                    nextStep={() => console.log("this would probably break something")}
-                    onAfterOpen={target => target.focus()}
-                    onBeforeClose={target => target.blur()}
+                    nextStep={() =>
+                        console.log("this would probably break something")
+                    }
+                    onAfterOpen={(target) => target.focus()}
+                    onBeforeClose={(target) => target.blur()}
                     prevButton="Prev"
                     prevStep={() => console.log("this would too but it's fine")}
                     rounded={3}
@@ -149,7 +174,13 @@ class CustomTour extends React.Component<{}, { isTourOpen: boolean }> {
                         closeButtonAriaLabel: "Close",
                         showNavigationScreenReaders: true,
                     }}
-                    CustomHelper={({ current, content, totalSteps, gotoStep, close }: CustomHelperProps) => (
+                    CustomHelper={({
+                        current,
+                        content,
+                        totalSteps,
+                        gotoStep,
+                        close,
+                    }: CustomHelperProps) => (
                         <main className="CustomHelper__wrapper">
                             <div className="CustomHelper__content">
                                 {typeof content !== "function" && content}
@@ -164,10 +195,14 @@ class CustomTour extends React.Component<{}, { isTourOpen: boolean }> {
                                         className="CustomHelper__navArrow"
                                     />
                                     <Navigation data-tour-elem="navigation">
-                                        {Array.from(Array(totalSteps).keys()).map((li, i) => (
+                                        {Array.from(
+                                            Array(totalSteps).keys(),
+                                        ).map((li, i) => (
                                             <Dot
                                                 key={li}
-                                                onClick={() => current !== i && gotoStep(i)}
+                                                onClick={() =>
+                                                    current !== i && gotoStep(i)
+                                                }
                                                 current={current}
                                                 index={i}
                                                 disabled={current === i}

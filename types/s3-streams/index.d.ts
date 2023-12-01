@@ -15,9 +15,17 @@ export interface StreamOptions {
 }
 
 export class ReadStream extends Readable {
-    constructor(client: S3, options: S3.GetObjectRequest, streamOptions?: StreamOptions);
+    constructor(
+        client: S3,
+        options: S3.GetObjectRequest,
+        streamOptions?: StreamOptions,
+    );
 }
 
 export class WriteStream extends Writable {
-    constructor(client: S3, options: S3.CreateMultipartUploadRequest, streamOptions?: StreamOptions);
+    constructor(
+        client: S3,
+        options: S3.CreateMultipartUploadRequest,
+        streamOptions?: StreamOptions,
+    );
 }

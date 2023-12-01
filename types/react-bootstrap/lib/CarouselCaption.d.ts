@@ -1,7 +1,8 @@
 import * as React from "react";
 
 declare namespace CarouselCaption {
-    export interface CarouselCaptionProps extends React.HTMLProps<CarouselCaption> {
+    export interface CarouselCaptionProps
+        extends React.HTMLProps<CarouselCaption> {
         componentClass?: React.ElementType | undefined;
     }
 }

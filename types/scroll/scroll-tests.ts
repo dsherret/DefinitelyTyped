@@ -5,11 +5,17 @@ const opts = {
     duration: 1000,
     ease: (time: number) => 0.5 * time,
 };
-const cb: (error: Error | null, scrollValue: number) => void = (error, scrollValue) => {
+const cb: (error: Error | null, scrollValue: number) => void = (
+    error,
+    scrollValue,
+) => {
     if (error != null) {
         console.error(error);
     } else {
-        console.log("scrolling completed! current scroll position is ", scrollValue);
+        console.log(
+            "scrolling completed! current scroll position is ",
+            scrollValue,
+        );
     }
 };
 

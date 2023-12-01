@@ -47,10 +47,12 @@ rc(
 );
 
 // with parse function
-rc("appname", null, null, content => JSON.parse(content.toLowerCase()));
+rc("appname", null, null, (content) => JSON.parse(content.toLowerCase()));
 
 // with defaults and parse but not argv
-rc("appname", { option: true }, null, content => JSON.parse(content.toLowerCase()));
+rc("appname", { option: true }, null, (content) =>
+    JSON.parse(content.toLowerCase()),
+);
 
 // call with interface
 interface AppConfig {

@@ -26,8 +26,12 @@ function addElevationLayerFromConfig(json: any) {
     const layer = new itowns.ElevationLayer(config.id, config);
     view.addLayer(layer);
 }
-itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json").then(addElevationLayerFromConfig);
-itowns.Fetcher.json("./layers/JSONLayers/WORLD_DTM.json").then(addElevationLayerFromConfig);
+itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json").then(
+    addElevationLayerFromConfig,
+);
+itowns.Fetcher.json("./layers/JSONLayers/WORLD_DTM.json").then(
+    addElevationLayerFromConfig,
+);
 
 let eptLayer: itowns.EntwinePointTileLayer;
 let eptSource: itowns.EntwinePointTileSource;
@@ -40,23 +44,28 @@ function onLayerReady() {
     const size = new THREE.Vector3();
     eptLayer.root.bbox.getSize(size);
 
-    view.controls?.lookAtCoordinate({
-        coord: coordLookAt,
-        range: 2 * size.length(),
-    }, false);
+    view.controls?.lookAtCoordinate(
+        {
+            coord: coordLookAt,
+            range: 2 * size.length(),
+        },
+        false,
+    );
 }
 
 function readEPTURL() {
-    const url = (document.getElementById("ept_url") as HTMLInputElement).value
-        || new URL(location.href).searchParams.get("ept");
+    const url =
+        (document.getElementById("ept_url") as HTMLInputElement).value ||
+        new URL(location.href).searchParams.get("ept");
 
     if (url) {
         loadEPT(url);
 
         // tslint:disable-next-line:prefer-template
-        (document.getElementById("share") as HTMLDivElement).innerHTML = "<a href=\""
-            + location.href.replace(location.search, "?ept=" + url)
-            + "\" target=\"_blank\">Link to share this view</a>";
+        (document.getElementById("share") as HTMLDivElement).innerHTML =
+            '<a href="' +
+            location.href.replace(location.search, "?ept=" + url) +
+            '" target="_blank">Link to share this view</a>';
         (document.getElementById("ept_url") as HTMLInputElement).value = url;
     }
 }

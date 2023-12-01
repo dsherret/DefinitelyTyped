@@ -19,12 +19,16 @@ resx.resx2js("dummyResx", (error: Error, result: resx.ObjectOfStrings) => {
 
 // resx2js callback version with option
 // $ExpectType void
-resx.resx2js("dummyResx", false, (error: Error, result: resx.ObjectOfStrings) => {
-    // $ExpectType Error
-    error;
-    // $ExpectType ObjectOfStrings
-    result;
-});
+resx.resx2js(
+    "dummyResx",
+    false,
+    (error: Error, result: resx.ObjectOfStrings) => {
+        // $ExpectType Error
+        error;
+        // $ExpectType ObjectOfStrings
+        result;
+    },
+);
 
 // Test phrases object to use in the next tests
 const dummyPhrases: resx.ObjectOfStrings = {

@@ -36,14 +36,14 @@ markerClusterGroupOptions.iconCreateFunction = (cluster: L.MarkerCluster) => {
 
 let mcgLayerSupportGroup: L.MarkerClusterGroup.LayerSupport;
 mcgLayerSupportGroup = L.markerClusterGroup.layerSupport();
-mcgLayerSupportGroup = L.markerClusterGroup.layerSupport(markerClusterGroupOptions);
+mcgLayerSupportGroup = L.markerClusterGroup.layerSupport(
+    markerClusterGroupOptions,
+);
 
 let map = L.map("foo");
 
 mcgLayerSupportGroup = mcgLayerSupportGroup.addTo(map);
-map = map
-    .addLayer(mcgLayerSupportGroup)
-    .removeLayer(mcgLayerSupportGroup);
+map = map.addLayer(mcgLayerSupportGroup).removeLayer(mcgLayerSupportGroup);
 
 const latLng: L.LatLng = L.latLng(10, 10);
 

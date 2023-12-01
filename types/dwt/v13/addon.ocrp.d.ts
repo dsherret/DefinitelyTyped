@@ -1,10 +1,10 @@
 /*!
-* Product: Dynamsoft Web Twain
-* Web Site: http://www.dynamsoft.com
-*
-* Copyright 2019, Dynamsoft Corporation
-* Author: Dynamsoft Support Team
-*/
+ * Product: Dynamsoft Web Twain
+ * Web Site: http://www.dynamsoft.com
+ *
+ * Copyright 2019, Dynamsoft Corporation
+ * Author: Dynamsoft Support Team
+ */
 
 interface Redaction {
     FindText: string;
@@ -121,7 +121,11 @@ interface OCRPro {
      * @param {function} optionalAsyncFailureFunc optional. The function to call when the download fails. Please refer to the function prototype OnFailure.
      * @return {void}
      */
-    Download(remoteFile: string, optionalAsyncSuccessFunc?: () => void, optionalAsyncFailureFunc?: () => void): void;
+    Download(
+        remoteFile: string,
+        optionalAsyncSuccessFunc?: () => void,
+        optionalAsyncFailureFunc?: () => void,
+    ): void;
 
     /**
      *  Performs OCR on a given image.
@@ -130,7 +134,11 @@ interface OCRPro {
      * @param {function} AsyncFailureFunc  The function to call when OCR operation fails. Please refer to the function prototype OnOCRFailure.
      * @return {void}
      */
-    Recognize(sImageIndex: number, optionalAsyncSuccessFunc?: () => void, optionalAsyncFailureFunc?: () => void): void;
+    Recognize(
+        sImageIndex: number,
+        optionalAsyncSuccessFunc?: () => void,
+        optionalAsyncFailureFunc?: () => void,
+    ): void;
 
     /**
      *   Performs OCR on one or multiple specified local file(s) directly.
@@ -166,7 +174,10 @@ interface OCRPro {
      * @param {function} AsyncFailureFunc  The function to call when OCR operation fails. Please refer to the function prototype OnOCRFailure.
      * @return {void}
      */
-    RecognizeSelectedImages(optionalAsyncSuccessFunc?: () => void, optionalAsyncFailureFunc?: () => void): void;
+    RecognizeSelectedImages(
+        optionalAsyncSuccessFunc?: () => void,
+        optionalAsyncFailureFunc?: () => void,
+    ): void;
 
     NewOCRError(): OCRError;
     NewOCRReadPara(): OCRReadPara;

@@ -16,7 +16,10 @@ export = deinterleave;
  *
  * // array is [1,1,1,1,0,0,0,0]
  */
-declare function deinterleave<TArr extends MutableArrayLike<unknown>>(src: TArr, stride?: number): TArr;
+declare function deinterleave<TArr extends MutableArrayLike<unknown>>(
+    src: TArr,
+    stride?: number,
+): TArr;
 
 interface MutableArrayLike<T> {
     length: number;

@@ -63,7 +63,15 @@ export interface Rule {
     type?: TypeMapper | undefined;
 }
 export interface Rules {
-    [x: string]: RegExp | RegExp[] | string | string[] | Rule | Rule[] | ErrorRule | FallbackRule;
+    [x: string]:
+        | RegExp
+        | RegExp[]
+        | string
+        | string[]
+        | Rule
+        | Rule[]
+        | ErrorRule
+        | FallbackRule;
 }
 
 export interface Lexer {

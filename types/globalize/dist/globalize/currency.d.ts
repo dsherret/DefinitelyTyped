@@ -16,7 +16,10 @@ declare module "../globalize" {
          * @param {CurrencyFormatterOptions} options A JSON object including none or any of the following options.
          * @returns {Function} Return a function that formats a currency
          */
-        currencyFormatter(currency: string, options?: CurrencyFormatterOptions): (value: number) => string;
+        currencyFormatter(
+            currency: string,
+            options?: CurrencyFormatterOptions,
+        ): (value: number) => string;
 
         /**
          * Return a currency formatted according to the given options or locale's defaults.
@@ -25,7 +28,11 @@ declare module "../globalize" {
          * @param {CurrencyFormatterOptions} options A JSON object including none or any of the following options.
          * @returns {string} Return a string formatted in the currency according to the value and the options
          */
-        formatCurrency(value: number, currency: string, options?: CurrencyFormatterOptions): string;
+        formatCurrency(
+            value: number,
+            currency: string,
+            options?: CurrencyFormatterOptions,
+        ): string;
     }
 }
 

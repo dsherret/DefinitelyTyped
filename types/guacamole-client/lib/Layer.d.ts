@@ -215,7 +215,10 @@ export class Layer {
         srch: number,
         x: number,
         y: number,
-        transferFunction: (srcPixel: Layer.Pixel, dstPixel: Layer.Pixel) => void,
+        transferFunction: (
+            srcPixel: Layer.Pixel,
+            dstPixel: Layer.Pixel,
+        ) => void,
     ): void;
 
     /**
@@ -233,7 +236,15 @@ export class Layer {
      * @param x The destination X coordinate.
      * @param y The destination Y coordinate.
      */
-    put(srcLayer: Layer, srcx: number, srcy: number, srcw: number, srch: number, x: number, y: number): void;
+    put(
+        srcLayer: Layer,
+        srcx: number,
+        srcy: number,
+        srcw: number,
+        srch: number,
+        x: number,
+        y: number,
+    ): void;
 
     /**
      * Copy a rectangle of image data from one Layer to this Layer. This
@@ -253,9 +264,24 @@ export class Layer {
      * @param x The destination X coordinate.
      * @param y The destination Y coordinate.
      */
-    copy(srcLayer: Layer, srcx: number, srcy: number, srcw: number, srch: number, x: number, y: number): void;
+    copy(
+        srcLayer: Layer,
+        srcx: number,
+        srcy: number,
+        srcw: number,
+        srch: number,
+        x: number,
+        y: number,
+    ): void;
 
-    distort(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    distort(
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+    ): void;
 
     /**
      * Starts a new path at the specified point.
@@ -367,7 +393,12 @@ export class Layer {
      * @param b The blue component of the color to fill.
      * @param a The alpha component of the color to fill.
      */
-    strokeLayer(cap: Layer.LineCap, join: Layer.LineJoin, thickness: number, layer: Layer): void;
+    strokeLayer(
+        cap: Layer.LineCap,
+        join: Layer.LineJoin,
+        thickness: number,
+        layer: Layer,
+    ): void;
 
     /**
      * Fills the current path with the image within the specified layer. The
@@ -404,7 +435,14 @@ export class Layer {
      * @param e The fifth value in the affine transform's matrix.
      * @param f The sixth value in the affine transform's matrix.
      */
-    setTransform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    setTransform(
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+    ): void;
 
     /**
      * Applies the given affine transform (defined with six values from the
@@ -416,7 +454,14 @@ export class Layer {
      * @param e The fifth value in the affine transform's matrix.
      * @param f The sixth value in the affine transform's matrix.
      */
-    transform(a: number, b: number, c: number, d: number, e: number, f: number): void;
+    transform(
+        a: number,
+        b: number,
+        c: number,
+        d: number,
+        e: number,
+        f: number,
+    ): void;
 
     /**
      * Sets the channel mask for future operations on this Layer.

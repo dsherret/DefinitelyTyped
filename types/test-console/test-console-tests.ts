@@ -13,32 +13,32 @@ for (const std of [stdout, stderr]) {
     // $ExpectType ReadonlyArray<string> || Output
     std.inspectSync(() => {});
     // $ExpectType ReadonlyArray<string> || Output
-    std.inspectSync(output => output);
+    std.inspectSync((output) => output);
     // $ExpectType ReadonlyArray<string> || Output
-    std.inspectSync(_ => {});
+    std.inspectSync((_) => {});
     // $ExpectType ReadonlyArray<string> || Output
     std.inspectSync({ isTTY: false }, () => {});
     // $ExpectType ReadonlyArray<string> || Output
-    std.inspectSync({ isTTY: false }, output => output);
+    std.inspectSync({ isTTY: false }, (output) => output);
     // $ExpectType ReadonlyArray<string> || Output
-    std.inspectSync({ isTTY: false }, _ => {});
+    std.inspectSync({ isTTY: false }, (_) => {});
 
     // @ts-expect-error
     std.inspectAsync();
     // @ts-expect-error
     std.inspectAsync({});
     // @ts-expect-error
-    std.inspectAsync(async output => output);
+    std.inspectAsync(async (output) => output);
     // $ExpectType Promise<ReadonlyArray<string>> || Promise<Output>
     std.inspectAsync(async () => {});
     // $ExpectType Promise<ReadonlyArray<string>> || Promise<Output>
-    std.inspectAsync(async _ => {});
+    std.inspectAsync(async (_) => {});
     // @ts-expect-error
-    std.inspectAsync({ isTTY: false }, async output => output);
+    std.inspectAsync({ isTTY: false }, async (output) => output);
     // $ExpectType Promise<ReadonlyArray<string>> || Promise<Output>
     std.inspectAsync({ isTTY: false }, async () => {});
     // $ExpectType Promise<ReadonlyArray<string>> || Promise<Output>
-    std.inspectAsync({ isTTY: false }, async _ => {});
+    std.inspectAsync({ isTTY: false }, async (_) => {});
 
     // $ExpectType Restore
     std.ignore();
@@ -50,15 +50,15 @@ for (const std of [stdout, stderr]) {
     // @ts-expect-error
     std.ignoreSync({});
     // @ts-expect-error
-    std.ignoreSync(_ => {});
+    std.ignoreSync((_) => {});
     // @ts-expect-error
-    std.ignoreSync(output => output);
+    std.ignoreSync((output) => output);
     // $ExpectType void
     std.ignoreSync(() => {});
     // @ts-expect-error
-    std.ignoreSync({ isTTY: false }, _ => {});
+    std.ignoreSync({ isTTY: false }, (_) => {});
     // @ts-expect-error
-    std.ignoreSync({ isTTY: false }, output => output);
+    std.ignoreSync({ isTTY: false }, (output) => output);
     // $ExpectType void
     std.ignoreSync({ isTTY: false }, () => {});
 
@@ -67,15 +67,15 @@ for (const std of [stdout, stderr]) {
     // @ts-expect-error
     std.ignoreAsync({});
     // @ts-expect-error
-    std.ignoreAsync(async _ => {});
+    std.ignoreAsync(async (_) => {});
     // @ts-expect-error
-    std.ignoreAsync(async output => output);
+    std.ignoreAsync(async (output) => output);
     // $ExpectType Promise<void>
     std.ignoreAsync(async () => {});
     // @ts-expect-error
-    std.ignoreAsync({ isTTY: false }, async _ => {});
+    std.ignoreAsync({ isTTY: false }, async (_) => {});
     // @ts-expect-error
-    std.ignoreAsync({ isTTY: false }, async output => output);
+    std.ignoreAsync({ isTTY: false }, async (output) => output);
     // $ExpectType Promise<void>
     std.ignoreAsync({ isTTY: false }, async () => {});
 }

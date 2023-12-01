@@ -9,7 +9,9 @@ export interface InspectorNodeParams {
     expanded: boolean;
 }
 
-export type InspectorNodeRenderer = (params: InspectorNodeParams) => React.ReactNode;
+export type InspectorNodeRenderer = (
+    params: InspectorNodeParams,
+) => React.ReactNode;
 
 export interface InspectorThemeDefinition {
     BASE_FONT_FAMILY: CSS.Properties["fontFamily"];
@@ -57,7 +59,10 @@ export interface InspectorThemeDefinition {
     TABLE_DATA_BACKGROUND_SIZE: CSS.Properties["backgroundSize"];
 }
 
-export type InspectorTheme = "chromeLight" | "chromeDark" | InspectorThemeDefinition;
+export type InspectorTheme =
+    | "chromeLight"
+    | "chromeDark"
+    | InspectorThemeDefinition;
 
 export interface ThemedComponentProps {
     theme?: InspectorTheme | undefined;
@@ -88,7 +93,9 @@ export interface TableInspectorProps extends ThemedComponentProps {
     columns?: readonly string[] | undefined;
 }
 
-export interface ObjectInspectorProps extends TreeViewProps, ThemedComponentProps {
+export interface ObjectInspectorProps
+    extends TreeViewProps,
+        ThemedComponentProps {
     /**
      * Show non-enumerable properties.
      */
@@ -110,11 +117,16 @@ export interface InspectorBaseProps {
     table?: boolean | undefined;
 }
 
-export interface InspectorAsTableProps extends InspectorBaseProps, TableInspectorProps {
+export interface InspectorAsTableProps
+    extends InspectorBaseProps,
+        TableInspectorProps {
     table: true;
 }
 
-export interface InspectorAsTreeProps extends InspectorBaseProps, ObjectInspectorProps, DOMInspectorProps {
+export interface InspectorAsTreeProps
+    extends InspectorBaseProps,
+        ObjectInspectorProps,
+        DOMInspectorProps {
     table?: false | undefined;
     data: any;
 }

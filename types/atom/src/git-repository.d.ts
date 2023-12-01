@@ -4,7 +4,10 @@ import { Config, Disposable, Project } from "../index";
 export class GitRepository {
     // Construction
     /** Creates a new GitRepository instance. */
-    static open(path: string, options?: { refreshOnWindowFocus?: boolean | undefined }): GitRepository;
+    static open(
+        path: string,
+        options?: { refreshOnWindowFocus?: boolean | undefined },
+    ): GitRepository;
 
     constructor(
         path: string,
@@ -33,7 +36,9 @@ export class GitRepository {
      *  Invoke the given callback when a specific file's status has changed. When
      *  a file is updated, reloaded, etc, and the status changes, this will be fired.
      */
-    onDidChangeStatus(callback: (event: RepoStatusChangedEvent) => void): Disposable;
+    onDidChangeStatus(
+        callback: (event: RepoStatusChangedEvent) => void,
+    ): Disposable;
 
     /** Invoke the given callback when a multiple files' statuses have changed. */
     onDidChangeStatuses(callback: () => void): Disposable;
@@ -72,13 +77,19 @@ export class GitRepository {
      *  @return Returns the number of commits behind the current branch is from its
      *  upstream remote branch.
      */
-    getAheadBehindCount(reference: string, path?: string): { ahead: number; behind: number };
+    getAheadBehindCount(
+        reference: string,
+        path?: string,
+    ): { ahead: number; behind: number };
 
     /**
      *  Get the cached ahead/behind commit counts for the current branch's
      *  upstream branch.
      */
-    getCachedUpstreamAheadBehindCount(path?: string): { ahead: number; behind: number };
+    getCachedUpstreamAheadBehindCount(path?: string): {
+        ahead: number;
+        behind: number;
+    };
 
     /** Returns the git configuration value specified by the key. */
     getConfigValue(key: string, path?: string): string;
@@ -93,7 +104,11 @@ export class GitRepository {
     getUpstreamBranch(path?: string): string | null;
 
     /** Gets all the local and remote references. */
-    getReferences(path?: string): { heads: string[]; remotes: string[]; tags: string[] };
+    getReferences(path?: string): {
+        heads: string[];
+        remotes: string[];
+        tags: string[];
+    };
 
     /** Returns the current string SHA for the given reference. */
     getReferenceTarget(reference: string, path?: string): string;
@@ -137,7 +152,12 @@ export class GitRepository {
     getLineDiffs(
         path: string,
         text: string,
-    ): Array<{ oldStart: number; newStart: number; oldLines: number; newLines: number }>;
+    ): Array<{
+        oldStart: number;
+        newStart: number;
+        oldLines: number;
+        newLines: number;
+    }>;
 
     // Checking Out
     /**

@@ -23,14 +23,20 @@ declare class PoolResource extends EventEmitter {
     /** Initiates a connection to the SMTP server */
     connect(callback: (err: Error | null, established: boolean) => void): void;
     /** Sends an e-mail to be sent using the selected settings */
-    send(mail: MailMessage, callback: (err: Error | null, info: SMTPPool.SentMessageInfo) => void): void;
+    send(
+        mail: MailMessage,
+        callback: (err: Error | null, info: SMTPPool.SentMessageInfo) => void,
+    ): void;
     /** Closes the connection */
     close(): void;
 
     addListener(event: "available", listener: () => void): this;
     addListener(event: "close", listener: () => void): this;
     addListener(event: "error", listener: (err: Error) => void): this;
-    addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     emit(event: "available"): boolean;
     emit(event: "close"): boolean;
@@ -50,17 +56,26 @@ declare class PoolResource extends EventEmitter {
     prependListener(event: "available", listener: () => void): this;
     prependListener(event: "close", listener: () => void): this;
     prependListener(event: "error", listener: (err: Error) => void): this;
-    prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     prependOnceListener(event: "available", listener: () => void): this;
     prependOnceListener(event: "close", listener: () => void): this;
     prependOnceListener(event: "error", listener: (err: Error) => void): this;
-    prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
     removeListener(event: "available", listener: () => void): this;
     removeListener(event: "close", listener: () => void): this;
     removeListener(event: "error", listener: (err: Error) => void): this;
-    removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    removeListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 }
 
 export = PoolResource;

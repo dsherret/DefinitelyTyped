@@ -62,9 +62,9 @@ export class CachedSource extends Source {
 }
 
 export class ConcatSource extends Source implements SourceAndMapMixin {
-    children: Array<(string | Source)>;
+    children: Array<string | Source>;
 
-    constructor(...args: Array<(string | Source)>);
+    constructor(...args: Array<string | Source>);
 
     add(item: string | Source): void;
 
@@ -79,7 +79,10 @@ export class ConcatSource extends Source implements SourceAndMapMixin {
     updateHash(hash: Hash): void;
 }
 
-export class LineToLineMappedSource extends Source implements SourceAndMapMixin {
+export class LineToLineMappedSource
+    extends Source
+    implements SourceAndMapMixin
+{
     _value: string;
     _name: string;
     _originalSource: string;
@@ -103,11 +106,7 @@ export class OriginalSource extends Source implements SourceAndMapMixin {
 
     source(): string;
 
-    node(
-        options?: {
-            columns?: boolean | undefined;
-        },
-    ): SourceNode;
+    node(options?: { columns?: boolean | undefined }): SourceNode;
 
     listMap(options: any): SourceListMap;
 
@@ -166,7 +165,10 @@ export class ReplaceSource extends Source implements SourceAndMapMixin {
 
     listMap(options: any): SourceListMap;
 
-    _replacementToSourceNode(oldNode: SourceNode, newString: string): string | SourceNode;
+    _replacementToSourceNode(
+        oldNode: SourceNode,
+        newString: string,
+    ): string | SourceNode;
 
     _splitSourceNode(node: SourceNode, position: SourceNode[]): SourceNode[];
     _splitSourceNode(node: string, position: number): number;
@@ -194,11 +196,7 @@ export class SourceMapSource extends Source implements SourceAndMapMixin {
 
     node(): SourceNode;
 
-    listMap(
-        options: {
-            module?: boolean | undefined;
-        },
-    ): SourceListMap;
+    listMap(options: { module?: boolean | undefined }): SourceListMap;
 
     updateHash(hash: Hash): void;
 }

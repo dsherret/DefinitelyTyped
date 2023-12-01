@@ -898,18 +898,16 @@ declare namespace WechatMiniprogram {
      *
      * 最低基础库: 2.1.0
      */
-    type FunctionalNavigatorSuccess<
-        Detail extends IAnyObject = IAnyObject,
-    > = CustomEvent<Detail, never, never>;
+    type FunctionalNavigatorSuccess<Detail extends IAnyObject = IAnyObject> =
+        CustomEvent<Detail, never, never>;
 
     /**
      * 功能页返回，且操作失败时触发， detail 格式与具体功能页相关
      *
      * 最低基础库: 2.1.0
      */
-    type FunctionalNavigatorFail<
-        Detail extends IAnyObject = IAnyObject,
-    > = CustomEvent<Detail, never, never>;
+    type FunctionalNavigatorFail<Detail extends IAnyObject = IAnyObject> =
+        CustomEvent<Detail, never, never>;
 
     /**
      * 当 `target="miniProgram"` 时有效，跳转小程序成功
@@ -1303,45 +1301,44 @@ declare namespace WechatMiniprogram {
      *
      * 最低基础库: 1.6.0
      */
-    type RegionChange =
-        & CustomEvent<{
-            /** 旋转程度，最低基础库 2.3.0 */
-            rotate: number;
-            /** 缩放程度，最低基础库 2.3.0 */
-            skew: number;
-        }>
-        & (
+    type RegionChange = CustomEvent<{
+        /** 旋转程度，最低基础库 2.3.0 */
+        rotate: number;
+        /** 缩放程度，最低基础库 2.3.0 */
+        skew: number;
+    }> &
+        (
             | {
-                /**
-                 * 视野变化开始、结束时触发
-                 *
-                 * 视野变化开始为 `begin`
-                 */
-                type: "begin";
-                /**
-                 * 导致视野变化的原因
-                 *
-                 * - gesture: 用户手势
-                 * - update: 调用接口导致
-                 */
-                causedBy: "gesture" | "update";
-            }
+                  /**
+                   * 视野变化开始、结束时触发
+                   *
+                   * 视野变化开始为 `begin`
+                   */
+                  type: "begin";
+                  /**
+                   * 导致视野变化的原因
+                   *
+                   * - gesture: 用户手势
+                   * - update: 调用接口导致
+                   */
+                  causedBy: "gesture" | "update";
+              }
             | {
-                /**
-                 * 视野变化结束时触发
-                 *
-                 * 视野变化结束为 `end`
-                 */
-                type: "end";
-                /**
-                 * 导致视野变化的原因
-                 *
-                 * - drag: 拖动地图导致
-                 * - scale: 缩放导致
-                 * - update: 调用接口导致
-                 */
-                causedBy: "drag" | "scale" | "update";
-            }
+                  /**
+                   * 视野变化结束时触发
+                   *
+                   * 视野变化结束为 `end`
+                   */
+                  type: "end";
+                  /**
+                   * 导致视野变化的原因
+                   *
+                   * - drag: 拖动地图导致
+                   * - scale: 缩放导致
+                   * - update: 调用接口导致
+                   */
+                  causedBy: "drag" | "scale" | "update";
+              }
         );
 
     /**

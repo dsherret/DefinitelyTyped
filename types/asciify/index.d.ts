@@ -13,11 +13,21 @@ interface AsciifyCallback {
 
 declare module "asciify" {
     function asciify(text: string, callback: AsciifyCallback): void;
-    function asciify(text: string, options: string, callback: AsciifyCallback): void;
-    function asciify(text: string, options: AsciifyOptions, callback: AsciifyCallback): void;
+    function asciify(
+        text: string,
+        options: string,
+        callback: AsciifyCallback,
+    ): void;
+    function asciify(
+        text: string,
+        options: AsciifyOptions,
+        callback: AsciifyCallback,
+    ): void;
 
     namespace asciify {
-        function getFonts(callback: (err: Error, fonts: string[]) => void): void;
+        function getFonts(
+            callback: (err: Error, fonts: string[]) => void,
+        ): void;
     }
 
     export = asciify;

@@ -40,26 +40,34 @@ jQuery(".fd-8").fdatepicker({
 
 // Test 'show' event
 // $ExpectType JQuery<HTMLElement>
-jQuery(".fd-9").fdatepicker({}).on("show", (event: FoundationDatepicker.Event) => {
-    const date: Date = event.date;
-});
+jQuery(".fd-9")
+    .fdatepicker({})
+    .on("show", (event: FoundationDatepicker.Event) => {
+        const date: Date = event.date;
+    });
 
 // Test 'hide' event
 // $ExpectType JQuery<HTMLElement>
-jQuery(".fd-10").fdatepicker({}).on("hide", (event: FoundationDatepicker.Event) => {
-    const date: Date = event.date;
-});
+jQuery(".fd-10")
+    .fdatepicker({})
+    .on("hide", (event: FoundationDatepicker.Event) => {
+        const date: Date = event.date;
+    });
 
 // Test 'changeDate' event
 // $ExpectType JQuery<HTMLElement>
-jQuery(".fd-11").fdatepicker({}).on("changeDate", (event: FoundationDatepicker.Event) => {
-    const date: Date = event.date;
-});
+jQuery(".fd-11")
+    .fdatepicker({})
+    .on("changeDate", (event: FoundationDatepicker.Event) => {
+        const date: Date = event.date;
+    });
 
 // Test 'outOfRange' event
 // $ExpectType JQuery<HTMLElement>
-jQuery(".fd-12").fdatepicker({}).on("outOfRange", (event: FoundationDatepicker.OutOfRangeEvent) => {
-    const date: Date = event.date;
-    const startDate: Date = event.startDate;
-    const endDate: Date = event.endDate;
-});
+jQuery(".fd-12")
+    .fdatepicker({})
+    .on("outOfRange", (event: FoundationDatepicker.OutOfRangeEvent) => {
+        const date: Date = event.date;
+        const startDate: Date = event.startDate;
+        const endDate: Date = event.endDate;
+    });

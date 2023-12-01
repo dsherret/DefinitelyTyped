@@ -107,15 +107,25 @@ declare namespace CryptoJS {
             createEncryptor(key: WordArray, cfg?: C): IStreamCipher<C>;
             createDecryptor(key: WordArray, cfg?: C): IStreamCipher<C>;
 
-            create(xformMode?: number, key?: WordArray, cfg?: C): IStreamCipher<C>;
+            create(
+                xformMode?: number,
+                key?: WordArray,
+                cfg?: C,
+            ): IStreamCipher<C>;
 
             blockSize: number;
         }
         interface StreamCipher extends IStreamCipher<Object> {}
 
         interface BlockCipherMode extends Base {
-            createEncryptor(cipher: Cipher, iv: number[]): mode.IBlockCipherEncryptor;
-            createDecryptor(cipher: Cipher, iv: number[]): mode.IBlockCipherDecryptor;
+            createEncryptor(
+                cipher: Cipher,
+                iv: number[],
+            ): mode.IBlockCipherEncryptor;
+            createDecryptor(
+                cipher: Cipher,
+                iv: number[],
+            ): mode.IBlockCipherDecryptor;
             init(cipher?: Cipher, iv?: number[]): void;
             create(cipher?: Cipher, iv?: number[]): BlockCipherMode;
         }
@@ -148,16 +158,38 @@ declare namespace CryptoJS {
         }
 
         // tparam C - Configuration type
-        interface ISerializableCipher<C extends ISerializableCipherCfg> extends Base {
+        interface ISerializableCipher<C extends ISerializableCipherCfg>
+            extends Base {
             cfg: C;
-            encrypt(cipher: Cipher, message: WordArray, key: WordArray, cfg?: C): CipherParams;
-            encrypt(cipher: Cipher, message: string, key: WordArray, cfg?: C): CipherParams;
+            encrypt(
+                cipher: Cipher,
+                message: WordArray,
+                key: WordArray,
+                cfg?: C,
+            ): CipherParams;
+            encrypt(
+                cipher: Cipher,
+                message: string,
+                key: WordArray,
+                cfg?: C,
+            ): CipherParams;
 
-            decrypt(cipher: Cipher, ciphertext: CipherParamsData, key: WordArray, cfg?: C): WordArray;
-            decrypt(cipher: Cipher, ciphertext: string, key: WordArray, cfg?: C): WordArray;
+            decrypt(
+                cipher: Cipher,
+                ciphertext: CipherParamsData,
+                key: WordArray,
+                cfg?: C,
+            ): WordArray;
+            decrypt(
+                cipher: Cipher,
+                ciphertext: string,
+                key: WordArray,
+                cfg?: C,
+            ): WordArray;
         }
 
-        interface SerializableCipher extends ISerializableCipher<ISerializableCipherCfg> {}
+        interface SerializableCipher
+            extends ISerializableCipher<ISerializableCipherCfg> {}
         interface ISerializableCipherCfg {
             format?: format.IFormatter | undefined; // default OpenSSLFormatter
             iv?: WordArray | undefined;
@@ -165,16 +197,38 @@ declare namespace CryptoJS {
             padding?: pad.IPaddingImpl | undefined;
         }
 
-        interface IPasswordBasedCipher<C extends IPasswordBasedCipherCfg> extends Base {
+        interface IPasswordBasedCipher<C extends IPasswordBasedCipherCfg>
+            extends Base {
             cfg: C;
-            encrypt(cipher: Cipher, message: WordArray, password: string, cfg?: C): CipherParams;
-            encrypt(cipher: Cipher, message: string, password: string, cfg?: C): CipherParams;
+            encrypt(
+                cipher: Cipher,
+                message: WordArray,
+                password: string,
+                cfg?: C,
+            ): CipherParams;
+            encrypt(
+                cipher: Cipher,
+                message: string,
+                password: string,
+                cfg?: C,
+            ): CipherParams;
 
-            decrypt(cipher: Cipher, ciphertext: CipherParamsData, password: string, cfg?: C): WordArray;
-            decrypt(cipher: Cipher, ciphertext: string, password: string, cfg?: C): WordArray;
+            decrypt(
+                cipher: Cipher,
+                ciphertext: CipherParamsData,
+                password: string,
+                cfg?: C,
+            ): WordArray;
+            decrypt(
+                cipher: Cipher,
+                ciphertext: string,
+                password: string,
+                cfg?: C,
+            ): WordArray;
         }
 
-        interface PasswordBasedCipher extends IPasswordBasedCipher<IPasswordBasedCipherCfg> {}
+        interface PasswordBasedCipher
+            extends IPasswordBasedCipher<IPasswordBasedCipherCfg> {}
         interface IPasswordBasedCipherCfg extends ISerializableCipherCfg {
             kdf?: kdf.IKdfImpl | undefined; // default OpenSSLKdf
             mode?: mode.IBlockCipherModeImpl | undefined;
@@ -185,13 +239,25 @@ declare namespace CryptoJS {
         interface ICipherHelper<C> {
             encrypt(message: string, password: string, cfg?: C): CipherParams;
             encrypt(message: string, key: WordArray, cfg?: C): CipherParams;
-            encrypt(message: WordArray, password: string, cfg?: C): CipherParams;
+            encrypt(
+                message: WordArray,
+                password: string,
+                cfg?: C,
+            ): CipherParams;
             encrypt(message: WordArray, key: WordArray, cfg?: C): CipherParams;
 
             decrypt(ciphertext: string, password: string, cfg?: C): WordArray;
             decrypt(ciphertext: string, key: WordArray, cfg?: C): WordArray;
-            decrypt(ciphertext: CipherParamsData, password: string, cfg?: C): WordArray;
-            decrypt(ciphertext: CipherParamsData, key: WordArray, cfg?: C): WordArray;
+            decrypt(
+                ciphertext: CipherParamsData,
+                password: string,
+                cfg?: C,
+            ): WordArray;
+            decrypt(
+                ciphertext: CipherParamsData,
+                key: WordArray,
+                cfg?: C,
+            ): WordArray;
         }
 
         interface CipherHelper extends ICipherHelper<Object> {}
@@ -230,8 +296,18 @@ declare namespace CryptoJS {
         }
 
         interface IKdfImpl {
-            execute(password: string, keySize: number, ivSize: number, salt?: string): lib.CipherParams;
-            execute(password: string, keySize: number, ivSize: number, salt?: lib.WordArray): lib.CipherParams;
+            execute(
+                password: string,
+                keySize: number,
+                ivSize: number,
+                salt?: string,
+            ): lib.CipherParams;
+            execute(
+                password: string,
+                keySize: number,
+                ivSize: number,
+                salt?: lib.WordArray,
+            ): lib.CipherParams;
         }
     }
 
@@ -279,10 +355,20 @@ declare namespace CryptoJS {
             encryptBlock(M: number[], offset: number): void;
             decryptBlock(M: number[], offset: number): void;
 
-            createEncryptor(key: lib.WordArray, cfg?: lib.CipherParamsData): IBlockCipherImpl;
-            createDecryptor(key: lib.WordArray, cfg?: lib.CipherParamsData): IBlockCipherImpl;
+            createEncryptor(
+                key: lib.WordArray,
+                cfg?: lib.CipherParamsData,
+            ): IBlockCipherImpl;
+            createDecryptor(
+                key: lib.WordArray,
+                cfg?: lib.CipherParamsData,
+            ): IBlockCipherImpl;
 
-            create(xformMode?: number, key?: lib.WordArray, cfg?: lib.IBlockCipherCfg): IBlockCipherImpl;
+            create(
+                xformMode?: number,
+                key?: lib.WordArray,
+                cfg?: lib.IBlockCipherCfg,
+            ): IBlockCipherImpl;
         }
 
         interface AES extends IBlockCipherImpl {}
@@ -326,7 +412,10 @@ declare namespace CryptoJS {
             compute(password: string, salt: string): lib.WordArray;
             compute(password: string, salt: lib.WordArray): lib.WordArray;
             compute(password: lib.WordArray, salt: string): lib.WordArray;
-            compute(password: lib.WordArray, salt: lib.WordArray): lib.WordArray;
+            compute(
+                password: lib.WordArray,
+                salt: lib.WordArray,
+            ): lib.WordArray;
         }
         interface IEvpKDFCfg {
             keySize?: number | undefined; // default 128/32
@@ -335,9 +424,21 @@ declare namespace CryptoJS {
         }
         interface IEvpKDFHelper {
             (password: string, salt: string, cfg?: IEvpKDFCfg): lib.WordArray;
-            (password: string, salt: lib.WordArray, cfg?: IEvpKDFCfg): lib.WordArray;
-            (password: lib.WordArray, salt: string, cfg?: IEvpKDFCfg): lib.WordArray;
-            (password: lib.WordArray, salt: lib.WordArray, cfg?: IEvpKDFCfg): lib.WordArray;
+            (
+                password: string,
+                salt: lib.WordArray,
+                cfg?: IEvpKDFCfg,
+            ): lib.WordArray;
+            (
+                password: lib.WordArray,
+                salt: string,
+                cfg?: IEvpKDFCfg,
+            ): lib.WordArray;
+            (
+                password: lib.WordArray,
+                salt: lib.WordArray,
+                cfg?: IEvpKDFCfg,
+            ): lib.WordArray;
         }
 
         interface PBKDF2 extends EvpKDF {} // PBKDF2 is same as EvpKDF
@@ -358,7 +459,8 @@ declare namespace CryptoJS {
         interface IBlockCipherEncryptor extends lib.BlockCipherMode {
             processBlock(words: number[], offset: number): void;
         }
-        interface IBlockCipherDecryptor extends lib.BlockCipherMode { // exactly as IBlockCipherEncryptor
+        interface IBlockCipherDecryptor extends lib.BlockCipherMode {
+            // exactly as IBlockCipherEncryptor
             processBlock(words: number[], offset: number): void;
         }
         interface IBlockCipherModeImpl extends lib.BlockCipherMode {

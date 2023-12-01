@@ -20,7 +20,9 @@ export interface GlobalMethods {
      * findJSXElementsByModuleName('Foo') will find <Bar />, without having to
      * know the variable name.
      */
-    findJSXElementsByModuleName(moduleName: string): Collection.Collection<JSXElement>;
+    findJSXElementsByModuleName(
+        moduleName: string,
+    ): Collection.Collection<JSXElement>;
 }
 
 type Defined<T> = T extends undefined ? never : T;

@@ -48,7 +48,10 @@ export interface HistoryUnsubscribe {
     unsubscribe(): void;
 }
 
-export function routerReducer(state?: RouterState, action?: Action): RouterState;
+export function routerReducer(
+    state?: RouterState,
+    action?: Action,
+): RouterState;
 export function syncHistoryWithStore(
     history: History,
     store: Store<any>,

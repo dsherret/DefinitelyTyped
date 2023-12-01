@@ -1,10 +1,18 @@
-const mapboxTiles = L.tileLayer("https://{s}.tiles.mapbox.com/v3/examples.map-i87786ca/{z}/{x}/{y}.png", {
-    attribution: "<a href=\"http://www.mapbox.com/about/maps/\" target=\"_blank\">Terms &amp; Feedback</a>",
-});
+const mapboxTiles = L.tileLayer(
+    "https://{s}.tiles.mapbox.com/v3/examples.map-i87786ca/{z}/{x}/{y}.png",
+    {
+        attribution:
+            '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>',
+    },
+);
 
-const map = L.map("map").addLayer(mapboxTiles).setView(new L.LatLng([42.3610, -71.0587]), 15);
+const map = L.map("map")
+    .addLayer(mapboxTiles)
+    .setView(new L.LatLng([42.361, -71.0587]), 15);
 
-const lightTiles = L.mapbox.styleLayer("mapbox://styles/mapbox/light-v9").addTo(map);
+const lightTiles = L.mapbox
+    .styleLayer("mapbox://styles/mapbox/light-v9")
+    .addTo(map);
 
 const coordinates = document.getElementById("coordinates");
 
@@ -22,17 +30,19 @@ marker.on("dragend", () => {
 });
 
 // Build a marker from a simple GeoJSON object:
-const marker2 = L.mapbox.featureLayer({
-    type: "Feature",
-    geometry: {
-        type: "Point",
-        coordinates: [-73.9840, 40.7271],
-    },
-    properties: {
-        title: "Hello world!",
-        "marker-color": "#f86767",
-    },
-}).addTo(map);
+const marker2 = L.mapbox
+    .featureLayer({
+        type: "Feature",
+        geometry: {
+            type: "Point",
+            coordinates: [-73.984, 40.7271],
+        },
+        properties: {
+            title: "Hello world!",
+            "marker-color": "#f86767",
+        },
+    })
+    .addTo(map);
 
 // Iterate over the featureLayer we've called "marker"
 // and open its popup instead of clicking to trigger it.

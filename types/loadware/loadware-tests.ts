@@ -10,15 +10,6 @@ type Middleware = (ctx: Context) => void;
 
 loadware<Middleware>(
     (_: Context) => {},
-    [
-        (_: Context) => {},
-        "loadware/requires-strings",
-    ],
-    [
-        [
-            [
-                (_: Context) => {},
-            ],
-        ],
-    ],
+    [(_: Context) => {}, "loadware/requires-strings"],
+    [[[(_: Context) => {}]]],
 );

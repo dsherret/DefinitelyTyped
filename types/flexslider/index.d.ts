@@ -56,7 +56,13 @@ declare namespace FlexSlider {
         /**
          * Move slider
          */
-        flexAnimate: (target: any, pause?: boolean, override?: boolean, withSync?: boolean, fromNav?: boolean) => any;
+        flexAnimate: (
+            target: any,
+            pause?: boolean,
+            override?: boolean,
+            withSync?: boolean,
+            fromNav?: boolean,
+        ) => any;
         /**
          * Pause slider slideshow interval
          */
@@ -375,9 +381,21 @@ declare namespace FlexSlider {
         init?: ((slider: SliderObject) => void) | undefined;
     }
 
-    type HelperActions = "play" | "pause" | "stop" | "next" | "prev" | "previous";
+    type HelperActions =
+        | "play"
+        | "pause"
+        | "stop"
+        | "next"
+        | "prev"
+        | "previous";
 }
 
 interface JQuery {
-    flexslider(options?: FlexSlider.Options | FlexSlider.Methods | FlexSlider.HelperActions | number): any;
+    flexslider(
+        options?:
+            | FlexSlider.Options
+            | FlexSlider.Methods
+            | FlexSlider.HelperActions
+            | number,
+    ): any;
 }

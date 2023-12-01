@@ -12,6 +12,9 @@ declare namespace IncomingFrameStream {
     // Internal class, which is not exported
     interface IncomingFrame extends Readable {
         readEmptyBody(callback?: (isEmpty: boolean) => void): void;
-        readString(encoding: string, callback?: (err: Error | null, buffer?: string) => void): void;
+        readString(
+            encoding: string,
+            callback?: (err: Error | null, buffer?: string) => void,
+        ): void;
     }
 }

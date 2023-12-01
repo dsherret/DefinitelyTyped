@@ -50,7 +50,9 @@ class ComponentInjection extends Ember.Component {
 
     testem() {
         assertType<Ember.Service>(this.get("misc"));
-        const url = this.get("router").urlFor("some-route", 1, 2, 3, { queryParams: { seriously: "yes" } });
+        const url = this.get("router").urlFor("some-route", 1, 2, 3, {
+            queryParams: { seriously: "yes" },
+        });
         assertType<string>(url);
         if (!this.get("auth").isAuthenticated) {
             this.get("applicationController").transitionToLogin();

@@ -8,7 +8,9 @@ declare module "angular" {
          * @param errorCallback Callback for error, the same as for then
          */
         spread<TResult>(
-            successCallback: (...promiseValues: any[]) => IPromise<TResult> | TResult,
+            successCallback: (
+                ...promiseValues: any[]
+            ) => IPromise<TResult> | TResult,
             errorCallback?: (reason: any) => any,
         ): IPromise<TResult>;
     }

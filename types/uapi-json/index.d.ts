@@ -18,4 +18,10 @@ export namespace errors {
     export { utilsErrors as Utils };
     export { terminalErrors as Terminal };
 }
-export { createAirService, createHotelService, createTerminalService, createUtilsService, errorCodes };
+export {
+    createAirService,
+    createHotelService,
+    createTerminalService,
+    createUtilsService,
+    errorCodes,
+};

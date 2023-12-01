@@ -12,7 +12,7 @@ openGraphScraper(options, (error, results, response) => {
     response; // $ExpectType PassThrough
 });
 
-openGraphScraper(options).then(data => {
+openGraphScraper(options).then((data) => {
     if (!data.error) {
         const { error, result, response } = data;
         error; // $ExpectType false

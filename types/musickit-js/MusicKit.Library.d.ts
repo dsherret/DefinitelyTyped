@@ -20,7 +20,10 @@ declare namespace MusicKit {
          * directly to the Cloud Library API.
          * https://developer.apple.com/documentation/musickitjs/musickit/library/3001494-albums
          */
-        albums(ids: string[] | null, parameters?: QueryParameters): Promise<Albums[]>;
+        albums(
+            ids: string[] | null,
+            parameters?: QueryParameters,
+        ): Promise<Albums[]>;
         /**
          * Fetch a library artist using its identifier.
          *
@@ -38,7 +41,10 @@ declare namespace MusicKit {
          * directly to the Cloud Library API.
          * https://developer.apple.com/documentation/musickitjs/musickit/library/3001496-artists
          */
-        artists(ids: string[] | null, parameters?: QueryParameters): Promise<Artists[]>;
+        artists(
+            ids: string[] | null,
+            parameters?: QueryParameters,
+        ): Promise<Artists[]>;
         /**
          * Fetch a library music video using its identifier.
          *
@@ -47,7 +53,10 @@ declare namespace MusicKit {
          * directly to the Cloud Library API.
          * https://developer.apple.com/documentation/musickitjs/musickit/library/3001497-musicvideo
          */
-        musicVideo(id: string, parameters?: QueryParameters): Promise<MusicVideos>;
+        musicVideo(
+            id: string,
+            parameters?: QueryParameters,
+        ): Promise<MusicVideos>;
         /**
          * Fetch one or more library music videos using their identifiers.
          *
@@ -56,7 +65,10 @@ declare namespace MusicKit {
          * directly to the Cloud Library API.
          * https://developer.apple.com/documentation/musickitjs/musickit/library/3001498-musicvideos
          */
-        musicVideos(ids: string[] | null, parameters?: QueryParameters): Promise<MusicVideos[]>;
+        musicVideos(
+            ids: string[] | null,
+            parameters?: QueryParameters,
+        ): Promise<MusicVideos[]>;
         /**
          * Fetch a library playlist using its identifier.
          *
@@ -74,7 +86,10 @@ declare namespace MusicKit {
          * directly to the Cloud Library API.
          * https://developer.apple.com/documentation/musickitjs/musickit/library/3001500-playlists
          */
-        playlists(ids: string[] | null, parameters?: QueryParameters): Promise<Playlists[]>;
+        playlists(
+            ids: string[] | null,
+            parameters?: QueryParameters,
+        ): Promise<Playlists[]>;
         /**
          * Fetch the resources recently added to the library.
          *
@@ -109,6 +124,9 @@ declare namespace MusicKit {
          * directly to the Cloud Library API.
          * https://developer.apple.com/documentation/musickitjs/musickit/library/3001502-songs
          */
-        songs(ids: string[] | null, parameters?: QueryParameters): Promise<Songs[]>;
+        songs(
+            ids: string[] | null,
+            parameters?: QueryParameters,
+        ): Promise<Songs[]>;
     }
 }

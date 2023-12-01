@@ -1,13 +1,13 @@
 // QUnit Tests for Bootbox 4.4.0
 
 bootbox.alert("Are we ok?");
-bootbox.alert("Are we ok with callback?", function() {
+bootbox.alert("Are we ok with callback?", function () {
     console.log("Callback called!");
 });
 bootbox.alert({
     size: "small",
     message: "Are we ok with callback and custom button?",
-    callback: function() {
+    callback: function () {
         console.log("Callback called!");
     },
 });
@@ -32,44 +32,44 @@ bootbox.alert({
     message: "Are we ok with centerVertical?",
 });
 
-bootbox.confirm("Click cancel to pass test", function(result) {
+bootbox.confirm("Click cancel to pass test", function (result) {
     console.log(!result);
 });
 bootbox.confirm({
     title: "Click confirm to pass test",
     message: "Please confirm this.",
-    callback: function(result) {
+    callback: function (result) {
         console.log(result);
     },
 });
 
-bootbox.prompt("Enter 'ok' to pass test", function(result) {
+bootbox.prompt("Enter 'ok' to pass test", function (result) {
     console.log(result);
 });
 bootbox.prompt({
     title: "Enter 'ok' to pass test",
-    callback: function(result) {
+    callback: function (result) {
         console.log(result);
     },
 });
 bootbox.prompt({
     size: "large",
     title: "Enter 'ok' to pass test",
-    callback: function(result) {
+    callback: function (result) {
         console.log(result);
     },
 });
 bootbox.prompt({
     size: "xl",
     title: "Enter 'ok' to pass test",
-    callback: function(result) {
+    callback: function (result) {
         console.log(result);
     },
 });
 bootbox.prompt({
     scrollable: true,
     title: "Enter 'ok' to pass test",
-    callback: function(result) {
+    callback: function (result) {
         console.log(result);
     },
 });
@@ -93,7 +93,7 @@ bootbox.prompt({
             value: "3",
         },
     ],
-    callback: function(result) {
+    callback: function (result) {
         console.log(result);
     },
 });
@@ -101,7 +101,7 @@ bootbox.prompt({
 bootbox.dialog({
     title: "Wassup?",
     message: "Test Dialog",
-    callback: function() {},
+    callback: function () {},
 });
 
 // Testing the return object of the call. Using the pointer to disable the animation on success callback.
@@ -115,7 +115,7 @@ bBox = bootbox.dialog({
         },
         confirm: {
             label: "Continue",
-            callback: function() {
+            callback: function () {
                 bBox.removeClass("fade");
                 console.log("Outer callback.");
             },
@@ -127,7 +127,7 @@ bBox = bootbox.dialog({
 var bdo: BootboxDialogOptions;
 var sampleButton: BootboxButton = {
     label: "ButtonLabelToUse",
-    callback: function() {
+    callback: function () {
         return "callback of button click";
     },
     className: "additionalButtonClassName",
@@ -137,7 +137,7 @@ bdo = {
     message: "",
     className: "callName",
     buttons: {
-        "ButtonTextLabel": sampleButton,
+        ButtonTextLabel: sampleButton,
     },
 };
 

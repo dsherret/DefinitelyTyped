@@ -122,7 +122,11 @@ interface SettingsClientCommands {
      * @param country - Country. e.g. US, JP
      * @param script - Script. e.g. Hans in `zh-Hans-CN`
      */
-    setDeviceSysLocaleViaSettingApp(language: string, country: string, script?: string): Promise<void>;
+    setDeviceSysLocaleViaSettingApp(
+        language: string,
+        country: string,
+        script?: string,
+    ): Promise<void>;
 
     /**
      * Emulate geolocation coordinates on the device under test.
@@ -231,7 +235,9 @@ interface SettingsClientCommands {
      * ```
      * @throws If there was an error while getting the notifications list
      */
-    getNotifications(): Promise<{ statusBarNotifications: StatusBarNotification[] }>;
+    getNotifications(): Promise<{
+        statusBarNotifications: StatusBarNotification[];
+    }>;
 
     /**
      * Retrieves the list of the most recent SMS
@@ -273,7 +279,9 @@ interface SettingsClientCommands {
      * ```
      * @throws If there was an error while getting the SMS list
      */
-    getSmsList(opts?: SmsListOptions): Promise<{ items: SmsItem[]; total: number }>;
+    getSmsList(
+        opts?: SmsListOptions,
+    ): Promise<{ items: SmsItem[]; total: number }>;
 
     /**
      * Types the given Unicode string.

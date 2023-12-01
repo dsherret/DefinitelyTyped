@@ -507,7 +507,12 @@ declare namespace Shell32 {
         SetFocus(): void;
 
         /** method SetSearchParameters */
-        SetSearchParameters(pbstrSearchID: string, bNavToResults: boolean, pvarScope?: any, pvarQueryFile?: any): void;
+        SetSearchParameters(
+            pbstrSearchID: string,
+            bNavToResults: boolean,
+            pvarScope?: any,
+            pvarQueryFile?: any,
+        ): void;
     }
 
     /** Definition of interface Folder version 3 */
@@ -519,7 +524,10 @@ declare namespace Shell32 {
         readonly Application: any;
 
         /** Copy Items to this folder. */
-        CopyHere(vItem: string | ShellFolderItem | FolderItems3, vOptions?: FileOperationFlag): void;
+        CopyHere(
+            vItem: string | ShellFolderItem | FolderItems3,
+            vOptions?: FileOperationFlag,
+        ): void;
 
         /** Call this after the WebView barricade is dismissed by the user */
         DismissedWebViewBarricade(): void;
@@ -539,7 +547,10 @@ declare namespace Shell32 {
         Items(): FolderItems3;
 
         /** Move Items to this folder. */
-        MoveHere(vItem: string | ShellFolderItem | FolderItems3, vOptions?: FileOperationFlag): void;
+        MoveHere(
+            vItem: string | ShellFolderItem | FolderItems3,
+            vOptions?: FileOperationFlag,
+        ): void;
 
         /** Create a new sub folder in this folder. */
         NewFolder(bName: string): void;
@@ -578,7 +589,10 @@ declare namespace Shell32 {
         readonly Count: number;
 
         /** Set a wildcard filter to apply to the items returned */
-        Filter(grfFlags: ShellFolderEnumerationFlags, bstrFileSpec: string): void;
+        Filter(
+            grfFlags: ShellFolderEnumerationFlags,
+            bstrFileSpec: string,
+        ): void;
 
         /**
          * Executes a verb on a collection of `FolderItem` objects
@@ -692,7 +706,11 @@ declare namespace Shell32 {
          * `IsOS_Professional` -- Returns **true** if the operating system is Windows XP Professional Edition (_Windows XP only_)
          */
         GetSystemInformation(
-            Name: "DirectoryServiceAvailable" | "IsOS_DomainMember" | "IsOS_Personal" | "IsOS_Professional",
+            Name:
+                | "DirectoryServiceAvailable"
+                | "IsOS_DomainMember"
+                | "IsOS_Personal"
+                | "IsOS_Professional",
         ): boolean;
 
         /**
@@ -771,7 +789,13 @@ declare namespace Shell32 {
          * performed.
          * @param [vShow] A recommendation as to how the application window should be displayed initially. The application can ignore this recommendation.
          */
-        ShellExecute(File: string, vArgs?: string, vDir?: string, vOperation?: string, vShow?: ShellExecuteShow): void;
+        ShellExecute(
+            File: string,
+            vArgs?: string,
+            vDir?: string,
+            vOperation?: string,
+            vShow?: ShellExecuteShow,
+        ): void;
 
         /** Show/Hide browser bar. */
         ShowBrowserBar(bstrClsid: ExplorerBarCLSID, bShow: boolean): any;
@@ -911,7 +935,10 @@ declare namespace Shell32 {
         SelectedItems(): FolderItems3;
 
         /** Select the item */
-        SelectItem(pvfi: ShellFolderItem, dwFlags: ShellFolderViewSelectItem): void;
+        SelectItem(
+            pvfi: ShellFolderItem,
+            dwFlags: ShellFolderViewSelectItem,
+        ): void;
 
         /** Select Item relative to the Current Item */
         SelectItemRelative(iRelative: number): void;
@@ -1005,15 +1032,22 @@ declare namespace Shell32 {
 interface ActiveXObject {
     on(
         obj: Shell32.ShellFolderView,
-        event: "BeginDrag" | "DefaultVerbInvoked" | "EnumDone" | "SelectionChanged" | "VerbInvoked",
-        handler: (
-            this: Shell32.ShellFolderView,
-            parameter: {},
-        ) => void,
+        event:
+            | "BeginDrag"
+            | "DefaultVerbInvoked"
+            | "EnumDone"
+            | "SelectionChanged"
+            | "VerbInvoked",
+        handler: (this: Shell32.ShellFolderView, parameter: {}) => void,
     ): void;
     on(
         obj: Shell32.ShellFolderViewOC,
-        event: "BeginDrag" | "DefaultVerbInvoked" | "EnumDone" | "SelectionChanged" | "VerbInvoked",
+        event:
+            | "BeginDrag"
+            | "DefaultVerbInvoked"
+            | "EnumDone"
+            | "SelectionChanged"
+            | "VerbInvoked",
         handler: (this: Shell32.ShellFolderViewOC, parameter: {}) => void,
     ): void;
 }
@@ -1024,7 +1058,7 @@ interface ActiveXObjectNameMap {
 }
 
 interface EnumeratorConstructor {
-    new(col: Shell32.FolderItems3): Enumerator<Shell32.ShellFolderItem>;
-    new(col: Shell32.FolderItemVerbs): Enumerator<Shell32.FolderItemVerb>;
-    new(col: Shell32.ShellWindows): Enumerator<SHDocVw.InternetExplorer>;
+    new (col: Shell32.FolderItems3): Enumerator<Shell32.ShellFolderItem>;
+    new (col: Shell32.FolderItemVerbs): Enumerator<Shell32.FolderItemVerb>;
+    new (col: Shell32.ShellWindows): Enumerator<SHDocVw.InternetExplorer>;
 }

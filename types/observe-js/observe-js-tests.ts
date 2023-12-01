@@ -1,11 +1,17 @@
-import { ArrayObserver, CompoundObserver, ObjectObserver, ObserverTransform, PathObserver } from "observe-js";
+import {
+    ArrayObserver,
+    CompoundObserver,
+    ObjectObserver,
+    ObserverTransform,
+    PathObserver,
+} from "observe-js";
 
 namespace observejs {
     function Test_PathObserver() {
         var obj = { foo: { bar: "baz" } };
         var defaultValue = 42;
         var observer = new PathObserver(obj, "foo.bar", defaultValue);
-        observer.open(function(newValue, oldValue) {
+        observer.open(function (newValue, oldValue) {
             // respond to obj.foo.bar having changed value.
         });
     }
@@ -13,9 +19,9 @@ namespace observejs {
     function Test_ArrayObserver() {
         var arr = [0, 1, 2, 4];
         var observer = new ArrayObserver(arr);
-        observer.open(function(splices) {
+        observer.open(function (splices) {
             // respond to changes to the elements of arr.
-            splices.forEach(function(splice) {
+            splices.forEach(function (splice) {
                 splice.index; // the index position that the change occurred.
                 splice.removed; // an array of values representing the sequence of removed elements
                 splice.addedCount; // the number of elements which were inserted.
@@ -26,17 +32,17 @@ namespace observejs {
     function Test_ObejctObserver() {
         var myObj = { id: 1, foo: "bar" };
         var observer = new ObjectObserver(myObj);
-        observer.open(function(added, removed, changed, getOldValueFn) {
+        observer.open(function (added, removed, changed, getOldValueFn) {
             // respond to changes to the obj.
-            Object.keys(added).forEach(function(property) {
+            Object.keys(added).forEach(function (property) {
                 property; // a property which has been been added to obj
                 added[property]; // its value
             });
-            Object.keys(removed).forEach(function(property) {
+            Object.keys(removed).forEach(function (property) {
                 property; // a property which has been been removed from obj
                 getOldValueFn(property); // its old value
             });
-            Object.keys(changed).forEach(function(property) {
+            Object.keys(changed).forEach(function (property) {
                 property; // a property on obj which has changed value.
                 changed[property]; // its value
                 getOldValueFn(property); // its old value
@@ -57,7 +63,7 @@ namespace observejs {
         observer.addObserver(new PathObserver(obj, "b"));
         observer.addPath(otherObj, "c");
         var logTemplate = "The %sth value before & after:";
-        observer.open(function(newValues, oldValues) {
+        observer.open(function (newValues, oldValues) {
             // Use for-in to iterate which values have changed.
             for (var i in oldValues) {
                 console.log(logTemplate, i, oldValues[i], newValues[i]);
@@ -78,7 +84,7 @@ namespace observejs {
         var transform = new ObserverTransform(observer, getValue, setValue);
 
         // returns 20.
-        transform.open(function(newValue, oldValue) {
+        transform.open(function (newValue, oldValue) {
             console.log("new: " + newValue + ", old: " + oldValue);
         });
 
@@ -93,7 +99,7 @@ namespace observejs {
         observer.addPath(obj, "a");
         observer.addPath(obj, "b");
         observer.addPath(obj, "c");
-        var transform = new ObserverTransform(observer, function(values) {
+        var transform = new ObserverTransform(observer, function (values) {
             var value = 0;
             for (var i = 0; i < values.length; i++) {
                 value += values[i];
@@ -102,7 +108,7 @@ namespace observejs {
         });
 
         // returns 6.
-        transform.open(function(newValue, oldValue) {
+        transform.open(function (newValue, oldValue) {
             console.log("new: " + newValue + ", old: " + oldValue);
         });
 

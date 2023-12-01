@@ -30,7 +30,9 @@ class Test extends React.Component {
                 disabledClassName={"disabled"}
                 hrefBuilder={(pageIndex: number) => null}
                 extraAriaContext={"aria"}
-                ariaLabelBuilder={(page, selected) => selected ? "Current page" : "Goto page " + page}
+                ariaLabelBuilder={(page, selected) =>
+                    selected ? "Current page" : "Goto page " + page
+                }
                 eventListener={"onMouseOver"}
             />
         );

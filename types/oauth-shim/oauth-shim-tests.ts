@@ -14,15 +14,20 @@ oauthshim.init([
     },
 ]);
 
-function customHandler(req: oauthshim.Request, res: express.Response, next: express.NextFunction) {
+function customHandler(
+    req: oauthshim.Request,
+    res: express.Response,
+    next: express.NextFunction,
+) {
     if (
-        req.oauthshim
-        && req.oauthshim.redirect
-        && req.oauthshim.data
-        && req.oauthshim.data.access_token
-        && req.oauthshim.options
-        && !req.oauthshim.options.path
-    ) {}
+        req.oauthshim &&
+        req.oauthshim.redirect &&
+        req.oauthshim.data &&
+        req.oauthshim.data.access_token &&
+        req.oauthshim.options &&
+        !req.oauthshim.options.path
+    ) {
+    }
 
     next();
 }

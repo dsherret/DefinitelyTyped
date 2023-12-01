@@ -22,11 +22,16 @@ interface LockManagerRequestOptions {
 }
 
 interface LockManager {
-    request(name: string, callback: (lock: Lock) => Promise<any>): Promise<undefined>;
+    request(
+        name: string,
+        callback: (lock: Lock) => Promise<any>,
+    ): Promise<undefined>;
     request<T extends LockManagerRequestOptions>(
         name: string,
         options: T,
-        callback: (lock: T["ifAvailable"] extends true ? Lock | null : Lock) => Promise<any>,
+        callback: (
+            lock: T["ifAvailable"] extends true ? Lock | null : Lock,
+        ) => Promise<any>,
     ): Promise<undefined>;
     query(): Promise<LockManagerSnapshot>;
 }

@@ -94,13 +94,25 @@ declare namespace wiiu {
 }
 
 interface HTMLElement {
-    addEventListener(type: "wiiu_videoplayer_end", listener: (ev: CustomEvent) => any, useCapture?: boolean): void;
+    addEventListener(
+        type: "wiiu_videoplayer_end",
+        listener: (ev: CustomEvent) => any,
+        useCapture?: boolean,
+    ): void;
 }
 
 interface Window {
     wiiu: typeof wiiu;
-    addEventListener(type: "wiiu_imageview_start", listener: (ev: CustomEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "wiiu_imageview_end", listener: (ev: CustomEvent) => any, useCapture?: boolean): void;
+    addEventListener(
+        type: "wiiu_imageview_start",
+        listener: (ev: CustomEvent) => any,
+        useCapture?: boolean,
+    ): void;
+    addEventListener(
+        type: "wiiu_imageview_end",
+        listener: (ev: CustomEvent) => any,
+        useCapture?: boolean,
+    ): void;
     addEventListener(
         type: "wiiu_imageview_change_viewmode",
         listener: (ev: CustomEvent) => any,
@@ -111,5 +123,9 @@ interface Window {
         listener: (ev: CustomEvent) => any,
         useCapture?: boolean,
     ): void;
-    addEventListener(type: "wiiu_imageview_error", listener: (ev: CustomEvent) => any, useCapture?: boolean): void;
+    addEventListener(
+        type: "wiiu_imageview_error",
+        listener: (ev: CustomEvent) => any,
+        useCapture?: boolean,
+    ): void;
 }

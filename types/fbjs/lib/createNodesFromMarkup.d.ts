@@ -6,7 +6,10 @@
  *
  * return {array<DOMElement|DOMTextNode>} An array of rendered nodes.
  */
-declare function createNodesFromMarkup(markup: string, handleScript?: (script: string) => void): any[];
+declare function createNodesFromMarkup(
+    markup: string,
+    handleScript?: (script: string) => void,
+): any[];
 
 declare namespace createNodesFromMarkup {}
 

@@ -124,7 +124,11 @@ declare namespace Strophe {
      *  (Function) func - The function to apply to each child. This
      *   function should take a single argument, a DOM element.
      */
-    function forEachChild(elem: Element, elemName: string, func: (child: Element) => any): void;
+    function forEachChild(
+        elem: Element,
+        elemName: string,
+        func: (child: Element) => any,
+    ): void;
 
     /**
      * Function: isTagEqual

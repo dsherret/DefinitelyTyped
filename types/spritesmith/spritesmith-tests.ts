@@ -20,7 +20,8 @@ spritesmith.createImages(sprites, function handleImages(err, images) {
     images[0].height; // Height of image
 
     // Create our result
-    const result: SpritesmithResult<Transform> = spritesmith.processImages(images);
+    const result: SpritesmithResult<Transform> =
+        spritesmith.processImages(images);
     // $ExpectType Transform
     result.image; // Readable stream outputting image
     result.coordinates; // Object mapping filename to {x, y, width, height} of image

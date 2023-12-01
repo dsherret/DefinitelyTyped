@@ -5,7 +5,10 @@ declare class NativeAdsManager {
 
     constructor(adUnitID: string, testDevices: string[]);
 
-    static registerViewsForInteractionAsync(nativeAdViewTag: number, clickable: number[]): Promise<void>;
+    static registerViewsForInteractionAsync(
+        nativeAdViewTag: number,
+        clickable: number[],
+    ): Promise<void>;
 
     toJSON(): string;
 }

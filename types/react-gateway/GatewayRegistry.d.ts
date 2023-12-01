@@ -1,6 +1,8 @@
 declare class GatewayRegistry {
     _containers: { [name: string]: React.Component | null | undefined };
-    _children: { [name: string]: { [gatewayId: string]: React.ReactNode } | undefined };
+    _children: {
+        [name: string]: { [gatewayId: string]: React.ReactNode } | undefined;
+    };
     _currentId: number;
 
     _renderContainer(name: string): void;

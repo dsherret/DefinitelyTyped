@@ -1,6 +1,13 @@
 /// <reference types="node" />
 
-import { createCipheriv, createDecipheriv, getCiphers, pbkdf2, pbkdf2Sync, randomBytes } from "crypto";
+import {
+    createCipheriv,
+    createDecipheriv,
+    getCiphers,
+    pbkdf2,
+    pbkdf2Sync,
+    randomBytes,
+} from "crypto";
 
 declare namespace KeyStore {
     interface Type {
@@ -27,7 +34,13 @@ declare namespace KeyStore {
 
     interface SCryptParams {
         kdf: "scrypt";
-        kdfparams: { memory: number; dklen: number; n: number; r: number; p: number };
+        kdfparams: {
+            memory: number;
+            dklen: number;
+            n: number;
+            r: number;
+            p: number;
+        };
     }
 }
 
@@ -48,7 +61,9 @@ interface Constants {
     scrypt: KeyStore.SCryptParams["kdfparams"];
 }
 
-type MarshalOptions = Partial<CryptoOptions & EncryptOptions & KeyStore.KeyDeriveOptions>;
+type MarshalOptions = Partial<
+    CryptoOptions & EncryptOptions & KeyStore.KeyDeriveOptions
+>;
 
 interface KeyStore {
     id: string;
@@ -79,11 +94,25 @@ interface Instance {
     isBase64(input: string): boolean;
     str2buf(input: string, encoding?: BufferEncoding): Buffer;
     isCipherAvailable(chiperName: string): boolean;
-    encrypt(plaintext: Buffer | string, key: Buffer | string, iv: Buffer | string, algorithm?: string): Buffer;
-    decrypt(ciphertext: Buffer | string, key: Buffer | string, iv: Buffer | string, algorithm?: string): Buffer;
+    encrypt(
+        plaintext: Buffer | string,
+        key: Buffer | string,
+        iv: Buffer | string,
+        algorithm?: string,
+    ): Buffer;
+    decrypt(
+        ciphertext: Buffer | string,
+        key: Buffer | string,
+        iv: Buffer | string,
+        algorithm?: string,
+    ): Buffer;
     privateKeyToAddress(privateKey: Buffer | string): string;
     getMAC(derivedKey: Buffer | string, ciphertext: Buffer | string): Buffer;
-    deriveKey(password: Buffer | string, salt: Buffer | string, options?: DeriveKeyOptions): Buffer;
+    deriveKey(
+        password: Buffer | string,
+        salt: Buffer | string,
+        options?: DeriveKeyOptions,
+    ): Buffer;
     deriveKey(
         password: Buffer | string,
         salt: Buffer | string,
@@ -91,9 +120,24 @@ interface Instance {
         callback: Callback<Buffer>,
     ): void;
     create(params: EncryptOptions): Record<string, Buffer>;
-    create(params: EncryptOptions, callback: Callback<Record<string, Buffer>>): void;
-    marshal(derivedKey: Buffer, privateKey: Buffer, salt: Buffer, iv: Buffer, options?: MarshalOptions): KeyStore.Type;
-    dump(derivedKey: Buffer, privateKey: Buffer, salt: Buffer, iv: Buffer, options?: MarshalOptions): KeyStore.Type;
+    create(
+        params: EncryptOptions,
+        callback: Callback<Record<string, Buffer>>,
+    ): void;
+    marshal(
+        derivedKey: Buffer,
+        privateKey: Buffer,
+        salt: Buffer,
+        iv: Buffer,
+        options?: MarshalOptions,
+    ): KeyStore.Type;
+    dump(
+        derivedKey: Buffer,
+        privateKey: Buffer,
+        salt: Buffer,
+        iv: Buffer,
+        options?: MarshalOptions,
+    ): KeyStore.Type;
     dump(
         derivedKey: Buffer,
         privateKey: Buffer,
@@ -104,9 +148,17 @@ interface Instance {
     ): void;
     generateKeystoreFilename(address: string): string;
     exportToFile(store: KeyStore.Type, keystore?: string): string;
-    exportToFile(store: KeyStore.Type, keystore: string | undefined, callback: Callback<string>): void;
+    exportToFile(
+        store: KeyStore.Type,
+        keystore: string | undefined,
+        callback: Callback<string>,
+    ): void;
     importFromFile(address: string, datadir?: string): KeyStore.Type;
-    importFromFile(address: string, datadir: string | undefined, callback: Callback<KeyStore.Type>): void;
+    importFromFile(
+        address: string,
+        datadir: string | undefined,
+        callback: Callback<KeyStore.Type>,
+    ): void;
 }
 
 declare var instance: Instance;

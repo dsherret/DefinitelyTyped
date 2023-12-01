@@ -16,11 +16,15 @@ export interface DomOptions {
     getNodeKey?: ((node: Node) => any) | undefined;
     onBeforeNodeAdded?: ((node: Node) => Node) | undefined;
     onNodeAdded?: ((node: Node) => Node) | undefined;
-    onBeforeElUpdated?: ((fromEl: HTMLElement, toEl: HTMLElement) => boolean) | undefined;
+    onBeforeElUpdated?:
+        | ((fromEl: HTMLElement, toEl: HTMLElement) => boolean)
+        | undefined;
     onElUpdated?: ((el: HTMLElement) => void) | undefined;
     onBeforeNodeDiscarded?: ((node: Node) => boolean) | undefined;
     onNodeDiscarded?: ((node: Node) => void) | undefined;
-    onBeforeElChildrenUpdated?: ((fromEl: HTMLElement, toEl: HTMLElement) => boolean) | undefined;
+    onBeforeElChildrenUpdated?:
+        | ((fromEl: HTMLElement, toEl: HTMLElement) => boolean)
+        | undefined;
     childrenOnly?: boolean | undefined;
 }
 
@@ -130,7 +134,11 @@ export class Rendered {
     parentViewId(): string;
     pruneCIDs(cids: number[]): any;
     recursiveMerge(target: object, source: object): void;
-    recursiveToString(rendered: any, components: any, onlyCids?: number[]): string;
+    recursiveToString(
+        rendered: any,
+        components: any,
+        onlyCids?: number[],
+    ): string;
     toString(onlyCids?: number[]): string;
 
     // private
@@ -146,7 +154,11 @@ export class Rendered {
 export interface ViewHook {
     el: HTMLElement;
     viewName: string;
-    pushEvent(event: string, payload: object, onReply?: (reply: any, ref: number) => any): void;
+    pushEvent(
+        event: string,
+        payload: object,
+        onReply?: (reply: any, ref: number) => any,
+    ): void;
     pushEventTo(
         selectorOrTarget: any,
         event: string,
@@ -166,13 +178,23 @@ export interface ViewHook {
 }
 
 export class View {
-    constructor(el: HTMLElement, liveSocket: LiveSocket, parentView: View, href: string, flash: string);
+    constructor(
+        el: HTMLElement,
+        liveSocket: LiveSocket,
+        parentView: View,
+        href: string,
+        flash: string,
+    );
 
     // public?
     ackJoin(child: View): void;
     addHook(el: HTMLElement): void;
     applyDiff(type: string, rawDiff: any, callback: any): any;
-    applyJoinPatch(live_patch: any, html: string, events: Array<[string, object]>): void;
+    applyJoinPatch(
+        live_patch: any,
+        html: string,
+        events: Array<[string, object]>,
+    ): void;
     applyPendingUpdates(): void;
     attachTrueDocEl(): void;
     bindChannel(): void;
@@ -215,35 +237,86 @@ export class View {
     onClose(reason: string): void;
     onError(reason: string): void;
     onJoin(resp: object): void;
-    onJoinComplete(resp: object, html: string, events: Array<[string, object]>): void;
+    onJoinComplete(
+        resp: object,
+        html: string,
+        events: Array<[string, object]>,
+    ): void;
     onJoinError(resp: object): void;
     onLivePatch(redir: object): void;
     onLiveRedirect(redir: object): void;
     onRedirect(redir: object): void;
     ownsElement(el: HTMLElement): boolean;
     performPatch(patch: any, pruneCids: boolean): boolean;
-    pushEvent(type: string, el: HTMLElement, targetCtx: object | null, phxEvent: string, meta: object): void;
-    pushFileProgress(fileEl: HTMLElement, entryRef: string, progress: number, onReply?: () => void): void;
+    pushEvent(
+        type: string,
+        el: HTMLElement,
+        targetCtx: object | null,
+        phxEvent: string,
+        meta: object,
+    ): void;
+    pushFileProgress(
+        fileEl: HTMLElement,
+        entryRef: string,
+        progress: number,
+        onReply?: () => void,
+    ): void;
     pushFormRecovery(form: HTMLElement, callback: any): void;
-    pushFormSubmit(formEl: HTMLElement, targetCtx: object | null, phxEvent: string, onReply: any): void;
-    pushHookEvent(targetCtx: object | null, event: string, payload: object, onReply: any): void;
-    pushInput(inputEl: HTMLElement, targetCtx: object | null, phxEvent: string, callback: any): void;
-    pushKey(keyElement: HTMLElement, targetCtx: object | null, kind: string, phxEvent: string, meta: object): void;
+    pushFormSubmit(
+        formEl: HTMLElement,
+        targetCtx: object | null,
+        phxEvent: string,
+        onReply: any,
+    ): void;
+    pushHookEvent(
+        targetCtx: object | null,
+        event: string,
+        payload: object,
+        onReply: any,
+    ): void;
+    pushInput(
+        inputEl: HTMLElement,
+        targetCtx: object | null,
+        phxEvent: string,
+        callback: any,
+    ): void;
+    pushKey(
+        keyElement: HTMLElement,
+        targetCtx: object | null,
+        kind: string,
+        phxEvent: string,
+        meta: object,
+    ): void;
     pushLinkPatch(href: string, targetEl: HTMLElement, callback: any): void;
-    pushWithReply(refGenerator: any, event: string, payload: object, onReply?: () => void): any;
+    pushWithReply(
+        refGenerator: any,
+        event: string,
+        payload: object,
+        onReply?: () => void,
+    ): any;
     putRef(elements: HTMLElement[], event: string): [number, HTMLElement[]];
     renderContainer(diff: any, kind: string): string;
     scheduleSubmit(formEl: HTMLElement, ref: number, callback: any): boolean;
     setContainerClasses(...classes: string[]): void;
     showLoader(timeout?: number): void;
-    submitForm(form: HTMLElement, targetCtx: object | null, phxEvent: string): void;
+    submitForm(
+        form: HTMLElement,
+        targetCtx: object | null,
+        phxEvent: string,
+    ): void;
     targetComponentID(target: HTMLElement, targetCtx?: object): number | null;
     triggerAwaitingSubmit(formEl: HTMLElement): void;
     triggerBeforeUpdateHook(fromEl: HTMLElement, toEl: HTMLElement): any;
     triggerReconnected(): void;
     undoRefs(ref: number): void;
     update(diff: any, events: Array<[string, object]>): void;
-    uploadFiles(formEl: HTMLElement, targetCtx: object | null, ref: number, cid: number, onComplete: any): void;
+    uploadFiles(
+        formEl: HTMLElement,
+        targetCtx: object | null,
+        ref: number,
+        cid: number,
+        onComplete: any,
+    ): void;
     withinTargets(phxTarget: string, callback: any): void;
 }
 
@@ -279,7 +352,10 @@ export function debug(view: View, kind: string, msg: object, obj: object): void;
 export namespace Browser {
     function canPushState(): boolean;
     function dropLocal(namespace: string, subkey: string): any;
-    function fetchPage(href: string, callback: (status: number, resp?: string) => any): any;
+    function fetchPage(
+        href: string,
+        callback: (status: number, resp?: string) => any,
+    ): any;
     function getCookie(name: string): string;
     function getHashTargetEl(maybeHash: any): HTMLElement | null;
     function getLocal(namespace: string, subkey: string): any;
@@ -288,11 +364,20 @@ export namespace Browser {
     function redirect(toURL: string, flash: string): void;
     function setCookie(name: string, value: string): void;
     function updateCurrentState(callback: any): void;
-    function updateLocal(namespace: string, subkey: string, initial: any, func: (current: any) => any): any;
+    function updateLocal(
+        namespace: string,
+        subkey: string,
+        initial: any,
+        func: (current: any) => any,
+    ): any;
 }
 
 export namespace DOM {
-    function all(node: Node, query: string, callback: (el: HTMLElement) => HTMLElement): HTMLElement[];
+    function all(
+        node: Node,
+        query: string,
+        callback: (el: HTMLElement) => HTMLElement,
+    ): HTMLElement[];
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     function byId(id: string): HTMLElement | void;
     function childNodeLength(html: string): number;
@@ -309,37 +394,71 @@ export namespace DOM {
         callback: () => any,
     ): any;
     function deletePrivate(el: HTMLElement, key: string): void;
-    function discardError(container: Node, el: HTMLElement, phxFeedbackFor: string): void;
-    function dispatchEvent(target: Node, eventString: string, detail?: object): void;
+    function discardError(
+        container: Node,
+        el: HTMLElement,
+        phxFeedbackFor: string,
+    ): void;
+    function dispatchEvent(
+        target: Node,
+        eventString: string,
+        detail?: object,
+    ): void;
     function filterWithinSameLiveView(nodes: Node[], parent: any): any;
     function findComponentNode(node: Node, cid: number): HTMLElement[];
     function findParentCIDs(node: Node, cids: number[]): Set<number>;
     function findPhxChildren(el: HTMLElement, parentId: string): HTMLElement[];
-    function findPhxChildrenInFragment(html: string, parentId: string): HTMLElement[];
+    function findPhxChildrenInFragment(
+        html: string,
+        parentId: string,
+    ): HTMLElement[];
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     function findUploadInputs(node: Node): void | any[];
     function hasSelectionRange(el: HTMLElement): boolean;
     function incCycle(el: HTMLElement, key: string, trigger?: any): number;
     function isFormInput(el: HTMLElement): boolean;
     function isIgnored(el: HTMLElement, phxUpdate: string): boolean;
-    function isNowTriggerFormExternal(el: HTMLElement, phxTriggerExternal: string): boolean;
+    function isNowTriggerFormExternal(
+        el: HTMLElement,
+        phxTriggerExternal: string,
+    ): boolean;
     function isPhxChild(el: Node): boolean;
     function isPhxDestroyed(node: Node): boolean;
-    function isPhxUpdate(el: Node, phxUpdate: string, updateTypes: string[]): boolean;
+    function isPhxUpdate(
+        el: Node,
+        phxUpdate: string,
+        updateTypes: string[],
+    ): boolean;
     function isTextualInput(el: HTMLElement): boolean;
     function isUploadInput(el: HTMLElement): boolean;
     function markPhxChildDestroyed(el: HTMLElement): void;
-    function mergeAttrs(target: HTMLElement, source: HTMLElement, exclude?: string[]): void;
+    function mergeAttrs(
+        target: HTMLElement,
+        source: HTMLElement,
+        exclude?: string[],
+    ): void;
     function mergeFocusedInput(target: HTMLElement, source: HTMLElement): void;
     function once(el: HTMLElement, key: string): boolean;
     function private(el: HTMLElement, key: string): any;
     function putPrivate(el: HTMLElement, key: string, value: any): void;
     function putTitle(str: string): void;
     function removeClass(el: HTMLElement, className: string): void;
-    function restoreFocus(focused: HTMLElement, selectionStart: number, selectionEnd: number): void;
+    function restoreFocus(
+        focused: HTMLElement,
+        selectionStart: number,
+        selectionEnd: number,
+    ): void;
     function showError(inputEl: HTMLElement, phxFeedbackFor: string): void;
     function syncAttrsToProps(el: HTMLElement): void;
-    function syncPendingRef(fromEl: HTMLElement, toEl: HTMLElement, disableWith: string): boolean;
-    function triggerCycle(el: HTMLElement, key: string, currentCycle?: number): void;
+    function syncPendingRef(
+        fromEl: HTMLElement,
+        toEl: HTMLElement,
+        disableWith: string,
+    ): boolean;
+    function triggerCycle(
+        el: HTMLElement,
+        key: string,
+        currentCycle?: number,
+    ): void;
     function withinSameLiveView(node: Node, parent: Node): boolean;
 }

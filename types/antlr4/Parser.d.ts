@@ -143,7 +143,11 @@ export default class Parser extends Recognizer {
      */
     getCurrentToken(): ReturnType<CommonTokenStream["LT"]>;
 
-    notifyErrorListeners(msg: string, offendingToken: Token, err?: RecognitionException): void;
+    notifyErrorListeners(
+        msg: string,
+        offendingToken: Token,
+        err?: RecognitionException,
+    ): void;
 
     /**
      * Consume and return the current symbol.
@@ -169,7 +173,11 @@ export default class Parser extends Recognizer {
      * Always called by generated parsers upon entry to a rule.
      * Access field {@link _ctx} get the current context.
      */
-    enterRule(localCtx: ParserRuleContext, state: number, ruleIndex?: number): void;
+    enterRule(
+        localCtx: ParserRuleContext,
+        state: number,
+        ruleIndex?: number,
+    ): void;
 
     exitRule(): void;
 
@@ -190,7 +198,11 @@ export default class Parser extends Recognizer {
         precedence: number,
     ): void;
 
-    pushNewRecursionContext(localCtx: ParserRuleContext, state: number, ruleIndex?: number): void;
+    pushNewRecursionContext(
+        localCtx: ParserRuleContext,
+        state: number,
+        ruleIndex?: number,
+    ): void;
 
     unrollRecursionContexts(parentCtx: ParserRuleContext): void;
 

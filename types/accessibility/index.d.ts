@@ -12,7 +12,9 @@ declare class Accessibility {
 
     alterTextSpace(isIncrease: boolean): void;
     build(): void;
-    deleteOppositesIfDefined(options: Accessibility.Options): Accessibility.Options;
+    deleteOppositesIfDefined(
+        options: Accessibility.Options,
+    ): Accessibility.Options;
     destroy(): void;
     disabledUnsupportedFeatures(): void;
     fontFallback(): void;
@@ -51,21 +53,27 @@ declare namespace Accessibility {
     interface Options {
         icon?: Icon | undefined;
         hotkeys?: HotKeys | undefined;
-        buttons?: {
-            font: SizeOrPosition;
-        } | undefined;
-        guide?: {
-            /** @default '#20ff69' */
-            cBorder?: string | undefined;
-            /** @default '#000000' */
-            cBackground?: string | undefined;
-            /** @default '12px' */
-            height?: string | undefined;
-        } | undefined;
-        menu?: {
-            dimensions?: Dimensions | undefined;
-            fontFamily?: string | undefined;
-        } | undefined;
+        buttons?:
+            | {
+                  font: SizeOrPosition;
+              }
+            | undefined;
+        guide?:
+            | {
+                  /** @default '#20ff69' */
+                  cBorder?: string | undefined;
+                  /** @default '#000000' */
+                  cBackground?: string | undefined;
+                  /** @default '12px' */
+                  height?: string | undefined;
+              }
+            | undefined;
+        menu?:
+            | {
+                  dimensions?: Dimensions | undefined;
+                  fontFamily?: string | undefined;
+              }
+            | undefined;
         labels?: Labels | undefined;
         /** @default 'en-US' */
         textToSpeechLang?: string | undefined;
@@ -75,15 +83,19 @@ declare namespace Accessibility {
         textPixelMode?: boolean | undefined;
         /** @default true */
         textEmlMode?: boolean | undefined;
-        animations?: {
-            /** @default true */
-            buttons?: boolean | undefined;
-        } | undefined;
+        animations?:
+            | {
+                  /** @default true */
+                  buttons?: boolean | undefined;
+              }
+            | undefined;
         modules?: Modules | undefined;
-        session?: {
-            /** @default true */
-            persistent?: boolean | undefined;
-        } | undefined;
+        session?:
+            | {
+                  /** @default true */
+                  persistent?: boolean | undefined;
+              }
+            | undefined;
     }
 
     interface Icon {
@@ -172,9 +184,11 @@ declare namespace Accessibility {
         enabled?: boolean | undefined;
         /** @default true */
         helpTitles?: boolean | undefined;
-        keys?: {
-            [key: string]: HotKeyDefinition;
-        } | undefined;
+        keys?:
+            | {
+                  [key: string]: HotKeyDefinition;
+              }
+            | undefined;
     }
 
     type HotKeyDefinition = [number, number, string];

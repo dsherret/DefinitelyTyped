@@ -11,7 +11,10 @@ export interface Options {
     keepHistory: boolean;
 }
 
-export declare function lookup(pid: number, callback: (err: Error, result: ResultObject) => void): void;
+export declare function lookup(
+    pid: number,
+    callback: (err: Error, result: ResultObject) => void,
+): void;
 export declare function lookup(
     pid: number,
     options: Options,

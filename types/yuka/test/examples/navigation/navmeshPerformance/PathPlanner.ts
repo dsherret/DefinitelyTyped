@@ -15,7 +15,12 @@ class PathPlanner {
         this.taskQueue = new TaskQueue();
     }
 
-    findPath(vehicle: CustomVehicle, from: Vector3, to: Vector3, callback: PathPlannerTaskCallback): void {
+    findPath(
+        vehicle: CustomVehicle,
+        from: Vector3,
+        to: Vector3,
+        callback: PathPlannerTaskCallback,
+    ): void {
         const task = new PathPlannerTask(this, vehicle, from, to, callback);
         this.taskQueue.enqueue(task);
     }

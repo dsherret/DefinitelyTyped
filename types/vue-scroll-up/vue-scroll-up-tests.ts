@@ -3,7 +3,7 @@ import VueScrollUp from "vue-scroll-up";
 
 // excerpt from vue-class-component/src/declarations.ts
 type VueClass<V> = {
-    new(...args: any[]): V & Vue;
+    new (...args: any[]): V & Vue;
 } & typeof Vue;
 
 // excerpt from vue-class-component/src/index.ts
@@ -25,12 +25,6 @@ new Vue({
     components: {
         VueScrollUp,
     },
-    template: `
-        <vue-scroll-up
-          :scroll-duration="500"
-          :scroll-y="500"
-        />
-    `,
+    template: ` <vue-scroll-up :scroll-duration="500" :scroll-y="500" /> `,
 })
-class App extends Vue {
-}
+class App extends Vue {}

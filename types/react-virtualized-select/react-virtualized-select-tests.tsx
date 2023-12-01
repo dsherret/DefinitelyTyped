@@ -8,11 +8,9 @@ interface Example {
 }
 
 /*Example generic class.*/
-class ExampleSelectAsync extends VirtualizedSelect<Example> {
-}
+class ExampleSelectAsync extends VirtualizedSelect<Example> {}
 
-class ExampleSelectCreatable extends VirtualizedSelect<Example> {
-}
+class ExampleSelectCreatable extends VirtualizedSelect<Example> {}
 
 <div>
     <VirtualizedSelect

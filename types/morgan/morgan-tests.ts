@@ -53,7 +53,10 @@ morgan((_tokens, _req, _res) => "", {
 // test interface definition for morgan
 
 // a named custom format defined as string (example: extend 'tiny' format with user-agent token)
-morgan.format("tiny-extended", ":method :url :status :res[content-length] - :response-time ms :user-agent");
+morgan.format(
+    "tiny-extended",
+    ":method :url :status :res[content-length] - :response-time ms :user-agent",
+);
 
 // a named custom format defined using the Function signature (example: extend 'dev' format with user-agent token)
 
@@ -67,23 +70,29 @@ interface ExtendedFormatFn extends morgan.FormatFn {
     memoizer: FormatFnIndexer;
 }
 
-const developmentExtendedFormatLine = ((tokens, req, res): string | undefined | null => {
+const developmentExtendedFormatLine = ((
+    tokens,
+    req,
+    res,
+): string | undefined | null => {
     // get the status code if response written
     const status = res.statusCode;
 
     // get status color
-    const color = status >= 500
-        ? 31 // red
-        : status >= 400
-        ? 33 // yellow
-        : status >= 300
-        ? 36 // cyan
-        : status >= 200
-        ? 32 // green
-        : 0; // no color
+    const color =
+        status >= 500
+            ? 31 // red
+            : status >= 400
+              ? 33 // yellow
+              : status >= 300
+                ? 36 // cyan
+                : status >= 200
+                  ? 32 // green
+                  : 0; // no color
 
     // get colored format function, if previously memoized, otherwise undefined
-    let fn: morgan.FormatFn | undefined = developmentExtendedFormatLine.memoizer[color];
+    let fn: morgan.FormatFn | undefined =
+        developmentExtendedFormatLine.memoizer[color];
 
     if (!fn) {
         // compile
@@ -104,7 +113,11 @@ morgan.token("status", (req, res) => {
 });
 
 express().use(morgan<express.Request, express.Response>("combined"));
-express().use(morgan("combined", { skip: (req: express.Request) => req.header("user-agent") === "fake" }));
+express().use(
+    morgan("combined", {
+        skip: (req: express.Request) => req.header("user-agent") === "fake",
+    }),
+);
 
 http.createServer((req, res) => {
     morgan("combined")(req, res, (err) => {

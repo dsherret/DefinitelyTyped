@@ -1,5 +1,10 @@
 import { Disposable } from "../../../index";
-import { DisplayMarker, Marker, PointCompatible, RangeCompatible } from "./text-buffer";
+import {
+    DisplayMarker,
+    Marker,
+    PointCompatible,
+    RangeCompatible,
+} from "./text-buffer";
 
 /**
  *  Experimental: A container for a related set of markers at the DisplayLayer level.
@@ -37,7 +42,9 @@ export interface DisplayMarkerLayer {
      *  layer. Avoid this method for optimal performance when interacting with layers
      *  that could contain large numbers of markers.
      */
-    onDidCreateMarker(callback: (marker: DisplayMarker | Marker) => void): Disposable;
+    onDidCreateMarker(
+        callback: (marker: DisplayMarker | Marker) => void,
+    ): Disposable;
 
     // Marker creation
     /** Create a marker with the given screen range. */
@@ -45,7 +52,13 @@ export interface DisplayMarkerLayer {
         range: RangeCompatible,
         options?: {
             reversed?: boolean | undefined;
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
             exclusive?: boolean | undefined;
             clipDirection?: "backward" | "forward" | "closest" | undefined;
         },
@@ -58,7 +71,13 @@ export interface DisplayMarkerLayer {
     markScreenPosition(
         screenPosition: PointCompatible,
         options?: {
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
             exclusive?: boolean | undefined;
             clipDirection?: "backward" | "forward" | "closest" | undefined;
         },
@@ -69,7 +88,13 @@ export interface DisplayMarkerLayer {
         range: RangeCompatible,
         options?: {
             reversed?: boolean | undefined;
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
             exclusive?: boolean | undefined;
         },
     ): DisplayMarker;
@@ -81,7 +106,13 @@ export interface DisplayMarkerLayer {
     markBufferPosition(
         bufferPosition: PointCompatible,
         options?: {
-            invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+            invalidate?:
+                | "never"
+                | "surround"
+                | "overlap"
+                | "inside"
+                | "touch"
+                | undefined;
             exclusive?: boolean | undefined;
         },
     ): DisplayMarker;

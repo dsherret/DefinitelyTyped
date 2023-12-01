@@ -80,7 +80,9 @@ function test4() {
     const _colors = require("colors");
 
     module.exports = {
-        format: _colors.red(" {bar}") + " {percentage}% | ETA: {eta}s | {value}/{total} | Speed: {speed} kbit",
+        format:
+            _colors.red(" {bar}") +
+            " {percentage}% | ETA: {eta}s | {value}/{total} | Speed: {speed} kbit",
         barCompleteChar: "\u2588",
         barIncompleteChar: "\u2591",
     };
@@ -151,7 +153,9 @@ function test8() {
         stopOnComplete: true,
         format: (options, params, payload) => {
             const stopTime = params.stopTime || Date.now();
-            const elapsedTime = Math.round((stopTime - params.startTime) / 1000);
+            const elapsedTime = Math.round(
+                (stopTime - params.startTime) / 1000,
+            );
             const speed = params.value / elapsedTime;
             payload.speed = isFinite(speed) ? speed.toFixed(2) : 0;
 

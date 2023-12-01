@@ -5,7 +5,11 @@ const testString = (db: level.LevelDB<string, string>) => {
     db.put("key2", "value", { something: true }, (err?: Error) => {});
 
     db.get("key1", (err?: Error) => {});
-    db.get("key2", { something: true }, (err: Error | undefined, value: any) => {});
+    db.get(
+        "key2",
+        { something: true },
+        (err: Error | undefined, value: any) => {},
+    );
 };
 
 const testNumber = (db: level.LevelDB<number, string>) => {

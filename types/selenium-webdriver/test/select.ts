@@ -12,8 +12,10 @@ function TestSelect() {
     select.selectByVisibleText(2);
     let options: Promise<WebElement[]> = select.getOptions();
     let multiple: Promise<boolean> = select.isMultiple();
-    let allSelectedOptions: Promise<WebElement[]> = select.getAllSelectedOptions();
-    let firstSelectedOption: Promise<WebElement | undefined> = select.getFirstSelectedOption();
+    let allSelectedOptions: Promise<WebElement[]> =
+        select.getAllSelectedOptions();
+    let firstSelectedOption: Promise<WebElement | undefined> =
+        select.getFirstSelectedOption();
     select.deselectAll();
     select.deselectByVisibleText("Option 3");
     select.deselectByVisibleText(3);

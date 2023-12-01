@@ -19,6 +19,5 @@ oAuth2Server.callMethod.authCodeGrant(
     "response_type",
     ["scope1", "scope"],
     "state",
-    (err: Meteor.Error, result: OAuth2Server.AuthCodeGrantResult) => {
-    },
+    (err: Meteor.Error, result: OAuth2Server.AuthCodeGrantResult) => {},
 );

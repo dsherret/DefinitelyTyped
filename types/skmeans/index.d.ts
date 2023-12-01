@@ -1,4 +1,7 @@
-type CentroidValues<TPoint extends number | number[]> = TPoint[] | "kmrand" | "kmpp";
+type CentroidValues<TPoint extends number | number[]> =
+    | TPoint[]
+    | "kmrand"
+    | "kmpp";
 
 interface DataResult<TPoint extends number | number[]> {
     it: number;

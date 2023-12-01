@@ -76,7 +76,12 @@ try {
     scrypt.hashSync("some string", params, 255, "some salt"); // $ExpectType Buffer
     scrypt.hashSync("some string", params, 255, new Buffer("some salt")); // $ExpectType Buffer
     scrypt.hashSync(new Buffer("some string"), params, 255, "some salt"); // $ExpectType Buffer
-    scrypt.hashSync(new Buffer("some string"), params, 255, new Buffer("some salt")); // $ExpectType Buffer
+    scrypt.hashSync(
+        new Buffer("some string"),
+        params,
+        255,
+        new Buffer("some salt"),
+    ); // $ExpectType Buffer
 } catch (err) {
     // handle error
 }
@@ -85,18 +90,36 @@ scrypt.hash("some string", params, 255, "some salt", (err, buff) => {
     err; // $ExpectType Error | null
     buff; // $ExpectType Buffer
 });
-scrypt.hash("some string", params, 255, new Buffer("some salt"), (err, buff) => {
-    err; // $ExpectType Error | null
-    buff; // $ExpectType Buffer
-});
-scrypt.hash(new Buffer("some string"), params, 255, "some salt", (err, buff) => {
-    err; // $ExpectType Error | null
-    buff; // $ExpectType Buffer
-});
-scrypt.hash(new Buffer("some string"), params, 255, new Buffer("some salt"), (err, buff) => {
-    err; // $ExpectType Error | null
-    buff; // $ExpectType Buffer
-});
+scrypt.hash(
+    "some string",
+    params,
+    255,
+    new Buffer("some salt"),
+    (err, buff) => {
+        err; // $ExpectType Error | null
+        buff; // $ExpectType Buffer
+    },
+);
+scrypt.hash(
+    new Buffer("some string"),
+    params,
+    255,
+    "some salt",
+    (err, buff) => {
+        err; // $ExpectType Error | null
+        buff; // $ExpectType Buffer
+    },
+);
+scrypt.hash(
+    new Buffer("some string"),
+    params,
+    255,
+    new Buffer("some salt"),
+    (err, buff) => {
+        err; // $ExpectType Error | null
+        buff; // $ExpectType Buffer
+    },
+);
 
 scrypt.hash("some string", params, 255, "some salt"); // $ExpectType Promise<Buffer>
 scrypt.hash("some string", params, 255, new Buffer("some salt")); // $ExpectType Promise<Buffer>

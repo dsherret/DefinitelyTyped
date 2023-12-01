@@ -110,7 +110,10 @@ export function _setLevel(level: string): void;
  * @param name The name of the new level.
  * @param opts The options to use to create the new level.
  */
-export function _addLevel(name: string, opts: NewLevelBefore | NewLevelAfter): void;
+export function _addLevel(
+    name: string,
+    opts: NewLevelBefore | NewLevelAfter,
+): void;
 
 /**
  * Indents the following messages by 2 spaces.

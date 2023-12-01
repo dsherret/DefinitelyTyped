@@ -42,7 +42,10 @@ interface IOptions {
 }
 
 interface IGulpChanged {
-    (destination: string | IDestination, options?: IOptions): NodeJS.ReadWriteStream;
+    (
+        destination: string | IDestination,
+        options?: IOptions,
+    ): NodeJS.ReadWriteStream;
 
     compareLastModifiedTime: IComparator;
     compareContents: IComparator;

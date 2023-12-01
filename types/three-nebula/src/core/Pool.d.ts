@@ -23,7 +23,10 @@ export default class Pool {
      * Attempts to create a new object either by creating a new instance or calling its
      * clone method.
      */
-    create(functionOrObject: (args: any) => any, ...coonstuctorArgs: any[]): object | undefined;
+    create(
+        functionOrObject: (args: any) => any,
+        ...coonstuctorArgs: any[]
+    ): object | undefined;
     /**
      * Determines if the object is able to be instantiated or not.
      */

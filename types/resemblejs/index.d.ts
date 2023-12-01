@@ -13,7 +13,9 @@ export as namespace resemble;
  *
  * @param image - The image to analyze. Accepts a URL to an image, a Data URI, a ImageData object, or a Buffer.
  */
-declare function Resemble(image: string | ImageData | Buffer): Resemble.Analysis;
+declare function Resemble(
+    image: string | ImageData | Buffer,
+): Resemble.Analysis;
 
 declare namespace Resemble {
     interface Analysis {
@@ -159,13 +161,15 @@ declare namespace Resemble {
     interface OutputSettings {
         errorColor?:
             | {
-                red: number;
-                green: number;
-                blue: number;
-            }
+                  red: number;
+                  green: number;
+                  blue: number;
+              }
             | undefined;
         errorType?: OutputErrorType | undefined;
-        errorPixel?: ((px: number[], offset: number, d1: Color, d2: Color) => void) | undefined;
+        errorPixel?:
+            | ((px: number[], offset: number, d1: Color, d2: Color) => void)
+            | undefined;
         transparency?: number | undefined;
         largeImageThreshold?: number | undefined;
         useCrossOrigin?: boolean | undefined;
@@ -207,11 +211,21 @@ declare namespace Resemble {
         tolerance?: Tolerance | undefined;
     }
 
-    type OutputErrorType = "flat" | "movement" | "flatDifferenceIntensity" | "movementDifferenceIntensity" | "diffOnly";
+    type OutputErrorType =
+        | "flat"
+        | "movement"
+        | "flatDifferenceIntensity"
+        | "movementDifferenceIntensity"
+        | "diffOnly";
 
     type ComparisonCallback = (err: unknown, data: ComparisonResult) => void;
 
-    type ComparisonIgnoreOption = "nothing" | "less" | "antialiasing" | "colors" | "alpha";
+    type ComparisonIgnoreOption =
+        | "nothing"
+        | "less"
+        | "antialiasing"
+        | "colors"
+        | "alpha";
 
     function compare(
         image1: string | ImageData | Buffer,

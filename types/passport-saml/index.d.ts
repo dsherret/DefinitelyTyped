@@ -8,27 +8,62 @@ export interface CacheItem {
 
 export interface CacheProvider {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    save(key: string | null, value: any, callback: (err: Error | null, cacheItem: CacheItem) => void | null): void;
+    save(
+        key: string | null,
+        value: any,
+        callback: (err: Error | null, cacheItem: CacheItem) => void | null,
+    ): void;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    get(key: string, callback: (err: Error | null, value: any) => void | null): void;
+    get(
+        key: string,
+        callback: (err: Error | null, value: any) => void | null,
+    ): void;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    remove(key: string, callback: (err: Error | null, key: string) => void | null): void;
+    remove(
+        key: string,
+        callback: (err: Error | null, key: string) => void | null,
+    ): void;
 }
 
-export type VerifiedCallback = (err: Error | null, user?: object, info?: object) => void;
+export type VerifiedCallback = (
+    err: Error | null,
+    user?: object,
+    info?: object,
+) => void;
 
-export type VerifyWithRequest = (req: express.Request, profile: Profile, done: VerifiedCallback) => void;
+export type VerifyWithRequest = (
+    req: express.Request,
+    profile: Profile,
+    done: VerifiedCallback,
+) => void;
 
-export type VerifyWithoutRequest = (profile: Profile, done: VerifiedCallback) => void;
+export type VerifyWithoutRequest = (
+    profile: Profile,
+    done: VerifiedCallback,
+) => void;
 
 export class Strategy extends passport.Strategy {
-    constructor(config: SamlConfig, verify: VerifyWithRequest | VerifyWithoutRequest);
-    authenticate(req: express.Request, options: AuthenticateOptions | AuthorizeOptions): void;
-    logout(req: express.Request, callback: (err: Error | null, url?: string) => void): void;
-    generateServiceProviderMetadata(decryptionCert: string | null, signingCert?: string | null): string;
+    constructor(
+        config: SamlConfig,
+        verify: VerifyWithRequest | VerifyWithoutRequest,
+    );
+    authenticate(
+        req: express.Request,
+        options: AuthenticateOptions | AuthorizeOptions,
+    ): void;
+    logout(
+        req: express.Request,
+        callback: (err: Error | null, url?: string) => void,
+    ): void;
+    generateServiceProviderMetadata(
+        decryptionCert: string | null,
+        signingCert?: string | null,
+    ): string;
 }
 
-export type CertCallback = (callback: (err: Error | null, cert?: string | string[]) => void) => void;
+export type CertCallback = (
+    callback: (err: Error | null, cert?: string | string[]) => void,
+) => void;
 
 export interface SamlConfig {
     // Core

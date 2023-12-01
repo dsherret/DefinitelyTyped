@@ -109,7 +109,13 @@ export interface ValueNode extends BaseNode {
 }
 
 /** Any node that can be child of `ValueNode`. */
-export type ValueNodeType = ItemNode | NestedItemNode | StringNode | CommentNode | UrlNode | InvalidNode;
+export type ValueNodeType =
+    | ItemNode
+    | NestedItemNode
+    | StringNode
+    | CommentNode
+    | UrlNode
+    | InvalidNode;
 
 export interface ItemNode extends BaseNode {
     type: "item";

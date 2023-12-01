@@ -28,7 +28,9 @@ declare namespace ESAbstract {
         "[[Value]]"?: T | undefined;
     }
 
-    type PropertyDescriptor<T = unknown> = AccessorDescriptor<T> | DataDescriptor<T>;
+    type PropertyDescriptor<T = unknown> =
+        | AccessorDescriptor<T>
+        | DataDescriptor<T>;
 }
 
 interface ESAbstract extends ES6 {

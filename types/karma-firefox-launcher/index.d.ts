@@ -5,9 +5,11 @@ declare module "karma" {
         /**
          * configure preferences for the Firefox instance that is loaded
          */
-        prefs?: {
-            [name: string]: any;
-        } | undefined;
+        prefs?:
+            | {
+                  [name: string]: any;
+              }
+            | undefined;
         /**
          * extensions that you want loaded into the browser on startup
          */

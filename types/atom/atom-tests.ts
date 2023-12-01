@@ -82,7 +82,9 @@ function testAtomEnvironment() {
     str = atom.clipboard.read();
 
     subscription = atom.contextMenu.add({
-        "atom-workspace": [{ label: "Help", command: "application:open-documentation" }],
+        "atom-workspace": [
+            { label: "Help", command: "application:open-documentation" },
+        ],
         "atom-text-editor": [
             {
                 label: "History",
@@ -121,13 +123,13 @@ function testAtomEnvironment() {
 
     historyPaths = atom.history.getProjects();
 
-    subscription = atom.packages.onDidActivatePackage(atomPackage => {
+    subscription = atom.packages.onDidActivatePackage((atomPackage) => {
         atomPackage.isCompatible();
     });
 
     subscription = atom.themes.onDidChangeActiveThemes(() => {});
 
-    subscription = atom.styles.onDidAddStyleElement(styleElement => {});
+    subscription = atom.styles.onDidAddStyleElement((styleElement) => {});
 
     const serializer = {
         name: "Test",
@@ -143,8 +145,8 @@ function testAtomEnvironment() {
         },
     );
 
-    subscription = atom.workspace.observeTextEditors(editor => {
-        subscription = editor.onDidStopChanging(event => {
+    subscription = atom.workspace.observeTextEditors((editor) => {
+        subscription = editor.onDidStopChanging((event) => {
             for (const change of event.changes) {
                 change.newExtent;
             }
@@ -157,8 +159,8 @@ function testAtomEnvironment() {
 
     // Event Subscription
     subscription = atom.onDidBeep(() => {});
-    subscription = atom.onWillThrowError(event => event.message);
-    subscription = atom.onDidThrowError(event => event.line);
+    subscription = atom.onWillThrowError((event) => event.message);
+    subscription = atom.onDidThrowError((event) => event.line);
     subscription = atom.whenShellEnvironmentLoaded(() => {});
 
     // Atom Details
@@ -183,7 +185,7 @@ function testAtomEnvironment() {
     v2 = atom.getPosition();
     atom.setPosition(42, 42);
 
-    atom.pickFolder(paths => {
+    atom.pickFolder((paths) => {
         if (paths) {
             paths.length;
         }
@@ -212,7 +214,11 @@ function testAtomEnvironment() {
         bool = checked;
     });
     atom.confirm({ message: "Test" });
-    atom.confirm({ message: "Test", buttons: ["a", "b"], detailedMessage: "Test" });
+    atom.confirm({
+        message: "Test",
+        buttons: ["a", "b"],
+        detailedMessage: "Test",
+    });
     num = atom.confirm({
         message: "Test",
         detailedMessage: "Test",
@@ -268,7 +274,7 @@ function testBufferedProcess() {
         stdout: (): void => {},
     });
 
-    subscription = process.onWillThrowError(error => {
+    subscription = process.onWillThrowError((error) => {
         error.error;
         error.handle();
     });
@@ -293,39 +299,39 @@ function testColor() {
 
 // CommandRegistry ============================================================
 function testCommandRegistry() {
-    atom.commands.add("test", "test:function", event => {});
+    atom.commands.add("test", "test:function", (event) => {});
     atom.commands.add("test", {
-        "test-function": event => {},
-        "test-function2": event => {},
+        "test-function": (event) => {},
+        "test-function2": (event) => {},
     });
     atom.commands.add("test", "test:function", {
-        didDispatch: event => {
+        didDispatch: (event) => {
             event.stopImmediatePropagation();
         },
         description: "A Command Test",
         displayName: "Command: Test",
     });
     atom.commands.add("atom-text-editor", {
-        "test-function": event => {
+        "test-function": (event) => {
             event.currentTarget.getModel();
         },
-        "test-function2": event => {
+        "test-function2": (event) => {
             event.currentTarget.getComponent();
         },
     });
     atom.commands.add("atom-workspace", {
         "test-command": {
-            didDispatch: event => {},
+            didDispatch: (event) => {},
             hiddenInCommandPalette: true,
         },
     });
 
     const commands = atom.commands.findCommands({ target: element });
     atom.commands.dispatch(element, "test:function");
-    subscription = atom.commands.onWillDispatch(event => {
+    subscription = atom.commands.onWillDispatch((event) => {
         event.stopPropagation();
     });
-    subscription = atom.commands.onDidDispatch(event => {
+    subscription = atom.commands.onDidDispatch((event) => {
         event.cancelable;
     });
 }
@@ -355,13 +361,13 @@ function testCompositeDisposable() {
 
 // Config =====================================================================
 function testConfig() {
-    atom.config.observe("test", event => {});
-    atom.config.observe("test", { scope: scopeDescriptor }, value => {});
+    atom.config.observe("test", (event) => {});
+    atom.config.observe("test", { scope: scopeDescriptor }, (value) => {});
 
-    atom.config.onDidChange(event => {
+    atom.config.onDidChange((event) => {
         event.newValue;
     });
-    atom.config.onDidChange("test", event => {
+    atom.config.onDidChange("test", (event) => {
         event.oldValue;
     });
 
@@ -370,17 +376,27 @@ function testConfig() {
     atom.config.get("test", { scope: scopeDescriptor });
     atom.config.get("test", { excludeSources: ["test.source"] });
     atom.config.get("test", { sources: ["test.source"] });
-    atom.config.get("test", { scope: scopeDescriptor, excludeSources: ["a"], sources: ["b"] });
+    atom.config.get("test", {
+        scope: scopeDescriptor,
+        excludeSources: ["a"],
+        sources: ["b"],
+    });
 
     atom.config.set("test", 42);
     atom.config.set("test", 42, { scopeSelector: "test-selector" });
     atom.config.set("test", 42, { source: "test" });
-    atom.config.set("test", 42, { scopeSelector: "test-selector", source: "test" });
+    atom.config.set("test", 42, {
+        scopeSelector: "test-selector",
+        source: "test",
+    });
 
     atom.config.unset("test");
     atom.config.unset("test", { scopeSelector: "test-selector" });
     atom.config.unset("test", { source: "test" });
-    atom.config.unset("test", { scopeSelector: "test-selector", source: "test" });
+    atom.config.unset("test", {
+        scopeSelector: "test-selector",
+        source: "test",
+    });
 
     const allConfigValues = atom.config.getAll("test");
     for (const { scopeDescriptor, value } of allConfigValues) {
@@ -389,7 +405,11 @@ function testConfig() {
     atom.config.getAll("test", { scope: scopeDescriptor });
     atom.config.getAll("test", { excludeSources: ["test"] });
     atom.config.getAll("test", { sources: ["test"] });
-    atom.config.getAll("test", { scope: scopeDescriptor, excludeSources: ["a"], sources: ["b"] });
+    atom.config.getAll("test", {
+        scope: scopeDescriptor,
+        excludeSources: ["a"],
+        sources: ["b"],
+    });
 
     strs = atom.config.getSources();
 
@@ -479,7 +499,7 @@ function testConfigValues() {
 // Cursor =====================================================================
 function testCursor() {
     // Event Subscription
-    subscription = cursor.onDidChangePosition(event => {
+    subscription = cursor.onDidChangePosition((event) => {
         event.newBufferPosition;
     });
     subscription = cursor.onDidDestroy(() => {});
@@ -569,7 +589,9 @@ function testCursor() {
     cursor.getBeginningOfCurrentWordBufferPosition({});
     cursor.getBeginningOfCurrentWordBufferPosition({ wordRegex: regExp });
     cursor.getBeginningOfCurrentWordBufferPosition({ allowPrevious: true });
-    cursor.getBeginningOfCurrentWordBufferPosition({ includeNonWordCharacters: true });
+    cursor.getBeginningOfCurrentWordBufferPosition({
+        includeNonWordCharacters: true,
+    });
     cursor.getBeginningOfCurrentWordBufferPosition({
         wordRegex: regExp,
         allowPrevious: true,
@@ -579,8 +601,13 @@ function testCursor() {
     cursor.getEndOfCurrentWordBufferPosition();
     cursor.getEndOfCurrentWordBufferPosition({});
     cursor.getEndOfCurrentWordBufferPosition({ wordRegex: regExp });
-    cursor.getEndOfCurrentWordBufferPosition({ includeNonWordCharacters: true });
-    cursor.getEndOfCurrentWordBufferPosition({ wordRegex: regExp, includeNonWordCharacters: true });
+    cursor.getEndOfCurrentWordBufferPosition({
+        includeNonWordCharacters: true,
+    });
+    cursor.getEndOfCurrentWordBufferPosition({
+        wordRegex: regExp,
+        includeNonWordCharacters: true,
+    });
 
     cursor.getBeginningOfNextWordBufferPosition();
     cursor.getBeginningOfNextWordBufferPosition({});
@@ -614,7 +641,7 @@ function testCursor() {
 
 // TestRunner =================================================================
 function testTestRunner() {
-    const testRunner: Atom.TestRunner = params => {
+    const testRunner: Atom.TestRunner = (params) => {
         const delegate = params.buildDefaultApplicationDelegate();
         const environment = params.buildAtomEnvironment({
             applicationDelegate: delegate,
@@ -634,7 +661,7 @@ function testDecoration() {
     decoration.destroy();
 
     // Event Subscription
-    subscription = decoration.onDidChangeProperties(event => {
+    subscription = decoration.onDidChangeProperties((event) => {
         event.oldProperties.gutterName;
     });
     subscription = decoration.onDidDestroy(() => {});
@@ -663,7 +690,11 @@ function testDesializerManager() {
     }
 
     function isStorableClass(o: object): o is StorableClass {
-        if (typeof o === "object" && (o as StorableClass).name && (o as StorableClass).name === "test") {
+        if (
+            typeof o === "object" &&
+            (o as StorableClass).name &&
+            (o as StorableClass).name === "test"
+        ) {
             return true;
         } else {
             return false;
@@ -733,7 +764,7 @@ function testDisplayMarker() {
     });
 
     // Event Subscription
-    subscription = displayMarker.onDidChange(event => {
+    subscription = displayMarker.onDidChange((event) => {
         event.hasTail;
     });
     subscription = displayMarker.onDidDestroy(() => {});
@@ -862,17 +893,25 @@ function testDisplayMarkerLayer() {
     // Event Subscription
     subscription = displayMarkerLayer.onDidDestroy(() => {});
     subscription = displayMarkerLayer.onDidUpdate(() => {});
-    subscription = displayMarkerLayer.onDidCreateMarker(marker => {
+    subscription = displayMarkerLayer.onDidCreateMarker((marker) => {
         marker.isReversed();
     });
 
     // Marker creation
     displayMarker = displayMarkerLayer.markScreenRange(range);
     displayMarker = displayMarkerLayer.markScreenRange(range, {});
-    displayMarker = displayMarkerLayer.markScreenRange(range, { clipDirection: "forward" });
-    displayMarker = displayMarkerLayer.markScreenRange(range, { exclusive: true });
-    displayMarker = displayMarkerLayer.markScreenRange(range, { invalidate: "never" });
-    displayMarker = displayMarkerLayer.markScreenRange(range, { reversed: true });
+    displayMarker = displayMarkerLayer.markScreenRange(range, {
+        clipDirection: "forward",
+    });
+    displayMarker = displayMarkerLayer.markScreenRange(range, {
+        exclusive: true,
+    });
+    displayMarker = displayMarkerLayer.markScreenRange(range, {
+        invalidate: "never",
+    });
+    displayMarker = displayMarkerLayer.markScreenRange(range, {
+        reversed: true,
+    });
     displayMarker = displayMarkerLayer.markScreenRange(range, {
         clipDirection: "backward",
         exclusive: false,
@@ -886,26 +925,42 @@ function testDisplayMarkerLayer() {
         [0, 0],
         [0, 0],
     ]);
-    displayMarker = displayMarkerLayer.markScreenRange([[0, 0], pos], { reversed: true });
+    displayMarker = displayMarkerLayer.markScreenRange([[0, 0], pos], {
+        reversed: true,
+    });
 
     displayMarker = displayMarkerLayer.markScreenPosition(pos);
     displayMarker = displayMarkerLayer.markScreenPosition(pos, {});
-    displayMarker = displayMarkerLayer.markScreenPosition(pos, { clipDirection: "forward" });
-    displayMarker = displayMarkerLayer.markScreenPosition(pos, { exclusive: true });
-    displayMarker = displayMarkerLayer.markScreenPosition(pos, { invalidate: "never" });
+    displayMarker = displayMarkerLayer.markScreenPosition(pos, {
+        clipDirection: "forward",
+    });
+    displayMarker = displayMarkerLayer.markScreenPosition(pos, {
+        exclusive: true,
+    });
+    displayMarker = displayMarkerLayer.markScreenPosition(pos, {
+        invalidate: "never",
+    });
     displayMarker = displayMarkerLayer.markScreenPosition(pos, {
         clipDirection: "backward",
         exclusive: false,
         invalidate: "overlap",
     });
     displayMarker = displayMarkerLayer.markScreenPosition([0, 0]);
-    displayMarker = displayMarkerLayer.markScreenPosition([0, 0], { exclusive: false });
+    displayMarker = displayMarkerLayer.markScreenPosition([0, 0], {
+        exclusive: false,
+    });
 
     displayMarker = displayMarkerLayer.markBufferRange(range);
     displayMarker = displayMarkerLayer.markBufferRange(range, {});
-    displayMarker = displayMarkerLayer.markBufferRange(range, { invalidate: "inside" });
-    displayMarker = displayMarkerLayer.markBufferRange(range, { exclusive: true });
-    displayMarker = displayMarkerLayer.markBufferRange(range, { reversed: true });
+    displayMarker = displayMarkerLayer.markBufferRange(range, {
+        invalidate: "inside",
+    });
+    displayMarker = displayMarkerLayer.markBufferRange(range, {
+        exclusive: true,
+    });
+    displayMarker = displayMarkerLayer.markBufferRange(range, {
+        reversed: true,
+    });
     displayMarker = displayMarkerLayer.markBufferRange(range, {
         exclusive: false,
         invalidate: "overlap",
@@ -918,15 +973,26 @@ function testDisplayMarkerLayer() {
         [0, 0],
         [0, 0],
     ]);
-    displayMarker = displayMarkerLayer.markBufferRange([[0, 0], pos], { reversed: true });
+    displayMarker = displayMarkerLayer.markBufferRange([[0, 0], pos], {
+        reversed: true,
+    });
 
     displayMarker = displayMarkerLayer.markBufferPosition(pos);
     displayMarker = displayMarkerLayer.markBufferPosition(pos, {});
-    displayMarker = displayMarkerLayer.markBufferPosition(pos, { exclusive: true });
-    displayMarker = displayMarkerLayer.markBufferPosition(pos, { invalidate: "never" });
-    displayMarker = displayMarkerLayer.markBufferPosition(pos, { exclusive: false, invalidate: "overlap" });
+    displayMarker = displayMarkerLayer.markBufferPosition(pos, {
+        exclusive: true,
+    });
+    displayMarker = displayMarkerLayer.markBufferPosition(pos, {
+        invalidate: "never",
+    });
+    displayMarker = displayMarkerLayer.markBufferPosition(pos, {
+        exclusive: false,
+        invalidate: "overlap",
+    });
     displayMarker = displayMarkerLayer.markBufferPosition([0, 0]);
-    displayMarker = displayMarkerLayer.markBufferPosition([0, 0], { exclusive: false });
+    displayMarker = displayMarkerLayer.markBufferPosition([0, 0], {
+        exclusive: false,
+    });
 
     // Querying
     displayMarker = displayMarkerLayer.getMarker(42);
@@ -992,20 +1058,22 @@ function testDock() {
     subscription = dock.onDidChangeActivePaneItem(() => {});
     subscription = dock.onDidStopChangingActivePaneItem(() => {});
     subscription = dock.observeActivePaneItem(() => {});
-    subscription = dock.onDidAddPane(event => event.pane.activate());
-    subscription = dock.onWillDestroyPane(event => event.pane);
-    subscription = dock.onDidDestroyPane(event => event.pane);
-    subscription = dock.observePanes(pane => pane.activate());
-    subscription = dock.onDidChangeActivePane(pane => pane.activate());
-    subscription = dock.observeActivePane(pane => pane.activate());
-    subscription = dock.onDidAddPaneItem(event => event.index && event.item && event.pane);
-    subscription = dock.onWillDestroyPaneItem(event => {
+    subscription = dock.onDidAddPane((event) => event.pane.activate());
+    subscription = dock.onWillDestroyPane((event) => event.pane);
+    subscription = dock.onDidDestroyPane((event) => event.pane);
+    subscription = dock.observePanes((pane) => pane.activate());
+    subscription = dock.onDidChangeActivePane((pane) => pane.activate());
+    subscription = dock.observeActivePane((pane) => pane.activate());
+    subscription = dock.onDidAddPaneItem(
+        (event) => event.index && event.item && event.pane,
+    );
+    subscription = dock.onWillDestroyPaneItem((event) => {
         event.index && event.item && event.pane;
     });
-    subscription = dock.onDidDestroyPaneItem(event => {
+    subscription = dock.onDidDestroyPaneItem((event) => {
         event.index && event.item && event.pane;
     });
-    subscription = dock.onDidChangeHovered(hovered => (bool = hovered));
+    subscription = dock.onDidChangeHovered((hovered) => (bool = hovered));
 
     // Pane Items
     objs = dock.getPaneItems();
@@ -1029,9 +1097,9 @@ function testEmitter() {
     emitter.dispose();
 
     // Event Subscription
-    subscription = emitter.on("test-event", value => {});
-    emitter.once("test-event", value => {});
-    subscription = emitter.preempt("test-event", value => {});
+    subscription = emitter.on("test-event", (value) => {});
+    emitter.once("test-event", (value) => {});
+    subscription = emitter.preempt("test-event", (value) => {});
 
     // Event Emission
     emitter.emit("test-event");
@@ -1041,13 +1109,13 @@ function testEmitter() {
     const optEmitter = new Atom.Emitter<{ "test-event": string }>();
     optEmitter.emit("test-event");
     optEmitter.emit("test-event", "test");
-    optEmitter.on("test-event", value => {
+    optEmitter.on("test-event", (value) => {
         str = value ? value : "";
     });
 
     // Required Value Emitter
     const reqEmitter = new Atom.Emitter<{}, TestEmissions>();
-    reqEmitter.on("test-event", value => {
+    reqEmitter.on("test-event", (value) => {
         str = value;
     });
     reqEmitter.emit("test-event", "test");
@@ -1152,7 +1220,9 @@ function testGitRepository() {
 
     // Event Subscription
     subscription = repository.onDidDestroy(() => {});
-    subscription = repository.onDidChangeStatus(event => event.path && event.pathStatus);
+    subscription = repository.onDidChangeStatus(
+        (event) => event.path && event.pathStatus,
+    );
     subscription = repository.onDidChangeStatuses(() => {});
 
     // Repository Details
@@ -1173,7 +1243,8 @@ function testGitRepository() {
     aheadBehindCount = repository.getAheadBehindCount("ref", "test.path");
 
     aheadBehindCount = repository.getCachedUpstreamAheadBehindCount();
-    aheadBehindCount = repository.getCachedUpstreamAheadBehindCount("test.path");
+    aheadBehindCount =
+        repository.getCachedUpstreamAheadBehindCount("test.path");
 
     str = repository.getConfigValue("username");
     str = repository.getConfigValue("username", "test.path");
@@ -1217,7 +1288,12 @@ function testGitRepository() {
     let diffStats: { added: number; deleted: number };
     diffStats = repository.getDiffStats("file.path");
 
-    let lineDiffs: Array<{ oldStart: number; newStart: number; oldLines: number; newLines: number }>;
+    let lineDiffs: Array<{
+        oldStart: number;
+        newStart: number;
+        oldLines: number;
+        newLines: number;
+    }>;
     lineDiffs = repository.getLineDiffs("file.path", "contents");
 
     // Checking Out
@@ -1253,9 +1329,9 @@ function testGrammar() {
 // GrammarRegistry ============================================================
 function testGrammarRegistry() {
     // Event Subscription
-    subscription = registry.onDidAddGrammar(grammar => grammar.name);
-    subscription = registry.onDidUpdateGrammar(grammar => grammar.name);
-    subscription = registry.onDidRemoveGrammar(grammar => grammar.name);
+    subscription = registry.onDidAddGrammar((grammar) => grammar.name);
+    subscription = registry.onDidUpdateGrammar((grammar) => grammar.name);
+    subscription = registry.onDidRemoveGrammar((grammar) => grammar.name);
 
     // Managing Grammars
     grammars = registry.getGrammars();
@@ -1294,7 +1370,7 @@ function testGutter() {
     gutter.destroy();
 
     // Event Subscription
-    subscription = gutter.onDidChangeVisible(gutter => gutter.isVisible());
+    subscription = gutter.onDidChangeVisible((gutter) => gutter.isVisible());
     subscription = gutter.onDidDestroy(() => {});
 
     // Visibility
@@ -1341,7 +1417,11 @@ function testKeymapManager() {
     bindings = manager.findKeyBindings({ keystrokes: "a" });
     bindings = manager.findKeyBindings({ target: element });
     bindings = manager.findKeyBindings({ command: "a", keystrokes: "b" });
-    bindings = manager.findKeyBindings({ command: "a", keystrokes: "b", target: element });
+    bindings = manager.findKeyBindings({
+        command: "a",
+        keystrokes: "b",
+        target: element,
+    });
 
     // Managing Keymap Files
     manager.loadKeymap("Test.file");
@@ -1366,7 +1446,10 @@ function testLayerDecoration() {
     bool = layerDecoration.isDestroyed();
     layerDecoration.getProperties();
     layerDecoration.setProperties(decorationLayerProps);
-    layerDecoration.setPropertiesForMarker(marker, { type: "line", class: "test-class" });
+    layerDecoration.setPropertiesForMarker(marker, {
+        type: "line",
+        class: "test-class",
+    });
 }
 
 // Marker =====================================================================
@@ -1388,7 +1471,7 @@ function testMarker() {
     // Event Subscription
     subscription = marker.onDidDestroy(() => {});
 
-    subscription = marker.onDidChange(event => {
+    subscription = marker.onDidChange((event) => {
         event.oldHeadPosition;
         event.newHeadPosition;
         event.oldTailPosition;
@@ -1504,11 +1587,14 @@ function testMarkerLayer() {
     marker = markerLayer.markPosition([0, 0]);
     marker = markerLayer.markPosition(pos, { exclusive: false });
     marker = markerLayer.markPosition([0, 0], { invalidate: "inside" });
-    marker = markerLayer.markPosition(pos, { exclusive: true, invalidate: "surround" });
+    marker = markerLayer.markPosition(pos, {
+        exclusive: true,
+        invalidate: "surround",
+    });
 
     // Event subscription
     subscription = markerLayer.onDidUpdate(() => {});
-    subscription = markerLayer.onDidCreateMarker(marker => marker.id);
+    subscription = markerLayer.onDidCreateMarker((marker) => marker.id);
     subscription = markerLayer.onDidDestroy(() => {});
 }
 
@@ -1536,8 +1622,12 @@ function testNotification() {
     });
 
     // Event Subscription
-    subscription = notification.onDidDismiss(notification => notification.getType());
-    subscription = notification.onDidDisplay(notification => notification.getMessage());
+    subscription = notification.onDidDismiss((notification) =>
+        notification.getType(),
+    );
+    subscription = notification.onDidDisplay((notification) =>
+        notification.getMessage(),
+    );
 
     // Methods
     str = notification.getType();
@@ -1550,7 +1640,9 @@ function testNotification() {
 // NotificationManager ========================================================
 function testNotificationManager() {
     // Events
-    atom.notifications.onDidAddNotification(notification => notification.dismiss());
+    atom.notifications.onDidAddNotification((notification) =>
+        notification.dismiss(),
+    );
     atom.notifications.onDidClearNotifications(() => undefined);
 
     // Adding Notifications
@@ -1615,11 +1707,16 @@ function testPackageManager() {
     // Event Subscription
     subscription = atom.packages.onDidLoadInitialPackages(() => {});
     subscription = atom.packages.onDidActivateInitialPackages(() => {});
-    subscription = atom.packages.onDidActivatePackage(pack => pack.name);
-    subscription = atom.packages.onDidDeactivatePackage(pack => pack.path);
-    subscription = atom.packages.onDidLoadPackage(pack => pack.isCompatible());
-    subscription = atom.packages.onDidUnloadPackage(pack => pack.name);
-    subscription = atom.packages.onDidTriggerActivationHook("language-javascript:grammar-used", () => {});
+    subscription = atom.packages.onDidActivatePackage((pack) => pack.name);
+    subscription = atom.packages.onDidDeactivatePackage((pack) => pack.path);
+    subscription = atom.packages.onDidLoadPackage((pack) =>
+        pack.isCompatible(),
+    );
+    subscription = atom.packages.onDidUnloadPackage((pack) => pack.name);
+    subscription = atom.packages.onDidTriggerActivationHook(
+        "language-javascript:grammar-used",
+        () => {},
+    );
 
     // Package system data
     str = atom.packages.getApmPath();
@@ -1647,7 +1744,7 @@ function testPackageManager() {
     bool = atom.packages.isPackageDisabled("Test");
 
     // Activating and deactivating packages
-    atom.packages.activatePackage("Test").then(activePack => {
+    atom.packages.activatePackage("Test").then((activePack) => {
         pack = activePack;
     });
     atom.packages.deactivatePackage("Test", true).then(() => {
@@ -1685,24 +1782,26 @@ function testPackageManager() {
 // Pane =======================================================================
 function testPane() {
     // Event Subscription
-    subscription = pane.onDidChangeFlexScale(scale => (num = scale));
-    subscription = pane.observeFlexScale(scale => (num = scale));
+    subscription = pane.onDidChangeFlexScale((scale) => (num = scale));
+    subscription = pane.observeFlexScale((scale) => (num = scale));
     subscription = pane.onDidActivate(() => {});
     subscription = pane.onWillDestroy(() => {});
     subscription = pane.onDidDestroy(() => {});
-    subscription = pane.onDidChangeActive(active => (bool = active));
-    subscription = pane.observeActive(active => (bool = active));
-    subscription = pane.onDidAddItem(event => event.index && event.item);
-    subscription = pane.onDidRemoveItem(event => event.index && event.item);
-    subscription = pane.onWillRemoveItem(event => event.index && event.item);
-    subscription = pane.onDidMoveItem(event => event.item && event.oldIndex && event.newIndex);
-    subscription = pane.observeItems(item => {});
-    subscription = pane.onDidChangeActiveItem(item => {});
-    subscription = pane.onChooseNextMRUItem(item => {});
-    subscription = pane.onChooseLastMRUItem(item => {});
+    subscription = pane.onDidChangeActive((active) => (bool = active));
+    subscription = pane.observeActive((active) => (bool = active));
+    subscription = pane.onDidAddItem((event) => event.index && event.item);
+    subscription = pane.onDidRemoveItem((event) => event.index && event.item);
+    subscription = pane.onWillRemoveItem((event) => event.index && event.item);
+    subscription = pane.onDidMoveItem(
+        (event) => event.item && event.oldIndex && event.newIndex,
+    );
+    subscription = pane.observeItems((item) => {});
+    subscription = pane.onDidChangeActiveItem((item) => {});
+    subscription = pane.onChooseNextMRUItem((item) => {});
+    subscription = pane.onChooseLastMRUItem((item) => {});
     subscription = pane.onDoneChoosingMRUItem(() => {});
-    subscription = pane.observeActiveItem(item => {});
-    subscription = pane.onWillDestroyItem(event => event.index && event.item);
+    subscription = pane.observeActiveItem((item) => {});
+    subscription = pane.onWillDestroyItem((event) => event.index && event.item);
 
     // Items
     objs = pane.getItems();
@@ -1807,8 +1906,8 @@ function testPanel() {
     panel.destroy();
 
     // Event Subscription
-    subscription = panel.onDidChangeVisible(visible => (bool = visible));
-    subscription = panel.onDidDestroy(panel => (bool = panel.isVisible()));
+    subscription = panel.onDidChangeVisible((visible) => (bool = visible));
+    subscription = panel.onDidDestroy((panel) => (bool = panel.isVisible()));
 
     // Panel Details
     obj = panel.getItem();
@@ -1822,7 +1921,7 @@ function testPanel() {
 async function testPathWatcher() {
     const pathWatcher = await pathWatcherPromise;
     pathWatcher.dispose();
-    subscription = pathWatcher.onDidError(error => (str = error.name));
+    subscription = pathWatcher.onDidError((error) => (str = error.name));
 
     async function waitForPathWatcher() {
         await pathWatcher.getStartPromise();
@@ -1886,29 +1985,29 @@ function testPoint() {
 // Project ====================================================================
 function testProject() {
     // Event Subscription
-    subscription = project.onDidChangePaths(paths => paths.length);
+    subscription = project.onDidChangePaths((paths) => paths.length);
 
-    subscription = project.onDidChangeFiles(events => {
+    subscription = project.onDidChangeFiles((events) => {
         for (const event of events) {
             str = event.action;
         }
     });
 
-    subscription = project.onDidAddBuffer(buffer => buffer.id);
-    subscription = project.observeBuffers(buffer => buffer.getUri());
+    subscription = project.onDidAddBuffer((buffer) => buffer.id);
+    subscription = project.observeBuffers((buffer) => buffer.getUri());
 
-    subscription = project.onDidReplace(projectSpec => {
+    subscription = project.onDidReplace((projectSpec) => {
         if (projectSpec != null) str = projectSpec.originPath;
     });
 
     // Accessing the git repository
     repositories = project.getRepositories();
 
-    subscription = project.observeRepositories(gitRepo => {
+    subscription = project.observeRepositories((gitRepo) => {
         const repo: Atom.GitRepository = gitRepo;
     });
 
-    subscription = project.onDidAddRepository(gitRepo => {
+    subscription = project.onDidAddRepository((gitRepo) => {
         const repo: Atom.GitRepository = gitRepo;
     });
 
@@ -2049,12 +2148,12 @@ readonlyStrs = scopeDescriptor.getScopesArray();
 function testSelection() {
     // Event Subscription
     subscription = selection.onDidChangeRange(
-        event =>
-            event.newBufferRange
-            && event.oldBufferRange
-            && event.newScreenRange
-            && event.oldScreenRange
-            && event.selection,
+        (event) =>
+            event.newBufferRange &&
+            event.oldBufferRange &&
+            event.newScreenRange &&
+            event.oldScreenRange &&
+            event.selection,
     );
     subscription = selection.onDidDestroy(() => {});
 
@@ -2100,7 +2199,8 @@ function testSelection() {
     selection.setBufferRange([pos, pos], { autoscroll: true });
     selection.setBufferRange(range, { reversed: true });
 
-    const [startingRow, endingRow]: [number, number] = selection.getBufferRowRange();
+    const [startingRow, endingRow]: [number, number] =
+        selection.getBufferRowRange();
 
     // Info about the selection
     bool = selection.isEmpty();
@@ -2244,10 +2344,18 @@ function testSelection() {
 // StyleManager ===============================================================
 function testStyleManager() {
     // Event Subscription
-    subscription = styleManager.observeStyleElements(styleElement => styleElement.context);
-    subscription = styleManager.onDidAddStyleElement(styleElement => styleElement.sourcePath);
-    subscription = styleManager.onDidRemoveStyleElement(styleElement => styleElement.onkeydown);
-    subscription = styleManager.onDidUpdateStyleElement(styleElement => styleElement.sourcePath);
+    subscription = styleManager.observeStyleElements(
+        (styleElement) => styleElement.context,
+    );
+    subscription = styleManager.onDidAddStyleElement(
+        (styleElement) => styleElement.sourcePath,
+    );
+    subscription = styleManager.onDidRemoveStyleElement(
+        (styleElement) => styleElement.onkeydown,
+    );
+    subscription = styleManager.onDidUpdateStyleElement(
+        (styleElement) => styleElement.sourcePath,
+    );
 
     // Reading Style Elements
     const styleElements: HTMLStyleElement[] = styleManager.getStyleElements();
@@ -2281,14 +2389,22 @@ function testTextBuffer() {
     async function bufferLoadFile() {
         buffer = await Atom.TextBuffer.load("Test.file");
         buffer = await Atom.TextBuffer.load("Test.file", { encoding: "utf8" });
-        buffer = await Atom.TextBuffer.load("Test.file", { shouldDestroyOnFileDelete });
-        buffer = await Atom.TextBuffer.load("Test.file", { encoding: "utf8", shouldDestroyOnFileDelete });
+        buffer = await Atom.TextBuffer.load("Test.file", {
+            shouldDestroyOnFileDelete,
+        });
+        buffer = await Atom.TextBuffer.load("Test.file", {
+            encoding: "utf8",
+            shouldDestroyOnFileDelete,
+        });
     }
 
     buffer = Atom.TextBuffer.loadSync("Test.file");
     Atom.TextBuffer.loadSync("Test.file", { encoding: "utf8" });
     Atom.TextBuffer.loadSync("Test.file", { shouldDestroyOnFileDelete });
-    Atom.TextBuffer.loadSync("Test.file", { encoding: "uft8", shouldDestroyOnFileDelete });
+    Atom.TextBuffer.loadSync("Test.file", {
+        encoding: "uft8",
+        shouldDestroyOnFileDelete,
+    });
 
     async function deserializeBuffer() {
         buffer = await Atom.TextBuffer.deserialize({});
@@ -2405,9 +2521,14 @@ function testTextBuffer() {
     );
     range = buffer.setTextInRange([pos, [0, 0]], "Test");
     range = buffer.setTextInRange([[0, 0], pos], "Test");
-    range = buffer.setTextInRange(range, "Test", { normalizeLineEndings: true });
+    range = buffer.setTextInRange(range, "Test", {
+        normalizeLineEndings: true,
+    });
     range = buffer.setTextInRange(range, "Test", { undo: "skip" });
-    range = buffer.setTextInRange(range, "Test", { normalizeLineEndings: true, undo: "skip" });
+    range = buffer.setTextInRange(range, "Test", {
+        normalizeLineEndings: true,
+        undo: "skip",
+    });
     range = buffer.setTextInRange(
         [
             [0, 0],
@@ -2465,7 +2586,11 @@ function testTextBuffer() {
     buffer.markRange(range, { exclusive: true });
     buffer.markRange(range, { invalidate: "surround" });
     buffer.markRange(range, { reversed: true });
-    buffer.markRange(range, { exclusive: true, invalidate: "surround", reversed: true });
+    buffer.markRange(range, {
+        exclusive: true,
+        invalidate: "surround",
+        reversed: true,
+    });
     buffer.markRange([pos, pos], { exclusive: true });
 
     marker = buffer.markPosition(pos);
@@ -2508,7 +2633,10 @@ function testTextBuffer() {
     bool = buffer.redo({ selectionsMarkerLayer: markerLayer });
 
     num = buffer.transact(500, (): number => 42);
-    num = buffer.transact({ groupingInterval: 500, selectionsMarkerLayer: markerLayer }, (): number => 42);
+    num = buffer.transact(
+        { groupingInterval: 500, selectionsMarkerLayer: markerLayer },
+        (): number => 42,
+    );
 
     buffer.clearUndoStack();
     num = buffer.createCheckpoint();
@@ -2519,7 +2647,7 @@ function testTextBuffer() {
 
     // Search And Replace
     buffer.scan(/r^Test/, (): void => {});
-    buffer.scan(/r^Test/, params => {
+    buffer.scan(/r^Test/, (params) => {
         num = params.match.index;
         str = params.matchText;
         range = params.range;
@@ -2532,14 +2660,14 @@ function testTextBuffer() {
             leadingContextLineCount: 5,
             trailingContextLineCount: 5,
         },
-        params => {
+        (params) => {
             strs = params.leadingContextLines;
             strs = params.trailingContextLines;
         },
     );
 
     buffer.backwardsScan(/r^Test/, (): void => {});
-    buffer.backwardsScan(/r^Test/, params => {
+    buffer.backwardsScan(/r^Test/, (params) => {
         num = params.match.index;
         str = params.matchText;
         range = params.range;
@@ -2552,14 +2680,14 @@ function testTextBuffer() {
             leadingContextLineCount: 5,
             trailingContextLineCount: 5,
         },
-        params => {
+        (params) => {
             strs = params.leadingContextLines;
             strs = params.trailingContextLines;
         },
     );
 
     buffer.scanInRange(/r^Test/, range, (): void => {});
-    buffer.scanInRange(/r^Test/, range, params => {
+    buffer.scanInRange(/r^Test/, range, (params) => {
         num = params.match.index;
         str = params.matchText;
         range = params.range;
@@ -2573,7 +2701,7 @@ function testTextBuffer() {
             leadingContextLineCount: 5,
             trailingContextLineCount: 5,
         },
-        params => {
+        (params) => {
             strs = params.leadingContextLines;
             strs = params.trailingContextLines;
         },
@@ -2600,7 +2728,7 @@ function testTextBuffer() {
     );
 
     buffer.backwardsScanInRange(/r^Test/, range, (): void => {});
-    buffer.backwardsScanInRange(/r^Test/, range, params => {
+    buffer.backwardsScanInRange(/r^Test/, range, (params) => {
         num = params.match.index;
         str = params.matchText;
         range = params.range;
@@ -2614,7 +2742,7 @@ function testTextBuffer() {
             leadingContextLineCount: 5,
             trailingContextLineCount: 5,
         },
-        params => {
+        (params) => {
             strs = params.leadingContextLines;
             strs = params.trailingContextLines;
         },
@@ -2678,10 +2806,10 @@ function testTextBuffer() {
 // TextEditor =================================================================
 function testTextEditor() {
     // Event Subscription
-    subscription = editor.onDidChangeTitle(title => (str = title.charAt(0)));
-    subscription = editor.onDidChangePath(path => (str = path.charAt(0)));
+    subscription = editor.onDidChangeTitle((title) => (str = title.charAt(0)));
+    subscription = editor.onDidChangePath((path) => (str = path.charAt(0)));
 
-    subscription = editor.onDidChange(changes => {
+    subscription = editor.onDidChange((changes) => {
         for (const change of changes) {
             change.newExtent;
             change.oldExtent;
@@ -2689,46 +2817,60 @@ function testTextEditor() {
         }
     });
 
-    subscription = editor.onDidStopChanging(event => {
+    subscription = editor.onDidStopChanging((event) => {
         for (const change of event.changes) {
-            change.newExtent
-                && change.oldExtent
-                && change.newRange
-                && change.oldRange
-                && change.newText
-                && change.oldText
-                && change.start;
+            change.newExtent &&
+                change.oldExtent &&
+                change.newRange &&
+                change.oldRange &&
+                change.newText &&
+                change.oldText &&
+                change.start;
         }
     });
 
-    subscription = editor.onDidChangeCursorPosition(event => event.newBufferPosition);
-    subscription = editor.onDidChangeSelectionRange(event => event.selection);
-    subscription = editor.onDidSave(event => event.path);
+    subscription = editor.onDidChangeCursorPosition(
+        (event) => event.newBufferPosition,
+    );
+    subscription = editor.onDidChangeSelectionRange((event) => event.selection);
+    subscription = editor.onDidSave((event) => event.path);
     subscription = editor.onDidDestroy(() => {});
-    subscription = editor.observeGutters(gutter => gutter.show());
-    subscription = editor.onDidAddGutter(gutter => gutter.hide());
-    subscription = editor.onDidRemoveGutter(name => name.length);
-    subscription = editor.onDidChangeSoftWrapped(softWrapped => {});
-    subscription = editor.onDidChangeEncoding(encoding => {});
-    subscription = editor.observeGrammar(grammar => grammar.name);
-    subscription = editor.onDidChangeGrammar(grammar => grammar.name);
-    subscription = editor.onDidChangeModified(modified => {});
+    subscription = editor.observeGutters((gutter) => gutter.show());
+    subscription = editor.onDidAddGutter((gutter) => gutter.hide());
+    subscription = editor.onDidRemoveGutter((name) => name.length);
+    subscription = editor.onDidChangeSoftWrapped((softWrapped) => {});
+    subscription = editor.onDidChangeEncoding((encoding) => {});
+    subscription = editor.observeGrammar((grammar) => grammar.name);
+    subscription = editor.onDidChangeGrammar((grammar) => grammar.name);
+    subscription = editor.onDidChangeModified((modified) => {});
     subscription = editor.onDidConflict(() => {});
-    subscription = editor.onWillInsertText(event => {
+    subscription = editor.onWillInsertText((event) => {
         event.cancel();
         event.text;
     });
-    subscription = editor.onDidInsertText(event => event.text);
-    subscription = editor.observeCursors(cursor => cursor.moveToBottom());
-    subscription = editor.onDidAddCursor(cursor => cursor.getMarker());
-    subscription = editor.onDidRemoveCursor(cursor => cursor.compare(cursor));
-    subscription = editor.observeSelections(selection => selection.cutToEndOfBufferLine());
-    subscription = editor.onDidAddSelection(selection => selection.selectWord());
-    subscription = editor.onDidRemoveSelection(selection => selection.toggleLineComments());
-    subscription = editor.observeDecorations(decoration => decoration.getId());
-    subscription = editor.onDidAddDecoration(decoration => decoration.id);
-    subscription = editor.onDidRemoveDecoration(decoration => decoration.getId());
-    subscription = editor.onDidChangePlaceholderText(placeholderText => placeholderText.toLowerCase());
+    subscription = editor.onDidInsertText((event) => event.text);
+    subscription = editor.observeCursors((cursor) => cursor.moveToBottom());
+    subscription = editor.onDidAddCursor((cursor) => cursor.getMarker());
+    subscription = editor.onDidRemoveCursor((cursor) => cursor.compare(cursor));
+    subscription = editor.observeSelections((selection) =>
+        selection.cutToEndOfBufferLine(),
+    );
+    subscription = editor.onDidAddSelection((selection) =>
+        selection.selectWord(),
+    );
+    subscription = editor.onDidRemoveSelection((selection) =>
+        selection.toggleLineComments(),
+    );
+    subscription = editor.observeDecorations((decoration) =>
+        decoration.getId(),
+    );
+    subscription = editor.onDidAddDecoration((decoration) => decoration.id);
+    subscription = editor.onDidRemoveDecoration((decoration) =>
+        decoration.getId(),
+    );
+    subscription = editor.onDidChangePlaceholderText((placeholderText) =>
+        placeholderText.toLowerCase(),
+    );
     buffer = editor.getBuffer();
 
     // File Details
@@ -2779,7 +2921,9 @@ function testTextEditor() {
         "Test",
     );
     range = editor.setTextInBufferRange(range, "Test", {});
-    range = editor.setTextInBufferRange([pos, pos], "Test", { normalizeLineEndings: true });
+    range = editor.setTextInBufferRange([pos, pos], "Test", {
+        normalizeLineEndings: true,
+    });
     range = editor.setTextInBufferRange(range, "Test", {
         normalizeLineEndings: true,
         undo: "skip",
@@ -2861,14 +3005,22 @@ function testTextEditor() {
     pos = editor.screenPositionForBufferPosition(pos);
     pos = editor.screenPositionForBufferPosition([0, 0]);
     pos = editor.screenPositionForBufferPosition(pos, {});
-    pos = editor.screenPositionForBufferPosition(pos, { clipDirection: "backward" });
-    pos = editor.screenPositionForBufferPosition([0, 0], { clipDirection: "forward" });
+    pos = editor.screenPositionForBufferPosition(pos, {
+        clipDirection: "backward",
+    });
+    pos = editor.screenPositionForBufferPosition([0, 0], {
+        clipDirection: "forward",
+    });
 
     pos = editor.bufferPositionForScreenPosition(pos);
     pos = editor.bufferPositionForScreenPosition([0, 0]);
     pos = editor.bufferPositionForScreenPosition(pos, {});
-    pos = editor.bufferPositionForScreenPosition(pos, { clipDirection: "backward" });
-    pos = editor.bufferPositionForScreenPosition([0, 0], { clipDirection: "forward" });
+    pos = editor.bufferPositionForScreenPosition(pos, {
+        clipDirection: "backward",
+    });
+    pos = editor.bufferPositionForScreenPosition([0, 0], {
+        clipDirection: "forward",
+    });
 
     range = editor.screenRangeForBufferRange(range);
     range = editor.screenRangeForBufferRange([pos, pos]);
@@ -2932,7 +3084,9 @@ function testTextEditor() {
         position: "before",
     });
 
-    layerDecoration = editor.decorateMarkerLayer(displayMarkerLayer, { type: "line-number" });
+    layerDecoration = editor.decorateMarkerLayer(displayMarkerLayer, {
+        type: "line-number",
+    });
     layerDecoration = editor.decorateMarkerLayer(displayMarkerLayer, {
         type: "line-number",
         avoidOverflow: false,
@@ -3032,20 +3186,31 @@ function testTextEditor() {
         ],
         { invalidate: "overlap" },
     );
-    displayMarker = editor.markBufferRange(range, { invalidate: "surround", maintainHistory: false, reversed: false });
+    displayMarker = editor.markBufferRange(range, {
+        invalidate: "surround",
+        maintainHistory: false,
+        reversed: false,
+    });
 
     displayMarker = editor.markBufferPosition(pos);
     displayMarker = editor.markBufferPosition([0, 0]);
     displayMarker = editor.markBufferPosition(pos, {});
     displayMarker = editor.markBufferPosition(pos, { invalidate: "never" });
-    displayMarker = editor.markBufferPosition([0, 0], { invalidate: "surround" });
+    displayMarker = editor.markBufferPosition([0, 0], {
+        invalidate: "surround",
+    });
 
     displayMarker = editor.markScreenPosition(pos);
     displayMarker = editor.markScreenPosition([0, 0]);
     displayMarker = editor.markScreenPosition(pos, {});
     displayMarker = editor.markScreenPosition(pos, { invalidate: "never" });
-    displayMarker = editor.markScreenPosition(pos, { clipDirection: "forward" });
-    displayMarker = editor.markScreenPosition([0, 0], { invalidate: "surround", clipDirection: "backward" });
+    displayMarker = editor.markScreenPosition(pos, {
+        clipDirection: "forward",
+    });
+    displayMarker = editor.markScreenPosition([0, 0], {
+        invalidate: "surround",
+        clipDirection: "backward",
+    });
 
     displayMarkers = editor.findMarkers({ startBufferRow: 42 });
     displayMarkers = editor.findMarkers({ endBufferRow: 42 });
@@ -3088,7 +3253,10 @@ function testTextEditor() {
     displayMarkerLayer = editor.addMarkerLayer({});
     displayMarkerLayer = editor.addMarkerLayer({ maintainHistory: true });
     displayMarkerLayer = editor.addMarkerLayer({ persistent: true });
-    displayMarkerLayer = editor.addMarkerLayer({ maintainHistory: true, persistent: true });
+    displayMarkerLayer = editor.addMarkerLayer({
+        maintainHistory: true,
+        persistent: true,
+    });
 
     const potentialMarkerLayer = editor.getMarkerLayer(42);
     if (potentialMarkerLayer) {
@@ -3172,7 +3340,11 @@ function testTextEditor() {
     str = editor.getWordUnderCursor({ allowPrevious: true });
     str = editor.getWordUnderCursor({ includeNonWordCharacters: true });
     str = editor.getWordUnderCursor({ wordRegex: /r/ });
-    str = editor.getWordUnderCursor({ allowPrevious: true, includeNonWordCharacters: true, wordRegex: /r/ });
+    str = editor.getWordUnderCursor({
+        allowPrevious: true,
+        includeNonWordCharacters: true,
+        wordRegex: /r/,
+    });
 
     cursors = editor.getCursors();
     cursors = editor.getCursorsOrderedByBufferPosition();
@@ -3186,7 +3358,10 @@ function testTextEditor() {
     editor.setSelectedBufferRange(range, {});
     editor.setSelectedBufferRange(range, { preserveFolds: true });
     editor.setSelectedBufferRange(range, { reversed: true });
-    editor.setSelectedBufferRange(range, { preserveFolds: true, reversed: true });
+    editor.setSelectedBufferRange(range, {
+        preserveFolds: true,
+        reversed: true,
+    });
     editor.setSelectedBufferRange([pos, pos]);
     editor.setSelectedBufferRange([pos, [0, 0]]);
     editor.setSelectedBufferRange([[0, 0], pos]);
@@ -3209,7 +3384,10 @@ function testTextEditor() {
     editor.setSelectedBufferRanges([[pos, pos]], {});
     editor.setSelectedBufferRanges(ranges, { reversed: true });
     editor.setSelectedBufferRanges([[pos, pos]], { preserveFolds: true });
-    editor.setSelectedBufferRanges([[pos, pos]], { reversed: true, preserveFolds: true });
+    editor.setSelectedBufferRanges([[pos, pos]], {
+        reversed: true,
+        preserveFolds: true,
+    });
 
     range = editor.getSelectedScreenRange();
     ranges = editor.getSelectedScreenRanges();
@@ -3251,10 +3429,17 @@ function testTextEditor() {
         [0, 0],
     ]);
     selection = editor.addSelectionForBufferRange(range, {});
-    selection = editor.addSelectionForBufferRange(range, { preserveFolds: true });
+    selection = editor.addSelectionForBufferRange(range, {
+        preserveFolds: true,
+    });
     selection = editor.addSelectionForBufferRange(range, { reversed: true });
-    selection = editor.addSelectionForBufferRange(range, { preserveFolds: false, reversed: false });
-    selection = editor.addSelectionForBufferRange([pos, pos], { preserveFolds: false });
+    selection = editor.addSelectionForBufferRange(range, {
+        preserveFolds: false,
+        reversed: false,
+    });
+    selection = editor.addSelectionForBufferRange([pos, pos], {
+        preserveFolds: false,
+    });
 
     selection = editor.addSelectionForScreenRange(range);
     selection = editor.addSelectionForScreenRange([pos, pos]);
@@ -3265,10 +3450,17 @@ function testTextEditor() {
         [0, 0],
     ]);
     selection = editor.addSelectionForScreenRange(range, {});
-    selection = editor.addSelectionForScreenRange(range, { preserveFolds: true });
+    selection = editor.addSelectionForScreenRange(range, {
+        preserveFolds: true,
+    });
     selection = editor.addSelectionForScreenRange(range, { reversed: true });
-    selection = editor.addSelectionForScreenRange(range, { preserveFolds: false, reversed: false });
-    selection = editor.addSelectionForScreenRange([pos, pos], { preserveFolds: false });
+    selection = editor.addSelectionForScreenRange(range, {
+        preserveFolds: false,
+        reversed: false,
+    });
+    selection = editor.addSelectionForScreenRange([pos, pos], {
+        preserveFolds: false,
+    });
 
     editor.selectToBufferPosition(pos);
     editor.selectToScreenPosition(pos);
@@ -3314,7 +3506,7 @@ function testTextEditor() {
     bool = editor.selectionIntersectsBufferRange(range); // not range-compatible
 
     // Searching and Replacing
-    editor.scan(/r/, params => {
+    editor.scan(/r/, (params) => {
         num = params.match.index;
         str = params.matchText;
         range = params.range;
@@ -3325,7 +3517,11 @@ function testTextEditor() {
     editor.scan(/r/, {}, () => {});
     editor.scan(/r/, { leadingContextLineCount: 42 }, () => {});
     editor.scan(/r/, { trailingContextLineCount: 42 }, () => {});
-    editor.scan(/r/, { leadingContextLineCount: 42, trailingContextLineCount: 42 }, () => {});
+    editor.scan(
+        /r/,
+        { leadingContextLineCount: 42, trailingContextLineCount: 42 },
+        () => {},
+    );
 
     editor.scanInBufferRange(/r/, range, () => {});
     editor.scanInBufferRange(/r/, [pos, pos], () => {});
@@ -3339,7 +3535,7 @@ function testTextEditor() {
         ],
         () => {},
     );
-    editor.scanInBufferRange(/r/, range, params => {
+    editor.scanInBufferRange(/r/, range, (params) => {
         num = params.match.index;
         str = params.matchText;
         range = params.range;
@@ -3359,7 +3555,7 @@ function testTextEditor() {
         ],
         () => {},
     );
-    editor.backwardsScanInBufferRange(/r/, range, params => {
+    editor.backwardsScanInBufferRange(/r/, range, (params) => {
         num = params.match.index;
         str = params.matchText;
         range = params.range;
@@ -3392,7 +3588,9 @@ function testTextEditor() {
 
     editor.setIndentationForBufferRow(42, 42);
     editor.setIndentationForBufferRow(42, 42, {});
-    editor.setIndentationForBufferRow(42, 42, { preserveLeadingWhitespace: true });
+    editor.setIndentationForBufferRow(42, 42, {
+        preserveLeadingWhitespace: true,
+    });
 
     editor.indentSelectedRows();
     editor.indentSelectedRows({ bypassReadOnly: false });
@@ -3523,7 +3721,10 @@ function testTextEditor() {
     editor.setPlaceholderText("Test");
 
     range = editor.bufferRangeForScopeAtPosition("source.js", [0, 0]);
-    range = editor.bufferRangeForScopeAtPosition("source.js", { row: 10, column: 11 });
+    range = editor.bufferRangeForScopeAtPosition("source.js", {
+        row: 10,
+        column: 11,
+    });
     range = editor.bufferRangeForScopeAtPosition("source.js", pos);
 
     let token: { value: string; scopes: string[] };
@@ -3566,7 +3767,10 @@ function testThemeManager() {
 // TooltipManager =============================================================
 function testTooltipManager() {
     subscription = atom.tooltips.add(element, { title: "Test" });
-    subscription = atom.tooltips.add(element, { title: "<p>Test</p>", html: true });
+    subscription = atom.tooltips.add(element, {
+        title: "<p>Test</p>",
+        html: true,
+    });
     subscription = atom.tooltips.add(element, { item: element });
     subscription = atom.tooltips.add(element, { class: "test-class" });
     subscription = atom.tooltips.add(element, { placement: "top" });
@@ -3574,15 +3778,20 @@ function testTooltipManager() {
     subscription = atom.tooltips.add(element, { placement: () => "auto left" });
 
     subscription = atom.tooltips.add(element, { trigger: "click" });
-    subscription = atom.tooltips.add(element, { delay: { hide: 42, show: 42 } });
-    subscription = atom.tooltips.add(element, { keyBindingCommand: "test-command", keyBindingTarget: element });
+    subscription = atom.tooltips.add(element, {
+        delay: { hide: 42, show: 42 },
+    });
+    subscription = atom.tooltips.add(element, {
+        keyBindingCommand: "test-command",
+        keyBindingTarget: element,
+    });
 
     tooltips = atom.tooltips.findTooltips(element);
 }
 
 // ViewRegistry ===============================================================
 function testViewRegistry() {
-    atom.views.addViewProvider(Atom.Point, point => {
+    atom.views.addViewProvider(Atom.Point, (point) => {
         point.column;
         return element;
     });
@@ -3594,38 +3803,48 @@ function testViewRegistry() {
 // Workspace ==================================================================
 function testWorkspace() {
     // Event Subscription
-    subscription = atom.workspace.observeTextEditors(editor => editor.id);
-    subscription = atom.workspace.observePaneItems(item => {});
-    subscription = atom.workspace.onDidChangeActivePaneItem(item => {});
-    subscription = atom.workspace.onDidStopChangingActivePaneItem(item => {});
+    subscription = atom.workspace.observeTextEditors((editor) => editor.id);
+    subscription = atom.workspace.observePaneItems((item) => {});
+    subscription = atom.workspace.onDidChangeActivePaneItem((item) => {});
+    subscription = atom.workspace.onDidStopChangingActivePaneItem((item) => {});
 
-    subscription = atom.workspace.onDidChangeActiveTextEditor(editor => {
+    subscription = atom.workspace.onDidChangeActiveTextEditor((editor) => {
         if (editor) {
             editor.id;
         }
     });
 
-    subscription = atom.workspace.observeActivePaneItem(item => {});
+    subscription = atom.workspace.observeActivePaneItem((item) => {});
 
-    subscription = atom.workspace.observeActiveTextEditor(editor => {
+    subscription = atom.workspace.observeActiveTextEditor((editor) => {
         if (editor) {
             editor.id;
         }
     });
 
-    subscription = atom.workspace.onDidOpen(event => event.index && event.item && event.pane && event.uri);
-    subscription = atom.workspace.onDidAddPane(event => event.pane);
-    subscription = atom.workspace.onWillDestroyPane(event => event.pane);
-    subscription = atom.workspace.onDidDestroyPane(event => event.pane);
-    subscription = atom.workspace.observePanes(pane => pane.activate());
-    subscription = atom.workspace.onDidChangeActivePane(pane => pane.activate());
-    subscription = atom.workspace.observeActivePane(pane => pane.activate());
-    subscription = atom.workspace.onDidAddPaneItem(event => event.index && event.item && event.pane);
-    subscription = atom.workspace.onWillDestroyPaneItem(event => {
+    subscription = atom.workspace.onDidOpen(
+        (event) => event.index && event.item && event.pane && event.uri,
+    );
+    subscription = atom.workspace.onDidAddPane((event) => event.pane);
+    subscription = atom.workspace.onWillDestroyPane((event) => event.pane);
+    subscription = atom.workspace.onDidDestroyPane((event) => event.pane);
+    subscription = atom.workspace.observePanes((pane) => pane.activate());
+    subscription = atom.workspace.onDidChangeActivePane((pane) =>
+        pane.activate(),
+    );
+    subscription = atom.workspace.observeActivePane((pane) => pane.activate());
+    subscription = atom.workspace.onDidAddPaneItem(
+        (event) => event.index && event.item && event.pane,
+    );
+    subscription = atom.workspace.onWillDestroyPaneItem((event) => {
         event.index && event.item && event.pane;
     });
-    subscription = atom.workspace.onDidDestroyPaneItem(event => event.index && event.item && event.pane);
-    subscription = atom.workspace.onDidAddTextEditor(event => event.index && event.pane && event.textEditor);
+    subscription = atom.workspace.onDidDestroyPaneItem(
+        (event) => event.index && event.item && event.pane,
+    );
+    subscription = atom.workspace.onDidAddTextEditor(
+        (event) => event.index && event.pane && event.textEditor,
+    );
 
     // Opening
     async function workspaceOpen() {
@@ -3638,7 +3857,9 @@ function testWorkspace() {
         obj = await atom.workspace.open("https://test", { location: "right" });
         obj = await atom.workspace.open("https://test", { split: "up" });
         obj = await atom.workspace.open("https://test", { pending: true });
-        obj = await atom.workspace.open("https://test", { searchAllPanes: true });
+        obj = await atom.workspace.open("https://test", {
+            searchAllPanes: true,
+        });
         obj = await atom.workspace.open("https://test", {
             activateItem: true,
             activatePane: true,
@@ -3670,7 +3891,7 @@ function testWorkspace() {
         if (result) obj = result;
     }
 
-    atom.workspace.addOpener(uri => {
+    atom.workspace.addOpener((uri) => {
         if (uri === "test://") {
             return {
                 getTitle: () => "Test Title",
@@ -3697,7 +3918,8 @@ function testWorkspace() {
     bool = atom.workspace.activateNextPane();
     bool = atom.workspace.activatePreviousPane();
 
-    let potentialPaneContainer = atom.workspace.paneContainerForURI("https://test");
+    let potentialPaneContainer =
+        atom.workspace.paneContainerForURI("https://test");
     if (potentialPaneContainer) {
         paneContainer = potentialPaneContainer;
     }
@@ -3727,39 +3949,70 @@ function testWorkspace() {
     panels = atom.workspace.getBottomPanels();
 
     panel = atom.workspace.addBottomPanel({ item: element });
-    panel = atom.workspace.addBottomPanel({ item: element, priority: 100, visible: true });
+    panel = atom.workspace.addBottomPanel({
+        item: element,
+        priority: 100,
+        visible: true,
+    });
 
     panels = atom.workspace.getLeftPanels();
 
     panel = atom.workspace.addLeftPanel({ item: element });
-    panel = atom.workspace.addLeftPanel({ item: element, priority: 100, visible: true });
+    panel = atom.workspace.addLeftPanel({
+        item: element,
+        priority: 100,
+        visible: true,
+    });
 
     panels = atom.workspace.getRightPanels();
 
     panel = atom.workspace.addRightPanel({ item: element });
-    panel = atom.workspace.addRightPanel({ item: element, priority: 100, visible: true });
+    panel = atom.workspace.addRightPanel({
+        item: element,
+        priority: 100,
+        visible: true,
+    });
 
     panels = atom.workspace.getTopPanels();
 
     panel = atom.workspace.addTopPanel({ item: element });
-    panel = atom.workspace.addTopPanel({ item: element, priority: 100, visible: true });
+    panel = atom.workspace.addTopPanel({
+        item: element,
+        priority: 100,
+        visible: true,
+    });
 
     panels = atom.workspace.getHeaderPanels();
 
     panel = atom.workspace.addHeaderPanel({ item: element });
-    panel = atom.workspace.addHeaderPanel({ item: element, priority: 100, visible: true });
+    panel = atom.workspace.addHeaderPanel({
+        item: element,
+        priority: 100,
+        visible: true,
+    });
 
     panels = atom.workspace.getFooterPanels();
 
     panel = atom.workspace.addFooterPanel({ item: element });
-    panel = atom.workspace.addFooterPanel({ item: element, priority: 100, visible: true });
+    panel = atom.workspace.addFooterPanel({
+        item: element,
+        priority: 100,
+        visible: true,
+    });
 
     panels = atom.workspace.getModalPanels();
 
     panel = atom.workspace.addModalPanel({ item: element });
-    panel = atom.workspace.addModalPanel({ item: element, priority: 100, visible: true });
+    panel = atom.workspace.addModalPanel({
+        item: element,
+        priority: 100,
+        visible: true,
+    });
     panel = atom.workspace.addModalPanel({ item: element, autoFocus: element });
-    panel = atom.workspace.addModalPanel({ item: element, autoFocus: () => element });
+    panel = atom.workspace.addModalPanel({
+        item: element,
+        autoFocus: () => element,
+    });
 
     const potentialPanel = atom.workspace.panelForItem(element);
     if (potentialPanel) {
@@ -3779,7 +4032,7 @@ function testWorkspace() {
             trailingContextLineCount: 5,
             paths: ["a"],
         };
-        await atom.workspace.scan(/r/, scanOptions, results => {
+        await atom.workspace.scan(/r/, scanOptions, (results) => {
             str = results.filePath;
             for (const match of results.matches) {
                 range = Atom.Range.fromObject(match.range);
@@ -3790,18 +4043,20 @@ function testWorkspace() {
     }
 
     async function workspaceReplace() {
-        await atom.workspace.replace(/r/, "Test", ["a"], options => {});
+        await atom.workspace.replace(/r/, "Test", ["a"], (options) => {});
     }
 }
 
 // WorkspaceCenter ============================================================
 function testWorkspaceCenter() {
     // Event Subscription
-    subscription = workspaceCenter.observeTextEditors(editor => editor.id);
-    subscription = workspaceCenter.observePaneItems(item => {});
-    subscription = workspaceCenter.onDidChangeActivePaneItem(item => {});
-    subscription = workspaceCenter.onDidStopChangingActivePaneItem(item => {});
-    subscription = workspaceCenter.observeActivePaneItem(item => {});
+    subscription = workspaceCenter.observeTextEditors((editor) => editor.id);
+    subscription = workspaceCenter.observePaneItems((item) => {});
+    subscription = workspaceCenter.onDidChangeActivePaneItem((item) => {});
+    subscription = workspaceCenter.onDidStopChangingActivePaneItem(
+        (item) => {},
+    );
+    subscription = workspaceCenter.observeActivePaneItem((item) => {});
 
     // Pane Items
     objs = workspaceCenter.getPaneItems();
@@ -3821,7 +4076,7 @@ function testWorkspaceCenter() {
 }
 
 // watchPath ==================================================================
-const pathWatcherPromise = Atom.watchPath("/var/test", {}, events => {
+const pathWatcherPromise = Atom.watchPath("/var/test", {}, (events) => {
     for (const event of events) {
         str = event.path;
         str = event.action;
@@ -3846,11 +4101,18 @@ function testTextEditorElement() {
     num = textEditorElement.getScrollHeight();
 
     pixelPos = textEditorElement.pixelPositionForBufferPosition(pos);
-    pixelPos = textEditorElement.pixelPositionForScreenPosition({ row: 1, column: 2 });
+    pixelPos = textEditorElement.pixelPositionForScreenPosition({
+        row: 1,
+        column: 2,
+    });
     pixelPos = textEditorElement.pixelPositionForScreenPosition(pos);
 
-    subscription = textEditorElement.onDidChangeScrollTop((scrollTop: number) => {});
-    subscription = textEditorElement.onDidChangeScrollLeft((scrollLeft: number) => {});
+    subscription = textEditorElement.onDidChangeScrollTop(
+        (scrollTop: number) => {},
+    );
+    subscription = textEditorElement.onDidChangeScrollLeft(
+        (scrollLeft: number) => {},
+    );
     subscription = textEditorElement.onDidAttach(() => {});
     subscription = textEditorElement.onDidDetach(() => {});
 

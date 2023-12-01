@@ -14,7 +14,10 @@ declare namespace ReactDataGrid {
          * to render in the grid. For remote data, a string url, or a function
          * that returns a promise.
          */
-        dataSource: any[] | string | ((query: { pageSize: number; skip: number }) => Promise<any[]>);
+        dataSource:
+            | any[]
+            | string
+            | ((query: { pageSize: number; skip: number }) => Promise<any[]>);
 
         dataSourceCount?: number | undefined;
 
@@ -49,7 +52,10 @@ declare namespace ReactDataGrid {
          * (data, props) (so you have access to props.index for example) and
          * is expected to return a style object.
          */
-        rowStyle?: React.CSSProperties | ((data: any, props: RowProps) => React.CSSProperties) | undefined;
+        rowStyle?:
+            | React.CSSProperties
+            | ((data: any, props: RowProps) => React.CSSProperties)
+            | undefined;
 
         /**
          * Boolean - show a column menu to show/hide columns.
@@ -60,14 +66,21 @@ declare namespace ReactDataGrid {
          * If you want to enable column reordering, just specify the
          * onColumnOrderChange prop on the grid:
          */
-        onColumnOrderChange?: ((index: number, dropIndex: number) => void) | undefined;
+        onColumnOrderChange?:
+            | ((index: number, dropIndex: number) => void)
+            | undefined;
 
         /**
          * If you want to enable column resized, just specify the
          * onColumnResize prop on the grid:
          */
         onColumnResize?:
-            | ((firstCol: Column, firstSize: number, secondCol: Column, secondSize: number) => void)
+            | ((
+                  firstCol: Column,
+                  firstSize: number,
+                  secondCol: Column,
+                  secondSize: number,
+              ) => void)
             | undefined;
 
         /**
@@ -80,7 +93,9 @@ declare namespace ReactDataGrid {
          * When a column is shown/hidden, you can be notified using the
          * onColumnVisibilityChange callback prop.
          */
-        onColumnVisibilityChange?: ((column: Column, visibility: boolean) => void) | undefined;
+        onColumnVisibilityChange?:
+            | ((column: Column, visibility: boolean) => void)
+            | undefined;
 
         /**
          * The current selection.
@@ -96,7 +111,9 @@ declare namespace ReactDataGrid {
          * If you want to enable filter, just specify the
          * onFilter prop on the grid:
          */
-        onFilter?: ((column: Column, value: any, allFilterValues: any[]) => void) | undefined;
+        onFilter?:
+            | ((column: Column, value: any, allFilterValues: any[]) => void)
+            | undefined;
 
         /**
          * To apply the filter while typing.
@@ -162,7 +179,9 @@ declare namespace ReactDataGrid {
         /**
          * handle page size changes.
          */
-        onPageSizeChange?: ((pageSize: number, props: DataGridProps) => void) | undefined;
+        onPageSizeChange?:
+            | ((pageSize: number, props: DataGridProps) => void)
+            | undefined;
     }
 
     interface SortInfo {
@@ -192,7 +211,9 @@ declare namespace ReactDataGrid {
           *   data - the corresponding data object for the current row
               cellProps - an object with props for the current cell
           */
-        render?: ((value: any, data: any, cellProps: CellProps) => any) | undefined;
+        render?:
+            | ((value: any, data: any, cellProps: CellProps) => any)
+            | undefined;
 
         /**
          * Object - if you want cells in this column to be have a custom
@@ -301,6 +322,5 @@ declare namespace ReactDataGrid {
         };
     }
 
-    export class DataGrid extends React.Component<DataGridProps> {
-    }
+    export class DataGrid extends React.Component<DataGridProps> {}
 }

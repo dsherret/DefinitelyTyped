@@ -20,7 +20,11 @@ diff({}, { Hello: "World" }, options);
 
 diffString({}, { Hello: "World" });
 diffString({}, { Hello: "World" }, {});
-diffString({}, { Hello: "World" }, {
-    ...options,
-    color: true,
-});
+diffString(
+    {},
+    { Hello: "World" },
+    {
+        ...options,
+        color: true,
+    },
+);

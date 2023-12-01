@@ -3,7 +3,10 @@
 cast.framework.VERSION === "1.0.06";
 cast.framework.setLoggerLevel(cast.framework.LoggerLevel.DEBUG);
 
-window.__onGCastApiAvailable = (available: boolean, reason: string | undefined) => {};
+window.__onGCastApiAvailable = (
+    available: boolean,
+    reason: string | undefined,
+) => {};
 
 const context = cast.framework.CastContext.getInstance();
 context.getCastState() === cast.framework.CastState.CONNECTED;
@@ -18,13 +21,13 @@ context.setOptions({
 
 context.addEventListener(
     cast.framework.CastContextEventType.CAST_STATE_CHANGED,
-    event => {
+    (event) => {
         const { castState } = event;
     },
 );
 context.addEventListener(
     cast.framework.CastContextEventType.SESSION_STATE_CHANGED,
-    event => {
+    (event) => {
         const { sessionState } = event;
     },
 );
@@ -37,10 +40,11 @@ context.removeEventListener(
     handleSessionStateChange,
 );
 
-context.requestSession().then(err => {
+context.requestSession().then((err) => {
     if (err === chrome.cast.ErrorCode.CHANNEL_ERROR) return;
 
-    const session = cast.framework.CastContext.getInstance().getCurrentSession();
+    const session =
+        cast.framework.CastContext.getInstance().getCurrentSession();
     if (!session) return;
 
     const handleError = (err?: chrome.cast.ErrorCode) => {};
@@ -50,8 +54,8 @@ context.requestSession().then(err => {
     session.getCastDevice().friendlyName;
     session.getApplicationMetadata().applicationId;
     session.getApplicationStatus() === "";
-    session.getActiveInputState()
-        === cast.framework.ActiveInputState.ACTIVE_INPUT_STATE_UNKNOWN;
+    session.getActiveInputState() ===
+        cast.framework.ActiveInputState.ACTIVE_INPUT_STATE_UNKNOWN;
     session.endSession(false);
     session.setVolume(0.5).then(handleError);
     session.getVolume() === 0.5;
@@ -101,15 +105,21 @@ context.requestSession().then(err => {
 
 const player = new cast.framework.RemotePlayer();
 {
-    const bool: boolean = player.isConnected
-        && player.isMediaLoaded
-        && player.canControlVolume
-        && player.isPaused
-        && player.isMuted
-        && player.canPause
-        && player.canSeek;
-    const sum: number = player.duration + player.currentTime + player.volumeLevel;
-    const str: string = player.displayName + player.statusText + player.title + player.displayName;
+    const bool: boolean =
+        player.isConnected &&
+        player.isMediaLoaded &&
+        player.canControlVolume &&
+        player.isPaused &&
+        player.isMuted &&
+        player.canPause &&
+        player.canSeek;
+    const sum: number =
+        player.duration + player.currentTime + player.volumeLevel;
+    const str: string =
+        player.displayName +
+        player.statusText +
+        player.title +
+        player.displayName;
 }
 player.mediaInfo && player.mediaInfo.contentId;
 player.imageUrl && player.imageUrl === "";

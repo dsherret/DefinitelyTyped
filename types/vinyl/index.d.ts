@@ -47,12 +47,12 @@ interface ConstructorOptions {
 }
 
 interface FileConstructor {
-    new(options: ConstructorOptions & { contents: null }): File.NullFile;
-    new(options: ConstructorOptions & { contents: Buffer }): File.BufferFile;
-    new(
+    new (options: ConstructorOptions & { contents: null }): File.NullFile;
+    new (options: ConstructorOptions & { contents: Buffer }): File.BufferFile;
+    new (
         options: ConstructorOptions & { contents: NodeJS.ReadableStream },
     ): File.StreamFile;
-    new(options?: ConstructorOptions): File;
+    new (options?: ConstructorOptions): File;
 
     /**
      * Checks if a given object is a vinyl file.
@@ -304,7 +304,11 @@ interface File {
      * If `file.contents` is a `Buffer` and `options.contents` is `false`, the `Buffer` reference
      * will be reused instead of copied.
      */
-    clone(opts?: { contents?: boolean | undefined; deep?: boolean | undefined } | boolean): this;
+    clone(
+        opts?:
+            | { contents?: boolean | undefined; deep?: boolean | undefined }
+            | boolean,
+    ): this;
 
     /**
      * Returns a formatted-string interpretation of the Vinyl object.

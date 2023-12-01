@@ -89,12 +89,7 @@ declare namespace Intercom_ {
         image_url: string;
     }
 
-    type IntercomCustomAttribute =
-        | string
-        | number
-        | boolean
-        | null
-        | undefined;
+    type IntercomCustomAttribute = string | number | boolean | null | undefined;
 }
 
 declare var Intercom: Intercom_.IntercomStatic;

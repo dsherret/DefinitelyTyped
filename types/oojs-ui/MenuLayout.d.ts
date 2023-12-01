@@ -162,7 +162,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): MenuLayout;
+            new (config?: ConfigOptions): MenuLayout;
             prototype: Prototype;
             static: Static;
             super: Layout.Constructor;

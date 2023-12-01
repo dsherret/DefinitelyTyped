@@ -20,7 +20,8 @@ const packageVersion: string = testPackage.get("version");
  * Test if unknown item is cast to any
  */
 const unknownItem: number = testPackage.get("unknown");
-const deps: Record<string, string> | undefined = testPackage.get("dependencies");
+const deps: Record<string, string> | undefined =
+    testPackage.get("dependencies");
 
 testPackage
     .set("version", "1.5.2")

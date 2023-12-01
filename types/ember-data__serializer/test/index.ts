@@ -1,7 +1,11 @@
 import Model from "@ember-data/model";
 import Serializer from "@ember-data/serializer";
 import Store from "@ember-data/store";
-import DS, { AttributeSchema, ModelSchema, RelationshipSchema } from "ember-data";
+import DS, {
+    AttributeSchema,
+    ModelSchema,
+    RelationshipSchema,
+} from "ember-data";
 import ModelRegistry from "ember-data/types/registries/model";
 
 class FakeModelSchema implements ModelSchema {
@@ -9,13 +13,24 @@ class FakeModelSchema implements ModelSchema {
     fields = new Map();
     attributes = new Map();
     relationshipsByName = new Map();
-    eachAttribute<T>(callback: (this: T, key: string, attribute: AttributeSchema) => void, binding?: T): void {}
+    eachAttribute<T>(
+        callback: (this: T, key: string, attribute: AttributeSchema) => void,
+        binding?: T,
+    ): void {}
     eachRelationship<T>(
-        callback: (this: T, key: string, relationship: RelationshipSchema) => void,
+        callback: (
+            this: T,
+            key: string,
+            relationship: RelationshipSchema,
+        ) => void,
         binding?: T,
     ): void {}
     eachTransformedAttribute<T>(
-        callback: (this: T, key: string, relationship: RelationshipSchema) => void,
+        callback: (
+            this: T,
+            key: string,
+            relationship: RelationshipSchema,
+        ) => void,
         binding?: T,
     ): void {}
 }

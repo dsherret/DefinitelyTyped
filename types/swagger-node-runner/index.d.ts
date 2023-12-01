@@ -127,7 +127,10 @@ export type SwaggerToolsSecurityHandler = (
     request: any,
     securityDefinition: any,
     scopes: any,
-    callback: (err?: Error | SwaggerToolsSecurityHandlerCallbackError, result?: any) => void,
+    callback: (
+        err?: Error | SwaggerToolsSecurityHandlerCallbackError,
+        result?: any,
+    ) => void,
 ) => void;
 
 /**
@@ -166,7 +169,10 @@ export interface Runner extends EventEmitter {
          *
          * @see {@link https://github.com/apigee-127/swagger-tools/blob/master/middleware/swagger-metadata.js|Git Source}
          */
-        swaggerMetadata(rlOrSO: any, apiDeclarations: any[]): SwaggerToolsMiddleware;
+        swaggerMetadata(
+            rlOrSO: any,
+            apiDeclarations: any[],
+        ): SwaggerToolsMiddleware;
         /**
          *  Middleware for using Swagger information to route requests to handlers.
          * @param [] options - The configuration options
@@ -181,7 +187,9 @@ export interface Runner extends EventEmitter {
          *
          * @see {@link https://github.com/apigee-127/swagger-tools/blob/master/middleware/swagger-security.js|Github Source}
          */
-        swaggerSecurity(options?: SwaggerSecurityHandlers): SwaggerToolsMiddleware;
+        swaggerSecurity(
+            options?: SwaggerSecurityHandlers,
+        ): SwaggerToolsMiddleware;
         /**
          * Middleware for serving the Swagger documents and Swagger UI.
          *
@@ -191,7 +199,11 @@ export interface Runner extends EventEmitter {
          *
          * @see {@link https://github.com/apigee-127/swagger-tools/blob/master/middleware/swagger-ui.js|Github Source}
          */
-        swaggerUi(rlOrSO: any, apiDeclarations: any[], options?: any): SwaggerToolsMiddleware;
+        swaggerUi(
+            rlOrSO: any,
+            apiDeclarations: any[],
+            options?: any,
+        ): SwaggerToolsMiddleware;
         /**
          * Middleware for using Swagger information to validate API requests/responses.type
          * @param [] options - The configuration options
@@ -226,7 +238,11 @@ export interface Middleware {
 
 /** Connect/Express specific Middleware */
 export interface ConnectMiddleware extends Middleware {
-    middleware(): (req: Express.Request, res: Express.Response, next: NextFunction) => void;
+    middleware(): (
+        req: Express.Request,
+        res: Express.Response,
+        next: NextFunction,
+    ) => void;
     /** Register this Middleware with `app`  */
     register(app: Express.Application): void;
 }
@@ -241,7 +257,11 @@ export interface ExpressMiddleware extends ConnectMiddleware {}
 /** Sails specific Middleware */
 export interface SailsMiddleware extends Middleware {
     /** Express style middleware */
-    chain(): (req: Express.Request, res: Express.Response, next: NextFunction) => void;
+    chain(): (
+        req: Express.Request,
+        res: Express.Response,
+        next: NextFunction,
+    ) => void;
 }
 
 /** Hapi specific Middleware */
@@ -293,4 +313,7 @@ export interface RestifyMiddleware extends Middleware {
  * @param config - Configuration for `Runner`
  * @param runner - This Callback is called when the `Runner` has been instantiated
  */
-export function create(config: Config, cb: (err: Error | undefined, runner: Runner) => void): void;
+export function create(
+    config: Config,
+    cb: (err: Error | undefined, runner: Runner) => void,
+): void;

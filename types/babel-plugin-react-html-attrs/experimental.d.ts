@@ -72,14 +72,19 @@ declare module "." {
         /**
          * Defines the order in which the `SuspenseList` children should be revealed.
          */
-        revealOrder?: Exclude<SuspenseListRevealOrder, DirectionalSuspenseListProps["revealOrder"]>;
+        revealOrder?: Exclude<
+            SuspenseListRevealOrder,
+            DirectionalSuspenseListProps["revealOrder"]
+        >;
         /**
          * The tail property is invalid when not using the `forwards` or `backwards` reveal orders.
          */
         tail?: never;
     }
 
-    export type SuspenseListProps = DirectionalSuspenseListProps | NonDirectionalSuspenseListProps;
+    export type SuspenseListProps =
+        | DirectionalSuspenseListProps
+        | NonDirectionalSuspenseListProps;
 
     /**
      * `SuspenseList` helps coordinate many components that can suspend by orchestrating the order
@@ -143,7 +148,10 @@ declare module "." {
      *
      * @see https://reactjs.org/docs/concurrent-mode-reference.html#usedeferredvalue
      */
-    export function useDeferredValue<T>(value: T, config?: TimeoutConfig | null): T;
+    export function useDeferredValue<T>(
+        value: T,
+        config?: TimeoutConfig | null,
+    ): T;
 
     /**
      * Allows components to avoid undesirable loading states by waiting for content to load
@@ -162,5 +170,7 @@ declare module "." {
      *
      * @see https://reactjs.org/docs/concurrent-mode-reference.html#usetransition
      */
-    export function useTransition(config?: SuspenseConfig | null): [TransitionStartFunction, boolean];
+    export function useTransition(
+        config?: SuspenseConfig | null,
+    ): [TransitionStartFunction, boolean];
 }

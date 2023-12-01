@@ -40,9 +40,9 @@ export interface IdyllDocumentProps {
      */
     errorComponent?:
         | ElementType<{
-            className?: string | undefined;
-            children: Error["message"] | null;
-        }>
+              className?: string | undefined;
+              children: Error["message"] | null;
+          }>
         | undefined;
     /**
      * Compiler option for Idyll compiler when compiling markup

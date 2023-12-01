@@ -124,35 +124,34 @@ export type WithEasing<T> = T & {
 export type KeyframeValue =
     | number
     | {
-        /**
-         * A number between 0 and 255
-         */
-        brightness: number;
-    }
+          /**
+           * A number between 0 and 255
+           */
+          brightness: number;
+      }
     | {
-        /** A number between 0% and 100% */
-        intensity: number;
-    }
+          /** A number between 0% and 100% */
+          intensity: number;
+      }
     | null
     | false
     | WithEasing<{
-        /** A step in degrees from the previous cuePoint position. */ step: number;
-    }>
+          /** A step in degrees from the previous cuePoint position. */ step: number;
+      }>
     | WithEasing<{
-        /** The servo position in degrees. (Not relative to the previous cuePoint position) */ degrees: number;
-    }>
+          /** The servo position in degrees. (Not relative to the previous cuePoint position) */ degrees: number;
+      }>
     | WithEasing<{
-        /** An index from this keyFrames array from which we copy the calculated or explicitly set degrees value. */ copyDegrees:
-            number;
-    }>
+          /** An index from this keyFrames array from which we copy the calculated or explicitly set degrees value. */ copyDegrees: number;
+      }>
     | WithEasing<{
-        /** An index from this keyFrames array from which we copy all of the properties. */ copyFrame: number;
-    }>
+          /** An index from this keyFrames array from which we copy all of the properties. */ copyFrame: number;
+      }>
     | WithEasing<{
-        /**  A two or three tuple defining a coordinate in 2d or 3d space. */ position:
-            | [number, number]
-            | [number, number, number];
-    }>;
+          /**  A two or three tuple defining a coordinate in 2d or 3d space. */ position:
+              | [number, number]
+              | [number, number, number];
+      }>;
 
 export interface AnimationSegment {
     /**
@@ -284,7 +283,13 @@ export interface BoardLogEvent {
     message: string;
 }
 
-export type SupportedBarometers = "BMP180" | "BMP280" | "BME280" | "MPL115A2" | "MPL3115A2" | "MS5611";
+export type SupportedBarometers =
+    | "BMP180"
+    | "BMP280"
+    | "BME280"
+    | "MPL115A2"
+    | "MPL3115A2"
+    | "MS5611";
 
 export interface BarometerGenericArgs {
     controller: SupportedBarometers;
@@ -321,20 +326,31 @@ export class Board {
 
     on(event: "close" | "connect" | "exit" | "ready", cb: () => void): this;
     on(event: "error", cb: (error: Error) => void): this;
-    on(event: "info" | "message" | "warn" | "fail", cb: (event: BoardLogEvent) => void): this;
+    on(
+        event: "info" | "message" | "warn" | "fail",
+        cb: (event: BoardLogEvent) => void,
+    ): this;
     pinMode(pin: number | string, mode: PinMode): void;
     analogWrite(pin: number | string, value: number): void;
     analogRead(pin: number | string, cb: (item: number) => void): void;
     digitalWrite(pin: number | string, value: number): void;
     digitalRead(pin: number | string, cb: (item: number) => void): void;
     servoWrite(pin: number | string, angle: number): void;
-    shiftOut(dataPin: Pin, clockPin: Pin, isBigEndian: boolean, value: number): void;
+    shiftOut(
+        dataPin: Pin,
+        clockPin: Pin,
+        isBigEndian: boolean,
+        value: number,
+    ): void;
     wait(ms: number, cb: () => void): void;
     loop(ms: number, cb: () => void): void;
     samplingInterval(ms: number): void;
 }
 
-export class Boards<BoardsIDs extends BoardIdsListType, BoardsConfig extends BoardConfigListType> {
+export class Boards<
+    BoardsIDs extends BoardIdsListType,
+    BoardsConfig extends BoardConfigListType,
+> {
     /**
      * This class allows managing multiple boards at the same time.
      *
@@ -372,7 +388,11 @@ export class Boards<BoardsIDs extends BoardIdsListType, BoardsConfig extends Boa
      */
     on(
         event: "ready",
-        cb: (boards: IDBoardMap<BoardsIDs[number]> | IDBoardMap<BoardsConfig[number]["id"]>) => void,
+        cb: (
+            boards:
+                | IDBoardMap<BoardsIDs[number]>
+                | IDBoardMap<BoardsConfig[number]["id"]>,
+        ) => void,
     ): this;
 
     /** This function allows to iterate on all boards */
@@ -432,7 +452,9 @@ export interface CollectionPinOptions {
 export class Collection<Base = {}> {
     static installMethodForwarding(target: object, source: object): object;
 
-    constructor(options: Array<number | string | object> | CollectionPinOptions);
+    constructor(
+        options: Array<number | string | object> | CollectionPinOptions,
+    );
 
     type?: Base | undefined;
 
@@ -481,7 +503,11 @@ export interface ESCOption {
     pwmRange?: number[] | undefined;
     address?: string | undefined;
     controller?: "PCA9685" | "DEFAULT" | undefined;
-    device?: "FORWARD" | "FORWARD_REVERSE" | "FORWARD_REVERSE_BRAKE" | undefined;
+    device?:
+        | "FORWARD"
+        | "FORWARD_REVERSE"
+        | "FORWARD_REVERSE_BRAKE"
+        | undefined;
     neutral?: number | undefined;
 }
 
@@ -508,11 +534,35 @@ export class ESCs extends Collection<ESC> {
 export namespace Fn {
     function constrain(value: number, lower: number, upper: number): number;
     function inRange(value: number, lower: number, upper: number): boolean;
-    function map(value: number, fromLow: number, fromHigh: number, toLow: number, toHigh: number): number;
-    function fmap(value: number, fromLow: number, fromHigh: number, toLow: number, toHigh: number): number;
+    function map(
+        value: number,
+        fromLow: number,
+        fromHigh: number,
+        toLow: number,
+        toHigh: number,
+    ): number;
+    function fmap(
+        value: number,
+        fromLow: number,
+        fromHigh: number,
+        toLow: number,
+        toHigh: number,
+    ): number;
     function range(lower: number, upper: number, tick: number): number[];
-    function scale(value: number, fromLow: number, fromHigh: number, toLow: number, toHigh: number): number;
-    function fscale(value: number, fromLow: number, fromHigh: number, toLow: number, toHigh: number): number;
+    function scale(
+        value: number,
+        fromLow: number,
+        fromHigh: number,
+        toLow: number,
+        toHigh: number,
+    ): number;
+    function fscale(
+        value: number,
+        fromLow: number,
+        fromHigh: number,
+        toLow: number,
+        toHigh: number,
+    ): number;
     function sum(values: number[]): number;
     function toFixed(number: number, digits: number): string;
     function uid(): string;
@@ -542,7 +592,9 @@ export interface GyroMPU6050Option extends GyroGeneralOption {
 }
 
 export class Gyro {
-    constructor(option: GyroGeneralOption | GyroAnalogOption | GyroMPU6050Option);
+    constructor(
+        option: GyroGeneralOption | GyroAnalogOption | GyroMPU6050Option,
+    );
 
     id: string;
     pins: string[];
@@ -631,7 +683,10 @@ export class ReflectanceArray {
     calibrate(): void;
     calibrateUntil(predicate: () => void): void;
     loadCalibration(option: LoadCalibrationOption): void;
-    on(event: "data" | "calibratedData" | "line", cb: (data: unknown) => void): this;
+    on(
+        event: "data" | "calibratedData" | "line",
+        cb: (data: unknown) => void,
+    ): this;
 }
 
 export interface JoystickOption {

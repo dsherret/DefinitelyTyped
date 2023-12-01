@@ -1,6 +1,8 @@
 /// <reference types="node" />
 
-declare abstract class ConsumableStream<T> implements AsyncIterator<T>, AsyncIterable<T> {
+declare abstract class ConsumableStream<T>
+    implements AsyncIterator<T>, AsyncIterable<T>
+{
     next(timeout?: number): Promise<IteratorResult<T>>;
     once(timeout?: number): Promise<T>;
     abstract createConsumer(timeout?: number): ConsumableStream.Consumer<T>;

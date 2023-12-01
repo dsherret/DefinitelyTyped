@@ -25,7 +25,7 @@ gif.addFrame(canvasElement, { delay: 200 }); // $ExpectType void
 declare const ctx: CanvasRenderingContext2D;
 gif.addFrame(ctx, { copy: true }); // $ExpectType void
 
-gif.on("finished", blob => {
+gif.on("finished", (blob) => {
     window.open(URL.createObjectURL(blob));
 });
 

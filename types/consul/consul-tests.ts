@@ -7,7 +7,8 @@ let AgentCheckStatic: Consul.Agent.CheckStatic = ConsulStatic.Agent.Check;
 let AgentServiceStatic: Consul.Agent.ServiceStatic = ConsulStatic.Agent.Service;
 let CatalogStatic: Consul.CatalogStatic = ConsulStatic.Catalog;
 let CatalogNodeStatic: Consul.Catalog.NodeStatic = ConsulStatic.Catalog.Node;
-let CatalogServiceStatic: Consul.Catalog.ServiceStatic = ConsulStatic.Catalog.Service;
+let CatalogServiceStatic: Consul.Catalog.ServiceStatic =
+    ConsulStatic.Catalog.Service;
 let EventStatic: Consul.EventStatic = ConsulStatic.Event;
 let HealthStatic: Consul.HealthStatic = ConsulStatic.Health;
 let KvStatic: Consul.KvStatic = ConsulStatic.Kv;

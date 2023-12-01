@@ -31,7 +31,11 @@ declare class PolygonLookup {
      * intersecting polygons as a GeoJSON `FeatureCollection`.
      */
     search(x: number, y: number): Feature<Polygon> | undefined;
-    search(x: number, y: number, limit: number): FeatureCollection<Polygon> | undefined;
+    search(
+        x: number,
+        y: number,
+        limit: number,
+    ): FeatureCollection<Polygon> | undefined;
 
     /**
      * Build a spatial index for a set of polygons, and store both the polygons and

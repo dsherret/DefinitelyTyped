@@ -10,7 +10,8 @@ export class Component extends React.Component {
         return (
             <MathJax.Provider>
                 <div>
-                    This is an inline math formula: <MathJax.Node inline formula={"a = b"} />
+                    This is an inline math formula:{" "}
+                    <MathJax.Node inline formula={"a = b"} />
                     And a block one:
                     <MathJax.Node formula={tex} />
                 </div>

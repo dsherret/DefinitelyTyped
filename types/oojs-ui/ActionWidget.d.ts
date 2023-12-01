@@ -20,7 +20,9 @@ declare namespace OO.ui {
          */
         type Flag = mixin.ButtonElement.Flag | "safe" | "back" | "close";
 
-        interface ConfigOptions extends ButtonWidget.ConfigOptions, mixin.PendingElement.ConfigOptions {
+        interface ConfigOptions
+            extends ButtonWidget.ConfigOptions,
+                mixin.PendingElement.ConfigOptions {
             /** Symbolic name of the action (e.g., ‘continue’ or ‘cancel’). */
             action?: string;
 
@@ -39,9 +41,13 @@ declare namespace OO.ui {
 
         type Static = ButtonWidget.Static;
 
-        interface Props extends ButtonWidget.Props, mixin.PendingElement.Props {}
+        interface Props
+            extends ButtonWidget.Props,
+                mixin.PendingElement.Props {}
 
-        interface Prototype extends ButtonWidget.Prototype, mixin.PendingElement.Prototype {
+        interface Prototype
+            extends ButtonWidget.Prototype,
+                mixin.PendingElement.Prototype {
             /**
              * Check if the action is configured to be available in the specified `mode`.
              *
@@ -73,7 +79,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): ActionWidget;
+            new (config?: ConfigOptions): ActionWidget;
             prototype: Prototype;
             static: Static;
             super: ButtonWidget.Constructor;

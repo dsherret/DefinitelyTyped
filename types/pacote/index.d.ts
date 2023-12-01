@@ -52,10 +52,12 @@ export interface Person {
  */
 export interface CommonMetadata {
     author?: Person | undefined;
-    bugs?: {
-        url?: string | undefined;
-        email?: string | undefined;
-    } | undefined;
+    bugs?:
+        | {
+              url?: string | undefined;
+              email?: string | undefined;
+          }
+        | undefined;
     contributors?: Person[] | undefined;
     homepage?: string | undefined;
     keywords?: string[] | undefined;
@@ -63,11 +65,13 @@ export interface CommonMetadata {
     maintainers: Person[];
     readme?: string | undefined;
     readmeFilename?: string | undefined;
-    repository?: {
-        type?: string | undefined;
-        url?: string | undefined;
-        directory?: string | undefined;
-    } | undefined;
+    repository?:
+        | {
+              type?: string | undefined;
+              url?: string | undefined;
+              directory?: string | undefined;
+          }
+        | undefined;
     users?: Record<string, boolean> | undefined;
 }
 
@@ -295,7 +299,11 @@ export function resolve(spec: string, opts?: Options): Promise<string>;
  * Extract a package's tarball into a destination folder. Returns a promise that
  * resolves to the `{from,integrity,resolved}` of the extracted package.
  */
-export function extract(spec: string, dest?: string, opts?: Options): Promise<FetchResult>;
+export function extract(
+    spec: string,
+    dest?: string,
+    opts?: Options,
+): Promise<FetchResult>;
 
 /**
  * Fetch (or simulate) a package's manifest (basically, the `package.json` file,
@@ -305,25 +313,41 @@ export function manifest(
     spec: string,
     opts: Options & ({ before: Date } | { fullMetadata: true }),
 ): Promise<Manifest & ManifestResult>;
-export function manifest(spec: string, opts?: Options): Promise<AbbreviatedManifest & ManifestResult>;
+export function manifest(
+    spec: string,
+    opts?: Options,
+): Promise<AbbreviatedManifest & ManifestResult>;
 
 /**
  * Fetch (or simulate) a package's packument (basically, the top-level package
  * document listing all the manifests that the registry returns).
  */
-export function packument(spec: string, opts: Options & { fullMetadata: true }): Promise<Packument & PackumentResult>;
-export function packument(spec: string, opts?: Options): Promise<AbbreviatedPackument & PackumentResult>;
+export function packument(
+    spec: string,
+    opts: Options & { fullMetadata: true },
+): Promise<Packument & PackumentResult>;
+export function packument(
+    spec: string,
+    opts?: Options,
+): Promise<AbbreviatedPackument & PackumentResult>;
 
 /**
  * Get a package tarball data as a buffer in memory.
  */
-export function tarball(spec: string, opts?: Options): Promise<Buffer & FetchResult>;
+export function tarball(
+    spec: string,
+    opts?: Options,
+): Promise<Buffer & FetchResult>;
 
 export namespace tarball {
     /**
      * Save a package tarball data to a file on disk.
      */
-    function file(spec: string, dest: string, opts?: Options): Promise<FetchResult>;
+    function file(
+        spec: string,
+        dest: string,
+        opts?: Options,
+    ): Promise<FetchResult>;
 
     /**
      * Fetch a tarball and make the stream available to the streamHandler
@@ -340,5 +364,9 @@ export namespace tarball {
      * retries requests in some scenarios, such as cache corruption or retriable
      * network failures.
      */
-    function stream<T>(spec: string, streamHandler: (stream: Transform) => Promise<T>, opts?: Options): Promise<T>;
+    function stream<T>(
+        spec: string,
+        streamHandler: (stream: Transform) => Promise<T>,
+        opts?: Options,
+    ): Promise<T>;
 }

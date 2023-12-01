@@ -10,20 +10,29 @@ hyperdeck
         // buffered requests will be rejected.
         hyperdeck
             .makeRequest<Hyperdeck.DeviceInfo>("device info")
-            .then(response => {
+            .then((response) => {
                 console.log("Got response with code", response.code);
-                console.log("Hyperdeck unique id:", response.params["unique id"]);
+                console.log(
+                    "Hyperdeck unique id:",
+                    response.params["unique id"],
+                );
             })
-            .catch(error => {
+            .catch((error) => {
                 if (!error) {
-                    console.error("The request failed because the hyperdeck connection was lost.");
+                    console.error(
+                        "The request failed because the hyperdeck connection was lost.",
+                    );
                 } else {
-                    console.error(`The hyperdeck returned an error with status code ${error.code}.`);
+                    console.error(
+                        `The hyperdeck returned an error with status code ${error.code}.`,
+                    );
                 }
             });
 
-        hyperdeck.getNotifier().on("asynchronousEvent", response => {
-            console.log(`Got an asynchronous event with code ${response.code}.`);
+        hyperdeck.getNotifier().on("asynchronousEvent", (response) => {
+            console.log(
+                `Got an asynchronous event with code ${response.code}.`,
+            );
 
             // @ts-expect-error invalid property
             response.asdasdasf;

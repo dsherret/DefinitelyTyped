@@ -161,6 +161,10 @@ declare module "meteor/msavin:sjobs" {
          * Allows you to clear all or some of the jobs in your database. It supports State for selecting a job state,
          *  You can add the name arguments to specify a specific queue. You can also call an optional callback.
          */
-        static clear: (state: State, name?: string, cb?: (...args: any) => any) => number;
+        static clear: (
+            state: State,
+            name?: string,
+            cb?: (...args: any) => any,
+        ) => number;
     }
 }

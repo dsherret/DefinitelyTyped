@@ -15,7 +15,9 @@ export interface NormalizationOperation {
     };
 }
 
-export type NormalizationHandle = NormalizationScalarHandle | NormalizationLinkedHandle;
+export type NormalizationHandle =
+    | NormalizationScalarHandle
+    | NormalizationLinkedHandle;
 
 export interface NormalizationLinkedHandle {
     readonly kind: string; // "LinkedHandle";
@@ -61,7 +63,10 @@ export interface NormalizationClientExtension {
     readonly selections: readonly NormalizationSelection[];
 }
 
-export type NormalizationField = NormalizationFlightField | NormalizationScalarField | NormalizationLinkedField;
+export type NormalizationField =
+    | NormalizationFlightField
+    | NormalizationScalarField
+    | NormalizationLinkedField;
 
 export interface NormalizationInlineFragment {
     readonly kind: string; // "InlineFragment";
@@ -98,7 +103,10 @@ export interface NormalizationModuleImport {
     readonly documentName: string;
     readonly fragmentPropName: string;
     readonly fragmentName: string;
-    readonly componentModuleProvider?: () => unknown | Promise<unknown> | JSResourceReference<unknown>;
+    readonly componentModuleProvider?: () =>
+        | unknown
+        | Promise<unknown>
+        | JSResourceReference<unknown>;
     readonly operationModuleProvider?: () =>
         | NormalizationRootNode
         | Promise<NormalizationRootNode>
@@ -218,4 +226,6 @@ export type NormalizationSelectableNode =
     | NormalizationSplitOperation
     | NormalizationStream;
 
-export type NormalizationRootNode = ConcreteRequest | NormalizationSplitOperation;
+export type NormalizationRootNode =
+    | ConcreteRequest
+    | NormalizationSplitOperation;

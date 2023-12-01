@@ -5,7 +5,17 @@ declare namespace BackendAPI {
     type SortIndicatorType = "N" | "A" | "D";
     type DimensionType = "D" | "N" | "T";
     type GroupingType = "N" | "H" | "C";
-    type FieldAttributesType = "U" | "A" | "I" | "R" | "F" | "M" | "D" | "T" | "TS" | "IV";
+    type FieldAttributesType =
+        | "U"
+        | "A"
+        | "I"
+        | "R"
+        | "F"
+        | "M"
+        | "D"
+        | "T"
+        | "TS"
+        | "IV";
     type PatchType = "Add" | "Remove" | "Replace";
 
     interface ICharRange {
@@ -716,7 +726,11 @@ declare namespace BackendAPI {
          * @param [qAll] - Optional. If set to true, qRow and qCol are ignored and all cells are collapsed.
          * @return - A promise of a Qlik engine reply.
          */
-        collapseLeft(qRow: number, qCol: number, qAll?: boolean): ng.IPromise<any>;
+        collapseLeft(
+            qRow: number,
+            qCol: number,
+            qAll?: boolean,
+        ): ng.IPromise<any>;
 
         /**
          * Collapse the top dimensions of a pivot table. Only works for hypercubes with
@@ -726,7 +740,11 @@ declare namespace BackendAPI {
          * @param [qAll] - Optional. If set to true, qRow and qCol are ignored and all cells are collapsed.
          * @return - A promise of a Qlik engine reply.
          */
-        collapseTop(qRow: number, qCol: number, qAll?: boolean): ng.IPromise<any>;
+        collapseTop(
+            qRow: number,
+            qCol: number,
+            qAll?: boolean,
+        ): ng.IPromise<any>;
 
         /**
          * Loops through data rows for this object. Only rows that are available client side will be used.
@@ -745,7 +763,11 @@ declare namespace BackendAPI {
          * @param [qAll] - Optional. If set to true, qRow and qCol are ignored and all cells are collapsed.
          * @return - A promise of a Qlik engine reply.
          */
-        expandLeft(qRow: number, qCol: number, qAll?: boolean): ng.IPromise<any>;
+        expandLeft(
+            qRow: number,
+            qCol: number,
+            qAll?: boolean,
+        ): ng.IPromise<any>;
 
         /**
          * Expands the top dimensions of a pivot table. Only works for hypercubes with
@@ -815,7 +837,11 @@ declare namespace BackendAPI {
          *        # ST to reduce the data of a stacked pivot table.
          * @return - A promise of reduced data pages.
          */
-        getReducedData(qPages: INxPage[], qZoomFactor: number, qReductionMode: string): ng.IPromise<any>;
+        getReducedData(
+            qPages: INxPage[],
+            qZoomFactor: number,
+            qReductionMode: string,
+        ): ng.IPromise<any>;
 
         /**
          * Get total number of data rows for this object.
@@ -829,7 +855,10 @@ declare namespace BackendAPI {
          * @param qMaxNbrCells - Maximum number of cells at outer level.
          * @return - A promise of stack data pages.
          */
-        getStackedData(qPages: INxPage[], qMaxNbrCells: number): ng.IPromise<any>;
+        getStackedData(
+            qPages: INxPage[],
+            qMaxNbrCells: number,
+        ): ng.IPromise<any>;
 
         /**
          * Find out if there are unconfirmed selections for this object.
@@ -863,7 +892,11 @@ declare namespace BackendAPI {
          * @param qToggleMode - If true, values in the field are selected in addition to any previously selected items.
          * If false, values in the field are selected while previously selected items are deselected.
          */
-        selectValues(qDimNo: number, qValues: any[], qToggleMode: boolean): void;
+        selectValues(
+            qDimNo: number,
+            qValues: any[],
+            qToggleMode: boolean,
+        ): void;
 
         /**
          * Set properties for this object.
@@ -975,7 +1008,11 @@ declare namespace RootAPI {
          * @param [body] - Optional. Body of the post.
          * @return - A promise of a Qlik engine reply.
          */
-        callRepository(path: string, method?: string, body?: string): ng.IPromise<any>;
+        callRepository(
+            path: string,
+            method?: string,
+            body?: string,
+        ): ng.IPromise<any>;
 
         /**
          * Gets a reference to the current app. Use the currApp method in an extension to get a reference to the app currently displayed.
@@ -1079,7 +1116,10 @@ declare namespace RootAPI {
          * @param [config] - Additional configuration parameters.
          * @return - App JavaScript object with app methods.
          */
-        sessionAppFromApp(appId: string, config?: ISessionAppConfig): AppAPI.IApp;
+        sessionAppFromApp(
+            appId: string,
+            config?: ISessionAppConfig,
+        ): AppAPI.IApp;
 
         /**
          * Sets a specific language for the Qlik Sense session.
@@ -1197,7 +1237,11 @@ declare namespace AppAPI {
          *                    empty but that eventually will contain data.
          *                    The table object will be updated when selection state changes.
          */
-        createTable(dimensions: string[] | any[], measures: string[] | any[], options?: any): TableAPI.IQTable;
+        createTable(
+            dimensions: string[] | any[],
+            measures: string[] | any[],
+            options?: any,
+        ): TableAPI.IQTable;
 
         /**
          * Destroys a Qlik Sense session object created with the createGenericObject
@@ -1219,7 +1263,11 @@ declare namespace AppAPI {
          * @param [qDebug] - Optional. Set to true if debug breakpoints are honored. Execution of the script will be in debug mode.
          * @return - A promise of a Qlik engine reply.
          */
-        doReload(qMode?: string, qPartial?: boolean, qDebug?: boolean): ng.IPromise<any>;
+        doReload(
+            qMode?: string,
+            qPartial?: boolean,
+            qDebug?: boolean,
+        ): ng.IPromise<any>;
 
         /**
          * Saves a Qlik Sense app, including all objects and data in the data model.
@@ -1304,7 +1352,11 @@ declare namespace AppAPI {
          *                           Introduced in version 3.0.
          * @return - A promise of an object model.
          */
-        getObject(id: string, elem?: any | string, options?: any): ng.IPromise<any>;
+        getObject(
+            id: string,
+            elem?: any | string,
+            options?: any,
+        ): ng.IPromise<any>;
 
         /**
          * Gets properties for a Qlik Sense object.
@@ -1374,7 +1426,12 @@ declare namespace AppAPI {
          * @param [callback] - Optional. Callback method.
          * @return - A promise of a Qlik engine reply.
          */
-        searchAssociations(qTerms: any[], qPage: any, qOptions: any, callback?: any): ng.IPromise<any>;
+        searchAssociations(
+            qTerms: any[],
+            qPage: any,
+            qOptions: any,
+            callback?: any,
+        ): ng.IPromise<any>;
 
         /**
          * Searches for one or more terms in the values of a Qlik Sense app.
@@ -1405,7 +1462,12 @@ declare namespace AppAPI {
          * @param [callback] - Optional. Callback method.
          * @return - A promise of a Qlik engine reply.
          */
-        searchResults(qTerms: any[], qPage: any, qOptions?: any, callback?: any): ng.IPromise<any>;
+        searchResults(
+            qTerms: any[],
+            qPage: any,
+            qOptions?: any,
+            callback?: any,
+        ): ng.IPromise<any>;
 
         /**
          * Returns suggestions of words from the values entered in the search. Acts as a helper for the searchAssociations method.
@@ -1416,7 +1478,11 @@ declare namespace AppAPI {
          * @param [callback] - Optional. Callback method.
          * @return - A promise of a Qlik engine reply.
          */
-        searchSuggest(qTerms: any[], qOptions?: any, callback?: any): ng.IPromise<any>;
+        searchSuggest(
+            qTerms: any[],
+            qOptions?: any,
+            callback?: any,
+        ): ng.IPromise<any>;
 
         /**
          * Makes a selection based on searchAssociation results.
@@ -1427,7 +1493,12 @@ declare namespace AppAPI {
          * @param [qSoftLock] - Optional. This parameter was deprecated in version 2.0 and is ignored in newer versions. Use the qOtions.qContext parameter instead.
          * @return - A promise of a Qlik engine reply.
          */
-        selectAssociations(qMatchIx: number, qTerms: any[], qOptions?: any, qSoftLock?: any): ng.IPromise<any>;
+        selectAssociations(
+            qMatchIx: number,
+            qTerms: any[],
+            qOptions?: any,
+            qSoftLock?: any,
+        ): ng.IPromise<any>;
 
         /**
          * Sets the data load script of this app. Also validates the script syntax and returns the syntax errors if errors exist.
@@ -1466,7 +1537,11 @@ declare namespace BookmarkAPI {
          * @param [sheetId] - Optional. Bookmark sheet id. Introduced in version 2.2.
          * @return - A promise of a Qlik engine reply.
          */
-        create(title: string, description: string, sheetId?: string): ng.IPromise<any>;
+        create(
+            title: string,
+            description: string,
+            sheetId?: string,
+        ): ng.IPromise<any>;
 
         /**
          * Removes a bookmark.
@@ -1528,7 +1603,11 @@ declare namespace FieldAPI {
          * @param [softlock] - Optional. If true, locked selections can be overridden.
          * @return - A promise.
          */
-        select(Array: number[], toggle?: boolean, softlock?: boolean): ng.IPromise<any>;
+        select(
+            Array: number[],
+            toggle?: boolean,
+            softlock?: boolean,
+        ): ng.IPromise<any>;
 
         /**
          * Selects all values in a field.
@@ -1575,7 +1654,11 @@ declare namespace FieldAPI {
          * @param [softlock] - Optional. If true, locked selections can be overridden.
          * @return - A promise.
          */
-        selectValues(array: IQFieldValue[], toggle?: boolean, softlock?: boolean): ng.IPromise<any>;
+        selectValues(
+            array: IQFieldValue[],
+            toggle?: boolean,
+            softlock?: boolean,
+        ): ng.IPromise<any>;
 
         /**
          * Toggles a field selection.
@@ -2086,7 +2169,12 @@ declare namespace TableAPI {
          * @param [inclMax] - Optional. Set to true to include maximum value.
          * @return - A promise.
          */
-        selectRange(min: number, max: number, inclMin?: boolean, inclMax?: boolean): ng.IPromise<any>;
+        selectRange(
+            min: number,
+            max: number,
+            inclMin?: boolean,
+            inclMax?: boolean,
+        ): ng.IPromise<any>;
     }
 
     interface IQRow {
@@ -2268,7 +2356,11 @@ declare namespace VisualizationAPI {
          * @param [options] - Optional. Options to set.
          * @return - A promise of a QVisualization.
          */
-        create(type: VisualizationType, cols?: any[], options?: any): ng.IPromise<any>;
+        create(
+            type: VisualizationType,
+            cols?: any[],
+            options?: any,
+        ): ng.IPromise<any>;
 
         /**
          * Gets an existing visualization.
@@ -2362,7 +2454,6 @@ declare namespace ExtensionAPI {
     interface IInitialProperties {
         // qHyperCubeDef: IVisualizationHyperCubeDef;
         // qListObjectDef: IVis
-
         // [""]:
     }
 
@@ -2397,8 +2488,7 @@ declare namespace ExtensionAPI {
         max: number;
     }
 
-    interface ICustomInteger extends ICustomNumber {
-    }
+    interface ICustomInteger extends ICustomNumber {}
 
     interface ICustomArray extends ICustomControl {
         itemTitleRef: string;
@@ -2557,8 +2647,13 @@ interface IQVAngular {
      * @param name Name of the directive in camel-case (i.e. ngBind which will match as ng-bind)
      * @param directiveFactory An injectable directive factory function.
      */
-    directive(name: string, directiveFactory: ng.Injectable<ng.IDirectiveFactory>): void;
-    directive(object: { [directiveName: string]: ng.Injectable<ng.IDirectiveFactory> }): void;
+    directive(
+        name: string,
+        directiveFactory: ng.Injectable<ng.IDirectiveFactory>,
+    ): void;
+    directive(object: {
+        [directiveName: string]: ng.Injectable<ng.IDirectiveFactory>;
+    }): void;
 
     filter(name: string, filterFactoryFunction: ng.Injectable<Function>): void;
     filter(object: { [name: string]: ng.Injectable<Function> }): void;

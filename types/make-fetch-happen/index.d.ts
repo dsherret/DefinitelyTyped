@@ -16,7 +16,15 @@ declare const fetch: fetch.FetchInterface;
 declare namespace fetch {
     type NodeFetchOptions = Pick<
         RequestInit,
-        "method" | "body" | "redirect" | "follow" | "timeout" | "compress" | "size" | "headers" | "agent"
+        | "method"
+        | "body"
+        | "redirect"
+        | "follow"
+        | "timeout"
+        | "compress"
+        | "size"
+        | "headers"
+        | "agent"
     >;
 
     type TlsOptions = Pick<SecureContextOptions, "ca" | "cert" | "key"> & {
@@ -113,7 +121,10 @@ declare namespace fetch {
 
     interface FetchInterface {
         prototype: FetchInterface;
-        (uriOrRequest: string | Request, opts?: FetchOptions): Promise<Response>;
+        (
+            uriOrRequest: string | Request,
+            opts?: FetchOptions,
+        ): Promise<Response>;
         (opts: FetchOptions): Promise<Response>;
         defaults(uri: string, opts?: FetchOptions): FetchInterface;
         defaults(opts?: FetchOptions): FetchInterface;

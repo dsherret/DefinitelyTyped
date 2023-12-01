@@ -27,7 +27,7 @@ import stampit from "stampit";
 //   version,
 // } from 'stampit';
 
-const a = stampit().init(function(options) {
+const a = stampit().init(function (options) {
     const a = options.args[0];
     this.getA = () => {
         return a;
@@ -36,7 +36,7 @@ const a = stampit().init(function(options) {
 a(); // Object -- so far so good.
 a().getA(); // "a"
 
-const b = stampit().init(function() {
+const b = stampit().init(function () {
     const a = "b";
     this.getB = () => {
         return a;
@@ -85,80 +85,100 @@ const myBar = bar({ name: "Moe's" });
 // Silly, but proves that everything is as it should be.
 myBar.add({ name: "Homer" }).open().getMember("Homer");
 
-const myStamp = stampit().methods({
-    foo() {
-        return "foo";
-    },
-    methodOverride() {
-        return false;
-    },
-    myMembers: {},
-    dbConnString: "pgs://data.local",
-    MY_LIMIT: 100,
-    myRegExp: /foobar/g,
-}).methods({
-    bar() {
-        return "bar";
-    },
-    methodOverride() {
-        return true;
-    },
-    myMembers: {},
-    dbConnString: "pgs://data.local",
-    MY_LIMIT: 100,
-    myRegExp: /foobar/g,
-});
+const myStamp = stampit()
+    .methods({
+        foo() {
+            return "foo";
+        },
+        methodOverride() {
+            return false;
+        },
+        myMembers: {},
+        dbConnString: "pgs://data.local",
+        MY_LIMIT: 100,
+        myRegExp: /foobar/g,
+    })
+    .methods({
+        bar() {
+            return "bar";
+        },
+        methodOverride() {
+            return true;
+        },
+        myMembers: {},
+        dbConnString: "pgs://data.local",
+        MY_LIMIT: 100,
+        myRegExp: /foobar/g,
+    });
 
-myStamp.deepProps({
-    foo: { bar: "bar" },
-    refsOverride: false,
-}).props({
-    bar: "bar",
-    refsOverride: true,
-});
+myStamp
+    .deepProps({
+        foo: { bar: "bar" },
+        refsOverride: false,
+    })
+    .props({
+        bar: "bar",
+        refsOverride: true,
+    });
 
-myStamp.init(function() {
-    const secret = "foo";
+myStamp
+    .init(function () {
+        const secret = "foo";
 
-    this.getSecret = () => {
-        return secret;
-    };
-}).init(function() {
-    this.a = true;
-}).init(function() {
-    this.b = true;
-}, function() {
-    this.c = true;
-});
+        this.getSecret = () => {
+            return secret;
+        };
+    })
+    .init(function () {
+        this.a = true;
+    })
+    .init(
+        function () {
+            this.b = true;
+        },
+        function () {
+            this.c = true;
+        },
+    );
 
 let obj = myStamp.create();
 obj.getSecret && obj.a && obj.b && obj.c; // true
 
 const newStamp = stampit({ props: { defaultNum: 1 } }).compose(myStamp);
 
-const obj1 = stampit().methods({
-    a() {
-        return "a";
-    },
-    myMembers: {},
-    dbConnString: "pgs://data.local",
-    MY_LIMIT: 100,
-    myRegExp: /foobar/g,
-}, {
-    b() {
-        return "b";
-    },
-    myMembers: {},
-    dbConnString: "pgs://data.local",
-    MY_LIMIT: 100,
-    myRegExp: /foobar/g,
-}).create();
+const obj1 = stampit()
+    .methods(
+        {
+            a() {
+                return "a";
+            },
+            myMembers: {},
+            dbConnString: "pgs://data.local",
+            MY_LIMIT: 100,
+            myRegExp: /foobar/g,
+        },
+        {
+            b() {
+                return "b";
+            },
+            myMembers: {},
+            dbConnString: "pgs://data.local",
+            MY_LIMIT: 100,
+            myRegExp: /foobar/g,
+        },
+    )
+    .create();
 
-const obj2 = stampit().props({
-    a: "a",
-}, {
-    b: "b",
-}).create();
+const obj2 = stampit()
+    .props(
+        {
+            a: "a",
+        },
+        {
+            b: "b",
+        },
+    )
+    .create();
 
 obj = defaults.compose(newStamp, membership).create();
 
@@ -171,18 +191,20 @@ Constructor.prototype.foo = function foo() {
 };
 
 // A new stamp to compose with...
-const newskool = stampit().methods({
-    bar: function bar() {
-        return "bar";
-    },
-    myMembers: {},
-    dbConnString: "pgs://data.local",
-    MY_LIMIT: 100,
-    myRegExp: /foobar/g,
-    // your methods here...
-}).init(function() {
-    this.baz = "baz";
-});
+const newskool = stampit()
+    .methods({
+        bar: function bar() {
+            return "bar";
+        },
+        myMembers: {},
+        dbConnString: "pgs://data.local",
+        MY_LIMIT: 100,
+        myRegExp: /foobar/g,
+        // your methods here...
+    })
+    .init(function () {
+        this.baz = "baz";
+    });
 
 // Now you can compose those old constructors just like you could
 // with any other stamp...
@@ -206,11 +228,13 @@ interface SomeStamp extends stampit.Stamp<SomeStampInstance> {
     (params: { a: number; b: boolean }): SomeStampInstance;
 }
 
-const SomeStamp = stampit<SomeStamp>()
-    .init(function(params: { a: number; b: boolean }) {
-        this.a = "" + a; // this SomeStampInstance
-        this.b = "" + b;
-    });
+const SomeStamp = stampit<SomeStamp>().init(function (params: {
+    a: number;
+    b: boolean;
+}) {
+    this.a = "" + a; // this SomeStampInstance
+    this.b = "" + b;
+});
 
 SomeStamp({ a: 1, b: false }); // $ExpectType SomeStampInstance
 SomeStamp({ a: 1, b: false }).a; // $ExpectType string
@@ -291,7 +315,7 @@ const descriptor0: stampit.ExtendedDescriptor<Object0> = {
     staticDeepProperties: {},
     staticPropertyDescriptors: {},
     initializers: [
-        function(options, context) {
+        function (options, context) {
             this; // $ExpectType Object0
             return context.instance;
         },
@@ -310,17 +334,19 @@ stampDescriptor0(); // $ExpectType Object0
 
 // check typed stamps... with untyped descriptor (`this` isn't typed in `methods`)
 // inline type assertion is still possible though
-const stampUntypedDescriptor0 = compose<Object0>(/* <stampit.ExtendedDescriptor<Object0>> */ {
-    methods: {
-        logLocalThis() {
-            this; // $ExpectType any
+const stampUntypedDescriptor0 = compose<Object0>(
+    /* <stampit.ExtendedDescriptor<Object0>> */ {
+        methods: {
+            logLocalThis() {
+                this; // $ExpectType any
+            },
+            myMembers: {},
+            dbConnString: "pgs://data.local",
+            MY_LIMIT: 100,
+            myRegExp: /foobar/g,
         },
-        myMembers: {},
-        dbConnString: "pgs://data.local",
-        MY_LIMIT: 100,
-        myRegExp: /foobar/g,
-    },
-} /* as stampit.ExtendedDescriptor<Object0> */);
+    } /* as stampit.ExtendedDescriptor<Object0> */,
+);
 stampUntypedDescriptor0; // $ExpectType Stamp<Object0>
 stampUntypedDescriptor0(); // $ExpectType Object0
 

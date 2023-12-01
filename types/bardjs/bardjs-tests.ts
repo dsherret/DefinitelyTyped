@@ -39,14 +39,18 @@ function test_$httpBackend() {
 
     beforeEach(angular.mock.module(bard.$httpBackend, "myModule"));
 
-    beforeEach(inject(function(_myService_: MyService, _$rootScope_: angular.IRootScopeService) {
+    beforeEach(inject(function (
+        _myService_: MyService,
+        _$rootScope_: angular.IRootScopeService,
+    ) {
         myService = _myService_;
         $rootScope = _$rootScope_;
     }));
 
-    it("should return valid data", function(done) {
-        myService.remoteCall()
-            .then(function(data) {
+    it("should return valid data", function (done) {
+        myService
+            .remoteCall()
+            .then(function (data) {
                 expect(data).to.exist;
             })
             .then(done, done);
@@ -63,12 +67,13 @@ function test_$q() {
 
     beforeEach(angular.mock.module(bard.$q, bard.$httpBackend, "myModule"));
 
-    beforeEach(inject(function(_myService_: MyService) {
+    beforeEach(inject(function (_myService_: MyService) {
         myService = _myService_;
     }));
 
     it("should return valid data", (done) => {
-        myService.remoteCall()
+        myService
+            .remoteCall()
             .then((data) => {
                 expect(data).to.exist;
             })
@@ -82,10 +87,10 @@ function test_$q() {
  * bard.addGlobals
  */
 function test_addGlobals() {
-    describe("someting", function() {
+    describe("someting", function () {
         var ctx = this;
 
-        it("should work", function() {
+        it("should work", function () {
             var bar = "bar";
             bard.addGlobals(this, "foo"); // where `this` is the spec context
             bard.addGlobals(this, "foo", bar);
@@ -101,7 +106,7 @@ function test_addGlobals() {
 function test_appModule() {
     beforeEach(bard.appModule("myModule"));
     ////
-    beforeEach(bard.appModule("myModule", function() {}, {}));
+    beforeEach(bard.appModule("myModule", function () {}, {}));
 }
 
 /*
@@ -117,7 +122,7 @@ function test_assertFail() {
 function test_asyncModule() {
     beforeEach(bard.asyncModule("myModule"));
     ////
-    beforeEach(bard.asyncModule("myModule", function() {}, {}));
+    beforeEach(bard.asyncModule("myModule", function () {}, {}));
 }
 
 /*
@@ -192,7 +197,16 @@ function test_fakeToastr() {
  * bard.inject
  */
 function test_inject() {
-    beforeEach(() => bard.inject(this, "$controller", "$log", "$q", "$rootScope", "myService"));
+    beforeEach(() =>
+        bard.inject(
+            this,
+            "$controller",
+            "$log",
+            "$q",
+            "$rootScope",
+            "myService",
+        ),
+    );
 }
 
 /*
@@ -221,7 +235,7 @@ function test_mockService() {
         $rootScope: angular.IRootScopeService,
         myService: MyService;
 
-    beforeEach(function() {
+    beforeEach(function () {
         bard.appModule("myModule");
         bard.inject(this, "$controller", "$q", "$rootScope", "myService");
 
@@ -239,7 +253,10 @@ function test_mockService() {
  * bard.replaceAccentChars
  */
 function test_replaceAccentChars() {
-    console.log(bard.replaceAccentChars("àáâãäåèéêëìíîïòóôõöùúûüýÿ") === "aaaaaaeeeeeeeeooooouuuuyy");
+    console.log(
+        bard.replaceAccentChars("àáâãäåèéêëìíîïòóôõöùúûüýÿ") ===
+            "aaaaaaeeeeeeeeooooouuuuyy",
+    );
 }
 
 /*
@@ -253,7 +270,7 @@ function test_verifyNoOutstandingHttpRequests() {
         $rootScope: angular.IRootScopeService,
         myService: MyService;
 
-    beforeEach(function() {
+    beforeEach(function () {
         bard.appModule("myModule");
         bard.inject(this, "$controller", "$q", "$rootScope", "myService");
 

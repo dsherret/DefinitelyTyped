@@ -39,11 +39,9 @@ interface GenericCollection<T> {
     each(callback: (element: T, index?: number, elements?: T[]) => void);
 }
 
-interface ElementCollection extends GenericCollection<FlashElement> {
-}
+interface ElementCollection extends GenericCollection<FlashElement> {}
 
-interface ItemCollection extends GenericCollection<FlashItem> {
-}
+interface ItemCollection extends GenericCollection<FlashItem> {}
 
 declare class _URI {
     constructor(path: string);

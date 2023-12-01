@@ -1,12 +1,12 @@
 // tslint:disable:jsdoc-format
 
 /*!
-* Product: Dynamsoft Web Twain
-* Web Site: http://www.dynamsoft.com
-*
-* Copyright 2019, Dynamsoft Corporation
-* Author: Dynamsoft Support Team
-*/
+ * Product: Dynamsoft Web Twain
+ * Web Site: http://www.dynamsoft.com
+ *
+ * Copyright 2019, Dynamsoft Corporation
+ * Author: Dynamsoft Support Team
+ */
 
 interface RunTimeSetting {
     mAntiDamageLevel: number;
@@ -41,8 +41,16 @@ interface dbrEnv {
 }
 
 interface TaskQueue {
-    push(task: (bLoadingWhenPush: boolean) => void, context?: any, args?: []): void;
-    unshift(task: (bLoadingWhenPush: boolean) => void, context?: any, args?: []): void;
+    push(
+        task: (bLoadingWhenPush: boolean) => void,
+        context?: any,
+        args?: [],
+    ): void;
+    unshift(
+        task: (bLoadingWhenPush: boolean) => void,
+        context?: any,
+        args?: [],
+    ): void;
     next(): void;
 }
 
@@ -51,7 +59,7 @@ declare namespace dynamsoft {
         /** Barcode Formats */
         enum EnumBarcodeFormat {
             All = 503317503,
-            OneD = 0x3FF,
+            OneD = 0x3ff,
             CODE_39 = 0x1,
             CODE_128 = 0x2,
             CODE_93 = 0x4,

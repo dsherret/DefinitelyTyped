@@ -18,7 +18,10 @@ interface ScreenDetailsEventHandlers extends EventTarget {
     onscreenschange: ((this: ScreenDetails, ev: Event) => any) | null;
     addEventListener<K extends keyof ScreenDetailsEventHandlersEventMap>(
         type: K,
-        listener: (this: ScreenDetails, ev: ScreenDetailsEventHandlersEventMap[K]) => any,
+        listener: (
+            this: ScreenDetails,
+            ev: ScreenDetailsEventHandlersEventMap[K],
+        ) => any,
         options?: boolean | AddEventListenerOptions,
     ): void;
     addEventListener(
@@ -46,7 +49,10 @@ interface ScreenDetailedEventHandlers extends EventTarget {
     onchange: ((this: ScreenDetailed, ev: Event) => any) | null;
     addEventListener<K extends keyof ScreenDetailedEventHandlersEventMap>(
         type: K,
-        listener: (this: Screen, ev: ScreenDetailedEventHandlersEventMap[K]) => any,
+        listener: (
+            this: Screen,
+            ev: ScreenDetailedEventHandlersEventMap[K],
+        ) => any,
         options?: boolean | AddEventListenerOptions,
     ): void;
     addEventListener(
@@ -102,8 +108,10 @@ interface ScreenDetailed extends Screen /*, ScreenDetailsEventHandlers*/ {
 type PermissionDescriptorWithWindowPlacement =
     | PermissionDescriptor
     | {
-        name: "window-placement";
-    };
+          name: "window-placement";
+      };
 interface Permissions {
-    query(permissionDesc: PermissionDescriptorWithWindowPlacement): Promise<PermissionStatus>;
+    query(
+        permissionDesc: PermissionDescriptorWithWindowPlacement,
+    ): Promise<PermissionStatus>;
 }

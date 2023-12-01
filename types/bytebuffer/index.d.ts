@@ -99,7 +99,11 @@ declare class ByteBuffer {
     /**
      * Allocates a new ByteBuffer backed by a buffer of the specified capacity.
      */
-    static allocate(capacity?: number, littleEndian?: boolean, noAssert?: boolean): ByteBuffer;
+    static allocate(
+        capacity?: number,
+        littleEndian?: boolean,
+        noAssert?: boolean,
+    ): ByteBuffer;
 
     /**
      * Decodes a base64 encoded string to binary like window.atob does.
@@ -149,27 +153,47 @@ declare class ByteBuffer {
     /**
      * Decodes a base64 encoded string to a ByteBuffer.
      */
-    static fromBase64(str: string, littleEndian?: boolean, noAssert?: boolean): ByteBuffer;
+    static fromBase64(
+        str: string,
+        littleEndian?: boolean,
+        noAssert?: boolean,
+    ): ByteBuffer;
 
     /**
      * Decodes a binary encoded string, that is using only characters 0x00-0xFF as bytes, to a ByteBuffer.
      */
-    static fromBinary(str: string, littleEndian?: boolean, noAssert?: boolean): ByteBuffer;
+    static fromBinary(
+        str: string,
+        littleEndian?: boolean,
+        noAssert?: boolean,
+    ): ByteBuffer;
 
     /**
      * Decodes a hex encoded string with marked offsets to a ByteBuffer.
      */
-    static fromDebug(str: string, littleEndian?: boolean, noAssert?: boolean): ByteBuffer;
+    static fromDebug(
+        str: string,
+        littleEndian?: boolean,
+        noAssert?: boolean,
+    ): ByteBuffer;
 
     /**
      * Decodes a hex encoded string to a ByteBuffer.
      */
-    static fromHex(str: string, littleEndian?: boolean, noAssert?: boolean): ByteBuffer;
+    static fromHex(
+        str: string,
+        littleEndian?: boolean,
+        noAssert?: boolean,
+    ): ByteBuffer;
 
     /**
      * Decodes an UTF8 encoded string to a ByteBuffer.
      */
-    static fromUTF8(str: string, littleEndian?: boolean, noAssert?: boolean): ByteBuffer;
+    static fromUTF8(
+        str: string,
+        littleEndian?: boolean,
+        noAssert?: boolean,
+    ): ByteBuffer;
 
     /**
      * Gets the backing buffer type.
@@ -268,7 +292,12 @@ declare class ByteBuffer {
     /**
      * Copies this ByteBuffer's contents to another ByteBuffer. Contents are the bytes between ByteBuffer#offset and ByteBuffer#limit.
      */
-    copyTo(target: ByteBuffer, targetOffset?: number, sourceOffset?: number, sourceLimit?: number): this;
+    copyTo(
+        target: ByteBuffer,
+        targetOffset?: number,
+        sourceOffset?: number,
+        sourceLimit?: number,
+    ): this;
 
     /**
      * Makes sure that this ByteBuffer is backed by a ByteBuffer#buffer of at least the specified capacity. If the current capacity is exceeded, it will be doubled. If double the current capacity is less than the required capacity, the required capacity will be used instead.
@@ -395,13 +424,21 @@ declare class ByteBuffer {
      * Reads an UTF8 encoded string. This is an alias of ByteBuffer#readUTF8String.
      */
     readString(length: number, metrics?: number): string;
-    readString(length: number, metrics: number, offset: number): { string: string; length: number };
+    readString(
+        length: number,
+        metrics: number,
+        offset: number,
+    ): { string: string; length: number };
 
     /**
      * Reads an UTF8 encoded string.
      */
     readUTF8String(chars: number, metrics?: number): string;
-    readUTF8String(chars: number, metrics: number, offset: number): { string: string; length: number };
+    readUTF8String(
+        chars: number,
+        metrics: number,
+        offset: number,
+    ): { string: string; length: number };
 
     /**
      * Reads a 16bit unsigned integer.

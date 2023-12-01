@@ -42,7 +42,7 @@ function updateUI() {
     const node = graph.getNode(graph.currentNode);
     const board = node.board;
     const cells = document.querySelectorAll<HTMLButtonElement>(".cell");
-    cells.forEach(cell => {
+    cells.forEach((cell) => {
         const cellid: number = parseInt(cell.dataset.cellid || "", 10);
         const status = board[cellid];
         switch (status) {
@@ -76,8 +76,10 @@ function updateUI() {
             return;
         }
 
-        result.textContent = (node.win)
-            ? ((node.winPlayer === player) ? "You win the game!" : "The AI wins the game!")
+        result.textContent = node.win
+            ? node.winPlayer === player
+                ? "You win the game!"
+                : "The AI wins the game!"
             : "Draw!";
     }
 }

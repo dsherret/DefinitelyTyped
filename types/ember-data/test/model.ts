@@ -23,16 +23,22 @@ const Person = DS.Model.extend({
     title: DS.attr({ defaultValue: "The default" }),
     title2: DS.attr({ defaultValue: () => "The default" }),
 
-    fullName: Ember.computed("firstName", "lastName", function() {
+    fullName: Ember.computed("firstName", "lastName", function () {
         return `${this.get("firstName")} ${this.get("lastName")}`;
     }),
 
-    point: DS.attr("point", { defaultValue: () => Point.create({ x: 1, y: 2 }) }),
-    oldPoint: DS.attr("oldPoint", { defaultValue: () => Point.create({ x: 1, y: 2 }) }),
+    point: DS.attr("point", {
+        defaultValue: () => Point.create({ x: 1, y: 2 }),
+    }),
+    oldPoint: DS.attr("oldPoint", {
+        defaultValue: () => Point.create({ x: 1, y: 2 }),
+    }),
 
     // Can't have a non-primitive as default
     // @ts-expect-error
-    anotherPoint: DS.attr("point", { defaultValue: Point.create({ x: 1, y: 2 }) }),
+    anotherPoint: DS.attr("point", {
+        defaultValue: Point.create({ x: 1, y: 2 }),
+    }),
 });
 
 const person = Person.create();
@@ -73,7 +79,9 @@ let destroyResult: RSVP.Promise<typeof user>;
 destroyResult = user.destroyRecord();
 destroyResult = user.destroyRecord({});
 destroyResult = user.destroyRecord({ adapterOptions: {} });
-destroyResult = user.destroyRecord({ adapterOptions: { waffles: "are yummy" } });
+destroyResult = user.destroyRecord({
+    adapterOptions: { waffles: "are yummy" },
+});
 
 user.deleteRecord(); // $ExpectType void
 

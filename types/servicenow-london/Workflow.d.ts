@@ -9,7 +9,9 @@ declare namespace global {
         fireEventById(eventRecordId: string, eventName: string): void;
         getContexts(record: ScopedGlideRecord): ScopedGlideRecord;
         getEstimatedDeliveryTime(workflowId: string): string;
-        getEstimatedDeliveryTimeFromWFVersion(wfVersion: ScopedGlideRecord): string;
+        getEstimatedDeliveryTimeFromWFVersion(
+            wfVersion: ScopedGlideRecord,
+        ): string;
 
         /**
          * Get the return value set by activity "Return Value"
@@ -23,7 +25,10 @@ declare namespace global {
         getVersionFromName(workflowName: string): ScopedGlideElement;
         getWorkflowFromName(workflowName: string): string;
         hasWorkflow(record: ScopedGlideRecord): boolean;
-        restartWorkflow(record: ScopedGlideRecord, maintainStateFlag?: boolean): void;
+        restartWorkflow(
+            record: ScopedGlideRecord,
+            maintainStateFlag?: boolean,
+        ): void;
 
         /**
          * Run all flows attached to a current GlideRecord.
@@ -36,7 +41,10 @@ declare namespace global {
          * @param operation A String that holds the operation such as "update", "insert", or perhaps
          * "timer" or some other user defined value.
          */
-        runFlows(record: ScopedGlideRecord, operation: GlideRecordOperation): void;
+        runFlows(
+            record: ScopedGlideRecord,
+            operation: GlideRecordOperation,
+        ): void;
 
         /**
          * Start a workflow. Internal logic will determine which workflow version should be run. The

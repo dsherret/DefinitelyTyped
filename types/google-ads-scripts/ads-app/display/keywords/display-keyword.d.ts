@@ -37,7 +37,8 @@ declare namespace GoogleAdsScripts {
          *    .withCpc(0.50)                // optional
          *    .build()                      // create the display keyword
          */
-        interface DisplayKeywordBuilder extends Base.Builder<DisplayKeywordOperation> {
+        interface DisplayKeywordBuilder
+            extends Base.Builder<DisplayKeywordOperation> {
             /** Builds the excluded display keyword. */
             exclude(): ExcludedDisplayKeywordOperation;
             /** Sets the max CPC bid of the new display keyword to the specified value. */
@@ -57,10 +58,12 @@ declare namespace GoogleAdsScripts {
          *        var displayKeyword = displayKeywordIterator.next();
          *      }
          */
-        interface DisplayKeywordIterator extends Base.Iterator<DisplayKeyword> {}
+        interface DisplayKeywordIterator
+            extends Base.Iterator<DisplayKeyword> {}
 
         /** An operation representing creation of a new display keyword. */
-        interface DisplayKeywordOperation extends Base.Operation<DisplayKeyword> {}
+        interface DisplayKeywordOperation
+            extends Base.Operation<DisplayKeyword> {}
 
         /**
          * Fetches display keywords. Supports filtering and sorting.
@@ -79,13 +82,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface DisplayKeywordSelector
-            extends
-                Base.Selector<DisplayKeywordIterator>,
+            extends Base.Selector<DisplayKeywordIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

@@ -8,7 +8,12 @@ export interface AbsintheSocket<T = {}> {
 }
 
 export type GqlOperationType = "mutation" | "query" | "subscription";
-export type RequestStatus = "canceled" | "canceling" | "pending" | "sent" | "sending";
+export type RequestStatus =
+    | "canceled"
+    | "canceling"
+    | "pending"
+    | "sent"
+    | "sending";
 
 export interface GqlRequest<Variables> {
     operation: string;
@@ -33,7 +38,10 @@ export interface Notifier<Variables = {}, Result = {}> {
     subscriptionId?: string | undefined;
 }
 /** Cancels a notifier sending a Cancel event to all its observers and unsubscribing in case it holds a subscription request */
-export function cancel(absintheSocket: AbsintheSocket, notifier: Notifier): AbsintheSocket;
+export function cancel(
+    absintheSocket: AbsintheSocket,
+    notifier: Notifier,
+): AbsintheSocket;
 
 /** Creates an Absinthe Socket using the given Phoenix Socket instance */
 export function create(socket: Socket): AbsintheSocket;

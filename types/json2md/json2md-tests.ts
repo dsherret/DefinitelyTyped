@@ -31,41 +31,53 @@ describe("Default elements", () => {
     });
 
     it("Paragraphs", () => {
-        json2md([{
-            p: EXAMPLE_STRING,
-        }]);
+        json2md([
+            {
+                p: EXAMPLE_STRING,
+            },
+        ]);
 
-        json2md([{
-            p: EXAMPLE_STRING_ARRAY,
-        }]);
+        json2md([
+            {
+                p: EXAMPLE_STRING_ARRAY,
+            },
+        ]);
     });
 
     it("Blockquote", () => {
-        json2md([{
-            blockquote: EXAMPLE_STRING,
-        }]);
+        json2md([
+            {
+                blockquote: EXAMPLE_STRING,
+            },
+        ]);
 
-        json2md([{
-            blockquote: EXAMPLE_STRING_ARRAY,
-        }]);
+        json2md([
+            {
+                blockquote: EXAMPLE_STRING_ARRAY,
+            },
+        ]);
     });
 
     it("Image", () => {
-        json2md([{
-            img: {
-                title: EXAMPLE_STRING,
-                source: EXAMPLE_STRING,
-            },
-        }]);
-
-        json2md([{
-            img: [
-                {
+        json2md([
+            {
+                img: {
                     title: EXAMPLE_STRING,
                     source: EXAMPLE_STRING,
                 },
-            ],
-        }]);
+            },
+        ]);
+
+        json2md([
+            {
+                img: [
+                    {
+                        title: EXAMPLE_STRING,
+                        source: EXAMPLE_STRING,
+                    },
+                ],
+            },
+        ]);
     });
 
     it("Unordered list", () => {
@@ -114,9 +126,7 @@ describe("Default elements", () => {
             {
                 table: {
                     headers: EXAMPLE_STRING_ARRAY,
-                    rows: [
-                        EXAMPLE_STRING_ARRAY,
-                    ],
+                    rows: [EXAMPLE_STRING_ARRAY],
                 },
             },
         ]);
@@ -124,7 +134,10 @@ describe("Default elements", () => {
 });
 
 it("Custom types", () => {
-    const customConverter: json2md.ConverterCallback<string> = (input, json2md) => {
+    const customConverter: json2md.ConverterCallback<string> = (
+        input,
+        json2md,
+    ) => {
         return `Hello ${input} world!`;
     };
 
@@ -202,9 +215,15 @@ it("Big example", () => {
 });
 
 it("Use converter", () => {
-    const blockquote: string = json2md.converters.blockquote(EXAMPLE_STRING, json2md);
-    const img: string = json2md.converters.img({
-        title: EXAMPLE_STRING,
-        source: EXAMPLE_STRING,
-    }, json2md);
+    const blockquote: string = json2md.converters.blockquote(
+        EXAMPLE_STRING,
+        json2md,
+    );
+    const img: string = json2md.converters.img(
+        {
+            title: EXAMPLE_STRING,
+            source: EXAMPLE_STRING,
+        },
+        json2md,
+    );
 });

@@ -27,7 +27,8 @@ function coreDepsTest() {
 
     s.resolve("id", { id: "id" }, (err, file, pkg) => {
         const errMsg: string | null = err != null ? err.message : null;
-        const ext: string = file != null ? file.substr(file.indexOf(".")) : "js";
+        const ext: string =
+            file != null ? file.substr(file.indexOf(".")) : "js";
     });
 }
 
@@ -37,7 +38,10 @@ function rifiTest() {
             const parentDependency = parent.id.substr(1);
             const dependency = id.substr(1);
         },
-        transform: ["transformer", (file, opts) => <NodeJS.ReadWriteStream> <any> null],
+        transform: [
+            "transformer",
+            (file, opts) => <NodeJS.ReadWriteStream>(<any>null),
+        ],
         globalTransform: [],
         cache: {},
     });

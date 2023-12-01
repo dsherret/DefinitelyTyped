@@ -7,6 +7,10 @@ declare namespace parseLinkDestination {
     }
 }
 
-declare function parseLinkDestination(str: string, pos: number, max: number): parseLinkDestination.ParseResult;
+declare function parseLinkDestination(
+    str: string,
+    pos: number,
+    max: number,
+): parseLinkDestination.ParseResult;
 
 export = parseLinkDestination;

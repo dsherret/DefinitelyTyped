@@ -40,7 +40,11 @@ const accessInfo: AccessInfo = {
 const samsungCertManager: SamsungCertManager = new SamsungCertManager("./");
 samsungCertManager.init();
 samsungCertManager.createAuthorCert("test", samsungAuthorInfo, accessInfo);
-samsungCertManager.createDistributorCert("test", samsungDistributorInfo, accessInfo);
+samsungCertManager.createDistributorCert(
+    "test",
+    samsungDistributorInfo,
+    accessInfo,
+);
 
 /**
  * Tizen Cert Manager

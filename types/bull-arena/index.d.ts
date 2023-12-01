@@ -16,7 +16,7 @@ declare namespace BullArena {
     }
 
     interface QueueConstructor {
-        new(queueName: string, opts?: QueueOptions): Queue;
+        new (queueName: string, opts?: QueueOptions): Queue;
     }
 
     interface Queue {

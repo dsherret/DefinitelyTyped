@@ -5,9 +5,10 @@ function CommandTests() {
     });
 
     // initialize command and add done and fail callbacks
-    var cmd2 = ko.command(() => {
-        return "Hello cmd2";
-    })
+    var cmd2 = ko
+        .command(() => {
+            return "Hello cmd2";
+        })
         .done((data: any) => {
             alert("success");
         })
@@ -104,16 +105,18 @@ function SortableTests() {
     var sort1 = ko.observableArray([1, 2, 3]).extend({ sortable: true });
 
     // extended sort definition with key+descending
-    var sort2 = ko.observableArray([
-        { id: 3, name: "alice" },
-        { id: 2, name: "james" },
-        { id: 1, name: "bob" },
-    ]).extend({
-        sortable: {
-            key: "id",
-            descending: false,
-        },
-    });
+    var sort2 = ko
+        .observableArray([
+            { id: 3, name: "alice" },
+            { id: 2, name: "james" },
+            { id: 1, name: "bob" },
+        ])
+        .extend({
+            sortable: {
+                key: "id",
+                descending: false,
+            },
+        });
 
     sort2.setSourceKey("id");
     sort2.sortDescending(true);

@@ -13,25 +13,33 @@ rbac.on("error", (err) => {
     console.error(err.stack);
 });
 
-rbac.check(user, "create").then((allowed) => {
-    if (allowed) {
-        console.log("User can create!");
-    } else {
-        console.log("User cannot create.");
-        console.info("Please contact your system admin for more information");
-    }
-}).catch((err) => {
-    console.error(err && err.stack || err || "ERROR");
-});
+rbac.check(user, "create")
+    .then((allowed) => {
+        if (allowed) {
+            console.log("User can create!");
+        } else {
+            console.log("User cannot create.");
+            console.info(
+                "Please contact your system admin for more information",
+            );
+        }
+    })
+    .catch((err) => {
+        console.error((err && err.stack) || err || "ERROR");
+    });
 
 // specify attributes arguments
-rbac.check(user, "edit", { time: Date.now() }).then((allowed) => {
-    if (allowed) {
-        console.log("User can edit!");
-    } else {
-        console.log("User cannot edit.");
-        console.info("Please contact your system admin for more information");
-    }
-}).catch((err) => {
-    console.error(err && err.stack || err || "ERROR");
-});
+rbac.check(user, "edit", { time: Date.now() })
+    .then((allowed) => {
+        if (allowed) {
+            console.log("User can edit!");
+        } else {
+            console.log("User cannot edit.");
+            console.info(
+                "Please contact your system admin for more information",
+            );
+        }
+    })
+    .catch((err) => {
+        console.error((err && err.stack) || err || "ERROR");
+    });

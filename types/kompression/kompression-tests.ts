@@ -3,13 +3,9 @@ import compress = require("kompression");
 
 const app = new Koa();
 
-app.use(
-    compress(),
-);
+app.use(compress());
 
-app.use(
-    compress({}),
-);
+app.use(compress({}));
 
 // based on README
 app.use(

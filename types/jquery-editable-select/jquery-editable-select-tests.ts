@@ -16,6 +16,14 @@ function test_editable_select() {
     $("#select").editableSelect("select", $("#option1"));
     $("#select").editableSelect("add", "some text");
     $("#select").editableSelect("add", "some text", 0);
-    $("#select").editableSelect("add", "some text", 0, [{ name: "attribute1", value: "attribute1value" }]);
-    $("#select").editableSelect("add", "some text", 0, [{ name: "attribute1", value: "attribute1value" }], "some data");
+    $("#select").editableSelect("add", "some text", 0, [
+        { name: "attribute1", value: "attribute1value" },
+    ]);
+    $("#select").editableSelect(
+        "add",
+        "some text",
+        0,
+        [{ name: "attribute1", value: "attribute1value" }],
+        "some data",
+    );
 }

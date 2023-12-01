@@ -16,7 +16,11 @@ export function initialize(testOptions: { test: { fake: SensorData } }): void;
 export function read(
     type: SensorType,
     pin: number,
-    callback: (err: NodeJS.ErrnoException | null, temperature: number, humidity: number) => void,
+    callback: (
+        err: NodeJS.ErrnoException | null,
+        temperature: number,
+        humidity: number,
+    ) => void,
 ): void;
 export function read(type?: SensorType, pin?: number): SensorData;
 

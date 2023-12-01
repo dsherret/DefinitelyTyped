@@ -87,13 +87,13 @@ declare namespace Globalize {
          * @param {string} Locale string of the instance.
          * @returns {Globalize} A Globalize instance
          */
-        new(locale: string): Globalize;
+        new (locale: string): Globalize;
         /**
          * Create a Globalize instance.
          * @param cldr Cldr instance of the instance.
          * @returns {Globalize} A Globalize instance
          */
-        new(cldr: Cldr.CldrStatic): Globalize;
+        new (cldr: Cldr.CldrStatic): Globalize;
         /**
          * Create a Globalize instance.
          * @param {string} Locale string of the instance.
@@ -109,8 +109,7 @@ declare namespace Globalize {
     }
 }
 
-interface Globalize extends Globalize.Shared {
-}
+interface Globalize extends Globalize.Shared {}
 
 declare const Globalize: Globalize.Static;
 

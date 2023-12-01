@@ -11,7 +11,9 @@ export interface ISaxHandler {
 
 export declare function escape(s: string): string;
 
-export declare function makeSaxParser(yourHandler: ISaxHandler): (...any: any[]) => any;
+export declare function makeSaxParser(
+    yourHandler: ISaxHandler,
+): (...any: any[]) => any;
 
 export declare function normalizeRCData(s: string): string;
 

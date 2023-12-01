@@ -9,10 +9,7 @@ let options: Options = {
 };
 
 options = {
-    targets: [
-        "> 0.25%",
-        "not dead",
-    ],
+    targets: ["> 0.25%", "not dead"],
 };
 
 options = {
@@ -67,10 +64,7 @@ options = {
 
 options = {
     targets: {
-        browsers: [
-            "> 0.25%",
-            "not dead",
-        ],
+        browsers: ["> 0.25%", "not dead"],
     },
 };
 

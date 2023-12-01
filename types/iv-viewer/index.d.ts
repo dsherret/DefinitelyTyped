@@ -106,9 +106,7 @@ declare class ImageViewer {
 
     protected _calculateDimensions(): void;
     protected _doubleTapToZoom(): void;
-    protected _findContainerAndImageSrc(
-        element: string | Element | null,
-    ): {
+    protected _findContainerAndImageSrc(element: string | Element | null): {
         container: Element | null;
         domElement: Element | null;
         imageSrc: IVImage;

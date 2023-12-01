@@ -37,8 +37,15 @@ export function isRegistered(accelerator: string): boolean;
  * @param callback This function is called when the shortcut is pressed
  * and the window is focused and not minimized.
  */
-export function register(win: BrowserWindow, accelerator: string | string[], callback: () => void): void;
-export function register(accelerator: string | string[], callback: () => void): void;
+export function register(
+    win: BrowserWindow,
+    accelerator: string | string[],
+    callback: () => void,
+): void;
+export function register(
+    accelerator: string | string[],
+    callback: () => void,
+): void;
 
 /**
  * Unregisters the shortcut of `accelerator` registered on the BrowserWindow instance.
@@ -48,7 +55,10 @@ export function register(accelerator: string | string[], callback: () => void): 
  * on all app windows. If you registered the shortcut on a particular window instance, it will do nothing.
  * @param accelerator the shortcut to unregister
  */
-export function unregister(win: BrowserWindow, accelerator: string | string[]): void;
+export function unregister(
+    win: BrowserWindow,
+    accelerator: string | string[],
+): void;
 export function unregister(accelerator: string | string[]): void;
 
 /**

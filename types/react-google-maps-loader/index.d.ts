@@ -3,9 +3,7 @@ import { Component, ReactNode } from "react";
 
 export default ReactGoogleMapsLoader;
 
-declare class ReactGoogleMapsLoader extends Component<
-    ReactGoogleMapsLoader.Props
-> {}
+declare class ReactGoogleMapsLoader extends Component<ReactGoogleMapsLoader.Props> {}
 
 declare namespace ReactGoogleMapsLoader {
     type GoogleMaps = typeof google.maps;

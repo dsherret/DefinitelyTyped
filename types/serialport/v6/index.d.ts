@@ -4,7 +4,11 @@ import * as Stream from "stream";
 
 declare class SerialPort extends Stream.Duplex {
     constructor(path: string, callback?: SerialPort.ErrorCallback);
-    constructor(path: string, options?: SerialPort.OpenOptions, callback?: SerialPort.ErrorCallback);
+    constructor(
+        path: string,
+        options?: SerialPort.OpenOptions,
+        callback?: SerialPort.ErrorCallback,
+    );
 
     readonly baudRate: number;
     readonly binding: SerialPort.BaseBinding;
@@ -12,12 +16,25 @@ declare class SerialPort extends Stream.Duplex {
     readonly path: string;
 
     open(callback?: SerialPort.ErrorCallback): void;
-    update(options: SerialPort.UpdateOptions, callback?: SerialPort.ErrorCallback): void;
+    update(
+        options: SerialPort.UpdateOptions,
+        callback?: SerialPort.ErrorCallback,
+    ): void;
 
-    write(data: string | number[] | Buffer, callback?: (error: any, bytesWritten: number) => void): boolean;
+    write(
+        data: string | number[] | Buffer,
+        callback?: (error: any, bytesWritten: number) => void,
+    ): boolean;
     write(
         buffer: string | number[] | Buffer,
-        encoding?: "ascii" | "utf8" | "utf16le" | "ucs2" | "base64" | "binary" | "hex",
+        encoding?:
+            | "ascii"
+            | "utf8"
+            | "utf16le"
+            | "ucs2"
+            | "base64"
+            | "binary"
+            | "hex",
         callback?: (error: any, bytesWritten: number) => void,
     ): boolean;
 
@@ -25,7 +42,10 @@ declare class SerialPort extends Stream.Duplex {
 
     close(callback?: (error: Error) => void): void;
 
-    set(options: SerialPort.SetOptions, callback?: SerialPort.ErrorCallback): void;
+    set(
+        options: SerialPort.SetOptions,
+        callback?: SerialPort.ErrorCallback,
+    ): void;
     get(callback?: SerialPort.ModemBitsCallback): void;
 
     flush(callback?: SerialPort.ErrorCallback): void;
@@ -44,7 +64,10 @@ declare class SerialPort extends Stream.Duplex {
 declare namespace SerialPort {
     // Callbacks Type Defs
     type ErrorCallback = (error: Error) => void;
-    type ModemBitsCallback = (error: Error, status: { cts: boolean; dsr: boolean; dcd: boolean }) => void;
+    type ModemBitsCallback = (
+        error: Error,
+        status: { cts: boolean; dsr: boolean; dcd: boolean },
+    ) => void;
     type ListCallback = (error: Error, port: any[]) => void;
 
     // Options Type Defs
@@ -80,10 +103,12 @@ declare namespace SerialPort {
         xoff?: boolean | undefined;
         xany?: boolean | undefined;
         binding?: BaseBinding | undefined;
-        bindingOptions?: {
-            vmin?: number | undefined;
-            vtime?: number | undefined;
-        } | undefined;
+        bindingOptions?:
+            | {
+                  vmin?: number | undefined;
+                  vtime?: number | undefined;
+              }
+            | undefined;
     }
     interface UpdateOptions {
         baudRate?:
@@ -123,16 +148,25 @@ declare namespace SerialPort {
             constructor();
         }
         class Delimiter extends Stream.Transform {
-            constructor(options: { delimiter: string | Buffer | number[]; includeDelimiter?: boolean | undefined });
+            constructor(options: {
+                delimiter: string | Buffer | number[];
+                includeDelimiter?: boolean | undefined;
+            });
         }
         class Readline extends Delimiter {
-            constructor(
-                options: {
-                    delimiter: string | Buffer | number[];
-                    encoding?: "ascii" | "utf8" | "utf16le" | "ucs2" | "base64" | "binary" | "hex" | undefined;
-                    includeDelimiter?: boolean | undefined;
-                },
-            );
+            constructor(options: {
+                delimiter: string | Buffer | number[];
+                encoding?:
+                    | "ascii"
+                    | "utf8"
+                    | "utf16le"
+                    | "ucs2"
+                    | "base64"
+                    | "binary"
+                    | "hex"
+                    | undefined;
+                includeDelimiter?: boolean | undefined;
+            });
         }
         class Ready extends Stream.Transform {
             constructor(options: { data: string | Buffer | number[] });

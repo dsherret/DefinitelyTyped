@@ -50,7 +50,7 @@ output = table(
     ],
     {
         align: ["l", "c", "l"],
-        stringLength: s => s.length,
+        stringLength: (s) => s.length,
     },
 );
 

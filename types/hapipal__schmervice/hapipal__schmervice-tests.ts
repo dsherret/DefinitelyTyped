@@ -66,7 +66,8 @@ declare module "@hapipal/schmervice" {
     // TestServiceObject isnt declared on the interface, so this
     // tests the default handling of unknown keys by the interface
     // and the handling of merged known keys
-    const { UserService, OrganizationService, TestServiceObject } = server.services();
+    const { UserService, OrganizationService, TestServiceObject } =
+        server.services();
 
     const user = { firstName: "Johnny", lastName: "Dough" };
 
@@ -93,15 +94,9 @@ declare module "@hapipal/schmervice" {
 
     // These are undefined in real implementation but
     // still satisfy typings constraints
-    const {
-        adminService,
-        manangerService,
-        membersService,
-    } = server.services("auth");
+    const { adminService, manangerService, membersService } =
+        server.services("auth");
 
-    const {
-        crownCourtService,
-        promissoryService,
-        witnessService,
-    } = server.services("oath");
+    const { crownCourtService, promissoryService, witnessService } =
+        server.services("oath");
 })();

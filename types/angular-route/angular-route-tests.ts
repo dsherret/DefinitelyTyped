@@ -6,12 +6,16 @@
 
 declare var $routeProvider: ng.route.IRouteProvider;
 if (!$routeProvider.eagerInstantiationEnabled()) {
-    throw new Error("The default of $routeProvider.eagerInstantiationEnabled should be true.");
+    throw new Error(
+        "The default of $routeProvider.eagerInstantiationEnabled should be true.",
+    );
 }
 
 $routeProvider.eagerInstantiationEnabled(false);
 if ($routeProvider.eagerInstantiationEnabled()) {
-    throw new Error("$routeProvider.eagerInstantiationEnabled is expected to be false.");
+    throw new Error(
+        "$routeProvider.eagerInstantiationEnabled is expected to be false.",
+    );
 }
 
 $routeProvider
@@ -22,10 +26,10 @@ $routeProvider
         reloadOnSearch: false,
     })
     .when("/projects/:projectId/dashboard2", {
-        controller: function() {
+        controller: function () {
             // Look at me - I'm a function!
         },
-        template: function($routeParams?: ng.route.IRouteParamsService) {
+        template: function ($routeParams?: ng.route.IRouteParamsService) {
             return "I return a string";
         },
     })
@@ -35,15 +39,18 @@ $routeProvider
     })
     .when("/projects/:projectId/dashboard4", {
         controller: "I am a string",
-        templateUrl: function($routeParams?: ng.route.IRouteParamsService) {
+        templateUrl: function ($routeParams?: ng.route.IRouteParamsService) {
             return "I return a string";
         },
     })
     .when("/projects/:projectId/dashboard5", {
-        controller: ["$log", function($log: ng.ILogService) {
-            $log.info("I am array");
-        }],
-        templateUrl: function($routeParams?: ng.route.IRouteParamsService) {
+        controller: [
+            "$log",
+            function ($log: ng.ILogService) {
+                $log.info("I am array");
+            },
+        ],
+        templateUrl: function ($routeParams?: ng.route.IRouteParamsService) {
             return "I return a string";
         },
     })
@@ -55,16 +62,25 @@ $routeProvider
         resolveAs: "baz",
         resolveRedirectTo: [
             "$http",
-            ($http: ng.IHttpService) => $http.get("/is-admin").then(() => "/admin/lounge", () => undefined),
+            ($http: ng.IHttpService) =>
+                $http.get("/is-admin").then(
+                    () => "/admin/lounge",
+                    () => undefined,
+                ),
         ],
     })
     .when("/projects/:projectId/dashboard7", {
         reloadOnUrl: false,
-        resolveRedirectTo: () => (Math.random() < 0.5) ? "/some/route" : undefined,
+        resolveRedirectTo: () =>
+            Math.random() < 0.5 ? "/some/route" : undefined,
     })
     .otherwise({ redirectTo: "/" })
     .otherwise({
-        redirectTo: ($routeParams?: ng.route.IRouteParamsService, $locationPath?: string, $locationSearch?: any) => "",
+        redirectTo: (
+            $routeParams?: ng.route.IRouteParamsService,
+            $locationPath?: string,
+            $locationSearch?: any,
+        ) => "",
     })
     .otherwise("/");
 

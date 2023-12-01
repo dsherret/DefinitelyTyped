@@ -27,7 +27,9 @@ class FormApiMethods extends React.Component {
 
     render() {
         const FormContent = (props: { formApi?: FormApi | undefined }) => (
-            <form onSubmit={props.formApi ? props.formApi.submitForm : () => {}}>
+            <form
+                onSubmit={props.formApi ? props.formApi.submitForm : () => {}}
+            >
                 <Text field="hello" id="hello" />
                 <button type="submit">Submit</button>
             </form>
@@ -36,7 +38,7 @@ class FormApiMethods extends React.Component {
         return (
             <div>
                 <Form>
-                    {formApi => (
+                    {(formApi) => (
                         <form onSubmit={formApi.submitForm}>
                             <Text field="hello" id="hello" />
                             <button type="submit">Submit</button>
@@ -45,14 +47,13 @@ class FormApiMethods extends React.Component {
                 </Form>
 
                 <Form
-                    render={formApi => (
+                    render={(formApi) => (
                         <form onSubmit={formApi.submitForm}>
                             <Text field="hello" id="hello" />
                             <button type="submit">Submit</button>
                         </form>
                     )}
-                >
-                </Form>
+                ></Form>
 
                 <Form>
                     <FormContent />
@@ -84,30 +85,68 @@ class BasicForm extends React.Component {
     render() {
         return (
             <div>
-                <Form onSubmit={submittedValues => this.setState({ submittedValues })}>
-                    {formApi => (
+                <Form
+                    onSubmit={(submittedValues) =>
+                        this.setState({ submittedValues })
+                    }
+                >
+                    {(formApi) => (
                         <form onSubmit={formApi.submitForm} id="form2">
                             <label htmlFor="firstName">First name</label>
                             <Text field="firstName" id="firstName" />
                             <label htmlFor="lastName">Last name</label>
                             <Text field="lastName" id="lastName" />
                             <RadioGroup field="gender">
-                                {group => (
+                                {(group) => (
                                     <div>
-                                        <label htmlFor="male" className="mr-2">Male</label>
-                                        <Radio group={group} value="male" id="male" className="mr-3 d-inline-block" />
-                                        <label htmlFor="female" className="mr-2">Female</label>
-                                        <Radio group={group} value="female" id="female" className="d-inline-block" />
+                                        <label htmlFor="male" className="mr-2">
+                                            Male
+                                        </label>
+                                        <Radio
+                                            group={group}
+                                            value="male"
+                                            id="male"
+                                            className="mr-3 d-inline-block"
+                                        />
+                                        <label
+                                            htmlFor="female"
+                                            className="mr-2"
+                                        >
+                                            Female
+                                        </label>
+                                        <Radio
+                                            group={group}
+                                            value="female"
+                                            id="female"
+                                            className="d-inline-block"
+                                        />
                                     </div>
                                 )}
                             </RadioGroup>
                             <label htmlFor="bio">Bio</label>
                             <TextArea field="bio" id="bio" />
-                            <label htmlFor="authorize" className="mr-2">Authorize</label>
-                            <Checkbox field="authorize" id="authorize" className="d-inline-block" />
-                            <label htmlFor="status" className="d-block">Relationship status</label>
-                            <Select field="status" id="status" options={statusOptions} />
-                            <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                            <label htmlFor="authorize" className="mr-2">
+                                Authorize
+                            </label>
+                            <Checkbox
+                                field="authorize"
+                                id="authorize"
+                                className="d-inline-block"
+                            />
+                            <label htmlFor="status" className="d-block">
+                                Relationship status
+                            </label>
+                            <Select
+                                field="status"
+                                id="status"
+                                options={statusOptions}
+                            />
+                            <button
+                                type="submit"
+                                className="mb-4 btn btn-primary"
+                            >
+                                Submit
+                            </button>
                         </form>
                     )}
                 </Form>
@@ -122,9 +161,11 @@ class FormWithArrays extends React.Component {
         return (
             <div>
                 <Form
-                    onSubmit={submittedValues => this.setState({ submittedValues })}
+                    onSubmit={(submittedValues) =>
+                        this.setState({ submittedValues })
+                    }
                 >
-                    {formApi => (
+                    {(formApi) => (
                         <form onSubmit={formApi.submitForm} id="form3">
                             <label htmlFor="firstName2">First name</label>
                             <Text field="firstName" id="firstName2" />
@@ -134,7 +175,12 @@ class FormWithArrays extends React.Component {
                             <Text field={["friends", 1]} id="friend2" />
                             <label htmlFor="friend3">Friend3</label>
                             <Text field={["friends", 2]} id="friend3" />
-                            <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                            <button
+                                type="submit"
+                                className="mb-4 btn btn-primary"
+                            >
+                                Submit
+                            </button>
                         </form>
                     )}
                 </Form>
@@ -152,7 +198,10 @@ const Friend = ({ i }: { i: number }) => (
         <label htmlFor={`friend-last-${i}`}>Last name</label>
         <Text field={[["friends", i], "lastName"]} id={`friend-last-${i}`} />
         <label htmlFor={`friend-street-${i}`}>Street</label>
-        <Text field={["friends", i, "address", "street"]} id={`friend-street-${i}`} />
+        <Text
+            field={["friends", i, "address", "street"]}
+            id={`friend-street-${i}`}
+        />
         <label htmlFor={`friend-zip-${i}`}>Zipcode</label>
         <Text field={["friends", i, "lastName.zip"]} id={`friend-zip-${i}`} />
     </div>
@@ -163,9 +212,11 @@ class FormWithSpecialFieldSyntax extends React.Component {
         return (
             <div>
                 <Form
-                    onSubmit={submittedValues => this.setState({ submittedValues })}
+                    onSubmit={(submittedValues) =>
+                        this.setState({ submittedValues })
+                    }
                 >
-                    {formApi => (
+                    {(formApi) => (
                         <form onSubmit={formApi.submitForm} id="syntax-form">
                             <label htmlFor="nickname1">Nickname</label>
                             <Text field={["nicknames", 0]} id="nickname1" />
@@ -173,7 +224,12 @@ class FormWithSpecialFieldSyntax extends React.Component {
                             <Text field={["nicknames", 1]} id="nickname2" />
                             <Friend i={0} />
                             <Friend i={1} />
-                            <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                            <button
+                                type="submit"
+                                className="mb-4 btn btn-primary"
+                            >
+                                Submit
+                            </button>
                         </form>
                     )}
                 </Form>
@@ -186,7 +242,7 @@ class FormWithSpecialFieldSyntax extends React.Component {
 const Questions = () => (
     <NestedForm field="questions">
         <Form>
-            {formApi => (
+            {(formApi) => (
                 <div>
                     <label htmlFor="color">Whats your favorite color?</label>
                     <Text field="color" id="color" />
@@ -204,13 +260,22 @@ class NestedFormExample extends React.Component {
     render() {
         return (
             <div>
-                <Form onSubmit={submittedValues => this.setState({ submittedValues })}>
-                    {formApi => (
+                <Form
+                    onSubmit={(submittedValues) =>
+                        this.setState({ submittedValues })
+                    }
+                >
+                    {(formApi) => (
                         <form onSubmit={formApi.submitForm} id="form4">
                             <label htmlFor="firstName3">First name</label>
                             <Text field="firstName" id="firstName3" />
                             <Questions />
-                            <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                            <button
+                                type="submit"
+                                className="mb-4 btn btn-primary"
+                            >
+                                Submit
+                            </button>
                         </form>
                     )}
                 </Form>
@@ -225,9 +290,11 @@ class DynamicForm extends React.Component {
         return (
             <div>
                 <Form
-                    onSubmit={submittedValues => this.setState({ submittedValues })}
+                    onSubmit={(submittedValues) =>
+                        this.setState({ submittedValues })
+                    }
                 >
-                    {formApi => (
+                    {(formApi) => (
                         <div>
                             <button
                                 onClick={() => formApi.addValue("siblings", "")}
@@ -236,25 +303,48 @@ class DynamicForm extends React.Component {
                             >
                                 Add Sibling
                             </button>
-                            <form onSubmit={formApi.submitForm} id="dynamic-form">
-                                <label htmlFor="dynamic-first">First name</label>
+                            <form
+                                onSubmit={formApi.submitForm}
+                                id="dynamic-form"
+                            >
+                                <label htmlFor="dynamic-first">
+                                    First name
+                                </label>
                                 <Text field="firstName" id="dynamic-first" />
-                                {formApi.values.siblings
-                                    && formApi.values.siblings.map((sibling: string, i: number) => (
-                                        <div key={`sibling${i}`}>
-                                            <label htmlFor={`sibling-name-${i}`}>Name</label>
-                                            <Text field={["siblings", i]} id={`sibling-name-${i}`} />
-                                            <button
-                                                onClick={() =>
-                                                    formApi.removeValue("siblings", i)}
-                                                type="button"
-                                                className="mb-4 btn btn-danger"
-                                            >
-                                                Remove
-                                            </button>
-                                        </div>
-                                    ))}
-                                <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                                {formApi.values.siblings &&
+                                    formApi.values.siblings.map(
+                                        (sibling: string, i: number) => (
+                                            <div key={`sibling${i}`}>
+                                                <label
+                                                    htmlFor={`sibling-name-${i}`}
+                                                >
+                                                    Name
+                                                </label>
+                                                <Text
+                                                    field={["siblings", i]}
+                                                    id={`sibling-name-${i}`}
+                                                />
+                                                <button
+                                                    onClick={() =>
+                                                        formApi.removeValue(
+                                                            "siblings",
+                                                            i,
+                                                        )
+                                                    }
+                                                    type="button"
+                                                    className="mb-4 btn btn-danger"
+                                                >
+                                                    Remove
+                                                </button>
+                                            </div>
+                                        ),
+                                    )}
+                                <button
+                                    type="submit"
+                                    className="mb-4 btn btn-primary"
+                                >
+                                    Submit
+                                </button>
                             </form>
                         </div>
                     )}
@@ -268,10 +358,12 @@ class DynamicForm extends React.Component {
 const MyFriend = ({ i }: { i: number }) => (
     <NestedForm field={["friends", i]} key={`nested-friend-${i}`}>
         <Form>
-            {formApi => (
+            {(formApi) => (
                 <div>
                     <h2>Friend</h2>
-                    <label htmlFor={`nested-friend-first-${i}`}>First name</label>
+                    <label htmlFor={`nested-friend-first-${i}`}>
+                        First name
+                    </label>
                     <Text field="firstName" id={`nested-friend-first-${i}`} />
                     <label htmlFor={`nested-friend-last-${i}`}>Last name</label>
                     <Text field="lastName" id={`nested-friend-last-${i}`} />
@@ -286,15 +378,22 @@ class FormWithArrayOfNestedForms extends React.Component {
         return (
             <div>
                 <Form
-                    onSubmit={submittedValues => this.setState({ submittedValues })}
+                    onSubmit={(submittedValues) =>
+                        this.setState({ submittedValues })
+                    }
                 >
-                    {formApi => (
+                    {(formApi) => (
                         <div>
                             <form onSubmit={formApi.submitForm} id="form3">
                                 <MyFriend i={0} />
                                 <MyFriend i={1} />
                                 <MyFriend i={2} />
-                                <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                                <button
+                                    type="submit"
+                                    className="mb-4 btn btn-primary"
+                                >
+                                    Submit
+                                </button>
                             </form>
                         </div>
                     )}
@@ -337,10 +436,14 @@ class StyledForm extends React.Component {
 
     warningValidator = (values: FormValues) => {
         const validateFirstName = (firstName: string) => {
-            return firstName && firstName.length < 2 ? "First name must be longer than 2 characters." : undefined;
+            return firstName && firstName.length < 2
+                ? "First name must be longer than 2 characters."
+                : undefined;
         };
         const validateLastName = (lastName: string) => {
-            return lastName && lastName.length < 2 ? "Last name must be longer than 2 characters." : undefined;
+            return lastName && lastName.length < 2
+                ? "Last name must be longer than 2 characters."
+                : undefined;
         };
         const validateBio = (bio: string) => {
             return bio && bio.replace(/s+/g, " ").trim().split(" ").length < 5
@@ -365,7 +468,9 @@ class StyledForm extends React.Component {
             return !errors["lastName"] ? "Your last name is sick!" : undefined;
         };
         const validateGender = () => {
-            return !errors["gender"] ? "Thanks for entering your gender." : undefined;
+            return !errors["gender"]
+                ? "Thanks for entering your gender."
+                : undefined;
         };
         const validateBio = () => {
             return !errors["bio"] ? "Cool Bio!" : undefined;
@@ -374,7 +479,9 @@ class StyledForm extends React.Component {
             return !errors["authorize"] ? "You are now authorized." : undefined;
         };
         const validateStatus = () => {
-            return !errors["status"] ? "Thanks for entering your status." : undefined;
+            return !errors["status"]
+                ? "Thanks for entering your status."
+                : undefined;
         };
         return {
             firstName: validateFirstName(),
@@ -392,9 +499,11 @@ class StyledForm extends React.Component {
                 validateError={this.errorValidator}
                 validateWarning={this.warningValidator}
                 validateSuccess={this.successValidator}
-                onSubmit={submittedValues => this.setState({ submittedValues })}
+                onSubmit={(submittedValues) =>
+                    this.setState({ submittedValues })
+                }
             >
-                {formApi => (
+                {(formApi) => (
                     <form onSubmit={formApi.submitForm} id="form2">
                         <label htmlFor="firstName">First name</label>
                         <StyledText field="firstName" id="firstName" />
@@ -402,7 +511,7 @@ class StyledForm extends React.Component {
                         <StyledText field="lastName" id="lastName" />
                         <label>Choose Gender</label>
                         <StyledRadioGroup field="gender">
-                            {group => (
+                            {(group) => (
                                 <div>
                                     <StyledRadio
                                         group={group}
@@ -423,10 +532,23 @@ class StyledForm extends React.Component {
                         </StyledRadioGroup>
                         <label htmlFor="bio">Bio</label>
                         <StyledTextArea field="bio" id="bio" />
-                        <StyledCheckbox field="authorize" id="authorize" label="Authorize" className="d-inline-block" />
-                        <label htmlFor="status" className="d-block">Relationship status</label>
-                        <StyledSelect field="status" id="status" options={statusOptions} />
-                        <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                        <StyledCheckbox
+                            field="authorize"
+                            id="authorize"
+                            label="Authorize"
+                            className="d-inline-block"
+                        />
+                        <label htmlFor="status" className="d-block">
+                            Relationship status
+                        </label>
+                        <StyledSelect
+                            field="status"
+                            id="status"
+                            options={statusOptions}
+                        />
+                        <button type="submit" className="mb-4 btn btn-primary">
+                            Submit
+                        </button>
                     </form>
                 )}
             </Form>
@@ -451,11 +573,7 @@ class CustomTextWrapper extends React.Component<{
     onInput: any;
 }> {
     render() {
-        const {
-            fieldApi,
-            onInput,
-            ...rest
-        } = this.props;
+        const { fieldApi, onInput, ...rest } = this.props;
 
         const {
             getValue,
@@ -486,8 +604,12 @@ class CustomTextWrapper extends React.Component<{
                     {...rest}
                 />
                 {error ? <Message color="red" message={error} /> : null}
-                {!error && warning ? <Message color="orange" message={warning} /> : null}
-                {!error && !warning && success ? <Message color="green" message={success} /> : null}
+                {!error && warning ? (
+                    <Message color="orange" message={warning} />
+                ) : null}
+                {!error && !warning && success ? (
+                    <Message color="green" message={success} />
+                ) : null}
             </div>
         );
     }
@@ -498,22 +620,28 @@ const CustomText = FormField(CustomTextWrapper);
 
 const errorValidator = (values: FormValues) => {
     return {
-        hello: !values.hello || !values.hello.match(/Hello World/) ? "Input must contain 'Hello World'" : undefined,
+        hello:
+            !values.hello || !values.hello.match(/Hello World/)
+                ? "Input must contain 'Hello World'"
+                : undefined,
     };
 };
 
 const warningValidator = (values: FormValues) => {
     return {
-        hello: !values.hello
-                || !values.hello.match(/^Hello World$/)
-            ? "Input should equal 'Hello World'"
-            : undefined,
+        hello:
+            !values.hello || !values.hello.match(/^Hello World$/)
+                ? "Input should equal 'Hello World'"
+                : undefined,
     };
 };
 
 const successValidator = (values: FormValues) => {
     return {
-        hello: values.hello && values.hello.match(/Hello World/) ? "Thanks for entering 'Hello World'!" : undefined,
+        hello:
+            values.hello && values.hello.match(/Hello World/)
+                ? "Thanks for entering 'Hello World'!"
+                : undefined,
     };
 };
 
@@ -526,13 +654,18 @@ class FormWithCustomInput extends React.Component {
                     validateSuccess={successValidator}
                     validateError={errorValidator}
                 >
-                    {formApi => (
+                    {(formApi) => (
                         <form onSubmit={formApi.submitForm} id="form5">
                             <label htmlFor="firstName4">First name</label>
                             <Text field="firstName" id="firstName4" />
                             <label htmlFor="hello2">Custom hello world</label>
                             <CustomText field="hello" id="hello2" />
-                            <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                            <button
+                                type="submit"
+                                className="mb-4 btn btn-primary"
+                            >
+                                Submit
+                            </button>
                         </form>
                     )}
                 </Form>
@@ -544,13 +677,18 @@ class FormWithCustomInput extends React.Component {
 // Async Validators
 const aserrorValidator = (values: FormValues) => {
     return {
-        username: !values.username || values.username.trim() === "" ? "Username is a required field" : undefined,
+        username:
+            !values.username || values.username.trim() === ""
+                ? "Username is a required field"
+                : undefined,
     };
 };
 
 const assuccessValidator = (values: FormValues, errors: FormErrors) => {
     return {
-        username: !errors.username ? "Awesome! your username is good to go!" : undefined,
+        username: !errors.username
+            ? "Awesome! your username is good to go!"
+            : undefined,
     };
 };
 
@@ -563,11 +701,13 @@ const doesUsernameExist = (username: string) =>
             }
             // Simulate request faulure
             if (username === "reject") {
-                reject("Failure while making call to validate username does not exist");
+                reject(
+                    "Failure while making call to validate username does not exist",
+                );
             }
             // Sumulate username success check
             resolve({});
-        }, 2000)
+        }, 2000),
     );
 
 const asyncValidators = {
@@ -586,11 +726,16 @@ class AsynchronousFormValidation extends React.Component {
                     validateSuccess={assuccessValidator}
                     asyncValidators={asyncValidators}
                 >
-                    {formApi => (
+                    {(formApi) => (
                         <form onSubmit={formApi.submitForm} id="form6">
                             <label htmlFor="username">Username</label>
                             <Text field="username" id="username" />
-                            <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                            <button
+                                type="submit"
+                                className="mb-4 btn btn-primary"
+                            >
+                                Submit
+                            </button>
                         </form>
                     )}
                 </Form>
@@ -620,7 +765,7 @@ const NestedFormContent = ({ formApi }: { formApi: FormApi }) => {
                     validateSuccess={successValidator}
                     asyncValidators={asyncValidators3}
                 >
-                    {formApi => <NestedNestedFormContent formApi={formApi} />}
+                    {(formApi) => <NestedNestedFormContent formApi={formApi} />}
                 </Form>
             </NestedForm>
         </div>
@@ -639,10 +784,12 @@ const FormContent = ({ formApi }: { formApi: FormApi }) => {
                         validateSuccess={successValidator}
                         asyncValidators={asyncValidators2}
                     >
-                        {formApi => <NestedFormContent formApi={formApi} />}
+                        {(formApi) => <NestedFormContent formApi={formApi} />}
                     </Form>
                 </NestedForm>
-                <button type="submit" className="mb-4 btn btn-primary">Submit</button>
+                <button type="submit" className="mb-4 btn btn-primary">
+                    Submit
+                </button>
             </form>
         </div>
     );
@@ -650,13 +797,18 @@ const FormContent = ({ formApi }: { formApi: FormApi }) => {
 
 const naserrorValidator = (values: FormValues) => {
     return {
-        username: !values.username || values.username.trim() === "" ? "Username is a required field" : undefined,
+        username:
+            !values.username || values.username.trim() === ""
+                ? "Username is a required field"
+                : undefined,
     };
 };
 
 const nassuccessValidator = (values: FormValues, errors: FormErrors) => {
     return {
-        username: !errors.username ? "Awesome! your username is good to go!" : undefined,
+        username: !errors.username
+            ? "Awesome! your username is good to go!"
+            : undefined,
     };
 };
 
@@ -669,11 +821,13 @@ const nasdoesUsernameExist = (username: string, ms: number) =>
             }
             // Simulate request faulure
             if (username === "reject") {
-                reject("Failure while making call to validate username does not exist");
+                reject(
+                    "Failure while making call to validate username does not exist",
+                );
             }
             // Sumulate username success check
             resolve({});
-        }, ms)
+        }, ms),
     );
 
 const nasasyncValidators = {
@@ -706,7 +860,7 @@ class NestedAsynchronousFormValidation extends React.Component {
                     validateSuccess={nassuccessValidator}
                     asyncValidators={nasasyncValidators}
                 >
-                    {formApi => <FormContent formApi={formApi} />}
+                    {(formApi) => <FormContent formApi={formApi} />}
                 </Form>
             </div>
         );

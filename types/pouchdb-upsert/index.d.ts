@@ -10,7 +10,10 @@ declare namespace PouchDB {
          * If this diffFunc returns falsey, then the update won't be performed (as an optimization).
          * If the document does not already exist, then {} will be the input to diffFunc.
          */
-        upsert<Model>(docId: Core.DocumentId, diffFun: UpsertDiffCallback<Content & Model>): Promise<UpsertResponse>;
+        upsert<Model>(
+            docId: Core.DocumentId,
+            diffFun: UpsertDiffCallback<Content & Model>,
+        ): Promise<UpsertResponse>;
 
         /**
          * Perform an upsert (update or insert) operation. If a callback is not provided, the Promise based version
@@ -34,7 +37,9 @@ declare namespace PouchDB {
          * @param doc - the document to insert. Should contain an _id if docId is not specified
          * If the document already exists, then the Promise will just resolve immediately.
          */
-        putIfNotExists<Model>(doc: Core.Document<Content & Model>): Promise<UpsertResponse>;
+        putIfNotExists<Model>(
+            doc: Core.Document<Content & Model>,
+        ): Promise<UpsertResponse>;
 
         //
         /**
@@ -47,7 +52,10 @@ declare namespace PouchDB {
          * If you don't specify a callback, then the Promise version of this function will be invoked and it
          * will return a Promise.
          */
-        putIfNotExists<Model>(doc: Core.Document<Content & Model>, callback: Core.Callback<UpsertResponse>): void;
+        putIfNotExists<Model>(
+            doc: Core.Document<Content & Model>,
+            callback: Core.Callback<UpsertResponse>,
+        ): void;
     }
 
     type CancelUpsert = "" | 0 | false | null | undefined; // falsey values
@@ -56,7 +64,7 @@ declare namespace PouchDB {
     // `{} | Core.Document<Content>` to `Core.Document<Content>`.
     type UpsertDiffCallback<Content extends {}> = (
         doc: Partial<Core.Document<Content>>,
-    ) => Content & Partial<Core.IdMeta> | CancelUpsert;
+    ) => (Content & Partial<Core.IdMeta>) | CancelUpsert;
 
     interface UpsertResponse {
         id: Core.DocumentId;

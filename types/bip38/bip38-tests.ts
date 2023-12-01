@@ -22,10 +22,19 @@ const progressCallback = (status: bip38.ProgressStatus) => {
 };
 
 // Test encrypt without progressCallback
-const encryptedKey = bip38.encrypt(decoded.privateKey, decoded.compressed, "TestingOneTwoThree");
+const encryptedKey = bip38.encrypt(
+    decoded.privateKey,
+    decoded.compressed,
+    "TestingOneTwoThree",
+);
 
 // Test encrypt with progressCallback
-bip38.encrypt(decoded.privateKey, decoded.compressed, "TestingOneTwoThree", progressCallback);
+bip38.encrypt(
+    decoded.privateKey,
+    decoded.compressed,
+    "TestingOneTwoThree",
+    progressCallback,
+);
 
 // Test decrypt without progressCallback
 const decryptedKey = bip38.decrypt(encryptedKey, "TestingOneTwoThree");
@@ -35,7 +44,11 @@ bip38.decrypt(encryptedKey, "TestingOneTwoThree", progressCallback);
 
 // Test encryptAsync without optional params, test the result type
 bip38
-    .encryptAsync(Buffer.from("TestEncryptAsync"), true, "TestEncryptAsyncPassPhrase")
+    .encryptAsync(
+        Buffer.from("TestEncryptAsync"),
+        true,
+        "TestEncryptAsyncPassPhrase",
+    )
     .then((result: string) => result);
 
 // Test encryptAsync with all params, test the result type
@@ -52,7 +65,11 @@ bip38
 
 // Test encryptRawAsync without optional params, test the result type
 bip38
-    .encryptRawAsync(Buffer.from("TestEncryptRawAsync"), true, "TestEncryptRawAsyncPassPhrase")
+    .encryptRawAsync(
+        Buffer.from("TestEncryptRawAsync"),
+        true,
+        "TestEncryptRawAsyncPassPhrase",
+    )
     .then((result: Buffer) => result);
 
 // Test encryptRawAsync with all params, test the result type
@@ -68,25 +85,49 @@ bip38
     .then((result: Buffer) => result);
 
 // Test decryptAsync without optional params, test the result type
-bip38.decryptAsync("SomeEncryptedDummy", "MyPassPhrase").then((result: bip38.DecryptResult) => result);
+bip38
+    .decryptAsync("SomeEncryptedDummy", "MyPassPhrase")
+    .then((result: bip38.DecryptResult) => result);
 
 // Test decryptAsync with all params, test the result type
 bip38
-    .decryptAsync("SomeEncryptedDummy", "MyPassPhrase", progressCallback, SCRYPT_PARAMS, 10)
+    .decryptAsync(
+        "SomeEncryptedDummy",
+        "MyPassPhrase",
+        progressCallback,
+        SCRYPT_PARAMS,
+        10,
+    )
     .then((result: bip38.DecryptResult) => result);
 
 // Test decryptRawAsync without optional params, test the result type
-bip38.decryptRawAsync(Buffer.from("SomeEncryptedDummy"), "MyPassPhrase").then((result: bip38.DecryptResult) => result);
+bip38
+    .decryptRawAsync(Buffer.from("SomeEncryptedDummy"), "MyPassPhrase")
+    .then((result: bip38.DecryptResult) => result);
 
 // Test decryptRawAsync with all params, test the result type
 bip38
-    .decryptRawAsync(Buffer.from("SomeEncryptedDummy"), "MyPassPhrase", progressCallback, SCRYPT_PARAMS, 10)
+    .decryptRawAsync(
+        Buffer.from("SomeEncryptedDummy"),
+        "MyPassPhrase",
+        progressCallback,
+        SCRYPT_PARAMS,
+        10,
+    )
     .then((result: bip38.DecryptResult) => result);
 
 // Test decryptECMultAsync without optional params, test the result type
-bip38.decryptECMultAsync("SomeEncryptedDummy", "MyPassPhrase").then((result: bip38.DecryptResult) => result);
+bip38
+    .decryptECMultAsync("SomeEncryptedDummy", "MyPassPhrase")
+    .then((result: bip38.DecryptResult) => result);
 
 // Test decryptECMultAsync with all params, test the result type
 bip38
-    .decryptECMultAsync("SomeEncryptedDummy", "MyPassPhrase", progressCallback, SCRYPT_PARAMS, 10)
+    .decryptECMultAsync(
+        "SomeEncryptedDummy",
+        "MyPassPhrase",
+        progressCallback,
+        SCRYPT_PARAMS,
+        10,
+    )
     .then((result: bip38.DecryptResult) => result);

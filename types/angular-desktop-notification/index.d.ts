@@ -162,7 +162,10 @@ declare module "angular" {
              * This method will display the notification using the parameter values.
              * See all available options here at https://developer.mozilla.org/en-US/docs/Web/API/notification#Instance_properties
              */
-            show(title: string, options?: NotificationOptions | AugmentedNotificationOptions): void;
+            show(
+                title: string,
+                options?: NotificationOptions | AugmentedNotificationOptions,
+            ): void;
         }
     }
 }

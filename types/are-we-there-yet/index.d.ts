@@ -4,7 +4,11 @@ import { EventEmitter } from "events";
 import { Transform, TransformOptions } from "stream";
 
 export type TrackerObject = Tracker | TrackerGroup | TrackerStream;
-export type TrackerEventListener = (name: string, completed: number, tracker: TrackerObject) => void;
+export type TrackerEventListener = (
+    name: string,
+    completed: number,
+    tracker: TrackerObject,
+) => void;
 export type GenericEventListener = (...args: any[]) => void;
 
 export class TrackerBase extends EventEmitter {
@@ -48,8 +52,14 @@ export class TrackerStream extends Transform {
     completed(): number;
 
     addListener(event: "change", listener: TrackerEventListener): this;
-    addListener(event: "data", listener: (chunk: Buffer | string) => void): this;
-    addListener(event: "readable" | "end" | "close", listener: () => void): this;
+    addListener(
+        event: "data",
+        listener: (chunk: Buffer | string) => void,
+    ): this;
+    addListener(
+        event: "readable" | "end" | "close",
+        listener: () => void,
+    ): this;
     addListener(event: "error", listener: (err: Error) => void): this;
     addListener(event: string, listener: GenericEventListener): this;
 
@@ -66,20 +76,38 @@ export class TrackerStream extends Transform {
     once(event: string, listener: GenericEventListener): this;
 
     prependListener(event: "change", listener: TrackerEventListener): this;
-    prependListener(event: "data", listener: (chunk: Buffer | string) => void): this;
-    prependListener(event: "readable" | "end" | "close", listener: () => void): this;
+    prependListener(
+        event: "data",
+        listener: (chunk: Buffer | string) => void,
+    ): this;
+    prependListener(
+        event: "readable" | "end" | "close",
+        listener: () => void,
+    ): this;
     prependListener(event: "error", listener: (err: Error) => void): this;
     prependListener(event: string, listener: GenericEventListener): this;
 
     prependOnceListener(event: "change", listener: TrackerEventListener): this;
-    prependOnceListener(event: "data", listener: (chunk: Buffer | string) => void): this;
-    prependOnceListener(event: "readable" | "end" | "close", listener: () => void): this;
+    prependOnceListener(
+        event: "data",
+        listener: (chunk: Buffer | string) => void,
+    ): this;
+    prependOnceListener(
+        event: "readable" | "end" | "close",
+        listener: () => void,
+    ): this;
     prependOnceListener(event: "error", listener: (err: Error) => void): this;
     prependOnceListener(event: string, listener: GenericEventListener): this;
 
     removeListener(event: "change", listener: TrackerEventListener): this;
-    removeListener(event: "data", listener: (chunk: Buffer | string) => void): this;
-    removeListener(event: "readable" | "end" | "close", listener: () => void): this;
+    removeListener(
+        event: "data",
+        listener: (chunk: Buffer | string) => void,
+    ): this;
+    removeListener(
+        event: "readable" | "end" | "close",
+        listener: () => void,
+    ): this;
     removeListener(event: "error", listener: (err: Error) => void): this;
     removeListener(event: string, listener: GenericEventListener): this;
 }

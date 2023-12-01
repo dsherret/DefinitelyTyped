@@ -93,15 +93,15 @@ function _NaN() {
     expect("NaN").to.be.not.NaN;
     NaN.should.be.NaN;
     (12).should.be.not.NaN;
-    ("NaN").should.be.not.NaN;
+    "NaN".should.be.not.NaN;
 }
 
 function exist() {
     const foo = "bar";
     expect(foo).to.exist;
     should.exist(foo);
-    expect(void (0)).to.not.exist;
-    should.not.exist(void (0));
+    expect(void 0).to.not.exist;
+    should.not.exist(void 0);
 }
 
 function argumentsTest() {
@@ -117,8 +117,8 @@ function argumentsTest() {
 }
 
 function equal() {
-    expect(undefined).to.equal(void (0));
-    should.equal(undefined, void (0));
+    expect(undefined).to.equal(void 0);
+    should.equal(undefined, void 0);
 }
 
 function _typeof() {
@@ -137,23 +137,21 @@ function _typeof() {
     // tslint:disable-next-line:no-construct
     expect(new Number(1)).to.be.a("number");
     // tslint:disable-next-line:no-construct
-    (new Number(1)).should.be.a("number");
+    new Number(1).should.be.a("number");
     expect(Number(1)).to.be.a("number");
     Number(1).should.be.a("number");
     expect(true).to.be.a("boolean");
     true.should.be.a("boolean");
     expect(new Array()).to.be.a("array");
-    (new Array()).should.be.a("array");
+    new Array().should.be.a("array");
     expect(new Object()).to.be.a("object");
-    (new Object()).should.be.a("object");
+    new Object().should.be.a("object");
     expect({}).to.be.a("object");
     ({}).should.be.a("object");
     expect([]).to.be.a("array");
     [].should.be.a("array");
-    expect(() => {
-    }).to.be.a("function");
-    (() => {
-    }).should.be.a("function");
+    expect(() => {}).to.be.a("function");
+    (() => {}).should.be.a("function");
     expect(null).to.be.a("null");
     // N.B. previous line has no should equivalent
 
@@ -165,12 +163,11 @@ function finite() {
     expect(1).to.be.finite;
 }
 
-class Foo {
-}
+class Foo {}
 
 function _instanceof() {
     expect(new Foo()).to.be.an.instanceof(Foo);
-    (new Foo()).should.be.an.instanceof(Foo);
+    new Foo().should.be.an.instanceof(Foo);
 
     expect(3).to.an.instanceof(Foo, "blah");
     (3).should.an.instanceof(Foo, "blah");
@@ -265,17 +262,37 @@ function above() {
     expect(10).to.not.be.above(6, "blah");
     (10).should.not.be.above(6, "blah");
 
-    expect(new Date("December 17, 1995 03:24:30")).to.not.be.above(new Date("December 17, 1995 03:24:20"));
-    new Date("December 17, 1995 03:24:30").should.not.be.above(new Date("December 17, 1995 03:24:20"));
+    expect(new Date("December 17, 1995 03:24:30")).to.not.be.above(
+        new Date("December 17, 1995 03:24:20"),
+    );
+    new Date("December 17, 1995 03:24:30").should.not.be.above(
+        new Date("December 17, 1995 03:24:20"),
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.be.above(new Date("December 17, 1995 03:24:20"));
-    new Date("December 17, 1995 03:24:30").should.be.above(new Date("December 17, 1995 03:24:20"));
+    expect(new Date("December 17, 1995 03:24:30")).to.be.above(
+        new Date("December 17, 1995 03:24:20"),
+    );
+    new Date("December 17, 1995 03:24:30").should.be.above(
+        new Date("December 17, 1995 03:24:20"),
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.not.be.above(new Date("December 17, 1995 03:24:20"), "blah");
-    new Date("December 17, 1995 03:24:30").should.not.be.above(new Date("December 17, 1995 03:24:20"), "blah");
+    expect(new Date("December 17, 1995 03:24:30")).to.not.be.above(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
+    new Date("December 17, 1995 03:24:30").should.not.be.above(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.be.above(new Date("December 17, 1995 03:24:20"), "blah");
-    new Date("December 17, 1995 03:24:30").should.be.above(new Date("December 17, 1995 03:24:20"), "blah");
+    expect(new Date("December 17, 1995 03:24:30")).to.be.above(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
+    new Date("December 17, 1995 03:24:30").should.be.above(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
 
     expect("foo").to.have.length.above(4, "blah");
     "foo".should.have.length.above(4, "blah");
@@ -306,17 +323,37 @@ function least() {
     expect(10).to.not.be.at.least(6, "blah");
     (10).should.not.be.at.least(6, "blah");
 
-    expect(new Date("December 17, 1995 03:24:30")).to.not.be.least(new Date("December 17, 1995 03:24:20"));
-    new Date("December 17, 1995 03:24:30").should.not.be.least(new Date("December 17, 1995 03:24:20"));
+    expect(new Date("December 17, 1995 03:24:30")).to.not.be.least(
+        new Date("December 17, 1995 03:24:20"),
+    );
+    new Date("December 17, 1995 03:24:30").should.not.be.least(
+        new Date("December 17, 1995 03:24:20"),
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.be.least(new Date("December 17, 1995 03:24:20"));
-    new Date("December 17, 1995 03:24:30").should.be.least(new Date("December 17, 1995 03:24:20"));
+    expect(new Date("December 17, 1995 03:24:30")).to.be.least(
+        new Date("December 17, 1995 03:24:20"),
+    );
+    new Date("December 17, 1995 03:24:30").should.be.least(
+        new Date("December 17, 1995 03:24:20"),
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.not.be.least(new Date("December 17, 1995 03:24:20"), "blah");
-    new Date("December 17, 1995 03:24:30").should.not.be.least(new Date("December 17, 1995 03:24:20"), "blah");
+    expect(new Date("December 17, 1995 03:24:30")).to.not.be.least(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
+    new Date("December 17, 1995 03:24:30").should.not.be.least(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.be.least(new Date("December 17, 1995 03:24:20"), "blah");
-    new Date("December 17, 1995 03:24:30").should.be.least(new Date("December 17, 1995 03:24:20"), "blah");
+    expect(new Date("December 17, 1995 03:24:30")).to.be.least(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
+    new Date("December 17, 1995 03:24:30").should.be.least(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
 
     expect("foo").to.have.length.of.at.least(4, "blah");
     "foo".should.have.length.of.at.least(4, "blah");
@@ -350,17 +387,37 @@ function below() {
     expect(6).to.not.be.below(10, "blah");
     (6).should.not.be.below(10, "blah");
 
-    expect(new Date("December 17, 1995 03:24:30")).to.not.be.below(new Date("December 17, 1995 03:24:20"));
-    new Date("December 17, 1995 03:24:30").should.not.be.below(new Date("December 17, 1995 03:24:20"));
+    expect(new Date("December 17, 1995 03:24:30")).to.not.be.below(
+        new Date("December 17, 1995 03:24:20"),
+    );
+    new Date("December 17, 1995 03:24:30").should.not.be.below(
+        new Date("December 17, 1995 03:24:20"),
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.be.below(new Date("December 17, 1995 03:24:20"));
-    new Date("December 17, 1995 03:24:30").should.be.below(new Date("December 17, 1995 03:24:20"));
+    expect(new Date("December 17, 1995 03:24:30")).to.be.below(
+        new Date("December 17, 1995 03:24:20"),
+    );
+    new Date("December 17, 1995 03:24:30").should.be.below(
+        new Date("December 17, 1995 03:24:20"),
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.not.be.below(new Date("December 17, 1995 03:24:20"), "blah");
-    new Date("December 17, 1995 03:24:30").should.not.be.below(new Date("December 17, 1995 03:24:20"), "blah");
+    expect(new Date("December 17, 1995 03:24:30")).to.not.be.below(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
+    new Date("December 17, 1995 03:24:30").should.not.be.below(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.be.below(new Date("December 17, 1995 03:24:20"), "blah");
-    new Date("December 17, 1995 03:24:30").should.be.below(new Date("December 17, 1995 03:24:20"), "blah");
+    expect(new Date("December 17, 1995 03:24:30")).to.be.below(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
+    new Date("December 17, 1995 03:24:30").should.be.below(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
 
     expect("foo").to.have.length.below(2, "blah");
     "foo".should.have.length.below(2, "blah");
@@ -393,17 +450,37 @@ function most() {
     expect(6).to.not.be.at.most(10, "blah");
     (6).should.not.be.at.most(10, "blah");
 
-    expect(new Date("December 17, 1995 03:24:30")).to.not.be.most(new Date("December 17, 1995 03:24:20"));
-    new Date("December 17, 1995 03:24:30").should.not.be.most(new Date("December 17, 1995 03:24:20"));
+    expect(new Date("December 17, 1995 03:24:30")).to.not.be.most(
+        new Date("December 17, 1995 03:24:20"),
+    );
+    new Date("December 17, 1995 03:24:30").should.not.be.most(
+        new Date("December 17, 1995 03:24:20"),
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.be.most(new Date("December 17, 1995 03:24:20"));
-    new Date("December 17, 1995 03:24:30").should.be.most(new Date("December 17, 1995 03:24:20"));
+    expect(new Date("December 17, 1995 03:24:30")).to.be.most(
+        new Date("December 17, 1995 03:24:20"),
+    );
+    new Date("December 17, 1995 03:24:30").should.be.most(
+        new Date("December 17, 1995 03:24:20"),
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.not.be.most(new Date("December 17, 1995 03:24:20"), "blah");
-    new Date("December 17, 1995 03:24:30").should.not.be.most(new Date("December 17, 1995 03:24:20"), "blah");
+    expect(new Date("December 17, 1995 03:24:30")).to.not.be.most(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
+    new Date("December 17, 1995 03:24:30").should.not.be.most(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
 
-    expect(new Date("December 17, 1995 03:24:30")).to.be.most(new Date("December 17, 1995 03:24:20"), "blah");
-    new Date("December 17, 1995 03:24:30").should.be.most(new Date("December 17, 1995 03:24:20"), "blah");
+    expect(new Date("December 17, 1995 03:24:30")).to.be.most(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
+    new Date("December 17, 1995 03:24:30").should.be.most(
+        new Date("December 17, 1995 03:24:20"),
+        "blah",
+    );
 
     expect("foo").to.have.length.of.at.most(2, "blah");
     "foo".should.have.length.of.at.most(2, "blah");
@@ -462,10 +539,10 @@ function eql() {
 
 function buffer() {
     expect(new Buffer([1])).to.eql(new Buffer([1]));
-    (new Buffer([1])).should.eql(new Buffer([1]));
+    new Buffer([1]).should.eql(new Buffer([1]));
 
     expect(new Buffer([0])).to.eql(new Buffer([1]));
-    (new Buffer([0])).should.eql(new Buffer([1]));
+    new Buffer([0]).should.eql(new Buffer([1]));
 }
 
 function equal2() {
@@ -548,7 +625,7 @@ function empty() {
     expect(["foo"]).not.to.be.empty;
     ["foo"].should.not.be.empty;
     expect(new FakeArgs()).to.be.empty;
-    (new FakeArgs()).should.be.empty;
+    new FakeArgs().should.be.empty;
     expect({ arguments: 0 }).not.to.be.empty;
     ({ arguments: 0 }).should.not.be.empty;
     expect({}).to.be.empty;
@@ -570,7 +647,7 @@ function empty() {
     ["foo"].should.be.empty;
 
     expect(new FakeArgs()).not.to.be.empty;
-    (new FakeArgs()).should.not.be.empty;
+    new FakeArgs().should.not.be.empty;
 
     expect({ arguments: 0 }).to.be.empty;
     ({ arguments: 0 }).should.be.empty;
@@ -589,36 +666,27 @@ function property() {
     expect(4).to.not.have.property("length");
     (4).should.not.have.property("length");
 
-    expect({ "foo.bar": "baz" })
-        .to.have.property("foo.bar");
+    expect({ "foo.bar": "baz" }).to.have.property("foo.bar");
     ({ "foo.bar": "baz" }).should.have.property("foo.bar");
-    expect({ foo: { bar: "baz" } })
-        .to.not.have.property("foo.bar");
+    expect({ foo: { bar: "baz" } }).to.not.have.property("foo.bar");
     ({ foo: { bar: "baz" } }).should.not.have.property("foo.bar");
 
     expect("asd").to.have.property("foo");
     "asd".should.have.property("foo");
 
-    expect({ foo: { bar: "baz" } })
-        .to.have.property("foo.bar");
+    expect({ foo: { bar: "baz" } }).to.have.property("foo.bar");
 
     ({ foo: { bar: "baz" } }).should.have.property("foo.bar");
 }
 
 function nestedProperty() {
-    expect({ "foo.bar": "baz" })
-        .to.not.have.nested.property("foo.bar");
-    ({ "foo.bar": "baz" }).should
-        .not.have.nested.property("foo.bar");
-    expect({ foo: { bar: "baz" } })
-        .to.have.nested.property("foo.bar");
-    ({ foo: { bar: "baz" } }).should
-        .have.nested.property("foo.bar");
+    expect({ "foo.bar": "baz" }).to.not.have.nested.property("foo.bar");
+    ({ "foo.bar": "baz" }).should.not.have.nested.property("foo.bar");
+    expect({ foo: { bar: "baz" } }).to.have.nested.property("foo.bar");
+    ({ foo: { bar: "baz" } }).should.have.nested.property("foo.bar");
 
-    expect({ "foo.bar": "baz" })
-        .to.have.nested.property("foo.bar");
-    ({ "foo.bar": "baz" }).should
-        .have.nested.property("foo.bar");
+    expect({ "foo.bar": "baz" }).to.have.nested.property("foo.bar");
+    ({ "foo.bar": "baz" }).should.have.nested.property("foo.bar");
 }
 
 function property2() {
@@ -642,23 +710,31 @@ function property2() {
 }
 
 function nestedProperty2() {
-    expect({ foo: { bar: "baz" } })
-        .to.have.nested.property("foo.bar", "baz");
-    ({ foo: { bar: "baz" } }).should
-        .have.nested.property("foo.bar", "baz");
+    expect({ foo: { bar: "baz" } }).to.have.nested.property("foo.bar", "baz");
+    ({ foo: { bar: "baz" } }).should.have.nested.property("foo.bar", "baz");
 
-    expect({ foo: { bar: "baz" } })
-        .to.have.nested.property("foo.bar", "quux", "blah");
-    ({ foo: { bar: "baz" } }).should
-        .have.nested.property("foo.bar", "quux", "blah");
-    expect({ foo: { bar: "baz" } })
-        .to.not.have.nested.property("foo.bar", "baz", "blah");
-    ({ foo: { bar: "baz" } }).should
-        .not.have.nested.property("foo.bar", "baz", "blah");
-    expect({ foo: 5 })
-        .to.not.have.nested.property("foo.bar", "baz", "blah");
-    ({ foo: 5 }).should
-        .not.have.nested.property("foo.bar", "baz", "blah");
+    expect({ foo: { bar: "baz" } }).to.have.nested.property(
+        "foo.bar",
+        "quux",
+        "blah",
+    );
+    ({ foo: { bar: "baz" } }).should.have.nested.property(
+        "foo.bar",
+        "quux",
+        "blah",
+    );
+    expect({ foo: { bar: "baz" } }).to.not.have.nested.property(
+        "foo.bar",
+        "baz",
+        "blah",
+    );
+    ({ foo: { bar: "baz" } }).should.not.have.nested.property(
+        "foo.bar",
+        "baz",
+        "blah",
+    );
+    expect({ foo: 5 }).to.not.have.nested.property("foo.bar", "baz", "blah");
+    ({ foo: 5 }).should.not.have.nested.property("foo.bar", "baz", "blah");
 }
 
 function own() {
@@ -725,8 +801,12 @@ function ownPropertyDescriptor() {
         writable: false,
         value: 3,
     });
-    expect("test").to.haveOwnPropertyDescriptor("length").to.have.property("enumerable", false);
-    expect("test").to.haveOwnPropertyDescriptor("length").to.contain.keys("value");
+    expect("test")
+        .to.haveOwnPropertyDescriptor("length")
+        .to.have.property("enumerable", false);
+    expect("test")
+        .to.haveOwnPropertyDescriptor("length")
+        .to.contain.keys("value");
 
     "test".should.have.ownPropertyDescriptor("length");
     "test".should.have.ownPropertyDescriptor("length", {
@@ -741,7 +821,9 @@ function ownPropertyDescriptor() {
         writable: false,
         value: 3,
     });
-    "test".should.haveOwnPropertyDescriptor("length").to.have.property("enumerable", false);
+    "test".should
+        .haveOwnPropertyDescriptor("length")
+        .to.have.property("enumerable", false);
     "test".should.haveOwnPropertyDescriptor("length").to.contain.keys("value");
     "test".should.have.an.ownPropertyDescriptor("length");
 }
@@ -871,10 +953,10 @@ function keys() {
 
 function deepKeys() {
     expect(new Set([{ a: 1 }])).to.have.deep.keys([{ a: 1 }]);
-    (new Set([{ a: 1 }])).should.have.deep.keys([{ a: 1 }]);
+    new Set([{ a: 1 }]).should.have.deep.keys([{ a: 1 }]);
 
     expect(new Set([{ a: 1 }])).not.to.have.deep.keys([{ b: 1 }]);
-    (new Set([{ a: 1 }])).should.not.have.deep.keys([{ b: 1 }]);
+    new Set([{ a: 1 }]).should.not.have.deep.keys([{ b: 1 }]);
 }
 
 function chaining() {
@@ -931,8 +1013,7 @@ function frozen() {
     expect([1, 2, 3]).to.have.oneOf(Object.freeze([1, 2, 3]));
 }
 
-class PoorlyConstructedError {
-}
+class PoorlyConstructedError {}
 
 function _throw() {
     // See GH-45: some poorly-constructed custom errors don't have useful names
@@ -942,8 +1023,7 @@ function _throw() {
 
     const specificError = new RangeError("boo");
 
-    const goodFn = () => {
-    };
+    const goodFn = () => {};
     const badFn = () => {
         throw new Error("testing");
     };
@@ -1111,7 +1191,7 @@ function use() {
         const Assertion = chai.Assertion;
         const assertionPrototype = Assertion.prototype;
 
-        Assertion.addMethod("containSubset", function(expected: Object) {
+        Assertion.addMethod("containSubset", function (expected: Object) {
             const actual = utils.flag(this, "object");
             const showDiff = chai.config.showDiff;
 
@@ -1126,7 +1206,7 @@ function use() {
             );
         });
 
-        Assertion.addMethod("containSubset", function(expected: Object) {
+        Assertion.addMethod("containSubset", function (expected: Object) {
             const actual = utils.flag(this, "object");
             const showDiff = chai.config.showDiff;
 
@@ -1141,15 +1221,20 @@ function use() {
             );
         });
 
-        Assertion.overwriteProperty("ok", function(_super: any) {
-            return function checkModel(this: Chai.Assertion & Chai.AssertionStatic) {
+        Assertion.overwriteProperty("ok", function (_super: any) {
+            return function checkModel(
+                this: Chai.Assertion & Chai.AssertionStatic,
+            ) {
                 const obj = this._obj;
                 if (obj && obj instanceof FakeArgs) {
                     const negate = utils.flag(this, "negate") as boolean;
                     if (negate && !("length" in obj)) {
                         return;
                     }
-                    const assertLength = new Assertion(obj.length, "FakeArgs exists");
+                    const assertLength = new Assertion(
+                        obj.length,
+                        "FakeArgs exists",
+                    );
                     utils.transferFlags(this, assertLength, false);
                     assertLength.is.a("number");
                 } else {
@@ -1177,7 +1262,9 @@ function use() {
                     return false;
                 }
                 const aa = Array.prototype.slice.call(actual);
-                return expected.every((exp: Object) => aa.some((act: Object) => compare(exp, act)));
+                return expected.every((exp: Object) =>
+                    aa.some((act: Object) => compare(exp, act)),
+                );
             }
 
             if (expected instanceof Date) {
@@ -1212,11 +1299,9 @@ class Klass {
         this.val = 0;
     }
 
-    bar() {
-    }
+    bar() {}
 
-    static baz() {
-    }
+    static baz() {}
 }
 
 function respondTo() {
@@ -1317,31 +1402,59 @@ function sameMembers() {
 }
 
 function sameDeepMembers() {
-    expect([{ id: 5 }, { id: 4 }]).to.have.same.deep.members([{ id: 4 }, { id: 5 }]);
-    [{ id: 5 }, { id: 4 }].should.have.same.deep.members([{ id: 4 }, { id: 5 }]);
+    expect([{ id: 5 }, { id: 4 }]).to.have.same.deep.members([
+        { id: 4 },
+        { id: 5 },
+    ]);
+    [{ id: 5 }, { id: 4 }].should.have.same.deep.members([
+        { id: 4 },
+        { id: 5 },
+    ]);
     expect([{ id: 5 }, { id: 4 }]).to.have.same.members([{ id: 5 }, { id: 4 }]);
     [{ id: 5 }, { id: 4 }].should.have.same.members([{ id: 5 }, { id: 4 }]);
 
     expect([{ id: 5 }, { id: 4 }]).to.not.have.same.members([]);
     [{ id: 5 }, { id: 4 }].should.not.have.same.members([]);
-    expect([{ id: 5 }, { id: 4 }]).to.not.have.same.members([{ id: 6 }, { id: 3 }]);
+    expect([{ id: 5 }, { id: 4 }]).to.not.have.same.members([
+        { id: 6 },
+        { id: 3 },
+    ]);
     [{ id: 5 }, { id: 4 }].should.not.have.same.members([{ id: 6 }, { id: 3 }]);
-    expect([{ id: 5 }, { id: 4 }]).to.not.have.same.members([{ id: 5 }, { id: 4 }, { id: 2 }]);
-    [{ id: 5 }, { id: 4 }].should.not.have.same.members([{ id: 5 }, { id: 4 }, { id: 2 }]);
+    expect([{ id: 5 }, { id: 4 }]).to.not.have.same.members([
+        { id: 5 },
+        { id: 4 },
+        { id: 2 },
+    ]);
+    [{ id: 5 }, { id: 4 }].should.not.have.same.members([
+        { id: 5 },
+        { id: 4 },
+        { id: 2 },
+    ]);
 
     assert.sameDeepMembers([{ id: 5 }, { id: 4 }], [{ id: 4 }, { id: 5 }]);
 }
 
 function orderedMembers() {
-    expect([1, 2]).to.have.ordered.members([1, 2]).but.not.have.ordered.members([2, 1]);
-    expect([1, 2, 3]).to.include.ordered.members([1, 2]).but.not.include.ordered.members([2, 3]);
+    expect([1, 2])
+        .to.have.ordered.members([1, 2])
+        .but.not.have.ordered.members([2, 1]);
+    expect([1, 2, 3])
+        .to.include.ordered.members([1, 2])
+        .but.not.include.ordered.members([2, 3]);
     expect([1, 2, 3]).to.have.ordered.members([1, 2, 3]);
-    expect([1, 2, 3]).to.have.members([2, 1, 3]).but.not.ordered.members([2, 1, 3]);
-    expect([{ a: 1 }, { b: 2 }, { c: 3 }]).to.include.deep.ordered.members([{ a: 1 }, { b: 2 }]).but.not.include.deep
-        .ordered.members([{ b: 2 }, { c: 3 }]);
+    expect([1, 2, 3])
+        .to.have.members([2, 1, 3])
+        .but.not.ordered.members([2, 1, 3]);
+    expect([{ a: 1 }, { b: 2 }, { c: 3 }])
+        .to.include.deep.ordered.members([{ a: 1 }, { b: 2 }])
+        .but.not.include.deep.ordered.members([{ b: 2 }, { c: 3 }]);
 
     assert.sameOrderedMembers([1, 2, 3], [1, 2, 3], "same ordered members");
-    assert.notSameOrderedMembers([1, 2, 3], [2, 1, 3], "not same ordered members");
+    assert.notSameOrderedMembers(
+        [1, 2, 3],
+        [2, 1, 3],
+        "not same ordered members",
+    );
     assert.sameDeepOrderedMembers(
         [{ a: 1 }, { b: 2 }, { c: 3 }],
         [{ a: 1 }, { b: 2 }, { c: 3 }],
@@ -1354,7 +1467,11 @@ function orderedMembers() {
     );
 
     assert.includeOrderedMembers([1, 2, 3], [1, 2], "include ordered members");
-    assert.notIncludeOrderedMembers([1, 2, 3], [2, 1], "not include ordered members");
+    assert.notIncludeOrderedMembers(
+        [1, 2, 3],
+        [2, 1],
+        "not include ordered members",
+    );
     assert.includeDeepOrderedMembers(
         [{ a: 1 }, { b: 2 }, { c: 3 }],
         [{ a: 1 }, { b: 2 }],
@@ -1386,8 +1503,7 @@ function increaseDecreaseChange() {
     const dec = () => {
         obj.val--;
     };
-    const same = () => {
-    };
+    const same = () => {};
 
     expect(inc).to.increase(obj, "val");
     expect(inc).increases(obj, "val");
@@ -1518,7 +1634,7 @@ suite("assert", () => {
     });
 
     test("equal", () => {
-        assert.equal(void (0), undefined);
+        assert.equal(void 0, undefined);
     });
 
     test("typeof / notTypeOf", () => {
@@ -1622,7 +1738,9 @@ suite("assert", () => {
 
     test("deepStrictEqual", () => {
         assert.deepStrictEqual({ tea: "chai" }, { tea: "chai" });
-        assert.throws(() => assert.deepStrictEqual({ tea: "chai" }, { tea: "black" }));
+        assert.throws(() =>
+            assert.deepStrictEqual({ tea: "chai" }, { tea: "black" }),
+        );
 
         const obja = Object.create({ tea: "chai" });
         const objb = Object.create({ tea: "chai" });
@@ -1684,16 +1802,14 @@ suite("assert", () => {
     });
 
     test("isFunction", () => {
-        const func = () => {
-        };
+        const func = () => {};
         assert.isFunction(func);
         assert.isFunction({});
     });
 
     test("isNotFunction", () => {
         assert.isNotFunction(5);
-        assert.isNotFunction(() => {
-        });
+        assert.isNotFunction(() => {});
     });
 
     test("isArray", () => {
@@ -1750,7 +1866,13 @@ suite("assert", () => {
         assert.include([1, 2, 3], 3);
         assert.include({ a: 1, b: 2, c: 3 }, { a: 1, b: 2 });
         assert.include(new Set([1, 2]), 2);
-        assert.include(new Map([["a", 1], ["b", 2]]), 2);
+        assert.include(
+            new Map([
+                ["a", 1],
+                ["b", 2],
+            ]),
+            2,
+        );
 
         const a = {};
         assert.include(new WeakSet([{}, a]), a);
@@ -1762,7 +1884,13 @@ suite("assert", () => {
         assert.notInclude({ a: 1, b: 2, c: 3 }, { a: 6, b: 2 });
         assert.notInclude(new Set([1, 2]), 8);
         assert.notInclude(new WeakSet([{}, {}]), {});
-        assert.notInclude(new Map([["a", 1], ["b", 2]]), 8);
+        assert.notInclude(
+            new Map([
+                ["a", 1],
+                ["b", 2],
+            ]),
+            8,
+        );
     });
 
     test("deepInclude", () => {
@@ -1772,17 +1900,32 @@ suite("assert", () => {
         assert.deepInclude(new Set([{ a: 1 }, { a: 2 }]), { a: 2 });
         // deep include does not support ('cause)[https://github.com/chaijs/chai/blob/7ff12731428ab5d12f1e77e32d6a8d3eb967d082/lib/chai/core/assertions.js#L492]
         // assert.deepInclude(new WeakSet([ {}, {} ]), {});
-        assert.deepInclude(new Map([["a", { a: 1 }], ["b", { a: 2 }]]), { a: 1 });
+        assert.deepInclude(
+            new Map([
+                ["a", { a: 1 }],
+                ["b", { a: 2 }],
+            ]),
+            { a: 1 },
+        );
     });
 
     test("notDeepInclude", () => {
         assert.notDeepInclude("foobar", "baz");
         assert.notDeepInclude([1, { a: 1 }, 3], { a: 3 });
-        assert.notDeepInclude({ a: 1, b: { d: 4 }, c: 3 }, { a: 1, b: { d: 6 } });
+        assert.notDeepInclude(
+            { a: 1, b: { d: 4 }, c: 3 },
+            { a: 1, b: { d: 6 } },
+        );
         assert.notDeepInclude(new Set([{ a: 1 }, { a: 2 }]), { a: 3 });
         // deep include does not support ('cause)[https://github.com/chaijs/chai/blob/7ff12731428ab5d12f1e77e32d6a8d3eb967d082/lib/chai/core/assertions.js#L492]
         // assert.notDeepInclude(new WeakSet([ {}, {} ]), {});
-        assert.notDeepInclude(new Map([["a", { a: 1 }], ["b", { a: 2 }]]), { a: 8 });
+        assert.notDeepInclude(
+            new Map([
+                ["a", { a: 1 }],
+                ["b", { a: 2 }],
+            ]),
+            { a: 8 },
+        );
     });
 
     test("nestedInclude", () => {
@@ -1796,13 +1939,25 @@ suite("assert", () => {
     });
 
     test("deepNestedInclude", () => {
-        assert.deepNestedInclude({ a: { b: [{ x: 1 }] } }, { "a.b[0]": { x: 1 } });
-        assert.deepNestedInclude({ ".a": { "[b]": { x: 1 } } }, { "\\.a.\\[b\\]": { x: 1 } });
+        assert.deepNestedInclude(
+            { a: { b: [{ x: 1 }] } },
+            { "a.b[0]": { x: 1 } },
+        );
+        assert.deepNestedInclude(
+            { ".a": { "[b]": { x: 1 } } },
+            { "\\.a.\\[b\\]": { x: 1 } },
+        );
     });
 
     test("notDeepNestedInclude", () => {
-        assert.notDeepNestedInclude({ a: { b: [{ x: 1 }] } }, { "a.b[0]": { y: 1 } });
-        assert.notDeepNestedInclude({ ".a": { "[b]": { x: 1 } } }, { "\\.a.\\[b\\]": { y: 2 } });
+        assert.notDeepNestedInclude(
+            { a: { b: [{ x: 1 }] } },
+            { "a.b[0]": { y: 1 } },
+        );
+        assert.notDeepNestedInclude(
+            { ".a": { "[b]": { x: 1 } } },
+            { "\\.a.\\[b\\]": { y: 2 } },
+        );
     });
 
     test("ownInclude", () => {
@@ -1827,7 +1982,14 @@ suite("assert", () => {
         assert.lengthOf("foobar", 5);
         assert.lengthOf({ length: 1 }, 5);
         assert.lengthOf(new Set([1, 2, 3]), 3);
-        assert.lengthOf(new Map([["a", 1], ["b", 2], ["c", 3]]), 3);
+        assert.lengthOf(
+            new Map([
+                ["a", 1],
+                ["b", 2],
+                ["c", 3],
+            ]),
+            3,
+        );
     });
 
     test("match", () => {
@@ -2054,109 +2216,43 @@ suite("assert", () => {
     test("changes", () => {
         const obj = { z: 3 };
 
-        assert.changes(
-            () => {
-            },
-            obj,
-            "z",
-        );
-        assert.changes(
-            () => {
-            },
-            obj,
-            "z",
-            "message",
-        );
+        assert.changes(() => {}, obj, "z");
+        assert.changes(() => {}, obj, "z", "message");
     });
 
     test("doesNotChange", () => {
         const obj = { z: 3 };
 
-        assert.doesNotChange(
-            () => {
-            },
-            obj,
-            "z",
-        );
-        assert.doesNotChange(
-            () => {
-            },
-            obj,
-            "z",
-            "message",
-        );
+        assert.doesNotChange(() => {}, obj, "z");
+        assert.doesNotChange(() => {}, obj, "z", "message");
     });
 
     test("increases", () => {
         const obj = { z: 3 };
 
-        assert.increases(
-            () => {
-            },
-            obj,
-            "z",
-        );
-        assert.increases(
-            () => {
-            },
-            obj,
-            "z",
-            "message",
-        );
+        assert.increases(() => {}, obj, "z");
+        assert.increases(() => {}, obj, "z", "message");
     });
 
     test("doesNotIncrease", () => {
         const obj = { z: 3 };
 
-        assert.doesNotIncrease(
-            () => {
-            },
-            obj,
-            "z",
-        );
-        assert.doesNotIncrease(
-            () => {
-            },
-            obj,
-            "z",
-            "message",
-        );
+        assert.doesNotIncrease(() => {}, obj, "z");
+        assert.doesNotIncrease(() => {}, obj, "z", "message");
     });
 
     test("decreases", () => {
         const obj = { z: 3 };
 
-        assert.decreases(
-            () => {
-            },
-            obj,
-            "z",
-        );
-        assert.decreases(
-            () => {
-            },
-            obj,
-            "z",
-            "message",
-        );
+        assert.decreases(() => {}, obj, "z");
+        assert.decreases(() => {}, obj, "z", "message");
     });
 
     test("doesNotDecrease", () => {
         const obj = { z: 3 };
 
-        assert.doesNotDecrease(
-            () => {
-            },
-            obj,
-            "z",
-        );
-        assert.doesNotDecrease(
-            () => {
-            },
-            obj,
-            "z",
-            "message",
-        );
+        assert.doesNotDecrease(() => {}, obj, "z");
+        assert.doesNotDecrease(() => {}, obj, "z", "message");
     });
 
     test("ifError", () => {
@@ -2237,110 +2333,298 @@ suite("assert", () => {
     });
 
     test("hasAnyKeys", () => {
-        assert.hasAnyKeys({ foo: 1, bar: 2, baz: 3 }, ["foo", "iDontExist", "baz"]);
-        assert.hasAnyKeys({ foo: 1, bar: 2, baz: 3 }, { foo: 30, iDontExist: 99, baz: 1337 });
-        assert.hasAnyKeys(new Map<any, any>([[{ foo: 1 }, "bar"], ["key", "value"]]), [{ foo: 1 }, "key"]);
-        assert.hasAnyKeys(new Set([{ foo: "bar" }, "anotherKey"]), [{ foo: "bar" }, "anotherKey"]);
+        assert.hasAnyKeys({ foo: 1, bar: 2, baz: 3 }, [
+            "foo",
+            "iDontExist",
+            "baz",
+        ]);
+        assert.hasAnyKeys(
+            { foo: 1, bar: 2, baz: 3 },
+            { foo: 30, iDontExist: 99, baz: 1337 },
+        );
+        assert.hasAnyKeys(
+            new Map<any, any>([
+                [{ foo: 1 }, "bar"],
+                ["key", "value"],
+            ]),
+            [{ foo: 1 }, "key"],
+        );
+        assert.hasAnyKeys(new Set([{ foo: "bar" }, "anotherKey"]), [
+            { foo: "bar" },
+            "anotherKey",
+        ]);
     });
 
     test("hasAllKeys", () => {
         assert.hasAllKeys({ foo: 1, bar: 2, baz: 3 }, ["foo", "bar", "baz"]);
-        assert.hasAllKeys({ foo: 1, bar: 2, baz: 3 }, { foo: 30, bar: 99, baz: 1337 });
-        assert.hasAllKeys(new Map<any, any>([[{ foo: 1 }, "bar"], ["key", "value"]]), [{ foo: 1 }, "key"]);
-        assert.hasAllKeys(new Set([{ foo: "bar" }, "anotherKey"]), [{ foo: "bar" }, "anotherKey"]);
+        assert.hasAllKeys(
+            { foo: 1, bar: 2, baz: 3 },
+            { foo: 30, bar: 99, baz: 1337 },
+        );
+        assert.hasAllKeys(
+            new Map<any, any>([
+                [{ foo: 1 }, "bar"],
+                ["key", "value"],
+            ]),
+            [{ foo: 1 }, "key"],
+        );
+        assert.hasAllKeys(new Set([{ foo: "bar" }, "anotherKey"]), [
+            { foo: "bar" },
+            "anotherKey",
+        ]);
     });
 
     test("containsAllKeys", () => {
         assert.containsAllKeys({ foo: 1, bar: 2, baz: 3 }, ["foo", "baz"]);
-        assert.containsAllKeys({ foo: 1, bar: 2, baz: 3 }, ["foo", "bar", "baz"]);
-        assert.containsAllKeys({ foo: 1, bar: 2, baz: 3 }, { foo: 30, baz: 1337 });
-        assert.containsAllKeys({ foo: 1, bar: 2, baz: 3 }, { foo: 30, bar: 99, baz: 1337 });
-        assert.containsAllKeys(new Map<any, any>([[{ foo: 1 }, "bar"], ["key", "value"]]), [{ foo: 1 }]);
-        assert.containsAllKeys(new Map<any, any>([[{ foo: 1 }, "bar"], ["key", "value"]]), [{ foo: 1 }, "key"]);
-        assert.containsAllKeys(new Set([{ foo: "bar" }, "anotherKey"]), [{ foo: "bar" }]);
-        assert.containsAllKeys(new Set([{ foo: "bar" }, "anotherKey"]), [{ foo: "bar" }, "anotherKey"]);
+        assert.containsAllKeys({ foo: 1, bar: 2, baz: 3 }, [
+            "foo",
+            "bar",
+            "baz",
+        ]);
+        assert.containsAllKeys(
+            { foo: 1, bar: 2, baz: 3 },
+            { foo: 30, baz: 1337 },
+        );
+        assert.containsAllKeys(
+            { foo: 1, bar: 2, baz: 3 },
+            { foo: 30, bar: 99, baz: 1337 },
+        );
+        assert.containsAllKeys(
+            new Map<any, any>([
+                [{ foo: 1 }, "bar"],
+                ["key", "value"],
+            ]),
+            [{ foo: 1 }],
+        );
+        assert.containsAllKeys(
+            new Map<any, any>([
+                [{ foo: 1 }, "bar"],
+                ["key", "value"],
+            ]),
+            [{ foo: 1 }, "key"],
+        );
+        assert.containsAllKeys(new Set([{ foo: "bar" }, "anotherKey"]), [
+            { foo: "bar" },
+        ]);
+        assert.containsAllKeys(new Set([{ foo: "bar" }, "anotherKey"]), [
+            { foo: "bar" },
+            "anotherKey",
+        ]);
     });
 
     test("doesNotHaveAnyKeys", () => {
-        assert.doesNotHaveAnyKeys({ foo: 1, bar: 2, baz: 3 }, ["one", "two", "example"]);
-        assert.doesNotHaveAnyKeys({ foo: 1, bar: 2, baz: 3 }, { one: 1, two: 2, example: "foo" });
-        assert.doesNotHaveAnyKeys(new Map<any, any>([[{ foo: 1 }, "bar"], ["key", "value"]]), [
+        assert.doesNotHaveAnyKeys({ foo: 1, bar: 2, baz: 3 }, [
+            "one",
+            "two",
+            "example",
+        ]);
+        assert.doesNotHaveAnyKeys(
+            { foo: 1, bar: 2, baz: 3 },
+            { one: 1, two: 2, example: "foo" },
+        );
+        assert.doesNotHaveAnyKeys(
+            new Map<any, any>([
+                [{ foo: 1 }, "bar"],
+                ["key", "value"],
+            ]),
+            [{ one: "two" }, "example"],
+        );
+        assert.doesNotHaveAnyKeys(new Set([{ foo: "bar" }, "anotherKey"]), [
             { one: "two" },
             "example",
         ]);
-        assert.doesNotHaveAnyKeys(new Set([{ foo: "bar" }, "anotherKey"]), [{ one: "two" }, "example"]);
     });
 
     test("doesNotHaveAllKeys", () => {
-        assert.doesNotHaveAllKeys({ foo: 1, bar: 2, baz: 3 }, ["one", "two", "example"]);
-        assert.doesNotHaveAllKeys({ foo: 1, bar: 2, baz: 3 }, { one: 1, two: 2, example: "foo" });
-        assert.doesNotHaveAllKeys(new Map<any, any>([[{ foo: 1 }, "bar"], ["key", "value"]]), [
+        assert.doesNotHaveAllKeys({ foo: 1, bar: 2, baz: 3 }, [
+            "one",
+            "two",
+            "example",
+        ]);
+        assert.doesNotHaveAllKeys(
+            { foo: 1, bar: 2, baz: 3 },
+            { one: 1, two: 2, example: "foo" },
+        );
+        assert.doesNotHaveAllKeys(
+            new Map<any, any>([
+                [{ foo: 1 }, "bar"],
+                ["key", "value"],
+            ]),
+            [{ one: "two" }, "example"],
+        );
+        assert.doesNotHaveAllKeys(new Set([{ foo: "bar" }, "anotherKey"]), [
             { one: "two" },
             "example",
         ]);
-        assert.doesNotHaveAllKeys(new Set([{ foo: "bar" }, "anotherKey"]), [{ one: "two" }, "example"]);
     });
 
     test("hasAnyDeepKeys", () => {
-        assert.hasAnyDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [1, 2]]), { one: "one" });
-        assert.hasAnyDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [1, 2]]), [{ one: "one" }, {
-            two: "two",
-        }]);
-        assert.hasAnyDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [{ two: "two" }, "valueTwo"]]), [{
+        assert.hasAnyDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [1, 2],
+            ]),
+            { one: "one" },
+        );
+        assert.hasAnyDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [1, 2],
+            ]),
+            [
+                { one: "one" },
+                {
+                    two: "two",
+                },
+            ],
+        );
+        assert.hasAnyDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [{ two: "two" }, "valueTwo"],
+            ]),
+            [
+                {
+                    one: "one",
+                },
+                { two: "two" },
+            ],
+        );
+        assert.hasAnyDeepKeys(new Set([{ one: "one" }, { two: "two" }]), {
             one: "one",
-        }, { two: "two" }]);
-        assert.hasAnyDeepKeys(new Set([{ one: "one" }, { two: "two" }]), { one: "one" });
-        assert.hasAnyDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [{ one: "one" }, { three: "three" }]);
-        assert.hasAnyDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [{ one: "one" }, { two: "two" }]);
+        });
+        assert.hasAnyDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [
+            { one: "one" },
+            { three: "three" },
+        ]);
+        assert.hasAnyDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [
+            { one: "one" },
+            { two: "two" },
+        ]);
     });
 
     test("hasAllDeepKeys", () => {
-        assert.hasAllDeepKeys(new Map([[{ one: "one" }, "valueOne"]]), { one: "one" });
-        assert.hasAllDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [{ two: "two" }, "valueTwo"]]), [{
+        assert.hasAllDeepKeys(new Map([[{ one: "one" }, "valueOne"]]), {
             one: "one",
-        }, { two: "two" }]);
+        });
+        assert.hasAllDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [{ two: "two" }, "valueTwo"],
+            ]),
+            [
+                {
+                    one: "one",
+                },
+                { two: "two" },
+            ],
+        );
         assert.hasAllDeepKeys(new Set([{ one: "one" }]), { one: "one" });
-        assert.hasAllDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [{ one: "one" }, { two: "two" }]);
+        assert.hasAllDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [
+            { one: "one" },
+            { two: "two" },
+        ]);
     });
 
     test("containsAllDeepKeys", () => {
-        assert.containsAllDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [1, 2]]), { one: "one" });
-        assert.containsAllDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [{ two: "two" }, "valueTwo"]]), [{
+        assert.containsAllDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [1, 2],
+            ]),
+            { one: "one" },
+        );
+        assert.containsAllDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [{ two: "two" }, "valueTwo"],
+            ]),
+            [
+                {
+                    one: "one",
+                },
+                { two: "two" },
+            ],
+        );
+        assert.containsAllDeepKeys(new Set([{ one: "one" }, { two: "two" }]), {
             one: "one",
-        }, { two: "two" }]);
-        assert.containsAllDeepKeys(new Set([{ one: "one" }, { two: "two" }]), { one: "one" });
-        assert.containsAllDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [{ one: "one" }, { two: "two" }]);
+        });
+        assert.containsAllDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [
+            { one: "one" },
+            { two: "two" },
+        ]);
     });
 
     test("doesNotHaveAnyDeepKeys", () => {
-        assert.doesNotHaveAnyDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [1, 2]]), {
-            thisDoesNot: "exist",
-        });
-        assert.doesNotHaveAnyDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [{ two: "two" }, "valueTwo"]]), [
-            { twenty: "twenty" },
-            { fifty: "fifty" },
-        ]);
-        assert.doesNotHaveAnyDeepKeys(new Set([{ one: "one" }, { two: "two" }]), { twenty: "twenty" });
-        assert.doesNotHaveAnyDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [{ twenty: "twenty" }, {
-            fifty: "fifty",
-        }]);
+        assert.doesNotHaveAnyDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [1, 2],
+            ]),
+            {
+                thisDoesNot: "exist",
+            },
+        );
+        assert.doesNotHaveAnyDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [{ two: "two" }, "valueTwo"],
+            ]),
+            [{ twenty: "twenty" }, { fifty: "fifty" }],
+        );
+        assert.doesNotHaveAnyDeepKeys(
+            new Set([{ one: "one" }, { two: "two" }]),
+            {
+                twenty: "twenty",
+            },
+        );
+        assert.doesNotHaveAnyDeepKeys(
+            new Set([{ one: "one" }, { two: "two" }]),
+            [
+                { twenty: "twenty" },
+                {
+                    fifty: "fifty",
+                },
+            ],
+        );
     });
 
     test("doesNotHaveAllDeepKeys", () => {
-        assert.doesNotHaveAllDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [1, 2]]), {
-            thisDoesNot: "exist",
-        });
-        assert.doesNotHaveAllDeepKeys(new Map<any, any>([[{ one: "one" }, "valueOne"], [{ two: "two" }, "valueTwo"]]), [
-            { twenty: "twenty" },
-            { one: "one" },
-        ]);
-        assert.doesNotHaveAllDeepKeys(new Set([{ one: "one" }, { two: "two" }]), { twenty: "twenty" });
-        assert.doesNotHaveAllDeepKeys(new Set([{ one: "one" }, { two: "two" }]), [{ one: "one" }, { fifty: "fifty" }]);
+        assert.doesNotHaveAllDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [1, 2],
+            ]),
+            {
+                thisDoesNot: "exist",
+            },
+        );
+        assert.doesNotHaveAllDeepKeys(
+            new Map<any, any>([
+                [{ one: "one" }, "valueOne"],
+                [{ two: "two" }, "valueTwo"],
+            ]),
+            [{ twenty: "twenty" }, { one: "one" }],
+        );
+        assert.doesNotHaveAllDeepKeys(
+            new Set([{ one: "one" }, { two: "two" }]),
+            {
+                twenty: "twenty",
+            },
+        );
+        assert.doesNotHaveAllDeepKeys(
+            new Set([{ one: "one" }, { two: "two" }]),
+            [{ one: "one" }, { fifty: "fifty" }],
+        );
     });
 
     test("nestedProperty", () => {
         assert.nestedProperty({ tea: { green: "matcha" } }, "tea.green");
-        assert.nestedProperty({ tea: { green: "matcha" } }, "tea.green", "Should have tea.green nested property");
+        assert.nestedProperty(
+            { tea: { green: "matcha" } },
+            "tea.green",
+            "Should have tea.green nested property",
+        );
     });
 
     test("notNestedProperty", () => {
@@ -2353,7 +2637,11 @@ suite("assert", () => {
     });
 
     test("nestedPropertyVal", () => {
-        assert.nestedPropertyVal({ tea: { green: "matcha" } }, "tea.green", "matcha");
+        assert.nestedPropertyVal(
+            { tea: { green: "matcha" } },
+            "tea.green",
+            "matcha",
+        );
         assert.nestedPropertyVal(
             { tea: { green: "matcha" } },
             "tea.green",
@@ -2363,8 +2651,16 @@ suite("assert", () => {
     });
 
     test("notNestedPropertyVal", () => {
-        assert.notNestedPropertyVal({ tea: { green: "matcha" } }, "tea.green", "konacha");
-        assert.notNestedPropertyVal({ tea: { green: "matcha" } }, "coffee.green", "matcha");
+        assert.notNestedPropertyVal(
+            { tea: { green: "matcha" } },
+            "tea.green",
+            "konacha",
+        );
+        assert.notNestedPropertyVal(
+            { tea: { green: "matcha" } },
+            "coffee.green",
+            "matcha",
+        );
         assert.notNestedPropertyVal(
             { tea: { green: "matcha" } },
             "tea.green",
@@ -2380,7 +2676,11 @@ suite("assert", () => {
     });
 
     test("deepNestedPropertyVal", () => {
-        assert.deepNestedPropertyVal({ tea: { green: { matcha: "yum" } } }, "tea.green", { matcha: "yum" });
+        assert.deepNestedPropertyVal(
+            { tea: { green: { matcha: "yum" } } },
+            "tea.green",
+            { matcha: "yum" },
+        );
         assert.deepNestedPropertyVal(
             { tea: { green: { matcha: "yum" } } },
             "tea.green",
@@ -2390,9 +2690,21 @@ suite("assert", () => {
     });
 
     test("notDeepNestedPropertyVal", () => {
-        assert.notDeepNestedPropertyVal({ tea: { green: { matcha: "yum" } } }, "tea.green", { oolong: "yum" });
-        assert.notDeepNestedPropertyVal({ tea: { green: { matcha: "yum" } } }, "tea.green", { matcha: "yuck" });
-        assert.notDeepNestedPropertyVal({ tea: { green: { matcha: "yum" } } }, "tea.black", { matcha: "yum" });
+        assert.notDeepNestedPropertyVal(
+            { tea: { green: { matcha: "yum" } } },
+            "tea.green",
+            { oolong: "yum" },
+        );
+        assert.notDeepNestedPropertyVal(
+            { tea: { green: { matcha: "yum" } } },
+            "tea.green",
+            { matcha: "yuck" },
+        );
+        assert.notDeepNestedPropertyVal(
+            { tea: { green: { matcha: "yum" } } },
+            "tea.black",
+            { matcha: "yum" },
+        );
         assert.notDeepNestedPropertyVal(
             { tea: { green: { matcha: "yum" } } },
             "tea.green",

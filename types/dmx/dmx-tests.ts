@@ -76,7 +76,10 @@ class MyDriver extends EventEmitter implements DMX.Universe {
     close(callback: (err: Error | null) => void): void {
         throw new Error("Method not implemented.");
     }
-    update(channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData): void {
+    update(
+        channels: DMX.ChannelMap,
+        extraData?: DMX.UpdateEventExtraData,
+    ): void {
         throw new Error("Method not implemented.");
     }
     updateAll(value: number): void {
@@ -210,7 +213,7 @@ dmx.emit("updateAll", "universe-1", 42);
 universe.start(); // $ExpectType void
 universe.stop(); // $ExpectType void
 // $ExpectType void
-universe.close(err => {
+universe.close((err) => {
     err; // $ExpectType Error | null
 });
 universe.update(channelMap); // $ExpectType void
@@ -222,7 +225,7 @@ const animation = new DMX.Animation(); // $ExpectType Animation
 new DMX.Animation({ loop: 42 }); // $ExpectType Animation
 // $ExpectType Animation
 new DMX.Animation({
-    filter: completedAnimationStatesToSet => {
+    filter: (completedAnimationStatesToSet) => {
         completedAnimationStatesToSet; // $ExpectType ChannelMap
         return true;
     },

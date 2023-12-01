@@ -75,7 +75,9 @@ interface ProgressJs {
      *
      * @param providedCallback Callback function.
      */
-    onprogress(providedCallback: (targetElement: string, percent: number) => any): ProgressJs;
+    onprogress(
+        providedCallback: (targetElement: string, percent: number) => any,
+    ): ProgressJs;
 }
 
 interface ProgressJsOptions {

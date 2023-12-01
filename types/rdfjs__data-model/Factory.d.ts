@@ -9,7 +9,9 @@ interface DataFactory extends Required<RDF.DataFactory<RDF.BaseQuad>> {
         graph?: Q["graph"],
     ): Q;
     fromTerm<T extends RDF.Term>(value: T): ReturnType<FromTerm<T, this>>;
-    fromQuad<T extends RDF.BaseQuad = RDF.Quad>(value: T): ReturnType<FromTerm<T, this>>;
+    fromQuad<T extends RDF.BaseQuad = RDF.Quad>(
+        value: T,
+    ): ReturnType<FromTerm<T, this>>;
 }
 
 declare class DataFactory {

@@ -32,7 +32,9 @@ export function getEditorMode(): EditorMode;
  *
  * @param location - Meta box location to test.
  */
-export function getMetaBoxesPerLocation(location: MetaboxLocation): MetaboxDescriptor[] | undefined;
+export function getMetaBoxesPerLocation(
+    location: MetaboxLocation,
+): MetaboxDescriptor[] | undefined;
 
 /**
  * Returns the value of a given preference.
@@ -40,7 +42,9 @@ export function getMetaBoxesPerLocation(location: MetaboxLocation): MetaboxDescr
  * @param preferenceKey - Preference Key.
  * @param [defaultValue] - Default Value.
  */
-export function getPreference<T = unknown>(preferenceKey: string): T | undefined; // eslint-disable-line @definitelytyped/no-unnecessary-generics
+export function getPreference<T = unknown>(
+    preferenceKey: string,
+): T | undefined; // eslint-disable-line @definitelytyped/no-unnecessary-generics
 export function getPreference<T>(
     preferenceKey: string,
     defaultValue: T,

@@ -8,7 +8,9 @@ function handleDestroy(e: DestroyEvent) {
     console.log(e);
 }
 
-function handleBorderCrossing(e: SceneProgressEvent<"enter"> | SceneProgressEvent<"leave">) {
+function handleBorderCrossing(
+    e: SceneProgressEvent<"enter"> | SceneProgressEvent<"leave">,
+) {
     console.log(e.state);
 }
 

@@ -14,7 +14,8 @@ export interface SaturationColorResult extends HSVColor {
     source: "hsv";
 }
 
-export interface SaturationProps extends CustomPickerInjectedProps<SaturationColorResult> {
+export interface SaturationProps
+    extends CustomPickerInjectedProps<SaturationColorResult> {
     radius?: string | undefined;
     shadow?: string | undefined;
     style?: SaturationStyle | undefined;

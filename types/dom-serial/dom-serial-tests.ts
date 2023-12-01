@@ -1,8 +1,8 @@
-navigator.serial.addEventListener("connect", event => {
+navigator.serial.addEventListener("connect", (event) => {
     console.log(event.target);
 });
 
-navigator.serial.addEventListener("disconnect", event => {
+navigator.serial.addEventListener("disconnect", (event) => {
     console.log(event.target);
 });
 
@@ -33,8 +33,8 @@ async function connect() {
     await port.forget();
 }
 
-navigator.serial.requestPort().then(port => {
-    navigator.serial.getPorts().then(ports => {
+navigator.serial.requestPort().then((port) => {
+    navigator.serial.getPorts().then((ports) => {
         ports.length;
     });
 });

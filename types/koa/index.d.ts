@@ -12,7 +12,13 @@
 import * as accepts from "accepts";
 import * as Cookies from "cookies";
 import { EventEmitter } from "events";
-import { IncomingHttpHeaders, IncomingMessage, OutgoingHttpHeaders, Server, ServerResponse } from "http";
+import {
+    IncomingHttpHeaders,
+    IncomingMessage,
+    OutgoingHttpHeaders,
+    Server,
+    ServerResponse,
+} from "http";
 import { Http2ServerRequest, Http2ServerResponse } from "http2";
 import httpAssert = require("http-assert");
 import * as contentDisposition from "content-disposition";
@@ -467,14 +473,35 @@ declare class Application<
      *
      *    http.createServer(app.callback()).listen(...)
      */
-    listen(port?: number, hostname?: string, backlog?: number, listeningListener?: () => void): Server;
-    listen(port: number, hostname?: string, listeningListener?: () => void): Server;
-    listen(port: number, backlog?: number, listeningListener?: () => void): Server;
+    listen(
+        port?: number,
+        hostname?: string,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): Server;
+    listen(
+        port: number,
+        hostname?: string,
+        listeningListener?: () => void,
+    ): Server;
+    listen(
+        port: number,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): Server;
     listen(port: number, listeningListener?: () => void): Server;
-    listen(path: string, backlog?: number, listeningListener?: () => void): Server;
+    listen(
+        path: string,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): Server;
     listen(path: string, listeningListener?: () => void): Server;
     listen(options: ListenOptions, listeningListener?: () => void): Server;
-    listen(handle: any, backlog?: number, listeningListener?: () => void): Server;
+    listen(
+        handle: any,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): Server;
     listen(handle: any, listeningListener?: () => void): Server;
 
     /**
@@ -495,14 +522,20 @@ declare class Application<
      * Old-style middleware will be converted.
      */
     use<NewStateT = {}, NewContextT = {}>(
-        middleware: Application.Middleware<StateT & NewStateT, ContextT & NewContextT>,
+        middleware: Application.Middleware<
+            StateT & NewStateT,
+            ContextT & NewContextT
+        >,
     ): Application<StateT & NewStateT, ContextT & NewContextT>;
 
     /**
      * Return a request handler callback
      * for node's native http/http2 server.
      */
-    callback(): (req: IncomingMessage | Http2ServerRequest, res: ServerResponse | Http2ServerResponse) => Promise<void>;
+    callback(): (
+        req: IncomingMessage | Http2ServerRequest,
+        res: ServerResponse | Http2ServerResponse,
+    ) => Promise<void>;
 
     /**
      * Initialize a new context.
@@ -540,7 +573,11 @@ declare namespace Application {
         [key: PropertyKey]: any;
     }
 
-    type Middleware<StateT = DefaultState, ContextT = DefaultContext, ResponseBodyT = any> = compose.Middleware<
+    type Middleware<
+        StateT = DefaultState,
+        ContextT = DefaultContext,
+        ResponseBodyT = any,
+    > = compose.Middleware<
         ParameterizedContext<StateT, ContextT, ResponseBodyT>
     >;
 
@@ -634,7 +671,9 @@ declare namespace Application {
         toJSON(): any;
     }
 
-    interface BaseContext extends ContextDelegatedRequest, ContextDelegatedResponse {
+    interface BaseContext
+        extends ContextDelegatedRequest,
+            ContextDelegatedResponse {
         /**
          * util.inspect() implementation, which
          * just returns the JSON output.
@@ -718,11 +757,14 @@ declare namespace Application {
         respond?: boolean | undefined;
     }
 
-    type ParameterizedContext<StateT = DefaultState, ContextT = DefaultContext, ResponseBodyT = unknown> =
-        & ExtendableContext
-        & { state: StateT }
-        & ContextT
-        & { body: ResponseBodyT; response: { body: ResponseBodyT } };
+    type ParameterizedContext<
+        StateT = DefaultState,
+        ContextT = DefaultContext,
+        ResponseBodyT = unknown,
+    > = ExtendableContext & { state: StateT } & ContextT & {
+            body: ResponseBodyT;
+            response: { body: ResponseBodyT };
+        };
 
     interface Context extends ParameterizedContext {}
 

@@ -3,7 +3,10 @@
 import { EventEmitter } from "events";
 import * as fs from "fs";
 
-declare function readdirGlob(root: string, options: readdirGlob.Options): readdirGlob.ReaddirGlob;
+declare function readdirGlob(
+    root: string,
+    options: readdirGlob.Options,
+): readdirGlob.ReaddirGlob;
 
 declare namespace readdirGlob {
     interface Options {
@@ -80,8 +83,15 @@ declare namespace readdirGlob {
     }
 
     class ReaddirGlob extends EventEmitter {
-        constructor(cwd: string, cb: (error: Error | null, matches?: readonly Match[]) => void);
-        constructor(cwd: string, options: Options, cb: (error: Error | null, matches?: readonly Match[]) => void);
+        constructor(
+            cwd: string,
+            cb: (error: Error | null, matches?: readonly Match[]) => void,
+        );
+        constructor(
+            cwd: string,
+            options: Options,
+            cb: (error: Error | null, matches?: readonly Match[]) => void,
+        );
         /**
          * Every time a match is found, this is emitted with the specific thing that matched.
          */

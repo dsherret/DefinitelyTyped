@@ -96,7 +96,16 @@ declare namespace Flow {
     type SchemaVersion = 1;
 }
 
-type NodeType = "DOCUMENT" | "PAGE" | "SCREEN" | "IMAGE" | "RECT" | "ELLIPSE" | "DIAMOND" | "HOTSPOT" | "LAYER";
+type NodeType =
+    | "DOCUMENT"
+    | "PAGE"
+    | "SCREEN"
+    | "IMAGE"
+    | "RECT"
+    | "ELLIPSE"
+    | "DIAMOND"
+    | "HOTSPOT"
+    | "LAYER";
 
 interface Node {
     id: string;

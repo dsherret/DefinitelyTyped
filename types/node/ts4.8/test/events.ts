@@ -26,7 +26,10 @@ declare const any: any;
     result = events.EventEmitter.defaultMaxListeners;
     result = events.EventEmitter.listenerCount(emitter, event); // deprecated
 
-    const promise: Promise<any[]> = events.once(new events.EventEmitter(), "error");
+    const promise: Promise<any[]> = events.once(
+        new events.EventEmitter(),
+        "error",
+    );
 
     result = emitter.getMaxListeners();
     result = emitter.listenerCount(event);
@@ -81,7 +84,11 @@ declare const any: any;
 {
     events.once(
         {
-            addEventListener(name: string, listener: (res: number) => void, opts: { once: boolean }) {
+            addEventListener(
+                name: string,
+                listener: (res: number) => void,
+                opts: { once: boolean },
+            ) {
                 setTimeout(() => listener(123), 100);
             },
         },
@@ -93,7 +100,9 @@ async function test() {
     for await (const e of events.on(new events.EventEmitter(), "test")) {
         console.log(e);
     }
-    events.on(new events.EventEmitter(), "test", { signal: new AbortController().signal });
+    events.on(new events.EventEmitter(), "test", {
+        signal: new AbortController().signal,
+    });
 }
 
 {
@@ -105,12 +114,14 @@ async function test() {
     let errorMonitor1: typeof events.errorMonitor = events.errorMonitor;
     errorMonitor1 = events.EventEmitter.errorMonitor;
 
-    let errorMonitor2: typeof events.EventEmitter.errorMonitor = events.EventEmitter.errorMonitor;
+    let errorMonitor2: typeof events.EventEmitter.errorMonitor =
+        events.EventEmitter.errorMonitor;
     errorMonitor2 = events.errorMonitor;
 }
 
 {
-    let captureRejectionSymbol1: typeof events.captureRejectionSymbol = events.captureRejectionSymbol;
+    let captureRejectionSymbol1: typeof events.captureRejectionSymbol =
+        events.captureRejectionSymbol;
     captureRejectionSymbol1 = events.EventEmitter.captureRejectionSymbol;
 
     let captureRejectionSymbol2: typeof events.EventEmitter.captureRejectionSymbol =

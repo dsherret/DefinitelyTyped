@@ -21,14 +21,38 @@ declare class Stream {
     hexDump(start: number, end: number, raw: boolean): string;
     b64Dump(start: number, end: number): string;
     isASCII(start: number, end: number): boolean;
-    parseStringISO(start: number, end: number, maxLength: number): ASN1.StreamParseReturn;
-    parseStringT61(start: number, end: number, maxLength: number): ASN1.StreamParseReturn;
-    parseStringUTF(start: number, end: number, maxLength: number): ASN1.StreamParseReturn;
-    parseStringBMP(start: number, end: number, maxLength: number): ASN1.StreamParseReturn;
+    parseStringISO(
+        start: number,
+        end: number,
+        maxLength: number,
+    ): ASN1.StreamParseReturn;
+    parseStringT61(
+        start: number,
+        end: number,
+        maxLength: number,
+    ): ASN1.StreamParseReturn;
+    parseStringUTF(
+        start: number,
+        end: number,
+        maxLength: number,
+    ): ASN1.StreamParseReturn;
+    parseStringBMP(
+        start: number,
+        end: number,
+        maxLength: number,
+    ): ASN1.StreamParseReturn;
     parseTime(start: number, end: number, shortYear: boolean): string;
     parseInteger(start: number, end: number): string;
-    parseBitString(start: number, end: number, maxLength: number): ASN1.StreamParseReturn;
-    parseOctetString(start: number, end: number, maxLength: number): ASN1.StreamParseReturn;
+    parseBitString(
+        start: number,
+        end: number,
+        maxLength: number,
+    ): ASN1.StreamParseReturn;
+    parseOctetString(
+        start: number,
+        end: number,
+        maxLength: number,
+    ): ASN1.StreamParseReturn;
     parseOID(start: number, end: number, maxLength: number): string;
 }
 
@@ -46,7 +70,14 @@ declare class ASN1Tag {
 declare class ASN1 {
     static decode(stream: ASN1.StreamOrBinary, offset?: number): ASN1;
 
-    constructor(stream: Stream, header: number, length: number, tag: ASN1Tag, tagLen: number, sub: ASN1[] | null);
+    constructor(
+        stream: Stream,
+        header: number,
+        length: number,
+        tag: ASN1Tag,
+        tagLen: number,
+        sub: ASN1[] | null,
+    );
 
     stream: Stream;
     header: number;

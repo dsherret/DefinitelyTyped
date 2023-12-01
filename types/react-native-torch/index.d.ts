@@ -32,7 +32,10 @@ declare const Torch: {
      * @param dialogTitle The title of the permissions dialog
      * @param dialogBody The body text of the permissions dialog
      */
-    requestCameraPermission(dialogTitle: string, dialogBody: string): Promise<boolean>;
+    requestCameraPermission(
+        dialogTitle: string,
+        dialogBody: string,
+    ): Promise<boolean>;
 };
 
 export default Torch;

@@ -270,7 +270,13 @@ declare global {
                 reversed?: boolean | undefined;
 
                 /** Determines the rules by which changes to the buffer invalidate the marker. */
-                invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+                invalidate?:
+                    | "never"
+                    | "surround"
+                    | "overlap"
+                    | "inside"
+                    | "touch"
+                    | undefined;
 
                 /**
                  *  Indicates whether insertions at the start or end of the marked range should
@@ -351,7 +357,9 @@ declare global {
             onDidDestroy(callback: () => void): Disposable;
 
             /** Invoke the given callback when the state of the marker changes. */
-            onDidChange(callback: (event: Events.MarkerChanged) => void): Disposable;
+            onDidChange(
+                callback: (event: Events.MarkerChanged) => void,
+            ): Disposable;
 
             // Marker Details
             /** Returns the current range of the marker. The range is immutable. */
@@ -403,7 +411,10 @@ declare global {
              */
             setRange(
                 range: RangeCompatible,
-                params?: { reversed?: boolean | undefined; exclusive?: boolean | undefined },
+                params?: {
+                    reversed?: boolean | undefined;
+                    exclusive?: boolean | undefined;
+                },
             ): boolean;
 
             /**
@@ -476,17 +487,35 @@ declare global {
 
             // Marker Creation
             /** Create a marker with the given range. */
-            markRange(range: RangeCompatible, options?: {
-                reversed?: boolean | undefined;
-                invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
-                exclusive?: boolean | undefined;
-            }): Marker;
+            markRange(
+                range: RangeCompatible,
+                options?: {
+                    reversed?: boolean | undefined;
+                    invalidate?:
+                        | "never"
+                        | "surround"
+                        | "overlap"
+                        | "inside"
+                        | "touch"
+                        | undefined;
+                    exclusive?: boolean | undefined;
+                },
+            ): Marker;
 
             /** Create a marker at with its head at the given position with no tail. */
-            markPosition(position: PointCompatible, options?: {
-                invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
-                exclusive?: boolean | undefined;
-            }): Marker;
+            markPosition(
+                position: PointCompatible,
+                options?: {
+                    invalidate?:
+                        | "never"
+                        | "surround"
+                        | "overlap"
+                        | "inside"
+                        | "touch"
+                        | undefined;
+                    exclusive?: boolean | undefined;
+                },
+            ): Marker;
 
             // Event Subscription
             /**
@@ -524,7 +553,9 @@ declare global {
 
             // Event Subscription
             /** Invoke the given callback when the state of the marker changes. */
-            onDidChange(callback: (event: Events.DisplayMarkerChanged) => void): Disposable;
+            onDidChange(
+                callback: (event: Events.DisplayMarkerChanged) => void,
+            ): Disposable;
 
             /** Invoke the given callback when the marker is destroyed. */
             onDidDestroy(callback: () => void): Disposable;
@@ -585,14 +616,21 @@ declare global {
             getScreenRange(): Range;
 
             /** Modifies the buffer range of this marker. */
-            setBufferRange(bufferRange: RangeCompatible, properties?: { reversed: boolean }): void;
+            setBufferRange(
+                bufferRange: RangeCompatible,
+                properties?: { reversed: boolean },
+            ): void;
 
             /** Modifies the screen range of this marker. */
             setScreenRange(
                 screenRange: RangeCompatible,
                 options?: {
                     reversed?: boolean | undefined;
-                    clipDirection?: "backward" | "forward" | "closest" | undefined;
+                    clipDirection?:
+                        | "backward"
+                        | "forward"
+                        | "closest"
+                        | undefined;
                 },
             ): void;
 
@@ -600,13 +638,17 @@ declare global {
              *  Retrieves the screen position of the marker's start. This will always be
              *  less than or equal to the result of DisplayMarker::getEndScreenPosition.
              */
-            getStartScreenPosition(options?: { clipDirection: "backward" | "forward" | "closest" }): Point;
+            getStartScreenPosition(options?: {
+                clipDirection: "backward" | "forward" | "closest";
+            }): Point;
 
             /**
              *  Retrieves the screen position of the marker's end. This will always be
              *  greater than or equal to the result of DisplayMarker::getStartScreenPosition.
              */
-            getEndScreenPosition(options?: { clipDirection: "backward" | "forward" | "closest" }): Point;
+            getEndScreenPosition(options?: {
+                clipDirection: "backward" | "forward" | "closest";
+            }): Point;
 
             /** Retrieves the buffer position of the marker's head. */
             getHeadBufferPosition(): Point;
@@ -615,7 +657,9 @@ declare global {
             setHeadBufferPosition(bufferPosition: PointCompatible): void;
 
             /** Retrieves the screen position of the marker's head. */
-            getHeadScreenPosition(options?: { clipDirection: "backward" | "forward" | "closest" }): Point;
+            getHeadScreenPosition(options?: {
+                clipDirection: "backward" | "forward" | "closest";
+            }): Point;
 
             /** Sets the screen position of the marker's head. */
             setHeadScreenPosition(
@@ -630,7 +674,9 @@ declare global {
             setTailBufferPosition(bufferPosition: PointCompatible): void;
 
             /** Retrieves the screen position of the marker's tail. */
-            getTailScreenPosition(options?: { clipDirection: "backward" | "forward" | "closest" }): Point;
+            getTailScreenPosition(options?: {
+                clipDirection: "backward" | "forward" | "closest";
+            }): Point;
 
             /** Sets the screen position of the marker's tail. */
             setTailScreenPosition(
@@ -700,42 +746,88 @@ declare global {
              *  layer. Avoid this method for optimal performance when interacting with layers
              *  that could contain large numbers of markers.
              */
-            onDidCreateMarker(callback: (marker: DisplayMarker | Marker) => void): Disposable;
+            onDidCreateMarker(
+                callback: (marker: DisplayMarker | Marker) => void,
+            ): Disposable;
 
             // Marker creation
             /** Create a marker with the given screen range. */
-            markScreenRange(range: RangeCompatible, options?: {
-                reversed?: boolean | undefined;
-                invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
-                exclusive?: boolean | undefined;
-                clipDirection?: "backward" | "forward" | "closest" | undefined;
-            }): DisplayMarker;
+            markScreenRange(
+                range: RangeCompatible,
+                options?: {
+                    reversed?: boolean | undefined;
+                    invalidate?:
+                        | "never"
+                        | "surround"
+                        | "overlap"
+                        | "inside"
+                        | "touch"
+                        | undefined;
+                    exclusive?: boolean | undefined;
+                    clipDirection?:
+                        | "backward"
+                        | "forward"
+                        | "closest"
+                        | undefined;
+                },
+            ): DisplayMarker;
 
             /**
              *  Create a marker on this layer with its head at the given screen position
              *  and no tail.
              */
-            markScreenPosition(screenPosition: PointCompatible, options?: {
-                invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
-                exclusive?: boolean | undefined;
-                clipDirection?: "backward" | "forward" | "closest" | undefined;
-            }): DisplayMarker;
+            markScreenPosition(
+                screenPosition: PointCompatible,
+                options?: {
+                    invalidate?:
+                        | "never"
+                        | "surround"
+                        | "overlap"
+                        | "inside"
+                        | "touch"
+                        | undefined;
+                    exclusive?: boolean | undefined;
+                    clipDirection?:
+                        | "backward"
+                        | "forward"
+                        | "closest"
+                        | undefined;
+                },
+            ): DisplayMarker;
 
             /** Create a marker with the given buffer range. */
-            markBufferRange(range: RangeCompatible, options?: {
-                reversed?: boolean | undefined;
-                invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
-                exclusive?: boolean | undefined;
-            }): DisplayMarker;
+            markBufferRange(
+                range: RangeCompatible,
+                options?: {
+                    reversed?: boolean | undefined;
+                    invalidate?:
+                        | "never"
+                        | "surround"
+                        | "overlap"
+                        | "inside"
+                        | "touch"
+                        | undefined;
+                    exclusive?: boolean | undefined;
+                },
+            ): DisplayMarker;
 
             /**
              *  Create a marker on this layer with its head at the given buffer position
              *  and no tail.
              */
-            markBufferPosition(bufferPosition: PointCompatible, options?: {
-                invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
-                exclusive?: boolean | undefined;
-            }): DisplayMarker;
+            markBufferPosition(
+                bufferPosition: PointCompatible,
+                options?: {
+                    invalidate?:
+                        | "never"
+                        | "surround"
+                        | "overlap"
+                        | "inside"
+                        | "touch"
+                        | undefined;
+                    exclusive?: boolean | undefined;
+                },
+            ): DisplayMarker;
 
             // Querying
             /** Get an existing marker by its id. */
@@ -842,7 +934,7 @@ declare global {
             fromObject(object: PointCompatible, copy?: boolean): Point;
 
             /** Construct a Point object */
-            new(row?: number, column?: number): Point;
+            new (row?: number, column?: number): Point;
 
             /** Returns the given Point that is earlier in the buffer. */
             min(point1: PointCompatible, point2: PointCompatible): Point;
@@ -911,7 +1003,10 @@ declare global {
              *  Build and return a new range by translating this range's start and end
              *  points by the given delta(s).
              */
-            translate(startDelta: PointCompatible, endDelta?: PointCompatible): Range;
+            translate(
+                startDelta: PointCompatible,
+                endDelta?: PointCompatible,
+            ): Range;
 
             /**
              *  Build and return a new range by traversing this range's start and end
@@ -946,7 +1041,10 @@ declare global {
             intersectsWith(otherRange: RangeLike, exclusive?: boolean): boolean;
 
             /** Returns a boolean indicating whether this range contains the given range. */
-            containsRange(otherRange: RangeCompatible, exclusive?: boolean): boolean;
+            containsRange(
+                otherRange: RangeCompatible,
+                exclusive?: boolean,
+            ): boolean;
 
             /** Returns a boolean indicating whether this range contains the given point. */
             containsPoint(point: PointCompatible, exclusive?: boolean): boolean;
@@ -974,7 +1072,7 @@ declare global {
             fromObject(object: RangeCompatible, copy?: boolean): Range;
 
             /** Construct a Range object. */
-            new(pointA?: PointCompatible, pointB?: PointCompatible): Range;
+            new (pointA?: PointCompatible, pointB?: PointCompatible): Range;
 
             /** Call this with the result of Range::serialize to construct a new Range. */
             deserialize(array: object): Range;
@@ -1043,25 +1141,33 @@ declare global {
              *  Invoke the given callback synchronously before the content of the buffer
              *  changes.
              */
-            onWillChange(callback: (event: Events.BufferChanging) => void): Disposable;
+            onWillChange(
+                callback: (event: Events.BufferChanging) => void,
+            ): Disposable;
 
             /**
              *  Invoke the given callback synchronously when the content of the buffer
              *  changes. You should probably not be using this in packages.
              */
-            onDidChange(callback: (event: Events.BufferChanged) => void): Disposable;
+            onDidChange(
+                callback: (event: Events.BufferChanged) => void,
+            ): Disposable;
 
             /**
              *  Invoke the given callback synchronously when a transaction finishes with
              *  a list of all the changes in the transaction.
              */
-            onDidChangeText(callback: (event: Events.BufferStoppedChanging) => void): Disposable;
+            onDidChangeText(
+                callback: (event: Events.BufferStoppedChanging) => void,
+            ): Disposable;
 
             /**
              *  Invoke the given callback asynchronously following one or more changes after
              *  ::getStoppedChangingDelay milliseconds elapse without an additional change.
              */
-            onDidStopChanging(callback: (event: Events.BufferStoppedChanging) => void): Disposable;
+            onDidStopChanging(
+                callback: (event: Events.BufferStoppedChanging) => void,
+            ): Disposable;
 
             /**
              *  Invoke the given callback when the in-memory contents of the buffer become
@@ -1070,7 +1176,9 @@ declare global {
             onDidConflict(callback: () => void): Disposable;
 
             /** Invoke the given callback if the value of ::isModified changes. */
-            onDidChangeModified(callback: (modified: boolean) => void): Disposable;
+            onDidChangeModified(
+                callback: (modified: boolean) => void,
+            ): Disposable;
 
             /**
              *  Invoke the given callback when all marker ::onDidChange observers have been
@@ -1084,7 +1192,9 @@ declare global {
             onDidChangePath(callback: (path: string) => void): Disposable;
 
             /** Invoke the given callback when the value of ::getEncoding changes. */
-            onDidChangeEncoding(callback: (encoding: string) => void): Disposable;
+            onDidChangeEncoding(
+                callback: (encoding: string) => void,
+            ): Disposable;
 
             /**
              *  Invoke the given callback before the buffer is saved to disk. If the
@@ -1115,7 +1225,9 @@ declare global {
             onDidDestroy(callback: () => void): Disposable;
 
             /** Invoke the given callback when there is an error in watching the file. */
-            onWillThrowWatchError(callback: (errorObject: Events.BufferWatchError) => void): Disposable;
+            onWillThrowWatchError(
+                callback: (errorObject: Events.BufferWatchError) => void,
+            ): Disposable;
 
             /**
              *  Get the number of milliseconds that will elapse without a change before
@@ -1215,20 +1327,29 @@ declare global {
             setTextInRange(
                 range: RangeCompatible,
                 text: string,
-                options?: { normalizeLineEndings?: boolean | undefined; undo?: "skip" | undefined },
+                options?: {
+                    normalizeLineEndings?: boolean | undefined;
+                    undo?: "skip" | undefined;
+                },
             ): Range;
 
             /** Insert text at the given position. */
             insert(
                 position: PointCompatible,
                 text: string,
-                options?: { normalizeLineEndings?: boolean | undefined; undo?: "skip" | undefined },
+                options?: {
+                    normalizeLineEndings?: boolean | undefined;
+                    undo?: "skip" | undefined;
+                },
             ): Range;
 
             /** Append text to the end of the buffer. */
             append(
                 text: string,
-                options?: { normalizeLineEndings?: boolean | undefined; undo?: "skip" | undefined },
+                options?: {
+                    normalizeLineEndings?: boolean | undefined;
+                    undo?: "skip" | undefined;
+                },
             ): Range;
 
             /** Delete the text in the given range. */
@@ -1261,7 +1382,13 @@ declare global {
                 range: RangeCompatible,
                 properties?: {
                     reversed?: boolean | undefined;
-                    invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+                    invalidate?:
+                        | "never"
+                        | "surround"
+                        | "overlap"
+                        | "inside"
+                        | "touch"
+                        | undefined;
                     exclusive?: boolean | undefined;
                 },
             ): Marker;
@@ -1270,7 +1397,13 @@ declare global {
             markPosition(
                 position: PointCompatible,
                 options?: {
-                    invalidate?: "never" | "surround" | "overlap" | "inside" | "touch" | undefined;
+                    invalidate?:
+                        | "never"
+                        | "surround"
+                        | "overlap"
+                        | "inside"
+                        | "touch"
+                        | undefined;
                     exclusive?: boolean | undefined;
                 },
             ): Marker;
@@ -1354,7 +1487,10 @@ declare global {
              *  Scan regular expression matches in the entire buffer, calling the given
              *  iterator function on each match.
              */
-            scan(regex: RegExp, iterator: (params: Structures.BufferScanResult) => void): void;
+            scan(
+                regex: RegExp,
+                iterator: (params: Structures.BufferScanResult) => void,
+            ): void;
             /**
              *  Scan regular expression matches in the entire buffer, calling the given
              *  iterator function on each match.
@@ -1362,14 +1498,19 @@ declare global {
             scan(
                 regex: RegExp,
                 options: Options.ScanContext,
-                iterator: (params: Structures.ContextualBufferScanResult) => void,
+                iterator: (
+                    params: Structures.ContextualBufferScanResult,
+                ) => void,
             ): void;
 
             /**
              *  Scan regular expression matches in the entire buffer in reverse order,
              *  calling the given iterator function on each match.
              */
-            backwardsScan(regex: RegExp, iterator: (params: Structures.BufferScanResult) => void): void;
+            backwardsScan(
+                regex: RegExp,
+                iterator: (params: Structures.BufferScanResult) => void,
+            ): void;
             /**
              *  Scan regular expression matches in the entire buffer in reverse order,
              *  calling the given iterator function on each match.
@@ -1377,7 +1518,9 @@ declare global {
             backwardsScan(
                 regex: RegExp,
                 options: Options.ScanContext,
-                iterator: (params: Structures.ContextualBufferScanResult) => void,
+                iterator: (
+                    params: Structures.ContextualBufferScanResult,
+                ) => void,
             ): void;
 
             /**
@@ -1397,7 +1540,9 @@ declare global {
                 regex: RegExp,
                 range: RangeCompatible,
                 options: Options.ScanContext,
-                iterator: (params: Structures.ContextualBufferScanResult) => void,
+                iterator: (
+                    params: Structures.ContextualBufferScanResult,
+                ) => void,
             ): void;
 
             /**
@@ -1417,7 +1562,9 @@ declare global {
                 regex: RegExp,
                 range: RangeCompatible,
                 options: Options.ScanContext,
-                iterator: (params: Structures.ContextualBufferScanResult) => void,
+                iterator: (
+                    params: Structures.ContextualBufferScanResult,
+                ) => void,
             ): void;
 
             /** Replace all regular expression matches in the entire buffer. */
@@ -1449,7 +1596,9 @@ declare global {
              *  Convert a position in the buffer in row/column coordinates to an absolute
              *  character offset, inclusive of line ending characters.
              */
-            characterIndexForPosition(position: Point | [number, number]): number;
+            characterIndexForPosition(
+                position: Point | [number, number],
+            ): number;
 
             /**
              *  Convert an absolute character offset, inclusive of newlines, to a position
@@ -1480,7 +1629,10 @@ declare global {
             Range: RangeStatic;
 
             /** Create a new buffer backed by the given file path. */
-            load(source: string, params?: Options.BufferLoad): Promise<TextBuffer>;
+            load(
+                source: string,
+                params?: Options.BufferLoad,
+            ): Promise<TextBuffer>;
 
             /**
              *  Create a new buffer backed by the given file path. For better performance,
@@ -1495,9 +1647,9 @@ declare global {
             deserialize(params: object): Promise<TextBuffer>;
 
             /** Create a new buffer with the given starting text. */
-            new(text: string): TextBuffer;
+            new (text: string): TextBuffer;
             /** Create a new buffer with the given params. */
-            new(params?: {
+            new (params?: {
                 /** The initial string text of the buffer. */
                 text?: string | undefined;
                 /**

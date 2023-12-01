@@ -1,11 +1,11 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "new-parens": false,
-        "no-object-literal-type-assertion": false,
-        "no-var-keyword": false,
-        "object-literal-shorthand": false,
-        "only-arrow-functions": false,
-        "prefer-const": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "new-parens": false,
+    "no-object-literal-type-assertion": false,
+    "no-var-keyword": false,
+    "object-literal-shorthand": false,
+    "only-arrow-functions": false,
+    "prefer-const": false
+  }
 }

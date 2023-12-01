@@ -41,7 +41,8 @@ interface StrategyOptions extends Partial<passport.Strategy> {
     profileFields?: Record<string, string | ((json: any) => unknown)>;
 }
 
-interface StrategyOptionsWithRequest extends Omit<StrategyOptions, "passReqToCallback"> {
+interface StrategyOptionsWithRequest
+    extends Omit<StrategyOptions, "passReqToCallback"> {
     passReqToCallback: true;
 }
 
@@ -62,7 +63,10 @@ type VerifyFunction = (
 
 declare class Strategy extends oauth2.Strategy {
     constructor(options: StrategyOptions, verify: VerifyFunction);
-    constructor(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: StrategyOptionsWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
 
     /**
      * Retrieve user profile from 42.
@@ -83,7 +87,10 @@ declare class Strategy extends oauth2.Strategy {
      *
      * @access public
      */
-    userProfile(accessToken: string, done: (err: any, profile?: Profile) => void): void;
+    userProfile(
+        accessToken: string,
+        done: (err: any, profile?: Profile) => void,
+    ): void;
 }
 
 export = Strategy;

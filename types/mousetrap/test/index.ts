@@ -86,6 +86,10 @@ Mousetrap(element).bind(unionTypeKeys, () => {
     console.log("Union type test");
 });
 
-Mousetrap(element).handleKey = (character: string, modifiers: string[], e: KeyboardEvent) => {
+Mousetrap(element).handleKey = (
+    character: string,
+    modifiers: string[],
+    e: KeyboardEvent,
+) => {
     console.log("Override handleKey test");
 };

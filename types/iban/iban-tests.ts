@@ -52,10 +52,10 @@ function testToBBAN() {
     const bban: string = IBAN.toBBAN(iban, separator);
 }
 
-Object.keys(IBAN.countries).forEach(countryCode => {
+Object.keys(IBAN.countries).forEach((countryCode) => {
     countryCode; // $ExpectType string
     IBAN.countries[countryCode]; // $ExpectType Specification
 });
-Object.keys(IBAN.countries).forEach(countryCode => {
+Object.keys(IBAN.countries).forEach((countryCode) => {
     IBAN.isValid(IBAN.countries[countryCode].example); // $ExpectType boolean
 });

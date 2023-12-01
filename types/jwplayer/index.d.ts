@@ -51,7 +51,13 @@ declare namespace jwplayer {
     }
 
     interface Provider {
-        name: "flash_adaptive" | "flash_video" | "flash_sound" | "hlsjs" | "html5" | "shaka";
+        name:
+            | "flash_adaptive"
+            | "flash_video"
+            | "flash_sound"
+            | "hlsjs"
+            | "html5"
+            | "shaka";
     }
 
     interface AbsolutePositionReadyParam {
@@ -370,7 +376,13 @@ declare namespace jwplayer {
         type: "volume";
     }
 
-    type PlayReason = "autostart" | "external" | "interaction" | "playlist" | "related-auto" | "viewable";
+    type PlayReason =
+        | "autostart"
+        | "external"
+        | "interaction"
+        | "playlist"
+        | "related-auto"
+        | "viewable";
 
     type PlayState = "buffering" | "idle" | "paused" | "playing";
 
@@ -1061,7 +1073,10 @@ declare namespace jwplayer {
         podmessage?: string;
         preloadAds?: boolean;
         repeat?: boolean;
-        requestFilter?: (request: { url: string; xhr: XMLHttpRequest }) => XMLHttpRequest;
+        requestFilter?: (request: {
+            url: string;
+            xhr: XMLHttpRequest;
+        }) => XMLHttpRequest;
         requestTimeout?: number;
         rules?: RulesConfig;
         schedule?: ScheduleConfig[] | string;
@@ -1093,7 +1108,16 @@ declare namespace jwplayer {
         an?: string;
         ltd?: 0 | 1;
         rdid?: string;
-        idtype?: "adid" | "afai" | "idfa" | "lgudid" | "msai" | "rida" | "tifa" | "tvOS" | "vaid";
+        idtype?:
+            | "adid"
+            | "afai"
+            | "idfa"
+            | "lgudid"
+            | "msai"
+            | "rida"
+            | "tifa"
+            | "tvOS"
+            | "vaid";
         is_lat?: 0 | 1;
         trt?: 0 | 1 | 2;
         vconp?: 1 | 2;
@@ -1379,7 +1403,12 @@ declare namespace jwplayer {
         hide?: boolean;
         link?: string;
         margin?: number;
-        position?: "bottom-left" | "bottom-right" | "control-bar" | "top-left" | "top-right";
+        position?:
+            | "bottom-left"
+            | "bottom-right"
+            | "control-bar"
+            | "top-left"
+            | "top-right";
     }
 
     interface RelatedConfig {
@@ -1406,7 +1435,14 @@ declare namespace jwplayer {
         sites?: SharingSite[];
     }
 
-    type SharingSite = "email" | "facebook" | "linkedin" | "pinterest" | "reddit" | "tumlbr" | "twitter";
+    type SharingSite =
+        | "email"
+        | "facebook"
+        | "linkedin"
+        | "pinterest"
+        | "reddit"
+        | "tumlbr"
+        | "twitter";
 
     interface SkinConfig {
         controlbar?: {
@@ -1601,7 +1637,13 @@ declare namespace jwplayer {
     }
 
     interface JWPlayer {
-        addButton(icon: string, label: string, handler: () => void, id: string, className?: string): JWPlayer;
+        addButton(
+            icon: string,
+            label: string,
+            handler: () => void,
+            id: string,
+            className?: string,
+        ): JWPlayer;
         addCues(cues: SliderCue[]): JWPlayer;
         addPlugin(name: string, pluginInstance: any): void;
         castToggle(): JWPlayer;
@@ -1647,14 +1689,26 @@ declare namespace jwplayer {
         getWidth(): number;
         load(playlist: PlaylistItem[] | string): JWPlayer;
         next(): JWPlayer;
-        on<TEvent extends keyof EventParams>(event: TEvent, callback: EventCallback<EventParams[TEvent]>): JWPlayer;
+        on<TEvent extends keyof EventParams>(
+            event: TEvent,
+            callback: EventCallback<EventParams[TEvent]>,
+        ): JWPlayer;
         on(event: NoParamEvent, callback: () => void): JWPlayer;
-        once<TEvent extends keyof EventParams>(event: TEvent, callback: EventCallback<EventParams[TEvent]>): JWPlayer;
+        once<TEvent extends keyof EventParams>(
+            event: TEvent,
+            callback: EventCallback<EventParams[TEvent]>,
+        ): JWPlayer;
         once(event: NoParamEvent, callback: () => void): JWPlayer;
         off(event: keyof EventParams | NoParamEvent): JWPlayer;
         off(event: NoParamEvent, callback: () => void): JWPlayer;
-        off<TEvent extends keyof EventParams>(event: TEvent, callback: EventCallback<EventParams[TEvent]>): JWPlayer;
-        trigger<TEvent extends keyof EventParams>(event: TEvent, args: EventParams[TEvent]): JWPlayer;
+        off<TEvent extends keyof EventParams>(
+            event: TEvent,
+            callback: EventCallback<EventParams[TEvent]>,
+        ): JWPlayer;
+        trigger<TEvent extends keyof EventParams>(
+            event: TEvent,
+            args: EventParams[TEvent],
+        ): JWPlayer;
         trigger(event: NoParamEvent): JWPlayer;
         pause(state?: boolean): JWPlayer;
         pauseAd(toggle: boolean): void;
@@ -1664,7 +1718,12 @@ declare namespace jwplayer {
         playlistNext(): JWPlayer;
         playlistPrev(): JWPlayer;
         playToggle(): JWPlayer;
-        registerPlugin(id: string, target: string, jsPlugin: () => void, swfURL?: string): void;
+        registerPlugin(
+            id: string,
+            target: string,
+            jsPlugin: () => void,
+            swfURL?: string,
+        ): void;
         remove(): JWPlayer;
         removeButton(id: string): JWPlayer;
         removePlaylistItemCallback(): void;
@@ -1685,7 +1744,12 @@ declare namespace jwplayer {
         setPlaybackRate(rate?: number): JWPlayer;
         setPlaylistItemCallback(
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            callback: null | ((item: PlaylistItem, index: number) => void | Promise<PlaylistItem>),
+            callback:
+                | null
+                | ((
+                      item: PlaylistItem,
+                      index: number,
+                  ) => void | Promise<PlaylistItem>),
         ): void;
         setup(options: SetupConfig): JWPlayer;
         setVolume(volume: number): JWPlayer;

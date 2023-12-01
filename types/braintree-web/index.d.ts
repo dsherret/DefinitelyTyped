@@ -1,4 +1,7 @@
-import { AmericanExpress, create as americanExpressCreate } from "./american-express";
+import {
+    AmericanExpress,
+    create as americanExpressCreate,
+} from "./american-express";
 import {
     ApplePay,
     ApplePayDetails,
@@ -16,7 +19,11 @@ import {
 import { Client, create as clientCreate, CreditCardInfo } from "./client";
 import { BraintreeError, callback, VERSION } from "./core";
 import { create as dataCollectorCreate, DataCollector } from "./data-collector";
-import { create as googlePaymentCreate, GooglePayment, GooglePaymentTokenizePayload } from "./google-payment";
+import {
+    create as googlePaymentCreate,
+    GooglePayment,
+    GooglePaymentTokenizePayload,
+} from "./google-payment";
 import {
     create as hostedFieldsCreate,
     HostedFieldFieldOptions,
@@ -32,9 +39,21 @@ import {
     LocalPaymentTokenizePayload,
     LocalPaymentTypes,
 } from "./local-payment";
-import { create as payPalCreate, PayPal, PayPalTokenizePayload } from "./paypal";
-import { create as payPalCheckoutCreate, PayPalCheckout, PayPalCheckoutCreatePaymentOptions } from "./paypal-checkout";
-import { create as threeDSecureCreate, ThreeDSecure, ThreeDSecureVerifyPayload } from "./three-d-secure";
+import {
+    create as payPalCreate,
+    PayPal,
+    PayPalTokenizePayload,
+} from "./paypal";
+import {
+    create as payPalCheckoutCreate,
+    PayPalCheckout,
+    PayPalCheckoutCreatePaymentOptions,
+} from "./paypal-checkout";
+import {
+    create as threeDSecureCreate,
+    ThreeDSecure,
+    ThreeDSecureVerifyPayload,
+} from "./three-d-secure";
 import {
     create as unionPayCreate,
     UnionPay,
@@ -42,8 +61,15 @@ import {
     UnionPayFetchCapabilitiesPayload,
     UnionPayTokenizePayload,
 } from "./unionpay";
-import { create as usBankAccountCreate, USBankAccount } from "./us-bank-account";
-import { create as vaultManagerCreate, FetchPaymentMethodsPayload, VaultManager } from "./vault-manager";
+import {
+    create as usBankAccountCreate,
+    USBankAccount,
+} from "./us-bank-account";
+import {
+    create as vaultManagerCreate,
+    FetchPaymentMethodsPayload,
+    VaultManager,
+} from "./vault-manager";
 import { create as venmoCreate, Venmo, VenmoTokenizePayload } from "./venmo";
 
 interface PaymentClient<T> {

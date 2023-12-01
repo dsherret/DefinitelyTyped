@@ -6,9 +6,7 @@ export const handler = async () => {
     await page.screenshot({ path: "/tmp/example.png" });
 };
 
-export const runTestStep = <
-    NextPage,
->(
+export const runTestStep = <NextPage>(
     stepName: string,
     runTestsAndReturnNextPage: () => Promise<NextPage>,
 ): Promise<NextPage> => {

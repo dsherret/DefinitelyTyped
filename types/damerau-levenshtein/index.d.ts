@@ -1,4 +1,8 @@
-declare function levenshtein(__this: string, that: string, limit?: number): levenshtein.DamerauLevenshteinResponse;
+declare function levenshtein(
+    __this: string,
+    that: string,
+    limit?: number,
+): levenshtein.DamerauLevenshteinResponse;
 
 declare namespace levenshtein {
     interface DamerauLevenshteinResponse {

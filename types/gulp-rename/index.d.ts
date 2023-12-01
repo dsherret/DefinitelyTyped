@@ -23,7 +23,10 @@ declare namespace rename {
 
 declare function rename(
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    obj: string | rename.Options | ((path: rename.ParsedPath, file: File) => rename.ParsedPath | void),
+    obj:
+        | string
+        | rename.Options
+        | ((path: rename.ParsedPath, file: File) => rename.ParsedPath | void),
     options?: rename.PluginOptions,
 ): NodeJS.ReadWriteStream;
 export = rename;

@@ -1,4 +1,9 @@
-import { AllChoiceMap, Answers, KeyUnion, UnionToIntersection } from "../../index.js";
+import {
+    AllChoiceMap,
+    Answers,
+    KeyUnion,
+    UnionToIntersection,
+} from "../../index.js";
 import Choice from "./choice.js";
 import Separator from "./separator.js";
 
@@ -16,7 +21,10 @@ type DistinctChoice<T extends Answers> = AllChoiceMap<T>[keyof AllChoiceMap<T>];
  * @template T
  * The type of the answers.
  */
-type RealChoice<T extends Answers> = Exclude<DistinctChoice<T>, { type: Separator["type"] }>;
+type RealChoice<T extends Answers> = Exclude<
+    DistinctChoice<T>,
+    { type: Separator["type"] }
+>;
 
 /**
  * Represents a property-name of any choice-type.
@@ -24,7 +32,9 @@ type RealChoice<T extends Answers> = Exclude<DistinctChoice<T>, { type: Separato
  * @template T
  * The type of the answers.
  */
-type ChoiceProperty<T extends Answers> = KeyUnion<UnionToIntersection<RealChoice<T>>>;
+type ChoiceProperty<T extends Answers> = KeyUnion<
+    UnionToIntersection<RealChoice<T>>
+>;
 
 /**
  * A collection of multiple `Choice`-objects.
@@ -143,7 +153,11 @@ declare class Choices<T extends Answers = Answers> {
      * If {@link thisArg `thisArg`} is omitted, `undefined` is used as the `this` value.
      */
     forEach(
-        callbackfn: (value: Choice<T> | Separator, index: number, array: Array<Choice<T> | Separator>) => void,
+        callbackfn: (
+            value: Choice<T> | Separator,
+            index: number,
+            array: Array<Choice<T> | Separator>,
+        ) => void,
         thisArg?: any,
     ): void;
 
@@ -187,7 +201,11 @@ declare class Choices<T extends Answers = Answers> {
      * If it is not provided, `undefined` is used instead.
      */
     find(
-        predicate: (value: Choice<T> | Separator, index: number, obj: Array<Choice<T> | Separator>) => boolean,
+        predicate: (
+            value: Choice<T> | Separator,
+            index: number,
+            obj: Array<Choice<T> | Separator>,
+        ) => boolean,
         thisArg?: any,
     ): Choice<T> | Separator;
 

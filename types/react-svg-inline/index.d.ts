@@ -10,31 +10,31 @@ declare namespace svgInline {
         cleanup?:
             | boolean
             | Array<
-                | "title"
-                | "desc"
-                | "comment"
-                | "defs"
-                | "width"
-                | "height"
-                | "fill"
-                | "sketchMSShapeGroup"
-                | "sketchMSPage"
-                | "sketchMSLayerGroup"
-            >
+                  | "title"
+                  | "desc"
+                  | "comment"
+                  | "defs"
+                  | "width"
+                  | "height"
+                  | "fill"
+                  | "sketchMSShapeGroup"
+                  | "sketchMSPage"
+                  | "sketchMSLayerGroup"
+              >
             | undefined;
         cleanupExceptions?:
             | Array<
-                | "title"
-                | "desc"
-                | "comment"
-                | "defs"
-                | "width"
-                | "height"
-                | "fill"
-                | "sketchMSShapeGroup"
-                | "sketchMSPage"
-                | "sketchMSLayerGroup"
-            >
+                  | "title"
+                  | "desc"
+                  | "comment"
+                  | "defs"
+                  | "width"
+                  | "height"
+                  | "fill"
+                  | "sketchMSShapeGroup"
+                  | "sketchMSPage"
+                  | "sketchMSLayerGroup"
+              >
             | undefined;
         width?: string | undefined;
         height?: string | undefined;

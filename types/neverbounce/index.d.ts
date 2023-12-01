@@ -122,11 +122,21 @@ declare class Jobs {
 }
 
 declare class Poe {
-    confirm(email: string, result: string, confirmationToken: string, transactionId: string): Promise<Response>;
+    confirm(
+        email: string,
+        result: string,
+        confirmationToken: string,
+        transactionId: string,
+    ): Promise<Response>;
 }
 
 declare class Single {
-    check(email: string, addressInfo?: boolean, creditsInfo?: boolean, timeout?: any): Promise<Response>;
+    check(
+        email: string,
+        addressInfo?: boolean,
+        creditsInfo?: boolean,
+        timeout?: any,
+    ): Promise<Response>;
 }
 
 interface Config {
@@ -137,10 +147,12 @@ interface Config {
 
 interface ConfigOptions {
     acceptedType?: string | undefined;
-    headers?: {
-        "Content-Type"?: string | undefined;
-        "User-Agent"?: string | undefined;
-    } | undefined;
+    headers?:
+        | {
+              "Content-Type"?: string | undefined;
+              "User-Agent"?: string | undefined;
+          }
+        | undefined;
     host?: string | undefined;
     port?: number | undefined;
 }

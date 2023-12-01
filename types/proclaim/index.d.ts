@@ -15,7 +15,12 @@ declare namespace proclaim {
     /**
      * Throw an assertion error.
      */
-    function fail(actual: any, expected: any, msg?: string, operator?: string): AssertionError;
+    function fail(
+        actual: any,
+        expected: any,
+        msg?: string,
+        operator?: string,
+    ): AssertionError;
 
     /**
      * Assert that value is truthy.
@@ -31,85 +36,141 @@ declare namespace proclaim {
      * Assert that actual == expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function equal(actual: any, expected: any, msg?: string): AssertionError | void;
+    function equal(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual != expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function notEqual(actual: any, expected: any, msg?: string): AssertionError | void;
+    function notEqual(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual === expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function strictEqual(actual: any, expected: any, msg?: string): AssertionError | void;
+    function strictEqual(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual !== expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function notStrictEqual(actual: any, expected: any, msg?: string): AssertionError | void;
+    function notStrictEqual(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual is deeply equal to expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function deepEqual(actual: any, expected: any, msg?: string): AssertionError | void;
+    function deepEqual(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual is not deeply equal to expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function notDeepEqual(actual: any, expected: any, msg?: string): AssertionError | void;
+    function notDeepEqual(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual is deeply equal to expected, as determined by the strict equality operator ===.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function deepStrictEqual(actual: any, expected: any, msg?: string): AssertionError | void;
+    function deepStrictEqual(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual is not deeply equal to expected, as determined by the strict not equal operator !==.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function notDeepStrictEqual(actual: any, expected: any, msg?: string): AssertionError | void;
+    function notDeepStrictEqual(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that fn throws an error.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function throws(fn: () => void, expected?: any, msg?: string): AssertionError | void;
+    function throws(
+        fn: () => void,
+        expected?: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that fn does not throw an error.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function doesNotThrow(fn: () => void, expected?: any, msg?: string): AssertionError | void;
+    function doesNotThrow(
+        fn: () => void,
+        expected?: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that typeof actual === expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function isTypeOf(actual: any, expected: any, msg?: string): AssertionError | void;
+    function isTypeOf(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that typeof actual !== expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function isNotTypeOf(actual: any, expected: any, msg?: string): AssertionError | void;
+    function isNotTypeOf(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual instanceof expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function isInstanceOf(actual: any, expected: any, msg?: string): AssertionError | void;
+    function isInstanceOf(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that !(actual instanceof expected).
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function isNotInstanceOf(actual: any, expected: any, msg?: string): AssertionError | void;
+    function isNotInstanceOf(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that value is an array.
@@ -235,83 +296,140 @@ declare namespace proclaim {
      * Assert that actual matches the RegExp in expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function match(actual: any, expected: any, msg?: string): AssertionError | void;
+    function match(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual does not match the RegExp in expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function notMatch(actual: any, expected: any, msg?: string): AssertionError | void;
+    function notMatch(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that haystack contains needle.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function include(haystack: any, needle: any, msg?: string): AssertionError | void;
+    function include(
+        haystack: any,
+        needle: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that haystack does not contain needle.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function doesNotInclude(haystack: any, needle: any, msg?: string): AssertionError | void;
+    function doesNotInclude(
+        haystack: any,
+        needle: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that value.length === expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function lengthEquals(actual: any, expected: any, msg?: string): AssertionError | void;
+    function lengthEquals(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual < expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function lessThan(actual: any, expected: any, msg?: string): AssertionError | void;
+    function lessThan(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual <= expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function lessThanOrEqual(actual: any, expected: any, msg?: string): AssertionError | void;
+    function lessThanOrEqual(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual > expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function greaterThan(actual: any, expected: any, msg?: string): AssertionError | void;
+    function greaterThan(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that actual >= expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function greaterThanOrEqual(actual: any, expected: any, msg?: string): AssertionError | void;
+    function greaterThanOrEqual(
+        actual: any,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that fn.length === expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function arity(fn: () => void, expected: any, msg?: string): AssertionError | void;
+    function arity(
+        fn: () => void,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that Math.abs(actual - expected) < (0.5 * Math.pow(10, -precision)).
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function almostEqual(actual: any, expected: any, precision: number, msg?: string): AssertionError | void;
+    function almostEqual(
+        actual: any,
+        expected: any,
+        precision: number,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that obj[property] is not enumerable.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function isNotEnumerable(object: object, property: any, msg?: string): AssertionError | void;
+    function isNotEnumerable(
+        object: object,
+        property: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that obj[property] is enumerable.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function isEnumerable(object: object, property: any, msg?: string): AssertionError | void;
+    function isEnumerable(
+        object: object,
+        property: any,
+        msg?: string,
+    ): AssertionError | void;
 
     /**
      * Assert that fn.name === expected.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function hasName(fn: () => void, expected: any, msg?: string): AssertionError | void;
+    function hasName(
+        fn: () => void,
+        expected: any,
+        msg?: string,
+    ): AssertionError | void;
 }

@@ -36,7 +36,9 @@ import {
     TooltipSimple,
 } from "carbon-components";
 
-const accordion = new Accordion(document.getElementById("root")!, { selectorAccordionContent: "" });
+const accordion = new Accordion(document.getElementById("root")!, {
+    selectorAccordionContent: "",
+});
 
 accordion._checkIfButton();
 accordion._handleKeypress({});
@@ -58,7 +60,9 @@ settings.prefix; // $ExpectType string
 settings.selectorFocusable; // $ExpectType string
 settings.selectorTabbable; // $ExpectType string
 
-const tooltip = new Tooltip(document.getElementById("tooltip")!, { classShown: "tooltip" });
+const tooltip = new Tooltip(document.getElementById("tooltip")!, {
+    classShown: "tooltip",
+});
 
 tooltip.changeState("", {}, () => {});
 

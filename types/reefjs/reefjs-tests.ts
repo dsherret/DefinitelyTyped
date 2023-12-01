@@ -9,7 +9,7 @@ const app = new Reef("#someelement", {
         sayHello: "Hello world",
     },
 
-    template: props => {
+    template: (props) => {
         return `<h1>${props.sayHello} from Reef!</h1>`;
     },
 });
@@ -22,7 +22,7 @@ const nc = new Reef("#nc", {
         id: "test",
     },
 
-    template: props => {
+    template: (props) => {
         return `
         <div id="${props.id}">
             <p id="name1"></p>
@@ -43,7 +43,7 @@ const nc3 = new Reef("#name2", {
         name: "Jane",
     },
 
-    template: props => {
+    template: (props) => {
         return `My name is ${props.name}!`;
     },
 });
@@ -99,12 +99,11 @@ const app3 = new Reef("#app", {
     template: (props) => {
         return `<h1>${props.heading}</h1>
         <ul>
-			${
-            props.todos
+			${props.todos
                 .map((todo: string) => {
                     return `<li>${todo}</li>`;
-                }).join("")
-        }
+                })
+                .join("")}
 		</ul>`;
     },
 });

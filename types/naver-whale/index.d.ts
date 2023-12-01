@@ -285,7 +285,8 @@ declare namespace whale {
         }
         export type ColorArray = [number, number, number, number];
 
-        export interface BrowserClickedEvent extends chrome.events.Event<(tab: chrome.tabs.Tab) => void> {}
+        export interface BrowserClickedEvent
+            extends chrome.events.Event<(tab: chrome.tabs.Tab) => void> {}
 
         /**
          * 지정한 윈도우에 사이드바 영역을 열고 포커스를 주는 메소드입니다. 이미 사이드바가 열려있다면 포커스만 옮겨줍니다.

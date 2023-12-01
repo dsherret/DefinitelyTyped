@@ -1,6 +1,16 @@
-declare function deleteEmpty(dir: string, options: deleteEmpty.Options, cb: deleteEmpty.DeleteEmptyCallback): void;
-declare function deleteEmpty(dir: string, cb: deleteEmpty.DeleteEmptyCallback): void;
-declare function deleteEmpty(dir: string, options?: deleteEmpty.Options): Promise<string[]>;
+declare function deleteEmpty(
+    dir: string,
+    options: deleteEmpty.Options,
+    cb: deleteEmpty.DeleteEmptyCallback,
+): void;
+declare function deleteEmpty(
+    dir: string,
+    cb: deleteEmpty.DeleteEmptyCallback,
+): void;
+declare function deleteEmpty(
+    dir: string,
+    options?: deleteEmpty.Options,
+): Promise<string[]>;
 
 declare namespace deleteEmpty {
     function sync(dir: string, options?: Options): string[];

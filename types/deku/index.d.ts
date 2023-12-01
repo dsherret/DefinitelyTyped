@@ -19,12 +19,20 @@ declare namespace deku {
          * When it finds custom elements it will render them, cache them, and keep going,
          * so they are treated like any other native element.
          */
-        function create<C>(vnode: VirtualElement, path: string, dispatch: Dispatch, context: C): HTMLElement;
+        function create<C>(
+            vnode: VirtualElement,
+            path: string,
+            dispatch: Dispatch,
+            context: C,
+        ): HTMLElement;
 
         /**
          * Modify a DOM element given an array of actions.
          */
-        function update<C, A>(dispatch: Dispatch, context: C): (DOMElement: HTMLElement, action: A) => HTMLElement;
+        function update<C, A>(
+            dispatch: Dispatch,
+            context: C,
+        ): (DOMElement: HTMLElement, action: A) => HTMLElement;
     }
 
     namespace string {
@@ -40,10 +48,18 @@ declare namespace deku {
      * It is compatible with JSX transforms so you can use JSX to write nodes that will compile to this function.
      */
     function element(type: string): VirtualElement;
-    function element<A>(type: string, attributes: A, ...children: any[]): VirtualElement;
+    function element<A>(
+        type: string,
+        attributes: A,
+        ...children: any[]
+    ): VirtualElement;
 
     function element(type: Thunk): VirtualElement;
-    function element<A>(type: Thunk, attributes: A, ...children: any[]): VirtualElement;
+    function element<A>(
+        type: Thunk,
+        attributes: A,
+        ...children: any[]
+    ): VirtualElement;
 
     var h: typeof element;
 
@@ -51,7 +67,10 @@ declare namespace deku {
         /**
          * Compare two virtual nodes and return an array of changes to turn the left into the right.
          */
-        function diffNode(prevNode: VirtualElement, nextNode: VirtualElement): any[];
+        function diffNode(
+            prevNode: VirtualElement,
+            nextNode: VirtualElement,
+        ): any[];
 
         class Actions {
             private _keys: string[];
@@ -100,7 +119,10 @@ declare namespace deku {
 
         function isEmpty(vnode: VirtualElement): boolean;
 
-        function isSameThunk(prevNode: VirtualElement, nextNode: VirtualElement): boolean;
+        function isSameThunk(
+            prevNode: VirtualElement,
+            nextNode: VirtualElement,
+        ): boolean;
 
         // function isValidAttribute<A>(value: A): boolean;
 

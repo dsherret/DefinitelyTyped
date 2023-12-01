@@ -53,11 +53,15 @@ ${help}`);
 }
 
 /** custom-option-arrayOfCommaSepString.js */ (() => {
-    function parseCommaSepStringNoEmpties(option: any, optstr: any, arg: string) {
+    function parseCommaSepStringNoEmpties(
+        option: any,
+        optstr: any,
+        arg: string,
+    ) {
         return arg
             .trim()
             .split(/\s*,\s*/g)
-            .filter(part => part);
+            .filter((part) => part);
     }
 
     dashdash.addOptionType({
@@ -84,7 +88,11 @@ ${help}`);
     try {
         const opts = dashdash.parse({ options });
     } catch (e) {
-        console.error("%s: error: %s", path.basename(process.argv[1]), e.message);
+        console.error(
+            "%s: error: %s",
+            path.basename(process.argv[1]),
+            e.message,
+        );
         process.exit(1);
     }
 
@@ -97,7 +105,13 @@ ${help}`);
     function parseDuration(option: any, optstr: string, arg: string) {
         const match = durationRe.exec(arg);
         if (!match) {
-            throw new Error(format("arg for \"%s\" is not a valid duration: \"%s\"", optstr, arg));
+            throw new Error(
+                format(
+                    'arg for "%s" is not a valid duration: "%s"',
+                    optstr,
+                    arg,
+                ),
+            );
         }
         const num = parseInt(match[1], 10);
         const scope = match[2];
@@ -131,7 +145,11 @@ ${help}`);
     try {
         const opts = dashdash.parse({ options });
     } catch (e) {
-        console.error("%s: error: %s", path.basename(process.argv[1]), e.message);
+        console.error(
+            "%s: error: %s",
+            path.basename(process.argv[1]),
+            e.message,
+        );
         process.exit(1);
     }
 
@@ -144,7 +162,9 @@ ${help}`);
     const fruits = ["apple", "pear", "cherry", "strawberry", "banana"];
     function parseFruit(option: any, optstr: string, arg: string) {
         if (fruits.indexOf(arg) === -1) {
-            throw new Error(format("arg for \"%s\" is not a known fruit: \"%s\"", optstr, arg));
+            throw new Error(
+                format('arg for "%s" is not a known fruit: "%s"', optstr, arg),
+            );
         }
         return arg;
     }
@@ -170,7 +190,11 @@ ${help}`);
     try {
         const opts = parser.parse(process.argv);
     } catch (e) {
-        console.error("%s: error: %s", path.basename(process.argv[1]), e.message);
+        console.error(
+            "%s: error: %s",
+            path.basename(process.argv[1]),
+            e.message,
+        );
         process.exit(1);
     }
 

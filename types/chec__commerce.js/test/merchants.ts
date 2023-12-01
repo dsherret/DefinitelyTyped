@@ -19,8 +19,7 @@ const merchants: Merchant.Merchant = {
         code: "USD",
     },
     support_email: "andrew+ai@commercejs.com",
-    logo:
-        "https://cdn.chec.io/merchants/17851/images/icon/9241ac5a755b6165cbd7abdb18562544920c167c5ec8743028c72|Commerce_logo_glasses.png",
+    logo: "https://cdn.chec.io/merchants/17851/images/icon/9241ac5a755b6165cbd7abdb18562544920c167c5ec8743028c72|Commerce_logo_glasses.png",
     logo_shape: "circle",
     cover: null,
     intercom: true,

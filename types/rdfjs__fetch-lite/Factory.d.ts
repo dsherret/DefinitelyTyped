@@ -11,7 +11,10 @@ interface RdfFetchResponse<
 }
 
 interface Fetch {
-    (url: string, options?: FormatsInit): Promise<RdfFetchResponse<DatasetCore>>;
+    (
+        url: string,
+        options?: FormatsInit,
+    ): Promise<RdfFetchResponse<DatasetCore>>;
     config(key: string, value: unknown): void;
     Headers: Headers;
 }
@@ -22,7 +25,7 @@ export interface FetchFactory {
 }
 
 interface FetchFactoryCtor {
-    new(): FetchFactory;
+    new (): FetchFactory;
 }
 
 declare const factory: FetchFactoryCtor;

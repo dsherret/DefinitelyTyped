@@ -36,7 +36,8 @@ declare namespace GoogleAdsScripts {
          *        .addAttributes({numLeft: "number", lowCost: "price"})
          *        .build();                                              // create the ad customizer source
          */
-        interface AdCustomizerSourceBuilder extends Base.Builder<AdCustomizerSourceOperation> {
+        interface AdCustomizerSourceBuilder
+            extends Base.Builder<AdCustomizerSourceOperation> {
             /**
              * Adds an attribute of the given name and type to the new ad customizer source. Existing attributes are not modified.
              *
@@ -66,7 +67,9 @@ declare namespace GoogleAdsScripts {
              * An error will be thrown if an additional attribute's name is one of start date, end date, device preference, scheduling, target campaign, target ad group,
              * keyword text, match type, keyword, id, case insensitive.
              */
-            addAttributes(attributes: Record<string, string | number | null>): this;
+            addAttributes(
+                attributes: Record<string, string | number | null>,
+            ): this;
             /** Sets the name of the new ad customizer source to the specified value. This field is required. */
             withName(name: string): this;
         }
@@ -79,7 +82,8 @@ declare namespace GoogleAdsScripts {
          *        var adCustomizerSource = adCustomizerSourceIterator.next();
          *      }
          */
-        interface AdCustomizerSourceIterator extends Base.Iterator<AdCustomizerSource> {}
+        interface AdCustomizerSourceIterator
+            extends Base.Iterator<AdCustomizerSource> {}
 
         /**
          * An operation representing creation of a new ad customizer source.
@@ -87,7 +91,8 @@ declare namespace GoogleAdsScripts {
          * To make the script more efficient, it's recommended that you store the operations in an array and only call these methods once you've constructed
          * all the operations you want.
          */
-        interface AdCustomizerSourceOperation extends Base.Operation<AdCustomizerSource> {}
+        interface AdCustomizerSourceOperation
+            extends Base.Operation<AdCustomizerSource> {}
 
         /**
          * Fetches ad customizer sources. Does not support filtering or sorting.
@@ -101,7 +106,7 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface AdCustomizerSourceSelector
-            extends Base.Selector<AdCustomizerSourceIterator>, Base.SelectorWithLimit
-        {}
+            extends Base.Selector<AdCustomizerSourceIterator>,
+                Base.SelectorWithLimit {}
     }
 }

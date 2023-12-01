@@ -1,42 +1,42 @@
 {
-    "private": true,
-    "name": "@types/parse",
-    "version": "1.11.9999",
-    "projects": [
-        "https://parseplatform.org/"
-    ],
-    "dependencies": {
-        "@types/jquery": "*",
-        "@types/node": "*",
-        "@types/underscore": "*"
+  "private": true,
+  "name": "@types/parse",
+  "version": "1.11.9999",
+  "projects": [
+    "https://parseplatform.org/"
+  ],
+  "dependencies": {
+    "@types/jquery": "*",
+    "@types/node": "*",
+    "@types/underscore": "*"
+  },
+  "devDependencies": {
+    "@types/parse": "workspace:."
+  },
+  "owners": [
+    {
+      "name": " Ullisen Media Group",
+      "url": "http://ullisenmedia.com"
     },
-    "devDependencies": {
-        "@types/parse": "workspace:."
+    {
+      "name": "David Poetzsch-Heffter",
+      "githubUsername": "dpoetzsch"
     },
-    "owners": [
-        {
-            "name": " Ullisen Media Group",
-            "url": "http://ullisenmedia.com"
-        },
-        {
-            "name": "David Poetzsch-Heffter",
-            "githubUsername": "dpoetzsch"
-        },
-        {
-            "name": "Cedric Kemp",
-            "githubUsername": "jaeggerr"
-        },
-        {
-            "name": "Flavio Negrão",
-            "githubUsername": "flavionegrao"
-        },
-        {
-            "name": "Wes Grimes",
-            "githubUsername": "wesleygrimes"
-        },
-        {
-            "name": "Otherwise SAS",
-            "githubUsername": "owsas"
-        }
-    ]
+    {
+      "name": "Cedric Kemp",
+      "githubUsername": "jaeggerr"
+    },
+    {
+      "name": "Flavio Negrão",
+      "githubUsername": "flavionegrao"
+    },
+    {
+      "name": "Wes Grimes",
+      "githubUsername": "wesleygrimes"
+    },
+    {
+      "name": "Otherwise SAS",
+      "githubUsername": "owsas"
+    }
+  ]
 }

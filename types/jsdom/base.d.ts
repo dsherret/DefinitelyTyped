@@ -19,7 +19,10 @@ declare module "jsdom" {
     }
 
     class JSDOM {
-        constructor(html?: string | Buffer | BinaryData, options?: ConstructorOptions);
+        constructor(
+            html?: string | Buffer | BinaryData,
+            options?: ConstructorOptions,
+        );
 
         static fromURL(url: string, options?: BaseOptions): Promise<JSDOM>;
         static fromFile(url: string, options?: FileOptions): Promise<JSDOM>;
@@ -58,7 +61,10 @@ declare module "jsdom" {
     }
 
     class ResourceLoader {
-        fetch(url: string, options: FetchOptions): AbortablePromise<Buffer> | null;
+        fetch(
+            url: string,
+            options: FetchOptions,
+        ): AbortablePromise<Buffer> | null;
 
         constructor(obj?: ResourceLoaderConstructorOptions);
     }
@@ -176,7 +182,12 @@ declare module "jsdom" {
         cookieJar?: CookieJar | undefined;
         referrer?: string | undefined;
         accept?: string | undefined;
-        element?: HTMLScriptElement | HTMLLinkElement | HTMLIFrameElement | HTMLImageElement | undefined;
+        element?:
+            | HTMLScriptElement
+            | HTMLLinkElement
+            | HTMLIFrameElement
+            | HTMLImageElement
+            | undefined;
     }
 
     interface ResourceLoaderConstructorOptions {
@@ -314,7 +325,7 @@ declare module "jsdom" {
         HTMLDataListElement: typeof HTMLDataListElement;
         HTMLDetailsElement: typeof HTMLDetailsElement;
         HTMLDialogElement: {
-            new(): HTMLDialogElement;
+            new (): HTMLDialogElement;
             readonly prototype: HTMLDialogElement;
         };
         HTMLDirectoryElement: typeof HTMLDirectoryElement;

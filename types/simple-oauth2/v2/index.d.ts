@@ -32,16 +32,18 @@ export interface ModuleOptions<ClientIdName extends string = "client_id"> {
      * Defaults to header.Accept = "application/json"
      */
     http?: {} | undefined;
-    options?: {
-        /** Format of data sent in the request body. Defaults to form. */
-        bodyFormat?: "json" | "form" | undefined;
-        /**
-         * Indicates the method used to send the client.id/client.secret authorization params at the token request.
-         * If set to body, the bodyFormat option will be used to format the credentials.
-         * Defaults to header
-         */
-        authorizationMethod?: "header" | "body" | undefined;
-    } | undefined;
+    options?:
+        | {
+              /** Format of data sent in the request body. Defaults to form. */
+              bodyFormat?: "json" | "form" | undefined;
+              /**
+               * Indicates the method used to send the client.id/client.secret authorization params at the token request.
+               * If set to body, the bodyFormat option will be used to format the credentials.
+               * Defaults to header
+               */
+              authorizationMethod?: "header" | "body" | undefined;
+          }
+        | undefined;
 }
 
 export type TokenType = "access_token" | "refresh_token";
@@ -102,15 +104,17 @@ export interface WreckHttpOptions {
     redirect303?: boolean | undefined;
     beforeRedirect?:
         | ((
-            redirectMethod: string,
-            statusCode: number,
-            location: string,
-            resHeaders: { [key: string]: any },
-            redirectOptions: any,
-            next: () => {},
-        ) => void)
+              redirectMethod: string,
+              statusCode: number,
+              location: string,
+              resHeaders: { [key: string]: any },
+              redirectOptions: any,
+              next: () => {},
+          ) => void)
         | undefined;
-    redirected?: ((statusCode: number, location: string, req: any) => void) | undefined;
+    redirected?:
+        | ((statusCode: number, location: string, req: any) => void)
+        | undefined;
     timeout?: number | undefined;
     maxBytes?: number | undefined;
     rejectUnauthorized?: boolean | undefined;
@@ -130,33 +134,40 @@ export interface OAuthClient<ClientIdName extends string = "client_id"> {
          * @return the absolute authorization url
          */
         authorizeURL(
-            params?:
-                & {
-                    /** A string that represents the Client-ID */
-                    [key in ClientIdName]?: string;
-                }
-                & {
-                    /** A string that represents the registered application URI where the user is redirected after authentication */
-                    redirect_uri?: string | undefined;
-                    /** A string or array of strings that represents the application privileges */
-                    scope?: string | string[] | undefined;
-                    /** A string that represents an option opaque value used by the client to main the state between the request and the callback */
-                    state?: string | undefined;
-                },
+            params?: {
+                /** A string that represents the Client-ID */
+                [key in ClientIdName]?: string;
+            } & {
+                /** A string that represents the registered application URI where the user is redirected after authentication */
+                redirect_uri?: string | undefined;
+                /** A string or array of strings that represents the application privileges */
+                scope?: string | string[] | undefined;
+                /** A string that represents an option opaque value used by the client to main the state between the request and the callback */
+                state?: string | undefined;
+            },
         ): string;
 
         /** Returns the Access Token object */
-        getToken(params: AuthorizationTokenConfig, httpOptions?: WreckHttpOptions): Promise<Token>;
+        getToken(
+            params: AuthorizationTokenConfig,
+            httpOptions?: WreckHttpOptions,
+        ): Promise<Token>;
     };
 
     ownerPassword: {
         /** Returns the Access Token Object */
-        getToken(params: PasswordTokenConfig, httpOptions?: WreckHttpOptions): Promise<Token>;
+        getToken(
+            params: PasswordTokenConfig,
+            httpOptions?: WreckHttpOptions,
+        ): Promise<Token>;
     };
 
     clientCredentials: {
         /** Returns the Access Token Object */
-        getToken(params: ClientCredentialTokenConfig, httpOptions?: WreckHttpOptions): Promise<Token>;
+        getToken(
+            params: ClientCredentialTokenConfig,
+            httpOptions?: WreckHttpOptions,
+        ): Promise<Token>;
     };
 
     accessToken: {

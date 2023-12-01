@@ -14,8 +14,12 @@ declare class SymmetricState extends CipherState {
 
     mixHash(data: Buffer | Uint8Array): void;
     mixKey(remoteKey: Buffer | Uint8Array, localKey: curve.KeyPair): void;
-    encryptAndHash(plaintext: string | Buffer | Uint8Array): Buffer | Uint8Array;
-    decryptAndHash(ciphertext: string | Buffer | Uint8Array): Buffer | Uint8Array;
+    encryptAndHash(
+        plaintext: string | Buffer | Uint8Array,
+    ): Buffer | Uint8Array;
+    decryptAndHash(
+        ciphertext: string | Buffer | Uint8Array,
+    ): Buffer | Uint8Array;
     getHandshakeHash(out?: Buffer | Uint8Array): Buffer | Uint8Array;
     split(): [Buffer, Buffer] | [Uint8Array, Uint8Array];
     _clear(): void;
@@ -38,6 +42,9 @@ declare namespace SymmetricState {
         ALG: string;
 
         generateKeyPair(privateKey?: Buffer | Uint8Array): curve.KeyPair;
-        dh(publicKey: Buffer | Uint8Array, keyPair: curve.KeyPair): Buffer | Uint8Array;
+        dh(
+            publicKey: Buffer | Uint8Array,
+            keyPair: curve.KeyPair,
+        ): Buffer | Uint8Array;
     }
 }

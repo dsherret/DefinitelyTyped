@@ -14,4 +14,7 @@ export let supportedTargets: Target[];
 
 export function getAbi(target: string, runtime?: Runtime): string;
 export function getTarget(abi?: string | null, runtime?: Runtime): string;
-export function _getNextTarget(runtime: Runtime, targets?: Target[]): string | null;
+export function _getNextTarget(
+    runtime: Runtime,
+    targets?: Target[],
+): string | null;

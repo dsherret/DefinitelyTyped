@@ -1,4 +1,9 @@
-import { bindShortcut, bindShortcuts, Mousetrap, mousetrap } from "redux-shortcuts";
+import {
+    bindShortcut,
+    bindShortcuts,
+    Mousetrap,
+    mousetrap,
+} from "redux-shortcuts";
 import "mousetrap/plugins/global-bind/mousetrap-global-bind";
 
 import { Action, ActionCreator, AnyAction, Dispatch } from "redux";
@@ -27,11 +32,11 @@ bindShortcuts(
 )(dispatch);
 
 // mousetrap (instance)
-mousetrap.bind("ctrl+s", e => /* custom event prop */ e.returnValue);
+mousetrap.bind("ctrl+s", (e) => /* custom event prop */ e.returnValue);
 mousetrap.unbind("ctrl+s", "keydown");
 mousetrap.trigger("ctrl+s", "keydown");
 mousetrap.reset();
 
 // Mousetrap (static)
-Mousetrap.bindGlobal("ctrl+s", e => e.preventDefault(), "keyup");
+Mousetrap.bindGlobal("ctrl+s", (e) => e.preventDefault(), "keyup");
 Mousetrap.addKeycodes({ 27: "escape" });

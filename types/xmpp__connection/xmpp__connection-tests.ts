@@ -106,106 +106,106 @@ conn.write("foo"); // $ExpectType Promise<void>
 conn.isStanza(new Element("foo")); // $ExpectType boolean
 conn.isNonza(new Element("foo")); // $ExpectType boolean
 
-conn.addListener("input", input => {
+conn.addListener("input", (input) => {
     input; // $ExpectType string
 });
-conn.addListener("send", el => {
+conn.addListener("send", (el) => {
     el; // $ExpectType Element
 });
 conn.addListener("error", (error: Error) => {});
-conn.addListener("element", el => {
+conn.addListener("element", (el) => {
     el; // $ExpectType Element
 });
-conn.addListener("stanza", el => {
+conn.addListener("stanza", (el) => {
     el; // $ExpectType Element
 });
-conn.addListener("nonza", el => {
+conn.addListener("nonza", (el) => {
     el; // $ExpectType Element
 });
 conn.addListener("status", (status, ...args) => {
     const s: keyof StatusEvents = status;
     const a = args[0]; // $ExpectType string | JID | Element | { clean: boolean; event: unknown; } | undefined
 });
-conn.addListener("online", jid => {
+conn.addListener("online", (jid) => {
     jid; // $ExpectType JID
 });
-conn.addListener("offline", el => {
+conn.addListener("offline", (el) => {
     el; // $ExpectType Element
 });
 conn.addListener("connect", () => {});
-conn.addListener("connecting", service => {
+conn.addListener("connecting", (service) => {
     service; // $ExpectType string
 });
-conn.addListener("disconnect", result => {
+conn.addListener("disconnect", (result) => {
     result; // $ExpectType { clean: boolean; event: unknown; }
 });
 conn.addListener("disconnecting", () => {});
-conn.addListener("open", el => {
+conn.addListener("open", (el) => {
     el; // $ExpectType Element
 });
 conn.addListener("opening", () => {});
-conn.addListener("close", el => {
+conn.addListener("close", (el) => {
     el; // $ExpectType Element
 });
 conn.addListener("closing", () => {});
 
-conn.on("input", input => {
+conn.on("input", (input) => {
     input; // $ExpectType string
 });
-conn.on("send", el => {
+conn.on("send", (el) => {
     el; // $ExpectType Element
 });
 conn.on("error", (error: Error) => {});
-conn.on("element", el => {
+conn.on("element", (el) => {
     el; // $ExpectType Element
 });
-conn.on("stanza", el => {
+conn.on("stanza", (el) => {
     el; // $ExpectType Element
 });
-conn.on("nonza", el => {
+conn.on("nonza", (el) => {
     el; // $ExpectType Element
 });
 conn.on("status", (status, ...args) => {
     const s: keyof StatusEvents = status;
     const a = args[0]; // $ExpectType string | JID | Element | { clean: boolean; event: unknown; } | undefined
 });
-conn.on("online", el => {
+conn.on("online", (el) => {
     el; // $ExpectType JID
 });
-conn.on("offline", el => {
+conn.on("offline", (el) => {
     el; // $ExpectType Element
 });
 conn.on("connect", () => {});
-conn.on("connecting", service => {
+conn.on("connecting", (service) => {
     service; // $ExpectType string
 });
-conn.on("disconnect", result => {
+conn.on("disconnect", (result) => {
     result; // $ExpectType { clean: boolean; event: unknown; }
 });
 conn.on("disconnecting", () => {});
-conn.on("open", el => {
+conn.on("open", (el) => {
     el; // $ExpectType Element
 });
 conn.on("opening", () => {});
-conn.on("close", el => {
+conn.on("close", (el) => {
     el; // $ExpectType Element
 });
 conn.on("closing", () => {});
 
-conn.once("input", input => {
+conn.once("input", (input) => {
     input; // $ExpectType string
 });
-conn.once("send", el => {
+conn.once("send", (el) => {
     el; // $ExpectType Element
 });
 conn.once("error", (error: Error) => {});
-conn.once("element", el => {
+conn.once("element", (el) => {
     el; // $ExpectType Element
 });
-conn.once("stanza", el => {
+conn.once("stanza", (el) => {
     el; // $ExpectType Element
 });
-conn.once("nonza", el => {
+conn.once("nonza", (el) => {
     el; // $ExpectType Element
 });
 conn.once("status", (status, ...args) => {
@@ -214,197 +214,197 @@ conn.once("status", (status, ...args) => {
         const a = args[0]; // $ExpectType string | JID | Element | { clean: boolean; event: unknown; } | undefined
     }
 });
-conn.once("online", el => {
+conn.once("online", (el) => {
     el; // $ExpectType JID
 });
-conn.once("offline", el => {
+conn.once("offline", (el) => {
     el; // $ExpectType Element
 });
 conn.once("connect", () => {});
-conn.once("connecting", service => {
+conn.once("connecting", (service) => {
     service; // $ExpectType string
 });
-conn.once("disconnect", result => {
+conn.once("disconnect", (result) => {
     result; // $ExpectType { clean: boolean; event: unknown; }
 });
 conn.once("disconnecting", () => {});
-conn.once("open", el => {
+conn.once("open", (el) => {
     el; // $ExpectType Element
 });
 conn.once("opening", () => {});
-conn.once("close", el => {
+conn.once("close", (el) => {
     el; // $ExpectType Element
 });
 conn.once("closing", () => {});
 
-conn.prependListener("input", input => {
+conn.prependListener("input", (input) => {
     input; // $ExpectType string
 });
-conn.prependListener("send", el => {
+conn.prependListener("send", (el) => {
     el; // $ExpectType Element
 });
 conn.prependListener("error", (error: Error) => {});
-conn.prependListener("element", el => {
+conn.prependListener("element", (el) => {
     el; // $ExpectType Element
 });
-conn.prependListener("stanza", el => {
+conn.prependListener("stanza", (el) => {
     el; // $ExpectType Element
 });
-conn.prependListener("nonza", el => {
+conn.prependListener("nonza", (el) => {
     el; // $ExpectType Element
 });
 conn.prependListener("status", (status, ...args) => {
     const s: keyof StatusEvents = status;
     const a = args[0]; // $ExpectType string | JID | Element | { clean: boolean; event: unknown; } | undefined
 });
-conn.prependListener("online", el => {
+conn.prependListener("online", (el) => {
     el; // $ExpectType JID
 });
-conn.prependListener("offline", el => {
+conn.prependListener("offline", (el) => {
     el; // $ExpectType Element
 });
 conn.prependListener("connect", () => {});
-conn.prependListener("connecting", service => {
+conn.prependListener("connecting", (service) => {
     service; // $ExpectType string
 });
-conn.prependListener("disconnect", result => {
+conn.prependListener("disconnect", (result) => {
     result; // $ExpectType { clean: boolean; event: unknown; }
 });
 conn.prependListener("disconnecting", () => {});
-conn.prependListener("open", el => {
+conn.prependListener("open", (el) => {
     el; // $ExpectType Element
 });
 conn.prependListener("opening", () => {});
-conn.prependListener("close", el => {
+conn.prependListener("close", (el) => {
     el; // $ExpectType Element
 });
 conn.prependListener("closing", () => {});
 
-conn.prependOnceListener("input", input => {
+conn.prependOnceListener("input", (input) => {
     input; // $ExpectType string
 });
-conn.prependOnceListener("send", el => {
+conn.prependOnceListener("send", (el) => {
     el; // $ExpectType Element
 });
 conn.prependOnceListener("error", (error: Error) => {});
-conn.prependOnceListener("element", el => {
+conn.prependOnceListener("element", (el) => {
     el; // $ExpectType Element
 });
-conn.prependOnceListener("stanza", el => {
+conn.prependOnceListener("stanza", (el) => {
     el; // $ExpectType Element
 });
-conn.prependOnceListener("nonza", el => {
+conn.prependOnceListener("nonza", (el) => {
     el; // $ExpectType Element
 });
 conn.prependOnceListener("status", (status, ...args) => {
     const s: keyof StatusEvents = status;
     const a = args[0]; // $ExpectType string | JID | Element | { clean: boolean; event: unknown; } | undefined
 });
-conn.prependOnceListener("online", el => {
+conn.prependOnceListener("online", (el) => {
     el; // $ExpectType JID
 });
-conn.prependOnceListener("offline", el => {
+conn.prependOnceListener("offline", (el) => {
     el; // $ExpectType Element
 });
 conn.prependOnceListener("connect", () => {});
-conn.prependOnceListener("connecting", service => {
+conn.prependOnceListener("connecting", (service) => {
     service; // $ExpectType string
 });
-conn.prependOnceListener("disconnect", result => {
+conn.prependOnceListener("disconnect", (result) => {
     result; // $ExpectType { clean: boolean; event: unknown; }
 });
 conn.prependOnceListener("disconnecting", () => {});
-conn.prependOnceListener("open", el => {
+conn.prependOnceListener("open", (el) => {
     el; // $ExpectType Element
 });
 conn.prependOnceListener("opening", () => {});
-conn.prependOnceListener("close", el => {
+conn.prependOnceListener("close", (el) => {
     el; // $ExpectType Element
 });
 conn.prependOnceListener("closing", () => {});
 
-conn.removeListener("input", input => {
+conn.removeListener("input", (input) => {
     input; // $ExpectType string
 });
-conn.removeListener("send", el => {
+conn.removeListener("send", (el) => {
     el; // $ExpectType Element
 });
 conn.removeListener("error", (error: Error) => {});
-conn.removeListener("element", el => {
+conn.removeListener("element", (el) => {
     el; // $ExpectType Element
 });
-conn.removeListener("stanza", el => {
+conn.removeListener("stanza", (el) => {
     el; // $ExpectType Element
 });
-conn.removeListener("nonza", el => {
+conn.removeListener("nonza", (el) => {
     el; // $ExpectType Element
 });
 conn.removeListener("status", (status, ...args) => {
     const s: keyof StatusEvents = status;
     const a = args[0]; // $ExpectType string | JID | Element | { clean: boolean; event: unknown; } | undefined
 });
-conn.removeListener("online", el => {
+conn.removeListener("online", (el) => {
     el; // $ExpectType JID
 });
-conn.removeListener("offline", el => {
+conn.removeListener("offline", (el) => {
     el; // $ExpectType Element
 });
 conn.removeListener("connect", () => {});
-conn.removeListener("connecting", service => {
+conn.removeListener("connecting", (service) => {
     service; // $ExpectType string
 });
-conn.removeListener("disconnect", result => {
+conn.removeListener("disconnect", (result) => {
     result; // $ExpectType { clean: boolean; event: unknown; }
 });
 conn.removeListener("disconnecting", () => {});
-conn.removeListener("open", el => {
+conn.removeListener("open", (el) => {
     el; // $ExpectType Element
 });
 conn.removeListener("opening", () => {});
-conn.removeListener("close", el => {
+conn.removeListener("close", (el) => {
     el; // $ExpectType Element
 });
 conn.removeListener("closing", () => {});
 
-conn.off("input", input => {
+conn.off("input", (input) => {
     input; // $ExpectType string
 });
-conn.off("send", el => {
+conn.off("send", (el) => {
     el; // $ExpectType Element
 });
 conn.off("error", (error: Error) => {});
-conn.off("element", el => {
+conn.off("element", (el) => {
     el; // $ExpectType Element
 });
-conn.off("stanza", el => {
+conn.off("stanza", (el) => {
     el; // $ExpectType Element
 });
-conn.off("nonza", el => {
+conn.off("nonza", (el) => {
     el; // $ExpectType Element
 });
 conn.off("status", (status, ...args) => {
     const s: keyof StatusEvents = status;
     const a = args[0]; // $ExpectType string | JID | Element | { clean: boolean; event: unknown; } | undefined
 });
-conn.off("online", el => {
+conn.off("online", (el) => {
     el; // $ExpectType JID
 });
-conn.off("offline", el => {
+conn.off("offline", (el) => {
     el; // $ExpectType Element
 });
 conn.off("connect", () => {});
-conn.off("connecting", service => {
+conn.off("connecting", (service) => {
     service; // $ExpectType string
 });
-conn.off("disconnect", result => {
+conn.off("disconnect", (result) => {
     result; // $ExpectType { clean: boolean; event: unknown; }
 });
 conn.off("disconnecting", () => {});
-conn.off("open", el => {
+conn.off("open", (el) => {
     el; // $ExpectType Element
 });
 conn.off("opening", () => {});
-conn.off("close", el => {
+conn.off("close", (el) => {
     el; // $ExpectType Element
 });
 conn.off("closing", () => {});

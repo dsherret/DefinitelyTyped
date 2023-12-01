@@ -8,7 +8,10 @@ Config.saves.onSave = testSaveHandler;
 
 // Save Events API
 
-function saveHandler(save: TwineSugarCube.SaveObject, details: TwineSugarCube.SaveDetails): void {
+function saveHandler(
+    save: TwineSugarCube.SaveObject,
+    details: TwineSugarCube.SaveDetails,
+): void {
     n = save.date;
     s = save.id;
     s = save.title;

@@ -20,18 +20,23 @@ uni.showLoading({
     title: "test",
 });
 
-uni.createSelectorQuery().select(".test").context(res => {
-    const context = <EditorContext> res.context;
-    context.getContents({
-        success() {
-            console.log("getContents success");
-        },
+uni.createSelectorQuery()
+    .select(".test")
+    .context((res) => {
+        const context = <EditorContext>res.context;
+        context.getContents({
+            success() {
+                console.log("getContents success");
+            },
+        });
     });
-});
 
-uni.createSelectorQuery().select(".test").boundingClientRect(data => {
-    console.log(data);
-}).exec();
+uni.createSelectorQuery()
+    .select(".test")
+    .boundingClientRect((data) => {
+        console.log(data);
+    })
+    .exec();
 
 const px: number = uni.upx2px(750);
 
@@ -83,10 +88,12 @@ mapContext.translateMarker({
     },
 });
 mapContext.includePoints({
-    points: [{
-        latitude: 100,
-        longitude: 100,
-    }],
+    points: [
+        {
+            latitude: 100,
+            longitude: 100,
+        },
+    ],
     padding: [0],
 });
 mapContext.getRegion({
@@ -102,7 +109,7 @@ mapContext.getScale({
 
 const systemInfo = uni.getSystemInfoSync();
 console.log(systemInfo.swanNativeVersion);
-const safeArea = <SafeAreaResult> systemInfo.safeArea;
+const safeArea = <SafeAreaResult>systemInfo.safeArea;
 console.log(safeArea.top);
 
 uni.onTabBarMidButtonTap(() => {
@@ -121,6 +128,6 @@ cameraContext.startRecord({
         }, 1000);
     },
 });
-cameraContext.onCameraFrame(cameraFrame => {
+cameraContext.onCameraFrame((cameraFrame) => {
     console.log(cameraFrame.data);
 });

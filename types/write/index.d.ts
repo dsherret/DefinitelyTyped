@@ -9,17 +9,18 @@ interface CommonOptions {
     increment?: boolean | undefined;
 }
 
-type Options =
-    & Omit<fs.WriteFileOptions, "encoding">
-    & Omit<fs.MakeDirectoryOptions, "recursive">
-    & CommonOptions;
+type Options = Omit<fs.WriteFileOptions, "encoding"> &
+    Omit<fs.MakeDirectoryOptions, "recursive"> &
+    CommonOptions;
 
-type CreateWriteStreamOptions = Extract<Parameters<typeof fs.createWriteStream>[1], Record<string, any>>;
+type CreateWriteStreamOptions = Extract<
+    Parameters<typeof fs.createWriteStream>[1],
+    Record<string, any>
+>;
 
-type StreamOptions =
-    & Omit<CreateWriteStreamOptions, "encoding">
-    & Omit<fs.MakeDirectoryOptions, "recursive">
-    & CommonOptions;
+type StreamOptions = Omit<CreateWriteStreamOptions, "encoding"> &
+    Omit<fs.MakeDirectoryOptions, "recursive"> &
+    CommonOptions;
 
 interface Result<T extends Data> {
     path: string;
@@ -28,12 +29,29 @@ interface Result<T extends Data> {
 
 type Callback<T extends Data> = (err: Error | null, result?: Result<T>) => any;
 
-declare function write<T extends Data>(filepath: string, data: T, options: Options, callback: Callback<T>): void;
-declare function write<T extends Data>(filepath: string, data: T, callback: Callback<T>): void;
-declare function write<T extends Data>(filepath: string, data: T, options?: Options): Promise<Result<T>>;
+declare function write<T extends Data>(
+    filepath: string,
+    data: T,
+    options: Options,
+    callback: Callback<T>,
+): void;
+declare function write<T extends Data>(
+    filepath: string,
+    data: T,
+    callback: Callback<T>,
+): void;
+declare function write<T extends Data>(
+    filepath: string,
+    data: T,
+    options?: Options,
+): Promise<Result<T>>;
 
 declare namespace write {
-    function sync<T extends Data>(filepath: string, data: T, options?: Options): Result<T>;
+    function sync<T extends Data>(
+        filepath: string,
+        data: T,
+        options?: Options,
+    ): Result<T>;
 
     function stream(filepath: string, options?: StreamOptions): fs.WriteStream;
 }

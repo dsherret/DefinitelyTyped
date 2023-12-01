@@ -8,7 +8,10 @@ declare class sftp {
     constructor(name?: string);
     connect(options: sftp.ConnectOptions): Promise<ssh2.SFTPWrapper>;
 
-    list(remoteFilePath: string, pattern?: string | RegExp): Promise<sftp.FileInfo[]>;
+    list(
+        remoteFilePath: string,
+        pattern?: string | RegExp,
+    ): Promise<sftp.FileInfo[]>;
 
     exists(remotePath: string): Promise<false | FileInfoType>;
 
@@ -22,7 +25,11 @@ declare class sftp {
         options?: sftp.TransferOptions,
     ): Promise<string | NodeJS.WritableStream | Buffer>;
 
-    fastGet(remoteFilePath: string, localPath: string, options?: sftp.FastGetTransferOptions): Promise<string>;
+    fastGet(
+        remoteFilePath: string,
+        localPath: string,
+        options?: sftp.FastGetTransferOptions,
+    ): Promise<string>;
 
     put(
         input: string | Buffer | NodeJS.ReadableStream,
@@ -30,7 +37,11 @@ declare class sftp {
         options?: sftp.TransferOptions,
     ): Promise<string>;
 
-    fastPut(localPath: string, remoteFilePath: string, options?: sftp.FastPutTransferOptions): Promise<string>;
+    fastPut(
+        localPath: string,
+        remoteFilePath: string,
+        options?: sftp.FastPutTransferOptions,
+    ): Promise<string>;
 
     cwd(): Promise<string>;
 
@@ -50,9 +61,17 @@ declare class sftp {
         options?: sftp.WriteStreamOptions,
     ): Promise<string>;
 
-    uploadDir(srcDir: string, destDir: string, filter?: string | RegExp): Promise<string>;
+    uploadDir(
+        srcDir: string,
+        destDir: string,
+        filter?: string | RegExp,
+    ): Promise<string>;
 
-    downloadDir(srcDir: string, destDir: string, filter?: string | RegExp): Promise<string>;
+    downloadDir(
+        srcDir: string,
+        destDir: string,
+        filter?: string | RegExp,
+    ): Promise<string>;
 
     end(): Promise<void>;
 
@@ -64,9 +83,15 @@ declare class sftp {
 
     rcopy(srcPath: string, dstPath: string): Promise<string>;
 
-    createReadStream(remotePath: string, options?: ssh2.ReadStreamOptions): ssh2.ReadStream;
+    createReadStream(
+        remotePath: string,
+        options?: ssh2.ReadStreamOptions,
+    ): ssh2.ReadStream;
 
-    createWriteStream(remotePath: string, options?: ssh2.WriteStreamOptions): ssh2.WriteStream;
+    createWriteStream(
+        remotePath: string,
+        options?: ssh2.WriteStreamOptions,
+    ): ssh2.WriteStream;
 }
 
 declare namespace sftp {
@@ -109,7 +134,9 @@ declare namespace sftp {
         step?: (totalTransferred: number, chunk: number, total: number) => void;
     }
 
-    interface FastPutTransferOptions extends FastGetTransferOptions, ModeOption {}
+    interface FastPutTransferOptions
+        extends FastGetTransferOptions,
+            ModeOption {}
 
     interface FileInfo {
         type: FileInfoType;

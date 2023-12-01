@@ -9,12 +9,35 @@ export type MidiEventType =
     | typeof Event.PITCH_BEND
     | typeof Event.PROGRAM_CHANGE;
 
-export type MidiChannel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 13 | 14 | 15;
+export type MidiChannel =
+    | 0
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | 6
+    | 7
+    | 8
+    | 9
+    | 10
+    | 11
+    | 12
+    | 13
+    | 14
+    | 15;
 
-export type Enumerate<N extends number, Acc extends number[] = []> = Acc["length"] extends N ? Acc[number]
+export type Enumerate<
+    N extends number,
+    Acc extends number[] = [],
+> = Acc["length"] extends N
+    ? Acc[number]
     : Enumerate<N, [...Acc, Acc["length"]]>;
 
-export type Range<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>;
+export type Range<F extends number, T extends number> = Exclude<
+    Enumerate<T>,
+    Enumerate<F>
+>;
 
 export type MidiParameterValue = Range<0, 256>;
 
@@ -126,7 +149,11 @@ export namespace MetaEvent {
     const TRACK_NAME: 0x03;
 }
 export class MetaEvent {
-    constructor(params?: { time?: number; type: MetaEventType; data?: string | number[] });
+    constructor(params?: {
+        time?: number;
+        type: MetaEventType;
+        data?: string | number[];
+    });
 
     setData(d: string | number[]): void;
 
@@ -140,27 +167,77 @@ export class MetaEvent {
 export class Track {
     constructor(config?: { events?: Array<Event | MetaEvent> });
 
-    addChord(channel: MidiChannel, chord: Array<number | string>, dur: number, velocity: number): this;
+    addChord(
+        channel: MidiChannel,
+        chord: Array<number | string>,
+        dur: number,
+        velocity: number,
+    ): this;
 
     addEvent(event: Event | MetaEvent): this;
 
-    addNote(channel: MidiChannel, pitch: number | string, dur: number, time?: number, velocity?: number): this;
+    addNote(
+        channel: MidiChannel,
+        pitch: number | string,
+        dur: number,
+        time?: number,
+        velocity?: number,
+    ): this;
 
-    addNoteOff(channel: MidiChannel, pitch: number | string, time?: number, velocity?: number): this;
+    addNoteOff(
+        channel: MidiChannel,
+        pitch: number | string,
+        time?: number,
+        velocity?: number,
+    ): this;
 
-    addNoteOn(channel: MidiChannel, pitch: number | string, time?: number, velocity?: number): this;
+    addNoteOn(
+        channel: MidiChannel,
+        pitch: number | string,
+        time?: number,
+        velocity?: number,
+    ): this;
 
-    chord(channel: MidiChannel, chord: Array<number | string>, dur: number, velocity: number): this;
+    chord(
+        channel: MidiChannel,
+        chord: Array<number | string>,
+        dur: number,
+        velocity: number,
+    ): this;
 
-    instrument(channel: MidiChannel, instrument: MidiParameterValue, time?: number): this;
+    instrument(
+        channel: MidiChannel,
+        instrument: MidiParameterValue,
+        time?: number,
+    ): this;
 
-    note(channel: MidiChannel, pitch: number | string, dur: number, time?: number, velocity?: number): this;
+    note(
+        channel: MidiChannel,
+        pitch: number | string,
+        dur: number,
+        time?: number,
+        velocity?: number,
+    ): this;
 
-    noteOff(channel: MidiChannel, pitch: number | string, time?: number, velocity?: number): this;
+    noteOff(
+        channel: MidiChannel,
+        pitch: number | string,
+        time?: number,
+        velocity?: number,
+    ): this;
 
-    noteOn(channel: MidiChannel, pitch: number | string, time?: number, velocity?: number): this;
+    noteOn(
+        channel: MidiChannel,
+        pitch: number | string,
+        time?: number,
+        velocity?: number,
+    ): this;
 
-    setInstrument(channel: MidiChannel, instrument: MidiParameterValue, time?: number): this;
+    setInstrument(
+        channel: MidiChannel,
+        instrument: MidiParameterValue,
+        time?: number,
+    ): this;
 
     setTempo(bpm: number, time?: number): this;
 

@@ -22,15 +22,27 @@ export namespace Helper {
     /**
      * Transform point coordinates to a given angle
      */
-    function GetRotatedPoint(transformedPoint: Point, startPoint: Point, angle: number): Point;
+    function GetRotatedPoint(
+        transformedPoint: Point,
+        startPoint: Point,
+        angle: number,
+    ): Point;
     /**
      * Limit a point "linePoint" to a given circle centered at point "startPoint" and a given radius
      */
-    function LimitPointToCircle(startPoint: Point, radius: number, limitedPoint: Point): Point;
+    function LimitPointToCircle(
+        startPoint: Point,
+        radius: number,
+        limitedPoint: Point,
+    ): Point;
     /**
      * Find the intersection of two lines bounded by a rectangle "rectBorder"
      */
-    function GetIntersectBetweenTwoSegment(rectBorder: Rect, one: Segment, two: Segment): Point;
+    function GetIntersectBetweenTwoSegment(
+        rectBorder: Rect,
+        one: Segment,
+        two: Segment,
+    ): Point;
     /**
      * Find the intersection point of two lines
      *

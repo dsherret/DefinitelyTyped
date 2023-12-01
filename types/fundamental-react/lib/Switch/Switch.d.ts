@@ -9,10 +9,12 @@ export interface SwitchProps {
     disableStyles?: boolean | undefined;
     id?: string | undefined;
     inputProps?: any;
-    internalLabels?: {
-        checked?: any;
-        unchecked?: any;
-    } | undefined;
+    internalLabels?:
+        | {
+              checked?: any;
+              unchecked?: any;
+          }
+        | undefined;
     labelProps?: any;
     semantic?: boolean | undefined;
     onChange?: ((...args: any[]) => any) | undefined;

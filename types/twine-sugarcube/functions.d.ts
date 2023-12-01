@@ -1,4 +1,7 @@
-import { SugarCubeStoryVariables, SugarCubeTemporaryVariables } from "./userdata";
+import {
+    SugarCubeStoryVariables,
+    SugarCubeTemporaryVariables,
+} from "./userdata";
 
 declare global {
     /**

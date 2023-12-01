@@ -8,15 +8,19 @@ export interface ServerOptions {
     maxInflightMessages?: number | undefined;
     logger?: any;
     persistence?: any;
-    secure?: {
-        port: number;
-        keyPath: string;
-        certPath: string;
-    } | undefined;
+    secure?:
+        | {
+              port: number;
+              keyPath: string;
+              certPath: string;
+          }
+        | undefined;
     allowNonSecure?: boolean | undefined;
-    http?: {
-        port: number;
-    } | undefined;
+    http?:
+        | {
+              port: number;
+          }
+        | undefined;
     bundle?: any;
     static?: any;
     stats?: any;
@@ -33,37 +37,69 @@ export class Server {
 
     on(
         when: string,
-        callback: (() => void) | ((client: Client) => void) | ((packet: Packet, client: Client) => void),
+        callback:
+            | (() => void)
+            | ((client: Client) => void)
+            | ((packet: Packet, client: Client) => void),
     ): void;
     on(
         when: "clientConnected" | "clientDisconnecting" | "clientDisconnected",
         callback: (client: Client) => void,
     ): void;
-    on(when: "subscribed" | "unsubscribed", callback: (topic: string, client: Client) => void): void;
-    on(when: "published", callback: (packet: Packet, client: Client) => void): void;
+    on(
+        when: "subscribed" | "unsubscribed",
+        callback: (topic: string, client: Client) => void,
+    ): void;
+    on(
+        when: "published",
+        callback: (packet: Packet, client: Client) => void,
+    ): void;
     on(when: "ready", callback: () => void): void;
     once(when: string, callback: () => void): void;
     toString(): string;
     subscribe(topic: string, callback: () => void, done: () => void): void;
-    publish(message: Message, callback: (obj: any, packet: Packet) => void): void;
+    publish(
+        message: Message,
+        callback: (obj: any, packet: Packet) => void,
+    ): void;
     authenticate(
         client: Client,
         username: string,
         password: string,
         callback: (obj: any, authenticated: boolean) => void,
     ): void;
-    published(packet: Packet, client: Client, callback: (obj: any) => void): void;
+    published(
+        packet: Packet,
+        client: Client,
+        callback: (obj: any) => void,
+    ): void;
     authorizePublish(
         client: Client,
         topic: string,
         payload: string,
         callback: (obj: any, authorized: boolean) => void,
     ): void;
-    authorizeSubscribe(client: Client, topic: string, callback: (obj: any, authorized: boolean) => void): void;
-    authorizeForward(client: Client, packet: Packet, callback: (obj: any, authorized: boolean) => void): void;
+    authorizeSubscribe(
+        client: Client,
+        topic: string,
+        callback: (obj: any, authorized: boolean) => void,
+    ): void;
+    authorizeForward(
+        client: Client,
+        packet: Packet,
+        callback: (obj: any, authorized: boolean) => void,
+    ): void;
     storePacket(packet: Packet, callback: () => void): void;
-    deleteOfflinePacket(client: Client, messageId: number, callback: () => void): void;
-    forwardRetained(pattern: string, client: Client, callback: () => void): void;
+    deleteOfflinePacket(
+        client: Client,
+        messageId: number,
+        callback: () => void,
+    ): void;
+    forwardRetained(
+        pattern: string,
+        client: Client,
+        callback: () => void,
+    ): void;
     restoreClientSubscriptions(client: Client, callback: () => void): void;
     forwardOfflinePackets(client: Client, callback: () => void): void;
     updateOfflinePacket(

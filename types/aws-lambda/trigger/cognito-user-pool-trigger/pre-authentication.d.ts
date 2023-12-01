@@ -4,7 +4,8 @@ import { BaseTriggerEvent, StringMap } from "./_common";
 /**
  * @see https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-lambda-pre-authentication.html
  */
-export interface PreAuthenticationTriggerEvent extends BaseTriggerEvent<"PreAuthentication_Authentication"> {
+export interface PreAuthenticationTriggerEvent
+    extends BaseTriggerEvent<"PreAuthentication_Authentication"> {
     request: {
         userAttributes: StringMap;
         userNotFound?: boolean | undefined;
@@ -13,4 +14,5 @@ export interface PreAuthenticationTriggerEvent extends BaseTriggerEvent<"PreAuth
     };
 }
 
-export type PreAuthenticationTriggerHandler = Handler<PreAuthenticationTriggerEvent>;
+export type PreAuthenticationTriggerHandler =
+    Handler<PreAuthenticationTriggerEvent>;

@@ -23,7 +23,10 @@ export interface RetryOperation {
      * @param [timeoutOps.timeout] A timeout in milliseconds.
      * @param [timeoutOps.callback] Callback to execute when the operation takes longer than the timeout.
      */
-    attempt(fn: (currentAttempt: number) => void, timeoutOps?: AttemptTimeoutOptions): void;
+    attempt(
+        fn: (currentAttempt: number) => void,
+        timeoutOps?: AttemptTimeoutOptions,
+    ): void;
 
     /**
      * Returns `false` when no `error` value is given, or the maximum amount of retries has been reached.
@@ -109,7 +112,10 @@ export interface TimeoutsOptions extends CreateTimeoutOptions {
  * @param attempt  Representing for which retry the timeout should be calculated.
  * @return timeout
  */
-export function createTimeout(attempt: number, options?: CreateTimeoutOptions): number;
+export function createTimeout(
+    attempt: number,
+    options?: CreateTimeoutOptions,
+): number;
 
 export interface CreateTimeoutOptions {
     /**
@@ -141,4 +147,8 @@ export interface CreateTimeoutOptions {
  * @param methods Methods which need to be wrapped
  */
 export function wrap(object: object, methods?: string[]): void;
-export function wrap(object: object, options?: WrapOptions, methods?: string[]): void;
+export function wrap(
+    object: object,
+    options?: WrapOptions,
+    methods?: string[],
+): void;

@@ -19,14 +19,19 @@ export class Namespace {
 }
 
 export class SubParser {
-    add_parser(name: string, options?: SubArgumentParserOptions): ArgumentParser;
+    add_parser(
+        name: string,
+        options?: SubArgumentParserOptions,
+    ): ArgumentParser;
 }
 
 export class ArgumentGroup {
     add_argument(arg: string, options?: ArgumentOptions): void;
     add_argument(arg1: string, arg2: string, options?: ArgumentOptions): void;
     add_argument_group(options?: ArgumentGroupOptions): ArgumentGroup;
-    add_mutually_exclusive_group(options?: { required: boolean }): ArgumentGroup;
+    add_mutually_exclusive_group(options?: {
+        required: boolean;
+    }): ArgumentGroup;
     set_defaults(options?: {}): void;
     get_default(dest: string): any;
 }
@@ -35,7 +40,7 @@ export interface SubparserOptions {
     title?: string | undefined;
     description?: string | undefined;
     prog?: string | undefined;
-    parser_class?: { new(): any } | undefined;
+    parser_class?: { new (): any } | undefined;
     action?: string | undefined;
     dest?: string | undefined;
     help?: string | undefined;
@@ -55,9 +60,15 @@ export interface ArgumentParserOptions {
     argument_default?: any;
     parents?: ArgumentParser[] | undefined;
     prefix_chars?: string | undefined;
-    formatter_class?: {
-        new(): HelpFormatter | ArgumentDefaultsHelpFormatter | RawDescriptionHelpFormatter | RawTextHelpFormatter;
-    } | undefined;
+    formatter_class?:
+        | {
+              new ():
+                  | HelpFormatter
+                  | ArgumentDefaultsHelpFormatter
+                  | RawDescriptionHelpFormatter
+                  | RawTextHelpFormatter;
+          }
+        | undefined;
     prog?: string | undefined;
     usage?: string | undefined;
     exit_on_error?: boolean | undefined;
@@ -96,7 +107,9 @@ export class ArgumentTypeError extends Error {
 // Passed to the Action constructor.  Subclasses are just expected to relay this to
 // the super() constructor, so using an "opaque type" pattern is probably fine.
 // Someone may want to fill this out in the future.
-export type ActionConstructorOptions = number & { _: "ActionConstructorOptions" };
+export type ActionConstructorOptions = number & {
+    _: "ActionConstructorOptions";
+};
 
 export class HelpFormatter {}
 export class ArgumentDefaultsHelpFormatter {}
@@ -104,7 +117,10 @@ export class RawDescriptionHelpFormatter {}
 export class RawTextHelpFormatter {}
 
 export interface ArgumentOptions {
-    action?: string | { new(options: ActionConstructorOptions): Action } | undefined;
+    action?:
+        | string
+        | { new (options: ActionConstructorOptions): Action }
+        | undefined;
     option_strings?: string[] | undefined;
     dest?: string | undefined;
     nargs?: string | number | undefined;
@@ -120,7 +136,12 @@ export interface ArgumentOptions {
 }
 
 export class BooleanOptionalAction extends Action {
-    call(parser: ArgumentParser, namespace: Namespace, values: string | string[], optionString: string | null): void;
+    call(
+        parser: ArgumentParser,
+        namespace: Namespace,
+        values: string | string[],
+        optionString: string | null,
+    ): void;
 }
 
 export const SUPPRESS: string;

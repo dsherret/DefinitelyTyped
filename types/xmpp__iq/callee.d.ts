@@ -29,7 +29,11 @@ declare namespace iqCallee {
          *   return xml('foo', { xmlns: 'foo:bar' });
          * });
          */
-        get(ns: string, name: string, handler: koaCompose.Middleware<IncomingContext<TEntity>>): void;
+        get(
+            ns: string,
+            name: string,
+            handler: koaCompose.Middleware<IncomingContext<TEntity>>,
+        ): void;
         /**
          * Add a `set` handler.
          *
@@ -38,6 +42,10 @@ declare namespace iqCallee {
          *   return xml('foo', { xmlns: 'foo:bar' });
          * });
          */
-        set(ns: string, name: string, handler: koaCompose.Middleware<IncomingContext<TEntity>>): void;
+        set(
+            ns: string,
+            name: string,
+            handler: koaCompose.Middleware<IncomingContext<TEntity>>,
+        ): void;
     }
 }

@@ -19,31 +19,31 @@ var options: PhantomCSS.PhantomCSSOptions = {
 
     mismatchTolerance: 0.05,
 
-    onFail: function(test) {
+    onFail: function (test) {
         console.log(test.filename, test.mismatch);
     },
 
-    onPass: function(test) {
+    onPass: function (test) {
         console.log(test.filename);
     },
 
-    onNewImage: function(test) {
+    onNewImage: function (test) {
         console.log(test.filename);
     },
 
-    onTimeout: function(test) {
+    onTimeout: function (test) {
         console.log(test.filename);
     },
 
-    onComplete: function(allTests, noOfFails, noOfErrors) {
-        allTests.forEach(function(test) {
+    onComplete: function (allTests, noOfFails, noOfErrors) {
+        allTests.forEach(function (test) {
             if (test.fail) {
                 console.log(test.filename, test.mismatch);
             }
         });
     },
 
-    fileNameGetter: function(root: string, filename: string) {
+    fileNameGetter: function (root: string, filename: string) {
         return root + filename;
     },
 
@@ -70,18 +70,23 @@ phantomcss.init(options);
 
 phantomcss.compareAll("exclude.test");
 phantomcss.compareMatched("include.test", "exclude.test");
-phantomcss.compareMatched(new RegExp("include.test"), new RegExp("exclude.test"));
+phantomcss.compareMatched(
+    new RegExp("include.test"),
+    new RegExp("exclude.test"),
+);
 phantomcss.compareSession();
 phantomcss.compareExplicit(["/dialog.diff.png", "/header.diff.png"]);
 phantomcss.getCreatedDiffFiles();
 phantomcss.compareFiles("baseFile", "diffFile");
-phantomcss.waitForTests([{
-    error: false,
-    fail: false,
-    failFile: "failFile",
-    filename: "filename",
-    mismatch: null, /* mismatch */
-}]);
+phantomcss.waitForTests([
+    {
+        error: false,
+        fail: false,
+        failFile: "failFile",
+        filename: "filename",
+        mismatch: null /* mismatch */,
+    },
+]);
 
 phantomcss.screenshot("#feedback-form");
 

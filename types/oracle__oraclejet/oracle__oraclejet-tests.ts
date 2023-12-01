@@ -10,7 +10,11 @@ import {
     ShapeAttributeGroupHandler,
 } from "@oracle/oraclejet/ojattributegrouphandler";
 import { ojAvatar } from "@oracle/oraclejet/ojavatar";
-import { ojButton, ojButtonsetMany, ojButtonsetOne } from "@oracle/oraclejet/ojbutton";
+import {
+    ojButton,
+    ojButtonsetMany,
+    ojButtonsetOne,
+} from "@oracle/oraclejet/ojbutton";
 import {
     ojChart,
     ojChartGroup,
@@ -47,20 +51,44 @@ import {
 } from "@oracle/oraclejet/ojdatetimepicker";
 import { ojDefer } from "@oracle/oraclejet/ojdefer";
 import DeferredDataprovider = require("@oracle/oraclejet/ojdeferreddataprovider");
-import { ojDiagram, ojDiagramLink, ojDiagramNode } from "@oracle/oraclejet/ojdiagram";
+import {
+    ojDiagram,
+    ojDiagramLink,
+    ojDiagramNode,
+} from "@oracle/oraclejet/ojdiagram";
 import { ojDialog } from "@oracle/oraclejet/ojdialog";
 import { dvtBaseComponent } from "@oracle/oraclejet/ojdvt-base";
 import { editableValue } from "@oracle/oraclejet/ojeditablevalue";
 import ExpressionUtils = require("@oracle/oraclejet/ojexpressionutils");
-import { FileUploadTransport, ojFilePicker } from "@oracle/oraclejet/ojfilepicker";
+import {
+    FileUploadTransport,
+    ojFilePicker,
+} from "@oracle/oraclejet/ojfilepicker";
 import { ojFilmStrip } from "@oracle/oraclejet/ojfilmstrip";
 import { ojFormLayout } from "@oracle/oraclejet/ojformlayout";
-import { ojGantt, ojGanttDependency, ojGanttRow, ojGanttTask } from "@oracle/oraclejet/ojgantt";
+import {
+    ojGantt,
+    ojGanttDependency,
+    ojGanttRow,
+    ojGanttTask,
+} from "@oracle/oraclejet/ojgantt";
 import GanttUtils = require("@oracle/oraclejet/ojganttutils");
-import { ojLedGauge, ojRatingGauge, ojStatusMeterGauge } from "@oracle/oraclejet/ojgauge";
+import {
+    ojLedGauge,
+    ojRatingGauge,
+    ojStatusMeterGauge,
+} from "@oracle/oraclejet/ojgauge";
 import { ojInputNumber } from "@oracle/oraclejet/ojinputnumber";
-import { ojInputPassword, ojInputText, ojTextArea } from "@oracle/oraclejet/ojinputtext";
-import { ExpandAllKeySet, ExpandedKeySet, KeySet } from "@oracle/oraclejet/ojkeyset";
+import {
+    ojInputPassword,
+    ojInputText,
+    ojTextArea,
+} from "@oracle/oraclejet/ojinputtext";
+import {
+    ExpandAllKeySet,
+    ExpandedKeySet,
+    KeySet,
+} from "@oracle/oraclejet/ojkeyset";
 import { ObservableExpandedKeySet } from "@oracle/oraclejet/ojknockout-keyset";
 import KnockoutUtils = require("@oracle/oraclejet/ojknockout-model");
 import KnockoutTemplateUtils = require("@oracle/oraclejet/ojknockouttemplateutils");
@@ -95,7 +123,12 @@ import { ojRefresher } from "@oracle/oraclejet/ojrefresher";
 import ResponsiveKnockoutUtils = require("@oracle/oraclejet/ojresponsiveknockoututils");
 import ResponsiveUtils = require("@oracle/oraclejet/ojresponsiveutils");
 import Router = require("@oracle/oraclejet/ojrouter");
-import { ojComboboxMany, ojComboboxOne, ojSelectMany, ojSelectOne } from "@oracle/oraclejet/ojselectcombobox";
+import {
+    ojComboboxMany,
+    ojComboboxOne,
+    ojSelectMany,
+    ojSelectOne,
+} from "@oracle/oraclejet/ojselectcombobox";
 import { ojSlider } from "@oracle/oraclejet/ojslider";
 import { ojSunburst } from "@oracle/oraclejet/ojsunburst";
 import { ojSwipeActions } from "@oracle/oraclejet/ojswipeactions";
@@ -133,11 +166,13 @@ import {
     DateTimeRangeValidator,
     DateTimeRangeValidatorFactory,
 } from "@oracle/oraclejet/ojvalidation-datetime";
-import { NumberRangeValidator, NumberRangeValidatorFactory } from "@oracle/oraclejet/ojvalidation-number";
+import {
+    NumberRangeValidator,
+    NumberRangeValidatorFactory,
+} from "@oracle/oraclejet/ojvalidation-number";
 import { ojValidationGroup } from "@oracle/oraclejet/ojvalidationgroup";
 
-const onChangedCallback = (event: CustomEvent) => {
-};
+const onChangedCallback = (event: CustomEvent) => {};
 const myHTMLElement = document.getElementById("myelement");
 const accordionElement = myHTMLElement as ojAccordion;
 accordionElement.multiple = true;

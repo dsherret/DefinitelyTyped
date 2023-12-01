@@ -14,7 +14,10 @@ export namespace Typist {
         lineIdx: number;
         character: string;
         charIdx: number;
-        defDelayGenerator: (mn: number, st: number) => (...params: any) => number;
+        defDelayGenerator: (
+            mn: number,
+            st: number,
+        ) => (...params: any) => number;
     }
 
     interface DelayProps {
@@ -39,7 +42,13 @@ export interface TypistProps {
     onCharacterTyped?: ((char: string, charIndex: number) => void) | undefined;
     onLineTyped?: ((line: string, lineIndex: number) => void) | undefined;
     onTypingDone?: (() => void) | undefined;
-    delayGenerator?: ((mean: number, std: number, current: Typist.CurrentTextProps) => number) | undefined;
+    delayGenerator?:
+        | ((
+              mean: number,
+              std: number,
+              current: Typist.CurrentTextProps,
+          ) => number)
+        | undefined;
 }
 
 export class Typist extends React.Component<TypistProps> {}

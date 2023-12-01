@@ -3,7 +3,7 @@
 import { Stream } from "stream";
 
 interface Static {
-    new(fromEncoding: string, toEncoding: string): Iconv;
+    new (fromEncoding: string, toEncoding: string): Iconv;
     (fromEncoding: string, toEncoding: string): Iconv;
     prototype: Iconv;
 }

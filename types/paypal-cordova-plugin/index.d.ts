@@ -14,7 +14,13 @@ declare class PayPalItem {
      * @param currency ISO standard currency code.
      * @param sku The stock keeping unit for this item. 50 characters max (optional).
      */
-    constructor(name: string, quantity: number, price: string, currency: string, sku?: string);
+    constructor(
+        name: string,
+        quantity: number,
+        price: string,
+        currency: string,
+        sku?: string,
+    );
 
     /**
      * Name of the item. 127 characters max.
@@ -538,7 +544,10 @@ declare namespace PayPalCordovaPlugin {
          *  }
          * @param completionCallback a callback function on success
          */
-        init(clientIdsForEnvironments: PayPalCordovaPlugin.PayPalClientIds, completionCallback: () => void): void;
+        init(
+            clientIdsForEnvironments: PayPalCordovaPlugin.PayPalClientIds,
+            completionCallback: () => void,
+        ): void;
 
         /**
          * You must preconnect to PayPal to prepare the device for processing payments.
@@ -551,7 +560,11 @@ declare namespace PayPalCordovaPlugin {
          *      and merchantUserAgreementURL must be set be set
          * @param completionCallback a callback function on success
          */
-        prepareToRender(environment: string, configuration: PayPalConfiguration, completionCallback: () => void): void;
+        prepareToRender(
+            environment: string,
+            configuration: PayPalConfiguration,
+            completionCallback: () => void,
+        ): void;
 
         /**
          * Start PayPal UI to collect payment from the user.
@@ -564,7 +577,9 @@ declare namespace PayPalCordovaPlugin {
          */
         renderSinglePaymentUI(
             payment: PayPalPayment,
-            completionCallback: (result: PayPalCordovaPlugin.SinglePaymentResult) => void,
+            completionCallback: (
+                result: PayPalCordovaPlugin.SinglePaymentResult,
+            ) => void,
             cancelCallback: (cancelReason: string) => void,
         ): void;
 
@@ -597,7 +612,9 @@ declare namespace PayPalCordovaPlugin {
          *
          * @param callback clientMetadataID Your server will send this to PayPal in a 'PayPal-Client-Metadata-Id' header.
          */
-        clientMetadataID(completionCallback: (clientMetadataId: string) => void): void;
+        clientMetadataID(
+            completionCallback: (clientMetadataId: string) => void,
+        ): void;
 
         /**
          * Please Read Docs on Future Payments at https://github.com/paypal/PayPal-iOS-SDK#future-payments
@@ -606,7 +623,9 @@ declare namespace PayPalCordovaPlugin {
          * @param cancelCallback a callback function accepting a reason string, called when the user canceled without agreement
          */
         renderFuturePaymentUI(
-            completionCallback: (result: PayPalCordovaPlugin.FuturePaymentResult) => void,
+            completionCallback: (
+                result: PayPalCordovaPlugin.FuturePaymentResult,
+            ) => void,
             cancelCallback: (cancelReason: string) => void,
         ): void;
 

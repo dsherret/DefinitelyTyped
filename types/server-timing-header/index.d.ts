@@ -16,7 +16,9 @@ import { RequestHandler } from "express";
  * });
  * app.listen(port, () => console.log(`Example app listening on port ${port}!`));
  */
-declare function serverTimingMiddleware(options?: serverTimingMiddleware.Options): RequestHandler;
+declare function serverTimingMiddleware(
+    options?: serverTimingMiddleware.Options,
+): RequestHandler;
 
 declare namespace serverTimingMiddleware {
     /**
@@ -38,7 +40,11 @@ declare namespace serverTimingMiddleware {
          * @param duration - metric duration
          * @return — server-timing header value
          */
-        static oldStyle(name: string, description: string, duration: string): string;
+        static oldStyle(
+            name: string,
+            description: string,
+            duration: string,
+        ): string;
 
         /**
          * Build server-timing header value by current specification
@@ -47,7 +53,11 @@ declare namespace serverTimingMiddleware {
          * @param duration - metric duration
          * @return — server-timing header value
          */
-        static newStyle(name: string, description: string, duration: string): string;
+        static newStyle(
+            name: string,
+            description: string,
+            duration: string,
+        ): string;
 
         readonly oldSpecification: boolean;
 
@@ -83,7 +93,11 @@ declare namespace serverTimingMiddleware {
          * });
          * app.listen(port, () => console.log(`Example app listening on port ${port}!`));
          */
-        addHook(name: string, callback: (metrics: Metrics) => void, callbackIndex?: number): void;
+        addHook(
+            name: string,
+            callback: (metrics: Metrics) => void,
+            callbackIndex?: number,
+        ): void;
 
         /**
          * Remove callback with specific name

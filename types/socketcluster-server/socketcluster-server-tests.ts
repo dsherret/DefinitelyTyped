@@ -17,7 +17,9 @@ let agServer = socketClusterServer.attach(httpServer);
             // tslint:disable-next-line: await-promise Bug in tslint: https://github.com/palantir/tslint/issues/3997
             for await (const req of socket.procedure("customProc")) {
                 if (req.data.bad) {
-                    const error = new Error("Server failed to execute the procedure");
+                    const error = new Error(
+                        "Server failed to execute the procedure",
+                    );
                     error.name = "BadCustomError";
                     req.error(error);
                 } else {
@@ -48,41 +50,53 @@ agServer = socketClusterServer.attach(httpServer, {});
 
 // Adapted from API overview
 
-agServer.setMiddleware(agServer.MIDDLEWARE_INBOUND, async middlewareStream => {
-    // tslint:disable-next-line: await-promise Bug in tslint: https://github.com/palantir/tslint/issues/3997
-    for await (const action of middlewareStream) {
-        switch (action.type) {
-            case action.TRANSMIT:
-                if (!action.data) {
-                    const error = new Error("Transmit action must have a data object");
-                    error.name = "InvalidActionError";
-                    action.block(error);
-                    continue;
-                }
-                break;
-            case action.INVOKE:
-                if (!action.data) {
-                    const error = new Error("Invoke action must have a data object");
-                    error.name = "InvalidActionError";
-                    action.block(error);
-                    continue;
-                }
-                break;
-            case action.PUBLISH_IN:
-                {
-                    if (action.channel === "chat" && !action.authTokenExpiredError) {
-                        if (typeof action.data === "string") {
-                            action.allow(action.data.replace("bad-word", "***"));
-                            continue;
+agServer.setMiddleware(
+    agServer.MIDDLEWARE_INBOUND,
+    async (middlewareStream) => {
+        // tslint:disable-next-line: await-promise Bug in tslint: https://github.com/palantir/tslint/issues/3997
+        for await (const action of middlewareStream) {
+            switch (action.type) {
+                case action.TRANSMIT:
+                    if (!action.data) {
+                        const error = new Error(
+                            "Transmit action must have a data object",
+                        );
+                        error.name = "InvalidActionError";
+                        action.block(error);
+                        continue;
+                    }
+                    break;
+                case action.INVOKE:
+                    if (!action.data) {
+                        const error = new Error(
+                            "Invoke action must have a data object",
+                        );
+                        error.name = "InvalidActionError";
+                        action.block(error);
+                        continue;
+                    }
+                    break;
+                case action.PUBLISH_IN:
+                    {
+                        if (
+                            action.channel === "chat" &&
+                            !action.authTokenExpiredError
+                        ) {
+                            if (typeof action.data === "string") {
+                                action.allow(
+                                    action.data.replace("bad-word", "***"),
+                                );
+                                continue;
+                            }
                         }
                     }
-                }
-                break;
-        }
+                    break;
+            }
 
-        action.allow();
-    }
-});
+            action.allow();
+        }
+    },
+);
 
 // Various server options
 
@@ -99,11 +113,19 @@ agServer = socketClusterServer.attach(httpServer, {
 });
 
 class CustomAuthEngine implements socketClusterServer.AGServer.AuthEngineType {
-    verifyToken(signedToken: string | null, key: Secret, options?: VerifyOptions): Promise<Jwt> {
+    verifyToken(
+        signedToken: string | null,
+        key: Secret,
+        options?: VerifyOptions,
+    ): Promise<Jwt> {
         throw new Error("Method not implemented.");
     }
 
-    signToken(token: string | object | Buffer, key: Secret, options?: SignOptions): Promise<string | undefined> {
+    signToken(
+        token: string | object | Buffer,
+        key: Secret,
+        options?: SignOptions,
+    ): Promise<string | undefined> {
         throw new Error("Method not implemented.");
     }
 }

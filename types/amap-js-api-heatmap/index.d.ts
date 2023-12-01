@@ -27,12 +27,14 @@ declare namespace AMap {
             blur?: number | undefined;
             zIndex?: number | undefined;
             renderOnZooming?: boolean | undefined;
-            ["3d"]?: {
-                heightScale?: number | undefined;
-                heightBezier?: number[] | undefined;
-                gridSize?: number | undefined;
-                drawGridLine?: boolean | undefined;
-            } | undefined;
+            ["3d"]?:
+                | {
+                      heightScale?: number | undefined;
+                      heightBezier?: number[] | undefined;
+                      gridSize?: number | undefined;
+                      drawGridLine?: boolean | undefined;
+                  }
+                | undefined;
         }
         interface Data {
             /**
@@ -83,10 +85,12 @@ declare namespace AMap {
          * @param dataset 数据集
          */
         setDataSet(
-            dataset: Heatmap.DataSet | {
-                data: string;
-                dataParser?(data: any): Heatmap.DataSet;
-            },
+            dataset:
+                | Heatmap.DataSet
+                | {
+                      data: string;
+                      dataParser?(data: any): Heatmap.DataSet;
+                  },
         ): void;
         /**
          * 向热力图数据集中添加坐标点，count不填写时默认：1

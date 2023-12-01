@@ -143,7 +143,10 @@ import { Equation, Expression, Fraction, parse, toTex } from "algebra.js";
     exp.toString();
 }
 {
-    let eq = new Equation(new Expression("x").multiply("m"), new Expression("k"));
+    let eq = new Equation(
+        new Expression("x").multiply("m"),
+        new Expression("k"),
+    );
     eq.solveFor("x");
     eq = new Equation(new Expression("x").multiply("m"), new Expression("k"));
     eq.solveFor("k");

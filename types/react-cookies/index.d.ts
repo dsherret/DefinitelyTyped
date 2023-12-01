@@ -32,7 +32,11 @@ export function select(regex?: RegExp): { [key: string]: any };
  * @param val any value to save
  * @param opt object of cookie options from the [RFC 6265](https://tools.ietf.org/html/rfc6265#section-4.1.2.1)
  */
-export function save(name: string, val: string | number | object, opt: CookieSerializeOptions): void;
+export function save(
+    name: string,
+    val: string | number | object,
+    opt: CookieSerializeOptions,
+): void;
 
 /**
  * Remove a cookie

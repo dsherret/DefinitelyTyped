@@ -18,7 +18,10 @@
  * const htmlBytes = fs.readFileSync("./html-page.html");
  * const sniffedEncoding = htmlEncodingSniffer(htmlBytes);
  */
-declare function sniffHTMLEncoding(htmlBytes: Uint8Array, options?: sniffHTMLEncoding.Options): string;
+declare function sniffHTMLEncoding(
+    htmlBytes: Uint8Array,
+    options?: sniffHTMLEncoding.Options,
+): string;
 
 declare namespace sniffHTMLEncoding {
     interface Options {

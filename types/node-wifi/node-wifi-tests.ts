@@ -1,4 +1,11 @@
-import { connect, deleteConnection, disconnect, getCurrentConnections, init, scan } from "node-wifi";
+import {
+    connect,
+    deleteConnection,
+    disconnect,
+    getCurrentConnections,
+    init,
+    scan,
+} from "node-wifi";
 
 // $ExpectType void
 init({
@@ -17,13 +24,13 @@ scan((error, networks) => {
 connect({ ssid: "ssid", password: "password" });
 
 // $ExpectType void
-disconnect(error => {
+disconnect((error) => {
     // $ExpectType Error | null
     error;
 });
 
 // $ExpectType void
-deleteConnection({ ssid: "ssid" }, error => {
+deleteConnection({ ssid: "ssid" }, (error) => {
     // $ExpectType Error | null
     error;
 });

@@ -23,14 +23,18 @@ declare namespace pendo {
         excludeTitle?: boolean | undefined;
         disableCookies?: boolean;
         disablePersistence?: boolean | undefined;
-        guides?: {
-            delay?: boolean | undefined;
-            disable?: boolean | undefined;
-            timeout?: number | undefined;
-            tooltip?: {
-                arrowSize?: number | undefined;
-            } | undefined;
-        } | undefined;
+        guides?:
+            | {
+                  delay?: boolean | undefined;
+                  disable?: boolean | undefined;
+                  timeout?: number | undefined;
+                  tooltip?:
+                      | {
+                            arrowSize?: number | undefined;
+                        }
+                      | undefined;
+              }
+            | undefined;
         events?: EventCallbacks | undefined;
         sanitizeUrl?: (url: string) => string;
     }
@@ -131,7 +135,11 @@ declare namespace pendo {
         steps: GuideStep[];
         attributes: {
             type: string;
-            device: { desktop: boolean; mobile: boolean; type: "desktop" | "mobile" };
+            device: {
+                desktop: boolean;
+                mobile: boolean;
+                type: "desktop" | "mobile";
+            };
             badge: any; // TODO
             priority: number;
             launcher: { keywords: string[] };

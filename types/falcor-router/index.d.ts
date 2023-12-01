@@ -5,7 +5,10 @@ import DataSource = FalcorModel.DataSource;
 import { Observable } from "rx";
 
 declare class FalcorRouter extends DataSource {
-    constructor(routes: FalcorRouter.RouteDefinition[], options?: FalcorRouter.RouterOptions);
+    constructor(
+        routes: FalcorRouter.RouteDefinition[],
+        options?: FalcorRouter.RouterOptions,
+    );
 
     /**
      * When a route misses on a call, get, or set the unhandledDataSource will
@@ -13,7 +16,9 @@ declare class FalcorRouter extends DataSource {
      */
     routeUnhandledPathsTo(dataSource: DataSource): void;
 
-    static createClass(routes?: FalcorRouter.RouteDefinition[]): typeof FalcorRouter.CreatedRouter;
+    static createClass(
+        routes?: FalcorRouter.RouteDefinition[],
+    ): typeof FalcorRouter.CreatedRouter;
 }
 
 declare namespace FalcorRouter {
@@ -31,19 +36,29 @@ declare namespace FalcorRouter {
         call(
             callPath: RoutePathSet,
             args: any[],
-        ): CallRouteResult | Promise<CallRouteResult> | Observable<CallRouteResult>;
+        ):
+            | CallRouteResult
+            | Promise<CallRouteResult>
+            | Observable<CallRouteResult>;
     }
 
     interface GetRoute extends Route {
-        get(pathset: RoutePathSet): RouteResult | Promise<RouteResult> | Observable<RouteResult>;
+        get(
+            pathset: RoutePathSet,
+        ): RouteResult | Promise<RouteResult> | Observable<RouteResult>;
     }
 
     interface SetRoute extends Route {
-        set(jsonGraph: FalcorJsonGraph.JSONGraph): RouteResult | Promise<RouteResult> | Observable<RouteResult>;
+        set(
+            jsonGraph: FalcorJsonGraph.JSONGraph,
+        ): RouteResult | Promise<RouteResult> | Observable<RouteResult>;
     }
 
     type RouteDefinition = GetRoute | SetRoute | CallRoute;
-    type RouteResult = FalcorJsonGraph.PathValue | FalcorJsonGraph.PathValue[] | FalcorJsonGraph.JSONEnvelope<any>;
+    type RouteResult =
+        | FalcorJsonGraph.PathValue
+        | FalcorJsonGraph.PathValue[]
+        | FalcorJsonGraph.JSONEnvelope<any>;
     type CallRouteResult =
         | FalcorJsonGraph.PathValue
         | FalcorJsonGraph.InvalidPath

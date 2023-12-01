@@ -303,12 +303,10 @@ export default class AmPieChart extends AmChart {
      */
     addListener(
         type: string,
-        handler: (
-            e: {
-                type: string; // Always "rollOverSlice".
-                dataItem: Slice;
-                chart: AmChart;
-            },
-        ) => void,
+        handler: (e: {
+            type: string; // Always "rollOverSlice".
+            dataItem: Slice;
+            chart: AmChart;
+        }) => void,
     ): void;
 }

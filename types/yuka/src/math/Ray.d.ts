@@ -183,7 +183,11 @@ export class Ray {
      * @param result - The result vector.
      * @return The result vector.
      */
-    intersectTriangle(triangle: Triangle, backfaceCulling: boolean, result: Vector3): Vector3;
+    intersectTriangle(
+        triangle: Triangle,
+        backfaceCulling: boolean,
+        result: Vector3,
+    ): Vector3;
 
     /**
      * Performs a ray/BVH intersection test and stores the intersection point

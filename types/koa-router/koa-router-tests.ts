@@ -18,22 +18,22 @@ const router = new Router<MyState, MyContext>({
 });
 
 router
-    .param("id", function(id, ctx, next) {
+    .param("id", function (id, ctx, next) {
         ctx.state.id = id;
         ctx.bar = "bar";
         next();
     })
-    .get("/", function(ctx, next) {
+    .get("/", function (ctx, next) {
         ctx.body = "Hello World!";
     })
-    .get("user", "/users/:id", function(ctx, next) {
+    .get("user", "/users/:id", function (ctx, next) {
         ctx.body = {
             test1: ctx.router.url("user-accounts", { id: ctx.params.id }),
             test2: ctx.router.url("user-accounts", ctx.params.id),
             test3: ctx.router.url("user-accounts", [ctx.params.id]),
         };
     })
-    .get("user-accounts", "/users/:id/accounts", function(ctx, next) {
+    .get("user-accounts", "/users/:id/accounts", function (ctx, next) {
         ctx.body = {
             test1: ctx.router.url("user", { id: 3 }, { query: { limit: 1 } }),
             test2: ctx.router.url("user", { id: 3 }, { query: "limit=1" }),
@@ -42,18 +42,18 @@ router
             test5: ctx.router.url("user", ["3"], { query: { limit: "1" } }),
         };
     })
-    .post("/users", function(ctx, next) {
+    .post("/users", function (ctx, next) {
         ctx.state.foo = "foo";
     })
-    .put("/users/:id", function(ctx, next) {
+    .put("/users/:id", function (ctx, next) {
         ctx.bar = "bar";
         ctx.body = ctx.params.id;
     })
-    .del("/users/:id", function() {
+    .del("/users/:id", function () {
         // ...
     });
 
-router.get("user", "/users/:id", function(ctx) {
+router.get("user", "/users/:id", function (ctx) {
     ctx.body = "sdsd";
 });
 
@@ -69,7 +69,10 @@ const mw: Router.IMiddleware = (
     ctx.body = "Ok";
 };
 
-const mw2: Router.IMiddleware = (ctx: Router.IRouterContext, next: () => Promise<any>) => {
+const mw2: Router.IMiddleware = (
+    ctx: Router.IRouterContext,
+    next: () => Promise<any>,
+) => {
     ctx.body = "Ok";
 };
 
@@ -142,17 +145,21 @@ type IWooh = { wooh: string };
 
 const router4 = new Router<MyState, MyContext>({ prefix: "/users" });
 
-router4.get("/", (ctx: Koa.ParameterizedContext<IBlah & IWooh>, next) => {
-    ctx.state.blah = "blah";
-    ctx.state.wooh = "wooh";
-    return next();
-}, (ctx, next) => {
-    console.log(ctx.state.blah);
-    console.log(ctx.state.wooh);
-    console.log(ctx.state.foo);
-    ctx.body = "Hello World!";
-    return next();
-});
+router4.get(
+    "/",
+    (ctx: Koa.ParameterizedContext<IBlah & IWooh>, next) => {
+        ctx.state.blah = "blah";
+        ctx.state.wooh = "wooh";
+        return next();
+    },
+    (ctx, next) => {
+        console.log(ctx.state.blah);
+        console.log(ctx.state.wooh);
+        console.log(ctx.state.foo);
+        ctx.body = "Hello World!";
+        return next();
+    },
+);
 
 const middleware1: Koa.Middleware<IBlah> = (ctx, next) => {
     ctx.state.blah = "blah";
@@ -162,8 +169,7 @@ const middleware2: Koa.Middleware<IWooh> = (ctx, next) => {
     ctx.state.wooh = "blah";
 };
 
-const emptyMiddleware: Koa.Middleware<{}> = (ctx, next) => {
-};
+const emptyMiddleware: Koa.Middleware<{}> = (ctx, next) => {};
 
 function routeHandler1(ctx: Koa.ParameterizedContext<IWooh>): void {
     ctx.body = "234";
@@ -192,9 +198,22 @@ router4.delete("/foo", middleware1, routeHandler2);
 router4.head("/foo", middleware2, routeHandler3);
 
 router4.post("/foo", emptyMiddleware, emptyMiddleware, routeHandler4);
-router4.post("/foo", emptyMiddleware, emptyMiddleware, emptyMiddleware, routeHandler4);
+router4.post(
+    "/foo",
+    emptyMiddleware,
+    emptyMiddleware,
+    emptyMiddleware,
+    routeHandler4,
+);
 router4.get("name", "/foo", emptyMiddleware, emptyMiddleware, routeHandler4);
-router4.get("name", "/foo", emptyMiddleware, emptyMiddleware, emptyMiddleware, routeHandler4);
+router4.get(
+    "name",
+    "/foo",
+    emptyMiddleware,
+    emptyMiddleware,
+    emptyMiddleware,
+    routeHandler4,
+);
 
 const router5 = new Router();
 router5.register("/foo", ["GET"], middleware1, {

@@ -27,12 +27,16 @@ function test_absinthe_socket() {
     });
 
     withAbsintheSocket.cancel(absintheSocket, notifier);
-    const updatedNotifier = withAbsintheSocket.observe(absintheSocket, notifier, {
-        onAbort: (error: Error) => {},
-        onError: (error: Error) => {},
-        onStart: notifier => {},
-        onResult: result => {},
-    });
+    const updatedNotifier = withAbsintheSocket.observe(
+        absintheSocket,
+        notifier,
+        {
+            onAbort: (error: Error) => {},
+            onError: (error: Error) => {},
+            onStart: (notifier) => {},
+            onResult: (result) => {},
+        },
+    );
     withAbsintheSocket.unobserve(absintheSocket, notifier, observer);
     withAbsintheSocket.unobserveOrCancel(absintheSocket, notifier, observer);
 }

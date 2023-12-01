@@ -15,13 +15,16 @@ declare module "why-did-you-update" {
         collapseComponentGroups?: boolean | undefined;
         notifier?:
             | ((
-                groupByComponent: boolean,
-                collapseComponentGroups: boolean,
-                displayName: string,
-                diffs: Diffs[],
-            ) => void)
+                  groupByComponent: boolean,
+                  collapseComponentGroups: boolean,
+                  displayName: string,
+                  diffs: Diffs[],
+              ) => void)
             | undefined;
     }
 
-    export function whyDidYouUpdate(react: typeof React, options?: Options): void;
+    export function whyDidYouUpdate(
+        react: typeof React,
+        options?: Options,
+    ): void;
 }

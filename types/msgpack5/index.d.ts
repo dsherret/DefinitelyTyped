@@ -25,8 +25,14 @@ declare namespace msgpack5 {
             encode: (obj: T) => Buffer,
             decode: (data: Buffer) => T,
         ): MessagePack;
-        registerEncoder<T>(check: (obj: T) => boolean, encode: (obj: T) => Buffer): MessagePack;
-        registerDecoder(type: number, decode: (data: Buffer) => any): MessagePack;
+        registerEncoder<T>(
+            check: (obj: T) => boolean,
+            encode: (obj: T) => Buffer,
+        ): MessagePack;
+        registerDecoder(
+            type: number,
+            decode: (data: Buffer) => any,
+        ): MessagePack;
         encoder(opts?: EncodeDecodeOptions): Encoder;
         decoder(opts?: EncodeDecodeOptions): Decoder;
     }

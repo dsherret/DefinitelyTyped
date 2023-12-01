@@ -30,8 +30,14 @@ interface JQuery {
      * international number.
      * @param numberFormat the format in which the number will be returned.
      */
-    intlTelInput(method: "getNumber", numberFormat?: intlTelInputUtils.numberFormat): string;
-    intlTelInput(method: string, numberFormat: intlTelInputUtils.numberFormat): string;
+    intlTelInput(
+        method: "getNumber",
+        numberFormat?: intlTelInputUtils.numberFormat,
+    ): string;
+    intlTelInput(
+        method: string,
+        numberFormat: intlTelInputUtils.numberFormat,
+    ): string;
 
     /**
      * Get the type (fixed-line/mobile/toll-free etc) of the current number.
@@ -54,7 +60,9 @@ interface JQuery {
      * Returns an integer, which you can match against the various options in the
      * global enum ValidationError
      */
-    intlTelInput(method: "getValidationError"): intlTelInputUtils.validationError;
+    intlTelInput(
+        method: "getValidationError",
+    ): intlTelInputUtils.validationError;
 
     /**
      * Validate the current number. Expects an internationally formatted number
@@ -84,5 +92,8 @@ interface JQuery {
      * Set the type of the placeholder number
      * @param type Placeholder number type to be set
      */
-    intlTelInput(method: "setPlaceholderNumberType", type: intlTelInput.placeholderNumberType): void;
+    intlTelInput(
+        method: "setPlaceholderNumberType",
+        type: intlTelInput.placeholderNumberType,
+    ): void;
 }

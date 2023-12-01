@@ -5,7 +5,13 @@ import { Plugin } from "imagemin";
  */
 export default function imageminWebp(options?: Options): Plugin;
 
-export type Preset = "default" | "photo" | "picture" | "drawing" | "icon" | "text";
+export type Preset =
+    | "default"
+    | "photo"
+    | "picture"
+    | "drawing"
+    | "icon"
+    | "text";
 export interface Resize {
     width: number;
     height: number;

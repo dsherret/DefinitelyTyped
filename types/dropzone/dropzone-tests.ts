@@ -5,7 +5,7 @@ const dropzoneRenameFunction = (name: string): string => {
 };
 
 const blacklistedBrowsers: RegExp[] = Dropzone.blacklistedBrowsers;
-Dropzone.createElement("<div id=\"divTest\"></div>");
+Dropzone.createElement('<div id="divTest"></div>');
 const dataURItoBlob: Blob = Dropzone.dataURItoBlob("");
 const discover: Dropzone[] = Dropzone.discover();
 const elementInside: boolean = Dropzone.elementInside(
@@ -13,17 +13,31 @@ const elementInside: boolean = Dropzone.elementInside(
     document.getElementById("parentOfTest"),
 );
 const dropzoneForSelector: Dropzone = Dropzone.forElement("#selector");
-const dropzoneForElement: Dropzone = Dropzone.forElement(document.getElementById("test"));
-const getElementString: HTMLElement = Dropzone.getElement(".test", "optional description");
-const getElementNodeLike: HTMLElement = Dropzone.getElement(document.getElementById("test"));
-const getElementsString: HTMLElement[] = Dropzone.getElements(".test");
-const getElementsNodeLike: HTMLElement[] = Dropzone.getElements(document.getElementById("test"));
-const getElementsWithArray: HTMLElement[] = Dropzone.getElements([".test", document.getElementById("test")]);
-Dropzone.isBrowserSupported();
-const isValidFile: boolean = Dropzone.isValidFile(new File([], "test"), "application/javascript");
-const optionsForElement: Dropzone.DropzoneOptions | undefined = Dropzone.optionsForElement(
+const dropzoneForElement: Dropzone = Dropzone.forElement(
     document.getElementById("test"),
 );
+const getElementString: HTMLElement = Dropzone.getElement(
+    ".test",
+    "optional description",
+);
+const getElementNodeLike: HTMLElement = Dropzone.getElement(
+    document.getElementById("test"),
+);
+const getElementsString: HTMLElement[] = Dropzone.getElements(".test");
+const getElementsNodeLike: HTMLElement[] = Dropzone.getElements(
+    document.getElementById("test"),
+);
+const getElementsWithArray: HTMLElement[] = Dropzone.getElements([
+    ".test",
+    document.getElementById("test"),
+]);
+Dropzone.isBrowserSupported();
+const isValidFile: boolean = Dropzone.isValidFile(
+    new File([], "test"),
+    "application/javascript",
+);
+const optionsForElement: Dropzone.DropzoneOptions | undefined =
+    Dropzone.optionsForElement(document.getElementById("test"));
 Dropzone.version;
 Dropzone.options["divTest"] = { clickable: true };
 Dropzone.options["noDiscover"] = false;
@@ -86,7 +100,10 @@ const dropzoneWithOptions = new Dropzone(".test", {
     dictFileSizeUnits: { tb: "", gb: "", mb: "", kb: "", b: "" },
     dictUploadCanceled: "",
 
-    accept: (file: Dropzone.DropzoneFile, done: (error?: string | Error) => void) => {
+    accept: (
+        file: Dropzone.DropzoneFile,
+        done: (error?: string | Error) => void,
+    ) => {
         if (file.accepted) {
             file.previewElement.classList.add("accepted");
             file.previewTemplate.classList.add("accepted");
@@ -96,7 +113,10 @@ const dropzoneWithOptions = new Dropzone(".test", {
             done(new Error(file.status));
         }
     },
-    chunksUploaded: (file: Dropzone.DropzoneFile, done: (error?: string | Error) => void) => {
+    chunksUploaded: (
+        file: Dropzone.DropzoneFile,
+        done: (error?: string | Error) => void,
+    ) => {
         if (file.accepted) {
             file.previewElement.classList.add("accepted");
             file.previewTemplate.classList.add("accepted");
@@ -109,7 +129,12 @@ const dropzoneWithOptions = new Dropzone(".test", {
     init: () => console.log("Initialized"),
     forceFallback: false,
     fallback: () => console.log("Fallback"),
-    resize: (file: Dropzone.DropzoneFile, width: 120, height: 120, resizeMethod: "contain") => ({
+    resize: (
+        file: Dropzone.DropzoneFile,
+        width: 120,
+        height: 120,
+        resizeMethod: "contain",
+    ) => ({
         srcX: 0,
         srcY: 0,
         trgX: 10,
@@ -133,33 +158,53 @@ const dropzoneWithOptions = new Dropzone(".test", {
     addedfile: (file: Dropzone.DropzoneFile) => console.log("Addedfile"),
     addedfiles: (files: Dropzone.DropzoneFile[]) => console.log("Addedfiles"),
     removedfile: (file: Dropzone.DropzoneFile) => console.log("Removedfile"),
-    thumbnail: (file: Dropzone.DropzoneFile, dataUrl: string) => console.log("Thumbnail"),
+    thumbnail: (file: Dropzone.DropzoneFile, dataUrl: string) =>
+        console.log("Thumbnail"),
 
-    error: (file: Dropzone.DropzoneFile, message: string | Error) => console.log("Error"),
-    errormultiple: (files: Dropzone.DropzoneFile[], message: string | Error) => console.log("Errormultiple"),
+    error: (file: Dropzone.DropzoneFile, message: string | Error) =>
+        console.log("Error"),
+    errormultiple: (files: Dropzone.DropzoneFile[], message: string | Error) =>
+        console.log("Errormultiple"),
 
     processing: (file: Dropzone.DropzoneFile) => console.log("Processing"),
-    processingmultiple: (files: Dropzone.DropzoneFile[]) => console.log("Processingmultiple"),
+    processingmultiple: (files: Dropzone.DropzoneFile[]) =>
+        console.log("Processingmultiple"),
 
-    uploadprogress: (file: Dropzone.DropzoneFile, progress: number, bytesSent: number) => console.log("Uploadprogress"),
-    totaluploadprogress: (totalProgress: number, totalBytes: number, totalBytesSent: number) =>
-        console.log("Totaluploadprogress"),
+    uploadprogress: (
+        file: Dropzone.DropzoneFile,
+        progress: number,
+        bytesSent: number,
+    ) => console.log("Uploadprogress"),
+    totaluploadprogress: (
+        totalProgress: number,
+        totalBytes: number,
+        totalBytesSent: number,
+    ) => console.log("Totaluploadprogress"),
 
-    sending: (file: Dropzone.DropzoneFile, xhr: XMLHttpRequest, formData: {}) => console.log("Sending"),
-    sendingmultiple: (files: Dropzone.DropzoneFile[], xhr: XMLHttpRequest, formData: {}) =>
-        console.log("Sendingmultiple"),
+    sending: (file: Dropzone.DropzoneFile, xhr: XMLHttpRequest, formData: {}) =>
+        console.log("Sending"),
+    sendingmultiple: (
+        files: Dropzone.DropzoneFile[],
+        xhr: XMLHttpRequest,
+        formData: {},
+    ) => console.log("Sendingmultiple"),
 
     success: (file: Dropzone.DropzoneFile) => console.log("Success"),
-    successmultiple: (files: Dropzone.DropzoneFile[]) => console.log("Successmultiple"),
+    successmultiple: (files: Dropzone.DropzoneFile[]) =>
+        console.log("Successmultiple"),
 
     canceled: (file: Dropzone.DropzoneFile) => console.log("Canceled"),
-    canceledmultiple: (file: Dropzone.DropzoneFile[]) => console.log("Canceledmultiple"),
+    canceledmultiple: (file: Dropzone.DropzoneFile[]) =>
+        console.log("Canceledmultiple"),
 
     complete: (file: Dropzone.DropzoneFile) => console.log("Complete"),
-    completemultiple: (file: Dropzone.DropzoneFile[]) => console.log("Completemultiple"),
+    completemultiple: (file: Dropzone.DropzoneFile[]) =>
+        console.log("Completemultiple"),
 
-    maxfilesexceeded: (file: Dropzone.DropzoneFile) => console.log("Maxfilesexceeded"),
-    maxfilesreached: (files: Dropzone.DropzoneFile[]) => console.log("Maxfilesreached"),
+    maxfilesexceeded: (file: Dropzone.DropzoneFile) =>
+        console.log("Maxfilesexceeded"),
+    maxfilesreached: (files: Dropzone.DropzoneFile[]) =>
+        console.log("Maxfilesreached"),
     queuecomplete: () => console.log("Queuecomplete"),
 
     transformFile: (file, done) => done(file),
@@ -178,7 +223,10 @@ dropzoneWithOptionsVariations = new Dropzone(".test", {
     clickable: [".test", ".test"],
 });
 dropzoneWithOptionsVariations = new Dropzone(".test", {
-    clickable: [document.getElementById("test"), document.getElementById("test")],
+    clickable: [
+        document.getElementById("test"),
+        document.getElementById("test"),
+    ],
 });
 dropzoneWithOptionsVariations = new Dropzone(".test", {
     clickable: ["test", document.getElementById("test")],
@@ -212,7 +260,7 @@ dropzone.options.headers.test = "test";
 dropzone.enable();
 dropzone.disable();
 
-dropzone.files.forEach(f => {
+dropzone.files.forEach((f) => {
     if (f.xhr) {
         console.log(f.xhr.readyState);
     }
@@ -246,7 +294,11 @@ dropzone.cancelUpload(firstFile);
 
 dropzone.createThumbnail(firstFile);
 dropzone.createThumbnail(firstFile, dropzone.defaultOptions.resizeWidth);
-dropzone.createThumbnail(firstFile, dropzone.defaultOptions.resizeWidth, dropzone.defaultOptions.resizeHeight);
+dropzone.createThumbnail(
+    firstFile,
+    dropzone.defaultOptions.resizeWidth,
+    dropzone.defaultOptions.resizeHeight,
+);
 dropzone.createThumbnail(
     firstFile,
     dropzone.defaultOptions.resizeWidth,
@@ -277,9 +329,13 @@ const mockFile: Dropzone.DropzoneMockFile = {
     customProperty: "additional data",
 };
 dropzone.displayExistingFile(mockFile, "https://example.com/original.jpeg");
-dropzone.displayExistingFile(mockFile, "https://example.com/original.jpeg", () => {
-    console.log("displayExistingFile");
-});
+dropzone.displayExistingFile(
+    mockFile,
+    "https://example.com/original.jpeg",
+    () => {
+        console.log("displayExistingFile");
+    },
+);
 dropzone.displayExistingFile(
     mockFile,
     "https://example.com/original.jpeg",
@@ -308,7 +364,11 @@ dropzone.displayExistingFile(
 
 dropzone.createThumbnailFromUrl(firstFile);
 dropzone.createThumbnailFromUrl(firstFile, dropzone.defaultOptions.resizeWidth);
-dropzone.createThumbnailFromUrl(firstFile, dropzone.defaultOptions.resizeWidth, dropzone.defaultOptions.resizeHeight);
+dropzone.createThumbnailFromUrl(
+    firstFile,
+    dropzone.defaultOptions.resizeWidth,
+    dropzone.defaultOptions.resizeHeight,
+);
 dropzone.createThumbnailFromUrl(
     firstFile,
     dropzone.defaultOptions.resizeWidth,

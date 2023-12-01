@@ -8,11 +8,15 @@ interface PluginOptions {
 }
 
 // modified from docs
-var registerFunction: Hapi.PluginFunction<PluginOptions> = function(server, options, next) {
+var registerFunction: Hapi.PluginFunction<PluginOptions> = function (
+    server,
+    options,
+    next,
+) {
     server.route({
         method: "GET",
         path: "/test",
-        handler: function(request, reply) {
+        handler: function (request, reply) {
             // modified from docs
             return reply(`ok ${options.quantity}`);
         },

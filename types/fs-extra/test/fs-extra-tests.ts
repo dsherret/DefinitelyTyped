@@ -33,15 +33,15 @@ fs.move(src, dest); // $ExpectType Promise<void>
 fs.move(src, dest, { overwrite: true }); // $ExpectType Promise<void>
 fs.move(src, dest, { dereference: true }); // $ExpectType Promise<void>
 // $ExpectType void
-fs.move(src, dest, err => {
+fs.move(src, dest, (err) => {
     err; // $ExpectType ErrnoException | null | undefined
 });
 // $ExpectType void
-fs.move(src, dest, { overwrite: true }, err => {
+fs.move(src, dest, { overwrite: true }, (err) => {
     err; // $ExpectType ErrnoException | null | undefined
 });
 // $ExpectType void
-fs.move(src, dest, { dereference: true }, err => {
+fs.move(src, dest, { dereference: true }, (err) => {
     err; // $ExpectType ErrnoException | null | undefined
 });
 fs.moveSync(src, dest); // $ExpectType void
@@ -51,7 +51,7 @@ fs.moveSync(src, dest, { dereference: true }); // $ExpectType void
 fs.copy(src, dest); // $ExpectType Promise<void>
 fs.copy(src, dest, { overwrite: true }); // $ExpectType Promise<void>
 // $ExpectType void
-fs.copy(src, dest, err => {
+fs.copy(src, dest, (err) => {
     err; // $ExpectType ErrnoException | null | undefined
 });
 // $ExpectType void
@@ -65,7 +65,7 @@ fs.copy(
             return false;
         },
     },
-    err => {
+    (err) => {
         err; // $ExpectType ErrnoException | null | undefined
     },
 );
@@ -82,7 +82,7 @@ fs.copy(
             return Promise.resolve(false);
         },
     },
-    err => {
+    (err) => {
         err; // $ExpectType ErrnoException | null | undefined
     },
 );
@@ -109,25 +109,25 @@ fs.copySync(src, dest, {
 
 fs.createFile(file); // $ExpectType Promise<void>
 // $ExpectType void
-fs.createFile(file, err => {
+fs.createFile(file, (err) => {
     err; // $ExpectType ErrnoException | null | undefined
 });
 fs.createFileSync(file); // $ExpectType void
 fs.ensureFile(path); // $ExpectType Promise<void>
 // $ExpectType void
-fs.ensureFile(path, err => {
+fs.ensureFile(path, (err) => {
     err; // $ExpectType ErrnoException | null | undefined
 });
 fs.ensureFileSync(path); // $ExpectType void
 
 fs.createLink(path, path); // $ExpectType Promise<void>
 // $ExpectType void
-fs.createLink(path, path, err => {
+fs.createLink(path, path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.ensureLink(path, path); // $ExpectType Promise<void>
 // $ExpectType void
-fs.ensureLink(path, path, err => {
+fs.ensureLink(path, path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.createLinkSync(path, path); // $ExpectType void
@@ -140,19 +140,19 @@ fs.ensureSymlink(path, path); // $ExpectType Promise<void>
 fs.ensureSymlink(path, path, "dir"); // $ExpectType Promise<void>
 fs.ensureSymlink(path, path, "file"); // $ExpectType Promise<void>
 // $ExpectType void
-fs.createSymlink(path, path, err => {
+fs.createSymlink(path, path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.ensureSymlink(path, path, err => {
+fs.ensureSymlink(path, path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.createSymlink(path, path, "junction", err => {
+fs.createSymlink(path, path, "junction", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.ensureSymlink(path, path, "junction", err => {
+fs.ensureSymlink(path, path, "junction", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.createSymlinkSync(path, path); // $ExpectType void
@@ -168,39 +168,39 @@ fs.ensureDir(dir); // $ExpectType Promise<void>
 fs.ensureDir(dir, 0o777); // $ExpectType Promise<void>
 fs.ensureDir(dir, { mode: 0o700 }); // $ExpectType Promise<void>
 // $ExpectType void
-fs.mkdirs(dir, err => {
+fs.mkdirs(dir, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.mkdirs(dir, 0o777, err => {
+fs.mkdirs(dir, 0o777, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.mkdirs(dir, { mode: 0o700 }, err => {
+fs.mkdirs(dir, { mode: 0o700 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.mkdirp(dir, err => {
+fs.mkdirp(dir, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.mkdirp(dir, 0o777, err => {
+fs.mkdirp(dir, 0o777, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.mkdirp(dir, { mode: 0o700 }, err => {
+fs.mkdirp(dir, { mode: 0o700 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.ensureDir(dir, err => {
+fs.ensureDir(dir, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.ensureDir(dir, 0o777, err => {
+fs.ensureDir(dir, 0o777, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.ensureDir(dir, { mode: 0o700 }, err => {
+fs.ensureDir(dir, { mode: 0o700 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -220,17 +220,17 @@ fs.outputFile(file, data, { encoding: "utf-8" }); // $ExpectType Promise<void>
 // @ts-expect-error
 fs.outputFile(file, data, { encoding: "foo" });
 // $ExpectType void
-fs.outputFile(file, data, err => {
+fs.outputFile(file, data, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.outputFile(file, data, "utf-8", err => {
+fs.outputFile(file, data, "utf-8", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // @ts-expect-error
 fs.outputFile(file, data, "foo", errorCallback);
 // $ExpectType void
-fs.outputFile(file, data, { encoding: "utf-8" }, err => {
+fs.outputFile(file, data, { encoding: "utf-8" }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // @ts-expect-error
@@ -254,7 +254,7 @@ fs.outputJson(
     {
         spaces: 2,
     },
-    err => {
+    (err) => {
         err; // $ExpectType ErrnoException | null
     },
 );
@@ -266,12 +266,12 @@ fs.outputJson(
         encoding: "utf-8",
         spaces: 2,
     },
-    err => {
+    (err) => {
         err; // $ExpectType ErrnoException | null
     },
 );
 // $ExpectType void
-fs.outputJson(file, data, "utf-8", err => {
+fs.outputJson(file, data, "utf-8", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -286,7 +286,7 @@ fs.outputJSON(
     {
         spaces: 2,
     },
-    err => {
+    (err) => {
         err; // $ExpectType ErrnoException | null
     },
 );
@@ -298,12 +298,12 @@ fs.outputJSON(
         encoding: "utf-8",
         spaces: 2,
     },
-    err => {
+    (err) => {
         err; // $ExpectType ErrnoException | null
     },
 );
 // $ExpectType void
-fs.outputJSON(file, data, err => {
+fs.outputJSON(file, data, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -415,7 +415,7 @@ fs.readJSONSync(file, { encoding: "utf-8" }); // $ExpectType any
 fs.writeJson(file, object); // $ExpectType Promise<void>
 fs.writeJSON(file, object); // $ExpectType Promise<void>
 // $ExpectType void
-fs.writeJson(file, object, error => {
+fs.writeJson(file, object, (error) => {
     error; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
@@ -428,20 +428,20 @@ fs.writeJson(
             value; // $ExpectType any
         },
     },
-    error => {
+    (error) => {
         error; // $ExpectType ErrnoException | null
     },
 );
 // $ExpectType void
-fs.writeJson(file, object, "utf-8", error => {
+fs.writeJson(file, object, "utf-8", (error) => {
     error; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeJson(file, object, { encoding: "utf-8" }, error => {
+fs.writeJson(file, object, { encoding: "utf-8" }, (error) => {
     error; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeJSON(file, object, error => {
+fs.writeJSON(file, object, (error) => {
     error; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
@@ -454,16 +454,16 @@ fs.writeJSON(
             value; // $ExpectType any
         },
     },
-    error => {
+    (error) => {
         error; // $ExpectType ErrnoException | null
     },
 );
 // $ExpectType void
-fs.writeJSON(file, object, "utf-8", error => {
+fs.writeJSON(file, object, "utf-8", (error) => {
     error; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeJSON(file, object, { encoding: "utf-8" }, error => {
+fs.writeJSON(file, object, { encoding: "utf-8" }, (error) => {
     error; // $ExpectType ErrnoException | null
 });
 // $ExpectType Promise<void>
@@ -505,21 +505,21 @@ fs.writeJSONSync(file, object, "utf-8"); // $ExpectType void
 fs.writeJSONSync(file, object, { encoding: "utf-8" }); // $ExpectType void
 
 // $ExpectType void
-fs.remove(dir, error => {
+fs.remove(dir, (error) => {
     error; // $ExpectType ErrnoException | null
 });
 fs.remove(dir); // $ExpectType Promise<void>
-["file/to/remove"].map(file => fs.remove(file));
+["file/to/remove"].map((file) => fs.remove(file));
 fs.removeSync(dir); // $ExpectType void
 
 fs.emptyDir(path); // $ExpectType Promise<void>
 fs.emptydir(path); // $ExpectType Promise<void>
 // $ExpectType void
-fs.emptyDir(path, error => {
+fs.emptyDir(path, (error) => {
     error; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.emptydir(path, error => {
+fs.emptydir(path, (error) => {
     error; // $ExpectType ErrnoException | null
 });
 fs.emptyDirSync(path); // $ExpectType void
@@ -536,11 +536,11 @@ fs.pathExistsSync(path); // $ExpectType boolean
 fs.access(path); // $ExpectType Promise<void>
 fs.access(path, 0o777); // $ExpectType Promise<void>
 // $ExpectType void
-fs.access(path, err => {
+fs.access(path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.access(path, 0o777, err => {
+fs.access(path, 0o777, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -551,38 +551,38 @@ fs.appendFile(path, "foo", { flag: "r" }); // $ExpectType Promise<void>
 fs.appendFile(path, "foo", { mode: 0o777 }); // $ExpectType Promise<void>
 fs.appendFile(path, "foo", { signal: new AbortController().signal }); // $ExpectType Promise<void>
 // $ExpectType void
-fs.appendFile(path, "foo", err => {
+fs.appendFile(path, "foo", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.appendFile(path, new Uint8Array(10), err => {
+fs.appendFile(path, new Uint8Array(10), (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.appendFile(path, "foo", { encoding: "utf-8" }, err => {
+fs.appendFile(path, "foo", { encoding: "utf-8" }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.appendFile(path, "foo", { flag: "r" }, err => {
+fs.appendFile(path, "foo", { flag: "r" }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.appendFile(path, "foo", { mode: 0o777 }, err => {
+fs.appendFile(path, "foo", { mode: 0o777 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.appendFile(path, "foo", { signal: new AbortController().signal }, err => {
+fs.appendFile(path, "foo", { signal: new AbortController().signal }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
 fs.chmod(path, 0o777); // $ExpectType Promise<void>
 fs.chmod(path, "777"); // $ExpectType Promise<void>
 // $ExpectType void
-fs.chmod(path, 0o777, err => {
+fs.chmod(path, 0o777, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.chmod(path, "777", err => {
+fs.chmod(path, "777", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.chmodSync(path, 0o777); // $ExpectType void
@@ -590,42 +590,42 @@ fs.chmodSync(path, "777"); // $ExpectType void
 
 fs.chown(path, uid, gid); // $ExpectType Promise<void>
 // $ExpectType void
-fs.chown(path, uid, gid, err => {
+fs.chown(path, uid, gid, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.chownSync(path, uid, gid); // $ExpectType void
 
 fs.close(fd); // $ExpectType Promise<void>
 // $ExpectType void
-fs.close(fd, err => {
+fs.close(fd, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
 fs.copyFile(src, dest); // $ExpectType Promise<void>
 fs.copyFile(src, dest, fs.constants.COPYFILE_EXCL); // $ExpectType Promise<void>
 // $ExpectType void
-fs.copyFile(src, dest, err => {
+fs.copyFile(src, dest, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.copyFile(src, dest, fs.constants.COPYFILE_EXCL, err => {
+fs.copyFile(src, dest, fs.constants.COPYFILE_EXCL, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
 fs.exists(path); // $ExpectType Promise<boolean>
 // $ExpectType void
-fs.exists(path, exists => {
+fs.exists(path, (exists) => {
     exists; // $ExpectType boolean
 });
 
 fs.fchmod(fd, 0o777); // $ExpectType Promise<void>
 fs.fchmod(fd, "777"); // $ExpectType Promise<void>
 // $ExpectType void
-fs.fchmod(fd, 0o777, err => {
+fs.fchmod(fd, 0o777, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.fchmod(fd, "777", err => {
+fs.fchmod(fd, "777", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.fchmodSync(fd, 0o777); // $ExpectType void
@@ -633,14 +633,14 @@ fs.fchmodSync(fd, "777"); // $ExpectType void
 
 fs.fchown(fd, uid, gid); // $ExpectType Promise<void>
 // $ExpectType void
-fs.fchown(fd, uid, gid, err => {
+fs.fchown(fd, uid, gid, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.fchownSync(fd, uid, gid); // $ExpectType void
 
 fs.fdatasync(fd); // $ExpectType Promise<void>
 // $ExpectType void
-fs.fdatasync(fd, err => {
+fs.fdatasync(fd, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -665,18 +665,18 @@ fs.fstat(fd, { bigint: true }, (err, stats) => {
 
 fs.fsync(fd); // $ExpectType Promise<void>
 // $ExpectType void
-fs.fsync(fd, err => {
+fs.fsync(fd, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
 fs.ftruncate(fd); // $ExpectType Promise<void>
 fs.ftruncate(fd, len); // $ExpectType Promise<void>
 // $ExpectType void
-fs.ftruncate(fd, err => {
+fs.ftruncate(fd, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.ftruncate(fd, len, err => {
+fs.ftruncate(fd, len, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -684,26 +684,26 @@ fs.futimes(fd, new Date(), new Date()); // $ExpectType Promise<void>
 fs.futimes(fd, new Date().toUTCString(), new Date().toUTCString()); // $ExpectType Promise<void>
 fs.futimes(fd, Date.now(), Date.now()); // $ExpectType Promise<void>
 // $ExpectType void
-fs.futimes(fd, new Date(), new Date(), err => {
+fs.futimes(fd, new Date(), new Date(), (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.futimes(fd, new Date().toUTCString(), new Date().toUTCString(), err => {
+fs.futimes(fd, new Date().toUTCString(), new Date().toUTCString(), (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.futimes(fd, Date.now(), Date.now(), err => {
+fs.futimes(fd, Date.now(), Date.now(), (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
 fs.lchmod(path, 0o777); // $ExpectType Promise<void>
 fs.lchmod(path, "777"); // $ExpectType Promise<void>
 // $ExpectType void
-fs.lchmod(path, 0o777, err => {
+fs.lchmod(path, 0o777, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.lchmod(path, "777", err => {
+fs.lchmod(path, "777", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.lchmodSync(path, 0o777); // $ExpectType void
@@ -711,14 +711,14 @@ fs.lchmodSync(path, "777"); // $ExpectType void
 
 fs.lchown(path, uid, gid); // $ExpectType Promise<void>
 // $ExpectType void
-fs.lchown(path, uid, gid, err => {
+fs.lchown(path, uid, gid, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.lchownSync(path, uid, gid); // $ExpectType void
 
 fs.link(path, path); // $ExpectType Promise<void>
 // $ExpectType void
-fs.link(path, path, err => {
+fs.link(path, path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -736,19 +736,19 @@ fs.mkdir(dir, { mode: 0o777 }); // $ExpectType Promise<void>
 fs.mkdir(dir, { recursive: false }); // $ExpectType Promise<void>
 fs.mkdir(dir, { recursive: true }); // $ExpectType Promise<string | undefined>
 // $ExpectType void
-fs.mkdir(dir, err => {
+fs.mkdir(dir, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.mkdir(dir, 0o777, err => {
+fs.mkdir(dir, 0o777, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.mkdir(dir, { mode: 0o777 }, err => {
+fs.mkdir(dir, { mode: 0o777 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.mkdir(dir, { recursive: false }, err => {
+fs.mkdir(dir, { recursive: false }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
@@ -904,7 +904,7 @@ fs.readlink(path, "buffer"); // $ExpectType Promise<Buffer>
 fs.readlink(path, { encoding: "utf-8" }); // $ExpectType Promise<string>
 fs.readlink(path, { encoding: "buffer" }); // $ExpectType Promise<Buffer>
 // $ExpectType void
-fs.readlink(path, err => {
+fs.readlink(path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
@@ -1003,7 +1003,7 @@ fs.realpath.native(path, { encoding: null }, (err, resolved) => {
 
 fs.rename(src, dest); // $ExpectType Promise<void>
 // $ExpectType void
-fs.rename(src, dest, err => {
+fs.rename(src, dest, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.renameSync(src, dest); // $ExpectType void
@@ -1014,23 +1014,23 @@ fs.rm(path, { maxRetries: 1 }); // $ExpectType Promise<void>
 fs.rm(path, { recursive: true }); // $ExpectType Promise<void>
 fs.rm(path, { retryDelay: 200 }); // $ExpectType Promise<void>
 // $ExpectType void
-fs.rm(path, err => {
+fs.rm(path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.rm(path, { force: true }, err => {
+fs.rm(path, { force: true }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.rm(path, { maxRetries: 1 }, err => {
+fs.rm(path, { maxRetries: 1 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.rm(path, { recursive: true }, err => {
+fs.rm(path, { recursive: true }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.rm(path, { retryDelay: 200 }, err => {
+fs.rm(path, { retryDelay: 200 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -1038,15 +1038,15 @@ fs.rmdir(dir); // $ExpectType Promise<void>
 fs.rmdir(dir, { maxRetries: 1 }); // $ExpectType Promise<void>
 fs.rmdir(dir, { retryDelay: 200 }); // $ExpectType Promise<void>
 // $ExpectType void
-fs.rmdir(dir, err => {
+fs.rmdir(dir, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.rmdir(dir, { maxRetries: 1 }, err => {
+fs.rmdir(dir, { maxRetries: 1 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.rmdir(dir, { retryDelay: 200 }, err => {
+fs.rmdir(dir, { retryDelay: 200 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -1075,37 +1075,37 @@ fs.symlink(path, path, "dir"); // $ExpectType Promise<void>
 fs.symlink(path, path, "file"); // $ExpectType Promise<void>
 fs.symlink(path, path, "junction"); // $ExpectType Promise<void>
 // $ExpectType void
-fs.symlink(path, path, err => {
+fs.symlink(path, path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.symlink(path, path, "dir", err => {
+fs.symlink(path, path, "dir", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.symlink(path, path, "file", err => {
+fs.symlink(path, path, "file", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.symlink(path, path, "junction", err => {
+fs.symlink(path, path, "junction", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
 fs.truncate(path); // $ExpectType Promise<void>
 fs.truncate(path, len); // $ExpectType Promise<void>
 // $ExpectType void
-fs.truncate(path, err => {
+fs.truncate(path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.truncate(path, len, err => {
+fs.truncate(path, len, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 fs.truncateSync(path, len); // $ExpectType void
 
 fs.unlink(path); // $ExpectType Promise<void>
 // $ExpectType void
-fs.unlink(path, err => {
+fs.unlink(path, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -1113,15 +1113,15 @@ fs.utimes(path, new Date(), new Date()); // $ExpectType Promise<void>
 fs.utimes(path, new Date().toUTCString(), new Date().toUTCString()); // $ExpectType Promise<void>
 fs.utimes(path, Date.now(), Date.now()); // $ExpectType Promise<void>
 // $ExpectType void
-fs.utimes(path, new Date(), new Date(), err => {
+fs.utimes(path, new Date(), new Date(), (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.utimes(path, new Date().toUTCString(), new Date().toUTCString(), err => {
+fs.utimes(path, new Date().toUTCString(), new Date().toUTCString(), (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.utimes(path, Date.now(), Date.now(), err => {
+fs.utimes(path, Date.now(), Date.now(), (err) => {
     err; // $ExpectType ErrnoException | null
 });
 
@@ -1134,47 +1134,59 @@ fs.writeFile(path, Buffer.from("i am foo"), "utf-8"); // $ExpectType Promise<voi
 fs.writeFile(path, Buffer.from("i am foo"), { encoding: "utf-8" }); // $ExpectType Promise<void>
 fs.writeFile(path, Buffer.from("i am foo"), { flag: "rw" }); // $ExpectType Promise<void>
 fs.writeFile(path, Buffer.from("i am foo"), { mode: 0o777 }); // $ExpectType Promise<void>
-fs.writeFile(path, Buffer.from("i am foo"), { signal: new AbortController().signal }); // $ExpectType Promise<void>
+fs.writeFile(path, Buffer.from("i am foo"), {
+    signal: new AbortController().signal,
+}); // $ExpectType Promise<void>
 // $ExpectType void
-fs.writeFile(path, "i am foo", "utf-8", err => {
+fs.writeFile(path, "i am foo", "utf-8", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeFile(path, "i am foo", { encoding: "utf-8" }, err => {
+fs.writeFile(path, "i am foo", { encoding: "utf-8" }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeFile(path, "i am foo", { flag: "rw" }, err => {
+fs.writeFile(path, "i am foo", { flag: "rw" }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeFile(path, "i am foo", { mode: 0o777 }, err => {
+fs.writeFile(path, "i am foo", { mode: 0o777 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeFile(path, "i am foo", { signal: new AbortController().signal }, err => {
+fs.writeFile(
+    path,
+    "i am foo",
+    { signal: new AbortController().signal },
+    (err) => {
+        err; // $ExpectType ErrnoException | null
+    },
+);
+// $ExpectType void
+fs.writeFile(path, Buffer.from("i am foo"), "utf-8", (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeFile(path, Buffer.from("i am foo"), "utf-8", err => {
+fs.writeFile(path, Buffer.from("i am foo"), { encoding: "utf-8" }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeFile(path, Buffer.from("i am foo"), { encoding: "utf-8" }, err => {
+fs.writeFile(path, Buffer.from("i am foo"), { flag: "rw" }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeFile(path, Buffer.from("i am foo"), { flag: "rw" }, err => {
+fs.writeFile(path, Buffer.from("i am foo"), { mode: 0o777 }, (err) => {
     err; // $ExpectType ErrnoException | null
 });
 // $ExpectType void
-fs.writeFile(path, Buffer.from("i am foo"), { mode: 0o777 }, err => {
-    err; // $ExpectType ErrnoException | null
-});
-// $ExpectType void
-fs.writeFile(path, Buffer.from("i am foo"), { signal: new AbortController().signal }, err => {
-    err; // $ExpectType ErrnoException | null
-});
+fs.writeFile(
+    path,
+    Buffer.from("i am foo"),
+    { signal: new AbortController().signal },
+    (err) => {
+        err; // $ExpectType ErrnoException | null
+    },
+);
 
 fs.read(fd); // $ExpectType Promise<{ bytesRead: number; buffer: ArrayBufferView; }>
 fs.read(fd, { offset: 1 }); // $ExpectType Promise<{ bytesRead: number; buffer: ArrayBufferView; }>

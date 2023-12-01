@@ -2,7 +2,13 @@ import MarkdownIt = require(".");
 import Token = require("./token");
 
 declare namespace Renderer {
-    type RenderRule = (tokens: Token[], idx: number, options: MarkdownIt.Options, env: any, self: Renderer) => string;
+    type RenderRule = (
+        tokens: Token[],
+        idx: number,
+        options: MarkdownIt.Options,
+        env: any,
+        self: Renderer,
+    ) => string;
 
     interface RenderRuleRecord {
         [type: string]: RenderRule | undefined;
@@ -60,7 +66,11 @@ declare class Renderer {
      * @param idx token index to render
      * @param options params of parser instance
      */
-    renderToken(tokens: Token[], idx: number, options: MarkdownIt.Options): string;
+    renderToken(
+        tokens: Token[],
+        idx: number,
+        options: MarkdownIt.Options,
+    ): string;
 
     /**
      * The same as [[Renderer.render]], but for single token of `inline` type.
@@ -69,7 +79,11 @@ declare class Renderer {
      * @param options params of parser instance
      * @param env additional data from parsed input (references, for example)
      */
-    renderInline(tokens: Token[], options: MarkdownIt.Options, env: any): string;
+    renderInline(
+        tokens: Token[],
+        options: MarkdownIt.Options,
+        env: any,
+    ): string;
 
     /**
      * Special kludge for image `alt` attributes to conform CommonMark spec.
@@ -80,7 +94,11 @@ declare class Renderer {
      * @param options params of parser instance
      * @param env additional data from parsed input (references, for example)
      */
-    renderInlineAsText(tokens: Token[], options: MarkdownIt.Options, env: any): string;
+    renderInlineAsText(
+        tokens: Token[],
+        options: MarkdownIt.Options,
+        env: any,
+    ): string;
 
     /**
      * Takes token stream and generates HTML. Probably, you will never need to call

@@ -41,7 +41,12 @@ type XRSessionMode = "inline" | "immersive-vr" | "immersive-ar";
 /**
  * Reference space types
  */
-type XRReferenceSpaceType = "viewer" | "local" | "local-floor" | "bounded-floor" | "unbounded";
+type XRReferenceSpaceType =
+    | "viewer"
+    | "local"
+    | "local-floor"
+    | "bounded-floor"
+    | "unbounded";
 
 type XREnvironmentBlendMode = "opaque" | "additive" | "alpha-blend";
 
@@ -65,7 +70,10 @@ type XRTargetRayMode = "gaze" | "tracked-pointer" | "screen";
  */
 type XREye = "none" | "left" | "right";
 
-type XRFrameRequestCallback = (time: DOMHighResTimeStamp, frame: XRFrame) => void;
+type XRFrameRequestCallback = (
+    time: DOMHighResTimeStamp,
+    frame: XRFrame,
+) => void;
 
 interface XRSystemDeviceChangeEvent extends Event {
     type: "devicechange";
@@ -93,7 +101,10 @@ interface XRSystem extends EventTarget {
      * @param mode
      * @param options
      */
-    requestSession(mode: XRSessionMode, options?: XRSessionInit): Promise<XRSession>;
+    requestSession(
+        mode: XRSessionMode,
+        options?: XRSessionInit,
+    ): Promise<XRSession>;
 
     /**
      * Queries if a given mode may be supported by the user agent and device capabilities.
@@ -211,7 +222,10 @@ interface XRReferenceSpace extends XRSpace {
 
     addEventListener<K extends keyof XRReferenceSpaceEventMap>(
         type: K,
-        listener: (this: XRReferenceSpace, ev: XRReferenceSpaceEventMap[K]) => any,
+        listener: (
+            this: XRReferenceSpace,
+            ev: XRReferenceSpaceEventMap[K],
+        ) => any,
         options?: boolean | AddEventListenerOptions,
     ): void;
     addEventListener(
@@ -221,7 +235,10 @@ interface XRReferenceSpace extends XRSpace {
     ): void;
     removeEventListener<K extends keyof XRReferenceSpaceEventMap>(
         type: K,
-        listener: (this: XRReferenceSpace, ev: XRReferenceSpaceEventMap[K]) => any,
+        listener: (
+            this: XRReferenceSpace,
+            ev: XRReferenceSpaceEventMap[K],
+        ) => any,
         options?: boolean | EventListenerOptions,
     ): void;
     removeEventListener(
@@ -243,7 +260,8 @@ interface XRBoundedReferenceSpace extends XRReferenceSpace {
     readonly boundsGeometry: DOMPointReadOnly[];
 }
 
-declare abstract class XRBoundedReferenceSpace implements XRBoundedReferenceSpace {}
+declare abstract class XRBoundedReferenceSpace
+    implements XRBoundedReferenceSpace {}
 
 /**
  * Represents an XR input source, which is any input mechanism which allows the user to perform
@@ -281,7 +299,14 @@ interface XRInputSourceArray {
     keys(): IterableIterator<number>;
     values(): IterableIterator<XRInputSource>;
 
-    forEach(callbackfn: (value: XRInputSource, index: number, array: XRInputSource[]) => void, thisArg?: any): void;
+    forEach(
+        callbackfn: (
+            value: XRInputSource,
+            index: number,
+            array: XRInputSource[],
+        ) => void,
+        thisArg?: any,
+    ): void;
 }
 
 declare abstract class XRInputSourceArray implements XRInputSourceArray {}
@@ -336,7 +361,13 @@ declare abstract class XRFrame implements XRFrame {}
 /**
  * Type of XR events available
  */
-type XRInputSourceEventType = "select" | "selectend" | "selectstart" | "squeeze" | "squeezeend" | "squeezestart";
+type XRInputSourceEventType =
+    | "select"
+    | "selectend"
+    | "selectstart"
+    | "squeeze"
+    | "squeezeend"
+    | "squeezestart";
 
 interface XRInputSourceEventInit extends EventInit {
     frame?: XRFrame | undefined;
@@ -352,7 +383,10 @@ declare class XRInputSourceEvent extends Event {
     readonly frame: XRFrame;
     readonly inputSource: XRInputSource;
 
-    constructor(type: XRInputSourceEventType, eventInitDict?: XRInputSourceEventInit);
+    constructor(
+        type: XRInputSourceEventType,
+        eventInitDict?: XRInputSourceEventInit,
+    );
 }
 
 interface XRInputSourceEventHandler {
@@ -453,7 +487,9 @@ interface XRSession extends EventTarget {
      * XRBoundedReferenceSpace which was requested, or throws a NotSupportedError if
      * the requested space type isn't supported by the device.
      */
-    requestReferenceSpace(type: XRReferenceSpaceType): Promise<XRReferenceSpace | XRBoundedReferenceSpace>;
+    requestReferenceSpace(
+        type: XRReferenceSpaceType,
+    ): Promise<XRReferenceSpace | XRBoundedReferenceSpace>;
 
     updateRenderState(renderStateInit?: XRRenderStateInit): Promise<void>;
 
@@ -569,7 +605,10 @@ declare abstract class XRAnchor implements XRAnchor {}
 
 interface XRFrame {
     trackedAnchors?: XRAnchorSet | undefined;
-    createAnchor?: (pose: XRRigidTransform, space: XRSpace) => Promise<XRAnchor> | undefined;
+    createAnchor?: (
+        pose: XRRigidTransform,
+        space: XRSpace,
+    ) => Promise<XRAnchor> | undefined;
 }
 
 // AR Hit testing
@@ -578,7 +617,10 @@ declare class XRRay {
     readonly direction: DOMPointReadOnly;
     readonly matrix: Float32Array;
 
-    constructor(transformOrOrigin?: XRRigidTransform | DOMPointInit, direction?: DOMPointInit);
+    constructor(
+        transformOrOrigin?: XRRigidTransform | DOMPointInit,
+        direction?: DOMPointInit,
+    );
 }
 
 type XRHitTestTrackableType = "point" | "plane" | "mesh";
@@ -610,7 +652,8 @@ interface XRTransientInputHitTestSource {
     cancel(): void;
 }
 
-declare abstract class XRTransientInputHitTestSource implements XRTransientInputHitTestSource {}
+declare abstract class XRTransientInputHitTestSource
+    implements XRTransientInputHitTestSource {}
 
 interface XRHitTestOptionsInit {
     space: XRSpace;
@@ -625,18 +668,25 @@ interface XRTransientInputHitTestOptionsInit {
 }
 
 interface XRSession {
-    requestHitTestSource?: (options: XRHitTestOptionsInit) => Promise<XRHitTestSource> | undefined;
+    requestHitTestSource?: (
+        options: XRHitTestOptionsInit,
+    ) => Promise<XRHitTestSource> | undefined;
     requestHitTestSourceForTransientInput?: (
         options: XRTransientInputHitTestOptionsInit,
     ) => Promise<XRTransientInputHitTestSource> | undefined;
 
     // Legacy
-    requestHitTest?: (ray: XRRay, referenceSpace: XRReferenceSpace) => Promise<XRHitResult[]> | undefined;
+    requestHitTest?: (
+        ray: XRRay,
+        referenceSpace: XRReferenceSpace,
+    ) => Promise<XRHitResult[]> | undefined;
 }
 
 interface XRFrame {
     getHitTestResults(hitTestSource: XRHitTestSource): XRHitTestResult[];
-    getHitTestResultsForTransientInput(hitTestSource: XRTransientInputHitTestSource): XRTransientInputHitTestResult[];
+    getHitTestResultsForTransientInput(
+        hitTestSource: XRTransientInputHitTestSource,
+    ): XRTransientInputHitTestResult[];
 }
 
 // Legacy
@@ -682,8 +732,8 @@ interface XRSession {
 interface XRFrame {
     worldInformation?:
         | {
-            detectedPlanes?: XRPlaneSet | undefined;
-        }
+              detectedPlanes?: XRPlaneSet | undefined;
+          }
         | undefined;
 }
 
@@ -763,7 +813,10 @@ interface XRHand extends Map<number, XRJointSpace> {
 declare abstract class XRHand implements XRHand {}
 
 interface XRFrame {
-    getJointPose?: (joint: XRJointSpace, baseSpace: XRSpace) => XRJointPose | undefined;
+    getJointPose?: (
+        joint: XRJointSpace,
+        baseSpace: XRSpace,
+    ) => XRJointPose | undefined;
 }
 
 // WebXR Layers
@@ -871,7 +924,12 @@ declare abstract class XRCompositionLayer implements XRCompositionLayer {}
 
 type XRTextureType = "texture" | "texture-array";
 
-type XRLayerLayout = "default" | "mono" | "stereo" | "stereo-left-right" | "stereo-top-bottom";
+type XRLayerLayout =
+    | "default"
+    | "mono"
+    | "stereo"
+    | "stereo-left-right"
+    | "stereo-top-bottom";
 
 interface XRProjectionLayerInit {
     scaleFactor?: number | undefined;
@@ -1016,16 +1074,29 @@ declare class XRWebGLBinding {
     createEquirectLayer(init?: XREquirectLayerInit): XREquirectLayer;
     createCubeLayer(init?: XRCubeLayerInit): XRCubeLayer;
 
-    getSubImage(layer: XRCompositionLayer, frame: XRFrame, eye?: XREye): XRWebGLSubImage;
+    getSubImage(
+        layer: XRCompositionLayer,
+        frame: XRFrame,
+        eye?: XREye,
+    ): XRWebGLSubImage;
     getViewSubImage(layer: XRProjectionLayer, view: XRView): XRWebGLSubImage;
 }
 
 declare class XRMediaBinding {
     constructor(sesion: XRSession);
 
-    createQuadLayer(video: HTMLVideoElement, init?: XRMediaQuadLayerInit): XRQuadLayer;
-    createCylinderLayer(video: HTMLVideoElement, init?: XRMediaCylinderLayerInit): XRCylinderLayer;
-    createEquirectLayer(video: HTMLVideoElement, init?: XRMediaEquirectLayerInit): XREquirectLayer;
+    createQuadLayer(
+        video: HTMLVideoElement,
+        init?: XRMediaQuadLayerInit,
+    ): XRQuadLayer;
+    createCylinderLayer(
+        video: HTMLVideoElement,
+        init?: XRMediaCylinderLayerInit,
+    ): XRCylinderLayer;
+    createEquirectLayer(
+        video: HTMLVideoElement,
+        init?: XRMediaEquirectLayerInit,
+    ): XREquirectLayer;
 }
 
 // WebGL extensions
@@ -1095,7 +1166,9 @@ interface GlobalEventHandlers {
      * of the input source's targetRaySpace intersects the DOM overlay element
      * at the time the input device's primary action is triggered.
      */
-    onbeforexrselect: ((this: GlobalEventHandlers, ev: XRSessionEvent) => any) | null;
+    onbeforexrselect:
+        | ((this: GlobalEventHandlers, ev: XRSessionEvent) => any)
+        | null;
 }
 
 interface XRDOMOverlayInit {

@@ -24,7 +24,7 @@ enamdict.init(() => {
     entries.type(); // $ExpectType NameType
     enamdict.findKanji("曷川"); // $ExpectType Entries
     // $$ExpectType Entry[]
-    entries.entries().forEach(entry => {
+    entries.entries().forEach((entry) => {
         entry.kana; // $ExpectType string | string[]
         entry.kanji; // $ExpectType string | string[]
         entry.romaji; // $ExpectType string | string[]

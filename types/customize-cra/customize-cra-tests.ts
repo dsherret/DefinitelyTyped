@@ -30,9 +30,12 @@ module.exports = override(
     disableEsLint(),
     addBundleVisualizer(),
     addWebpackAlias({
-        ["ag-grid-react$"]: path.resolve(__dirname, "src/shared/agGridWrapper.js"),
+        ["ag-grid-react$"]: path.resolve(
+            __dirname,
+            "src/shared/agGridWrapper.js",
+        ),
     }),
-    adjustWorkbox(workbox => ({
+    adjustWorkbox((workbox) => ({
         ...workbox,
         skipWaiting: true,
         exclude: (workbox.exclude || []).concat("index.html"),
@@ -52,7 +55,10 @@ module.exports = {
 
 module.exports = override(
     disableEsLint(),
-    ...addExternalBabelPlugins("babel-plugin-transform-do-expressions", "@babel/plugin-proposal-object-rest-spread"),
+    ...addExternalBabelPlugins(
+        "babel-plugin-transform-do-expressions",
+        "@babel/plugin-proposal-object-rest-spread",
+    ),
     fixBabelImports("lodash", {
         libraryDirectory: "",
         camel2DashComponentName: false,
@@ -61,7 +67,11 @@ module.exports = override(
         libraryName: "react-feather",
         libraryDirectory: "dist/icons",
     }),
-    ...addBabelPlugins("polished", "emotion", "babel-plugin-transform-do-expressions"),
+    ...addBabelPlugins(
+        "polished",
+        "emotion",
+        "babel-plugin-transform-do-expressions",
+    ),
     ...addBabelPresets(
         [
             "@babel/env",

@@ -8,7 +8,10 @@ export interface MockResolverContext {
     readonly args: Record<string, unknown> | null | undefined;
 }
 
-export type MockResolver = (context: MockResolverContext, generateId: () => number) => unknown;
+export type MockResolver = (
+    context: MockResolverContext,
+    generateId: () => number,
+) => unknown;
 
 export interface MockResolvers {
     [typeName: string]: MockResolver;

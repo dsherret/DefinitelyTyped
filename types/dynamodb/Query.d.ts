@@ -42,14 +42,23 @@ export interface Query<T> extends QueryBase<T> {
     buildKey(): string;
 }
 
-export type IsStrictlyAny<T> = (T extends never ? true : false) extends false ? false : true;
+export type IsStrictlyAny<T> = (T extends never ? true : false) extends false
+    ? false
+    : true;
 
-export type PredicateFor<T, K extends keyof T, O extends QueryBase<T>> = IsStrictlyAny<T[K]> extends true
+export type PredicateFor<
+    T,
+    K extends keyof T,
+    O extends QueryBase<T>,
+> = IsStrictlyAny<T[K]> extends true
     ? AnyPredicate<T, T[K], O>
-    : T[K] extends any[] ? ArrayPredicate<T, T[K][number], O>
-    : T[K] extends string ? StringPredicate<T, O>
-    : T[K] extends (string | number) ? RangePredicate<T, T[K], O>
-    : AnyPredicate<T, T[K], O>;
+    : T[K] extends any[]
+      ? ArrayPredicate<T, T[K][number], O>
+      : T[K] extends string
+        ? StringPredicate<T, O>
+        : T[K] extends string | number
+          ? RangePredicate<T, T[K], O>
+          : AnyPredicate<T, T[K], O>;
 
 export interface Predicate<T, V, O extends QueryBase<T>> {
     equals: (value: V) => O;
@@ -59,7 +68,8 @@ export interface Predicate<T, V, O extends QueryBase<T>> {
     notNull(): O;
 }
 
-export interface RangePredicate<T, V, O extends QueryBase<T>> extends Predicate<T, V, O> {
+export interface RangePredicate<T, V, O extends QueryBase<T>>
+    extends Predicate<T, V, O> {
     eq: (value: V) => O;
     ne: (value: V) => O;
     lte: (value: V) => O;
@@ -69,16 +79,17 @@ export interface RangePredicate<T, V, O extends QueryBase<T>> extends Predicate<
     between: (...args: any[]) => O;
 }
 
-export interface ArrayPredicate<T, V, O extends QueryBase<T>> extends Predicate<T, V, O> {
+export interface ArrayPredicate<T, V, O extends QueryBase<T>>
+    extends Predicate<T, V, O> {
     contains(value: V): O;
     notContains(value: V): O;
 }
 
-export interface StringPredicate<T, O extends QueryBase<T>> extends RangePredicate<T, string, O> {
+export interface StringPredicate<T, O extends QueryBase<T>>
+    extends RangePredicate<T, string, O> {
     beginsWith: (...args: any[]) => O;
 }
 
-export type AnyPredicate<T, V, O extends QueryBase<T>> =
-    & StringPredicate<T, O>
-    & RangePredicate<T, V, O>
-    & ArrayPredicate<T, V, O>;
+export type AnyPredicate<T, V, O extends QueryBase<T>> = StringPredicate<T, O> &
+    RangePredicate<T, V, O> &
+    ArrayPredicate<T, V, O>;

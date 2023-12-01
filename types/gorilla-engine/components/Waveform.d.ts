@@ -34,7 +34,13 @@ declare namespace GorillaEngine.UI {
         canResize: boolean;
     }
 
-    interface WaveformProps extends Common, Bounds, Background, Font, Clickable, Margin {
+    interface WaveformProps
+        extends Common,
+            Bounds,
+            Background,
+            Font,
+            Clickable,
+            Margin {
         waveformColor: string;
         gradientCenterColor: string;
         gradientEndColor: string;

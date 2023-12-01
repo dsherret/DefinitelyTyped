@@ -1,6 +1,6 @@
 import jsonFixer = require("json-fixer");
 
-const brokenJson = "{ missingQuotesAroundKey: \"someValue\" }";
+const brokenJson = '{ missingQuotesAroundKey: "someValue" }';
 
 // No options
 const res = jsonFixer(brokenJson);

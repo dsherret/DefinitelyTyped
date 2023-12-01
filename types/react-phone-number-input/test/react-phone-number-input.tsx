@@ -8,8 +8,14 @@ import PhoneInput, {
 } from "react-phone-number-input";
 
 const phoneNumber: PhoneNumber | undefined = parsePhoneNumber("+12025550112");
-const phoneNumberWithOptions: PhoneNumber | undefined = parsePhoneNumber("2025550112", { defaultCountry: "US" });
-const phoneNumberWithCountryCode: PhoneNumber | undefined = parsePhoneNumber("2025550112", "US");
+const phoneNumberWithOptions: PhoneNumber | undefined = parsePhoneNumber(
+    "2025550112",
+    { defaultCountry: "US" },
+);
+const phoneNumberWithCountryCode: PhoneNumber | undefined = parsePhoneNumber(
+    "2025550112",
+    "US",
+);
 
 const test1 = (
     <PhoneInput
@@ -36,9 +42,10 @@ const test1 = (
     </PhoneInput>
 );
 
-const InputComponent = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>((props, ref) => (
-    <input ref={ref} {...props} />
-));
+const InputComponent = React.forwardRef<
+    HTMLInputElement,
+    React.InputHTMLAttributes<HTMLInputElement>
+>((props, ref) => <input ref={ref} {...props} />);
 
 const test2 = (
     <PhoneInput
@@ -55,11 +62,16 @@ const test2 = (
     />
 );
 
-const CountrySelect = ({ value, onChange, labels, ...rest }: CountrySelectComponentProps) => (
+const CountrySelect = ({
+    value,
+    onChange,
+    labels,
+    ...rest
+}: CountrySelectComponentProps) => (
     <select
         {...rest}
         value={value}
-        onChange={event => {
+        onChange={(event) => {
             if (onChange) {
                 onChange(event.target.value || undefined);
             }
@@ -67,7 +79,8 @@ const CountrySelect = ({ value, onChange, labels, ...rest }: CountrySelectCompon
     >
         {getCountries().map((country: string) => (
             <option key={country} value={country}>
-                {labels ? labels[country] : country} +{getCountryCallingCode(country)}
+                {labels ? labels[country] : country} +
+                {getCountryCallingCode(country)}
             </option>
         ))}
     </select>

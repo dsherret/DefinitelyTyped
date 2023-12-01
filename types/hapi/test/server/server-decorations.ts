@@ -3,9 +3,11 @@ import { Request, ResponseToolkit, Server } from "hapi";
 
 declare module "hapi" {
     interface HandlerDecorations {
-        test?: {
-            test: number;
-        } | undefined;
+        test?:
+            | {
+                  test: number;
+              }
+            | undefined;
     }
 }
 
@@ -16,7 +18,7 @@ const server = new Server({
 });
 
 server.start();
-server.decorate("toolkit", "success", function() {
+server.decorate("toolkit", "success", function () {
     return this.response({ status: "ok" });
 });
 server.decorate("handler", "test", (route, options) => (req, h) => 123);
@@ -51,7 +53,11 @@ function decorateServerWithParams(this: Server, x: number, y: string) {
 server.decorate("server", "withParams", decorateServerWithParams);
 server.withParams(1, "one");
 
-function decorateToolkitWithParams(this: ResponseToolkit, x: number, y: string) {
+function decorateToolkitWithParams(
+    this: ResponseToolkit,
+    x: number,
+    y: string,
+) {
     return `${x} ${y}`;
 }
 
@@ -81,7 +87,9 @@ function decorateRequestWithApply(request: Request) {
     };
 }
 
-server.decorate("request", "withApply", decorateRequestWithApply, { apply: true });
+server.decorate("request", "withApply", decorateRequestWithApply, {
+    apply: true,
+});
 
 server.route({
     method: "GET",
@@ -106,5 +114,7 @@ const decorateServerWithExtend = (existing: () => void) => {
     };
 };
 
-server.decorate("server", "withExtend", decorateServerWithExtend, { extend: true });
+server.decorate("server", "withExtend", decorateServerWithExtend, {
+    extend: true,
+});
 server.withExtend("one", 1);

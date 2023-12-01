@@ -2,7 +2,15 @@
 
 import * as stream from "stream";
 
-export type QRCodeErrorCorrectionLevel = "low" | "medium" | "quartile" | "high" | "L" | "M" | "Q" | "H";
+export type QRCodeErrorCorrectionLevel =
+    | "low"
+    | "medium"
+    | "quartile"
+    | "high"
+    | "L"
+    | "M"
+    | "Q"
+    | "H";
 export type QRCodeMaskPattern = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 export type QRCodeToSJISFunc = (codePoint: string) => number;
 
@@ -30,7 +38,9 @@ export interface QRCodeOptions {
 }
 
 export type QRCodeDataURLType = "image/png" | "image/jpeg" | "image/webp";
-export type QRCodeToDataURLOptions = QRCodeToDataURLOptionsJpegWebp | QRCodeToDataURLOptionsOther;
+export type QRCodeToDataURLOptions =
+    | QRCodeToDataURLOptionsJpegWebp
+    | QRCodeToDataURLOptionsOther;
 export interface QRCodeToDataURLOptionsJpegWebp extends QRCodeRenderersOptions {
     /**
      * Data URI format.
@@ -39,12 +49,12 @@ export interface QRCodeToDataURLOptionsJpegWebp extends QRCodeRenderersOptions {
     type: "image/jpeg" | "image/webp";
     rendererOpts?:
         | {
-            /**
-             * A number between `0` and `1` indicating image quality.
-             * @default 0.92
-             */
-            quality?: number | undefined;
-        }
+              /**
+               * A number between `0` and `1` indicating image quality.
+               * @default 0.92
+               */
+              quality?: number | undefined;
+          }
         | undefined;
 }
 export interface QRCodeToDataURLOptionsOther extends QRCodeRenderersOptions {
@@ -56,7 +66,9 @@ export interface QRCodeToDataURLOptionsOther extends QRCodeRenderersOptions {
 }
 
 export type QRCodeStringType = "utf8" | "svg" | "terminal";
-export type QRCodeToStringOptions = QRCodeToStringOptionsTerminal | QRCodeToStringOptionsOther;
+export type QRCodeToStringOptions =
+    | QRCodeToStringOptionsTerminal
+    | QRCodeToStringOptionsOther;
 export interface QRCodeToStringOptionsTerminal extends QRCodeRenderersOptions {
     /**
      * Output format.
@@ -78,7 +90,9 @@ export interface QRCodeToStringOptionsOther extends QRCodeRenderersOptions {
 }
 
 export type QRCodeFileType = "png" | "svg" | "utf8";
-export type QRCodeToFileOptions = QRCodeToFileOptionsPng | QRCodeToFileOptionsOther;
+export type QRCodeToFileOptions =
+    | QRCodeToFileOptionsPng
+    | QRCodeToFileOptionsOther;
 export interface QRCodeToFileOptionsPng extends QRCodeRenderersOptions {
     /**
      * Output format.
@@ -87,17 +101,17 @@ export interface QRCodeToFileOptionsPng extends QRCodeRenderersOptions {
     type?: "png" | undefined;
     rendererOpts?:
         | {
-            /**
-             * Compression level for deflate.
-             * @default 9
-             */
-            deflateLevel?: number | undefined;
-            /**
-             * Compression strategy for deflate.
-             * @default 3
-             */
-            deflateStrategy?: number | undefined;
-        }
+              /**
+               * Compression level for deflate.
+               * @default 9
+               */
+              deflateLevel?: number | undefined;
+              /**
+               * Compression strategy for deflate.
+               * @default 3
+               */
+              deflateStrategy?: number | undefined;
+          }
         | undefined;
 }
 export interface QRCodeToFileOptionsOther extends QRCodeRenderersOptions {
@@ -116,17 +130,17 @@ export interface QRCodeToFileStreamOptions extends QRCodeRenderersOptions {
     type?: QRCodeFileStreamType | undefined;
     rendererOpts?:
         | {
-            /**
-             * Compression level for deflate.
-             * @default 9
-             */
-            deflateLevel?: number | undefined;
-            /**
-             * Compression strategy for deflate.
-             * @default 3
-             */
-            deflateStrategy?: number | undefined;
-        }
+              /**
+               * Compression level for deflate.
+               * @default 9
+               */
+              deflateLevel?: number | undefined;
+              /**
+               * Compression strategy for deflate.
+               * @default 3
+               */
+              deflateStrategy?: number | undefined;
+          }
         | undefined;
 }
 
@@ -138,17 +152,17 @@ export interface QRCodeToBufferOptions extends QRCodeRenderersOptions {
     type?: QRCodeBufferType | undefined;
     rendererOpts?:
         | {
-            /**
-             * Compression level for deflate.
-             * @default 9
-             */
-            deflateLevel?: number | undefined;
-            /**
-             * Compression strategy for deflate.
-             * @default 3
-             */
-            deflateStrategy?: number | undefined;
-        }
+              /**
+               * Compression level for deflate.
+               * @default 9
+               */
+              deflateLevel?: number | undefined;
+              /**
+               * Compression strategy for deflate.
+               * @default 3
+               */
+              deflateStrategy?: number | undefined;
+          }
         | undefined;
 }
 
@@ -171,18 +185,18 @@ export interface QRCodeRenderersOptions extends QRCodeOptions {
     width?: number | undefined;
     color?:
         | {
-            /**
-             * Color of dark module. Value must be in hex format (RGBA).
-             * Note: dark color should always be darker than `color.light`.
-             * @default '#000000ff'
-             */
-            dark?: string | undefined;
-            /**
-             * Color of light module. Value must be in hex format (RGBA).
-             * @default '#ffffffff'
-             */
-            light?: string | undefined;
-        }
+              /**
+               * Color of dark module. Value must be in hex format (RGBA).
+               * Note: dark color should always be darker than `color.light`.
+               * @default '#000000ff'
+               */
+              dark?: string | undefined;
+              /**
+               * Color of light module. Value must be in hex format (RGBA).
+               * @default '#ffffffff'
+               */
+              light?: string | undefined;
+          }
         | undefined;
 }
 
@@ -193,9 +207,9 @@ export type QRCodeSegment =
     | QRCodeByteSegment
     | QRCodeKanjiSegment
     | {
-        mode?: never;
-        data: string | Buffer | Uint8ClampedArray | Uint8Array;
-    };
+          mode?: never;
+          data: string | Buffer | Uint8ClampedArray | Uint8Array;
+      };
 
 export interface QRCodeNumericSegment {
     mode: "numeric";
@@ -280,7 +294,11 @@ export interface Mode<TModeId extends ModeId = ModeId> {
     ccBits: readonly number[];
 }
 
-export type GeneratedQRCodeSegment = NumericData | AlphanumericData | ByteData | KanjiData;
+export type GeneratedQRCodeSegment =
+    | NumericData
+    | AlphanumericData
+    | ByteData
+    | KanjiData;
 
 export interface DataSegment {
     getLength(): number;
@@ -311,7 +329,10 @@ export interface KanjiData extends DataSegment {
  * Creates QR Code symbol and returns a qrcode object.
  * @param text Text to encode or a list of objects describing segments.
  */
-export function create(text: string | QRCodeSegment[], options?: QRCodeOptions): QRCode;
+export function create(
+    text: string | QRCodeSegment[],
+    options?: QRCodeOptions,
+): QRCode;
 
 /**
  * Draws qr code symbol to canvas.
@@ -343,19 +364,28 @@ export function toCanvas(
  */
 export function toCanvas(
     text: string | QRCodeSegment[],
-    callback: (error: Error | null | undefined, canvas: HTMLCanvasElement) => void,
+    callback: (
+        error: Error | null | undefined,
+        canvas: HTMLCanvasElement,
+    ) => void,
 ): void;
 /**
  * Draws qr code symbol to canvas.
  */
-export function toCanvas(text: string | QRCodeSegment[], options?: QRCodeRenderersOptions): Promise<HTMLCanvasElement>;
+export function toCanvas(
+    text: string | QRCodeSegment[],
+    options?: QRCodeRenderersOptions,
+): Promise<HTMLCanvasElement>;
 /**
  * Draws qr code symbol to canvas.
  */
 export function toCanvas(
     text: string | QRCodeSegment[],
     options: QRCodeRenderersOptions,
-    callback: (error: Error | null | undefined, canvas: HTMLCanvasElement) => void,
+    callback: (
+        error: Error | null | undefined,
+        canvas: HTMLCanvasElement,
+    ) => void,
 ): void;
 /**
  * Draws qr code symbol to node canvas.
@@ -368,7 +398,11 @@ export function toCanvas(
 /**
  * Draws qr code symbol to node canvas.
  */
-export function toCanvas(canvas: any, text: string | QRCodeSegment[], options?: QRCodeRenderersOptions): Promise<void>;
+export function toCanvas(
+    canvas: any,
+    text: string | QRCodeSegment[],
+    options?: QRCodeRenderersOptions,
+): Promise<void>;
 /**
  * Draws qr code symbol to node canvas.
  */
@@ -415,7 +449,10 @@ export function toDataURL(
 /**
  * Returns a Data URI containing a representation of the QR Code image.
  */
-export function toDataURL(text: string | QRCodeSegment[], options?: QRCodeToDataURLOptions): Promise<string>;
+export function toDataURL(
+    text: string | QRCodeSegment[],
+    options?: QRCodeToDataURLOptions,
+): Promise<string>;
 /**
  * Returns a Data URI containing a representation of the QR Code image.
  */
@@ -435,7 +472,10 @@ export function toString(
 /**
  * Returns a string representation of the QR Code.
  */
-export function toString(text: string | QRCodeSegment[], options?: QRCodeToStringOptions): Promise<string>;
+export function toString(
+    text: string | QRCodeSegment[],
+    options?: QRCodeToStringOptions,
+): Promise<string>;
 /**
  * Returns a string representation of the QR Code.
  */
@@ -458,7 +498,11 @@ export function toFile(
  * Saves QR Code to image file.
  * If `options.type` is not specified, the format will be guessed from file extension.
  */
-export function toFile(path: string, text: string | QRCodeSegment[], options?: QRCodeToFileOptions): Promise<void>;
+export function toFile(
+    path: string,
+    text: string | QRCodeSegment[],
+    options?: QRCodeToFileOptions,
+): Promise<void>;
 /**
  * Saves QR Code to image file.
  * If `options.type` is not specified, the format will be guessed from file extension.
@@ -506,7 +550,10 @@ export function toBuffer(
 /**
  * Returns a Buffer containing a representation of the QR Code image. Only works with png format.
  */
-export function toBuffer(text: string | QRCodeSegment[], options?: QRCodeToBufferOptions): Promise<Buffer>;
+export function toBuffer(
+    text: string | QRCodeSegment[],
+    options?: QRCodeToBufferOptions,
+): Promise<Buffer>;
 /**
  * Returns a Buffer containing a representation of the QR Code image. Only works with png format.
  */

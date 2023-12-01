@@ -1,6 +1,8 @@
 import { DefaultContext, DefaultState, Middleware, Next } from "koa";
 
-type MW<State, Context> = ((next: any) => Generator) | (Middleware<State, Context>);
+type MW<State, Context> =
+    | ((next: any) => Generator)
+    | Middleware<State, Context>;
 
 declare namespace KoaConvert {
     interface convert {

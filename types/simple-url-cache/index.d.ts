@@ -62,14 +62,23 @@ declare module "simple-url-cache" {
         }
 
         namespace RedisPool {
-            export function connect(config: RedisStorageConfig): redis.RedisClient;
+            export function connect(
+                config: RedisStorageConfig,
+            ): redis.RedisClient;
             export function isOnline(): boolean;
             export function kill(): void;
         }
     }
 
-    export class FileStorage extends privateN.CacheCategory implements privateN.CacheStorage {
-        constructor(_url: string, _storageConfig: FileStorageConfig, _regexRules: CacheRules);
+    export class FileStorage
+        extends privateN.CacheCategory
+        implements privateN.CacheStorage
+    {
+        constructor(
+            _url: string,
+            _storageConfig: FileStorageConfig,
+            _regexRules: CacheRules,
+        );
         isCached(): Promise<boolean>;
         removeUrl(): Promise<boolean>;
         getUrl(): Promise<string>;
@@ -78,8 +87,15 @@ declare module "simple-url-cache" {
         destroy(): void;
     }
 
-    export class RedisStorage extends privateN.CacheCategory implements privateN.CacheStorage {
-        constructor(_url: string, _storageConfig: RedisStorageConfig, _regexRules: CacheRules);
+    export class RedisStorage
+        extends privateN.CacheCategory
+        implements privateN.CacheStorage
+    {
+        constructor(
+            _url: string,
+            _storageConfig: RedisStorageConfig,
+            _regexRules: CacheRules,
+        );
         isCached(): Promise<boolean>;
         removeUrl(): Promise<boolean>;
         getUrl(): Promise<string>;

@@ -37,55 +37,63 @@ function twoAxes() {
         y2label: "Secondary y-axis",
     });
 
-    const g2 = new Dygraph(document.getElementById("demodiv_y2_primary")!, data, {
-        labels: ["Date", "Y1", "Y2", "Y3", "Y4"],
-        ylabel: "Primary y-axis",
-        y2label: "Secondary y-axis",
-        series: {
-            Y3: {
-                axis: "y2",
+    const g2 = new Dygraph(
+        document.getElementById("demodiv_y2_primary")!,
+        data,
+        {
+            labels: ["Date", "Y1", "Y2", "Y3", "Y4"],
+            ylabel: "Primary y-axis",
+            y2label: "Secondary y-axis",
+            series: {
+                Y3: {
+                    axis: "y2",
+                },
+                Y4: {
+                    axis: "y2",
+                },
             },
-            Y4: {
-                axis: "y2",
+            axes: {
+                y: {
+                    // set axis-related properties here
+                    drawGrid: false,
+                    independentTicks: false,
+                },
+                y2: {
+                    // set axis-related properties here
+                    labelsKMB: true,
+                    drawGrid: true,
+                    independentTicks: true,
+                },
             },
         },
-        axes: {
-            y: {
-                // set axis-related properties here
-                drawGrid: false,
-                independentTicks: false,
-            },
-            y2: {
-                // set axis-related properties here
-                labelsKMB: true,
-                drawGrid: true,
-                independentTicks: true,
-            },
-        },
-    });
+    );
 
-    const g3 = new Dygraph(document.getElementById("demodiv_two_grids")!, data, {
-        labels: ["Date", "Y1", "Y2", "Y3", "Y4"],
-        ylabel: "Primary y-axis",
-        y2label: "Secondary y-axis",
-        series: {
-            Y3: {
-                axis: "y2",
+    const g3 = new Dygraph(
+        document.getElementById("demodiv_two_grids")!,
+        data,
+        {
+            labels: ["Date", "Y1", "Y2", "Y3", "Y4"],
+            ylabel: "Primary y-axis",
+            y2label: "Secondary y-axis",
+            series: {
+                Y3: {
+                    axis: "y2",
+                },
+                Y4: {
+                    axis: "y2",
+                },
             },
-            Y4: {
-                axis: "y2",
+            axes: {
+                y2: {
+                    // set axis-related properties here
+                    labelsKMB: true,
+                    drawGrid: true,
+                    independentTicks: true,
+                    gridLinePattern: [2, 2],
+                },
             },
         },
-        axes: {
-            y2: {
-                // set axis-related properties here
-                labelsKMB: true,
-                drawGrid: true,
-                independentTicks: true,
-                gridLinePattern: [2, 2],
-            },
-        },
-    });
+    );
 
     const g4 = new Dygraph(document.getElementById("demodiv_one")!, data, {
         labels: ["Date", "Y1", "Y2", "Y3", "Y4"],
@@ -94,38 +102,42 @@ function twoAxes() {
         y2label: "Secondary y-axis",
     });
 
-    const g5 = new Dygraph(document.getElementById("demodiv_one_right")!, data, {
-        labels: ["Date", "Y1", "Y2", "Y3", "Y4"],
-        ylabel: "Primary y-axis",
-        y2label: "Secondary y-axis",
-        series: {
-            Y1: {
-                axis: "y2",
+    const g5 = new Dygraph(
+        document.getElementById("demodiv_one_right")!,
+        data,
+        {
+            labels: ["Date", "Y1", "Y2", "Y3", "Y4"],
+            ylabel: "Primary y-axis",
+            y2label: "Secondary y-axis",
+            series: {
+                Y1: {
+                    axis: "y2",
+                },
+                Y2: {
+                    axis: "y2",
+                },
+                Y3: {
+                    axis: "y2",
+                },
+                Y4: {
+                    axis: "y2",
+                },
             },
-            Y2: {
-                axis: "y2",
-            },
-            Y3: {
-                axis: "y2",
-            },
-            Y4: {
-                axis: "y2",
+            axes: {
+                y: {
+                    // set axis-related properties here
+                    drawGrid: false,
+                    independentTicks: false,
+                },
+                y2: {
+                    // set axis-related properties here
+                    labelsKMB: true,
+                    drawGrid: true,
+                    independentTicks: true,
+                },
             },
         },
-        axes: {
-            y: {
-                // set axis-related properties here
-                drawGrid: false,
-                independentTicks: false,
-            },
-            y2: {
-                // set axis-related properties here
-                labelsKMB: true,
-                drawGrid: true,
-                independentTicks: true,
-            },
-        },
-    });
+    );
 
     function update(el: HTMLInputElement) {
         g.updateOptions({ fillGraph: el.checked });
@@ -242,7 +254,12 @@ function highlightedRegion() {
     });
 }
 
-function makeGraph(className: string, numSeries: number, numRows: number, isStacked: boolean) {
+function makeGraph(
+    className: string,
+    numSeries: number,
+    numRows: number,
+    isStacked: boolean,
+) {
     const div = document.createElement("div");
     div.className = className;
     div.style.display = "inline-block";
@@ -291,7 +308,12 @@ function linearRegressionAddSeries() {
 function callbacks() {
     const s = document.getElementById("status")!;
     let g = new Dygraph(document.getElementById("demodiv")!, "data");
-    const pts_info = (e: MouseEvent, x: number, pts: readonly dygraphs.Point[], row?: number) => {
+    const pts_info = (
+        e: MouseEvent,
+        x: number,
+        pts: readonly dygraphs.Point[],
+        row?: number,
+    ) => {
         let str = `(${x}) `;
         for (let i = 0; i < pts.length; i++) {
             const p = pts[i];
@@ -317,7 +339,7 @@ function callbacks() {
             s.innerHTML += `<b>Highlight</b> ${pts_info(e, x, pts, row)}<br/>`;
         },
 
-        unhighlightCallback: e => {
+        unhighlightCallback: (e) => {
             s.innerHTML += "<b>Unhighlight</b><br/>";
         },
 
@@ -333,7 +355,7 @@ function callbacks() {
             s.innerHTML += `<b>Zoom</b> [${minX}, ${maxX}, [${yRanges}]]<br/>`;
         },
 
-        drawCallback: g => {
+        drawCallback: (g) => {
             s.innerHTML += `<b>Draw</b> [${g.xAxisRange()}]<br/>`;
         },
     });
@@ -344,7 +366,9 @@ function valueAxisFormatters() {
         const yyyy = d.getFullYear();
         const mm = d.getMonth() + 1;
         const dd = d.getDate();
-        return `${yyyy}-${(mm < 10 ? "0" : "") + mm + (dd < 10 ? "0" : "") + dd}`;
+        return `${yyyy}-${
+            (mm < 10 ? "0" : "") + mm + (dd < 10 ? "0" : "") + dd
+        }`;
     }
 
     const g = new Dygraph(document.getElementById("demodiv")!, "data", {
@@ -357,29 +381,29 @@ function valueAxisFormatters() {
         },
         axes: {
             x: {
-                valueFormatter: ms => {
+                valueFormatter: (ms) => {
                     return `xvf(${formatDate(new Date(ms))})`;
                 },
-                axisLabelFormatter: d => {
+                axisLabelFormatter: (d) => {
                     return `xalf(${formatDate(d as Date)})`;
                 },
                 pixelsPerLabel: 100,
                 axisLabelWidth: 100,
             },
             y: {
-                valueFormatter: y => {
+                valueFormatter: (y) => {
                     return `yvf(${y.toPrecision(2)})`;
                 },
-                axisLabelFormatter: y => {
+                axisLabelFormatter: (y) => {
                     return `yalf(${(y as number).toPrecision(2)})`;
                 },
                 axisLabelWidth: 100,
             },
             y2: {
-                valueFormatter: y2 => {
+                valueFormatter: (y2) => {
                     return `y2vf(${y2.toPrecision(2)})`;
                 },
-                axisLabelFormatter: y2 => {
+                axisLabelFormatter: (y2) => {
                     return `y2alf(${(y2 as number).toPrecision(2)})`;
                 },
             },
@@ -429,7 +453,7 @@ function annotation() {
 
                 const anns = g.annotations();
                 let html = "";
-                anns.forEach(ann => {
+                anns.forEach((ann) => {
                     const name = nameAnnotation(ann);
                     html += `<span id='${name}'>`;
                     html += `${name}: ${ann.shortText || "(icon)"}`;
@@ -460,7 +484,8 @@ function annotation() {
         text: "Another one",
         cssClass: "annotation",
         clickHandler: () => {
-            document.getElementById("events")!.innerHTML += "special handler<br/>";
+            document.getElementById("events")!.innerHTML +=
+                "special handler<br/>";
         },
     });
     annotations.push({
@@ -494,7 +519,7 @@ function annotation() {
 
         const anns = g.annotations();
 
-        anns.map(ann => {
+        anns.map((ann) => {
             ann.attachAtBottom = to_bottom;
 
             return ann;
@@ -514,12 +539,14 @@ function annotation() {
             eventDiv.innerHTML += `dblclick: ${nameAnnotation(ann)} <br/>`;
         },
         annotationMouseOverHandler: (ann, point, dg, event) => {
-            document.getElementById(nameAnnotation(ann))!.style.fontWeight = "bold";
+            document.getElementById(nameAnnotation(ann))!.style.fontWeight =
+                "bold";
             saveBg = ann.div!.style.backgroundColor;
             ann.div!.style.backgroundColor = "#ddd";
         },
         annotationMouseOutHandler: (ann, point, dg, event) => {
-            document.getElementById(nameAnnotation(ann))!.style.fontWeight = "normal";
+            document.getElementById(nameAnnotation(ann))!.style.fontWeight =
+                "normal";
             ann.div!.style.backgroundColor = saveBg;
         },
 

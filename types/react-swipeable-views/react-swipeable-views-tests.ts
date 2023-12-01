@@ -8,11 +8,17 @@ import SwipeableViews, {
     SpringConfig,
 } from "react-swipeable-views";
 
-const onChangeIndex: OnChangeIndexCallback = (indexNew: number, indexLatest: number) => {
+const onChangeIndex: OnChangeIndexCallback = (
+    indexNew: number,
+    indexLatest: number,
+) => {
     console.log(`New index: ${indexNew}, latest index ${indexLatest}`);
 };
 
-const onSwitching: OnSwitchingCallback = (index: number, type: OnSwitchingCallbackTypeDescriptor) => {
+const onSwitching: OnSwitchingCallback = (
+    index: number,
+    type: OnSwitchingCallbackTypeDescriptor,
+) => {
     console.log(`Switching to ${index} with transition type "${type}"`);
 };
 
@@ -30,7 +36,7 @@ const springConfig: SpringConfig = {
     delay: "0.5s",
 };
 
-const action: ActionCallback = actions => {
+const action: ActionCallback = (actions) => {
     console.log("Receiving actions: ", Object.keys(actions).join(", "));
 };
 

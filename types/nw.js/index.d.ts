@@ -175,7 +175,10 @@ declare global {
              * @param should_include_screens {boolean} Whether should include screens
              * @param should_include_windows {boolean} Whether should include windows
              */
-            start(should_include_screens: boolean, should_include_windows: boolean): void;
+            start(
+                should_include_screens: boolean,
+                should_include_windows: boolean,
+            ): void;
 
             /**
              * The DesktopCaptureMonitor will stop monitoring the system.
@@ -204,7 +207,13 @@ declare global {
              */
             on(
                 event: "added",
-                listener: (id?: string, name?: string, order?: number, type?: string, primary?: boolean) => any,
+                listener: (
+                    id?: string,
+                    name?: string,
+                    order?: number,
+                    type?: string,
+                    primary?: boolean,
+                ) => any,
             ): this;
 
             /**
@@ -225,7 +234,14 @@ declare global {
              * - (optional) new_order {number} Is the new z-order.
              * - (optional) old_order {number} Is the old z-order.
              */
-            on(event: "orderchanged", listener: (id?: string, new_order?: number, old_order?: number) => any): this;
+            on(
+                event: "orderchanged",
+                listener: (
+                    id?: string,
+                    new_order?: number,
+                    old_order?: number,
+                ) => any,
+            ): this;
 
             /**
              * Emit when the name of the source has changed. This can happen when a window changes title.
@@ -235,7 +251,10 @@ declare global {
              * - (optional) id {string} Is the media id of the screen or window that has a name changed.
              * - (optional) name {string} Is the new name of the screen or window.
              */
-            on(event: "namechanged", listener: (id?: string, name?: string) => any): this;
+            on(
+                event: "namechanged",
+                listener: (id?: string, name?: string) => any,
+            ): this;
 
             /**
              * Emit when the thumbnail of a source changed.
@@ -245,7 +264,10 @@ declare global {
              * - (optional) id {string} Is the media id of the screen or window that has an updated thumbnail.
              * - (optional) name {string} Is the base64 encoded png of the thumbnail.
              */
-            on(event: "thumbnailchanged", listener: (id?: string, thumbnail?: string) => any): this;
+            on(
+                event: "thumbnailchanged",
+                listener: (id?: string, thumbnail?: string) => any,
+            ): this;
         }
 
         /**
@@ -367,7 +389,10 @@ declare global {
              * @param callback {function(cookie?)} The callback when cookie retrieved.
              * - (Optional) cookie {Cookie} Contains details about the cookie. This parameter is null if no such cookie was found.
              */
-            get(details: CookiesGetDetails, callback: (cookie?: Cookie) => void): void;
+            get(
+                details: CookiesGetDetails,
+                callback: (cookie?: Cookie) => void,
+            ): void;
 
             /**
              * Retrieves all cookies from a single cookie store that match the given information.
@@ -376,7 +401,10 @@ declare global {
              * @param callback {function(cookies?)} The callback when cookies retrieved.
              * - (Optional) cookies {Cookie[]} All the existing, unexpired cookies that match the given cookie info.
              */
-            getAll(details: CookiesGetAllDetails, callback: (cookies?: Cookie[]) => void): void;
+            getAll(
+                details: CookiesGetAllDetails,
+                callback: (cookies?: Cookie[]) => void,
+            ): void;
 
             /**
              * Sets a cookie with the given cookie data; may overwrite equivalent cookies if they exist.
@@ -385,7 +413,10 @@ declare global {
              * @param callback {function(cookie?)} The callback when cookie has been set.
              * - (Optional) cookie {Cookie} Contains details about the cookie that's been set. If setting failed for any reason, this will be "null", and "chrome.runtime.lastError" will be set.
              */
-            set(details: CookiesSetDetails, callback: (cookie?: Cookie) => void): void;
+            set(
+                details: CookiesSetDetails,
+                callback: (cookie?: Cookie) => void,
+            ): void;
 
             /**
              * Deletes a cookie by name.
@@ -394,7 +425,10 @@ declare global {
              * @param callback {function(cookie?)} The callback when cookie has been set.
              * - (Optional) details {Objet} Contains details about the cookie that's been removed. If removal failed for any reason, this will be "null", and "chrome.runtime.lastError" will be set.
              */
-            remove(details: CookiesRemoveDetails, callback: (details?: CookiesRemovedDetails) => void): void;
+            remove(
+                details: CookiesRemoveDetails,
+                callback: (details?: CookiesRemovedDetails) => void,
+            ): void;
 
             /**
              * Fired when a cookie is set or removed.
@@ -406,7 +440,11 @@ declare global {
                  * @param callback {function(changeInfo?)} The callback when cookie has been changed.
                  * - (Optional) changeInfo {Objet} Contains details about the cookie that's been changed.
                  */
-                addListener(callback: (changeInfo: CookiesOnChangedCallbackChangeInfo) => void): void;
+                addListener(
+                    callback: (
+                        changeInfo: CookiesOnChangedCallbackChangeInfo,
+                    ) => void,
+                ): void;
             };
         }
 
@@ -642,7 +680,13 @@ declare global {
             /**
              * The underlying reason behind the cookie's change.
              */
-            cause: string | "evicted" | "expired" | "explicit" | "expired_overwrite" | "overwrite";
+            cause:
+                | string
+                | "evicted"
+                | "expired"
+                | "explicit"
+                | "expired_overwrite"
+                | "overwrite";
         }
 
         /**
@@ -1008,7 +1052,10 @@ declare global {
              * @param callback {function(dev_win?)} callback with the native window of the DevTools window.
              * - (optional) dev_win {window} Window object that you can use any properties and methods of Window except the events
              */
-            showDevTools(iframe?: string | HTMLIFrameElement, callback?: (dev_win?: Window) => void): void;
+            showDevTools(
+                iframe?: string | HTMLIFrameElement,
+                callback?: (dev_win?: Window) => void,
+            ): void;
 
             /**
              * Close the devtools window.
@@ -1105,7 +1152,10 @@ declare global {
              * - (optional) arg {base64string|Buffer} Captured page data.
              * @param config {string|CapturePageConfig} (Optional) Conig how captured page returned.
              */
-            capturePage(callback: (arg: string | Object) => void, config?: string | CapturePageConfig): void;
+            capturePage(
+                callback: (arg: string | Object) => void,
+                config?: string | CapturePageConfig,
+            ): void;
 
             /**
              * Show window progress bar.
@@ -1146,7 +1196,10 @@ declare global {
              * @param listener {function(byCommandQ?)} The callback that handles the `close` event.
              * - (optional) byCommandQ {string} Whether it’s being closed by ⌘+Q.
              */
-            on(event: "close", listener: (byCommandQ?: string | any) => any): this;
+            on(
+                event: "close",
+                listener: (byCommandQ?: string | any) => any,
+            ): this;
 
             /**
              * The closed event is emitted after corresponding window is closed.
@@ -1179,7 +1232,10 @@ declare global {
              * @param listener {function(byCommandQ?)} The callback that handles the `document-start` event.
              * - (optional) frame {HTMLIFrameElement|any} Is the iframe object, or null if the event is for the window..
              */
-            on(event: "document-start", listener: (frame: HTMLIFrameElement | any) => any): this;
+            on(
+                event: "document-start",
+                listener: (frame: HTMLIFrameElement | any) => any,
+            ): this;
 
             /**
              * Emitted when the document object in this window or a child iframe is unloaded, but before the onunload event is emitted.
@@ -1188,7 +1244,10 @@ declare global {
              * @param listener {function(byCommandQ?)} The callback that handles the `document-end` event.
              * - (optional) frame {HTMLIFrameElement|any} Is the iframe object, or null if the event is for the window..
              */
-            on(event: "document-end", listener: (frame: HTMLIFrameElement | any) => any): this;
+            on(
+                event: "document-end",
+                listener: (frame: HTMLIFrameElement | any) => any,
+            ): this;
 
             /**
              * Emitted when window gets focus.
@@ -1248,7 +1307,10 @@ declare global {
              * - (optional) width {Integer} The new width of the window.
              * - (optional) height {Integer} The new height of the window.
              */
-            on(event: "resize", listener: (width?: number, height?: number) => any): this;
+            on(
+                event: "resize",
+                listener: (width?: number, height?: number) => any,
+            ): this;
 
             /**
              * Emitted when window enters fullscreen state.
@@ -1286,7 +1348,11 @@ declare global {
              */
             on(
                 event: "new-win-policy",
-                listener: (frame?: HTMLIFrameElement | any, url?: string, policy?: WinPolicy) => any,
+                listener: (
+                    frame?: HTMLIFrameElement | any,
+                    url?: string,
+                    policy?: WinPolicy,
+                ) => any,
             ): this;
 
             /**
@@ -1300,7 +1366,11 @@ declare global {
              */
             on(
                 event: "navigation",
-                listener: (frame?: HTMLIFrameElement | any, url?: string, policy?: WinNavigationPolicy) => any,
+                listener: (
+                    frame?: HTMLIFrameElement | any,
+                    url?: string,
+                    policy?: WinNavigationPolicy,
+                ) => any,
             ): this;
         }
     }
@@ -1513,7 +1583,10 @@ declare global {
              * @param appname {string} The application name
              * @param options {Object} (Optional) Options to modify default `edit` and `window` MenuItems in Mac
              */
-            createMacBuiltin(appname: string, options?: NWJS_Helpers.CreateMacBuiltinOption): void;
+            createMacBuiltin(
+                appname: string,
+                options?: NWJS_Helpers.CreateMacBuiltinOption,
+            ): void;
         }
 
         /* MenuItem: http://docs.nwjs.io/en/latest/References/MenuItem/ */
@@ -1615,7 +1688,10 @@ declare global {
              * @param callback {Function} callback function with chosed streamId.
              * - (optional) streamId {string}  streamId will be false if failed to execute or existing session is alive.
              */
-            chooseDesktopMedia(sources: string[], callback: (streamId?: string | boolean) => void): void;
+            chooseDesktopMedia(
+                sources: string[],
+                callback: (streamId?: string | boolean) => void,
+            ): void;
 
             /**
              * Use this API to monitor the changes of screens and windows on desktop. This is an instance of EventEmitter.
@@ -1631,7 +1707,10 @@ declare global {
              * @param listener {Function(screen?)} The callback that handles the `displayBoundsChanged` event.
              * - (optional) screen {screen} screen object
              */
-            on(event: "displayBoundsChanged", listener: (screen: NWJS_Helpers.screen) => any): this;
+            on(
+                event: "displayBoundsChanged",
+                listener: (screen: NWJS_Helpers.screen) => any,
+            ): this;
 
             /**
              * Emitted when a new screen added.
@@ -1640,7 +1719,10 @@ declare global {
              * @param listener {Function(screen?)} The callback that handles the `displayAdded` event.
              * - (optional) screen {screen} screen object
              */
-            on(event: "displayAdded ", listener: (screen: NWJS_Helpers.screen) => any): this;
+            on(
+                event: "displayAdded ",
+                listener: (screen: NWJS_Helpers.screen) => any,
+            ): this;
 
             /**
              * Emitted when existing screen removed.
@@ -1649,7 +1731,10 @@ declare global {
              * @param listener {Function(screen?)} The callback that handles the `displayRemoved` event.
              * - (optional) screen {screen} screen object
              */
-            on(event: "displayRemoved ", listener: (screen: NWJS_Helpers.screen) => any): this;
+            on(
+                event: "displayRemoved ",
+                listener: (screen: NWJS_Helpers.screen) => any,
+            ): this;
         }
 
         /* Shell: http://docs.nwjs.io/en/latest/References/Shell/ */

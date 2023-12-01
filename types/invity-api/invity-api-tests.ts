@@ -53,7 +53,12 @@ const p2pQuote: P2pQuote = {
     paymentWindowMinutes: 0,
     paymentMethods: [],
     confirmations: 0,
-    trader: { name: "", numberOfTrades: 0, onlineStatus: "OFFLINE", rating: "" },
+    trader: {
+        name: "",
+        numberOfTrades: 0,
+        onlineStatus: "OFFLINE",
+        rating: "",
+    },
 };
 const p2pTrade: P2pTradeRequest = {
     quotesRequest: {
@@ -64,4 +69,6 @@ const p2pTrade: P2pTradeRequest = {
     selectedQuote: p2pQuote,
 };
 
-const stKYCInProgress: SavingsTradeKYCStatusSuccessfulResponse = { kycStatus: "InProgress" };
+const stKYCInProgress: SavingsTradeKYCStatusSuccessfulResponse = {
+    kycStatus: "InProgress",
+};

@@ -12,7 +12,9 @@ class App extends React.Component {
         const data: JSX.Element[] = [];
         for (let i = 0; i < numOfItems; i++) {
             data.push(
-                <div key={i} className="test-item">Item #{i}</div>,
+                <div key={i} className="test-item">
+                    Item #{i}
+                </div>,
             );
         }
 

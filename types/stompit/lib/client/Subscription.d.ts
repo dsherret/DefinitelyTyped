@@ -4,7 +4,12 @@ import { Ack, MessageCallback } from "../Client";
 import Client = require("../Client");
 
 declare class Subscription {
-    constructor(id: number, ack: Ack, onMessageCallback: MessageCallback, client: Client);
+    constructor(
+        id: number,
+        ack: Ack,
+        onMessageCallback: MessageCallback,
+        client: Client,
+    );
 
     getId(): number;
     processMessageFrame(error: Error | null, frame: Writable): void;

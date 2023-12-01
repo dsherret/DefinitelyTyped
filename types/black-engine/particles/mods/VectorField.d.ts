@@ -1,5 +1,11 @@
 export class VectorField extends Modifier {
-    constructor(x: number, y: number, width: number, height: number, resolution?: number);
+    constructor(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        resolution?: number,
+    );
     x: number;
     y: number;
     width: number;

@@ -20,7 +20,12 @@ new LicenseCheckerWebpackPlugin({
     filter: /.*/,
     outputWriter: ({ dependencies }) => {
         dependencies; // $ExpectType Dependency[]
-        return dependencies.map(d => `${d.name} - v${d.version} - ${d.author}\n${d.licenseName}`).join("\n");
+        return dependencies
+            .map(
+                (d) =>
+                    `${d.name} - v${d.version} - ${d.author}\n${d.licenseName}`,
+            )
+            .join("\n");
     },
 });
 

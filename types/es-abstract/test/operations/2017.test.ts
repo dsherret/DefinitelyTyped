@@ -21,22 +21,38 @@ expectType<typeof RemovedKeysActual>(RemovedKeys);
 
 declare const ExpectedKeys: ExpectedKeys;
 
-declare const AddedKeysActual: Exclude<keyof ES2017Operations, keyof ES2016Operations | keyof ES2017>;
+declare const AddedKeysActual: Exclude<
+    keyof ES2017Operations,
+    keyof ES2016Operations | keyof ES2017
+>;
 export declare const AddedKeys: AddedKeys;
 
-declare const AllAddedKeysActual: Exclude<keyof ES2017Operations, keyof ES2016Operations>;
+declare const AllAddedKeysActual: Exclude<
+    keyof ES2017Operations,
+    keyof ES2016Operations
+>;
 export declare const AllAddedKeys: AddedKeys;
 
-declare const RemovedKeysActual: Exclude<keyof ES2016Operations, keyof ES2017Operations>;
+declare const RemovedKeysActual: Exclude<
+    keyof ES2016Operations,
+    keyof ES2017Operations
+>;
 export declare const RemovedKeys: RemovedKeys;
 
 // ## Long types:
 // #region RemovedKeys
-export type RemovedKeys = "EnumerableOwnNames" | "IterableToArrayLike" | "NextJob";
+export type RemovedKeys =
+    | "EnumerableOwnNames"
+    | "IterableToArrayLike"
+    | "NextJob";
 // #endregion
 
 // #region AddedKeys
-export type AllAddedKeys = AddedKeys | "EnumerableOwnProperties" | "IterableToList" | "ToIndex";
+export type AllAddedKeys =
+    | AddedKeys
+    | "EnumerableOwnProperties"
+    | "IterableToList"
+    | "ToIndex";
 
 export type AddedKeys =
     | "AddWaiter"

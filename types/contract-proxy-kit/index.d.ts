@@ -11,9 +11,11 @@ declare namespace CPK {
     }
 
     interface CommonConfig {
-        networks?: {
-            [id: string]: NetworkConfigEntry;
-        } | undefined;
+        networks?:
+            | {
+                  [id: string]: NetworkConfigEntry;
+              }
+            | undefined;
     }
 
     interface Web3SpecificConfig extends CommonConfig {

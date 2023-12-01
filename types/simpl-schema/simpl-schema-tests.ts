@@ -1,5 +1,8 @@
 import { check } from "meteor/check";
-import SimpleSchema, { SchemaDefinition, SimpleSchemaDefinition } from "simpl-schema";
+import SimpleSchema, {
+    SchemaDefinition,
+    SimpleSchemaDefinition,
+} from "simpl-schema";
 
 const schema: SimpleSchemaDefinition = {
     basicString: {
@@ -59,8 +62,10 @@ const schema: SimpleSchemaDefinition = {
         custom() {
             const text = this.value;
 
-            if (text.length > 100) return { type: SimpleSchema.ErrorTypes.MAX_STRING, max: 100 };
-            else if (text.length < 10) return SimpleSchema.ErrorTypes.MIN_STRING;
+            if (text.length > 100)
+                return { type: SimpleSchema.ErrorTypes.MAX_STRING, max: 100 };
+            else if (text.length < 10)
+                return SimpleSchema.ErrorTypes.MIN_STRING;
         },
     },
 };
@@ -101,42 +106,48 @@ StringSchema.validator({
     removeNullsFromArrays: true,
 });
 
-StringSchema.clean({ title: "" }, {
-    removeEmptyStrings: true,
-    removeNullsFromArrays: true,
-    isUpsert: false,
-});
-
-const StringSchemaWithOptions = new SimpleSchema({
-    basicString: {
-        type: String,
-    },
-    limitedString: {
-        type: String,
-        allowedValues: ["pro", "con"],
-    },
-    subschema: {
-        type: StringSchema,
-    },
-    userId: {
-        type: String,
-        regEx: SimpleSchema.RegEx.Id,
-    },
-    createdAt: {
-        type: Date,
-        autoValue: () => new Date(),
-    },
-}, {
-    clean: {
-        filter: true,
-        autoConvert: true,
+StringSchema.clean(
+    { title: "" },
+    {
         removeEmptyStrings: true,
-        trimStrings: true,
-        getAutoValues: true,
         removeNullsFromArrays: true,
+        isUpsert: false,
     },
-    check,
-});
+);
+
+const StringSchemaWithOptions = new SimpleSchema(
+    {
+        basicString: {
+            type: String,
+        },
+        limitedString: {
+            type: String,
+            allowedValues: ["pro", "con"],
+        },
+        subschema: {
+            type: StringSchema,
+        },
+        userId: {
+            type: String,
+            regEx: SimpleSchema.RegEx.Id,
+        },
+        createdAt: {
+            type: Date,
+            autoValue: () => new Date(),
+        },
+    },
+    {
+        clean: {
+            filter: true,
+            autoConvert: true,
+            removeEmptyStrings: true,
+            trimStrings: true,
+            getAutoValues: true,
+            removeNullsFromArrays: true,
+        },
+        check,
+    },
+);
 
 new SimpleSchema({
     shortBoolean: Boolean,
@@ -149,7 +160,13 @@ new SimpleSchema({
     arrayOfNumber: [Number],
     arrayOfInteger: [SimpleSchema.Integer],
     arrayOfSchema: [StringSchema],
-    oneOfTest: SimpleSchema.oneOf(String, SimpleSchema.Integer, Number, Boolean, /regextest/),
+    oneOfTest: SimpleSchema.oneOf(
+        String,
+        SimpleSchema.Integer,
+        Number,
+        Boolean,
+        /regextest/,
+    ),
     subSchema: StringSchemaWithOptions,
 });
 

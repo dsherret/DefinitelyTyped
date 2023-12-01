@@ -38,5 +38,9 @@ export default class LL1Analyzer {
      *
      * @return The set of tokens that can follow `s` in the ATN in the specified `ctx`.
      */
-    LOOK(s: ATNState, stopState: ATNState | BlockEndState, ctx: RuleContext): IntervalSet;
+    LOOK(
+        s: ATNState,
+        stopState: ATNState | BlockEndState,
+        ctx: RuleContext,
+    ): IntervalSet;
 }

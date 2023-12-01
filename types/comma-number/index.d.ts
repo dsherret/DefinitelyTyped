@@ -5,7 +5,10 @@ declare function commaNumber(
 ): string;
 
 declare namespace commaNumber {
-    function bindWith(separator: string, decimalChar: string): (num: number | string) => string;
+    function bindWith(
+        separator: string,
+        decimalChar: string,
+    ): (num: number | string) => string;
 }
 
 export = commaNumber;

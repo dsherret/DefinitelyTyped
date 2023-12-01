@@ -10,8 +10,7 @@ import { TablesorterConfiguration } from "./TablesorterConfiguration";
  * Represents the configuration-store of the `tablesorter`.
  */
 export interface TablesorterConfigurationStore<TElement = HTMLElement>
-    extends Required<TablesorterConfiguration<TElement>>
-{
+    extends Required<TablesorterConfiguration<TElement>> {
     /**
      * A jQuery-object containing all headers of the table.
      */

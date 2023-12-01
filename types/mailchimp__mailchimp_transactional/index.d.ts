@@ -41,20 +41,26 @@ declare namespace Mailchimp {
          * Adds an email to your email rejection allowlist. If the address is currently on your denylist,
          * that denylist entry will be removed automatically.
          */
-        add(body: AllowlistsAddRequest): Promise<AllowListsAddResponse | AxiosError>;
+        add(
+            body: AllowlistsAddRequest,
+        ): Promise<AllowListsAddResponse | AxiosError>;
         /**
          * List allowlisted emails
          *
          * Retrieves your email rejection allowlist. You can provide an email address or search prefix
          * to limit the results. Returns up to 1000 results.
          */
-        list(body?: AllowlistsListRequest): Promise<AllowlistsListResponse[] | AxiosError>;
+        list(
+            body?: AllowlistsListRequest,
+        ): Promise<AllowlistsListResponse[] | AxiosError>;
         /**
          * Remove email from allowlist
          *
          * Removes an email address from the allowlist.
          */
-        delete(body: AllowlistsDeleteRequest): Promise<AllowlistsDeleteResponse | AxiosError>;
+        delete(
+            body: AllowlistsDeleteRequest,
+        ): Promise<AllowlistsDeleteResponse | AxiosError>;
     }
     interface AllowlistsAddRequest extends BaseRequest {
         /** an email address to add to the allowlist */
@@ -114,7 +120,9 @@ declare namespace Mailchimp {
          * containing a single file named rejects.csv that includes the following fields:
          * email, reason, detail, created_at, expires_at, last_event_at, expires_at.
          */
-        rejects(body?: ExportsStartJobRequest): Promise<ExportResponse | AxiosError>;
+        rejects(
+            body?: ExportsStartJobRequest,
+        ): Promise<ExportResponse | AxiosError>;
         /**
          * Export Allowlist
          *
@@ -122,7 +130,9 @@ declare namespace Mailchimp {
          * containing a single file named allowlist.csv that includes the following fields:
          * email, detail, created_at.
          */
-        whitelist(body?: ExportsStartJobRequest): Promise<ExportResponse | AxiosError>;
+        whitelist(
+            body?: ExportsStartJobRequest,
+        ): Promise<ExportResponse | AxiosError>;
         /**
          * Export Allowlist
          *
@@ -130,7 +140,9 @@ declare namespace Mailchimp {
          * containing a single file named allowlist.csv that includes the following fields:
          * email, detail, created_at.
          */
-        allowlist(body?: ExportsStartJobRequest): Promise<ExportResponse | AxiosError>;
+        allowlist(
+            body?: ExportsStartJobRequest,
+        ): Promise<ExportResponse | AxiosError>;
         /**
          * Export activity history
          *
@@ -140,7 +152,9 @@ declare namespace Mailchimp {
          * Sender, Subject, Status, Tags, Opens, Clicks, Bounce Detail. If you have configured any
          * custom metadata fields, they will be included in the exported data.
          */
-        activity(body?: ExportsActivityRequest): Promise<ExportResponse | AxiosError>;
+        activity(
+            body?: ExportsActivityRequest,
+        ): Promise<ExportResponse | AxiosError>;
     }
     interface ExportResponse {
         /** the unique identifier for this Export. Use this identifier when checking the export job's status */
@@ -183,8 +197,19 @@ declare namespace Mailchimp {
     }
 
     type ExportsJobType = "activity" | "reject" | "allowlist";
-    type ExportsJobState = "waiting" | "working" | "complete" | "error" | "expired";
-    type ExportsMessageState = "sent" | "rejected" | "bounced" | "soft-bounced" | "spam" | "unsub";
+    type ExportsJobState =
+        | "waiting"
+        | "working"
+        | "complete"
+        | "error"
+        | "expired";
+    type ExportsMessageState =
+        | "sent"
+        | "rejected"
+        | "bounced"
+        | "soft-bounced"
+        | "spam"
+        | "unsub";
 
     interface InboundApi {
         /**
@@ -192,58 +217,76 @@ declare namespace Mailchimp {
          *
          * Add an inbound domain to your account.
          */
-        addDomain(body: InboundDomainRequest): Promise<InboundDomainResponse | AxiosError>;
+        addDomain(
+            body: InboundDomainRequest,
+        ): Promise<InboundDomainResponse | AxiosError>;
         /**
          * Add mailbox route
          *
          * Add a new mailbox route to an inbound domain.
          */
-        addRoute(body: InboundAddRouteRequest): Promise<InboundRouteResponse | AxiosError>;
+        addRoute(
+            body: InboundAddRouteRequest,
+        ): Promise<InboundRouteResponse | AxiosError>;
         /**
          * Check domain settings
          *
          * Check the MX settings for an inbound domain. The domain must have already been added with the
          * add-domain call.
          */
-        checkDomain(body: InboundDomainRequest): Promise<InboundDomainResponse | AxiosError>;
+        checkDomain(
+            body: InboundDomainRequest,
+        ): Promise<InboundDomainResponse | AxiosError>;
         /**
          * Delete inbound domain
          *
          * Delete an inbound domain from the account. All mail will stop routing for this domain immediately.
          */
-        deleteDomain(body: InboundDomainRequest): Promise<InboundDomainResponse | AxiosError>;
+        deleteDomain(
+            body: InboundDomainRequest,
+        ): Promise<InboundDomainResponse | AxiosError>;
         /**
          * Delete mailbox route
          *
          * Delete an existing inbound mailbox route.
          */
-        deleteRoute(body: InboundDeleteRouteRequest): Promise<InboundRouteResponse | AxiosError>;
+        deleteRoute(
+            body: InboundDeleteRouteRequest,
+        ): Promise<InboundRouteResponse | AxiosError>;
         /**
          * List inbound domains
          *
          * List the domains that have been configured for inbound delivery.
          */
-        domains(body?: InboundDomainsRequest): Promise<InboundDomainResponse[] | AxiosError>;
+        domains(
+            body?: InboundDomainsRequest,
+        ): Promise<InboundDomainResponse[] | AxiosError>;
         /**
          * List mailbox routes
          *
          * List the mailbox routes defined for an inbound domain.
          */
-        routes(body: InboundRoutesRequest): Promise<InboundRouteResponse[] | AxiosError>;
+        routes(
+            body: InboundRoutesRequest,
+        ): Promise<InboundRouteResponse[] | AxiosError>;
         /**
          * Send mime document
          *
          * Take a raw MIME document destined for a domain with inbound domains set up, and send it to the
          * inbound hook exactly as if it had been sent over SMTP.
          */
-        sendRaw(body: InboundSendRawRequest): Promise<InboundSendRawResponse[] | AxiosError>;
+        sendRaw(
+            body: InboundSendRawRequest,
+        ): Promise<InboundSendRawResponse[] | AxiosError>;
         /**
          * Update mailbox route
          *
          * Update the pattern or webhook of an existing inbound mailbox route. If null is provided for any
          * fields, the values will remain unchanged.
          */
-        updateRoute(body: InboundUpdateRouteRequest): Promise<InboundRouteResponse | AxiosError>;
+        updateRoute(
+            body: InboundUpdateRouteRequest,
+        ): Promise<InboundRouteResponse | AxiosError>;
     }
 
     interface InboundDomainRequest extends BaseRequest {
@@ -326,19 +369,25 @@ declare namespace Mailchimp {
          *
          * Cancels the warmup process for a dedicated IP.
          */
-        cancelWarmup(body: IpsCancelWarmupRequest): Promise<IpsInfoResponse | AxiosError>;
+        cancelWarmup(
+            body: IpsCancelWarmupRequest,
+        ): Promise<IpsInfoResponse | AxiosError>;
         /**
          * Test custom dns
          *
          * Tests whether a domain name is valid for use as the custom reverse DNS for a dedicated IP.
          */
-        checkCustomDns(body: IpsCheckCustomDnsRequest): Promise<IpsCheckCustomDnsResponse | AxiosError>;
+        checkCustomDns(
+            body: IpsCheckCustomDnsRequest,
+        ): Promise<IpsCheckCustomDnsResponse | AxiosError>;
         /**
          * Add ip pool
          *
          * Creates a pool and returns it. If a pool already exists with this name, no action will be performed.
          */
-        createPool(body: IpsCreatePoolRequest): Promise<IpsPoolInfoResponse | AxiosError>;
+        createPool(
+            body: IpsCreatePoolRequest,
+        ): Promise<IpsPoolInfoResponse | AxiosError>;
         /**
          * Delete ip address
          *
@@ -350,7 +399,9 @@ declare namespace Mailchimp {
          *
          * Deletes a pool. A pool must be empty before you can delete it, and you cannot delete your default pool.
          */
-        deletePool(body: IpsDeletePoolRequest): Promise<IpsDeletePoolResponse | AxiosError>;
+        deletePool(
+            body: IpsDeletePoolRequest,
+        ): Promise<IpsDeletePoolResponse | AxiosError>;
         /**
          * Get ip info
          *
@@ -368,26 +419,34 @@ declare namespace Mailchimp {
          *
          * Lists your dedicated IP pools.
          */
-        listPools(body?: IpsListPoolsRequest): Promise<IpsPoolInfoResponse[] | AxiosError>;
+        listPools(
+            body?: IpsListPoolsRequest,
+        ): Promise<IpsPoolInfoResponse[] | AxiosError>;
         /**
          * Get ip pool info
          *
          * Describes a single dedicated IP pool.
          */
-        poolInfo(body: IpsPoolInfoRequest): Promise<IpsPoolInfoResponse | AxiosError>;
+        poolInfo(
+            body: IpsPoolInfoRequest,
+        ): Promise<IpsPoolInfoResponse | AxiosError>;
         /**
          * Request additional ip
          *
          * Requests an additional dedicated IP for your account. Accounts may have one outstanding
          * request at any time, and provisioning requests are processed within 24 hours.
          */
-        provision(body?: IpsProvisionRequest): Promise<IpsProvisionResponse | AxiosError>;
+        provision(
+            body?: IpsProvisionRequest,
+        ): Promise<IpsProvisionResponse | AxiosError>;
         /**
          * Set custom dns
          *
          * Configures the custom DNS name for a dedicated IP.
          */
-        setCustomDns(body: IpsSetCustomDnsRequest): Promise<IpsInfoResponse | AxiosError>;
+        setCustomDns(
+            body: IpsSetCustomDnsRequest,
+        ): Promise<IpsInfoResponse | AxiosError>;
         /**
          * Move ip to different pool
          *
@@ -402,7 +461,9 @@ declare namespace Mailchimp {
          * the warming-up IP, over a period of roughly 30 days. The rest of your mail will be sent
          * over shared IPs or other dedicated IPs in the same pool.
          */
-        startWarmup(body: IpsStartWarmupRequest): Promise<IpsInfoResponse | AxiosError>;
+        startWarmup(
+            body: IpsStartWarmupRequest,
+        ): Promise<IpsInfoResponse | AxiosError>;
     }
     interface IpsCancelWarmupRequest extends BaseRequest {
         /** a dedicated ip address */
@@ -414,7 +475,9 @@ declare namespace Mailchimp {
         /** the domain name to test */
         domain: string;
     }
-    type IpsCheckCustomDnsResponse = IpsCheckCustomDnsValidResponse | IpsCheckCustomDnsInvalidResponse;
+    type IpsCheckCustomDnsResponse =
+        | IpsCheckCustomDnsValidResponse
+        | IpsCheckCustomDnsInvalidResponse;
     interface IpsCheckCustomDnsValidResponse {
         /** whether the domain name has a correctly-configured A record pointing to the ip address */
         valid: true;
@@ -536,38 +599,50 @@ declare namespace Mailchimp {
          *
          * Cancels a scheduled email.
          */
-        cancelScheduled(body: MessagesCancelScheduledRequest): Promise<MessagesScheduledMessageResponse[] | AxiosError>;
+        cancelScheduled(
+            body: MessagesCancelScheduledRequest,
+        ): Promise<MessagesScheduledMessageResponse[] | AxiosError>;
         /**
          * Get message content
          *
          * Get the full content of a recently sent message.
          */
-        content(body: MessagesMessageByIdRequest): Promise<MessagesContentResponse | AxiosError>;
+        content(
+            body: MessagesMessageByIdRequest,
+        ): Promise<MessagesContentResponse | AxiosError>;
         /**
          * Get message info
          *
          * Get the information for a single recently sent message.
          */
-        info(body: MessagesMessageByIdRequest): Promise<MessagesInfoResponse | AxiosError>;
+        info(
+            body: MessagesMessageByIdRequest,
+        ): Promise<MessagesInfoResponse | AxiosError>;
         /**
          * List scheduled emails
          *
          * Queries your scheduled emails.
          */
-        listScheduled(body?: MessagesListScheduledRequest): Promise<MessagesScheduledMessageResponse[] | AxiosError>;
+        listScheduled(
+            body?: MessagesListScheduledRequest,
+        ): Promise<MessagesScheduledMessageResponse[] | AxiosError>;
         /**
          * Parse mime document
          *
          * Parse the full MIME document for an email message, returning the content of the message
          * broken into its constituent pieces.
          */
-        parse(body: MessagesParseRequest): Promise<MessagesParseResponse | AxiosError>;
+        parse(
+            body: MessagesParseRequest,
+        ): Promise<MessagesParseResponse | AxiosError>;
         /**
          * Reschedule email
          *
          * Reschedules a scheduled email.
          */
-        reschedule(body: MessagesRescheduleRequest): Promise<MessagesScheduledMessageResponse[] | AxiosError>;
+        reschedule(
+            body: MessagesRescheduleRequest,
+        ): Promise<MessagesScheduledMessageResponse[] | AxiosError>;
         /**
          * Search messages by date
          *
@@ -577,19 +652,25 @@ declare namespace Mailchimp {
          * to get the information for a single message, or webhooks to push activity to your own application
          * for querying.
          */
-        search(body?: MessagesSearchRequest): Promise<MessagesSearchResponse[] | AxiosError>;
+        search(
+            body?: MessagesSearchRequest,
+        ): Promise<MessagesSearchResponse[] | AxiosError>;
         /**
          * Search messages by hour
          *
          * Search the content of recently sent messages and return the aggregated hourly stats for matching messages.
          */
-        searchTimeSeries(body?: MessagesSearchTimeSeriesRequest): Promise<SearchTimeSeriesResponse[] | AxiosError>;
+        searchTimeSeries(
+            body?: MessagesSearchTimeSeriesRequest,
+        ): Promise<SearchTimeSeriesResponse[] | AxiosError>;
         /**
          * Send new message
          *
          * Send a new transactional message through the Transactional API.
          */
-        send(body: MessagesSendRequest): Promise<MessagesSendResponse[] | AxiosError>;
+        send(
+            body: MessagesSendRequest,
+        ): Promise<MessagesSendResponse[] | AxiosError>;
         /**
          * Send mime document
          *
@@ -602,7 +683,9 @@ declare namespace Mailchimp {
          *
          * Send a new transactional message through the Transactional API using a template.
          */
-        sendTemplate(body: MessagesSendTemplateRequest): Promise<MessagesSendResponse[] | AxiosError>;
+        sendTemplate(
+            body: MessagesSendTemplateRequest,
+        ): Promise<MessagesSendResponse[] | AxiosError>;
     }
 
     interface MessagesCancelScheduledRequest extends BaseRequest {
@@ -890,7 +973,9 @@ declare namespace Mailchimp {
      * An array of objects for each recipient containing the key "email" with the email address,
      * and details of the message status for that recipient
      */
-    type MessagesSendResponse = MessagesSendSuccessResponse | MessagesSendRejectResponse;
+    type MessagesSendResponse =
+        | MessagesSendSuccessResponse
+        | MessagesSendRejectResponse;
     interface MessagesSendResponseBase {
         /** The email address of the recipient */
         email: string;
@@ -911,7 +996,12 @@ declare namespace Mailchimp {
         /** The reason for the rejection if the recipient status is "rejected". */
         reject_reason: RejectReason;
     }
-    type SendingStatus = "sent" | "queued" | "scheduled" | "rejected" | "invalid";
+    type SendingStatus =
+        | "sent"
+        | "queued"
+        | "scheduled"
+        | "rejected"
+        | "invalid";
     type RejectReason =
         | "hard-bounce"
         | "soft-bounce"
@@ -1085,21 +1175,27 @@ declare namespace Mailchimp {
          * Delete an existing custom metadata field. Deletion isn't instataneous, and /metadata/list
          * will continue to return the field until the asynchronous deletion process is complete.
          */
-        delete(body: MetadataDeleteRequest): Promise<MetadataResponse | AxiosError>;
+        delete(
+            body: MetadataDeleteRequest,
+        ): Promise<MetadataResponse | AxiosError>;
 
         /**
          * List metadata fields
          *
          * Get the list of custom metadata fields indexed for the account.
          */
-        list(body?: MetadataListRequest): Promise<MetadataResponse[] | AxiosError>;
+        list(
+            body?: MetadataListRequest,
+        ): Promise<MetadataResponse[] | AxiosError>;
 
         /**
          * Update metadata field
          *
          * Update an existing custom metadata field.
          */
-        update(body: MetadataUpdateRequest): Promise<MetadataResponse | AxiosError>;
+        update(
+            body: MetadataUpdateRequest,
+        ): Promise<MetadataResponse | AxiosError>;
     }
 
     interface MetadataAddRequest extends BaseRequest {
@@ -1144,7 +1240,9 @@ declare namespace Mailchimp {
          * Deletes an email rejection. There is no limit to how many rejections you can remove from your
          * denylist, but keep in mind that each deletion has an affect on your reputation.
          */
-        delete(body: RejectsDeleteRequest): Promise<RejectsDeleteResponse | AxiosError>;
+        delete(
+            body: RejectsDeleteRequest,
+        ): Promise<RejectsDeleteResponse | AxiosError>;
         /**
          * List denylisted emails
          *
@@ -1152,7 +1250,9 @@ declare namespace Mailchimp {
          * Returns up to 1000 results. By default, entries that have expired are excluded from the results;
          * set include_expired to true to include them.
          */
-        list(body?: RejectsListRequest): Promise<RejectsListResponse[] | AxiosError>;
+        list(
+            body?: RejectsListRequest,
+        ): Promise<RejectsListResponse[] | AxiosError>;
     }
     interface RejectsAddRequest extends BaseRequest {
         /** an email address to block */
@@ -1213,7 +1313,12 @@ declare namespace Mailchimp {
         /** the subaccount that this denylist entry applies to, or null if none. */
         subaccount?: string | null;
     }
-    type RejectsRejectReason = "hard-bounce" | "soft-bounce" | "spam" | "unsub" | "custom";
+    type RejectsRejectReason =
+        | "hard-bounce"
+        | "soft-bounce"
+        | "spam"
+        | "unsub"
+        | "custom";
 
     interface RejectsRejectedSender {
         /** the sender's email address */
@@ -1252,38 +1357,50 @@ declare namespace Mailchimp {
          * Adds a sender domain to your account. Sender domains are added automatically as you send,
          * but you can use this call to add them ahead of time.
          */
-        addDomain(body: SendersDomainRequest): Promise<SendersDomainResponse | AxiosError>;
+        addDomain(
+            body: SendersDomainRequest,
+        ): Promise<SendersDomainResponse | AxiosError>;
         /**
          * Check domain settings
          *
          * Checks the SPF and DKIM settings for a domain, as well the domain verification. If you
          * haven't already added this domain to your account, it will be added automatically.
          */
-        checkDomain(body: SendersDomainRequest): Promise<SendersDomainResponse | AxiosError>;
+        checkDomain(
+            body: SendersDomainRequest,
+        ): Promise<SendersDomainResponse | AxiosError>;
         /**
          * List sender domains
          *
          * Returns the sender domains that have been added to this account.
          */
-        domains(body?: SendersDomainsRequest): Promise<SendersDomainResponse[] | AxiosError>;
+        domains(
+            body?: SendersDomainsRequest,
+        ): Promise<SendersDomainResponse[] | AxiosError>;
         /**
          * Get sender info
          *
          * Return more detailed information about a single sender, including aggregates of recent stats.
          */
-        info(body: SendersInfoRequest): Promise<SendersInfoResponse | AxiosError>;
+        info(
+            body: SendersInfoRequest,
+        ): Promise<SendersInfoResponse | AxiosError>;
         /**
          * List account senders
          *
          * Return the senders that have tried to use this account.
          */
-        list(body?: SendersListRequest): Promise<SendersListResponse[] | AxiosError>;
+        list(
+            body?: SendersListRequest,
+        ): Promise<SendersListResponse[] | AxiosError>;
         /**
          * View sender history
          *
          * Return the recent history (hourly stats for the last 30 days) for a sender.
          */
-        timeSeries(body: SendersInfoRequest): Promise<TimeSeriesResponse[] | AxiosError>;
+        timeSeries(
+            body: SendersInfoRequest,
+        ): Promise<TimeSeriesResponse[] | AxiosError>;
         /**
          * Verify domain
          *
@@ -1293,7 +1410,9 @@ declare namespace Mailchimp {
          * domain unless they also verify the domain. This prevents other Transactional API accounts
          * from sending mail signed by your domain.
          */
-        verifyDomain(body: SendersVerifyDomainRequest): Promise<SendersVerifyDomainResponse | AxiosError>;
+        verifyDomain(
+            body: SendersVerifyDomainRequest,
+        ): Promise<SendersVerifyDomainResponse | AxiosError>;
     }
     interface SendersDomainRequest extends BaseRequest {
         /** a domain name */
@@ -1496,45 +1615,59 @@ declare namespace Mailchimp {
          *
          * Add a new subaccount.
          */
-        add(body: SubaccountsAddRequest): Promise<SubaccountResponse | AxiosError>;
+        add(
+            body: SubaccountsAddRequest,
+        ): Promise<SubaccountResponse | AxiosError>;
         /**
          * Delete subaccount
          *
          * Delete an existing subaccount. Any email related to the subaccount will be saved, but stats
          * will be removed and any future sending calls to this subaccount will fail.
          */
-        delete(body: SubaccountsDeleteRequest): Promise<SubaccountResponse | AxiosError>;
+        delete(
+            body: SubaccountsDeleteRequest,
+        ): Promise<SubaccountResponse | AxiosError>;
         /**
          * Get subaccount info
          *
          * Given the ID of an existing subaccount, return the data about it.
          */
-        info(body: SubaccountsInfoRequest): Promise<SubaccountsInfoResponse | AxiosError>;
+        info(
+            body: SubaccountsInfoRequest,
+        ): Promise<SubaccountsInfoResponse | AxiosError>;
         /**
          * List subaccounts
          *
          * Get the list of subaccounts defined for the account, optionally filtered by a prefix.
          */
-        list(body?: SubaccountsListRequest): Promise<SubaccountResponse[] | AxiosError>;
+        list(
+            body?: SubaccountsListRequest,
+        ): Promise<SubaccountResponse[] | AxiosError>;
         /**
          * Pause subaccount
          *
          * Pause a subaccount's sending. Any future emails delivered to this subaccount will be queued
          * for a maximum of 3 days until the subaccount is resumed.
          */
-        pause(body: SubaccountsPauseRequest): Promise<SubaccountResponse | AxiosError>;
+        pause(
+            body: SubaccountsPauseRequest,
+        ): Promise<SubaccountResponse | AxiosError>;
         /**
          * Resume subaccount
          *
          * Resume a paused subaccount's sending.
          */
-        resume(body: SubaccountsResumeRequest): Promise<SubaccountResponse | AxiosError>;
+        resume(
+            body: SubaccountsResumeRequest,
+        ): Promise<SubaccountResponse | AxiosError>;
         /**
          * Update subaccount
          *
          * Update an existing subaccount.
          */
-        update(body: SubaccountsUpdateRequest): Promise<SubaccountResponse | AxiosError>;
+        update(
+            body: SubaccountsUpdateRequest,
+        ): Promise<SubaccountResponse | AxiosError>;
     }
     interface SubaccountsAddRequest extends BaseRequest {
         /** a unique identifier for the subaccount to be used in sending calls */
@@ -1670,7 +1803,9 @@ declare namespace Mailchimp {
          *
          * Return the recent history (hourly stats for the last 30 days) for all tags.
          */
-        allTimeSeries(body?: TagsAllTimeSeriesRequest): Promise<SearchTimeSeriesResponse[] | AxiosError>;
+        allTimeSeries(
+            body?: TagsAllTimeSeriesRequest,
+        ): Promise<SearchTimeSeriesResponse[] | AxiosError>;
         /**
          * Delete tag
          *
@@ -1695,7 +1830,9 @@ declare namespace Mailchimp {
          *
          * Return the recent history (hourly stats for the last 30 days) for a tag.
          */
-        timeSeries(body: TagsTimeSeriesRequest): Promise<SearchTimeSeriesResponse[] | AxiosError>;
+        timeSeries(
+            body: TagsTimeSeriesRequest,
+        ): Promise<SearchTimeSeriesResponse[] | AxiosError>;
     }
     type TagsAllTimeSeriesRequest = BaseRequest;
     interface TagsDeleteRequest extends BaseRequest {
@@ -1790,45 +1927,59 @@ declare namespace Mailchimp {
          *
          * Delete a template.
          */
-        delete(body: TemplatesFindByNameRequest): Promise<TemplateResponse | AxiosError>;
+        delete(
+            body: TemplatesFindByNameRequest,
+        ): Promise<TemplateResponse | AxiosError>;
         /**
          * Get template info
          *
          * Get the information for an existing template.
          */
-        info(body: TemplatesFindByNameRequest): Promise<TemplateResponse | AxiosError>;
+        info(
+            body: TemplatesFindByNameRequest,
+        ): Promise<TemplateResponse | AxiosError>;
         /**
          * List templates
          *
          * Return a list of all the templates available to this user.
          */
-        list(body?: TemplatesListRequest): Promise<TemplateResponse[] | AxiosError>;
+        list(
+            body?: TemplatesListRequest,
+        ): Promise<TemplateResponse[] | AxiosError>;
         /**
          * Publish template content
          *
          * Publish the content for the template. Any new messages sent using this template will start
          * using the content that was previously in draft.
          */
-        publish(body: TemplatesFindByNameRequest): Promise<TemplateResponse | AxiosError>;
+        publish(
+            body: TemplatesFindByNameRequest,
+        ): Promise<TemplateResponse | AxiosError>;
         /**
          * Render html template
          *
          * Inject content and optionally merge fields into a template, returning the HTML that results.
          */
-        render(body: TemplatesRenderRequest): Promise<TemplatesRenderResponse | AxiosError>;
+        render(
+            body: TemplatesRenderRequest,
+        ): Promise<TemplatesRenderResponse | AxiosError>;
         /**
          * Get template history
          *
          * Return the recent history (hourly stats for the last 30 days) for a template.
          */
-        timeSeries(body: TemplatesFindByNameRequest): Promise<TimeSeriesResponse[] | AxiosError>;
+        timeSeries(
+            body: TemplatesFindByNameRequest,
+        ): Promise<TimeSeriesResponse[] | AxiosError>;
         /**
          * Update template
          *
          * Update the code for an existing template. If null is provided for any fields, the values will
          * remain unchanged.
          */
-        update(body: TemplatesUpdateRequest): Promise<TemplateResponse | AxiosError>;
+        update(
+            body: TemplatesUpdateRequest,
+        ): Promise<TemplateResponse | AxiosError>;
     }
 
     interface TemplatesAddRequest extends BaseRequest {
@@ -1946,14 +2097,18 @@ declare namespace Mailchimp {
          *
          * Add a tracking domain to your account.
          */
-        addTrackingDomain(body: UrlsFindByDomainRequest): Promise<UrlsTrackingDomainResponse | AxiosError>;
+        addTrackingDomain(
+            body: UrlsFindByDomainRequest,
+        ): Promise<UrlsTrackingDomainResponse | AxiosError>;
         /**
          * Check cname settings
          *
          * Checks the CNAME settings for a tracking domain. The domain must have been added already with
          * the add-tracking-domain call.
          */
-        checkTrackingDomain(body: UrlsFindByDomainRequest): Promise<UrlsTrackingDomainResponse | AxiosError>;
+        checkTrackingDomain(
+            body: UrlsFindByDomainRequest,
+        ): Promise<UrlsTrackingDomainResponse | AxiosError>;
         /**
          * List most clicked urls
          *
@@ -1965,19 +2120,25 @@ declare namespace Mailchimp {
          *
          * Return the 100 most clicked URLs that match the search query given.
          */
-        search(body: UrlsSearchRequest): Promise<UrlsStatsResponse[] | AxiosError>;
+        search(
+            body: UrlsSearchRequest,
+        ): Promise<UrlsStatsResponse[] | AxiosError>;
         /**
          * Get url history
          *
          * Return the recent history (hourly stats for the last 30 days) for a URL
          */
-        timeSeries(body: UrlsTimeSeriesRequest): Promise<UrlsTimeSeriesResponse[] | AxiosError>;
+        timeSeries(
+            body: UrlsTimeSeriesRequest,
+        ): Promise<UrlsTimeSeriesResponse[] | AxiosError>;
         /**
          * List tracking domains
          *
          * Get the list of tracking domains set up for this account.
          */
-        trackingDomains(body?: UrlsTrackingDomainsRequest): Promise<UrlsTrackingDomainResponse[] | AxiosError>;
+        trackingDomains(
+            body?: UrlsTrackingDomainsRequest,
+        ): Promise<UrlsTrackingDomainResponse[] | AxiosError>;
     }
     interface UrlsFindByDomainRequest extends BaseRequest {
         /** a domain name */
@@ -2057,13 +2218,17 @@ declare namespace Mailchimp {
          *
          * Validate an API key and respond to a ping (JSON parser version).
          */
-        ping2(body?: UsersPing2Request): Promise<UsersPing2Response | AxiosError>;
+        ping2(
+            body?: UsersPing2Request,
+        ): Promise<UsersPing2Response | AxiosError>;
         /**
          * List account senders
          *
          * Return the senders that have tried to use this account, both verified and unverified.
          */
-        senders(body?: UsersSendersRequest): Promise<UsersSenderResponse[] | AxiosError>;
+        senders(
+            body?: UsersSendersRequest,
+        ): Promise<UsersSenderResponse[] | AxiosError>;
     }
     type UsersInfoRequest = BaseRequest;
     interface UsersInfoResponse {
@@ -2176,25 +2341,33 @@ declare namespace Mailchimp {
          *
          * Delete an existing webhook.
          */
-        delete(body: WebhooksFindByIdRequest): Promise<WebhookResponse | AxiosError>;
+        delete(
+            body: WebhooksFindByIdRequest,
+        ): Promise<WebhookResponse | AxiosError>;
         /**
          * Get webhook info
          *
          * Given the ID of an existing webhook, return the data about it.
          */
-        info(body: WebhooksFindByIdRequest): Promise<WebhookResponse | AxiosError>;
+        info(
+            body: WebhooksFindByIdRequest,
+        ): Promise<WebhookResponse | AxiosError>;
         /**
          * List webhooks
          *
          * Get the list of all webhooks defined on the account.
          */
-        list(body?: WebhooksListRequest): Promise<WebhookResponse[] | AxiosError>;
+        list(
+            body?: WebhooksListRequest,
+        ): Promise<WebhookResponse[] | AxiosError>;
         /**
          * Update webhook
          *
          * Update an existing webhook.
          */
-        update(body: WebhooksUpdateRequest): Promise<WebhookResponse | AxiosError>;
+        update(
+            body: WebhooksUpdateRequest,
+        ): Promise<WebhookResponse | AxiosError>;
     }
     interface WebhooksAddRequest extends BaseRequest {
         /** the URL to POST batches of events */
@@ -2263,20 +2436,26 @@ declare namespace Mailchimp {
          * Adds an email to your email rejection allowlist. If the address is currently on your denylist,
          * that denylist entry will be removed automatically.
          */
-        add(body: WhitelistsAddRequest): Promise<WhitelistsAddResponse | AxiosError>;
+        add(
+            body: WhitelistsAddRequest,
+        ): Promise<WhitelistsAddResponse | AxiosError>;
         /**
          * Remove email from allowlist
          *
          * Removes an email address from the allowlist.
          */
-        delete(body: WhitelistsDeleteRequest): Promise<WhitelistsDeleteResponse | AxiosError>;
+        delete(
+            body: WhitelistsDeleteRequest,
+        ): Promise<WhitelistsDeleteResponse | AxiosError>;
         /**
          * List allowlisted emails
          *
          * Retrieves your email rejection allowlist. You can provide an email address or search prefix to
          * limit the results. Returns up to 1000 results.
          */
-        list(body?: WhitelistsListRequest): Promise<WhitelistsListResponse[] | AxiosError>;
+        list(
+            body?: WhitelistsListRequest,
+        ): Promise<WhitelistsListResponse[] | AxiosError>;
     }
     interface WhitelistsAddRequest extends BaseRequest {
         /** an email address to add to the allowlist */

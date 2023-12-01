@@ -40,10 +40,15 @@ createServer((req, res) => {
         error = err;
     });
 
-    formBody(req, res, { limit: 10, querystring: { parse: (queryString, cb) => {} } }, (err, bodyPayload) => {
-        unknown = bodyPayload;
-        error = err;
-    });
+    formBody(
+        req,
+        res,
+        { limit: 10, querystring: { parse: (queryString, cb) => {} } },
+        (err, bodyPayload) => {
+            unknown = bodyPayload;
+            error = err;
+        },
+    );
 
     res.end();
 });
@@ -80,10 +85,15 @@ createServer((req, res) => {
         error = err;
     });
 
-    anyBody(req, res, { limit: 10, querystring: { parse: (queryString, cb) => {} } }, (err, bodyPayload) => {
-        unknown = bodyPayload;
-        error = err;
-    });
+    anyBody(
+        req,
+        res,
+        { limit: 10, querystring: { parse: (queryString, cb) => {} } },
+        (err, bodyPayload) => {
+            unknown = bodyPayload;
+            error = err;
+        },
+    );
 
     res.end();
 });

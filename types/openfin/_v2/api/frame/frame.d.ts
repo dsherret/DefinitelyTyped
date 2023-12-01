@@ -2,7 +2,12 @@ import { Identity } from "../../identity";
 import Transport from "../../transport/transport";
 import { Base, EmitterBase } from "../base";
 import { FrameEvents } from "../events/frame";
-export declare type EntityType = "window" | "iframe" | "external connection" | "view" | "unknown";
+export declare type EntityType =
+    | "window"
+    | "iframe"
+    | "external connection"
+    | "view"
+    | "unknown";
 export interface FrameInfo {
     uuid: string;
     name: string;

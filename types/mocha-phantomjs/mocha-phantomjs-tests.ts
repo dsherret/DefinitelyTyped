@@ -21,7 +21,7 @@ function test_options() {
 
     mochaPhantomJS.output = "null";
     mochaPhantomJS.output = 6;
-    mochaPhantomJS.output = function() {};
+    mochaPhantomJS.output = function () {};
 }
 
 function test_run() {
@@ -29,14 +29,14 @@ function test_run() {
 }
 
 function test_customizeMocha_headers_option() {
-    mochaPhantomJS.customizeMocha({ headers: { "X-Test": "foo", "DNT": "1" } });
+    mochaPhantomJS.customizeMocha({ headers: { "X-Test": "foo", DNT: "1" } });
 }
 
 function test_customizeMocha_cookies_option() {
     mochaPhantomJS.customizeMocha({
         cookies: [
-            { "name": "foo1", "value": "bar1", "path": "baz1" },
-            { "name": "foo2", "value": "bar2", "path": "baz2" },
+            { name: "foo1", value: "bar1", path: "baz1" },
+            { name: "foo2", value: "bar2", path: "baz2" },
         ],
     });
 }
@@ -55,10 +55,10 @@ function test_customizeMocha_file_option() {
 
 function test_customizeMocha_all_options() {
     mochaPhantomJS.customizeMocha({
-        headers: { "X-Test": "foo", "DNT": "1" },
+        headers: { "X-Test": "foo", DNT: "1" },
         cookies: [
-            { "name": "foo1", "value": "bar1", "path": "baz1" },
-            { "name": "foo2", "value": "bar2", "path": "baz2" },
+            { name: "foo1", value: "bar1", path: "baz1" },
+            { name: "foo2", value: "bar2", path: "baz2" },
         ],
         viewportSize: 20,
         timeout: 2,

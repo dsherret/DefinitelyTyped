@@ -1,4 +1,14 @@
-import { atom, error, Key, KeySet, Path, pathInvalidation, PathSet, pathValue, ref } from "falcor-json-graph";
+import {
+    atom,
+    error,
+    Key,
+    KeySet,
+    Path,
+    pathInvalidation,
+    PathSet,
+    pathValue,
+    ref,
+} from "falcor-json-graph";
 
 const stringKey: Key = "productsById";
 const numberKey: Key = 10;
@@ -12,8 +22,16 @@ const KeySet04: KeySet = ["name", { from: 0, length: 10 }];
 const path0: Path = ["productsById", "1234", "name"];
 const path1: Path = [stringKey, numberKey, booleanKey];
 
-const pathSet01: PathSet = ["productsById", ["1234", "5678"], ["name", "price"]];
-const pathSet02: PathSet = ["products", [{ from: 0, length: 10 }, "length"], ["name", "price"]];
+const pathSet01: PathSet = [
+    "productsById",
+    ["1234", "5678"],
+    ["name", "price"],
+];
+const pathSet02: PathSet = [
+    "products",
+    [{ from: 0, length: 10 }, "length"],
+    ["name", "price"],
+];
 
 var ref01 = ref(["hoge"]);
 var ref02 = ref(["hoge"], { $expires: 1000 });

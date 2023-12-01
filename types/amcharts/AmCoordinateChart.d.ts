@@ -138,14 +138,12 @@ export default class AmCoordinateChart extends AmChart {
      */
     addListener(
         type: string,
-        handler: (
-            e: {
-                type: string;
-                graph: AmGraph;
-                item: GraphDataItem;
-                index: number;
-                chart: AmChart;
-            },
-        ) => void,
+        handler: (e: {
+            type: string;
+            graph: AmGraph;
+            item: GraphDataItem;
+            index: number;
+            chart: AmChart;
+        }) => void,
     ): void;
 }

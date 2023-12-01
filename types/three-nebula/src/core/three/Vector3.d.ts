@@ -74,17 +74,28 @@ export class Vector3 {
     setFromSpherical: (s: THREE.Spherical) => Vector3;
     setFromSphericalCoords: (r: number, phi: number, theta: number) => Vector3;
     setFromCylindrical: (c: THREE.Cylindrical) => Vector3;
-    setFromCylindricalCoords: (radius: number, theta: number, y: number) => Vector3;
+    setFromCylindricalCoords: (
+        radius: number,
+        theta: number,
+        y: number,
+    ) => Vector3;
     setFromMatrixPosition: (m: Matrix4) => Vector3;
     setFromMatrixScale: (m: Matrix4) => Vector3;
     setFromMatrixColumn: (m: Matrix4, index: number) => Vector3;
     equals: (v: Vector3) => boolean;
     fromArray: (xyz: number[], offset?: number) => Vector3;
     toArray: (array?: number[], offset?: number) => number[];
-    fromBufferAttribute: (attribute: THREE.BufferAttribute, index: number) => Vector3;
+    fromBufferAttribute: (
+        attribute: THREE.BufferAttribute,
+        index: number,
+    ) => Vector3;
     rotateX: (angle: number) => Vector3;
     rotateY: (angle: number) => Vector3;
     rotateZ: (angle: number) => Vector3;
-    fromAttribute: (attribute: THREE.BufferAttribute, index: number, offset?: number) => Vector3;
+    fromAttribute: (
+        attribute: THREE.BufferAttribute,
+        index: number,
+        offset?: number,
+    ) => Vector3;
     random: () => Vector3;
 }

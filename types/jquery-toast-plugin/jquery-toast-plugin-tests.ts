@@ -27,8 +27,14 @@ $.toast({ text: "test", position: "top-right" });
 $.toast({ text: "test", position: "top-left" });
 $.toast({ text: "test", position: "top-center" });
 $.toast({ text: "test", position: "mid-center" });
-$.toast({ text: "test", position: { left: "auto", right: 20, top: 20, bottom: "auto" } });
-$.toast({ text: "test", position: { left: 20, right: "auto", top: "auto", bottom: 20 } });
+$.toast({
+    text: "test",
+    position: { left: "auto", right: 20, top: 20, bottom: "auto" },
+});
+$.toast({
+    text: "test",
+    position: { left: 20, right: "auto", top: "auto", bottom: 20 },
+});
 
 $.toast({ text: "test", bgColor: "#9EC600" });
 

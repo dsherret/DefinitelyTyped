@@ -1,7 +1,11 @@
 /// <reference types="knockout" />
 
 interface KnockoutPostBox {
-    subscribe<T>(topic: string, handler: (value: T) => void, target?: any): KnockoutSubscription;
+    subscribe<T>(
+        topic: string,
+        handler: (value: T) => void,
+        target?: any,
+    ): KnockoutSubscription;
     publish<T>(topic: string, value?: T): void;
     defaultComparer<T>(newValue: T, oldValue: T): boolean;
     serializer: (object: any) => string;
@@ -33,20 +37,26 @@ interface KnockoutObservableArray<T> {
     subscribeTo(
         topic: string,
         useLastPublishedValueToInitialize?: boolean,
-        transform?: (val: any) => any, /* T */
+        transform?: (val: any) => any /* T */,
     ): KnockoutObservableArray<T>;
     unsubscribeFrom(topic: string): KnockoutObservableArray<T>;
     publishOn(
         topic: string,
         skipInitialPublish?: boolean,
-        equalityComparer?: (newValue: any, /* T */ oldValue: any /* T */) => boolean,
+        equalityComparer?: (
+            newValue: any,
+            /* T */ oldValue: any /* T */,
+        ) => boolean,
     ): KnockoutObservableArray<T>;
     stopPublishingOn(topic: string): KnockoutObservableArray<T>;
     syncWith(
         topic: string,
         initializeWithLatestValue?: boolean,
         skipInitialPublish?: boolean,
-        equalityComparer?: (newValue: any, /* T */ oldValue: any /* T */) => boolean,
+        equalityComparer?: (
+            newValue: any,
+            /* T */ oldValue: any /* T */,
+        ) => boolean,
     ): KnockoutObservableArray<T>;
 }
 

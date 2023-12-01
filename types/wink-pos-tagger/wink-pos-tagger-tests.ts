@@ -9,9 +9,23 @@ const myTokenizer = new Tokenizer();
 myTagger.defineConfig({ lemma: false });
 // -> { lemma: true, normal: true }
 
-myTagger.tag(myTokenizer.tokenize("I ate the entire pizza as I was feeling hungry."));
+myTagger.tag(
+    myTokenizer.tokenize("I ate the entire pizza as I was feeling hungry."),
+);
 
-const rawTokens = ["I", "ate", "the", "entire", "pizza", "as", "I", "was", "feeling", "hungry", "."];
+const rawTokens = [
+    "I",
+    "ate",
+    "the",
+    "entire",
+    "pizza",
+    "as",
+    "I",
+    "was",
+    "feeling",
+    "hungry",
+    ".",
+];
 // Tag the raw tokens.
 myTagger.tagRawTokens(rawTokens);
 

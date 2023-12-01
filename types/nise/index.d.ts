@@ -195,7 +195,11 @@ export interface FakeServer extends FakeServerOptions {
      * Responds to all method requests to the given URL with the given response.
      * method is an HTTP verb.
      */
-    respondWith(method: string, url: string, fn: (xhr: FakeXMLHttpRequest) => void): void;
+    respondWith(
+        method: string,
+        url: string,
+        fn: (xhr: FakeXMLHttpRequest) => void,
+    ): void;
     /**
      * URL may be a regular expression, e.g. /\\/post\\//\\d+
      * If the response is a Function, it will be passed any capture groups from the regular expression along with the XMLHttpRequest object:
@@ -222,7 +226,11 @@ export interface FakeServer extends FakeServerOptions {
     /**
      * Responds to all method requests to URLs matching the regular expression.
      */
-    respondWith(method: string, url: RegExp, fn: (xhr: FakeXMLHttpRequest) => void): void;
+    respondWith(
+        method: string,
+        url: RegExp,
+        fn: (xhr: FakeXMLHttpRequest) => void,
+    ): void;
     respondWith(...args: any[]): void;
 
     /**
@@ -241,7 +249,7 @@ export interface FakeServer extends FakeServerOptions {
 }
 
 export interface FakeXMLHttpRequestStatic {
-    new(): FakeXMLHttpRequest;
+    new (): FakeXMLHttpRequest;
     /**
      * Default false.
      * When set to true, Sinon will check added filters if certain requests should be “unfaked”
@@ -254,7 +262,13 @@ export interface FakeXMLHttpRequestStatic {
      * @param filter
      */
     addFilter(
-        filter: (method: string, url: string, async: boolean, username: string, password: string) => boolean,
+        filter: (
+            method: string,
+            url: string,
+            async: boolean,
+            username: string,
+            password: string,
+        ) => boolean,
     ): void;
     /**
      * By assigning a function to the onCreate property of the returned object from useFakeXMLHttpRequest()

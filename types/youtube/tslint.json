@@ -1,7 +1,7 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "no-const-enum": false,
-        "unified-signatures": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "no-const-enum": false,
+    "unified-signatures": false
+  }
 }

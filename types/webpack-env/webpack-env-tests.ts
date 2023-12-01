@@ -15,8 +15,10 @@ let contextModule = context<SomeModule>("./someModule");
 
 const contextId: string | number = require.context("./somePath").id;
 
-require(["./someModule", "./otherModule"], (someModule: SomeModule, otherModule: any) => {
-});
+require(["./someModule", "./otherModule"], (
+    someModule: SomeModule,
+    otherModule: any,
+) => {});
 
 async function testChunkLoad(): Promise<void> {
     const module = await __webpack_chunk_load__("./someModule");
@@ -28,17 +30,17 @@ if (module.hot) {
     module.hot.accept("./handler.js");
 
     // accept update of dependency
-    module.hot.accept("./handler.js", function() {
+    module.hot.accept("./handler.js", function () {
         // ...
     });
 
     // accept update of dependency with an error handler
     module.hot.accept(
         "./handler.js",
-        function() {
+        function () {
             // ...
         },
-        function(err: Error) {
+        function (err: Error) {
             // ...
         },
     );
@@ -52,7 +54,7 @@ if (module.hot) {
     module.hot.accept();
 
     // dispose handler
-    module.hot.dispose(function() {
+    module.hot.dispose(function () {
         // revoke the side effect
         // ...
     });
@@ -74,18 +76,22 @@ if (module.hot) {
         // ...
     });
 
-    let disposeHandler: (data: ModuleData) => void = data => {
+    let disposeHandler: (data: ModuleData) => void = (data) => {
         // ...
     };
     module.hot.addDisposeHandler(disposeHandler);
     module.hot.removeDisposeHandler(disposeHandler);
 
-    module.hot.check(true).then((outdatedModules: null | Array<string | number>) => {});
+    module.hot
+        .check(true)
+        .then((outdatedModules: null | Array<string | number>) => {});
 
-    module.hot.apply({ ignoreUnaccepted: true }).then((outdatedModules: Array<string | number>) => {});
+    module.hot
+        .apply({ ignoreUnaccepted: true })
+        .then((outdatedModules: Array<string | number>) => {});
 
     let status: string = module.hot.status();
-    let statusHandler: (status: string) => void = status => {
+    let statusHandler: (status: string) => void = (status) => {
         // ...
     };
     module.hot.status(statusHandler);
@@ -106,9 +112,13 @@ require.ensure(
     "chunkWithErrorHandling",
 );
 
-require.ensure([], (require) => {
-    require("some/module");
-}, "chunkWithoutErrorHandling");
+require.ensure(
+    [],
+    (require) => {
+        require("some/module");
+    },
+    "chunkWithoutErrorHandling",
+);
 
 // since `compilerOptions["module"] === "commonjs"` is required, add this to test `import.meta` fields.
 declare const importMeta: ImportMeta;
@@ -125,18 +135,22 @@ if (importMeta.webpack >= 5 && importMeta.webpackHot) {
         // ...
     });
 
-    let disposeHandler: (data: ModuleData) => void = data => {
+    let disposeHandler: (data: ModuleData) => void = (data) => {
         // ...
     };
     importMeta.webpackHot.addDisposeHandler(disposeHandler);
     importMeta.webpackHot.removeDisposeHandler(disposeHandler);
 
-    importMeta.webpackHot.check(true).then((outdatedModules: null | Array<string | number>) => {});
+    importMeta.webpackHot
+        .check(true)
+        .then((outdatedModules: null | Array<string | number>) => {});
 
-    importMeta.webpackHot.apply({ ignoreUnaccepted: true }).then((outdatedModules: Array<string | number>) => {});
+    importMeta.webpackHot
+        .apply({ ignoreUnaccepted: true })
+        .then((outdatedModules: Array<string | number>) => {});
 
     let status: string = importMeta.webpackHot.status();
-    let statusHandler: (status: string) => void = status => {
+    let statusHandler: (status: string) => void = (status) => {
         // ...
     };
     importMeta.webpackHot.status(statusHandler);
@@ -158,5 +172,6 @@ if (importMeta.webpack >= 5 && importMeta.webpackContext) {
     });
     let contextModule = context<SomeModule>("./someModule");
 
-    const contextId: string | number = importMeta.webpackContext("./somePath").id;
+    const contextId: string | number =
+        importMeta.webpackContext("./somePath").id;
 }

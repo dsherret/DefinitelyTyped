@@ -9,15 +9,17 @@ var stream = byline();
 
 var stream = byline(fs.createReadStream("sample.txt", { encoding: "utf8" }));
 
-var stream = byline.createStream(fs.createReadStream("sample.txt", { encoding: "utf8" }));
+var stream = byline.createStream(
+    fs.createReadStream("sample.txt", { encoding: "utf8" }),
+);
 
-stream.on("data", function(line: string) {
+stream.on("data", function (line: string) {
     console.log(line);
 });
 
 stream = byline.createStream(stream);
 
-stream.on("data", function(line: string) {
+stream.on("data", function (line: string) {
     console.log(line);
 });
 
@@ -30,7 +32,7 @@ input.pipe(lineStream);
 var output = fs.createWriteStream("test.txt");
 lineStream.pipe(output);
 
-stream.on("readable", function() {
+stream.on("readable", function () {
     var line: string;
     while (null !== (line = stream.read())) {
         console.log(line);

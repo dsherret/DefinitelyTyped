@@ -1,7 +1,9 @@
 const aceSplitTests = {
-    "test: use split": function() {
+    "test: use split": function () {
         const aceSplit = ace.require("ace/ext/spolit") as typeof AceAjax.Split;
-        const split = new aceSplit.Split(document.getElementById("container")) as AceAjax.Split;
+        const split = new aceSplit.Split(
+            document.getElementById("container"),
+        ) as AceAjax.Split;
         split.setOrientation(split.BESIDE);
         split.setSplits(2);
         split.setFontSize(16);

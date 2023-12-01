@@ -7,18 +7,20 @@ const options: FTP.FTPOptions = {
 
 const ftp = new FTP(options);
 
-ftp.ls().getFile(".", ".").exec((err, data) => {
-    if (err) {
-        throw err;
-    }
+ftp.ls()
+    .getFile(".", ".")
+    .exec((err, data) => {
+        if (err) {
+            throw err;
+        }
 
-    const error = data.error;
-    const rawData = data.data;
-    if (error) {
-        return error;
-    }
+        const error = data.error;
+        const rawData = data.data;
+        if (error) {
+            return error;
+        }
 
-    if (rawData) {
-        return rawData;
-    }
-});
+        if (rawData) {
+            return rawData;
+        }
+    });

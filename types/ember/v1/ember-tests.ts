@@ -12,7 +12,7 @@ App.country.get("presidentName");
 App.president = Em.Object.create({
     firstName: "Barack",
     lastName: "Obama",
-    fullName: function() {
+    fullName: function () {
         return this.get("firstName") + " " + this.get("lastName");
     }.property(),
 });
@@ -33,7 +33,7 @@ declare class MyPerson2 extends Em.Object {
 }
 var tom = Person1.create<MyPerson2>({
     name: "Tom Dale",
-    helloWorld: function() {
+    helloWorld: function () {
         this.say("Hi my name is " + this.get("name"));
     },
 });
@@ -60,7 +60,7 @@ person.set("firstName", "Brohuda");
 
 App.todosController = Em.Object.create({
     todos: [Em.Object.create({ isDone: false })],
-    remaining: function() {
+    remaining: function () {
         var todos = this.get("todos");
         return todos.filterProperty("isDone", false).get("length");
     }.property("todos.@each.isDone"),
@@ -127,14 +127,19 @@ App.userController = Em.Object.create({
     }),
 });
 
-Handlebars.registerHelper("highlight", function(property: string, options: any) {
-    var value = Em.Handlebars.get(this, property, options);
-    return new Handlebars.SafeString("<span class=\"highlight\">" + value + "</span>");
-});
+Handlebars.registerHelper(
+    "highlight",
+    function (property: string, options: any) {
+        var value = Em.Handlebars.get(this, property, options);
+        return new Handlebars.SafeString(
+            '<span class="highlight">' + value + "</span>",
+        );
+    },
+);
 
 App.MyText = Em.TextField.extend({
     formBlurredBinding: "App.adminController.formBlurred",
-    change: function() {
+    change: function () {
         this.set("formBlurred", true);
     },
 });
@@ -156,11 +161,15 @@ var coolView = App.CoolView.create(),
 childViews.pushObject(coolView);
 
 var Person2 = Em.Object.extend<typeof Em.Object>({
-    sayHello: function() {
+    sayHello: function () {
         console.log("Hello from " + this.get("name"));
     },
 });
-var people = [Person2.create({ name: "Juan" }), Person2.create({ name: "Charles" }), Person2.create({ name: "Majd" })];
+var people = [
+    Person2.create({ name: "Juan" }),
+    Person2.create({ name: "Charles" }),
+    Person2.create({ name: "Majd" }),
+];
 people.invoke("sayHello");
 
 var arr = [Em.Object.create(), Em.Object.create()];
@@ -171,7 +180,10 @@ var Person3 = Em.Object.extend<typeof Em.Object>({
     name: null,
     isHappy: false,
 });
-var people2 = [Person3.create({ name: "Yehuda", isHappy: true }), Person3.create({ name: "Majd", isHappy: false })];
+var people2 = [
+    Person3.create({ name: "Yehuda", isHappy: true }),
+    Person3.create({ name: "Majd", isHappy: false }),
+];
 people2.every((person: Em.Object) => {
     return !!person.get("isHappy");
 });
@@ -182,7 +194,10 @@ people2.everyProperty("isHappy", true);
 people2.someProperty("isHappy", true);
 
 // Examples taken from http://emberjs.com/api/classes/Ember.RSVP.Promise.html
-var promise = new Ember.RSVP.Promise(function(resolve: Function, reject: Function) {
+var promise = new Ember.RSVP.Promise(function (
+    resolve: Function,
+    reject: Function,
+) {
     // on success
     resolve("ok!");
 
@@ -191,10 +206,10 @@ var promise = new Ember.RSVP.Promise(function(resolve: Function, reject: Functio
 });
 
 promise.then(
-    function(value: any) {
+    function (value: any) {
         // on fulfillment
     },
-    function(reason: any) {
+    function (reason: any) {
         // on rejection
     },
 );

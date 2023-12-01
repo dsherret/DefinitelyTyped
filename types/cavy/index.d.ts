@@ -3,15 +3,26 @@ import * as React from "react";
 // Turn off automatic exporting by exporting {}.
 export {};
 
-type TestHookGeneratorWithRefCallback = (label: string, ref?: React.RefCallback<any>) => React.RefCallback<any>;
+type TestHookGeneratorWithRefCallback = (
+    label: string,
+    ref?: React.RefCallback<any>,
+) => React.RefCallback<any>;
 
-type TestHookGeneratorWithRefObject = (label: string, ref?: React.RefObject<any>) => React.RefObject<any>;
+type TestHookGeneratorWithRefObject = (
+    label: string,
+    ref?: React.RefObject<any>,
+) => React.RefObject<any>;
 
-export type TestHookGenerator = TestHookGeneratorWithRefCallback & TestHookGeneratorWithRefObject;
+export type TestHookGenerator = TestHookGeneratorWithRefCallback &
+    TestHookGeneratorWithRefObject;
 
-export type WithTestHook<P extends {}> = P & { generateTestHook: TestHookGenerator };
+export type WithTestHook<P extends {}> = P & {
+    generateTestHook: TestHookGenerator;
+};
 
-export function hook<P extends {}>(WrappedComponent: React.ComponentClass<WithTestHook<P>>): React.ComponentClass<P>;
+export function hook<P extends {}>(
+    WrappedComponent: React.ComponentClass<WithTestHook<P>>,
+): React.ComponentClass<P>;
 
 export function useCavy(): TestHookGenerator;
 

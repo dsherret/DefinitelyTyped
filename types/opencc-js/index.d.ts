@@ -9,7 +9,9 @@ export type ConvertText = (text: string) => string;
 
 export function Converter(options: ConverterOptions): ConvertText;
 
-export function CustomConverter(dictionary: ReadonlyArray<[string, string]>): ConvertText;
+export function CustomConverter(
+    dictionary: ReadonlyArray<[string, string]>,
+): ConvertText;
 
 export function HTMLConverter(
     converter: ConvertText,

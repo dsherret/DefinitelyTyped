@@ -14,6 +14,14 @@ export interface UnserializeOptions {
 
 export function isSerialized(givenItem: any, strict?: boolean): boolean;
 
-export function serialize(item: any, scope?: any, givenOptions?: SerializeOptions): string;
+export function serialize(
+    item: any,
+    scope?: any,
+    givenOptions?: SerializeOptions,
+): string;
 
-export function unserialize(item: string | Buffer, scope?: any, givenOptions?: UnserializeOptions): any;
+export function unserialize(
+    item: string | Buffer,
+    scope?: any,
+    givenOptions?: UnserializeOptions,
+): any;

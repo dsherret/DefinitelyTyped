@@ -24,8 +24,7 @@ app.destroy();
 
 new Moon({
     hooks: {
-        init: () => {
-        },
+        init: () => {},
         mounted: () => {
             // called when element is mounted and the first build has been run
         },
@@ -48,9 +47,18 @@ new Moon({
 const renderApp = new Moon({
     el: "#render",
     render(h) {
-        return h("div", { attrs: { id: "render" } }, { shouldRender: true, eventListeners: {} }, [
-            h("#text", { shouldRender: true, eventListeners: {} }, this.get("msg")),
-        ]);
+        return h(
+            "div",
+            { attrs: { id: "render" } },
+            { shouldRender: true, eventListeners: {} },
+            [
+                h(
+                    "#text",
+                    { shouldRender: true, eventListeners: {} },
+                    this.get("msg"),
+                ),
+            ],
+        );
     },
     data: () => ({
         msg: "Hello Moon!",
@@ -62,7 +70,11 @@ Moon.component("functional-component", {
     props: ["someprop"],
     render: (h, ctx) => {
         return h("h1", {}, { shouldRender: true, eventListeners: {} }, [
-            h("#text", { shouldRender: true, eventListeners: {} }, ctx.data.someprop),
+            h(
+                "#text",
+                { shouldRender: true, eventListeners: {} },
+                ctx.data.someprop,
+            ),
         ]);
     },
 });
@@ -101,7 +113,10 @@ Moon.config.keycodes({
 
 // 'data' needs to be a function when creating components.
 // @ts-expect-error
-Moon.component("broken1", { el: testHTMLElement, data: { foo: 100, bar: 200 } });
+Moon.component("broken1", {
+    el: testHTMLElement,
+    data: { foo: 100, bar: 200 },
+});
 
 // Misspelled prop
 Moon.component("broken2", {

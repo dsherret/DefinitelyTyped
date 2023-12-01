@@ -7,7 +7,9 @@ new Pikaday({ field: document.getElementById("datepicker") });
 new Pikaday({ field: $("#datepicker")[0] });
 
 (() => {
-    const field: HTMLInputElement = <HTMLInputElement> document.getElementById("datepicker");
+    const field: HTMLInputElement = <HTMLInputElement>(
+        document.getElementById("datepicker")
+    );
     const picker = new Pikaday({
         onSelect(date: Date) {
             field.value = picker.toString();
@@ -67,32 +69,36 @@ new Pikaday({ field: $("#datepicker")[0] });
             "November",
             "December",
         ],
-        weekdays: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        weekdays: [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+        ],
         weekdaysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
     };
     new Pikaday({ i18n });
 })();
 
 (() => {
-    new Pikaday(
-        {
-            field: document.getElementById("datepicker"),
-            firstDay: 1,
-            minDate: new Date("2000-01-01"),
-            maxDate: new Date("2020-12-31"),
-            yearRange: [2000, 2020],
-        },
-    );
+    new Pikaday({
+        field: document.getElementById("datepicker"),
+        firstDay: 1,
+        minDate: new Date("2000-01-01"),
+        maxDate: new Date("2020-12-31"),
+        yearRange: [2000, 2020],
+    });
 })();
 
 (() => {
-    new Pikaday(
-        {
-            field: document.getElementById("datepicker"),
-            firstDay: 1,
-            minDate: new Date("2000-01-01"),
-            maxDate: new Date("2020-12-31"),
-            showDaysInNextAndPreviousMonths: true,
-        },
-    );
+    new Pikaday({
+        field: document.getElementById("datepicker"),
+        firstDay: 1,
+        minDate: new Date("2000-01-01"),
+        maxDate: new Date("2020-12-31"),
+        showDaysInNextAndPreviousMonths: true,
+    });
 })();

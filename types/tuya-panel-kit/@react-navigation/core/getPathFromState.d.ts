@@ -7,7 +7,9 @@ declare type Options = {
     screens: PathConfigMap;
 };
 // eslint-disable-next-line @definitelytyped/strict-export-declare-modifiers
-declare type State = NavigationState | Omit<PartialState<NavigationState>, "stale">;
+declare type State =
+    | NavigationState
+    | Omit<PartialState<NavigationState>, "stale">;
 /**
  * Utility to serialize a navigation state object to a path string.
  *
@@ -37,5 +39,8 @@ declare type State = NavigationState | Omit<PartialState<NavigationState>, "stal
  * @param options Extra options to fine-tune how to serialize the path.
  * @returns Path representing the state, e.g. /foo/bar?count=42.
  */
-export default function getPathFromState(state: State, options?: Options): string;
+export default function getPathFromState(
+    state: State,
+    options?: Options,
+): string;
 export {};

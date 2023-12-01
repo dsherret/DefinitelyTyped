@@ -419,7 +419,11 @@ declare namespace AMap {
              */
             transit: RailwayDetails;
         }
-        type Segment = WalkSegment | TaxiSegment | TransitSegment | RailwaySegment;
+        type Segment =
+            | WalkSegment
+            | TaxiSegment
+            | TransitSegment
+            | RailwaySegment;
         interface TransferPlan {
             /**
              * 此换乘方案价格，单位：元
@@ -537,7 +541,10 @@ declare namespace AMap {
         search(
             origin: LocationValue,
             destination: LocationValue,
-            callback?: (status: Transfer.SearchStatus, result: string | Transfer.SearchResultBase) => void,
+            callback?: (
+                status: Transfer.SearchStatus,
+                result: string | Transfer.SearchResultBase,
+            ) => void,
         ): void;
         /**
          * 根据起点和终点坐标，进行公交换乘查询
@@ -546,7 +553,10 @@ declare namespace AMap {
          */
         search(
             path: [Transfer.SearchPoint, Transfer.SearchPoint],
-            callback?: (status: Transfer.SearchStatus, result: string | Transfer.SearchResultExt) => void,
+            callback?: (
+                status: Transfer.SearchStatus,
+                result: string | Transfer.SearchResultExt,
+            ) => void,
         ): void;
         /**
          * 设置公交换乘策略

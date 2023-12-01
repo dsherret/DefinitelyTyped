@@ -5,5 +5,4 @@ export interface DownloadPropTypes extends CommonPropTypes {
     target?: string | undefined;
 }
 
-export default class Download extends Component<DownloadPropTypes> {
-}
+export default class Download extends Component<DownloadPropTypes> {}

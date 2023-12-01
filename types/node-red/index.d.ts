@@ -21,7 +21,10 @@ declare namespace nodeRed {
          * @param httpServer - the HTTP server object to use
          * @param userSettings - an object containing the runtime settings
          */
-        init: (httpServer: HttpServer, userSettings: runtime.LocalSettings) => void;
+        init: (
+            httpServer: HttpServer,
+            userSettings: runtime.LocalSettings,
+        ) => void;
 
         /**
          * Start the Node-RED application.
@@ -118,15 +121,18 @@ declare namespace nodeRed {
      * Type def for the functions that should be exported
      * by the node .js files.
      */
-    interface NodeInitializer<TSets extends NodeAPISettingsWithData = NodeAPISettingsWithData>
-        extends registry.NodeInitializer<TSets>
-    {}
+    interface NodeInitializer<
+        TSets extends NodeAPISettingsWithData = NodeAPISettingsWithData,
+    > extends registry.NodeInitializer<TSets> {}
 
-    interface NodeConstructor<TNode extends Node<TCreds>, TNodeDef extends NodeDef, TCreds extends {}>
-        extends registry.NodeConstructor<TNode, TNodeDef, TCreds>
-    {}
+    interface NodeConstructor<
+        TNode extends Node<TCreds>,
+        TNodeDef extends NodeDef,
+        TCreds extends {},
+    > extends registry.NodeConstructor<TNode, TNodeDef, TCreds> {}
 
-    interface NodeAPISettingsWithData extends registry.NodeAPISettingsWithData {}
+    interface NodeAPISettingsWithData
+        extends registry.NodeAPISettingsWithData {}
 
     interface NodeSetting<T> extends registry.NodeSetting<T> {}
 
@@ -142,9 +148,9 @@ declare namespace nodeRed {
 
     interface NodeMessageInFlow extends registry.NodeMessageInFlow {}
 
-    interface NodeAPI<TSets extends NodeAPISettingsWithData = NodeAPISettingsWithData>
-        extends registry.NodeAPI<TSets>
-    {}
+    interface NodeAPI<
+        TSets extends NodeAPISettingsWithData = NodeAPISettingsWithData,
+    > extends registry.NodeAPI<TSets> {}
 
     interface Node<TCreds extends {} = {}> extends registry.Node<TCreds> {}
 
@@ -168,9 +174,10 @@ declare namespace nodeRed {
      * Property definition
      * Read more: https://nodered.org/docs/creating-nodes/properties#property-definitions
      */
-    interface EditorNodePropertyDef<TVal, TInstProps extends EditorNodeProperties = EditorNodeProperties>
-        extends editorClient.NodePropertyDef<TVal, TInstProps>
-    {}
+    interface EditorNodePropertyDef<
+        TVal,
+        TInstProps extends EditorNodeProperties = EditorNodeProperties,
+    > extends editorClient.NodePropertyDef<TVal, TInstProps> {}
 
     /**
      * Properties definitions (`defaults` object)
@@ -187,9 +194,9 @@ declare namespace nodeRed {
      */
     interface EditorNodeProperties extends editorClient.NodeProperties {}
 
-    type EditorNodeInstance<TProps extends EditorNodeProperties = EditorNodeProperties> = editorClient.NodeInstance<
-        TProps
-    >;
+    type EditorNodeInstance<
+        TProps extends EditorNodeProperties = EditorNodeProperties,
+    > = editorClient.NodeInstance<TProps>;
 
     type EditorNodeCredentials<T> = editorClient.NodeCredentials<T>;
 
@@ -227,15 +234,19 @@ declare namespace nodeRed {
      * WIDGETS
      */
 
-    interface EditorWidgetEditableListOptions<T> extends editorClient.WidgetEditableListOptions<T> {}
+    interface EditorWidgetEditableListOptions<T>
+        extends editorClient.WidgetEditableListOptions<T> {}
 
-    interface EditorWidgetEditableList extends editorClient.WidgetEditableList {}
+    interface EditorWidgetEditableList
+        extends editorClient.WidgetEditableList {}
 
-    interface EditorWidgetTypedInputOptions extends editorClient.WidgetTypedInputOptions {}
+    interface EditorWidgetTypedInputOptions
+        extends editorClient.WidgetTypedInputOptions {}
 
     type EditorWidgetTypedInputType = editorClient.WidgetTypedInputType;
 
-    interface EditorWidgetTypedInputTypeDefinition extends editorClient.WidgetTypedInputTypeDefinition {}
+    interface EditorWidgetTypedInputTypeDefinition
+        extends editorClient.WidgetTypedInputTypeDefinition {}
 
     interface EditorWidgetTypedInput extends editorClient.WidgetTypedInput {}
 }

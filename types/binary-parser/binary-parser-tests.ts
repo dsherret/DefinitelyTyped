@@ -81,28 +81,23 @@ const parser4 = new Parser()
         readUntil: (item, buffer) => true, // stop when specific item is parsed. buffer can be used to perform a read-ahead.
     });
 
-const parser5 = new Parser()
-    .array("ipv4", {
-        type: "uint8",
-        length: "4",
-        formatter: (arr) => {},
-    });
+const parser5 = new Parser().array("ipv4", {
+    type: "uint8",
+    length: "4",
+    formatter: (arr) => {},
+});
 
 const parser6 = new Parser()
     .nest("nested", {
-        type: new Parser()
-            .array("points", {
-                type: new Parser()
-                    .uint8("x")
-                    .uint8("y"),
-                length: 2,
-            }),
+        type: new Parser().array("points", {
+            type: new Parser().uint8("x").uint8("y"),
+            length: 2,
+        }),
     })
     .choice("optional", {
         tag: "nested.points[0].x",
         choices: {
-            1: new Parser()
-                .uint8("number"),
+            1: new Parser().uint8("number"),
         },
     });
 

@@ -65,7 +65,7 @@ csstree.generate(ast, {}); // $ExpectType string
 
 csstree.generate(ast, {
     sourceMap: true,
-    decorator: handlers => ({
+    decorator: (handlers) => ({
         children(node, delimiter) {
             node; // $ExpectType CssNode
             delimiter; // $ExpectType ((node: CssNode) => void) | undefined
@@ -118,93 +118,113 @@ list.size; // $ExpectType number
 list.isEmpty; // $ExpectType boolean
 list.first; // $ExpectType Test | null
 list.last; // $ExpectType Test | null
-list.forEach(function(item, node, list) {
-    this.b; // $ExpectType string
-    item; // $ExpectType Test
-    node; // $ExpectType ListItem<Test>
-    list; // $ExpectType List<Test>
-}, { b: "c" });
-list.forEach(function(item, node, list) {
+list.forEach(
+    function (item, node, list) {
+        this.b; // $ExpectType string
+        item; // $ExpectType Test
+        node; // $ExpectType ListItem<Test>
+        list; // $ExpectType List<Test>
+    },
+    { b: "c" },
+);
+list.forEach(function (item, node, list) {
     this; // $ExpectType List<Test>
     item; // $ExpectType Test
     node; // $ExpectType ListItem<Test>
     list; // $ExpectType List<Test>
 });
-list.forEachRight(function(item, node, list) {
-    this.b; // $ExpectType string
-    item; // $ExpectType Test
-    node; // $ExpectType ListItem<Test>
-    list; // $ExpectType List<Test>
-}, { b: "c" });
-list.forEachRight(function(item, node, list) {
+list.forEachRight(
+    function (item, node, list) {
+        this.b; // $ExpectType string
+        item; // $ExpectType Test
+        node; // $ExpectType ListItem<Test>
+        list; // $ExpectType List<Test>
+    },
+    { b: "c" },
+);
+list.forEachRight(function (item, node, list) {
     this; // $ExpectType List<Test>
     item; // $ExpectType Test
     node; // $ExpectType ListItem<Test>
     list; // $ExpectType List<Test>
 });
-list.nextUntil(anItem, function(item, node, list) {
-    this.b; // $ExpectType string
-    item; // $ExpectType Test
-    node; // $ExpectType ListItem<Test>
-    list; // $ExpectType List<Test>
-    return true;
-}, { b: "c" });
-list.nextUntil(anItem, function(item, node, list) {
-    this; // $ExpectType List<Test>
-    item; // $ExpectType Test
-    node; // $ExpectType ListItem<Test>
-    list; // $ExpectType List<Test>
-    return true;
-});
-list.prevUntil(anItem, function(item, node, list) {
-    this.b; // $ExpectType string
-    item; // $ExpectType Test
-    node; // $ExpectType ListItem<Test>
-    list; // $ExpectType List<Test>
-    return true;
-}, { b: "c" });
-list.prevUntil(anItem, function(item, node, list) {
-    this; // $ExpectType List<Test>
-    item; // $ExpectType Test
-    node; // $ExpectType ListItem<Test>
-    list; // $ExpectType List<Test>
-    return true;
-});
-list.some(function(item, node, list) {
-    this.b; // $ExpectType string
-    item; // $ExpectType Test
-    node; // $ExpectType ListItem<Test>
-    list; // $ExpectType List<Test>
-    return true;
-}, { b: "c" });
-list.some(function(item, node, list) {
+list.nextUntil(
+    anItem,
+    function (item, node, list) {
+        this.b; // $ExpectType string
+        item; // $ExpectType Test
+        node; // $ExpectType ListItem<Test>
+        list; // $ExpectType List<Test>
+        return true;
+    },
+    { b: "c" },
+);
+list.nextUntil(anItem, function (item, node, list) {
     this; // $ExpectType List<Test>
     item; // $ExpectType Test
     node; // $ExpectType ListItem<Test>
     list; // $ExpectType List<Test>
     return true;
 });
-list.reduce(function(accum, node) {
+list.prevUntil(
+    anItem,
+    function (item, node, list) {
+        this.b; // $ExpectType string
+        item; // $ExpectType Test
+        node; // $ExpectType ListItem<Test>
+        list; // $ExpectType List<Test>
+        return true;
+    },
+    { b: "c" },
+);
+list.prevUntil(anItem, function (item, node, list) {
+    this; // $ExpectType List<Test>
+    item; // $ExpectType Test
+    node; // $ExpectType ListItem<Test>
+    list; // $ExpectType List<Test>
+    return true;
+});
+list.some(
+    function (item, node, list) {
+        this.b; // $ExpectType string
+        item; // $ExpectType Test
+        node; // $ExpectType ListItem<Test>
+        list; // $ExpectType List<Test>
+        return true;
+    },
+    { b: "c" },
+);
+list.some(function (item, node, list) {
+    this; // $ExpectType List<Test>
+    item; // $ExpectType Test
+    node; // $ExpectType ListItem<Test>
+    list; // $ExpectType List<Test>
+    return true;
+});
+list.reduce(function (accum, node) {
     this; // $ExpectType List<Test>
     accum; // $ExpectType number
     node; // $ExpectType Test
     return accum;
 }, 0); // $ExpectType 0
-list.reduceRight(function(accum, node) {
+list.reduceRight(function (accum, node) {
     this; // $ExpectType List<Test>
     accum; // $ExpectType number
     node; // $ExpectType Test
     return accum;
 }, 0); // $ExpectType 0
-const map1 = list.map(function(item, node, list) {
-    this.b; // $ExpectType string
-    item; // $ExpectType Test
-    node; // $ExpectType ListItem<Test>
-    list; // $ExpectType List<Test>
-    return { c: "d" };
-}, { b: "c" });
+const map1 = list.map(
+    function (item, node, list) {
+        this.b; // $ExpectType string
+        item; // $ExpectType Test
+        node; // $ExpectType ListItem<Test>
+        list; // $ExpectType List<Test>
+        return { c: "d" };
+    },
+    { b: "c" },
+);
 map1; // $ExpectType List<{ c: string; }>
-const map2 = list.map(function(item, node, list) {
+const map2 = list.map(function (item, node, list) {
     this; // $ExpectType List<Test>
     item; // $ExpectType Test
     node; // $ExpectType ListItem<Test>
@@ -215,15 +235,18 @@ map2; // $ExpectType List<{ c: string; }>
 
 const list2 = new csstree.List<Test | null>();
 
-const filter1 = list2.filter(function(item, node, list): item is Test {
-    this.b; // $ExpectType string
-    item; // $ExpectType Test | null
-    node; // $ExpectType ListItem<Test | null>
-    list; // $ExpectType List<Test | null>
-    return !!item;
-}, { b: "c" });
+const filter1 = list2.filter(
+    function (item, node, list): item is Test {
+        this.b; // $ExpectType string
+        item; // $ExpectType Test | null
+        node; // $ExpectType ListItem<Test | null>
+        list; // $ExpectType List<Test | null>
+        return !!item;
+    },
+    { b: "c" },
+);
 filter1; // $ExpectType List<Test>
-const filter2 = list2.filter(function(item, node, list): item is Test {
+const filter2 = list2.filter(function (item, node, list): item is Test {
     this; // $ExpectType List<Test | null>
     item; // $ExpectType Test | null
     node; // $ExpectType ListItem<Test | null>
@@ -231,15 +254,18 @@ const filter2 = list2.filter(function(item, node, list): item is Test {
     return !!item;
 });
 filter2; // $ExpectType List<Test>
-const filter3 = list2.filter(function(item, node, list) {
-    this.b; // $ExpectType string
-    item; // $ExpectType Test | null
-    node; // $ExpectType ListItem<Test | null>
-    list; // $ExpectType List<Test | null>
-    return true;
-}, { b: "c" });
+const filter3 = list2.filter(
+    function (item, node, list) {
+        this.b; // $ExpectType string
+        item; // $ExpectType Test | null
+        node; // $ExpectType ListItem<Test | null>
+        list; // $ExpectType List<Test | null>
+        return true;
+    },
+    { b: "c" },
+);
 filter3; // $ExpectType List<Test | null>
-const filter4 = list2.filter(function(item, node, list) {
+const filter4 = list2.filter(function (item, node, list) {
     this; // $ExpectType List<Test | null>
     item; // $ExpectType Test | null
     node; // $ExpectType ListItem<Test | null>
@@ -691,9 +717,13 @@ csstree.definitionSyntax.generate(syntax, {
 csstree.definitionSyntax.walk(syntax, (node) => {
     node; // $ExpectType DSNode
 });
-csstree.definitionSyntax.walk(syntax, (node) => {
-    node; // $ExpectType DSNode
-}, undefined);
+csstree.definitionSyntax.walk(
+    syntax,
+    (node) => {
+        node; // $ExpectType DSNode
+    },
+    undefined,
+);
 
 csstree.parse(".selector { /* comment */ }", {
     onComment(value, loc) {
@@ -711,7 +741,11 @@ csstree.url.decode("foo"); // $ExpectType string
 csstree.url.encode("foo"); // $ExpectType string
 
 csstree.fork({}); // $ExpectType { lexer: Lexer; }
-const { lexer } = csstree.fork({ atrules: {}, properties: {}, types: { foo: "<length>" } });
+const { lexer } = csstree.fork({
+    atrules: {},
+    properties: {},
+    types: { foo: "<length>" },
+});
 lexer; // $ExpectType Lexer
 lexer.matchAtruleDescriptor("foo", "bar", ast); // $ExpectType LexerMatchResult
 lexer.matchAtruleDescriptor("foo", "bar", "baz"); // $ExpectType LexerMatchResult

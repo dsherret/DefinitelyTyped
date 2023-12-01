@@ -18,12 +18,24 @@ export namespace Hyperdeck {
     }
 
     interface Notifier {
-        on(event: "asynchronousEvent", callback: (response: Response<unknown>) => void): this;
-        on(event: "connectionStateChange", callback: (response: { connected: boolean }) => void): this;
+        on(
+            event: "asynchronousEvent",
+            callback: (response: Response<unknown>) => void,
+        ): this;
+        on(
+            event: "connectionStateChange",
+            callback: (response: { connected: boolean }) => void,
+        ): this;
         on(event: "connectionLost", callback: () => void): this;
 
-        once(event: "asynchronousEvent", callback: (response: Response<unknown>) => void): this;
-        once(event: "connectionStateChange", callback: (response: { connected: boolean }) => void): this;
+        once(
+            event: "asynchronousEvent",
+            callback: (response: Response<unknown>) => void,
+        ): this;
+        once(
+            event: "connectionStateChange",
+            callback: (response: { connected: boolean }) => void,
+        ): this;
         once(event: "connectionLost", callback: () => void): this;
     }
     class Notifier extends EventEmitter {}
@@ -94,7 +106,15 @@ export namespace Hyperdeck {
     }
 
     interface TransportInfo {
-        status: "preview" | "stopped" | "play" | "forward" | "rewind" | "jog" | "shuttle" | "record";
+        status:
+            | "preview"
+            | "stopped"
+            | "play"
+            | "forward"
+            | "rewind"
+            | "jog"
+            | "shuttle"
+            | "record";
         speed: string;
         /** could be "none" */
         "slot id": string;
@@ -156,8 +176,12 @@ export class Hyperdeck extends HyperdeckCore {
     record(): Promise<Hyperdeck.Response<unknown>>;
     goTo(timecode: Hyperdeck.Timecode): Promise<Hyperdeck.Response<unknown>>;
     jogTo(timecode: Hyperdeck.Timecode): Promise<Hyperdeck.Response<unknown>>;
-    jogForward(timecode: Hyperdeck.Timecode): Promise<Hyperdeck.Response<unknown>>;
-    jogBackwards(timecode: Hyperdeck.Timecode): Promise<Hyperdeck.Response<unknown>>;
+    jogForward(
+        timecode: Hyperdeck.Timecode,
+    ): Promise<Hyperdeck.Response<unknown>>;
+    jogBackwards(
+        timecode: Hyperdeck.Timecode,
+    ): Promise<Hyperdeck.Response<unknown>>;
     slotInfo(id?: number): Promise<Hyperdeck.Response<Hyperdeck.SlotInfo>>;
     transportInfo(): Promise<Hyperdeck.Response<Hyperdeck.TransportInfo>>;
     clipsGet(): Promise<Hyperdeck.Response<Hyperdeck.ClipList>>;

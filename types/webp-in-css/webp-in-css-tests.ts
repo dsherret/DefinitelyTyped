@@ -11,6 +11,7 @@ plugin({
     noWebpClass: "no-webp",
     addNoJs: true,
     noJsClass: "no-js",
-    check: decl => /\.jpg/.test(decl.value) && !decl.value.includes("as=webp"),
-    rename: url => url.replace(".jpg", ".jpg?as=webp"),
+    check: (decl) =>
+        /\.jpg/.test(decl.value) && !decl.value.includes("as=webp"),
+    rename: (url) => url.replace(".jpg", ".jpg?as=webp"),
 });

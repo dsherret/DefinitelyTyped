@@ -6,4 +6,6 @@ callbackToAsyncIterator<string>(async () => {}); // $ExpectType AsyncIterableIte
 
 callbackToAsyncIterator<string>(async () => {}, { onClose() {} }); // $ExpectType AsyncIterableIterator<string>
 
-callbackToAsyncIterator<string, number>(async () => 1, { onClose(arg: number) {} }); // $ExpectType AsyncIterableIterator<string>
+callbackToAsyncIterator<string, number>(async () => 1, {
+    onClose(arg: number) {},
+}); // $ExpectType AsyncIterableIterator<string>

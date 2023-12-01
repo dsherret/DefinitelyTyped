@@ -12,7 +12,7 @@ function test_pnotify() {
     new PNotify({
         title: "See Through Notice",
         text: "No one ever pays attention to me. Why should they? I'm practically invisible.",
-        opacity: .8,
+        opacity: 0.8,
     });
     new PNotify({
         title: "No Shadow Notice",
@@ -134,7 +134,7 @@ function test_pnotify() {
         title: "See Through Info",
         text: "Not only does it not matter, but I don't even care if you see this info.",
         type: "info",
-        opacity: .8,
+        opacity: 0.8,
     });
 
     new PNotify({
@@ -188,11 +188,10 @@ function test_pnotify() {
 
     new PNotify({
         title: "Non-Blocking Notice",
-        text:
-            "I'm a special kind of notice called \"non-blocking\". When you hover over me I'll fade to show the elements underneath. Feel free to click any of them just like I wasn't even here.\n\nNote: HTML links don't trigger in some browsers, due to security settings.",
+        text: "I'm a special kind of notice called \"non-blocking\". When you hover over me I'll fade to show the elements underneath. Feel free to click any of them just like I wasn't even here.\n\nNote: HTML links don't trigger in some browsers, due to security settings.",
         nonblock: {
             nonblock: true,
-            nonblock_opacity: .2,
+            nonblock_opacity: 0.2,
         },
     });
 
@@ -201,17 +200,16 @@ function test_pnotify() {
         text: "I have an additional class that's used to give me special styling. I always wanted to be pretty.",
         addclass: "custom",
         icon: "picon picon-32 picon-fill-color",
-        opacity: .8,
+        opacity: 0.8,
         nonblock: {
             nonblock: true,
-            nonblock_opacity: .2,
+            nonblock_opacity: 0.2,
         },
     });
 
     new PNotify({
         title: "PNotify Stacks",
-        text:
-            "Stacks are used to position notices and determine where new notices will go when they're created. Each notice that's placed into a stack will be positioned related to the other notices in that stack. There is no limit to the number of stacks, and no limit to the number of notices in each stack.",
+        text: "Stacks are used to position notices and determine where new notices will go when they're created. Each notice that's placed into a stack will be positioned related to the other notices in that stack. There is no limit to the number of stacks, and no limit to the number of notices in each stack.",
         type: "info",
         icon: "fa fa-bars",
         delay: 20000,
@@ -220,7 +218,12 @@ function test_pnotify() {
     });
 
     var type = "error";
-    var stack_bottomright = { "dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25 };
+    var stack_bottomright = {
+        dir1: "up",
+        dir2: "left",
+        firstpos1: 25,
+        firstpos2: 25,
+    };
 
     var opts = {
         title: "Over Here",

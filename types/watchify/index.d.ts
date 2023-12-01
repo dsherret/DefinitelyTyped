@@ -40,7 +40,10 @@ declare namespace Watchify {
         args: { cache: any; packageCache: any };
 
         <T extends Browserify.BrowserifyObject>(b: T, opts?: Options): T;
-        (b: Browserify.BrowserifyObject, opts?: Options): Browserify.BrowserifyObject;
+        (
+            b: Browserify.BrowserifyObject,
+            opts?: Options,
+        ): Browserify.BrowserifyObject;
 
         /** Close all the open watch handles. */
         close(): void;
@@ -61,11 +64,11 @@ declare namespace Watchify {
         ignoreWatch?:
             | boolean
             | (
-                | string
-                | RegExp
-                | ((...values: any[]) => boolean)
-                | Array<string | RegExp | ((...values: any[]) => boolean)>
-            )
+                  | string
+                  | RegExp
+                  | ((...values: any[]) => boolean)
+                  | Array<string | RegExp | ((...values: any[]) => boolean)>
+              )
             | undefined;
 
         /**

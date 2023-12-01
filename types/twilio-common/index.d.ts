@@ -15,5 +15,8 @@ export class AccessManager extends EventEmitter {
 
     on(type: "error", listener: (error: Error) => void): this;
 
-    on(type: "tokenExpired" | "tokenWillExpire" | "tokenUpdated", listener: (manager: AccessManager) => void): this;
+    on(
+        type: "tokenExpired" | "tokenWillExpire" | "tokenUpdated",
+        listener: (manager: AccessManager) => void,
+    ): this;
 }

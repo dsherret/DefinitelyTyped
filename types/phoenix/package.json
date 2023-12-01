@@ -1,25 +1,25 @@
 {
-    "private": true,
-    "name": "@types/phoenix",
-    "version": "1.6.9999",
-    "projects": [
-        "https://github.com/phoenixframework/phoenix"
-    ],
-    "devDependencies": {
-        "@types/phoenix": "workspace:."
+  "private": true,
+  "name": "@types/phoenix",
+  "version": "1.6.9999",
+  "projects": [
+    "https://github.com/phoenixframework/phoenix"
+  ],
+  "devDependencies": {
+    "@types/phoenix": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Mirosław Ciastek",
+      "githubUsername": "mciastek"
     },
-    "owners": [
-        {
-            "name": "Mirosław Ciastek",
-            "githubUsername": "mciastek"
-        },
-        {
-            "name": "John Goff",
-            "githubUsername": "John-Goff"
-        },
-        {
-            "name": "Po Chen",
-            "githubUsername": "princemaple"
-        }
-    ]
+    {
+      "name": "John Goff",
+      "githubUsername": "John-Goff"
+    },
+    {
+      "name": "Po Chen",
+      "githubUsername": "princemaple"
+    }
+  ]
 }

@@ -20,9 +20,17 @@ export function getFile(filePath: string, preserveFormatting: boolean): Lines;
  * @param preserveFormatting - Whether to include comments, blank lines, etc.
  * @param cb - Called when finished or failed (passing error or lines of file).
  */
-export function getFile(filePath: string, preserveFormatting: boolean, cb: GetCallback): void;
+export function getFile(
+    filePath: string,
+    preserveFormatting: boolean,
+    cb: GetCallback,
+): void;
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export function getFile(filePath: string, preserveFormatting: boolean, cb?: GetCallback): void | Lines;
+export function getFile(
+    filePath: string,
+    preserveFormatting: boolean,
+    cb?: GetCallback,
+): void | Lines;
 
 /**
  * Synchronous wrapper of `getFile` for getting a list of lines in the Host file
@@ -39,7 +47,10 @@ export function get(preserveFormatting: boolean): Lines;
  */
 export function get(preserveFormatting: boolean, cb: GetCallback): void;
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export function get(preserveFormatting: boolean, cb?: GetCallback): void | Lines;
+export function get(
+    preserveFormatting: boolean,
+    cb?: GetCallback,
+): void | Lines;
 
 /**
  * Add a rule to /etc/hosts. If the rule already exists, then this does nothing.
@@ -67,4 +78,8 @@ export function remove(ip: string, host: string, cb?: Callback): void;
  * @param lines - Lines to write to the file.
  * @param cb - Called when finished or failed (passing error).
  */
-export function writeFile(lines: readonly Line[], preserveFormatting: boolean, cb?: Callback): void;
+export function writeFile(
+    lines: readonly Line[],
+    preserveFormatting: boolean,
+    cb?: Callback,
+): void;

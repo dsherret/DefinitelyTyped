@@ -12,7 +12,10 @@ export interface DotsProps {
 
 export class Dots extends React.Component<DotsProps> {}
 
-export type PluginStrategy = (originalValue: number, previousValue: number) => number;
+export type PluginStrategy = (
+    originalValue: number,
+    previousValue: number,
+) => number;
 
 export type CarouselPluginFunc = ({
     options,
@@ -40,7 +43,10 @@ export interface CarouselPluginTypes {
 }
 
 export interface CarouselBreakpoints {
-    [breakpointNumber: number]: Pick<CarouselProps, Exclude<keyof CarouselProps, "breakpoints">>;
+    [breakpointNumber: number]: Pick<
+        CarouselProps,
+        Exclude<keyof CarouselProps, "breakpoints">
+    >;
 }
 
 export interface CarouselProps {

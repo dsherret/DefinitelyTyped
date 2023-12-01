@@ -13,7 +13,12 @@ export type ScrollableSelector = string | string[];
 export type LockableSelector = string | string[];
 export type FillGapSelector = string | string[];
 
-export type FillGapMethod = "padding" | "margin" | "width" | "max-width" | "none";
+export type FillGapMethod =
+    | "padding"
+    | "margin"
+    | "width"
+    | "max-width"
+    | "none";
 
 /**
  * Fills the gap with elements with this selector
@@ -39,7 +44,9 @@ export function addLockableTarget(lockableTarget: LockableTarget): void;
  * Makes elements with this selector scrollable.
  * Initial value '[`data-scroll-lock-scrollable`]'
  */
-export function addScrollableSelector(scrollableSelector: ScrollableSelector): void;
+export function addScrollableSelector(
+    scrollableSelector: ScrollableSelector,
+): void;
 
 /**
  * Makes the element scrollable.
@@ -89,12 +96,16 @@ export function removeFillGapTarget(fillGapTarget: FillGapTarget): void;
 /**
  * Makes elements with this selector not scrollable.
  */
-export function removeScrollableSelector(scrollableSelector: ScrollableSelector): void;
+export function removeScrollableSelector(
+    scrollableSelector: ScrollableSelector,
+): void;
 
 /**
  * Makes the element not scrollable.
  */
-export function removeScrollableTarget(scrollableTarget: ScrollableTarget): void;
+export function removeScrollableTarget(
+    scrollableTarget: ScrollableTarget,
+): void;
 
 /**
  * Changes the method of filling the gap.

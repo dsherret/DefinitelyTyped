@@ -41,13 +41,22 @@ declare class Tag {
 
     forEachAttribute(callback: (attr: Attribute) => void, thisObj?: any): void;
 
-    forEachImportedVariable(callback: (importedVariable: any) => void, thisObj?: any): void;
+    forEachImportedVariable(
+        callback: (importedVariable: any) => void,
+        thisObj?: any,
+    ): void;
 
     forEachNestedTag(callback: (nestedTag: Tag) => void, thisObj?: any): void;
 
-    forEachTransformer(callback: (transformer: Transformer) => void, thisObj?: any): void;
+    forEachTransformer(
+        callback: (transformer: Transformer) => void,
+        thisObj?: any,
+    ): void;
 
-    forEachVariable(callback: (nestedVariable: any) => void, thisObj?: any): void;
+    forEachVariable(
+        callback: (nestedVariable: any) => void,
+        thisObj?: any,
+    ): void;
 
     getAttribute(attrName: string): Attribute | undefined;
 

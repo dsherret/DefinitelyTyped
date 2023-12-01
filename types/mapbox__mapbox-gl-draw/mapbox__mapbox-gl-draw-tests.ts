@@ -125,7 +125,10 @@ const customMode: CustomMode = {
         lib.CommonSelectors.isVertex(e);
 
         // $ExpectType { lng: number; lat: number; }
-        lib.constrainFeatureMovement([drawFeature], { lng: e.lngLat.lng, lat: e.lngLat.lat });
+        lib.constrainFeatureMovement([drawFeature], {
+            lng: e.lngLat.lng,
+            lat: e.lngLat.lat,
+        });
 
         // $ExpectType Feature<Point, GeoJsonProperties> | null
         lib.createMidPoint("1", feature, feature);
@@ -150,7 +153,10 @@ const customMode: CustomMode = {
         lib.isEventAtCoordinates(e, [[10, 180]]);
 
         // $ExpectType boolean
-        lib.isTap({ point: { x: 5, y: 10 }, time: 50 }, { point: { x: 10, y: 20 }, time: 200 });
+        lib.isTap(
+            { point: { x: 5, y: 10 }, time: 50 },
+            { point: { x: 10, y: 20 }, time: 200 },
+        );
 
         // $ExpectType Position[]
         lib.mapEventToBoundingBox(e);
@@ -164,7 +170,10 @@ const customMode: CustomMode = {
         lib.sortFeatures([drawFeature]);
 
         // $ExpectType boolean
-        lib.stringSetsAreEqual([{ id: "Feature1" }, { id: "Feature2" }], [{ id: "Feature1" }, { id: "Feature2" }]);
+        lib.stringSetsAreEqual(
+            [{ id: "Feature1" }, { id: "Feature2" }],
+            [{ id: "Feature1" }, { id: "Feature2" }],
+        );
 
         // $ExpectType StringSet
         lib.StringSet(["1", 2]);

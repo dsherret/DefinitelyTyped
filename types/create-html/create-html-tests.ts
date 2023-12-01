@@ -11,7 +11,7 @@ const html2 = createHtml({
     css: "example.css",
     lang: "en",
     dir: "rtl",
-    head: "<meta name=\"description\" content=\"example\">",
+    head: '<meta name="description" content="example">',
     body: "<p>example</p>",
     favicon: "favicon.png",
 });

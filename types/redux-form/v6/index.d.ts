@@ -16,11 +16,17 @@ export interface DataShape {
 }
 
 export type FormErrors<FormData extends DataShape> = {
-    [P in keyof FormData]?: ReactElement | string | { _error?: string | undefined };
+    [P in keyof FormData]?:
+        | ReactElement
+        | string
+        | { _error?: string | undefined };
 };
 
 export type FormWarnings<FormData extends DataShape> = {
-    [P in keyof FormData]?: ReactElement | string | { _warning?: string | undefined };
+    [P in keyof FormData]?:
+        | ReactElement
+        | string
+        | { _warning?: string | undefined };
 };
 
 export type FormMeta<FormData extends DataShape> = {

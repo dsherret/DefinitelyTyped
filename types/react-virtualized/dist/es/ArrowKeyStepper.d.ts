@@ -39,7 +39,10 @@ export type ScrollIndices = {
 
 export type ScrollIndexes = ScrollIndices;
 
-export class ArrowKeyStepper extends PureComponent<ArrowKeyStepperProps, ScrollIndices> {
+export class ArrowKeyStepper extends PureComponent<
+    ArrowKeyStepperProps,
+    ScrollIndices
+> {
     static defaultProps: {
         disabled: false;
         isControlled: false;

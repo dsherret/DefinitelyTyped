@@ -1,6 +1,9 @@
 declare class TaskQueue<T extends TaskQueue.TaskDescriptor = any> {
     constructor(options?: Options);
-    postTask<U extends T = any>(taskName: U["name"], ...args: Parameters<U>): TaskQueue.Task<ReturnType<U>>;
+    postTask<U extends T = any>(
+        taskName: U["name"],
+        ...args: Parameters<U>
+    ): TaskQueue.Task<ReturnType<U>>;
     addModule(moduleURL: string): Promise<void>;
 }
 

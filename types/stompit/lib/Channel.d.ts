@@ -6,9 +6,16 @@ import ConnectFailover = require("./ConnectFailover");
 import Transaction = require("./client/Transaction");
 
 declare class Channel extends EventEmitter {
-    constructor(connectFailover: ConnectFailover, options?: Channel.ChannelOptions);
+    constructor(
+        connectFailover: ConnectFailover,
+        options?: Channel.ChannelOptions,
+    );
 
-    send(headers: any, body: Channel.Body, callback?: (err: Error | null) => void): this;
+    send(
+        headers: any,
+        body: Channel.Body,
+        callback?: (err: Error | null) => void,
+    ): this;
 
     subscribe(
         headers: any,
@@ -18,10 +25,24 @@ declare class Channel extends EventEmitter {
             channelSubscription: Channel.ChannelSubscription,
         ) => void,
     ): Channel.ChannelSubscription;
-    setImplicitSubscription(id: number, ack?: Ack, msgListener?: MessageCallback): Channel.ChannelSubscription;
+    setImplicitSubscription(
+        id: number,
+        ack?: Ack,
+        msgListener?: MessageCallback,
+    ): Channel.ChannelSubscription;
 
-    ack(message: Message, headers?: any, sendOptions?: SendOptions, callback?: (error?: Error | null) => void): void;
-    nack(message: Message, headers?: any, sendOptions?: SendOptions, callback?: (error?: Error | null) => void): void;
+    ack(
+        message: Message,
+        headers?: any,
+        sendOptions?: SendOptions,
+        callback?: (error?: Error | null) => void,
+    ): void;
+    nack(
+        message: Message,
+        headers?: any,
+        sendOptions?: SendOptions,
+        callback?: (error?: Error | null) => void,
+    ): void;
 
     begin(headers?: any): Transaction;
     close(error: Error): void;

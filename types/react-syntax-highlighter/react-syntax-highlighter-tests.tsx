@@ -6,12 +6,20 @@ import SyntaxHighlighter, {
 } from "react-syntax-highlighter";
 import jsx from "react-syntax-highlighter/dist/cjs/languages/prism/jsx";
 import PrismLightHighlighter from "react-syntax-highlighter/dist/cjs/prism-light";
-import { oneDark as oneDarkCjs, oneLight as oneLightCjs } from "react-syntax-highlighter/dist/cjs/styles/prism";
+import {
+    oneDark as oneDarkCjs,
+    oneLight as oneLightCjs,
+} from "react-syntax-highlighter/dist/cjs/styles/prism";
 import createElement from "react-syntax-highlighter/dist/esm/create-element";
 import javascript from "react-syntax-highlighter/dist/esm/languages/hljs/javascript";
 import PrismSyntaxHighlighter from "react-syntax-highlighter/dist/esm/prism";
 import { docco } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { coldarkCold, coldarkDark, oneDark, oneLight } from "react-syntax-highlighter/dist/esm/styles/prism";
+import {
+    coldarkCold,
+    coldarkDark,
+    oneDark,
+    oneLight,
+} from "react-syntax-highlighter/dist/esm/styles/prism";
 
 const codeString = `class CPP {
     private year: number;
@@ -127,43 +135,67 @@ const TestComponent: React.FC = () => <div>Hello world</div>;
 <PrismLightHighlighter style={oneLight}>{codeString}</PrismLightHighlighter>;
 <PrismLightHighlighter style={oneDarkCjs}>{codeString}</PrismLightHighlighter>;
 <PrismLightHighlighter style={oneLightCjs}>{codeString}</PrismLightHighlighter>;
-<PrismLightHighlighter style={{ keyword: { color: "red" } }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter style={{ keyword: { color: "red" } }}>
+    {codeString}
+</PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter style={{ color: "red" }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter style={{ color: "red" }}>
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `children`
 <PrismLightHighlighter>{codeString}</PrismLightHighlighter>;
 <PrismLightHighlighter>{[codeString, "hello world"]}</PrismLightHighlighter>;
 // dprint-ignore
 // @ts-expect-error
-<PrismLightHighlighter><div>Hello world</div></PrismLightHighlighter>;
+<PrismLightHighlighter>
+    <div>Hello world</div>
+</PrismLightHighlighter>;
 // @ts-expect-error
 <PrismLightHighlighter />;
 
 // Test `customStyle`
-<PrismLightHighlighter customStyle={{ color: "red" }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter customStyle={{ color: "red" }}>
+    {codeString}
+</PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter customStyle={{ keyword: { color: "red" } }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter customStyle={{ keyword: { color: "red" } }}>
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `codeTagProps`
-<PrismLightHighlighter codeTagProps={{ className: "some-classname" }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter codeTagProps={{ className: "some-classname" }}>
+    {codeString}
+</PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter codeTagProps={{ style: "color:red;" }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter codeTagProps={{ style: "color:red;" }}>
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `startingLineNumber`
-<PrismLightHighlighter startingLineNumber={1}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter startingLineNumber={1}>
+    {codeString}
+</PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter startingLineNumber="1">{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter startingLineNumber="1">
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `lineNumberContainerStyle`
-<PrismLightHighlighter lineNumberContainerStyle={{ color: "red" }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter lineNumberContainerStyle={{ color: "red" }}>
+    {codeString}
+</PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter lineNumberContainerStyle={{ keyword: { color: "red" } }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter lineNumberContainerStyle={{ keyword: { color: "red" } }}>
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `lineNumberStyle`
-<PrismLightHighlighter lineNumberStyle={{ color: "red" }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter lineNumberStyle={{ color: "red" }}>
+    {codeString}
+</PrismLightHighlighter>;
 <PrismLightHighlighter
-    lineNumberStyle={lineNo => {
+    lineNumberStyle={(lineNo) => {
         const temp = lineNo; // $ExpectType number
         return { color: lineNo % 2 === 0 ? "red" : "blue" };
     }}
@@ -171,16 +203,22 @@ const TestComponent: React.FC = () => <div>Hello world</div>;
     {codeString}
 </PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter lineNumberStyle={{ keyword: { color: "red" } }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter lineNumberStyle={{ keyword: { color: "red" } }}>
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `lineProps`
-<PrismLightHighlighter lineProps={{ className: "some-classname" }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter lineProps={{ className: "some-classname" }}>
+    {codeString}
+</PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter lineProps={{ style: "color:red;" }}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter lineProps={{ style: "color:red;" }}>
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `renderer`
 <PrismLightHighlighter
-    renderer={props => {
+    renderer={(props) => {
         let temp;
         temp = props.rows; // $ExpectType rendererNode[]
         temp = props.stylesheet; // $ExpectType { [key: string]: CSSProperties; }
@@ -191,27 +229,43 @@ const TestComponent: React.FC = () => <div>Hello world</div>;
 >
     {codeString}
 </PrismLightHighlighter>;
-<PrismLightHighlighter renderer={_ => "hello world"}>{codeString}</PrismLightHighlighter>;
-<PrismLightHighlighter renderer={_ => 123456}>{codeString}</PrismLightHighlighter>;
-<PrismLightHighlighter renderer={_ => <TestComponent />}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter renderer={(_) => "hello world"}>
+    {codeString}
+</PrismLightHighlighter>;
+<PrismLightHighlighter renderer={(_) => 123456}>
+    {codeString}
+</PrismLightHighlighter>;
+<PrismLightHighlighter renderer={(_) => <TestComponent />}>
+    {codeString}
+</PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter renderer={_ => ({})}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter renderer={(_) => ({})}>
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `PreTag`
 <PrismLightHighlighter PreTag="div">{codeString}</PrismLightHighlighter>;
-<PrismLightHighlighter PreTag={TestComponent}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter PreTag={TestComponent}>
+    {codeString}
+</PrismLightHighlighter>;
 // @ts-expect-error
 <PrismLightHighlighter PreTag={123}>{codeString}</PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter PreTag="mycomponent">{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter PreTag="mycomponent">
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `CodeTag`
 <PrismLightHighlighter CodeTag="div">{codeString}</PrismLightHighlighter>;
-<PrismLightHighlighter CodeTag={TestComponent}>{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter CodeTag={TestComponent}>
+    {codeString}
+</PrismLightHighlighter>;
 // @ts-expect-error
 <PrismLightHighlighter CodeTag={123}>{codeString}</PrismLightHighlighter>;
 // @ts-expect-error
-<PrismLightHighlighter CodeTag="mycomponent">{codeString}</PrismLightHighlighter>;
+<PrismLightHighlighter CodeTag="mycomponent">
+    {codeString}
+</PrismLightHighlighter>;
 
 // Test `createElement`
 const correctCreateElementProps: createElementProps = {
@@ -269,14 +323,16 @@ createElement({ ...correctCreateElementProps, key: undefined });
 
 // Default renderer function, test both `renderer` and `createElement`
 <PrismSyntaxHighlighter
-    renderer={({ rows, stylesheet, useInlineStyles }) => (rows.map((node, i) =>
-        createElement({
-            node,
-            stylesheet,
-            useInlineStyles,
-            key: `code-segement${i}`,
-        })
-    ))}
+    renderer={({ rows, stylesheet, useInlineStyles }) =>
+        rows.map((node, i) =>
+            createElement({
+                node,
+                stylesheet,
+                useInlineStyles,
+                key: `code-segement${i}`,
+            }),
+        )
+    }
 >
     {codeString}
 </PrismSyntaxHighlighter>;

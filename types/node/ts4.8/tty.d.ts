@@ -90,9 +90,15 @@ declare module "tty" {
         on(event: "resize", listener: () => void): this;
         once(event: string, listener: (...args: any[]) => void): this;
         once(event: "resize", listener: () => void): this;
-        prependListener(event: string, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
         prependListener(event: "resize", listener: () => void): this;
-        prependOnceListener(event: string, listener: (...args: any[]) => void): this;
+        prependOnceListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
         prependOnceListener(event: "resize", listener: () => void): this;
         /**
          * `writeStream.clearLine()` clears the current line of this `WriteStream` in a

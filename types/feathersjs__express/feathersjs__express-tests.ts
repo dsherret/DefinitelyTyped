@@ -11,7 +11,11 @@ const feathersServiceDummy = {
         return Promise.resolve([{}, {}]);
     },
 };
-const expressMiddlewareDummy = (req: express.Request, res: express.Response, next: express.NextFunction) => {
+const expressMiddlewareDummy = (
+    req: express.Request,
+    res: express.Response,
+    next: express.NextFunction,
+) => {
     next();
     return app;
 };

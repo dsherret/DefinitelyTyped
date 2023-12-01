@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     $("#myLayout").w2layout({
         name: "myLayout",
         panels: [
@@ -17,22 +17,82 @@ $(function() {
             { field: "sdate", caption: "Start Date", size: "120px" },
         ],
         records: [
-            { recid: 1, fname: "John", lname: "Doe", email: "jdoe@gmail.com", sdate: "4/3/2012" },
-            { recid: 2, fname: "Stuart", lname: "Motzart", email: "jdoe@gmail.com", sdate: "4/3/2012" },
-            { recid: 3, fname: "Jin", lname: "Franson", email: "jdoe@gmail.com", sdate: "4/3/2012" },
-            { recid: 4, fname: "Susan", lname: "Ottie", email: "jdoe@gmail.com", sdate: "4/3/2012" },
-            { recid: 5, fname: "Kelly", lname: "Silver", email: "jdoe@gmail.com", sdate: "4/3/2012" },
-            { recid: 6, fname: "Francis", lname: "Gatos", email: "jdoe@gmail.com", sdate: "4/3/2012" },
-            { recid: 7, fname: "Mark", lname: "Welldo", email: "jdoe@gmail.com", sdate: "4/3/2012" },
-            { recid: 8, fname: "Thomas", lname: "Bahh", email: "jdoe@gmail.com", sdate: "4/3/2012" },
-            { recid: 9, fname: "Sergei", lname: "Rachmaninov", email: "jdoe@gmail.com", sdate: "4/3/2012" },
+            {
+                recid: 1,
+                fname: "John",
+                lname: "Doe",
+                email: "jdoe@gmail.com",
+                sdate: "4/3/2012",
+            },
+            {
+                recid: 2,
+                fname: "Stuart",
+                lname: "Motzart",
+                email: "jdoe@gmail.com",
+                sdate: "4/3/2012",
+            },
+            {
+                recid: 3,
+                fname: "Jin",
+                lname: "Franson",
+                email: "jdoe@gmail.com",
+                sdate: "4/3/2012",
+            },
+            {
+                recid: 4,
+                fname: "Susan",
+                lname: "Ottie",
+                email: "jdoe@gmail.com",
+                sdate: "4/3/2012",
+            },
+            {
+                recid: 5,
+                fname: "Kelly",
+                lname: "Silver",
+                email: "jdoe@gmail.com",
+                sdate: "4/3/2012",
+            },
+            {
+                recid: 6,
+                fname: "Francis",
+                lname: "Gatos",
+                email: "jdoe@gmail.com",
+                sdate: "4/3/2012",
+            },
+            {
+                recid: 7,
+                fname: "Mark",
+                lname: "Welldo",
+                email: "jdoe@gmail.com",
+                sdate: "4/3/2012",
+            },
+            {
+                recid: 8,
+                fname: "Thomas",
+                lname: "Bahh",
+                email: "jdoe@gmail.com",
+                sdate: "4/3/2012",
+            },
+            {
+                recid: 9,
+                fname: "Sergei",
+                lname: "Rachmaninov",
+                email: "jdoe@gmail.com",
+                sdate: "4/3/2012",
+            },
         ],
     });
 
     $("#myToolbar").w2toolbar({
         name: "myToolbar",
         items: [
-            { type: "check", id: "item1", caption: "Check", img: "icon-add", checked: true },
+            {
+                type: "check",
+                id: "item1",
+                caption: "Check",
+                img: "icon-add",
+                checked: true,
+            },
             { type: "break" },
             {
                 type: "menu",
@@ -46,10 +106,27 @@ $(function() {
                 ],
             },
             { type: "break" },
-            { type: "radio", id: "item3", group: "1", caption: "Radio 1", img: "icon-page" },
-            { type: "radio", id: "item4", group: "1", caption: "Radio 2", img: "icon-page" },
+            {
+                type: "radio",
+                id: "item3",
+                group: "1",
+                caption: "Radio 1",
+                img: "icon-page",
+            },
+            {
+                type: "radio",
+                id: "item4",
+                group: "1",
+                caption: "Radio 2",
+                img: "icon-page",
+            },
             { type: "spacer" },
-            { type: "button", id: "item5", caption: "Item 5", img: "icon-save" },
+            {
+                type: "button",
+                id: "item5",
+                caption: "Item 5",
+                img: "icon-save",
+            },
         ],
     });
 
@@ -78,9 +155,21 @@ $(function() {
                         text: "Level 2.1",
                         img: "icon-folder",
                         nodes: [
-                            { id: "level-2-1-1", text: "Level 2.1.1", img: "icon-page" },
-                            { id: "level-2-1-2", text: "Level 2.1.2", img: "icon-page" },
-                            { id: "level-2-1-3", text: "Level 2.1.3", img: "icon-page" },
+                            {
+                                id: "level-2-1-1",
+                                text: "Level 2.1.1",
+                                img: "icon-page",
+                            },
+                            {
+                                id: "level-2-1-2",
+                                text: "Level 2.1.2",
+                                img: "icon-page",
+                            },
+                            {
+                                id: "level-2-1-3",
+                                text: "Level 2.1.3",
+                                img: "icon-page",
+                            },
                         ],
                     },
                     { id: "level-2-2", text: "Level 2.2", img: "icon-page" },
@@ -98,7 +187,7 @@ $(function() {
                 ],
             },
         ],
-        onClick: function(event: W2UI.W2Event) {
+        onClick: function (event: W2UI.W2Event) {
             console.log(event.target);
         },
     });
@@ -112,11 +201,15 @@ $(function() {
                 text: "Level 1",
                 img: "icon-folder",
                 expanded: true,
-                nodes: [{ id: "level-1-1", text: "Level 1.1", img: "icon-page" }, {
-                    id: "level-1-2",
-                    text: "Level 1.2",
-                    img: "icon-page",
-                }, { id: "level-1-3", text: "Level 1.3", img: "icon-page" }],
+                nodes: [
+                    { id: "level-1-1", text: "Level 1.1", img: "icon-page" },
+                    {
+                        id: "level-1-2",
+                        text: "Level 1.2",
+                        img: "icon-page",
+                    },
+                    { id: "level-1-3", text: "Level 1.3", img: "icon-page" },
+                ],
             },
             {
                 id: "level-2",
@@ -128,9 +221,21 @@ $(function() {
                         text: "Level 2.1",
                         img: "icon-folder",
                         nodes: [
-                            { id: "level-2-1-1", text: "Level 2.1.1", img: "icon-page" },
-                            { id: "level-2-1-2", text: "Level 2.1.2", img: "icon-page" },
-                            { id: "level-2-1-3", text: "Level 2.1.3", img: "icon-page" },
+                            {
+                                id: "level-2-1-1",
+                                text: "Level 2.1.1",
+                                img: "icon-page",
+                            },
+                            {
+                                id: "level-2-1-2",
+                                text: "Level 2.1.2",
+                                img: "icon-page",
+                            },
+                            {
+                                id: "level-2-1-3",
+                                text: "Level 2.1.3",
+                                img: "icon-page",
+                            },
                         ],
                     },
                     { id: "level-2-2", text: "Level 2.2", img: "icon-page" },
@@ -141,14 +246,18 @@ $(function() {
                 id: "level-3",
                 text: "Level 3",
                 img: "icon-folder",
-                nodes: [{ id: "level-3-1", text: "Level 3.1", img: "icon-page" }, {
-                    id: "level-3-2",
-                    text: "Level 3.2",
-                    img: "icon-page",
-                }, { id: "level-3-3", text: "Level 3.3", img: "icon-page" }],
+                nodes: [
+                    { id: "level-3-1", text: "Level 3.1", img: "icon-page" },
+                    {
+                        id: "level-3-2",
+                        text: "Level 3.2",
+                        img: "icon-page",
+                    },
+                    { id: "level-3-3", text: "Level 3.3", img: "icon-page" },
+                ],
             },
         ],
-        onClick: function(id: string, data: W2UI.W2Event) {
+        onClick: function (id: string, data: W2UI.W2Event) {
             console.log(id);
         },
     });
@@ -162,7 +271,7 @@ $(function() {
             { id: "tab3", caption: "Tab 3" },
             { id: "tab4", caption: "Tab 4" },
         ],
-        onClick: function(event: W2UI.W2Event) {
+        onClick: function (event: W2UI.W2Event) {
             $("#myTabsContent").html(event.target);
         },
     });
@@ -175,10 +284,10 @@ $(function() {
             { name: "comments", type: "text" },
         ],
         actions: {
-            reset: function() {
+            reset: function () {
                 this.clear();
             },
-            save: function() {
+            save: function () {
                 this.save();
             },
         },

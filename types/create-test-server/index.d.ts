@@ -6,12 +6,15 @@ import { Express } from "express";
 import * as http from "http";
 import * as https from "https";
 
-type Server = createTestServer.TestServer & Omit<Express, "listen"> & { get: (url: string, response: string) => void };
+type Server = createTestServer.TestServer &
+    Omit<Express, "listen"> & { get: (url: string, response: string) => void };
 
 /**
  * Returns a Promise which resolves to an (already listening) server.
  */
-declare function createTestServer(options?: createTestServer.Options): Promise<Server>;
+declare function createTestServer(
+    options?: createTestServer.Options,
+): Promise<Server>;
 
 export = createTestServer;
 
@@ -26,7 +29,10 @@ declare namespace createTestServer {
          *
          * If set to `false` then all body parsing middleware will be disabled.
          */
-        bodyParser?: false | OptionsJson & OptionsText & OptionsUrlencoded | undefined;
+        bodyParser?:
+            | false
+            | (OptionsJson & OptionsText & OptionsUrlencoded)
+            | undefined;
     }
 
     interface TestServer {

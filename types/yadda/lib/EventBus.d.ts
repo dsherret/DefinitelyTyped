@@ -48,16 +48,49 @@ export interface DefineEvent {
 }
 
 export class EventBus {
-    send(event_name: "__ON_SCENARIO__", event_data: ScenarioEventData, next?: (err?: Error) => void): void;
-    send(event_name: "__ON_STEP__", event_data: StepEvent, next?: (err?: Error) => void): void;
-    send(event_name: "__ON_EXECUTE__", event_data: ExecuteEvent, next?: (err?: Error) => void): void;
-    send(event_name: "__ON_DEFINE__", event_data: DefineEvent, next?: (err?: Error) => void): void;
+    send(
+        event_name: "__ON_SCENARIO__",
+        event_data: ScenarioEventData,
+        next?: (err?: Error) => void,
+    ): void;
+    send(
+        event_name: "__ON_STEP__",
+        event_data: StepEvent,
+        next?: (err?: Error) => void,
+    ): void;
+    send(
+        event_name: "__ON_EXECUTE__",
+        event_data: ExecuteEvent,
+        next?: (err?: Error) => void,
+    ): void;
+    send(
+        event_name: "__ON_DEFINE__",
+        event_data: DefineEvent,
+        next?: (err?: Error) => void,
+    ): void;
 
-    on(event_pattern: "__ON_SCENARIO__", callback: (event: ScenarioEvent) => void): this;
-    on(event_pattern: "__ON_STEP__", callback: (event: StepEvent) => void): this;
-    on(event_pattern: "__ON_EXECUTE__", callback: (event: ExecuteEvent) => void): this;
-    on(event_pattern: "__ON_DEFINE__", callback: (event: DefineEvent) => void): this;
-    on(event_pattern: RegExp, callback: (event: ScenarioEvent | StepEvent | ExecuteEvent | DefineEvent) => void): this;
+    on(
+        event_pattern: "__ON_SCENARIO__",
+        callback: (event: ScenarioEvent) => void,
+    ): this;
+    on(
+        event_pattern: "__ON_STEP__",
+        callback: (event: StepEvent) => void,
+    ): this;
+    on(
+        event_pattern: "__ON_EXECUTE__",
+        callback: (event: ExecuteEvent) => void,
+    ): this;
+    on(
+        event_pattern: "__ON_DEFINE__",
+        callback: (event: DefineEvent) => void,
+    ): this;
+    on(
+        event_pattern: RegExp,
+        callback: (
+            event: ScenarioEvent | StepEvent | ExecuteEvent | DefineEvent,
+        ) => void,
+    ): this;
 }
 
 export function instance(): EventBus;

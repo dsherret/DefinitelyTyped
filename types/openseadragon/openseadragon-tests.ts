@@ -23,11 +23,11 @@ const preProcessHandler: PreprocessEventHandler = ({ eventType }) => {
     console.log(eventType === "open");
 };
 
-viewer.addHandler("tile-loaded", event => {
+viewer.addHandler("tile-loaded", (event) => {
     console.log(event.eventSource);
 });
 
-viewer.addHandler("full-screen", event => {
+viewer.addHandler("full-screen", (event) => {
     console.log(event.fullScreen);
 });
 

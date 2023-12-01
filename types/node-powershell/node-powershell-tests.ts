@@ -10,7 +10,9 @@ const powershell = new nodePowershell(options);
 
 async function run() {
     // Adding commands
-    await powershell.addCommand("Write-Host \"node-powershell is pretty awesome\"");
+    await powershell.addCommand(
+        'Write-Host "node-powershell is pretty awesome"',
+    );
 
     // Adding parameters
     // $ExpectType string[]
@@ -33,6 +35,6 @@ powershell.streams.stdin.write("data");
 powershell.streams.stdout.on("data", (data: any) => {});
 
 // Events
-powershell.on("output", data => {});
-powershell.on("err", err => {});
-powershell.on("end", code => {});
+powershell.on("output", (data) => {});
+powershell.on("err", (err) => {});
+powershell.on("end", (code) => {});

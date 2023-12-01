@@ -13,12 +13,18 @@ const credentialsFunc = (): Hawk.server.Credentials => {
 };
 
 Http.createServer(async (req, res) => {
-    const { credentials, artifacts } = await Hawk.server.authenticate(req, credentialsFunc);
+    const { credentials, artifacts } = await Hawk.server.authenticate(
+        req,
+        credentialsFunc,
+    );
     const payload = `Hello ${credentials.user} ${artifacts.ext}`;
     const status = 200;
 
     const headers: Record<string, string> = { "Content-Type": "text/plain" };
-    const header = Hawk.server.header(credentials, artifacts, { payload, contentType: headers["Content-Type"] });
+    const header = Hawk.server.header(credentials, artifacts, {
+        payload,
+        contentType: headers["Content-Type"],
+    });
     headers["Server-Authorization"] = header;
 
     res.writeHead(status, headers);
@@ -37,12 +43,18 @@ const requestOptions: request.OptionsWithUri = {
     headers: {},
 };
 
-const header = Hawk.client.header("http://example.com:8000/resource/1?b=1&a=2", "GET", {
-    credentials,
-    ext: "some-app-data",
-});
+const header = Hawk.client.header(
+    "http://example.com:8000/resource/1?b=1&a=2",
+    "GET",
+    {
+        credentials,
+        ext: "some-app-data",
+    },
+);
 requestOptions.headers!.Authorization = header;
 
 request(requestOptions, (_error, response, body) => {
-    Hawk.client.authenticate(response, credentials, header.artifacts, { payload: body });
+    Hawk.client.authenticate(response, credentials, header.artifacts, {
+        payload: body,
+    });
 });

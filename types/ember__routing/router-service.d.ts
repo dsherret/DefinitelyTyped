@@ -242,7 +242,10 @@ export default class RouterService extends Service {
      *                  a mapping of query parameters
      * @returns         the string representing the generated URL
      */
-    urlFor(routeName: string, ...args: RouteModel[] | [...RouteModel[], { queryParams: object }]): string;
+    urlFor(
+        routeName: string,
+        ...args: RouteModel[] | [...RouteModel[], { queryParams: object }]
+    ): string;
 
     // https://api.emberjs.com/ember/3.6/classes/RouterService/events/routeDidChange?anchor=routeDidChange
     /**
@@ -313,10 +316,7 @@ export default class RouterService extends Service {
      * @param name the name of the event
      * @param args arguments to pass to the event
      */
-    trigger(
-        name: string,
-        args: any,
-    ): void;
+    trigger(name: string, args: any): void;
 
     /**
      * Takes a string URL and returns a `RouteInfo` for the leafmost route represented

@@ -4,9 +4,12 @@ import ifr = require("iframe-resizer");
 function testOne(): void {
     const iframe: HTMLIFrameElement = document.createElement("iframe");
     const options: iframeResizer.IFrameOptions = { log: true };
-    const components: iframeResizer.IFrameComponent[] = iframeResizer(options, iframe);
+    const components: iframeResizer.IFrameComponent[] = iframeResizer(
+        options,
+        iframe,
+    );
     if (components) {
-        components.forEach(component => console.log(component.iFrameResizer));
+        components.forEach((component) => console.log(component.iFrameResizer));
     } else {
         console.log("No components");
     }
@@ -14,16 +17,19 @@ function testOne(): void {
 
 function testTwo(): void {
     const iframe: HTMLIFrameElement = document.createElement("iframe");
-    const components: iframeResizer.IFrameComponent[] = iframeResizer({
-        initCallback: () => {
-            console.log("Init");
+    const components: iframeResizer.IFrameComponent[] = iframeResizer(
+        {
+            initCallback: () => {
+                console.log("Init");
+            },
+            closedCallback: () => {
+                console.log("Closed");
+            },
         },
-        closedCallback: () => {
-            console.log("Closed");
-        },
-    }, iframe);
+        iframe,
+    );
     if (components) {
-        components.forEach(component => console.log(component.iFrameResizer));
+        components.forEach((component) => console.log(component.iFrameResizer));
     } else {
         console.log("No components");
     }
@@ -38,7 +44,7 @@ function testOneRequire(): void {
     const options: ifr.IFrameOptions = { log: true };
     const components: ifr.IFrameComponent[] = ifr(options, iframe);
     if (components) {
-        components.forEach(component => console.log(component.iFrameResizer));
+        components.forEach((component) => console.log(component.iFrameResizer));
     } else {
         console.log("No components");
     }
@@ -46,16 +52,19 @@ function testOneRequire(): void {
 
 function testTwoRequire(): void {
     const iframe: HTMLIFrameElement = document.createElement("iframe");
-    const components: ifr.IFrameComponent[] = ifr({
-        initCallback: () => {
-            console.log("Init");
+    const components: ifr.IFrameComponent[] = ifr(
+        {
+            initCallback: () => {
+                console.log("Init");
+            },
+            closedCallback: () => {
+                console.log("Closed");
+            },
         },
-        closedCallback: () => {
-            console.log("Closed");
-        },
-    }, iframe);
+        iframe,
+    );
     if (components) {
-        components.forEach(component => console.log(component.iFrameResizer));
+        components.forEach((component) => console.log(component.iFrameResizer));
     } else {
         console.log("No components");
     }

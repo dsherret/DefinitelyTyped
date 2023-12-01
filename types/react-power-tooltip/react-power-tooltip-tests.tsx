@@ -6,7 +6,11 @@ const ToolTipTest = () => {
     const [visible, setVisible] = useState(false);
     return (
         <div>
-            <p id="text" onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)}>
+            <p
+                id="text"
+                onMouseEnter={() => setVisible(true)}
+                onMouseLeave={() => setVisible(false)}
+            >
                 This is a cool component
             </p>
             <ToolTip show={visible} position="right center" arrowAlign="center">

@@ -2,14 +2,24 @@ declare namespace CKEDITOR {
     interface CKEditorPluginsCore {
         balloontoolbar?: {
             context: {
-                new(editor: editor, options: plugins.balloontoolbar.contextDefinition): plugins.balloontoolbar.context;
+                new (
+                    editor: editor,
+                    options: plugins.balloontoolbar.contextDefinition,
+                ): plugins.balloontoolbar.context;
             };
-            contextManager: { new(editor: editor): plugins.balloontoolbar.contextManager };
+            contextManager: {
+                new (editor: editor): plugins.balloontoolbar.contextManager;
+            };
         } & plugins.balloontoolbar;
     }
 
     interface CKEditorUIStatic {
-        balloonToolbar: { new(editor: editor, definition: ui.balloonPanel.definition): ui.balloonToolbar };
+        balloonToolbar: {
+            new (
+                editor: editor,
+                definition: ui.balloonPanel.definition,
+            ): ui.balloonToolbar;
+        };
     }
 
     interface CKEditorPluginsEditorInstance {
@@ -20,7 +30,9 @@ declare namespace CKEDITOR {
         interface balloonToolbar extends _uiElement {
             addElement(name: string, element: button | richCombo): void;
 
-            addElements(elements: { [itemName: string]: button | richCombo }): void;
+            addElements(elements: {
+                [itemName: string]: button | richCombo;
+            }): void;
 
             deleteItem(name: string): void;
 
@@ -62,7 +74,11 @@ declare namespace CKEDITOR {
                 widgets?: string[] | string | undefined;
 
                 refresh?:
-                    | ((editor: editor, path: dom.elementPath, selection: dom.selection) => dom.element)
+                    | ((
+                          editor: editor,
+                          path: dom.elementPath,
+                          selection: dom.selection,
+                      ) => dom.element)
                     | undefined;
             }
 

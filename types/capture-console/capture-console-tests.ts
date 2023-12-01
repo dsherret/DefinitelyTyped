@@ -6,7 +6,11 @@ captureconsole.capture(process.stdout, { quiet: true }, () => {}); // $ExpectTyp
 
 captureconsole.capture([process.stdout, process.stdin], () => {}); // $ExpectType string[]
 captureconsole.capture([process.stdout, process.stdin], {}, () => {}); // $ExpectType string[]
-captureconsole.capture([process.stdout, process.stdin], { quiet: true }, () => {}); // $ExpectType string[]
+captureconsole.capture(
+    [process.stdout, process.stdin],
+    { quiet: true },
+    () => {},
+); // $ExpectType string[]
 
 captureconsole.captureStderr(() => {}); // $ExpectType string
 captureconsole.captureStderr({}, () => {}); // $ExpectType string
@@ -20,8 +24,15 @@ captureconsole.captureStdout(() => {}); // $ExpectType string
 captureconsole.captureStdout({}, () => {}); // $ExpectType string
 captureconsole.captureStdout({ quiet: true }, () => {}); // $ExpectType string
 
-captureconsole.hook(process.stdout, (string: string, encoding?: string, fd?: (error?: any) => void) => {}); // $ExpectType () => boolean
-captureconsole.hook(process.stdout, {}, (string: string, encoding?: string, fd?: (error?: any) => void) => {}); // $ExpectType () => boolean
+captureconsole.hook(
+    process.stdout,
+    (string: string, encoding?: string, fd?: (error?: any) => void) => {},
+); // $ExpectType () => boolean
+captureconsole.hook(
+    process.stdout,
+    {},
+    (string: string, encoding?: string, fd?: (error?: any) => void) => {},
+); // $ExpectType () => boolean
 // $ExpectType () => boolean
 captureconsole.hook(
     process.stdout,
@@ -45,8 +56,15 @@ captureconsole.interceptStdout(() => {}); // $ExpectType string
 captureconsole.interceptStdout({}, () => {}); // $ExpectType string
 captureconsole.interceptStdout({ quiet: true }, () => {}); // $ExpectType string
 
-captureconsole.startCapture(process.stdout, (string: string, encoding?: string, fd?: (error?: any) => void) => {}); // $ExpectType boolean
-captureconsole.startCapture(process.stdout, {}, (string: string, encoding?: string, fd?: (error?: any) => void) => {}); // $ExpectType boolean
+captureconsole.startCapture(
+    process.stdout,
+    (string: string, encoding?: string, fd?: (error?: any) => void) => {},
+); // $ExpectType boolean
+captureconsole.startCapture(
+    process.stdout,
+    {},
+    (string: string, encoding?: string, fd?: (error?: any) => void) => {},
+); // $ExpectType boolean
 // $ExpectType boolean
 captureconsole.startCapture(
     process.stdout,

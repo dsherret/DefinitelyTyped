@@ -1,4 +1,11 @@
-import { AllowPartial, Data, Full, Helper, Helpers, OptionalHelper } from "meteor/dburles:collection-helpers";
+import {
+    AllowPartial,
+    Data,
+    Full,
+    Helper,
+    Helpers,
+    OptionalHelper,
+} from "meteor/dburles:collection-helpers";
 import { Mongo } from "meteor/mongo";
 
 interface Author {
@@ -100,7 +107,9 @@ interface OptionalHelpers {
     zero?: Helper<number> | undefined;
 }
 
-const optionalHelpers = new Mongo.Collection<OptionalHelpers>("optionalHelpers");
+const optionalHelpers = new Mongo.Collection<OptionalHelpers>(
+    "optionalHelpers",
+);
 // optional helpers still have to be provided when calling helpers
 // @ts-expect-error
 optionalHelpers.helpers({});
@@ -126,13 +135,15 @@ optionalHelpers.findOne(optionalHelper1)!.increment();
 // $ExpectType void
 optionalHelpers.find(optionalHelper1).fetch()[0].increment();
 
-const foundOptionalHelpers1: OptionalHelpers = optionalHelpers.findOne(optionalHelper1)!;
+const foundOptionalHelpers1: OptionalHelpers =
+    optionalHelpers.findOne(optionalHelper1)!;
 // however, variables of the interface type will be missing their helpers unless declared as Full<T>
 // @ts-expect-error
 foundOptionalHelpers1.increment();
 
 // you can do this, but it's kinda ugly imo
-const foundOptionalHelpers1Full: Full<OptionalHelpers> = optionalHelpers.findOne(optionalHelper1)!;
+const foundOptionalHelpers1Full: Full<OptionalHelpers> =
+    optionalHelpers.findOne(optionalHelper1)!;
 // $ExpectType void
 foundOptionalHelpers1Full.increment();
 
@@ -161,7 +172,9 @@ interface RecursiveHelpers {
     factorial: (arg: number) => number;
 }
 
-const recursiveHelpers = new Mongo.Collection<RecursiveHelpers>("recursiveHelpers");
+const recursiveHelpers = new Mongo.Collection<RecursiveHelpers>(
+    "recursiveHelpers",
+);
 recursiveHelpers.helpers({
     factorial(x) {
         if (x <= 1) return 1;
@@ -180,7 +193,9 @@ interface RecursiveOptionalHelpers {
     factorial?: ((arg: number) => number) | undefined;
 }
 
-const recursiveOptionalHelpers = new Mongo.Collection<RecursiveHelpers>("recursiveHelpers");
+const recursiveOptionalHelpers = new Mongo.Collection<RecursiveHelpers>(
+    "recursiveHelpers",
+);
 recursiveHelpers.helpers({
     factorial(x) {
         if (x <= 1) return 1;
@@ -236,7 +251,9 @@ interface ComplicatedMembers {
     nonHelperUnion: number | string;
     helperMethodOrString: Helper<(() => string) | string>;
 }
-const complicatedMembers = new Mongo.Collection<ComplicatedMembers>("complicatedMembers");
+const complicatedMembers = new Mongo.Collection<ComplicatedMembers>(
+    "complicatedMembers",
+);
 
 // every member recognized as a helper is required when providing helpers
 // $ExpectType void
@@ -345,7 +362,8 @@ const complicatedMembersId = complicatedMembers.insert({
     nonHelperUnion: "test",
 });
 
-const complicatedMembersInstance = complicatedMembers.findOne(complicatedMembersId)!;
+const complicatedMembersInstance =
+    complicatedMembers.findOne(complicatedMembersId)!;
 // $ExpectType number
 complicatedMembersInstance.helperNumber + 1;
 // $ExpectType string
@@ -353,7 +371,8 @@ complicatedMembersInstance.optionalHelperString.slice();
 // $ExpectType boolean
 complicatedMembersInstance.methodUnion(3);
 const strOrNum: string | number = complicatedMembersInstance.helperUnion;
-const falseOrNull: false | null = complicatedMembersInstance.helperNullableFalse;
+const falseOrNull: false | null =
+    complicatedMembersInstance.helperNullableFalse;
 const helperNullAccess: null = complicatedMembersInstance.helperNull;
 
 // Limitation: null/undefined helpers, and helpers whose types are unions with null or undefined, can't be properly
@@ -364,7 +383,8 @@ const asComplicatedMembers: ComplicatedMembers = complicatedMembersInstance;
 
 // you can work with these by:
 // - accepting Helper<null> rather than null
-const falseOrNull2: false | Helper<null> = asComplicatedMembers.helperNullableFalse;
+const falseOrNull2: false | Helper<null> =
+    asComplicatedMembers.helperNullableFalse;
 
 // - using a "voidable" rather than a nullable
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -383,7 +403,9 @@ interface ActuallyOptionalHelpers {
     optionalHelperValue: OptionalHelper<number>;
     optionalHelperName?: OptionalHelper<string> | undefined;
 }
-const actuallyOptionalHelpers = new Mongo.Collection<ActuallyOptionalHelpers>("actuallyOptionalHelpers");
+const actuallyOptionalHelpers = new Mongo.Collection<ActuallyOptionalHelpers>(
+    "actuallyOptionalHelpers",
+);
 
 // every one of those helpers is totally optional - we can even provide an empty object!
 // $ExpectType void

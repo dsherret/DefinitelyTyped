@@ -25,10 +25,12 @@ declare namespace GoogleAdsScripts {
          *        var excludedVideoMobileAppCategory = excludedVideoMobileAppCategoryIterator.next();
          *      }
          */
-        interface ExcludedVideoMobileAppCategoryIterator extends Base.Iterator<ExcludedVideoMobileAppCategory> {}
+        interface ExcludedVideoMobileAppCategoryIterator
+            extends Base.Iterator<ExcludedVideoMobileAppCategory> {}
 
         /** An operation representing creation of a new excluded video mobile application category. */
-        interface ExcludedVideoMobileAppCategoryOperation extends Base.Operation<ExcludedVideoMobileAppCategory> {}
+        interface ExcludedVideoMobileAppCategoryOperation
+            extends Base.Operation<ExcludedVideoMobileAppCategory> {}
 
         /**
          * Fetches excluded video mobile application categories. Supports filtering and sorting.
@@ -46,11 +48,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedVideoMobileAppCategorySelector
-            extends
-                Base.Selector<ExcludedVideoMobileAppCategoryIterator>,
+            extends Base.Selector<ExcludedVideoMobileAppCategoryIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

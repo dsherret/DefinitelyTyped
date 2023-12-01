@@ -13,7 +13,10 @@ const fn2 = inflight("key", () => {});
 fn2!();
 
 // $ExpectType ((a: string, b: number, c: Record<string, number>) => number) | null
-const fn3 = inflight("key", (a: string, b: number, c: Record<string, number>) => 1);
+const fn3 = inflight(
+    "key",
+    (a: string, b: number, c: Record<string, number>) => 1,
+);
 
 // $ExpectType number
 fn3!("a", 1, {});

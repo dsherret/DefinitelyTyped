@@ -4,7 +4,7 @@ interface MyAppScope extends ng.IScope {
     events: ng.bootstrap.calendar.IEvent[];
 }
 
-myApp.config(function(calendarConfig: ng.bootstrap.calendar.ICalendarConfig) {
+myApp.config(function (calendarConfig: ng.bootstrap.calendar.ICalendarConfig) {
     calendarConfig.templates.calendarMonthView = "path/to/custom/template.html"; // change the month view template to a custom template
 
     calendarConfig.dateFormatter = "moment"; // use either moment or angular to format dates on the calendar. Default angular. Setting this will override any date formats you have already set.

@@ -4,7 +4,10 @@ export interface DatePipeYears {
     minYear: number;
     maxYear: number;
 }
-export function createAutoCorrectedDatePipe(dateFormat?: string, validYears?: DatePipeYears): Pipe;
+export function createAutoCorrectedDatePipe(
+    dateFormat?: string,
+    validYears?: DatePipeYears,
+): Pipe;
 
 export interface NumberMaskOptions {
     prefix: string;
@@ -19,4 +22,6 @@ export interface NumberMaskOptions {
     allowLeadingZeroes: boolean;
     integerLimit: number | null;
 }
-export function createNumberMask(maskOptions?: Partial<NumberMaskOptions>): (rawValue: string) => Mask;
+export function createNumberMask(
+    maskOptions?: Partial<NumberMaskOptions>,
+): (rawValue: string) => Mask;

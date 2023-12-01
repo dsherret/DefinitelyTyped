@@ -23,7 +23,7 @@ ChartMogul.DataSource.all(config, {
     name: "",
 });
 
-ChartMogul.DataSource.all(config).then(data => {
+ChartMogul.DataSource.all(config).then((data) => {
     data.data_sources[0]; // $ExpectType DataSource
     data.data_sources[0].name; // $ExpectType string
 });
@@ -36,7 +36,12 @@ ChartMogul.Customer.create(config, {
     attributes: {
         tags: ["important", "Prio1"],
         custom: [
-            { type: "String", key: "channel", value: "Facebook", source: "integration" },
+            {
+                type: "String",
+                key: "channel",
+                value: "Facebook",
+                source: "integration",
+            },
             { type: "Integer", key: "age", value: 18 },
         ],
     },
@@ -56,7 +61,7 @@ ChartMogul.Customer.all(config, {
     data_source_uuid: "",
 });
 
-ChartMogul.Customer.all(config).then(data => {
+ChartMogul.Customer.all(config).then((data) => {
     data.entries[0]; // $ExpectType Customer
     data.entries[0].attributes!.stripe!["something"]; // $ExpectType any
     data.page!; // $ExpectType number
@@ -96,7 +101,7 @@ ChartMogul.Plan.destroy(config, "");
 
 ChartMogul.Plan.all(config, {
     page: 1,
-}).then(data => {
+}).then((data) => {
     data.plans[0]; // $ExpectType Plan
     data.plans[0].name!; // $ExpectType string
     data.page!; // $ExpectType number
@@ -118,7 +123,7 @@ ChartMogul.Invoice.create(config, "", {
 ChartMogul.Invoice.destroy(config, "");
 ChartMogul.Invoice.all(config, {
     external_id: "",
-}).then(data => {
+}).then((data) => {
     data.invoices[0]; // $ExpectType Invoice
     data.invoices[0].uuid!; // $ExpectType string
     data.page!; // $ExpectType number
@@ -126,7 +131,7 @@ ChartMogul.Invoice.all(config, {
 
 ChartMogul.Invoice.all(config, "", {
     page: 1,
-}).then(data => {
+}).then((data) => {
     data.customer_uuid!; // $ExpectType string
     data.invoices[0]; // $ExpectType Invoice
     data.invoices[0].uuid!; // $ExpectType string
@@ -142,7 +147,7 @@ ChartMogul.Transaction.create(config, "", {
 
 ChartMogul.Subscription.all(config, "", {
     page: 1,
-}).then(data => {
+}).then((data) => {
     data.customer_uuid!; // $ExpectType string
     data.subscriptions[0]; // $ExpectType Subscription
     data.subscriptions[0].uuid; // $ExpectType string
@@ -151,7 +156,7 @@ ChartMogul.Subscription.all(config, "", {
 
 ChartMogul.Subscription.cancel(config, "", {
     cancelled_at: "",
-}).then(data => {
+}).then((data) => {
     data.customer_uuid; // $ExpectType string
 });
 
@@ -173,16 +178,12 @@ ChartMogul.Tag.remove(config, "", {
 
 // $ExpectType Promise<CustomAttributes>
 ChartMogul.CustomAttribute.add(config, "", {
-    custom: [
-        { type: "", key: "", value: 0 },
-    ],
+    custom: [{ type: "", key: "", value: 0 }],
 });
 // $ExpectType Promise<Entries<Customer>>
 ChartMogul.CustomAttribute.add(config, "", {
     email: "",
-    custom: [
-        { type: "", key: "", value: 0 },
-    ],
+    custom: [{ type: "", key: "", value: 0 }],
 });
 
 // $ExpectType Promise<CustomAttributes>
@@ -195,7 +196,7 @@ ChartMogul.CustomAttribute.update(config, "", {
 
 ChartMogul.CustomAttribute.remove(config, "", {
     custom: [""],
-}).then(data => {
+}).then((data) => {
     data.custom["key"]; // $ExpectType any
 });
 
@@ -255,7 +256,7 @@ ChartMogul.Metrics.mrrChurnRate(config, {
 ChartMogul.Metrics.ltv(config, {
     "start-date": "2015-01-01",
     "end-date": "2015-11-01",
-}).then(data => {
+}).then((data) => {
     data.entries[0].ltv; // $ExpectType number
     data.summary; // $ExpectType Summary
     data.summary.current; // $ExpectType number
@@ -268,7 +269,7 @@ ChartMogul.Metrics.Customer.subscriptions(config, "", {
 
 ChartMogul.Metrics.Customer.activities(config, "", {
     page: 1,
-}).then(data => {
+}).then((data) => {
     data.entries; // $ExpectType MetricsActivity[]
     data.entries[0]; // $ExpectType MetricsActivity
     data.entries[0]["activity-mrr"]; // $ExpectType number

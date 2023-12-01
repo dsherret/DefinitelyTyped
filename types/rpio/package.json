@@ -1,32 +1,32 @@
 {
-    "private": true,
-    "name": "@types/rpio",
-    "version": "2.4.9999",
-    "projects": [
-        "https://github.com/jperkin/node-rpio"
-    ],
-    "dependencies": {
-        "@types/node": "*"
+  "private": true,
+  "name": "@types/rpio",
+  "version": "2.4.9999",
+  "projects": [
+    "https://github.com/jperkin/node-rpio"
+  ],
+  "dependencies": {
+    "@types/node": "*"
+  },
+  "devDependencies": {
+    "@types/rpio": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Dominik Palo",
+      "githubUsername": "DominikPalo"
     },
-    "devDependencies": {
-        "@types/rpio": "workspace:."
+    {
+      "name": "Hannes Früchtenicht",
+      "githubUsername": "Pencl"
     },
-    "owners": [
-        {
-            "name": "Dominik Palo",
-            "githubUsername": "DominikPalo"
-        },
-        {
-            "name": "Hannes Früchtenicht",
-            "githubUsername": "Pencl"
-        },
-        {
-            "name": "Mark Hoffmeyer",
-            "githubUsername": "mhoffmeyerDC"
-        },
-        {
-            "name": "Wayne Parrott",
-            "githubUsername": "wayneparrott"
-        }
-    ]
+    {
+      "name": "Mark Hoffmeyer",
+      "githubUsername": "mhoffmeyerDC"
+    },
+    {
+      "name": "Wayne Parrott",
+      "githubUsername": "wayneparrott"
+    }
+  ]
 }

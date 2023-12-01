@@ -2,7 +2,10 @@ import * as Boom from "boom";
 import * as Hapi from "hapi";
 
 // Assignment of a typical function to ContinuationValueFunction is possible
-const handleError: Hapi.ContinuationValueFunction = (err?: Boom.BoomError | null, value?: any) => {
+const handleError: Hapi.ContinuationValueFunction = (
+    err?: Boom.BoomError | null,
+    value?: any,
+) => {
     if (!err || !err.data.isCustom === true) {
         return;
     }

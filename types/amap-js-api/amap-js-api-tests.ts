@@ -331,22 +331,27 @@ map.on("hotspotclick", (event: AMap.Map.EventMap["hotspotclick"]) => {
 });
 
 // $ExpectType EventListener<0>
-AMap.event.addDomListener(div, "click", event => {
+AMap.event.addDomListener(div, "click", (event) => {
     // $ExpectType number
     event.clientX;
 });
 
 // $ExpectType EventListener<1>
-AMap.event.addListener(map, "hotspotclick", function(event: AMap.Map.EventMap["hotspotclick"]) {
-    // $ExpectType "hotspotclick"
-    event.type;
-    // $ExpectType string
-    event.id;
-    // $ExpectType LngLat
-    event.lnglat;
-    // $ExpectType number
-    this.test;
-}, { test: 1 });
+AMap.event.addListener(
+    map,
+    "hotspotclick",
+    function (event: AMap.Map.EventMap["hotspotclick"]) {
+        // $ExpectType "hotspotclick"
+        event.type;
+        // $ExpectType string
+        event.id;
+        // $ExpectType LngLat
+        event.lnglat;
+        // $ExpectType number
+        this.test;
+    },
+    { test: 1 },
+);
 AMap.event.addListener(map, "click", (event: AMap.Map.EventMap["click"]) => {
     // $ExpectType "click"
     event.type;
@@ -360,7 +365,7 @@ AMap.event.addListener(map, "click", (event: AMap.Map.EventMap["click"]) => {
 const eventListener = AMap.event.addListenerOnce(
     map,
     "hotspotclick",
-    function(event: AMap.Map.EventMap["hotspotclick"]) {
+    function (event: AMap.Map.EventMap["hotspotclick"]) {
         // $ExpectType "hotspotclick"
         event.type;
         // $ExpectType string
@@ -454,7 +459,11 @@ AMap.event.trigger(map, "complete");
     // $ExpectType boolean
     geometryUtil.doesSegmentPolygonIntersect(point, point, polygon);
     // $ExpectType boolean
-    geometryUtil.doesSegmentPolygonIntersect(pointTuple, pointTuple, polygonTuple);
+    geometryUtil.doesSegmentPolygonIntersect(
+        pointTuple,
+        pointTuple,
+        polygonTuple,
+    );
 
     // $ExpectType boolean
     geometryUtil.doesSegmentRingIntersect(point, point, ring);
@@ -469,7 +478,12 @@ AMap.event.trigger(map, "complete");
     // $ExpectType boolean
     geometryUtil.doesSegmentsIntersect(point, point, point, point);
     // $ExpectType boolean
-    geometryUtil.doesSegmentsIntersect(pointTuple, pointTuple, pointTuple, pointTuple);
+    geometryUtil.doesSegmentsIntersect(
+        pointTuple,
+        pointTuple,
+        pointTuple,
+        pointTuple,
+    );
 
     // $ExpectType boolean
     geometryUtil.isPointInRing(point, ring);
@@ -645,7 +659,11 @@ const testMap = new AMap.Map(div, {
     showBuildingBlock: true,
     skyColor: "#fff",
     preloadMode: true,
-    mask: [[1, 2], [2, 3], [3, 4]],
+    mask: [
+        [1, 2],
+        [2, 3],
+        [3, 4],
+    ],
 });
 
 // $ExpectType number
@@ -660,7 +678,7 @@ testMap.getCenter();
 // $ExpectType HTMLElement | null
 testMap.getContainer();
 
-testMap.getCity(city => {
+testMap.getCity((city) => {
     // $ExpectType string
     city.city;
     // $ExpectType string
@@ -842,7 +860,13 @@ testMap.setFeatures("all");
 // $ExpectType void
 testMap.setFeatures(["bg"]);
 
-const feature: "all" | "bg" | "point" | "road" | "building" | AMap.Map.Feature[] = testMap.getFeatures();
+const feature:
+    | "all"
+    | "bg"
+    | "point"
+    | "road"
+    | "building"
+    | AMap.Map.Feature[] = testMap.getFeatures();
 
 // $ExpectType void
 testMap.setDefaultLayer(tileLayer);
@@ -866,7 +890,10 @@ testMap.geodeticCoordToLngLat(pixel);
 // $ExpectType void
 testMap.destroy();
 
-declare function dblClickHandler(this: AMap.Map, event: AMap.Map.EventMap["dblclick"]): void;
+declare function dblClickHandler(
+    this: AMap.Map,
+    event: AMap.Map.EventMap["dblclick"],
+): void;
 
 // $ExpectType Map
 testMap.on("click", (event: AMap.Map.EventMap["click"]) => {
@@ -1082,10 +1109,13 @@ util.cancelIdleCallback(idleCallbackHandle);
 // $ExpectType number
 util.requestAnimFrame(() => {});
 // $ExpectType number
-const animFrameHandle = util.requestAnimFrame(function() {
-    // $ExpectType number
-    this.test;
-}, { test: 1 });
+const animFrameHandle = util.requestAnimFrame(
+    function () {
+        // $ExpectType number
+        this.test;
+    },
+    { test: 1 },
+);
 
 // $ExpectType void
 util.cancelAnimFrame(animFrameHandle);
@@ -1525,7 +1555,7 @@ testTileLayerGroup.addLayer(massMarksLayer);
 testTileLayerGroup.getLayers();
 
 // $ExpectType TileLayer | null
-testTileLayerGroup.getLayer(function(item, index, list) {
+testTileLayerGroup.getLayer(function (item, index, list) {
     // $ExpectType TileLayer
     item;
     // $ExpectType number
@@ -1538,7 +1568,7 @@ testTileLayerGroup.getLayer(function(item, index, list) {
     return true;
 });
 
-testTileLayerGroup.hasLayer(function(item, index, list) {
+testTileLayerGroup.hasLayer(function (item, index, list) {
     // $ExpectType TileLayer
     item;
     // $ExpectType number
@@ -1560,7 +1590,7 @@ testTileLayerGroup.removeLayer([tileLayer]);
 // $ExpectType LayerGroup<TileLayer>
 testTileLayerGroup.clearLayers();
 
-testTileLayerGroup.eachLayer(function(item, index, list) {
+testTileLayerGroup.eachLayer(function (item, index, list) {
     // $ExpectType TileLayer
     item;
     // $ExpectType number
@@ -1570,16 +1600,19 @@ testTileLayerGroup.eachLayer(function(item, index, list) {
     // $ExpectType TileLayer
     this;
 });
-testTileLayerGroup.eachLayer(function(item, index, list) {
-    // $ExpectType TileLayer
-    item;
-    // $ExpectType number
-    index;
-    // $ExpectType TileLayer[]
-    list;
-    // $ExpectType number
-    this.test;
-}, { test: 1 });
+testTileLayerGroup.eachLayer(
+    function (item, index, list) {
+        // $ExpectType TileLayer
+        item;
+        // $ExpectType number
+        index;
+        // $ExpectType TileLayer[]
+        list;
+        // $ExpectType number
+        this.test;
+    },
+    { test: 1 },
+);
 
 // $ExpectType LayerGroup<TileLayer>
 testTileLayerGroup.setMap(map);
@@ -1656,9 +1689,12 @@ new AMap.MassMarks([massMarksData1], {
 });
 
 // $ExpectType MassMarks<MassMarksCustomData>
-const testMassMarks = new AMap.MassMarks<MassMarksCustomData>([massMarksMassMarksCustomData], {
-    style: [massMarksStyle1, massMarksStyle2],
-});
+const testMassMarks = new AMap.MassMarks<MassMarksCustomData>(
+    [massMarksMassMarksCustomData],
+    {
+        style: [massMarksStyle1, massMarksStyle2],
+    },
+);
 
 // $ExpectType void
 testMassMarks.setStyle(massMarksStyle1);
@@ -1687,16 +1723,19 @@ massMarksCustomData.lnglat;
 // $ExpectType void
 testMassMarks.clear();
 
-testMassMarks.on("click", (event: AMap.MassMarks.EventMap<typeof testMassMarks>["click"]) => {
-    // $ExpectType "click"
-    event.type;
+testMassMarks.on(
+    "click",
+    (event: AMap.MassMarks.EventMap<typeof testMassMarks>["click"]) => {
+        // $ExpectType "click"
+        event.type;
 
-    // $ExpectType MassMarksCustomData
-    event.data;
+        // $ExpectType MassMarksCustomData
+        event.data;
 
-    // $ExpectType MassMarks<MassMarksCustomData>
-    event.target;
-});
+        // $ExpectType MassMarks<MassMarksCustomData>
+        event.target;
+    },
+);
 
 /**
  * layer/tileLayer.ts
@@ -2106,28 +2145,37 @@ testBezierCurve.setExtData({ test: "123" });
 // $ExpectType {} | BezierCurveExtraData
 testBezierCurve.getExtData();
 
-testBezierCurve.on("click", (event: AMap.BezierCurve.EventMap<typeof testBezierCurve>["click"]) => {
-    // $ExpectType "click"
-    event.type;
-    // $ExpectType LngLat
-    event.lnglat;
-    // $ExpectType BezierCurve<BezierCurveExtraData>
-    event.target;
-});
+testBezierCurve.on(
+    "click",
+    (event: AMap.BezierCurve.EventMap<typeof testBezierCurve>["click"]) => {
+        // $ExpectType "click"
+        event.type;
+        // $ExpectType LngLat
+        event.lnglat;
+        // $ExpectType BezierCurve<BezierCurveExtraData>
+        event.target;
+    },
+);
 
-testBezierCurve.on("show", (event: AMap.BezierCurve.EventMap<typeof testBezierCurve>["show"]) => {
-    // $ExpectType "show"
-    event.type;
-    // $ExpectType BezierCurve<BezierCurveExtraData>
-    event.target;
-});
+testBezierCurve.on(
+    "show",
+    (event: AMap.BezierCurve.EventMap<typeof testBezierCurve>["show"]) => {
+        // $ExpectType "show"
+        event.type;
+        // $ExpectType BezierCurve<BezierCurveExtraData>
+        event.target;
+    },
+);
 
-testBezierCurve.on("options", (event: AMap.BezierCurve.EventMap<typeof testBezierCurve>["options"]) => {
-    // $ExpectType "options"
-    event.type;
-    // @ts-expect-error
-    event.target;
-});
+testBezierCurve.on(
+    "options",
+    (event: AMap.BezierCurve.EventMap<typeof testBezierCurve>["options"]) => {
+        // $ExpectType "options"
+        event.type;
+        // @ts-expect-error
+        event.target;
+    },
+);
 
 /**
  * overlay/circle.ts
@@ -2259,26 +2307,35 @@ testCircle.contains(lnglat);
 // $ExpectType boolean
 testCircle.contains(lnglatTuple);
 
-testCircle.on("click", (event: AMap.Circle.EventMap<typeof testCircle>["click"]) => {
-    // $ExpectType "click"
-    event.type;
-    // $ExpectType Circle<CircleExtraData>
-    event.target;
-});
+testCircle.on(
+    "click",
+    (event: AMap.Circle.EventMap<typeof testCircle>["click"]) => {
+        // $ExpectType "click"
+        event.type;
+        // $ExpectType Circle<CircleExtraData>
+        event.target;
+    },
+);
 
-testCircle.on("setCenter", (event: AMap.Circle.EventMap<typeof testCircle>["setCenter"]) => {
-    // $ExpectType "setCenter"
-    event.type;
-    // @ts-expect-error
-    event.target;
-});
+testCircle.on(
+    "setCenter",
+    (event: AMap.Circle.EventMap<typeof testCircle>["setCenter"]) => {
+        // $ExpectType "setCenter"
+        event.type;
+        // @ts-expect-error
+        event.target;
+    },
+);
 
-testCircle.on("change", (event: AMap.Circle.EventMap<typeof testCircle>["change"]) => {
-    // $ExpectType "change"
-    event.type;
-    // $ExpectType Circle<CircleExtraData>
-    event.target;
-});
+testCircle.on(
+    "change",
+    (event: AMap.Circle.EventMap<typeof testCircle>["change"]) => {
+        // $ExpectType "change"
+        event.type;
+        // $ExpectType Circle<CircleExtraData>
+        event.target;
+    },
+);
 
 /**
  * overlay/contextMenu.ts
@@ -2297,7 +2354,7 @@ const testContextMenu = new AMap.ContextMenu<ContextMenuExtraData>({
 });
 
 // $ExpectType void
-testContextMenu.addItem("item", function() {
+testContextMenu.addItem("item", function () {
     // $ExpectType HTMLLIElement
     this;
 });
@@ -2315,17 +2372,23 @@ testContextMenu.open(map, lnglat);
 // $ExpectType void
 testContextMenu.close();
 
-testContextMenu.on("items", (event: AMap.ContextMenu.EventMap<typeof testContextMenu>["items"]) => {
-    // $ExpectType "items"
-    event.type;
-});
+testContextMenu.on(
+    "items",
+    (event: AMap.ContextMenu.EventMap<typeof testContextMenu>["items"]) => {
+        // $ExpectType "items"
+        event.type;
+    },
+);
 
-testContextMenu.on("open", (event: AMap.ContextMenu.EventMap<typeof testContextMenu>["open"]) => {
-    // $ExpectType "open"
-    event.type;
-    // $ExpectType ContextMenu<ContextMenuExtraData>
-    event.target;
-});
+testContextMenu.on(
+    "open",
+    (event: AMap.ContextMenu.EventMap<typeof testContextMenu>["open"]) => {
+        // $ExpectType "open"
+        event.type;
+        // $ExpectType ContextMenu<ContextMenuExtraData>
+        event.target;
+    },
+);
 
 /**
  * overlay/ellipse.ts
@@ -2518,7 +2581,7 @@ testGeoJSON.removeOverlay([marker]);
 // $ExpectType boolean
 testGeoJSON.hasOverlay(marker);
 // $ExpectType boolean
-testGeoJSON.hasOverlay(m => m === marker);
+testGeoJSON.hasOverlay((m) => m === marker);
 
 // $ExpectType GeoJSON<GeoJSONExtraData>
 testGeoJSON.addOverlay(marker);
@@ -2648,26 +2711,35 @@ testInfoWindow.setAnchor(testInfoWindowAnchor);
 // $ExpectType Size | undefined
 testInfoWindow.getSize();
 
-testInfoWindow.on("change", (event: AMap.InfoWindow.EventMap<typeof testInfoWindow>["change"]) => {
-    // $ExpectType "change"
-    event.type;
-    // $ExpectType InfoWindow<InfoWindowExtraData>
-    event.target;
-});
+testInfoWindow.on(
+    "change",
+    (event: AMap.InfoWindow.EventMap<typeof testInfoWindow>["change"]) => {
+        // $ExpectType "change"
+        event.type;
+        // $ExpectType InfoWindow<InfoWindowExtraData>
+        event.target;
+    },
+);
 
-testInfoWindow.on("close", (event: AMap.InfoWindow.EventMap<typeof testInfoWindow>["close"]) => {
-    // $ExpectType "close"
-    event.type;
-    // $ExpectType InfoWindow<InfoWindowExtraData>
-    event.target;
-});
+testInfoWindow.on(
+    "close",
+    (event: AMap.InfoWindow.EventMap<typeof testInfoWindow>["close"]) => {
+        // $ExpectType "close"
+        event.type;
+        // $ExpectType InfoWindow<InfoWindowExtraData>
+        event.target;
+    },
+);
 
-testInfoWindow.on("open", (event: AMap.InfoWindow.EventMap<typeof testInfoWindow>["open"]) => {
-    // $ExpectType "open"
-    event.type;
-    // $ExpectType InfoWindow<InfoWindowExtraData>
-    event.target;
-});
+testInfoWindow.on(
+    "open",
+    (event: AMap.InfoWindow.EventMap<typeof testInfoWindow>["open"]) => {
+        // $ExpectType "open"
+        event.type;
+        // $ExpectType InfoWindow<InfoWindowExtraData>
+        event.target;
+    },
+);
 
 /**
  * overlay/labelMarker.ts
@@ -2856,8 +2928,15 @@ testMarker.setLabel({
         // $ExpectType Pixel | undefined
         testMarkerLabel.offset;
 
-        type TempLabelDirection = "top" | "right" | "bottom" | "left" | "center" | undefined;
-        const tempLabelDirection: TempLabelDirection = testMarkerLabel.direction;
+        type TempLabelDirection =
+            | "top"
+            | "right"
+            | "bottom"
+            | "left"
+            | "center"
+            | undefined;
+        const tempLabelDirection: TempLabelDirection =
+            testMarkerLabel.direction;
     } else {
         // $ExpectType undefined
         testMarkerLabel;
@@ -2903,14 +2982,14 @@ testMarker.moveAlong([lnglat], 100);
 // @ts-expect-error
 testMarker.moveAlong([[1, 2]], 100);
 // $ExpectType void
-testMarker.moveAlong([lnglat], 100, t => t, false);
+testMarker.moveAlong([lnglat], 100, (t) => t, false);
 
 // $ExpectType void
 testMarker.moveTo(lnglat, 100);
 // $ExpectType void
 testMarker.moveTo([1, 2], 100);
 // $ExpectType void
-testMarker.moveTo([1, 2], 100, t => t);
+testMarker.moveTo([1, 2], 100, (t) => t);
 
 // $ExpectType void
 testMarker.stopMove();
@@ -2956,10 +3035,13 @@ testMarker.setShape(markerShape);
 // $ExpectType MarkerShape | undefined
 testMarker.getShape();
 
-testMarker.on("click", (event: AMap.Marker.EventMap<typeof testMarker>["click"]) => {
-    // $ExpectType {} | MarkerExtraData
-    event.target.getExtData();
-});
+testMarker.on(
+    "click",
+    (event: AMap.Marker.EventMap<typeof testMarker>["click"]) => {
+        // $ExpectType {} | MarkerExtraData
+        event.target.getExtData();
+    },
+);
 
 /**
  * overlay/markerShape.ts
@@ -3050,7 +3132,7 @@ testOverlayGroup.getOverlays();
 // $ExpectType boolean
 testOverlayGroup.hasOverlay(marker);
 // $ExpectType boolean
-testOverlayGroup.hasOverlay(o => o === marker);
+testOverlayGroup.hasOverlay((o) => o === marker);
 
 // $ExpectType OverlayGroup<Marker<any>, any>
 testOverlayGroup.removeOverlay(marker);
@@ -3066,7 +3148,7 @@ testOverlayGroup.removeOverlays([marker]);
 testOverlayGroup.clearOverlays();
 
 // $ExpectType OverlayGroup<Marker<any>, any>
-testOverlayGroup.eachOverlay(function(overlay, index, overlays) {
+testOverlayGroup.eachOverlay(function (overlay, index, overlays) {
     // $ExpectType Marker<any>
     overlay;
     // $ExpectType number
@@ -3131,7 +3213,13 @@ interface PolygonExtraData {
     test: number;
 }
 
-const polygonPath1 = [lnglatTuple, lnglatTuple, lnglatTuple, lnglatTuple, lnglatTuple];
+const polygonPath1 = [
+    lnglatTuple,
+    lnglatTuple,
+    lnglatTuple,
+    lnglatTuple,
+    lnglatTuple,
+];
 const polygonPath2 = [lnglat, lnglat, lnglat, lnglat, lnglat];
 
 // $ExpectType Polygon<any>
@@ -3240,12 +3328,15 @@ testPolygon.contains(lnglat);
 // $ExpectType boolean
 testPolygon.contains(lnglatTuple);
 
-testPolygon.on("click", (event: AMap.Polygon.EventMap<typeof testPolygon>["click"]) => {
-    // $ExpectType "click"
-    event.type;
-    // $ExpectType Polygon<PolygonExtraData>
-    event.target;
-});
+testPolygon.on(
+    "click",
+    (event: AMap.Polygon.EventMap<typeof testPolygon>["click"]) => {
+        // $ExpectType "click"
+        event.type;
+        // $ExpectType Polygon<PolygonExtraData>
+        event.target;
+    },
+);
 
 /**
  * overlay/polyline.ts
@@ -3380,12 +3471,15 @@ testPolyline.setExtData({ test: 1 });
 // $ExpectType {} | PolylineExtraData
 testPolyline.getExtData();
 
-testPolyline.on("click", (event: AMap.Polyline.EventMap<typeof testPolyline>["click"]) => {
-    // $ExpectType "click"
-    event.type;
-    // $ExpectType Polyline<PolylineExtraData>
-    event.target;
-});
+testPolyline.on(
+    "click",
+    (event: AMap.Polyline.EventMap<typeof testPolyline>["click"]) => {
+        // $ExpectType "click"
+        event.type;
+        // $ExpectType Polyline<PolylineExtraData>
+        event.target;
+    },
+);
 
 /**
  * overlay/rectangle.ts
@@ -3494,19 +3588,25 @@ testRectangle.contains(lnglat);
 // $ExpectType boolean
 testRectangle.contains(lnglatTuple);
 
-testRectangle.on("click", (event: AMap.Rectangle.EventMap<typeof testRectangle>["click"]) => {
-    // $ExpectType "click"
-    event.type;
-    // $ExpectType Rectangle<RectangleExtraData>
-    event.target;
-});
+testRectangle.on(
+    "click",
+    (event: AMap.Rectangle.EventMap<typeof testRectangle>["click"]) => {
+        // $ExpectType "click"
+        event.type;
+        // $ExpectType Rectangle<RectangleExtraData>
+        event.target;
+    },
+);
 
-testRectangle.on("setBounds", (event: AMap.Rectangle.EventMap<typeof testRectangle>["setBounds"]) => {
-    // $ExpectType "setBounds"
-    event.type;
-    // @ts-expect-error
-    event.target;
-});
+testRectangle.on(
+    "setBounds",
+    (event: AMap.Rectangle.EventMap<typeof testRectangle>["setBounds"]) => {
+        // $ExpectType "setBounds"
+        event.type;
+        // @ts-expect-error
+        event.target;
+    },
+);
 
 /**
  * overlay/text.ts
@@ -3633,14 +3733,14 @@ testText.moveAlong([lnglat], 100);
 // @ts-expect-error
 testText.moveAlong([[1, 2]], 100);
 // $ExpectType void
-testText.moveAlong([lnglat], 100, t => t, false);
+testText.moveAlong([lnglat], 100, (t) => t, false);
 
 // $ExpectType void
 testText.moveTo(lnglat, 100);
 // $ExpectType void
 testText.moveTo([1, 2], 100);
 // $ExpectType void
-testText.moveTo([1, 2], 100, t => t);
+testText.moveTo([1, 2], 100, (t) => t);
 
 // $ExpectType void
 testText.stopMove();

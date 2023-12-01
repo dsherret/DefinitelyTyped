@@ -214,7 +214,10 @@ export namespace overrides {
      *
      * Note that for boolean flag we still give the value as a string.
      */
-    function setOverride(nameSpacedFlagName: string, value: string | "false" | "true"): void;
+    function setOverride(
+        nameSpacedFlagName: string,
+        value: string | "false" | "true",
+    ): void;
 
     /**
      * Clears the override value from the flag (and the disk).
@@ -242,17 +245,29 @@ export namespace dynamicApi {
     /**
      * Getting boolean value of a flag
      */
-    function isEnabled(nameSpacedFlagName: string, defaultValue: boolean, context?: unknown): boolean;
+    function isEnabled(
+        nameSpacedFlagName: string,
+        defaultValue: boolean,
+        context?: unknown,
+    ): boolean;
 
     /**
      * Getting string value of a string flag
      */
-    function value(nameSpacedFlagName: string, defaultValue: string, context?: unknown): string;
+    function value(
+        nameSpacedFlagName: string,
+        defaultValue: string,
+        context?: unknown,
+    ): string;
 
     /**
      * Getting string value of a number flag
      */
-    function getNumber(nameSpacedFlagName: string, defaultValue: number, context?: unknown): number;
+    function getNumber(
+        nameSpacedFlagName: string,
+        defaultValue: number,
+        context?: unknown,
+    ): number;
 }
 
 export const flags: readonly Flag[];

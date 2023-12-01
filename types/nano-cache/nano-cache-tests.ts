@@ -14,16 +14,20 @@ cache.set("some value to delete", {
     hello: true,
 });
 
-cache.set("some other value", {
-    val: false,
-}, {
-    compress: true,
-    bytes: NanoCache.SIZE.GB,
-    limit: 9999,
-    maxEvictBytes: 1000,
-    minFreeMem: 100000,
-    ttl: 6000,
-});
+cache.set(
+    "some other value",
+    {
+        val: false,
+    },
+    {
+        compress: true,
+        bytes: NanoCache.SIZE.GB,
+        limit: 9999,
+        maxEvictBytes: 1000,
+        minFreeMem: 100000,
+        ttl: 6000,
+    },
+);
 
 cache.get("some value");
 cache.clear();

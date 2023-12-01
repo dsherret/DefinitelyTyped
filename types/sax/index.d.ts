@@ -88,14 +88,37 @@ export class SAXStream extends stream.Duplex {
     _parser: SAXParser;
     on(event: "text", listener: (this: this, text: string) => void): this;
     on(event: "doctype", listener: (this: this, doctype: string) => void): this;
-    on(event: "processinginstruction", listener: (this: this, node: { name: string; body: string }) => void): this;
-    on(event: "sgmldeclaration", listener: (this: this, sgmlDecl: string) => void): this;
-    on(event: "opentag" | "opentagstart", listener: (this: this, tag: Tag | QualifiedTag) => void): this;
-    on(event: "closetag", listener: (this: this, tagName: string) => void): this;
-    on(event: "attribute", listener: (this: this, attr: { name: string; value: string }) => void): this;
+    on(
+        event: "processinginstruction",
+        listener: (this: this, node: { name: string; body: string }) => void,
+    ): this;
+    on(
+        event: "sgmldeclaration",
+        listener: (this: this, sgmlDecl: string) => void,
+    ): this;
+    on(
+        event: "opentag" | "opentagstart",
+        listener: (this: this, tag: Tag | QualifiedTag) => void,
+    ): this;
+    on(
+        event: "closetag",
+        listener: (this: this, tagName: string) => void,
+    ): this;
+    on(
+        event: "attribute",
+        listener: (this: this, attr: { name: string; value: string }) => void,
+    ): this;
     on(event: "comment", listener: (this: this, comment: string) => void): this;
     on(
-        event: "opencdata" | "closecdata" | "end" | "ready" | "close" | "readable" | "drain" | "finish",
+        event:
+            | "opencdata"
+            | "closecdata"
+            | "end"
+            | "ready"
+            | "close"
+            | "readable"
+            | "drain"
+            | "finish",
         listener: (this: this) => void,
     ): this;
     on(event: "cdata", listener: (this: this, cdata: string) => void): this;
@@ -106,6 +129,12 @@ export class SAXStream extends stream.Duplex {
     on(event: "script", listener: (this: this, script: string) => void): this;
     on(event: "data", listener: (this: this, chunk: any) => void): this;
     on(event: "error", listener: (this: this, err: Error) => void): this;
-    on(event: "pipe" | "unpipe", listener: (this: this, src: stream.Readable) => void): this;
-    on(event: string | symbol, listener: (this: this, ...args: any[]) => void): this;
+    on(
+        event: "pipe" | "unpipe",
+        listener: (this: this, src: stream.Readable) => void,
+    ): this;
+    on(
+        event: string | symbol,
+        listener: (this: this, ...args: any[]) => void,
+    ): this;
 }

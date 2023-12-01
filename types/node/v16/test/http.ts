@@ -6,7 +6,10 @@ import * as url from "node:url";
 
 // http Server
 {
-    function reqListener(req: http.IncomingMessage, res: http.ServerResponse): void {}
+    function reqListener(
+        req: http.IncomingMessage,
+        res: http.ServerResponse,
+    ): void {}
 
     let server: http.Server = new http.Server();
 
@@ -14,27 +17,36 @@ import * as url from "node:url";
         foo: number;
     }
 
-    class MyServerResponse<Request extends http.IncomingMessage = http.IncomingMessage>
-        extends http.ServerResponse<Request>
-    {
+    class MyServerResponse<
+        Request extends http.IncomingMessage = http.IncomingMessage,
+    > extends http.ServerResponse<Request> {
         foo: string;
     }
 
     server = new http.Server({ IncomingMessage: MyIncomingMessage });
 
-    server = new http.Server({
-        IncomingMessage: MyIncomingMessage,
-        ServerResponse: MyServerResponse,
-    }, reqListener);
+    server = new http.Server(
+        {
+            IncomingMessage: MyIncomingMessage,
+            ServerResponse: MyServerResponse,
+        },
+        reqListener,
+    );
 
     server = http.createServer(reqListener);
     server = http.createServer({ IncomingMessage: MyIncomingMessage });
-    server = http.createServer({ ServerResponse: MyServerResponse }, reqListener);
-    server = http.createServer({
-        insecureHTTPParser: true,
-        keepAlive: true,
-        keepAliveInitialDelay: 1000,
-    }, reqListener);
+    server = http.createServer(
+        { ServerResponse: MyServerResponse },
+        reqListener,
+    );
+    server = http.createServer(
+        {
+            insecureHTTPParser: true,
+            keepAlive: true,
+            keepAliveInitialDelay: 1000,
+        },
+        reqListener,
+    );
 
     // test public props
     const maxHeadersCount: number | null = server.maxHeadersCount;
@@ -44,7 +56,11 @@ import * as url from "node:url";
     const listening: boolean = server.listening;
     const keepAliveTimeout: number = server.keepAliveTimeout;
     const requestTimeout: number = server.requestTimeout;
-    server.setTimeout().setTimeout(1000).setTimeout(() => {}).setTimeout(100, () => {});
+    server
+        .setTimeout()
+        .setTimeout(1000)
+        .setTimeout(() => {})
+        .setTimeout(100, () => {});
 }
 
 // http Server (with custom IncomingMessage and ServerResponse)
@@ -64,13 +80,28 @@ import * as url from "node:url";
 
     function reqListener(req: MyIncomingMessage, res: MyServerResponse): void {}
 
-    let server = new http.Server({ IncomingMessage: MyIncomingMessage, ServerResponse: MyServerResponse });
-    server = new http.Server({ IncomingMessage: MyIncomingMessage, ServerResponse: MyServerResponse }, (req, res) => {
-        foo = req.foo;
-        bar = res.bar;
-        foo = res.req.foo;
+    let server = new http.Server({
+        IncomingMessage: MyIncomingMessage,
+        ServerResponse: MyServerResponse,
     });
-    server = new http.Server({ IncomingMessage: MyIncomingMessage, ServerResponse: MyServerResponse }, reqListener);
+    server = new http.Server(
+        {
+            IncomingMessage: MyIncomingMessage,
+            ServerResponse: MyServerResponse,
+        },
+        (req, res) => {
+            foo = req.foo;
+            bar = res.bar;
+            foo = res.req.foo;
+        },
+    );
+    server = new http.Server(
+        {
+            IncomingMessage: MyIncomingMessage,
+            ServerResponse: MyServerResponse,
+        },
+        reqListener,
+    );
 
     server.addListener("checkContinue", (req, res) => {
         foo = req.foo;
@@ -82,7 +113,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.addListener("connect", req => {
+    server.addListener("connect", (req) => {
         foo = req.foo;
     });
     server.addListener("request", (req, res) => {
@@ -90,7 +121,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.addListener("upgrade", req => {
+    server.addListener("upgrade", (req) => {
         foo = req.foo;
     });
 
@@ -104,7 +135,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.on("connect", req => {
+    server.on("connect", (req) => {
         foo = req.foo;
     });
     server.on("request", (req, res) => {
@@ -112,7 +143,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.on("upgrade", req => {
+    server.on("upgrade", (req) => {
         foo = req.foo;
     });
 
@@ -126,7 +157,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.once("connect", req => {
+    server.once("connect", (req) => {
         foo = req.foo;
     });
     server.once("request", (req, res) => {
@@ -134,7 +165,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.once("upgrade", req => {
+    server.once("upgrade", (req) => {
         foo = req.foo;
     });
 
@@ -148,7 +179,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.prependListener("connect", req => {
+    server.prependListener("connect", (req) => {
         foo = req.foo;
     });
     server.prependListener("request", (req, res) => {
@@ -156,7 +187,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.prependListener("upgrade", req => {
+    server.prependListener("upgrade", (req) => {
         foo = req.foo;
     });
 
@@ -170,7 +201,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.prependOnceListener("connect", req => {
+    server.prependOnceListener("connect", (req) => {
         foo = req.foo;
     });
     server.prependOnceListener("request", (req, res) => {
@@ -178,7 +209,7 @@ import * as url from "node:url";
         bar = res.bar;
         foo = res.req.foo;
     });
-    server.prependOnceListener("upgrade", req => {
+    server.prependOnceListener("upgrade", (req) => {
         foo = req.foo;
     });
 }
@@ -187,7 +218,9 @@ import * as url from "node:url";
 // http ServerResponse
 {
     // incoming
-    const incoming: http.IncomingMessage = new http.IncomingMessage(new net.Socket());
+    const incoming: http.IncomingMessage = new http.IncomingMessage(
+        new net.Socket(),
+    );
 
     incoming.setEncoding("utf8");
     incoming.setTimeout(1000).setTimeout(100, () => {});
@@ -200,8 +233,10 @@ import * as url from "node:url";
     const res: http.ServerResponse = new http.ServerResponse(incoming);
 
     // test headers
-    res.setHeader("Content-Type", "text/plain")
-        .setHeader("Return-Type", "this");
+    res.setHeader("Content-Type", "text/plain").setHeader(
+        "Return-Type",
+        "this",
+    );
     const bool: boolean = res.hasHeader("Content-Type");
     const headers: string[] = res.getHeaderNames();
 
@@ -243,7 +278,9 @@ import * as url from "node:url";
 
 // http ClientRequest
 {
-    let req: http.ClientRequest = new http.ClientRequest("https://www.google.com");
+    let req: http.ClientRequest = new http.ClientRequest(
+        "https://www.google.com",
+    );
     req = new http.ClientRequest(new url.URL("https://www.google.com"));
     req = new http.ClientRequest({ path: "http://0.0.0.0" });
     req = new http.ClientRequest({ setHost: false });
@@ -329,22 +366,42 @@ import * as url from "node:url";
     http.get("http://www.example.com/xyz");
     http.request("http://www.example.com/xyz");
 
-    http.get("http://www.example.com/xyz", (res: http.IncomingMessage): void => {});
-    http.request("http://www.example.com/xyz", (res: http.IncomingMessage): void => {});
+    http.get(
+        "http://www.example.com/xyz",
+        (res: http.IncomingMessage): void => {},
+    );
+    http.request(
+        "http://www.example.com/xyz",
+        (res: http.IncomingMessage): void => {},
+    );
 
     http.get(new url.URL("http://www.example.com/xyz"));
     http.request(new url.URL("http://www.example.com/xyz"));
 
-    http.get(new url.URL("http://www.example.com/xyz"), (res: http.IncomingMessage): void => {});
-    http.request(new url.URL("http://www.example.com/xyz"), (res: http.IncomingMessage): void => {});
+    http.get(
+        new url.URL("http://www.example.com/xyz"),
+        (res: http.IncomingMessage): void => {},
+    );
+    http.request(
+        new url.URL("http://www.example.com/xyz"),
+        (res: http.IncomingMessage): void => {},
+    );
 
     const opts: http.RequestOptions = {
-        path: "\"/some/path",
+        path: '"/some/path',
     };
     http.get(new url.URL("http://www.example.com"), opts);
     http.request(new url.URL("http://www.example.com"), opts);
-    http.get(new url.URL("http://www.example.com/xyz"), opts, (res: http.IncomingMessage): void => {});
-    http.request(new url.URL("http://www.example.com/xyz"), opts, (res: http.IncomingMessage): void => {});
+    http.get(
+        new url.URL("http://www.example.com/xyz"),
+        opts,
+        (res: http.IncomingMessage): void => {},
+    );
+    http.request(
+        new url.URL("http://www.example.com/xyz"),
+        opts,
+        (res: http.IncomingMessage): void => {},
+    );
 }
 
 {

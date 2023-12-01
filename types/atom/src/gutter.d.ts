@@ -1,4 +1,9 @@
-import { Decoration, DecorationOptions, DisplayMarker, Disposable } from "../index";
+import {
+    Decoration,
+    DecorationOptions,
+    DisplayMarker,
+    Disposable,
+} from "../index";
 
 /** Represents a gutter within a TextEditor. */
 export interface Gutter {
@@ -28,7 +33,10 @@ export interface Gutter {
      *  invalidated, or is destroyed, the decoration will be updated to reflect
      *  the marker's state.
      */
-    decorateMarker(marker: DisplayMarker, decorationParams: DecorationOptions): Decoration;
+    decorateMarker(
+        marker: DisplayMarker,
+        decorationParams: DecorationOptions,
+    ): Decoration;
 }
 
 export interface GutterOptions {

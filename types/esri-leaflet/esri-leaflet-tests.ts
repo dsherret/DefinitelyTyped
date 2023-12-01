@@ -55,7 +55,10 @@ basemapLayer = new L.esri.BasemapLayer("TerrainLabels");
 
 basemapLayer = L.esri.basemapLayer("Streets", { token: "token" });
 basemapLayer = new L.esri.BasemapLayer("Streets", { token: "token" });
-basemapLayer = new L.esri.BasemapLayer("Streets", { token: "token", ignoreDeprecationWarning: true });
+basemapLayer = new L.esri.BasemapLayer("Streets", {
+    token: "token",
+    ignoreDeprecationWarning: true,
+});
 
 let imageMapLayer: L.esri.ImageMapLayer;
 let imageMapLayerOptions: L.esri.ImageMapLayerOptions;
@@ -93,7 +96,13 @@ imageMapLayer.getBandIds();
 imageMapLayer.getNoDataInterpretation();
 imageMapLayer.getPixelType();
 imageMapLayer.setPixelType("U8");
-imageMapLayer.bringToBack().bringToFront().unbindPopup().setOpacity(0.5).setZIndex(1).authenticate("secret");
+imageMapLayer
+    .bringToBack()
+    .bringToFront()
+    .unbindPopup()
+    .setOpacity(0.5)
+    .setZIndex(1)
+    .authenticate("secret");
 
 let tiledMapLayer: L.esri.TiledMapLayer;
 
@@ -369,13 +378,13 @@ featureLayer = new L.esri.FeatureLayer({
 featureLayer.setStyle({
     color: "white",
 });
-featureLayer.setStyle(feature => {
+featureLayer.setStyle((feature) => {
     return {
         weight: feature.properties.pixelWidth,
     };
 });
 
-featureLayer.eachFeature(layer => {});
+featureLayer.eachFeature((layer) => {});
 
 featureLayer
     .query()
@@ -493,7 +502,9 @@ featureLayerService = L.esri.featureLayerService({
     timeout: 1000,
 });
 
-featureLayerService = new L.esri.FeatureLayerService(featureLayerServiceOptions);
+featureLayerService = new L.esri.FeatureLayerService(
+    featureLayerServiceOptions,
+);
 featureLayerService = new L.esri.FeatureLayerService({});
 featureLayerService = new L.esri.FeatureLayerService({
     url: "https://sampleserver6.arcgisonline.com/arcgis/rest/services/WorldTimeZones/MapServer/0",
@@ -693,7 +704,10 @@ identifyImage.between(new Date(), new Date());
 identifyImage.getRenderingRule();
 identifyImage.setRenderingRule({ rasterFunction: "Hillshade" });
 identifyImage.getMosaicRule();
-identifyImage.setMosaicRule({ mosaicMethod: "esriMosaicLockRaster", lockRasterIds: [1, 2, 3] });
+identifyImage.setMosaicRule({
+    mosaicMethod: "esriMosaicLockRaster",
+    lockRasterIds: [1, 2, 3],
+});
 identifyImage.getPixelSize();
 identifyImage.setPixelSize("500,500");
 identifyImage.setPixelSize(["500", "500"]);

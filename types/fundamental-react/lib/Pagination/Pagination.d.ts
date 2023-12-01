@@ -10,10 +10,12 @@ export type PaginationProps = {
     initialPage?: number | undefined;
     itemsPerPage?: number | undefined;
     linkProps?: any;
-    localizedText?: {
-        next: string;
-        previous: string;
-    } | undefined;
+    localizedText?:
+        | {
+              next: string;
+              previous: string;
+          }
+        | undefined;
     nextProps?: any;
     prevProps?: any;
     totalText?: string | undefined;

@@ -5,13 +5,11 @@ declare namespace WechatMiniprogram.Component {
         TMethod extends Partial<MethodOption>,
         TCustomInstanceProperty extends IAnyObject = {},
         TIsPage extends boolean = false,
-    > =
-        & InstanceProperties
-        & InstanceMethods<TData>
-        & TMethod
-        & (TIsPage extends true ? Page.ILifetime : {})
-        & TCustomInstanceProperty
-        & {
+    > = InstanceProperties &
+        InstanceMethods<TData> &
+        TMethod &
+        (TIsPage extends true ? Page.ILifetime : {}) &
+        TCustomInstanceProperty & {
             /** 组件数据，**包括内部数据和属性值** */
             data: TData & PropertyOptionToData<TProperty>;
             /** 组件数据，**包括内部数据和属性值**（与 `data` 一致） */
@@ -23,20 +21,24 @@ declare namespace WechatMiniprogram.Component {
         IAnyObject,
         IAnyObject
     >;
-    type TrivialOption = Options<IAnyObject, IAnyObject, IAnyObject, IAnyObject>;
+    type TrivialOption = Options<
+        IAnyObject,
+        IAnyObject,
+        IAnyObject,
+        IAnyObject
+    >;
     type Options<
         TData extends DataOption,
         TProperty extends PropertyOption,
         TMethod extends MethodOption,
         TCustomInstanceProperty extends IAnyObject = {},
         TIsPage extends boolean = false,
-    > =
-        & Partial<Data<TData>>
-        & Partial<Property<TProperty>>
-        & Partial<Method<TMethod, TIsPage>>
-        & Partial<OtherOption>
-        & Partial<Lifetimes>
-        & ThisType<
+    > = Partial<Data<TData>> &
+        Partial<Property<TProperty>> &
+        Partial<Method<TMethod, TIsPage>> &
+        Partial<OtherOption> &
+        Partial<Lifetimes> &
+        ThisType<
             Instance<
                 TData,
                 TProperty,
@@ -86,13 +88,19 @@ declare namespace WechatMiniprogram.Component {
         | ArrayConstructor
         | ObjectConstructor
         | null;
-    type ValueType<T extends PropertyType> = T extends null ? any
-        : T extends StringConstructor ? string
-        : T extends NumberConstructor ? number
-        : T extends BooleanConstructor ? boolean
-        : T extends ArrayConstructor ? any[]
-        : T extends ObjectConstructor ? IAnyObject
-        : never;
+    type ValueType<T extends PropertyType> = T extends null
+        ? any
+        : T extends StringConstructor
+          ? string
+          : T extends NumberConstructor
+            ? number
+            : T extends BooleanConstructor
+              ? boolean
+              : T extends ArrayConstructor
+                ? any[]
+                : T extends ObjectConstructor
+                  ? IAnyObject
+                  : never;
     type FullProperty<T extends PropertyType> = {
         /** 属性类型 */
         type: T;
@@ -102,10 +110,10 @@ declare namespace WechatMiniprogram.Component {
         observer?:
             | string
             | ((
-                newVal: ValueType<T>,
-                oldVal: ValueType<T>,
-                changedPath: Array<string | number>,
-            ) => void)
+                  newVal: ValueType<T>,
+                  oldVal: ValueType<T>,
+                  changedPath: Array<string | number>,
+              ) => void)
             | undefined;
         /** 属性的类型（可以指定多个） */
         optionalTypes?: ShortProperty[] | undefined;
@@ -125,7 +133,8 @@ declare namespace WechatMiniprogram.Component {
         | ObjectConstructor
         | null;
     type AllProperty = AllFullProperty | ShortProperty;
-    type PropertyToData<T extends AllProperty> = T extends ShortProperty ? ValueType<T>
+    type PropertyToData<T extends AllProperty> = T extends ShortProperty
+        ? ValueType<T>
         : FullPropertyToData<Exclude<T, ShortProperty>>;
     type FullPropertyToData<T extends AllFullProperty> = ValueType<T["type"]>;
     type PropertyOptionToData<P extends PropertyOption> = {

@@ -8,7 +8,9 @@ declare namespace metascraper {
     }
 }
 
-declare function getData(options: metascraper.Options): Promise<Record<string, string>>;
+declare function getData(
+    options: metascraper.Options,
+): Promise<Record<string, string>>;
 declare function metascraper(rules: metascraper.Rule[]): typeof getData;
 
 export = metascraper;

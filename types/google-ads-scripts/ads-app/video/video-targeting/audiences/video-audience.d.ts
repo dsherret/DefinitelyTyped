@@ -37,7 +37,8 @@ declare namespace GoogleAdsScripts {
          *        .withAudienceId(80432)               // required
          *        .build();                            // create the audience
          */
-        interface VideoAudienceBuilder extends Base.Builder<VideoAudienceOperation> {
+        interface VideoAudienceBuilder
+            extends Base.Builder<VideoAudienceOperation> {
             /** Builds the excluded video audience. */
             exclude(): ExcludedVideoAudienceOperation;
             /** Sets the ID of the excluded audience. */
@@ -58,7 +59,8 @@ declare namespace GoogleAdsScripts {
         interface VideoAudienceIterator extends Base.Iterator<VideoAudience> {}
 
         /** An operation representing creation of a new video audience. */
-        interface VideoAudienceOperation extends Base.Operation<VideoAudience> {}
+        interface VideoAudienceOperation
+            extends Base.Operation<VideoAudience> {}
 
         /**
          * Fetches video audiences. Supports filtering and sorting.
@@ -77,13 +79,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoAudienceSelector
-            extends
-                Base.Selector<VideoAudienceIterator>,
+            extends Base.Selector<VideoAudienceIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

@@ -32,16 +32,18 @@ export interface ModuleOptions {
      * Defaults to header.Accept = "application/json"
      */
     http?: {} | undefined;
-    options?: {
-        /** Format of data sent in the request body. Defaults to form. */
-        bodyFormat?: "json" | "form" | undefined;
-        /**
-         * Indicates the method used to send the client.id/client.secret authorization params at the token request.
-         * If set to body, the bodyFormat option will be used to format the credentials.
-         * Defaults to header.
-         */
-        authorizationMethod?: "header" | "body" | undefined;
-    } | undefined;
+    options?:
+        | {
+              /** Format of data sent in the request body. Defaults to form. */
+              bodyFormat?: "json" | "form" | undefined;
+              /**
+               * Indicates the method used to send the client.id/client.secret authorization params at the token request.
+               * If set to body, the bodyFormat option will be used to format the credentials.
+               * Defaults to header.
+               */
+              authorizationMethod?: "header" | "body" | undefined;
+          }
+        | undefined;
 }
 
 export type TokenType = "access_token" | "refresh_token";
@@ -56,10 +58,18 @@ export interface AccessToken {
     /** Check if the access token is expired or not */
     expired(): boolean;
     /** Refresh the access token */
-    refresh(params: {}, callback: (error: any, result: AccessToken) => void): Bluebird<AccessToken>;
-    refresh(callback?: (error: any, result: AccessToken) => void): Bluebird<AccessToken>;
+    refresh(
+        params: {},
+        callback: (error: any, result: AccessToken) => void,
+    ): Bluebird<AccessToken>;
+    refresh(
+        callback?: (error: any, result: AccessToken) => void,
+    ): Bluebird<AccessToken>;
     /** Revoke access or refresh token */
-    revoke(tokenType: TokenType, callback?: (error: any) => void): Bluebird<void>;
+    revoke(
+        tokenType: TokenType,
+        callback?: (error: any) => void,
+    ): Bluebird<void>;
 }
 
 export type AuthorizationCode = string;
@@ -105,17 +115,26 @@ export interface OAuthClient {
         ): string;
 
         /** Returns the Access Token object */
-        getToken(params: AuthorizationTokenConfig, callback?: (error: any, result: Token) => void): Bluebird<Token>;
+        getToken(
+            params: AuthorizationTokenConfig,
+            callback?: (error: any, result: Token) => void,
+        ): Bluebird<Token>;
     };
 
     ownerPassword: {
         /** Returns the Access Token Object */
-        getToken(params: PasswordTokenConfig, callback?: (error: any, result: Token) => void): Bluebird<Token>;
+        getToken(
+            params: PasswordTokenConfig,
+            callback?: (error: any, result: Token) => void,
+        ): Bluebird<Token>;
     };
 
     clientCredentials: {
         /** Returns the Access Token Object */
-        getToken(params: ClientCredentialTokenConfig, callback?: (error: any, result: Token) => void): Bluebird<Token>;
+        getToken(
+            params: ClientCredentialTokenConfig,
+            callback?: (error: any, result: Token) => void,
+        ): Bluebird<Token>;
     };
 
     accessToken: {

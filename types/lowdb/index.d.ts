@@ -32,7 +32,7 @@ declare namespace Lowdb {
 
     interface BaseAdapter<SchemaT = any> extends AdapterOptions<SchemaT> {
         readonly "@@reference": SchemaT;
-        new<SchemaT = any>(
+        new <SchemaT = any>(
             source: string,
             options?: AdapterOptions<SchemaT>,
         ): BaseAdapter<SchemaT>;
@@ -40,7 +40,7 @@ declare namespace Lowdb {
     }
 
     interface AdapterSync<SchemaT = any> extends BaseAdapter<SchemaT> {
-        new<SchemaT = any>(
+        new <SchemaT = any>(
             source: string,
             options?: AdapterOptions<SchemaT>,
         ): AdapterSync<SchemaT>;
@@ -48,7 +48,7 @@ declare namespace Lowdb {
     }
 
     interface AdapterAsync<SchemaT = any> extends BaseAdapter<SchemaT> {
-        new<SchemaT = any>(
+        new <SchemaT = any>(
             source: string,
             options?: AdapterOptions<SchemaT>,
         ): AdapterAsync<SchemaT>;
@@ -60,7 +60,9 @@ declare namespace Lowdb {
         setState: (state: SchemaT) => this;
     }
 
-    interface LowdbSync<SchemaT> extends LowdbBase<SchemaT>, ObjectChain<SchemaT> {
+    interface LowdbSync<SchemaT>
+        extends LowdbBase<SchemaT>,
+            ObjectChain<SchemaT> {
         _: LoDashStatic;
         read: () => this;
         /**
@@ -69,7 +71,9 @@ declare namespace Lowdb {
         write<T = void>(returnValue?: T): T & Promise<T>;
     }
 
-    interface LowdbAsync<SchemaT> extends LowdbBase<SchemaT>, ObjectChain<SchemaT> {
+    interface LowdbAsync<SchemaT>
+        extends LowdbBase<SchemaT>,
+            ObjectChain<SchemaT> {
         _: LoDashStatic;
         read: () => Promise<this>;
         /**
@@ -193,7 +197,12 @@ declare namespace Lowdb {
         <R1, R2>(f1: [(a1: PathT) => R1, (a: R1) => R2]): R2;
         <R1, R2, R3>(f1: [(a1: PathT) => R1, (a: R1) => R2, (a: R2) => R3]): R3;
         <R1, R2, R3, R4>(
-            f1: [(a1: PathT) => R1, (a: R1) => R2, (a: R2) => R3, (a: R3) => R4],
+            f1: [
+                (a1: PathT) => R1,
+                (a: R1) => R2,
+                (a: R2) => R3,
+                (a: R3) => R4,
+            ],
         ): R4;
         <R1, R2, R3, R4, R5>(
             f1: [
@@ -249,13 +258,21 @@ declare namespace Lowdb {
     }
 
     interface lowdb {
-        <AdapterT extends AdapterAsync>(adapter: AdapterT): Promise<LowdbAsync<AdapterT[ReferenceProperty]>>;
-        <AdapterT extends AdapterSync>(adapter: AdapterT): LowdbSync<AdapterT[ReferenceProperty]>;
+        <AdapterT extends AdapterAsync>(
+            adapter: AdapterT,
+        ): Promise<LowdbAsync<AdapterT[ReferenceProperty]>>;
+        <AdapterT extends AdapterSync>(
+            adapter: AdapterT,
+        ): LowdbSync<AdapterT[ReferenceProperty]>;
     }
 
     interface lowdbFp {
-        <AdapterT extends AdapterAsync>(adapter: AdapterT): Promise<LowdbFpAsync<AdapterT[ReferenceProperty]>>;
-        <AdapterT extends AdapterSync>(adapter: AdapterT): LowdbFpSync<AdapterT[ReferenceProperty]>;
+        <AdapterT extends AdapterAsync>(
+            adapter: AdapterT,
+        ): Promise<LowdbFpAsync<AdapterT[ReferenceProperty]>>;
+        <AdapterT extends AdapterSync>(
+            adapter: AdapterT,
+        ): LowdbFpSync<AdapterT[ReferenceProperty]>;
     }
 }
 

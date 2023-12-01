@@ -71,7 +71,11 @@ player
     .setMute(false)
     .setVolume(20)
     .trigger("adBlock")
-    .trigger("adClick", { client: "vast", creativetype: "creativetest", tag: "tagtest" })
+    .trigger("adClick", {
+        client: "vast",
+        creativetype: "creativetest",
+        tag: "tagtest",
+    })
     .setAllowFullscreen()
     .setAllowFullscreen(true)
     .setCaptions({ color: "#dbdbdb", edgeStyle: "depressed" })
@@ -83,9 +87,9 @@ player
     .addButton("testIcon", "testLabel", () => {}, "testId", "testClass")
     .removeButton("testId")
     .on("adBlock", () => {})
-    .on("adClick", e => e.client)
+    .on("adClick", (e) => e.client)
     .once("beforePlay", () => {})
-    .once("error", e => e.message)
+    .once("error", (e) => e.message)
     .off("adBlock")
     .off("adClick")
     .playlistItem(1)
@@ -234,6 +238,6 @@ player.setCurrentQuality(0);
 player.setFullscreen(true);
 
 // $ExpectType void
-player.setPlaylistItemCallback(item => {
+player.setPlaylistItemCallback((item) => {
     item;
 });

@@ -1,4 +1,8 @@
-import CameraPhoto, { CaptureConfigOption, FACING_MODES, IMAGE_TYPES } from "jslib-html5-camera-photo";
+import CameraPhoto, {
+    CaptureConfigOption,
+    FACING_MODES,
+    IMAGE_TYPES,
+} from "jslib-html5-camera-photo";
 
 const videoElement = document.createElement("video");
 
@@ -8,60 +12,63 @@ const cameraPhoto = new CameraPhoto(videoElement);
 // default camera and resolution
 cameraPhoto
     .startCamera()
-    .then(stream => {
+    .then((stream) => {
         /* ... */
     })
-    .catch(error => {
+    .catch((error) => {
         /* ... */
     });
 
 // environment (camera point to environment)
 cameraPhoto
     .startCamera(FACING_MODES.ENVIRONMENT, {})
-    .then(stream => {
+    .then((stream) => {
         /* ... */
     })
-    .catch(error => {
+    .catch((error) => {
         /* ... */
     });
 
 // OR user (camera point to the user)
 cameraPhoto
     .startCamera(FACING_MODES.USER, {})
-    .then(stream => {
+    .then((stream) => {
         /* ... */
     })
-    .catch(error => {
+    .catch((error) => {
         /* ... */
     });
 
 // example of ideal resolution 640 x 480
 cameraPhoto
     .startCamera(FACING_MODES.ENVIRONMENT, { width: 640, height: 480 })
-    .then(stream => {
+    .then((stream) => {
         /* ... */
     })
-    .catch(error => {
+    .catch((error) => {
         /* ... */
     });
 
 // example of resultion with non-numeric width and height
 cameraPhoto
-    .startCamera(FACING_MODES.ENVIRONMENT, { width: { ideal: 3840 }, height: { ideal: 2160 } })
-    .then(stream => {
+    .startCamera(FACING_MODES.ENVIRONMENT, {
+        width: { ideal: 3840 },
+        height: { ideal: 2160 },
+    })
+    .then((stream) => {
         /* ... */
     })
-    .catch(error => {
+    .catch((error) => {
         /* ... */
     });
 
 // It will try the best to get the maximum resolution with the specified facingMode
 cameraPhoto
     .startCameraMaxResolution(FACING_MODES.ENVIRONMENT)
-    .then(stream => {
+    .then((stream) => {
         /* ... */
     })
-    .catch(error => {
+    .catch((error) => {
         /* ... */
     });
 
@@ -82,14 +89,17 @@ const dataUri2 = cameraPhoto.getDataUri(config2);
 const cameraSettings = cameraPhoto.getCameraSettings();
 if (cameraSettings) {
     const { aspectRatio, frameRate, height, width } = cameraSettings;
-    const settingsStr = `aspectRatio:${aspectRatio} ` + `frameRate: ${frameRate} ` + `height: ${height} `
-        + `width: ${width}`;
+    const settingsStr =
+        `aspectRatio:${aspectRatio} ` +
+        `frameRate: ${frameRate} ` +
+        `height: ${height} ` +
+        `width: ${width}`;
     console.log(settingsStr);
 }
 
 // $ExpectType MediaDeviceInfo[]
 const inputVideoDeviceInfos = cameraPhoto.getInputVideoDeviceInfos();
-inputVideoDeviceInfos.forEach(inputVideoDeviceInfo => {
+inputVideoDeviceInfos.forEach((inputVideoDeviceInfo) => {
     const { kind, label, deviceId } = inputVideoDeviceInfo;
     const inputVideoDeviceInfoStr = `
         kind: ${kind}
@@ -105,7 +115,7 @@ cameraPhoto
     .then(() => {
         /* ... */
     })
-    .catch(error => {
+    .catch((error) => {
         /* ... */
     });
 

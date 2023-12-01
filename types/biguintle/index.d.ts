@@ -18,7 +18,11 @@
  * const buf = bigUintLE.encode(bigUint)
  * assert(bigUintLE.encode.bytes === 8 && buf.byteLength === 8)
  */
-export function encode<TBuf extends Uint8Array = Buffer>(value: bigint, buffer?: TBuf, byteOffset?: number): TBuf;
+export function encode<TBuf extends Uint8Array = Buffer>(
+    value: bigint,
+    buffer?: TBuf,
+    byteOffset?: number,
+): TBuf;
 export namespace encode {
     /**
      * Number of bytes last encoded.
@@ -45,7 +49,11 @@ export namespace encode {
  * const num = bigUintLE.decode(buf)
  * assert(bigUintLE.decode.bytes === 8)
  */
-export function decode(buffer: Uint8Array, byteOffset?: number, byteLength?: number): bigint;
+export function decode(
+    buffer: Uint8Array,
+    byteOffset?: number,
+    byteLength?: number,
+): bigint;
 export namespace decode {
     /**
      * Number of bytes last decoded.

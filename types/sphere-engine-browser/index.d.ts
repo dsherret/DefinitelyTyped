@@ -105,7 +105,11 @@ declare namespace SSj {
      * @param description  Optional description shown in the profiler results. Omit this argument
      *                     to have SpheRun use the name of the method as the description.
      */
-    function profile(object: object, methodName: string, description?: string): void;
+    function profile(
+        object: object,
+        methodName: string,
+        description?: string,
+    ): void;
 
     /**
      * Log a line of text to the debugger. The line is only shown when SSj is started in Trace mode.
@@ -862,7 +866,10 @@ declare namespace FS {
      */
     function rename(path: string, newPath: string): void;
 
-    function writeFile(path: string, content: string | string[] | ArrayBuffer | ArrayBufferView): void;
+    function writeFile(
+        path: string,
+        content: string | string[] | ArrayBuffer | ArrayBufferView,
+    ): void;
 }
 
 /**
@@ -915,7 +922,11 @@ declare class Font {
      * @param options  Options for creating the `Font` object.
      * @returns A promise for a newly constructed `Font` object.
      */
-    static fromFile(fileName: string, size?: number, options?: FontOptions): Promise<Font>;
+    static fromFile(
+        fileName: string,
+        size?: number,
+        options?: FontOptions,
+    ): Promise<Font>;
 
     /** SphereFS path of the file from which this `Font` was constructed. */
     readonly fileName: string;
@@ -943,7 +954,14 @@ declare class Font {
      * @param wrapWidth If the text is wider than `wrapWidth` in pixels, it will be wrapped to
      *                  multiple lines automatically.
      */
-    drawText(surface: Surface, x: number, y: number, text: string, color?: Color, wrapWidth?: number): void;
+    drawText(
+        surface: Surface,
+        x: number,
+        y: number,
+        text: string,
+        color?: Color,
+        wrapWidth?: number,
+    ): void;
 
     /**
      * Get the width and height, in pixels, of a text as drawn with this font.
@@ -1081,7 +1099,11 @@ declare class Mixer {
      * @param bitsPerSample Number of bits per sample.
      * @param numChannels   Number of independent sound channels in the mixer output.
      */
-    constructor(sampleRate: number, bitsPerSample: 8 | 16 | 24 | 32, numChannels?: number);
+    constructor(
+        sampleRate: number,
+        bitsPerSample: 8 | 16 | 24 | 32,
+        numChannels?: number,
+    );
 }
 
 /**
@@ -1314,7 +1336,10 @@ declare class Shader {
      */
     setFloatVector(
         name: string,
-        values: [number, number] | [number, number, number] | [number, number, number, number],
+        values:
+            | [number, number]
+            | [number, number, number]
+            | [number, number, number, number],
     ): void;
 
     /**
@@ -1332,7 +1357,10 @@ declare class Shader {
      */
     setIntVector(
         name: string,
-        values: [number, number] | [number, number, number] | [number, number, number, number],
+        values:
+            | [number, number]
+            | [number, number, number]
+            | [number, number, number, number],
     ): void;
 
     /**
@@ -1360,7 +1388,11 @@ declare class Shape {
      * @param texture  Texture to use for the shape, or `null` for no texture.
      * @param vertices Array of `Vertex` objects describing the shape's vertices.
      */
-    static drawImmediate(type: ShapeType, texture: Texture | null, vertices: Vertex[]): void;
+    static drawImmediate(
+        type: ShapeType,
+        texture: Texture | null,
+        vertices: Vertex[],
+    ): void;
 
     /**
      * Render a shape of the given type to a surface.
@@ -1368,7 +1400,11 @@ declare class Shape {
      * @param type     Type of primitive to draw.
      * @param vertices Array of `Vertex` objects describing the shape's vertices.
      */
-    static drawImmediate(surface: Surface, type: ShapeType, vertices: Vertex[]): void;
+    static drawImmediate(
+        surface: Surface,
+        type: ShapeType,
+        vertices: Vertex[],
+    ): void;
 
     /**
      * Render a textured shape of the given type to a surface.
@@ -1377,7 +1413,12 @@ declare class Shape {
      * @param texture  Texture to use for the shape, or `null` for no texture.
      * @param vertices Array of `Vertex` objects describing the shape's vertices.
      */
-    static drawImmediate(surface: Surface, type: ShapeType, texture: Texture | null, vertices: Vertex[]): void;
+    static drawImmediate(
+        surface: Surface,
+        type: ShapeType,
+        texture: Texture | null,
+        vertices: Vertex[],
+    ): void;
 
     /**
      * Construct a new `Shape` with the given texture and vertices.
@@ -1387,7 +1428,12 @@ declare class Shape {
      * @param indices  Optional index list specifying which members of `vertices` are used in the
      *                 shape. Omit this to use the entire vertex list.
      */
-    constructor(type: number, texture: Texture | null, vertices: VertexList, indices?: IndexList);
+    constructor(
+        type: number,
+        texture: Texture | null,
+        vertices: VertexList,
+        indices?: IndexList,
+    );
 
     /**
      * Index list specifying which elements of `vertexList` are used in the shape.  Set this to
@@ -1618,7 +1664,11 @@ declare class SoundStream {
      * @param bitsPerSample The number of bits per sample.
      * @param numChannels Number of independent audio channels in the audio data.
      */
-    constructor(sampleRate?: number, bitsPerSample?: 8 | 16 | 32, numChannels?: number);
+    constructor(
+        sampleRate?: number,
+        bitsPerSample?: 8 | 16 | 32,
+        numChannels?: number,
+    );
 
     /* Amount of audio currently buffered (and not yet played), in seconds. */
     readonly length: number;
@@ -1744,7 +1794,11 @@ declare class Texture {
      * @param height  The height of the new texture, in pixels.
      * @param content Either a `Color` to fill the texture with or a buffer of RGBA pixels.
      */
-    constructor(width: number, height: number, content?: Color | ArrayBuffer | ArrayBufferView);
+    constructor(
+        width: number,
+        height: number,
+        content?: Color | ArrayBuffer | ArrayBufferView,
+    );
 
     /**
      * Get the raw RGBA pixel data from this texture. May be slow!
@@ -1779,10 +1833,22 @@ declare class Transform {
     identity(): Transform;
 
     /** Add a 2D orthographic projection to the transform. */
-    project2D(left: number, top: number, right: number, bottom: number, near?: number, far?: number): Transform;
+    project2D(
+        left: number,
+        top: number,
+        right: number,
+        bottom: number,
+        near?: number,
+        far?: number,
+    ): Transform;
 
     /** Add a 3D frustum projection to the transform. */
-    project3D(fov: number, aspect: number, near: number, far: number): Transform;
+    project3D(
+        fov: number,
+        aspect: number,
+        near: number,
+        far: number,
+    ): Transform;
 
     /**
      * Add a 2D rotation (i.e. rotation about the Z axis) to the transform.
@@ -1838,7 +1904,10 @@ declare namespace Z {
      * @param level Compression level between 0 (no compression) and 9 (max).
      * @returns An ArrayBuffer containing the compressed data.
      */
-    function deflate(data: ArrayBuffer | ArrayBufferView, level?: number): ArrayBuffer;
+    function deflate(
+        data: ArrayBuffer | ArrayBufferView,
+        level?: number,
+    ): ArrayBuffer;
 
     /**
      * Uncompress data that was previously compressed using `Z.deflate`, with optional "inflate
@@ -1847,7 +1916,10 @@ declare namespace Z {
      * @param maxSize The maximum allowed size of the data after inflation, in bytes.
      * @returns An ArrayBuffer containing the uncompressed data.
      */
-    function inflate(data: ArrayBuffer | ArrayBufferView, maxSize?: number): ArrayBuffer;
+    function inflate(
+        data: ArrayBuffer | ArrayBufferView,
+        maxSize?: number,
+    ): ArrayBuffer;
 }
 
 /**
@@ -1929,7 +2001,10 @@ declare module "console" {
         defineObject<T>(
             name: string,
             object: T,
-            methods: Record<string, (this: T, ...args: Array<(string | number)>) => void>,
+            methods: Record<
+                string,
+                (this: T, ...args: Array<string | number>) => void
+            >,
         ): void;
 
         /**
@@ -2285,7 +2360,9 @@ declare module "from" {
          * @param keySelector A key selector function. It takes a query result and returns a string,
          *                    a number, or a Boolean value to be used as a key for sorting.
          */
-        ascending(keySelector?: (value: T) => string | number | boolean): Query<T>;
+        ascending(
+            keySelector?: (value: T) => string | number | boolean,
+        ): Query<T>;
 
         /**
          * Extend the query with an operation that calls a user-supplied function for each result
@@ -2324,7 +2401,9 @@ declare module "from" {
          * @param keySelector A key selector function. It takes a query result and returns a string,
          *                    a number, or a Boolean value to be used as a key for sorting.
          */
-        descending(keySelector?: (value: T) => string | number | boolean): Query<T>;
+        descending(
+            keySelector?: (value: T) => string | number | boolean,
+        ): Query<T>;
 
         distinct(): Query<T>;
         distinct(predicate: (value: T) => string): Query<T>;
@@ -2526,7 +2605,10 @@ declare module "from" {
         without(...values: T[]): Query<T>;
 
         zip<U>(zipSource: Iterable<U>): Query<[T, U]>;
-        zip<U, R>(zipSource: Iterable<U>, selector: (left: T, right: U) => R): Query<R>;
+        zip<U, R>(
+            zipSource: Iterable<U>,
+            selector: (left: T, right: U) => R,
+        ): Query<R>;
     }
 }
 
@@ -2578,7 +2660,10 @@ declare module "music" {
          * @param numFrames The number of frames over which to adjust the volume.
          * @returns A promise that resolves when the volume reaches the new level.
          */
-        function adjustVolume(newVolume: number, numFrames?: number): Promise<void>;
+        function adjustVolume(
+            newVolume: number,
+            numFrames?: number,
+        ): Promise<void>;
 
         /**
          * Temporarily override the normal BGM with a specific track, with optional crossfade.
@@ -2665,7 +2750,13 @@ declare module "prim" {
          * @param mask    Optional color whose RGBA values will be multiplied with those of the
          *                texture. Use to tint the rendered image.
          */
-        function blit(surface: Surface, x: number, y: number, texture: Texture, mask?: Color): void;
+        function blit(
+            surface: Surface,
+            x: number,
+            y: number,
+            texture: Texture,
+            mask?: Color,
+        ): void;
 
         /**
          * Render a portion of a texture as an 2D image to a surface.
@@ -2692,8 +2783,21 @@ declare module "prim" {
             mask?: Color,
         ): void;
 
-        function drawCircle(surface: Surface, x: number, y: number, radius: number, color: Color): void;
-        function drawEllipse(surface: Surface, x: number, y: number, rx: number, ry: number, color: Color): void;
+        function drawCircle(
+            surface: Surface,
+            x: number,
+            y: number,
+            radius: number,
+            color: Color,
+        ): void;
+        function drawEllipse(
+            surface: Surface,
+            x: number,
+            y: number,
+            rx: number,
+            ry: number,
+            color: Color,
+        ): void;
         function drawLine(
             surface: Surface,
             x1: number,
@@ -2704,7 +2808,12 @@ declare module "prim" {
             color: Color,
             color2?: Color,
         ): void;
-        function drawPoint(surface: Surface, x: number, y: number, color: Color): void;
+        function drawPoint(
+            surface: Surface,
+            x: number,
+            y: number,
+            color: Color,
+        ): void;
         function drawRectangle(
             surface: Surface,
             x: number,

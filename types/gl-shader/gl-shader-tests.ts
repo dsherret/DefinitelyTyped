@@ -7,12 +7,29 @@ let shader = createShader(gl, "", "");
 shader = createShader(gl, "", "", []);
 shader = createShader(gl, "", "", [], []);
 shader = createShader(gl, "", "", [{ name: "foo", type: "bool" }]);
-shader = createShader(gl, "", "", [{ name: "foo", type: "bool" }, { name: "bar", type: "float" }]);
-shader = createShader(gl, "", "", [{ name: "foo", type: "bool" }], [{ name: "bar", type: "float" }]);
+shader = createShader(gl, "", "", [
+    { name: "foo", type: "bool" },
+    { name: "bar", type: "float" },
+]);
+shader = createShader(
+    gl,
+    "",
+    "",
+    [{ name: "foo", type: "bool" }],
+    [{ name: "bar", type: "float" }],
+);
 
 shader = createShader(gl, { vertex: "", fragment: "" });
-shader = createShader(gl, { vertex: "", fragment: "", uniforms: [{ name: "foo", type: "bool" }] });
-shader = createShader(gl, { vertex: "", fragment: "", uniforms: [{ name: "foo", type: "bool" }] });
+shader = createShader(gl, {
+    vertex: "",
+    fragment: "",
+    uniforms: [{ name: "foo", type: "bool" }],
+});
+shader = createShader(gl, {
+    vertex: "",
+    fragment: "",
+    uniforms: [{ name: "foo", type: "bool" }],
+});
 shader = createShader(gl, {
     vertex: "",
     fragment: "",
@@ -24,7 +41,12 @@ shader.bind();
 shader.dispose();
 shader.update("", "");
 shader.update("", "", [{ name: "foo", type: "bool" }]);
-shader.update("", "", [{ name: "foo", type: "bool" }], [{ name: "foo", type: "bool" }]);
+shader.update(
+    "",
+    "",
+    [{ name: "foo", type: "bool" }],
+    [{ name: "foo", type: "bool" }],
+);
 
 shader.uniforms;
 shader.uniforms.color;

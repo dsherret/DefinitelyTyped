@@ -40,11 +40,11 @@ interface SlidingMarkerOptions extends google.maps.MarkerOptions {
     duration?: number | undefined;
     animateFunctionAdapter?:
         | ((
-            marker: google.maps.Marker,
-            destPoint: google.maps.LatLng,
-            easing: "linear" | jQuery.easing.IEasingType,
-            duration: number,
-        ) => void)
+              marker: google.maps.Marker,
+              destPoint: google.maps.LatLng,
+              easing: "linear" | jQuery.easing.IEasingType,
+              duration: number,
+          ) => void)
         | undefined;
 }
 
@@ -56,11 +56,15 @@ declare class SlidingMarker extends google.maps.Marker {
     setEasing(easing: jQuery.easing.IEasingType): void;
     getEasing(): jQuery.easing.IEasingType;
     getAnimationPosition(): google.maps.LatLng;
-    setPositionNotAnimated(position: google.maps.LatLng | google.maps.LatLngLiteral): void;
+    setPositionNotAnimated(
+        position: google.maps.LatLng | google.maps.LatLngLiteral,
+    ): void;
 }
 
 declare class MarkerWithGhost extends SlidingMarker {
-    setGhostPosition(ghostPosition: google.maps.LatLng | google.maps.LatLngLiteral): void;
+    setGhostPosition(
+        ghostPosition: google.maps.LatLng | google.maps.LatLngLiteral,
+    ): void;
     getGhostPosition(): google.maps.LatLng;
     getGhostAnimationPosition(): google.maps.LatLng;
 }

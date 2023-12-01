@@ -9,7 +9,11 @@ declare class NodeRSA {
     /**
      * Load key from string/buffer/components.
      */
-    constructor(key: NodeRSA.Key, format?: NodeRSA.Format, options?: NodeRSA.Options);
+    constructor(
+        key: NodeRSA.Key,
+        format?: NodeRSA.Format,
+        options?: NodeRSA.Options,
+    );
 
     /**
      * Set and validate options for key instance.
@@ -32,8 +36,12 @@ declare class NodeRSA {
      */
     exportKey(format?: NodeRSA.FormatPem): string;
     exportKey(format: NodeRSA.FormatDer): Buffer;
-    exportKey(format: NodeRSA.FormatComponentsPrivate): NodeRSA.KeyComponentsPrivate;
-    exportKey(format: NodeRSA.FormatComponentsPublic): NodeRSA.KeyComponentsPublic;
+    exportKey(
+        format: NodeRSA.FormatComponentsPrivate,
+    ): NodeRSA.KeyComponentsPrivate;
+    exportKey(
+        format: NodeRSA.FormatComponentsPublic,
+    ): NodeRSA.KeyComponentsPublic;
 
     isPrivate(): boolean;
 
@@ -59,13 +67,29 @@ declare class NodeRSA {
 
     encrypt(data: NodeRSA.Data, encoding?: "buffer"): Buffer;
     encrypt(data: NodeRSA.Data, encoding: NodeRSA.Encoding): string;
-    encrypt(data: Buffer, encoding: "buffer", sourceEncoding?: NodeRSA.Encoding): Buffer;
-    encrypt(data: Buffer, encoding: NodeRSA.Encoding, sourceEncoding?: NodeRSA.Encoding): string;
+    encrypt(
+        data: Buffer,
+        encoding: "buffer",
+        sourceEncoding?: NodeRSA.Encoding,
+    ): Buffer;
+    encrypt(
+        data: Buffer,
+        encoding: NodeRSA.Encoding,
+        sourceEncoding?: NodeRSA.Encoding,
+    ): string;
 
     encryptPrivate(data: NodeRSA.Data, encoding?: "buffer"): Buffer;
     encryptPrivate(data: NodeRSA.Data, encoding: NodeRSA.Encoding): string;
-    encryptPrivate(data: Buffer, encoding: "buffer", sourceEncoding?: NodeRSA.Encoding): Buffer;
-    encryptPrivate(data: Buffer, encoding: NodeRSA.Encoding, sourceEncoding?: NodeRSA.Encoding): string;
+    encryptPrivate(
+        data: Buffer,
+        encoding: "buffer",
+        sourceEncoding?: NodeRSA.Encoding,
+    ): Buffer;
+    encryptPrivate(
+        data: Buffer,
+        encoding: NodeRSA.Encoding,
+        sourceEncoding?: NodeRSA.Encoding,
+    ): string;
 
     decrypt(data: Buffer | string, encoding?: "buffer"): Buffer;
     decrypt(data: Buffer | string, encoding: NodeRSA.Encoding): string;
@@ -77,11 +101,23 @@ declare class NodeRSA {
 
     sign(data: NodeRSA.Data, encoding?: "buffer"): Buffer;
     sign(data: NodeRSA.Data, encoding: NodeRSA.Encoding): string;
-    sign(data: Buffer, encoding: "buffer", sourceEncoding?: NodeRSA.Encoding): Buffer;
-    sign(data: Buffer, encoding: NodeRSA.Encoding, sourceEncoding?: NodeRSA.Encoding): string;
+    sign(
+        data: Buffer,
+        encoding: "buffer",
+        sourceEncoding?: NodeRSA.Encoding,
+    ): Buffer;
+    sign(
+        data: Buffer,
+        encoding: NodeRSA.Encoding,
+        sourceEncoding?: NodeRSA.Encoding,
+    ): string;
 
     verify(data: NodeRSA.Data, signature: Buffer): boolean;
-    verify(data: Buffer, signature: Buffer, sourceEncoding?: NodeRSA.Encoding): boolean;
+    verify(
+        data: Buffer,
+        signature: Buffer,
+        sourceEncoding?: NodeRSA.Encoding,
+    ): boolean;
     verify(
         data: Buffer,
         signature: string,
@@ -131,12 +167,27 @@ declare namespace NodeRSA {
         | "components-private"
         | "components-private-pem"
         | "components-private-der";
-    type FormatComponentsPublic = "components-public" | "components-public-pem" | "components-public-der";
-    type Format = FormatPem | FormatDer | FormatComponentsPrivate | FormatComponentsPublic;
+    type FormatComponentsPublic =
+        | "components-public"
+        | "components-public-pem"
+        | "components-public-der";
+    type Format =
+        | FormatPem
+        | FormatDer
+        | FormatComponentsPrivate
+        | FormatComponentsPublic;
 
     type EncryptionScheme = "pkcs1_oaep" | "pkcs1";
 
-    type HashingAlgorithm = "ripemd160" | "md4" | "md5" | "sha1" | "sha224" | "sha256" | "sha384" | "sha512";
+    type HashingAlgorithm =
+        | "ripemd160"
+        | "md4"
+        | "md5"
+        | "sha1"
+        | "sha224"
+        | "sha256"
+        | "sha384"
+        | "sha512";
 
     type SigningScheme = "pkcs1" | "pss";
 
@@ -160,7 +211,16 @@ declare namespace NodeRSA {
         | "pss-sha384"
         | "pss-sha512";
 
-    type Encoding = "ascii" | "utf8" | "utf16le" | "ucs2" | "latin1" | "base64" | "hex" | "binary" | "buffer";
+    type Encoding =
+        | "ascii"
+        | "utf8"
+        | "utf16le"
+        | "ucs2"
+        | "latin1"
+        | "base64"
+        | "hex"
+        | "binary"
+        | "buffer";
 
     interface KeyComponentsPrivate {
         n: Buffer;
@@ -200,7 +260,9 @@ declare namespace NodeRSA {
         mgf?(data: Buffer, length: number, hash: HashingAlgorithm): Buffer;
     }
 
-    type AdvancedEncryptionScheme = AdvancedEncryptionSchemePKCS1 | AdvancedEncryptionSchemePKCS1OAEP;
+    type AdvancedEncryptionScheme =
+        | AdvancedEncryptionSchemePKCS1
+        | AdvancedEncryptionSchemePKCS1OAEP;
 
     interface AdvancedSigningSchemePSS {
         scheme: "pss";
@@ -213,7 +275,9 @@ declare namespace NodeRSA {
         hash: HashingAlgorithm;
     }
 
-    type AdvancedSigningScheme = AdvancedSigningSchemePSS | AdvancedSigningSchemePKCS1;
+    type AdvancedSigningScheme =
+        | AdvancedSigningSchemePSS
+        | AdvancedSigningSchemePKCS1;
 
     interface Options {
         /**
@@ -224,12 +288,19 @@ declare namespace NodeRSA {
         /**
          * Padding scheme for encrypt/decrypt. Default is 'pkcs1_oaep'.
          */
-        encryptionScheme?: EncryptionScheme | AdvancedEncryptionScheme | undefined;
+        encryptionScheme?:
+            | EncryptionScheme
+            | AdvancedEncryptionScheme
+            | undefined;
 
         /**
          * scheme used for signing and verifying.. Default 'pkcs1-sha256', or, if chosen pss: 'pss-sha1'.
          */
-        signingScheme?: SigningScheme | SigningSchemeHash | AdvancedSigningScheme | undefined;
+        signingScheme?:
+            | SigningScheme
+            | SigningSchemeHash
+            | AdvancedSigningScheme
+            | undefined;
     }
 }
 

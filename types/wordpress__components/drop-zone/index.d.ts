@@ -35,7 +35,10 @@ declare namespace DropZone {
          * @param position - Indicates whether the drop event happened closer
          *     to the top or bottom edges and left or right ones.
          */
-        onDrop?(event: DragEvent<HTMLDivElement>, position: HoverPosition): void;
+        onDrop?(
+            event: DragEvent<HTMLDivElement>,
+            position: HoverPosition,
+        ): void;
     }
     type HoverPosition = {
         x: "left" | "right";

@@ -20,7 +20,7 @@ module.exports = (config: Config) => {
             type: "html",
             dir: "coverage/",
             // $ExpectType (browser: string) => string
-            subdir: browser => {
+            subdir: (browser) => {
                 // tslint:disable-next-line:no-unnecessary-type-assertion
                 return `cool-${browser}-directory` as string;
             },
@@ -177,7 +177,11 @@ module.exports = (config: Config) => {
 module.exports = (config: Config) => {
     config.set({
         coverageReporter: {
-            reporters: [{ type: "html", dir: "coverage/" }, { type: "teamcity" }, { type: "text-summary" }],
+            reporters: [
+                { type: "html", dir: "coverage/" },
+                { type: "teamcity" },
+                { type: "text-summary" },
+            ],
         },
     });
 };

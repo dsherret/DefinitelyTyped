@@ -1,4 +1,9 @@
-import { AnyFn, EmberMethod, EmberMethodParams, EmberMethodReturn } from "ember/-private/type-utils";
+import {
+    AnyFn,
+    EmberMethod,
+    EmberMethodParams,
+    EmberMethodReturn,
+} from "ember/-private/type-utils";
 import { EmberRunQueues } from "./-private/types";
 // eslint-disable-next-line @definitelytyped/no-self-import
 import { EmberRunTimer } from "@ember/runloop/types";
@@ -22,7 +27,10 @@ export function run<T, M extends EmberMethod<T>>(
  * present it will queue itself to run on the existing run-loops action
  * queue.
  */
-export function join<M extends AnyFn>(method: M, ...args: Parameters<M>): ReturnType<M> | undefined;
+export function join<M extends AnyFn>(
+    method: M,
+    ...args: Parameters<M>
+): ReturnType<M> | undefined;
 export function join<T, M extends EmberMethod<T>>(
     target: T,
     method: M,
@@ -71,7 +79,11 @@ export function schedule<T, M extends EmberMethod<T>>(
     method: M,
     ...args: EmberMethodParams<T, M>
 ): EmberRunTimer;
-export function schedule<M extends AnyFn>(queue: EmberRunQueues, method: M, ...args: Parameters<M>): EmberRunTimer;
+export function schedule<M extends AnyFn>(
+    queue: EmberRunQueues,
+    method: M,
+    ...args: Parameters<M>
+): EmberRunTimer;
 
 /**
  * Invokes the passed target/method and optional arguments after a specified
@@ -80,7 +92,12 @@ export function schedule<M extends AnyFn>(queue: EmberRunQueues, method: M, ...a
  */
 export function later(method: AnyFn, wait: number): EmberRunTimer;
 export function later<T, M extends EmberMethod<T>>(
-    ...args: [target: T, method: M, ...args: EmberMethodParams<T, M>, wait: number]
+    ...args: [
+        target: T,
+        method: M,
+        ...args: EmberMethodParams<T, M>,
+        wait: number,
+    ]
 ): EmberRunTimer;
 
 /**
@@ -115,7 +132,10 @@ export function next<T, M extends EmberMethod<T>>(
     method: M,
     ...args: EmberMethodParams<T, M>
 ): EmberRunTimer;
-export function next<M extends AnyFn>(method: M, ...args: Parameters<M>): EmberRunTimer;
+export function next<M extends AnyFn>(
+    method: M,
+    ...args: Parameters<M>
+): EmberRunTimer;
 
 /**
  * Cancels a scheduled item. Must be a value returned by `run.later()`,
@@ -130,16 +150,36 @@ export function cancel(timer?: EmberRunTimer): boolean;
  * the specified time has elapsed, the timer is reset and the entire period
  * must pass again before the target method is called.
  */
-export function debounce(method: AnyFn, wait: number, immediate?: boolean): EmberRunTimer;
+export function debounce(
+    method: AnyFn,
+    wait: number,
+    immediate?: boolean,
+): EmberRunTimer;
 export function debounce<Target, M extends EmberMethod<Target>>(
-    ...args: [target: Target, method: M, ...args: EmberMethodParams<Target, M>, wait: number, immediate?: boolean]
+    ...args: [
+        target: Target,
+        method: M,
+        ...args: EmberMethodParams<Target, M>,
+        wait: number,
+        immediate?: boolean,
+    ]
 ): EmberRunTimer;
 
 /**
  * Ensure that the target method is never called more frequently than
  * the specified spacing period. The target method is called immediately.
  */
-export function throttle(method: AnyFn, spacing: number, immediate?: boolean): EmberRunTimer;
+export function throttle(
+    method: AnyFn,
+    spacing: number,
+    immediate?: boolean,
+): EmberRunTimer;
 export function throttle<T, M extends EmberMethod<T>>(
-    ...args: [target: T, method: M, ...methodArgs: EmberMethodParams<T, M>, spacing: number, immediate?: boolean]
+    ...args: [
+        target: T,
+        method: M,
+        ...methodArgs: EmberMethodParams<T, M>,
+        spacing: number,
+        immediate?: boolean,
+    ]
 ): EmberRunTimer;

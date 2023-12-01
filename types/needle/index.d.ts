@@ -13,13 +13,20 @@ declare namespace core {
 
     type ReadableStream = NodeJS.ReadableStream;
 
-    type NeedleCallback = (error: Error | null, response: NeedleResponse, body: any) => void;
+    type NeedleCallback = (
+        error: Error | null,
+        response: NeedleResponse,
+        body: any,
+    ) => void;
 
     interface Cookies {
         [name: string]: any;
     }
 
-    type NeedleOptions = RequestOptions & ResponseOptions & RedirectOptions & https.RequestOptions;
+    type NeedleOptions = RequestOptions &
+        ResponseOptions &
+        RedirectOptions &
+        https.RequestOptions;
 
     type NeedleReadonlyHttpVerbs = "get" | "head";
 
@@ -285,11 +292,18 @@ declare namespace needle {
     /**
      * Issues an HTTP HEAD request.
      */
-    export function head(url: string, callback?: NeedleCallback): ReadableStream;
+    export function head(
+        url: string,
+        callback?: NeedleCallback,
+    ): ReadableStream;
     /**
      * Issues an HTTP HEAD request.
      */
-    export function head(url: string, options?: NeedleOptions, callback?: NeedleCallback): ReadableStream;
+    export function head(
+        url: string,
+        options?: NeedleOptions,
+        callback?: NeedleCallback,
+    ): ReadableStream;
 
     /**
      * Issues an HTTP GET request.
@@ -298,12 +312,20 @@ declare namespace needle {
     /**
      * Issues an HTTP GET request.
      */
-    export function get(url: string, options?: NeedleOptions, callback?: NeedleCallback): ReadableStream;
+    export function get(
+        url: string,
+        options?: NeedleOptions,
+        callback?: NeedleCallback,
+    ): ReadableStream;
 
     /**
      * Issues an HTTP POST request.
      */
-    export function post(url: string, data: BodyData, callback?: NeedleCallback): ReadableStream;
+    export function post(
+        url: string,
+        data: BodyData,
+        callback?: NeedleCallback,
+    ): ReadableStream;
     /**
      * Issues an HTTP POST request.
      */
@@ -317,7 +339,11 @@ declare namespace needle {
     /**
      * Issues an HTTP PUT request.
      */
-    export function put(url: string, data: BodyData, callback?: NeedleCallback): ReadableStream;
+    export function put(
+        url: string,
+        data: BodyData,
+        callback?: NeedleCallback,
+    ): ReadableStream;
     /**
      * Issues an HTTP PUT request.
      */
@@ -331,7 +357,11 @@ declare namespace needle {
     /**
      * Same behaviour as PUT.
      */
-    export function patch(url: string, data: BodyData, callback?: NeedleCallback): ReadableStream;
+    export function patch(
+        url: string,
+        data: BodyData,
+        callback?: NeedleCallback,
+    ): ReadableStream;
     /**
      * Same behaviour as PUT.
      */
@@ -345,7 +375,11 @@ declare namespace needle {
     /**
      * Issues an HTTP DELETE request.
      */
-    function deleteFunc(url: string, data: BodyData, callback?: NeedleCallback): ReadableStream;
+    function deleteFunc(
+        url: string,
+        data: BodyData,
+        callback?: NeedleCallback,
+    ): ReadableStream;
     /**
      * Issues an HTTP DELETE request.
      */

@@ -1,6 +1,6 @@
 // examples from http://bxslider.com/examples
 
-$(document).ready(function() {
+$(document).ready(function () {
     $(".bxslider1").bxSlider({
         mode: "fade",
         captions: true,
@@ -98,14 +98,14 @@ $(document).ready(function() {
         pagerCustom: "#bx-pager",
     });
     $(".bxslider9").bxSlider({
-        buildPager: function(slideIndex) {
+        buildPager: function (slideIndex) {
             switch (slideIndex) {
                 case 0:
-                    return "<img src=\"/images/thumbs/tree_root.jpg\">";
+                    return '<img src="/images/thumbs/tree_root.jpg">';
                 case 1:
-                    return "<img src=\"/images/thumbs/houses.jpg\">";
+                    return '<img src="/images/thumbs/houses.jpg">';
                 case 2:
-                    return "<img src=\"/images/thumbs/hill_fence.jpg\">";
+                    return '<img src="/images/thumbs/hill_fence.jpg">';
             }
         },
     });
@@ -137,13 +137,15 @@ $(document).ready(function() {
     });
 
     $(".bxslider13").bxSlider({
-        onSliderLoad: function() {
+        onSliderLoad: function () {
             // do funky JS stuff here
             alert("Slider has finished loading. Click OK to continue!");
         },
-        onSlideAfter: function() {
+        onSlideAfter: function () {
             // do mind-blowing JS stuff here
-            alert("A slide has finished transitioning. Bravo. Click OK to continue!");
+            alert(
+                "A slide has finished transitioning. Bravo. Click OK to continue!",
+            );
         },
     });
 
@@ -151,12 +153,12 @@ $(document).ready(function() {
         mode: "fade",
     });
 
-    $("#slider-next").click(function() {
+    $("#slider-next").click(function () {
         slider.goToNextSlide();
         return false;
     });
 
-    $("#slider-count").click(function() {
+    $("#slider-count").click(function () {
         var count = slider.getSlideCount();
         alert("Slide count: " + count);
         return false;
@@ -189,9 +191,9 @@ $(document).ready(function() {
         mode: "horizontal",
     });
 
-    $("#reload-slider").click(function(e) {
+    $("#reload-slider").click(function (e) {
         e.preventDefault();
-        $(".bxslider").append("<li><img src=\"/images/730_200/trees.jpg\"></li>");
+        $(".bxslider").append('<li><img src="/images/730_200/trees.jpg"></li>');
         slider.reloadSlider();
     });
 
@@ -199,7 +201,7 @@ $(document).ready(function() {
         mode: "horizontal",
     });
 
-    $("#reload-slider").click(function(e) {
+    $("#reload-slider").click(function (e) {
         e.preventDefault();
         slider.reloadSlider({
             mode: "fade",

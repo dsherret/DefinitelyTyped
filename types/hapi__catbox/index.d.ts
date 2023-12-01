@@ -45,7 +45,7 @@ export type EnginePrototypeOrObject = EnginePrototype<any> | ClientApi<any>;
  * A prototype CatBox engine function
  */
 export interface EnginePrototype<T> {
-    new(settings: ClientOptions): ClientApi<T>;
+    new (settings: ClientOptions): ClientApi<T>;
 }
 
 /**
@@ -108,7 +108,9 @@ export interface ClientOptions {
     partition?: string | undefined;
 }
 
-export type PolicyOptionVariants<T> = PolicyOptions<T> | DecoratedPolicyOptions<T>;
+export type PolicyOptionVariants<T> =
+    | PolicyOptions<T>
+    | DecoratedPolicyOptions<T>;
 
 export type Id = string | { id: string };
 
@@ -132,7 +134,11 @@ export class Policy<T, O extends PolicyOptionVariants<T>> {
      * @param id the unique item identifier (within the policy segment).
      * Can be a string or an object with the required 'id' key.
      */
-    get(id: Id): Promise<O extends DecoratedPolicyOptions<T> ? DecoratedResult<T> : T | null>;
+    get(
+        id: Id,
+    ): Promise<
+        O extends DecoratedPolicyOptions<T> ? DecoratedResult<T> : T | null
+    >;
 
     /**
      * store an item in the cache where:

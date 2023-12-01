@@ -1,5 +1,8 @@
 import * as Popper from "@popperjs/core";
-import BaseComponent, { GetInstanceFactory, GetOrCreateInstanceFactory } from "./base-component";
+import BaseComponent, {
+    GetInstanceFactory,
+    GetOrCreateInstanceFactory,
+} from "./base-component";
 import Tooltip from "./tooltip";
 
 declare class Dropdown extends BaseComponent {
@@ -14,7 +17,10 @@ declare class Dropdown extends BaseComponent {
      *  create a new one in case it wasn't initialised.
      * You can use it like this: bootstrap.Dropdown.getOrCreateInstance(element)
      */
-    static getOrCreateInstance: GetOrCreateInstanceFactory<Dropdown, Partial<Dropdown.Options>>;
+    static getOrCreateInstance: GetOrCreateInstanceFactory<
+        Dropdown,
+        Partial<Dropdown.Options>
+    >;
 
     static jQueryInterface: Dropdown.jQueryInterface;
 
@@ -135,7 +141,15 @@ declare namespace Dropdown {
         autoClose: boolean | "inside" | "outside";
     }
 
-    type jQueryInterface = (config?: Partial<Options> | "toggle" | "show" | "hide" | "update" | "dispose") => JQuery;
+    type jQueryInterface = (
+        config?:
+            | Partial<Options>
+            | "toggle"
+            | "show"
+            | "hide"
+            | "update"
+            | "dispose",
+    ) => JQuery;
 }
 
 export default Dropdown;

@@ -1,6 +1,9 @@
 import Refs = require("object-refs");
 
-let refs = new Refs({ name: "wheels", collection: true, enumerable: true }, { name: "car" });
+let refs = new Refs(
+    { name: "wheels", collection: true, enumerable: true },
+    { name: "car" },
+);
 
 let car: any = { name: "toyota" };
 let wheels: any = [{ pos: "front-left" }, { pos: "front-right" }];

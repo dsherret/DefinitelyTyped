@@ -2,7 +2,9 @@
 
 export = detectCharacterEncoding;
 
-declare function detectCharacterEncoding(buf: Buffer): detectCharacterEncoding.Result | null;
+declare function detectCharacterEncoding(
+    buf: Buffer,
+): detectCharacterEncoding.Result | null;
 
 declare namespace detectCharacterEncoding {
     interface Result {

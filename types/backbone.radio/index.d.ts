@@ -14,13 +14,21 @@ declare module "backbone" {
         var VERSION: string;
         var DEBUG: boolean;
 
-        function log(channelName: string, eventName: string, ...args: any[]): void;
+        function log(
+            channelName: string,
+            eventName: string,
+            ...args: any[]
+        ): void;
         function tuneIn(channelName: string): Radio;
         function tuneOut(channelName: string): Radio;
         function channel(channelName: string): Channel;
 
         // Proxy functions for Commands
-        function command(channelName: string, commandName: string, ...args: any[]): void;
+        function command(
+            channelName: string,
+            commandName: string,
+            ...args: any[]
+        ): void;
         function comply(
             channelName: string,
             commandName: string,
@@ -51,7 +59,11 @@ declare module "backbone" {
         ): Commands;
 
         // Proxy functions for Requests
-        function request(channelName: string, requestName: string, ...args: any[]): any;
+        function request(
+            channelName: string,
+            requestName: string,
+            ...args: any[]
+        ): any;
         function reply(
             channelName: string,
             requestName: string,
@@ -82,36 +94,119 @@ declare module "backbone" {
         ): Requests;
 
         // Proxy functions for Backbone.Events
-        function on(channelName: string, eventName: string, callback?: Function, context?: any): any;
-        function off(channelName: string, eventName?: string, callback?: Function, context?: any): any;
-        function trigger(channelName: string, eventName: string, ...args: any[]): any;
-        function bind(channelName: string, eventName: string, callback: Function, context?: any): any;
-        function unbind(channelName: string, eventName?: string, callback?: Function, context?: any): any;
+        function on(
+            channelName: string,
+            eventName: string,
+            callback?: Function,
+            context?: any,
+        ): any;
+        function off(
+            channelName: string,
+            eventName?: string,
+            callback?: Function,
+            context?: any,
+        ): any;
+        function trigger(
+            channelName: string,
+            eventName: string,
+            ...args: any[]
+        ): any;
+        function bind(
+            channelName: string,
+            eventName: string,
+            callback: Function,
+            context?: any,
+        ): any;
+        function unbind(
+            channelName: string,
+            eventName?: string,
+            callback?: Function,
+            context?: any,
+        ): any;
 
-        function once(channelName: string, events: string, callback: Function, context?: any): any;
-        function listenTo(channelName: string, object: any, events: string, callback: Function): any;
-        function listenToOnce(channelName: string, object: any, events: string, callback: Function): any;
-        function stopListening(channelName: string, object?: any, events?: string, callback?: Function): any;
+        function once(
+            channelName: string,
+            events: string,
+            callback: Function,
+            context?: any,
+        ): any;
+        function listenTo(
+            channelName: string,
+            object: any,
+            events: string,
+            callback: Function,
+        ): any;
+        function listenToOnce(
+            channelName: string,
+            object: any,
+            events: string,
+            callback: Function,
+        ): any;
+        function stopListening(
+            channelName: string,
+            object?: any,
+            events?: string,
+            callback?: Function,
+        ): any;
 
         class Commands {
             command(commandName: string, ...args: any[]): void;
-            comply(commandName: string, callback: (...args: any[]) => void, context?: any): Commands;
-            comply(commands: { [key: string]: (...args: any[]) => any }, context?: any): Commands;
-            complyOnce(commands: { [key: string]: (...args: any[]) => any }, context?: any): Commands;
-            complyOnce(commandName: string, callback: (...args: any[]) => void, context?: any): Commands;
-            stopComplying(commandName?: string, callback?: (...args: any[]) => void, context?: any): Commands;
+            comply(
+                commandName: string,
+                callback: (...args: any[]) => void,
+                context?: any,
+            ): Commands;
+            comply(
+                commands: { [key: string]: (...args: any[]) => any },
+                context?: any,
+            ): Commands;
+            complyOnce(
+                commands: { [key: string]: (...args: any[]) => any },
+                context?: any,
+            ): Commands;
+            complyOnce(
+                commandName: string,
+                callback: (...args: any[]) => void,
+                context?: any,
+            ): Commands;
+            stopComplying(
+                commandName?: string,
+                callback?: (...args: any[]) => void,
+                context?: any,
+            ): Commands;
         }
 
         class Requests {
             request(requestName: string, ...args: any[]): any;
-            reply(requestName: string, callback: (...args: any[]) => any, context?: any): Requests;
-            reply(commands: { [key: string]: (...args: any[]) => any }, context?: any): Requests;
-            replyOnce(requestName: string, callback: (...args: any[]) => any, context?: any): Requests;
-            replyOnce(commands: { [key: string]: (...args: any[]) => any }, context?: any): Requests;
-            stopReplying(commandName?: string, callback?: (...args: any[]) => any, context?: any): Requests;
+            reply(
+                requestName: string,
+                callback: (...args: any[]) => any,
+                context?: any,
+            ): Requests;
+            reply(
+                commands: { [key: string]: (...args: any[]) => any },
+                context?: any,
+            ): Requests;
+            replyOnce(
+                requestName: string,
+                callback: (...args: any[]) => any,
+                context?: any,
+            ): Requests;
+            replyOnce(
+                commands: { [key: string]: (...args: any[]) => any },
+                context?: any,
+            ): Requests;
+            stopReplying(
+                commandName?: string,
+                callback?: (...args: any[]) => any,
+                context?: any,
+            ): Requests;
         }
 
-        class Channel extends Backbone.EventsMixin implements Commands, Requests, Backbone.Events {
+        class Channel
+            extends Backbone.EventsMixin
+            implements Commands, Requests, Backbone.Events
+        {
             /**
              * Faulty overgeneralization of Backbone.Events.on, for historical
              * reasons.
@@ -122,19 +217,55 @@ declare module "backbone" {
 
             // Radio.Commands
             command(commandName: string, ...args: any[]): void;
-            comply(commandName: string, callback: (...args: any[]) => void, context?: any): Commands;
-            comply(commands: { [key: string]: (...args: any[]) => any }, context?: any): Commands;
-            complyOnce(commandName: string, callback: (...args: any[]) => void, context?: any): Commands;
-            complyOnce(commands: { [key: string]: (...args: any[]) => any }, context?: any): Commands;
-            stopComplying(commandName?: string, callback?: (...args: any[]) => void, context?: any): Commands;
+            comply(
+                commandName: string,
+                callback: (...args: any[]) => void,
+                context?: any,
+            ): Commands;
+            comply(
+                commands: { [key: string]: (...args: any[]) => any },
+                context?: any,
+            ): Commands;
+            complyOnce(
+                commandName: string,
+                callback: (...args: any[]) => void,
+                context?: any,
+            ): Commands;
+            complyOnce(
+                commands: { [key: string]: (...args: any[]) => any },
+                context?: any,
+            ): Commands;
+            stopComplying(
+                commandName?: string,
+                callback?: (...args: any[]) => void,
+                context?: any,
+            ): Commands;
 
             // Radio.Requests
             request(requestName: string, ...args: any[]): any;
-            reply(requestName: string, callback: (...args: any[]) => any, context?: any): Requests;
-            reply(commands: { [key: string]: (...args: any[]) => any }, context?: any): Requests;
-            replyOnce(requestName: string, callback: (...args: any[]) => any, context?: any): Requests;
-            replyOnce(commands: { [key: string]: (...args: any[]) => any }, context?: any): Requests;
-            stopReplying(commandName?: string, callback?: (...args: any[]) => any, context?: any): Requests;
+            reply(
+                requestName: string,
+                callback: (...args: any[]) => any,
+                context?: any,
+            ): Requests;
+            reply(
+                commands: { [key: string]: (...args: any[]) => any },
+                context?: any,
+            ): Requests;
+            replyOnce(
+                requestName: string,
+                callback: (...args: any[]) => any,
+                context?: any,
+            ): Requests;
+            replyOnce(
+                commands: { [key: string]: (...args: any[]) => any },
+                context?: any,
+            ): Requests;
+            stopReplying(
+                commandName?: string,
+                callback?: (...args: any[]) => any,
+                context?: any,
+            ): Requests;
         }
     }
 }

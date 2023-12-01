@@ -25,7 +25,7 @@ declare module "game/prototypes" {
     }
 
     export type Store<POSSIBLE_RESOURCES extends ResourceConstant> =
-        & StoreBase<POSSIBLE_RESOURCES>
-        & { [P in POSSIBLE_RESOURCES]: number }
-        & { [P in Exclude<ResourceConstant, POSSIBLE_RESOURCES>]: 0 };
+        StoreBase<POSSIBLE_RESOURCES> & {
+            [P in POSSIBLE_RESOURCES]: number;
+        } & { [P in Exclude<ResourceConstant, POSSIBLE_RESOURCES>]: 0 };
 }

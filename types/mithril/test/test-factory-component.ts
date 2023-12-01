@@ -44,7 +44,7 @@ interface Comp2Attrs {
     description: string;
 }
 
-const comp2: FactoryComponent<Comp2Attrs> = vnode => ({
+const comp2: FactoryComponent<Comp2Attrs> = (vnode) => ({
     // vnode is inferred
     view({ attrs: { title, description } }) {
         // Comp2Attrs type is inferred
@@ -53,7 +53,7 @@ const comp2: FactoryComponent<Comp2Attrs> = vnode => ({
 });
 
 // 2a. Test ClosureComponent type alias
-const comp2a: ClosureComponent<Comp2Attrs> = vnode => ({
+const comp2a: ClosureComponent<Comp2Attrs> = (vnode) => ({
     // vnode is inferred
     view({ attrs: { title, description } }) {
         // Comp2Attrs type is inferred
@@ -163,13 +163,16 @@ function comp5(): Component<Comp4Attrs, Comp5State> {
     return {
         oninit({ state }) {
             state.count = 0;
-            state.add = num => {
+            state.add = (num) => {
                 state.count += num;
             };
         },
         view({ attrs, state }) {
             return [
-                m("h1", `This ${attrs.name} has been clicked ${state.count} times`),
+                m(
+                    "h1",
+                    `This ${attrs.name} has been clicked ${state.count} times`,
+                ),
                 m(
                     "button",
                     {

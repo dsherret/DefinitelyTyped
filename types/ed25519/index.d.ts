@@ -31,11 +31,18 @@ export function MakeKeypair(seed: Buffer): CurveKeyPair;
  * MakeKeypair().
  * @return The signature calculated on the plaintext.
  */
-export function Sign(message: Buffer, privateKeyOrKeyPair: Buffer | CurveKeyPair): Buffer;
+export function Sign(
+    message: Buffer,
+    privateKeyOrKeyPair: Buffer | CurveKeyPair,
+): Buffer;
 
 /**
  * Verifies a signature for a message buffer using a
  * public key generated using MakeKeypair().
  * @return True if the signature validates correctly, false otherwise.
  */
-export function Verify(message: Buffer, signature: Buffer, publicKey: Buffer): boolean;
+export function Verify(
+    message: Buffer,
+    signature: Buffer,
+    publicKey: Buffer,
+): boolean;

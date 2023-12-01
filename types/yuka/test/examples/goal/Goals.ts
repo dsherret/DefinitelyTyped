@@ -17,8 +17,7 @@ export class RestGoal extends Goal<Girl> {
         super(owner);
     }
 
-    activate(): void {
-    }
+    activate(): void {}
 
     execute(): void {
         if (!this.owner) {
@@ -94,7 +93,9 @@ class FindNextCollectibleGoal extends Goal<Girl> {
         for (let i = 0, l = entities.length; i < l; i++) {
             const entity = entities[i];
             if (entity !== owner && entity instanceof Collectible) {
-                const squaredDistance = owner.position.squaredDistanceTo(entity.position);
+                const squaredDistance = owner.position.squaredDistanceTo(
+                    entity.position,
+                );
                 if (squaredDistance < minDistance) {
                     minDistance = squaredDistance;
                     owner.currentTarget = entity;
@@ -108,9 +109,11 @@ class FindNextCollectibleGoal extends Goal<Girl> {
             return;
         }
         owner.worldMatrix.getInverse(inverseMatrix);
-        localPosition.copy(owner.currentTarget.position).applyMatrix4(inverseMatrix);
+        localPosition
+            .copy(owner.currentTarget.position)
+            .applyMatrix4(inverseMatrix);
 
-        this.animationId = (localPosition.x >= 0) ? LEFT_TURN : RIGHT_TURN;
+        this.animationId = localPosition.x >= 0 ? LEFT_TURN : RIGHT_TURN;
     }
 
     execute(): void {
@@ -127,8 +130,7 @@ class FindNextCollectibleGoal extends Goal<Girl> {
         }
     }
 
-    terminate(): void {
-    }
+    terminate(): void {}
 }
 
 //
@@ -165,7 +167,9 @@ class SeekToCollectibleGoal extends Goal<Girl> {
             if (owner.currentTarget === null) {
                 return;
             }
-            const squaredDistance = owner.position.squaredDistanceTo(owner.currentTarget.position);
+            const squaredDistance = owner.position.squaredDistanceTo(
+                owner.currentTarget.position,
+            );
             if (squaredDistance < 0.25) {
                 this.status = Goal.STATUS.COMPLETED;
             }
@@ -192,8 +196,7 @@ class PickUpCollectibleGoal extends Goal<Girl> {
         this.collectibleRemoveTimeout = 3; // the time in seconds after a collectible is removed
     }
 
-    activate(): void {
-    }
+    activate(): void {}
 
     execute(): void {
         if (!this.owner) {

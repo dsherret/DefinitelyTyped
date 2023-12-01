@@ -74,5 +74,7 @@ declare namespace smtpPool {
     }
 }
 
-declare function smtpPool(options: smtpPool.SmtpPoolOptions): nodemailer.Transport;
+declare function smtpPool(
+    options: smtpPool.SmtpPoolOptions,
+): nodemailer.Transport;
 export = smtpPool;

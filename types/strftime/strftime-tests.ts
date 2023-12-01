@@ -4,7 +4,15 @@ strftime("%B %d, %Y %H:%M:%S");
 strftime("%F %T", new Date(1307472705067));
 
 var it_IT = {
-    days: ["domenica", "lunedi", "martedi", "mercoledi", "giovedi", "venerdi", "sabato"],
+    days: [
+        "domenica",
+        "lunedi",
+        "martedi",
+        "mercoledi",
+        "giovedi",
+        "venerdi",
+        "sabato",
+    ],
     shortDays: ["dom", "lun", "mar", "mer", "gio", "ven", "sab"],
     months: [
         "gennaio",
@@ -20,7 +28,20 @@ var it_IT = {
         "novembre",
         "dicembre",
     ],
-    shortMonths: ["gen", "feb", "mar", "apr", "mag", "giu", "lug", "ago", "set", "ott", "nov", "dic"],
+    shortMonths: [
+        "gen",
+        "feb",
+        "mar",
+        "apr",
+        "mag",
+        "giu",
+        "lug",
+        "ago",
+        "set",
+        "ott",
+        "nov",
+        "dic",
+    ],
     AM: "AM",
     PM: "PM",
     am: "am",

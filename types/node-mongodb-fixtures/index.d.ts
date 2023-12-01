@@ -17,7 +17,11 @@ declare class Fixtures {
      *
      * @param dbName Identifies a database to switch to. Useful when the db in the connection string differs from the db you want to connect to.
      */
-    connect(uri: string, options?: MongoClientOptions, dbName?: string): Promise<this>;
+    connect(
+        uri: string,
+        options?: MongoClientOptions,
+        dbName?: string,
+    ): Promise<this>;
 
     load(): Promise<this>;
 

@@ -57,12 +57,15 @@ file((err, name, fd, cleanupCallback) => {
 });
 
 // $ExpectType void
-file({ mode: 644, prefix: "prefix-", postfix: ".txt" }, (err, name, fd, cleanupCallback) => {
-    err; // $ExpectType Error | null
-    name; // $ExpectType string
-    fd; // $ExpectType number
-    cleanupCallback; // $ExpectType () => void
-});
+file(
+    { mode: 644, prefix: "prefix-", postfix: ".txt" },
+    (err, name, fd, cleanupCallback) => {
+        err; // $ExpectType Error | null
+        name; // $ExpectType string
+        fd; // $ExpectType number
+        cleanupCallback; // $ExpectType () => void
+    },
+);
 
 // $ExpectType void
 file({ discardDescriptor: true }, (err, name, fd, cleanupCallback) => {

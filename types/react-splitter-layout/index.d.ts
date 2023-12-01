@@ -1,7 +1,6 @@
 import * as React from "react";
 
-export default class SplitterLayout extends React.PureComponent<SplitterLayoutProps> {
-}
+export default class SplitterLayout extends React.PureComponent<SplitterLayoutProps> {}
 
 export type TPrimaryIndex = 0 | 1;
 

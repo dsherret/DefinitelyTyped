@@ -169,7 +169,10 @@ export interface MutateResponse {
 export default class PlayMusic {
     constructor();
     init(options: InitOptions, callback: (error: Error) => void): void;
-    login(options: LoginOptions, callback: (error: Error, response: LoginResponse) => void): void;
+    login(
+        options: LoginOptions,
+        callback: (error: Error, response: LoginResponse) => void,
+    ): void;
 
     /**
      * Returns settings / device ids authorized for account.
@@ -183,7 +186,9 @@ export default class PlayMusic {
      *
      * @param callback function(error, response) - success callback
      */
-    getLibrary(callback: (error: Error, response: LibraryResponse) => void): void;
+    getLibrary(
+        callback: (error: Error, response: LibraryResponse) => void,
+    ): void;
 
     /**
      * Returns list of all tracks.
@@ -191,7 +196,10 @@ export default class PlayMusic {
      * @param options object - parameters
      * @param callback function(error, response) - success callback
      */
-    getLibrary(options: LibraryOptions, callback: (error: Error, response: LibraryResponse) => void): void;
+    getLibrary(
+        options: LibraryOptions,
+        callback: (error: Error, response: LibraryResponse) => void,
+    ): void;
 
     /**
      * Returns stream URL for a track.
@@ -199,7 +207,10 @@ export default class PlayMusic {
      * @param id string - track id, hyphenated is preferred, but "nid" will work for all access tracks (not uploaded ones)
      * @param callback function(err, streamUrl) - success callback
      */
-    getStreamUrl(id: string, callback: (error: Error, streamUrl: string) => void): void;
+    getStreamUrl(
+        id: string,
+        callback: (error: Error, streamUrl: string) => void,
+    ): void;
 
     /**
      * Opens and returns a stream object
@@ -216,14 +227,20 @@ export default class PlayMusic {
      * @param maxResults int - max number of results to return
      * @param callback function(err, searchResults) - success callback
      */
-    search(text: string, maxResults: number, callback: (error: Error, searchResults: any) => void): void;
+    search(
+        text: string,
+        maxResults: number,
+        callback: (error: Error, searchResults: any) => void,
+    ): void;
 
     /**
      * Returns list of all playlists.
      *
      * @param callback function(error, playlists) - success callback
      */
-    getPlayLists(callback: (error: Error, response: PlaylistListResponse) => void): void;
+    getPlayLists(
+        callback: (error: Error, response: PlaylistListResponse) => void,
+    ): void;
 
     /**
      * Creates a new playlist.
@@ -231,7 +248,10 @@ export default class PlayMusic {
      * @param playlistName string - the playlist name
      * @param callback function(error, mutateResponses) - success callback
      */
-    addPlayList(playlistName: string, callback: (error: Error, mutateResponses: MutateResponses) => void): void;
+    addPlayList(
+        playlistName: string,
+        callback: (error: Error, mutateResponses: MutateResponses) => void,
+    ): void;
 
     /**
      * Deletes a playlist
@@ -239,7 +259,10 @@ export default class PlayMusic {
      * @param playlistId string - the playlist id
      * @param callback function(err, mutationStatus) - success callback
      */
-    deletePlaylist(playlistId: string, callback: (error: Error, mutationStatus: MutateResponses) => void): void;
+    deletePlaylist(
+        playlistId: string,
+        callback: (error: Error, mutationStatus: MutateResponses) => void,
+    ): void;
 
     /**
      * Updates a playlist's metadata
@@ -292,7 +315,10 @@ export default class PlayMusic {
      * @param songId int - the song id. See http://bit.ly/1L4U6oK for id requirements.
      * @param callback function(err, mutationStatus) - success callback
      */
-    incrementTrackPlaycount(songId: string, callback: (error: Error, mutationStatus: MutateResponses) => void): void;
+    incrementTrackPlaycount(
+        songId: string,
+        callback: (error: Error, mutationStatus: MutateResponses) => void,
+    ): void;
 
     /**
      * Change metadata of a track a library
@@ -303,7 +329,10 @@ export default class PlayMusic {
      * @param song object - the track dictionary. You can get from getAllAccessTrack or from getLibrary
      * @param callback function(err, success) - success callback
      */
-    changeTrackMetadata(song: any, callback: (error: Error, success: MutateResponses) => void): void;
+    changeTrackMetadata(
+        song: any,
+        callback: (error: Error, success: MutateResponses) => void,
+    ): void;
 
     /**
      * Removes given entry ids from playlist entries.
@@ -321,7 +350,9 @@ export default class PlayMusic {
      *
      * @param callback function(error, response) - success callback
      */
-    getPlayListEntries(callback: (error: Error, response: PlaylistResponse) => void): void;
+    getPlayListEntries(
+        callback: (error: Error, response: PlaylistResponse) => void,
+    ): void;
 
     /**
      * Returns tracks on all playlists.
@@ -329,5 +360,8 @@ export default class PlayMusic {
      * @param options object - parameters
      * @param callback function(error, response) - success callback
      */
-    getPlayListEntries(options: PlaylistOptions, callback: (error: Error, response: PlaylistResponse) => void): void;
+    getPlayListEntries(
+        options: PlaylistOptions,
+        callback: (error: Error, response: PlaylistResponse) => void,
+    ): void;
 }

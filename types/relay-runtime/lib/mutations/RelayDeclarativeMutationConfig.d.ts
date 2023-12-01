@@ -5,7 +5,9 @@ import { Variables } from "../util/RelayRuntimeTypes";
 export type MutationTypes = "RANGE_ADD" | "RANGE_DELETE" | "NODE_DELETE";
 
 export type RangeOperations = "append" | "prepend";
-export type RangeBehaviorsFunction = (connectionArgs: { [name: string]: unknown }) => RangeOperations;
+export type RangeBehaviorsFunction = (connectionArgs: {
+    [name: string]: unknown;
+}) => RangeOperations;
 export interface RangeBehaviorsObject {
     [key: string]: RangeOperations;
 }
@@ -17,10 +19,10 @@ export interface RangeAddConfig {
     parentID?: string | undefined;
     connectionInfo?:
         | ReadonlyArray<{
-            key: string;
-            filters?: Variables | undefined;
-            rangeBehavior: string;
-        }>
+              key: string;
+              filters?: Variables | undefined;
+              rangeBehavior: string;
+          }>
         | undefined;
     connectionName?: string | undefined;
     edgeName: string;
@@ -33,9 +35,9 @@ export interface RangeDeleteConfig {
     parentID?: string | undefined;
     connectionKeys?:
         | ReadonlyArray<{
-            key: string;
-            filters?: Variables | undefined;
-        }>
+              key: string;
+              filters?: Variables | undefined;
+          }>
         | undefined;
     connectionName?: string | undefined;
     deletedIDFieldName: string | readonly string[];
@@ -50,7 +52,10 @@ export interface NodeDeleteConfig {
     deletedIDFieldName: string;
 }
 
-export type DeclarativeMutationConfig = RangeAddConfig | RangeDeleteConfig | NodeDeleteConfig;
+export type DeclarativeMutationConfig =
+    | RangeAddConfig
+    | RangeDeleteConfig
+    | NodeDeleteConfig;
 
 export function convert(
     configs: DeclarativeMutationConfig[],

@@ -4,7 +4,7 @@ import * as Hapi from "hapi";
 
 // verbose notation
 
-const handler: Hapi.RouteHandler = function(request, reply) {
+const handler: Hapi.RouteHandler = function (request, reply) {
     const response = reply("success");
     response.type("text/plain");
     response.header("X-Custom", "some-value");
@@ -12,8 +12,6 @@ const handler: Hapi.RouteHandler = function(request, reply) {
 
 // Chained notation
 
-const handler2: Hapi.RouteHandler = function(request, reply) {
-    return reply("success")
-        .type("text/plain")
-        .header("X-Custom", "some-value");
+const handler2: Hapi.RouteHandler = function (request, reply) {
+    return reply("success").type("text/plain").header("X-Custom", "some-value");
 };

@@ -244,7 +244,10 @@ export interface LoaderOptions {
      * };
      * ```
      */
-    sassOptions?: LoaderOptions.SassOptions | LoaderOptions.Callback<LoaderOptions.SassOptions> | undefined;
+    sassOptions?:
+        | LoaderOptions.SassOptions
+        | LoaderOptions.Callback<LoaderOptions.SassOptions>
+        | undefined;
 
     /**
      * Prepends `Sass`/`SCSS` code before the actual entry file. In this case, the

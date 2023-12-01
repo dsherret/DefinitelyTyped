@@ -35,7 +35,8 @@ declare namespace GoogleAdsScripts {
          *    .withBidModifier(1)             // optional
          *    .build();                       // add the audience
          */
-        interface ShoppingAdGroupAudienceBuilder extends Base.Builder<ShoppingAdGroupAudienceOperation> {
+        interface ShoppingAdGroupAudienceBuilder
+            extends Base.Builder<ShoppingAdGroupAudienceOperation> {
             /** Sets the audience ID of the audience. */
             withAudienceId(audienceId: number): this;
             /** Sets the bid modifier value for this audience to the specified value. */
@@ -51,12 +52,14 @@ declare namespace GoogleAdsScripts {
          *        var shoppingAudience = shoppingAudienceIterator.next();
          *      }
          */
-        interface ShoppingAdGroupAudienceIterator extends Base.Iterator<ShoppingAdGroupAudience> {}
+        interface ShoppingAdGroupAudienceIterator
+            extends Base.Iterator<ShoppingAdGroupAudience> {}
 
         /**
          * An operation representing creation of a new shopping audience.
          */
-        interface ShoppingAdGroupAudienceOperation extends Base.Operation<ShoppingAdGroupAudience> {}
+        interface ShoppingAdGroupAudienceOperation
+            extends Base.Operation<ShoppingAdGroupAudience> {}
 
         /**
          * Fetches shopping audiences. Supports filtering and sorting.
@@ -75,13 +78,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ShoppingAdGroupAudienceSelector
-            extends
-                Base.Selector<ShoppingAdGroupAudienceIterator>,
+            extends Base.Selector<ShoppingAdGroupAudienceIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

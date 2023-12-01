@@ -4,21 +4,34 @@ declare const yts: typeof search & { search: typeof search };
 
 declare function search(
     query: string | yts.Options,
-    callback: (err: Error | string | null | undefined, data: yts.SearchResult) => void,
+    callback: (
+        err: Error | string | null | undefined,
+        data: yts.SearchResult,
+    ) => void,
 ): void;
 declare function search(query: string | yts.Options): Promise<yts.SearchResult>;
 
 declare function search(
     query: yts.VideoMetadataOptions,
-    callback: (err: Error | string | null | undefined, data: yts.VideoMetadataResult) => void,
+    callback: (
+        err: Error | string | null | undefined,
+        data: yts.VideoMetadataResult,
+    ) => void,
 ): void;
-declare function search(query: yts.VideoMetadataOptions): Promise<yts.VideoMetadataResult>;
+declare function search(
+    query: yts.VideoMetadataOptions,
+): Promise<yts.VideoMetadataResult>;
 
 declare function search(
     query: yts.PlaylistMetadataOptions,
-    callback: (err: Error | string | null | undefined, data: yts.PlaylistMetadataResult) => void,
+    callback: (
+        err: Error | string | null | undefined,
+        data: yts.PlaylistMetadataResult,
+    ) => void,
 ): void;
-declare function search(query: yts.PlaylistMetadataOptions): Promise<yts.PlaylistMetadataResult>;
+declare function search(
+    query: yts.PlaylistMetadataOptions,
+): Promise<yts.PlaylistMetadataResult>;
 
 declare namespace yts {
     interface BaseOptions {
@@ -148,7 +161,12 @@ declare namespace yts {
     }
 
     interface SearchResult {
-        all: Array<VideoSearchResult | LiveSearchResult | PlaylistSearchResult | ChannelSearchResult>;
+        all: Array<
+            | VideoSearchResult
+            | LiveSearchResult
+            | PlaylistSearchResult
+            | ChannelSearchResult
+        >;
         videos: VideoSearchResult[];
         live: LiveSearchResult[];
         playlists: PlaylistSearchResult[];

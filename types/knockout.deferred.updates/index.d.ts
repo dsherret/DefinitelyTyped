@@ -2,7 +2,11 @@
 
 interface KnockoutDeferredTasks {
     processImmediate(evaluator: Function, object?: any, args?: any[]): any;
-    processDelayed(evaluator: Function, distinct?: boolean, options?: any[]): boolean;
+    processDelayed(
+        evaluator: Function,
+        distinct?: boolean,
+        options?: any[],
+    ): boolean;
     makeProcessedCallback(evaluator: Function): void;
 }
 
@@ -11,7 +15,11 @@ interface KnockoutStatic {
     processAllDeferredBindingUpdates(): void;
     processAllDeferredUpdates(): void;
     evaluateAsynchronously(evaluator: Function, timeout?: any): number;
-    ignoreDependencies(callback: Function, callbackTarget: any, callbackArgs?: any[]);
+    ignoreDependencies(
+        callback: Function,
+        callbackTarget: any,
+        callbackArgs?: any[],
+    );
 }
 
 // Observables

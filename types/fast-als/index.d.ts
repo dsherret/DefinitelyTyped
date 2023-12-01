@@ -66,8 +66,14 @@ export function runWith(defaults: Context, callback: CallbackFunction): void;
  * callOutOfScope();
  */
 
-export function set<Payload extends Context, Key extends keyof Payload>(key: Key, value: Payload[Key]): void;
-export function set<Payload extends Context>(key: keyof Payload, value: Payload[typeof key]): void;
+export function set<Payload extends Context, Key extends keyof Payload>(
+    key: Key,
+    value: Payload[Key],
+): void;
+export function set<Payload extends Context>(
+    key: keyof Payload,
+    value: Payload[typeof key],
+): void;
 export function set(key: string, value: any): void;
 
 /**
@@ -105,6 +111,10 @@ export function set(key: string, value: any): void;
  * // calling this will return undefined
  * callInScope();
  */
-export function get<Payload extends Context, Key extends keyof Payload>(key: Key): Payload[Key] | undefined;
-export function get<Payload extends Context>(key: keyof Payload): Payload[typeof key] | undefined;
+export function get<Payload extends Context, Key extends keyof Payload>(
+    key: Key,
+): Payload[Key] | undefined;
+export function get<Payload extends Context>(
+    key: keyof Payload,
+): Payload[typeof key] | undefined;
 export function get(key: string): ReturnValue | undefined;

@@ -77,10 +77,8 @@ declare namespace stopword {
         | "zul";
 }
 
-declare const stopword:
-    & {
-        [Language in stopword.LanguageCode]: string[];
-    }
-    & stopword.Stopword;
+declare const stopword: {
+    [Language in stopword.LanguageCode]: string[];
+} & stopword.Stopword;
 
 export = stopword;

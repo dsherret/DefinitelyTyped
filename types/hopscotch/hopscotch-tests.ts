@@ -21,7 +21,7 @@ var tourDefinition: TourDefinition = {
             placement: "right",
             title: "A question?",
             content: "Hello!",
-            onShow: function() {},
+            onShow: function () {},
         },
         {
             target: ".home-button",
@@ -42,12 +42,12 @@ var tourDefinition: TourDefinition = {
 
             showNextButton: false,
             nextOnTargetClick: true,
-            onShow: function() {},
+            onShow: function () {},
         },
     ],
     skipIfNoElement: false,
-    onClose: function() {},
-    onEnd: function() {},
+    onClose: function () {},
+    onEnd: function () {},
 };
 
 hopscotch.startTour(tourDefinition);

@@ -2,56 +2,70 @@
 
 // Test WL.Client
 WL.Client.connect({
-    onSuccess: function(response: WL.ResponseBase) {
+    onSuccess: function (response: WL.ResponseBase) {
         var title: string = response.responseJSON["title"];
         console.log(response.status + " " + title);
     },
-    onFailure: function(response: WL.FailureResponse) {
-    },
+    onFailure: function (response: WL.FailureResponse) {},
     timeout: 30,
 });
 
-WL.Client.invokeProcedure({ adapter: "", procedure: "" }).then(function(response) {
-    response.responseJSON;
-}, function(response) {
-    response.status;
-});
+WL.Client.invokeProcedure({ adapter: "", procedure: "" }).then(
+    function (response) {
+        response.responseJSON;
+    },
+    function (response) {
+        response.status;
+    },
+);
 
 // Test WL.Device
-WL.Device.getNetworkInfo(function(networkInfo) {
+WL.Device.getNetworkInfo(function (networkInfo) {
     var addrs = networkInfo.Ipv4Addresses;
     addrs[0].wifiAddress;
 });
 
 // Test user delete certificate
-WL.UserAuth.deleteCertificate("entity").then(function() {
-    console.log("WL.UserAuth.deleteCertificate success");
-}, function(error: string) {
-    console.log("WL.UserAuth.deleteCertificate failure " + error);
-});
+WL.UserAuth.deleteCertificate("entity").then(
+    function () {
+        console.log("WL.UserAuth.deleteCertificate success");
+    },
+    function (error: string) {
+        console.log("WL.UserAuth.deleteCertificate failure " + error);
+    },
+);
 
 // Test Auhorization Manager
 var xhr = new XMLHttpRequest();
-WLAuthorizationManager.addCachedAuthorizationHeader(xhr).always(
-    function(response: WLAuthorizationManager.RequestObject) {
-        // success or failure flow
+WLAuthorizationManager.addCachedAuthorizationHeader(xhr).always(function (
+    response: WLAuthorizationManager.RequestObject,
+) {
+    // success or failure flow
+});
+WLAuthorizationManager.getAppIdentity().then(
+    function (data) {
+        // success flow with application identity
+    },
+    function (error: string) {
+        // failure flow with error
     },
 );
-WLAuthorizationManager.getAppIdentity().then(function(data) {
-    // success flow with application identity
-}, function(error: string) {
-    // failure flow with error
-});
-WLAuthorizationManager.getCachedAuthorizationHeader().then(function(response) {
-    // success flow
-}, function(error) {
-    // error flow
-});
-WLAuthorizationManager.getDeviceIdentity().then(function(data) {
-    // success flow with device identity
-}, function(error) {
-    // failure flow with error
-});
+WLAuthorizationManager.getCachedAuthorizationHeader().then(
+    function (response) {
+        // success flow
+    },
+    function (error) {
+        // error flow
+    },
+);
+WLAuthorizationManager.getDeviceIdentity().then(
+    function (data) {
+        // success flow with device identity
+    },
+    function (error) {
+        // failure flow with error
+    },
+);
 
 // Test WL.JSONStore
 var arr: any[];
@@ -102,37 +116,40 @@ WL.Logger.setNativeOptions({
     capture: true,
     filters: { jsonstore: "debug" },
 });
-WL.Logger.status().then(function(state) {
-    // { enabled : true, stringify: true, filters : {},
-    // level : 'info', pkg : '', tag: {level: false, pkg: true} }
-}).fail(function(errMsg) {
-    // errMsg = error message
-});
+WL.Logger.status()
+    .then(function (state) {
+        // { enabled : true, stringify: true, filters : {},
+        // level : 'info', pkg : '', tag: {level: false, pkg: true} }
+    })
+    .fail(function (errMsg) {
+        // errMsg = error message
+    });
 
 // Test WL.SecurityUtils
-WL.SecurityUtils.base64Encode("input string").then(function(result: string) {
-    console.log("Base64 Encoded: " + result);
-}, function() {
-    console.log("An error occurred");
-});
+WL.SecurityUtils.base64Encode("input string").then(
+    function (result: string) {
+        console.log("Base64 Encoded: " + result);
+    },
+    function () {
+        console.log("An error occurred");
+    },
+);
 
 // Test WL.SimpleDialog
-WL.SimpleDialog.show(
-    "My Title",
-    "My Text",
-    [{
+WL.SimpleDialog.show("My Title", "My Text", [
+    {
         text: "First Button",
-        handler: function() {
+        handler: function () {
             WL.Logger.debug("First button pressed");
         },
-    }],
-);
+    },
+]);
 
 // Test WL.TabBar
 // iOS
 var creditTab = WL.TabBar.addItem(
     "CREDIT",
-    function() {
+    function () {
         alert("the CREDIT tab was selected!");
     },
     "Visa",
@@ -147,7 +164,7 @@ creditTab.updateBadge(null);
 // Android
 var tabFeeds = WL.TabBar.addItem(
     "tab2",
-    function() {
+    function () {
         console.log("handler");
     },
     "Engadget Feeds",
@@ -159,22 +176,34 @@ var tabFeeds = WL.TabBar.addItem(
 tabFeeds.setEnabled(true);
 
 // Test WLResourceRequest
-var request1 = new WLResourceRequest("/adapters/sampleAdapter/multiplyNumbers", WLResourceRequest.GET);
+var request1 = new WLResourceRequest(
+    "/adapters/sampleAdapter/multiplyNumbers",
+    WLResourceRequest.GET,
+);
 request1.setQueryParameter("params", [5, 6]);
-request1.send().then(function(response: WL.Response) {
-    console.log("Success " + response.responseJSON);
-}, function(error: WL.ResponseBase) {
-    console.log("Error " + error.errorCode + " " + error.errorMsg);
-});
+request1.send().then(
+    function (response: WL.Response) {
+        console.log("Success " + response.responseJSON);
+    },
+    function (error: WL.ResponseBase) {
+        console.log("Error " + error.errorCode + " " + error.errorMsg);
+    },
+);
 var request2 = new WLResourceRequest("url", WLResourceRequest.POST, 30000);
-request2.send("content").then(function(response: WL.Response) {
-    console.log("Success " + response.responseJSON);
-}, function(error: WL.ResponseBase) {
-    console.log("Error " + error.errorCode + " " + error.errorMsg);
-});
+request2.send("content").then(
+    function (response: WL.Response) {
+        console.log("Success " + response.responseJSON);
+    },
+    function (error: WL.ResponseBase) {
+        console.log("Error " + error.errorCode + " " + error.errorMsg);
+    },
+);
 var request3 = new WLResourceRequest("url", "METHOD", 50000);
-request3.send({ data: "content", more_data: "more_content" }).then(function(response: WL.Response) {
-    console.log("Success " + response.responseJSON);
-}, function(error: WL.ResponseBase) {
-    console.log("Error " + error.errorCode + " " + error.errorMsg);
-});
+request3.send({ data: "content", more_data: "more_content" }).then(
+    function (response: WL.Response) {
+        console.log("Success " + response.responseJSON);
+    },
+    function (error: WL.ResponseBase) {
+        console.log("Error " + error.errorCode + " " + error.errorMsg);
+    },
+);

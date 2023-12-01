@@ -5,8 +5,17 @@ export as namespace dateFormat;
  * @param mask Defaults to `masks.default`.
  * @returns A formatted version of the given date.
  */
-export default function dateFormat(date?: Date | string | number, mask?: string, utc?: boolean, gmt?: boolean): string;
-export default function dateFormat(mask?: string, utc?: boolean, gmt?: boolean): string;
+export default function dateFormat(
+    date?: Date | string | number,
+    mask?: string,
+    utc?: boolean,
+    gmt?: boolean,
+): string;
+export default function dateFormat(
+    mask?: string,
+    utc?: boolean,
+    gmt?: boolean,
+): string;
 
 /**
  * Get proper timezone abbreviation or timezone offset.

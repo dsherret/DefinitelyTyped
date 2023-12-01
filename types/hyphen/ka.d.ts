@@ -1,4 +1,8 @@
-import { HyphenationFunctionAsync, HyphenationFunctionSync, PatternsDefinition } from ".";
+import {
+    HyphenationFunctionAsync,
+    HyphenationFunctionSync,
+    PatternsDefinition,
+} from ".";
 
 /** The asynchronous hyphenation function for this language. */
 export const hyphenate: HyphenationFunctionAsync;

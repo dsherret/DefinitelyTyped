@@ -8,7 +8,14 @@ import zlib = require("zlib");
 export { constants } from "zlib";
 
 type BrotliMode = "BrotliCompress" | "BrotliDecompress";
-type ZlibMode = "Gzip" | "Gunzip" | "Deflate" | "Inflate" | "DeflateRaw" | "InflateRaw" | "Unzip";
+type ZlibMode =
+    | "Gzip"
+    | "Gunzip"
+    | "Deflate"
+    | "Inflate"
+    | "DeflateRaw"
+    | "InflateRaw"
+    | "Unzip";
 
 interface MiniPassOptions extends Omit<MiniPass.StringOptions, "encoding"> {
     encoding?: BufferEncoding | "buffer" | null;

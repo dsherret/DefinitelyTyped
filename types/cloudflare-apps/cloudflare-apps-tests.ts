@@ -15,7 +15,8 @@ describe("Globals", () => {
     });
 
     it("INSTALL_PRODUCT returns InstallProduct", () => {
-        const product: CloudflareApps.InstallProduct | undefined = INSTALL_PRODUCT;
+        const product: CloudflareApps.InstallProduct | undefined =
+            INSTALL_PRODUCT;
 
         if (product != null) {
             const id = product.id;
@@ -39,10 +40,13 @@ describe("CloudflareApps methods", () => {
         });
 
         const div: HTMLDivElement = document.createElement("div");
-        const divElement: HTMLDivElement = CloudflareApps.createElement({
-            method: "replace",
-            selector: "body > *",
-        }, div);
+        const divElement: HTMLDivElement = CloudflareApps.createElement(
+            {
+                method: "replace",
+                selector: "body > *",
+            },
+            div,
+        );
     });
 
     it("matchPage", () => {
@@ -52,15 +56,18 @@ describe("CloudflareApps methods", () => {
     });
 
     it("querySelector", () => {
-        const element: Element | null = CloudflareApps.querySelector("body > *");
-        const bodyElement: HTMLBodyElement | null = CloudflareApps.querySelector("body");
+        const element: Element | null =
+            CloudflareApps.querySelector("body > *");
+        const bodyElement: HTMLBodyElement | null =
+            CloudflareApps.querySelector("body");
     });
 });
 
 describe("CloudflareApps properties", () => {
     it("installs", () => {
         const appId = "preview";
-        const app: CloudflareApps.App | undefined = CloudflareApps.installs[appId];
+        const app: CloudflareApps.App | undefined =
+            CloudflareApps.installs[appId];
 
         if (app != null) {
             const id: string = app.appId;

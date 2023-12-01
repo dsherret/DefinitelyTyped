@@ -1,6 +1,10 @@
 /// <reference types="jquery" />
 
-export type kbEventHandler = (event?: Event | string, keyboard?: Element, el?: Element) => void;
+export type kbEventHandler = (
+    event?: Event | string,
+    keyboard?: Element,
+    el?: Element,
+) => void;
 
 export interface NavigateOptions {
     focusClass?: string | undefined;

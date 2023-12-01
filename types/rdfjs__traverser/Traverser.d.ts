@@ -34,6 +34,13 @@ export default class Traverser<D extends DatasetCore = DatasetCore> {
 
     forEach(pointer: PointerLike<D>, callback: ForEachCallback<D>): void;
     match(pointer: PointerLike<D>): D;
-    reduce<R>(pointer: PointerLike<D>, callback: ReduceCallback<D, R | undefined>): R | undefined;
-    reduce<R>(pointer: PointerLike<D>, callback: ReduceCallback<D, R>, initialValue: R): R;
+    reduce<R>(
+        pointer: PointerLike<D>,
+        callback: ReduceCallback<D, R | undefined>,
+    ): R | undefined;
+    reduce<R>(
+        pointer: PointerLike<D>,
+        callback: ReduceCallback<D, R>,
+        initialValue: R,
+    ): R;
 }

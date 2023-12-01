@@ -17,10 +17,14 @@ declare namespace md {
         renderers?: Partial<Renderers> | undefined;
     }
 
-    type Markings = (...strings: Array<TemplateStringsArray | React.ReactElement>) => React.ReactElement;
+    type Markings = (
+        ...strings: Array<TemplateStringsArray | React.ReactElement>
+    ) => React.ReactElement;
     function customize(opts: Options): Markings;
 }
 
-declare function md(...strings: Array<TemplateStringsArray | React.ReactElement>): React.ReactElement;
+declare function md(
+    ...strings: Array<TemplateStringsArray | React.ReactElement>
+): React.ReactElement;
 
 export = md;

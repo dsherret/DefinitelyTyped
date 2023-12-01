@@ -1,7 +1,12 @@
 import LassoContext from "./LassoContext";
 
 export default interface LassoPageResult {
-    addFile(filePath: string, contentType: string, isAsync: boolean, slot: any): void;
+    addFile(
+        filePath: string,
+        contentType: string,
+        isAsync: boolean,
+        slot: any,
+    ): void;
     addUrl(url: string, slot: any, contentType: string, isAsync: boolean): void;
     deserialize(reader: any, callback: any): void;
     getBodyHtml(data?: any): string;

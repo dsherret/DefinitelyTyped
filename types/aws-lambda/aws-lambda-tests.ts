@@ -193,7 +193,9 @@ const typedAsyncHandler: CustomHandler = async (event, context, cb) => {
 };
 
 // @ts-expect-error
-const badTypedAsyncHandler: CustomHandler = async (event, context, cb) => ({ resultString: bool });
+const badTypedAsyncHandler: CustomHandler = async (event, context, cb) => ({
+    resultString: bool,
+});
 
 // Test using untyped Callback type still works.
 const mixedUntypedCallbackTypedHandler: CustomHandler = (

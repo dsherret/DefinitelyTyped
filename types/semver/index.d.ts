@@ -101,7 +101,14 @@ export const SEMVER_SPEC_VERSION: "2.0.0";
 
 export const RELEASE_TYPES: ReleaseType[];
 
-export type ReleaseType = "major" | "premajor" | "minor" | "preminor" | "patch" | "prepatch" | "prerelease";
+export type ReleaseType =
+    | "major"
+    | "premajor"
+    | "minor"
+    | "preminor"
+    | "patch"
+    | "prepatch"
+    | "prerelease";
 
 export interface Options {
     loose?: boolean | undefined;
@@ -125,4 +132,14 @@ export interface CoerceOptions extends Options {
     rtl?: boolean | undefined;
 }
 
-export type Operator = "===" | "!==" | "" | "=" | "==" | "!=" | ">" | ">=" | "<" | "<=";
+export type Operator =
+    | "==="
+    | "!=="
+    | ""
+    | "="
+    | "=="
+    | "!="
+    | ">"
+    | ">="
+    | "<"
+    | "<=";

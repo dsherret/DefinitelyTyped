@@ -48,13 +48,11 @@ declare namespace GoogleAdsScripts {
          *        .get();
          */
         interface AssetSelector
-            extends
-                Base.Selector<AssetIterator>,
+            extends Base.Selector<AssetIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
 
         /**
          * Builds new image assets.
@@ -111,7 +109,8 @@ declare namespace GoogleAdsScripts {
          *         .build();
          *      var videoAsset = assetOperation.getResult();
          */
-        interface YouTubeVideoAssetBuilder extends Base.Builder<AssetOperation> {
+        interface YouTubeVideoAssetBuilder
+            extends Base.Builder<AssetOperation> {
             /** Sets new image asset's name to the specified value. */
             withName(name: string): this;
             /** Sets YouTube video ID. */

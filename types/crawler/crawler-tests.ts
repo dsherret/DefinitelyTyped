@@ -114,11 +114,11 @@ c.direct({
 
 c.setLimiterProperty("limiterName", "propertyName", "value");
 
-c.on("schedule", options => {
+c.on("schedule", (options) => {
     options.proxy = "http://proxy:port";
 });
 
-c.on("request", options => {
+c.on("request", (options) => {
     options.qs.timestamp = new Date().getTime();
 });
 

@@ -6,7 +6,10 @@ declare global {
 
 export = promiseFinally;
 
-declare function promiseFinally<T, U>(promise: Promise<T>, onFinally?: () => U | PromiseLike<U>): Promise<T>;
+declare function promiseFinally<T, U>(
+    promise: Promise<T>,
+    onFinally?: () => U | PromiseLike<U>,
+): Promise<T>;
 declare namespace promiseFinally {
     function shim(): void;
 }

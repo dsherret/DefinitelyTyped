@@ -43,13 +43,24 @@ declare namespace gtmetrix {
         /**
          * Get details about a test browser
          */
-        get(browserId: number, callback: (error: MetricsError, data: Readonly<BrowserFeatures>) => void): void;
+        get(
+            browserId: number,
+            callback: (
+                error: MetricsError,
+                data: Readonly<BrowserFeatures>,
+            ) => void,
+        ): void;
         get(browserId: number): Promise<Readonly<BrowserFeatures>>;
 
         /**
          * Get a list of available test browsers.
          */
-        list(callback: (error: MetricsError, data: readonly BrowserFeatures[]) => void): void;
+        list(
+            callback: (
+                error: MetricsError,
+                data: readonly BrowserFeatures[],
+            ) => void,
+        ): void;
         list(): Promise<readonly BrowserFeatures[]>;
     }
 
@@ -92,7 +103,12 @@ declare namespace gtmetrix {
         /**
          * Get account status
          */
-        status(callback?: (err: MetricsError, data: Readonly<AccountStatus>) => void): void;
+        status(
+            callback?: (
+                err: MetricsError,
+                data: Readonly<AccountStatus>,
+            ) => void,
+        ): void;
         status(): Promise<Readonly<AccountStatus>>;
     }
 
@@ -105,7 +121,12 @@ declare namespace gtmetrix {
         /**
          * Get a list of available test locations.
          */
-        list(callback: (error: MetricsError, data: readonly LocationInfo[]) => void): void;
+        list(
+            callback: (
+                error: MetricsError,
+                data: readonly LocationInfo[],
+            ) => void,
+        ): void;
         list(): Promise<readonly LocationInfo[]>;
     }
 
@@ -116,9 +137,14 @@ declare namespace gtmetrix {
          */
         create(
             params: { [param: string]: any },
-            callback: (error: MetricsError, data: Readonly<TestBasicInfo>) => void,
+            callback: (
+                error: MetricsError,
+                data: Readonly<TestBasicInfo>,
+            ) => void,
         ): void;
-        create(params: { [param: string]: any }): Promise<Readonly<TestBasicInfo>>;
+        create(params: {
+            [param: string]: any;
+        }): Promise<Readonly<TestBasicInfo>>;
 
         /**
          * Get details about a test or one of its resources.
@@ -135,19 +161,50 @@ declare namespace gtmetrix {
             testId: string,
             resource: NonBinaryResourceType,
             polling: number,
-            callback: (error: MetricsError, data: Readonly<TestDetails>) => void,
+            callback: (
+                error: MetricsError,
+                data: Readonly<TestDetails>,
+            ) => void,
         ): void;
         get(
             testId: string,
             resource: NonBinaryResourceType,
-            callback: (error: MetricsError, data: Readonly<TestDetails>) => void,
+            callback: (
+                error: MetricsError,
+                data: Readonly<TestDetails>,
+            ) => void,
         ): void;
-        get(testId: string, resource: BinaryResourceType, callback: (error: MetricsError, data: Buffer) => void): void;
-        get(testId: string, callback: (error: MetricsError, data: Readonly<TestDetails>) => void): void;
-        get(testId: string, resource: BinaryResourceType, polling: number): Promise<Buffer>;
-        get(testId: string, resource: NonBinaryResourceType, polling: number): Promise<Readonly<TestDetails>>;
-        get(testId: string, resource: BinaryResourceType): Promise<Readonly<Buffer>>;
-        get(testId: string, resource: NonBinaryResourceType, polling: number): Promise<TestDetails>;
+        get(
+            testId: string,
+            resource: BinaryResourceType,
+            callback: (error: MetricsError, data: Buffer) => void,
+        ): void;
+        get(
+            testId: string,
+            callback: (
+                error: MetricsError,
+                data: Readonly<TestDetails>,
+            ) => void,
+        ): void;
+        get(
+            testId: string,
+            resource: BinaryResourceType,
+            polling: number,
+        ): Promise<Buffer>;
+        get(
+            testId: string,
+            resource: NonBinaryResourceType,
+            polling: number,
+        ): Promise<Readonly<TestDetails>>;
+        get(
+            testId: string,
+            resource: BinaryResourceType,
+        ): Promise<Readonly<Buffer>>;
+        get(
+            testId: string,
+            resource: NonBinaryResourceType,
+            polling: number,
+        ): Promise<TestDetails>;
         get(testId: string): Promise<Readonly<TestDetails>>;
     }
 

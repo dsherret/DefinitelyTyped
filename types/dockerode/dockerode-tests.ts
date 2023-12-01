@@ -102,7 +102,7 @@ docker.getEvents((err, stream) => {
     // NOOP
 });
 
-docker.getEvents().then(stream => {
+docker.getEvents().then((stream) => {
     // NOOP
 });
 
@@ -151,7 +151,12 @@ container.logs({ follow: false }, (err, logs) => {
 container.logs({ since: 0, until: 10, stdout: true, stderr: true });
 
 // $ExpectType Promise<Buffer>
-container.logs({ since: "12345.987654321", until: "54321.123456789", stdout: true, stderr: true });
+container.logs({
+    since: "12345.987654321",
+    until: "54321.123456789",
+    stdout: true,
+    stderr: true,
+});
 
 // $ExpectType Promise<ReadableStream>
 container.logs({ follow: true });
@@ -231,28 +236,34 @@ container.stop({
 });
 
 docker.listContainers((err, containers) => {
-    containers.forEach(container => {
+    containers.forEach((container) => {
         docker.getContainer(container.Id).stop((err, data) => {
             // NOOP
         });
     });
 });
 
-docker.listContainers().then(containers => {
-    return containers.map(container => docker.getContainer(container.Id));
+docker.listContainers().then((containers) => {
+    return containers.map((container) => docker.getContainer(container.Id));
 });
 
-docker.listImages({ all: true, filters: "{\"dangling\":[\"true\"]}", digests: true }).then(images => {
-    return images.map(image => docker.getImage(image.Id));
-});
+docker
+    .listImages({ all: true, filters: '{"dangling":["true"]}', digests: true })
+    .then((images) => {
+        return images.map((image) => docker.getImage(image.Id));
+    });
 
 docker.buildImage("archive.tar", { t: "imageName" }, (err, response) => {
     // NOOP
 });
 
-docker.buildImage({ context: ".", src: ["Dockerfile", "test.sh"] }, { t: "imageName" }, (err, response) => {
-    // NOOP
-});
+docker.buildImage(
+    { context: ".", src: ["Dockerfile", "test.sh"] },
+    { t: "imageName" },
+    (err, response) => {
+        // NOOP
+    },
+);
 
 docker.buildImage(
     "archive.tar",
@@ -303,7 +314,15 @@ docker.createContainer(
 );
 
 docker.createContainer(
-    { Healthcheck: { Test: ["CMD", "true"], Interval: 10, Timeout: 10, Retries: 3, StartPeriod: 10 } },
+    {
+        Healthcheck: {
+            Test: ["CMD", "true"],
+            Interval: 10,
+            Timeout: 10,
+            Retries: 3,
+            StartPeriod: 10,
+        },
+    },
     (err, container) => {
         container.start((err, data) => {
             // NOOP
@@ -334,8 +353,8 @@ docker.createVolume({ Name: "volumeName" }, (err, volume) => {
     });
 });
 
-docker.createNetwork({ Name: "networkName" }).then(network => {
-    network.remove().then(response => {
+docker.createNetwork({ Name: "networkName" }).then((network) => {
+    network.remove().then((response) => {
         // NOOP
     });
 });
@@ -390,13 +409,20 @@ docker.createService(
     },
 );
 
-docker.listServices({ filters: JSON.stringify({ name: ["network-name"] }), status: true }).then(services => {
-    return services.map(service => docker.getService(service.ID));
-});
+docker
+    .listServices({
+        filters: JSON.stringify({ name: ["network-name"] }),
+        status: true,
+    })
+    .then((services) => {
+        return services.map((service) => docker.getService(service.ID));
+    });
 
-docker.listServices({ filters: { name: ["network-name"] } }).then(services => {
-    return services.map(service => docker.getService(service.ID));
-});
+docker
+    .listServices({ filters: { name: ["network-name"] } })
+    .then((services) => {
+        return services.map((service) => docker.getService(service.ID));
+    });
 
 const image = docker.getImage("imageName");
 image.remove({ force: true, noprune: false }, (err, response) => {
@@ -466,7 +492,7 @@ node.inspect((err, reponse) => {
     // NOOP
 });
 
-node.inspect().then(response => {
+node.inspect().then((response) => {
     // NOOP
 });
 
@@ -478,7 +504,7 @@ node.update((err, response) => {
     // NOOP
 });
 
-node.update({}).then(response => {
+node.update({}).then((response) => {
     // NOOP;
 });
 
@@ -490,7 +516,7 @@ node.remove((err, response) => {
     // NOOP
 });
 
-node.remove({}).then(response => {
+node.remove({}).then((response) => {
     // NOOP;
 });
 

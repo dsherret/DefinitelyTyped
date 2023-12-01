@@ -68,7 +68,11 @@ export default class InterApplicationBus extends Base {
     unsubscribe(source: Identity, topic: string, listener: any): Promise<void>;
     private processMessage;
     private emitSubscriverEvent;
-    protected createSubscriptionKey(uuid: string, name: string, topic: string): string;
+    protected createSubscriptionKey(
+        uuid: string,
+        name: string,
+        topic: string,
+    ): string;
     protected onmessage(message: Message<InterAppPayload>): boolean;
 }
 export declare class InterAppPayload {

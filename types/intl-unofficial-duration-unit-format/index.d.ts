@@ -1,8 +1,14 @@
-export type DurationUnitFormatStyle = typeof DurationUnitFormat.styles[keyof typeof DurationUnitFormat.styles];
+export type DurationUnitFormatStyle =
+    (typeof DurationUnitFormat.styles)[keyof typeof DurationUnitFormat.styles];
 
-export type DurationUnitFormatUnit = typeof DurationUnitFormat.units[keyof typeof DurationUnitFormat.units];
+export type DurationUnitFormatUnit =
+    (typeof DurationUnitFormat.units)[keyof typeof DurationUnitFormat.units];
 
-export type DurationUnitFormatPartType = DurationUnitFormatUnit | "literal" | "group" | "unit";
+export type DurationUnitFormatPartType =
+    | DurationUnitFormatUnit
+    | "literal"
+    | "group"
+    | "unit";
 
 export interface DurationUnitFormatPart {
     type: DurationUnitFormatPartType;
@@ -18,7 +24,10 @@ export interface DurationUnitFormatOptions {
 }
 
 export default class DurationUnitFormat {
-    constructor(locales?: string | readonly string[], options?: DurationUnitFormatOptions);
+    constructor(
+        locales?: string | readonly string[],
+        options?: DurationUnitFormatOptions,
+    );
 
     static styles: {
         CUSTOM: "custom";

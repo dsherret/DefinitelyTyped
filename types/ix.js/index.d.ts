@@ -10,21 +10,39 @@ declare namespace Ix {
     export interface Enumerable<T> {
         isEmpty(): boolean;
 
-        minBy<TKey>(keySelector: (item: T) => TKey, comparer: Comparer<TKey, TKey>): Enumerable<T>;
+        minBy<TKey>(
+            keySelector: (item: T) => TKey,
+            comparer: Comparer<TKey, TKey>,
+        ): Enumerable<T>;
         minBy(keySelector: (item: T) => number): Enumerable<T>;
-        maxBy<TKey>(keySelector: (item: T) => TKey, comparer: Comparer<TKey, TKey>): Enumerable<T>;
+        maxBy<TKey>(
+            keySelector: (item: T) => TKey,
+            comparer: Comparer<TKey, TKey>,
+        ): Enumerable<T>;
         maxBy(keySelector: (item: T) => number): Enumerable<T>;
 
-        share<TResult>(selector: (source: Enumerable<T>) => Enumerable<TResult>): Enumerable<TResult>;
+        share<TResult>(
+            selector: (source: Enumerable<T>) => Enumerable<TResult>,
+        ): Enumerable<TResult>;
         share(): Enumerable<T>;
 
-        publish<TResult>(selector: (source: Enumerable<T>) => Enumerable<TResult>): Enumerable<TResult>;
+        publish<TResult>(
+            selector: (source: Enumerable<T>) => Enumerable<TResult>,
+        ): Enumerable<TResult>;
         publish(): Enumerable<T>;
 
         memoize(): Enumerable<T>;
 
-        do(onNext: (value: T) => void, onError?: (error: Error) => void, onCompleted?: () => void): Enumerable<T>;
-        doAction(onNext: (value: T) => void, onError?: (error: Error) => void, onCompleted?: () => void): Enumerable<T>;
+        do(
+            onNext: (value: T) => void,
+            onError?: (error: Error) => void,
+            onCompleted?: () => void,
+        ): Enumerable<T>;
+        doAction(
+            onNext: (value: T) => void,
+            onError?: (error: Error) => void,
+            onCompleted?: () => void,
+        ): Enumerable<T>;
         do(onbserver: Observer<T>): Enumerable<T>;
         doAction(onbserver: Observer<T>): Enumerable<T>;
 
@@ -32,7 +50,10 @@ declare namespace Ix {
 
         ignoreElements(): Enumerable<T>;
 
-        distinctBy<TKey>(keySelector: (item: T) => TKey, comparer?: EqualityComparer<TKey, TKey>): Enumerable<T>;
+        distinctBy<TKey>(
+            keySelector: (item: T) => TKey,
+            comparer?: EqualityComparer<TKey, TKey>,
+        ): Enumerable<T>;
 
         distinctUntilChanged<TKey>(
             keySelector: (item: T) => TKey,
@@ -40,7 +61,10 @@ declare namespace Ix {
         ): Enumerable<T>;
         distinctUntilChanged(): Enumerable<T>;
         // if need to set comparer without keySelector
-        distinctUntilChanged(_: boolean, comparer: EqualityComparer<T, T>): Enumerable<T>;
+        distinctUntilChanged(
+            _: boolean,
+            comparer: EqualityComparer<T, T>,
+        ): Enumerable<T>;
 
         expand(selector: (item: T) => Enumerable<T>): Enumerable<T>;
 
@@ -59,8 +83,14 @@ declare namespace Ix {
 
         catch(handler: (error: Error) => Enumerable<T>): Enumerable<T>;
         catchException(handler: (error: Error) => Enumerable<T>): Enumerable<T>;
-        catch(second: Enumerable<T>, ...other: Array<Enumerable<T>>): Enumerable<T>;
-        catchException(second: Enumerable<T>, ...other: Array<Enumerable<T>>): Enumerable<T>;
+        catch(
+            second: Enumerable<T>,
+            ...other: Array<Enumerable<T>>
+        ): Enumerable<T>;
+        catchException(
+            second: Enumerable<T>,
+            ...other: Array<Enumerable<T>>
+        ): Enumerable<T>;
 
         // todo: Enumerable<Enumerable<T>>.catch(): Enumerable<T>
         // catch<TInner, T extends Enumerable<TInner>>(): Enumerable<TInner>;
@@ -96,13 +126,30 @@ declare namespace Ix {
 
         onErrorResumeNext<T>(...sources: Array<Enumerable<T>>): Enumerable<T>;
 
-        while<T>(condition: EnumerablePredicate<Enumerable<T>>, source: Enumerable<T>): Enumerable<T>;
-        whileDo<T>(condition: EnumerablePredicate<Enumerable<T>>, source: Enumerable<T>): Enumerable<T>;
+        while<T>(
+            condition: EnumerablePredicate<Enumerable<T>>,
+            source: Enumerable<T>,
+        ): Enumerable<T>;
+        whileDo<T>(
+            condition: EnumerablePredicate<Enumerable<T>>,
+            source: Enumerable<T>,
+        ): Enumerable<T>;
 
-        if<T>(condition: () => boolean, thenSource: Enumerable<T>, elseSource?: Enumerable<T>): Enumerable<T>;
-        ifThen<T>(condition: () => boolean, thenSource: Enumerable<T>, elseSource?: Enumerable<T>): Enumerable<T>;
+        if<T>(
+            condition: () => boolean,
+            thenSource: Enumerable<T>,
+            elseSource?: Enumerable<T>,
+        ): Enumerable<T>;
+        ifThen<T>(
+            condition: () => boolean,
+            thenSource: Enumerable<T>,
+            elseSource?: Enumerable<T>,
+        ): Enumerable<T>;
 
-        doWhile<T>(source: Enumerable<T>, condition: EnumerablePredicate<Enumerable<T>>): Enumerable<T>;
+        doWhile<T>(
+            source: Enumerable<T>,
+            condition: EnumerablePredicate<Enumerable<T>>,
+        ): Enumerable<T>;
 
         case<T>(
             selector: () => number,
@@ -125,8 +172,14 @@ declare namespace Ix {
             defaultSource?: Enumerable<T>,
         ): Enumerable<T>;
 
-        for<T, TResult>(source: Enumerable<T>, resultSelector: EnumerableFunc<T, TResult>): Enumerable<TResult>;
-        forIn<T, TResult>(source: Enumerable<T>, resultSelector: EnumerableFunc<T, TResult>): Enumerable<TResult>;
+        for<T, TResult>(
+            source: Enumerable<T>,
+            resultSelector: EnumerableFunc<T, TResult>,
+        ): Enumerable<TResult>;
+        forIn<T, TResult>(
+            source: Enumerable<T>,
+            resultSelector: EnumerableFunc<T, TResult>,
+        ): Enumerable<TResult>;
     }
 }
 

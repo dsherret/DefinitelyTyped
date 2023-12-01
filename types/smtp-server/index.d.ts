@@ -211,7 +211,10 @@ export interface SMTPServerOptions extends tls.TlsOptions {
     /**
      * optional Map or an object of TLS options for SNI where servername is the key. Overrided by SNICallback.
      */
-    sniOptions?: { [servername: string]: tls.TlsOptions } | Map<string, tls.TlsOptions> | undefined;
+    sniOptions?:
+        | { [servername: string]: tls.TlsOptions }
+        | Map<string, tls.TlsOptions>
+        | undefined;
     /**
      * optional boolean, if set to true then upgrade sockets to TLS immediately after connection is established. Works with secure: true
      */
@@ -261,28 +264,49 @@ export interface SMTPServerOptions extends tls.TlsOptions {
     onAuth?(
         auth: SMTPServerAuthentication,
         session: SMTPServerSession,
-        callback: (err: Error | null | undefined, response?: SMTPServerAuthenticationResponse) => void,
+        callback: (
+            err: Error | null | undefined,
+            response?: SMTPServerAuthenticationResponse,
+        ) => void,
     ): void;
     /**
      * The callback to handle the client connection. ([see details](https://github.com/andris9/smtp-server#validating-client-connection))
      */
-    onConnect?(session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onConnect?(
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
     /**
      * the callback to validate MAIL FROM commands ([see details](https://github.com/andris9/smtp-server#validating-sender-addresses))
      */
-    onMailFrom?(address: SMTPServerAddress, session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onMailFrom?(
+        address: SMTPServerAddress,
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
     /**
      * The callback to validate RCPT TO commands ([see details](https://github.com/andris9/smtp-server#validating-recipient-addresses))
      */
-    onRcptTo?(address: SMTPServerAddress, session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onRcptTo?(
+        address: SMTPServerAddress,
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
     /**
      * the callback to handle incoming messages ([see details](https://github.com/andris9/smtp-server#processing-incoming-message))
      */
-    onData?(stream: SMTPServerDataStream, session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onData?(
+        stream: SMTPServerDataStream,
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
     /**
      * the callback that informs about closed client connection
      */
-    onClose?(session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onClose?(
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
 }
 
 /** Creates a SMTP server instance */
@@ -296,14 +320,38 @@ export class SMTPServer extends EventEmitter {
     constructor(options?: SMTPServerOptions);
 
     /** Start listening on selected port and interface */
-    listen(port?: number, hostname?: string, backlog?: number, listeningListener?: () => void): net.Server;
-    listen(port?: number, hostname?: string, listeningListener?: () => void): net.Server;
-    listen(port?: number, backlog?: number, listeningListener?: () => void): net.Server; // tslint:disable-line unified-signatures
+    listen(
+        port?: number,
+        hostname?: string,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): net.Server;
+    listen(
+        port?: number,
+        hostname?: string,
+        listeningListener?: () => void,
+    ): net.Server;
+    listen(
+        port?: number,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): net.Server; // tslint:disable-line unified-signatures
     listen(port?: number, listeningListener?: () => void): net.Server;
-    listen(path: string, backlog?: number, listeningListener?: () => void): net.Server;
+    listen(
+        path: string,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): net.Server;
     listen(path: string, listeningListener?: () => void): void;
-    listen(options: net.ListenOptions, listeningListener?: () => void): net.Server;
-    listen(handle: any, backlog?: number, listeningListener?: () => void): net.Server; // tslint:disable-line unified-signatures
+    listen(
+        options: net.ListenOptions,
+        listeningListener?: () => void,
+    ): net.Server;
+    listen(
+        handle: any,
+        backlog?: number,
+        listeningListener?: () => void,
+    ): net.Server; // tslint:disable-line unified-signatures
     listen(handle: any, listeningListener?: () => void): net.Server; // tslint:disable-line unified-signatures
 
     /** Closes the server */
@@ -315,18 +363,39 @@ export class SMTPServer extends EventEmitter {
     onAuth(
         auth: SMTPServerAuthentication,
         session: SMTPServerSession,
-        callback: (err: Error | null | undefined, response?: SMTPServerAuthenticationResponse) => void,
+        callback: (
+            err: Error | null | undefined,
+            response?: SMTPServerAuthenticationResponse,
+        ) => void,
     ): void;
     /** Override this */
-    onClose(session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onClose(
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
     /** Override this */
-    onConnect(session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onConnect(
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
     /** Override this */
-    onData(stream: SMTPServerDataStream, session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onData(
+        stream: SMTPServerDataStream,
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
     /** Override this */
-    onMailFrom(address: SMTPServerAddress, session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onMailFrom(
+        address: SMTPServerAddress,
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
     /** Override this */
-    onRcptTo(address: SMTPServerAddress, session: SMTPServerSession, callback: (err?: Error | null) => void): void;
+    onRcptTo(
+        address: SMTPServerAddress,
+        session: SMTPServerSession,
+        callback: (err?: Error | null) => void,
+    ): void;
 
     addListener(event: "close", listener: () => void): this;
     addListener(event: "error", listener: (err: Error) => void): this;

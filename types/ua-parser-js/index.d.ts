@@ -188,8 +188,11 @@ declare const UAParser: {
     /**
      * Create a new parser with UA prepopulated and extensions extended
      */
-    new(uastring?: string, extensions?: Record<string, unknown>): UAParser.UAParserInstance;
-    new(extensions?: Record<string, unknown>): UAParser.UAParserInstance;
+    new (
+        uastring?: string,
+        extensions?: Record<string, unknown>,
+    ): UAParser.UAParserInstance;
+    new (extensions?: Record<string, unknown>): UAParser.UAParserInstance;
     (uastring?: string, extensions?: Record<string, unknown>): UAParser.IResult;
     (extensions?: Record<string, unknown>): UAParser.IResult;
 

@@ -1,9 +1,24 @@
-$("#my_elem").on("mousewheel", (event: JQueryMousewheel.JQueryMousewheelEventObject) => {
-    console.log(event.deltaX, event.deltaY, event.deltaFactor, event.deltaMode, event.absDelta);
-});
+$("#my_elem").on(
+    "mousewheel",
+    (event: JQueryMousewheel.JQueryMousewheelEventObject) => {
+        console.log(
+            event.deltaX,
+            event.deltaY,
+            event.deltaFactor,
+            event.deltaMode,
+            event.absDelta,
+        );
+    },
+);
 
-$("#my_elem").mousewheel(event => {
-    console.log(event.deltaX, event.deltaY, event.deltaFactor, event.deltaMode, event.absDelta);
+$("#my_elem").mousewheel((event) => {
+    console.log(
+        event.deltaX,
+        event.deltaY,
+        event.deltaFactor,
+        event.deltaMode,
+        event.absDelta,
+    );
 });
 
 $("#my_elem").unmousewheel();
@@ -18,7 +33,8 @@ const pageHeight = $.event.special.mousewheel.getPageHeight($("#my_elem"));
 const adjustOldDeltas = $.event.special.mousewheel.settings.adjustOldDeltas;
 
 // $ExpectType boolean
-$.event.special.mousewheel.settings.normalizeOffset = !$.event.special.mousewheel.settings.normalizeOffset;
+$.event.special.mousewheel.settings.normalizeOffset =
+    !$.event.special.mousewheel.settings.normalizeOffset;
 
 // @ts-expect-error
 $.event.special.mousewheel.settings.normalizeOffset = "true";

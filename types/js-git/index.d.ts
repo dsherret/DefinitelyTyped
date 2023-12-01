@@ -66,7 +66,10 @@ declare namespace JSGit {
          * For example, given the keys refs/heads/master, refs/heads/experimental, refs/tags/0.1.3 and the prefix refs/heads/, the output would be master and experimental.
          * A null prefix returns all non hash keys.
          */
-        keys(prefix: string, callback: (err: any, keys: string[]) => void): void;
+        keys(
+            prefix: string,
+            callback: (err: any, keys: string[]) => void,
+        ): void;
 
         /**
          * Initialize a database. This is where you db implementation can setup stuff.
@@ -89,12 +92,18 @@ declare namespace JSGit {
          *   body: { ... } // Or an array for tree and a binary value for blob.
          * }
          */
-        load(hashish: string, callback: (err: any, git_object: GitObject) => void): void;
+        load(
+            hashish: string,
+            callback: (err: any, git_object: GitObject) => void,
+        ): void;
 
         /**
          * Save an object to the database. This will give you back the hash of the cotent by which you can retrieve the value back.
          */
-        save(git_object: GitObject, callback: (err: any, hash: string) => void): void;
+        save(
+            git_object: GitObject,
+            callback: (err: any, hash: string) => void,
+        ): void;
 
         /**
          * This convenience wrapper will call repo.load for you and then check if the type is what you expected. If it is, it will return the body directly. If it's not, it will error.
@@ -104,7 +113,11 @@ declare namespace JSGit {
          *
          * I'm using yield syntax because it's simpler, you can use callbacks instead if you prefer.
          */
-        loadAs(type: string, hash: string, callback: (err: any, body: any) => void): void;
+        loadAs(
+            type: string,
+            hash: string,
+            callback: (err: any, body: any) => void,
+        ): void;
 
         /**
          * Another convenience wrapper, this time to save objects as a specefic type. The body must be in the right format.
@@ -119,7 +132,11 @@ declare namespace JSGit {
          *   message: "Save the blob"
          * });
          */
-        saveAs(type: string, body: any, callback: (err: any, hash: string) => void): void;
+        saveAs(
+            type: string,
+            body: any,
+            callback: (err: any, hash: string) => void,
+        ): void;
 
         /**
          * Remove an object.
@@ -135,18 +152,28 @@ declare namespace JSGit {
          * opts.onError(error) - same thing, but for the error channel.
          * opts.deline - If this is truthy, the progress and error messages will be rechunked to be whole lines. They usually come jumbled in the internal sidechannel.
          */
-        unpack(packFileStream: any, opts: Object, callback: (err: any) => void): void;
+        unpack(
+            packFileStream: any,
+            opts: Object,
+            callback: (err: any) => void,
+        ): void;
 
         /**
          * This convenience wrapper creates a readable stream of the history sorted by author date.
          * If you want full history, pass in HEAD for the hash.
          */
-        logWalk(hashish: string, callback: (err: any, log_stream: any) => void): void;
+        logWalk(
+            hashish: string,
+            callback: (err: any, log_stream: any) => void,
+        ): void;
 
         /**
          * This helper will return a stream of files suitable for traversing a file tree as a linear stream. The hash can be a ref to a commit, a commit hash or a tree hash directly.
          */
-        treeWalk(hashish: string, callback: (err: any, file_stream: any) => void): void;
+        treeWalk(
+            hashish: string,
+            callback: (err: any, file_stream: any) => void,
+        ): void;
 
         /**
          * This is the generic helper that logWalk and treeWalk use. See js-git.js source for usage.
@@ -156,7 +183,10 @@ declare namespace JSGit {
         /**
          * Resolve a ref, branch, or tag to a real hash.
          */
-        resolveHashish(hashish: string, callback: (err: any, hash: string) => void): void;
+        resolveHashish(
+            hashish: string,
+            callback: (err: any, hash: string) => void,
+        ): void;
 
         /**
          * Update whatever branch HEAD is pointing to so that it points to hash.

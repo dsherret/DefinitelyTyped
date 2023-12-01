@@ -39,10 +39,11 @@ pool.acquire((err: Error, connection: ConnectionPool.PooledConnection) => {
     connection.rollbackTransaction((error: Error): void => {});
     connection.commitTransaction((error: Error): void => {});
 
-    const request = new tedious.Request("SELECT * FROM foo", (error: Error, rowCount: number): void => {
-    });
-    request.on("row", (row: tedious.ColumnValue[]): void => {
-    });
+    const request = new tedious.Request(
+        "SELECT * FROM foo",
+        (error: Error, rowCount: number): void => {},
+    );
+    request.on("row", (row: tedious.ColumnValue[]): void => {});
     connection.execSql(request);
 
     connection.release();

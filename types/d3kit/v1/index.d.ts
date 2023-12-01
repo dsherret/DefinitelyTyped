@@ -21,7 +21,11 @@ declare namespace d3kit {
     }
 
     export class Skeleton {
-        constructor(selector: string | Element, options?: ChartOptions, customEvents?: string[]);
+        constructor(
+            selector: string | Element,
+            options?: ChartOptions,
+            customEvents?: string[],
+        );
 
         // Getters
         getCustomEventNames(): string[];
@@ -46,20 +50,28 @@ declare namespace d3kit {
         height(): number;
         height(value: number | string, doNotDispatch?: boolean): Skeleton;
         dimension(): [number, number];
-        dimension(dimension: [number | string, number | string], doNotDispatch?: boolean): Skeleton;
+        dimension(
+            dimension: [number | string, number | string],
+            doNotDispatch?: boolean,
+        ): Skeleton;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         autoResize(mode?: string | boolean): string | boolean | void;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         autoResizeDetection(method?: string): string | void;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        autoResizeToAspectRatio(ratio?: number | boolean): number | boolean | void;
+        autoResizeToAspectRatio(
+            ratio?: number | boolean,
+        ): number | boolean | void;
 
         // Other functions
         on(eventName: string, listener: (...args: any[]) => void): void;
         hasData(): boolean;
         hasNonZeroArea(): boolean;
         mixin(fn: ChartMixin): void;
-        resizeToFitContainer(mode: string | boolean, doNotDispatch?: boolean): void;
+        resizeToFitContainer(
+            mode: string | boolean,
+            doNotDispatch?: boolean,
+        ): void;
         resizeToAspectRatio(ratio: number, doNotDispatch?: boolean): void;
     }
 
@@ -68,7 +80,10 @@ declare namespace d3kit {
     }
 
     export interface ChartletEventFunction {
-        (sel?: d3.Selection<any>, done?: string): (sel: d3.Selection<any>) => void;
+        (
+            sel?: d3.Selection<any>,
+            done?: string,
+        ): (sel: d3.Selection<any>) => void;
     }
 
     export class Chartlet {
@@ -89,9 +104,18 @@ declare namespace d3kit {
         property(name: string, value: any): Chartlet;
 
         // Enter/Update/Exit functions
-        enter(sel?: d3.Selection<any>, done?: string): (sel: d3.Selection<any>) => void;
-        update(sel?: d3.Selection<any>, done?: string): (sel: d3.Selection<any>) => void;
-        exit(sel?: d3.Selection<any>, done?: string): (sel: d3.Selection<any>) => void;
+        enter(
+            sel?: d3.Selection<any>,
+            done?: string,
+        ): (sel: d3.Selection<any>) => void;
+        update(
+            sel?: d3.Selection<any>,
+            done?: string,
+        ): (sel: d3.Selection<any>) => void;
+        exit(
+            sel?: d3.Selection<any>,
+            done?: string,
+        ): (sel: d3.Selection<any>) => void;
 
         // Inheritance functions
         inheritPropertyFrom(
@@ -131,7 +155,11 @@ declare namespace d3kit {
             defaultOptions: ChartOptions,
             customEvents: string[],
             constructor: (skeleton: Skeleton) => void,
-        ): (selector: string | Element, options?: ChartOptions, customEvents?: string[]) => Skeleton;
+        ): (
+            selector: string | Element,
+            options?: ChartOptions,
+            customEvents?: string[],
+        ) => Skeleton;
     }
 
     export namespace helper {
@@ -147,9 +175,20 @@ declare namespace d3kit {
             dispatch: d3.Dispatch,
             prefix: string,
         ): void;
-        export function removeAllChildren(selection: d3.Selection<any>, noTransition: boolean): d3.Selection<any>;
-        export function on(element: Element, type: string, listener: (...args: any[]) => void): void;
-        export function off(element: Element, type: string, listener: (...args: any[]) => void): void;
+        export function removeAllChildren(
+            selection: d3.Selection<any>,
+            noTransition: boolean,
+        ): d3.Selection<any>;
+        export function on(
+            element: Element,
+            type: string,
+            listener: (...args: any[]) => void,
+        ): void;
+        export function off(
+            element: Element,
+            type: string,
+            listener: (...args: any[]) => void,
+        ): void;
         export function trim(str: string, characters: string): string;
         export function dasherize(str: string): string;
         export function $(s: Element | string): Element;

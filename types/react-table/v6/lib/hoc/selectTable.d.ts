@@ -38,7 +38,9 @@ export interface SelectTableAdditionalProps {
     selectType?: SelectType | undefined;
     selectWidth?: number | undefined;
     SelectInputComponent?: ComponentType<SelectInputComponentProps> | undefined;
-    SelectAllInputComponent?: ComponentType<SelectAllInputComponentProps> | undefined;
+    SelectAllInputComponent?:
+        | ComponentType<SelectAllInputComponentProps>
+        | undefined;
 }
 
 export interface SelectTableHOCOptions {

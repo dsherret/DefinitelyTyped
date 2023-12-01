@@ -18,7 +18,12 @@ export class Worktree {
      * @param path - Path to create working tree at
      * @param opts - Options to modify default behavior. May be NULL
      */
-    static add(repo: Repository, name: string, path: string, opts?: WorktreeAddOptions): Promise<Worktree>;
+    static add(
+        repo: Repository,
+        name: string,
+        path: string,
+        opts?: WorktreeAddOptions,
+    ): Promise<Worktree>;
 
     /**
      * @param repo - the repo to use when listing working trees

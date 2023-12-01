@@ -4,7 +4,12 @@
 
 export as namespace ReactIs;
 
-import { ElementType, LazyExoticComponent, MemoExoticComponent, ReactElement } from "react";
+import {
+    ElementType,
+    LazyExoticComponent,
+    MemoExoticComponent,
+    ReactElement,
+} from "react";
 
 export function typeOf(value: any): symbol | undefined;
 export function isValidElementType(value: any): value is ElementType;

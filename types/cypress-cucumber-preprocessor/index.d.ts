@@ -1,4 +1,6 @@
-export default function preprocessor(options?: any): (file: any) => Promise<string>;
+export default function preprocessor(
+    options?: any,
+): (file: any) => Promise<string>;
 
 /**
  * @returns NodeJS.ReadableStream

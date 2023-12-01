@@ -13,9 +13,15 @@ export class RouteStore extends BaseStore {
     static withStaticRoutes(routes: object): typeof RouteStore;
 }
 
-export function handleHistory(Component: typeof React.Component, opts?: object): typeof React.Component;
+export function handleHistory(
+    Component: typeof React.Component,
+    opts?: object,
+): typeof React.Component;
 
-export function navigateAction(context: FluxibleContext, params: object): undefined;
+export function navigateAction(
+    context: FluxibleContext,
+    params: object,
+): undefined;
 
 export class NavLinkProps {
     href?: string | undefined;

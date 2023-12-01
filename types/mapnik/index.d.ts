@@ -16,10 +16,19 @@ export class VectorTile {
     constructor(z: number, x: number, y: number);
     addData(
         buffer: Buffer,
-        options?: { validate?: boolean | undefined; upgrade?: boolean | undefined },
+        options?: {
+            validate?: boolean | undefined;
+            upgrade?: boolean | undefined;
+        },
         callback?: (err?: Error) => void,
     ): void;
-    addDataSync(buffer: Buffer, options?: { validate?: boolean | undefined; upgrade?: boolean | undefined }): void;
+    addDataSync(
+        buffer: Buffer,
+        options?: {
+            validate?: boolean | undefined;
+            upgrade?: boolean | undefined;
+        },
+    ): void;
     addGeoJSON(
         geojson: string,
         name: string,
@@ -35,14 +44,24 @@ export class VectorTile {
     addImage(
         image: Image,
         name: string,
-        options?: { image_scaling?: string | undefined; image_format?: string | undefined },
+        options?: {
+            image_scaling?: string | undefined;
+            image_format?: string | undefined;
+        },
     ): void;
-    addImageBuffer(buffer: Buffer, name: string, callback?: (err?: Error) => void): void;
+    addImageBuffer(
+        buffer: Buffer,
+        name: string,
+        callback?: (err?: Error) => void,
+    ): void;
     addImageBufferSync(buffer: Buffer, name: string): void;
     addImageSync(
         image: Image,
         name: string,
-        options?: { image_scaling?: string | undefined; image_format?: "webp" | "jpeg" | "png" | "tiff" | undefined },
+        options?: {
+            image_scaling?: string | undefined;
+            image_format?: "webp" | "jpeg" | "png" | "tiff" | undefined;
+        },
     ): void;
     bufferedExtent(): [number, number, number, number];
     clear(callback?: (err?: Error) => void): void;
@@ -95,14 +114,26 @@ export class VectorTile {
         options?: {
             compression?: number | undefined;
             level?: number | undefined;
-            strategy?: "FILTERED" | "HUFFMAN_ONLY" | "RLE" | "FIXED" | "DEFAULT" | undefined;
+            strategy?:
+                | "FILTERED"
+                | "HUFFMAN_ONLY"
+                | "RLE"
+                | "FIXED"
+                | "DEFAULT"
+                | undefined;
         },
         callback?: () => void,
     ): void;
     getDataSync(options?: {
         compression?: number | undefined;
         level?: number | undefined;
-        strategy?: "FILTERED" | "HUFFMAN_ONLY" | "RLE" | "FIXED" | "DEFAULT" | undefined;
+        strategy?:
+            | "FILTERED"
+            | "HUFFMAN_ONLY"
+            | "RLE"
+            | "FIXED"
+            | "DEFAULT"
+            | undefined;
     }): void;
     info(buffer: Buffer): void;
     layer(layer_name: string): VectorTile;
@@ -112,7 +143,10 @@ export class VectorTile {
     query(
         longitude: number,
         latitude: number,
-        options?: { tolerance?: number | undefined; layer?: string | undefined },
+        options?: {
+            tolerance?: number | undefined;
+            layer?: string | undefined;
+        },
         callback?: (err: Error, features: Feature[]) => void,
     ): void;
 }
@@ -153,7 +187,7 @@ export class Image {
 }
 export interface Image {
     // constructor(x: number, y: number)
-    new(x: number, y: number): () => void;
+    new (x: number, y: number): () => void;
     encode(type: string, callback?: ImageEncodeCallback): void;
     getData(): Buffer;
     save(fp: string): () => void;
@@ -167,7 +201,11 @@ export class Map {
     zoomToBox(extent: number[]): void;
     render(images: Image | VectorTile, callback?: MapRenderCallback): void;
     loadSync(stylesheet: string, options: MapOptions): void;
-    fromString(styles: string, options: MapOptions, loadedCallback: MapLoadCallback): void;
+    fromString(
+        styles: string,
+        options: MapOptions,
+        loadedCallback: MapLoadCallback,
+    ): void;
     add_layer(layer: Layer): void;
 
     srs: string;

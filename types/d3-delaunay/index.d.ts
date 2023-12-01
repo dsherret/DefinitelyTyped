@@ -10,7 +10,9 @@ export class Delaunay<P> {
     /**
      * Returns the Delaunay triangulation for the given array or iterable of points where each point is an array in the form: [x, y].
      */
-    static from(points: ArrayLike<Delaunay.Point> | Iterable<Delaunay.Point>): Delaunay<Delaunay.Point>;
+    static from(
+        points: ArrayLike<Delaunay.Point> | Iterable<Delaunay.Point>,
+    ): Delaunay<Delaunay.Point>;
     /**
      * Returns the Delaunay triangulation for the given array or iterable of points.
      * Otherwise, the getX and getY functions are invoked for each point in order, and must return the respective x- and y-coordinate for each point.
@@ -96,7 +98,12 @@ export class Delaunay<P> {
      * Renders triangle i of the Delaunay triangulation to the specified context.
      * The specified context must implement the context.moveTo, context.lineTo and context.closePath methods from the CanvasPathMethods API.
      */
-    renderTriangle(i: number, context: Delaunay.MoveContext & Delaunay.LineContext & Delaunay.ClosableContext): void;
+    renderTriangle(
+        i: number,
+        context: Delaunay.MoveContext &
+            Delaunay.LineContext &
+            Delaunay.ClosableContext,
+    ): void;
 
     /**
      * Renders the input points of the Delaunay triangulation to an SVG path string as circles with radius 2.
@@ -111,7 +118,10 @@ export class Delaunay<P> {
      * If radius is not specified, it defaults to 2.
      * The specified context must implement the context.moveTo and context.arc methods from the CanvasPathMethods API.
      */
-    renderPoints(context: Delaunay.MoveContext & Delaunay.ArcContext, radius?: number): void;
+    renderPoints(
+        context: Delaunay.MoveContext & Delaunay.ArcContext,
+        radius?: number,
+    ): void;
 
     /**
      * Returns the closed polygon [[x0, y0], [x1, y1], ..., [x0, y0]] representing the convex hull.
@@ -297,7 +307,12 @@ export class Voronoi<P> {
      * Renders the cell with the specified index i to the specified context.
      * The specified context must implement the context.moveTo, context.lineTo, and context.closePath methods from the CanvasPathMethods API.
      */
-    renderCell(i: number, context: Delaunay.MoveContext & Delaunay.LineContext & Delaunay.ClosableContext): void;
+    renderCell(
+        i: number,
+        context: Delaunay.MoveContext &
+            Delaunay.LineContext &
+            Delaunay.ClosableContext,
+    ): void;
 
     /**
      * Returns an iterable over the non-empty polygons for each cell, with the cell index as property.

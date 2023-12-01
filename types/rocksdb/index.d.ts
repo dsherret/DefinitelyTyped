@@ -18,24 +18,48 @@ interface RocksDB extends AbstractLevelDOWN<RocksDB.Bytes, RocksDB.Bytes> {
     open(options: RocksDB.OpenOptions, cb: ErrorCallback): void;
 
     get(key: RocksDB.Bytes, cb: ErrorValueCallback<RocksDB.Bytes>): void;
-    get(key: RocksDB.Bytes, options: RocksDB.GetOptions, cb: ErrorValueCallback<RocksDB.Bytes>): void;
+    get(
+        key: RocksDB.Bytes,
+        options: RocksDB.GetOptions,
+        cb: ErrorValueCallback<RocksDB.Bytes>,
+    ): void;
 
     put(key: RocksDB.Bytes, value: RocksDB.Bytes, cb: ErrorCallback): void;
-    put(key: RocksDB.Bytes, value: RocksDB.Bytes, options: RocksDB.PutOptions, cb: ErrorCallback): void;
+    put(
+        key: RocksDB.Bytes,
+        value: RocksDB.Bytes,
+        options: RocksDB.PutOptions,
+        cb: ErrorCallback,
+    ): void;
 
     del(key: RocksDB.Bytes, cb: ErrorCallback): void;
-    del(key: RocksDB.Bytes, options: RocksDB.DelOptions, cb: ErrorCallback): void;
+    del(
+        key: RocksDB.Bytes,
+        options: RocksDB.DelOptions,
+        cb: ErrorCallback,
+    ): void;
 
     batch(): AbstractChainedBatch<RocksDB.Bytes, RocksDB.Bytes>;
-    batch(array: AbstractBatch[], cb: ErrorCallback): AbstractChainedBatch<RocksDB.Bytes, RocksDB.Bytes>;
+    batch(
+        array: AbstractBatch[],
+        cb: ErrorCallback,
+    ): AbstractChainedBatch<RocksDB.Bytes, RocksDB.Bytes>;
     batch(
         array: AbstractBatch[],
         options: RocksDB.BatchOptions,
         cb: ErrorCallback,
     ): AbstractChainedBatch<RocksDB.Bytes, RocksDB.Bytes>;
 
-    approximateSize(start: RocksDB.Bytes, end: RocksDB.Bytes, cb: RocksDB.ErrorSizeCallback): void;
-    compactRange(start: RocksDB.Bytes, end: RocksDB.Bytes, cb: ErrorCallback): void;
+    approximateSize(
+        start: RocksDB.Bytes,
+        end: RocksDB.Bytes,
+        cb: RocksDB.ErrorSizeCallback,
+    ): void;
+    compactRange(
+        start: RocksDB.Bytes,
+        end: RocksDB.Bytes,
+        cb: ErrorCallback,
+    ): void;
     getProperty(property: string): string;
     destroy(location: string, cb: ErrorCallback): void;
     repair(location: string, cb: ErrorCallback): void;
@@ -77,7 +101,7 @@ declare namespace RocksDB {
     }
 
     interface Constructor {
-        new(location: string): RocksDB;
+        new (location: string): RocksDB;
         (location: string): RocksDB;
     }
 }

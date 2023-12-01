@@ -127,7 +127,11 @@ declare function GM_openInTab(url: string): Window;
  *                      It should be a letter in the caption.
  * @see    {@link http://wiki.greasespot.net/GM_registerMenuCommand}
  */
-declare function GM_registerMenuCommand(caption: string, commandFunc: Function, accessKey?: string): void;
+declare function GM_registerMenuCommand(
+    caption: string,
+    commandFunc: Function,
+    accessKey?: string,
+): void;
 
 /**
  * Sets a text to the clipboard of the opeating system.
@@ -153,19 +157,33 @@ interface GMXMLHttpRequestOptions {
     onabort?: ((response: GMXMLHttpRequestResponse) => any) | undefined;
     onerror?: ((response: GMXMLHttpRequestResponse) => any) | undefined;
     onload?: ((response: GMXMLHttpRequestResponse) => any) | undefined;
-    onprogress?: ((response: GMXMLHttpRequestProgressResponse) => any) | undefined;
-    onreadystatechange?: ((response: GMXMLHttpRequestResponse) => any) | undefined;
+    onprogress?:
+        | ((response: GMXMLHttpRequestProgressResponse) => any)
+        | undefined;
+    onreadystatechange?:
+        | ((response: GMXMLHttpRequestResponse) => any)
+        | undefined;
     ontimeout?: ((response: GMXMLHttpRequestResponse) => any) | undefined;
     overrideMimeType?: string | undefined;
     password?: string | undefined;
     synchronous?: boolean | undefined;
     timeout?: number | undefined;
-    upload?: {
-        onabort?: ((response: GMXMLHttpRequestResponse) => any) | undefined;
-        onerror?: ((response: GMXMLHttpRequestResponse) => any) | undefined;
-        onload?: ((response: GMXMLHttpRequestResponse) => any) | undefined;
-        onprogress?: ((response: GMXMLHttpRequestProgressResponse) => any) | undefined;
-    } | undefined;
+    upload?:
+        | {
+              onabort?:
+                  | ((response: GMXMLHttpRequestResponse) => any)
+                  | undefined;
+              onerror?:
+                  | ((response: GMXMLHttpRequestResponse) => any)
+                  | undefined;
+              onload?:
+                  | ((response: GMXMLHttpRequestResponse) => any)
+                  | undefined;
+              onprogress?:
+                  | ((response: GMXMLHttpRequestProgressResponse) => any)
+                  | undefined;
+          }
+        | undefined;
     url: string;
     user?: string | undefined;
 }
@@ -217,8 +235,9 @@ interface GMXMLHttpRequestSyncResult {
  * Returned object by {@link GM_xmlhttpRequest}.
  * @see  {@link http://wiki.greasespot.net/GM_xmlhttpRequest#Returns}
  */
-interface GMXMLHttpRequestResult extends GMXMLHttpRequestAsyncResult, GMXMLHttpRequestSyncResult {
-}
+interface GMXMLHttpRequestResult
+    extends GMXMLHttpRequestAsyncResult,
+        GMXMLHttpRequestSyncResult {}
 
 /**
  * Sends a HTTP request to a URL.
@@ -227,4 +246,6 @@ interface GMXMLHttpRequestResult extends GMXMLHttpRequestAsyncResult, GMXMLHttpR
  *           If the request is sent in the synchronous mode, it also contains the response information.
  * @see      {@link http://wiki.greasespot.net/GM_setClipboard}
  */
-declare function GM_xmlhttpRequest(options: GMXMLHttpRequestOptions): GMXMLHttpRequestResult;
+declare function GM_xmlhttpRequest(
+    options: GMXMLHttpRequestOptions,
+): GMXMLHttpRequestResult;

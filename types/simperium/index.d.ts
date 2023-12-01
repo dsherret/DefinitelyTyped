@@ -56,7 +56,12 @@ export interface BucketStore<T, Q = {}> {
     get(entityId: EntityId, callback: EntityCallback<BucketObject<T>>): void;
     find(query: Q, callback: EntitiesCallback<BucketObject<T>>): void;
     remove(entityId: EntityId, callback: () => void): void;
-    update(entityId: EntityId, entity: T, isIndexing: boolean, callback: EntityCallback<BucketObject<T>>): void;
+    update(
+        entityId: EntityId,
+        entity: T,
+        isIndexing: boolean,
+        callback: EntityCallback<BucketObject<T>>,
+    ): void;
 }
 
 export interface Ghost<T> {
@@ -82,9 +87,9 @@ type DiffOp<T> =
     | { o: "r"; v: T }
     | { o: "I"; v: number }
     | {
-        o: "L";
-        v: { [index: number]: T extends Array<infer U> ? DiffOp<U> : never };
-    }
+          o: "L";
+          v: { [index: number]: T extends Array<infer U> ? DiffOp<U> : never };
+      }
     | { o: "O"; v: JSONDiff<T> }
     | { o: "d"; v: DMPDiff };
 
@@ -112,7 +117,11 @@ interface BucketEvent<T> extends SimperiumEvent {
     index: (cv: ChangeVersion) => void;
     indexing: () => void;
     remove: (entityId: EntityId) => void;
-    update: (entityId: EntityId, updatedEntity: T, remoteInfo: RemoteInfo<T>) => void;
+    update: (
+        entityId: EntityId,
+        updatedEntity: T,
+        remoteInfo: RemoteInfo<T>,
+    ) => void;
 }
 
 export interface RemoteInfo<T> {
@@ -127,14 +136,20 @@ interface Revision<T> {
     data: T;
 }
 
-export interface Bucket<Name, T = null, Q = never> extends CustomEventEmitter<BucketEvent<T>> {
+export interface Bucket<Name, T = null, Q = never>
+    extends CustomEventEmitter<BucketEvent<T>> {
     channel: Channel<T>;
     isIndexing: boolean;
     name: Name;
 
     add(data: T): Promise<BucketObject<T>>;
     beforeNetworkChange(
-        callback: (entityId: EntityId, updatedEntity: T, baseEntity: T, patch: JSONDiff<T>) => T | null,
+        callback: (
+            entityId: EntityId,
+            updatedEntity: T,
+            baseEntity: T,
+            patch: JSONDiff<T>,
+        ) => T | null,
     ): void;
     get(entityId: EntityId): Promise<BucketObject<T>>;
     getRevisions(entityId: EntityId): Promise<ReadonlyArray<Revision<T>>>;
@@ -144,7 +159,11 @@ export interface Bucket<Name, T = null, Q = never> extends CustomEventEmitter<Bu
     reload(): void;
     remove(entityId: EntityId): Promise<void>;
     touch(entityId: EntityId): Promise<BucketObject<T>>;
-    update(entityId: EntityId, updatedEntity: T, options: { sync: boolean }): Promise<BucketObject<T>>;
+    update(
+        entityId: EntityId,
+        updatedEntity: T,
+        options: { sync: boolean },
+    ): Promise<BucketObject<T>>;
     update(
         entityId: EntityId,
         updatedEntity: T,
@@ -153,7 +172,11 @@ export interface Bucket<Name, T = null, Q = never> extends CustomEventEmitter<Bu
     ): Promise<BucketObject<T>>;
 }
 
-export function Bucket<T>(name: string, storeProvider: BucketStore<T>, channel?: Channel<T>): Bucket<T>;
+export function Bucket<T>(
+    name: string,
+    storeProvider: BucketStore<T>,
+    channel?: Channel<T>,
+): Bucket<T>;
 
 type LocalQueuedChange<T> =
     | { type: "modify"; id: EntityId; object: T }
@@ -161,7 +184,11 @@ type LocalQueuedChange<T> =
     | { type: "remove"; id: EntityId };
 
 interface LocalQueueEvent<T> extends SimperiumEvent {
-    queued: (id: EntityId, change: Change<T>, queue: ReadonlyArray<LocalQueuedChange<T>>) => void;
+    queued: (
+        id: EntityId,
+        change: Change<T>,
+        queue: ReadonlyArray<LocalQueuedChange<T>>,
+    ) => void;
     send: (change: Change<T>) => void;
     wait: (id: EntityId) => void;
 }
@@ -193,7 +220,9 @@ interface ClientConfig<Buckets> {
     objectStoreProvider: <Name extends keyof Buckets>(
         bucket: Bucket<Name, Buckets[Name]>,
     ) => BucketStore<Buckets[Name]>;
-    ghostStoreProvider: <Name extends keyof Buckets>(bucket: Bucket<Name, Buckets[Name]>) => GhostStore<Buckets[Name]>;
+    ghostStoreProvider: <Name extends keyof Buckets>(
+        bucket: Bucket<Name, Buckets[Name]>,
+    ) => GhostStore<Buckets[Name]>;
     heartbeatInterval: number;
     websocketClientProvider: (url: string) => WebSocket;
 }
@@ -214,8 +243,14 @@ export function Auth(
     appId: string,
     apiKey: string,
 ): {
-    authorize(username: string, password: string): Promise<{ access_token?: string | undefined }>;
-    create(username: string, password: string): Promise<{ access_token?: string | undefined }>;
+    authorize(
+        username: string,
+        password: string,
+    ): Promise<{ access_token?: string | undefined }>;
+    create(
+        username: string,
+        password: string,
+    ): Promise<{ access_token?: string | undefined }>;
 };
 
 export default createClient;
@@ -224,18 +259,25 @@ interface SimperiumEvent {
     [type: string]: (...args: any[]) => void;
 }
 
-interface CustomEventEmitter<Event extends SimperiumEvent> extends EventEmitter {
+interface CustomEventEmitter<Event extends SimperiumEvent>
+    extends EventEmitter {
     addListener<U extends keyof Event>(type: U, callback: Event[U]): this;
     on<U extends keyof Event>(type: U, callback: Event[U]): this;
     once<U extends keyof Event>(type: U, callback: Event[U]): this;
     prependListener<U extends keyof Event>(type: U, callback: Event[U]): this;
-    prependOnceListener<U extends keyof Event>(type: U, callback: Event[U]): this;
+    prependOnceListener<U extends keyof Event>(
+        type: U,
+        callback: Event[U],
+    ): this;
     removeListener<U extends keyof Event>(type: U, callback: Event[U]): this;
     off<U extends keyof Event>(type: U, callback: Event[U]): this;
     removeAllListeners(type?: keyof Event): this;
     listeners<U extends keyof Event>(type: U): Array<Event[U]>;
     rawListeners<U extends keyof Event>(type: U): Array<Event[U]>;
-    emit<U extends keyof Event>(type: U, ...args: Parameters<Event[U]>): boolean;
+    emit<U extends keyof Event>(
+        type: U,
+        ...args: Parameters<Event[U]>
+    ): boolean;
     eventNames(): Array<Exclude<keyof Event, number | symbol>>;
     listenerCount(type: keyof Event): number;
 }

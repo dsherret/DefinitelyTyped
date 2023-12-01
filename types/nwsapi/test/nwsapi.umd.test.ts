@@ -10,18 +10,18 @@ matcher.byClass("class", document); // $ExpectType Element[]
 matcher.byId("class", document); // $ExpectType Element[]
 
 // $ExpectType HTMLDivElement | null
-matcher.first("div", null, element => {
+matcher.first("div", null, (element) => {
     element; // $ExpectType HTMLDivElement
 });
 
 // $ExpectType HTMLParagraphElement[]
-matcher.select("p", null, element => {
+matcher.select("p", null, (element) => {
     element; // $ExpectType HTMLParagraphElement
 });
 
 function testElement(element: Element) {
     if (
-        matcher.match("svg", element, element => {
+        matcher.match("svg", element, (element) => {
             element; // $ExpectType SVGSVGElement
         })
     ) {
@@ -31,6 +31,6 @@ function testElement(element: Element) {
 }
 
 // $ExpectType HTMLHtmlElement | null
-matcher.closest("html", document.head, element => {
+matcher.closest("html", document.head, (element) => {
     element; // $ExpectType HTMLHtmlElement
 });

@@ -8,8 +8,11 @@ declare namespace _default {
         out?: {};
     }
 
-    function parse(isg: string, options?: {
-        in?: ParsingOptions;
-    }): Promise<GeoidGrid>;
+    function parse(
+        isg: string,
+        options?: {
+            in?: ParsingOptions;
+        },
+    ): Promise<GeoidGrid>;
 }
 export default _default;

@@ -19,7 +19,10 @@ declare class GeojsonEquality {
              * Custom function for use in comparing Feature properties
              * @default shallowEquals
              */
-            objectComparator: (a: Record<string, any>, b: Record<string, any>) => boolean;
+            objectComparator: (
+                a: Record<string, any>,
+                b: Record<string, any>,
+            ) => boolean;
         }>,
     );
 

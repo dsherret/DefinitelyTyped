@@ -17,7 +17,10 @@ interface UserOptions {
      * Optional authentication predicate, the function should receive as argument, the req object and return truthy for sucessfull authentication, or falsy, otherwise.
      * This option supports Promise results.
      */
-    authenticate?: ((req: express.Request) => boolean) | ((req: express.Request) => Promise<boolean>) | undefined;
+    authenticate?:
+        | ((req: express.Request) => boolean)
+        | ((req: express.Request) => Promise<boolean>)
+        | undefined;
     /** Whether or not to collect prom-client default metrics. These metrics are useful for collecting saturation metrics, for example. Defaults to true */
     collectDefaultMetrics?: boolean | undefined;
     /**
@@ -39,10 +42,18 @@ interface UserOptions {
     /** Optional Array containing extra labels, used together with transformLabels */
     customLabels?: string[] | undefined;
     /** Optional function(labels, req, res) adds to the labels object dynamic values for each label in customLabels */
-    transformLabels?: ((labels: Labels, req: express.Request, res: express.Response) => void) | undefined;
+    transformLabels?:
+        | ((
+              labels: Labels,
+              req: express.Request,
+              res: express.Response,
+          ) => void)
+        | undefined;
     /** Whether or not to normalize http status codes. Defaults to true */
     normalizeStatus?: boolean | undefined;
 }
 
-declare function expressPrometheusMiddleware(userOptions: UserOptions): express.Express;
+declare function expressPrometheusMiddleware(
+    userOptions: UserOptions,
+): express.Express;
 export = expressPrometheusMiddleware;

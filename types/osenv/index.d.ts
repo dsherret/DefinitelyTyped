@@ -1,7 +1,9 @@
 /**
  * The machine name. Calls hostname if not found.
  */
-export function hostname(cb?: (hostname: string, error?: string) => void): string;
+export function hostname(
+    cb?: (hostname: string, error?: string) => void,
+): string;
 
 /**
  * The currently logged-in user. Calls whoami if not found.

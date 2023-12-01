@@ -19,7 +19,10 @@ declare module "leaflet" {
         width?: number | undefined;
         height?: number | undefined;
         patternUnits?: "userSpaceOnUse" | "objectBoundingBox" | undefined;
-        patternContentUnits?: "userSpaceOnUse" | "objectBoundingBox" | undefined;
+        patternContentUnits?:
+            | "userSpaceOnUse"
+            | "objectBoundingBox"
+            | undefined;
         patternTransform?: string | null | undefined;
         angle?: number | null | undefined;
     }
@@ -87,7 +90,9 @@ declare module "leaflet" {
 
         removeFrom(map: Map): this;
 
-        addShape(shape: PatternShape | PatternCircle | PatternPath | PatternRect): void;
+        addShape(
+            shape: PatternShape | PatternCircle | PatternPath | PatternRect,
+        ): void;
     }
 
     class PatternShape extends Class {

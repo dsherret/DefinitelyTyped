@@ -1,6 +1,10 @@
 import pdfFonts = require("pdfmake/build/vfs_fonts");
 import pdfMake = require("pdfmake/build/pdfmake");
-import { BufferOptions, CustomTableLayout, TFontDictionary } from "pdfmake/interfaces";
+import {
+    BufferOptions,
+    CustomTableLayout,
+    TFontDictionary,
+} from "pdfmake/interfaces";
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
@@ -63,6 +67,7 @@ const fonts: TFontDictionary = {
     },
 };
 const vfs2: { [file: string]: string } = {
-    "roboto-regular.ttf": "AAEAAAASAQAABAAgR0RFRrRCsIIAAjGsAAA....base64 of font binary",
+    "roboto-regular.ttf":
+        "AAEAAAASAQAABAAgR0RFRrRCsIIAAjGsAAA....base64 of font binary",
 };
 pdfMake.createPdf(dd, layouts, fonts, vfs2).open();

@@ -7,9 +7,15 @@ declare class Zoomist {
     constructor(element: Element, options?: ZoomistOptions);
 
     __events__: {
-        drag: Array<(transform?: { x: number; y: number }, event?: Event) => void>;
-        dragEnd: Array<(transform?: { x: number; y: number }, event?: Event) => void>;
-        dragStart: Array<(transform?: { x: number; y: number }, event?: Event) => void>;
+        drag: Array<
+            (transform?: { x: number; y: number }, event?: Event) => void
+        >;
+        dragEnd: Array<
+            (transform?: { x: number; y: number }, event?: Event) => void
+        >;
+        dragStart: Array<
+            (transform?: { x: number; y: number }, event?: Event) => void
+        >;
         pinch: Array<(event?: Event) => void>;
         pinchEnd: Array<(event?: Event) => void>;
         pinchStart: Array<(event?: Event) => void>;
@@ -122,15 +128,24 @@ declare class Zoomist {
     move(x: number, y: number): void;
     moveTo(x: number, y: number): void;
     slideTo(value: number, isOnlySlide: boolean): void;
-    on(event: "ready" | "update" | "destroy" | "resize" | "reset", handler: () => void): void;
+    on(
+        event: "ready" | "update" | "destroy" | "resize" | "reset",
+        handler: () => void,
+    ): void;
     on(event: "zoom", handler: (ratio: number) => void): void;
     on(event: "wheel", handler: (event: WheelEvent) => void): void;
     on(
         event: "drag" | "dragStart" | "dragEnd",
         handler: (transform: { x: number; y: number }, event: Event) => void,
     ): void;
-    on(event: "slide" | "slideStart" | "slideEnd", handler: (value: number, event: Event) => void): void;
-    on(event: "pinch" | "pinchStart" | "pinchEnd", handler: (event: Event) => void): void;
+    on(
+        event: "slide" | "slideStart" | "slideEnd",
+        handler: (value: number, event: Event) => void,
+    ): void;
+    on(
+        event: "pinch" | "pinchStart" | "pinchEnd",
+        handler: (event: Event) => void,
+    ): void;
 
     reset(): void;
     update(): void;

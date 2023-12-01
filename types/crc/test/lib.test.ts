@@ -26,16 +26,38 @@ value = crc.crc32("three", value);
 value.toString(16);
 
 // `crc.*`:
-expectType<typeof crc.crc1>(expectType<typeof import("crc/lib/crc1")>(crc.crc1));
-expectType<typeof crc.crc8>(expectType<typeof import("crc/lib/crc8")>(crc.crc8));
-expectType<typeof crc.crc81wire>(expectType<typeof import("crc/lib/crc8_1wire")>(crc.crc81wire));
+expectType<typeof crc.crc1>(
+    expectType<typeof import("crc/lib/crc1")>(crc.crc1),
+);
+expectType<typeof crc.crc8>(
+    expectType<typeof import("crc/lib/crc8")>(crc.crc8),
+);
+expectType<typeof crc.crc81wire>(
+    expectType<typeof import("crc/lib/crc8_1wire")>(crc.crc81wire),
+);
 
-expectType<typeof crc.crc16>(expectType<typeof import("crc/lib/crc16")>(crc.crc16));
-expectType<typeof crc.crc16ccitt>(expectType<typeof import("crc/lib/crc16_ccitt")>(crc.crc16ccitt));
-expectType<typeof crc.crc16kermit>(expectType<typeof import("crc/lib/crc16_kermit")>(crc.crc16kermit));
-expectType<typeof crc.crc16modbus>(expectType<typeof import("crc/lib/crc16_modbus")>(crc.crc16modbus));
-expectType<typeof crc.crc16xmodem>(expectType<typeof import("crc/lib/crc16_xmodem")>(crc.crc16xmodem));
+expectType<typeof crc.crc16>(
+    expectType<typeof import("crc/lib/crc16")>(crc.crc16),
+);
+expectType<typeof crc.crc16ccitt>(
+    expectType<typeof import("crc/lib/crc16_ccitt")>(crc.crc16ccitt),
+);
+expectType<typeof crc.crc16kermit>(
+    expectType<typeof import("crc/lib/crc16_kermit")>(crc.crc16kermit),
+);
+expectType<typeof crc.crc16modbus>(
+    expectType<typeof import("crc/lib/crc16_modbus")>(crc.crc16modbus),
+);
+expectType<typeof crc.crc16xmodem>(
+    expectType<typeof import("crc/lib/crc16_xmodem")>(crc.crc16xmodem),
+);
 
-expectType<typeof crc.crc24>(expectType<typeof import("crc/lib/crc24")>(crc.crc24));
-expectType<typeof crc.crc32>(expectType<typeof import("crc/lib/crc32")>(crc.crc32));
-expectType<typeof crc.crcjam>(expectType<typeof import("crc/lib/crcjam")>(crc.crcjam));
+expectType<typeof crc.crc24>(
+    expectType<typeof import("crc/lib/crc24")>(crc.crc24),
+);
+expectType<typeof crc.crc32>(
+    expectType<typeof import("crc/lib/crc32")>(crc.crc32),
+);
+expectType<typeof crc.crcjam>(
+    expectType<typeof import("crc/lib/crcjam")>(crc.crcjam),
+);

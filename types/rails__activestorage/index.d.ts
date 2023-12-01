@@ -7,15 +7,24 @@ export class DirectUpload {
     file: File;
     url: string;
 
-    constructor(file: File, url: string, delegate?: DirectUploadDelegate, customHeaders?: Record<string, string>);
+    constructor(
+        file: File,
+        url: string,
+        delegate?: DirectUploadDelegate,
+        customHeaders?: Record<string, string>,
+    );
 
     create(callback: (error: Error, blob: Blob) => void): void;
 }
 
 export interface DirectUploadDelegate {
-    directUploadWillCreateBlobWithXHR?: ((xhr: XMLHttpRequest) => void) | undefined;
+    directUploadWillCreateBlobWithXHR?:
+        | ((xhr: XMLHttpRequest) => void)
+        | undefined;
 
-    directUploadWillStoreFileWithXHR?: ((xhr: XMLHttpRequest) => void) | undefined;
+    directUploadWillStoreFileWithXHR?:
+        | ((xhr: XMLHttpRequest) => void)
+        | undefined;
 }
 
 export interface Blob {

@@ -37,7 +37,9 @@ export class NumberConverter implements Converter<number> {
     parse(value: string): number | null;
 }
 export interface NumberConverterFactory {
-    createConverter(options?: IntlNumberConverter.ConverterOptions): IntlNumberConverter;
+    createConverter(
+        options?: IntlNumberConverter.ConverterOptions,
+    ): IntlNumberConverter;
 }
 export class NumberRangeValidator implements Validator<string | number> {
     constructor(options?: NumberRangeValidator.ValidatorOptions);
@@ -50,23 +52,31 @@ export namespace NumberRangeValidator {
         converter?: NumberConverter | undefined;
         min?: number | undefined;
         max?: number | undefined;
-        hint?: {
-            max?: string | undefined;
-            min?: string | undefined;
-            inRange?: string | undefined;
-            exact?: string | undefined;
-        } | undefined;
-        messageDetail?: {
-            rangeUnderflow?: string | undefined;
-            rangeOverflow?: string | undefined;
-            exact?: string | undefined;
-        } | undefined;
-        messageSummary?: {
-            rangeUnderflow?: string | undefined;
-            rangeOverflow?: string | undefined;
-        } | undefined;
+        hint?:
+            | {
+                  max?: string | undefined;
+                  min?: string | undefined;
+                  inRange?: string | undefined;
+                  exact?: string | undefined;
+              }
+            | undefined;
+        messageDetail?:
+            | {
+                  rangeUnderflow?: string | undefined;
+                  rangeOverflow?: string | undefined;
+                  exact?: string | undefined;
+              }
+            | undefined;
+        messageSummary?:
+            | {
+                  rangeUnderflow?: string | undefined;
+                  rangeOverflow?: string | undefined;
+              }
+            | undefined;
     };
 }
 export interface NumberRangeValidatorFactory {
-    createValidator(options?: NumberRangeValidator.ValidatorOptions): NumberRangeValidator;
+    createValidator(
+        options?: NumberRangeValidator.ValidatorOptions,
+    ): NumberRangeValidator;
 }

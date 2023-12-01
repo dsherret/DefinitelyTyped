@@ -45,7 +45,14 @@ export class Bounds {
     width(): number;
     static points(points: Point[]): Bounds;
     static xywh(x: number, y: number, w: number, h: number): Bounds;
-    static xyzwhd(x: number, y: number, z: number, w: number, h: number, d: number): Bounds;
+    static xyzwhd(
+        x: number,
+        y: number,
+        z: number,
+        w: number,
+        h: number,
+        d: number,
+    ): Bounds;
 }
 
 /**
@@ -67,7 +74,10 @@ export class Camera extends Transformable {
 }
 
 export class CanvasCirclePainter extends CanvasStyler {
-    circle(center: { x: number; y: number }, radius: number): CanvasCirclePainter;
+    circle(
+        center: { x: number; y: number },
+        radius: number,
+    ): CanvasCirclePainter;
 }
 
 export class CanvasLayerRenderContext extends RenderLayerContext {
@@ -96,16 +106,16 @@ export class CanvasRenderContext extends RenderContext {
 
 export class CanvasStyler {
     constructor(ctx: CanvasRenderingContext2D);
-    draw(
-        style?: {
-            stroke?: string | undefined;
-            "stroke-width"?: number | undefined;
-            "text-anchor"?: string | undefined;
-        },
-    ): this;
-    fill(
-        style?: { fill?: string | undefined; "fill-opacity"?: number | undefined; "text-anchor"?: string | undefined },
-    ): this;
+    draw(style?: {
+        stroke?: string | undefined;
+        "stroke-width"?: number | undefined;
+        "text-anchor"?: string | undefined;
+    }): this;
+    fill(style?: {
+        fill?: string | undefined;
+        "fill-opacity"?: number | undefined;
+        "text-anchor"?: string | undefined;
+    }): this;
 }
 
 export class CanvasTextPainter {
@@ -113,7 +123,11 @@ export class CanvasTextPainter {
     fillText(
         m: Matrix,
         text: string,
-        style?: { font: string; fill?: string | undefined; "text-anchor"?: string | undefined },
+        style?: {
+            font: string;
+            fill?: string | undefined;
+            "text-anchor"?: string | undefined;
+        },
     ): this;
 }
 
@@ -145,8 +159,14 @@ export class Drag {
     inertia: boolean;
     dispatch: Events.Dispatcher;
     defaults: { inertia: boolean };
-    constructor(elementOrId: string | HTMLElement, options?: { inertia?: boolean | undefined });
-    on(type: string, listener: (e: { offset: number[]; offsetRelative: number[] }) => void): Events.Dispatcher;
+    constructor(
+        elementOrId: string | HTMLElement,
+        options?: { inertia?: boolean | undefined },
+    );
+    on(
+        type: string,
+        listener: (e: { offset: number[]; offsetRelative: number[] }) => void,
+    ): Events.Dispatcher;
 }
 
 export class FillLayer extends RenderLayer {
@@ -197,7 +217,10 @@ export class Light extends Transformable {
     enabled: boolean;
     id: string;
     defaults: LightOptions;
-    constructor(type: "point" | "directional" | "ambient", options?: LightOptions);
+    constructor(
+        type: "point" | "directional" | "ambient",
+        options?: LightOptions,
+    );
     render(): void;
 }
 
@@ -290,7 +313,11 @@ export class Model extends Transformable {
     append(): this;
     eachRenderable(
         lightFn: (light: Light, matrix?: Matrix) => Model,
-        shapeFn: (item: Shape | Model, lightModels?: Model[], matrix?: Matrix) => any,
+        shapeFn: (
+            item: Shape | Model,
+            lightModels?: Model[],
+            matrix?: Matrix,
+        ) => any,
     ): void;
     eachShape(f: (shape: Shape) => any): void;
     remove(...args: Array<Shape | Model | Light>): void;
@@ -377,7 +404,12 @@ export class Quaternion {
     constructor();
     multiply(q: Point): this;
     toMatrix(): Matrix;
-    static axisAngle(x: number, y: number, z: number, angleRads: number): Quaternion;
+    static axisAngle(
+        x: number,
+        y: number,
+        z: number,
+        angleRads: number,
+    ): Quaternion;
     static pixelsPerRadian: number;
     static pointAngle(p: Point, angleRads: number): Quaternion;
     static xyToTransform(x: number, y: number): Matrix;
@@ -426,7 +458,12 @@ export class RenderLayerContext {
  * If you need to force a re-computation, mark the surface as ‘dirty’.
  */
 export class RenderModel {
-    constructor(surface: Surface, transform: Matrix, projection: Matrix, viewport: Matrix);
+    constructor(
+        surface: Surface,
+        transform: Matrix,
+        projection: Matrix,
+        viewport: Matrix,
+    );
     update(transform: Matrix, projection: Matrix, viewport: Matrix): void;
 }
 
@@ -563,7 +600,11 @@ export class SvgStyler {
 
 export class SvgTextPainter {
     constructor(elementFactory: (name: string) => HTMLElement);
-    fillText(m: number[], text: string, style?: Partial<CSSStyleDeclaration>): void;
+    fillText(
+        m: number[],
+        text: string,
+        style?: Partial<CSSStyleDeclaration>,
+    ): void;
 }
 
 export class TextPainter extends Painter {}
@@ -627,7 +668,10 @@ export class Zoom {
     speed: number;
     dispatch: Events.Dispatcher;
     defaults: { smooth: boolean };
-    constructor(elementOrId: string | HTMLElement, options?: { smooth?: boolean | undefined });
+    constructor(
+        elementOrId: string | HTMLElement,
+        options?: { smooth?: boolean | undefined },
+    );
 }
 
 export const Painters: {
@@ -635,18 +679,27 @@ export const Painters: {
     text: TextPainter;
 };
 export function C(r?: number, g?: number, b?: number, a?: number): Color;
-export function CanvasContext(elementOrId: string | HTMLElement, scene?: Scene): CanvasRenderContext;
+export function CanvasContext(
+    elementOrId: string | HTMLElement,
+    scene?: Scene,
+): CanvasRenderContext;
 
 /**
  * Create a render context for the element with the specified elementId. elementId should correspond to either an SVG or Canvas element.
  */
-export function Context(elementOrId: string | HTMLElement, scene?: Scene): RenderContext;
+export function Context(
+    elementOrId: string | HTMLElement,
+    scene?: Scene,
+): RenderContext;
 
 export function M(m?: number[]): Matrix;
 
 export function P(x?: number, y?: number, z?: number, w?: number): Point;
 
-export function SvgContext(elementOrId: string | HTMLElement, scene?: Scene): SvgRenderContext;
+export function SvgContext(
+    elementOrId: string | HTMLElement,
+    scene?: Scene,
+): SvgRenderContext;
 
 /**
  * It is not possible exactly render text in a scene with a perspective projection because Canvas and SVG support only affine transformations. So, in order to fake it, we create an affine transform
@@ -662,7 +715,12 @@ export const Affine: {
 };
 
 export const BvhParser: {
-    SyntaxError(message: string, expected: string, found: string, location: any): void;
+    SyntaxError(
+        message: string,
+        expected: string,
+        found: string,
+        location: any,
+    ): void;
     parse(input: string): any;
 };
 
@@ -675,7 +733,12 @@ export const Colors: {
     parse(str: string): Color;
     randomShape(shape: Shape, sat?: number, lit?: number): void;
     randomSurfaces(shape: Shape, sat?: number, lit?: number): void;
-    randomSurfaces2(shape: Shape, drift?: number, sat?: number, lit?: number): void;
+    randomSurfaces2(
+        shape: Shape,
+        drift?: number,
+        sat?: number,
+        lit?: number,
+    ): void;
     rgb(r: number, g: number, b: number, a?: number): Color;
     white(): Color;
 };
@@ -734,8 +797,22 @@ export const Points: {
  * These projection methods return a 3D to 2D Matrix transformation. Each projection assumes the camera is located at (0,0,0).
  */
 export const Projections: {
-    ortho(left?: number, right?: number, bottom?: number, top?: number, near?: number, far?: number): Matrix;
-    perspective(left?: number, right?: number, bottom?: number, top?: number, near?: number, far?: number): Matrix;
+    ortho(
+        left?: number,
+        right?: number,
+        bottom?: number,
+        top?: number,
+        near?: number,
+        far?: number,
+    ): Matrix;
+    perspective(
+        left?: number,
+        right?: number,
+        bottom?: number,
+        top?: number,
+        near?: number,
+        far?: number,
+    ): Matrix;
     perspectiveFov(fovyInDegrees?: number, front?: number): Matrix;
 };
 
@@ -744,8 +821,20 @@ export const Projections: {
  */
 export const ShaderUtils: {
     applyAmbient(c: Color, light: Light): void;
-    applyDiffuse(c: Color, light: Light, lightNormal: Point, surfaceNormal: Point, material?: Material): void;
-    applyDiffuseAndSpecular(c: Color, light: Light, lightNormal: Point, surfaceNormal: Point, material: Material): void;
+    applyDiffuse(
+        c: Color,
+        light: Light,
+        lightNormal: Point,
+        surfaceNormal: Point,
+        material?: Material,
+    ): void;
+    applyDiffuseAndSpecular(
+        c: Color,
+        light: Light,
+        lightNormal: Point,
+        surfaceNormal: Point,
+        material: Material,
+    ): void;
 };
 
 export const Shaders: {
@@ -774,7 +863,12 @@ export const Shapes: {
     obj(objContents: string, cullBackfaces?: boolean): Shape;
     patch(nx?: number, ny?: number): Shape;
     path(points: Point[]): Shape;
-    pipe(point1: Point, point2: Point, radius?: number, segments?: number): Shape;
+    pipe(
+        point1: Point,
+        point2: Point,
+        radius?: number,
+        segments?: number,
+    ): Shape;
     pyramid(): Shape;
     rectangle(point1: Point, point2: Point): Shape;
     sphere(subdivisions?: number): Shape;

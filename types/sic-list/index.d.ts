@@ -36,4 +36,6 @@ export function getData(): Array<{ code: string; description: string }>;
 /**
  * Expects an array of code and sic description pairs to add to the list. Doesn't return anything.
  */
-export function overwrite(sics: ReadonlyArray<{ code: string; description: string }>): void;
+export function overwrite(
+    sics: ReadonlyArray<{ code: string; description: string }>,
+): void;

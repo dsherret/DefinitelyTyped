@@ -1,4 +1,14 @@
-import { compareTime, getSrtArrayIndex, parse, setPlayer, srtArray, srtPlayer, toMS, toSrt, toTime } from "srtparsejs";
+import {
+    compareTime,
+    getSrtArrayIndex,
+    parse,
+    setPlayer,
+    srtArray,
+    srtPlayer,
+    toMS,
+    toSrt,
+    toTime,
+} from "srtparsejs";
 
 const srtText = "1\r\n00:00:11,544 --> 00:00:12,682\r\nHello\r\n\r\n";
 
@@ -23,16 +33,25 @@ const toTime_result: string = toTime(11544);
 const toTime_error = toTime(toTime_result);
 
 // $ExpectType number
-const compareTime_result: number = compareTime("00:00:11,544", "00:00:11,543", "00:00:11,545");
+const compareTime_result: number = compareTime(
+    "00:00:11,544",
+    "00:00:11,543",
+    "00:00:11,545",
+);
 // @ts-expect-error
 const compareTime_error = compareTime(11544, 11543, 11545);
 
 // $ExpectType number | undefined
-const getSrtArrayIndex_result: number | undefined = getSrtArrayIndex(parse_result, 0, 0, "00:00:11,545");
+const getSrtArrayIndex_result: number | undefined = getSrtArrayIndex(
+    parse_result,
+    0,
+    0,
+    "00:00:11,545",
+);
 // @ts-expect-error
 const getSrtArrayIndex_error = getSrtArrayIndex(toTime_result);
 
 // $ExpectType srtPlayer
-const setPlayer_result: srtPlayer = setPlayer(parse_result, text => {});
+const setPlayer_result: srtPlayer = setPlayer(parse_result, (text) => {});
 // @ts-expect-error
-const setPlayer_error = setPlayer(srtText, text => {});
+const setPlayer_error = setPlayer(srtText, (text) => {});

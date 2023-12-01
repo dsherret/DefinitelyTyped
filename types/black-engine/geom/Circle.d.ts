@@ -1,5 +1,11 @@
 export class Circle {
-    static getCircumferencePoint(x: any, y: any, r: any, angle: any, outVector?: any): any;
+    static getCircumferencePoint(
+        x: any,
+        y: any,
+        r: any,
+        angle: any,
+        outVector?: any,
+    ): any;
     constructor(x?: number, y?: number, r?: number);
     private x;
     private y;

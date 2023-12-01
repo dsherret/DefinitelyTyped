@@ -35,7 +35,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.MessageDialog
      */
-    interface MessageDialog extends MessageDialog.Props, MessageDialog.Prototype {}
+    interface MessageDialog
+        extends MessageDialog.Props,
+            MessageDialog.Prototype {}
 
     namespace MessageDialog {
         interface SetupDataMap extends Dialog.SetupDataMap {
@@ -67,7 +69,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): MessageDialog;
+            new (config?: ConfigOptions): MessageDialog;
             prototype: Prototype;
             static: Static;
             super: Dialog.Constructor;

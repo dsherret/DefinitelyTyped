@@ -70,7 +70,10 @@ declare namespace locale {
          * default value used as the fallback when the best language is
          * calculated. Otherwise `locale.Locale["default"]` is used as fallback.
          */
-        constructor(str?: string | ReadonlyArray<string | Locale> | Locale | Locales, def?: string);
+        constructor(
+            str?: string | ReadonlyArray<string | Locale> | Locale | Locales,
+            def?: string,
+        );
 
         /**
          * This method takes the target locale and compares it against the

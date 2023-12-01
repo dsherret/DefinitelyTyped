@@ -13,21 +13,26 @@ hb.exec(options, (err, stdout, stderr) => {
     console.log(stdout, stderr);
 });
 
-hb.run(options).then(result => {
-    console.log(result.stdout, result.stderr);
-}).catch(err => {
-    console.error(err);
-});
+hb.run(options)
+    .then((result) => {
+        console.log(result.stdout, result.stderr);
+    })
+    .catch((err) => {
+        console.error(err);
+    });
 
 hb.spawn({
     input: "something.avi",
     output: "something.mp4",
     preset: "Normal",
     rotate: "1",
-}).on("progress", (progress) => {
-    console.log(progress.percentComplete);
-}).on("error", (err) => {
-    console.error(err);
-}).on("end", () => {
-    console.log("Process ended");
-});
+})
+    .on("progress", (progress) => {
+        console.log(progress.percentComplete);
+    })
+    .on("error", (err) => {
+        console.error(err);
+    })
+    .on("end", () => {
+        console.log("Process ended");
+    });

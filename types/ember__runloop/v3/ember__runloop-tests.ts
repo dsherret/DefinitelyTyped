@@ -1,6 +1,11 @@
 import EmberObject from "@ember/object";
 import { run } from "@ember/runloop";
-import { Backburner, DebugInfo, DeferredActionQueues, QueueItem } from "@ember/runloop/-private/backburner";
+import {
+    Backburner,
+    DebugInfo,
+    DeferredActionQueues,
+    QueueItem,
+} from "@ember/runloop/-private/backburner";
 
 run; // $ExpectType RunNamespace
 run.queues; // $ExpectType EmberRunQueues[]
@@ -15,7 +20,8 @@ declare module "@ember/runloop" {
 }
 
 function testRun() {
-    run(() => { // $ExpectType number
+    run(() => {
+        // $ExpectType number
         // code to be executed within a RunLoop
         return 123;
     });
@@ -42,7 +48,7 @@ function testRun() {
 
     function destroyApp(application: EmberObject) {
         run(application, "destroy");
-        run(application, function() {
+        run(application, function () {
             this.destroy();
         });
     }
@@ -72,9 +78,13 @@ function testCancel() {
 
     run.cancel(runNext);
 
-    const runLater = run.later(myContext, () => {
-        // will not be executed
-    }, 500);
+    const runLater = run.later(
+        myContext,
+        () => {
+            // will not be executed
+        },
+        500,
+    );
 
     run.cancel(runLater);
 
@@ -101,9 +111,13 @@ function testCancel() {
 
     run.cancel(throttle);
 
-    const debounce = run.debounce(myContext, () => {
-        // will not be executed
-    }, 1);
+    const debounce = run.debounce(
+        myContext,
+        () => {
+            // will not be executed
+        },
+        1,
+    );
 
     run.cancel(debounce);
 
@@ -121,8 +135,7 @@ function testCancel() {
 }
 
 function testDebounce() {
-    function runIt() {
-    }
+    function runIt() {}
 
     const myContext = { name: "debounce" };
 
@@ -137,7 +150,12 @@ function testDebounce() {
         actions: {
             handleTyping() {
                 // the fetchResults function is passed into the component from its parent
-                run.debounce(this, this.get("fetchResults"), this.get("searchValue"), 250);
+                run.debounce(
+                    this,
+                    this.get("fetchResults"),
+                    this.get("searchValue"),
+                    250,
+                );
             },
         },
     });
@@ -169,9 +187,13 @@ function testJoin() {
 
 function testLater() {
     const myContext = {};
-    run.later(myContext, () => {
-        // code here will execute within a RunLoop in about 500ms with this == myContext
-    }, 500);
+    run.later(
+        myContext,
+        () => {
+            // code here will execute within a RunLoop in about 500ms with this == myContext
+        },
+        500,
+    );
 }
 
 function testNext() {
@@ -192,8 +214,7 @@ function testOnce() {
             run.once(this, "processFullName");
         },
 
-        processFullName() {
-        },
+        processFullName() {},
     });
 }
 
@@ -234,8 +255,7 @@ function testScheduleOnce() {
 }
 
 function testThrottle() {
-    function runIt() {
-    }
+    function runIt() {}
 
     const myContext = { name: "throttle" };
 
@@ -246,7 +266,8 @@ function testThrottle() {
 function testBackburner() {
     const debugInfo: DebugInfo = run.backburner.getDebugInfo();
     const queueItems: QueueItem[] = debugInfo.timers;
-    const deferredActionQueues: DeferredActionQueues[] = debugInfo.instanceStack;
+    const deferredActionQueues: DeferredActionQueues[] =
+        debugInfo.instanceStack;
 
     function noop() {}
     run.backburner.on("end", noop);

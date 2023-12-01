@@ -62,12 +62,14 @@ export declare type WindowOptionDiff = {
 export interface ResizeRegion {
     size?: number | undefined;
     bottomRightCorner?: number | undefined;
-    sides?: {
-        top?: boolean | undefined;
-        bottom?: boolean | undefined;
-        left?: boolean | undefined;
-        right?: boolean | undefined;
-    } | undefined;
+    sides?:
+        | {
+              top?: boolean | undefined;
+              bottom?: boolean | undefined;
+              left?: boolean | undefined;
+              right?: boolean | undefined;
+          }
+        | undefined;
 }
 export interface Accelerator {
     devtools?: boolean | undefined;
@@ -76,10 +78,12 @@ export interface Accelerator {
     zoom?: boolean | undefined;
 }
 export interface Api {
-    iframe?: {
-        crossOriginInjection?: boolean | undefined;
-        sameOriginInjection?: boolean | undefined;
-    } | undefined;
+    iframe?:
+        | {
+              crossOriginInjection?: boolean | undefined;
+              sameOriginInjection?: boolean | undefined;
+          }
+        | undefined;
 }
 export interface ContentNavigation {
     whitelist?: string[] | undefined;

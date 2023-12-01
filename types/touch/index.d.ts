@@ -1,6 +1,9 @@
 /// <reference types="node" />
 
-declare function touch<T = void>(filename: string, cb?: (err?: NodeJS.ErrnoException) => T): Promise<T>;
+declare function touch<T = void>(
+    filename: string,
+    cb?: (err?: NodeJS.ErrnoException) => T,
+): Promise<T>;
 declare function touch<T = void>(
     filename: string,
     options?: touch.Options,
@@ -20,8 +23,15 @@ declare namespace touch {
 
     function sync(filename: string, options?: Options): void;
 
-    function ftouch<T = void>(fd: number, cb?: (err?: NodeJS.ErrnoException) => T): Promise<T>;
-    function ftouch<T = void>(fd: number, options?: Options, cb?: (err?: NodeJS.ErrnoException) => T): Promise<T>;
+    function ftouch<T = void>(
+        fd: number,
+        cb?: (err?: NodeJS.ErrnoException) => T,
+    ): Promise<T>;
+    function ftouch<T = void>(
+        fd: number,
+        options?: Options,
+        cb?: (err?: NodeJS.ErrnoException) => T,
+    ): Promise<T>;
 
     function ftouchSync(fd: number, options?: Options): void;
 }

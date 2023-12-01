@@ -8,7 +8,7 @@ worker.changeInterval(1);
 worker.changeInterval([0, 1, 5, 10]);
 
 worker.on("message", (message: RedisSMQ.Message, next: Function) => {
-    console.log("received message: \"" + message.message + "'");
+    console.log('received message: "' + message.message + "'");
     next();
 });
 worker.start();

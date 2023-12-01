@@ -1,15 +1,27 @@
-import { PluginDefinition, PluginParams, WaveSurferPlugin } from "../../types/plugin";
+import {
+    PluginDefinition,
+    PluginParams,
+    WaveSurferPlugin,
+} from "../../types/plugin";
 import Drawer from "../drawer";
 import Observer from "../util/observer";
 import WaveSurfer from "../wavesurfer";
 
 declare module "../../wavesurfer" {
     interface WaveSurfer {
-        FFT(bufferSize: number, sampleRate: number, windowFunc: WindowFunction, alpha: number): void;
+        FFT(
+            bufferSize: number,
+            sampleRate: number,
+            windowFunc: WindowFunction,
+            alpha: number,
+        ): void;
     }
 }
 
-export default class SpectrogramPlugin extends Observer implements WaveSurferPlugin {
+export default class SpectrogramPlugin
+    extends Observer
+    implements WaveSurferPlugin
+{
     constructor(params: SpectrogramPluginParams, ws: WaveSurfer);
     static create(params: SpectrogramPluginParams): PluginDefinition;
     destroy(): void;

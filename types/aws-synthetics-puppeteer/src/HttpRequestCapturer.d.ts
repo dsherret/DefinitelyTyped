@@ -15,7 +15,11 @@ declare module "HttpRequestCapturer" {
         _tracing: any;
         _syntheticsConfiguration: SyntheticsConfiguration;
         reset(): void;
-        configure(requestsResult: any, tracing: any, syntheticsConfiguration: any): void;
+        configure(
+            requestsResult: any,
+            tracing: any,
+            syntheticsConfiguration: any,
+        ): void;
         startCapture(): void;
         captureHTTPsGlobal(module: any): void;
         getRequestsResult(): any;
@@ -26,7 +30,12 @@ declare module "HttpRequestCapturer" {
         getExecutionError(): any;
         isLibraryGeneratedRequest(requestOptions: any): boolean;
         enableCapture(module: any): void;
-        addHelperHeaders(stepId: any, requestOptions: any, body: any, stepConfig: any): void;
+        addHelperHeaders(
+            stepId: any,
+            requestOptions: any,
+            body: any,
+            stepConfig: any,
+        ): void;
         getHttpTimings(timings: any): HttpTimingsResult;
     }
     import { SyntheticsConfiguration } from "SyntheticsConfiguration";

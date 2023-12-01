@@ -1,6 +1,9 @@
 export = hark;
 
-declare function hark(stream: HTMLAudioElement | HTMLVideoElement | MediaStream, option?: hark.Option): hark.Harker;
+declare function hark(
+    stream: HTMLAudioElement | HTMLVideoElement | MediaStream,
+    option?: hark.Option,
+): hark.Harker;
 
 declare namespace hark {
     interface Option {
@@ -23,7 +26,13 @@ declare namespace hark {
         speakingHistory: number[];
 
         on(event: "speaking" | "stopped_speaking", listener: () => void): void;
-        on(event: "volume_change", listener: (currentVolume: number, threshold: number) => void): void;
-        on(event: "state_change", listener: (state: AudioContextState) => void): void;
+        on(
+            event: "volume_change",
+            listener: (currentVolume: number, threshold: number) => void,
+        ): void;
+        on(
+            event: "state_change",
+            listener: (state: AudioContextState) => void,
+        ): void;
     }
 }

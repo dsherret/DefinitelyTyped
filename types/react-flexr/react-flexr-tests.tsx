@@ -32,13 +32,9 @@ class Example2 extends React.Component {
     render() {
         return (
             <Grid>
-                <Cell size="6/12">
-                    Fills Half
-                </Cell>
+                <Cell size="6/12">Fills Half</Cell>
 
-                <Cell>
-                    Fills Rest.. (Yay for Flexbox)
-                </Cell>
+                <Cell>Fills Rest.. (Yay for Flexbox)</Cell>
 
                 <Cell size={200} lap={150}>
                     Fills 150px on lap and 200px everywhere else
@@ -48,12 +44,11 @@ class Example2 extends React.Component {
                     Fills a quarter on lap and half everywhere else
                 </Cell>
 
-                <Cell size="3/12">
-                    Fills a quarter
-                </Cell>
+                <Cell size="3/12">Fills a quarter</Cell>
 
                 <Cell palm="3/12" lap="1/2">
-                    Fills a quarter on palm (mobile), half on lap and dynamicly sized everywhere else
+                    Fills a quarter on palm (mobile), half on lap and dynamicly
+                    sized everywhere else
                 </Cell>
 
                 <Cell palm="hidden" size="1/2">
@@ -73,14 +68,10 @@ class App1 extends React.Component {
         return (
             <div>
                 <h1>Only visible in palm:</h1>
-                {isPalm
-                    ? <h2>Palm</h2>
-                    : null}
+                {isPalm ? <h2>Palm</h2> : null}
 
                 <h1>Allows Multiple Matches</h1>
-                {findMatch("desk", "lap")
-                    ? <h2>Lap or Desk</h2>
-                    : null}
+                {findMatch("desk", "lap") ? <h2>Lap or Desk</h2> : null}
             </div>
         );
     }

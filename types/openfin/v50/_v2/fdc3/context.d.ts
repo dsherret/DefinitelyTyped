@@ -26,9 +26,11 @@ export interface Context {
     /**
      * An optional map of any equivalent identifiers for the context type, e.g. ISIN, CUSIP, etc. for an instrument.
      */
-    id?: {
-        [key: string]: string | undefined;
-    } | undefined;
+    id?:
+        | {
+              [key: string]: string | undefined;
+          }
+        | undefined;
     /**
      * @hidden
      * Custom properties and metadata. This can be extended in specific context object.

@@ -1,9 +1,18 @@
-import { ComponentsOverrides, ComponentsProps, ComponentsVariants } from "@mui/material";
+import {
+    ComponentsOverrides,
+    ComponentsProps,
+    ComponentsVariants,
+} from "@mui/material";
 
 import * as React from "react";
 
 export type Display = boolean | "true" | "false" | "excluded";
-export type FilterType = "dropdown" | "checkbox" | "multiselect" | "textField" | "custom";
+export type FilterType =
+    | "dropdown"
+    | "checkbox"
+    | "multiselect"
+    | "textField"
+    | "custom";
 export type Responsive = "vertical" | "standard" | "simple";
 export type SelectableRows = "multiple" | "single" | "none";
 export type ChipVariant = "outlined" | "default";
@@ -63,9 +72,11 @@ export interface MUIDataTableMeta<T = any> {
     tableState: MUIDataTableState;
 }
 
-export type MUIDataTableCustomHeadRenderer =
-    & Pick<MUIDataTableColumn, "name" | "label">
-    & Pick<
+export type MUIDataTableCustomHeadRenderer = Pick<
+    MUIDataTableColumn,
+    "name" | "label"
+> &
+    Pick<
         MUIDataTableColumnOptions,
         | "customHeadRender"
         | "display"
@@ -76,8 +87,7 @@ export type MUIDataTableCustomHeadRenderer =
         | "print"
         | "searchable"
         | "viewColumns"
-    >
-    & {
+    > & {
         index: number;
     };
 
@@ -150,19 +160,25 @@ export interface MUIDataTableFilterOptions {
      */
     display?:
         | ((
-            filterList: MUIDataTableState["filterList"],
-            onChange: (val: string | string[], index: number, column: MUIDataTableColumn) => void,
-            index: number,
-            column: MUIDataTableColumn,
-            filterData: MUIDataTableState["filterData"],
-        ) => void)
+              filterList: MUIDataTableState["filterList"],
+              onChange: (
+                  val: string | string[],
+                  index: number,
+                  column: MUIDataTableColumn,
+              ) => void,
+              index: number,
+              column: MUIDataTableColumn,
+              filterData: MUIDataTableState["filterData"],
+          ) => void)
         | undefined;
     /**
      * custom filter logic.
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/customize-filter/index.js)
      */
-    logic?: ((prop: string, filterValue: any[], row?: any[]) => boolean) | undefined;
+    logic?:
+        | ((prop: string, filterValue: any[], row?: any[]) => boolean)
+        | undefined;
     /**
      * A function to customize filter choices.
      * Use case: changing empty strings to "(empty)" in a dropdown.
@@ -189,10 +205,10 @@ export interface MUIDataTableCustomFilterListOptions {
      */
     update?:
         | ((
-            filterList: MUIDataTableState["filterList"],
-            filterPos: number,
-            index: number,
-        ) => MUIDataTableState["filterList"])
+              filterList: MUIDataTableState["filterList"],
+              filterPos: number,
+              index: number,
+          ) => MUIDataTableState["filterList"])
         | undefined;
 }
 
@@ -216,7 +232,11 @@ export interface MUIDataTableColumnOptions {
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/component/index.js)
      */
     customBodyRender?:
-        | ((value: any, tableMeta: MUIDataTableMeta, updateValue: (value: string) => void) => string | React.ReactNode)
+        | ((
+              value: any,
+              tableMeta: MUIDataTableMeta,
+              updateValue: (value: string) => void,
+          ) => string | React.ReactNode)
         | undefined;
     /**
      * Similar to and performing better than `customBodyRender`, however with the following caveats:
@@ -225,13 +245,17 @@ export interface MUIDataTableColumnOptions {
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/large-data-set/index.js)
      */
-    customBodyRenderLite?: ((dataIndex: number, rowIndex: number) => string | React.ReactNode) | undefined;
+    customBodyRenderLite?:
+        | ((dataIndex: number, rowIndex: number) => string | React.ReactNode)
+        | undefined;
     /**
      * Function that returns a string or React component.
      * Used for creating a custom header to a column.
      * This method only affects the display in the table's header, other areas of the table (such as the View Columns popover), will use the column's label.
      */
-    customHeadLabelRender?: ((options: CustomHeadLabelRenderOptions) => string | React.ReactNode) | undefined;
+    customHeadLabelRender?:
+        | ((options: CustomHeadLabelRenderOptions) => string | React.ReactNode)
+        | undefined;
     /**
      * These options only affect the filter chips that display after filter are selected.
      * To modify the filters themselves, see filterOptions.
@@ -242,10 +266,10 @@ export interface MUIDataTableColumnOptions {
     /** Function that returns a string or React component. Used as display for column header. */
     customHeadRender?:
         | ((
-            columnMeta: MUIDataTableCustomHeadRenderer,
-            handleToggleColumn: (columnIndex: number) => void,
-            sortOrder: MUISortOptions,
-        ) => string | React.ReactNode)
+              columnMeta: MUIDataTableCustomHeadRenderer,
+              handleToggleColumn: (columnIndex: number) => void,
+              sortOrder: MUISortOptions,
+          ) => string | React.ReactNode)
         | undefined;
     /**
      * Determines if the column can be dragged.
@@ -313,13 +337,17 @@ export interface MUIDataTableColumnOptions {
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/customize-styling/index.js)
      */
-    setCellHeaderProps?: ((columnMeta: MUIDataTableCustomHeadRenderer) => object) | undefined;
+    setCellHeaderProps?:
+        | ((columnMeta: MUIDataTableCustomHeadRenderer) => object)
+        | undefined;
     /**
      * Is called for each cell and allows to you return custom props for this cell based on its data.
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/customize-styling/index.js)
      */
-    setCellProps?: ((cellValue: string, rowIndex: number, columnIndex: number) => object) | undefined;
+    setCellProps?:
+        | ((cellValue: string, rowIndex: number, columnIndex: number) => object)
+        | undefined;
     /**
      * Enable/disable sorting on column.
      * @default true
@@ -332,7 +360,9 @@ export interface MUIDataTableColumnOptions {
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/column-sort/index.js)
      */
     sortCompare?:
-        | ((order: MUISortOptions["direction"]) => (obj1: { data: any }, obj2: { data: any }) => number)
+        | ((
+              order: MUISortOptions["direction"],
+          ) => (obj1: { data: any }, obj2: { data: any }) => number)
         | undefined;
     /**
      * Causes the first click on a column to sort by desc rather than asc.
@@ -413,13 +443,21 @@ export type MUIDataTableOptions = Partial<{
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/customize-rows/index.js)
      */
-    customRowRender: (data: any[], dataIndex: number, rowIndex: number) => React.ReactNode;
+    customRowRender: (
+        data: any[],
+        dataIndex: number,
+        rowIndex: number,
+    ) => React.ReactNode;
     /**
      * Override default search with custom function.
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/customize-search/index.js)
      */
-    customSearch: (searchQuery: string, currentRow: any[], columns: any[]) => boolean;
+    customSearch: (
+        searchQuery: string,
+        currentRow: any[],
+        columns: any[],
+    ) => boolean;
     /**
      * Render a custom table search.
      *
@@ -444,7 +482,11 @@ export type MUIDataTableOptions = Partial<{
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/customize-footer/index.js)
      */
-    customTableBodyFooterRender: (options: { data: any[]; selectableRows: SelectableRows; columns: any[] }) => any;
+    customTableBodyFooterRender: (options: {
+        data: any[];
+        selectableRows: SelectableRows;
+        columns: any[];
+    }) => any;
     /**
      * Render a custom Toolbar.
      *
@@ -457,7 +499,10 @@ export type MUIDataTableOptions = Partial<{
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/customize-toolbarselect/CustomToolbarSelect.js)
      */
     customToolbarSelect: (
-        selectedRows: { data: Array<{ index: number; dataIndex: number }>; lookup: { [key: number]: boolean } },
+        selectedRows: {
+            data: Array<{ index: number; dataIndex: number }>;
+            lookup: { [key: number]: boolean };
+        },
         displayData: DisplayData,
         setSelectedRows: (rows: number[]) => void,
     ) => React.ReactNode;
@@ -478,7 +523,10 @@ export type MUIDataTableOptions = Partial<{
     downloadOptions: Partial<{
         filename: string;
         separator: string;
-        filterOptions: Partial<{ useDisplayedColumnsOnly: boolean; useDisplayedRowsOnly: boolean }>;
+        filterOptions: Partial<{
+            useDisplayedColumnsOnly: boolean;
+            useDisplayedRowsOnly: boolean;
+        }>;
     }>;
     /**
      * An object of options describing how dragging columns should work.
@@ -566,9 +614,15 @@ export type MUIDataTableOptions = Partial<{
      * Enable/disable expansion or collapse on certain expandable rows with custom function.
      * Returns `true` if not provided.
      */
-    isRowExpandable: (dataIndex: number, expandedRows?: MUIDataTableIsRowCheck) => boolean;
+    isRowExpandable: (
+        dataIndex: number,
+        expandedRows?: MUIDataTableIsRowCheck,
+    ) => boolean;
     /** Enable/disable selection on certain rows with custom function. Returns true if not provided. */
-    isRowSelectable: (dataIndex: number, selectedRows?: MUIDataTableIsRowCheck) => boolean;
+    isRowSelectable: (
+        dataIndex: number,
+        selectedRows?: MUIDataTableIsRowCheck,
+    ) => boolean;
     /**
      * When true, the option adds a dropdown to the table's footer that allows a user to navigate to a specific page.
      *
@@ -579,17 +633,31 @@ export type MUIDataTableOptions = Partial<{
     /** Callback function that triggers when a cell is clicked. */
     onCellClick: (
         colData: any,
-        cellMeta: { colIndex: number; rowIndex: number; dataIndex: number; event: React.MouseEvent },
+        cellMeta: {
+            colIndex: number;
+            rowIndex: number;
+            dataIndex: number;
+            event: React.MouseEvent;
+        },
     ) => void;
     onChangePage: (currentPage: number) => void;
     /** Callback function that triggers when a page has changed. */
     onChangeRowsPerPage: (numberOfRows: number) => void;
     /** Callback function that triggers when a column has been dragged to a new location. */
-    onColumnOrderChange: (newColumnOrder: number[], columnIndex: number, newPosition: number) => void;
+    onColumnOrderChange: (
+        newColumnOrder: number[],
+        columnIndex: number,
+        newPosition: number,
+    ) => void;
     /** Callback function that triggers when a column has been sorted. */
-    onColumnSortChange: (changedColumn: string, direction: "asc" | "desc") => void;
+    onColumnSortChange: (
+        changedColumn: string,
+        direction: "asc" | "desc",
+    ) => void;
     /** @deprecated use `onViewColumnsChange` instead */
-    onColumnViewChange?: ((changedColumn: string, action: string) => void) | undefined;
+    onColumnViewChange?:
+        | ((changedColumn: string, action: string) => void)
+        | undefined;
     /**
      * A callback function that triggers when the user downloads the CSV file.
      * In the callback, you can control what is written to the CSV file.
@@ -616,7 +684,11 @@ export type MUIDataTableOptions = Partial<{
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/serverside-filters/index.js)
      */
-    onFilterChipClose: (index: number, removedFilter: string, filterList: MUIDataTableState["filterList"]) => void;
+    onFilterChipClose: (
+        index: number,
+        removedFilter: string,
+        filterList: MUIDataTableState["filterList"],
+    ) => void;
     /**
      * Callback function that is triggered when a user presses the "confirm" button on the filter popover.
      * This occurs only if you've set `confirmFilters` option to `true`.
@@ -629,9 +701,16 @@ export type MUIDataTableOptions = Partial<{
     /** Callback function that triggers when the filter dialog opens. */
     onFilterDialogOpen: () => void;
     /** Callback function that triggers when a row is clicked. */
-    onRowClick: (rowData: string[], rowMeta: { dataIndex: number; rowIndex: number }) => void;
+    onRowClick: (
+        rowData: string[],
+        rowMeta: { dataIndex: number; rowIndex: number },
+    ) => void;
     /** Callback function that triggers when row(s) are expanded/collapsed. */
-    onRowExpansionChange: (currentRowsExpanded: any[], allRowsExpanded: any[], rowsExpanded?: any[]) => void;
+    onRowExpansionChange: (
+        currentRowsExpanded: any[],
+        allRowsExpanded: any[],
+        rowsExpanded?: any[],
+    ) => void;
     /**
      * Callback function that triggers when row(s) are deleted.
      * Returning false prevents row deletion.
@@ -645,7 +724,11 @@ export type MUIDataTableOptions = Partial<{
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     ) => void | false;
     /** Callback function that triggers when row(s) are selected/deselected. */
-    onRowSelectionChange: (currentRowsSelected: any[], allRowsSelected: any[], rowsSelected?: any[]) => void;
+    onRowSelectionChange: (
+        currentRowsSelected: any[],
+        allRowsSelected: any[],
+        rowsSelected?: any[],
+    ) => void;
     /** Callback function that triggers when the search text value has changed. */
     onSearchChange: (searchText: string | null) => void;
     /** Callback function that triggers when the searchbox closes. */
@@ -678,7 +761,10 @@ export type MUIDataTableOptions = Partial<{
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/expandable-rows/index.js)
      */
-    renderExpandableRow: (rowData: string[], rowMeta: { dataIndex: number; rowIndex: number }) => React.ReactNode;
+    renderExpandableRow: (
+        rowData: string[],
+        rowMeta: { dataIndex: number; rowIndex: number },
+    ) => React.ReactNode;
     /** Enable/disable resizable columns. */
     resizableColumns: boolean;
     /**
@@ -779,7 +865,11 @@ export type MUIDataTableOptions = Partial<{
      *
      * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/customize-filter/index.js)
      */
-    setFilterChipProps: (colIndex: number, colName: string, data: readonly any[][]) => MUIDataTableChip;
+    setFilterChipProps: (
+        colIndex: number,
+        colName: string,
+        data: readonly any[][],
+    ) => MUIDataTableChip;
     /**
      * Is called for each row and allows you to return custom props for this row based on its data.
      *
@@ -859,41 +949,74 @@ export interface MUIDataTableCheckboxProps {
         root: string;
     };
     color: "primary" | "secondary";
-    "data-description": "row-select" | "row-select-header" | "table-filter" | "table-view-col";
+    "data-description":
+        | "row-select"
+        | "row-select-header"
+        | "table-filter"
+        | "table-view-col";
     "data-index": number | null;
     disabled: boolean;
     indeterminante: boolean;
-    onChange: (event: React.ChangeEvent<HTMLInputElement>, checked: boolean) => void;
+    onChange: (
+        event: React.ChangeEvent<HTMLInputElement>,
+        checked: boolean,
+    ) => void;
 }
 
 export interface MUIDataTableProps {
     columns: MUIDataTableColumnDef[];
     components?:
         | Partial<{
-            Checkbox: RenderCustomComponent<MUIDataTableCheckboxProps> | React.ReactNode;
-            ExpandButton: RenderCustomComponent<MUIDataTableExpandButton> | React.ReactNode;
-            TableBody: RenderCustomComponent<MUIDataTableBody> | React.ReactNode;
-            TableViewCol: RenderCustomComponent<MUIDataTableViewCol> | React.ReactNode;
-            TableFilterList: RenderCustomComponent<MUIDataTableFilterList> | React.ReactNode;
-            TableFooter: RenderCustomComponent<MUIDataTableFooter> | React.ReactNode;
-            TableHead: RenderCustomComponent<MUIDataTableHead> | React.ReactNode;
-            TableResize: RenderCustomComponent<MUIDataTableResize> | React.ReactNode;
-            TableToolbar: RenderCustomComponent<MUIDataTableToolbar> | React.ReactNode;
-            TableToolbarSelect: RenderCustomComponent<MUIDataTableToolbarSelect> | React.ReactNode;
-            Tooltip: React.ReactNode;
-            icons: Partial<{
-                SearchIcon: React.ReactNode;
-                DownloadIcon: React.ReactNode;
-                PrintIcon: React.ReactNode;
-                ViewColumnIcon: React.ReactNode;
-                FilterIcon: React.ReactNode;
-            }>;
-        }>
+              Checkbox:
+                  | RenderCustomComponent<MUIDataTableCheckboxProps>
+                  | React.ReactNode;
+              ExpandButton:
+                  | RenderCustomComponent<MUIDataTableExpandButton>
+                  | React.ReactNode;
+              TableBody:
+                  | RenderCustomComponent<MUIDataTableBody>
+                  | React.ReactNode;
+              TableViewCol:
+                  | RenderCustomComponent<MUIDataTableViewCol>
+                  | React.ReactNode;
+              TableFilterList:
+                  | RenderCustomComponent<MUIDataTableFilterList>
+                  | React.ReactNode;
+              TableFooter:
+                  | RenderCustomComponent<MUIDataTableFooter>
+                  | React.ReactNode;
+              TableHead:
+                  | RenderCustomComponent<MUIDataTableHead>
+                  | React.ReactNode;
+              TableResize:
+                  | RenderCustomComponent<MUIDataTableResize>
+                  | React.ReactNode;
+              TableToolbar:
+                  | RenderCustomComponent<MUIDataTableToolbar>
+                  | React.ReactNode;
+              TableToolbarSelect:
+                  | RenderCustomComponent<MUIDataTableToolbarSelect>
+                  | React.ReactNode;
+              Tooltip: React.ReactNode;
+              icons: Partial<{
+                  SearchIcon: React.ReactNode;
+                  DownloadIcon: React.ReactNode;
+                  PrintIcon: React.ReactNode;
+                  ViewColumnIcon: React.ReactNode;
+                  FilterIcon: React.ReactNode;
+              }>;
+          }>
         | undefined;
     data: Array<object | number[] | string[]>;
     options?: MUIDataTableOptions | undefined;
     title: string | React.ReactNode;
-    innerRef?: React.RefObject<React.Component<MUIDataTableProps, MUIDataTableState> | null | undefined> | undefined;
+    innerRef?:
+        | React.RefObject<
+              | React.Component<MUIDataTableProps, MUIDataTableState>
+              | null
+              | undefined
+          >
+        | undefined;
 }
 
 export interface MUIDataTableExpandButton {
@@ -931,7 +1054,12 @@ export interface MUIDataTableBody {
     count: number;
     data: Array<object | number[] | string[]>;
     filterList?: MUIDataTableState["filterList"] | undefined;
-    onRowClick?: ((rowData: string[], rowMeta: { dataIndex: number; rowIndex: number }) => void) | undefined;
+    onRowClick?:
+        | ((
+              rowData: string[],
+              rowMeta: { dataIndex: number; rowIndex: number },
+          ) => void)
+        | undefined;
     options: MUIDataTableOptions;
     searchText?: string | undefined;
     selectRowUpdate?: ((...args: any) => any) | undefined;
@@ -1157,7 +1285,9 @@ export const DebounceTableSearch: React.ComponentType<DebouncedMUIDataTableSearc
  * [Example](https://github.com/gregnb/mui-datatables/blob/master/examples/large-data-set/index.js)
  * @param debounceWait The amount of time to wait for each action - defaults to 200
  */
-export function debounceSearchRender(debounceWait?: number): MUIDataTableOptions["customSearchRender"];
+export function debounceSearchRender(
+    debounceWait?: number,
+): MUIDataTableOptions["customSearchRender"];
 
 export default MUIDataTable;
 
@@ -1281,9 +1411,19 @@ declare module "@mui/material/styles/props" {
 
 declare module "@mui/material/styles/overrides" {
     interface ComponentNameToClassKey {
-        MUIDataTable: "root" | "caption" | "liveAnnounce" | "paper" | "responsiveScroll" | "tableRoot";
+        MUIDataTable:
+            | "root"
+            | "caption"
+            | "liveAnnounce"
+            | "paper"
+            | "responsiveScroll"
+            | "tableRoot";
 
-        MUIDataTableBody: "root" | "emptyTitle" | "lastSimpleCell" | "lastStackedCell";
+        MUIDataTableBody:
+            | "root"
+            | "emptyTitle"
+            | "lastSimpleCell"
+            | "lastStackedCell";
 
         MUIDataTableBodyCell:
             | "root"
@@ -1299,7 +1439,11 @@ declare module "@mui/material/styles/overrides" {
             | "stackedParent"
             | "stackedParentAlways";
 
-        MUIDataTableBodyRow: "root" | "hoverCursor" | "responsiveSimple" | "responsiveStacked";
+        MUIDataTableBodyRow:
+            | "root"
+            | "hoverCursor"
+            | "responsiveSimple"
+            | "responsiveStacked";
 
         MUIDataTableFilter:
             | "root"
@@ -1322,7 +1466,11 @@ declare module "@mui/material/styles/overrides" {
 
         MUIDataTableFooter: "root";
 
-        MUIDataTableHead: "main" | "responsiveSimple" | "responsiveStacked" | "responsiveStackedAlways";
+        MUIDataTableHead:
+            | "main"
+            | "responsiveSimple"
+            | "responsiveStacked"
+            | "responsiveStackedAlways";
 
         MUIDataTableHeadCell:
             | "root"
@@ -1341,7 +1489,13 @@ declare module "@mui/material/styles/overrides" {
 
         MUIDataTableHeadRow: "root";
 
-        MUIDataTableJumpToPage: "root" | "caption" | "input" | "select" | "selectIcon" | "selectRoot";
+        MUIDataTableJumpToPage:
+            | "root"
+            | "caption"
+            | "input"
+            | "select"
+            | "selectIcon"
+            | "selectRoot";
 
         MUIDataTablePagination:
             | "root"
@@ -1387,7 +1541,11 @@ declare module "@mui/material/styles/overrides" {
             | "titleRoot"
             | "titleText";
 
-        MUIDataTableToolbarSelect: "root" | "deleteIcon" | "iconButton" | "title";
+        MUIDataTableToolbarSelect:
+            | "root"
+            | "deleteIcon"
+            | "iconButton"
+            | "title";
 
         MUIDataTableViewCol:
             | "root"

@@ -75,7 +75,9 @@ export const Long: {
 // ---------- protocol ----------
 export type CellValue = string | Buffer | int64 | boolean | number | null;
 
-export type PrimaryKeyInput = Array<{ [name: string]: CellValue | VirtualData }>;
+export type PrimaryKeyInput = Array<{
+    [name: string]: CellValue | VirtualData;
+}>;
 export type PrimaryKeyOutput = Array<{ name: string; value: CellValue }>;
 export type AttributesInput = Array<{
     [name: string]: CellValue | undefined;
@@ -222,10 +224,8 @@ export type DescribeTableParams = JustTableName;
 
 export type DeleteTableParams = JustTableName;
 
-export type GetRowParams =
-    & FilterParams
-    & WithTransactionId
-    & {
+export type GetRowParams = FilterParams &
+    WithTransactionId & {
         tableName: string;
         primaryKey: PrimaryKeyInput;
     };
@@ -253,10 +253,8 @@ export type DeleteRowParams = WithTransactionId & {
     primaryKey: PrimaryKeyInput;
     condition: Condition;
 };
-export type GetRangeParams =
-    & FilterParams
-    & WithTransactionId
-    & {
+export type GetRangeParams = FilterParams &
+    WithTransactionId & {
         tableName: string;
         direction: EnumValues<typeof Direction>;
         inclusiveStartPrimaryKey: PrimaryKeyInput;
@@ -271,28 +269,28 @@ export type BatchWriteRowParams = WithTransactionId & {
         tableName: string;
         rows: Array<
             | {
-                type: "UPDATE";
-                condition: Condition;
-                primaryKey: PrimaryKeyInput;
-                attributeColumns: Array<{
-                    PUT?: AttributesInput;
-                    DELETE?: Array<{ [name: string]: int64 }>;
-                    DELETE_ALL?: string[];
-                }>;
-                returnContent?: ReturnContent;
-            }
+                  type: "UPDATE";
+                  condition: Condition;
+                  primaryKey: PrimaryKeyInput;
+                  attributeColumns: Array<{
+                      PUT?: AttributesInput;
+                      DELETE?: Array<{ [name: string]: int64 }>;
+                      DELETE_ALL?: string[];
+                  }>;
+                  returnContent?: ReturnContent;
+              }
             | {
-                type: "PUT";
-                condition: Condition;
-                primaryKey: PrimaryKeyInput;
-                attributeColumns?: AttributesInput;
-                returnContent?: ReturnContent;
-            }
+                  type: "PUT";
+                  condition: Condition;
+                  primaryKey: PrimaryKeyInput;
+                  attributeColumns?: AttributesInput;
+                  returnContent?: ReturnContent;
+              }
             | {
-                type: "DELETE";
-                condition: Condition;
-                primaryKey: PrimaryKeyInput;
-            }
+                  type: "DELETE";
+                  condition: Condition;
+                  primaryKey: PrimaryKeyInput;
+              }
         >;
     }>;
 };
@@ -501,14 +499,26 @@ export const events: SequentialExecutor;
 // ---------- client ----------
 export class Client {
     constructor(config: ConfigOptions);
-    createTable(params: CreateTableParams, callback?: (err: Error | null, data: unknown) => void): Promise<unknown>;
-    updateTable(params: UpdateTableParams, callback?: (err: Error | null, data: unknown) => void): Promise<unknown>;
-    listTable(params: unknown, callback?: (err: Error | null, data: ListTableResult) => void): Promise<ListTableResult>;
+    createTable(
+        params: CreateTableParams,
+        callback?: (err: Error | null, data: unknown) => void,
+    ): Promise<unknown>;
+    updateTable(
+        params: UpdateTableParams,
+        callback?: (err: Error | null, data: unknown) => void,
+    ): Promise<unknown>;
+    listTable(
+        params: unknown,
+        callback?: (err: Error | null, data: ListTableResult) => void,
+    ): Promise<ListTableResult>;
     describeTable(
         params: DescribeTableParams,
         callback?: (err: Error | null, data: DescribeTableResult) => void,
     ): Promise<DescribeTableResult>;
-    deleteTable(params: DeleteTableParams, callback?: (error: Error | null, data: unknown) => void): Promise<unknown>;
+    deleteTable(
+        params: DeleteTableParams,
+        callback?: (error: Error | null, data: unknown) => void,
+    ): Promise<unknown>;
     getRow(
         params: GetRowParams,
         callback?: (error: Error | null, result: SingleRowResult) => void,
@@ -553,12 +563,24 @@ export class Client {
         params: DeleteSearchIndexParams,
         callback?: (error: Error | null, result: unknown) => void,
     ): Promise<unknown>;
-    search(params: SearchParams, callback?: (error: Error | null, result: unknown) => void): Promise<unknown>;
-    createIndex(params: CreateIndexParams, callback?: (error: Error | null, result: unknown) => void): Promise<unknown>;
-    dropIndex(params: DropIndexParams, callback?: (error: Error | null, result: unknown) => void): Promise<unknown>;
+    search(
+        params: SearchParams,
+        callback?: (error: Error | null, result: unknown) => void,
+    ): Promise<unknown>;
+    createIndex(
+        params: CreateIndexParams,
+        callback?: (error: Error | null, result: unknown) => void,
+    ): Promise<unknown>;
+    dropIndex(
+        params: DropIndexParams,
+        callback?: (error: Error | null, result: unknown) => void,
+    ): Promise<unknown>;
     startLocalTransaction(
         params: StartLocalTransactionParams,
-        callback?: (error: Error | null, result: StartLocalTransactionResult) => void,
+        callback?: (
+            error: Error | null,
+            result: StartLocalTransactionResult,
+        ) => void,
     ): Promise<StartLocalTransactionResult>;
     commitTransaction(
         params: CommitLocalTransactionParams,

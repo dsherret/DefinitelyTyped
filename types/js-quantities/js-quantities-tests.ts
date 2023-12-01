@@ -368,12 +368,25 @@ describe("js-quantities", () => {
             expect(qty.denominator).toEqual(["<second>", "<second>"]);
             qty = Qty("1 m^2 kg^2 J^2/s^2");
             expect(qty.scalar).toBe(1);
-            expect(qty.numerator).toEqual(["<meter>", "<meter>", "<kilogram>", "<kilogram>", "<joule>", "<joule>"]);
+            expect(qty.numerator).toEqual([
+                "<meter>",
+                "<meter>",
+                "<kilogram>",
+                "<kilogram>",
+                "<joule>",
+                "<joule>",
+            ]);
             expect(qty.denominator).toEqual(["<second>", "<second>"]);
             qty = Qty("1 m^2/s^2*J^3");
             expect(qty.scalar).toBe(1);
             expect(qty.numerator).toEqual(["<meter>", "<meter>"]);
-            expect(qty.denominator).toEqual(["<second>", "<second>", "<joule>", "<joule>", "<joule>"]);
+            expect(qty.denominator).toEqual([
+                "<second>",
+                "<second>",
+                "<joule>",
+                "<joule>",
+                "<joule>",
+            ]);
         });
 
         it("should create with zero power", () => {
@@ -440,13 +453,11 @@ describe("js-quantities", () => {
         });
 
         it("should throw error when passing NaN", () => {
-            expect(
-                () => {
-                    Qty(NaN);
-                },
-            ).toThrow(
-                "Only string, number or quantity accepted as single "
-                    + "initialization value",
+            expect(() => {
+                Qty(NaN);
+            }).toThrow(
+                "Only string, number or quantity accepted as single " +
+                    "initialization value",
             );
         });
 
@@ -488,8 +499,8 @@ describe("js-quantities", () => {
         });
 
         it(
-            "should throw an error when parsing negative quantity "
-                + "with no scalar",
+            "should throw an error when parsing negative quantity " +
+                "with no scalar",
             () => {
                 expect(() => {
                     Qty("-m");
@@ -1072,10 +1083,14 @@ describe("js-quantities", () => {
             const qty = Qty("2degC");
             expect(() => {
                 qty.sub("1 tempF");
-            }).toThrow("Cannot subtract a temperature from a differential degree unit");
+            }).toThrow(
+                "Cannot subtract a temperature from a differential degree unit",
+            );
             expect(() => {
                 qty.sub("1 tempC");
-            }).toThrow("Cannot subtract a temperature from a differential degree unit");
+            }).toThrow(
+                "Cannot subtract a temperature from a differential degree unit",
+            );
         });
 
         it("should multiply temperature degrees", () => {
@@ -1421,10 +1436,18 @@ describe("js-quantities", () => {
             // Tests below are mainly a safety net because not sure if there is
             // any usefulness to do things like that
             qty = Qty("5.171234568 ft");
-            expect(qty.toPrec(Qty("m")).toString()).toBe("6.561679790026248 ft");
-            expect(qty.toPrec(Qty("dm")).toString()).toBe("5.249343832020998 ft");
-            expect(qty.toPrec(Qty("cm")).toString()).toBe("5.183727034120736 ft");
-            expect(qty.toPrec(Qty("mm")).toString()).toBe("5.170603674540684 ft");
+            expect(qty.toPrec(Qty("m")).toString()).toBe(
+                "6.561679790026248 ft",
+            );
+            expect(qty.toPrec(Qty("dm")).toString()).toBe(
+                "5.249343832020998 ft",
+            );
+            expect(qty.toPrec(Qty("cm")).toString()).toBe(
+                "5.183727034120736 ft",
+            );
+            expect(qty.toPrec(Qty("mm")).toString()).toBe(
+                "5.170603674540684 ft",
+            );
         });
     });
 
@@ -1478,7 +1501,9 @@ describe("js-quantities", () => {
                     // (For the sake of speed, converter does not check and fix rounding issues)
                     const converter = Qty.swiftConverter("m/h", "m/s");
 
-                    expect(converter(2500)).toEqual(Qty("2500 m/h").to("m/s").scalar);
+                    expect(converter(2500)).toEqual(
+                        Qty("2500 m/h").to("m/s").scalar,
+                    );
                 });
 
                 it("should returned value unchanged when units are identical", () => {
@@ -1520,7 +1545,7 @@ describe("js-quantities", () => {
         it("should not contain duplicate kind names", () => {
             const kinds = Qty.getKinds();
             const map: { [key: string]: number } = {};
-            kinds.forEach(kind => {
+            kinds.forEach((kind) => {
                 map[kind] = 1;
             });
             expect(kinds.length).toEqual(Object.keys(map).length);

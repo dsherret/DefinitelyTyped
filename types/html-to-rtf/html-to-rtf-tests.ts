@@ -26,4 +26,7 @@ const html = `
   </table>
 </div>
 `;
-htmlToRtf.saveRtfInFile("<Path>/<FileName>.rtf", htmlToRtf.convertHtmlToRtf(html));
+htmlToRtf.saveRtfInFile(
+    "<Path>/<FileName>.rtf",
+    htmlToRtf.convertHtmlToRtf(html),
+);

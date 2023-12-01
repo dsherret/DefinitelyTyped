@@ -49,8 +49,8 @@ nullthrows("1");
 
 isBrowser();
 
-rangeMap<string>(5, i => i.toString());
+rangeMap<string>(5, (i) => i.toString());
 // @ts-expect-error
-rangeMap<number>(5, i => i.toString());
+rangeMap<number>(5, (i) => i.toString());
 // @ts-expect-error
-rangeMap<string>("5", i => i.toString());
+rangeMap<string>("5", (i) => i.toString());

@@ -1,4 +1,12 @@
-import { compile, DECLARATION, LAYER, MEDIA, middleware, serialize, stringify } from "stylis";
+import {
+    compile,
+    DECLARATION,
+    LAYER,
+    MEDIA,
+    middleware,
+    serialize,
+    stringify,
+} from "stylis";
 
 const styles = `
   .class {
@@ -38,7 +46,10 @@ const B = serialize(
     middleware([
         (element, index, children) => {
             if (element.root === null) return;
-            assert(children === element.root.children && children[index] === element);
+            assert(
+                children === element.root.children &&
+                    children[index] === element,
+            );
         },
         stringify,
     ]),
@@ -50,7 +61,11 @@ const C = serialize(
     compile("h1{all:unset}"),
     middleware([
         (element, index, children, callback) => {
-            if (element.type === DECLARATION && element.props === "all" && element.children === "unset") {
+            if (
+                element.type === DECLARATION &&
+                element.props === "all" &&
+                element.children === "unset"
+            ) {
                 element.return = "color:red;" + element.value;
             }
         },
@@ -64,7 +79,10 @@ const D = serialize(
     middleware([
         (element, index, children, callback) => {
             if (element.type === "rule" && element.props.indexOf("h1") > -1) {
-                return serialize([{ ...element, props: ["h2", "h3"] }], callback);
+                return serialize(
+                    [{ ...element, props: ["h2", "h3"] }],
+                    callback,
+                );
             }
         },
         stringify,

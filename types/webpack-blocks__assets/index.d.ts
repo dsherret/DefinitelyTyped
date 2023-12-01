@@ -2,10 +2,22 @@ import { Block } from "webpack-blocks";
 
 export namespace css {
     type UrlFilter = (url: string, resourcePath: string) => boolean;
-    type ImportFilter = (parseImport: ParseImportOptions, resourcePath: string) => boolean;
-    type GetLocalIdent = (context: any, localIdentName: any, localName: any, options: any) => string;
+    type ImportFilter = (
+        parseImport: ParseImportOptions,
+        resourcePath: string,
+    ) => boolean;
+    type GetLocalIdent = (
+        context: any,
+        localIdentName: any,
+        localName: any,
+        options: any,
+    ) => string;
     type NameFunction = (file: string) => any;
-    type PathFunction = (url: string, resourcePath: string, context: string) => any;
+    type PathFunction = (
+        url: string,
+        resourcePath: string,
+        context: string,
+    ) => any;
 
     interface ParseImportOptions {
         url: string;
@@ -25,7 +37,13 @@ export namespace css {
          * 2 => postcss-loader, sass-loader
          */
         importLoaders?: 0 | 1 | 2 | undefined;
-        localsConvention?: "asIs" | "camelCase" | "camelCaseOnly" | "dashes" | "dashesOnly" | undefined;
+        localsConvention?:
+            | "asIs"
+            | "camelCase"
+            | "camelCaseOnly"
+            | "dashes"
+            | "dashesOnly"
+            | undefined;
         onlyLocals?: boolean | undefined;
     }
 

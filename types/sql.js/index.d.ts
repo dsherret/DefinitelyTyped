@@ -76,7 +76,12 @@ declare class Database {
      * @param done A function that will be called when all rows have been
      * retrieved
      */
-    each(sql: string, params: BindParams, callback: ParamsCallback, done: () => void): Database;
+    each(
+        sql: string,
+        params: BindParams,
+        callback: ParamsCallback,
+        done: () => void,
+    ): Database;
     each(sql: string, callback: ParamsCallback, done: () => void): Database;
 
     /**
@@ -262,7 +267,9 @@ declare class Statement {
  * object in order to create a statement iterator
  * @see [https://sql.js.org/documentation/StatementIterator.html#StatementIterator](https://sql.js.org/documentation/StatementIterator.html#StatementIterator)
  */
-declare class StatementIterator implements Iterator<Statement>, Iterable<Statement> {
+declare class StatementIterator
+    implements Iterator<Statement>, Iterable<Statement>
+{
     [Symbol.iterator](): Iterator<Statement>;
     /**
      * Get any un-executed portions remaining of the original SQL string
@@ -296,7 +303,11 @@ declare namespace initSqlJs {
     type _Database = Database;
     type _Statement = Statement;
     type _StatementIterator = StatementIterator;
-    export { _Database as Database, _Statement as Statement, _StatementIterator as StatementIterator };
+    export {
+        _Database as Database,
+        _Statement as Statement,
+        _StatementIterator as StatementIterator,
+    };
 }
 
 declare var initSqlJs: InitSqlJsStatic;

@@ -1,14 +1,20 @@
 import ES2018 = require("es-abstract/es2018");
 
 declare const any: unknown;
-const FakePromise: new<T>(
-    executor: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void,
+const FakePromise: new <T>(
+    executor: (
+        resolve: (value?: T | PromiseLike<T>) => void,
+        reject: (reason?: any) => void,
+    ) => void,
 ) => FakePromise<T> = null!;
 interface FakePromise<T> extends PromiseLike<T> {
     doStuff(): void;
 }
 
-function testGeneric<T, TReturn>({ done, value }: IteratorResult<T | PromiseLike<T>, TReturn | PromiseLike<TReturn>>) {
+function testGeneric<T, TReturn>({
+    done,
+    value,
+}: IteratorResult<T | PromiseLike<T>, TReturn | PromiseLike<TReturn>>) {
     // $ExpectType Promise<T | TReturn>
     ES2018.PromiseResolve(Promise, value);
 }

@@ -1,5 +1,8 @@
 export = SimpleLayout;
-declare function SimpleLayout(responseObject: any, skinScriptKeyOrUrl: number | string): void;
+declare function SimpleLayout(
+    responseObject: any,
+    skinScriptKeyOrUrl: number | string,
+): void;
 declare class SimpleLayout {
     constructor(responseObject: any, skinScriptKeyOrUrl: number | string);
     responseObject: any;
@@ -121,7 +124,11 @@ declare class SimpleLayout {
     private setColumnHeader;
     private writeColumnsHeader;
     private internalNewRecord;
-    newTreeRecord(treeNodeId: number, parentTreeNodeId: number, opt_collapsed?: boolean): void;
+    newTreeRecord(
+        treeNodeId: number,
+        parentTreeNodeId: number,
+        opt_collapsed?: boolean,
+    ): void;
     newRecord(
         opt_checkGroup?: any[],
         opt_groupTotalLabel?: any[],
@@ -186,7 +193,10 @@ declare class SimpleLayout {
         opt_showLineBottom?: boolean,
         opt_convertToHtmlString?: boolean,
     ): void;
-    writeImage(uri: number | string, opt_options?: number | Record<any, any>): void;
+    writeImage(
+        uri: number | string,
+        opt_options?: number | Record<any, any>,
+    ): void;
     formatImageTag(
         uri: number | string,
         opt_options?: {
@@ -206,7 +216,14 @@ declare class SimpleLayout {
     stats(): SimpleLayoutStats;
 }
 declare namespace SimpleLayout {
-    export { columnsTotalByGroupId, defaults, Event, Grid, LAYOUT_COUNT, SimpleLayoutStats };
+    export {
+        columnsTotalByGroupId,
+        defaults,
+        Event,
+        Grid,
+        LAYOUT_COUNT,
+        SimpleLayoutStats,
+    };
 }
 import StringList = require("@nginstack/engine/lib/string/StringList.js");
 type Event = import("@nginstack/engine/lib/event/Event");

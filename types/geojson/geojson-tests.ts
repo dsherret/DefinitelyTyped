@@ -206,7 +206,14 @@ const multiPolygon: MultiPolygon = {
 
 const geometryCollection: GeometryCollection = {
     type: "GeometryCollection",
-    geometries: [point, multiPoint, lineString, multiLineString, polygon, multiPolygon],
+    geometries: [
+        point,
+        multiPoint,
+        lineString,
+        multiLineString,
+        polygon,
+        multiPolygon,
+    ],
 };
 
 // allow nested GeometryCollection.
@@ -219,7 +226,9 @@ const geometryCollectionWithGeometryCollection: GeometryCollection = {
     geometries: [geometryCollection],
 };
 
-const geometryCollectionWithGenerics: GeometryCollection<Point | LineString | Polygon> = {
+const geometryCollectionWithGenerics: GeometryCollection<
+    Point | LineString | Polygon
+> = {
     type: "GeometryCollection",
     geometries: [
         point,
@@ -344,7 +353,11 @@ const pt: Feature<Point> = {
 };
 
 if (pt.properties) {
-    if (pt.properties.foo == null || pt.properties.hello == null || pt.properties[1] == null) {
+    if (
+        pt.properties.foo == null ||
+        pt.properties.hello == null ||
+        pt.properties[1] == null
+    ) {
         throw TypeError("Properties should not be null or undefined.");
     }
 } else {
@@ -418,17 +431,31 @@ const collectionAllNull: FeatureCollection<null, null> = {
     features: [featureAllNull],
 };
 
-const collectionMaybeNull: FeatureCollection<Point | null, TestProperty | null> = {
+const collectionMaybeNull: FeatureCollection<
+    Point | null,
+    TestProperty | null
+> = {
     type: "FeatureCollection",
-    features: [featureAllNull, featurePropertyNull, featureGeometryNull, featureNoNull],
+    features: [
+        featureAllNull,
+        featurePropertyNull,
+        featureGeometryNull,
+        featureNoNull,
+    ],
 };
 
-const collectionPropertyMaybeNull: FeatureCollection<Point, TestProperty | null> = {
+const collectionPropertyMaybeNull: FeatureCollection<
+    Point,
+    TestProperty | null
+> = {
     type: "FeatureCollection",
     features: [featurePropertyNull, featureNoNull],
 };
 
-const collectionGeometryMaybeNull: FeatureCollection<Point | null, TestProperty> = {
+const collectionGeometryMaybeNull: FeatureCollection<
+    Point | null,
+    TestProperty
+> = {
     type: "FeatureCollection",
     features: [featureGeometryNull, featureNoNull],
 };

@@ -27,7 +27,7 @@ Page({
                 hasUserInfo: true,
             });
         } else if (this.data.canIUse) {
-            app.userInfoReadyCallback = res => {
+            app.userInfoReadyCallback = (res) => {
                 this.setData({
                     userInfo: res,
                     hasUserInfo: true,
@@ -35,7 +35,7 @@ Page({
             };
         } else {
             wx.getUserInfo({
-                success: res => {
+                success: (res) => {
                     app.globalData.userInfo = res.userInfo;
                     this.setData({
                         userInfo: res.userInfo,
@@ -144,15 +144,15 @@ Page({
     },
     jump() {
         const query = wx.createSelectorQuery();
-        query.select("#a").boundingClientRect(res => {
+        query.select("#a").boundingClientRect((res) => {
             // $ExpectType BoundingClientRectCallbackResult
             res;
         });
-        query.selectViewport().scrollOffset(res => {
+        query.selectViewport().scrollOffset((res) => {
             // $ExpectType ScrollOffsetCallbackResult
             res;
         });
-        query.exec(res => {
+        query.exec((res) => {
             // $ExpectType any
             res;
         });

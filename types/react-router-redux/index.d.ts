@@ -1,4 +1,10 @@
-import { History, Location, LocationDescriptor, LocationState, Path } from "history";
+import {
+    History,
+    Location,
+    LocationDescriptor,
+    LocationState,
+    Path,
+} from "history";
 import * as React from "react";
 import { match } from "react-router";
 import { Dispatch, Middleware, Reducer, Store } from "redux";
@@ -8,7 +14,9 @@ export interface ConnectedRouterProps<State> {
     store?: Store<State> | undefined;
     history: History;
 }
-export class ConnectedRouter<State> extends React.Component<ConnectedRouterProps<State>> {}
+export class ConnectedRouter<State> extends React.Component<
+    ConnectedRouterProps<State>
+> {}
 
 export const LOCATION_CHANGE = "@@router/LOCATION_CHANGE";
 
@@ -20,8 +28,14 @@ export const routerReducer: Reducer<RouterState>;
 
 export const CALL_HISTORY_METHOD = "@@router/CALL_HISTORY_METHOD";
 
-export function push(location: LocationDescriptor, state?: LocationState): RouterAction;
-export function replace(location: LocationDescriptor, state?: LocationState): RouterAction;
+export function push(
+    location: LocationDescriptor,
+    state?: LocationState,
+): RouterAction;
+export function replace(
+    location: LocationDescriptor,
+    state?: LocationState,
+): RouterAction;
 export function go(n: number): RouterAction;
 export function goBack(): RouterAction;
 export function goForward(): RouterAction;
@@ -47,19 +61,23 @@ export interface RouterAction {
 export interface LocationChangeAction {
     type: typeof LOCATION_CHANGE;
     payload: Location & {
-        props?: {
-            match: {
-                path: string;
-                url: string;
-                params: any;
-                isExact: boolean;
-            };
-            location: Location;
-            history: History;
-        } | undefined;
+        props?:
+            | {
+                  match: {
+                      path: string;
+                      url: string;
+                      params: any;
+                      isExact: boolean;
+                  };
+                  location: Location;
+                  history: History;
+              }
+            | undefined;
     };
 }
 
 export function routerMiddleware(history: History): Middleware;
 
-export function createMatchSelector(path: string): (state: { router: RouterState }) => match | null;
+export function createMatchSelector(
+    path: string,
+): (state: { router: RouterState }) => match | null;

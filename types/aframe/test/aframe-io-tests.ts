@@ -28,17 +28,17 @@ AFRAME.registerComponent("set-image", {
         dur: { type: "number", default: 300 },
     },
 
-    init: function() {
+    init: function () {
         var data = this.data;
         var el = this.el;
 
         this.setupFadeAnimation();
 
-        el.addEventListener(data.on, function() {
+        el.addEventListener(data.on, function () {
             // Fade out image.
             data.target.emit("set-image-fade");
             // Wait for fade to complete.
-            setTimeout(function() {
+            setTimeout(function () {
                 // Set image.
                 data.target.setAttribute("material", "src", data.src);
             }, data.dur);
@@ -48,7 +48,7 @@ AFRAME.registerComponent("set-image", {
     /**
      * Setup fade-in + fade-out.
      */
-    setupFadeAnimation: function() {
+    setupFadeAnimation: function () {
         var data = this.data;
         var targetEl = this.data.target;
 
@@ -83,21 +83,21 @@ AFRAME.registerComponent("arrow-key-rotation", {
         dx: { default: 2.0 },
         dy: { default: 2.0 },
     },
-    init: function() {
+    init: function () {
         this.onKeyDown = this.onKeyDown.bind(this);
         this.onKeyUp = this.onKeyUp.bind(this);
         this.directionX = 0;
         this.directionY = 0;
     },
-    play: function() {
+    play: function () {
         window.addEventListener("keydown", this.onKeyDown);
         window.addEventListener("keyup", this.onKeyUp);
     },
-    pause: function() {
+    pause: function () {
         window.removeEventListener("keydown", this.onKeyDown);
         window.removeEventListener("keyup", this.onKeyUp);
     },
-    onKeyDown: function(evt: KeyboardEvent) {
+    onKeyDown: function (evt: KeyboardEvent) {
         switch (evt.keyCode) {
             case 37:
                 this.directionX = 1;
@@ -113,7 +113,7 @@ AFRAME.registerComponent("arrow-key-rotation", {
                 break;
         }
     },
-    onKeyUp: function(evt: KeyboardEvent) {
+    onKeyUp: function (evt: KeyboardEvent) {
         switch (evt.keyCode) {
             case 37:
                 this.directionX = 0;
@@ -129,7 +129,7 @@ AFRAME.registerComponent("arrow-key-rotation", {
                 break;
         }
     },
-    tick: function() {
+    tick: function () {
         if (!this.data.enabled) {
             return;
         }
@@ -147,49 +147,53 @@ AFRAME.registerComponent("arrow-key-rotation", {
 
 AFRAME.registerComponent("hide-once-playing", {
     schema: { type: "selector" },
-    init: function() {
+    init: function () {
         this.onPlaying = this.onPlaying.bind(this);
         this.onPause = this.onPause.bind(this);
     },
-    play: function() {
+    play: function () {
         if (this.data) {
             this.data.addEventListener("playing", this.onPlaying);
             this.data.addEventListener("pause", this.onPause);
         }
     },
-    pause: function() {
+    pause: function () {
         if (this.data) {
             this.data.removeEventListener("playing", this.onPlaying);
             this.data.removeEventListener("pause", this.onPause);
         }
     },
-    onPlaying: function() {
+    onPlaying: function () {
         this.el.setAttribute("visible", false);
     },
-    onPause: function() {
+    onPause: function () {
         this.el.setAttribute("visible", true);
     },
 });
 
 AFRAME.registerComponent("play-on-vrdisplayactivate-or-enter-vr", {
-    init: function() {
+    init: function () {
         this.playVideo = this.playVideo.bind(this);
         this.playVideoNextTick = this.playVideoNextTick.bind(this);
     },
-    play: function() {
+    play: function () {
         window.addEventListener("vrdisplayactivate", this.playVideo);
         this.el.sceneEl!.addEventListener("enter-vr", this.playVideoNextTick);
     },
-    pause: function() {
-        this.el.sceneEl!.removeEventListener("enter-vr", this.playVideoNextTick);
+    pause: function () {
+        this.el.sceneEl!.removeEventListener(
+            "enter-vr",
+            this.playVideoNextTick,
+        );
         window.removeEventListener("vrdisplayactivate", this.playVideo);
     },
-    playVideoNextTick: function() {
+    playVideoNextTick: function () {
         setTimeout(this.playVideo);
     },
-    playVideo: function() {
+    playVideo: function () {
         // TODO improve type
-        var video = (this.el as Entity<any>).components.material.material.map.image;
+        var video = (this.el as Entity<any>).components.material.material.map
+            .image;
         if (!video) {
             return;
         }
@@ -198,17 +202,18 @@ AFRAME.registerComponent("play-on-vrdisplayactivate-or-enter-vr", {
 });
 
 AFRAME.registerComponent("play-on-window-click", {
-    init: function() {
+    init: function () {
         this.onClick = this.onClick.bind(this);
     },
-    play: function() {
+    play: function () {
         window.addEventListener("click", this.onClick);
     },
-    pause: function() {
+    pause: function () {
         window.removeEventListener("click", this.onClick);
     },
-    onClick: function() {
-        var video = (this.el as Entity<any>).components.material.material.map.image;
+    onClick: function () {
+        var video = (this.el as Entity<any>).components.material.material.map
+            .image;
         if (!video) {
             return;
         }
@@ -217,17 +222,18 @@ AFRAME.registerComponent("play-on-window-click", {
 });
 
 AFRAME.registerComponent("toggle-play-on-window-click", {
-    init: function() {
+    init: function () {
         this.onClick = this.onClick.bind(this);
     },
-    play: function() {
+    play: function () {
         window.addEventListener("click", this.onClick);
     },
-    pause: function() {
+    pause: function () {
         window.removeEventListener("click", this.onClick);
     },
-    onClick: function() {
-        var video = (this.el as Entity<any>).components.material.material.map.image;
+    onClick: function () {
+        var video = (this.el as Entity<any>).components.material.material.map
+            .image;
         if (!video) {
             return;
         }
@@ -294,12 +300,18 @@ function generateAllElements() {
             circleElementContainer.setAttribute("position", `0 1 0`);
             let circleElement = document.createElement("a-entity");
             circleElement.setAttribute("class", `circleElement`);
-            circleElement.setAttribute("scale", `${elementScale} ${elementScale} ${elementScale}`);
+            circleElement.setAttribute(
+                "scale",
+                `${elementScale} ${elementScale} ${elementScale}`,
+            );
             circleElement.setAttribute(
                 "material",
                 `color:#${getRandomColor()}; metalness: 0; roughness: 0`,
             );
-            circleElement.setAttribute("geometry", `primitive: sphere; radius: 1.5`);
+            circleElement.setAttribute(
+                "geometry",
+                `primitive: sphere; radius: 1.5`,
+            );
             circleElement.setAttribute(
                 "animation__yoyo",
                 `property: scale; dir: alternate; dur: ${scaleDuration}; easing: easeInOutSine; loop: true; to: 0 0 0`,
@@ -315,10 +327,16 @@ function generateAllElements() {
             point1.setAttribute("position", "0 0 0");
             track1.append(point1);
             let point2 = document.createElement("a-curve-point");
-            point2.setAttribute("position", `${pathValOne} ${pathValTwo} ${pathValOne}`);
+            point2.setAttribute(
+                "position",
+                `${pathValOne} ${pathValTwo} ${pathValOne}`,
+            );
             track1.append(point2);
             let point3 = document.createElement("a-curve-point");
-            point3.setAttribute("position", `${pathValTwo} ${pathValOne} ${pathValTwo}`);
+            point3.setAttribute(
+                "position",
+                `${pathValTwo} ${pathValOne} ${pathValTwo}`,
+            );
             track1.append(point3);
             let point4 = document.createElement("a-curve-point");
             point4.setAttribute("position", "0 0 0");
@@ -347,7 +365,7 @@ AFRAME.registerComponent("audioanalyser-levels-scale", {
         multiplier: { default: 100 },
     },
 
-    tick: function(time) {
+    tick: function (time) {
         var analyserEl;
         var children;
         var data = this.data;
@@ -363,7 +381,10 @@ AFRAME.registerComponent("audioanalyser-levels-scale", {
         for (var i = 0; i < children.length; i++) {
             (children[i] as ANode).setAttribute("scale", {
                 x: 1,
-                y: Math.min(data.max, Math.max(levels[i] * data.multiplier, 0.05)),
+                y: Math.min(
+                    data.max,
+                    Math.max(levels[i] * data.multiplier, 0.05),
+                ),
                 z: 1,
             });
         }
@@ -379,7 +400,7 @@ AFRAME.registerComponent("audioanalyser-volume-bind", {
         multiplier: { type: "number" },
     },
 
-    tick: function() {
+    tick: function () {
         var analyserComponent;
         var data = this.data;
         var el = this.el;
@@ -401,7 +422,7 @@ AFRAME.registerComponent("audioanalyser-volume-scale", {
         multiplier: { type: "number", default: 1 },
     },
 
-    tick: function() {
+    tick: function () {
         var analyserEl = this.data.analyserEl || this.el;
         var analyserComponent;
         var el = this.el;
@@ -445,7 +466,7 @@ AFRAME.registerComponent("audioanalyser-waveform", {
         radius: { default: 1 },
     },
 
-    init: function(this: any /* TODO improve types */) {
+    init: function (this: any /* TODO improve types */) {
         this.colors = [];
         this.geometry;
         this.levels = [];
@@ -453,7 +474,7 @@ AFRAME.registerComponent("audioanalyser-waveform", {
         this.rings = [];
     },
 
-    update: function(this: any /* TODO improve types */) {
+    update: function (this: any /* TODO improve types */) {
         var data = this.data;
         var el = this.el;
         var i;
@@ -494,7 +515,7 @@ AFRAME.registerComponent("audioanalyser-waveform", {
         }
     },
 
-    tick: function(this: any /* TODO improve types */) {
+    tick: function (this: any /* TODO improve types */) {
         var VOL_SENS;
         var analyserComponent: AnalyserComponent;
         var colors = this.colors;
@@ -518,7 +539,10 @@ AFRAME.registerComponent("audioanalyser-waveform", {
         colors.shift(1);
 
         // Write current waveform into all rings.
-        this.geometry.vertices.forEach(function(vertex: { z: number }, index: number) {
+        this.geometry.vertices.forEach(function (
+            vertex: { z: number },
+            index: number,
+        ) {
             vertex.z = Math.min(
                 analyserComponent.waveform[index] * data.multiplier,
                 data.maxHeight,
@@ -526,7 +550,8 @@ AFRAME.registerComponent("audioanalyser-waveform", {
         });
 
         // Link up last segment.
-        this.geometry.vertices[this.geometry.vertices.length - 1].z = this.geometry.vertices[0].z;
+        this.geometry.vertices[this.geometry.vertices.length - 1].z =
+            this.geometry.vertices[0].z;
         this.geometry.verticesNeedUpdate = true;
 
         rings.forEach(function transformRing(ring: THREE.Line, index: number) {
@@ -540,7 +565,7 @@ AFRAME.registerComponent("audioanalyser-waveform", {
         });
     },
 
-    remove: function() {
+    remove: function () {
         this.el.removeObject3D("waveformContainer");
     },
 });
@@ -550,262 +575,23 @@ AFRAME.registerComponent("audioanalyser-waveform", {
  */
 function ImprovedNoise() {
     var p = [
-        151,
-        160,
-        137,
-        91,
-        90,
-        15,
-        131,
-        13,
-        201,
-        95,
-        96,
-        53,
-        194,
-        233,
-        7,
-        225,
-        140,
-        36,
-        103,
-        30,
-        69,
-        142,
-        8,
-        99,
-        37,
-        240,
-        21,
-        10,
-        23,
-        190,
-        6,
-        148,
-        247,
-        120,
-        234,
-        75,
-        0,
-        26,
-        197,
-        62,
-        94,
-        252,
-        219,
-        203,
-        117,
-        35,
-        11,
-        32,
-        57,
-        177,
-        33,
-        88,
-        237,
-        149,
-        56,
-        87,
-        174,
-        20,
-        125,
-        136,
-        171,
-        168,
-        68,
-        175,
-        74,
-        165,
-        71,
-        134,
-        139,
-        48,
-        27,
-        166,
-        77,
-        146,
-        158,
-        231,
-        83,
-        111,
-        229,
-        122,
-        60,
-        211,
-        133,
-        230,
-        220,
-        105,
-        92,
-        41,
-        55,
-        46,
-        245,
-        40,
-        244,
-        102,
-        143,
-        54,
-        65,
-        25,
-        63,
-        161,
-        1,
-        216,
-        80,
-        73,
-        209,
-        76,
-        132,
-        187,
-        208,
-        89,
-        18,
-        169,
-        200,
-        196,
-        135,
-        130,
-        116,
-        188,
-        159,
-        86,
-        164,
-        100,
-        109,
-        198,
-        173,
-        186,
-        3,
-        64,
-        52,
-        217,
-        226,
-        250,
-        124,
-        123,
-        5,
-        202,
-        38,
-        147,
-        118,
-        126,
-        255,
-        82,
-        85,
-        212,
-        207,
-        206,
-        59,
-        227,
-        47,
-        16,
-        58,
-        17,
-        182,
-        189,
-        28,
-        42,
-        223,
-        183,
-        170,
-        213,
-        119,
-        248,
-        152,
-        2,
-        44,
-        154,
-        163,
-        70,
-        221,
-        153,
-        101,
-        155,
-        167,
-        43,
-        172,
-        9,
-        129,
-        22,
-        39,
-        253,
-        19,
-        98,
-        108,
-        110,
-        79,
-        113,
-        224,
-        232,
-        178,
-        185,
-        112,
-        104,
-        218,
-        246,
-        97,
-        228,
-        251,
-        34,
-        242,
-        193,
-        238,
-        210,
-        144,
-        12,
-        191,
-        179,
-        162,
-        241,
-        81,
-        51,
-        145,
-        235,
-        249,
-        14,
-        239,
-        107,
-        49,
-        192,
-        214,
-        31,
-        181,
-        199,
-        106,
-        157,
-        184,
-        84,
-        204,
-        176,
-        115,
-        121,
-        50,
-        45,
-        127,
-        4,
-        150,
-        254,
-        138,
-        236,
-        205,
-        93,
-        222,
-        114,
-        67,
-        29,
-        24,
-        72,
-        243,
-        141,
-        128,
-        195,
-        78,
-        66,
-        215,
-        61,
-        156,
-        180,
+        151, 160, 137, 91, 90, 15, 131, 13, 201, 95, 96, 53, 194, 233, 7, 225,
+        140, 36, 103, 30, 69, 142, 8, 99, 37, 240, 21, 10, 23, 190, 6, 148, 247,
+        120, 234, 75, 0, 26, 197, 62, 94, 252, 219, 203, 117, 35, 11, 32, 57,
+        177, 33, 88, 237, 149, 56, 87, 174, 20, 125, 136, 171, 168, 68, 175, 74,
+        165, 71, 134, 139, 48, 27, 166, 77, 146, 158, 231, 83, 111, 229, 122,
+        60, 211, 133, 230, 220, 105, 92, 41, 55, 46, 245, 40, 244, 102, 143, 54,
+        65, 25, 63, 161, 1, 216, 80, 73, 209, 76, 132, 187, 208, 89, 18, 169,
+        200, 196, 135, 130, 116, 188, 159, 86, 164, 100, 109, 198, 173, 186, 3,
+        64, 52, 217, 226, 250, 124, 123, 5, 202, 38, 147, 118, 126, 255, 82, 85,
+        212, 207, 206, 59, 227, 47, 16, 58, 17, 182, 189, 28, 42, 223, 183, 170,
+        213, 119, 248, 152, 2, 44, 154, 163, 70, 221, 153, 101, 155, 167, 43,
+        172, 9, 129, 22, 39, 253, 19, 98, 108, 110, 79, 113, 224, 232, 178, 185,
+        112, 104, 218, 246, 97, 228, 251, 34, 242, 193, 238, 210, 144, 12, 191,
+        179, 162, 241, 81, 51, 145, 235, 249, 14, 239, 107, 49, 192, 214, 31,
+        181, 199, 106, 157, 184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150,
+        254, 138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195,
+        78, 66, 215, 61, 156, 180,
     ];
     for (var i = 0; i < 256; i++) {
         p[256 + i] = p[i];
@@ -823,7 +609,7 @@ function ImprovedNoise() {
         return ((h & 1) === 0 ? u : -u) + ((h & 2) === 0 ? v : -v);
     }
     return {
-        noise: function(x: number, y: number, z: number) {
+        noise: function (x: number, y: number, z: number) {
             var floorX = ~~x,
                 floorY = ~~y,
                 floorZ = ~~z;
@@ -850,11 +636,19 @@ function ImprovedNoise() {
                 lerp(
                     v,
                     lerp(u, grad(p[AA], x, y, z), grad(p[BA], xMinus1, y, z)),
-                    lerp(u, grad(p[AB], x, yMinus1, z), grad(p[BB], xMinus1, yMinus1, z)),
+                    lerp(
+                        u,
+                        grad(p[AB], x, yMinus1, z),
+                        grad(p[BB], xMinus1, yMinus1, z),
+                    ),
                 ),
                 lerp(
                     v,
-                    lerp(u, grad(p[AA + 1], x, y, zMinus1), grad(p[BA + 1], xMinus1, y, z - 1)),
+                    lerp(
+                        u,
+                        grad(p[AA + 1], x, y, zMinus1),
+                        grad(p[BA + 1], xMinus1, y, z - 1),
+                    ),
                     lerp(
                         u,
                         grad(p[AB + 1], x, yMinus1, zMinus1),
@@ -871,15 +665,20 @@ AFRAME.registerComponent("color-on-beat", {
         analyserEl: { type: "selector" },
     },
 
-    init: function() {
+    init: function () {
         var analyserEl = this.data.analyserEl || this.el;
         var el = this.el;
 
-        analyserEl.addEventListener("audioanalyser-beat", function() {
+        analyserEl.addEventListener("audioanalyser-beat", function () {
             el.setAttribute(
                 "material",
                 "color",
-                "#" + new THREE.Color(Math.random(), Math.random(), Math.random()).getHexString(),
+                "#" +
+                    new THREE.Color(
+                        Math.random(),
+                        Math.random(),
+                        Math.random(),
+                    ).getHexString(),
             );
         });
     },
@@ -891,28 +690,28 @@ AFRAME.registerComponent("remove-on-event", {
         event: { type: "string" },
     },
 
-    init: function() {
+    init: function () {
         this._removeEntity = this._removeEntity.bind(this);
     },
 
-    update: function() {
+    update: function () {
         var data = this.data;
         var el = data.el || this.el;
         this.removeEventListener();
         el.addEventListener(data.event, this._removeEntity);
     },
 
-    remove: function() {
+    remove: function () {
         this.removeEventListener();
     },
 
-    removeEventListener: function() {
+    removeEventListener: function () {
         var data = this.data;
         var el = this.el;
         el.removeEventListener(data.event, this._removeEntity);
     },
 
-    _removeEntity: function() {
+    _removeEntity: function () {
         var el = this.el;
         if ((el as any).parentEl) {
             (el as any).parentEl.removeChild(el);
@@ -931,21 +730,21 @@ AFRAME.registerComponent("ring-on-beat", {
         analyserEl: { type: "selector" },
     },
 
-    init: function(this: any) {
+    init: function (this: any) {
         var analyserEl = this.data.analyserEl || this.el;
         var el = this.el;
         var rings: Entity[] = (this.rings = []);
 
-        analyserEl.addEventListener("audioanalyser-beat", function() {
+        analyserEl.addEventListener("audioanalyser-beat", function () {
             var ringEl = document.createElement("a-ring");
             ringEl.setAttribute("material", "opacity", "0.6");
             ringEl.setAttribute("position", "0 0.1 0");
             ringEl.setAttribute("rotation", "-90 0 0");
             el.appendChild(ringEl);
 
-            ringEl.addEventListener("loaded", function() {
+            ringEl.addEventListener("loaded", function () {
                 rings.push(ringEl);
-                setTimeout(function() {
+                setTimeout(function () {
                     el.removeChild(ringEl);
                     rings.splice(rings.indexOf(ringEl), 1);
                 }, 2000);
@@ -956,9 +755,10 @@ AFRAME.registerComponent("ring-on-beat", {
     /**
      * Expand ring radii.
      */
-    tick: function(this: any) {
-        this.rings.forEach(function(ringEl: Entity) {
-            var scale = ringEl.getComputedAttribute("scale") as Component & Coordinate;
+    tick: function (this: any) {
+        this.rings.forEach(function (ringEl: Entity) {
+            var scale = ringEl.getComputedAttribute("scale") as Component &
+                Coordinate;
             ringEl.setAttribute("scale", {
                 x: scale.x * 1.06 + 0.05,
                 y: scale.y * 1.06 + 0.05,
@@ -978,7 +778,7 @@ AFRAME.registerComponent("scale-y-color", {
         maxScale: { default: 20 },
     },
 
-    tick: function(this: any, time: number) {
+    tick: function (this: any, time: number) {
         var data = this.data;
         var el = this.el;
 
@@ -992,8 +792,8 @@ AFRAME.registerComponent("scale-y-color", {
         el.setAttribute(
             "material",
             "color",
-            "#"
-                + rgbToHex(
+            "#" +
+                rgbToHex(
                     (data.to.x - data.from.x) * percentage,
                     (data.to.y - data.from.y) * percentage,
                     (data.to.z - data.from.z) * percentage,
@@ -1004,7 +804,7 @@ AFRAME.registerComponent("scale-y-color", {
 
 function rgbToHex(r: number, g: number, b: number) {
     var bin = (r << 16) | (g << 8) | b;
-    return (function(h) {
+    return (function (h) {
         return new Array(7 - h.length).join("0") + h;
     })(bin.toString(16).toUpperCase());
 }
@@ -1014,14 +814,14 @@ function rgbToHex(r: number, g: number, b: number) {
 // Taken from https://github.com/aframevr/aframe/blob/master/examples/showcase/dynamic-lights/index.html
 
 AFRAME.registerComponent("random-material", {
-    init: function() {
+    init: function () {
         this.el.setAttribute("material", {
             color: this.getRandomColor(),
             metalness: Math.random(),
             roughness: Math.random(),
         });
     },
-    getRandomColor: function() {
+    getRandomColor: function () {
         var letters = "0123456789ABCDEF".split("");
         var color = "#";
         for (var i = 0; i < 6; i++) {
@@ -1032,7 +832,7 @@ AFRAME.registerComponent("random-material", {
 });
 
 AFRAME.registerComponent("random-torus-knot", {
-    init: function() {
+    init: function () {
         this.el.setAttribute("geometry", {
             primitive: "torusKnot",
             radius: Math.random() * 10,

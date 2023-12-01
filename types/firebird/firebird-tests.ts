@@ -38,7 +38,7 @@ const tx: fb.Transaction = con.startNewTransactionSync();
 con.startNewTransaction((err: Error | null, tx: fb.Transaction) => {});
 
 /* DataType */
-const column: fb.DataType = <any> {};
+const column: fb.DataType = <any>{};
 if (typeof column === "number") {
     column * 10;
 } else if (typeof column === "string") {
@@ -57,16 +57,49 @@ interface MyRow {
 
 let rowsArray: fb.DataType[][] = res.fetchSync("all", false);
 rowsArray = res.fetchSync(1, false);
-res.fetch("all", false, (row: fb.DataType[]) => {}, (err: Error | null, eof: boolean) => {});
-res.fetch(1, false, (row: fb.DataType[]) => {}, (err: Error | null, eof: boolean) => {});
-let rowsObject: Array<{ [colmn: string]: fb.DataType }> = res.fetchSync("all", true);
+res.fetch(
+    "all",
+    false,
+    (row: fb.DataType[]) => {},
+    (err: Error | null, eof: boolean) => {},
+);
+res.fetch(
+    1,
+    false,
+    (row: fb.DataType[]) => {},
+    (err: Error | null, eof: boolean) => {},
+);
+let rowsObject: Array<{ [colmn: string]: fb.DataType }> = res.fetchSync(
+    "all",
+    true,
+);
 rowsObject = res.fetchSync(1, true);
-res.fetch("all", true, (row: { [colmn: string]: fb.DataType }) => {}, (err: Error | null, eof: boolean) => {});
-res.fetch(1, true, (row: { [colmn: string]: fb.DataType }) => {}, (err: Error | null, eof: boolean) => {});
+res.fetch(
+    "all",
+    true,
+    (row: { [colmn: string]: fb.DataType }) => {},
+    (err: Error | null, eof: boolean) => {},
+);
+res.fetch(
+    1,
+    true,
+    (row: { [colmn: string]: fb.DataType }) => {},
+    (err: Error | null, eof: boolean) => {},
+);
 let rowsTyped: MyRow[] = res.fetchSync<MyRow>("all", true);
 rowsTyped = res.fetchSync<MyRow>(1, true);
-res.fetch<MyRow>("all", true, (row: MyRow) => {}, (err: Error | null, eof: boolean) => {});
-res.fetch<MyRow>(1, true, (row: MyRow) => {}, (err: Error | null, eof: boolean) => {});
+res.fetch<MyRow>(
+    "all",
+    true,
+    (row: MyRow) => {},
+    (err: Error | null, eof: boolean) => {},
+);
+res.fetch<MyRow>(
+    1,
+    true,
+    (row: MyRow) => {},
+    (err: Error | null, eof: boolean) => {},
+);
 
 /* Transaction */
 tx.querySync("insert into test (id,name) values (5, 'new one')");
@@ -102,7 +135,7 @@ blob._openSync();
 
 blob._closeSync();
 
-const buffer: Buffer = <any> {};
+const buffer: Buffer = <any>{};
 const readBytes: number = blob._readSync(buffer);
 blob._read(buffer, (err: Error | null, buffer: Buffer, len: number) => {});
 

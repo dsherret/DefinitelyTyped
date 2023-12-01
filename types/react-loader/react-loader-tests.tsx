@@ -6,7 +6,7 @@ const options = {
     length: 20,
     width: 10,
     radius: 30,
-    scale: 1.00,
+    scale: 1.0,
     corners: 1,
     color: "#000",
     opacity: 0.25,
@@ -49,14 +49,10 @@ class MyComponent extends React.Component {
                     zIndex={2e9}
                     top="50%"
                     left="50%"
-                    scale={1.00}
+                    scale={1.0}
                     loadedClassName="loadedContent"
                 />
-                <Loader
-                    loaded={false}
-                    options={options}
-                    className="spinner"
-                />
+                <Loader loaded={false} options={options} className="spinner" />
             </div>
         );
     }

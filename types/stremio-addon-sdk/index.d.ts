@@ -1,6 +1,11 @@
 export {};
 
-export type ShortManifestResource = "catalog" | "meta" | "stream" | "subtitles" | "addon_catalog";
+export type ShortManifestResource =
+    | "catalog"
+    | "meta"
+    | "stream"
+    | "subtitles"
+    | "addon_catalog";
 export type Extra = "search" | "genre" | "skip";
 export type ContentType = "movie" | "series" | "channel" | "tv";
 
@@ -28,7 +33,9 @@ export class addonBuilder {
      *
      * Docs: https://github.com/Stremio/stremio-addon-sdk/blob/master/docs/api/requests/defineCatalogHandler.md
      */
-    defineCatalogHandler(handler: (args: Args) => Promise<{ metas: MetaPreview[] } & Cache>): void;
+    defineCatalogHandler(
+        handler: (args: Args) => Promise<{ metas: MetaPreview[] } & Cache>,
+    ): void;
 
     /**
      * Handles metadata requests (title, year, poster, background, etc.).
@@ -36,7 +43,10 @@ export class addonBuilder {
      * Docs: https://github.com/Stremio/stremio-addon-sdk/blob/master/docs/api/requests/defineMetaHandler.md
      */
     defineMetaHandler(
-        handler: (args: { type: ContentType; id: string }) => Promise<{ meta: MetaDetail } & Cache>,
+        handler: (args: {
+            type: ContentType;
+            id: string;
+        }) => Promise<{ meta: MetaDetail } & Cache>,
     ): void;
 
     /**
@@ -47,7 +57,10 @@ export class addonBuilder {
      * Docs: https://github.com/Stremio/stremio-addon-sdk/blob/master/docs/api/requests/defineStreamHandler.md
      */
     defineStreamHandler(
-        handler: (args: { type: ContentType; id: string }) => Promise<{ streams: Stream[] } & Cache>,
+        handler: (args: {
+            type: ContentType;
+            id: string;
+        }) => Promise<{ streams: Stream[] } & Cache>,
     ): void;
 
     /**
@@ -80,7 +93,10 @@ export class addonBuilder {
      *
      * Docs: https://github.com/Stremio/stremio-addon-sdk/blob/master/docs/api/requests/defineResourceHandler.md
      */
-    defineResourceHandler(args: { type: ContentType; id: string }): Promise<{ addons: AddonCatalog[] } & Cache>;
+    defineResourceHandler(args: {
+        type: ContentType;
+        id: string;
+    }): Promise<{ addons: AddonCatalog[] } & Cache>;
 
     /**
      * Turns the addon into an addonInterface, which is an immutable (frozen) object that has {manifest, get} where:
@@ -253,12 +269,14 @@ export interface MetaDetail extends MetaPreview {
      * URL to official website.
      */
     website?: string | undefined;
-    behaviourHints?: {
-        /**
-         * Set to a Video Object id in order to open the Detail page directly to that video's streams.
-         */
-        defaultVideo?: boolean | string | undefined;
-    } | undefined;
+    behaviourHints?:
+        | {
+              /**
+               * Set to a Video Object id in order to open the Detail page directly to that video's streams.
+               */
+              defaultVideo?: boolean | string | undefined;
+          }
+        | undefined;
 }
 
 export interface MetaLink {
@@ -384,37 +402,39 @@ export interface Stream {
      * Array of Subtitle objects representing subtitles for this stream.
      */
     subtitles?: Subtitle[] | undefined;
-    behaviorHints?: {
-        /**
-         * Hints it's restricted to particular countries.
-         *
-         * Array of ISO 3166-1 alpha-3 country codes in lowercase in which the stream is accessible.
-         */
-        countryWhitelist?: string[] | undefined;
-        /**
-         * Applies if the protocol of the url is http(s).
-         *
-         * Needs to be set to true if the URL does not support https or is not an MP4 file.
-         */
-        notWebReady?: boolean | undefined;
-        /**
-         * If defined, addons with the same behaviorHints.group will be chosen automatically for binge watching.
-         *
-         * This should be something that identifies the stream's nature within your addon.
-         * For example, if your addon is called "gobsAddon", and the stream is 720p, the group should be "gobsAddon-720p".
-         * If the next episode has a stream with the same group, stremio should select that stream implicitly.
-         */
-        group?: string | undefined;
-        /**
-         * **Not implemented yet!**
-         *
-         * HTTP headers to use when trying to playback url.
-         * Only applies to urls.
-         *
-         * @ignore
-         */
-        headers?: any;
-    } | undefined;
+    behaviorHints?:
+        | {
+              /**
+               * Hints it's restricted to particular countries.
+               *
+               * Array of ISO 3166-1 alpha-3 country codes in lowercase in which the stream is accessible.
+               */
+              countryWhitelist?: string[] | undefined;
+              /**
+               * Applies if the protocol of the url is http(s).
+               *
+               * Needs to be set to true if the URL does not support https or is not an MP4 file.
+               */
+              notWebReady?: boolean | undefined;
+              /**
+               * If defined, addons with the same behaviorHints.group will be chosen automatically for binge watching.
+               *
+               * This should be something that identifies the stream's nature within your addon.
+               * For example, if your addon is called "gobsAddon", and the stream is 720p, the group should be "gobsAddon-720p".
+               * If the next episode has a stream with the same group, stremio should select that stream implicitly.
+               */
+              group?: string | undefined;
+              /**
+               * **Not implemented yet!**
+               *
+               * HTTP headers to use when trying to playback url.
+               * Only applies to urls.
+               *
+               * @ignore
+               */
+              headers?: any;
+          }
+        | undefined;
 }
 
 /**
@@ -503,20 +523,22 @@ export interface Manifest {
      * Also, the Stremio team may reach you on this email for anything relating your addon.
      */
     contactEmail?: string | undefined;
-    behaviorHints?: {
-        /**
-         * If the addon includes adult content.
-         *
-         * Defaults to false.
-         */
-        adult?: boolean | undefined;
-        /**
-         * If the addon includes P2P content, such as BitTorrent, which may reveal the user's IP to other streaming parties.
-         *
-         * Used to provide an adequate warning to the user.
-         */
-        p2p?: boolean | undefined;
-    } | undefined;
+    behaviorHints?:
+        | {
+              /**
+               * If the addon includes adult content.
+               *
+               * Defaults to false.
+               */
+              adult?: boolean | undefined;
+              /**
+               * If the addon includes P2P content, such as BitTorrent, which may reveal the user's IP to other streaming parties.
+               *
+               * Used to provide an adequate warning to the user.
+               */
+              p2p?: boolean | undefined;
+          }
+        | undefined;
 }
 
 /**

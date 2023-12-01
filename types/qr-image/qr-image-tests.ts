@@ -13,7 +13,7 @@ function coord2offset(x: number, y: number, size: number) {
 
 qr.image("Customize PNG", {
     type: "png",
-    customize: bitmap => {
+    customize: (bitmap) => {
         const size = bitmap.size;
         const data = bitmap.data;
         for (let x = 0; x < size; x++) {

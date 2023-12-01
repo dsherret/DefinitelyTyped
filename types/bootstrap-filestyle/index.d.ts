@@ -16,9 +16,27 @@ interface FilestyleOptions {
 interface JQuery {
     filestyle(options?: FilestyleOptions): JQuery;
 
-    filestyle(method: "clear" | "destroy" | "htmlIcon" | "htmlInput" | "pushNameFiles"): JQuery;
+    filestyle(
+        method:
+            | "clear"
+            | "destroy"
+            | "htmlIcon"
+            | "htmlInput"
+            | "pushNameFiles",
+    ): JQuery;
 
-    filestyle(method: "disabled" | "buttonBefore" | "icon" | "input", value: boolean): JQuery;
+    filestyle(
+        method: "disabled" | "buttonBefore" | "icon" | "input",
+        value: boolean,
+    ): JQuery;
 
-    filestyle(method: "size" | "placeholder" | "buttonText" | "buttonName" | "iconName", value: string): JQuery;
+    filestyle(
+        method:
+            | "size"
+            | "placeholder"
+            | "buttonText"
+            | "buttonName"
+            | "iconName",
+        value: string,
+    ): JQuery;
 }

@@ -30,7 +30,10 @@ paceOptions = {
 
 paceOptions = {
     elements: {
-        selectors: [".timeline,.timeline-error", ".user-profile,.profile-error"],
+        selectors: [
+            ".timeline,.timeline-error",
+            ".user-profile,.profile-error",
+        ],
     },
 };
 
@@ -46,11 +49,9 @@ pace.options = {
     restartOnRequestAfter: false,
 };
 
-pace.ignore(function() {
-});
+pace.ignore(function () {});
 
-pace.track(function() {
-});
+pace.track(function () {});
 
 pace.options = {
     ajax: {

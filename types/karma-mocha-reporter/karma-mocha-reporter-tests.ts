@@ -24,7 +24,12 @@ const mochaReporter: karma.MochaReporterOptions = {
 module.exports = (config: karma.Config) => {
     config.set({
         frameworks: ["mocha", "chai"],
-        plugins: ["karma-mocha", "karma-chai", "karma-mocha-reporter", "karma-chrome-launcher"],
+        plugins: [
+            "karma-mocha",
+            "karma-chai",
+            "karma-mocha-reporter",
+            "karma-chrome-launcher",
+        ],
 
         // list of files / patterns to load in the browser
         files: ["test/**/*.spec.js"],

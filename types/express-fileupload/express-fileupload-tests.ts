@@ -9,11 +9,17 @@ type Options = fileUpload.Options;
 
 const app: express.Express = express();
 
-function isSingleFile(file: UploadedFile | UploadedFile[]): file is UploadedFile {
-    return typeof file === "object" && (file as UploadedFile).name !== undefined;
+function isSingleFile(
+    file: UploadedFile | UploadedFile[],
+): file is UploadedFile {
+    return (
+        typeof file === "object" && (file as UploadedFile).name !== undefined
+    );
 }
 
-function isFileArray(file: UploadedFile | UploadedFile[]): file is UploadedFile[] {
+function isFileArray(
+    file: UploadedFile | UploadedFile[],
+): file is UploadedFile[] {
     return Array.isArray(file);
 }
 
@@ -32,7 +38,7 @@ const uploadHandler = (req: Request) => {
             fileField.truncated; // $ExpectType boolean
             console.log(fileField.name);
             // $ExpectType void
-            fileField.mv("/tmp/test", err => {
+            fileField.mv("/tmp/test", (err) => {
                 err; // $ExpectType any
                 if (err) {
                     console.log("Error while copying file to target location");
@@ -43,7 +49,7 @@ const uploadHandler = (req: Request) => {
 
         if (isFileArray(fileField)) {
             console.log(fileField[0].name);
-            fileField[0].mv("/tmp/test", err => {
+            fileField[0].mv("/tmp/test", (err) => {
                 if (err) {
                     console.log("Error while copying file to target location");
                 }

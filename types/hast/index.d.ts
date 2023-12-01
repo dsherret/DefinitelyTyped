@@ -1,4 +1,9 @@
-import type { Data as UnistData, Literal as UnistLiteral, Node as UnistNode, Parent as UnistParent } from "unist";
+import type {
+    Data as UnistData,
+    Literal as UnistLiteral,
+    Node as UnistNode,
+    Parent as UnistParent,
+} from "unist";
 
 // ## Interfaces
 
@@ -26,7 +31,13 @@ export interface Data extends UnistData {}
  * Info associated with an element.
  */
 export interface Properties {
-    [PropertyName: string]: boolean | number | string | null | undefined | Array<string | number>;
+    [PropertyName: string]:
+        | boolean
+        | number
+        | string
+        | null
+        | undefined
+        | Array<string | number>;
 }
 
 // ## Content maps

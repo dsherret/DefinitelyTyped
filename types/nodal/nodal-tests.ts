@@ -11,15 +11,21 @@ class User extends Nodal.Model {
         }
     }
 
-    public verifyPassword(unencrypted: string, callback: (model: Nodal.Model, err: Error, result: boolean) => void) {
-    }
+    public verifyPassword(
+        unencrypted: string,
+        callback: (model: Nodal.Model, err: Error, result: boolean) => void,
+    ) {}
 }
 
 User.setDatabase(Nodal.require("db/main.js"));
 User.setSchema(Nodal.my.Schema.models.User);
 
-User.validates("username", "must exist", v => v);
-User.validates("password", "must be at least 5 characters in length", v => v && v.length >= 5);
+User.validates("username", "must exist", (v) => v);
+User.validates(
+    "password",
+    "must be at least 5 characters in length",
+    (v) => v && v.length >= 5,
+);
 
 class BlogPostsController extends Nodal.Controller {
     index() {
@@ -33,19 +39,29 @@ class BlogPostsController extends Nodal.Controller {
     }
 
     show() {
-        BlogPost.find(this.params.route.id, (err, blogPost) => this.respond(err || blogPost));
+        BlogPost.find(this.params.route.id, (err, blogPost) =>
+            this.respond(err || blogPost),
+        );
     }
 
     create() {
-        BlogPost.create(this.params.body, (err, blogPost) => this.respond(err || blogPost));
+        BlogPost.create(this.params.body, (err, blogPost) =>
+            this.respond(err || blogPost),
+        );
     }
 
     update() {
-        BlogPost.update(this.params.route.id, this.params.body, (err, blogPost) => this.respond(err || blogPost));
+        BlogPost.update(
+            this.params.route.id,
+            this.params.body,
+            (err, blogPost) => this.respond(err || blogPost),
+        );
     }
 
     destroy() {
-        BlogPost.destroy(this.params.route.id, (err, blogPost) => this.respond(err || blogPost));
+        BlogPost.destroy(this.params.route.id, (err, blogPost) =>
+            this.respond(err || blogPost),
+        );
     }
 }
 
@@ -87,7 +103,9 @@ class AccessToken extends Nodal.Model {
                             new Date().valueOf(),
                         ),
                         token_type: "bearer",
-                        expires_at: (new Date(new Date().valueOf() + (30 * 24 * 60 * 60 * 1000))),
+                        expires_at: new Date(
+                            new Date().valueOf() + 30 * 24 * 60 * 60 * 1000,
+                        ),
                         ip_address: params.ip_address,
                     }).save(callback);
                 });
@@ -109,7 +127,11 @@ class AccessToken extends Nodal.Model {
                 const accessToken = accessTokens[0];
 
                 if (!accessToken.joined("user")) {
-                    return callback(new Error("Your access token belongs to an invalid user."));
+                    return callback(
+                        new Error(
+                            "Your access token belongs to an invalid user.",
+                        ),
+                    );
                 }
 
                 return callback(null, accessToken, accessToken.joined("user"));
@@ -137,13 +159,16 @@ class AuthController extends Nodal.Controller {
         this.setHeader("Cache-Control", "no-store");
         this.setHeader("Pragma", "no-cache");
 
-        AccessToken.verify(this.params, (err: Error, accessToken: string, user: User) => {
-            if (err) {
-                return this.respond(err);
-            }
+        AccessToken.verify(
+            this.params,
+            (err: Error, accessToken: string, user: User) => {
+                if (err) {
+                    return this.respond(err);
+                }
 
-            callback(accessToken, user);
-        });
+                callback(accessToken, user);
+            },
+        );
     }
 }
 

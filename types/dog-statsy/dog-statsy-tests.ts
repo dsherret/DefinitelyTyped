@@ -67,7 +67,7 @@ client.flush(); // $ExpectType void
 client.addListener("close", () => {}); // $ExpectType Client
 client.addListener("connect", () => {}); // $ExpectType Client
 // $ExpectType Client
-client.addListener("error", err => {
+client.addListener("error", (err) => {
     err; // $ExpectType Error
 });
 // $ExpectType Client
@@ -93,7 +93,7 @@ client.emit(Symbol("foo"), 1, "baz"); // $ExpectType boolean
 client.on("close", () => {}); // $ExpectType Client
 client.on("connect", () => {}); // $ExpectType Client
 // $ExpectType Client
-client.on("error", err => {
+client.on("error", (err) => {
     err; // $ExpectType Error
 });
 // $ExpectType Client
@@ -112,7 +112,7 @@ client.on(Symbol("foo"), (...args) => {
 client.once("close", () => {}); // $ExpectType Client
 client.once("connect", () => {}); // $ExpectType Client
 // $ExpectType Client
-client.once("error", err => {
+client.once("error", (err) => {
     err; // $ExpectType Error
 });
 // $ExpectType Client
@@ -131,7 +131,7 @@ client.once(Symbol("foo"), (...args) => {
 client.prependListener("close", () => {}); // $ExpectType Client
 client.prependListener("connect", () => {}); // $ExpectType Client
 // $ExpectType Client
-client.prependListener("error", err => {
+client.prependListener("error", (err) => {
     err; // $ExpectType Error
 });
 // $ExpectType Client
@@ -150,7 +150,7 @@ client.prependListener(Symbol("foo"), (...args) => {
 client.prependOnceListener("close", () => {}); // $ExpectType Client
 client.prependOnceListener("connect", () => {}); // $ExpectType Client
 // $ExpectType Client
-client.prependOnceListener("error", err => {
+client.prependOnceListener("error", (err) => {
     err; // $ExpectType Error
 });
 // $ExpectType Client

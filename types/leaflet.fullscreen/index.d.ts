@@ -22,7 +22,9 @@ declare module "leaflet" {
         /**
          * Creates a fullscreen control.
          */
-        function fullscreen(options?: Control.FullscreenOptions): Control.Fullscreen;
+        function fullscreen(
+            options?: Control.FullscreenOptions,
+        ): Control.Fullscreen;
     }
 
     interface MapOptions {

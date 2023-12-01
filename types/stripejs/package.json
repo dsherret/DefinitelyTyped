@@ -1,23 +1,23 @@
 {
-    "private": true,
-    "name": "@types/stripejs",
-    "version": "3.0.9999",
-    "nonNpm": true,
-    "nonNpmDescription": "stripe.js",
-    "projects": [
-        "https://stripe.com/"
-    ],
-    "devDependencies": {
-        "@types/stripejs": "workspace:."
+  "private": true,
+  "name": "@types/stripejs",
+  "version": "3.0.9999",
+  "nonNpm": true,
+  "nonNpmDescription": "stripe.js",
+  "projects": [
+    "https://stripe.com/"
+  ],
+  "devDependencies": {
+    "@types/stripejs": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Robin van Tienhoven",
+      "githubUsername": "RobinvanTienhoven"
     },
-    "owners": [
-        {
-            "name": "Robin van Tienhoven",
-            "githubUsername": "RobinvanTienhoven"
-        },
-        {
-            "name": "Matt Ferderer",
-            "githubUsername": "mattferderer"
-        }
-    ]
+    {
+      "name": "Matt Ferderer",
+      "githubUsername": "mattferderer"
+    }
+  ]
 }

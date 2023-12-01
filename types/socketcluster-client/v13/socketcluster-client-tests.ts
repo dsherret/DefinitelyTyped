@@ -2,7 +2,10 @@
 
 import { SCChannel } from "sc-channel";
 import { create, destroy } from "socketcluster-client";
-import { ClientOptions, SubscribeStateChangeData } from "socketcluster-client/lib/scclientsocket";
+import {
+    ClientOptions,
+    SubscribeStateChangeData,
+} from "socketcluster-client/lib/scclientsocket";
 import WebSocket = require("ws");
 
 const secureClientOptions: ClientOptions = {
@@ -55,7 +58,7 @@ socket = create(options);
 const subscribeListener: (
     channelName: string,
     subscriptionOptions: SCChannel.SCChannelOptions,
-) => void = channelname => {
+) => void = (channelname) => {
     console.log("subscribe:" + channelname);
 };
 socket.on("subscribe", subscribeListener);
@@ -67,7 +70,7 @@ const subscribeFailListener: (
     err: Error,
     channelName: string,
     subscriptionOptions: SCChannel.SCChannelOptions,
-) => void = channelname => {
+) => void = (channelname) => {
     console.log("subscribeFail:" + channelname);
 };
 socket.on("subscribeFail", subscribeFailListener);
@@ -75,7 +78,7 @@ socket.once("subscribeFail", subscribeFailListener);
 socket.off("subscribeFail", subscribeFailListener);
 socket.off("subscribeFail");
 
-const unsubscribeListener: (channelName: string) => void = channelname => {
+const unsubscribeListener: (channelName: string) => void = (channelname) => {
     console.log("unsubscribe:" + channelname);
 };
 socket.on("unsubscribe", unsubscribeListener);
@@ -83,7 +86,9 @@ socket.once("unsubscribe", unsubscribeListener);
 socket.off("unsubscribe", unsubscribeListener);
 socket.off("unsubscribe");
 
-const subscribeStateChangeListener: (stateChangeData: SubscribeStateChangeData) => void = data => {
+const subscribeStateChangeListener: (
+    stateChangeData: SubscribeStateChangeData,
+) => void = (data) => {
     console.log("subscribeStateChange:" + JSON.stringify(data));
 };
 socket.on("subscribeStateChange", subscribeStateChangeListener);
@@ -91,7 +96,7 @@ socket.once("subscribeStateChange", subscribeStateChangeListener);
 socket.off("subscribeStateChange", subscribeStateChangeListener);
 socket.off("subscribeStateChange");
 
-const messageListener: (message: WebSocket.Data) => void = data => {
+const messageListener: (message: WebSocket.Data) => void = (data) => {
     console.log("message:" + data);
 };
 socket.on("message", messageListener);

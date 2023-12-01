@@ -1,8 +1,11 @@
 /// <reference types="node"/>
 
-type GulpRewriteCssPathAdapter = (
-    context: { sourceDir: string; sourceFile: string; destinationDir: string; targetFile: string },
-) => string;
+type GulpRewriteCssPathAdapter = (context: {
+    sourceDir: string;
+    sourceFile: string;
+    destinationDir: string;
+    targetFile: string;
+}) => string;
 
 interface GulpRewriteCss {
     (options: {

@@ -13,4 +13,8 @@ export namespace Clone {
 /**
  * Patch repository cloning to automatically coerce objects.
  */
-export function Clone(url: string, localPath: string, options?: CloneOptions): Promise<Repository>;
+export function Clone(
+    url: string,
+    localPath: string,
+    options?: CloneOptions,
+): Promise<Repository>;

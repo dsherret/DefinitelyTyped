@@ -2,9 +2,7 @@ import * as UglifyjsWebpackPlugin from "uglifyjs-webpack-plugin";
 import * as webpack from "webpack";
 
 const compiler = webpack({
-    plugins: [
-        new UglifyjsWebpackPlugin(),
-    ],
+    plugins: [new UglifyjsWebpackPlugin()],
 });
 
 const compilerOptions = webpack({

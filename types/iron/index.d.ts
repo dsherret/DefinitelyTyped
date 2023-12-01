@@ -57,12 +57,16 @@ export interface Algorithms {
         keyBits: number;
         ivBits: number;
     };
-    "sha256": {
+    sha256: {
         keyBits: number;
     };
 }
 
-export interface GenerateKeyOptions extends Pick<SealOptionsSub, "algorithm" | "iterations" | "minPasswordlength"> {
+export interface GenerateKeyOptions
+    extends Pick<
+        SealOptionsSub,
+        "algorithm" | "iterations" | "minPasswordlength"
+    > {
     saltBits?: number | undefined;
     salt?: string | undefined;
     iv?: string | undefined;
@@ -84,13 +88,32 @@ export const algorithms: Algorithms;
 export const macFormatVersion: string;
 export const macPrefix: string;
 
-export function generateKey(password: string, options: GenerateKeyOptions): Promise<Key>;
+export function generateKey(
+    password: string,
+    options: GenerateKeyOptions,
+): Promise<Key>;
 export function encrypt(
     password: string,
     options: GenerateKeyOptions,
     data: string,
 ): Promise<{ data: Buffer; key: Key }>;
-export function decrypt(password: string, options: GenerateKeyOptions, data: string): Promise<Buffer>;
-export function hmacWithPassword(password: string, options: GenerateKeyOptions, data: string): Promise<HMacResult>;
-export function seal(obj: object, password: string, options: SealOptions): Promise<string>;
-export function unseal(data: string, password: string, options: SealOptions): Promise<object>;
+export function decrypt(
+    password: string,
+    options: GenerateKeyOptions,
+    data: string,
+): Promise<Buffer>;
+export function hmacWithPassword(
+    password: string,
+    options: GenerateKeyOptions,
+    data: string,
+): Promise<HMacResult>;
+export function seal(
+    obj: object,
+    password: string,
+    options: SealOptions,
+): Promise<string>;
+export function unseal(
+    data: string,
+    password: string,
+    options: SealOptions,
+): Promise<object>;

@@ -30,7 +30,8 @@ export interface AutoFocus {
     autoFocus?: boolean | undefined;
 }
 
-export interface ReactWidgetsCommonDropdownProps extends ReactWidgetsCommonProps {
+export interface ReactWidgetsCommonDropdownProps
+    extends ReactWidgetsCommonProps {
     /**
      * Show "drop up" not "drop down"
      * @default false

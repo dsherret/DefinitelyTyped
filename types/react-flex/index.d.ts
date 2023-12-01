@@ -63,8 +63,7 @@ export interface FlexProps extends CommonFlexProps {
     ref?: React.LegacyRef<Flex> | undefined;
 }
 
-export class Flex extends React.Component<FlexProps> {
-}
+export class Flex extends React.Component<FlexProps> {}
 
 export interface ItemProps extends CommonFlexProps {
     children?: React.ReactNode;
@@ -95,5 +94,4 @@ export interface ItemProps extends CommonFlexProps {
         | undefined;
 }
 
-export class Item extends React.Component<ItemProps> {
-}
+export class Item extends React.Component<ItemProps> {}

@@ -1,6 +1,12 @@
 import { Connection } from "./client";
 
-export type JSONValue = string | number | boolean | null | JSONObject | JSONArray;
+export type JSONValue =
+    | string
+    | number
+    | boolean
+    | null
+    | JSONObject
+    | JSONArray;
 export interface JSONObject {
     [name: string]: JSONValue;
 }
@@ -103,11 +109,24 @@ export interface RawOp {
     d: DocumentID;
 }
 
-export type CreateOp = RawOp & { create: { type: string; data: any }; del: undefined; op: undefined };
-export type DeleteOp = RawOp & { del: boolean; create: undefined; op: undefined };
+export type CreateOp = RawOp & {
+    create: { type: string; data: any };
+    del: undefined;
+    op: undefined;
+};
+export type DeleteOp = RawOp & {
+    del: boolean;
+    create: undefined;
+    op: undefined;
+};
 export type EditOp = RawOp & { op: any[]; create: undefined; del: undefined };
 
-export type OTType = "ot-text" | "ot-json0" | "ot-json1" | "ot-text-tp2" | "rich-text";
+export type OTType =
+    | "ot-text"
+    | "ot-json0"
+    | "ot-json1"
+    | "ot-text-tp2"
+    | "rich-text";
 
 export interface Type {
     name?: string;
@@ -172,12 +191,24 @@ export class Doc<T = any> extends TypedEmitter<DocEventMap<T>> {
     subscribe: (callback?: (err: Error) => void) => void;
     unsubscribe: (callback?: (err: Error) => void) => void;
 
-    ingestSnapshot(snapshot: Pick<Snapshot<T>, "v" | "type" | "data">, callback?: Callback): void;
+    ingestSnapshot(
+        snapshot: Pick<Snapshot<T>, "v" | "type" | "data">,
+        callback?: Callback,
+    ): void;
     destroy(callback?: Callback): void;
     create(data: T, callback?: Callback): void;
     create(data: T, type?: string, callback?: Callback): void;
-    create(data: T, type?: string, options?: ShareDBSourceOptions, callback?: Callback): void;
-    submitOp(data: any, options?: ShareDBSourceOptions, callback?: Callback): void;
+    create(
+        data: T,
+        type?: string,
+        options?: ShareDBSourceOptions,
+        callback?: Callback,
+    ): void;
+    submitOp(
+        data: any,
+        options?: ShareDBSourceOptions,
+        callback?: Callback,
+    ): void;
     del(callback?: Callback): void;
     del(options?: ShareDBSourceOptions, callback?: Callback): void;
     whenNothingPending(callback: () => void): void;
@@ -188,7 +219,12 @@ export class Doc<T = any> extends TypedEmitter<DocEventMap<T>> {
     flush(): void;
 }
 
-export type ConnectionState = "connecting" | "connected" | "disconnected" | "stopped" | "closed";
+export type ConnectionState =
+    | "connecting"
+    | "connected"
+    | "disconnected"
+    | "stopped"
+    | "closed";
 export type ConnectionStateEventMap = {
     [state in ConnectionState]: (reason: string) => void;
 };
@@ -197,26 +233,26 @@ export interface ConnectionReceiveRequest {
 }
 export type ConnectionEventMap = ConnectionStateEventMap & {
     "connection error": (error: Error) => void;
-    "doc": (doc: Doc) => void;
-    "error": (error: Error) => void;
-    "pong": () => void;
-    "receive": (request: ConnectionReceiveRequest) => void;
-    "send": (message: any) => void;
-    "state": (newState: ConnectionState, reason: string) => void;
+    doc: (doc: Doc) => void;
+    error: (error: Error) => void;
+    pong: () => void;
+    receive: (request: ConnectionReceiveRequest) => void;
+    send: (message: any) => void;
+    state: (newState: ConnectionState, reason: string) => void;
 };
 
 export interface DocEventMap<T> {
-    "load": () => void;
+    load: () => void;
     "no write pending": () => void;
     "nothing pending": () => void;
-    "create": (source: any) => void;
-    "op": (ops: [any], source: any, clientId: string) => void;
+    create: (source: any) => void;
+    op: (ops: [any], source: any, clientId: string) => void;
     "op batch": (ops: any[], source: any) => void;
     "before op": (ops: [any], source: any, clientId: string) => void;
     "before op batch": (ops: any[], source: any) => void;
-    "del": (data: T, source: any) => void;
-    "error": (error: Error) => void;
-    "destroy": () => void;
+    del: (data: T, source: any) => void;
+    error: (error: Error) => void;
+    destroy: () => void;
 }
 
 export type QueryEvent = keyof QueryEventMap<any>;
@@ -234,13 +270,13 @@ export class Query<T = any> extends TypedEmitter<QueryEventMap<T>> {
 }
 
 export interface QueryEventMap<T> {
-    "ready": () => void;
-    "error": (error: Error) => void;
-    "insert": (inserted: Array<Doc<T>>, index: number) => void;
-    "remove": (removed: Array<Doc<T>>, index: number) => void;
-    "move": (moved: Array<Doc<T>>, from: number, to: number) => void;
-    "changed": (docs: Array<Doc<T>>) => void;
-    "extra": (extra: any) => void;
+    ready: () => void;
+    error: (error: Error) => void;
+    insert: (inserted: Array<Doc<T>>, index: number) => void;
+    remove: (removed: Array<Doc<T>>, index: number) => void;
+    move: (moved: Array<Doc<T>>, from: number, to: number) => void;
+    changed: (docs: Array<Doc<T>>) => void;
+    extra: (extra: any) => void;
 }
 
 export type ReceivePresenceListener<T> = (id: string, value: T) => void;
@@ -258,11 +294,13 @@ export class Presence<T = any> extends TypedEmitter<PresenceEventMap<T>> {
 }
 
 export interface PresenceEventMap<T> {
-    "receive": ReceivePresenceListener<T>;
-    "error": (error: Error) => void;
+    receive: ReceivePresenceListener<T>;
+    error: (error: Error) => void;
 }
 
-export class LocalPresence<T = any> extends TypedEmitter<LocalPresenceEventMap> {
+export class LocalPresence<
+    T = any,
+> extends TypedEmitter<LocalPresenceEventMap> {
     presence: Presence<T>;
     presenceId: string;
     connection: string;
@@ -274,7 +312,7 @@ export class LocalPresence<T = any> extends TypedEmitter<LocalPresenceEventMap> 
 }
 
 export interface LocalPresenceEventMap {
-    "error": (error: Error) => void;
+    error: (error: Error) => void;
 }
 
 export interface RequestActions {

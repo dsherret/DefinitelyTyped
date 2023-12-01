@@ -74,7 +74,9 @@ async function main() {
             // https://github.com/hapijs/h2o2#using-the-mapuri-and-onresponse-options
             proxy: {
                 async mapUri(request) {
-                    console.log("doing some additional stuff before redirecting");
+                    console.log(
+                        "doing some additional stuff before redirecting",
+                    );
                     return {
                         uri: "https://some.upstream.service.com/",
                     };
@@ -151,5 +153,8 @@ const replyViaToolkit: hapi.ServerRoute = {
 };
 
 if (!module.parent) {
-    main().then(() => console.log("done"), err => console.error(err.stack));
+    main().then(
+        () => console.log("done"),
+        (err) => console.error(err.stack),
+    );
 }

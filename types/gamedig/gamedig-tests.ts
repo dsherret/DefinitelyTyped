@@ -18,7 +18,16 @@ Gamedig.query(
     (error, state) => {
         if (error) throw error;
 
-        const { name, map, password, maxplayers, players, bots, connect, ping } = state;
+        const {
+            name,
+            map,
+            password,
+            maxplayers,
+            players,
+            bots,
+            connect,
+            ping,
+        } = state;
     },
 );
 
@@ -40,7 +49,16 @@ gamedig.query(
     (error, state) => {
         if (error) throw error;
 
-        const { name, map, password, maxplayers, players, bots, connect, ping } = state;
+        const {
+            name,
+            map,
+            password,
+            maxplayers,
+            players,
+            bots,
+            connect,
+            ping,
+        } = state;
     },
 );
 

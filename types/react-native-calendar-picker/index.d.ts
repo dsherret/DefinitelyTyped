@@ -73,9 +73,7 @@ export type DayOfWeekStyle = {
 
 export type DisabledDatesFunc = (date: Moment) => boolean;
 
-export type CustomDatesStylesFunc = (
-    date: Moment,
-) => {
+export type CustomDatesStylesFunc = (date: Moment) => {
     containerStyle?: ViewStyle | undefined;
     style?: ViewStyle | undefined;
     textStyle?: TextStyle | undefined;
@@ -119,6 +117,9 @@ export interface HandleOnPressDayArg {
     year: number;
 }
 
-export type DateChangedCallback = (date: Moment, type: "START_DATE" | "END_DATE") => void;
+export type DateChangedCallback = (
+    date: Moment,
+    type: "START_DATE" | "END_DATE",
+) => void;
 
 export type MonthChangedCallback = (date: Moment) => void;

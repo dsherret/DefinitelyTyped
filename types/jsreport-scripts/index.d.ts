@@ -22,6 +22,8 @@ declare module "jsreport-core" {
     }
 }
 
-declare function JsReportScripts(cfg?: JsReportScripts.Configuration): ExtensionDefinition;
+declare function JsReportScripts(
+    cfg?: JsReportScripts.Configuration,
+): ExtensionDefinition;
 
 export = JsReportScripts;

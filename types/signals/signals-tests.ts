@@ -144,7 +144,8 @@ function advancedTests() {
     const handler = () => {
         alert("foo bar");
     };
-    let binding: signals.SignalBinding<() => void> = myObject.started.add(handler); // methods `add()` and `addOnce()` returns a SignalBinding object
+    let binding: signals.SignalBinding<() => void> =
+        myObject.started.add(handler); // methods `add()` and `addOnce()` returns a SignalBinding object
     binding.execute(); // will alert "foo bar"
 
     // Retrieve anonymous listener
@@ -169,9 +170,10 @@ function advancedTests() {
     binding1 = myObject.started.add(() => {
         alert("foo bar");
     });
-    const binding2: signals.SignalBinding<() => void> = myObject.started.addOnce(() => {
-        alert("foo bar");
-    });
+    const binding2: signals.SignalBinding<() => void> =
+        myObject.started.addOnce(() => {
+            alert("foo bar");
+        });
     alert(binding1.isOnce()); // alert "false"
     alert(binding2.isOnce()); // alert "true"
 
@@ -180,7 +182,7 @@ function advancedTests() {
     const obj = {
         foo: "it's over 9000!",
     };
-    binding = myObject.started.add(function() {
+    binding = myObject.started.add(function () {
         alert(this.foo);
     });
     myObject.started.dispatch(); // will alert "bar"

@@ -12,7 +12,10 @@ const Rule: ESLint.Rule.RuleModule = {
                     });
                 }
 
-                if (astUtils.isStaticRequire(node) && astUtils.getRequireSource(node) === "underscore") {
+                if (
+                    astUtils.isStaticRequire(node) &&
+                    astUtils.getRequireSource(node) === "underscore"
+                ) {
                     context.report({
                         node,
                         message: "Use `lodash` instead of `underscore`",
@@ -27,10 +30,10 @@ const Rule: ESLint.Rule.RuleModule = {
                 }
 
                 if (
-                    node.callee.type === "Identifier"
-                    && node.callee.name === "test"
-                    && !astUtils.isFunctionExpression(node.arguments[0])
-                    && !astUtils.isFunctionExpression(node.arguments[1])
+                    node.callee.type === "Identifier" &&
+                    node.callee.name === "test" &&
+                    !astUtils.isFunctionExpression(node.arguments[0]) &&
+                    !astUtils.isFunctionExpression(node.arguments[1])
                 ) {
                     context.report({
                         node,
@@ -39,15 +42,21 @@ const Rule: ESLint.Rule.RuleModule = {
                 }
             },
             FunctionDeclaration(node) {
-                node.params.forEach(param => {
-                    if (param.type === "Identifier" && !astUtils.containsIdentifier(param.name, node.body)) {
+                node.params.forEach((param) => {
+                    if (
+                        param.type === "Identifier" &&
+                        !astUtils.containsIdentifier(param.name, node.body)
+                    ) {
                         context.report({
                             node,
                             message: `${param.name} is never used`,
                         });
                     }
 
-                    if (param.type === "Identifier" && !astUtils.someContainIdentifier(param.name, [node.body])) {
+                    if (
+                        param.type === "Identifier" &&
+                        !astUtils.someContainIdentifier(param.name, [node.body])
+                    ) {
                         context.report({
                             node,
                             message: `${param.name} is never used`,
@@ -61,7 +70,7 @@ const Rule: ESLint.Rule.RuleModule = {
                 if (typeof name === "string" && name.startsWith("_")) {
                     context.report({
                         node,
-                        message: "Don't access \"private\" fields",
+                        message: 'Don\'t access "private" fields',
                     });
                 }
             },

@@ -6,7 +6,12 @@ export interface Annotation {
     /**
      * Updates the ranges to be highlighted. The array must be sorted.
      */
-    update(annotations: Array<{ from: CodeMirror.Position; to: CodeMirror.Position }>): void;
+    update(
+        annotations: Array<{
+            from: CodeMirror.Position;
+            to: CodeMirror.Position;
+        }>,
+    ): void;
 }
 
 export interface AnnotateScrollbarOptions {
@@ -17,7 +22,9 @@ export interface AnnotateScrollbarOptions {
 
 declare module "../../" {
     interface Editor {
-        annotateScrollbar(options: string | AnnotateScrollbarOptions): Annotation;
+        annotateScrollbar(
+            options: string | AnnotateScrollbarOptions,
+        ): Annotation;
     }
 
     interface EditorConfiguration {

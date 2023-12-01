@@ -28,7 +28,11 @@ declare namespace jsrsasign.KJUR.crypto {
          * KJUR.crypto.Cipher.encrypt("aaa", pubRSAKeyObj) → "1abc2d..."
          * KJUR.crypto.Cipher.encrypt("aaa", pubRSAKeyObj, "RSAOAEP") → "23ab02..."
          */
-        function encrypt(s: string, keyObj: RSAKey | string, algName: string): string;
+        function encrypt(
+            s: string,
+            keyObj: RSAKey | string,
+            algName: string,
+        ): string;
 
         /**
          * decrypt encrypted hexadecimal string with specified key and algorithm
@@ -42,7 +46,11 @@ declare namespace jsrsasign.KJUR.crypto {
          * KJUR.crypto.Cipher.decrypt("aaa", prvRSAKeyObj) → "1abc2d..."
          * KJUR.crypto.Cipher.decrypt("aaa", prvRSAKeyObj, "RSAOAEP) → "23ab02..."
          */
-        function decrypt(hex: string, keyObj: RSAKey | string, algName: string): string;
+        function decrypt(
+            hex: string,
+            keyObj: RSAKey | string,
+            algName: string,
+        ): string;
 
         /**
          * get canonicalized encrypt/decrypt algorithm name by key and short/long algorithm name
@@ -62,6 +70,9 @@ declare namespace jsrsasign.KJUR.crypto {
          * KJUR.crypto.Cipher.getAlgByKeyAndName(objRSAKey) → "RSA"
          * KJUR.crypto.Cipher.getAlgByKeyAndName(objRSAKey, "RSAOAEP") → "RSAOAEP"
          */
-        function getAlgByKeyAndName(keyObj: RSAKey | string, algName: string): string;
+        function getAlgByKeyAndName(
+            keyObj: RSAKey | string,
+            algName: string,
+        ): string;
     }
 }

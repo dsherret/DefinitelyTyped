@@ -8,7 +8,11 @@ export default class Launcher {
     Security_Realm_Config_Key: string;
     nixConfig?: any;
     constructor();
-    launch(config: ConfigWithRuntime, manifestLocation: string, namedPipeName: string): Promise<ChildProcess>;
+    launch(
+        config: ConfigWithRuntime,
+        manifestLocation: string,
+        namedPipeName: string,
+    ): Promise<ChildProcess>;
     static IS_SUPPORTED(): boolean;
     private macLaunch;
     private winLaunch;

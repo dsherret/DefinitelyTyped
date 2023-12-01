@@ -24,6 +24,10 @@ interface AvatarVersion {
  * @param sansEnv If this is true, the script returns the final avatar without the circle background (environment part)
  * @param ver An optional object to force a specific initial version
  */
-declare function multiavatar(string: string, sansEnv?: boolean, ver?: AvatarVersion): string;
+declare function multiavatar(
+    string: string,
+    sansEnv?: boolean,
+    ver?: AvatarVersion,
+): string;
 
 export default multiavatar;

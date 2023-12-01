@@ -152,7 +152,10 @@ declare module "leaflet" {
              *
              * @default null
              */
-            edit?: Omit<EditToolbar.EditHandlerOptions, "featureGroup"> | false | undefined;
+            edit?:
+                | Omit<EditToolbar.EditHandlerOptions, "featureGroup">
+                | false
+                | undefined;
 
             /**
              * Delete handler options. Set to false to disable handler.
@@ -208,9 +211,9 @@ declare module "leaflet" {
              * @default { stroke: true, color: '#3388ff', weight: 4, opacity: 0.5, fill: false, clickable: true }
              */
             shapeOptions?:
-                | L.PolylineOptions & {
-                    clickable?: boolean | undefined;
-                }
+                | (L.PolylineOptions & {
+                      clickable?: boolean | undefined;
+                  })
                 | undefined;
 
             /**
@@ -515,38 +518,23 @@ declare module "leaflet" {
         }
 
         class SimpleShape extends Feature {
-            constructor(
-                map: DrawMap,
-                options?: DrawOptions.SimpleShapeOptions,
-            );
+            constructor(map: DrawMap, options?: DrawOptions.SimpleShapeOptions);
         }
 
         class Marker extends Feature {
-            constructor(
-                map: DrawMap,
-                options?: DrawOptions.MarkerOptions,
-            );
+            constructor(map: DrawMap, options?: DrawOptions.MarkerOptions);
         }
 
         class CircleMarker extends Marker {
-            constructor(
-                map: DrawMap,
-                options?: DrawOptions.MarkerOptions,
-            );
+            constructor(map: DrawMap, options?: DrawOptions.MarkerOptions);
         }
 
         class Circle extends SimpleShape {
-            constructor(
-                map: DrawMap,
-                options?: DrawOptions.CircleOptions,
-            );
+            constructor(map: DrawMap, options?: DrawOptions.CircleOptions);
         }
 
         class Polyline extends Feature {
-            constructor(
-                map: DrawMap,
-                options?: DrawOptions.PolylineOptions,
-            );
+            constructor(map: DrawMap, options?: DrawOptions.PolylineOptions);
 
             deleteLastVertex(): void;
 
@@ -556,17 +544,11 @@ declare module "leaflet" {
         }
 
         class Rectangle extends SimpleShape {
-            constructor(
-                map: DrawMap,
-                options?: DrawOptions.RectangleOptions,
-            );
+            constructor(map: DrawMap, options?: DrawOptions.RectangleOptions);
         }
 
         class Polygon extends Polyline {
-            constructor(
-                map: DrawMap,
-                options?: DrawOptions.PolygonOptions,
-            );
+            constructor(map: DrawMap, options?: DrawOptions.PolygonOptions);
         }
 
         class Tooltip extends Class {
@@ -574,7 +556,10 @@ declare module "leaflet" {
 
             dispose(): void;
 
-            updateContent(labelText?: { text: string; subtext?: string | undefined }): Tooltip;
+            updateContent(labelText?: {
+                text: string;
+                subtext?: string | undefined;
+            }): Tooltip;
 
             updatePosition(latlng: LatLng): Tooltip;
 
@@ -589,7 +574,13 @@ declare module "leaflet" {
             /**
              * Layer that was just created.
              */
-            layer: Circle | CircleMarker | Marker | Polygon | Polyline | Rectangle;
+            layer:
+                | Circle
+                | CircleMarker
+                | Marker
+                | Polygon
+                | Polyline
+                | Rectangle;
 
             /**
              * The type of layer this is. One of: polyline, polygon, rectangle, circle, marker.
@@ -695,7 +686,11 @@ declare module "leaflet" {
         /**
          * Shortcut function for planar distance between two {L.LatLng} at current zoom.
          */
-        function distance(map: DrawMap, latlanA: LatLng, latlngB: LatLng): number;
+        function distance(
+            map: DrawMap,
+            latlanA: LatLng,
+            latlngB: LatLng,
+        ): number;
 
         /**
          * Returns the area of a polygon drawn with leaflet.draw
@@ -710,7 +705,11 @@ declare module "leaflet" {
         /**
          * Returns a readable area string in yards or metric
          */
-        function readableArea(area: number, isMetric?: boolean, precision?: PrecisionOptions): string;
+        function readableArea(
+            area: number,
+            isMetric?: boolean,
+            precision?: PrecisionOptions,
+        ): string;
 
         /**
          * Converts a metric distance to one of [ feet, nauticalMile, metric or yards ] string
@@ -759,7 +758,8 @@ declare module "leaflet" {
     }
 
     namespace EditToolbar {
-        interface EditPolyOptions extends EditOptions.EditPolyVerticesEditOptions {
+        interface EditPolyOptions
+            extends EditOptions.EditPolyVerticesEditOptions {
             /**
              * Determines if line segments can cross
              *
@@ -827,11 +827,17 @@ declare module "leaflet" {
 
     namespace Edit {
         class Circle extends CircleMarker {
-            constructor(shape: Circle, options?: EditOptions.EditSimpleShapeOptions);
+            constructor(
+                shape: Circle,
+                options?: EditOptions.EditSimpleShapeOptions,
+            );
         }
 
         class CircleMarker extends SimpleShape {
-            constructor(shape: CircleMarker, options?: EditOptions.EditSimpleShapeOptions);
+            constructor(
+                shape: CircleMarker,
+                options?: EditOptions.EditSimpleShapeOptions,
+            );
         }
 
         class Marker extends Handler {
@@ -845,17 +851,27 @@ declare module "leaflet" {
         }
 
         class PolyVerticesEdit extends Handler {
-            constructor(poly: Polyline, latlngs: LatLngExpression[], options?: EditOptions.EditPolyVerticesEditOptions);
+            constructor(
+                poly: Polyline,
+                latlngs: LatLngExpression[],
+                options?: EditOptions.EditPolyVerticesEditOptions,
+            );
 
             updateMarkers(): void;
         }
 
         class Rectangle extends SimpleShape {
-            constructor(shape: Rectangle, options?: EditOptions.EditSimpleShapeOptions);
+            constructor(
+                shape: Rectangle,
+                options?: EditOptions.EditSimpleShapeOptions,
+            );
         }
 
         class SimpleShape extends Handler {
-            constructor(shape: SimpleShape, options?: EditOptions.EditSimpleShapeOptions);
+            constructor(
+                shape: SimpleShape,
+                options?: EditOptions.EditSimpleShapeOptions,
+            );
 
             updateMarkers(): void;
         }

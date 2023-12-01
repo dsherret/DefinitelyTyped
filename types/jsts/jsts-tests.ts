@@ -15,28 +15,52 @@ var poly: jsts.geom.Polygon = new jsts.geom.Polygon(lr);
 var precisionModel = new jsts.geom.PrecisionModel();
 var factory = new jsts.geom.GeometryFactory(precisionModel);
 var wktWriter = new jsts.io.WKTWriter(factory);
-var multiPoly: jsts.geom.MultiPolygon = new jsts.geom.MultiPolygon([poly], factory);
+var multiPoly: jsts.geom.MultiPolygon = new jsts.geom.MultiPolygon(
+    [poly],
+    factory,
+);
 var multiPoint: jsts.geom.MultiPoint = new jsts.geom.MultiPoint([p], factory);
-var multiLs: jsts.geom.MultiLineString = new jsts.geom.MultiLineString([ls], factory);
-var geomCollection: jsts.geom.GeometryCollection = new jsts.geom.GeometryCollection([p, ls], factory);
+var multiLs: jsts.geom.MultiLineString = new jsts.geom.MultiLineString(
+    [ls],
+    factory,
+);
+var geomCollection: jsts.geom.GeometryCollection =
+    new jsts.geom.GeometryCollection([p, ls], factory);
 const o: jsts.algorithm.Orientation = new jsts.algorithm.Orientation();
-const bnr: jsts.algorithm.BoundaryNodeRule = new jsts.algorithm.BoundaryNodeRule();
+const bnr: jsts.algorithm.BoundaryNodeRule =
+    new jsts.algorithm.BoundaryNodeRule();
 
 let im0: jsts.geom.IntersectionMatrix = new jsts.geom.IntersectionMatrix();
-const im1: jsts.geom.IntersectionMatrix = new jsts.geom.IntersectionMatrix(["1", "2"]);
+const im1: jsts.geom.IntersectionMatrix = new jsts.geom.IntersectionMatrix([
+    "1",
+    "2",
+]);
 const im2: jsts.geom.IntersectionMatrix = new jsts.geom.IntersectionMatrix(im0);
 
-let at0: jsts.geom.util.AffineTransformation = new jsts.geom.util.AffineTransformation(n, n, n, n, n, n);
-const at1: jsts.geom.util.AffineTransformation = new jsts.geom.util.AffineTransformation(c, c, c, c, c, c);
-const at2: jsts.geom.util.AffineTransformation = new jsts.geom.util.AffineTransformation(at0);
+let at0: jsts.geom.util.AffineTransformation =
+    new jsts.geom.util.AffineTransformation(n, n, n, n, n, n);
+const at1: jsts.geom.util.AffineTransformation =
+    new jsts.geom.util.AffineTransformation(c, c, c, c, c, c);
+const at2: jsts.geom.util.AffineTransformation =
+    new jsts.geom.util.AffineTransformation(at0);
 let seq: jsts.geom.CoordinateSequence = new jsts.geom.CoordinateSequence();
 
-const ggo0: jsts.operation.GeometryGraphOperation = new jsts.operation.GeometryGraphOperation(g);
-const ggo1: jsts.operation.GeometryGraphOperation = new jsts.operation.GeometryGraphOperation(g, g);
-const ggo2: jsts.operation.GeometryGraphOperation = new jsts.operation.GeometryGraphOperation(g, g, bnr);
+const ggo0: jsts.operation.GeometryGraphOperation =
+    new jsts.operation.GeometryGraphOperation(g);
+const ggo1: jsts.operation.GeometryGraphOperation =
+    new jsts.operation.GeometryGraphOperation(g, g);
+const ggo2: jsts.operation.GeometryGraphOperation =
+    new jsts.operation.GeometryGraphOperation(g, g, bnr);
 
-const ro0: jsts.operation.relate.RelateOp = new jsts.operation.relate.RelateOp(g, g);
-const ro1: jsts.operation.relate.RelateOp = new jsts.operation.relate.RelateOp(g, g, bnr);
+const ro0: jsts.operation.relate.RelateOp = new jsts.operation.relate.RelateOp(
+    g,
+    g,
+);
+const ro1: jsts.operation.relate.RelateOp = new jsts.operation.relate.RelateOp(
+    g,
+    g,
+    bnr,
+);
 
 var al = new java.utils.ArrayList();
 var hs = new java.utils.HashSet();
@@ -91,7 +115,7 @@ e.setToNull();
 str = e.toString();
 e.translate(n, n);
 
-g.apply({ filter: Geometry => {} });
+g.apply({ filter: (Geometry) => {} });
 g = g.buffer(n);
 g = g.buffer(n, n);
 g = g.buffer(n, n, n);
@@ -252,7 +276,8 @@ at0 = at0.setToRotation(n);
 at0 = at0.setToRotation(n, n);
 at0 = at0.setToRotation(n, n, n);
 at0 = at0.setToRotation(n, n, n, n);
-const nArray: [number, number, number, number, number, number] = at0.getMatrixEntries();
+const nArray: [number, number, number, number, number, number] =
+    at0.getMatrixEntries();
 at0.filter(seq, n);
 at0 = at0.rotate(n);
 at0 = at0.rotate(n, n);
@@ -297,7 +322,8 @@ pr.setChangePrecisionModel(bool);
 pr.setPointwise(bool);
 pr.setRemoveCollapsedComponents(bool);
 
-var gl: jsts.operation.distance.GeometryLocation = new jsts.operation.distance.GeometryLocation(g, n, c);
+var gl: jsts.operation.distance.GeometryLocation =
+    new jsts.operation.distance.GeometryLocation(g, n, c);
 gl = new jsts.operation.distance.GeometryLocation(g, c);
 g = gl.getGeometryComponent();
 n = gl.getSegmentIndex();
@@ -305,7 +331,8 @@ c = gl.getCoordinate();
 bool = gl.isInsideArea();
 str = gl.toString();
 
-var dop: jsts.operation.distance.DistanceOp = new jsts.operation.distance.DistanceOp(g, g);
+var dop: jsts.operation.distance.DistanceOp =
+    new jsts.operation.distance.DistanceOp(g, g);
 dop = new jsts.operation.distance.DistanceOp(g, g, n);
 n = dop.distance();
 [c, c] = dop.nearestPoints();
@@ -318,7 +345,8 @@ var ch: jsts.algorithm.ConvexHull = new jsts.algorithm.ConvexHull(g);
 ch = new jsts.algorithm.ConvexHull([c], factory);
 g = ch.getConvexHull();
 
-var ipa: jsts.algorithm.InteriorPointArea = new jsts.algorithm.InteriorPointArea(g);
+var ipa: jsts.algorithm.InteriorPointArea =
+    new jsts.algorithm.InteriorPointArea(g);
 c = ipa.getInteriorPoint();
 c = jsts.algorithm.InteriorPointArea.getInteriorPoint(g);
 
@@ -348,7 +376,8 @@ var rli = new jsts.algorithm.RobustLineIntersector();
 rli.computeIntersection(c, c, c);
 rli.computeIntersection(c, c, c, c);
 
-var tps: jsts.simplify.TopologyPreservingSimplifier = new jsts.simplify.TopologyPreservingSimplifier(g);
+var tps: jsts.simplify.TopologyPreservingSimplifier =
+    new jsts.simplify.TopologyPreservingSimplifier(g);
 tps.setDistanceTolerance(n);
 g = tps.getResultGeometry();
 g = jsts.simplify.TopologyPreservingSimplifier.simplify(g, n);
@@ -357,8 +386,14 @@ var spial = new jsts.algorithm.locate.SimplePointInAreaLocator(g);
 n = spial.locate(c);
 n = jsts.algorithm.locate.SimplePointInAreaLocator.locate(c, g);
 bool = jsts.algorithm.locate.SimplePointInAreaLocator.isContained(c, g);
-n = jsts.algorithm.locate.SimplePointInAreaLocator.locatePointInPolygon(c, poly);
-bool = jsts.algorithm.locate.SimplePointInAreaLocator.containsPointInPolygon(c, poly);
+n = jsts.algorithm.locate.SimplePointInAreaLocator.locatePointInPolygon(
+    c,
+    poly,
+);
+bool = jsts.algorithm.locate.SimplePointInAreaLocator.containsPointInPolygon(
+    c,
+    poly,
+);
 
 p = factory.createPointFromInternalCoord(c, g);
 g = factory.toGeometry(e);

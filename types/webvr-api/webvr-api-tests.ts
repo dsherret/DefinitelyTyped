@@ -1,8 +1,12 @@
-function fieldOfViewToProjectionMatrix(fov: VRFieldOfView, zNear: number, zFar: number) {
-    var upTan = Math.tan(fov.upDegrees * Math.PI / 180.0);
-    var downTan = Math.tan(fov.downDegrees * Math.PI / 180.0);
-    var leftTan = Math.tan(fov.leftDegrees * Math.PI / 180.0);
-    var rightTan = Math.tan(fov.rightDegrees * Math.PI / 180.0);
+function fieldOfViewToProjectionMatrix(
+    fov: VRFieldOfView,
+    zNear: number,
+    zFar: number,
+) {
+    var upTan = Math.tan((fov.upDegrees * Math.PI) / 180.0);
+    var downTan = Math.tan((fov.downDegrees * Math.PI) / 180.0);
+    var leftTan = Math.tan((fov.leftDegrees * Math.PI) / 180.0);
+    var rightTan = Math.tan((fov.rightDegrees * Math.PI) / 180.0);
     var xScale = 2.0 / (leftTan + rightTan);
     var yScale = 2.0 / (upTan + downTan);
 
@@ -30,8 +34,14 @@ function fieldOfViewToProjectionMatrix(fov: VRFieldOfView, zNear: number, zFar: 
 var hmd: VRDisplay;
 var leftEyeParams = hmd.getEyeParameters("left");
 var rightEyeParams = hmd.getEyeParameters("right");
-var leftEyeRect = { width: leftEyeParams.renderWidth, height: leftEyeParams.renderHeight };
-var rightEyeRect = { width: rightEyeParams.renderWidth, height: rightEyeParams.renderHeight };
+var leftEyeRect = {
+    width: leftEyeParams.renderWidth,
+    height: leftEyeParams.renderHeight,
+};
+var rightEyeRect = {
+    width: rightEyeParams.renderWidth,
+    height: rightEyeParams.renderHeight,
+};
 
 var canvas: HTMLCanvasElement;
 canvas.width = rightEyeParams.renderWidth * 2;
@@ -39,7 +49,7 @@ canvas.height = Math.max(leftEyeRect.height, rightEyeRect.height);
 
 var gHMD: VRDisplay;
 
-navigator.getVRDisplays().then(function(devices) {
+navigator.getVRDisplays().then(function (devices) {
     for (var i = 0; i < devices.length; ++i) {
         if (devices[i] instanceof VRDisplay) {
             gHMD = devices[i];

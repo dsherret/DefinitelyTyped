@@ -14,7 +14,9 @@ declare namespace gapi.client.people {
             personFields: string;
         }
 
-        function getBatchGet(parameters: GetBatchGetParameters): HttpRequest<BatchGetResponse>;
+        function getBatchGet(
+            parameters: GetBatchGetParameters,
+        ): HttpRequest<BatchGetResponse>;
 
         interface BatchGetResponse {
             responses: PersonResponse[];
@@ -26,12 +28,17 @@ declare namespace gapi.client.people {
             requestedResourceName: string;
         }
 
-        function searchContacts(parameters: SearchContactsParameters): HttpRequest<SearchContactsResponse>;
+        function searchContacts(
+            parameters: SearchContactsParameters,
+        ): HttpRequest<SearchContactsResponse>;
 
         namespace connections {
             function list(parameters: ListParameters): HttpRequest<Response>;
 
-            type SortOrder = "LAST_MODIFIED_ASCENDING" | "FIRST_NAME_ASCENDING" | "LAST_NAME_ASCENDING";
+            type SortOrder =
+                | "LAST_MODIFIED_ASCENDING"
+                | "FIRST_NAME_ASCENDING"
+                | "LAST_NAME_ASCENDING";
 
             interface ListParameters {
                 resourceName: string;
@@ -67,7 +74,9 @@ declare namespace gapi.client.people {
             nextSyncToken?: string | undefined;
         }
 
-        function search(parameters: SearchContactsParameters): HttpRequest<SearchContactsResponse>;
+        function search(
+            parameters: SearchContactsParameters,
+        ): HttpRequest<SearchContactsResponse>;
     }
 
     interface SearchContactsParameters {
@@ -138,7 +147,12 @@ declare namespace gapi.client.people {
         phoneticHonorificSuffix: string;
     }
 
-    type NicknameType = "DEFAULT" | "MAIDEN_NAME" | "INITIALS" | "GPLUS" | "OTHER_NAME";
+    type NicknameType =
+        | "DEFAULT"
+        | "MAIDEN_NAME"
+        | "INITIALS"
+        | "GPLUS"
+        | "OTHER_NAME";
 
     interface Nickname {
         metadata: FieldMetadata;

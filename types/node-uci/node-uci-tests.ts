@@ -2,7 +2,7 @@ import { Engine, EngineChain } from "node-uci";
 
 (async () => {
     const engine = new Engine("any");
-    await engine.getBufferUntil(str => str === "any");
+    await engine.getBufferUntil((str) => str === "any");
     engine.write("any");
     engine.chain();
     await engine.init();

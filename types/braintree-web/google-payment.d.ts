@@ -109,8 +109,8 @@ export interface GooglePayment {
         emailRequired?: boolean | undefined;
         merchantInfo?:
             | {
-                merchantId: string;
-            }
+                  merchantId: string;
+              }
             | undefined;
         transactionInfo: {
             currencyCode: string;

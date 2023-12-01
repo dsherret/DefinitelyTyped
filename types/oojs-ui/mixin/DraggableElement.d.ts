@@ -9,7 +9,9 @@ declare namespace OO.ui.mixin {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.mixin.DraggableElement
      */
-    interface DraggableElement extends DraggableElement.Props, DraggableElement.Prototype {}
+    interface DraggableElement
+        extends DraggableElement.Props,
+            DraggableElement.Prototype {}
 
     namespace DraggableElement {
         interface EventMap {
@@ -66,7 +68,7 @@ declare namespace OO.ui.mixin {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): DraggableElement;
+            new (config?: ConfigOptions): DraggableElement;
             prototype: Prototype;
             static: Static;
         }

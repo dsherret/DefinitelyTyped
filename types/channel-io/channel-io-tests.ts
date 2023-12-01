@@ -44,7 +44,7 @@ ChannelIO("track", "Order", {
 });
 
 // https://developers.channel.io/docs/web-channel-io#onboot
-ChannelIO("onBoot", user => {
+ChannelIO("onBoot", (user) => {
     // YOUR CODE...
 });
 
@@ -69,12 +69,12 @@ ChannelIO("onHide", () => {
 });
 
 // https://developers.channel.io/docs/web-channel-io#onbadgechanged
-ChannelIO("onBadgeChanged", unreadCount => {
+ChannelIO("onBadgeChanged", (unreadCount) => {
     // YOUR CODE...
 });
 
 // https://developers.channel.io/docs/web-channel-io#onchangebadge
-ChannelIO("onChangeBadge", unreadCount => {
+ChannelIO("onChangeBadge", (unreadCount) => {
     // YOUR CODE...
 });
 
@@ -84,7 +84,7 @@ ChannelIO("onChatCreated", () => {
 });
 
 // https://developers.channel.io/docs/web-channel-io#onfollowupchanged
-ChannelIO("onFollowUpChanged", profile => {
+ChannelIO("onFollowUpChanged", (profile) => {
     // YOUR CODE...
 });
 
@@ -94,22 +94,22 @@ ChannelIO("onCreateChat", () => {
 });
 
 // https://developers.channel.io/docs/web-channel-io#onprofilechanged
-ChannelIO("onProfileChanged", profile => {
+ChannelIO("onProfileChanged", (profile) => {
     // YOUR CODE...
 });
 
 // https://developers.channel.io/docs/web-channel-io#onchangeprofile
-ChannelIO("onChangeProfile", profile => {
+ChannelIO("onChangeProfile", (profile) => {
     // YOUR CODE...
 });
 
 // https://developers.channel.io/docs/web-channel-io#onurlclicked
-ChannelIO("onUrlClicked", url => {
+ChannelIO("onUrlClicked", (url) => {
     // YOUR CODE...
 });
 
 // https://developers.channel.io/docs/web-channel-io#onclickredirect
-ChannelIO("onClickRedirect", url => {
+ChannelIO("onClickRedirect", (url) => {
     // YOUR CODE...
 });
 

@@ -15,14 +15,23 @@ import assert = require("node:assert");
 import { CopyOptions, CopySyncOptions, cp, cpSync } from "fs";
 
 {
-    fs.writeFile("thebible.txt", "Do unto others as you would have them do unto you.", assert.ifError);
+    fs.writeFile(
+        "thebible.txt",
+        "Do unto others as you would have them do unto you.",
+        assert.ifError,
+    );
 
     fs.write(1234, "test", () => {});
 
-    fs.writeFile("Harry Potter", "\"You be wizzing, Harry,\" jived Dumbledore.", {
-        encoding: "ascii",
-        signal: new AbortSignal(),
-    }, assert.ifError);
+    fs.writeFile(
+        "Harry Potter",
+        '"You be wizzing, Harry," jived Dumbledore.',
+        {
+            encoding: "ascii",
+            signal: new AbortSignal(),
+        },
+        assert.ifError,
+    );
 
     fs.writeFile("testfile", "content", "utf8", assert.ifError);
     // @ts-expect-error
@@ -34,9 +43,13 @@ import { CopyOptions, CopySyncOptions, cp, cpSync } from "fs";
     fs.writeFileSync("testfile", "content", { encoding: "utf8" });
     // @ts-expect-error
     fs.writeFileSync("testfile", "content", { encoding: "invalid encoding" });
-    fs.writeFileSync("testfile", new DataView(new ArrayBuffer(1)), { encoding: "utf8" });
+    fs.writeFileSync("testfile", new DataView(new ArrayBuffer(1)), {
+        encoding: "utf8",
+    });
     // @ts-expect-error
-    fs.writeFileSync("testfile", new DataView(new ArrayBuffer(1)), { encoding: "invalid encoding" });
+    fs.writeFileSync("testfile", new DataView(new ArrayBuffer(1)), {
+        encoding: "invalid encoding",
+    });
 }
 
 {
@@ -45,7 +58,12 @@ import { CopyOptions, CopySyncOptions, cp, cpSync } from "fs";
     fs.appendFile("testfile", "foobar", "invalid encoding", assert.ifError);
     fs.appendFile("testfile", "foobar", { encoding: "utf8" }, assert.ifError);
     // @ts-expect-error
-    fs.appendFile("testfile", "foobar", { encoding: "invalid encoding" }, assert.ifError);
+    fs.appendFile(
+        "testfile",
+        "foobar",
+        { encoding: "invalid encoding" },
+        assert.ifError,
+    );
     fs.appendFileSync("testfile", "foobar", "utf8");
     // @ts-expect-error
     fs.appendFileSync("testfile", "foobar", "invalid encoding");
@@ -78,22 +96,50 @@ import { CopyOptions, CopySyncOptions, cp, cpSync } from "fs";
 
     buffer = fs.readFileSync("testfile", { flag: "r" });
 
-    fs.readFile("testfile", "utf8", (err, data) => content = data);
+    fs.readFile("testfile", "utf8", (err, data) => (content = data));
     // @ts-expect-error
-    fs.readFile("testfile", "invalid encoding", (err, data) => content = data);
-    fs.readFile("testfile", { encoding: "utf8", signal: new AbortSignal() }, (err, data) => content = data);
+    fs.readFile(
+        "testfile",
+        "invalid encoding",
+        (err, data) => (content = data),
+    );
+    fs.readFile(
+        "testfile",
+        { encoding: "utf8", signal: new AbortSignal() },
+        (err, data) => (content = data),
+    );
     // @ts-expect-error
-    fs.readFile("testfile", { encoding: "invalid encoding", signal: new AbortSignal() }, (err, data) => content = data);
-    fs.readFile("testfile", stringEncoding, (err, data) => stringOrBuffer = data);
-    fs.readFile("testfile", { encoding: stringEncoding }, (err, data) => stringOrBuffer = data);
+    fs.readFile(
+        "testfile",
+        { encoding: "invalid encoding", signal: new AbortSignal() },
+        (err, data) => (content = data),
+    );
+    fs.readFile(
+        "testfile",
+        stringEncoding,
+        (err, data) => (stringOrBuffer = data),
+    );
+    fs.readFile(
+        "testfile",
+        { encoding: stringEncoding },
+        (err, data) => (stringOrBuffer = data),
+    );
 
-    fs.readFile("testfile", (err, data) => buffer = data);
-    fs.readFile("testfile", null, (err, data) => buffer = data);
-    fs.readFile("testfile", { encoding: null }, (err, data) => buffer = data);
-    fs.readFile("testfile", nullEncoding, (err, data) => stringOrBuffer = data);
-    fs.readFile("testfile", { encoding: nullEncoding }, (err, data) => stringOrBuffer = data);
+    fs.readFile("testfile", (err, data) => (buffer = data));
+    fs.readFile("testfile", null, (err, data) => (buffer = data));
+    fs.readFile("testfile", { encoding: null }, (err, data) => (buffer = data));
+    fs.readFile(
+        "testfile",
+        nullEncoding,
+        (err, data) => (stringOrBuffer = data),
+    );
+    fs.readFile(
+        "testfile",
+        { encoding: nullEncoding },
+        (err, data) => (stringOrBuffer = data),
+    );
 
-    fs.readFile("testfile", { flag: "r" }, (err, data) => buffer = data);
+    fs.readFile("testfile", { flag: "r" }, (err, data) => (buffer = data));
 }
 
 {
@@ -104,25 +150,53 @@ import { CopyOptions, CopySyncOptions, cp, cpSync } from "fs";
         0,
         1,
         0,
-        (err: NodeJS.ErrnoException | null, bytesRead: number, buffer: DataView) => {},
+        (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffer: DataView,
+        ) => {},
     );
     fs.read(1, Buffer.from("test"), 1, 2, 123n, () => {});
     // 3-param version using no default options:
     fs.read(
         1,
-        { buffer: new DataView(new ArrayBuffer(1)), offset: 0, length: 1, position: 0 },
-        (err: NodeJS.ErrnoException | null, bytesRead: number, buffer: DataView) => {},
+        {
+            buffer: new DataView(new ArrayBuffer(1)),
+            offset: 0,
+            length: 1,
+            position: 0,
+        },
+        (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffer: DataView,
+        ) => {},
     );
-    fs.read(1, { buffer: Buffer.from("test"), offset: 1, length: 2, position: 123n }, () => {});
+    fs.read(
+        1,
+        { buffer: Buffer.from("test"), offset: 1, length: 2, position: 123n },
+        () => {},
+    );
     // 3-param version using some default options:
     fs.read(
         1,
         { length: 1, position: 0 },
-        (err: NodeJS.ErrnoException | null, bytesRead: number, buffer: NodeJS.ArrayBufferView) => {},
+        (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffer: NodeJS.ArrayBufferView,
+        ) => {},
     );
     fs.read(1, { buffer: Buffer.from("test"), position: 123n }, () => {});
     // 2-param version using all-default options:
-    fs.read(1, (err: NodeJS.ErrnoException | null, bytesRead: number, buffer: NodeJS.ArrayBufferView) => {});
+    fs.read(
+        1,
+        (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffer: NodeJS.ArrayBufferView,
+        ) => {},
+    );
     fs.read(1, () => {});
 }
 
@@ -157,9 +231,17 @@ import { CopyOptions, CopySyncOptions, cp, cpSync } from "fs";
     listS = fs.readdirSync("path", "utf8");
     listS = fs.readdirSync("path", null);
     listS = fs.readdirSync("path", undefined);
-    const listDir: fs.Dirent[] = fs.readdirSync("path", { withFileTypes: true });
-    const listDir2: Buffer[] = fs.readdirSync("path", { withFileTypes: false, encoding: "buffer" });
-    const listDir3: fs.Dirent[] = fs.readdirSync("path", { encoding: "utf8", withFileTypes: true });
+    const listDir: fs.Dirent[] = fs.readdirSync("path", {
+        withFileTypes: true,
+    });
+    const listDir2: Buffer[] = fs.readdirSync("path", {
+        withFileTypes: false,
+        encoding: "buffer",
+    });
+    const listDir3: fs.Dirent[] = fs.readdirSync("path", {
+        encoding: "utf8",
+        withFileTypes: true,
+    });
 
     let listB: Buffer[];
     listB = fs.readdirSync("path", { encoding: "buffer" });
@@ -169,7 +251,11 @@ import { CopyOptions, CopySyncOptions, cp, cpSync } from "fs";
     fs.readdirSync("path", { encoding: enc });
     fs.readdirSync("path", {});
 
-    fs.readdir("path", { withFileTypes: true }, (err: NodeJS.ErrnoException | null, files: fs.Dirent[]) => {});
+    fs.readdir(
+        "path",
+        { withFileTypes: true },
+        (err: NodeJS.ErrnoException | null, files: fs.Dirent[]) => {},
+    );
 }
 
 async function testPromisify() {
@@ -184,8 +270,14 @@ async function testPromisify() {
     listS = await rd("path", { encoding: null, withFileTypes: false });
     listS = await rd("path", { encoding: "utf8", withFileTypes: false });
     const listDir: fs.Dirent[] = await rd("path", { withFileTypes: true });
-    const listDir2: Buffer[] = await rd("path", { withFileTypes: false, encoding: "buffer" });
-    const listDir3: fs.Dirent[] = await rd("path", { encoding: "utf8", withFileTypes: true });
+    const listDir2: Buffer[] = await rd("path", {
+        withFileTypes: false,
+        encoding: "buffer",
+    });
+    const listDir3: fs.Dirent[] = await rd("path", {
+        encoding: "utf8",
+        withFileTypes: true,
+    });
 
     const ln = util.promisify(fs.link);
     // $ExpectType Promise<void>
@@ -213,14 +305,18 @@ async function testPromisify() {
         console.log(event, filename);
     });
 
-    fs.watch("/tmp/foo-", {
-        recursive: true,
-        persistent: true,
-        encoding: "utf8",
-        signal: new AbortSignal(),
-    }, (event, filename) => {
-        console.log(event, filename);
-    });
+    fs.watch(
+        "/tmp/foo-",
+        {
+            recursive: true,
+            persistent: true,
+            encoding: "utf8",
+            signal: new AbortSignal(),
+        },
+        (event, filename) => {
+            console.log(event, filename);
+        },
+    );
 }
 
 {
@@ -228,22 +324,32 @@ async function testPromisify() {
         console.log(current, previous);
     });
 
-    fs.watchFile("/tmp/foo-", {
-        persistent: true,
-        bigint: true,
-        interval: 1000,
-    }, (current, previous) => {
-        console.log(current, previous);
-    });
+    fs.watchFile(
+        "/tmp/foo-",
+        {
+            persistent: true,
+            bigint: true,
+            interval: 1000,
+        },
+        (current, previous) => {
+            console.log(current, previous);
+        },
+    );
 }
 
 {
-    const bigIntStatsListener: fs.BigIntStatsListener = (current: fs.BigIntStats, previous: fs.BigIntStats) => {
+    const bigIntStatsListener: fs.BigIntStatsListener = (
+        current: fs.BigIntStats,
+        previous: fs.BigIntStats,
+    ) => {
         console.log(current, previous);
     };
     fs.unwatchFile("/tmp/file", bigIntStatsListener);
 
-    const statsListener: fs.StatsListener = (current: fs.Stats, previous: fs.Stats) => {
+    const statsListener: fs.StatsListener = (
+        current: fs.Stats,
+        previous: fs.Stats,
+    ) => {
         console.log(current, previous);
     };
     fs.unwatchFile("/tmp/file", statsListener);
@@ -251,17 +357,26 @@ async function testPromisify() {
 
 {
     // @ts-expect-error
-    const invalidStatsListener: fs.StatsListener = (current: fs.BigIntStats, previous: fs.BigIntStats) => {
+    const invalidStatsListener: fs.StatsListener = (
+        current: fs.BigIntStats,
+        previous: fs.BigIntStats,
+    ) => {
         console.log(current, previous);
     };
     // @ts-expect-error
-    const invalidBigIntStatsListener: fs.BigIntStatsListener = (current: fs.Stats, previous: fs.Stats) => {
+    const invalidBigIntStatsListener: fs.BigIntStatsListener = (
+        current: fs.Stats,
+        previous: fs.Stats,
+    ) => {
         console.log(current, previous);
     };
 }
 
 {
-    const bigIntStatsListener: fs.BigIntStatsListener = (current: fs.BigIntStats, previous: fs.BigIntStats) => {
+    const bigIntStatsListener: fs.BigIntStatsListener = (
+        current: fs.BigIntStats,
+        previous: fs.BigIntStats,
+    ) => {
         console.log(current, previous);
     };
     const statsListener = (current: fs.Stats, previous: fs.Stats) => {
@@ -279,9 +394,17 @@ async function testPromisify() {
 
     fs.access(Buffer.from(""), (err) => {});
 
-    fs.access("/path/to/folder", fs.constants.F_OK | fs.constants.R_OK, (err) => {});
+    fs.access(
+        "/path/to/folder",
+        fs.constants.F_OK | fs.constants.R_OK,
+        (err) => {},
+    );
 
-    fs.access(Buffer.from(""), fs.constants.F_OK | fs.constants.R_OK, (err) => {});
+    fs.access(
+        Buffer.from(""),
+        fs.constants.F_OK | fs.constants.R_OK,
+        (err) => {},
+    );
 
     fs.accessSync("/path/to/folder");
 
@@ -300,14 +423,38 @@ async function testPromisify() {
 {
     let s = "123";
     let b: Buffer;
-    fs.readlink("/path/to/folder", (err, linkString) => s = linkString);
-    fs.readlink("/path/to/folder", undefined, (err, linkString) => s = linkString);
-    fs.readlink("/path/to/folder", "utf8", (err, linkString) => s = linkString);
-    fs.readlink("/path/to/folder", "buffer", (err, linkString) => b = linkString);
-    fs.readlink("/path/to/folder", {}, (err, linkString) => s = linkString);
-    fs.readlink("/path/to/folder", { encoding: undefined }, (err, linkString) => s = linkString);
-    fs.readlink("/path/to/folder", { encoding: "utf8" }, (err, linkString) => s = linkString);
-    fs.readlink("/path/to/folder", { encoding: "buffer" }, (err, linkString) => b = linkString);
+    fs.readlink("/path/to/folder", (err, linkString) => (s = linkString));
+    fs.readlink(
+        "/path/to/folder",
+        undefined,
+        (err, linkString) => (s = linkString),
+    );
+    fs.readlink(
+        "/path/to/folder",
+        "utf8",
+        (err, linkString) => (s = linkString),
+    );
+    fs.readlink(
+        "/path/to/folder",
+        "buffer",
+        (err, linkString) => (b = linkString),
+    );
+    fs.readlink("/path/to/folder", {}, (err, linkString) => (s = linkString));
+    fs.readlink(
+        "/path/to/folder",
+        { encoding: undefined },
+        (err, linkString) => (s = linkString),
+    );
+    fs.readlink(
+        "/path/to/folder",
+        { encoding: "utf8" },
+        (err, linkString) => (s = linkString),
+    );
+    fs.readlink(
+        "/path/to/folder",
+        { encoding: "buffer" },
+        (err, linkString) => (b = linkString),
+    );
 
     s = fs.readlinkSync("/path/to/folder");
     s = fs.readlinkSync("/path/to/folder", undefined);
@@ -323,14 +470,42 @@ async function testPromisify() {
 {
     let s = "123";
     let b: Buffer;
-    fs.realpath("/path/to/folder", (err, resolvedPath) => s = resolvedPath);
-    fs.realpath("/path/to/folder", undefined, (err, resolvedPath) => s = resolvedPath);
-    fs.realpath("/path/to/folder", "utf8", (err, resolvedPath) => s = resolvedPath);
-    fs.realpath("/path/to/folder", "buffer", (err, resolvedPath) => b = resolvedPath);
-    fs.realpath("/path/to/folder", {}, (err, resolvedPath) => s = resolvedPath);
-    fs.realpath("/path/to/folder", { encoding: undefined }, (err, resolvedPath) => s = resolvedPath);
-    fs.realpath("/path/to/folder", { encoding: "utf8" }, (err, resolvedPath) => s = resolvedPath);
-    fs.realpath("/path/to/folder", { encoding: "buffer" }, (err, resolvedPath) => b = resolvedPath);
+    fs.realpath("/path/to/folder", (err, resolvedPath) => (s = resolvedPath));
+    fs.realpath(
+        "/path/to/folder",
+        undefined,
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath(
+        "/path/to/folder",
+        "utf8",
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath(
+        "/path/to/folder",
+        "buffer",
+        (err, resolvedPath) => (b = resolvedPath),
+    );
+    fs.realpath(
+        "/path/to/folder",
+        {},
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath(
+        "/path/to/folder",
+        { encoding: undefined },
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath(
+        "/path/to/folder",
+        { encoding: "utf8" },
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath(
+        "/path/to/folder",
+        { encoding: "buffer" },
+        (err, resolvedPath) => (b = resolvedPath),
+    );
 
     s = fs.realpathSync("/path/to/folder");
     s = fs.realpathSync("/path/to/folder", undefined);
@@ -343,14 +518,45 @@ async function testPromisify() {
     b = fs.realpathSync("/path/to/folder", { encoding: "buffer" });
 
     // native
-    fs.realpath.native("/path/to/folder", (err, resolvedPath) => s = resolvedPath);
-    fs.realpath.native("/path/to/folder", undefined, (err, resolvedPath) => s = resolvedPath);
-    fs.realpath.native("/path/to/folder", "utf8", (err, resolvedPath) => s = resolvedPath);
-    fs.realpath.native("/path/to/folder", "buffer", (err, resolvedPath) => b = resolvedPath);
-    fs.realpath.native("/path/to/folder", {}, (err, resolvedPath) => s = resolvedPath);
-    fs.realpath.native("/path/to/folder", { encoding: undefined }, (err, resolvedPath) => s = resolvedPath);
-    fs.realpath.native("/path/to/folder", { encoding: "utf8" }, (err, resolvedPath) => s = resolvedPath);
-    fs.realpath.native("/path/to/folder", { encoding: "buffer" }, (err, resolvedPath) => b = resolvedPath);
+    fs.realpath.native(
+        "/path/to/folder",
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath.native(
+        "/path/to/folder",
+        undefined,
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath.native(
+        "/path/to/folder",
+        "utf8",
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath.native(
+        "/path/to/folder",
+        "buffer",
+        (err, resolvedPath) => (b = resolvedPath),
+    );
+    fs.realpath.native(
+        "/path/to/folder",
+        {},
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath.native(
+        "/path/to/folder",
+        { encoding: undefined },
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath.native(
+        "/path/to/folder",
+        { encoding: "utf8" },
+        (err, resolvedPath) => (s = resolvedPath),
+    );
+    fs.realpath.native(
+        "/path/to/folder",
+        { encoding: "buffer" },
+        (err, resolvedPath) => (b = resolvedPath),
+    );
 
     s = fs.realpathSync.native("/path/to/folder");
     s = fs.realpathSync.native("/path/to/folder", undefined);
@@ -365,26 +571,59 @@ async function testPromisify() {
 
 {
     fs.copyFile("/path/to/src", "/path/to/dest", (err) => console.error(err));
-    fs.copyFile("/path/to/src", "/path/to/dest", fs.constants.COPYFILE_EXCL, (err) => console.error(err));
-    fs.copyFile("/path/to/src", "/path/to/dest", fs.constants.COPYFILE_FICLONE, (err) => console.error(err));
-    fs.copyFile("/path/to/src", "/path/to/dest", fs.constants.COPYFILE_FICLONE_FORCE, (err) => console.error(err));
+    fs.copyFile(
+        "/path/to/src",
+        "/path/to/dest",
+        fs.constants.COPYFILE_EXCL,
+        (err) => console.error(err),
+    );
+    fs.copyFile(
+        "/path/to/src",
+        "/path/to/dest",
+        fs.constants.COPYFILE_FICLONE,
+        (err) => console.error(err),
+    );
+    fs.copyFile(
+        "/path/to/src",
+        "/path/to/dest",
+        fs.constants.COPYFILE_FICLONE_FORCE,
+        (err) => console.error(err),
+    );
 
-    fs.copyFileSync("/path/to/src", "/path/to/dest", fs.constants.COPYFILE_EXCL);
-    fs.copyFileSync("/path/to/src", "/path/to/dest", fs.constants.COPYFILE_FICLONE);
-    fs.copyFileSync("/path/to/src", "/path/to/dest", fs.constants.COPYFILE_FICLONE_FORCE);
+    fs.copyFileSync(
+        "/path/to/src",
+        "/path/to/dest",
+        fs.constants.COPYFILE_EXCL,
+    );
+    fs.copyFileSync(
+        "/path/to/src",
+        "/path/to/dest",
+        fs.constants.COPYFILE_FICLONE,
+    );
+    fs.copyFileSync(
+        "/path/to/src",
+        "/path/to/dest",
+        fs.constants.COPYFILE_FICLONE_FORCE,
+    );
 
     const cf = util.promisify(fs.copyFile);
-    cf("/path/to/src", "/path/to/dest", fs.constants.COPYFILE_EXCL).then(console.log);
+    cf("/path/to/src", "/path/to/dest", fs.constants.COPYFILE_EXCL).then(
+        console.log,
+    );
 }
 
 {
-    fs.mkdir("some/test/path", {
-        recursive: true,
-        mode: 0o777,
-    }, (err, path) => {
-        err; // $ExpectType ErrnoException | null
-        path; // $ExpectType string | undefined
-    });
+    fs.mkdir(
+        "some/test/path",
+        {
+            recursive: true,
+            mode: 0o777,
+        },
+        (err, path) => {
+            err; // $ExpectType ErrnoException | null
+            path; // $ExpectType string | undefined
+        },
+    );
 
     // $ExpectType string | undefined
     fs.mkdirSync("some/test/path", {
@@ -410,30 +649,51 @@ async function testPromisify() {
     let buffers: Promise<Buffer[]>;
     let entries: Promise<fs.Dirent[]>;
 
-    names = fs.promises.readdir("/path/to/dir", { encoding: "utf8", withFileTypes: false });
-    buffers = fs.promises.readdir("/path/to/dir", { encoding: "buffer", withFileTypes: false });
-    entries = fs.promises.readdir("/path/to/dir", { encoding: "utf8", withFileTypes: true });
+    names = fs.promises.readdir("/path/to/dir", {
+        encoding: "utf8",
+        withFileTypes: false,
+    });
+    buffers = fs.promises.readdir("/path/to/dir", {
+        encoding: "buffer",
+        withFileTypes: false,
+    });
+    entries = fs.promises.readdir("/path/to/dir", {
+        encoding: "utf8",
+        withFileTypes: true,
+    });
 }
 
 {
     fs.writev(
         1,
         [Buffer.from("123")] as readonly NodeJS.ArrayBufferView[],
-        (err: NodeJS.ErrnoException | null, bytesWritten: number, buffers: NodeJS.ArrayBufferView[]) => {
-        },
+        (
+            err: NodeJS.ErrnoException | null,
+            bytesWritten: number,
+            buffers: NodeJS.ArrayBufferView[],
+        ) => {},
     );
-    const bytesWritten = fs.writevSync(1, [Buffer.from("123")] as readonly NodeJS.ArrayBufferView[]);
+    const bytesWritten = fs.writevSync(1, [
+        Buffer.from("123"),
+    ] as readonly NodeJS.ArrayBufferView[]);
 }
 
 (async () => {
     try {
         await fs.promises.rmdir("some/test/path");
-        await fs.promises.rmdir("some/test/path", { maxRetries: 123, retryDelay: 123, recursive: true });
+        await fs.promises.rmdir("some/test/path", {
+            maxRetries: 123,
+            retryDelay: 123,
+            recursive: true,
+        });
     } catch (e) {}
 
     try {
         await fs.promises.rmdir("some/test/file");
-        await fs.promises.rmdir("some/test/file", { maxRetries: 123, retryDelay: 123 });
+        await fs.promises.rmdir("some/test/file", {
+            maxRetries: 123,
+            retryDelay: 123,
+        });
     } catch (e) {}
 })();
 
@@ -471,7 +731,7 @@ async function testPromisify() {
         encoding: "utf8",
     });
 
-    (async () => {
+    async () => {
         // tslint:disable-next-line: await-promise
         for await (const thing of dir) {
         }
@@ -481,25 +741,31 @@ async function testPromisify() {
         // tslint:disable-next-line: await-promise
         for await (const thing of dirUrl) {
         }
-    });
+    };
 
     const dirEntProm: Promise<fs.Dir> = fs.promises.opendir("test", {
         encoding: "utf8",
         bufferSize: 42,
     });
 
-    const dirEntBufferProm: Promise<fs.Dir> = fs.promises.opendir(Buffer.from("test"), {
-        encoding: "utf8",
-        bufferSize: 42,
-    });
+    const dirEntBufferProm: Promise<fs.Dir> = fs.promises.opendir(
+        Buffer.from("test"),
+        {
+            encoding: "utf8",
+            bufferSize: 42,
+        },
+    );
 
-    const dirEntUrlProm: Promise<fs.Dir> = fs.promises.opendir(new URL(`file://${__dirname}`), {
-        encoding: "utf8",
-        bufferSize: 42,
-    });
+    const dirEntUrlProm: Promise<fs.Dir> = fs.promises.opendir(
+        new URL(`file://${__dirname}`),
+        {
+            encoding: "utf8",
+            bufferSize: 42,
+        },
+    );
 }
 
-(async () => {
+async () => {
     const handle: FileHandle = await openAsync("test", "r");
     const writeStream = fs.createWriteStream("./index.d.ts", {
         fd: handle,
@@ -512,12 +778,14 @@ async function testPromisify() {
     const _rom = readStream.readableObjectMode; // $ExpectType boolean
 
     (await handle.read()).buffer; // $ExpectType Buffer
-    (await handle.read({
-        buffer: new Uint32Array(),
-        offset: 1,
-        position: 2,
-        length: 3,
-    })).buffer; // $ExpectType Uint32Array
+    (
+        await handle.read({
+            buffer: new Uint32Array(),
+            offset: 1,
+            position: 2,
+            length: 3,
+        })
+    ).buffer; // $ExpectType Uint32Array
 
     await handle.read(new Uint32Array(), 1, 2, 3);
     await handle.read(Buffer.from("hurr"));
@@ -528,7 +796,7 @@ async function testPromisify() {
     handle.readableWebStream();
 
     handle.readLines()[Symbol.asyncIterator](); // $ExpectType AsyncIterableIterator<string>
-});
+};
 
 {
     fs.createWriteStream("./index.d.ts");
@@ -548,35 +816,44 @@ async function testPromisify() {
     fs.createReadStream("./index.d.ts", { encoding: "invalid encoding" });
 }
 
-(async () => {
+async () => {
     await writeFileAsync("test", "test");
     await writeFileAsync("test", Buffer.from("test"));
     await writeFileAsync("test", ["test", "test2"]);
     await writeFileAsync(
         "test",
-        async function*() {
+        (async function* () {
             yield "yeet";
-        }(),
+        })(),
     );
     await writeFileAsync("test", process.stdin);
-});
+};
 
 {
     fs.createReadStream("path").close();
-    fs.createReadStream("path").close((err?: NodeJS.ErrnoException | null) => {});
+    fs.createReadStream("path").close(
+        (err?: NodeJS.ErrnoException | null) => {},
+    );
 
     fs.createWriteStream("path").close();
-    fs.createWriteStream("path").close((err?: NodeJS.ErrnoException | null) => {});
+    fs.createWriteStream("path").close(
+        (err?: NodeJS.ErrnoException | null) => {},
+    );
 }
 
 {
-    fs.readvSync(123, [Buffer.from("wut")] as readonly NodeJS.ArrayBufferView[]);
+    fs.readvSync(123, [
+        Buffer.from("wut"),
+    ] as readonly NodeJS.ArrayBufferView[]);
     fs.readv(
         123,
         [Buffer.from("wut")] as readonly NodeJS.ArrayBufferView[],
         123,
-        (err: NodeJS.ErrnoException | null, bytesRead: number, buffers: NodeJS.ArrayBufferView[]) => {
-        },
+        (
+            err: NodeJS.ErrnoException | null,
+            bytesRead: number,
+            buffers: NodeJS.ArrayBufferView[],
+        ) => {},
     );
 }
 
@@ -584,8 +861,8 @@ async function testStat(
     path: string,
     fd: number,
     opts: fs.StatOptions,
-    bigintMaybeFalse: fs.StatOptions & { bigint: false } | undefined,
-    bigIntMaybeTrue: fs.StatOptions & { bigint: true } | undefined,
+    bigintMaybeFalse: (fs.StatOptions & { bigint: false }) | undefined,
+    bigIntMaybeTrue: (fs.StatOptions & { bigint: true }) | undefined,
     maybe?: fs.StatOptions,
 ) {
     /* Need to test these variants:
@@ -753,14 +1030,20 @@ async function testStat(
 
 const bigStats: fs.BigIntStats = fs.statSync(".", { bigint: true });
 const bigIntStat: bigint = bigStats.atimeNs;
-const anyStats: fs.Stats | fs.BigIntStats = fs.statSync(".", { bigint: Math.random() > 0.5 });
+const anyStats: fs.Stats | fs.BigIntStats = fs.statSync(".", {
+    bigint: Math.random() > 0.5,
+});
 
 {
     watchAsync("y33t"); // $ExpectType AsyncIterable<FileChangeInfo<string>>
     watchAsync("y33t", "buffer"); // $ExpectType AsyncIterable<FileChangeInfo<Buffer>>
     watchAsync("y33t", { encoding: "buffer", signal: new AbortSignal() }); // $ExpectType AsyncIterable<FileChangeInfo<Buffer>>
 
-    watchAsync("test", { persistent: true, recursive: true, encoding: "utf-8" }); // $ExpectType AsyncIterable<FileChangeInfo<string>>
+    watchAsync("test", {
+        persistent: true,
+        recursive: true,
+        encoding: "utf-8",
+    }); // $ExpectType AsyncIterable<FileChangeInfo<string>>
 }
 
 {
@@ -768,7 +1051,9 @@ const anyStats: fs.Stats | fs.BigIntStats = fs.statSync(".", { bigint: Math.rand
         dereference: false,
         errorOnExist: true,
         filter(src, dst) {
-            return Promise.resolve(src !== "node_modules" && dst !== "something");
+            return Promise.resolve(
+                src !== "node_modules" && dst !== "something",
+            );
         },
         force: true,
         preserveTimestamps: true,
@@ -783,7 +1068,11 @@ const anyStats: fs.Stats | fs.BigIntStats = fs.statSync(".", { bigint: Math.rand
     };
     cp("src", "dest", (err: Error | null) => {});
     cp("src", "dest", opts, (err: Error | null) => {});
-    cp(new URL(`file://${__dirname}`), new URL(`file://${__dirname}`), (err: Error | null) => {});
+    cp(
+        new URL(`file://${__dirname}`),
+        new URL(`file://${__dirname}`),
+        (err: Error | null) => {},
+    );
     cpSync("src", "dest");
     cpSync("src", "dest", optsSync);
     cpSync(new URL(`file://${__dirname}`), new URL(`file://${__dirname}`));
@@ -793,21 +1082,21 @@ const anyStats: fs.Stats | fs.BigIntStats = fs.statSync(".", { bigint: Math.rand
 }
 
 {
-    fs.promises.open("/dev/input/event0").then(fd => {
+    fs.promises.open("/dev/input/event0").then((fd) => {
         // Create a stream from some character device.
         const stream = fd.createReadStream(); // $ExpectType ReadStream
         stream.close();
         stream.push(null);
         stream.read(0);
     });
-    fs.promises.open("/dev/input/event0", "r").then(fd => {
+    fs.promises.open("/dev/input/event0", "r").then((fd) => {
         // Create a stream from some character device.
         const stream = fd.createReadStream(); // $ExpectType ReadStream
         stream.close();
         stream.push(null);
         stream.read(0);
     });
-    fs.promises.open("/tmp/tmp.txt", "w", 0o666).then(fd => {
+    fs.promises.open("/tmp/tmp.txt", "w", 0o666).then((fd) => {
         // Create a stream from some character device.
         const stream = fd.createWriteStream(); // $ExpectType WriteStream
         stream.close();
@@ -815,7 +1104,7 @@ const anyStats: fs.Stats | fs.BigIntStats = fs.statSync(".", { bigint: Math.rand
 }
 
 // constants
-(async () => {
+async () => {
     await copyFile("source.txt", "destination.txt", constants.COPYFILE_EXCL);
     await access("/etc/passwd", constants.R_OK | constants.W_OK);
-});
+};

@@ -1,4 +1,10 @@
-import { kramed, KramedOptions, KramedParser, KramedRenderer, KramedStatic } from "kramed";
+import {
+    kramed,
+    KramedOptions,
+    KramedParser,
+    KramedRenderer,
+    KramedStatic,
+} from "kramed";
 
 const options: KramedOptions = {
     gfm: true,

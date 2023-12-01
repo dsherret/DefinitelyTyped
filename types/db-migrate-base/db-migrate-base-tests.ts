@@ -10,72 +10,88 @@ let callback = (err: any, response: any) => {
 };
 
 /// createTable(tableName, columnSpec, callback)
-db.createTable("pets", {
-    id: { type: "int", primaryKey: true, autoIncrement: true },
-    name: "string",
-}, callback);
-
-db.createTable("pets", {
-    columns: {
+db.createTable(
+    "pets",
+    {
         id: { type: "int", primaryKey: true, autoIncrement: true },
         name: "string",
     },
-    ifNotExists: true,
-}, callback);
+    callback,
+);
 
-db.createTable("product_variant", {
-    id: {
-        type: "int",
-        unsigned: true,
-        notNull: true,
-        primaryKey: true,
-        autoIncrement: true,
-        length: 10,
-    },
-    product_id: {
-        type: "int",
-        unsigned: true,
-        length: 10,
-        notNull: true,
-        foreignKey: {
-            name: "product_variant_product_id_fk",
-            table: "product",
-            rules: {
-                onDelete: "CASCADE",
-                onUpdate: "RESTRICT",
-            },
-            mapping: "id",
+db.createTable(
+    "pets",
+    {
+        columns: {
+            id: { type: "int", primaryKey: true, autoIncrement: true },
+            name: "string",
         },
+        ifNotExists: true,
     },
-}, callback);
+    callback,
+);
 
-db.createTable("product_variant", {
-    id: {
-        type: "int",
-        unsigned: true,
-        notNull: true,
-        primaryKey: true,
-        autoIncrement: true,
-        length: 10,
-    },
-    product_id: {
-        type: "int",
-        unsigned: true,
-        length: 10,
-        notNull: true,
-        foreignKey: {
-            name: "product_variant_product_id_fk",
-            table: "product",
-            rules: {
-                onDelete: "CASCADE",
-                onUpdate: "RESTRICT",
-            },
-            mapping: {
-                product_id: "id",
+db.createTable(
+    "product_variant",
+    {
+        id: {
+            type: "int",
+            unsigned: true,
+            notNull: true,
+            primaryKey: true,
+            autoIncrement: true,
+            length: 10,
+        },
+        product_id: {
+            type: "int",
+            unsigned: true,
+            length: 10,
+            notNull: true,
+            foreignKey: {
+                name: "product_variant_product_id_fk",
+                table: "product",
+                rules: {
+                    onDelete: "CASCADE",
+                    onUpdate: "RESTRICT",
+                },
+                mapping: "id",
             },
         },
     },
-}, callback);
+    callback,
+);
+
+db.createTable(
+    "product_variant",
+    {
+        id: {
+            type: "int",
+            unsigned: true,
+            notNull: true,
+            primaryKey: true,
+            autoIncrement: true,
+            length: 10,
+        },
+        product_id: {
+            type: "int",
+            unsigned: true,
+            length: 10,
+            notNull: true,
+            foreignKey: {
+                name: "product_variant_product_id_fk",
+                table: "product",
+                rules: {
+                    onDelete: "CASCADE",
+                    onUpdate: "RESTRICT",
+                },
+                mapping: {
+                    product_id: "id",
+                },
+            },
+        },
+    },
+    callback,
+);
 
 /// dropTable(tableName, [options,] callback)
 db.dropTable("pets", callback);
@@ -86,61 +102,99 @@ db.dropTable("pets", { ifExists: true }, callback);
 db.renameTable("pets", "pets_OLD", callback);
 
 /// addColumn(tableName, columnName, columnSpec, callback)
-db.addColumn("pets", "eyeColor", {
-    type: "string",
-    length: 25,
-    notNull: true,
-}, callback);
+db.addColumn(
+    "pets",
+    "eyeColor",
+    {
+        type: "string",
+        length: 25,
+        notNull: true,
+    },
+    callback,
+);
 
-db.addColumn("pets", "id", {
-    type: "int",
-    primaryKey: true,
-    autoIncrement: true,
-    notNull: true,
-    unique: true,
-}, callback);
+db.addColumn(
+    "pets",
+    "id",
+    {
+        type: "int",
+        primaryKey: true,
+        autoIncrement: true,
+        notNull: true,
+        unique: true,
+    },
+    callback,
+);
 
 /// renameColumn(tableName, oldColumnName, newColumnName, callback)
 db.renameColumn("pets", "id", "pet_id", callback);
 
 /// changeColumn(tableName, columnName, columnSpec, callback)
-db.changeColumn("pets", "eye_color", {
-    type: "int",
-    unsigned: true,
-    notNull: true,
-    foreignKey: {
-        name: "pets_eye_color_id_fk",
-        table: "eye_color",
-        rules: {
-            onDelete: "CASCADE",
-            onUpdate: "RESTRICT",
-        },
-        mapping: {
-            eye_color: "id",
+db.changeColumn(
+    "pets",
+    "eye_color",
+    {
+        type: "int",
+        unsigned: true,
+        notNull: true,
+        foreignKey: {
+            name: "pets_eye_color_id_fk",
+            table: "eye_color",
+            rules: {
+                onDelete: "CASCADE",
+                onUpdate: "RESTRICT",
+            },
+            mapping: {
+                eye_color: "id",
+            },
         },
     },
-}, callback);
+    callback,
+);
 
 /// addIndex(tableName, indexName, columns, [unique,] callback)
 db.addIndex("pets", "pets_eye_color_idx", ["eye_color"], callback);
-db.addIndex("pets", "pets_registration_code_idx", ["registration_code"], true, callback);
+db.addIndex(
+    "pets",
+    "pets_registration_code_idx",
+    ["registration_code"],
+    true,
+    callback,
+);
 
 /// addForeignKey(tableName, referencedTableName, keyName, fieldMapping, rules, callback)
-db.addForeignKey("module_user", "modules", "module_user_module_id_fk", {
-    "module_id": "id",
-}, {
-    onDelete: "CASCADE",
-    onUpdate: "RESTRICT",
-}, callback);
+db.addForeignKey(
+    "module_user",
+    "modules",
+    "module_user_module_id_fk",
+    {
+        module_id: "id",
+    },
+    {
+        onDelete: "CASCADE",
+        onUpdate: "RESTRICT",
+    },
+    callback,
+);
 
 /// removeForeignKey(tableName, keyName, options, callback)
 db.removeForeignKey("module_user", "module_uer_module_id_foreign", callback);
-db.removeForeignKey("module_user", "module_user_module_id_foreign", {
-    dropIndex: true,
-}, callback);
+db.removeForeignKey(
+    "module_user",
+    "module_user_module_id_foreign",
+    {
+        dropIndex: true,
+    },
+    callback,
+);
 
 /// insert(tableName, [columnNameArray,] valueArray, callback)
-db.insert("module_user", ["first_name", "last_name"], ["Test", "Testerson"], callback);
+db.insert(
+    "module_user",
+    ["first_name", "last_name"],
+    ["Test", "Testerson"],
+    callback,
+);
 db.insert("module_user", ["Test", "Testerson"], callback);
 
 /// removeIndex([tableName,] indexName, callback)
@@ -148,16 +202,19 @@ db.removeIndex("pets", "pets_eye_color_idx", callback);
 db.removeIndex("pets_eye_color_idx", callback);
 
 /// runSql(sql, [params,] callback)
-db.runSql("INSERT INTO `module_user` (`?`,`?`) VALUES ('?','?')", [
-    "first_name",
-    "last_name",
-    "Test",
-    "Testerson",
-], callback);
+db.runSql(
+    "INSERT INTO `module_user` (`?`,`?`) VALUES ('?','?')",
+    ["first_name", "last_name", "Test", "Testerson"],
+    callback,
+);
 db.runSql("DROP TABLE `pets`", callback);
 
 /// all(sql, [params,] callback)
-db.all("SELECT * FROM `module_user` WHERE `?` = '?'", ["first_name", "Test"], callback);
+db.all(
+    "SELECT * FROM `module_user` WHERE `?` = '?'",
+    ["first_name", "Test"],
+    callback,
+);
 db.all("SELECT * FROM `module_user`", callback);
 
 /// =========
@@ -279,24 +336,41 @@ db.changeColumnAsync("pets", "eye_color", {
 
 /// addIndexAsync(tableName, indexName, columns, [unique])
 db.addIndexAsync("pets", "pets_eye_color_idx", ["eye_color"]).then(onResolve);
-db.addIndexAsync("pets", "pets_registration_code_idx", ["registration_code"], true).then(onResolve);
+db.addIndexAsync(
+    "pets",
+    "pets_registration_code_idx",
+    ["registration_code"],
+    true,
+).then(onResolve);
 
 /// addForeignKeyAsync(tableName, referencedTableName, keyName, fieldMapping, rules)
-db.addForeignKeyAsync("module_user", "modules", "module_user_module_id_fk", {
-    "module_id": "id",
-}, {
-    onDelete: "CASCADE",
-    onUpdate: "RESTRICT",
-}).then(onResolve);
+db.addForeignKeyAsync(
+    "module_user",
+    "modules",
+    "module_user_module_id_fk",
+    {
+        module_id: "id",
+    },
+    {
+        onDelete: "CASCADE",
+        onUpdate: "RESTRICT",
+    },
+).then(onResolve);
 
 /// removeForeignKeyAsync(tableName, keyName, options)
-db.removeForeignKeyAsync("module_user", "module_uer_module_id_foreign").then(onResolve);
+db.removeForeignKeyAsync("module_user", "module_uer_module_id_foreign").then(
+    onResolve,
+);
 db.removeForeignKeyAsync("module_user", "module_user_module_id_foreign", {
     dropIndex: true,
 }).then(onResolve);
 
 /// insertAsync(tableName, [columnNameArray,] valueArray)
-db.insertAsync("module_user", ["first_name", "last_name"], ["Test", "Testerson"]).then(onResolve);
+db.insertAsync(
+    "module_user",
+    ["first_name", "last_name"],
+    ["Test", "Testerson"],
+).then(onResolve);
 db.insertAsync("module_user", ["Test", "Testerson"]).then(onResolve);
 
 /// removeIndexAsync([tableName,] indexName)
@@ -313,5 +387,8 @@ db.runSqlAsync("INSERT INTO `module_user` (`?`,`?`) VALUES ('?','?')", [
 db.runSqlAsync("DROP TABLE `pets`").then(onResolve);
 
 /// allAsync(sql, [params])
-db.allAsync("SELECT * FROM `module_user` WHERE `?` = '?'", ["first_name", "Test"]).then(onResolve);
+db.allAsync("SELECT * FROM `module_user` WHERE `?` = '?'", [
+    "first_name",
+    "Test",
+]).then(onResolve);
 db.allAsync("SELECT * FROM `module_user`").then(onResolve);

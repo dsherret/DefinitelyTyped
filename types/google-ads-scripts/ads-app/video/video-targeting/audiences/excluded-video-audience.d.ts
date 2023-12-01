@@ -29,10 +29,12 @@ declare namespace GoogleAdsScripts {
          *        var excludedVideoAudience = excludedVideoAudienceIterator.next();
          *      }
          */
-        interface ExcludedVideoAudienceIterator extends Base.Iterator<ExcludedVideoAudience> {}
+        interface ExcludedVideoAudienceIterator
+            extends Base.Iterator<ExcludedVideoAudience> {}
 
         /** An operation representing creation of a new excluded video audience. */
-        interface ExcludedVideoAudienceOperation extends Base.Operation<ExcludedVideoAudience> {}
+        interface ExcludedVideoAudienceOperation
+            extends Base.Operation<ExcludedVideoAudience> {}
 
         /**
          * Fetches excluded video audiences. Supports filtering and sorting.
@@ -50,11 +52,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedVideoAudienceSelector
-            extends
-                Base.Selector<ExcludedVideoAudienceIterator>,
+            extends Base.Selector<ExcludedVideoAudienceIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

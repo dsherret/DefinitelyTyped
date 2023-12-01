@@ -1,5 +1,8 @@
 type RefreshPolicy = "none" | "refresh";
-type OperationType = "token-request" | "send-redemption-record" | "token-redemption";
+type OperationType =
+    | "token-request"
+    | "send-redemption-record"
+    | "token-redemption";
 type SignRequestData = "omit" | "include" | "headers-only";
 
 interface TrustToken {

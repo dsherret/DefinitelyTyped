@@ -14,13 +14,17 @@ export type CheckboxOnChangeDefaultVariant = (
     event: React.ChangeEvent<HTMLInputElement>,
 ) => void;
 
-export interface CheckboxProps extends Omit<ReactInputAttr, ExcludedAttributes> {
+export interface CheckboxProps
+    extends Omit<ReactInputAttr, ExcludedAttributes> {
     defaultChecked?: boolean | undefined;
     hideLabel?: boolean | undefined;
     id: string;
     indeterminate?: boolean | undefined;
     labelText: NonNullable<React.ReactNode>;
-    onChange?: CheckboxOnChangeDataVariant | CheckboxOnChangeDefaultVariant | undefined;
+    onChange?:
+        | CheckboxOnChangeDataVariant
+        | CheckboxOnChangeDefaultVariant
+        | undefined;
     /**
      * @deprecated
      */

@@ -68,7 +68,7 @@ interface Blake2bCtor {
      *   console.log('Blake2b hash of "hello world" is %s', hash)
      * })
      */
-    new(
+    new (
         digestLength?: number,
         key?: Uint8Array,
         salt?: Uint8Array,

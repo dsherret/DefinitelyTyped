@@ -2,10 +2,15 @@ declare namespace __ScrollIntoView {
     interface Settings {
         time?: number | undefined;
         ease?: ((value: number) => number) | undefined;
-        validTarget?: ((target: HTMLElement, parentsScrolled: number) => boolean) | undefined;
+        validTarget?:
+            | ((target: HTMLElement, parentsScrolled: number) => boolean)
+            | undefined;
         align?: Alignment | undefined;
         isScrollable?:
-            | ((target: HTMLElement, defaultIsScrollable: (target: HTMLElement) => boolean) => boolean)
+            | ((
+                  target: HTMLElement,
+                  defaultIsScrollable: (target: HTMLElement) => boolean,
+              ) => boolean)
             | undefined;
         isWindow?: ((target: HTMLElement) => boolean) | undefined;
         cancellable?: boolean | undefined;
@@ -34,7 +39,11 @@ declare namespace __ScrollIntoView {
 
     interface ScrollIntoView {
         (target: HTMLElement, callback?: __ScrollIntoView.Callback): void;
-        (target: HTMLElement, settings: __ScrollIntoView.Settings, callback?: __ScrollIntoView.Callback): void;
+        (
+            target: HTMLElement,
+            settings: __ScrollIntoView.Settings,
+            callback?: __ScrollIntoView.Callback,
+        ): void;
     }
 }
 

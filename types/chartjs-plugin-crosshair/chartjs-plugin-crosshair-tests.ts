@@ -30,10 +30,12 @@ const chart = new Chart(ctx, {
                     zoomButtonClass: "reset-zoom", // reset zoom button class
                 },
                 callbacks: {
-                    beforeZoom(start, end) { // called before zoom, return false to prevent zoom
+                    beforeZoom(start, end) {
+                        // called before zoom, return false to prevent zoom
                         return true;
                     },
-                    afterZoom(start, end) { // called after zoom
+                    afterZoom(start, end) {
+                        // called after zoom
                     },
                 },
             },
@@ -42,7 +44,11 @@ const chart = new Chart(ctx, {
 });
 
 // samples from: https://github.com/AbelHeinsbroek/chartjs-plugin-crosshair/blob/master/samples/basic.html
-function generateDataset(shift: number, label: string, color: string): Chart.ChartDataSets {
+function generateDataset(
+    shift: number,
+    label: string,
+    color: string,
+): Chart.ChartDataSets {
     const data: Chart.ChartPoint[] = [];
     let x = 0;
     while (x < 30) {

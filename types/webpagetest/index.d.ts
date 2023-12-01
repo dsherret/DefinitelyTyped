@@ -4,10 +4,16 @@ interface Response<R> {
     statusText: string;
 }
 
-type Callback<R> = (err: Error | undefined, data: R | undefined, info: any) => void;
+type Callback<R> = (
+    err: Error | undefined,
+    data: R | undefined,
+    info: any,
+) => void;
 
 type TestScript = TestScriptCommand[];
-type TestScriptCommand = string | { [command: string]: string | number | string[] | number[] };
+type TestScriptCommand =
+    | string
+    | { [command: string]: string | number | string[] | number[] };
 
 interface Options {
     /** if true, method does not make an actual request to the API Server but rather returns an object with url which contains the actual URL to make the GET request to WebPageTest API Server */
@@ -331,22 +337,37 @@ declare class WebPageTest {
         options: Options & RequestOptions,
         callback: Callback<Response<WebPageTest.TestStatus>>,
     ): void;
-    getTestStatus(id: string, callback: Callback<Response<WebPageTest.TestStatus>>): void;
+    getTestStatus(
+        id: string,
+        callback: Callback<Response<WebPageTest.TestStatus>>,
+    ): void;
 
     getTestResults(
         id: string,
         options: Options & RequestOptions & ResultsOptions,
         callback: Callback<Response<WebPageTest.TestResult>>,
     ): void;
-    getTestResults(id: string, callback: Callback<Response<WebPageTest.TestResult>>): void;
+    getTestResults(
+        id: string,
+        callback: Callback<Response<WebPageTest.TestResult>>,
+    ): void;
 
     getLocations(
         options: Options & RequestOptions,
-        callback: Callback<{ response: Response<{ location: WebPageTest.Location[] }> }>,
+        callback: Callback<{
+            response: Response<{ location: WebPageTest.Location[] }>;
+        }>,
     ): void;
-    getLocations(callback: Callback<{ response: Response<{ location: WebPageTest.Location[] }> }>): void;
+    getLocations(
+        callback: Callback<{
+            response: Response<{ location: WebPageTest.Location[] }>;
+        }>,
+    ): void;
 
-    getTesters(options: Options & RequestOptions, callback: Callback<any>): void;
+    getTesters(
+        options: Options & RequestOptions,
+        callback: Callback<any>,
+    ): void;
     getTesters(callback: Callback<any>): void;
 
     runTest(
@@ -356,31 +377,63 @@ declare class WebPageTest {
     ): void;
     runTest(url_or_script: string, callback: Callback<any>): void;
 
-    cancelTest(id: string, options: Options & KeyOptions, callback: Callback<any>): void;
+    cancelTest(
+        id: string,
+        options: Options & KeyOptions,
+        callback: Callback<any>,
+    ): void;
     cancelTest(id: string, callback: Callback<any>): void;
 
     getHARData(id: string, options: Options, callback: Callback<any>): void;
     getHARData(id: string, callback: Callback<any>): void;
 
-    getPageSpeedData(id: string, options: Options & RunOptions, callback: Callback<any>): void;
+    getPageSpeedData(
+        id: string,
+        options: Options & RunOptions,
+        callback: Callback<any>,
+    ): void;
     getPageSpeedData(id: string, callback: Callback<any>): void;
 
-    getUtilizationData(id: string, options: Options & RunOptions, callback: Callback<any>): void;
+    getUtilizationData(
+        id: string,
+        options: Options & RunOptions,
+        callback: Callback<any>,
+    ): void;
     getUtilizationData(id: string, callback: Callback<any>): void;
 
-    getRequestData(id: string, options: Options & RunOptions, callback: Callback<any>): void;
+    getRequestData(
+        id: string,
+        options: Options & RunOptions,
+        callback: Callback<any>,
+    ): void;
     getRequestData(id: string, callback: Callback<any>): void;
 
-    getTimelineData(id: string, options: Options & RunOptions, callback: Callback<any>): void;
+    getTimelineData(
+        id: string,
+        options: Options & RunOptions,
+        callback: Callback<any>,
+    ): void;
     getTimelineData(id: string, callback: Callback<any>): void;
 
-    getNetLogData(id: string, options: Options & RunOptions, callback: Callback<any>): void;
+    getNetLogData(
+        id: string,
+        options: Options & RunOptions,
+        callback: Callback<any>,
+    ): void;
     getNetLogData(id: string, callback: Callback<any>): void;
 
-    getChromeTraceData(id: string, options: Options & RunOptions, callback: Callback<any>): void;
+    getChromeTraceData(
+        id: string,
+        options: Options & RunOptions,
+        callback: Callback<any>,
+    ): void;
     getChromeTraceData(id: string, callback: Callback<any>): void;
 
-    getConsoleLogData(id: string, options: Options & RunOptions, callback: Callback<any>): void;
+    getConsoleLogData(
+        id: string,
+        options: Options & RunOptions,
+        callback: Callback<any>,
+    ): void;
     getConsoleLogData(id: string, callback: Callback<any>): void;
 
     getTestInfo(id: string, options: Options, callback: Callback<any>): void;
@@ -389,10 +442,18 @@ declare class WebPageTest {
     getHistory(days: number, options: Options, callback: Callback<any>): void;
     getHistory(days: number, callback: Callback<any>): void;
 
-    getGoogleCsiData(id: string, options: Options & RunOptions, callback: Callback<any>): void;
+    getGoogleCsiData(
+        id: string,
+        options: Options & RunOptions,
+        callback: Callback<any>,
+    ): void;
     getGoogleCsiData(id: string, callback: Callback<any>): void;
 
-    getResponseBody(id: string, options: Options & RunOptions & ResponseOptions, callback: Callback<any>): void;
+    getResponseBody(
+        id: string,
+        options: Options & RunOptions & ResponseOptions,
+        callback: Callback<any>,
+    ): void;
     getResponseBody(id: string, callback: Callback<any>): void;
 
     getWaterfallImage(
@@ -409,13 +470,25 @@ declare class WebPageTest {
     ): void;
     getScreenshotImage(id: string, callback: Callback<any>): void;
 
-    createVideo(tests: string, options: Options & VideoOptions, callback: Callback<any>): void;
+    createVideo(
+        tests: string,
+        options: Options & VideoOptions,
+        callback: Callback<any>,
+    ): void;
     createVideo(tests: string, callback: Callback<any>): void;
 
-    getEmbedVideoPlayer(id: string, options: Options, callback: Callback<any>): void;
+    getEmbedVideoPlayer(
+        id: string,
+        options: Options,
+        callback: Callback<any>,
+    ): void;
     getEmbedVideoPlayer(id: string, callback: Callback<any>): void;
 
-    listen(port: number, options: Options & ListenOptions, callback: Callback<any>): void;
+    listen(
+        port: number,
+        options: Options & ListenOptions,
+        callback: Callback<any>,
+    ): void;
     listen(port: number, callback: Callback<any>): void;
 
     scriptToString(script: TestScript): string;

@@ -10,27 +10,27 @@ const PRIMITIVES: [null, undefined, true, false, string, "", number, 0] = [
     42,
     0,
 ];
-const NON_STRINGS: [null, undefined, true, false, number, 0, object, any[], () => void, RegExp] = [
+const NON_STRINGS: [
     null,
     undefined,
     true,
     false,
-    42,
+    number,
     0,
-    {},
-    [],
-    () => {},
-    /a/g,
-];
+    object,
+    any[],
+    () => void,
+    RegExp,
+] = [null, undefined, true, false, 42, 0, {}, [], () => {}, /a/g];
 
 // #region assert
 {
-    PRIMITIVES.forEach(primitive => {
+    PRIMITIVES.forEach((primitive) => {
         // @ts-expect-error
         SLOT.assert(primitive, "");
     });
 
-    NON_STRINGS.forEach(nonString => {
+    NON_STRINGS.forEach((nonString) => {
         // @ts-expect-error
         SLOT.assert({}, nonString);
     });
@@ -41,12 +41,12 @@ const NON_STRINGS: [null, undefined, true, false, number, 0, object, any[], () =
 
 // #region has
 {
-    PRIMITIVES.forEach(primitive => {
+    PRIMITIVES.forEach((primitive) => {
         // @ts-expect-error
         SLOT.has(primitive, "");
     });
 
-    NON_STRINGS.forEach(nonString => {
+    NON_STRINGS.forEach((nonString) => {
         // @ts-expect-error
         SLOT.has({}, nonString);
     });
@@ -57,12 +57,12 @@ const NON_STRINGS: [null, undefined, true, false, number, 0, object, any[], () =
 
 // #region get
 {
-    PRIMITIVES.forEach(primitive => {
+    PRIMITIVES.forEach((primitive) => {
         // @ts-expect-error
         SLOT.get(primitive, "");
     });
 
-    NON_STRINGS.forEach(nonString => {
+    NON_STRINGS.forEach((nonString) => {
         // @ts-expect-error
         SLOT.get({}, nonString);
     });
@@ -73,12 +73,12 @@ const NON_STRINGS: [null, undefined, true, false, number, 0, object, any[], () =
 
 // #region set
 {
-    PRIMITIVES.forEach(primitive => {
+    PRIMITIVES.forEach((primitive) => {
         // @ts-expect-error
         SLOT.set(primitive, "", null);
     });
 
-    NON_STRINGS.forEach(nonString => {
+    NON_STRINGS.forEach((nonString) => {
         // @ts-expect-error
         SLOT.set({}, nonString, null);
     });

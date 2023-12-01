@@ -3,7 +3,9 @@ import * as jsonld from "jsonld";
 const doc: jsonld.JsonLdDocument = {
     "http://schema.org/name": "Manu Sporny",
     "http://schema.org/url": { "@id": "http://manu.sporny.org/" },
-    "http://schema.org/image": { "@id": "http://manu.sporny.org/images/manu.png" },
+    "http://schema.org/image": {
+        "@id": "http://manu.sporny.org/images/manu.png",
+    },
 };
 
 const libraryFrame: jsonld.JsonLdDocument = {
@@ -55,15 +57,13 @@ jsonld.compact(doc, context, { appropriate: true }, (err, compDoc) => {
     log(compDoc);
 });
 
-jsonld.compact(doc, context)
-    .then((compDoc) => {
-        log(compDoc);
-    });
+jsonld.compact(doc, context).then((compDoc) => {
+    log(compDoc);
+});
 
-jsonld.compact(doc, context, { graph: false })
-    .then((compDoc) => {
-        log(compDoc);
-    });
+jsonld.compact(doc, context, { graph: false }).then((compDoc) => {
+    log(compDoc);
+});
 
 /**
  * expand() test
@@ -76,15 +76,13 @@ jsonld.expand(doc, { keepFreeFloatingNodes: false }, (err, res) => {
     log(res);
 });
 
-jsonld.expand(doc)
-    .then((res) => {
-        log(res);
-    });
+jsonld.expand(doc).then((res) => {
+    log(res);
+});
 
-jsonld.expand(doc, { keepFreeFloatingNodes: false })
-    .then((res) => {
-        log(res);
-    });
+jsonld.expand(doc, { keepFreeFloatingNodes: false }).then((res) => {
+    log(res);
+});
 
 /**
  * flatten() test
@@ -97,20 +95,17 @@ jsonld.flatten(doc, context, { expandContext: context }, (err, res) => {
     log(res);
 });
 
-jsonld.flatten(doc, context)
-    .then((res) => {
-        log(res);
-    });
+jsonld.flatten(doc, context).then((res) => {
+    log(res);
+});
 
-jsonld.flatten(doc)
-    .then((res) => {
-        log(res);
-    });
+jsonld.flatten(doc).then((res) => {
+    log(res);
+});
 
-jsonld.flatten(doc, context, { base: baseUrl })
-    .then((res) => {
-        log(res);
-    });
+jsonld.flatten(doc, context, { base: baseUrl }).then((res) => {
+    log(res);
+});
 
 /**
  * frame() test
@@ -123,20 +118,17 @@ jsonld.frame(doc, frame, { embed: "@last", explicit: false }, (err, res) => {
     log(res);
 });
 
-jsonld.frame(doc, frame)
-    .then((res) => {
-        log(res);
-    });
+jsonld.frame(doc, frame).then((res) => {
+    log(res);
+});
 
-jsonld.frame(doc, frame, { requireAll: true })
-    .then((res) => {
-        log(res);
-    });
+jsonld.frame(doc, frame, { requireAll: true }).then((res) => {
+    log(res);
+});
 
-jsonld.frame(doc, frame, { omitGraph: false })
-    .then((res) => {
-        log(res);
-    });
+jsonld.frame(doc, frame, { omitGraph: false }).then((res) => {
+    log(res);
+});
 
 /**
  * normalize() test
@@ -145,19 +137,21 @@ jsonld.normalize(doc, (err, res) => {
     log(res);
 });
 
-jsonld.normalize(doc, { algorithm: "URDNA2015", expansion: false }, (err, res) => {
+jsonld.normalize(
+    doc,
+    { algorithm: "URDNA2015", expansion: false },
+    (err, res) => {
+        log(res);
+    },
+);
+
+jsonld.normalize(doc).then((res) => {
     log(res);
 });
 
-jsonld.normalize(doc)
-    .then((res) => {
-        log(res);
-    });
-
-jsonld.normalize(doc, { expansion: false })
-    .then((res) => {
-        log(res);
-    });
+jsonld.normalize(doc, { expansion: false }).then((res) => {
+    log(res);
+});
 
 /**
  * canonize() test
@@ -166,32 +160,32 @@ jsonld.canonize(doc, (err, res) => {
     log(res);
 });
 
-jsonld.canonize(doc, { algorithm: "URDNA2015", expansion: false }, (err, res) => {
+jsonld.canonize(
+    doc,
+    { algorithm: "URDNA2015", expansion: false },
+    (err, res) => {
+        log(res);
+    },
+);
+
+jsonld.canonize(doc).then((res) => {
     log(res);
 });
 
-jsonld.canonize(doc)
-    .then((res) => {
-        log(res);
-    });
-
-jsonld.canonize(doc, { expansion: false })
-    .then((res) => {
-        log(res);
-    });
+jsonld.canonize(doc, { expansion: false }).then((res) => {
+    log(res);
+});
 
 /**
  * fromRDF() test
  */
-jsonld.fromRDF(docRDF)
-    .then((res) => {
-        log(res);
-    });
+jsonld.fromRDF(docRDF).then((res) => {
+    log(res);
+});
 
-jsonld.fromRDF(docRDF, { useRdfType: false })
-    .then((res) => {
-        log(res);
-    });
+jsonld.fromRDF(docRDF, { useRdfType: false }).then((res) => {
+    log(res);
+});
 
 /**
  * toRDF() test
@@ -204,15 +198,13 @@ jsonld.toRDF(doc, { format: "application/n-quads" }, (err, res) => {
     log(res);
 });
 
-jsonld.toRDF(doc)
-    .then((res) => {
-        log(res);
-    });
+jsonld.toRDF(doc).then((res) => {
+    log(res);
+});
 
-jsonld.toRDF(doc, { produceGeneralizedRdf: false })
-    .then((res) => {
-        log(res);
-    });
+jsonld.toRDF(doc, { produceGeneralizedRdf: false }).then((res) => {
+    log(res);
+});
 
 /*
  * Test class JsonLdProcessor
@@ -220,17 +212,14 @@ jsonld.toRDF(doc, { produceGeneralizedRdf: false })
 
 const processor = jsonld.JsonLdProcessor;
 
-processor.compact(doc, context)
-    .then((res) => {
-        log(res);
-    });
+processor.compact(doc, context).then((res) => {
+    log(res);
+});
 
-processor.expand(doc)
-    .then((res) => {
-        log(res);
-    });
+processor.expand(doc).then((res) => {
+    log(res);
+});
 
-processor.flatten(doc)
-    .then((res) => {
-        log(res);
-    });
+processor.flatten(doc).then((res) => {
+    log(res);
+});

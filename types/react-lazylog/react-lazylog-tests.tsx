@@ -1,5 +1,11 @@
 import * as React from "react";
-import { LazyLog, LazyLogProps, ScrollFollow, ScrollFollowProps, ScrollFollowRenderProps } from "react-lazylog";
+import {
+    LazyLog,
+    LazyLogProps,
+    ScrollFollow,
+    ScrollFollowProps,
+    ScrollFollowRenderProps,
+} from "react-lazylog";
 import Line, { LineProps } from "react-lazylog/build/Line";
 import LineContent, { LineContentProps } from "react-lazylog/build/LineContent";
 import LineNumber, { LineNumberProps } from "react-lazylog/build/LineNumber";
@@ -22,7 +28,9 @@ const loading = <Loading />;
 
 const scrollFollow = (
     <ScrollFollow
-        render={({ follow, onScroll, startFollowing, stopFollowing }) => <div />}
+        render={({ follow, onScroll, startFollowing, stopFollowing }) => (
+            <div />
+        )}
     />
 );
 

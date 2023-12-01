@@ -60,10 +60,21 @@ export default interface ClearBladeGlobal extends ClearBladeInt {
 
 export interface ClearBladeInt {
     addToQuery(queryObj: QueryObj, key: string, value: string): void;
-    addFilterToQuery(queryObj: QueryObj, condition: QueryConditions, key: string, value: QueryValue): void;
-    addSortToQuery(queryObj: QueryObj, direction: QuerySortDirections, column: string): void;
+    addFilterToQuery(
+        queryObj: QueryObj,
+        condition: QueryConditions,
+        key: string,
+        value: QueryValue,
+    ): void;
+    addSortToQuery(
+        queryObj: QueryObj,
+        direction: QuerySortDirections,
+        column: string,
+    ): void;
     Code(): Code;
-    Collection(options: string | CollectionOptionsWithName | CollectionOptionsWithID): Collection;
+    Collection(
+        options: string | CollectionOptionsWithName | CollectionOptionsWithID,
+    ): Collection;
     execute(error: object, response: object, callback: CbCallback): void;
     init(options: InitOptions): void;
     isObjectEmpty(obj: object): boolean;
@@ -75,13 +86,24 @@ export interface ClearBladeInt {
     makeKVPair(key: string, value: string): KeyValuePair;
     parseOperationQuery(query: Query): string;
     parseQuery(query: Query | QueryObj): string;
-    Query(options: string | QueryOptionsWithCollection | QueryOptionsWithName | QueryOptionsWithID): QueryObj;
+    Query(
+        options:
+            | string
+            | QueryOptionsWithCollection
+            | QueryOptionsWithName
+            | QueryOptionsWithID,
+    ): QueryObj;
     registerUser(email: string, password: string, callback: CbCallback): void;
     request(options: RequestOptions, callback: RequestCallback): void;
     setUser(email: string, password: string): void;
     User(): AppUser;
     Messaging(options: MessagingOptions, callback: CbCallback): Messaging;
-    sendPush(users: string[], payload: object, appId: string, callback: CbCallback): void;
+    sendPush(
+        users: string[],
+        payload: object,
+        appId: string,
+        callback: CbCallback,
+    ): void;
     validateEmailPassword(email: string, password: string): void;
 }
 
@@ -132,9 +154,13 @@ export interface QueryOptionsWithCollection extends QueryOptions {
     collection: string;
 }
 
-export interface QueryOptionsWithName extends CollectionOptionsWithName, QueryOptions {}
+export interface QueryOptionsWithName
+    extends CollectionOptionsWithName,
+        QueryOptions {}
 
-export interface QueryOptionsWithID extends CollectionOptionsWithID, QueryOptions {}
+export interface QueryOptionsWithID
+    extends CollectionOptionsWithID,
+        QueryOptions {}
 
 export interface Query {
     SELECTCOLUMNS?: string[] | undefined;
@@ -218,10 +244,22 @@ export interface Messaging {
     systemSecret: string;
     client: object;
 
-    getMessageHistory(topic: string, startTime: number, count: number, callback: CbCallback): void;
+    getMessageHistory(
+        topic: string,
+        startTime: number,
+        count: number,
+        callback: CbCallback,
+    ): void;
     publish(topic: string, payload: object): void;
-    subscribe(topic: string, options: MessagingSubscribeOptions, messageCallback: MessageCallback): void;
-    unsubscribe(topic: string, callback?: (error?: Error, packet?: object) => any): void;
+    subscribe(
+        topic: string,
+        options: MessagingSubscribeOptions,
+        messageCallback: MessageCallback,
+    ): void;
+    unsubscribe(
+        topic: string,
+        callback?: (error?: Error, packet?: object) => any,
+    ): void;
 }
 
 export interface CommonMessagingProperties {

@@ -2,7 +2,10 @@
 
 import stream = require("stream");
 
-declare function m(stream: NodeJS.ReadableStream | Buffer | string, image?: string): m.State;
+declare function m(
+    stream: NodeJS.ReadableStream | Buffer | string,
+    image?: string,
+): m.State;
 declare function m(width: number, height: number, color?: string): m.State;
 
 declare namespace m {
@@ -70,12 +73,16 @@ declare namespace m {
         path: string;
 
         "Profile-color"?: string | undefined;
-        "Profile-iptc"?: {
-            [key: string]: string;
-        } | undefined;
-        "Profile-EXIF"?: {
-            [key: string]: string;
-        } | undefined;
+        "Profile-iptc"?:
+            | {
+                  [key: string]: string;
+              }
+            | undefined;
+        "Profile-EXIF"?:
+            | {
+                  [key: string]: string;
+              }
+            | undefined;
         "Profile-XMP"?: string | undefined;
         Resolution?: string | undefined;
         size: Dimensions;
@@ -99,7 +106,12 @@ declare namespace m {
         background(color: string): State;
         bitdepth(bits: number): State;
         blackThreshold(intensity: number): State;
-        blackThreshold(red: number, green: number, blue: number, opacity?: number): State;
+        blackThreshold(
+            red: number,
+            green: number,
+            blue: number,
+            opacity?: number,
+        ): State;
         bluePrimary(x: number, y: number): State;
         blur(radius: number, sigma?: number): State;
         border(width: number, height: number): State;
@@ -121,7 +133,13 @@ declare namespace m {
         contrast(multiplier: number): State;
         convolve(kernel: string): State;
         createDirectories(): State;
-        crop(width: number, height: number, x?: number, y?: number, percent?: boolean): State;
+        crop(
+            width: number,
+            height: number,
+            x?: number,
+            y?: number,
+            percent?: boolean,
+        ): State;
         cycle(amount: number): State;
         deconstruct(): State;
         define(value: string): State;
@@ -146,7 +164,12 @@ declare namespace m {
         flip(): State;
         flop(): State;
         foreground(color: string): State;
-        frame(width: number, height: number, outerBevelWidth: number, outBevelHeight: number): State;
+        frame(
+            width: number,
+            height: number,
+            outerBevelWidth: number,
+            outBevelHeight: number,
+        ): State;
         fuzz(distance: number, percent?: boolean): State;
         gamma(r: number, g: number, b: number): State;
         gaussian(radius: number, sigma?: number): State;
@@ -162,8 +185,18 @@ declare namespace m {
         intent(type: IntentType | string): State;
         interlace(type: InterlaceType | string): State;
         label(name: string): State;
-        lat(width: number, height: number, offset: number, percent?: boolean): State;
-        level(blackPoint: number, gamma: number, whitePoint: number, percent?: boolean): State;
+        lat(
+            width: number,
+            height: number,
+            offset: number,
+            percent?: boolean,
+        ): State;
+        level(
+            blackPoint: number,
+            gamma: number,
+            whitePoint: number,
+            percent?: boolean,
+        ): State;
         limit(type: LimitType | string, val: string): State;
         list(type: ListType | string): State;
         log(format: string): State;
@@ -182,7 +215,11 @@ declare namespace m {
         monitor(): State;
         monochrome(): State;
         montage(otherImg: string): State;
-        morph(otherImg: string | string[], outName: string, callback?: WriteCallback): State;
+        morph(
+            otherImg: string | string[],
+            outName: string,
+            callback?: WriteCallback,
+        ): State;
         mosaic(): State;
         motionBlur(radius: number, sigma?: number, angle?: number): State;
         name(): State;
@@ -191,11 +228,20 @@ declare namespace m {
         noop(): State;
         normalize(): State;
         opaque(color: string): State;
-        operator(channel: string, operator: ChannelOperator | string, rvalue: number, percent?: boolean): State;
+        operator(
+            channel: string,
+            operator: ChannelOperator | string,
+            rvalue: number,
+            percent?: boolean,
+        ): State;
         orderedDither(channelType: ChannelType | string, NxN: string): State;
         out(...customArguments: string[]): State;
         outputDirectory(directory: string): State;
-        page(width: number, height: number, arg?: "%" | "!" | "<" | ">" | string): State;
+        page(
+            width: number,
+            height: number,
+            arg?: "%" | "!" | "<" | ">" | string,
+        ): State;
         pause(seconds: number): State;
         pen(color: string): State;
         ping(): State;
@@ -215,7 +261,13 @@ declare namespace m {
         remote(): State;
         render(): State;
         repage(reset: "+" | string): State;
-        repage(width: number, height: number, xoff: number, yoff: number, arg?: string): State;
+        repage(
+            width: number,
+            height: number,
+            xoff: number,
+            yoff: number,
+            arg?: string,
+        ): State;
         sample(geometry: string): State;
         samplingFactor(horizontalFactor: number, verticalFactor: number): State;
         rawSize(width: number, height: number, offset?: number): State;
@@ -251,8 +303,19 @@ declare namespace m {
         textFont(font: string): State;
         texture(filename: string): State;
         threshold(value: number, percent?: boolean): State;
-        thumb(width: number, height: number, outName: string, callback: WriteCallback): State;
-        thumb(width: number, height: number, outName: string, quality: number, callback: WriteCallback): State;
+        thumb(
+            width: number,
+            height: number,
+            outName: string,
+            callback: WriteCallback,
+        ): State;
+        thumb(
+            width: number,
+            height: number,
+            outName: string,
+            quality: number,
+            callback: WriteCallback,
+        ): State;
         thumb(
             width: number,
             height: number,
@@ -271,7 +334,12 @@ declare namespace m {
         type(type: ImageType | string): State;
         update(seconds: number): State;
         units(type: UnitType | string): State;
-        unsharp(radius: number, sigma?: number, amount?: number, threshold?: number): State;
+        unsharp(
+            radius: number,
+            sigma?: number,
+            amount?: number,
+            threshold?: number,
+        ): State;
         usePixmap(): State;
         view(): State;
         virtualPixel(method: VirtualPixelMethod | string): State;
@@ -280,7 +348,12 @@ declare namespace m {
         wave(amplitude: number, wavelength: number): State;
         whitePoint(x: number, y: number): State;
         whiteThreshold(intensity: number): State;
-        whiteThreshold(red: number, green: number, blue: number, opacity?: number): State;
+        whiteThreshold(
+            red: number,
+            green: number,
+            blue: number,
+            opacity?: number,
+        ): State;
         window(id: string): State;
         windowGroup(): State;
 
@@ -295,20 +368,44 @@ declare namespace m {
         format(opts: GetterOptions, callback: GetterCallback<string>): State;
         identify(callback: GetterCallback<ImageInfo>): State;
         identify(format: string, callback: GetterCallback<string>): State;
-        identify(opts: GetterOptions, callback: GetterCallback<ImageInfo>): State;
+        identify(
+            opts: GetterOptions,
+            callback: GetterCallback<ImageInfo>,
+        ): State;
         res(callback: GetterCallback<string>): State;
         res(opts: GetterOptions, callback: GetterCallback<string>): State;
         size(callback: GetterCallback<Dimensions>): State;
         size(opts: GetterOptions, callback: GetterCallback<Dimensions>): State;
         orientation(callback: GetterCallback<string>): State;
-        orientation(opts: GetterOptions, callback: GetterCallback<string>): State;
+        orientation(
+            opts: GetterOptions,
+            callback: GetterCallback<string>,
+        ): State;
 
         // Drawing Operations
         draw(args: string): State;
-        drawArc(x0: number, y0: number, x1: number, y1: number, r0: number, r1: number): State;
-        drawBezier(coord0: [number, number], coord1: [number, number], ...coords: Array<[number, number]>): State;
+        drawArc(
+            x0: number,
+            y0: number,
+            x1: number,
+            y1: number,
+            r0: number,
+            r1: number,
+        ): State;
+        drawBezier(
+            coord0: [number, number],
+            coord1: [number, number],
+            ...coords: Array<[number, number]>
+        ): State;
         drawCircle(x0: number, y0: number, x1: number, y1: number): State;
-        drawEllipse(x0: number, y0: number, rx: number, ry: number, a0: number, a1: number): State;
+        drawEllipse(
+            x0: number,
+            y0: number,
+            rx: number,
+            ry: number,
+            a0: number,
+            a1: number,
+        ): State;
         drawLine(x0: number, y0: number, x1: number, y1: number): State;
         drawPoint(x: number, y: number): State;
         drawPolygon(
@@ -323,20 +420,42 @@ declare namespace m {
             coord2: [number, number],
             ...coords: Array<[number, number]>
         ): State;
-        drawRectangle(x0: number, y0: number, x1: number, y1: number, wc?: number, hc?: number): State;
-        drawText(x: number, y: number, text: string, gravity?: GravityDirection | string): State;
+        drawRectangle(
+            x0: number,
+            y0: number,
+            x1: number,
+            y1: number,
+            wc?: number,
+            hc?: number,
+        ): State;
+        drawText(
+            x: number,
+            y: number,
+            text: string,
+            gravity?: GravityDirection | string,
+        ): State;
         fill(color: string): State;
         font(name: string, size?: number): State;
         fontSize(size: number): State;
         stroke(color: string, width?: number): State;
         strokeWidth(width: number): State;
-        setDraw(property: SetDrawProperty | string, x: number, y: number, method: SetDrawMethod | string): State;
+        setDraw(
+            property: SetDrawProperty | string,
+            x: number,
+            y: number,
+            method: SetDrawMethod | string,
+        ): State;
 
         // Commands
         stream(callback?: WriteCallback): stream.PassThrough;
         stream(format: string, callback?: WriteCallback): stream.PassThrough;
-        toBuffer(callback: (err: Error | null, buffer: Buffer) => any): stream.PassThrough;
-        toBuffer(format: string, callback: (err: Error | null, buffer: Buffer) => any): stream.PassThrough;
+        toBuffer(
+            callback: (err: Error | null, buffer: Buffer) => any,
+        ): stream.PassThrough;
+        toBuffer(
+            format: string,
+            callback: (err: Error | null, buffer: Buffer) => any,
+        ): stream.PassThrough;
         write(filename: string, callback: WriteCallback): void;
     }
 
@@ -346,7 +465,11 @@ declare namespace m {
         (width: number, height: number, color?: string): State;
     }
 
-    function compare(filename1: string, filename2: string, callback: CompareCallback): void;
+    function compare(
+        filename1: string,
+        filename2: string,
+        callback: CompareCallback,
+    ): void;
     function compare(
         filename1: string,
         filename2: string,
@@ -418,7 +541,12 @@ declare namespace m {
         | "YPbPr"
         | "YUV";
 
-    type CompareCallback = (err: Error | null, isEqual: boolean, equality: number, raw: number) => any;
+    type CompareCallback = (
+        err: Error | null,
+        isEqual: boolean,
+        equality: number,
+        raw: number,
+    ) => any;
 
     type ComposeOperator =
         | "Over"
@@ -456,11 +584,7 @@ declare namespace m {
         | "Zip"
         | "LZMA";
 
-    type DisposeMethod =
-        | "Undefined"
-        | "None"
-        | "Background"
-        | "Previous";
+    type DisposeMethod = "Undefined" | "None" | "Background" | "Previous";
 
     type Encoding =
         | "AdobeCustom"
@@ -476,10 +600,7 @@ declare namespace m {
         | "Unicode"
         | "Wansung";
 
-    type EndianType =
-        | "MSB"
-        | "LSB"
-        | "Native";
+    type EndianType = "MSB" | "LSB" | "Native";
 
     type FilterType =
         | "Point"
@@ -511,11 +632,7 @@ declare namespace m {
         | "South"
         | "SouthEast";
 
-    type HighlightStyle =
-        | "Assign"
-        | "Threshold"
-        | "Tint"
-        | "XOR";
+    type HighlightStyle = "Assign" | "Threshold" | "Tint" | "XOR";
 
     type ImageType =
         | "Bilevel"
@@ -528,25 +645,11 @@ declare namespace m {
         | "ColorSeparationMatte"
         | "Optimize";
 
-    type IntentType =
-        | "Absolute"
-        | "Perceptual"
-        | "Relative"
-        | "Saturation";
+    type IntentType = "Absolute" | "Perceptual" | "Relative" | "Saturation";
 
-    type InterlaceType =
-        | "None"
-        | "Line"
-        | "Plane"
-        | "Partition";
+    type InterlaceType = "None" | "Line" | "Plane" | "Partition";
 
-    type LimitType =
-        | "disk"
-        | "file"
-        | "map"
-        | "memory"
-        | "pixels"
-        | "threads";
+    type LimitType = "disk" | "file" | "map" | "memory" | "pixels" | "threads";
 
     type ListType =
         | "Color"
@@ -577,10 +680,7 @@ declare namespace m {
         | "laplacian"
         | "poisson";
 
-    type OperationMode =
-        | "frame"
-        | "unframe"
-        | "concatenate";
+    type OperationMode = "frame" | "unframe" | "concatenate";
 
     type PreviewType =
         | "Rotate"
@@ -630,16 +730,9 @@ declare namespace m {
 
     type SetDrawProperty = "color" | "matte";
 
-    type UnitType =
-        | "Undefined"
-        | "PixelsPerInch"
-        | "PixelsPerCentimeter";
+    type UnitType = "Undefined" | "PixelsPerInch" | "PixelsPerCentimeter";
 
-    type VirtualPixelMethod =
-        | "Constant"
-        | "Edge"
-        | "Mirror"
-        | "Tile";
+    type VirtualPixelMethod = "Constant" | "Edge" | "Mirror" | "Tile";
 
     type VisualType =
         | "StaticGray"
@@ -650,7 +743,12 @@ declare namespace m {
         | "DirectColor"
         | "default";
 
-    type WriteCallback = (err: Error | null, stdout: stream.Readable, stderr: stream.Readable, cmd: string) => any;
+    type WriteCallback = (
+        err: Error | null,
+        stdout: stream.Readable,
+        stderr: stream.Readable,
+        cmd: string,
+    ) => any;
 }
 
 export = m;

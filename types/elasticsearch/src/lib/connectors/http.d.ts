@@ -9,5 +9,13 @@ declare class HttpConnector {
     createAgent(config: any): any;
     makeAgentConfig(config: any): any;
     makeReqParams(params: any): any;
-    request(params: any, callback: (error: any, response: any, status: any, headers: any) => void): void;
+    request(
+        params: any,
+        callback: (
+            error: any,
+            response: any,
+            status: any,
+            headers: any,
+        ) => void,
+    ): void;
 }

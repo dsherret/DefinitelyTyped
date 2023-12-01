@@ -28,7 +28,9 @@ positioner.calculate("topLeft");
 // $ExpectType { x: number; y: number; }
 positioner.calculate("topLeft", rectangle);
 
-const positionOrTrayPosition = "trayLeft" as Positioner.Position | Positioner.TrayPosition;
+const positionOrTrayPosition = "trayLeft" as
+    | Positioner.Position
+    | Positioner.TrayPosition;
 
 // @ts-expect-error
 positioner.move(positionOrTrayPosition);

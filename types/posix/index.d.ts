@@ -22,7 +22,15 @@ export interface Limit {
     hard: number | null;
 }
 
-export type Resource = "core" | "cpu" | "data" | "fsize" | "nofile" | "nproc" | "stack" | "as";
+export type Resource =
+    | "core"
+    | "cpu"
+    | "data"
+    | "fsize"
+    | "nofile"
+    | "nproc"
+    | "stack"
+    | "as";
 
 export interface LogOption {
     pid?: PosixMask;
@@ -54,7 +62,15 @@ export type Facility =
     | "local6"
     | "local7";
 
-export type Priority = "emerg" | "alert" | "crit" | "err" | "warning" | "notice" | "info" | "debug";
+export type Priority =
+    | "emerg"
+    | "alert"
+    | "crit"
+    | "err"
+    | "warning"
+    | "notice"
+    | "info"
+    | "debug";
 
 export interface PriorityMask {
     emerg?: PosixMask;
@@ -97,9 +113,16 @@ export function setpgid(pid: number, pgid: number): void;
 export function getppid(): number;
 export function getpwnam(user: number | string): Passwd;
 export function getrlimit(resource: Resource): Limit;
-export function setrlimit(resource: Resource, limit: { soft?: number | null; hard?: number | null }): void;
+export function setrlimit(
+    resource: Resource,
+    limit: { soft?: number | null; hard?: number | null },
+): void;
 export function setsid(): number;
-export function openlog(ident: string, option: LogOption, facility: Facility): void;
+export function openlog(
+    ident: string,
+    option: LogOption,
+    facility: Facility,
+): void;
 export function syslog(priority: Priority, message: string): void;
 export function setlogmask(mask: PriorityMask): LogMask;
 export function getpgrp(): number;
@@ -109,6 +132,10 @@ export function setegid(gid: number | string): void;
 export function setregid(rgid: number | string, egid: number | string): void;
 export function gethostname(): string;
 export function sethostname(hostname: string): void;
-export const swapon: ((path: string, swapFlags?: SwapFlags) => void) | undefined;
+export const swapon:
+    | ((path: string, swapFlags?: SwapFlags) => void)
+    | undefined;
 export const swapoff: ((path: string) => void) | undefined;
-export const initgroups: ((user: string, group: number | string) => void) | undefined;
+export const initgroups:
+    | ((user: string, group: number | string) => void)
+    | undefined;

@@ -20,7 +20,9 @@ const MyVisitor: Visitor = {
         // $ExpectType Identifier
         addNamed(path, "import-name", "some-pkg");
         // $ExpectType MemberExpression
-        addNamed(path, "import-name", "some-pkg", { ensureLiveReference: true });
+        addNamed(path, "import-name", "some-pkg", {
+            ensureLiveReference: true,
+        });
         // $ExpectType SequenceExpression
         addNamed(path, "import-name", "some-pkg", { ensureNoContext: true });
 

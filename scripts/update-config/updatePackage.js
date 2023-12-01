@@ -22,7 +22,11 @@ export function updatePackage(pkgPath, baseConfig) {
         const results = pkg.lint(linterOpts, baseConfig);
         if (results.failures.length > 0) {
             const disabledRules = disableRules(results.failures);
-            const newConfig = mergeConfigRules(pkg.config(), disabledRules, baseConfig);
+            const newConfig = mergeConfigRules(
+                pkg.config(),
+                disabledRules,
+                baseConfig,
+            );
             pkg.updateConfig(newConfig);
         }
     }
@@ -39,7 +43,10 @@ function walkPackageDir(rootDir) {
      * @param {string} dir
      */
     function walk(curPackage, dir) {
-        for (const ent of fs.readdirSync(dir, { encoding: "utf8", withFileTypes: true })) {
+        for (const ent of fs.readdirSync(dir, {
+            encoding: "utf8",
+            withFileTypes: true,
+        })) {
             const entPath = path.join(dir, ent.name);
             if (ent.isFile()) {
                 curPackage.addFile(entPath);
@@ -96,7 +103,11 @@ function mergeConfigRules(config, newRules, baseConfig) {
         .map(([ruleName]) => ruleName);
     const oldRules = config.rules || {};
     const newRulesConfig = {
-        ...Object.fromEntries(Object.entries(oldRules).filter(([rule]) => !activeRules.includes(rule))),
+        ...Object.fromEntries(
+            Object.entries(oldRules).filter(
+                ([rule]) => !activeRules.includes(rule),
+            ),
+        ),
         ...newRules,
     };
     return { ...config, rules: newRulesConfig };
@@ -117,7 +128,9 @@ function disableRules(allFailures) {
     return Object.fromEntries(
         Object.entries(ruleToFailures).map(([rule, failures]) => [
             rule,
-            (rule === "npm-naming" ? npmNamingDisabler : defaultDisabler)(failures),
+            (rule === "npm-naming" ? npmNamingDisabler : defaultDisabler)(
+                failures,
+            ),
         ]),
     );
 }

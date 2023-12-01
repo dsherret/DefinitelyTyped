@@ -26,6 +26,8 @@ declare namespace gulpCodecov {
     }
 }
 
-declare function gulpCodecov(options?: gulpCodecov.CodecovOptions): stream.Transform;
+declare function gulpCodecov(
+    options?: gulpCodecov.CodecovOptions,
+): stream.Transform;
 
 export = gulpCodecov;

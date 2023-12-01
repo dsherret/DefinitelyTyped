@@ -1,9 +1,7 @@
 import * as gulp from "gulp";
 import autoprefixer = require("gulp-autoprefixer");
 
-gulp.src("test.css")
-    .pipe(autoprefixer())
-    .pipe(gulp.dest("build"));
+gulp.src("test.css").pipe(autoprefixer()).pipe(gulp.dest("build"));
 
 gulp.src("test.css")
     .pipe(autoprefixer({ browsers: ["Chrome"] }))

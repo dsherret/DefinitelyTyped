@@ -13,5 +13,9 @@ declare namespace promiseMemoize {
         maxErrorAge?: number | undefined;
         resolve?: KeyResolver | undefined;
     }
-    type KeyResolver = "simple" | "json" | ((args: any[]) => any) | ReadonlyArray<"json" | ((arg: any) => any)>;
+    type KeyResolver =
+        | "simple"
+        | "json"
+        | ((args: any[]) => any)
+        | ReadonlyArray<"json" | ((arg: any) => any)>;
 }

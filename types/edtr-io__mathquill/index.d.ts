@@ -35,10 +35,12 @@ export interface Config {
     autoOperatorNames?: string | undefined;
     maxDepth?: number | undefined;
     substituteTextarea?(): HTMLTextAreaElement;
-    handlers?: {
-        enter?(mathField: MQ): any;
-        edit?(mathField: MQ): any;
-        upOutOf?(mathField: MQ): any;
-        moveOutOf?(direction: number, mathField: MQ): any;
-    } | undefined;
+    handlers?:
+        | {
+              enter?(mathField: MQ): any;
+              edit?(mathField: MQ): any;
+              upOutOf?(mathField: MQ): any;
+              moveOutOf?(direction: number, mathField: MQ): any;
+          }
+        | undefined;
 }

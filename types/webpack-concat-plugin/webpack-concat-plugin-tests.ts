@@ -21,7 +21,12 @@ new ConcatPlugin({
     name: "result",
     outputPath: "path/to/output/",
     fileName: "[name].[hash:8].js",
-    filesToConcat: ["jquery", "./src/lib/**", "./dep/dep.js", ["./some/**", "!./some/excludes/**"]],
+    filesToConcat: [
+        "jquery",
+        "./src/lib/**",
+        "./dep/dep.js",
+        ["./some/**", "!./some/excludes/**"],
+    ],
     attributes: {
         async: true,
     },
@@ -42,7 +47,12 @@ new ConcatPlugin({
             preamble: "/* uglified */",
         },
     },
-    filesToConcat: ["jquery", "./src/lib/**", "./dep/dep.js", ["./some/**", "!./some/excludes/**"]],
+    filesToConcat: [
+        "jquery",
+        "./src/lib/**",
+        "./dep/dep.js",
+        ["./some/**", "!./some/excludes/**"],
+    ],
 });
 
 const config: webpack.Configuration = {

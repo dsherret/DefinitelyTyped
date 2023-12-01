@@ -1,4 +1,9 @@
-import { emitter, experimentDebugger, mixpanelHelper, segmentHelper } from "marvelapp__react-ab-test";
+import {
+    emitter,
+    experimentDebugger,
+    mixpanelHelper,
+    segmentHelper,
+} from "marvelapp__react-ab-test";
 
 emitter.emitWin("Experiment 1"); // $ExpectType void
 emitter.addActiveVariantListener("Experiment 1", () => "test"); // $ExpectType Subscription

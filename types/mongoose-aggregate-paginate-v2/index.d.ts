@@ -70,7 +70,12 @@ declare module "mongoose" {
         ): Promise<AggregatePaginateResult<T>>;
     }
 
-    function model(name: string, schema?: Schema, collection?: string, skipInit?: boolean): AggregatePaginateModel<any>;
+    function model(
+        name: string,
+        schema?: Schema,
+        collection?: string,
+        skipInit?: boolean,
+    ): AggregatePaginateModel<any>;
 }
 
 import mongoose = require("mongoose");

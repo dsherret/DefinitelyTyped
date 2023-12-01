@@ -28,17 +28,25 @@ export interface FormProps {
     dontValidateOnMount?: boolean | undefined;
     validateOnSubmit?: boolean | undefined;
     defaultValues?: FormValues | undefined;
-    onSubmit?(values: FormValues, submissionEvent: React.SyntheticEvent<any>, formApi: FormApi): void;
+    onSubmit?(
+        values: FormValues,
+        submissionEvent: React.SyntheticEvent<any>,
+        formApi: FormApi,
+    ): void;
     preSubmit?(values: FormValues, formApi: FormApi): FormValues;
     onSubmitFailure?(errors: FormErrors, formApi: FormApi): void;
     formDidUpdate?(formState: FormState): void;
     preValidate?(values: FormValues): FormValues;
     validateError?: ValidateValuesFunction | undefined;
     validateWarning?: ValidateValuesFunction | undefined;
-    validateSuccess?: ((values: FormValues, errors: FormErrors) => FormErrors) | undefined;
-    asyncValidators?: {
-        [field: string]: (value: FormValue) => Promise<any>;
-    } | undefined;
+    validateSuccess?:
+        | ((values: FormValues, errors: FormErrors) => FormErrors)
+        | undefined;
+    asyncValidators?:
+        | {
+              [field: string]: (value: FormValue) => Promise<any>;
+          }
+        | undefined;
     dontPreventDefault?: boolean | undefined;
     getApi?: ((formApi: FormApi) => void) | undefined;
 }
@@ -82,9 +90,17 @@ export interface FormContext {
     formApi: FormApi;
 }
 
-export class Form extends React.Component<
-    FormProps & { children?: ((props: FormFunctionProps) => RenderReturn) | RenderReturn | undefined }
-> implements React.ChildContextProvider<FormContext> {
+export class Form
+    extends React.Component<
+        FormProps & {
+            children?:
+                | ((props: FormFunctionProps) => RenderReturn)
+                | RenderReturn
+                | undefined;
+        }
+    >
+    implements React.ChildContextProvider<FormContext>
+{
     static defaultProps: FormProps;
     static childContextTypes: {
         formApi: React.Validator<any>;
@@ -93,7 +109,10 @@ export class Form extends React.Component<
     getDefaultState(): FormState;
     getChildContext(): FormContext;
     componentWillMount(): void;
-    componentWillReceiveProps(nextProps: Readonly<Partial<FormProps>>, nextContext: any): void;
+    componentWillReceiveProps(
+        nextProps: Readonly<Partial<FormProps>>,
+        nextContext: any,
+    ): void;
     componentWillUmount(): void;
 
     render(): RenderReturn;
@@ -101,7 +120,9 @@ export class Form extends React.Component<
 
 export const NestedForm: React.FunctionComponent<FieldProps>;
 
-export function FormField(component: React.ComponentType<any>): React.ComponentClass<any>;
+export function FormField(
+    component: React.ComponentType<any>,
+): React.ComponentClass<any>;
 
 // Fields
 
@@ -121,7 +142,12 @@ export interface FieldApi {
 
 export interface FieldProps {
     children?: React.ReactNode;
-    field?: string | string[] | Array<string | number> | Array<(string | Array<string | number>)> | undefined;
+    field?:
+        | string
+        | string[]
+        | Array<string | number>
+        | Array<string | Array<string | number>>
+        | undefined;
     showErrors?: boolean | undefined;
     errorBefore?: boolean | undefined;
     isForm?: boolean | undefined;
@@ -132,32 +158,49 @@ export type SelectOptions = Array<{
     label: string;
 }>;
 
-export interface SelectProps extends FieldProps, React.SelectHTMLAttributes<HTMLSelectElement> {
+export interface SelectProps
+    extends FieldProps,
+        React.SelectHTMLAttributes<HTMLSelectElement> {
     options: SelectOptions;
     placeholder?: string | undefined;
 }
 
 export const Select: React.FunctionComponent<SelectProps>;
 
-export const Text: React.FunctionComponent<FieldProps & React.InputHTMLAttributes<HTMLInputElement>>;
-export const TextArea: React.FunctionComponent<FieldProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>>;
+export const Text: React.FunctionComponent<
+    FieldProps & React.InputHTMLAttributes<HTMLInputElement>
+>;
+export const TextArea: React.FunctionComponent<
+    FieldProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>
+>;
 
 export interface RadioGroupContext {
     group: FieldApi;
 }
 
-export class RadioGroup extends React.Component<
-    Omit<FieldProps, "children"> & { children?: ((props: FieldApi) => RenderReturn) | RenderReturn | undefined }
-> implements React.ChildContextProvider<RadioGroupContext> {
+export class RadioGroup
+    extends React.Component<
+        Omit<FieldProps, "children"> & {
+            children?:
+                | ((props: FieldApi) => RenderReturn)
+                | RenderReturn
+                | undefined;
+        }
+    >
+    implements React.ChildContextProvider<RadioGroupContext>
+{
     getChildContext(): {
         group: FieldApi;
     };
 }
 
 export const Radio: React.FunctionComponent<
-    FieldProps & React.InputHTMLAttributes<HTMLInputElement> & { group: FieldApi }
+    FieldProps &
+        React.InputHTMLAttributes<HTMLInputElement> & { group: FieldApi }
 >;
-export const Checkbox: React.FunctionComponent<FieldProps & React.InputHTMLAttributes<HTMLInputElement>>;
+export const Checkbox: React.FunctionComponent<
+    FieldProps & React.InputHTMLAttributes<HTMLInputElement>
+>;
 
 // Styled Fields
 
@@ -168,20 +211,37 @@ export interface StyledProps extends FieldProps {
 }
 
 export const StyledCheckbox: React.FunctionComponent<
-    StyledProps & React.InputHTMLAttributes<HTMLInputElement> & { label: string }
+    StyledProps &
+        React.InputHTMLAttributes<HTMLInputElement> & { label: string }
 >;
-export const StyledTextArea: React.FunctionComponent<StyledProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>>;
+export const StyledTextArea: React.FunctionComponent<
+    StyledProps & React.TextareaHTMLAttributes<HTMLTextAreaElement>
+>;
 export const StyledSelect: React.FunctionComponent<
     StyledProps & SelectProps & React.InputHTMLAttributes<HTMLSelectElement>
 >;
-export const StyledText: React.FunctionComponent<StyledProps & React.InputHTMLAttributes<HTMLInputElement>>;
+export const StyledText: React.FunctionComponent<
+    StyledProps & React.InputHTMLAttributes<HTMLInputElement>
+>;
 export const StyledRadio: React.FunctionComponent<
-    StyledProps & React.InputHTMLAttributes<HTMLInputElement> & { group: FieldApi; label: string }
+    StyledProps &
+        React.InputHTMLAttributes<HTMLInputElement> & {
+            group: FieldApi;
+            label: string;
+        }
 >;
 
-export class StyledRadioGroup extends React.Component<
-    Omit<StyledProps, "children"> & { children?: ((props: FieldApi) => RenderReturn) | RenderReturn | undefined }
-> implements React.ChildContextProvider<RadioGroupContext> {
+export class StyledRadioGroup
+    extends React.Component<
+        Omit<StyledProps, "children"> & {
+            children?:
+                | ((props: FieldApi) => RenderReturn)
+                | RenderReturn
+                | undefined;
+        }
+    >
+    implements React.ChildContextProvider<RadioGroupContext>
+{
     getChildContext(): {
         group: FieldApi;
     };

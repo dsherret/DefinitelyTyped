@@ -28,7 +28,7 @@ const cardElementProps: ElementsOptions = {
         base: {
             color: "#32325d",
             lineHeight: "24px",
-            fontFamily: "Roboto, \"Helvetica Neue\", sans-serif",
+            fontFamily: 'Roboto, "Helvetica Neue", sans-serif',
             fontSmoothing: "antialiased",
             fontSize: "16px",
             "::placeholder": {
@@ -141,12 +141,15 @@ interface ComponentProps {
     tokenCallback(token: TokenResponse): void;
 }
 
-class WrappedComponent extends React.Component<ComponentProps & InjectedStripeProps> {
+class WrappedComponent extends React.Component<
+    ComponentProps & InjectedStripeProps
+> {
     constructor(props: ComponentProps & InjectedStripeProps) {
         super(props);
         // Test for paymentRequest
-        const paymentRequest = props.stripe
-            && props.stripe.paymentRequest({
+        const paymentRequest =
+            props.stripe &&
+            props.stripe.paymentRequest({
                 country: "US",
                 currency: "usd",
                 total: {
@@ -155,8 +158,11 @@ class WrappedComponent extends React.Component<ComponentProps & InjectedStripePr
                 },
             });
         if (paymentRequest) {
-            paymentRequest.on("token", ({ complete, token, ...data }) => undefined);
-            paymentRequest.canMakePayment().then(res => undefined);
+            paymentRequest.on(
+                "token",
+                ({ complete, token, ...data }) => undefined,
+            );
+            paymentRequest.canMakePayment().then((res) => undefined);
         }
     }
 
@@ -175,7 +181,9 @@ class WrappedComponent extends React.Component<ComponentProps & InjectedStripePr
                 address_country: "",
                 currency: "",
             })
-            .then((response: TokenResponse) => this.props.tokenCallback(response));
+            .then((response: TokenResponse) =>
+                this.props.tokenCallback(response),
+            );
 
         // createToken(options?: BankAccountTokenOptions)
         this.props
@@ -187,7 +195,9 @@ class WrappedComponent extends React.Component<ComponentProps & InjectedStripePr
                 account_holder_name: "",
                 account_holder_type: "individual",
             })
-            .then((response: TokenResponse) => this.props.tokenCallback(response));
+            .then((response: TokenResponse) =>
+                this.props.tokenCallback(response),
+            );
     };
 
     isFormValid = () => {
@@ -205,7 +215,8 @@ class WrappedComponent extends React.Component<ComponentProps & InjectedStripePr
     }
 }
 
-const ExportedComponent: React.ComponentType<ComponentProps> = injectStripe(WrappedComponent);
+const ExportedComponent: React.ComponentType<ComponentProps> =
+    injectStripe(WrappedComponent);
 
 class MainComponent extends React.Component {
     onTokenReceived = (token: TokenResponse) => void 0;
@@ -249,7 +260,7 @@ const TestStripeProviderProps1: React.FC = () => <StripeProvider apiKey="" />;
 
 const TestStripeProviderProps2: React.FC<{
     stripe: stripe.Stripe;
-}> = props => <StripeProvider stripe={props.stripe} />;
+}> = (props) => <StripeProvider stripe={props.stripe} />;
 
 /**
  * props.stripe is null until loaded.
@@ -257,7 +268,7 @@ const TestStripeProviderProps2: React.FC<{
  */
 const TestStripeProviderProps3: React.FC<{
     stripe: stripe.Stripe;
-}> = props => <StripeProvider stripe={null} />;
+}> = (props) => <StripeProvider stripe={null} />;
 
 /**
  * End-to-end usage of loading stripe.js asynchronously.
@@ -265,7 +276,7 @@ const TestStripeProviderProps3: React.FC<{
  */
 const TestStripeProviderProps4: React.FC<{
     stripe: null | stripe.Stripe;
-}> = props => (
+}> = (props) => (
     <StripeProvider stripe={props.stripe}>
         <Elements>
             <div />
@@ -277,7 +288,9 @@ const TestStripeProviderProps4: React.FC<{
  * StripeProvider should be able to accept options.
  * See: https://stripe.com/docs/stripe-js/reference#stripe-function for options.
  */
-const TestStripeProviderOptions: React.FC = () => <StripeProvider apiKey="" stripeAccount="" />;
+const TestStripeProviderOptions: React.FC = () => (
+    <StripeProvider apiKey="" stripeAccount="" />
+);
 
 class CreatePaymentMethod extends React.Component<InjectedStripeProps> {
     testCreatePaymentMethod = () => {

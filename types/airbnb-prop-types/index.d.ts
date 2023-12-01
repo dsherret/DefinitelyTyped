@@ -11,18 +11,25 @@ export interface ReactComponentLike {
 }
 
 export interface ReactClassComponentLike {
-    new(...args: any[]): ReactComponentLike;
+    new (...args: any[]): ReactComponentLike;
 }
 
-export type ReactFunctionComponentLike = (...args: any[]) => PropTypes.ReactNodeLike;
+export type ReactFunctionComponentLike = (
+    ...args: any[]
+) => PropTypes.ReactNodeLike;
 
-export type ReactTypeLike = string | ReactClassComponentLike | ReactFunctionComponentLike;
+export type ReactTypeLike =
+    | string
+    | ReactClassComponentLike
+    | ReactFunctionComponentLike;
 
 export interface ReactRefLike<T> {
     readonly current: T | null;
 }
 
-export type ReactLegacyRefLike<T> = ((instance: T | null) => void) | ReactRefLike<T>;
+export type ReactLegacyRefLike<T> =
+    | ((instance: T | null) => void)
+    | ReactRefLike<T>;
 
 export interface Specifier<T = any> {
     max?: number | undefined;
@@ -41,7 +48,11 @@ export function and<A, B>(
 ): PropTypes.Requireable<A & B>;
 
 export function and<A, B, C>(
-    propTypes: [PropTypes.Validator<A>, PropTypes.Validator<B>, PropTypes.Validator<C>],
+    propTypes: [
+        PropTypes.Validator<A>,
+        PropTypes.Validator<B>,
+        PropTypes.Validator<C>,
+    ],
     name?: string,
 ): PropTypes.Requireable<A & B & C>;
 
@@ -114,7 +125,9 @@ export function mutuallyExclusiveProps<T>(
     ...propNames: string[]
 ): PropTypes.Requireable<T>;
 
-export function mutuallyExclusiveTrueProps(...propNames: string[]): PropTypes.Requireable<boolean>;
+export function mutuallyExclusiveTrueProps(
+    ...propNames: string[]
+): PropTypes.Requireable<boolean>;
 
 export function nChildren<T = PropTypes.ReactNodeLike, P = any>(
     n: number,
@@ -129,7 +142,10 @@ export function numericString(): PropTypes.Requireable<string>;
 
 export function object<T extends object>(): PropTypes.Requireable<T>;
 
-export function or<A>(propTypes: [PropTypes.Validator<A>], name?: string): PropTypes.Requireable<A>;
+export function or<A>(
+    propTypes: [PropTypes.Validator<A>],
+    name?: string,
+): PropTypes.Requireable<A>;
 
 export function or<A, B>(
     propTypes: [PropTypes.Validator<A>, PropTypes.Validator<B>],
@@ -137,7 +153,11 @@ export function or<A, B>(
 ): PropTypes.Requireable<A | B>;
 
 export function or<A, B, C>(
-    propTypes: [PropTypes.Validator<A>, PropTypes.Validator<B>, PropTypes.Validator<C>],
+    propTypes: [
+        PropTypes.Validator<A>,
+        PropTypes.Validator<B>,
+        PropTypes.Validator<C>,
+    ],
     name?: string,
 ): PropTypes.Requireable<A | B | C>;
 
@@ -152,11 +172,19 @@ export function or<T = any>(
     name?: string,
 ): PropTypes.Requireable<T>;
 
-export function range<T extends number>(min?: number, max?: number): PropTypes.Requireable<T>;
+export function range<T extends number>(
+    min?: number,
+    max?: number,
+): PropTypes.Requireable<T>;
 
-export function range(min?: number, max?: number): PropTypes.Requireable<number>;
+export function range(
+    min?: number,
+    max?: number,
+): PropTypes.Requireable<number>;
 
-export function ref<T = HTMLElement>(): PropTypes.Requireable<ReactLegacyRefLike<T>>;
+export function ref<T = HTMLElement>(): PropTypes.Requireable<
+    ReactLegacyRefLike<T>
+>;
 
 export function requiredBy<P>(
     requiredByPropName: string,
@@ -174,7 +202,9 @@ export function restrictedProp<T>(
     ) => string | Error | undefined,
 ): PropTypes.Requireable<T>;
 
-export function sequenceOf<T>(...specifiers: Specifier[]): PropTypes.Requireable<T>;
+export function sequenceOf<T>(
+    ...specifiers: Specifier[]
+): PropTypes.Requireable<T>;
 
 export function shape<T extends object>(
     propTypes: PropTypes.ValidationMap<T>,

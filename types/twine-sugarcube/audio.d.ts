@@ -198,7 +198,11 @@ export interface AudioTrack {
      * someTracks.off('ended.myEvents');
      * @since 2.28.0
      */
-    off(events: string | object | JQuery.Event, selector?: string, handler?: (event: JQuery.Event) => void): AudioTrack;
+    off(
+        events: string | object | JQuery.Event,
+        selector?: string,
+        handler?: (event: JQuery.Event) => void,
+    ): AudioTrack;
 
     /**
      * Attaches event handlers to the track. Returns a reference to the current AudioTrack instance for chaining.
@@ -407,7 +411,11 @@ export interface AudioRunner {
      * someTracks.off('ended.myEvents');
      * @since 2.28.0
      */
-    off(events: string | object | JQuery.Event, selector?: string, handler?: (event: JQuery.Event) => void): this;
+    off(
+        events: string | object | JQuery.Event,
+        selector?: string,
+        handler?: (event: JQuery.Event) => void,
+    ): this;
 
     /**
      * Attaches event handlers to the selected tracks. Returns a reference to the current AudioRunner instance for chaining.
@@ -1010,12 +1018,13 @@ export interface SimpleAudioAPI {
         add(
             listId: string,
             ...sources: ReadonlyArray<
-                string | {
-                    id?: string | undefined;
-                    sources?: string[] | undefined;
-                    own?: boolean | undefined;
-                    volume?: number | undefined;
-                }
+                | string
+                | {
+                      id?: string | undefined;
+                      sources?: string[] | undefined;
+                      own?: boolean | undefined;
+                      volume?: number | undefined;
+                  }
             >
         ): void;
 

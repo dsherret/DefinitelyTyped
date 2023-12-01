@@ -1,7 +1,17 @@
 export = GridField;
-declare function GridField(name: string, type: string, size: number | null, ...args: any[]): void;
+declare function GridField(
+    name: string,
+    type: string,
+    size: number | null,
+    ...args: any[]
+): void;
 declare class GridField {
-    constructor(name: string, type: string, size: number | null, ...args: any[]);
+    constructor(
+        name: string,
+        type: string,
+        size: number | null,
+        ...args: any[]
+    );
     private logger_;
     value: any;
     private beforeValue;
@@ -65,7 +75,11 @@ declare class GridField {
     private getUserInformedProperty;
     private checkValueError;
     private getLookupDisplay;
-    getSavedValue(context: { processKey: number; interactionName: string; gridName: string }): any;
+    getSavedValue(context: {
+        processKey: number;
+        interactionName: string;
+        gridName: string;
+    }): any;
     private getFileDisplay;
     getComboValue(value: any): number | Record<any, any>;
     private getComboDisplay;
@@ -83,4 +97,5 @@ declare namespace GridField {
 }
 type DetailGrid = import("./DetailGrid");
 import DataSet = require("@nginstack/engine/lib/dataset/DataSet.js");
-type LookupMultipleInsertEvent = import("../classdef/LookupMultipleInsertEvent");
+type LookupMultipleInsertEvent =
+    import("../classdef/LookupMultipleInsertEvent");

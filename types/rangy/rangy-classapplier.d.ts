@@ -16,7 +16,9 @@ interface RangyClassApplierOptions {
     applyToEditableOnly?: boolean | undefined;
     tagNames?: string | string[] | undefined;
     normalize?: boolean | undefined;
-    onElementCreate?: ((element: Element, classApplier: RangyClassApplier) => void) | undefined;
+    onElementCreate?:
+        | ((element: Element, classApplier: RangyClassApplier) => void)
+        | undefined;
     useExistingElements?: boolean | undefined;
 }
 

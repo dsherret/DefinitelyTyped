@@ -41,7 +41,9 @@ interface JQuery {
     /**
      * Get the country data for the currently selected flag.
      */
-    countrySelect(method: "getSelectedCountryData"): CountrySelectJs.CountryData;
+    countrySelect(
+        method: "getSelectedCountryData",
+    ): CountrySelectJs.CountryData;
 
     countrySelect(method: string, value: string): void;
 

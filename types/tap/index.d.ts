@@ -321,14 +321,41 @@ declare class DeprecatedAssertionSynonyms {
 }
 
 declare namespace Assertions {
-    type Basic = (obj: any, message?: string, extra?: Options.Assert) => boolean;
+    type Basic = (
+        obj: any,
+        message?: string,
+        extra?: Options.Assert,
+    ) => boolean;
     interface Throws {
-        (fn?: (...args: any[]) => any, expectedError?: any, message?: string, extra?: Options.Assert): boolean;
-        (fn?: (...args: any[]) => any, expectedError?: any, extra?: Options.Assert): boolean;
+        (
+            fn?: (...args: any[]) => any,
+            expectedError?: any,
+            message?: string,
+            extra?: Options.Assert,
+        ): boolean;
+        (
+            fn?: (...args: any[]) => any,
+            expectedError?: any,
+            extra?: Options.Assert,
+        ): boolean;
     }
-    type DoesNotThrow = (fn?: (...args: any[]) => any, message?: string, extra?: Options.Assert) => boolean;
-    type Equal = (found: any, wanted: any, message?: string, extra?: Options.Assert) => boolean;
-    type NotEqual = (found: any, notWanted: any, message?: string, extra?: Options.Assert) => boolean;
+    type DoesNotThrow = (
+        fn?: (...args: any[]) => any,
+        message?: string,
+        extra?: Options.Assert,
+    ) => boolean;
+    type Equal = (
+        found: any,
+        wanted: any,
+        message?: string,
+        extra?: Options.Assert,
+    ) => boolean;
+    type NotEqual = (
+        found: any,
+        notWanted: any,
+        message?: string,
+        extra?: Options.Assert,
+    ) => boolean;
     type Match = (
         found: any,
         pattern: any,
@@ -337,7 +364,7 @@ declare namespace Assertions {
     ) => boolean;
     type Type = (
         found: any,
-        type: string | (new(...args: any[]) => object),
+        type: string | (new (...args: any[]) => object),
         message?: string,
         extra?: Options.Assert,
     ) => boolean;
@@ -451,7 +478,11 @@ declare global {
              * @param cb - The function containing the sub-tests. If not present, the test
              * will automatically be marked as a todo.
              */
-            test(name: string, extra?: Options.Test, cb?: (t: Test) => Promise<void> | void): Promise<void>;
+            test(
+                name: string,
+                extra?: Options.Test,
+                cb?: (t: Test) => Promise<void> | void,
+            ): Promise<void>;
 
             /**
              * Create a subtest.
@@ -461,27 +492,51 @@ declare global {
              * @param cb - The function containing the sub-tests. If not present, the test
              * will automatically be marked as a todo.
              */
-            test(name: string, cb?: (t: Test) => Promise<void> | void): Promise<void>;
+            test(
+                name: string,
+                cb?: (t: Test) => Promise<void> | void,
+            ): Promise<void>;
 
             /**
              * Exactly the same as t.test(), but adds todo: true in the options.
              */
-            todo(name: string, cb?: (t: Test) => Promise<void> | void): Promise<void>;
-            todo(name: string, extra?: Options.Test, cb?: (t: Test) => Promise<void> | void): Promise<void>;
+            todo(
+                name: string,
+                cb?: (t: Test) => Promise<void> | void,
+            ): Promise<void>;
+            todo(
+                name: string,
+                extra?: Options.Test,
+                cb?: (t: Test) => Promise<void> | void,
+            ): Promise<void>;
 
             /**
              * Exactly the same as t.test(), but adds skip: true in the options.
              */
-            skip(name: string, cb?: (t: Test) => Promise<void> | void): Promise<void>;
-            skip(name: string, extra?: Options.Test, cb?: (t: Test) => Promise<void> | void): Promise<void>;
+            skip(
+                name: string,
+                cb?: (t: Test) => Promise<void> | void,
+            ): Promise<void>;
+            skip(
+                name: string,
+                extra?: Options.Test,
+                cb?: (t: Test) => Promise<void> | void,
+            ): Promise<void>;
 
             /**
              * Exactly the same as t.test(), but adds only: true in the options.
              *
              * @see {@link https://node-tap.org/docs/api/only}
              */
-            only(name: string, cb?: (t: Test) => Promise<void> | void): Promise<void>;
-            only(name: string, extra?: Options.Test, cb?: (t: Test) => Promise<void> | void): Promise<void>;
+            only(
+                name: string,
+                cb?: (t: Test) => Promise<void> | void,
+            ): Promise<void>;
+            only(
+                name: string,
+                extra?: Options.Test,
+                cb?: (t: Test) => Promise<void> | void,
+            ): Promise<void>;
 
             current(): Test;
 
@@ -544,7 +599,11 @@ declare global {
              * t.titleCase('This Passes')
              * t.titleCase('however, tHis tOTaLLy faILS')
              */
-            addAssert(name: string, length: number, fn: (...args: any[]) => boolean): boolean;
+            addAssert(
+                name: string,
+                length: number,
+                fn: (...args: any[]) => boolean,
+            ): boolean;
 
             comment(message: string, ...args: any[]): void;
 
@@ -603,7 +662,10 @@ declare global {
              * Create a fixture object to specify hard links and symbolic links
              * in the fixture definition object passed to t.testdir().
              */
-            fixture(type: "symlink" | "link", content: string): Fixture.Instance;
+            fixture(
+                type: "symlink" | "link",
+                content: string,
+            ): Fixture.Instance;
             fixture(type: "file", content: string | Buffer): Fixture.Instance;
             fixture(type: "dir", content: Fixture.Spec): Fixture.Instance;
 
@@ -688,7 +750,12 @@ declare global {
             /**
              * Verify that the event emitter emits the named event before the end of the test.
              */
-            emits(eventEmitter: EventEmitter, event: string, message?: string, extra?: Options.Assert): void;
+            emits(
+                eventEmitter: EventEmitter,
+                event: string,
+                message?: string,
+                extra?: Options.Assert,
+            ): void;
 
             /**
              * Verifies that the promise (or promise-returning function) rejects.
@@ -753,7 +820,11 @@ declare global {
              *
              * @see {@link https://node-tap.org/docs/api/snapshot-testing/}
              */
-            matchSnapshot(output: any, message?: string, extra?: Options.Assert): boolean;
+            matchSnapshot(
+                output: any,
+                message?: string,
+                extra?: Options.Assert,
+            ): boolean;
 
             /**
              * Expect the function to throw an error.
@@ -932,7 +1003,7 @@ declare global {
 
         // Little hack to simulate the Test class on the tap export
         interface TestConstructor {
-            new(options?: Options.Test): Test;
+            new (options?: Options.Test): Test;
             prototype: Test;
         }
 

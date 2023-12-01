@@ -6,8 +6,12 @@ declare global {
         readonly name: string;
 
         isSameEntry(other: FileSystemHandle): Promise<boolean>;
-        queryPermission(descriptor?: FileSystemHandlePermissionDescriptor): Promise<PermissionState>;
-        requestPermission(descriptor?: FileSystemHandlePermissionDescriptor): Promise<PermissionState>;
+        queryPermission(
+            descriptor?: FileSystemHandlePermissionDescriptor,
+        ): Promise<PermissionState>;
+        requestPermission(
+            descriptor?: FileSystemHandlePermissionDescriptor,
+        ): Promise<PermissionState>;
 
         /**
          * @deprecated Old property just for Chromium <=85. Use `kind` property in the new API.
@@ -21,9 +25,11 @@ declare global {
     }
     var FileSystemHandle: {
         prototype: FileSystemHandle;
-        new(): FileSystemHandle;
+        new (): FileSystemHandle;
     };
-    type FileSystemHandleUnion = FileSystemFileHandle | FileSystemDirectoryHandle;
+    type FileSystemHandleUnion =
+        | FileSystemFileHandle
+        | FileSystemDirectoryHandle;
 
     interface FilePickerAcceptType {
         description?: string | undefined;
@@ -74,7 +80,11 @@ declare global {
     }
 
     type WriteParams =
-        | { type: "write"; position?: number | undefined; data: BufferSource | Blob | string }
+        | {
+              type: "write";
+              position?: number | undefined;
+              data: BufferSource | Blob | string;
+          }
         | { type: "seek"; position: number }
         | { type: "truncate"; size: number };
 
@@ -95,7 +105,9 @@ declare global {
     interface FileSystemFileHandle extends FileSystemHandle {
         readonly kind: "file";
         getFile(): Promise<File>;
-        createWritable(options?: FileSystemCreateWritableOptions): Promise<FileSystemWritableFileStream>;
+        createWritable(
+            options?: FileSystemCreateWritableOptions,
+        ): Promise<FileSystemWritableFileStream>;
         /**
          * @deprecated Old property just for Chromium <=85. Use `kind` property in the new API.
          */
@@ -108,18 +120,31 @@ declare global {
 
     var FileSystemFileHandle: {
         prototype: FileSystemFileHandle;
-        new(): FileSystemFileHandle;
+        new (): FileSystemFileHandle;
     };
 
     interface FileSystemDirectoryHandle extends FileSystemHandle {
         readonly kind: "directory";
-        getDirectoryHandle(name: string, options?: FileSystemGetDirectoryOptions): Promise<FileSystemDirectoryHandle>;
-        getFileHandle(name: string, options?: FileSystemGetFileOptions): Promise<FileSystemFileHandle>;
-        removeEntry(name: string, options?: FileSystemRemoveOptions): Promise<void>;
+        getDirectoryHandle(
+            name: string,
+            options?: FileSystemGetDirectoryOptions,
+        ): Promise<FileSystemDirectoryHandle>;
+        getFileHandle(
+            name: string,
+            options?: FileSystemGetFileOptions,
+        ): Promise<FileSystemFileHandle>;
+        removeEntry(
+            name: string,
+            options?: FileSystemRemoveOptions,
+        ): Promise<void>;
         resolve(possibleDescendant: FileSystemHandle): Promise<string[] | null>;
         keys(): AsyncIterableIterator<string>;
-        values(): AsyncIterableIterator<FileSystemDirectoryHandle | FileSystemFileHandle>;
-        entries(): AsyncIterableIterator<[string, FileSystemDirectoryHandle | FileSystemFileHandle]>;
+        values(): AsyncIterableIterator<
+            FileSystemDirectoryHandle | FileSystemFileHandle
+        >;
+        entries(): AsyncIterableIterator<
+            [string, FileSystemDirectoryHandle | FileSystemFileHandle]
+        >;
         [Symbol.asyncIterator]: FileSystemDirectoryHandle["entries"];
         /**
          * @deprecated Old property just for Chromium <=85. Use `kind` property in the new API.
@@ -133,7 +158,7 @@ declare global {
 
     var FileSystemDirectoryHandle: {
         prototype: FileSystemDirectoryHandle;
-        new(): FileSystemDirectoryHandle;
+        new (): FileSystemDirectoryHandle;
     };
 
     interface DataTransferItem {
@@ -147,9 +172,15 @@ declare global {
     function showOpenFilePicker(
         options?: OpenFilePickerOptions & { multiple?: false | undefined },
     ): Promise<[FileSystemFileHandle]>;
-    function showOpenFilePicker(options?: OpenFilePickerOptions): Promise<FileSystemFileHandle[]>;
-    function showSaveFilePicker(options?: SaveFilePickerOptions): Promise<FileSystemFileHandle>;
-    function showDirectoryPicker(options?: DirectoryPickerOptions): Promise<FileSystemDirectoryHandle>;
+    function showOpenFilePicker(
+        options?: OpenFilePickerOptions,
+    ): Promise<FileSystemFileHandle[]>;
+    function showSaveFilePicker(
+        options?: SaveFilePickerOptions,
+    ): Promise<FileSystemFileHandle>;
+    function showDirectoryPicker(
+        options?: DirectoryPickerOptions,
+    ): Promise<FileSystemDirectoryHandle>;
 
     // Old methods available on Chromium 85 instead of the ones above.
 
@@ -193,7 +224,9 @@ declare global {
     /**
      * @deprecated Old method just for Chromium <=85. Use `showDirectoryPicker()` in the new API.
      */
-    function chooseFileSystemEntries(options: { type: "open-directory" }): Promise<FileSystemDirectoryHandle>;
+    function chooseFileSystemEntries(options: {
+        type: "open-directory";
+    }): Promise<FileSystemDirectoryHandle>;
 
     interface GetSystemDirectoryOptions {
         type: "sandbox";

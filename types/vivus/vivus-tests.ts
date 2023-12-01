@@ -24,11 +24,15 @@ function onEndOfAnimation(v: Vivus) {
 
 new Vivus("my-svg", { duration: 200 }, onEndOfAnimation);
 
-new Vivus("my-div", { duration: 200, file: "link/to/my.svg" }, onEndOfAnimation);
+new Vivus(
+    "my-div",
+    { duration: 200, file: "link/to/my.svg" },
+    onEndOfAnimation,
+);
 
 new Vivus("my-div-id", {
     file: "link/to/my.svg",
-    onReady: myVivus => {
+    onReady: (myVivus) => {
         // `el` property is the SVG element
         myVivus.el.setAttribute("height", "auto");
     },
@@ -78,7 +82,7 @@ new Vivus(el, { start: "autostart" });
 
 new Vivus("my-svg-element", {
     animTimingFunction: Vivus.EASE_OUT_BOUNCE,
-    pathTimingFunction: x => x ** 0.5,
+    pathTimingFunction: (x) => x ** 0.5,
 });
 
 function testEasingFunctions() {

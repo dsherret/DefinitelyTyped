@@ -5,10 +5,16 @@ export interface IterateOptions {
     gcollections?: number | undefined;
 }
 
-export function iterate(iteratorFn: () => void, options?: IterateOptions): Result;
+export function iterate(
+    iteratorFn: () => void,
+    options?: IterateOptions,
+): Result;
 
 export namespace iterate {
-    function async(iteratorFn: () => Promise<void>, options?: IterateOptions): Promise<Result>;
+    function async(
+        iteratorFn: () => Promise<void>,
+        options?: IterateOptions,
+    ): Promise<Result>;
 }
 
 export interface Result {

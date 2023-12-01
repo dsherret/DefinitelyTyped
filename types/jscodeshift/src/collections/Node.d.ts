@@ -6,10 +6,11 @@ import Collection = require("../Collection");
 type ASTPath<N> = nodePath.NodePath<N, N>;
 
 type RecursiveMatchNode<T> =
-    | (T extends {} ? {
-            [K in keyof T]?: RecursiveMatchNode<T[K]>;
-        }
-        : T)
+    | (T extends {}
+          ? {
+                [K in keyof T]?: RecursiveMatchNode<T[K]>;
+            }
+          : T)
     | ((value: T) => boolean);
 
 type ASTNode = types.ASTNode;
@@ -18,7 +19,10 @@ export interface TraversalMethods {
     /**
      * Find nodes of a specific type within the nodes of this collection.
      */
-    find<T extends ASTNode>(type: types.Type<T>, filter?: RecursiveMatchNode<T>): Collection.Collection<T>;
+    find<T extends ASTNode>(
+        type: types.Type<T>,
+        filter?: RecursiveMatchNode<T>,
+    ): Collection.Collection<T>;
 
     /**
      * Returns a collection containing the paths that create the scope of the
@@ -29,7 +33,10 @@ export interface TraversalMethods {
     /**
      * Traverse the AST up and finds the closest node of the provided type.
      */
-    closest<T>(type: types.Type<T>, filter?: RecursiveMatchNode<T>): Collection.Collection<T>;
+    closest<T>(
+        type: types.Type<T>,
+        filter?: RecursiveMatchNode<T>,
+    ): Collection.Collection<T>;
 
     /**
      * Finds the declaration for each selected path. Useful for member expressions
@@ -49,7 +56,9 @@ export interface MutationMethods<N> {
      * is provided it is executed for every node and the node is replaced with the
      * functions return value.
      */
-    replaceWith<T>(nodes: T | T[] | ((path: ASTPath<N>, i: number) => T)): Collection.Collection<T>;
+    replaceWith<T>(
+        nodes: T | T[] | ((path: ASTPath<N>, i: number) => T),
+    ): Collection.Collection<T>;
 
     /**
      * Inserts a new node before the current one.

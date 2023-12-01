@@ -3,8 +3,7 @@ import React from "react";
 
 const Demo = () => (
     <div>
-        <TextAnimation>
-        </TextAnimation>
+        <TextAnimation></TextAnimation>
     </div>
 );
 Demo();

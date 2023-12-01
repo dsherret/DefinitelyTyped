@@ -41,14 +41,18 @@ interface DOLConstructed {
 }
 
 interface DOL {
-    new(dolData: string | number | Buffer): DOLConstructed;
+    new (dolData: string | number | Buffer): DOLConstructed;
     parse(dolData: string): DOLConstructed;
 }
 
 declare class TLV {
     // @param value Source code docs say "string" only but can support a "Buffer" as well
     // Source code has tests to use a buffer as a value
-    constructor(tag: string | number, value: string | Buffer, encoding?: number);
+    constructor(
+        tag: string | number,
+        value: string | Buffer,
+        encoding?: number,
+    );
 
     // FIXME:  Not sure how to make a property of a class as static class and not the instantiated object
     // Have split the class into two interfaces
@@ -116,7 +120,12 @@ declare class TLV {
      */
     size: number;
     info: {
-        clazz?: "universal" | "application" | "context specific" | "private" | undefined;
+        clazz?:
+            | "universal"
+            | "application"
+            | "context specific"
+            | "private"
+            | undefined;
         encoding: "primitive" | "constructed";
     };
     child: TLV[];

@@ -1,7 +1,8 @@
 import * as React from "react";
 import { ReactDivAttr } from "../../../typings/shared";
 
-export interface CodeSnippetSkeletonProps extends Omit<ReactDivAttr, "children"> {
+export interface CodeSnippetSkeletonProps
+    extends Omit<ReactDivAttr, "children"> {
     type?: "multi" | "single" | undefined;
 }
 

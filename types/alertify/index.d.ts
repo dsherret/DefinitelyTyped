@@ -10,7 +10,11 @@ declare namespace alertify {
          * @return alertify (ie this)
          * @since 0.0.1
          */
-        alert(message: string, fn?: Function, cssClass?: string): IAlertifyStatic;
+        alert(
+            message: string,
+            fn?: Function,
+            cssClass?: string,
+        ): IAlertifyStatic;
 
         /**
          * Create a confirm dialog box
@@ -20,7 +24,11 @@ declare namespace alertify {
          * @return alertify (ie this)
          * @since 0.0.1
          */
-        confirm(message: string, fn?: Function, cssClass?: string): IAlertifyStatic;
+        confirm(
+            message: string,
+            fn?: Function,
+            cssClass?: string,
+        ): IAlertifyStatic;
 
         /**
          * Extend the log method to create custom methods
@@ -28,7 +36,9 @@ declare namespace alertify {
          * @return function for logging
          * @since 0.0.1
          */
-        extend(type: string): (message: string, wait?: number) => IAlertifyStatic;
+        extend(
+            type: string,
+        ): (message: string, wait?: number) => IAlertifyStatic;
 
         /**
          * Initialize Alertify and create the 2 main elements.
@@ -57,7 +67,12 @@ declare namespace alertify {
          * @return alertify (ie this)
          * @since 0.0.1
          */
-        prompt(message: string, fn?: Function, placeholder?: string, cssClass?: string): IAlertifyStatic;
+        prompt(
+            message: string,
+            fn?: Function,
+            placeholder?: string,
+            cssClass?: string,
+        ): IAlertifyStatic;
 
         /**
          * Shorthand for log messages

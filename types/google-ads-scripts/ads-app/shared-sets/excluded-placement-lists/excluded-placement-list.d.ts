@@ -30,7 +30,8 @@ declare namespace GoogleAdsScripts {
          *              .build();
          *      var excludedPlacementList = excludedPlacementListOperation.getResult();
          */
-        interface ExcludedPlacementListBuilder extends Base.Builder<ExcludedPlacementListOperation> {
+        interface ExcludedPlacementListBuilder
+            extends Base.Builder<ExcludedPlacementListOperation> {
             /** Sets the name of the new excluded placement list to the specified value. */
             withName(name: string): this;
         }
@@ -44,10 +45,12 @@ declare namespace GoogleAdsScripts {
          *        var excludedPlacementList = excludedPlacementListIterator.next();
          *      }
          */
-        interface ExcludedPlacementListIterator extends Base.Iterator<ExcludedPlacementList> {}
+        interface ExcludedPlacementListIterator
+            extends Base.Iterator<ExcludedPlacementList> {}
 
         /** An operation representing creation of a new excluded placement list.  */
-        interface ExcludedPlacementListOperation extends Base.Operation<ExcludedPlacementList> {}
+        interface ExcludedPlacementListOperation
+            extends Base.Operation<ExcludedPlacementList> {}
 
         /**
          * Fetches excluded placement lists. Supports filtering and sorting.
@@ -67,12 +70,10 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedPlacementListSelector
-            extends
-                Base.Selector<ExcludedPlacementListIterator>,
+            extends Base.Selector<ExcludedPlacementListIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

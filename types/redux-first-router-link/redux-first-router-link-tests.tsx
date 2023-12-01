@@ -30,20 +30,23 @@ export default () => {
             </Link>
 
             <NavLink
-                to={{ type: "LIST", payload: { category: "redux-first-router" } }}
+                to={{
+                    type: "LIST",
+                    payload: { category: "redux-first-router" },
+                }}
                 activeClassName="active"
                 activeStyle={{ color: "purple" }}
                 exact={true}
                 strict={true}
-                isActive={(match, location) => (location.payload as Payload).category === "redux-first-router"}
+                isActive={(match, location) =>
+                    (location.payload as Payload).category ===
+                    "redux-first-router"
+                }
             >
                 Redux First Router
             </NavLink>
 
-            <NavLink
-                to="/"
-                className="nav-link"
-            >
+            <NavLink to="/" className="nav-link">
                 Nav link with class
             </NavLink>
         </div>

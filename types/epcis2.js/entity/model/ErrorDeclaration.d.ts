@@ -56,7 +56,9 @@ export default class ErrorDeclaration extends Entity {
      * urn:uuid:404d95fc-9457-4a51-bd6a-0bba133845a7])
      * @return the errorDeclaration instance
      */
-    removeCorrectiveEventIDList(correctiveEventIDList: string[]): ErrorDeclaration;
+    removeCorrectiveEventIDList(
+        correctiveEventIDList: string[],
+    ): ErrorDeclaration;
     /**
      * Getter for the correctiveEventIDs property
      * @return - the correctiveEventIDs

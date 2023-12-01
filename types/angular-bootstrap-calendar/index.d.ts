@@ -153,7 +153,11 @@ declare module "angular" {
             }
 
             interface IOnEventTimesChanged {
-                (calendarEvent: IEvent, calendarNewEventStart: Date, calendarNewEventEnd: Date): void;
+                (
+                    calendarEvent: IEvent,
+                    calendarNewEventStart: Date,
+                    calendarNewEventEnd: Date,
+                ): void;
             }
 
             interface IOnEditEventClick {

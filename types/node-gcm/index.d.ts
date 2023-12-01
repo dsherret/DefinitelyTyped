@@ -22,9 +22,11 @@ export interface IMessageOptions {
     timeToLive?: number | undefined;
     restrictedPackageName?: string | undefined;
     dryRun?: boolean | undefined;
-    data?: {
-        [key: string]: string;
-    } | undefined;
+    data?:
+        | {
+              [key: string]: string;
+          }
+        | undefined;
     notification?: INotificationOptions | undefined;
 }
 
@@ -96,9 +98,9 @@ export interface IResponseBody {
     multicast_id?: number | undefined;
     results?:
         | Array<{
-            message_id?: string | undefined;
-            registration_id?: string | undefined;
-            error?: string | undefined;
-        }>
+              message_id?: string | undefined;
+              registration_id?: string | undefined;
+              error?: string | undefined;
+          }>
         | undefined;
 }

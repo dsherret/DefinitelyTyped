@@ -140,7 +140,12 @@ export interface PathBezierCommand {
  * Similar to drawing a path in {@link https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes#Drawing_paths 2D <canvas>}, {@link https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths SVG paths}, or {@link https://en.wikipedia.org/wiki/Logo_(programming_language) Logo’s turtle graphics}.
  * @see {@link https://zzz.dog/shapes#shape-path-commands Zdog Shape API}
  */
-export type PathCommand = VectorOptions | PathLineCommand | PathMoveCommand | PathArcCommand | PathBezierCommand;
+export type PathCommand =
+    | VectorOptions
+    | PathLineCommand
+    | PathMoveCommand
+    | PathArcCommand
+    | PathBezierCommand;
 
 /** @see {@link Shape} */
 export interface ShapeOptions extends AnchorOptions {
@@ -296,7 +301,10 @@ export interface PointerPosition {
  * @param pointer the Event or Touch object
  * @see {@link https://zzz.dog/api#dragger-ondragstart Zdog API}
  */
-export type DragStartListener = (this: Dragger, pointer: PointerPosition) => void;
+export type DragStartListener = (
+    this: Dragger,
+    pointer: PointerPosition,
+) => void;
 
 /**
  * Callback function triggered when dragging moves with `mousemove`, `pointermove`, or `touchmove` event.
@@ -305,7 +313,12 @@ export type DragStartListener = (this: Dragger, pointer: PointerPosition) => voi
  * @param moveY vertical distance moved from the dragStart position.
  * @see {@link https://zzz.dog/api#dragger-ondragmove Zdog API}
  */
-export type DragMoveListener = (this: Dragger, pointer: PointerPosition, moveX: number, moveY: number) => void;
+export type DragMoveListener = (
+    this: Dragger,
+    pointer: PointerPosition,
+    moveX: number,
+    moveY: number,
+) => void;
 
 /**
  * Callback function triggered when dragging ends on the `mouseup`, `pointerup`, or `touchend` event.
@@ -349,14 +362,21 @@ export class Dragger {
  * A function triggered when the element is resized
  * @see {@link https://zzz.dog/api#illustration-onresize Zdog API}
  */
-export type ResizeListener = (this: Illustration, width: number, height: number) => void;
+export type ResizeListener = (
+    this: Illustration,
+    width: number,
+    height: number,
+) => void;
 
 /**
  * Function triggered before rendering.
  * @param context the rendering context. For `<canvas>`, the {@link CanvasRenderingContext2D}. For `<svg>`, the {@link SVGSVGElement <svg> element}.
  * @see {@link https://zzz.dog/api#illustration-onprerender Zdog API}
  */
-export type PrerenderListener = (this: Illustration, context: CanvasRenderingContext2D | SVGSVGElement) => void;
+export type PrerenderListener = (
+    this: Illustration,
+    context: CanvasRenderingContext2D | SVGSVGElement,
+) => void;
 
 /** @see {@link Illustration} */
 export interface IllustrationOptions extends AnchorOptions, DraggerOptions {

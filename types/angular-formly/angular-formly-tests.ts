@@ -28,7 +28,10 @@ class FormConfig {
             },
         ]);
 
-        formlyValidationMessages.addStringMessage("required", "This field is required");
+        formlyValidationMessages.addStringMessage(
+            "required",
+            "This field is required",
+        );
 
         formlyConfig.setType({
             name: "customInput",
@@ -41,7 +44,8 @@ class FormConfig {
         formlyConfig.extras.apiCheckInstance = null;
         formlyConfig.extras.defaultHideDirective = "ng-if";
         formlyConfig.extras.disableNgModelAttrsManipulator = true;
-        formlyConfig.extras.errorExistsAndShouldBeVisibleExpression = angular.noop;
+        formlyConfig.extras.errorExistsAndShouldBeVisibleExpression =
+            angular.noop;
         formlyConfig.extras.explicitAsync = true;
         formlyConfig.extras.fieldTransform = angular.noop;
         formlyConfig.extras.fieldTransform = [angular.noop];
@@ -81,11 +85,11 @@ class AppController {
                 type: "input",
                 validators: {
                     ipAddress: {
-                        expression: function(viewValue, modelValue) {
+                        expression: function (viewValue, modelValue) {
                             var value = modelValue || viewValue;
                             return /(\d{1,3}\.){3}\d{1,3}/.test(value);
                         },
-                        message: "$viewValue + \" is not a valid IP Address\"",
+                        message: '$viewValue + " is not a valid IP Address"',
                     },
                 },
                 templateOptions: {
@@ -96,7 +100,11 @@ class AppController {
                 },
                 validation: {
                     messages: {
-                        required: function($viewValue: any, $modelValue: any, scope: AngularFormly.ITemplateScope) {
+                        required: function (
+                            $viewValue: any,
+                            $modelValue: any,
+                            scope: AngularFormly.ITemplateScope,
+                        ) {
                             return scope.to.label + " is required";
                         },
                     },
@@ -132,15 +140,17 @@ class AppController {
                 key: "address",
                 wrapper: "panel",
                 templateOptions: { label: "Address" },
-                fieldGroup: [{
-                    key: "town",
-                    type: "input",
-                    templateOptions: {
-                        required: true,
-                        type: "text",
-                        label: "Town",
+                fieldGroup: [
+                    {
+                        key: "town",
+                        type: "input",
+                        templateOptions: {
+                            required: true,
+                            type: "text",
+                            label: "Town",
+                        },
                     },
-                }],
+                ],
             },
         ];
     }

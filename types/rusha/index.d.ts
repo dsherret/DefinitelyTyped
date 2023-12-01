@@ -17,7 +17,9 @@ interface RushaWorkerResponse {
 }
 
 interface RushaWorker extends Worker {
-    onmessage: ((this: RushaWorker, res: MessageEvent<RushaWorkerResponse>) => void) | null;
+    onmessage:
+        | ((this: RushaWorker, res: MessageEvent<RushaWorkerResponse>) => void)
+        | null;
     postMessage(req: RushaWorkerRequest): void;
     terminate(): void;
 }

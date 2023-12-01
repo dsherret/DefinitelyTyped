@@ -76,7 +76,7 @@ function utilTests(someNode: Node) {
     util.compareObjects({}, {});
 
     // $ExpectType (string | number)[]
-    util.normalisePropertyExpression("a[\"b\"].c");
+    util.normalisePropertyExpression('a["b"].c');
 
     // $ExpectType (string | number)[]
     util.normalisePropertyExpression("a[msg.foo]", msg);
@@ -112,7 +112,13 @@ function utilTests(someNode: Node) {
     // $ExpectType any
     util.evaluateNodeProperty("value", "type", someNode, {});
     // $ExpectType void
-    util.evaluateNodeProperty("value", "type", someNode, {}, (err: Error | null, res: any): void => {});
+    util.evaluateNodeProperty(
+        "value",
+        "type",
+        someNode,
+        {},
+        (err: Error | null, res: any): void => {},
+    );
 
     const parsedStore = util.parseContextStore("#:(file)::foo");
     // $ExpectType string | undefined
@@ -126,7 +132,11 @@ function utilTests(someNode: Node) {
     // $ExpectType any
     util.evaluateJSONataExpression(jsonataExpr, {});
     // $ExpectType void
-    util.evaluateJSONataExpression(jsonataExpr, {}, (err: Error | null, res: any): void => {});
+    util.evaluateJSONataExpression(
+        jsonataExpr,
+        {},
+        (err: Error | null, res: any): void => {},
+    );
 
     // $ExpectType string
     util.normaliseNodeTypeName("a-random node type");
@@ -142,62 +152,62 @@ function hookTests() {
     const hooks = utilModule.hooks;
 
     // #region Hook payload types
-    hooks.add("onSend", payload => {
+    hooks.add("onSend", (payload) => {
         // $ExpectType SendEvent[]
         payload;
     });
 
-    hooks.add("preRoute", payload => {
+    hooks.add("preRoute", (payload) => {
         // $ExpectType SendEvent
         payload;
     });
 
-    hooks.add("preDeliver", payload => {
+    hooks.add("preDeliver", (payload) => {
         // $ExpectType SendEvent
         payload;
     });
 
-    hooks.add("postDeliver", payload => {
+    hooks.add("postDeliver", (payload) => {
         // $ExpectType SendEvent
         payload;
     });
 
-    hooks.add("onReceive", payload => {
+    hooks.add("onReceive", (payload) => {
         // $ExpectType ReceiveEvent
         payload;
     });
 
-    hooks.add("postReceive", payload => {
+    hooks.add("postReceive", (payload) => {
         // $ExpectType ReceiveEvent
         payload;
     });
 
-    hooks.add("onComplete", payload => {
+    hooks.add("onComplete", (payload) => {
         // $ExpectType CompleteEvent
         payload;
     });
 
-    hooks.add("preInstall", payload => {
+    hooks.add("preInstall", (payload) => {
         // $ExpectType InstallEvent
         payload;
     });
 
-    hooks.add("postInstall", payload => {
+    hooks.add("postInstall", (payload) => {
         // $ExpectType InstallEvent
         payload;
     });
 
-    hooks.add("preUninstall", payload => {
+    hooks.add("preUninstall", (payload) => {
         // $ExpectType UninstallEvent
         payload;
     });
 
-    hooks.add("postUninstall", payload => {
+    hooks.add("postUninstall", (payload) => {
         // $ExpectType UninstallEvent
         payload;
     });
 
-    hooks.add("customEvent", payload => {
+    hooks.add("customEvent", (payload) => {
         // $ExpectType any
         payload;
     });
@@ -209,7 +219,7 @@ function hookTests() {
     // #endregion
 
     // #region Hook handler finalization
-    hooks.add("onSend", payload => {
+    hooks.add("onSend", (payload) => {
         return;
     });
 
@@ -217,13 +227,13 @@ function hookTests() {
         done();
     });
 
-    hooks.add("onSend", payload => {
-        return new Promise(resolve => {
+    hooks.add("onSend", (payload) => {
+        return new Promise((resolve) => {
             resolve();
         });
     });
 
-    hooks.add("onSend", payload => {
+    hooks.add("onSend", (payload) => {
         return false;
     });
 
@@ -231,13 +241,13 @@ function hookTests() {
         done(false);
     });
 
-    hooks.add("onSend", payload => {
-        return new Promise(resolve => {
+    hooks.add("onSend", (payload) => {
+        return new Promise((resolve) => {
             resolve(false);
         });
     });
 
-    hooks.add("onSend", async payload => {
+    hooks.add("onSend", async (payload) => {
         return false;
     });
 

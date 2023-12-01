@@ -52,7 +52,14 @@ declare namespace Slideout {
         side?: "left" | "right" | undefined;
     }
 
-    type Events = "beforeopen" | "open" | "beforeclose" | "close" | "translatestart" | "translate" | "translateend";
+    type Events =
+        | "beforeopen"
+        | "open"
+        | "beforeclose"
+        | "close"
+        | "translatestart"
+        | "translate"
+        | "translateend";
 }
 
 /**

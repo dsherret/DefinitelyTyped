@@ -1,7 +1,11 @@
 /// <reference types="jquery" />
 
 import IGetListRequest from "./interfaces/IGetListRequest";
-import { IPageVersion, IPageVersionPriorityGroup, IPageVersionProperties } from "./interfaces/IPageInterfaces";
+import {
+    IPageVersion,
+    IPageVersionPriorityGroup,
+    IPageVersionProperties,
+} from "./interfaces/IPageInterfaces";
 import IPageWidget from "./interfaces/IPageWidget";
 import ISavePageWidgetRequest from "./interfaces/ISavePageWidgetRequest";
 
@@ -177,7 +181,10 @@ declare namespace Akumina {
              * @param isLoggedIn
              * @param loggedInTime
              */
-            static setAppManagerLogin(isLoggedIn: boolean, loggedInTime: any): void;
+            static setAppManagerLogin(
+                isLoggedIn: boolean,
+                loggedInTime: any,
+            ): void;
             /**
              * Set configuration from digispace object passed.
              * @param digispaceConfiguration
@@ -253,7 +260,9 @@ declare namespace Akumina {
             static SelectedPagePersona: string;
             static GraphUserId: string;
             static GetAllUserGroups(): JQueryDeferred<any>;
-            static GetUserAuthorizedPersona(objectid: string | null): JQueryDeferred<any>;
+            static GetUserAuthorizedPersona(
+                objectid: string | null,
+            ): JQueryDeferred<any>;
         }
         class SiteContext {
             static IsLoaderComplete: boolean;
@@ -374,14 +383,20 @@ declare namespace Akumina {
              * @param isCurrent
              * @returns Returns value of key ListID or SiteTitle(in case of isCurrent true)
              */
-            static FindSearchResultCategory(result: any[], isCurrent: boolean): string;
+            static FindSearchResultCategory(
+                result: any[],
+                isCurrent: boolean,
+            ): string;
             /** Convert date string to jsformat date string
              *  Acceptable formats "mm/dd/yy", "dd/mm/yy", "dd-mm-yy", "mm/dd/yyyy", "dd/mm/yyyy", "dd-mm-yyyy"
              *  @param format
              *  @param date
              *  @returns Converted date string in format "dd/mm/yy" or "mm/dd/yyyy"
              */
-            static FormatDateStringToJSFormat(format: string, date: string): string;
+            static FormatDateStringToJSFormat(
+                format: string,
+                date: string,
+            ): string;
             /** Returns an object with pageId property */
             static GetCurrentPageId(): any;
             static GetDashboardGridByInstance(instanceId: string): string[];
@@ -404,15 +419,28 @@ declare namespace Akumina {
              */
             static GetGuid(): string;
             static GetLinkForResult(itemUrl: string): string;
-            static GetLinkParameter(itemUrl: string, paramToRetrieve: string, defaultValue: string): string;
+            static GetLinkParameter(
+                itemUrl: string,
+                paramToRetrieve: string,
+                defaultValue: string,
+            ): string;
             /**
              * Returns Page Grid for workspace widget Instancce Id's
              * @param instanceId Widget Instance ID
              */
             static GetPageGridByInstance(instanceId: string): string[];
-            static GetPropertyValue(requestIn: any, key: string, defaultValue: string, dataType: string): any; // Boolean, string, number, JSON object
+            static GetPropertyValue(
+                requestIn: any,
+                key: string,
+                defaultValue: string,
+                dataType: string,
+            ): any; // Boolean, string, number, JSON object
             /** Retrive search parameter value from results */
-            static GetSearchParameter(itemResults: any[], paramToRetrieve: string, defaultValue: string): string;
+            static GetSearchParameter(
+                itemResults: any[],
+                paramToRetrieve: string,
+                defaultValue: string,
+            ): string;
             /**
              * @returns element of sharepoint bar
              */
@@ -454,7 +482,11 @@ declare namespace Akumina {
              * @param options Custome options {width}
              * @param actioncallback Method to be called when user click ok
              */
-            static ShowAlertPopup(message: string, options: any, actioncallback?: any): void;
+            static ShowAlertPopup(
+                message: string,
+                options: any,
+                actioncallback?: any,
+            ): void;
             /**
              * Show sharepoint bar
              * @param setCookie boolean
@@ -484,7 +516,10 @@ declare namespace Akumina {
             static ArePersonasDefined(): boolean;
             static GetStickyNoteMessage(): string;
             static IsSignInAccount(): boolean;
-            static OnSpaLinkClick(pageRoute: string, openInNewWindow: boolean): void;
+            static OnSpaLinkClick(
+                pageRoute: string,
+                openInNewWindow: boolean,
+            ): void;
             static CreatePageLink(url: string): string;
         }
         class Language {
@@ -503,7 +538,9 @@ declare namespace Akumina {
         class ScriptManager {
             GetManagerScript(callback: () => void): JQueryDeferred<any>;
             // removed in 5.0 - JA - GetWidgetLegacyScript(callback: () => void): JQueryDeferred<any>;
-            GetLanguageMappingsScript(callback: () => void): JQueryDeferred<any>;
+            GetLanguageMappingsScript(
+                callback: () => void,
+            ): JQueryDeferred<any>;
             // removed in 5.0 - JA - GetBabelGetBabelScript(callback: () => void): JQueryDeferred<any>;
             // removed in 5.0 - JA - GetBxSliderScript(callback: () => void): JQueryDeferred<any>;
             LoadPageBuilderCSS(): JQueryDeferred<any>;
@@ -558,16 +595,30 @@ declare namespace Akumina {
             static GetColor(time: number, type: string): string;
         }
         class WidgetPropertyViews {
-            static AddViewForProperty(widgetName: string, propName: string, value: string): void;
+            static AddViewForProperty(
+                widgetName: string,
+                propName: string,
+                value: string,
+            ): void;
         }
         namespace AppPart {
             class Eventing {
                 constructor();
-                static Subscribe(e: string, func: any, caller?: any): void; /* Updated */
+                static Subscribe(
+                    e: string,
+                    func: any,
+                    caller?: any,
+                ): void; /* Updated */
                 static Publish(t: string, data?: any): void; /* Updated */
-                static UnSubscribe(e: string, func: any, caller?: any): void; /* Updated */
+                static UnSubscribe(
+                    e: string,
+                    func: any,
+                    caller?: any,
+                ): void; /* Updated */
                 static ClearSubscribedAndPublished(e: string): void;
-                static ResetTrackedEvents(widgetsOnPage: string[]): void; /* Added */
+                static ResetTrackedEvents(
+                    widgetsOnPage: string[],
+                ): void; /* Added */
             }
             class Data {
                 Templates: Templates;
@@ -602,14 +653,24 @@ declare namespace Akumina {
                 /* Added in Alphabatical order */
 
                 /** Check if widgetinstances are Dashboard Container widgets */
-                AreDashboardContainerWidgets(widgetInstanceIds: any[]): JQueryDeferred<any>;
+                AreDashboardContainerWidgets(
+                    widgetInstanceIds: any[],
+                ): JQueryDeferred<any>;
                 /** Add dashboard widget instance */
-                AddDashboardWidgetInstance(dashboardWidgetTitle: string, widgetInstance: any): JQueryDeferred<any>;
+                AddDashboardWidgetInstance(
+                    dashboardWidgetTitle: string,
+                    widgetInstance: any,
+                ): JQueryDeferred<any>;
                 /** Copy Widget Instance */
-                CopyWidgetInstance(widgetInstanceId: string): JQueryDeferred<any>;
+                CopyWidgetInstance(
+                    widgetInstanceId: string,
+                ): JQueryDeferred<any>;
                 GetManualDependencyMap(widgetName: string): any[];
                 /** Resolves with next AkId */
-                GetNextAkId(listName: string | null, isRoot: boolean | false): JQueryDeferred<any>;
+                GetNextAkId(
+                    listName: string | null,
+                    isRoot: boolean | false,
+                ): JQueryDeferred<any>;
                 /** Resolves with siteId */
                 GetSiteId(): JQueryDeferred<any>;
                 /**
@@ -633,14 +694,20 @@ declare namespace Akumina {
                  * #MARK - dataType correction
                  * @param widgetInstanceIds Array of widget Instance Ids
                  */
-                GetWidgetPropertiesForInstances(widgetInstanceIds: string[] | null): JQueryDeferred<any>;
+                GetWidgetPropertiesForInstances(
+                    widgetInstanceIds: string[] | null,
+                ): JQueryDeferred<any>;
                 /**
                  * Get js file list for dependent widgets
                  * @param widgetName
                  * @param widgetToDeps
                  * @param depJsFiles
                  */
-                GetWidgetJSArrayFromWidget(widgetName: string, widgetToDeps: any[], depJsFiles: any[]): any[];
+                GetWidgetJSArrayFromWidget(
+                    widgetName: string,
+                    widgetToDeps: any[],
+                    depJsFiles: any[],
+                ): any[];
                 GetWidgetJSFromDependency(widgets: any[]): JQueryDeferred<any>;
                 /**
                  * Retrives all the widget instances ID on the current page.
@@ -659,15 +726,25 @@ declare namespace Akumina {
                 /** Initialize widgets passed in array */
                 InitializeWidgets(widgets: any[]): JQueryDeferred<any>;
 
-                GetAndInitWidgetsPerJSFile(item: any, widgetDepJsArray: any[]): void;
-                PopulateAutoDependencyMap(widgetsWithPropsArray: any[], widgetArray: any[]): any[];
+                GetAndInitWidgetsPerJSFile(
+                    item: any,
+                    widgetDepJsArray: any[],
+                ): void;
+                PopulateAutoDependencyMap(
+                    widgetsWithPropsArray: any[],
+                    widgetArray: any[],
+                ): any[];
                 /**
                  * Render Child Widgets
                  * @param selector
                  * @param pageId
                  * @param mode
                  */
-                RenderChildWidgets(selector: string, pageId: string | null, mode: string): void;
+                RenderChildWidgets(
+                    selector: string,
+                    pageId: string | null,
+                    mode: string,
+                ): void;
             }
 
             class DataFactory {
@@ -691,7 +768,10 @@ declare namespace Akumina {
                  * @param pageId
                  * @param legacy
                  */
-                GetWidgetsForPage(pageId: string, legacy?: boolean): JQueryDeferred<any>;
+                GetWidgetsForPage(
+                    pageId: string,
+                    legacy?: boolean,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get saved layout from Sharepoint
@@ -710,13 +790,18 @@ declare namespace Akumina {
                  * @param listName Name of list
                  * @param useRootWeb Boolean flag
                  */
-                CanUserSetItemPermissions(listName: string, useRootWeb: boolean): JQueryDeferred<any>;
+                CanUserSetItemPermissions(
+                    listName: string,
+                    useRootWeb: boolean,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get matching pages from Page Url List
                  * @param searchText Text to search existing pages
                  */
-                GetPagesFromPageUrlList(searchText: string): JQueryDeferred<any>;
+                GetPagesFromPageUrlList(
+                    searchText: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get permissions set for list item
@@ -724,7 +809,11 @@ declare namespace Akumina {
                  * @param useRootWeb use site absolute url vs. web absolute url
                  * @param itemId List Item id
                  */
-                GetPermissionForListItem(listName: string, useRootWeb: boolean, itemId: string): JQueryDeferred<any>;
+                GetPermissionForListItem(
+                    listName: string,
+                    useRootWeb: boolean,
+                    itemId: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Set personas for list item
@@ -747,7 +836,12 @@ declare namespace Akumina {
                  * @param columnName Coloumn Name for tags
                  * @param tagList semicolon seprated list of tags
                  */
-                SetTagsForItem(listName: string, itemId: string, columnName: string, tagList: any): JQueryDeferred<any>;
+                SetTagsForItem(
+                    listName: string,
+                    itemId: string,
+                    columnName: string,
+                    tagList: any,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Set permissions for list item
@@ -790,7 +884,11 @@ declare namespace Akumina {
                  * Update page object Items
                  * @param pageObject
                  */
-                UpdatePageObjectsItem(pageTypeList: string, pageObject: any, pageId: string): JQueryDeferred<any>;
+                UpdatePageObjectsItem(
+                    pageTypeList: string,
+                    pageObject: any,
+                    pageId: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Add new page to list
@@ -810,7 +908,11 @@ declare namespace Akumina {
                     pageVersionId: string,
                     pageWidgets: any[],
                 ): JQueryDeferred<any>;
-                UpdatePageUrlsItem(pageObject: any, pageId: string, pageTypeList?: string): JQueryDeferred<any>;
+                UpdatePageUrlsItem(
+                    pageObject: any,
+                    pageId: string,
+                    pageTypeList?: string,
+                ): JQueryDeferred<any>;
                 LoadTermSet(
                     termSetName?: string | null,
                     columnName?: string | null,
@@ -835,7 +937,11 @@ declare namespace Akumina {
                     fieldsList: any[],
                 ): JQueryDeferred<any>;
 
-                GetItemsFromListByTitle(listName: string, searchTerm: string, isroot: boolean): JQueryDeferred<any>;
+                GetItemsFromListByTitle(
+                    listName: string,
+                    searchTerm: string,
+                    isroot: boolean,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get all user groups for site
@@ -856,7 +962,10 @@ declare namespace Akumina {
                  * @param pageTypeList listName to which item belongs
                  * @param pageId
                  */
-                UserPermissionsForListItem(pageTypeList: string, pageId: string): JQueryDeferred<any>;
+                UserPermissionsForListItem(
+                    pageTypeList: string,
+                    pageId: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Check if user have edit permission on list item.
@@ -865,7 +974,10 @@ declare namespace Akumina {
                  * @returns Resolves with {ReadPermission: bool, EditPermission: bool}
                  */
                 // tslint:disable-next-line unified-signatures
-                UserPermissionsForListItem(pageReferenceList: any, pageId: string): JQueryDeferred<any>;
+                UserPermissionsForListItem(
+                    pageReferenceList: any,
+                    pageId: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Updates list item
@@ -873,20 +985,30 @@ declare namespace Akumina {
                  * @param itemid
                  * @param queryParams data that needs to updated as an object
                  */
-                UpdateListItem(listName: string, itemid: string, queryParams: any): JQueryDeferred<any>;
+                UpdateListItem(
+                    listName: string,
+                    itemid: string,
+                    queryParams: any,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Delete list item
                  * @param listName listName to which item belongs
                  * @param itemid
                  */
-                DeleteListItem(listName: string, itemid: string): JQueryDeferred<any>;
+                DeleteListItem(
+                    listName: string,
+                    itemid: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get Permissin on list for current user
                  * @param listName listName  to fetch permission of
                  */
-                GetListEffectiveBasePermissions(listName: string, useRootWeb: boolean): JQueryDeferred<{}>;
+                GetListEffectiveBasePermissions(
+                    listName: string,
+                    useRootWeb: boolean,
+                ): JQueryDeferred<{}>;
                 /**
                  * Load library settings
                  * @param listName listName to load settings
@@ -901,13 +1023,19 @@ declare namespace Akumina {
                  * Load all list fields
                  * @param listName listName to fetch fields
                  */
-                GetListFields(listName: string, useRootWeb: boolean): JQueryDeferred<{}>;
+                GetListFields(
+                    listName: string,
+                    useRootWeb: boolean,
+                ): JQueryDeferred<{}>;
 
                 /**
                  * Load all list fields
                  * @param contenttype contenttype name based on which lists will be fetched
                  */
-                GetListsByContentType(contenttype: string, isroot: boolean | undefined): JQueryDeferred<{}>;
+                GetListsByContentType(
+                    contenttype: string,
+                    isroot: boolean | undefined,
+                ): JQueryDeferred<{}>;
 
                 /**
                  * Load all list fields
@@ -931,7 +1059,9 @@ declare namespace Akumina {
                  * Clears the cache for given cacheKey
                  * @param cacheKey cacheKey to clear the cache
                  */
-                ClearAppManagerCacheByKey(cacheKey: string): JQueryDeferred<any>;
+                ClearAppManagerCacheByKey(
+                    cacheKey: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Load all list fields
@@ -943,7 +1073,12 @@ declare namespace Akumina {
                  */
                 GetUser(userPrincipal: string): JQueryDeferred<any>;
 
-                AddPageWidgets(listName: any, pageId: any, widgetName: any, pageWidgets: any): JQueryDeferred<any>;
+                AddPageWidgets(
+                    listName: any,
+                    pageId: any,
+                    widgetName: any,
+                    pageWidgets: any,
+                ): JQueryDeferred<any>;
             }
 
             class PageFactory {
@@ -952,19 +1087,36 @@ declare namespace Akumina {
                 CreatePageVersion(
                     createPageVersionRequest: IPageVersionProperties,
                 ): JQueryDeferred<IPageVersionProperties>;
-                GetPageVersion(pageVersionId: string): JQueryDeferred<IPageVersionProperties>;
-                DeletePageVersion(pageVersionId: string): JQueryDeferred<IPageVersionProperties>;
+                GetPageVersion(
+                    pageVersionId: string,
+                ): JQueryDeferred<IPageVersionProperties>;
+                DeletePageVersion(
+                    pageVersionId: string,
+                ): JQueryDeferred<IPageVersionProperties>;
                 ClonePageVersionFrom(
                     pageVersionId: string,
                     newPageVersion: IPageVersionProperties,
                 ): JQueryDeferred<IPageVersion>;
-                AssignPriorityGroupToPageVersion(pageVersionPriority: IPageVersionPriorityGroup): JQueryDeferred<any>;
-                SetPagePriorityGroups(pagePriorityGroups: string[]): JQueryDeferred<any>;
-                MarkPageVersionActive(pageVersionId: string): JQueryDeferred<{}>;
-                ProvisionPageWidgets(widgetName: string, pageVersion: any, pageWidgets: any[]): JQueryDeferred<any>;
+                AssignPriorityGroupToPageVersion(
+                    pageVersionPriority: IPageVersionPriorityGroup,
+                ): JQueryDeferred<any>;
+                SetPagePriorityGroups(
+                    pagePriorityGroups: string[],
+                ): JQueryDeferred<any>;
+                MarkPageVersionActive(
+                    pageVersionId: string,
+                ): JQueryDeferred<{}>;
+                ProvisionPageWidgets(
+                    widgetName: string,
+                    pageVersion: any,
+                    pageWidgets: any[],
+                ): JQueryDeferred<any>;
                 GetAllVersionsForPage(pageId: string): JQueryDeferred<any>;
                 PageVersionExists(pageVersionName: string): JQueryDeferred<any>;
-                AddPageVersion(newVersionProperties: any, pageWidgets: any): JQueryDeferred<IPageVersion>;
+                AddPageVersion(
+                    newVersionProperties: any,
+                    pageWidgets: any,
+                ): JQueryDeferred<IPageVersion>;
                 static GetPageObjectsCacheKey(): string;
                 static GetSavedLayoutsCacheKey(): string;
                 static GetPageWidgetsCacheKey(pageVersionId: string): string;
@@ -990,13 +1142,21 @@ declare namespace Akumina {
                  * @param pageObject Page object to be updated
                  * @param pageId Item Id of page list item
                  */
-                UpdatePageObjectsItem(pageTypeList: string, pageObject: any, pageId: string): JQueryDeferred<any>;
+                UpdatePageObjectsItem(
+                    pageTypeList: string,
+                    pageObject: any,
+                    pageId: string,
+                ): JQueryDeferred<any>;
                 /**
                  * @param pageObject
                  * @param pageId
                  * @param pageTypeList
                  */
-                UpdatePageUrlsItem(pageObject: any, pageId: string, pageTypeList?: string): JQueryDeferred<any>;
+                UpdatePageUrlsItem(
+                    pageObject: any,
+                    pageId: string,
+                    pageTypeList?: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Create new list item
@@ -1027,7 +1187,10 @@ declare namespace Akumina {
                 /**
                  * @param siteUrl Absolute path
                  */
-                GetSiteIdByUrl(siteUrl: string, useRootWeb: boolean): JQueryDeferred<any>;
+                GetSiteIdByUrl(
+                    siteUrl: string,
+                    useRootWeb: boolean,
+                ): JQueryDeferred<any>;
                 /**
                  * Get all SP user groups
                  * @returns Resolves with array of {id, displayName, type, description}
@@ -1037,7 +1200,9 @@ declare namespace Akumina {
                  * Get list of users under user groups
                  * @param authorizationGroups List of authorization Groups
                  */
-                GetSPGroupUsersByGroupName(authorizationGroups: any[]): JQueryDeferred<any>;
+                GetSPGroupUsersByGroupName(
+                    authorizationGroups: any[],
+                ): JQueryDeferred<any>;
                 /**
                  * Get User Groups current user belongs to
                  */
@@ -1048,7 +1213,9 @@ declare namespace Akumina {
                 /** Does List reuire persona check
                  * @param listName
                  */
-                IsPersonaCheckRequiredForList(listName: string): JQueryDeferred<any>;
+                IsPersonaCheckRequiredForList(
+                    listName: string,
+                ): JQueryDeferred<any>;
 
                 /** Get array of Lists with persona enabled
                  */
@@ -1096,13 +1263,19 @@ declare namespace Akumina {
                  * @param itemId
                  * @param data
                  */
-                UpdatePageProperties(referenceList: string, itemId: string, data: any): JQueryDeferred<any>;
+                UpdatePageProperties(
+                    referenceList: string,
+                    itemId: string,
+                    data: any,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get page object from pageURL
                  * @param relativePageUrl
                  */
-                GetPageObjectForPageUrl(relativePageUrl: string): JQueryDeferred<any>;
+                GetPageObjectForPageUrl(
+                    relativePageUrl: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Update Page object Cache
@@ -1114,7 +1287,9 @@ declare namespace Akumina {
                  * Get sharepoint lists associated with the passed content type
                  * @param contenttype
                  */
-                GetListsForContentType(contenttype: string): JQueryDeferred<any>;
+                GetListsForContentType(
+                    contenttype: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * @param listName SharePoint List name ex. GenericPages_AK
@@ -1155,13 +1330,18 @@ declare namespace Akumina {
                  * @param groups User Groups #MARK currently not used.
                  * @param appsData List of apps
                  */
-                GetUserAccessibleApps(groups: null, appsData: any[]): JQueryDeferred<any>;
+                GetUserAccessibleApps(
+                    groups: null,
+                    appsData: any[],
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get UserGroup list based of type of authoristion
                  * @param authorization
                  */
-                GetSPGroupUsersAndUserGroupsList(authorization: any): JQueryDeferred<any>;
+                GetSPGroupUsersAndUserGroupsList(
+                    authorization: any,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get myapps cache key for the current user
@@ -1179,13 +1359,17 @@ declare namespace Akumina {
                  * Marks workspace as deleted
                  * @param workspaceId workspace id
                  */
-                MarkWorkspaceAsDeleted(workspaceId: string): JQueryDeferred<any>;
+                MarkWorkspaceAsDeleted(
+                    workspaceId: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Check if workspace is marked for delete
                  * @param workspaceId string
                  */
-                IsWorkspaceMarkedAsDeleted(workspaceId: string): JQueryDeferred<any>;
+                IsWorkspaceMarkedAsDeleted(
+                    workspaceId: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Check licenses assigned to members
@@ -1203,7 +1387,9 @@ declare namespace Akumina {
                  * Updates widget instance cache
                  * @param widgetInstanceId Optional
                  */
-                UpdateWidgetInstanceCache(widgetInstanceId?: string): JQueryDeferred<any>;
+                UpdateWidgetInstanceCache(
+                    widgetInstanceId?: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * @returns resolves with array of widget objects
@@ -1231,7 +1417,10 @@ declare namespace Akumina {
                  * @param widgets Array of widget objects
                  * @param widgetNames Array of widget names
                  */
-                GetWidgetJS(widgets: any[], widgetNames: string[]): JQueryDeferred<any>;
+                GetWidgetJS(
+                    widgets: any[],
+                    widgetNames: string[],
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get user groups
@@ -1272,13 +1461,23 @@ declare namespace Akumina {
                     pageVersionId: string,
                     pageVersionWidgets: IPageWidget[],
                 ): JQueryDeferred<any>;
-                UpdatePageVersionPropertiesInCache(pageVersionProperties: IPageVersionProperties): JQueryDeferred<any>;
+                UpdatePageVersionPropertiesInCache(
+                    pageVersionProperties: IPageVersionProperties,
+                ): JQueryDeferred<any>;
 
-                RemovePageVersionFromCache(pageId: string, pageVersionId: string): JQueryDeferred<any>;
+                RemovePageVersionFromCache(
+                    pageId: string,
+                    pageVersionId: string,
+                ): JQueryDeferred<any>;
 
-                UpdatePagePropertiesInCache(pageProperties: any): JQueryDeferred<any>;
+                UpdatePagePropertiesInCache(
+                    pageProperties: any,
+                ): JQueryDeferred<any>;
 
-                UpdateWidgetInstanceCacheAsModel(widgetInstanceId: string, widgetProps: string): JQueryDeferred<any>;
+                UpdateWidgetInstanceCacheAsModel(
+                    widgetInstanceId: string,
+                    widgetProps: string,
+                ): JQueryDeferred<any>;
 
                 UpdatePageWidgetInstanceCacheAsModel(
                     pageId: string,
@@ -1286,7 +1485,9 @@ declare namespace Akumina {
                     virtualWidgetInstanceId: string,
                     widgetProps: string,
                 ): JQueryDeferred<any>;
-                AddOrReplacePageVersionInCache(completePageVersion: IPageVersion): JQueryDeferred<any>;
+                AddOrReplacePageVersionInCache(
+                    completePageVersion: IPageVersion,
+                ): JQueryDeferred<any>;
             }
 
             class PageManager {
@@ -1305,7 +1506,9 @@ declare namespace Akumina {
                  * Get page object from pageURL
                  * @param relativePageurl relative page URL
                  */
-                GetPageObjectForPageUrl(relativePageurl: string): JQueryDeferred<any>;
+                GetPageObjectForPageUrl(
+                    relativePageurl: string,
+                ): JQueryDeferred<any>;
                 GetPageObject(): JQueryDeferred<any>;
 
                 /**
@@ -1325,7 +1528,10 @@ declare namespace Akumina {
                  * @param pageId
                  * @param legacy
                  */
-                GetWidgetsForPage(pageId: string, legacy?: boolean): JQueryDeferred<any>;
+                GetWidgetsForPage(
+                    pageId: string,
+                    legacy?: boolean,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Save page contents(widgets)
@@ -1338,27 +1544,39 @@ declare namespace Akumina {
                  * Get matching pages from Page Url List
                  * @param searchText Text to search existing pages
                  */
-                GetPagesFromPageUrlList(searchText: string): JQueryDeferred<any>;
+                GetPagesFromPageUrlList(
+                    searchText: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Returns List of permissions for current user for passed list
                  * @param listName Name of list
                  * @param useRootWeb Boolean flag
                  */
-                CanUserSetPagePermissions(listName: string, useRootWeb: boolean): JQueryDeferred<any>;
+                CanUserSetPagePermissions(
+                    listName: string,
+                    useRootWeb: boolean,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get permissions for Page
                  * @param listName Name of list
                  * @param itemId Page Id
                  */
-                GetPermissionForPage(listName: string, useRootWeb: boolean, itemId: string): JQueryDeferred<any>;
+                GetPermissionForPage(
+                    listName: string,
+                    useRootWeb: boolean,
+                    itemId: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get permissions for Page list
                  * @param listName Name of list
                  */
-                GetPermissionForPageList(listName: string, useRootWeb: boolean): JQueryDeferred<any>;
+                GetPermissionForPageList(
+                    listName: string,
+                    useRootWeb: boolean,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Set personas for page
@@ -1382,13 +1600,20 @@ declare namespace Akumina {
                  * @param list semicolon seprated list of tags
                  */
 
-                SetTagsForPage(listName: string, itemId: string, columnName: string, list: any): JQueryDeferred<any>;
+                SetTagsForPage(
+                    listName: string,
+                    itemId: string,
+                    columnName: string,
+                    list: any,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Returns true if widget type passed is either Dashboard, PageWidget or Container Type
                  * @param widgetType string of widget Type
                  */
-                IsDashboardOrPageWidgetOrContainerType(widgetType: any): boolean;
+                IsDashboardOrPageWidgetOrContainerType(
+                    widgetType: any,
+                ): boolean;
                 /**
                  * Returns page type information
                  * @param pageTypeParam Page Type
@@ -1426,7 +1651,9 @@ declare namespace Akumina {
                  * Get Dashboard widgets
                  * @param pageId
                  */
-                GetDashboardWidgetsViaAppManager(pageId: string): JQueryDeferred<any>;
+                GetDashboardWidgetsViaAppManager(
+                    pageId: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Retrive page widget
@@ -1445,7 +1672,9 @@ declare namespace Akumina {
                  * Save dashboard page for user
                  * @param userId
                  */
-                ProvisionDashboardPageForUser(userId: string): JQueryDeferred<any>;
+                ProvisionDashboardPageForUser(
+                    userId: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Retrives available page views
@@ -1463,7 +1692,9 @@ declare namespace Akumina {
                  * Get containers for view
                  * @param viewTemplateUrl
                  */
-                GetContainersForView(viewTemplateUrl: string): JQueryDeferred<any>;
+                GetContainersForView(
+                    viewTemplateUrl: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Get Page Child widgets
@@ -1523,7 +1754,9 @@ declare namespace Akumina {
                  * Get Available Workspace Types
                  * @param groupType
                  */
-                GetAvailableWorkspaceTypes(groupType: string): JQueryDeferred<any>;
+                GetAvailableWorkspaceTypes(
+                    groupType: string,
+                ): JQueryDeferred<any>;
 
                 /**
                  * Check if group type is custom
@@ -1541,7 +1774,9 @@ declare namespace Akumina {
                  * Returns true if widget instance is either Dashboard, PageWidget or Container
                  * @param widgetInstances string of widget Type
                  */
-                IsDashBoardOrPageWidgetOrContainer(widgetInstances: any): boolean;
+                IsDashBoardOrPageWidgetOrContainer(
+                    widgetInstances: any,
+                ): boolean;
 
                 /**
                  * Remove pages for group
@@ -1565,7 +1800,9 @@ declare namespace Akumina {
                  * Remove Group WIdget properties
                  * @param widgetInstanceIds
                  */
-                RemoveGroupWidgetProperties(widgetInstanceIds: string[]): JQueryDeferred<any>;
+                RemoveGroupWidgetProperties(
+                    widgetInstanceIds: string[],
+                ): JQueryDeferred<any>;
 
                 /**
                  * Execute Share point query
@@ -1589,7 +1826,12 @@ declare namespace Akumina {
             class Groups {
                 GetGraphDataWithFullUrl(url: string, param: any): Promise<any>;
                 GetGroupForPage(pageId: string): JQueryDeferred<any>;
-                GetGraphUrl(prefix: string, query: string, filterQuery: string, cacheKey: string): string;
+                GetGraphUrl(
+                    prefix: string,
+                    query: string,
+                    filterQuery: string,
+                    cacheKey: string,
+                ): string;
             }
 
             class WidgetFactory {
@@ -1609,15 +1851,26 @@ declare namespace Akumina {
             static getEditMode(): boolean;
             static IsNullOrEmpty(value: string): boolean;
             static GetFriendlyUrl(url: string): string;
-            static getQueryStringParameter(url: string, ret?: string | null): string;
+            static getQueryStringParameter(
+                url: string,
+                ret?: string | null,
+            ): string;
             static substring(str: string, maxChar: number): string;
             static ItemExpired(date: string): boolean;
             static TryParseInt(val: any, defaultValue: any): number | null;
             static GetIcon(iconName: string): string;
             static isInDST(date: Date): boolean;
-            static addRecurringEvents(data: any, month: number, year: number): any;
+            static addRecurringEvents(
+                data: any,
+                month: number,
+                year: number,
+            ): any;
             static isInMonth(item: any, month: number, year: number): any;
-            static setDateValues(data: any, startDate: Date, endDate: Date): any;
+            static setDateValues(
+                data: any,
+                startDate: Date,
+                endDate: Date,
+            ): any;
         }
         class Logger {
             static WriteInfoLog(m: any): void;
@@ -1653,7 +1906,11 @@ declare namespace Akumina {
         }
         class GenericListPaging {}
         class Instructions {
-            executeAsync(widget: any, instructionSet: string, propName: string): Promise<any>;
+            executeAsync(
+                widget: any,
+                instructionSet: string,
+                propName: string,
+            ): Promise<any>;
         }
     }
 }

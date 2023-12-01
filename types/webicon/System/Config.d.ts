@@ -26,7 +26,9 @@ export interface Config {
     /**
      * The svg-sets to provide.
      */
-    svgSets?: IdentityMap<string, SvgIconSetOptions | SvgCumulativeIconSetOptions> | undefined;
+    svgSets?:
+        | IdentityMap<string, SvgIconSetOptions | SvgCumulativeIconSetOptions>
+        | undefined;
 
     /**
      * An alias of the `svgSets`-property.
@@ -76,7 +78,10 @@ export interface Config {
     /**
      * The default icon-set to provide.
      */
-    defaultIconSetUrl?: string | (SvgIconSetOptions | SvgCumulativeIconSetOptions) | undefined;
+    defaultIconSetUrl?:
+        | string
+        | (SvgIconSetOptions | SvgCumulativeIconSetOptions)
+        | undefined;
 
     /**
      * An alias of the `defaultIconSetUrl`-property.

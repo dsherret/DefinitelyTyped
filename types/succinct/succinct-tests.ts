@@ -24,6 +24,4 @@ $(".truncate").succinct({
 });
 
 // Can chain jQuery methods
-$(".truncate")
-    .succinct()
-    .removeClass("truncate");
+$(".truncate").succinct().removeClass("truncate");

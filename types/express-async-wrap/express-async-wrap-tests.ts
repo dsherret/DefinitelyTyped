@@ -3,7 +3,7 @@ import express = require("express");
 
 const app = express();
 
-const promise = new Promise(resolve => {
+const promise = new Promise((resolve) => {
     setTimeout(() => {
         resolve("Success");
     }, 250);

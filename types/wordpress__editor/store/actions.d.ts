@@ -40,7 +40,9 @@ export {
  *
  * @param options - Extra flags to identify the autosave.
  */
-export function autosave(options?: Record<string, boolean>): IterableIterator<void>;
+export function autosave(
+    options?: Record<string, boolean>,
+): IterableIterator<void>;
 
 /**
  * Signals that an undo history record should be created.
@@ -91,7 +93,10 @@ export function refreshPost(): { type: "DO_NOTHING" };
  * @param blocks - Block Array.
  * @param options - Optional options.
  */
-export function resetEditorBlocks(blocks: BlockInstance[], options?: Record<string, any>): IterableIterator<void>;
+export function resetEditorBlocks(
+    blocks: BlockInstance[],
+    options?: Record<string, any>,
+): IterableIterator<void>;
 
 /**
  * Signals that the latest version of the post has been received, either by initialization or save.

@@ -6,9 +6,14 @@ const pNumber = new AbortablePromise<number>((resolve, reject, signal) => {
 });
 pNumber.abort("x");
 
-(async () => 1 + await pNumber)();
+(async () => 1 + (await pNumber))();
 
-let pString = pNumber.then((v) => "y", () => "z").catch(() => "z");
+let pString = pNumber
+    .then(
+        (v) => "y",
+        () => "z",
+    )
+    .catch(() => "z");
 pString.abort();
 
 pString = AbortablePromise.race([
@@ -17,12 +22,6 @@ pString = AbortablePromise.race([
     AbortablePromise.resolve("c"),
 ]);
 
-let pTuple = AbortablePromise.all([
-    1,
-    "a",
-]);
-pTuple = AbortablePromise.all([
-    pNumber,
-    pString,
-]);
+let pTuple = AbortablePromise.all([1, "a"]);
+pTuple = AbortablePromise.all([pNumber, pString]);
 pTuple.abort().abort("again");

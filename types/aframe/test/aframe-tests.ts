@@ -33,9 +33,13 @@ type MyEntity = Entity<{
     material: THREE.Material;
     sound: { pause(): void };
 }>;
-const camera = (document.querySelector("a-entity[camera]") as MyEntity).components.camera;
-const material = (document.querySelector("a-entity[material]") as MyEntity).components.material;
-(document.querySelector("a-entity[sound]") as MyEntity).components.sound.pause();
+const camera = (document.querySelector("a-entity[camera]") as MyEntity)
+    .components.camera;
+const material = (document.querySelector("a-entity[material]") as MyEntity)
+    .components.material;
+(
+    document.querySelector("a-entity[sound]") as MyEntity
+).components.sound.pause();
 
 entity.getDOMAttribute("geometry").primitive;
 
@@ -45,7 +49,7 @@ entity.setAttribute("light", {
     intensity: 2.0,
 });
 
-entity.addEventListener("child-detached", event => {
+entity.addEventListener("child-detached", (event) => {
     event.detail;
 });
 
@@ -109,7 +113,10 @@ const testSystem: SystemDefinition = {
 
     init() {
         this.data.counter = 1;
-        ((this.el as Entity).sceneEl as Scene).addEventListener("enter-vr", (e) => {});
+        ((this.el as Entity).sceneEl as Scene).addEventListener(
+            "enter-vr",
+            (e) => {},
+        );
     },
 };
 

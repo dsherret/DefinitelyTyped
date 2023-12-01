@@ -1,8 +1,7 @@
 import watch = require("watch");
 import fs = require("fs");
 
-watch.watchTree("/some_path", (f: any, curr: fs.Stats, prev: fs.Stats) => {
-});
+watch.watchTree("/some_path", (f: any, curr: fs.Stats, prev: fs.Stats) => {});
 
 watch.watchTree("/home/mikeal", (f, curr, prev) => {
     if (typeof f === "object" && prev === null && curr === null) {
@@ -37,17 +36,24 @@ watch.createMonitor("/home/mikeal", (monitor) => {
     monitor.stop(); // Stop watching
 });
 
-watch.createMonitor("/some/path", {
-    ignoreDotFiles: true,
-}, (monitor: watch.Monitor) => {
-});
+watch.createMonitor(
+    "/some/path",
+    {
+        ignoreDotFiles: true,
+    },
+    (monitor: watch.Monitor) => {},
+);
 
 watch.walk("/some/path", (err, files) => {});
-watch.walk("/some/path", {
-    ignoreDirectoryPattern: /ignore/,
-}, (err, files) => {
-    // $ExpectType Error | null
-    err;
-    // $ExpectType Files | undefined
-    files;
-});
+watch.walk(
+    "/some/path",
+    {
+        ignoreDirectoryPattern: /ignore/,
+    },
+    (err, files) => {
+        // $ExpectType Error | null
+        err;
+        // $ExpectType Files | undefined
+        files;
+    },
+);

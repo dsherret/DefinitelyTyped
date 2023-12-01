@@ -5,9 +5,23 @@ HostedGitInfo.fromUrl("", {});
 
 new HostedGitInfo("github", "DefinitelyTyped", undefined, "DefinitelyTyped");
 
-new HostedGitInfo("github", "webpack-contrib", undefined, "copy-webpack-plugin", "40e6ae58", "https");
+new HostedGitInfo(
+    "github",
+    "webpack-contrib",
+    undefined,
+    "copy-webpack-plugin",
+    "40e6ae58",
+    "https",
+);
 
-const info = new HostedGitInfo("gitlab", "bagrounds", undefined, "monad-id", "6d3c759b", "docs");
+const info = new HostedGitInfo(
+    "gitlab",
+    "bagrounds",
+    undefined,
+    "monad-id",
+    "6d3c759b",
+    "docs",
+);
 
 info.hashformat("");
 info.hash();

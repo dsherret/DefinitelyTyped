@@ -12,9 +12,11 @@ export declare class ResizableView {
     container: GoldenLayout.Container;
     constructor(fin: Fin, options: ViewState);
     renderIntoComponent(opts: {
-        componentState?: {
-            url: string;
-        } | undefined;
+        componentState?:
+            | {
+                  url: string;
+              }
+            | undefined;
         container: any;
     }): Promise<void>;
     createOrAttachView(): Promise<void>;

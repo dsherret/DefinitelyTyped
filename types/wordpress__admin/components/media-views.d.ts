@@ -1,8 +1,19 @@
 import * as Backbone from "backbone";
 import { TemplateExecutor } from "lodash";
-import { WpBackboneSubviews, WpBackBoneView, WpBackboneViewList } from "./wp-backbone";
+import {
+    WpBackboneSubviews,
+    WpBackBoneView,
+    WpBackboneViewList,
+} from "./wp-backbone";
 
-export type FrameType = "select" | "post" | "manage" | "image" | "audio" | "video" | "edit-attachments";
+export type FrameType =
+    | "select"
+    | "post"
+    | "manage"
+    | "image"
+    | "audio"
+    | "video"
+    | "edit-attachments";
 
 export interface FrameClasses {
     select: MediaFrameSelect;
@@ -134,10 +145,8 @@ export interface StateMachine {
     trigger: (event: string, ...args: any[]) => StateMachine;
 }
 
-export type Frame =
-    & StateMachine
-    & View
-    & {
+export type Frame = StateMachine &
+    View & {
         initialize: () => void;
         /**
          * Reset all states on the frame to their defaults.

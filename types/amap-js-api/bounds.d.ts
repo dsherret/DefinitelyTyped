@@ -18,7 +18,12 @@ declare namespace AMap {
          * @param northEastLng 东北角经度
          * @param northEastLat 东北角纬度
          */
-        constructor(southWestLng: number, southWestLat: number, northEastLng: number, northEastLat: number);
+        constructor(
+            southWestLng: number,
+            southWestLat: number,
+            northEastLng: number,
+            northEastLat: number,
+        );
         /**
          * 指定点坐标是否在矩形范围内
          * @param point 制定坐标

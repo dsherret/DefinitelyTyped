@@ -113,81 +113,81 @@ wx.navigateBack({
 });
 
 // call with Promise.prototype.then
-wx.chooseImage({}).then(res => {
+wx.chooseImage({}).then((res) => {
     // $ExpectType ChooseImageSuccessCallbackResult
     res;
 });
 wx.canvasToTempFilePath({
     canvasId: "",
-}).then(res => {
+}).then((res) => {
     // $ExpectType CanvasToTempFilePathSuccessCallbackResult
     res;
 });
-wx.stopAccelerometer().then(res => {
+wx.stopAccelerometer().then((res) => {
     // $ExpectType GeneralCallbackResult
     res;
 });
-wx.getClipboardData().then(res => {
+wx.getClipboardData().then((res) => {
     // $ExpectType GetClipboardDataSuccessCallbackOption
     res;
 });
-wx.stopCompass().then(res => {
+wx.stopCompass().then((res) => {
     // $ExpectType GeneralCallbackResult
     res;
 });
 wx.addPhoneContact({
     firstName: "",
-}).then(res => {
+}).then((res) => {
     // $ExpectType GeneralCallbackResult
     res;
 });
-wx.startLocalServiceDiscovery({ serviceType: "" }).then(res => {
+wx.startLocalServiceDiscovery({ serviceType: "" }).then((res) => {
     // $ExpectType GeneralCallbackResult
     res;
 });
-wx.getSystemInfo().then(res => {
+wx.getSystemInfo().then((res) => {
     // $ExpectType SystemInfo
     res;
 });
-wx.chooseLocation({}).then(res => {
+wx.chooseLocation({}).then((res) => {
     // $ExpectType ChooseLocationSuccessCallbackResult
     res;
 });
-wx.previewImage({ urls: [] }).then(res => {
+wx.previewImage({ urls: [] }).then((res) => {
     // $ExpectType GeneralCallbackResult
     res;
 });
-wx.saveVideoToPhotosAlbum({ filePath: "" }).then(res => {
+wx.saveVideoToPhotosAlbum({ filePath: "" }).then((res) => {
     // $ExpectType GeneralCallbackResult
     res;
 });
-wx.removeSavedFile({ filePath: "" }).then(res => {
+wx.removeSavedFile({ filePath: "" }).then((res) => {
     // $ExpectType GeneralCallbackResult
     res;
 });
-wx.createBLEConnection({ deviceId: "" }).then(res => {
+wx.createBLEConnection({ deviceId: "" }).then((res) => {
     // $ExpectType BluetoothError
     res;
 });
-wx.startBluetoothDevicesDiscovery({}).then(res => {
+wx.startBluetoothDevicesDiscovery({}).then((res) => {
     // $ExpectType BluetoothError
     res;
 });
-wx.hideShareMenu().then(res => {
+wx.hideShareMenu().then((res) => {
     // $ExpectType GeneralCallbackResult
     res;
 });
-wx.checkIsSupportSoterAuthentication().then(res => {
+wx.checkIsSupportSoterAuthentication().then((res) => {
     // $ExpectType CheckIsSupportSoterAuthenticationSuccessCallbackResult
     res;
 });
-wx.navigateBack().then(res => {
+wx.navigateBack().then((res) => {
     // $ExpectType GeneralCallbackResult
     res;
 });
 
 // call with await
-(async () => {
+async () => {
     // $ExpectType ChooseImageSuccessCallbackResult
     await wx.chooseImage({});
     // $ExpectType CanvasToTempFilePathSuccessCallbackResult
@@ -222,4 +222,4 @@ wx.navigateBack().then(res => {
     await wx.checkIsSupportSoterAuthentication();
     // $ExpectType GeneralCallbackResult
     await wx.navigateBack();
-});
+};

@@ -5,7 +5,7 @@ declare namespace ajaxChain {
      * Static members of JQueryAjaxChain
      */
     interface JQueryAjaxChainStatic {
-        new(): JQueryAjaxChain;
+        new (): JQueryAjaxChain;
     }
 
     /**
@@ -15,7 +15,9 @@ declare namespace ajaxChain {
         /**
          * Enqueues one or more configuration objects for later processing.
          */
-        enqueue(confObj: AjaxChainConfiguration | AjaxChainConfiguration[]): JQueryAjaxChain;
+        enqueue(
+            confObj: AjaxChainConfiguration | AjaxChainConfiguration[],
+        ): JQueryAjaxChain;
         /**
          * Sequentially and synchronously dequeues the configuration objects enqueued via enqueue() method
          * in the order they were added, triggering the related Ajax calls.

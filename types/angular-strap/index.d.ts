@@ -154,7 +154,10 @@ declare namespace mgcrea.ngStrap {
     ///////////////////////////////////////////////////////////////////////////
 
     namespace tooltip {
-        type ITooltipService = (element: ng.IAugmentedJQuery, config?: ITooltipOptions) => ITooltip;
+        type ITooltipService = (
+            element: ng.IAugmentedJQuery,
+            config?: ITooltipOptions,
+        ) => ITooltip;
 
         interface ITooltipProvider {
             defaults: ITooltipOptions;
@@ -185,7 +188,10 @@ declare namespace mgcrea.ngStrap {
             onBeforeShow?(tooltip: ITooltip): void;
             onHide?(tooltip: ITooltip): void;
             onBeforeHide?(tooltip: ITooltip): void;
-            viewport?: string | { selector: string; padding: string | number } | undefined;
+            viewport?:
+                | string
+                | { selector: string; padding: string | number }
+                | undefined;
         }
 
         interface ITooltipScope extends ng.IScope {
@@ -202,7 +208,10 @@ declare namespace mgcrea.ngStrap {
     ///////////////////////////////////////////////////////////////////////////
 
     namespace popover {
-        type IPopoverService = (element: ng.IAugmentedJQuery, config?: IPopoverOptions) => IPopover;
+        type IPopoverService = (
+            element: ng.IAugmentedJQuery,
+            config?: IPopoverOptions,
+        ) => IPopover;
 
         interface IPopoverProvider {
             defaults: IPopoverOptions;
@@ -234,7 +243,10 @@ declare namespace mgcrea.ngStrap {
             onBeforeShow?(popover: IPopover): void;
             onHide?(popover: IPopover): void;
             onBeforeHide?(popover: IPopover): void;
-            viewport?: string | { selector: string; padding: string | number } | undefined;
+            viewport?:
+                | string
+                | { selector: string; padding: string | number }
+                | undefined;
         }
 
         interface IPopoverScope extends ng.IScope {
@@ -309,7 +321,10 @@ declare namespace mgcrea.ngStrap {
         interface IDatepicker {
             update(date: Date): void;
             updateDisabledDates(dateRanges: IDatepickerDateRange[]): void;
-            select(dateConstructorArg: string | number | number[], keep: boolean): void;
+            select(
+                dateConstructorArg: string | number | number[],
+                keep: boolean,
+            ): void;
             setMode(mode: any): void;
             int(): void;
             destroy(): void;
@@ -369,8 +384,7 @@ declare namespace mgcrea.ngStrap {
             defaults: ITimepickerOptions;
         }
 
-        interface ITimepicker {
-        }
+        interface ITimepicker {}
 
         interface ITimepickerOptions {
             animation?: string | undefined;
@@ -415,7 +429,11 @@ declare namespace mgcrea.ngStrap {
     ///////////////////////////////////////////////////////////////////////////
 
     namespace select {
-        type ISelectService = (element: ng.IAugmentedJQuery, controller: any, config: ISelectOptions) => ISelect;
+        type ISelectService = (
+            element: ng.IAugmentedJQuery,
+            controller: any,
+            config: ISelectOptions,
+        ) => ISelect;
 
         interface ISelectProvider {
             defaults: ISelectOptions;
@@ -507,7 +525,10 @@ declare namespace mgcrea.ngStrap {
             defaults: IDropdownOptions;
         }
 
-        type IDropdownService = (element: ng.IAugmentedJQuery, config: IDropdownOptions) => IDropdown;
+        type IDropdownService = (
+            element: ng.IAugmentedJQuery,
+            config: IDropdownOptions,
+        ) => IDropdown;
 
         interface IDropdown {
             show(): void;
@@ -561,7 +582,10 @@ declare namespace mgcrea.ngStrap {
             defaults: IScrollspyOptions;
         }
 
-        type IScrollspyService = (element: ng.IAugmentedJQuery, options: IScrollspyOptions) => IScrollspy;
+        type IScrollspyService = (
+            element: ng.IAugmentedJQuery,
+            options: IScrollspyOptions,
+        ) => IScrollspy;
 
         interface IScrollspy {
             checkOffsets(): void;
@@ -586,7 +610,10 @@ declare namespace mgcrea.ngStrap {
             defaults: IAffixOptions;
         }
 
-        type IAffixService = (element: ng.IAugmentedJQuery, options: IAffixOptions) => IAffix;
+        type IAffixService = (
+            element: ng.IAugmentedJQuery,
+            options: IAffixOptions,
+        ) => IAffix;
 
         interface IAffix {
             init(): void;

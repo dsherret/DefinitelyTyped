@@ -4,7 +4,6 @@ import * as BumpRegex from "bump-regex";
 
 declare function GulpBump(options?: BumpRegex.Options): NodeJS.ReadWriteStream;
 
-declare namespace GulpBump {
-}
+declare namespace GulpBump {}
 
 export = GulpBump;

@@ -91,14 +91,17 @@ Collection.after.upsert(
     ) => {},
 );
 
-cursor = Collection.direct.find({ _id: doc._id }, {
-    sort: { createdAt: -1 },
-    skip: 5,
-    limit: 5,
-    fields: { createdAt: 1 },
-    reactive: true,
-    transform: () => {},
-});
+cursor = Collection.direct.find(
+    { _id: doc._id },
+    {
+        sort: { createdAt: -1 },
+        skip: 5,
+        limit: 5,
+        fields: { createdAt: 1 },
+        reactive: true,
+        transform: () => {},
+    },
+);
 cursor = Collection.direct.find(doc._id, {
     sort: { createdAt: -1 },
     skip: 5,
@@ -108,13 +111,16 @@ cursor = Collection.direct.find(doc._id, {
     transform: () => {},
 });
 
-doc = Collection.direct.findOne({ _id: doc._id }, {
-    sort: { createdAt: -1 },
-    skip: 5,
-    fields: { createdAt: 1 },
-    reactive: true,
-    transform: () => {},
-});
+doc = Collection.direct.findOne(
+    { _id: doc._id },
+    {
+        sort: { createdAt: -1 },
+        skip: 5,
+        fields: { createdAt: 1 },
+        reactive: true,
+        transform: () => {},
+    },
+);
 doc = Collection.direct.findOne(doc._id, {
     sort: { createdAt: -1 },
     skip: 5,
@@ -128,11 +134,29 @@ doc._id = Collection.direct.insert(doc, () => {});
 doc.value = Collection.direct.remove({ _id: doc._id }, () => {});
 doc.value = Collection.direct.remove(doc._id, () => {});
 
-doc.value = Collection.direct.update({ _id: doc._id }, { $inc: { votes: 2 } }, { multi: true, upsert: true }, () => {});
-doc.value = Collection.direct.update(doc._id, { $inc: { votes: 2 } }, { multi: true, upsert: true }, () => {});
+doc.value = Collection.direct.update(
+    { _id: doc._id },
+    { $inc: { votes: 2 } },
+    { multi: true, upsert: true },
+    () => {},
+);
+doc.value = Collection.direct.update(
+    doc._id,
+    { $inc: { votes: 2 } },
+    { multi: true, upsert: true },
+    () => {},
+);
 
-let { numberAffected, insertedId }: { numberAffected?: number | undefined; insertedId?: string | undefined } =
-    Collection.direct.upsert(doc._id, { $inc: { votes: 2 } }, { multi: true }, () => {});
+let {
+    numberAffected,
+    insertedId,
+}: { numberAffected?: number | undefined; insertedId?: string | undefined } =
+    Collection.direct.upsert(
+        doc._id,
+        { $inc: { votes: 2 } },
+        { multi: true },
+        () => {},
+    );
 
 Collection.hookOptions = {
     before: {

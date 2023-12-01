@@ -5,7 +5,10 @@ interface MyDatePickerState {
     date: string;
 }
 
-export default class MyDatePicker extends React.Component<{}, MyDatePickerState> {
+export default class MyDatePicker extends React.Component<
+    {},
+    MyDatePickerState
+> {
     datepicker: DatePicker | null;
 
     state = { date: "2016-05-15" };
@@ -19,7 +22,7 @@ export default class MyDatePicker extends React.Component<{}, MyDatePickerState>
     render() {
         return (
             <DatePicker
-                ref={datepicker => this.datepicker = datepicker}
+                ref={(datepicker) => (this.datepicker = datepicker)}
                 style={{ width: 200 }}
                 date={this.state.date}
                 mode="date"

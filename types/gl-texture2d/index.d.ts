@@ -2,7 +2,11 @@ import { NdArray } from "ndarray";
 
 type GLenum = number;
 
-type InputType = ImageData | HTMLCanvasElement | HTMLImageElement | HTMLVideoElement;
+type InputType =
+    | ImageData
+    | HTMLCanvasElement
+    | HTMLImageElement
+    | HTMLVideoElement;
 
 interface RawObject {
     width: number;
@@ -25,7 +29,11 @@ declare class Texture {
     bind(id?: number): number;
     dispose(): void;
     generateMipmap(): void;
-    setPixels(data: InputType | RawObject | NdArray, offset?: [number, number], mipLevel?: GLenum): void;
+    setPixels(
+        data: InputType | RawObject | NdArray,
+        offset?: [number, number],
+        mipLevel?: GLenum,
+    ): void;
 }
 
 declare function texture2d(gl: WebGLRenderingContext, array: NdArray): Texture;

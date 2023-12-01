@@ -4,15 +4,14 @@ declare namespace GoogleAdsScripts {
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
         interface AccountMessage extends Message {}
 
-        interface AccountMessageIterator extends Base.Iterator<AccountMessage> {}
+        interface AccountMessageIterator
+            extends Base.Iterator<AccountMessage> {}
 
         interface AccountMessageSelector
-            extends
-                Base.Selector<AccountMessageIterator>,
+            extends Base.Selector<AccountMessageIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

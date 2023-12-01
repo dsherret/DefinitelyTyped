@@ -78,13 +78,15 @@ describe("Included matchers:", () => {
     });
 
     it("The 'toBeTruthy' matcher is for boolean casting testing", () => {
-        var a: string, foo = "foo";
+        var a: string,
+            foo = "foo";
         expect(foo).toBeTruthy();
         expect(a).not.toBeTruthy();
     });
 
     it("The 'toBeFalsy' matcher is for boolean casting testing", () => {
-        var a: string, foo = "foo";
+        var a: string,
+            foo = "foo";
         expect(a).toBeFalsy();
         expect(foo).not.toBeFalsy();
     });
@@ -96,19 +98,22 @@ describe("Included matchers:", () => {
     });
 
     it("The 'toBeLessThan' matcher is for mathematical comparisons", () => {
-        var pi = 3.1415926, e = 2.78;
+        var pi = 3.1415926,
+            e = 2.78;
         expect(e).toBeLessThan(pi);
         expect(pi).not.toBeLessThan(e);
     });
 
     it("The 'toBeGreaterThan' is for mathematical comparisons", () => {
-        var pi = 3.1415926, e = 2.78;
+        var pi = 3.1415926,
+            e = 2.78;
         expect(pi).toBeGreaterThan(e);
         expect(e).not.toBeGreaterThan(pi);
     });
 
     it("The 'toBeCloseTo' matcher is for precision math comparison", () => {
-        var pi = 3.1415926, e = 2.78;
+        var pi = 3.1415926,
+            e = 2.78;
         expect(pi).not.toBeCloseTo(e, 0.1);
         expect(pi).toBeCloseTo(e, 0);
     });
@@ -197,7 +202,8 @@ xdescribe("A spec", () => {
 });
 
 describe("A spy", () => {
-    var foo: any, bar: any = null;
+    var foo: any,
+        bar: any = null;
     beforeEach(() => {
         foo = {
             setBar: (value: any) => {
@@ -336,7 +342,12 @@ describe("A spy, when created manually", () => {
 describe("Multiple spies, when created manually", () => {
     var tape: any;
     beforeEach(() => {
-        tape = jasmine.createSpyObj("tape", ["play", "pause", "stop", "rewind"]);
+        tape = jasmine.createSpyObj("tape", [
+            "play",
+            "pause",
+            "stop",
+            "rewind",
+        ]);
         tape.play();
         tape.pause();
         tape.rewind(0);
@@ -369,7 +380,10 @@ describe("jasmine.any", () => {
             foo(12, () => {
                 return true;
             });
-            expect(foo).toHaveBeenCalledWith(jasmine.any(Number), jasmine.any(Function));
+            expect(foo).toHaveBeenCalledWith(
+                jasmine.any(Number),
+                jasmine.any(Function),
+            );
         });
     });
 });
@@ -441,7 +455,8 @@ describe("Asynchronous specs", () => {
             currentWindowOnload(null);
         }
 
-        (document.querySelector(".version") as HTMLElement).innerHTML = jasmineEnv.versionString();
+        (document.querySelector(".version") as HTMLElement).innerHTML =
+            jasmineEnv.versionString();
         execJasmine();
     };
 

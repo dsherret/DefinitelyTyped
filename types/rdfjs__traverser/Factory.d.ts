@@ -5,7 +5,9 @@ interface DatasetFactory {
     dataset(): DatasetCore;
 }
 
-type ExtractDataset<This> = This extends DatasetFactory ? ReturnType<This["dataset"]> : never;
+type ExtractDataset<This> = This extends DatasetFactory
+    ? ReturnType<This["dataset"]>
+    : never;
 
 export interface TraverserFactory {
     traverser<D extends DatasetCore = ExtractDataset<this>>(
@@ -15,7 +17,7 @@ export interface TraverserFactory {
 }
 
 interface TraverserFactoryCtor {
-    new(): TraverserFactory;
+    new (): TraverserFactory;
 
     exports: ["traverser"];
 }

@@ -2,7 +2,11 @@ type BabelPluginObj = any;
 
 // from react-docgen parse.ts
 export type Importer = (path: any, name: string) => any;
-export type Handler = (documentation: any, path: any, importer: Importer) => void;
+export type Handler = (
+    documentation: any,
+    path: any,
+    importer: Importer,
+) => void;
 export type Resolver = (node: any, parser: any, importer: Importer) => any;
 
 export interface Options {

@@ -5,19 +5,36 @@ declare global {
         type JQueryMousewheelEventHook<
             O = JQueryMousewheelEventObject,
             D = JQueryMousewheelEventData,
-        > =
-            & { version: string }
-            & { setup: (Extract<JQuery.SpecialEventHook<O, D>, { setup: any }>)["setup"] }
-            & { teardown: (Extract<JQuery.SpecialEventHook<O, D>, { teardown: any }>)["teardown"] }
-            & { getLineHeight(elem: Parameters<JQuery["appendTo"]>[0]): number | never }
-            & { getPageHeight(elem: Parameters<JQuery["appendTo"]>[0]): number | never }
-            & {
-                settings: {
-                    adjustOldDeltas: boolean;
-                    normalizeOffset: boolean;
-                };
+        > = {
+            version: string;
+        } & {
+            setup: Extract<
+                JQuery.SpecialEventHook<O, D>,
+                { setup: any }
+            >["setup"];
+        } & {
+            teardown: Extract<
+                JQuery.SpecialEventHook<O, D>,
+                { teardown: any }
+            >["teardown"];
+        } & {
+            getLineHeight(
+                elem: Parameters<JQuery["appendTo"]>[0],
+            ): number | never;
+        } & {
+            getPageHeight(
+                elem: Parameters<JQuery["appendTo"]>[0],
+            ): number | never;
+        } & {
+            settings: {
+                adjustOldDeltas: boolean;
+                normalizeOffset: boolean;
             };
-        type JQueryMousewheelEventHandler = (eventObject: JQueryMousewheelEventObject, ...args: any[]) => any;
+        };
+        type JQueryMousewheelEventHandler = (
+            eventObject: JQueryMousewheelEventObject,
+            ...args: any[]
+        ) => any;
         interface JQueryMousewheelEventObject extends JQueryEventObject {
             deltaX: number;
             deltaY: number;
@@ -38,8 +55,13 @@ declare global {
         }
     }
     interface JQuery {
-        on(event: "mousewheel", handler: JQueryMousewheel.JQueryMousewheelEventHandler): JQuery;
-        mousewheel(handler: JQueryMousewheel.JQueryMousewheelEventHandler): JQuery;
+        on(
+            event: "mousewheel",
+            handler: JQueryMousewheel.JQueryMousewheelEventHandler,
+        ): JQuery;
+        mousewheel(
+            handler: JQueryMousewheel.JQueryMousewheelEventHandler,
+        ): JQuery;
         unmousewheel(): JQuery;
     }
 }

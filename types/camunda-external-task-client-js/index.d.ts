@@ -2,14 +2,24 @@ export class Client {
     constructor(config: ClientConfig);
     start(): void;
     stop(): void;
-    subscribe(topic: string, options: SubscribeOptions, handler: Handler): TopicSubscription;
+    subscribe(
+        topic: string,
+        options: SubscribeOptions,
+        handler: Handler,
+    ): TopicSubscription;
     subscribe(topic: string, handler: Handler): TopicSubscription;
 
-    on(name: TopicEvent, callback: (topic: string, topicSubscription: TopicSubscription) => void): void;
+    on(
+        name: TopicEvent,
+        callback: (topic: string, topicSubscription: TopicSubscription) => void,
+    ): void;
     on(name: PollEvent, callback: () => void): void;
     on(name: SuccessWithTasksEvent, callback: (tasks: Task[]) => void): void;
     on(name: SuccessWithTaskEvent, callback: (task: Task) => void): void;
-    on(name: ErrorWithTaskEvent, callback: (task: Task, error: any) => void): void;
+    on(
+        name: ErrorWithTaskEvent,
+        callback: (task: Task, error: any) => void,
+    ): void;
     on(name: ErrorEvent, callback: (error: any) => void): void;
 }
 
@@ -22,7 +32,13 @@ export interface ClientConfig {
     lockDuration?: number | undefined;
     autoPoll?: boolean | undefined;
     asyncResponseTimeout?: number | undefined;
-    interceptors?: Interceptor | Interceptor[] | BasicAuthInterceptor | BasicAuthInterceptor[] | undefined | null;
+    interceptors?:
+        | Interceptor
+        | Interceptor[]
+        | BasicAuthInterceptor
+        | BasicAuthInterceptor[]
+        | undefined
+        | null;
     use?: Middleware | Middleware[] | undefined;
 }
 
@@ -83,9 +99,18 @@ export interface TypedValue {
 }
 
 export interface TaskService {
-    complete(task: Task, processVariables?: Variables, localVariables?: Variables): Promise<void>;
+    complete(
+        task: Task,
+        processVariables?: Variables,
+        localVariables?: Variables,
+    ): Promise<void>;
     handleFailure(task: Task, options?: HandleFailureOptions): Promise<void>;
-    handleBpmnError(task: Task, errorCode: string, errorMessage?: string, variables?: Variables): Promise<void>;
+    handleBpmnError(
+        task: Task,
+        errorCode: string,
+        errorMessage?: string,
+        variables?: Variables,
+    ): Promise<void>;
     extendLock(task: Task, newDuration: number): Promise<void>;
     unlock(task: Task): Promise<void>;
 }
@@ -97,7 +122,9 @@ export interface BasicAuthInterceptorConfig {
 
 export class BasicAuthInterceptor {
     constructor(options: BasicAuthInterceptorConfig);
-    getHeader({ username, password }: { username: string; password: string }): { Authorization: string };
+    getHeader({ username, password }: { username: string; password: string }): {
+        Authorization: string;
+    };
     interceptor(config: any): any;
 }
 
@@ -143,7 +170,11 @@ export type SuccessWithTaskEvent =
     | "handleBpmnError:success"
     | "extendLock:success"
     | "unlock:success";
-export type ErrorWithTaskEvent = "handleFailure:error" | "handleBpmnError:error" | "extendLock:error" | "unlock:error";
+export type ErrorWithTaskEvent =
+    | "handleFailure:error"
+    | "handleBpmnError:error"
+    | "extendLock:error"
+    | "unlock:error";
 export type ErrorEvent = "poll:error" | "complete:error";
 
 export const logger: Logger;

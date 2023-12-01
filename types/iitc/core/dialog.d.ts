@@ -87,7 +87,10 @@ declare global {
         focusCallback?: any;
         blurCallback?: any;
 
-        buttons?: JQueryUI.ButtonOptions[] | { [key: string]: () => void } | undefined;
+        buttons?:
+            | JQueryUI.ButtonOptions[]
+            | { [key: string]: () => void }
+            | undefined;
     }
 
     /** custom alert box */

@@ -12,5 +12,8 @@ export interface CreatePipelineArgs {
     variables?: VariableMap;
 }
 
-export default function createPipeline(ptr: GraphPointer, arg?: CreatePipelineArgs): Pipeline;
+export default function createPipeline(
+    ptr: GraphPointer,
+    arg?: CreatePipelineArgs,
+): Pipeline;
 export {};

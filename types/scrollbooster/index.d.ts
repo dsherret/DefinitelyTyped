@@ -33,13 +33,29 @@ export interface ScrollBoosterOptions {
     preventDefaultOnEmulateScroll?: "vertical" | "horizontal";
     lockScrollOnDragDirection?: "all" | "vertical" | "horizontal";
     dragDirectionTolerance?: number;
-    onClick?: (state: ScrollingState, event: MouseEvent, isTouch: boolean) => void;
+    onClick?: (
+        state: ScrollingState,
+        event: MouseEvent,
+        isTouch: boolean,
+    ) => void;
     onUpdate?: (state: ScrollingState) => void;
     onWheel?: (state: ScrollingState, event: Event) => void;
     shouldScroll?: (state: ScrollingState, event: Event) => boolean;
-    onPointerDown?: (state: ScrollingState, event: MouseEvent, isTouch: boolean) => void;
-    onPointerUp?: (state: ScrollingState, event: MouseEvent, isTouch: boolean) => void;
-    onPointerMove?: (state: ScrollingState, event: MouseEvent, isTouch: boolean) => void;
+    onPointerDown?: (
+        state: ScrollingState,
+        event: MouseEvent,
+        isTouch: boolean,
+    ) => void;
+    onPointerUp?: (
+        state: ScrollingState,
+        event: MouseEvent,
+        isTouch: boolean,
+    ) => void;
+    onPointerMove?: (
+        state: ScrollingState,
+        event: MouseEvent,
+        isTouch: boolean,
+    ) => void;
 }
 
 export default class ScrollBooster {

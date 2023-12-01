@@ -8,7 +8,10 @@ create("cobertura");
 create("cobertura", { file: "foo", projectRoot: "bar" });
 
 create("html-spa");
-create("html-spa", { skipEmpty: true, metricsToShow: ["branches", "lines", "statements"] });
+create("html-spa", {
+    skipEmpty: true,
+    metricsToShow: ["branches", "lines", "statements"],
+});
 create("html-spa", {
     linkMapper: {
         getPath: () => "foo",

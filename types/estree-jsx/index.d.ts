@@ -93,14 +93,26 @@ export interface JSXText extends BaseNode {
 export interface JSXElement extends BaseExpression {
     type: "JSXElement";
     openingElement: JSXOpeningElement;
-    children: Array<JSXText | JSXExpressionContainer | JSXSpreadChild | JSXElement | JSXFragment>;
+    children: Array<
+        | JSXText
+        | JSXExpressionContainer
+        | JSXSpreadChild
+        | JSXElement
+        | JSXFragment
+    >;
     closingElement: JSXClosingElement | null;
 }
 
 export interface JSXFragment extends BaseExpression {
     type: "JSXFragment";
     openingFragment: JSXOpeningFragment;
-    children: Array<JSXText | JSXExpressionContainer | JSXSpreadChild | JSXElement | JSXFragment>;
+    children: Array<
+        | JSXText
+        | JSXExpressionContainer
+        | JSXSpreadChild
+        | JSXElement
+        | JSXFragment
+    >;
     closingFragment: JSXClosingFragment;
 }
 

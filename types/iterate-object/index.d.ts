@@ -1,20 +1,23 @@
 export = iterateObject;
 
 type ArrayEntries<T extends unknown[], N extends 1 | 2 | 3> = {
-    [P in keyof T]: N extends 1 ? [value: T[P]]
-        : N extends 2 ? [value: T[P], index: P]
-        : N extends 3 ? [value: T[P], index: P, arr: T]
-        : never;
+    [P in keyof T]: N extends 1
+        ? [value: T[P]]
+        : N extends 2
+          ? [value: T[P], index: P]
+          : N extends 3
+            ? [value: T[P], index: P, arr: T]
+            : never;
 }[number];
 
-type KeyValueEntries<
-    T extends Record<string, unknown>,
-    N extends 1 | 2 | 3,
-> = {
-    [P in keyof T]: N extends 1 ? [value: T[P]]
-        : N extends 2 ? [value: T[P], key: P]
-        : N extends 3 ? [value: T[P], key: P, obj: T]
-        : never;
+type KeyValueEntries<T extends Record<string, unknown>, N extends 1 | 2 | 3> = {
+    [P in keyof T]: N extends 1
+        ? [value: T[P]]
+        : N extends 2
+          ? [value: T[P], key: P]
+          : N extends 3
+            ? [value: T[P], key: P, obj: T]
+            : never;
 }[keyof T];
 
 declare function iterateObject<O extends unknown[]>(

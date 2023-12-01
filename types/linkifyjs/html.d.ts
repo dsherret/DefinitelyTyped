@@ -9,7 +9,12 @@ export interface Options extends CommonOptions {
      *
      * @default null
      */
-    events?: Partial<GlobalEventHandlers> | ((href: string, type: LinkEntityType) => Partial<GlobalEventHandlers>);
+    events?:
+        | Partial<GlobalEventHandlers>
+        | ((
+              href: string,
+              type: LinkEntityType,
+          ) => Partial<GlobalEventHandlers>);
 
     /**
      *  Prevent linkify from trying to parse links in the specified tags.

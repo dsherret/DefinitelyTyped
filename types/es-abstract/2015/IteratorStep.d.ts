@@ -1,2 +1,4 @@
-declare function IteratorStep<T>(iterator: Iterator<T>): IteratorYieldResult<T> | false;
+declare function IteratorStep<T>(
+    iterator: Iterator<T>,
+): IteratorYieldResult<T> | false;
 export = IteratorStep;

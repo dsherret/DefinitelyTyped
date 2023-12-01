@@ -1,6 +1,9 @@
 // Using the global setup option
 // =============================
-$.dynatableSetup({ features: { pushState: false }, dataset: { perPageDefault: 5, perPageOptions: [2, 5, 10] } });
+$.dynatableSetup({
+    features: { pushState: false },
+    dataset: { perPageDefault: 5, perPageOptions: [2, 5, 10] },
+});
 
 // Without any settings (using all defaults)
 // =========================================
@@ -82,9 +85,10 @@ var tableInputs: JQueryDynatable.Inputs = {
     recordCountTotalTemplate: "{recordsQueryCount} x {collectionName}",
     recordCountFilteredTemplate: " (found from {recordsTotal} total entries)",
     recordCountText: "Rendering",
-    recordCountTextTemplate: "{text} {pageTemplate} {totalTemplate} {filteredTemplate}",
+    recordCountTextTemplate:
+        "{text} {pageTemplate} {totalTemplate} {filteredTemplate}",
     recordCountTemplate:
-        "<span id=\"dynatable-record-count-{elementId}\" class=\"dynatable-record-count\">!!{textTemplate}!!</span>",
+        '<span id="dynatable-record-count-{elementId}" class="dynatable-record-count">!!{textTemplate}!!</span>',
     processingText: "Working...",
 };
 // JQueryDynatable.Dataset
@@ -108,7 +112,12 @@ var tableDataset: JQueryDynatable.Dataset = {
 };
 // JQueryDynatable.Writers
 var tableWriters: JQueryDynatable.Writers = {
-    _rowWriter: function exampleRowWriter(rowIndex, record, columns, cellWriter) {
+    _rowWriter: function exampleRowWriter(
+        rowIndex,
+        record,
+        columns,
+        cellWriter,
+    ) {
         var tr = "";
         // grab the record's attribute for each column
         for (var i = 0, len = columns.length; i < len; i++) {
@@ -121,7 +130,7 @@ var tableWriters: JQueryDynatable.Writers = {
             td = "<td";
 
         if (column.hidden || column.textAlign) {
-            td += " style=\"";
+            td += ' style="';
 
             // keep cells for hidden column headers hidden
             if (column.hidden) {
@@ -133,7 +142,7 @@ var tableWriters: JQueryDynatable.Writers = {
                 td += "text-align: " + column.textAlign + ";";
             }
 
-            td += "\"";
+            td += '"';
         }
 
         return td + ">" + html + "</td>";
@@ -174,7 +183,9 @@ var dynatableOptions: JQueryDynatable.Options = {
     params: tableParams,
 };
 // Init with the options
-var dynatableWithOptions = $("#example-with-options").dynatable(dynatableOptions);
+var dynatableWithOptions = $("#example-with-options").dynatable(
+    dynatableOptions,
+);
 
 // Inline config
 // =============
@@ -189,7 +200,9 @@ var dynatableWithInlineOptions = $("#example-with-inline-options").dynatable({
 
 // Using $element
 // ==============
-var dtable: JQueryDynatable.Dynatable = $("#testing-element").dynatable().data("dynatable");
+var dtable: JQueryDynatable.Dynatable = $("#testing-element")
+    .dynatable()
+    .data("dynatable");
 dtable.$element.addClass("some-class-to-be-added-on-the-element");
 
 // Using the API
@@ -204,10 +217,10 @@ dtable.paginationPage.set(2);
 // paginationPerPage API
 dtable.paginationPerPage.set(1, true);
 // processingIndicator API
-setTimeout(function() {
+setTimeout(function () {
     dtable.processingIndicator.show();
 }, 1000);
-setTimeout(function() {
+setTimeout(function () {
     dtable.processingIndicator.hide();
 }, 3000);
 // queries API

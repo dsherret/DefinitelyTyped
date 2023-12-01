@@ -15,7 +15,11 @@ interface TemplateFactory {
  * optional class. When a component has a class, its template's `this` value
  * is an instance of the component class.
  */
-export default class Component extends CoreView.extend(ViewMixin, ActionSupport, ClassNamesSupport) {
+export default class Component extends CoreView.extend(
+    ViewMixin,
+    ActionSupport,
+    ClassNamesSupport,
+) {
     // methods
     readDOMAttr(name: string): string;
     // properties

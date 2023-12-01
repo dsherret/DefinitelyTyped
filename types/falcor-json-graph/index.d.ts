@@ -87,9 +87,23 @@ declare namespace FalcorJsonGraph {
         $expires?: number | undefined;
     }
 
-    function ref(path: string | FalcorJsonGraph.PathSet, props?: FalcorJsonGraph.Sentinel): FalcorJsonGraph.Reference;
-    function atom(value: any, props?: FalcorJsonGraph.Sentinel): FalcorJsonGraph.Atom;
-    function error(errorValue: any, props?: FalcorJsonGraph.Sentinel): FalcorJsonGraph.Error;
-    function pathValue(path: string | FalcorJsonGraph.PathSet, value: any): FalcorJsonGraph.PathValue;
-    function pathInvalidation(path: string | FalcorJsonGraph.PathSet): FalcorJsonGraph.InvalidPath;
+    function ref(
+        path: string | FalcorJsonGraph.PathSet,
+        props?: FalcorJsonGraph.Sentinel,
+    ): FalcorJsonGraph.Reference;
+    function atom(
+        value: any,
+        props?: FalcorJsonGraph.Sentinel,
+    ): FalcorJsonGraph.Atom;
+    function error(
+        errorValue: any,
+        props?: FalcorJsonGraph.Sentinel,
+    ): FalcorJsonGraph.Error;
+    function pathValue(
+        path: string | FalcorJsonGraph.PathSet,
+        value: any,
+    ): FalcorJsonGraph.PathValue;
+    function pathInvalidation(
+        path: string | FalcorJsonGraph.PathSet,
+    ): FalcorJsonGraph.InvalidPath;
 }

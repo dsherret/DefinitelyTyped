@@ -2,7 +2,7 @@ export = SockJS;
 export as namespace SockJS;
 
 declare const SockJS: {
-    new(url: string, _reserved?: any, options?: SockJS.Options): WebSocket;
+    new (url: string, _reserved?: any, options?: SockJS.Options): WebSocket;
     (url: string, _reserved?: any, options?: SockJS.Options): WebSocket;
     prototype: WebSocket;
     CONNECTING: SockJS.CONNECTING;

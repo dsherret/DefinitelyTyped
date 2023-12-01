@@ -5,7 +5,12 @@ interface BlobshapeParameters {
     seed?: string | null;
 }
 
-declare function blobshape({ size, growth, edges, seed }?: BlobshapeParameters): {
+declare function blobshape({
+    size,
+    growth,
+    edges,
+    seed,
+}?: BlobshapeParameters): {
     path: string;
     seedValue: number;
 };

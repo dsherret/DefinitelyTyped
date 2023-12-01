@@ -28,15 +28,25 @@ interface VerifyOptions {
 }
 
 interface VerifyFunctionWithRequest {
-    (req: express.Request, token: string, done: (error: any, user?: any, options?: VerifyOptions) => void): void;
+    (
+        req: express.Request,
+        token: string,
+        done: (error: any, user?: any, options?: VerifyOptions) => void,
+    ): void;
 }
 
 interface VerifyFunction {
-    (token: string, done: (error: any, user?: any, options?: VerifyOptions) => void): void;
+    (
+        token: string,
+        done: (error: any, user?: any, options?: VerifyOptions) => void,
+    ): void;
 }
 
 declare class Strategy extends PassportStrategy {
-    constructor(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: StrategyOptionsWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
     constructor(options: StrategyOptions, verify: VerifyFunction);
     constructor(verify: VerifyFunction);
 

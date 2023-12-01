@@ -34,7 +34,11 @@ declare namespace amplifier {
          * data: A set of key/value pairs of data to be sent to the resource.
          * callback: A function to invoke if the resource is retrieved successfully.
          */
-        (resourceId: string, hash?: any, callback?: (...args: any[]) => any): void;
+        (
+            resourceId: string,
+            hash?: any,
+            callback?: (...args: any[]) => any,
+        ): void;
 
         /***
          * Request a resource.
@@ -55,7 +59,11 @@ declare namespace amplifier {
          *   cache: See the cache section for more details.
          *   decoder: See the decoder section for more details.
          */
-        define(resourceId: string, requestType: string, settings?: AjaxSettings): void;
+        define(
+            resourceId: string,
+            requestType: string,
+            settings?: AjaxSettings,
+        ): void;
 
         /***
          * Define a custom request.
@@ -66,7 +74,10 @@ declare namespace amplifier {
          *   success: Callback to invoke on success.
          *   error: Callback to invoke on error.
          */
-        define(resourceId: string, resource: (settings: RequestSettings) => void): void;
+        define(
+            resourceId: string,
+            resource: (settings: RequestSettings) => void,
+        ): void;
 
         decoders: Decoders;
         cache: any;
@@ -79,7 +90,11 @@ declare namespace amplifier {
          * callback: Function to invoke when the message is published.
          * [priority]: Priority relative to other subscriptions for the same message. Lower values have higher priority. Default is 10.
          */
-        (topic: string, callback: (...args: any[]) => any, priority?: number): void;
+        (
+            topic: string,
+            callback: (...args: any[]) => any,
+            priority?: number,
+        ): void;
         /***
          * Subscribe to a message.
          * topic: Name of the message to subscribe to.
@@ -87,7 +102,12 @@ declare namespace amplifier {
          * callback: Function to invoke when the message is published.
          * [priority]: Priority relative to other subscriptions for the same message. Lower values have higher priority. Default is 10.
          */
-        (topic: string, context: any, callback: (...args: any[]) => any, priority?: number): void;
+        (
+            topic: string,
+            context: any,
+            callback: (...args: any[]) => any,
+            priority?: number,
+        ): void;
     }
     interface StorageTypeStore {
         /***

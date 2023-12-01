@@ -23,9 +23,16 @@ const props: Props & React.ClassAttributes<any> = {
     hello: "world",
     foo: 42,
 };
-declare const div: React.DetailedReactHTMLElement<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
-const element: React.CElement<Props, ModernComponent> = React.createElement(ModernComponent, props);
-const inst: ModernComponent = TestUtils.renderIntoDocument<ModernComponent>(element);
+declare const div: React.DetailedReactHTMLElement<
+    React.HTMLAttributes<HTMLDivElement>,
+    HTMLDivElement
+>;
+const element: React.CElement<Props, ModernComponent> = React.createElement(
+    ModernComponent,
+    props,
+);
+const inst: ModernComponent =
+    TestUtils.renderIntoDocument<ModernComponent>(element);
 const node: Element = TestUtils.renderIntoDocument(div);
 
 TestUtils.Simulate.click(node);
@@ -36,22 +43,30 @@ const renderer: TestUtils.ShallowRenderer = TestUtils.createRenderer();
 renderer.render(React.createElement(ModernComponent));
 const output: React.ReactElement<Props> = renderer.getRenderOutput();
 
-const foundComponent: ModernComponent = TestUtils.findRenderedComponentWithType(inst, ModernComponent);
-const foundComponents: ModernComponent[] = TestUtils.scryRenderedComponentsWithType(inst, ModernComponent);
+const foundComponent: ModernComponent = TestUtils.findRenderedComponentWithType(
+    inst,
+    ModernComponent,
+);
+const foundComponents: ModernComponent[] =
+    TestUtils.scryRenderedComponentsWithType(inst, ModernComponent);
 
 // ReactTestUtils custom type guards
 
-const emptyElement1: React.ReactElement<Props> = React.createElement(ModernComponent);
+const emptyElement1: React.ReactElement<Props> =
+    React.createElement(ModernComponent);
 if (TestUtils.isElementOfType(emptyElement1, FunctionComponent)) {
     emptyElement1.props.foo;
 }
-const emptyElement2: React.ReactElement<SCProps> = React.createElement(FunctionComponent);
+const emptyElement2: React.ReactElement<SCProps> =
+    React.createElement(FunctionComponent);
 if (TestUtils.isElementOfType(emptyElement2, FunctionComponent)) {
     emptyElement2.props.foo;
 }
 
 if (TestUtils.isDOMComponent(container)) {
     const reassignedContainer: Element = container;
-} else if (TestUtils.isCompositeComponent(new ModernComponent({ hello: "hi", foo: 3 }))) {
+} else if (
+    TestUtils.isCompositeComponent(new ModernComponent({ hello: "hi", foo: 3 }))
+) {
     new ModernComponent({ hello: "hi", foo: 3 }).props;
 }

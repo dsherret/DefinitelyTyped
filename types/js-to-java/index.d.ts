@@ -86,7 +86,11 @@ declare namespace java {
         function Currency(value: Array<null | string | Currency>): object;
     }
 
-    function abstract(abstractClassName: string, className: string, value: any): object;
+    function abstract(
+        abstractClassName: string,
+        className: string,
+        value: any,
+    ): object;
 
     function Class(className: string): object;
 

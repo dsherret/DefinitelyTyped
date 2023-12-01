@@ -21,10 +21,21 @@ import {
     ViewProps,
     ViewStyle,
 } from "react-native";
-import { NavigationContainerProps, NavigationContainerRef, ParamListBase, RouteProp } from "./@react-navigation/native";
+import {
+    NavigationContainerProps,
+    NavigationContainerRef,
+    ParamListBase,
+    RouteProp,
+} from "./@react-navigation/native";
 import { StackNavigationOptions } from "./@react-navigation/stack";
 import { TransitionPreset } from "./@react-navigation/stack/types";
-import { BackgroundProps, GlobalTheme, LinearGradientBackground, RadialGradientBackground, StopsProps } from "./theme";
+import {
+    BackgroundProps,
+    GlobalTheme,
+    LinearGradientBackground,
+    RadialGradientBackground,
+    StopsProps,
+} from "./theme";
 
 export { GlobalTheme } from "./theme";
 
@@ -121,8 +132,8 @@ export interface BatteryProps {
      */
     theme?:
         | {
-            batteryColor: string;
-        }
+              batteryColor: string;
+          }
         | undefined;
 }
 export class Battery extends React.Component<BatteryProps> {}
@@ -205,7 +216,13 @@ export interface BrickButtonProps {
      * @description Type of button
      * @defaultValue 'primary'
      */
-    type?: "primary" | "primaryGradient" | "primaryBorder" | "normal" | "small" | undefined;
+    type?:
+        | "primary"
+        | "primaryGradient"
+        | "primaryBorder"
+        | "normal"
+        | "small"
+        | undefined;
     /**
      * @language zh-CN
      * @description 按钮内部包裹内容样式
@@ -350,19 +367,19 @@ export interface BrickButtonProps {
      */
     theme?:
         | {
-            fontSize?: number | undefined;
-            fontColor?: string | undefined;
-            bgRadius?: number | undefined;
-            bgHeight?: number | undefined;
-            bgWidth?: number | undefined;
-            margin?: number[] | undefined;
-            padding?: number[] | undefined;
-            bgColor?: string | undefined;
-            bgBorder?: string | undefined;
-            bgBorderWidth?: number | undefined;
-            loadingColor?: string | undefined;
-            loadingBackground?: string | undefined;
-        }
+              fontSize?: number | undefined;
+              fontColor?: string | undefined;
+              bgRadius?: number | undefined;
+              bgHeight?: number | undefined;
+              bgWidth?: number | undefined;
+              margin?: number[] | undefined;
+              padding?: number[] | undefined;
+              bgColor?: string | undefined;
+              bgBorder?: string | undefined;
+              bgBorderWidth?: number | undefined;
+              loadingColor?: string | undefined;
+              loadingBackground?: string | undefined;
+          }
         | undefined;
 }
 export class BrickButton extends React.Component<BrickButtonProps> {}
@@ -678,16 +695,16 @@ export interface ButtonProps extends TouchableOpacityProps {
      */
     theme?:
         | {
-            fontSize?: number | undefined;
-            fontColor?: string | undefined;
-            iconSize?: number | undefined;
-            bgWidth?: number | undefined;
-            bgHeight?: number | undefined;
-            bgColor?: string | undefined;
-            margin?: number[] | undefined;
-            iconColor?: string | undefined;
-            bgRadius?: number | undefined;
-        }
+              fontSize?: number | undefined;
+              fontColor?: string | undefined;
+              iconSize?: number | undefined;
+              bgWidth?: number | undefined;
+              bgHeight?: number | undefined;
+              bgColor?: string | undefined;
+              margin?: number[] | undefined;
+              iconColor?: string | undefined;
+              bgRadius?: number | undefined;
+          }
         | undefined;
 }
 export class Button extends React.Component<ButtonProps> {}
@@ -773,12 +790,12 @@ export interface CarouselProps extends ViewPagerAndroidProps {
     dots?:
         | React.ElementType
         | ((params: {
-            dotStyle: StyleProp<ViewStyle>;
-            dotWrapperStyle: StyleProp<ViewStyle>;
-            dotActiveStyle: StyleProp<ViewStyle>;
-            currentIndex: number;
-            count: number;
-        }) => React.ReactNode)
+              dotStyle: StyleProp<ViewStyle>;
+              dotWrapperStyle: StyleProp<ViewStyle>;
+              dotActiveStyle: StyleProp<ViewStyle>;
+              currentIndex: number;
+              count: number;
+          }) => React.ReactNode)
         | undefined;
     /**
      * @language zh-CN
@@ -878,7 +895,9 @@ export interface CarouselProps extends ViewPagerAndroidProps {
      * @description Called when the user stops dragging the scroll view and it either stops or begins to glide
      * @defaultValue () => {}
      */
-    onScrollEndDrag?: ((event: NativeSyntheticEvent<NativeScrollEvent>, state: any) => void) | undefined;
+    onScrollEndDrag?:
+        | ((event: NativeSyntheticEvent<NativeScrollEvent>, state: any) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 当滚动结束时调用
@@ -889,7 +908,9 @@ export interface CarouselProps extends ViewPagerAndroidProps {
      * @description Called when the momentum scroll ends ( scroll which occurs as the ScrollView glides to a stop )
      * @defaultValue () => {}
      */
-    onMomentumScrollEnd?: ((event: NativeSyntheticEvent<NativeScrollEvent>, state: any) => void) | undefined;
+    onMomentumScrollEnd?:
+        | ((event: NativeSyntheticEvent<NativeScrollEvent>, state: any) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 用户开始拖动滚动视图时调用
@@ -900,7 +921,9 @@ export interface CarouselProps extends ViewPagerAndroidProps {
      * @description Called when the user begins to drag the scroll view
      * @defaultValue () => {}
      */
-    onScrollBeginDrag?: ((event: NativeSyntheticEvent<NativeScrollEvent>, state: any) => void) | undefined;
+    onScrollBeginDrag?:
+        | ((event: NativeSyntheticEvent<NativeScrollEvent>, state: any) => void)
+        | undefined;
 }
 export class Carousel extends React.Component<CarouselProps> {}
 
@@ -1405,14 +1428,14 @@ export interface DatePickerProps extends Omit<PickerViewProps, "mode"> {
     locale?:
         | string
         | {
-            year?: string | undefined;
-            month?: string | undefined;
-            day?: string | undefined;
-            hour?: string | undefined;
-            minute?: string | undefined;
-            am?: string | undefined;
-            pm?: string | undefined;
-        }
+              year?: string | undefined;
+              month?: string | undefined;
+              day?: string | undefined;
+              hour?: string | undefined;
+              minute?: string | undefined;
+              am?: string | undefined;
+              pm?: string | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -1501,7 +1524,9 @@ export interface DatePickerProps extends Omit<PickerViewProps, "mode"> {
      * @description Perform this callback when an item is selected. It is called with the following parameters.
      * @defaultValue () => {}
      */
-    onValueChange?: ((value?: string | number, index?: number) => void) | undefined;
+    onValueChange?:
+        | ((value?: string | number, index?: number) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description AM / PM 是否位于小时及分钟之前
@@ -1737,7 +1762,14 @@ export interface DialogProps {
      * @description Animation type
      * @defaultValue 'ScaleFadeIn'
      */
-    motionType?: "none" | "ScaleFadeIn" | "Fade" | "PullUp" | "ScalePullDown" | "PushDown" | undefined;
+    motionType?:
+        | "none"
+        | "ScaleFadeIn"
+        | "Fade"
+        | "PullUp"
+        | "ScalePullDown"
+        | "PushDown"
+        | undefined;
     /**
      * @language zh-CN
      * @description 动画配置
@@ -1814,8 +1846,9 @@ export interface DialogCheckbox extends TYFlatListData {
 }
 
 export interface DialogCheckboxProps
-    extends DialogProps, DialogCancelProps, Omit<TYFlatListProps<{}>, "data" | "renderItem">
-{
+    extends DialogProps,
+        DialogCancelProps,
+        Omit<TYFlatListProps<{}>, "data" | "renderItem"> {
     /**
      * @language zh-CN
      * @description CheckBox 类型
@@ -1931,11 +1964,9 @@ export interface DialogList extends TYFlatListData {
     title: string;
 }
 export interface DialogListProps
-    extends
-        Omit<DialogProps, "motionType" | "motionConfig">,
+    extends Omit<DialogProps, "motionType" | "motionConfig">,
         DialogCancelProps,
-        Omit<TYFlatListProps<{}>, "data" | "renderItem">
-{
+        Omit<TYFlatListProps<{}>, "data" | "renderItem"> {
     /**
      * @language zh-CN
      * @description 最大列表项
@@ -1971,7 +2002,10 @@ export interface DialogListProps
     listStyle?: StyleProp<ViewStyle> | undefined;
 }
 
-export interface DialogPromptProps extends TextInputProps, Omit<DialogProps, "style">, DialogCancelProps {
+export interface DialogPromptProps
+    extends TextInputProps,
+        Omit<DialogProps, "style">,
+        DialogCancelProps {
     /**
      * @language zh-CN
      * @description 是否显示帮助图标
@@ -2062,7 +2096,10 @@ export interface DialogElse extends ModalProps {
 // tslint:disable-next-line no-unnecessary-class
 export class Dialog {
     static alert: (option: DialogAlertProps, option2?: DialogElse) => void;
-    static checkbox: (option: DialogCheckboxProps, option2?: DialogElse) => void;
+    static checkbox: (
+        option: DialogCheckboxProps,
+        option2?: DialogElse,
+    ) => void;
     static confirm: (option: DialogConfirmProps, option2?: DialogElse) => void;
     static list: (option: DialogListProps, option2?: DialogElse) => void;
     static prompt: (option: DialogPromptProps, option2?: DialogElse) => void;
@@ -2830,11 +2867,11 @@ export interface MotionProps {
      */
     animationConfig?:
         | {
-            duration?: number | undefined;
-            delay?: number | undefined;
-            isInteraction?: boolean | undefined;
-            useNativeDriver?: boolean | undefined;
-        }
+              duration?: number | undefined;
+              delay?: number | undefined;
+              isInteraction?: boolean | undefined;
+              useNativeDriver?: boolean | undefined;
+          }
         | undefined;
 }
 export interface MotionFadeProps extends MotionProps {
@@ -3037,15 +3074,15 @@ export interface NotificationProps extends TouchableOpacityProps {
      */
     theme?:
         | {
-            background?: string | undefined;
-            text?: string | undefined;
-            iconColor?: string | undefined;
-            successIcon?: string | undefined;
-            warningIcon?: string | undefined;
-            errorIcon?: string | undefined;
-            closeIcon?: string | undefined;
-            radius?: number | undefined;
-        }
+              background?: string | undefined;
+              text?: string | undefined;
+              iconColor?: string | undefined;
+              successIcon?: string | undefined;
+              warningIcon?: string | undefined;
+              errorIcon?: string | undefined;
+              closeIcon?: string | undefined;
+              radius?: number | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -3244,15 +3281,15 @@ export interface NotificationLegacyProps extends TouchableOpacityProps {
      */
     theme?:
         | {
-            background?: string | undefined;
-            text?: string | undefined;
-            iconColor?: string | undefined;
-            successIcon?: string | undefined;
-            warningIcon?: string | undefined;
-            errorIcon?: string | undefined;
-            closeIcon?: string | undefined;
-            radius?: number | undefined;
-        }
+              background?: string | undefined;
+              text?: string | undefined;
+              iconColor?: string | undefined;
+              successIcon?: string | undefined;
+              warningIcon?: string | undefined;
+              errorIcon?: string | undefined;
+              closeIcon?: string | undefined;
+              radius?: number | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -3370,15 +3407,17 @@ export interface PickerViewIOSProps extends PickerIOSProps {
      */
     theme?:
         | {
-            fontSize?: number | undefined;
-            fontColor?: string | undefined;
-            dividerColor?: string | undefined;
-            unitFontSize?: number | undefined;
-            unitFontColor?: string | undefined;
-        }
+              fontSize?: number | undefined;
+              fontColor?: string | undefined;
+              dividerColor?: string | undefined;
+              unitFontSize?: number | undefined;
+              unitFontColor?: string | undefined;
+          }
         | undefined;
 }
-export interface PickerViewProps extends Omit<PickerIOSProps, "onValueChange" | "selectedValue">, PickerProps {
+export interface PickerViewProps
+    extends Omit<PickerIOSProps, "onValueChange" | "selectedValue">,
+        PickerProps {
     /**
      * @language zh-CN
      * @description Picker是否循环滚动
@@ -3411,7 +3450,9 @@ export interface PickerViewProps extends Omit<PickerIOSProps, "onValueChange" | 
      * @description Callback for when an item is selected.
      * @defaultValue () => {}
      */
-    onValueChange?: ((value: string | number, index: number) => void) | undefined;
+    onValueChange?:
+        | ((value: string | number, index: number) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 测试标示
@@ -3488,7 +3529,13 @@ export interface PickerViewProps extends Omit<PickerIOSProps, "onValueChange" | 
      * @description Alignment method of items
      * @defaultValue 'center'
      */
-    itemAlign?: "flex-end" | "center" | "flex-start" | "baseline" | "stretch" | undefined;
+    itemAlign?:
+        | "flex-end"
+        | "center"
+        | "flex-start"
+        | "baseline"
+        | "stretch"
+        | undefined;
     /**
      * @language zh-CN
      * @description 容器样式
@@ -3572,15 +3619,20 @@ export interface PickerViewProps extends Omit<PickerIOSProps, "onValueChange" | 
      * @defaultValue 'DIN Alternate'
      * @platform IOS only
      */
-    fontFamily?: "DIN Alternate" | "Times New Roman" | "PingFangHK-Regular" | "PingFangHK-Medium" | string;
+    fontFamily?:
+        | "DIN Alternate"
+        | "Times New Roman"
+        | "PingFangHK-Regular"
+        | "PingFangHK-Medium"
+        | string;
     theme?:
         | {
-            fontSize?: number | undefined;
-            fontColor?: string | undefined;
-            dividerColor?: string | undefined;
-            unitFontSize?: number | undefined;
-            unitFontColor?: string | undefined;
-        }
+              fontSize?: number | undefined;
+              fontColor?: string | undefined;
+              dividerColor?: string | undefined;
+              unitFontSize?: number | undefined;
+              unitFontColor?: string | undefined;
+          }
         | undefined;
 }
 export class Picker extends React.Component<PickerViewProps> {
@@ -3775,7 +3827,13 @@ export interface PopupProps extends Omit<ModalProps, "onMaskPress"> {
      * @description Animation type
      * @defaultValue "PullUp"
      */
-    motionType?: "none" | "ScaleFadeIn" | "Fade" | "PullUp" | "ScalePullDown" | undefined;
+    motionType?:
+        | "none"
+        | "ScaleFadeIn"
+        | "Fade"
+        | "PullUp"
+        | "ScalePullDown"
+        | undefined;
     /**
      * @language zh-CN
      * @description 动画配置
@@ -3786,7 +3844,12 @@ export interface PopupProps extends Omit<ModalProps, "onMaskPress"> {
      * @description Painting configuration
      * @defaultValue {}
      */
-    motionConfig?: MotionScaleFadeInProps | MotionFadeProps | MotionPullUpProps | MotionScalePullDownProps | undefined;
+    motionConfig?:
+        | MotionScaleFadeInProps
+        | MotionFadeProps
+        | MotionPullUpProps
+        | MotionScalePullDownProps
+        | undefined;
     /**
      * @language zh-CN
      * @description 是否垂直居中
@@ -3876,38 +3939,38 @@ export interface PopupProps extends Omit<ModalProps, "onMaskPress"> {
      */
     theme?:
         | {
-            cellHeight?: number | undefined;
-            cellBg?: string | undefined;
-            cellFontColor?: string | undefined;
-            cellFontSize?: number | undefined;
-            subTitleFontColor?: string | undefined;
-            titleRadius?: number | undefined;
-            titleBg?: string | undefined;
-            titleHeight?: number | undefined;
-            footerRadius?: number | undefined;
-            bottomBg?: string | undefined;
-            lineColor?: string | undefined;
-            titleFontSize?: number | undefined;
-            checkboxColor?: string | undefined;
-            titleFontColor?: string | undefined;
-            cancelFontSize?: number | undefined;
-            cancelFontColor?: string | undefined;
-            confirmFontSize?: number | undefined;
-            confirmFontColor?: string | undefined;
-            backIconColor?: string | undefined;
-            tintColor?: string | undefined;
-            numberSelector?:
-                | {
-                    cellPlusColor?: string | undefined;
-                    maximumTrackTintColor?: string | undefined;
-                }
-                | undefined;
-            list?:
-                | {
-                    cellFontColor?: string | undefined;
-                }
-                | undefined;
-        }
+              cellHeight?: number | undefined;
+              cellBg?: string | undefined;
+              cellFontColor?: string | undefined;
+              cellFontSize?: number | undefined;
+              subTitleFontColor?: string | undefined;
+              titleRadius?: number | undefined;
+              titleBg?: string | undefined;
+              titleHeight?: number | undefined;
+              footerRadius?: number | undefined;
+              bottomBg?: string | undefined;
+              lineColor?: string | undefined;
+              titleFontSize?: number | undefined;
+              checkboxColor?: string | undefined;
+              titleFontColor?: string | undefined;
+              cancelFontSize?: number | undefined;
+              cancelFontColor?: string | undefined;
+              confirmFontSize?: number | undefined;
+              confirmFontColor?: string | undefined;
+              backIconColor?: string | undefined;
+              tintColor?: string | undefined;
+              numberSelector?:
+                  | {
+                        cellPlusColor?: string | undefined;
+                        maximumTrackTintColor?: string | undefined;
+                    }
+                  | undefined;
+              list?:
+                  | {
+                        cellFontColor?: string | undefined;
+                    }
+                  | undefined;
+          }
         | undefined;
 }
 
@@ -3924,14 +3987,14 @@ export interface ListDate extends TYFlatListData {
      */
     styles?:
         | {
-            container?: StyleProp<ViewStyle> | undefined;
-            content?: StyleProp<ViewStyle> | undefined;
-            contentLeft?: StyleProp<ViewStyle> | undefined;
-            contentCenter?: StyleProp<ViewStyle> | undefined;
-            contentRight?: StyleProp<ViewStyle> | undefined;
-            title?: StyleProp<TextStyle> | undefined;
-            subTitle?: StyleProp<TextStyle> | undefined;
-        }
+              container?: StyleProp<ViewStyle> | undefined;
+              content?: StyleProp<ViewStyle> | undefined;
+              contentLeft?: StyleProp<ViewStyle> | undefined;
+              contentCenter?: StyleProp<ViewStyle> | undefined;
+              contentRight?: StyleProp<ViewStyle> | undefined;
+              title?: StyleProp<TextStyle> | undefined;
+              subTitle?: StyleProp<TextStyle> | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -3967,7 +4030,9 @@ export interface ListDate extends TYFlatListData {
      */
     value: any;
 }
-export interface PopUpListProps extends PopupProps, Omit<TYFlatListProps<{}>, "renderItem" | "data"> {
+export interface PopUpListProps
+    extends PopupProps,
+        Omit<TYFlatListProps<{}>, "renderItem" | "data"> {
     /**
      * @language zh-CN
      * @description 列表弹窗样式
@@ -4088,7 +4153,9 @@ export interface PopUpListProps extends PopupProps, Omit<TYFlatListProps<{}>, "r
      * @description Callback of selecting the event
      * @defaultValue () => {}
      */
-    onSelect?: ((value: string | number, params?: { close: () => void }) => void) | undefined;
+    onSelect?:
+        | ((value: string | number, params?: { close: () => void }) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 值改变的回调
@@ -4112,11 +4179,11 @@ export interface PopUpListProps extends PopupProps, Omit<TYFlatListProps<{}>, "r
      */
     styles?:
         | {
-            container?: StyleProp<ViewStyle> | undefined;
-            content?: StyleProp<ViewStyle> | undefined;
-            title?: StyleProp<TextStyle> | undefined;
-            contentRight?: StyleProp<ViewStyle> | undefined;
-        }
+              container?: StyleProp<ViewStyle> | undefined;
+              content?: StyleProp<ViewStyle> | undefined;
+              title?: StyleProp<TextStyle> | undefined;
+              contentRight?: StyleProp<ViewStyle> | undefined;
+          }
         | undefined;
 }
 export interface PopUpCountdownProps extends PopupProps {
@@ -4241,7 +4308,11 @@ export interface PopUpCountdownProps extends PopupProps {
      * @defaultValue () => {}
      */
     onValueChange?:
-        | ((data?: { hour?: number | undefined; minute?: number | undefined; value?: number | undefined }) => void)
+        | ((data?: {
+              hour?: number | undefined;
+              minute?: number | undefined;
+              value?: number | undefined;
+          }) => void)
         | undefined;
     /**
      * @language zh-CN
@@ -4299,7 +4370,9 @@ export interface PopUpCountdownProps extends PopupProps {
      */
     minuteUnitStyle?: StyleProp<TextStyle> | undefined;
 }
-export interface PopupDatePickerProps extends PopupProps, Omit<DatePickerProps, "theme" | "children"> {
+export interface PopupDatePickerProps
+    extends PopupProps,
+        Omit<DatePickerProps, "theme" | "children"> {
     /**
      * @language zh-CN
      * @description 日期更改回调
@@ -4324,8 +4397,8 @@ export interface PopupDatePickerProps extends PopupProps, Omit<DatePickerProps, 
     children?: React.ReactNode | undefined;
 }
 export interface PopupNumberSelectorProps
-    extends Omit<PopupProps, "onLayout" | "animationType">, Omit<SliderProps, "theme" | "type">
-{
+    extends Omit<PopupProps, "onLayout" | "animationType">,
+        Omit<SliderProps, "theme" | "type"> {
     /**
      * @language zh-CN
      * @description numberSelector弹框样式
@@ -4472,7 +4545,9 @@ export interface PickerDataProps {
      */
     value: string;
 }
-export interface PopupPickerProps extends Omit<PopupProps, "onConfirm">, Omit<PickerViewProps, "theme" | "children"> {
+export interface PopupPickerProps
+    extends Omit<PopupProps, "onConfirm">,
+        Omit<PickerViewProps, "theme" | "children"> {
     /**
      * @language zh-CN
      * @description 单位标志
@@ -4593,7 +4668,9 @@ export interface PopupPickerProps extends Omit<PopupProps, "onConfirm">, Omit<Pi
      * @description Value change callback
      * @defaultValue () => {}
      */
-    onValueChange?: ((newValue: string | number, idx: number) => void) | undefined;
+    onValueChange?:
+        | ((newValue: string | number, idx: number) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 值更改回调
@@ -4604,7 +4681,9 @@ export interface PopupPickerProps extends Omit<PopupProps, "onConfirm">, Omit<Pi
      * @description Value change callback
      * @defaultValue () => {}
      */
-    _onDataChange?: ((newValue: string | number, idx: number) => void) | undefined;
+    _onDataChange?:
+        | ((newValue: string | number, idx: number) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 确认回调
@@ -4615,9 +4694,13 @@ export interface PopupPickerProps extends Omit<PopupProps, "onConfirm">, Omit<Pi
      * @description Confirm callback
      * @defaultValue () => {}
      */
-    onConfirm?: ((data: any, idx: number, args: { close: () => void }) => void) | undefined;
+    onConfirm?:
+        | ((data: any, idx: number, args: { close: () => void }) => void)
+        | undefined;
 }
-export interface PopupTimerPickerProps extends PopupProps, Omit<TimerPickerProps, "theme"> {}
+export interface PopupTimerPickerProps
+    extends PopupProps,
+        Omit<TimerPickerProps, "theme"> {}
 export interface PopupCustomProps extends PopupProps {
     /**
      * @language zh-CN
@@ -4727,11 +4810,23 @@ export interface PopupDropdownProps {
 }
 export class Popup extends React.Component<PopupProps> {
     static list: (option: PopUpListProps, option2?: DialogElse) => void;
-    static countdown: (option: PopUpCountdownProps, option2?: DialogElse) => void;
-    static numberSelector: (option: PopupNumberSelectorProps, option2?: DialogElse) => void;
+    static countdown: (
+        option: PopUpCountdownProps,
+        option2?: DialogElse,
+    ) => void;
+    static numberSelector: (
+        option: PopupNumberSelectorProps,
+        option2?: DialogElse,
+    ) => void;
     static close: () => void;
-    static datePicker: (option: PopupDatePickerProps, option2?: DialogElse) => void;
-    static timerPicker: (option: PopupTimerPickerProps, option2?: DialogElse) => void;
+    static datePicker: (
+        option: PopupDatePickerProps,
+        option2?: DialogElse,
+    ) => void;
+    static timerPicker: (
+        option: PopupTimerPickerProps,
+        option2?: DialogElse,
+    ) => void;
     static picker: (option: PopupPickerProps, option2?: DialogElse) => void;
     static custom: (option: PopupCustomProps, option2?: DialogElse) => void;
     static tips: (option: PopupTipsProps) => void;
@@ -4922,8 +5017,8 @@ export interface ProgressProps extends GestureProps {
         | string
         | StopsProps[]
         | {
-            [key: string]: string;
-        }
+              [key: string]: string;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -5205,7 +5300,9 @@ export interface DoubleProps extends ProgressProps {
      * @description Callback of value change
      * @defaultValue () => {}
      */
-    onValueChange?: ((argus: { minValue: number; maxValue: number }) => void) | undefined;
+    onValueChange?:
+        | ((argus: { minValue: number; maxValue: number }) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 滑动结束回调
@@ -5216,7 +5313,9 @@ export interface DoubleProps extends ProgressProps {
      * @description Callback of ending the slide.
      * @defaultValue () => {}
      */
-    onSlidingComplete?: ((argus: { minValue: number; maxValue: number }) => void) | undefined;
+    onSlidingComplete?:
+        | ((argus: { minValue: number; maxValue: number }) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 开始端 thumb 小圆球的填充色
@@ -5475,8 +5574,8 @@ export interface ComposeProps extends GestureProps {
         | string
         | StopsProps[]
         | {
-            [key: string]: string;
-        }
+              [key: string]: string;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -5587,7 +5686,9 @@ export interface ComposeProps extends GestureProps {
      * @description Callback of value change
      * @defaultValue () => {}
      */
-    onValueChange?: ((argus: { value1: number; value2: number }) => void) | undefined;
+    onValueChange?:
+        | ((argus: { value1: number; value2: number }) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 滑动结束的回调
@@ -5598,7 +5699,9 @@ export interface ComposeProps extends GestureProps {
      * @description Slide end callback
      * @defaultValue () => {}
      */
-    onSlidingComplete?: ((argus: { value1: number; value2x: number }) => void) | undefined;
+    onSlidingComplete?:
+        | ((argus: { value1: number; value2x: number }) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 进度条1 Thumb 小圆球的半径
@@ -5808,15 +5911,15 @@ export interface SliderProps {
      */
     theme?:
         | {
-            width?: number | undefined;
-            trackRadius?: number | undefined;
-            trackHeight?: number | undefined;
-            minimumTrackTintColor?: string | undefined;
-            maximumTrackTintColor?: string | undefined;
-            thumbSize?: number | undefined;
-            thumbRadius?: number | undefined;
-            thumbTintColor?: string | undefined;
-        }
+              width?: number | undefined;
+              trackRadius?: number | undefined;
+              trackHeight?: number | undefined;
+              minimumTrackTintColor?: string | undefined;
+              maximumTrackTintColor?: string | undefined;
+              thumbSize?: number | undefined;
+              thumbRadius?: number | undefined;
+              thumbTintColor?: string | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -5951,9 +6054,9 @@ export interface SliderProps {
      */
     thumbTouchSize?:
         | {
-            width: number;
-            height: number;
-        }
+              width: number;
+              height: number;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -6099,12 +6202,12 @@ export interface SliderProps {
      */
     animationConfig?:
         | {
-            friction?: number | undefined;
-            tension?: number | undefined;
-            duration?: number | undefined;
-            easing?: (() => void) | undefined;
-            delay?: number | undefined;
-        }
+              friction?: number | undefined;
+              tension?: number | undefined;
+              duration?: number | undefined;
+              easing?: (() => void) | undefined;
+              delay?: number | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -6162,12 +6265,12 @@ export interface SliderProps {
      */
     styles?:
         | {
-            container?: StyleProp<ViewStyle> | undefined;
-            track?: StyleProp<ViewStyle> | undefined;
-            thumb?: StyleProp<ViewStyle> | undefined;
-            touchArea?: StyleProp<ViewStyle> | undefined;
-            debugThumbTouchArea?: StyleProp<ViewStyle> | undefined;
-        }
+              container?: StyleProp<ViewStyle> | undefined;
+              track?: StyleProp<ViewStyle> | undefined;
+              thumb?: StyleProp<ViewStyle> | undefined;
+              touchArea?: StyleProp<ViewStyle> | undefined;
+              debugThumbTouchArea?: StyleProp<ViewStyle> | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -6634,7 +6737,9 @@ export interface SliderWithLineProps {
      * @description Start sliding callback
      * @defaultValue null
      */
-    onSlidingStart?: ((result?: { minValue?: number; maxValue?: number }) => void) | undefined;
+    onSlidingStart?:
+        | ((result?: { minValue?: number; maxValue?: number }) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 滑动过程中回调
@@ -6645,7 +6750,9 @@ export interface SliderWithLineProps {
      * @description Callback during sliding
      * @defaultValue null
      */
-    onValueChange?: ((result?: { minValue?: number; maxValue?: number }) => void) | undefined;
+    onValueChange?:
+        | ((result?: { minValue?: number; maxValue?: number }) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 结束滑动回调
@@ -6656,7 +6763,9 @@ export interface SliderWithLineProps {
      * @description End slide callback
      * @defaultValue null
      */
-    onSlidingComplete?: ((result?: { minValue?: number; maxValue?: number }) => void) | undefined;
+    onSlidingComplete?:
+        | ((result?: { minValue?: number; maxValue?: number }) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 禁用 minValue 调节
@@ -7170,20 +7279,20 @@ export interface SwitchButtonProps {
      */
     theme?:
         | {
-            width?: number | undefined;
-            height?: number | undefined;
-            thumbSize?: number | undefined;
-            margin?: number | number[] | undefined;
-            tintColor?:
-                | string
-                | {
-                    [key: string]: string;
-                }
-                | undefined;
-            onTintColor?: string | undefined;
-            thumbTintColor?: string | undefined;
-            onThumbTintColor?: string | undefined;
-        }
+              width?: number | undefined;
+              height?: number | undefined;
+              thumbSize?: number | undefined;
+              margin?: number | number[] | undefined;
+              tintColor?:
+                  | string
+                  | {
+                        [key: string]: string;
+                    }
+                  | undefined;
+              onTintColor?: string | undefined;
+              thumbTintColor?: string | undefined;
+              onThumbTintColor?: string | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -7252,11 +7361,11 @@ export interface SwitchButtonProps {
      */
     size?:
         | {
-            width?: number | undefined;
-            height?: number | undefined;
-            activeSize?: number | undefined;
-            margin?: number | undefined;
-        }
+              width?: number | undefined;
+              height?: number | undefined;
+              activeSize?: number | undefined;
+              margin?: number | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -7282,8 +7391,8 @@ export interface SwitchButtonProps {
     tintColor?:
         | string
         | {
-            [key: string]: string;
-        }
+              [key: string]: string;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -7298,8 +7407,8 @@ export interface SwitchButtonProps {
     onTintColor?:
         | string
         | {
-            [key: string]: string;
-        }
+              [key: string]: string;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -8189,9 +8298,9 @@ export interface TopBarProps extends TopBarContentProps {
      */
     theme?:
         | {
-            background?: string | undefined;
-            color?: string | undefined;
-        }
+              background?: string | undefined;
+              color?: string | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -8301,7 +8410,9 @@ export interface TabDataSource extends ViewProps {
      * @description Custom tab rendering
      * @defaultValue undefined
      */
-    renderTab?: ((isActive: boolean, state: {}, props: {}) => React.ReactNode) | undefined;
+    renderTab?:
+        | ((isActive: boolean, state: {}, props: {}) => React.ReactNode)
+        | undefined;
 }
 export interface TabsProps {
     /**
@@ -8556,7 +8667,9 @@ export interface TabsProps {
      * @description Custom rendering of the placeholder container in the preload.
      * @defaultValue undefined
      */
-    renderPlaceholder?: ((activeIndex: number, child: React.ReactNode) => React.ReactNode) | undefined;
+    renderPlaceholder?:
+        | ((activeIndex: number, child: React.ReactNode) => React.ReactNode)
+        | undefined;
     /**
      * @language zh-CN
      * @description Tab 变更回调
@@ -8602,12 +8715,12 @@ export interface TabsProps {
      */
     animationConfig?:
         | {
-            duration?: number | undefined;
-            easing?: (() => void) | undefined;
-            delay?: number | undefined;
-            isInteraction?: boolean | undefined;
-            useNativeDriver?: boolean | undefined;
-        }
+              duration?: number | undefined;
+              easing?: (() => void) | undefined;
+              delay?: number | undefined;
+              isInteraction?: boolean | undefined;
+              useNativeDriver?: boolean | undefined;
+          }
         | undefined;
 }
 export interface TabContentProps {
@@ -8711,7 +8824,9 @@ export interface TabContentProps {
      * @description TabContent sliding callback.
      * @defaultValue undefined
      */
-    onMove?: ((gestureState: {}, index: number, percent: number) => void) | undefined;
+    onMove?:
+        | ((gestureState: {}, index: number, percent: number) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description TabContent 滑动结束时回调
@@ -8722,7 +8837,9 @@ export interface TabContentProps {
      * @description Callback of TabContent sliding end.
      * @defaultValue undefined
      */
-    onRelease?: ((gestureState: {}, index: number, percent: number) => void) | undefined;
+    onRelease?:
+        | ((gestureState: {}, index: number, percent: number) => void)
+        | undefined;
     /**
      * @language zh-CN
      * @description 自定义渲染预加载中的占位容器
@@ -8733,7 +8850,9 @@ export interface TabContentProps {
      * @description Custom rendering of the placeholder container in the preload.
      * @defaultValue undefined
      */
-    renderPlaceholder?: ((activeIndex: number, child: React.ReactNode) => React.ReactNode) | undefined;
+    renderPlaceholder?:
+        | ((activeIndex: number, child: React.ReactNode) => React.ReactNode)
+        | undefined;
     /**
      * @language zh-CN
      * @description 动画配置
@@ -8746,12 +8865,12 @@ export interface TabContentProps {
      */
     animationConfig?:
         | {
-            duration?: number | undefined;
-            easing?: (() => void) | undefined;
-            delay?: number | undefined;
-            isInteraction?: boolean | undefined;
-            useNativeDriver?: boolean | undefined;
-        }
+              duration?: number | undefined;
+              easing?: (() => void) | undefined;
+              delay?: number | undefined;
+              isInteraction?: boolean | undefined;
+              useNativeDriver?: boolean | undefined;
+          }
         | undefined;
 }
 export interface TabPanelProps extends ViewProps {
@@ -9010,7 +9129,13 @@ export interface TipsProps {
      * @description Bubble animation type
      * @defaultValue 'ScaleFadeIn'
      */
-    motionType?: "Fade" | "PullUp" | "ScaleFadeIn" | "ScalePullDown" | "PushDown" | undefined;
+    motionType?:
+        | "Fade"
+        | "PullUp"
+        | "ScaleFadeIn"
+        | "ScalePullDown"
+        | "PushDown"
+        | undefined;
     /**
      * @language zh-CN
      * @description 角标位置
@@ -9021,7 +9146,14 @@ export interface TipsProps {
      * @description Corner mark position
      * @defaultValue 'topCenter'
      */
-    cornerPosition?: "topLeft" | "topCenter" | "topRight" | "bottomLeft" | "bottomCenter" | "bottomRight" | undefined;
+    cornerPosition?:
+        | "topLeft"
+        | "topCenter"
+        | "topRight"
+        | "bottomLeft"
+        | "bottomCenter"
+        | "bottomRight"
+        | undefined;
     /**
      * @language zh-CN
      * @description 动画配置
@@ -9381,8 +9513,8 @@ export class Toast extends React.Component<ToastProps> {
 
 // TYFlatList
 export interface TYSectionInputProps
-    extends Omit<TYListItemProps, "onBlur" | "onFocus">, Omit<TextInputProps, "style">
-{
+    extends Omit<TYListItemProps, "onBlur" | "onFocus">,
+        Omit<TextInputProps, "style"> {
     /**
      * @language zh-CN
      * @description 标题
@@ -9496,7 +9628,8 @@ export interface TYFlatListData {
      */
     onChange?: (() => void) | undefined;
 }
-export interface TYFlatListProps<ItemT extends TYFlatListData> extends Omit<FlatListProps<ItemT>, "renderItem"> {
+export interface TYFlatListProps<ItemT extends TYFlatListData>
+    extends Omit<FlatListProps<ItemT>, "renderItem"> {
     /**
      * @language zh-CN
      * @description 内容样式
@@ -9586,8 +9719,12 @@ export interface TYFlatListProps<ItemT extends TYFlatListData> extends Omit<Flat
      */
     renderItem?: ListRenderItem<ItemT> | null | undefined;
 }
-export interface TYFlatListCheckbox<ItemT extends TYFlatListData> extends TYFlatListProps<ItemT>, CheckboxProps {}
-export class TYFlatList<ItemT extends TYFlatListData> extends React.Component<TYFlatListProps<ItemT>> {
+export interface TYFlatListCheckbox<ItemT extends TYFlatListData>
+    extends TYFlatListProps<ItemT>,
+        CheckboxProps {}
+export class TYFlatList<ItemT extends TYFlatListData> extends React.Component<
+    TYFlatListProps<ItemT>
+> {
     static CheckboxItem: React.ElementType<TYFlatListCheckbox<TYFlatListData>>;
     static Item: React.ElementType<TYListItemProps>;
     static InputItem: React.ElementType<TYSectionInputProps>;
@@ -9609,14 +9746,14 @@ export interface TYListItemProps extends TouchableOpacityProps {
      */
     styles?:
         | {
-            container?: StyleProp<ViewStyle> | undefined;
-            content?: StyleProp<ViewStyle> | undefined;
-            contentLeft?: StyleProp<ViewStyle> | undefined;
-            contentCenter?: StyleProp<ViewStyle> | undefined;
-            contentRight?: StyleProp<ViewStyle> | undefined;
-            title?: StyleProp<TextStyle> | undefined;
-            subTitle?: StyleProp<TextStyle> | undefined;
-        }
+              container?: StyleProp<ViewStyle> | undefined;
+              content?: StyleProp<ViewStyle> | undefined;
+              contentLeft?: StyleProp<ViewStyle> | undefined;
+              contentCenter?: StyleProp<ViewStyle> | undefined;
+              contentRight?: StyleProp<ViewStyle> | undefined;
+              title?: StyleProp<TextStyle> | undefined;
+              subTitle?: StyleProp<TextStyle> | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -9630,16 +9767,16 @@ export interface TYListItemProps extends TouchableOpacityProps {
      */
     theme?:
         | {
-            boardBg?: string | undefined;
-            fontColor?: string | undefined;
-            subFontColor?: string | undefined;
-            descFontColor?: string | undefined;
-            cellLine?: string | undefined;
-            cellBg?: string | undefined;
-            cellRadius?: number | undefined;
-            margin?: number[] | number | undefined;
-            padding?: number[] | number | undefined;
-        }
+              boardBg?: string | undefined;
+              fontColor?: string | undefined;
+              subFontColor?: string | undefined;
+              descFontColor?: string | undefined;
+              cellLine?: string | undefined;
+              cellBg?: string | undefined;
+              cellRadius?: number | undefined;
+              margin?: number[] | number | undefined;
+              padding?: number[] | number | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -9911,17 +10048,17 @@ export interface SectionDataProps {
      */
     theme?:
         | {
-            boardBg?: string | undefined;
-            iconColor?: string | undefined;
-            fontColor?: string | undefined;
-            subFontColor?: string | undefined;
-            descFontColor?: string | undefined;
-            cellLine?: string | undefined;
-            cellBg?: string | undefined;
-            cellRadius?: number | undefined;
-            margin?: number[] | number | undefined;
-            padding?: number[] | number | undefined;
-        }
+              boardBg?: string | undefined;
+              iconColor?: string | undefined;
+              fontColor?: string | undefined;
+              subFontColor?: string | undefined;
+              descFontColor?: string | undefined;
+              cellLine?: string | undefined;
+              cellBg?: string | undefined;
+              cellRadius?: number | undefined;
+              margin?: number[] | number | undefined;
+              padding?: number[] | number | undefined;
+          }
         | undefined;
     /**
      * @language zh-CN
@@ -9935,17 +10072,17 @@ export interface SectionDataProps {
      */
     data?:
         | Array<{
-            key?: string | number | undefined;
-            value?: string | number | boolean | undefined;
-            Action?: any;
-            title?: string | number | undefined;
-            subTitle?: string | undefined;
-            arrow?: boolean | undefined;
-            checked?: boolean | undefined;
-            disabled?: boolean | undefined;
-            onPress?: ((idx: number) => void) | undefined;
-            onValueChange?: ((value: string) => void) | undefined;
-        }>
+              key?: string | number | undefined;
+              value?: string | number | boolean | undefined;
+              Action?: any;
+              title?: string | number | undefined;
+              subTitle?: string | undefined;
+              arrow?: boolean | undefined;
+              checked?: boolean | undefined;
+              disabled?: boolean | undefined;
+              onPress?: ((idx: number) => void) | undefined;
+              onValueChange?: ((value: string) => void) | undefined;
+          }>
         | undefined;
 }
 export interface TYSectionListProps extends SectionListProps<SectionDataProps> {
@@ -10187,8 +10324,12 @@ export interface TYSectionSliderProps extends Omit<SliderProps, "theme"> {
      */
     useART?: boolean | undefined;
 }
-export interface TYSectionCheckboxProps extends TYListItemProps, CheckboxProps {}
-export interface TYSectionSwitchProps extends Omit<TYListItemProps, "theme">, SwitchButtonProps {}
+export interface TYSectionCheckboxProps
+    extends TYListItemProps,
+        CheckboxProps {}
+export interface TYSectionSwitchProps
+    extends Omit<TYListItemProps, "theme">,
+        SwitchButtonProps {}
 export class TYSectionList extends React.Component<TYSectionListProps> {
     static CheckboxItem: React.ElementType<TYSectionCheckboxProps>;
     static Item: React.ElementType<TYListItemProps>;
@@ -10464,7 +10605,10 @@ export interface StringType {
     [key: string]: string;
 }
 // i18n core
-declare class I18NCore<LanMap extends I18NLanMap, Lan extends LanMap[keyof LanMap] = LanMap[keyof LanMap]> {
+declare class I18NCore<
+    LanMap extends I18NLanMap,
+    Lan extends LanMap[keyof LanMap] = LanMap[keyof LanMap],
+> {
     constructor(config: LanMap);
     strings: LanMap;
     getLang: (key: keyof Lan, defaultString?: string) => string;
@@ -10497,12 +10641,16 @@ declare class I18NCore<LanMap extends I18NLanMap, Lan extends LanMap[keyof LanMa
 }
 
 // i18n wrapper
-export class I18N<LanMap extends I18NLanMap, Lan extends LanMap[keyof LanMap] = LanMap[keyof LanMap]> extends I18NCore<
-    LanMap,
-    Lan
-> {
+export class I18N<
+    LanMap extends I18NLanMap,
+    Lan extends LanMap[keyof LanMap] = LanMap[keyof LanMap],
+> extends I18NCore<LanMap, Lan> {
     getRangeStrings: (dpCode: string) => Record<string, string>;
-    getFaultStrings: (faultCode: string, faultValue: string, onlyPrior?: boolean) => string;
+    getFaultStrings: (
+        faultCode: string,
+        faultValue: string,
+        onlyPrior?: boolean,
+    ) => string;
 }
 
 export interface ThemeProps {
@@ -10583,15 +10731,24 @@ export let Utils: {
             hsl2rgb(h: number, s: number, l: number, a: number): number[];
             temp2rgb(
                 kelvin: number,
-                option?: { temperatureMin?: number | undefined; temperatureMax?: number | undefined },
+                option?: {
+                    temperatureMin?: number | undefined;
+                    temperatureMax?: number | undefined;
+                },
             ): string;
             brightKelvin2rgb(
                 bright: number,
                 kelvin?: number,
-                option?: { temperatureMin?: number | undefined; temperatureMax?: number | undefined },
+                option?: {
+                    temperatureMin?: number | undefined;
+                    temperatureMax?: number | undefined;
+                },
             ): string;
             rgb2hsb(...rgb: number[]): number[];
-            bright2Opacity(bright: number, option: { min?: number | undefined; max?: number | undefined }): number;
+            bright2Opacity(
+                bright: number,
+                option: { min?: number | undefined; max?: number | undefined },
+            ): number;
             hsv2rgba(h: number, s: number, v: number): string;
             brightKelvin2rgba(bright: number, kelvin: number): string;
             hsl2hex(h: number, s: number, l: number): string;
@@ -10607,19 +10764,43 @@ export let Utils: {
             decodeColorDataWithPosition(data: string): number[];
             decodeColorDataWithPosition(rgbxyve: string): number[];
         };
-        hsvToRgb(h: number, s: number, v: number): { r: number; g: number; b: number };
-        rgbToHsv(r: number, g: number, b: number): { h: number; s: number; v: number };
-        hslToRgb(h: number, s: number, l: number): { r: number; g: number; b: number };
-        rgbToHsl(rr: number, gg: number, bb: number): { h: number; s: number; v: number };
+        hsvToRgb(
+            h: number,
+            s: number,
+            v: number,
+        ): { r: number; g: number; b: number };
+        rgbToHsv(
+            r: number,
+            g: number,
+            b: number,
+        ): { h: number; s: number; v: number };
+        hslToRgb(
+            h: number,
+            s: number,
+            l: number,
+        ): { r: number; g: number; b: number };
+        rgbToHsl(
+            rr: number,
+            gg: number,
+            bb: number,
+        ): { h: number; s: number; v: number };
     };
     ThemeUtils: {
         ThemeProvider: React.ElementType<ThemeProviderProps>;
         ThemeConsumer: React.ElementType<ThemeConsumerProps>;
         deepMerge(target: object, ...args: object[]): object;
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        withTheme<P extends { theme?: T | undefined }, T>(component: React.ComponentType<P>): React.ComponentType<P>;
-        parseToCss: (values: number[], key: string) => { [styleKey: string]: number };
-        parseToStyle: (values: number[], key: string) => { [styleKey: string]: number };
+        withTheme<P extends { theme?: T | undefined }, T>(
+            component: React.ComponentType<P>,
+        ): React.ComponentType<P>;
+        parseToCss: (
+            values: number[],
+            key: string,
+        ) => { [styleKey: string]: number };
+        parseToStyle: (
+            values: number[],
+            key: string,
+        ) => { [styleKey: string]: number };
         getTheme: (props: object, type: string, defaultValue: any) => any;
     };
     NumberUtils: {
@@ -10637,8 +10818,19 @@ export let Utils: {
         inMaxMin(min: number, max: number, value: number): number;
         scaleNumber(scale: number, value: number): number;
         range(start: number, end: number, step: number): number[];
-        calcPosition(value: number, min: number, max: number, newMin: number, newMax: number): number;
-        calcPercent(min: number, max: number, value: number, offset: number): number;
+        calcPosition(
+            value: number,
+            min: number,
+            max: number,
+            newMin: number,
+            newMax: number,
+        ): number;
+        calcPercent(
+            min: number,
+            max: number,
+            value: number,
+            offset: number,
+        ): number;
         add(value1: number, value2: number): number;
         subtract(value1: number, value2: number): number;
     };
@@ -10787,7 +10979,11 @@ export interface DevInfo<S = Record<string, DpType>> {
     networkType: NetworkType;
     originJson: Record<string, any>;
     panelConfig: {
-        bic: Array<{ code: string; selected: boolean; value?: string | undefined }>;
+        bic: Array<{
+            code: string;
+            selected: boolean;
+            value?: string | undefined;
+        }>;
         fun?: Record<string, any> | undefined;
     };
     pcc: string;
@@ -10853,7 +11049,9 @@ export interface DeprecatedNavigatorRoute {
 
 export interface DeprecatedNavigator {
     getCurrentRoutes(): DeprecatedNavigatorRoute[];
-    immediatelyResetRouteStack(nextRouteStack: DeprecatedNavigatorRoute[]): void;
+    immediatelyResetRouteStack(
+        nextRouteStack: DeprecatedNavigatorRoute[],
+    ): void;
     jumpBack(): void;
     jumpForward(): void;
     jumpTo(route: DeprecatedNavigatorRoute): void;
@@ -10938,9 +11136,15 @@ export interface NavigationOptions {
     renderStatusBar?: (() => JSX.Element) | undefined;
 }
 
-export class NavigatorLayout<P = {}, S = {}> extends React.Component<P, { modalVisible: boolean } & S> {
+export class NavigatorLayout<P = {}, S = {}> extends React.Component<
+    P,
+    { modalVisible: boolean } & S
+> {
     hookRoute(route: DeprecatedNavigatorRoute): NavigationOptions;
-    renderScene(route: DeprecatedNavigatorRoute, navigator: DeprecatedNavigator): JSX.Element | undefined;
+    renderScene(
+        route: DeprecatedNavigatorRoute,
+        navigator: DeprecatedNavigator,
+    ): JSX.Element | undefined;
 }
 
 export interface NavigationRoute {
@@ -10948,14 +11152,20 @@ export interface NavigationRoute {
     component: React.ComponentType;
     options?:
         | StackNavigationOptions
-        | ((props: { route: RouteProp<ParamListBase, string>; navigation: any }) => StackNavigationOptions)
+        | ((props: {
+              route: RouteProp<ParamListBase, string>;
+              navigation: any;
+          }) => StackNavigationOptions)
         | NavigationOptions
         | undefined;
 }
 
 export type ScreenOptions =
     | StackNavigationOptions
-    | ((props: { route: RouteProp<ParamListBase, string>; navigation: any }) => StackNavigationOptions);
+    | ((props: {
+          route: RouteProp<ParamListBase, string>;
+          navigation: any;
+      }) => StackNavigationOptions);
 
 export interface NavigationParam {
     router: NavigationRoute[];
@@ -10963,7 +11173,7 @@ export interface NavigationParam {
 }
 
 export interface NavigationComponentClass<P = {}, S = {}> {
-    new(props: P, context?: any): NavigatorLayout<P, S>;
+    new (props: P, context?: any): NavigatorLayout<P, S>;
 }
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
 export function createNavigator<P = {}, S = {}>(
@@ -11008,7 +11218,11 @@ export let TYSdk: {
      * @param version - api version, default 1.0
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    apiRequest<T>(a: string, postData: Record<string, any>, version?: string): Promise<T>;
+    apiRequest<T>(
+        a: string,
+        postData: Record<string, any>,
+        version?: string,
+    ): Promise<T>;
     applyNavigator(navigator: DeprecatedNavigator): void;
     devInfo: DevInfo;
     device: {
@@ -11088,7 +11302,10 @@ export let TYSdk: {
         /**
          * @description app 网络状态变更通知
          */
-        on(event: "networkStateChange", callback: (data: { appOnline: boolean }) => void): void;
+        on(
+            event: "networkStateChange",
+            callback: (data: { appOnline: boolean }) => void,
+        ): void;
         /**
          * @description 云定时状态变更通知
          */
@@ -11096,7 +11313,10 @@ export let TYSdk: {
         /**
          * @description 设备局域网在线状态变更通知
          */
-        on(event: "deviceLocalStateChange", callback: (data: { state: boolean }) => void): void;
+        on(
+            event: "deviceLocalStateChange",
+            callback: (data: { state: boolean }) => void,
+        ): void;
         /**
          * @description 蓝牙状态变更通知
          */
@@ -11171,7 +11391,12 @@ export let TYSdk: {
             onConfirmed: (value: string) => void,
             onCanceled: () => void,
         ): void;
-        simpleConfirmDialog(title: string, subTitle: string, confirm: () => void, cancel: () => void): void;
+        simpleConfirmDialog(
+            title: string,
+            subTitle: string,
+            confirm: () => void,
+            cancel: () => void,
+        ): void;
         simpleTipDialog(title: string, callback: () => void): void;
         verSupported(): boolean;
     };
@@ -11218,7 +11443,11 @@ export let TYSdk: {
         goToAlarmListActivity: AnyFunction;
         gotoBlePermissions: AnyFunction;
         gotoDeviceWifiNetworkMonitor: AnyFunction;
-        gotoDpAlarm: (param: { category: string; repeat: number; data: GotoDpAlarmData }) => void;
+        gotoDpAlarm: (param: {
+            category: string;
+            repeat: number;
+            data: GotoDpAlarmData;
+        }) => void;
         hideLoading: AnyFunction;
         is24Hour: () => Promise<boolean>;
         jumpTo: (routeId: string) => any;

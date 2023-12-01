@@ -73,12 +73,20 @@ declare namespace DataTables {
          * Calculate the pixel position from the top of the scrolling container for
          * a given row
          */
-        rowToPixels(rowIdx: number, intParse?: boolean, virtual?: boolean): number;
+        rowToPixels(
+            rowIdx: number,
+            intParse?: boolean,
+            virtual?: boolean,
+        ): number;
         /*
          * Calculate the row number that will be found at the given pixel position
          * (y-scroll).
          */
-        pixelsToRow(pixels: number, intParse?: boolean, virtual?: boolean): number;
+        pixelsToRow(
+            pixels: number,
+            intParse?: boolean,
+            virtual?: boolean,
+        ): number;
         scrollToRow(rowIdx: number, animate?: boolean): Api;
     }
 

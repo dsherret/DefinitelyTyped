@@ -29,7 +29,14 @@ declare namespace Cookies {
          * providing some protection against cross-site request forgery
          * attacks (CSRF)
          */
-        sameSite?: "strict" | "Strict" | "lax" | "Lax" | "none" | "None" | undefined;
+        sameSite?:
+            | "strict"
+            | "Strict"
+            | "lax"
+            | "Lax"
+            | "none"
+            | "None"
+            | undefined;
 
         /**
          * An attribute which will be serialized, conformably to RFC 6265
@@ -44,7 +51,11 @@ declare namespace Cookies {
         /**
          * Create a cookie
          */
-        set(name: string, value: string | T, options?: CookieAttributes): string | undefined;
+        set(
+            name: string,
+            value: string | T,
+            options?: CookieAttributes,
+        ): string | undefined;
 
         /**
          * Read cookie
@@ -76,7 +87,9 @@ declare namespace Cookies {
          * will run the converter first for each cookie. The returned
          * string will be used as the cookie value.
          */
-        withConverter<TConv = string>(converter: Converter<TConv>): CookiesStatic<TConv>;
+        withConverter<TConv = string>(
+            converter: Converter<TConv>,
+        ): CookiesStatic<TConv>;
     }
 
     interface Converter<TConv> {

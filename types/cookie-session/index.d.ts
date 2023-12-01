@@ -109,6 +109,8 @@ declare namespace CookieSessionInterfaces {
 declare module "cookie-session" {
     import express = require("express");
 
-    function cookieSession(options?: CookieSessionInterfaces.CookieSessionOptions): express.RequestHandler;
+    function cookieSession(
+        options?: CookieSessionInterfaces.CookieSessionOptions,
+    ): express.RequestHandler;
     export = cookieSession;
 }

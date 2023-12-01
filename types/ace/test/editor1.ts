@@ -1,5 +1,5 @@
 const aceEditor1Tests = {
-    setUp: function(next) {
+    setUp: function (next) {
         this.session1 = new AceAjax.EditSession(["abc", "def"]);
         this.session2 = new AceAjax.EditSession(["ghi", "jkl"]);
 
@@ -7,7 +7,7 @@ const aceEditor1Tests = {
         next();
     },
 
-    "test: change document": function() {
+    "test: change document": function () {
         var editor = new AceAjax.Editor(null);
 
         editor.setSession(this.session1);
@@ -17,11 +17,11 @@ const aceEditor1Tests = {
         assert.equal(editor.getSession(), this.session2);
     },
 
-    "test: only changes to the new document should have effect": function() {
+    "test: only changes to the new document should have effect": function () {
         var editor = new AceAjax.Editor(null);
 
         var called = false;
-        editor.onDocumentChange = function() {
+        editor.onDocumentChange = function () {
             called = true;
         };
 
@@ -35,7 +35,7 @@ const aceEditor1Tests = {
         assert.ok(called);
     },
 
-    "test: should use cursor of new document": function() {
+    "test: should use cursor of new document": function () {
         var editor = new AceAjax.Editor(null);
 
         this.session1.getSelection().moveCursorTo(0, 1);
@@ -48,28 +48,29 @@ const aceEditor1Tests = {
         assert.position(editor.getCursorPosition(), 1, 0);
     },
 
-    "test: only changing the cursor of the new doc should not have an effect": function() {
-        var editor = new AceAjax.Editor(null);
+    "test: only changing the cursor of the new doc should not have an effect":
+        function () {
+            var editor = new AceAjax.Editor(null);
 
-        editor.onCursorChange = function() {
-            called = true;
-        };
+            editor.onCursorChange = function () {
+                called = true;
+            };
 
-        editor.setSession(this.session1);
-        editor.setSession(this.session2);
-        assert.position(editor.getCursorPosition(), 0, 0);
+            editor.setSession(this.session1);
+            editor.setSession(this.session2);
+            assert.position(editor.getCursorPosition(), 0, 0);
 
-        var called = false;
-        this.session1.getSelection().moveCursorTo(0, 1);
-        assert.position(editor.getCursorPosition(), 0, 0);
-        assert.notOk(called);
+            var called = false;
+            this.session1.getSelection().moveCursorTo(0, 1);
+            assert.position(editor.getCursorPosition(), 0, 0);
+            assert.notOk(called);
 
-        this.session2.getSelection().moveCursorTo(1, 1);
-        assert.position(editor.getCursorPosition(), 1, 1);
-        assert.ok(called);
-    },
+            this.session2.getSelection().moveCursorTo(1, 1);
+            assert.position(editor.getCursorPosition(), 1, 1);
+            assert.ok(called);
+        },
 
-    "test: should use selection of new document": function() {
+    "test: should use selection of new document": function () {
         var editor = new AceAjax.Editor(null);
 
         this.session1.getSelection().selectTo(0, 1);
@@ -82,31 +83,32 @@ const aceEditor1Tests = {
         assert.position(editor.getSelection().getSelectionLead(), 1, 0);
     },
 
-    "test: only changing the selection of the new doc should not have an effect": function() {
+    "test: only changing the selection of the new doc should not have an effect":
+        function () {
+            var editor = new AceAjax.Editor(null);
+
+            editor.onSelectionChange = function () {
+                called = true;
+            };
+
+            editor.setSession(this.session1);
+            editor.setSession(this.session2);
+            assert.position(editor.getSelection().getSelectionLead(), 0, 0);
+
+            var called = false;
+            this.session1.getSelection().selectTo(0, 1);
+            assert.position(editor.getSelection().getSelectionLead(), 0, 0);
+            assert.notOk(called);
+
+            this.session2.getSelection().selectTo(1, 1);
+            assert.position(editor.getSelection().getSelectionLead(), 1, 1);
+            assert.ok(called);
+        },
+
+    "test: should use mode of new document": function () {
         var editor = new AceAjax.Editor(null);
 
-        editor.onSelectionChange = function() {
-            called = true;
-        };
-
-        editor.setSession(this.session1);
-        editor.setSession(this.session2);
-        assert.position(editor.getSelection().getSelectionLead(), 0, 0);
-
-        var called = false;
-        this.session1.getSelection().selectTo(0, 1);
-        assert.position(editor.getSelection().getSelectionLead(), 0, 0);
-        assert.notOk(called);
-
-        this.session2.getSelection().selectTo(1, 1);
-        assert.position(editor.getSelection().getSelectionLead(), 1, 1);
-        assert.ok(called);
-    },
-
-    "test: should use mode of new document": function() {
-        var editor = new AceAjax.Editor(null);
-
-        editor.onChangeMode = function() {
+        editor.onChangeMode = function () {
             called = true;
         };
         editor.setSession(this.session1);
@@ -120,7 +122,7 @@ const aceEditor1Tests = {
         assert.ok(called);
     },
 
-    "test: should use stop worker of old document": function(next) {
+    "test: should use stop worker of old document": function (next) {
         var editor = new AceAjax.Editor(null);
 
         var self = this;
@@ -141,7 +143,7 @@ const aceEditor1Tests = {
         // 5. Try to type valid HTML
         self.session1.insert({ row: 0, column: 0 }, "<html></html>");
 
-        setTimeout(function() {
+        setTimeout(function () {
             assert.equal(Object.keys(self.session1.getAnnotations()).length, 0);
             next();
         }, 600);

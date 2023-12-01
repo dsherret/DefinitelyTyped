@@ -1,8 +1,9 @@
 import * as fs from "fs";
 import * as unzip from "unzip";
 
-fs.createReadStream("path/to/archive.zip")
-    .pipe(unzip.Extract({ path: "output/path" }));
+fs.createReadStream("path/to/archive.zip").pipe(
+    unzip.Extract({ path: "output/path" }),
+);
 
 fs.createReadStream("path/to/archive.zip")
     .pipe(unzip.Parse())

@@ -27,7 +27,9 @@ const config = (name: string, color: string) => ({
         path: path.join(__dirname, "/dist"),
     },
     module: {
-        rules: [{ test: /\.js$/, use: path.resolve(__dirname, "test-loader.js") }],
+        rules: [
+            { test: /\.js$/, use: path.resolve(__dirname, "test-loader.js") },
+        ],
     },
     plugins: [
         new WebpackBar({
@@ -36,7 +38,10 @@ const config = (name: string, color: string) => ({
             reporters: ["fancy"],
             reporter: {
                 progress({ state }) {
-                    if (lastProgress !== state.progress && state.progress % 5 === 0) {
+                    if (
+                        lastProgress !== state.progress &&
+                        state.progress % 5 === 0
+                    ) {
                         process.stderr.write(state.progress + "%\n");
                         lastProgress = state.progress;
                     }

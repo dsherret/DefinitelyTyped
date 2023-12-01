@@ -1,13 +1,23 @@
 /// <reference types="node" />
 
-import { Agent, ClientRequest, IncomingMessage, OutgoingHttpHeaders, RequestOptions } from "http";
+import {
+    Agent,
+    ClientRequest,
+    IncomingMessage,
+    OutgoingHttpHeaders,
+    RequestOptions,
+} from "http";
 import { Socket } from "net";
 import { ConnectConfig } from "ssh2";
 import { Duplex, DuplexOptions } from "stream";
 
 declare namespace DockerModem {
     class HttpDuplex extends Duplex {
-        constructor(request: ClientRequest, response: IncomingMessage, options?: DuplexOptions);
+        constructor(
+            request: ClientRequest,
+            response: IncomingMessage,
+            options?: DuplexOptions,
+        );
 
         connect(request: ClientRequest, response: IncomingMessage): void;
     }
@@ -41,20 +51,26 @@ declare namespace DockerModem {
         method?: string | undefined;
         headers?: OutgoingHttpHeaders | undefined;
         allowEmpty?: boolean | undefined;
-        options?: {
-            _query?: object | undefined;
-            _body?: any;
-            [key: string]: any;
-        } | undefined;
-        authconfig?: {
-            key?: string | undefined;
-            base64?: string | undefined;
-            [key: string]: any;
-        } | undefined;
-        registryconfig?: {
-            base64?: string | undefined;
-            [key: string]: any;
-        } | undefined;
+        options?:
+            | {
+                  _query?: object | undefined;
+                  _body?: any;
+                  [key: string]: any;
+              }
+            | undefined;
+        authconfig?:
+            | {
+                  key?: string | undefined;
+                  base64?: string | undefined;
+                  [key: string]: any;
+              }
+            | undefined;
+        registryconfig?:
+            | {
+                  base64?: string | undefined;
+                  [key: string]: any;
+              }
+            | undefined;
         file?: string | Buffer | NodeJS.ReadableStream | undefined;
         hijack?: boolean | undefined;
         openStdin?: boolean | undefined;
@@ -70,7 +86,13 @@ declare namespace DockerModem {
     interface RequestCallback {
         (
             err: Error | null,
-            result: IncomingMessage | HttpDuplex | Socket | Buffer | object | null,
+            result:
+                | IncomingMessage
+                | HttpDuplex
+                | Socket
+                | Buffer
+                | object
+                | null,
         ): void;
     }
 }
@@ -80,9 +102,16 @@ declare class DockerModem {
 
     constructor(options?: DockerModem.ConstructorOptions);
 
-    dial(options: DockerModem.DialOptions, callback?: DockerModem.RequestCallback): void;
+    dial(
+        options: DockerModem.DialOptions,
+        callback?: DockerModem.RequestCallback,
+    ): void;
 
-    demuxStream(stream: NodeJS.ReadableStream, stdout: NodeJS.WritableStream, stderr: NodeJS.WritableStream): void;
+    demuxStream(
+        stream: NodeJS.ReadableStream,
+        stdout: NodeJS.WritableStream,
+        stderr: NodeJS.WritableStream,
+    ): void;
 
     followProgress(
         stream: NodeJS.ReadableStream,

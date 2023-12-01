@@ -10,8 +10,15 @@ type CheckedRequestListener = (
     req: http.IncomingMessage & { user?: string | undefined },
     res: http.ServerResponse,
 ) => void;
-type BasicChecker = (username: string, password: string, callback: (isAuthorized: boolean) => void) => void;
-type DigestChecker = (username: string, callback: (hash?: string) => void) => void;
+type BasicChecker = (
+    username: string,
+    password: string,
+    callback: (isAuthorized: boolean) => void,
+) => void;
+type DigestChecker = (
+    username: string,
+    callback: (hash?: string) => void,
+) => void;
 
 interface BasicResult<T extends boolean = boolean> {
     user?: string | undefined;
@@ -100,21 +107,35 @@ type DigestOptions = BasicOptions & {
 declare abstract class Base extends EventEmitter {
     constructor(options: BasicOptions, checker?: BasicChecker | DigestChecker);
 
-    on(event: "success", callback: (result: BasicResult<true> | DigestResult<true>) => void): this;
-    on(event: "fail", callback: (result: BasicResult<false> | DigestResult<false>) => void): this;
+    on(
+        event: "success",
+        callback: (result: BasicResult<true> | DigestResult<true>) => void,
+    ): this;
+    on(
+        event: "fail",
+        callback: (result: BasicResult<false> | DigestResult<false>) => void,
+    ): this;
     on(event: "error", callback: (err: Error) => void): this;
 
     check(callback?: CheckedRequestListener): CheckedRequestListener;
     abstract processLine(userLine: string): void;
-    abstract parseAuthorization(header: string): string | ClientOptions | undefined;
+    abstract parseAuthorization(
+        header: string,
+    ): string | ClientOptions | undefined;
     abstract findUser(
         req: http.IncomingMessage,
         hashOrClientOptions: string | ClientOptions,
         callback: ResultEmitter,
     ): void;
     abstract generateHeader(result?: DigestResult): string;
-    private ask(res: http.ServerResponse, result: BasicResult | DigestResult): void;
-    private isAuthenticated(req: http.IncomingMessage, callback: ResultEmitter): void;
+    private ask(
+        res: http.ServerResponse,
+        result: BasicResult | DigestResult,
+    ): void;
+    private isAuthenticated(
+        req: http.IncomingMessage,
+        callback: ResultEmitter,
+    ): void;
     private loadUsers(): void;
 }
 
@@ -126,14 +147,22 @@ declare class Basic extends Base {
     processLine(userLine: string): void;
     generateHeader(): string;
     parseAuthorization(header: string): string | undefined;
-    findUser(req: http.IncomingMessage, hash: string, callback: ResultEmitter): void;
+    findUser(
+        req: http.IncomingMessage,
+        hash: string,
+        callback: ResultEmitter,
+    ): void;
 }
 
 declare class Digest extends Base {
     constructor(options: DigestOptions, checker?: DigestChecker);
 
     private nonces: Nonce[];
-    private validate(ha2: string, clientOptions: ClientOptions, hash: string): boolean;
+    private validate(
+        ha2: string,
+        clientOptions: ClientOptions,
+        hash: string,
+    ): boolean;
     private removeNonces(nonces: Nonce[]): void;
     private validateNonce(nonce: string, qop: Qop, nc: string): boolean;
     private askNonce(): string;
@@ -141,10 +170,24 @@ declare class Digest extends Base {
     processLine(userLine: string): void;
     generateHeader(result: DigestResult): string;
     parseAuthorization(header: string): string | undefined;
-    findUser(req: http.IncomingMessage, clientOptions: ClientOptions, callback: ResultEmitter): void;
+    findUser(
+        req: http.IncomingMessage,
+        clientOptions: ClientOptions,
+        callback: ResultEmitter,
+    ): void;
 }
 
 declare function basic(options: BasicOptions, checker?: BasicChecker): Basic;
-declare function digest(options: DigestOptions, checker?: DigestChecker): Digest;
+declare function digest(
+    options: DigestOptions,
+    checker?: DigestChecker,
+): Digest;
 
-export { basic, BasicChecker, BasicOptions, digest, DigestChecker, DigestOptions };
+export {
+    basic,
+    BasicChecker,
+    BasicOptions,
+    digest,
+    DigestChecker,
+    DigestOptions,
+};

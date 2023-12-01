@@ -11,7 +11,7 @@ class Katana implements IKatana {
 }
 
 let handler = {
-    apply: function(target: any, thisArg: any, argArray: any) {
+    apply: function (target: any, thisArg: any, argArray: any) {
         console.log(`Starting: ${performance.now()}`);
         let result = target.apply(thisArg, argArray);
         console.log(`Finished: ${performance.now()}`);

@@ -1,29 +1,55 @@
 import * as React from "react";
-import { ApplyFilterParameter, BootstrapTable, Filter, TableHeaderColumn } from "react-bootstrap-table";
+import {
+    ApplyFilterParameter,
+    BootstrapTable,
+    Filter,
+    TableHeaderColumn,
+} from "react-bootstrap-table";
 import { render } from "react-dom";
 
-const products = [{
-    id: 1,
-    name: "Item name 1",
-    price: 100,
-}, {
-    id: 2,
-    name: "Item name 2",
-    price: 100,
-}];
+const products = [
+    {
+        id: 1,
+        name: "Item name 1",
+        price: 100,
+    },
+    {
+        id: 2,
+        name: "Item name 2",
+        price: 100,
+    },
+];
 
 // It's a data format example.
 function priceFormatter(cell: any, row: any) {
-    return "<i class=\"glyphicon glyphicon-usd\"></i> " + cell;
+    return '<i class="glyphicon glyphicon-usd"></i> ' + cell;
 }
 
 render(
-    <BootstrapTable data={products} striped={true} hover={true} ignoreSinglePage>
-        <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="name" dataSort={true} editable={{ type: "textarea", rows: 10 }}>
+    <BootstrapTable
+        data={products}
+        striped={true}
+        hover={true}
+        ignoreSinglePage
+    >
+        <TableHeaderColumn
+            dataField="id"
+            isKey={true}
+            dataAlign="center"
+            dataSort={true}
+        >
+            Product ID
+        </TableHeaderColumn>
+        <TableHeaderColumn
+            dataField="name"
+            dataSort={true}
+            editable={{ type: "textarea", rows: 10 }}
+        >
             Product Name
         </TableHeaderColumn>
-        <TableHeaderColumn dataField="price" dataFormat={priceFormatter}>Product Price</TableHeaderColumn>
+        <TableHeaderColumn dataField="price" dataFormat={priceFormatter}>
+            Product Price
+        </TableHeaderColumn>
     </BootstrapTable>,
     document.getElementById("app"),
 );
@@ -42,14 +68,22 @@ class SelectFilterWithDefaultValue extends React.Component {
     render() {
         return (
             <BootstrapTable data={products}>
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="quality"
                     filterFormatted
                     dataFormat={enumFormatter}
                     formatExtraData={qualityType}
-                    filter={{ type: "SelectFilter", options: qualityType, defaultValue: 1 }}
+                    filter={{
+                        type: "SelectFilter",
+                        options: qualityType,
+                        defaultValue: 1,
+                    }}
                 >
                     Product Quality
                 </TableHeaderColumn>
@@ -62,17 +96,31 @@ class TextFilterWithCondition extends React.Component {
     render() {
         return (
             <BootstrapTable data={products}>
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name" filter={{ type: "TextFilter", delay: 1000, condition: "eq" }}>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    dataField="name"
+                    filter={{
+                        type: "TextFilter",
+                        delay: 1000,
+                        condition: "eq",
+                    }}
+                >
                     Product Name
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
 }
 
-function getCustomFilter(filterHandler: (parameters?: ApplyFilterParameter) => void, customFilterParameters: any) {
+function getCustomFilter(
+    filterHandler: (parameters?: ApplyFilterParameter) => void,
+    customFilterParameters: any,
+) {
     return <div />;
 }
 
@@ -85,9 +133,15 @@ class CustomFilter extends React.Component {
         };
         return (
             <BootstrapTable data={products}>
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="isInStock" filter={filter}>Product Is In Stock</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="isInStock" filter={filter}>
+                    Product Is In Stock
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -113,9 +167,15 @@ class RemoteProps extends React.Component {
                     },
                 }}
             >
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="isInStock" filter={filter}>Product Is In Stock</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="isInStock" filter={filter}>
+                    Product Is In Stock
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -129,13 +189,16 @@ class RemoteBool extends React.Component {
             customFilterParameters: { textOK: "yes", textNOK: "no" },
         };
         return (
-            <BootstrapTable
-                data={products}
-                remote
-            >
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="isInStock" filter={filter}>Product Is In Stock</TableHeaderColumn>
+            <BootstrapTable data={products} remote>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="isInStock" filter={filter}>
+                    Product Is In Stock
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -146,8 +209,12 @@ class RemoteBool extends React.Component {
  */
 const tdAttrExample = (
     <BootstrapTable data={products} search>
-        <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="name" tdAttr={{ "data-attr": "test" }}>Product Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="id" isKey>
+            Product ID
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="name" tdAttr={{ "data-attr": "test" }}>
+            Product Name
+        </TableHeaderColumn>
         <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
     </BootstrapTable>
 );
@@ -157,8 +224,12 @@ const tdAttrExample = (
  */
 const tdStyleExample = (
     <BootstrapTable data={products} search>
-        <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="name" tdStyle={{ whiteSpace: "normal" }}>Product Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="id" isKey>
+            Product ID
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="name" tdStyle={{ whiteSpace: "normal" }}>
+            Product Name
+        </TableHeaderColumn>
         <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
     </BootstrapTable>
 );
@@ -168,8 +239,12 @@ const tdStyleExample = (
  */
 const thStyleExample = (
     <BootstrapTable data={products} search>
-        <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="name" thStyle={{ fontWeight: "lighter" }}>Product Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="id" isKey>
+            Product ID
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="name" thStyle={{ fontWeight: "lighter" }}>
+            Product Name
+        </TableHeaderColumn>
         <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
     </BootstrapTable>
 );
@@ -188,14 +263,43 @@ export default class ColumnHeaderSpanComplex extends React.Component {
         };
         return (
             <BootstrapTable data={products} insertRow deleteRow exportCSV>
-                <TableHeaderColumn row={0} rowSpan={2} dataField="id" isKey={true}>ID</TableHeaderColumn>
-                <TableHeaderColumn row={0} colSpan={3} dataSort csvHeader="Product" headerAlign="right">
+                <TableHeaderColumn
+                    row={0}
+                    rowSpan={2}
+                    dataField="id"
+                    isKey={true}
+                >
+                    ID
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    row={0}
+                    colSpan={3}
+                    dataSort
+                    csvHeader="Product"
+                    headerAlign="right"
+                >
                     Product
                 </TableHeaderColumn>
-                <TableHeaderColumn row={1} dataField="name" width="175" dataAlign="center">name</TableHeaderColumn>
-                <TableHeaderColumn row={1} dataField="price" dataSort>price</TableHeaderColumn>
-                <TableHeaderColumn row={1} dataField="coupon" width="70">Coupon</TableHeaderColumn>
-                <TableHeaderColumn row={0} csvHeader="In stock" rowSpan={2} dataField="status">
+                <TableHeaderColumn
+                    row={1}
+                    dataField="name"
+                    width="175"
+                    dataAlign="center"
+                >
+                    name
+                </TableHeaderColumn>
+                <TableHeaderColumn row={1} dataField="price" dataSort>
+                    price
+                </TableHeaderColumn>
+                <TableHeaderColumn row={1} dataField="coupon" width="70">
+                    Coupon
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    row={0}
+                    csvHeader="In stock"
+                    rowSpan={2}
+                    dataField="status"
+                >
                     In stock
                 </TableHeaderColumn>
                 <TableHeaderColumn
@@ -206,8 +310,21 @@ export default class ColumnHeaderSpanComplex extends React.Component {
                 >
                     Customer
                 </TableHeaderColumn>
-                <TableHeaderColumn row={1} csvHeader="name" dataField="customer">name</TableHeaderColumn>
-                <TableHeaderColumn row={1} csvHeader="order" dataField="order" dataSort>order</TableHeaderColumn>
+                <TableHeaderColumn
+                    row={1}
+                    csvHeader="name"
+                    dataField="customer"
+                >
+                    name
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    row={1}
+                    csvHeader="order"
+                    dataField="order"
+                    dataSort
+                >
+                    order
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }

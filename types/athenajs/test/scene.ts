@@ -5,11 +5,13 @@ let num: number;
 const hudScene = new Scene();
 const myScene: Scene = new Scene({
     name: "myScene",
-    resources: [{
-        id: "myRes",
-        src: "src",
-        type: "image",
-    }],
+    resources: [
+        {
+            id: "myRes",
+            src: "src",
+            type: "image",
+        },
+    ],
     opacity: 1,
     layers: 0,
     hudScene,
@@ -23,11 +25,13 @@ const sprite = new Drawable("mySprite", {});
 myScene.debug(false);
 myScene.bindEvents("gameover");
 myScene.addObject(sprite);
-myScene.animate("Fade", {
-    easing: "linear",
-}).then(() => {
-    console.log("effect ended");
-});
+myScene
+    .animate("Fade", {
+        easing: "linear",
+    })
+    .then(() => {
+        console.log("effect ended");
+    });
 myScene.fadeIn(1000).then(() => {
     myScene.fadeOut(2000);
     myScene.fadeInAndOut(2000, 1000, 1000);

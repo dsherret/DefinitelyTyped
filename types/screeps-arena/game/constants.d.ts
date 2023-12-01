@@ -16,7 +16,15 @@ declare module "game/constants" {
         StructureTower,
         StructureWall,
     } from "game/prototypes";
-    export type BodyPartConstant = MOVE | WORK | CARRY | ATTACK | RANGED_ATTACK | TOUGH | HEAL | CLAIM;
+    export type BodyPartConstant =
+        | MOVE
+        | WORK
+        | CARRY
+        | ATTACK
+        | RANGED_ATTACK
+        | TOUGH
+        | HEAL
+        | CLAIM;
 
     export type MOVE = "move";
     export type WORK = "work";
@@ -36,7 +44,15 @@ declare module "game/constants" {
     export const HEAL: HEAL;
     export const CLAIM: CLAIM;
 
-    export type DirectionConstant = TOP | TOP_RIGHT | RIGHT | BOTTOM_RIGHT | BOTTOM | BOTTOM_LEFT | LEFT | TOP_LEFT;
+    export type DirectionConstant =
+        | TOP
+        | TOP_RIGHT
+        | RIGHT
+        | BOTTOM_RIGHT
+        | BOTTOM
+        | BOTTOM_LEFT
+        | LEFT
+        | TOP_LEFT;
 
     export type TOP = 1;
     export type TOP_RIGHT = 2;
@@ -103,7 +119,12 @@ declare module "game/constants" {
         | ERR_NO_BODYPART
         | ERR_TIRED;
 
-    export type CreepMoveReturnCode = OK | ERR_NOT_OWNER | ERR_BUSY | ERR_TIRED | ERR_NO_BODYPART;
+    export type CreepMoveReturnCode =
+        | OK
+        | ERR_NOT_OWNER
+        | ERR_BUSY
+        | ERR_TIRED
+        | ERR_NO_BODYPART;
 
     export const CARRY_CAPACITY: number;
     export const CREEP_SPAWN_TIME: number;

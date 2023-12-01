@@ -12,8 +12,15 @@ declare namespace CodeMirror {
     const Pass: { toString(): "CodeMirror.PASS" };
 
     /** Find the column position at a given string index using a given tabsize. */
-    function countColumn(line: string, index: number | null, tabSize: number): number;
-    function fromTextArea(host: HTMLTextAreaElement, options?: EditorConfiguration): EditorFromTextArea;
+    function countColumn(
+        line: string,
+        index: number | null,
+        tabSize: number,
+    ): number;
+    function fromTextArea(
+        host: HTMLTextAreaElement,
+        options?: EditorConfiguration,
+    ): EditorFromTextArea;
 
     /** Split a string by new line. */
     function splitLines(text: string): string[];
@@ -61,7 +68,11 @@ declare namespace CodeMirror {
      * The updateFunc will be called with the editor instance and the new value when an editor is initialized,
      * and whenever the option is modified through setOption.
      */
-    function defineOption(name: string, default_: any, updateFunc: (editor: Editor, val: any, old: any) => void): void;
+    function defineOption(
+        name: string,
+        default_: any,
+        updateFunc: (editor: Editor, val: any, old: any) => void,
+    ): void;
 
     /**
      * If your extension just needs to run some code whenever a CodeMirror instance is initialized, use CodeMirror.defineInitHook.
@@ -79,7 +90,10 @@ declare namespace CodeMirror {
     function registerHelper(namespace: string, name: string, helper: any): void;
 
     /** Given a state object, returns a {state, mode} object with the inner mode and its state for the current position. */
-    function innerMode(mode: Mode<any>, state: any): { state: any; mode: Mode<any> };
+    function innerMode(
+        mode: Mode<any>,
+        state: any,
+    ): { state: any; mode: Mode<any> };
 
     /**
      * Sometimes, it is useful to add or override mode object properties from external code.
@@ -92,32 +106,61 @@ declare namespace CodeMirror {
     interface EditorEventMap {
         change: (instance: Editor, changeObj: EditorChange) => void;
         changes: (instance: Editor, changes: EditorChange[]) => void;
-        beforeChange: (instance: Editor, changeObj: EditorChangeCancellable) => void;
+        beforeChange: (
+            instance: Editor,
+            changeObj: EditorChangeCancellable,
+        ) => void;
         cursorActivity: (instance: Editor) => void;
         keyHandled: (instance: Editor, name: string, event: Event) => void;
         inputRead: (instance: Editor, changeObj: EditorChange) => void;
         electricInput: (instance: Editor, line: number) => void;
-        beforeSelectionChange: (instance: Editor, obj: EditorSelectionChange) => void;
+        beforeSelectionChange: (
+            instance: Editor,
+            obj: EditorSelectionChange,
+        ) => void;
         viewportChange: (instance: Editor, from: number, to: number) => void;
         swapDoc: (instance: Editor, oldDoc: Doc) => void;
-        gutterClick: (instance: Editor, line: number, gutter: string, clickEvent: Event) => void;
-        gutterContextMenu: (instance: Editor, line: number, gutter: string, contextMenuEvent: MouseEvent) => void;
+        gutterClick: (
+            instance: Editor,
+            line: number,
+            gutter: string,
+            clickEvent: Event,
+        ) => void;
+        gutterContextMenu: (
+            instance: Editor,
+            line: number,
+            gutter: string,
+            contextMenuEvent: MouseEvent,
+        ) => void;
         focus: (instance: Editor, event: FocusEvent) => void;
         blur: (instance: Editor, event: FocusEvent) => void;
         scroll: (instance: Editor) => void;
         refresh: (instance: Editor) => void;
-        optionChange: (instance: Editor, option: keyof EditorConfiguration) => void;
+        optionChange: (
+            instance: Editor,
+            option: keyof EditorConfiguration,
+        ) => void;
         scrollCursorIntoView: (instance: Editor, event: Event) => void;
         update: (instance: Editor) => void;
-        renderLine: (instance: Editor, lineHandle: LineHandle, element: HTMLElement) => void;
+        renderLine: (
+            instance: Editor,
+            lineHandle: LineHandle,
+            element: HTMLElement,
+        ) => void;
         overwriteToggle: (instance: Editor, overwrite: boolean) => void;
     }
 
     interface DocEventMap {
         change: (instance: Doc, changeObj: EditorChange) => void;
-        beforeChange: (instance: Doc, changeObj: EditorChangeCancellable) => void;
+        beforeChange: (
+            instance: Doc,
+            changeObj: EditorChangeCancellable,
+        ) => void;
         cursorActivity: (instance: Doc) => void;
-        beforeSelectionChange: (instance: Doc, obj: EditorSelectionChange) => void;
+        beforeSelectionChange: (
+            instance: Doc,
+            obj: EditorSelectionChange,
+        ) => void;
     }
 
     interface LineHandleEventMap {
@@ -136,8 +179,16 @@ declare namespace CodeMirror {
         redraw: () => void;
     }
 
-    function on<T extends keyof DocEventMap>(doc: Doc, eventName: T, handler: DocEventMap[T]): void;
-    function on<T extends keyof EditorEventMap>(cm: Editor, eventName: T, handler: EditorEventMap[T]): void;
+    function on<T extends keyof DocEventMap>(
+        doc: Doc,
+        eventName: T,
+        handler: DocEventMap[T],
+    ): void;
+    function on<T extends keyof EditorEventMap>(
+        cm: Editor,
+        eventName: T,
+        handler: EditorEventMap[T],
+    ): void;
     function on<T extends keyof LineHandleEventMap>(
         lineHandle: LineHandle,
         eventName: T,
@@ -155,8 +206,16 @@ declare namespace CodeMirror {
     ): void;
     function on(element: any, eventName: string, handler: () => void): void;
 
-    function off<T extends keyof DocEventMap>(doc: Doc, eventName: T, handler: DocEventMap[T]): void;
-    function off<T extends keyof EditorEventMap>(cm: Editor, eventName: T, handler: EditorEventMap[T]): void;
+    function off<T extends keyof DocEventMap>(
+        doc: Doc,
+        eventName: T,
+        handler: DocEventMap[T],
+    ): void;
+    function off<T extends keyof EditorEventMap>(
+        cm: Editor,
+        eventName: T,
+        handler: EditorEventMap[T],
+    ): void;
     function off<T extends keyof LineHandleEventMap>(
         lineHandle: LineHandle,
         eventName: T,
@@ -179,7 +238,11 @@ declare namespace CodeMirror {
      * Handlers for such events can be registered with the on and off methods on the objects that the event fires on.
      * To fire your own events, use CodeMirror.signal(target, name, args...), where target is a non-DOM-node object.
      */
-    function signal<T extends keyof DocEventMap>(doc: Doc, eventName: T, ...args: Parameters<DocEventMap[T]>): void;
+    function signal<T extends keyof DocEventMap>(
+        doc: Doc,
+        eventName: T,
+        ...args: Parameters<DocEventMap[T]>
+    ): void;
     function signal<T extends keyof EditorEventMap>(
         cm: Editor,
         eventName: T,
@@ -239,7 +302,10 @@ declare namespace CodeMirror {
 
     interface KeyMap {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        [keyName: string]: false | string | ((instance: Editor) => void | typeof Pass);
+        [keyName: string]:
+            | false
+            | string
+            | ((instance: Editor) => void | typeof Pass);
     }
 
     /**
@@ -278,10 +344,15 @@ declare namespace CodeMirror {
         findWordAt(pos: Position): Range;
 
         /** Change the configuration of the editor. option should the name of an option, and value should be a valid value for that option. */
-        setOption<K extends keyof EditorConfiguration>(option: K, value: EditorConfiguration[K]): void;
+        setOption<K extends keyof EditorConfiguration>(
+            option: K,
+            value: EditorConfiguration[K],
+        ): void;
 
         /** Retrieves the current value of the given option for this editor instance. */
-        getOption<K extends keyof EditorConfiguration>(option: K): EditorConfiguration[K];
+        getOption<K extends keyof EditorConfiguration>(
+            option: K,
+        ): EditorConfiguration[K];
 
         /**
          * Attach an additional keymap to the editor.
@@ -305,7 +376,13 @@ declare namespace CodeMirror {
          * Currently, only the opaque option is recognized. This defaults to off, but can be given to allow the overlay styling, when not null,
          * to override the styling of the base mode entirely, instead of the two being applied together.
          */
-        addOverlay(mode: any, options?: { opaque?: boolean | undefined; priority?: number | undefined }): void;
+        addOverlay(
+            mode: any,
+            options?: {
+                opaque?: boolean | undefined;
+                priority?: number | undefined;
+            },
+        ): void;
 
         /** Pass this the exact argument passed for the mode parameter to addOverlay to remove an overlay again. */
         removeOverlay(mode: any): void;
@@ -337,14 +414,22 @@ declare namespace CodeMirror {
         setCursor(
             pos: Position | number,
             ch?: number,
-            options?: { bias?: number | undefined; origin?: string | undefined; scroll?: boolean | undefined },
+            options?: {
+                bias?: number | undefined;
+                origin?: string | undefined;
+                scroll?: boolean | undefined;
+            },
         ): void;
 
         /**
          * Sets the gutter marker for the given gutter (identified by its CSS class, see the gutters option) to the given value.
          * Value can be either null, to clear the marker, or a DOM element, to set it. The DOM element will be shown in the specified gutter next to the specified line.
          */
-        setGutterMarker(line: any, gutterID: string, value: HTMLElement | null): LineHandle;
+        setGutterMarker(
+            line: any,
+            gutterID: string,
+            value: HTMLElement | null,
+        ): LineHandle;
 
         /** Remove all gutter markers in the gutter with the given ID. */
         clearGutter(gutterID: string): void;
@@ -377,12 +462,14 @@ declare namespace CodeMirror {
          * is the bottom of the last line in the document. By default, the position of the actual text is returned.
          * If includeWidgets is true and the line has line widgets, the position above the first line widget is returned.
          */
-        heightAtLine(line: any, mode?: CoordsMode, includeWidgets?: boolean): number;
+        heightAtLine(
+            line: any,
+            mode?: CoordsMode,
+            includeWidgets?: boolean,
+        ): number;
 
         /** Returns the line number, text content, and marker status of the given line, which can be either a number or a line handle. */
-        lineInfo(
-            line: any,
-        ): {
+        lineInfo(line: any): {
             line: any;
             handle: any;
             text: string;
@@ -400,7 +487,11 @@ declare namespace CodeMirror {
          * When scrollIntoView is true, the editor will ensure that the entire node is visible (if possible).
          * To remove the widget again, simply use DOM methods (move it somewhere else, or call removeChild on its parent).
          */
-        addWidget(pos: Position, node: HTMLElement, scrollIntoView: boolean): void;
+        addWidget(
+            pos: Position,
+            node: HTMLElement,
+            scrollIntoView: boolean,
+        ): void;
 
         /**
          * Adds a line widget, an element shown below a line, spanning the whole of the editor's width, and moving the lines below it downwards.
@@ -408,7 +499,11 @@ declare namespace CodeMirror {
          * options, when given, should be an object that configures the behavior of the widget.
          * Note that the widget node will become a descendant of nodes with CodeMirror-specific CSS classes, and those classes might in some cases affect it.
          */
-        addLineWidget(line: any, node: HTMLElement, options?: LineWidgetOptions): LineWidget;
+        addLineWidget(
+            line: any,
+            node: HTMLElement,
+            options?: LineWidgetOptions,
+        ): LineWidget;
 
         /**
          * Programatically set the size of the editor (overriding the applicable CSS rules).
@@ -436,12 +531,17 @@ declare namespace CodeMirror {
          * The margin parameter is optional. When given, it indicates the amount of pixels around the given area that should be made visible as well.
          */
         scrollIntoView(
-            pos: Position | null | { line: number; ch: number } | {
-                left: number;
-                top: number;
-                right: number;
-                bottom: number;
-            } | { from: Position; to: Position },
+            pos:
+                | Position
+                | null
+                | { line: number; ch: number }
+                | {
+                      left: number;
+                      top: number;
+                      right: number;
+                      bottom: number;
+                  }
+                | { from: Position; to: Position },
             margin?: number,
         ): void;
 
@@ -473,7 +573,10 @@ declare namespace CodeMirror {
          * The optional mode parameter determines relative to what the coordinates are interpreted.
          * It may be "window", "page" (the default), or "local".
          */
-        coordsChar(object: { left: number; top: number }, mode?: CoordsMode): Position;
+        coordsChar(
+            object: { left: number; top: number },
+            mode?: CoordsMode,
+        ): Position;
 
         /** Returns the line height of the default font for the editor. */
         defaultTextHeight(): number;
@@ -581,16 +684,28 @@ declare namespace CodeMirror {
         /** Fetches the DOM node that contains the editor gutters. */
         getGutterElement(): HTMLElement;
 
-        on<T extends keyof EditorEventMap>(eventName: T, handler: EditorEventMap[T]): void;
+        on<T extends keyof EditorEventMap>(
+            eventName: T,
+            handler: EditorEventMap[T],
+        ): void;
         on<K extends DOMEvent & keyof GlobalEventHandlersEventMap>(
             eventName: K,
-            handler: (instance: Editor, event: GlobalEventHandlersEventMap[K]) => void,
+            handler: (
+                instance: Editor,
+                event: GlobalEventHandlersEventMap[K],
+            ) => void,
         ): void;
 
-        off<T extends keyof EditorEventMap>(eventName: T, handler: EditorEventMap[T]): void;
+        off<T extends keyof EditorEventMap>(
+            eventName: T,
+            handler: EditorEventMap[T],
+        ): void;
         off<K extends DOMEvent & keyof GlobalEventHandlersEventMap>(
             eventName: K,
-            handler: (instance: Editor, event: GlobalEventHandlersEventMap[K]) => void,
+            handler: (
+                instance: Editor,
+                event: GlobalEventHandlersEventMap[K],
+            ) => void,
         ): void;
 
         /** Expose the state object, so that the Editor.state.completionActive property is reachable */
@@ -747,11 +862,9 @@ declare namespace CodeMirror {
         alignCDATA?: boolean | undefined;
     }
 
-    type ModeSpec<T> =
-        & {
-            [P in keyof T]: T[P];
-        }
-        & { name: string };
+    type ModeSpec<T> = {
+        [P in keyof T]: T[P];
+    } & { name: string };
 
     interface SelectionOptions {
         /**
@@ -778,8 +891,18 @@ declare namespace CodeMirror {
     }
 
     interface DocConstructor {
-        new(text: string, mode?: string | ModeSpec<ModeSpecOptions>, firstLineNumber?: number, lineSep?: string): Doc;
-        (text: string, mode?: string | ModeSpec<ModeSpecOptions>, firstLineNumber?: number, lineSep?: string): Doc;
+        new (
+            text: string,
+            mode?: string | ModeSpec<ModeSpecOptions>,
+            firstLineNumber?: number,
+            lineSep?: string,
+        ): Doc;
+        (
+            text: string,
+            mode?: string | ModeSpec<ModeSpecOptions>,
+            firstLineNumber?: number,
+            lineSep?: string,
+        ): Doc;
     }
 
     interface DocOrEditor {
@@ -848,7 +971,11 @@ declare namespace CodeMirror {
          * This is a faster way to visit a range of line handlers than calling getLineHandle for each of them.
          * Note that line handles have a text property containing the line's content (as a string).
          */
-        eachLine(start: number, end: number, f: (line: LineHandle) => void): void;
+        eachLine(
+            start: number,
+            end: number,
+            f: (line: LineHandle) => void,
+        ): void;
 
         /**
          * Set the editor content as 'clean', a flag that it will retain until it is edited, and which will be set again
@@ -913,14 +1040,22 @@ declare namespace CodeMirror {
         setCursor(
             pos: Position | number,
             ch?: number,
-            options?: { bias?: number | undefined; origin?: string | undefined; scroll?: boolean | undefined },
+            options?: {
+                bias?: number | undefined;
+                origin?: string | undefined;
+                scroll?: boolean | undefined;
+            },
         ): void;
 
         /** Set a single selection range. anchor and head should be {line, ch} objects. head defaults to anchor when not given. */
         setSelection(
             anchor: Position,
             head?: Position,
-            options?: { bias?: number | undefined; origin?: string | undefined; scroll?: boolean | undefined },
+            options?: {
+                bias?: number | undefined;
+                origin?: string | undefined;
+                scroll?: boolean | undefined;
+            },
         ): void;
 
         /**
@@ -948,7 +1083,11 @@ declare namespace CodeMirror {
          * are present, all but the primary selection will be dropped by this method. Supports the same options
          * as setSelection.
          */
-        extendSelection(from: Position, to?: Position, options?: SelectionOptions): void;
+        extendSelection(
+            from: Position,
+            to?: Position,
+            options?: SelectionOptions,
+        ): void;
 
         /**
          * An equivalent of extendSelection that acts on all selections at once.
@@ -1082,7 +1221,11 @@ declare namespace CodeMirror {
          * options, when given, should be an object that configures the behavior of the widget.
          * Note that the widget node will become a descendant of nodes with CodeMirror-specific CSS classes, and those classes might in some cases affect it.
          */
-        addLineWidget(line: any, node: HTMLElement, options?: LineWidgetOptions): LineWidget;
+        addLineWidget(
+            line: any,
+            node: HTMLElement,
+            options?: LineWidgetOptions,
+        ): LineWidget;
 
         /** Remove the line widget */
         removeLineWidget(widget: LineWidget): void;
@@ -1116,14 +1259,26 @@ declare namespace CodeMirror {
         /** Create an identical copy of the given doc. When copyHistory is true , the history will also be copied. */
         copy(copyHistory: boolean): Doc;
 
-        on<T extends keyof DocEventMap>(eventName: T, handler: DocEventMap[T]): void;
-        off<T extends keyof DocEventMap>(eventName: T, handler: DocEventMap[T]): void;
+        on<T extends keyof DocEventMap>(
+            eventName: T,
+            handler: DocEventMap[T],
+        ): void;
+        off<T extends keyof DocEventMap>(
+            eventName: T,
+            handler: DocEventMap[T],
+        ): void;
     }
 
     interface LineHandle {
         text: string;
-        on<T extends keyof LineHandleEventMap>(eventName: T, handler: LineHandleEventMap[T]): void;
-        off<T extends keyof LineHandleEventMap>(leventName: T, handler: LineHandleEventMap[T]): void;
+        on<T extends keyof LineHandleEventMap>(
+            eventName: T,
+            handler: LineHandleEventMap[T],
+        ): void;
+        off<T extends keyof LineHandleEventMap>(
+            leventName: T,
+            handler: LineHandleEventMap[T],
+        ): void;
     }
 
     interface ScrollInfo {
@@ -1140,7 +1295,8 @@ declare namespace CodeMirror {
         to: Position;
     }
 
-    interface TextMarker<T = MarkerRange | Position> extends Partial<TextMarkerOptions> {
+    interface TextMarker<T = MarkerRange | Position>
+        extends Partial<TextMarkerOptions> {
         /** Remove the mark. */
         clear(): void;
 
@@ -1153,8 +1309,14 @@ declare namespace CodeMirror {
         /** Called when you've done something that might change the size of the marker and want to cheaply update the display */
         changed(): void;
 
-        on<T extends keyof TextMarkerEventMap>(eventName: T, handler: TextMarkerEventMap[T]): void;
-        off<T extends keyof TextMarkerEventMap>(eventName: T, handler: TextMarkerEventMap[T]): void;
+        on<T extends keyof TextMarkerEventMap>(
+            eventName: T,
+            handler: TextMarkerEventMap[T],
+        ): void;
+        off<T extends keyof TextMarkerEventMap>(
+            eventName: T,
+            handler: TextMarkerEventMap[T],
+        ): void;
     }
 
     interface LineWidget {
@@ -1167,8 +1329,14 @@ declare namespace CodeMirror {
          */
         changed(): void;
 
-        on<T extends keyof LineWidgetEventMap>(eventName: T, handler: LineWidgetEventMap[T]): void;
-        off<T extends keyof LineWidgetEventMap>(eventName: T, handler: LineWidgetEventMap[T]): void;
+        on<T extends keyof LineWidgetEventMap>(
+            eventName: T,
+            handler: LineWidgetEventMap[T],
+        ): void;
+        off<T extends keyof LineWidgetEventMap>(
+            eventName: T,
+            handler: LineWidgetEventMap[T],
+        ): void;
     }
 
     interface LineWidgetOptions {
@@ -1219,7 +1387,7 @@ declare namespace CodeMirror {
     }
 
     interface PositionConstructor {
-        new(line: number, ch?: number, sticky?: string): Position;
+        new (line: number, ch?: number, sticky?: string): Position;
         (line: number, ch?: number, sticky?: string): Position;
     }
 
@@ -1263,7 +1431,7 @@ declare namespace CodeMirror {
     }
 
     interface ScrollbarModelConstructor {
-        new(
+        new (
             place: (node: Element) => void,
             scroll: (pos: number, axis: "horizontal" | "vertical") => void,
         ): ScrollbarModel;
@@ -1362,10 +1530,10 @@ declare namespace CodeMirror {
         /** Allows you to configure the behavior of mouse selection and dragging. The function is called when the left mouse button is pressed. */
         configureMouse?:
             | ((
-                cm: Editor,
-                repeat: "single" | "double" | "triple",
-                event: Event,
-            ) => MouseSelectionConfiguration)
+                  cm: Editor,
+                  repeat: "single" | "double" | "triple",
+                  event: Event,
+              ) => MouseSelectionConfiguration)
             | undefined;
 
         /** Whether CodeMirror should scroll or wrap for long lines. Defaults to false (scroll). */
@@ -1387,7 +1555,9 @@ declare namespace CodeMirror {
          * May include the CodeMirror-linenumbers class, in order to explicitly set the position of the line number gutter
          * (it will default to be to the right of all other gutters). These class names are the keys passed to setGutterMarker.
          */
-        gutters?: Array<string | { className: string; style?: string | undefined }> | undefined;
+        gutters?:
+            | Array<string | { className: string; style?: string | undefined }>
+            | undefined;
 
         /**
          * Determines whether the gutter scrolls along with the content horizontally (false)
@@ -1473,7 +1643,9 @@ declare namespace CodeMirror {
          * It will be passed the editor instance and the event object as arguments.
          * The callback can choose to handle the event itself , in which case it should return true to indicate that CodeMirror should not do anything further.
          */
-        onDragEvent?: ((instance: Editor, event: DragEvent) => boolean) | undefined;
+        onDragEvent?:
+            | ((instance: Editor, event: DragEvent) => boolean)
+            | undefined;
 
         /**
          * This provides a rather low-level hook into CodeMirror's key handling.
@@ -1487,7 +1659,9 @@ declare namespace CodeMirror {
          * If you respond to an event, you should probably inspect its type property and only do something when it is keydown
          * (or keypress for actions that need character data).
          */
-        onKeyEvent?: ((instance: Editor, event: KeyboardEvent) => boolean) | undefined;
+        onKeyEvent?:
+            | ((instance: Editor, event: KeyboardEvent) => boolean)
+            | undefined;
 
         /** Half - period in milliseconds used for cursor blinking. The default blink rate is 530ms. */
         cursorBlinkRate?: number | undefined;
@@ -1793,7 +1967,9 @@ declare namespace CodeMirror {
          * this can use the textAfter string (which is the text after the current position) or the line string, which is the whole
          * text of the line.
          */
-        indent?: ((state: T, textAfter: string, line: string) => number) | undefined;
+        indent?:
+            | ((state: T, textAfter: string, line: string) => number)
+            | undefined;
 
         /** The four below strings are used for working with the commenting addon. */
         /**
@@ -1840,7 +2016,10 @@ declare namespace CodeMirror {
      * The first argument is a configuration object as passed to the mode constructor function, and the second argument
      * is a mode specification as in the EditorConfiguration mode option.
      */
-    function getMode(config: EditorConfiguration, mode: string | ModeSpec<ModeSpecOptions>): Mode<unknown>;
+    function getMode(
+        config: EditorConfiguration,
+        mode: string | ModeSpec<ModeSpecOptions>,
+    ): Mode<unknown>;
 
     /**
      * Utility function from the overlay.js addon that allows modes to be combined. The mode given as the base argument takes care of
@@ -1848,7 +2027,11 @@ declare namespace CodeMirror {
      * Both modes get to parse all of the text, but when both assign a non-null style to a piece of code, the overlay wins, unless
      * the combine argument was true and not overridden, or state.overlay.combineTokens was true, in which case the styles are combined.
      */
-    function overlayMode(base: Mode<any>, overlay: Mode<any>, combine?: boolean): Mode<any>;
+    function overlayMode(
+        base: Mode<any>,
+        overlay: Mode<any>,
+        combine?: boolean,
+    ): Mode<any>;
 
     interface ModeMap {
         [modeName: string]: ModeFactory<any>;
@@ -1859,7 +2042,10 @@ declare namespace CodeMirror {
      */
     const modes: ModeMap;
 
-    function defineMIME(mime: string, modeSpec: string | ModeSpec<ModeSpecOptions>): void;
+    function defineMIME(
+        mime: string,
+        modeSpec: string | ModeSpec<ModeSpecOptions>,
+    ): void;
 
     interface MimeModeMap {
         [mimeName: string]: string | ModeSpec<ModeSpecOptions>;

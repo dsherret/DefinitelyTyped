@@ -171,4 +171,7 @@ export interface PayPal {
  * });
  */
 export function create(options: { client: Client }): Promise<PayPal>;
-export function create(options: { client: Client }, callback: callback<PayPal>): void;
+export function create(
+    options: { client: Client },
+    callback: callback<PayPal>,
+): void;

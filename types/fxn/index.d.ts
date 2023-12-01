@@ -16,7 +16,13 @@ export abstract class Controller {
     protected _securityPolicies: Object;
     protected params: any;
 
-    constructor(path: string, method: string, requestHeaders: Object, params: Object, responder: Function);
+    constructor(
+        path: string,
+        method: string,
+        requestHeaders: Object,
+        params: Object,
+        responder: Function,
+    );
     convertMethod(method: HttpMethod, id: number): string;
     run(): void;
     notImplemented(msg: string, details: Object): boolean;

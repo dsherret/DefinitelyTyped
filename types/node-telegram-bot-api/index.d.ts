@@ -31,7 +31,13 @@ declare namespace TelegramBot {
         | "record_video_note"
         | "upload_video_note";
 
-    type ChatMemberStatus = "creator" | "administrator" | "member" | "restricted" | "left" | "kicked";
+    type ChatMemberStatus =
+        | "creator"
+        | "administrator"
+        | "member"
+        | "restricted"
+        | "left"
+        | "kicked";
 
     type DocumentMimeType = "application/pdf" | "application/zip";
 
@@ -146,7 +152,12 @@ declare namespace TelegramBot {
         message_thread_id?: number | undefined;
         disable_notification?: boolean | undefined;
         reply_to_message_id?: number | undefined;
-        reply_markup?: InlineKeyboardMarkup | ReplyKeyboardMarkup | ReplyKeyboardRemove | ForceReply | undefined;
+        reply_markup?:
+            | InlineKeyboardMarkup
+            | ReplyKeyboardMarkup
+            | ReplyKeyboardRemove
+            | ForceReply
+            | undefined;
         protect_content?: boolean | undefined;
         allow_sending_without_reply?: boolean | undefined;
     }
@@ -1436,9 +1447,15 @@ declare namespace TelegramBot {
         voice: (message: Message, metadata: Metadata) => any;
         video_chat_started: (message: Message, metadata: Metadata) => any;
         video_chat_ended: (message: Message, metadata: Metadata) => any;
-        video_chat_participants_invited: (message: Message, metadata: Metadata) => any;
+        video_chat_participants_invited: (
+            message: Message,
+            metadata: Metadata,
+        ) => any;
         video_chat_scheduled: (message: Message, metadata: Metadata) => any;
-        message_auto_delete_timer_changed: (message: Message, metadata: Metadata) => any;
+        message_auto_delete_timer_changed: (
+            message: Message,
+            metadata: Metadata,
+        ) => any;
         chat_invite_link: (message: Message, metadata: Metadata) => any;
         chat_member_updated: (message: Message, metadata: Metadata) => any;
         web_app_data: (message: Message, metadata: Metadata) => any;
@@ -1465,53 +1482,81 @@ declare namespace TelegramBot {
 }
 
 declare class TelegramBotEventEmitter<E extends Record<string, any>> {
-    on<K extends Exclude<keyof E, number>>(event: K, listener: E[K]): TelegramBotEventEmitter<E>;
+    on<K extends Exclude<keyof E, number>>(
+        event: K,
+        listener: E[K],
+    ): TelegramBotEventEmitter<E>;
     on<K extends string | symbol>(
         event: Exclude<K, keyof E>,
         listener: (...args: any[]) => any,
     ): TelegramBotEventEmitter<E>;
 
-    off<K extends Exclude<keyof E, number>>(event: K, listener: E[K]): TelegramBotEventEmitter<E>;
+    off<K extends Exclude<keyof E, number>>(
+        event: K,
+        listener: E[K],
+    ): TelegramBotEventEmitter<E>;
     off<K extends string | symbol>(
         event: Exclude<K, keyof E>,
         listener: (...args: any[]) => any,
     ): TelegramBotEventEmitter<E>;
 
-    addListener<K extends Exclude<keyof E, number>>(event: K, listener: E[K]): TelegramBotEventEmitter<E>;
+    addListener<K extends Exclude<keyof E, number>>(
+        event: K,
+        listener: E[K],
+    ): TelegramBotEventEmitter<E>;
     addListener<K extends string | symbol>(
         event: Exclude<K, keyof E>,
         listener: (...args: any[]) => any,
     ): TelegramBotEventEmitter<E>;
 
-    removeListener<K extends Exclude<keyof E, number>>(event: K, listener: E[K]): TelegramBotEventEmitter<E>;
+    removeListener<K extends Exclude<keyof E, number>>(
+        event: K,
+        listener: E[K],
+    ): TelegramBotEventEmitter<E>;
     removeListener<K extends string | symbol>(
         event: Exclude<K, keyof E>,
         listener: (...args: any[]) => any,
     ): TelegramBotEventEmitter<E>;
 
-    prependListener<K extends Exclude<keyof E, number>>(event: K, listener: E[K]): TelegramBotEventEmitter<E>;
+    prependListener<K extends Exclude<keyof E, number>>(
+        event: K,
+        listener: E[K],
+    ): TelegramBotEventEmitter<E>;
     prependListener<K extends string | symbol>(
         event: Exclude<K, keyof E>,
         listener: (...args: any[]) => any,
     ): TelegramBotEventEmitter<E>;
 
-    prependOnceListener<K extends Exclude<keyof E, number>>(event: K, listener: E[K]): TelegramBotEventEmitter<E>;
+    prependOnceListener<K extends Exclude<keyof E, number>>(
+        event: K,
+        listener: E[K],
+    ): TelegramBotEventEmitter<E>;
     prependOnceListener<K extends string | symbol>(
         event: Exclude<K, keyof E>,
         listener: (...args: any[]) => any,
     ): TelegramBotEventEmitter<E>;
 
-    once<K extends Exclude<keyof E, number>>(event: K, listener: E[K]): TelegramBotEventEmitter<E>;
+    once<K extends Exclude<keyof E, number>>(
+        event: K,
+        listener: E[K],
+    ): TelegramBotEventEmitter<E>;
     once<K extends string | symbol>(
         event: Exclude<K, keyof E>,
         listener: (...args: any[]) => any,
     ): TelegramBotEventEmitter<E>;
 
-    removeAllListeners<K extends Exclude<keyof E, number>>(event?: K): TelegramBotEventEmitter<E>;
-    removeAllListeners<K extends string | symbol>(event?: Exclude<K, keyof E>): TelegramBotEventEmitter<E>;
+    removeAllListeners<K extends Exclude<keyof E, number>>(
+        event?: K,
+    ): TelegramBotEventEmitter<E>;
+    removeAllListeners<K extends string | symbol>(
+        event?: Exclude<K, keyof E>,
+    ): TelegramBotEventEmitter<E>;
 
     emit<K extends Exclude<keyof E, number>>(event: K, ...args: E[K]): boolean;
-    emit<K extends string | symbol>(event: Exclude<K, keyof E>, ...args: any[]): boolean;
+    emit<K extends string | symbol>(
+        event: Exclude<K, keyof E>,
+        ...args: any[]
+    ): boolean;
 }
 
 declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEvents> {
@@ -1545,7 +1590,9 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
 
     getWebHookInfo(): Promise<TelegramBot.WebhookInfo>;
 
-    getUpdates(options?: TelegramBot.GetUpdatesOptions): Promise<TelegramBot.Update[]>;
+    getUpdates(
+        options?: TelegramBot.GetUpdatesOptions,
+    ): Promise<TelegramBot.Update[]>;
 
     processUpdate(update: TelegramBot.Update): void;
 
@@ -1595,7 +1642,10 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         options?: TelegramBot.SendAnimationOptions,
     ): Promise<TelegramBot.Message>;
 
-    sendDice(chatId: TelegramBot.ChatId, options?: TelegramBot.SendDiceOptions): Promise<TelegramBot.Message>;
+    sendDice(
+        chatId: TelegramBot.ChatId,
+        options?: TelegramBot.SendDiceOptions,
+    ): Promise<TelegramBot.Message>;
 
     sendDocument(
         chatId: TelegramBot.ChatId,
@@ -1635,7 +1685,10 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
 
     getStickerSet(name: string, options?: {}): Promise<TelegramBot.StickerSet>;
 
-    getCustomEmojiStickers(customEmojiIds: string[], options?: {}): Promise<TelegramBot.Sticker[]>;
+    getCustomEmojiStickers(
+        customEmojiIds: string[],
+        options?: {},
+    ): Promise<TelegramBot.Sticker[]>;
 
     uploadStickerFile(
         userId: number,
@@ -1664,7 +1717,10 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         fileOptions?: TelegramBot.FileOptions,
     ): Promise<boolean>;
 
-    setStickerPositionInSet(sticker: string, position: number): Promise<boolean>;
+    setStickerPositionInSet(
+        sticker: string,
+        position: number,
+    ): Promise<boolean>;
 
     deleteStickerFromSet(sticker: string, options?: {}): Promise<boolean>;
 
@@ -1709,11 +1765,21 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         options?: TelegramBot.BanOptions,
     ): Promise<boolean>;
 
-    unbanChatMember(chatId: TelegramBot.ChatId, userId: number, options?: TelegramBot.UnbanOptions): Promise<boolean>;
+    unbanChatMember(
+        chatId: TelegramBot.ChatId,
+        userId: number,
+        options?: TelegramBot.UnbanOptions,
+    ): Promise<boolean>;
 
-    banChatSenderChat(chatId: TelegramBot.ChatId, senderChatId: TelegramBot.ChatId): Promise<boolean>;
+    banChatSenderChat(
+        chatId: TelegramBot.ChatId,
+        senderChatId: TelegramBot.ChatId,
+    ): Promise<boolean>;
 
-    unbanChatSenderChat(chatId: TelegramBot.ChatId, senderChatId: TelegramBot.ChatId): Promise<boolean>;
+    unbanChatSenderChat(
+        chatId: TelegramBot.ChatId,
+        senderChatId: TelegramBot.ChatId,
+    ): Promise<boolean>;
 
     restrictChatMember(
         chatId: TelegramBot.ChatId,
@@ -1750,11 +1816,22 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         },
     ): Promise<TelegramBot.ChatInviteLink>;
 
-    revokeChatInviteLink(chatId: TelegramBot.ChatId, inviteLink: string): Promise<TelegramBot.ChatInviteLink>;
+    revokeChatInviteLink(
+        chatId: TelegramBot.ChatId,
+        inviteLink: string,
+    ): Promise<TelegramBot.ChatInviteLink>;
 
-    approveChatJoinRequest(chatId: TelegramBot.ChatId, userId: number, form?: object): Promise<boolean>;
+    approveChatJoinRequest(
+        chatId: TelegramBot.ChatId,
+        userId: number,
+        form?: object,
+    ): Promise<boolean>;
 
-    declineChatJoinRequest(chatId: TelegramBot.ChatId, userId: number, form?: object): Promise<boolean>;
+    declineChatJoinRequest(
+        chatId: TelegramBot.ChatId,
+        userId: number,
+        form?: object,
+    ): Promise<boolean>;
 
     setChatPhoto(
         chatId: TelegramBot.ChatId,
@@ -1767,7 +1844,10 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
 
     setChatTitle(chatId: TelegramBot.ChatId, title: string): Promise<boolean>;
 
-    setChatDescription(chatId: TelegramBot.ChatId, description: string): Promise<boolean>;
+    setChatDescription(
+        chatId: TelegramBot.ChatId,
+        description: string,
+    ): Promise<boolean>;
 
     pinChatMessage(
         chatId: TelegramBot.ChatId,
@@ -1775,7 +1855,10 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         options?: TelegramBot.PinChatMessageOptions,
     ): Promise<boolean>;
 
-    unpinChatMessage(chatId: TelegramBot.ChatId, options?: TelegramBot.UnpinChatMessageOptions): Promise<boolean>;
+    unpinChatMessage(
+        chatId: TelegramBot.ChatId,
+        options?: TelegramBot.UnpinChatMessageOptions,
+    ): Promise<boolean>;
 
     unpinAllChatMessages(chatId: TelegramBot.ChatId): Promise<boolean>;
 
@@ -1787,9 +1870,14 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
     /**
      * @deprecated since version 0.30.0
      */
-    answerCallbackQuery(options?: TelegramBot.AnswerCallbackQueryOptions): Promise<boolean>;
+    answerCallbackQuery(
+        options?: TelegramBot.AnswerCallbackQueryOptions,
+    ): Promise<boolean>;
 
-    editMessageText(text: string, options?: TelegramBot.EditMessageTextOptions): Promise<TelegramBot.Message | boolean>;
+    editMessageText(
+        text: string,
+        options?: TelegramBot.EditMessageTextOptions,
+    ): Promise<TelegramBot.Message | boolean>;
 
     editMessageCaption(
         caption: string,
@@ -1852,7 +1940,13 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
 
     downloadFile(fileId: string, downloadDir: string): Promise<string>;
 
-    onText(regexp: RegExp, callback: (msg: TelegramBot.Message, match: RegExpExecArray | null) => void): void;
+    onText(
+        regexp: RegExp,
+        callback: (
+            msg: TelegramBot.Message,
+            match: RegExpExecArray | null,
+        ) => void,
+    ): void;
 
     removeTextListener(regexp: RegExp): TelegramBot.TextListener | null;
 
@@ -1870,15 +1964,23 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
 
     getChat(chatId: TelegramBot.ChatId): Promise<TelegramBot.Chat>;
 
-    getChatAdministrators(chatId: TelegramBot.ChatId): Promise<TelegramBot.ChatMember[]>;
+    getChatAdministrators(
+        chatId: TelegramBot.ChatId,
+    ): Promise<TelegramBot.ChatMember[]>;
 
     getChatMemberCount(chatId: TelegramBot.ChatId): Promise<number>;
 
-    getChatMember(chatId: TelegramBot.ChatId, userId: number): Promise<TelegramBot.ChatMember>;
+    getChatMember(
+        chatId: TelegramBot.ChatId,
+        userId: number,
+    ): Promise<TelegramBot.ChatMember>;
 
     leaveChat(chatId: TelegramBot.ChatId): Promise<boolean>;
 
-    setChatStickerSet(chatId: TelegramBot.ChatId, stickerSetName: string): Promise<boolean>;
+    setChatStickerSet(
+        chatId: TelegramBot.ChatId,
+        stickerSetName: string,
+    ): Promise<boolean>;
 
     deleteChatStickerSet(chatId: TelegramBot.ChatId): Promise<boolean>;
 
@@ -1894,15 +1996,30 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         options?: TelegramBot.EditForumTopicOptions,
     ): Promise<boolean>;
 
-    closeForumTopic(chatId: TelegramBot.ChatId, messageThreadId: number): Promise<boolean>;
+    closeForumTopic(
+        chatId: TelegramBot.ChatId,
+        messageThreadId: number,
+    ): Promise<boolean>;
 
-    reopenForumTopic(chatId: TelegramBot.ChatId, messageThreadId: number): Promise<boolean>;
+    reopenForumTopic(
+        chatId: TelegramBot.ChatId,
+        messageThreadId: number,
+    ): Promise<boolean>;
 
-    deleteForumTopic(chatId: TelegramBot.ChatId, messageThreadId: number): Promise<boolean>;
+    deleteForumTopic(
+        chatId: TelegramBot.ChatId,
+        messageThreadId: number,
+    ): Promise<boolean>;
 
-    unpinAllForumTopicMessages(chatId: TelegramBot.ChatId, messageThreadId: number): Promise<boolean>;
+    unpinAllForumTopicMessages(
+        chatId: TelegramBot.ChatId,
+        messageThreadId: number,
+    ): Promise<boolean>;
 
-    editGeneralForumTopic(chatId: TelegramBot.ChatId, name: string): Promise<boolean>;
+    editGeneralForumTopic(
+        chatId: TelegramBot.ChatId,
+        name: string,
+    ): Promise<boolean>;
 
     closeGeneralForumTopic(chatId: TelegramBot.ChatId): Promise<boolean>;
 
@@ -1929,7 +2046,11 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         options?: TelegramBot.GetGameHighScoresOptions,
     ): Promise<TelegramBot.GameHighScore[]>;
 
-    deleteMessage(chatId: TelegramBot.ChatId, messageId: number, options?: any): Promise<boolean>;
+    deleteMessage(
+        chatId: TelegramBot.ChatId,
+        messageId: number,
+        options?: any,
+    ): Promise<boolean>;
 
     sendInvoice(
         chatId: TelegramBot.ChatId,
@@ -1954,9 +2075,13 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         options?: TelegramBot.AnswerPreCheckoutQueryOptions,
     ): Promise<boolean>;
 
-    listeners(event: keyof TelegramBot.TelegramEvents): Array<(data: any, metadata?: TelegramBot.Metadata) => void>;
+    listeners(
+        event: keyof TelegramBot.TelegramEvents,
+    ): Array<(data: any, metadata?: TelegramBot.Metadata) => void>;
 
-    rawListeners(event: keyof TelegramBot.TelegramEvents): Array<(data: any, metadata?: TelegramBot.Metadata) => void>;
+    rawListeners(
+        event: keyof TelegramBot.TelegramEvents,
+    ): Array<(data: any, metadata?: TelegramBot.Metadata) => void>;
 
     eventNames(): Array<keyof TelegramBot.TelegramEvents>;
 
@@ -1968,9 +2093,16 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         options?: TelegramBot.SetChatPermissionsOptions,
     ): Promise<boolean>;
 
-    setChatAdministratorCustomTitle(chatId: TelegramBot.ChatId, userId: number, customTitle: string): Promise<boolean>;
+    setChatAdministratorCustomTitle(
+        chatId: TelegramBot.ChatId,
+        userId: number,
+        customTitle: string,
+    ): Promise<boolean>;
 
-    getMyCommands(scope?: TelegramBot.BotCommandScope, language_code?: string): Promise<TelegramBot.BotCommand[]>;
+    getMyCommands(
+        scope?: TelegramBot.BotCommandScope,
+        language_code?: string,
+    ): Promise<TelegramBot.BotCommand[]>;
 
     setMyCommands(
         commands: TelegramBot.BotCommand[],
@@ -1980,16 +2112,23 @@ declare class TelegramBot extends TelegramBotEventEmitter<TelegramBot.TelegramEv
         },
     ): Promise<boolean>;
 
-    setChatMenuButton(form: { chat_id?: number; menu_button?: TelegramBot.MenuButton }): Promise<boolean>;
+    setChatMenuButton(form: {
+        chat_id?: number;
+        menu_button?: TelegramBot.MenuButton;
+    }): Promise<boolean>;
 
-    getChatMenuButton(form: { chat_id?: number }): Promise<TelegramBot.MenuButton>;
+    getChatMenuButton(form: {
+        chat_id?: number;
+    }): Promise<TelegramBot.MenuButton>;
 
     setMyDefaultAdministratorRights(form: {
         rights?: TelegramBot.ChatAdministratorRights;
         for_channels?: boolean;
     }): Promise<boolean>;
 
-    getMyDefaultAdministratorRights(form: { for_channels?: boolean }): Promise<TelegramBot.ChatAdministratorRights>;
+    getMyDefaultAdministratorRights(form: {
+        for_channels?: boolean;
+    }): Promise<TelegramBot.ChatAdministratorRights>;
 
     answerWebAppQuery(
         web_app_query_id: string,

@@ -4,7 +4,11 @@
 // DirtyFlag /////////////////////////////////////////////
 
 interface DirtyFlag {
-    new(objectToTrack: any, isInitiallyDirty?: boolean, hashFunction?: () => any): any;
+    new (
+        objectToTrack: any,
+        isInitiallyDirty?: boolean,
+        hashFunction?: () => any,
+    ): any;
     (): DirtyFlagResult;
 }
 

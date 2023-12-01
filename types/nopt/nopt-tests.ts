@@ -11,7 +11,12 @@ nopt({ "--foo": String }, { "-f": "--foo" });
 nopt({ "--foo": String }, { "-f": ["--foo", "-d"] });
 
 nopt({ "--foo": String }, { "-f": ["--foo", "-d"] }, ["test me --foo arg"]);
-var cmd = nopt({ "--foo": String }, { "-f": ["--foo", "-d"] }, ["test me --foo arg"], 2);
+var cmd = nopt(
+    { "--foo": String },
+    { "-f": ["--foo", "-d"] },
+    ["test me --foo arg"],
+    2,
+);
 
 console.log(cmd.argv.cooked);
 console.log(cmd.argv.original);

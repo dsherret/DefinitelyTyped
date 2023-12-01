@@ -8,12 +8,12 @@ image.src = imageUrl;
 // $ExpectType Palette
 getColor(image);
 
-getColorFromURL(imageUrl).then(color => {
+getColorFromURL(imageUrl).then((color) => {
     // $ExpectType Palette
     color;
 });
 
-getPaletteFromURL(imageUrl).then(color => {
+getPaletteFromURL(imageUrl).then((color) => {
     // $ExpectType Palette
     color[0];
 });

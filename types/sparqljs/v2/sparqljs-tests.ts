@@ -8,8 +8,8 @@ function officialExamples() {
     const SparqlParser = SparqlJs.Parser;
     const parser = new SparqlParser();
     const parsedQuery = parser.parse(
-        "PREFIX foaf: <http://xmlns.com/foaf/0.1/> "
-            + "SELECT * { ?mickey foaf:name \"Mickey Mouse\"@en; foaf:knows ?other. }",
+        "PREFIX foaf: <http://xmlns.com/foaf/0.1/> " +
+            'SELECT * { ?mickey foaf:name "Mickey Mouse"@en; foaf:knows ?other. }',
     );
 
     // Regenerate a SPARQL query from a JSON object
@@ -68,26 +68,24 @@ function basicQueries() {
             named: ["http://example.com/foo", "http://example.com/bar"],
         },
         reduced: false,
-        group: [
-            { expression: foo },
-            { expression: bar },
+        group: [{ expression: foo }, { expression: bar }],
+        having: [
+            {
+                type: "functionCall",
+                function: "isIRI",
+                args: [foo],
+            },
         ],
-        having: [{
-            type: "functionCall",
-            function: "isIRI",
-            args: [foo],
-        }],
-        order: [{
-            expression: bar,
-            descending: true,
-        }],
+        order: [
+            {
+                expression: bar,
+                descending: true,
+            },
+        ],
         limit: 100,
         offset: 10,
         where: [bgpPattern],
-        values: [
-            { x: foo, y: bar },
-            { x: foo },
-        ],
+        values: [{ x: foo, y: bar }, { x: foo }],
     };
 
     const construct: SparqlJs.ConstructQuery = {

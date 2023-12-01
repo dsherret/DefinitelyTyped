@@ -14,7 +14,11 @@ const opts$StreamErr = (opts = { errs });
 opts = { filter: /abc/ };
 opts = { filter: (filename: string) => true };
 opts = {
-    transform: (read: NodeJS.ReadableStream, write: NodeJS.WritableStream, file: ncp.File) => {
+    transform: (
+        read: NodeJS.ReadableStream,
+        write: NodeJS.WritableStream,
+        file: ncp.File,
+    ) => {
         file; // $ExpectType File
         file.name; // $ExpectType string
         file.mode; // $ExpectType number
@@ -30,7 +34,7 @@ opts = { limit: 512 };
 // $ExpectType Options
 opts;
 
-ncp("foo", "bar", err => {
+ncp("foo", "bar", (err) => {
     err; // $ExpectType Error[] | null
 });
 
@@ -40,7 +44,7 @@ ncp(
     {
         stopOnErr: true,
     },
-    err => {
+    (err) => {
         err; // $ExpectType Error | null
     },
 );
@@ -52,28 +56,40 @@ ncp(
         errs,
         stopOnErr: true,
     },
-    err => {
+    (err) => {
         err; // $ExpectType Error | null
     },
 );
 
-ncp("foo", "bar", opts$StreamErr, err => {
+ncp("foo", "bar", opts$StreamErr, (err) => {
     err; // $ExpectType WriteStream | null
 });
 
-ncp.ncp("foo", "bar", err => {
+ncp.ncp("foo", "bar", (err) => {
     err; // $ExpectType Error[] | null
 });
 
-ncp.ncp("foo", "bar", opts, err => {
+ncp.ncp("foo", "bar", opts, (err) => {
     err; // $ExpectType Error | Error[] | WriteStream | null || Error | WriteStream | Error[] | null
 });
 
 // $ExpectType (source: string, destination: string, options?: Options | undefined) => Promise<void>
-expectType<(source: string, destination: string, options?: ncp.Options) => Promise<void>>(util.promisify(ncp));
+expectType<
+    (
+        source: string,
+        destination: string,
+        options?: ncp.Options,
+    ) => Promise<void>
+>(util.promisify(ncp));
 
 // $ExpectType (source: string, destination: string, options?: Options | undefined) => Promise<void>
-expectType<(source: string, destination: string, options?: ncp.Options) => Promise<void>>(util.promisify(ncp.ncp));
+expectType<
+    (
+        source: string,
+        destination: string,
+        options?: ncp.Options,
+    ) => Promise<void>
+>(util.promisify(ncp.ncp));
 
 // Both import forms are identical
 expectType<typeof ncp.ncp>(ncpCB);

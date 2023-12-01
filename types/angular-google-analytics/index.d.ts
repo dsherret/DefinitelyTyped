@@ -59,7 +59,11 @@ declare module "angular" {
              * @param  {string} title Page Title
              * @param  {Object}  dimensions Additional dimensions and metrics
              */
-            trackPage: (pageURL: string, title?: string, dimensions?: { [expr: string]: any }) => void;
+            trackPage: (
+                pageURL: string,
+                title?: string,
+                dimensions?: { [expr: string]: any },
+            ) => void;
 
             /**
              * @summary Create a new event

@@ -2,7 +2,9 @@ import { ComponentClass } from "react";
 import { AutoFocus, ReactWidgetsCommonDropdownProps } from "./CommonProps";
 
 declare namespace DropdownList {
-    interface DropdownListProps extends ReactWidgetsCommonDropdownProps, AutoFocus {
+    interface DropdownListProps
+        extends ReactWidgetsCommonDropdownProps,
+            AutoFocus {
         /**
          * Allow to create a new option on the data list.
          */
@@ -124,7 +126,13 @@ declare namespace DropdownList {
          * To handle custom filtering techniques provide a function that returns true or false
          * for each passed in item (analogous to the array.filter builtin)
          */
-        filter?: false | "startsWith" | "endsWith" | "contains" | ((dataItem: any, str: string) => boolean) | undefined;
+        filter?:
+            | false
+            | "startsWith"
+            | "endsWith"
+            | "contains"
+            | ((dataItem: any, str: string) => boolean)
+            | undefined;
         /**
          * Use in conjunction with the filter prop. Filter the list without regard for case. This
          * only applies to non function values for filter
@@ -188,7 +196,10 @@ declare namespace DropdownList {
         /**
          * The placeholder text for the filter input.
          */
-        filterPlaceholder?: string | ((props: DropdownListProps) => string) | undefined;
+        filterPlaceholder?:
+            | string
+            | ((props: DropdownListProps) => string)
+            | undefined;
         /**
          * Text to display when the data prop array is empty.
          * @default "There are no items in this list"
@@ -198,15 +209,22 @@ declare namespace DropdownList {
          * Text to display when the the current filter does not return any results.
          * @default "The filter returned no results"
          */
-        emptyFilter?: string | ((props: DropdownListProps) => string) | undefined;
+        emptyFilter?:
+            | string
+            | ((props: DropdownListProps) => string)
+            | undefined;
         /**
          * Text to display for the create option
          * @default "Create option {text}"
          */
-        createOption?: string | ((props: DropdownListProps) => string) | undefined;
+        createOption?:
+            | string
+            | ((props: DropdownListProps) => string)
+            | undefined;
     }
 }
 
-interface DropdownListClass extends ComponentClass<DropdownList.DropdownListProps> {}
+interface DropdownListClass
+    extends ComponentClass<DropdownList.DropdownListProps> {}
 declare var DropdownList: DropdownListClass;
 export = DropdownList;

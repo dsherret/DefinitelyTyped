@@ -67,7 +67,7 @@ declare namespace zrender {
      * x, y, x2, y2 are all percent from 0 to 1
      */
     interface LinearGradient {
-        new(
+        new (
             /** @default 0 */
             x?: X,
             /** @default 0 */
@@ -101,7 +101,7 @@ declare namespace zrender {
             style?: PathStyleProps;
             shape?: Record<string, any>;
             autoBatch?: boolean;
-            __value?: Array<(string | number)> | (string | number);
+            __value?: Array<string | number> | (string | number);
             buildPath?: (
                 ctx: any,
                 shapeCfg: Record<string, any>,

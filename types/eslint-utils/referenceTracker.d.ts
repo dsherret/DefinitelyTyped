@@ -47,15 +47,21 @@ export class ReferenceTracker {
     /**
      * Iterate the references of CommonJS modules.
      */
-    iterateCjsReferences<T = unknown>(traceMap: TraceMap<T>): IterableIterator<TrackedReferences<T>>;
+    iterateCjsReferences<T = unknown>(
+        traceMap: TraceMap<T>,
+    ): IterableIterator<TrackedReferences<T>>;
 
     /**
      * Iterate the references of ES modules.
      */
-    iterateEsmReferences<T = unknown>(traceMap: TraceMap<T>): IterableIterator<TrackedReferences<T>>;
+    iterateEsmReferences<T = unknown>(
+        traceMap: TraceMap<T>,
+    ): IterableIterator<TrackedReferences<T>>;
 
     /**
      * Iterate the references of global variables.
      */
-    iterateGlobalReferences<T = unknown>(traceMap: TraceMap<T>): IterableIterator<TrackedReferences<T>>;
+    iterateGlobalReferences<T = unknown>(
+        traceMap: TraceMap<T>,
+    ): IterableIterator<TrackedReferences<T>>;
 }

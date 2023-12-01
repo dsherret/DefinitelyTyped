@@ -1,7 +1,6 @@
 import * as args from "args";
 
-args
-    .option("opt1", "desc")
+args.option("opt1", "desc")
     .option("opt2", "desc", false, (value: any): any => value)
     .options([
         {

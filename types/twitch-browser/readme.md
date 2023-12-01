@@ -11,7 +11,7 @@ This then exposes the `Twitch` global. The types for which have been defined her
 
 The player can be initialized by creating a new Player instance:
 
-```ts
+````ts
 new Twitch.Player('div-id', {
     width: 100,
     height: 100,
@@ -30,6 +30,6 @@ In order to use player events, the `addEventListener` method must be used. Where
 
 ```ts
 player.addEventListener(Twitch.Player.PLAYBACK_BLOCKED, () => {})
-```
+````
 
 The official docs can be found [here](https://dev.twitch.tv/docs/embed/video-and-clips/).

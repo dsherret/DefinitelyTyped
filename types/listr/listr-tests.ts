@@ -10,57 +10,66 @@ const tasks = new Listr<Context>([
     {
         title: "Git",
         task: () => {
-            return new Listr([
-                {
-                    title: "Checking git status",
-                    task: () =>
-                        new Promise<string>(resolve => resolve(""))
-                            .then(result => {
-                                if (result !== "") {
-                                    throw new Error("Unclean working tree. Commit or stash changes first.");
-                                }
-                            }),
-                },
-                {
-                    title: "Checking remote history",
-                    task: () =>
-                        new Promise<string>(resolve => resolve(""))
-                            .then(result => {
-                                if (result !== "0") {
-                                    throw new Error("Remote history differ. Please pull changes.");
-                                }
-                            }),
-                },
-            ], { concurrent: true });
+            return new Listr(
+                [
+                    {
+                        title: "Checking git status",
+                        task: () =>
+                            new Promise<string>((resolve) => resolve("")).then(
+                                (result) => {
+                                    if (result !== "") {
+                                        throw new Error(
+                                            "Unclean working tree. Commit or stash changes first.",
+                                        );
+                                    }
+                                },
+                            ),
+                    },
+                    {
+                        title: "Checking remote history",
+                        task: () =>
+                            new Promise<string>((resolve) => resolve("")).then(
+                                (result) => {
+                                    if (result !== "0") {
+                                        throw new Error(
+                                            "Remote history differ. Please pull changes.",
+                                        );
+                                    }
+                                },
+                            ),
+                    },
+                ],
+                { concurrent: true },
+            );
         },
     },
     {
         title: "Install package dependencies with Yarn",
         task: (ctx, task) =>
-            new Promise<void>(resolve => resolve())
-                .catch(() => {
-                    ctx.yarn = false;
+            new Promise<void>((resolve) => resolve()).catch(() => {
+                ctx.yarn = false;
 
-                    task.skip("Yarn not available, install it via `npm install -g yarn`");
-                }),
+                task.skip(
+                    "Yarn not available, install it via `npm install -g yarn`",
+                );
+            }),
     },
     {
         title: "Install package dependencies with npm",
-        enabled: ctx => ctx.yarn === false,
-        task: () => new Promise<void>(resolve => resolve()),
+        enabled: (ctx) => ctx.yarn === false,
+        task: () => new Promise<void>((resolve) => resolve()),
     },
     {
         title: "Run tests",
-        task: () => new Promise<void>(resolve => resolve()),
+        task: () => new Promise<void>((resolve) => resolve()),
     },
     {
         title: "Publish package",
-        task: () => new Promise<void>(resolve => resolve()),
+        task: () => new Promise<void>((resolve) => resolve()),
     },
 ]);
 
-tasks.run().catch(err => {
-});
+tasks.run().catch((err) => {});
 
 const tasks21 = new Listr([
     {
@@ -131,24 +140,25 @@ const tasks6 = new Listr([
     {
         title: "Install package dependencies with Yarn",
         task: (ctx, task) =>
-            new Promise<void>(resolve => resolve())
-                .catch(() => {
-                    ctx.yarn = false;
+            new Promise<void>((resolve) => resolve()).catch(() => {
+                ctx.yarn = false;
 
-                    task.skip("Yarn not available, install it via `npm install -g yarn`");
-                }),
+                task.skip(
+                    "Yarn not available, install it via `npm install -g yarn`",
+                );
+            }),
     },
     {
         title: "Install package dependencies with npm",
-        enabled: ctx => ctx.yarn === false,
-        task: () => new Promise<void>(resolve => resolve()),
+        enabled: (ctx) => ctx.yarn === false,
+        task: () => new Promise<void>((resolve) => resolve()),
     },
 ]);
 
 const tasks7 = new Listr([
     {
         title: "Task 1",
-        skip: ctx => ctx.foo === "bar",
+        skip: (ctx) => ctx.foo === "bar",
         task: () => Promise.resolve("Foo"),
     },
     {
@@ -158,24 +168,29 @@ const tasks7 = new Listr([
                 return "Reason for skipping";
             }
         },
-        task: ctx => {
+        task: (ctx) => {
             ctx.unicorn = "rainbow";
         },
     },
     {
         title: "Task 3",
-        task: ctx => Promise.resolve(`${ctx.foo} ${ctx.bar}`),
+        task: (ctx) => Promise.resolve(`${ctx.foo} ${ctx.bar}`),
     },
 ]);
 
-tasks.run({
-    foo: "bar",
-}).then(ctx => {
-    console.log(ctx);
-});
+tasks
+    .run({
+        foo: "bar",
+    })
+    .then((ctx) => {
+        console.log(ctx);
+    });
 
 class CustomRenderer {
-    constructor(tasks: ReadonlyArray<Listr.ListrTask<Context>>, options: Listr.ListrOptions<Context>) {}
+    constructor(
+        tasks: ReadonlyArray<Listr.ListrTask<Context>>,
+        options: Listr.ListrOptions<Context>,
+    ) {}
 
     static nonTTY = true;
 

@@ -30,13 +30,21 @@ export interface Plugins {
 
 export type BrowserTheme = "dark" | "light";
 
-export type CanViewElementSource = (inspectedElement: InspectedElement) => boolean;
+export type CanViewElementSource = (
+    inspectedElement: InspectedElement,
+) => boolean;
 
 export type TabID = "components" | "profiler";
 
-export type ViewAttributeSource = (id: number, path: Array<string | number>) => void;
+export type ViewAttributeSource = (
+    id: number,
+    path: Array<string | number>,
+) => void;
 
-export type ViewElementSource = (id: number, inspectedElement: InspectedElement) => void;
+export type ViewElementSource = (
+    id: number,
+    inspectedElement: InspectedElement,
+) => void;
 
 export type FetchFileWithCaching = (url: string) => Promise<string>;
 
@@ -64,7 +72,10 @@ export interface DevtoolsProps {
     componentsPortalContainer?: Element | undefined;
     profilerPortalContainer?: Element | undefined;
     fetchFileWithCaching?: FetchFileWithCaching | null | undefined;
-    hookNamesModuleLoaderFunction?: HookNamesModuleLoaderFunction | null | undefined;
+    hookNamesModuleLoaderFunction?:
+        | HookNamesModuleLoaderFunction
+        | null
+        | undefined;
     viewUrlSourceFunction?: ViewUrlSourceFunction | null | undefined;
 }
 
@@ -130,8 +141,13 @@ export interface EncodedHookMap {
     mappings: string;
 }
 export type ReactSourceMetadata = [EncodedHookMap | null | undefined];
-export type ReactSourcesArray = ReadonlyArray<ReactSourceMetadata | null | undefined>;
-export type FBSourceMetadata = [unknown | undefined, ReactSourceMetadata | null | undefined];
+export type ReactSourcesArray = ReadonlyArray<
+    ReactSourceMetadata | null | undefined
+>;
+export type FBSourceMetadata = [
+    unknown | undefined,
+    ReactSourceMetadata | null | undefined,
+];
 export type FBSourcesArray = ReadonlyArray<FBSourceMetadata | null | undefined>;
 
 export interface BasicSourceMap {
@@ -205,8 +221,13 @@ export interface ParseHookNamesModule {
     parseHookNames: ParseHookNames;
 }
 
-export type HookNamesModuleLoaderFunction = () => PromiseLike<ParseHookNamesModule>;
-export type ViewUrlSourceFunction = (url: string, line: number, col: number) => void;
+export type HookNamesModuleLoaderFunction =
+    () => PromiseLike<ParseHookNamesModule>;
+export type ViewUrlSourceFunction = (
+    url: string,
+    line: number,
+    col: number,
+) => void;
 export type EventParams<T> = T extends any[] ? T : never;
 export class EventEmitter<Events> {
     listenersMap: Map<string, AnyFn[]>;
@@ -214,7 +235,10 @@ export class EventEmitter<Events> {
         event: Event,
         listener: (...args: EventParams<Events[Event]>) => void,
     ): void;
-    emit: <Event extends keyof Events>(event: Event, ...args: EventParams<Events[Event]>) => void;
+    emit: <Event extends keyof Events>(
+        event: Event,
+        ...args: EventParams<Events[Event]>
+    ) => void;
     removeAllListeners: () => void;
     removeListener: (event: keyof Events, listener: AnyFn) => void;
 }
@@ -345,20 +369,41 @@ export interface RankedChartData {
 export class ProfilingCache {
     constructor(profilerStore: ProfilerStore);
 
-    getCommitTree: ({ commitIndex, rootID }: { commitIndex: number; rootID: number }) => ReturnType<getCommitTree>;
-    getFiberCommits: ({ fiberID, rootID }: { fiberID: number; rootID: number }) => number[];
+    getCommitTree: ({
+        commitIndex,
+        rootID,
+    }: {
+        commitIndex: number;
+        rootID: number;
+    }) => ReturnType<getCommitTree>;
+    getFiberCommits: ({
+        fiberID,
+        rootID,
+    }: {
+        fiberID: number;
+        rootID: number;
+    }) => number[];
     getFlamegraphChartData: (options: {
         commitIndex: number;
         commitTree: CommitTree;
         rootID: number;
     }) => FlamegraphChartData;
-    getRankedChartData: (options: { commitIndex: number; commitTree: CommitTree; rootID: number }) => RankedChartData;
+    getRankedChartData: (options: {
+        commitIndex: number;
+        commitTree: CommitTree;
+        rootID: number;
+    }) => RankedChartData;
     invalidate(): void;
 }
 
 export type BatchUID = number;
 export type Milliseconds = number;
-export type ReactMeasureType = "commit" | "render-idle" | "render" | "layout-effects" | "passive-effects";
+export type ReactMeasureType =
+    | "commit"
+    | "render-idle"
+    | "render"
+    | "layout-effects"
+    | "passive-effects";
 export type ReactLane = number;
 
 export interface ReactMeasure {
@@ -400,7 +445,10 @@ export interface ErrorStackFrame {
     lineNumber: number;
     columnNumber: number;
 }
-export type InternalModuleSourceToRanges = Map<string, Array<[ErrorStackFrame, ErrorStackFrame]>>;
+export type InternalModuleSourceToRanges = Map<
+    string,
+    Array<[ErrorStackFrame, ErrorStackFrame]>
+>;
 export type LaneToLabelMap = Map<ReactLane, string>;
 export interface NativeEvent {
     readonly type: string;
@@ -446,7 +494,10 @@ export interface ReactScheduleStateUpdateEvent extends BaseReactScheduleEvent {
 export interface ReactScheduleForceUpdateEvent extends BaseReactScheduleEvent {
     readonly type: "schedule-force-update";
 }
-export type SchedulingEvent = ReactScheduleRenderEvent | ReactScheduleStateUpdateEvent | ReactScheduleForceUpdateEvent;
+export type SchedulingEvent =
+    | ReactScheduleRenderEvent
+    | ReactScheduleStateUpdateEvent
+    | ReactScheduleForceUpdateEvent;
 
 export interface Snapshot {
     height: number;
@@ -529,7 +580,9 @@ export interface TimelineDataExport {
     componentMeasures: ReactComponentMeasure[];
     duration: number;
     flamechart: Flamechart;
-    internalModuleSourceToRanges: Array<[string, Array<[ErrorStackFrame, ErrorStackFrame]>]>;
+    internalModuleSourceToRanges: Array<
+        [string, Array<[ErrorStackFrame, ErrorStackFrame]>]
+    >;
     laneToLabelKeyValueArray: Array<[ReactLane, string]>;
     laneToReactMeasureKeyValueArray: Array<[ReactLane, ReactMeasure[]]>;
     nativeEvents: NativeEvent[];
@@ -554,7 +607,11 @@ export default class ProfilerStore extends EventEmitter<{
     isProfiling: [];
     profilingData: [];
 }> {
-    constructor(bridge: FrontendBridge, store: Store, defaultIsProfiling: boolean);
+    constructor(
+        bridge: FrontendBridge,
+        store: Store,
+        defaultIsProfiling: boolean,
+    );
 
     getCommitData(rootID: number, commitIndex: number): CommitDataFrontend;
 
@@ -602,7 +659,10 @@ export interface BooleanComponentFilter {
     isValid: boolean;
 }
 
-export type ComponentFilter = BooleanComponentFilter | ElementTypeComponentFilter | RegExpComponentFilter;
+export type ComponentFilter =
+    | BooleanComponentFilter
+    | ElementTypeComponentFilter
+    | RegExpComponentFilter;
 
 export interface BridgeProtocol {
     /** Version supported by the current frontend/backend. */
@@ -713,7 +773,10 @@ export class Store extends EventEmitter<{
 
     getElementsWithErrorsAndWarnings(): Array<{ id: number; index: number }>;
 
-    getErrorAndWarningCountForElementID(id: number): { errorCount: number; warningCount: number };
+    getErrorAndWarningCountForElementID(id: number): {
+        errorCount: number;
+        warningCount: number;
+    };
 
     getIndexOfElementID(id: number): number | null;
 
@@ -744,12 +807,18 @@ export class Store extends EventEmitter<{
      * This action should also override the saved filters too,
      * else reloading the frontend without reloading the backend would leave things out of sync.
      */
-    onBridgeOverrideComponentFilters: (componentFilters: ComponentFilter[]) => void;
+    onBridgeOverrideComponentFilters: (
+        componentFilters: ComponentFilter[],
+    ) => void;
 
     onBridgeShutdown: () => void;
 
-    onBackendStorageAPISupported: (isBackendStorageAPISupported: boolean) => void;
-    onBridgeSynchronousXHRSupported: (isSynchronousXHRSupported: boolean) => void;
+    onBackendStorageAPISupported: (
+        isBackendStorageAPISupported: boolean,
+    ) => void;
+    onBridgeSynchronousXHRSupported: (
+        isSynchronousXHRSupported: boolean,
+    ) => void;
     onBridgeUnsupportedRendererVersion: () => void;
     onBridgeBackendVersion: (backendVersion: string) => void;
     onBridgeProtocol: (bridgeProtocol: BridgeProtocol) => void;
@@ -780,7 +849,10 @@ export class Bridge<
      *  Listening directly to the wall isn't advised.
      */
     get wall(): Wall;
-    send<EventName extends keyof OutgoingEvents>(event: EventName, ...payload: OutgoingEvents[EventName]): void;
+    send<EventName extends keyof OutgoingEvents>(
+        event: EventName,
+        ...payload: OutgoingEvents[EventName]
+    ): void;
     shutdown(): void;
 
     /**
@@ -946,7 +1018,8 @@ export interface UpdateConsolePatchSettingsParams {
 export interface ViewAttributeSourceParams extends ElementAndRendererID {
     path: Array<string | number>;
 }
-export interface NativeStyleEditor_RenameAttributeParams extends ElementAndRendererID {
+export interface NativeStyleEditor_RenameAttributeParams
+    extends ElementAndRendererID {
     oldName: string;
     newName: string;
     value: string;
@@ -1008,7 +1081,9 @@ export interface FrontendEvents extends Record<string, unknown[]> {
     viewAttributeSource: [ViewAttributeSourceParams];
     viewElementSource: [ElementAndRendererID];
     NativeStyleEditor_measure: [ElementAndRendererID];
-    NativeStyleEditor_renameAttribute: [NativeStyleEditor_RenameAttributeParams];
+    NativeStyleEditor_renameAttribute: [
+        NativeStyleEditor_RenameAttributeParams,
+    ];
     NativeStyleEditor_setValue: [NativeStyleEditor_SetValueParams];
     overrideContext: [OverrideValue];
     overrideHookState: [OverrideHookState];
@@ -1022,12 +1097,20 @@ export interface PathMatch {
     id: number;
     isFullMatch: boolean;
 }
-export type FindNativeNodesForFiberID = (id: number) => any[] | null | undefined;
+export type FindNativeNodesForFiberID = (
+    id: number,
+) => any[] | null | undefined;
 export type Type = "props" | "hooks" | "state" | "context";
 
 export type NativeType = unknown;
-export type GetFiberIDForNative = (component: NativeType, findNearestUnfilteredAncestor?: boolean) => number | null;
-export type GetDisplayNameForFiberID = (id: number, findNearestUnfilteredAncestor?: boolean) => string | null;
+export type GetFiberIDForNative = (
+    component: NativeType,
+    findNearestUnfilteredAncestor?: boolean,
+) => number | null;
+export type GetDisplayNameForFiberID = (
+    id: number,
+    findNearestUnfilteredAncestor?: boolean,
+) => string | null;
 
 export interface InstanceAndStyle {
     instance: Record<string, unknown> | null;
@@ -1066,8 +1149,16 @@ export interface DevToolsProfilingHooks {
     // Fiber level methods:
     markComponentRenderStarted: (fiber: Fiber) => void;
     markComponentRenderStopped: () => void;
-    markComponentErrored: (fiber: Fiber, thrownValue: unknown, lanes: Lanes) => void;
-    markComponentSuspended: (fiber: Fiber, wakeable: PromiseLike<unknown>, lanes: Lanes) => void;
+    markComponentErrored: (
+        fiber: Fiber,
+        thrownValue: unknown,
+        lanes: Lanes,
+    ) => void;
+    markComponentSuspended: (
+        fiber: Fiber,
+        wakeable: PromiseLike<unknown>,
+        lanes: Lanes,
+    ) => void;
     markComponentLayoutEffectMountStarted: (fiber: Fiber) => void;
     markComponentLayoutEffectMountStopped: () => void;
     markComponentLayoutEffectUnmountStarted: (fiber: Fiber) => void;
@@ -1085,42 +1176,68 @@ export interface ReactRenderer {
     bundleType: BundleType;
     /** 16.9+ */
     overrideHookState?:
-        | ((fiber: Record<string, unknown>, id: number, path: Array<string | number>, value: unknown) => void)
+        | ((
+              fiber: Record<string, unknown>,
+              id: number,
+              path: Array<string | number>,
+              value: unknown,
+          ) => void)
         | null
         | undefined;
     /** 17+ */
     overrideHookStateDeletePath?:
-        | ((fiber: Record<string, unknown>, id: number, path: Array<string | number>) => void)
+        | ((
+              fiber: Record<string, unknown>,
+              id: number,
+              path: Array<string | number>,
+          ) => void)
         | null
         | undefined;
     /** 17+ */
     overrideHookStateRenamePath?:
         | ((
-            fiber: Record<string, unknown>,
-            id: number,
-            oldPath: Array<string | number>,
-            newPath: Array<string | number>,
-        ) => void)
+              fiber: Record<string, unknown>,
+              id: number,
+              oldPath: Array<string | number>,
+              newPath: Array<string | number>,
+          ) => void)
         | null
         | undefined;
     /** 16.7+ */
     overrideProps?:
-        | ((fiber: Record<string, unknown>, path: Array<string | number>, value: unknown) => void)
+        | ((
+              fiber: Record<string, unknown>,
+              path: Array<string | number>,
+              value: unknown,
+          ) => void)
         | null
         | undefined;
     /** 17+ */
     overridePropsDeletePath?:
-        | ((fiber: Record<string, unknown>, path: Array<string | number>) => void)
+        | ((
+              fiber: Record<string, unknown>,
+              path: Array<string | number>,
+          ) => void)
         | null
         | undefined;
     /** 17+ */
     overridePropsRenamePath?:
-        | ((fiber: Record<string, unknown>, oldPath: Array<string | number>, newPath: Array<string | number>) => void)
+        | ((
+              fiber: Record<string, unknown>,
+              oldPath: Array<string | number>,
+              newPath: Array<string | number>,
+          ) => void)
         | null
         | undefined;
     /** 16.9+ */
-    scheduleUpdate?: ((fiber: Record<string, unknown>) => void) | null | undefined;
-    setSuspenseHandler?: ((shouldSuspend: (fiber: Record<string, unknown>) => boolean) => void) | null | undefined;
+    scheduleUpdate?:
+        | ((fiber: Record<string, unknown>) => void)
+        | null
+        | undefined;
+    setSuspenseHandler?:
+        | ((shouldSuspend: (fiber: Record<string, unknown>) => boolean) => void)
+        | null
+        | undefined;
     /** Only injected by React v16.8+ in order to support hooks inspection. */
     currentDispatcherRef?: CurrentDispatcherRef | undefined;
     /**
@@ -1136,7 +1253,11 @@ export interface ReactRenderer {
     Mount?: unknown | undefined;
     /** Only injected by React v17.0.3+ in DEV mode */
     setErrorHandler?:
-        | ((shouldError: (fiber: Record<string, unknown>) => boolean | null | undefined) => void)
+        | ((
+              shouldError: (
+                  fiber: Record<string, unknown>,
+              ) => boolean | null | undefined,
+          ) => void)
         | null
         | undefined;
     /**
@@ -1146,7 +1267,9 @@ export interface ReactRenderer {
     /**
      * 18.0+
      */
-    injectProfilingHooks?: ((profilingHooks: DevToolsProfilingHooks) => void) | undefined;
+    injectProfilingHooks?:
+        | ((profilingHooks: DevToolsProfilingHooks) => void)
+        | undefined;
     getLaneLabelMap?: (() => Map<number, string> | null) | undefined;
     setRefreshHandler: (fn: AnyFn) => void;
 }
@@ -1157,7 +1280,12 @@ export interface RendererInterface {
     clearErrorsForFiberID: (id: number) => void;
     clearWarningsForFiberID: (id: number) => void;
     copyElementPath: (id: number, path: Array<string | number>) => void;
-    deletePath: (type: Type, id: number, hookID: number | null | undefined, path: Array<string | number>) => void;
+    deletePath: (
+        type: Type,
+        id: number,
+        hookID: number | null | undefined,
+        path: Array<string | number>,
+    ) => void;
     findNativeNodesForFiberID: FindNativeNodesForFiberID;
     flushInitialOperations: () => void;
     getBestMatchForTrackedPath: () => PathMatch | null;
@@ -1168,7 +1296,10 @@ export interface RendererInterface {
     getProfilingData(): ProfilingDataBackend;
     getOwnersList: (id: number) => SerializedElement[] | null;
     getPathForElement: (id: number) => PathFrame[] | null;
-    handleCommitFiberRoot: (fiber: Record<string, unknown>, commitPriority?: number) => void;
+    handleCommitFiberRoot: (
+        fiber: Record<string, unknown>,
+        commitPriority?: number,
+    ) => void;
     handleCommitFiberUnmount: (fiber: Record<string, unknown>) => void;
     handlePostCommitFiberRoot: (fiber: Record<string, unknown>) => void;
     inspectElement: (
@@ -1188,7 +1319,10 @@ export interface RendererInterface {
         value: unknown,
     ) => void;
     patchConsoleForStrictMode: () => void;
-    prepareViewAttributeSource: (id: number, path: Array<string | number>) => void;
+    prepareViewAttributeSource: (
+        id: number,
+        path: Array<string | number>,
+    ) => void;
     prepareViewElementSource: (id: number) => void;
     renamePath: (
         type: Type,
@@ -1202,12 +1336,18 @@ export interface RendererInterface {
     setTrackedPath: (path: PathFrame[] | null) => void;
     startProfiling: (recordChangeDescriptions: boolean) => void;
     stopProfiling: () => void;
-    storeAsGlobal: (id: number, path: Array<string | number>, count: number) => void;
+    storeAsGlobal: (
+        id: number,
+        path: Array<string | number>,
+        count: number,
+    ) => void;
     unpatchConsoleForStrictMode: () => void;
     /** Timeline profiler interface */
     updateComponentFilters: (componentFilters: ComponentFilter[]) => void;
 }
-export type ResolveNativeStyle = (stylesheetID: unknown) => Record<string, unknown> | null | undefined;
+export type ResolveNativeStyle = (
+    stylesheetID: unknown,
+) => Record<string, unknown> | null | undefined;
 export type ListenerHandler = (data: unknown) => void;
 
 export type HookEvents = keyof HookEventPayload;
@@ -1275,7 +1415,10 @@ export interface DevToolsHook {
     inject: (renderer: ReactRenderer) => number | null;
     on<EV extends HookEvents>(event: EV, handler: HookEventListener<EV>): void;
     off<EV extends HookEvents>(event: EV, handler: HookEventListener<EV>): void;
-    sub<EV extends HookEvents>(event: EV, handler: HookEventListener<EV>): () => void;
+    sub<EV extends HookEvents>(
+        event: EV,
+        handler: HookEventListener<EV>,
+    ): () => void;
     reactDevtoolsAgent?: Record<string, unknown> | null | undefined;
     /**
      * Used by react-native-web and Flipper/Inspector
@@ -1284,7 +1427,10 @@ export interface DevToolsHook {
     nativeStyleEditorValidAttributes?: readonly string[] | undefined;
     /** React uses these methods. */
     checkDCE: (fn: AnyFn) => void;
-    onCommitFiberUnmount: (rendererID: RendererID, fiber: Record<string, unknown>) => void;
+    onCommitFiberUnmount: (
+        rendererID: RendererID,
+        fiber: Record<string, unknown>,
+    ) => void;
     onCommitFiberRoot: (
         rendererID: RendererID,
         /** Added in v16.9 to support Profiler priority labels */
@@ -1298,7 +1444,9 @@ export interface DevToolsHook {
     registerInternalModuleStart: (moduleStartError: Error) => void;
     registerInternalModuleStop: (moduleStopError: Error) => void;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    dangerous_setTargetConsoleForTesting?: (fakeConsole: Record<string, unknown>) => void | undefined;
+    dangerous_setTargetConsoleForTesting?: (
+        fakeConsole: Record<string, unknown>,
+    ) => void | undefined;
 }
 
 declare global {

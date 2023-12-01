@@ -1,5 +1,14 @@
-import type { ClientOptions, PickerFileMetadata, PickerOptions } from "filestack-js";
-import { client, PickerDropPane, PickerInline, PickerOverlay } from "filestack-react";
+import type {
+    ClientOptions,
+    PickerFileMetadata,
+    PickerOptions,
+} from "filestack-js";
+import {
+    client,
+    PickerDropPane,
+    PickerInline,
+    PickerOverlay,
+} from "filestack-react";
 import * as React from "react";
 
 const mockClientOptions: ClientOptions = {};

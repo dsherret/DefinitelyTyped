@@ -4,7 +4,7 @@ $("select").uniform();
 $("select, input, a.button, button").uniform();
 // Avoid styling some elements
 $("select").not(".skip_these").uniform(); // Method 1
-$("select[class!=\"skip_these\"]").uniform(); // Method 2
+$('select[class!="skip_these"]').uniform(); // Method 2
 
 $("select").uniform({
     fileDefaultText: "Keine Datei ausgewhlt",
@@ -50,7 +50,7 @@ $(":radio").uniform({ radioClass: "myRadioClass" });
 
 $("input[type='reset']").uniform({ resetDefaultHtml: "Clear" });
 
-$("select").uniform({ resetSelector: "input[type=\"reset\"]" });
+$("select").uniform({ resetSelector: 'input[type="reset"]' });
 
 $("select").uniform({ selectClass: "mySelectClass" });
 

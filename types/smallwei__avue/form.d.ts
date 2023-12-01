@@ -6,7 +6,10 @@ export type AvueFormDefaults = Record<string, AvueFormColumn>;
 //   [key in K]?: AvueFormColumn<T>;
 // };
 
-export interface AvueFormColumn<T = any, K = keyof T extends string ? keyof T : string> {
+export interface AvueFormColumn<
+    T = any,
+    K = keyof T extends string ? keyof T : string,
+> {
     /** 标题名称 */
     label?: string;
     /** 列字段(唯一不重复) */
@@ -98,13 +101,37 @@ export interface AvueFormColumn<T = any, K = keyof T extends string ? keyof T : 
     /** 传递给组件的参数 */
     params?: object;
     /** 点击事件 */
-    click?: (args: { column: Array<AvueFormColumn<T>>; row: T; index: number; label: any; value: any }) => void;
+    click?: (args: {
+        column: Array<AvueFormColumn<T>>;
+        row: T;
+        index: number;
+        label: any;
+        value: any;
+    }) => void;
     /** 值改变事件 */
-    change?: (args: { column: Array<AvueFormColumn<T>>; row: T; index: number; label: any; value: any }) => void;
+    change?: (args: {
+        column: Array<AvueFormColumn<T>>;
+        row: T;
+        index: number;
+        label: any;
+        value: any;
+    }) => void;
     /** 聚焦事件 */
-    focus?: (args: { column: Array<AvueFormColumn<T>>; row: T; index: number; label: any; value: any }) => void;
+    focus?: (args: {
+        column: Array<AvueFormColumn<T>>;
+        row: T;
+        index: number;
+        label: any;
+        value: any;
+    }) => void;
     /** 失焦事件 */
-    blur?: (args: { column: Array<AvueFormColumn<T>>; row: T; index: number; label: any; value: any }) => void;
+    blur?: (args: {
+        column: Array<AvueFormColumn<T>>;
+        row: T;
+        index: number;
+        label: any;
+        value: any;
+    }) => void;
     /** 其它属性根据type查看对应的文档 */
     [x: string]: any;
 }
@@ -184,16 +211,33 @@ export interface AvueFormProps<T = any> {
         column: AvueFormColumn<T>,
     ) => void;
     /** upload组件上传后的回调,done用于结束操作，loading用于中断操作 */
-    "upload-after"?: (res: any, done: () => void, loading: () => void, column: AvueFormColumn<T>) => void;
+    "upload-after"?: (
+        res: any,
+        done: () => void,
+        loading: () => void,
+        column: AvueFormColumn<T>,
+    ) => void;
     /** upload组件删除文件之前的钩子，参数为上传的文件和文件列表，若返回 false 或者返回 Promise 且被 reject，则停止删除 */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    "upload-delete"?: (file: UploadFile, column: AvueFormColumn<T>) => boolean | Promise<any> | void;
+    "upload-delete"?: (
+        file: UploadFile,
+        column: AvueFormColumn<T>,
+    ) => boolean | Promise<any> | void;
     /** upload组件查看回调 */
-    "upload-preview"?: (file: UploadFile, column: AvueFormColumn<T>, done: () => void) => void;
+    "upload-preview"?: (
+        file: UploadFile,
+        column: AvueFormColumn<T>,
+        done: () => void,
+    ) => void;
     /** upload组件上传失败错误回调 */
     "upload-error"?: (error: Error, column: AvueFormColumn<T>) => void;
     /** upload组件上传超过长度限制回调 */
-    "upload-exceed"?: (limit: number, files: File[], fileList: UploadUserFile[], column: AvueFormColumn<T>) => void;
+    "upload-exceed"?: (
+        limit: number,
+        files: File[],
+        fileList: UploadUserFile[],
+        column: AvueFormColumn<T>,
+    ) => void;
     /** 表单提交回调事件 */
     onSubmit?: (form: T, done: () => void) => void;
     /** 表单重置回调事件 */
@@ -213,7 +257,9 @@ export interface AvueFormMethods {
     /** 获取prop的ref对象 */
     getPropRef: (prop: string) => void;
     /** 对整个表单进行校验的方法，参数为一个回调函数。该回调函数会在校验结束后被调用，并传入两个参数：是否校验成功和未通过校验的字段。若不传入回调函数，则会返回一个 promise */
-    validate: (callback?: (valid: boolean, done: () => void, msg: string) => void) => Promise<boolean>;
+    validate: (
+        callback?: (valid: boolean, done: () => void, msg: string) => void,
+    ) => Promise<boolean>;
     /** 对部分表单字段进行校验的方法 */
     validateField: (props: string[]) => void;
     /** 对整个表单进行重置，将所有字段值重置为初始值并移除校验结果 */
@@ -248,7 +294,7 @@ export interface AvueFormSlots<T = any> {
     }) => VNode[];
 }
 
-export const AvueForm: new() => {
+export const AvueForm: new () => {
     $props: AvueFormProps;
     $slots: AvueFormSlots;
 };

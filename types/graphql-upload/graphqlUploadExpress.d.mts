@@ -6,4 +6,6 @@ export interface UploadOptions {
     maxFiles?: number | undefined;
 }
 
-export default function graphqlUploadExpress(uploadOptions?: UploadOptions): RequestHandler;
+export default function graphqlUploadExpress(
+    uploadOptions?: UploadOptions,
+): RequestHandler;

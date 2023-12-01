@@ -16,43 +16,63 @@ type CamelToKebab<S extends string> = S extends `${infer T}${infer U}`
 
 type PascalToKebab<S extends string> = CamelToKebab<Uncapitalize<S>>;
 
-type SnakeToKebab<S extends string> = S extends `${infer T}_${infer U}` ? `${T}-${SnakeToKebab<U>}` : S;
-
-type SpaceToKebab<S extends string> = S extends `${infer T}${Whitespace}${infer U}` ? `${T}-${SnakeToKebab<U>}` : S;
-
-type ContainWordSeparatorsToKebab<S extends string> = S extends `${infer T}-${infer U}` ? S
-    : S extends `${infer T}_${infer U}` ? SnakeToKebab<Lowercase<S>>
-    : SpaceToKebab<S>;
-
-type AnyCaseToKebab<S extends string> = S extends `${infer T}${WordSeparators}${infer U}`
-    ? ContainWordSeparatorsToKebab<S>
-    : S extends Uppercase<S> ? Lowercase<S>
-    : S extends Capitalize<S> ? PascalToKebab<S>
-    : CamelToKebab<S>;
-
-type KebabCase<S extends string | number | symbol> = S extends number ? `${S}`
-    : S extends symbol ? never
-    : S extends string ? AnyCaseToKebab<S>
+type SnakeToKebab<S extends string> = S extends `${infer T}_${infer U}`
+    ? `${T}-${SnakeToKebab<U>}`
     : S;
+
+type SpaceToKebab<S extends string> =
+    S extends `${infer T}${Whitespace}${infer U}`
+        ? `${T}-${SnakeToKebab<U>}`
+        : S;
+
+type ContainWordSeparatorsToKebab<S extends string> =
+    S extends `${infer T}-${infer U}`
+        ? S
+        : S extends `${infer T}_${infer U}`
+          ? SnakeToKebab<Lowercase<S>>
+          : SpaceToKebab<S>;
+
+type AnyCaseToKebab<S extends string> =
+    S extends `${infer T}${WordSeparators}${infer U}`
+        ? ContainWordSeparatorsToKebab<S>
+        : S extends Uppercase<S>
+          ? Lowercase<S>
+          : S extends Capitalize<S>
+            ? PascalToKebab<S>
+            : CamelToKebab<S>;
+
+type KebabCase<S extends string | number | symbol> = S extends number
+    ? `${S}`
+    : S extends symbol
+      ? never
+      : S extends string
+        ? AnyCaseToKebab<S>
+        : S;
 
 declare namespace kebabcaseKeys {
     type KebabCasedProperties<
         T extends ObjectUnion | ReadonlyArray<Record<string, unknown>>,
         Deep extends boolean = false,
         Exclude extends ReadonlyArray<string | RegExp> = [],
-    > = T extends ReadonlyArray<Record<string, unknown>> ? {
-            [Key in keyof T]: KebabCasedProperties<T[Key], Deep, Exclude>;
-        }
-        : T extends ObjectUnion ? {
-                [Key in keyof T as Array<Includes<Exclude, Key>> extends Array<true> ? Key : KebabCase<Key>]:
-                    T[Key] extends
-                        | ObjectUnion
-                        | ReadonlyArray<Record<string, unknown>>
-                        ? Deep[] extends Array<true> ? KebabCasedProperties<T[Key], Deep, Exclude>
+    > = T extends ReadonlyArray<Record<string, unknown>>
+        ? {
+              [Key in keyof T]: KebabCasedProperties<T[Key], Deep, Exclude>;
+          }
+        : T extends ObjectUnion
+          ? {
+                [Key in keyof T as Array<
+                    Includes<Exclude, Key>
+                > extends Array<true>
+                    ? Key
+                    : KebabCase<Key>]: T[Key] extends
+                    | ObjectUnion
+                    | ReadonlyArray<Record<string, unknown>>
+                    ? Deep[] extends Array<true>
+                        ? KebabCasedProperties<T[Key], Deep, Exclude>
                         : T[Key]
-                        : T[Key];
+                    : T[Key];
             }
-        : T;
+          : T;
 
     interface Options {
         /**
@@ -119,7 +139,11 @@ type Whitespace =
     | "\u{3000}"
     | "\u{FEFF}";
 type IsEqual<A, B> = A[] extends B[] ? (B[] extends A[] ? true : false) : false;
-type Includes<Value extends readonly any[], Item> = Value extends readonly [Value[0], ...infer rest]
-    ? IsEqual<Value[0], Item> extends true ? true
-    : Includes<rest, Item>
+type Includes<Value extends readonly any[], Item> = Value extends readonly [
+    Value[0],
+    ...infer rest,
+]
+    ? IsEqual<Value[0], Item> extends true
+        ? true
+        : Includes<rest, Item>
     : false;

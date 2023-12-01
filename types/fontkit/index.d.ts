@@ -244,7 +244,14 @@ export interface Path {
     toSVG(): string;
 
     /** Transforms the path by the given matrix */
-    transform(m0: number, m1: number, m2: number, m3: number, m4: number, m5: number): this;
+    transform(
+        m0: number,
+        m1: number,
+        m2: number,
+        m3: number,
+        m4: number,
+        m5: number,
+    ): this;
 
     /** Translates the path by the given offset */
     translate(x: number, y: number): this;
@@ -257,7 +264,12 @@ export interface Path {
 }
 
 export interface PathCommand {
-    command: "moveTo" | "lineTo" | "quadraticCurveTo" | "bezierCurveTo" | "closePath";
+    command:
+        | "moveTo"
+        | "lineTo"
+        | "quadraticCurveTo"
+        | "bezierCurveTo"
+        | "closePath";
     args: number[];
 }
 

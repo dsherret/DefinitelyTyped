@@ -13,16 +13,11 @@ historyApiFallback({
 });
 
 historyApiFallback({
-    exclusions: [
-        "/api/*",
-        "/health",
-    ],
+    exclusions: ["/api/*", "/health"],
 });
 
 historyApiFallback({
-    rewrites: [
-        { from: /\/soccer/, to: "/soccer.html" },
-    ],
+    rewrites: [{ from: /\/soccer/, to: "/soccer.html" }],
 });
 
 historyApiFallback({

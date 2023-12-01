@@ -18,15 +18,24 @@ declare namespace ValidatorOptions {
 }
 
 declare namespace Validator {
-    type ValidateFn = (value: any, onError: (message: String, childName: String, childValie: any) => void) => void;
+    type ValidateFn = (
+        value: any,
+        onError: (message: String, childName: String, childValie: any) => void,
+    ) => void;
 
     interface Validatable {
         validate: ValidateFn;
     }
 
     interface IsObjectValidator extends Validatable {
-        withRequired: (name: String, validator: Validatable) => IsObjectValidator;
-        withOptional: (name: String, validator: Validatable) => IsObjectValidator;
+        withRequired: (
+            name: String,
+            validator: Validatable,
+        ) => IsObjectValidator;
+        withOptional: (
+            name: String,
+            validator: Validatable,
+        ) => IsObjectValidator;
         withCustom: (customValidator: ValidateFn) => IsObjectValidator;
         validate: ValidateFn;
     }
@@ -38,19 +47,30 @@ declare namespace Validator {
     function expressQuery(validator: Validatable): any;
     function queryValidator(validator: Validatable): any;
 
-    function run(validator: Validatable, value: any, callback: (errorCount: Number, errors: any[]) => void): void;
+    function run(
+        validator: Validatable,
+        value: any,
+        callback: (errorCount: Number, errors: any[]) => void,
+    ): void;
 
     function isObject(): IsObjectValidator;
     function isString(options?: ValidatorOptions.IsStringOptions): Validatable;
-    function isStringOrNull(options?: ValidatorOptions.IsStringOptions): Validatable;
+    function isStringOrNull(
+        options?: ValidatorOptions.IsStringOptions,
+    ): Validatable;
     function isBoolean(): Validatable;
     function isNumber(options?: ValidatorOptions.IsNumberOptions): Validatable;
     function isInteger(options?: ValidatorOptions.IsNumberOptions): Validatable;
     function isDate(options?: ValidatorOptions.IsDateOptions): Validatable;
     function isIsoDate(options?: ValidatorOptions.IsDateOptions): Validatable;
-    function isIsoDateTime(options?: ValidatorOptions.IsDateOptions): Validatable;
+    function isIsoDateTime(
+        options?: ValidatorOptions.IsDateOptions,
+    ): Validatable;
 
-    function isArray(validator?: Validatable, options?: ValidatorOptions.Options): Validatable;
+    function isArray(
+        validator?: Validatable,
+        options?: ValidatorOptions.Options,
+    ): Validatable;
     function isAnyObject(): IsObjectValidator;
 }
 

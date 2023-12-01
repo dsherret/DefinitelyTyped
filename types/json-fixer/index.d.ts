@@ -10,6 +10,9 @@ interface CheckJsonResult {
     changed: boolean;
 }
 
-declare function checkJson(data: string, options?: FixJsonOptions | boolean): CheckJsonResult;
+declare function checkJson(
+    data: string,
+    options?: FixJsonOptions | boolean,
+): CheckJsonResult;
 
 export = checkJson;

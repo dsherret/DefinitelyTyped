@@ -14,7 +14,9 @@ declare namespace stoppable {
          * auto-register a `'close'` event. The first agrument is an error, and
          * the second argument indicates whether it stopped gracefully.
          */
-        stop(callback?: (e: Error | undefined, gracefully: boolean) => any): void;
+        stop(
+            callback?: (e: Error | undefined, gracefully: boolean) => any,
+        ): void;
     }
 }
 
@@ -34,6 +36,9 @@ declare namespace stoppable {
  * const server = stoppable(http.createServer((req, res) => {}));
  * server.stop();
  */
-declare function stoppable<T extends http.Server | https.Server>(server: T, grace?: number): T & stoppable.WithStop;
+declare function stoppable<T extends http.Server | https.Server>(
+    server: T,
+    grace?: number,
+): T & stoppable.WithStop;
 
 export = stoppable;

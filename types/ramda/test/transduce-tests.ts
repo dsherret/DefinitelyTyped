@@ -1,6 +1,6 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     const numbers = [1, 2, 3, 4];
     // $ExpectType (xs: readonly number[]) => number[]
     const transducer = R.compose(R.map(R.add(1)), R.take(2)<number>);
@@ -22,7 +22,12 @@ import * as R from "ramda";
     // @ts-expect-error
     R.transduce(transducer, (acc: string, n: number) => acc + n, 0, [1, 2, 3]);
     // @ts-expect-error
-    R.transduce(transducer, (acc: number, n: string) => acc + Number(n), 0, [1, 2, 3]);
+    R.transduce(
+        transducer,
+        (acc: number, n: string) => acc + Number(n),
+        0,
+        [1, 2, 3],
+    );
 
     // $ExpectType (a: string) => string
     R.compose((a: string) => a + "", R.take(2) as (a: string) => string);
@@ -30,5 +35,10 @@ import * as R from "ramda";
     const isOdd = (x: number) => x % 2 !== 0;
     const firstOddTransducer = R.compose(R.filter(isOdd), R.take(1)<number>);
     // $ExpectType number[]
-    R.transduce(firstOddTransducer, R.flip<number, readonly number[], number[]>(R.append), [], R.range(0, 100)); // => [1]
-});
+    R.transduce(
+        firstOddTransducer,
+        R.flip<number, readonly number[], number[]>(R.append),
+        [],
+        R.range(0, 100),
+    ); // => [1]
+};

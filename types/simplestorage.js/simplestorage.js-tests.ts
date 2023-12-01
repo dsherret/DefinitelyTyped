@@ -5,10 +5,23 @@ simpleStorage.status; // $ExpectType string | number | undefined
 simpleStorage.canUse(); // $ExpectType boolean
 const simpleStorageTest1: boolean | Error = simpleStorage.set("string", 7);
 const simpleStorageTest2: boolean | Error = simpleStorage.set("string", 7, {});
-const simpleStorageTest3: boolean | Error = simpleStorage.set("string", 7, { TTL: 7 });
-const simpleStorageTest4: boolean | Error = simpleStorage.set("string", undefined);
-const simpleStorageTest5: boolean | Error = simpleStorage.set("string", undefined, {});
-const simpleStorageTest6: boolean | Error = simpleStorage.set("string", undefined, { TTL: 7 });
+const simpleStorageTest3: boolean | Error = simpleStorage.set("string", 7, {
+    TTL: 7,
+});
+const simpleStorageTest4: boolean | Error = simpleStorage.set(
+    "string",
+    undefined,
+);
+const simpleStorageTest5: boolean | Error = simpleStorage.set(
+    "string",
+    undefined,
+    {},
+);
+const simpleStorageTest6: boolean | Error = simpleStorage.set(
+    "string",
+    undefined,
+    { TTL: 7 },
+);
 const getTest: any = simpleStorage.get("string");
 const deleteKeyTest: boolean | Error = simpleStorage.deleteKey("string");
 const setTTLTest: boolean | Error = simpleStorage.setTTL("string", 7);

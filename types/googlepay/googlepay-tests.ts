@@ -7,24 +7,25 @@ const allowedCardNetworks = new Array<google.payments.api.CardNetwork>(
     "INTERAC",
 );
 
-const allowedPaymentMethods = new Array<google.payments.api.PaymentMethodSpecification>({
-    type: "CARD",
-    parameters: {
-        allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
-        allowedCardNetworks,
-        billingAddressRequired: true,
-        billingAddressParameters: {
-            format: "MIN",
-        },
-    },
-    tokenizationSpecification: {
-        type: "PAYMENT_GATEWAY",
+const allowedPaymentMethods =
+    new Array<google.payments.api.PaymentMethodSpecification>({
+        type: "CARD",
         parameters: {
-            gateway: "example",
-            gatewayMerchantId: "abc123",
+            allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+            allowedCardNetworks,
+            billingAddressRequired: true,
+            billingAddressParameters: {
+                format: "MIN",
+            },
         },
-    },
-});
+        tokenizationSpecification: {
+            type: "PAYMENT_GATEWAY",
+            parameters: {
+                gateway: "example",
+                gatewayMerchantId: "abc123",
+            },
+        },
+    });
 
 // @ts-expect-error
 allowedPaymentMethods[0].tokenizationSpecification = {
@@ -40,25 +41,33 @@ allowedPaymentMethods[0].tokenizationSpecification = {
     },
 };
 
-const shippingAddressParametersEmptyObjectIsValid: google.payments.api.ShippingAddressParameters = {};
+const shippingAddressParametersEmptyObjectIsValid: google.payments.api.ShippingAddressParameters =
+    {};
 
 const getGooglePaymentsClient = (env?: google.payments.api.Environment) => {
     return new google.payments.api.PaymentsClient({
         environment: env,
         paymentDataCallbacks: {
-            onPaymentAuthorized: (paymentData) => ({ transactionState: "SUCCESS" }),
+            onPaymentAuthorized: (paymentData) => ({
+                transactionState: "SUCCESS",
+            }),
             onPaymentDataChanged: (paymentData) => {
                 const validCodes = ["abc"];
                 if (paymentData.callbackTrigger === "OFFER") {
                     if (
-                        paymentData.offerData
-                        && paymentData.offerData.redemptionCodes
-                            .every(code => validCodes.indexOf(code) === -1)
+                        paymentData.offerData &&
+                        paymentData.offerData.redemptionCodes.every(
+                            (code) => validCodes.indexOf(code) === -1,
+                        )
                     ) {
                         return {
                             newOfferInfo: {
-                                offers: paymentData.offerData.redemptionCodes
-                                    .map(code => ({ redemptionCode: code, description: `Save with ${code}` })),
+                                offers: paymentData.offerData.redemptionCodes.map(
+                                    (code) => ({
+                                        redemptionCode: code,
+                                        description: `Save with ${code}`,
+                                    }),
+                                ),
                             },
                         };
                     }
@@ -79,38 +88,45 @@ const getGooglePaymentsClient = (env?: google.payments.api.Environment) => {
 function onGooglePayLoaded() {
     const client = getGooglePaymentsClient();
 
-    client.isReadyToPay({
-        apiVersion: 2,
-        apiVersionMinor: 0,
-        allowedPaymentMethods: [{
-            type: "CARD",
-            parameters: {
-                allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
-                allowedCardNetworks,
-            },
-        }],
-    }).then(response => {
-        if (response.result) {
-            addGooglePayButton();
-            prefetchGooglePaymentData();
-        }
-    }).catch(err => {
-        console.error(err);
-    });
+    client
+        .isReadyToPay({
+            apiVersion: 2,
+            apiVersionMinor: 0,
+            allowedPaymentMethods: [
+                {
+                    type: "CARD",
+                    parameters: {
+                        allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+                        allowedCardNetworks,
+                    },
+                },
+            ],
+        })
+        .then((response) => {
+            if (response.result) {
+                addGooglePayButton();
+                prefetchGooglePaymentData();
+            }
+        })
+        .catch((err) => {
+            console.error(err);
+        });
 }
 
 function addGooglePayButton() {
     const buttonOptions: google.payments.api.ButtonOptions = {
         onClick: onGooglePaymentButtonClick,
         buttonColor: "black",
-        allowedPaymentMethods: [{
-            type: "CARD",
-            parameters: {
-                allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
-                allowedCardNetworks,
-                cvcRequired: false,
+        allowedPaymentMethods: [
+            {
+                type: "CARD",
+                parameters: {
+                    allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+                    allowedCardNetworks,
+                    cvcRequired: false,
+                },
             },
-        }],
+        ],
     };
 
     // @ts-expect-error
@@ -171,16 +187,19 @@ function getGooglePaymentDataConfiguration(): google.payments.api.PaymentDataReq
             currencyCode: "USD",
             countryCode: "US",
             transactionId: "0123456789",
-            displayItems: [{
-                label: "Subtotal",
-                type: "SUBTOTAL",
-                price: "11.00",
-            }, {
-                label: "Shipping",
-                type: "LINE_ITEM",
-                price: "0",
-                status: "PENDING",
-            }],
+            displayItems: [
+                {
+                    label: "Subtotal",
+                    type: "SUBTOTAL",
+                    price: "11.00",
+                },
+                {
+                    label: "Shipping",
+                    type: "LINE_ITEM",
+                    price: "0",
+                    status: "PENDING",
+                },
+            ],
             totalPriceLabel: "Total",
             checkoutOption: "COMPLETE_IMMEDIATE_PURCHASE",
         },
@@ -204,7 +223,8 @@ function onGooglePaymentButtonClick() {
     // @ts-expect-error
     request.callbackIntents = ["OFFER_INFO"];
 
-    client.loadPaymentData(request)
-        .then(data => console.log(data))
-        .catch(err => console.error(err));
+    client
+        .loadPaymentData(request)
+        .then((data) => console.log(data))
+        .catch((err) => console.error(err));
 }

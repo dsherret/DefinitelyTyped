@@ -5,8 +5,8 @@ import pull = require("pull-stream");
  ********/
 
 let source: pull.Source<string> = (end, cb) => {};
-let through: pull.Through<string, string> = source => source;
-let sink: pull.Sink<string> = source => {};
+let through: pull.Through<string, string> = (source) => source;
+let sink: pull.Sink<string> = (source) => {};
 
 const duplexSource = {
     source,
@@ -18,7 +18,7 @@ const duplexSink = {
 
 const duplexThrough: pull.DuplexThrough<string, string> = {
     source: (end, cb) => {},
-    sink: source => source,
+    sink: (source) => source,
 };
 
 function voidFunc(): void {}
@@ -54,8 +54,24 @@ source = pull(source, duplexThrough, through, through);
 source = pull(duplexSource, duplexThrough, through, through);
 source = pull(source, duplexThrough, through, through, through, through);
 source = pull(duplexSource, duplexThrough, through, through, through, through);
-source = pull(source, duplexThrough, through, through, through, through, through);
-source = pull(duplexSource, duplexThrough, through, through, through, through, through);
+source = pull(
+    source,
+    duplexThrough,
+    through,
+    through,
+    through,
+    through,
+    through,
+);
+source = pull(
+    duplexSource,
+    duplexThrough,
+    through,
+    through,
+    through,
+    through,
+    through,
+);
 
 // End with sink
 sink = pull(sink);
@@ -74,7 +90,15 @@ sink = pull(through, duplexThrough, through, through, duplexSink);
 sink = pull(through, duplexThrough, through, through, through, sink);
 sink = pull(through, duplexThrough, through, through, through, duplexSink);
 sink = pull(through, duplexThrough, through, through, through, through, sink);
-sink = pull(through, duplexThrough, through, through, through, through, duplexSink);
+sink = pull(
+    through,
+    duplexThrough,
+    through,
+    through,
+    through,
+    through,
+    duplexSink,
+);
 
 // Through only
 through = pull(through);
@@ -88,15 +112,26 @@ through = pull(through, through, through, through, duplexThrough);
 through = pull(through, through, through, through, through, duplexThrough);
 
 const numberSource: pull.Source<number> = (end, cb) => {};
-const parseNumber: pull.Through<string, number> = source => numberSource;
-const numberSink: pull.Sink<number> = source => {};
+const parseNumber: pull.Through<string, number> = (source) => numberSource;
+const numberSink: pull.Sink<number> = (source) => {};
 
 // Strictly typed pipe
 nothing = pull(source, through, parseNumber, numberSink);
 
 // Long pipe
 let result: pull.Source<any> | pull.Sink<any> | pull.Through<any, any> | Void;
-result = pull(source, through, through, through, through, through, through, through, through, sink);
+result = pull(
+    source,
+    through,
+    through,
+    through,
+    through,
+    through,
+    through,
+    through,
+    through,
+    sink,
+);
 
 /***********
  * sources *
@@ -127,7 +162,7 @@ nothing = pull(pull.keys([]), sink);
 nothing = pull(pull.once("value"), sink);
 nothing = pull(pull.once(1), numberSink);
 nothing = pull(
-    pull.once(1, err => {
+    pull.once(1, (err) => {
         if (err instanceof Error) err.stack;
     }),
     numberSink,
@@ -137,7 +172,7 @@ nothing = pull(
 nothing = pull(pull.values(["hello", "world"]), sink);
 nothing = pull(pull.values([1, 2]), numberSink);
 nothing = pull(
-    pull.values([1, 2], err => {
+    pull.values([1, 2], (err) => {
         if (err instanceof Error) err.stack;
     }),
     numberSink,
@@ -159,14 +194,14 @@ nothing = pull(
 // filterNot
 nothing = pull(
     source,
-    pull.filterNot(data => data === "hello"),
+    pull.filterNot((data) => data === "hello"),
     sink,
 );
 
 // filter
 nothing = pull(
     source,
-    pull.filter(data => data === "hello"),
+    pull.filter((data) => data === "hello"),
     sink,
 );
 nothing = pull(
@@ -177,8 +212,11 @@ nothing = pull(
 
 // flatten
 const streamOfArrays: pull.Source<string[]> = (end, cb) => undefined;
-const streamOfStreams: pull.Source<Array<pull.Source<string>>> = (end, cb) => undefined;
-const throughToStreams: pull.Through<any, Array<pull.Source<string>>> = streamOfStreams => streamOfStreams;
+const streamOfStreams: pull.Source<Array<pull.Source<string>>> = (end, cb) =>
+    undefined;
+const throughToStreams: pull.Through<any, Array<pull.Source<string>>> = (
+    streamOfStreams,
+) => streamOfStreams;
 nothing = pull(streamOfArrays, pull.flatten(), sink);
 nothing = pull(streamOfStreams, pull.flatten(), sink);
 sink = pull(throughToStreams, pull.flatten(), sink);
@@ -195,12 +233,12 @@ nothing = pull(source, pull.nonUnique("length"), sink);
 nothing = pull(source, pull.take(1), sink);
 nothing = pull(
     source,
-    pull.take(s => !!s),
+    pull.take((s) => !!s),
     sink,
 );
 nothing = pull(
     source,
-    pull.take(s => !!s, { last: true }),
+    pull.take((s) => !!s, { last: true }),
     sink,
 );
 
@@ -209,7 +247,7 @@ nothing = pull(source, pull.through(), sink);
 nothing = pull(source, pull.through(Number), sink);
 nothing = pull(
     source,
-    pull.through(Number, err => {
+    pull.through(Number, (err) => {
         if (err instanceof Error) err.stack;
     }),
     sink,
@@ -246,7 +284,7 @@ nothing = pull(
 nothing = pull(source, pull.drain(Number));
 nothing = pull(
     source,
-    pull.drain(Number, err => {
+    pull.drain(Number, (err) => {
         if (err instanceof Error) err.stack;
     }),
 );
@@ -255,19 +293,19 @@ nothing = pull(
 nothing = pull(source, pull.find());
 nothing = pull(
     source,
-    pull.find(err => {
+    pull.find((err) => {
         if (err instanceof Error) err.stack;
     }),
 );
 nothing = pull(
     source,
-    pull.find(Boolean, err => {
+    pull.find(Boolean, (err) => {
         if (err instanceof Error) err.stack;
     }),
 );
 nothing = pull(
     source,
-    pull.find("length", err => {
+    pull.find("length", (err) => {
         if (err instanceof Error) err.stack;
     }),
 );
@@ -278,7 +316,7 @@ nothing = pull(source, pull.log());
 // onEnd
 nothing = pull(
     source,
-    pull.onEnd(err => {
+    pull.onEnd((err) => {
         if (err instanceof Error) err.stack;
     }),
 );

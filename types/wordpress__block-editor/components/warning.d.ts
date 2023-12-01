@@ -1,4 +1,9 @@
-import { ComponentType, MouseEventHandler, ReactFragment, ReactNode } from "react";
+import {
+    ComponentType,
+    MouseEventHandler,
+    ReactFragment,
+    ReactNode,
+} from "react";
 
 declare namespace Warning {
     interface Props {
@@ -7,9 +12,9 @@ declare namespace Warning {
         className?: string | undefined;
         secondaryActions?:
             | Array<{
-                title: ReactNode;
-                onClick: MouseEventHandler<HTMLButtonElement>;
-            }>
+                  title: ReactNode;
+                  onClick: MouseEventHandler<HTMLButtonElement>;
+              }>
             | undefined;
     }
 }

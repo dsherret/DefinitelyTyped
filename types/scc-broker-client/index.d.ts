@@ -5,11 +5,21 @@ import { Secret } from "jsonwebtoken";
 import ClusterBrokerClient = require("./cluster-broker-client");
 
 export interface Broker {
-    listener(eventName: "subscribe"): ConsumableStream<AGSimpleBroker.SubscribeData>;
-    listener(eventName: "unsubscribe"): ConsumableStream<AGSimpleBroker.UnsubscribeData>;
-    listener(eventName: "publish"): ConsumableStream<AGSimpleBroker.PublishData>;
+    listener(
+        eventName: "subscribe",
+    ): ConsumableStream<AGSimpleBroker.SubscribeData>;
+    listener(
+        eventName: "unsubscribe",
+    ): ConsumableStream<AGSimpleBroker.UnsubscribeData>;
+    listener(
+        eventName: "publish",
+    ): ConsumableStream<AGSimpleBroker.PublishData>;
 
-    invokePublish(channelName: string, data: any, suppressEvent: boolean): Promise<void>;
+    invokePublish(
+        channelName: string,
+        data: any,
+        suppressEvent: boolean,
+    ): Promise<void>;
 
     subscriptions(): string[];
 }
@@ -43,4 +53,7 @@ export interface SCCBrokerClientOptions {
     pubSubBatchDuration?: number | undefined;
 }
 
-export function attach(broker: Broker, options: SCCBrokerClientOptions): ClusterBrokerClient;
+export function attach(
+    broker: Broker,
+    options: SCCBrokerClientOptions,
+): ClusterBrokerClient;

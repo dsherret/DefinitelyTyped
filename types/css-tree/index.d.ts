@@ -30,7 +30,11 @@ export type FilterFn<TData, TResult extends TData, TContext = List<TData>> = (
     node: ListItem<TData>,
     list: List<TData>,
 ) => item is TResult;
-export type ReduceFn<TData, TValue, TContext = List<TData>> = (this: TContext, accum: TValue, data: TData) => TValue;
+export type ReduceFn<TData, TValue, TContext = List<TData>> = (
+    this: TContext,
+    accum: TValue,
+    data: TData,
+) => TValue;
 
 export class List<TData> {
     constructor();
@@ -43,29 +47,62 @@ export class List<TData> {
     createItem(data: TData): ListItem<TData>;
     toArray(): TData[];
     toJSON(): TData[];
-    forEach<TContext>(fn: IteratorFn<TData, void, TContext>, context: TContext): void;
+    forEach<TContext>(
+        fn: IteratorFn<TData, void, TContext>,
+        context: TContext,
+    ): void;
     forEach(fn: IteratorFn<TData, void>): void;
-    forEachRight<TContext>(fn: IteratorFn<TData, void, TContext>, context: TContext): void;
+    forEachRight<TContext>(
+        fn: IteratorFn<TData, void, TContext>,
+        context: TContext,
+    ): void;
     forEachRight(fn: IteratorFn<TData, void>): void;
-    nextUntil<TContext>(start: ListItem<TData>, fn: IteratorFn<TData, boolean, TContext>, context: TContext): void;
+    nextUntil<TContext>(
+        start: ListItem<TData>,
+        fn: IteratorFn<TData, boolean, TContext>,
+        context: TContext,
+    ): void;
     nextUntil(start: ListItem<TData>, fn: IteratorFn<TData, boolean>): void;
-    prevUntil<TContext>(start: ListItem<TData>, fn: IteratorFn<TData, boolean, TContext>, context: TContext): void;
+    prevUntil<TContext>(
+        start: ListItem<TData>,
+        fn: IteratorFn<TData, boolean, TContext>,
+        context: TContext,
+    ): void;
     prevUntil(start: ListItem<TData>, fn: IteratorFn<TData, boolean>): void;
-    reduce<TValue, TContext>(fn: ReduceFn<TData, TValue, TContext>, initialValue: TValue, context: TContext): TValue;
+    reduce<TValue, TContext>(
+        fn: ReduceFn<TData, TValue, TContext>,
+        initialValue: TValue,
+        context: TContext,
+    ): TValue;
     reduce<TValue>(fn: ReduceFn<TData, TValue>, initialValue: TValue): TValue;
     reduceRight<TValue, TContext>(
         fn: ReduceFn<TData, TValue, TContext>,
         initialValue: TValue,
         context: TContext,
     ): TValue;
-    reduceRight<TValue>(fn: ReduceFn<TData, TValue>, initialValue: TValue): TValue;
-    some<TContext>(fn: IteratorFn<TData, boolean, TContext>, context: TContext): boolean;
+    reduceRight<TValue>(
+        fn: ReduceFn<TData, TValue>,
+        initialValue: TValue,
+    ): TValue;
+    some<TContext>(
+        fn: IteratorFn<TData, boolean, TContext>,
+        context: TContext,
+    ): boolean;
     some(fn: IteratorFn<TData, boolean>): boolean;
-    map<TContext, TResult>(fn: IteratorFn<TData, TResult, TContext>, context: TContext): List<TResult>;
+    map<TContext, TResult>(
+        fn: IteratorFn<TData, TResult, TContext>,
+        context: TContext,
+    ): List<TResult>;
     map<TResult>(fn: IteratorFn<TData, TResult>): List<TResult>;
-    filter<TContext, TResult extends TData>(fn: FilterFn<TData, TResult, TContext>, context: TContext): List<TResult>;
+    filter<TContext, TResult extends TData>(
+        fn: FilterFn<TData, TResult, TContext>,
+        context: TContext,
+    ): List<TResult>;
     filter<TResult extends TData>(fn: FilterFn<TData, TResult>): List<TResult>;
-    filter<TContext>(fn: IteratorFn<TData, boolean, TContext>, context: TContext): List<TData>;
+    filter<TContext>(
+        fn: IteratorFn<TData, boolean, TContext>,
+        context: TContext,
+    ): List<TData>;
     filter(fn: IteratorFn<TData, boolean>): List<TData>;
     clear(): void;
     copy(): List<TData>;
@@ -83,7 +120,10 @@ export class List<TData> {
     prependList(list: List<TData>): List<TData>;
     appendList(list: List<TData>): List<TData>;
     insertList(list: List<TData>, before: ListItem<TData>): List<TData>;
-    replace(oldItem: ListItem<TData>, newItemOrList: List<TData> | ListItem<TData>): List<TData>;
+    replace(
+        oldItem: ListItem<TData>,
+        newItemOrList: List<TData> | ListItem<TData>,
+    ): List<TData>;
 }
 
 export interface CssNodeCommon {
@@ -499,7 +539,9 @@ export interface ParseOptions {
     atrule?: string | undefined;
     positions?: boolean | undefined;
     onComment?: (value: string, loc: CssLocation) => void;
-    onParseError?: ((error: SyntaxParseError, fallbackNode: CssNode) => void) | undefined;
+    onParseError?:
+        | ((error: SyntaxParseError, fallbackNode: CssNode) => void)
+        | undefined;
     filename?: string | undefined;
     offset?: number | undefined;
     line?: number | undefined;
@@ -603,7 +645,12 @@ export type WalkOptions =
 
 export function walk(ast: CssNode, options: EnterOrLeaveFn | WalkOptions): void;
 
-export type FindFn = (this: WalkContext, node: CssNode, item: ListItem<CssNode>, list: List<CssNode>) => boolean;
+export type FindFn = (
+    this: WalkContext,
+    node: CssNode,
+    item: ListItem<CssNode>,
+    list: List<CssNode>,
+) => boolean;
 
 export function find(ast: CssNode, fn: FindFn): CssNode | null;
 export function findLast(ast: CssNode, fn: FindFn): CssNode | null;
@@ -818,7 +865,11 @@ export interface DefinitionSyntax {
     /**
      * Walks definition syntax AST
      */
-    walk(node: DSNode, options: DSWalkEnterOrLeaveFn | DSWalkOptions, context?: any): void;
+    walk(
+        node: DSNode,
+        options: DSWalkEnterOrLeaveFn | DSWalkOptions,
+        context?: any,
+    ): void;
 
     /**
      * Wrapper for syntax errors
@@ -868,10 +919,20 @@ export interface LexerMatchResult {
 }
 
 export class Lexer {
-    matchAtruleDescriptor(atruleName: string, descriptorName: string, value: CssNode | string): LexerMatchResult;
-    matchAtrulePrelude(atruleName: string, prelude: CssNode | string): LexerMatchResult;
+    matchAtruleDescriptor(
+        atruleName: string,
+        descriptorName: string,
+        value: CssNode | string,
+    ): LexerMatchResult;
+    matchAtrulePrelude(
+        atruleName: string,
+        prelude: CssNode | string,
+    ): LexerMatchResult;
     matchDeclaration(node: CssNode): LexerMatchResult;
-    matchProperty(propertyName: string, value: CssNode | string): LexerMatchResult;
+    matchProperty(
+        propertyName: string,
+        value: CssNode | string,
+    ): LexerMatchResult;
     matchType(typeName: string, value: CssNode | string): LexerMatchResult;
     match(syntax: DSNode | string, value: CssNode | string): LexerMatchResult;
 }

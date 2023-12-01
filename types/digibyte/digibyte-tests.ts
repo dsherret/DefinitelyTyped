@@ -20,7 +20,9 @@ digibyte.crypto.ECDSA.verify(
     new digibyte.PublicKey("publicKey"),
 );
 
-const utxo: digibyte.Transaction.UnspentOutput[] = [new digibyte.Transaction.UnspentOutput({})];
+const utxo: digibyte.Transaction.UnspentOutput[] = [
+    new digibyte.Transaction.UnspentOutput({}),
+];
 
 new digibyte.Block(Buffer.from("123", "hex"));
 

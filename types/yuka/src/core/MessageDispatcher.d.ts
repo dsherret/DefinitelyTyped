@@ -34,7 +34,13 @@ export class MessageDispatcher {
      * @param delay - A time value in millisecond used to delay the message dispatching.
      * @param data - An object for custom data.
      */
-    dispatch(sender: GameEntity, receiver: GameEntity, message: string, delay: number, data: object): this;
+    dispatch(
+        sender: GameEntity,
+        receiver: GameEntity,
+        message: string,
+        delay: number,
+        data: object,
+    ): this;
 
     /**
      * Used to process delayed messages.

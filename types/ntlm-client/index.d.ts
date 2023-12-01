@@ -18,7 +18,10 @@ interface NtlmType2 {
     };
 }
 
-declare function createType1Message(workstation: string, domain: string): string;
+declare function createType1Message(
+    workstation: string,
+    domain: string,
+): string;
 declare function decodeType2Message(type1Message: string): NtlmType2;
 declare function createType3Message(
     type2Message: NtlmType2,

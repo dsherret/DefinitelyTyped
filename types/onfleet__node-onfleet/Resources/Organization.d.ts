@@ -1,6 +1,8 @@
 declare class Organization {
     get(): Promise<Organization.OnfleetOrganization>;
-    get(id: string): Promise<Organization.OnfleetOrganization | Organization.Delegatee>;
+    get(
+        id: string,
+    ): Promise<Organization.OnfleetOrganization | Organization.Delegatee>;
     insertTask(id: string, obj: { tasks: string[] }): Promise<any>;
 }
 

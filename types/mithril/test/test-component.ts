@@ -51,7 +51,11 @@ const comp2: Component<Comp2Attrs> = {
 m(comp2, { title: "", description: "" });
 
 // Correct use with lifecycle method
-m(comp2, { title: "", description: "", oncreate: v => `${v.attrs.title}\n${v.attrs.description}` });
+m(comp2, {
+    title: "",
+    description: "",
+    oncreate: (v) => `${v.attrs.title}\n${v.attrs.description}`,
+});
 
 // Properties missing
 // @ts-expect-error
@@ -152,7 +156,7 @@ const comp4: Comp4 = {
 const comp5: Component<Comp4Attrs, Comp4State> = {
     oninit({ state }) {
         state.count = 0;
-        state.add = num => {
+        state.add = (num) => {
             state.count += num;
         };
     },

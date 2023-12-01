@@ -29,16 +29,18 @@ export interface CheckoutCapture {
             | "square"
             | "test_gateway"
             | string;
-        card?: {
-            token?: string;
-            nonce?: string;
-        } | {
-            number: string;
-            expiry_month: string;
-            expiry_year: string;
-            cvc: string;
-            postal_zip_code: string;
-        };
+        card?:
+            | {
+                  token?: string;
+                  nonce?: string;
+              }
+            | {
+                  number: string;
+                  expiry_month: string;
+                  expiry_year: string;
+                  cvc: string;
+                  postal_zip_code: string;
+              };
         braintree?: {
             nonce: string;
         };

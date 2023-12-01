@@ -62,13 +62,25 @@ export interface Options {
     maxLineLength?: number | undefined;
 
     // Minify CSS in style elements and style attributes (uses clean-css or function specified)
-    minifyCSS?: boolean | CleanCSS.Options | ((text: string) => string) | undefined;
+    minifyCSS?:
+        | boolean
+        | CleanCSS.Options
+        | ((text: string) => string)
+        | undefined;
 
     // Minify JavaScript in script elements and event attributes (uses UglifyJS or function specified)
-    minifyJS?: boolean | UglifyJS.MinifyOptions | ((text: string, inline: boolean) => string) | undefined;
+    minifyJS?:
+        | boolean
+        | UglifyJS.MinifyOptions
+        | ((text: string, inline: boolean) => string)
+        | undefined;
 
     // Minify URLs in various attributes (uses relateurl or function specified)
-    minifyURLs?: boolean | RelateUrl.Options | ((text: string) => string) | undefined;
+    minifyURLs?:
+        | boolean
+        | RelateUrl.Options
+        | ((text: string) => string)
+        | undefined;
 
     // Always collapse to 1 line break (never remove it entirely) when whitespace between tags include a line break. Must be used in conjunction with collapseWhitespace=true
     preserveLineBreaks?: boolean | undefined;
@@ -101,7 +113,10 @@ export interface Options {
      * Remove all attributes with whitespace-only values
      * @see http://perfectionkills.com/experimenting-with-html-minifier/#remove_empty_or_blank_attributes
      */
-    removeEmptyAttributes?: boolean | ((attrName: string, tag: string) => boolean) | undefined;
+    removeEmptyAttributes?:
+        | boolean
+        | ((attrName: string, tag: string) => boolean)
+        | undefined;
 
     /**
      * Remove all elements with empty contents

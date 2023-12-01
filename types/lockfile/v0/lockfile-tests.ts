@@ -5,10 +5,8 @@ const num = 1;
 const path = "";
 
 let opts: lockfile.Options;
-const callback = (err: Error) => {
-};
-const callback2 = (err: Error, isLocked: boolean) => {
-};
+const callback = (err: Error) => {};
+const callback2 = (err: Error, isLocked: boolean) => {};
 
 opts = {
     wait: num,

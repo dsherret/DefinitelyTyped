@@ -4,7 +4,10 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Editor, EditorState } from "react-draft-wysiwyg";
 
-class BasicControlled extends React.Component<{}, { editorState: EditorState }> {
+class BasicControlled extends React.Component<
+    {},
+    { editorState: EditorState }
+> {
     constructor(props: any) {
         super(props);
         this.state = {

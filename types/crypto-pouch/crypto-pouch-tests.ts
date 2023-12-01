@@ -1,5 +1,8 @@
 function testCryptoPouch() {
-    let options: PouchDB.CryptoPouch.Options = { password: "password", ignore: ["field1", "field2"] };
+    let options: PouchDB.CryptoPouch.Options = {
+        password: "password",
+        ignore: ["field1", "field2"],
+    };
 
     const db = new PouchDB<{ foo: number }>();
     options = { password: "password" };

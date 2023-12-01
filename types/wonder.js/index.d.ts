@@ -37,7 +37,10 @@ declare module "wonder.js/dist/es2015" {
     export { GameObject } from "wonder.js/dist/es2015/core/entityObject/gameObject/GameObject";
     export { ComponentManager } from "wonder.js/dist/es2015/core/entityObject/manager/ComponentManager";
     export { EntityObjectManager } from "wonder.js/dist/es2015/core/entityObject/manager/EntityObjectManager";
-    export { BufferTable, BufferTableKey } from "wonder.js/dist/es2015/core/entityObject/scene/cache/BufferTable";
+    export {
+        BufferTable,
+        BufferTableKey,
+    } from "wonder.js/dist/es2015/core/entityObject/scene/cache/BufferTable";
     export { ProgramTable } from "wonder.js/dist/es2015/core/entityObject/scene/cache/ProgramTable";
     export { GameObjectScene } from "wonder.js/dist/es2015/core/entityObject/scene/gameObjectScene/GameObjectScene";
     export { Scene } from "wonder.js/dist/es2015/core/entityObject/scene/Scene";
@@ -87,7 +90,10 @@ declare module "wonder.js/dist/es2015" {
         ESide,
     } from "wonder.js/dist/es2015/device/DeviceManager";
     export { EScreenSize } from "wonder.js/dist/es2015/device/EScreenSize";
-    export { EGPUPrecision, GPUDetector } from "wonder.js/dist/es2015/device/GPUDetector";
+    export {
+        EGPUPrecision,
+        GPUDetector,
+    } from "wonder.js/dist/es2015/device/GPUDetector";
     export { CustomEventBinder } from "wonder.js/dist/es2015/event/binder/CustomEventBinder";
     export { CustomEventRegister } from "wonder.js/dist/es2015/event/binder/CustomEventRegister";
     export { DomEventBinder } from "wonder.js/dist/es2015/event/binder/DomEventBinder";
@@ -115,7 +121,10 @@ declare module "wonder.js/dist/es2015" {
     export { EEventType } from "wonder.js/dist/es2015/event/object/EEventType";
     export { EMouseButton } from "wonder.js/dist/es2015/event/object/EMouseButton";
     export { Event } from "wonder.js/dist/es2015/event/object/Event";
-    export { EEventName, EventNameHandler } from "wonder.js/dist/es2015/event/object/EventNameHandler";
+    export {
+        EEventName,
+        EventNameHandler,
+    } from "wonder.js/dist/es2015/event/object/EventNameHandler";
     export { EventTable } from "wonder.js/dist/es2015/event/object/EventTable";
     export { KeyboardEvent } from "wonder.js/dist/es2015/event/object/KeyboardEvent";
     export { MouseEvent } from "wonder.js/dist/es2015/event/object/MouseEvent";
@@ -385,8 +394,12 @@ declare module "wonder.js/dist/es2015/component/geometry/Geometry" {
         dispose(): void;
         createBuffersFromGeometryData(): void;
         protected createBufferContainer(): BufferContainer;
-        protected createGeometryData(computedData: GeometryDataType): GeometryData;
-        protected createBasicGeometryData(computedData: GeometryDataType): BasicGeometryData;
+        protected createGeometryData(
+            computedData: GeometryDataType,
+        ): GeometryData;
+        protected createBasicGeometryData(
+            computedData: GeometryDataType,
+        ): BasicGeometryData;
     }
     export type GeometryDataType = {
         vertices: number[];
@@ -401,9 +414,20 @@ declare module "wonder.js/dist/es2015/component/geometry/GeometryUtils" {
         static convertToFaces(indices: number[], normals?: number[]): Face3[];
         static hasData(data: any): boolean;
         static getThreeComponent(sourceData: number[], index: number): Vector3;
-        static iterateThreeComponent(dataArr: number[], iterator: (v: Vector3) => void): void;
-        static setThreeComponent(targetData: number[], sourceData: Vector3, index: number): any;
-        static setThreeComponent(targetData: number[], sourceData: number[], index: number): any;
+        static iterateThreeComponent(
+            dataArr: number[],
+            iterator: (v: Vector3) => void,
+        ): void;
+        static setThreeComponent(
+            targetData: number[],
+            sourceData: Vector3,
+            index: number,
+        ): any;
+        static setThreeComponent(
+            targetData: number[],
+            sourceData: number[],
+            index: number,
+        ): any;
     }
 }
 
@@ -416,8 +440,16 @@ declare module "wonder.js/dist/es2015/component/renderer/MeshRenderer" {
     export class MeshRenderer extends RendererComponent {
         static create(): MeshRenderer;
         entityObject: GameObject;
-        render(renderer: Renderer, target: GameObject, camera: GameObject): void;
-        protected createDrawCommand(target: GameObject, geometry: Geometry, camera: GameObject): QuadCommand;
+        render(
+            renderer: Renderer,
+            target: GameObject,
+            camera: GameObject,
+        ): void;
+        protected createDrawCommand(
+            target: GameObject,
+            geometry: Geometry,
+            camera: GameObject,
+        ): QuadCommand;
     }
 }
 
@@ -427,7 +459,11 @@ declare module "wonder.js/dist/es2015/component/renderer/RendererComponent" {
     import { EntityObject } from "wonder.js/dist/es2015/core/entityObject/EntityObject";
     import { GameObject } from "wonder.js/dist/es2015/core/entityObject/gameObject/GameObject";
     export abstract class RendererComponent extends Component {
-        abstract render(renderer: Renderer, target: EntityObject, camera: GameObject): any;
+        abstract render(
+            renderer: Renderer,
+            target: EntityObject,
+            camera: GameObject,
+        ): any;
     }
 }
 
@@ -490,9 +526,18 @@ declare module "wonder.js/dist/es2015/component/transform/ThreeDTransform" {
         lookAt(target: Vector3): any;
         lookAt(targetX: number, targetY: number, targetZ: number): any;
         lookAt(target: Vector3, up: Vector3): any;
-        lookAt(targetX: number, targetY: number, targetZ: number, upX: number, upY: number, upZ: number): any;
+        lookAt(
+            targetX: number,
+            targetY: number,
+            targetZ: number,
+            upX: number,
+            upY: number,
+            upZ: number,
+        ): any;
         protected clearCache(): void;
-        protected handleWhenSetTransformState(transformState?: ETransformState): void;
+        protected handleWhenSetTransformState(
+            transformState?: ETransformState,
+        ): void;
     }
 }
 
@@ -517,9 +562,14 @@ declare module "wonder.js/dist/es2015/component/transform/Transform" {
         addChild(child: Transform): void;
         removeChild(child: Transform): void;
         setChildrenTransformState(state: boolean): any;
-        setChildrenTransformState(transformState: ETransformState, state: boolean): any;
+        setChildrenTransformState(
+            transformState: ETransformState,
+            state: boolean,
+        ): any;
         protected abstract clearCache(): void;
-        protected handleWhenSetTransformState(transformState?: ETransformState): void;
+        protected handleWhenSetTransformState(
+            transformState?: ETransformState,
+        ): void;
         protected setParent(parent: Transform): void;
         protected getMatrix<T>(syncMethod: string, matrixAttriName: string): T;
     }
@@ -543,7 +593,10 @@ declare module "wonder.js/dist/es2015/core/Component" {
         init(): void;
         dispose(): void;
         clone(): any;
-        addToObject(entityObject: EntityObject, isShareComponent?: boolean): void;
+        addToObject(
+            entityObject: EntityObject,
+            isShareComponent?: boolean,
+        ): void;
         addToComponentContainer(): void;
         removeFromObject(entityObject: EntityObject): void;
         removeFromComponentContainer(): void;
@@ -618,7 +671,9 @@ declare module "wonder.js/dist/es2015/core/entityObject/EntityObject" {
         addChild(child: EntityObject): EntityObject;
         getChildren(): Collection<any>;
         removeChild(child: EntityObject): EntityObject;
-        forEach(func: (entityObject: EntityObject, index: number) => void): this;
+        forEach(
+            func: (entityObject: EntityObject, index: number) => void,
+        ): this;
         getComponent<T>(_class: any): T;
         hasComponent(component: Component): boolean;
         hasComponent(_class: Function): boolean;
@@ -701,9 +756,14 @@ declare module "wonder.js/dist/es2015/core/entityObject/manager/EntityObjectMana
         addChildren(children: EntityObject): any;
         addChildren(children: EntityObject[]): any;
         addChildren(children: Collection<EntityObject>): any;
-        forEach(func: (entityObject: EntityObject, index: number) => void): this;
+        forEach(
+            func: (entityObject: EntityObject, index: number) => void,
+        ): this;
         filter(func: (entityObject: EntityObject) => boolean): Collection<any>;
-        sort(func: (a: EntityObject, b: EntityObject) => any, isSortSelf?: boolean): Collection<any>;
+        sort(
+            func: (a: EntityObject, b: EntityObject) => any,
+            isSortSelf?: boolean,
+        ): Collection<any>;
         getChildren(): Collection<any>;
         getAllChildren(): Collection<EntityObject>;
         getChild(index: number): any;
@@ -767,8 +827,7 @@ declare module "wonder.js/dist/es2015/core/entityObject/scene/gameObjectScene/Ga
 
 declare module "wonder.js/dist/es2015/core/entityObject/scene/Scene" {
     import { EntityObject } from "wonder.js/dist/es2015/core/entityObject/EntityObject";
-    export abstract class Scene extends EntityObject {
-    }
+    export abstract class Scene extends EntityObject {}
 }
 
 declare module "wonder.js/dist/es2015/core/entityObject/scene/SceneDispatcher" {
@@ -795,21 +854,29 @@ declare module "wonder.js/dist/es2015/core/entityObject/scene/SceneDispatcher" {
 declare module "wonder.js/dist/es2015/core/Main" {
     import { EScreenSize } from "wonder.js/dist/es2015/device/EScreenSize";
     export class Main {
-        static setConfig({ canvasId, isTest, screenSize, useDevicePixelRatio, contextConfig }: {
+        static setConfig({
+            canvasId,
+            isTest,
+            screenSize,
+            useDevicePixelRatio,
+            contextConfig,
+        }: {
             canvasId?: null | undefined;
             isTest?: boolean | undefined;
             screenSize?: EScreenSize | undefined;
             useDevicePixelRatio?: boolean | undefined;
-            contextConfig?: {
-                options: {
-                    alpha: boolean;
-                    depth: boolean;
-                    stencil: boolean;
-                    antialias: boolean;
-                    premultipliedAlpha: boolean;
-                    preserveDrawingBuffer: boolean;
-                };
-            } | undefined;
+            contextConfig?:
+                | {
+                      options: {
+                          alpha: boolean;
+                          depth: boolean;
+                          stencil: boolean;
+                          antialias: boolean;
+                          premultipliedAlpha: boolean;
+                          preserveDrawingBuffer: boolean;
+                      };
+                  }
+                | undefined;
         }): typeof Main;
         static init(): typeof Main;
     }
@@ -845,7 +912,11 @@ declare module "wonder.js/dist/es2015/definition/typescript/decorator/cache" {
         returnCacheValueFunc: any,
         setCacheFunc: any,
     ): (target: any, name: any, descriptor: any) => any;
-    export function cacheBufferForBufferContainer(): (target: any, name: any, descriptor: any) => any;
+    export function cacheBufferForBufferContainer(): (
+        target: any,
+        name: any,
+        descriptor: any,
+    ) => any;
     export function cacheBufferForBufferContainerWithFuncParam(
         setDataNameFuncName: string,
     ): (target: any, name: any, descriptor: any) => any;
@@ -860,11 +931,21 @@ declare module "wonder.js/dist/es2015/definition/typescript/decorator/clone" {
         configData?: CloneAttributeAsCloneableConfigData,
     ): (target: any, memberName: string | symbol) => void;
     export function cloneAttributeAsCustomType(
-        cloneFunc: (source: any, target: any, memberName: string, cloneData: any) => void,
+        cloneFunc: (
+            source: any,
+            target: any,
+            memberName: string,
+            cloneData: any,
+        ) => void,
         configData?: CloneAttributeAsCustomTypeConfigData,
     ): (target: any, memberName: string | symbol) => void;
     export class CloneUtils {
-        static clone<T>(sourceInstance: T, cloneData?: any, createDataArr?: any[], target?: any): T;
+        static clone<T>(
+            sourceInstance: T,
+            cloneData?: any,
+            createDataArr?: any[],
+            target?: any,
+        ): T;
         static cloneArray(arr: any[] | null, isDeep?: boolean): any;
         static markNotClone(entityObject: EntityObject): void;
         static isNotClone(entityObject: EntityObject): boolean;
@@ -887,27 +968,46 @@ declare module "wonder.js/dist/es2015/definition/typescript/decorator/clone" {
 
 declare module "wonder.js/dist/es2015/definition/typescript/decorator/contract" {
     export function assert(cond: boolean, message?: string): void;
-    export function describe(message: string, func: Function, preCondition?: Function, context?: any): void;
+    export function describe(
+        message: string,
+        func: Function,
+        preCondition?: Function,
+        context?: any,
+    ): void;
     export function it(message: string, func: Function, context?: any): void;
-    export function requireCheck(inFunc: any): (target: any, name: any, descriptor: any) => any;
-    export function ensure(outFunc: any): (target: any, name: any, descriptor: any) => any;
+    export function requireCheck(
+        inFunc: any,
+    ): (target: any, name: any, descriptor: any) => any;
+    export function ensure(
+        outFunc: any,
+    ): (target: any, name: any, descriptor: any) => any;
     export function requireGetterAndSetter(
         inGetterFunc: any,
         inSetterFunc: any,
     ): (target: any, name: any, descriptor: any) => any;
-    export function requireGetter(inFunc: any): (target: any, name: any, descriptor: any) => any;
-    export function requireSetter(inFunc: any): (target: any, name: any, descriptor: any) => any;
+    export function requireGetter(
+        inFunc: any,
+    ): (target: any, name: any, descriptor: any) => any;
+    export function requireSetter(
+        inFunc: any,
+    ): (target: any, name: any, descriptor: any) => any;
     export function ensureGetterAndSetter(
         outGetterFunc: any,
         outSetterFunc: any,
     ): (target: any, name: any, descriptor: any) => any;
-    export function ensureGetter(outFunc: any): (target: any, name: any, descriptor: any) => any;
-    export function ensureSetter(outFunc: any): (target: any, name: any, descriptor: any) => any;
+    export function ensureGetter(
+        outFunc: any,
+    ): (target: any, name: any, descriptor: any) => any;
+    export function ensureSetter(
+        outFunc: any,
+    ): (target: any, name: any, descriptor: any) => any;
     export function invariant(func: any): (target: any) => void;
 }
 
 declare module "wonder.js/dist/es2015/definition/typescript/decorator/control" {
-    export function execOnlyOnce(flagName: string): (target: any, name: any, descriptor: any) => any;
+    export function execOnlyOnce(
+        flagName: string,
+    ): (target: any, name: any, descriptor: any) => any;
 }
 
 declare module "wonder.js/dist/es2015/definition/typescript/decorator/registerClass" {
@@ -915,7 +1015,9 @@ declare module "wonder.js/dist/es2015/definition/typescript/decorator/registerCl
 }
 
 declare module "wonder.js/dist/es2015/definition/typescript/decorator/singleton" {
-    export function singleton(isInitWhenCreate?: boolean): (target: any) => void;
+    export function singleton(
+        isInitWhenCreate?: boolean,
+    ): (target: any) => void;
 }
 
 declare module "wonder.js/dist/es2015/definition/typescript/decorator/virtual" {
@@ -952,9 +1054,18 @@ declare module "wonder.js/dist/es2015/device/DeviceManager" {
         setBlendEquation(blendEquation: EBlendEquation): void;
         setBlendFuncSeparate(blendFuncSeparate: EBlendFunc[]): void;
         setBlendEquationSeparate(blendEquationSeparate: EBlendEquation[]): void;
-        setColorWrite(writeRed: any, writeGreen: any, writeBlue: any, writeAlpha: any): void;
+        setColorWrite(
+            writeRed: any,
+            writeGreen: any,
+            writeBlue: any,
+            writeAlpha: any,
+        ): void;
         clear(options: any): void;
-        createGL(canvasId: string, contextConfig: ContextConfigData, useDevicePixelRatio: boolean): void;
+        createGL(
+            canvasId: string,
+            contextConfig: ContextConfigData,
+            useDevicePixelRatio: boolean,
+        ): void;
         setScreen(): void;
         setHardwareScaling(level: number): void;
         setPixelRatio(pixelRatio: number): void;
@@ -1056,15 +1167,32 @@ declare module "wonder.js/dist/es2015/event/binder/CustomEventBinder" {
     export class CustomEventBinder extends EventBinder {
         static getInstance(): any;
         on(eventName: EEventName | string, handler: Function): void;
-        on(eventName: EEventName | string, handler: Function, priority: number): void;
-        on(target: EntityObject, eventName: EEventName | string, handler: Function): void;
-        on(target: EntityObject, eventName: EEventName | string, handler: Function, priority: number): void;
+        on(
+            eventName: EEventName | string,
+            handler: Function,
+            priority: number,
+        ): void;
+        on(
+            target: EntityObject,
+            eventName: EEventName | string,
+            handler: Function,
+        ): void;
+        on(
+            target: EntityObject,
+            eventName: EEventName | string,
+            handler: Function,
+            priority: number,
+        ): void;
         off(): void;
         off(eventName: EEventName | string): void;
         off(target: EntityObject): void;
         off(eventName: EEventName | string, handler: Function): void;
         off(target: EntityObject, eventName: EEventName | string): void;
-        off(target: EntityObject, eventName: EEventName | string, handler: Function): void;
+        off(
+            target: EntityObject,
+            eventName: EEventName | string,
+            handler: Function,
+        ): void;
     }
 }
 
@@ -1096,7 +1224,11 @@ declare module "wonder.js/dist/es2015/event/binder/CustomEventRegister" {
         remove(eventName: EEventName, handler: Function): any;
         remove(uid: number, eventName: EEventName): any;
         remove(target: EntityObject, eventName: EEventName): any;
-        remove(target: EntityObject, eventName: EEventName, handler: Function): any;
+        remove(
+            target: EntityObject,
+            eventName: EEventName,
+            handler: Function,
+        ): any;
         setBubbleParent(target: EntityObject, parent: EntityObject): void;
     }
     export type CustomEventRegisterData = {
@@ -1114,9 +1246,22 @@ declare module "wonder.js/dist/es2015/event/binder/DomEventBinder" {
     export class DomEventBinder extends EventBinder {
         static getInstance(): any;
         on(eventName: EEventName | string, handler: Function): void;
-        on(eventName: EEventName | string, handler: Function, priority: number): void;
-        on(dom: HTMLElement, eventName: EEventName | string, handler: Function): void;
-        on(dom: HTMLElement, eventName: EEventName | string, handler: Function, priority: number): void;
+        on(
+            eventName: EEventName | string,
+            handler: Function,
+            priority: number,
+        ): void;
+        on(
+            dom: HTMLElement,
+            eventName: EEventName | string,
+            handler: Function,
+        ): void;
+        on(
+            dom: HTMLElement,
+            eventName: EEventName | string,
+            handler: Function,
+            priority: number,
+        ): void;
         off(): void;
         off(eventName: EEventName | string): void;
         off(dom: HTMLElement): void;
@@ -1179,10 +1324,20 @@ declare module "wonder.js/dist/es2015/event/binder/EventRegister" {
         abstract register(...args: any[]): void;
         abstract remove(...args: any[]): any;
         getEventRegisterDataList(eventName: EEventName): any;
-        getEventRegisterDataList(currentTarget: EntityObject, eventName: EEventName): any;
+        getEventRegisterDataList(
+            currentTarget: EntityObject,
+            eventName: EEventName,
+        ): any;
         getEventRegisterDataList(dom: HTMLElement, eventName: EEventName): any;
-        forEachAll(func: (list: Collection<any>, eventName: EEventName) => void): void;
-        forEachEventName(func: (list: Collection<EventRegisterData>, eventName: EEventName) => void): void;
+        forEachAll(
+            func: (list: Collection<any>, eventName: EEventName) => void,
+        ): void;
+        forEachEventName(
+            func: (
+                list: Collection<EventRegisterData>,
+                eventName: EEventName,
+            ) => void,
+        ): void;
         clear(): void;
         getChild(target: EntityObject): any;
         getChild(dom: HTMLElement): any;
@@ -1206,11 +1361,24 @@ declare module "wonder.js/dist/es2015/event/dispatcher/CustomEventDispatcher" {
         trigger(event: Event): boolean;
         trigger(event: Event, userData: any): boolean;
         trigger(target: EntityObject, event: Event): boolean;
-        trigger(target: EntityObject, event: Event, notSetTarget: boolean): boolean;
+        trigger(
+            target: EntityObject,
+            event: Event,
+            notSetTarget: boolean,
+        ): boolean;
         trigger(target: EntityObject, event: Event, userData: any): boolean;
-        trigger(target: EntityObject, event: Event, userData: any, notSetTarget: boolean): boolean;
+        trigger(
+            target: EntityObject,
+            event: Event,
+            userData: any,
+            notSetTarget: boolean,
+        ): boolean;
         emit(target: EntityObject, eventObject: Event, userData?: any): void;
-        broadcast(target: EntityObject, eventObject: Event, userData?: any): void;
+        broadcast(
+            target: EntityObject,
+            eventObject: Event,
+            userData?: any,
+        ): void;
     }
 }
 
@@ -1255,10 +1423,25 @@ declare module "wonder.js/dist/es2015/event/EventManager" {
     import { Event } from "wonder.js/dist/es2015/event/object/Event";
     import { FromEventPatternStream } from "wonder-frp/dist/es2015/stream/FromEventPatternStream";
     export class EventManager {
-        static on(eventName: EEventName | EEngineEvent | string, handler: Function): void;
-        static on(eventName: EEventName | EEngineEvent | string, handler: Function, priority: number): void;
-        static on(target: EntityObject, eventName: EEventName | EEngineEvent | string, handler: Function): void;
-        static on(dom: HTMLElement, eventName: EEventName | EEngineEvent | string, handler: Function): void;
+        static on(
+            eventName: EEventName | EEngineEvent | string,
+            handler: Function,
+        ): void;
+        static on(
+            eventName: EEventName | EEngineEvent | string,
+            handler: Function,
+            priority: number,
+        ): void;
+        static on(
+            target: EntityObject,
+            eventName: EEventName | EEngineEvent | string,
+            handler: Function,
+        ): void;
+        static on(
+            dom: HTMLElement,
+            eventName: EEventName | EEngineEvent | string,
+            handler: Function,
+        ): void;
         static on(
             target: EntityObject,
             eventName: EEventName | EEngineEvent | string,
@@ -1275,25 +1458,59 @@ declare module "wonder.js/dist/es2015/event/EventManager" {
         static off(eventName: EEventName | EEngineEvent | string): void;
         static off(target: EntityObject): void;
         static off(dom: HTMLElement): void;
-        static off(eventName: EEventName | EEngineEvent | string, handler: Function): void;
-        static off(target: EntityObject, eventName: EEventName | EEngineEvent | string): void;
+        static off(
+            eventName: EEventName | EEngineEvent | string,
+            handler: Function,
+        ): void;
+        static off(
+            target: EntityObject,
+            eventName: EEventName | EEngineEvent | string,
+        ): void;
         static off(dom: HTMLElement, eventName: EEventName): void;
-        static off(target: EntityObject, eventName: EEventName | EEngineEvent | string, handler: Function): void;
-        static off(dom: HTMLElement, eventName: EEventName, handler: Function): void;
+        static off(
+            target: EntityObject,
+            eventName: EEventName | EEngineEvent | string,
+            handler: Function,
+        ): void;
+        static off(
+            dom: HTMLElement,
+            eventName: EEventName,
+            handler: Function,
+        ): void;
         static trigger(event: Event): void;
         static trigger(event: Event, userData: any): void;
         static trigger(target: EntityObject, event: Event): void;
         static trigger(dom: HTMLElement, event: Event): void;
         static trigger(target: EntityObject, event: Event, userData: any): void;
-        static trigger(target: EntityObject, event: Event, userData: any, notSetTarget: boolean): void;
+        static trigger(
+            target: EntityObject,
+            event: Event,
+            userData: any,
+            notSetTarget: boolean,
+        ): void;
         static broadcast(target: EntityObject, event: Event): any;
-        static broadcast(target: EntityObject, event: Event, userData: any): any;
+        static broadcast(
+            target: EntityObject,
+            event: Event,
+            userData: any,
+        ): any;
         static emit(target: EntityObject, event: Event): any;
         static emit(target: EntityObject, event: Event, userData: any): any;
-        static fromEvent(eventName: EEventName | EEngineEvent | string): FromEventPatternStream;
-        static fromEvent(eventName: EEventName | EEngineEvent | string, priority: number): FromEventPatternStream;
-        static fromEvent(target: EntityObject, eventName: EEventName | EEngineEvent | string): FromEventPatternStream;
-        static fromEvent(dom: HTMLElement, eventName: EEventName | EEngineEvent | string): FromEventPatternStream;
+        static fromEvent(
+            eventName: EEventName | EEngineEvent | string,
+        ): FromEventPatternStream;
+        static fromEvent(
+            eventName: EEventName | EEngineEvent | string,
+            priority: number,
+        ): FromEventPatternStream;
+        static fromEvent(
+            target: EntityObject,
+            eventName: EEventName | EEngineEvent | string,
+        ): FromEventPatternStream;
+        static fromEvent(
+            dom: HTMLElement,
+            eventName: EEventName | EEngineEvent | string,
+        ): FromEventPatternStream;
         static fromEvent(
             target: EntityObject,
             eventName: EEventName | EEngineEvent | string,
@@ -1336,15 +1553,29 @@ declare module "wonder.js/dist/es2015/event/handler/CustomEventHandler" {
     export class CustomEventHandler extends EventHandler {
         static getInstance(): any;
         on(eventName: string, handler: Function, priority: number): void;
-        on(target: EntityObject, eventName: string, handler: Function, priority: number): void;
+        on(
+            target: EntityObject,
+            eventName: string,
+            handler: Function,
+            priority: number,
+        ): void;
         off(eventName: string): void;
         off(uid: number, eventName: string): void;
         off(eventName: string, handler: Function): void;
         off(target: EntityObject, eventName: string, handler: Function): void;
         trigger(event: Event): boolean;
         trigger(event: Event, userData: any): boolean;
-        trigger(target: EntityObject, event: Event, notSetTarget: boolean): boolean;
-        trigger(target: EntityObject, event: Event, userData: any, notSetTarget: boolean): boolean;
+        trigger(
+            target: EntityObject,
+            event: Event,
+            notSetTarget: boolean,
+        ): boolean;
+        trigger(
+            target: EntityObject,
+            event: Event,
+            userData: any,
+            notSetTarget: boolean,
+        ): boolean;
     }
 }
 
@@ -1362,13 +1593,28 @@ declare module "wonder.js/dist/es2015/event/handler/DomEventHandler" {
         off(dom: HTMLElement, eventName: EEventName, handler: Function): void;
         trigger(event: Event): void;
         trigger(dom: HTMLElement, event: Event): void;
-        protected abstract triggerDomEvent(dom: HTMLElement, event: IEventData, eventName: EEventName): any;
-        protected abstract addEngineHandler(eventName: EEventName, handler: Function): any;
+        protected abstract triggerDomEvent(
+            dom: HTMLElement,
+            event: IEventData,
+            eventName: EEventName,
+        ): any;
+        protected abstract addEngineHandler(
+            eventName: EEventName,
+            handler: Function,
+        ): any;
         protected abstract getDefaultDom(): HTMLElement;
         protected abstract createEventData(): Hash<any>;
         protected clearHandler(): void;
-        protected buildDomHandler(dom: HTMLElement, eventName: EEventName): (event: any) => any;
-        protected handler(dom: HTMLElement, eventName: EEventName, handler: Function, priority: number): void;
+        protected buildDomHandler(
+            dom: HTMLElement,
+            eventName: EEventName,
+        ): (event: any) => any;
+        protected handler(
+            dom: HTMLElement,
+            eventName: EEventName,
+            handler: Function,
+            priority: number,
+        ): void;
     }
 }
 
@@ -1388,11 +1634,27 @@ declare module "wonder.js/dist/es2015/event/handler/KeyboardEventHandler" {
     import { Hash } from "wonder-commonlib/dist/es2015/Hash";
     export class KeyboardEventHandler extends DomEventHandler {
         static getInstance(): any;
-        on(eventName: EEventName, handler: (event: KeyboardEvent) => void, priority: number): any;
-        on(dom: HTMLElement, eventName: EEventName, handler: (event: KeyboardEvent) => void, priority: number): any;
-        protected triggerDomEvent(dom: HTMLElement, event: IKeyboardEventData, eventName: EEventName): void;
+        on(
+            eventName: EEventName,
+            handler: (event: KeyboardEvent) => void,
+            priority: number,
+        ): any;
+        on(
+            dom: HTMLElement,
+            eventName: EEventName,
+            handler: (event: KeyboardEvent) => void,
+            priority: number,
+        ): any;
+        protected triggerDomEvent(
+            dom: HTMLElement,
+            event: IKeyboardEventData,
+            eventName: EEventName,
+        ): void;
         protected getDefaultDom(): HTMLElement;
-        protected addEngineHandler(eventName: EEventName, handler: (event: KeyboardEvent) => void): any;
+        protected addEngineHandler(
+            eventName: EEventName,
+            handler: (event: KeyboardEvent) => void,
+        ): any;
         protected createEventData(): Hash<any>;
     }
 }
@@ -1404,8 +1666,15 @@ declare module "wonder.js/dist/es2015/event/handler/MouseEventHandler" {
     import { IMouseEventData } from "wonder.js/dist/es2015/event/interface/IEventData";
     export class MouseEventHandler extends PointEventHandler {
         static getInstance(): any;
-        protected addEngineHandler(eventName: EEventName, handler: (event: MouseEvent) => void): any;
-        protected createEventObject(dom: HTMLElement, event: IMouseEventData, eventName: EEventName): MouseEvent;
+        protected addEngineHandler(
+            eventName: EEventName,
+            handler: (event: MouseEvent) => void,
+        ): any;
+        protected createEventObject(
+            dom: HTMLElement,
+            event: IMouseEventData,
+            eventName: EEventName,
+        ): MouseEvent;
     }
 }
 
@@ -1418,11 +1687,28 @@ declare module "wonder.js/dist/es2015/event/handler/PointEventHandler" {
     import { MouseEvent } from "wonder.js/dist/es2015/event/object/MouseEvent";
     import { TouchEvent } from "wonder.js/dist/es2015/event/object/TouchEvent";
     export abstract class PointEventHandler extends DomEventHandler {
-        on(eventName: EEventName, handler: (event: DomEvent) => void, priority: number): any;
-        on(dom: HTMLElement, eventName: EEventName, handler: (event: DomEvent) => void, priority: number): any;
-        protected abstract createEventObject(dom: HTMLElement, event: IEventData, eventName: EEventName): DomEvent;
+        on(
+            eventName: EEventName,
+            handler: (event: DomEvent) => void,
+            priority: number,
+        ): any;
+        on(
+            dom: HTMLElement,
+            eventName: EEventName,
+            handler: (event: DomEvent) => void,
+            priority: number,
+        ): any;
+        protected abstract createEventObject(
+            dom: HTMLElement,
+            event: IEventData,
+            eventName: EEventName,
+        ): DomEvent;
         protected getDefaultDom(): HTMLElement;
-        protected triggerDomEvent(dom: HTMLElement, event: IEventData, eventName: EEventName): void;
+        protected triggerDomEvent(
+            dom: HTMLElement,
+            event: IEventData,
+            eventName: EEventName,
+        ): void;
         protected createEventData(): Hash<any>;
         protected handleMove(
             handler: (event: MouseEvent | TouchEvent) => void,
@@ -1437,8 +1723,15 @@ declare module "wonder.js/dist/es2015/event/handler/TouchEventHandler" {
     import { ITouchEventData } from "wonder.js/dist/es2015/event/interface/IEventData";
     export class TouchEventHandler extends PointEventHandler {
         static getInstance(): any;
-        protected addEngineHandler(eventName: EEventName, handler: (event: TouchEvent) => void): any;
-        protected createEventObject(dom: HTMLElement, event: ITouchEventData, eventName: EEventName): TouchEvent;
+        protected addEngineHandler(
+            eventName: EEventName,
+            handler: (event: TouchEvent) => void,
+        ): any;
+        protected createEventObject(
+            dom: HTMLElement,
+            event: ITouchEventData,
+            eventName: EEventName,
+        ): TouchEvent;
     }
 }
 
@@ -1513,7 +1806,11 @@ declare module "wonder.js/dist/es2015/event/object/Event" {
         abstract clone(): any;
         stopPropagation(): void;
         // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
-        protected copyMember(destination: Event, source: Event, memberArr: [any]): Event;
+        protected copyMember(
+            destination: Event,
+            source: Event,
+            memberArr: [any],
+        ): Event;
     }
 }
 
@@ -1574,7 +1871,10 @@ declare module "wonder.js/dist/es2015/event/object/MouseEvent" {
     import { Point } from "wonder.js/dist/es2015/structure/Point";
     import { EEventType } from "wonder.js/dist/es2015/event/object/EEventType";
     export class MouseEvent extends DomEvent {
-        static create(event: IMouseEventData, eventName: EEventName): MouseEvent;
+        static create(
+            event: IMouseEventData,
+            eventName: EEventName,
+        ): MouseEvent;
         event: IMouseEventData;
         location: Point;
         locationInView: Point;
@@ -1637,12 +1937,18 @@ declare module "wonder.js/dist/es2015/event/object/PointEvent" {
 
 declare module "wonder.js/dist/es2015/event/object/TouchEvent" {
     import { DomEvent } from "wonder.js/dist/es2015/event/object/DomEvent";
-    import { ITouchData, ITouchEventData } from "wonder.js/dist/es2015/event/interface/IEventData";
+    import {
+        ITouchData,
+        ITouchEventData,
+    } from "wonder.js/dist/es2015/event/interface/IEventData";
     import { EEventName } from "wonder.js/dist/es2015/event/object/EventNameHandler";
     import { Point } from "wonder.js/dist/es2015/structure/Point";
     import { EEventType } from "wonder.js/dist/es2015/event/object/EEventType";
     export class TouchEvent extends DomEvent {
-        static create(event: ITouchEventData, eventName: EEventName): TouchEvent;
+        static create(
+            event: ITouchEventData,
+            eventName: EEventName,
+        ): TouchEvent;
         event: ITouchEventData;
         location: Point;
         readonly touchData: ITouchData;
@@ -1689,19 +1995,40 @@ declare module "wonder.js/dist/es2015/event/structure/CustomEventListenerMap" {
         static create(): CustomEventListenerMap;
         hasChild(target: EntityObject): boolean;
         appendChild(eventName: EEventName, data: any): any;
-        appendChild(target: EntityObject, eventName: EEventName, data: any): any;
-        forEachAll(func: (list: Collection<CustomEventRegisterData>, eventName: EEventName) => void): void;
-        forEachEventName(func: (list: Collection<CustomEventRegisterData>, eventName: EEventName) => void): void;
+        appendChild(
+            target: EntityObject,
+            eventName: EEventName,
+            data: any,
+        ): any;
+        forEachAll(
+            func: (
+                list: Collection<CustomEventRegisterData>,
+                eventName: EEventName,
+            ) => void,
+        ): void;
+        forEachEventName(
+            func: (
+                list: Collection<CustomEventRegisterData>,
+                eventName: EEventName,
+            ) => void,
+        ): void;
         clear(): void;
         getChild(eventName: EEventName): Collection<CustomEventRegisterData>;
         getChild(target: EntityObject): Collection<CustomEventRegisterData>;
-        getChild(target: EntityObject, eventName: EEventName): Collection<CustomEventRegisterData>;
+        getChild(
+            target: EntityObject,
+            eventName: EEventName,
+        ): Collection<CustomEventRegisterData>;
         removeChild(eventName: EEventName): void;
         removeChild(target: EntityObject): void;
         removeChild(eventName: EEventName, handler: Function): void;
         removeChild(uid: number, eventName: EEventName): void;
         removeChild(target: EntityObject, eventName: EEventName): void;
-        removeChild(target: EntityObject, eventName: EEventName, handler: Function): void;
+        removeChild(
+            target: EntityObject,
+            eventName: EEventName,
+            handler: Function,
+        ): void;
         protected buildFirstLevelKey(target: EntityObject): any;
         protected buildFirstLevelKey(uid: number): any;
     }
@@ -1716,15 +2043,38 @@ declare module "wonder.js/dist/es2015/event/structure/DomEventListenerMap" {
         static create(): DomEventListenerMap;
         hasChild(dom: HTMLElement, eventName: EEventName): boolean;
         appendChild(dom: HTMLElement, eventName: EEventName, data: any): void;
-        forEachAll(func: (list: Collection<DomEventRegisterData>, eventName: EEventName) => void): void;
-        forEachEventName(func: (list: Collection<DomEventRegisterData>, eventName: EEventName) => void): void;
+        forEachAll(
+            func: (
+                list: Collection<DomEventRegisterData>,
+                eventName: EEventName,
+            ) => void,
+        ): void;
+        forEachEventName(
+            func: (
+                list: Collection<DomEventRegisterData>,
+                eventName: EEventName,
+            ) => void,
+        ): void;
         clear(): void;
         getChild(dom: HTMLElement): Collection<DomEventRegisterData>;
-        getChild(dom: HTMLElement, eventName: EEventName): Collection<DomEventRegisterData>;
+        getChild(
+            dom: HTMLElement,
+            eventName: EEventName,
+        ): Collection<DomEventRegisterData>;
         removeChild(eventName: EEventName): Collection<DomEventOffData>;
-        removeChild(eventName: EEventName, handler: Function): Collection<DomEventOffData>;
-        removeChild(dom: HTMLElement, eventName: EEventName): Collection<DomEventOffData>;
-        removeChild(dom: HTMLElement, eventName: EEventName, handler: Function): Collection<DomEventOffData>;
+        removeChild(
+            eventName: EEventName,
+            handler: Function,
+        ): Collection<DomEventOffData>;
+        removeChild(
+            dom: HTMLElement,
+            eventName: EEventName,
+        ): Collection<DomEventOffData>;
+        removeChild(
+            dom: HTMLElement,
+            eventName: EEventName,
+            handler: Function,
+        ): Collection<DomEventOffData>;
         protected buildFirstLevelKey(dom: HTMLElement): string;
     }
     export type DomEventOffData = {
@@ -1743,10 +2093,16 @@ declare module "wonder.js/dist/es2015/event/structure/EventListenerMap" {
         abstract removeChild(...args: any[]): any;
         abstract hasChild(...args: any[]): boolean;
         abstract appendChild(...args: any[]): void;
-        abstract forEachAll(func: (list: Collection<any>, eventName: EEventName) => void): void;
-        abstract forEachEventName(func: (list: Collection<any>, eventName: EEventName) => void): void;
+        abstract forEachAll(
+            func: (list: Collection<any>, eventName: EEventName) => void,
+        ): void;
+        abstract forEachEventName(
+            func: (list: Collection<any>, eventName: EEventName) => void,
+        ): void;
         abstract clear(): void;
-        protected abstract buildFirstLevelKey(target: EntityObject | HTMLElement): string;
+        protected abstract buildFirstLevelKey(
+            target: EntityObject | HTMLElement,
+        ): string;
         protected buildSecondLevelKey(eventName: EEventName): string;
     }
 }
@@ -1931,10 +2287,34 @@ declare module "wonder.js/dist/es2015/math/Matrix4" {
             upY: number,
             upZ: number,
         ): Matrix4;
-        setOrtho(left: number, right: number, bottom: number, top: number, near: number, far: number): Matrix4;
-        ortho(left: number, right: number, bottom: number, top: number, near: number, far: number): Matrix4;
-        setPerspective(fovy: number, aspect: number, near: number, far: number): Matrix4;
-        perspective(fovy: number, aspect: number, near: number, far: number): Matrix4;
+        setOrtho(
+            left: number,
+            right: number,
+            bottom: number,
+            top: number,
+            near: number,
+            far: number,
+        ): Matrix4;
+        ortho(
+            left: number,
+            right: number,
+            bottom: number,
+            top: number,
+            near: number,
+            far: number,
+        ): Matrix4;
+        setPerspective(
+            fovy: number,
+            aspect: number,
+            near: number,
+            far: number,
+        ): Matrix4;
+        perspective(
+            fovy: number,
+            aspect: number,
+            near: number,
+            far: number,
+        ): Matrix4;
         applyMatrix(other: Matrix4, notChangeSelf?: boolean): Matrix4;
         multiply(matrix: Matrix4): Matrix4;
         multiply(matrix1: Matrix4, matrix2: Matrix4): Matrix4;
@@ -1958,7 +2338,12 @@ declare module "wonder.js/dist/es2015/math/Quaternion" {
     import { Vector3 } from "wonder.js/dist/es2015/math/Vector3";
     import { Matrix4 } from "wonder.js/dist/es2015/math/Matrix4";
     export class Quaternion {
-        static create(x?: number, y?: number, z?: number, w?: number): Quaternion;
+        static create(
+            x?: number,
+            y?: number,
+            z?: number,
+            w?: number,
+        ): Quaternion;
         constructor(x?: number, y?: number, z?: number, w?: number);
         x: number;
         y: number;
@@ -2075,11 +2460,26 @@ declare module "wonder.js/dist/es2015/renderer/buffer/ArrayBuffer" {
     import { EBufferType } from "wonder.js/dist/es2015/renderer/buffer/EBufferType";
     import { EBufferUsage } from "wonder.js/dist/es2015/renderer/buffer/EBufferUsage";
     export class ArrayBuffer extends CommonBuffer {
-        static create(data: number[], size: number, type?: EBufferType, usage?: EBufferUsage): ArrayBuffer;
+        static create(
+            data: number[],
+            size: number,
+            type?: EBufferType,
+            usage?: EBufferUsage,
+        ): ArrayBuffer;
         size: number;
         data: Float32Array;
-        initWhenCreate(data: number[], size: number, type: EBufferType, usage: EBufferUsage): any;
-        resetData(data: number[], size?: number, type?: EBufferType, offset?: number): this;
+        initWhenCreate(
+            data: number[],
+            size: number,
+            type: EBufferType,
+            usage: EBufferUsage,
+        ): any;
+        resetData(
+            data: number[],
+            size?: number,
+            type?: EBufferType,
+            offset?: number,
+        ): this;
     }
 }
 
@@ -2107,7 +2507,11 @@ declare module "wonder.js/dist/es2015/renderer/buffer/CommonBuffer" {
         type: EBufferType;
         count: number;
         usage: EBufferUsage;
-        protected resetBufferData(glBufferTargetStr: string, typedData: any, offset?: number): void;
+        protected resetBufferData(
+            glBufferTargetStr: string,
+            typedData: any,
+            offset?: number,
+        ): void;
     }
 }
 
@@ -2143,10 +2547,18 @@ declare module "wonder.js/dist/es2015/renderer/buffer/ElementBuffer" {
     import { EBufferType } from "wonder.js/dist/es2015/renderer/buffer/EBufferType";
     import { EBufferUsage } from "wonder.js/dist/es2015/renderer/buffer/EBufferUsage";
     export class ElementBuffer extends CommonBuffer {
-        static create(data: number[], type?: EBufferType, usage?: EBufferUsage): ElementBuffer;
+        static create(
+            data: number[],
+            type?: EBufferType,
+            usage?: EBufferUsage,
+        ): ElementBuffer;
         readonly typeSize: number;
         data: Uint16Array | Uint32Array;
-        initWhenCreate(data: number[], type: EBufferType, usage: EBufferUsage): any;
+        initWhenCreate(
+            data: number[],
+            type: EBufferType,
+            usage: EBufferUsage,
+        ): any;
         resetData(data: number[], type?: EBufferType, offset?: number): this;
     }
 }
@@ -2215,7 +2627,12 @@ declare module "wonder.js/dist/es2015/renderer/EDrawMode" {
 
 declare module "wonder.js/dist/es2015/renderer/GlUtils" {
     export class GlUtils {
-        static drawElements(mode: any, count: number, type: any, offset: number): void;
+        static drawElements(
+            mode: any,
+            count: number,
+            type: any,
+            offset: number,
+        ): void;
         static drawArrays(mode: any, first: number, count: number): void;
     }
 }
@@ -2265,7 +2682,11 @@ declare module "wonder.js/dist/es2015/renderer/program/Program" {
         getAttribLocation(name: string): any;
         getUniformLocation(name: string): any;
         sendUniformData(name: string, type: EVariableType, data: any): void;
-        sendAttributeBuffer(name: string, type: EVariableType, buffer: ArrayBuffer): void;
+        sendAttributeBuffer(
+            name: string,
+            type: EVariableType,
+            buffer: ArrayBuffer,
+        ): void;
         sendStructureData(name: string, type: EVariableType, data: any): void;
         sendFloat1(name: string, data: any): void;
         sendFloat2(name: string, data: any): void;
@@ -2324,7 +2745,11 @@ declare module "wonder.js/dist/es2015/renderer/shader/lib/basic/BasicMaterialCol
         static create(): BasicMaterialColorShaderLib;
         vsChunk: GLSLChunk;
         fsChunk: GLSLChunk;
-        sendShaderVariables(program: Program, cmd: QuadCommand, material: BasicMaterial): void;
+        sendShaderVariables(
+            program: Program,
+            cmd: QuadCommand,
+            material: BasicMaterial,
+        ): void;
         setShaderDefinition(cmd: QuadCommand, material: BasicMaterial): void;
     }
 }
@@ -2339,7 +2764,11 @@ declare module "wonder.js/dist/es2015/renderer/shader/lib/basic/BasicShaderLib" 
         static create(): BasicShaderLib;
         vsChunk: GLSLChunk;
         fsChunk: GLSLChunk;
-        sendShaderVariables(program: Program, cmd: QuadCommand, material: BasicMaterial): void;
+        sendShaderVariables(
+            program: Program,
+            cmd: QuadCommand,
+            material: BasicMaterial,
+        ): void;
         setShaderDefinition(cmd: QuadCommand, material: BasicMaterial): void;
     }
 }
@@ -2353,7 +2782,10 @@ declare module "wonder.js/dist/es2015/renderer/shader/lib/basic/EndBasicShaderLi
         static create(): EndBasicShaderLib;
         vsChunk: GLSLChunk;
         fsChunk: GLSLChunk;
-        setShaderDefinition(cmd: QuadCommand, material: StandardBasicMaterial): void;
+        setShaderDefinition(
+            cmd: QuadCommand,
+            material: StandardBasicMaterial,
+        ): void;
     }
 }
 
@@ -2367,7 +2799,11 @@ declare module "wonder.js/dist/es2015/renderer/shader/lib/common/CommonShaderLib
         static create(): CommonShaderLib;
         vsChunk: GLSLChunk;
         fsChunk: GLSLChunk;
-        sendShaderVariables(program: Program, cmd: QuadCommand, material: EngineMaterial): void;
+        sendShaderVariables(
+            program: Program,
+            cmd: QuadCommand,
+            material: EngineMaterial,
+        ): void;
         setShaderDefinition(cmd: QuadCommand, material: EngineMaterial): void;
     }
 }
@@ -2382,7 +2818,11 @@ declare module "wonder.js/dist/es2015/renderer/shader/lib/common/EndShaderLib" {
         static create(): EndShaderLib;
         vsChunk: GLSLChunk;
         fsChunk: GLSLChunk;
-        sendShaderVariables(program: Program, cmd: QuadCommand, material: EngineMaterial): void;
+        sendShaderVariables(
+            program: Program,
+            cmd: QuadCommand,
+            material: EngineMaterial,
+        ): void;
     }
 }
 
@@ -2396,7 +2836,11 @@ declare module "wonder.js/dist/es2015/renderer/shader/lib/common/VerticeCommonSh
         static create(): VerticeCommonShaderLib;
         vsChunk: GLSLChunk;
         fsChunk: GLSLChunk;
-        sendShaderVariables(program: Program, cmd: QuadCommand, material: EngineMaterial): void;
+        sendShaderVariables(
+            program: Program,
+            cmd: QuadCommand,
+            material: EngineMaterial,
+        ): void;
         setShaderDefinition(cmd: QuadCommand, material: EngineMaterial): void;
     }
 }
@@ -2436,8 +2880,16 @@ declare module "wonder.js/dist/es2015/renderer/shader/lib/EngineShaderLib" {
         vsSourceExtensionList: Collection<string>;
         fsSourceExtensionList: Collection<string>;
         setShaderDefinition(cmd: RenderCommand, material: Material): void;
-        protected sendAttributeBuffer(program: Program, name: string, data: any): void;
-        protected sendUniformData(program: Program, name: string, data: any): void;
+        protected sendAttributeBuffer(
+            program: Program,
+            name: string,
+            data: any,
+        ): void;
+        protected sendUniformData(
+            program: Program,
+            name: string,
+            data: any,
+        ): void;
         protected getVsChunk(): any;
         protected getVsChunk(chunk: GLSLChunk): any;
         protected getFsChunk(): any;
@@ -2456,7 +2908,11 @@ declare module "wonder.js/dist/es2015/renderer/shader/lib/ShaderLib" {
     import { Material } from "wonder.js/dist/es2015/material/Material";
     export abstract class ShaderLib {
         shader: Shader;
-        sendShaderVariables(program: Program, cmd: RenderCommand, material: Material): void;
+        sendShaderVariables(
+            program: Program,
+            cmd: RenderCommand,
+            material: Material,
+        ): void;
         init(): void;
         dispose(): void;
     }
@@ -2483,7 +2939,10 @@ declare module "wonder.js/dist/es2015/renderer/shader/shader/EngineShader" {
     export abstract class EngineShader extends Shader {
         protected sourceBuilder: EngineShaderSourceBuilder;
         protected libs: Collection<EngineShaderLib>;
-        protected buildDefinitionData(cmd: RenderCommand, material: Material): void;
+        protected buildDefinitionData(
+            cmd: RenderCommand,
+            material: Material,
+        ): void;
         protected createShaderSourceBuilder(): ShaderSourceBuilder;
     }
 }
@@ -2524,8 +2983,14 @@ declare module "wonder.js/dist/es2015/renderer/shader/shader/Shader" {
         removeAllLibs(): void;
         sortLib(func: (a: ShaderLib, b: ShaderLib) => any): void;
         protected abstract createShaderSourceBuilder(): ShaderSourceBuilder;
-        protected abstract buildDefinitionData(cmd: RenderCommand, material: Material): void;
-        protected judgeRefreshShader(cmd: RenderCommand, material: Material): void;
+        protected abstract buildDefinitionData(
+            cmd: RenderCommand,
+            material: Material,
+        ): void;
+        protected judgeRefreshShader(
+            cmd: RenderCommand,
+            material: Material,
+        ): void;
     }
     export type ShaderData = {
         type: EVariableType;
@@ -2909,7 +3374,10 @@ declare module "wonder.js/dist/es2015/utils/BufferUtils" {
     import { EVariableType } from "wonder.js/dist/es2015/renderer/shader/variable/EVariableType";
     import { ArrayBuffer } from "wonder.js/dist/es2015/renderer/buffer/ArrayBuffer";
     export class BufferUtils {
-        static convertArrayToArrayBuffer(type: EVariableType, value: any[]): ArrayBuffer;
+        static convertArrayToArrayBuffer(
+            type: EVariableType,
+            value: any[],
+        ): ArrayBuffer;
     }
 }
 
@@ -2917,7 +3385,10 @@ declare module "wonder.js/dist/es2015/utils/ClassUtils" {
     export class ClassUtils {
         static getClassNameByInstance(obj: any): any;
         static addClass(className: string, _class: any): void;
-        static addClassNameAttributeToClass(className: string, _class: any): void;
+        static addClassNameAttributeToClass(
+            className: string,
+            _class: any,
+        ): void;
         static getClass(className: string): any;
     }
 }
@@ -2943,8 +3414,7 @@ declare module "wonder.js/dist/es2015/utils/JudgeUtils" {
 
 declare module "wonder.js/dist/es2015/utils/Log" {
     import { Log as Log$ } from "wonder-commonlib/dist/es2015/Log";
-    export class Log extends Log$ {
-    }
+    export class Log extends Log$ {}
 }
 
 declare module "wonder.js/dist/es2015/utils/MathUtils" {
@@ -2963,7 +3433,9 @@ declare module "wonder.js/dist/es2015/utils/RenderUtils" {
     import { Collection } from "wonder-commonlib/dist/es2015/Collection";
     import { GameObject } from "wonder.js/dist/es2015/core/entityObject/gameObject/GameObject";
     export class RenderUtils {
-        static getGameObjectRenderList(sourceList: Collection<GameObject>): Collection<GameObject>;
+        static getGameObjectRenderList(
+            sourceList: Collection<GameObject>,
+        ): Collection<GameObject>;
     }
 }
 

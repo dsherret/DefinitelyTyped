@@ -156,7 +156,11 @@ export interface ConfigAPI {
          *     }
          * };
          */
-        descriptions: true | { [x: string]: string } | DescriptionHandler | null;
+        descriptions:
+            | true
+            | { [x: string]: string }
+            | DescriptionHandler
+            | null;
         /**
          * Determines whether passage titles are combined with the story title, within the browser's/tab's titlebar, when
          * passages are displayed.

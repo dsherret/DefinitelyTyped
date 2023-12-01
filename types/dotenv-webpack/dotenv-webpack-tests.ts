@@ -23,5 +23,10 @@ const optionsStrings: Options = {
 };
 
 const config: Configuration = {
-    plugins: [new Dotenv(), new Dotenv(optionsEmpty), new Dotenv(optionsFull), new Dotenv(optionsStrings)],
+    plugins: [
+        new Dotenv(),
+        new Dotenv(optionsEmpty),
+        new Dotenv(optionsFull),
+        new Dotenv(optionsStrings),
+    ],
 };

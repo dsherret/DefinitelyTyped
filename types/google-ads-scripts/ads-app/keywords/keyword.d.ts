@@ -95,7 +95,9 @@ declare namespace GoogleAdsScripts {
             /** Sets the CPM bid of the new keyword to the specified value. */
             withCpm(cpm: number): this;
             /** Sets the custom parameters of the new keyword to the specified value. */
-            withCustomParameters(customParameters: Record<string, string>): this;
+            withCustomParameters(
+                customParameters: Record<string, string>,
+            ): this;
             /** Sets the final URL of the new keyword to the specified value. */
             withFinalUrl(finalUrl: string): this;
             /** Sets the final URL suffix of the new keyword to the specified value. */
@@ -141,14 +143,12 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface KeywordSelector
-            extends
-                Base.Selector<KeywordIterator>,
+            extends Base.Selector<KeywordIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
 
         /** Provides access to keyword URLs. */
         interface KeywordUrls {

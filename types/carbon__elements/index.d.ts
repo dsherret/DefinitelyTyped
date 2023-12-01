@@ -444,7 +444,31 @@ export const reset: {
         fontFamily: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
     };
 };
-export const scale: [12, 14, 16, 18, 20, 24, 28, 32, 36, 42, 48, 54, 60, 68, 76, 84, 92, 102, 112, 122, 132, 144, 156];
+export const scale: [
+    12,
+    14,
+    16,
+    18,
+    20,
+    24,
+    28,
+    32,
+    36,
+    42,
+    48,
+    54,
+    60,
+    68,
+    76,
+    84,
+    92,
+    102,
+    112,
+    122,
+    132,
+    144,
+    156,
+];
 export const styles: {
     caption01: {
         fontSize: "0.75rem";
@@ -10837,16 +10861,14 @@ export const v10: {
                 letterSpacing: 0;
             };
             code01: {
-                fontFamily:
-                    "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
+                fontFamily: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
                 fontSize: "0.75rem";
                 fontWeight: 400;
                 lineHeight: 1.33333;
                 letterSpacing: "0.32px";
             };
             code02: {
-                fontFamily:
-                    "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
+                fontFamily: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
                 fontSize: "0.875rem";
                 fontWeight: 400;
                 lineHeight: 1.42857;
@@ -11754,16 +11776,14 @@ export const v10: {
                 letterSpacing: 0;
             };
             code01: {
-                fontFamily:
-                    "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
+                fontFamily: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
                 fontSize: "0.75rem";
                 fontWeight: 400;
                 lineHeight: 1.33333;
                 letterSpacing: "0.32px";
             };
             code02: {
-                fontFamily:
-                    "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
+                fontFamily: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
                 fontSize: "0.875rem";
                 fontWeight: 400;
                 lineHeight: 1.42857;
@@ -12671,16 +12691,14 @@ export const v10: {
                 letterSpacing: 0;
             };
             code01: {
-                fontFamily:
-                    "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
+                fontFamily: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
                 fontSize: "0.75rem";
                 fontWeight: 400;
                 lineHeight: 1.33333;
                 letterSpacing: "0.32px";
             };
             code02: {
-                fontFamily:
-                    "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
+                fontFamily: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
                 fontSize: "0.875rem";
                 fontWeight: 400;
                 lineHeight: 1.42857;
@@ -13588,16 +13606,14 @@ export const v10: {
                 letterSpacing: 0;
             };
             code01: {
-                fontFamily:
-                    "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
+                fontFamily: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
                 fontSize: "0.75rem";
                 fontWeight: 400;
                 lineHeight: 1.33333;
                 letterSpacing: "0.32px";
             };
             code02: {
-                fontFamily:
-                    "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
+                fontFamily: "'IBM Plex Mono', 'Menlo', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', Courier, monospace";
                 fontSize: "0.875rem";
                 fontWeight: 400;
                 lineHeight: 1.42857;

@@ -36,9 +36,20 @@ interface IBrowseNodeLookupOptions {
 }
 
 interface IAmazonProductClient {
-    itemSearch(query: IItemSearchOptions, callback?: IAmazonProductQueryCallback): Promise<Object[]>;
-    itemLookup(query: IItemLookupOptions, callback?: IAmazonProductQueryCallback): Promise<Object[]>;
-    browseNodeLookup(query: IBrowseNodeLookupOptions, callback?: IAmazonProductQueryCallback): Promise<Object[]>;
+    itemSearch(
+        query: IItemSearchOptions,
+        callback?: IAmazonProductQueryCallback,
+    ): Promise<Object[]>;
+    itemLookup(
+        query: IItemLookupOptions,
+        callback?: IAmazonProductQueryCallback,
+    ): Promise<Object[]>;
+    browseNodeLookup(
+        query: IBrowseNodeLookupOptions,
+        callback?: IAmazonProductQueryCallback,
+    ): Promise<Object[]>;
 }
 
-export declare function createClient(credentials: ICredentials): IAmazonProductClient;
+export declare function createClient(
+    credentials: ICredentials,
+): IAmazonProductClient;

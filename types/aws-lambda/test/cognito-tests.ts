@@ -38,7 +38,11 @@ type CognitoTriggerEvent =
     | CustomMessageTriggerEvent
     | CustomEmailSenderTriggerEvent;
 
-const baseTest: Handler<CognitoTriggerEvent> = async (event: CognitoTriggerEvent, _, callback) => {
+const baseTest: Handler<CognitoTriggerEvent> = async (
+    event: CognitoTriggerEvent,
+    _,
+    callback,
+) => {
     str = event.version;
     str = event.region;
     str = event.userPoolId;
@@ -79,7 +83,11 @@ const preSignUp: PreSignUpTriggerHandler = async (event, _, callback) => {
     request.session[0].challengeName === "CUSTOM_CHALLENGE";
 };
 
-const postConfirmation: PostConfirmationTriggerHandler = async (event, _, callback) => {
+const postConfirmation: PostConfirmationTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     obj = request.userAttributes;
@@ -103,7 +111,11 @@ const postConfirmation: PostConfirmationTriggerHandler = async (event, _, callba
     bool = response.autoVerifyPhone;
 };
 
-const defineAuthChallenge: DefineAuthChallengeTriggerHandler = async (event, _, callback) => {
+const defineAuthChallenge: DefineAuthChallengeTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     obj = request.userAttributes;
@@ -133,7 +145,11 @@ const defineAuthChallenge: DefineAuthChallengeTriggerHandler = async (event, _, 
     objectOrUndefined = request.clientMetadata;
 };
 
-const createAuthChallenge: CreateAuthChallengeTriggerHandler = async (event, _, callback) => {
+const createAuthChallenge: CreateAuthChallengeTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     obj = request.userAttributes;
@@ -159,24 +175,29 @@ const createAuthChallenge: CreateAuthChallengeTriggerHandler = async (event, _, 
     nullOrUndefined = request.userAttributes;
 };
 
-const validateAuthChallengeResponse: VerifyAuthChallengeResponseTriggerHandler = async (event, _, callback) => {
-    const { request, response, triggerSource } = event;
+const validateAuthChallengeResponse: VerifyAuthChallengeResponseTriggerHandler =
+    async (event, _, callback) => {
+        const { request, response, triggerSource } = event;
 
-    obj = request.userAttributes;
-    str = request.userAttributes.email;
-    obj = request.privateChallengeParameters;
-    str = request.privateChallengeParameters["foo"];
-    str = request.challengeAnswer;
-    boolOrUndefined = request.userNotFound;
+        obj = request.userAttributes;
+        str = request.userAttributes.email;
+        obj = request.privateChallengeParameters;
+        str = request.privateChallengeParameters["foo"];
+        str = request.challengeAnswer;
+        boolOrUndefined = request.userNotFound;
 
-    bool = response.answerCorrect;
+        bool = response.answerCorrect;
 
-    triggerSource === "VerifyAuthChallengeResponse_Authentication";
+        triggerSource === "VerifyAuthChallengeResponse_Authentication";
 
-    objectOrUndefined = request.clientMetadata;
-};
+        objectOrUndefined = request.clientMetadata;
+    };
 
-const preAuthentication: PreAuthenticationTriggerHandler = async (event, _, callback) => {
+const preAuthentication: PreAuthenticationTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     obj = request.userAttributes;
@@ -188,7 +209,11 @@ const preAuthentication: PreAuthenticationTriggerHandler = async (event, _, call
     triggerSource === "PreAuthentication_Authentication";
 };
 
-const postAuthentication: PostAuthenticationTriggerHandler = async (event, _, callback) => {
+const postAuthentication: PostAuthenticationTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     obj = request.userAttributes;
@@ -202,7 +227,11 @@ const postAuthentication: PostAuthenticationTriggerHandler = async (event, _, ca
     objectOrUndefined = request.clientMetadata;
 };
 
-const preTokenGeneration: PreTokenGenerationTriggerHandler = async (event, _, callback) => {
+const preTokenGeneration: PreTokenGenerationTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     obj = request.userAttributes;
@@ -216,7 +245,8 @@ const preTokenGeneration: PreTokenGenerationTriggerHandler = async (event, _, ca
     objectOrUndefined = response.claimsOverrideDetails.claimsToAddOrOverride;
     strArrayOrUndefined = response.claimsOverrideDetails.claimsToSuppress;
 
-    const groupOverrideDetails = response.claimsOverrideDetails.groupOverrideDetails!;
+    const groupOverrideDetails =
+        response.claimsOverrideDetails.groupOverrideDetails!;
     strArrayOrUndefined = groupOverrideDetails.groupsToOverride;
     strArrayOrUndefined = groupOverrideDetails.iamRolesToOverride;
     strOrUndefined = groupOverrideDetails.preferredRole;
@@ -230,7 +260,11 @@ const preTokenGeneration: PreTokenGenerationTriggerHandler = async (event, _, ca
     objectOrUndefined = request.clientMetadata;
 };
 
-const userMigration: UserMigrationTriggerHandler = async (event, _, callback) => {
+const userMigration: UserMigrationTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     str = request.password;
@@ -260,7 +294,11 @@ const userMigration: UserMigrationTriggerHandler = async (event, _, callback) =>
     objectOrUndefined = request.clientMetadata;
 };
 
-const customMessage: CustomMessageTriggerHandler = async (event, _, callback) => {
+const customMessage: CustomMessageTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     obj = request.userAttributes;
@@ -284,7 +322,11 @@ const customMessage: CustomMessageTriggerHandler = async (event, _, callback) =>
     objectOrUndefined = request.clientMetadata;
 };
 
-const customEmailSender: CustomEmailSenderTriggerHandler = async (event, _, callback) => {
+const customEmailSender: CustomEmailSenderTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     str = request.type;
@@ -300,7 +342,11 @@ const customEmailSender: CustomEmailSenderTriggerHandler = async (event, _, call
     triggerSource === "CustomEmailSender_AccountTakeOverNotification";
 };
 
-const customSmsSender: CustomSMSSenderTriggerHandler = async (event, _, callback) => {
+const customSmsSender: CustomSMSSenderTriggerHandler = async (
+    event,
+    _,
+    callback,
+) => {
     const { request, response, triggerSource } = event;
 
     str = request.type;

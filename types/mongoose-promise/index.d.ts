@@ -51,7 +51,9 @@ declare module "mongoose" {
 
         /** ES6-style .catch() shorthand */
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        catch<TRes>(onReject?: (err: any) => void | TRes | PromiseLike<TRes>): MongoosePromise<TRes>;
+        catch<TRes>(
+            onReject?: (err: any) => void | TRes | PromiseLike<TRes>,
+        ): MongoosePromise<TRes>;
 
         /**
          * Signifies that this promise was the last in a chain of then()s: if a handler passed

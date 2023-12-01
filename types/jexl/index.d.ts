@@ -31,7 +31,11 @@ declare class Jexl {
      *      on either side of the operator. It should return either the resulting
      *      value, or a Promise that resolves with the resulting value.
      */
-    addBinaryOp(operator: string, precedence: number, fn: BinaryOpFunction): void;
+    addBinaryOp(
+        operator: string,
+        precedence: number,
+        fn: BinaryOpFunction,
+    ): void;
 
     /**
      * Adds a unary operator to Jexl. Unary operators are currently only supported
@@ -149,7 +153,7 @@ declare class Jexl {
  * xpath-like drill down into native Javascript objects.
  */
 declare class BuildableJexl extends Jexl {
-    Jexl: { new(): Jexl };
+    Jexl: { new (): Jexl };
 }
 
 declare const exportJexl: BuildableJexl;

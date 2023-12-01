@@ -5,11 +5,11 @@ const scroll = new LocomotiveScroll({
     smooth: true,
 });
 
-scroll.on("scroll", event => {
+scroll.on("scroll", (event) => {
     event; // $ExpectType OnScrollEvent
 });
 
-scroll.on("call", event => {
+scroll.on("call", (event) => {
     event; // $ExpectType string | string[]
 });
 

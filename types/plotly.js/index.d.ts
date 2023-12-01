@@ -6,7 +6,14 @@ import { SankeyData } from "./lib/traces/sankey";
 import { ViolinData } from "./lib/traces/violin";
 
 export as namespace Plotly;
-export { BoxPlotData, CandlestickData, OhlcData, PieData, SankeyData, ViolinData };
+export {
+    BoxPlotData,
+    CandlestickData,
+    OhlcData,
+    PieData,
+    SankeyData,
+    ViolinData,
+};
 
 export type DefaultIcons =
     | "undo"
@@ -258,20 +265,56 @@ export interface BeforePlotEvent {
 }
 
 export interface PlotlyHTMLElement extends HTMLElement {
-    on(event: "plotly_click" | "plotly_unhover", callback: (event: PlotMouseEvent) => void): void;
+    on(
+        event: "plotly_click" | "plotly_unhover",
+        callback: (event: PlotMouseEvent) => void,
+    ): void;
     on(event: "plotly_hover", callback: (event: PlotHoverEvent) => void): void;
-    on(event: "plotly_selecting" | "plotly_selected", callback: (event: PlotSelectionEvent) => void): void;
-    on(event: "plotly_restyle", callback: (data: PlotRestyleEvent) => void): void;
-    on(event: "plotly_relayout" | "plotly_relayouting", callback: (event: PlotRelayoutEvent) => void): void;
-    on(event: "plotly_clickannotation", callback: (event: ClickAnnotationEvent) => void): void;
-    on(event: "plotly_animatingframe", callback: (event: FrameAnimationEvent) => void): void;
-    on(event: "plotly_legendclick" | "plotly_legenddoubleclick", callback: (event: LegendClickEvent) => boolean): void;
-    on(event: "plotly_sliderchange", callback: (event: SliderChangeEvent) => void): void;
-    on(event: "plotly_sliderend", callback: (event: SliderEndEvent) => void): void;
-    on(event: "plotly_sliderstart", callback: (event: SliderStartEvent) => void): void;
-    on(event: "plotly_sunburstclick", callback: (event: SunburstClickEvent) => void): void;
+    on(
+        event: "plotly_selecting" | "plotly_selected",
+        callback: (event: PlotSelectionEvent) => void,
+    ): void;
+    on(
+        event: "plotly_restyle",
+        callback: (data: PlotRestyleEvent) => void,
+    ): void;
+    on(
+        event: "plotly_relayout" | "plotly_relayouting",
+        callback: (event: PlotRelayoutEvent) => void,
+    ): void;
+    on(
+        event: "plotly_clickannotation",
+        callback: (event: ClickAnnotationEvent) => void,
+    ): void;
+    on(
+        event: "plotly_animatingframe",
+        callback: (event: FrameAnimationEvent) => void,
+    ): void;
+    on(
+        event: "plotly_legendclick" | "plotly_legenddoubleclick",
+        callback: (event: LegendClickEvent) => boolean,
+    ): void;
+    on(
+        event: "plotly_sliderchange",
+        callback: (event: SliderChangeEvent) => void,
+    ): void;
+    on(
+        event: "plotly_sliderend",
+        callback: (event: SliderEndEvent) => void,
+    ): void;
+    on(
+        event: "plotly_sliderstart",
+        callback: (event: SliderStartEvent) => void,
+    ): void;
+    on(
+        event: "plotly_sunburstclick",
+        callback: (event: SunburstClickEvent) => void,
+    ): void;
     on(event: "plotly_event", callback: (data: any) => void): void;
-    on(event: "plotly_beforeplot", callback: (event: BeforePlotEvent) => boolean): void;
+    on(
+        event: "plotly_beforeplot",
+        callback: (event: BeforePlotEvent) => boolean,
+    ): void;
     on(
         event:
             | "plotly_afterexport"
@@ -335,10 +378,17 @@ export function newPlot(
     layout?: Partial<Layout>,
     config?: Partial<Config>,
 ): Promise<PlotlyHTMLElement>;
-export function relayout(root: Root, layout: Partial<Layout>): Promise<PlotlyHTMLElement>;
+export function relayout(
+    root: Root,
+    layout: Partial<Layout>,
+): Promise<PlotlyHTMLElement>;
 export function redraw(root: Root): Promise<PlotlyHTMLElement>;
 export function purge(root: Root): void;
-export function restyle(root: Root, aobj: Data, traces?: number[] | number): Promise<PlotlyHTMLElement>;
+export function restyle(
+    root: Root,
+    aobj: Data,
+    traces?: number[] | number,
+): Promise<PlotlyHTMLElement>;
 export function update(
     root: Root,
     traceUpdate: Data,
@@ -350,7 +400,10 @@ export function addTraces(
     traces: Data | Data[],
     newIndices?: number[] | number,
 ): Promise<PlotlyHTMLElement>;
-export function deleteTraces(root: Root, indices: number[] | number): Promise<PlotlyHTMLElement>;
+export function deleteTraces(
+    root: Root,
+    indices: number[] | number,
+): Promise<PlotlyHTMLElement>;
 export function moveTraces(
     root: Root,
     currentIndices: number[] | number,
@@ -368,15 +421,24 @@ export function prependTraces(
     indices: number | number[],
 ): Promise<PlotlyHTMLElement>;
 export function toImage(root: RootOrData, opts?: ToImgopts): Promise<string>;
-export function downloadImage(root: RootOrData, opts: DownloadImgopts): Promise<string>;
+export function downloadImage(
+    root: RootOrData,
+    opts: DownloadImgopts,
+): Promise<string>;
 export function react(
     root: Root,
     data: Data[],
     layout?: Partial<Layout>,
     config?: Partial<Config>,
 ): Promise<PlotlyHTMLElement>;
-export function addFrames(root: Root, frames: Array<Partial<Frame>>): Promise<PlotlyHTMLElement>;
-export function deleteFrames(root: Root, frames: number[]): Promise<PlotlyHTMLElement>;
+export function addFrames(
+    root: Root,
+    frames: Array<Partial<Frame>>,
+): Promise<PlotlyHTMLElement>;
+export function deleteFrames(
+    root: Root,
+    frames: number[],
+): Promise<PlotlyHTMLElement>;
 export function register(modules: PlotlyModule | PlotlyModule[]): void;
 
 // Layout
@@ -385,16 +447,16 @@ export interface Layout {
     title:
         | string
         | Partial<{
-            text: string;
-            font: Partial<Font>;
-            xref: "container" | "paper";
-            yref: "container" | "paper";
-            x: number;
-            y: number;
-            xanchor: "auto" | "left" | "center" | "right";
-            yanchor: "auto" | "top" | "middle" | "bottom";
-            pad: Partial<Padding>;
-        }>;
+              text: string;
+              font: Partial<Font>;
+              xref: "container" | "paper";
+              yref: "container" | "paper";
+              x: number;
+              y: number;
+              xanchor: "auto" | "left" | "center" | "right";
+              yanchor: "auto" | "top" | "middle" | "bottom";
+              pad: Partial<Padding>;
+          }>;
     titlefont: Partial<Font>;
     autosize: boolean;
     showlegend: boolean;
@@ -445,7 +507,14 @@ export interface Layout {
     subplot: string;
     radialaxis: Partial<Axis>;
     angularaxis: {}; // TODO
-    dragmode: "zoom" | "pan" | "select" | "lasso" | "orbit" | "turntable" | false;
+    dragmode:
+        | "zoom"
+        | "pan"
+        | "select"
+        | "lasso"
+        | "orbit"
+        | "turntable"
+        | false;
     orientation: number;
     annotations: Array<Partial<Annotations>>;
     shapes: Array<Partial<Shape>>;
@@ -520,7 +589,13 @@ export interface Legend extends Label {
     yanchor: "auto" | "top" | "middle" | "bottom";
 }
 
-export type AxisType = "-" | "linear" | "log" | "date" | "category" | "multicategory";
+export type AxisType =
+    | "-"
+    | "linear"
+    | "log"
+    | "date"
+    | "category"
+    | "multicategory";
 
 export type DTickValue = number | string;
 
@@ -817,8 +892,30 @@ export type Calendar =
     | "thai"
     | "ummalqura";
 
-export type XAxisName = "x" | "x2" | "x3" | "x4" | "x5" | "x6" | "x7" | "x8" | "x9" | "x10" | "x11";
-export type YAxisName = "y" | "y2" | "y3" | "y4" | "y5" | "y6" | "y7" | "y8" | "y9" | "y10" | "y11";
+export type XAxisName =
+    | "x"
+    | "x2"
+    | "x3"
+    | "x4"
+    | "x5"
+    | "x6"
+    | "x7"
+    | "x8"
+    | "x9"
+    | "x10"
+    | "x11";
+export type YAxisName =
+    | "y"
+    | "y2"
+    | "y3"
+    | "y4"
+    | "y5"
+    | "y6"
+    | "y7"
+    | "y8"
+    | "y9"
+    | "y10"
+    | "y11";
 export type AxisName = XAxisName | YAxisName;
 
 export interface LayoutAxis extends Axis {
@@ -828,7 +925,13 @@ export interface LayoutAxis extends Axis {
     constrain: "range" | "domain";
     constraintoward: "left" | "center" | "right" | "top" | "middle" | "bottom";
     anchor: "free" | AxisName;
-    side: "top" | "bottom" | "left" | "right" | "clockwise" | "counterclockwise";
+    side:
+        | "top"
+        | "bottom"
+        | "left"
+        | "right"
+        | "clockwise"
+        | "counterclockwise";
     overlaying: "free" | AxisName;
     layer: "above traces" | "below traces";
     domain: number[];
@@ -1105,22 +1208,27 @@ export interface ErrorOptions {
     opacity: number;
 }
 
-export type ErrorBar =
-    & Partial<ErrorOptions>
-    & (
+export type ErrorBar = Partial<ErrorOptions> &
+    (
         | {
-            type: "constant" | "percent";
-            value: number;
-            valueminus?: number | undefined;
-        }
+              type: "constant" | "percent";
+              value: number;
+              valueminus?: number | undefined;
+          }
         | {
-            type: "data";
-            array: Datum[];
-            arrayminus?: Datum[] | undefined;
-        }
+              type: "data";
+              array: Datum[];
+              arrayminus?: Datum[] | undefined;
+          }
     );
 
-export type Dash = "solid" | "dot" | "dash" | "longdash" | "dashdot" | "longdashdot";
+export type Dash =
+    | "solid"
+    | "dot"
+    | "dash"
+    | "longdash"
+    | "dashdot"
+    | "longdashdot";
 export type PlotType =
     | "bar"
     | "barpolar"
@@ -1248,7 +1356,12 @@ export interface PlotData {
         | "gauge+number+delta"
         | "gauge+delta";
     histfunc: "count" | "sum" | "avg" | "min" | "max";
-    histnorm: "" | "percent" | "probability" | "density" | "probability density";
+    histnorm:
+        | ""
+        | "percent"
+        | "probability"
+        | "density"
+        | "probability density";
     hoveron: "points" | "fills";
     hoverinfo:
         | "all"
@@ -1328,7 +1441,14 @@ export interface PlotData {
     textangle: "auto" | number;
     insidetextanchor: "end" | "middle" | "start";
     constraintext: "inside" | "outside" | "both" | "none";
-    fill: "none" | "tozeroy" | "tozerox" | "tonexty" | "tonextx" | "toself" | "tonext";
+    fill:
+        | "none"
+        | "tozeroy"
+        | "tozerox"
+        | "tonexty"
+        | "tonextx"
+        | "toself"
+        | "tonext";
     fillcolor: string;
     fillpattern: Partial<Pattern>;
     showlegend: boolean;
@@ -1402,7 +1522,20 @@ export interface PlotData {
         end: number;
         labelfont: Partial<Font>;
         labelformat: string;
-        operation: "=" | "<" | ">=" | ">" | "<=" | "[]" | "()" | "[)" | "(]" | "][" | ")(" | "](" | ")[";
+        operation:
+            | "="
+            | "<"
+            | ">="
+            | ">"
+            | "<="
+            | "[]"
+            | "()"
+            | "[)"
+            | "(]"
+            | "]["
+            | ")("
+            | "]("
+            | ")[";
         showlabels: boolean;
         showlines: boolean;
         size: number;
@@ -1535,11 +1668,11 @@ export interface PlotMarker {
     colorbar?: Partial<ColorBar> | undefined;
     gradient?:
         | {
-            type: "radial" | "horizontal" | "vertical" | "none";
-            color: Color;
-            typesrc: any;
-            colorsrc: any;
-        }
+              type: "radial" | "horizontal" | "vertical" | "none";
+              color: Color;
+              typesrc: any;
+              colorsrc: any;
+          }
         | undefined;
     pattern?: Partial<Pattern>;
 }
@@ -1720,7 +1853,10 @@ export interface Config {
      * function to add the background color to a different container
      * or 'opaque' to ensure there's white behind it
      */
-    setBackground: ((gd: PlotlyHTMLElement, bgColor: string) => void) | "opaque" | "transparent";
+    setBackground:
+        | ((gd: PlotlyHTMLElement, bgColor: string) => void)
+        | "opaque"
+        | "transparent";
 
     /** URL to topojson files used in geo charts */
     topojsonURL: string;
@@ -2624,4 +2760,9 @@ interface ApiMethodModule {
     fn: any;
 }
 
-type PlotlyModule = TraceModule | LocaleModule | TransformModule | ComponentModule | ApiMethodModule;
+type PlotlyModule =
+    | TraceModule
+    | LocaleModule
+    | TransformModule
+    | ComponentModule
+    | ApiMethodModule;

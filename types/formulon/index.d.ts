@@ -14,7 +14,13 @@ export interface TypeInfoText {
 }
 
 export interface TypeInfoOther {
-    dataType: "checkbox" | "date" | "time" | "datetime" | "geolocation" | "null";
+    dataType:
+        | "checkbox"
+        | "date"
+        | "time"
+        | "datetime"
+        | "geolocation"
+        | "null";
     options?: {};
 }
 
@@ -40,7 +46,10 @@ export interface CallExpression {
     arguments: Array<CallExpression | Identifier | Literal>;
 }
 
-export function parse(formulaText: string, substitutions?: Record<string, Literal>): Literal | ParseError;
+export function parse(
+    formulaText: string,
+    substitutions?: Record<string, Literal>,
+): Literal | ParseError;
 
 export function extract(formulaText: string): string[];
 

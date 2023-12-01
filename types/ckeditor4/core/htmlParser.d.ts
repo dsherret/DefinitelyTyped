@@ -1,16 +1,29 @@
 declare namespace CKEDITOR {
     interface CKEditorStatic {
         readonly htmlParser: {
-            new(): htmlParser;
-            basicWriter: { new(): htmlParser.basicWriter };
-            cdata: { new(value: string): htmlParser.cdata };
-            comment: { new(value: string): htmlParser.comment };
-            cssStyle: { new(elementOrStyleText: htmlParser.element | string): htmlParser.cssStyle };
-            element: { new(name: string, attributes?: { [name: string]: string } | null): htmlParser.element };
-            filter: { new(rules?: htmlParser.filterRulesDefinition): htmlParser.filter };
-            filterRulesGroup: { new(): htmlParser.filterRulesGroup };
+            new (): htmlParser;
+            basicWriter: { new (): htmlParser.basicWriter };
+            cdata: { new (value: string): htmlParser.cdata };
+            comment: { new (value: string): htmlParser.comment };
+            cssStyle: {
+                new (
+                    elementOrStyleText: htmlParser.element | string,
+                ): htmlParser.cssStyle;
+            };
+            element: {
+                new (
+                    name: string,
+                    attributes?: { [name: string]: string } | null,
+                ): htmlParser.element;
+            };
+            filter: {
+                new (
+                    rules?: htmlParser.filterRulesDefinition,
+                ): htmlParser.filter;
+            };
+            filterRulesGroup: { new (): htmlParser.filterRulesGroup };
             fragment: {
-                new(): htmlParser.fragment;
+                new (): htmlParser.fragment;
 
                 fromBBCode(source: string): htmlParser.fragment;
 
@@ -20,8 +33,8 @@ declare namespace CKEDITOR {
                     fixingBlock?: string | boolean,
                 ): htmlParser.fragment | htmlParser.element;
             };
-            node: { new(): htmlParser.node };
-            text: { new(value: string): htmlParser.text };
+            node: { new (): htmlParser.node };
+            text: { new (value: string): htmlParser.text };
         };
     }
     /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_htmlParser.html */
@@ -30,7 +43,11 @@ declare namespace CKEDITOR {
 
         onComment?(comment?: string): void;
 
-        onTagOpen?(tagName?: string, attributes?: { [attr: string]: string }, selfClosing?: boolean): void;
+        onTagOpen?(
+            tagName?: string,
+            attributes?: { [attr: string]: string },
+            selfClosing?: boolean,
+        ): void;
 
         onTagClose?(tagName?: string): void;
 
@@ -49,7 +66,10 @@ declare namespace CKEDITOR {
 
             getHtml(reset: boolean): string;
 
-            openTag(tagName: string, attributes: { [key: string]: string }): void;
+            openTag(
+                tagName: string,
+                attributes: { [key: string]: string },
+            ): void;
 
             openTagClose(tagName: string, isSelfClose: boolean): void;
 
@@ -76,7 +96,9 @@ declare namespace CKEDITOR {
         }
 
         interface cssStyle {
-            populate(obj: element | dom.element | { [key: string]: unknown }): void;
+            populate(
+                obj: element | dom.element | { [key: string]: unknown },
+            ): void;
         }
 
         interface element extends node {
@@ -95,12 +117,24 @@ declare namespace CKEDITOR {
 
             filterChildren(filter: filter): void;
 
-            find(criteria: string | ((el: node) => boolean), recursive?: boolean): node[];
+            find(
+                criteria: string | ((el: node) => boolean),
+                recursive?: boolean,
+            ): node[];
 
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            forEach(callback: (node: node) => void | false, type?: number, skipRoot?: boolean): void;
+            forEach(
+                callback: (node: node) => void | false,
+                type?: number,
+                skipRoot?: boolean,
+            ): void;
 
-            getFirst(condition: string | { [key: string]: string } | ((node: node) => boolean)): node;
+            getFirst(
+                condition:
+                    | string
+                    | { [key: string]: string }
+                    | ((node: node) => boolean),
+            ): node;
 
             getHtml(): string;
 
@@ -136,9 +170,9 @@ declare namespace CKEDITOR {
                 options?:
                     | number
                     | {
-                        priority?: number | undefined;
-                        applyToAll?: boolean | undefined;
-                    },
+                          priority?: number | undefined;
+                          applyToAll?: boolean | undefined;
+                      },
             ): void;
 
             applyTo(node: node): void;
@@ -163,9 +197,15 @@ declare namespace CKEDITOR {
 
             add(rule: rule, priority: number, options: ruleOptions): void;
 
-            addMany(rules: rule[], priority: number, options: ruleOptions): void;
+            addMany(
+                rules: rule[],
+                priority: number,
+                options: ruleOptions,
+            ): void;
 
-            exec(currentValue: node | fragment | string): node | fragment | string;
+            exec(
+                currentValue: node | fragment | string,
+            ): node | fragment | string;
 
             execOnName(currentName: string): string;
 
@@ -184,15 +224,28 @@ declare namespace CKEDITOR {
             filterChildren(filter: filter, filterRoot?: boolean): void;
 
             // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-            forEach(callback: (node: node) => void | false, type?: number, skipRoot?: boolean): void;
+            forEach(
+                callback: (node: node) => void | false,
+                type?: number,
+                skipRoot?: boolean,
+            ): void;
 
-            writeChildrenHtml(writer: basicWriter, filter?: filter, filterRoot?: boolean): void;
+            writeChildrenHtml(
+                writer: basicWriter,
+                filter?: filter,
+                filterRoot?: boolean,
+            ): void;
 
             writeHtml(writer: basicWriter, filter?: filter): void;
         }
 
         interface node {
-            getAscendant(condition: string | { [name: string]: string } | ((node: element) => boolean)): element;
+            getAscendant(
+                condition:
+                    | string
+                    | { [name: string]: string }
+                    | ((node: element) => boolean),
+            ): element;
 
             getIndex(): number;
 
@@ -207,7 +260,9 @@ declare namespace CKEDITOR {
             wrapWith(wrapper: element): element;
         }
 
-        type rule = ((value: node | fragment | string) => boolean) | [string, string];
+        type rule =
+            | ((value: node | fragment | string) => boolean)
+            | [string, string];
 
         interface ruleOptions {
             applyToAll?: boolean | undefined;

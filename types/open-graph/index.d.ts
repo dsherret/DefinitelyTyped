@@ -21,7 +21,12 @@ declare namespace og {
     }
 
     interface Data {
-        [key: string]: string | string[] | ImageVideoMetadata | Metadata | undefined;
+        [key: string]:
+            | string
+            | string[]
+            | ImageVideoMetadata
+            | Metadata
+            | undefined;
         /** A URL to an audio file to accompany this object. */
         audio?: string | string[] | Metadata | undefined;
         /** A one to two sentence description of your object. */
@@ -34,10 +39,14 @@ declare namespace og {
         /** An image URL which should represent your object within the graph. */
         image?: string | string[] | ImageVideoMetadata | undefined;
         /** The locale these tags are marked up in. Of the format `language_TERRITORY`. Default is `en_US`. */
-        locale?: string | string[] | {
-            /** An array of other locales this page is available in. */
-            alternate?: string | string[] | undefined;
-        } | undefined;
+        locale?:
+            | string
+            | string[]
+            | {
+                  /** An array of other locales this page is available in. */
+                  alternate?: string | string[] | undefined;
+              }
+            | undefined;
         /** If your object is part of a larger web site, the name which should be displayed for the overall site. e.g., "IMDb". */
         site_name?: string | string[] | undefined;
         /** The title of your object as it should appear within the graph, e.g., "The Rock". */
@@ -51,16 +60,26 @@ declare namespace og {
     }
 
     type DataCallback = (err: Error | null, data: Data | undefined) => void;
-    type RequestCallback = (err: Error | null, data: string | undefined) => void;
+    type RequestCallback = (
+        err: Error | null,
+        data: string | undefined,
+    ) => void;
 
     interface Options {
         strict?: boolean | undefined;
     }
 
     function parse(websiteContent: string, options?: Options): Data;
-    function getHTML(url: string | cheerio.Cheerio, callback: RequestCallback): void;
+    function getHTML(
+        url: string | cheerio.Cheerio,
+        callback: RequestCallback,
+    ): void;
 }
 
-declare function og(url: string, callback: og.DataCallback, options?: og.Options): void;
+declare function og(
+    url: string,
+    callback: og.DataCallback,
+    options?: og.Options,
+): void;
 
 export = og;

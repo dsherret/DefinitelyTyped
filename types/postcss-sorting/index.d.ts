@@ -53,7 +53,9 @@ declare namespace sorting {
          * that means that all declarations will be placed after any other element
          * @see {@link <https://github.com/hudochenkov/postcss-sorting/blob/master/lib/order/README.md>}
          */
-        order?: ReadonlyArray<OrderString | ExtendedRule | ExtendedAtRule> | undefined;
+        order?:
+            | ReadonlyArray<OrderString | ExtendedRule | ExtendedAtRule>
+            | undefined;
         /**
          * Specify the order of properties within declaration blocks.
          *
@@ -88,7 +90,11 @@ declare namespace sorting {
          * @default "bottom"
          * @see {@link <https://github.com/hudochenkov/postcss-sorting/blob/master/lib/properties-order/unspecified-properties-position.md#unspecified-properties-position>}
          */
-        "unspecified-properties-position"?: "top" | "bottom" | "bottomAlphabetical" | undefined;
+        "unspecified-properties-position"?:
+            | "top"
+            | "bottom"
+            | "bottomAlphabetical"
+            | undefined;
         /**
          * Throw config validation errors instead of showing and ignoring them
          * @default false

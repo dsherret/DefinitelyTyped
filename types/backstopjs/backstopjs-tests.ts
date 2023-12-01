@@ -16,7 +16,11 @@ backstop("test", { config: "custom/backstop/config.json" });
 
 backstop("test", { docker: true });
 
-backstop("test", { docker: true, config: "custom/backstop/config.json", filter: "someScenarioLabelAsRegExString" });
+backstop("test", {
+    docker: true,
+    config: "custom/backstop/config.json",
+    filter: "someScenarioLabelAsRegExString",
+});
 
 backstop("test", {
     filter: "someScenarioLabelAsRegExString",
@@ -26,7 +30,7 @@ backstop("test", {
         viewports: [],
 
         dockerCommandTemplate:
-            "docker run --rm -it --net=\"host\" --mount type=bind,source=\"{cwd}\",target=/src backstopjs/backstopjs:{version} {backstopCommand} {args}",
+            'docker run --rm -it --net="host" --mount type=bind,source="{cwd}",target=/src backstopjs/backstopjs:{version} {backstopCommand} {args}',
     },
 });
 

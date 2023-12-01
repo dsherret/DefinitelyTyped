@@ -23,11 +23,23 @@ declare namespace lost {
     // since the library's main file passes all 3 parameters to all of them
 
     /** Lib function that requires css and settings params */
-    type LostLib<R = void> = (css: Container, settings: Settings, _result?: Result) => R;
+    type LostLib<R = void> = (
+        css: Container,
+        settings: Settings,
+        _result?: Result,
+    ) => R;
     /** Lib function that only requires css param */
-    type LostLibNoSettings<R = void> = (css: Container, _settings?: Settings, _result?: Result) => R;
+    type LostLibNoSettings<R = void> = (
+        css: Container,
+        _settings?: Settings,
+        _result?: Result,
+    ) => R;
     /** Lib function that requires css, settings, and result params */
-    type LostLibResult<R = void> = (css: Container, settings: Settings, result: Result) => R;
+    type LostLibResult<R = void> = (
+        css: Container,
+        settings: Settings,
+        result: Result,
+    ) => R;
 }
 
 declare var lost: PluginCreator<lost.Settings>;

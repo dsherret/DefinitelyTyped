@@ -37,15 +37,15 @@ options = { attributes: null }; // $ExpectType { attributes: null; }
 // @ts-expect-error
 options = { attributes: "hello-world" };
 options = { attributes: { attr: "hello-world" } }; // $ExpectType { attributes: { attr: string; }; }
-options = { attributes: href => ({}) }; // $ExpectType { attributes: (href: string) => {}; }
+options = { attributes: (href) => ({}) }; // $ExpectType { attributes: (href: string) => {}; }
 
 // @ts-expect-error
 options = { className: null };
 options = { className: "new-link--url" }; // $ExpectType { className: string; }
 // tslint:disable-next-line:no-unnecessary-type-assertion
-options = { className: (href, type) => (`new-link-${type}` as string) }; // $ExpectType { className: (href: string, type: LinkEntityType) => string; }
+options = { className: (href, type) => `new-link-${type}` as string }; // $ExpectType { className: (href: string, type: LinkEntityType) => string; }
 // @ts-expect-error
-options = { className: { sunshine: v => v } };
+options = { className: { sunshine: (v) => v } };
 options = { className: { email: () => "new-link--email" } }; // $ExpectType { className: { email: () => string; }; }
 
 // @ts-expect-error
@@ -56,15 +56,15 @@ options = { defaultProtocol: "http" }; // $ExpectType { defaultProtocol: string;
 options = { defaultProtocol: "ftp" }; // $ExpectType { defaultProtocol: string; }
 
 options = { format: null }; // $ExpectType { format: null; }
-options = { format: value => value }; // $ExpectType { format: (value: string) => string; }
+options = { format: (value) => value }; // $ExpectType { format: (value: string) => string; }
 // @ts-expect-error
-options = { format: { sunshine: v => v } };
+options = { format: { sunshine: (v) => v } };
 options = { format: { email: () => "sunshine" } }; // $ExpectType { format: { email: () => string; }; }
 
 options = { formatHref: null }; // $ExpectType { formatHref: null; }
-options = { formatHref: href => href }; // $ExpectType { formatHref: (href: string) => string; }
+options = { formatHref: (href) => href }; // $ExpectType { formatHref: (href: string) => string; }
 // @ts-expect-error
-options = { formatHref: { sunshine: v => v } };
+options = { formatHref: { sunshine: (v) => v } };
 options = { formatHref: { email: () => "sunshine" } }; // $ExpectType { formatHref: { email: () => string; }; }
 
 // @ts-expect-error

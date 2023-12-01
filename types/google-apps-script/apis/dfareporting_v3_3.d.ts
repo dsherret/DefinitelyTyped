@@ -4,42 +4,80 @@ declare namespace GoogleAppsScript {
             namespace Reports {
                 interface CompatibleFieldsCollection {
                     // Returns the fields that are compatible to be selected in the respective sections of a report criteria, given the fields already selected in the input report and user permissions.
-                    query(resource: Schema.Report, profileId: string): Dfareporting.Schema.CompatibleFields;
+                    query(
+                        resource: Schema.Report,
+                        profileId: string,
+                    ): Dfareporting.Schema.CompatibleFields;
                 }
                 interface FilesCollection {
                     // Retrieves a report file. This method supports media download.
-                    get(profileId: string, reportId: string, fileId: string): Dfareporting.Schema.File;
+                    get(
+                        profileId: string,
+                        reportId: string,
+                        fileId: string,
+                    ): Dfareporting.Schema.File;
                     // Lists files for a report.
-                    list(profileId: string, reportId: string): Dfareporting.Schema.FileList;
+                    list(
+                        profileId: string,
+                        reportId: string,
+                    ): Dfareporting.Schema.FileList;
                     // Lists files for a report.
-                    list(profileId: string, reportId: string, optionalArgs: object): Dfareporting.Schema.FileList;
+                    list(
+                        profileId: string,
+                        reportId: string,
+                        optionalArgs: object,
+                    ): Dfareporting.Schema.FileList;
                 }
             }
             interface AccountActiveAdSummariesCollection {
                 // Gets the account's active ad summary by account ID.
-                get(profileId: string, summaryAccountId: string): Dfareporting.Schema.AccountActiveAdSummary;
+                get(
+                    profileId: string,
+                    summaryAccountId: string,
+                ): Dfareporting.Schema.AccountActiveAdSummary;
             }
             interface AccountPermissionGroupsCollection {
                 // Gets one account permission group by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.AccountPermissionGroup;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.AccountPermissionGroup;
                 // Retrieves the list of account permission groups.
-                list(profileId: string): Dfareporting.Schema.AccountPermissionGroupsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.AccountPermissionGroupsListResponse;
             }
             interface AccountPermissionsCollection {
                 // Gets one account permission by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.AccountPermission;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.AccountPermission;
                 // Retrieves the list of account permissions.
-                list(profileId: string): Dfareporting.Schema.AccountPermissionsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.AccountPermissionsListResponse;
             }
             interface AccountUserProfilesCollection {
                 // Gets one account user profile by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.AccountUserProfile;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.AccountUserProfile;
                 // Inserts a new account user profile.
-                insert(resource: Schema.AccountUserProfile, profileId: string): Dfareporting.Schema.AccountUserProfile;
+                insert(
+                    resource: Schema.AccountUserProfile,
+                    profileId: string,
+                ): Dfareporting.Schema.AccountUserProfile;
                 // Retrieves a list of account user profiles, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.AccountUserProfilesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.AccountUserProfilesListResponse;
                 // Retrieves a list of account user profiles, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.AccountUserProfilesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.AccountUserProfilesListResponse;
                 // Updates an existing account user profile. This method supports patch semantics.
                 patch(
                     resource: Schema.AccountUserProfile,
@@ -47,43 +85,82 @@ declare namespace GoogleAppsScript {
                     id: string,
                 ): Dfareporting.Schema.AccountUserProfile;
                 // Updates an existing account user profile.
-                update(resource: Schema.AccountUserProfile, profileId: string): Dfareporting.Schema.AccountUserProfile;
+                update(
+                    resource: Schema.AccountUserProfile,
+                    profileId: string,
+                ): Dfareporting.Schema.AccountUserProfile;
             }
             interface AccountsCollection {
                 // Gets one account by ID.
                 get(profileId: string, id: string): Dfareporting.Schema.Account;
                 // Retrieves the list of accounts, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.AccountsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.AccountsListResponse;
                 // Retrieves the list of accounts, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.AccountsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.AccountsListResponse;
                 // Updates an existing account. This method supports patch semantics.
-                patch(resource: Schema.Account, profileId: string, id: string): Dfareporting.Schema.Account;
+                patch(
+                    resource: Schema.Account,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Account;
                 // Updates an existing account.
-                update(resource: Schema.Account, profileId: string): Dfareporting.Schema.Account;
+                update(
+                    resource: Schema.Account,
+                    profileId: string,
+                ): Dfareporting.Schema.Account;
             }
             interface AdsCollection {
                 // Gets one ad by ID.
                 get(profileId: string, id: string): Dfareporting.Schema.Ad;
                 // Inserts a new ad.
-                insert(resource: Schema.Ad, profileId: string): Dfareporting.Schema.Ad;
+                insert(
+                    resource: Schema.Ad,
+                    profileId: string,
+                ): Dfareporting.Schema.Ad;
                 // Retrieves a list of ads, possibly filtered. This method supports paging.
                 list(profileId: string): Dfareporting.Schema.AdsListResponse;
                 // Retrieves a list of ads, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.AdsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.AdsListResponse;
                 // Updates an existing ad. This method supports patch semantics.
-                patch(resource: Schema.Ad, profileId: string, id: string): Dfareporting.Schema.Ad;
+                patch(
+                    resource: Schema.Ad,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Ad;
                 // Updates an existing ad.
-                update(resource: Schema.Ad, profileId: string): Dfareporting.Schema.Ad;
+                update(
+                    resource: Schema.Ad,
+                    profileId: string,
+                ): Dfareporting.Schema.Ad;
             }
             interface AdvertiserGroupsCollection {
                 // Gets one advertiser group by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.AdvertiserGroup;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.AdvertiserGroup;
                 // Inserts a new advertiser group.
-                insert(resource: Schema.AdvertiserGroup, profileId: string): Dfareporting.Schema.AdvertiserGroup;
+                insert(
+                    resource: Schema.AdvertiserGroup,
+                    profileId: string,
+                ): Dfareporting.Schema.AdvertiserGroup;
                 // Retrieves a list of advertiser groups, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.AdvertiserGroupsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.AdvertiserGroupsListResponse;
                 // Retrieves a list of advertiser groups, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.AdvertiserGroupsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.AdvertiserGroupsListResponse;
                 // Updates an existing advertiser group. This method supports patch semantics.
                 patch(
                     resource: Schema.AdvertiserGroup,
@@ -93,39 +170,80 @@ declare namespace GoogleAppsScript {
                 // Deletes an existing advertiser group.
                 remove(profileId: string, id: string): void;
                 // Updates an existing advertiser group.
-                update(resource: Schema.AdvertiserGroup, profileId: string): Dfareporting.Schema.AdvertiserGroup;
+                update(
+                    resource: Schema.AdvertiserGroup,
+                    profileId: string,
+                ): Dfareporting.Schema.AdvertiserGroup;
             }
             interface AdvertiserLandingPagesCollection {
                 // Gets one landing page by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.LandingPage;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.LandingPage;
                 // Inserts a new landing page.
-                insert(resource: Schema.LandingPage, profileId: string): Dfareporting.Schema.LandingPage;
+                insert(
+                    resource: Schema.LandingPage,
+                    profileId: string,
+                ): Dfareporting.Schema.LandingPage;
                 // Retrieves a list of landing pages.
-                list(profileId: string): Dfareporting.Schema.AdvertiserLandingPagesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.AdvertiserLandingPagesListResponse;
                 // Retrieves a list of landing pages.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.AdvertiserLandingPagesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.AdvertiserLandingPagesListResponse;
                 // Updates an existing landing page. This method supports patch semantics.
-                patch(resource: Schema.LandingPage, profileId: string, id: string): Dfareporting.Schema.LandingPage;
+                patch(
+                    resource: Schema.LandingPage,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.LandingPage;
                 // Updates an existing landing page.
-                update(resource: Schema.LandingPage, profileId: string): Dfareporting.Schema.LandingPage;
+                update(
+                    resource: Schema.LandingPage,
+                    profileId: string,
+                ): Dfareporting.Schema.LandingPage;
             }
             interface AdvertisersCollection {
                 // Gets one advertiser by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.Advertiser;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Advertiser;
                 // Inserts a new advertiser.
-                insert(resource: Schema.Advertiser, profileId: string): Dfareporting.Schema.Advertiser;
+                insert(
+                    resource: Schema.Advertiser,
+                    profileId: string,
+                ): Dfareporting.Schema.Advertiser;
                 // Retrieves a list of advertisers, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.AdvertisersListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.AdvertisersListResponse;
                 // Retrieves a list of advertisers, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.AdvertisersListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.AdvertisersListResponse;
                 // Updates an existing advertiser. This method supports patch semantics.
-                patch(resource: Schema.Advertiser, profileId: string, id: string): Dfareporting.Schema.Advertiser;
+                patch(
+                    resource: Schema.Advertiser,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Advertiser;
                 // Updates an existing advertiser.
-                update(resource: Schema.Advertiser, profileId: string): Dfareporting.Schema.Advertiser;
+                update(
+                    resource: Schema.Advertiser,
+                    profileId: string,
+                ): Dfareporting.Schema.Advertiser;
             }
             interface BrowsersCollection {
                 // Retrieves a list of browsers.
-                list(profileId: string): Dfareporting.Schema.BrowsersListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.BrowsersListResponse;
             }
             interface CampaignCreativeAssociationsCollection {
                 // Associates a creative with the specified campaign. This method creates a default ad with dimensions matching the creative in the campaign if such a default ad does not exist already.
@@ -148,47 +266,92 @@ declare namespace GoogleAppsScript {
             }
             interface CampaignsCollection {
                 // Gets one campaign by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.Campaign;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Campaign;
                 // Inserts a new campaign.
-                insert(resource: Schema.Campaign, profileId: string): Dfareporting.Schema.Campaign;
+                insert(
+                    resource: Schema.Campaign,
+                    profileId: string,
+                ): Dfareporting.Schema.Campaign;
                 // Retrieves a list of campaigns, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.CampaignsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.CampaignsListResponse;
                 // Retrieves a list of campaigns, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.CampaignsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.CampaignsListResponse;
                 // Updates an existing campaign. This method supports patch semantics.
-                patch(resource: Schema.Campaign, profileId: string, id: string): Dfareporting.Schema.Campaign;
+                patch(
+                    resource: Schema.Campaign,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Campaign;
                 // Updates an existing campaign.
-                update(resource: Schema.Campaign, profileId: string): Dfareporting.Schema.Campaign;
+                update(
+                    resource: Schema.Campaign,
+                    profileId: string,
+                ): Dfareporting.Schema.Campaign;
             }
             interface ChangeLogsCollection {
                 // Gets one change log by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.ChangeLog;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.ChangeLog;
                 // Retrieves a list of change logs. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.ChangeLogsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.ChangeLogsListResponse;
                 // Retrieves a list of change logs. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.ChangeLogsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.ChangeLogsListResponse;
             }
             interface CitiesCollection {
                 // Retrieves a list of cities, possibly filtered.
                 list(profileId: string): Dfareporting.Schema.CitiesListResponse;
                 // Retrieves a list of cities, possibly filtered.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.CitiesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.CitiesListResponse;
             }
             interface ConnectionTypesCollection {
                 // Gets one connection type by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.ConnectionType;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.ConnectionType;
                 // Retrieves a list of connection types.
-                list(profileId: string): Dfareporting.Schema.ConnectionTypesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.ConnectionTypesListResponse;
             }
             interface ContentCategoriesCollection {
                 // Gets one content category by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.ContentCategory;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.ContentCategory;
                 // Inserts a new content category.
-                insert(resource: Schema.ContentCategory, profileId: string): Dfareporting.Schema.ContentCategory;
+                insert(
+                    resource: Schema.ContentCategory,
+                    profileId: string,
+                ): Dfareporting.Schema.ContentCategory;
                 // Retrieves a list of content categories, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.ContentCategoriesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.ContentCategoriesListResponse;
                 // Retrieves a list of content categories, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.ContentCategoriesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.ContentCategoriesListResponse;
                 // Updates an existing content category. This method supports patch semantics.
                 patch(
                     resource: Schema.ContentCategory,
@@ -198,7 +361,10 @@ declare namespace GoogleAppsScript {
                 // Deletes an existing content category.
                 remove(profileId: string, id: string): void;
                 // Updates an existing content category.
-                update(resource: Schema.ContentCategory, profileId: string): Dfareporting.Schema.ContentCategory;
+                update(
+                    resource: Schema.ContentCategory,
+                    profileId: string,
+                ): Dfareporting.Schema.ContentCategory;
             }
             interface ConversionsCollection {
                 // Inserts conversions.
@@ -214,9 +380,14 @@ declare namespace GoogleAppsScript {
             }
             interface CountriesCollection {
                 // Gets one country by ID.
-                get(profileId: string, dartId: string): Dfareporting.Schema.Country;
+                get(
+                    profileId: string,
+                    dartId: string,
+                ): Dfareporting.Schema.Country;
                 // Retrieves a list of countries.
-                list(profileId: string): Dfareporting.Schema.CountriesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.CountriesListResponse;
             }
             interface CreativeAssetsCollection {
                 // Inserts a new creative asset.
@@ -235,7 +406,11 @@ declare namespace GoogleAppsScript {
             }
             interface CreativeFieldValuesCollection {
                 // Gets one creative field value by ID.
-                get(profileId: string, creativeFieldId: string, id: string): Dfareporting.Schema.CreativeFieldValue;
+                get(
+                    profileId: string,
+                    creativeFieldId: string,
+                    id: string,
+                ): Dfareporting.Schema.CreativeFieldValue;
                 // Inserts a new creative field value.
                 insert(
                     resource: Schema.CreativeFieldValue,
@@ -243,7 +418,10 @@ declare namespace GoogleAppsScript {
                     creativeFieldId: string,
                 ): Dfareporting.Schema.CreativeFieldValue;
                 // Retrieves a list of creative field values, possibly filtered. This method supports paging.
-                list(profileId: string, creativeFieldId: string): Dfareporting.Schema.CreativeFieldValuesListResponse;
+                list(
+                    profileId: string,
+                    creativeFieldId: string,
+                ): Dfareporting.Schema.CreativeFieldValuesListResponse;
                 // Retrieves a list of creative field values, possibly filtered. This method supports paging.
                 list(
                     profileId: string,
@@ -258,7 +436,11 @@ declare namespace GoogleAppsScript {
                     id: string,
                 ): Dfareporting.Schema.CreativeFieldValue;
                 // Deletes an existing creative field value.
-                remove(profileId: string, creativeFieldId: string, id: string): void;
+                remove(
+                    profileId: string,
+                    creativeFieldId: string,
+                    id: string,
+                ): void;
                 // Updates an existing creative field value.
                 update(
                     resource: Schema.CreativeFieldValue,
@@ -268,47 +450,101 @@ declare namespace GoogleAppsScript {
             }
             interface CreativeFieldsCollection {
                 // Gets one creative field by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.CreativeField;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.CreativeField;
                 // Inserts a new creative field.
-                insert(resource: Schema.CreativeField, profileId: string): Dfareporting.Schema.CreativeField;
+                insert(
+                    resource: Schema.CreativeField,
+                    profileId: string,
+                ): Dfareporting.Schema.CreativeField;
                 // Retrieves a list of creative fields, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.CreativeFieldsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.CreativeFieldsListResponse;
                 // Retrieves a list of creative fields, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.CreativeFieldsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.CreativeFieldsListResponse;
                 // Updates an existing creative field. This method supports patch semantics.
-                patch(resource: Schema.CreativeField, profileId: string, id: string): Dfareporting.Schema.CreativeField;
+                patch(
+                    resource: Schema.CreativeField,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.CreativeField;
                 // Deletes an existing creative field.
                 remove(profileId: string, id: string): void;
                 // Updates an existing creative field.
-                update(resource: Schema.CreativeField, profileId: string): Dfareporting.Schema.CreativeField;
+                update(
+                    resource: Schema.CreativeField,
+                    profileId: string,
+                ): Dfareporting.Schema.CreativeField;
             }
             interface CreativeGroupsCollection {
                 // Gets one creative group by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.CreativeGroup;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.CreativeGroup;
                 // Inserts a new creative group.
-                insert(resource: Schema.CreativeGroup, profileId: string): Dfareporting.Schema.CreativeGroup;
+                insert(
+                    resource: Schema.CreativeGroup,
+                    profileId: string,
+                ): Dfareporting.Schema.CreativeGroup;
                 // Retrieves a list of creative groups, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.CreativeGroupsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.CreativeGroupsListResponse;
                 // Retrieves a list of creative groups, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.CreativeGroupsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.CreativeGroupsListResponse;
                 // Updates an existing creative group. This method supports patch semantics.
-                patch(resource: Schema.CreativeGroup, profileId: string, id: string): Dfareporting.Schema.CreativeGroup;
+                patch(
+                    resource: Schema.CreativeGroup,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.CreativeGroup;
                 // Updates an existing creative group.
-                update(resource: Schema.CreativeGroup, profileId: string): Dfareporting.Schema.CreativeGroup;
+                update(
+                    resource: Schema.CreativeGroup,
+                    profileId: string,
+                ): Dfareporting.Schema.CreativeGroup;
             }
             interface CreativesCollection {
                 // Gets one creative by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.Creative;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Creative;
                 // Inserts a new creative.
-                insert(resource: Schema.Creative, profileId: string): Dfareporting.Schema.Creative;
+                insert(
+                    resource: Schema.Creative,
+                    profileId: string,
+                ): Dfareporting.Schema.Creative;
                 // Retrieves a list of creatives, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.CreativesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.CreativesListResponse;
                 // Retrieves a list of creatives, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.CreativesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.CreativesListResponse;
                 // Updates an existing creative. This method supports patch semantics.
-                patch(resource: Schema.Creative, profileId: string, id: string): Dfareporting.Schema.Creative;
+                patch(
+                    resource: Schema.Creative,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Creative;
                 // Updates an existing creative.
-                update(resource: Schema.Creative, profileId: string): Dfareporting.Schema.Creative;
+                update(
+                    resource: Schema.Creative,
+                    profileId: string,
+                ): Dfareporting.Schema.Creative;
             }
             interface DimensionValuesCollection {
                 // Retrieves list of report dimension values for a list of filters.
@@ -325,13 +561,24 @@ declare namespace GoogleAppsScript {
             }
             interface DirectorySitesCollection {
                 // Gets one directory site by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.DirectorySite;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.DirectorySite;
                 // Inserts a new directory site.
-                insert(resource: Schema.DirectorySite, profileId: string): Dfareporting.Schema.DirectorySite;
+                insert(
+                    resource: Schema.DirectorySite,
+                    profileId: string,
+                ): Dfareporting.Schema.DirectorySite;
                 // Retrieves a list of directory sites, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.DirectorySitesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.DirectorySitesListResponse;
                 // Retrieves a list of directory sites, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.DirectorySitesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.DirectorySitesListResponse;
             }
             interface DynamicTargetingKeysCollection {
                 // Inserts a new dynamic targeting key. Keys must be created at the advertiser level before being assigned to the advertiser's ads, creatives, or placements. There is a maximum of 1000 keys per advertiser, out of which a maximum of 20 keys can be assigned per ad, creative, or placement.
@@ -340,27 +587,55 @@ declare namespace GoogleAppsScript {
                     profileId: string,
                 ): Dfareporting.Schema.DynamicTargetingKey;
                 // Retrieves a list of dynamic targeting keys.
-                list(profileId: string): Dfareporting.Schema.DynamicTargetingKeysListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.DynamicTargetingKeysListResponse;
                 // Retrieves a list of dynamic targeting keys.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.DynamicTargetingKeysListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.DynamicTargetingKeysListResponse;
                 // Deletes an existing dynamic targeting key.
-                remove(profileId: string, objectId: string, name: string, objectType: string): void;
+                remove(
+                    profileId: string,
+                    objectId: string,
+                    name: string,
+                    objectType: string,
+                ): void;
             }
             interface EventTagsCollection {
                 // Gets one event tag by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.EventTag;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.EventTag;
                 // Inserts a new event tag.
-                insert(resource: Schema.EventTag, profileId: string): Dfareporting.Schema.EventTag;
+                insert(
+                    resource: Schema.EventTag,
+                    profileId: string,
+                ): Dfareporting.Schema.EventTag;
                 // Retrieves a list of event tags, possibly filtered.
-                list(profileId: string): Dfareporting.Schema.EventTagsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.EventTagsListResponse;
                 // Retrieves a list of event tags, possibly filtered.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.EventTagsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.EventTagsListResponse;
                 // Updates an existing event tag. This method supports patch semantics.
-                patch(resource: Schema.EventTag, profileId: string, id: string): Dfareporting.Schema.EventTag;
+                patch(
+                    resource: Schema.EventTag,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.EventTag;
                 // Deletes an existing event tag.
                 remove(profileId: string, id: string): void;
                 // Updates an existing event tag.
-                update(resource: Schema.EventTag, profileId: string): Dfareporting.Schema.EventTag;
+                update(
+                    resource: Schema.EventTag,
+                    profileId: string,
+                ): Dfareporting.Schema.EventTag;
             }
             interface FilesCollection {
                 // Retrieves a report file by its report ID and file ID. This method supports media download.
@@ -368,24 +643,40 @@ declare namespace GoogleAppsScript {
                 // Lists files for a user profile.
                 list(profileId: string): Dfareporting.Schema.FileList;
                 // Lists files for a user profile.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.FileList;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.FileList;
             }
             interface FloodlightActivitiesCollection {
                 // Generates a tag for a floodlight activity.
-                generatetag(profileId: string): Dfareporting.Schema.FloodlightActivitiesGenerateTagResponse;
+                generatetag(
+                    profileId: string,
+                ): Dfareporting.Schema.FloodlightActivitiesGenerateTagResponse;
                 // Generates a tag for a floodlight activity.
                 generatetag(
                     profileId: string,
                     optionalArgs: object,
                 ): Dfareporting.Schema.FloodlightActivitiesGenerateTagResponse;
                 // Gets one floodlight activity by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.FloodlightActivity;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.FloodlightActivity;
                 // Inserts a new floodlight activity.
-                insert(resource: Schema.FloodlightActivity, profileId: string): Dfareporting.Schema.FloodlightActivity;
+                insert(
+                    resource: Schema.FloodlightActivity,
+                    profileId: string,
+                ): Dfareporting.Schema.FloodlightActivity;
                 // Retrieves a list of floodlight activities, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.FloodlightActivitiesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.FloodlightActivitiesListResponse;
                 // Retrieves a list of floodlight activities, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.FloodlightActivitiesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.FloodlightActivitiesListResponse;
                 // Updates an existing floodlight activity. This method supports patch semantics.
                 patch(
                     resource: Schema.FloodlightActivity,
@@ -395,20 +686,31 @@ declare namespace GoogleAppsScript {
                 // Deletes an existing floodlight activity.
                 remove(profileId: string, id: string): void;
                 // Updates an existing floodlight activity.
-                update(resource: Schema.FloodlightActivity, profileId: string): Dfareporting.Schema.FloodlightActivity;
+                update(
+                    resource: Schema.FloodlightActivity,
+                    profileId: string,
+                ): Dfareporting.Schema.FloodlightActivity;
             }
             interface FloodlightActivityGroupsCollection {
                 // Gets one floodlight activity group by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.FloodlightActivityGroup;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.FloodlightActivityGroup;
                 // Inserts a new floodlight activity group.
                 insert(
                     resource: Schema.FloodlightActivityGroup,
                     profileId: string,
                 ): Dfareporting.Schema.FloodlightActivityGroup;
                 // Retrieves a list of floodlight activity groups, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.FloodlightActivityGroupsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.FloodlightActivityGroupsListResponse;
                 // Retrieves a list of floodlight activity groups, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.FloodlightActivityGroupsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.FloodlightActivityGroupsListResponse;
                 // Updates an existing floodlight activity group. This method supports patch semantics.
                 patch(
                     resource: Schema.FloodlightActivityGroup,
@@ -423,11 +725,19 @@ declare namespace GoogleAppsScript {
             }
             interface FloodlightConfigurationsCollection {
                 // Gets one floodlight configuration by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.FloodlightConfiguration;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.FloodlightConfiguration;
                 // Retrieves a list of floodlight configurations, possibly filtered.
-                list(profileId: string): Dfareporting.Schema.FloodlightConfigurationsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.FloodlightConfigurationsListResponse;
                 // Retrieves a list of floodlight configurations, possibly filtered.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.FloodlightConfigurationsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.FloodlightConfigurationsListResponse;
                 // Updates an existing floodlight configuration. This method supports patch semantics.
                 patch(
                     resource: Schema.FloodlightConfiguration,
@@ -442,9 +752,16 @@ declare namespace GoogleAppsScript {
             }
             interface InventoryItemsCollection {
                 // Gets one inventory item by ID.
-                get(profileId: string, projectId: string, id: string): Dfareporting.Schema.InventoryItem;
+                get(
+                    profileId: string,
+                    projectId: string,
+                    id: string,
+                ): Dfareporting.Schema.InventoryItem;
                 // Retrieves a list of inventory items, possibly filtered. This method supports paging.
-                list(profileId: string, projectId: string): Dfareporting.Schema.InventoryItemsListResponse;
+                list(
+                    profileId: string,
+                    projectId: string,
+                ): Dfareporting.Schema.InventoryItemsListResponse;
                 // Retrieves a list of inventory items, possibly filtered. This method supports paging.
                 list(
                     profileId: string,
@@ -454,7 +771,9 @@ declare namespace GoogleAppsScript {
             }
             interface LanguagesCollection {
                 // Retrieves a list of languages.
-                list(profileId: string): Dfareporting.Schema.LanguagesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.LanguagesListResponse;
             }
             interface MetrosCollection {
                 // Retrieves a list of metros.
@@ -462,35 +781,65 @@ declare namespace GoogleAppsScript {
             }
             interface MobileAppsCollection {
                 // Gets one mobile app by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.MobileApp;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.MobileApp;
                 // Retrieves list of available mobile apps.
-                list(profileId: string): Dfareporting.Schema.MobileAppsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.MobileAppsListResponse;
                 // Retrieves list of available mobile apps.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.MobileAppsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.MobileAppsListResponse;
             }
             interface MobileCarriersCollection {
                 // Gets one mobile carrier by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.MobileCarrier;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.MobileCarrier;
                 // Retrieves a list of mobile carriers.
-                list(profileId: string): Dfareporting.Schema.MobileCarriersListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.MobileCarriersListResponse;
             }
             interface OperatingSystemVersionsCollection {
                 // Gets one operating system version by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.OperatingSystemVersion;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.OperatingSystemVersion;
                 // Retrieves a list of operating system versions.
-                list(profileId: string): Dfareporting.Schema.OperatingSystemVersionsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.OperatingSystemVersionsListResponse;
             }
             interface OperatingSystemsCollection {
                 // Gets one operating system by DART ID.
-                get(profileId: string, dartId: string): Dfareporting.Schema.OperatingSystem;
+                get(
+                    profileId: string,
+                    dartId: string,
+                ): Dfareporting.Schema.OperatingSystem;
                 // Retrieves a list of operating systems.
-                list(profileId: string): Dfareporting.Schema.OperatingSystemsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.OperatingSystemsListResponse;
             }
             interface OrderDocumentsCollection {
                 // Gets one order document by ID.
-                get(profileId: string, projectId: string, id: string): Dfareporting.Schema.OrderDocument;
+                get(
+                    profileId: string,
+                    projectId: string,
+                    id: string,
+                ): Dfareporting.Schema.OrderDocument;
                 // Retrieves a list of order documents, possibly filtered. This method supports paging.
-                list(profileId: string, projectId: string): Dfareporting.Schema.OrderDocumentsListResponse;
+                list(
+                    profileId: string,
+                    projectId: string,
+                ): Dfareporting.Schema.OrderDocumentsListResponse;
                 // Retrieves a list of order documents, possibly filtered. This method supports paging.
                 list(
                     profileId: string,
@@ -500,9 +849,16 @@ declare namespace GoogleAppsScript {
             }
             interface OrdersCollection {
                 // Gets one order by ID.
-                get(profileId: string, projectId: string, id: string): Dfareporting.Schema.Order;
+                get(
+                    profileId: string,
+                    projectId: string,
+                    id: string,
+                ): Dfareporting.Schema.Order;
                 // Retrieves a list of orders, possibly filtered. This method supports paging.
-                list(profileId: string, projectId: string): Dfareporting.Schema.OrdersListResponse;
+                list(
+                    profileId: string,
+                    projectId: string,
+                ): Dfareporting.Schema.OrdersListResponse;
                 // Retrieves a list of orders, possibly filtered. This method supports paging.
                 list(
                     profileId: string,
@@ -512,13 +868,24 @@ declare namespace GoogleAppsScript {
             }
             interface PlacementGroupsCollection {
                 // Gets one placement group by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.PlacementGroup;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.PlacementGroup;
                 // Inserts a new placement group.
-                insert(resource: Schema.PlacementGroup, profileId: string): Dfareporting.Schema.PlacementGroup;
+                insert(
+                    resource: Schema.PlacementGroup,
+                    profileId: string,
+                ): Dfareporting.Schema.PlacementGroup;
                 // Retrieves a list of placement groups, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.PlacementGroupsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.PlacementGroupsListResponse;
                 // Retrieves a list of placement groups, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.PlacementGroupsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.PlacementGroupsListResponse;
                 // Updates an existing placement group. This method supports patch semantics.
                 patch(
                     resource: Schema.PlacementGroup,
@@ -526,17 +893,31 @@ declare namespace GoogleAppsScript {
                     id: string,
                 ): Dfareporting.Schema.PlacementGroup;
                 // Updates an existing placement group.
-                update(resource: Schema.PlacementGroup, profileId: string): Dfareporting.Schema.PlacementGroup;
+                update(
+                    resource: Schema.PlacementGroup,
+                    profileId: string,
+                ): Dfareporting.Schema.PlacementGroup;
             }
             interface PlacementStrategiesCollection {
                 // Gets one placement strategy by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.PlacementStrategy;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.PlacementStrategy;
                 // Inserts a new placement strategy.
-                insert(resource: Schema.PlacementStrategy, profileId: string): Dfareporting.Schema.PlacementStrategy;
+                insert(
+                    resource: Schema.PlacementStrategy,
+                    profileId: string,
+                ): Dfareporting.Schema.PlacementStrategy;
                 // Retrieves a list of placement strategies, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.PlacementStrategiesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.PlacementStrategiesListResponse;
                 // Retrieves a list of placement strategies, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.PlacementStrategiesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.PlacementStrategiesListResponse;
                 // Updates an existing placement strategy. This method supports patch semantics.
                 patch(
                     resource: Schema.PlacementStrategy,
@@ -546,56 +927,99 @@ declare namespace GoogleAppsScript {
                 // Deletes an existing placement strategy.
                 remove(profileId: string, id: string): void;
                 // Updates an existing placement strategy.
-                update(resource: Schema.PlacementStrategy, profileId: string): Dfareporting.Schema.PlacementStrategy;
+                update(
+                    resource: Schema.PlacementStrategy,
+                    profileId: string,
+                ): Dfareporting.Schema.PlacementStrategy;
             }
             interface PlacementsCollection {
                 // Generates tags for a placement.
-                generatetags(profileId: string): Dfareporting.Schema.PlacementsGenerateTagsResponse;
+                generatetags(
+                    profileId: string,
+                ): Dfareporting.Schema.PlacementsGenerateTagsResponse;
                 // Generates tags for a placement.
                 generatetags(
                     profileId: string,
                     optionalArgs: object,
                 ): Dfareporting.Schema.PlacementsGenerateTagsResponse;
                 // Gets one placement by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.Placement;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Placement;
                 // Inserts a new placement.
-                insert(resource: Schema.Placement, profileId: string): Dfareporting.Schema.Placement;
+                insert(
+                    resource: Schema.Placement,
+                    profileId: string,
+                ): Dfareporting.Schema.Placement;
                 // Retrieves a list of placements, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.PlacementsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.PlacementsListResponse;
                 // Retrieves a list of placements, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.PlacementsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.PlacementsListResponse;
                 // Updates an existing placement. This method supports patch semantics.
-                patch(resource: Schema.Placement, profileId: string, id: string): Dfareporting.Schema.Placement;
+                patch(
+                    resource: Schema.Placement,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Placement;
                 // Updates an existing placement.
-                update(resource: Schema.Placement, profileId: string): Dfareporting.Schema.Placement;
+                update(
+                    resource: Schema.Placement,
+                    profileId: string,
+                ): Dfareporting.Schema.Placement;
             }
             interface PlatformTypesCollection {
                 // Gets one platform type by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.PlatformType;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.PlatformType;
                 // Retrieves a list of platform types.
-                list(profileId: string): Dfareporting.Schema.PlatformTypesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.PlatformTypesListResponse;
             }
             interface PostalCodesCollection {
                 // Gets one postal code by ID.
-                get(profileId: string, code: string): Dfareporting.Schema.PostalCode;
+                get(
+                    profileId: string,
+                    code: string,
+                ): Dfareporting.Schema.PostalCode;
                 // Retrieves a list of postal codes.
-                list(profileId: string): Dfareporting.Schema.PostalCodesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.PostalCodesListResponse;
             }
             interface ProjectsCollection {
                 // Gets one project by ID.
                 get(profileId: string, id: string): Dfareporting.Schema.Project;
                 // Retrieves a list of projects, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.ProjectsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.ProjectsListResponse;
                 // Retrieves a list of projects, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.ProjectsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.ProjectsListResponse;
             }
             interface RegionsCollection {
                 // Retrieves a list of regions.
-                list(profileId: string): Dfareporting.Schema.RegionsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.RegionsListResponse;
             }
             interface RemarketingListSharesCollection {
                 // Gets one remarketing list share by remarketing list ID.
-                get(profileId: string, remarketingListId: string): Dfareporting.Schema.RemarketingListShare;
+                get(
+                    profileId: string,
+                    remarketingListId: string,
+                ): Dfareporting.Schema.RemarketingListShare;
                 // Updates an existing remarketing list share. This method supports patch semantics.
                 patch(
                     resource: Schema.RemarketingListShare,
@@ -610,11 +1034,20 @@ declare namespace GoogleAppsScript {
             }
             interface RemarketingListsCollection {
                 // Gets one remarketing list by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.RemarketingList;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.RemarketingList;
                 // Inserts a new remarketing list.
-                insert(resource: Schema.RemarketingList, profileId: string): Dfareporting.Schema.RemarketingList;
+                insert(
+                    resource: Schema.RemarketingList,
+                    profileId: string,
+                ): Dfareporting.Schema.RemarketingList;
                 // Retrieves a list of remarketing lists, possibly filtered. This method supports paging.
-                list(profileId: string, advertiserId: string): Dfareporting.Schema.RemarketingListsListResponse;
+                list(
+                    profileId: string,
+                    advertiserId: string,
+                ): Dfareporting.Schema.RemarketingListsListResponse;
                 // Retrieves a list of remarketing lists, possibly filtered. This method supports paging.
                 list(
                     profileId: string,
@@ -628,71 +1061,142 @@ declare namespace GoogleAppsScript {
                     id: string,
                 ): Dfareporting.Schema.RemarketingList;
                 // Updates an existing remarketing list.
-                update(resource: Schema.RemarketingList, profileId: string): Dfareporting.Schema.RemarketingList;
+                update(
+                    resource: Schema.RemarketingList,
+                    profileId: string,
+                ): Dfareporting.Schema.RemarketingList;
             }
             interface ReportsCollection {
-                CompatibleFields?: Dfareporting.Collection.Reports.CompatibleFieldsCollection | undefined;
-                Files?: Dfareporting.Collection.Reports.FilesCollection | undefined;
+                CompatibleFields?:
+                    | Dfareporting.Collection.Reports.CompatibleFieldsCollection
+                    | undefined;
+                Files?:
+                    | Dfareporting.Collection.Reports.FilesCollection
+                    | undefined;
                 // Retrieves a report by its ID.
-                get(profileId: string, reportId: string): Dfareporting.Schema.Report;
+                get(
+                    profileId: string,
+                    reportId: string,
+                ): Dfareporting.Schema.Report;
                 // Creates a report.
-                insert(resource: Schema.Report, profileId: string): Dfareporting.Schema.Report;
+                insert(
+                    resource: Schema.Report,
+                    profileId: string,
+                ): Dfareporting.Schema.Report;
                 // Retrieves list of reports.
                 list(profileId: string): Dfareporting.Schema.ReportList;
                 // Retrieves list of reports.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.ReportList;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.ReportList;
                 // Updates a report. This method supports patch semantics.
-                patch(resource: Schema.Report, profileId: string, reportId: string): Dfareporting.Schema.Report;
+                patch(
+                    resource: Schema.Report,
+                    profileId: string,
+                    reportId: string,
+                ): Dfareporting.Schema.Report;
                 // Deletes a report by its ID.
                 remove(profileId: string, reportId: string): void;
                 // Runs a report.
-                run(profileId: string, reportId: string): Dfareporting.Schema.File;
+                run(
+                    profileId: string,
+                    reportId: string,
+                ): Dfareporting.Schema.File;
                 // Runs a report.
-                run(profileId: string, reportId: string, optionalArgs: object): Dfareporting.Schema.File;
+                run(
+                    profileId: string,
+                    reportId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.File;
                 // Updates a report.
-                update(resource: Schema.Report, profileId: string, reportId: string): Dfareporting.Schema.Report;
+                update(
+                    resource: Schema.Report,
+                    profileId: string,
+                    reportId: string,
+                ): Dfareporting.Schema.Report;
             }
             interface SitesCollection {
                 // Gets one site by ID.
                 get(profileId: string, id: string): Dfareporting.Schema.Site;
                 // Inserts a new site.
-                insert(resource: Schema.Site, profileId: string): Dfareporting.Schema.Site;
+                insert(
+                    resource: Schema.Site,
+                    profileId: string,
+                ): Dfareporting.Schema.Site;
                 // Retrieves a list of sites, possibly filtered. This method supports paging.
                 list(profileId: string): Dfareporting.Schema.SitesListResponse;
                 // Retrieves a list of sites, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.SitesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.SitesListResponse;
                 // Updates an existing site. This method supports patch semantics.
-                patch(resource: Schema.Site, profileId: string, id: string): Dfareporting.Schema.Site;
+                patch(
+                    resource: Schema.Site,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Site;
                 // Updates an existing site.
-                update(resource: Schema.Site, profileId: string): Dfareporting.Schema.Site;
+                update(
+                    resource: Schema.Site,
+                    profileId: string,
+                ): Dfareporting.Schema.Site;
             }
             interface SizesCollection {
                 // Gets one size by ID.
                 get(profileId: string, id: string): Dfareporting.Schema.Size;
                 // Inserts a new size.
-                insert(resource: Schema.Size, profileId: string): Dfareporting.Schema.Size;
+                insert(
+                    resource: Schema.Size,
+                    profileId: string,
+                ): Dfareporting.Schema.Size;
                 // Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally unique and may include values not currently in use by your account. Due to this, the list of sizes returned by this method may differ from the list seen in the Trafficking UI.
                 list(profileId: string): Dfareporting.Schema.SizesListResponse;
                 // Retrieves a list of sizes, possibly filtered. Retrieved sizes are globally unique and may include values not currently in use by your account. Due to this, the list of sizes returned by this method may differ from the list seen in the Trafficking UI.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.SizesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.SizesListResponse;
             }
             interface SubaccountsCollection {
                 // Gets one subaccount by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.Subaccount;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Subaccount;
                 // Inserts a new subaccount.
-                insert(resource: Schema.Subaccount, profileId: string): Dfareporting.Schema.Subaccount;
+                insert(
+                    resource: Schema.Subaccount,
+                    profileId: string,
+                ): Dfareporting.Schema.Subaccount;
                 // Gets a list of subaccounts, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.SubaccountsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.SubaccountsListResponse;
                 // Gets a list of subaccounts, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.SubaccountsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.SubaccountsListResponse;
                 // Updates an existing subaccount. This method supports patch semantics.
-                patch(resource: Schema.Subaccount, profileId: string, id: string): Dfareporting.Schema.Subaccount;
+                patch(
+                    resource: Schema.Subaccount,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.Subaccount;
                 // Updates an existing subaccount.
-                update(resource: Schema.Subaccount, profileId: string): Dfareporting.Schema.Subaccount;
+                update(
+                    resource: Schema.Subaccount,
+                    profileId: string,
+                ): Dfareporting.Schema.Subaccount;
             }
             interface TargetableRemarketingListsCollection {
                 // Gets one remarketing list by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.TargetableRemarketingList;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.TargetableRemarketingList;
                 // Retrieves a list of targetable remarketing lists, possibly filtered. This method supports paging.
                 list(
                     profileId: string,
@@ -707,13 +1211,24 @@ declare namespace GoogleAppsScript {
             }
             interface TargetingTemplatesCollection {
                 // Gets one targeting template by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.TargetingTemplate;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.TargetingTemplate;
                 // Inserts a new targeting template.
-                insert(resource: Schema.TargetingTemplate, profileId: string): Dfareporting.Schema.TargetingTemplate;
+                insert(
+                    resource: Schema.TargetingTemplate,
+                    profileId: string,
+                ): Dfareporting.Schema.TargetingTemplate;
                 // Retrieves a list of targeting templates, optionally filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.TargetingTemplatesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.TargetingTemplatesListResponse;
                 // Retrieves a list of targeting templates, optionally filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.TargetingTemplatesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.TargetingTemplatesListResponse;
                 // Updates an existing targeting template. This method supports patch semantics.
                 patch(
                     resource: Schema.TargetingTemplate,
@@ -721,7 +1236,10 @@ declare namespace GoogleAppsScript {
                     id: string,
                 ): Dfareporting.Schema.TargetingTemplate;
                 // Updates an existing targeting template.
-                update(resource: Schema.TargetingTemplate, profileId: string): Dfareporting.Schema.TargetingTemplate;
+                update(
+                    resource: Schema.TargetingTemplate,
+                    profileId: string,
+                ): Dfareporting.Schema.TargetingTemplate;
             }
             interface UserProfilesCollection {
                 // Gets one user profile by ID.
@@ -731,39 +1249,75 @@ declare namespace GoogleAppsScript {
             }
             interface UserRolePermissionGroupsCollection {
                 // Gets one user role permission group by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.UserRolePermissionGroup;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.UserRolePermissionGroup;
                 // Gets a list of all supported user role permission groups.
-                list(profileId: string): Dfareporting.Schema.UserRolePermissionGroupsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.UserRolePermissionGroupsListResponse;
             }
             interface UserRolePermissionsCollection {
                 // Gets one user role permission by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.UserRolePermission;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.UserRolePermission;
                 // Gets a list of user role permissions, possibly filtered.
-                list(profileId: string): Dfareporting.Schema.UserRolePermissionsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.UserRolePermissionsListResponse;
                 // Gets a list of user role permissions, possibly filtered.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.UserRolePermissionsListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.UserRolePermissionsListResponse;
             }
             interface UserRolesCollection {
                 // Gets one user role by ID.
-                get(profileId: string, id: string): Dfareporting.Schema.UserRole;
+                get(
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.UserRole;
                 // Inserts a new user role.
-                insert(resource: Schema.UserRole, profileId: string): Dfareporting.Schema.UserRole;
+                insert(
+                    resource: Schema.UserRole,
+                    profileId: string,
+                ): Dfareporting.Schema.UserRole;
                 // Retrieves a list of user roles, possibly filtered. This method supports paging.
-                list(profileId: string): Dfareporting.Schema.UserRolesListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.UserRolesListResponse;
                 // Retrieves a list of user roles, possibly filtered. This method supports paging.
-                list(profileId: string, optionalArgs: object): Dfareporting.Schema.UserRolesListResponse;
+                list(
+                    profileId: string,
+                    optionalArgs: object,
+                ): Dfareporting.Schema.UserRolesListResponse;
                 // Updates an existing user role. This method supports patch semantics.
-                patch(resource: Schema.UserRole, profileId: string, id: string): Dfareporting.Schema.UserRole;
+                patch(
+                    resource: Schema.UserRole,
+                    profileId: string,
+                    id: string,
+                ): Dfareporting.Schema.UserRole;
                 // Deletes an existing user role.
                 remove(profileId: string, id: string): void;
                 // Updates an existing user role.
-                update(resource: Schema.UserRole, profileId: string): Dfareporting.Schema.UserRole;
+                update(
+                    resource: Schema.UserRole,
+                    profileId: string,
+                ): Dfareporting.Schema.UserRole;
             }
             interface VideoFormatsCollection {
                 // Gets one video format by ID.
-                get(profileId: string, id: number): Dfareporting.Schema.VideoFormat;
+                get(
+                    profileId: string,
+                    id: number,
+                ): Dfareporting.Schema.VideoFormat;
                 // Lists available video formats.
-                list(profileId: string): Dfareporting.Schema.VideoFormatsListResponse;
+                list(
+                    profileId: string,
+                ): Dfareporting.Schema.VideoFormatsListResponse;
             }
         }
         namespace Schema {
@@ -784,7 +1338,9 @@ declare namespace GoogleAppsScript {
                 maximumImageSize?: string | undefined;
                 name?: string | undefined;
                 nielsenOcrEnabled?: boolean | undefined;
-                reportsConfiguration?: Dfareporting.Schema.ReportsConfiguration | undefined;
+                reportsConfiguration?:
+                    | Dfareporting.Schema.ReportsConfiguration
+                    | undefined;
                 shareReportsWithTwitter?: boolean | undefined;
                 teaserSizeLimit?: string | undefined;
             }
@@ -809,11 +1365,15 @@ declare namespace GoogleAppsScript {
                 name?: string | undefined;
             }
             interface AccountPermissionGroupsListResponse {
-                accountPermissionGroups?: Dfareporting.Schema.AccountPermissionGroup[] | undefined;
+                accountPermissionGroups?:
+                    | Dfareporting.Schema.AccountPermissionGroup[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface AccountPermissionsListResponse {
-                accountPermissions?: Dfareporting.Schema.AccountPermission[] | undefined;
+                accountPermissions?:
+                    | Dfareporting.Schema.AccountPermission[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface AccountUserProfile {
@@ -835,7 +1395,9 @@ declare namespace GoogleAppsScript {
                 userRoleId?: string | undefined;
             }
             interface AccountUserProfilesListResponse {
-                accountUserProfiles?: Dfareporting.Schema.AccountUserProfile[] | undefined;
+                accountUserProfiles?:
+                    | Dfareporting.Schema.AccountUserProfile[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
@@ -853,43 +1415,75 @@ declare namespace GoogleAppsScript {
                 accountId?: string | undefined;
                 active?: boolean | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 archived?: boolean | undefined;
                 audienceSegmentId?: string | undefined;
                 campaignId?: string | undefined;
-                campaignIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
-                clickThroughUrl?: Dfareporting.Schema.ClickThroughUrl | undefined;
-                clickThroughUrlSuffixProperties?: Dfareporting.Schema.ClickThroughUrlSuffixProperties | undefined;
+                campaignIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
+                clickThroughUrl?:
+                    | Dfareporting.Schema.ClickThroughUrl
+                    | undefined;
+                clickThroughUrlSuffixProperties?:
+                    | Dfareporting.Schema.ClickThroughUrlSuffixProperties
+                    | undefined;
                 comments?: string | undefined;
                 compatibility?: string | undefined;
                 createInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
-                creativeGroupAssignments?: Dfareporting.Schema.CreativeGroupAssignment[] | undefined;
-                creativeRotation?: Dfareporting.Schema.CreativeRotation | undefined;
-                dayPartTargeting?: Dfareporting.Schema.DayPartTargeting | undefined;
+                creativeGroupAssignments?:
+                    | Dfareporting.Schema.CreativeGroupAssignment[]
+                    | undefined;
+                creativeRotation?:
+                    | Dfareporting.Schema.CreativeRotation
+                    | undefined;
+                dayPartTargeting?:
+                    | Dfareporting.Schema.DayPartTargeting
+                    | undefined;
                 defaultClickThroughEventTagProperties?:
                     | Dfareporting.Schema.DefaultClickThroughEventTagProperties
                     | undefined;
-                deliverySchedule?: Dfareporting.Schema.DeliverySchedule | undefined;
+                deliverySchedule?:
+                    | Dfareporting.Schema.DeliverySchedule
+                    | undefined;
                 dynamicClickTracker?: boolean | undefined;
                 endTime?: string | undefined;
-                eventTagOverrides?: Dfareporting.Schema.EventTagOverride[] | undefined;
+                eventTagOverrides?:
+                    | Dfareporting.Schema.EventTagOverride[]
+                    | undefined;
                 geoTargeting?: Dfareporting.Schema.GeoTargeting | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
-                keyValueTargetingExpression?: Dfareporting.Schema.KeyValueTargetingExpression | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
+                keyValueTargetingExpression?:
+                    | Dfareporting.Schema.KeyValueTargetingExpression
+                    | undefined;
                 kind?: string | undefined;
-                languageTargeting?: Dfareporting.Schema.LanguageTargeting | undefined;
-                lastModifiedInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
+                languageTargeting?:
+                    | Dfareporting.Schema.LanguageTargeting
+                    | undefined;
+                lastModifiedInfo?:
+                    | Dfareporting.Schema.LastModifiedInfo
+                    | undefined;
                 name?: string | undefined;
-                placementAssignments?: Dfareporting.Schema.PlacementAssignment[] | undefined;
-                remarketingListExpression?: Dfareporting.Schema.ListTargetingExpression | undefined;
+                placementAssignments?:
+                    | Dfareporting.Schema.PlacementAssignment[]
+                    | undefined;
+                remarketingListExpression?:
+                    | Dfareporting.Schema.ListTargetingExpression
+                    | undefined;
                 size?: Dfareporting.Schema.Size | undefined;
                 sslCompliant?: boolean | undefined;
                 sslRequired?: boolean | undefined;
                 startTime?: string | undefined;
                 subaccountId?: string | undefined;
                 targetingTemplateId?: string | undefined;
-                technologyTargeting?: Dfareporting.Schema.TechnologyTargeting | undefined;
+                technologyTargeting?:
+                    | Dfareporting.Schema.TechnologyTargeting
+                    | undefined;
                 type?: string | undefined;
             }
             interface AdBlockingConfiguration {
@@ -920,9 +1514,13 @@ declare namespace GoogleAppsScript {
                 defaultClickThroughEventTagId?: string | undefined;
                 defaultEmail?: string | undefined;
                 floodlightConfigurationId?: string | undefined;
-                floodlightConfigurationIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                floodlightConfigurationIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 kind?: string | undefined;
                 name?: string | undefined;
                 originalFloodlightConfigurationId?: string | undefined;
@@ -937,7 +1535,9 @@ declare namespace GoogleAppsScript {
                 name?: string | undefined;
             }
             interface AdvertiserGroupsListResponse {
-                advertiserGroups?: Dfareporting.Schema.AdvertiserGroup[] | undefined;
+                advertiserGroups?:
+                    | Dfareporting.Schema.AdvertiserGroup[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
@@ -957,7 +1557,9 @@ declare namespace GoogleAppsScript {
                 name?: string | undefined;
             }
             interface AudienceSegmentGroup {
-                audienceSegments?: Dfareporting.Schema.AudienceSegment[] | undefined;
+                audienceSegments?:
+                    | Dfareporting.Schema.AudienceSegment[]
+                    | undefined;
                 id?: string | undefined;
                 name?: string | undefined;
             }
@@ -975,32 +1577,48 @@ declare namespace GoogleAppsScript {
             }
             interface Campaign {
                 accountId?: string | undefined;
-                adBlockingConfiguration?: Dfareporting.Schema.AdBlockingConfiguration | undefined;
+                adBlockingConfiguration?:
+                    | Dfareporting.Schema.AdBlockingConfiguration
+                    | undefined;
                 additionalCreativeOptimizationConfigurations?:
                     | Dfareporting.Schema.CreativeOptimizationConfiguration[]
                     | undefined;
                 advertiserGroupId?: string | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 archived?: boolean | undefined;
-                audienceSegmentGroups?: Dfareporting.Schema.AudienceSegmentGroup[] | undefined;
+                audienceSegmentGroups?:
+                    | Dfareporting.Schema.AudienceSegmentGroup[]
+                    | undefined;
                 billingInvoiceCode?: string | undefined;
-                clickThroughUrlSuffixProperties?: Dfareporting.Schema.ClickThroughUrlSuffixProperties | undefined;
+                clickThroughUrlSuffixProperties?:
+                    | Dfareporting.Schema.ClickThroughUrlSuffixProperties
+                    | undefined;
                 comment?: string | undefined;
                 createInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
                 creativeGroupIds?: string[] | undefined;
-                creativeOptimizationConfiguration?: Dfareporting.Schema.CreativeOptimizationConfiguration | undefined;
+                creativeOptimizationConfiguration?:
+                    | Dfareporting.Schema.CreativeOptimizationConfiguration
+                    | undefined;
                 defaultClickThroughEventTagProperties?:
                     | Dfareporting.Schema.DefaultClickThroughEventTagProperties
                     | undefined;
                 defaultLandingPageId?: string | undefined;
                 endDate?: string | undefined;
-                eventTagOverrides?: Dfareporting.Schema.EventTagOverride[] | undefined;
+                eventTagOverrides?:
+                    | Dfareporting.Schema.EventTagOverride[]
+                    | undefined;
                 externalId?: string | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 kind?: string | undefined;
-                lastModifiedInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
+                lastModifiedInfo?:
+                    | Dfareporting.Schema.LastModifiedInfo
+                    | undefined;
                 name?: string | undefined;
                 nielsenOcrEnabled?: boolean | undefined;
                 startDate?: string | undefined;
@@ -1012,7 +1630,9 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
             }
             interface CampaignCreativeAssociationsListResponse {
-                campaignCreativeAssociations?: Dfareporting.Schema.CampaignCreativeAssociation[] | undefined;
+                campaignCreativeAssociations?:
+                    | Dfareporting.Schema.CampaignCreativeAssociation[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
@@ -1058,7 +1678,9 @@ declare namespace GoogleAppsScript {
                 regionDartId?: string | undefined;
             }
             interface ClickTag {
-                clickThroughUrl?: Dfareporting.Schema.CreativeClickThroughUrl | undefined;
+                clickThroughUrl?:
+                    | Dfareporting.Schema.CreativeClickThroughUrl
+                    | undefined;
                 eventName?: string | undefined;
                 name?: string | undefined;
             }
@@ -1073,7 +1695,9 @@ declare namespace GoogleAppsScript {
                 overrideInheritedSuffix?: boolean | undefined;
             }
             interface CompanionClickThroughOverride {
-                clickThroughUrl?: Dfareporting.Schema.ClickThroughUrl | undefined;
+                clickThroughUrl?:
+                    | Dfareporting.Schema.ClickThroughUrl
+                    | undefined;
                 creativeId?: string | undefined;
             }
             interface CompanionSetting {
@@ -1086,13 +1710,19 @@ declare namespace GoogleAppsScript {
                 crossDimensionReachReportCompatibleFields?:
                     | Dfareporting.Schema.CrossDimensionReachReportCompatibleFields
                     | undefined;
-                floodlightReportCompatibleFields?: Dfareporting.Schema.FloodlightReportCompatibleFields | undefined;
+                floodlightReportCompatibleFields?:
+                    | Dfareporting.Schema.FloodlightReportCompatibleFields
+                    | undefined;
                 kind?: string | undefined;
                 pathToConversionReportCompatibleFields?:
                     | Dfareporting.Schema.PathToConversionReportCompatibleFields
                     | undefined;
-                reachReportCompatibleFields?: Dfareporting.Schema.ReachReportCompatibleFields | undefined;
-                reportCompatibleFields?: Dfareporting.Schema.ReportCompatibleFields | undefined;
+                reachReportCompatibleFields?:
+                    | Dfareporting.Schema.ReachReportCompatibleFields
+                    | undefined;
+                reportCompatibleFields?:
+                    | Dfareporting.Schema.ReportCompatibleFields
+                    | undefined;
             }
             interface ConnectionType {
                 id?: string | undefined;
@@ -1100,11 +1730,15 @@ declare namespace GoogleAppsScript {
                 name?: string | undefined;
             }
             interface ConnectionTypesListResponse {
-                connectionTypes?: Dfareporting.Schema.ConnectionType[] | undefined;
+                connectionTypes?:
+                    | Dfareporting.Schema.ConnectionType[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface ContentCategoriesListResponse {
-                contentCategories?: Dfareporting.Schema.ContentCategory[] | undefined;
+                contentCategories?:
+                    | Dfareporting.Schema.ContentCategory[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
@@ -1116,7 +1750,9 @@ declare namespace GoogleAppsScript {
             }
             interface Conversion {
                 childDirectedTreatment?: boolean | undefined;
-                customVariables?: Dfareporting.Schema.CustomFloodlightVariable[] | undefined;
+                customVariables?:
+                    | Dfareporting.Schema.CustomFloodlightVariable[]
+                    | undefined;
                 encryptedUserId?: string | undefined;
                 encryptedUserIdCandidates?: string[] | undefined;
                 floodlightActivityId?: string | undefined;
@@ -1187,29 +1823,47 @@ declare namespace GoogleAppsScript {
                 authoringTool?: string | undefined;
                 autoAdvanceImages?: boolean | undefined;
                 backgroundColor?: string | undefined;
-                backupImageClickThroughUrl?: Dfareporting.Schema.CreativeClickThroughUrl | undefined;
+                backupImageClickThroughUrl?:
+                    | Dfareporting.Schema.CreativeClickThroughUrl
+                    | undefined;
                 backupImageFeatures?: string[] | undefined;
                 backupImageReportingLabel?: string | undefined;
-                backupImageTargetWindow?: Dfareporting.Schema.TargetWindow | undefined;
+                backupImageTargetWindow?:
+                    | Dfareporting.Schema.TargetWindow
+                    | undefined;
                 clickTags?: Dfareporting.Schema.ClickTag[] | undefined;
                 commercialId?: string | undefined;
                 companionCreatives?: string[] | undefined;
                 compatibility?: string[] | undefined;
                 convertFlashToHtml5?: boolean | undefined;
-                counterCustomEvents?: Dfareporting.Schema.CreativeCustomEvent[] | undefined;
-                creativeAssetSelection?: Dfareporting.Schema.CreativeAssetSelection | undefined;
-                creativeAssets?: Dfareporting.Schema.CreativeAsset[] | undefined;
-                creativeFieldAssignments?: Dfareporting.Schema.CreativeFieldAssignment[] | undefined;
+                counterCustomEvents?:
+                    | Dfareporting.Schema.CreativeCustomEvent[]
+                    | undefined;
+                creativeAssetSelection?:
+                    | Dfareporting.Schema.CreativeAssetSelection
+                    | undefined;
+                creativeAssets?:
+                    | Dfareporting.Schema.CreativeAsset[]
+                    | undefined;
+                creativeFieldAssignments?:
+                    | Dfareporting.Schema.CreativeFieldAssignment[]
+                    | undefined;
                 customKeyValues?: string[] | undefined;
                 dynamicAssetSelection?: boolean | undefined;
-                exitCustomEvents?: Dfareporting.Schema.CreativeCustomEvent[] | undefined;
+                exitCustomEvents?:
+                    | Dfareporting.Schema.CreativeCustomEvent[]
+                    | undefined;
                 fsCommand?: Dfareporting.Schema.FsCommand | undefined;
                 htmlCode?: string | undefined;
                 htmlCodeLocked?: boolean | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 kind?: string | undefined;
-                lastModifiedInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
+                lastModifiedInfo?:
+                    | Dfareporting.Schema.LastModifiedInfo
+                    | undefined;
                 latestTraffickedCreativeId?: string | undefined;
                 mediaDescription?: string | undefined;
                 mediaDuration?: number | undefined;
@@ -1218,7 +1872,9 @@ declare namespace GoogleAppsScript {
                 progressOffset?: Dfareporting.Schema.VideoOffset | undefined;
                 redirectUrl?: string | undefined;
                 renderingId?: string | undefined;
-                renderingIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                renderingIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 requiredFlashPluginVersion?: string | undefined;
                 requiredFlashVersion?: number | undefined;
                 size?: Dfareporting.Schema.Size | undefined;
@@ -1232,8 +1888,12 @@ declare namespace GoogleAppsScript {
                 subaccountId?: string | undefined;
                 thirdPartyBackupImageImpressionsUrl?: string | undefined;
                 thirdPartyRichMediaImpressionsUrl?: string | undefined;
-                thirdPartyUrls?: Dfareporting.Schema.ThirdPartyTrackingUrl[] | undefined;
-                timerCustomEvents?: Dfareporting.Schema.CreativeCustomEvent[] | undefined;
+                thirdPartyUrls?:
+                    | Dfareporting.Schema.ThirdPartyTrackingUrl[]
+                    | undefined;
+                timerCustomEvents?:
+                    | Dfareporting.Schema.CreativeCustomEvent[]
+                    | undefined;
                 totalFileSize?: string | undefined;
                 type?: string | undefined;
                 universalAdId?: Dfareporting.Schema.UniversalAdId | undefined;
@@ -1245,10 +1905,14 @@ declare namespace GoogleAppsScript {
                 additionalSizes?: Dfareporting.Schema.Size[] | undefined;
                 alignment?: string | undefined;
                 artworkType?: string | undefined;
-                assetIdentifier?: Dfareporting.Schema.CreativeAssetId | undefined;
+                assetIdentifier?:
+                    | Dfareporting.Schema.CreativeAssetId
+                    | undefined;
                 audioBitRate?: number | undefined;
                 audioSampleRate?: number | undefined;
-                backupImageExit?: Dfareporting.Schema.CreativeCustomEvent | undefined;
+                backupImageExit?:
+                    | Dfareporting.Schema.CreativeCustomEvent
+                    | undefined;
                 bitRate?: number | undefined;
                 childAssetType?: string | undefined;
                 collapsedSize?: Dfareporting.Schema.Size | undefined;
@@ -1266,7 +1930,9 @@ declare namespace GoogleAppsScript {
                 hideSelectionBoxes?: boolean | undefined;
                 horizontallyLocked?: boolean | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 mediaDuration?: number | undefined;
                 mimeType?: string | undefined;
                 offset?: Dfareporting.Schema.OffsetPosition | undefined;
@@ -1296,11 +1962,15 @@ declare namespace GoogleAppsScript {
                 type?: string | undefined;
             }
             interface CreativeAssetMetadata {
-                assetIdentifier?: Dfareporting.Schema.CreativeAssetId | undefined;
+                assetIdentifier?:
+                    | Dfareporting.Schema.CreativeAssetId
+                    | undefined;
                 clickTags?: Dfareporting.Schema.ClickTag[] | undefined;
                 detectedFeatures?: string[] | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 kind?: string | undefined;
                 warnedValidationRules?: string[] | undefined;
             }
@@ -1311,13 +1981,23 @@ declare namespace GoogleAppsScript {
             interface CreativeAssignment {
                 active?: boolean | undefined;
                 applyEventTags?: boolean | undefined;
-                clickThroughUrl?: Dfareporting.Schema.ClickThroughUrl | undefined;
-                companionCreativeOverrides?: Dfareporting.Schema.CompanionClickThroughOverride[] | undefined;
-                creativeGroupAssignments?: Dfareporting.Schema.CreativeGroupAssignment[] | undefined;
+                clickThroughUrl?:
+                    | Dfareporting.Schema.ClickThroughUrl
+                    | undefined;
+                companionCreativeOverrides?:
+                    | Dfareporting.Schema.CompanionClickThroughOverride[]
+                    | undefined;
+                creativeGroupAssignments?:
+                    | Dfareporting.Schema.CreativeGroupAssignment[]
+                    | undefined;
                 creativeId?: string | undefined;
-                creativeIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                creativeIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 endTime?: string | undefined;
-                richMediaExitOverrides?: Dfareporting.Schema.RichMediaExitOverride[] | undefined;
+                richMediaExitOverrides?:
+                    | Dfareporting.Schema.RichMediaExitOverride[]
+                    | undefined;
                 sequence?: number | undefined;
                 sslCompliant?: boolean | undefined;
                 startTime?: string | undefined;
@@ -1334,16 +2014,22 @@ declare namespace GoogleAppsScript {
                 advertiserCustomEventType?: string | undefined;
                 artworkLabel?: string | undefined;
                 artworkType?: string | undefined;
-                exitClickThroughUrl?: Dfareporting.Schema.CreativeClickThroughUrl | undefined;
+                exitClickThroughUrl?:
+                    | Dfareporting.Schema.CreativeClickThroughUrl
+                    | undefined;
                 id?: string | undefined;
-                popupWindowProperties?: Dfareporting.Schema.PopupWindowProperties | undefined;
+                popupWindowProperties?:
+                    | Dfareporting.Schema.PopupWindowProperties
+                    | undefined;
                 targetType?: string | undefined;
                 videoReportingId?: string | undefined;
             }
             interface CreativeField {
                 accountId?: string | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
                 name?: string | undefined;
@@ -1359,19 +2045,25 @@ declare namespace GoogleAppsScript {
                 value?: string | undefined;
             }
             interface CreativeFieldValuesListResponse {
-                creativeFieldValues?: Dfareporting.Schema.CreativeFieldValue[] | undefined;
+                creativeFieldValues?:
+                    | Dfareporting.Schema.CreativeFieldValue[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
             interface CreativeFieldsListResponse {
-                creativeFields?: Dfareporting.Schema.CreativeField[] | undefined;
+                creativeFields?:
+                    | Dfareporting.Schema.CreativeField[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
             interface CreativeGroup {
                 accountId?: string | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 groupNumber?: number | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
@@ -1383,18 +2075,24 @@ declare namespace GoogleAppsScript {
                 creativeGroupNumber?: string | undefined;
             }
             interface CreativeGroupsListResponse {
-                creativeGroups?: Dfareporting.Schema.CreativeGroup[] | undefined;
+                creativeGroups?:
+                    | Dfareporting.Schema.CreativeGroup[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
             interface CreativeOptimizationConfiguration {
                 id?: string | undefined;
                 name?: string | undefined;
-                optimizationActivitys?: Dfareporting.Schema.OptimizationActivity[] | undefined;
+                optimizationActivitys?:
+                    | Dfareporting.Schema.OptimizationActivity[]
+                    | undefined;
                 optimizationModel?: string | undefined;
             }
             interface CreativeRotation {
-                creativeAssignments?: Dfareporting.Schema.CreativeAssignment[] | undefined;
+                creativeAssignments?:
+                    | Dfareporting.Schema.CreativeAssignment[]
+                    | undefined;
                 creativeOptimizationConfigurationId?: string | undefined;
                 type?: string | undefined;
                 weightCalculationStrategy?: string | undefined;
@@ -1417,11 +2115,15 @@ declare namespace GoogleAppsScript {
                 value?: string | undefined;
             }
             interface CustomRichMediaEvents {
-                filteredEventIds?: Dfareporting.Schema.DimensionValue[] | undefined;
+                filteredEventIds?:
+                    | Dfareporting.Schema.DimensionValue[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface CustomViewabilityMetric {
-                configuration?: Dfareporting.Schema.CustomViewabilityMetricConfiguration | undefined;
+                configuration?:
+                    | Dfareporting.Schema.CustomViewabilityMetricConfiguration
+                    | undefined;
                 id?: string | undefined;
                 name?: string | undefined;
             }
@@ -1499,12 +2201,16 @@ declare namespace GoogleAppsScript {
             interface DirectorySite {
                 active?: boolean | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 inpageTagFormats?: string[] | undefined;
                 interstitialTagFormats?: string[] | undefined;
                 kind?: string | undefined;
                 name?: string | undefined;
-                settings?: Dfareporting.Schema.DirectorySiteSettings | undefined;
+                settings?:
+                    | Dfareporting.Schema.DirectorySiteSettings
+                    | undefined;
                 url?: string | undefined;
             }
             interface DirectorySiteSettings {
@@ -1514,7 +2220,9 @@ declare namespace GoogleAppsScript {
                 interstitialPlacementAccepted?: boolean | undefined;
             }
             interface DirectorySitesListResponse {
-                directorySites?: Dfareporting.Schema.DirectorySite[] | undefined;
+                directorySites?:
+                    | Dfareporting.Schema.DirectorySite[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
@@ -1525,7 +2233,9 @@ declare namespace GoogleAppsScript {
                 objectType?: string | undefined;
             }
             interface DynamicTargetingKeysListResponse {
-                dynamicTargetingKeys?: Dfareporting.Schema.DynamicTargetingKey[] | undefined;
+                dynamicTargetingKeys?:
+                    | Dfareporting.Schema.DynamicTargetingKey[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface EncryptionInfo {
@@ -1537,9 +2247,13 @@ declare namespace GoogleAppsScript {
             interface EventTag {
                 accountId?: string | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 campaignId?: string | undefined;
-                campaignIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                campaignIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 enabledByDefault?: boolean | undefined;
                 excludeFromAdxRequests?: boolean | undefined;
                 id?: string | undefined;
@@ -1596,32 +2310,44 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
             }
             interface FloodlightActivitiesListResponse {
-                floodlightActivities?: Dfareporting.Schema.FloodlightActivity[] | undefined;
+                floodlightActivities?:
+                    | Dfareporting.Schema.FloodlightActivity[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
             interface FloodlightActivity {
                 accountId?: string | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 cacheBustingType?: string | undefined;
                 countingMethod?: string | undefined;
-                defaultTags?: Dfareporting.Schema.FloodlightActivityDynamicTag[] | undefined;
+                defaultTags?:
+                    | Dfareporting.Schema.FloodlightActivityDynamicTag[]
+                    | undefined;
                 expectedUrl?: string | undefined;
                 floodlightActivityGroupId?: string | undefined;
                 floodlightActivityGroupName?: string | undefined;
                 floodlightActivityGroupTagString?: string | undefined;
                 floodlightActivityGroupType?: string | undefined;
                 floodlightConfigurationId?: string | undefined;
-                floodlightConfigurationIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                floodlightConfigurationIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 floodlightTagType?: string | undefined;
                 hidden?: boolean | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 kind?: string | undefined;
                 name?: string | undefined;
                 notes?: string | undefined;
-                publisherTags?: Dfareporting.Schema.FloodlightActivityPublisherDynamicTag[] | undefined;
+                publisherTags?:
+                    | Dfareporting.Schema.FloodlightActivityPublisherDynamicTag[]
+                    | undefined;
                 secure?: boolean | undefined;
                 sslCompliant?: boolean | undefined;
                 sslRequired?: boolean | undefined;
@@ -1638,11 +2364,17 @@ declare namespace GoogleAppsScript {
             interface FloodlightActivityGroup {
                 accountId?: string | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 floodlightConfigurationId?: string | undefined;
-                floodlightConfigurationIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                floodlightConfigurationIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 kind?: string | undefined;
                 name?: string | undefined;
                 subaccountId?: string | undefined;
@@ -1650,40 +2382,62 @@ declare namespace GoogleAppsScript {
                 type?: string | undefined;
             }
             interface FloodlightActivityGroupsListResponse {
-                floodlightActivityGroups?: Dfareporting.Schema.FloodlightActivityGroup[] | undefined;
+                floodlightActivityGroups?:
+                    | Dfareporting.Schema.FloodlightActivityGroup[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
             interface FloodlightActivityPublisherDynamicTag {
                 clickThrough?: boolean | undefined;
                 directorySiteId?: string | undefined;
-                dynamicTag?: Dfareporting.Schema.FloodlightActivityDynamicTag | undefined;
+                dynamicTag?:
+                    | Dfareporting.Schema.FloodlightActivityDynamicTag
+                    | undefined;
                 siteId?: string | undefined;
-                siteIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                siteIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 viewThrough?: boolean | undefined;
             }
             interface FloodlightConfiguration {
                 accountId?: string | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 analyticsDataSharingEnabled?: boolean | undefined;
-                customViewabilityMetric?: Dfareporting.Schema.CustomViewabilityMetric | undefined;
+                customViewabilityMetric?:
+                    | Dfareporting.Schema.CustomViewabilityMetric
+                    | undefined;
                 exposureToConversionEnabled?: boolean | undefined;
                 firstDayOfWeek?: string | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 inAppAttributionTrackingEnabled?: boolean | undefined;
                 kind?: string | undefined;
-                lookbackConfiguration?: Dfareporting.Schema.LookbackConfiguration | undefined;
+                lookbackConfiguration?:
+                    | Dfareporting.Schema.LookbackConfiguration
+                    | undefined;
                 naturalSearchConversionAttributionOption?: string | undefined;
-                omnitureSettings?: Dfareporting.Schema.OmnitureSettings | undefined;
+                omnitureSettings?:
+                    | Dfareporting.Schema.OmnitureSettings
+                    | undefined;
                 subaccountId?: string | undefined;
                 tagSettings?: Dfareporting.Schema.TagSettings | undefined;
-                thirdPartyAuthenticationTokens?: Dfareporting.Schema.ThirdPartyAuthenticationToken[] | undefined;
-                userDefinedVariableConfigurations?: Dfareporting.Schema.UserDefinedVariableConfiguration[] | undefined;
+                thirdPartyAuthenticationTokens?:
+                    | Dfareporting.Schema.ThirdPartyAuthenticationToken[]
+                    | undefined;
+                userDefinedVariableConfigurations?:
+                    | Dfareporting.Schema.UserDefinedVariableConfiguration[]
+                    | undefined;
             }
             interface FloodlightConfigurationsListResponse {
-                floodlightConfigurations?: Dfareporting.Schema.FloodlightConfiguration[] | undefined;
+                floodlightConfigurations?:
+                    | Dfareporting.Schema.FloodlightConfiguration[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface FloodlightReportCompatibleFields {
@@ -1721,7 +2475,9 @@ declare namespace GoogleAppsScript {
                 id?: string | undefined;
                 inPlan?: boolean | undefined;
                 kind?: string | undefined;
-                lastModifiedInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
+                lastModifiedInfo?:
+                    | Dfareporting.Schema.LastModifiedInfo
+                    | undefined;
                 name?: string | undefined;
                 negotiationChannelId?: string | undefined;
                 orderId?: string | undefined;
@@ -1734,7 +2490,9 @@ declare namespace GoogleAppsScript {
                 type?: string | undefined;
             }
             interface InventoryItemsListResponse {
-                inventoryItems?: Dfareporting.Schema.InventoryItem[] | undefined;
+                inventoryItems?:
+                    | Dfareporting.Schema.InventoryItem[]
+                    | undefined;
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
             }
@@ -1772,7 +2530,9 @@ declare namespace GoogleAppsScript {
             interface ListPopulationRule {
                 floodlightActivityId?: string | undefined;
                 floodlightActivityName?: string | undefined;
-                listPopulationClauses?: Dfareporting.Schema.ListPopulationClause[] | undefined;
+                listPopulationClauses?:
+                    | Dfareporting.Schema.ListPopulationClause[]
+                    | undefined;
             }
             interface ListPopulationTerm {
                 contains?: boolean | undefined;
@@ -1829,7 +2589,9 @@ declare namespace GoogleAppsScript {
             }
             interface MobileCarriersListResponse {
                 kind?: string | undefined;
-                mobileCarriers?: Dfareporting.Schema.MobileCarrier[] | undefined;
+                mobileCarriers?:
+                    | Dfareporting.Schema.MobileCarrier[]
+                    | undefined;
             }
             interface ObjectFilter {
                 kind?: string | undefined;
@@ -1857,19 +2619,27 @@ declare namespace GoogleAppsScript {
                 majorVersion?: string | undefined;
                 minorVersion?: string | undefined;
                 name?: string | undefined;
-                operatingSystem?: Dfareporting.Schema.OperatingSystem | undefined;
+                operatingSystem?:
+                    | Dfareporting.Schema.OperatingSystem
+                    | undefined;
             }
             interface OperatingSystemVersionsListResponse {
                 kind?: string | undefined;
-                operatingSystemVersions?: Dfareporting.Schema.OperatingSystemVersion[] | undefined;
+                operatingSystemVersions?:
+                    | Dfareporting.Schema.OperatingSystemVersion[]
+                    | undefined;
             }
             interface OperatingSystemsListResponse {
                 kind?: string | undefined;
-                operatingSystems?: Dfareporting.Schema.OperatingSystem[] | undefined;
+                operatingSystems?:
+                    | Dfareporting.Schema.OperatingSystem[]
+                    | undefined;
             }
             interface OptimizationActivity {
                 floodlightActivityId?: string | undefined;
-                floodlightActivityIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                floodlightActivityIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 weight?: number | undefined;
             }
             interface Order {
@@ -1882,7 +2652,9 @@ declare namespace GoogleAppsScript {
                 contacts?: Dfareporting.Schema.OrderContact[] | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
-                lastModifiedInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
+                lastModifiedInfo?:
+                    | Dfareporting.Schema.LastModifiedInfo
+                    | undefined;
                 name?: string | undefined;
                 notes?: string | undefined;
                 planningTermId?: string | undefined;
@@ -1923,7 +2695,9 @@ declare namespace GoogleAppsScript {
             interface OrderDocumentsListResponse {
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
-                orderDocuments?: Dfareporting.Schema.OrderDocument[] | undefined;
+                orderDocuments?:
+                    | Dfareporting.Schema.OrderDocument[]
+                    | undefined;
             }
             interface OrdersListResponse {
                 kind?: string | undefined;
@@ -1931,45 +2705,71 @@ declare namespace GoogleAppsScript {
                 orders?: Dfareporting.Schema.Order[] | undefined;
             }
             interface PathToConversionReportCompatibleFields {
-                conversionDimensions?: Dfareporting.Schema.Dimension[] | undefined;
-                customFloodlightVariables?: Dfareporting.Schema.Dimension[] | undefined;
+                conversionDimensions?:
+                    | Dfareporting.Schema.Dimension[]
+                    | undefined;
+                customFloodlightVariables?:
+                    | Dfareporting.Schema.Dimension[]
+                    | undefined;
                 kind?: string | undefined;
                 metrics?: Dfareporting.Schema.Metric[] | undefined;
-                perInteractionDimensions?: Dfareporting.Schema.Dimension[] | undefined;
+                perInteractionDimensions?:
+                    | Dfareporting.Schema.Dimension[]
+                    | undefined;
             }
             interface Placement {
                 accountId?: string | undefined;
                 adBlockingOptOut?: boolean | undefined;
                 additionalSizes?: Dfareporting.Schema.Size[] | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 archived?: boolean | undefined;
                 campaignId?: string | undefined;
-                campaignIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                campaignIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 comment?: string | undefined;
                 compatibility?: string | undefined;
                 contentCategoryId?: string | undefined;
                 createInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
                 directorySiteId?: string | undefined;
-                directorySiteIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                directorySiteIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 externalId?: string | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 keyName?: string | undefined;
                 kind?: string | undefined;
-                lastModifiedInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
-                lookbackConfiguration?: Dfareporting.Schema.LookbackConfiguration | undefined;
+                lastModifiedInfo?:
+                    | Dfareporting.Schema.LastModifiedInfo
+                    | undefined;
+                lookbackConfiguration?:
+                    | Dfareporting.Schema.LookbackConfiguration
+                    | undefined;
                 name?: string | undefined;
                 paymentApproved?: boolean | undefined;
                 paymentSource?: string | undefined;
                 placementGroupId?: string | undefined;
-                placementGroupIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                placementGroupIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 placementStrategyId?: string | undefined;
-                pricingSchedule?: Dfareporting.Schema.PricingSchedule | undefined;
+                pricingSchedule?:
+                    | Dfareporting.Schema.PricingSchedule
+                    | undefined;
                 primary?: boolean | undefined;
-                publisherUpdateInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
+                publisherUpdateInfo?:
+                    | Dfareporting.Schema.LastModifiedInfo
+                    | undefined;
                 siteId?: string | undefined;
-                siteIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                siteIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 size?: Dfareporting.Schema.Size | undefined;
                 sslRequired?: boolean | undefined;
                 status?: string | undefined;
@@ -1983,46 +2783,68 @@ declare namespace GoogleAppsScript {
             interface PlacementAssignment {
                 active?: boolean | undefined;
                 placementId?: string | undefined;
-                placementIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                placementIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 sslRequired?: boolean | undefined;
             }
             interface PlacementGroup {
                 accountId?: string | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 archived?: boolean | undefined;
                 campaignId?: string | undefined;
-                campaignIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                campaignIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 childPlacementIds?: string[] | undefined;
                 comment?: string | undefined;
                 contentCategoryId?: string | undefined;
                 createInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
                 directorySiteId?: string | undefined;
-                directorySiteIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                directorySiteIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 externalId?: string | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 kind?: string | undefined;
-                lastModifiedInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
+                lastModifiedInfo?:
+                    | Dfareporting.Schema.LastModifiedInfo
+                    | undefined;
                 name?: string | undefined;
                 placementGroupType?: string | undefined;
                 placementStrategyId?: string | undefined;
-                pricingSchedule?: Dfareporting.Schema.PricingSchedule | undefined;
+                pricingSchedule?:
+                    | Dfareporting.Schema.PricingSchedule
+                    | undefined;
                 primaryPlacementId?: string | undefined;
-                primaryPlacementIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                primaryPlacementIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 siteId?: string | undefined;
-                siteIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                siteIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 subaccountId?: string | undefined;
             }
             interface PlacementGroupsListResponse {
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
-                placementGroups?: Dfareporting.Schema.PlacementGroup[] | undefined;
+                placementGroups?:
+                    | Dfareporting.Schema.PlacementGroup[]
+                    | undefined;
             }
             interface PlacementStrategiesListResponse {
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
-                placementStrategies?: Dfareporting.Schema.PlacementStrategy[] | undefined;
+                placementStrategies?:
+                    | Dfareporting.Schema.PlacementStrategy[]
+                    | undefined;
             }
             interface PlacementStrategy {
                 accountId?: string | undefined;
@@ -2088,7 +2910,9 @@ declare namespace GoogleAppsScript {
                 endDate?: string | undefined;
                 flighted?: boolean | undefined;
                 floodlightActivityId?: string | undefined;
-                pricingPeriods?: Dfareporting.Schema.PricingSchedulePricingPeriod[] | undefined;
+                pricingPeriods?:
+                    | Dfareporting.Schema.PricingSchedulePricingPeriod[]
+                    | undefined;
                 pricingType?: string | undefined;
                 startDate?: string | undefined;
                 testingStartDate?: string | undefined;
@@ -2111,7 +2935,9 @@ declare namespace GoogleAppsScript {
                 endDate?: string | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
-                lastModifiedInfo?: Dfareporting.Schema.LastModifiedInfo | undefined;
+                lastModifiedInfo?:
+                    | Dfareporting.Schema.LastModifiedInfo
+                    | undefined;
                 name?: string | undefined;
                 overview?: string | undefined;
                 startDate?: string | undefined;
@@ -2134,8 +2960,12 @@ declare namespace GoogleAppsScript {
                 dimensions?: Dfareporting.Schema.Dimension[] | undefined;
                 kind?: string | undefined;
                 metrics?: Dfareporting.Schema.Metric[] | undefined;
-                pivotedActivityMetrics?: Dfareporting.Schema.Metric[] | undefined;
-                reachByFrequencyMetrics?: Dfareporting.Schema.Metric[] | undefined;
+                pivotedActivityMetrics?:
+                    | Dfareporting.Schema.Metric[]
+                    | undefined;
+                reachByFrequencyMetrics?:
+                    | Dfareporting.Schema.Metric[]
+                    | undefined;
             }
             interface Recipient {
                 deliveryType?: string | undefined;
@@ -2158,12 +2988,16 @@ declare namespace GoogleAppsScript {
                 accountId?: string | undefined;
                 active?: boolean | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 description?: string | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
                 lifeSpan?: string | undefined;
-                listPopulationRule?: Dfareporting.Schema.ListPopulationRule | undefined;
+                listPopulationRule?:
+                    | Dfareporting.Schema.ListPopulationRule
+                    | undefined;
                 listSize?: string | undefined;
                 listSource?: string | undefined;
                 name?: string | undefined;
@@ -2178,24 +3012,34 @@ declare namespace GoogleAppsScript {
             interface RemarketingListsListResponse {
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
-                remarketingLists?: Dfareporting.Schema.RemarketingList[] | undefined;
+                remarketingLists?:
+                    | Dfareporting.Schema.RemarketingList[]
+                    | undefined;
             }
             interface Report {
                 accountId?: string | undefined;
                 criteria?: Dfareporting.Schema.ReportCriteria | undefined;
-                crossDimensionReachCriteria?: Dfareporting.Schema.ReportCrossDimensionReachCriteria | undefined;
+                crossDimensionReachCriteria?:
+                    | Dfareporting.Schema.ReportCrossDimensionReachCriteria
+                    | undefined;
                 delivery?: Dfareporting.Schema.ReportDelivery | undefined;
                 etag?: string | undefined;
                 fileName?: string | undefined;
-                floodlightCriteria?: Dfareporting.Schema.ReportFloodlightCriteria | undefined;
+                floodlightCriteria?:
+                    | Dfareporting.Schema.ReportFloodlightCriteria
+                    | undefined;
                 format?: string | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
                 lastModifiedTime?: string | undefined;
                 name?: string | undefined;
                 ownerProfileId?: string | undefined;
-                pathToConversionCriteria?: Dfareporting.Schema.ReportPathToConversionCriteria | undefined;
-                reachCriteria?: Dfareporting.Schema.ReportReachCriteria | undefined;
+                pathToConversionCriteria?:
+                    | Dfareporting.Schema.ReportPathToConversionCriteria
+                    | undefined;
+                reachCriteria?:
+                    | Dfareporting.Schema.ReportReachCriteria
+                    | undefined;
                 schedule?: Dfareporting.Schema.ReportSchedule | undefined;
                 subAccountId?: string | undefined;
                 type?: string | undefined;
@@ -2205,13 +3049,19 @@ declare namespace GoogleAppsScript {
                 dimensions?: Dfareporting.Schema.Dimension[] | undefined;
                 kind?: string | undefined;
                 metrics?: Dfareporting.Schema.Metric[] | undefined;
-                pivotedActivityMetrics?: Dfareporting.Schema.Metric[] | undefined;
+                pivotedActivityMetrics?:
+                    | Dfareporting.Schema.Metric[]
+                    | undefined;
             }
             interface ReportCriteria {
                 activities?: Dfareporting.Schema.Activities | undefined;
-                customRichMediaEvents?: Dfareporting.Schema.CustomRichMediaEvents | undefined;
+                customRichMediaEvents?:
+                    | Dfareporting.Schema.CustomRichMediaEvents
+                    | undefined;
                 dateRange?: Dfareporting.Schema.DateRange | undefined;
-                dimensionFilters?: Dfareporting.Schema.DimensionValue[] | undefined;
+                dimensionFilters?:
+                    | Dfareporting.Schema.DimensionValue[]
+                    | undefined;
                 dimensions?: Dfareporting.Schema.SortedDimension[] | undefined;
                 metricNames?: string[] | undefined;
             }
@@ -2219,7 +3069,9 @@ declare namespace GoogleAppsScript {
                 breakdown?: Dfareporting.Schema.SortedDimension[] | undefined;
                 dateRange?: Dfareporting.Schema.DateRange | undefined;
                 dimension?: string | undefined;
-                dimensionFilters?: Dfareporting.Schema.DimensionValue[] | undefined;
+                dimensionFilters?:
+                    | Dfareporting.Schema.DimensionValue[]
+                    | undefined;
                 metricNames?: string[] | undefined;
                 overlapMetricNames?: string[] | undefined;
                 pivoted?: boolean | undefined;
@@ -2231,13 +3083,21 @@ declare namespace GoogleAppsScript {
                 recipients?: Dfareporting.Schema.Recipient[] | undefined;
             }
             interface ReportFloodlightCriteria {
-                customRichMediaEvents?: Dfareporting.Schema.DimensionValue[] | undefined;
+                customRichMediaEvents?:
+                    | Dfareporting.Schema.DimensionValue[]
+                    | undefined;
                 dateRange?: Dfareporting.Schema.DateRange | undefined;
-                dimensionFilters?: Dfareporting.Schema.DimensionValue[] | undefined;
+                dimensionFilters?:
+                    | Dfareporting.Schema.DimensionValue[]
+                    | undefined;
                 dimensions?: Dfareporting.Schema.SortedDimension[] | undefined;
-                floodlightConfigId?: Dfareporting.Schema.DimensionValue | undefined;
+                floodlightConfigId?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 metricNames?: string[] | undefined;
-                reportProperties?: Dfareporting.Schema.ReportFloodlightCriteriaReportProperties | undefined;
+                reportProperties?:
+                    | Dfareporting.Schema.ReportFloodlightCriteriaReportProperties
+                    | undefined;
             }
             interface ReportFloodlightCriteriaReportProperties {
                 includeAttributedIPConversions?: boolean | undefined;
@@ -2251,15 +3111,29 @@ declare namespace GoogleAppsScript {
                 nextPageToken?: string | undefined;
             }
             interface ReportPathToConversionCriteria {
-                activityFilters?: Dfareporting.Schema.DimensionValue[] | undefined;
-                conversionDimensions?: Dfareporting.Schema.SortedDimension[] | undefined;
-                customFloodlightVariables?: Dfareporting.Schema.SortedDimension[] | undefined;
-                customRichMediaEvents?: Dfareporting.Schema.DimensionValue[] | undefined;
+                activityFilters?:
+                    | Dfareporting.Schema.DimensionValue[]
+                    | undefined;
+                conversionDimensions?:
+                    | Dfareporting.Schema.SortedDimension[]
+                    | undefined;
+                customFloodlightVariables?:
+                    | Dfareporting.Schema.SortedDimension[]
+                    | undefined;
+                customRichMediaEvents?:
+                    | Dfareporting.Schema.DimensionValue[]
+                    | undefined;
                 dateRange?: Dfareporting.Schema.DateRange | undefined;
-                floodlightConfigId?: Dfareporting.Schema.DimensionValue | undefined;
+                floodlightConfigId?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 metricNames?: string[] | undefined;
-                perInteractionDimensions?: Dfareporting.Schema.SortedDimension[] | undefined;
-                reportProperties?: Dfareporting.Schema.ReportPathToConversionCriteriaReportProperties | undefined;
+                perInteractionDimensions?:
+                    | Dfareporting.Schema.SortedDimension[]
+                    | undefined;
+                reportProperties?:
+                    | Dfareporting.Schema.ReportPathToConversionCriteriaReportProperties
+                    | undefined;
             }
             interface ReportPathToConversionCriteriaReportProperties {
                 clicksLookbackWindow?: number | undefined;
@@ -2274,9 +3148,13 @@ declare namespace GoogleAppsScript {
             }
             interface ReportReachCriteria {
                 activities?: Dfareporting.Schema.Activities | undefined;
-                customRichMediaEvents?: Dfareporting.Schema.CustomRichMediaEvents | undefined;
+                customRichMediaEvents?:
+                    | Dfareporting.Schema.CustomRichMediaEvents
+                    | undefined;
                 dateRange?: Dfareporting.Schema.DateRange | undefined;
-                dimensionFilters?: Dfareporting.Schema.DimensionValue[] | undefined;
+                dimensionFilters?:
+                    | Dfareporting.Schema.DimensionValue[]
+                    | undefined;
                 dimensions?: Dfareporting.Schema.SortedDimension[] | undefined;
                 enableAllDimensionCombinations?: boolean | undefined;
                 metricNames?: string[] | undefined;
@@ -2293,11 +3171,15 @@ declare namespace GoogleAppsScript {
             }
             interface ReportsConfiguration {
                 exposureToConversionEnabled?: boolean | undefined;
-                lookbackConfiguration?: Dfareporting.Schema.LookbackConfiguration | undefined;
+                lookbackConfiguration?:
+                    | Dfareporting.Schema.LookbackConfiguration
+                    | undefined;
                 reportGenerationTimeZoneId?: string | undefined;
             }
             interface RichMediaExitOverride {
-                clickThroughUrl?: Dfareporting.Schema.ClickThroughUrl | undefined;
+                clickThroughUrl?:
+                    | Dfareporting.Schema.ClickThroughUrl
+                    | undefined;
                 enabled?: boolean | undefined;
                 exitId?: string | undefined;
             }
@@ -2310,16 +3192,22 @@ declare namespace GoogleAppsScript {
                 accountId?: string | undefined;
                 approved?: boolean | undefined;
                 directorySiteId?: string | undefined;
-                directorySiteIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                directorySiteIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 id?: string | undefined;
-                idDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                idDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 keyName?: string | undefined;
                 kind?: string | undefined;
                 name?: string | undefined;
                 siteContacts?: Dfareporting.Schema.SiteContact[] | undefined;
                 siteSettings?: Dfareporting.Schema.SiteSettings | undefined;
                 subaccountId?: string | undefined;
-                videoSettings?: Dfareporting.Schema.SiteVideoSettings | undefined;
+                videoSettings?:
+                    | Dfareporting.Schema.SiteVideoSettings
+                    | undefined;
             }
             interface SiteCompanionSetting {
                 companionsDisabled?: boolean | undefined;
@@ -2356,11 +3244,17 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
             }
             interface SiteVideoSettings {
-                companionSettings?: Dfareporting.Schema.SiteCompanionSetting | undefined;
+                companionSettings?:
+                    | Dfareporting.Schema.SiteCompanionSetting
+                    | undefined;
                 kind?: string | undefined;
                 orientation?: string | undefined;
-                skippableSettings?: Dfareporting.Schema.SiteSkippableSetting | undefined;
-                transcodeSettings?: Dfareporting.Schema.SiteTranscodeSetting | undefined;
+                skippableSettings?:
+                    | Dfareporting.Schema.SiteSkippableSetting
+                    | undefined;
+                transcodeSettings?:
+                    | Dfareporting.Schema.SiteTranscodeSetting
+                    | undefined;
             }
             interface SitesListResponse {
                 kind?: string | undefined;
@@ -2426,7 +3320,9 @@ declare namespace GoogleAppsScript {
                 accountId?: string | undefined;
                 active?: boolean | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
                 description?: string | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
@@ -2439,34 +3335,58 @@ declare namespace GoogleAppsScript {
             interface TargetableRemarketingListsListResponse {
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
-                targetableRemarketingLists?: Dfareporting.Schema.TargetableRemarketingList[] | undefined;
+                targetableRemarketingLists?:
+                    | Dfareporting.Schema.TargetableRemarketingList[]
+                    | undefined;
             }
             interface TargetingTemplate {
                 accountId?: string | undefined;
                 advertiserId?: string | undefined;
-                advertiserIdDimensionValue?: Dfareporting.Schema.DimensionValue | undefined;
-                dayPartTargeting?: Dfareporting.Schema.DayPartTargeting | undefined;
+                advertiserIdDimensionValue?:
+                    | Dfareporting.Schema.DimensionValue
+                    | undefined;
+                dayPartTargeting?:
+                    | Dfareporting.Schema.DayPartTargeting
+                    | undefined;
                 geoTargeting?: Dfareporting.Schema.GeoTargeting | undefined;
                 id?: string | undefined;
-                keyValueTargetingExpression?: Dfareporting.Schema.KeyValueTargetingExpression | undefined;
+                keyValueTargetingExpression?:
+                    | Dfareporting.Schema.KeyValueTargetingExpression
+                    | undefined;
                 kind?: string | undefined;
-                languageTargeting?: Dfareporting.Schema.LanguageTargeting | undefined;
-                listTargetingExpression?: Dfareporting.Schema.ListTargetingExpression | undefined;
+                languageTargeting?:
+                    | Dfareporting.Schema.LanguageTargeting
+                    | undefined;
+                listTargetingExpression?:
+                    | Dfareporting.Schema.ListTargetingExpression
+                    | undefined;
                 name?: string | undefined;
                 subaccountId?: string | undefined;
-                technologyTargeting?: Dfareporting.Schema.TechnologyTargeting | undefined;
+                technologyTargeting?:
+                    | Dfareporting.Schema.TechnologyTargeting
+                    | undefined;
             }
             interface TargetingTemplatesListResponse {
                 kind?: string | undefined;
                 nextPageToken?: string | undefined;
-                targetingTemplates?: Dfareporting.Schema.TargetingTemplate[] | undefined;
+                targetingTemplates?:
+                    | Dfareporting.Schema.TargetingTemplate[]
+                    | undefined;
             }
             interface TechnologyTargeting {
                 browsers?: Dfareporting.Schema.Browser[] | undefined;
-                connectionTypes?: Dfareporting.Schema.ConnectionType[] | undefined;
-                mobileCarriers?: Dfareporting.Schema.MobileCarrier[] | undefined;
-                operatingSystemVersions?: Dfareporting.Schema.OperatingSystemVersion[] | undefined;
-                operatingSystems?: Dfareporting.Schema.OperatingSystem[] | undefined;
+                connectionTypes?:
+                    | Dfareporting.Schema.ConnectionType[]
+                    | undefined;
+                mobileCarriers?:
+                    | Dfareporting.Schema.MobileCarrier[]
+                    | undefined;
+                operatingSystemVersions?:
+                    | Dfareporting.Schema.OperatingSystemVersion[]
+                    | undefined;
+                operatingSystems?:
+                    | Dfareporting.Schema.OperatingSystem[]
+                    | undefined;
                 platformTypes?: Dfareporting.Schema.PlatformType[] | undefined;
             }
             interface ThirdPartyAuthenticationToken {
@@ -2512,7 +3432,9 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
                 name?: string | undefined;
                 parentUserRoleId?: string | undefined;
-                permissions?: Dfareporting.Schema.UserRolePermission[] | undefined;
+                permissions?:
+                    | Dfareporting.Schema.UserRolePermission[]
+                    | undefined;
                 subaccountId?: string | undefined;
             }
             interface UserRolePermission {
@@ -2529,11 +3451,15 @@ declare namespace GoogleAppsScript {
             }
             interface UserRolePermissionGroupsListResponse {
                 kind?: string | undefined;
-                userRolePermissionGroups?: Dfareporting.Schema.UserRolePermissionGroup[] | undefined;
+                userRolePermissionGroups?:
+                    | Dfareporting.Schema.UserRolePermissionGroup[]
+                    | undefined;
             }
             interface UserRolePermissionsListResponse {
                 kind?: string | undefined;
-                userRolePermissions?: Dfareporting.Schema.UserRolePermission[] | undefined;
+                userRolePermissions?:
+                    | Dfareporting.Schema.UserRolePermission[]
+                    | undefined;
             }
             interface UserRolesListResponse {
                 kind?: string | undefined;
@@ -2556,75 +3482,151 @@ declare namespace GoogleAppsScript {
                 offsetSeconds?: number | undefined;
             }
             interface VideoSettings {
-                companionSettings?: Dfareporting.Schema.CompanionSetting | undefined;
+                companionSettings?:
+                    | Dfareporting.Schema.CompanionSetting
+                    | undefined;
                 kind?: string | undefined;
                 orientation?: string | undefined;
-                skippableSettings?: Dfareporting.Schema.SkippableSetting | undefined;
-                transcodeSettings?: Dfareporting.Schema.TranscodeSetting | undefined;
+                skippableSettings?:
+                    | Dfareporting.Schema.SkippableSetting
+                    | undefined;
+                transcodeSettings?:
+                    | Dfareporting.Schema.TranscodeSetting
+                    | undefined;
             }
         }
     }
     interface Dfareporting {
-        AccountActiveAdSummaries?: Dfareporting.Collection.AccountActiveAdSummariesCollection | undefined;
-        AccountPermissionGroups?: Dfareporting.Collection.AccountPermissionGroupsCollection | undefined;
-        AccountPermissions?: Dfareporting.Collection.AccountPermissionsCollection | undefined;
-        AccountUserProfiles?: Dfareporting.Collection.AccountUserProfilesCollection | undefined;
+        AccountActiveAdSummaries?:
+            | Dfareporting.Collection.AccountActiveAdSummariesCollection
+            | undefined;
+        AccountPermissionGroups?:
+            | Dfareporting.Collection.AccountPermissionGroupsCollection
+            | undefined;
+        AccountPermissions?:
+            | Dfareporting.Collection.AccountPermissionsCollection
+            | undefined;
+        AccountUserProfiles?:
+            | Dfareporting.Collection.AccountUserProfilesCollection
+            | undefined;
         Accounts?: Dfareporting.Collection.AccountsCollection | undefined;
         Ads?: Dfareporting.Collection.AdsCollection | undefined;
-        AdvertiserGroups?: Dfareporting.Collection.AdvertiserGroupsCollection | undefined;
-        AdvertiserLandingPages?: Dfareporting.Collection.AdvertiserLandingPagesCollection | undefined;
+        AdvertiserGroups?:
+            | Dfareporting.Collection.AdvertiserGroupsCollection
+            | undefined;
+        AdvertiserLandingPages?:
+            | Dfareporting.Collection.AdvertiserLandingPagesCollection
+            | undefined;
         Advertisers?: Dfareporting.Collection.AdvertisersCollection | undefined;
         Browsers?: Dfareporting.Collection.BrowsersCollection | undefined;
-        CampaignCreativeAssociations?: Dfareporting.Collection.CampaignCreativeAssociationsCollection | undefined;
+        CampaignCreativeAssociations?:
+            | Dfareporting.Collection.CampaignCreativeAssociationsCollection
+            | undefined;
         Campaigns?: Dfareporting.Collection.CampaignsCollection | undefined;
         ChangeLogs?: Dfareporting.Collection.ChangeLogsCollection | undefined;
         Cities?: Dfareporting.Collection.CitiesCollection | undefined;
-        ConnectionTypes?: Dfareporting.Collection.ConnectionTypesCollection | undefined;
-        ContentCategories?: Dfareporting.Collection.ContentCategoriesCollection | undefined;
+        ConnectionTypes?:
+            | Dfareporting.Collection.ConnectionTypesCollection
+            | undefined;
+        ContentCategories?:
+            | Dfareporting.Collection.ContentCategoriesCollection
+            | undefined;
         Conversions?: Dfareporting.Collection.ConversionsCollection | undefined;
         Countries?: Dfareporting.Collection.CountriesCollection | undefined;
-        CreativeAssets?: Dfareporting.Collection.CreativeAssetsCollection | undefined;
-        CreativeFieldValues?: Dfareporting.Collection.CreativeFieldValuesCollection | undefined;
-        CreativeFields?: Dfareporting.Collection.CreativeFieldsCollection | undefined;
-        CreativeGroups?: Dfareporting.Collection.CreativeGroupsCollection | undefined;
+        CreativeAssets?:
+            | Dfareporting.Collection.CreativeAssetsCollection
+            | undefined;
+        CreativeFieldValues?:
+            | Dfareporting.Collection.CreativeFieldValuesCollection
+            | undefined;
+        CreativeFields?:
+            | Dfareporting.Collection.CreativeFieldsCollection
+            | undefined;
+        CreativeGroups?:
+            | Dfareporting.Collection.CreativeGroupsCollection
+            | undefined;
         Creatives?: Dfareporting.Collection.CreativesCollection | undefined;
-        DimensionValues?: Dfareporting.Collection.DimensionValuesCollection | undefined;
-        DirectorySites?: Dfareporting.Collection.DirectorySitesCollection | undefined;
-        DynamicTargetingKeys?: Dfareporting.Collection.DynamicTargetingKeysCollection | undefined;
+        DimensionValues?:
+            | Dfareporting.Collection.DimensionValuesCollection
+            | undefined;
+        DirectorySites?:
+            | Dfareporting.Collection.DirectorySitesCollection
+            | undefined;
+        DynamicTargetingKeys?:
+            | Dfareporting.Collection.DynamicTargetingKeysCollection
+            | undefined;
         EventTags?: Dfareporting.Collection.EventTagsCollection | undefined;
         Files?: Dfareporting.Collection.FilesCollection | undefined;
-        FloodlightActivities?: Dfareporting.Collection.FloodlightActivitiesCollection | undefined;
-        FloodlightActivityGroups?: Dfareporting.Collection.FloodlightActivityGroupsCollection | undefined;
-        FloodlightConfigurations?: Dfareporting.Collection.FloodlightConfigurationsCollection | undefined;
-        InventoryItems?: Dfareporting.Collection.InventoryItemsCollection | undefined;
+        FloodlightActivities?:
+            | Dfareporting.Collection.FloodlightActivitiesCollection
+            | undefined;
+        FloodlightActivityGroups?:
+            | Dfareporting.Collection.FloodlightActivityGroupsCollection
+            | undefined;
+        FloodlightConfigurations?:
+            | Dfareporting.Collection.FloodlightConfigurationsCollection
+            | undefined;
+        InventoryItems?:
+            | Dfareporting.Collection.InventoryItemsCollection
+            | undefined;
         Languages?: Dfareporting.Collection.LanguagesCollection | undefined;
         Metros?: Dfareporting.Collection.MetrosCollection | undefined;
         MobileApps?: Dfareporting.Collection.MobileAppsCollection | undefined;
-        MobileCarriers?: Dfareporting.Collection.MobileCarriersCollection | undefined;
-        OperatingSystemVersions?: Dfareporting.Collection.OperatingSystemVersionsCollection | undefined;
-        OperatingSystems?: Dfareporting.Collection.OperatingSystemsCollection | undefined;
-        OrderDocuments?: Dfareporting.Collection.OrderDocumentsCollection | undefined;
+        MobileCarriers?:
+            | Dfareporting.Collection.MobileCarriersCollection
+            | undefined;
+        OperatingSystemVersions?:
+            | Dfareporting.Collection.OperatingSystemVersionsCollection
+            | undefined;
+        OperatingSystems?:
+            | Dfareporting.Collection.OperatingSystemsCollection
+            | undefined;
+        OrderDocuments?:
+            | Dfareporting.Collection.OrderDocumentsCollection
+            | undefined;
         Orders?: Dfareporting.Collection.OrdersCollection | undefined;
-        PlacementGroups?: Dfareporting.Collection.PlacementGroupsCollection | undefined;
-        PlacementStrategies?: Dfareporting.Collection.PlacementStrategiesCollection | undefined;
+        PlacementGroups?:
+            | Dfareporting.Collection.PlacementGroupsCollection
+            | undefined;
+        PlacementStrategies?:
+            | Dfareporting.Collection.PlacementStrategiesCollection
+            | undefined;
         Placements?: Dfareporting.Collection.PlacementsCollection | undefined;
-        PlatformTypes?: Dfareporting.Collection.PlatformTypesCollection | undefined;
+        PlatformTypes?:
+            | Dfareporting.Collection.PlatformTypesCollection
+            | undefined;
         PostalCodes?: Dfareporting.Collection.PostalCodesCollection | undefined;
         Projects?: Dfareporting.Collection.ProjectsCollection | undefined;
         Regions?: Dfareporting.Collection.RegionsCollection | undefined;
-        RemarketingListShares?: Dfareporting.Collection.RemarketingListSharesCollection | undefined;
-        RemarketingLists?: Dfareporting.Collection.RemarketingListsCollection | undefined;
+        RemarketingListShares?:
+            | Dfareporting.Collection.RemarketingListSharesCollection
+            | undefined;
+        RemarketingLists?:
+            | Dfareporting.Collection.RemarketingListsCollection
+            | undefined;
         Reports?: Dfareporting.Collection.ReportsCollection | undefined;
         Sites?: Dfareporting.Collection.SitesCollection | undefined;
         Sizes?: Dfareporting.Collection.SizesCollection | undefined;
         Subaccounts?: Dfareporting.Collection.SubaccountsCollection | undefined;
-        TargetableRemarketingLists?: Dfareporting.Collection.TargetableRemarketingListsCollection | undefined;
-        TargetingTemplates?: Dfareporting.Collection.TargetingTemplatesCollection | undefined;
-        UserProfiles?: Dfareporting.Collection.UserProfilesCollection | undefined;
-        UserRolePermissionGroups?: Dfareporting.Collection.UserRolePermissionGroupsCollection | undefined;
-        UserRolePermissions?: Dfareporting.Collection.UserRolePermissionsCollection | undefined;
+        TargetableRemarketingLists?:
+            | Dfareporting.Collection.TargetableRemarketingListsCollection
+            | undefined;
+        TargetingTemplates?:
+            | Dfareporting.Collection.TargetingTemplatesCollection
+            | undefined;
+        UserProfiles?:
+            | Dfareporting.Collection.UserProfilesCollection
+            | undefined;
+        UserRolePermissionGroups?:
+            | Dfareporting.Collection.UserRolePermissionGroupsCollection
+            | undefined;
+        UserRolePermissions?:
+            | Dfareporting.Collection.UserRolePermissionsCollection
+            | undefined;
         UserRoles?: Dfareporting.Collection.UserRolesCollection | undefined;
-        VideoFormats?: Dfareporting.Collection.VideoFormatsCollection | undefined;
+        VideoFormats?:
+            | Dfareporting.Collection.VideoFormatsCollection
+            | undefined;
         // Create a new instance of Account
         newAccount(): Dfareporting.Schema.Account;
         // Create a new instance of AccountUserProfile

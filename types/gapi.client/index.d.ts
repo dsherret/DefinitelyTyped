@@ -102,22 +102,25 @@ declare namespace gapi {
              * @param request The HTTP request to add to this batch.
              * @param opt_params extra parameters for this batch entry.
              */
-            add<T>(request: Request<T>, opt_params?: {
-                /**
-                 * Identifies the response for this request in the map of batch responses. If one is not provided, the system generates a random ID.
-                 */
-                id: string;
-                callback(
+            add<T>(
+                request: Request<T>,
+                opt_params?: {
                     /**
-                     * is the response for this request only. Its format is defined by the API method being called.
+                     * Identifies the response for this request in the map of batch responses. If one is not provided, the system generates a random ID.
                      */
-                    individualResponse: Response<T>,
-                    /**
-                     * is the raw batch ID-response map as a string. It contains all responses to all requests in the batch.
-                     */
-                    rawBatchResponse: string,
-                ): any;
-            }): void;
+                    id: string;
+                    callback(
+                        /**
+                         * is the response for this request only. Its format is defined by the API method being called.
+                         */
+                        individualResponse: Response<T>,
+                        /**
+                         * is the raw batch ID-response map as a string. It contains all responses to all requests in the batch.
+                         */
+                        rawBatchResponse: string,
+                    ): any;
+                },
+            ): void;
             /**
              * Executes all requests in the batch. The supplied callback is executed on success or failure.
              * @param callback The callback to execute when the batch returns.

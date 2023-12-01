@@ -9,14 +9,18 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.PopupToolGroup
      */
-    interface PopupToolGroup extends PopupToolGroup.Props, PopupToolGroup.Prototype {}
+    interface PopupToolGroup
+        extends PopupToolGroup.Props,
+            PopupToolGroup.Prototype {}
 
     namespace PopupToolGroup {
-        interface EventMap extends ToolGroup.EventMap, mixin.LabelElement.EventMap, mixin.FlaggedElement.EventMap {}
+        interface EventMap
+            extends ToolGroup.EventMap,
+                mixin.LabelElement.EventMap,
+                mixin.FlaggedElement.EventMap {}
 
         interface ConfigOptions
-            extends
-                ToolGroup.ConfigOptions,
+            extends ToolGroup.ConfigOptions,
                 mixin.IconElement.ConfigOptions,
                 mixin.IndicatorElement.ConfigOptions,
                 mixin.LabelElement.ConfigOptions,
@@ -24,8 +28,7 @@ declare namespace OO.ui {
                 mixin.FlaggedElement.ConfigOptions,
                 mixin.ClippableElement.ConfigOptions,
                 mixin.FloatableElement.ConfigOptions,
-                mixin.TabIndexedElement.ConfigOptions
-        {
+                mixin.TabIndexedElement.ConfigOptions {
             /** Text to display at the top of the popup */
             header?: string;
             /** See {@link Static.narrowConfig static.narrowConfig} */
@@ -33,25 +36,25 @@ declare namespace OO.ui {
         }
 
         interface Static
-            extends
-                ToolGroup.Static,
+            extends ToolGroup.Static,
                 mixin.IconElement.Static,
                 mixin.IndicatorElement.Static,
                 mixin.LabelElement.Static,
                 mixin.TitledElement.Static,
-                mixin.FlaggedElement.Static
-        {
+                mixin.FlaggedElement.Static {
             /**
              * Config options to change when toolbar is in narrow mode
              *
              * Supports `invisibleLabel`, `label` and `icon` properties.
              */
-            narrowConfig: Pick<ConfigOptions, `invisibleLabel` | `label` | `icon`> | null;
+            narrowConfig: Pick<
+                ConfigOptions,
+                `invisibleLabel` | `label` | `icon`
+            > | null;
         }
 
         interface Props
-            extends
-                ToolGroup.Props,
+            extends ToolGroup.Props,
                 mixin.IconElement.Props,
                 mixin.IndicatorElement.Props,
                 mixin.LabelElement.Props,
@@ -59,14 +62,12 @@ declare namespace OO.ui {
                 mixin.FlaggedElement.Props,
                 mixin.ClippableElement.Props,
                 mixin.FloatableElement.Props,
-                mixin.TabIndexedElement.Props
-        {
+                mixin.TabIndexedElement.Props {
             $handle: JQuery;
         }
 
         interface Prototype
-            extends
-                ToolGroup.Prototype,
+            extends ToolGroup.Prototype,
                 mixin.IconElement.Prototype,
                 mixin.IndicatorElement.Prototype,
                 mixin.LabelElement.Prototype,
@@ -74,8 +75,7 @@ declare namespace OO.ui {
                 mixin.FlaggedElement.Prototype,
                 mixin.ClippableElement.Prototype,
                 mixin.FloatableElement.Prototype,
-                mixin.TabIndexedElement.Prototype
-        {
+                mixin.TabIndexedElement.Prototype {
             /**
              * Handle resize events from the toolbar
              */
@@ -101,7 +101,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -112,7 +115,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -120,7 +126,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -129,11 +138,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -152,7 +173,7 @@ declare namespace OO.ui {
              * @param toolbar
              * @param config Configuration options
              */
-            new(toolbar: Toolbar, config?: ConfigOptions): PopupToolGroup;
+            new (toolbar: Toolbar, config?: ConfigOptions): PopupToolGroup;
             prototype: Prototype;
             static: Static;
             super: ToolGroup.Constructor;

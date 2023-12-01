@@ -5,7 +5,11 @@ $(".fancybox").fancybox({
 });
 $.fancybox.open([
     { src: "img1.jpg", type: "image" },
-    { src: "img2.jpg", type: "image", opts: { caption: (instance, elem) => "Test" } },
+    {
+        src: "img2.jpg",
+        type: "image",
+        opts: { caption: (instance, elem) => "Test" },
+    },
 ]);
 $.fancybox.open({ src: "image.jpg", opts: { caption: "Test" } });
 $.fancybox.open("image.jpg");

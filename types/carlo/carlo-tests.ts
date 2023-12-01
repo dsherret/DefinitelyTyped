@@ -25,7 +25,7 @@ async function main() {
     app.serveFolder(__dirname);
 
     // Expose 'env' function in the web environment.
-    await app.exposeFunction("env", _ => process.env);
+    await app.exposeFunction("env", (_) => process.env);
 
     // Navigate to the main page of your app.
     await app.load("example.html");

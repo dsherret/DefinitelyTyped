@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/react-email-editor",
-    "version": "1.5.9999",
-    "projects": [
-        "https://github.com/unlayer/react-email-editor"
-    ],
-    "dependencies": {
-        "@types/react": "*"
+  "private": true,
+  "name": "@types/react-email-editor",
+  "version": "1.5.9999",
+  "projects": [
+    "https://github.com/unlayer/react-email-editor"
+  ],
+  "dependencies": {
+    "@types/react": "*"
+  },
+  "devDependencies": {
+    "@types/react-email-editor": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Nikita Granko",
+      "githubUsername": "ngranko"
     },
-    "devDependencies": {
-        "@types/react-email-editor": "workspace:."
+    {
+      "name": "Vladimir Penyazkov",
+      "githubUsername": "mindtraveller"
     },
-    "owners": [
-        {
-            "name": "Nikita Granko",
-            "githubUsername": "ngranko"
-        },
-        {
-            "name": "Vladimir Penyazkov",
-            "githubUsername": "mindtraveller"
-        },
-        {
-            "name": "Dmitry Semigradsky",
-            "githubUsername": "Semigradsky"
-        }
-    ]
+    {
+      "name": "Dmitry Semigradsky",
+      "githubUsername": "Semigradsky"
+    }
+  ]
 }

@@ -12,7 +12,9 @@ export namespace HookRouter {
     }
 }
 export function setLinkProps(props: HookRouter.AProps): HookRouter.AProps;
-export function A(props: HookRouter.AProps): React.ReactHTMLElement<HTMLAnchorElement>;
+export function A(
+    props: HookRouter.AProps,
+): React.ReactHTMLElement<HTMLAnchorElement>;
 export function confirmNavigation(): void;
 export function resetPath(): void;
 export function stopInterception(): void;
@@ -22,15 +24,26 @@ export function useControlledInterceptor(): [
     typeof resetPath,
     typeof stopInterception,
 ];
-export function interceptRoute(previousRoute: string, nextRoute: string): string[];
+export function interceptRoute(
+    previousRoute: string,
+    nextRoute: string,
+): string[];
 export function get(componentId: number): HookRouter.RouteObject | null;
 export function remove(componentId: number): void;
-export function useInterceptor(handlerFn: (currentPath: string, nextPath: string) => string): () => typeof remove;
-export function setQueryParams(inObj: HookRouter.QueryParams, replace?: boolean): void;
+export function useInterceptor(
+    handlerFn: (currentPath: string, nextPath: string) => string,
+): () => typeof remove;
+export function setQueryParams(
+    inObj: HookRouter.QueryParams,
+    replace?: boolean,
+): void;
 export function getQueryParams(): HookRouter.QueryParams;
 export function queryStringToObject(inStr: string): HookRouter.QueryParams;
 export function objectToQueryString(inObj: HookRouter.QueryParams): string;
-export function useQueryParams(): [HookRouter.QueryParams, typeof setQueryParams];
+export function useQueryParams(): [
+    HookRouter.QueryParams,
+    typeof setQueryParams,
+];
 export function useRedirect(
     fromURL: string,
     toURL: string,
@@ -52,6 +65,8 @@ export function getPath(): string;
 export function usePath(active?: boolean, withBasePath?: boolean): string;
 export function updatePathHooks(): void;
 export function getWorkingPath(parentRouterId: string): string;
-export function useRoutes<T = any>(routeObj: HookRouter.RouteObject<T>): T | null;
+export function useRoutes<T = any>(
+    routeObj: HookRouter.RouteObject<T>,
+): T | null;
 export function useTitle(inString: string): void;
 export function getTitle(): string;

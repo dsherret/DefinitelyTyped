@@ -28,10 +28,16 @@ export type VerifyFunctionWithRequest = (
     token: string,
     done: (error: any, user?: any, options?: VerifyOptions) => void,
 ) => void;
-export type VerifyFunction = (token: string, done: (error: any, user?: any, options?: VerifyOptions) => void) => void;
+export type VerifyFunction = (
+    token: string,
+    done: (error: any, user?: any, options?: VerifyOptions) => void,
+) => void;
 
 export class Strategy extends passport.Strategy {
-    constructor(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: StrategyOptionsWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
     constructor(options: StrategyOptions, verify: VerifyFunction);
     constructor(verify: VerifyFunction);
 

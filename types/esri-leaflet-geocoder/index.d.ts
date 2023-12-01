@@ -3,7 +3,9 @@ import "esri-leaflet";
 
 declare module "leaflet" {
     namespace esri.Geocoding {
-        type GeosearchConstructor = new(options?: GeosearchObject) => Geosearch;
+        type GeosearchConstructor = new (
+            options?: GeosearchObject,
+        ) => Geosearch;
         type Geosearch = GeosearchControl & Evented;
 
         interface GeosearchControl extends Control {
@@ -37,7 +39,9 @@ declare module "leaflet" {
             reverse(): ReverseGeocode;
         }
 
-        function geocodeService(options?: GeocodeServiceOptions): GeocodeService;
+        function geocodeService(
+            options?: GeocodeServiceOptions,
+        ): GeocodeService;
 
         interface GeocodeServiceOptions extends ServiceOptions {
             supportsSuggest?: boolean | undefined;
@@ -57,7 +61,11 @@ declare module "leaflet" {
             within(bounds: LatLngBoundsExpression): this;
             nearby(latlng: LatLngExpression, distance: number): this;
             run(
-                callback: (error: any | undefined, results: { results: any[] }, response: any) => void,
+                callback: (
+                    error: any | undefined,
+                    results: { results: any[] },
+                    response: any,
+                ) => void,
                 context?: any,
             ): this;
         }
@@ -70,7 +78,14 @@ declare module "leaflet" {
             category(text: string): this;
             within(bounds: LatLngBoundsExpression): this;
             nearby(latlng: LatLngExpression, distance: number): this;
-            run(callback: (error: any | undefined, results: any, response: any) => void, context?: any): this;
+            run(
+                callback: (
+                    error: any | undefined,
+                    results: any,
+                    response: any,
+                ) => void,
+                context?: any,
+            ): this;
         }
 
         function suggest(options?: ServiceOptions | Service): Suggest;
@@ -81,12 +96,18 @@ declare module "leaflet" {
             distance(distance: number): this;
             language(language: string): this;
             run(
-                callback: (error: any | undefined, results: { latlng: LatLng; address: string }, response: any) => void,
+                callback: (
+                    error: any | undefined,
+                    results: { latlng: LatLng; address: string },
+                    response: any,
+                ) => void,
                 context?: any,
             ): this;
         }
 
-        function reverseGeocode(options?: ServiceOptions | Service): ReverseGeocode;
+        function reverseGeocode(
+            options?: ServiceOptions | Service,
+        ): ReverseGeocode;
 
         interface GeosearchProvider {
             suggestions(
@@ -110,7 +131,10 @@ declare module "leaflet" {
             token?: string | null | undefined;
         }
 
-        class ArcgisOnlineProvider extends GeocodeService implements GeosearchProvider {
+        class ArcgisOnlineProvider
+            extends GeocodeService
+            implements GeosearchProvider
+        {
             constructor(options?: ArcgisOnlineProviderOptions);
             suggestions(
                 text: string,
@@ -125,7 +149,9 @@ declare module "leaflet" {
             ): Geocode;
         }
 
-        function arcgisOnlineProvider(options?: ArcgisOnlineProviderOptions): ArcgisOnlineProvider;
+        function arcgisOnlineProvider(
+            options?: ArcgisOnlineProviderOptions,
+        ): ArcgisOnlineProvider;
 
         interface ArcgisOnlineProviderOptions extends BaseProviderOptions {
             countries?: string | string[] | undefined;
@@ -133,7 +159,10 @@ declare module "leaflet" {
             forStorage?: boolean | undefined;
         }
 
-        class GeocodeServiceProvider extends GeocodeService implements GeosearchProvider {
+        class GeocodeServiceProvider
+            extends GeocodeService
+            implements GeosearchProvider
+        {
             constructor(options?: GeocodeServiceProviderOptions);
             suggestions(
                 text: string,
@@ -148,13 +177,18 @@ declare module "leaflet" {
             ): Geocode;
         }
 
-        function geocodeServiceProvider(options?: GeocodeServiceProviderOptions): GeocodeServiceProvider;
+        function geocodeServiceProvider(
+            options?: GeocodeServiceProviderOptions,
+        ): GeocodeServiceProvider;
 
         interface GeocodeServiceProviderOptions extends BaseProviderOptions {
             url: string;
         }
 
-        class FeatureLayerProvider extends FeatureLayerService implements GeosearchProvider {
+        class FeatureLayerProvider
+            extends FeatureLayerService
+            implements GeosearchProvider
+        {
             constructor(options?: FeatureLayerProviderOptions);
             suggestions(
                 text: string,
@@ -169,7 +203,9 @@ declare module "leaflet" {
             ): Query;
         }
 
-        function featureLayerProvider(options?: FeatureLayerProviderOptions): FeatureLayerProvider;
+        function featureLayerProvider(
+            options?: FeatureLayerProviderOptions,
+        ): FeatureLayerProvider;
 
         interface FeatureLayerProviderOptions extends BaseProviderOptions {
             url: string;
@@ -178,7 +214,10 @@ declare module "leaflet" {
             formatSuggestion?(featureInformation: any): string;
         }
 
-        class MapServiceProvider extends MapService implements GeosearchProvider {
+        class MapServiceProvider
+            extends MapService
+            implements GeosearchProvider
+        {
             constructor(options?: MapServiceProviderOptions);
             suggestions(
                 text: string,
@@ -193,7 +232,9 @@ declare module "leaflet" {
             ): Query | Find;
         }
 
-        function mapServiceProvider(options?: MapServiceProviderOptions): MapServiceProvider;
+        function mapServiceProvider(
+            options?: MapServiceProviderOptions,
+        ): MapServiceProvider;
 
         interface MapServiceProviderOptions extends BaseProviderOptions {
             url: string;

@@ -1,6 +1,10 @@
 /// <reference types="node" />
 
-import { ClientChannel, ExecOptions as ssh2ExecOptions, SFTPWrapper } from "ssh2";
+import {
+    ClientChannel,
+    ExecOptions as ssh2ExecOptions,
+    SFTPWrapper,
+} from "ssh2";
 import { TransferOptions } from "ssh2-streams";
 
 declare namespace SSH {
@@ -43,7 +47,13 @@ declare namespace SSH {
         sftpOptions?: TransferOptions | undefined;
         concurrency?: number | undefined;
         recursive?: boolean | undefined;
-        tick?: ((localPath: string, remotePath: string, error: Error | null | undefined) => void) | undefined;
+        tick?:
+            | ((
+                  localPath: string,
+                  remotePath: string,
+                  error: Error | null | undefined,
+              ) => void)
+            | undefined;
         validate?: ((localPath: string) => boolean) | undefined;
     }
 }
@@ -64,7 +74,9 @@ declare class SSH {
     exec(
         command: string,
         parameters?: readonly string[],
-        options?: SSH.ExecOptions & { stream?: "stdout" | "stderr" | undefined },
+        options?: SSH.ExecOptions & {
+            stream?: "stdout" | "stderr" | undefined;
+        },
     ): Promise<string>;
 
     exec(
@@ -73,13 +85,29 @@ declare class SSH {
         options?: SSH.ExecOptions & { stream: "both" },
     ): Promise<SSH.ExecResult>;
 
-    execCommand(givenCommand: string, options?: SSH.ExecOptions): Promise<SSH.ExecResult>;
+    execCommand(
+        givenCommand: string,
+        options?: SSH.ExecOptions,
+    ): Promise<SSH.ExecResult>;
 
-    getFile(localFile: string, remoteFile: string, givenSftp?: SSH.SFTP, givenOpts?: TransferOptions): Promise<void>;
+    getFile(
+        localFile: string,
+        remoteFile: string,
+        givenSftp?: SSH.SFTP,
+        givenOpts?: TransferOptions,
+    ): Promise<void>;
 
-    putFile(localFile: string, remoteFile: string, givenSftp?: SSH.SFTP, givenOpts?: TransferOptions): Promise<void>;
+    putFile(
+        localFile: string,
+        remoteFile: string,
+        givenSftp?: SSH.SFTP,
+        givenOpts?: TransferOptions,
+    ): Promise<void>;
 
-    putFiles(files: ReadonlyArray<{ local: string; remote: string }>, givenConfig?: SSH.PutFilesOptions): Promise<void>;
+    putFiles(
+        files: ReadonlyArray<{ local: string; remote: string }>,
+        givenConfig?: SSH.PutFilesOptions,
+    ): Promise<void>;
 
     putDirectory(
         localDirectory: string,

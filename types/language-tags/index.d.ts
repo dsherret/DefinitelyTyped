@@ -56,7 +56,10 @@ interface Tags {
      *
      * Search is case-insensitive if `description` is a string.
      */
-    search(description: string | RegExp, all?: boolean): Array<SubtagClass | TagClass>;
+    search(
+        description: string | RegExp,
+        all?: boolean,
+    ): Array<SubtagClass | TagClass>;
 
     /**
      * Returns an array of `Subtag` objects representing all the 'language' type subtags belonging to the given

@@ -20,7 +20,14 @@ const geometryCollection: wellknown.GeoJSONGeometry = {
         },
         {
             type: "Polygon",
-            coordinates: [[[1, 2], [2, 3], [3, 4], [4, 1]]],
+            coordinates: [
+                [
+                    [1, 2],
+                    [2, 3],
+                    [3, 4],
+                    [4, 1],
+                ],
+            ],
         },
     ],
 };
@@ -31,7 +38,14 @@ const feature: wellknown.GeoJSONFeature = {
     type: "Feature",
     geometry: {
         type: "Polygon",
-        coordinates: [[[1, 2], [2, 3], [3, 4], [4, 1]]],
+        coordinates: [
+            [
+                [1, 2],
+                [2, 3],
+                [3, 4],
+                [4, 1],
+            ],
+        ],
     },
 };
 

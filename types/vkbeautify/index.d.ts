@@ -4,22 +4,34 @@
 /**
  * Pretty print an xml string with the given number of whitespace, or with a given indentation pattern
  */
-export function xml(text: string, amountOfWhitespaces?: number | string): string;
+export function xml(
+    text: string,
+    amountOfWhitespaces?: number | string,
+): string;
 
 /**
  * Pretty print a json string with the given number of whitespace, or with a given indentation pattern
  */
-export function json(text: string, amountOfWhitespaces?: number | string): string;
+export function json(
+    text: string,
+    amountOfWhitespaces?: number | string,
+): string;
 
 /**
  * Pretty print a css string with the given number of whitespace, or with a given indentation pattern
  */
-export function css(text: string, amountOfWhitespaces?: number | string): string;
+export function css(
+    text: string,
+    amountOfWhitespaces?: number | string,
+): string;
 
 /**
  * Pretty print an sql string with the given number of whitespace, or with a given indentation pattern
  */
-export function sql(text: string, amountOfWhitespaces?: number | string): string;
+export function sql(
+    text: string,
+    amountOfWhitespaces?: number | string,
+): string;
 
 // minifying
 /**

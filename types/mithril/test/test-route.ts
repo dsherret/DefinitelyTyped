@@ -102,9 +102,11 @@ m.route(document.body, "/", {
     test4: {
         onmatch(args, path) {
             // Must provide a Promise type if we want type checking
-            return new Promise<m.Component<{ title: string }>>((resolve, reject) => {
-                resolve(component2);
-            });
+            return new Promise<m.Component<{ title: string }>>(
+                (resolve, reject) => {
+                    resolve(component2);
+                },
+            );
         },
     },
     "test5/:id": routeResolver,

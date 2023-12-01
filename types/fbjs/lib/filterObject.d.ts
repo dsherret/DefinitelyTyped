@@ -13,7 +13,11 @@
  * visits them. Properties that are deleted before being visited are not
  * visited.
  */
-declare function filterObject(o: object | null, callback: any, context?: any): object | null | undefined;
+declare function filterObject(
+    o: object | null,
+    callback: any,
+    context?: any,
+): object | null | undefined;
 
 declare namespace filterObject {}
 

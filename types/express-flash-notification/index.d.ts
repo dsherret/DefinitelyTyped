@@ -5,11 +5,22 @@ interface efnOptions {
     utilityName?: string | undefined;
     localsName?: string | undefined;
     viewName?: string | undefined;
-    beforeSingleRender?: ((item: any, callback: (err: any, item: any) => void) => void) | undefined;
-    afterAllRender?: ((htmlFragments: string[], callback: (err: any, html: string) => void) => void) | undefined;
+    beforeSingleRender?:
+        | ((item: any, callback: (err: any, item: any) => void) => void)
+        | undefined;
+    afterAllRender?:
+        | ((
+              htmlFragments: string[],
+              callback: (err: any, html: string) => void,
+          ) => void)
+        | undefined;
 }
 
-declare function express_flash_notification(app: express.Application, options?: efnOptions, ...args: any[]): any;
+declare function express_flash_notification(
+    app: express.Application,
+    options?: efnOptions,
+    ...args: any[]
+): any;
 
 declare namespace express_flash_notification {
     const prototype: {};
@@ -24,7 +35,11 @@ declare global {
             url?: string | undefined;
         }
         interface Request {
-            flash(type: string, message?: string, redirect?: string | boolean): void;
+            flash(
+                type: string,
+                message?: string,
+                redirect?: string | boolean,
+            ): void;
             flash(object: FlashOptions): void;
         }
     }

@@ -10,13 +10,10 @@ const app = express();
 request(app)
     .get("/user")
     .expect(200)
-    .then(res => {
-        return request(app)
-            .post("/kittens")
-            .send({ userId: res })
-            .expect(201);
+    .then((res) => {
+        return request(app).post("/kittens").send({ userId: res }).expect(201);
     })
-    .then(res => {
+    .then((res) => {
         // ...
     });
 
@@ -24,7 +21,7 @@ request(app)
 request(app)
     .get("/kittens")
     .expect(200)
-    .then(res => {
+    .then((res) => {
         // ...
     });
 
@@ -43,9 +40,13 @@ agent
 request(app)
     .get("/kittens")
     .expect(201)
-    .then(res => {/* ... */})
+    .then((res) => {
+        /* ... */
+    })
     // I'm a real promise now!
-    .catch(err => {/* ... */});
+    .catch((err) => {
+        /* ... */
+    });
 
 request(app)
     .get("/kittens")
@@ -53,4 +54,6 @@ request(app)
     .toPromise()
     // I'm a real promise now!
     .delay(10)
-    .then(res => {/* ... */});
+    .then((res) => {
+        /* ... */
+    });

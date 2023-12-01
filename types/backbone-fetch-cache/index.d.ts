@@ -87,7 +87,11 @@ interface Static {
     reset(): void;
 
     setCache(instance: () => string, opts?: SetCacheOptions, attrs?: any): void;
-    setCache(instance: GetCacheKeyOptions, opts?: SetCacheOptions, attrs?: any): void;
+    setCache(
+        instance: GetCacheKeyOptions,
+        opts?: SetCacheOptions,
+        attrs?: any,
+    ): void;
 
     setLocalStorage(...args: any[]): any;
 
@@ -148,10 +152,17 @@ declare module "backbone" {
          */
         prefill?: boolean | undefined;
         prefillExpires?: number | undefined;
-        prefillSuccess?: ((self: any, attributes: any, opts: ModelFetchWithCacheOptions) => void) | undefined;
+        prefillSuccess?:
+            | ((
+                  self: any,
+                  attributes: any,
+                  opts: ModelFetchWithCacheOptions,
+              ) => void)
+            | undefined;
     }
 
-    interface CollectionFetchWithCacheOptions extends ModelFetchWithCacheOptions {
+    interface CollectionFetchWithCacheOptions
+        extends ModelFetchWithCacheOptions {
         prefillSuccess?: ((self: any) => void) | undefined;
     }
 

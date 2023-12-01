@@ -19,9 +19,16 @@ export type StateMachineEvent = (...args: any[]) => void;
 export interface StateMachineConfig {
     initial?: any; // string or { state: 'foo', event: 'setup', defer: true|false }
     events?: StateMachineEventDef[] | undefined;
-    callbacks?: {
-        [s: string]: (event?: string, from?: string, to?: string, ...args: any[]) => any;
-    } | undefined;
+    callbacks?:
+        | {
+              [s: string]: (
+                  event?: string,
+                  from?: string,
+                  to?: string,
+                  ...args: any[]
+              ) => any;
+          }
+        | undefined;
     target?: StateMachine | undefined;
     error?: StateMachineErrorCallback | undefined;
 }
@@ -45,7 +52,10 @@ export const Error: {
     INVALID_CALLBACK: number; // = 300, caller provided callback function threw an exception
 };
 
-export function create(config: StateMachineConfig, target?: StateMachine): StateMachine;
+export function create(
+    config: StateMachineConfig,
+    target?: StateMachine,
+): StateMachine;
 
 export interface StateMachineTransition {
     (): void;
@@ -90,7 +100,10 @@ export namespace StateMachine {
         PENDING_TRANSITION: number; // = 200, caller tried to fire an event while an async transition was still pending
         INVALID_CALLBACK: number; // = 300, caller provided callback function threw an exception
     };
-    function create(config: StateMachineConfig, target?: StateMachine): StateMachine;
+    function create(
+        config: StateMachineConfig,
+        target?: StateMachine,
+    ): StateMachine;
 }
 
 export as namespace StateMachine;

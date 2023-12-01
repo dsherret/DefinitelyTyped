@@ -1,4 +1,13 @@
-import { CEF, Colors, LEEF, RFC, RFC3164, RFC5424, RgbToAnsi, Syslog } from "syslog-pro";
+import {
+    CEF,
+    Colors,
+    LEEF,
+    RFC,
+    RFC3164,
+    RFC5424,
+    RgbToAnsi,
+    Syslog,
+} from "syslog-pro";
 
 // test type exports
 type SL = Syslog;

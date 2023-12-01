@@ -7,7 +7,7 @@ JSONEditor.defaults.options.theme = "bootstrap2";
 editor = new JSONEditor(element, {
     theme: "bootstrap2",
 });
-editor.on("ready", function() {
+editor.on("ready", function () {
     // Now the api methods will be available
     editor.validate();
 });
@@ -45,19 +45,19 @@ var errors = editor.validate({
     },
 });
 
-editor.on("change", function() {
+editor.on("change", function () {
     // Do something
 });
 
-editor.off("change", function() {
+editor.off("change", function () {
     // Do something
 });
 
-editor.watch("path.to.field", function() {
+editor.watch("path.to.field", function () {
     // Do something
 });
 
-editor.unwatch("path.to.field", function() {
+editor.unwatch("path.to.field", function () {
     // Do something
 });
 
@@ -91,9 +91,9 @@ JSONEditor.defaults.editors.object.options.collapsed = true;
 JSONEditor.defaults.options.template = "handlebars";
 
 var myengine = {
-    compile: function(template: any) {
+    compile: function (template: any) {
         // Compile should return a render function
-        return function(vars: any) {
+        return function (vars: any) {
             // A real template engine would render the template here
             var result = template;
             return result;
@@ -105,7 +105,8 @@ var myengine = {
 JSONEditor.defaults.options.template = myengine;
 
 // Override a specific translation
-JSONEditor.defaults.languages.en.error_minLength = "This better be at least {{0}} characters long or else!";
+JSONEditor.defaults.languages.en.error_minLength =
+    "This better be at least {{0}} characters long or else!";
 
 // Create your own language mapping
 // Any keys not defined here will fall back to the "en" language
@@ -115,7 +116,7 @@ JSONEditor.defaults.languages.es = {
 
 JSONEditor.defaults.language = "es";
 
-JSONEditor.defaults.resolvers.unshift(function(schema) {
+JSONEditor.defaults.resolvers.unshift(function (schema) {
     if (schema.type === "object" && schema.format === "location") {
         return "location";
     }
@@ -125,7 +126,7 @@ JSONEditor.defaults.resolvers.unshift(function(schema) {
 
 JSONEditor.plugins.selectize.enable = true;
 
-JSONEditor.defaults.custom_validators.push(function(schema, value, path) {
+JSONEditor.defaults.custom_validators.push(function (schema, value, path) {
     var errors: JSONEditorError[] = [];
     if (schema.format === "date") {
         if (!/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(value)) {
@@ -133,7 +134,7 @@ JSONEditor.defaults.custom_validators.push(function(schema, value, path) {
             errors.push({
                 path: path,
                 property: "format",
-                message: "Dates must be in the format \"YYYY-MM-DD\"",
+                message: 'Dates must be in the format "YYYY-MM-DD"',
             });
         }
     }

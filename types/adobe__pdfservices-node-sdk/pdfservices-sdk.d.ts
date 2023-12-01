@@ -1,10 +1,16 @@
-import { CompressionLevel, CompressPDFOptions } from "./operation/option/compresspdf/compress-pdf-options";
+import {
+    CompressionLevel,
+    CompressPDFOptions,
+} from "./operation/option/compresspdf/compress-pdf-options";
 import { CreatePDFFromExcelOptions } from "./operation/option/createpdf/create-pdf-from-excel-options";
 import { CreatePDFFromHtmlOptions } from "./operation/option/createpdf/create-pdf-from-html-options";
 import { CreatePDFFromPPTOptions } from "./operation/option/createpdf/create-pdf-from-ppt-options";
 import { CreatePDFFromWordOptions } from "./operation/option/createpdf/create-pdf-from-word-options";
 import { PageLayout } from "./operation/option/createpdf/page-layout";
-import { DocumentMergeOptions, OutputFormat } from "./operation/option/documentmerge/document-merge-options";
+import {
+    DocumentMergeOptions,
+    OutputFormat,
+} from "./operation/option/documentmerge/document-merge-options";
 import { Fragments as FragmentsType } from "./operation/option/documentmerge/fragments";
 import { ExtractPdfOptions } from "./operation/option/extractpdf/extract-pdf-options";
 import { OCROptions } from "./operation/option/ocr/ocr-options";

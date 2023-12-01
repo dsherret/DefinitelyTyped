@@ -9,7 +9,9 @@ declare namespace markdownitEmoji {
         shortcuts?: Shortcuts | undefined;
     }
 
-    type LiteralUnion<T extends U, U = string> = T | (U & { _?: never | undefined });
+    type LiteralUnion<T extends U, U = string> =
+        | T
+        | (U & { _?: never | undefined });
 
     type PartialRecord<K extends keyof any, T> = {
         [P in K]?: T | T[];
@@ -46,5 +48,7 @@ declare namespace markdownitEmoji {
     >;
 }
 
-declare const markdownitEmoji: PluginSimple | PluginWithOptions<markdownitEmoji.Options>;
+declare const markdownitEmoji:
+    | PluginSimple
+    | PluginWithOptions<markdownitEmoji.Options>;
 export = markdownitEmoji;

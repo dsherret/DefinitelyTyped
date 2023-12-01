@@ -36,11 +36,17 @@ export function now(localtimeOffsetMsec: number): number;
 
 export function nowSecs(localtimeOffsetMsec: number): number;
 
-export function parseAuthorizationHeader(header: string, keys?: string[]): Record<string, string>;
+export function parseAuthorizationHeader(
+    header: string,
+    keys?: string[],
+): Record<string, string>;
 
 export function parseContentType(header?: string): string;
 
-export function parseHost(req: http.RequestOptions | https.RequestOptions, hostHeaderName?: string): Host | null;
+export function parseHost(
+    req: http.RequestOptions | https.RequestOptions,
+    hostHeaderName?: string,
+): Host | null;
 
 export function parseRequest(
     req: http.RequestOptions | https.RequestOptions,

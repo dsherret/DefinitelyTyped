@@ -52,7 +52,12 @@ export interface DialogAPI {
      * Dialog.append("Cry 'Havoc!', and let slip the <em>ponies</em> of <strong>friendship</strong>.");
      * Dialog.append( <some DOM nodes> );
      */
-    append(...content: ReadonlyArray<JQuery.htmlString | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>>): this;
+    append(
+        ...content: ReadonlyArray<
+            | JQuery.htmlString
+            | JQuery.TypeOrArray<JQuery.Node | JQuery<JQuery.Node>>
+        >
+    ): this;
 
     /**
      * Returns a reference to the dialog's content area
@@ -174,7 +179,10 @@ export interface FullscreenAPI {
      * @param requestedEl The element to enter fullscreen mode with. If omitted, defaults to the entire page.
      * @since 2.31.0
      */
-    request(options?: FullscreenRequestOptions, requestedEl?: HTMLElement): Promise<void>;
+    request(
+        options?: FullscreenRequestOptions,
+        requestedEl?: HTMLElement,
+    ): Promise<void>;
 
     /**
      * Request that the browser exit fullscreen mode.
@@ -188,7 +196,10 @@ export interface FullscreenAPI {
      * @param requestedEl The element to toggle fullscreen mode with. If omitted, defaults to the entire page.
      * @since 2.31.0
      */
-    toggle(options?: FullscreenRequestOptions, requestedEl?: HTMLElement): Promise<void>;
+    toggle(
+        options?: FullscreenRequestOptions,
+        requestedEl?: HTMLElement,
+    ): Promise<void>;
 
     /**
      * Attaches fullscreen change event handlers.
@@ -196,7 +207,10 @@ export interface FullscreenAPI {
      * @param requestedEl The element to attach the handler to.
      * @since 2.31.0
      */
-    onChange(handlerFn: (ev: JQuery.Event) => void, requestedEl?: HTMLElement): void;
+    onChange(
+        handlerFn: (ev: JQuery.Event) => void,
+        requestedEl?: HTMLElement,
+    ): void;
 
     /**
      * Removes fullscreen change event handlers.
@@ -204,7 +218,10 @@ export interface FullscreenAPI {
      * @param requestedEl The element to remove the handler(s) from.
      * @since 2.31.0
      */
-    offChange(handlerFn: (ev: JQuery.Event) => void, requestedEl?: HTMLElement): void;
+    offChange(
+        handlerFn: (ev: JQuery.Event) => void,
+        requestedEl?: HTMLElement,
+    ): void;
 
     /**
      * Attaches fullscreen error event handlers.
@@ -212,7 +229,10 @@ export interface FullscreenAPI {
      * @param requestedEl The element to attach the handler to.
      * @since 2.31.0
      */
-    onError(handlerFn: (ev: JQuery.Event) => void, requestedEl?: HTMLElement): void;
+    onError(
+        handlerFn: (ev: JQuery.Event) => void,
+        requestedEl?: HTMLElement,
+    ): void;
 
     /**
      * Removes fullscreen error event handlers.
@@ -220,7 +240,10 @@ export interface FullscreenAPI {
      * @param requestedEl The element to remove the handler(s) from.
      * @since 2.31.0
      */
-    offError(handlerFn: (ev: JQuery.Event) => void, requestedEl?: HTMLElement): void;
+    offError(
+        handlerFn: (ev: JQuery.Event) => void,
+        requestedEl?: HTMLElement,
+    ): void;
 }
 
 export interface LoadScreenAPI {

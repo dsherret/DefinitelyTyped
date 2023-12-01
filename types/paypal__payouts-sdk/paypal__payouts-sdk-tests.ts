@@ -35,10 +35,13 @@ const client = new core.PayPalHttpClient(envLive);
 
 const reqPost = new payouts.PayoutsPostRequest();
 reqPost.headers.Authorization = envLive.authorizationString();
-reqPost.requestBody({ sender_batch_header: {}, items: [{ amount: { currency, value }, receiver }] });
+reqPost.requestBody({
+    sender_batch_header: {},
+    items: [{ amount: { currency, value }, receiver }],
+});
 client
     .execute(reqPost)
-    .then(res => {
+    .then((res) => {
         const result = res.result;
         const batchId = result?.batch_header?.payout_batch_id;
         if (batchId) {
@@ -47,7 +50,7 @@ client
             return client.execute(reqGetBatch);
         }
     })
-    .then(res => {
+    .then((res) => {
         const batchStatus = res?.result?.batch_header?.batch_status;
         if (batchStatus === "SUCCESS") {
             // payout is successful
@@ -55,12 +58,14 @@ client
         const batchItems = res?.result?.items;
         if (batchItems?.length) {
             const [firstItem] = batchItems;
-            const reqItems = new payouts.PayoutsItemGetRequest(firstItem.payout_item_id);
+            const reqItems = new payouts.PayoutsItemGetRequest(
+                firstItem.payout_item_id,
+            );
             reqItems.headers.Authorization = envLive.authorizationString();
             return client.execute(reqItems);
         }
     })
-    .then(res => {
+    .then((res) => {
         const txStatus = res?.result?.transaction_status;
         if (txStatus !== "SUCCESS") {
             const itemId = res?.result?.payout_item_id;
@@ -71,9 +76,9 @@ client
             }
         }
     })
-    .then(res => {
+    .then((res) => {
         // handle cancellation response
     })
-    .catch(error => {
+    .catch((error) => {
         // do something with the error
     });

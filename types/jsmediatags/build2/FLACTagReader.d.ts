@@ -10,7 +10,10 @@ export default class FLACTagReader extends MediaTagReader {
 
     static canReadTagFormat(tagIdentifier: number[]): boolean;
 
-    _loadData(mediaFileReader: MediaFileReader, callbacks: LoadCallbackType): void;
+    _loadData(
+        mediaFileReader: MediaFileReader,
+        callbacks: LoadCallbackType,
+    ): void;
 
     _loadBlock(
         mediaFileReader: MediaFileReader,

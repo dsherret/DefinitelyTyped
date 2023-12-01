@@ -1,7 +1,7 @@
 /*
  * Handle the event of adding a file to the jQuery Upload plugin.
  */
-var __handleAddingFile = function(event: any, data: any) {
+var __handleAddingFile = function (event: any, data: any) {
     event.preventDefault();
 
     // [PERFORM VALIDATION]
@@ -30,6 +30,6 @@ class TestFileInput {
 
     constructor() {
         // The file upload object receives a fileInputOptions configuration object
-        this.fileInput = <JQueryFileUpload> this.$el.fileupload(options);
+        this.fileInput = <JQueryFileUpload>this.$el.fileupload(options);
     }
 }

@@ -1,12 +1,12 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "no-unnecessary-class": false,
-        "no-var-keyword": false,
-        "object-literal-shorthand": false,
-        "only-arrow-functions": false,
-        "prefer-const": false,
-        "prefer-template": false,
-        "unified-signatures": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "no-unnecessary-class": false,
+    "no-var-keyword": false,
+    "object-literal-shorthand": false,
+    "only-arrow-functions": false,
+    "prefer-const": false,
+    "prefer-template": false,
+    "unified-signatures": false
+  }
 }

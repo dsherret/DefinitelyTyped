@@ -7,7 +7,11 @@ interface CytoscapeComponentProps {
     style?: CSSProperties | undefined;
     elements: cytoscape.ElementDefinition[];
     layout?: cytoscape.LayoutOptions | undefined;
-    stylesheet?: cytoscape.Stylesheet | cytoscape.Stylesheet[] | string | undefined;
+    stylesheet?:
+        | cytoscape.Stylesheet
+        | cytoscape.Stylesheet[]
+        | string
+        | undefined;
     className?: string | undefined;
     zoom?: number | undefined;
     pan?: cytoscape.Position | undefined;
@@ -23,8 +27,15 @@ interface CytoscapeComponentProps {
     autolock?: boolean | undefined;
     get?: ((obj: Record<string, any>, key: string) => any) | undefined;
     toJson?: ((obj: Record<string, any>) => any) | undefined;
-    diff?: ((objA: Record<string, any>, objB: Record<string, any>) => boolean) | undefined;
-    forEach?: (<T>(list: T[], iterator: (value: T, index: number, array: T[]) => void) => void) | undefined;
+    diff?:
+        | ((objA: Record<string, any>, objB: Record<string, any>) => boolean)
+        | undefined;
+    forEach?:
+        | (<T>(
+              list: T[],
+              iterator: (value: T, index: number, array: T[]) => void,
+          ) => void)
+        | undefined;
     headless?: boolean | undefined;
     styleEnabled?: boolean | undefined;
     hideEdgesOnViewport?: boolean | undefined;
@@ -39,9 +50,9 @@ declare class CytoscapeComponent extends Component<CytoscapeComponentProps> {
     static normalizeElements(
         data:
             | {
-                nodes: cytoscape.ElementDefinition[];
-                edges: cytoscape.ElementDefinition[];
-            }
+                  nodes: cytoscape.ElementDefinition[];
+                  edges: cytoscape.ElementDefinition[];
+              }
             | cytoscape.ElementDefinition[],
     ): cytoscape.ElementDefinition[];
 }

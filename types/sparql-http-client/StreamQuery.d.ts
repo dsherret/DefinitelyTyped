@@ -7,10 +7,16 @@ declare namespace StreamQuery {
         factory?: DataFactory<Q> | undefined;
     }
 
-    type StreamQuery<Q extends BaseQuad = Quad> = Query<boolean, Stream<Q> & Readable, Readable, void>;
+    type StreamQuery<Q extends BaseQuad = Quad> = Query<
+        boolean,
+        Stream<Q> & Readable,
+        Readable,
+        void
+    >;
 }
 
-interface StreamQuery<Q extends BaseQuad = Quad> extends StreamQuery.StreamQuery<Q> {}
+interface StreamQuery<Q extends BaseQuad = Quad>
+    extends StreamQuery.StreamQuery<Q> {}
 
 // tslint:disable-next-line no-unnecessary-class
 declare class StreamQuery<Q extends BaseQuad = Quad> {

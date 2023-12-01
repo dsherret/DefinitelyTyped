@@ -18,7 +18,9 @@ const FRAME_BUDGET = 100;
 {
     const vnode = m.fragment({ key: 123 }, [m("div")]);
     console.assert((vnode.children as Array<m.Vnode<any, any>>).length === 1);
-    console.assert((vnode.children as Array<m.Vnode<any, any>>)[0].tag === "div");
+    console.assert(
+        (vnode.children as Array<m.Vnode<any, any>>)[0].tag === "div",
+    );
 }
 
 {
@@ -143,7 +145,7 @@ const FRAME_BUDGET = 100;
     ];
 
     const userInputs = (users: Array<{ id: number; name: string }>) => {
-        return users.map(u => {
+        return users.map((u) => {
             return m("input", { key: u.id }, u.name);
         });
     };
@@ -167,7 +169,10 @@ const FRAME_BUDGET = 100;
 }
 
 {
-    const ComponentWithDynamicState: m.Comp<{ text: string }, { data?: string | undefined }> = {
+    const ComponentWithDynamicState: m.Comp<
+        { text: string },
+        { data?: string | undefined }
+    > = {
         oninit(vnode) {
             vnode.state.data = vnode.attrs.text;
         },
@@ -180,7 +185,10 @@ const FRAME_BUDGET = 100;
 }
 
 {
-    const ComponentUsingThis: m.Comp<{ text: string }, { data?: string | undefined }> = {
+    const ComponentUsingThis: m.Comp<
+        { text: string },
+        { data?: string | undefined }
+    > = {
         oninit(vnode) {
             this.data = vnode.attrs.text;
         },
@@ -200,7 +208,7 @@ const FRAME_BUDGET = 100;
     const Fader: m.Comp = {
         onbeforeremove(vnode) {
             vnode.dom.classList.add("fade-out");
-            return new Promise(resolve => {
+            return new Promise((resolve) => {
                 setTimeout(resolve, 1000);
             });
         },
@@ -226,7 +234,10 @@ const FRAME_BUDGET = 100;
         search() {
             // save the state for this route
             // this is equivalent to `history.replaceState({term: state.term}, null, location.href)`
-            m.route.set(m.route.get(), null, { replace: true, state: { term: state.term } });
+            m.route.set(m.route.get(), null, {
+                replace: true,
+                state: { term: state.term },
+            });
 
             // navigate away
             location.href = "https://google.com/?q=" + state.term;
@@ -318,7 +329,7 @@ const FRAME_BUDGET = 100;
     const state = {
         users: [] as any[],
         loadUsers() {
-            return m.request<any>("/api/v1/users").then(users => {
+            return m.request<any>("/api/v1/users").then((users) => {
                 state.users = users;
             });
         },
@@ -328,7 +339,7 @@ const FRAME_BUDGET = 100;
         "/user/list": {
             onmatch: state.loadUsers,
             render() {
-                return state.users.map(user => m("div", user.id));
+                return state.users.map((user) => m("div", user.id));
             },
         },
     });
@@ -343,7 +354,10 @@ const FRAME_BUDGET = 100;
 
     m.mount(document.body, {
         view() {
-            return [m("input[type=file]", { onchange: upload }), progress + "% completed"];
+            return [
+                m("input[type=file]", { onchange: upload }),
+                progress + "% completed",
+            ];
         },
     });
 
@@ -355,8 +369,8 @@ const FRAME_BUDGET = 100;
             method: "POST",
             url: "/api/v1/upload",
             body: data,
-            config: xhr => {
-                xhr.addEventListener("progress", e => {
+            config: (xhr) => {
+                xhr.addEventListener("progress", (e) => {
                     progress = e.loaded / e.total;
                     m.redraw(); // tell Mithril that data changed and a re-render is needed
                 });
@@ -387,7 +401,7 @@ const FRAME_BUDGET = 100;
         method: "GET",
         url: "/api/v1/users",
         type: User,
-    }).then(users => {
+    }).then((users) => {
         console.log(users[0].name); // logs a name
     });
 }
@@ -400,8 +414,8 @@ const FRAME_BUDGET = 100;
     m.request<string>({
         method: "GET",
         url: "/files/icon.svg",
-        deserialize: value => value,
-    }).then(svg => {
+        deserialize: (value) => value,
+    }).then((svg) => {
         m.render(document.body, m.trust(svg));
     });
 }
@@ -415,7 +429,7 @@ const FRAME_BUDGET = 100;
         url: "/api/v1/users/:id",
         params: { id: 1 },
         callbackKey: "callback",
-    }).then(result => {
+    }).then((result) => {
         console.log(result);
     });
 }
@@ -435,10 +449,10 @@ const FRAME_BUDGET = 100;
         m("li", "child 2"),
         groupVisible
             ? m.fragment({ oninit: log }, [
-                // a fragment containing two elements
-                m("li", "child 3"),
-                m("li", "child 4"),
-            ])
+                  // a fragment containing two elements
+                  m("li", "child 3"),
+                  m("li", "child 4"),
+              ])
             : null,
     ]);
 }
@@ -450,7 +464,7 @@ const FRAME_BUDGET = 100;
 {
     const firstName = Stream("John");
     const lastName = Stream("Doe");
-    const fullName = Stream.merge([firstName, lastName]).map(values => {
+    const fullName = Stream.merge([firstName, lastName]).map((values) => {
         return values.join(" ");
     });
 
@@ -466,7 +480,7 @@ const FRAME_BUDGET = 100;
 ////////////////////////////////////////////////////////////////////////////////
 
 {
-    const skipped = Stream(1).map(value => {
+    const skipped = Stream(1).map((value) => {
         return Stream.SKIP;
     });
 
@@ -499,7 +513,7 @@ const FRAME_BUDGET = 100;
 
 {
     const value = Stream<number>();
-    const doubled = value.map(value => value * 2);
+    const doubled = value.map((value) => value * 2);
 
     value.end(true); // set to ended state
 
@@ -524,17 +538,21 @@ const FRAME_BUDGET = 100;
     const view = () =>
         m(
             ".container",
-            cells.map(i =>
+            cells.map((i) =>
                 m(".slice", {
-                    style: { backgroundPosition: `${(i % 10) * 11}% ${Math.floor(i / 10) * 11}%` },
+                    style: {
+                        backgroundPosition: `${(i % 10) * 11}% ${
+                            Math.floor(i / 10) * 11
+                        }%`,
+                    },
                     onbeforeremove: exit,
-                })
+                }),
             ),
         );
 
     const exit = (vnode: m.VnodeDOM<any, any>) => {
         vnode.dom.classList.add("exit");
-        return new Promise(resolve => {
+        return new Promise((resolve) => {
             setTimeout(resolve, 1000);
         });
     };
@@ -643,7 +661,9 @@ const FRAME_BUDGET = 100;
 
         computed(vnode: m.Vnode<any, any>) {
             state.showing = vnode.attrs.status || "";
-            state.remaining = state.todos.filter((todo: any) => !todo.completed).length;
+            state.remaining = state.todos.filter(
+                (todo: any) => !todo.completed,
+            ).length;
             state.todosByStatus = state.todos.filter((todo: any) => {
                 switch (state.showing) {
                     case "":
@@ -670,18 +690,26 @@ const FRAME_BUDGET = 100;
     > = {
         add(e: KeyboardEvent) {
             if (e.keyCode === 13) {
-                state.dispatch("createTodo", [(e.target as HTMLInputElement).value]);
+                state.dispatch("createTodo", [
+                    (e.target as HTMLInputElement).value,
+                ]);
                 (e.target as HTMLInputElement).value = "";
             }
         },
         toggleAll() {
-            state.dispatch("setStatuses", [(document.getElementById("toggle-all") as HTMLInputElement).checked]);
+            state.dispatch("setStatuses", [
+                (document.getElementById("toggle-all") as HTMLInputElement)
+                    .checked,
+            ]);
         },
         toggle(todo: any) {
             state.dispatch("setStatus", [todo, !todo.completed]);
         },
         focus(vnode: m.VnodeDOM<any, any>, todo: any) {
-            if (todo === state.editing && vnode.dom !== document.activeElement) {
+            if (
+                todo === state.editing &&
+                vnode.dom !== document.activeElement
+            ) {
                 const el = vnode.dom as HTMLInputElement;
                 el.value = todo.title;
                 el.focus();
@@ -689,7 +717,10 @@ const FRAME_BUDGET = 100;
             }
         },
         save(e: KeyboardEvent) {
-            if (e.keyCode === 13 || e.type === "blur") state.dispatch("update", [(e.target as HTMLInputElement).value]);
+            if (e.keyCode === 13 || e.type === "blur")
+                state.dispatch("update", [
+                    (e.target as HTMLInputElement).value,
+                ]);
             else if (e.keyCode === 27) state.dispatch("reset");
         },
         oninit: state.computed,
@@ -699,79 +730,115 @@ const FRAME_BUDGET = 100;
             return [
                 m("header.header", [
                     m("h1", "todos"),
-                    m("input#new-todo[placeholder='What needs to be done?'][autofocus]", { onkeypress: ui.add }),
+                    m(
+                        "input#new-todo[placeholder='What needs to be done?'][autofocus]",
+                        {
+                            onkeypress: ui.add,
+                        },
+                    ),
                 ]),
-                m("section#main", { style: { display: state.todos.length > 0 ? "" : "none" } }, [
-                    m("input#toggle-all[type='checkbox']", { checked: state.remaining === 0, onclick: ui.toggleAll }),
-                    m("label[for='toggle-all']", { onclick: ui.toggleAll }, "Mark all as complete"),
-                    m("ul#todo-list", [
-                        state.todosByStatus.map((todo: any) => {
-                            return m(
-                                "li",
-                                {
-                                    class: `${todo.completed ? "completed" : ""} ${
-                                        todo === state.editing ? "editing" : ""
-                                    }`,
-                                },
-                                [
-                                    m(".view", [
-                                        m("input.toggle[type='checkbox']", {
-                                            checked: todo.completed,
-                                            onclick: () => {
-                                                ui.toggle(todo);
-                                            },
-                                        }),
-                                        m(
-                                            "label",
-                                            {
-                                                ondblclick: () => {
-                                                    state.dispatch("edit", [todo]);
-                                                },
-                                            },
-                                            todo.title,
-                                        ),
-                                        m("button.destroy", {
-                                            onclick: () => {
-                                                state.dispatch("destroy", [todo]);
-                                            },
-                                        }),
-                                    ]),
-                                    m("input.edit", {
-                                        onupdate(vnode: m.VnodeDOM<any, any>) {
-                                            ui.focus(vnode, todo);
-                                        },
-                                        onkeypress: ui.save,
-                                        onblur: ui.save,
-                                    }),
-                                ],
-                            );
+                m(
+                    "section#main",
+                    {
+                        style: {
+                            display: state.todos.length > 0 ? "" : "none",
+                        },
+                    },
+                    [
+                        m("input#toggle-all[type='checkbox']", {
+                            checked: state.remaining === 0,
+                            onclick: ui.toggleAll,
                         }),
-                    ]),
-                ]),
+                        m(
+                            "label[for='toggle-all']",
+                            { onclick: ui.toggleAll },
+                            "Mark all as complete",
+                        ),
+                        m("ul#todo-list", [
+                            state.todosByStatus.map((todo: any) => {
+                                return m(
+                                    "li",
+                                    {
+                                        class: `${
+                                            todo.completed ? "completed" : ""
+                                        } ${
+                                            todo === state.editing
+                                                ? "editing"
+                                                : ""
+                                        }`,
+                                    },
+                                    [
+                                        m(".view", [
+                                            m("input.toggle[type='checkbox']", {
+                                                checked: todo.completed,
+                                                onclick: () => {
+                                                    ui.toggle(todo);
+                                                },
+                                            }),
+                                            m(
+                                                "label",
+                                                {
+                                                    ondblclick: () => {
+                                                        state.dispatch("edit", [
+                                                            todo,
+                                                        ]);
+                                                    },
+                                                },
+                                                todo.title,
+                                            ),
+                                            m("button.destroy", {
+                                                onclick: () => {
+                                                    state.dispatch("destroy", [
+                                                        todo,
+                                                    ]);
+                                                },
+                                            }),
+                                        ]),
+                                        m("input.edit", {
+                                            onupdate(
+                                                vnode: m.VnodeDOM<any, any>,
+                                            ) {
+                                                ui.focus(vnode, todo);
+                                            },
+                                            onkeypress: ui.save,
+                                            onblur: ui.save,
+                                        }),
+                                    ],
+                                );
+                            }),
+                        ]),
+                    ],
+                ),
                 state.todos.length
                     ? m("footer#footer", [
-                        m("span#todo-count", [
-                            m("strong", state.remaining),
-                            state.remaining === 1 ? " item left" : " items left",
-                        ]),
-                        m("ul#filters", [
-                            // m("li", m("a[href='/']", {oncreate: m.route.link, class: state.showing === "" ? "selected" : ""}, "All")),
-                            // m("li", m("a[href='/active']", {oncreate: m.route.link, class: state.showing === "active" ? "selected" : ""}, "Active")),
-                            // m("li", m("a[href='/completed']", {oncreate: m.route.link, class: state.showing === "completed" ? "selected" : ""}, "Completed")),
-                            m(m.route.Link, { href: "/" }, "All"),
-                            m(m.route.Link, { href: "/active" }, "Active"),
-                            m(m.route.Link, { href: "/completed" }, "Completed"),
-                        ]),
-                        m(
-                            "button#clear-completed",
-                            {
-                                onclick: () => {
-                                    state.dispatch("clear");
-                                },
-                            },
-                            "Clear completed",
-                        ),
-                    ])
+                          m("span#todo-count", [
+                              m("strong", state.remaining),
+                              state.remaining === 1
+                                  ? " item left"
+                                  : " items left",
+                          ]),
+                          m("ul#filters", [
+                              // m("li", m("a[href='/']", {oncreate: m.route.link, class: state.showing === "" ? "selected" : ""}, "All")),
+                              // m("li", m("a[href='/active']", {oncreate: m.route.link, class: state.showing === "active" ? "selected" : ""}, "Active")),
+                              // m("li", m("a[href='/completed']", {oncreate: m.route.link, class: state.showing === "completed" ? "selected" : ""}, "Completed")),
+                              m(m.route.Link, { href: "/" }, "All"),
+                              m(m.route.Link, { href: "/active" }, "Active"),
+                              m(
+                                  m.route.Link,
+                                  { href: "/completed" },
+                                  "Completed",
+                              ),
+                          ]),
+                          m(
+                              "button#clear-completed",
+                              {
+                                  onclick: () => {
+                                      state.dispatch("clear");
+                                  },
+                              },
+                              "Clear completed",
+                          ),
+                      ])
                     : null,
             ];
         },

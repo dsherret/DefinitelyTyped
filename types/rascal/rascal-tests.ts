@@ -64,7 +64,10 @@ const config: BrokerConfig = {
         broker.on("error", console.error);
 
         // Publish a message
-        const publication = await broker.publish("demo_publication", "Hello World!");
+        const publication = await broker.publish(
+            "demo_publication",
+            "Hello World!",
+        );
         await broker.publish("p1", "some message");
         await broker.publish("p1", "some message", "some.routing.key");
         await broker.publish("p1", "some message", {
@@ -81,10 +84,23 @@ const config: BrokerConfig = {
             .on("message", (message, content, ackOrNack) => {
                 ackOrNack();
                 ackOrNack(new Error(), { strategy: "nack" });
-                ackOrNack(new Error(), { strategy: "nack", defer: 1000, requeue: true });
-                ackOrNack(new Error(), [{ strategy: "republish", defer: 1000, attempts: 10 }, { strategy: "nack" }]);
-                ackOrNack(new Error(), { strategy: "republish", immediateNack: true });
-                ackOrNack(new Error(), { strategy: "forward", publication: "some_exchange" });
+                ackOrNack(new Error(), {
+                    strategy: "nack",
+                    defer: 1000,
+                    requeue: true,
+                });
+                ackOrNack(new Error(), [
+                    { strategy: "republish", defer: 1000, attempts: 10 },
+                    { strategy: "nack" },
+                ]);
+                ackOrNack(new Error(), {
+                    strategy: "republish",
+                    immediateNack: true,
+                });
+                ackOrNack(new Error(), {
+                    strategy: "forward",
+                    publication: "some_exchange",
+                });
                 ackOrNack(new Error(), [
                     {
                         strategy: "forward",
@@ -166,7 +182,7 @@ Broker.create(config, (err, broker) => {
             res; // $ExpectType SubscriptionSession[]
         });
         broker.subscribeAll(
-            x => {
+            (x) => {
                 x; // $ExpectType SubscriptionConfig
                 return true;
             },
@@ -180,7 +196,7 @@ Broker.create(config, (err, broker) => {
     (async () => {
         const b = await BrokerAsPromised.create(config);
         // $ExpectType SubscriberSessionAsPromised[]
-        const res = await b.subscribeAll(x => {
+        const res = await b.subscribeAll((x) => {
             x; // $ExpectType SubscriptionConfig
             return true;
         });
@@ -214,18 +230,22 @@ Broker.create(config, (err, broker) => {
 
 {
     Broker.create(config, (err, broker) => {
-        broker.publish("demo_publication", "Hello World!", (err, publication) => {
-            publication
-                .on("error", (err, msgId) => {
-                    err; // $ExpectType Error
-                    msgId; // $ExpectType string
-                })
-                .on("return", msg => {
-                    msg; // $ExpectType Message
-                })
-                .on("success", msgId => {
-                    msgId; // $ExpectType string
-                });
-        });
+        broker.publish(
+            "demo_publication",
+            "Hello World!",
+            (err, publication) => {
+                publication
+                    .on("error", (err, msgId) => {
+                        err; // $ExpectType Error
+                        msgId; // $ExpectType string
+                    })
+                    .on("return", (msg) => {
+                        msg; // $ExpectType Message
+                    })
+                    .on("success", (msgId) => {
+                        msgId; // $ExpectType string
+                    });
+            },
+        );
     });
 }

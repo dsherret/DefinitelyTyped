@@ -37,10 +37,12 @@ declare namespace klawSync {
          * @default graceful-fs
          * @since v4.0.0
          */
-        fs?: {
-            readdirSync(path: string): string[];
-            statSync(path: string): fs.Stats;
-        } | undefined;
+        fs?:
+            | {
+                  readdirSync(path: string): string[];
+                  statSync(path: string): fs.Stats;
+              }
+            | undefined;
 
         /**
          * @description function that gets one argument fn({path: '', stats: {}}) and returns true to include

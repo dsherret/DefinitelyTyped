@@ -94,9 +94,15 @@ export type ValueFn<T extends BaseType, Datum, Result> = (
 export interface TransitionLike<GElement extends BaseType, Datum> {
     selection(): Selection<GElement, Datum, any, any>;
     on(type: string, listener: null): TransitionLike<GElement, Datum>;
-    on(type: string, listener: ValueFn<GElement, Datum, void>): TransitionLike<GElement, Datum>;
+    on(
+        type: string,
+        listener: ValueFn<GElement, Datum, void>,
+    ): TransitionLike<GElement, Datum>;
     tween(name: string, tweenFn: null): TransitionLike<GElement, Datum>;
-    tween(name: string, tweenFn: ValueFn<GElement, Datum, ((t: number) => void)>): TransitionLike<GElement, Datum>;
+    tween(
+        name: string,
+        tweenFn: ValueFn<GElement, Datum, (t: number) => void>,
+    ): TransitionLike<GElement, Datum>;
 }
 
 // --------------------------------------------------------------------------
@@ -134,11 +140,15 @@ export function selectAll(): Selection<null, undefined, null, undefined>;
 /**
  * Create an empty selection.
  */
-export function selectAll(selector: null): Selection<null, undefined, null, undefined>;
+export function selectAll(
+    selector: null,
+): Selection<null, undefined, null, undefined>;
 /**
  * Create an empty selection.
  */
-export function selectAll(selector: undefined): Selection<null, undefined, null, undefined>;
+export function selectAll(
+    selector: undefined,
+): Selection<null, undefined, null, undefined>;
 /**
  * Select all elements that match the specified selector string. The elements will be selected in document order (top-to-bottom).
  * If no elements in the document match the selector, returns an empty selection.
@@ -182,7 +192,12 @@ export function selectAll<GElement extends BaseType, OldDatum>(
  * The third generic "PElement" refers to the type of the parent element(s) in the D3 selection.
  * The fourth generic "PDatum" refers to the type of the datum of the parent element(s).
  */
-export interface Selection<GElement extends BaseType, Datum, PElement extends BaseType, PDatum> {
+export interface Selection<
+    GElement extends BaseType,
+    Datum,
+    PElement extends BaseType,
+    PDatum,
+> {
     // Sub-selection -------------------------
 
     /**
@@ -199,12 +214,16 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      *
      * @param selector CSS selector string
      */
-    select<DescElement extends BaseType>(selector: string): Selection<DescElement, Datum, PElement, PDatum>;
+    select<DescElement extends BaseType>(
+        selector: string,
+    ): Selection<DescElement, Datum, PElement, PDatum>;
     /**
      * Create an empty sub-selection. Selection.select does not affect grouping: it preserves the existing group
      * structure and indexes.
      */
-    select<DescElement extends BaseType>(selector: null): Selection<null, undefined, PElement, PDatum>;
+    select<DescElement extends BaseType>(
+        selector: null,
+    ): Selection<null, undefined, PElement, PDatum>;
     /**
      * For each selected element, select the descendant element returned by the selector function.
      * If no element is returned by the selector function for the current element, the element at the
@@ -272,7 +291,11 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * (or a pseudo-array, such as a NodeList), or the empty array if there are no matching elements.
      */
     selectAll<DescElement extends BaseType, OldDatum>(
-        selector: ValueFn<GElement, Datum, DescElement[] | ArrayLike<DescElement>>,
+        selector: ValueFn<
+            GElement,
+            Datum,
+            DescElement[] | ArrayLike<DescElement>
+        >,
     ): Selection<DescElement, OldDatum, GElement, Datum>;
 
     // Modifying -------------------------------
@@ -307,7 +330,10 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * @param value A value function which is evaluated for each selected element, in order, being passed the current datum (d),
      * the current index (i), and the current group (nodes), with this as the current DOM element (nodes[i]).  A null value will clear the attribute.
      */
-    attr(name: string, value: ValueFn<GElement, Datum, string | number | boolean | null>): this;
+    attr(
+        name: string,
+        value: ValueFn<GElement, Datum, string | number | boolean | null>,
+    ): this;
 
     /**
      * Returns true if and only if the first (non-null) selected element has the specified classes.
@@ -361,7 +387,11 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * @param value Constant value for the style
      * @param priority An optional priority flag, either null or the string important (without the exclamation point)
      */
-    style(name: string, value: string | number | boolean, priority?: null | "important"): this;
+    style(
+        name: string,
+        value: string | number | boolean,
+        priority?: null | "important",
+    ): this;
     /**
      * Sets the value of the style with the specified name for the selected elements and returns this selection.
      * The value for the individual selected elements is determined by the value function.
@@ -458,7 +488,9 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * the current index (i), and the current group (nodes), with this as the current DOM element (nodes[i]).
      * The function’s return value is then used to set each element’s text content. A null value will clear the content.
      */
-    text(value: ValueFn<GElement, Datum, string | number | boolean | null>): this;
+    text(
+        value: ValueFn<GElement, Datum, string | number | boolean | null>,
+    ): this;
 
     /**
      * Returns a string representation of the inner HTML for the first (non-null) element in the selection.
@@ -498,7 +530,9 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      *
      * @param type A string representing the tag name.
      */
-    append<K extends keyof ElementTagNameMap>(type: K): Selection<ElementTagNameMap[K], Datum, PElement, PDatum>;
+    append<K extends keyof ElementTagNameMap>(
+        type: K,
+    ): Selection<ElementTagNameMap[K], Datum, PElement, PDatum>;
     /**
      * Appends a new element of this type (tag name) as the last child of each selected element,
      * or before the next following sibling in the update selection if this is an enter selection.
@@ -516,7 +550,9 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * from the parent element; or, if the name is one of the known prefixes, the corresponding namespace will be used
      * (for example, svg implies svg:svg)
      */
-    append<ChildElement extends BaseType>(type: string): Selection<ChildElement, Datum, PElement, PDatum>;
+    append<ChildElement extends BaseType>(
+        type: string,
+    ): Selection<ChildElement, Datum, PElement, PDatum>;
 
     /**
      * Appends a new element of the type provided by the element creator function as the last child of each selected element,
@@ -620,7 +656,9 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      *
      * @param other Selection to be merged.
      */
-    merge(other: Selection<GElement, Datum, PElement, PDatum>): Selection<GElement, Datum, PElement, PDatum>;
+    merge(
+        other: Selection<GElement, Datum, PElement, PDatum>,
+    ): Selection<GElement, Datum, PElement, PDatum>;
 
     /**
      * Filters the selection, returning a new selection that contains only the elements for
@@ -644,7 +682,9 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      *
      * @param selector A CSS selector string to match when filtering.
      */
-    filter<FilteredElement extends BaseType>(selector: string): Selection<FilteredElement, Datum, PElement, PDatum>;
+    filter<FilteredElement extends BaseType>(
+        selector: string,
+    ): Selection<FilteredElement, Datum, PElement, PDatum>;
     /**
      * Filter the selection, returning a new selection that contains only the elements for
      * which the specified filter is true.
@@ -656,7 +696,9 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * the current index (i), and the current group (nodes), with this as the current DOM element (nodes[i]). This function should return true
      * for an element to be included, and false otherwise.
      */
-    filter(selector: ValueFn<GElement, Datum, boolean>): Selection<GElement, Datum, PElement, PDatum>;
+    filter(
+        selector: ValueFn<GElement, Datum, boolean>,
+    ): Selection<GElement, Datum, PElement, PDatum>;
     /**
      * Filter the selection, returning a new selection that contains only the elements for
      * which the specified filter is true.
@@ -725,7 +767,9 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * with this as the current DOM element (nodes[i]). The function is then used to set each element’s new data.
      * A null value will delete the bound data.
      */
-    datum<NewDatum>(value: ValueFn<GElement, Datum, NewDatum>): Selection<GElement, NewDatum, PElement, PDatum>;
+    datum<NewDatum>(
+        value: ValueFn<GElement, Datum, NewDatum>,
+    ): Selection<GElement, NewDatum, PElement, PDatum>;
     /**
      * Sets the element’s bound data to the specified value on all selected elements.
      * Unlike selection.data, this method does not compute a join and does not affect
@@ -735,7 +779,9 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      *
      * @param value A value object to be used as the datum for each element.
      */
-    datum<NewDatum>(value: NewDatum): Selection<GElement, NewDatum, PElement, PDatum>;
+    datum<NewDatum>(
+        value: NewDatum,
+    ): Selection<GElement, NewDatum, PElement, PDatum>;
 
     /**
      * Returns the array of data for the selected elements.
@@ -915,7 +961,11 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * To access the current event within a listener, use d3.event.
      * @param capture An optional capture flag which corresponds to the W3C useCapture flag.
      */
-    on(typenames: string, listener: ValueFn<GElement, Datum, void>, capture?: boolean): this;
+    on(
+        typenames: string,
+        listener: ValueFn<GElement, Datum, void>,
+        capture?: boolean,
+    ): this;
 
     /**
      * Dispatches a custom event of the specified type to each selected element, in order.
@@ -934,7 +984,10 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * being passed the current datum (d), the current index (i), and the current group (nodes),
      * with this as the current DOM element (nodes[i]). It must return the parameters map for the current element.
      */
-    dispatch(type: string, parameters?: ValueFn<GElement, Datum, CustomEventParameters>): this;
+    dispatch(
+        type: string,
+        parameters?: ValueFn<GElement, Datum, CustomEventParameters>,
+    ): this;
 
     // Control Flow ----------------------
 
@@ -955,7 +1008,13 @@ export interface Selection<GElement extends BaseType, Datum, PElement extends Ba
      * @param func A function which is passed this selection as the first argument along with any optional arguments.
      * @param args List of optional arguments to be passed to the callback function.
      */
-    call(func: (selection: Selection<GElement, Datum, PElement, PDatum>, ...args: any[]) => void, ...args: any[]): this;
+    call(
+        func: (
+            selection: Selection<GElement, Datum, PElement, PDatum>,
+            ...args: any[]
+        ) => void,
+        ...args: any[]
+    ): this;
 
     /**
      * Return true if this selection contains no (non-null) elements.
@@ -1075,7 +1134,10 @@ export function mouse(container: ContainerElement): [number, number];
  * @param container Container element relative to which coordinates are calculated.
  * @param identifier Touch Identifier associated with the current event.
  */
-export function touch(container: ContainerElement, identifier: number): [number, number] | null;
+export function touch(
+    container: ContainerElement,
+    identifier: number,
+): [number, number] | null;
 
 /**
  * Return the x and y coordinates of the touch with the specified identifier associated
@@ -1091,7 +1153,11 @@ export function touch(container: ContainerElement, identifier: number): [number,
  * @param touches TouchList to be used when identifying the touch.
  * @param identifier Touch Identifier associated with the current event.
  */
-export function touch(container: ContainerElement, touches: TouchList, identifier: number): [number, number] | null;
+export function touch(
+    container: ContainerElement,
+    touches: TouchList,
+    identifier: number,
+): [number, number] | null;
 
 /**
  * Return the x and y coordinates of the touches associated with the current event relative to the specified container.
@@ -1103,7 +1169,10 @@ export function touch(container: ContainerElement, touches: TouchList, identifie
  * @param container Container element relative to which coordinates are calculated.
  * @param touches TouchList to be used.
  */
-export function touches(container: ContainerElement, touches?: TouchList): Array<[number, number]>;
+export function touches(
+    container: ContainerElement,
+    touches?: TouchList,
+): Array<[number, number]>;
 
 /**
  * Returns the x and y coordinates of the specified event relative to the specified container.
@@ -1113,7 +1182,10 @@ export function touches(container: ContainerElement, touches?: TouchList): Array
  * @param container Container element relative to which coordinates are calculated.
  * @param event A User interface event (e.g. mouse event, touch or MSGestureEvent) with captured clientX and clientY properties.
  */
-export function clientPoint(container: ContainerElement, event: ClientPointEvent): [number, number];
+export function clientPoint(
+    container: ContainerElement,
+    event: ClientPointEvent,
+): [number, number];
 
 // ---------------------------------------------------------------------------
 // style
@@ -1247,7 +1319,9 @@ export function create<K extends keyof ElementTagNameMap>(
  * @param name Tag name of the element to be added. See "namespace" for details on supported namespace prefixes,
  * such as for SVG elements.
  */
-export function create<NewGElement extends Element>(name: string): Selection<NewGElement, undefined, null, undefined>;
+export function create<NewGElement extends Element>(
+    name: string,
+): Selection<NewGElement, undefined, null, undefined>;
 
 /**
  * Given the specified element name, returns a function which creates an element of the given name,
@@ -1255,7 +1329,9 @@ export function create<NewGElement extends Element>(name: string): Selection<New
  *
  * @param name Tag name of the element to be added.
  */
-export function creator<K extends keyof ElementTagNameMap>(name: K): (this: BaseType) => ElementTagNameMap[K];
+export function creator<K extends keyof ElementTagNameMap>(
+    name: K,
+): (this: BaseType) => ElementTagNameMap[K];
 /**
  * Given the specified element name, returns a function which creates an element of the given name,
  * assuming that "this" is the parent element.
@@ -1265,7 +1341,9 @@ export function creator<K extends keyof ElementTagNameMap>(name: K): (this: Base
  * @param name Tag name of the element to be added. See "namespace" for details on supported namespace prefixes,
  * such as for SVG elements.
  */
-export function creator<NewGElement extends Element>(name: string): (this: BaseType) => NewGElement;
+export function creator<NewGElement extends Element>(
+    name: string,
+): (this: BaseType) => NewGElement;
 
 /**
  * Given the specified selector, returns a function which returns true if "this" element matches the specified selector.
@@ -1286,7 +1364,9 @@ export function matcher(selector: string): (this: BaseType) => boolean;
  *
  * @param selector A CSS selector string.
  */
-export function selector<DescElement extends Element>(selector: string): (this: BaseType) => DescElement;
+export function selector<DescElement extends Element>(
+    selector: string,
+): (this: BaseType) => DescElement;
 
 /**
  * Given the specified selector, returns a function which returns all descendants of "this" element that match the specified selector.
@@ -1295,4 +1375,6 @@ export function selector<DescElement extends Element>(selector: string): (this: 
  *
  * @param selector A CSS selector string.
  */
-export function selectorAll<DescElement extends Element>(selector: string): (this: BaseType) => NodeListOf<DescElement>;
+export function selectorAll<DescElement extends Element>(
+    selector: string,
+): (this: BaseType) => NodeListOf<DescElement>;

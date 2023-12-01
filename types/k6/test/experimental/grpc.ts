@@ -11,7 +11,11 @@ client.connect("localhost:8080", { maxReceiveSize: 30, maxSendSize: 30 });
 
 client.close();
 
-client.load(["../googleapis/google"], "language_service.proto", "extra_service.proto");
+client.load(
+    ["../googleapis/google"],
+    "language_service.proto",
+    "extra_service.proto",
+);
 
 client.loadProtoset("./lib/test.protoset");
 
@@ -40,7 +44,7 @@ client.invoke("main.RouteGuide/UpdateFeature", req, params_with_string_timeout);
 
 const stream = new grpc.Stream(client, "main.RouteGuide/GetFeature", params);
 
-stream.on("data", data => {
+stream.on("data", (data) => {
     data; // $ExpectType object | GrpcError | undefined
 });
 

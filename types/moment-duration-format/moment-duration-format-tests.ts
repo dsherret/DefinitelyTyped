@@ -31,7 +31,11 @@ moment.duration(123, "minutes").format("d[d] h:mm:ss");
 moment.duration(123, "minutes").format("d[d] h:mm:ss", { trim: false });
 // "0d 2:03:00"
 
-moment.duration(123, "minutes").format("[seconds:] s -- [minutes:] m -- [hours:] h -- [days:] d", { trim: "right" });
+moment
+    .duration(123, "minutes")
+    .format("[seconds:] s -- [minutes:] m -- [hours:] h -- [days:] d", {
+        trim: "right",
+    });
 // "seconds: 0 -- minutes: 3 -- hours: 2"
 
 moment.duration(123, "seconds").format("h:mm:ss");
@@ -46,7 +50,9 @@ moment.duration(123, "seconds").format("h:mm:ss", { forceLength: true });
 moment.duration(123, "minutes").format("d[d] h:mm:ss");
 // "2:03:00"
 
-moment.duration(123, "minutes").format("s [seconds], m [minutes], h [hours], d [days]");
+moment
+    .duration(123, "minutes")
+    .format("s [seconds], m [minutes], h [hours], d [days]");
 // "0 seconds, 3 minutes, 2 hours"
 
 moment.duration(123, "minutes").format("d[d] h:mm:ss", {
@@ -132,14 +138,21 @@ moment.duration(0, "minutes").format("d[d] h[h] m[m] s[s]", {
 });
 // ""
 
-moment.duration(7322, "seconds").format("d [days], h [hours], m [minutes], s [seconds]", {
-    largest: 2,
-});
+moment
+    .duration(7322, "seconds")
+    .format("d [days], h [hours], m [minutes], s [seconds]", {
+        largest: 2,
+    });
 // "2 hours, 2 minutes"
 
-moment.duration(1216922, "seconds").format("y [years], w [weeks], d [days], h [hours], m [minutes], s [seconds]", {
-    largest: 2,
-});
+moment
+    .duration(1216922, "seconds")
+    .format(
+        "y [years], w [weeks], d [days], h [hours], m [minutes], s [seconds]",
+        {
+            largest: 2,
+        },
+    );
 // "2 weeks, 2 hours"
 
 moment.duration(23, "minutes").format("d[d] h:mm:ss", {
@@ -150,22 +163,28 @@ moment.duration(23, "minutes").format("d[d] h:mm:ss", {
 moment.duration(23, "minutes").format("d[d] *h:mm:ss");
 // "0:23:00"
 
-moment.duration(2, "hours").format("y [years], d [days], h [hours], m [minutes], s [seconds]", {
-    trim: "both",
-    stopTrim: "d m",
-});
+moment
+    .duration(2, "hours")
+    .format("y [years], d [days], h [hours], m [minutes], s [seconds]", {
+        trim: "both",
+        stopTrim: "d m",
+    });
 // "0 days, 2 hours, 0 minutes"
 
-moment.duration(2, "hours").format("y [years], *d [days], h [hours], *m [minutes], s [seconds]", {
-    trim: "both",
-});
+moment
+    .duration(2, "hours")
+    .format("y [years], *d [days], h [hours], *m [minutes], s [seconds]", {
+        trim: "both",
+    });
 // "0 days, 2 hours, 0 minutes"
 
-moment.duration(2, "hours").format("y [years], d [days], h [hours], m [minutes], s [seconds]", {
-    trim: "both",
-    stopTrim: "d m",
-    largest: 2,
-});
+moment
+    .duration(2, "hours")
+    .format("y [years], d [days], h [hours], m [minutes], s [seconds]", {
+        trim: "both",
+        stopTrim: "d m",
+        largest: 2,
+    });
 // "2 hours"
 
 moment.duration(179, "seconds").format("m [minutes]");
@@ -266,36 +285,46 @@ moment.duration(123, "seconds").format("h:mm:ss", {
 });
 // "02:03"
 
-moment.duration(99999, "seconds").format("d [days], h [hours], m [minutes], s [seconds]", {
-    useSignificantDigits: true,
-    precision: 3,
-});
+moment
+    .duration(99999, "seconds")
+    .format("d [days], h [hours], m [minutes], s [seconds]", {
+        useSignificantDigits: true,
+        precision: 3,
+    });
 // "1 day, 3 hours, 50 minutes"
 
-moment.duration(99999, "seconds").format("d [days], h [hours], m [minutes], s [seconds]", {
-    useSignificantDigits: true,
-    precision: 3,
-    trunc: true,
-});
+moment
+    .duration(99999, "seconds")
+    .format("d [days], h [hours], m [minutes], s [seconds]", {
+        useSignificantDigits: true,
+        precision: 3,
+        trunc: true,
+    });
 // "1 day, 3 hours, 40 minutes"
 
-moment.duration(99999, "seconds").format("d [days], h [hours], m [minutes], s [seconds]", {
-    useSignificantDigits: true,
-    precision: 5,
-});
+moment
+    .duration(99999, "seconds")
+    .format("d [days], h [hours], m [minutes], s [seconds]", {
+        useSignificantDigits: true,
+        precision: 5,
+    });
 // "1 day, 3 hours, 46 minutes, 40 seconds"
 
-moment.duration(99999, "seconds").format("d [days], h [hours], m [minutes], s [seconds]", {
-    useSignificantDigits: true,
-    trunc: true,
-    precision: 5,
-});
+moment
+    .duration(99999, "seconds")
+    .format("d [days], h [hours], m [minutes], s [seconds]", {
+        useSignificantDigits: true,
+        trunc: true,
+        precision: 5,
+    });
 // "1 day, 3 hours, 46 minutes, 30 seconds"
 
-moment.duration(99999, "seconds").format("d [days], h [hours], m [minutes], s [seconds]", {
-    useSignificantDigits: true,
-    precision: 6,
-});
+moment
+    .duration(99999, "seconds")
+    .format("d [days], h [hours], m [minutes], s [seconds]", {
+        useSignificantDigits: true,
+        precision: 6,
+    });
 // "1 day, 3 hours, 46 minutes, 39 seconds"
 
 moment.duration(1234567, "seconds").format("m [minutes]", 3);

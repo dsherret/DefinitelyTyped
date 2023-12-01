@@ -13,7 +13,9 @@ $("#boundsExample").dateRangeSlider({
 });
 // Default values
 $("#defaultValuesExample").rangeSlider({ defaultValues: { min: 10, max: 90 } });
-$("#defaultValuesExample").editRangeSlider({ defaultValues: { min: 10, max: 90 } });
+$("#defaultValuesExample").editRangeSlider({
+    defaultValues: { min: 10, max: 90 },
+});
 $("#defaultValuesExample").dateRangeSlider({
     defaultValues: {
         min: new Date(2012, 0, 1),
@@ -61,21 +63,21 @@ $("#disabledExample").dateRangeSlider({
 });
 // Formatter - JS-way
 $("#formatterExample").rangeSlider({
-    formatter: function(val) {
+    formatter: function (val) {
         var value = Math.round(val * 5) / 5,
             decimal = value - Math.round(val);
         return decimal == 0 ? value.toString() + ".0" : value.toString();
     },
 });
 $("#formatterExample").editRangeSlider({
-    formatter: function(val) {
+    formatter: function (val) {
         var value = Math.round(val * 5) / 5,
             decimal = value - Math.round(val);
         return decimal == 0 ? value.toString() + ".0" : value.toString();
     },
 });
 $("#formatterExample").dateRangeSlider({
-    formatter: function(val) {
+    formatter: function (val) {
         var days = val.getDay(),
             month = val.getMonth() + 1,
             year = val.getFullYear();
@@ -127,64 +129,82 @@ $("#rulersExample").rangeSlider({
     scales: [
         // Primary scale
         {
-            first: function(val) {
+            first: function (val) {
                 return val;
             },
-            next: function(val) {
+            next: function (val) {
                 return val + 10;
             },
-            stop: function(val) {
+            stop: function (val) {
                 return false;
             },
-            label: function(val) {
+            label: function (val) {
                 return val;
             },
-            format: function(tickContainer, tickStart, tickEnd) {
+            format: function (tickContainer, tickStart, tickEnd) {
                 tickContainer.addClass("myCustomClass");
             },
         },
         // Secondary scale
         {
-            first: function(val) {
+            first: function (val) {
                 return val;
             },
-            next: function(val) {
+            next: function (val) {
                 if (val % 10 === 9) {
                     return val + 2;
                 }
                 return val + 1;
             },
-            stop: function(val) {
+            stop: function (val) {
                 return false;
             },
-            label: function() {
+            label: function () {
                 return null;
             },
         },
     ],
 });
-var monthsForScales = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
+var monthsForScales = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sept",
+    "Oct",
+    "Nov",
+    "Dec",
+];
 $("#dateRulersExample").dateRangeSlider({
-    bounds: { min: new Date(2012, 0, 1), max: new Date(2012, 11, 31, 12, 59, 59) },
+    bounds: {
+        min: new Date(2012, 0, 1),
+        max: new Date(2012, 11, 31, 12, 59, 59),
+    },
     defaultValues: { min: new Date(2012, 1, 10), max: new Date(2012, 4, 22) },
-    scales: [{
-        first: function(value) {
-            return value;
+    scales: [
+        {
+            first: function (value) {
+                return value;
+            },
+            stop: function (value) {
+                return false;
+            }, // changed from original example which had 'end' because that's a typo
+            next: function (value) {
+                var next = new Date(value);
+                return new Date(next.setMonth(value.getMonth() + 1));
+            },
+            label: function (value) {
+                return monthsForScales[value.getMonth()];
+            },
+            format: function (tickContainer, tickStart, tickEnd) {
+                tickContainer.addClass("myCustomClass");
+            },
         },
-        stop: function(value) {
-            return false;
-        }, // changed from original example which had 'end' because that's a typo
-        next: function(value) {
-            var next = new Date(value);
-            return new Date(next.setMonth(value.getMonth() + 1));
-        },
-        label: function(value) {
-            return monthsForScales[value.getMonth()];
-        },
-        format: function(tickContainer, tickStart, tickEnd) {
-            tickContainer.addClass("myCustomClass");
-        },
-    }],
+    ],
 });
 // Step
 $("#stepExample").rangeSlider({ step: 10 });
@@ -208,20 +228,32 @@ $("#wheelModeExample").rangeSlider({ wheelMode: "zoom" });
 $("#wheelModeExample").rangeSlider({ wheelMode: null });
 // Wheel speed
 $("#wheelSpeedExample").rangeSlider({ wheelMode: "scroll", wheelSpeed: 30 });
-$("#wheelSpeedExample").dateRangeSlider({ wheelMode: "scroll", wheelSpeed: 30 });
+$("#wheelSpeedExample").dateRangeSlider({
+    wheelMode: "scroll",
+    wheelSpeed: 30,
+});
 
 // Get bounds
-var basicSliderBounds: JQRangeSliderNumericRange = $("#slider").rangeSlider("bounds");
+var basicSliderBounds: JQRangeSliderNumericRange =
+    $("#slider").rangeSlider("bounds");
 console.log(basicSliderBounds.min + " " + basicSliderBounds.max);
-var editSliderBounds: JQRangeSliderNumericRange = $("#editSlider").editRangeSlider("bounds");
+var editSliderBounds: JQRangeSliderNumericRange =
+    $("#editSlider").editRangeSlider("bounds");
 console.log(editSliderBounds.min + " " + editSliderBounds.max);
-var dateSliderBounds: JQRangeSliderDateRange = $("#dateSlider").dateRangeSlider("bounds");
-console.log(dateSliderBounds.min.toString() + " " + dateSliderBounds.max.toString());
+var dateSliderBounds: JQRangeSliderDateRange =
+    $("#dateSlider").dateRangeSlider("bounds");
+console.log(
+    dateSliderBounds.min.toString() + " " + dateSliderBounds.max.toString(),
+);
 
 // Set bounds
 $("#slider").rangeSlider("bounds", 10, 20);
 $("#editSlider").editRangeSlider("bounds", 20, 100);
-$("#dateSlider").dateRangeSlider("bounds", new Date(2012, 0, 1), new Date(2012, 0, 31));
+$("#dateSlider").dateRangeSlider(
+    "bounds",
+    new Date(2012, 0, 1),
+    new Date(2012, 0, 31),
+);
 
 // Get min/max
 var basicSliderMin: number = $("#slider").rangeSlider("min");

@@ -9,11 +9,18 @@ import { Formatter } from "power-assert-formatter";
  * @param options Configuration options. If not passed, default options will be used.
  * @return Enhanced assert function/object.
  */
-declare function empower<T>(originalAssert: T, formatter: Formatter, options?: empower.Options): T;
+declare function empower<T>(
+    originalAssert: T,
+    formatter: Formatter,
+    options?: empower.Options,
+): T;
 
 declare namespace empower {
     // The omitted options can be provided, but they will be always overridden.
-    type Options = Omit<CoreOptions, "modifyMessageBeforeAssert" | "onError"> & {
+    type Options = Omit<
+        CoreOptions,
+        "modifyMessageBeforeAssert" | "onError"
+    > & {
         /**
          * If truthy, modify message property of `AssertionError` on rethrow.
          *

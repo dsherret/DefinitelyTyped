@@ -69,9 +69,11 @@ export interface RoutingOptions<ThisType> {
      * especially useful for late-binding to route functions (such as async
      * client-side requires).
      */
-    resource?: {
-        [handlerName: string]: Handler<ThisType>;
-    } | undefined;
+    resource?:
+        | {
+              [handlerName: string]: Handler<ThisType>;
+          }
+        | undefined;
     /**
      * (_Client Only_)
      * A function (or list of functions) to call when a given route is no longer
@@ -135,14 +137,23 @@ export abstract class AbstractRouterBase<ThisType> {
      * @param token Token which to replace (e.g. `:dog`, 'cat')
      * @param matcher Target to replace the token with
      */
-    param(token: string, matcher: string | RegExp | ((substring: string, ...args: any[]) => string)): this;
+    param(
+        token: string,
+        matcher:
+            | string
+            | RegExp
+            | ((substring: string, ...args: any[]) => string),
+    ): this;
 
     /**
      * Evalutes the `routesFn` in the given `path` scope.
      * @param path Nested scope in which to path
      * @param routesFn Function to evaluate in the new scope
      */
-    path(path: string | RegExp, routesFn: (this: this, self: this) => void): void;
+    path(
+        path: string | RegExp,
+        routesFn: (this: this, self: this) => void,
+    ): void;
 
     /**
      * Adds a new `route` to this instance for the given `path`, using `"on"` as
@@ -152,7 +163,10 @@ export abstract class AbstractRouterBase<ThisType> {
      * @param path Path to set this route on
      * @param route Handler for the specified path
      */
-    route(path: BaseOrArray<string | RegExp>, route: RouteEntry<ThisType>): void;
+    route(
+        path: BaseOrArray<string | RegExp>,
+        route: RouteEntry<ThisType>,
+    ): void;
 
     /**
      * Adds a new `route` to this instance for the given `method` and `path`.
@@ -162,7 +176,11 @@ export abstract class AbstractRouterBase<ThisType> {
      * @param path Path to set this route on
      * @param route Handler for the specified method and path
      */
-    route(method: BaseOrArray<string>, path: BaseOrArray<string | RegExp>, route: RouteEntry<ThisType>): void;
+    route(
+        method: BaseOrArray<string>,
+        path: BaseOrArray<string | RegExp>,
+        route: RouteEntry<ThisType>,
+    ): void;
 }
 
 /**
@@ -178,7 +196,11 @@ export class Router extends AbstractRouterBase<Router> {
      * @param callback (Optional) Continuation to respond to for async scenarios
      * @return Whether a route was matched for the given `method` and `path`
      */
-    dispatch(method: string, path: string, callback?: (err?: any) => void): boolean;
+    dispatch(
+        method: string,
+        path: string,
+        callback?: (err?: any) => void,
+    ): boolean;
 
     /**
      * Adds a new `route` to this instance for the given `path`, using `"on"` as
@@ -194,7 +216,11 @@ export class Router extends AbstractRouterBase<Router> {
      * @param path Path to set this route on
      * @param route Handler for the specified method and path
      */
-    on(method: BaseOrArray<string>, path: BaseOrArray<string | RegExp>, route: RouteEntry<Router>): void;
+    on(
+        method: BaseOrArray<string>,
+        path: BaseOrArray<string | RegExp>,
+        route: RouteEntry<Router>,
+    ): void;
 }
 
 export namespace http {
@@ -232,7 +258,10 @@ export namespace http {
     /**
      * Server-side HTTP Router class for Node.js
      */
-    class Router extends AbstractRouterBase<HttpRouterContext> implements HttpRouterGeneratedMethodsCheck {
+    class Router
+        extends AbstractRouterBase<HttpRouterContext>
+        implements HttpRouterGeneratedMethodsCheck
+    {
         /**
          * Ask the router to attach objects or manipulate `this` object on which
          * the function passed to the http router will get applied.
@@ -261,7 +290,11 @@ export namespace http {
         dispatch(
             req: IncomingMessage,
             res: ServerResponse,
-            callback?: (err?: any, req?: IncomingMessage, res?: ServerResponse) => void,
+            callback?: (
+                err?: any,
+                req?: IncomingMessage,
+                res?: ServerResponse,
+            ) => void,
         ): boolean;
 
         /**
@@ -270,7 +303,11 @@ export namespace http {
          * @param path Path to set this route on
          * @param route Handler for the specified method and path
          */
-        on(method: BaseOrArray<string>, path: string | RegExp, route: RouteEntry<HttpRouterContext>): void;
+        on(
+            method: BaseOrArray<string>,
+            path: string | RegExp,
+            route: RouteEntry<HttpRouterContext>,
+        ): void;
 
         /**
          * Adds a new `route` to this instance for the given `method` and `path`.
@@ -326,14 +363,21 @@ export namespace http {
      * `path`.
      * @param route Handler for the method and path
      */
-    function _GeneratedHelperMethod(this: Router, route: RouteEntry<HttpRouterContext>): void;
+    function _GeneratedHelperMethod(
+        this: Router,
+        route: RouteEntry<HttpRouterContext>,
+    ): void;
 
     /**
      * Adds a new `route` to this instance for a specific method and `path`.
      * @param path Path to set this route on
      * @param route Handler for the method and path
      */
-    function _GeneratedHelperMethod(this: Router, path: string | RegExp, route: RouteEntry<HttpRouterContext>): void;
+    function _GeneratedHelperMethod(
+        this: Router,
+        path: string | RegExp,
+        route: RouteEntry<HttpRouterContext>,
+    ): void;
 
     /**
      * Adds a new `route` to this instance for a specific method and `path`.
@@ -351,7 +395,10 @@ export namespace http {
     /**
      * Names of helper methods dynamically exposed by the HTTP Router.
      */
-    type HttpRouterGeneratedMethodNames = typeof methods[number] | "before" | "after";
+    type HttpRouterGeneratedMethodNames =
+        | (typeof methods)[number]
+        | "before"
+        | "after";
 
     /**
      * Helper interface that checks if any dynamically generated helper methods
@@ -518,7 +565,12 @@ export namespace cli {
          * @param callback (Optional) Continuation to respond to for async scenarios
          * @return Whether a route was matched for the given `method` and `path`
          */
-        dispatch(method: string, path: string, tty?: TTY, callback?: (err?: any) => void): boolean;
+        dispatch(
+            method: string,
+            path: string,
+            tty?: TTY,
+            callback?: (err?: any) => void,
+        ): boolean;
 
         /**
          * Adds a new `route` to this instance for the given `path`, using `"on"`
@@ -526,7 +578,10 @@ export namespace cli {
          * @param path Path to set this route on
          * @param route Handler for the specified path
          */
-        on(path: BaseOrArray<string | RegExp>, route: RouteEntry<CliRouterContext<TTY>>): void;
+        on(
+            path: BaseOrArray<string | RegExp>,
+            route: RouteEntry<CliRouterContext<TTY>>,
+        ): void;
 
         /**
          * Adds a new `route` to this instance for the specified `method` and `path`.

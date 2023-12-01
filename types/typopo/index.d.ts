@@ -5,7 +5,11 @@
  * @param [configuration] - configuration
  * @returns corrected output
  */
-export function fixTypos(string: string, locale?: Locale, configuration?: Configuration): string;
+export function fixTypos(
+    string: string,
+    locale?: Locale,
+    configuration?: Configuration,
+): string;
 
 export type Locale = "en-us" | "de-de" | "cs" | "rue" | "sk";
 

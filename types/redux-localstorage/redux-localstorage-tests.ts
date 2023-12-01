@@ -1,5 +1,10 @@
 import { combineReducers, compose, createStore, Reducer } from "redux";
-import { actionTypes, default as persistState, mergePersistedState, transformState } from "redux-localstorage";
+import {
+    actionTypes,
+    default as persistState,
+    mergePersistedState,
+    transformState,
+} from "redux-localstorage";
 import adapterAsyncStorage = require("redux-localstorage/lib/adapters/AsyncStorage");
 import adapterLocalStorage = require("redux-localstorage/lib/adapters/localStorage");
 import adapterSessionStorage = require("redux-localstorage/lib/adapters/sessionStorage");
@@ -8,9 +13,7 @@ const AsyncStorage: any = {};
 
 const rootReducer: Reducer<any> = (state: any, action: any) => state;
 
-const reducer = compose(
-    mergePersistedState(),
-)(rootReducer);
+const reducer = compose(mergePersistedState())(rootReducer);
 
 const storageAsyncStorage = adapterAsyncStorage(AsyncStorage);
 const storageLocalStorage = adapterLocalStorage(window.localStorage);

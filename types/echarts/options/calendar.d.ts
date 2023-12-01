@@ -106,31 +106,35 @@ declare namespace echarts {
             /**
              * Calendar coordinates splitLine style.
              */
-            splitLine?: {
-                /**
-                 * Set this to false to prevent the splitLine from showing
-                 *
-                 * @default true
-                 */
-                show?: boolean | undefined;
-                lineStyle?: LineStyle | undefined;
-            } | undefined;
+            splitLine?:
+                | {
+                      /**
+                       * Set this to false to prevent the splitLine from showing
+                       *
+                       * @default true
+                       */
+                      show?: boolean | undefined;
+                      lineStyle?: LineStyle | undefined;
+                  }
+                | undefined;
             /**
              * Every rect style in calendar coordinates.
              *
              * @see https://echarts.apache.org/en/option.html#calendar.itemStyle
              */
-            itemStyle?: {
-                color?: EChartOption.Color | undefined;
-                borderColor?: EChartOption.Color | undefined;
-                borderWidth?: number | undefined;
-                borderType?: "solid" | "dashed" | "dotted" | undefined;
-                shadowBlur?: number | undefined;
-                shadowColor?: EChartOption.Color | undefined;
-                shadowOffsetX?: number | undefined;
-                shadowOffsetY?: number | undefined;
-                opacity?: number | undefined;
-            } | undefined;
+            itemStyle?:
+                | {
+                      color?: EChartOption.Color | undefined;
+                      borderColor?: EChartOption.Color | undefined;
+                      borderWidth?: number | undefined;
+                      borderType?: "solid" | "dashed" | "dotted" | undefined;
+                      shadowBlur?: number | undefined;
+                      shadowColor?: EChartOption.Color | undefined;
+                      shadowOffsetX?: number | undefined;
+                      shadowOffsetY?: number | undefined;
+                      opacity?: number | undefined;
+                  }
+                | undefined;
             /**
              * Day style in calendar coordinates.
              * @see https://echarts.apache.org/en/option.html#calendar.dayLabel

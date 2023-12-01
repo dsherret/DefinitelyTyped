@@ -5,8 +5,14 @@ type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
 
 declare namespace Mocha {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    type TestCase = (this: undefined, context: TestContext) => void | PromiseLike<any>;
-    type TestCaseWithDone = (this: undefined, context: TestContextWithDone) => void;
+    type TestCase = (
+        this: undefined,
+        context: TestContext,
+    ) => void | PromiseLike<any>;
+    type TestCaseWithDone = (
+        this: undefined,
+        context: TestContextWithDone,
+    ) => void;
     type HookFunc = (this: undefined, context: HookContext) => void;
     type SuiteFunc = (this: undefined, context: SuiteContext) => void;
 
@@ -263,11 +269,10 @@ declare namespace Mocha {
         test: TestFunction;
     }
 
-    type AnyInterface =
-        & Omit<BDD, "detectedInterface">
-        & Omit<TDD, "detectedInterface">
-        & Omit<QUnit, "detectedInterface">
-        & BaseInterface;
+    type AnyInterface = Omit<BDD, "detectedInterface"> &
+        Omit<TDD, "detectedInterface"> &
+        Omit<QUnit, "detectedInterface"> &
+        BaseInterface;
     // #endregion
 
     // #region Test context
@@ -360,9 +365,16 @@ declare namespace Mocha {
      */
     interface SuiteFunction {
         (title: string, fn?: SuiteFunc): Suite;
-        (title: string, options?: Options & { fn?: SuiteFunc | undefined }, fn?: SuiteFunc): Suite;
+        (
+            title: string,
+            options?: Options & { fn?: SuiteFunc | undefined },
+            fn?: SuiteFunc,
+        ): Suite;
         // tslint:disable-next-line: unified-signatures
-        (options: Options & { title: string; fn?: SuiteFunc | undefined }, fn?: SuiteFunc): Suite;
+        (
+            options: Options & { title: string; fn?: SuiteFunc | undefined },
+            fn?: SuiteFunc,
+        ): Suite;
 
         /**
          * [bdd, tdd, qunit]
@@ -388,9 +400,16 @@ declare namespace Mocha {
      */
     interface ExclusiveSuiteFunction {
         (title: string, fn?: SuiteFunc): Suite;
-        (title: string, options?: Options & { fn?: SuiteFunc | undefined }, fn?: SuiteFunc): Suite;
+        (
+            title: string,
+            options?: Options & { fn?: SuiteFunc | undefined },
+            fn?: SuiteFunc,
+        ): Suite;
         // tslint:disable-next-line: unified-signatures
-        (options: Options & { title: string; fn?: SuiteFunc | undefined }, fn?: SuiteFunc): Suite;
+        (
+            options: Options & { title: string; fn?: SuiteFunc | undefined },
+            fn?: SuiteFunc,
+        ): Suite;
     }
 
     /**
@@ -407,10 +426,17 @@ declare namespace Mocha {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
         (title: string, fn?: SuiteFunc): Suite | void;
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        (title: string, options?: Options & { fn?: SuiteFunc | undefined }, fn?: SuiteFunc): Suite | void;
+        (
+            title: string,
+            options?: Options & { fn?: SuiteFunc | undefined },
+            fn?: SuiteFunc,
+        ): Suite | void;
         // tslint:disable-next-line: unified-signatures
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        (options: Options & { title: string; fn?: SuiteFunc | undefined }, fn?: SuiteFunc): Suite | void;
+        (
+            options: Options & { title: string; fn?: SuiteFunc | undefined },
+            fn?: SuiteFunc,
+        ): Suite | void;
     }
 
     /**
@@ -425,17 +451,35 @@ declare namespace Mocha {
         (title: string, fn?: TestCase): Test;
         (
             title: string,
-            options: Options & { async?: false | undefined; fn?: TestCase | undefined },
+            options: Options & {
+                async?: false | undefined;
+                fn?: TestCase | undefined;
+            },
             fn?: TestCase,
         ): Test;
         (
             title: string,
-            options: Options & { async: true; fn?: TestCaseWithDone | undefined },
+            options: Options & {
+                async: true;
+                fn?: TestCaseWithDone | undefined;
+            },
             fn?: TestCaseWithDone,
         ): Test;
         // tslint:disable-next-line: unified-signatures
-        (options: Options & { async?: false | undefined; fn?: TestCase | undefined }, fn?: TestCase): Test;
-        (options: Options & { async: true; fn?: TestCaseWithDone | undefined }, fn?: TestCaseWithDone): Test;
+        (
+            options: Options & {
+                async?: false | undefined;
+                fn?: TestCase | undefined;
+            },
+            fn?: TestCase,
+        ): Test;
+        (
+            options: Options & {
+                async: true;
+                fn?: TestCaseWithDone | undefined;
+            },
+            fn?: TestCaseWithDone,
+        ): Test;
 
         /**
          * [bdd, tdd, qunit]
@@ -466,17 +510,35 @@ declare namespace Mocha {
         (title: string, fn?: TestCase): Test;
         (
             title: string,
-            options: Options & { async?: false | undefined; fn?: TestCase | undefined },
+            options: Options & {
+                async?: false | undefined;
+                fn?: TestCase | undefined;
+            },
             fn?: TestCase,
         ): Test;
         (
             title: string,
-            options: Options & { async: true; fn?: TestCaseWithDone | undefined },
+            options: Options & {
+                async: true;
+                fn?: TestCaseWithDone | undefined;
+            },
             fn?: TestCaseWithDone,
         ): Test;
         // tslint:disable-next-line: unified-signatures
-        (options: Options & { async?: false | undefined; fn?: TestCase | undefined }, fn?: TestCase): Test;
-        (options: Options & { async: true; fn?: TestCaseWithDone | undefined }, fn?: TestCaseWithDone): Test;
+        (
+            options: Options & {
+                async?: false | undefined;
+                fn?: TestCase | undefined;
+            },
+            fn?: TestCase,
+        ): Test;
+        (
+            options: Options & {
+                async: true;
+                fn?: TestCaseWithDone | undefined;
+            },
+            fn?: TestCaseWithDone,
+        ): Test;
     }
 
     /**
@@ -493,17 +555,35 @@ declare namespace Mocha {
         (title: string, fn?: TestCase): Test;
         (
             title: string,
-            options: Options & { async?: false | undefined; fn?: TestCase | undefined },
+            options: Options & {
+                async?: false | undefined;
+                fn?: TestCase | undefined;
+            },
             fn?: TestCase,
         ): Test;
         (
             title: string,
-            options: Options & { async: true; fn?: TestCaseWithDone | undefined },
+            options: Options & {
+                async: true;
+                fn?: TestCaseWithDone | undefined;
+            },
             fn?: TestCaseWithDone,
         ): Test;
         // tslint:disable-next-line: unified-signatures
-        (options: Options & { async?: false | undefined; fn?: TestCase | undefined }, fn?: TestCase): Test;
-        (options: Options & { async: true; fn?: TestCaseWithDone | undefined }, fn?: TestCaseWithDone): Test;
+        (
+            options: Options & {
+                async?: false | undefined;
+                fn?: TestCase | undefined;
+            },
+            fn?: TestCase,
+        ): Test;
+        (
+            options: Options & {
+                async: true;
+                fn?: TestCaseWithDone | undefined;
+            },
+            fn?: TestCaseWithDone,
+        ): Test;
     }
     // #endregion
 }

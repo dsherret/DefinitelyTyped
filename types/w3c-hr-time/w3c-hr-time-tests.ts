@@ -1,4 +1,8 @@
-import { clockIsAccurate, getGlobalMonotonicClockMS, Performance } from "w3c-hr-time";
+import {
+    clockIsAccurate,
+    getGlobalMonotonicClockMS,
+    Performance,
+} from "w3c-hr-time";
 
 const performance = new Performance();
 

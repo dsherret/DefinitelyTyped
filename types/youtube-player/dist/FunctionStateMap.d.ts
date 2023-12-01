@@ -2,17 +2,11 @@ import PlayerStates from "./constants/PlayerStates";
 
 declare const FUNCTION_STATE_MAP: {
     pauseVideo: {
-        acceptableStates: [
-            PlayerStates.ENDED,
-            PlayerStates.PAUSED,
-        ];
+        acceptableStates: [PlayerStates.ENDED, PlayerStates.PAUSED];
         stateChangeRequired: false;
     };
     playVideo: {
-        acceptableStates: [
-            PlayerStates.ENDED,
-            PlayerStates.PLAYING,
-        ];
+        acceptableStates: [PlayerStates.ENDED, PlayerStates.PLAYING];
         stateChangeRequired: false;
     };
     seekTo: {

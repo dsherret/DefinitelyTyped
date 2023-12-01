@@ -54,7 +54,10 @@ declare class TextToSVG {
      * @param text to measure
      * @param options font options
      */
-    getMetrics(text: string, options?: TextToSVG.FontOptions | null): TextToSVG.Metrics;
+    getMetrics(
+        text: string,
+        options?: TextToSVG.FontOptions | null,
+    ): TextToSVG.Metrics;
 
     /**
      * Generate SVG as a string with text converted to paths.
@@ -169,5 +172,8 @@ declare namespace TextToSVG {
         attributes?: { [key: string]: string } | null | undefined;
     }
 
-    type LoadCallback = (error: Error | null, textToSVG: TextToSVG | null) => void;
+    type LoadCallback = (
+        error: Error | null,
+        textToSVG: TextToSVG | null,
+    ) => void;
 }

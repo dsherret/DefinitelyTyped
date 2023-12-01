@@ -99,13 +99,19 @@ export class Artist {
 
     draw(renderer: Vex.Flow.Renderer): void;
 
-    getNoteForFret(fret: string, string: string): [string, number, string | null];
+    getNoteForFret(
+        fret: string,
+        string: string,
+    ): [string, number, string | null];
 
     getNoteForABC(abc: ABC, string: string): [any, string, any];
 
     addStaveNote(note_params: ArtistStaveNoteParams): void;
 
-    addTabNote(spec: Array<{ str: number; fret: number }>, play_note: Vex.Flow.TabNote | null): void;
+    addTabNote(
+        spec: Array<{ str: number; fret: number }>,
+        play_note: Vex.Flow.TabNote | null,
+    ): void;
 
     setDuration(time: string, dot: boolean): void;
 
@@ -122,12 +128,10 @@ export class Artist {
 
     makeTuplets(tuplets: number, notes?: any): void;
 
-    makeFingering(text: string):
-        | null
-        | Array<{
-            num: number;
-            modifier: Vex.Flow.FretHandFinger | Vex.Flow.StringNumber | null;
-        }>;
+    makeFingering(text: string): null | Array<{
+        num: number;
+        modifier: Vex.Flow.FretHandFinger | Vex.Flow.StringNumber | null;
+    }>;
 
     makeStroke(text: string): Vex.Flow.Stroke | null;
 
@@ -161,7 +165,11 @@ export class Artist {
 
     addRest(params: { position: number }): void;
 
-    addChord(chord: VexTabNote[], chord_articulation?: Articulation, chord_decorator?: Decorator): void;
+    addChord(
+        chord: VexTabNote[],
+        chord_articulation?: Articulation,
+        chord_decorator?: Decorator,
+    ): void;
 
     addNote(note: VexTabNote): void;
 

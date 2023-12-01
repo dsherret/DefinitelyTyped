@@ -50,6 +50,8 @@ export function create(args?: { html: string }): Value; // tslint:disable-line:u
 export function create(args?: {
     element: Element;
     multilineTag?: keyof HTMLElementTagNameMap | undefined;
-    multilineWrapperTags?: ReadonlyArray<keyof HTMLElementTagNameMap> | undefined;
+    multilineWrapperTags?:
+        | ReadonlyArray<keyof HTMLElementTagNameMap>
+        | undefined;
     range?: Range | undefined;
 }): Value; // tslint:disable-line:unified-signatures

@@ -24,8 +24,14 @@ expectType<typeof UnimplementedKeysActual>(AddedKeys);
 
 declare const ExpectedKeys: ExpectedKeys;
 
-declare const AddedKeysActual: Exclude<keyof ES2015Operations, keyof ES5 | keyof ES2015>;
-declare const UnimplementedKeysActual: Exclude<keyof ES2015Operations, keyof ES2015>;
+declare const AddedKeysActual: Exclude<
+    keyof ES2015Operations,
+    keyof ES5 | keyof ES2015
+>;
+declare const UnimplementedKeysActual: Exclude<
+    keyof ES2015Operations,
+    keyof ES2015
+>;
 export declare const AddedKeys: AddedKeys;
 
 declare const AllAddedKeysActual: Exclude<keyof ES2015Operations, keyof ES5>;

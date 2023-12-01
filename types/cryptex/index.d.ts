@@ -2,10 +2,12 @@
 // typically, you find these in cryptex.json
 export interface CryptexConfig {
     keySource: string;
-    keySourceOpts?: {
-        dataKey?: string | undefined;
-        region?: string | undefined;
-    } | undefined;
+    keySourceOpts?:
+        | {
+              dataKey?: string | undefined;
+              region?: string | undefined;
+          }
+        | undefined;
     algorithm?: string | undefined;
     secretEncoding?: string | undefined;
     secrets: object;
@@ -22,7 +24,10 @@ export interface CryptexOpts {
 export function decrypt(data: string, encoding?: string): Promise<string>;
 export function encrypt(data: string, encoding?: string): Promise<string>;
 export function getSecret(secret: string, optional?: boolean): Promise<string>;
-export function getSecrets(secrets: string[], optional?: boolean): Promise<string[]>;
+export function getSecrets(
+    secrets: string[],
+    optional?: boolean,
+): Promise<string[]>;
 export function update(opts: CryptexOpts): void;
 
 // but you can still create individual instances

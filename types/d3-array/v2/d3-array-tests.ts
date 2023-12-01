@@ -52,10 +52,9 @@ let numOrUndefinedExtent: [number, number] | [undefined, undefined];
 let strOrUndefinedExtent: [string, string] | [undefined, undefined];
 let numericOrUndefinedExtent: [NumCoercible, NumCoercible] | [undefined, undefined];
 let dateMixedOrUndefined: [Date, Date] | [undefined, undefined];
-let mixedOrUndefinedExtent: [d3Array.Primitive | NumCoercible, d3Array.Primitive | NumCoercible] | [
-    undefined,
-    undefined,
-];
+let mixedOrUndefinedExtent:
+    | [d3Array.Primitive | NumCoercible, d3Array.Primitive | NumCoercible]
+    | [undefined, undefined];
 let dateOrUndefinedExtent: [Date, Date] | [undefined, undefined];
 
 let numbersArray = [10, 20, 30, 40, 50];
@@ -213,7 +212,13 @@ strOrUndefined = d3Array.max(mixedObjectArray, (d) => {
 
 let maxIndex: number = d3Array.maxIndex([3, 3, 1, 1]); // 0
 maxIndex = d3Array.maxIndex(["20", "3"]); // 1
-maxIndex = d3Array.maxIndex([{ name: "Alice", age: 23 }, { name: "Bob", age: 32 }], d => d.age); // 1
+maxIndex = d3Array.maxIndex(
+    [
+        { name: "Alice", age: 23 },
+        { name: "Bob", age: 32 },
+    ],
+    (d) => d.age,
+); // 1
 
 numOrUndefined = d3Array.max(readonlyNumbersArray, (d, i, a) => {
     // @ts-expect-error
@@ -250,7 +255,13 @@ numOrUndefined = d3Array.min(readonlyMixedObjectOrUndefinedArray, accessorReadOn
 
 let minIndex: number = d3Array.minIndex([3, 3, 1, 1]); // 2
 minIndex = d3Array.minIndex(["20", "3"]); // 0
-minIndex = d3Array.minIndex([{ name: "Alice", age: 23 }, { name: "Bob", age: 32 }], d => d.age); // 0
+minIndex = d3Array.minIndex(
+    [
+        { name: "Alice", age: 23 },
+        { name: "Bob", age: 32 },
+    ],
+    (d) => d.age,
+); // 0
 // extent() --------------------------------------------------------------------
 
 // without accessors
@@ -430,7 +441,7 @@ float64Array = d3Array.fcumsum(["test"]);
 // Adder() ---------------------------------------------------------------------
 
 const adder = new d3Array.Adder();
-for (let i = 0; i < 10; i++) adder.add(.1);
+for (let i = 0; i < 10; i++) adder.add(0.1);
 const value: number = adder.valueOf();
 
 // -----------------------------------------------------------------------------
@@ -472,7 +483,7 @@ mo = d3Array.least(readonlyMixedObjectOrUndefinedArray, (a, b) => {
     return a && b ? a.num - b.num : NaN;
 });
 
-mo = d3Array.least(readonlyMixedObjectOrUndefinedArray, a => a ? a.num : null);
+mo = d3Array.least(readonlyMixedObjectOrUndefinedArray, (a) => (a ? a.num : null));
 
 // leastIndex() ----------------------------------------------------------------------
 
@@ -504,7 +515,7 @@ numOrUndefined = d3Array.leastIndex(readonlyMixedObjectOrUndefinedArray, (a, b) 
     return a && b ? a.num - b.num : NaN;
 });
 
-numOrUndefined = d3Array.leastIndex(readonlyMixedObjectOrUndefinedArray, a => a ? a.num : null);
+numOrUndefined = d3Array.leastIndex(readonlyMixedObjectOrUndefinedArray, (a) => (a ? a.num : null));
 
 // greatest() ----------------------------------------------------------------------
 
@@ -536,7 +547,7 @@ mo = d3Array.greatest(readonlyMixedObjectOrUndefinedArray, (a, b) => {
     return a && b ? a.num - b.num : NaN;
 });
 
-mo = d3Array.greatest(readonlyMixedObjectOrUndefinedArray, a => a ? a.num : null);
+mo = d3Array.greatest(readonlyMixedObjectOrUndefinedArray, (a) => (a ? a.num : null));
 
 // greatestIndex() ----------------------------------------------------------------------
 
@@ -568,7 +579,7 @@ numOrUndefined = d3Array.greatestIndex(readonlyMixedObjectOrUndefinedArray, (a, 
     return a && b ? a.num - b.num : NaN;
 });
 
-numOrUndefined = d3Array.greatestIndex(readonlyMixedObjectOrUndefinedArray, a => a ? a.num : null);
+numOrUndefined = d3Array.greatestIndex(readonlyMixedObjectOrUndefinedArray, (a) => (a ? a.num : null));
 
 // bisectLeft() ----------------------------------------------------------------
 
@@ -697,7 +708,7 @@ mixedObjectArray.sort((a, b) => a.date.valueOf() - b.date.valueOf());
 let mixedObjectDateBisectorObject: d3Array.Bisector<MixedObject, Date>;
 
 // define using accessor
-mixedObjectDateBisectorObject = d3Array.bisector<MixedObject, Date>(el => el.date);
+mixedObjectDateBisectorObject = d3Array.bisector<MixedObject, Date>((el) => el.date);
 
 // define using comparator
 mixedObjectDateBisectorObject = d3Array.bisector<MixedObject, Date>((el, x) => el.date.valueOf() - x.valueOf());
@@ -763,10 +774,7 @@ const testArray1 = [
     new MixedObject(50, new Date(2017, 4, 15)),
 ];
 
-const testArray2 = [
-    new MixedObject(40, new Date(2016, 3, 1)),
-    new MixedObject(50, new Date(2016, 9, 30)),
-];
+const testArray2 = [new MixedObject(40, new Date(2016, 3, 1)), new MixedObject(50, new Date(2016, 9, 30))];
 
 let testArrays: MixedObject[][] = [testArray1, testArray2];
 
@@ -779,7 +787,10 @@ let mergedArray: MixedObject[];
 mergedArray = d3Array.merge(testArrays); // inferred type
 mergedArray = d3Array.merge<MixedObject>(testArrays); // explicit type
 // @ts-expect-error
-mergedArray = d3Array.merge<MixedObject>([[10, 40, 30], [15, 30]]); // fails, type mismatch
+mergedArray = d3Array.merge<MixedObject>([
+    [10, 40, 30],
+    [15, 30],
+]); // fails, type mismatch
 // @ts-expect-error
 mergedArray = d3Array.merge([testArray1, [15, 30]]); // fails, type mismatch
 
@@ -799,71 +810,109 @@ const objArray: ObjDefinition[] = [
     { name: "stacy", amount: "34.05", date: "01/04/2016" },
 ];
 
-const grouped: d3Array.InternMap<string, ObjDefinition[]> = d3Array.group(objArray, d => d.name);
+const grouped: d3Array.InternMap<string, ObjDefinition[]> = d3Array.group(objArray, (d) => d.name);
 const grouped2: d3Array.InternMap<string, d3Array.InternMap<string, ObjDefinition[]>> = d3Array.group(
     objArray,
-    d => d.name,
-    d => d.date,
+    (d) => d.name,
+    (d) => d.date,
 );
-const grouped3: d3Array.InternMap<string, d3Array.InternMap<string, d3Array.InternMap<string, ObjDefinition[]>>> =
-    d3Array.group(objArray, d => d.name, d => d.date, d => d.amount);
-const indexed: d3Array.InternMap<string, ObjDefinition> = d3Array.index(objArray, d => d.name);
+const grouped3: d3Array.InternMap<
+    string,
+    d3Array.InternMap<string, d3Array.InternMap<string, ObjDefinition[]>>
+> = d3Array.group(
+    objArray,
+    (d) => d.name,
+    (d) => d.date,
+    (d) => d.amount,
+);
+const indexed: d3Array.InternMap<string, ObjDefinition> = d3Array.index(objArray, (d) => d.name);
 const indexed2: d3Array.InternMap<string, d3Array.InternMap<string, ObjDefinition>> = d3Array.index(
     objArray,
-    d => d.name,
-    d => d.date,
+    (d) => d.name,
+    (d) => d.date,
 );
-const indexed3: d3Array.InternMap<string, d3Array.InternMap<string, d3Array.InternMap<string, ObjDefinition>>> = d3Array
-    .index(objArray, d => d.name, d => d.date, d => d.amount);
-const rolledup: d3Array.InternMap<string, number> = d3Array.rollup(objArray, d => d.length, d => d.name);
+const indexed3: d3Array.InternMap<
+    string,
+    d3Array.InternMap<string, d3Array.InternMap<string, ObjDefinition>>
+> = d3Array.index(
+    objArray,
+    (d) => d.name,
+    (d) => d.date,
+    (d) => d.amount,
+);
+const rolledup: d3Array.InternMap<string, number> = d3Array.rollup(
+    objArray,
+    (d) => d.length,
+    (d) => d.name,
+);
 const rolledup2: d3Array.InternMap<string, d3Array.InternMap<string, number>> = d3Array.rollup(
     objArray,
-    d => d.length,
-    d => d.name,
-    d => d.date,
+    (d) => d.length,
+    (d) => d.name,
+    (d) => d.date,
 );
-const rolledup3: d3Array.InternMap<string, d3Array.InternMap<string, d3Array.InternMap<string, number>>> = d3Array
-    .rollup(objArray, d => d.length, d => d.name, d => d.date, d => d.amount);
+const rolledup3: d3Array.InternMap<
+    string,
+    d3Array.InternMap<string, d3Array.InternMap<string, number>>
+> = d3Array.rollup(
+    objArray,
+    (d) => d.length,
+    (d) => d.name,
+    (d) => d.date,
+    (d) => d.amount,
+);
 const rolledupAlternate: d3Array.InternMap<string, string> = d3Array.rollup(
     objArray,
-    d => d.map(u => u.name).join(" "),
-    d => d.name,
+    (d) => d.map((u) => u.name).join(" "),
+    (d) => d.name,
 );
 
-const groups: Array<[string, ObjDefinition[]]> = d3Array.groups(objArray, d => d.name);
-const groups2: Array<[string, Array<[string, ObjDefinition[]]>]> = d3Array.groups(objArray, d => d.name, d => d.date);
+const groups: Array<[string, ObjDefinition[]]> = d3Array.groups(objArray, (d) => d.name);
+const groups2: Array<[string, Array<[string, ObjDefinition[]]>]> = d3Array.groups(
+    objArray,
+    (d) => d.name,
+    (d) => d.date,
+);
 const groups3: Array<[string, Array<[string, Array<[string, ObjDefinition[]]>]>]> = d3Array.groups(
     objArray,
-    d => d.name,
-    d => d.date,
-    d => d.amount,
+    (d) => d.name,
+    (d) => d.date,
+    (d) => d.amount,
 );
-const indexes: Array<[string, ObjDefinition]> = d3Array.indexes(objArray, d => d.name);
-const indexes2: Array<[string, Array<[string, ObjDefinition]>]> = d3Array.indexes(objArray, d => d.name, d => d.date);
+const indexes: Array<[string, ObjDefinition]> = d3Array.indexes(objArray, (d) => d.name);
+const indexes2: Array<[string, Array<[string, ObjDefinition]>]> = d3Array.indexes(
+    objArray,
+    (d) => d.name,
+    (d) => d.date,
+);
 const indexes3: Array<[string, Array<[string, Array<[string, ObjDefinition]>]>]> = d3Array.indexes(
     objArray,
-    d => d.name,
-    d => d.date,
-    d => d.amount,
+    (d) => d.name,
+    (d) => d.date,
+    (d) => d.amount,
 );
-const rolledups: Array<[string, number]> = d3Array.rollups(objArray, d => d.length, d => d.name);
+const rolledups: Array<[string, number]> = d3Array.rollups(
+    objArray,
+    (d) => d.length,
+    (d) => d.name,
+);
 const rolledups2: Array<[string, Array<[string, number]>]> = d3Array.rollups(
     objArray,
-    d => d.length,
-    d => d.name,
-    d => d.date,
+    (d) => d.length,
+    (d) => d.name,
+    (d) => d.date,
 );
 const rolledups3: Array<[string, Array<[string, Array<[string, number]>]>]> = d3Array.rollups(
     objArray,
-    d => d.length,
-    d => d.name,
-    d => d.date,
-    d => d.amount,
+    (d) => d.length,
+    (d) => d.name,
+    (d) => d.date,
+    (d) => d.amount,
 );
 const rolledupsAlternate: Array<[string, string]> = d3Array.rollups(
     objArray,
-    d => d.map(u => u.name).join(" "),
-    d => d.name,
+    (d) => d.map((u) => u.name).join(" "),
+    (d) => d.name,
 );
 
 // groupSort() -------------------
@@ -877,11 +926,19 @@ interface Barley {
 
 declare const barley: Barley[];
 
-const keysAccessor: string[] = d3Array.groupSort(barley, g => d3Array.median(g, d => d.yield), d => d.variety);
+const keysAccessor: string[] = d3Array.groupSort(
+    barley,
+    (g) => d3Array.median(g, (d) => d.yield),
+    (d) => d.variety,
+);
 const keysComparator: string[] = d3Array.groupSort(
     barley,
-    (a, b) => d3Array.ascending(d3Array.median(a, d => d.yield), d3Array.median(b, d => d.yield)),
-    d => d.variety,
+    (a, b) =>
+        d3Array.ascending(
+            d3Array.median(a, (d) => d.yield),
+            d3Array.median(b, (d) => d.yield),
+        ),
+    (d) => d.variety,
 );
 
 // count() -----------------------
@@ -889,9 +946,16 @@ const keysComparator: string[] = d3Array.groupSort(
 let count: number;
 
 count = d3Array.count([1, 2, NaN]); // 2
-count = d3Array.count<{ n: string; age?: number | undefined }>([{ n: "Alice", age: NaN }, { n: "Bob", age: 18 }, {
-    n: "Other",
-}], d => d.age); // 1
+count = d3Array.count<{ n: string; age?: number | undefined }>(
+    [
+        { n: "Alice", age: NaN },
+        { n: "Bob", age: 18 },
+        {
+            n: "Other",
+        },
+    ],
+    (d) => d.age,
+); // 1
 
 // cross() ---------------------------------------------------------------------
 
@@ -903,11 +967,11 @@ const nums = [1, 2];
 crossed = d3Array.cross(chars, nums);
 crossed = d3Array.cross<string, number>(chars, nums);
 
-let strArray: string[] = d3Array.cross<number, number, string>([2, 3], [5, 6], (a, b) => (a + b) + "px");
+let strArray: string[] = d3Array.cross<number, number, string>([2, 3], [5, 6], (a, b) => a + b + "px");
 strArray = d3Array.cross([2, 3], [5, 6], (a, b) => {
     const aa: number = a;
     const bb: number = b;
-    return (aa + bb) + "px";
+    return aa + bb + "px";
 });
 
 const readonlyChars = chars as readonly string[];
@@ -919,12 +983,12 @@ crossed = d3Array.cross<string, number>(readonlyChars, readonlyNums);
 strArray = d3Array.cross<number, number, string>(
     [2, 3] as readonly number[],
     new Uint8ClampedArray([5, 6]),
-    (a, b) => (a + b) + "px",
+    (a, b) => a + b + "px",
 );
 strArray = d3Array.cross([2, 3] as readonly number[], new Uint8ClampedArray([5, 6]), (a, b) => {
     const aa: number = a;
     const bb: number = b;
-    return (aa + bb) + "px";
+    return aa + bb + "px";
 });
 
 d3Array.cross(new Uint8Array([1, 2, 3, 4, 5]), new Uint8Array([10, 20, 30, 40, 50]));
@@ -1046,19 +1110,19 @@ testArrays = d3Array.zip(readonlyTestArray1, readonlyTestArray2);
 
 // every() ---------------------------------------------------------------------
 
-const every: boolean = d3Array.every(new Set([1, 3, 5, 7]), x => x & 1);
+const every: boolean = d3Array.every(new Set([1, 3, 5, 7]), (x) => x & 1);
 
 // some() ----------------------------------------------------------------------
 
-const some: boolean = d3Array.some(new Set([0, 2, 3, 4]), x => x & 1);
+const some: boolean = d3Array.some(new Set([0, 2, 3, 4]), (x) => x & 1);
 
 // filter() --------------------------------------------------------------------
 
-const filtered: number[] = d3Array.filter(new Set([0, 2, 3, 4]), x => x & 1);
+const filtered: number[] = d3Array.filter(new Set([0, 2, 3, 4]), (x) => x & 1);
 
 // map() -----------------------------------------------------------------------
 
-const mapped: number[] = d3Array.map(new Set([0, 2, 3, 4]), x => x & 1);
+const mapped: number[] = d3Array.map(new Set([0, 2, 3, 4]), (x) => x & 1);
 
 // reduce() --------------------------------------------------------------------
 
@@ -1074,8 +1138,18 @@ const sorted: number[] = d3Array.sort(new Set([0, 2, 3, 1]));
 const sortedComparator: number[] = d3Array.sort(new Set([0, 2, 3, 1]), (a, b) => a - b);
 
 const sortedAccessor: Array<{ value: number }> = d3Array.sort([{ value: 5 }, { value: 3 }], (a) => a.value);
-const points: Array<[number, number]> = [[1, 0], [2, 1], [2, 0], [1, 1], [3, 0]];
-const sortedWithMultipleAccessors: Array<[number, number]> = d3Array.sort(points, ([x]) => x, ([, y]) => y);
+const points: Array<[number, number]> = [
+    [1, 0],
+    [2, 1],
+    [2, 0],
+    [1, 1],
+    [3, 0],
+];
+const sortedWithMultipleAccessors: Array<[number, number]> = d3Array.sort(
+    points,
+    ([x]) => x,
+    ([, y]) => y,
+);
 
 // -----------------------------------------------------------------------------
 // Test Sets
@@ -1178,8 +1252,8 @@ histoMixedOrUndefined_NumberOrUndefined = histoMixedOrUndefined_NumberOrUndefine
 );
 
 // MixedObject | undefined - number
-const valueFnMixedOrUndefined_Number: valueAccessor<MixedObject | undefined, number> = histoMixedOrUndefined_Number
-    .value();
+const valueFnMixedOrUndefined_Number: valueAccessor<MixedObject | undefined, number> =
+    histoMixedOrUndefined_Number.value();
 histoMixedOrUndefined_Number = histoMixedOrUndefined_Number.value(
     (d: MixedObject | undefined, i: number, data: ArrayLike<MixedObject | undefined>) => {
         return d ? d.num : 0;
@@ -1243,9 +1317,10 @@ histoMixedObject_DateOrUndefined = histoMixedObject_DateOrUndefined.domain([
     new Date(2017, 4, 15),
 ]);
 histoMixedObject_DateOrUndefined = histoMixedObject_DateOrUndefined.domain([domain[0], domain[domain.length]]);
-histoMixedObject_DateOrUndefined = histoMixedObject_DateOrUndefined.domain((
-    values,
-) => [values[0]!, values[values.length]!]);
+histoMixedObject_DateOrUndefined = histoMixedObject_DateOrUndefined.domain((values) => [
+    values[0]!,
+    values[values.length]!,
+]);
 
 // thresholds(...) -------------------------------------------------------------
 
@@ -1292,9 +1367,11 @@ histoMixedObject_Date = histoMixedObject_Date.thresholds([
     new Date(2016, 8, 30),
 ]);
 histoMixedObject_Date = histoMixedObject_Date.thresholds(timeScale.ticks(timeYear));
-histoMixedObject_Date = histoMixedObject_Date.thresholds((
-    values: ArrayLike<Date>,
-) => [new Date(2015, 11, 15), new Date(2016, 6, 1), new Date(2016, 8, 30)]);
+histoMixedObject_Date = histoMixedObject_Date.thresholds((values: ArrayLike<Date>) => [
+    new Date(2015, 11, 15),
+    new Date(2016, 6, 1),
+    new Date(2016, 8, 30),
+]);
 histoMixedObject_Date = histoMixedObject_Date.thresholds((values: ArrayLike<Date>, min: Date, max: Date) => {
     const thresholds: Date[] = [values[0], values[2], values[4]];
     return thresholds;

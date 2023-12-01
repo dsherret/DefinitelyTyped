@@ -59,8 +59,15 @@ const cliEngineUtil: normalize.Package = {
     engines: { node: ">=6.0.0" },
     files: ["bin", "lib"],
     license: "MIT",
-    repository: { type: "git", url: "git+https://github.com/jdxcode/cli-engine-util.git" },
-    scripts: { precommit: "./bin/run", prepare: "./bin/run", test: "./bin/run" },
+    repository: {
+        type: "git",
+        url: "git+https://github.com/jdxcode/cli-engine-util.git",
+    },
+    scripts: {
+        precommit: "./bin/run",
+        prepare: "./bin/run",
+        test: "./bin/run",
+    },
     bugs: { url: "https://github.com/jdxcode/cli-engine-util/issues" },
     readme: "ERROR: No README data found!",
     homepage: "https://github.com/jdxcode/cli-engine-util#readme",

@@ -26,7 +26,7 @@ db.setItem("foo", true); // $ExpectType void
 db.setItem("foo", null); // $ExpectType void
 db.setItem("foo", "bar", () => {}); // $ExpectType void
 
-db.getItem("foo", data => {}); // $ExpectType void
+db.getItem("foo", (data) => {}); // $ExpectType void
 
 db.removeItem("foo"); // $ExpectType void
 db.removeItem("foo", () => {}); // $ExpectType void

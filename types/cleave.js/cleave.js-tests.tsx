@@ -23,18 +23,38 @@ const ExampleElement1 = () => {
 };
 
 const ExampleReact1 = (props: any) => {
-    return <CleaveReact value="test" className="form-control" options={{ phone: true }} />;
+    return (
+        <CleaveReact
+            value="test"
+            className="form-control"
+            options={{ phone: true }}
+        />
+    );
 };
 
 const ExampleReact2 = (props: Props) => {
-    return <CleaveReact value="test" className="form-control" {...props} options={{ phone: true }} />;
+    return (
+        <CleaveReact
+            value="test"
+            className="form-control"
+            {...props}
+            options={{ phone: true }}
+        />
+    );
 };
 
 const ExampleReact3 = (props: Props) => {
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         return e.target.rawValue;
     };
-    return <CleaveReact value="test" className="form-control" options={{ date: true }} onChange={handleChange} />;
+    return (
+        <CleaveReact
+            value="test"
+            className="form-control"
+            options={{ date: true }}
+            onChange={handleChange}
+        />
+    );
 };
 
 const ExampleReact4 = () => {
@@ -43,7 +63,9 @@ const ExampleReact4 = () => {
             value="test"
             className="form-control"
             options={{ phone: true }}
-            onInit={cleaveInstance => cleaveInstance.setRawValue("Set by onInit")}
+            onInit={(cleaveInstance) =>
+                cleaveInstance.setRawValue("Set by onInit")
+            }
         />
     );
 };

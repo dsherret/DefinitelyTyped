@@ -1,5 +1,10 @@
 import { Component, ReactNode } from "react";
-import { Animated, GestureResponderEvent, PanResponderGestureState, ViewStyle } from "react-native";
+import {
+    Animated,
+    GestureResponderEvent,
+    PanResponderGestureState,
+    ViewStyle,
+} from "react-native";
 
 export interface ReactNativeSideMenuProps {
     /**
@@ -40,7 +45,9 @@ export interface ReactNativeSideMenuProps {
      * Function that accepts event as an argument and specify if side-menu should react on the touch or not.
      * Check https://facebook.github.io/react-native/docs/gesture-responder-system.html for more details
      */
-    onStartShouldSetResponderCapture?: ((e: GestureResponderEvent) => boolean) | undefined;
+    onStartShouldSetResponderCapture?:
+        | ((e: GestureResponderEvent) => boolean)
+        | undefined;
     /**
      * Callback on menu open/close. Is passed isOpen as an argument
      */
@@ -57,7 +64,9 @@ export interface ReactNativeSideMenuProps {
      * @default left
      */
     menuPosition?: "left" | "right" | undefined;
-    animationFunction?: ((prop: Animated.Value, value: number) => Animated.CompositeAnimation) | undefined;
+    animationFunction?:
+        | ((prop: Animated.Value, value: number) => Animated.CompositeAnimation)
+        | undefined;
     animationStyle?: ((value: number) => ViewStyle) | undefined;
     /**
      * Callback when menu animation has completed.

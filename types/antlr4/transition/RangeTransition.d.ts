@@ -12,5 +12,9 @@ export default class RangeTransition extends Transition {
 
     makeLabel(): IntervalSet;
 
-    matches(symbol: number, minVocabSymbol: number, maxVocabSymbol: number): boolean;
+    matches(
+        symbol: number,
+        minVocabSymbol: number,
+        maxVocabSymbol: number,
+    ): boolean;
 }

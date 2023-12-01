@@ -12,7 +12,10 @@
  * These are limitations in the underlying [`pngjs`](https://github.com/lukeapage/pngjs#pngjs) library. If you have a
  * colormap PNG you can convert it to an RGB/RGBA PNG with commonly used image editing tools.
  */
-declare function toIco(input: string | Buffer | Array<string | Buffer>, options?: toIco.ToIcoOptions): Promise<Buffer>;
+declare function toIco(
+    input: string | Buffer | Array<string | Buffer>,
+    options?: toIco.ToIcoOptions,
+): Promise<Buffer>;
 
 // eslint-disable-next-line no-redeclare
 declare namespace toIco {

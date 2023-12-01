@@ -13,13 +13,23 @@
 import stream = require("stream");
 
 declare function merkle(
-    hashname: "sha512" | "sha256" | "sha1" | "md5" | "ripemd160" | "whirlpool" | "none",
+    hashname:
+        | "sha512"
+        | "sha256"
+        | "sha1"
+        | "md5"
+        | "ripemd160"
+        | "whirlpool"
+        | "none",
     useUpperCaseForHash?: boolean,
 ): MerkleStream;
 
 declare class MerkleStream extends stream.Transform {
     sync(leaves: any[]): MerkleTree;
-    async(leaves: any[], callback: (err: string, tree: MerkleTree) => void): void;
+    async(
+        leaves: any[],
+        callback: (err: string, tree: MerkleTree) => void,
+    ): void;
     json(): MerkleStream;
 }
 

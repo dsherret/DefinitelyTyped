@@ -120,14 +120,47 @@ declare module "angular" {
                 T6 | IPromise<T6>,
             ],
         ): IPromise<
-            [PromiseValue<T1>, PromiseValue<T2>, PromiseValue<T3>, PromiseValue<T4>, PromiseValue<T5>, PromiseValue<T6>]
+            [
+                PromiseValue<T1>,
+                PromiseValue<T2>,
+                PromiseValue<T3>,
+                PromiseValue<T4>,
+                PromiseValue<T5>,
+                PromiseValue<T6>,
+            ]
         >;
         allSettled<T1, T2, T3, T4, T5>(
-            values: [T1 | IPromise<T1>, T2 | IPromise<T2>, T3 | IPromise<T3>, T4 | IPromise<T4>, T5 | IPromise<T5>],
-        ): IPromise<[PromiseValue<T1>, PromiseValue<T2>, PromiseValue<T3>, PromiseValue<T4>, PromiseValue<T5>]>;
+            values: [
+                T1 | IPromise<T1>,
+                T2 | IPromise<T2>,
+                T3 | IPromise<T3>,
+                T4 | IPromise<T4>,
+                T5 | IPromise<T5>,
+            ],
+        ): IPromise<
+            [
+                PromiseValue<T1>,
+                PromiseValue<T2>,
+                PromiseValue<T3>,
+                PromiseValue<T4>,
+                PromiseValue<T5>,
+            ]
+        >;
         allSettled<T1, T2, T3, T4>(
-            values: [T1 | IPromise<T1>, T2 | IPromise<T2>, T3 | IPromise<T3>, T4 | IPromise<T4>],
-        ): IPromise<[PromiseValue<T1>, PromiseValue<T2>, PromiseValue<T3>, PromiseValue<T4>]>;
+            values: [
+                T1 | IPromise<T1>,
+                T2 | IPromise<T2>,
+                T3 | IPromise<T3>,
+                T4 | IPromise<T4>,
+            ],
+        ): IPromise<
+            [
+                PromiseValue<T1>,
+                PromiseValue<T2>,
+                PromiseValue<T3>,
+                PromiseValue<T4>,
+            ]
+        >;
         allSettled<T1, T2, T3>(
             values: [T1 | IPromise<T1>, T2 | IPromise<T2>, T3 | IPromise<T3>],
         ): IPromise<[PromiseValue<T1>, PromiseValue<T2>, PromiseValue<T3>]>;
@@ -135,11 +168,15 @@ declare module "angular" {
             values: [T1 | IPromise<T1>, T2 | IPromise<T2>],
         ): IPromise<[PromiseValue<T1>, PromiseValue<T2>]>;
 
-        allSettled<TAll>(promises: Array<TAll | IPromise<TAll>>): IPromise<Array<PromiseValue<TAll>>>;
+        allSettled<TAll>(
+            promises: Array<TAll | IPromise<TAll>>,
+        ): IPromise<Array<PromiseValue<TAll>>>;
 
-        allSettled<T>(
-            promises: { [K in keyof T]: (T[K] | IPromise<T[K]>) },
-        ): IPromise<{ [K in keyof T]: PromiseValue<T[K]> }>;
+        allSettled<T>(promises: {
+            [K in keyof T]: T[K] | IPromise<T[K]>;
+        }): IPromise<{
+            [K in keyof T]: PromiseValue<T[K]>;
+        }>;
 
         isFulfilledState(promise: PromiseValue<any>): boolean;
         isRejectedState(promise: PromiseValue<any>): boolean;

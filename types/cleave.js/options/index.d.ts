@@ -29,7 +29,11 @@ export interface CleaveOptions {
 }
 
 // Numeral Options
-export type NumeralThousandsGroupStyleType = "lakh" | "thousand" | "wan" | "none";
+export type NumeralThousandsGroupStyleType =
+    | "lakh"
+    | "thousand"
+    | "wan"
+    | "none";
 
 export interface CleaveOptions {
     numeral?: boolean | undefined;

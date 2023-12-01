@@ -69,7 +69,9 @@ declare namespace jsrsasign.KJUR.asn1 {
      * NOTE: 'params' can be omitted.
      */
     class DERInteger extends ASN1Object {
-        constructor(params?: IntegerParam | BigIntegerParam | HexParam | number);
+        constructor(
+            params?: IntegerParam | BigIntegerParam | HexParam | number,
+        );
 
         /**
          * set value by Tom Wu's BigInteger object
@@ -135,12 +137,20 @@ declare namespace jsrsasign.KJUR.asn1 {
      * //   }
      */
     class DERBitString extends ASN1Object {
-        constructor(params?: BinParam | ArrayParam<boolean> | HexParam | ASN1ObjectParam);
+        constructor(
+            params?:
+                | BinParam
+                | ArrayParam<boolean>
+                | HexParam
+                | ASN1ObjectParam,
+        );
 
         /**
          * set ASN.1 value(V) by a hexadecimal string including unused bits
          */
-        setHexValueIncludingUnusedBits(newHexStringIncludingUnusedBits: string): void;
+        setHexValueIncludingUnusedBits(
+            newHexStringIncludingUnusedBits: string,
+        ): void;
 
         /**
          * set ASN.1 value(V) by unused bit and hexadecimal string of value
@@ -489,7 +499,11 @@ declare namespace jsrsasign.KJUR.asn1 {
          * @param tagNoHex hexadecimal string of ASN.1 tag
          * @param asn1Object ASN.1 to encapsulate
          */
-        setASN1Object(isExplicitFlag: boolean, tagNoHex: string, asn1Object: ASN1Object): void;
+        setASN1Object(
+            isExplicitFlag: boolean,
+            tagNoHex: string,
+            asn1Object: ASN1Object,
+        ): void;
 
         getFreshValueHex(): string;
     }
@@ -547,7 +561,11 @@ declare namespace jsrsasign.KJUR.asn1 {
          * @description
          * 'withMillis' flag is supported from asn1 1.0.6.
          */
-        private formatDate(dateObject: Date, type: "utc" | "gen", withMillis: boolean): string;
+        private formatDate(
+            dateObject: Date,
+            type: "utc" | "gen",
+            withMillis: boolean,
+        ): string;
         private zeroPadding(s: string, len: number): string;
 
         /**
@@ -571,7 +589,14 @@ declare namespace jsrsasign.KJUR.asn1 {
          * @param min minutes of date
          * @param sec seconds of date
          */
-        setByDateValue(year: number, month: number, day: number, hour: number, min: number, sec: number): void;
+        setByDateValue(
+            year: number,
+            month: number,
+            day: number,
+            hour: number,
+            min: number,
+            sec: number,
+        ): void;
 
         getFreshValueHex(): string;
     }

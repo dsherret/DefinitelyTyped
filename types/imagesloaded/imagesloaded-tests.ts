@@ -1,25 +1,25 @@
 function test_ctor() {
     // element
-    imagesLoaded(document.querySelector("#container"), function(instance) {
+    imagesLoaded(document.querySelector("#container"), function (instance) {
         console.log("all images are loaded");
     });
 
     // selector string
-    imagesLoaded("#container", function() {
+    imagesLoaded("#container", function () {
         console.log("all images are loaded");
     });
 
     // multiple elements
     var posts = document.querySelectorAll(".post");
-    imagesLoaded(posts, function() {
+    imagesLoaded(posts, function () {
         console.log("all images are loaded");
     });
 
     // options
-    imagesLoaded("#container", { background: true }, function() {
+    imagesLoaded("#container", { background: true }, function () {
         console.log("all images are loaded");
     });
-    imagesLoaded("#container", { background: ".item" }, function() {
+    imagesLoaded("#container", { background: ".item" }, function () {
         console.log("all images are loaded");
     });
 }
@@ -44,22 +44,22 @@ function test_events_full() {
     var imgLoad = imagesLoaded(elem);
 
     // always
-    imgLoad.on("always", function(instance) {
+    imgLoad.on("always", function (instance) {
         console.log("ALWAYS - all images have been loaded");
     });
 
     // done
-    imgLoad.on("done", function(instance) {
+    imgLoad.on("done", function (instance) {
         console.log("DONE - all images have been successfully loaded");
     });
 
     // fail
-    imgLoad.on("fail", function(instance) {
+    imgLoad.on("fail", function (instance) {
         console.log("FAIL - all images loaded, at least one is broken");
     });
 
     // progress
-    imgLoad.on("progress", function(instance, image) {
+    imgLoad.on("progress", function (instance, image) {
         var result = image.isLoaded ? "loaded" : "broken";
         console.log("image is " + result + " for " + image.img.src);
     });
@@ -67,7 +67,7 @@ function test_events_full() {
 
 function test_always_images() {
     var imgLoad = imagesLoaded("#container");
-    imgLoad.on("always", function() {
+    imgLoad.on("always", function () {
         console.log(imgLoad.images.length + " images loaded");
         // detect which image is broken
         for (var i = 0, len = imgLoad.images.length; i < len; i++) {
@@ -79,29 +79,30 @@ function test_always_images() {
 }
 
 function test_jquery() {
-    $("#container").imagesLoaded(function() {
+    $("#container").imagesLoaded(function () {
         console.log("images have loaded");
     });
-    $("#container").imagesLoaded({ background: true }, function() {
+    $("#container").imagesLoaded({ background: true }, function () {
         console.log("images have loaded");
     });
-    $("#container").imagesLoaded({ background: ".item" }, function() {
+    $("#container").imagesLoaded({ background: ".item" }, function () {
         console.log("images have loaded");
     });
 }
 
 function test_jquery_deferred() {
-    $("#container").imagesLoaded()
-        .always(function(instance) {
+    $("#container")
+        .imagesLoaded()
+        .always(function (instance) {
             console.log("all images loaded");
         })
-        .done(function(instance) {
+        .done(function (instance) {
             console.log("all images successfully loaded");
         })
-        .fail(function() {
+        .fail(function () {
             console.log("all images loaded, at least one is broken");
         })
-        .progress(function(instance, image) {
+        .progress(function (instance, image) {
             var result = image.isLoaded ? "loaded" : "broken";
             console.log("image is " + result + " for " + image.img.src);
         });

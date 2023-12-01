@@ -6,7 +6,10 @@
  * @param object Object to flatten
  * @param delimiter (Optional) Delimiter.
  */
-export function flatten(a: Record<string | number, unknown>, delimiter?: string): Record<string, unknown>;
+export function flatten(
+    a: Record<string | number, unknown>,
+    delimiter?: string,
+): Record<string, unknown>;
 
 /**
  * Unflattens an object back to its original nested form.
@@ -16,4 +19,7 @@ export function flatten(a: Record<string | number, unknown>, delimiter?: string)
  * @param object Object to flatten
  * @param delimiter (Optional) Delimiter.
  */
-export function unflatten(object: Record<string, unknown>, delimiter?: string): Record<string | number, unknown>;
+export function unflatten(
+    object: Record<string, unknown>,
+    delimiter?: string,
+): Record<string | number, unknown>;

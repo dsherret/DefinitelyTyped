@@ -18,9 +18,22 @@ new Onfleet("test-api-key", 20000, bottleneckOptions);
 // with api key, timeout, bottleneck options, base URL
 new Onfleet("test-api-key", 20000, bottleneckOptions, "http://test.com");
 // with api key, timeout, bottleneck options, base URL, default path
-new Onfleet("test-api-key", 20000, bottleneckOptions, "http://test.com", "/api");
+new Onfleet(
+    "test-api-key",
+    20000,
+    bottleneckOptions,
+    "http://test.com",
+    "/api",
+);
 // with api key, timeout, bottleneck options, base URL, default path, api version
-new Onfleet("test-api-key", 20000, bottleneckOptions, "http://test.com", "/api", "/v5");
+new Onfleet(
+    "test-api-key",
+    20000,
+    bottleneckOptions,
+    "http://test.com",
+    "/api",
+    "/v5",
+);
 
 onfleet.verifyKey().then().catch();
 
@@ -93,7 +106,7 @@ async function testTasks(onfleet: Onfleet) {
 
     // test tasks.autoAssign
     await onfleet.tasks.autoAssign({
-        tasks: dummyTasks.tasks.map(task => task.id),
+        tasks: dummyTasks.tasks.map((task) => task.id),
     });
 
     const taskCreated = await onfleet.tasks.create({
@@ -141,9 +154,9 @@ async function testTasks(onfleet: Onfleet) {
         const required = dummyTask.barcodes.required[0];
         const captured = dummyTask.barcodes.captured[0];
         if (
-            required.data === captured.data
-            && captured.wasRequested === required.blockCompletion
-            && captured.symbology === "CODE39"
+            required.data === captured.data &&
+            captured.wasRequested === required.blockCompletion &&
+            captured.symbology === "CODE39"
         ) {
             captured.location = [-122.42855072021484, 37.78808138412046];
             captured.id = "ku0fpiCqJPC25h3W0cnfgqNn";
@@ -155,9 +168,15 @@ async function testTasks(onfleet: Onfleet) {
     await onfleet.tasks.deleteOne(clonedDummyTask.id);
 
     // test tasks.forceComplete
-    await onfleet.tasks.forceComplete(dummyTask.id, { completionDetails: { success: true } });
-    await onfleet.tasks.forceComplete(dummyTask.id, { completionDetails: { success: false } });
-    await onfleet.tasks.forceComplete(dummyTask.id, { completionDetails: { success: true, notes: "test note" } });
+    await onfleet.tasks.forceComplete(dummyTask.id, {
+        completionDetails: { success: true },
+    });
+    await onfleet.tasks.forceComplete(dummyTask.id, {
+        completionDetails: { success: false },
+    });
+    await onfleet.tasks.forceComplete(dummyTask.id, {
+        completionDetails: { success: true, notes: "test note" },
+    });
 
     // test tasks.matchMetadata
     await onfleet.tasks.matchMetadata([
@@ -203,7 +222,9 @@ async function testRecipient() {
     await onfleet.recipients.get("+1-416-555-5555", "phone");
 
     // test recipient.update
-    await onfleet.recipients.update(testRecipient.id, { notes: "Updated notes" });
+    await onfleet.recipients.update(testRecipient.id, {
+        notes: "Updated notes",
+    });
 
     // test recipient.matchMetadata
     await onfleet.recipients.matchMetadata([

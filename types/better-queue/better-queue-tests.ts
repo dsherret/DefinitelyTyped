@@ -107,7 +107,12 @@ class TestStore implements Queue.Store<TestTask> {
         cb();
     }
 
-    putTask(taskId: any, task: TestTask, priority: number, cb: (error: any) => void) {
+    putTask(
+        taskId: any,
+        task: TestTask,
+        priority: number,
+        cb: (error: any) => void,
+    ) {
         cb(null);
     }
 
@@ -119,7 +124,10 @@ class TestStore implements Queue.Store<TestTask> {
         cb(null, "");
     }
 
-    getLock(lockId: string, cb: (error: any, tasks: { [taskId: string]: TestTask }) => void) {
+    getLock(
+        lockId: string,
+        cb: (error: any, tasks: { [taskId: string]: TestTask }) => void,
+    ) {
         cb(null, {
             id: { taskId: "id", taskPayload: "payload" },
         });

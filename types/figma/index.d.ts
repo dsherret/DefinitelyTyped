@@ -18,7 +18,10 @@ declare global {
         readonly viewport: ViewportAPI;
         closePlugin(message?: string): void;
 
-        notify(message: string, options?: NotificationOptions): NotificationHandler;
+        notify(
+            message: string,
+            options?: NotificationOptions,
+        ): NotificationHandler;
 
         showUI(html: string, options?: ShowUIOptions): void;
         readonly ui: UIAPI;
@@ -31,9 +34,18 @@ declare global {
         readonly root: DocumentNode;
         currentPage: PageNode;
 
-        on(type: "selectionchange" | "currentpagechange" | "close", callback: () => void): void;
-        once(type: "selectionchange" | "currentpagechange" | "close", callback: () => void): void;
-        off(type: "selectionchange" | "currentpagechange" | "close", callback: () => void): void;
+        on(
+            type: "selectionchange" | "currentpagechange" | "close",
+            callback: () => void,
+        ): void;
+        once(
+            type: "selectionchange" | "currentpagechange" | "close",
+            callback: () => void,
+        ): void;
+        off(
+            type: "selectionchange" | "currentpagechange" | "close",
+            callback: () => void,
+        ): void;
 
         readonly mixed: unique symbol;
 
@@ -77,10 +89,22 @@ declare global {
         createImage(data: Uint8Array): Image;
         getImageByHash(hash: string): Image;
 
-        group(nodes: readonly BaseNode[], parent: BaseNode & ChildrenMixin, index?: number): GroupNode;
-        flatten(nodes: readonly BaseNode[], parent?: BaseNode & ChildrenMixin, index?: number): VectorNode;
+        group(
+            nodes: readonly BaseNode[],
+            parent: BaseNode & ChildrenMixin,
+            index?: number,
+        ): GroupNode;
+        flatten(
+            nodes: readonly BaseNode[],
+            parent?: BaseNode & ChildrenMixin,
+            index?: number,
+        ): VectorNode;
 
-        union(nodes: readonly BaseNode[], parent: BaseNode & ChildrenMixin, index?: number): BooleanOperationNode;
+        union(
+            nodes: readonly BaseNode[],
+            parent: BaseNode & ChildrenMixin,
+            index?: number,
+        ): BooleanOperationNode;
         subtract(
             nodes: readonly BaseNode[],
             parent: BaseNode & ChildrenMixin,
@@ -91,7 +115,11 @@ declare global {
             parent: BaseNode & ChildrenMixin,
             index?: number,
         ): BooleanOperationNode;
-        exclude(nodes: readonly BaseNode[], parent: BaseNode & ChildrenMixin, index?: number): BooleanOperationNode;
+        exclude(
+            nodes: readonly BaseNode[],
+            parent: BaseNode & ChildrenMixin,
+            index?: number,
+        ): BooleanOperationNode;
     }
 
     interface ClientStorageAPI {
@@ -121,7 +149,10 @@ declare global {
         origin: string;
     }
 
-    type MessageEventHandler = (pluginMessage: any, props: OnMessageProperties) => void;
+    type MessageEventHandler = (
+        pluginMessage: any,
+        props: OnMessageProperties,
+    ) => void;
 
     interface UIAPI {
         show(): void;
@@ -237,7 +268,11 @@ declare global {
     }
 
     interface GradientPaint {
-        readonly type: "GRADIENT_LINEAR" | "GRADIENT_RADIAL" | "GRADIENT_ANGULAR" | "GRADIENT_DIAMOND";
+        readonly type:
+            | "GRADIENT_LINEAR"
+            | "GRADIENT_RADIAL"
+            | "GRADIENT_ANGULAR"
+            | "GRADIENT_DIAMOND";
         readonly gradientTransform: Transform;
         readonly gradientStops: readonly ColorStop[];
 
@@ -316,7 +351,10 @@ declare global {
         readonly suffix?: string | undefined;
     }
 
-    type ExportSettings = ExportSettingsImage | ExportSettingsSVG | ExportSettingsPDF;
+    type ExportSettings =
+        | ExportSettingsImage
+        | ExportSettingsSVG
+        | ExportSettingsPDF;
 
     type WindingRule = "NONZERO" | "EVENODD";
 
@@ -361,12 +399,12 @@ declare global {
 
     type LineHeight =
         | {
-            readonly value: number;
-            readonly unit: "PIXELS" | "PERCENT";
-        }
+              readonly value: number;
+              readonly unit: "PIXELS" | "PERCENT";
+          }
         | {
-            readonly unit: "AUTO";
-        };
+              readonly unit: "AUTO";
+          };
 
     type BlendMode =
         | "PASS_THROUGH"
@@ -402,16 +440,16 @@ declare global {
         | { readonly type: "BACK" | "CLOSE" }
         | { readonly type: "URL"; url: string }
         | {
-            readonly type: "NODE";
-            readonly destinationId: string | null;
-            readonly navigation: Navigation;
-            readonly transition: Transition | null;
-            readonly preserveScrollPosition: boolean;
+              readonly type: "NODE";
+              readonly destinationId: string | null;
+              readonly navigation: Navigation;
+              readonly transition: Transition | null;
+              readonly preserveScrollPosition: boolean;
 
-            // Only present if navigation == "OVERLAY" and the destination uses
-            // overlay position type "RELATIVE"
-            readonly overlayRelativePosition?: Vector | undefined;
-        };
+              // Only present if navigation == "OVERLAY" and the destination uses
+              // overlay position type "RELATIVE"
+              readonly overlayRelativePosition?: Vector | undefined;
+          };
 
     interface SimpleTransition {
         readonly type: "DISSOLVE" | "SMART_ANIMATE";
@@ -420,7 +458,12 @@ declare global {
     }
 
     interface DirectionalTransition {
-        readonly type: "MOVE_IN" | "MOVE_OUT" | "PUSH" | "SLIDE_IN" | "SLIDE_OUT";
+        readonly type:
+            | "MOVE_IN"
+            | "MOVE_OUT"
+            | "PUSH"
+            | "SLIDE_IN"
+            | "SLIDE_OUT";
         readonly direction: "LEFT" | "RIGHT" | "TOP" | "BOTTOM";
         readonly matchLayers: boolean;
 
@@ -433,7 +476,14 @@ declare global {
     type Trigger =
         | { readonly type: "ON_CLICK" | "ON_HOVER" | "ON_PRESS" | "ON_DRAG" }
         | { readonly type: "AFTER_TIMEOUT"; readonly timeout: number }
-        | { readonly type: "MOUSE_ENTER" | "MOUSE_LEAVE" | "MOUSE_UP" | "MOUSE_DOWN"; readonly delay: number };
+        | {
+              readonly type:
+                  | "MOUSE_ENTER"
+                  | "MOUSE_LEAVE"
+                  | "MOUSE_UP"
+                  | "MOUSE_DOWN";
+              readonly delay: number;
+          };
 
     type Navigation = "NAVIGATE" | "SWAP" | "OVERLAY";
 
@@ -453,7 +503,9 @@ declare global {
         | "BOTTOM_RIGHT"
         | "MANUAL";
 
-    type OverlayBackground = { readonly type: "NONE" } | { readonly type: "SOLID_COLOR"; readonly color: RGBA };
+    type OverlayBackground =
+        | { readonly type: "NONE" }
+        | { readonly type: "SOLID_COLOR"; readonly color: RGBA };
 
     type OverlayBackgroundInteraction = "NONE" | "CLOSE_ON_CLICK_OUTSIDE";
 
@@ -474,8 +526,14 @@ declare global {
         // Namespace is a string that must be at least 3 alphanumeric characters, and should
         // be a name related to your plugin. Other plugins will be able to read this data.
         getSharedPluginData(namespace: string, key: string): string;
-        setSharedPluginData(namespace: string, key: string, value: string): void;
-        setRelaunchData(data: { [command: string]: /* description */ string }): void;
+        setSharedPluginData(
+            namespace: string,
+            key: string,
+            value: string,
+        ): void;
+        setRelaunchData(data: {
+            [command: string]: /* description */ string;
+        }): void;
     }
 
     interface SceneNodeMixin {
@@ -540,7 +598,12 @@ declare global {
         backgroundStyleId: string; // DEPRECATED: use 'fillStyleId' instead
     }
 
-    type StrokeCap = "NONE" | "ROUND" | "SQUARE" | "ARROW_LINES" | "ARROW_EQUILATERAL";
+    type StrokeCap =
+        | "NONE"
+        | "ROUND"
+        | "SQUARE"
+        | "ARROW_LINES"
+        | "ARROW_EQUILATERAL";
     type StrokeJoin = "MITER" | "BEVEL" | "ROUND";
     type HandleMirroring = "NONE" | "ANGLE" | "ANGLE_AND_LENGTH";
 
@@ -580,12 +643,16 @@ declare global {
     }
 
     interface DefaultShapeMixin
-        extends BaseNodeMixin, SceneNodeMixin, ReactionMixin, BlendMixin, GeometryMixin, LayoutMixin, ExportMixin
-    {}
+        extends BaseNodeMixin,
+            SceneNodeMixin,
+            ReactionMixin,
+            BlendMixin,
+            GeometryMixin,
+            LayoutMixin,
+            ExportMixin {}
 
     interface DefaultFrameMixin
-        extends
-            BaseNodeMixin,
+        extends BaseNodeMixin,
             SceneNodeMixin,
             ReactionMixin,
             ChildrenMixin,
@@ -596,8 +663,7 @@ declare global {
             BlendMixin,
             ConstraintMixin,
             LayoutMixin,
-            ExportMixin
-    {
+            ExportMixin {
         layoutMode: "NONE" | "HORIZONTAL" | "VERTICAL";
         counterAxisSizingMode: "FIXED" | "AUTO"; // applicable only if layoutMode != "NONE"
         horizontalPadding: number; // applicable only if layoutMode != "NONE"
@@ -634,13 +700,17 @@ declare global {
          * If you only need to search immediate children, it is much faster
          * to call node.children.filter(callback) or node.findChildren(callback)
          */
-        findAll(callback?: (node: PageNode | SceneNode) => boolean): Array<PageNode | SceneNode>;
+        findAll(
+            callback?: (node: PageNode | SceneNode) => boolean,
+        ): Array<PageNode | SceneNode>;
 
         /**
          * If you only need to search immediate children, it is much faster
          * to call node.children.find(callback) or node.findChild(callback)
          */
-        findOne(callback: (node: PageNode | SceneNode) => boolean): PageNode | SceneNode | null;
+        findOne(
+            callback: (node: PageNode | SceneNode) => boolean,
+        ): PageNode | SceneNode | null;
     }
 
     interface PageNode extends BaseNodeMixin, ChildrenMixin, ExportMixin {
@@ -649,11 +719,20 @@ declare global {
 
         guides: readonly Guide[];
         selection: readonly SceneNode[];
-        selectedTextRange: { node: TextNode; start: number; end: number } | null;
+        selectedTextRange: {
+            node: TextNode;
+            start: number;
+            end: number;
+        } | null;
 
         backgrounds: readonly Paint[];
 
-        readonly prototypeStartNode: FrameNode | GroupNode | ComponentNode | InstanceNode | null;
+        readonly prototypeStartNode:
+            | FrameNode
+            | GroupNode
+            | ComponentNode
+            | InstanceNode
+            | null;
     }
 
     interface FrameNode extends DefaultFrameMixin {
@@ -662,26 +741,32 @@ declare global {
     }
 
     interface GroupNode
-        extends
-            BaseNodeMixin,
+        extends BaseNodeMixin,
             SceneNodeMixin,
             ReactionMixin,
             ChildrenMixin,
             ContainerMixin,
             BlendMixin,
             LayoutMixin,
-            ExportMixin
-    {
+            ExportMixin {
         readonly type: "GROUP";
         clone(): GroupNode;
     }
 
-    interface SliceNode extends BaseNodeMixin, SceneNodeMixin, LayoutMixin, ExportMixin {
+    interface SliceNode
+        extends BaseNodeMixin,
+            SceneNodeMixin,
+            LayoutMixin,
+            ExportMixin {
         readonly type: "SLICE";
         clone(): SliceNode;
     }
 
-    interface RectangleNode extends DefaultShapeMixin, ConstraintMixin, CornerMixin, RectangleCornerMixin {
+    interface RectangleNode
+        extends DefaultShapeMixin,
+            ConstraintMixin,
+            CornerMixin,
+            RectangleCornerMixin {
         readonly type: "RECTANGLE";
         clone(): RectangleNode;
     }
@@ -691,13 +776,19 @@ declare global {
         clone(): LineNode;
     }
 
-    interface EllipseNode extends DefaultShapeMixin, ConstraintMixin, CornerMixin {
+    interface EllipseNode
+        extends DefaultShapeMixin,
+            ConstraintMixin,
+            CornerMixin {
         readonly type: "ELLIPSE";
         clone(): EllipseNode;
         arcData: ArcData;
     }
 
-    interface PolygonNode extends DefaultShapeMixin, ConstraintMixin, CornerMixin {
+    interface PolygonNode
+        extends DefaultShapeMixin,
+            ConstraintMixin,
+            CornerMixin {
         readonly type: "POLYGON";
         clone(): PolygonNode;
         pointCount: number;
@@ -710,7 +801,10 @@ declare global {
         innerRadius: number;
     }
 
-    interface VectorNode extends DefaultShapeMixin, ConstraintMixin, CornerMixin {
+    interface VectorNode
+        extends DefaultShapeMixin,
+            ConstraintMixin,
+            CornerMixin {
         readonly type: "VECTOR";
         clone(): VectorNode;
         vectorNetwork: VectorNetwork;
@@ -738,26 +832,62 @@ declare global {
         lineHeight: LineHeight | PluginAPI["mixed"];
 
         characters: string;
-        insertCharacters(start: number, characters: string, useStyle?: "BEFORE" | "AFTER"): void;
+        insertCharacters(
+            start: number,
+            characters: string,
+            useStyle?: "BEFORE" | "AFTER",
+        ): void;
         deleteCharacters(start: number, end: number): void;
 
-        getRangeFontSize(start: number, end: number): number | PluginAPI["mixed"];
+        getRangeFontSize(
+            start: number,
+            end: number,
+        ): number | PluginAPI["mixed"];
         setRangeFontSize(start: number, end: number, value: number): void;
-        getRangeFontName(start: number, end: number): FontName | PluginAPI["mixed"];
+        getRangeFontName(
+            start: number,
+            end: number,
+        ): FontName | PluginAPI["mixed"];
         setRangeFontName(start: number, end: number, value: FontName): void;
-        getRangeTextCase(start: number, end: number): TextCase | PluginAPI["mixed"];
+        getRangeTextCase(
+            start: number,
+            end: number,
+        ): TextCase | PluginAPI["mixed"];
         setRangeTextCase(start: number, end: number, value: TextCase): void;
-        getRangeTextDecoration(start: number, end: number): TextDecoration | PluginAPI["mixed"];
-        setRangeTextDecoration(start: number, end: number, value: TextDecoration): void;
-        getRangeLetterSpacing(start: number, end: number): LetterSpacing | PluginAPI["mixed"];
-        setRangeLetterSpacing(start: number, end: number, value: LetterSpacing): void;
-        getRangeLineHeight(start: number, end: number): LineHeight | PluginAPI["mixed"];
+        getRangeTextDecoration(
+            start: number,
+            end: number,
+        ): TextDecoration | PluginAPI["mixed"];
+        setRangeTextDecoration(
+            start: number,
+            end: number,
+            value: TextDecoration,
+        ): void;
+        getRangeLetterSpacing(
+            start: number,
+            end: number,
+        ): LetterSpacing | PluginAPI["mixed"];
+        setRangeLetterSpacing(
+            start: number,
+            end: number,
+            value: LetterSpacing,
+        ): void;
+        getRangeLineHeight(
+            start: number,
+            end: number,
+        ): LineHeight | PluginAPI["mixed"];
         setRangeLineHeight(start: number, end: number, value: LineHeight): void;
         getRangeFills(start: number, end: number): Paint[] | PluginAPI["mixed"];
         setRangeFills(start: number, end: number, value: Paint[]): void;
-        getRangeTextStyleId(start: number, end: number): string | PluginAPI["mixed"];
+        getRangeTextStyleId(
+            start: number,
+            end: number,
+        ): string | PluginAPI["mixed"];
         setRangeTextStyleId(start: number, end: number, value: string): void;
-        getRangeFillStyleId(start: number, end: number): string | PluginAPI["mixed"];
+        getRangeFillStyleId(
+            start: number,
+            end: number,
+        ): string | PluginAPI["mixed"];
         setRangeFillStyleId(start: number, end: number, value: string): void;
     }
 
@@ -778,7 +908,10 @@ declare global {
         scaleFactor: number;
     }
 
-    interface BooleanOperationNode extends DefaultShapeMixin, ChildrenMixin, CornerMixin {
+    interface BooleanOperationNode
+        extends DefaultShapeMixin,
+            ChildrenMixin,
+            CornerMixin {
         readonly type: "BOOLEAN_OPERATION";
         clone(): BooleanOperationNode;
         booleanOperation: "UNION" | "INTERSECT" | "SUBTRACT" | "EXCLUDE";

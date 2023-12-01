@@ -47,7 +47,10 @@ declare namespace ydn.db {
         always(callback: (data: any) => void): any;
         done(callback: (data: any) => void): any;
         fail(callback: (data: any) => void): any;
-        then(success_callback: (data: any) => any, error_callback: (data: Error) => any): any;
+        then(
+            success_callback: (data: any) => any,
+            error_callback: (data: Error) => any,
+        ): any;
         canAbort(): boolean;
     }
 
@@ -62,9 +65,19 @@ declare namespace ydn.db {
     }
 
     export class KeyRange {
-        constructor(lower?: any, upper?: any, lowerOpen?: boolean, upperOpen?: boolean);
+        constructor(
+            lower?: any,
+            upper?: any,
+            lowerOpen?: boolean,
+            upperOpen?: boolean,
+        );
 
-        static bound(lower?: any, upper?: any, lowerOpen?: boolean, upperOpen?: boolean): KeyRange;
+        static bound(
+            lower?: any,
+            upper?: any,
+            lowerOpen?: boolean,
+            upperOpen?: boolean,
+        ): KeyRange;
         static lowerBound(lower: any, lowerOpen?: boolean): KeyRange;
         static upperBound(upper: any, upperOpen?: boolean): KeyRange;
         static only(value: any): KeyRange;
@@ -79,7 +92,11 @@ declare namespace ydn.db {
     }
 
     export class Iterator {
-        join(peer_store_name: string, peer_field_name?: string, value?: any): any;
+        join(
+            peer_store_name: string,
+            peer_field_name?: string,
+            value?: any,
+        ): any;
         getKey(): any;
         getPrimaryKey(): any;
         reset(): Iterator;
@@ -120,37 +137,87 @@ declare namespace ydn.db {
     }
 
     export class IndexKeyIterator extends Iterator {
-        constructor(store_name: string, index_name: string, key_range?: KeyRange, reverse?: boolean);
+        constructor(
+            store_name: string,
+            index_name: string,
+            key_range?: KeyRange,
+            reverse?: boolean,
+        );
 
-        static where(store_name: string, index_name: string, op: Op, value: any, op2: Op, value2: any): any;
+        static where(
+            store_name: string,
+            index_name: string,
+            op: Op,
+            value: any,
+            op2: Op,
+            value2: any,
+        ): any;
     }
 
     export class KeyIterator extends Iterator {
-        constructor(store_name: string, key_range?: KeyRange, reverse?: boolean);
+        constructor(
+            store_name: string,
+            key_range?: KeyRange,
+            reverse?: boolean,
+        );
 
-        static where(store_name: string, op: Op, value: any, op2: Op, value2: any): any;
+        static where(
+            store_name: string,
+            op: Op,
+            value: any,
+            op2: Op,
+            value2: any,
+        ): any;
     }
 
     export class ValueIterator extends Iterator {
-        constructor(store_name: string, key_range?: KeyRange, reverse?: boolean);
+        constructor(
+            store_name: string,
+            key_range?: KeyRange,
+            reverse?: boolean,
+        );
 
-        static where(store_name: string, op: Op, value: any, op2: Op, value2: any): any;
+        static where(
+            store_name: string,
+            op: Op,
+            value: any,
+            op2: Op,
+            value2: any,
+        ): any;
     }
 
     export class IndexValueIterator extends Iterator {
-        constructor(store_name: string, index_name: string, key_range?: KeyRange, reverse?: boolean);
+        constructor(
+            store_name: string,
+            index_name: string,
+            key_range?: KeyRange,
+            reverse?: boolean,
+        );
 
-        static where(store_name: string, index_name: string, op: Op, value: any, op2: Op, value2: any): any;
+        static where(
+            store_name: string,
+            index_name: string,
+            op: Op,
+            value: any,
+            op2: Op,
+            value2: any,
+        ): any;
     }
 
     export class Streamer {
-        constructor(storage: ydn.db.Storage, store_name: string, opt_field_name?: string);
+        constructor(
+            storage: ydn.db.Storage,
+            store_name: string,
+            opt_field_name?: string,
+        );
 
         push(key: any, value?: any): any;
 
         collect(callback: (values: any[]) => void): any;
 
-        setSink(callback: (key: any, value: any, toWait: () => boolean) => void): any;
+        setSink(
+            callback: (key: any, value: any, toWait: () => boolean) => void,
+        ): any;
     }
 
     export class ICursor {
@@ -163,7 +230,11 @@ declare namespace ydn.db {
 
     export class Query {
         count(): Request;
-        open(callback: (ICursor: any) => void, Iterator: any, TransactionMode: any): Request;
+        open(
+            callback: (ICursor: any) => void,
+            Iterator: any,
+            TransactionMode: any,
+        ): Request;
         patch(Object: any): Request;
         patch(field_name: string, value: any): Request;
         patch(field_names: string[], value: any[]): Request;
@@ -175,7 +246,13 @@ declare namespace ydn.db {
         list(): Request;
         list(limit: number): Request;
         where(field_name: string, op: Op, value: any): any;
-        where(field_name: string, op: Op, value: any, op2: Op, value2: any): any;
+        where(
+            field_name: string,
+            op: Op,
+            value: any,
+            op2: Op,
+            value2: any,
+        ): any;
     }
 
     export class DbOperator {
@@ -187,19 +264,35 @@ declare namespace ydn.db {
         clear(store_names: string[]): Request;
 
         count(store_name: string, key_range?: KeyRange): Request;
-        count(store_name: string, index_name: string, key_range: KeyRange): Request;
+        count(
+            store_name: string,
+            index_name: string,
+            key_range: KeyRange,
+        ): Request;
         count(store_names: string[]): Request;
 
         executeSql(sql: string, params?: any[]): Request;
 
         from(store_name: string): Query;
         from(store_name: string, op: Op, value: any): Query;
-        from(store_name: string, op: Op, value: any, op2: Op, value2: any): Query;
+        from(
+            store_name: string,
+            op: Op,
+            value: any,
+            op2: Op,
+            value2: any,
+        ): Query;
 
         get(store_name: string, key: any): Request;
 
         keys(iter: Iterator, limit?: number): Request;
-        keys(store_name: string, key_range?: KeyRange, limit?: number, offset?: number, reverse?: boolean): Request;
+        keys(
+            store_name: string,
+            key_range?: KeyRange,
+            limit?: number,
+            offset?: number,
+            reverse?: boolean,
+        ): Request;
         keys(
             store_name: string,
             index_name: string,
@@ -210,7 +303,11 @@ declare namespace ydn.db {
         ): Request;
         keys(store_name: string, limit?: boolean, offset?: number): Request;
 
-        open(next_callback: (cursor: ICursor) => any, iterator: Iterator, mode: TransactionMode): Request;
+        open(
+            next_callback: (cursor: ICursor) => any,
+            iterator: Iterator,
+            mode: TransactionMode,
+        ): Request;
 
         put(store_name: string, value: any, key: any): Request;
         put(store_name: string, value: any[], key: any[]): Request;
@@ -218,13 +315,26 @@ declare namespace ydn.db {
         put(store_name: string, value: any[]): Request;
 
         remove(store_name: string, id_or_key_range: any): Request;
-        remove(store_name: string, index_name: string, id_or_key_range: any): Request;
+        remove(
+            store_name: string,
+            index_name: string,
+            id_or_key_range: any,
+        ): Request;
         clear(store_name: string, key_or_key_range: any): Request;
 
-        scan(solver: (keys: any[], values: any[]) => any, iterators: Iterator[]): Request;
+        scan(
+            solver: (keys: any[], values: any[]) => any,
+            iterators: Iterator[],
+        ): Request;
 
         values(iter: Iterator, limit?: number): Request;
-        values(store_name: string, key_range?: KeyRange, limit?: number, offset?: number, reverse?: boolean): Request;
+        values(
+            store_name: string,
+            key_range?: KeyRange,
+            limit?: number,
+            offset?: number,
+            reverse?: boolean,
+        ): Request;
         values(
             store_name: string,
             index_name: string,
@@ -238,10 +348,22 @@ declare namespace ydn.db {
     }
 
     export class Storage extends DbOperator {
-        constructor(db_name?: string, schema?: DatabaseSchemaJson, options?: StorageOptions);
+        constructor(
+            db_name?: string,
+            schema?: DatabaseSchemaJson,
+            options?: StorageOptions,
+        );
 
-        addEventListener(type: EventType, handler: (event: any) => void, capture?: boolean): any;
-        addEventListener(type: EventType[], handler: (event: any) => void, capture?: boolean): any;
+        addEventListener(
+            type: EventType,
+            handler: (event: any) => void,
+            capture?: boolean,
+        ): any;
+        addEventListener(
+            type: EventType[],
+            handler: (event: any) => void,
+            capture?: boolean,
+        ): any;
 
         branch(
             thread: Policy,
@@ -263,12 +385,29 @@ declare namespace ydn.db {
 
         onReady(Error?: any): any;
 
-        removeEventListener(type: EventType, handler: (event: any) => void, capture?: boolean): any;
-        removeEventListener(type: EventType[], handler: (event: any) => void, capture?: boolean): any;
+        removeEventListener(
+            type: EventType,
+            handler: (event: any) => void,
+            capture?: boolean,
+        ): any;
+        removeEventListener(
+            type: EventType[],
+            handler: (event: any) => void,
+            capture?: boolean,
+        ): any;
 
-        run(callback: (iStorage: ydn.db.Storage) => void, store_names: string[], mode: TransactionMode): Request;
+        run(
+            callback: (iStorage: ydn.db.Storage) => void,
+            store_names: string[],
+            mode: TransactionMode,
+        ): Request;
 
-        search(catalog_name: string, query: string, limit?: number, threshold?: number): Request;
+        search(
+            catalog_name: string,
+            query: string,
+            limit?: number,
+            threshold?: number,
+        ): Request;
 
         setName(name: string): any;
 
@@ -282,8 +421,7 @@ declare namespace ydn.db {
 }
 
 declare namespace ydb.db.algo {
-    export class Solver {
-    }
+    export class Solver {}
 
     export class NestedLoop extends Solver {
         constructor(out: { push: (value: any) => void }, limit?: number);

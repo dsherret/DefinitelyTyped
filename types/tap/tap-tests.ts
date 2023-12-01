@@ -6,7 +6,7 @@ Tap.Tap;
 
 tap.pass();
 
-tap.test("all-assertions", t => {
+tap.test("all-assertions", (t) => {
     const obj: any = {};
     const found: any = 1;
     const wanted: any = 1;
@@ -181,7 +181,7 @@ tap.test("all-assertions", t => {
     t.isA(new Date(), Date);
 });
 
-tap.test("async test", async t => {
+tap.test("async test", async (t) => {
     const wanted = 1;
     const expectedError = "foo";
 
@@ -230,7 +230,7 @@ tap.test("async test", async t => {
     await t.resolveMatchSnapshot(promiseProvider);
 });
 
-tap.test("lifecycle", t => {
+tap.test("lifecycle", (t) => {
     t.before(() => true);
     t.before(async () => true);
 
@@ -243,7 +243,7 @@ tap.test("lifecycle", t => {
     t.afterEach(async (childTest: any) => childTest.foo);
 });
 
-tap.test("mocks", t => {
+tap.test("mocks", (t) => {
     const anyMockModule = tap.mock("../my-module", {
         fs: {
             readFile: () => false,
@@ -253,21 +253,25 @@ tap.test("mocks", t => {
     anyMockModule.any.thing;
 });
 
-tap.only("only", t => {
+tap.only("only", (t) => {
     t.pass();
 });
 
-tap.skip("skip", t => {
+tap.skip("skip", (t) => {
     t.pass();
 });
 
-tap.test("test with options", { only: true, skip: true, todo: true, timeout: 1000 }, t => {
-    t.pass();
-});
+tap.test(
+    "test with options",
+    { only: true, skip: true, todo: true, timeout: 1000 },
+    (t) => {
+        t.pass();
+    },
+);
 
 const topLevelDir = tap.testdir();
 
-tap.test("testdir", t => {
+tap.test("testdir", (t) => {
     const cwd = t.testdir({
         "demo.jpg": Buffer.from("a jpg"),
         "package.json": JSON.stringify({
@@ -284,7 +288,7 @@ tap.test("testdir", t => {
     t.equals(cwd, t.testdirName);
 });
 
-tap.test("fixture", t => {
+tap.test("fixture", (t) => {
     // fairly infrequent vs testdir() sugar
     t.fixture("dir", {});
     t.fixture("file", "content");
@@ -295,12 +299,12 @@ tap.test("fixture", t => {
     t.fixture("symlink", "target");
 });
 
-tap.test("autoend", t => {
+tap.test("autoend", (t) => {
     t.autoend(false);
     t.end();
 });
 
-tap.test("mocha", t => {
+tap.test("mocha", (t) => {
     tap.mocha.it("should work", () => {});
     tap.mocha.it.skip("should work", () => {});
     tap.mocha.it.todo("should work", () => {});

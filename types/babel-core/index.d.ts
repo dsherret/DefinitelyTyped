@@ -24,7 +24,10 @@ export interface PluginObj<S = {}> {
 }
 
 /** Transforms the passed in `code`. Returning an object with the generated code, source map, and AST. */
-export function transform(code: string, opts?: TransformOptions): BabelFileResult;
+export function transform(
+    code: string,
+    opts?: TransformOptions,
+): BabelFileResult;
 
 /** Asynchronously transforms the entire contents of a file. */
 export function transformFile(
@@ -34,9 +37,16 @@ export function transformFile(
 ): void;
 
 /** Synchronous version of `babel.transformFile`. Returns the transformed contents of the `filename`. */
-export function transformFileSync(filename: string, opts?: TransformOptions): BabelFileResult;
+export function transformFileSync(
+    filename: string,
+    opts?: TransformOptions,
+): BabelFileResult;
 
-export function transformFromAst(ast: Node, code?: string, opts?: TransformOptions): BabelFileResult;
+export function transformFromAst(
+    ast: Node,
+    code?: string,
+    opts?: TransformOptions,
+): BabelFileResult;
 
 export interface TransformOptions {
     /** Include the AST in the returned object. Default: `true`. */

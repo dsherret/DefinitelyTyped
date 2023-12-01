@@ -177,19 +177,17 @@ export default class AmStockChart {
      */
     addListener(
         type: string,
-        handler: (
-            e: {
-                chart: AmStockChart;
-                date?: Date;
-                endDate?: Date;
-                eventObject?: StockEvent;
-                graph?: StockGraph;
-                panel?: StockPanel;
-                period?: string;
-                startDate?: Date;
-                type: string;
-            },
-        ) => void,
+        handler: (e: {
+            chart: AmStockChart;
+            date?: Date;
+            endDate?: Date;
+            eventObject?: StockEvent;
+            graph?: StockGraph;
+            panel?: StockPanel;
+            period?: string;
+            startDate?: Date;
+            type: string;
+        }) => void,
     ): void;
     /**
      * Removes event listener from chart object.

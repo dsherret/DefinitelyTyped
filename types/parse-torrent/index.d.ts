@@ -9,13 +9,21 @@ declare namespace ParseTorrent {
     interface ParseTorrent {
         (torrent: string): MagnetUri.Instance;
         (torrent: Buffer): MagnetUri.Instance | ParseTorrentFile.Instance;
-        (torrent: Instance | MagnetUri.Instance | ParseTorrentFile.Instance): Instance;
+        (
+            torrent: Instance | MagnetUri.Instance | ParseTorrentFile.Instance,
+        ): Instance;
 
         toMagnetURI: typeof MagnetUri.encode;
         toTorrentFile: typeof ParseTorrentFile.encode;
 
         remote(
-            torrent: string | Buffer | Instance | MagnetUri.Instance | ParseTorrentFile.Instance | Blob,
+            torrent:
+                | string
+                | Buffer
+                | Instance
+                | MagnetUri.Instance
+                | ParseTorrentFile.Instance
+                | Blob,
             cb?: (err: Error, torrent?: Instance) => void,
         ): void;
     }

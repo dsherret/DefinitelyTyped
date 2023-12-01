@@ -9,8 +9,8 @@ interface UIDGeneratorInstance {
 }
 
 interface UIDGeneratorClass {
-    new(bitSize?: number, baseEncoding?: string): UIDGeneratorInstance;
-    new(baseEncoding?: string): UIDGeneratorInstance;
+    new (bitSize?: number, baseEncoding?: string): UIDGeneratorInstance;
+    new (baseEncoding?: string): UIDGeneratorInstance;
     readonly BASE16: "0123456789abcdef";
     readonly BASE36: "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     readonly BASE58: "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";

@@ -1,6 +1,13 @@
 import { ComponentType } from "react";
 import { Classes } from "reactcss";
-import { Color, ColorChangeHandler, ColorState, HSLColor, HSVColor, RGBColor } from "../../..";
+import {
+    Color,
+    ColorChangeHandler,
+    ColorState,
+    HSLColor,
+    HSVColor,
+    RGBColor,
+} from "../../..";
 
 type SetDifference<A, B> = A extends B ? never : A;
 
@@ -8,7 +15,8 @@ type Diff<T, U> = Pick<T, SetDifference<keyof T, keyof U>>;
 
 export type OnChangeHandler = (colorState: ColorState) => void;
 
-export interface CustomPickerInjectedProps<T = HSLColor | HSVColor | RGBColor> extends Partial<ColorState> {
+export interface CustomPickerInjectedProps<T = HSLColor | HSVColor | RGBColor>
+    extends Partial<ColorState> {
     onChange: ColorChangeHandler<T>;
 }
 

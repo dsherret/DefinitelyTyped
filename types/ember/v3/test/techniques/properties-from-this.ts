@@ -16,7 +16,10 @@ class GetAndSet {
     get<K extends keyof this>(key: K): UnboxGetProperty<this[K]> {
         return this[key] as any;
     }
-    set<K extends keyof this>(key: K, newVal: UnboxSetProperty<this[K]>): UnboxSetProperty<this[K]> {
+    set<K extends keyof this>(
+        key: K,
+        newVal: UnboxSetProperty<this[K]>,
+    ): UnboxSetProperty<this[K]> {
         const rawVal: UnboxSetProperty<this[K]> = this[key] as any;
         if (rawVal instanceof BoxedProperty) {
             rawVal.__setType = newVal;

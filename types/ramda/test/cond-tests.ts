@@ -1,8 +1,8 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     const f = R.cond<[number], string>([
-        [x => x === 0, () => "a"],
+        [(x) => x === 0, () => "a"],
         [() => true, () => "b"],
     ]);
 
@@ -29,7 +29,7 @@ import * as R from "ramda";
     g(1, "");
 
     R.cond([
-        [(a: string | number): a is number => true, a => a * 2],
-        [(a: string | number): a is string => true, a => a.length],
+        [(a: string | number): a is number => true, (a) => a * 2],
+        [(a: string | number): a is string => true, (a) => a.length],
     ]);
-});
+};

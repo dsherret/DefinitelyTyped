@@ -6,7 +6,9 @@ export = DMX;
 /**
  * This class is used to tie multiple universes together.
  */
-declare class DMX<TDevices extends { [key in string]?: DMX.Device } = DMX.Devices> extends EventEmitter {
+declare class DMX<
+    TDevices extends { [key in string]?: DMX.Device } = DMX.Devices,
+> extends EventEmitter {
     static Animation: DMX.AnimationStatic;
     static devices: DMX.Devices;
 
@@ -42,14 +44,24 @@ declare class DMX<TDevices extends { [key in string]?: DMX.Device } = DMX.Device
      *
      * @param options Driver specific options.
      */
-    addUniverse(name: string, driver: "null", deviceId?: undefined, options?: DMX.NullDriverOptions): DMX.Universe;
+    addUniverse(
+        name: string,
+        driver: "null",
+        deviceId?: undefined,
+        options?: DMX.NullDriverOptions,
+    ): DMX.Universe;
     addUniverse(
         name: string,
         driver: "socketio",
         deviceId?: undefined,
         options?: DMX.SocketioDriverOptions,
     ): DMX.Universe;
-    addUniverse(name: string, driver: "dmx4all", deviceId: string, options?: DMX.DMX4ALLDriverOptions): DMX.Universe;
+    addUniverse(
+        name: string,
+        driver: "dmx4all",
+        deviceId: string,
+        options?: DMX.DMX4ALLDriverOptions,
+    ): DMX.Universe;
     addUniverse(
         name: string,
         driver: "enttec-usb-dmx-pro",
@@ -68,10 +80,30 @@ declare class DMX<TDevices extends { [key in string]?: DMX.Device } = DMX.Device
         deviceId: string,
         options?: DMX.DMXKingUltraDMXProDriverOptions,
     ): DMX.Universe;
-    addUniverse(name: string, driver: "artnet", deviceId?: string, options?: DMX.ArtnetDriverOptions): DMX.Universe;
-    addUniverse(name: string, driver: "bbdmx", deviceId?: string, options?: DMX.BBDMXDriverOptions): DMX.Universe;
-    addUniverse(name: string, driver: "sacn", deviceId?: undefined, options?: DMX.SACNDriverOptions): DMX.Universe;
-    addUniverse(name: string, driver: string, deviceId: unknown, options?: object): DMX.Universe;
+    addUniverse(
+        name: string,
+        driver: "artnet",
+        deviceId?: string,
+        options?: DMX.ArtnetDriverOptions,
+    ): DMX.Universe;
+    addUniverse(
+        name: string,
+        driver: "bbdmx",
+        deviceId?: string,
+        options?: DMX.BBDMXDriverOptions,
+    ): DMX.Universe;
+    addUniverse(
+        name: string,
+        driver: "sacn",
+        deviceId?: undefined,
+        options?: DMX.SACNDriverOptions,
+    ): DMX.Universe;
+    addUniverse(
+        name: string,
+        driver: string,
+        deviceId: unknown,
+        options?: object,
+    ): DMX.Universe;
     /**
      * Update one or multiple channels of a universe. Also emits an `update` event with the same information.
      *
@@ -79,55 +111,125 @@ declare class DMX<TDevices extends { [key in string]?: DMX.Device } = DMX.Device
      * @param channels Keys are channel numbers, values the values to set that channel to.
      * @param extraData This data will be passed unmodified to the `update` Event.
      */
-    update(universe: string, channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData): void;
+    update(
+        universe: string,
+        channels: DMX.ChannelMap,
+        extraData?: DMX.UpdateEventExtraData,
+    ): void;
     updateAll(universe: string, value: number): void;
     universeToObject(universe: string): { [key: number]: number };
 
     addListener(
         eventName: "update",
-        listener: (universe: string, channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData) => void,
+        listener: (
+            universe: string,
+            channels: DMX.ChannelMap,
+            extraData?: DMX.UpdateEventExtraData,
+        ) => void,
     ): this;
-    addListener(eventName: "updateAll", listener: (universe: string, value: number) => void): this;
-    addListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+    addListener(
+        eventName: "updateAll",
+        listener: (universe: string, value: number) => void,
+    ): this;
+    addListener(
+        eventName: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
     on(
         eventName: "update",
-        listener: (universe: string, channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData) => void,
+        listener: (
+            universe: string,
+            channels: DMX.ChannelMap,
+            extraData?: DMX.UpdateEventExtraData,
+        ) => void,
     ): this;
-    on(eventName: "updateAll", listener: (universe: string, value: number) => void): this;
+    on(
+        eventName: "updateAll",
+        listener: (universe: string, value: number) => void,
+    ): this;
     on(eventName: string | symbol, listener: (...args: any[]) => void): this;
     once(
         eventName: "update",
-        listener: (universe: string, channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData) => void,
+        listener: (
+            universe: string,
+            channels: DMX.ChannelMap,
+            extraData?: DMX.UpdateEventExtraData,
+        ) => void,
     ): this;
-    once(eventName: "updateAll", listener: (universe: string, value: number) => void): this;
+    once(
+        eventName: "updateAll",
+        listener: (universe: string, value: number) => void,
+    ): this;
     once(eventName: string | symbol, listener: (...args: any[]) => void): this;
     removeListener(
         eventName: "update",
-        listener: (universe: string, channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData) => void,
+        listener: (
+            universe: string,
+            channels: DMX.ChannelMap,
+            extraData?: DMX.UpdateEventExtraData,
+        ) => void,
     ): this;
-    removeListener(eventName: "updateAll", listener: (universe: string, value: number) => void): this;
-    removeListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+    removeListener(
+        eventName: "updateAll",
+        listener: (universe: string, value: number) => void,
+    ): this;
+    removeListener(
+        eventName: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
     off(
         eventName: "update",
-        listener: (universe: string, channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData) => void,
+        listener: (
+            universe: string,
+            channels: DMX.ChannelMap,
+            extraData?: DMX.UpdateEventExtraData,
+        ) => void,
     ): this;
-    off(eventName: "updateAll", listener: (universe: string, value: number) => void): this;
+    off(
+        eventName: "updateAll",
+        listener: (universe: string, value: number) => void,
+    ): this;
     off(eventName: string | symbol, listener: (...args: any[]) => void): this;
-    emit(eventName: "update", universe: string, channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData): this;
+    emit(
+        eventName: "update",
+        universe: string,
+        channels: DMX.ChannelMap,
+        extraData?: DMX.UpdateEventExtraData,
+    ): this;
     emit(eventName: "updateAll", universe: string, value: number): this;
     emit(eventName: string | symbol, ...args: any[]): boolean;
     prependListener(
         eventName: "update",
-        listener: (universe: string, channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData) => void,
+        listener: (
+            universe: string,
+            channels: DMX.ChannelMap,
+            extraData?: DMX.UpdateEventExtraData,
+        ) => void,
     ): this;
-    prependListener(eventName: "updateAll", listener: (universe: string, value: number) => void): this;
-    prependListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+    prependListener(
+        eventName: "updateAll",
+        listener: (universe: string, value: number) => void,
+    ): this;
+    prependListener(
+        eventName: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
     prependOnceListener(
         eventName: "update",
-        listener: (universe: string, channels: DMX.ChannelMap, extraData?: DMX.UpdateEventExtraData) => void,
+        listener: (
+            universe: string,
+            channels: DMX.ChannelMap,
+            extraData?: DMX.UpdateEventExtraData,
+        ) => void,
     ): this;
-    prependOnceListener(eventName: "updateAll", listener: (universe: string, value: number) => void): this;
-    prependOnceListener(eventName: string | symbol, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        eventName: "updateAll",
+        listener: (universe: string, value: number) => void,
+    ): this;
+    prependOnceListener(
+        eventName: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 }
 
 declare namespace DMX {
@@ -141,7 +243,7 @@ declare namespace DMX {
     }
 
     interface UniverseStatic {
-        new(deviceId: any, options: {}): Universe;
+        new (deviceId: any, options: {}): Universe;
     }
 
     interface Universe extends EventEmitter {
@@ -187,20 +289,18 @@ declare namespace DMX {
 
     interface Device {
         channels: readonly string[];
-        ranges?:
-            & {
-                ctrl?: OptionRange | undefined;
-                dimmer?: SliderRange | undefined;
-                "static-color"?: OptionRange | undefined;
-                "programme-selection"?: OptionRange | undefined;
-                "colour-macros-programme-01"?: OptionRange | undefined;
-                strobe?: OptionRange | undefined;
-                "color-pretsets"?: OptionRange | undefined;
-                temperature?: OptionRange | undefined;
-            }
-            & {
-                [key in string]?: Range | undefined;
-            };
+        ranges?: {
+            ctrl?: OptionRange | undefined;
+            dimmer?: SliderRange | undefined;
+            "static-color"?: OptionRange | undefined;
+            "programme-selection"?: OptionRange | undefined;
+            "colour-macros-programme-01"?: OptionRange | undefined;
+            strobe?: OptionRange | undefined;
+            "color-pretsets"?: OptionRange | undefined;
+            temperature?: OptionRange | undefined;
+        } & {
+            [key in string]?: Range | undefined;
+        };
         channelgroups?: readonly string[];
         [name: string]: unknown;
     }
@@ -222,7 +322,7 @@ declare namespace DMX {
         /**
          * Create a new DMX Animation instance. This can be chained similar to jQuery.
          */
-        new(options?: AnimationOptions): Animation;
+        new (options?: AnimationOptions): Animation;
     }
 
     interface Animation {
@@ -232,7 +332,11 @@ declare namespace DMX {
          * @param to keys are channel numbers, values the values to set that channel to
          * @param duration duration in ms
          */
-        add(to: ChannelMap, duration: number, options?: AnimationStepOptions): this;
+        add(
+            to: ChannelMap,
+            duration: number,
+            options?: AnimationStepOptions,
+        ): this;
         /**
          * Delay the next animation step for duration.
          *

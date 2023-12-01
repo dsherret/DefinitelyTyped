@@ -4,7 +4,9 @@ import { Request } from "express";
 
 // just some test model
 
-declare const User: { findOrCreate(twitchId: any, callback: (err: any, user: any) => void): void };
+declare const User: {
+    findOrCreate(twitchId: any, callback: (err: any, user: any) => void): void;
+};
 
 passport.use(
     new twitch.Strategy(
@@ -29,7 +31,13 @@ passport.use(
             callbackURL: "callbackURL",
             passReqToCallback: true,
         },
-        (req: Request, accessToken: string, refreshToken: string, profile, cb) => {
+        (
+            req: Request,
+            accessToken: string,
+            refreshToken: string,
+            profile,
+            cb,
+        ) => {
             profile; // $ExpectType Profile
             cb; // $ExpectType VerifyCallback
             User.findOrCreate({ twitchId: profile.id }, cb);

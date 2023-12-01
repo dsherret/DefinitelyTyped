@@ -14,7 +14,11 @@ const handler1: Handler = () => {
     };
 };
 
-const handler2: Handler = (event: Event, context: Context, callback: Callback) => {
+const handler2: Handler = (
+    event: Event,
+    context: Context,
+    callback: Callback,
+) => {
     const response = {
         statusCode: 201,
         body: {
@@ -34,7 +38,11 @@ const handler2: Handler = (event: Event, context: Context, callback: Callback) =
     }
 };
 
-const handler3: Handler = async (event: Event, context: Context, callback: Callback) => {
+const handler3: Handler = async (
+    event: Event,
+    context: Context,
+    callback: Callback,
+) => {
     const response = {
         statusCode: 201,
         body: {
@@ -45,7 +53,7 @@ const handler3: Handler = async (event: Event, context: Context, callback: Callb
         },
     };
 
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
         // do something
         resolve(response);
     });

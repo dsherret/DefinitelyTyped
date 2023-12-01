@@ -1,11 +1,11 @@
 import Confidence = require("confidence");
 
 let criteria = {
-    "env": "production",
-    "platform": "ios",
-    "xfactor": "yes",
-    "random": {
-        "a": 15,
+    env: "production",
+    platform: "ios",
+    xfactor: "yes",
+    random: {
+        a: 15,
     },
 };
 
@@ -13,38 +13,38 @@ let criteria = {
  * The configurations in Confidence style
  */
 let config = {
-    "key1": "abc",
-    "key2": {
-        "$filter": "env",
-        "production": {
-            "deeper": {
-                "$value": "value",
+    key1: "abc",
+    key2: {
+        $filter: "env",
+        production: {
+            deeper: {
+                $value: "value",
             },
         },
-        "$default": {
-            "$filter": "platform",
-            "android": 0,
-            "ios": 1,
-            "$default": 2,
+        $default: {
+            $filter: "platform",
+            android: 0,
+            ios: 1,
+            $default: 2,
         },
     },
-    "key3": {
-        "sub1": 123,
-        "sub2": {
-            "$filter": "xfactor",
-            "yes": 6,
+    key3: {
+        sub1: 123,
+        sub2: {
+            $filter: "xfactor",
+            yes: 6,
         },
     },
-    "ab": {
-        "$filter": "random.a",
-        "$range": [
-            { "limit": 10, "value": 4 },
-            { "limit": 20, "value": 5 },
+    ab: {
+        $filter: "random.a",
+        $range: [
+            { limit: 10, value: 4 },
+            { limit: 20, value: 5 },
         ],
-        "$default": 6,
+        $default: 6,
     },
-    "$meta": {
-        "description": "example file",
+    $meta: {
+        description: "example file",
     },
 };
 

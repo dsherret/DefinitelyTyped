@@ -3491,7 +3491,11 @@ declare namespace Office {
     class Assistant {
         private "Office.Assistant_typekey": Assistant;
         private constructor();
-        ActivateWizard(WizardID: number, act: MsoWizardActType, Animation?: MsoAnimationType): void;
+        ActivateWizard(
+            WizardID: number,
+            act: MsoWizardActType,
+            Animation?: MsoAnimationType,
+        ): void;
         Animation: MsoAnimationType;
         readonly Application: any;
         AssistWithAlerts: boolean;
@@ -3508,7 +3512,11 @@ declare namespace Office {
             alq: MsoAlertCancelType,
             varfSysAlert: boolean,
         ): number;
-        EndWizard(WizardID: number, varfSuccess: boolean, Animation?: MsoAnimationType): void;
+        EndWizard(
+            WizardID: number,
+            varfSuccess: boolean,
+            Animation?: MsoAnimationType,
+        ): void;
         FeatureTips: boolean;
         FileName: string;
         GuessHelp: boolean;
@@ -3562,7 +3570,12 @@ declare namespace Office {
         readonly Name: string;
         readonly Parent: any;
         Private: number;
-        SetAvoidRectangle(Left: number, Top: number, Right: number, Bottom: number): void;
+        SetAvoidRectangle(
+            Left: number,
+            Top: number,
+            Right: number,
+            Bottom: number,
+        ): void;
         Show(): MsoBalloonButtonType;
         Text: string;
     }
@@ -3652,11 +3665,34 @@ declare namespace Office {
     }
 
     interface CanvasShapes {
-        AddCallout(Type: MsoCalloutType, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddConnector(Type: MsoConnectorType, BeginX: number, BeginY: number, EndX: number, EndY: number): Shape;
+        AddCallout(
+            Type: MsoCalloutType,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddConnector(
+            Type: MsoConnectorType,
+            BeginX: number,
+            BeginY: number,
+            EndX: number,
+            EndY: number,
+        ): Shape;
         AddCurve(SafeArrayOfPoints: SafeArray<number>): Shape;
-        AddLabel(Orientation: MsoTextOrientation, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddLine(BeginX: number, BeginY: number, EndX: number, EndY: number): Shape;
+        AddLabel(
+            Orientation: MsoTextOrientation,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddLine(
+            BeginX: number,
+            BeginY: number,
+            EndX: number,
+            EndY: number,
+        ): Shape;
 
         /**
          * @param Width [Width=-1]
@@ -3672,8 +3708,20 @@ declare namespace Office {
             Height?: number,
         ): Shape;
         AddPolyline(SafeArrayOfPoints: SafeArray<number>): Shape;
-        AddShape(Type: MsoAutoShapeType, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddTextbox(Orientation: MsoTextOrientation, Left: number, Top: number, Width: number, Height: number): Shape;
+        AddShape(
+            Type: MsoAutoShapeType,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddTextbox(
+            Orientation: MsoTextOrientation,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
         AddTextEffect(
             PresetTextEffect: MsoPresetTextEffect,
             Text: string,
@@ -3686,7 +3734,11 @@ declare namespace Office {
         ): Shape;
         readonly Application: any;
         readonly Background: Shape;
-        BuildFreeform(EditingType: MsoEditingType, X1: number, Y1: number): FreeformBuilder;
+        BuildFreeform(
+            EditingType: MsoEditingType,
+            X1: number,
+            Y1: number,
+        ): FreeformBuilder;
         readonly Count: number;
         readonly Creator: number;
         Item(Index: number | string): Shape;
@@ -3723,7 +3775,11 @@ declare namespace Office {
         readonly Parent: any;
         readonly Pattern: number;
         Patterned(Pattern: number): void;
-        PresetGradient(Style: number, Variant: number, PresetGradientType: number): void;
+        PresetGradient(
+            Style: number,
+            Variant: number,
+            PresetGradientType: number,
+        ): void;
         readonly PresetGradientType: number;
         readonly PresetTexture: number;
         PresetTextured(PresetTexture: number): void;
@@ -3732,7 +3788,12 @@ declare namespace Office {
         readonly TextureType: number;
         TwoColorGradient(Style: number, Variant: number): void;
         readonly Type: number;
-        UserPicture(PictureFile: string, PictureFormat: any, PictureStackUnit: any, PicturePlacement: any): void;
+        UserPicture(
+            PictureFile: string,
+            PictureFormat: any,
+            PictureStackUnit: any,
+            PicturePlacement: any,
+        ): void;
         UserTextured(TextureFile: string): void;
         Visible: number;
     }
@@ -3810,7 +3871,13 @@ declare namespace Office {
         accHelpTopic(pszHelpFile: string, varChild?: any): number;
         accHitTest(xLeft: number, yTop: number): any;
         accKeyboardShortcut(varChild?: any): string;
-        accLocation(pxLeft: number, pyTop: number, pcxWidth: number, pcyHeight: number, varChild?: any): void;
+        accLocation(
+            pxLeft: number,
+            pyTop: number,
+            pcxWidth: number,
+            pcyHeight: number,
+            varChild?: any,
+        ): void;
         accName(varChild?: any): string;
         accNavigate(navDir: number, varStart?: any): any;
         readonly accParent: any;
@@ -3827,7 +3894,13 @@ declare namespace Office {
         readonly Creator: number;
         Delete(): void;
         Enabled: boolean;
-        FindControl(Type?: any, Id?: any, Tag?: any, Visible?: boolean, Recursive?: boolean): CommandBarControl;
+        FindControl(
+            Type?: any,
+            Id?: any,
+            Tag?: any,
+            Visible?: boolean,
+            Recursive?: boolean,
+        ): CommandBarControl;
         Height: number;
         readonly Id: number;
         readonly Index: number;
@@ -3861,7 +3934,13 @@ declare namespace Office {
         accHelpTopic(pszHelpFile: string, varChild?: any): number;
         accHitTest(xLeft: number, yTop: number): any;
         accKeyboardShortcut(varChild?: any): string;
-        accLocation(pxLeft: number, pyTop: number, pcxWidth: number, pcyHeight: number, varChild?: any): void;
+        accLocation(
+            pxLeft: number,
+            pyTop: number,
+            pcxWidth: number,
+            pcyHeight: number,
+            varChild?: any,
+        ): void;
         accName(varChild?: any): string;
         accNavigate(navDir: number, varStart?: any): any;
         readonly accParent: any;
@@ -3936,7 +4015,13 @@ declare namespace Office {
         accHelpTopic(pszHelpFile: string, varChild?: any): number;
         accHitTest(xLeft: number, yTop: number): any;
         accKeyboardShortcut(varChild?: any): string;
-        accLocation(pxLeft: number, pyTop: number, pcxWidth: number, pcyHeight: number, varChild?: any): void;
+        accLocation(
+            pxLeft: number,
+            pyTop: number,
+            pcxWidth: number,
+            pcyHeight: number,
+            varChild?: any,
+        ): void;
         accName(varChild?: any): string;
         accNavigate(navDir: number, varStart?: any): any;
         readonly accParent: any;
@@ -4012,7 +4097,13 @@ declare namespace Office {
         accHelpTopic(pszHelpFile: string, varChild?: any): number;
         accHitTest(xLeft: number, yTop: number): any;
         accKeyboardShortcut(varChild?: any): string;
-        accLocation(pxLeft: number, pyTop: number, pcxWidth: number, pcyHeight: number, varChild?: any): void;
+        accLocation(
+            pxLeft: number,
+            pyTop: number,
+            pcxWidth: number,
+            pcyHeight: number,
+            varChild?: any,
+        ): void;
         accName(varChild?: any): string;
         accNavigate(navDir: number, varStart?: any): any;
         readonly accParent: any;
@@ -4088,8 +4179,19 @@ declare namespace Office {
         readonly ActionControl: CommandBarControl;
         readonly ActiveMenuBar: CommandBar;
         AdaptiveMenus: boolean;
-        Add(Name?: string, Position?: MsoBarPosition, MenuBar?: boolean, Temporary?: boolean): CommandBar;
-        AddEx(TbidOrName?: any, Position?: any, MenuBar?: any, Temporary?: any, TbtrProtection?: any): CommandBar;
+        Add(
+            Name?: string,
+            Position?: MsoBarPosition,
+            MenuBar?: boolean,
+            Temporary?: boolean,
+        ): CommandBar;
+        AddEx(
+            TbidOrName?: any,
+            Position?: any,
+            MenuBar?: any,
+            Temporary?: any,
+            TbtrProtection?: any,
+        ): CommandBar;
         readonly Application: any;
         CommitRenderingTransaction(hwnd: number): void;
         readonly Count: number;
@@ -4100,10 +4202,24 @@ declare namespace Office {
         DisplayKeysInTooltips: boolean;
         DisplayTooltips: boolean;
         ExecuteMso(idMso: string): void;
-        FindControl(Type?: MsoControlType, Id?: any, Tag?: any, Visible?: boolean): CommandBarControl | null;
-        FindControls(Type?: MsoControlType, Id?: any, Tag?: any, Visible?: boolean): CommandBarControls | null;
+        FindControl(
+            Type?: MsoControlType,
+            Id?: any,
+            Tag?: any,
+            Visible?: boolean,
+        ): CommandBarControl | null;
+        FindControls(
+            Type?: MsoControlType,
+            Id?: any,
+            Tag?: any,
+            Visible?: boolean,
+        ): CommandBarControls | null;
         GetEnabledMso(idMso: string): boolean;
-        GetImageMso(idMso: string, Width: number, Height: number): stdole.IPictureDisp;
+        GetImageMso(
+            idMso: string,
+            Width: number,
+            Height: number,
+        ): stdole.IPictureDisp;
         GetLabelMso(idMso: string): string;
         GetPressedMso(idMso: string): boolean;
         GetScreentipMso(idMso: string): string;
@@ -4311,7 +4427,10 @@ declare namespace Office {
 
     interface CustomXMLParts {
         /** @param XML [XML=''] */
-        Add(XML?: string, SchemaCollection?: CustomXMLSchemaCollection): CustomXMLPart;
+        Add(
+            XML?: string,
+            SchemaCollection?: CustomXMLSchemaCollection,
+        ): CustomXMLPart;
         readonly Application: any;
         readonly Count: number;
         readonly Creator: number;
@@ -4363,7 +4482,12 @@ declare namespace Office {
          * @param FileName [FileName='']
          * @param InstallForAllUsers [InstallForAllUsers=false]
          */
-        Add(NamespaceURI?: string, Alias?: string, FileName?: string, InstallForAllUsers?: boolean): CustomXMLSchema;
+        Add(
+            NamespaceURI?: string,
+            Alias?: string,
+            FileName?: string,
+            InstallForAllUsers?: boolean,
+        ): CustomXMLSchema;
         AddCollection(SchemaCollection: CustomXMLSchemaCollection): void;
         readonly Application: any;
         readonly Count: number;
@@ -4394,7 +4518,12 @@ declare namespace Office {
          * @param ErrorText [ErrorText='']
          * @param ClearedOnUpdate [ClearedOnUpdate=true]
          */
-        Add(Node: CustomXMLNode, ErrorName: string, ErrorText?: string, ClearedOnUpdate?: boolean): void;
+        Add(
+            Node: CustomXMLNode,
+            ErrorName: string,
+            ErrorText?: string,
+            ClearedOnUpdate?: boolean,
+        ): void;
         readonly Application: any;
         readonly Count: number;
         readonly Creator: number;
@@ -4411,12 +4540,19 @@ declare namespace Office {
          * @param Pos [Pos=2]
          * @param NodeType [NodeType=1]
          */
-        AddNode(Pos?: MsoRelativeNodePosition, NodeType?: MsoDiagramNodeType): DiagramNode;
+        AddNode(
+            Pos?: MsoRelativeNodePosition,
+            NodeType?: MsoDiagramNodeType,
+        ): DiagramNode;
         readonly Application: any;
         readonly Children: DiagramNodeChildren;
 
         /** @param Pos [Pos=2] */
-        CloneNode(CopyChildren: boolean, TargetNode: DiagramNode, Pos?: MsoRelativeNodePosition): DiagramNode;
+        CloneNode(
+            CopyChildren: boolean,
+            TargetNode: DiagramNode,
+            Pos?: MsoRelativeNodePosition,
+        ): DiagramNode;
         readonly Creator: number;
         Delete(): void;
         readonly Diagram: IMsoDiagram;
@@ -4586,7 +4722,11 @@ declare namespace Office {
     }
 
     interface FileDialogFilters {
-        Add(Description: string, Extensions: string, Position?: number): FileDialogFilter;
+        Add(
+            Description: string,
+            Extensions: string,
+            Position?: number,
+        ): FileDialogFilter;
         readonly Application: any;
         Clear(): void;
         readonly Count: number;
@@ -4617,7 +4757,11 @@ declare namespace Office {
          * @param SortOrder [SortOrder=1]
          * @param AlwaysAccurate [AlwaysAccurate=true]
          */
-        Execute(SortBy?: MsoSortBy, SortOrder?: MsoSortOrder, AlwaysAccurate?: boolean): number;
+        Execute(
+            SortBy?: MsoSortBy,
+            SortOrder?: MsoSortOrder,
+            AlwaysAccurate?: boolean,
+        ): number;
         FileName: string;
         FileType: MsoFileType;
         readonly FileTypes: FileTypes;
@@ -4659,12 +4803,20 @@ declare namespace Office {
         readonly GradientStops: GradientStops;
         readonly GradientStyle: MsoGradientStyle;
         readonly GradientVariant: number;
-        OneColorGradient(Style: MsoGradientStyle, Variant: number, Degree: number): void;
+        OneColorGradient(
+            Style: MsoGradientStyle,
+            Variant: number,
+            Degree: number,
+        ): void;
         readonly Parent: any;
         readonly Pattern: MsoPatternType;
         Patterned(Pattern: MsoPatternType): void;
         readonly PictureEffects: PictureEffects;
-        PresetGradient(Style: MsoGradientStyle, Variant: number, PresetGradientType: MsoPresetGradientType): void;
+        PresetGradient(
+            Style: MsoGradientStyle,
+            Variant: number,
+            PresetGradientType: MsoPresetGradientType,
+        ): void;
         readonly PresetGradientType: MsoPresetGradientType;
         readonly PresetTexture: MsoPresetTexture;
         PresetTextured(PresetTexture: MsoPresetTexture): void;
@@ -4793,14 +4945,25 @@ declare namespace Office {
          * @param Transparency [Transparency=0]
          * @param Index [Index=-1]
          */
-        Insert(RGB: number, Position: number, Transparency?: number, Index?: number): void;
+        Insert(
+            RGB: number,
+            Position: number,
+            Transparency?: number,
+            Index?: number,
+        ): void;
 
         /**
          * @param Transparency [Transparency=0]
          * @param Index [Index=-1]
          * @param Brightness [Brightness=0]
          */
-        Insert2(RGB: number, Position: number, Transparency?: number, Index?: number, Brightness?: number): void;
+        Insert2(
+            RGB: number,
+            Position: number,
+            Transparency?: number,
+            Index?: number,
+            Brightness?: number,
+        ): void;
         Item(Index: number): GradientStop;
         (Index: number): GradientStop;
     }
@@ -4956,7 +5119,12 @@ declare namespace Office {
         private constructor();
 
         /** @param Type [Type=2] */
-        _ApplyDataLabels(Type?: XlDataLabelsType, IMsoLegendKey?: any, AutoText?: any, HasLeaderLines?: any): void;
+        _ApplyDataLabels(
+            Type?: XlDataLabelsType,
+            IMsoLegendKey?: any,
+            AutoText?: any,
+            HasLeaderLines?: any,
+        ): void;
         readonly Application: any;
         ApplyChartTemplate(bstrFileName: string): void;
         ApplyCustomType(ChartType: XlChartType, TypeName?: any): void;
@@ -5028,12 +5196,22 @@ declare namespace Office {
         DisplayBlanksAs: XlDisplayBlanksAs;
         DoughnutGroups(Index?: any): any;
         Elevation: number;
-        Export(bstr: string, varFilterName?: any, varInteractive?: any): boolean;
+        Export(
+            bstr: string,
+            varFilterName?: any,
+            varInteractive?: any,
+        ): boolean;
         readonly Floor: IMsoFloor;
         readonly Format: IMsoChartFormat;
         FullSeriesCollection(Index?: any): any;
         GapDepth: number;
-        GetChartElement(x: number, y: number, ElementID: number, Arg1: number, Arg2: number): void;
+        GetChartElement(
+            x: number,
+            y: number,
+            ElementID: number,
+            Arg1: number,
+            Arg2: number,
+        ): void;
         HasAxis(axisType?: any, AxisGroup?: any): any;
         HasDataTable: boolean;
         readonly HasHiddenContent: boolean;
@@ -5517,10 +5695,20 @@ declare namespace Office {
     class NewFile {
         private "Office.NewFile_typekey": NewFile;
         private constructor();
-        Add(FileName: string, Section?: MsoFileNewSection, DisplayName?: string, Action?: MsoFileNewAction): boolean;
+        Add(
+            FileName: string,
+            Section?: MsoFileNewSection,
+            DisplayName?: string,
+            Action?: MsoFileNewAction,
+        ): boolean;
         readonly Application: any;
         readonly Creator: number;
-        Remove(FileName: string, Section?: MsoFileNewSection, DisplayName?: string, Action?: MsoFileNewAction): boolean;
+        Remove(
+            FileName: string,
+            Section?: MsoFileNewSection,
+            DisplayName?: string,
+            Action?: MsoFileNewAction,
+        ): boolean;
     }
 
     class OfficeTheme {
@@ -5561,7 +5749,11 @@ declare namespace Office {
     }
 
     interface Permission {
-        Add(UserId: string, Permission?: MsoPermission, ExpirationDate?: VarDate): UserPermission;
+        Add(
+            UserId: string,
+            Permission?: MsoPermission,
+            ExpirationDate?: VarDate,
+        ): UserPermission;
         readonly Application: any;
         ApplyPolicy(FileName: string): void;
         readonly Count: number;
@@ -5594,7 +5786,10 @@ declare namespace Office {
          * @param IsMultiSelect [IsMultiSelect=true]
          * @param ExistingResults [ExistingResults=0]
          */
-        Show(IsMultiSelect?: boolean, ExistingResults?: PickerResults): PickerResults;
+        Show(
+            IsMultiSelect?: boolean,
+            ExistingResults?: PickerResults,
+        ): PickerResults;
         Title: string;
     }
 
@@ -5689,7 +5884,10 @@ declare namespace Office {
         Delete(Index?: number): void;
 
         /** @param Position [Position=-1] */
-        Insert(EffectType: MsoPictureEffectType, Position?: number): PictureEffect;
+        Insert(
+            EffectType: MsoPictureEffectType,
+            Position?: number,
+        ): PictureEffect;
         Item(Index: number): PictureEffect;
         (Index: number): PictureEffect;
     }
@@ -5740,7 +5938,13 @@ declare namespace Office {
 
     interface PropertyTests {
         /** @param Connector [Connector=1] */
-        Add(Name: string, Condition: MsoCondition, Value: any, SecondValue: any, Connector?: MsoConnector): void;
+        Add(
+            Name: string,
+            Condition: MsoCondition,
+            Value: any,
+            SecondValue: any,
+            Connector?: MsoConnector,
+        ): void;
         readonly Application: any;
         readonly Count: number;
         readonly Creator: number;
@@ -5969,10 +6173,18 @@ declare namespace Office {
         readonly RTF: string;
 
         /** @param fScale [fScale=0] */
-        ScaleHeight(Factor: number, RelativeToOriginalSize: MsoTriState, fScale?: MsoScaleFrom): void;
+        ScaleHeight(
+            Factor: number,
+            RelativeToOriginalSize: MsoTriState,
+            fScale?: MsoScaleFrom,
+        ): void;
 
         /** @param fScale [fScale=0] */
-        ScaleWidth(Factor: number, RelativeToOriginalSize: MsoTriState, fScale?: MsoScaleFrom): void;
+        ScaleWidth(
+            Factor: number,
+            RelativeToOriginalSize: MsoTriState,
+            fScale?: MsoScaleFrom,
+        ): void;
         readonly Script: Script;
         Select(Replace?: any): void;
         SetShapesDefaultProperties(): void;
@@ -6065,7 +6277,10 @@ declare namespace Office {
         Delete(): void;
         readonly Diagram: IMsoDiagram;
         readonly DiagramNode: DiagramNode;
-        Distribute(DistributeCmd: MsoDistributeCmd, RelativeTo: MsoTriState): void;
+        Distribute(
+            DistributeCmd: MsoDistributeCmd,
+            RelativeTo: MsoTriState,
+        ): void;
         Duplicate(): ShapeRange;
         readonly Fill: FillFormat;
         Flip(FlipCmd: MsoFlipCmd): void;
@@ -6101,10 +6316,18 @@ declare namespace Office {
         readonly RTF: string;
 
         /** @param fScale [fScale=0] */
-        ScaleHeight(Factor: number, RelativeToOriginalSize: MsoTriState, fScale?: MsoScaleFrom): void;
+        ScaleHeight(
+            Factor: number,
+            RelativeToOriginalSize: MsoTriState,
+            fScale?: MsoScaleFrom,
+        ): void;
 
         /** @param fScale [fScale=0] */
-        ScaleWidth(Factor: number, RelativeToOriginalSize: MsoTriState, fScale?: MsoScaleFrom): void;
+        ScaleWidth(
+            Factor: number,
+            RelativeToOriginalSize: MsoTriState,
+            fScale?: MsoScaleFrom,
+        ): void;
         readonly Script: Script;
         Select(Replace?: any): void;
         SetShapesDefaultProperties(): void;
@@ -6129,8 +6352,19 @@ declare namespace Office {
     }
 
     interface Shapes {
-        AddCallout(Type: MsoCalloutType, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddCanvas(Left: number, Top: number, Width: number, Height: number): Shape;
+        AddCallout(
+            Type: MsoCalloutType,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddCanvas(
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
 
         /**
          * @param Type [Type=-1]
@@ -6139,7 +6373,13 @@ declare namespace Office {
          * @param Width [Width=-1]
          * @param Height [Height=-1]
          */
-        AddChart(Type?: XlChartType, Left?: number, Top?: number, Width?: number, Height?: number): Shape;
+        AddChart(
+            Type?: XlChartType,
+            Left?: number,
+            Top?: number,
+            Width?: number,
+            Height?: number,
+        ): Shape;
 
         /**
          * @param Style [Style=-1]
@@ -6159,11 +6399,34 @@ declare namespace Office {
             Height?: number,
             NewLayout?: boolean,
         ): Shape;
-        AddConnector(Type: MsoConnectorType, BeginX: number, BeginY: number, EndX: number, EndY: number): Shape;
+        AddConnector(
+            Type: MsoConnectorType,
+            BeginX: number,
+            BeginY: number,
+            EndX: number,
+            EndY: number,
+        ): Shape;
         AddCurve(SafeArrayOfPoints: any): Shape;
-        AddDiagram(Type: MsoDiagramType, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddLabel(Orientation: MsoTextOrientation, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddLine(BeginX: number, BeginY: number, EndX: number, EndY: number): Shape;
+        AddDiagram(
+            Type: MsoDiagramType,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddLabel(
+            Orientation: MsoTextOrientation,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddLine(
+            BeginX: number,
+            BeginY: number,
+            EndX: number,
+            EndY: number,
+        ): Shape;
 
         /**
          * @param Width [Width=-1]
@@ -6179,7 +6442,13 @@ declare namespace Office {
             Height?: number,
         ): Shape;
         AddPolyline(SafeArrayOfPoints: any): Shape;
-        AddShape(Type: MsoAutoShapeType, Left: number, Top: number, Width: number, Height: number): Shape;
+        AddShape(
+            Type: MsoAutoShapeType,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
 
         /**
          * @param Left [Left=-1]
@@ -6187,9 +6456,28 @@ declare namespace Office {
          * @param Width [Width=-1]
          * @param Height [Height=-1]
          */
-        AddSmartArt(Layout: SmartArtLayout, Left?: number, Top?: number, Width?: number, Height?: number): Shape;
-        AddTable(NumRows: number, NumColumns: number, Left: number, Top: number, Width: number, Height: number): Shape;
-        AddTextbox(Orientation: MsoTextOrientation, Left: number, Top: number, Width: number, Height: number): Shape;
+        AddSmartArt(
+            Layout: SmartArtLayout,
+            Left?: number,
+            Top?: number,
+            Width?: number,
+            Height?: number,
+        ): Shape;
+        AddTable(
+            NumRows: number,
+            NumColumns: number,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
+        AddTextbox(
+            Orientation: MsoTextOrientation,
+            Left: number,
+            Top: number,
+            Width: number,
+            Height: number,
+        ): Shape;
         AddTextEffect(
             PresetTextEffect: MsoPresetTextEffect,
             Text: string,
@@ -6202,7 +6490,11 @@ declare namespace Office {
         ): Shape;
         readonly Application: any;
         readonly Background: Shape;
-        BuildFreeform(EditingType: MsoEditingType, X1: number, Y1: number): FreeformBuilder;
+        BuildFreeform(
+            EditingType: MsoEditingType,
+            X1: number,
+            Y1: number,
+        ): FreeformBuilder;
         readonly Count: number;
         readonly Creator: number;
         readonly Default: Shape;
@@ -6277,7 +6569,10 @@ declare namespace Office {
     }
 
     interface SharedWorkspaceFolders {
-        Add(FolderName: string, ParentFolder?: SharedWorkspaceFolder): SharedWorkspaceFolder;
+        Add(
+            FolderName: string,
+            ParentFolder?: SharedWorkspaceFolder,
+        ): SharedWorkspaceFolder;
         readonly Application: any;
         readonly Count: number;
         readonly Creator: number;
@@ -6305,7 +6600,11 @@ declare namespace Office {
     }
 
     interface SharedWorkspaceLinks {
-        Add(URL: string, Description?: string, Notes?: string): SharedWorkspaceLink;
+        Add(
+            URL: string,
+            Description?: string,
+            Notes?: string,
+        ): SharedWorkspaceLink;
         readonly Application: any;
         readonly Count: number;
         readonly Creator: number;
@@ -6329,7 +6628,12 @@ declare namespace Office {
     }
 
     interface SharedWorkspaceMembers {
-        Add(Email: string, DomainName: string, DisplayName: string, Role?: string): SharedWorkspaceMember;
+        Add(
+            Email: string,
+            DomainName: string,
+            DisplayName: string,
+            Role?: string,
+        ): SharedWorkspaceMember;
         readonly Application: any;
         readonly Count: number;
         readonly Creator: number;
@@ -6396,7 +6700,12 @@ declare namespace Office {
         readonly Parent: any;
         readonly Setup: SignatureSetup;
         ShowDetails(): void;
-        Sign(varSigImg?: any, varDelSuggSigner?: any, varDelSuggSignerLine2?: any, varDelSuggSignerEmail?: any): void;
+        Sign(
+            varSigImg?: any,
+            varDelSuggSigner?: any,
+            varDelSuggSignerLine2?: any,
+            varDelSuggSignerEmail?: any,
+        ): void;
         readonly SignatureLineShape: Shape;
         readonly SignDate: VarDate;
         readonly Signer: string;
@@ -6524,7 +6833,10 @@ declare namespace Office {
          * @param Position [Position=1]
          * @param Type [Type=1]
          */
-        AddNode(Position?: MsoSmartArtNodePosition, Type?: MsoSmartArtNodeType): SmartArtNode;
+        AddNode(
+            Position?: MsoSmartArtNodePosition,
+            Type?: MsoSmartArtNodeType,
+        ): SmartArtNode;
         readonly Application: any;
         readonly Creator: number;
         Delete(): void;
@@ -6609,7 +6921,9 @@ declare namespace Office {
         OpenVersion(SyncVersionType: MsoSyncVersionType): void;
         readonly Parent: any;
         PutUpdate(): void;
-        ResolveConflict(SyncConflictResolution: MsoSyncConflictResolutionType): void;
+        ResolveConflict(
+            SyncConflictResolution: MsoSyncConflictResolutionType,
+        ): void;
         readonly Status: MsoSyncStatusType;
         Unsuspend(): void;
         readonly WorkspaceLastChangedBy: string;
@@ -6735,7 +7049,12 @@ declare namespace Office {
          * @param MatchCase [MatchCase=0]
          * @param WholeWords [WholeWords=0]
          */
-        Find(FindWhat: string, After?: number, MatchCase?: MsoTriState, WholeWords?: MsoTriState): TextRange2;
+        Find(
+            FindWhat: string,
+            After?: number,
+            MatchCase?: MsoTriState,
+            WholeWords?: MsoTriState,
+        ): TextRange2;
         readonly Font: Font2;
 
         /** @param NewText [NewText=''] */
@@ -6748,10 +7067,18 @@ declare namespace Office {
          * @param Formula [Formula='']
          * @param Position [Position=-1]
          */
-        InsertChartField(ChartFieldType: MsoChartFieldType, Formula?: string, Position?: number): TextRange2;
+        InsertChartField(
+            ChartFieldType: MsoChartFieldType,
+            Formula?: string,
+            Position?: number,
+        ): TextRange2;
 
         /** @param Unicode [Unicode=0] */
-        InsertSymbol(FontName: string, CharNumber: number, Unicode?: MsoTriState): TextRange2;
+        InsertSymbol(
+            FontName: string,
+            CharNumber: number,
+            Unicode?: MsoTriState,
+        ): TextRange2;
         Item(Index: number): TextRange2;
         LanguageID: MsoLanguageID;
         readonly Length: number;
@@ -6925,7 +7252,9 @@ declare namespace Office {
         RotationX: number;
         RotationY: number;
         RotationZ: number;
-        SetExtrusionDirection(PresetExtrusionDirection: MsoPresetExtrusionDirection): void;
+        SetExtrusionDirection(
+            PresetExtrusionDirection: MsoPresetExtrusionDirection,
+        ): void;
         SetPresetCamera(PresetCamera: MsoPresetCamera): void;
         SetThreeDFormat(PresetThreeDFormat: MsoPresetThreeDFormat): void;
         Visible: MsoTriState;
@@ -7151,7 +7480,10 @@ interface ActiveXObject {
         argNames: ["Ctrl", "CancelDefault"],
         handler: (
             this: Office.CommandBarButton,
-            parameter: { readonly Ctrl: Office.CommandBarButton; CancelDefault: boolean },
+            parameter: {
+                readonly Ctrl: Office.CommandBarButton;
+                CancelDefault: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -7175,14 +7507,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Office.CommandBarButton,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Office.CommandBarButton,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Office.CommandBarButton, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Office.CommandBarButton,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Office.CommandBarButton,
@@ -7197,13 +7536,19 @@ interface ActiveXObject {
         obj: Office.CommandBarButton,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Office.CommandBarButton, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Office.CommandBarButton,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Office.CommandBarComboBox,
         event: "Change",
         argNames: ["Ctrl"],
-        handler: (this: Office.CommandBarComboBox, parameter: { readonly Ctrl: Office.CommandBarComboBox }) => void,
+        handler: (
+            this: Office.CommandBarComboBox,
+            parameter: { readonly Ctrl: Office.CommandBarComboBox },
+        ) => void,
     ): void;
     on(
         obj: Office.CommandBarComboBox,
@@ -7226,14 +7571,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Office.CommandBarComboBox,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Office.CommandBarComboBox,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Office.CommandBarComboBox, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Office.CommandBarComboBox,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Office.CommandBarComboBox,
@@ -7274,26 +7626,39 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Office.CommandBars,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Office.CommandBars,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Office.CommandBars, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Office.CommandBars,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Office.CommandBars,
         event: "Invoke",
         argNames: Office.EventHelperTypes.CommandBars_Invoke_ArgNames,
-        handler: (this: Office.CommandBars, parameter: Office.EventHelperTypes.CommandBars_Invoke_Parameter) => void,
+        handler: (
+            this: Office.CommandBars,
+            parameter: Office.EventHelperTypes.CommandBars_Invoke_Parameter,
+        ) => void,
     ): void;
     on(
         obj: Office.CommandBars,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Office.CommandBars, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Office.CommandBars,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Office.CustomTaskPane,
@@ -7325,14 +7690,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Office.CustomTaskPane,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Office.CustomTaskPane,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Office.CustomTaskPane, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Office.CustomTaskPane,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Office.CustomTaskPane,
@@ -7347,7 +7719,10 @@ interface ActiveXObject {
         obj: Office.CustomTaskPane,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Office.CustomTaskPane, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Office.CustomTaskPane,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Office.CustomXMLPart,
@@ -7370,14 +7745,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Office.CustomXMLPart,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Office.CustomXMLPart,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Office.CustomXMLPart, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Office.CustomXMLPart,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Office.CustomXMLPart,
@@ -7408,7 +7790,10 @@ interface ActiveXObject {
         argNames: ["NewNode", "InUndoRedo"],
         handler: (
             this: Office.CustomXMLPart,
-            parameter: { readonly NewNode: Office.CustomXMLNode; readonly InUndoRedo: boolean },
+            parameter: {
+                readonly NewNode: Office.CustomXMLNode;
+                readonly InUndoRedo: boolean;
+            },
         ) => void,
     ): void;
     on(
@@ -7428,7 +7813,10 @@ interface ActiveXObject {
         obj: Office.CustomXMLPart,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Office.CustomXMLPart, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Office.CustomXMLPart,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Office.CustomXMLParts,
@@ -7451,14 +7839,21 @@ interface ActiveXObject {
         argNames: ["itinfo", "lcid", "pptinfo"],
         handler: (
             this: Office.CustomXMLParts,
-            parameter: { readonly itinfo: number; readonly lcid: number; pptinfo: undefined },
+            parameter: {
+                readonly itinfo: number;
+                readonly lcid: number;
+                pptinfo: undefined;
+            },
         ) => void,
     ): void;
     on(
         obj: Office.CustomXMLParts,
         event: "GetTypeInfoCount",
         argNames: ["pctinfo"],
-        handler: (this: Office.CustomXMLParts, parameter: { pctinfo: number }) => void,
+        handler: (
+            this: Office.CustomXMLParts,
+            parameter: { pctinfo: number },
+        ) => void,
     ): void;
     on(
         obj: Office.CustomXMLParts,
@@ -7473,25 +7868,37 @@ interface ActiveXObject {
         obj: Office.CustomXMLParts,
         event: "PartAfterAdd",
         argNames: ["NewPart"],
-        handler: (this: Office.CustomXMLParts, parameter: { readonly NewPart: Office.CustomXMLPart }) => void,
+        handler: (
+            this: Office.CustomXMLParts,
+            parameter: { readonly NewPart: Office.CustomXMLPart },
+        ) => void,
     ): void;
     on(
         obj: Office.CustomXMLParts,
         event: "PartAfterLoad",
         argNames: ["Part"],
-        handler: (this: Office.CustomXMLParts, parameter: { readonly Part: Office.CustomXMLPart }) => void,
+        handler: (
+            this: Office.CustomXMLParts,
+            parameter: { readonly Part: Office.CustomXMLPart },
+        ) => void,
     ): void;
     on(
         obj: Office.CustomXMLParts,
         event: "PartBeforeDelete",
         argNames: ["OldPart"],
-        handler: (this: Office.CustomXMLParts, parameter: { readonly OldPart: Office.CustomXMLPart }) => void,
+        handler: (
+            this: Office.CustomXMLParts,
+            parameter: { readonly OldPart: Office.CustomXMLPart },
+        ) => void,
     ): void;
     on(
         obj: Office.CustomXMLParts,
         event: "QueryInterface",
         argNames: ["riid", "ppvObj"],
-        handler: (this: Office.CustomXMLParts, parameter: { readonly riid: stdole.GUID; ppvObj: undefined }) => void,
+        handler: (
+            this: Office.CustomXMLParts,
+            parameter: { readonly riid: stdole.GUID; ppvObj: undefined },
+        ) => void,
     ): void;
     on(
         obj: Office.CommandBarButton,
@@ -7534,5 +7941,10 @@ interface ActiveXObject {
         parameterTypes: [any],
         newValue: string,
     ): void;
-    set(obj: Office.CommandBarComboBox, propertyName: "List", parameterTypes: [number], newValue: string): void;
+    set(
+        obj: Office.CommandBarComboBox,
+        propertyName: "List",
+        parameterTypes: [number],
+        newValue: string,
+    ): void;
 }

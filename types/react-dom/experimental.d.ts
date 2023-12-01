@@ -32,5 +32,4 @@ import ReactDOM = require("./canary");
 
 export {};
 
-declare module "." {
-}
+declare module "." {}

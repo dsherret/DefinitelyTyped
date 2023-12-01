@@ -30,7 +30,10 @@ const rule: TurndownService.Rule = {
     replacement: replacementFunction,
 };
 
-const filter: TurndownService.Filter = (node: HTMLElement, options: TurndownService.Options) => true;
+const filter: TurndownService.Filter = (
+    node: HTMLElement,
+    options: TurndownService.Options,
+) => true;
 
 turndownService.addRule("em", rule);
 turndownService.keep(filter);

@@ -9,7 +9,10 @@ const Person = EmberObject.extend({
     isHappy: false,
 });
 
-const people = A([Person.create({ name: "Yehuda", isHappy: true }), Person.create({ name: "Majd", isHappy: false })]);
+const people = A([
+    Person.create({ name: "Yehuda", isHappy: true }),
+    Person.create({ name: "Majd", isHappy: false }),
+]);
 
 assertType<number>(people.get("length"));
 assertType<Person>(people.get("lastObject"));
@@ -26,8 +29,12 @@ const persons1: Person[] = people.filterBy("isHappy");
 const persons2: MutableArray<Person> = people.filterBy("isHappy");
 const persons3: Person[] = people.rejectBy("isHappy");
 const persons4: MutableArray<Person> = people.rejectBy("isHappy");
-const persons5: Person[] = people.filter(person => person.get("name") === "Yehuda");
-const persons6: MutableArray<Person> = people.filter(person => person.get("name") === "Yehuda");
+const persons5: Person[] = people.filter(
+    (person) => person.get("name") === "Yehuda",
+);
+const persons6: MutableArray<Person> = people.filter(
+    (person) => person.get("name") === "Yehuda",
+);
 
 assertType<typeof people>(people.get("[]"));
 assertType<Person>(people.get("[]").get("firstObject"));

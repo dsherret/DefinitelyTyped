@@ -17,26 +17,42 @@ interface IVerifyOptions {
 }
 
 interface VerifyFunction {
-    (token: string, done: (error: any, user?: any, options?: IVerifyOptions | string) => void): void;
+    (
+        token: string,
+        done: (
+            error: any,
+            user?: any,
+            options?: IVerifyOptions | string,
+        ) => void,
+    ): void;
 }
 
 interface IKoaContextContainer {
     ctx: koa.Context;
 }
-type KoaPassportExpressRequestMock = Partial<express.Request> & IKoaContextContainer;
+type KoaPassportExpressRequestMock = Partial<express.Request> &
+    IKoaContextContainer;
 
 interface VerifyFunctionWithRequest {
     (
         req: express.Request,
         token: string,
-        done: (error: any, user?: any, options?: IVerifyOptions | string) => void,
+        done: (
+            error: any,
+            user?: any,
+            options?: IVerifyOptions | string,
+        ) => void,
     ): void;
 }
 interface VerifyFunctionWithContext {
     (
         req: KoaPassportExpressRequestMock,
         token: string,
-        done: (error: any, user?: any, options?: IVerifyOptions | string) => void,
+        done: (
+            error: any,
+            user?: any,
+            options?: IVerifyOptions | string,
+        ) => void,
     ): void;
 }
 

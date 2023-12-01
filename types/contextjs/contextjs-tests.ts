@@ -9,10 +9,7 @@ context.attach("#test", [
     { divider: true },
     {
         text: "foobar",
-        subMenu: [
-            { text: "sub1" },
-            { text: "sub2" },
-        ],
+        subMenu: [{ text: "sub1" }, { text: "sub2" }],
     },
 ]);
 

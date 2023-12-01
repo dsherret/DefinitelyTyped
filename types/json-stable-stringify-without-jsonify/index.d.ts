@@ -3,7 +3,10 @@
  *
  * @returns Deterministic json result.
  */
-declare function stringify(obj: any, opts?: stringify.Comparator | stringify.Options): string;
+declare function stringify(
+    obj: any,
+    opts?: stringify.Comparator | stringify.Options,
+): string;
 
 declare namespace stringify {
     interface Element {

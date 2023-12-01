@@ -142,7 +142,15 @@ export interface Card {
     /**
      * The brand of the card
      */
-    brand: "American Express" | "Diners Club" | "Discover" | "JCB" | "MasterCard" | "UnionPay" | "Visa" | "Unknown";
+    brand:
+        | "American Express"
+        | "Diners Club"
+        | "Discover"
+        | "JCB"
+        | "MasterCard"
+        | "UnionPay"
+        | "Visa"
+        | "Unknown";
 
     /**
      * Two-letter ISO code representing the country of the card
@@ -295,5 +303,10 @@ export interface BankAccount {
      * The status of the bank account
      * @see https://stripe.com/docs/api#customer_bank_account_object-status
      */
-    status: "new" | "validated" | "verified" | "verification_failed" | "errored";
+    status:
+        | "new"
+        | "validated"
+        | "verified"
+        | "verification_failed"
+        | "errored";
 }

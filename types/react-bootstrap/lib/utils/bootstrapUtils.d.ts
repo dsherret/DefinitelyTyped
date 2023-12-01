@@ -13,6 +13,9 @@ export function getClassSet(props: any): any;
 export function getBsProps(props: any): BSProps;
 export function isBsProp(propName: string): boolean;
 export function splitBsProps(props: any): [BSProps, any];
-export function splitBsPropsAndOmit(props: any, omittedPropNames: any): [BSProps, any];
+export function splitBsPropsAndOmit(
+    props: any,
+    omittedPropNames: any,
+): [BSProps, any];
 export function addStyle(Component: any, ...styleVariant: any[]): any;
 // TODO: export function _curry

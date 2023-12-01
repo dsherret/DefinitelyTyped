@@ -46,7 +46,10 @@ declare module "tinder" {
          * @param {Number} limit the maximum number of profiles to fetch
          * @param {Function} callback the callback to invoke when the request completes
          */
-        getRecommendations(limit: number, callback: Callback<TinderRecommendationsResult>): void;
+        getRecommendations(
+            limit: number,
+            callback: Callback<TinderRecommendationsResult>,
+        ): void;
 
         /**
          * Sends a message to a user
@@ -54,7 +57,11 @@ declare module "tinder" {
          * @param {String} message the message to send
          * @param {Function} callback the callback to invoke when the request completes
          */
-        sendMessage(matchId: string, message: string, callback: Callback<any>): void;
+        sendMessage(
+            matchId: string,
+            message: string,
+            callback: Callback<any>,
+        ): void;
 
         /**
          * Likes (swipes right) on a user
@@ -107,7 +114,11 @@ declare module "tinder" {
          * @param {Number} lat the latitutde
          * @param {Function} callback the callback to invoke when the request completes
          */
-        updatePosition(longitude: Number, latitude: Number, callback: Callback<any>): void;
+        updatePosition(
+            longitude: Number,
+            latitude: Number,
+            callback: Callback<any>,
+        ): void;
 
         /**
          * Gets the current account info
@@ -241,7 +252,12 @@ declare module "tinder" {
          * @param {String} causeText optional reason for report when causeId is 0 (other)
          * @param {Function} callback the callback to invoke when the request completes
          */
-        report(userId: string, causeId: Number, causeText: string, callback: Callback<any>): void;
+        report(
+            userId: string,
+            causeId: Number,
+            causeText: string,
+            callback: Callback<any>,
+        ): void;
 
         /**
          * Create a web username for the current account
@@ -272,7 +288,11 @@ declare module "tinder" {
          * @param {Number} lat the latitutde
          * @param {Function} callback the callback to invoke when the request completes
          */
-        updatePassport(latitude: string, longitude: string, callback: Callback<any>): void;
+        updatePassport(
+            latitude: string,
+            longitude: string,
+            callback: Callback<any>,
+        ): void;
 
         /**
          * Reset the passport location

@@ -1,4 +1,8 @@
-declare function sloc(code: string, extension: string, options?: sloc.Options): Record<sloc.Key, number>;
+declare function sloc(
+    code: string,
+    extension: string,
+    options?: sloc.Options,
+): Record<sloc.Key, number>;
 
 declare namespace sloc {
     const keys: Key[];
@@ -97,7 +101,16 @@ declare namespace sloc {
         | "mm"
         | "bsl";
 
-    type Key = "total" | "source" | "comment" | "single" | "block" | "mixed" | "blockEmpty" | "empty" | "todo";
+    type Key =
+        | "total"
+        | "source"
+        | "comment"
+        | "single"
+        | "block"
+        | "mixed"
+        | "blockEmpty"
+        | "empty"
+        | "todo";
 }
 
 export = sloc;

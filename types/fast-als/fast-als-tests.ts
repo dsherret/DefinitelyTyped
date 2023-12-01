@@ -10,23 +10,29 @@ interface ALSPayload {
 }
 
 // Runwith sync callback
-runWith({
-    foo: {
-        a: false,
-        b: 3,
-        c: "hi",
+runWith(
+    {
+        foo: {
+            a: false,
+            b: 3,
+            c: "hi",
+        },
+        bar: 42,
     },
-    bar: 42,
-}, () => {
-    return;
-});
+    () => {
+        return;
+    },
+);
 
 // Run with async callback
-runWith({
-    some: "value",
-}, async () => {
-    return;
-});
+runWith(
+    {
+        some: "value",
+    },
+    async () => {
+        return;
+    },
+);
 
 // Set value with value typing
 set<ALSPayload, "bar">("bar", 23);

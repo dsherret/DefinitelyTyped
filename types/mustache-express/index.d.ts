@@ -13,5 +13,8 @@ declare namespace mustacheExpress {
         cache: TemplateCache;
     }
 
-    type TemplateCache = Cache<string, { name: string; data: string; partials: string[] }>;
+    type TemplateCache = Cache<
+        string,
+        { name: string; data: string; partials: string[] }
+    >;
 }

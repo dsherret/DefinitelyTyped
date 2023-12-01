@@ -37,10 +37,23 @@ export interface StashApplyOptions {
 }
 
 export class Stash {
-    static apply(repo: Repository, index: number, options?: StashApplyOptions): Promise<number>;
+    static apply(
+        repo: Repository,
+        index: number,
+        options?: StashApplyOptions,
+    ): Promise<number>;
     static applyInitOptions(opts: StashApplyOptions, version: number): number;
     static drop(repo: Repository, index: number): Promise<number>;
     static foreach(repo: Repository, callback?: Function): Promise<number>;
-    static pop(repo: Repository, index: number, options?: StashApplyOptions): Promise<number>;
-    static save(repo: Repository, stasher: Signature, message: string, flags: number): Promise<Oid>;
+    static pop(
+        repo: Repository,
+        index: number,
+        options?: StashApplyOptions,
+    ): Promise<number>;
+    static save(
+        repo: Repository,
+        stasher: Signature,
+        message: string,
+        flags: number,
+    ): Promise<Oid>;
 }

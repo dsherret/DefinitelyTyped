@@ -1,10 +1,20 @@
 declare namespace exec {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    type CancelFunction = (setCancelHandler?: symbol, newHandler?: () => void) => boolean | void;
+    type CancelFunction = (
+        setCancelHandler?: symbol,
+        newHandler?: () => void,
+    ) => boolean | void;
     type ProgressFunction = (event?: SpeedTestEvent) => void;
 
     interface BaseEvent {
-        type: "config" | "log" | "testStart" | "ping" | "download" | "upload" | "result";
+        type:
+            | "config"
+            | "log"
+            | "testStart"
+            | "ping"
+            | "download"
+            | "upload"
+            | "result";
     }
 
     /** Sent when the test is in the upload phase. */

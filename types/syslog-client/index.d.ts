@@ -62,7 +62,11 @@ export class Client extends EventEmitter {
     constructor(target?: string, options?: ClientOptions);
     buildFormattedMessage(message: string, options: MessageOptions): Buffer;
     close(): Client;
-    log(message: string, options?: MessageOptions, cb?: (error: Error | null) => void): Client;
+    log(
+        message: string,
+        options?: MessageOptions,
+        cb?: (error: Error | null) => void,
+    ): Client;
     getTransport(cb: (error: Error | null, transport: Transport) => void): void;
     onClose(): Client;
     onError(error: Error): Client;

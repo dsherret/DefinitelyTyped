@@ -21,13 +21,17 @@ const container: Element = document.createElement("div");
 // Top-Level API
 // --------------------------------------------------------------------------
 
-const ClassicComponent: React.ClassicComponentClass<Props> = createReactClass<Props, State>({
+const ClassicComponent: React.ClassicComponentClass<Props> = createReactClass<
+    Props,
+    State
+>({
     childContextTypes: {},
     componentDidCatch(err, errorInfo) {
         const msg: string = err.message;
         const name: string = err.name;
         const stack: string | undefined = err.stack;
-        const componentStack: string | null | undefined = errorInfo.componentStack;
+        const componentStack: string | null | undefined =
+            errorInfo.componentStack;
     },
     componentDidMount() {},
     componentDidUpdate(props, state) {
@@ -53,7 +57,11 @@ const ClassicComponent: React.ClassicComponentClass<Props> = createReactClass<Pr
     },
     mixins: [],
     propTypes: {},
-    shouldComponentUpdate(this: React.ClassicComponent<Props, State>, nextProps, nextState) {
+    shouldComponentUpdate(
+        this: React.ClassicComponent<Props, State>,
+        nextProps,
+        nextState,
+    ) {
         const newFoo: string = nextProps.foo;
         const newBar: number = nextState.bar;
         return newFoo !== this.props.foo && newBar !== this.state.bar;
@@ -68,7 +76,7 @@ const ClassicComponent: React.ClassicComponentClass<Props> = createReactClass<Pr
         return DOM.div(
             null,
             DOM.input({
-                ref: input => this._input = input,
+                ref: (input) => (this._input = input),
                 value: this.state.bar,
             }),
         );
@@ -81,33 +89,51 @@ const ClassicComponentNoProps: React.ClassicComponentClass = createReactClass({
     },
 });
 
-const ClassicComponentNoState: React.ClassicComponentClass<{ text: string }> = createReactClass<{ text: string }>({
-    render() {
-        return DOM.div(this.props.text);
-    },
-});
+const ClassicComponentNoState: React.ClassicComponentClass<{ text: string }> =
+    createReactClass<{ text: string }>({
+        render() {
+            return DOM.div(this.props.text);
+        },
+    });
 
 // React.createFactory
-const classicFactory: React.ClassicFactory<Props> = React.createFactory(ClassicComponent);
-const classicFactoryElement: React.ClassicElement<Props> = classicFactory(props);
+const classicFactory: React.ClassicFactory<Props> =
+    React.createFactory(ClassicComponent);
+const classicFactoryElement: React.ClassicElement<Props> =
+    classicFactory(props);
 
 // React.createElement
-const classicElement: React.ClassicElement<Props> = React.createElement(ClassicComponent, props);
-const classicElementNullProps: React.ClassicElement<{}> = React.createElement(ClassicComponentNoProps, null);
+const classicElement: React.ClassicElement<Props> = React.createElement(
+    ClassicComponent,
+    props,
+);
+const classicElementNullProps: React.ClassicElement<{}> = React.createElement(
+    ClassicComponentNoProps,
+    null,
+);
 
 // React.cloneElement
-const clonedClassicElement: React.ClassicElement<Props> = React.cloneElement(classicElement, props);
+const clonedClassicElement: React.ClassicElement<Props> = React.cloneElement(
+    classicElement,
+    props,
+);
 
 // ReactDOM.render
-const classicComponent: React.ClassicComponent<Props> = ReactDOM.render(classicElement, container);
+const classicComponent: React.ClassicComponent<Props> = ReactDOM.render(
+    classicElement,
+    container,
+);
 
 //
 // React Components
 // --------------------------------------------------------------------------
 
 const displayName: string | undefined = ClassicComponent.displayName;
-const defaultProps: Props = ClassicComponent.getDefaultProps ? ClassicComponent.getDefaultProps() : {} as Props;
-const propTypes: React.ValidationMap<Props> | undefined = ClassicComponent.propTypes;
+const defaultProps: Props = ClassicComponent.getDefaultProps
+    ? ClassicComponent.getDefaultProps()
+    : ({} as Props);
+const propTypes: React.ValidationMap<Props> | undefined =
+    ClassicComponent.propTypes;
 
 //
 // Component API

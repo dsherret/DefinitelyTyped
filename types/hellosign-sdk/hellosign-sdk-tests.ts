@@ -3,7 +3,11 @@ import { EventResponse, Signature } from "hellosign-sdk";
 import HelloSign = require("hellosign-sdk");
 
 // $ExpectType HelloSign
-new HelloSign({ key: "test", client_id: "client_id", client_secret: "client_secret" });
+new HelloSign({
+    key: "test",
+    client_id: "client_id",
+    client_secret: "client_secret",
+});
 // $ExpectType HelloSign
 new HelloSign({ username: "username", password: "password" });
 
@@ -177,7 +181,9 @@ hsClient.signatureRequest.get("signature_request_id");
 hsClient.signatureRequest.list({ page: 0, page_size: 10, query: "query" });
 
 // $ExpectType Promise<SignatureRequestResponse>
-hsClient.signatureRequest.send({ signers: [{ email_address: "email_address", name: "name" }] });
+hsClient.signatureRequest.send({
+    signers: [{ email_address: "email_address", name: "name" }],
+});
 
 // $ExpectType Promise<SignatureRequestResponse>
 hsClient.signatureRequest.sendWithTemplate({
@@ -186,7 +192,9 @@ hsClient.signatureRequest.sendWithTemplate({
 });
 
 // $ExpectType Promise<SignatureRequestResponse>
-hsClient.signatureRequest.createEmbedded({ signers: [{ email_address: "email_address", name: "name" }] });
+hsClient.signatureRequest.createEmbedded({
+    signers: [{ email_address: "email_address", name: "name" }],
+});
 
 // $ExpectType Promise<SignatureRequestResponse>
 hsClient.signatureRequest.createEmbeddedWithTemplate({
@@ -201,10 +209,16 @@ hsClient.signatureRequest.remind("signature_request_id", {});
 hsClient.signatureRequest.download("signature_request_id");
 
 // $ExpectType Promise<{ file_url: string; expires_at: Date; } & BaseResponse>
-hsClient.signatureRequest.download("signature_request_id", { file_type: "pdf", get_url: true });
+hsClient.signatureRequest.download("signature_request_id", {
+    file_type: "pdf",
+    get_url: true,
+});
 
 // $ExpectType Promise<{ data_uri: string; expires_at: Date; } & BaseResponse>
-hsClient.signatureRequest.download("signature_request_id", { file_type: "pdf", get_data_uri: true });
+hsClient.signatureRequest.download("signature_request_id", {
+    file_type: "pdf",
+    get_data_uri: true,
+});
 
 // $ExpectType Promise<BaseResponse>
 hsClient.signatureRequest.cancel("signature_request_id");
@@ -297,7 +311,10 @@ hsClient.team.update({ name: "name" });
 hsClient.team.destroy();
 
 // $ExpectType Promise<TeamResponse>
-hsClient.team.addMember({ email_address: "email_address", account_id: "account_id" });
+hsClient.team.addMember({
+    email_address: "email_address",
+    account_id: "account_id",
+});
 
 // $ExpectType Promise<TeamResponse>
 hsClient.team.removeMember({
@@ -394,10 +411,16 @@ hsClient.template.get("template_id");
 hsClient.template.list({ page: 0, page_size: 10, query: "query" });
 
 // $ExpectType Promise<TemplateResponse>
-hsClient.template.addUser("template_id", { email_address: "email_address", account_id: "account_id" });
+hsClient.template.addUser("template_id", {
+    email_address: "email_address",
+    account_id: "account_id",
+});
 
 // $ExpectType Promise<TemplateResponse>
-hsClient.template.removeUser("template_id", { email_address: "email_address", account_id: "account_id" });
+hsClient.template.removeUser("template_id", {
+    email_address: "email_address",
+    account_id: "account_id",
+});
 
 // $ExpectType Promise<TemplateResponse>
 hsClient.template.createEmbeddedDraft(templateResponse.template);
@@ -412,7 +435,10 @@ hsClient.template.files("template_id");
 hsClient.template.files("template_id", { file_type: "pdf", get_url: true });
 
 // $ExpectType Promise<{ data_uri: string; expires_at: Date; } & BaseResponse>
-hsClient.template.files("template_id", { file_type: "pdf", get_data_uri: true });
+hsClient.template.files("template_id", {
+    file_type: "pdf",
+    get_data_uri: true,
+});
 
 // UnclaimedDraftModule
 const unclamaimedDraftResponse: HelloSign.UnclaimedDraftResponse = {
@@ -488,18 +514,28 @@ const signatureRequestSigned = async (data: EventResponse) => {
     const { ...metadata } = data.signature_request.metadata;
     const sigReqId = data.signature_request.signature_request_id;
     const signatures = data.signature_request.signatures;
-    if (signatures.length === 2 && signatures[0].signature_id === data.event.event_metadata.related_signature_id) {
+    if (
+        signatures.length === 2 &&
+        signatures[0].signature_id ===
+            data.event.event_metadata.related_signature_id
+    ) {
         // advisor signed
-        const { signer_email_address: advisorEmail, signer_name: advisorName } = signatures[0];
-        const { signer_email_address: investorEmail, signer_name: investorName } = signatures[1];
+        const { signer_email_address: advisorEmail, signer_name: advisorName } =
+            signatures[0];
+        const {
+            signer_email_address: investorEmail,
+            signer_name: investorName,
+        } = signatures[1];
         if (signatures[1].status_code !== "awaiting_signature") return;
     } else if (
-        signatures.length === 2
-        && signatures[1].signature_id === data.event.event_metadata.related_signature_id
+        signatures.length === 2 &&
+        signatures[1].signature_id ===
+            data.event.event_metadata.related_signature_id
     ) {
     } else if (
-        signatures.length === 1
-        && signatures[0].signature_id === data.event.event_metadata.related_signature_id
+        signatures.length === 1 &&
+        signatures[0].signature_id ===
+            data.event.event_metadata.related_signature_id
     ) {
     } else {
         throw new Error("SIGNATURE DOES NOT MATCH EXPECTED DETAILS");
@@ -507,14 +543,19 @@ const signatureRequestSigned = async (data: EventResponse) => {
 };
 
 const signatureRequestDownloadable = async (data: EventResponse) => {
-    const allSigned = data.signature_request.signatures.every(signature => signature.status_code === "signed");
+    const allSigned = data.signature_request.signatures.every(
+        (signature) => signature.status_code === "signed",
+    );
     if (!allSigned) return;
 
     const { ...metadata } = data.signature_request.metadata;
 
-    const fileStream = await hsClient.signatureRequest.download(data.signature_request.signature_request_id, {
-        file_type: "pdf",
-    });
+    const fileStream = await hsClient.signatureRequest.download(
+        data.signature_request.signature_request_id,
+        {
+            file_type: "pdf",
+        },
+    );
     const file = fs.createWriteStream("TEST");
     fileStream.pipe(file);
 
@@ -549,7 +590,8 @@ export const getSignatureData = async (sigReqId: string) => {
     }
 
     const { signer_email_address: sigAEmail, signer_name: sigAName } = sigA;
-    const { signer_email_address: sigBEmail, signer_name: sigBName } = sigB || {};
+    const { signer_email_address: sigBEmail, signer_name: sigBName } =
+        sigB || {};
 
     return {
         id: sigReqId,
@@ -563,9 +605,13 @@ export const getSignatureData = async (sigReqId: string) => {
 export const getSignatureURL = async (sigReqId: string) => {
     const data = await hsClient.signatureRequest.get(sigReqId);
     const signatures = data.signature_request.signatures;
-    const signature = signatures.find(sig => sig.status_code === "awaiting_signature");
+    const signature = signatures.find(
+        (sig) => sig.status_code === "awaiting_signature",
+    );
     if (!signature) throw new Error("Signature awaiting not found");
-    const urlRequest = await hsClient.embedded.getSignUrl(signature.signature_id);
+    const urlRequest = await hsClient.embedded.getSignUrl(
+        signature.signature_id,
+    );
     return urlRequest.embedded.sign_url;
 };
 
@@ -659,9 +705,13 @@ export const sendSigningRequest = async (pdfFilePath: string) => {
         metadata,
     });
     const signatures = data.signature_request.signatures;
-    const signature = signatures.find((sig: any) => sig.status_code === "awaiting_signature")!;
+    const signature = signatures.find(
+        (sig: any) => sig.status_code === "awaiting_signature",
+    )!;
     const signed_at: number | null = signature.signed_at;
-    const urlRequest = await hsClient.embedded.getSignUrl(signature.signature_id);
+    const urlRequest = await hsClient.embedded.getSignUrl(
+        signature.signature_id,
+    );
     return {
         url: urlRequest.embedded.sign_url,
         signatureRequestId: data.signature_request.signature_request_id,
@@ -688,9 +738,13 @@ export const sendSigningRequestWithTemplates = async (pdfFilePath: string) => {
         metadata,
     });
     const signatures = data.signature_request.signatures;
-    const signature = signatures.find((sig: any) => sig.status_code === "awaiting_signature")!;
+    const signature = signatures.find(
+        (sig: any) => sig.status_code === "awaiting_signature",
+    )!;
     const signed_at: number | null = signature.signed_at;
-    const urlRequest = await hsClient.embedded.getSignUrl(signature.signature_id);
+    const urlRequest = await hsClient.embedded.getSignUrl(
+        signature.signature_id,
+    );
     return {
         url: urlRequest.embedded.sign_url,
         signatureRequestId: data.signature_request.signature_request_id,

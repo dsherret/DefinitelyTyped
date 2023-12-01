@@ -1,5 +1,13 @@
 import { Catch, Retry } from "./errors";
-import { Concurrency, EndOrNext, JsonObject, Path, Percentage, ReferencePath, State } from "./state";
+import {
+    Concurrency,
+    EndOrNext,
+    JsonObject,
+    Path,
+    Percentage,
+    ReferencePath,
+    State,
+} from "./state";
 
 /**
  * The Map State (identified by "Type": "Map") causes the interpreter to process all the elements of an array, potentially in parallel, with the processing of each element independent of the others.

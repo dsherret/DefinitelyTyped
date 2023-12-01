@@ -51,7 +51,7 @@ app.use((ctx: Koa.Context, next) => {
 });
 
 // response
-app.use(ctx => {
+app.use((ctx) => {
     ctx.body = "Hello World";
     ctx.body = ctx.URL.toString();
     ctx.set({
@@ -64,7 +64,7 @@ app.use(ctx => {
     });
 });
 
-app.on("error", error => {
+app.on("error", (error) => {
     if (error instanceof Koa.HttpError) {
         // $ExpectType number
         error.status;

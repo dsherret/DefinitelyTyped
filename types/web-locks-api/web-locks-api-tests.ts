@@ -4,6 +4,10 @@ navigator.locks.request("test", async (lock: Lock) => {
     return lock;
 });
 
-navigator.locks.request("test", { ifAvailable: true, mode: "exclusive", steal: false }, async (lock: Lock | null) => {
-    return lock;
-});
+navigator.locks.request(
+    "test",
+    { ifAvailable: true, mode: "exclusive", steal: false },
+    async (lock: Lock | null) => {
+        return lock;
+    },
+);

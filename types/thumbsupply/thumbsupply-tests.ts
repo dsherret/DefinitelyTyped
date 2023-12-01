@@ -29,7 +29,7 @@ thumbsupply
     .then((thumb: string) => {
         // serve thumbnail
     })
-    .catch(err => {
+    .catch((err) => {
         // thumbnail doesn't exist
     });
 

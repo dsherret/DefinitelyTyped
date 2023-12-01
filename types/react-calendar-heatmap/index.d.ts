@@ -16,7 +16,9 @@ export interface Props {
     startDate?: string | number | Date | undefined;
     titleForValue?: ((value: any) => any) | undefined;
     tooltipDataAttrs?: object | undefined;
-    transformDayElement?: ((rect: any, value: any, index: number) => any) | undefined;
+    transformDayElement?:
+        | ((rect: any, value: any, index: number) => any)
+        | undefined;
     values: any[];
     weekdayLabels?: string[] | undefined;
 }

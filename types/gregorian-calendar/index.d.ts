@@ -185,7 +185,11 @@ declare module "gregorian-calendar" {
          *         weekOfYear: the week number based on weekYear
          *         dayOfWeek: the day of week value
          */
-        setWeekDate(weekYear: Number, weekOfYear: Number, dayOfWeek: Number): void;
+        setWeekDate(
+            weekYear: Number,
+            weekOfYear: Number,
+            dayOfWeek: Number,
+        ): void;
 
         /**
          * Returns the number of weeks in the week year
@@ -256,12 +260,19 @@ declare module "gregorian-calendar-format" {
          * parse a dateString to an instance of GregorianCalendar according to pattern, it's better to specify calendarLocale, such as
          *  `df.parse('2013-11-12', {locale: require('gregorian-calendar/lib/locale/zh_CN'}));`
          */
-        parse(dateString: String, { locale }: { locale: Object }): GregorianCalendar;
+        parse(
+            dateString: String,
+            { locale }: { locale: Object },
+        ): GregorianCalendar;
 
         /**
          * get a predefine GregorianCalendarFormat instance
          */
-        getDateTimeInstance(dateStyle: DateTimeStyle, timeStyle: DateTimeStyle, locale?: Object): DateTimeFormat;
+        getDateTimeInstance(
+            dateStyle: DateTimeStyle,
+            timeStyle: DateTimeStyle,
+            locale?: Object,
+        ): DateTimeFormat;
     }
 
     export = DateTimeFormat;

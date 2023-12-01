@@ -37,39 +37,39 @@ export interface FancyButtonProps {
 export interface FancyButtonMethod {
     fancyClick(): void;
 }
-export const FancyButton = forwardRef((props: FancyButtonProps, ref: Ref<FancyButtonMethod>) => {
-    const buttonRef = useRef<HTMLButtonElement | null>(null);
-    const [count, setCount] = useState(0);
+export const FancyButton = forwardRef(
+    (props: FancyButtonProps, ref: Ref<FancyButtonMethod>) => {
+        const buttonRef = useRef<HTMLButtonElement | null>(null);
+        const [count, setCount] = useState(0);
 
-    useImperativeHandle(ref, () => ({
-        fancyClick() {
-            buttonRef.current!; // $ExpectType HTMLButtonElement
-        },
-        getClickCount() {
-            return count;
-        },
-    }));
+        useImperativeHandle(ref, () => ({
+            fancyClick() {
+                buttonRef.current!; // $ExpectType HTMLButtonElement
+            },
+            getClickCount() {
+                return count;
+            },
+        }));
 
-    return (
-        <button
-            onClick={() => {
-                setCount(count + 1);
-                props.onClick();
-            }}
-        >
-            {props.children}
-        </button>
-    );
-});
+        return (
+            <button
+                onClick={() => {
+                    setCount(count + 1);
+                    props.onClick();
+                }}
+            >
+                {props.children}
+            </button>
+        );
+    },
+);
 
 interface AppState {
     name: string;
     age: number;
 }
 
-type AppActions =
-    | { type: "getOlder" }
-    | { type: "resetAge" };
+type AppActions = { type: "getOlder" } | { type: "resetAge" };
 
 function reducer(s: AppState, action: AppActions): AppState {
     switch (action.type) {
@@ -175,7 +175,7 @@ function useEveryHook(ref: Ref<{ id: number }> | undefined): () => boolean {
 
     useLayoutEffect(() => {
         setState(1);
-        setState(prevState => prevState - 1);
+        setState((prevState) => prevState - 1);
         didLayout.current = true;
     }, []);
 
@@ -186,11 +186,11 @@ function useEveryHook(ref: Ref<{ id: number }> | undefined): () => boolean {
     // @ts-expect-error
     useEffect(() => null);
     // @ts-expect-error
-    useEffect(() => Math.random() ? null : undefined);
+    useEffect(() => (Math.random() ? null : undefined));
     // @ts-expect-error
     useEffect(() => () => null);
     // @ts-expect-error
-    useEffect(() => () => Math.random() ? null : undefined);
+    useEffect(() => () => (Math.random() ? null : undefined));
     // @ts-expect-error
     useEffect(() => async () => {});
     // @ts-expect-error
@@ -221,26 +221,27 @@ function useEveryHook(ref: Ref<{ id: number }> | undefined): () => boolean {
     // $ExpectType boolean
     toggle;
     // make sure setState accepts a function
-    setToggle(r => !r);
+    setToggle((r) => !r);
 
     // useReducer convenience overload
 
     return useCallback(() => didLayout.current, []);
 }
 
-const UsesEveryHook = forwardRef(
-    function UsesEveryHook(props: {}, ref?: Ref<{ id: number }>) {
-        // $ExpectType boolean
-        useEveryHook(ref)();
+const UsesEveryHook = forwardRef(function UsesEveryHook(
+    props: {},
+    ref?: Ref<{ id: number }>,
+) {
+    // $ExpectType boolean
+    useEveryHook(ref)();
 
-        return null;
-    },
-);
+    return null;
+});
 const everyHookRef = createRef<{ id: number }>();
 <UsesEveryHook ref={everyHookRef} />;
 
 <UsesEveryHook
-    ref={ref => {
+    ref={(ref) => {
         // $ExpectType { id: number; } | null
         ref;
     }}

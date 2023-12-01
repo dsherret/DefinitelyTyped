@@ -8,7 +8,7 @@ const options: WatcherOptions = {
     recursive: true,
 };
 let w: Promise<PathWatcher>;
-w = watcher.watchPath("/var/log", options, events => {
+w = watcher.watchPath("/var/log", options, (events) => {
     // $ExpectType Event[]
     events;
     const event = events[0];
@@ -18,12 +18,12 @@ w = watcher.watchPath("/var/log", options, events => {
     }
 });
 
-w.then(w => {
+w.then((w) => {
     // $ExpectType Promise<void>
     w.getStartPromise();
     // $ExpectType string
     w.toString();
-    w.onDidError(err => {
+    w.onDidError((err) => {
         // $ExpectType unknown
         err;
     });

@@ -12,11 +12,19 @@ declare namespace uuid {
 
     interface UuidStatic {
         (options?: V4Options): string;
-        (options: V4Options | null, buffer: number[], offset?: number): number[];
+        (
+            options: V4Options | null,
+            buffer: number[],
+            offset?: number,
+        ): number[];
         (options: V4Options | null, buffer: Buffer, offset?: number): Buffer;
 
         v1(options?: V1Options): string;
-        v1(options: V1Options | null, buffer: number[], offset?: number): number[];
+        v1(
+            options: V1Options | null,
+            buffer: number[],
+            offset?: number,
+        ): number[];
         v1(options: V1Options | null, buffer: Buffer, offset?: number): Buffer;
         v4: UuidStatic;
         parse(id: string): number[];

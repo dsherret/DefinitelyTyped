@@ -2,7 +2,14 @@
  * Created by Linus Brolin <https://github.com/linusbrolin/>.
  */
 
-import { Document, model, PaginateModel, PaginateOptions, PaginateResult, Schema } from "mongoose";
+import {
+    Document,
+    model,
+    PaginateModel,
+    PaginateOptions,
+    PaginateResult,
+    Schema,
+} from "mongoose";
 import mongoosePaginate = require("mongoose-paginate");
 import { Request, Response, Router } from "express";
 
@@ -23,17 +30,20 @@ UserSchema.plugin(mongoosePaginate);
 
 interface UserModel<T extends Document> extends PaginateModel<T> {}
 
-let UserModel: UserModel<User> = model<User>("User", UserSchema) as UserModel<User>;
+let UserModel: UserModel<User> = model<User>(
+    "User",
+    UserSchema,
+) as UserModel<User>;
 // #endregion
 
 // #region Test Paginate
 let router: Router = Router();
 
-router.get("/users.json", function(req: Request, res: Response) {
+router.get("/users.json", function (req: Request, res: Response) {
     let descending: boolean = true;
     let options: PaginateOptions = {} as PaginateOptions;
     options.select = "email username";
-    options.sort = { "username": (descending ? -1 : 1) };
+    options.sort = { username: descending ? -1 : 1 };
     options.populate = "";
     options.populate = {
         path: "",
@@ -44,21 +54,20 @@ router.get("/users.json", function(req: Request, res: Response) {
     options.page = 1;
     options.limit = 10;
 
-    UserModel
-        .paginate({}, options, (err: any, value: PaginateResult<User>) => {
-            if (err) {
-                console.log(err);
-                return res.status(500).send(err);
-            }
+    UserModel.paginate({}, options, (err: any, value: PaginateResult<User>) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).send(err);
+        }
 
-            console.log("total: " + value.total);
-            console.log("limit: " + value.limit);
-            console.log("page: " + value.page);
-            console.log("pages: " + value.pages);
-            console.log("offset: " + value.offset);
-            console.log("docs: ");
-            console.dir(value.docs);
-            return res.json(value);
-        });
+        console.log("total: " + value.total);
+        console.log("limit: " + value.limit);
+        console.log("page: " + value.page);
+        console.log("pages: " + value.pages);
+        console.log("offset: " + value.offset);
+        console.log("docs: ");
+        console.dir(value.docs);
+        return res.json(value);
+    });
 });
 // #endregion

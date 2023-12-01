@@ -14,7 +14,7 @@ const rest = new sn_ws.RESTMessageV2();
 // test merging
 declare namespace servicenow {
     interface GlideRecord {
-        new(type: "othertype"): OtherType;
+        new (type: "othertype"): OtherType;
     }
 
     interface OtherType extends GlideRecord {

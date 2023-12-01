@@ -1,4 +1,8 @@
-import { CanvasRendererConfig, HTMLRendererConfig, SVGRendererConfig } from "lottie-web";
+import {
+    CanvasRendererConfig,
+    HTMLRendererConfig,
+    SVGRendererConfig,
+} from "lottie-web";
 import { Browser, LaunchOptions } from "puppeteer";
 
 /**
@@ -65,7 +69,11 @@ declare namespace renderLottie {
         /**
          * Optional lottie renderer settings
          */
-        rendererSettings?: SVGRendererConfig | CanvasRendererConfig | HTMLRendererConfig | undefined;
+        rendererSettings?:
+            | SVGRendererConfig
+            | CanvasRendererConfig
+            | HTMLRendererConfig
+            | undefined;
 
         /**
          * Optional puppeteer launch settings
@@ -144,7 +152,14 @@ declare namespace renderLottie {
      */
     interface FFmpegOptions {
         crf?: number | undefined;
-        profileVideo?: "baseline" | "main" | "high" | "high10" | "high422" | "high444" | undefined;
+        profileVideo?:
+            | "baseline"
+            | "main"
+            | "high"
+            | "high10"
+            | "high422"
+            | "high444"
+            | undefined;
         preset?:
             | "ultrafast"
             | "superfast"

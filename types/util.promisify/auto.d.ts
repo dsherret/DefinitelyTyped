@@ -8,6 +8,8 @@ declare module "util" {
          *
          * Use `util.promisify.custom` instead.
          */
-        const customPromisifyArgs: typeof polyfill.customPromisifyArgs | undefined;
+        const customPromisifyArgs:
+            | typeof polyfill.customPromisifyArgs
+            | undefined;
     }
 }

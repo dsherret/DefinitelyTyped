@@ -25,7 +25,7 @@ Sqrl.load({}, "str"); // $ExpectType SqrlFn
 Sqrl.load({}); // $ExpectType string | SqrlFn
 Sqrl.load({ $name: "mytemplate" });
 
-Sqrl.defineFilter("reverse", str => {
+Sqrl.defineFilter("reverse", (str) => {
     let out = "";
     for (let i = str.length - 1; i >= 0; i--) {
         out += String(str).charAt(i);
@@ -46,7 +46,7 @@ Sqrl.defineHelper("helperName", (args, content, blocks) => {
 });
 
 Sqrl.defineNativeHelper("if", {
-    helperStart: param => {
+    helperStart: (param) => {
         return `if(${param}){`;
     },
     helperEnd: () => {

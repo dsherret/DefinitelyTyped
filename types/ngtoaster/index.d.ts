@@ -104,7 +104,11 @@ declare namespace ngtoaster {
 
     type IToastCallback = (toast: IToast) => void;
 
-    type IToastEventListener = (event: Event, toasterId: number, toastId: string | number) => void;
+    type IToastEventListener = (
+        event: Event,
+        toasterId: number,
+        toastId: string | number,
+    ) => void;
 
     interface IToast {
         /**

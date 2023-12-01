@@ -9,7 +9,11 @@ export class Calendar {
      */
     constructor(firstWeekDay?: number);
 
-    monthDates<T = Date>(year: number, month: number, dayFormatter?: DayFormatter<T>): T[][];
+    monthDates<T = Date>(
+        year: number,
+        month: number,
+        dayFormatter?: DayFormatter<T>,
+    ): T[][];
     monthDates<T, U>(
         year: number,
         month: number,

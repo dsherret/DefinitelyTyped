@@ -8,9 +8,20 @@ export interface accounts {
         disableAutoSelect: () => void;
         storeCredential: (credential?: string, callback?: () => void) => void;
         cancel: () => void;
-        revoke: (hint: string, callback?: (response: RevocationResponse) => void) => void;
-        prompt: (momentListener?: (promptMomentNotification: PromptMomentNotification) => void) => void;
-        renderButton: (parent: HTMLElement, options: GsiButtonConfiguration, clickHandler?: () => void) => void;
+        revoke: (
+            hint: string,
+            callback?: (response: RevocationResponse) => void,
+        ) => void;
+        prompt: (
+            momentListener?: (
+                promptMomentNotification: PromptMomentNotification,
+            ) => void,
+        ) => void;
+        renderButton: (
+            parent: HTMLElement,
+            options: GsiButtonConfiguration,
+            clickHandler?: () => void,
+        ) => void;
     };
 }
 
@@ -74,9 +85,16 @@ export interface PromptMomentNotification {
         | "unregistered_origin"
         | "unknown_reason";
     isSkippedMoment: () => boolean;
-    getSkippedReason: () => "auto_cancel" | "user_cancel" | "tap_outside" | "issuing_failed";
+    getSkippedReason: () =>
+        | "auto_cancel"
+        | "user_cancel"
+        | "tap_outside"
+        | "issuing_failed";
     isDismissedMoment: () => boolean;
-    getDismissedReason: () => "credential_returned" | "cancel_called" | "flow_restarted";
+    getDismissedReason: () =>
+        | "credential_returned"
+        | "cancel_called"
+        | "flow_restarted";
     getMomentType: () => "display" | "skipped" | "dismissed";
 }
 

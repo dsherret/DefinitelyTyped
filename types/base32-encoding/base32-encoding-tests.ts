@@ -1,4 +1,10 @@
-import { decode, encode, encodingLength, parse, stringify } from "base32-encoding";
+import {
+    decode,
+    encode,
+    encodingLength,
+    parse,
+    stringify,
+} from "base32-encoding";
 
 const toEncode = new Uint8Array(Buffer.from("foo"));
 

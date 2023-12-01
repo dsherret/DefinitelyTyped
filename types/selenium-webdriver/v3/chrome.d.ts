@@ -294,7 +294,9 @@ export class Options {
      *     these options into, if any.
      * @return {!webdriver.Capabilities} The capabilities.
      */
-    toCapabilities(opt_capabilities?: webdriver.Capabilities): webdriver.Capabilities;
+    toCapabilities(
+        opt_capabilities?: webdriver.Capabilities,
+    ): webdriver.Capabilities;
 }
 
 /**

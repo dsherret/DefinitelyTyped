@@ -37,11 +37,14 @@ void 0;
  */
 function bust(packageJsonPath, info, ghosts) {
     /** @param {Owner} c */
-    const isGhost = c => c.githubUsername && ghosts.has(c.githubUsername.toLowerCase());
+    const isGhost = (c) =>
+        c.githubUsername && ghosts.has(c.githubUsername.toLowerCase());
     if (info.owners.some(isGhost)) {
-        console.log(`Found one or more deleted accounts in ${packageJsonPath}. Patching...`);
+        console.log(
+            `Found one or more deleted accounts in ${packageJsonPath}. Patching...`,
+        );
         const parsed = JSON.parse(info.raw);
-        parsed.owners = info.owners.filter(c => !isGhost(c));
+        parsed.owners = info.owners.filter((c) => !isGhost(c));
         const newContent = JSON.stringify(parsed, undefined, 4);
         writeFileSync(packageJsonPath, newContent + "\n", "utf-8");
     }
@@ -66,7 +69,7 @@ function getAllPackageJsons() {
     /** @type {Record<string, PackageInfo>} */
     const headers = {};
     console.log("Reading headers...");
-    recurse(new URL("../types/", import.meta.url), subpath => {
+    recurse(new URL("../types/", import.meta.url), (subpath) => {
         const index = new URL("package.json", subpath);
         if (existsSync(index)) {
             const indexContent = readFileSync(index, "utf-8");
@@ -75,7 +78,10 @@ function getAllPackageJsons() {
                 parsed = JSON.parse(indexContent);
             } catch (e) {}
             if (parsed && parsed.owners && Array.isArray(parsed.owners)) {
-                headers[index.pathname] = { owners: parsed.owners, raw: indexContent };
+                headers[index.pathname] = {
+                    owners: parsed.owners,
+                    raw: indexContent,
+                };
             }
         }
     });
@@ -97,12 +103,17 @@ async function fetchGhosts(users) {
         const startIndex = page * maxPageSize;
         const endIndex = Math.min(startIndex + maxPageSize, userArray.length);
         const query = `query {
-            ${userArray.slice(startIndex, endIndex).map((user, i) => `u${i}: user(login: "${user}") { id }`).join("\n")}
+            ${userArray
+                .slice(startIndex, endIndex)
+                .map((user, i) => `u${i}: user(login: "${user}") { id }`)
+                .join("\n")}
         }`;
         const result = await tryGQL(() => octokit.graphql(query));
         for (const k in result) {
             if (result[k] === null) {
-                ghosts.push(userArray[startIndex + parseInt(k.substring(1), 10)]);
+                ghosts.push(
+                    userArray[startIndex + parseInt(k.substring(1), 10)],
+                );
             }
         }
     }
@@ -110,11 +121,17 @@ async function fetchGhosts(users) {
     // Filter out organizations
     if (ghosts.length) {
         const query = `query {
-            ${ghosts.map((user, i) => `o${i}: organization(login: "${user}") { id }`).join("\n")}
+            ${ghosts
+                .map(
+                    (user, i) => `o${i}: organization(login: "${user}") { id }`,
+                )
+                .join("\n")}
         }`;
         const result = await tryGQL(() => octokit.graphql(query));
         if (result) {
-            return new Set(ghosts.filter(g => result[`o${ghosts.indexOf(g)}`] === null));
+            return new Set(
+                ghosts.filter((g) => result[`o${ghosts.indexOf(g)}`] === null),
+            );
         }
     }
 
@@ -138,7 +155,7 @@ async function tryGQL(fn) {
     }
 }
 
-process.on("unhandledRejection", err => {
+process.on("unhandledRejection", (err) => {
     console.error(err);
     process.exit(1);
 });
@@ -150,7 +167,9 @@ process.on("unhandledRejection", err => {
 
     const packageJsons = getAllPackageJsons();
     const users = new Set(
-        flatMap(Object.values(packageJsons), h => mapDefined(h.owners, c => c.githubUsername?.toLowerCase())),
+        flatMap(Object.values(packageJsons), (h) =>
+            mapDefined(h.owners, (c) => c.githubUsername?.toLowerCase()),
+        ),
     );
     const ghosts = await fetchGhosts(users);
     if (!ghosts.size) {

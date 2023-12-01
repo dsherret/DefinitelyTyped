@@ -16,8 +16,21 @@ const consumerSecret = "kd94hf93k423kf44";
 const tokenSecret = "pfkkdhi9sl3r4s00";
 
 // generates a RFC 3986 encoded, BASE64 encoded HMAC-SHA1 hash
-const hash1: string = oauthSignature.generate(httpMethod, url, parameters, consumerSecret, tokenSecret);
+const hash1: string = oauthSignature.generate(
+    httpMethod,
+    url,
+    parameters,
+    consumerSecret,
+    tokenSecret,
+);
 // generates a BASE64 encode HMAC-SHA1 hash
-const hash2: string = oauthSignature.generate(httpMethod, url, parameters, consumerSecret, tokenSecret, {
-    encodeSignature: false,
-});
+const hash2: string = oauthSignature.generate(
+    httpMethod,
+    url,
+    parameters,
+    consumerSecret,
+    tokenSecret,
+    {
+        encodeSignature: false,
+    },
+);

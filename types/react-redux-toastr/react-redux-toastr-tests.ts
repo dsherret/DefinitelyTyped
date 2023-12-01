@@ -22,8 +22,14 @@ function test() {
         cancelText: "Cancel text message",
     });
     toastr.error("Error", "Error message");
-    toastr.info("Info", "Info test", { timeOut: 1000, removeOnHover: true, onShowComplete: callback });
-    toastr.success("Test", "Test message", { component: new React.Component({}) });
+    toastr.info("Info", "Info test", {
+        timeOut: 1000,
+        removeOnHover: true,
+        onShowComplete: callback,
+    });
+    toastr.success("Test", "Test message", {
+        component: new React.Component({}),
+    });
 }
 
 test();

@@ -12,17 +12,25 @@ var config: SVGSpriter.Config;
 var spriter = new SVGSpriter(config);
 
 // Add SVG source files — the manual way ...
-spriter.add("assets/svg-1.svg", null, fs.readFileSync("assets/svg-1.svg", { encoding: "utf-8" }));
-spriter.add("assets/svg-2.svg", null, fs.readFileSync("assets/svg-2.svg", { encoding: "utf-8" }));
+spriter.add(
+    "assets/svg-1.svg",
+    null,
+    fs.readFileSync("assets/svg-1.svg", { encoding: "utf-8" }),
+);
+spriter.add(
+    "assets/svg-2.svg",
+    null,
+    fs.readFileSync("assets/svg-2.svg", { encoding: "utf-8" }),
+);
 /* ... */
 
 // Compile the sprite
-spriter.compile(function(error: any, result: any) {
+spriter.compile(function (error: any, result: any) {
     /* ... Write `result` files to disk or do whatever with them ... */
 });
 
 // Compile the sprite
-(async function() {
+(async function () {
     const { result, data } = await spriter.compileAsync();
 })();
 
@@ -31,21 +39,25 @@ spriter.compile(function(error: any, result: any) {
 config = {
     dest: ".", // Main output directory
     log: null, // Logging verbosity (default: no logging)
-    shape: { // SVG shape related options
-        id: { // SVG shape ID related options
+    shape: {
+        // SVG shape related options
+        id: {
+            // SVG shape ID related options
             separator: "--", // Separator for directory name traversal
-            generator: function(svg: string, file: File) {
+            generator: function (svg: string, file: File) {
                 /*...*/ return "";
             }, // SVG shape ID generator callback
             pseudo: "~", // File name separator for shape states (e.g. ':hover')
         },
-        dimension: { // Dimension related options
+        dimension: {
+            // Dimension related options
             maxWidth: 2000, // Max. shape width
             maxHeight: 2000, // Max. shape height
             precision: 2, // Floating point precision
             attributes: false, // Width and height attributes on embedded shapes
         },
-        spacing: { // Spacing related options
+        spacing: {
+            // Spacing related options
             padding: 0, // Padding around all shapes
             box: "content", // Padding strategy (similar to CSS `box-sizing`)
         },
@@ -54,7 +66,8 @@ config = {
         align: null, // Path to YAML file with extended alignment data
         dest: null, // Output directory for optimized intermediate SVG shapes
     },
-    svg: { // General options for created SVG files
+    svg: {
+        // General options for created SVG files
         xmlDeclaration: true, // Add XML declaration to SVG sprite
         doctypeDeclaration: true, // Add DOCTYPE declaration to SVG sprite
         namespaceIDs: true, // Add namespace token to all IDs in SVG shapes
@@ -94,7 +107,8 @@ config = {
             dimensions: "-dims", // Suffix for dimension CSS selectors
             sprite: "svg/sprite.<mode>.svg", // Sprite path and name
             bust: true, // Cache busting (mode dependent default value)
-            render: { // Stylesheet rendering definitions
+            render: {
+                // Stylesheet rendering definitions
                 /* -------------------------------------------
          css         : false,                        // CSS stylesheet options
          scss        : false,                        // Sass stylesheet options
@@ -123,7 +137,8 @@ config = {
 
 config = {
     mode: {
-        css: { // Create a «css» sprite
+        css: {
+            // Create a «css» sprite
             render: {
                 scss: true, // Render a Sass stylesheet
             },
@@ -155,21 +170,24 @@ config = {
 
 config = {
     shape: {
-        id: { // SVG shape ID related options
+        id: {
+            // SVG shape ID related options
             separator: "--", // Separator for directory name traversal
-            generator: function(svg: string, file: File) {
+            generator: function (svg: string, file: File) {
                 /*...*/ return "";
             }, // SVG shape ID generator callback
             pseudo: "~", // File name separator for shape states (e.g. ':hover')
             whitespace: "_", // Whitespace replacement for shape IDs
         },
-        dimension: { // Dimension related options
+        dimension: {
+            // Dimension related options
             maxWidth: 2000, // Max. shape width
             maxHeight: 2000, // Max. shape height
             precision: 2, // Floating point precision
             attributes: false, // Width and height attributes on embedded shapes
         },
-        spacing: { // Spacing related options
+        spacing: {
+            // Spacing related options
             padding: 0, // Padding around all shapes
             box: "content", // Padding strategy (similar to CSS `box-sizing`)
         },
@@ -180,7 +198,8 @@ config = {
     },
 };
 
-config = // SVGO transformation with default configuration
+config =
+    // SVGO transformation with default configuration
     {
         shape: {
             transform: ["svgo"],
@@ -188,17 +207,17 @@ config = // SVGO transformation with default configuration
         },
     };
 
-config = // Equivalent transformation to ['svgo']
+config =
+    // Equivalent transformation to ['svgo']
     {
         shape: {
-            transform: [
-                { svgo: {} },
-            ],
+            transform: [{ svgo: {} }],
             /* ... */
         },
     };
 
-config = // SVGO transformation with custom plugin configuration
+config =
+    // SVGO transformation with custom plugin configuration
     {
         shape: {
             transform: [
@@ -215,13 +234,13 @@ config = // SVGO transformation with custom plugin configuration
         },
     };
 
-config = // SVGO transformation with custom plugin configuration
+config =
+    // SVGO transformation with custom plugin configuration
     {
         shape: {
             transform: [
                 {
                     custom:
-
                         /**
                          * Custom callback transformation
                          *
@@ -230,7 +249,7 @@ config = // SVGO transformation with custom plugin configuration
                          * @param {Function} callback           Callback
                          * @return {void}
                          */
-                        function(shape, sprite, callback) {
+                        function (shape, sprite, callback) {
                             /* ... */
                             callback(null);
                         },
@@ -240,7 +259,8 @@ config = // SVGO transformation with custom plugin configuration
         },
     };
 
-config = // Custom global post-processing transformation
+config =
+    // Custom global post-processing transformation
     {
         svg: {
             transform: [
@@ -250,7 +270,7 @@ config = // Custom global post-processing transformation
                  * @param {String} svg                  Sprite SVG
                  * @return {String}                     Processed SVG
                  */
-                function(svg) {
+                function (svg) {
                     /* ... */
                     return svg;
                 },
@@ -262,29 +282,32 @@ config = // Custom global post-processing transformation
 config = {
     variables: {
         now: +new Date(),
-        png: function() {
-            return function(sprite: any, render: any) {
+        png: function () {
+            return function (sprite: any, render: any) {
                 return render(sprite).split(".svg").join(".png");
             };
         },
     },
 };
 
-config = // Activate the «css» mode with default configuration
+config =
+    // Activate the «css» mode with default configuration
     {
         mode: {
             css: true,
         },
     };
 
-config = // Equivalent: Provide an empty configuration object
+config =
+    // Equivalent: Provide an empty configuration object
     {
         mode: {
             css: {},
         },
     };
 
-config = // Multiple sprites of the same output mode
+config =
+    // Multiple sprites of the same output mode
     {
         mode: {
             sprite1: {

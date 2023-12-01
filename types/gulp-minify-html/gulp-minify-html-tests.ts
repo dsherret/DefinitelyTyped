@@ -12,7 +12,8 @@ gulp.task("minify-html", () => {
         spare: true,
     };
 
-    return gulp.src("./static/html/*.html")
+    return gulp
+        .src("./static/html/*.html")
         .pipe(minifyHtml(opts))
         .pipe(gulp.dest("./dist/"));
 });

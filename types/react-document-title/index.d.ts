@@ -5,7 +5,6 @@ interface DocumentTitleProps {
     children?: React.ReactChild | null | undefined;
 }
 
-declare class DocumentTitle extends React.Component<DocumentTitleProps, any> {
-}
+declare class DocumentTitle extends React.Component<DocumentTitleProps, any> {}
 
 export default DocumentTitle;

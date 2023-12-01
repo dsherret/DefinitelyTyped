@@ -2,9 +2,15 @@ export { graphql } from "relay-runtime";
 
 export * from "./relay-experimental/EntryPointTypes";
 
-export { MatchContainerProps, MatchPointer } from "./relay-experimental/MatchContainer";
+export {
+    MatchContainerProps,
+    MatchPointer,
+} from "./relay-experimental/MatchContainer";
 export { ProfilerContextType } from "./relay-experimental/ProfilerContext";
-export { Direction, LoadMoreFn } from "./relay-experimental/useLoadMoreFunction";
+export {
+    Direction,
+    LoadMoreFn,
+} from "./relay-experimental/useLoadMoreFunction";
 export { UseMutationConfig } from "./relay-experimental/useMutation";
 export {
     Options as RefetchOptions,

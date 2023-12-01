@@ -15,43 +15,67 @@ i.initiateConnection({}, () => {});
 // $ExpectType void
 i.initiateConnection({}, (err) => {});
 // $ExpectType void
-i.initiateConnection({
-    host: "",
-    port: 0,
-    rack: 0,
-    slot: 0,
-    timeout: 0,
-    localTSAP: 0x0,
-    remoteTSAP: 0x0,
-}, (err) => {});
-i.initiateConnection({
-    // @ts-expect-error
-    host: 0,
-}, () => {});
-i.initiateConnection({
-    // @ts-expect-error
-    port: "0",
-}, () => {});
-i.initiateConnection({
-    // @ts-expect-error
-    rack: "0",
-}, () => {});
-i.initiateConnection({
-    // @ts-expect-error
-    slot: "0",
-}, () => {});
-i.initiateConnection({
-    // @ts-expect-error
-    timeout: "0",
-}, () => {});
-i.initiateConnection({
-    // @ts-expect-error
-    localTSAP: "0",
-}, () => {});
-i.initiateConnection({
-    // @ts-expect-error
-    remoteTSAP: "0",
-}, () => {});
+i.initiateConnection(
+    {
+        host: "",
+        port: 0,
+        rack: 0,
+        slot: 0,
+        timeout: 0,
+        localTSAP: 0x0,
+        remoteTSAP: 0x0,
+    },
+    (err) => {},
+);
+i.initiateConnection(
+    {
+        // @ts-expect-error
+        host: 0,
+    },
+    () => {},
+);
+i.initiateConnection(
+    {
+        // @ts-expect-error
+        port: "0",
+    },
+    () => {},
+);
+i.initiateConnection(
+    {
+        // @ts-expect-error
+        rack: "0",
+    },
+    () => {},
+);
+i.initiateConnection(
+    {
+        // @ts-expect-error
+        slot: "0",
+    },
+    () => {},
+);
+i.initiateConnection(
+    {
+        // @ts-expect-error
+        timeout: "0",
+    },
+    () => {},
+);
+i.initiateConnection(
+    {
+        // @ts-expect-error
+        localTSAP: "0",
+    },
+    () => {},
+);
+i.initiateConnection(
+    {
+        // @ts-expect-error
+        remoteTSAP: "0",
+    },
+    () => {},
+);
 
 // @ts-expect-error
 i.dropConnection();
@@ -62,7 +86,7 @@ i.setTranslationCB();
 // @ts-expect-error
 i.setTranslationCB(() => {});
 i.setTranslationCB(() => ""); // $ExpectType void
-i.setTranslationCB(x => x); // $ExpectType void
+i.setTranslationCB((x) => x); // $ExpectType void
 
 // @ts-expect-error
 i.addItems();

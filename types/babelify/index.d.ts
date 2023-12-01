@@ -5,11 +5,17 @@
 import stream = require("stream");
 import babel = require("babel-core");
 
-declare function Babelify(filename: string, opts?: Babelify.BabelifyOptions): Babelify.BabelifyObject;
+declare function Babelify(
+    filename: string,
+    opts?: Babelify.BabelifyOptions,
+): Babelify.BabelifyObject;
 
 declare namespace Babelify {
     export interface BabelifyConstructor {
-        (filename: string, opts: Babelify.BabelifyOptions): Babelify.BabelifyObject;
+        (
+            filename: string,
+            opts: Babelify.BabelifyOptions,
+        ): Babelify.BabelifyObject;
     }
 
     /** In addition to the various purposes documented here, all of the babelify options are passed to babel which passes them on to babel.transform() when each file is transformed */
@@ -26,11 +32,17 @@ declare namespace Babelify {
     }
 
     export class BabelifyObject extends stream.Transform {
-        _transform(buf: string | Buffer, encoding: string, callback: () => void): void;
+        _transform(
+            buf: string | Buffer,
+            encoding: string,
+            callback: () => void,
+        ): void;
         _flush(callback: () => void): void;
     }
 
-    export function configure(opts: Babelify.BabelifyOptions): (filename: string) => Babelify.BabelifyObject;
+    export function configure(
+        opts: Babelify.BabelifyOptions,
+    ): (filename: string) => Babelify.BabelifyObject;
 }
 
 export = Babelify;

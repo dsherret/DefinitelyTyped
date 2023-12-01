@@ -16,7 +16,11 @@ const server = proxy();
 
 server.authenticate = (req, callback) => {
     try {
-        callback(null, req.headers["proxy-authorization"] === "Basic Zm9vOmJhcg==" /* foo:bar */);
+        callback(
+            null,
+            req.headers["proxy-authorization"] ===
+                "Basic Zm9vOmJhcg==" /* foo:bar */,
+        );
     } catch (err) {
         callback(err, false);
     }

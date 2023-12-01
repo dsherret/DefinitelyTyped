@@ -14,7 +14,10 @@ interface ScopedQueryCondition {
      * gr.number;
      * gs.info(gr.getEncodedQuery());
      */
-    addCondition(name: string, value: object | string | number): ScopedQueryCondition;
+    addCondition(
+        name: string,
+        value: object | string | number,
+    ): ScopedQueryCondition;
 
     /**
      * Adds an AND condition to the current condition.
@@ -38,7 +41,10 @@ interface ScopedQueryCondition {
      * @param value The value to query on.
      * @returns A reference to a GlideQueryConditon that was added to the GlideRecord.
      */
-    addOrCondition(name: string, value: object | string | number): ScopedQueryCondition;
+    addOrCondition(
+        name: string,
+        value: object | string | number,
+    ): ScopedQueryCondition;
 
     /**
      * Appends a 2-or-3 parameter OR condition to an existing GlideQueryCondition.
@@ -68,5 +74,9 @@ interface ScopedQueryCondition {
      * @param value The value to query on.
      * @returns A reference to a GlideQueryConditon that was added to the GlideRecord.
      */
-    addOrCondition(name: string, oper: QueryOperator, value: any): ScopedQueryCondition;
+    addOrCondition(
+        name: string,
+        oper: QueryOperator,
+        value: any,
+    ): ScopedQueryCondition;
 }

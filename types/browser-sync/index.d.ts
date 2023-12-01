@@ -74,7 +74,11 @@ declare namespace browserSync {
         /**
          * Functions or actual plugins used as middleware.
          */
-        middleware?: MiddlewareHandler | PerRouteMiddleware | Array<MiddlewareHandler | PerRouteMiddleware> | undefined;
+        middleware?:
+            | MiddlewareHandler
+            | PerRouteMiddleware
+            | Array<MiddlewareHandler | PerRouteMiddleware>
+            | undefined;
         /**
          * Add additional directories from which static files should be served.
          * Should only be used in proxy or snippet mode.
@@ -346,9 +350,11 @@ declare namespace browserSync {
         /** set the default port */
         port?: number | undefined;
         /** set the default weinre port */
-        weinre?: {
-            port?: number | undefined;
-        } | undefined;
+        weinre?:
+            | {
+                  port?: number | undefined;
+              }
+            | undefined;
     }
 
     interface FileCallback {
@@ -379,9 +385,21 @@ declare namespace browserSync {
         middleware?: MiddlewareHandler | undefined;
         ws?: boolean | undefined;
         reqHeaders?: ((config: object) => Hash<object>) | undefined;
-        proxyRes?: ProxyResponseMiddleware | ProxyResponseMiddleware[] | undefined;
-        proxyReq?: Array<(res: http.IncomingMessage) => void> | ((res: http.IncomingMessage) => void) | undefined;
-        error?: ((err: NodeJS.ErrnoException, req: http.IncomingMessage, res: http.ServerResponse) => void) | undefined;
+        proxyRes?:
+            | ProxyResponseMiddleware
+            | ProxyResponseMiddleware[]
+            | undefined;
+        proxyReq?:
+            | Array<(res: http.IncomingMessage) => void>
+            | ((res: http.IncomingMessage) => void)
+            | undefined;
+        error?:
+            | ((
+                  err: NodeJS.ErrnoException,
+                  req: http.IncomingMessage,
+                  res: http.ServerResponse,
+              ) => void)
+            | undefined;
     }
 
     interface ProxyResponseMiddleware {
@@ -403,7 +421,11 @@ declare namespace browserSync {
     }
 
     interface MiddlewareHandler {
-        (req: http.IncomingMessage, res: http.ServerResponse, next: () => void): any;
+        (
+            req: http.IncomingMessage,
+            res: http.ServerResponse,
+            next: () => void,
+        ): any;
     }
 
     interface PerRouteMiddleware {
@@ -432,10 +454,12 @@ declare namespace browserSync {
         async?: boolean | undefined;
         whitelist?: string[] | undefined;
         blacklist?: string[] | undefined;
-        rule?: {
-            match?: RegExp | undefined;
-            fn?: ((snippet: string, match: string) => any) | undefined;
-        } | undefined;
+        rule?:
+            | {
+                  match?: RegExp | undefined;
+                  fn?: ((snippet: string, match: string) => any) | undefined;
+              }
+            | undefined;
     }
 
     interface SocketOptions {
@@ -466,7 +490,13 @@ declare namespace browserSync {
     interface RewriteRules {
         match: RegExp;
         replace?: string | undefined;
-        fn?: ((req: http.IncomingMessage, res: http.ServerResponse, match: string) => string) | undefined;
+        fn?:
+            | ((
+                  req: http.IncomingMessage,
+                  res: http.ServerResponse,
+                  match: string,
+              ) => string)
+            | undefined;
     }
 
     interface StreamOptions {
@@ -479,14 +509,20 @@ declare namespace browserSync {
          * Start the Browsersync service. This will launch a server, proxy or start the snippet mode
          * depending on your use-case.
          */
-        (config?: Options, callback?: (err: Error, bs: BrowserSyncInstance) => any): BrowserSyncInstance;
+        (
+            config?: Options,
+            callback?: (err: Error, bs: BrowserSyncInstance) => any,
+        ): BrowserSyncInstance;
         /** */
         instances: BrowserSyncInstance[];
         /**
          * Create a Browsersync instance
          * @param name an identifier that can used for retrieval later
          */
-        create(name?: string, emitter?: NodeJS.EventEmitter): BrowserSyncInstance;
+        create(
+            name?: string,
+            emitter?: NodeJS.EventEmitter,
+        ): BrowserSyncInstance;
         /**
          * Get a single instance by name. This is useful if you have your build scripts in separate files
          * @param name the identifier used for retrieval
@@ -511,7 +547,10 @@ declare namespace browserSync {
          * Start the Browsersync service. This will launch a server, proxy or start the snippet mode
          * depending on your use-case.
          */
-        init(config?: Options, callback?: (err: Error, bs: BrowserSyncInstance) => any): BrowserSyncInstance;
+        init(
+            config?: Options,
+            callback?: (err: Error, bs: BrowserSyncInstance) => any,
+        ): BrowserSyncInstance;
         /**
          * This method will close any running server, stop file watching & exit the current process.
          */
@@ -561,7 +600,12 @@ declare namespace browserSync {
         /**
          * Instance Cleanup.
          */
-        cleanup(fn?: (error: NodeJS.ErrnoException, bs: BrowserSyncInstance) => void): void;
+        cleanup(
+            fn?: (
+                error: NodeJS.ErrnoException,
+                bs: BrowserSyncInstance,
+            ) => void,
+        ): void;
         /**
          * Register a plugin.
          * Must implement at least a 'plugin' property that returns
@@ -573,7 +617,10 @@ declare namespace browserSync {
          * @param {any} cb A callback function that will return any errors.
          */
         use(
-            module: { "plugin:name"?: string | undefined; plugin: (opts: object, bs: BrowserSyncInstance) => any },
+            module: {
+                "plugin:name"?: string | undefined;
+                plugin: (opts: object, bs: BrowserSyncInstance) => any;
+            },
             options?: object,
             cb?: any,
         ): void;

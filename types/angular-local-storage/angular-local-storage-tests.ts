@@ -64,13 +64,19 @@ class TestController implements TestScope {
 
 TestController.$inject = ["localStorageService", "$scope"];
 
-const app = angular.module("angular-local-storage-tests", ["LocalStorageModule"]);
-app.config((localStorageServiceProvider: ng.local.storage.ILocalStorageServiceProvider) => {
-    localStorageServiceProvider
-        .setPrefix("myApp")
-        .setStorageType("sessionStorage")
-        .setDefaultToCookie(false)
-        .setNotify(true, true);
-});
+const app = angular.module("angular-local-storage-tests", [
+    "LocalStorageModule",
+]);
+app.config(
+    (
+        localStorageServiceProvider: ng.local.storage.ILocalStorageServiceProvider,
+    ) => {
+        localStorageServiceProvider
+            .setPrefix("myApp")
+            .setStorageType("sessionStorage")
+            .setDefaultToCookie(false)
+            .setNotify(true, true);
+    },
+);
 
 app.controller("TestController", TestController);

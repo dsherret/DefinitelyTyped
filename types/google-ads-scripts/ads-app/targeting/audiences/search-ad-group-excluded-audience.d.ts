@@ -29,10 +29,12 @@ declare namespace GoogleAdsScripts {
          *        var excludedAudience = excludedAudienceIterator.next();
          *      }
          */
-        interface SearchAdGroupExcludedAudienceIterator extends Base.Iterator<SearchAdGroupExcludedAudience> {}
+        interface SearchAdGroupExcludedAudienceIterator
+            extends Base.Iterator<SearchAdGroupExcludedAudience> {}
 
         /** An operation representing creation of a new excluded audience. */
-        interface SearchAdGroupExcludedAudienceOperation extends Base.Operation<SearchAdGroupExcludedAudience> {}
+        interface SearchAdGroupExcludedAudienceOperation
+            extends Base.Operation<SearchAdGroupExcludedAudience> {}
 
         /**
          * Fetches excluded audiences. Supports filtering and sorting.
@@ -48,13 +50,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface SearchAdGroupExcludedAudienceSelector
-            extends
-                Base.Selector<SearchAdGroupExcludedAudienceIterator>,
+            extends Base.Selector<SearchAdGroupExcludedAudienceIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

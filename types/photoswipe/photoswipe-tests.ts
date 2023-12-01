@@ -30,7 +30,7 @@ function test_defaultUI() {
 
     var options: PhotoSwipe.Options = {
         index: 3,
-        getThumbBoundsFn: function(index) {
+        getThumbBoundsFn: function (index) {
             return { x: 100, y: 100, w: 100 };
         },
         showAnimationDuration: 333,
@@ -40,7 +40,7 @@ function test_defaultUI() {
         spacing: 0.12,
         allowPanToNext: true,
         maxSpreadZoom: 2,
-        getDoubleTapZoom: function(isMouseClick, item) {
+        getDoubleTapZoom: function (isMouseClick, item) {
             if (isMouseClick) {
                 return 1;
             } else {
@@ -58,14 +58,14 @@ function test_defaultUI() {
         galleryUID: 3,
         galleryPIDs: true,
         errorMsg:
-            "<div class=\"pswp__error-msg\"><a href=\"%url%\" target=\"_blank\">The image</a> could not be loaded.</div>",
+            '<div class="pswp__error-msg"><a href="%url%" target="_blank">The image</a> could not be loaded.</div>',
         preload: [1, 1],
         mainClass: "",
         getNumItemsFn: () => {
             return 2;
         },
         focus: true,
-        isClickableElement: function(el) {
+        isClickableElement: function (el) {
             return el.tagName === "A";
         },
         modal: true,
@@ -77,12 +77,12 @@ function test_defaultUI() {
         timeToIdle: 4000,
         timeToIdleOutside: 1000,
         loadingIndicatorDelay: 1000,
-        addCaptionHTMLFn: function(item, captionEl, isFake) {
+        addCaptionHTMLFn: function (item, captionEl, isFake) {
             if (!item.title) {
-                (<HTMLElement> captionEl.children[0]).innerHTML = "";
+                (<HTMLElement>captionEl.children[0]).innerHTML = "";
                 return false;
             }
-            (<HTMLElement> captionEl.children[0]).innerHTML = item.title;
+            (<HTMLElement>captionEl.children[0]).innerHTML = item.title;
             return true;
         },
         closeEl: true,
@@ -99,16 +99,29 @@ function test_defaultUI() {
         closeElClasses: ["item", "caption", "zoom-wrap", "ui", "top-bar"],
         indexIndicatorSep: " / ",
         shareButtons: [
-            { id: "facebook", label: "Share on Facebook", url: "https://www.facebook.com/sharer/sharer.php?u=" },
-            { id: "twitter", label: "Tweet", url: "https://twitter.com/intent/tweet?text=&url=" },
+            {
+                id: "facebook",
+                label: "Share on Facebook",
+                url: "https://www.facebook.com/sharer/sharer.php?u=",
+            },
+            {
+                id: "twitter",
+                label: "Tweet",
+                url: "https://twitter.com/intent/tweet?text=&url=",
+            },
             {
                 id: "pinterest",
                 label: "Pin it",
                 url: "http://www.pinterest.com/pin/create/button/?url=&media=&description=",
             },
-            { id: "download", label: "Download image", url: "", download: true },
+            {
+                id: "download",
+                label: "Download image",
+                url: "",
+                download: true,
+            },
         ],
-        getImageURLForShare: function(shareButtonData) {
+        getImageURLForShare: function (shareButtonData) {
             // `shareButtonData` - object from shareButtons array
             //
             // `pswp` is the gallery instance object,
@@ -116,19 +129,24 @@ function test_defaultUI() {
             //
             return photoSwipe.currItem.src || "";
         },
-        getPageURLForShare: function(shareButtonData) {
+        getPageURLForShare: function (shareButtonData) {
             return window.location.href;
         },
-        getTextForShare: function(shareButtonData) {
-            return (<PhotoSwipeUI_Default.Item> photoSwipe.currItem).title || "";
+        getTextForShare: function (shareButtonData) {
+            return (<PhotoSwipeUI_Default.Item>photoSwipe.currItem).title || "";
         },
-        parseShareButtonOut: function(shareButtonData, shareButtonOut) {
+        parseShareButtonOut: function (shareButtonData, shareButtonOut) {
             return shareButtonOut;
         },
     };
 
     var pswpElement = document.getElementById("gallery");
-    photoSwipe = new PhotoSwipe<PhotoSwipeUI_Default.Options>(pswpElement, PhotoSwipeUI_Default, items, uiOptions);
+    photoSwipe = new PhotoSwipe<PhotoSwipeUI_Default.Options>(
+        pswpElement,
+        PhotoSwipeUI_Default,
+        items,
+        uiOptions,
+    );
 }
 
 function test_photoSwipeMethods() {
@@ -153,14 +171,21 @@ function test_photoSwipeMethods() {
     photoSwipe.updateSize(true);
 
     photoSwipe.close();
-    photoSwipe.zoomTo(2, { x: 250, y: 250 }, 2000, (x) => {
-        return x * x * (3 - 2 * x);
-    }, (zoomValue) => {
-        console.log("zoom value is now" + zoomValue);
-    });
+    photoSwipe.zoomTo(
+        2,
+        { x: 250, y: 250 },
+        2000,
+        (x) => {
+            return x * x * (3 - 2 * x);
+        },
+        (zoomValue) => {
+            console.log("zoom value is now" + zoomValue);
+        },
+    );
     photoSwipe.applyZoomPan(1, 0, 0);
 
-    photoSwipe.items[photoSwipe.getCurrentIndex()].src = "new/path/to/image.jpg";
+    photoSwipe.items[photoSwipe.getCurrentIndex()].src =
+        "new/path/to/image.jpg";
     photoSwipe.invalidateCurrItems();
 }
 
@@ -170,30 +195,42 @@ function test_photoSwipeEvents() {
     photoSwipe.listen("beforeChange", () => {});
     photoSwipe.listen("afterChange", () => {});
     photoSwipe.listen("beforeChange", () => {});
-    photoSwipe.listen("imageLoadComplete", (idx: number, item: PhotoSwipeUI_Default.Item) => {
-        item.w *= 2;
-    });
+    photoSwipe.listen(
+        "imageLoadComplete",
+        (idx: number, item: PhotoSwipeUI_Default.Item) => {
+            item.w *= 2;
+        },
+    );
     photoSwipe.listen("resize", () => {});
-    photoSwipe.listen("gettingData", (idx: number, item: PhotoSwipeUI_Default.Item) => {
-        item.title = "abc";
-    });
+    photoSwipe.listen(
+        "gettingData",
+        (idx: number, item: PhotoSwipeUI_Default.Item) => {
+            item.title = "abc";
+        },
+    );
     photoSwipe.listen("mouseUsed", () => {});
     photoSwipe.listen("initialZoomIn", () => {});
     photoSwipe.listen("initialZoomInEnd", () => {});
     photoSwipe.listen("initialZoomOut", () => {});
     photoSwipe.listen("initialZoomOutEnd", () => {});
-    photoSwipe.listen("parseVerticalMargin", (item: PhotoSwipeUI_Default.Item) => {
-        item.vGap.top = 20;
-        item.vGap.bottom = 40;
-    });
+    photoSwipe.listen(
+        "parseVerticalMargin",
+        (item: PhotoSwipeUI_Default.Item) => {
+            item.vGap.top = 20;
+            item.vGap.bottom = 40;
+        },
+    );
     photoSwipe.listen("close", () => {});
     photoSwipe.listen("unbindEvents", () => {});
     photoSwipe.listen("destroy", () => {});
-    photoSwipe.listen("preventDragEvent", (e: MouseEvent, isDown: boolean, preventObj: { prevent: boolean }) => {
-        if (e.x > 50 && isDown) {
-            preventObj.prevent = true;
-        }
-    });
+    photoSwipe.listen(
+        "preventDragEvent",
+        (e: MouseEvent, isDown: boolean, preventObj: { prevent: boolean }) => {
+            if (e.x > 50 && isDown) {
+                preventObj.prevent = true;
+            }
+        },
+    );
 
     photoSwipe.listen("foo", (a, b, c) => {
         alert(a + b + c);
@@ -217,7 +254,10 @@ interface MyUIOptions extends PhotoSwipe.Options {
 }
 
 class MyUI implements PhotoSwipe.UI<MyUIOptions> {
-    constructor(pswp: PhotoSwipe<MyUIOptions>, framework: PhotoSwipe.UIFramework) {
+    constructor(
+        pswp: PhotoSwipe<MyUIOptions>,
+        framework: PhotoSwipe.UIFramework,
+    ) {
         // dummy
     }
 

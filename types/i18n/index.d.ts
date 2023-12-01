@@ -14,9 +14,11 @@ declare namespace i18n {
          * Language fallback map
          * @default {}
          */
-        fallbacks?: {
-            [locale: string]: string;
-        } | undefined;
+        fallbacks?:
+            | {
+                  [locale: string]: string;
+              }
+            | undefined;
 
         /**
          * Alter a site wide default locale
@@ -137,9 +139,11 @@ declare namespace i18n {
          * Note that this will *not* overwrite existing properties with the same name.
          * @default undefined
          */
-        api?: {
-            [method: string]: string;
-        } | undefined;
+        api?:
+            | {
+                  [method: string]: string;
+              }
+            | undefined;
 
         /**
          * Downcase locale when passed on queryParam; e.g. lang=en-US becomes en-us.
@@ -159,16 +163,18 @@ declare namespace i18n {
         /**
          * Use mustache with customTags (https://www.npmjs.com/package/mustache#custom-delimiters) or disable mustache entirely
          */
-        mustacheConfig?: {
-            /**
-             * @default ['{{', '}}']
-             */
-            tags?: [string, string] | undefined;
-            /**
-             * @default false
-             */
-            disable?: boolean | undefined;
-        } | undefined;
+        mustacheConfig?:
+            | {
+                  /**
+                   * @default ['{{', '}}']
+                   */
+                  tags?: [string, string] | undefined;
+                  /**
+                   * @default false
+                   */
+                  disable?: boolean | undefined;
+              }
+            | undefined;
 
         /**
          * Parser can be any object that responds to .parse & .stringify
@@ -222,7 +228,11 @@ declare namespace i18n {
      * @param response - Current express response
      * @param next - Callback to continue process
      */
-    function init(request: Express.Request, response: Express.Response, next?: () => void): void;
+    function init(
+        request: Express.Request,
+        response: Express.Response,
+        next?: () => void,
+    ): void;
 
     // #region __()
 
@@ -231,14 +241,20 @@ declare namespace i18n {
      * @param phraseOrOptions - The phrase to translate or options for translation
      * @returns The translated phrase
      */
-    function __(phraseOrOptions: string | TranslateOptions, ...replace: string[]): string;
+    function __(
+        phraseOrOptions: string | TranslateOptions,
+        ...replace: string[]
+    ): string;
     /**
      * Translate the given phrase using locale configuration
      * @param phraseOrOptions - The phrase to translate or options for translation
      * @param replacements - An object containing replacements
      * @returns The translated phrase
      */
-    function __(phraseOrOptions: string | TranslateOptions, replacements: Replacements): string;
+    function __(
+        phraseOrOptions: string | TranslateOptions,
+        replacements: Replacements,
+    ): string;
 
     // #endregion
 
@@ -266,7 +282,11 @@ declare namespace i18n {
      * @param count - The number which allow to select from plural to singular
      * @returns The translated phrase
      */
-    function __n(singular: string, plural: string, count: number | string): string;
+    function __n(
+        singular: string,
+        plural: string,
+        count: number | string,
+    ): string;
     /**
      * Translate with plural condition the given phrase and count using locale configuration
      * @param phrase - The phrase to translate or a flattened key path in locale json file
@@ -274,7 +294,11 @@ declare namespace i18n {
      * @param replacements - An object containing replacements
      * @returns The translated phrase
      */
-    function __n(phrase: string, count: number | string, replacements: Replacements): string;
+    function __n(
+        phrase: string,
+        count: number | string,
+        replacements: Replacements,
+    ): string;
 
     // #endregion
 
@@ -285,14 +309,20 @@ declare namespace i18n {
      * @param phraseOrOptions - The phrase to translate or options for translation
      * @returns The translated phrase
      */
-    function __mf(phraseOrOptions: string | TranslateOptions, ...replace: any[]): string;
+    function __mf(
+        phraseOrOptions: string | TranslateOptions,
+        ...replace: any[]
+    ): string;
     /**
      * Translate the given phrase using locale configuration and MessageFormat
      * @param phraseOrOptions - The phrase to translate or options for translation
      * @param replacements - An object containing replacements
      * @returns The translated phrase
      */
-    function __mf(phraseOrOptions: string | TranslateOptions, replacements: Replacements): string;
+    function __mf(
+        phraseOrOptions: string | TranslateOptions,
+        replacements: Replacements,
+    ): string;
 
     // #endregion
 
@@ -343,7 +373,11 @@ declare namespace i18n {
      * @param [inheritance=false] - Disables inheritance if true
      */
     // tslint:disable-next-line:unified-signatures
-    function setLocale(objects: any | any[], locale: string, inheritance?: boolean): void;
+    function setLocale(
+        objects: any | any[],
+        locale: string,
+        inheritance?: boolean,
+    ): void;
 
     /**
      * Get the current active locale for specified request
@@ -382,7 +416,10 @@ declare namespace i18n {
      * @param [locale] - The locale to get catalog for
      * @returns The current locale catalog for the specified request
      */
-    function getCatalog(request: Express.Request, locale?: string): LocaleCatalog;
+    function getCatalog(
+        request: Express.Request,
+        locale?: string,
+    ): LocaleCatalog;
 
     // #endregion
 
@@ -402,11 +439,21 @@ declare namespace i18n {
 
         configure(options: ConfigurationOptions): void;
 
-        init(request: Express.Request, response: Express.Response, next?: () => void): void;
+        init(
+            request: Express.Request,
+            response: Express.Response,
+            next?: () => void,
+        ): void;
 
-        __(phraseOrOptions: string | TranslateOptions, ...replace: string[]): string;
+        __(
+            phraseOrOptions: string | TranslateOptions,
+            ...replace: string[]
+        ): string;
 
-        __(phraseOrOptions: string | TranslateOptions, replacements: Replacements): string;
+        __(
+            phraseOrOptions: string | TranslateOptions,
+            replacements: Replacements,
+        ): string;
 
         __n(phrase: string, count: number): string;
 
@@ -414,9 +461,15 @@ declare namespace i18n {
 
         __n(singular: string, plural: string, count: number | string): string;
 
-        __mf(phraseOrOptions: string | TranslateOptions, ...replace: any[]): string;
+        __mf(
+            phraseOrOptions: string | TranslateOptions,
+            ...replace: any[]
+        ): string;
 
-        __mf(phraseOrOptions: string | TranslateOptions, replacements: Replacements): string;
+        __mf(
+            phraseOrOptions: string | TranslateOptions,
+            replacements: Replacements,
+        ): string;
 
         __l(phrase: string): string[];
 
@@ -425,10 +478,18 @@ declare namespace i18n {
         setLocale(locale: string): void;
 
         // tslint:disable-next-line:unified-signatures
-        setLocale(requestOrResponse: Express.Request | Express.Response, locale: string, inheritance?: boolean): void;
+        setLocale(
+            requestOrResponse: Express.Request | Express.Response,
+            locale: string,
+            inheritance?: boolean,
+        ): void;
 
         // tslint:disable-next-line:unified-signatures
-        setLocale(objects: any | any[], locale: string, inheritance?: boolean): void;
+        setLocale(
+            objects: any | any[],
+            locale: string,
+            inheritance?: boolean,
+        ): void;
 
         getLocale(request?: Express.Request): string;
 
@@ -460,14 +521,20 @@ interface i18nAPI {
      * @param phraseOrOptions - The phrase to translate or options for translation
      * @returns The translated phrase
      */
-    __(phraseOrOptions: string | i18n.TranslateOptions, ...replace: string[]): string;
+    __(
+        phraseOrOptions: string | i18n.TranslateOptions,
+        ...replace: string[]
+    ): string;
     /**
      * Translate the given phrase using locale configuration
      * @param phraseOrOptions - The phrase to translate or options for translation
      * @param replacements - An object containing replacements
      * @returns The translated phrase
      */
-    __(phraseOrOptions: string | i18n.TranslateOptions, replacements: i18n.Replacements): string;
+    __(
+        phraseOrOptions: string | i18n.TranslateOptions,
+        replacements: i18n.Replacements,
+    ): string;
 
     // #endregion
 
@@ -506,14 +573,20 @@ interface i18nAPI {
      * @param phraseOrOptions - The phrase to translate or options for translation
      * @returns The translated phrase
      */
-    __mf(phraseOrOptions: string | i18n.TranslateOptions, ...replace: any[]): string;
+    __mf(
+        phraseOrOptions: string | i18n.TranslateOptions,
+        ...replace: any[]
+    ): string;
     /**
      * Translate the given phrase using locale configuration and MessageFormat
      * @param phraseOrOptions - The phrase to translate or options for translation
      * @param replacements - An object containing replacements
      * @returns The translated phrase
      */
-    __mf(phraseOrOptions: string | i18n.TranslateOptions, replacements: i18n.Replacements): string;
+    __mf(
+        phraseOrOptions: string | i18n.TranslateOptions,
+        replacements: i18n.Replacements,
+    ): string;
 
     // #endregion
 
@@ -570,10 +643,8 @@ declare module "i18n" {
 
 declare namespace Express {
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
-    interface Request extends i18nAPI {
-    }
+    interface Request extends i18nAPI {}
 
     // eslint-disable-next-line @typescript-eslint/no-empty-interface
-    interface Response extends i18nAPI {
-    }
+    interface Response extends i18nAPI {}
 }

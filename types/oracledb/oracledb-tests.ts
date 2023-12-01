@@ -24,8 +24,15 @@ const {
     DB_USER,
 } = process.env;
 
-const initSession = (connection: oracledb.Connection, requestedTag: string, callback: () => void): void => {
-    connection.execute(`alter session set nls_date_format = 'YYYY-MM-DD' nls_language = AMERICAN`, callback);
+const initSession = (
+    connection: oracledb.Connection,
+    requestedTag: string,
+    callback: () => void,
+): void => {
+    connection.execute(
+        `alter session set nls_date_format = 'YYYY-MM-DD' nls_language = AMERICAN`,
+        callback,
+    );
 };
 
 const testBreak = (connection: oracledb.Connection): Promise<void> =>
@@ -40,9 +47,18 @@ const testBreak = (connection: oracledb.Connection): Promise<void> =>
             [2],
             (error: oracledb.DBError): void => {
                 // ORA-01013: user requested cancel of current operation
-                assert(error.message.includes("ORA-01013"), "message not defined for DB error");
-                assert(error.errorNum !== undefined, "errorNum not defined for DB error");
-                assert(error.offset !== undefined, "offset not defined for DB error");
+                assert(
+                    error.message.includes("ORA-01013"),
+                    "message not defined for DB error",
+                );
+                assert(
+                    error.errorNum !== undefined,
+                    "errorNum not defined for DB error",
+                );
+                assert(
+                    error.offset !== undefined,
+                    "offset not defined for DB error",
+                );
 
                 return resolve();
             },
@@ -55,10 +71,14 @@ const testBreak = (connection: oracledb.Connection): Promise<void> =>
         }, 1000);
     });
 
-const testGetStatmentInfo = async (connection: oracledb.Connection): Promise<void> => {
+const testGetStatmentInfo = async (
+    connection: oracledb.Connection,
+): Promise<void> => {
     console.log("Testing connection.getStatementInfo()...");
 
-    const info = await connection.getStatementInfo("SELECT 1 FROM CONNOR_TEST_TABLE WHERE SYSDATE > :myDate");
+    const info = await connection.getStatementInfo(
+        "SELECT 1 FROM CONNOR_TEST_TABLE WHERE SYSDATE > :myDate",
+    );
 
     assert.deepStrictEqual(
         info.metaData[0],
@@ -74,38 +94,46 @@ const testGetStatmentInfo = async (connection: oracledb.Connection): Promise<voi
     );
 
     assert(
-        info.bindNames.findIndex(s => s === "MYDATE") >= 0,
+        info.bindNames.findIndex((s) => s === "MYDATE") >= 0,
         "connection.getStatementInfo() has invalid bindNames field in its response",
     );
-    assert(info.statementType === 1, "connection.getStatementInfo() has invalid statementType field in its response");
+    assert(
+        info.statementType === 1,
+        "connection.getStatementInfo() has invalid statementType field in its response",
+    );
 
     return;
 };
 
-const testQueryStream = async (connection: oracledb.Connection): Promise<void> =>
-    new Promise(resolve => {
+const testQueryStream = async (
+    connection: oracledb.Connection,
+): Promise<void> =>
+    new Promise((resolve) => {
         console.log("Testing connection.queryStream()...");
 
-        const stream = connection.queryStream("SELECT 1 FROM DUAL WHERE 10 < :myValue", {
-            myValue: {
-                dir: oracledb.BIND_IN,
-                maxSize: 50,
-                type: oracledb.NUMBER,
-                val: 20,
+        const stream = connection.queryStream(
+            "SELECT 1 FROM DUAL WHERE 10 < :myValue",
+            {
+                myValue: {
+                    dir: oracledb.BIND_IN,
+                    maxSize: 50,
+                    type: oracledb.NUMBER,
+                    val: 20,
+                },
+                anotherValue: {
+                    dir: oracledb.BIND_INOUT,
+                    type: oracledb.DB_TYPE_NCLOB,
+                },
             },
-            anotherValue: {
-                dir: oracledb.BIND_INOUT,
-                type: oracledb.DB_TYPE_NCLOB,
-            },
-        });
+        );
 
         let data = "";
 
-        stream.on("data", chunk => {
+        stream.on("data", (chunk) => {
             data += chunk;
         });
 
-        stream.on("metadata", metadata => {
+        stream.on("metadata", (metadata) => {
             assert.deepStrictEqual(metadata[0], {
                 name: "1",
             });
@@ -115,17 +143,19 @@ const testQueryStream = async (connection: oracledb.Connection): Promise<void> =
             return resolve(JSON.parse(data));
         });
 
-        stream.on("error", err => {
+        stream.on("error", (err) => {
             throw err;
         });
     });
 
-const createAndPopulateLob = (connection: oracledb.Connection): Promise<oracledb.Lob> =>
-    new Promise(resolve => {
+const createAndPopulateLob = (
+    connection: oracledb.Connection,
+): Promise<oracledb.Lob> =>
+    new Promise((resolve) => {
         console.log("Testing connection.createLob()...");
 
-        connection.createLob(oracledb.CLOB).then(lob => {
-            lob.write("abcdefg", "utf-8", err => {
+        connection.createLob(oracledb.CLOB).then((lob) => {
+            lob.write("abcdefg", "utf-8", (err) => {
                 if (err) {
                     throw err;
                 }
@@ -135,7 +165,9 @@ const createAndPopulateLob = (connection: oracledb.Connection): Promise<oracledb
         });
     });
 
-const testResultSet = async (connection: oracledb.Connection): Promise<void> => {
+const testResultSet = async (
+    connection: oracledb.Connection,
+): Promise<void> => {
     console.log("Testing ResultSet...");
 
     const result = await connection.execute(
@@ -345,23 +377,29 @@ const dbObjectTests = async () => {
     geom.SDO_ELEM_INFO = [1, 1003, 3];
     geom.SDO_ORDINATES = [1, 1, 5, 7];
 
-    geom.getKeys().find(e => e === "SDO_ELEM_INFO");
+    geom.getKeys().find((e) => e === "SDO_ELEM_INFO");
 
-    await conn.execute(`INSERT INTO testgeometry (id, geometry) VALUES (:id, :g)`, { id: 1, g: geom });
+    await conn.execute(
+        `INSERT INTO testgeometry (id, geometry) VALUES (:id, :g)`,
+        { id: 1, g: geom },
+    );
 
-    await conn.execute(`INSERT INTO testgeometry (id, geometry) VALUES (:id, :g)`, {
-        id: 1,
-        g: {
-            type: "MDSYS.SDO_GEOMETRY",
-            val: {
-                SDO_GTYPE: 2003,
-                SDO_SRID: null,
-                SDO_POINT: null,
-                SDO_ELEM_INFO: [1, 1003, 3],
-                SDO_ORDINATES: [1, 1, 5, 7],
+    await conn.execute(
+        `INSERT INTO testgeometry (id, geometry) VALUES (:id, :g)`,
+        {
+            id: 1,
+            g: {
+                type: "MDSYS.SDO_GEOMETRY",
+                val: {
+                    SDO_GTYPE: 2003,
+                    SDO_SRID: null,
+                    SDO_POINT: null,
+                    SDO_ELEM_INFO: [1, 1003, 3],
+                    SDO_ORDINATES: [1, 1, 5, 7],
+                },
             },
         },
-    });
+    );
 
     interface OutGeom {
         SDO_GTYPE: number;
@@ -379,7 +417,7 @@ const dbObjectTests = async () => {
     o.getKeys();
     o.SDO_ELEM_INFO.getKeys();
     console.log(o.SDO_ELEM_INFO.isCollection);
-    console.log(o.SDO_ELEM_INFO.getKeys().find(e => typeof e === "number"));
+    console.log(o.SDO_ELEM_INFO.getKeys().find((e) => typeof e === "number"));
     console.log(o.getValues()[0].SDO_ELEM_INFO);
 };
 
@@ -390,14 +428,17 @@ const version4Tests = async () => {
 
     const connection = await pool.getConnection();
 
-    const implicitResults = (await connection.execute<One>("SELECT 1 FROM DUAL"))
-        .implicitResults as Array<oracledb.ResultSet<One>>;
+    const implicitResults = (
+        await connection.execute<One>("SELECT 1 FROM DUAL")
+    ).implicitResults as Array<oracledb.ResultSet<One>>;
 
     (await implicitResults[0].getRow()).one;
 
     await implicitResults[0].close();
 
-    const implicitResults2 = (await connection.execute<One>("SELECT 1 FROM DUAL")).implicitResults as One[][];
+    const implicitResults2 = (
+        await connection.execute<One>("SELECT 1 FROM DUAL")
+    ).implicitResults as One[][];
 
     const results = implicitResults2[0][0];
 
@@ -424,11 +465,14 @@ const version4Tests = async () => {
 
     new geom.attributes.test.typeClass({});
 
-    await connection.execute(`INSERT INTO testgeometry (id, geometry) VALUES (:id, :g)`, { id: 1, g: geom });
+    await connection.execute(
+        `INSERT INTO testgeometry (id, geometry) VALUES (:id, :g)`,
+        { id: 1, g: geom },
+    );
 
     const sub = await connection.subscribe("test", {
         sql: "test",
-        callback: message => {
+        callback: (message) => {
             console.log(message.queueName);
             for (const query of message.queries ?? []) {
                 for (const table of query.tables ?? []) {
@@ -448,10 +492,26 @@ const version4Tests = async () => {
         payloadType: "test",
     });
 
-    const { name, deqOptions, enqOptions, payloadType, payloadTypeClass, payloadTypeName } = queue;
+    const {
+        name,
+        deqOptions,
+        enqOptions,
+        payloadType,
+        payloadTypeClass,
+        payloadTypeName,
+    } = queue;
 
-    const { condition, consumerName, correlation, mode, msgId, navigation, transformation, visibility, wait } =
-        deqOptions;
+    const {
+        condition,
+        consumerName,
+        correlation,
+        mode,
+        msgId,
+        navigation,
+        transformation,
+        visibility,
+        wait,
+    } = deqOptions;
 
     const messages = await queue.deqMany(5);
 
@@ -509,7 +569,9 @@ const version4Tests = async () => {
     await queue.enqOne(message);
     await connection.commit();
 
-    const queue5 = await connection.getQueue(queueName, { payloadType: "DEMOQUEUE.USER_ADDRESS_TYPE" });
+    const queue5 = await connection.getQueue(queueName, {
+        payloadType: "DEMOQUEUE.USER_ADDRESS_TYPE",
+    });
     const msg5 = await queue.deqOne();
     await connection.commit();
 };
@@ -557,12 +619,15 @@ const testGenerics = async () => {
     console.log(result.rows[0].firstColumn);
     console.log(result.rows[0].secondColumn);
 
-    const result2 = await connection.execute<{ test: string }>(" BEGIN DO_SOMETHING END;", {
-        test: {
-            dir: oracledb.BIND_OUT,
-            val: "something",
+    const result2 = await connection.execute<{ test: string }>(
+        " BEGIN DO_SOMETHING END;",
+        {
+            test: {
+                dir: oracledb.BIND_OUT,
+                val: "something",
+            },
         },
-    });
+    );
 
     console.log(result2.outBinds.test);
 
@@ -573,29 +638,34 @@ const testGenerics = async () => {
     console.log(result3.outBinds[0].firstColumn);
 };
 
-export const testQueryStreamGenerics = (connection: oracledb.Connection): void => {
+export const testQueryStreamGenerics = (
+    connection: oracledb.Connection,
+): void => {
     interface MyStream {
         streamTest: string;
     }
 
-    const stream = connection.queryStream<MyStream>("SELECT 1 FROM DUAL WHERE 10 < :myValue", {
-        myValue: {
-            dir: oracledb.BIND_IN,
-            maxSize: 50,
-            type: oracledb.NUMBER,
-            val: 20,
+    const stream = connection.queryStream<MyStream>(
+        "SELECT 1 FROM DUAL WHERE 10 < :myValue",
+        {
+            myValue: {
+                dir: oracledb.BIND_IN,
+                maxSize: 50,
+                type: oracledb.NUMBER,
+                val: 20,
+            },
+            anotherValue: {
+                dir: oracledb.BIND_INOUT,
+                type: oracledb.DB_TYPE_NCLOB,
+            },
         },
-        anotherValue: {
-            dir: oracledb.BIND_INOUT,
-            type: oracledb.DB_TYPE_NCLOB,
-        },
-    });
+    );
 
-    stream.on("data", data => {
+    stream.on("data", (data) => {
         console.log(data);
     });
 
-    stream.on("metadata", metadata => {
+    stream.on("metadata", (metadata) => {
         const streamClass = metadata[0].dbTypeClass;
 
         const streamClassInstance = new streamClass({

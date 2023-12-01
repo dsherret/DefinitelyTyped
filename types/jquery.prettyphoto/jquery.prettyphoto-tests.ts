@@ -20,7 +20,11 @@ $.prettyPhoto.open();
 
 $.prettyPhoto.open("test.jpg", "title", "description");
 
-$.prettyPhoto.open(["test1.jpg", "test2.jpg"], ["title1", "title2"], ["description1", "description2"]);
+$.prettyPhoto.open(
+    ["test1.jpg", "test2.jpg"],
+    ["title1", "title2"],
+    ["description1", "description2"],
+);
 
 $.prettyPhoto.startSlideshow();
 

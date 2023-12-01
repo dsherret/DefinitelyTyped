@@ -3,7 +3,10 @@ import Backend, { i18nextFsBackend } from "i18next-fs-backend";
 
 // #region Plain options
 
-const plainOptions: { backend: i18nextFsBackend.i18nextFsBackendOptions; skipOnVariables: boolean } = {
+const plainOptions: {
+    backend: i18nextFsBackend.i18nextFsBackendOptions;
+    skipOnVariables: boolean;
+} = {
     backend: {
         loadPath: "/locales/{{lng}}/{{ns}}.json",
         addPath: "/locales/{{lng}}/{{ns}}.missing.json",
@@ -36,7 +39,9 @@ i18next.use(Backend).init({ backend: loadPathOptions.backend });
 // #endregion
 // #region Custom parse & stringify
 
-const parseStringifyOptions: { backend: i18nextFsBackend.i18nextFsBackendOptions } = {
+const parseStringifyOptions: {
+    backend: i18nextFsBackend.i18nextFsBackendOptions;
+} = {
     backend: {
         loadPath: (lng: string, ns: string) => `/locales/${lng}/${ns}.json`,
         addPath: "/locales/{{lng}}/{{ns}}.missing.json",

@@ -1,5 +1,11 @@
 import * as React from "react";
-import { BrowserRouter, Link, Route, RouteComponentProps, Switch } from "react-router-dom";
+import {
+    BrowserRouter,
+    Link,
+    Route,
+    RouteComponentProps,
+    Switch,
+} from "react-router-dom";
 import {
     ConfigSwitch,
     GetKeyFunction,
@@ -28,7 +34,10 @@ class RouteOne extends React.Component<RouteComponentProps> {
                                 </ScrollIntoView>
                             ),
                         },
-                        { path: "/one/two", render: () => <div>One two route</div> },
+                        {
+                            path: "/one/two",
+                            render: () => <div>One two route</div>,
+                        },
                     ]}
                 />
             </div>
@@ -44,8 +53,7 @@ class RouteTwo extends React.Component<RouteComponentProps> {
     render() {
         return (
             <div>
-                Route 2
-                <Link to={{ pathname: "/one" }}>Go to Route 1</Link>
+                Route 2<Link to={{ pathname: "/one" }}>Go to Route 1</Link>
                 <OnUpdate call={this.onUpdate} />
             </div>
         );
@@ -83,16 +91,18 @@ class RouteFour extends React.Component<RouteComponentProps> {
         { path: "/four/something/:page", component: RouteTwo },
     ];
 
-    private readonly getKey: GetKeyFunction<Params> = (match, route, location) => {
+    private readonly getKey: GetKeyFunction<Params> = (
+        match,
+        route,
+        location,
+    ) => {
         return "my-key-" + match.url;
     };
 
     render() {
         return (
             <div>
-                <div>
-                    Route four
-                </div>
+                <div>Route four</div>
                 <div>
                     <WrappedLayout
                         getKey={this.getKey}
@@ -115,14 +125,14 @@ interface MyContainerProps {
 class MyContainer extends React.Component<MyContainerProps> {
     render() {
         return (
-            <div className={this.props.className}>
-                {this.props.children}
-            </div>
+            <div className={this.props.className}>{this.props.children}</div>
         );
     }
 }
 
-const ExtendedContainer = whenActive<MyContainerProps>({ className: "active" })(MyContainer);
+const ExtendedContainer = whenActive<MyContainerProps>({ className: "active" })(
+    MyContainer,
+);
 
 const RouteTwoWithScroll = withScroll(RouteTwo);
 
@@ -138,7 +148,12 @@ export const Routes = (
                     strict
                     path="/"
                     render={() => (
-                        <ExtendedContainer className="extended-container" color={3}>Route 3</ExtendedContainer>
+                        <ExtendedContainer
+                            className="extended-container"
+                            color={3}
+                        >
+                            Route 3
+                        </ExtendedContainer>
                     )}
                 />
             </Switch>

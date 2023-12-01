@@ -2,7 +2,13 @@ import * as React from "react";
 
 // Make sure all exports are defined, even though "connect" is the only one with
 // actual types.
-import { connect, nuclearComponent, nuclearMixin, Provider, provideReactor } from "nuclear-js-react-addons-chefsplate";
+import {
+    connect,
+    nuclearComponent,
+    nuclearMixin,
+    Provider,
+    provideReactor,
+} from "nuclear-js-react-addons-chefsplate";
 
 /******************** FUNCTION COMPONENT TESTS ********************************/
 
@@ -20,7 +26,9 @@ const ConnectedFCWithProps = connect(() => ({}))(FCWithProp);
 
 // Make sure it works with untyped function components.
 const UntypedFC: any = (props: { extra: string }) => <p />;
-const ConnectedUntypedFC = connect(() => ({ extra: null, superExtra: null }))(UntypedFC);
+const ConnectedUntypedFC = connect(() => ({ extra: null, superExtra: null }))(
+    UntypedFC,
+);
 <ConnectedUntypedFC />;
 
 // Make sure that injected props are NOT available in connected component.
@@ -38,7 +46,9 @@ const ConnectedFCWithOptionalProp = connect(() => ({}))(FCWithOptionalProp);
 
 // Any props injeted in mapStateToProps should NOT be available on the connected
 // component.
-const ConnectedFCWithoutOptionalProp = connect(() => ({ optional: null }))(FCWithOptionalProp);
+const ConnectedFCWithoutOptionalProp = connect(() => ({ optional: null }))(
+    FCWithOptionalProp,
+);
 <ConnectedFCWithoutOptionalProp />;
 // @ts-expect-error
 <ConnectedFCWithoutOptionalProp optional="" />;
@@ -71,7 +81,9 @@ const ConnectedCCWithProps = connect(() => ({}))(CCWithProp);
 
 // Make sure it works with untyped class components.
 const UntypedCC: any = CCWithProp;
-const ConnectedUntypedCC = connect(() => ({ extra: null, superExtra: null }))(UntypedCC);
+const ConnectedUntypedCC = connect(() => ({ extra: null, superExtra: null }))(
+    UntypedCC,
+);
 <ConnectedUntypedCC />;
 
 // Make sure that injected props are NOT available in connected component.
@@ -80,7 +92,9 @@ const ConnectedCCWithoutProps = connect(() => ({ extra: null }))(CCWithProp);
 <ConnectedCCWithoutProps extra="" />;
 
 // Check optional props.
-class CCWithOptionalProp extends React.Component<{ optional?: string | undefined }> {}
+class CCWithOptionalProp extends React.Component<{
+    optional?: string | undefined;
+}> {}
 const ConnectedCCWithOptionalProp = connect(() => ({}))(CCWithOptionalProp);
 <ConnectedCCWithOptionalProp />;
 <ConnectedCCWithOptionalProp optional="" />;
@@ -89,7 +103,9 @@ const ConnectedCCWithOptionalProp = connect(() => ({}))(CCWithOptionalProp);
 
 // Any props injeted in mapStateToProps should NOT be available on the connected
 // component.
-const ConnectedCCWithoutOptionalProp = connect(() => ({ optional: null }))(CCWithOptionalProp);
+const ConnectedCCWithoutOptionalProp = connect(() => ({ optional: null }))(
+    CCWithOptionalProp,
+);
 <ConnectedCCWithoutOptionalProp />;
 // @ts-expect-error
 <ConnectedCCWithoutOptionalProp optional="" />;

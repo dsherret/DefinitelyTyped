@@ -32,14 +32,26 @@ declare global {
      * slot: which slot this resonator occupies. Starts with 0 (east) and
      * rotates clockwise. So, last one is 7 (southeast).
      */
-    function renderResonatorDetails(slot: number, level: number, nrg: string, nick: string): string[];
+    function renderResonatorDetails(
+        slot: number,
+        level: number,
+        nrg: string,
+        nick: string,
+    ): string[];
 
     /**
      * calculate AP gain from destroying portal and then capturing it by deploying resonators
      */
-    function getAttackApGainText(d: IITC.PortalDataDetail, fieldCount: number, linkCount: number): string[];
+    function getAttackApGainText(
+        d: IITC.PortalDataDetail,
+        fieldCount: number,
+        linkCount: number,
+    ): string[];
 
     function getHackDetailsText(d: IITC.PortalDataDetail): string[];
 
-    function getMitigationText(d: IITC.PortalDataDetail, linkCount: number): string[];
+    function getMitigationText(
+        d: IITC.PortalDataDetail,
+        linkCount: number,
+    ): string[];
 }

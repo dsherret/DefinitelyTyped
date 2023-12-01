@@ -6,12 +6,15 @@ import * as fontkit from "fontkit";
 // @ts-expect-error Should expect error for v1 api usage with v2 types
 const openV1 = fontkit.open("fonts/a-font.ttf", "postscriptName", () => {});
 const openV2 = fontkit.open("fonts/a-font.ttf");
-const openV2withPostscriptName = fontkit.open("fonts/a-font.ttf", "postscriptName");
+const openV2withPostscriptName = fontkit.open(
+    "fonts/a-font.ttf",
+    "postscriptName",
+);
 
 // -----------------
 // API: Font['OS/2']
 // -----------------
-openV2.then(font => {
+openV2.then((font) => {
     const { xAvgCharWidth, fsSelection } = font["OS/2"];
     const isNegative = fsSelection.negative;
 });
@@ -53,7 +56,7 @@ dims.join("|");
 // -----------------
 // API: Font['hhea']
 // -----------------
-openV2.then(font => {
+openV2.then((font) => {
     font["hhea"].version; // $ExpectType number
     font.getGlyph; // $ExpectType (glyphId: number, codePoints?: number[] | undefined) => Glyph
     font.getGlyph(0); // $ExpectType Glyph

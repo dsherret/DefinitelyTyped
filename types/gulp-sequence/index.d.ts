@@ -30,13 +30,34 @@ for (let i = 1; i <= maxArgs; i++) {
 console.log(fnBase + outDone.join(`\n${fnBase}`));
 */
 
-declare function seq(firstTask: seq.Step, ...additionalTasks: seq.Step[]): TaskFunction;
+declare function seq(
+    firstTask: seq.Step,
+    ...additionalTasks: seq.Step[]
+): TaskFunction;
 
 declare function seq(s1: seq.Step, done: seq.Done): void;
 declare function seq(s1: seq.Step, s2: seq.Step, done: seq.Done): void;
-declare function seq(s1: seq.Step, s2: seq.Step, s3: seq.Step, done: seq.Done): void;
-declare function seq(s1: seq.Step, s2: seq.Step, s3: seq.Step, s4: seq.Step, done: seq.Done): void;
-declare function seq(s1: seq.Step, s2: seq.Step, s3: seq.Step, s4: seq.Step, s5: seq.Step, done: seq.Done): void;
+declare function seq(
+    s1: seq.Step,
+    s2: seq.Step,
+    s3: seq.Step,
+    done: seq.Done,
+): void;
+declare function seq(
+    s1: seq.Step,
+    s2: seq.Step,
+    s3: seq.Step,
+    s4: seq.Step,
+    done: seq.Done,
+): void;
+declare function seq(
+    s1: seq.Step,
+    s2: seq.Step,
+    s3: seq.Step,
+    s4: seq.Step,
+    s5: seq.Step,
+    done: seq.Done,
+): void;
 declare function seq(
     s1: seq.Step,
     s2: seq.Step,

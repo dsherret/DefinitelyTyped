@@ -11,4 +11,8 @@ var w1 = new Box2D.Dynamics.b2World(new Box2D.Common.Math.b2Vec2(0, 10), true);
 var w2 = new b2Dynamics.b2World(new b2Math.b2Vec2(0, 10), true);
 
 var debugDraw = new Box2D.Dynamics.b2DebugDraw();
-debugDraw.SetSprite((<HTMLCanvasElement> document.getElementsByTagName("canvas")[0]).getContext("2d"));
+debugDraw.SetSprite(
+    (<HTMLCanvasElement>document.getElementsByTagName("canvas")[0]).getContext(
+        "2d",
+    ),
+);

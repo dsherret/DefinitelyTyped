@@ -1,7 +1,11 @@
 /**
  * Stringify an object/array like JSON.stringify just without all the double-quotes
  */
-export default function stringifyObject(input: any, options?: Options, pad?: string): string;
+export default function stringifyObject(
+    input: any,
+    options?: Options,
+    pad?: string,
+): string;
 
 export interface Options {
     /**
@@ -27,5 +31,11 @@ export interface Options {
      * This can be used to detect special types of objects that need to be stringified in a particular way.
      * The transform function might return an alternate string in this case, otherwise returning the originalResult.
      */
-    transform?: ((input: any[] | object, prop: number | string | symbol, originalResult: string) => string) | undefined;
+    transform?:
+        | ((
+              input: any[] | object,
+              prop: number | string | symbol,
+              originalResult: string,
+          ) => string)
+        | undefined;
 }

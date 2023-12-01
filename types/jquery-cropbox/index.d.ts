@@ -104,7 +104,11 @@ declare namespace jQueryCropBox {
         on(event: string, callback: jQueryCropBox.EventCallback): void;
     }
 
-    type EventCallback = (e: Event, data: any, img: jQueryCropBox.Cropbox) => void;
+    type EventCallback = (
+        e: Event,
+        data: any,
+        img: jQueryCropBox.Cropbox,
+    ) => void;
 }
 
 interface JQuery {

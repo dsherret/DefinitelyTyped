@@ -46,15 +46,14 @@ const testCases = [
         <img src="test" width={100} height={100} />
     </picture>,
     <dialog
-        onCancel={event => {
+        onCancel={(event) => {
             // $ExpectType SyntheticEvent<HTMLDialogElement, Event>
             event;
         }}
-        onClose={event => {
+        onClose={(event) => {
             // $ExpectType SyntheticEvent<HTMLDialogElement, Event>
             event;
         }}
-    >
-    </dialog>,
+    ></dialog>,
     <link nonce="8IBTHwOdqNKAWeKl7plt8g==" />,
 ];

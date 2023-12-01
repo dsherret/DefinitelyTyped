@@ -39,7 +39,10 @@ export function isGitSync(path: string): boolean;
  *                       //      stashes: 0 }
  * })
  */
-export function check(path: string | URL, cb: (error: ExecException | null, result: CheckResult) => void): void;
+export function check(
+    path: string | URL,
+    cb: (error: ExecException | null, result: CheckResult) => void,
+): void;
 export function check(
     path: string | URL,
     opts: Options | undefined,
@@ -72,7 +75,10 @@ export function checkSync(path: string | URL, opts?: Options): CheckResult;
  *   console.log(untracked) // => 1
  * })
  */
-export function untracked(path: string | URL, cb: (error: ExecException | null, untracked: number) => void): void;
+export function untracked(
+    path: string | URL,
+    cb: (error: ExecException | null, untracked: number) => void,
+): void;
 export function untracked(
     path: string | URL,
     opts: Options | undefined,
@@ -100,7 +106,10 @@ export function untrackedSync(path: string | URL, opts?: Options): number;
  *   console.log(dirty) // => 9
  * })
  */
-export function dirty(path: string | URL, cb: (error: ExecException | null, dirty: number) => void): void;
+export function dirty(
+    path: string | URL,
+    cb: (error: ExecException | null, dirty: number) => void,
+): void;
 export function dirty(
     path: string | URL,
     opts: Options | undefined,
@@ -131,7 +140,10 @@ export function dirtySync(path: string | URL, opts?: Options): number;
  *   console.log(branch) // => 'master'
  * })
  */
-export function branch(path: string | URL, cb: (error: ExecException | null, branch: string | undefined) => void): void;
+export function branch(
+    path: string | URL,
+    cb: (error: ExecException | null, branch: string | undefined) => void,
+): void;
 export function branch(
     path: string | URL,
     opts: Options | undefined,
@@ -165,7 +177,10 @@ export function branchSync(path: string | URL, opts?: Options): string | null;
  *   console.log(ahead) // => 0
  * })
  */
-export function ahead(path: string | URL, cb: (error: ExecException | null, ahead: number) => void): void;
+export function ahead(
+    path: string | URL,
+    cb: (error: ExecException | null, ahead: number) => void,
+): void;
 export function ahead(
     path: string | URL,
     opts: Options | undefined,
@@ -197,7 +212,10 @@ export function aheadSync(path: string | URL, opts?: Options): number;
  *   console.log(commitHash) // => '7b0a3ab'
  * })
  */
-export function commit(path: string | URL, cb: (error: ExecException | null, commitHash: string) => void): void;
+export function commit(
+    path: string | URL,
+    cb: (error: ExecException | null, commitHash: string) => void,
+): void;
 export function commit(
     path: string | URL,
     opts: Options | undefined,
@@ -227,7 +245,10 @@ export function commitSync(path: string | URL, opts?: Options): string;
  *   console.log(stashes) // => 0
  * })
  */
-export function stashes(path: string | URL, cb: (error: ExecException | null, stashes: number) => void): void;
+export function stashes(
+    path: string | URL,
+    cb: (error: ExecException | null, stashes: number) => void,
+): void;
 export function stashes(
     path: string | URL,
     opts: Options | undefined,
@@ -256,7 +277,10 @@ export function stashesSync(path: string | URL, opts?: Options): number;
  *   console.log(message) // => 'Release 1.0.0'
  * })
  */
-export function message(path: string | URL, cb: (error: ExecException | null, message: string) => void): void;
+export function message(
+    path: string | URL,
+    cb: (error: ExecException | null, message: string) => void,
+): void;
 export function message(
     path: string | URL,
     opts: Options | undefined,

@@ -114,7 +114,10 @@ export interface OutputFormatBare extends BuildOptionsBase {
 /** Returns a generated parser object. It will throw an exception if the grammar is invalid. The exception will contain `message` property with more details about the error. */
 export function generate(grammar: string, options?: ParserBuildOptions): Parser;
 /** Returns the generated source code as a `string`. It will throw an exception if the grammar is invalid. The exception will contain `message` property with more details about the error. */
-export function generate(grammar: string, options: OutputFormatAmdCommonjs): string;
+export function generate(
+    grammar: string,
+    options: OutputFormatAmdCommonjs,
+): string;
 /** Returns the generated source code as a `string`. It will throw an exception if the grammar is invalid. The exception will contain `message` property with more details about the error. */
 export function generate(grammar: string, options: OutputFormatUmd): string;
 /** Returns the generated source code as a `string`. It will throw an exception if the grammar is invalid. The exception will contain `message` property with more details about the error. */

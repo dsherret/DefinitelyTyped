@@ -27,23 +27,31 @@ declare namespace SegmentAnalytics {
     }
 
     interface UserOptions {
-        cookie?: {
-            key: string;
-            oldKey: string;
-        } | undefined;
-        localStorage?: {
-            key: string;
-        } | undefined;
+        cookie?:
+            | {
+                  key: string;
+                  oldKey: string;
+              }
+            | undefined;
+        localStorage?:
+            | {
+                  key: string;
+              }
+            | undefined;
         persist?: boolean | undefined;
     }
 
     interface GroupOptions {
-        cookie?: {
-            key: string;
-        } | undefined;
-        localStorage?: {
-            key: string;
-        } | undefined;
+        cookie?:
+            | {
+                  key: string;
+              }
+            | undefined;
+        localStorage?:
+            | {
+                  key: string;
+              }
+            | undefined;
         persist?: boolean | undefined;
     }
 
@@ -53,10 +61,12 @@ declare namespace SegmentAnalytics {
         localStorage?: StoreOptions | undefined;
         user?: UserOptions | undefined;
         group?: GroupOptions | undefined;
-        integrations?: {
-            All?: boolean | undefined;
-            [integration: string]: boolean | undefined;
-        } | undefined;
+        integrations?:
+            | {
+                  All?: boolean | undefined;
+                  [integration: string]: boolean | undefined;
+              }
+            | undefined;
     }
 
     interface IntegrationsSettings {
@@ -90,31 +100,65 @@ declare namespace SegmentAnalytics {
 
         /* The identify method is how you tie one of your users and their actions
        to a recognizable userId and traits. */
-        identify(userId: string, traits?: Object, options?: SegmentOpts, callback?: () => void): void;
+        identify(
+            userId: string,
+            traits?: Object,
+            options?: SegmentOpts,
+            callback?: () => void,
+        ): void;
         identify(userId: string, traits: Object, callback?: () => void): void;
         identify(userId: string, callback?: () => void): void;
-        identify(traits?: Object, options?: SegmentOpts, callback?: () => void): void;
+        identify(
+            traits?: Object,
+            options?: SegmentOpts,
+            callback?: () => void,
+        ): void;
         identify(traits?: Object, callback?: () => void): void;
         identify(callback: () => void): void;
 
         /* The track method lets you record any actions your users perform. */
-        track(event: string, properties?: Object, options?: SegmentOpts, callback?: () => void): void;
+        track(
+            event: string,
+            properties?: Object,
+            options?: SegmentOpts,
+            callback?: () => void,
+        ): void;
         track(event: string, properties?: Object, callback?: () => void): void;
         track(event: string, callback?: () => void): void;
 
         /* The page method lets you record page views on your website, along with
        optional extra information about the page being viewed. */
-        page(category?: string, name?: string, properties?: Object, options?: SegmentOpts, callback?: () => void): void;
-        page(name?: string, properties?: Object, options?: SegmentOpts, callback?: () => void): void;
+        page(
+            category?: string,
+            name?: string,
+            properties?: Object,
+            options?: SegmentOpts,
+            callback?: () => void,
+        ): void;
+        page(
+            name?: string,
+            properties?: Object,
+            options?: SegmentOpts,
+            callback?: () => void,
+        ): void;
         page(name?: string, properties?: Object, callback?: () => void): void;
         page(name?: string, callback?: () => void): void;
-        page(properties?: Object, options?: SegmentOpts, callback?: () => void): void;
+        page(
+            properties?: Object,
+            options?: SegmentOpts,
+            callback?: () => void,
+        ): void;
         page(callback?: () => void): void;
 
         /* The group method associates an individual user with a group. The group
        can a company, organization, account, project, team or any other name
        you came up with for the same concept. */
-        group(groupId: string, traits?: Object, options?: SegmentOpts, callback?: () => void): void;
+        group(
+            groupId: string,
+            traits?: Object,
+            options?: SegmentOpts,
+            callback?: () => void,
+        ): void;
         group(groupId: string, traits?: Object, callback?: () => void): void;
         group(groupId: string, callback?: () => void): void;
 
@@ -125,10 +169,19 @@ declare namespace SegmentAnalytics {
        Some providers also don’t alias automatically for you when an anonymous
        user signs up (like Mixpanel), so you need to call alias manually right
        after sign up with their brand new userId. */
-        alias(userId: string, previousId?: string, options?: SegmentOpts, callback?: () => void): void;
+        alias(
+            userId: string,
+            previousId?: string,
+            options?: SegmentOpts,
+            callback?: () => void,
+        ): void;
         alias(userId: string, previousId?: string, callback?: () => void): void;
         alias(userId: string, callback?: () => void): void;
-        alias(userId: string, options?: SegmentOpts, callback?: () => void): void;
+        alias(
+            userId: string,
+            options?: SegmentOpts,
+            callback?: () => void,
+        ): void;
 
         /* trackLink is a helper that binds a track call to whenever a link is
        clicked. Usually the page would change before you could call track, but
@@ -182,9 +235,12 @@ declare namespace SegmentAnalytics {
         /* The global analytics object emits events whenever you call alias, group,
        identify, track or page. That way you can listen to those events and run
        your own custom code. */
-        on(event: string, callback: {
-            (event: string, properties: Object, options: SegmentOpts): void;
-        }): void;
+        on(
+            event: string,
+            callback: {
+                (event: string, properties: Object, options: SegmentOpts): void;
+            },
+        ): void;
 
         /* You can extend the length (in milliseconds) of the method callbacks and
        helpers */

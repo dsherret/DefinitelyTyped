@@ -93,8 +93,15 @@ export interface ParsedEmail {
 export class MailParser extends Stream implements NodeJS.WritableStream {
     constructor(options?: MailParserOptions);
     writable: true;
-    write(buffer: string | Uint8Array, cb?: (err?: Error | null) => void): boolean;
-    write(str: string, encoding?: BufferEncoding, cb?: (err?: Error | null) => void): boolean;
+    write(
+        buffer: string | Uint8Array,
+        cb?: (err?: Error | null) => void,
+    ): boolean;
+    write(
+        str: string,
+        encoding?: BufferEncoding,
+        cb?: (err?: Error | null) => void,
+    ): boolean;
     end(cb?: () => void): this;
     end(data: string | Uint8Array, cb?: () => void): this;
     end(str: string, encoding?: BufferEncoding, cb?: () => void): this;
@@ -107,5 +114,11 @@ export class MailParser extends Stream implements NodeJS.WritableStream {
     on(event: string, callback: (any: any) => void): this;
     on(event: "end", listener: (email: ParsedEmail) => void): this;
     on(event: "headers", listener: (headers: Headers) => void): this;
-    on(event: "attachment", listener: (attachment: StreamAttachment, rootNode: MimeTreeNode) => void): this;
+    on(
+        event: "attachment",
+        listener: (
+            attachment: StreamAttachment,
+            rootNode: MimeTreeNode,
+        ) => void,
+    ): this;
 }

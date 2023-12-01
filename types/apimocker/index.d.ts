@@ -38,6 +38,9 @@ export function createServer(options?: ConfigOptions): ApiMocker;
 
 export function setConfigFile(file: string): ApiMocker;
 
-export function start(serverPort: string | number, callback?: () => void): ApiMocker;
+export function start(
+    serverPort: string | number,
+    callback?: () => void,
+): ApiMocker;
 
 export function stop(callback?: () => void): ApiMocker;

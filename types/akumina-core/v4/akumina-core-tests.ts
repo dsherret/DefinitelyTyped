@@ -46,4 +46,7 @@ factory.GetList(request);
 
 Akumina.Digispace.AppPart.Eventing.Publish("route", {});
 
-boolTest(Akumina.Digispace.ConfigurationContext.CONSTANTS.LOADER_STEPS_ENABLE_VALIDATEWORKSPACECONFIG);
+boolTest(
+    Akumina.Digispace.ConfigurationContext.CONSTANTS
+        .LOADER_STEPS_ENABLE_VALIDATEWORKSPACECONFIG,
+);

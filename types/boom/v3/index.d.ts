@@ -19,12 +19,24 @@ declare namespace Boom {
         payload: any;
     }
 
-    export function wrap(error: Error, statusCode?: number, message?: string): BoomError;
-    export function create(statusCode: number, message?: string, data?: any): BoomError;
+    export function wrap(
+        error: Error,
+        statusCode?: number,
+        message?: string,
+    ): BoomError;
+    export function create(
+        statusCode: number,
+        message?: string,
+        data?: any,
+    ): BoomError;
 
     // 4xx
     export function badRequest(message?: string, data?: any): BoomError;
-    export function unauthorized(message?: string, scheme?: any, attributes?: any): BoomError;
+    export function unauthorized(
+        message?: string,
+        scheme?: any,
+        attributes?: any,
+    ): BoomError;
     export function forbidden(message?: string, data?: any): BoomError;
     export function notFound(message?: string, data?: any): BoomError;
     export function methodNotAllowed(message?: string, data?: any): BoomError;
@@ -37,13 +49,22 @@ declare namespace Boom {
     export function preconditionFailed(message?: string, data?: any): BoomError;
     export function entityTooLarge(message?: string, data?: any): BoomError;
     export function uriTooLong(message?: string, data?: any): BoomError;
-    export function unsupportedMediaType(message?: string, data?: any): BoomError;
-    export function rangeNotSatisfiable(message?: string, data?: any): BoomError;
+    export function unsupportedMediaType(
+        message?: string,
+        data?: any,
+    ): BoomError;
+    export function rangeNotSatisfiable(
+        message?: string,
+        data?: any,
+    ): BoomError;
     export function expectationFailed(message?: string, data?: any): BoomError;
     export function badData(message?: string, data?: any): BoomError;
     export function locked(message?: string, data?: any): BoomError;
     export function failedDependency(message?: string, data?: any): BoomError;
-    export function preconditionRequired(message?: string, data?: any): BoomError;
+    export function preconditionRequired(
+        message?: string,
+        data?: any,
+    ): BoomError;
     export function tooManyRequests(message?: string, data?: any): BoomError;
     export function illegal(message?: string, data?: any): BoomError;
 

@@ -32,7 +32,11 @@ export { default as countBy } from "./countBy.js";
 export { default as create } from "./create.js";
 export { default as curry } from "./curry.js";
 export { default as curryRight } from "./curryRight.js";
-export { DebouncedFunc, DebounceSettings, default as debounce } from "./debounce.js";
+export {
+    DebouncedFunc,
+    DebounceSettings,
+    default as debounce,
+} from "./debounce.js";
 export { default as deburr } from "./deburr.js";
 export { default as defaults } from "./defaults.js";
 export { default as defaultsDeep } from "./defaultsDeep.js";

@@ -24,4 +24,6 @@ spinner = spinner.setSpinnerTitle("My spinner title");
 
 const isSpinning: boolean = spinner.isSpinning();
 
-const Spinner2: typeof Spinner = Spinner.setDefaultSpinnerDelay(100).setDefaultSpinnerString("Other spinner string");
+const Spinner2: typeof Spinner = Spinner.setDefaultSpinnerDelay(
+    100,
+).setDefaultSpinnerString("Other spinner string");

@@ -32,9 +32,14 @@ type AnimationType =
     | number[][]
     | Array<Record<string, unknown>>;
 
-type ElsType = Element | Element[] | ReturnType<typeof document.querySelectorAll>;
+type ElsType =
+    | Element
+    | Element[]
+    | ReturnType<typeof document.querySelectorAll>;
 
-type OptsType = string | (Record<string, unknown> & { name: string } & Partial<PresetsConfig>);
+type OptsType =
+    | string
+    | (Record<string, unknown> & { name: string } & Partial<PresetsConfig>);
 
 type InferParams<T extends ElsType> = T extends Element ? [T] : T;
 
@@ -50,7 +55,10 @@ export function hasAnimation(name: string): boolean;
  * @param opts If this is a string it's assumed to be the name of the animation to run. If you pass an object it has to contain the name.
  */
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export function runAnimation<T extends OptsType>(els: ElsType, opts: T): Promise<T> | void;
+export function runAnimation<T extends OptsType>(
+    els: ElsType,
+    opts: T,
+): Promise<T> | void;
 
 /**
  * Run animation with the name specified on the nodes you pass in.

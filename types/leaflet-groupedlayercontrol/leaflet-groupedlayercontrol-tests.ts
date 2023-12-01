@@ -23,4 +23,6 @@ const groupedLayersOptions: L.GroupedLayersOptions = {
     groupCheckboxes: false,
 };
 
-L.control.groupedLayers(baseLayers, groupedOverlays, groupedLayersOptions).addTo(map);
+L.control
+    .groupedLayers(baseLayers, groupedOverlays, groupedLayersOptions)
+    .addTo(map);

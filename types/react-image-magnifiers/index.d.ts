@@ -33,13 +33,15 @@ export interface MagnifierProps extends CommonProps {
     touchActivation?: TouchActivation | undefined;
     cursorStyleActive?: string | undefined;
     dragToMove?: boolean | undefined;
-    interactionSettings?: {
-        tapDurationInMs?: number | undefined;
-        doubleTapDurationInMs?: number | undefined;
-        longTouchDurationInMs?: number | undefined;
-        longTouchMoveLimit?: number | undefined;
-        clickMoveLimit?: number | undefined;
-    } | undefined;
+    interactionSettings?:
+        | {
+              tapDurationInMs?: number | undefined;
+              doubleTapDurationInMs?: number | undefined;
+              longTouchDurationInMs?: number | undefined;
+              longTouchMoveLimit?: number | undefined;
+              clickMoveLimit?: number | undefined;
+          }
+        | undefined;
 }
 
 export const Magnifier: React.ComponentType<MagnifierProps>;

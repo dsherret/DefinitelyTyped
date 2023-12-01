@@ -28,7 +28,9 @@ declare namespace GoogleAdsScripts {
         }
 
         interface SitelinkBuilder extends Base.Builder<SitelinkOperation> {
-            withCustomParameters(customParameters: Record<string, string>): this;
+            withCustomParameters(
+                customParameters: Record<string, string>,
+            ): this;
             withDescription1(description1: string): this;
             withDescription2(description2: string): this;
             withEndDate(date: string | GoogleAdsDate): this;
@@ -47,14 +49,12 @@ declare namespace GoogleAdsScripts {
         interface SitelinkOperation extends Base.Operation<Sitelink> {}
 
         interface SitelinkSelector
-            extends
-                Base.Selector<SitelinkIterator>,
+            extends Base.Selector<SitelinkIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
 
         interface SitelinkUrls {
             clearFinalUrlSuffix(): void;

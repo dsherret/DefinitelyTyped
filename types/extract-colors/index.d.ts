@@ -2,9 +2,15 @@
  * @param src String for a path of image, Image or ImageData.
  * @param options Optional parameters.
  */
-export function extractColors(src: string | HTMLImageElement | ImageData, options?: Options): Promise<Colors[]>;
+export function extractColors(
+    src: string | HTMLImageElement | ImageData,
+    options?: Options,
+): Promise<Colors[]>;
 export function extractColorsFromSrc(src: string, option?: Options): Colors[];
-export function extractColorsFromImageData(imageData: ImageData, option?: Options): Colors[];
+export function extractColorsFromImageData(
+    imageData: ImageData,
+    option?: Options,
+): Colors[];
 
 export interface Options {
     /**
@@ -34,7 +40,12 @@ export interface Options {
      * @param blue
      * @param alpha
      */
-    colorValidator?: (red: number, green: number, blue: number, alpha: number) => boolean;
+    colorValidator?: (
+        red: number,
+        green: number,
+        blue: number,
+        alpha: number,
+    ) => boolean;
     /**
      * Only for browser, can be 'Anonymous' to avoid CORS
      * @default null

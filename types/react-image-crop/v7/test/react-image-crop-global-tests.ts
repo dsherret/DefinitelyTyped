@@ -17,14 +17,11 @@ class SimpleTest extends React.Component<{}, TestState> {
     };
 
     render() {
-        return React.createElement(
-            ReactCrop,
-            {
-                src: "imageSrc",
-                onChange: this.onChange,
-                crop: this.state.crop,
-            },
-        );
+        return React.createElement(ReactCrop, {
+            src: "imageSrc",
+            onChange: this.onChange,
+            crop: this.state.crop,
+        });
     }
 }
 
@@ -51,15 +48,12 @@ class AspectRatioTest extends React.Component<{}, TestState> {
     };
 
     render() {
-        return React.createElement(
-            ReactCrop,
-            {
-                src: "imageSrc",
-                onChange: this.onChange,
-                onImageLoaded: this.onImageLoaded,
-                crop: this.state.crop,
-            },
-        );
+        return React.createElement(ReactCrop, {
+            src: "imageSrc",
+            onChange: this.onChange,
+            onImageLoaded: this.onImageLoaded,
+            crop: this.state.crop,
+        });
     }
 }
 
@@ -90,28 +84,25 @@ class CompleteTest extends React.Component<{}, TestState> {
     };
 
     render() {
-        return React.createElement(
-            ReactCrop,
-            {
-                src: "imageSrc",
-                onChange: this.onChange,
-                onImageLoaded: this.onImageLoaded,
-                crop: this.state.crop,
-                minWidth: 30,
-                minHeight: 30,
-                maxWidth: 90,
-                maxHeight: 90,
-                keepSelection: true,
-                disabled: false,
-                style: { border: "1px solid black", position: "relative" },
-                onComplete: () => console.log("Crop complete"),
-                onDragStart: () => console.log("Drag start"),
-                onDragEnd: () => console.log("Drag end"),
-                crossorigin: "anonymous",
-                onImageError: this.onImageError,
-                className: "my-cropper",
-                locked: false,
-            },
-        );
+        return React.createElement(ReactCrop, {
+            src: "imageSrc",
+            onChange: this.onChange,
+            onImageLoaded: this.onImageLoaded,
+            crop: this.state.crop,
+            minWidth: 30,
+            minHeight: 30,
+            maxWidth: 90,
+            maxHeight: 90,
+            keepSelection: true,
+            disabled: false,
+            style: { border: "1px solid black", position: "relative" },
+            onComplete: () => console.log("Crop complete"),
+            onDragStart: () => console.log("Drag start"),
+            onDragEnd: () => console.log("Drag end"),
+            crossorigin: "anonymous",
+            onImageError: this.onImageError,
+            className: "my-cropper",
+            locked: false,
+        });
     }
 }

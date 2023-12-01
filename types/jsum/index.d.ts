@@ -5,7 +5,11 @@
  * @param hashAlgorithm hash algorithm (e.g. SHA256)
  * @param encoding hash encoding (e.g. base64) or none for buffer
  */
-export function digest(obj: any, hashAlgorithm: string, encoding: string): string;
+export function digest(
+    obj: any,
+    hashAlgorithm: string,
+    encoding: string,
+): string;
 
 /**
  * Stringifies a JSON object (not any random JS object).

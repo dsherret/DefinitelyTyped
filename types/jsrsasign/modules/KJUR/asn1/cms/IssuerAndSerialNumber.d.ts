@@ -23,9 +23,14 @@ declare namespace jsrsasign.KJUR.asn1.cms {
                 | string
                 | { cert: string }
                 | {
-                    issuer: StringParam;
-                    serial: DERInteger | IntegerParam | BigIntegerParam | HexParam | number;
-                },
+                      issuer: StringParam;
+                      serial:
+                          | DERInteger
+                          | IntegerParam
+                          | BigIntegerParam
+                          | HexParam
+                          | number;
+                  },
         );
         setByCertPEM(certPEM: string): void;
         getEncodedHex(): string;

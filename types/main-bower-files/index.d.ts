@@ -21,6 +21,9 @@ interface IOptions {
     filter?: RegExp | IFilterFunction | string | string[] | undefined;
 }
 
-declare function mainBowerFiles(options?: IOptions, callback?: (error: Error | null) => void): string[];
+declare function mainBowerFiles(
+    options?: IOptions,
+    callback?: (error: Error | null) => void,
+): string[];
 
 export = mainBowerFiles;

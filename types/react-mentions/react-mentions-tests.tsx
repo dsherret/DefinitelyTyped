@@ -1,5 +1,10 @@
 import * as React from "react";
-import { Mention, MentionsInput, OnChangeHandlerFunc, SuggestionDataItem } from "react-mentions";
+import {
+    Mention,
+    MentionsInput,
+    OnChangeHandlerFunc,
+    SuggestionDataItem,
+} from "react-mentions";
 import {
     applyChangeToValue,
     combineRegExps,
@@ -32,7 +37,7 @@ interface TestProps {
     regex: RegExp;
 }
 
-export const TestSimple: React.FC<TestProps> = props => {
+export const TestSimple: React.FC<TestProps> = (props) => {
     const inputEl = React.createRef<HTMLTextAreaElement>();
 
     function handleClick() {
@@ -49,7 +54,12 @@ export const TestSimple: React.FC<TestProps> = props => {
                 placeholder={"Mention people using '@'"}
                 inputRef={inputEl}
             >
-                <Mention trigger="@" displayTransform={login => `@${login}`} data={props.data} onAdd={props.onAdd} />
+                <Mention
+                    trigger="@"
+                    displayTransform={(login) => `@${login}`}
+                    data={props.data}
+                    onAdd={props.onAdd}
+                />
             </MentionsInput>
 
             <button onClick={handleClick}>Focus</button>
@@ -57,9 +67,13 @@ export const TestSimple: React.FC<TestProps> = props => {
     );
 };
 
-export const TestMultipleTrigger: React.FC<TestProps> = props => {
+export const TestMultipleTrigger: React.FC<TestProps> = (props) => {
     return (
-        <MentionsInput value={props.value} onChange={props.onChange} placeholder={"Mention people using '@'"}>
+        <MentionsInput
+            value={props.value}
+            onChange={props.onChange}
+            placeholder={"Mention people using '@'"}
+        >
             <Mention
                 trigger="@"
                 markup={`@[${PLACEHOLDERS.display}](__type__:${PLACEHOLDERS.id})`}
@@ -70,53 +84,67 @@ export const TestMultipleTrigger: React.FC<TestProps> = props => {
                     highlightedDisplay: React.ReactNode,
                     index: number,
                     focused: boolean,
-                ) => <div className={`user ${focused ? "focused" : ""}`}>{highlightedDisplay}</div>}
+                ) => (
+                    <div className={`user ${focused ? "focused" : ""}`}>
+                        {highlightedDisplay}
+                    </div>
+                )}
                 onAdd={props.onAdd}
             />
 
             <Mention
                 trigger={props.regex}
                 markup={`@[${PLACEHOLDERS.display}](__type__:${PLACEHOLDERS.id})`}
-                data={search => [{ id: search, display: search }]}
+                data={(search) => [{ id: search, display: search }]}
                 onAdd={props.onAdd}
             />
         </MentionsInput>
     );
 };
 
-export const TestCustomSuggestionContainer: React.FC<TestProps> = props => {
+export const TestCustomSuggestionContainer: React.FC<TestProps> = (props) => {
     return (
         <MentionsInput
             value={props.value}
             onChange={props.onChange}
             placeholder={"Mention people using '@'"}
-            customSuggestionsContainer={children => <div className="suggestions">{children}</div>}
+            customSuggestionsContainer={(children) => (
+                <div className="suggestions">{children}</div>
+            )}
         >
             <Mention
                 trigger={props.regex}
                 markup={`@[${PLACEHOLDERS.display}](__type__:${PLACEHOLDERS.id})`}
-                data={search => [{ id: search, display: search }]}
+                data={(search) => [{ id: search, display: search }]}
                 onAdd={props.onAdd}
             />
         </MentionsInput>
     );
 };
 
-export const TestAsyncDataFunc: React.FunctionComponent<TestProps> = props => {
+export const TestAsyncDataFunc: React.FunctionComponent<TestProps> = (
+    props,
+) => {
     return (
-        <MentionsInput value={props.value} onChange={props.onChange} placeholder={"Mention people using '@'"}>
+        <MentionsInput
+            value={props.value}
+            onChange={props.onChange}
+            placeholder={"Mention people using '@'"}
+        >
             {/* Using async function syntax: */}
             <Mention
                 trigger={props.regex}
                 markup={`@[${PLACEHOLDERS.display}](__type__:${PLACEHOLDERS.id})`}
-                data={async search => [{ id: search, display: search }]}
+                data={async (search) => [{ id: search, display: search }]}
                 onAdd={props.onAdd}
             />
             {/* Using explicit Promise syntax: */}
             <Mention
                 trigger={props.regex}
                 markup={`@[${PLACEHOLDERS.display}](__type__:${PLACEHOLDERS.id})`}
-                data={search => Promise.resolve([{ id: search, display: search }])}
+                data={(search) =>
+                    Promise.resolve([{ id: search, display: search }])
+                }
                 onAdd={props.onAdd}
             />
         </MentionsInput>
@@ -211,28 +239,32 @@ isPlainObject([]);
 isPlainObject(10);
 
 // $ExpectType void
-iterateMentionsMarkup("foo", [config], (match, index, plainTextIndex, id, display, childIndex, start) => {
-    // $ExpectType string
-    match;
+iterateMentionsMarkup(
+    "foo",
+    [config],
+    (match, index, plainTextIndex, id, display, childIndex, start) => {
+        // $ExpectType string
+        match;
 
-    // $ExpectType number
-    index;
+        // $ExpectType number
+        index;
 
-    // $ExpectType number
-    plainTextIndex;
+        // $ExpectType number
+        plainTextIndex;
 
-    // $ExpectType string | number
-    id;
+        // $ExpectType string | number
+        id;
 
-    // $ExpectType string
-    display;
+        // $ExpectType string
+        display;
 
-    // $ExpectType number
-    childIndex;
+        // $ExpectType number
+        childIndex;
 
-    // $ExpectType number
-    start;
-});
+        // $ExpectType number
+        start;
+    },
+);
 
 // $ExpectType void
 iterateMentionsMarkup(

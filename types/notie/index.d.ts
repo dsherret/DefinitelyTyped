@@ -1,6 +1,16 @@
 export as namespace notie;
 
-export type AlertType = 1 | 2 | 3 | 4 | 5 | "success" | "warning" | "error" | "info" | "neutral";
+export type AlertType =
+    | 1
+    | 2
+    | 3
+    | 4
+    | 5
+    | "success"
+    | "warning"
+    | "error"
+    | "info"
+    | "neutral";
 
 export type Position = "top" | "bottom";
 
@@ -36,7 +46,11 @@ export interface ForceOptions {
     callback?: (() => void) | undefined;
 }
 
-export function confirm(options: ConfirmOptions, submitCallback?: () => void, cancelCallback?: () => void): void;
+export function confirm(
+    options: ConfirmOptions,
+    submitCallback?: () => void,
+    cancelCallback?: () => void,
+): void;
 
 export interface ConfirmOptions {
     text: string;
@@ -98,7 +112,10 @@ export interface InputOptions {
     cancelCallback?: ((value: string) => void) | undefined;
 }
 
-export function select(options: SelectOptions, cancelCallback?: () => void): void;
+export function select(
+    options: SelectOptions,
+    cancelCallback?: () => void,
+): void;
 
 export interface SelectOptions {
     text: string;
@@ -149,38 +166,54 @@ export interface AllOptions {
     transitionSelector?: string | undefined;
     classes?:
         | Partial<
-            Record<
-                | "container"
-                | "textbox"
-                | "textboxInner"
-                | "button"
-                | "element"
-                | "elementHalf"
-                | "elementThird"
-                | "overlay"
-                | "backgroundSuccess"
-                | "backgroundWarning"
-                | "backgroundError"
-                | "backgroundInfo"
-                | "backgroundNeutral"
-                | "backgroundOverlay"
-                | "alert"
-                | "inputField"
-                | "selectChoiceRepeated"
-                | "dateSelectorInner"
-                | "dateSelectorUp",
-                string
-            >
-        >
+              Record<
+                  | "container"
+                  | "textbox"
+                  | "textboxInner"
+                  | "button"
+                  | "element"
+                  | "elementHalf"
+                  | "elementThird"
+                  | "overlay"
+                  | "backgroundSuccess"
+                  | "backgroundWarning"
+                  | "backgroundError"
+                  | "backgroundInfo"
+                  | "backgroundNeutral"
+                  | "backgroundOverlay"
+                  | "alert"
+                  | "inputField"
+                  | "selectChoiceRepeated"
+                  | "dateSelectorInner"
+                  | "dateSelectorUp",
+                  string
+              >
+          >
         | undefined;
     ids?: { overlay?: string | undefined } | undefined;
-    positions?: Partial<Record<"alert" | "force" | "confirm" | "input" | "select" | "date", Position>> | undefined;
+    positions?:
+        | Partial<
+              Record<
+                  "alert" | "force" | "confirm" | "input" | "select" | "date",
+                  Position
+              >
+          >
+        | undefined;
 }
 
 export function hideAlerts(callback?: () => void): void;
 
 declare namespace _default {
-    export { alert, confirm, date, force, hideAlerts, input, select, setOptions };
+    export {
+        alert,
+        confirm,
+        date,
+        force,
+        hideAlerts,
+        input,
+        select,
+        setOptions,
+    };
 }
 
 export default _default;

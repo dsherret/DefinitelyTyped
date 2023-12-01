@@ -13,7 +13,9 @@
  * will return the same promise every time. Internally, the same canvas element will be reused, continuing the existing animation with the
  * new confetti added. The promise returned by each call to `confetti` will resolve once all animations are done.
  */
-declare function confetti(options?: confetti.Options): Promise<undefined> | null;
+declare function confetti(
+    options?: confetti.Options,
+): Promise<undefined> | null;
 
 declare namespace confetti {
     /**
@@ -144,7 +146,13 @@ declare namespace confetti {
     /**
      * This helper method lets you create a custom confetti shape using an SVG Path string.
      */
-    function shapeFromPath({ path, matrix }: { path: string; matrix?: DOMMatrix }): Shape;
+    function shapeFromPath({
+        path,
+        matrix,
+    }: {
+        path: string;
+        matrix?: DOMMatrix;
+    }): Shape;
 
     /**
      * This is the highly anticipated feature to render emoji confetti! Use any standard unicode emoji. Or other text.
@@ -174,7 +182,10 @@ declare namespace confetti {
         (options?: Options): Promise<null> | null;
         reset: Reset;
     }
-    function create(canvas?: HTMLCanvasElement, options?: GlobalOptions): CreateTypes;
+    function create(
+        canvas?: HTMLCanvasElement,
+        options?: GlobalOptions,
+    ): CreateTypes;
 }
 
 export as namespace confetti;

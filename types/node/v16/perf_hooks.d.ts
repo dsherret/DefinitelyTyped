@@ -30,7 +30,15 @@
  */
 declare module "perf_hooks" {
     import { AsyncResource } from "node:async_hooks";
-    type EntryType = "node" | "mark" | "measure" | "gc" | "function" | "http2" | "http" | "dns";
+    type EntryType =
+        | "node"
+        | "mark"
+        | "measure"
+        | "gc"
+        | "function"
+        | "http2"
+        | "http"
+        | "dns";
     interface NodeGCPerformanceDetail {
         /**
          * When `performanceEntry.entryType` is equal to 'gc', `the performance.kind` property identifies
@@ -265,7 +273,10 @@ declare module "perf_hooks" {
          * A PerformanceObserver must be subscribed to the 'function' event type in order for the timing details to be accessed.
          * @param fn
          */
-        timerify<T extends (...params: any[]) => any>(fn: T, options?: TimerifyOptions): T;
+        timerify<T extends (...params: any[]) => any>(
+            fn: T,
+            options?: TimerifyOptions,
+        ): T;
         /**
          * eventLoopUtilization is similar to CPU utilization except that it is calculated using high precision wall-clock time.
          * It represents the percentage of time the event loop has spent outside the event loop's event provider (e.g. epoll_wait).
@@ -398,7 +409,10 @@ declare module "perf_hooks" {
          */
         getEntriesByType(type: EntryType): PerformanceEntry[];
     }
-    type PerformanceObserverCallback = (list: PerformanceObserverEntryList, observer: PerformanceObserver) => void;
+    type PerformanceObserverCallback = (
+        list: PerformanceObserverEntryList,
+        observer: PerformanceObserver,
+    ) => void;
     class PerformanceObserver extends AsyncResource {
         constructor(callback: PerformanceObserverCallback);
         /**
@@ -428,13 +442,13 @@ declare module "perf_hooks" {
         observe(
             options:
                 | {
-                    entryTypes: readonly EntryType[];
-                    buffered?: boolean | undefined;
-                }
+                      entryTypes: readonly EntryType[];
+                      buffered?: boolean | undefined;
+                  }
                 | {
-                    type: EntryType;
-                    buffered?: boolean | undefined;
-                },
+                      type: EntryType;
+                      buffered?: boolean | undefined;
+                  },
         ): void;
     }
     namespace constants {
@@ -560,7 +574,9 @@ declare module "perf_hooks" {
      * ```
      * @since v11.10.0
      */
-    function monitorEventLoopDelay(options?: EventLoopMonitorOptions): IntervalHistogram;
+    function monitorEventLoopDelay(
+        options?: EventLoopMonitorOptions,
+    ): IntervalHistogram;
     interface CreateHistogramOptions {
         /**
          * The minimum recordable value. Must be an integer value greater than 0.
@@ -582,7 +598,9 @@ declare module "perf_hooks" {
      * Returns a `RecordableHistogram`.
      * @since v15.9.0
      */
-    function createHistogram(options?: CreateHistogramOptions): RecordableHistogram;
+    function createHistogram(
+        options?: CreateHistogramOptions,
+    ): RecordableHistogram;
 
     import { performance as _performance } from "perf_hooks";
     global {
@@ -594,7 +612,8 @@ declare module "perf_hooks" {
         var performance: typeof globalThis extends {
             onmessage: any;
             performance: infer T;
-        } ? T
+        }
+            ? T
             : typeof _performance;
     }
 }

@@ -64,7 +64,7 @@ auth0.auth
         realm: "realm",
         audience: "user-info",
     })
-    .then(res => {
+    .then((res) => {
         if (res.refreshToken) {
             return res.refreshToken;
         }
@@ -77,7 +77,7 @@ auth0.auth
         scope: "openid",
         appId: "Mobile",
     })
-    .then(res => res);
+    .then((res) => res);
 
 auth0.auth.resetPassword({
     email: "me@example.com",
@@ -92,7 +92,7 @@ auth0.auth
     .userInfo({
         token: "token",
     })
-    .then(userInfo => userInfo);
+    .then((userInfo) => userInfo);
 
 auth0.webAuth.authorize({
     state: "state",
@@ -148,7 +148,7 @@ auth0.webAuth
         language: "en",
         prompt: "login",
     })
-    .then(credentials => credentials.accessToken);
+    .then((credentials) => credentials.accessToken);
 
 auth0.webAuth
     .authorize({
@@ -159,7 +159,7 @@ auth0.webAuth
         prompt: "login",
     })
     // @ts-expect-error
-    .then(credentials => credentials.doesNotExist);
+    .then((credentials) => credentials.doesNotExist);
 
 auth0.webAuth.authorize({
     state: "state",
@@ -172,7 +172,10 @@ auth0.webAuth.authorize({
 });
 
 auth0.webAuth.clearSession({ federated: false });
-auth0.webAuth.clearSession({ federated: true, customScheme: "customUrlScheme" }, { skipLegacyListener: false });
+auth0.webAuth.clearSession(
+    { federated: true, customScheme: "customUrlScheme" },
+    { skipLegacyListener: false },
+);
 auth0.webAuth.clearSession();
 
 auth0.users("token").getUser({ id: "userId" });
@@ -270,7 +273,12 @@ auth0.credentialsManager.getCredentials("a scope", 0, {});
 
 auth0.credentialsManager.requireLocalAuthentication();
 
-auth0.credentialsManager.requireLocalAuthentication("a title", "a description", "a cancel title", "a fallback title");
+auth0.credentialsManager.requireLocalAuthentication(
+    "a title",
+    "a description",
+    "a cancel title",
+    "a fallback title",
+);
 
 auth0.credentialsManager.requireLocalAuthentication(
     "a title",

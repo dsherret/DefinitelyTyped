@@ -8,7 +8,9 @@
  * @param generatorFnOrOptions A generator function, or options for an existing sync/async function
  */
 declare function gensync<A extends unknown[], R, E = unknown>(
-    generatorFnOrOptions: ((...args: A) => Generator<gensync.Handler, R>) | gensync.Options<A, R, E>,
+    generatorFnOrOptions:
+        | ((...args: A) => Generator<gensync.Handler, R>)
+        | gensync.Options<A, R, E>,
 ): gensync.Gensync<A, R, E>;
 
 declare namespace gensync {
@@ -28,7 +30,9 @@ declare namespace gensync {
      * A callback function such that if the result is void, there is no result parameter.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    type Callback<R, E = unknown> = [R] extends [void] ? (err: E) => void : (err: E, result: R) => void;
+    type Callback<R, E = unknown> = [R] extends [void]
+        ? (err: E) => void
+        : (err: E, result: R) => void;
 
     /**
      * A function that can be "awaited" (with `yield*`) in another `gensync` generator,
@@ -75,7 +79,8 @@ declare namespace gensync {
         errback?: undefined;
     }
 
-    interface AsyncOptions<A extends unknown[], R> extends Omit<SyncOptions<A, R>, "async"> {
+    interface AsyncOptions<A extends unknown[], R>
+        extends Omit<SyncOptions<A, R>, "async"> {
         /**
          * A function that will be called when `.async()` or `.errback()` is called on
          * the `gensync()` result, or when the result is passed to `yield*` in another
@@ -86,7 +91,8 @@ declare namespace gensync {
         async: (...args: A) => Promise<R>;
     }
 
-    interface ErrbackOptions<A extends unknown[], R, E = unknown> extends Omit<SyncOptions<A, R>, "errback"> {
+    interface ErrbackOptions<A extends unknown[], R, E = unknown>
+        extends Omit<SyncOptions<A, R>, "errback"> {
         /**
          * A function that will be called when `.async()` or `.errback()` is called on
          * the `gensync()` result, or when the result is passed to `yield*` in another
@@ -115,7 +121,9 @@ declare namespace gensync {
      * @param args An array of gensync generators
      * @returns A new gensync generator
      */
-    function all<T extends readonly Handler[] | []>(args: T): Handler<{ -readonly [P in keyof T]: Handled<T[P]> }>;
+    function all<T extends readonly Handler[] | []>(
+        args: T,
+    ): Handler<{ -readonly [P in keyof T]: Handled<T[P]> }>;
 
     /**
      * `Promise.all`-like combinator that works with an iterable of generator objects
@@ -131,7 +139,9 @@ declare namespace gensync {
      * @param args An array of gensync generators
      * @returns A new gensync generator
      */
-    function race<T extends readonly Handler[] | []>(args: T): Handler<Handled<T[number]>>;
+    function race<T extends readonly Handler[] | []>(
+        args: T,
+    ): Handler<Handled<T[number]>>;
 
     /**
      * `Promise.race`-like combinator that works with an iterable of generator objects

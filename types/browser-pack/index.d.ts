@@ -72,6 +72,8 @@ declare namespace browserPack {
  *  - 'nomap' - When true, a source map is not generated for this module.
  *  - 'sourceFile' - The file name to use for this module in the source map.
  */
-declare function browserPack(opts?: browserPack.Options): NodeJS.ReadWriteStream;
+declare function browserPack(
+    opts?: browserPack.Options,
+): NodeJS.ReadWriteStream;
 export = browserPack;
 export as namespace browserPack;

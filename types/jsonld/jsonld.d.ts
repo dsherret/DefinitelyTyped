@@ -16,10 +16,13 @@ export {};
  * that is equivalent to valid JSON text.
  * @see https://www.w3.org/TR/json-ld11/#json-ld-grammar
  */
-export type JsonLdDocument = NodeObject | NodeObject[] | {
-    "@context"?: Keyword["@context"] | undefined;
-    "@graph"?: Keyword["@graph"] | undefined;
-};
+export type JsonLdDocument =
+    | NodeObject
+    | NodeObject[]
+    | {
+          "@context"?: Keyword["@context"] | undefined;
+          "@graph"?: Keyword["@graph"] | undefined;
+      };
 
 /**
  * A node object represents zero or more properties of a node
@@ -37,16 +40,16 @@ export interface NodeObject {
     "@index"?: Keyword["@index"] | undefined;
     [key: string]:
         | OrArray<
-            | null
-            | boolean
-            | number
-            | string
-            | NodeObject
-            | GraphObject
-            | ValueObject
-            | ListObject
-            | SetObject
-        >
+              | null
+              | boolean
+              | number
+              | string
+              | NodeObject
+              | GraphObject
+              | ValueObject
+              | ListObject
+              | SetObject
+          >
         | LanguageMap
         | IndexMap
         | IncludedBlock
@@ -71,22 +74,24 @@ export interface GraphObject {
  * to create a typed value or a language-tagged string and possibly associate a base direction.
  * @see https://www.w3.org/TR/json-ld11/#value-objects
  */
-export type ValueObject =
-    & {
-        "@index"?: Keyword["@index"] | undefined;
-        "@context"?: Keyword["@context"] | undefined;
-    }
-    & ({
-        "@value": Keyword["@value"];
-        "@language"?: Keyword["@language"] | undefined;
-        "@direction"?: Keyword["@direction"] | undefined;
-    } | {
-        "@value": Keyword["@value"];
-        "@type": Keyword["@type"];
-    } | {
-        "@value": Keyword["@value"] | JsonObject | JsonArray;
-        "@type": "@json";
-    });
+export type ValueObject = {
+    "@index"?: Keyword["@index"] | undefined;
+    "@context"?: Keyword["@context"] | undefined;
+} & (
+    | {
+          "@value": Keyword["@value"];
+          "@language"?: Keyword["@language"] | undefined;
+          "@direction"?: Keyword["@direction"] | undefined;
+      }
+    | {
+          "@value": Keyword["@value"];
+          "@type": Keyword["@type"];
+      }
+    | {
+          "@value": Keyword["@value"] | JsonObject | JsonArray;
+          "@type": "@json";
+      }
+);
 
 /**
  * A list represents an ordered set of values.
@@ -165,10 +170,12 @@ export interface ContextDefinition {
     "@language"?: Keyword["@language"] | undefined;
     "@propagate"?: Keyword["@propagate"] | undefined;
     "@protected"?: Keyword["@protected"] | undefined;
-    "@type"?: {
-        "@container": "@set";
-        "@protected"?: Keyword["@protected"] | undefined;
-    } | undefined;
+    "@type"?:
+        | {
+              "@container": "@set";
+              "@protected"?: Keyword["@protected"] | undefined;
+          }
+        | undefined;
     "@version"?: Keyword["@version"] | undefined;
     "@vocab"?: Keyword["@vocab"] | undefined;
     [key: string]:
@@ -184,24 +191,25 @@ export interface ContextDefinition {
  * associated with the term when it is used as key in a node object.
  * @see https://www.w3.org/TR/json-ld11/#expanded-term-definition
  */
-export type ExpandedTermDefinition =
-    & {
-        "@type"?: "@id" | "@json" | "@none" | "@vocab" | string | undefined;
-        "@language"?: Keyword["@language"] | undefined;
-        "@index"?: Keyword["@index"] | undefined;
-        "@context"?: ContextDefinition | undefined;
-        "@prefix"?: Keyword["@prefix"] | undefined;
-        "@propagate"?: Keyword["@propagate"] | undefined;
-        "@protected"?: Keyword["@protected"] | undefined;
-    }
-    & ({
-        "@id"?: Keyword["@id"] | null | undefined;
-        "@nest"?: "@nest" | string | undefined;
-        "@container"?: Keyword["@container"] | undefined;
-    } | {
-        "@reverse": Keyword["@reverse"];
-        "@container"?: "@set" | "@index" | null | undefined;
-    });
+export type ExpandedTermDefinition = {
+    "@type"?: "@id" | "@json" | "@none" | "@vocab" | string | undefined;
+    "@language"?: Keyword["@language"] | undefined;
+    "@index"?: Keyword["@index"] | undefined;
+    "@context"?: ContextDefinition | undefined;
+    "@prefix"?: Keyword["@prefix"] | undefined;
+    "@propagate"?: Keyword["@propagate"] | undefined;
+    "@protected"?: Keyword["@protected"] | undefined;
+} & (
+    | {
+          "@id"?: Keyword["@id"] | null | undefined;
+          "@nest"?: "@nest" | string | undefined;
+          "@container"?: Keyword["@container"] | undefined;
+      }
+    | {
+          "@reverse": Keyword["@reverse"];
+          "@container"?: "@set" | "@index" | null | undefined;
+      }
+);
 
 /**
  * A list of keywords and their types.
@@ -225,14 +233,18 @@ type Keyword = {
     "@index": string;
     "@json": "@json";
     "@language": string;
-    "@list": OrArray<null | boolean | number | string | NodeObject | ValueObject>;
+    "@list": OrArray<
+        null | boolean | number | string | NodeObject | ValueObject
+    >;
     "@nest": object;
     "@none": "@none";
     "@prefix": boolean;
     "@propagate": boolean;
     "@protected": boolean;
     "@reverse": string;
-    "@set": OrArray<null | boolean | number | string | NodeObject | ValueObject>;
+    "@set": OrArray<
+        null | boolean | number | string | NodeObject | ValueObject
+    >;
     "@type": string;
     "@value": null | boolean | number | string;
     "@version": "1.1";
@@ -244,12 +256,7 @@ type Keyword = {
  * (not for export)
  */
 type OrArray<T> = T | T[];
-type ContainerType =
-    | "@language"
-    | "@index"
-    | "@id"
-    | "@graph"
-    | "@type";
+type ContainerType = "@language" | "@index" | "@id" | "@graph" | "@type";
 type ContainerTypeArray =
     | ["@graph", "@id"]
     | ["@id", "@graph"]

@@ -4,7 +4,10 @@ declare function DataSourceColumns(
     opt_colsDefs?: DataSourceColumnDef[],
 ): void;
 declare class DataSourceColumns {
-    constructor(opt_dataSource?: DataSource, opt_colsDefs?: DataSourceColumnDef[]);
+    constructor(
+        opt_dataSource?: DataSource,
+        opt_colsDefs?: DataSourceColumnDef[],
+    );
     private columnsArray_;
     private columnsByName_;
     private columnsByAlias_;
@@ -20,12 +23,12 @@ declare class DataSourceColumns {
         opt_options?:
             | Record<any, any>
             | {
-                includeFieldNames: string;
-                excludeFieldNames: string;
-                children: boolean;
-                onlyVisible: boolean;
-                onlyIncludedFieldNames: boolean;
-            },
+                  includeFieldNames: string;
+                  excludeFieldNames: string;
+                  children: boolean;
+                  onlyVisible: boolean;
+                  onlyIncludedFieldNames: boolean;
+              },
     ): void;
     importVisibleFields(
         classKey: number,

@@ -39,7 +39,10 @@ function init() {
         follower.scale.set(0.5, 0.5, 0.5); // make the followers a bit smaller
         follower.setRenderComponent(followerMesh, sync);
 
-        const offsetPursuitBehavior = new YUKA.OffsetPursuitBehavior(leader, offsets[i]);
+        const offsetPursuitBehavior = new YUKA.OffsetPursuitBehavior(
+            leader,
+            offsets[i],
+        );
         follower.steering.add(offsetPursuitBehavior);
 
         entityManager.add(follower);
@@ -60,6 +63,9 @@ function animate() {
     entityManager.update(deltaTime);
 }
 
-function sync(entity: YUKA.GameEntity, renderComponent: { matrix: YUKA.Matrix4 }) {
+function sync(
+    entity: YUKA.GameEntity,
+    renderComponent: { matrix: YUKA.Matrix4 },
+) {
     renderComponent.matrix.copy(entity.worldMatrix);
 }

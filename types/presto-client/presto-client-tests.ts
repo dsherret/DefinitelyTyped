@@ -28,7 +28,7 @@ client.execute({
     success: (error, stats) => {
         // do something now that query is done
     },
-    error: error => {
+    error: (error) => {
         // handle the error
     },
 });
@@ -40,7 +40,8 @@ const requestError: PrestoRequestError = {
 };
 
 const prestoQueryError: PrestoQueryError = {
-    message: "line 1:8: Unexpected parameters (varchar(1), integer) for function pow. Expected: pow(double, double) ",
+    message:
+        "line 1:8: Unexpected parameters (varchar(1), integer) for function pow. Expected: pow(double, double) ",
     errorCode: 1,
     errorName: "SYNTAX_ERROR",
     errorType: "USER_ERROR",
@@ -92,7 +93,8 @@ const prestoQueryError: PrestoQueryError = {
 };
 
 const trinoQueryError: PrestoQueryError = {
-    message: "line 1:8: Unexpected parameters (varchar(1), integer) for function pow. Expected: pow(double, double)",
+    message:
+        "line 1:8: Unexpected parameters (varchar(1), integer) for function pow. Expected: pow(double, double)",
     errorCode: 6,
     errorName: "FUNCTION_NOT_FOUND",
     errorType: "USER_ERROR",
@@ -103,7 +105,8 @@ const trinoQueryError: PrestoQueryError = {
             "line 1:8: Unexpected parameters (varchar(1), integer) for function pow. Expected: pow(double, double)",
         cause: {
             type: "io.trino.spi.TrinoException",
-            message: "Unexpected parameters (varchar(1), integer) for function pow. Expected: pow(double, double)",
+            message:
+                "Unexpected parameters (varchar(1), integer) for function pow. Expected: pow(double, double)",
             suppressed: [],
             stack: [
                 "io.trino.metadata.FunctionResolver.resolveFunction(FunctionResolver.java:196)",

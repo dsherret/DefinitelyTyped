@@ -6,15 +6,14 @@ declare namespace GoogleAdsScripts {
             getCampaign(): Campaign;
         }
 
-        interface CampaignCalloutIterator extends Base.Iterator<CampaignCallout> {}
+        interface CampaignCalloutIterator
+            extends Base.Iterator<CampaignCallout> {}
 
         interface CampaignCalloutSelector
-            extends
-                Base.Selector<CampaignCalloutIterator>,
+            extends Base.Selector<CampaignCalloutIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

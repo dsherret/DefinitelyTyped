@@ -7,7 +7,6 @@ interface JsonProperties {
     onChange?: OnChangeHandler | undefined;
 }
 
-declare class Json extends React.Component<JsonProperties> {
-}
+declare class Json extends React.Component<JsonProperties> {}
 
 export = Json;

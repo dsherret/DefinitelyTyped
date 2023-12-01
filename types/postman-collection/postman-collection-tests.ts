@@ -15,12 +15,12 @@ pb = new PropertyBase({ info: { description: "string description" } });
 
 pb.description; // $ExpectType string | DescriptionDefinition | undefined
 pb.findInParents("string"); // $ExpectType PropertyBase<PropertyBaseDefinition>
-pb.findInParents("string", el => true); // $ExpectType PropertyBase<PropertyBaseDefinition>
+pb.findInParents("string", (el) => true); // $ExpectType PropertyBase<PropertyBaseDefinition>
 
-pb.findParentContaining("string", el => true); // $ExpectType PropertyBase<PropertyBaseDefinition>
+pb.findParentContaining("string", (el) => true); // $ExpectType PropertyBase<PropertyBaseDefinition>
 
-pb.forEachParent(el => {}); // $ExpectType void
-pb.forEachParent({ withRoot: true }, el => {}); // $ExpectType void
+pb.forEachParent((el) => {}); // $ExpectType void
+pb.forEachParent({ withRoot: true }, (el) => {}); // $ExpectType void
 
 pb.meta(); // $ExpectType any
 
@@ -61,7 +61,11 @@ p.toObjectResolved({ variables: new pmCollection.VariableList(p, []) }, []); // 
 p.toObjectResolved(null, [], { ignoreOwnVariables: true }); // $ExpectType {}
 
 Property.replaceSubstitutions("string", new pmCollection.VariableList(p, [])); // $ExpectType string
-Property.replaceSubstitutionsIn({}, [new pmCollection.VariableList(p, [])], false); // $ExpectType {}
+Property.replaceSubstitutionsIn(
+    {},
+    [new pmCollection.VariableList(p, [])],
+    false,
+); // $ExpectType {}
 
 // CertificateDefinition Tests
 const certDef: pmCollection.CertificateDefinition = {};
@@ -78,14 +82,20 @@ certificate.matches; // $ExpectType UrlMatchPatternList
 certificate.passphrase; // $ExpectType string
 
 certificate.canApplyTo("string"); // $ExpectType boolean
-certificate.canApplyTo(new pmCollection.Url({ host: "string", path: "string" })); // $ExpectType boolean
+certificate.canApplyTo(
+    new pmCollection.Url({ host: "string", path: "string" }),
+); // $ExpectType boolean
 
 certificate.update({}); // $ExpectType void
 
 pmCollection.Certificate.isCertificate(certificate); // $ExpectType boolean
 
 // PropertyList Tests
-const pList = new pmCollection.PropertyList<pmCollection.Certificate>("Certificate", null, []);
+const pList = new pmCollection.PropertyList<pmCollection.Certificate>(
+    "Certificate",
+    null,
+    [],
+);
 pList.add(certificate); // $ExpectType void
 pList.all(); // $ExpectType Certificate[]
 pList.append(certificate); // $ExpectType void
@@ -97,8 +107,8 @@ pList.each((el: pmCollection.Certificate) => {}); // $ExpectType void
 pList.each((el: pmCollection.Certificate) => {}, pList); // $ExpectType void
 pList.eachParent((el: any) => {}); // $ExpectType void
 pList.eachParent((el: any) => {}, pList); // $ExpectType void
-pList.filter(el => true, pList); // $ExpectType Certificate[]
-pList.find(el => true, pList); // $ExpectType Certificate
+pList.filter((el) => true, pList); // $ExpectType Certificate[]
+pList.find((el) => true, pList); // $ExpectType Certificate
 pList.get("string"); // $ExpectType any
 pList.has("string"); // $ExpectType boolean
 pList.has("string", null); // $ExpectType boolean
@@ -109,11 +119,11 @@ pList.insert(certificate, "string"); // ExpectType void
 pList.insert(certificate, certificate); // ExpectType void
 pList.insertAfter(certificate, "string"); // ExpectType void
 pList.insertAfter(certificate, certificate); // ExpectType void
-pList.map(el => el); // ExpectType any
-pList.map(el => el, pList); // ExpectType any
+pList.map((el) => el); // ExpectType any
+pList.map((el) => el, pList); // ExpectType any
 pList.one("string"); // ExpectType Certificate
 pList.populate([]); // ExpectType void
-pList.remove(el => true, pList); // ExpectType void
+pList.remove((el) => true, pList); // ExpectType void
 pList.remove("string", pList); // ExpectType void
 pList.remove(certificate, pList); // $ExpectType void
 pList.repopulate(null); // $ExpectType void
@@ -144,8 +154,8 @@ ig.authorizeRequestsUsing("string"); // $ExpectType void
 ig.authorizeRequestsUsing({}); // $ExpectType void
 ig.authorizeRequestsUsing("string", new pmCollection.VariableList(ig, [])); // $ExpectType void
 
-ig.forEachItem(el => {}); // $ExpectType void
-ig.forEachItemGroup(el => {}); // $ExpectType void
+ig.forEachItem((el) => {}); // $ExpectType void
+ig.forEachItemGroup((el) => {}); // $ExpectType void
 
 ig.oneDeep("string"); // $ExpectType Certificate
 
@@ -393,7 +403,9 @@ pmCollection.ProxyConfig.isProxyConfig(proxyConf); // $ExpectType boolean
 const proxyConfigList = new pmCollection.ProxyConfigList(null, [proxyConf]);
 
 proxyConfigList.resolve("string"); // $ExpectType ProxyConfig
-proxyConfigList.resolve(new pmCollection.Url({ host: "string", path: "string" })); // $ExpectType ProxyConfig
+proxyConfigList.resolve(
+    new pmCollection.Url({ host: "string", path: "string" }),
+); // $ExpectType ProxyConfig
 
 pmCollection.ProxyConfigList.isProxyConfigList(proxyConfigList); // $ExpectType boolean
 
@@ -433,7 +445,10 @@ pmCollection.QueryParam.parseSingle("string", 1, ["string"]); // $ExpectType Que
 
 pmCollection.QueryParam.unparse([qpDef]); // $ExpectType string
 pmCollection.QueryParam.unparse([qpDef], { encode: true }); // $ExpectType string
-pmCollection.QueryParam.unparse([qpDef], { encode: true, ignoreDisabled: true }); // $ExpectType string
+pmCollection.QueryParam.unparse([qpDef], {
+    encode: true,
+    ignoreDisabled: true,
+}); // $ExpectType string
 
 pmCollection.QueryParam.unparseSingle(qpDef, true); // $ExpectType string
 
@@ -474,7 +489,9 @@ req.getHeaders({ ignoreCase: true }); // $ExpectType any
 req.getHeaders({ enabled: true }); // $ExpectType any
 req.getHeaders({ ignoreCase: true, enabled: true }); // $ExpectType any
 
-req.forEachHeader((header: pmCollection.Header, context: pmCollection.Request) => {}); // $ExpectType void
+req.forEachHeader(
+    (header: pmCollection.Header, context: pmCollection.Request) => {},
+); // $ExpectType void
 
 req.addHeader(header); // $ExpectType void
 req.addHeader(headerDef); // $ExpectType void
@@ -600,7 +617,10 @@ response.size(); // $ExpectType number
 
 response.encoding(); // $ExpectType { format: string; source: string; }
 
-pmCollection.Response.createFromNode({ body: "string", statusCode: 200, elapsedTime: 1 }, []); // $ExpectType Response
+pmCollection.Response.createFromNode(
+    { body: "string", statusCode: 200, elapsedTime: 1 },
+    [],
+); // $ExpectType Response
 
 pmCollection.Response.isResponse(response); // $ExpectType boolean
 
@@ -718,9 +738,15 @@ urlMatch.testHost("string"); // $ExpectType boolean
 
 urlMatch.matchAnyHost({ protocols: [], host: "string", path: new RegExp("") }); // $ExpectType boolean
 
-urlMatch.matchSuffixHostPattern({ protocols: [], host: "string", path: new RegExp("") }, "string"); // $ExpectType boolean
+urlMatch.matchSuffixHostPattern(
+    { protocols: [], host: "string", path: new RegExp("") },
+    "string",
+); // $ExpectType boolean
 
-urlMatch.matchAbsoluteHostPattern({ protocols: [], host: "string", path: new RegExp("") }, "string"); // $ExpectType boolean
+urlMatch.matchAbsoluteHostPattern(
+    { protocols: [], host: "string", path: new RegExp("") },
+    "string",
+); // $ExpectType boolean
 
 urlMatch.testPath("string"); // $ExpectType boolean
 

@@ -4,7 +4,15 @@ import template from "@babel/template";
 import traverse, { Hub, NodePath, Scope, Visitor } from "@babel/traverse";
 import * as t from "@babel/types";
 
-export { GeneratorOptions, NodePath, ParserOptions, t as types, template, traverse, Visitor };
+export {
+    GeneratorOptions,
+    NodePath,
+    ParserOptions,
+    t as types,
+    template,
+    traverse,
+    Visitor,
+};
 
 export type Node = t.Node;
 export type ParseResult = ReturnType<typeof import("@babel/parser").parse>;
@@ -175,7 +183,10 @@ export interface TransformOptions {
      *
      * Default: `{}`
      */
-    env?: { [index: string]: TransformOptions | null | undefined } | null | undefined;
+    env?:
+        | { [index: string]: TransformOptions | null | undefined }
+        | null
+        | undefined;
 
     /**
      * A path to a `.babelrc` file to extend
@@ -210,7 +221,10 @@ export interface TransformOptions {
      *
      * Default: `null`
      */
-    getModuleId?: ((moduleName: string) => string | null | undefined) | null | undefined;
+    getModuleId?:
+        | ((moduleName: string) => string | null | undefined)
+        | null
+        | undefined;
 
     /**
      * ANSI highlight syntax error code frames
@@ -313,7 +327,10 @@ export interface TransformOptions {
      *
      * Default: `null`
      */
-    shouldPrintComment?: ((commentContents: string) => boolean) | null | undefined;
+    shouldPrintComment?:
+        | ((commentContents: string) => boolean)
+        | null
+        | undefined;
 
     /**
      * Set `sources[0]` on returned source map
@@ -360,22 +377,22 @@ export interface TransformOptions {
         | string
         | string[]
         | {
-            esmodules?: boolean;
-            node?: Omit<string, "current"> | "current" | true;
-            safari?: Omit<string, "tp"> | "tp";
-            browsers?: string | string[];
-            android?: string;
-            chrome?: string;
-            deno?: string;
-            edge?: string;
-            electron?: string;
-            firefox?: string;
-            ie?: string;
-            ios?: string;
-            opera?: string;
-            rhino?: string;
-            samsung?: string;
-        };
+              esmodules?: boolean;
+              node?: Omit<string, "current"> | "current" | true;
+              safari?: Omit<string, "tp"> | "tp";
+              browsers?: string | string[];
+              android?: string;
+              chrome?: string;
+              deno?: string;
+              edge?: string;
+              electron?: string;
+              firefox?: string;
+              ie?: string;
+              ios?: string;
+              opera?: string;
+              rhino?: string;
+              samsung?: string;
+          };
 
     /**
      * An optional callback that can be used to wrap visitor methods. **NOTE**: This is useful for things like introspection, and not really needed for implementing anything. Called as
@@ -383,10 +400,10 @@ export interface TransformOptions {
      */
     wrapPluginVisitorMethod?:
         | ((
-            pluginAlias: string,
-            visitorType: "enter" | "exit",
-            callback: (path: NodePath, state: any) => void,
-        ) => (path: NodePath, state: any) => void)
+              pluginAlias: string,
+              visitorType: "enter" | "exit",
+              callback: (path: NodePath, state: any) => void,
+          ) => (path: NodePath, state: any) => void)
         | null
         | undefined;
 }
@@ -402,14 +419,20 @@ export interface TransformCaller {
     // augment this with a "declare module '@babel/core' { ... }" if you need more keys
 }
 
-export type FileResultCallback = (err: Error | null, result: BabelFileResult | null) => any;
+export type FileResultCallback = (
+    err: Error | null,
+    result: BabelFileResult | null,
+) => any;
 
 export interface MatchPatternContext {
     envName: string;
     dirname: string;
     caller: TransformCaller | undefined;
 }
-export type MatchPattern = string | RegExp | ((filename: string | undefined, context: MatchPatternContext) => boolean);
+export type MatchPattern =
+    | string
+    | RegExp
+    | ((filename: string | undefined, context: MatchPatternContext) => boolean);
 
 /**
  * Transforms the passed in code. Calling a callback with an object with the generated code, source map, and AST.
@@ -419,47 +442,77 @@ export function transform(code: string, callback: FileResultCallback): void;
 /**
  * Transforms the passed in code. Calling a callback with an object with the generated code, source map, and AST.
  */
-export function transform(code: string, opts: TransformOptions | undefined, callback: FileResultCallback): void;
+export function transform(
+    code: string,
+    opts: TransformOptions | undefined,
+    callback: FileResultCallback,
+): void;
 
 /**
  * Here for backward-compatibility. Ideally use `transformSync` if you want a synchronous API.
  */
-export function transform(code: string, opts?: TransformOptions): BabelFileResult | null;
+export function transform(
+    code: string,
+    opts?: TransformOptions,
+): BabelFileResult | null;
 
 /**
  * Transforms the passed in code. Returning an object with the generated code, source map, and AST.
  */
-export function transformSync(code: string, opts?: TransformOptions): BabelFileResult | null;
+export function transformSync(
+    code: string,
+    opts?: TransformOptions,
+): BabelFileResult | null;
 
 /**
  * Transforms the passed in code. Calling a callback with an object with the generated code, source map, and AST.
  */
-export function transformAsync(code: string, opts?: TransformOptions): Promise<BabelFileResult | null>;
+export function transformAsync(
+    code: string,
+    opts?: TransformOptions,
+): Promise<BabelFileResult | null>;
 
 /**
  * Asynchronously transforms the entire contents of a file.
  */
-export function transformFile(filename: string, callback: FileResultCallback): void;
+export function transformFile(
+    filename: string,
+    callback: FileResultCallback,
+): void;
 
 /**
  * Asynchronously transforms the entire contents of a file.
  */
-export function transformFile(filename: string, opts: TransformOptions | undefined, callback: FileResultCallback): void;
+export function transformFile(
+    filename: string,
+    opts: TransformOptions | undefined,
+    callback: FileResultCallback,
+): void;
 
 /**
  * Synchronous version of `babel.transformFile`. Returns the transformed contents of the `filename`.
  */
-export function transformFileSync(filename: string, opts?: TransformOptions): BabelFileResult | null;
+export function transformFileSync(
+    filename: string,
+    opts?: TransformOptions,
+): BabelFileResult | null;
 
 /**
  * Asynchronously transforms the entire contents of a file.
  */
-export function transformFileAsync(filename: string, opts?: TransformOptions): Promise<BabelFileResult | null>;
+export function transformFileAsync(
+    filename: string,
+    opts?: TransformOptions,
+): Promise<BabelFileResult | null>;
 
 /**
  * Given an AST, transform it.
  */
-export function transformFromAst(ast: Node, code: string | undefined, callback: FileResultCallback): void;
+export function transformFromAst(
+    ast: Node,
+    code: string | undefined,
+    callback: FileResultCallback,
+): void;
 
 /**
  * Given an AST, transform it.
@@ -474,7 +527,11 @@ export function transformFromAst(
 /**
  * Here for backward-compatibility. Ideally use ".transformSync" if you want a synchronous API.
  */
-export function transformFromAstSync(ast: Node, code?: string, opts?: TransformOptions): BabelFileResult | null;
+export function transformFromAstSync(
+    ast: Node,
+    code?: string,
+    opts?: TransformOptions,
+): BabelFileResult | null;
 
 /**
  * Given an AST, transform it.
@@ -526,14 +583,14 @@ export interface BabelFileResult {
     ignored?: boolean | undefined;
     map?:
         | {
-            version: number;
-            sources: string[];
-            names: string[];
-            sourceRoot?: string | undefined;
-            sourcesContent?: string[] | undefined;
-            mappings: string;
-            file: string;
-        }
+              version: number;
+              sources: string[];
+              names: string[];
+              sourceRoot?: string | undefined;
+              sourcesContent?: string[] | undefined;
+              mappings: string;
+              file: string;
+          }
         | null
         | undefined;
     metadata?: BabelFileMetadata | undefined;
@@ -557,7 +614,10 @@ export interface BabelFileModulesMetadata {
     };
 }
 
-export type FileParseCallback = (err: Error | null, result: ParseResult | null) => any;
+export type FileParseCallback = (
+    err: Error | null,
+    result: ParseResult | null,
+) => any;
 
 /**
  * Given some code, parse it using Babel's standard behavior.
@@ -569,25 +629,38 @@ export function parse(code: string, callback: FileParseCallback): void;
  * Given some code, parse it using Babel's standard behavior.
  * Referenced presets and plugins will be loaded such that optional syntax plugins are automatically enabled.
  */
-export function parse(code: string, options: TransformOptions | undefined, callback: FileParseCallback): void;
+export function parse(
+    code: string,
+    options: TransformOptions | undefined,
+    callback: FileParseCallback,
+): void;
 
 /**
  * Given some code, parse it using Babel's standard behavior.
  * Referenced presets and plugins will be loaded such that optional syntax plugins are automatically enabled.
  */
-export function parse(code: string, options?: TransformOptions): ParseResult | null;
+export function parse(
+    code: string,
+    options?: TransformOptions,
+): ParseResult | null;
 
 /**
  * Given some code, parse it using Babel's standard behavior.
  * Referenced presets and plugins will be loaded such that optional syntax plugins are automatically enabled.
  */
-export function parseSync(code: string, options?: TransformOptions): ParseResult | null;
+export function parseSync(
+    code: string,
+    options?: TransformOptions,
+): ParseResult | null;
 
 /**
  * Given some code, parse it using Babel's standard behavior.
  * Referenced presets and plugins will be loaded such that optional syntax plugins are automatically enabled.
  */
-export function parseAsync(code: string, options?: TransformOptions): Promise<ParseResult | null>;
+export function parseAsync(
+    code: string,
+    options?: TransformOptions,
+): Promise<ParseResult | null>;
 
 /**
  * Resolve Babel's options fully, resulting in an options object where:
@@ -622,8 +695,12 @@ export function loadOptions(options?: TransformOptions): object | null;
  * Babel config value, or with a replacement item created by `babel.createConfigItem`. See that function for
  * information about `ConfigItem` fields.
  */
-export function loadPartialConfig(options?: TransformOptions): Readonly<PartialConfig> | null;
-export function loadPartialConfigAsync(options?: TransformOptions): Promise<Readonly<PartialConfig> | null>;
+export function loadPartialConfig(
+    options?: TransformOptions,
+): Readonly<PartialConfig> | null;
+export function loadPartialConfigAsync(
+    options?: TransformOptions,
+): Promise<Readonly<PartialConfig> | null>;
 
 export interface PartialConfig {
     options: TransformOptions;
@@ -660,16 +737,16 @@ export interface ConfigItem {
      */
     file?:
         | {
-            /**
-             * The file that the user requested, e.g. `"@babel/env"`
-             */
-            request: string;
+              /**
+               * The file that the user requested, e.g. `"@babel/env"`
+               */
+              request: string;
 
-            /**
-             * The full path of the resolved file, e.g. `"/tmp/node_modules/@babel/preset-env/lib/index.js"`
-             */
-            resolved: string;
-        }
+              /**
+               * The full path of the resolved file, e.g. `"/tmp/node_modules/@babel/preset-env/lib/index.js"`
+               */
+              resolved: string;
+          }
         | null
         | undefined;
 }
@@ -699,7 +776,10 @@ export interface CreateConfigItemOptions {
  * plugins and presets to inject, pre-constructing the config items would be recommended.
  */
 export function createConfigItem(
-    value: PluginTarget | [PluginTarget, PluginOptions] | [PluginTarget, PluginOptions, string | undefined],
+    value:
+        | PluginTarget
+        | [PluginTarget, PluginOptions]
+        | [PluginTarget, PluginOptions, string | undefined],
     options?: CreateConfigItemOptions,
 ): ConfigItem;
 
@@ -741,7 +821,9 @@ export interface ConfigAPI {
      *
      * @see https://babeljs.io/docs/en/next/config-files#apicallercb
      */
-    caller<T extends SimpleCacheKey>(callerCallback: (caller: TransformOptions["caller"]) => T): T;
+    caller<T extends SimpleCacheKey>(
+        callerCallback: (caller: TransformOptions["caller"]) => T,
+    ): T;
     /**
      * While `api.version` can be useful in general, it's sometimes nice to just declare your version.
      * This API exposes a simple way to do that with:
@@ -823,7 +905,9 @@ export interface EnvFunction {
     // the official documentation is misleading for this one...
     // this just passes the callback to `cache.using` but with an additional argument.
     // it returns its result instead of necessarily returning a boolean.
-    <T extends SimpleCacheKey>(envCallback: (envName: NonNullable<TransformOptions["envName"]>) => T): T;
+    <T extends SimpleCacheKey>(
+        envCallback: (envName: NonNullable<TransformOptions["envName"]>) => T,
+    ): T;
 }
 
 export type ConfigFunction = (api: ConfigAPI) => TransformOptions;

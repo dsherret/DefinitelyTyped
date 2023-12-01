@@ -19,7 +19,10 @@ function TestFirefoxDriver() {
         webdriver.Capabilities.firefox(),
         new http.Executor(new http.HttpClient("http://someurl")),
     );
-    driver = firefox.Driver.createSession(webdriver.Capabilities.firefox(), new remote.DriverService("/dev/null", {}));
+    driver = firefox.Driver.createSession(
+        webdriver.Capabilities.firefox(),
+        new remote.DriverService("/dev/null", {}),
+    );
     driver = firefox.Driver.createSession(
         webdriver.Capabilities.firefox(),
         new remote.DriverService("/dev/null", {}),
@@ -40,7 +43,9 @@ function TestFirefoxOptions() {
     options = options.setPreference("a", "1");
     options = options.setBinary("binary");
     options = options.setBinary(new firefox.Binary());
-    options = options.setLoggingPreferences(new webdriver.logging.Preferences());
+    options = options.setLoggingPreferences(
+        new webdriver.logging.Preferences(),
+    );
     options = options.setProfile("profile");
     options = options.setProfile(new firefox.Profile());
     options = options.setProxy({ proxyType: "proxy" });
@@ -65,7 +70,8 @@ function TestFirefoxProfile() {
     profile.setPreference("key", "value");
     profile.setPreference("key", 5);
     profile.setPreference("key", true);
-    let stringPromise: webdriver.promise.Promise<string> = profile.writeToDisk();
+    let stringPromise: webdriver.promise.Promise<string> =
+        profile.writeToDisk();
     stringPromise = profile.writeToDisk(true);
 }
 

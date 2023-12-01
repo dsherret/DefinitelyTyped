@@ -1,8 +1,8 @@
 {
-    "extends": "@definitelytyped/dtslint/dt.json",
-    "rules": {
-        "no-object-literal-type-assertion": false,
-        "no-redundant-jsdoc-2": false,
-        "npm-naming": false
-    }
+  "extends": "@definitelytyped/dtslint/dt.json",
+  "rules": {
+    "no-object-literal-type-assertion": false,
+    "no-redundant-jsdoc-2": false,
+    "npm-naming": false
+  }
 }

@@ -51,7 +51,11 @@ export namespace Rivets {
             handler?(context: any, ev: Event, biding: any): void;
         }): void;
 
-        bind(element: HTMLElement | HTMLElement[] | JQuery, models: object, options?: object): View;
+        bind(
+            element: HTMLElement | HTMLElement[] | JQuery,
+            models: object,
+            options?: object,
+        ): View;
     }
 }
 

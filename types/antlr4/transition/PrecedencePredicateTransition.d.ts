@@ -8,7 +8,11 @@ export default class PrecedencePredicateTransition extends AbstractPredicateTran
 
     constructor(target: ATNState, precedence: number);
 
-    matches(symbol: number, minVocabSymbol: number, maxVocabSymbol: number): false;
+    matches(
+        symbol: number,
+        minVocabSymbol: number,
+        maxVocabSymbol: number,
+    ): false;
 
     getPredicate(): PrecedencePredicate;
 }

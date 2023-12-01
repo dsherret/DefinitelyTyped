@@ -48,7 +48,10 @@ class RadioTest extends React.Component {
         return (
             <App>
                 <Window title="Example" size={{ w: 500, h: 500 }}>
-                    <RadioButtons onSelect={selected => selected.toFixed()} enabled={true}>
+                    <RadioButtons
+                        onSelect={(selected) => selected.toFixed()}
+                        enabled={true}
+                    >
                         <RadioButtons.Item>Option 1</RadioButtons.Item>
                         <RadioButtons.Item>Option 2</RadioButtons.Item>
                     </RadioButtons>
@@ -84,25 +87,13 @@ class GridTest extends React.Component {
             <App>
                 <Window title="ExampleGrid" size={{ w: 500, h: 500 }}>
                     <Grid>
-                        <Box
-                            align={{ h: false, v: false }}
-                            row={0}
-                            column={0}
-                        >
+                        <Box align={{ h: false, v: false }} row={0} column={0}>
                             <Text>0-0</Text>
                         </Box>
-                        <Box
-                            align={{ h: false, v: false }}
-                            row={0}
-                            column={1}
-                        >
+                        <Box align={{ h: false, v: false }} row={0} column={1}>
                             <Checkbox>Enable</Checkbox>
                         </Box>
-                        <Box
-                            align={{ h: false, v: false }}
-                            row={1}
-                            column={0}
-                        >
+                        <Box align={{ h: false, v: false }} row={1} column={0}>
                             <Button
                                 onClick={() => {
                                     const doSomething = 1;
@@ -111,11 +102,7 @@ class GridTest extends React.Component {
                                 Open file
                             </Button>
                         </Box>
-                        <Box
-                            align={{ h: false, v: false }}
-                            row={1}
-                            column={1}
-                        >
+                        <Box align={{ h: false, v: false }} row={1} column={1}>
                             <Form>
                                 <ColorButton label={"Test"} />
                             </Form>
@@ -153,9 +140,7 @@ class AreaTest extends React.Component {
                         }}
                     >
                         Parent text
-                        <Area.Text>
-                            Nested Text
-                        </Area.Text>
+                        <Area.Text>Nested Text</Area.Text>
                     </Area.Text>
                 </Area.Group>
             </Area>

@@ -18,7 +18,9 @@ declare namespace HydraBox {
     interface HydraBox {
         api: Api;
         term: RDF.NamedNode;
-        resource: Resource & { clownface(): Promise<GraphPointer<RDF.NamedNode, DatasetExt>> };
+        resource: Resource & {
+            clownface(): Promise<GraphPointer<RDF.NamedNode, DatasetExt>>;
+        };
         operation: GraphPointer;
         operations: PotentialOperation[];
     }
@@ -37,8 +39,14 @@ declare namespace HydraBox {
     }
 
     interface ResourceLoader {
-        forClassOperation(term: RDF.NamedNode, req: express.Request): Promise<Resource[]>;
-        forPropertyOperation(term: RDF.NamedNode, req: express.Request): Promise<PropertyResource[]>;
+        forClassOperation(
+            term: RDF.NamedNode,
+            req: express.Request,
+        ): Promise<Resource[]>;
+        forPropertyOperation(
+            term: RDF.NamedNode,
+            req: express.Request,
+        ): Promise<PropertyResource[]>;
     }
 }
 

@@ -5,7 +5,12 @@ export default class SphereZone extends Zone {
     /**
      *  A spherical zone for particles to be emitted within.
      */
-    constructor(centerX?: number, centerY?: number, centerZ?: number, radius?: number);
+    constructor(
+        centerX?: number,
+        centerY?: number,
+        centerZ?: number,
+        radius?: number,
+    );
     /**
      * Returns true to indicate this is a SphereZone.
      */

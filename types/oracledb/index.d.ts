@@ -688,7 +688,17 @@ declare namespace OracleDB {
      * @see https://oracle.github.io/node-oracledb/doc/api.html#executebindParams
      */
     type BindParameters =
-        | Record<string, BindParameter | string | number | Date | DBObject_IN<any> | Buffer | null | undefined>
+        | Record<
+              string,
+              | BindParameter
+              | string
+              | number
+              | Date
+              | DBObject_IN<any>
+              | Buffer
+              | null
+              | undefined
+          >
         | BindParameter[]
         | any[];
 
@@ -816,7 +826,11 @@ declare namespace OracleDB {
          * @since 2.2
          * @see https://oracle.github.io/node-oracledb/doc/api.html#changingpassword
          */
-        changePassword(user: string, oldPassword: string, newPassword: string): Promise<void>;
+        changePassword(
+            user: string,
+            oldPassword: string,
+            newPassword: string,
+        ): Promise<void>;
         changePassword(
             user: string,
             oldPassword: string,
@@ -843,7 +857,10 @@ declare namespace OracleDB {
          */
         close(options: CloseConnectionOptions): Promise<void>;
         close(): Promise<void>;
-        close(options: CloseConnectionOptions, callback: (error: DBError) => void): void;
+        close(
+            options: CloseConnectionOptions,
+            callback: (error: DBError) => void,
+        ): void;
         close(callback: (error: DBError) => void): void;
 
         /**
@@ -869,7 +886,10 @@ declare namespace OracleDB {
          * @see https://oracle.github.io/node-oracledb/doc/api.html#lobbinds
          */
         createLob(type: number): Promise<Lob>;
-        createLob(type: number, callback: (error: DBError, lob: Lob) => void): void;
+        createLob(
+            type: number,
+            callback: (error: DBError, lob: Lob) => void,
+        ): void;
 
         /**
          * This call executes a single SQL or PL/SQL statement.
@@ -881,7 +901,11 @@ declare namespace OracleDB {
          * @see https://oracle.github.io/node-oracledb/doc/api.html#sqlexecution
          * @see https://oracle.github.io/node-oracledb/doc/api.html#querystream For an alternative
          */
-        execute<T>(sql: string, bindParams: BindParameters, options: ExecuteOptions): Promise<Result<T>>;
+        execute<T>(
+            sql: string,
+            bindParams: BindParameters,
+            options: ExecuteOptions,
+        ): Promise<Result<T>>;
         execute<T>(
             sql: string,
             bindParams: BindParameters,
@@ -914,7 +938,10 @@ declare namespace OracleDB {
          * @see https://oracle.github.io/node-oracledb/doc/api.html#querystream For an alternative
          */
         execute<T>(sql: string): Promise<Result<T>>;
-        execute<T>(sql: string, callback: (error: DBError, result: Result<T>) => void): void;
+        execute<T>(
+            sql: string,
+            callback: (error: DBError, result: Result<T>) => void,
+        ): void;
 
         /**
          * This method allows sets of data values to be bound to one DML or PL/SQL statement for execution.
@@ -955,7 +982,11 @@ declare namespace OracleDB {
          *
          * @since 2.2
          */
-        executeMany<T>(sql: string, binds: BindParameters[], options: ExecuteManyOptions): Promise<Results<T>>;
+        executeMany<T>(
+            sql: string,
+            binds: BindParameters[],
+            options: ExecuteManyOptions,
+        ): Promise<Results<T>>;
         executeMany<T>(
             sql: string,
             binds: BindParameters[],
@@ -963,7 +994,10 @@ declare namespace OracleDB {
             callback: (error: DBError, result: Results<T>) => void,
         ): void;
 
-        executeMany<T>(sql: string, binds: BindParameters[]): Promise<Results<T>>;
+        executeMany<T>(
+            sql: string,
+            binds: BindParameters[],
+        ): Promise<Results<T>>;
         executeMany<T>(
             sql: string,
             binds: BindParameters[],
@@ -986,7 +1020,11 @@ declare namespace OracleDB {
          * @param iterations The number of times the SQL should be executed.
          * @param options Optional parameter to control the execution.
          */
-        executeMany<T>(sql: string, iterations: number, options: ExecuteManyOptions): Promise<Results<T>>;
+        executeMany<T>(
+            sql: string,
+            iterations: number,
+            options: ExecuteManyOptions,
+        ): Promise<Results<T>>;
         executeMany<T>(
             sql: string,
             iterations: number,
@@ -995,7 +1033,11 @@ declare namespace OracleDB {
         ): void;
 
         executeMany<T>(sql: string, iterations: number): Promise<Results<T>>;
-        executeMany<T>(sql: string, iterations: number, callback: (error: DBError, result: Results<T>) => void): void;
+        executeMany<T>(
+            sql: string,
+            iterations: number,
+            callback: (error: DBError, result: Results<T>) => void,
+        ): void;
 
         /**
          * Returns a DbObject prototype object representing the named Oracle Database object or collection.
@@ -1011,10 +1053,19 @@ declare namespace OracleDB {
          * @since 4.0
          */
         getDbObjectClass<T>(className: string): Promise<DBObjectClass<T>>;
-        getDbObjectClass<T>(className: string, callback: (error: DBError, dbObject: DBObjectClass<T>) => void): void;
+        getDbObjectClass<T>(
+            className: string,
+            callback: (error: DBError, dbObject: DBObjectClass<T>) => void,
+        ): void;
 
-        getQueue<T>(name: string, options?: GetAdvancedQueueOptions): Promise<AdvancedQueue<T>>;
-        getQueue<T>(name: string, callback: (error: DBError, queue: AdvancedQueue<T>) => void): void;
+        getQueue<T>(
+            name: string,
+            options?: GetAdvancedQueueOptions,
+        ): Promise<AdvancedQueue<T>>;
+        getQueue<T>(
+            name: string,
+            callback: (error: DBError, queue: AdvancedQueue<T>) => void,
+        ): void;
         getQueue<T>(
             name: string,
             options: GetAdvancedQueueOptions,
@@ -1045,7 +1096,10 @@ declare namespace OracleDB {
          * @since 2.2
          */
         getStatementInfo(sql: string): Promise<StatementInfo>;
-        getStatementInfo(sql: string, callback: (error: DBError, info: StatementInfo) => void): void;
+        getStatementInfo(
+            sql: string,
+            callback: (error: DBError, info: StatementInfo) => void,
+        ): void;
         /**
          * This synchronous function returns a boolean indicating the health status of a connection.
          * Connections may become unusable in several cases, such as if the network socket is broken, if an Oracle error indicates the connection is unusable or after receiving a planned down notification from the database.
@@ -1089,7 +1143,11 @@ declare namespace OracleDB {
          * @since 1.8
          * @see https://oracle.github.io/node-oracledb/doc/api.html#streamingresults
          */
-        queryStream<T>(sql: string, bindParams: BindParameters, options: ExecuteOptions): QueryStream<T>;
+        queryStream<T>(
+            sql: string,
+            bindParams: BindParameters,
+            options: ExecuteOptions,
+        ): QueryStream<T>;
         queryStream<T>(sql: string, bindParams: BindParameters): QueryStream<T>;
         queryStream<T>(sql: string): QueryStream<T>;
 
@@ -1112,7 +1170,10 @@ declare namespace OracleDB {
          */
         release(options: CloseConnectionOptions): Promise<void>;
         release(): Promise<void>;
-        release(options: CloseConnectionOptions, callback: (error: DBError) => void): void;
+        release(
+            options: CloseConnectionOptions,
+            callback: (error: DBError) => void,
+        ): void;
         release(callback: (error: DBError) => void): void;
 
         /**
@@ -1177,7 +1238,10 @@ declare namespace OracleDB {
          *
          * @since 2.3
          */
-        subscribe(name: string, options: SubscribeOptions): Promise<Subscription>;
+        subscribe(
+            name: string,
+            options: SubscribeOptions,
+        ): Promise<Subscription>;
         subscribe(
             name: string,
             options: SubscribeOptions,
@@ -1293,9 +1357,9 @@ declare namespace OracleDB {
         /** Array of objects specifying the queries which were affected by the Query Change notification. */
         queries?:
             | Array<{
-                /** Array of objects specifying the tables which were affected by the notification. */
-                tables?: SubscriptionTable[];
-            }>
+                  /** Array of objects specifying the tables which were affected by the notification. */
+                  tables?: SubscriptionTable[];
+              }>
             | undefined;
         /** Indicates whether the subscription is registered with the database. */
         registered: boolean;
@@ -1323,11 +1387,11 @@ declare namespace OracleDB {
          */
         rows?:
             | Array<{
-                /** One of the CQN_OPCODE_* constants. */
-                operation: number;
-                /** ROWID of the row that was affected. */
-                rowid: string;
-            }>
+                  /** One of the CQN_OPCODE_* constants. */
+                  operation: number;
+                  /** ROWID of the row that was affected. */
+                  rowid: string;
+              }>
             | undefined;
     }
 
@@ -1563,11 +1627,11 @@ declare namespace OracleDB {
          */
         fetchInfo?:
             | Record<
-                string,
-                {
-                    type: number;
-                }
-            >
+                  string,
+                  {
+                      type: number;
+                  }
+              >
             | undefined;
         /**
          * The maximum number of rows that are fetched by a query with connection.execute() when not using a ResultSet.
@@ -1669,7 +1733,10 @@ declare namespace OracleDB {
          *
          * It should be an array or an object, depending on the structure of the binds parameter.
          */
-        bindDefs?: Record<string, BindDefinition> | BindDefinition[] | undefined;
+        bindDefs?:
+            | Record<string, BindDefinition>
+            | BindDefinition[]
+            | undefined;
         /**
          * When true, this optional property enables output of the number of rows affected by each input data record.
          * It can only be set true for INSERT, UPDATE, DELETE or MERGE statements.
@@ -1772,7 +1839,9 @@ declare namespace OracleDB {
          * @since 4.0
          */
         getData(): Promise<string | Buffer>;
-        getData(callback: (error: DBError, data: string | Buffer) => void): void;
+        getData(
+            callback: (error: DBError, data: string | Buffer) => void,
+        ): void;
     }
 
     /**
@@ -1985,12 +2054,16 @@ declare namespace OracleDB {
          * @see https://oracle.github.io/node-oracledb/doc/api.html#connectionhandling
          * @see https://oracle.github.io/node-oracledb/doc/api.html#connpoolproxy
          */
-        getConnection(poolAttributes?: GetPooledConnectionOptions): Promise<Connection>;
+        getConnection(
+            poolAttributes?: GetPooledConnectionOptions,
+        ): Promise<Connection>;
         getConnection(
             poolAttributes: GetPooledConnectionOptions,
             callback: (error: DBError, connection: Connection) => void,
         ): void;
-        getConnection(callback: (error: DBError, connection: Connection) => void): void;
+        getConnection(
+            callback: (error: DBError, connection: Connection) => void,
+        ): void;
         /**
          * This call closes connections in the pool and terminates the connection pool.
          *
@@ -2041,7 +2114,10 @@ declare namespace OracleDB {
          * If an error such as an invalid value occurs when changing one property, then an error will be thrown but any already changed properties will retain their new values.
          */
         reconfigure(poolAttrs: PoolAttributes): Promise<void>;
-        reconfigure(poolAttrs: PoolAttributes, callback: (error: DBError) => void): void;
+        reconfigure(
+            poolAttrs: PoolAttributes,
+            callback: (error: DBError) => void,
+        ): void;
     }
 
     /**
@@ -2313,7 +2389,11 @@ declare namespace OracleDB {
          */
         sessionCallback?:
             | string
-            | ((connection: Connection, requestedTag: string, callback: (error?: DBError) => void) => void)
+            | ((
+                  connection: Connection,
+                  requestedTag: string,
+                  callback: (error?: DBError) => void,
+              ) => void)
             | undefined;
         /**
          * The number of statements to be cached in the statement cache of each connection in the pool.
@@ -2364,14 +2444,22 @@ declare namespace OracleDB {
         deqMany(maxMessages: number): Promise<Array<AdvancedQueueMessage<T>>>;
         deqMany(
             maxMessages: number,
-            callback: (error: DBError, messages: Array<AdvancedQueueMessage<T>>) => void,
+            callback: (
+                error: DBError,
+                messages: Array<AdvancedQueueMessage<T>>,
+            ) => void,
         ): void;
 
         /**
          * Dequeues a single message. Depending on the dequeue options, the message may also be returned as undefined if no message is available.
          */
         deqOne(): Promise<AdvancedQueueMessage<T> | undefined>;
-        deqOne(callback: (error: DBError, message?: AdvancedQueueMessage<T>) => void): void;
+        deqOne(
+            callback: (
+                error: DBError,
+                message?: AdvancedQueueMessage<T>,
+            ) => void,
+        ): void;
 
         /**
          * Enqueues multiple messages.
@@ -2383,7 +2471,10 @@ declare namespace OracleDB {
          * @param messages Messages to enqueue.
          */
         enqMany(messages: Array<EnqueueMessage<T>>): Promise<void>;
-        enqMany(messages: Array<EnqueueMessage<T>>, callback: (error: DBError) => void): void;
+        enqMany(
+            messages: Array<EnqueueMessage<T>>,
+            callback: (error: DBError) => void,
+        ): void;
 
         /**
          * Enqueues a single message.
@@ -2391,7 +2482,10 @@ declare namespace OracleDB {
          * @param message
          */
         enqOne(message: EnqueueMessage<T>): Promise<void>;
-        enqOne(message: EnqueueMessage<T>, callback: (error: DBError) => void): void;
+        enqOne(
+            message: EnqueueMessage<T>,
+            callback: (error: DBError) => void,
+        ): void;
     }
 
     type EnqueueMessage<T> =
@@ -2399,49 +2493,45 @@ declare namespace OracleDB {
         | Buffer
         | DBObject_IN<T>
         | {
-            /** Correlation that was used during enqueue. */
-            correlation: string;
-            /** Number of seconds the message was delayed before it could be dequeued. */
-            delay: number;
-            /** Name of the exception queue defined when the message was enqueued. */
-            exceptionQueue: string;
-            /** Number of seconds until expiration defined when the message was enqueued. */
-            expiration: number;
-            /** Contains the payload of the message, with type depending on the value of queue.payloadType.
-             * Note that enqueued Strings are returned as UTF-8 encoded Buffers.
-             */
-            payload: string | Buffer | DBObject_IN<T>;
-            /** Priority of the message when it was enqueued. */
-            priority: number;
-        };
+              /** Correlation that was used during enqueue. */
+              correlation: string;
+              /** Number of seconds the message was delayed before it could be dequeued. */
+              delay: number;
+              /** Name of the exception queue defined when the message was enqueued. */
+              exceptionQueue: string;
+              /** Number of seconds until expiration defined when the message was enqueued. */
+              expiration: number;
+              /** Contains the payload of the message, with type depending on the value of queue.payloadType.
+               * Note that enqueued Strings are returned as UTF-8 encoded Buffers.
+               */
+              payload: string | Buffer | DBObject_IN<T>;
+              /** Priority of the message when it was enqueued. */
+              priority: number;
+          };
 
     /**
      * @see https://oracle.github.io/node-oracledb/doc/api.html#objects
      * @since 4.0
      */
     interface DBObjectClass<T> {
-        new(data?: T): DBObject_IN<T>;
+        new (data?: T): DBObject_IN<T>;
     }
 
     /**
      * @see https://oracle.github.io/node-oracledb/doc/api.html#objects
      * @since 4.0
      */
-    type DBObject_IN<T> =
-        & {
-            [P in keyof T]: T[P];
-        }
-        & BaseDBObject<T>;
+    type DBObject_IN<T> = {
+        [P in keyof T]: T[P];
+    } & BaseDBObject<T>;
 
     /**
      * @see https://oracle.github.io/node-oracledb/doc/api.html#objects
      * @since 4.0
      */
-    type DBObject_OUT<T> =
-        & {
-            [P in keyof T]: DBObject_OUT<T[P]>;
-        }
-        & BaseDBObject<T>;
+    type DBObject_OUT<T> = {
+        [P in keyof T]: DBObject_OUT<T[P]>;
+    } & BaseDBObject<T>;
 
     /**
      * @see https://oracle.github.io/node-oracledb/doc/api.html#objects
@@ -2607,19 +2697,37 @@ declare namespace OracleDB {
     type QueryStream<T> = Readable & QueryStreamEvents<T>;
 
     interface QueryStreamEvents<T> {
-        addListener(event: "metadata", listener: (metadata: Array<Metadata<T>>) => void): this;
+        addListener(
+            event: "metadata",
+            listener: (metadata: Array<Metadata<T>>) => void,
+        ): this;
 
         emit(event: "metadata", metadata: Array<Metadata<T>>): boolean;
 
-        on(event: "metadata", listener: (metadata: Array<Metadata<T>>) => void): this;
+        on(
+            event: "metadata",
+            listener: (metadata: Array<Metadata<T>>) => void,
+        ): this;
 
-        once(event: "metadata", listener: (metadata: Array<Metadata<T>>) => void): this;
+        once(
+            event: "metadata",
+            listener: (metadata: Array<Metadata<T>>) => void,
+        ): this;
 
-        prependListener(event: "metadata", listener: (metadata: Array<Metadata<T>>) => void): this;
+        prependListener(
+            event: "metadata",
+            listener: (metadata: Array<Metadata<T>>) => void,
+        ): this;
 
-        prependOnceListener(event: "metadata", listener: (metadata: Array<Metadata<T>>) => void): this;
+        prependOnceListener(
+            event: "metadata",
+            listener: (metadata: Array<Metadata<T>>) => void,
+        ): this;
 
-        removeListener(event: "metadata", listener: (metadata: Array<Metadata<T>>) => void): this;
+        removeListener(
+            event: "metadata",
+            listener: (metadata: Array<Metadata<T>>) => void,
+        ): this;
     }
 
     /**
@@ -2772,7 +2880,10 @@ declare namespace OracleDB {
          */
         getRows(numRows?: number): Promise<T[]>;
         getRows(callback: (error: DBError, rows: T[]) => void): void;
-        getRows(numRows: number, callback: (error: DBError, rows: T[]) => void): void;
+        getRows(
+            numRows: number,
+            callback: (error: DBError, rows: T[]) => void,
+        ): void;
 
         /**
          * This synchronous method converts a ResultSet into a stream.
@@ -2827,13 +2938,19 @@ declare namespace OracleDB {
          *
          * @since 3.0
          */
-        createCollection(collectionName: string, options?: SodaCollectionOptions): Promise<SodaCollection>;
+        createCollection(
+            collectionName: string,
+            options?: SodaCollectionOptions,
+        ): Promise<SodaCollection>;
         createCollection(
             collectionName: string,
             options: SodaCollectionOptions,
             callback: (error: DBError, collection: SodaCollection) => void,
         ): void;
-        createCollection(collectionName: string, callback: (error: DBError, collection: SodaCollection) => void): void;
+        createCollection(
+            collectionName: string,
+            callback: (error: DBError, collection: SodaCollection) => void,
+        ): void;
 
         /**
          * A synchronous method that constructs a proto SodaDocument object usable for SODA insert and replace methods.
@@ -2846,7 +2963,10 @@ declare namespace OracleDB {
          * @param content The document content.
          * @param options Optional properties for the document to be created.
          */
-        createDocument(content: string | Buffer | Record<string, any>, options?: SodaDocumentOptions): SodaDocument;
+        createDocument(
+            content: string | Buffer | Record<string, any>,
+            options?: SodaDocumentOptions,
+        ): SodaDocument;
 
         /**
          * Gets an array of collection names in alphabetical order.
@@ -2862,7 +2982,9 @@ declare namespace OracleDB {
             options: SodaCollectionNamesOptions,
             callback: (error: DBError, names: string[]) => void,
         ): void;
-        getCollectionNames(callback: (error: DBError, names: string[]) => void): void;
+        getCollectionNames(
+            callback: (error: DBError, names: string[]) => void,
+        ): void;
 
         /**
          * Opens an existing SodaCollection of the given name. The collection can then be used to access documents.
@@ -2877,8 +2999,13 @@ declare namespace OracleDB {
          *
          * @since 3.0
          */
-        openCollection(collectionName: string): Promise<SodaCollection | undefined>;
-        openCollection(collectionName: string, callback: (error: DBError, collection?: SodaCollection) => void): void;
+        openCollection(
+            collectionName: string,
+        ): Promise<SodaCollection | undefined>;
+        openCollection(
+            collectionName: string,
+            callback: (error: DBError, collection?: SodaCollection) => void,
+        ): void;
     }
 
     /**
@@ -2941,8 +3068,13 @@ declare namespace OracleDB {
          * @since 3.0
          * @see https://www.oracle.com/pls/topic/lookup?ctx=dblatest&id=GUID-4848E6A0-58A7-44FD-8D6D-A033D0CCF9CB
          */
-        createIndex(indexSpec: BTreeIndex | SpatialIndex | SearchIndex): Promise<void>;
-        createIndex(indexSpec: BTreeIndex | SpatialIndex | SearchIndex, callback: (error: DBError) => void): void;
+        createIndex(
+            indexSpec: BTreeIndex | SpatialIndex | SearchIndex,
+        ): Promise<void>;
+        createIndex(
+            indexSpec: BTreeIndex | SpatialIndex | SearchIndex,
+            callback: (error: DBError) => void,
+        ): void;
 
         /**
          * Drops the current collection.
@@ -2968,7 +3100,9 @@ declare namespace OracleDB {
          * @since 3.0
          */
         drop(): Promise<DropCollectionResult>;
-        drop(callback: (error: DBError, result: DropCollectionResult) => void): void;
+        drop(
+            callback: (error: DBError, result: DropCollectionResult) => void,
+        ): void;
 
         /**
          * Drops the specified index.
@@ -2981,7 +3115,10 @@ declare namespace OracleDB {
          *
          * @since 3.0
          */
-        dropIndex(indexName: string, options?: DropIndexOptions): Promise<DropCollectionResult>;
+        dropIndex(
+            indexName: string,
+            options?: DropIndexOptions,
+        ): Promise<DropCollectionResult>;
         dropIndex(
             indexName: string,
             options: DropIndexOptions,
@@ -3015,7 +3152,9 @@ declare namespace OracleDB {
          * @since 3.0
          */
         getDataGuide(): Promise<SodaDocument>;
-        getDataGuide(callback: (error: DBError, document: SodaDocument) => void): void;
+        getDataGuide(
+            callback: (error: DBError, document: SodaDocument) => void,
+        ): void;
 
         /**
          * Inserts a given document to the collection. The input document can be either a JavaScript object representing
@@ -3033,8 +3172,13 @@ declare namespace OracleDB {
          *
          * @since 3.0
          */
-        insertOne(newDocument: SodaDocument | Record<string, any>): Promise<void>;
-        insertOne(newDocument: SodaDocument | Record<string, any>, callback: (error: DBError) => void): void;
+        insertOne(
+            newDocument: SodaDocument | Record<string, any>,
+        ): Promise<void>;
+        insertOne(
+            newDocument: SodaDocument | Record<string, any>,
+            callback: (error: DBError) => void,
+        ): void;
 
         /**
          * Similar to sodaCollection.insertOne() but also returns the inserted document so system managed properties,
@@ -3080,8 +3224,13 @@ declare namespace OracleDB {
          * @requires Oracle Client 18.5 or higher
          * @since 4.0
          */
-        insertMany(documents: Array<SodaDocument | Record<string, any>>): Promise<void>;
-        insertMany(documents: Array<SodaDocument | Record<string, any>>, callback: (error: DBError) => void): void;
+        insertMany(
+            documents: Array<SodaDocument | Record<string, any>>,
+        ): Promise<void>;
+        insertMany(
+            documents: Array<SodaDocument | Record<string, any>>,
+            callback: (error: DBError) => void,
+        ): void;
 
         /**
          * Similar to sodaCollection.insertMany() but also returns an array of the inserted documents so system managed properties,
@@ -3115,7 +3264,10 @@ declare namespace OracleDB {
          * @since 5.0
          */
         save(document: SodaDocument): Promise<SodaDocument>;
-        save(document: SodaDocument, cb: (err: DBError, doc: SodaDocument) => void): void;
+        save(
+            document: SodaDocument,
+            cb: (err: DBError, doc: SodaDocument) => void,
+        ): void;
 
         /**
          * This method behaves like sodaCollection.insertOneAndGet() with the exception that if a document with the same key already exists, then it is updated instead.
@@ -3125,7 +3277,10 @@ declare namespace OracleDB {
          *
          * @since 5.0
          */
-        saveAndGet(document: SodaDocument, options?: { hint: string }): Promise<SodaDocument>;
+        saveAndGet(
+            document: SodaDocument,
+            options?: { hint: string },
+        ): Promise<SodaDocument>;
         saveAndGet(
             document: SodaDocument,
             cb: (err: DBError, doc: SodaDocument) => void,
@@ -3216,7 +3371,9 @@ declare namespace OracleDB {
          * @since 3.0
          */
         getNext(): Promise<SodaDocument | undefined>;
-        getNext(callback: (error: DBError, document?: SodaDocument) => void): void;
+        getNext(
+            callback: (error: DBError, document?: SodaDocument) => void,
+        ): void;
     }
 
     /**
@@ -3338,7 +3495,9 @@ declare namespace OracleDB {
          * connection is committed.
          */
         count(): Promise<SodaCountResult>;
-        count(callback: (error: DBError, result: SodaCountResult) => void): void;
+        count(
+            callback: (error: DBError, result: SodaCountResult) => void,
+        ): void;
         /**
          * Returns a SodaDocumentCursor for documents that match the SodaOperation query criteria.
          * The cursor can be iterated over with sodaDocumentCursor.getNext() to access each SodaDocument.
@@ -3352,7 +3511,9 @@ declare namespace OracleDB {
          * @since 3.0
          */
         getCursor(): Promise<SodaDocumentCursor>;
-        getCursor(callback: (error: DBError, cursor: SodaDocumentCursor) => void): void;
+        getCursor(
+            callback: (error: DBError, cursor: SodaDocumentCursor) => void,
+        ): void;
         /**
          * Gets an array of SodaDocuments matching the SodaOperation query criteria. An empty array will be
          * returned when no documents match.
@@ -3366,7 +3527,9 @@ declare namespace OracleDB {
          * @since 3.0
          */
         getDocuments(): Promise<SodaDocument[]>;
-        getDocuments(callback: (error: DBError, documents: SodaDocument[]) => void): void;
+        getDocuments(
+            callback: (error: DBError, documents: SodaDocument[]) => void,
+        ): void;
         /**
          * Obtains one document matching the SodaOperation query criteria. If the criteria match more
          * than one document, then only the first is returned.
@@ -3379,7 +3542,9 @@ declare namespace OracleDB {
          * @since 3.0
          */
         getOne(): Promise<SodaDocument | undefined>;
-        getOne(callback: (error: DBError, document?: SodaDocument) => void): void;
+        getOne(
+            callback: (error: DBError, document?: SodaDocument) => void,
+        ): void;
         /**
          * Removes a set of documents matching the SodaOperation query criteria.
          *
@@ -3391,7 +3556,9 @@ declare namespace OracleDB {
          * @since 3.0
          */
         remove(): Promise<SodaRemoveResult>;
-        remove(callback: (error: DBError, result: SodaRemoveResult) => void): void;
+        remove(
+            callback: (error: DBError, result: SodaRemoveResult) => void,
+        ): void;
         /**
          * Replaces a document in a collection. The input document can be either a JavaScript object representing the
          * data content, or it can be an existing SodaDocument.
@@ -3415,7 +3582,10 @@ declare namespace OracleDB {
          * @since 3.0
          */
         replaceOne(newDocument: SodaDocument): Promise<SodaReplaceOneResult>;
-        replaceOne(newDocument: SodaDocument, callback: (error: DBError, result: SodaReplaceOneResult) => void): void;
+        replaceOne(
+            newDocument: SodaDocument,
+            callback: (error: DBError, result: SodaReplaceOneResult) => void,
+        ): void;
         /**
          * Replaces a document in a collection. The input document can be either a JavaScript object representing the
          * data content, or it can be an existing SodaDocument.
@@ -3438,7 +3608,9 @@ declare namespace OracleDB {
          *
          * @since 3.0
          */
-        replaceOne(newDocumentContent: Record<string, any>): Promise<SodaReplaceOneResult>;
+        replaceOne(
+            newDocumentContent: Record<string, any>,
+        ): Promise<SodaReplaceOneResult>;
         replaceOne(
             newDocumentContent: Record<string, any>,
             callback: (error: DBError, result: SodaReplaceOneResult) => void,
@@ -3456,8 +3628,13 @@ declare namespace OracleDB {
          *
          * @since 3.0
          */
-        replaceOneAndGet(newDocument: SodaDocument): Promise<SodaDocument | undefined>;
-        replaceOneAndGet(newDocument: SodaDocument, callback: (error: DBError, document?: SodaDocument) => void): void;
+        replaceOneAndGet(
+            newDocument: SodaDocument,
+        ): Promise<SodaDocument | undefined>;
+        replaceOneAndGet(
+            newDocument: SodaDocument,
+            callback: (error: DBError, document?: SodaDocument) => void,
+        ): void;
         /**
          * Replaces a document in a collection. This is similar to replaceOne(), but also returns the result document,
          * which contains all SodaDocument components (key, version, etc.) except for content.
@@ -3471,7 +3648,9 @@ declare namespace OracleDB {
          *
          * @since 3.0
          */
-        replaceOneAndGet(newDocumentContent: Record<string, any>): Promise<SodaDocument>;
+        replaceOneAndGet(
+            newDocumentContent: Record<string, any>,
+        ): Promise<SodaDocument>;
         replaceOneAndGet(
             newDocumentContent: Record<string, any>,
             callback: (error: DBError, document: SodaDocument) => void,
@@ -3625,144 +3804,156 @@ declare namespace OracleDB {
         /** Name of the view to which the collection is mapped. */
         viewName?: string | undefined;
         /** Object containing information related to the key column. */
-        keyColumn?: {
-            /**
-             * Name of the column that stores the document key.
-             *
-             * @default ID
-             */
-            name?: string | undefined;
-            /**
-             * SQL data type of the column that stores the document key.
-             *
-             * @default VARCHAR2
-             */
-            sqlType?: string | undefined;
-            /**
-             * Maximum length of the key column in bytes. This component applies only to keys of type VARCHAR2.
-             *
-             * @default 255
-             */
-            maxLength?: number | undefined;
-            /**
-             * Method used to assign keys to objects that are inserted into the collection.
-             *
-             * @default UUID
-             */
-            assignmentMethod?: string | undefined;
-            /**
-             * Name of the database sequence that generates keys for documents that are inserted into a collection if
-             * the key assignment method is SEQUENCE.
-             *
-             * If you specify the key assignment method as SEQUENCE then you must also specify the name of that sequence.
-             * If the specified sequence does not exist then SODA creates it.
-             */
-            sequenceName?: string | undefined;
-        } | undefined;
+        keyColumn?:
+            | {
+                  /**
+                   * Name of the column that stores the document key.
+                   *
+                   * @default ID
+                   */
+                  name?: string | undefined;
+                  /**
+                   * SQL data type of the column that stores the document key.
+                   *
+                   * @default VARCHAR2
+                   */
+                  sqlType?: string | undefined;
+                  /**
+                   * Maximum length of the key column in bytes. This component applies only to keys of type VARCHAR2.
+                   *
+                   * @default 255
+                   */
+                  maxLength?: number | undefined;
+                  /**
+                   * Method used to assign keys to objects that are inserted into the collection.
+                   *
+                   * @default UUID
+                   */
+                  assignmentMethod?: string | undefined;
+                  /**
+                   * Name of the database sequence that generates keys for documents that are inserted into a collection if
+                   * the key assignment method is SEQUENCE.
+                   *
+                   * If you specify the key assignment method as SEQUENCE then you must also specify the name of that sequence.
+                   * If the specified sequence does not exist then SODA creates it.
+                   */
+                  sequenceName?: string | undefined;
+              }
+            | undefined;
         /** Object containing information related to the content column. */
-        contentColumn?: {
-            /**
-             * Name of the column that stores the database content.
-             *
-             * @default JSON_DOCUMENT
-             */
-            name?: string | undefined;
-            /**
-             * SQL data type of the column that stores the document content.
-             *
-             * @default BLOB
-             */
-            sqlType?: string | undefined;
-            /**
-             * Maximum length of the content column in bytes. This component applies only to content of type VARCHAR2.
-             *
-             * @default 4000
-             */
-            maxLength?: number | undefined;
-            /**
-             * SecureFiles LOB compression setting.
-             *
-             * @default NONE
-             */
-            compress?: string | undefined;
-            /**
-             * SecureFiles LOB cache setting.
-             *
-             * @default true
-             */
-            cache?: boolean | undefined;
-            /**
-             * SecureFiles LOB encryption setting.
-             *
-             * Before you create a collection that uses SecureFiles LOB encryption you must set up an encryption wallet.
-             *
-             * @default NONE
-             */
-            encrypt?: string | undefined;
-            /**
-             * Syntax to which JavaScript Object Notation (JSON) content must conform—strict or lax.
-             *
-             * @default STANDARD
-             */
-            validation?: string | undefined;
-        } | undefined;
+        contentColumn?:
+            | {
+                  /**
+                   * Name of the column that stores the database content.
+                   *
+                   * @default JSON_DOCUMENT
+                   */
+                  name?: string | undefined;
+                  /**
+                   * SQL data type of the column that stores the document content.
+                   *
+                   * @default BLOB
+                   */
+                  sqlType?: string | undefined;
+                  /**
+                   * Maximum length of the content column in bytes. This component applies only to content of type VARCHAR2.
+                   *
+                   * @default 4000
+                   */
+                  maxLength?: number | undefined;
+                  /**
+                   * SecureFiles LOB compression setting.
+                   *
+                   * @default NONE
+                   */
+                  compress?: string | undefined;
+                  /**
+                   * SecureFiles LOB cache setting.
+                   *
+                   * @default true
+                   */
+                  cache?: boolean | undefined;
+                  /**
+                   * SecureFiles LOB encryption setting.
+                   *
+                   * Before you create a collection that uses SecureFiles LOB encryption you must set up an encryption wallet.
+                   *
+                   * @default NONE
+                   */
+                  encrypt?: string | undefined;
+                  /**
+                   * Syntax to which JavaScript Object Notation (JSON) content must conform—strict or lax.
+                   *
+                   * @default STANDARD
+                   */
+                  validation?: string | undefined;
+              }
+            | undefined;
         /** Object containing information related to the version column. */
-        versionColumn?: {
-            /**
-             * Name of the column that stores the document version.
-             *
-             * @default VERSION
-             */
-            name?: string | undefined;
-            /**
-             * Method used to compute version values for objects when they are inserted into a collection or replaced.
-             *
-             * @default SHA256
-             */
-            method?: string | undefined;
-        } | undefined;
+        versionColumn?:
+            | {
+                  /**
+                   * Name of the column that stores the document version.
+                   *
+                   * @default VERSION
+                   */
+                  name?: string | undefined;
+                  /**
+                   * Method used to compute version values for objects when they are inserted into a collection or replaced.
+                   *
+                   * @default SHA256
+                   */
+                  method?: string | undefined;
+              }
+            | undefined;
         /** Object containing information related to the last modified column. */
-        lastModifiedColumn?: {
-            /**
-             * Name of the column that stores the last-modified time stamp of the document.
-             *
-             * @default LAST_MODIFIED
-             */
-            name?: string | undefined;
-            /**
-             * Name of the index on the last-modified column.
-             *
-             * The value of this component is the name of a nonunique index on the last-modified time-stamp column.
-             * The index is created if a name is specified. This index can improve the performance of read and write
-             * operations that are driven by last-modified time stamps.
-             *
-             * Only SODA for REST provides such an operation (operation GET collection with time-stamp parameters since
-             * and until). Other implementations do not use this component, since they do not provide any read or write
-             * operations that are driven by last-modified time stamps. Even for SODA for REST, it is typically better
-             * not to set this component if you are sure that your application does not use any read or write operations
-             * that are driven by time stamps, because creating and maintaining an index carries a cost.
-             */
-            index?: string | undefined;
-        } | undefined;
+        lastModifiedColumn?:
+            | {
+                  /**
+                   * Name of the column that stores the last-modified time stamp of the document.
+                   *
+                   * @default LAST_MODIFIED
+                   */
+                  name?: string | undefined;
+                  /**
+                   * Name of the index on the last-modified column.
+                   *
+                   * The value of this component is the name of a nonunique index on the last-modified time-stamp column.
+                   * The index is created if a name is specified. This index can improve the performance of read and write
+                   * operations that are driven by last-modified time stamps.
+                   *
+                   * Only SODA for REST provides such an operation (operation GET collection with time-stamp parameters since
+                   * and until). Other implementations do not use this component, since they do not provide any read or write
+                   * operations that are driven by last-modified time stamps. Even for SODA for REST, it is typically better
+                   * not to set this component if you are sure that your application does not use any read or write operations
+                   * that are driven by time stamps, because creating and maintaining an index carries a cost.
+                   */
+                  index?: string | undefined;
+              }
+            | undefined;
         /** Object containing information related to the creation time column. */
-        creationTimeColumn?: {
-            /**
-             * Name of the column that stores the creation time stamp of the document. This time stamp is
-             * generated during the insert, insertAndGet, save, or saveAndGet operation.
-             *
-             * @default CREATED_ON
-             */
-            name?: string | undefined;
-        } | undefined;
+        creationTimeColumn?:
+            | {
+                  /**
+                   * Name of the column that stores the creation time stamp of the document. This time stamp is
+                   * generated during the insert, insertAndGet, save, or saveAndGet operation.
+                   *
+                   * @default CREATED_ON
+                   */
+                  name?: string | undefined;
+              }
+            | undefined;
         /** Object containing information related to the media type column. */
-        mediaTypeColumn?: {
-            /**
-             * Name of the column that stores the media type of the document. A media type column is needed if
-             * the collection is to be heterogeneous, that is, it can store documents other than
-             * JavaScript Object Notation (JSON).
-             */
-            name?: string | undefined;
-        } | undefined;
+        mediaTypeColumn?:
+            | {
+                  /**
+                   * Name of the column that stores the media type of the document. A media type column is needed if
+                   * the collection is to be heterogeneous, that is, it can store documents other than
+                   * JavaScript Object Notation (JSON).
+                   */
+                  name?: string | undefined;
+              }
+            | undefined;
         /** Specifies whether or not the collection is read-only. */
         readOnly?: boolean | undefined;
     }
@@ -3786,7 +3977,10 @@ declare namespace OracleDB {
      * @param poolAttributes Provides connection credentials and pool-specific configuration properties, overriding the defualt pooling properties of the Oracledb object.
      */
     function createPool(poolAttributes: PoolAttributes): Promise<Pool>;
-    function createPool(poolAttributes: PoolAttributes, callback: (error: DBError, pool: Pool) => void): void;
+    function createPool(
+        poolAttributes: PoolAttributes,
+        callback: (error: DBError, pool: Pool) => void,
+    ): void;
 
     /**
      * Obtains a connection from a pool in the connection pool cache.
@@ -3797,7 +3991,10 @@ declare namespace OracleDB {
      * @param poolAlias Specifies which previously created pool in the connection pool cache to use to obtain the connection.
      */
     function getConnection(poolAlias: string): Promise<Connection>;
-    function getConnection(poolAlias: string, callback: (error: DBError, connection: Connection) => void): void;
+    function getConnection(
+        poolAlias: string,
+        callback: (error: DBError, connection: Connection) => void,
+    ): void;
 
     /**
      * Obtains a connection from the default pool.
@@ -3806,7 +4003,9 @@ declare namespace OracleDB {
      * However, in most cases, Oracle recommends getting connections from a connection pool.
      */
     function getConnection(): Promise<Connection>;
-    function getConnection(callback: (error: DBError, connection: Connection) => void): void;
+    function getConnection(
+        callback: (error: DBError, connection: Connection) => void,
+    ): void;
 
     /**
      * Creates a new, standalone, non-pooled connection.
@@ -3816,7 +4015,9 @@ declare namespace OracleDB {
      *
      * @param connectionAttributes Connection credentials and connection-specific configuration properties.
      */
-    function getConnection(connectionAttributes: ConnectionAttributes): Promise<Connection>;
+    function getConnection(
+        connectionAttributes: ConnectionAttributes,
+    ): Promise<Connection>;
     function getConnection(
         connectionAttributes: ConnectionAttributes,
         callback: (error: DBError, connection: Connection) => void,
@@ -3885,17 +4086,17 @@ declare namespace OracleDB {
 
     type DBCredentials =
         | {
-            user: string;
-            password: string;
-            connectionString: string;
-            externalAuth?: boolean | undefined;
-        }
+              user: string;
+              password: string;
+              connectionString: string;
+              externalAuth?: boolean | undefined;
+          }
         | {
-            user: string;
-            password: string;
-            connectString: string;
-            externalAuth?: boolean | undefined;
-        };
+              user: string;
+              password: string;
+              connectString: string;
+              externalAuth?: boolean | undefined;
+          };
 
     /**
      * This is the simplified form of connection.shutdown() used for shutting down a database instance. It accepts connection
@@ -3907,7 +4108,11 @@ declare namespace OracleDB {
      * @since 5.0
      */
     function shutdown(creds: DBCredentials, mode?: number): Promise<void>;
-    function shutdown(creds: DBCredentials, mode: number, cb: (err: Error) => void): void;
+    function shutdown(
+        creds: DBCredentials,
+        mode: number,
+        cb: (err: Error) => void,
+    ): void;
     function shutdown(creds: DBCredentials, cb: (err: Error) => void): void;
 
     interface StartupOptions {
@@ -3938,8 +4143,15 @@ declare namespace OracleDB {
      * @see https://oracle.github.io/node-oracledb/doc/api.html#startupshutdown
      * @since 5.0
      */
-    function startup(creds: DBCredentials, opts?: StartupOptions): Promise<void>;
-    function startup(creds: DBCredentials, opts: StartupOptions, cb: (err: Error) => void): void;
+    function startup(
+        creds: DBCredentials,
+        opts?: StartupOptions,
+    ): Promise<void>;
+    function startup(
+        creds: DBCredentials,
+        opts: StartupOptions,
+        cb: (err: Error) => void,
+    ): void;
     function startup(creds: DBCredentials, cb: (err: Error) => void): void;
 }
 

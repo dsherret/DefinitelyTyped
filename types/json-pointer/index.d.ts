@@ -90,12 +90,19 @@ declare namespace JsonPointer {
          * pointer.dict(obj);
          * // -> { '/hello/bla': 'example' }
          */
-        dict(object: JsonObject, descend?: (value: any) => boolean): Record<string, any>;
+        dict(
+            object: JsonObject,
+            descend?: (value: any) => boolean,
+        ): Record<string, any>;
 
         /**
          * Iterates over an object. Just like: `each(pointer.dict(obj), iterator);`.
          */
-        walk(object: JsonObject, iterator: (value: any, ref: string) => void, descend?: (value: any) => boolean): void;
+        walk(
+            object: JsonObject,
+            iterator: (value: any, ref: string) => void,
+            descend?: (value: any) => boolean,
+        ): void;
 
         /**
          * Tests if an object has a value for a JSON pointer.
@@ -155,15 +162,13 @@ declare namespace JsonPointer {
         compile(tokens: string[]): string;
     }
 
-    type BoundApi =
-        & {
-            [key in "get" | "remove" | "dict" | "walk" | "has"]: (
-                ...params: DropFirst<Parameters<Api[key]>>
-            ) => ReturnType<Api[key]>;
-        }
-        & {
-            set: (...params: DropFirst<Parameters<Api["set"]>>) => BoundApi;
-        };
+    type BoundApi = {
+        [key in "get" | "remove" | "dict" | "walk" | "has"]: (
+            ...params: DropFirst<Parameters<Api[key]>>
+        ) => ReturnType<Api[key]>;
+    } & {
+        set: (...params: DropFirst<Parameters<Api["set"]>>) => BoundApi;
+    };
 }
 
 type DropFirst<T extends unknown[]> = T extends [any, ...infer U] ? U : never;

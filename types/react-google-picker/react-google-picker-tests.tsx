@@ -9,8 +9,8 @@ const ReactGooglePickerTest = () => {
                 clientId={"your-client-id"}
                 developerKey={"your-developer-key"}
                 scope={["https://www.googleapis.com/auth/drive.readonly"]}
-                onChange={data => console.log("on change:", data)}
-                onAuthFailed={data => console.log("on auth failed:", data)}
+                onChange={(data) => console.log("on change:", data)}
+                onAuthFailed={(data) => console.log("on auth failed:", data)}
                 multiselect={true}
                 navHidden={true}
                 authImmediate={false}
@@ -25,9 +25,9 @@ const ReactGooglePickerTest = () => {
                 clientId={"your-client-id"}
                 developerKey={"your-developer-key"}
                 scope={["https://www.googleapis.com/auth/drive.readonly"]}
-                onChange={data => console.log("on change:", data)}
-                onAuthenticate={token => console.log("oauth token:", token)}
-                onAuthFailed={data => console.log("on auth failed:", data)}
+                onChange={(data) => console.log("on change:", data)}
+                onAuthenticate={(token) => console.log("oauth token:", token)}
+                onAuthFailed={(data) => console.log("on auth failed:", data)}
                 multiselect={true}
                 navHidden={true}
                 authImmediate={false}
@@ -41,8 +41,8 @@ const ReactGooglePickerTest = () => {
                 clientId={"your-client-id"}
                 developerKey={"your-developer-key"}
                 scope={["https://www.googleapis.com/auth/drive.readonly"]}
-                onChange={data => console.log("on change:", data)}
-                onAuthFailed={data => console.log("on auth failed:", data)}
+                onChange={(data) => console.log("on change:", data)}
+                onAuthFailed={(data) => console.log("on auth failed:", data)}
                 multiselect={true}
                 navHidden={true}
                 authImmediate={false}

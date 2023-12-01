@@ -21,10 +21,10 @@ interface IInitCloudConfig {
     env?:
         | string
         | {
-            database?: string | undefined;
-            functions?: string | undefined;
-            storage?: string | undefined;
-        }
+              database?: string | undefined;
+              functions?: string | undefined;
+              storage?: string | undefined;
+          }
         | undefined;
     traceUser?: boolean | undefined;
 }
@@ -186,7 +186,7 @@ declare namespace ICloud {
     }
 
     interface ICloudIDConstructor {
-        new(cloudId: string): CloudID;
+        new (cloudId: string): CloudID;
         (cloudId: string): CloudID;
     }
     // === end ===
@@ -203,7 +203,7 @@ declare namespace ICloud {
     }
 
     interface ICDNConstructor {
-        new(options: string | ArrayBuffer | ICDNFilePathSpec): CDN;
+        new (options: string | ArrayBuffer | ICDNFilePathSpec): CDN;
         (options: string | ArrayBuffer | ICDNFilePathSpec): CDN;
     }
     // === end ===
@@ -572,24 +572,24 @@ declare namespace DB {
     }
 
     interface IGeoPointConstructor {
-        new(longitude: number, latitide: number): GeoPoint;
-        new(geojson: IGeoJSONPoint): GeoPoint;
+        new (longitude: number, latitide: number): GeoPoint;
+        new (geojson: IGeoJSONPoint): GeoPoint;
         (longitude: number, latitide: number): GeoPoint;
         (geojson: IGeoJSONPoint): GeoPoint;
     }
 
     interface IGeoMultiPointConstructor {
-        new(points: GeoPoint[] | IGeoJSONMultiPoint): GeoMultiPoint;
+        new (points: GeoPoint[] | IGeoJSONMultiPoint): GeoMultiPoint;
         (points: GeoPoint[] | IGeoJSONMultiPoint): GeoMultiPoint;
     }
 
     interface IGeoLineStringConstructor {
-        new(points: GeoPoint[] | IGeoJSONLineString): GeoLineString;
+        new (points: GeoPoint[] | IGeoJSONLineString): GeoLineString;
         (points: GeoPoint[] | IGeoJSONLineString): GeoLineString;
     }
 
     interface IGeoMultiLineStringConstructor {
-        new(
+        new (
             lineStrings: GeoLineString[] | IGeoJSONMultiLineString,
         ): GeoMultiLineString;
         (
@@ -598,12 +598,12 @@ declare namespace DB {
     }
 
     interface IGeoPolygonConstructor {
-        new(lineStrings: GeoLineString[] | IGeoJSONPolygon): GeoPolygon;
+        new (lineStrings: GeoLineString[] | IGeoJSONPolygon): GeoPolygon;
         (lineStrings: GeoLineString[] | IGeoJSONPolygon): GeoPolygon;
     }
 
     interface IGeoMultiPolygonConstructor {
-        new(polygons: GeoPolygon[] | IGeoJSONMultiPolygon): GeoMultiPolygon;
+        new (polygons: GeoPolygon[] | IGeoJSONMultiPolygon): GeoMultiPolygon;
         (polygons: GeoPolygon[] | IGeoJSONMultiPolygon): GeoMultiPolygon;
     }
 
@@ -752,7 +752,7 @@ declare namespace DB {
     }
 
     interface IRegExpConstructor {
-        new(options: IRegExpOptions): RegExp;
+        new (options: IRegExpOptions): RegExp;
         (options: IRegExpOptions): RegExp;
     }
 

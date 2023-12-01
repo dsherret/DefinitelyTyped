@@ -133,7 +133,10 @@ export interface ScaleContinuousNumeric<Range, Output> {
      * If specifier uses the format type "s", the scale will return a SI-prefix format based on the largest value in the domain.
      * If the specifier already specifies a precision, this method is equivalent to locale.format.
      */
-    tickFormat(count?: number, specifier?: string): (d: number | { valueOf(): number }) => string;
+    tickFormat(
+        count?: number,
+        specifier?: string,
+    ): (d: number | { valueOf(): number }) => string;
 
     /**
      * Extends the domain so that it starts and ends on nice round values.
@@ -178,7 +181,8 @@ export interface ScaleContinuousNumeric<Range, Output> {
  * If range element and output element type differ, the interpolator factory used with the scale must match this behavior and
  * convert the interpolated range element to a corresponding output element.
  */
-export interface ScaleLinear<Range, Output> extends ScaleContinuousNumeric<Range, Output> {
+export interface ScaleLinear<Range, Output>
+    extends ScaleContinuousNumeric<Range, Output> {
     /**
      * Returns the scale’s current interpolator factory, which defaults to interpolate.
      */
@@ -211,7 +215,9 @@ export interface ScaleLinear<Range, Output> extends ScaleContinuousNumeric<Range
      *
      * @param interpolate An interpolation factory. The generics for Range and Output of the scale must correspond to the interpolation factory applied to the scale.
      */
-    interpolate<NewOutput>(interpolate: InterpolatorFactory<Range, NewOutput>): ScaleLinear<Range, NewOutput>;
+    interpolate<NewOutput>(
+        interpolate: InterpolatorFactory<Range, NewOutput>,
+    ): ScaleLinear<Range, NewOutput>;
 }
 
 /**
@@ -269,7 +275,8 @@ export function scaleLinear<Range, Output>(): ScaleLinear<Range, Output>;
  * If range element and output element type differ, the interpolator factory used with the scale must match this behavior and
  * convert the interpolated range element to a corresponding output element.
  */
-export interface ScalePower<Range, Output> extends ScaleContinuousNumeric<Range, Output> {
+export interface ScalePower<Range, Output>
+    extends ScaleContinuousNumeric<Range, Output> {
     /**
      * Returns the scale’s current interpolator factory, which defaults to interpolate.
      */
@@ -302,7 +309,9 @@ export interface ScalePower<Range, Output> extends ScaleContinuousNumeric<Range,
      *
      * @param interpolate An interpolation factory. The generics for Range and Output of the scale must correspond to the interpolation factory applied to the scale.
      */
-    interpolate<NewOutput>(interpolate: InterpolatorFactory<Range, NewOutput>): ScalePower<Range, NewOutput>;
+    interpolate<NewOutput>(
+        interpolate: InterpolatorFactory<Range, NewOutput>,
+    ): ScalePower<Range, NewOutput>;
 
     /**
      * If exponent is not specified, returns the current exponent, which defaults to 1.
@@ -415,7 +424,8 @@ export function scaleSqrt<Range, Output>(): ScalePower<Range, Output>;
  * If range element and output element type differ, the interpolator factory used with the scale must match this behavior and
  * convert the interpolated range element to a corresponding output element.
  */
-export interface ScaleLogarithmic<Range, Output> extends ScaleContinuousNumeric<Range, Output> {
+export interface ScaleLogarithmic<Range, Output>
+    extends ScaleContinuousNumeric<Range, Output> {
     /**
      * Returns a copy of the scale’s current domain.
      */
@@ -470,7 +480,9 @@ export interface ScaleLogarithmic<Range, Output> extends ScaleContinuousNumeric<
      *
      * @param interpolate An interpolation factory. The generics for Range and Output of the scale must correspond to the interpolation factory applied to the scale.
      */
-    interpolate<NewOutput>(interpolate: InterpolatorFactory<Range, NewOutput>): ScaleLogarithmic<Range, NewOutput>;
+    interpolate<NewOutput>(
+        interpolate: InterpolatorFactory<Range, NewOutput>,
+    ): ScaleLogarithmic<Range, NewOutput>;
 
     /**
      * Returns approximately count representative values from the scale’s domain.
@@ -502,7 +514,10 @@ export interface ScaleLogarithmic<Range, Output> extends ScaleContinuousNumeric<
      * If the specifier does not have a defined precision, the precision will be set automatically by the scale, returning the appropriate format.
      * This provides a convenient way of specifying a format whose precision will be automatically set by the scale.
      */
-    tickFormat(count?: number, specifier?: string): (d: number | { valueOf(): number }) => string;
+    tickFormat(
+        count?: number,
+        specifier?: string,
+    ): (d: number | { valueOf(): number }) => string;
 
     /**
      * Extends the domain to integer powers of base. For example, for a domain of [0.201479…, 0.996679…], and base 10, the nice domain is [0.1, 1].
@@ -645,7 +660,10 @@ export interface ScaleIdentity {
      * If specifier uses the format type "s", the scale will return a SI-prefix format based on the largest value in the domain.
      * If the specifier already specifies a precision, this method is equivalent to locale.format.
      */
-    tickFormat(count?: number, specifier?: string): (d: number | { valueOf(): number }) => string;
+    tickFormat(
+        count?: number,
+        specifier?: string,
+    ): (d: number | { valueOf(): number }) => string;
 
     /**
      * Extends the domain so that it starts and ends on nice round values.
@@ -812,7 +830,9 @@ export interface ScaleTime<Range, Output> {
      *
      * @param interpolate An interpolation factory. The generics for Range and Output of the scale must correspond to the interpolation factory applied to the scale.
      */
-    interpolate<NewOutput>(interpolate: InterpolatorFactory<Range, NewOutput>): ScaleTime<Range, NewOutput>;
+    interpolate<NewOutput>(
+        interpolate: InterpolatorFactory<Range, NewOutput>,
+    ): ScaleTime<Range, NewOutput>;
 
     /**
      * Returns representative dates from the scale’s domain. The returned tick values are uniformly-spaced (mostly),
@@ -1025,7 +1045,12 @@ export interface ScaleSequential<Output> {
      *
      * @param domain A two-element array of numeric domain values.
      */
-    domain(domain: [number | { valueOf(): number }, number | { valueOf(): number }]): this;
+    domain(
+        domain: [
+            number | { valueOf(): number },
+            number | { valueOf(): number },
+        ],
+    ): this;
 
     /**
      * Returns whether or not the scale currently clamps values to within the range.
@@ -1058,7 +1083,9 @@ export interface ScaleSequential<Output> {
      *
      * @param interpolator An interpolator function mapping a value from the [0, 1] interval to an output value.
      */
-    interpolator<NewOutput>(interpolator: (t: number) => NewOutput): ScaleSequential<NewOutput>;
+    interpolator<NewOutput>(
+        interpolator: (t: number) => NewOutput,
+    ): ScaleSequential<NewOutput>;
 
     /**
      * Returns an exact copy of this scale. Changes to this scale will not affect the returned scale, and vice versa.
@@ -1074,7 +1101,9 @@ export interface ScaleSequential<Output> {
  *
  * @param interpolator The interpolator function to be used with the scale.
  */
-export function scaleSequential<Output>(interpolator: (t: number) => Output): ScaleSequential<Output>;
+export function scaleSequential<Output>(
+    interpolator: (t: number) => Output,
+): ScaleSequential<Output>;
 
 // -------------------------------------------------------------------------------
 // Color Interpolators for Sequential Scale Factory
@@ -1179,7 +1208,12 @@ export interface ScaleQuantize<Range> {
      *
      * @param domain A two-element array of numeric values defining the domain.
      */
-    domain(domain: [number | { valueOf(): number }, number | { valueOf(): number }]): this;
+    domain(
+        domain: [
+            number | { valueOf(): number },
+            number | { valueOf(): number },
+        ],
+    ): this;
 
     /**
      * Returns the scale’s current range.
@@ -1214,7 +1248,10 @@ export interface ScaleQuantize<Range> {
      * If specifier uses the format type "s", the scale will return a SI-prefix format based on the largest value in the domain.
      * If the specifier already specifies a precision, this method is equivalent to locale.format.
      */
-    tickFormat(count?: number, specifier?: string): (d: number | { valueOf(): number }) => string;
+    tickFormat(
+        count?: number,
+        specifier?: string,
+    ): (d: number | { valueOf(): number }) => string;
 
     /**
      * Extends the domain so that it starts and ends on nice round values.
@@ -1292,7 +1329,9 @@ export interface ScaleQuantile<Range> {
      *
      * @param domain Array of domain values.
      */
-    domain(domain: Array<number | { valueOf(): number } | null | undefined>): this;
+    domain(
+        domain: Array<number | { valueOf(): number } | null | undefined>,
+    ): this;
 
     /**
      * Returns the current range.
@@ -1412,7 +1451,10 @@ export function scaleThreshold(): ScaleThreshold<number, number>;
  * The first generic corresponds to the data type of domain values.
  * The second generic corresponds to the data type of range values.
  */
-export function scaleThreshold<Domain extends number | string | Date, Range>(): ScaleThreshold<Domain, Range>;
+export function scaleThreshold<
+    Domain extends number | string | Date,
+    Range,
+>(): ScaleThreshold<Domain, Range>;
 
 // -------------------------------------------------------------------------------
 // Ordinal Scale Factory
@@ -1504,7 +1546,9 @@ export interface ScaleOrdinal<Domain extends { toString(): string }, Range> {
  *
  * @param range An optional array of range values to initialize the scale with.
  */
-export function scaleOrdinal<Range>(range?: readonly Range[]): ScaleOrdinal<string, Range>;
+export function scaleOrdinal<Range>(
+    range?: readonly Range[],
+): ScaleOrdinal<string, Range>;
 /**
  * Constructs a new ordinal scale with an empty domain and the specified range.
  * If a range is not specified, it defaults to the empty array; an ordinal scale always returns undefined until a non-empty range is defined.
@@ -1570,7 +1614,9 @@ export interface ScaleBand<Domain extends { toString(): string }> {
      *
      * @param range A two-element array of numeric values.
      */
-    range(range: [number | { valueOf(): number }, number | { valueOf(): number }]): this;
+    range(
+        range: [number | { valueOf(): number }, number | { valueOf(): number }],
+    ): this;
 
     /**
      * Sets the scale’s range to the specified two-element array of numbers while also enabling rounding.
@@ -1580,7 +1626,9 @@ export interface ScaleBand<Domain extends { toString(): string }> {
      *
      * @param range A two-element array of numeric values.
      */
-    rangeRound(range: [number | { valueOf(): number }, number | { valueOf(): number }]): this;
+    rangeRound(
+        range: [number | { valueOf(): number }, number | { valueOf(): number }],
+    ): this;
 
     /**
      * Returns the current rounding status for the scale: enabled (= true) or disabled (= false).
@@ -1677,7 +1725,9 @@ export function scaleBand(): ScaleBand<string>;
  *
  * The generic corresponds to the data type of domain elements.
  */
-export function scaleBand<Domain extends { toString(): string }>(): ScaleBand<Domain>;
+export function scaleBand<
+    Domain extends { toString(): string },
+>(): ScaleBand<Domain>;
 
 // -------------------------------------------------------------------------------
 // Point Scale Factory
@@ -1723,7 +1773,9 @@ export interface ScalePoint<Domain extends { toString(): string }> {
      *
      * @param range A two-element array of numeric values.
      */
-    range(range: [number | { valueOf(): number }, number | { valueOf(): number }]): this;
+    range(
+        range: [number | { valueOf(): number }, number | { valueOf(): number }],
+    ): this;
 
     /**
      * Sets the scale’s range to the specified two-element array of numbers while also enabling rounding.
@@ -1733,7 +1785,9 @@ export interface ScalePoint<Domain extends { toString(): string }> {
      *
      * @param range A two-element array of numeric values.
      */
-    rangeRound(range: [number | { valueOf(): number }, number | { valueOf(): number }]): this;
+    rangeRound(
+        range: [number | { valueOf(): number }, number | { valueOf(): number }],
+    ): this;
 
     /**
      * Returns the current rounding status for the scale: enabled (= true) or disabled (= false).
@@ -1808,7 +1862,9 @@ export function scalePoint(): ScalePoint<string>;
  *
  * The generic corresponds to the data type of domain elements.
  */
-export function scalePoint<Domain extends { toString(): string }>(): ScalePoint<Domain>;
+export function scalePoint<
+    Domain extends { toString(): string },
+>(): ScalePoint<Domain>;
 
 // -------------------------------------------------------------------------------
 // Categorical Color Schemas for Ordinal Scales

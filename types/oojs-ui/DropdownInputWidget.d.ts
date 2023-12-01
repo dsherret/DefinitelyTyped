@@ -26,7 +26,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.DropdownInputWidget
      */
-    interface DropdownInputWidget extends DropdownInputWidget.Props, DropdownInputWidget.Prototype {}
+    interface DropdownInputWidget
+        extends DropdownInputWidget.Props,
+            DropdownInputWidget.Prototype {}
 
     namespace DropdownInputWidget {
         interface Option {
@@ -36,7 +38,9 @@ declare namespace OO.ui {
             disabled?: boolean;
         }
 
-        interface ConfigOptions extends InputWidget.ConfigOptions, mixin.RequiredElement.ConfigOptions {
+        interface ConfigOptions
+            extends InputWidget.ConfigOptions,
+                mixin.RequiredElement.ConfigOptions {
             /** Array of menu options in the format described above. */
             options?: Option[];
             /** Configuration options for {@link OO.ui.DropdownWidget DropdownWidget} */
@@ -53,9 +57,13 @@ declare namespace OO.ui {
 
         type Static = InputWidget.Static;
 
-        interface Props extends InputWidget.Props, mixin.RequiredElement.Props {}
+        interface Props
+            extends InputWidget.Props,
+                mixin.RequiredElement.Props {}
 
-        interface Prototype extends InputWidget.Prototype, mixin.RequiredElement.Prototype {
+        interface Prototype
+            extends InputWidget.Prototype,
+                mixin.RequiredElement.Prototype {
             /**
              * Set the options available for this input.
              *
@@ -67,7 +75,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): DropdownInputWidget;
+            new (config?: ConfigOptions): DropdownInputWidget;
             prototype: Prototype;
             static: Static;
             super: InputWidget.Constructor;

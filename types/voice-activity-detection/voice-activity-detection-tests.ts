@@ -10,8 +10,11 @@ requestMic();
 
 function requestMic() {
     try {
-        navigator.mediaDevices.getUserMedia = navigator.mediaDevices.getUserMedia;
-        navigator.mediaDevices.getUserMedia({ audio: true }).then(startUserMedia, handleMicConnectError);
+        navigator.mediaDevices.getUserMedia =
+            navigator.mediaDevices.getUserMedia;
+        navigator.mediaDevices
+            .getUserMedia({ audio: true })
+            .then(startUserMedia, handleMicConnectError);
     } catch (e) {
         handleUserMediaError();
     }
@@ -22,7 +25,9 @@ function handleUserMediaError() {
 }
 
 function handleMicConnectError() {
-    console.warn("Could not connect microphone. Possible rejected by the user or is blocked by the browser.");
+    console.warn(
+        "Could not connect microphone. Possible rejected by the user or is blocked by the browser.",
+    );
 }
 
 function startUserMedia(stream: MediaStream) {

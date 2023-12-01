@@ -44,41 +44,51 @@ declare namespace LobiboxModule {
 
     interface MessageBoxesOptions extends MessageBoxesDefault {
         bodyClass?: string | undefined;
-        modalClasses?: {
-            "error"?: string | undefined;
-            "success"?: string | undefined;
-            "info"?: string | undefined;
-            "warning"?: string | undefined;
-            "confirm"?: string | undefined;
-            "progress"?: string | undefined;
-            "prompt"?: string | undefined;
-            "default"?: string | undefined;
-            "window"?: string | undefined;
-        } | undefined;
+        modalClasses?:
+            | {
+                  error?: string | undefined;
+                  success?: string | undefined;
+                  info?: string | undefined;
+                  warning?: string | undefined;
+                  confirm?: string | undefined;
+                  progress?: string | undefined;
+                  prompt?: string | undefined;
+                  default?: string | undefined;
+                  window?: string | undefined;
+              }
+            | undefined;
         buttonsAlign?: any;
         buttons?:
             | {
-                ok?: {
-                    "class"?: string | undefined;
-                    text?: string | undefined;
-                    closeOnClick?: boolean | undefined;
-                } | undefined;
-                cancel?: {
-                    "class"?: string | undefined;
-                    text?: string | undefined;
-                    closeOnClick?: boolean | undefined;
-                } | undefined;
-                yes?: {
-                    "class"?: string | undefined;
-                    text?: string | undefined;
-                    closeOnClick?: boolean | undefined;
-                } | undefined;
-                no?: {
-                    "class"?: string | undefined;
-                    text?: string | undefined;
-                    closeOnClick?: boolean | undefined;
-                } | undefined;
-            }
+                  ok?:
+                      | {
+                            class?: string | undefined;
+                            text?: string | undefined;
+                            closeOnClick?: boolean | undefined;
+                        }
+                      | undefined;
+                  cancel?:
+                      | {
+                            class?: string | undefined;
+                            text?: string | undefined;
+                            closeOnClick?: boolean | undefined;
+                        }
+                      | undefined;
+                  yes?:
+                      | {
+                            class?: string | undefined;
+                            text?: string | undefined;
+                            closeOnClick?: boolean | undefined;
+                        }
+                      | undefined;
+                  no?:
+                      | {
+                            class?: string | undefined;
+                            text?: string | undefined;
+                            closeOnClick?: boolean | undefined;
+                        }
+                      | undefined;
+              }
             | any
             | undefined;
         callback?(lobibox: any, type?: string, ev?: any): void;
@@ -99,24 +109,35 @@ declare namespace LobiboxModule {
         label?: string | undefined; // Set some text which will be shown exactly on top of textfield
     }
     interface AlertOptions extends MessageBoxesOptions {
-        warning?: {
-            title?: string | undefined;
-            iconClass?: string | undefined; // Change warning alert icon globally
-        } | undefined;
-        info?: {
-            title?: string | undefined;
-            iconClass?: string | undefined; // Change info alert icon globally
-        } | undefined;
-        success?: {
-            title?: string | undefined;
-            iconClass?: string | undefined; // Change success alert icon globally
-        } | undefined;
-        error?: {
-            title?: string | undefined;
-            iconClass?: string | undefined; // Change error alert icon globally
-        } | undefined;
+        warning?:
+            | {
+                  title?: string | undefined;
+                  iconClass?: string | undefined; // Change warning alert icon globally
+              }
+            | undefined;
+        info?:
+            | {
+                  title?: string | undefined;
+                  iconClass?: string | undefined; // Change info alert icon globally
+              }
+            | undefined;
+        success?:
+            | {
+                  title?: string | undefined;
+                  iconClass?: string | undefined; // Change success alert icon globally
+              }
+            | undefined;
+        error?:
+            | {
+                  title?: string | undefined;
+                  iconClass?: string | undefined; // Change error alert icon globally
+              }
+            | undefined;
     }
-    interface ProgressOptions extends MessageBoxesOptions, ProgressMethods, ProgressEvents {
+    interface ProgressOptions
+        extends MessageBoxesOptions,
+            ProgressMethods,
+            ProgressEvents {
         width?: number | undefined;
         showProgressLabel?: boolean | undefined; // Show percentage of progress
         label?: string | undefined; // Show progress label
@@ -176,33 +197,41 @@ declare namespace LobiboxModule {
         onClick?: Function | undefined;
     }
     interface NotifyOptions extends NotifyDefault, NotifyMethods {
-        "class"?: string | undefined; // You can override options for large notifications from here
+        class?: string | undefined; // You can override options for large notifications from here
         large?: { width?: number | undefined } | undefined; // You can override options for small notifications from here
-        mini?: { "class"?: string | undefined } | undefined; // Default options of different style notifications
-        success?: {
-            "class"?: string | undefined;
-            "title"?: string | undefined;
-            "icon"?: string | undefined;
-            sound?: string | undefined;
-        } | undefined;
-        error?: {
-            "class"?: string | undefined;
-            "title"?: string | undefined;
-            "icon"?: string | undefined;
-            sound?: string | undefined;
-        } | undefined;
-        warning?: {
-            "class"?: string | undefined;
-            "title"?: string | undefined;
-            "icon"?: string | undefined;
-            sound?: string | undefined;
-        } | undefined;
-        info?: {
-            "class"?: string | undefined;
-            "title"?: string | undefined;
-            "icon"?: string | undefined;
-            sound?: string | undefined;
-        } | undefined;
+        mini?: { class?: string | undefined } | undefined; // Default options of different style notifications
+        success?:
+            | {
+                  class?: string | undefined;
+                  title?: string | undefined;
+                  icon?: string | undefined;
+                  sound?: string | undefined;
+              }
+            | undefined;
+        error?:
+            | {
+                  class?: string | undefined;
+                  title?: string | undefined;
+                  icon?: string | undefined;
+                  sound?: string | undefined;
+              }
+            | undefined;
+        warning?:
+            | {
+                  class?: string | undefined;
+                  title?: string | undefined;
+                  icon?: string | undefined;
+                  sound?: string | undefined;
+              }
+            | undefined;
+        info?:
+            | {
+                  class?: string | undefined;
+                  title?: string | undefined;
+                  icon?: string | undefined;
+                  sound?: string | undefined;
+              }
+            | undefined;
     }
 
     interface NotifyMethods {
@@ -211,11 +240,32 @@ declare namespace LobiboxModule {
 
     interface LobiboxStatic {
         base: { OPTIONS: MessageBoxesOptions; DEFAULTS: MessageBoxesDefault };
-        alert: { <T extends MessageBoxesDefault>(type: string, options?: T): LobiboxStatic; DEFAULTS: AlertOptions };
-        prompt: { <T extends MessageBoxesDefault>(type: string, options?: T): LobiboxStatic; DEFAULTS: PromptOptions };
-        confirm: { <T extends MessageBoxesDefault>(options?: ConfirmOptions): T; DEFAULTS: ConfirmOptions };
-        progress: { <T extends MessageBoxesDefault>(options: ProgressOptions): T; DEFAULTS: ProgressOptions };
-        window: { <T extends MessageBoxesDefault>(options: WindowOptions): T; DEFAULTS: WindowOptions };
+        alert: {
+            <T extends MessageBoxesDefault>(
+                type: string,
+                options?: T,
+            ): LobiboxStatic;
+            DEFAULTS: AlertOptions;
+        };
+        prompt: {
+            <T extends MessageBoxesDefault>(
+                type: string,
+                options?: T,
+            ): LobiboxStatic;
+            DEFAULTS: PromptOptions;
+        };
+        confirm: {
+            <T extends MessageBoxesDefault>(options?: ConfirmOptions): T;
+            DEFAULTS: ConfirmOptions;
+        };
+        progress: {
+            <T extends MessageBoxesDefault>(options: ProgressOptions): T;
+            DEFAULTS: ProgressOptions;
+        };
+        window: {
+            <T extends MessageBoxesDefault>(options: WindowOptions): T;
+            DEFAULTS: WindowOptions;
+        };
         notify: {
             <T extends NotifyDefault>(type: string, options?: NotifyOptions): T;
             DEFAULTS?: NotifyDefault | undefined;

@@ -553,12 +553,7 @@ export default class AmAngularGauge extends AmChart {
      */
     addListener(
         type: string,
-        handler: (
-            e: {
-                type: string;
-                chart: AmChart;
-            },
-        ) => void,
+        handler: (e: { type: string; chart: AmChart }) => void,
     ): void;
 
     /**
@@ -567,7 +562,13 @@ export default class AmAngularGauge extends AmChart {
      * You can add any number of titles - each of them will be placed in a new line.
      * To remove titles, simply clear titles array: chart.titles = []; and call chart.validateNow() method.
      */
-    addTitle(text: string, size: number, color: string, alpha: number, bold: boolean): void;
+    addTitle(
+        text: string,
+        size: number,
+        color: string,
+        alpha: number,
+        bold: boolean,
+    ): void;
 
     /**
      * Clears the chart area, intervals, etc.

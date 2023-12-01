@@ -32,4 +32,6 @@ const eventEmitter3: EventEmitter = serializer1.import(stream, {
     skipContext: true,
     skipGraphProperty: true,
 });
-const eventEmitter4: EventEmitter = serializer1.import(stream, { encoding: "object" });
+const eventEmitter4: EventEmitter = serializer1.import(stream, {
+    encoding: "object",
+});

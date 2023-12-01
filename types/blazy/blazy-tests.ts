@@ -11,7 +11,7 @@ var tester: BlazyInstance = new Blazy({
         },
     ],
     container: "#scrolling-container",
-    error: function(ele: HTMLElement, msg: string) {
+    error: function (ele: HTMLElement, msg: string) {
         if (msg === "missing") {
             console.log("missing");
         } else if (msg === "invalid") {
@@ -25,7 +25,7 @@ var tester: BlazyInstance = new Blazy({
     selector: ".b-lazy",
     separator: "|",
     src: "data-src",
-    success: function(ele: HTMLElement) {
+    success: function (ele: HTMLElement) {
         console.log("success");
     },
     successClass: "b-loaded",

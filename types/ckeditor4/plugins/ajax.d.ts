@@ -8,6 +8,11 @@ declare namespace CKEDITOR {
     interface ajax {
         load(url: string, callback?: (data: any) => void): string;
         loadXml(url: string, callback?: (data: any) => void): xml;
-        post(url: string, data: any, contentType?: string, callback?: (data: any) => void): void;
+        post(
+            url: string,
+            data: any,
+            contentType?: string,
+            callback?: (data: any) => void,
+        ): void;
     }
 }

@@ -1,4 +1,7 @@
-import { BugsnagBuildReporterPlugin, BugsnagSourceMapUploaderPlugin } from "webpack-bugsnag-plugins";
+import {
+    BugsnagBuildReporterPlugin,
+    BugsnagSourceMapUploaderPlugin,
+} from "webpack-bugsnag-plugins";
 
 /**
  * Missing or invalid options

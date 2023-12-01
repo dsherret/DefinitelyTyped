@@ -4,7 +4,10 @@
  * @param glob - Glob string to transform.
  * @param options - transform options
  */
-declare function globrex(glob: string, options?: globrex.Options): globrex.Results;
+declare function globrex(
+    glob: string,
+    options?: globrex.Options,
+): globrex.Results;
 
 declare namespace globrex {
     interface Results {

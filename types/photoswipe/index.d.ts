@@ -82,7 +82,9 @@ declare namespace PhotoSwipe {
          *
          * Default undefined.
          */
-        getThumbBoundsFn?: ((index: number) => { x: number; y: number; w: number }) | undefined;
+        getThumbBoundsFn?:
+            | ((index: number) => { x: number; y: number; w: number })
+            | undefined;
 
         /**
          * Initial zoom-in transition duration in milliseconds. Set to 0 to disable. Besides this JS option, you need also to change transition duration in PhotoSwipe CSS file:
@@ -185,7 +187,9 @@ declare namespace PhotoSwipe {
          *     }
          * }
          */
-        getDoubleTapZoom?: ((isMouseClick: boolean, item: Item) => number) | undefined;
+        getDoubleTapZoom?:
+            | ((isMouseClick: boolean, item: Item) => number)
+            | undefined;
 
         /**
          * Loop slides when using swipe gesture.If set to true you'll be able to swipe from last to first image.
@@ -379,7 +383,12 @@ declare class PhotoSwipe<T extends PhotoSwipe.Options> {
      */
     constructor(
         pswpElement: HTMLElement,
-        uiConstructor: (new(pswp: PhotoSwipe<T>, framework: PhotoSwipe.UIFramework) => PhotoSwipe.UI<T>) | boolean,
+        uiConstructor:
+            | (new (
+                  pswp: PhotoSwipe<T>,
+                  framework: PhotoSwipe.UIFramework,
+              ) => PhotoSwipe.UI<T>)
+            | boolean,
         items: PhotoSwipe.Item[],
         options: T,
     );
@@ -572,7 +581,10 @@ declare class PhotoSwipe<T extends PhotoSwipe.Options> {
     /**
      * Called when an image is loaded.
      */
-    listen(eventName: "imageLoadComplete", callback: (index: number, item: PhotoSwipe.Item) => void): void;
+    listen(
+        eventName: "imageLoadComplete",
+        callback: (index: number, item: PhotoSwipe.Item) => void,
+    ): void;
     /**
      * Called when the viewport size changes.
      */
@@ -581,7 +593,10 @@ declare class PhotoSwipe<T extends PhotoSwipe.Options> {
      * Triggers when PhotoSwipe reads slide object data, which happens before content is set, or before lazy-loading is initiated.
      * Use it to dynamically change properties of the slide object.
      */
-    listen(eventName: "gettingData", callback: (index: number, item: PhotoSwipe.Item) => void): void;
+    listen(
+        eventName: "gettingData",
+        callback: (index: number, item: PhotoSwipe.Item) => void,
+    ): void;
     /**
      * Called when mouse is first used (triggers only once).
      */
@@ -614,7 +629,10 @@ declare class PhotoSwipe<T extends PhotoSwipe.Options> {
      *     gap.bottom = 100; // and 100px gap from the bottom
      * });
      */
-    listen(eventName: "parseVerticalMargin", callback: (item: PhotoSwipe.Item) => void): void;
+    listen(
+        eventName: "parseVerticalMargin",
+        callback: (item: PhotoSwipe.Item) => void,
+    ): void;
     /**
      * Called when the gallery starts closing.
      */
@@ -633,7 +651,11 @@ declare class PhotoSwipe<T extends PhotoSwipe.Options> {
      */
     listen(
         eventName: "preventDragEvent",
-        callback: (e: MouseEvent, isDown: boolean, preventObj: { prevent: boolean }) => void,
+        callback: (
+            e: MouseEvent,
+            isDown: boolean,
+            preventObj: { prevent: boolean },
+        ) => void,
     ): void;
 
     /**

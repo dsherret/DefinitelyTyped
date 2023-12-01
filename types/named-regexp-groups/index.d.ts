@@ -22,7 +22,9 @@ declare class NamedRegExp {
 
     [Symbol.replace](
         str: string,
-        replacement: string | ((match: string, ...capturedGroups: string[]) => string),
+        replacement:
+            | string
+            | ((match: string, ...capturedGroups: string[]) => string),
     ): string;
 
     [Symbol.match](str: string): NamedRegExpExecArray;

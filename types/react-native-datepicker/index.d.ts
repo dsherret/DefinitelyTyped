@@ -1,6 +1,12 @@
 import * as moment from "moment";
 import * as React from "react";
-import { ImageStyle, ImageURISource, StyleProp, TextStyle, ViewStyle } from "react-native";
+import {
+    ImageStyle,
+    ImageURISource,
+    StyleProp,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
 
 export interface DatePickerCustomStylesProps {
     placeholderText?: StyleProp<TextStyle> | undefined;

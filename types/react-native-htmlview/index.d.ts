@@ -1,5 +1,12 @@
 import { ComponentType, ReactNode } from "react";
-import { ImageStyle, StyleProp, TextProps, TextStyle, ViewProps, ViewStyle } from "react-native";
+import {
+    ImageStyle,
+    StyleProp,
+    TextProps,
+    TextStyle,
+    ViewProps,
+    ViewStyle,
+} from "react-native";
 
 type Nullish = null | undefined;
 
@@ -28,8 +35,8 @@ export interface HTMLViewProps {
 
     stylesheet?:
         | {
-            [key: string]: StyleProp<ViewStyle | TextStyle | ImageStyle>;
-        }
+              [key: string]: StyleProp<ViewStyle | TextStyle | ImageStyle>;
+          }
         | undefined;
 
     onLinkPress?(url: string): void;

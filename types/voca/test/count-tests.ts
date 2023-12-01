@@ -13,6 +13,9 @@ countGraphemes("cafe\u0301");
 countSubstrings("bad boys, bad boys whatcha gonna do?", "boys");
 
 countWhere("hola!", isAlpha);
-countWhere("2022", (character: string, index: number, str: string) => character === "2");
+countWhere(
+    "2022",
+    (character: string, index: number, str: string) => character === "2",
+);
 
 countWords("gravity can cross dimensions");

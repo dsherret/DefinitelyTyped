@@ -22,8 +22,7 @@ export interface ArtistParams {
     artist_mbid?: number | undefined;
 }
 
-export interface ArtistRelatedParams extends ArtistParams, Pageable {
-}
+export interface ArtistRelatedParams extends ArtistParams, Pageable {}
 
 export interface ArtistAlbumsParams extends ArtistParams, Pageable {
     g_album_name?: TBoolean | undefined;
@@ -164,7 +163,10 @@ export interface ChartArtistsParams extends Pageable {
 }
 
 export default class Musicmatch {
-    constructor(obj?: { apikey?: string | undefined; format?: string | undefined });
+    constructor(obj?: {
+        apikey?: string | undefined;
+        format?: string | undefined;
+    });
 
     album(params: AlbumParams): Promise<any>;
 

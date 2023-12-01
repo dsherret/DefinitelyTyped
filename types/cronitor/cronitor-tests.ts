@@ -16,7 +16,7 @@ cron.generateConfig();
 
 cron.schedule("JobName", "*/5 * * * *", () => {});
 
-const asyncWorker = cron.wrap("background-worker", async function() {
+const asyncWorker = cron.wrap("background-worker", async function () {
     // do some async work
 });
 
@@ -48,9 +48,7 @@ cron.Monitor.put({
     type: "job",
     key: "send-customer-invoices",
     schedule: "0 0 * * *",
-    assertions: [
-        "metric.duration < 5 min",
-    ],
+    assertions: ["metric.duration < 5 min"],
     notify: ["devops-alerts-slack"],
 });
 
@@ -61,10 +59,7 @@ cron.Monitor.put({
     request: {
         url: "https://cronitor.io",
     },
-    assertions: [
-        "response.code = 200",
-        "response.time < 600ms",
-    ],
+    assertions: ["response.code = 200", "response.time < 600ms"],
 });
 
 const state = cron.Monitor.State;

@@ -56,31 +56,31 @@ router = router.configure({
 // $ExpectType Router
 router = router.configure({
     on: [
-        function(foo: string) {
+        function (foo: string) {
             // $ExpectType Router
             this;
         },
     ],
     before: [
-        function() {
+        function () {
             // $ExpectType Router
             this;
         },
-        function() {
+        function () {
             // $ExpectType Router
             this;
         },
     ],
     after: [
-        function() {
+        function () {
             // $ExpectType Router
             this;
         },
-        function() {
+        function () {
             // $ExpectType Router
             this;
         },
-        function() {
+        function () {
             // $ExpectType Router
             this;
         },
@@ -94,29 +94,29 @@ router = router.configure({ recurse: false });
 // $ExpectType Router
 router = router.param("userId", /([\\w\\-]+)/);
 // $ExpectType Router
-router = router.param("userId", arg => "id_value_" + arg);
+router = router.param("userId", (arg) => "id_value_" + arg);
 
 // $ExpectType void
-router.on("/some/resource", function() {
+router.on("/some/resource", function () {
     // $ExpectType Router
     this;
 });
 // $ExpectType void
-router.on(/([\w-_]+)/, userId => {});
+router.on(/([\w-_]+)/, (userId) => {});
 // $ExpectType void
 router.on(["foo", "bar"], () => {});
 // $ExpectType void
 router.on("foo", "bar", () => {});
 
 // $ExpectType void
-router.path(/\/users\/(\w+)/, function(self) {
+router.path(/\/users\/(\w+)/, function (self) {
     // $ExpectType Router
     this;
     // $ExpectType Router
     self;
 });
 // $ExpectType void
-router.path("/regions", function(self) {
+router.path("/regions", function (self) {
     // $ExpectType Router
     this;
     // $ExpectType Router
@@ -175,7 +175,7 @@ httpRouter = new director.http.Router({
 
 http.createServer((req, res) => {
     // $ExpectType boolean
-    httpRouter.dispatch(req, res, err => {
+    httpRouter.dispatch(req, res, (err) => {
         if (err) {
             res.writeHead(404);
             res.end();
@@ -184,12 +184,12 @@ http.createServer((req, res) => {
 });
 
 // $ExpectType void
-httpRouter.get("/bonjour", function() {
+httpRouter.get("/bonjour", function () {
     this.res.writeHead(200, { "Content-Type": "text/plain" });
     this.res.end("hello world");
 });
 // $ExpectType void
-httpRouter.post(/hola/, function() {
+httpRouter.post(/hola/, function () {
     this.res.writeHead(200, { "Content-Type": "text/plain" });
     this.res.end("hello world");
 });
@@ -199,14 +199,18 @@ httpRouter.get("/json", { accept: "application/json" }, () => {});
 // $ExpectType void
 httpRouter.get("/txt", { accept: "text/plain" }, () => {});
 // $ExpectType void
-httpRouter.get("/both", { accept: ["text/plain", "application/json"] }, () => {});
+httpRouter.get(
+    "/both",
+    { accept: ["text/plain", "application/json"] },
+    () => {},
+);
 // $ExpectType void
 httpRouter.get("/regex", { accept: /.+\/x-.+/ }, () => {});
 httpRouter.before("/hello", () => {});
 httpRouter.after("/hello", () => {});
 
 // $ExpectType void
-httpRouter.attach(function() {
+httpRouter.attach(function () {
     // @ts-expect-error
     this.data = [1, 2, 3];
 });
@@ -219,7 +223,8 @@ class MyTtyClass {
     some_unique_field_name: boolean;
 }
 
-let cliRouter: director.cli.Router<MyTtyClass> = new director.cli.Router<MyTtyClass>();
+let cliRouter: director.cli.Router<MyTtyClass> =
+    new director.cli.Router<MyTtyClass>();
 // $ExpectType Router<MyTtyClass>
 cliRouter;
 // $ExpectType Router<MyTtyClass>
@@ -229,7 +234,7 @@ cliRouter = new director.cli.Router<MyTtyClass>({
 });
 
 // $ExpectType void
-cliRouter.on("create", function() {
+cliRouter.on("create", function () {
     // $ExpectType string
     this.cmd;
     // $ExpectType MyTtyClass

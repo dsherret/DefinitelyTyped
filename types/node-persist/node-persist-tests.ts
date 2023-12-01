@@ -3,7 +3,7 @@
 
 import nodePersist = require("node-persist");
 
-(async test => {
+(async (test) => {
     // Test with the global instance
     await test(nodePersist);
 
@@ -30,11 +30,14 @@ import nodePersist = require("node-persist");
     const value = await storage.getItem("someArray");
     await storage.removeItem("someArray");
 
-    await storage.setItem("someString", "foo").then(() => {
-        return storage.getItem("someString");
-    }).then(() => {
-        return storage.removeItem("someString");
-    });
+    await storage
+        .setItem("someString", "foo")
+        .then(() => {
+            return storage.getItem("someString");
+        })
+        .then(() => {
+            return storage.removeItem("someString");
+        });
 
     interface TestObject {
         foo: string;

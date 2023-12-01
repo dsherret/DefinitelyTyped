@@ -17,7 +17,8 @@ const charset: string = parsed.charset;
 const firstHeader: string = parsed.headers["firstHeader"];
 const firstHeaderAsString: string = firstHeader;
 
-const firstTranslation = parsed.translations["firstContext"]["firstTranslation"];
+const firstTranslation =
+    parsed.translations["firstContext"]["firstTranslation"];
 firstTranslation.msgctxt = firstHeaderAsString;
 firstTranslation.msgid = charset;
 firstTranslation.msgid_plural;

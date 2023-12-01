@@ -2,7 +2,14 @@
 
 import { Readable } from "stream";
 
-export type BufferLike = string | Buffer | ArrayBuffer | Uint8Array | Uint8ClampedArray | DataView | Readable;
+export type BufferLike =
+    | string
+    | Buffer
+    | ArrayBuffer
+    | Uint8Array
+    | Uint8ClampedArray
+    | DataView
+    | Readable;
 
 export interface HeaderParameters {
     partyUNonce?: BufferLike;
@@ -61,7 +68,11 @@ export namespace mac {
         key: Buffer;
     }
 
-    function create(headers: Headers, plaintext: string, signer: Signer): Promise<Buffer>;
+    function create(
+        headers: Headers,
+        plaintext: string,
+        signer: Signer,
+    ): Promise<Buffer>;
 
     function read(COSEMessage: Buffer, key: Buffer): Promise<Buffer>;
 }
@@ -82,10 +93,18 @@ export namespace sign {
     }
 
     /** throws an error if verification fails */
-    function verify(payload: BufferLike, verifier: Signer, options?: VerifyOptions): Promise<Buffer>;
+    function verify(
+        payload: BufferLike,
+        verifier: Signer,
+        options?: VerifyOptions,
+    ): Promise<Buffer>;
 
     /** throws an error if verification fails */
-    function verifySync(payload: BufferLike, verifier: Signer, options?: VerifyOptions): Buffer;
+    function verifySync(
+        payload: BufferLike,
+        verifier: Signer,
+        options?: VerifyOptions,
+    ): Buffer;
 
     function create(
         headers: Headers,

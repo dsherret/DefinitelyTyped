@@ -84,7 +84,7 @@ ym(
     "reachGoal",
     "someGoal",
     undefined,
-    function() {
+    function () {
         // $ExpectType number
         this;
     },

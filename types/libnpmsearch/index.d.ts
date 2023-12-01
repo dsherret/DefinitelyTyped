@@ -6,10 +6,16 @@ declare function search(
     query: string | readonly string[],
     opts: search.Options & { detailed: true },
 ): Promise<search.DetailedResult[]>;
-declare function search(query: string | readonly string[], opts?: search.Options): Promise<search.Result[]>;
+declare function search(
+    query: string | readonly string[],
+    opts?: search.Options,
+): Promise<search.Result[]>;
 
 declare namespace search {
-    function stream(query: string | readonly string[], opts?: Options): NodeJS.ReadWriteStream;
+    function stream(
+        query: string | readonly string[],
+        opts?: Options,
+    ): NodeJS.ReadWriteStream;
 
     interface Maintainer {
         username: string;
@@ -63,7 +69,12 @@ declare namespace search {
          * Used as a shorthand to set `opts.quality`, `opts.maintenance`, and
          * `opts.popularity` with values that prioritize each one.
          */
-        sortBy?: "optimal" | "quality" | "maintenance" | "popularity" | undefined;
+        sortBy?:
+            | "optimal"
+            | "quality"
+            | "maintenance"
+            | "popularity"
+            | undefined;
         /**
          * Decimal number between `0` and `1` that defines the weight of
          * `maintenance` metrics when scoring and sorting packages.

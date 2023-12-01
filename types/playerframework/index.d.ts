@@ -1668,7 +1668,11 @@ declare namespace PlayerFramework {
          * @param listener The listener to invoke when the event is raised.
          * @param capture true to initiate capture, otherwise false.
          */
-        addEventListener(type: string, listener: Function, capture?: boolean): void;
+        addEventListener(
+            type: string,
+            listener: Function,
+            capture?: boolean,
+        ): void;
         /**
          * Create a new TextTrack object to add to an HTML5 video.
          * @param kind String The type of text track
@@ -1734,14 +1738,22 @@ declare namespace PlayerFramework {
          * @param effectRequired
          * @param config
          */
-        msInsertAudioEffect(activatableClassId: string, effectRequired: boolean, config: Object): void;
+        msInsertAudioEffect(
+            activatableClassId: string,
+            effectRequired: boolean,
+            config: Object,
+        ): void;
         /**
          * Inserts the specified video effect into the media pipeline.
          * @param activatableClassId The video effects class.
          * @param effectRequired
          * @param config
          */
-        msInsertVideoEffect(activatableClassId: string, effectRequired: boolean, config: Object): void;
+        msInsertVideoEffect(
+            activatableClassId: string,
+            effectRequired: boolean,
+            config: Object,
+        ): void;
         /**
          * Sets the MSMediaKeys to be used for decrypting media data.
          * @param mediaKeys The media keys to use for decrypting media data.
@@ -1751,7 +1763,9 @@ declare namespace PlayerFramework {
          * Sets the media protection manager for a given media pipeline.
          * @param mediaProtectionManager
          */
-        msSetMediaProtectionManager(mediaProtectionManager: Windows.Media.Protection.MediaProtectionManager): void;
+        msSetMediaProtectionManager(
+            mediaProtectionManager: Windows.Media.Protection.MediaProtectionManager,
+        ): void;
         /**
          * Sets the dimensions of a sub - rectangle within a video.
          * @param left The left position of the rectangle.
@@ -1759,7 +1773,12 @@ declare namespace PlayerFramework {
          * @param right The right position of the rectangle.
          * @param bottom The bottom position of the rectangle.
          */
-        msSetVideoRectangle(left: number, top: number, right: number, bottom: number): void;
+        msSetVideoRectangle(
+            left: number,
+            top: number,
+            right: number,
+            bottom: number,
+        ): void;
         /**
          * Pauses playback of the current media source.
          */
@@ -1926,6 +1945,5 @@ declare namespace Microsoft.PlayerFramework.Js.Advertising {
     /**
      * Provides an ad source that requires a Url to be downloaded and turned into a stream before passing to the ad handler.
      */
-    class RemoteAdSource {
-    }
+    class RemoteAdSource {}
 }

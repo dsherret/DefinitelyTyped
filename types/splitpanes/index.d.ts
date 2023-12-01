@@ -113,7 +113,11 @@ export interface SplitPaneMethods {
     sumNextPanesSize: (splitterIndex: number) => number;
     findPrevExpandedPane: (splitterIndex: number) => Pane | {};
     checkSplitpanesNodes: () => void;
-    addSplitter: (paneIndex: number, nextPaneNode: Node, isVeryFirst: boolean) => void;
+    addSplitter: (
+        paneIndex: number,
+        nextPaneNode: Node,
+        isVeryFirst: boolean,
+    ) => void;
     removeSplitter: (node: Node) => void;
     redoSplitters: () => void;
     requestUpdate: (arg0: RequestUpdateType) => void;
@@ -123,7 +127,11 @@ export interface SplitPaneMethods {
     equalize: () => void;
     initialPanesSizing: () => void;
     equalizeAfterAddOrRemove: (arg0: ChangedPaneType) => void;
-    readjustSizes: (leftToAllocate: number, ungrowable: number[], unshrinkable: number[]) => void;
+    readjustSizes: (
+        leftToAllocate: number,
+        ungrowable: number[],
+        unshrinkable: number[],
+    ) => void;
 }
 
 export interface SplitpaneWatch {

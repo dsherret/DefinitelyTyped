@@ -21,7 +21,10 @@ declare namespace ttf2woff2 {
     type FileTransformCallback = <TResult, TError>(
         err: TError | null,
         buf: Buffer | undefined,
-        cb: (err: PluginError<TError> | PluginError<Error> | null, buf: Buffer | undefined) => TResult,
+        cb: (
+            err: PluginError<TError> | PluginError<Error> | null,
+            buf: Buffer | undefined,
+        ) => TResult,
     ) => TResult;
 
     /**

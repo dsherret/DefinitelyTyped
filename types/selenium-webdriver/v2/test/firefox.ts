@@ -14,7 +14,10 @@ function TestBinary() {
 function TestFirefoxDriver() {
     var driver: firefox.Driver = new firefox.Driver();
     driver = new firefox.Driver(webdriver.Capabilities.firefox());
-    driver = new firefox.Driver(webdriver.Capabilities.firefox(), new webdriver.promise.ControlFlow());
+    driver = new firefox.Driver(
+        webdriver.Capabilities.firefox(),
+        new webdriver.promise.ControlFlow(),
+    );
 
     const baseDriver: webdriver.WebDriver = driver;
 }
@@ -24,7 +27,9 @@ function TestFirefoxOptions() {
 
     options = options.setBinary("binary");
     options = options.setBinary(new firefox.Binary());
-    options = options.setLoggingPreferences(new webdriver.logging.Preferences());
+    options = options.setLoggingPreferences(
+        new webdriver.logging.Preferences(),
+    );
     options = options.setProfile("profile");
     options = options.setProfile(new firefox.Profile());
     options = options.setProxy({ proxyType: "proxy" });
@@ -49,6 +54,7 @@ function TestFirefoxProfile() {
     profile.setPreference("key", "value");
     profile.setPreference("key", 5);
     profile.setPreference("key", true);
-    var stringPromise: webdriver.promise.Promise<string> = profile.writeToDisk();
+    var stringPromise: webdriver.promise.Promise<string> =
+        profile.writeToDisk();
     stringPromise = profile.writeToDisk(true);
 }

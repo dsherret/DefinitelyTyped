@@ -16,7 +16,10 @@ import text = require("pdfkit/js/mixins/text");
 
 font.registerFont("Arial");
 font.registerFont("CustomFont", "path/to/font.ttf");
-font.registerFont("CustomFontWithBuffer", Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]));
+font.registerFont(
+    "CustomFontWithBuffer",
+    Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]),
+);
 text.widthOfString("Kila", { ellipsis: true });
 
 var doc = new PDFDocument({
@@ -62,7 +65,9 @@ doc.moveTo(0, 20)
     .stroke();
 
 // SVG Paths
-doc.path("M 0,20 L 100,160 Q 130,200 150,120 C 190,-40 200,200 300,150 L 400,90").stroke();
+doc.path(
+    "M 0,20 L 100,160 Q 130,200 150,120 C 190,-40 200,200 300,150 L 400,90",
+).stroke();
 
 // Rectangle shape helper sample
 doc.rect(100, 200, 100, 100);
@@ -73,37 +78,19 @@ doc.roundedRect(150, 250, 150, 150, 10);
 doc.polygon([100, 0], [50, 100], [50, 100]);
 
 doc.lineWidth(25);
-doc.lineCap("butt")
-    .moveTo(50, 20)
-    .lineTo(100, 20)
-    .stroke();
-doc.lineCap("round")
-    .moveTo(150, 20)
-    .lineTo(200, 20)
-    .stroke();
-doc.lineCap("square")
-    .moveTo(250, 20)
-    .circle(275, 30, 15)
-    .stroke();
-doc.lineJoin("miter")
-    .rect(50, 100, 50, 50)
-    .stroke();
-doc.lineJoin("round")
-    .rect(150, 100, 50, 50)
-    .stroke();
-doc.lineJoin("bevel")
-    .rect(250, 100, 50, 50)
-    .stroke();
+doc.lineCap("butt").moveTo(50, 20).lineTo(100, 20).stroke();
+doc.lineCap("round").moveTo(150, 20).lineTo(200, 20).stroke();
+doc.lineCap("square").moveTo(250, 20).circle(275, 30, 15).stroke();
+doc.lineJoin("miter").rect(50, 100, 50, 50).stroke();
+doc.lineJoin("round").rect(150, 100, 50, 50).stroke();
+doc.lineJoin("bevel").rect(250, 100, 50, 50).stroke();
 
 doc.circle(100, 50, 50)
     .lineWidth(3)
     .fillOpacity(0.8)
     .fillAndStroke("red", "#900");
 
-var grad = doc
-    .linearGradient(50, 0, 150, 100)
-    .stop(0, "green")
-    .stop(1, "red");
+var grad = doc.linearGradient(50, 0, 150, 100).stop(0, "green").stop(1, "red");
 
 doc.rect(50, 0, 100, 100).fill(grad);
 
@@ -127,9 +114,7 @@ var stripe45d = doc.pattern(
 );
 doc.circle(280, 350, 50).fill([stripe45d, "blue"]);
 
-doc.fillColor("red")
-    .translate(-100, -50)
-    .scale(0.8);
+doc.fillColor("red").translate(-100, -50).scale(0.8);
 
 doc.path("M 250,75 L 323,301 131,161 369,161 177,301 z").fill("non-zero");
 
@@ -144,9 +129,7 @@ doc.font("Arial", 30).text("The size is 30");
 var strOrBuf = Math.random() < 0.5 ? "Arial" : Buffer.from("bytes");
 doc.font(strOrBuf);
 
-doc.fontSize(25)
-    .fillColor("blue")
-    .text("This is a link!", 20, 0);
+doc.fontSize(25).fillColor("blue").text("This is a link!", 20, 0);
 
 var width = doc.widthOfString("This is a link!");
 
@@ -158,7 +141,12 @@ doc.underline(20, 0, width, height, {
 
 doc.moveDown()
     .fillColor("black")
-    .highlight(20, doc.y, doc.widthOfString("This text is highlighted!"), height)
+    .highlight(
+        20,
+        doc.y,
+        doc.widthOfString("This text is highlighted!"),
+        height,
+    )
     .text("This text is highlighted!");
 
 doc.moveDown()
@@ -199,12 +187,9 @@ doc.list([4, 5, 6], { listType: "numbered", textIndent: 2 });
 
 doc.list([7, 8, 9], { listType: "lettered" });
 
-doc.image(
-    Buffer.from(""),
-    {
-        scale: 0.25,
-    },
-).text("Scale", 320, 265);
+doc.image(Buffer.from(""), {
+    scale: 0.25,
+}).text("Scale", 320, 265);
 
 doc.text("Scale", { align: "justify" });
 
@@ -297,7 +282,10 @@ class SubPDFDocument extends PDFDocument {
 var subDoc = new SubPDFDocument({});
 
 subDoc.moveTo(subDoc.page.width / 2, subDoc.page.height / 2).text(10);
-subDoc.lineWidth(3).segment(10, subDoc.page.width - 10, subDoc.page.height - 10, 10).stroke("#00FFFF");
+subDoc
+    .lineWidth(3)
+    .segment(10, subDoc.page.width - 10, subDoc.page.height - 10, 10)
+    .stroke("#00FFFF");
 
 // Markings
 doc.markContent("Figure", { alt: "some alternative value" });
@@ -325,7 +313,10 @@ doc.text("Foo. \nBar. ", { structParent: section, structType: "H" });
 // marking and structure for list
 const list = doc.struct("L");
 section.add(list);
-doc.list(["A ", "B ", "C "], 100, 100, { structParent: list, structTypes: ["LI", "Lbl", "Lbody"] });
+doc.list(["A ", "B ", "C "], 100, 100, {
+    structParent: list,
+    structTypes: ["LI", "Lbl", "Lbody"],
+});
 
 // structure element methods
 structureElement.add(structureContent);

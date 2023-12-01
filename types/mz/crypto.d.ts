@@ -20,8 +20,14 @@ export function pbkdf2(
     digest: string,
 ): Promise<Buffer>;
 
-export function randomBytes(size: number, callback: (err: Error | null, buf: Buffer) => void): void;
+export function randomBytes(
+    size: number,
+    callback: (err: Error | null, buf: Buffer) => void,
+): void;
 export function randomBytes(size: number): Promise<Buffer>;
 
-export function pseudoRandomBytes(size: number, callback: (err: Error | null, buf: Buffer) => void): void;
+export function pseudoRandomBytes(
+    size: number,
+    callback: (err: Error | null, buf: Buffer) => void,
+): void;
 export function pseudoRandomBytes(size: number): Promise<Buffer>;

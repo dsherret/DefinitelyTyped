@@ -2,7 +2,12 @@ import clone from "./clone";
 import createElement from "./createElement";
 import Element, { Node } from "./Element";
 import equal, { attrsEqual, childrenEqual, nameEqual } from "./equal";
-import { escapeXML, escapeXMLText, unescapeXML, unescapeXMLText } from "./escape";
+import {
+    escapeXML,
+    escapeXMLText,
+    unescapeXML,
+    unescapeXMLText,
+} from "./escape";
 import { isElement, isNode, isText } from "./is";
 import JSONify, { ElementJson } from "./JSONify";
 import parse from "./parse";

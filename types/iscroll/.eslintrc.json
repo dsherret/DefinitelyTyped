@@ -1,6 +1,6 @@
 {
-    "rules": {
-        "@typescript-eslint/ban-types": "off",
-        "@typescript-eslint/naming-convention": "off"
-    }
+  "rules": {
+    "@typescript-eslint/ban-types": "off",
+    "@typescript-eslint/naming-convention": "off"
+  }
 }

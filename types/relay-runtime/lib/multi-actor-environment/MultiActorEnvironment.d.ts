@@ -1,6 +1,10 @@
 import { HandlerProvider } from "../handlers/RelayDefaultHandlerProvider";
 import { MutationParameters } from "../mutations/commitMutation";
-import { GraphQLResponse, Network, PayloadData } from "../network/RelayNetworkTypes";
+import {
+    GraphQLResponse,
+    Network,
+    PayloadData,
+} from "../network/RelayNetworkTypes";
 import { RelayObservable as Observable } from "../network/RelayObservable";
 import { TaskScheduler } from "../store/RelayModernQueryExecutor";
 import { GetDataID } from "../store/RelayResponseNormalizer";
@@ -29,7 +33,9 @@ import {
 } from "./MultiActorEnvironmentTypes";
 
 export type MultiActorEnvironmentConfig = Readonly<{
-    createConfigNameForActor?: ((actorIdentifier: ActorIdentifier) => string) | null;
+    createConfigNameForActor?:
+        | ((actorIdentifier: ActorIdentifier) => string)
+        | null;
     createNetworkForActor: (actorIdentifier: ActorIdentifier) => Network;
     createStoreForActor?: ((actorIdentifier: ActorIdentifier) => Store) | null;
     defaultRenderPolicy?: RenderPolicy | null;
@@ -50,7 +56,10 @@ export class MultiActorEnvironment implements IMultiActorEnvironment {
 
     forActor(actorIdentifier: string): ActorEnvironment;
 
-    check(actorEnvironment: ActorEnvironment, operation: OperationDescriptor): OperationAvailability;
+    check(
+        actorEnvironment: ActorEnvironment,
+        operation: OperationDescriptor,
+    ): OperationAvailability;
 
     subscribe(
         actorEnvironment: ActorEnvironment,
@@ -58,11 +67,20 @@ export class MultiActorEnvironment implements IMultiActorEnvironment {
         callback: (snapshot: Snapshot) => void,
     ): Disposable;
 
-    retain(actorEnvironment: ActorEnvironment, operation: OperationDescriptor): Disposable;
+    retain(
+        actorEnvironment: ActorEnvironment,
+        operation: OperationDescriptor,
+    ): Disposable;
 
-    applyUpdate(actorEnvironment: ActorEnvironment, optimisticUpdate: OptimisticUpdateFunction): Disposable;
+    applyUpdate(
+        actorEnvironment: ActorEnvironment,
+        optimisticUpdate: OptimisticUpdateFunction,
+    ): Disposable;
 
-    revertUpdate(actorEnvironment: ActorEnvironment, update: OptimisticUpdateFunction): void;
+    revertUpdate(
+        actorEnvironment: ActorEnvironment,
+        update: OptimisticUpdateFunction,
+    ): void;
 
     replaceUpdate(
         actorEnvironment: ActorEnvironment,
@@ -75,7 +93,10 @@ export class MultiActorEnvironment implements IMultiActorEnvironment {
         optimisticConfig: OptimisticResponseConfig<MutationParameters>,
     ): Disposable;
 
-    commitUpdate(actorEnvironment: ActorEnvironment, updater: StoreUpdater): void;
+    commitUpdate(
+        actorEnvironment: ActorEnvironment,
+        updater: StoreUpdater,
+    ): void;
 
     commitMultiActorUpdate(updater: MultiActorStoreUpdater): void;
 
@@ -85,7 +106,10 @@ export class MultiActorEnvironment implements IMultiActorEnvironment {
         payload: PayloadData,
     ): void;
 
-    lookup(actorEnvironment: ActorEnvironment, selector: SingularReaderSelector): Snapshot;
+    lookup(
+        actorEnvironment: ActorEnvironment,
+        selector: SingularReaderSelector,
+    ): Snapshot;
 
     execute(
         actorEnvironment: ActorEnvironment,
@@ -96,7 +120,10 @@ export class MultiActorEnvironment implements IMultiActorEnvironment {
         actorEnvironment: ActorEnvironment,
         config: {
             operation: OperationDescriptor;
-            updater?: SelectorStoreUpdater<MutationParameters["response"]> | null | undefined;
+            updater?:
+                | SelectorStoreUpdater<MutationParameters["response"]>
+                | null
+                | undefined;
         },
     ): Observable<GraphQLResponse>;
 
@@ -107,10 +134,16 @@ export class MultiActorEnvironment implements IMultiActorEnvironment {
 
     executeWithSource(
         actorEnvironment: ActorEnvironment,
-        arg: { operation: OperationDescriptor; source: Observable<GraphQLResponse> },
+        arg: {
+            operation: OperationDescriptor;
+            source: Observable<GraphQLResponse>;
+        },
     ): Observable<GraphQLResponse>;
 
-    isRequestActive(actorEnvironment: ActorEnvironment, requestIdentifier: string): boolean;
+    isRequestActive(
+        actorEnvironment: ActorEnvironment,
+        requestIdentifier: string,
+    ): boolean;
 
     isServer(): boolean;
 }

@@ -1,17 +1,17 @@
 {
-    "private": true,
-    "name": "@types/payment",
-    "version": "2.1.9999",
-    "projects": [
-        "https://github.com/jessepollak/payment#readme"
-    ],
-    "devDependencies": {
-        "@types/payment": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Alexandre Paré",
-            "githubUsername": "apare"
-        }
-    ]
+  "private": true,
+  "name": "@types/payment",
+  "version": "2.1.9999",
+  "projects": [
+    "https://github.com/jessepollak/payment#readme"
+  ],
+  "devDependencies": {
+    "@types/payment": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Alexandre Paré",
+      "githubUsername": "apare"
+    }
+  ]
 }

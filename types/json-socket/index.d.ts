@@ -13,7 +13,12 @@ declare class JsonSocket extends Socket {
      * @param message the message to send
      * @param callback will be called after the message has been sent
      */
-    static sendSingleMessage(port: number, host: string, message: any, callback: (err: Error) => void): void;
+    static sendSingleMessage(
+        port: number,
+        host: string,
+        message: any,
+        callback: (err: Error) => void,
+    ): void;
 
     /**
      * sends a single message, waits for a single response message from the server and closes the connection right after.

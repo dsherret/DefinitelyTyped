@@ -118,18 +118,18 @@ declare module "vm" {
         origin?: string | undefined;
         codeGeneration?:
             | {
-                /**
-                 * If set to false any calls to eval or function constructors (Function, GeneratorFunction, etc)
-                 * will throw an EvalError.
-                 * @default true
-                 */
-                strings?: boolean | undefined;
-                /**
-                 * If set to false any attempt to compile a WebAssembly module will throw a WebAssembly.CompileError.
-                 * @default true
-                 */
-                wasm?: boolean | undefined;
-            }
+                  /**
+                   * If set to false any calls to eval or function constructors (Function, GeneratorFunction, etc)
+                   * will throw an EvalError.
+                   * @default true
+                   */
+                  strings?: boolean | undefined;
+                  /**
+                   * If set to false any attempt to compile a WebAssembly module will throw a WebAssembly.CompileError.
+                   * @default true
+                   */
+                  wasm?: boolean | undefined;
+              }
             | undefined;
         /**
          * If set to `afterEvaluate`, microtasks will be run immediately after the script has run.
@@ -191,7 +191,10 @@ declare module "vm" {
          * @param contextifiedObject A `contextified` object as returned by the `vm.createContext()` method.
          * @return the result of the very last statement executed in the script.
          */
-        runInContext(contextifiedObject: Context, options?: RunningScriptOptions): any;
+        runInContext(
+            contextifiedObject: Context,
+            options?: RunningScriptOptions,
+        ): any;
         /**
          * First contextifies the given `contextObject`, runs the compiled code contained
          * by the `vm.Script` object within the created context, and returns the result.
@@ -218,7 +221,10 @@ declare module "vm" {
          * @param contextObject An object that will be `contextified`. If `undefined`, a new object will be created.
          * @return the result of the very last statement executed in the script.
          */
-        runInNewContext(contextObject?: Context, options?: RunningScriptOptions): any;
+        runInNewContext(
+            contextObject?: Context,
+            options?: RunningScriptOptions,
+        ): any;
         /**
          * Runs the compiled code contained by the `vm.Script` within the context of the
          * current `global` object. Running code does not have access to local scope, but_does_ have access to the current `global` object.
@@ -310,7 +316,10 @@ declare module "vm" {
      * @since v0.3.1
      * @return contextified object.
      */
-    function createContext(sandbox?: Context, options?: CreateContextOptions): Context;
+    function createContext(
+        sandbox?: Context,
+        options?: CreateContextOptions,
+    ): Context;
     /**
      * Returns `true` if the given `object` object has been `contextified` using {@link createContext}.
      * @since v0.11.7
@@ -343,7 +352,11 @@ declare module "vm" {
      * @param contextifiedObject The `contextified` object that will be used as the `global` when the `code` is compiled and run.
      * @return the result of the very last statement executed in the script.
      */
-    function runInContext(code: string, contextifiedObject: Context, options?: RunningScriptOptions | string): any;
+    function runInContext(
+        code: string,
+        contextifiedObject: Context,
+        options?: RunningScriptOptions | string,
+    ): any;
     /**
      * The `vm.runInNewContext()` first contextifies the given `contextObject` (or
      * creates a new `contextObject` if passed as `undefined`), compiles the `code`,
@@ -372,7 +385,11 @@ declare module "vm" {
      * @param contextObject An object that will be `contextified`. If `undefined`, a new object will be created.
      * @return the result of the very last statement executed in the script.
      */
-    function runInNewContext(code: string, contextObject?: Context, options?: RunningScriptOptions | string): any;
+    function runInNewContext(
+        code: string,
+        contextObject?: Context,
+        options?: RunningScriptOptions | string,
+    ): any;
     /**
      * `vm.runInThisContext()` compiles `code`, runs it within the context of the
      * current `global` and returns the result. Running code does not have access to
@@ -435,7 +452,10 @@ declare module "vm" {
      * @param code The JavaScript code to compile and run.
      * @return the result of the very last statement executed in the script.
      */
-    function runInThisContext(code: string, options?: RunningScriptOptions | string): any;
+    function runInThisContext(
+        code: string,
+        options?: RunningScriptOptions | string,
+    ): any;
     /**
      * Compiles the given code into the provided context (if no context is
      * supplied, the current context is used), and returns it wrapped inside a
@@ -444,7 +464,11 @@ declare module "vm" {
      * @param code The body of the function to compile.
      * @param params An array of strings containing all parameters for the function.
      */
-    function compileFunction(code: string, params?: readonly string[], options?: CompileFunctionOptions): Function;
+    function compileFunction(
+        code: string,
+        params?: readonly string[],
+        options?: CompileFunctionOptions,
+    ): Function;
     /**
      * Measure the memory known to V8 and used by all contexts known to the
      * current V8 isolate, or the main context.
@@ -500,7 +524,9 @@ declare module "vm" {
      * @since v13.10.0
      * @experimental
      */
-    function measureMemory(options?: MeasureMemoryOptions): Promise<MemoryMeasurement>;
+    function measureMemory(
+        options?: MeasureMemoryOptions,
+    ): Promise<MemoryMeasurement>;
 }
 declare module "node:vm" {
     export * from "vm";

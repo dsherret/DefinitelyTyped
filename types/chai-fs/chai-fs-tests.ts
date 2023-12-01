@@ -11,7 +11,7 @@ const msg = "message";
 const array: any[] = [1, 2, 3, 4];
 const data: ArrayBuffer = new ArrayBuffer(512);
 const obj: object = { key: "value" };
-const schema = JSON.parse("{ \"name\":\"John\", \"age\":30, \"city\":\"New York\"}");
+const schema = JSON.parse('{ "name":"John", "age":30, "city":"New York"}');
 
 // basename()
 expect(path).to.have.basename(name);

@@ -3,8 +3,16 @@ declare interface Object {
 }
 
 declare module "Wifi" {
-    function connect(ssid: string, options: any, callback: (err: any) => any): any;
-    function startAP(ssid: string, options: any, callback: (err: any) => any): any;
+    function connect(
+        ssid: string,
+        options: any,
+        callback: (err: any) => any,
+    ): any;
+    function startAP(
+        ssid: string,
+        options: any,
+        callback: (err: any) => any,
+    ): any;
 }
 
 declare module "InfluxDB" {
@@ -21,7 +29,7 @@ declare interface Nucleo {
     /**
      * @return
      */
-    new(): Nucleo;
+    new (): Nucleo;
 }
 
 /** */
@@ -146,7 +154,7 @@ declare interface NodeMCU {
     /**
      * @return
      */
-    new(): NodeMCU;
+    new (): NodeMCU;
 }
 
 /** */
@@ -222,7 +230,7 @@ declare interface Queue {
      * @param queueName
      * @return
      */
-    new(queueName: any): any;
+    new (queueName: any): any;
 
     /**
      * <p>reads one character from queue, if available</p>
@@ -257,7 +265,7 @@ declare interface Task {
      * @param taskName
      * @return
      */
-    new(taskName: any): any;
+    new (taskName: any): any;
 
     /**
      * <p>Suspend task, be careful not to suspend Espruino task itself</p>
@@ -309,7 +317,7 @@ declare interface Timer {
      * @param isrIndex
      * @return
      */
-    new(timerName: any, group: number, index: number, isrIndex: number): any;
+    new (timerName: any, group: number, index: number, isrIndex: number): any;
 
     /**
      * <p>Starts a timer</p>
@@ -350,7 +358,7 @@ declare interface Serial extends Object {
     /**
      * @return
      */
-    new(): Serial;
+    new (): Serial;
 
     /**
      * <p>Set this Serial port as the port for the JavaScript console (REPL).</p>
@@ -517,7 +525,7 @@ declare interface Flash {
     /**
      * @return
      */
-    new(): Flash;
+    new (): Flash;
 }
 
 /** */
@@ -584,7 +592,7 @@ declare interface E {
     /**
      * @return
      */
-    new(): E;
+    new (): E;
 }
 
 /** */
@@ -679,7 +687,7 @@ declare namespace E {
          * @param inverse
          * @return
          */
-        new(arrReal: any, arrImage: any, inverse: boolean): FFT;
+        new (arrReal: any, arrImage: any, inverse: boolean): FFT;
     }
 
     /**
@@ -702,7 +710,12 @@ declare namespace E {
      * @return
      * @url http://www.espruino.com/Reference#l_E_interpolate2d
      */
-    function interpolate2d(array: any, width: number, x: number, y: number): number;
+    function interpolate2d(
+        array: any,
+        width: number,
+        x: number,
+        y: number,
+    ): number;
 
     /**
      * <p>Kicks a Watchdog timer set up with <code>E.enableWatchdog(..., false)</code>. See
@@ -915,7 +928,7 @@ declare namespace E {
          * @param bri
          * @return
          */
-        new(hue: number, sat: number, bri: number): number;
+        new (hue: number, sat: number, bri: number): number;
     }
 
     /**
@@ -997,7 +1010,7 @@ declare interface Pin {
      * @param value
      * @return
      */
-    new(value: any): any;
+    new (value: any): any;
 
     /**
      * <p>Returns the input state of the pin as a boolean.</p>
@@ -1079,7 +1092,7 @@ declare interface Modules {
     /**
      * @return
      */
-    new(): Modules;
+    new (): Modules;
 }
 
 /** */
@@ -1129,7 +1142,7 @@ declare interface Waveform {
      * @param options
      * @return
      */
-    new(samples: number, options: any): any;
+    new (samples: number, options: any): any;
 
     /**
      * <p>Will start outputting the waveform on the given pin - the pin must have previously been initialised with analogWrite. If not repeating, it&#39;ll emit a <code>finish</code> event when it is done.</p>
@@ -1169,7 +1182,7 @@ declare interface OneWire {
      * @param pin
      * @return
      */
-    new(pin: Pin): any;
+    new (pin: Pin): any;
 
     /**
      * <p>Perform a reset cycle</p>
@@ -1232,7 +1245,7 @@ declare interface SPI {
     /**
      * @return
      */
-    new(): SPI;
+    new (): SPI;
 
     /**
      * <p>Set up this SPI port as an SPI Master.</p>
@@ -1335,7 +1348,7 @@ declare interface I2C {
     /**
      * @return
      */
-    new(): I2C;
+    new (): I2C;
 
     /**
      * <p>Set up this I2C port</p>
@@ -1415,7 +1428,7 @@ declare interface AES {
     /**
      * @return
      */
-    new(): AES;
+    new (): AES;
 }
 
 /** */
@@ -1449,7 +1462,7 @@ declare interface NRF {
     /**
      * @return
      */
-    new(): NRF;
+    new (): NRF;
 }
 
 /** */
@@ -1464,7 +1477,12 @@ declare namespace NRF {
      * @url https://www.espruino.com/Reference#l_NRF_characteristicsDiscover
      */
     function on(
-        event: "connect" | "disconnect" | "HID" | "servicesDiscover" | "characteristicsDiscover",
+        event:
+            | "connect"
+            | "disconnect"
+            | "HID"
+            | "servicesDiscover"
+            | "characteristicsDiscover",
         callback: (addr: string) => void,
     ): void;
 
@@ -1554,8 +1572,8 @@ declare namespace NRF {
     function setAdvertising(
         data:
             | {
-                [uuid in BLE_UUID]: number[] | Uint8Array;
-            }
+                  [uuid in BLE_UUID]: number[] | Uint8Array;
+              }
             | Array<number | string>,
         options?: {
             /**
@@ -1608,7 +1626,12 @@ declare namespace NRF {
      * @param interval The connection interval to use
      * @url https://www.espruino.com/Reference#l_NRF_setConnectionInterval
      */
-    function setConnectionInterval(interval?: number | "auto" | { minInterval: number; maxInterval: number }): void;
+    function setConnectionInterval(
+        interval?:
+            | number
+            | "auto"
+            | { minInterval: number; maxInterval: number },
+    ): void;
 
     /**
      * <p>Set the BLE radio transmit power. The default TX power is 0 dBm.</p>
@@ -1654,34 +1677,34 @@ declare namespace NRF {
         data:
             | undefined
             | {
-                [service in BLE_UUID]: {
-                    [characteristic in BLE_UUID]: {
-                        value?: string | number[];
-                        maxLen?: number;
-                        broadcast?: boolean;
-                        readable?: boolean;
-                        writable?: boolean;
-                        notify?: boolean;
-                        indicate?: boolean;
-                        description?: string;
-                        security?: {
-                            read?: {
-                                encrypted?: boolean;
-                                mitm?: boolean;
-                                lesc?: boolean;
-                                signed?: boolean;
-                            };
-                            write?: {
-                                encrypted?: boolean;
-                                mitm?: boolean;
-                                lesc?: boolean;
-                                signed?: boolean;
-                            };
-                        };
-                        onWrite?: (event: any) => void;
-                    };
-                };
-            },
+                  [service in BLE_UUID]: {
+                      [characteristic in BLE_UUID]: {
+                          value?: string | number[];
+                          maxLen?: number;
+                          broadcast?: boolean;
+                          readable?: boolean;
+                          writable?: boolean;
+                          notify?: boolean;
+                          indicate?: boolean;
+                          description?: string;
+                          security?: {
+                              read?: {
+                                  encrypted?: boolean;
+                                  mitm?: boolean;
+                                  lesc?: boolean;
+                                  signed?: boolean;
+                              };
+                              write?: {
+                                  encrypted?: boolean;
+                                  mitm?: boolean;
+                                  lesc?: boolean;
+                                  signed?: boolean;
+                              };
+                          };
+                          onWrite?: (event: any) => void;
+                      };
+                  };
+              },
         options?: {
             hid?: Uint8Array;
             /**
@@ -1745,7 +1768,7 @@ declare interface BluetoothDevice {
     /**
      * @return
      */
-    new(): BluetoothDevice;
+    new (): BluetoothDevice;
 
     /**
      * <p><strong>Note:</strong> This is only available on some devices</p>
@@ -1766,7 +1789,7 @@ declare interface BluetoothRemoteGATTServer {
     /**
      * @return
      */
-    new(): BluetoothRemoteGATTServer;
+    new (): BluetoothRemoteGATTServer;
 
     /**
      * <p>Connect to a BLE device - returns a promise,
@@ -1820,7 +1843,7 @@ declare interface BluetoothRemoteGATTService {
     /**
      * @return
      */
-    new(): BluetoothRemoteGATTService;
+    new (): BluetoothRemoteGATTService;
 
     /**
      * <p><strong>Note:</strong> This is only available on some devices</p>
@@ -1850,7 +1873,7 @@ declare interface BluetoothRemoteGATTCharacteristic {
     /**
      * @return
      */
-    new(): BluetoothRemoteGATTCharacteristic;
+    new (): BluetoothRemoteGATTCharacteristic;
 
     /**
      * <p><strong>Note:</strong> This is only available on some devices</p>
@@ -1871,7 +1894,7 @@ declare interface Trig {
     /**
      * @return
      */
-    new(): Trig;
+    new (): Trig;
 }
 
 /** */
@@ -1903,7 +1926,12 @@ declare namespace Trig {
      * @param pulseLength
      * @url http://www.espruino.com/Reference#l_Trig_setTrigger
      */
-    function setTrigger(num: number, pos: number, pins: any, pulseLength: number): void;
+    function setTrigger(
+        num: number,
+        pos: number,
+        pins: any,
+        pulseLength: number,
+    ): void;
 
     /**
      * <p>Disable a trigger</p>
@@ -1966,7 +1994,7 @@ declare interface ESP8266 {
     /**
      * @return
      */
-    new(): ESP8266;
+    new (): ESP8266;
 }
 
 /** */
@@ -2127,7 +2155,7 @@ declare interface httpSrv {
     /**
      * @return
      */
-    new(): httpSrv;
+    new (): httpSrv;
 
     /**
      * <p>Start listening for new HTTP connections on the given port</p>
@@ -2154,7 +2182,7 @@ declare interface httpSRq {
     /**
      * @return
      */
-    new(): httpSRq;
+    new (): httpSRq;
 
     /**
      * <p>Return how many bytes are available to read. If there is already a listener for data, this will always return 0.</p>
@@ -2192,7 +2220,7 @@ declare interface httpSRs {
     /**
      * @return
      */
-    new(): httpSRs;
+    new (): httpSRs;
 
     /**
      * <p>This function writes the <code>data</code> argument as a string. Data that is passed in
@@ -2230,7 +2258,7 @@ declare interface httpCRq {
     /**
      * @return
      */
-    new(): httpCRq;
+    new (): httpCRq;
 
     /**
      * <p>This function writes the <code>data</code> argument as a string. Data that is passed in
@@ -2262,7 +2290,7 @@ declare interface httpCRs {
     /**
      * @return
      */
-    new(): httpCRs;
+    new (): httpCRs;
 
     /**
      * <p>Return how many bytes are available to read. If there is a &#39;data&#39; event handler, this will always return 0.</p>
@@ -2298,7 +2326,7 @@ declare interface CC3000 {
     /**
      * @return
      */
-    new(): CC3000;
+    new (): CC3000;
 }
 
 /** */
@@ -2325,7 +2353,7 @@ declare interface WLAN {
     /**
      * @return
      */
-    new(): WLAN;
+    new (): WLAN;
 
     /**
      * <p>Connect to a wireless network</p>
@@ -2383,7 +2411,7 @@ declare interface TelnetServer {
     /**
      * @return
      */
-    new(): TelnetServer;
+    new (): TelnetServer;
 }
 
 /** */
@@ -2404,7 +2432,7 @@ declare interface WIZnet {
     /**
      * @return
      */
-    new(): WIZnet;
+    new (): WIZnet;
 }
 
 /** */
@@ -2429,7 +2457,7 @@ declare interface Ethernet {
     /**
      * @return
      */
-    new(): Ethernet;
+    new (): Ethernet;
 
     /**
      * <p>Get the current IP address, subnet, gateway and mac address.</p>
@@ -2459,7 +2487,7 @@ declare interface NetworkJS {
     /**
      * @return
      */
-    new(): NetworkJS;
+    new (): NetworkJS;
 }
 
 /**
@@ -2525,7 +2553,7 @@ declare interface Server {
     /**
      * @return
      */
-    new(): Server;
+    new (): Server;
 
     /**
      * <p>Start listening for new connections on the given port</p>
@@ -2552,7 +2580,7 @@ declare interface Socket {
     /**
      * @return
      */
-    new(): Socket;
+    new (): Socket;
 
     /**
      * <p>Return how many bytes are available to read. If there is already a listener for data, this will always return 0.</p>
@@ -2634,7 +2662,7 @@ declare interface HASH {
     /**
      * @return
      */
-    new(): HASH;
+    new (): HASH;
 
     /**
      * @param message
@@ -2666,7 +2694,7 @@ declare interface WioLTE {
     /**
      * @return
      */
-    new(): WioLTE;
+    new (): WioLTE;
 }
 
 /** */
@@ -2683,7 +2711,7 @@ declare namespace WioLTE {
          * @param blue
          * @return
          */
-        new(red: number, green: number, blue: number): LED;
+        new (red: number, green: number, blue: number): LED;
     }
 
     /**
@@ -2898,7 +2926,7 @@ declare interface File {
     /**
      * @return
      */
-    new(): File;
+    new (): File;
 
     /**
      * <p>Close an open file.</p>
@@ -2962,7 +2990,7 @@ declare interface Graphics {
     /**
      * @return
      */
-    new(): Graphics;
+    new (): Graphics;
 
     /**
      * <p>The width of the LCD</p>
@@ -3110,7 +3138,12 @@ declare interface Graphics {
      * @param height
      * @url http://www.espruino.com/Reference#l_Graphics_setFontCustom
      */
-    setFontCustom(bitmap: any, firstChar: number, width: any, height: number): void;
+    setFontCustom(
+        bitmap: any,
+        firstChar: number,
+        width: any,
+        height: number,
+    ): void;
 
     /**
      * <p>Draw a string of text in the current font</p>
@@ -3208,7 +3241,12 @@ declare interface Graphics {
      * @return
      * @url http://www.espruino.com/Reference#l_Graphics_createArrayBuffer
      */
-    createArrayBuffer(width: number, height: number, bpp: number, options: any): Graphics;
+    createArrayBuffer(
+        width: number,
+        height: number,
+        bpp: number,
+        options: any,
+    ): Graphics;
 
     /**
      * <p>Create a Graphics object that renders by calling a JavaScript callback function to draw pixels</p>
@@ -3220,7 +3258,12 @@ declare interface Graphics {
      * @return
      * @url http://www.espruino.com/Reference#l_Graphics_createCallback
      */
-    createCallback(width: number, height: number, bpp: number, callback: any): Graphics;
+    createCallback(
+        width: number,
+        height: number,
+        bpp: number,
+        callback: any,
+    ): Graphics;
 
     /**
      * <p>Create a Graphics object that renders to SDL window (Linux-based devices only)</p>
@@ -3242,7 +3285,7 @@ declare interface Puck {
     /**
      * @return
      */
-    new(): Puck;
+    new (): Puck;
 }
 
 /** */
@@ -3303,7 +3346,7 @@ declare namespace Puck {
          * @param anode
          * @return
          */
-        new(data: any, cathode: Pin, anode: Pin): IR;
+        new (data: any, cathode: Pin, anode: Pin): IR;
     }
 
     /**
@@ -3367,7 +3410,7 @@ declare interface Badge {
     /**
      * @return
      */
-    new(): Badge;
+    new (): Badge;
 }
 
 /** */
@@ -3597,13 +3640,17 @@ declare function getPinMode(pin: Pin): any;
  * @return
  * @url http://www.espruino.com/Reference#l__global_setWatch
  */
-declare function setWatch(f: (a?: any) => any, pin: Pin, options: {
-    repeat?: boolean;
-    edge?: "rising" | "falling" | "both";
-    debounce?: number;
-    irq?: boolean;
-    data?: Pin;
-}): string;
+declare function setWatch(
+    f: (a?: any) => any,
+    pin: Pin,
+    options: {
+        repeat?: boolean;
+        edge?: "rising" | "falling" | "both";
+        debounce?: number;
+        irq?: boolean;
+        data?: Pin;
+    },
+): string;
 
 /**
  * <p>Clear the Watch that was created with setWatch. If no parameter is supplied, all watches will be removed.</p>

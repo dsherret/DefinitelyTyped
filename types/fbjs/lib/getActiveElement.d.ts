@@ -5,7 +5,9 @@
  * The activeElement will be null only if the document or document body is not
  * yet defined.
  */
-declare function getActiveElement(doc?: Document): HTMLElement | null | undefined;
+declare function getActiveElement(
+    doc?: Document,
+): HTMLElement | null | undefined;
 
 declare namespace getActiveElement {}
 

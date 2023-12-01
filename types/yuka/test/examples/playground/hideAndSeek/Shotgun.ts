@@ -90,7 +90,7 @@ export class Shotgun extends GameEntity {
         // check shoot
 
         if (this.currentTime >= this.endTimeShot) {
-            this.status = (this.roundsLeft === 0) ? STATUS.EMPTY : STATUS.READY;
+            this.status = this.roundsLeft === 0 ? STATUS.EMPTY : STATUS.READY;
             this.endTimeShot = Infinity;
         }
 
@@ -98,7 +98,10 @@ export class Shotgun extends GameEntity {
     }
 
     reload() {
-        if ((this.status === STATUS.READY || this.status === STATUS.EMPTY) && this.ammo > 0) {
+        if (
+            (this.status === STATUS.READY || this.status === STATUS.EMPTY) &&
+            this.ammo > 0
+        ) {
             this.status = STATUS.RELOAD;
 
             this.endTimeReload = this.currentTime + this.reloadTime;
@@ -135,7 +138,10 @@ export class Shotgun extends GameEntity {
             // now calculate the distance to the closest intersection point. if no point was found,
             // choose a point on the ray far away from the origin
 
-            const distance = (result === null) ? 1000 : ray.origin.distanceTo(intersectionPoint);
+            const distance =
+                result === null
+                    ? 1000
+                    : ray.origin.distanceTo(intersectionPoint);
 
             // now let's change the origin to the weapon's position.
 

@@ -246,7 +246,9 @@ export class BeforeChatEventSignal {
      * are sent.
      * @param callback
      */
-    subscribe(callback: (arg: BeforeChatEvent) => void): (arg: BeforeChatEvent) => void;
+    subscribe(
+        callback: (arg: BeforeChatEvent) => void,
+    ): (arg: BeforeChatEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called before new chat
@@ -306,7 +308,9 @@ export class BeforeDataDrivenEntityTriggerEventSignal {
      * @param callback
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: BeforeDataDrivenEntityTriggerEvent) => void): void;
+    unsubscribe(
+        callback: (arg: BeforeDataDrivenEntityTriggerEvent) => void,
+    ): void;
     protected constructor();
 }
 /**
@@ -346,7 +350,9 @@ export class BeforeExplosionEventSignal {
      * explosion behavior.
      * @param callback
      */
-    subscribe(callback: (arg: BeforeExplosionEvent) => void): (arg: BeforeExplosionEvent) => void;
+    subscribe(
+        callback: (arg: BeforeExplosionEvent) => void,
+    ): (arg: BeforeExplosionEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called from before when an
@@ -378,7 +384,9 @@ export class BeforeItemDefinitionEventSignal {
      * @param callback
      * @throws This function can throw errors.
      */
-    unsubscribe(callback: (arg: BeforeItemDefinitionTriggeredEvent) => void): void;
+    unsubscribe(
+        callback: (arg: BeforeItemDefinitionTriggeredEvent) => void,
+    ): void;
     protected constructor();
 }
 /**
@@ -433,7 +441,9 @@ export class BeforeItemUseEventSignal {
      * Adds a callback that will be called before an item is used.
      * @param callback
      */
-    subscribe(callback: (arg: BeforeItemUseEvent) => void): (arg: BeforeItemUseEvent) => void;
+    subscribe(
+        callback: (arg: BeforeItemUseEvent) => void,
+    ): (arg: BeforeItemUseEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called before an item is used.
@@ -491,7 +501,9 @@ export class BeforeItemUseOnEventSignal {
      * on a block.
      * @param callback
      */
-    subscribe(callback: (arg: BeforeItemUseOnEvent) => void): (arg: BeforeItemUseOnEvent) => void;
+    subscribe(
+        callback: (arg: BeforeItemUseOnEvent) => void,
+    ): (arg: BeforeItemUseOnEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called before an item is used
@@ -542,7 +554,9 @@ export class BeforePistonActivateEventSignal {
      * or retracts.
      * @param callback
      */
-    subscribe(callback: (arg: BeforePistonActivateEvent) => void): (arg: BeforePistonActivateEvent) => void;
+    subscribe(
+        callback: (arg: BeforePistonActivateEvent) => void,
+    ): (arg: BeforePistonActivateEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called before a piston expands
@@ -585,7 +599,9 @@ export class BeforeWatchdogTerminateEventSignal {
      * watchdog system.
      * @param callback
      */
-    subscribe(callback: (arg: BeforeWatchdogTerminateEvent) => void): (arg: BeforeWatchdogTerminateEvent) => void;
+    subscribe(
+        callback: (arg: BeforeWatchdogTerminateEvent) => void,
+    ): (arg: BeforeWatchdogTerminateEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a script runtime
@@ -782,7 +798,9 @@ export class BlockBreakEventSignal {
      * by a player.
      * @param callback
      */
-    subscribe(callback: (arg: BlockBreakEvent) => void): (arg: BlockBreakEvent) => void;
+    subscribe(
+        callback: (arg: BlockBreakEvent) => void,
+    ): (arg: BlockBreakEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an block is
@@ -847,7 +865,9 @@ export class BlockExplodeEventSignal {
      * occurs, as it impacts individual blocks.
      * @param callback
      */
-    subscribe(callback: (arg: BlockExplodeEvent) => void): (arg: BlockExplodeEvent) => void;
+    subscribe(
+        callback: (arg: BlockExplodeEvent) => void,
+    ): (arg: BlockExplodeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an explosion
@@ -967,7 +987,11 @@ export class BlockInventoryComponentContainer extends Container {
      *
      * ```
      */
-    swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
+    swapItems(
+        slot: number,
+        otherSlot: number,
+        otherContainer: Container,
+    ): boolean;
     /**
      * @remarks
      * Moves an item from one slot to another, potentially across
@@ -985,7 +1009,11 @@ export class BlockInventoryComponentContainer extends Container {
      *
      * ```
      */
-    transferItem(fromSlot: number, toSlot: number, toContainer: Container): boolean;
+    transferItem(
+        fromSlot: number,
+        toSlot: number,
+        toContainer: Container,
+    ): boolean;
     protected constructor();
 }
 /**
@@ -1221,7 +1249,9 @@ export class BlockPlaceEventSignal {
      * by a player.
      * @param callback
      */
-    subscribe(callback: (arg: BlockPlaceEvent) => void): (arg: BlockPlaceEvent) => void;
+    subscribe(
+        callback: (arg: BlockPlaceEvent) => void,
+    ): (arg: BlockPlaceEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an block is
@@ -2040,7 +2070,9 @@ export class ButtonPushEventSignal {
      * Adds a callback that will be called when a button is pushed.
      * @param callback
      */
-    subscribe(callback: (arg: ButtonPushEvent) => void): (arg: ButtonPushEvent) => void;
+    subscribe(
+        callback: (arg: ButtonPushEvent) => void,
+    ): (arg: ButtonPushEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a button is
@@ -2233,7 +2265,11 @@ export class Container {
      *
      * ```
      */
-    swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
+    swapItems(
+        slot: number,
+        otherSlot: number,
+        otherContainer: Container,
+    ): boolean;
     /**
      * @remarks
      * Moves an item from one slot to another, potentially across
@@ -2251,7 +2287,11 @@ export class Container {
      *
      * ```
      */
-    transferItem(fromSlot: number, toSlot: number, toContainer: Container): boolean;
+    transferItem(
+        fromSlot: number,
+        toSlot: number,
+        toContainer: Container,
+    ): boolean;
     protected constructor();
 }
 /**
@@ -2382,7 +2422,11 @@ export class Dimension {
      *          overworld.createExplosion(explodeNoBlocksLoc, 15, explosionOptions);
      * ```
      */
-    createExplosion(location: Location, radius: number, explosionOptions: ExplosionOptions): void;
+    createExplosion(
+        location: Location,
+        radius: number,
+        explosionOptions: ExplosionOptions,
+    ): void;
     /**
      * @remarks
      * Returns a block instance at the given location. This method
@@ -2404,7 +2448,11 @@ export class Dimension {
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
      */
-    getBlockFromRay(location: Location, direction: Vector, options?: BlockRaycastOptions): Block;
+    getBlockFromRay(
+        location: Location,
+        direction: Vector,
+        options?: BlockRaycastOptions,
+    ): Block;
     /**
      * @remarks
      * Returns a set of entities based on a set of conditions
@@ -2454,7 +2502,11 @@ export class Dimension {
      * Additional options for processing this raycast query.
      * @throws This function can throw errors.
      */
-    getEntitiesFromRay(location: Location, direction: Vector, options?: EntityRaycastOptions): Entity[];
+    getEntitiesFromRay(
+        location: Location,
+        direction: Vector,
+        options?: EntityRaycastOptions,
+    ): Entity[];
     /**
      * @remarks
      * Returns a set of players based on a set of conditions
@@ -2596,7 +2648,11 @@ export class Dimension {
      * @returns
      * Newly created entity at the specified location.
      */
-    spawnParticle(effectName: string, location: Location, molangVariables: MolangVariableMap): void;
+    spawnParticle(
+        effectName: string,
+        location: Location,
+        molangVariables: MolangVariableMap,
+    ): void;
     protected constructor();
 }
 export class DirectionBlockProperty extends IBlockProperty {
@@ -2688,7 +2744,10 @@ export class EffectAddEventSignal {
      * @param callback
      * @param options
      */
-    subscribe(callback: (arg: EffectAddEvent) => void, options?: EntityEventOptions): (arg: EffectAddEvent) => void;
+    subscribe(
+        callback: (arg: EffectAddEvent) => void,
+        options?: EntityEventOptions,
+    ): (arg: EffectAddEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an effect is added
@@ -2920,7 +2979,12 @@ export class Entity {
      *          log("Created a sneaking wolf.", 1);
      * ```
      */
-    addEffect(effectType: EffectType, duration: number, amplifier?: number, showParticles?: boolean): void;
+    addEffect(
+        effectType: EffectType,
+        duration: number,
+        amplifier?: number,
+        showParticles?: boolean,
+    ): void;
     /**
      * @remarks
      * Adds a specified tag to an entity.
@@ -3071,7 +3135,10 @@ export class Entity {
      * Data value of the property to set.
      * @throws This function can throw errors.
      */
-    setDynamicProperty(identifier: string, value: boolean | number | string): void;
+    setDynamicProperty(
+        identifier: string,
+        value: boolean | number | string,
+    ): void;
     /**
      * @remarks
      * Sets the main rotation of the entity.
@@ -3122,7 +3189,12 @@ export class Entity {
      * @param keepVelocity
      * @throws This function can throw errors.
      */
-    teleportFacing(location: Vector3, dimension: Dimension, facingLocation: Vector3, keepVelocity?: boolean): void;
+    teleportFacing(
+        location: Vector3,
+        dimension: Dimension,
+        facingLocation: Vector3,
+        keepVelocity?: boolean,
+    ): void;
     /**
      * @remarks
      * Triggers an entity type event. For every entity, a number of
@@ -3358,7 +3430,9 @@ export class EntityCreateEventSignal {
      *          });
      * ```
      */
-    subscribe(callback: (arg: EntityCreateEvent) => void): (arg: EntityCreateEvent) => void;
+    subscribe(
+        callback: (arg: EntityCreateEvent) => void,
+    ): (arg: EntityCreateEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a new entity is
@@ -3624,7 +3698,10 @@ export class EntityHitEventSignal {
      * @param callback
      * @param options
      */
-    subscribe(callback: (arg: EntityHitEvent) => void, options?: EntityEventOptions): (arg: EntityHitEvent) => void;
+    subscribe(
+        callback: (arg: EntityHitEvent) => void,
+        options?: EntityEventOptions,
+    ): (arg: EntityHitEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an entity makes a
@@ -3687,7 +3764,10 @@ export class EntityHurtEventSignal {
      * @param callback
      * @param options
      */
-    subscribe(callback: (arg: EntityHurtEvent) => void, options?: EntityEventOptions): (arg: EntityHurtEvent) => void;
+    subscribe(
+        callback: (arg: EntityHurtEvent) => void,
+        options?: EntityEventOptions,
+    ): (arg: EntityHurtEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an entity is hurt.
@@ -5576,7 +5656,9 @@ export class ExplosionEventSignal {
      * occurs.
      * @param callback
      */
-    subscribe(callback: (arg: ExplosionEvent) => void): (arg: ExplosionEvent) => void;
+    subscribe(
+        callback: (arg: ExplosionEvent) => void,
+    ): (arg: ExplosionEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an explosion
@@ -5801,7 +5883,11 @@ export class InventoryComponentContainer extends Container {
      *
      * ```
      */
-    swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
+    swapItems(
+        slot: number,
+        otherSlot: number,
+        otherContainer: Container,
+    ): boolean;
     /**
      * @remarks
      * Moves an item from one slot to another, potentially across
@@ -5819,7 +5905,11 @@ export class InventoryComponentContainer extends Container {
      *
      * ```
      */
-    transferItem(fromSlot: number, toSlot: number, toContainer: Container): boolean;
+    transferItem(
+        fromSlot: number,
+        toSlot: number,
+        toContainer: Container,
+    ): boolean;
     protected constructor();
 }
 /**
@@ -5853,7 +5943,9 @@ export class ItemCompleteChargeEventSignal {
      * completes charging.
      * @param callback
      */
-    subscribe(callback: (arg: ItemCompleteChargeEvent) => void): (arg: ItemCompleteChargeEvent) => void;
+    subscribe(
+        callback: (arg: ItemCompleteChargeEvent) => void,
+    ): (arg: ItemCompleteChargeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a chargeable item
@@ -5906,7 +5998,9 @@ export class ItemDefinitionEventSignal {
      * definition and components change.
      * @param callback
      */
-    subscribe(callback: (arg: ItemDefinitionTriggeredEvent) => void): (arg: ItemDefinitionTriggeredEvent) => void;
+    subscribe(
+        callback: (arg: ItemDefinitionTriggeredEvent) => void,
+    ): (arg: ItemDefinitionTriggeredEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an item's
@@ -6070,7 +6164,9 @@ export class ItemReleaseChargeEventSignal {
      * is released from charging.
      * @param callback
      */
-    subscribe(callback: (arg: ItemReleaseChargeEvent) => void): (arg: ItemReleaseChargeEvent) => void;
+    subscribe(
+        callback: (arg: ItemReleaseChargeEvent) => void,
+    ): (arg: ItemReleaseChargeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a chargeable item
@@ -6217,7 +6313,9 @@ export class ItemStartChargeEventSignal {
      * starts charging.
      * @param callback
      */
-    subscribe(callback: (arg: ItemStartChargeEvent) => void): (arg: ItemStartChargeEvent) => void;
+    subscribe(
+        callback: (arg: ItemStartChargeEvent) => void,
+    ): (arg: ItemStartChargeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a chargeable item
@@ -6267,7 +6365,9 @@ export class ItemStartUseOnEventSignal {
      * a block.
      * @param callback
      */
-    subscribe(callback: (arg: ItemStartUseOnEvent) => void): (arg: ItemStartUseOnEvent) => void;
+    subscribe(
+        callback: (arg: ItemStartUseOnEvent) => void,
+    ): (arg: ItemStartUseOnEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an item is used on
@@ -6311,7 +6411,9 @@ export class ItemStopChargeEventSignal {
      * stops charging.
      * @param callback
      */
-    subscribe(callback: (arg: ItemStopChargeEvent) => void): (arg: ItemStopChargeEvent) => void;
+    subscribe(
+        callback: (arg: ItemStopChargeEvent) => void,
+    ): (arg: ItemStopChargeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a chargeable item
@@ -6352,7 +6454,9 @@ export class ItemStopUseOnEventSignal {
      * used on a block.
      * @param callback
      */
-    subscribe(callback: (arg: ItemStopUseOnEvent) => void): (arg: ItemStopUseOnEvent) => void;
+    subscribe(
+        callback: (arg: ItemStopUseOnEvent) => void,
+    ): (arg: ItemStopUseOnEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an item is used on
@@ -6397,7 +6501,9 @@ export class ItemUseEventSignal {
      * Adds a callback that will be called when an item is used.
      * @param callback
      */
-    subscribe(callback: (arg: ItemUseEvent) => void): (arg: ItemUseEvent) => void;
+    subscribe(
+        callback: (arg: ItemUseEvent) => void,
+    ): (arg: ItemUseEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an item is used.
@@ -6451,7 +6557,9 @@ export class ItemUseOnEventSignal {
      * a block.
      * @param callback
      */
-    subscribe(callback: (arg: ItemUseOnEvent) => void): (arg: ItemUseOnEvent) => void;
+    subscribe(
+        callback: (arg: ItemUseOnEvent) => void,
+    ): (arg: ItemUseOnEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when an item is used on
@@ -6498,7 +6606,9 @@ export class LeverActionEventSignal {
      * (activates or deactivates).
      * @param callback
      */
-    subscribe(callback: (arg: LeverActionEvent) => void): (arg: LeverActionEvent) => void;
+    subscribe(
+        callback: (arg: LeverActionEvent) => void,
+    ): (arg: LeverActionEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a lever is moved
@@ -13698,7 +13808,11 @@ export class MolangVariableMap {
      * @param speed
      * @param direction
      */
-    setSpeedAndDirection(variableName: string, speed: number, direction: Vector): MolangVariableMap;
+    setSpeedAndDirection(
+        variableName: string,
+        speed: number,
+        direction: Vector,
+    ): MolangVariableMap;
     /**
      * @remarks
      * Sets a vector value for a Molang (rendering and animation)
@@ -13817,7 +13931,9 @@ export class PistonActivateEventSignal {
      *          });
      * ```
      */
-    subscribe(callback: (arg: PistonActivateEvent) => void): (arg: PistonActivateEvent) => void;
+    subscribe(
+        callback: (arg: PistonActivateEvent) => void,
+    ): (arg: PistonActivateEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a piston expands
@@ -13913,7 +14029,12 @@ export class Player extends Entity {
      * @param showParticles
      * @throws This function can throw errors.
      */
-    addEffect(effectType: EffectType, duration: number, amplifier?: number, showParticles?: boolean): void;
+    addEffect(
+        effectType: EffectType,
+        duration: number,
+        amplifier?: number,
+        showParticles?: boolean,
+    ): void;
     /**
      * @remarks
      * Adds a specified tag to an entity.
@@ -14084,7 +14205,10 @@ export class Player extends Entity {
      * Data value of the property to set.
      * @throws This function can throw errors.
      */
-    setDynamicProperty(identifier: string, value: boolean | number | string): void;
+    setDynamicProperty(
+        identifier: string,
+        value: boolean | number | string,
+    ): void;
     /**
      * @remarks
      * Sets the main rotation of the entity.
@@ -14147,7 +14271,12 @@ export class Player extends Entity {
      * @param keepVelocity
      * @throws This function can throw errors.
      */
-    teleportFacing(location: Vector3, dimension: Dimension, facingLocation: Vector3, keepVelocity?: boolean): void;
+    teleportFacing(
+        location: Vector3,
+        dimension: Dimension,
+        facingLocation: Vector3,
+        keepVelocity?: boolean,
+    ): void;
     /**
      * @remarks
      * Sends a message that is displayed on the connected client
@@ -14229,7 +14358,11 @@ export class PlayerInventoryComponentContainer extends InventoryComponentContain
      * container as this source.
      * @throws This function can throw errors.
      */
-    swapItems(slot: number, otherSlot: number, otherContainer: Container): boolean;
+    swapItems(
+        slot: number,
+        otherSlot: number,
+        otherContainer: Container,
+    ): boolean;
     /**
      * @remarks
      * Moves an item from one slot to another, potentially across
@@ -14242,7 +14375,11 @@ export class PlayerInventoryComponentContainer extends InventoryComponentContain
      * container as the source.
      * @throws This function can throw errors.
      */
-    transferItem(fromSlot: number, toSlot: number, toContainer: Container): boolean;
+    transferItem(
+        fromSlot: number,
+        toSlot: number,
+        toContainer: Container,
+    ): boolean;
     protected constructor();
 }
 /**
@@ -14282,7 +14419,9 @@ export class PlayerJoinEventSignal {
      * world.
      * @param callback
      */
-    subscribe(callback: (arg: PlayerJoinEvent) => void): (arg: PlayerJoinEvent) => void;
+    subscribe(
+        callback: (arg: PlayerJoinEvent) => void,
+    ): (arg: PlayerJoinEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a player joins the
@@ -14315,7 +14454,9 @@ export class PlayerLeaveEventSignal {
      * world.
      * @param callback
      */
-    subscribe(callback: (arg: PlayerLeaveEvent) => void): (arg: PlayerLeaveEvent) => void;
+    subscribe(
+        callback: (arg: PlayerLeaveEvent) => void,
+    ): (arg: PlayerLeaveEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a player leaves
@@ -14374,7 +14515,9 @@ export class ProjectileHitEventSignal {
      * an entity or block.
      * @param callback
      */
-    subscribe(callback: (arg: ProjectileHitEvent) => void): (arg: ProjectileHitEvent) => void;
+    subscribe(
+        callback: (arg: ProjectileHitEvent) => void,
+    ): (arg: ProjectileHitEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when a projectile hits
@@ -14409,7 +14552,9 @@ export class PropertyRegistry {
      * @param propertiesDefinition
      * @throws This function can throw errors.
      */
-    registerWorldDynamicProperties(propertiesDefinition: DynamicPropertiesDefinition): void;
+    registerWorldDynamicProperties(
+        propertiesDefinition: DynamicPropertiesDefinition,
+    ): void;
     protected constructor();
 }
 /**
@@ -14445,7 +14590,9 @@ export class Scoreboard {
      * @param displaySlotId
      * @throws This function can throw errors.
      */
-    getObjectiveAtDisplaySlot(displaySlotId: string): ScoreboardObjectiveDisplayOptions;
+    getObjectiveAtDisplaySlot(
+        displaySlotId: string,
+    ): ScoreboardObjectiveDisplayOptions;
     /**
      * @remarks
      * Returns all defined objectives.
@@ -14960,7 +15107,9 @@ export class WeatherChangeEventSignal {
      * Adds a callback that will be called when weather changes.
      * @param callback
      */
-    subscribe(callback: (arg: WeatherChangeEvent) => void): (arg: WeatherChangeEvent) => void;
+    subscribe(
+        callback: (arg: WeatherChangeEvent) => void,
+    ): (arg: WeatherChangeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called when weather changes.
@@ -15058,7 +15207,10 @@ export class World {
      * Data value of the property to set.
      * @throws This function can throw errors.
      */
-    setDynamicProperty(identifier: string, value: boolean | number | string): void;
+    setDynamicProperty(
+        identifier: string,
+        value: boolean | number | string,
+    ): void;
     /**
      * @remarks
      * Stops any music tracks from playing.
@@ -15109,7 +15261,9 @@ export class WorldInitializeEventSignal {
      * environment is initialized for a World.
      * @param callback
      */
-    subscribe(callback: (arg: WorldInitializeEvent) => void): (arg: WorldInitializeEvent) => void;
+    subscribe(
+        callback: (arg: WorldInitializeEvent) => void,
+    ): (arg: WorldInitializeEvent) => void;
     /**
      * @remarks
      * Removes a callback from being called the scripting

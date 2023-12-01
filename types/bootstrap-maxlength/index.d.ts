@@ -93,7 +93,11 @@ declare namespace BootstrapMaxlength {
         placement?:
             | string
             | PlacementOptions
-            | ((currentInput: JQuery, maxLengthIndicator: JQuery, currentInputPosition: PositionParam) => void)
+            | ((
+                  currentInput: JQuery,
+                  maxLengthIndicator: JQuery,
+                  currentInputPosition: PositionParam,
+              ) => void)
             | undefined;
         /**
          * Appends the maxlength indicator badge to the parent of the input rather than to the body.
@@ -108,7 +112,10 @@ declare namespace BootstrapMaxlength {
          * Function example: function(currentText, maxLength) { return '' + Math.ceil(currentText.length / 160) + ' SMS Message(s)'; }
          * @default null
          */
-        message?: string | ((currentText: string, maxLength: Number) => string) | undefined;
+        message?:
+            | string
+            | ((currentText: string, maxLength: Number) => string)
+            | undefined;
         /**
          * If true the input will count using utf8 bytesize/encoding. For example: the '¢' character is counted as two characters.
          * @default false
@@ -148,7 +155,16 @@ declare namespace BootstrapMaxlength {
 interface JQuery {
     /** Apply the maxlength plugin on the selected elemens */
     maxlength(options?: BootstrapMaxlength.Options): JQuery;
-    on(events: "maxlength.shown", handler: (eventObject: JQueryEventObject, ...args: any[]) => any): JQuery;
-    on(events: "maxlength.hidden", handler: (eventObject: JQueryEventObject, ...args: any[]) => any): JQuery;
-    trigger(eventType: "maxlength.reposition", extraParameters?: any[] | Object): JQuery;
+    on(
+        events: "maxlength.shown",
+        handler: (eventObject: JQueryEventObject, ...args: any[]) => any,
+    ): JQuery;
+    on(
+        events: "maxlength.hidden",
+        handler: (eventObject: JQueryEventObject, ...args: any[]) => any,
+    ): JQuery;
+    trigger(
+        eventType: "maxlength.reposition",
+        extraParameters?: any[] | Object,
+    ): JQuery;
 }

@@ -10,4 +10,8 @@ chardet.detectAll(new Buffer("hello there!"));
 chardet.detectFileAll("/path/to/file", (err, encoding) => {});
 chardet.detectFileAllSync("/path/to/file");
 
-chardet.detectFileAll("/path/to/file", { sampleSize: 32 }, (err, encoding) => {});
+chardet.detectFileAll(
+    "/path/to/file",
+    { sampleSize: 32 },
+    (err, encoding) => {},
+);

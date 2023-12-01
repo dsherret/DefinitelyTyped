@@ -1,5 +1,9 @@
 import * as React from "react";
-import PlacesAutocomplete, { geocodeByAddress, geocodeByPlaceId, getLatLng } from "react-places-autocomplete";
+import PlacesAutocomplete, {
+    geocodeByAddress,
+    geocodeByPlaceId,
+    getLatLng,
+} from "react-places-autocomplete";
 
 class Test extends React.Component {
     state = {
@@ -35,9 +39,7 @@ class Test extends React.Component {
 
         return (
             <form onSubmit={this.handleFormSubmit}>
-                <PlacesAutocomplete
-                    inputProps={inputProps}
-                />
+                <PlacesAutocomplete inputProps={inputProps} />
             </form>
         );
     }

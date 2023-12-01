@@ -8,7 +8,7 @@ declare const content: string;
 SassLoader(content);
 
 const loaderOptions: SassLoader.Options = {
-    additionalData: "$env: \"development\";",
+    additionalData: '$env: "development";',
     warnRuleAsWarning: true,
     sourceMap: true,
     sassOptions: {

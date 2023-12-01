@@ -61,16 +61,15 @@ const testCases = [
         <img src="test" width={100} height={100} />
     </picture>,
     <dialog
-        onCancel={event => {
+        onCancel={(event) => {
             // $ExpectType SyntheticEvent<HTMLDialogElement, Event>
             event;
         }}
-        onClose={event => {
+        onClose={(event) => {
             // $ExpectType SyntheticEvent<HTMLDialogElement, Event>
             event;
         }}
-    >
-    </dialog>,
+    ></dialog>,
     <link nonce="8IBTHwOdqNKAWeKl7plt8g==" />,
     <center></center>,
 ];
@@ -104,18 +103,18 @@ declare global {
 }
 
 const eventCallbacksTestCases = [
-    <blockquote onClick={e => e.currentTarget.cite} />,
-    <del onClick={e => e.currentTarget.cite} />,
-    <details onClick={e => e.currentTarget.open} />,
-    <meter onClick={e => e.currentTarget.optimum} />,
-    <output onClick={e => e.currentTarget.value} />,
-    <time onClick={e => e.currentTarget.dateTime} />,
+    <blockquote onClick={(e) => e.currentTarget.cite} />,
+    <del onClick={(e) => e.currentTarget.cite} />,
+    <details onClick={(e) => e.currentTarget.open} />,
+    <meter onClick={(e) => e.currentTarget.optimum} />,
+    <output onClick={(e) => e.currentTarget.value} />,
+    <time onClick={(e) => e.currentTarget.dateTime} />,
 ];
 
 function formActionsTest() {
     <form
         // Will not type-check in a real project but accepted in DT tests since experimental.d.ts is part of compilation.
-        action={formData => {
+        action={(formData) => {
             // $ExpectType FormData
             formData;
         }}
@@ -124,7 +123,7 @@ function formActionsTest() {
         <input
             type="submit"
             // Will not type-check in a real project but accepted in DT tests since experimental.d.ts is part of compilation.
-            formAction={formData => {
+            formAction={(formData) => {
                 // $ExpectType FormData
                 formData;
             }}
@@ -132,7 +131,7 @@ function formActionsTest() {
         />
         <button
             // Will not type-check in a real project but accepted in DT tests since experimental.d.ts is part of compilation.
-            formAction={formData => {
+            formAction={(formData) => {
                 // $ExpectType FormData
                 formData;
             }}

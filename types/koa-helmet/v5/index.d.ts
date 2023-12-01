@@ -13,9 +13,13 @@ import {
 import { Context, Middleware } from "koa";
 
 declare namespace koaHelmet {
-    type KoaHelmetContentSecurityPolicyDirectiveFunction = (ctx: Context) => string;
+    type KoaHelmetContentSecurityPolicyDirectiveFunction = (
+        ctx: Context,
+    ) => string;
 
-    type KoaHelmetCspDirectiveValue = string | KoaHelmetContentSecurityPolicyDirectiveFunction;
+    type KoaHelmetCspDirectiveValue =
+        | string
+        | KoaHelmetContentSecurityPolicyDirectiveFunction;
 
     type KoaHelmetFeaturePolicyDirectiveValue = string;
 
@@ -46,13 +50,17 @@ declare namespace koaHelmet {
         documentDomain?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         documentWrite?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         encryptedMedia?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
-        fontDisplayLateSwap?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
+        fontDisplayLateSwap?:
+            | KoaHelmetFeaturePolicyDirectiveValue[]
+            | undefined;
         fullscreen?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         geolocation?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         gyroscope?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         layoutAnimations?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         legacyImageFormats?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
-        loadingFrameDefaultEager?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
+        loadingFrameDefaultEager?:
+            | KoaHelmetFeaturePolicyDirectiveValue[]
+            | undefined;
         magnetometer?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         microphone?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         midi?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
@@ -64,8 +72,12 @@ declare namespace koaHelmet {
         syncScript?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         syncXhr?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         unoptimizedImages?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
-        unoptimizedLosslessImages?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
-        unoptimizedLossyImages?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
+        unoptimizedLosslessImages?:
+            | KoaHelmetFeaturePolicyDirectiveValue[]
+            | undefined;
+        unoptimizedLossyImages?:
+            | KoaHelmetFeaturePolicyDirectiveValue[]
+            | undefined;
         unsizedMedia?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         usb?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
         verticalScroll?: KoaHelmetFeaturePolicyDirectiveValue[] | undefined;
@@ -89,18 +101,26 @@ declare namespace koaHelmet {
 
     interface KoaHelmet {
         (options?: IHelmetConfiguration): Middleware;
-        contentSecurityPolicy(options?: KoaHelmetContentSecurityPolicyConfiguration): Middleware;
-        dnsPrefetchControl(options?: IHelmetDnsPrefetchControlConfiguration): Middleware;
+        contentSecurityPolicy(
+            options?: KoaHelmetContentSecurityPolicyConfiguration,
+        ): Middleware;
+        dnsPrefetchControl(
+            options?: IHelmetDnsPrefetchControlConfiguration,
+        ): Middleware;
         frameguard(options?: IHelmetFrameguardConfiguration): Middleware;
         hpkp(options?: IHelmetHpkpConfiguration): Middleware;
         hsts(options?: IHelmetHstsConfiguration): Middleware;
         ieNoOpen(): Middleware;
         noCache(options?: any): Middleware;
         noSniff(): Middleware;
-        referrerPolicy(options?: IHelmetReferrerPolicyConfiguration): Middleware;
+        referrerPolicy(
+            options?: IHelmetReferrerPolicyConfiguration,
+        ): Middleware;
         xssFilter(options?: IHelmetXssFilterConfiguration): Middleware;
         hidePoweredBy(options?: IHelmetHidePoweredByConfiguration): Middleware;
-        permittedCrossDomainPolicies(options?: IHelmetPermittedCrossDomainPoliciesConfiguration): Middleware;
+        permittedCrossDomainPolicies(
+            options?: IHelmetPermittedCrossDomainPoliciesConfiguration,
+        ): Middleware;
         featurePolicy(options: KoaHelmetFeaturePolicyConfiguration): Middleware;
         expectCt(options?: IHelmetExpectCtConfiguration): Middleware;
     }

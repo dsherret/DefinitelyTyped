@@ -14,7 +14,8 @@ export interface PipeConfig {
 
 export type ConformToMaskConfig = Partial<Omit<PipeConfig, "rawValue">>;
 
-export interface MaskedInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface MaskedInputProps
+    extends React.InputHTMLAttributes<HTMLInputElement> {
     mask: Mask | ((value: string) => Mask);
 
     guide?: boolean;
@@ -47,7 +48,10 @@ export interface ConformToMaskResult {
     };
 }
 
-export default class MaskedInput extends React.Component<MaskedInputProps, any> {
+export default class MaskedInput extends React.Component<
+    MaskedInputProps,
+    any
+> {
     inputElement: HTMLElement;
 }
 

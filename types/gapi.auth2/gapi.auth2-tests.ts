@@ -40,22 +40,31 @@ function test_signInOptionsBuild() {
 }
 
 function test_getAuthResponse() {
-    const user: gapi.auth2.GoogleUser = gapi.auth2.getAuthInstance().currentUser.get();
+    const user: gapi.auth2.GoogleUser = gapi.auth2
+        .getAuthInstance()
+        .currentUser.get();
     const authResponse: gapi.auth2.AuthResponse = user.getAuthResponse();
-    const authResponseWithAuth: gapi.auth2.AuthResponse = user.getAuthResponse(true);
+    const authResponseWithAuth: gapi.auth2.AuthResponse =
+        user.getAuthResponse(true);
 }
 
 function test_reloadAuthResponse() {
-    gapi.auth2.getAuthInstance().currentUser.get().reloadAuthResponse()
-        .then(response => {
+    gapi.auth2
+        .getAuthInstance()
+        .currentUser.get()
+        .reloadAuthResponse()
+        .then((response) => {
             const token: string = response.access_token;
             const expires_in: number = response.expires_in;
         });
 }
 
 function test_grantOfflineAccess() {
-    gapi.auth2.getAuthInstance().currentUser.get().grantOfflineAccess({ scope: "profile" })
-        .then(response => console.log(response.code));
+    gapi.auth2
+        .getAuthInstance()
+        .currentUser.get()
+        .grantOfflineAccess({ scope: "profile" })
+        .then((response) => console.log(response.code));
 }
 
 function test_render() {
@@ -78,15 +87,19 @@ function test_render() {
 }
 
 function test_listen() {
-    const signedInListener = gapi.auth2.getAuthInstance().isSignedIn.listen(isSignedIn => {
-        console.log(isSignedIn);
-    });
+    const signedInListener = gapi.auth2
+        .getAuthInstance()
+        .isSignedIn.listen((isSignedIn) => {
+            console.log(isSignedIn);
+        });
     signedInListener.remove();
     signedInListener.isActive;
     signedInListener.trigger();
-    const currentUserListener = gapi.auth2.getAuthInstance().currentUser.listen(currentUser => {
-        console.log(currentUser);
-    });
+    const currentUserListener = gapi.auth2
+        .getAuthInstance()
+        .currentUser.listen((currentUser) => {
+            console.log(currentUser);
+        });
     currentUserListener.remove();
     currentUserListener.isActive;
     currentUserListener.trigger();
@@ -116,7 +129,9 @@ const apiKey = "YOUR_API_KEY";
 // Enter the API Discovery Docs that describes the APIs you want to
 // access. In this example, we are accessing the People API, so we load
 // Discovery Doc found here: https://developers.google.com/people/api/rest/
-const discoveryDocs = ["https://people.googleapis.com/$discovery/rest?version=v1"];
+const discoveryDocs = [
+    "https://people.googleapis.com/$discovery/rest?version=v1",
+];
 // Enter a client ID for a web application from the Google API Console:
 //   https://console.developers.google.com/apis/credentials?project=_
 // In your API Console project, add a JavaScript origin that corresponds
@@ -133,19 +148,21 @@ function handleClientLoad() {
     gapi.load("client:auth2", initClient);
 }
 function initClient() {
-    gapi.client.init({
-        apiKey,
-        discoveryDocs,
-        clientId,
-        scope: scopes,
-    }).then(() => {
-        // Listen for sign-in state changes.
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-        // Handle the initial sign-in state.
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-        authorizeButton.onclick = handleAuthClick;
-        signoutButton.onclick = handleSignoutClick;
-    });
+    gapi.client
+        .init({
+            apiKey,
+            discoveryDocs,
+            clientId,
+            scope: scopes,
+        })
+        .then(() => {
+            // Listen for sign-in state changes.
+            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+            // Handle the initial sign-in state.
+            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            authorizeButton.onclick = handleAuthClick;
+            signoutButton.onclick = handleSignoutClick;
+        });
 }
 function updateSigninStatus(isSignedIn: boolean) {
     if (isSignedIn) {
@@ -165,15 +182,17 @@ function handleSignoutClick(event: MouseEvent) {
 }
 // Load the API and make an API call.  Display the results on the screen.
 function makeApiCall() {
-    gapi.client.people.people.get({
-        resourceName: "people/me",
-        personFields: "names",
-    }).then((resp) => {
-        const p = document.createElement("p");
-        const name = resp.result.names[0].givenName;
-        p.appendChild(document.createTextNode(`Hello, ${name}!`));
-        document.getElementById("content").appendChild(p);
-    });
+    gapi.client.people.people
+        .get({
+            resourceName: "people/me",
+            personFields: "names",
+        })
+        .then((resp) => {
+            const p = document.createElement("p");
+            const name = resp.result.names[0].givenName;
+            p.appendChild(document.createTextNode(`Hello, ${name}!`));
+            document.getElementById("content").appendChild(p);
+        });
 }
 
 async function test_await() {

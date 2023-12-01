@@ -7,7 +7,11 @@ declare class PromiseQueue {
      *                                     `add()` will return a rejected promise if this limit would be exceeded.
      * @param options [{}] See QueueOptions
      */
-    constructor(maxPendingPromises?: number, maxQueuedPromises?: number, options?: PromiseQueue.QueueOptions);
+    constructor(
+        maxPendingPromises?: number,
+        maxQueuedPromises?: number,
+        options?: PromiseQueue.QueueOptions,
+    );
 
     /**
      * Enqueue a promise generator. When the number of running promises is less than `maxPendingPromises`,

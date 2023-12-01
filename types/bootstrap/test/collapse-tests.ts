@@ -17,19 +17,19 @@ Collapse.VERSION;
 // $ExpectType Options
 Collapse.Default;
 
-element.addEventListener(Collapse.Events.show, event => {
+element.addEventListener(Collapse.Events.show, (event) => {
     // do something…
 });
 
-element.addEventListener(Collapse.Events.shown, event => {
+element.addEventListener(Collapse.Events.shown, (event) => {
     // do something…
 });
 
-element.addEventListener(Collapse.Events.hide, event => {
+element.addEventListener(Collapse.Events.hide, (event) => {
     // do something…
 });
 
-element.addEventListener(Collapse.Events.hidden, event => {
+element.addEventListener(Collapse.Events.hidden, (event) => {
     // do something…
 });
 

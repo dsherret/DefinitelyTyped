@@ -1,5 +1,8 @@
 /** Converts SVG fonts to TTF format */
-declare function svg2ttf(svgFontString: string, options?: svg2ttf.FontOptions): svg2ttf.MicroBuffer;
+declare function svg2ttf(
+    svgFontString: string,
+    options?: svg2ttf.FontOptions,
+): svg2ttf.MicroBuffer;
 
 declare namespace svg2ttf {
     interface FontOptions {

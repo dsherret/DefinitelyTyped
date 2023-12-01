@@ -40,7 +40,12 @@ export declare class API {
      * @param     {(JSON}     callback    callback function with formatted JSON
      */
     getJSON(url: string, method: string, data: any): Promise<any>;
-    request(url: string, method: string, data: any, prop?: string): Promise<any>;
+    request(
+        url: string,
+        method: string,
+        data: any,
+        prop?: string,
+    ): Promise<any>;
     /**
      * get the API Key that is used for the requests
      * @return    {string}    the current API Key
@@ -74,7 +79,9 @@ export declare class TournamentAPI extends API {
      * @param     {string}                                               tournamentCode    Tournament Code
      * @param     {RiotGamesAPI.TournamentProvider.TournamentCodeDto}    callback          Tournament Infos
      */
-    getTournamentByCode(tournamentCode: string): Promise<RiotGamesAPI.TournamentProvider.TournamentCodeDto>;
+    getTournamentByCode(
+        tournamentCode: string,
+    ): Promise<RiotGamesAPI.TournamentProvider.TournamentCodeDto>;
     /**
      * edit the tournament Code parameters for a given tournament Code
      * @param     {string}                                                            tournamentCode    Tournament Code to update
@@ -90,7 +97,9 @@ export declare class TournamentAPI extends API {
      * @param     {string}                                           tournamentCode    the tournament code to get the lobby events
      * @param     {RiotGamesAPI.TournamentProvider.LobbyEventDto}    callback          lobby events
      */
-    getLobbyEventByCode(tournamentCode: string): Promise<RiotGamesAPI.TournamentProvider.LobbyEventDto>;
+    getLobbyEventByCode(
+        tournamentCode: string,
+    ): Promise<RiotGamesAPI.TournamentProvider.LobbyEventDto>;
     /**
      * Register a new tournament provider
      * @param     {region_e}    region      region where you want to register the provider
@@ -161,7 +170,9 @@ export declare class ClassicAPI extends API {
      * @param     {number}                                               summonerId    Summoner ID
      * @param     {[RiotGamesAPI.ChampionMastery.ChampionMasteryDto]}    callback      data callback
      */
-    getChampionMasteryBySummoner(summonerId: number): Promise<[RiotGamesAPI.ChampionMastery.ChampionMasteryDto]>;
+    getChampionMasteryBySummoner(
+        summonerId: number,
+    ): Promise<[RiotGamesAPI.ChampionMastery.ChampionMasteryDto]>;
     /**
      * get the mastery score of a summoner
      * @param     {number}    summonerId    Summoner ID
@@ -173,13 +184,17 @@ export declare class ClassicAPI extends API {
      * @param     {[type]}                                               summonerId    Summoner ID
      * @param     {[RiotGamesAPI.ChampionMastery.ChampionMasteryDto]}    callback      data callback
      */
-    getTopChampionMastery(summonerId: any): Promise<[RiotGamesAPI.ChampionMastery.ChampionMasteryDto]>;
+    getTopChampionMastery(
+        summonerId: any,
+    ): Promise<[RiotGamesAPI.ChampionMastery.ChampionMasteryDto]>;
     /**
      * get the current game infos for a given summoner ID
      * @param     {number}                                      summonerId    Summoner ID
      * @param     {RiotGamesAPI.CurrentGame.CurrentGameInfo}    callback      data callback
      */
-    getCurrentGame(summonerId: number): Promise<RiotGamesAPI.CurrentGame.CurrentGameInfo>;
+    getCurrentGame(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.CurrentGame.CurrentGameInfo>;
     /**
      * get the featured games
      * @param     {RiotGamesAPI.FeaturedGames.FeaturedGames}    callback    data callback
@@ -190,19 +205,25 @@ export declare class ClassicAPI extends API {
      * @param     {number}                              summonerId    Summoner ID
      * @param     {RiotGamesAPI.Game.RecentGamesDto}    callback      data callback
      */
-    getRecentGames(summonerId: number): Promise<RiotGamesAPI.Game.RecentGamesDto>;
+    getRecentGames(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.Game.RecentGamesDto>;
     /**
      * Get League infos of a summoner
      * @param     {number}                             summonerId    Summoner ID
      * @param     {RiotGamesAPI.League.LeagueDto[]}    callback      data callback
      */
-    getLeagueBySummonerId(summonerId: number): Promise<RiotGamesAPI.League.LeagueDto[]>;
+    getLeagueBySummonerId(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.League.LeagueDto[]>;
     /**
      * get League infos of a summoner
      * @param     {number}                             summonerId    Summoner ID
      * @param     {RiotGamesAPI.League.LeagueDto[]}    callback      data callback
      */
-    getLeagueBySummonerIdEntry(summonerId: number): Promise<RiotGamesAPI.League.LeagueDto[]>;
+    getLeagueBySummonerIdEntry(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.League.LeagueDto[]>;
     /**
      * get league infos by team
      * @param     {string}                             teamId      Team ID
@@ -214,7 +235,9 @@ export declare class ClassicAPI extends API {
      * @param     {string}                             teamId      Team ID
      * @param     {RiotGamesAPI.League.LeagueDto[]}    callback    data callback
      */
-    getLeagueByTeamIdEntry(teamId: string): Promise<RiotGamesAPI.League.LeagueDto[]>;
+    getLeagueByTeamIdEntry(
+        teamId: string,
+    ): Promise<RiotGamesAPI.League.LeagueDto[]>;
     /**
      * get Challengers in SOLO Queue
      * @param     {RiotGamesAPI.League.LeagueDto}    callback    data callback
@@ -255,7 +278,9 @@ export declare class ClassicAPI extends API {
      * @param     {number}                                    championsId    Champion ID
      * @param     {RiotGamesAPI.LolStaticData.ChampionDto}    callback       data callback
      */
-    staticDataChampionById(championsId: number): Promise<RiotGamesAPI.LolStaticData.ChampionDto>;
+    staticDataChampionById(
+        championsId: number,
+    ): Promise<RiotGamesAPI.LolStaticData.ChampionDto>;
     /**
      * get League of Legends Items
      * @param     {RiotGamesAPI.LolStaticData.ItemListDto}    callback    data callback
@@ -266,7 +291,9 @@ export declare class ClassicAPI extends API {
      * @param     {number}                                itemId      item ID
      * @param     {RiotGamesAPI.LolStaticData.ItemDto}    callback    data callback
      */
-    staticDataItemById(itemId: number): Promise<RiotGamesAPI.LolStaticData.ItemDto>;
+    staticDataItemById(
+        itemId: number,
+    ): Promise<RiotGamesAPI.LolStaticData.ItemDto>;
     /**
      * get league of legends languages
      * @param     {RiotGamesAPI.LolStaticData.LanguageStringsDto}    callback    data callback
@@ -292,7 +319,9 @@ export declare class ClassicAPI extends API {
      * @param     {number}                                   masteryId    Mastery ID
      * @param     {RiotGamesAPI.LolStaticData.MasteryDto}    callback     data callback
      */
-    staticDataMasteryById(masteryId: number): Promise<RiotGamesAPI.LolStaticData.MasteryDto>;
+    staticDataMasteryById(
+        masteryId: number,
+    ): Promise<RiotGamesAPI.LolStaticData.MasteryDto>;
     staticDataRealm(): Promise<RiotGamesAPI.LolStaticData.RealmDto>;
     /**
      * get all runes
@@ -304,7 +333,9 @@ export declare class ClassicAPI extends API {
      * @param     {number}                                runeId      Rune ID
      * @param     {RiotGamesAPI.LolStaticData.RuneDto}    callback    data callback
      */
-    staticDataRuneById(runeId: number): Promise<RiotGamesAPI.LolStaticData.RuneDto>;
+    staticDataRuneById(
+        runeId: number,
+    ): Promise<RiotGamesAPI.LolStaticData.RuneDto>;
     /**
      * get all summoner spells
      * @param     {RiotGamesAPI.LolStaticData.SummonerSpellListDto}    callback    data callback
@@ -315,7 +346,9 @@ export declare class ClassicAPI extends API {
      * @param     {number}                                         summonerSpellId    Summoner spell ID
      * @param     {RiotGamesAPI.LolStaticData.SummonerSpellDto}    callback           data callback
      */
-    staticDataSummonSpellById(summonerSpellId: number): Promise<RiotGamesAPI.LolStaticData.SummonerSpellDto>;
+    staticDataSummonSpellById(
+        summonerSpellId: number,
+    ): Promise<RiotGamesAPI.LolStaticData.SummonerSpellDto>;
     /**
      * get league of legends  versions
      * @param     {string[]}    callback    data callback
@@ -349,7 +382,9 @@ export declare class ClassicAPI extends API {
      * @param     {number}                            matchId     Match ID
      * @param     {RiotGamesAPI.Match.MatchDetail}    callback    data callback
      */
-    getMatchForTournament(matchId: number): Promise<RiotGamesAPI.Match.MatchDetail>;
+    getMatchForTournament(
+        matchId: number,
+    ): Promise<RiotGamesAPI.Match.MatchDetail>;
     /**
      * get match list of a summoner
      * @param     {number}                              summonerId    Summoner ID
@@ -361,31 +396,41 @@ export declare class ClassicAPI extends API {
      * @param     {number}                               summonerId    Summoner ID
      * @param     {RiotGamesAPI.Stats.RankedStatsDto}    callback      data callback
      */
-    getStatsRanked(summonerId: number): Promise<RiotGamesAPI.Stats.RankedStatsDto>;
+    getStatsRanked(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.Stats.RankedStatsDto>;
     /**
      * get summary ranked stats of summoner
      * @param     {number}                                          summonerId    Summoner ID
      * @param     {RiotGamesAPI.Stats.PlayerStatsSummaryListDto}    callback      data callback
      */
-    getStatsSummary(summonerId: number): Promise<RiotGamesAPI.Stats.PlayerStatsSummaryListDto>;
+    getStatsSummary(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.Stats.PlayerStatsSummaryListDto>;
     /**
      * get summoner infos by Summoner Name
      * @param     {string}                               summonerName    Summoner Name
      * @param     {RiotGamesAPI.Summoner.SummonerDto}    callback        data callback
      */
-    getSummonerByName(summonerName: string): Promise<RiotGamesAPI.Summoner.SummonerDto>;
+    getSummonerByName(
+        summonerName: string,
+    ): Promise<RiotGamesAPI.Summoner.SummonerDto>;
     /**
      * get summoner infos by summoner ID
      * @param     {number}                               summonerId    Summoner ID
      * @param     {RiotGamesAPI.Summoner.SummonerDto}    callback      data callback
      */
-    getSummonerById(summonerId: number): Promise<RiotGamesAPI.Summoner.SummonerDto>;
+    getSummonerById(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.Summoner.SummonerDto>;
     /**
      * get masteries of a summoner
      * @param     {number}                                   summonerId    Summoner ID
      * @param     {RiotGamesAPI.Summoner.MasteryPagesDto}    callback      data callback
      */
-    getSummonerMasteries(summonerId: number): Promise<RiotGamesAPI.Summoner.MasteryPagesDto>;
+    getSummonerMasteries(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.Summoner.MasteryPagesDto>;
     /**
      * get the Summoner Name of a summoner ID
      * @param     {number}    summonerId    Summoner ID
@@ -397,13 +442,17 @@ export declare class ClassicAPI extends API {
      * @param     {number}                                summonerId    Summoner ID
      * @param     {RiotGamesAPI.Summoner.RunePagesDto}    callback      data callback
      */
-    getSummonerRunes(summonerId: number): Promise<RiotGamesAPI.Summoner.RunePagesDto>;
+    getSummonerRunes(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.Summoner.RunePagesDto>;
     /**
      * get teams of a summoner
      * @param     {number}                         summonerId    Summoner ID
      * @param     {RiotGamesAPI.Team.TeamDto[]}    callback      data callback
      */
-    getTeamsBySummoner(summonerId: number): Promise<RiotGamesAPI.Team.TeamDto[]>;
+    getTeamsBySummoner(
+        summonerId: number,
+    ): Promise<RiotGamesAPI.Team.TeamDto[]>;
     /**
      * get Team infos by Team ID
      * @param     {string}                       teamId      Team ID

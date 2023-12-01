@@ -9,7 +9,9 @@ import ScreenManager from "../utils/screen-manager.js";
  * @template TQuestion
  * The options for the question.
  */
-declare class Prompt<TQuestion extends Question = Question> implements inquirer.prompts.PromptBase {
+declare class Prompt<TQuestion extends Question = Question>
+    implements inquirer.prompts.PromptBase
+{
     /**
      * @inheritdoc
      */
@@ -47,7 +49,11 @@ declare class Prompt<TQuestion extends Question = Question> implements inquirer.
      * @param answers
      * The {@link Answers `Answers`}-object.
      */
-    constructor(question: TQuestion, readLine: ReadLineInterface, answers: Answers);
+    constructor(
+        question: TQuestion,
+        readLine: ReadLineInterface,
+        answers: Answers,
+    );
 
     /**
      * @inheritdoc
@@ -81,7 +87,9 @@ declare class Prompt<TQuestion extends Question = Question> implements inquirer.
      * @param observable
      * The observable submit-event flow.
      */
-    protected handleSubmitEvents<T>(observable: Observable<T>): inquirer.prompts.PromptEventPipes<T>;
+    protected handleSubmitEvents<T>(
+        observable: Observable<T>,
+    ): inquirer.prompts.PromptEventPipes<T>;
 
     /**
      * Generates the question-string.

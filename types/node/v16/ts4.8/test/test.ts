@@ -1,6 +1,6 @@
 import { describe, it, test } from "node:test";
 
-test("foo", t => {
+test("foo", (t) => {
     // $ExpectType TestContext
     t;
 });
@@ -36,7 +36,7 @@ test((t, cb) => {
 });
 
 // Test the context's methods
-test(undefined, undefined, t => {
+test(undefined, undefined, (t) => {
     // $ExpectType void
     t.diagnostic("tap diagnostic");
     // $ExpectType void
@@ -52,10 +52,10 @@ test(undefined, undefined, t => {
 });
 
 // Test the subtest approach.
-test(t => {
+test((t) => {
     // $ExpectType TestContext
     t;
-    const sub = t.test("sub", {}, t => {
+    const sub = t.test("sub", {}, (t) => {
         // $ExpectType TestContext
         t;
     });
@@ -101,7 +101,7 @@ it("options with booleans", {
 });
 
 // Test callback mode
-describe(cb => {
+describe((cb) => {
     // $ExpectType (result?: any) => void
     cb;
     // $ExpectType void
@@ -109,7 +109,7 @@ describe(cb => {
 });
 
 // Test callback mode
-it(cb => {
+it((cb) => {
     // $ExpectType (result?: any) => void
     cb;
     // $ExpectType void

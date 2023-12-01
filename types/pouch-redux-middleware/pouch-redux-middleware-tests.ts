@@ -13,13 +13,17 @@ const path: Path<{}> = {
     path: "/test",
     db: new PouchDB("test"),
     actions: {
-        remove: doc => ({ type: types.DELETE_TODO, id: doc._id }),
-        batchInsert: doc => ({ type: types.BATCH_INSERT_TODO, todo: doc }),
-        insert: doc => ({ type: types.INSERT_TODO, todo: doc }),
-        update: doc => ({ type: types.UPDATE_TODO, todo: doc }),
+        remove: (doc) => ({ type: types.DELETE_TODO, id: doc._id }),
+        batchInsert: (doc) => ({ type: types.BATCH_INSERT_TODO, todo: doc }),
+        insert: (doc) => ({ type: types.INSERT_TODO, todo: doc }),
+        update: (doc) => ({ type: types.UPDATE_TODO, todo: doc }),
     },
     initialBatchDispatched: (error?: Error) => {},
 };
 
 const middleware: redux.Middleware = makePouchMiddleware<{}>(path);
-const otherMiddleware: redux.Middleware = makePouchMiddleware([path, path, path]);
+const otherMiddleware: redux.Middleware = makePouchMiddleware([
+    path,
+    path,
+    path,
+]);

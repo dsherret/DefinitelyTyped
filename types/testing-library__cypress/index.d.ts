@@ -13,7 +13,9 @@ export interface CTLMatcherOptions {
 
 export type MatcherOptions = DTLMatcherOptions | CTLMatcherOptions;
 export type ByRoleOptions = DTLByRoleOptions | CTLMatcherOptions;
-export type SelectorMatcherOptions = DTLSelectorMatcherOptions | CTLMatcherOptions;
+export type SelectorMatcherOptions =
+    | DTLSelectorMatcherOptions
+    | CTLMatcherOptions;
 
 declare global {
     namespace Cypress {
@@ -29,7 +31,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryByPlaceholderText(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryByPlaceholderText(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -42,7 +47,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryAllByPlaceholderText(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryAllByPlaceholderText(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -55,7 +63,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findByPlaceholderText(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findByPlaceholderText(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -68,7 +79,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findAllByPlaceholderText(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findAllByPlaceholderText(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -81,7 +95,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryByText(id: Matcher, options?: SelectorMatcherOptions): Chainable<JQuery>;
+            queryByText(
+                id: Matcher,
+                options?: SelectorMatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -94,7 +111,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryAllByText(id: Matcher, options?: SelectorMatcherOptions): Chainable<JQuery>;
+            queryAllByText(
+                id: Matcher,
+                options?: SelectorMatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -107,7 +127,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findByText(id: Matcher, options?: SelectorMatcherOptions): Chainable<JQuery>;
+            findByText(
+                id: Matcher,
+                options?: SelectorMatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -120,7 +143,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findAllByText(id: Matcher, options?: SelectorMatcherOptions): Chainable<JQuery>;
+            findAllByText(
+                id: Matcher,
+                options?: SelectorMatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -133,7 +159,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryByLabelText(id: Matcher, options?: SelectorMatcherOptions): Chainable<JQuery>;
+            queryByLabelText(
+                id: Matcher,
+                options?: SelectorMatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -146,7 +175,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryAllByLabelText(id: Matcher, options?: SelectorMatcherOptions): Chainable<JQuery>;
+            queryAllByLabelText(
+                id: Matcher,
+                options?: SelectorMatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -159,7 +191,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findByLabelText(id: Matcher, options?: SelectorMatcherOptions): Chainable<JQuery>;
+            findByLabelText(
+                id: Matcher,
+                options?: SelectorMatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -172,7 +207,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findAllByLabelText(id: Matcher, options?: SelectorMatcherOptions): Chainable<JQuery>;
+            findAllByLabelText(
+                id: Matcher,
+                options?: SelectorMatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -185,7 +223,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryByAltText(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryByAltText(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -198,7 +239,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryAllByAltText(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryAllByAltText(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -211,7 +255,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findByAltText(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findByAltText(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -224,7 +271,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findAllByAltText(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findAllByAltText(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -237,7 +287,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryByTestId(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryByTestId(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -250,7 +303,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryAllByTestId(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryAllByTestId(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -263,7 +319,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findByTestId(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findByTestId(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -276,7 +335,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findAllByTestId(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findAllByTestId(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -289,7 +351,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryByTitle(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryByTitle(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -302,7 +367,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryAllByTitle(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryAllByTitle(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -315,7 +383,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findByTitle(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findByTitle(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -328,7 +399,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findAllByTitle(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findAllByTitle(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -341,7 +415,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryByDisplayValue(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryByDisplayValue(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -354,7 +431,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryAllByDisplayValue(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            queryAllByDisplayValue(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -367,7 +447,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findByDisplayValue(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findByDisplayValue(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -380,7 +463,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findAllByDisplayValue(id: Matcher, options?: MatcherOptions): Chainable<JQuery>;
+            findAllByDisplayValue(
+                id: Matcher,
+                options?: MatcherOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -393,7 +479,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryByRole(id: Matcher, options?: ByRoleOptions): Chainable<JQuery>;
+            queryByRole(
+                id: Matcher,
+                options?: ByRoleOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -406,7 +495,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            queryAllByRole(id: Matcher, options?: ByRoleOptions): Chainable<JQuery>;
+            queryAllByRole(
+                id: Matcher,
+                options?: ByRoleOptions,
+            ): Chainable<JQuery>;
 
             /**
              * dom-testing-library helpers for Cypress
@@ -432,7 +524,10 @@ declare global {
              * @see https://github.com/testing-library/cypress-testing-library#usage
              * @see https://github.com/testing-library/dom-testing-library#table-of-contents
              */
-            findAllByRole(id: Matcher, options?: ByRoleOptions): Chainable<JQuery>;
+            findAllByRole(
+                id: Matcher,
+                options?: ByRoleOptions,
+            ): Chainable<JQuery>;
         }
     }
 }

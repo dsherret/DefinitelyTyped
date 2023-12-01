@@ -12,7 +12,7 @@ e2.listPresets(-1, -1, (err, presets) => {
 });
 
 e2.listSourceMainBackup();
-e2.listSourceMainBackup(undefined, err => {
+e2.listSourceMainBackup(undefined, (err) => {
     if (err) return;
 
     // $ExpectType null

@@ -6,7 +6,7 @@ type TLogger = {
         message: string;
     };
 };
-type Logger = new(
+type Logger = new (
     options?: Partial<{
         level: TLevel | "none";
         loggerName: string;

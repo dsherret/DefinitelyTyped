@@ -6,7 +6,12 @@ declare function Process(
     sourceClass: number | DBKey,
 ): void;
 declare class Process {
-    constructor(key: number, id: string, responseObject: any, sourceClass: number | DBKey);
+    constructor(
+        key: number,
+        id: string,
+        responseObject: any,
+        sourceClass: number | DBKey,
+    );
     environment: Environment;
     private _ctrlChannel;
     cssFiles: any[];
@@ -89,7 +94,12 @@ declare class Process {
     canDoHistory: boolean;
     requires(uri: string): void;
     private writeRequiredFiles;
-    grid(name: string, opt_ds?: DataSet, opt_classKey?: number, opt_masterGrid?: Grid): Grid;
+    grid(
+        name: string,
+        opt_ds?: DataSet,
+        opt_classKey?: number,
+        opt_masterGrid?: Grid,
+    ): Grid;
     deleteGrid(name: string): boolean;
     link(
         name: string,
@@ -228,7 +238,16 @@ declare class Process {
     private act_showHelp_;
 }
 declare namespace Process {
-    export { Button, create, getProcessTitle, getSourceAndInclude, Grid, GridField, Link, UploadedFile };
+    export {
+        Button,
+        create,
+        getProcessTitle,
+        getSourceAndInclude,
+        Grid,
+        GridField,
+        Link,
+        UploadedFile,
+    };
 }
 import DBKey = require("@nginstack/engine/lib/dbkey/DBKey.js");
 import Environment = require("../environment/Environment.js");

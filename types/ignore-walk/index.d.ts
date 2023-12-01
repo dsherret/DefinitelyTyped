@@ -3,7 +3,10 @@
 import { EventEmitter } from "events";
 import { Stats } from "fs";
 
-declare function walk(options?: walk.WalkerOptions, callback?: (results: string[]) => void): Promise<string[]>;
+declare function walk(
+    options?: walk.WalkerOptions,
+    callback?: (results: string[]) => void,
+): Promise<string[]>;
 declare namespace walk {
     function sync(options?: WalkerOptions): string[];
 
@@ -48,12 +51,25 @@ declare namespace walk {
         onReadIgnoreFile(file: string, data: string, then: () => void): void;
         filterEntries(): void;
         onstat(
-            opts: { st: Stats; entry: string; file: boolean; dir: boolean; isSymbolicLink: boolean },
+            opts: {
+                st: Stats;
+                entry: string;
+                file: boolean;
+                dir: boolean;
+                isSymbolicLink: boolean;
+            },
             then: () => void,
         ): void;
-        stat(opts: { entry: string; file: boolean; dir: boolean }, then: () => void): void;
+        stat(
+            opts: { entry: string; file: boolean; dir: boolean },
+            then: () => void,
+        ): void;
         walkerOpt(entry: string, opts?: WalkerOptions): ConcreteWalkerOptions;
-        walker(entry: string, opts: WalkerOptions | undefined, then: () => void): void;
+        walker(
+            entry: string,
+            opts: WalkerOptions | undefined,
+            then: () => void,
+        ): void;
         filterEntry(entry: string, partial: boolean): boolean;
 
         addListener(event: "error", listener: (err: Error) => void): this;
@@ -63,17 +79,33 @@ declare namespace walk {
         once(event: "error", listener: (err: Error) => void): this;
         once(event: "done", listener: (data: string[]) => void): this;
         prependListener(event: "error", listener: (err: Error) => void): this;
-        prependListener(event: "done", listener: (data: string[]) => void): this;
-        prependOnceListener(event: "error", listener: (err: Error) => void): this;
-        prependOnceListener(event: "done", listener: (data: string[]) => void): this;
+        prependListener(
+            event: "done",
+            listener: (data: string[]) => void,
+        ): this;
+        prependOnceListener(
+            event: "error",
+            listener: (err: Error) => void,
+        ): this;
+        prependOnceListener(
+            event: "done",
+            listener: (data: string[]) => void,
+        ): this;
     }
 
     class WalkerSync extends Walker {
         constructor(opts?: WalkerOptions);
         start(): this;
         addIgnoreFile(file: string, then: () => void): void;
-        stat(options: { entry: string; file: boolean; dir: boolean }, then: () => void): void;
-        walker(entry: string, opts: WalkerOptions | undefined, then: () => void): void;
+        stat(
+            options: { entry: string; file: boolean; dir: boolean },
+            then: () => void,
+        ): void;
+        walker(
+            entry: string,
+            opts: WalkerOptions | undefined,
+            then: () => void,
+        ): void;
     }
 }
 

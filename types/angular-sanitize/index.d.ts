@@ -53,11 +53,13 @@ declare module "angular" {
              * @param elements A list of valid HTML elements or an object with one or more of the following properties: htmlElements, htmlVoidElements, svgElements
              */
             addValidElements(
-                elements: string[] | {
-                    htmlElements?: string[] | undefined;
-                    htmlVoidElements?: string[] | undefined;
-                    svgElements?: string[] | undefined;
-                },
+                elements:
+                    | string[]
+                    | {
+                          htmlElements?: string[] | undefined;
+                          htmlVoidElements?: string[] | undefined;
+                          svgElements?: string[] | undefined;
+                      },
             ): ISanitizeProvider;
 
             /**
@@ -89,7 +91,9 @@ declare module "angular" {
                 (
                     text: string,
                     target?: string,
-                    attributes?: { [attribute: string]: string } | ((url: string) => { [attribute: string]: string }),
+                    attributes?:
+                        | { [attribute: string]: string }
+                        | ((url: string) => { [attribute: string]: string }),
                 ): string;
             }
         }

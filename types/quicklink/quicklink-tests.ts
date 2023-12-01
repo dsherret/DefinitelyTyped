@@ -46,17 +46,15 @@ listen({
 listen({
     ignores: [
         /\/api\/?/,
-        uri => uri.includes(".zip"),
+        (uri) => uri.includes(".zip"),
         (uri, elem) => elem.hasAttribute("noprefetch"),
     ],
 });
 
 listen({
-    ignores: [
-        uri => uri.includes("#"),
-    ],
+    ignores: [(uri) => uri.includes("#")],
 });
 
-prefetch(["1.html", "2.html"]).catch(err => {
+prefetch(["1.html", "2.html"]).catch((err) => {
     // Handle own errors
 });

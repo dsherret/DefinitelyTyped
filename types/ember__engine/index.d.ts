@@ -29,7 +29,9 @@ export default class Engine extends EmberObject {
      * to the store, container, and other items. However, these initializers run
      * after code has loaded and are not allowed to defer readiness.
      */
-    static instanceInitializer(instanceInitializer: Initializer<EngineInstance>): void;
+    static instanceInitializer(
+        instanceInitializer: Initializer<EngineInstance>,
+    ): void;
     /**
      * Set this to provide an alternate class to `DefaultResolver`
      */

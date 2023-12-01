@@ -6,7 +6,11 @@ import { Moment } from "moment";
  * @param holidaysArray Array of holidays (strings on yyyy-mm-dd format)
  * @param direction FORWARD or BACKWARDS
  */
-export function FindBizDate(candidateDate: Moment, holidaysArray: string[], direction?: Direction): Moment;
+export function FindBizDate(
+    candidateDate: Moment,
+    holidaysArray: string[],
+    direction?: Direction,
+): Moment;
 
 /***
  * Calculates next applicable business day out of counting bizdates starting from a provided base date up to a provided countTarget by skipping holidays and weekends.

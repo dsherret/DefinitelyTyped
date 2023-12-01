@@ -31,7 +31,7 @@ const newCharge = {
         expiration_month: "12",
         cvv2: "110",
     },
-    amount: 200.00,
+    amount: 200.0,
     description: "Service Charge",
     order_id: "oid-00721",
 };
@@ -45,7 +45,7 @@ const payout = {
         clabe: "012298026516924616",
         holder_name: "John Doe",
     },
-    amount: 10.50,
+    amount: 10.5,
     description: "Monthly payment",
 };
 openpay.payouts.create(payout, (error, body) => {

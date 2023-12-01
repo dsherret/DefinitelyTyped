@@ -20,8 +20,8 @@ const chart = new OrgChart<Person>()
     .container("#my-container")
     .svgHeight(1000)
     .data(myData)
-    .nodeHeight(d => (d.data.firstName === "Alice" ? 200 : 100))
-    .nodeWidth(d => {
+    .nodeHeight((d) => (d.data.firstName === "Alice" ? 200 : 100))
+    .nodeWidth((d) => {
         // $ExpectType HierarchyNode<Person>
         d;
         // $ExpectType Person
@@ -35,14 +35,18 @@ const chart = new OrgChart<Person>()
         if (d.depth === 0) return 500;
         return 330;
     })
-    .nodeId(d => ("firstName" in d ? d.firstName : d.data.firstName))
-    .childrenMargin(d => 90)
-    .compactMarginBetween(d => 65)
-    .compactMarginPair(d => 100)
+    .nodeId((d) => ("firstName" in d ? d.firstName : d.data.firstName))
+    .childrenMargin((d) => 90)
+    .compactMarginBetween((d) => 65)
+    .compactMarginPair((d) => 100)
     .neightbourMargin((a, b) => 50)
-    .siblingsMargin(d => 100)
+    .siblingsMargin((d) => 100)
     .buttonContent(({ node, state }) => {
-        return `<div>Show ${node.children && node.children[0] ? node.children[0].data.firstName : ""}</div>`;
+        return `<div>Show ${
+            node.children && node.children[0]
+                ? node.children[0].data.firstName
+                : ""
+        }</div>`;
     })
     .nodeContent((d, i, arr, state) => {
         return `<div>#${i}: ${d.data.firstName} ${d.data.lastName}</div>`;
@@ -53,7 +57,9 @@ const chart = new OrgChart<Person>()
         }
 
         if (i === arr.length - 1) {
-            console.log(`The last node (${d.data.firstName} ${d.data.lastName}) was updated`);
+            console.log(
+                `The last node (${d.data.firstName} ${d.data.lastName}) was updated`,
+            );
         }
     })
     .linkUpdate((d, i, arr) => {
@@ -62,7 +68,9 @@ const chart = new OrgChart<Person>()
         }
 
         if (i === arr.length - 1) {
-            console.log(`The last node (${d.data.firstName} ${d.data.lastName}) was updated`);
+            console.log(
+                `The last node (${d.data.firstName} ${d.data.lastName}) was updated`,
+            );
         }
     })
     .render();
@@ -77,7 +85,7 @@ chart.data();
 chart.getChartState().data;
 
 // $ExpectType OrgChart<Person>
-chart.nodeHeight(node => node.data.firstName.length);
+chart.nodeHeight((node) => node.data.firstName.length);
 
 // $ExpectType string
 chart.backgroundColor();

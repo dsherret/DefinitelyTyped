@@ -2,7 +2,9 @@
  * Simple function to parse Cache-Control headers.
  * Taken from {@link https://github.com/hapijs/wreck|Wreck}.
  */
-declare function parseCacheControl(field: string): parseCacheControl.Header | null;
+declare function parseCacheControl(
+    field: string,
+): parseCacheControl.Header | null;
 
 declare namespace parseCacheControl {
     interface Header {

@@ -6,7 +6,10 @@ declare module "sinon" {
         rejected: boolean;
         resolveValue: any;
         rejectValue: any;
-        then(onFulfill: (resolveValue?: any) => void, onReject?: (rejectValue?: any) => void): SinonThenable;
+        then(
+            onFulfill: (resolveValue?: any) => void,
+            onReject?: (rejectValue?: any) => void,
+        ): SinonThenable;
         catch(onReject: (rejectValue?: any) => void): SinonThenable;
         finally(callback: () => void): SinonThenable;
     }

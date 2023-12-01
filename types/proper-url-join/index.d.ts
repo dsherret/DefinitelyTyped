@@ -23,9 +23,11 @@ export interface Options {
      * Query string object that will be properly stringified and appended to the url.
      * It will be merged with the query string in the url, if it exists.
      */
-    query?: {
-        [k: string]: string | number | ReadonlyArray<string | number>;
-    } | undefined;
+    query?:
+        | {
+              [k: string]: string | number | ReadonlyArray<string | number>;
+          }
+        | undefined;
     /**
      * [query-string](https://github.com/sindresorhus/query-string#stringifyobject-options) singify method options to be considered when stringifying the query.
      */
@@ -38,9 +40,30 @@ interface urlJoin {
     (p1: PathArg, options?: Options): string;
     (p1: PathArg, p2: PathArg, options?: Options): string;
     (p1: PathArg, p2: PathArg, p3: PathArg, options?: Options): string;
-    (p1: PathArg, p2: PathArg, p3: PathArg, p4: PathArg, options?: Options): string;
-    (p1: PathArg, p2: PathArg, p3: PathArg, p4: PathArg, p5: PathArg, options?: Options): string;
-    (p1: PathArg, p2: PathArg, p3: PathArg, p4: PathArg, p5: PathArg, p6: PathArg, options?: Options): string;
+    (
+        p1: PathArg,
+        p2: PathArg,
+        p3: PathArg,
+        p4: PathArg,
+        options?: Options,
+    ): string;
+    (
+        p1: PathArg,
+        p2: PathArg,
+        p3: PathArg,
+        p4: PathArg,
+        p5: PathArg,
+        options?: Options,
+    ): string;
+    (
+        p1: PathArg,
+        p2: PathArg,
+        p3: PathArg,
+        p4: PathArg,
+        p5: PathArg,
+        p6: PathArg,
+        options?: Options,
+    ): string;
     (
         p1: PathArg,
         p2: PathArg,

@@ -31,4 +31,9 @@ declare class Cartesian_Datum extends Cartesian {
     convertDatum(toDatum: Datum): Cartesian_Datum;
 }
 
-export { Cartesian_Datum as Cartesian, datums, Dms, LatLonEllipsoidal_Datum as default };
+export {
+    Cartesian_Datum as Cartesian,
+    datums,
+    Dms,
+    LatLonEllipsoidal_Datum as default,
+};

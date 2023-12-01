@@ -50,8 +50,16 @@ declare namespace SemanticUI {
          * Destroys instance and removes all events
          */
         (behavior: "destroy"): JQuery;
-        <K extends keyof EmbedSettings>(behavior: "setting", name: K, value?: undefined): EmbedSettings._Impl[K];
-        <K extends keyof EmbedSettings>(behavior: "setting", name: K, value: EmbedSettings._Impl[K]): JQuery;
+        <K extends keyof EmbedSettings>(
+            behavior: "setting",
+            name: K,
+            value?: undefined,
+        ): EmbedSettings._Impl[K];
+        <K extends keyof EmbedSettings>(
+            behavior: "setting",
+            name: K,
+            value: EmbedSettings._Impl[K],
+        ): JQuery;
         (behavior: "setting", value: EmbedSettings): JQuery;
         (settings?: EmbedSettings): JQuery;
     }
@@ -62,34 +70,33 @@ declare namespace SemanticUI {
     type EmbedSettings = EmbedSettings.Param;
 
     namespace EmbedSettings {
-        type Param =
-            & (
-                | Pick<_Impl, "url">
-                | Pick<_Impl, "icon">
-                | Pick<_Impl, "source">
-                | Pick<_Impl, "id">
-                | Pick<_Impl, "parameters">
-                | Pick<_Impl, "autoplay">
-                | Pick<_Impl, "color">
-                | Pick<_Impl, "hd">
-                | Pick<_Impl, "brandedUI">
-                | Pick<_Impl, "onCreate">
-                | Pick<_Impl, "onDisplay">
-                | Pick<_Impl, "onPlaceholderDisplay">
-                | Pick<_Impl, "onEmbed">
-                | Pick<_Impl, "selector">
-                | Pick<_Impl, "metadata">
-                | Pick<_Impl, "className">
-                | Pick<_Impl, "templates">
-                | Pick<_Impl, "error">
-                | Pick<_Impl, "namespace">
-                | Pick<_Impl, "name">
-                | Pick<_Impl, "silent">
-                | Pick<_Impl, "debug">
-                | Pick<_Impl, "performance">
-                | Pick<_Impl, "verbose">
-            )
-            & Partial<Pick<_Impl, keyof _Impl>>;
+        type Param = (
+            | Pick<_Impl, "url">
+            | Pick<_Impl, "icon">
+            | Pick<_Impl, "source">
+            | Pick<_Impl, "id">
+            | Pick<_Impl, "parameters">
+            | Pick<_Impl, "autoplay">
+            | Pick<_Impl, "color">
+            | Pick<_Impl, "hd">
+            | Pick<_Impl, "brandedUI">
+            | Pick<_Impl, "onCreate">
+            | Pick<_Impl, "onDisplay">
+            | Pick<_Impl, "onPlaceholderDisplay">
+            | Pick<_Impl, "onEmbed">
+            | Pick<_Impl, "selector">
+            | Pick<_Impl, "metadata">
+            | Pick<_Impl, "className">
+            | Pick<_Impl, "templates">
+            | Pick<_Impl, "error">
+            | Pick<_Impl, "namespace">
+            | Pick<_Impl, "name">
+            | Pick<_Impl, "silent">
+            | Pick<_Impl, "debug">
+            | Pick<_Impl, "performance">
+            | Pick<_Impl, "verbose">
+        ) &
+            Partial<Pick<_Impl, keyof _Impl>>;
 
         interface _Impl {
             /**
@@ -174,7 +181,10 @@ declare namespace SemanticUI {
             /**
              * Callback when module parameters are determined. Allows you to adjust parameters at run time by returning a new parameters object.
              */
-            onEmbed(this: JQuery, parameters: Embed.ParametersSettings): Embed.ParametersSettings;
+            onEmbed(
+                this: JQuery,
+                parameters: Embed.ParametersSettings,
+            ): Embed.ParametersSettings;
 
             // endregion
 
@@ -256,13 +266,12 @@ declare namespace SemanticUI {
         type SelectorSettings = SelectorSettings.Param;
 
         namespace SelectorSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "embed">
-                    | Pick<_Impl, "placeholder">
-                    | Pick<_Impl, "play">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "embed">
+                | Pick<_Impl, "placeholder">
+                | Pick<_Impl, "play">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -283,15 +292,14 @@ declare namespace SemanticUI {
         type MetadataSettings = MetadataSettings.Param;
 
         namespace MetadataSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "id">
-                    | Pick<_Impl, "icon">
-                    | Pick<_Impl, "placeholder">
-                    | Pick<_Impl, "source">
-                    | Pick<_Impl, "url">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "id">
+                | Pick<_Impl, "icon">
+                | Pick<_Impl, "placeholder">
+                | Pick<_Impl, "source">
+                | Pick<_Impl, "url">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -320,12 +328,8 @@ declare namespace SemanticUI {
         type ClassNameSettings = ClassNameSettings.Param;
 
         namespace ClassNameSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "active">
-                    | Pick<_Impl, "embed">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "active"> | Pick<_Impl, "embed">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -342,12 +346,8 @@ declare namespace SemanticUI {
         type TemplatesSettings = TemplatesSettings.Param;
 
         namespace TemplatesSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "iframe">
-                    | Pick<_Impl, "placeholder">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "iframe"> | Pick<_Impl, "placeholder">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -364,12 +364,8 @@ declare namespace SemanticUI {
         type ErrorSettings = ErrorSettings.Param;
 
         namespace ErrorSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "noURL">
-                    | Pick<_Impl, "method">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "noURL"> | Pick<_Impl, "method">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**

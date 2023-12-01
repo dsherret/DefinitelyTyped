@@ -27,7 +27,12 @@ declare namespace JQuerySortable {
         placeholder: JQuery;
         pointer: Position;
         relativePointer: Position;
-        sameResultBox: { bottom: number; left: number; right: number; top: number };
+        sameResultBox: {
+            bottom: number;
+            left: number;
+            right: number;
+            top: number;
+        };
         scrollProxy: any;
     }
 
@@ -48,15 +53,39 @@ declare namespace JQuerySortable {
         _super?: GenericEventHandler,
         event?: Event,
     ) => void;
-    type OnDragEventHandler = ($item?: JQuery, position?: Position, _super?: OnDragEventHandler, event?: Event) => void;
-    type OnMousedownHandler = ($item?: JQuery, _super?: OnMousedownHandler, event?: Event) => void;
-    type OnCancelHandler = ($item?: JQuery, container?: Container, _super?: OnCancelHandler, event?: Event) => void;
+    type OnDragEventHandler = (
+        $item?: JQuery,
+        position?: Position,
+        _super?: OnDragEventHandler,
+        event?: Event,
+    ) => void;
+    type OnMousedownHandler = (
+        $item?: JQuery,
+        _super?: OnMousedownHandler,
+        event?: Event,
+    ) => void;
+    type OnCancelHandler = (
+        $item?: JQuery,
+        container?: Container,
+        _super?: OnCancelHandler,
+        event?: Event,
+    ) => void;
 
     // Deliberately typing $children as an any here as it makes it much easier to use. Actual type is JQuery | any[]
-    type SerializeFunc = ($parent: JQuery, $children: any, parentIsContainer: boolean) => void;
+    type SerializeFunc = (
+        $parent: JQuery,
+        $children: any,
+        parentIsContainer: boolean,
+    ) => void;
 
     interface GroupOptions {
-        afterMove?: (($placeholder: JQuery, container: Container, $closestItemOrContainer: JQuery) => void) | undefined;
+        afterMove?:
+            | ((
+                  $placeholder: JQuery,
+                  container: Container,
+                  $closestItemOrContainer: JQuery,
+              ) => void)
+            | undefined;
         containerPath?: string | undefined;
         containerSelector?: string | undefined;
         distance?: number | undefined;
@@ -64,7 +93,9 @@ declare namespace JQuerySortable {
         handle?: string | undefined;
         itemPath?: string | undefined;
         itemSelector?: string | undefined;
-        isValidTarget?: (($item: JQuery, container: Container) => boolean) | undefined;
+        isValidTarget?:
+            | (($item: JQuery, container: Container) => boolean)
+            | undefined;
         onCancel?: OnCancelHandler | undefined;
         onDrag?: OnDragEventHandler | undefined;
         onDragStart?: GenericEventHandler | undefined;

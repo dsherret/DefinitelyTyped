@@ -53,4 +53,4 @@ const etree2 = et.parse(data);
 etree2.findall("./entry/TenantId").length; // 2
 etree2.findtext("./entry/ServiceName"); // MaaS
 etree2.findall("./entry/category")[0].get("term"); // monitoring.entity.create
-etree2.findall("*/category/[@term=\"monitoring.entity.update\"]").length; // 1
+etree2.findall('*/category/[@term="monitoring.entity.update"]').length; // 1

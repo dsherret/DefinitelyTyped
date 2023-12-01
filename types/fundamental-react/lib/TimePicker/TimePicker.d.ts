@@ -6,10 +6,12 @@ export type TimePickerProps = TimeBaseProps & {
     disabled?: boolean | undefined;
     id?: string | undefined;
     inputProps?: { [x: string]: any } | undefined;
-    localizedText?: {
-        meridiemAM: string;
-        meridiemPM: string;
-    } | undefined;
+    localizedText?:
+        | {
+              meridiemAM: string;
+              meridiemPM: string;
+          }
+        | undefined;
     popoverProps?: { [x: string]: any } | undefined;
     timeProps?: { [x: string]: any } | undefined;
     value?: string | undefined;

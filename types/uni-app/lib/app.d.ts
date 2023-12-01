@@ -183,7 +183,9 @@ declare namespace App {
         allowDefault: boolean;
     }
 
-    type GetApp = <T extends AnyObject>(opts?: GetAppOption) => AppInstance<T> & T;
+    type GetApp = <T extends AnyObject>(
+        opts?: GetAppOption,
+    ) => AppInstance<T> & T;
 }
 
 declare const getApp: App.GetApp;

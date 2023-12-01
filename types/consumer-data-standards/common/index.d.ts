@@ -53,7 +53,9 @@ export interface CommonOrganisation {
     /**
      * The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``
      */
-    industryCodeVersion?: ("ANZSIC_1292.0_2006_V1.0" | "ANZSIC_1292.0_2006_V2.0") | null;
+    industryCodeVersion?:
+        | ("ANZSIC_1292.0_2006_V1.0" | "ANZSIC_1292.0_2006_V2.0")
+        | null;
     /**
      * True if registered with the ACNC.  False if not. Absent or null if not confirmed.
      */
@@ -69,7 +71,13 @@ export interface CommonOrganisation {
     /**
      * Legal organisation type
      */
-    organisationType: "COMPANY" | "GOVERNMENT_ENTITY" | "OTHER" | "PARTNERSHIP" | "SOLE_TRADER" | "TRUST";
+    organisationType:
+        | "COMPANY"
+        | "GOVERNMENT_ENTITY"
+        | "OTHER"
+        | "PARTNERSHIP"
+        | "SOLE_TRADER"
+        | "TRUST";
     /**
      * Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent
      */
@@ -356,11 +364,11 @@ export interface CommonPerson {
      */
     occupationCodeVersion?:
         | (
-            | "ANZSCO_1220.0_2006_V1.0"
-            | "ANZSCO_1220.0_2006_V1.1"
-            | "ANZSCO_1220.0_2013_V1.2"
-            | "ANZSCO_1220.0_2013_V1.3"
-        )
+              | "ANZSCO_1220.0_2006_V1.0"
+              | "ANZSCO_1220.0_2006_V1.1"
+              | "ANZSCO_1220.0_2013_V1.2"
+              | "ANZSCO_1220.0_2013_V1.3"
+          )
         | null;
     /**
      * Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)
@@ -406,7 +414,13 @@ export interface CommonPersonDetailV2 extends CommonPerson {
         /**
          * The purpose of the number as specified by the customer
          */
-        purpose: "HOME" | "INTERNATIONAL" | "MOBILE" | "OTHER" | "UNSPECIFIED" | "WORK";
+        purpose:
+            | "HOME"
+            | "INTERNATIONAL"
+            | "MOBILE"
+            | "OTHER"
+            | "UNSPECIFIED"
+            | "WORK";
         [k: string]: unknown;
     }>;
     /**
@@ -606,7 +620,13 @@ export interface CommonPhoneNumber {
     /**
      * The purpose of the number as specified by the customer
      */
-    purpose: "HOME" | "INTERNATIONAL" | "MOBILE" | "OTHER" | "UNSPECIFIED" | "WORK";
+    purpose:
+        | "HOME"
+        | "INTERNATIONAL"
+        | "MOBILE"
+        | "OTHER"
+        | "UNSPECIFIED"
+        | "WORK";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the common api. */
@@ -749,7 +769,8 @@ export interface CommonPhysicalAddress {
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the common api. */
 
-export interface CommonPhysicalAddressWithPurpose extends CommonPhysicalAddress {
+export interface CommonPhysicalAddressWithPurpose
+    extends CommonPhysicalAddress {
     /**
      * Enumeration of values indicating the purpose of the physical address
      */
@@ -884,7 +905,9 @@ export interface ResponseCommonCustomer {
             /**
              * The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``
              */
-            industryCodeVersion?: ("ANZSIC_1292.0_2006_V1.0" | "ANZSIC_1292.0_2006_V2.0") | null;
+            industryCodeVersion?:
+                | ("ANZSIC_1292.0_2006_V1.0" | "ANZSIC_1292.0_2006_V2.0")
+                | null;
             /**
              * True if registered with the ACNC.  False if not. Absent or null if not confirmed.
              */
@@ -900,7 +923,13 @@ export interface ResponseCommonCustomer {
             /**
              * Legal organisation type
              */
-            organisationType: "COMPANY" | "GOVERNMENT_ENTITY" | "OTHER" | "PARTNERSHIP" | "SOLE_TRADER" | "TRUST";
+            organisationType:
+                | "COMPANY"
+                | "GOVERNMENT_ENTITY"
+                | "OTHER"
+                | "PARTNERSHIP"
+                | "SOLE_TRADER"
+                | "TRUST";
             /**
              * Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent
              */
@@ -937,11 +966,11 @@ export interface ResponseCommonCustomer {
              */
             occupationCodeVersion?:
                 | (
-                    | "ANZSCO_1220.0_2006_V1.0"
-                    | "ANZSCO_1220.0_2006_V1.1"
-                    | "ANZSCO_1220.0_2013_V1.2"
-                    | "ANZSCO_1220.0_2013_V1.3"
-                )
+                      | "ANZSCO_1220.0_2006_V1.0"
+                      | "ANZSCO_1220.0_2006_V1.1"
+                      | "ANZSCO_1220.0_2013_V1.2"
+                      | "ANZSCO_1220.0_2013_V1.3"
+                  )
                 | null;
             /**
              * Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)
@@ -1011,7 +1040,9 @@ export interface ResponseCommonCustomerDetailV2 {
             /**
              * The applicable [ANZSIC](http://www.abs.gov.au/ANZSIC) release version of the industry code provided. Should only be supplied if ``industryCode`` is also supplied. If ``industryCode`` is supplied but ``industryCodeVersion`` is absent, default is ``ANZSIC_1292.0_2006_V2.0``
              */
-            industryCodeVersion?: ("ANZSIC_1292.0_2006_V1.0" | "ANZSIC_1292.0_2006_V2.0") | null;
+            industryCodeVersion?:
+                | ("ANZSIC_1292.0_2006_V1.0" | "ANZSIC_1292.0_2006_V2.0")
+                | null;
             /**
              * True if registered with the ACNC.  False if not. Absent or null if not confirmed.
              */
@@ -1027,7 +1058,13 @@ export interface ResponseCommonCustomerDetailV2 {
             /**
              * Legal organisation type
              */
-            organisationType: "COMPANY" | "GOVERNMENT_ENTITY" | "OTHER" | "PARTNERSHIP" | "SOLE_TRADER" | "TRUST";
+            organisationType:
+                | "COMPANY"
+                | "GOVERNMENT_ENTITY"
+                | "OTHER"
+                | "PARTNERSHIP"
+                | "SOLE_TRADER"
+                | "TRUST";
             /**
              * Enumeration with values from [ISO 3166 Alpha-3](https://www.iso.org/iso-3166-country-codes.html) country codes.  Assumed to be AUS if absent
              */
@@ -1181,7 +1218,12 @@ export interface ResponseCommonCustomerDetailV2 {
                     /**
                      * Enumeration of values indicating the purpose of the physical address
                      */
-                    purpose: "MAIL" | "OTHER" | "PHYSICAL" | "REGISTERED" | "WORK";
+                    purpose:
+                        | "MAIL"
+                        | "OTHER"
+                        | "PHYSICAL"
+                        | "REGISTERED"
+                        | "WORK";
                     [k: string]: unknown;
                 }
             >;
@@ -1213,11 +1255,11 @@ export interface ResponseCommonCustomerDetailV2 {
              */
             occupationCodeVersion?:
                 | (
-                    | "ANZSCO_1220.0_2006_V1.0"
-                    | "ANZSCO_1220.0_2006_V1.1"
-                    | "ANZSCO_1220.0_2013_V1.2"
-                    | "ANZSCO_1220.0_2013_V1.3"
-                )
+                      | "ANZSCO_1220.0_2006_V1.0"
+                      | "ANZSCO_1220.0_2006_V1.1"
+                      | "ANZSCO_1220.0_2013_V1.2"
+                      | "ANZSCO_1220.0_2013_V1.3"
+                  )
                 | null;
             /**
              * Also known as title or salutation.  The prefix to the name (e.g. Mr, Mrs, Ms, Miss, Sir, etc)
@@ -1260,7 +1302,13 @@ export interface ResponseCommonCustomerDetailV2 {
                 /**
                  * The purpose of the number as specified by the customer
                  */
-                purpose: "HOME" | "INTERNATIONAL" | "MOBILE" | "OTHER" | "UNSPECIFIED" | "WORK";
+                purpose:
+                    | "HOME"
+                    | "INTERNATIONAL"
+                    | "MOBILE"
+                    | "OTHER"
+                    | "UNSPECIFIED"
+                    | "WORK";
                 [k: string]: unknown;
             }>;
             /**
@@ -1424,7 +1472,12 @@ export interface ResponseCommonCustomerDetailV2 {
                     /**
                      * Enumeration of values indicating the purpose of the physical address
                      */
-                    purpose: "MAIL" | "OTHER" | "PHYSICAL" | "REGISTERED" | "WORK";
+                    purpose:
+                        | "MAIL"
+                        | "OTHER"
+                        | "PHYSICAL"
+                        | "REGISTERED"
+                        | "WORK";
                     [k: string]: unknown;
                 }
             >;

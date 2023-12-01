@@ -39,19 +39,23 @@ declare namespace HtmlValidator {
         text = "text",
     }
 
-    interface OptionsForHtmlFileAsValidationTargetAndObjectAsResult extends OptionsForHtmlFileAsValidationTarget {
+    interface OptionsForHtmlFileAsValidationTargetAndObjectAsResult
+        extends OptionsForHtmlFileAsValidationTarget {
         format?: "json" | undefined;
     }
 
-    interface OptionsForHtmlFileAsValidationTargetAndTextAsResults extends OptionsForHtmlFileAsValidationTarget {
+    interface OptionsForHtmlFileAsValidationTargetAndTextAsResults
+        extends OptionsForHtmlFileAsValidationTarget {
         format: "html" | "xhtml" | "xml" | "gnu" | "text";
     }
 
-    interface OptionsForExternalUrlAsValidationTargetAndObjectAsResult extends OptionsForExternalUrlAsValidationTarget {
+    interface OptionsForExternalUrlAsValidationTargetAndObjectAsResult
+        extends OptionsForExternalUrlAsValidationTarget {
         format?: "json" | undefined;
     }
 
-    interface OptionsForExternalUrlAsValidationTargetAndTextAsResults extends OptionsForHtmlFileAsValidationTarget {
+    interface OptionsForExternalUrlAsValidationTargetAndTextAsResults
+        extends OptionsForHtmlFileAsValidationTarget {
         format: "html" | "xhtml" | "xml" | "gnu" | "text";
     }
 
@@ -103,16 +107,18 @@ declare namespace HtmlValidator {
         subType?: "internal" | "io" | "schema" | undefined;
     }
 
-    type ValidationMessageSimpleObject =
-        & (
-            | ValidationMessageBasicErrorObject
-            | ValidationMessageBasicInfoObject
-            | ValidationMessageBasicNonDocumentErrorObject
-        )
-        & ValidationMessageBasicObject;
-    type ValidationMessageLocationObject = ValidationMessageSimpleObject & ValidationMessageBasicLocationObject;
+    type ValidationMessageSimpleObject = (
+        | ValidationMessageBasicErrorObject
+        | ValidationMessageBasicInfoObject
+        | ValidationMessageBasicNonDocumentErrorObject
+    ) &
+        ValidationMessageBasicObject;
+    type ValidationMessageLocationObject = ValidationMessageSimpleObject &
+        ValidationMessageBasicLocationObject;
 
-    type ValidationMessageObject = ValidationMessageSimpleObject | ValidationMessageLocationObject;
+    type ValidationMessageObject =
+        | ValidationMessageSimpleObject
+        | ValidationMessageLocationObject;
 }
 
 export = HtmlValidator;

@@ -37,8 +37,8 @@ declare namespace sharpie {
             | false
             | string[]
             | {
-                [hostname: string]: boolean;
-            }
+                  [hostname: string]: boolean;
+              }
             | ((hostname: string) => boolean)
             | undefined;
         /**
@@ -50,12 +50,14 @@ declare namespace sharpie {
          * @default '64,32,16'
          */
         sizes?: string | undefined;
-        signs?: {
-            /**  use ~ for better uri-encoding */
-            assignment?: string | undefined;
-            /** use ! for better uri-encoding */
-            separator?: string | undefined;
-        } | undefined;
+        signs?:
+            | {
+                  /**  use ~ for better uri-encoding */
+                  assignment?: string | undefined;
+                  /** use ! for better uri-encoding */
+                  separator?: string | undefined;
+              }
+            | undefined;
     }
 
     interface SharpieFormats {

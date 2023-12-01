@@ -9,23 +9,24 @@ To keep me motivated you can [buy me a beer][6] 😉
 # Installation
 
 `npm i @types/square-connect`
+
 > in @types/square-connect@3.x all API-v1 related typings were removed, if you need them - install @types/square-connect@2.x
 
 # @todo
 
-* Declare methods definition for missing classes (ex: `export class SomeApi {}`)
-* Change `any`s in methods definitions (ex: `doSomething(...args: Array<any>)`) regarding the [docs][5]
+- Declare methods definition for missing classes (ex: `export class SomeApi {}`)
+- Change `any`s in methods definitions (ex: `doSomething(...args: Array<any>)`) regarding the [docs][5]
 
 # Contribution
 
 If you are facing some issues or you have an idea how to improve typings - feel free to contribute or open an issue.
 
-* Clone the [DefinitelyTyped][3] project and configure `upstream` (`git remote add upstream git@github.com:DefinitelyTyped/DefinitelyTyped.git`)
-    * or ony update the repo if you already have it (`git fetch upstream && git reset --hard upstream/master`)
-* Add your changes and commit them (in case of error in [api.json][4] too, let the Square team know about it)
-* Test your changes:
-    * `npm run lint square-connect`
-    * `npm run test square-connect`
+- Clone the [DefinitelyTyped][3] project and configure `upstream` (`git remote add upstream git@github.com:DefinitelyTyped/DefinitelyTyped.git`)
+  - or ony update the repo if you already have it (`git fetch upstream && git reset --hard upstream/master`)
+- Add your changes and commit them (in case of error in [api.json][4] too, let the Square team know about it)
+- Test your changes:
+  - `npm run lint square-connect`
+  - `npm run test square-connect`
 
 [1]: https://docs.connect.squareup.com
 [2]: https://github.com/swagger-api/swagger-codegen

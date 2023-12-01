@@ -3,16 +3,16 @@
 var container: HTMLElement;
 
 var options: JSONEditorOptions = {
-    "search": true,
+    search: true,
 };
 var editor: JSONEditor = new JSONEditor(container, options);
 var json = {
-    "Array": [1, 2, 3],
-    "Boolean": true,
-    "Null": <any> null,
-    "Number": 123,
-    "Object": { "a": "b", "c": "d" },
-    "String": "Hello World",
+    Array: [1, 2, 3],
+    Boolean: true,
+    Null: <any>null,
+    Number: 123,
+    Object: { a: "b", c: "d" },
+    String: "Hello World",
 };
 editor.set(json);
 editor.expandAll();
@@ -25,12 +25,12 @@ var options2: JSONFormatterOptions = {
 };
 var formatter: JSONFormatter = new JSONFormatter(container, options);
 var json2 = {
-    "Array": [1, 2, 3],
-    "Boolean": true,
-    "Null": <any> null,
-    "Number": 123,
-    "Object": { "a": "b", "c": "d" },
-    "String": "Hello World",
+    Array: [1, 2, 3],
+    Boolean: true,
+    Null: <any>null,
+    Number: 123,
+    Object: { a: "b", c: "d" },
+    String: "Hello World",
 };
 formatter.set(json2);
 

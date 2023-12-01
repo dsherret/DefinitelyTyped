@@ -155,7 +155,9 @@ function logInterfaceMember(member: webidl2.IDLInterfaceMemberType) {
     }
 }
 
-function logInterfaceMixinMembers(members: webidl2.IDLInterfaceMixinMemberType[]) {
+function logInterfaceMixinMembers(
+    members: webidl2.IDLInterfaceMixinMemberType[],
+) {
     for (const member of members) {
         logInterfaceMixinMember(member);
         logExtAttrs(member.extAttrs);
@@ -188,14 +190,18 @@ function logInterfaceMixinMember(member: webidl2.IDLInterfaceMixinMemberType) {
     }
 }
 
-function logCallbackInterfaceMembers(members: webidl2.IDLCallbackInterfaceMemberType[]) {
+function logCallbackInterfaceMembers(
+    members: webidl2.IDLCallbackInterfaceMemberType[],
+) {
     for (const member of members) {
         logCallbackInterfaceMember(member);
         logExtAttrs(member.extAttrs);
     }
 }
 
-function logCallbackInterfaceMember(member: webidl2.IDLCallbackInterfaceMemberType) {
+function logCallbackInterfaceMember(
+    member: webidl2.IDLCallbackInterfaceMemberType,
+) {
     switch (member.type) {
         case "operation":
             member; // $ExpectType OperationMemberType
@@ -282,7 +288,9 @@ function logExtAttr(extAttr: webidl2.ExtendedAttribute) {
     }
 }
 
-function logExtAttrRHSList(rhsList: webidl2.ExtendedAttributeRightHandSideList) {
+function logExtAttrRHSList(
+    rhsList: webidl2.ExtendedAttributeRightHandSideList,
+) {
     for (const rhs of rhsList.value) {
         logExtAttrRHS(rhs);
     }

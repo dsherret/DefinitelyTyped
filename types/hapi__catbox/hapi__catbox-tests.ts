@@ -1,4 +1,10 @@
-import { CachedObject, Client, DecoratedResult, EnginePrototypeOrObject, Policy } from "@hapi/catbox";
+import {
+    CachedObject,
+    Client,
+    DecoratedResult,
+    EnginePrototypeOrObject,
+    Policy,
+} from "@hapi/catbox";
 
 const Memory: EnginePrototypeOrObject = {
     async start(): Promise<void> {},

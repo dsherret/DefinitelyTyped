@@ -6,7 +6,9 @@ declare module "leaflet" {
     }
 
     namespace control {
-        function mousePosition(options?: Control.MousePositionControlOptions): Control.MousePosition;
+        function mousePosition(
+            options?: Control.MousePositionControlOptions,
+        ): Control.MousePosition;
     }
 
     namespace Control {

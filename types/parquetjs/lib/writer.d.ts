@@ -36,32 +36,29 @@ export class ParquetWriter {
     static openFile(
         schema: ParquetSchema,
         path: PathLike,
-        opts?:
-            | string
-            | ParquetWriterOpts,
+        opts?: string | ParquetWriterOpts,
     ): Promise<ParquetWriter>;
 
     static openStream(
         schema: ParquetSchema,
         outputStream: WriteStream,
-        opts?:
-            | string
-            | ParquetWriterOpts,
+        opts?: string | ParquetWriterOpts,
     ): Promise<ParquetWriter>;
 
     constructor(
         schema: ParquetSchema,
         envelopeWriter: ParquetEnvelopeWriter,
-        opts?:
-            | string
-            | ParquetWriterOpts,
+        opts?: string | ParquetWriterOpts,
     );
 
     appendRow(row: RowInterface): Promise<void>;
 
     close(callback?: () => void): Promise<void>;
 
-    setMetadata(key: boolean | number | string, value: boolean | number | string): void;
+    setMetadata(
+        key: boolean | number | string,
+        value: boolean | number | string,
+    ): void;
 
     setRowGroupSize(cnt: number): void;
 
@@ -93,9 +90,7 @@ export class ParquetEnvelopeWriter {
     static openStream(
         schema: ParquetSchema,
         outputStream: WriteStream,
-        opts?:
-            | string
-            | ParquetWriterOpts,
+        opts?: string | ParquetWriterOpts,
     ): Promise<ParquetEnvelopeWriter>;
 
     constructor(
@@ -103,9 +98,7 @@ export class ParquetEnvelopeWriter {
         writeFn: (buf: Buffer) => Promise<void>,
         closeFn: () => Promise<void>,
         fileOffset: number,
-        opts?:
-            | string
-            | ParquetWriterOpts,
+        opts?: string | ParquetWriterOpts,
     );
 
     writeSection(buf: Buffer): Promise<void>;
@@ -122,14 +115,13 @@ export class ParquetEnvelopeWriter {
 export class ParquetTransformer extends stream.Transform {
     writer: ParquetWriter;
 
-    constructor(
-        schema: ParquetSchema,
-        opts?:
-            | string
-            | ParquetWriterOpts,
-    );
+    constructor(schema: ParquetSchema, opts?: string | ParquetWriterOpts);
 
-    _transform(row: RowInterface, encoding: string | null | undefined, callback: () => void): void;
+    _transform(
+        row: RowInterface,
+        encoding: string | null | undefined,
+        callback: () => void,
+    ): void;
 
     _flush(callback: () => void): void;
 }

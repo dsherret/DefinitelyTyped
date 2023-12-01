@@ -48,7 +48,10 @@ export class Requester extends Component {
      * @param event Request.
      * @param callback Function to execute after getting a result.
      */
-    send<T extends Event>(event: T, callback: (error: any, result: any) => void): void;
+    send<T extends Event>(
+        event: T,
+        callback: (error: any, result: any) => void,
+    ): void;
 }
 
 /**
@@ -131,10 +134,7 @@ export class Publisher extends Component {
      * @param type EventEmitter-compatible type.
      * @param event Request.
      */
-    publish<T extends Event>(
-        type: string,
-        event: T,
-    ): void;
+    publish<T extends Event>(type: string, event: T): void;
 }
 
 /**
@@ -201,7 +201,9 @@ export class Sockend extends Component {
 /**
  * Configuration which controls the data being advertised for auto-discovery.
  */
-export interface SockendAdvertisement extends ResponderAdvertisement, PublisherAdvertisement {}
+export interface SockendAdvertisement
+    extends ResponderAdvertisement,
+        PublisherAdvertisement {}
 
 export class Monitor extends Component {
     constructor(
@@ -285,8 +287,10 @@ export interface Status extends Event {
  * Advertisement in internal `cote:added` and `cote:removed` events.
  */
 export interface StatusAdvertisement
-    extends RequesterAdvertisement, ResponderAdvertisement, PublisherAdvertisement, SubscriberAdvertisement
-{}
+    extends RequesterAdvertisement,
+        ResponderAdvertisement,
+        PublisherAdvertisement,
+        SubscriberAdvertisement {}
 
 /**
  * Configuration which controls the data being advertised for auto-discovery.

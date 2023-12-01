@@ -5,7 +5,7 @@ const app = new Koa();
 
 app.use(rateLimit({}));
 
-app.use(async context => {
+app.use(async (context) => {
     context.body = "Hello";
 });
 

@@ -8,7 +8,9 @@ export = InquirerFuzzyPath;
 /**
  * Provides the functionality to create a new Inquirer plugin
  */
-declare class InquirerFuzzyPath<T extends Answers> extends InquirerAutocomplete<T> {
+declare class InquirerFuzzyPath<
+    T extends Answers,
+> extends InquirerAutocomplete<T> {
     /**
      * Create new InquirerFuzzyPath
      *
@@ -19,7 +21,11 @@ declare class InquirerFuzzyPath<T extends Answers> extends InquirerAutocomplete<
      * @param answers
      * The currently supplied answers
      */
-    constructor(questions: QuestionCollection<T>, rl: ReadlineInterface, answers: Answers);
+    constructor(
+        questions: QuestionCollection<T>,
+        rl: ReadlineInterface,
+        answers: Answers,
+    );
 
     /**
      * Curate list of choices.
@@ -49,8 +55,7 @@ declare namespace InquirerFuzzyPath {
      * The type of the answers.
      */
     interface FuzzyPathQuestionOptions<T extends Answers = Answers>
-        extends Partial<Omit<AutocompleteQuestionOptions<T>, "type">>
-    {
+        extends Partial<Omit<AutocompleteQuestionOptions<T>, "type">> {
         /**
          * The key to save the answer to the answers-hash.
          */

@@ -62,9 +62,7 @@ export interface Props {
      * that has both the event, and the new isOpen state.
      */
     onOpenChange?:
-        | ((
-            change: { event: SyntheticEvent<any>; isOpen: boolean },
-        ) => void)
+        | ((change: { event: SyntheticEvent<any>; isOpen: boolean }) => void)
         | undefined;
     /** Text to be shown within the select when no item is selected. */
     placeholder?: string | undefined;

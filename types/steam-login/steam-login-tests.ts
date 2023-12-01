@@ -6,15 +6,21 @@ import * as steam from "steam-login";
 
 const app = express();
 
-app.use(session({ resave: false, saveUninitialized: false, secret: "a secret" }));
-app.use(steam.middleware({
-    realm: "http://localhost:3000/",
-    verify: "http://localhost:3000/verify",
-    apiKey: process.argv[2],
-}));
+app.use(
+    session({ resave: false, saveUninitialized: false, secret: "a secret" }),
+);
+app.use(
+    steam.middleware({
+        realm: "http://localhost:3000/",
+        verify: "http://localhost:3000/verify",
+        apiKey: process.argv[2],
+    }),
+);
 
 app.get("/", (req: steam.SteamRequest, res) => {
-    res.send(req.user == null ? "not logged in" : "hello " + req.user.username).end();
+    res.send(
+        req.user == null ? "not logged in" : "hello " + req.user.username,
+    ).end();
 });
 
 app.get("/authenticate", steam.authenticate(), (req, res) => {

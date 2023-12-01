@@ -192,18 +192,22 @@ shippo.batch.create({
     default_carrier_account: "carrieraccount_id",
     default_servicelevel_token: "servicelevel_token",
     label_filetype: "PDF",
-    batch_shipments: [{
-        shipment: "shipment_id",
-    }],
+    batch_shipments: [
+        {
+            shipment: "shipment_id",
+        },
+    ],
 });
 
 // $ExpectType Promise<Batch>
 shippo.batch.retrieve("batch_id");
 
 // $ExpectType Promise<Batch>
-shippo.batch.add("batch_id", [{
-    shipment: "shipment_id",
-}]);
+shippo.batch.add("batch_id", [
+    {
+        shipment: "shipment_id",
+    },
+]);
 
 // $ExpectType Promise<Batch>
 shippo.batch.remove("batch_id", ["shipment_id"]);

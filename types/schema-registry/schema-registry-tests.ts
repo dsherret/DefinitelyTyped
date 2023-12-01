@@ -1,4 +1,8 @@
-import { LivingAvroSchema, RegistryClient, RegistryRequest } from "schema-registry";
+import {
+    LivingAvroSchema,
+    RegistryClient,
+    RegistryRequest,
+} from "schema-registry";
 
 const config = {
     host: "host",

@@ -243,8 +243,16 @@ function permittedCrossDomainPoliciesTest() {
     app.use(helmet.permittedCrossDomainPolicies());
     app.use(helmet.permittedCrossDomainPolicies({}));
     app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: "none" }));
-    app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: "master-only" }));
-    app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: "by-content-type" }));
+    app.use(
+        helmet.permittedCrossDomainPolicies({
+            permittedPolicies: "master-only",
+        }),
+    );
+    app.use(
+        helmet.permittedCrossDomainPolicies({
+            permittedPolicies: "by-content-type",
+        }),
+    );
     app.use(helmet.permittedCrossDomainPolicies({ permittedPolicies: "all" }));
 }
 
@@ -300,5 +308,11 @@ function expectCtTest() {
     app.use(helmet.expectCt({}));
     app.use(helmet.expectCt({ maxAge: 123 }));
     app.use(helmet.expectCt({ maxAge: 123, enforce: false }));
-    app.use(helmet.expectCt({ maxAge: 123, enforce: true, reportUri: "https://example.com/report" }));
+    app.use(
+        helmet.expectCt({
+            maxAge: 123,
+            enforce: true,
+            reportUri: "https://example.com/report",
+        }),
+    );
 }

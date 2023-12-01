@@ -27,7 +27,7 @@ import * as Utf8Stream from "stream-json/utils/Utf8Stream";
 import * as Verifier from "stream-json/utils/Verifier";
 import * as withParser from "stream-json/utils/withParser";
 
-const used = (array: any[]) => array.forEach(value => console.log(!!value));
+const used = (array: any[]) => array.forEach((value) => console.log(!!value));
 
 {
     // creating parser with the main module
@@ -56,11 +56,19 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     asm.consume({ name: "startObject" });
     asm.dropToLevel(0);
 
-    parser.on(
-        "keyValue",
-        (value: string) => console.log(value, asm.key, asm.stack.length, asm.done, asm.depth, asm.path),
+    parser.on("keyValue", (value: string) =>
+        console.log(
+            value,
+            asm.key,
+            asm.stack.length,
+            asm.done,
+            asm.depth,
+            asm.path,
+        ),
     );
-    asm.on("done", (asm: Assembler) => console.log(JSON.stringify(asm.current)));
+    asm.on("done", (asm: Assembler) =>
+        console.log(JSON.stringify(asm.current)),
+    );
 
     const asm2: Assembler = new Assembler();
     const asm3: Assembler = new Assembler({ reviver: (key, value) => value });
@@ -93,8 +101,15 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     const p1: Parser = new Parser({ packValues: false });
     const p2: Parser = Parser.make({ jsonStreaming: true });
     const p3: Parser = Parser.parser({ streamValues: false });
-    const p4: Parser.make.Constructor = Parser.make({ packValues: false, packKeys: true });
-    const p5: Parser.parser.Constructor = Parser.parser({ packValues: false, packKeys: true, streamKeys: false });
+    const p4: Parser.make.Constructor = Parser.make({
+        packValues: false,
+        packKeys: true,
+    });
+    const p5: Parser.parser.Constructor = Parser.parser({
+        packValues: false,
+        packKeys: true,
+        streamKeys: false,
+    });
 
     used([p1, p2, p3, p4, p5]);
 }
@@ -112,7 +127,8 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
         replacer: ["foo", "bar"],
     });
     const d4: Disassembler.make.Constructor = Disassembler.make();
-    const d5: Disassembler.disassembler.Constructor = Disassembler.disassembler();
+    const d5: Disassembler.disassembler.Constructor =
+        Disassembler.disassembler();
 
     used([d1, d2, d3, d4, d5]);
 }
@@ -146,7 +162,12 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     parser
         .pipe(new Pick({ filter: "data" }))
         .pipe(Pick.make({ filter: /\bvalues\b/i }))
-        .pipe(Pick.pick({ filter: (stack: FilterBase.Stack, token: FilterBase.Token) => token.name === "startArray" }));
+        .pipe(
+            Pick.pick({
+                filter: (stack: FilterBase.Stack, token: FilterBase.Token) =>
+                    token.name === "startArray",
+            }),
+        );
 
     Pick.withParser({ filter: "data" });
 }
@@ -165,7 +186,12 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     used([f1, f2, f3, f4, f5]);
 
     parser
-        .pipe(new Replace({ filter: "total", replacement: [{ name: "trueValue" }] }))
+        .pipe(
+            new Replace({
+                filter: "total",
+                replacement: [{ name: "trueValue" }],
+            }),
+        )
         .pipe(
             new Replace({
                 filter: "sum",
@@ -177,12 +203,23 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
                 ],
             }),
         )
-        .pipe(Replace.make({ filter: /\b_\w*\b/i, allowEmptyReplacement: true }))
+        .pipe(
+            Replace.make({ filter: /\b_\w*\b/i, allowEmptyReplacement: true }),
+        )
         .pipe(
             Replace.replace({
-                filter: (stack: FilterBase.Stack, token: FilterBase.Token) => stack.length > 2,
-                replacement: (stack: FilterBase.Stack, token: FilterBase.Token) => [
-                    { name: token.name === "startArray" ? "trueValue" : "falseValue" },
+                filter: (stack: FilterBase.Stack, token: FilterBase.Token) =>
+                    stack.length > 2,
+                replacement: (
+                    stack: FilterBase.Stack,
+                    token: FilterBase.Token,
+                ) => [
+                    {
+                        name:
+                            token.name === "startArray"
+                                ? "trueValue"
+                                : "falseValue",
+                    },
                 ],
             }),
         );
@@ -206,7 +243,12 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     parser
         .pipe(new Ignore({ filter: "total" }))
         .pipe(Ignore.make({ filter: /\b_\w*\b/i }))
-        .pipe(Ignore.ignore({ filter: (stack: FilterBase.Stack, token: FilterBase.Token) => stack.length > 2 }));
+        .pipe(
+            Ignore.ignore({
+                filter: (stack: FilterBase.Stack, token: FilterBase.Token) =>
+                    stack.length > 2,
+            }),
+        );
 
     Ignore.withParser({ filter: "_meta" });
 }
@@ -227,7 +269,12 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     parser
         .pipe(new Filter({ filter: "total" }))
         .pipe(Filter.make({ filter: /\b_\w*\b/i }))
-        .pipe(Filter.filter({ filter: (stack: FilterBase.Stack, token: FilterBase.Token) => stack.length > 2 }));
+        .pipe(
+            Filter.filter({
+                filter: (stack: FilterBase.Stack, token: FilterBase.Token) =>
+                    stack.length > 2,
+            }),
+        );
 
     Filter.withParser({ filter: "_meta" });
 }
@@ -281,7 +328,8 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     const s2: StreamObject = StreamObject.make();
     const s3: StreamObject = StreamObject.streamObject();
     const s4: StreamObject.make.Constructor = StreamObject.make();
-    const s5: StreamObject.streamObject.Constructor = StreamObject.streamObject();
+    const s5: StreamObject.streamObject.Constructor =
+        StreamObject.streamObject();
 
     used([s1, s2, s3, s4, s5]);
 
@@ -321,7 +369,8 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     const s2: StreamValues = StreamValues.make();
     const s3: StreamValues = StreamValues.streamValues();
     const s4: StreamValues.make.Constructor = StreamValues.make();
-    const s5: StreamValues.streamValues.Constructor = StreamValues.streamValues();
+    const s5: StreamValues.streamValues.Constructor =
+        StreamValues.streamValues();
 
     used([s1, s2, s3, s4, s5]);
 
@@ -389,10 +438,17 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     withParser(Pick.make, { filter: "data" });
     withParser(Pick.pick, { filter: "data", packValues: false });
 
-    withParser(StreamArray.streamArray, { objectFilter: (asm: Assembler) => asm.current });
-    withParser(StreamArray.make, { objectFilter: (asm: Assembler) => asm.current, packValues: false });
+    withParser(StreamArray.streamArray, {
+        objectFilter: (asm: Assembler) => asm.current,
+    });
+    withParser(StreamArray.make, {
+        objectFilter: (asm: Assembler) => asm.current,
+        packValues: false,
+    });
 
-    withParser((options?: TransformOptions) => new Transform(options), { streamValues: false });
+    withParser((options?: TransformOptions) => new Transform(options), {
+        streamValues: false,
+    });
 }
 
 {
@@ -407,13 +463,20 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     // JsonlParser tests
 
     const p1: JsonlParser = new JsonlParser();
-    const p2: JsonlParser = JsonlParser.make({ reviver: (key, value) => value });
+    const p2: JsonlParser = JsonlParser.make({
+        reviver: (key, value) => value,
+    });
     const p3: JsonlParser = JsonlParser.parser();
     const p4: JsonlParser.make.Constructor = JsonlParser.make();
     const p5: JsonlParser.parser.Constructor = JsonlParser.parser();
-    const p6: JsonlParser.make.Constructor = JsonlParser.make({ checkErrors: true });
+    const p6: JsonlParser.make.Constructor = JsonlParser.make({
+        checkErrors: true,
+    });
     const p7: JsonlParser.parser.Constructor = JsonlParser.parser();
-    const p8: JsonlParser.make.Constructor = JsonlParser.make({ reviver: (key, value) => value, checkErrors: true });
+    const p8: JsonlParser.make.Constructor = JsonlParser.make({
+        reviver: (key, value) => value,
+        checkErrors: true,
+    });
     const p9: JsonlParser.parser.Constructor = JsonlParser.parser();
 
     used([p1, p2, p3, p4, p5, p6, p7, p8, p9]);
@@ -423,7 +486,9 @@ const used = (array: any[]) => array.forEach(value => console.log(!!value));
     // JsonlStringer tests
 
     const p1: JsonlStringer = new JsonlStringer();
-    const p2: JsonlStringer = JsonlStringer.make({ replacer: (key, value) => value });
+    const p2: JsonlStringer = JsonlStringer.make({
+        replacer: (key, value) => value,
+    });
     const p3: JsonlStringer = JsonlStringer.stringer();
     const p4: JsonlStringer.make.Constructor = JsonlStringer.make();
     const p5: JsonlStringer.stringer.Constructor = JsonlStringer.stringer();

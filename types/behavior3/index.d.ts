@@ -104,7 +104,13 @@ declare namespace b3 {
         /**
          * Initialization method.
          */
-        constructor({ category, name, title, description, properties }?: {
+        constructor({
+            category,
+            name,
+            title,
+            description,
+            properties,
+        }?: {
             category?: string | undefined;
             name?: string | undefined;
             title?: string | undefined;
@@ -199,9 +205,15 @@ declare namespace b3 {
         /**
          * Creates an instance of Action.
          */
-        constructor(
-            { name, title, properties }?: { name?: string | undefined; title?: string | undefined; properties?: any },
-        );
+        constructor({
+            name,
+            title,
+            properties,
+        }?: {
+            name?: string | undefined;
+            title?: string | undefined;
+            properties?: any;
+        });
     }
 
     /**
@@ -391,7 +403,12 @@ declare namespace b3 {
          * provided (but treeScope not), this method will still save the value into
          * the global memory.
          */
-        set(key: string, value: string, treeScope: string, nodeScope: string): void;
+        set(
+            key: string,
+            value: string,
+            treeScope: string,
+            nodeScope: string,
+        ): void;
 
         /**
          * Retrieves a value in the blackboard. If treeScope and nodeScope are
@@ -444,14 +461,17 @@ declare namespace b3 {
         /**
          * Creates an instance of Composite.
          */
-        constructor(
-            { children, name, title, properties }?: {
-                children?: BaseNode[] | undefined;
-                name?: string | undefined;
-                title?: string | undefined;
-                properties?: any;
-            },
-        );
+        constructor({
+            children,
+            name,
+            title,
+            properties,
+        }?: {
+            children?: BaseNode[] | undefined;
+            name?: string | undefined;
+            title?: string | undefined;
+            properties?: any;
+        });
     }
 
     /**
@@ -462,9 +482,15 @@ declare namespace b3 {
         /**
          * Creates an instance of Condition.
          */
-        constructor(
-            { name, title, properties }?: { name?: string | undefined; title?: string | undefined; properties?: any },
-        );
+        constructor({
+            name,
+            title,
+            properties,
+        }?: {
+            name?: string | undefined;
+            title?: string | undefined;
+            properties?: any;
+        });
     }
 
     /**
@@ -506,14 +532,17 @@ declare namespace b3 {
         /**
          * Creates an instance of Decorator.
          */
-        constructor(
-            { child, name, title, properties }?: {
-                child?: BaseNode | undefined;
-                name?: string | undefined;
-                title?: string | undefined;
-                properties?: any;
-            },
-        );
+        constructor({
+            child,
+            name,
+            title,
+            properties,
+        }?: {
+            child?: BaseNode | undefined;
+            name?: string | undefined;
+            title?: string | undefined;
+            properties?: any;
+        });
     }
 
     /**
@@ -752,7 +781,13 @@ declare namespace b3 {
          * - **maxLoop** (*Integer*) Maximum number of repetitions.
          * - **child** (*BaseNode*) The child node.
          */
-        constructor({ child, maxLoop }?: { child?: BaseNode | undefined; maxLoop?: number | undefined });
+        constructor({
+            child,
+            maxLoop,
+        }?: {
+            child?: BaseNode | undefined;
+            maxLoop?: number | undefined;
+        });
 
         /**
          * Open method.
@@ -778,7 +813,13 @@ declare namespace b3 {
          * - **maxTime** (*Integer*) Maximum time a child can execute.
          * - **child** (*BaseNode*) The child node.
          */
-        constructor({ maxTime, child }?: { maxTime?: number | undefined; child?: BaseNode | undefined });
+        constructor({
+            maxTime,
+            child,
+        }?: {
+            maxTime?: number | undefined;
+            child?: BaseNode | undefined;
+        });
 
         /**
          * Open method.
@@ -803,7 +844,13 @@ declare namespace b3 {
          * - **maxLoop** (*Integer*) Maximum number of repetitions. Default to -1 (infinite).
          * - **child** (*BaseNode*) The child node.
          */
-        constructor({ maxLoop, child }?: { maxLoop?: number | undefined; child?: BaseNode | undefined });
+        constructor({
+            maxLoop,
+            child,
+        }?: {
+            maxLoop?: number | undefined;
+            child?: BaseNode | undefined;
+        });
 
         /**
          * Open method.
@@ -828,7 +875,13 @@ declare namespace b3 {
          * - **maxLoop** (*Integer*) Maximum number of repetitions. Default to -1 (infinite).
          * - **child** (*BaseNode*) The child node.
          */
-        constructor({ maxLoop, child }?: { maxLoop?: number | undefined; child?: BaseNode | undefined });
+        constructor({
+            maxLoop,
+            child,
+        }?: {
+            maxLoop?: number | undefined;
+            child?: BaseNode | undefined;
+        });
 
         /**
          * Open method.
@@ -853,7 +906,13 @@ declare namespace b3 {
          * - **maxLoop** (*Integer*) Maximum number of repetitions. Default to -1 (infinite).
          * - **child** (*BaseNode*) The child node.
          */
-        constructor({ maxLoop, child }?: { maxLoop?: number | undefined; child?: BaseNode | undefined });
+        constructor({
+            maxLoop,
+            child,
+        }?: {
+            maxLoop?: number | undefined;
+            child?: BaseNode | undefined;
+        });
 
         /**
          * Open method.

@@ -14,7 +14,7 @@ declare namespace coffeeify {
     }
 
     interface ParseError extends SyntaxError {
-        new(error: any, src: string, file: string): ParseError;
+        new (error: any, src: string, file: string): ParseError;
         message: string;
         line: number;
         column: number;

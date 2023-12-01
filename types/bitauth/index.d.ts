@@ -13,9 +13,14 @@ export function generateSin(): {
     pub: string;
     sin: string;
 };
-export function getPublicKeyFromPrivateKey(privkey: string | Uint8Array): string;
+export function getPublicKeyFromPrivateKey(
+    privkey: string | Uint8Array,
+): string;
 export function getSinFromPublicKey(pubkey: string | Uint8Array): string;
-export function sign(data: string | Uint8Array, privkey: string | Uint8Array): Uint8Array;
+export function sign(
+    data: string | Uint8Array,
+    privkey: string | Uint8Array,
+): Uint8Array;
 export function verifySignature(
     data: string | Uint8Array,
     pubkey: string | Uint8Array,

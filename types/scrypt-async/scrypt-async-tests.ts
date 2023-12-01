@@ -1,6 +1,6 @@
 // Tests by: Kaur Kuut <https://github.com/xStrom>
 import scrypt = require("scrypt-async");
-var callback: scrypt.CallbackFunc = function(key: string | number[]) {};
+var callback: scrypt.CallbackFunc = function (key: string | number[]) {};
 
 scrypt("abc", "def", 10, 8, 32, 1000, callback, "base64");
 scrypt("abc", [100, 101, 102], 10, 8, 32, 1000, callback, "base64");

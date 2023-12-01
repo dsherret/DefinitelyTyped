@@ -8,7 +8,8 @@ chromeDriver.start();
 chromeDriver.stop();
 
 const driverProcess: ChildProcess = chromeDriver.start(["a", "b", "c"]);
-const chromeDriverDefaultInstance: ChildProcess | undefined = chromeDriver.defaultInstance;
+const chromeDriverDefaultInstance: ChildProcess | undefined =
+    chromeDriver.defaultInstance;
 
 const promise = chromeDriver.start(["a", "b", "c"], true);
 

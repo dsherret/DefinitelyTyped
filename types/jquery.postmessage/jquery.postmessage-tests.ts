@@ -8,8 +8,8 @@ function test_postMessage() {
     // post object message
     $.postMessage(
         {
-            "a": "1",
-            "b": "2",
+            a: "1",
+            b: "2",
         },
         "http://dummy.url/",
         parent,
@@ -26,7 +26,11 @@ function test_receiveMessage() {
     }, "http://dummy.url");
 
     // receive source origin callback
-    $.receiveMessage((e) => {}, (sourceOrigin) => {
-        return sourceOrigin === "http://dummy.url";
-    }, 100);
+    $.receiveMessage(
+        (e) => {},
+        (sourceOrigin) => {
+            return sourceOrigin === "http://dummy.url";
+        },
+        100,
+    );
 }

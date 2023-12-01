@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/jsreport-core",
-    "version": "2.0.9999",
-    "projects": [
-        "http://jsreport.net"
-    ],
-    "dependencies": {
-        "@types/node": "*"
+  "private": true,
+  "name": "@types/jsreport-core",
+  "version": "2.0.9999",
+  "projects": [
+    "http://jsreport.net"
+  ],
+  "dependencies": {
+    "@types/node": "*"
+  },
+  "devDependencies": {
+    "@types/jsreport-core": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "taoqf",
+      "githubUsername": "taoqf"
     },
-    "devDependencies": {
-        "@types/jsreport-core": "workspace:."
+    {
+      "name": "pofider",
+      "githubUsername": "pofider"
     },
-    "owners": [
-        {
-            "name": "taoqf",
-            "githubUsername": "taoqf"
-        },
-        {
-            "name": "pofider",
-            "githubUsername": "pofider"
-        },
-        {
-            "name": "Keith Kikta",
-            "githubUsername": "newbish"
-        }
-    ]
+    {
+      "name": "Keith Kikta",
+      "githubUsername": "newbish"
+    }
+  ]
 }

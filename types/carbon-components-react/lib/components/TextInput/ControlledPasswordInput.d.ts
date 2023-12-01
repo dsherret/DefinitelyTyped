@@ -1,5 +1,9 @@
 import * as React from "react";
-import { ForwardRefReturn, TooltipAlignment, TooltipPosition } from "../../../typings/shared";
+import {
+    ForwardRefReturn,
+    TooltipAlignment,
+    TooltipPosition,
+} from "../../../typings/shared";
 import { TextInputSharedProps } from "./props";
 
 /**
@@ -17,6 +21,9 @@ export interface ControlledPasswordInputProps extends TextInputSharedProps {
 /**
  * @deprecated
  */
-declare const ControlledPasswordInput: ForwardRefReturn<HTMLInputElement, ControlledPasswordInputProps>;
+declare const ControlledPasswordInput: ForwardRefReturn<
+    HTMLInputElement,
+    ControlledPasswordInputProps
+>;
 
 export default ControlledPasswordInput;

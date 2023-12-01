@@ -26,7 +26,8 @@ const sig: ndn.Signature = data.getSignature();
 n = data.getCongestionMark();
 n = data.getIncomingFaceId();
 
-data = data.setName(name)
+data = data
+    .setName(name)
     .setMetaInfo(meta)
     .setContent(blob)
     .setContent(Buffer.alloc(4))

@@ -4,8 +4,8 @@ declare namespace Core {
     type Source =
         | string
         | {
-            toString(): string;
-        };
+              toString(): string;
+          };
 
     type PathFetcher = (
         file: string,

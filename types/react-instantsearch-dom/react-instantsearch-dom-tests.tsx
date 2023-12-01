@@ -19,7 +19,7 @@ import {
 } from "react-instantsearch/dom";
 
 // DOM
-(() => {
+() => {
     const App = () => (
         <InstantSearch searchClient={{}} indexName="bestbuy">
             <Search />
@@ -83,10 +83,10 @@ import {
             </div>
         );
     }
-});
+};
 
 // https://community.algolia.com/react-instantsearch/guide//Highlighting_results.html
-(() => {
+() => {
     const Hit = ({ hit }: { hit: Hit }) => (
         <p>
             <Highlight attribute="description" hit={hit} tagName="mark" />
@@ -100,7 +100,7 @@ import {
             </InstantSearch>
         );
     }
-});
+};
 
 // TODO
 // () => {
@@ -138,13 +138,13 @@ import {
 // };
 
 // https://community.algolia.com/react-instantsearch/guide/i18n.html
-(() => {
+() => {
     const App = () => (
         <InstantSearch indexName="..." searchClient={{}}>
             <Menu attribute="fruits" translations={{ showMore: "Voir plus" }} />
         </InstantSearch>
     );
-});
+};
 
 // https://community.algolia.com/react-instantsearch/guide/Sorting_and_filtering.html
 // TODO
@@ -166,14 +166,14 @@ import {
 // };
 
 // https://community.algolia.com/react-instantsearch/guide/Default_refinements.html
-(() => {
+() => {
     const App = () => (
         <InstantSearch indexName="..." searchClient={{}}>
             <SearchBox defaultRefinement="hi" />
             <Menu attribute="fruits" defaultRefinement="Orange" />
         </InstantSearch>
     );
-});
+};
 
 // TODO
 // () => {
@@ -202,15 +202,15 @@ import {
 
 <RefinementList attribute="products" searchable />;
 
-(() => {
+() => {
     // https://community.algolia.com/react-instantsearch/guide/Search_parameters.html
     <InstantSearch indexName="indexName" searchClient={{}}>
         <Configure distinct={1} />
         // widgets
     </InstantSearch>;
-});
+};
 
-(() => {
+() => {
     function onSearchBoxChange(event: React.SyntheticEvent<HTMLInputElement>) {}
 
     function onSearchBoxKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {}
@@ -226,7 +226,7 @@ import {
         onSubmit={onSearchBoxSubmit}
         submit={<></>}
     />;
-});
+};
 
 import { findResultsState } from "react-instantsearch-dom/server";
 // import { createServer } from 'http';
@@ -234,7 +234,9 @@ declare function createServer(handler: (req: any, res: any) => any): any;
 import { renderToString } from "react-dom/server";
 
 const test = () => {
-    class App extends React.Component<InstantSearchProps & { something: boolean }> {
+    class App extends React.Component<
+        InstantSearchProps & { something: boolean }
+    > {
         render() {
             return (
                 <InstantSearch {...this.props}>
@@ -259,7 +261,9 @@ const test = () => {
             searchState,
             resultsState,
         };
-        const appAsString = renderToString(<App {...props} {...appInitialState} />);
+        const appAsString = renderToString(
+            <App {...props} {...appInitialState} />,
+        );
         res.send(
             `
   <!doctype html>
@@ -267,7 +271,9 @@ const test = () => {
     <body>
       <h1>Awesome server-side rendered search</h1>
       <did id="root">${appAsString}</div>
-      <script>window.__APP_INITIAL_STATE__ = ${JSON.stringify(appInitialState)}</script>
+      <script>window.__APP_INITIAL_STATE__ = ${JSON.stringify(
+          appInitialState,
+      )}</script>
       <script src="bundle.js"></script> <!-- this is the build of browser.js -->
     </body>
   </html>`,
@@ -275,7 +281,7 @@ const test = () => {
     });
 };
 
-(() => {
+() => {
     // https://www.algolia.com/doc/api-reference/widgets/sort-by/react/
     <SortBy
         className="sort-by"
@@ -285,15 +291,16 @@ const test = () => {
             { value: "dev_index", label: "Relevance" },
             { value: "dev_index_name_asc", label: "Alphabetical" },
         ]}
-        transformItems={items =>
-            items.map(item => ({
+        transformItems={(items) =>
+            items.map((item) => ({
                 ...item,
                 label: item.label.toUpperCase(),
-            }))}
+            }))
+        }
     />;
-});
+};
 
-(() => {
+() => {
     // https://www.algolia.com/doc/api-reference/widgets/hits-per-page/react/
     <HitsPerPage
         className="hits-per-page"
@@ -304,15 +311,16 @@ const test = () => {
         ]}
         defaultRefinement={5}
         // Optional parameters
-        transformItems={items =>
-            items.map(item => ({
+        transformItems={(items) =>
+            items.map((item) => ({
                 ...item,
                 label: item.label.toUpperCase(),
-            }))}
+            }))
+        }
     />;
-});
+};
 
-(() => {
+() => {
     // https://www.algolia.com/doc/api-reference/widgets/menu-select/react/
     <MenuSelect
         className="menu-select"
@@ -321,21 +329,22 @@ const test = () => {
         // Optional parameters
         defaultRefinement="Apple"
         limit={20}
-        transformItems={items =>
-            items.map(item => ({
+        transformItems={(items) =>
+            items.map((item) => ({
                 ...item,
                 label: item.label.toUpperCase(),
-            }))}
+            }))
+        }
         translations={{
             seeAllOption: "See all",
         }}
     />;
-});
+};
 
-(() => {
+() => {
     // https://www.algolia.com/doc/api-reference/widgets/dynamic-facets/react/
     <DynamicWidgets
-        transformItems={item => item}
+        transformItems={(item) => item}
         fallbackComponent={RefinementList}
         facets={["*"]}
         maxValuesPerFacet={20}
@@ -343,4 +352,4 @@ const test = () => {
     >
         <RefinementList attribute="brand" />
     </DynamicWidgets>;
-});
+};

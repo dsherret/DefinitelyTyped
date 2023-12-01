@@ -1,7 +1,8 @@
 import MiniHtmlWebpackPlugin = require("mini-html-webpack-plugin");
 import webpack = require("webpack");
 import { minify } from "html-minifier";
-const { generateAttributes, generateCSSReferences, generateJSReferences } = MiniHtmlWebpackPlugin;
+const { generateAttributes, generateCSSReferences, generateJSReferences } =
+    MiniHtmlWebpackPlugin;
 
 const config: webpack.Configuration = {
     plugins: [
@@ -51,7 +52,8 @@ const configMinify = {
             context: {
                 title: "Minification demo",
             },
-            template: context => minify(MiniHtmlWebpackPlugin.defaultTemplate(context)),
+            template: (context) =>
+                minify(MiniHtmlWebpackPlugin.defaultTemplate(context)),
         }),
     ],
 };
@@ -74,7 +76,15 @@ const configCustomTemplates = {
                     defer: true,
                 },
             },
-            template: ({ css, js, publicPath, title, htmlAttributes, cssAttributes, jsAttributes }) => {
+            template: ({
+                css,
+                js,
+                publicPath,
+                title,
+                htmlAttributes,
+                cssAttributes,
+                jsAttributes,
+            }) => {
                 const htmlAttrs = generateAttributes(htmlAttributes);
                 const cssTags = generateCSSReferences({
                     files: css,

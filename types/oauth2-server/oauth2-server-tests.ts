@@ -22,7 +22,9 @@ const oauth2Model: OAuth2Server.AuthorizationCodeModel = {
     ): Promise<OAuth2Server.Token> => {
         return token;
     },
-    getAccessToken: async (accessToken: string): Promise<OAuth2Server.Token> => {
+    getAccessToken: async (
+        accessToken: string,
+    ): Promise<OAuth2Server.Token> => {
         return {
             accessToken,
             client: { id: "testClient", grants: ["access_token"] },
@@ -77,7 +79,11 @@ const authenticate = (authenticateOptions?: {}) => {
 
         try {
             // Test async method of accessing oauth2Server
-            const token = await oauth2Server.authenticate(request, response, options);
+            const token = await oauth2Server.authenticate(
+                request,
+                response,
+                options,
+            );
             req.user = token;
             next();
         } catch (err) {
@@ -87,26 +93,37 @@ const authenticate = (authenticateOptions?: {}) => {
 };
 
 const app = express();
-app.all("/oauth2/token", (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    const request = new OAuth2Server.Request(req);
-    const response = new OAuth2Server.Response(res);
+app.all(
+    "/oauth2/token",
+    (
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction,
+    ) => {
+        const request = new OAuth2Server.Request(req);
+        const response = new OAuth2Server.Response(res);
 
-    oauth2Server.token(request, response)
-        .then((token: OAuth2Server.Token) => {
-            res.json(token);
-        }).catch((err: any) => {
-            res.status(err.code || 500).json(err);
-        });
-});
+        oauth2Server
+            .token(request, response)
+            .then((token: OAuth2Server.Token) => {
+                res.json(token);
+            })
+            .catch((err: any) => {
+                res.status(err.code || 500).json(err);
+            });
+    },
+);
 
 app.post("/oauth2/authorize", (req, res) => {
     const request = new OAuth2Server.Request(req);
     const response = new OAuth2Server.Response(res);
 
-    oauth2Server.authorize(request, response)
+    oauth2Server
+        .authorize(request, response)
         .then((success: OAuth2Server.AuthorizationCode) => {
             res.json(success);
-        }).catch((err: any) => {
+        })
+        .catch((err: any) => {
             res.status(err.code || 500).json(err);
         });
 });
@@ -114,7 +131,11 @@ app.post("/oauth2/authorize", (req, res) => {
 app.get(
     "/secure",
     authenticate(),
-    (req: express.Request & { user: OAuth2Server.Token }, res: express.Response, next: express.NextFunction) => {
+    (
+        req: express.Request & { user: OAuth2Server.Token },
+        res: express.Response,
+        next: express.NextFunction,
+    ) => {
         res.json({ message: "Secure data" });
     },
 );
@@ -122,7 +143,11 @@ app.get(
 app.get(
     "/profile",
     authenticate({ scope: "profile" }),
-    (req: express.Request & { user: OAuth2Server.Token }, res: express.Response, next: express.NextFunction) => {
+    (
+        req: express.Request & { user: OAuth2Server.Token },
+        res: express.Response,
+        next: express.NextFunction,
+    ) => {
         res.json({
             profile: req.user,
         });

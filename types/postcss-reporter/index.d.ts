@@ -17,7 +17,9 @@ declare namespace postcssReporter {
          * - accepts an object containing a messages array and a source string
          * - returns the string to report
          */
-        formatter?: ((input: { messages: Message[]; source: string }) => string) | undefined;
+        formatter?:
+            | ((input: { messages: Message[]; source: string }) => string)
+            | undefined;
         /**
          * If plugins is empty (as it is by default),
          * the reporter will log messages from every PostCSS plugin.

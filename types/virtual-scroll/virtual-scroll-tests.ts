@@ -15,9 +15,13 @@ const scrollOptions: VirtualScroll.VirtualScrollOptions = {
 
 const scroll = new VirtualScroll(scrollOptions);
 
-const callback: VirtualScroll.VirtualScrollCallback = (
-    { deltaX, deltaY, originalEvent, x, y }: VirtualScroll.VirtualScrollEvent,
-) => {
+const callback: VirtualScroll.VirtualScrollCallback = ({
+    deltaX,
+    deltaY,
+    originalEvent,
+    x,
+    y,
+}: VirtualScroll.VirtualScrollEvent) => {
     scroll.off(callback);
     scroll.destroy();
 };

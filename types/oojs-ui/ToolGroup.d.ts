@@ -21,12 +21,16 @@ declare namespace OO.ui {
     interface ToolGroup extends ToolGroup.Props, ToolGroup.Prototype {}
 
     namespace ToolGroup {
-        interface EventMap extends Widget.EventMap, mixin.GroupElement.EventMap {
+        interface EventMap
+            extends Widget.EventMap,
+                mixin.GroupElement.EventMap {
             update: [];
             active: [visible: boolean];
         }
 
-        interface ConfigOptions extends Widget.ConfigOptions, mixin.GroupElement.ConfigOptions {
+        interface ConfigOptions
+            extends Widget.ConfigOptions,
+                mixin.GroupElement.ConfigOptions {
             /** List of tools to include in the toolgroup, see above. */
             include?: ToolExtractionCollection[] | ToolExtractionCollection;
             /** List of tools to exclude from the toolgroup, see above. */
@@ -66,7 +70,9 @@ declare namespace OO.ui {
 
         interface Props extends Widget.Props, mixin.GroupElement.Props {}
 
-        interface Prototype extends Widget.Prototype, mixin.GroupElement.Prototype {
+        interface Prototype
+            extends Widget.Prototype,
+                mixin.GroupElement.Prototype {
             /**
              * Get the toolbar that contains the toolgroup.
              *
@@ -87,7 +93,10 @@ declare namespace OO.ui {
             // #region EventEmitter overloads
             on<K extends keyof EventMap, A extends ArgTuple = [], C = null>(
                 event: K,
-                method: EventHandler<C, (this: C, ...args: [...A, ...EventMap[K]]) => void>,
+                method: EventHandler<
+                    C,
+                    (this: C, ...args: [...A, ...EventMap[K]]) => void
+                >,
                 args?: A,
                 context?: C,
             ): this;
@@ -98,7 +107,10 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            once<K extends keyof EventMap>(event: K, listener: (this: null, ...args: EventMap[K]) => void): this;
+            once<K extends keyof EventMap>(
+                event: K,
+                listener: (this: null, ...args: EventMap[K]) => void,
+            ): this;
             once<K extends string>(
                 event: K extends keyof EventMap ? never : K,
                 listener: (this: null, ...args: any[]) => void,
@@ -106,7 +118,10 @@ declare namespace OO.ui {
 
             off<K extends keyof EventMap, C = null>(
                 event: K,
-                method?: EventHandler<C, (this: C, ...args: EventMap[K]) => void>,
+                method?: EventHandler<
+                    C,
+                    (this: C, ...args: EventMap[K]) => void
+                >,
                 context?: C,
             ): this;
             off<K extends string, C = null>(
@@ -115,11 +130,23 @@ declare namespace OO.ui {
                 context?: C,
             ): this;
 
-            emit<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emit<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emit<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emit<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
-            emitThrow<K extends keyof EventMap>(event: K, ...args: EventMap[K]): boolean;
-            emitThrow<K extends string>(event: K extends keyof EventMap ? never : K, ...args: any[]): boolean;
+            emitThrow<K extends keyof EventMap>(
+                event: K,
+                ...args: EventMap[K]
+            ): boolean;
+            emitThrow<K extends string>(
+                event: K extends keyof EventMap ? never : K,
+                ...args: any[]
+            ): boolean;
 
             connect<T extends Partial<Record<keyof EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
                 context: C,
@@ -138,7 +165,7 @@ declare namespace OO.ui {
              * @param toolbar
              * @param config Configuration options
              */
-            new(toolbar: Toolbar, config?: ConfigOptions): ToolGroup;
+            new (toolbar: Toolbar, config?: ConfigOptions): ToolGroup;
             prototype: Prototype;
             static: Static;
             super: Widget.Constructor;

@@ -149,9 +149,9 @@ declare namespace SpotifyApi {
         uris?: string[] | undefined;
         offset?:
             | {
-                position?: number | undefined;
-                uri?: string | undefined;
-            }
+                  position?: number | undefined;
+                  uri?: string | undefined;
+              }
             | undefined;
         position_ms?: number | undefined;
     }
@@ -231,7 +231,8 @@ declare namespace SpotifyApi {
      * GET /v1/artists/{id}/albums
      * https://developer.spotify.com/web-api/get-artists-albums/
      */
-    interface ArtistsAlbumsResponse extends PagingObject<AlbumObjectSimplified> {}
+    interface ArtistsAlbumsResponse
+        extends PagingObject<AlbumObjectSimplified> {}
 
     /**
      * Get an Artist’s Top Tracks
@@ -572,7 +573,8 @@ declare namespace SpotifyApi {
      * GET /v1/me/player/recently-played
      * https://developer.spotify.com/web-api/get-users-top-artists-and-tracks/
      */
-    interface UsersRecentlyPlayedTracksResponse extends CursorBasedPagingObject<PlayHistoryObject> {}
+    interface UsersRecentlyPlayedTracksResponse
+        extends CursorBasedPagingObject<PlayHistoryObject> {}
 
     /**
      * Add an item to the end of the user’s current playback queue.
@@ -688,14 +690,12 @@ declare namespace SpotifyApi {
      * https://developer.spotify.com/web-api/search-item/
      */
     interface SearchResponse
-        extends
-            Partial<ArtistSearchResponse>,
+        extends Partial<ArtistSearchResponse>,
             Partial<AlbumSearchResponse>,
             Partial<TrackSearchResponse>,
             Partial<PlaylistSearchResponse>,
             Partial<ShowSearchResponse>,
-            Partial<EpisodeSearchResponse>
-    {}
+            Partial<EpisodeSearchResponse> {}
 
     /**
      * Get an Show
@@ -773,7 +773,8 @@ declare namespace SpotifyApi {
      * GET /v1/users/{user_id}/playlists
      * https://developer.spotify.com/web-api/get-list-users-playlists/
      */
-    interface ListOfUsersPlaylistsResponse extends PagingObject<PlaylistObjectSimplified> {}
+    interface ListOfUsersPlaylistsResponse
+        extends PagingObject<PlaylistObjectSimplified> {}
 
     /**
      * Get a list of the current user's playlists
@@ -781,7 +782,8 @@ declare namespace SpotifyApi {
      * GET /v1/me/playlists
      * https://developer.spotify.com/web-api/get-list-users-playlists/
      */
-    interface ListOfCurrentUsersPlaylistsResponse extends PagingObject<PlaylistObjectSimplified> {}
+    interface ListOfCurrentUsersPlaylistsResponse
+        extends PagingObject<PlaylistObjectSimplified> {}
 
     /**
      * Get a playlist
@@ -821,7 +823,8 @@ declare namespace SpotifyApi {
      * https://developer.spotify.com/web-api/change-playlist-details/
      * @deprecated Use `ChangePlaylistDetailsResponse` instead
      */
-    interface ChangePlaylistDetailsReponse extends ChangePlaylistDetailsResponse {}
+    interface ChangePlaylistDetailsReponse
+        extends ChangePlaylistDetailsResponse {}
 
     /**
      * Add Tracks to a Playlist
@@ -837,7 +840,8 @@ declare namespace SpotifyApi {
      * DELETE /v1/users/{user_id}/playlists/{playlist_id}/tracks
      * https://developer.spotify.com/web-api/remove-tracks-playlist/
      */
-    interface RemoveTracksFromPlaylistResponse extends PlaylistSnapshotResponse {}
+    interface RemoveTracksFromPlaylistResponse
+        extends PlaylistSnapshotResponse {}
 
     /**
      * Reorder a Playlist’s Tracks
@@ -869,7 +873,8 @@ declare namespace SpotifyApi {
      * https://developer.spotify.com/web-api/upload-a-custom-playlist-cover-image/
      * @deprecated Use `UploadCustomPlaylistCoverImageResponse` instead
      */
-    interface UploadCustomPlaylistCoverImageReponse extends UploadCustomPlaylistCoverImageResponse {}
+    interface UploadCustomPlaylistCoverImageReponse
+        extends UploadCustomPlaylistCoverImageResponse {}
 
     /**
      * Check if Users Follow a Playlist
@@ -891,7 +896,9 @@ declare namespace SpotifyApi {
         devices: UserDevice[];
     }
 
-    interface CurrentPlaybackResponse extends CurrentlyPlayingObject, PlaybackObject {}
+    interface CurrentPlaybackResponse
+        extends CurrentlyPlayingObject,
+            PlaybackObject {}
 
     interface CurrentlyPlayingResponse extends CurrentlyPlayingObject {}
 
@@ -943,7 +950,12 @@ declare namespace SpotifyApi {
          * Possible values are “album”, “single”, “compilation”, “appears_on”.
          * Compare to album_type this field represents relationship between the artist and the album.
          */
-        album_group?: "album" | "single" | "compilation" | "appears_on" | undefined;
+        album_group?:
+            | "album"
+            | "single"
+            | "compilation"
+            | "appears_on"
+            | undefined;
         /**
          * The type of the album: one of “album”, “single”, or “compilation”.
          */
@@ -1381,7 +1393,8 @@ declare namespace SpotifyApi {
      * Recommendation Album Object
      * Uses the same object structure as Simple Album Object, but with `album_type` in caps.
      */
-    interface RecommendationAlbumObject extends Omit<AlbumObjectSimplified, "album_type"> {
+    interface RecommendationAlbumObject
+        extends Omit<AlbumObjectSimplified, "album_type"> {
         /**
          * The type of the album: one of “ALBUM”, “SINGLE”, or “COMPILATION”.
          * Note that this differs from the types returned by all other spotify APIs by being in all caps.

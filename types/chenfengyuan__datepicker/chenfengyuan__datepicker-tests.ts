@@ -1,6 +1,6 @@
 import { DatePickerEvent } from "chenfengyuan__datepicker";
 
-$("[data-toggle=\"datepicker\"]").datepicker();
+$('[data-toggle="datepicker"]').datepicker();
 
 $().datepicker({
     autoShow: false,
@@ -99,7 +99,15 @@ $().datepicker({
 });
 
 $().datepicker({
-    days: ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+    days: [
+        "Sonntag",
+        "Montag",
+        "Dienstag",
+        "Mittwoch",
+        "Donnerstag",
+        "Freitag",
+        "Samstag",
+    ],
 });
 
 $().datepicker({
@@ -128,11 +136,24 @@ $().datepicker({
 });
 
 $().datepicker({
-    monthsShort: ["Jän", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+    monthsShort: [
+        "Jän",
+        "Feb",
+        "Mär",
+        "Apr",
+        "Mai",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Okt",
+        "Nov",
+        "Dez",
+    ],
 });
 
 $().datepicker({
-    template: "<div class=\"invalid-template\">See documentation</div>",
+    template: '<div class="invalid-template">See documentation</div>',
 });
 
 $().datepicker({

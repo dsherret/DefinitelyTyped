@@ -6,7 +6,11 @@
 type FieldPath = string | number | Array<string | number>;
 
 /** Whenever a given state field changes this handler will be called. */
-type ChangeHandler<T> = (newValue: T, oldValue: T, pathToField: FieldPath) => void;
+type ChangeHandler<T> = (
+    newValue: T,
+    oldValue: T,
+    pathToField: FieldPath,
+) => void;
 
 /** @see ChangeHandlerWrapper */
 type FieldWatch = () => void;

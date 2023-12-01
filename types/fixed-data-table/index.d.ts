@@ -207,30 +207,40 @@ declare namespace FixedDataTable {
         /**
          * Callback that is called when a row is clicked.
          */
-        onRowClick?: ((event: React.SyntheticEvent<Table>, rowIndex: number) => void) | undefined;
+        onRowClick?:
+            | ((event: React.SyntheticEvent<Table>, rowIndex: number) => void)
+            | undefined;
 
         /**
          * Callback that is called when a row is double clicked.
          */
-        onRowDoubleClick?: ((event: React.SyntheticEvent<Table>, rowIndex: number) => void) | undefined;
+        onRowDoubleClick?:
+            | ((event: React.SyntheticEvent<Table>, rowIndex: number) => void)
+            | undefined;
 
         /**
          * Callback that is called when a mouse-down event happens
          * on a row.
          */
-        onRowMouseDown?: ((event: React.SyntheticEvent<Table>, rowIndex: number) => void) | undefined;
+        onRowMouseDown?:
+            | ((event: React.SyntheticEvent<Table>, rowIndex: number) => void)
+            | undefined;
 
         /**
          * Callback that is called when a mouse-enter event happens
          * on a row.
          */
-        onRowMouseEnter?: ((event: React.SyntheticEvent<Table>, rowIndex: number) => void) | undefined;
+        onRowMouseEnter?:
+            | ((event: React.SyntheticEvent<Table>, rowIndex: number) => void)
+            | undefined;
 
         /**
          * Callback that is called when a mouse-leave event happens
          * on a row.
          */
-        onRowMouseLeave?: ((event: React.SyntheticEvent<Table>, rowIndex: number) => void) | undefined;
+        onRowMouseLeave?:
+            | ((event: React.SyntheticEvent<Table>, rowIndex: number) => void)
+            | undefined;
 
         /**
          * Callback that is called when resizer has been released
@@ -239,7 +249,9 @@ declare namespace FixedDataTable {
          * Required if the isResizable property is true on any
          * column.
          */
-        onColumnResizeEndCallback?: ((newColumnWidth: number, columnKey: string) => void) | undefined;
+        onColumnResizeEndCallback?:
+            | ((newColumnWidth: number, columnKey: string) => void)
+            | undefined;
 
         /**
          * Whether a column is currently being resized.
@@ -288,7 +300,11 @@ declare namespace FixedDataTable {
          *
          * If you pass in a function, you will receive the same props object as the first argument.
          */
-        header?: string | React.ReactElement | ((props: CellProps) => string | React.ReactElement) | undefined;
+        header?:
+            | string
+            | React.ReactElement
+            | ((props: CellProps) => string | React.ReactElement)
+            | undefined;
 
         /**
          * This is the body cell that will be cloned for this
@@ -312,7 +328,11 @@ declare namespace FixedDataTable {
          * If you pass in a function, you will receive the same
          * props object as the first argument.
          */
-        cell?: string | React.ReactElement | ((props: CellProps) => string | React.ReactElement) | undefined;
+        cell?:
+            | string
+            | React.ReactElement
+            | ((props: CellProps) => string | React.ReactElement)
+            | undefined;
 
         /**
          * The footer cell for this column. This can either be a
@@ -335,7 +355,11 @@ declare namespace FixedDataTable {
          * If you pass in a function, you will receive the same
          * props object as the first argument.
          */
-        footer?: string | React.ReactElement | ((props: CellProps) => string | React.ReactElement) | undefined;
+        footer?:
+            | string
+            | React.ReactElement
+            | ((props: CellProps) => string | React.ReactElement)
+            | undefined;
 
         /**
          * This is used to uniquely identify the column, and is not
@@ -440,7 +464,10 @@ declare namespace FixedDataTable {
          * If you pass in a function, you will receive the same props
          * object as the first argument.
          */
-        header: string | React.ReactElement | ((props: CellProps) => string | React.ReactElement);
+        header:
+            | string
+            | React.ReactElement
+            | ((props: CellProps) => string | React.ReactElement);
     }
 
     /**
@@ -489,12 +516,8 @@ declare namespace FixedDataTable {
         columnKey?: string | number | undefined;
     }
 
-    export class Table extends React.Component<TableProps> {
-    }
-    export class Column extends React.Component<ColumnProps> {
-    }
-    export class ColumnGroup extends React.Component<ColumnGroupProps> {
-    }
-    export class Cell extends React.Component<CellProps> {
-    }
+    export class Table extends React.Component<TableProps> {}
+    export class Column extends React.Component<ColumnProps> {}
+    export class ColumnGroup extends React.Component<ColumnGroupProps> {}
+    export class Cell extends React.Component<CellProps> {}
 }

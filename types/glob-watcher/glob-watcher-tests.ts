@@ -25,7 +25,9 @@ function test() {
 
     let cnt = 0;
     const pCall = () => {
-        return new Promise<string>((resolve, reject) => resolve((++cnt).toString()));
+        return new Promise<string>((resolve, reject) =>
+            resolve((++cnt).toString()),
+        );
     };
 
     const res = [
@@ -47,7 +49,7 @@ function test() {
         globWatcher(globs, opts1, taskFunc),
     ];
 
-    return res.map(s => {
+    return res.map((s) => {
         const ee: fs.FSWatcher = s;
         ee.close();
         return ee.eventNames();

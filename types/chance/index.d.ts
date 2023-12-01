@@ -10,9 +10,9 @@ declare namespace Chance {
         (...seed: Seed[]): Chance;
         (generator: () => any): Chance;
 
-        new(): Chance;
-        new(...seed: Seed[]): Chance;
-        new(generator: () => any): Chance;
+        new (): Chance;
+        new (...seed: Seed[]): Chance;
+        new (generator: () => any): Chance;
     }
 
     type FalsyType = false | null | undefined | 0 | typeof NaN | "";
@@ -117,7 +117,16 @@ declare namespace Chance {
         second(): number;
         timestamp(): number;
         timezone(): Timezone;
-        weekday(opts: Options): "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday";
+        weekday(
+            opts: Options,
+        ):
+            | "Monday"
+            | "Tuesday"
+            | "Wednesday"
+            | "Thursday"
+            | "Friday"
+            | "Saturday"
+            | "Sunday";
         year(opts?: Options): string;
 
         // Finance
@@ -163,14 +172,22 @@ declare namespace Chance {
         guid(options?: { version: 4 | 5 }): string;
         hash(opts?: Options): string;
         n<T>(generator: () => T, count: number): T[];
-        n<T, O extends Options>(generator: (options: O) => T, count: number, options: O): T[];
+        n<T, O extends Options>(
+            generator: (options: O) => T,
+            count: number,
+            options: O,
+        ): T[];
         normal(opts?: Options): number;
         radio(opts?: Options): string;
         rpg(dice: string): number[];
         rpg(dice: string, opts?: Options): number[] | number;
         tv(opts?: Options): string;
         unique<T>(generator: () => T, count: number): T[];
-        unique<T, O extends UniqueOptions<T>>(generator: (options: O) => T, count: number, options: O): T[];
+        unique<T, O extends UniqueOptions<T>>(
+            generator: (options: O) => T,
+            count: number,
+            options: O,
+        ): T[];
         weighted<T>(values: T[], weights: number[]): T;
 
         // "Hidden"
@@ -225,7 +242,15 @@ declare namespace Chance {
     }
 
     type FirstNameNationalities = "en" | "it";
-    type LastNameNationalities = FirstNameNationalities | "nl" | "uk" | "de" | "jp" | "es" | "fr" | "*";
+    type LastNameNationalities =
+        | FirstNameNationalities
+        | "nl"
+        | "uk"
+        | "de"
+        | "jp"
+        | "es"
+        | "fr"
+        | "*";
 
     interface FullNameOptions {
         middle: boolean;
@@ -249,7 +274,10 @@ declare namespace Chance {
 
     type PrefixOptions = { gender: "male" | "female" | "all" } & SuffixOptions;
 
-    type NameOptions = FullNameOptions & FirstNameOptions & LastNameOptions & PrefixOptions;
+    type NameOptions = FullNameOptions &
+        FirstNameOptions &
+        LastNameOptions &
+        PrefixOptions;
 
     interface EmailOptions {
         length: number;
@@ -271,7 +299,9 @@ declare namespace Chance {
         max?: Date | undefined;
     }
 
-    type UniqueOptions<T> = { comparator?: ((array: T[], value: T) => boolean) | undefined } & Options;
+    type UniqueOptions<T> = {
+        comparator?: ((array: T[], value: T) => boolean) | undefined;
+    } & Options;
 
     interface Month {
         name: string;

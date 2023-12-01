@@ -11,7 +11,8 @@ const CLIENT: Sfdc.canvas.Client = {
 const APPLICATION: Sfdc.canvas.Application = {
     applicationId: "06Px000000003ed",
     authType: Sfdc.canvas.ApplicationAuthType.SIGNED_REQUEST,
-    canvasUrl: "http://MyDomainName.my.salesforce.com:8080/canvas_app_path/canvas_app.jsp",
+    canvasUrl:
+        "http://MyDomainName.my.salesforce.com:8080/canvas_app_path/canvas_app.jsp",
     developerName: "my_java_app",
     isInstalledPersonalApp: false,
     name: "My Java App",
@@ -330,7 +331,7 @@ Sfdc.canvas.onReady(() => {}); // $ExpectType void
 // =============================================================================
 
 // $ExpectType void
-Sfdc.canvas.client.ctx(response => {
+Sfdc.canvas.client.ctx((response) => {
     response; // $ExpectType Response<string | Context>
 }, CLIENT);
 
@@ -501,7 +502,7 @@ Sfdc.canvas.client.signedrequest({
 });
 
 // $ExpectType void
-Sfdc.canvas.client.refreshSignedRequest(data => {
+Sfdc.canvas.client.refreshSignedRequest((data) => {
     data; // $ExpectType Response<{ response: string; }>
 });
 

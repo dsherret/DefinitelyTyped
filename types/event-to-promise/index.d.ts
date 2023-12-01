@@ -21,7 +21,11 @@ interface EventToPromiseOptions {
  * @param options  An `Object` controlling advanced options.
  * @return         The returned promise has a `cancel()` method which can be used to remove the event listeners. Note that the promise will never settled if canceled.
  */
-declare function eventToPromise(emitter: EventSource, event: string, options?: EventToPromiseOptions): Promise<any>;
+declare function eventToPromise(
+    emitter: EventSource,
+    event: string,
+    options?: EventToPromiseOptions,
+): Promise<any>;
 
 declare namespace eventToPromise {
     /**
@@ -34,7 +38,11 @@ declare namespace eventToPromise {
      * @param errorEvents    The names of the events which reject the promise. (default: `['error']`)
      * @return               The returned promise has a `cancel()` method which can be used to remove the event listeners. Note that the promise will never settled if canceled.
      */
-    export function multi(emitter: EventSource, successEvents: string[], errorEvents?: string[]): Promise<any>;
+    export function multi(
+        emitter: EventSource,
+        successEvents: string[],
+        errorEvents?: string[],
+    ): Promise<any>;
 }
 
 export = eventToPromise;

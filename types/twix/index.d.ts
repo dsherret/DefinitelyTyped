@@ -90,32 +90,56 @@ declare module "moment" {
         twix(date: Date): Twix;
         twix(date: Date, allDay: boolean): Twix;
         twix(date: Date, options: TwixParseAndFormatOptions): Twix;
-        twix(date: Date, format: string, options: TwixParseAndFormatOptions): Twix;
+        twix(
+            date: Date,
+            format: string,
+            options: TwixParseAndFormatOptions,
+        ): Twix;
 
         twix(date: Moment): Twix;
         twix(date: Moment, allDay: boolean): Twix;
         twix(date: Moment, options: TwixParseAndFormatOptions): Twix;
-        twix(date: Moment, format: string, options: TwixParseAndFormatOptions): Twix;
+        twix(
+            date: Moment,
+            format: string,
+            options: TwixParseAndFormatOptions,
+        ): Twix;
 
         twix(date: MomentInput): Twix;
         twix(date: MomentInput, allDay: boolean): Twix;
         twix(date: MomentInput, options: TwixParseAndFormatOptions): Twix;
-        twix(date: MomentInput, format: string, options: TwixParseAndFormatOptions): Twix;
+        twix(
+            date: MomentInput,
+            format: string,
+            options: TwixParseAndFormatOptions,
+        ): Twix;
 
         twix(date: number): Twix;
         twix(date: number, allDay: boolean): Twix;
         twix(date: number, options: TwixParseAndFormatOptions): Twix;
-        twix(date: number, format: string, options: TwixParseAndFormatOptions): Twix;
+        twix(
+            date: number,
+            format: string,
+            options: TwixParseAndFormatOptions,
+        ): Twix;
 
         twix(date: number[]): Twix;
         twix(date: number[], allDay: boolean): Twix;
         twix(date: number[], options: TwixParseAndFormatOptions): Twix;
-        twix(date: number[], format: string, options: TwixParseAndFormatOptions): Twix;
+        twix(
+            date: number[],
+            format: string,
+            options: TwixParseAndFormatOptions,
+        ): Twix;
 
         twix(date: string): Twix;
         twix(date: string, allDay: boolean): Twix;
         twix(date: string, options: TwixParseAndFormatOptions): Twix;
-        twix(date: string, format: string, options: TwixParseAndFormatOptions): Twix;
+        twix(
+            date: string,
+            format: string,
+            options: TwixParseAndFormatOptions,
+        ): Twix;
     }
 
     function twix(start: Moment, end: Moment): Twix;

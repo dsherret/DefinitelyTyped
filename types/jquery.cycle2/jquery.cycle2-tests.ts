@@ -7,7 +7,7 @@ $(".cycle-slideshow").cycle({
     manualSpeed: 100,
 });
 
-var newSlide = "<img src=\"pic.jpg\">";
+var newSlide = '<img src="pic.jpg">';
 $(".cycle-slideshow").cycle("add", newSlide);
 
 $(".cycle-slideshow").cycle("destroy");
@@ -32,12 +32,12 @@ $(".cycle-slideshow").cycle("stop");
 
 // from http://jquery.malsup.com/cycle2/demo/add.php
 var images = [
-    "<img src=\"http://malsup.github.io/images/p2.jpg\">",
-    "<img src=\"http://malsup.github.io/images/p3.jpg\">",
-    "<img src=\"http://malsup.github.io/images/p4.jpg\">",
+    '<img src="http://malsup.github.io/images/p2.jpg">',
+    '<img src="http://malsup.github.io/images/p3.jpg">',
+    '<img src="http://malsup.github.io/images/p4.jpg">',
 ];
 
-$("button").one("click", function() {
+$("button").one("click", function () {
     for (var i = 0; i < images.length; i++) {
         $(".cycle-slideshow").cycle("add", images[i]);
     }

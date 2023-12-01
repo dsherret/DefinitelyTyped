@@ -9,7 +9,12 @@ const state: StateBlock = new md.block.State("# Foobar", md, {}, tokens);
 md.block.tokenize(state, state.line, state.lineMax);
 state.md.block.parse(state.src, state.md, state.env, state.tokens);
 
-const rule: ParserBlock.RuleBlock = (state: StateBlock, startLine: number, endLine: number, silent: boolean) => {
+const rule: ParserBlock.RuleBlock = (
+    state: StateBlock,
+    startLine: number,
+    endLine: number,
+    silent: boolean,
+) => {
     return false;
 };
 

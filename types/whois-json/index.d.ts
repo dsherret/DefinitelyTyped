@@ -106,6 +106,9 @@ declare namespace Whois {
  * @param domainName - The domain name on which to perform the lookup.
  * @param options - Options to tweak the behavior of a WHOIS lookup.
  */
-declare function lookup(domainName: string, options?: Whois.Options): Promise<Whois.Result>;
+declare function lookup(
+    domainName: string,
+    options?: Whois.Options,
+): Promise<Whois.Result>;
 
 export = lookup;

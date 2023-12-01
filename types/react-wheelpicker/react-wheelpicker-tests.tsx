@@ -20,24 +20,27 @@ const App = () => {
 
     return (
         <React.Fragment>
-            <div className="selected" onClick={() => setPickerOpen(!pickerOpen)}>
+            <div
+                className="selected"
+                onClick={() => setPickerOpen(!pickerOpen)}
+            >
                 {selection}
             </div>
-            {pickerOpen
-                && (
-                    <div className="demo-container">
-                        <WheelPicker
-                            animation="wheel"
-                            data={data}
-                            height={40}
-                            parentHeight={250}
-                            fontSize={13}
-                            defaultSelection={defaultSelection}
-                            updateSelection={updateSelection}
-                            scrollerId="scroll-select-subject"
-                        />
-                    </div>
-                )};
+            {pickerOpen && (
+                <div className="demo-container">
+                    <WheelPicker
+                        animation="wheel"
+                        data={data}
+                        height={40}
+                        parentHeight={250}
+                        fontSize={13}
+                        defaultSelection={defaultSelection}
+                        updateSelection={updateSelection}
+                        scrollerId="scroll-select-subject"
+                    />
+                </div>
+            )}
+            ;
         </React.Fragment>
     );
 };

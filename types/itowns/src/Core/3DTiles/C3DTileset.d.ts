@@ -12,8 +12,18 @@ declare class C3DTileset {
     tiles: any[]; // TODO
     extensions?: any; // TODO
 
-    parseTiles(tile: object, baseURL: string, parent: object, registeredExtensions: object): void; // TODO
-    extendTileset(tileset: any, nodeId: any, baseURL: any, registeredExtensions: any): void; // TODO
+    parseTiles(
+        tile: object,
+        baseURL: string,
+        parent: object,
+        registeredExtensions: object,
+    ): void; // TODO
+    extendTileset(
+        tileset: any,
+        nodeId: any,
+        baseURL: any,
+        registeredExtensions: any,
+    ): void; // TODO
 }
 
 export default C3DTileset;

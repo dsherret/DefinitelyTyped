@@ -5,7 +5,7 @@ const badCss = "a {";
 
 postcss()
     .process(badCss, { parser: safe })
-    .then(result => {
+    .then((result) => {
         result.css; // = 'a {}'
         result.css; // $ExpectType string
     });

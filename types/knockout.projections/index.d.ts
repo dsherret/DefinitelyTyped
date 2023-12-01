@@ -1,7 +1,8 @@
 /// <reference types="knockout" />
 
-interface KnockoutMappedObservableArray<T> extends KnockoutObservableArray<T>, KnockoutSubscription {
-}
+interface KnockoutMappedObservableArray<T>
+    extends KnockoutObservableArray<T>,
+        KnockoutSubscription {}
 
 interface KnockoutObservableArrayFunctions<T> {
     map<TResult>(mappingOptions: {
@@ -14,7 +15,9 @@ interface KnockoutObservableArrayFunctions<T> {
         mapping: (value: T) => TResult;
         disposeItem?: ((mappedItem: TResult) => void) | undefined;
     }): KnockoutMappedObservableArray<TResult>;
-    map<TResult>(mappingOptions: (value: T) => TResult): KnockoutMappedObservableArray<TResult>;
+    map<TResult>(
+        mappingOptions: (value: T) => TResult,
+    ): KnockoutMappedObservableArray<TResult>;
 
     filter(predicate: (value: T) => boolean): KnockoutMappedObservableArray<T>;
 }

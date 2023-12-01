@@ -15,7 +15,13 @@ export interface Options {
     contentType?: string | undefined;
     ext?: boolean | undefined;
     before?: HandleFunction[] | undefined;
-    logFn?: ((req: http.IncomingMessage, res: http.ServerResponse, err: Error) => void) | undefined;
+    logFn?:
+        | ((
+              req: http.IncomingMessage,
+              res: http.ServerResponse,
+              err: Error,
+          ) => void)
+        | undefined;
     cors?: boolean | undefined;
     corsHeaders?: string | undefined;
     robots?: string | true | undefined;

@@ -21,10 +21,10 @@ function testDicerSyntax() {
     dicer.on("finish", () => {
         console.log("dicer parsing finished");
     });
-    dicer.on("preamble", part => {
+    dicer.on("preamble", (part) => {
         console.log("dicer preamble to new part");
     });
-    dicer.on("trailer", data => {
+    dicer.on("trailer", (data) => {
         console.log(`dicer trailing data found: ${data.length} bytes`);
     });
     dicer.on("close", () => {
@@ -33,7 +33,7 @@ function testDicerSyntax() {
     dicer.on("drain", () => {
         console.log("dicer drain");
     });
-    dicer.on("error", err => {
+    dicer.on("error", (err) => {
         console.error(`dicer error: ${err.message || JSON.stringify(err)}`);
     });
     dicer.on("finish", () => {
@@ -59,7 +59,7 @@ function handleDicerPartStream(part: Dicer.PartStream) {
     part.on("readable", () => {
         console.log("part readable");
     });
-    part.on("header", header => {
+    part.on("header", (header) => {
         console.log(`part header found:\n${JSON.stringify(header)}`);
     });
     part.on("data", () => {
@@ -68,7 +68,7 @@ function handleDicerPartStream(part: Dicer.PartStream) {
     part.on("finish", () => {
         console.log("part finished");
     });
-    part.on("error", err => {
+    part.on("error", (err) => {
         console.error(`part error: ${err.message || JSON.stringify(err)}`);
     });
     part.on("end", () => {

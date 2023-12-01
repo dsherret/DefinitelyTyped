@@ -8,7 +8,9 @@ export interface MaterialProperties {
 }
 export type MaterialPropertiesArgs = MaterialProperties | undefined;
 
-export type MaterialPropertiesDefaults = typeof DEFAULT_MATERIAL_PROPERTIES | MaterialPropertiesArgs;
+export type MaterialPropertiesDefaults =
+    | typeof DEFAULT_MATERIAL_PROPERTIES
+    | MaterialPropertiesArgs;
 
 /**
  * Sets the body property to be a THREE.Sprite with a texture map on initialized particles.

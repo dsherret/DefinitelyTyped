@@ -8,7 +8,12 @@ declare namespace coffeelint {
          * @param literate Are we dealing with Literate CoffeeScript?
          * @param rules Add custom rules to coffeelint.
          */
-        (optFile?: string, opt?: any, literate?: boolean, rules?: Function[]): NodeJS.ReadWriteStream;
+        (
+            optFile?: string,
+            opt?: any,
+            literate?: boolean,
+            rules?: Function[],
+        ): NodeJS.ReadWriteStream;
         reporter(reporter?: string | Function): NodeJS.ReadWriteStream;
     }
 }

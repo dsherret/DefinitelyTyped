@@ -62,7 +62,12 @@ declare namespace ReactModal {
         overlayClassName?: string | Classes | undefined;
 
         /* Set this to properly hide your application from assistive screenreaders and other assistive technologies while the modal is open. */
-        appElement?: HTMLElement | HTMLElement[] | HTMLCollection | NodeList | undefined;
+        appElement?:
+            | HTMLElement
+            | HTMLElement[]
+            | HTMLCollection
+            | NodeList
+            | undefined;
 
         /* Function that will be run after the modal has opened. */
         onAfterOpen?: OnAfterOpenCallback | undefined;
@@ -117,11 +122,17 @@ declare namespace ReactModal {
 
         /* Custom Overlay element. */
         overlayElement?:
-            | ((props: React.ComponentPropsWithRef<"div">, contentEl: React.ReactElement) => React.ReactElement)
+            | ((
+                  props: React.ComponentPropsWithRef<"div">,
+                  contentEl: React.ReactElement,
+              ) => React.ReactElement)
             | undefined;
         /* Custom Content element. */
         contentElement?:
-            | ((props: React.ComponentPropsWithRef<"div">, children: React.ReactNode) => React.ReactElement)
+            | ((
+                  props: React.ComponentPropsWithRef<"div">,
+                  children: React.ReactNode,
+              ) => React.ReactElement)
             | undefined;
 
         /* String value of data-test-id attibute to be applied to to the modal content. */

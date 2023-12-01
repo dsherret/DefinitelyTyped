@@ -58,14 +58,22 @@ export interface Axis<Domain> {
      *
      * @param context A selection of SVG containers (either SVG or G elements).
      */
-    (context: Selection<SVGSVGElement, any, any, any> | Selection<SVGGElement, any, any, any>): void;
+    (
+        context:
+            | Selection<SVGSVGElement, any, any, any>
+            | Selection<SVGGElement, any, any, any>,
+    ): void;
 
     /**
      * Render the axis to the given context.
      *
      * @param context A transition defined on SVG containers (either SVG or G elements).
      */
-    (context: TransitionLike<SVGSVGElement, any> | TransitionLike<SVGGElement, any>): void;
+    (
+        context:
+            | TransitionLike<SVGSVGElement, any>
+            | TransitionLike<SVGGElement, any>,
+    ): void;
 
     /**
      * Gets the current scale underlying the axis.
@@ -311,7 +319,9 @@ export interface Axis<Domain> {
  *
  * @param scale The scale to be used for axis generation.
  */
-export function axisTop<Domain extends AxisDomain>(scale: AxisScale<Domain>): Axis<Domain>;
+export function axisTop<Domain extends AxisDomain>(
+    scale: AxisScale<Domain>,
+): Axis<Domain>;
 
 /**
  * Constructs a new right-oriented axis generator for the given scale, with empty tick arguments,
@@ -319,7 +329,9 @@ export function axisTop<Domain extends AxisDomain>(scale: AxisScale<Domain>): Ax
  *
  * @param scale The scale to be used for axis generation.
  */
-export function axisRight<Domain extends AxisDomain>(scale: AxisScale<Domain>): Axis<Domain>;
+export function axisRight<Domain extends AxisDomain>(
+    scale: AxisScale<Domain>,
+): Axis<Domain>;
 
 /**
  * Constructs a new bottom-oriented axis generator for the given scale, with empty tick arguments,
@@ -327,7 +339,9 @@ export function axisRight<Domain extends AxisDomain>(scale: AxisScale<Domain>): 
  *
  * @param scale The scale to be used for axis generation.
  */
-export function axisBottom<Domain extends AxisDomain>(scale: AxisScale<Domain>): Axis<Domain>;
+export function axisBottom<Domain extends AxisDomain>(
+    scale: AxisScale<Domain>,
+): Axis<Domain>;
 
 /**
  * Constructs a new left-oriented axis generator for the given scale, with empty tick arguments,
@@ -335,4 +349,6 @@ export function axisBottom<Domain extends AxisDomain>(scale: AxisScale<Domain>):
  *
  * @param scale The scale to be used for axis generation.
  */
-export function axisLeft<Domain extends AxisDomain>(scale: AxisScale<Domain>): Axis<Domain>;
+export function axisLeft<Domain extends AxisDomain>(
+    scale: AxisScale<Domain>,
+): Axis<Domain>;

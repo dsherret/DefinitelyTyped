@@ -80,7 +80,12 @@ export enum PlayerDataEventType {
  * @see https://developers.google.com/cast/docs/reference/web_receiver/cast.framework.ui.ApplicationData
  */
 export class ApplicationData {
-    constructor(name: string, iconUrl: string, groupName?: string, isRemoteControl?: boolean);
+    constructor(
+        name: string,
+        iconUrl: string,
+        groupName?: string,
+        isRemoteControl?: boolean,
+    );
 
     /**
      * Name of audio group for running app.
@@ -134,12 +139,18 @@ export class PlayerDataBinder {
     /**
      * Add listener to player data changes.
      */
-    addEventListener: (type: PlayerDataEventType, listener: PlayerDataChangedEventHandler) => void;
+    addEventListener: (
+        type: PlayerDataEventType,
+        listener: PlayerDataChangedEventHandler,
+    ) => void;
 
     /**
      * Remove listener to player data changes.
      */
-    removeEventListener: (type: PlayerDataEventType, listener: PlayerDataChangedEventHandler) => void;
+    removeEventListener: (
+        type: PlayerDataEventType,
+        listener: PlayerDataChangedEventHandler,
+    ) => void;
 }
 
 /**
@@ -454,7 +465,12 @@ export class BrowseItem {
      * can be provided, but at least one of them is required.
      * @param image Image displayed for browse item. Value must not be null.
      */
-    constructor(entity: string, title?: string, subtitle?: string, image?: Image);
+    constructor(
+        entity: string,
+        title?: string,
+        subtitle?: string,
+        image?: Image,
+    );
 
     /**
      * Content duration in seconds. If provided, duration indicator will be

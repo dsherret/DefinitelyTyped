@@ -139,7 +139,11 @@ export class ParseError implements Error {
  * @param element The DOM element to render into
  * @param options KaTeX options
  */
-export function render(tex: string, element: HTMLElement, options?: KatexOptions): void;
+export function render(
+    tex: string,
+    element: HTMLElement,
+    options?: KatexOptions,
+): void;
 
 /**
  * Renders a TeX expression into an HTML string

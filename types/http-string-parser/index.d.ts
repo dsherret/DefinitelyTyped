@@ -25,7 +25,15 @@ interface ParseStatusLineResult {
 }
 
 export declare function parseRequest(requestString: string): ParseRequestResult;
-export declare function parseResponse(responseString: string): ParseResponseResult;
-export declare function parseRequestLine(requestLineString: string): ParseRequestLineResult;
-export declare function parseStatusLine(statusLine: string): ParseStatusLineResult;
-export declare function parseHeaders(headerLines: string[]): { [key: string]: string };
+export declare function parseResponse(
+    responseString: string,
+): ParseResponseResult;
+export declare function parseRequestLine(
+    requestLineString: string,
+): ParseRequestLineResult;
+export declare function parseStatusLine(
+    statusLine: string,
+): ParseStatusLineResult;
+export declare function parseHeaders(headerLines: string[]): {
+    [key: string]: string;
+};

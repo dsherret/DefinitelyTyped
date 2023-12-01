@@ -62,7 +62,7 @@ let BlogPost = dynamo.define("BlogPost", {
     },
 });
 
-dynamo.createTables(err => {
+dynamo.createTables((err) => {
     if (err) {
         console.log("Error creating tables: ", err);
     } else {
@@ -75,7 +75,7 @@ dynamo.createTables(
         BlogPost: { readCapacity: 5, writeCapacity: 10 },
         Account: { readCapacity: 20, writeCapacity: 4 },
     },
-    err => {
+    (err) => {
         if (err) {
             console.log("Error creating tables: ", err);
         } else {
@@ -84,7 +84,7 @@ dynamo.createTables(
     },
 );
 
-BlogPost.deleteTable(err => {
+BlogPost.deleteTable((err) => {
     if (err) {
         console.log("Error deleting table: ", err);
     } else {
@@ -162,20 +162,34 @@ Account.create(
     },
 );
 
-AccountTyped.create({ email: "foo@example.com", name: "Foo Bar", age: 21 }, (err, acc) => {
-    console.log("created account in DynamoDB", acc.get("email"), acc.attrs.email);
-});
+AccountTyped.create(
+    { email: "foo@example.com", name: "Foo Bar", age: 21 },
+    (err, acc) => {
+        console.log(
+            "created account in DynamoDB",
+            acc.get("email"),
+            acc.attrs.email,
+        );
+    },
+);
 
 const acc = new Account({ email: "test@example.com", name: "Test Example" });
 
-acc.save(err => {
+acc.save((err) => {
     console.log("created account in DynamoDB", acc.get("email"));
 });
 
-const accTyped = new AccountTyped({ email: "test@example.com", name: "Test Example" });
+const accTyped = new AccountTyped({
+    email: "test@example.com",
+    name: "Test Example",
+});
 
-accTyped.save(err => {
-    console.log("created account in DynamoDB", accTyped.get("email"), accTyped.attrs.email);
+accTyped.save((err) => {
+    console.log(
+        "created account in DynamoDB",
+        accTyped.get("email"),
+        accTyped.attrs.email,
+    );
 });
 
 BlogPost.create(
@@ -198,7 +212,7 @@ Account.create([item1, item2, item3], (err, accounts) => {
 });
 
 AccountTyped.create([item1, item2, item3], (err, accounts) => {
-    accounts.map(acc => {
+    accounts.map((acc) => {
         console.log("created account", acc.get("email"), acc.attrs.email);
     });
 });
@@ -215,9 +229,12 @@ Account.update({ email: "foo@example.com", name: "Bar Tester" }, (err, acc) => {
     console.log("update account", acc.get("name"));
 });
 
-AccountTyped.update({ email: "foo@example.com", name: "Bar Tester" }, (err, acc) => {
-    console.log("update account", acc.get("name"), acc.attrs.name);
-});
+AccountTyped.update(
+    { email: "foo@example.com", name: "Bar Tester" },
+    (err, acc) => {
+        console.log("update account", acc.get("name"), acc.attrs.name);
+    },
+);
 
 Account.update(
     { email: "foo@example.com", name: "Bar Tester" },
@@ -316,20 +333,20 @@ Movie.update(
     (err, mov) => {},
 );
 
-Account.destroy("foo@example.com", err => {
+Account.destroy("foo@example.com", (err) => {
     console.log("account deleted");
 });
 
 // Destroy model using hash and range key
-BlogPost.destroy("foo@example.com", "Hello World!", err => {
+BlogPost.destroy("foo@example.com", "Hello World!", (err) => {
     console.log("post deleted");
 });
 
-BlogPost.destroy({ email: "foo@example.com", title: "Another Post" }, err => {
+BlogPost.destroy({ email: "foo@example.com", title: "Another Post" }, (err) => {
     console.log("another post deleted");
 });
 
-Account.destroy("foo@example.com", { expected: { age: 22 } }, err => {
+Account.destroy("foo@example.com", { expected: { age: 22 } }, (err) => {
     console.log("account deleted if the age was 22");
 });
 
@@ -338,13 +355,17 @@ Account.destroy("foo@example.com", { ReturnValues: true }, (err, acc) => {
     console.log("deleted account name", acc.get("name"));
 });
 
-Account.destroy({
-    id: 123,
-}, {
-    ConditionExpression: "#v = :x",
-    ExpressionAttributeNames: { "#v": "version" },
-    ExpressionAttributeValues: { ":x": "2" },
-}, (err, acc) => {});
+Account.destroy(
+    {
+        id: 123,
+    },
+    {
+        ConditionExpression: "#v = :x",
+        ExpressionAttributeNames: { "#v": "version" },
+        ExpressionAttributeValues: { ":x": "2" },
+    },
+    (err, acc) => {},
+);
 
 Account.get("test@example.com", (err, acc) => {
     console.log("got account", acc!.get("email"));
@@ -394,14 +415,20 @@ const callback = () => {};
 
 // Typed Account query
 AccountTyped.query("foo1@example.com").exec((err, data) => {
-    data.Items.map(i => console.log("fetched account", i.get("email"), i.attrs.email));
+    data.Items.map((i) =>
+        console.log("fetched account", i.get("email"), i.attrs.email),
+    );
 });
 
 // Typed Account query with promise (incl. nested array)
 AccountTyped.query("foo1@example.com")
     .exec()
     .promise()
-    .then(data => data[0].Items.map(i => console.log("fetched account", i.get("email"), i.attrs.email)));
+    .then((data) =>
+        data[0].Items.map((i) =>
+            console.log("fetched account", i.get("email"), i.attrs.email),
+        ),
+    );
 
 // query for blog posts by werner@example.com
 BlogPost.query("werner@example.com").exec(callback);
@@ -410,14 +437,10 @@ BlogPost.query("werner@example.com").exec(callback);
 BlogPost.query("werner@example.com").exec().promise().then(callback);
 
 // same as above, but load all results
-BlogPost.query("werner@example.com")
-    .loadAll()
-    .exec(callback);
+BlogPost.query("werner@example.com").loadAll().exec(callback);
 
 // only load the first 5 posts by werner
-BlogPost.query("werner@example.com")
-    .limit(5)
-    .exec(callback);
+BlogPost.query("werner@example.com").limit(5).exec(callback);
 
 // query for posts by werner where the tile begins with 'Expanding'
 BlogPost.query("werner@example.com")
@@ -442,14 +465,10 @@ BlogPost.query("werner@example.com")
     .exec(callback);
 
 // sorting by title ascending
-BlogPost.query("werner@example.com")
-    .ascending()
-    .exec(callback);
+BlogPost.query("werner@example.com").ascending().exec(callback);
 
 // sorting by title descending
-BlogPost.query("werner@example.com")
-    .descending()
-    .exec(callback);
+BlogPost.query("werner@example.com").descending().exec(callback);
 
 // All query options are chainable
 BlogPost.query("werner@example.com")
@@ -514,9 +533,7 @@ BlogPost.query("werner@example.com")
     .projectionExpression("#title, tag")
     .exec(callback);
 
-BlogPost.query("werner@example.com")
-    .filter("title")
-    .exists(true);
+BlogPost.query("werner@example.com").filter("title").exists(true);
 
 let GameScore = dynamo.define("GameScore", {
     hashKey: "userId",
@@ -620,14 +637,12 @@ Account.scan().exec(callback);
 // scan all accounts, this time loading all results
 // note this will potentially make several calls to DynamoDB
 // in order to load all results
-Account.scan()
-    .loadAll()
-    .exec(callback);
+Account.scan().loadAll().exec(callback);
 
 AccountTyped.scan()
     .loadAll()
     .exec((err, data) => {
-        data.Items.map(i => {
+        data.Items.map((i) => {
             console.log("scanned account: ", i.get("email"), i.attrs.email);
         });
     });
@@ -638,18 +653,17 @@ AccountTyped.scan()
     .exec()
     .promise()
     .then()
-    .then(data => data[0].Items.map(i => console.log("fetched account 1234", i.get("email"), i.attrs.email)));
+    .then((data) =>
+        data[0].Items.map((i) =>
+            console.log("fetched account 1234", i.get("email"), i.attrs.email),
+        ),
+    );
 
 // Load 20 accounts
-Account.scan()
-    .limit(20)
-    .exec(callback);
+Account.scan().limit(20).exec(callback);
 
 // Load All accounts, 20 at a time per request
-Account.scan()
-    .limit(20)
-    .loadAll()
-    .exec(callback);
+Account.scan().limit(20).loadAll().exec(callback);
 
 // Load accounts which match a filter
 // only return email and created attributes
@@ -662,11 +676,7 @@ Account.scan()
     .exec(callback);
 
 // Returns number of matching accounts, rather than the matching accounts themselves
-Account.scan()
-    .where("age")
-    .gte(21)
-    .select("COUNT")
-    .exec(callback);
+Account.scan().where("age").gte(21).select("COUNT").exec(callback);
 
 // Start scan using start key
 Account.scan()
@@ -676,64 +686,34 @@ Account.scan()
     .exec(callback);
 
 // equals
-Account.scan()
-    .where("name")
-    .equals("Werner")
-    .exec(callback);
+Account.scan().where("name").equals("Werner").exec(callback);
 
 // not equals
-Account.scan()
-    .where("name")
-    .ne("Werner")
-    .exec(callback);
+Account.scan().where("name").ne("Werner").exec(callback);
 
 // less than equals
-Account.scan()
-    .where("name")
-    .lte("Werner")
-    .exec(callback);
+Account.scan().where("name").lte("Werner").exec(callback);
 
 // less than
-Account.scan()
-    .where("name")
-    .lt("Werner")
-    .exec(callback);
+Account.scan().where("name").lt("Werner").exec(callback);
 
 // greater than equals
-Account.scan()
-    .where("name")
-    .gte("Werner")
-    .exec(callback);
+Account.scan().where("name").gte("Werner").exec(callback);
 
 // greater than
-Account.scan()
-    .where("name")
-    .gt("Werner")
-    .exec(callback);
+Account.scan().where("name").gt("Werner").exec(callback);
 
 // name attribute doesn't exist
-Account.scan()
-    .where("name")
-    .null()
-    .exec(callback);
+Account.scan().where("name").null().exec(callback);
 
 // name attribute exists
-Account.scan()
-    .where("name")
-    .notNull()
-    .exec(callback);
+Account.scan().where("name").notNull().exec(callback);
 
 // contains
-Account.scan()
-    .where("name")
-    .contains("ner")
-    .exec(callback);
+Account.scan().where("name").contains("ner").exec(callback);
 
 // not contains
-Account.scan()
-    .where("name")
-    .notContains("ner")
-    .exec(callback);
+Account.scan().where("name").notContains("ner").exec(callback);
 
 // in
 Account.scan()
@@ -742,16 +722,10 @@ Account.scan()
     .exec(callback);
 
 // begins with
-Account.scan()
-    .where("name")
-    .beginsWith("Werner")
-    .exec(callback);
+Account.scan().where("name").beginsWith("Werner").exec(callback);
 
 // between
-Account.scan()
-    .where("name")
-    .between("Bar", "Foo")
-    .exec(callback);
+Account.scan().where("name").between("Bar", "Foo").exec(callback);
 
 // multiple filters
 Account.scan()
@@ -786,9 +760,12 @@ Account.getItems(
     },
 );
 
-AccountTyped.getItems(["foo@example.com", "bar@example.com", "test@example.com"], (err, accounts) => {
-    console.log(`loaded ${accounts.length} accounts`); // prints loaded 3 accounts
-});
+AccountTyped.getItems(
+    ["foo@example.com", "bar@example.com", "test@example.com"],
+    (err, accounts) => {
+        console.log(`loaded ${accounts.length} accounts`); // prints loaded 3 accounts
+    },
+);
 
 // For models with range keys you must pass in objects of hash and range key attributes
 const postKey1 = { email: "test@example.com", title: "Hello World!" };
@@ -816,9 +793,7 @@ stream.on("end", () => {
     console.log("Parallel scan of accounts finished");
 });
 
-let querystream = BlogPost.query("werner@dynamo.com")
-    .loadAll()
-    .exec();
+let querystream = BlogPost.query("werner@dynamo.com").loadAll().exec();
 
 querystream.on("readable", () => {
     console.log("single query response", stream.read());
@@ -838,9 +813,7 @@ stream.on("end", () => {
     console.log("Parallel scan of accounts finished");
 });
 
-querystream = BlogPost.query("werner@dynamo.com")
-    .loadAll()
-    .exec();
+querystream = BlogPost.query("werner@dynamo.com").loadAll().exec();
 
 querystream.on("readable", () => {
     console.log("single query response", stream.read());

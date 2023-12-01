@@ -1,7 +1,17 @@
-import { JetElement, JetElementCustomEvent, JetSetPropertyType, JetSettableProperties } from "..";
+import {
+    JetElement,
+    JetElementCustomEvent,
+    JetSetPropertyType,
+    JetSettableProperties,
+} from "..";
 import { DataProvider } from "../ojdataprovider";
-import { dvtBaseComponent, dvtBaseComponentEventMap, dvtBaseComponentSettableProperties } from "../ojdvt-base";
-export interface ojNBox<K, D> extends dvtBaseComponent<ojNBoxSettableProperties<K, D>> {
+import {
+    dvtBaseComponent,
+    dvtBaseComponentEventMap,
+    dvtBaseComponentSettableProperties,
+} from "../ojdvt-base";
+export interface ojNBox<K, D>
+    extends dvtBaseComponent<ojNBoxSettableProperties<K, D>> {
     animationOnDataChange: "auto" | "none";
     animationOnDisplay: "auto" | "none";
     as: string;
@@ -12,7 +22,12 @@ export interface ojNBox<K, D> extends dvtBaseComponent<ojNBoxSettableProperties<
     columnsTitle: string;
     countLabel: (context: ojNBox.CountLabelContext) => string | null;
     data: DataProvider<K, D> | null;
-    groupAttributes: "color" | "indicatorColor" | "indicatorIconColor" | "indicatorIconPattern" | "indicatorIconShape";
+    groupAttributes:
+        | "color"
+        | "indicatorColor"
+        | "indicatorIconColor"
+        | "indicatorIconPattern"
+        | "indicatorIconShape";
     groupBehavior: "acrossCells" | "none" | "withinCell";
     hiddenCategories: string[];
     highlightMatch: "any" | "all";
@@ -123,11 +138,13 @@ export interface ojNBox<K, D> extends dvtBaseComponent<ojNBoxSettableProperties<
     };
     tooltip: {
         renderer:
-            | ((context: ojNBox.TooltipContext<K>) => {
-                insert: Element | string;
-            } | {
-                preventDefault: boolean;
-            })
+            | ((context: ojNBox.TooltipContext<K>) =>
+                  | {
+                        insert: Element | string;
+                    }
+                  | {
+                        preventDefault: boolean;
+                    })
             | null;
     };
     touchResponse: "touchStart" | "auto";
@@ -156,50 +173,133 @@ export interface ojNBox<K, D> extends dvtBaseComponent<ojNBoxSettableProperties<
         stateVisible?: string | undefined;
     };
     onAnimationOnDataChangeChanged:
-        | ((event: JetElementCustomEvent<ojNBox<K, D>["animationOnDataChange"]>) => any)
+        | ((
+              event: JetElementCustomEvent<
+                  ojNBox<K, D>["animationOnDataChange"]
+              >,
+          ) => any)
         | null;
-    onAnimationOnDisplayChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["animationOnDisplay"]>) => any) | null;
-    onAsChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["as"]>) => any) | null;
-    onCellContentChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["cellContent"]>) => any) | null;
-    onCellMaximizeChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["cellMaximize"]>) => any) | null;
-    onCellsChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["cells"]>) => any) | null;
-    onColumnsChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["columns"]>) => any) | null;
-    onColumnsTitleChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["columnsTitle"]>) => any) | null;
-    onCountLabelChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["countLabel"]>) => any) | null;
-    onDataChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["data"]>) => any) | null;
-    onGroupAttributesChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["groupAttributes"]>) => any) | null;
-    onGroupBehaviorChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["groupBehavior"]>) => any) | null;
-    onHiddenCategoriesChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["hiddenCategories"]>) => any) | null;
-    onHighlightMatchChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["highlightMatch"]>) => any) | null;
+    onAnimationOnDisplayChanged:
+        | ((
+              event: JetElementCustomEvent<ojNBox<K, D>["animationOnDisplay"]>,
+          ) => any)
+        | null;
+    onAsChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["as"]>) => any)
+        | null;
+    onCellContentChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["cellContent"]>) => any)
+        | null;
+    onCellMaximizeChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["cellMaximize"]>) => any)
+        | null;
+    onCellsChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["cells"]>) => any)
+        | null;
+    onColumnsChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["columns"]>) => any)
+        | null;
+    onColumnsTitleChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["columnsTitle"]>) => any)
+        | null;
+    onCountLabelChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["countLabel"]>) => any)
+        | null;
+    onDataChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["data"]>) => any)
+        | null;
+    onGroupAttributesChanged:
+        | ((
+              event: JetElementCustomEvent<ojNBox<K, D>["groupAttributes"]>,
+          ) => any)
+        | null;
+    onGroupBehaviorChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["groupBehavior"]>) => any)
+        | null;
+    onHiddenCategoriesChanged:
+        | ((
+              event: JetElementCustomEvent<ojNBox<K, D>["hiddenCategories"]>,
+          ) => any)
+        | null;
+    onHighlightMatchChanged:
+        | ((
+              event: JetElementCustomEvent<ojNBox<K, D>["highlightMatch"]>,
+          ) => any)
+        | null;
     onHighlightedCategoriesChanged:
-        | ((event: JetElementCustomEvent<ojNBox<K, D>["highlightedCategories"]>) => any)
+        | ((
+              event: JetElementCustomEvent<
+                  ojNBox<K, D>["highlightedCategories"]
+              >,
+          ) => any)
         | null;
-    onHoverBehaviorChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["hoverBehavior"]>) => any) | null;
-    onLabelTruncationChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["labelTruncation"]>) => any) | null;
-    onMaximizedColumnChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["maximizedColumn"]>) => any) | null;
-    onMaximizedRowChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["maximizedRow"]>) => any) | null;
-    onOtherColorChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["otherColor"]>) => any) | null;
-    onOtherThresholdChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["otherThreshold"]>) => any) | null;
-    onRowsChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["rows"]>) => any) | null;
-    onRowsTitleChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["rowsTitle"]>) => any) | null;
-    onSelectionChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["selection"]>) => any) | null;
-    onSelectionModeChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["selectionMode"]>) => any) | null;
-    onStyleDefaultsChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["styleDefaults"]>) => any) | null;
-    onTooltipChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["tooltip"]>) => any) | null;
-    onTouchResponseChanged: ((event: JetElementCustomEvent<ojNBox<K, D>["touchResponse"]>) => any) | null;
+    onHoverBehaviorChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["hoverBehavior"]>) => any)
+        | null;
+    onLabelTruncationChanged:
+        | ((
+              event: JetElementCustomEvent<ojNBox<K, D>["labelTruncation"]>,
+          ) => any)
+        | null;
+    onMaximizedColumnChanged:
+        | ((
+              event: JetElementCustomEvent<ojNBox<K, D>["maximizedColumn"]>,
+          ) => any)
+        | null;
+    onMaximizedRowChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["maximizedRow"]>) => any)
+        | null;
+    onOtherColorChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["otherColor"]>) => any)
+        | null;
+    onOtherThresholdChanged:
+        | ((
+              event: JetElementCustomEvent<ojNBox<K, D>["otherThreshold"]>,
+          ) => any)
+        | null;
+    onRowsChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["rows"]>) => any)
+        | null;
+    onRowsTitleChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["rowsTitle"]>) => any)
+        | null;
+    onSelectionChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["selection"]>) => any)
+        | null;
+    onSelectionModeChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["selectionMode"]>) => any)
+        | null;
+    onStyleDefaultsChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["styleDefaults"]>) => any)
+        | null;
+    onTooltipChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["tooltip"]>) => any)
+        | null;
+    onTouchResponseChanged:
+        | ((event: JetElementCustomEvent<ojNBox<K, D>["touchResponse"]>) => any)
+        | null;
     addEventListener<T extends keyof ojNBoxEventMap<K, D>>(
         type: T,
         listener: (this: HTMLElement, ev: ojNBoxEventMap<K, D>[T]) => any,
         useCapture?: boolean,
     ): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
-    getProperty<T extends keyof ojNBoxSettableProperties<K, D>>(property: T): ojNBox<K, D>[T];
+    addEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        useCapture?: boolean,
+    ): void;
+    getProperty<T extends keyof ojNBoxSettableProperties<K, D>>(
+        property: T,
+    ): ojNBox<K, D>[T];
     getProperty(property: string): any;
     setProperty<T extends keyof ojNBoxSettableProperties<K, D>>(
         property: T,
         value: ojNBoxSettableProperties<K, D>[T],
     ): void;
-    setProperty<T extends string>(property: T, value: JetSetPropertyType<T, ojNBoxSettableProperties<K, D>>): void;
+    setProperty<T extends string>(
+        property: T,
+        value: JetSetPropertyType<T, ojNBoxSettableProperties<K, D>>,
+    ): void;
     setProperties(properties: ojNBoxSettablePropertiesLenient<K, D>): void;
     getCell(rowValue: string, columnValue: string): object | null;
     getColumn(columnValue: string): object | null;
@@ -213,37 +313,57 @@ export interface ojNBox<K, D> extends dvtBaseComponent<ojNBoxSettableProperties<
     getRowCount(): number;
     getRowsTitle(): string;
 }
-export interface ojNBoxEventMap<K, D> extends dvtBaseComponentEventMap<ojNBoxSettableProperties<K, D>> {
-    "animationOnDataChangeChanged": JetElementCustomEvent<ojNBox<K, D>["animationOnDataChange"]>;
-    "animationOnDisplayChanged": JetElementCustomEvent<ojNBox<K, D>["animationOnDisplay"]>;
-    "asChanged": JetElementCustomEvent<ojNBox<K, D>["as"]>;
-    "cellContentChanged": JetElementCustomEvent<ojNBox<K, D>["cellContent"]>;
-    "cellMaximizeChanged": JetElementCustomEvent<ojNBox<K, D>["cellMaximize"]>;
-    "cellsChanged": JetElementCustomEvent<ojNBox<K, D>["cells"]>;
-    "columnsChanged": JetElementCustomEvent<ojNBox<K, D>["columns"]>;
-    "columnsTitleChanged": JetElementCustomEvent<ojNBox<K, D>["columnsTitle"]>;
-    "countLabelChanged": JetElementCustomEvent<ojNBox<K, D>["countLabel"]>;
-    "dataChanged": JetElementCustomEvent<ojNBox<K, D>["data"]>;
-    "groupAttributesChanged": JetElementCustomEvent<ojNBox<K, D>["groupAttributes"]>;
-    "groupBehaviorChanged": JetElementCustomEvent<ojNBox<K, D>["groupBehavior"]>;
-    "hiddenCategoriesChanged": JetElementCustomEvent<ojNBox<K, D>["hiddenCategories"]>;
-    "highlightMatchChanged": JetElementCustomEvent<ojNBox<K, D>["highlightMatch"]>;
-    "highlightedCategoriesChanged": JetElementCustomEvent<ojNBox<K, D>["highlightedCategories"]>;
-    "hoverBehaviorChanged": JetElementCustomEvent<ojNBox<K, D>["hoverBehavior"]>;
-    "labelTruncationChanged": JetElementCustomEvent<ojNBox<K, D>["labelTruncation"]>;
-    "maximizedColumnChanged": JetElementCustomEvent<ojNBox<K, D>["maximizedColumn"]>;
-    "maximizedRowChanged": JetElementCustomEvent<ojNBox<K, D>["maximizedRow"]>;
-    "otherColorChanged": JetElementCustomEvent<ojNBox<K, D>["otherColor"]>;
-    "otherThresholdChanged": JetElementCustomEvent<ojNBox<K, D>["otherThreshold"]>;
-    "rowsChanged": JetElementCustomEvent<ojNBox<K, D>["rows"]>;
-    "rowsTitleChanged": JetElementCustomEvent<ojNBox<K, D>["rowsTitle"]>;
-    "selectionChanged": JetElementCustomEvent<ojNBox<K, D>["selection"]>;
-    "selectionModeChanged": JetElementCustomEvent<ojNBox<K, D>["selectionMode"]>;
-    "styleDefaultsChanged": JetElementCustomEvent<ojNBox<K, D>["styleDefaults"]>;
-    "tooltipChanged": JetElementCustomEvent<ojNBox<K, D>["tooltip"]>;
-    "touchResponseChanged": JetElementCustomEvent<ojNBox<K, D>["touchResponse"]>;
+export interface ojNBoxEventMap<K, D>
+    extends dvtBaseComponentEventMap<ojNBoxSettableProperties<K, D>> {
+    animationOnDataChangeChanged: JetElementCustomEvent<
+        ojNBox<K, D>["animationOnDataChange"]
+    >;
+    animationOnDisplayChanged: JetElementCustomEvent<
+        ojNBox<K, D>["animationOnDisplay"]
+    >;
+    asChanged: JetElementCustomEvent<ojNBox<K, D>["as"]>;
+    cellContentChanged: JetElementCustomEvent<ojNBox<K, D>["cellContent"]>;
+    cellMaximizeChanged: JetElementCustomEvent<ojNBox<K, D>["cellMaximize"]>;
+    cellsChanged: JetElementCustomEvent<ojNBox<K, D>["cells"]>;
+    columnsChanged: JetElementCustomEvent<ojNBox<K, D>["columns"]>;
+    columnsTitleChanged: JetElementCustomEvent<ojNBox<K, D>["columnsTitle"]>;
+    countLabelChanged: JetElementCustomEvent<ojNBox<K, D>["countLabel"]>;
+    dataChanged: JetElementCustomEvent<ojNBox<K, D>["data"]>;
+    groupAttributesChanged: JetElementCustomEvent<
+        ojNBox<K, D>["groupAttributes"]
+    >;
+    groupBehaviorChanged: JetElementCustomEvent<ojNBox<K, D>["groupBehavior"]>;
+    hiddenCategoriesChanged: JetElementCustomEvent<
+        ojNBox<K, D>["hiddenCategories"]
+    >;
+    highlightMatchChanged: JetElementCustomEvent<
+        ojNBox<K, D>["highlightMatch"]
+    >;
+    highlightedCategoriesChanged: JetElementCustomEvent<
+        ojNBox<K, D>["highlightedCategories"]
+    >;
+    hoverBehaviorChanged: JetElementCustomEvent<ojNBox<K, D>["hoverBehavior"]>;
+    labelTruncationChanged: JetElementCustomEvent<
+        ojNBox<K, D>["labelTruncation"]
+    >;
+    maximizedColumnChanged: JetElementCustomEvent<
+        ojNBox<K, D>["maximizedColumn"]
+    >;
+    maximizedRowChanged: JetElementCustomEvent<ojNBox<K, D>["maximizedRow"]>;
+    otherColorChanged: JetElementCustomEvent<ojNBox<K, D>["otherColor"]>;
+    otherThresholdChanged: JetElementCustomEvent<
+        ojNBox<K, D>["otherThreshold"]
+    >;
+    rowsChanged: JetElementCustomEvent<ojNBox<K, D>["rows"]>;
+    rowsTitleChanged: JetElementCustomEvent<ojNBox<K, D>["rowsTitle"]>;
+    selectionChanged: JetElementCustomEvent<ojNBox<K, D>["selection"]>;
+    selectionModeChanged: JetElementCustomEvent<ojNBox<K, D>["selectionMode"]>;
+    styleDefaultsChanged: JetElementCustomEvent<ojNBox<K, D>["styleDefaults"]>;
+    tooltipChanged: JetElementCustomEvent<ojNBox<K, D>["tooltip"]>;
+    touchResponseChanged: JetElementCustomEvent<ojNBox<K, D>["touchResponse"]>;
 }
-export interface ojNBoxSettableProperties<K, D> extends dvtBaseComponentSettableProperties {
+export interface ojNBoxSettableProperties<K, D>
+    extends dvtBaseComponentSettableProperties {
     animationOnDataChange: "auto" | "none";
     animationOnDisplay: "auto" | "none";
     as: string;
@@ -254,7 +374,12 @@ export interface ojNBoxSettableProperties<K, D> extends dvtBaseComponentSettable
     columnsTitle: string;
     countLabel: (context: ojNBox.CountLabelContext) => string | null;
     data: DataProvider<K, D> | null;
-    groupAttributes: "color" | "indicatorColor" | "indicatorIconColor" | "indicatorIconPattern" | "indicatorIconShape";
+    groupAttributes:
+        | "color"
+        | "indicatorColor"
+        | "indicatorIconColor"
+        | "indicatorIconPattern"
+        | "indicatorIconShape";
     groupBehavior: "acrossCells" | "none" | "withinCell";
     hiddenCategories: string[];
     highlightMatch: "any" | "all";
@@ -365,11 +490,13 @@ export interface ojNBoxSettableProperties<K, D> extends dvtBaseComponentSettable
     };
     tooltip: {
         renderer:
-            | ((context: ojNBox.TooltipContext<K>) => {
-                insert: Element | string;
-            } | {
-                preventDefault: boolean;
-            })
+            | ((context: ojNBox.TooltipContext<K>) =>
+                  | {
+                        insert: Element | string;
+                    }
+                  | {
+                        preventDefault: boolean;
+                    })
             | null;
     };
     touchResponse: "touchStart" | "auto";
@@ -398,7 +525,8 @@ export interface ojNBoxSettableProperties<K, D> extends dvtBaseComponentSettable
         stateVisible?: string | undefined;
     };
 }
-export interface ojNBoxSettablePropertiesLenient<K, D> extends Partial<ojNBoxSettableProperties<K, D>> {
+export interface ojNBoxSettablePropertiesLenient<K, D>
+    extends Partial<ojNBoxSettableProperties<K, D>> {
     [key: string]: any;
 }
 export namespace ojNBox {
@@ -458,87 +586,91 @@ export interface ojNBoxNode extends JetElement<ojNBoxNodeSettableProperties> {
     color?: string | undefined;
     column: string;
     groupCategory?: string | undefined;
-    icon?: {
-        borderColor?: string | undefined;
-        borderRadius?: string | undefined;
-        borderWidth: number;
-        color?: string | undefined;
-        height?: number | null | undefined;
-        opacity: number;
-        pattern?:
-            | "largeChecker"
-            | "largeCrosshatch"
-            | "largeDiagonalLeft"
-            | "largeDiagonalRight"
-            | "largeDiamond"
-            | "largeTriangle"
-            | "none"
-            | "mallChecker"
-            | "smallCrosshatch"
-            | "smallDiagonalLeft"
-            | "smallDiagonalRight"
-            | "smallDiamond"
-            | "smallTriangle"
-            | undefined;
-        shape?:
-            | "circle"
-            | "diamond"
-            | "ellipse"
-            | "human"
-            | "plus"
-            | "rectangle"
-            | "square"
-            | "star"
-            | "triangleDown"
-            | "triangleUp"
-            | string
-            | undefined;
-        source?: string | undefined;
-        svgClassName: string;
-        svgStyle?: object | undefined;
-        width?: number | null | undefined;
-    } | undefined;
+    icon?:
+        | {
+              borderColor?: string | undefined;
+              borderRadius?: string | undefined;
+              borderWidth: number;
+              color?: string | undefined;
+              height?: number | null | undefined;
+              opacity: number;
+              pattern?:
+                  | "largeChecker"
+                  | "largeCrosshatch"
+                  | "largeDiagonalLeft"
+                  | "largeDiagonalRight"
+                  | "largeDiamond"
+                  | "largeTriangle"
+                  | "none"
+                  | "mallChecker"
+                  | "smallCrosshatch"
+                  | "smallDiagonalLeft"
+                  | "smallDiagonalRight"
+                  | "smallDiamond"
+                  | "smallTriangle"
+                  | undefined;
+              shape?:
+                  | "circle"
+                  | "diamond"
+                  | "ellipse"
+                  | "human"
+                  | "plus"
+                  | "rectangle"
+                  | "square"
+                  | "star"
+                  | "triangleDown"
+                  | "triangleUp"
+                  | string
+                  | undefined;
+              source?: string | undefined;
+              svgClassName: string;
+              svgStyle?: object | undefined;
+              width?: number | null | undefined;
+          }
+        | undefined;
     indicatorColor?: string | undefined;
-    indicatorIcon?: {
-        borderColor?: string | undefined;
-        borderRadius?: string | undefined;
-        borderWidth: number;
-        color?: string | undefined;
-        height?: number | null | undefined;
-        opacity: number;
-        pattern?:
-            | "largeChecker"
-            | "largeCrosshatch"
-            | "largeDiagonalLeft"
-            | "largeDiagonalRight"
-            | "largeDiamond"
-            | "largeTriangle"
-            | "none"
-            | "smallChecker"
-            | "smallCrosshatch"
-            | "smallDiagonalLeft"
-            | "smallDiagonalRight"
-            | "smallDiamond"
-            | "smallTriangle"
-            | undefined;
-        shape?:
-            | "circle"
-            | "diamond"
-            | "ellipse"
-            | "human"
-            | "plus"
-            | "rectangle"
-            | "square"
-            | "star"
-            | "triangleDown"
-            | "triangleUp"
-            | string
-            | undefined;
-        source?: string | null | undefined;
-        svgClassName: string;
-        svgStyle?: object | null | undefined;
-        width?: number | null | undefined;
-    } | undefined;
+    indicatorIcon?:
+        | {
+              borderColor?: string | undefined;
+              borderRadius?: string | undefined;
+              borderWidth: number;
+              color?: string | undefined;
+              height?: number | null | undefined;
+              opacity: number;
+              pattern?:
+                  | "largeChecker"
+                  | "largeCrosshatch"
+                  | "largeDiagonalLeft"
+                  | "largeDiagonalRight"
+                  | "largeDiamond"
+                  | "largeTriangle"
+                  | "none"
+                  | "smallChecker"
+                  | "smallCrosshatch"
+                  | "smallDiagonalLeft"
+                  | "smallDiagonalRight"
+                  | "smallDiamond"
+                  | "smallTriangle"
+                  | undefined;
+              shape?:
+                  | "circle"
+                  | "diamond"
+                  | "ellipse"
+                  | "human"
+                  | "plus"
+                  | "rectangle"
+                  | "square"
+                  | "star"
+                  | "triangleDown"
+                  | "triangleUp"
+                  | string
+                  | undefined;
+              source?: string | null | undefined;
+              svgClassName: string;
+              svgStyle?: object | null | undefined;
+              width?: number | null | undefined;
+          }
+        | undefined;
     label: string;
     row: string;
     secondaryLabel: string;
@@ -547,56 +679,99 @@ export interface ojNBoxNode extends JetElement<ojNBoxNodeSettableProperties> {
     svgStyle: object | null;
     xPercentage?: number | null | undefined;
     yPercentage?: number | null | undefined;
-    onBorderColorChanged: ((event: JetElementCustomEvent<ojNBoxNode["borderColor"]>) => any) | null;
-    onBorderWidthChanged: ((event: JetElementCustomEvent<ojNBoxNode["borderWidth"]>) => any) | null;
-    onCategoriesChanged: ((event: JetElementCustomEvent<ojNBoxNode["categories"]>) => any) | null;
-    onColorChanged: ((event: JetElementCustomEvent<ojNBoxNode["color"]>) => any) | null;
-    onColumnChanged: ((event: JetElementCustomEvent<ojNBoxNode["column"]>) => any) | null;
-    onGroupCategoryChanged: ((event: JetElementCustomEvent<ojNBoxNode["groupCategory"]>) => any) | null;
-    onIconChanged: ((event: JetElementCustomEvent<ojNBoxNode["icon"]>) => any) | null;
-    onIndicatorColorChanged: ((event: JetElementCustomEvent<ojNBoxNode["indicatorColor"]>) => any) | null;
-    onIndicatorIconChanged: ((event: JetElementCustomEvent<ojNBoxNode["indicatorIcon"]>) => any) | null;
-    onLabelChanged: ((event: JetElementCustomEvent<ojNBoxNode["label"]>) => any) | null;
-    onRowChanged: ((event: JetElementCustomEvent<ojNBoxNode["row"]>) => any) | null;
-    onSecondaryLabelChanged: ((event: JetElementCustomEvent<ojNBoxNode["secondaryLabel"]>) => any) | null;
-    onShortDescChanged: ((event: JetElementCustomEvent<ojNBoxNode["shortDesc"]>) => any) | null;
-    onSvgClassNameChanged: ((event: JetElementCustomEvent<ojNBoxNode["svgClassName"]>) => any) | null;
-    onSvgStyleChanged: ((event: JetElementCustomEvent<ojNBoxNode["svgStyle"]>) => any) | null;
-    onXPercentageChanged: ((event: JetElementCustomEvent<ojNBoxNode["xPercentage"]>) => any) | null;
-    onYPercentageChanged: ((event: JetElementCustomEvent<ojNBoxNode["yPercentage"]>) => any) | null;
+    onBorderColorChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["borderColor"]>) => any)
+        | null;
+    onBorderWidthChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["borderWidth"]>) => any)
+        | null;
+    onCategoriesChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["categories"]>) => any)
+        | null;
+    onColorChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["color"]>) => any)
+        | null;
+    onColumnChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["column"]>) => any)
+        | null;
+    onGroupCategoryChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["groupCategory"]>) => any)
+        | null;
+    onIconChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["icon"]>) => any)
+        | null;
+    onIndicatorColorChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["indicatorColor"]>) => any)
+        | null;
+    onIndicatorIconChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["indicatorIcon"]>) => any)
+        | null;
+    onLabelChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["label"]>) => any)
+        | null;
+    onRowChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["row"]>) => any)
+        | null;
+    onSecondaryLabelChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["secondaryLabel"]>) => any)
+        | null;
+    onShortDescChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["shortDesc"]>) => any)
+        | null;
+    onSvgClassNameChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["svgClassName"]>) => any)
+        | null;
+    onSvgStyleChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["svgStyle"]>) => any)
+        | null;
+    onXPercentageChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["xPercentage"]>) => any)
+        | null;
+    onYPercentageChanged:
+        | ((event: JetElementCustomEvent<ojNBoxNode["yPercentage"]>) => any)
+        | null;
     addEventListener<T extends keyof ojNBoxNodeEventMap>(
         type: T,
         listener: (this: HTMLElement, ev: ojNBoxNodeEventMap[T]) => any,
         useCapture?: boolean,
     ): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
-    getProperty<T extends keyof ojNBoxNodeSettableProperties>(property: T): ojNBoxNode[T];
+    addEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        useCapture?: boolean,
+    ): void;
+    getProperty<T extends keyof ojNBoxNodeSettableProperties>(
+        property: T,
+    ): ojNBoxNode[T];
     getProperty(property: string): any;
     setProperty<T extends keyof ojNBoxNodeSettableProperties>(
         property: T,
         value: ojNBoxNodeSettableProperties[T],
     ): void;
-    setProperty<T extends string>(property: T, value: JetSetPropertyType<T, ojNBoxNodeSettableProperties>): void;
+    setProperty<T extends string>(
+        property: T,
+        value: JetSetPropertyType<T, ojNBoxNodeSettableProperties>,
+    ): void;
     setProperties(properties: ojNBoxNodeSettablePropertiesLenient): void;
 }
 export interface ojNBoxNodeEventMap extends HTMLElementEventMap {
-    "borderColorChanged": JetElementCustomEvent<ojNBoxNode["borderColor"]>;
-    "borderWidthChanged": JetElementCustomEvent<ojNBoxNode["borderWidth"]>;
-    "categoriesChanged": JetElementCustomEvent<ojNBoxNode["categories"]>;
-    "colorChanged": JetElementCustomEvent<ojNBoxNode["color"]>;
-    "columnChanged": JetElementCustomEvent<ojNBoxNode["column"]>;
-    "groupCategoryChanged": JetElementCustomEvent<ojNBoxNode["groupCategory"]>;
-    "iconChanged": JetElementCustomEvent<ojNBoxNode["icon"]>;
-    "indicatorColorChanged": JetElementCustomEvent<ojNBoxNode["indicatorColor"]>;
-    "indicatorIconChanged": JetElementCustomEvent<ojNBoxNode["indicatorIcon"]>;
-    "labelChanged": JetElementCustomEvent<ojNBoxNode["label"]>;
-    "rowChanged": JetElementCustomEvent<ojNBoxNode["row"]>;
-    "secondaryLabelChanged": JetElementCustomEvent<ojNBoxNode["secondaryLabel"]>;
-    "shortDescChanged": JetElementCustomEvent<ojNBoxNode["shortDesc"]>;
-    "svgClassNameChanged": JetElementCustomEvent<ojNBoxNode["svgClassName"]>;
-    "svgStyleChanged": JetElementCustomEvent<ojNBoxNode["svgStyle"]>;
-    "xPercentageChanged": JetElementCustomEvent<ojNBoxNode["xPercentage"]>;
-    "yPercentageChanged": JetElementCustomEvent<ojNBoxNode["yPercentage"]>;
+    borderColorChanged: JetElementCustomEvent<ojNBoxNode["borderColor"]>;
+    borderWidthChanged: JetElementCustomEvent<ojNBoxNode["borderWidth"]>;
+    categoriesChanged: JetElementCustomEvent<ojNBoxNode["categories"]>;
+    colorChanged: JetElementCustomEvent<ojNBoxNode["color"]>;
+    columnChanged: JetElementCustomEvent<ojNBoxNode["column"]>;
+    groupCategoryChanged: JetElementCustomEvent<ojNBoxNode["groupCategory"]>;
+    iconChanged: JetElementCustomEvent<ojNBoxNode["icon"]>;
+    indicatorColorChanged: JetElementCustomEvent<ojNBoxNode["indicatorColor"]>;
+    indicatorIconChanged: JetElementCustomEvent<ojNBoxNode["indicatorIcon"]>;
+    labelChanged: JetElementCustomEvent<ojNBoxNode["label"]>;
+    rowChanged: JetElementCustomEvent<ojNBoxNode["row"]>;
+    secondaryLabelChanged: JetElementCustomEvent<ojNBoxNode["secondaryLabel"]>;
+    shortDescChanged: JetElementCustomEvent<ojNBoxNode["shortDesc"]>;
+    svgClassNameChanged: JetElementCustomEvent<ojNBoxNode["svgClassName"]>;
+    svgStyleChanged: JetElementCustomEvent<ojNBoxNode["svgStyle"]>;
+    xPercentageChanged: JetElementCustomEvent<ojNBoxNode["xPercentage"]>;
+    yPercentageChanged: JetElementCustomEvent<ojNBoxNode["yPercentage"]>;
 }
 export interface ojNBoxNodeSettableProperties extends JetSettableProperties {
     borderColor: string;
@@ -605,87 +780,91 @@ export interface ojNBoxNodeSettableProperties extends JetSettableProperties {
     color?: string | undefined;
     column: string;
     groupCategory?: string | undefined;
-    icon?: {
-        borderColor?: string | undefined;
-        borderRadius?: string | undefined;
-        borderWidth: number;
-        color?: string | undefined;
-        height?: number | null | undefined;
-        opacity: number;
-        pattern?:
-            | "largeChecker"
-            | "largeCrosshatch"
-            | "largeDiagonalLeft"
-            | "largeDiagonalRight"
-            | "largeDiamond"
-            | "largeTriangle"
-            | "none"
-            | "mallChecker"
-            | "smallCrosshatch"
-            | "smallDiagonalLeft"
-            | "smallDiagonalRight"
-            | "smallDiamond"
-            | "smallTriangle"
-            | undefined;
-        shape?:
-            | "circle"
-            | "diamond"
-            | "ellipse"
-            | "human"
-            | "plus"
-            | "rectangle"
-            | "square"
-            | "star"
-            | "triangleDown"
-            | "triangleUp"
-            | string
-            | undefined;
-        source?: string | undefined;
-        svgClassName: string;
-        svgStyle?: object | undefined;
-        width?: number | null | undefined;
-    } | undefined;
+    icon?:
+        | {
+              borderColor?: string | undefined;
+              borderRadius?: string | undefined;
+              borderWidth: number;
+              color?: string | undefined;
+              height?: number | null | undefined;
+              opacity: number;
+              pattern?:
+                  | "largeChecker"
+                  | "largeCrosshatch"
+                  | "largeDiagonalLeft"
+                  | "largeDiagonalRight"
+                  | "largeDiamond"
+                  | "largeTriangle"
+                  | "none"
+                  | "mallChecker"
+                  | "smallCrosshatch"
+                  | "smallDiagonalLeft"
+                  | "smallDiagonalRight"
+                  | "smallDiamond"
+                  | "smallTriangle"
+                  | undefined;
+              shape?:
+                  | "circle"
+                  | "diamond"
+                  | "ellipse"
+                  | "human"
+                  | "plus"
+                  | "rectangle"
+                  | "square"
+                  | "star"
+                  | "triangleDown"
+                  | "triangleUp"
+                  | string
+                  | undefined;
+              source?: string | undefined;
+              svgClassName: string;
+              svgStyle?: object | undefined;
+              width?: number | null | undefined;
+          }
+        | undefined;
     indicatorColor?: string | undefined;
-    indicatorIcon?: {
-        borderColor?: string | undefined;
-        borderRadius?: string | undefined;
-        borderWidth: number;
-        color?: string | undefined;
-        height?: number | null | undefined;
-        opacity: number;
-        pattern?:
-            | "largeChecker"
-            | "largeCrosshatch"
-            | "largeDiagonalLeft"
-            | "largeDiagonalRight"
-            | "largeDiamond"
-            | "largeTriangle"
-            | "none"
-            | "smallChecker"
-            | "smallCrosshatch"
-            | "smallDiagonalLeft"
-            | "smallDiagonalRight"
-            | "smallDiamond"
-            | "smallTriangle"
-            | undefined;
-        shape?:
-            | "circle"
-            | "diamond"
-            | "ellipse"
-            | "human"
-            | "plus"
-            | "rectangle"
-            | "square"
-            | "star"
-            | "triangleDown"
-            | "triangleUp"
-            | string
-            | undefined;
-        source?: string | null | undefined;
-        svgClassName: string;
-        svgStyle?: object | null | undefined;
-        width?: number | null | undefined;
-    } | undefined;
+    indicatorIcon?:
+        | {
+              borderColor?: string | undefined;
+              borderRadius?: string | undefined;
+              borderWidth: number;
+              color?: string | undefined;
+              height?: number | null | undefined;
+              opacity: number;
+              pattern?:
+                  | "largeChecker"
+                  | "largeCrosshatch"
+                  | "largeDiagonalLeft"
+                  | "largeDiagonalRight"
+                  | "largeDiamond"
+                  | "largeTriangle"
+                  | "none"
+                  | "smallChecker"
+                  | "smallCrosshatch"
+                  | "smallDiagonalLeft"
+                  | "smallDiagonalRight"
+                  | "smallDiamond"
+                  | "smallTriangle"
+                  | undefined;
+              shape?:
+                  | "circle"
+                  | "diamond"
+                  | "ellipse"
+                  | "human"
+                  | "plus"
+                  | "rectangle"
+                  | "square"
+                  | "star"
+                  | "triangleDown"
+                  | "triangleUp"
+                  | string
+                  | undefined;
+              source?: string | null | undefined;
+              svgClassName: string;
+              svgStyle?: object | null | undefined;
+              width?: number | null | undefined;
+          }
+        | undefined;
     label: string;
     row: string;
     secondaryLabel: string;
@@ -695,6 +874,7 @@ export interface ojNBoxNodeSettableProperties extends JetSettableProperties {
     xPercentage?: number | null | undefined;
     yPercentage?: number | null | undefined;
 }
-export interface ojNBoxNodeSettablePropertiesLenient extends Partial<ojNBoxNodeSettableProperties> {
+export interface ojNBoxNodeSettablePropertiesLenient
+    extends Partial<ojNBoxNodeSettableProperties> {
     [key: string]: any;
 }

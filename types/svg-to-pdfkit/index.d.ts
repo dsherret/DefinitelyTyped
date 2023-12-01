@@ -22,7 +22,10 @@ declare namespace SVGtoPDF {
         ) => string;
         imageCallback?: (link: string) => string;
         documentCallback?: (file: string) => string;
-        colorCallback?: (result: string, raw: string) => [[number, number, number], number];
+        colorCallback?: (
+            result: string,
+            raw: string,
+        ) => [[number, number, number], number];
         warningCallback?: (str: string) => void;
         assumePt?: boolean;
         precision?: number;

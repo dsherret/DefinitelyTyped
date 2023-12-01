@@ -11,6 +11,10 @@ const fsHashCache = cacheManager.caching({
     },
 });
 
-const memoryCache = cacheManager.caching({ store: "memory", max: 100, ttl: 60 });
+const memoryCache = cacheManager.caching({
+    store: "memory",
+    max: 100,
+    ttl: 60,
+});
 
 cacheManager.multiCaching([fsHashCache, memoryCache]);

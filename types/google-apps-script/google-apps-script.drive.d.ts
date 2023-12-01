@@ -78,7 +78,10 @@ declare namespace GoogleAppsScript {
              * passed to access the target file or folder that has been shared using a
              * link.
              */
-            createShortcutForTargetIdAndResourceKey(targetId: string, targetResourceKey: string): File;
+            createShortcutForTargetIdAndResourceKey(
+                targetId: string,
+                targetResourceKey: string,
+            ): File;
             /**
              * Gets the file with the given ID.
              * Throws a scripting exception if the file does not exist or
@@ -112,7 +115,10 @@ declare namespace GoogleAppsScript {
              * Throws a scripting exception if the folder doesn't exist or the user
              * doesn't have permission to access it.
              */
-            getFolderByIdAndResourceKey(id: string, resourceKey: string): Folder;
+            getFolderByIdAndResourceKey(
+                id: string,
+                resourceKey: string,
+            ): Folder;
             /** Gets a collection of all folders in the user's Drive. */
             getFolders(): FolderIterator;
             /** Gets a collection of all folders in the user's Drive that have the given name. */
@@ -283,7 +289,10 @@ declare namespace GoogleAppsScript {
             createFile(name: string, content: string, mimeType: string): File;
             createFolder(name: string): Folder;
             createShortcut(targetId: string): File;
-            createShortcutForTargetIdAndResourceKey(targetId: string, targetResourceKey: string): File;
+            createShortcutForTargetIdAndResourceKey(
+                targetId: string,
+                targetResourceKey: string,
+            ): File;
             getAccess(email: string): Permission;
             getAccess(user: Base.User): Permission;
             getDateCreated(): Base.Date;

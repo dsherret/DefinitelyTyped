@@ -1,6 +1,10 @@
 /// <reference types="node" />
 
-import { DotenvConfigOptions, DotenvConfigOutput, DotenvParseOutput } from "dotenv";
+import {
+    DotenvConfigOptions,
+    DotenvConfigOutput,
+    DotenvParseOutput,
+} from "dotenv";
 
 /**
  * A dotenv system that supports defaults

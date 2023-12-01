@@ -22,10 +22,28 @@ class NgToasterTestController {
                 this.toaster.clear(null, toast.toastId);
             },
         });
-        this.toaster.pop("success", "title", "<ul><li>Render html</li></ul>", 5000, "trustedHtml");
-        this.toaster.pop("error", "title", "<ul><li>Render html</li></ul>", null, "trustedHtml");
+        this.toaster.pop(
+            "success",
+            "title",
+            "<ul><li>Render html</li></ul>",
+            5000,
+            "trustedHtml",
+        );
+        this.toaster.pop(
+            "error",
+            "title",
+            "<ul><li>Render html</li></ul>",
+            null,
+            "trustedHtml",
+        );
         this.toaster.pop("wait", "title", null, null, "template");
-        this.toaster.pop("warning", "title", "myTemplate.html", null, "template");
+        this.toaster.pop(
+            "warning",
+            "title",
+            "myTemplate.html",
+            null,
+            "template",
+        );
         this.toaster.pop("note", "title", "text");
         this.toaster.pop(
             "success",

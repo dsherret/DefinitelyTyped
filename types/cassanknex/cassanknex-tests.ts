@@ -6,16 +6,19 @@ const knex = cassanknex({
     },
 });
 
-knex.on("ready", (err) => {
-});
+knex.on("ready", (err) => {});
 
 interface BirdRow {
     type: string;
     canFly: boolean;
 }
 
-const create1 = knex("keyspace").createColumnFamily("family").primary("primary");
-const create2 = knex("keyspace").createColumnFamily("family").primary(["primary", "primary2"]);
+const create1 = knex("keyspace")
+    .createColumnFamily("family")
+    .primary("primary");
+const create2 = knex("keyspace")
+    .createColumnFamily("family")
+    .primary(["primary", "primary2"]);
 
 const qb = knex("animals")
     .insert<BirdRow>({
@@ -24,12 +27,12 @@ const qb = knex("animals")
     })
     .into("birds");
 
-qb.exec((err, res) => {
-});
+qb.exec((err, res) => {});
 
-qb.eachRow((n, row) => {
-}, (err) => {
-});
+qb.eachRow(
+    (n, row) => {},
+    (err) => {},
+);
 
 interface FooRow {
     id: string;

@@ -8,11 +8,14 @@ generator.generate((err, uid) => {
     err; // $ExpectType Error | null
     uid; // $ExpectType string
 });
-generator.generate().then(uid => {
-    uid; // $ExpectType string
-}).catch(e => {
-    e; // $ExpectType any
-});
+generator
+    .generate()
+    .then((uid) => {
+        uid; // $ExpectType string
+    })
+    .catch((e) => {
+        e; // $ExpectType any
+    });
 
 generator.bitSize; // $ExpectType number
 generator.uidLength; // $ExpectType number

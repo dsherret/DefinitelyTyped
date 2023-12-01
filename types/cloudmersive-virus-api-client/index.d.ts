@@ -147,19 +147,29 @@ export interface ScanFileAdvancedOptions {
 }
 
 export interface ScanFile {
-    (inputFile: Buffer, callback: (error: any, data: VirusScanResult, response: any) => any): any;
+    (
+        inputFile: Buffer,
+        callback: (error: any, data: VirusScanResult, response: any) => any,
+    ): any;
 }
 
 export interface ScanFileAdvanced {
     (
         inputFile: Buffer,
         opts: ScanFileAdvancedOptions,
-        callback: (error: any, data: VirusScanAdvancedResult, response: any) => any,
+        callback: (
+            error: any,
+            data: VirusScanAdvancedResult,
+            response: any,
+        ) => any,
     ): any;
 }
 
 export interface ScanWebsite {
-    (input: WebsiteScanRequest, callback: (error: any, data: WebsiteScanResult, response: any) => any): any;
+    (
+        input: WebsiteScanRequest,
+        callback: (error: any, data: WebsiteScanResult, response: any) => any,
+    ): any;
 }
 
 export interface VirusFound {

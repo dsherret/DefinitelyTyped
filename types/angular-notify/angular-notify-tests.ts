@@ -3,7 +3,8 @@ var myapp = angular.module("myapp", ["cgNotify"]);
 myapp.controller("MyController", [
     "$scope",
     "cgNotify",
-    function($scope: ng.IScope, notify: ng.cgNotify.INotifyService) { // <-- Inject notify
+    function ($scope: ng.IScope, notify: ng.cgNotify.INotifyService) {
+        // <-- Inject notify
         var notifyObj = notify("Your notification message"); // <-- Call notify with your message
         notifyObj.close();
 

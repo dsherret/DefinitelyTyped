@@ -114,7 +114,13 @@ export type PageOrientation = "portrait" | "landscape";
  * - `beforeOdd`/`afterOdd` adds one or two page breaks before/after an element
  *   so that the content after the page break is on an odd page
  */
-export type PageBreak = "before" | "beforeEven" | "beforeOdd" | "after" | "afterEven" | "afterOdd";
+export type PageBreak =
+    | "before"
+    | "beforeEven"
+    | "beforeOdd"
+    | "after"
+    | "afterEven"
+    | "afterOdd";
 
 /**
  * Sizes for the width of stand-alone columns and table columns.
@@ -126,11 +132,7 @@ export type PageBreak = "before" | "beforeEven" | "beforeOdd" | "after" | "after
  * - `*` to fill the remaining available space, distributed equally among
  *   all star-sized columns
  */
-export type Size =
-    | number
-    | "auto"
-    | "*"
-    | string;
+export type Size = number | "auto" | "*" | string;
 
 /**
  * Combination of a pattern defined in {@link TDocumentDefinitions.patterns} and a color.
@@ -229,7 +231,10 @@ export type DynamicContent = (
  * Callback that returns content depending on the current page number
  * or the size of the current page.
  */
-export type DynamicBackground = (currentPage: number, pageSize: ContextPageSize) => Content | null | undefined;
+export type DynamicBackground = (
+    currentPage: number,
+    pageSize: ContextPageSize,
+) => Content | null | undefined;
 
 /**
  * Margin in `pt`. Allows
@@ -241,7 +246,10 @@ export type DynamicBackground = (currentPage: number, pageSize: ContextPageSize)
  *
  * Negative values can lead to elements overlapping each other.
  */
-export type Margins = number | [number, number] | [number, number, number, number];
+export type Margins =
+    | number
+    | [number, number]
+    | [number, number, number, number];
 
 /**
  * Available types of decorations.
@@ -377,7 +385,11 @@ export interface CustomTableLayout {
      * Supports well-known color names like `blue` or hexadecimal color strings like `#ccffcc`,
      * as well as a reference to a pattern.
      */
-    fillColor?: string | PatternFill | DynamicCellLayout<string | PatternFill> | undefined;
+    fillColor?:
+        | string
+        | PatternFill
+        | DynamicCellLayout<string | PatternFill>
+        | undefined;
 
     /**
      * Opacity of the {@link fillColor}.
@@ -401,13 +413,19 @@ export interface CustomTableLayout {
  * Callback to control a property of the {@link CustomTableLayout} depending on the row number,
  * starting from 0.
  */
-export type DynamicLayout<T> = (rowIndex: number, node: ContentTable) => T | null;
+export type DynamicLayout<T> = (
+    rowIndex: number,
+    node: ContentTable,
+) => T | null;
 
 /**
  * Callback to control a property of the {@link CustomTableLayout} depending on the column number,
  * starting from 0.
  */
-export type VerticalDynamicLayout<T> = (columnIndex: number, node: ContentTable) => T | null;
+export type VerticalDynamicLayout<T> = (
+    columnIndex: number,
+    node: ContentTable,
+) => T | null;
 
 /**
  * Callback to control a property of the {@link CustomTableLayout} depending on the row and column number,
@@ -558,7 +576,12 @@ export interface Table {
      *
      * Defaults to `auto`.
      */
-    heights?: number | "auto" | Array<number | "auto"> | DynamicRowSize | undefined;
+    heights?:
+        | number
+        | "auto"
+        | Array<number | "auto">
+        | DynamicRowSize
+        | undefined;
 
     /**
      * Number of rows from the top that make up the table's header.
@@ -591,7 +614,10 @@ export interface Table {
  * - `headerLineOnly` only renders a horizontal border below the rows marked as header
  * - `lightHorizontalLines` renders gray horizontal borders
  */
-export type PredefinedTableLayout = "noBorders" | "headerLineOnly" | "lightHorizontalLines";
+export type PredefinedTableLayout =
+    | "noBorders"
+    | "headerLineOnly"
+    | "lightHorizontalLines";
 
 /**
  * A table layout.
@@ -921,17 +947,19 @@ interface ForbiddenElementProperties {
  * - Autocompletion does not sort the primary element properties at the top
  * - Error messages are not very good
  */
-type ForbidOtherElementProperties<TProperty extends keyof ForbiddenElementProperties> = Omit<
-    ForbiddenElementProperties,
-    TProperty
->;
+type ForbidOtherElementProperties<
+    TProperty extends keyof ForbiddenElementProperties,
+> = Omit<ForbiddenElementProperties, TProperty>;
 
 /**
  * Text element.
  *
  * For simple text without other properties, a string can be used instead of this element.
  */
-export interface ContentText extends ContentLink, ContentBase, ForbidOtherElementProperties<"text"> {
+export interface ContentText
+    extends ContentLink,
+        ContentBase,
+        ForbidOtherElementProperties<"text"> {
     /**
      * Text content.
      *
@@ -944,7 +972,9 @@ export interface ContentText extends ContentLink, ContentBase, ForbidOtherElemen
 /**
  * Element that divides its children into multiple columns.
  */
-export interface ContentColumns extends ContentBase, ForbidOtherElementProperties<"columns"> {
+export interface ContentColumns
+    extends ContentBase,
+        ForbidOtherElementProperties<"columns"> {
     /** Divides the given elements into multiple columns. */
     columns: Column[];
 }
@@ -954,7 +984,9 @@ export interface ContentColumns extends ContentBase, ForbidOtherElementPropertie
  *
  * For simple stacks without properties, a content array can be used instead.
  */
-export interface ContentStack extends ContentBase, ForbidOtherElementProperties<"stack"> {
+export interface ContentStack
+    extends ContentBase,
+        ForbidOtherElementProperties<"stack"> {
     /**
      * Stack that renders the given elements as multiple paragraphs.
      *
@@ -966,7 +998,9 @@ export interface ContentStack extends ContentBase, ForbidOtherElementProperties<
 /**
  * Element that renders an ordered / numbered list.
  */
-export interface ContentOrderedList extends ContentBase, ForbidOtherElementProperties<"ol"> {
+export interface ContentOrderedList
+    extends ContentBase,
+        ForbidOtherElementProperties<"ol"> {
     /**
      * Renders the given elements as an ordered / numbered list.
      */
@@ -1010,7 +1044,9 @@ export interface ContentOrderedList extends ContentBase, ForbidOtherElementPrope
 /**
  * Element that renders an unordered / bulleted list element.
  */
-export interface ContentUnorderedList extends ContentBase, ForbidOtherElementProperties<"ul"> {
+export interface ContentUnorderedList
+    extends ContentBase,
+        ForbidOtherElementProperties<"ul"> {
     /**
      * Renders the given elements as an unordered / bulleted list.
      */
@@ -1027,7 +1063,9 @@ export interface ContentUnorderedList extends ContentBase, ForbidOtherElementPro
 /**
  * Canvas / vector element.
  */
-export interface ContentCanvas extends ContentBase, ForbidOtherElementProperties<"canvas"> {
+export interface ContentCanvas
+    extends ContentBase,
+        ForbidOtherElementProperties<"canvas"> {
     /**
      * Renders the given vector elements on a canvas.
      *
@@ -1041,7 +1079,9 @@ export interface ContentCanvas extends ContentBase, ForbidOtherElementProperties
  *
  * For images other than SVG, use a {@link ContentImage} instead.
  */
-export interface ContentSvg extends ContentBase, ForbidOtherElementProperties<"svg"> {
+export interface ContentSvg
+    extends ContentBase,
+        ForbidOtherElementProperties<"svg"> {
     /**
      * Renders the given SVG content string as an image.
      *
@@ -1095,7 +1135,10 @@ export interface ContentSvg extends ContentBase, ForbidOtherElementProperties<"s
  *
  * For SVG images, use a {@link ContentSvg} element instead.
  */
-export interface ContentImage extends ContentLink, ContentBase, ForbidOtherElementProperties<"image"> {
+export interface ContentImage
+    extends ContentLink,
+        ContentBase,
+        ForbidOtherElementProperties<"image"> {
     /**
      * Renders the given value as image.
      *
@@ -1156,7 +1199,9 @@ export interface ContentImage extends ContentLink, ContentBase, ForbidOtherEleme
 /**
  * Table element.
  */
-export interface ContentTable extends ContentBase, ForbidOtherElementProperties<"table"> {
+export interface ContentTable
+    extends ContentBase,
+        ForbidOtherElementProperties<"table"> {
     /**
      * Renders a table.
      *
@@ -1178,7 +1223,9 @@ export interface ContentTable extends ContentBase, ForbidOtherElementProperties<
  *
  * Anchors can contain text content only.
  */
-export interface ContentAnchor extends ContentBase, ForbidOtherElementProperties<"text"> {
+export interface ContentAnchor
+    extends ContentBase,
+        ForbidOtherElementProperties<"text"> {
     /**
      * Text content of the anchor.
      */
@@ -1195,7 +1242,9 @@ export interface ContentAnchor extends ContentBase, ForbidOtherElementProperties
 /**
  * Text element to be displayed in a table of contents.
  */
-export interface ContentTocItem extends ContentBase, ForbidOtherElementProperties<"text"> {
+export interface ContentTocItem
+    extends ContentBase,
+        ForbidOtherElementProperties<"text"> {
     /**
      * Text content of the element.
      *
@@ -1238,7 +1287,9 @@ export interface ContentTocItem extends ContentBase, ForbidOtherElementPropertie
 /**
  * Reference to an anchor element, displaying its page number.
  */
-export interface ContentPageReference extends ContentBase, ForbidOtherElementProperties<"pageReference"> {
+export interface ContentPageReference
+    extends ContentBase,
+        ForbidOtherElementProperties<"pageReference"> {
     /**
      * `id` of a {@link ContentAnchor} to reference.
      *
@@ -1254,7 +1305,9 @@ export interface ContentPageReference extends ContentBase, ForbidOtherElementPro
 /**
  * Reference to an anchor element, displaying its text content.
  */
-export interface ContentTextReference extends ContentBase, ForbidOtherElementProperties<"textReference"> {
+export interface ContentTextReference
+    extends ContentBase,
+        ForbidOtherElementProperties<"textReference"> {
     /**
      * `id` of a {@link ContentAnchor} to reference.
      *
@@ -1268,7 +1321,9 @@ export interface ContentTextReference extends ContentBase, ForbidOtherElementPro
 /**
  * Table of contents element.
  */
-export interface ContentToc extends ContentBase, ForbidOtherElementProperties<"toc"> {
+export interface ContentToc
+    extends ContentBase,
+        ForbidOtherElementProperties<"toc"> {
     /**
      * Renders a table of contents.
      *
@@ -1282,7 +1337,9 @@ export interface ContentToc extends ContentBase, ForbidOtherElementProperties<"t
 /**
  * QR code element.
  */
-export interface ContentQr extends ContentBase, ForbidOtherElementProperties<"qr"> {
+export interface ContentQr
+    extends ContentBase,
+        ForbidOtherElementProperties<"qr"> {
     /**
      * Renders the given string as a QR code.
      */
@@ -1591,7 +1648,11 @@ export type UnorderedListElement = Content & UnorderedListElementProperties;
 /**
  * Child elements of a {@link ContentCanvas}.
  */
-export type CanvasElement = CanvasRect | CanvasPolyline | CanvasLine | CanvasEllipse;
+export type CanvasElement =
+    | CanvasRect
+    | CanvasPolyline
+    | CanvasLine
+    | CanvasEllipse;
 
 /**
  * Type to render the ends of lines in a canvas:
@@ -2052,11 +2113,11 @@ export interface TDocumentDefinitions {
      */
     pageBreakBefore?:
         | ((
-            currentNode: Node,
-            followingNodesOnPage: Node[],
-            nodesOnNextPage: Node[],
-            previousNodesOnPage: Node[],
-        ) => boolean)
+              currentNode: Node,
+              followingNodesOnPage: Node[],
+              nodesOnNextPage: Node[],
+              previousNodesOnPage: Node[],
+          ) => boolean)
         | undefined;
 
     /**

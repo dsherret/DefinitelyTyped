@@ -11,7 +11,15 @@ export interface Plural<T> {
     [itemName: string]: T;
 }
 
-export type Transform = [number, number, number, number, number, number, number];
+export type Transform = [
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+    number,
+];
 
 export interface Datum {
     ellipsoid: Ellipsoid;

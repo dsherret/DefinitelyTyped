@@ -1,4 +1,11 @@
-import { Configuration, Entry, Options, Output, Plugin, Resolve } from "webpack";
+import {
+    Configuration,
+    Entry,
+    Options,
+    Output,
+    Plugin,
+    Resolve,
+} from "webpack";
 
 import {
     Block,

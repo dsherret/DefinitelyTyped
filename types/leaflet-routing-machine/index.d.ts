@@ -7,7 +7,11 @@ declare module "leaflet" {
 
             getWaypoints(): Waypoint[];
             setWaypoints(waypoints: Waypoint[] | LatLng[]): this;
-            spliceWaypoints(index: number, waypointsToRemove: number, ...wayPoints: Waypoint[]): Waypoint[];
+            spliceWaypoints(
+                index: number,
+                waypointsToRemove: number,
+                ...wayPoints: Waypoint[]
+            ): Waypoint[];
             getPlan(): Plan;
             getRouter(): IRouter;
             route(): void;
@@ -21,7 +25,9 @@ declare module "leaflet" {
             geocoder?: any; // IGeocorder is from other library;
             fitSelectedRoutes?: "smart" | boolean | undefined;
             lineOptions?: LineOptions | undefined;
-            routeLine?: ((route: IRoute, options: LineOptions) => Line) | undefined;
+            routeLine?:
+                | ((route: IRoute, options: LineOptions) => Line)
+                | undefined;
             autoRoute?: boolean | undefined;
             routeWhileDragging?: boolean | undefined;
             routeDragInterval?: number | undefined;
@@ -62,12 +68,19 @@ declare module "leaflet" {
         }
 
         class Plan extends Layer {
-            constructor(waypoints: Waypoint[] | LatLng[], options?: PlanOptions);
+            constructor(
+                waypoints: Waypoint[] | LatLng[],
+                options?: PlanOptions,
+            );
 
             isReady(): boolean;
             getWaypoints(): Waypoint[];
             setWaypoints(waypoints: Waypoint[] | LatLng[]): any;
-            spliceWaypoints(index: number, waypointsToRemove: number, ...wayPoints: Waypoint[]): Waypoint[];
+            spliceWaypoints(
+                index: number,
+                waypointsToRemove: number,
+                ...wayPoints: Waypoint[]
+            ): Waypoint[];
             createGeocoders(): any;
         }
 
@@ -77,25 +90,39 @@ declare module "leaflet" {
             draggableWaypoints?: boolean | undefined;
             dragStyles?: PathOptions[] | undefined;
             maxGeocoderTolerance?: number | undefined;
-            geocoderPlaceholder?: ((waypointIndex: number, numberOfWaypoints: number) => string) | undefined;
+            geocoderPlaceholder?:
+                | ((waypointIndex: number, numberOfWaypoints: number) => string)
+                | undefined;
             geocodersClassName?: string | undefined;
-            geocoderClass?: ((waypointIndex: number, numberOfWaypoints: number) => void) | undefined;
+            geocoderClass?:
+                | ((waypointIndex: number, numberOfWaypoints: number) => void)
+                | undefined;
             waypointNameFallback?: ((latLng: LatLng) => string) | undefined;
-            createGeocoder?: ((waypointIndex: number, numberOfWaypoints: number, plan: Plan) => {}) | undefined;
+            createGeocoder?:
+                | ((
+                      waypointIndex: number,
+                      numberOfWaypoints: number,
+                      plan: Plan,
+                  ) => {})
+                | undefined;
             addButtonClassName?: string | undefined;
             createMarker?:
-                | ((waypointIndex: number, waypoint: Waypoint, numberOfWaypoints: number) => Marker | boolean)
+                | ((
+                      waypointIndex: number,
+                      waypoint: Waypoint,
+                      numberOfWaypoints: number,
+                  ) => Marker | boolean)
                 | undefined;
             routeWhileDragging?: boolean | undefined;
             reverseWaypoints?: boolean | undefined;
             language?: string | undefined;
             createGeocoderElement?:
                 | ((
-                    waypoint: Waypoint,
-                    waypointIndex: number,
-                    numberOfWaypoints: number,
-                    options: PlanOptions,
-                ) => GeocoderElement)
+                      waypoint: Waypoint,
+                      waypointIndex: number,
+                      numberOfWaypoints: number,
+                      options: PlanOptions,
+                  ) => GeocoderElement)
                 | undefined;
         }
 
@@ -116,10 +143,22 @@ declare module "leaflet" {
         class OSRMv1 implements IRouter {
             constructor(options?: OSRMOptions);
 
-            route(waypoints: Waypoint[], callback: (args?: any) => void, context?: {}, options?: RoutingOptions): void;
-            buildRouteUrl(waypoints: Waypoint[], options: RoutingOptions): string;
+            route(
+                waypoints: Waypoint[],
+                callback: (args?: any) => void,
+                context?: {},
+                options?: RoutingOptions,
+            ): void;
+            buildRouteUrl(
+                waypoints: Waypoint[],
+                options: RoutingOptions,
+            ): string;
             requiresMoreDetail(
-                route: { inputWaypoints: Waypoint; waypoints: Waypoint; properties?: any },
+                route: {
+                    inputWaypoints: Waypoint;
+                    waypoints: Waypoint;
+                    properties?: any;
+                },
                 zoom: any,
                 bounds: LatLng[],
             ): boolean;
@@ -135,7 +174,12 @@ declare module "leaflet" {
             suppressDemoServerWarning?: boolean | undefined;
             language?: string | undefined;
             requestParameters?: { [key: string]: any } | undefined;
-            stepToText?: ((step: any, leg: { legCount: number; legIndex: number }) => any) | undefined;
+            stepToText?:
+                | ((
+                      step: any,
+                      leg: { legCount: number; legIndex: number },
+                  ) => any)
+                | undefined;
         }
 
         class Formatter {
@@ -176,7 +220,12 @@ declare module "leaflet" {
 
             createContainer(className?: string): HTMLElement;
             createStepsContainer(): HTMLElement;
-            createStep(text: string, distance: string, icon: string, steps: HTMLElement): void;
+            createStep(
+                text: string,
+                distance: string,
+                icon: string,
+                steps: HTMLElement,
+            ): void;
         }
 
         interface ItineraryBuilderOptions {
@@ -209,7 +258,11 @@ declare module "leaflet" {
             };
             instructions: { [key: string]: string[] | string };
             formatOrder: (n: number | string) => string;
-            ui: { startPlaceholder: string; viaPlaceholder: string; endPlaceholder: string };
+            ui: {
+                startPlaceholder: string;
+                viaPlaceholder: string;
+                endPlaceholder: string;
+            };
             units: {
                 meters: string;
                 kilometers: string;
@@ -234,7 +287,12 @@ declare module "leaflet" {
         }
 
         class GeocoderElement {
-            constructor(waypoint: Waypoint, i: number, numberOfWaypoints: number, options: GeocoderElementOptions);
+            constructor(
+                waypoint: Waypoint,
+                i: number,
+                numberOfWaypoints: number,
+                options: GeocoderElementOptions,
+            );
 
             getContainer(): HTMLElement;
             setValue(v: any): void;
@@ -243,9 +301,19 @@ declare module "leaflet" {
         }
 
         interface GeocoderElementOptions {
-            createGeocoder?: ((i: number, nWps: number, options: GeocoderElementOptions) => any) | undefined;
+            createGeocoder?:
+                | ((
+                      i: number,
+                      nWps: number,
+                      options: GeocoderElementOptions,
+                  ) => any)
+                | undefined;
             geocoderPlaceholder?:
-                | ((i: number, numberOfWaypoints: number, geocoderElement: GeocoderElement) => string)
+                | ((
+                      i: number,
+                      numberOfWaypoints: number,
+                      geocoderElement: GeocoderElement,
+                  ) => string)
                 | undefined;
             geocoderClass?: (() => string) | undefined;
             waypointNameFallback?: ((latLng: LatLng) => string) | undefined;
@@ -264,7 +332,12 @@ declare module "leaflet" {
         }
 
         class AutoComplete {
-            constructor(element: HTMLElement, callback: any, context: any, options: AutoCompleteOptions);
+            constructor(
+                element: HTMLElement,
+                callback: any,
+                context: any,
+                options: AutoCompleteOptions,
+            );
 
             close(): void;
         }
@@ -393,9 +466,16 @@ declare module "leaflet" {
 
         function line(route: IRoute, options?: LineOptions): Line;
 
-        function plan(waypoints: Waypoint[] | LatLng[], options?: PlanOptions): Plan;
+        function plan(
+            waypoints: Waypoint[] | LatLng[],
+            options?: PlanOptions,
+        ): Plan;
 
-        function waypoint(latLng: LatLng, name?: string, options?: WaypointOptions): Waypoint;
+        function waypoint(
+            latLng: LatLng,
+            name?: string,
+            options?: WaypointOptions,
+        ): Waypoint;
 
         function osrmv1(options?: OSRMOptions): OSRMv1;
 
@@ -410,11 +490,16 @@ declare module "leaflet" {
             options: GeocoderElementOptions,
         ): GeocoderElement;
 
-        function itineraryBuilder(options?: ItineraryBuilderOptions): ItineraryBuilder;
+        function itineraryBuilder(
+            options?: ItineraryBuilderOptions,
+        ): ItineraryBuilder;
 
         function mapbox(accessToken: string, options: OSRMOptions): MapBox;
 
-        function errorControl(routingControl: Control, options: ErrorControlOptions): ErrorControl;
+        function errorControl(
+            routingControl: Control,
+            options: ErrorControlOptions,
+        ): ErrorControl;
 
         function autocomplete(
             element: HTMLElement,
@@ -425,21 +510,39 @@ declare module "leaflet" {
     }
 
     namespace routing {
-        function control(options?: Routing.RoutingControlOptions): Routing.Control;
+        function control(
+            options?: Routing.RoutingControlOptions,
+        ): Routing.Control;
 
-        function itinerary(options?: Routing.ItineraryOptions): Routing.Itinerary;
+        function itinerary(
+            options?: Routing.ItineraryOptions,
+        ): Routing.Itinerary;
 
-        function line(route: Routing.IRoute, options?: Routing.LineOptions): Routing.Line;
+        function line(
+            route: Routing.IRoute,
+            options?: Routing.LineOptions,
+        ): Routing.Line;
 
-        function plan(waypoints: Routing.Waypoint[] | LatLng[], options?: Routing.PlanOptions): Routing.Plan;
+        function plan(
+            waypoints: Routing.Waypoint[] | LatLng[],
+            options?: Routing.PlanOptions,
+        ): Routing.Plan;
 
-        function waypoint(latLng: LatLng, name?: string, options?: Routing.WaypointOptions): Routing.Waypoint;
+        function waypoint(
+            latLng: LatLng,
+            name?: string,
+            options?: Routing.WaypointOptions,
+        ): Routing.Waypoint;
 
         function osrmv1(options?: Routing.OSRMOptions): Routing.OSRMv1;
 
-        function localization(options?: Routing.LocalizationOptions): Routing.Localization;
+        function localization(
+            options?: Routing.LocalizationOptions,
+        ): Routing.Localization;
 
-        function formatter(options?: Routing.FormatterOptions): Routing.Formatter;
+        function formatter(
+            options?: Routing.FormatterOptions,
+        ): Routing.Formatter;
 
         function geocoderElement(
             waypoint: Routing.Waypoint,
@@ -448,9 +551,14 @@ declare module "leaflet" {
             options: Routing.GeocoderElementOptions,
         ): Routing.GeocoderElement;
 
-        function itineraryBuilder(options?: Routing.ItineraryBuilderOptions): Routing.ItineraryBuilder;
+        function itineraryBuilder(
+            options?: Routing.ItineraryBuilderOptions,
+        ): Routing.ItineraryBuilder;
 
-        function mapbox(accessToken: string, options: Routing.OSRMOptions): Routing.MapBox;
+        function mapbox(
+            accessToken: string,
+            options: Routing.OSRMOptions,
+        ): Routing.MapBox;
 
         function errorControl(
             routingControl: Routing.Control,

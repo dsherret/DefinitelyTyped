@@ -18,7 +18,11 @@ import { performance } from "node:perf_hooks";
 import { stdout } from "node:process";
 import { arrayBuffer, blob, buffer, json, text } from "node:stream/consumers";
 import { pipeline as pipelinePromise } from "node:stream/promises";
-import { ReadableStream, TransformStream, WritableStream } from "node:stream/web";
+import {
+    ReadableStream,
+    TransformStream,
+    WritableStream,
+} from "node:stream/web";
 import { setInterval as every } from "node:timers/promises";
 import { MessageChannel as NodeMC } from "node:worker_threads";
 
@@ -207,7 +211,11 @@ function streamPipelineFinished() {
     let cancel = finished(process.stdin, (err?: Error | null) => {});
     cancel();
 
-    cancel = finished(process.stdin, { readable: false, signal: new AbortSignal() }, (err?: Error | null) => {});
+    cancel = finished(
+        process.stdin,
+        { readable: false, signal: new AbortSignal() },
+        (err?: Error | null) => {},
+    );
     cancel();
 
     pipeline(process.stdin, process.stdout, (err?: Error | null) => {});
@@ -230,7 +238,7 @@ function streamPipelineAsyncTransform() {
     // Transform through a stream, preserving the type of the source
     pipeline(
         process.stdin,
-        async function*(source) {
+        async function* (source) {
             // $ExpectType ReadStream & { fd: 0; }
             source;
             source.setEncoding("utf8");
@@ -239,78 +247,88 @@ function streamPipelineAsyncTransform() {
             }
         },
         process.stdout,
-        err => console.error(err),
+        (err) => console.error(err),
     );
 
     // Read from an iterable and write to a function accepting an AsyncIterable
-    pipeline("tasty", async function*(source) {
-        // $ExpectType string
-        source;
-        for (const chunk of source) {
-            yield chunk.toUpperCase();
-        }
-    }, async function*(source: AsyncIterable<string>) {
-        // $ExpectType AsyncIterable<string>
-        source;
-        for await (const chunk of source) {
-            console.log(chunk);
-        }
-        yield null;
-    }, err => console.error(err));
-
-    // Finish with a promise
-    pipeline("tasty", async function*(source) {
-        for (const chunk of source) {
-            yield chunk.toUpperCase();
-        }
-    }, async (source: AsyncIterable<string>) => {
-        return new Date();
-    }, (err, val) => {
-        // $ExpectType Date
-        val;
-    });
-
-    // Read from an iterable and go through two transforms
     pipeline(
-        function*() {
-            for (let i = 0; i < 5; i++) {
-                yield i;
-            }
-        },
-        async function*(source) {
-            for await (const chunk of source) {
-                yield chunk + 3;
-            }
-        },
-        async function*(source) {
-            for await (const chunk of source) {
-                yield chunk.toFixed(3);
-            }
-        },
-        process.stdout,
-        err => console.error(err),
-    );
-
-    // Accepts ordinary iterable as source
-    pipeline(
-        [1, 2, 3].values(),
-        async function*(source) {
+        "tasty",
+        async function* (source) {
+            // $ExpectType string
+            source;
             for (const chunk of source) {
-                yield chunk + 3;
+                yield chunk.toUpperCase();
             }
         },
-        async function*(source) {
-            for await (const chunk of source) {
-                yield chunk.toFixed(3);
-            }
-        },
-        async function*(source: AsyncIterable<string>) {
+        async function* (source: AsyncIterable<string>) {
+            // $ExpectType AsyncIterable<string>
+            source;
             for await (const chunk of source) {
                 console.log(chunk);
             }
             yield null;
         },
-        err => console.error(err),
+        (err) => console.error(err),
+    );
+
+    // Finish with a promise
+    pipeline(
+        "tasty",
+        async function* (source) {
+            for (const chunk of source) {
+                yield chunk.toUpperCase();
+            }
+        },
+        async (source: AsyncIterable<string>) => {
+            return new Date();
+        },
+        (err, val) => {
+            // $ExpectType Date
+            val;
+        },
+    );
+
+    // Read from an iterable and go through two transforms
+    pipeline(
+        function* () {
+            for (let i = 0; i < 5; i++) {
+                yield i;
+            }
+        },
+        async function* (source) {
+            for await (const chunk of source) {
+                yield chunk + 3;
+            }
+        },
+        async function* (source) {
+            for await (const chunk of source) {
+                yield chunk.toFixed(3);
+            }
+        },
+        process.stdout,
+        (err) => console.error(err),
+    );
+
+    // Accepts ordinary iterable as source
+    pipeline(
+        [1, 2, 3].values(),
+        async function* (source) {
+            for (const chunk of source) {
+                yield chunk + 3;
+            }
+        },
+        async function* (source) {
+            for await (const chunk of source) {
+                yield chunk.toFixed(3);
+            }
+        },
+        async function* (source: AsyncIterable<string>) {
+            for await (const chunk of source) {
+                console.log(chunk);
+            }
+            yield null;
+        },
+        (err) => console.error(err),
     );
 
     // Accepts buffer as source
@@ -319,68 +337,80 @@ function streamPipelineAsyncTransform() {
 
 async function streamPipelineAsyncPromiseTransform() {
     // Transform through a stream, preserving the type of the source
-    pipelinePromise(process.stdin, async function*(source) {
-        // $ExpectType ReadStream & { fd: 0; }
-        source;
-        source.setEncoding("utf8");
-        for await (const chunk of source as AsyncIterable<string>) {
-            yield chunk.toUpperCase();
-        }
-    }, process.stdout).then(r => {
+    pipelinePromise(
+        process.stdin,
+        async function* (source) {
+            // $ExpectType ReadStream & { fd: 0; }
+            source;
+            source.setEncoding("utf8");
+            for await (const chunk of source as AsyncIterable<string>) {
+                yield chunk.toUpperCase();
+            }
+        },
+        process.stdout,
+    ).then((r) => {
         // $ExpectType void
         r;
     });
 
     // Read from an iterable and write to a function accepting an AsyncIterable
-    pipelinePromise("tasty", async function*(source) {
-        // $ExpectType string
-        source;
-        for (const chunk of source) {
-            yield chunk.toUpperCase();
-        }
-    }, async function*(source: AsyncIterable<string>) {
-        // $ExpectType AsyncIterable<string>
-        source;
-        for await (const chunk of source) {
-            console.log(chunk);
-        }
-        yield null;
-    }).then(r => {
+    pipelinePromise(
+        "tasty",
+        async function* (source) {
+            // $ExpectType string
+            source;
+            for (const chunk of source) {
+                yield chunk.toUpperCase();
+            }
+        },
+        async function* (source: AsyncIterable<string>) {
+            // $ExpectType AsyncIterable<string>
+            source;
+            for await (const chunk of source) {
+                console.log(chunk);
+            }
+            yield null;
+        },
+    ).then((r) => {
         // $ExpectType void
         r;
     });
 
     // Finish with a promise
-    pipelinePromise("tasty", async function*(source) {
-        for (const chunk of source) {
-            yield chunk.toUpperCase();
-        }
-    }, async (source: AsyncIterable<string>) => {
-        return new Date();
-    }).then(r => {
+    pipelinePromise(
+        "tasty",
+        async function* (source) {
+            for (const chunk of source) {
+                yield chunk.toUpperCase();
+            }
+        },
+        async (source: AsyncIterable<string>) => {
+            return new Date();
+        },
+    ).then((r) => {
         // $ExpectType Date
         r;
     });
 
     // Read from an iterable and go through two transforms
     pipelinePromise(
-        function*() {
+        function* () {
             for (let i = 0; i < 5; i++) {
                 yield i;
             }
         },
-        async function*(source) {
+        async function* (source) {
             for await (const chunk of source) {
                 yield chunk + 3;
             }
         },
-        async function*(source) {
+        async function* (source) {
             for await (const chunk of source) {
                 yield chunk.toFixed(3);
             }
         },
         process.stdout,
-    ).then(r => {
+    ).then((r) => {
         // $ExpectType void
         r;
     });
@@ -392,7 +422,7 @@ async function streamPipelineAsyncPromiseAbortTransform() {
     // Transform through a stream, preserving the type of the source
     pipelinePromise(
         process.stdin,
-        async function*(source) {
+        async function* (source) {
             // $ExpectType ReadStream & { fd: 0; }
             source;
             source.setEncoding("utf8");
@@ -402,62 +432,72 @@ async function streamPipelineAsyncPromiseAbortTransform() {
         },
         process.stdout,
         { signal },
-    ).then(r => {
+    ).then((r) => {
         // $ExpectType void
         r;
     });
 
     // Read from an iterable and write to a function accepting an AsyncIterable
-    pipelinePromise("tasty", async function*(source) {
-        // $ExpectType string
-        source;
-        for (const chunk of source) {
-            yield chunk.toUpperCase();
-        }
-    }, async function*(source: AsyncIterable<string>) {
-        // $ExpectType AsyncIterable<string>
-        source;
-        for await (const chunk of source) {
-            console.log(chunk);
-        }
-        yield null;
-    }, { signal }).then(r => {
+    pipelinePromise(
+        "tasty",
+        async function* (source) {
+            // $ExpectType string
+            source;
+            for (const chunk of source) {
+                yield chunk.toUpperCase();
+            }
+        },
+        async function* (source: AsyncIterable<string>) {
+            // $ExpectType AsyncIterable<string>
+            source;
+            for await (const chunk of source) {
+                console.log(chunk);
+            }
+            yield null;
+        },
+        { signal },
+    ).then((r) => {
         // $ExpectType void
         r;
     });
 
     // Finish with a promise
-    pipelinePromise("tasty", async function*(source) {
-        for (const chunk of source) {
-            yield chunk.toUpperCase();
-        }
-    }, async (source: AsyncIterable<string>) => {
-        return new Date();
-    }, { signal }).then(r => {
+    pipelinePromise(
+        "tasty",
+        async function* (source) {
+            for (const chunk of source) {
+                yield chunk.toUpperCase();
+            }
+        },
+        async (source: AsyncIterable<string>) => {
+            return new Date();
+        },
+        { signal },
+    ).then((r) => {
         // $ExpectType Date
         r;
     });
 
     // Read from an iterable and go through two transforms
     pipelinePromise(
-        function*() {
+        function* () {
             for (let i = 0; i < 5; i++) {
                 yield i;
             }
         },
-        async function*(source) {
+        async function* (source) {
             for await (const chunk of source) {
                 yield chunk + 3;
             }
         },
-        async function*(source) {
+        async function* (source) {
             for await (const chunk of source) {
                 yield chunk.toFixed(3);
             }
         },
         process.stdout,
         { signal },
-    ).then(r => {
+    ).then((r) => {
         // $ExpectType void
         r;
     });
@@ -585,7 +625,8 @@ async function testReadableStream() {
 
     const stream = new ReadableStream<number>({
         async start(controller) {
-            for await (const _ of every(SECOND)) controller.enqueue(performance.now());
+            for await (const _ of every(SECOND))
+                controller.enqueue(performance.now());
         },
     });
 
@@ -654,17 +695,21 @@ async function testTransferringStreamWithPostMessage() {
 {
     // checking the type definitions for the events on the Duplex class and subclasses
     const transform = new Transform();
-    transform.on("pipe", (src) => {
-        // $ExpectType Readable
-        src;
-    }).once("unpipe", (src) => {
-        // $ExpectType Readable
-        src;
-    }).addListener("data", (chunk) => {
-        // $ExpectType any
-        chunk;
-    }).prependOnceListener("error", (err) => {
-        // $ExpectType Error
-        err;
-    });
+    transform
+        .on("pipe", (src) => {
+            // $ExpectType Readable
+            src;
+        })
+        .once("unpipe", (src) => {
+            // $ExpectType Readable
+            src;
+        })
+        .addListener("data", (chunk) => {
+            // $ExpectType any
+            chunk;
+        })
+        .prependOnceListener("error", (err) => {
+            // $ExpectType Error
+            err;
+        });
 }

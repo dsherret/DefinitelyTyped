@@ -192,1510 +192,1560 @@ declare namespace echarts {
              *
              * @see https://echarts.apache.org/en/option.html#series-themeRiver.label
              */
-            label?: {
-                /**
-                 * Whether to show label.
-                 *
-                 * @default
-                 * "true"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.show
-                 */
-                show?: boolean | undefined;
+            label?:
+                | {
+                      /**
+                       * Whether to show label.
+                       *
+                       * @default
+                       * "true"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.show
+                       */
+                      show?: boolean | undefined;
 
-                /**
-                 * Label position.
-                 *
-                 * **Followings are the options:**
-                 *
-                 * + \[x, y\]
-                 *
-                 * Use relative percentage, or absolute pixel values to represent
-                 * position of label relative to top-left corner of bounding
-                 * box. For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label)
-                 *
-                 * + 'top'
-                 *
-                 * + 'left'
-                 * + 'right'
-                 * + 'bottom'
-                 * + 'inside'
-                 * + 'insideLeft'
-                 * + 'insideRight'
-                 * + 'insideTop'
-                 * + 'insideBottom'
-                 * + 'insideTopLeft'
-                 * + 'insideBottomLeft'
-                 * + 'insideTopRight'
-                 * + 'insideBottomRight'
-                 *
-                 * See:
-                 * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
-                 * .
-                 *
-                 * @default
-                 * "left"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.position
-                 */
-                position?: any[] | string | undefined;
+                      /**
+                       * Label position.
+                       *
+                       * **Followings are the options:**
+                       *
+                       * + \[x, y\]
+                       *
+                       * Use relative percentage, or absolute pixel values to represent
+                       * position of label relative to top-left corner of bounding
+                       * box. For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label)
+                       *
+                       * + 'top'
+                       *
+                       * + 'left'
+                       * + 'right'
+                       * + 'bottom'
+                       * + 'inside'
+                       * + 'insideLeft'
+                       * + 'insideRight'
+                       * + 'insideTop'
+                       * + 'insideBottom'
+                       * + 'insideTopLeft'
+                       * + 'insideBottomLeft'
+                       * + 'insideTopRight'
+                       * + 'insideBottomRight'
+                       *
+                       * See:
+                       * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
+                       * .
+                       *
+                       * @default
+                       * "left"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.position
+                       */
+                      position?: any[] | string | undefined;
 
-                /**
-                 * Distance to the host graphic element.
-                 * Works when position is string value (like `'top'`、`'insideRight'`).
-                 *
-                 * See:
-                 * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
-                 * .
-                 *
-                 * @default
-                 * 5
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.distance
-                 */
-                distance?: number | undefined;
+                      /**
+                       * Distance to the host graphic element.
+                       * Works when position is string value (like `'top'`、`'insideRight'`).
+                       *
+                       * See:
+                       * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
+                       * .
+                       *
+                       * @default
+                       * 5
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.distance
+                       */
+                      distance?: number | undefined;
 
-                /**
-                 * Rotate label, from -90 degree to 90, positive value represents
-                 * rotate anti-clockwise.
-                 *
-                 * See:
-                 * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
-                 * .
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rotate
-                 */
-                rotate?: number | undefined;
+                      /**
+                       * Rotate label, from -90 degree to 90, positive value represents
+                       * rotate anti-clockwise.
+                       *
+                       * See:
+                       * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
+                       * .
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rotate
+                       */
+                      rotate?: number | undefined;
 
-                /**
-                 * Whether to move text slightly.
-                 * For example: `[30, 40]` means move `30` horizontally and
-                 * move `40` vertically.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.offset
-                 */
-                offset?: any[] | undefined;
+                      /**
+                       * Whether to move text slightly.
+                       * For example: `[30, 40]` means move `30` horizontally and
+                       * move `40` vertically.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.offset
+                       */
+                      offset?: any[] | undefined;
 
-                /**
-                 * text color.
-                 *
-                 * If set as `'auto'`, the color will assigned as visual color,
-                 * such as series color.
-                 *
-                 * @default
-                 * '#000'
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.color
-                 */
-                color?: string | undefined;
+                      /**
+                       * text color.
+                       *
+                       * If set as `'auto'`, the color will assigned as visual color,
+                       * such as series color.
+                       *
+                       * @default
+                       * '#000'
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.color
+                       */
+                      color?: string | undefined;
 
-                /**
-                 * font style
-                 *
-                 * Options are:
-                 *
-                 * + `'normal'`
-                 * + `'italic'`
-                 * + `'oblique'`
-                 *
-                 * @default
-                 * "normal"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.fontStyle
-                 */
-                fontStyle?: string | undefined;
+                      /**
+                       * font style
+                       *
+                       * Options are:
+                       *
+                       * + `'normal'`
+                       * + `'italic'`
+                       * + `'oblique'`
+                       *
+                       * @default
+                       * "normal"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.fontStyle
+                       */
+                      fontStyle?: string | undefined;
 
-                /**
-                 * font thick weight
-                 *
-                 * Options are:
-                 *
-                 * + `'normal'`
-                 * + `'bold'`
-                 * + `'bolder'`
-                 * + `'lighter'`
-                 * + 100 | 200 | 300 | 400...
-                 *
-                 * @default
-                 * "normal"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.fontWeight
-                 */
-                fontWeight?: number | string | undefined;
+                      /**
+                       * font thick weight
+                       *
+                       * Options are:
+                       *
+                       * + `'normal'`
+                       * + `'bold'`
+                       * + `'bolder'`
+                       * + `'lighter'`
+                       * + 100 | 200 | 300 | 400...
+                       *
+                       * @default
+                       * "normal"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.fontWeight
+                       */
+                      fontWeight?: number | string | undefined;
 
-                /**
-                 * font family
-                 *
-                 * Can also be 'serif' , 'monospace', ...
-                 *
-                 * @default
-                 * "sans-serif"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.fontFamily
-                 */
-                fontFamily?: string | undefined;
+                      /**
+                       * font family
+                       *
+                       * Can also be 'serif' , 'monospace', ...
+                       *
+                       * @default
+                       * "sans-serif"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.fontFamily
+                       */
+                      fontFamily?: string | undefined;
 
-                /**
-                 * font size
-                 *
-                 * @default
-                 * 11
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.fontSize
-                 */
-                fontSize?: number | undefined;
+                      /**
+                       * font size
+                       *
+                       * @default
+                       * 11
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.fontSize
+                       */
+                      fontSize?: number | undefined;
 
-                /**
-                 * Line height of the text fregment.
-                 *
-                 * If `lineHeight` is not set in `rich`, `lineHeight` in parent
-                 * level will be used. For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.lineHeight
-                 */
-                lineHeight?: number | undefined;
+                      /**
+                       * Line height of the text fregment.
+                       *
+                       * If `lineHeight` is not set in `rich`, `lineHeight` in parent
+                       * level will be used. For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.lineHeight
+                       */
+                      lineHeight?: number | undefined;
 
-                /**
-                 * Background color of the text fregment.
-                 *
-                 * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
-                 *
-                 * Or image can be used, for example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label)
-                 *
-                 * `width` or `height` can be specified when using background
-                 * image, or auto adapted by default.
-                 *
-                 * If set as `'auto'`, the color will assigned as visual color,
-                 * such as series color.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.backgroundColor
-                 */
-                backgroundColor?: object | string | undefined;
+                      /**
+                       * Background color of the text fregment.
+                       *
+                       * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
+                       *
+                       * Or image can be used, for example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label)
+                       *
+                       * `width` or `height` can be specified when using background
+                       * image, or auto adapted by default.
+                       *
+                       * If set as `'auto'`, the color will assigned as visual color,
+                       * such as series color.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.backgroundColor
+                       */
+                      backgroundColor?: object | string | undefined;
 
-                /**
-                 * Border color of the text fregment.
-                 *
-                 * If set as `'auto'`, the color will assigned as visual color,
-                 * such as series color.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.borderColor
-                 */
-                borderColor?: string | undefined;
+                      /**
+                       * Border color of the text fregment.
+                       *
+                       * If set as `'auto'`, the color will assigned as visual color,
+                       * such as series color.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.borderColor
+                       */
+                      borderColor?: string | undefined;
 
-                /**
-                 * Border width of the text fregment.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.borderWidth
-                 */
-                borderWidth?: number | undefined;
+                      /**
+                       * Border width of the text fregment.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.borderWidth
+                       */
+                      borderWidth?: number | undefined;
 
-                /**
-                 * Border radius of the text fregment.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.borderRadius
-                 */
-                borderRadius?: number | undefined;
+                      /**
+                       * Border radius of the text fregment.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.borderRadius
+                       */
+                      borderRadius?: number | undefined;
 
-                /**
-                 * Padding of the text fregment, for example:
-                 *
-                 * + `padding: [3, 4, 5, 6]`: represents padding of `[top, right,
-                 * bottom, left]`.
-                 * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
-                 * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
-                 *
-                 * Notice, `width` and `height` specifies the width and height
-                 * of the content, without `padding`.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.padding
-                 */
-                padding?: any[] | number | undefined;
+                      /**
+                       * Padding of the text fregment, for example:
+                       *
+                       * + `padding: [3, 4, 5, 6]`: represents padding of `[top, right,
+                       * bottom, left]`.
+                       * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
+                       * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
+                       *
+                       * Notice, `width` and `height` specifies the width and height
+                       * of the content, without `padding`.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.padding
+                       */
+                      padding?: any[] | number | undefined;
 
-                /**
-                 * Shadow color of the text block.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.shadowColor
-                 */
-                shadowColor?: string | undefined;
+                      /**
+                       * Shadow color of the text block.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.shadowColor
+                       */
+                      shadowColor?: string | undefined;
 
-                /**
-                 * Show blur of the text block.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.shadowBlur
-                 */
-                shadowBlur?: number | undefined;
+                      /**
+                       * Show blur of the text block.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.shadowBlur
+                       */
+                      shadowBlur?: number | undefined;
 
-                /**
-                 * Shadow X offset of the text block.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.shadowOffsetX
-                 */
-                shadowOffsetX?: number | undefined;
+                      /**
+                       * Shadow X offset of the text block.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.shadowOffsetX
+                       */
+                      shadowOffsetX?: number | undefined;
 
-                /**
-                 * Shadow Y offset of the text block.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.shadowOffsetY
-                 */
-                shadowOffsetY?: number | undefined;
+                      /**
+                       * Shadow Y offset of the text block.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.shadowOffsetY
+                       */
+                      shadowOffsetY?: number | undefined;
 
-                /**
-                 * Width of the text block.
-                 * It is the width of the text by default.
-                 * In most cases, there is no need to specify it.
-                 * You may want to use it in some cases like make simple table
-                 * or using background image (see `backgroundColor`).
-                 *
-                 * Notice, `width` and `height` specifies the width and height
-                 * of the content, without `padding`.
-                 *
-                 * `width` can also be percent string, like `'100%'`, which
-                 * represents the percent of `contentWidth` (that is, the width
-                 * without `padding`) of its container box.
-                 * It is based on `contentWidth` because that each text fregment
-                 * is layout based on the `content box`, where it makes no sense
-                 * that calculating width based on `outerWith` in prectice.
-                 *
-                 * Notice, `width` and `height` only work when `rich` specified.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.width
-                 */
-                width?: number | string | undefined;
+                      /**
+                       * Width of the text block.
+                       * It is the width of the text by default.
+                       * In most cases, there is no need to specify it.
+                       * You may want to use it in some cases like make simple table
+                       * or using background image (see `backgroundColor`).
+                       *
+                       * Notice, `width` and `height` specifies the width and height
+                       * of the content, without `padding`.
+                       *
+                       * `width` can also be percent string, like `'100%'`, which
+                       * represents the percent of `contentWidth` (that is, the width
+                       * without `padding`) of its container box.
+                       * It is based on `contentWidth` because that each text fregment
+                       * is layout based on the `content box`, where it makes no sense
+                       * that calculating width based on `outerWith` in prectice.
+                       *
+                       * Notice, `width` and `height` only work when `rich` specified.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.width
+                       */
+                      width?: number | string | undefined;
 
-                /**
-                 * Height of the text block.
-                 * It is the width of the text by default.
-                 * You may want to use it in some cases like using background
-                 * image (see `backgroundColor`).
-                 *
-                 * Notice, `width` and `height` specifies the width and height
-                 * of the content, without `padding`.
-                 *
-                 * Notice, `width` and `height` only work when `rich` specified.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.height
-                 */
-                height?: number | string | undefined;
+                      /**
+                       * Height of the text block.
+                       * It is the width of the text by default.
+                       * You may want to use it in some cases like using background
+                       * image (see `backgroundColor`).
+                       *
+                       * Notice, `width` and `height` specifies the width and height
+                       * of the content, without `padding`.
+                       *
+                       * Notice, `width` and `height` only work when `rich` specified.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.height
+                       */
+                      height?: number | string | undefined;
 
-                /**
-                 * Storke color of the text.
-                 *
-                 * If set as `'auto'`, the color will assigned as visual color,
-                 * such as series color.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textBorderColor
-                 */
-                textBorderColor?: string | undefined;
+                      /**
+                       * Storke color of the text.
+                       *
+                       * If set as `'auto'`, the color will assigned as visual color,
+                       * such as series color.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textBorderColor
+                       */
+                      textBorderColor?: string | undefined;
 
-                /**
-                 * Storke line width of the text.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textBorderWidth
-                 */
-                textBorderWidth?: number | undefined;
+                      /**
+                       * Storke line width of the text.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textBorderWidth
+                       */
+                      textBorderWidth?: number | undefined;
 
-                /**
-                 * Shadow color of the text itself.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textShadowColor
-                 */
-                textShadowColor?: string | undefined;
+                      /**
+                       * Shadow color of the text itself.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textShadowColor
+                       */
+                      textShadowColor?: string | undefined;
 
-                /**
-                 * Shadow blue of the text itself.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textShadowBlur
-                 */
-                textShadowBlur?: number | undefined;
+                      /**
+                       * Shadow blue of the text itself.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textShadowBlur
+                       */
+                      textShadowBlur?: number | undefined;
 
-                /**
-                 * Shadow X offset of the text itself.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textShadowOffsetX
-                 */
-                textShadowOffsetX?: number | undefined;
+                      /**
+                       * Shadow X offset of the text itself.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textShadowOffsetX
+                       */
+                      textShadowOffsetX?: number | undefined;
 
-                /**
-                 * Shadow Y offset of the text itself.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textShadowOffsetY
-                 */
-                textShadowOffsetY?: number | undefined;
+                      /**
+                       * Shadow Y offset of the text itself.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.textShadowOffsetY
+                       */
+                      textShadowOffsetY?: number | undefined;
 
-                /**
-                 * "Rich text styles" can be defined in this `rich` property.
-                 * For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label)
-                 *
-                 * For more details, see
-                 * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
-                 * please.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich
-                 */
-                rich?: {
-                    /**
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E
-                     */
-                    [userStyle: string]: {
-                        /**
-                         * text color.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * ""#fff""
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.color
-                         */
-                        color?: string | undefined;
+                      /**
+                       * "Rich text styles" can be defined in this `rich` property.
+                       * For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label)
+                       *
+                       * For more details, see
+                       * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
+                       * please.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich
+                       */
+                      rich?:
+                          | {
+                                /**
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E
+                                 */
+                                [userStyle: string]: {
+                                    /**
+                                     * text color.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * ""#fff""
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.color
+                                     */
+                                    color?: string | undefined;
 
-                        /**
-                         * font style
-                         *
-                         * Options are:
-                         *
-                         * + `'normal'`
-                         * + `'italic'`
-                         * + `'oblique'`
-                         *
-                         * @default
-                         * "normal"
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
-                         */
-                        fontStyle?: string | undefined;
+                                    /**
+                                     * font style
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'normal'`
+                                     * + `'italic'`
+                                     * + `'oblique'`
+                                     *
+                                     * @default
+                                     * "normal"
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
+                                     */
+                                    fontStyle?: string | undefined;
 
-                        /**
-                         * font thick weight
-                         *
-                         * Options are:
-                         *
-                         * + `'normal'`
-                         * + `'bold'`
-                         * + `'bolder'`
-                         * + `'lighter'`
-                         * + 100 | 200 | 300 | 400...
-                         *
-                         * @default
-                         * "normal"
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
-                         */
-                        fontWeight?: string | number | undefined;
+                                    /**
+                                     * font thick weight
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'normal'`
+                                     * + `'bold'`
+                                     * + `'bolder'`
+                                     * + `'lighter'`
+                                     * + 100 | 200 | 300 | 400...
+                                     *
+                                     * @default
+                                     * "normal"
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
+                                     */
+                                    fontWeight?: string | number | undefined;
 
-                        /**
-                         * font family
-                         *
-                         * Can also be 'serif' , 'monospace', ...
-                         *
-                         * @default
-                         * "sans-serif"
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
-                         */
-                        fontFamily?: string | undefined;
+                                    /**
+                                     * font family
+                                     *
+                                     * Can also be 'serif' , 'monospace', ...
+                                     *
+                                     * @default
+                                     * "sans-serif"
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
+                                     */
+                                    fontFamily?: string | undefined;
 
-                        /**
-                         * font size
-                         *
-                         * @default
-                         * 12
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
-                         */
-                        fontSize?: number | undefined;
+                                    /**
+                                     * font size
+                                     *
+                                     * @default
+                                     * 12
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
+                                     */
+                                    fontSize?: number | undefined;
 
-                        /**
-                         * Horizontal alignment of text, automatic by default.
-                         *
-                         * Options are:
-                         *
-                         * + `'left'`
-                         * + `'center'`
-                         * + `'right'`
-                         *
-                         * If `align` is not set in `rich`, `align` in parent
-                         * level will be used. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.align
-                         */
-                        align?: string | undefined;
+                                    /**
+                                     * Horizontal alignment of text, automatic by default.
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'left'`
+                                     * + `'center'`
+                                     * + `'right'`
+                                     *
+                                     * If `align` is not set in `rich`, `align` in parent
+                                     * level will be used. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.align
+                                     */
+                                    align?: string | undefined;
 
-                        /**
-                         * Vertical alignment of text, automatic by default.
-                         *
-                         * Options are:
-                         *
-                         * + `'top'`
-                         * + `'middle'`
-                         * + `'bottom'`
-                         *
-                         * If `verticalAlign` is not set in `rich`, `verticalAlign`
-                         * in parent level will be used. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
-                         */
-                        verticalAlign?: string | undefined;
+                                    /**
+                                     * Vertical alignment of text, automatic by default.
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'top'`
+                                     * + `'middle'`
+                                     * + `'bottom'`
+                                     *
+                                     * If `verticalAlign` is not set in `rich`, `verticalAlign`
+                                     * in parent level will be used. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
+                                     */
+                                    verticalAlign?: string | undefined;
 
-                        /**
-                         * Line height of the text fregment.
-                         *
-                         * If `lineHeight` is not set in `rich`, `lineHeight`
-                         * in parent level will be used. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
-                         */
-                        lineHeight?: number | undefined;
+                                    /**
+                                     * Line height of the text fregment.
+                                     *
+                                     * If `lineHeight` is not set in `rich`, `lineHeight`
+                                     * in parent level will be used. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
+                                     */
+                                    lineHeight?: number | undefined;
 
-                        /**
-                         * Background color of the text fregment.
-                         *
-                         * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
-                         *
-                         * Or image can be used, for example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E)
-                         *
-                         * `width` or `height` can be specified when using background
-                         * image, or auto adapted by default.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
-                         */
-                        backgroundColor?: object | string | undefined;
+                                    /**
+                                     * Background color of the text fregment.
+                                     *
+                                     * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
+                                     *
+                                     * Or image can be used, for example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                     *
+                                     * `width` or `height` can be specified when using background
+                                     * image, or auto adapted by default.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
+                                     */
+                                    backgroundColor?:
+                                        | object
+                                        | string
+                                        | undefined;
 
-                        /**
-                         * Border color of the text fregment.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
-                         */
-                        borderColor?: string | undefined;
+                                    /**
+                                     * Border color of the text fregment.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
+                                     */
+                                    borderColor?: string | undefined;
 
-                        /**
-                         * Border width of the text fregment.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
-                         */
-                        borderWidth?: number | undefined;
+                                    /**
+                                     * Border width of the text fregment.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
+                                     */
+                                    borderWidth?: number | undefined;
 
-                        /**
-                         * Border radius of the text fregment.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
-                         */
-                        borderRadius?: number | undefined;
+                                    /**
+                                     * Border radius of the text fregment.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
+                                     */
+                                    borderRadius?: number | undefined;
 
-                        /**
-                         * Padding of the text fregment, for example:
-                         *
-                         * + `padding: [3, 4, 5, 6]`: represents padding of
-                         * `[top, right, bottom, left]`.
-                         * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
-                         * + `padding: [3, 4]`: represents `padding: [3, 4,
-                         * 3, 4]`.
-                         *
-                         * Notice, `width` and `height` specifies the width
-                         * and height of the content, without `padding`.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.padding
-                         */
-                        padding?: any[] | number | undefined;
+                                    /**
+                                     * Padding of the text fregment, for example:
+                                     *
+                                     * + `padding: [3, 4, 5, 6]`: represents padding of
+                                     * `[top, right, bottom, left]`.
+                                     * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
+                                     * + `padding: [3, 4]`: represents `padding: [3, 4,
+                                     * 3, 4]`.
+                                     *
+                                     * Notice, `width` and `height` specifies the width
+                                     * and height of the content, without `padding`.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.padding
+                                     */
+                                    padding?: any[] | number | undefined;
 
-                        /**
-                         * Shadow color of the text block.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
-                         */
-                        shadowColor?: string | undefined;
+                                    /**
+                                     * Shadow color of the text block.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
+                                     */
+                                    shadowColor?: string | undefined;
 
-                        /**
-                         * Show blur of the text block.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
-                         */
-                        shadowBlur?: number | undefined;
+                                    /**
+                                     * Show blur of the text block.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
+                                     */
+                                    shadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow X offset of the text block.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
-                         */
-                        shadowOffsetX?: number | undefined;
+                                    /**
+                                     * Shadow X offset of the text block.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
+                                     */
+                                    shadowOffsetX?: number | undefined;
 
-                        /**
-                         * Shadow Y offset of the text block.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
-                         */
-                        shadowOffsetY?: number | undefined;
+                                    /**
+                                     * Shadow Y offset of the text block.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
+                                     */
+                                    shadowOffsetY?: number | undefined;
 
-                        /**
-                         * Width of the text block.
-                         * It is the width of the text by default.
-                         * In most cases, there is no need to specify it.
-                         * You may want to use it in some cases like make simple
-                         * table or using background image (see `backgroundColor`).
-                         *
-                         * Notice, `width` and `height` specifies the width
-                         * and height of the content, without `padding`.
-                         *
-                         * `width` can also be percent string, like `'100%'`,
-                         * which represents the percent of `contentWidth` (that
-                         * is, the width without `padding`) of its container
-                         * box.
-                         * It is based on `contentWidth` because that each text
-                         * fregment is layout based on the `content box`, where
-                         * it makes no sense that calculating width based on
-                         * `outerWith` in prectice.
-                         *
-                         * Notice, `width` and `height` only work when `rich`
-                         * specified.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.width
-                         */
-                        width?: number | string | undefined;
+                                    /**
+                                     * Width of the text block.
+                                     * It is the width of the text by default.
+                                     * In most cases, there is no need to specify it.
+                                     * You may want to use it in some cases like make simple
+                                     * table or using background image (see `backgroundColor`).
+                                     *
+                                     * Notice, `width` and `height` specifies the width
+                                     * and height of the content, without `padding`.
+                                     *
+                                     * `width` can also be percent string, like `'100%'`,
+                                     * which represents the percent of `contentWidth` (that
+                                     * is, the width without `padding`) of its container
+                                     * box.
+                                     * It is based on `contentWidth` because that each text
+                                     * fregment is layout based on the `content box`, where
+                                     * it makes no sense that calculating width based on
+                                     * `outerWith` in prectice.
+                                     *
+                                     * Notice, `width` and `height` only work when `rich`
+                                     * specified.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.width
+                                     */
+                                    width?: number | string | undefined;
 
-                        /**
-                         * Height of the text block.
-                         * It is the width of the text by default.
-                         * You may want to use it in some cases like using background
-                         * image (see `backgroundColor`).
-                         *
-                         * Notice, `width` and `height` specifies the width
-                         * and height of the content, without `padding`.
-                         *
-                         * Notice, `width` and `height` only work when `rich`
-                         * specified.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.height
-                         */
-                        height?: number | string | undefined;
+                                    /**
+                                     * Height of the text block.
+                                     * It is the width of the text by default.
+                                     * You may want to use it in some cases like using background
+                                     * image (see `backgroundColor`).
+                                     *
+                                     * Notice, `width` and `height` specifies the width
+                                     * and height of the content, without `padding`.
+                                     *
+                                     * Notice, `width` and `height` only work when `rich`
+                                     * specified.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.height
+                                     */
+                                    height?: number | string | undefined;
 
-                        /**
-                         * Storke color of the text.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
-                         */
-                        textBorderColor?: string | undefined;
+                                    /**
+                                     * Storke color of the text.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
+                                     */
+                                    textBorderColor?: string | undefined;
 
-                        /**
-                         * Storke line width of the text.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
-                         */
-                        textBorderWidth?: number | undefined;
+                                    /**
+                                     * Storke line width of the text.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
+                                     */
+                                    textBorderWidth?: number | undefined;
 
-                        /**
-                         * Shadow color of the text itself.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
-                         */
-                        textShadowColor?: string | undefined;
+                                    /**
+                                     * Shadow color of the text itself.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
+                                     */
+                                    textShadowColor?: string | undefined;
 
-                        /**
-                         * Shadow blue of the text itself.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
-                         */
-                        textShadowBlur?: number | undefined;
+                                    /**
+                                     * Shadow blue of the text itself.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
+                                     */
+                                    textShadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow X offset of the text itself.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
-                         */
-                        textShadowOffsetX?: number | undefined;
+                                    /**
+                                     * Shadow X offset of the text itself.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
+                                     */
+                                    textShadowOffsetX?: number | undefined;
 
-                        /**
-                         * Shadow Y offset of the text itself.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
-                         */
-                        textShadowOffsetY?: number | undefined;
-                    };
-                } | undefined;
-            } | undefined;
+                                    /**
+                                     * Shadow Y offset of the text itself.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
+                                     */
+                                    textShadowOffsetY?: number | undefined;
+                                };
+                            }
+                          | undefined;
+                  }
+                | undefined;
 
             /**
              * style of each ribbon-shape river branch in theme river.
              *
              * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle
              */
-            itemStyle?: {
-                /**
-                 * color.
-                 *
-                 * > Color can be represented in RGB, for example `'rgb(128,
-                 * 128, 128)'`.
-                 * RGBA can be used when you need alpha channel, for example
-                 * `'rgba(128, 128, 128, 0.5)'`.
-                 * You may also use hexadecimal format, for example `'#ccc'`.
-                 * Gradient color and texture are also supported besides single
-                 * colors.
-                 * >
-                 * > [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.itemStyle)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.color
-                 */
-                color?: EChartOption.Color | undefined;
+            itemStyle?:
+                | {
+                      /**
+                       * color.
+                       *
+                       * > Color can be represented in RGB, for example `'rgb(128,
+                       * 128, 128)'`.
+                       * RGBA can be used when you need alpha channel, for example
+                       * `'rgba(128, 128, 128, 0.5)'`.
+                       * You may also use hexadecimal format, for example `'#ccc'`.
+                       * Gradient color and texture are also supported besides single
+                       * colors.
+                       * >
+                       * > [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.itemStyle)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.color
+                       */
+                      color?: EChartOption.Color | undefined;
 
-                /**
-                 * border color, whose format is similar to that of `color`.
-                 *
-                 * @default
-                 * "#000"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.borderColor
-                 */
-                borderColor?: EChartOption.Color | undefined;
+                      /**
+                       * border color, whose format is similar to that of `color`.
+                       *
+                       * @default
+                       * "#000"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.borderColor
+                       */
+                      borderColor?: EChartOption.Color | undefined;
 
-                /**
-                 * border width. No border when it is set to be 0.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.borderWidth
-                 */
-                borderWidth?: number | undefined;
+                      /**
+                       * border width. No border when it is set to be 0.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.borderWidth
+                       */
+                      borderWidth?: number | undefined;
 
-                /**
-                 * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
-                 * `'solid'` by default.
-                 *
-                 * @default
-                 * "solid"
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.borderType
-                 */
-                borderType?: string | undefined;
+                      /**
+                       * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
+                       * `'solid'` by default.
+                       *
+                       * @default
+                       * "solid"
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.borderType
+                       */
+                      borderType?: string | undefined;
 
-                /**
-                 * Size of shadow blur.
-                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                 * `shadowOffsetY` to set shadow to component.
-                 *
-                 * For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.itemStyle)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.shadowBlur
-                 */
-                shadowBlur?: number | undefined;
+                      /**
+                       * Size of shadow blur.
+                       * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                       * `shadowOffsetY` to set shadow to component.
+                       *
+                       * For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.itemStyle)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.shadowBlur
+                       */
+                      shadowBlur?: number | undefined;
 
-                /**
-                 * Shadow color. Support same format as `color`.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.shadowColor
-                 */
-                shadowColor?: EChartOption.Color | undefined;
+                      /**
+                       * Shadow color. Support same format as `color`.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.shadowColor
+                       */
+                      shadowColor?: EChartOption.Color | undefined;
 
-                /**
-                 * Offset distance on the horizontal direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.shadowOffsetX
-                 */
-                shadowOffsetX?: number | undefined;
+                      /**
+                       * Offset distance on the horizontal direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.shadowOffsetX
+                       */
+                      shadowOffsetX?: number | undefined;
 
-                /**
-                 * Offset distance on the vertical direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.shadowOffsetY
-                 */
-                shadowOffsetY?: number | undefined;
+                      /**
+                       * Offset distance on the vertical direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.shadowOffsetY
+                       */
+                      shadowOffsetY?: number | undefined;
 
-                /**
-                 * Opacity of the component.
-                 * Supports value from 0 to 1, and the component will not be
-                 * drawn when set to 0.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.opacity
-                 */
-                opacity?: number | undefined;
-            } | undefined;
+                      /**
+                       * Opacity of the component.
+                       * Supports value from 0 to 1, and the component will not be
+                       * drawn when set to 0.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.itemStyle.opacity
+                       */
+                      opacity?: number | undefined;
+                  }
+                | undefined;
 
             /**
              * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis
              */
-            emphasis?: {
-                /**
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label
-                 */
-                label?: {
-                    /**
-                     * Whether to show label.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.show
-                     */
-                    show?: boolean | undefined;
+            emphasis?:
+                | {
+                      /**
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label
+                       */
+                      label?:
+                          | {
+                                /**
+                                 * Whether to show label.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.show
+                                 */
+                                show?: boolean | undefined;
 
-                    /**
-                     * Label position.
-                     *
-                     * **Followings are the options:**
-                     *
-                     * + \[x, y\]
-                     *
-                     * Use relative percentage, or absolute pixel values to
-                     * represent position of label relative to top-left corner
-                     * of bounding box. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label)
-                     *
-                     * + 'top'
-                     *
-                     * + 'left'
-                     * + 'right'
-                     * + 'bottom'
-                     * + 'inside'
-                     * + 'insideLeft'
-                     * + 'insideRight'
-                     * + 'insideTop'
-                     * + 'insideBottom'
-                     * + 'insideTopLeft'
-                     * + 'insideBottomLeft'
-                     * + 'insideTopRight'
-                     * + 'insideBottomRight'
-                     *
-                     * See:
-                     * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
-                     * .
-                     *
-                     * @default
-                     * "left"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.position
-                     */
-                    position?: any[] | string | undefined;
+                                /**
+                                 * Label position.
+                                 *
+                                 * **Followings are the options:**
+                                 *
+                                 * + \[x, y\]
+                                 *
+                                 * Use relative percentage, or absolute pixel values to
+                                 * represent position of label relative to top-left corner
+                                 * of bounding box. For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label)
+                                 *
+                                 * + 'top'
+                                 *
+                                 * + 'left'
+                                 * + 'right'
+                                 * + 'bottom'
+                                 * + 'inside'
+                                 * + 'insideLeft'
+                                 * + 'insideRight'
+                                 * + 'insideTop'
+                                 * + 'insideBottom'
+                                 * + 'insideTopLeft'
+                                 * + 'insideBottomLeft'
+                                 * + 'insideTopRight'
+                                 * + 'insideBottomRight'
+                                 *
+                                 * See:
+                                 * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
+                                 * .
+                                 *
+                                 * @default
+                                 * "left"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.position
+                                 */
+                                position?: any[] | string | undefined;
 
-                    /**
-                     * Distance to the host graphic element.
-                     * Works when position is string value (like `'top'`、`'insideRight'`).
-                     *
-                     * See:
-                     * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
-                     * .
-                     *
-                     * @default
-                     * 5
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.distance
-                     */
-                    distance?: number | undefined;
+                                /**
+                                 * Distance to the host graphic element.
+                                 * Works when position is string value (like `'top'`、`'insideRight'`).
+                                 *
+                                 * See:
+                                 * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
+                                 * .
+                                 *
+                                 * @default
+                                 * 5
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.distance
+                                 */
+                                distance?: number | undefined;
 
-                    /**
-                     * Rotate label, from -90 degree to 90, positive value represents
-                     * rotate anti-clockwise.
-                     *
-                     * See:
-                     * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
-                     * .
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rotate
-                     */
-                    rotate?: number | undefined;
+                                /**
+                                 * Rotate label, from -90 degree to 90, positive value represents
+                                 * rotate anti-clockwise.
+                                 *
+                                 * See:
+                                 * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
+                                 * .
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rotate
+                                 */
+                                rotate?: number | undefined;
 
-                    /**
-                     * Whether to move text slightly.
-                     * For example: `[30, 40]` means move `30` horizontally
-                     * and move `40` vertically.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.offset
-                     */
-                    offset?: any[] | undefined;
+                                /**
+                                 * Whether to move text slightly.
+                                 * For example: `[30, 40]` means move `30` horizontally
+                                 * and move `40` vertically.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.offset
+                                 */
+                                offset?: any[] | undefined;
 
-                    /**
-                     * text color.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * '#000'
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.color
-                     */
-                    color?: string | undefined;
+                                /**
+                                 * text color.
+                                 *
+                                 * If set as `'auto'`, the color will assigned as visual
+                                 * color, such as series color.
+                                 *
+                                 * @default
+                                 * '#000'
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.color
+                                 */
+                                color?: string | undefined;
 
-                    /**
-                     * font style
-                     *
-                     * Options are:
-                     *
-                     * + `'normal'`
-                     * + `'italic'`
-                     * + `'oblique'`
-                     *
-                     * @default
-                     * "normal"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.fontStyle
-                     */
-                    fontStyle?: string | undefined;
+                                /**
+                                 * font style
+                                 *
+                                 * Options are:
+                                 *
+                                 * + `'normal'`
+                                 * + `'italic'`
+                                 * + `'oblique'`
+                                 *
+                                 * @default
+                                 * "normal"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.fontStyle
+                                 */
+                                fontStyle?: string | undefined;
 
-                    /**
-                     * font thick weight
-                     *
-                     * Options are:
-                     *
-                     * + `'normal'`
-                     * + `'bold'`
-                     * + `'bolder'`
-                     * + `'lighter'`
-                     * + 100 | 200 | 300 | 400...
-                     *
-                     * @default
-                     * "normal"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.fontWeight
-                     */
-                    fontWeight?: string | number | undefined;
+                                /**
+                                 * font thick weight
+                                 *
+                                 * Options are:
+                                 *
+                                 * + `'normal'`
+                                 * + `'bold'`
+                                 * + `'bolder'`
+                                 * + `'lighter'`
+                                 * + 100 | 200 | 300 | 400...
+                                 *
+                                 * @default
+                                 * "normal"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.fontWeight
+                                 */
+                                fontWeight?: string | number | undefined;
 
-                    /**
-                     * font family
-                     *
-                     * Can also be 'serif' , 'monospace', ...
-                     *
-                     * @default
-                     * "sans-serif"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.fontFamily
-                     */
-                    fontFamily?: string | undefined;
+                                /**
+                                 * font family
+                                 *
+                                 * Can also be 'serif' , 'monospace', ...
+                                 *
+                                 * @default
+                                 * "sans-serif"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.fontFamily
+                                 */
+                                fontFamily?: string | undefined;
 
-                    /**
-                     * font size
-                     *
-                     * @default
-                     * 11
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.fontSize
-                     */
-                    fontSize?: number | undefined;
+                                /**
+                                 * font size
+                                 *
+                                 * @default
+                                 * 11
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.fontSize
+                                 */
+                                fontSize?: number | undefined;
 
-                    /**
-                     * Line height of the text fregment.
-                     *
-                     * If `lineHeight` is not set in `rich`, `lineHeight` in
-                     * parent level will be used. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.lineHeight
-                     */
-                    lineHeight?: number | undefined;
+                                /**
+                                 * Line height of the text fregment.
+                                 *
+                                 * If `lineHeight` is not set in `rich`, `lineHeight` in
+                                 * parent level will be used. For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.lineHeight
+                                 */
+                                lineHeight?: number | undefined;
 
-                    /**
-                     * Background color of the text fregment.
-                     *
-                     * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
-                     *
-                     * Or image can be used, for example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label)
-                     *
-                     * `width` or `height` can be specified when using background
-                     * image, or auto adapted by default.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.backgroundColor
-                     */
-                    backgroundColor?: object | string | undefined;
+                                /**
+                                 * Background color of the text fregment.
+                                 *
+                                 * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
+                                 *
+                                 * Or image can be used, for example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label)
+                                 *
+                                 * `width` or `height` can be specified when using background
+                                 * image, or auto adapted by default.
+                                 *
+                                 * If set as `'auto'`, the color will assigned as visual
+                                 * color, such as series color.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.backgroundColor
+                                 */
+                                backgroundColor?: object | string | undefined;
 
-                    /**
-                     * Border color of the text fregment.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.borderColor
-                     */
-                    borderColor?: string | undefined;
+                                /**
+                                 * Border color of the text fregment.
+                                 *
+                                 * If set as `'auto'`, the color will assigned as visual
+                                 * color, such as series color.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.borderColor
+                                 */
+                                borderColor?: string | undefined;
 
-                    /**
-                     * Border width of the text fregment.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.borderWidth
-                     */
-                    borderWidth?: number | undefined;
+                                /**
+                                 * Border width of the text fregment.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.borderWidth
+                                 */
+                                borderWidth?: number | undefined;
 
-                    /**
-                     * Border radius of the text fregment.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.borderRadius
-                     */
-                    borderRadius?: number | undefined;
+                                /**
+                                 * Border radius of the text fregment.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.borderRadius
+                                 */
+                                borderRadius?: number | undefined;
 
-                    /**
-                     * Padding of the text fregment, for example:
-                     *
-                     * + `padding: [3, 4, 5, 6]`: represents padding of `[top,
-                     * right, bottom, left]`.
-                     * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
-                     * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
-                     *
-                     * Notice, `width` and `height` specifies the width and
-                     * height of the content, without `padding`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.padding
-                     */
-                    padding?: any[] | number | undefined;
+                                /**
+                                 * Padding of the text fregment, for example:
+                                 *
+                                 * + `padding: [3, 4, 5, 6]`: represents padding of `[top,
+                                 * right, bottom, left]`.
+                                 * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
+                                 * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
+                                 *
+                                 * Notice, `width` and `height` specifies the width and
+                                 * height of the content, without `padding`.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.padding
+                                 */
+                                padding?: any[] | number | undefined;
 
-                    /**
-                     * Shadow color of the text block.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.shadowColor
-                     */
-                    shadowColor?: string | undefined;
+                                /**
+                                 * Shadow color of the text block.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.shadowColor
+                                 */
+                                shadowColor?: string | undefined;
 
-                    /**
-                     * Show blur of the text block.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                                /**
+                                 * Show blur of the text block.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.shadowBlur
+                                 */
+                                shadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow X offset of the text block.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                                /**
+                                 * Shadow X offset of the text block.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.shadowOffsetX
+                                 */
+                                shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Shadow Y offset of the text block.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                                /**
+                                 * Shadow Y offset of the text block.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.shadowOffsetY
+                                 */
+                                shadowOffsetY?: number | undefined;
 
-                    /**
-                     * Width of the text block.
-                     * It is the width of the text by default.
-                     * In most cases, there is no need to specify it.
-                     * You may want to use it in some cases like make simple
-                     * table or using background image (see `backgroundColor`).
-                     *
-                     * Notice, `width` and `height` specifies the width and
-                     * height of the content, without `padding`.
-                     *
-                     * `width` can also be percent string, like `'100%'`, which
-                     * represents the percent of `contentWidth` (that is, the
-                     * width without `padding`) of its container box.
-                     * It is based on `contentWidth` because that each text
-                     * fregment is layout based on the `content box`, where
-                     * it makes no sense that calculating width based on `outerWith`
-                     * in prectice.
-                     *
-                     * Notice, `width` and `height` only work when `rich` specified.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.width
-                     */
-                    width?: number | string | undefined;
+                                /**
+                                 * Width of the text block.
+                                 * It is the width of the text by default.
+                                 * In most cases, there is no need to specify it.
+                                 * You may want to use it in some cases like make simple
+                                 * table or using background image (see `backgroundColor`).
+                                 *
+                                 * Notice, `width` and `height` specifies the width and
+                                 * height of the content, without `padding`.
+                                 *
+                                 * `width` can also be percent string, like `'100%'`, which
+                                 * represents the percent of `contentWidth` (that is, the
+                                 * width without `padding`) of its container box.
+                                 * It is based on `contentWidth` because that each text
+                                 * fregment is layout based on the `content box`, where
+                                 * it makes no sense that calculating width based on `outerWith`
+                                 * in prectice.
+                                 *
+                                 * Notice, `width` and `height` only work when `rich` specified.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.width
+                                 */
+                                width?: number | string | undefined;
 
-                    /**
-                     * Height of the text block.
-                     * It is the width of the text by default.
-                     * You may want to use it in some cases like using background
-                     * image (see `backgroundColor`).
-                     *
-                     * Notice, `width` and `height` specifies the width and
-                     * height of the content, without `padding`.
-                     *
-                     * Notice, `width` and `height` only work when `rich` specified.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.height
-                     */
-                    height?: number | string | undefined;
+                                /**
+                                 * Height of the text block.
+                                 * It is the width of the text by default.
+                                 * You may want to use it in some cases like using background
+                                 * image (see `backgroundColor`).
+                                 *
+                                 * Notice, `width` and `height` specifies the width and
+                                 * height of the content, without `padding`.
+                                 *
+                                 * Notice, `width` and `height` only work when `rich` specified.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.height
+                                 */
+                                height?: number | string | undefined;
 
-                    /**
-                     * Storke color of the text.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textBorderColor
-                     */
-                    textBorderColor?: string | undefined;
+                                /**
+                                 * Storke color of the text.
+                                 *
+                                 * If set as `'auto'`, the color will assigned as visual
+                                 * color, such as series color.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textBorderColor
+                                 */
+                                textBorderColor?: string | undefined;
 
-                    /**
-                     * Storke line width of the text.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textBorderWidth
-                     */
-                    textBorderWidth?: number | undefined;
+                                /**
+                                 * Storke line width of the text.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textBorderWidth
+                                 */
+                                textBorderWidth?: number | undefined;
 
-                    /**
-                     * Shadow color of the text itself.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textShadowColor
-                     */
-                    textShadowColor?: string | undefined;
+                                /**
+                                 * Shadow color of the text itself.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textShadowColor
+                                 */
+                                textShadowColor?: string | undefined;
 
-                    /**
-                     * Shadow blue of the text itself.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textShadowBlur
-                     */
-                    textShadowBlur?: number | undefined;
+                                /**
+                                 * Shadow blue of the text itself.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textShadowBlur
+                                 */
+                                textShadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow X offset of the text itself.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textShadowOffsetX
-                     */
-                    textShadowOffsetX?: number | undefined;
+                                /**
+                                 * Shadow X offset of the text itself.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textShadowOffsetX
+                                 */
+                                textShadowOffsetX?: number | undefined;
 
-                    /**
-                     * Shadow Y offset of the text itself.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textShadowOffsetY
-                     */
-                    textShadowOffsetY?: number | undefined;
+                                /**
+                                 * Shadow Y offset of the text itself.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.textShadowOffsetY
+                                 */
+                                textShadowOffsetY?: number | undefined;
 
-                    /**
-                     * "Rich text styles" can be defined in this `rich` property.
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label)
-                     *
-                     * For more details, see
-                     * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
-                     * please.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich
-                     */
-                    rich?: {
-                        /**
-                         * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E
-                         */
-                        [userStyle: string]: {
-                            /**
-                             * text color.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * ""#fff""
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.color
-                             */
-                            color?: string | undefined;
+                                /**
+                                 * "Rich text styles" can be defined in this `rich` property.
+                                 * For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label)
+                                 *
+                                 * For more details, see
+                                 * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
+                                 * please.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich
+                                 */
+                                rich?:
+                                    | {
+                                          /**
+                                           * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E
+                                           */
+                                          [userStyle: string]: {
+                                              /**
+                                               * text color.
+                                               *
+                                               * If set as `'auto'`, the color will assigned as
+                                               * visual color, such as series color.
+                                               *
+                                               * @default
+                                               * ""#fff""
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.color
+                                               */
+                                              color?: string | undefined;
 
-                            /**
-                             * font style
-                             *
-                             * Options are:
-                             *
-                             * + `'normal'`
-                             * + `'italic'`
-                             * + `'oblique'`
-                             *
-                             * @default
-                             * "normal"
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
-                             */
-                            fontStyle?: string | undefined;
+                                              /**
+                                               * font style
+                                               *
+                                               * Options are:
+                                               *
+                                               * + `'normal'`
+                                               * + `'italic'`
+                                               * + `'oblique'`
+                                               *
+                                               * @default
+                                               * "normal"
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
+                                               */
+                                              fontStyle?: string | undefined;
 
-                            /**
-                             * font thick weight
-                             *
-                             * Options are:
-                             *
-                             * + `'normal'`
-                             * + `'bold'`
-                             * + `'bolder'`
-                             * + `'lighter'`
-                             * + 100 | 200 | 300 | 400...
-                             *
-                             * @default
-                             * "normal"
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
-                             */
-                            fontWeight?: string | number | undefined;
+                                              /**
+                                               * font thick weight
+                                               *
+                                               * Options are:
+                                               *
+                                               * + `'normal'`
+                                               * + `'bold'`
+                                               * + `'bolder'`
+                                               * + `'lighter'`
+                                               * + 100 | 200 | 300 | 400...
+                                               *
+                                               * @default
+                                               * "normal"
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
+                                               */
+                                              fontWeight?:
+                                                  | string
+                                                  | number
+                                                  | undefined;
 
-                            /**
-                             * font family
-                             *
-                             * Can also be 'serif' , 'monospace', ...
-                             *
-                             * @default
-                             * "sans-serif"
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
-                             */
-                            fontFamily?: string | undefined;
+                                              /**
+                                               * font family
+                                               *
+                                               * Can also be 'serif' , 'monospace', ...
+                                               *
+                                               * @default
+                                               * "sans-serif"
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
+                                               */
+                                              fontFamily?: string | undefined;
 
-                            /**
-                             * font size
-                             *
-                             * @default
-                             * 12
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
-                             */
-                            fontSize?: number | undefined;
+                                              /**
+                                               * font size
+                                               *
+                                               * @default
+                                               * 12
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
+                                               */
+                                              fontSize?: number | undefined;
 
-                            /**
-                             * Horizontal alignment of text, automatic by default.
-                             *
-                             * Options are:
-                             *
-                             * + `'left'`
-                             * + `'center'`
-                             * + `'right'`
-                             *
-                             * If `align` is not set in `rich`, `align` in parent
-                             * level will be used. For example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.align
-                             */
-                            align?: string | undefined;
+                                              /**
+                                               * Horizontal alignment of text, automatic by default.
+                                               *
+                                               * Options are:
+                                               *
+                                               * + `'left'`
+                                               * + `'center'`
+                                               * + `'right'`
+                                               *
+                                               * If `align` is not set in `rich`, `align` in parent
+                                               * level will be used. For example:
+                                               *
+                                               * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.align
+                                               */
+                                              align?: string | undefined;
 
-                            /**
-                             * Vertical alignment of text, automatic by default.
-                             *
-                             * Options are:
-                             *
-                             * + `'top'`
-                             * + `'middle'`
-                             * + `'bottom'`
-                             *
-                             * If `verticalAlign` is not set in `rich`, `verticalAlign`
-                             * in parent level will be used. For example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
-                             */
-                            verticalAlign?: string | undefined;
+                                              /**
+                                               * Vertical alignment of text, automatic by default.
+                                               *
+                                               * Options are:
+                                               *
+                                               * + `'top'`
+                                               * + `'middle'`
+                                               * + `'bottom'`
+                                               *
+                                               * If `verticalAlign` is not set in `rich`, `verticalAlign`
+                                               * in parent level will be used. For example:
+                                               *
+                                               * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
+                                               */
+                                              verticalAlign?:
+                                                  | string
+                                                  | undefined;
 
-                            /**
-                             * Line height of the text fregment.
-                             *
-                             * If `lineHeight` is not set in `rich`, `lineHeight`
-                             * in parent level will be used. For example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
-                             */
-                            lineHeight?: number | undefined;
+                                              /**
+                                               * Line height of the text fregment.
+                                               *
+                                               * If `lineHeight` is not set in `rich`, `lineHeight`
+                                               * in parent level will be used. For example:
+                                               *
+                                               * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
+                                               */
+                                              lineHeight?: number | undefined;
 
-                            /**
-                             * Background color of the text fregment.
-                             *
-                             * Can be color string, like `'#123234'`, `'red'`,
-                             * `rgba(0,23,11,0.3)'`.
-                             *
-                             * Or image can be used, for example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * `width` or `height` can be specified when using
-                             * background image, or auto adapted by default.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
-                             */
-                            backgroundColor?: object | string | undefined;
+                                              /**
+                                               * Background color of the text fregment.
+                                               *
+                                               * Can be color string, like `'#123234'`, `'red'`,
+                                               * `rgba(0,23,11,0.3)'`.
+                                               *
+                                               * Or image can be used, for example:
+                                               *
+                                               * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                               *
+                                               * `width` or `height` can be specified when using
+                                               * background image, or auto adapted by default.
+                                               *
+                                               * If set as `'auto'`, the color will assigned as
+                                               * visual color, such as series color.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
+                                               */
+                                              backgroundColor?:
+                                                  | object
+                                                  | string
+                                                  | undefined;
 
-                            /**
-                             * Border color of the text fregment.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
-                             */
-                            borderColor?: string | undefined;
+                                              /**
+                                               * Border color of the text fregment.
+                                               *
+                                               * If set as `'auto'`, the color will assigned as
+                                               * visual color, such as series color.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
+                                               */
+                                              borderColor?: string | undefined;
 
-                            /**
-                             * Border width of the text fregment.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
-                             */
-                            borderWidth?: number | undefined;
+                                              /**
+                                               * Border width of the text fregment.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
+                                               */
+                                              borderWidth?: number | undefined;
 
-                            /**
-                             * Border radius of the text fregment.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
-                             */
-                            borderRadius?: number | undefined;
+                                              /**
+                                               * Border radius of the text fregment.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
+                                               */
+                                              borderRadius?: number | undefined;
 
-                            /**
-                             * Padding of the text fregment, for example:
-                             *
-                             * + `padding: [3, 4, 5, 6]`: represents padding
-                             * of `[top, right, bottom, left]`.
-                             * + `padding: 4`: represents `padding: [4, 4, 4,
-                             * 4]`.
-                             * + `padding: [3, 4]`: represents `padding: [3,
-                             * 4, 3, 4]`.
-                             *
-                             * Notice, `width` and `height` specifies the width
-                             * and height of the content, without `padding`.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.padding
-                             */
-                            padding?: any[] | number | undefined;
+                                              /**
+                                               * Padding of the text fregment, for example:
+                                               *
+                                               * + `padding: [3, 4, 5, 6]`: represents padding
+                                               * of `[top, right, bottom, left]`.
+                                               * + `padding: 4`: represents `padding: [4, 4, 4,
+                                               * 4]`.
+                                               * + `padding: [3, 4]`: represents `padding: [3,
+                                               * 4, 3, 4]`.
+                                               *
+                                               * Notice, `width` and `height` specifies the width
+                                               * and height of the content, without `padding`.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.padding
+                                               */
+                                              padding?:
+                                                  | any[]
+                                                  | number
+                                                  | undefined;
 
-                            /**
-                             * Shadow color of the text block.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
-                             */
-                            shadowColor?: string | undefined;
+                                              /**
+                                               * Shadow color of the text block.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
+                                               */
+                                              shadowColor?: string | undefined;
 
-                            /**
-                             * Show blur of the text block.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
-                             */
-                            shadowBlur?: number | undefined;
+                                              /**
+                                               * Show blur of the text block.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
+                                               */
+                                              shadowBlur?: number | undefined;
 
-                            /**
-                             * Shadow X offset of the text block.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
-                             */
-                            shadowOffsetX?: number | undefined;
+                                              /**
+                                               * Shadow X offset of the text block.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
+                                               */
+                                              shadowOffsetX?:
+                                                  | number
+                                                  | undefined;
 
-                            /**
-                             * Shadow Y offset of the text block.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
-                             */
-                            shadowOffsetY?: number | undefined;
+                                              /**
+                                               * Shadow Y offset of the text block.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
+                                               */
+                                              shadowOffsetY?:
+                                                  | number
+                                                  | undefined;
 
-                            /**
-                             * Width of the text block.
-                             * It is the width of the text by default.
-                             * In most cases, there is no need to specify it.
-                             * You may want to use it in some cases like make
-                             * simple table or using background image (see `backgroundColor`).
-                             *
-                             * Notice, `width` and `height` specifies the width
-                             * and height of the content, without `padding`.
-                             *
-                             * `width` can also be percent string, like `'100%'`,
-                             * which represents the percent of `contentWidth`
-                             * (that is, the width without `padding`) of its
-                             * container box.
-                             * It is based on `contentWidth` because that each
-                             * text fregment is layout based on the `content
-                             * box`, where it makes no sense that calculating
-                             * width based on `outerWith` in prectice.
-                             *
-                             * Notice, `width` and `height` only work when `rich`
-                             * specified.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.width
-                             */
-                            width?: number | string | undefined;
+                                              /**
+                                               * Width of the text block.
+                                               * It is the width of the text by default.
+                                               * In most cases, there is no need to specify it.
+                                               * You may want to use it in some cases like make
+                                               * simple table or using background image (see `backgroundColor`).
+                                               *
+                                               * Notice, `width` and `height` specifies the width
+                                               * and height of the content, without `padding`.
+                                               *
+                                               * `width` can also be percent string, like `'100%'`,
+                                               * which represents the percent of `contentWidth`
+                                               * (that is, the width without `padding`) of its
+                                               * container box.
+                                               * It is based on `contentWidth` because that each
+                                               * text fregment is layout based on the `content
+                                               * box`, where it makes no sense that calculating
+                                               * width based on `outerWith` in prectice.
+                                               *
+                                               * Notice, `width` and `height` only work when `rich`
+                                               * specified.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.width
+                                               */
+                                              width?:
+                                                  | number
+                                                  | string
+                                                  | undefined;
 
-                            /**
-                             * Height of the text block.
-                             * It is the width of the text by default.
-                             * You may want to use it in some cases like using
-                             * background image (see `backgroundColor`).
-                             *
-                             * Notice, `width` and `height` specifies the width
-                             * and height of the content, without `padding`.
-                             *
-                             * Notice, `width` and `height` only work when `rich`
-                             * specified.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.height
-                             */
-                            height?: number | string | undefined;
+                                              /**
+                                               * Height of the text block.
+                                               * It is the width of the text by default.
+                                               * You may want to use it in some cases like using
+                                               * background image (see `backgroundColor`).
+                                               *
+                                               * Notice, `width` and `height` specifies the width
+                                               * and height of the content, without `padding`.
+                                               *
+                                               * Notice, `width` and `height` only work when `rich`
+                                               * specified.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.height
+                                               */
+                                              height?:
+                                                  | number
+                                                  | string
+                                                  | undefined;
 
-                            /**
-                             * Storke color of the text.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
-                             */
-                            textBorderColor?: string | undefined;
+                                              /**
+                                               * Storke color of the text.
+                                               *
+                                               * If set as `'auto'`, the color will assigned as
+                                               * visual color, such as series color.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
+                                               */
+                                              textBorderColor?:
+                                                  | string
+                                                  | undefined;
 
-                            /**
-                             * Storke line width of the text.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
-                             */
-                            textBorderWidth?: number | undefined;
+                                              /**
+                                               * Storke line width of the text.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
+                                               */
+                                              textBorderWidth?:
+                                                  | number
+                                                  | undefined;
 
-                            /**
-                             * Shadow color of the text itself.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
-                             */
-                            textShadowColor?: string | undefined;
+                                              /**
+                                               * Shadow color of the text itself.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
+                                               */
+                                              textShadowColor?:
+                                                  | string
+                                                  | undefined;
 
-                            /**
-                             * Shadow blue of the text itself.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
-                             */
-                            textShadowBlur?: number | undefined;
+                                              /**
+                                               * Shadow blue of the text itself.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
+                                               */
+                                              textShadowBlur?:
+                                                  | number
+                                                  | undefined;
 
-                            /**
-                             * Shadow X offset of the text itself.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
-                             */
-                            textShadowOffsetX?: number | undefined;
+                                              /**
+                                               * Shadow X offset of the text itself.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
+                                               */
+                                              textShadowOffsetX?:
+                                                  | number
+                                                  | undefined;
 
-                            /**
-                             * Shadow Y offset of the text itself.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
-                             */
-                            textShadowOffsetY?: number | undefined;
-                        };
-                    } | undefined;
-                } | undefined;
+                                              /**
+                                               * Shadow Y offset of the text itself.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
+                                               */
+                                              textShadowOffsetY?:
+                                                  | number
+                                                  | undefined;
+                                          };
+                                      }
+                                    | undefined;
+                            }
+                          | undefined;
 
-                /**
-                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle
-                 */
-                itemStyle?: {
-                    /**
-                     * color.
-                     *
-                     * > Color can be represented in RGB, for example `'rgb(128,
-                     * 128, 128)'`.
-                     * RGBA can be used when you need alpha channel, for example
-                     * `'rgba(128, 128, 128, 0.5)'`.
-                     * You may also use hexadecimal format, for example `'#ccc'`.
-                     * Gradient color and texture are also supported besides
-                     * single colors.
-                     * >
-                     * > [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.itemStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.color
-                     */
-                    color?: EChartOption.Color | undefined;
+                      /**
+                       * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle
+                       */
+                      itemStyle?:
+                          | {
+                                /**
+                                 * color.
+                                 *
+                                 * > Color can be represented in RGB, for example `'rgb(128,
+                                 * 128, 128)'`.
+                                 * RGBA can be used when you need alpha channel, for example
+                                 * `'rgba(128, 128, 128, 0.5)'`.
+                                 * You may also use hexadecimal format, for example `'#ccc'`.
+                                 * Gradient color and texture are also supported besides
+                                 * single colors.
+                                 * >
+                                 * > [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.itemStyle)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.color
+                                 */
+                                color?: EChartOption.Color | undefined;
 
-                    /**
-                     * border color, whose format is similar to that of `color`.
-                     *
-                     * @default
-                     * "#000"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.borderColor
-                     */
-                    borderColor?: EChartOption.Color | undefined;
+                                /**
+                                 * border color, whose format is similar to that of `color`.
+                                 *
+                                 * @default
+                                 * "#000"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.borderColor
+                                 */
+                                borderColor?: EChartOption.Color | undefined;
 
-                    /**
-                     * border width. No border when it is set to be 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.borderWidth
-                     */
-                    borderWidth?: number | undefined;
+                                /**
+                                 * border width. No border when it is set to be 0.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.borderWidth
+                                 */
+                                borderWidth?: number | undefined;
 
-                    /**
-                     * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
-                     * `'solid'` by default.
-                     *
-                     * @default
-                     * "solid"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.borderType
-                     */
-                    borderType?: string | undefined;
+                                /**
+                                 * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
+                                 * `'solid'` by default.
+                                 *
+                                 * @default
+                                 * "solid"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.borderType
+                                 */
+                                borderType?: string | undefined;
 
-                    /**
-                     * Size of shadow blur.
-                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                     * `shadowOffsetY` to set shadow to component.
-                     *
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.itemStyle)
-                     *
-                     * @default
-                     * 20
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                                /**
+                                 * Size of shadow blur.
+                                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                                 * `shadowOffsetY` to set shadow to component.
+                                 *
+                                 * For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-themeRiver.themeRiver.emphasis.itemStyle)
+                                 *
+                                 * @default
+                                 * 20
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.shadowBlur
+                                 */
+                                shadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow color. Support same format as `color`.
-                     *
-                     * @default
-                     * "rgba(0,0,0,0.8)"
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.shadowColor
-                     */
-                    shadowColor?: EChartOption.Color | undefined;
+                                /**
+                                 * Shadow color. Support same format as `color`.
+                                 *
+                                 * @default
+                                 * "rgba(0,0,0,0.8)"
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.shadowColor
+                                 */
+                                shadowColor?: EChartOption.Color | undefined;
 
-                    /**
-                     * Offset distance on the horizontal direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                                /**
+                                 * Offset distance on the horizontal direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.shadowOffsetX
+                                 */
+                                shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Offset distance on the vertical direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                                /**
+                                 * Offset distance on the vertical direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.shadowOffsetY
+                                 */
+                                shadowOffsetY?: number | undefined;
 
-                    /**
-                     * Opacity of the component.
-                     * Supports value from 0 to 1, and the component will not
-                     * be drawn when set to 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.opacity
-                     */
-                    opacity?: number | undefined;
-                } | undefined;
-            } | undefined;
+                                /**
+                                 * Opacity of the component.
+                                 * Supports value from 0 to 1, and the component will not
+                                 * be drawn when set to 0.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-themeRiver.emphasis.itemStyle.opacity
+                                 */
+                                opacity?: number | undefined;
+                            }
+                          | undefined;
+                  }
+                | undefined;
 
             /**
              * Data array of series, which can be in the following forms:
@@ -1830,7 +1880,11 @@ declare namespace echarts {
              */
             data?:
                 | Array<void | number | string | SeriesThemeRiver.DataObject>
-                | Array<Array<void | number | string | SeriesThemeRiver.DataObject>>
+                | Array<
+                      Array<
+                          void | number | string | SeriesThemeRiver.DataObject
+                      >
+                  >
                 | undefined;
 
             /**

@@ -27,7 +27,11 @@ export function testHtmlElementWithTextContent() {
     assertEqual(aNode.content.length, 1);
 
     // JSX syntax returns a VNode object, so the "type" and "props" properties are "any"
-    const jsxNode = <a href="link" onclick={eventHandler}>click here</a>;
+    const jsxNode = (
+        <a href="link" onclick={eventHandler}>
+            click here
+        </a>
+    );
     const jsxNodeType = jsxNode.type as string;
     const jsxNodeProps = jsxNode.props as PetitDom.Props<HTMLAnchorElement>;
 
@@ -139,11 +143,17 @@ export function testFunctionComponent() {
 export function testFunctionComponentWithProps() {
     function FunctionComponentWithProps(props: CustomProps): JSX.Element {
         const { name, count, onSomeEvent } = props;
-        return <div className={name} tabIndex={count} onclick={onSomeEvent}></div>;
+        return (
+            <div className={name} tabIndex={count} onclick={onSomeEvent}></div>
+        );
     }
 
     // HyperScript syntax returns a FunctionComponentNode<T> object, with typed properties
-    const node = h(FunctionComponentWithProps, { name: "xyz", count: 123, onSomeEvent: eventHandler });
+    const node = h(FunctionComponentWithProps, {
+        name: "xyz",
+        count: 123,
+        onSomeEvent: eventHandler,
+    });
 
     assertEqual(node.isSVG, false);
     assertEqual(node.type, FunctionComponentWithProps);
@@ -154,7 +164,13 @@ export function testFunctionComponentWithProps() {
     assertEqual(node.content.length, 0);
 
     // JSX syntax returns a VNode object, so the "type" and "props" properties are "any"
-    const jsxNode = <FunctionComponentWithProps name="xyz" count={123} onSomeEvent={eventHandler} />;
+    const jsxNode = (
+        <FunctionComponentWithProps
+            name="xyz"
+            count={123}
+            onSomeEvent={eventHandler}
+        />
+    );
     const jsxNodeType = jsxNode.type as PetitDom.FunctionComponent<CustomProps>;
     const jsxNodeProps = jsxNode.props as CustomProps;
 
@@ -171,9 +187,16 @@ export function testFunctionComponentWithProps() {
  * Create a function component with child content, using HyperScript syntax and JSX syntax
  */
 export function testFunctionComponentWithChildren() {
-    function FunctionComponentWithChildren(props: CustomProps, content: readonly PetitDom.Content[]): JSX.Element {
+    function FunctionComponentWithChildren(
+        props: CustomProps,
+        content: readonly PetitDom.Content[],
+    ): JSX.Element {
         const { name, count, onSomeEvent } = props;
-        return <div className={name} tabIndex={count} onclick={onSomeEvent}>{content}</div>;
+        return (
+            <div className={name} tabIndex={count} onclick={onSomeEvent}>
+                {content}
+            </div>
+        );
     }
 
     // HyperScript syntax returns a FunctionComponentNode<T> object, with typed properties
@@ -194,7 +217,11 @@ export function testFunctionComponentWithChildren() {
 
     // JSX syntax returns a VNode object, so the "type" and "props" properties are "any"
     const jsxNode = (
-        <FunctionComponentWithChildren name="xyz" count={123} onSomeEvent={eventHandler}>
+        <FunctionComponentWithChildren
+            name="xyz"
+            count={123}
+            onSomeEvent={eventHandler}
+        >
             Hello <span>World</span>
         </FunctionComponentWithChildren>
     );
@@ -274,7 +301,9 @@ export function testComponentClassWithProps() {
 
         mount(props: CustomProps): Element {
             const { name, count, onSomeEvent } = props;
-            return mount(<div className={name} tabIndex={count} onclick={onSomeEvent} />);
+            return mount(
+                <div className={name} tabIndex={count} onclick={onSomeEvent} />,
+            );
         }
 
         patch(
@@ -297,7 +326,11 @@ export function testComponentClassWithProps() {
     }
 
     // HyperScript syntax returns a ComponentClassNode<T> object, with typed properties
-    const node = h(ComponentClassWithProps, { name: "xyz", count: 123, onSomeEvent: eventHandler });
+    const node = h(ComponentClassWithProps, {
+        name: "xyz",
+        count: 123,
+        onSomeEvent: eventHandler,
+    });
 
     assertEqual(node.isSVG, false);
     assertEqual(node.type, ComponentClassWithProps);
@@ -308,7 +341,13 @@ export function testComponentClassWithProps() {
     assertEqual(node.content.length, 0);
 
     // JSX syntax returns a VNode object, so the "type" and "props" properties are "any"
-    const jsxNode = <ComponentClassWithProps name="xyz" count={123} onSomeEvent={eventHandler} />;
+    const jsxNode = (
+        <ComponentClassWithProps
+            name="xyz"
+            count={123}
+            onSomeEvent={eventHandler}
+        />
+    );
     const jsxNodeType = jsxNode.type as PetitDom.ComponentClass<CustomProps>;
     const jsxNodeProps = jsxNode.props as CustomProps;
 
@@ -332,10 +371,15 @@ export function testComponentClassWithChildren() {
             this.props = props;
         }
 
-        mount(props: CustomProps, content: readonly PetitDom.Content[]): Element {
+        mount(
+            props: CustomProps,
+            content: readonly PetitDom.Content[],
+        ): Element {
             const { name, count, onSomeEvent } = props;
             return mount(
-                <div className={name} tabIndex={count} onclick={onSomeEvent}>{content}</div>,
+                <div className={name} tabIndex={count} onclick={onSomeEvent}>
+                    {content}
+                </div>,
             );
         }
 
@@ -376,7 +420,11 @@ export function testComponentClassWithChildren() {
 
     // JSX syntax returns a VNode object, so the "type" and "props" properties are "any"
     const jsxNode = (
-        <ComponentClassWithChildren name="xyz" count={123} onSomeEvent={eventHandler}>
+        <ComponentClassWithChildren
+            name="xyz"
+            count={123}
+            onSomeEvent={eventHandler}
+        >
             Hello <span>World</span>
         </ComponentClassWithChildren>
     );

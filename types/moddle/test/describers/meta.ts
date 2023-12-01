@@ -14,10 +14,7 @@ export default {
                 },
             ],
             meta: {
-                owners: [
-                    "the pope",
-                    "donald trump",
-                ],
+                owners: ["the pope", "donald trump"],
             },
         },
     ],

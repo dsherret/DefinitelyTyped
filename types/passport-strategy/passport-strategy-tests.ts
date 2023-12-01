@@ -27,7 +27,10 @@ export class Strategy extends passport.Strategy {
         options = options || {};
 
         // Test fail method.
-        this.fail({ message: options.missingTokenMessage || "Missing token" }, 400);
+        this.fail(
+            { message: options.missingTokenMessage || "Missing token" },
+            400,
+        );
 
         var self = this;
 

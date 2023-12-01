@@ -10,13 +10,20 @@ export class Dashboard {
 
     delete(callback?: Callback<object>): Promise<any>;
 
-    components(componentIds: string[] | string | Callback<object>, callback?: Callback<object>): Promise<any>;
+    components(
+        componentIds: string[] | string | Callback<object>,
+        callback?: Callback<object>,
+    ): Promise<any>;
 
     status(callback?: Callback<object>): Promise<any>;
 
     refresh(callback?: Callback<object>): Promise<any>;
 
-    clone(name: string | object, folderid: string, callback?: Callback<object>): Promise<any>;
+    clone(
+        name: string | object,
+        folderid: string,
+        callback?: Callback<object>,
+    ): Promise<any>;
 }
 
 export class ReportInstance {
@@ -34,15 +41,27 @@ export class Report {
 
     delete(callback?: Callback<ReportResult>): Promise<ReportResult>;
 
-    clone(name: string, callback?: Callback<ReportResult>): Promise<ReportResult>;
+    clone(
+        name: string,
+        callback?: Callback<ReportResult>,
+    ): Promise<ReportResult>;
 
     explain(callback?: Callback<ExplainInfo>): Promise<ExplainInfo>;
 
-    run(options: object | Callback<ReportResult>, callback?: Callback<ReportResult>): Promise<ReportResult>;
+    run(
+        options: object | Callback<ReportResult>,
+        callback?: Callback<ReportResult>,
+    ): Promise<ReportResult>;
 
-    exec(options: object | Callback<ReportResult>, callback?: Callback<ReportResult>): Promise<ReportResult>;
+    exec(
+        options: object | Callback<ReportResult>,
+        callback?: Callback<ReportResult>,
+    ): Promise<ReportResult>;
 
-    execute(options: object | Callback<ReportResult>, callback?: Callback<ReportResult>): Promise<ReportResult>;
+    execute(
+        options: object | Callback<ReportResult>,
+        callback?: Callback<ReportResult>,
+    ): Promise<ReportResult>;
 
     executeAsync(
         options: object | Callback<ReportInstanceAttrs>,

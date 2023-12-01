@@ -11,12 +11,18 @@ declare namespace M {
         /**
          * Init FormSelect.
          */
-        static init(els: Element, options?: Partial<FormSelectOptions>): FormSelect;
+        static init(
+            els: Element,
+            options?: Partial<FormSelectOptions>,
+        ): FormSelect;
 
         /**
          * Init FormSelects.
          */
-        static init(els: MElements, options?: Partial<FormSelectOptions>): FormSelect[];
+        static init(
+            els: MElements,
+            options?: Partial<FormSelectOptions>,
+        ): FormSelect[];
 
         /**
          * If this is a multiple select.
@@ -71,6 +77,8 @@ declare namespace M {
 }
 
 interface JQuery {
-    formSelect(method: keyof Pick<M.FormSelect, "getSelectedValues" | "destroy">): JQuery;
+    formSelect(
+        method: keyof Pick<M.FormSelect, "getSelectedValues" | "destroy">,
+    ): JQuery;
     formSelect(options?: Partial<M.FormSelectOptions>): JQuery;
 }

@@ -153,7 +153,11 @@ declare namespace cytoscapeEuler {
          * - undefined / null : Unconstrained
          * @default undefined
          */
-        boundingBox?: cytoscape.BoundingBox12 | cytoscape.BoundingBoxWH | undefined | null;
+        boundingBox?:
+            | cytoscape.BoundingBox12
+            | cytoscape.BoundingBoxWH
+            | undefined
+            | null;
 
         /**
          * Whether to randomize the initial positions of the nodes

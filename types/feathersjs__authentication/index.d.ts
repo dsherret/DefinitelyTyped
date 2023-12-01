@@ -4,7 +4,10 @@ import * as self from "@feathersjs/authentication";
 import { create } from "domain";
 import { Application, RequestHandler } from "express";
 
-declare const feathersAuthentication: ((config?: FeathersAuthenticationOptions) => () => void) & typeof self;
+declare const feathersAuthentication: ((
+    config?: FeathersAuthenticationOptions,
+) => () => void) &
+    typeof self;
 export default feathersAuthentication;
 
 export const hooks: AuthHooks.Hooks;
@@ -16,56 +19,75 @@ export interface FeathersAuthenticationOptions {
     service?: string | undefined;
     passReqToCallback?: boolean | undefined;
     session?: boolean | undefined;
-    cookie?: {
-        enabled?: boolean | undefined;
-        name?: string | undefined;
-        httpOnly?: boolean | undefined;
-        secure?: boolean | undefined;
-    } | undefined;
-    jwt?: {
-        /**
-         * By default is an access token
-         */
-        header?: {
-            [key: string]: any;
-        } | undefined;
+    cookie?:
+        | {
+              enabled?: boolean | undefined;
+              name?: string | undefined;
+              httpOnly?: boolean | undefined;
+              secure?: boolean | undefined;
+          }
+        | undefined;
+    jwt?:
+        | {
+              /**
+               * By default is an access token
+               */
+              header?:
+                  | {
+                        [key: string]: any;
+                    }
+                  | undefined;
 
-        /**
-         * The resource server where the token is processed
-         */
-        audience?: string | undefined;
+              /**
+               * The resource server where the token is processed
+               */
+              audience?: string | undefined;
 
-        /**
-         * Typically the entity id associated with the JWT
-         */
-        subject?: string | undefined;
+              /**
+               * Typically the entity id associated with the JWT
+               */
+              subject?: string | undefined;
 
-        /**
-         * The issuing server, application or resource
-         */
-        issuer?: string | undefined;
-        algorithm?: string | undefined;
-        expiresIn?: string | undefined;
-    } | undefined;
+              /**
+               * The issuing server, application or resource
+               */
+              issuer?: string | undefined;
+              algorithm?: string | undefined;
+              expiresIn?: string | undefined;
+          }
+        | undefined;
 }
 
 export namespace express {
     function exposeHeaders(): RequestHandler;
     function exposeCookies(): RequestHandler;
-    function authenticate(strategy: string | string[], options?: FeathersAuthenticationOptions): RequestHandler;
+    function authenticate(
+        strategy: string | string[],
+        options?: FeathersAuthenticationOptions,
+    ): RequestHandler;
     function setCookie(options?: FeathersAuthenticationOptions): RequestHandler;
     function successRedirect(): RequestHandler;
-    function failureRedirect(options?: FeathersAuthenticationOptions): RequestHandler;
+    function failureRedirect(
+        options?: FeathersAuthenticationOptions,
+    ): RequestHandler;
     function emitEvents(): RequestHandler;
 }
 
-export function service(options: FeathersAuthenticationOptions): (app?: Application) => void;
+export function service(
+    options: FeathersAuthenticationOptions,
+): (app?: Application) => void;
 
 export namespace service {
     class Service<T = any> {
         constructor(app: Application);
-        create(data: Partial<T>, params: Params): Promise<{ accessToken: string }>;
-        remove(id: null | string, params: Params): Promise<{ accessToken: string }>;
+        create(
+            data: Partial<T>,
+            params: Params,
+        ): Promise<{ accessToken: string }>;
+        remove(
+            id: null | string,
+            params: Params,
+        ): Promise<{ accessToken: string }>;
     }
 }
 

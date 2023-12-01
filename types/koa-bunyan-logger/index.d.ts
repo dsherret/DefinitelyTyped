@@ -25,10 +25,18 @@ declare namespace koaBunyanLogger {
         durationField?: string | undefined;
         levelFn?: ((status: number, err: Error) => string) | undefined;
         updateLogFields?: ((data: RequestData) => RequestData) | undefined;
-        updateRequestLogFields?: ((requestData: RequestData) => RequestData) | undefined;
-        updateResponseLogFields?: ((responseData: ResponseData) => ResponseData) | undefined;
-        formatRequestMessage?: ((requestData: RequestData) => string) | undefined;
-        formatResponseMessage?: ((responseData: ResponseData) => string) | undefined;
+        updateRequestLogFields?:
+            | ((requestData: RequestData) => RequestData)
+            | undefined;
+        updateResponseLogFields?:
+            | ((responseData: ResponseData) => ResponseData)
+            | undefined;
+        formatRequestMessage?:
+            | ((requestData: RequestData) => string)
+            | undefined;
+        formatResponseMessage?:
+            | ((responseData: ResponseData) => string)
+            | undefined;
         ignorePath?: string[] | undefined;
     }
 

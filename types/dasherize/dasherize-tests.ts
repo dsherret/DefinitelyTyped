@@ -44,7 +44,9 @@ dahserizedObj["some string with spaces and some-constant-name"];
 // $ExpectType boolean
 dahserizedObj["nested-obj"]["nested-obj-again"]["deeply-nested-prop"];
 // $ExpectType number
-dahserizedObj["nested-obj"]["nested-obj-again"]["nested-array"][0]["some-prop-name"];
+dahserizedObj["nested-obj"]["nested-obj-again"]["nested-array"][0][
+    "some-prop-name"
+];
 // $ExpectType boolean
 dasherizedArray[0]["nested-obj"]["nested-obj-again"]["deeply-nested-prop"];
 // $ExpectType string

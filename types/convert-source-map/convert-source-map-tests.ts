@@ -16,18 +16,31 @@ convert.fromComment(comment).toComment();
 convert.fromComment(comment).toComment({ encoding: "uri" });
 
 // $ExpectType string
-convert.fromComment(comment).setProperty("sources", ["CONSOLE.LOG(\"HI\");"]).toJSON();
+convert
+    .fromComment(comment)
+    .setProperty("sources", ['CONSOLE.LOG("HI");'])
+    .toJSON();
 
 // $ExpectType string
-convert.fromMapFileComment(comment, filename => filename + "dummy").toJSON();
+convert.fromMapFileComment(comment, (filename) => filename + "dummy").toJSON();
 (async () => {
     // $ExpectType string
-    (await convert.fromMapFileComment(comment, async filename => filename + "dummy")).toJSON();
+    (
+        await convert.fromMapFileComment(
+            comment,
+            async (filename) => filename + "dummy",
+        )
+    ).toJSON();
 })();
 
 // $ExpectType string | undefined
-convert.fromMapFileSource(comment, filename => filename + "dummy")?.toJSON();
+convert.fromMapFileSource(comment, (filename) => filename + "dummy")?.toJSON();
 (async () => {
     // $ExpectType string | undefined
-    (await convert.fromMapFileSource(comment, async filename => filename + "dummy"))?.toJSON();
+    (
+        await convert.fromMapFileSource(
+            comment,
+            async (filename) => filename + "dummy",
+        )
+    )?.toJSON();
 })();

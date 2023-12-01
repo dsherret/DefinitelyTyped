@@ -5,7 +5,11 @@ interface Keygrip {
 }
 
 interface KeygripFunction {
-    new(keys: readonly string[], algorithm?: string, encoding?: string): Keygrip;
+    new (
+        keys: readonly string[],
+        algorithm?: string,
+        encoding?: string,
+    ): Keygrip;
     (keys: readonly string[], algorithm?: string, encoding?: string): Keygrip;
 }
 

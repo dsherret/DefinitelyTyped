@@ -10,7 +10,9 @@ import * as moment from "moment";
 
 export as namespace BootstrapV3DatetimePicker;
 
-export type InputParser = (input: string | Date | moment.Moment) => moment.Moment;
+export type InputParser = (
+    input: string | Date | moment.Moment,
+) => moment.Moment;
 
 export interface Datetimepicker {
     /** Clears the datepicker by setting the value to null */
@@ -169,7 +171,9 @@ export interface Datetimepicker {
     /** Returns a boolean or array with the options.extraFormats option configuration */
     extraFormats(): boolean | Array<string | moment.MomentBuiltinFormat>;
     /** Takes an array of valid input moment format options, or boolean:false */
-    extraFormats(formats: boolean | Array<string | moment.MomentBuiltinFormat>): void;
+    extraFormats(
+        formats: boolean | Array<string | moment.MomentBuiltinFormat>,
+    ): void;
     /** Returns the options.focusOnShow option. */
     focusOnShow(): boolean;
     /** If false, the textbox will not be given focus when the picker is shown */
@@ -399,7 +403,11 @@ export interface DatetimepickerOptions {
      * eg disabledDates = ["2010-10-10"]; -> disabledDated will be { "2010-01-01": true }
      * https://github.com/Eonasdan/bootstrap-datetimepicker/issues/1499
      */
-    disabledDates?: boolean | Array<moment.Moment | Date | string> | any | undefined;
+    disabledDates?:
+        | boolean
+        | Array<moment.Moment | Date | string>
+        | any
+        | undefined;
     /**
      * Will allow or disallow hour selections (much like disabledTimeIntervals) but will affect all days
      * @default false
@@ -421,7 +429,11 @@ export interface DatetimepickerOptions {
      * eg enabledDates = ["2010-10-10"]; -> enabledDated will be { "2010-01-01": true }
      * https://github.com/Eonasdan/bootstrap-datetimepicker/issues/1499
      */
-    enabledDates?: boolean | Array<moment.Moment | Date | string> | any | undefined;
+    enabledDates?:
+        | boolean
+        | Array<moment.Moment | Date | string>
+        | any
+        | undefined;
     /**
      * Will allow or disallow hour selections (much like disabledTimeIntervals) but will affect all days
      * @default false
@@ -434,7 +446,10 @@ export interface DatetimepickerOptions {
      * Allows for several input formats to be valid. See: https://github.com/Eonasdan/bootstrap-datetimepicker/pull/666
      * @default false
      */
-    extraFormats?: boolean | Array<string | moment.MomentBuiltinFormat> | undefined;
+    extraFormats?:
+        | boolean
+        | Array<string | moment.MomentBuiltinFormat>
+        | undefined;
     /**
      * If false, the textbox will not be given focus when the picker is shown
      * @default true
@@ -465,7 +480,9 @@ export interface DatetimepickerOptions {
      * }
      * The widget parameter is false, if the datepicker is closed.
      */
-    keyBinds?: { [key: string]: (widget: boolean | JQuery) => void } | undefined;
+    keyBinds?:
+        | { [key: string]: (widget: boolean | JQuery) => void }
+        | undefined;
     /**
      * Will cause the date picker to not revert or overwrite invalid dates.
      * @default false
@@ -645,25 +662,76 @@ declare global {
 
         data(key: "DateTimePicker"): Datetimepicker;
 
-        on(events: "dp.change", handler: (eventObject: ChangeEvent) => any): JQuery;
-        on(events: "dp.change", selector: string, handler: (eventobject: ChangeEvent) => any): JQuery;
-        on(events: "dp.change", selector: string, data: any, handler?: (eventobject: ChangeEvent) => any): JQuery;
+        on(
+            events: "dp.change",
+            handler: (eventObject: ChangeEvent) => any,
+        ): JQuery;
+        on(
+            events: "dp.change",
+            selector: string,
+            handler: (eventobject: ChangeEvent) => any,
+        ): JQuery;
+        on(
+            events: "dp.change",
+            selector: string,
+            data: any,
+            handler?: (eventobject: ChangeEvent) => any,
+        ): JQuery;
 
-        on(events: "dp.update", handler: (eventObject: UpdateEvent) => any): JQuery;
-        on(events: "dp.update", selector: string, handler: (eventobject: UpdateEvent) => any): JQuery;
-        on(events: "dp.update", selector: string, data: any, handler?: (eventobject: UpdateEvent) => any): JQuery;
+        on(
+            events: "dp.update",
+            handler: (eventObject: UpdateEvent) => any,
+        ): JQuery;
+        on(
+            events: "dp.update",
+            selector: string,
+            handler: (eventobject: UpdateEvent) => any,
+        ): JQuery;
+        on(
+            events: "dp.update",
+            selector: string,
+            data: any,
+            handler?: (eventobject: UpdateEvent) => any,
+        ): JQuery;
 
         on(events: EventName, handler: (eventObject: Event) => any): JQuery;
-        on(events: EventName, selector: string, handler: (eventobject: Event) => any): JQuery;
-        on(events: EventName, selector: string, data: any, handler?: (eventobject: Event) => any): JQuery;
+        on(
+            events: EventName,
+            selector: string,
+            handler: (eventobject: Event) => any,
+        ): JQuery;
+        on(
+            events: EventName,
+            selector: string,
+            data: any,
+            handler?: (eventobject: Event) => any,
+        ): JQuery;
 
-        off(events: "dp.change", handler: (eventobject: ChangeEvent) => any): JQuery;
-        off(events: "dp.change", selector?: string, handler?: (eventobject: ChangeEvent) => any): JQuery;
+        off(
+            events: "dp.change",
+            handler: (eventobject: ChangeEvent) => any,
+        ): JQuery;
+        off(
+            events: "dp.change",
+            selector?: string,
+            handler?: (eventobject: ChangeEvent) => any,
+        ): JQuery;
 
-        off(events: "dp.update", handler: (eventobject: UpdateEvent) => any): JQuery;
-        off(events: "dp.update", selector?: string, handler?: (eventobject: UpdateEvent) => any): JQuery;
+        off(
+            events: "dp.update",
+            handler: (eventobject: UpdateEvent) => any,
+        ): JQuery;
+        off(
+            events: "dp.update",
+            selector?: string,
+            handler?: (eventobject: UpdateEvent) => any,
+        ): JQuery;
 
         off(events: EventName, handler: (eventobject: Event) => any): JQuery;
-        off(events: EventName, selector?: string, handler?: (eventobject: Event) => any): JQuery;
+        off(
+            events: EventName,
+            selector?: string,
+            handler?: (eventobject: Event) => any,
+        ): JQuery;
     }
 }

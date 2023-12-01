@@ -24,10 +24,16 @@ export interface Project {
     observeBuffers(callback: (buffer: TextBuffer) => void): Disposable;
 
     /** Invoke a callback when a filesystem change occurs within any open project path. */
-    onDidChangeFiles(callback: (events: FilesystemChangeEvent) => void): Disposable;
+    onDidChangeFiles(
+        callback: (events: FilesystemChangeEvent) => void,
+    ): Disposable;
 
     /** Invoke a callback whenever the project's configuration has been replaced. */
-    onDidReplace(callback: (projectSpec: ProjectSpecification | null | undefined) => void): Disposable;
+    onDidReplace(
+        callback: (
+            projectSpec: ProjectSpecification | null | undefined,
+        ) => void,
+    ): Disposable;
 
     // Accessing the Git Repository
     /**
@@ -38,10 +44,14 @@ export interface Project {
     getRepositories(): GitRepository[];
 
     /** Invoke the given callback with all current and future repositories in the project. */
-    observeRepositories(callback: (repository: GitRepository) => void): Disposable;
+    observeRepositories(
+        callback: (repository: GitRepository) => void,
+    ): Disposable;
 
     /** Invoke the given callback when a repository is added to the project. */
-    onDidAddRepository(callback: (repository: GitRepository) => void): Disposable;
+    onDidAddRepository(
+        callback: (repository: GitRepository) => void,
+    ): Disposable;
 
     /** Get the repository for a given directory asynchronously. */
     repositoryForDirectory(directory: Directory): Promise<GitRepository | null>;

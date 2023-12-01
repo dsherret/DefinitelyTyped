@@ -1,6 +1,7 @@
 import TMSSource, { TMSSourceOptions } from "./TMSSource";
 
-export interface VectorTilesSourceOptions extends Omit<TMSSourceOptions, "url"> {
+export interface VectorTilesSourceOptions
+    extends Omit<TMSSourceOptions, "url"> {
     filter?: (layer: any) => boolean;
     style: any; // string | any;
     sprite?: string;

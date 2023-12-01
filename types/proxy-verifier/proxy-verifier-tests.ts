@@ -14,7 +14,11 @@ const requestOptions = {
 
 const testOptions = {
     testUrl: "www.example.com",
-    testFn: (data: string, status: number, headers: ProxyVerifier.Headers) => {},
+    testFn: (
+        data: string,
+        status: number,
+        headers: ProxyVerifier.Headers,
+    ) => {},
 };
 
 function cb(

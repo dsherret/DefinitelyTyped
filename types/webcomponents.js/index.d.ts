@@ -4,7 +4,7 @@ export interface CustomElementInit {
 }
 
 export interface CustomElementConstructor {
-    new(): HTMLElement;
+    new (): HTMLElement;
 }
 
 export interface CustomElementsPolyfill {
@@ -40,7 +40,11 @@ declare global {
     }
 
     interface CustomElementRegistry {
-        define(name: string, constructor: Function, options?: ElementDefinitionOptions): void;
+        define(
+            name: string,
+            constructor: Function,
+            options?: ElementDefinitionOptions,
+        ): void;
         get(name: string): any;
         whenDefined(name: string): PromiseLike<void>;
     }
@@ -51,7 +55,10 @@ declare global {
     }
 
     interface Document {
-        registerElement(name: string, prototype: CustomElementInit): CustomElementConstructor;
+        registerElement(
+            name: string,
+            prototype: CustomElementInit,
+        ): CustomElementConstructor;
     }
 
     interface Window {

@@ -21,11 +21,11 @@ const batchFunction = (sources: readonly SomeTestSource[]) => {
         someTestResultProp: "Hello",
     };
 
-    return sources.map(source => someTestResult);
+    return sources.map((source) => someTestResult);
 };
 
 const asyncBatchFunction = async (sources: readonly SomeTestSource[]) => {
-    return new Promise<SomeTestResult[]>(resolve => {
+    return new Promise<SomeTestResult[]>((resolve) => {
         const res = [
             {
                 someTestResultProp: "",
@@ -39,7 +39,7 @@ const asyncBatchFunctionWhenTReturnIsArray = async (
     sources: readonly SomeTestSource[],
 ) => {
     const sourceBatches = sources.map(() => {
-        return new Promise<SomeTestResult[]>(resolve => {
+        return new Promise<SomeTestResult[]>((resolve) => {
             const res = [
                 {
                     someTestResultProp: "",

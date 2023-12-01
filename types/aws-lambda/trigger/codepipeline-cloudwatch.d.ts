@@ -3,7 +3,10 @@ import { CodePipelineCloudWatchActionEvent } from "./codepipeline-cloudwatch-act
 import { CodePipelineCloudWatchPipelineEvent } from "./codepipeline-cloudwatch-pipeline";
 import { CodePipelineCloudWatchStageEvent } from "./codepipeline-cloudwatch-stage";
 
-export type CodePipelineCloudWatchHandler = Handler<CodePipelineCloudWatchEvent, void>;
+export type CodePipelineCloudWatchHandler = Handler<
+    CodePipelineCloudWatchEvent,
+    void
+>;
 
 export type CodePipelineCloudWatchEvent =
     | CodePipelineCloudWatchPipelineEvent

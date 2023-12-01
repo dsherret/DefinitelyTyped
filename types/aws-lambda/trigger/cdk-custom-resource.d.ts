@@ -18,15 +18,18 @@ export type CdkCustomResourceEvent = CloudFormationCustomResourceEvent & {
  * This is not to be confused with traditional CloudFormation custom resources.
  * @link https://docs.aws.amazon.com/cdk/api/latest/docs/custom-resources-readme.html#handling-lifecycle-events-onevent
  */
-export type CdkCustomResourceHandler = Handler<CdkCustomResourceEvent, CdkCustomResourceResponse>;
+export type CdkCustomResourceHandler = Handler<
+    CdkCustomResourceEvent,
+    CdkCustomResourceResponse
+>;
 export type CdkCustomResourceCallback = Callback<CdkCustomResourceResponse>;
 
 export interface CdkCustomResourceResponse {
     PhysicalResourceId?: string;
     Data?:
         | {
-            [Key: string]: any;
-        }
+              [Key: string]: any;
+          }
         | undefined;
     // Any extra properties will be provided to the isComplete handler for asynchronous resources.
     [Key: string]: any;
@@ -34,7 +37,8 @@ export interface CdkCustomResourceResponse {
 
 // IsComplete events will contain all normal request fields, as well as those returned from
 // the initial onEvent handler.
-export type CdkCustomResourceIsCompleteEvent = CdkCustomResourceEvent & CdkCustomResourceResponse;
+export type CdkCustomResourceIsCompleteEvent = CdkCustomResourceEvent &
+    CdkCustomResourceResponse;
 
 export type CdkCustomResourceIsCompleteResponse =
     | CdkCustomResourceIsCompleteResponseSuccess
@@ -47,8 +51,8 @@ export interface CdkCustomResourceIsCompleteResponseSuccess {
      */
     Data?:
         | {
-            [Key: string]: any;
-        }
+              [Key: string]: any;
+          }
         | undefined;
 }
 
@@ -64,4 +68,5 @@ export type CdkCustomResourceIsCompleteHandler = Handler<
     CdkCustomResourceIsCompleteEvent,
     CdkCustomResourceIsCompleteResponse
 >;
-export type CdkCustomResourceIsCompleteCallback = Callback<CdkCustomResourceIsCompleteResponse>;
+export type CdkCustomResourceIsCompleteCallback =
+    Callback<CdkCustomResourceIsCompleteResponse>;

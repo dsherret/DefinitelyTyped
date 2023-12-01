@@ -1,5 +1,9 @@
 declare namespace crpc {
-    type Client = <TRes>(path: string, body: any, options?: {} | null) => Promise<TRes>;
+    type Client = <TRes>(
+        path: string,
+        body: any,
+        options?: {} | null,
+    ) => Promise<TRes>;
 }
 
 export = crpc;

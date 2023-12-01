@@ -5,7 +5,11 @@ export const encode: {
      * Encodes `num` into `buffer` starting at `offset`. returns `buffer`, with the encoded varint written into it.
      * `varint.encode.bytes` will now be set to the number of bytes modified.
      */
-    <TBuf extends Uint8Array | number[] = number[]>(num: number, buffer?: TBuf, offset?: number): TBuf;
+    <TBuf extends Uint8Array | number[] = number[]>(
+        num: number,
+        buffer?: TBuf,
+        offset?: number,
+    ): TBuf;
 
     /**
      * Similar to `decode.bytes` when encoding a number it can be useful to know how many bytes where written (especially if you pass an output array).

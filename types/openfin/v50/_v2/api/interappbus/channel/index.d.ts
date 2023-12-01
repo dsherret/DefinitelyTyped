@@ -26,10 +26,20 @@ export declare class Channel extends EmitterBase<ChannelEvents> {
     getAllChannels(): Promise<ProviderIdentity[]>;
     onChannelConnect(listener: (...args: any[]) => void): Promise<void>;
     onChannelDisconnect(listener: (...args: any[]) => void): Promise<void>;
-    connect(channelName: string, options?: ConnectOptions): Promise<ChannelClient>;
+    connect(
+        channelName: string,
+        options?: ConnectOptions,
+    ): Promise<ChannelClient>;
     create(channelName: string): Promise<ChannelProvider>;
-    protected addChannelToClientMaps(channel: ChannelClient, channelId: string, endpointId: string): void;
-    protected removeChannelFromClientMaps(channelId: string, endpointId: string): void;
+    protected addChannelToClientMaps(
+        channel: ChannelClient,
+        channelId: string,
+        endpointId: string,
+    ): void;
+    protected removeChannelFromClientMaps(
+        channelId: string,
+        endpointId: string,
+    ): void;
     protected removeChannelFromProviderMap(channelId: string): void;
     protected checkForPreviousClientConnection(channelId: string): void;
     onmessage: (msg: ChannelMessage) => boolean;

@@ -158,10 +158,10 @@ interface NavAppItem {
 type ApiSetting =
     | string
     | {
-        url: string;
-        requestInterceptor?: (v: Request) => Request;
-        responseInterceptor?: (v: Response) => Response;
-    };
+          url: string;
+          requestInterceptor?: (v: Request) => Request;
+          responseInterceptor?: (v: Response) => Response;
+      };
 
 interface AlertProps {
     classes: Record<string, any>;
@@ -194,7 +194,10 @@ interface AdminInterface {
 }
 
 interface RouterInterface {
-    route(to: string | RouteData, extra?: { rewrite?: boolean; patch?: boolean }): { location: any; action: string };
+    route(
+        to: string | RouteData,
+        extra?: { rewrite?: boolean; patch?: boolean },
+    ): { location: any; action: string };
     reroute(to: string | RouteData): { location: any; action: string };
 }
 

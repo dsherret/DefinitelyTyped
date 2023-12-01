@@ -41,12 +41,28 @@ export interface UUID {
 }
 
 export function v1(options?: UUIDOptions): string;
-export function v1(options?: UUIDOptions, buffer?: number[], offset?: number): number[];
-export function v1(options?: UUIDOptions, buffer?: Buffer, offset?: number): Buffer;
+export function v1(
+    options?: UUIDOptions,
+    buffer?: number[],
+    offset?: number,
+): number[];
+export function v1(
+    options?: UUIDOptions,
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 
 export function v4(options?: UUIDOptions): string;
-export function v4(options?: UUIDOptions, buffer?: number[], offset?: number): number[];
-export function v4(options?: UUIDOptions, buffer?: Buffer, offset?: number): Buffer;
+export function v4(
+    options?: UUIDOptions,
+    buffer?: number[],
+    offset?: number,
+): number[];
+export function v4(
+    options?: UUIDOptions,
+    buffer?: Buffer,
+    offset?: number,
+): Buffer;
 
 export function parse(id: string, buffer?: number[], offset?: number): number[];
 export function parse(id: string, buffer?: Buffer, offset?: number): Buffer;

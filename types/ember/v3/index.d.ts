@@ -129,7 +129,8 @@ export namespace Ember {
         on(...args: string[]): this;
     }
 
-    interface ArrayPrototypeExtensions<T> extends EmberArrayProtoExtensions<T> {}
+    interface ArrayPrototypeExtensions<T>
+        extends EmberArrayProtoExtensions<T> {}
 
     interface StringPrototypeExtensions {
         camelize(): string;
@@ -150,7 +151,10 @@ export namespace Ember {
         compare(a: any, b: any): number;
     }
     const Comparable: EmberMixin<Comparable>;
-    class ComputedProperty<Get, Set = Get> extends EmberObjectComputedNs.default<Get, Set> {}
+    class ComputedProperty<
+        Get,
+        Set = Get,
+    > extends EmberObjectComputedNs.default<Get, Set> {}
     /**
      * A container used to instantiate and cache objects.
      */
@@ -303,7 +307,10 @@ export namespace Ember {
          * callback in the last chained then.
          */
         function promise<T>(
-            resolver: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void,
+            resolver: (
+                resolve: (value?: T | PromiseLike<T>) => void,
+                reject: (reason?: any) => void,
+            ) => void,
             label?: string,
         ): Promise<T>;
         /**
@@ -311,7 +318,10 @@ export namespace Ember {
          * The only difference is this uses
          * an instance of `Ember.Test.Promise`
          */
-        function resolve<T>(value?: T | PromiseLike<T>, label?: string): Promise<T>;
+        function resolve<T>(
+            value?: T | PromiseLike<T>,
+            label?: string,
+        ): Promise<T>;
 
         /**
          * Iterates through each registered test waiter, and invokes
@@ -332,7 +342,10 @@ export namespace Ember {
         class QUnitAdapter extends EmberTestAdapter {}
         class Promise<T> extends Rsvp.Promise<T> {
             constructor(
-                executor: (resolve: (value?: T | PromiseLike<T>) => void, reject: (reason?: any) => void) => void,
+                executor: (
+                    resolve: (value?: T | PromiseLike<T>) => void,
+                    reject: (reason?: any) => void,
+                ) => void,
             );
         }
     }
@@ -345,7 +358,9 @@ export namespace Ember {
          * Can only be used when defining another controller.
          */
         function controller(): ComputedProperty<Controller>;
-        function controller<K extends keyof ControllerRegistry>(name: K): ComputedProperty<ControllerRegistry[K]>;
+        function controller<K extends keyof ControllerRegistry>(
+            name: K,
+        ): ComputedProperty<ControllerRegistry[K]>;
         const service: typeof EmberServiceNs.inject;
     }
     namespace ENV {
@@ -362,7 +377,12 @@ export namespace Ember {
     }
     namespace Handlebars {
         function compile(string: string): (...args: any[]) => any;
-        function compile(environment: any, options?: any, context?: any, asObject?: any): any;
+        function compile(
+            environment: any,
+            options?: any,
+            context?: any,
+            asObject?: any,
+        ): any;
         function precompile(string: string, options: any): void;
         class Compiler {}
         class JavaScriptCompiler {}

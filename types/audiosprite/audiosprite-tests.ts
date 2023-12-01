@@ -11,16 +11,18 @@ audiosprite(files, opts, (err, obj) => {
     return JSON.stringify(obj, null, 2);
 });
 
-audiosprite(files, {
-    path: "aaa",
-    format: "howler",
-    export: "ogg,mp3",
-    minlength: 9999,
-    vbr: 9,
-    "vbr:vorbis": 10,
-    logger: {
-        debug(a) {
+audiosprite(
+    files,
+    {
+        path: "aaa",
+        format: "howler",
+        export: "ogg,mp3",
+        minlength: 9999,
+        vbr: 9,
+        "vbr:vorbis": 10,
+        logger: {
+            debug(a) {},
         },
     },
-}, (err, obj) => {
-});
+    (err, obj) => {},
+);

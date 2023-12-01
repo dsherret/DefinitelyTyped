@@ -26,7 +26,7 @@ export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
      * Any character can be escaped with backslash, which usually will appear as double backslash in JS strings.
      * For example, German phone mask with unremoveable prefix +49 will look like `mask="+4\\9 99 999 99"` or `mask={"+4\\\\9 99 999 99"}`
      */
-    mask: string | Array<(string | RegExp)>;
+    mask: string | Array<string | RegExp>;
     /**
      * Character to cover unfilled editable parts of mask. Default character is "_". If set to null, unfilled parts will be empty, like in ordinary input.
      */
@@ -52,7 +52,6 @@ export interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
     beforeMaskedStateChange?(states: BeforeMaskedStateChangeStates): InputState;
 }
 
-export class ReactInputMask extends React.Component<Props> {
-}
+export class ReactInputMask extends React.Component<Props> {}
 
 export default ReactInputMask;

@@ -25,7 +25,10 @@ declare function forEach<O extends ArrayLike<unknown>, THIS_ARG = undefined>(
  * @param thisArg A value to which the `this` keyword can refer in the `callbackfn` function.
  *        If `thisArg` is omitted, `undefined` is used as the `this` value.
  */
-declare function forEach<O extends Record<string, unknown>, THIS_ARG = undefined>(
+declare function forEach<
+    O extends Record<string, unknown>,
+    THIS_ARG = undefined,
+>(
     target: O,
     callbackfn: (
         this: THIS_ARG,

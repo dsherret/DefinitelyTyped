@@ -3,7 +3,7 @@ function ValdrTests() {
     var validation = valdr.validate("person", "lastName", "test");
     var isValid = validation.valid;
     var violations = validation.violations;
-    violations.forEach(function(violation: valdr.ValdrViolation) {
+    violations.forEach(function (violation: valdr.ValdrViolation) {
         var valid = violation.valid;
         var value = violation.value;
         var field = violation.field;
@@ -12,7 +12,7 @@ function ValdrTests() {
         var message = violation.message;
     });
     var results = validation.validationResults;
-    results.forEach(function(violation: valdr.ValdrViolation) {
+    results.forEach(function (violation: valdr.ValdrViolation) {
         var valid = violation.valid;
         var value = violation.value;
         var field = violation.field;
@@ -21,10 +21,10 @@ function ValdrTests() {
         var message = violation.message;
     });
     valdr.addConstraints({
-        "person": {
-            "lastName": {
-                "required": {
-                    "message": "Last name is required.",
+        person: {
+            lastName: {
+                required: {
+                    message: "Last name is required.",
                 },
             },
         },
@@ -44,10 +44,10 @@ function ValdrTests() {
 function ValdrProviderTests() {
     var valdrProvider: valdr.ValdrProvider;
     valdrProvider.addConstraints({
-        "person": {
-            "lastName": {
-                "required": {
-                    "message": "Last name is required.",
+        person: {
+            lastName: {
+                required: {
+                    message: "Last name is required.",
                 },
             },
         },

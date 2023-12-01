@@ -2,7 +2,7 @@ import confit = require("confit");
 
 var basedir = "./config";
 
-confit(basedir).create(function(err, config) {
+confit(basedir).create(function (err, config) {
     config.get("key");
     config.set("key", 120);
     config.use({});
@@ -11,13 +11,13 @@ confit(basedir).create(function(err, config) {
 confit(options)
     .addDefault("./mydefaults.json") // or .addDefault({foo: 'bar'})
     .addOverride("./mysettings.json") // or .addOverride({foo: 'baz'})
-    .create(function(err, config) {
+    .create(function (err, config) {
         // ...
     });
 
 var options = {
     basedir: basedir,
-    protocols: <confit.ProtocolsSet> {
+    protocols: <confit.ProtocolsSet>{
         file: (value, cb) => {
             cb();
         },
@@ -25,6 +25,6 @@ var options = {
     },
 };
 
-confit(options).create(function(err, config) {
+confit(options).create(function (err, config) {
     // ...
 });

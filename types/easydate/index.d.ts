@@ -6,4 +6,7 @@ interface DateConfig {
     adjust?: boolean | undefined;
 }
 
-declare function easydate(pattern: string, config?: DateConfig | string): string;
+declare function easydate(
+    pattern: string,
+    config?: DateConfig | string,
+): string;

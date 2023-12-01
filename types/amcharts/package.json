@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/amcharts",
-    "version": "3.21.9999",
-    "projects": [
-        "https://amcharts.com"
-    ],
-    "devDependencies": {
-        "@types/amcharts": "workspace:."
+  "private": true,
+  "name": "@types/amcharts",
+  "version": "3.21.9999",
+  "projects": [
+    "https://amcharts.com"
+  ],
+  "devDependencies": {
+    "@types/amcharts": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "ldrick",
+      "githubUsername": "ldrick"
     },
-    "owners": [
-        {
-            "name": "ldrick",
-            "githubUsername": "ldrick"
-        },
-        {
-            "name": "Mark Grothe",
-            "githubUsername": "grothem"
-        }
-    ]
+    {
+      "name": "Mark Grothe",
+      "githubUsername": "grothem"
+    }
+  ]
 }

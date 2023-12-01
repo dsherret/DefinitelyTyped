@@ -26,23 +26,26 @@ app.config((blockUIConfig: angular.blockUI.BlockUIConfig) => {
     };
 });
 
-app.controller("Ctrl", ($scope: ng.IScope, blockUI: angular.blockUI.BlockUIService) => {
-    blockUI.start();
-    blockUI.start("Hello");
-    blockUI.start({});
-    blockUI.start({ message: "World" });
-    blockUI.start({ delay: 100 });
+app.controller(
+    "Ctrl",
+    ($scope: ng.IScope, blockUI: angular.blockUI.BlockUIService) => {
+        blockUI.start();
+        blockUI.start("Hello");
+        blockUI.start({});
+        blockUI.start({ message: "World" });
+        blockUI.start({ delay: 100 });
 
-    blockUI.stop();
-    blockUI.reset();
-    blockUI.message("Hello Types");
-    blockUI.done(() => {
-        console.log("blockUI stopped");
-    });
-    const b: boolean = blockUI.isBlocking();
+        blockUI.stop();
+        blockUI.reset();
+        blockUI.message("Hello Types");
+        blockUI.done(() => {
+            console.log("blockUI stopped");
+        });
+        const b: boolean = blockUI.isBlocking();
 
-    const myBlockUI = blockUI.instances.get("myBlockUI");
-    myBlockUI.start();
-    myBlockUI.reset();
-    myBlockUI.stop();
-});
+        const myBlockUI = blockUI.instances.get("myBlockUI");
+        myBlockUI.start();
+        myBlockUI.reset();
+        myBlockUI.stop();
+    },
+);

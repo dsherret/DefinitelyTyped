@@ -43,10 +43,11 @@ const aliasOptsWithHost: mailgunTransport.Options = {
     host: "api.eu.mailgun.net",
 };
 
-const transport: nodemailer.Transporter = nodemailer.createTransport(mailgunTransport(optsWithHost));
-const transportWithAliasOptions: nodemailer.Transporter = nodemailer.createTransport(
-    mailgunTransport(aliasOptsWithHost),
+const transport: nodemailer.Transporter = nodemailer.createTransport(
+    mailgunTransport(optsWithHost),
 );
+const transportWithAliasOptions: nodemailer.Transporter =
+    nodemailer.createTransport(mailgunTransport(aliasOptsWithHost));
 
 // setup e-mail data with unicode symbols
 const mailOptions: nodemailer.SendMailOptions = {
@@ -57,10 +58,16 @@ const mailOptions: nodemailer.SendMailOptions = {
     html: "<b>Hello world ✔</b>", // html body
 };
 
-transport.sendMail(mailOptions, (error: Error | null, info: nodemailer.SentMessageInfo): void => {
-    // nothing
-});
+transport.sendMail(
+    mailOptions,
+    (error: Error | null, info: nodemailer.SentMessageInfo): void => {
+        // nothing
+    },
+);
 
-transportWithAliasOptions.sendMail(mailOptions, (error: Error | null, info: nodemailer.SentMessageInfo): void => {
-    // nothing
-});
+transportWithAliasOptions.sendMail(
+    mailOptions,
+    (error: Error | null, info: nodemailer.SentMessageInfo): void => {
+        // nothing
+    },
+);

@@ -26,6 +26,4 @@ marker = new L.Marker([50.5, 30.5], {
 });
 
 // Test new marker functions are available
-marker
-    .setRotationAngle(5)
-    .setRotationOrigin("bottom center");
+marker.setRotationAngle(5).setRotationOrigin("bottom center");

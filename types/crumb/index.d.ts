@@ -1,25 +1,33 @@
-import { Plugin, Request, ResponseToolkit, ServerStateCookieOptions } from "hapi";
+import {
+    Plugin,
+    Request,
+    ResponseToolkit,
+    ServerStateCookieOptions,
+} from "hapi";
 
 declare module "hapi" {
     interface PluginSpecificConfiguration {
-        crumb?: boolean | {
-            /**
-             * The name of the cookie to store the CSRF crumb into.
-             */
-            key?: string | undefined;
+        crumb?:
+            | boolean
+            | {
+                  /**
+                   * The name of the cookie to store the CSRF crumb into.
+                   */
+                  key?: string | undefined;
 
-            /**
-             * Specifies how the crumb will be sent in requests.
-             *
-             * @default 'payload'
-             */
-            source?: "payload" | "query" | undefined;
+                  /**
+                   * Specifies how the crumb will be sent in requests.
+                   *
+                   * @default 'payload'
+                   */
+                  source?: "payload" | "query" | undefined;
 
-            /**
-             * Override for the server's 'restful' setting
-             */
-            restful?: boolean | undefined;
-        } | undefined;
+                  /**
+                   * Override for the server's 'restful' setting
+                   */
+                  restful?: boolean | undefined;
+              }
+            | undefined;
     }
 }
 

@@ -15,7 +15,7 @@ each(@selectors, {
 
 postcss().process(lessCode, { syntax: less });
 
-less.parse(lessCode).walkAtRules(atRule => {
+less.parse(lessCode).walkAtRules((atRule) => {
     const lessAtRule = atRule as less.AtRule;
 
     if ("import" in lessAtRule) {
@@ -51,17 +51,17 @@ less.parse(lessCode).walkAtRules(atRule => {
     }
 });
 
-less.parse(".a:extend(.b) {}").walkRules(rule => {
+less.parse(".a:extend(.b) {}").walkRules((rule) => {
     const lessRule = rule as less.Rule;
     assert(lessRule.extend === true);
 });
 
-less.parse("&:extend(.a)").walkDecls(decl => {
+less.parse("&:extend(.a)").walkDecls((decl) => {
     const lessDecl = decl as less.Declaration;
     assert(lessDecl.extend === true);
 });
 
-less.parse("// a").walkComments(comment => {
+less.parse("// a").walkComments((comment) => {
     const lessComment = comment as less.Comment;
     assert(lessComment.inline === true);
 });

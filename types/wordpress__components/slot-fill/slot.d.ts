@@ -13,7 +13,9 @@ declare namespace Slot {
          * `Fill`s as a param. It allows to perform additional processing and
          * wrap `fills` conditionally.
          */
-        children?(fills: ReadonlyArray<readonly JSX.Element[]>): JSX.Element | null;
+        children?(
+            fills: ReadonlyArray<readonly JSX.Element[]>,
+        ): JSX.Element | null;
         /**
          * Changes event bubbling behavior.
          *
@@ -29,9 +31,11 @@ declare namespace Slot {
         /**
          * Props to pass into the first child of the <Fill /> component.
          */
-        fillProps?: {
-            [k: string]: any;
-        } | undefined;
+        fillProps?:
+            | {
+                  [k: string]: any;
+              }
+            | undefined;
     }
 }
 declare const Slot: ComponentType<Slot.Props>;

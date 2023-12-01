@@ -13,8 +13,8 @@ function test_overview() {
     would be a JS Mortal Sin™, Bliss only adds a _ property on elements & arrays, on which it hangs all its methods, to avoid conflicts. The previous example would
     be written as: */
     element._.style({
-        "width": 0,
-        "padding": 0,
+        width: 0,
+        padding: 0,
     });
 
     /* Bliss.$() method */
@@ -28,8 +28,8 @@ function test_overview() {
 
     If you wanted to set the width and padding of multiple elements to 0, you could use an array:*/
     myArray._.style({
-        "width": 0,
-        "padding": 0,
+        width: 0,
+        padding: 0,
     });
 
     /*Methods that are available on arrays like this will have an ARRAY tag in these docs.
@@ -37,35 +37,37 @@ function test_overview() {
     /*For example, assume that in addition to these CSS changes you also wanted to add a hidden attribute to this element. Bliss methods that don’t return a value
     return the element or array they are called on, so you could call more element methods on them, including native ones:*/
     element._.style({
-        "width": 0,
-        "padding": 0,
+        width: 0,
+        padding: 0,
     }).setAttribute("hidden", "");
 
     /*Now assume you also wanted to set a second attribute: The "class" attribute to "foo". The native setAttribute() method is not chainable, it returns undefined.
     However, all native element methods are also available on the almighty _ property, and there they are also chainable:*/
     element._.style({
-        "width": 0,
-        "padding": 0,
-    })._.setAttribute("hidden", "").setAttribute("class", "foo");
+        width: 0,
+        padding: 0,
+    })
+        ._.setAttribute("hidden", "")
+        .setAttribute("class", "foo");
 
     // This works, but it’s a bit unwieldy. Thankfully, Bliss offers an $.attributes() method for setting multiple attributes at once:
     element._.style({
-        "width": 0,
-        "padding": 0,
+        width: 0,
+        padding: 0,
     })._.attributes({
-        "hidden": "",
-        "class": "foo",
+        hidden: "",
+        class: "foo",
     });
 
     // This is better and more readable, but still a bit awkward. Turns out there is a special $.set() method to do both at once:
     element._.set({
         attributes: {
-            "hidden": "",
-            "class": "foo",
+            hidden: "",
+            class: "foo",
         },
         style: {
-            "width": 0,
-            "padding": 0,
+            width: 0,
+            padding: 0,
         },
     });
 
@@ -74,11 +76,11 @@ function test_overview() {
     Bliss will first check if there is a property with that name on the element and if not,
     set an attribute. So you could rewrite the example above as:*/
     element._.set({
-        "hidden": "",
-        "class": "foo", // or "className": "foo" to use the property
+        hidden: "",
+        class: "foo", // or "className": "foo" to use the property
         style: {
-            "width": 0,
-            "padding": 0,
+            width: 0,
+            padding: 0,
         },
     });
 }
@@ -123,21 +125,23 @@ function $_test() {
 
 function $$_test() {
     // Add an id to all <h1> headings that don’t already have one
-    $$<HTMLHeadElement>("h1:not([id])").forEach(function(h1) {
+    $$<HTMLHeadElement>("h1:not([id])").forEach(function (h1) {
         h1.id = h1.textContent.replace(/\W/g, "");
     });
     // Get an array with all ids on the page
-    var ids = $$<HTMLElement>("[id]").map(function(element) {
+    var ids = $$<HTMLElement>("[id]").map(function (element) {
         return element.id;
     });
     // Get all of an element’s attributes starting with data-bliss-
     var element = $.create("div");
 
-    $$<Attr>(element.attributes).filter(function(attribute) {
-        return attribute.name.indexOf("data-bliss-") === 0;
-    }).map(function(attribute) {
-        return attribute.name;
-    });
+    $$<Attr>(element.attributes)
+        .filter(function (attribute) {
+            return attribute.name.indexOf("data-bliss-") === 0;
+        })
+        .map(function (attribute) {
+            return attribute.name;
+        });
 }
 
 function $_create_test() {
@@ -145,8 +149,19 @@ function $_create_test() {
         className: "nav",
         contents: [
             "Navigation: ",
-            { tag: "li", contents: { tag: "a", href: "index.html", textContent: "Home" } },
-            { tag: "li", contents: { tag: "a", href: "contact.html", textContent: "Contact", target: "_blank" } },
+            {
+                tag: "li",
+                contents: { tag: "a", href: "index.html", textContent: "Home" },
+            },
+            {
+                tag: "li",
+                contents: {
+                    tag: "a",
+                    href: "contact.html",
+                    textContent: "Contact",
+                    target: "_blank",
+                },
+            },
         ],
     });
 
@@ -160,25 +175,42 @@ function $_set_test() {
             color: "red",
         },
         events: {
-            click: function(evt: Event) {
+            click: function (evt: Event) {
                 console.log("YOLO");
             },
         },
-        contents: ["Navigation: ", {
-            tag: "ul",
-            className: "buttons",
-            delegate: {
-                click: {
-                    li: function() {
-                        console.log("A list item was clicked");
+        contents: [
+            "Navigation: ",
+            {
+                tag: "ul",
+                className: "buttons",
+                delegate: {
+                    click: {
+                        li: function () {
+                            console.log("A list item was clicked");
+                        },
                     },
                 },
+                contents: [
+                    {
+                        tag: "li",
+                        contents: {
+                            tag: "a",
+                            href: "index.html",
+                            textContent: "Home",
+                        },
+                    },
+                    {
+                        tag: "li",
+                        contents: {
+                            tag: "a",
+                            href: "docs.html",
+                            textContent: "Docs",
+                        },
+                    },
+                ],
             },
-            contents: [{ tag: "li", contents: { tag: "a", href: "index.html", textContent: "Home" } }, {
-                tag: "li",
-                contents: { tag: "a", href: "docs.html", textContent: "Docs" },
-            }],
-        }],
+        ],
         inside: $("body > header"),
     });
 }
@@ -186,29 +218,46 @@ function $_set_test() {
 function $_contents_test() {
     var nav = $.create();
 
-    nav._.contents(["Navigation: ", {
-        tag: "ul",
-        className: "buttons",
-        delegate: {
-            click: {
-                li: function() {
-                    console.log("A list item was clicked");
+    nav._.contents([
+        "Navigation: ",
+        {
+            tag: "ul",
+            className: "buttons",
+            delegate: {
+                click: {
+                    li: function () {
+                        console.log("A list item was clicked");
+                    },
                 },
             },
+            contents: [
+                {
+                    tag: "li",
+                    contents: {
+                        tag: "a",
+                        href: "index.html",
+                        textContent: "Home",
+                    },
+                },
+                {
+                    tag: "li",
+                    contents: {
+                        tag: "a",
+                        href: "docs.html",
+                        textContent: "Docs",
+                    },
+                },
+            ],
         },
-        contents: [{ tag: "li", contents: { tag: "a", href: "index.html", textContent: "Home" } }, {
-            tag: "li",
-            contents: { tag: "a", href: "docs.html", textContent: "Docs" },
-        }],
-    }]);
+    ]);
 }
 
 function $_clone_test() {
     var button = $<HTMLButtonElement>("button");
-    button.addEventListener("click", function() {
+    button.addEventListener("click", function () {
         console.log("Click from listener!");
     });
-    button.onclick = function() {
+    button.onclick = function () {
         console.log("Click from inline event!");
     };
     var button2 = button._.clone();
@@ -225,12 +274,14 @@ function $_around_test() {
     $.around(button, $(".selector"));
 
     // Wrap headings with a link to their section
-    $$<HTMLElement>("section[id] > h1, article[id] > h1").forEach(function(h1) {
-        $.create("a", {
-            href: "#" + (<HTMLElement> h1.parentNode).id,
-            around: h1,
-        });
-    });
+    $$<HTMLElement>("section[id] > h1, article[id] > h1").forEach(
+        function (h1) {
+            $.create("a", {
+                href: "#" + (<HTMLElement>h1.parentNode).id,
+                around: h1,
+            });
+        },
+    );
 }
 
 function $_attributes_test() {
@@ -258,7 +309,9 @@ function $_properties_test() {
     document.createElement("button")._.properties({
         className: "continue",
         textContent: "Next Step",
-        onclick: function() {/*MyApp.next()*/},
+        onclick: function () {
+            /*MyApp.next()*/
+        },
     });
 }
 
@@ -291,7 +344,7 @@ function $_transition_test() {
             transform: "scale(0)",
         }),
     ).then((elts) => {
-        elts.forEach(elt => {
+        elts.forEach((elt) => {
             $.remove(elt);
         });
     });
@@ -302,33 +355,35 @@ function $_delegate_test() {
 
     $.delegate(element, "locationchange", ".selected", () => {});
     $.delegate(element, "locationchange", {
-        "callback1": () => {},
+        callback1: () => {},
     });
     $.delegate(element, {
-        "locationchange": {
-            "callback1": () => {},
+        locationchange: {
+            callback1: () => {},
         },
     });
 
     element._.delegate("locationchange", ".selected", () => {});
     element._.delegate("locationchange", {
-        "callback1": () => {},
+        callback1: () => {},
     });
     element._.delegate({
-        "locationchange": {
-            "callback1": () => {},
+        locationchange: {
+            callback1: () => {},
         },
     });
 }
 
 function $_events_test() {
-    $$("input[type=\"range\"]")._.events({
-        "input change": function(evt) {
+    $$('input[type="range"]')._.events({
+        "input change": function (evt) {
             this.title = this.value;
         },
     });
 
-    $$("input")._.addEventListener("input", function() {/* ... */});
+    $$("input")._.addEventListener("input", function () {
+        /* ... */
+    });
 }
 
 function $_fire_test() {
@@ -344,8 +399,8 @@ function $_fire_test() {
 }
 
 function $_once_test() {
-    $$("input[type=\"range\"]")._.once({
-        "input change": function(evt) {
+    $$('input[type="range"]')._.once({
+        "input change": function (evt) {
             this.title = this.value;
         },
     });
@@ -353,7 +408,7 @@ function $_once_test() {
 
 function $_ready_test() {
     // Add a red border to all divs on a page
-    $.ready().then(function() {
+    $.ready().then(function () {
         $$("div")._.style({ border: "1px solid red" });
     });
 }
@@ -365,16 +420,22 @@ function $_all_test() {
 
 function $_class_test() {
     var cls = $.Class({
-        constructor: function() {/* ... */},
+        constructor: function () {
+            /* ... */
+        },
     });
 }
 
 function $_each_test() {
     var elt = { a: "a", b: "b" };
 
-    $.each<any>(elt, function(name: string, value: any) {
-        /* ... */
-    }, elt);
+    $.each<any>(
+        elt,
+        function (name: string, value: any) {
+            /* ... */
+        },
+        elt,
+    );
 }
 
 function $_extend_test() {
@@ -382,7 +443,11 @@ function $_extend_test() {
     var o2 = $.extend(o1, { foo: 3, baz: 4 });
     // o2 is {foo: 3, bar: 2, baz: 4}
     // Get typography-related computed style on <body>
-    var type = $.extend({}, getComputedStyle(document.body), /^font|^lineHeight$/);
+    var type = $.extend(
+        {},
+        getComputedStyle(document.body),
+        /^font|^lineHeight$/,
+    );
 }
 
 function $_lazy_test() {
@@ -392,7 +457,7 @@ function $_lazy_test() {
     });
 
     $.lazy(x, {
-        "foo": function() {
+        foo: function () {
             return "bar";
         },
     });
@@ -422,9 +487,11 @@ function $_fetch_test() {
     $.fetch("/api/create", {
         method: "POST",
         responseType: "json",
-    }).then(function() {
-        alert("success!");
-    }).catch(function(error) {
-        console.error(error);
-    });
+    })
+        .then(function () {
+            alert("success!");
+        })
+        .catch(function (error) {
+            console.error(error);
+        });
 }

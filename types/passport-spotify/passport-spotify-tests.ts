@@ -59,4 +59,7 @@ const verifyFunctionWithRequest: VerifyFunctionWithRequest = (
     done(null, user);
 };
 
-const strategyWithRequest = new Strategy(strategyOptionsWithRequest, verifyFunctionWithRequest);
+const strategyWithRequest = new Strategy(
+    strategyOptionsWithRequest,
+    verifyFunctionWithRequest,
+);

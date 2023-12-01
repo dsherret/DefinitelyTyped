@@ -64,9 +64,24 @@ export class StatsD {
      * @param tags The Array of tags to add to metrics. Optional.
      * @param callback Callback when message is done being delivered. Optional.
      */
-    decrement(stat: string | string[], value?: number, sampleRate?: number, tags?: string[], callback?: Callback): void;
-    decrement(stat: string | string[], value?: number, sampleRateOrTags?: number | string[], callback?: Callback): void;
-    decrement(stat: string | string[], value?: number, callback?: Callback): void;
+    decrement(
+        stat: string | string[],
+        value?: number,
+        sampleRate?: number,
+        tags?: string[],
+        callback?: Callback,
+    ): void;
+    decrement(
+        stat: string | string[],
+        value?: number,
+        sampleRateOrTags?: number | string[],
+        callback?: Callback,
+    ): void;
+    decrement(
+        stat: string | string[],
+        value?: number,
+        callback?: Callback,
+    ): void;
 
     /**
      * Gauges a stat by a specified amount
@@ -76,8 +91,19 @@ export class StatsD {
      * @param tags The Array of tags to add to metrics. Optional.
      * @param callback Callback when message is done being delivered. Optional.
      */
-    gauge(stat: string | string[], value: number, sampleRate?: number, tags?: string[], callback?: Callback): void;
-    gauge(stat: string | string[], value: number, sampleRateOrTags?: number | string[], callback?: Callback): void;
+    gauge(
+        stat: string | string[],
+        value: number,
+        sampleRate?: number,
+        tags?: string[],
+        callback?: Callback,
+    ): void;
+    gauge(
+        stat: string | string[],
+        value: number,
+        sampleRateOrTags?: number | string[],
+        callback?: Callback,
+    ): void;
     gauge(stat: string | string[], value: number, callback?: Callback): void;
 
     /**
@@ -88,8 +114,19 @@ export class StatsD {
      * @param tags The Array of tags to add to metrics. Optional.
      * @param callback Callback when message is done being delivered. Optional.
      */
-    histogram(stat: string | string[], value: any, sampleRate?: number, tags?: string[], callback?: Callback): void;
-    histogram(stat: string | string[], value: any, sampleRateOrTags?: number | string[], callback?: Callback): void;
+    histogram(
+        stat: string | string[],
+        value: any,
+        sampleRate?: number,
+        tags?: string[],
+        callback?: Callback,
+    ): void;
+    histogram(
+        stat: string | string[],
+        value: any,
+        sampleRateOrTags?: number | string[],
+        callback?: Callback,
+    ): void;
     histogram(stat: string | string[], value: any, callback?: Callback): void;
 
     /**
@@ -100,8 +137,19 @@ export class StatsD {
      * @param tags The Array of tags to add to metrics. Optional.
      * @param callback Callback when message is done being delivered. Optional.
      */
-    increment(stat: string | string[], value?: number, sampleRate?: number, tags?: string[], callback?: Callback): void;
-    increment(stat: string | string[], value: any, sampleRateOrTags?: number | string[], callback?: Callback): void;
+    increment(
+        stat: string | string[],
+        value?: number,
+        sampleRate?: number,
+        tags?: string[],
+        callback?: Callback,
+    ): void;
+    increment(
+        stat: string | string[],
+        value: any,
+        sampleRateOrTags?: number | string[],
+        callback?: Callback,
+    ): void;
     increment(stat: string | string[], value: any, callback?: Callback): void;
 
     /**
@@ -128,7 +176,12 @@ export class StatsD {
         sampleRateOrTags?: number | string[],
         callback?: Callback,
     ): void;
-    send(stat: string | string[], value: any, type: string, callback?: Callback): void;
+    send(
+        stat: string | string[],
+        value: any,
+        type: string,
+        callback?: Callback,
+    ): void;
 
     /**
      * Checks if stats is an array and sends all stats calling back once all have sent
@@ -154,13 +207,29 @@ export class StatsD {
         sampleRateOrTags?: number | string[],
         callback?: Callback,
     ): void;
-    sendAll(stat: string | string[], value: any, type: string, callback?: Callback): void;
+    sendAll(
+        stat: string | string[],
+        value: any,
+        type: string,
+        callback?: Callback,
+    ): void;
 
     /**
      * See StatsD.unique
      */
-    set(stat: string | string[], value: any, sampleRate?: number, tags?: string[], callback?: Callback): void;
-    set(stat: string | string[], value: any, sampleRateOrTags?: number | string[], callback?: Callback): void;
+    set(
+        stat: string | string[],
+        value: any,
+        sampleRate?: number,
+        tags?: string[],
+        callback?: Callback,
+    ): void;
+    set(
+        stat: string | string[],
+        value: any,
+        sampleRateOrTags?: number | string[],
+        callback?: Callback,
+    ): void;
     set(stat: string | string[], value: any, callback?: Callback): void;
 
     /**
@@ -171,8 +240,19 @@ export class StatsD {
      * @param tags The Array of tags to add to metrics. Optional.
      * @param callback Callback when message is done being delivered. Optional.
      */
-    timing(stat: string | string[], time: number, sampleRate?: number, tags?: string[], callback?: Callback): void;
-    timing(stat: string | string[], time: number, sampleRateOrTags?: number | string[], callback?: Callback): void;
+    timing(
+        stat: string | string[],
+        time: number,
+        sampleRate?: number,
+        tags?: string[],
+        callback?: Callback,
+    ): void;
+    timing(
+        stat: string | string[],
+        time: number,
+        sampleRateOrTags?: number | string[],
+        callback?: Callback,
+    ): void;
     timing(stat: string | string[], time: number, callback?: Callback): void;
 
     /**
@@ -183,7 +263,18 @@ export class StatsD {
      * @param tags The Array of tags to add to metrics. Optional.
      * @param callback Callback when message is done being delivered. Optional.
      */
-    unique(stat: string | string[], value: any, sampleRate?: number, tags?: string[], callback?: Callback): void;
-    unique(stat: string | string[], value: any, sampleRateOrTags?: number | string[], callback?: Callback): void;
+    unique(
+        stat: string | string[],
+        value: any,
+        sampleRate?: number,
+        tags?: string[],
+        callback?: Callback,
+    ): void;
+    unique(
+        stat: string | string[],
+        value: any,
+        sampleRateOrTags?: number | string[],
+        callback?: Callback,
+    ): void;
     unique(stat: string | string[], value: any, callback?: Callback): void;
 }

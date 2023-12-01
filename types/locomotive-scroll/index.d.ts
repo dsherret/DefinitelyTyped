@@ -97,13 +97,20 @@ declare class LocomotiveScroll {
     init(): () => void;
     on<EventName extends "scroll" | "call">(
         eventName: EventName,
-        callback: (event: EventName extends "scroll" ? LocomotiveScroll.OnScrollEvent : string | string[]) => void,
+        callback: (
+            event: EventName extends "scroll"
+                ? LocomotiveScroll.OnScrollEvent
+                : string | string[],
+        ) => void,
     ): () => void;
     update(): () => void;
     destroy(): () => void;
     start(): () => void;
     stop(): () => void;
-    scrollTo(target: LocomotiveScroll.ScrollToTarget, options?: LocomotiveScroll.ScrollToOptions): () => void;
+    scrollTo(
+        target: LocomotiveScroll.ScrollToTarget,
+        options?: LocomotiveScroll.ScrollToOptions,
+    ): () => void;
 }
 
 export as namespace LocomotiveScroll;

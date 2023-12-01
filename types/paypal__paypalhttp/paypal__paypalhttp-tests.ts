@@ -3,10 +3,10 @@ import paypal = require("@paypal/paypalhttp");
 const env = new paypal.Environment("https://example.com");
 let client = new paypal.HttpClient(env);
 client = new paypal.HttpClient(env);
-client.addInjector(req => {
+client.addInjector((req) => {
     console.log(req);
 });
-client.addInjector(req => {
+client.addInjector((req) => {
     req.headers["Request-Id"] = "abcd";
 });
 
@@ -19,7 +19,7 @@ const req: paypal.HttpRequest = {
     body: {},
 };
 
-client.execute(req).then(resp => {
+client.execute(req).then((resp) => {
     // $ExpectType number
     resp.statusCode;
     // $ExpectType HttpHeaders
@@ -28,7 +28,7 @@ client.execute(req).then(resp => {
     resp.result;
 });
 
-(async () => {
+async () => {
     const resp = await client.execute(req);
 
     // $ExpectType number
@@ -37,11 +37,11 @@ client.execute(req).then(resp => {
     resp.headers;
     // $ExpectType any
     resp.result;
-});
+};
 
 client
     .execute(req)
-    .then(resp => {
+    .then((resp) => {
         // $ExpectType number
         resp.statusCode;
         // $ExpectType HttpHeaders
@@ -49,7 +49,7 @@ client
         // $ExpectType any
         resp.result;
     })
-    .catch(err => {
+    .catch((err) => {
         if (err.statusCode) {
             // $ExpectType any
             err.statusCode;

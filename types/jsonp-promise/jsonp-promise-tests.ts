@@ -15,11 +15,14 @@ const acceptObject = <T extends {} = {}>(arg: T) => {};
 /**
  * Tests parametrized jsonp request.
  */
-const { promise, cancel } = jsonp("https://jsonplaceholder.typicode.com/posts/1", {
-    param: "cb",
-    timeout: 40000,
-    prefix: "_jsonp",
-});
+const { promise, cancel } = jsonp(
+    "https://jsonplaceholder.typicode.com/posts/1",
+    {
+        param: "cb",
+        timeout: 40000,
+        prefix: "_jsonp",
+    },
+);
 wait(promise);
 // $ExpectType void
 cancel();
@@ -36,9 +39,7 @@ jsonp("https://jsonplaceholder.typicode.com/posts/1", {
     param: "cb",
     timeout: 40000,
     prefix: "_jsonp",
-})
-    .promise
-    .then((unknownResult) => {
-        // @ts-expect-error
-        acceptObject(unknownResult);
-    });
+}).promise.then((unknownResult) => {
+    // @ts-expect-error
+    acceptObject(unknownResult);
+});

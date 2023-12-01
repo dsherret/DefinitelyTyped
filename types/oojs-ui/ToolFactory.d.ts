@@ -1,5 +1,8 @@
 declare namespace OO.ui {
-    type ToolExtractionCollection = string | { name: string } | { group: string };
+    type ToolExtractionCollection =
+        | string
+        | { name: string }
+        | { group: string };
 
     /**
      * ToolGroupFactories create {@link OO.ui.ToolGroup toolgroups} on demand. The toolgroup classes
@@ -38,7 +41,7 @@ declare namespace OO.ui {
     }
 
     const ToolFactory: {
-        new(): ToolFactory;
+        new (): ToolFactory;
         prototype: ToolFactory;
         static: {};
         super: FactoryConstructor;

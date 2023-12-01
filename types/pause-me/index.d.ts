@@ -15,6 +15,10 @@ declare namespace pauseMe {
  * @param duration Milliseconds to set the timeout to
  * @param repeating When true the timeout is treated as an interval
  */
-declare function pauseMe(callback: () => void, duration: number, repeating?: boolean): pauseMe.PausableTimeout;
+declare function pauseMe(
+    callback: () => void,
+    duration: number,
+    repeating?: boolean,
+): pauseMe.PausableTimeout;
 
 export = pauseMe;

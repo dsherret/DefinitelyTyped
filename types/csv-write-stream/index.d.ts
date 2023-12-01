@@ -51,7 +51,9 @@ export = makeCsvWriteStream;
  *
  * // produces: world,bar,taco\n
  */
-declare function makeCsvWriteStream(options?: makeCsvWriteStream.Options): makeCsvWriteStream.CsvWriteStream;
+declare function makeCsvWriteStream(
+    options?: makeCsvWriteStream.Options,
+): makeCsvWriteStream.CsvWriteStream;
 
 declare namespace makeCsvWriteStream {
     interface Options {

@@ -29,7 +29,11 @@ declare global {
 
             reflectPropertiesToAttribute?(name: string): void;
 
-            serializeValueToAttribute?(value: any, attribute: string, node?: Element): void;
+            serializeValueToAttribute?(
+                value: any,
+                attribute: string,
+                node?: Element,
+            ): void;
 
             deserialize?(value: string, type: NumberConstructor): number;
             deserialize?(value: string, type: BooleanConstructor): boolean;
@@ -66,7 +70,9 @@ declare global {
 
             // Properties
 
-            properties?: { [prop: string]: PropConstructorType | PropObjectType } | undefined;
+            properties?:
+                | { [prop: string]: PropConstructorType | PropObjectType }
+                | undefined;
 
             getPropertyInfo?(property: string): Object;
 
@@ -106,7 +112,11 @@ declare global {
 
             listen?(node: Element, eventName: string, methodName: string): void;
 
-            unlisten?(node: Element, eventName: string, methodName: string): void;
+            unlisten?(
+                node: Element,
+                eventName: string,
+                methodName: string,
+            ): void;
 
             // Gestures
 
@@ -116,7 +126,11 @@ declare global {
 
             notifyPath?(path: string, value: any, fromAbove: any): void;
 
-            set?<Value>(path: string | Array<string | number>, value: Value, root?: Object): void;
+            set?<Value>(
+                path: string | Array<string | number>,
+                value: Value,
+                root?: Object,
+            ): void;
 
             get?(path: string | Array<string | number>, root?: Object): any;
 
@@ -128,13 +142,21 @@ declare global {
 
             pop?(path: string): any;
 
-            splice?(path: string, index: number, removeCount: number, ...item: any[]): number;
+            splice?(
+                path: string,
+                index: number,
+                removeCount: number,
+                ...item: any[]
+            ): number;
 
             shift?(path: string): any;
 
             unshift?(path: string, ...item: any[]): number;
 
-            notifySplices?(path: string, splices: readonly polymer.PolymerSplice[]): void;
+            notifySplices?(
+                path: string,
+                splices: readonly polymer.PolymerSplice[],
+            ): void;
 
             // ResolveUrl
 
@@ -148,11 +170,23 @@ declare global {
 
             $$?(selector: string): Element;
 
-            toggleClass?(name: string, bool?: boolean, node?: HTMLElement): void;
+            toggleClass?(
+                name: string,
+                bool?: boolean,
+                node?: HTMLElement,
+            ): void;
 
-            classFollows?(name: string, toElement: HTMLElement, fromElement: HTMLElement): void;
+            classFollows?(
+                name: string,
+                toElement: HTMLElement,
+                fromElement: HTMLElement,
+            ): void;
 
-            attributeFollows?(name: string, toElement: HTMLElement, fromElement: HTMLElement): void;
+            attributeFollows?(
+                name: string,
+                toElement: HTMLElement,
+                fromElement: HTMLElement,
+            ): void;
 
             getContentChildNodes?(selector: string): Node[];
 
@@ -168,9 +202,18 @@ declare global {
 
             transform?(transform: string, node?: HTMLElement): void;
 
-            translate3d?(x: number, y: number, z: number, node?: HTMLElement): void;
+            translate3d?(
+                x: number,
+                y: number,
+                z: number,
+                node?: HTMLElement,
+            ): void;
 
-            importHref?(href: string, onload?: Function, onerror?: Function): HTMLLinkElement;
+            importHref?(
+                href: string,
+                onload?: Function,
+                onerror?: Function,
+            ): HTMLLinkElement;
 
             create?(tag: string, props: Object): Element;
 
@@ -201,7 +244,11 @@ declare global {
 
             mixin?(target: Object, source: Object): Object;
 
-            copyOwnProperty?(name: string, source: Object, target: Object): void;
+            copyOwnProperty?(
+                name: string,
+                source: Object,
+                target: Object,
+            ): void;
 
             observers?: string[] | undefined;
 
@@ -232,7 +279,11 @@ declare global {
 
             // Has to live on Base because it is incompatible with
             // HTMLElement#toggleAttribute
-            toggleAttribute?(name: string, bool?: boolean, node?: HTMLElement): void;
+            toggleAttribute?(
+                name: string,
+                bool?: boolean,
+                node?: HTMLElement,
+            ): void;
         }
 
         interface DomApiStatic {
@@ -344,7 +395,10 @@ declare global {
         }
 
         interface ArraySplice {
-            calculateSplices<T>(current: readonly T[], previous: readonly T[]): PolymerSplice[];
+            calculateSplices<T>(
+                current: readonly T[],
+                previous: readonly T[],
+            ): PolymerSplice[];
         }
 
         interface ImportStatus extends RenderStatus {
@@ -352,7 +406,10 @@ declare global {
         }
 
         interface Templatizer {
-            templatize(template: HTMLTemplateElement, mutableData?: boolean): void;
+            templatize(
+                template: HTMLTemplateElement,
+                mutableData?: boolean,
+            ): void;
             stamp(model: {}): Base;
             modelForElement: (elem: HTMLElement) => Base;
         }
@@ -364,9 +421,9 @@ declare global {
             Base: Base;
             dom: DomApiStatic;
 
-            (prototype: Base | { new(): Base }): CustomElementConstructor;
+            (prototype: Base | { new (): Base }): CustomElementConstructor;
 
-            Class(prototype: Base | { new(): Base }): CustomElementConstructor;
+            Class(prototype: Base | { new (): Base }): CustomElementConstructor;
 
             RenderStatus: RenderStatus;
 

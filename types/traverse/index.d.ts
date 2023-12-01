@@ -24,14 +24,21 @@ declare namespace traverse {
     /**
      * Execute `fn` for each node in the object but unlike `.map()`, when `this.update()` is called it updates the object in-place.
      */
-    function forEach(obj: any, cb: (this: TraverseContext, v: any) => void): any;
+    function forEach(
+        obj: any,
+        cb: (this: TraverseContext, v: any) => void,
+    ): any;
 
     /**
      * For each node in the object, perform a [left-fold](http://en.wikipedia.org/wiki/Fold_(higher-order_function)) with the return value of `fn(acc, node)`.
      *
      * If `init` isn't specified, `init` is set to the root object for the first step and the root element is skipped.
      */
-    function reduce(obj: any, cb: (this: TraverseContext, acc: any, v: any) => void, init?: any): any;
+    function reduce(
+        obj: any,
+        cb: (this: TraverseContext, acc: any, v: any) => void,
+        init?: any,
+    ): any;
 
     /**
      * Return an `Array` of every possible non-cyclic path in the object.
@@ -80,7 +87,10 @@ declare namespace traverse {
          *
          * If `init` isn't specified, `init` is set to the root object for the first step and the root element is skipped.
          */
-        reduce(cb: (this: TraverseContext, acc: any, v: any) => void, init?: any): any;
+        reduce(
+            cb: (this: TraverseContext, acc: any, v: any) => void,
+            init?: any,
+        ): any;
 
         /**
          * Return an `Array` of every possible non-cyclic path in the object.

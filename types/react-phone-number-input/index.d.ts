@@ -54,7 +54,10 @@ export interface ParsePhoneNumberOptions {
     extract?: boolean;
 }
 
-export function parsePhoneNumber(input: string, options?: string | ParsePhoneNumberOptions): PhoneNumber | undefined;
+export function parsePhoneNumber(
+    input: string,
+    options?: string | ParsePhoneNumberOptions,
+): PhoneNumber | undefined;
 
 /**
  * Returns a list of supported countries.
@@ -93,7 +96,13 @@ export interface CountrySelectComponentProps {
     /**
      * The list of all selectable countries (including "International")
      */
-    options?: Array<{ value?: string | undefined; label: string; icon: React.Component }> | undefined;
+    options?:
+        | Array<{
+              value?: string | undefined;
+              label: string;
+              icon: React.Component;
+          }>
+        | undefined;
     tabIndex?: number;
     /**
      * The currently selected country code
@@ -105,7 +114,8 @@ export interface CountrySelectComponentProps {
     labels?: { [key: string]: string } | undefined;
 }
 
-export interface PhoneInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
+export interface PhoneInputProps
+    extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
     // Required props
     onChange: (value: string) => void;
     /**
@@ -166,7 +176,12 @@ export interface PhoneInputProps extends Omit<React.InputHTMLAttributes<HTMLInpu
      * superceded by `initialValueFormat` property.
      */
     displayInitialValueAsLocalNumber?: boolean;
-    flagComponent?: React.ComponentType<{ country: string; countryName: string; flagUrl: string; flags: FlagsMap }>;
+    flagComponent?: React.ComponentType<{
+        country: string;
+        countryName: string;
+        flagUrl: string;
+        flags: FlagsMap;
+    }>;
     flags?: FlagsMap;
     /**
      * A URL template of a country flag, where "{XX}" is a two-letter country code in upper case,
@@ -266,4 +281,7 @@ export interface PhoneInputProps extends Omit<React.InputHTMLAttributes<HTMLInpu
     focusInputOnCountrySelection?: boolean;
 }
 
-export default class PhoneInput extends React.Component<PhoneInputProps, object> {}
+export default class PhoneInput extends React.Component<
+    PhoneInputProps,
+    object
+> {}

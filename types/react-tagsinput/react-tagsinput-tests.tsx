@@ -13,7 +13,9 @@ class Example extends React.Component<{}, StateI> {
     }
 
     render() {
-        return <TagsInput value={this.state.tags} onChange={this.handleChange} />;
+        return (
+            <TagsInput value={this.state.tags} onChange={this.handleChange} />
+        );
     }
 }
 

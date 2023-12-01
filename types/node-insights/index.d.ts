@@ -9,7 +9,10 @@ interface Config {
     gzip?: boolean | undefined;
 }
 
-type CallbackFunc = (err: Error | null | undefined, responseBody: string) => void;
+type CallbackFunc = (
+    err: Error | null | undefined,
+    responseBody: string,
+) => void;
 
 declare class Insights {
     static collectorHost: string;

@@ -684,7 +684,10 @@ declare namespace sh {
 
     interface Parser {
         Parse(text: string, path?: string): File;
-        Interactive(r: { read: (size?: number) => string | Buffer | null }, fn: (stmts: Stmt[]) => boolean): void;
+        Interactive(
+            r: { read: (size?: number) => string | Buffer | null },
+            fn: (stmts: Stmt[]) => boolean,
+        ): void;
         InteractiveStep(line: string): Stmt[];
         Incomplete(): boolean;
     }

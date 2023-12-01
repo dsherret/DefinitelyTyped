@@ -16,7 +16,11 @@ function instantiatePolyglot(): void {
     });
     var onMissingKeyComplexPolyglot = new Polyglot({
         phrases: { hello: "Hello" },
-        onMissingKey: (key: string, options: Polyglot.InterpolationOptions, locale: string): string => {
+        onMissingKey: (
+            key: string,
+            options: Polyglot.InterpolationOptions,
+            locale: string,
+        ): string => {
             return "ouups!";
         },
     });
@@ -28,11 +32,13 @@ function instantiatePolyglot(): void {
     var interpolationPrefixPolyglot = new Polyglot({
         interpolation: { prefix: "$[" },
     });
-    var interpolationSuffixPolyglot = new Polyglot({ interpolation: { suffix: "]" } });
+    var interpolationSuffixPolyglot = new Polyglot({
+        interpolation: { suffix: "]" },
+    });
     var pluralRulesPolyglot = new Polyglot({
         pluralRules: {
             pluralTypes: {
-                french: (n) => n > 1 ? 2 : n,
+                french: (n) => (n > 1 ? 2 : n),
             },
             pluralTypeToLanguages: {
                 french: ["fr"],
@@ -120,6 +126,8 @@ function transform(): void {
     Polyglot.transformPhrase("Hello");
     Polyglot.transformPhrase("Hola, %{name}.", { name: "Spike" });
     Polyglot.transformPhrase("%{smart_count} car |||| %{smart_count} cars", 0);
-    Polyglot.transformPhrase("%{smart_count} car |||| %{smart_count} cars", { smart_count: 0 });
+    Polyglot.transformPhrase("%{smart_count} car |||| %{smart_count} cars", {
+        smart_count: 0,
+    });
     Polyglot.transformPhrase("Bonjour", undefined, "fr");
 }

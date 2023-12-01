@@ -25,10 +25,12 @@ declare namespace GoogleAdsScripts {
          *    var excludedVideoKeyword = excludedVideoKeywordIterator.next();
          *  }
          */
-        interface ExcludedVideoKeywordIterator extends Base.Iterator<ExcludedVideoKeyword> {}
+        interface ExcludedVideoKeywordIterator
+            extends Base.Iterator<ExcludedVideoKeyword> {}
 
         /** An operation representing creation of a new excluded video keyword.  */
-        interface ExcludedVideoKeywordOperation extends Base.Operation<ExcludedVideoKeyword> {}
+        interface ExcludedVideoKeywordOperation
+            extends Base.Operation<ExcludedVideoKeyword> {}
 
         /**
          * Fetches excluded video keywords. Supports filtering and sorting.
@@ -46,11 +48,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface ExcludedVideoKeywordSelector
-            extends
-                Base.Selector<ExcludedVideoKeywordIterator>,
+            extends Base.Selector<ExcludedVideoKeywordIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

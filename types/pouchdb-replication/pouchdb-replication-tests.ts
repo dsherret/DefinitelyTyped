@@ -5,9 +5,15 @@ function testReplication() {
     }
     const db = new PouchDB<Model>();
 
-    db.replicate.to("").then((res: PouchDB.Replication.ReplicationResultComplete<Model>) => {
-    });
+    db.replicate
+        .to("")
+        .then(
+            (res: PouchDB.Replication.ReplicationResultComplete<Model>) => {},
+        );
 
-    db.replicate.from("").then((res: PouchDB.Replication.ReplicationResultComplete<Model>) => {
-    });
+    db.replicate
+        .from("")
+        .then(
+            (res: PouchDB.Replication.ReplicationResultComplete<Model>) => {},
+        );
 }

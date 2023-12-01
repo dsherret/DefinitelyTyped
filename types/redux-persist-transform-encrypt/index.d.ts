@@ -5,4 +5,6 @@ export interface EncryptorConfig {
     onError?: ((err: Error) => void) | undefined;
 }
 
-export default function createEncryptor<State, Raw>(config: EncryptorConfig): Transform<State, Raw>;
+export default function createEncryptor<State, Raw>(
+    config: EncryptorConfig,
+): Transform<State, Raw>;

@@ -13,14 +13,14 @@ export type TagType =
 
 export namespace Tag {
     interface DataTypeToTypeMap extends Record<TagType, any> {
-        "m": undefined;
-        "u": number;
-        "i": number;
-        "f": number;
-        "s": string;
+        m: undefined;
+        u: number;
+        i: number;
+        f: number;
+        s: string;
         "8": string;
-        "d": Date;
-        "b": number;
+        d: Date;
+        b: number;
     }
 }
 export interface Tag<T extends TagType> extends TagMetadata {
@@ -69,7 +69,10 @@ export namespace tools {
      * @param [start=0] position in buffer
      * @returns value / length object
      */
-    function readVint(buffer: Buffer, start?: number): { length: number; value: number };
+    function readVint(
+        buffer: Buffer,
+        start?: number,
+    ): { length: number; value: number };
 
     /**
      * write variable length integer
@@ -141,7 +144,11 @@ export namespace tools {
 
 export const schema: Map<number, EBMLTagSchema>;
 
-export type EBMLTagSchema = EBMLTagSchemaBase | EBMLNumericTagSchema | EBMLStringValueTagSchema | EBMLBinaryTagSchema;
+export type EBMLTagSchema =
+    | EBMLTagSchemaBase
+    | EBMLNumericTagSchema
+    | EBMLStringValueTagSchema
+    | EBMLBinaryTagSchema;
 export interface EBMLTagSchemaBase {
     name: string;
     level: number;
@@ -165,7 +172,12 @@ export interface EBMLDefaultableTagSchema extends EBMLTagSchemaBase {
 export interface EBMLNumericTagSchema extends EBMLDefaultableTagSchema {
     type: "u" | "i" | "f";
     range: string;
-    br?: string | [string, string] | [string, string, string] | [string, string, string, string] | undefined;
+    br?:
+        | string
+        | [string, string]
+        | [string, string, string]
+        | [string, string, string, string]
+        | undefined;
 }
 export interface EBMLStringValueTagSchema extends EBMLDefaultableTagSchema {
     type: "s";
@@ -209,24 +221,58 @@ export class Decoder extends Transform {
 
     // #region Duplex methods overloadings
 
-    addListener<K extends keyof Decoder.EventListenerMap>(event: K, listener: Decoder.EventListenerMap[K]): this;
-    addListener(event: string | symbol, listener: (...args: any[]) => void): this;
-    on<K extends keyof Decoder.EventListenerMap>(event: K, listener: Decoder.EventListenerMap[K]): this;
+    addListener<K extends keyof Decoder.EventListenerMap>(
+        event: K,
+        listener: Decoder.EventListenerMap[K],
+    ): this;
+    addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
+    on<K extends keyof Decoder.EventListenerMap>(
+        event: K,
+        listener: Decoder.EventListenerMap[K],
+    ): this;
     on(event: string | symbol, listener: (...args: any[]) => void): this;
-    once<K extends keyof Decoder.EventListenerMap>(event: K, listener: Decoder.EventListenerMap[K]): this;
+    once<K extends keyof Decoder.EventListenerMap>(
+        event: K,
+        listener: Decoder.EventListenerMap[K],
+    ): this;
     once(event: string | symbol, listener: (...args: any[]) => void): this;
-    prependListener<K extends keyof Decoder.EventListenerMap>(event: K, listener: Decoder.EventListenerMap[K]): this;
-    prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependListener<K extends keyof Decoder.EventListenerMap>(
+        event: K,
+        listener: Decoder.EventListenerMap[K],
+    ): this;
+    prependListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
     prependOnceListener<K extends keyof Decoder.EventListenerMap>(
         event: K,
         listener: Decoder.EventListenerMap[K],
     ): this;
-    prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
-    removeListener<K extends keyof Decoder.EventListenerMap>(event: K, listener: Decoder.EventListenerMap[K]): this;
-    removeListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
+    removeListener<K extends keyof Decoder.EventListenerMap>(
+        event: K,
+        listener: Decoder.EventListenerMap[K],
+    ): this;
+    removeListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 
-    write(chunk: Buffer, encoding?: string, cb?: (error: Error | null | undefined) => void): boolean;
-    write(chunk: Buffer, cb?: (error: Error | null | undefined) => void): boolean;
+    write(
+        chunk: Buffer,
+        encoding?: string,
+        cb?: (error: Error | null | undefined) => void,
+    ): boolean;
+    write(
+        chunk: Buffer,
+        cb?: (error: Error | null | undefined) => void,
+    ): boolean;
     end(cb?: () => void): this;
     end(chunk: Buffer, cb?: () => void): this;
     end(chunk: Buffer, encoding?: string, cb?: () => void): this;
@@ -240,7 +286,7 @@ export class Decoder extends Transform {
 export namespace Encoder {
     interface TagStackItem {
         data: Buffer | null;
-        id: ReturnType<typeof Encoder["getSchemaInfo"]>;
+        id: ReturnType<(typeof Encoder)["getSchemaInfo"]>;
         name: TagMetadata["name"];
         end: TagMetadata["end"];
         children: TagStackItem[];
@@ -263,6 +309,9 @@ export class Encoder extends Transform {
      * @param tagName The name of the tag to start
      * @param info an information object with an `end` parameter
      */
-    startTag(tagName: TagMetadata["name"], info: Pick<Encoder.TagStackItem, "end">): void;
+    startTag(
+        tagName: TagMetadata["name"],
+        info: Pick<Encoder.TagStackItem, "end">,
+    ): void;
     endTag(): void;
 }

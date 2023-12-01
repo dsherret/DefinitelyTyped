@@ -25,7 +25,11 @@ export class Client {
         connectCallback: (frame?: Frame) => any,
         errorCallback?: (error: Frame | string) => any,
     ): any;
-    connect(headers: {}, connectCallback: (frame?: Frame) => any, errorCallback?: (error: Frame | string) => any): any;
+    connect(
+        headers: {},
+        connectCallback: (frame?: Frame) => any,
+        errorCallback?: (error: Frame | string) => any,
+    ): any;
     connect(
         login: string,
         passcode: string,
@@ -36,7 +40,11 @@ export class Client {
     disconnect(disconnectCallback: () => any, headers?: {}): any;
 
     send(destination: string, headers?: {}, body?: string): any;
-    subscribe(destination: string, callback?: (message: Message) => any, headers?: {}): Subscription;
+    subscribe(
+        destination: string,
+        callback?: (message: Message) => any,
+        headers?: {},
+    ): Subscription;
     unsubscribe(id: string): void;
 
     begin(transaction: string): any;
@@ -73,5 +81,8 @@ export function client(url: string, protocols?: string | string[]): Client;
 export function over(ws: WebSocket): Client;
 export function overTCP(host: string, port: number): Client;
 export function overWS(url: string): Client;
-export function setInterval(interval: number, f: (...args: any[]) => void): NodeJS.Timer;
+export function setInterval(
+    interval: number,
+    f: (...args: any[]) => void,
+): NodeJS.Timer;
 export function clearInterval(id: NodeJS.Timer): void;

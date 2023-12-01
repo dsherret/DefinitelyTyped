@@ -71,7 +71,10 @@ export function getTestNames(source: string, withStructure?: false): Results;
  * @param source
  * @param withStructure - return nested structure of suites and tests
  */
-export function getTestNames(source: string, withStructure: true): ResultsWithStructure;
+export function getTestNames(
+    source: string,
+    withStructure: true,
+): ResultsWithStructure;
 
 /**
  * Looks at the tests and counts how many tests in each suite
@@ -91,7 +94,11 @@ export function countTests(structure: Structure): {
  * @param fn Receives the test as argument
  * @param [parentSuite]
  */
-export function visitEachTest(structure: Structure, fn: VisitCallback, parentSuite?: Suite): void;
+export function visitEachTest(
+    structure: Structure,
+    fn: VisitCallback,
+    parentSuite?: Suite,
+): void;
 /**
  * Counts the tags found on the tests.
  * @param structure
@@ -103,7 +110,11 @@ export function countTags(structure: Structure): Record<string, number>;
  * @param fn
  * @param parentSuite
  */
-export function visitEachNode(structure: Structure, fn: VisitCallback, parentSuite: Suite): void;
+export function visitEachNode(
+    structure: Structure,
+    fn: VisitCallback,
+    parentSuite: Suite,
+): void;
 /**
  * @param structure
  */
@@ -120,7 +131,10 @@ export function setEffectiveTags(structure: Structure): Structure;
  * @param structure
  * @param tags
  */
-export function filterByEffectiveTags(structure: string | Structure, tags: string[]): Test[];
+export function filterByEffectiveTags(
+    structure: string | Structure,
+    tags: string[],
+): Test[];
 
 /**
  * Returns a single object with full test titles as keys.
@@ -131,6 +145,8 @@ export function findEffectiveTestTags(source: string): Record<string, Tags>;
  * Reads the source code of the given spec file from disk
  * and finds all tests and their effective tags.
  */
-export function findEffectiveTestTagsIn(specFilename: string): ReturnType<typeof findEffectiveTestTags>;
+export function findEffectiveTestTagsIn(
+    specFilename: string,
+): ReturnType<typeof findEffectiveTestTags>;
 
 export { formatTestList };

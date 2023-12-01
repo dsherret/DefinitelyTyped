@@ -23,7 +23,7 @@ const currencyRates = {
 const emptyFormatters: carbone.Formatters = {};
 const formatters: carbone.Formatters = {
     ...emptyFormatters,
-    json: data => JSON.stringify(data),
+    json: (data) => JSON.stringify(data),
 };
 
 const emptyTranslations: carbone.Translations = {};
@@ -122,18 +122,37 @@ carbone.reset();
 
 carbone.addFormatters(formatters);
 
-carbone.addTemplate("xml", "<xml>", err => {});
-carbone.removeTemplate("xml", err => {});
+carbone.addTemplate("xml", "<xml>", (err) => {});
+carbone.removeTemplate("xml", (err) => {});
 
-const conversionFormats: carbone.ConversionFormat[] = carbone.listConversionFormats("document");
+const conversionFormats: carbone.ConversionFormat[] =
+    carbone.listConversionFormats("document");
 
-carbone.render("./template.odf", data, renderOptions, (err, result: Buffer | string, reportName: string) => {});
-carbone.render("./template.odf", data, (err, result: Buffer | string, reportName: string) => {});
+carbone.render(
+    "./template.odf",
+    data,
+    renderOptions,
+    (err, result: Buffer | string, reportName: string) => {},
+);
+carbone.render(
+    "./template.odf",
+    data,
+    (err, result: Buffer | string, reportName: string) => {},
+);
 
-carbone.renderXML("<xml>", data, renderXMLOptions, (err, result: Buffer | string) => {});
+carbone.renderXML(
+    "<xml>",
+    data,
+    renderXMLOptions,
+    (err, result: Buffer | string) => {},
+);
 carbone.renderXML("<xml>", data, (err, result: Buffer | string) => {});
 
-carbone.convert(buffer, { convertTo, extension: "docx" }, (err, result: Buffer) => {});
+carbone.convert(
+    buffer,
+    { convertTo, extension: "docx" },
+    (err, result: Buffer) => {},
+);
 carbone.convert(buffer, { extension: "docx" }, (err, result: Buffer) => {});
 
 // Encoded filenames are <prefix><22-random-chars><encodedReportName.extension>

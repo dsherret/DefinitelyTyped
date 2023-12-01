@@ -24,7 +24,9 @@ interface ReadonlyArray<T> {
             | ReadonlyArray<ReadonlyArray<ReadonlyArray<Array<readonly U[]>>>>
             | ReadonlyArray<ReadonlyArray<ReadonlyArray<Array<readonly U[]>>>>
             | ReadonlyArray<Array<ReadonlyArray<ReadonlyArray<readonly U[]>>>>
-            | ReadonlyArray<ReadonlyArray<ReadonlyArray<ReadonlyArray<readonly U[]>>>>,
+            | ReadonlyArray<
+                  ReadonlyArray<ReadonlyArray<ReadonlyArray<readonly U[]>>>
+              >,
         depth: 4,
     ): U[];
 

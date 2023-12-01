@@ -54,7 +54,10 @@ export class CustomEntity extends GameEntity {
 
         // get a list of all recently sensed game entities
 
-        this.memorySystem.getValidMemoryRecords(this.currentTime, this.memoryRecords);
+        this.memorySystem.getValidMemoryRecords(
+            this.currentTime,
+            this.memoryRecords,
+        );
 
         if (this.memoryRecords.length > 0) {
             // Pick the first one. It's highly application specific what record is chosen

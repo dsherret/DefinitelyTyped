@@ -11,9 +11,9 @@ export interface BufferOptions {
 export interface LogglyOptions extends TransportStream.TransportStreamOptions {
     auth?:
         | {
-            username: string;
-            password: string;
-        }
+              username: string;
+              password: string;
+          }
         | null
         | undefined;
     bufferOptions?: BufferOptions | undefined;

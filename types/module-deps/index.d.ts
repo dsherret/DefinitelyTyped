@@ -4,7 +4,9 @@
  * Return an object transform stream 'd' that expects entry filenames or '{ id: ..., file: ... }' objects
  * as input and produces objects for every dependency from a recursive module traversal as output.
  */
-declare function moduleDeps(opts?: moduleDeps.Options): moduleDeps.ModuleDepsObject;
+declare function moduleDeps(
+    opts?: moduleDeps.Options,
+): moduleDeps.ModuleDepsObject;
 
 /**
  * Walk the dependency graph to generate json output that can be fed into browser-pack
@@ -30,10 +32,15 @@ declare namespace moduleDeps {
          */
         resolve?:
             | ((
-                id: string,
-                opts: ParentObject,
-                cb: (err?: Error | null, file?: string, pkg?: PackageObject, fakePath?: any) => void,
-            ) => void)
+                  id: string,
+                  opts: ParentObject,
+                  cb: (
+                      err?: Error | null,
+                      file?: string,
+                      pkg?: PackageObject,
+                      fakePath?: any,
+                  ) => void,
+              ) => void)
             | undefined;
 
         /**
@@ -51,13 +58,17 @@ declare namespace moduleDeps {
          * A function (id, file, pkg) that gets called after id has been resolved.
          * Return false to skip this file
          */
-        postFilter?: ((id: string, file: string, pkg: PackageObject) => void | boolean) | undefined; // eslint-disable-line @typescript-eslint/no-invalid-void-type
+        postFilter?:
+            | ((id: string, file: string, pkg: PackageObject) => void | boolean)
+            | undefined; // eslint-disable-line @typescript-eslint/no-invalid-void-type
 
         /**
          * Transform the parsed package.json contents before using the values.
          * opts.packageFilter(pkg, dir) should return the new pkg object to use.
          */
-        packageFilter?: ((pkg: PackageObject, dir: string) => PackageObject) | undefined;
+        packageFilter?:
+            | ((pkg: PackageObject, dir: string) => PackageObject)
+            | undefined;
 
         /**
          * An array of absolute paths to not parse for dependencies.
@@ -86,12 +97,15 @@ declare namespace moduleDeps {
          */
         persistentCache?:
             | ((
-                file: string,
-                id: string,
-                pkg: PackageObject,
-                fallback: (dataAsString: string | null | undefined, cb: CacheCallback) => void,
-                cb: CacheCallback,
-            ) => void)
+                  file: string,
+                  id: string,
+                  pkg: PackageObject,
+                  fallback: (
+                      dataAsString: string | null | undefined,
+                      cb: CacheCallback,
+                  ) => void,
+                  cb: CacheCallback,
+              ) => void)
             | undefined;
 
         /**
@@ -118,26 +132,40 @@ declare namespace moduleDeps {
         resolve(
             id: string,
             parent: Partial<ParentObject> & { id: string; [name: string]: any },
-            cb: (err: Error | null, file?: string, pkg?: PackageObject, fakePath?: any) => any,
+            cb: (
+                err: Error | null,
+                file?: string,
+                pkg?: PackageObject,
+                fakePath?: any,
+            ) => any,
         ): any;
 
-        readFile(file: string, id?: any, pkg?: PackageObject): NodeJS.ReadableStream;
+        readFile(
+            file: string,
+            id?: any,
+            pkg?: PackageObject,
+        ): NodeJS.ReadableStream;
 
         getTransforms(
             file: string,
             pkg: PackageObject,
-            opts?: { builtin?: boolean | undefined; inNodeModules?: boolean | undefined },
+            opts?: {
+                builtin?: boolean | undefined;
+                inNodeModules?: boolean | undefined;
+            },
         ): NodeJS.ReadWriteStream;
 
         walk(
-            id: string | {
-                file: string;
-                id: string;
-                entry?: boolean | undefined;
-                expose?: string | undefined;
-                noparse?: boolean | undefined;
-                source?: string | undefined;
-            },
+            id:
+                | string
+                | {
+                      file: string;
+                      id: string;
+                      entry?: boolean | undefined;
+                      expose?: string | undefined;
+                      noparse?: boolean | undefined;
+                      source?: string | undefined;
+                  },
             parent: { modules: any },
             cb: (err: Error | null, file?: string) => void,
         ): void;
@@ -147,13 +175,20 @@ declare namespace moduleDeps {
         lookupPackage(file: string, cb: (a: any, b: any, c?: any) => any): void;
 
         _isTopLevel(file: string): boolean;
-        _transform(row: string | InputRow | InputTransform, enc: string, next: () => void): void;
+        _transform(
+            row: string | InputRow | InputTransform,
+            enc: string,
+            next: () => void,
+        ): void;
         _flush(): void;
 
         /**
          * Every time a transform is applied to a file, a 'transform' event fires with the instantiated transform stream tr.
          */
-        on(event: "transform", listener: (tr: NodeJS.ReadableStream, file: string) => any): this;
+        on(
+            event: "transform",
+            listener: (tr: NodeJS.ReadableStream, file: string) => any,
+        ): this;
         /**
          * Every time a file is read, this event fires with the file path.
          */
@@ -167,7 +202,10 @@ declare namespace moduleDeps {
          */
         on(
             event: "missing",
-            listener: (id: string, parent: { id: string; filename: string; [prop: string]: any }) => any,
+            listener: (
+                id: string,
+                parent: { id: string; filename: string; [prop: string]: any },
+            ) => any,
         ): this;
         /**
          * Every time a package is read, this event fires. The directory name of the package is available in pkg.__dirname.
@@ -178,7 +216,12 @@ declare namespace moduleDeps {
 
     type CacheCallback = (err: Error | null, res?: PersistentCacheItem) => void;
 
-    type Transform = string | ((file: string, opts: { basedir?: string | undefined }) => NodeJS.ReadWriteStream);
+    type Transform =
+        | string
+        | ((
+              file: string,
+              opts: { basedir?: string | undefined },
+          ) => NodeJS.ReadWriteStream);
 
     interface InputRow {
         file: string;
@@ -200,7 +243,12 @@ declare namespace moduleDeps {
         basedir: string;
         paths: string[];
         package?: any;
-        packageFilter?: ((p: PackageObject, x: string) => PackageObject & { __dirname: string }) | undefined;
+        packageFilter?:
+            | ((
+                  p: PackageObject,
+                  x: string,
+              ) => PackageObject & { __dirname: string })
+            | undefined;
         inNodeModules?: boolean | undefined;
         // undocumented, see 'Options' interface
         extensions?: string[] | undefined;

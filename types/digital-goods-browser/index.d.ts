@@ -46,5 +46,7 @@ interface Window {
      * Get a DigitalGoodsService instance for the given service provider URL.
      * The URL should be given by your payment provider and support the Digital Goods API (e.g. "https://play.google.com/billing").
      */
-    getDigitalGoodsService: (serviceProvider: string) => Promise<DigitalGoodsService>;
+    getDigitalGoodsService: (
+        serviceProvider: string,
+    ) => Promise<DigitalGoodsService>;
 }

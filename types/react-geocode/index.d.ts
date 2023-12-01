@@ -1,4 +1,9 @@
-export function fromAddress(address: string, apiKey?: string, language?: string, region?: string): Promise<any>;
+export function fromAddress(
+    address: string,
+    apiKey?: string,
+    language?: string,
+    region?: string,
+): Promise<any>;
 export function fromLatLng(
     latitude: string,
     longitude: string,

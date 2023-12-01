@@ -10,7 +10,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.OutlineOptionWidget
      */
-    interface OutlineOptionWidget extends OutlineOptionWidget.Props, OutlineOptionWidget.Prototype {}
+    interface OutlineOptionWidget
+        extends OutlineOptionWidget.Props,
+            OutlineOptionWidget.Prototype {}
 
     namespace OutlineOptionWidget {
         interface ConfigOptions extends DecoratedOptionWidget.ConfigOptions {
@@ -87,7 +89,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): OutlineOptionWidget;
+            new (config?: ConfigOptions): OutlineOptionWidget;
             prototype: Prototype;
             static: Static;
             super: DecoratedOptionWidget.Constructor;

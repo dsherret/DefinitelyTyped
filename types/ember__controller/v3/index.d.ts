@@ -29,13 +29,17 @@ export interface ControllerMixin extends ActionHandler {
      */
     transitionToRoute(...args: any[]): void;
     model: any;
-    queryParams: Array<string | Record<string, QueryParamConfig | string | undefined>>;
+    queryParams: Array<
+        string | Record<string, QueryParamConfig | string | undefined>
+    >;
     target: object;
 }
 export const ControllerMixin: Mixin<ControllerMixin>;
 export default class Controller extends EmberObject.extend(ControllerMixin) {}
 export function inject(): ComputedProperty<Controller>;
-export function inject<K extends keyof Registry>(name: K): ComputedProperty<Registry[K]>;
+export function inject<K extends keyof Registry>(
+    name: K,
+): ComputedProperty<Registry[K]>;
 export function inject(target: object, propertyKey: string | symbol): void;
 
 // A type registry for Ember `Controller`s. Meant to be declaration-merged

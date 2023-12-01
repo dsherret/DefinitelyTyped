@@ -7,7 +7,8 @@ const recaptcha = new reCAPTCHA({
 
 const key = "invalid";
 
-recaptcha.validate(key)
+recaptcha
+    .validate(key)
     .then(() => {
         // validated and secure
     })

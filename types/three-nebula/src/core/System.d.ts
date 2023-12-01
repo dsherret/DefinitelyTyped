@@ -3,7 +3,12 @@ import { Emitter } from "../emitter";
 import EventDispatcher from "../events/EventDispatcher";
 import { JSONObject } from "../initializer/Rate";
 import { INTEGRATION_TYPE_EULER } from "../math/constants";
-import { CustomRenderer, GPURenderer, MeshRenderer, SpriteRenderer } from "../renderer";
+import {
+    CustomRenderer,
+    GPURenderer,
+    MeshRenderer,
+    SpriteRenderer,
+} from "../renderer";
 import Particle from "./Particle";
 import Pool from "./Pool";
 
@@ -16,7 +21,10 @@ export default class System {
     /**
      * Constructs a System instance.
      */
-    constructor(preParticles?: number | typeof POOL_MAX, integrationType?: string | typeof INTEGRATION_TYPE_EULER);
+    constructor(
+        preParticles?: number | typeof POOL_MAX,
+        integrationType?: string | typeof INTEGRATION_TYPE_EULER,
+    );
     /**
      * @description The class type.
      */
@@ -41,7 +49,13 @@ export default class System {
     /**
      * @description The renderers for the system.
      */
-    renderers: Array<THREE.Renderer | CustomRenderer | GPURenderer | MeshRenderer | SpriteRenderer>;
+    renderers: Array<
+        | THREE.Renderer
+        | CustomRenderer
+        | GPURenderer
+        | MeshRenderer
+        | SpriteRenderer
+    >;
     /**
      * @description A pool used to manage the internal system cache of objects
      */
@@ -60,7 +74,11 @@ export default class System {
      * Loads a System instance from JSON asynchronously. Ensures all textures are
      * fully loaded before resolving with the instantiated System instance.
      */
-    static fromJSONAsync(json: JSONObject, THREE: object, options?: object): Promise<System>;
+    static fromJSONAsync(
+        json: JSONObject,
+        THREE: object,
+        options?: object,
+    ): Promise<System>;
     /**
      * Proxy method for the internal event dispatcher's dispatchEvent method.
      */
@@ -88,7 +106,11 @@ export default class System {
      * Expects emitters to have their totalEmitTimes and life set already.
      * Inifnite systems will resolve immediately.
      */
-    emit(hooks: { onStart: () => void; onUpdate: () => void; onEnd: () => void }): Promise<void>;
+    emit(hooks: {
+        onStart: () => void;
+        onUpdate: () => void;
+        onEnd: () => void;
+    }): Promise<void>;
     /**
      * Updates the particle system based on the delta passed.
      *
@@ -113,4 +135,9 @@ export default class System {
     destroy(): void;
 }
 
-export type RendererUnion = THREE.Renderer | GPURenderer | SpriteRenderer | CustomRenderer | MeshRenderer;
+export type RendererUnion =
+    | THREE.Renderer
+    | GPURenderer
+    | SpriteRenderer
+    | CustomRenderer
+    | MeshRenderer;

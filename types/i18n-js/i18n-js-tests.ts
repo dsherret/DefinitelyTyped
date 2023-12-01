@@ -16,7 +16,10 @@ I18n.t("some.missing.scope", { defaultValue: "A default message" });
 I18n.t("noun", { defaultValue: "I'm a {{noun}}", noun: "Mac" });
 I18n.t("some.missing.scope", { defaults: [{ scope: "some.existing.scope" }] });
 I18n.t("some.missing.scope", { defaults: [{ message: "Some message" }] });
-I18n.translate("message", { defaultValue: { one: "%{count} message", other: "%{count} messages" }, count: 1 });
+I18n.translate("message", {
+    defaultValue: { one: "%{count} message", other: "%{count} messages" },
+    count: 1,
+});
 I18n.translate("foo", {
     defaults: [{ scope: "bar" }],
     defaultValue: (scope: string) => scope.toUpperCase(),
@@ -30,7 +33,7 @@ I18n.fallbacks = {
 };
 I18n.locales.no = ["nb", "en"];
 I18n.locales.no = "nb";
-I18n.locales.no = locale => ["nb"];
+I18n.locales.no = (locale) => ["nb"];
 
 I18n.locales.get("de-DE");
 
@@ -44,14 +47,18 @@ I18n.missingTranslation = (scope, options) => null;
 I18n.missingTranslation = (scope, options) => undefined;
 
 I18n.t("inbox.counting", { count: 10 });
-I18n.pluralization["ru"] = count => {
-    const key = count % 10 === 1 && count % 100 !== 11
-        ? "one"
-        : [2, 3, 4].indexOf(count % 10) >= 0 && [12, 13, 14].indexOf(count % 100) < 0
-        ? "few"
-        : count % 10 === 0 || [5, 6, 7, 8, 9].indexOf(count % 10) >= 0 || [11, 12, 13, 14].indexOf(count % 100) >= 0
-        ? "many"
-        : "other";
+I18n.pluralization["ru"] = (count) => {
+    const key =
+        count % 10 === 1 && count % 100 !== 11
+            ? "one"
+            : [2, 3, 4].indexOf(count % 10) >= 0 &&
+                [12, 13, 14].indexOf(count % 100) < 0
+              ? "few"
+              : count % 10 === 0 ||
+                  [5, 6, 7, 8, 9].indexOf(count % 10) >= 0 ||
+                  [11, 12, 13, 14].indexOf(count % 100) >= 0
+                ? "many"
+                : "other";
     return [key];
 };
 
@@ -89,7 +96,10 @@ I18n.l("date.formats.ordinal_day", "2009-09-18", { day: "18th" });
 I18n.strftime(new Date(), "%d/%m/%Y");
 
 const point_in_number = 1000;
-I18n.t("point", { count: point_in_number, formatted_number: I18n.toNumber(point_in_number) });
+I18n.t("point", {
+    count: point_in_number,
+    formatted_number: I18n.toNumber(point_in_number),
+});
 
 I18n.translations = {};
 I18n.translations["en"] = {

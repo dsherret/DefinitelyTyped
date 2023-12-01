@@ -105,38 +105,76 @@ const choose = (p: string): Profile => {
 
 const client: HafasClient = createClient(choose("dbProfile"), "client");
 
-client.locations("", { results: 1 })
-    .then(locations => {/* ... */})
-    .catch(() => {/* ... */});
+client
+    .locations("", { results: 1 })
+    .then((locations) => {
+        /* ... */
+    })
+    .catch(() => {
+        /* ... */
+    });
 
-client.journeys("", "", { results: 1, subStops: true, age: 65, routingMode: "REALTIME" })
-    .then(journeys => {
+client
+    .journeys("", "", {
+        results: 1,
+        subStops: true,
+        age: 65,
+        routingMode: "REALTIME",
+    })
+    .then((journeys) => {
         if (journeys.journeys && journeys.journeys[0].legs.length > 0) {
-            if (journeys.journeys[0].legs[0].prognosedArrival === "prognosed") { /* ... */ }
+            if (journeys.journeys[0].legs[0].prognosedArrival === "prognosed") {
+                /* ... */
+            }
         }
     })
-    .catch(() => {/* ... */});
+    .catch(() => {
+        /* ... */
+    });
 
 if (client.radar) {
-    client.radar({ north: 0, south: 0, west: 0, east: 0 }, { results: 1, duration: 10 })
-        .then(movements => {/* ... */})
-        .catch(() => {/* ... */});
+    client
+        .radar(
+            { north: 0, south: 0, west: 0, east: 0 },
+            { results: 1, duration: 10 },
+        )
+        .then((movements) => {
+            /* ... */
+        })
+        .catch(() => {
+            /* ... */
+        });
 }
 
 if (client.lines) {
-    client.lines("x", {})
-        .then(lines => {/* ... */})
-        .catch(() => {/* ... */});
+    client
+        .lines("x", {})
+        .then((lines) => {
+            /* ... */
+        })
+        .catch(() => {
+            /* ... */
+        });
 }
 
 if (client.serverInfo) {
-    client.serverInfo({ versionInfo: true })
-        .then(serverInfo => {/* ... */})
-        .catch(() => {/* ... */});
+    client
+        .serverInfo({ versionInfo: true })
+        .then((serverInfo) => {
+            /* ... */
+        })
+        .catch(() => {
+            /* ... */
+        });
 }
 
 if (client.journeysFromTrip) {
-    client.journeysFromTrip("x", { stop: { type: "stop" } }, "y", {})
-        .then(journeys => {/* ... */})
-        .catch(() => {/* ... */});
+    client
+        .journeysFromTrip("x", { stop: { type: "stop" } }, "y", {})
+        .then((journeys) => {
+            /* ... */
+        })
+        .catch(() => {
+            /* ... */
+        });
 }

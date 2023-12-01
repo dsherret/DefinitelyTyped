@@ -21,7 +21,13 @@ class SimpleTest extends React.Component<{}, TestState> {
     };
 
     render() {
-        return <ReactCrop src="imageSrc" onChange={this.onChange} crop={this.state.crop} />;
+        return (
+            <ReactCrop
+                src="imageSrc"
+                onChange={this.onChange}
+                crop={this.state.crop}
+            />
+        );
     }
 }
 

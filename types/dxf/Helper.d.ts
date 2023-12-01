@@ -22,6 +22,13 @@ export default class Helper {
 }
 
 export function parseValue(type: number, value: any): number;
-export function convertToTypesAndValues(contentLines: string): Information.Property[];
-export function separateSections(sections: Information.Section[]): Information.Section[];
-export function reduceSection(acc: Information.Section[], section: Information.Section): Information.Section[];
+export function convertToTypesAndValues(
+    contentLines: string,
+): Information.Property[];
+export function separateSections(
+    sections: Information.Section[],
+): Information.Section[];
+export function reduceSection(
+    acc: Information.Section[],
+    section: Information.Section,
+): Information.Section[];

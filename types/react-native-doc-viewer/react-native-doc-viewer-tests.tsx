@@ -1,9 +1,17 @@
 import * as React from "react";
-import { AppRegistry, Button, Platform, StyleSheet, Text, View } from "react-native";
+import {
+    AppRegistry,
+    Button,
+    Platform,
+    StyleSheet,
+    Text,
+    View,
+} from "react-native";
 import * as OpenFile from "react-native-doc-viewer";
 import * as RNFS from "react-native-fs";
 
-const SavePath = Platform.OS === "ios" ? RNFS.MainBundlePath : RNFS.DocumentDirectoryPath;
+const SavePath =
+    Platform.OS === "ios" ? RNFS.MainBundlePath : RNFS.DocumentDirectoryPath;
 
 export default class DocViewerExample extends React.Component {
     /*

@@ -3,8 +3,7 @@ import f = require("session-file-store");
 
 const options: f.Options = {
     path: "./tmp/sessions/",
-    logFn: (a: string) => {
-    },
+    logFn: (a: string) => {},
 };
 const FileStore = f(session);
 

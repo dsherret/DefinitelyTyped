@@ -20,9 +20,17 @@ declare class Refs {
 
     ensureRefsCollection(target: any, property: Refs.AttributeDescriptor): any;
 
-    set(target: any, property: string | Refs.AttributeDescriptor, value: any): void;
+    set(
+        target: any,
+        property: string | Refs.AttributeDescriptor,
+        value: any,
+    ): void;
 
-    unset(target: any, property: string | Refs.AttributeDescriptor, value: any): void;
+    unset(
+        target: any,
+        property: string | Refs.AttributeDescriptor,
+        value: any,
+    ): void;
 }
 
 declare namespace Refs {
@@ -34,7 +42,12 @@ declare namespace Refs {
 
     namespace Collection {
         /** Extends a collection with Refs aware methods */
-        function extend(collection: any[], refs: Refs, property: string | AttributeDescriptor, target: any): any;
+        function extend(
+            collection: any[],
+            refs: Refs,
+            property: string | AttributeDescriptor,
+            target: any,
+        ): any;
 
         function isExtended(collection: any[]): boolean;
     }

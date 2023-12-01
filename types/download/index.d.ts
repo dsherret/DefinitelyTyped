@@ -4,7 +4,9 @@ import { GotEmitter, GotOptions } from "got";
 import { Duplex } from "stream";
 
 declare namespace download {
-    interface DownloadOptions extends DecompressOptions, GotOptions<string | null> {
+    interface DownloadOptions
+        extends DecompressOptions,
+            GotOptions<string | null> {
         /**
          * If set to `true`, try extracting the file using
          * [`decompress`](https://github.com/kevva/decompress).
@@ -51,6 +53,9 @@ declare function download(
     destination?: string,
     options?: download.DownloadOptions,
 ): Promise<Buffer> & GotEmitter & Duplex;
-declare function download(url: string, options?: download.DownloadOptions): Promise<Buffer> & GotEmitter & Duplex;
+declare function download(
+    url: string,
+    options?: download.DownloadOptions,
+): Promise<Buffer> & GotEmitter & Duplex;
 
 export = download;

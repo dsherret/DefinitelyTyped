@@ -3,6 +3,10 @@ declare namespace mkpath {
 }
 
 declare function mkpath(path: string, callback?: (err: any) => void): void;
-declare function mkpath(path: string, mode?: number, callback?: (err?: any) => void): void;
+declare function mkpath(
+    path: string,
+    mode?: number,
+    callback?: (err?: any) => void,
+): void;
 
 export = mkpath;

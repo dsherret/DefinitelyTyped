@@ -1,6 +1,12 @@
 /// <reference types="node" />
 import { EventEmitter } from "events";
-import { IncomingHttpHeaders, IncomingMessage, OutgoingHttpHeaders, Server as HttpServer, ServerResponse } from "http";
+import {
+    IncomingHttpHeaders,
+    IncomingMessage,
+    OutgoingHttpHeaders,
+    Server as HttpServer,
+    ServerResponse,
+} from "http";
 import { Server as HttpsServer } from "https";
 
 export = requestStats;
@@ -159,7 +165,10 @@ declare namespace requestStats {
         once(event: "complete", listener: StatsCallback): this;
         once(event: "request", listener: (req: Request) => void): this;
         removeListener(event: "complete", listener: StatsCallback): this;
-        removeListener(event: "request", listener: (req: Request) => void): this;
+        removeListener(
+            event: "request",
+            listener: (req: Request) => void,
+        ): this;
         off(event: "complete", listener: StatsCallback): this;
         off(event: "request", listener: (req: Request) => void): this;
         removeAllListeners(event?: "complete" | "request"): this;
@@ -171,9 +180,15 @@ declare namespace requestStats {
         emit(event: "request", req: Request): boolean;
         listenerCount(type: "complete" | "request"): number;
         prependListener(event: "complete", listener: StatsCallback): this;
-        prependListener(event: "request", listener: (req: Request) => void): this;
+        prependListener(
+            event: "request",
+            listener: (req: Request) => void,
+        ): this;
         prependOnceListener(event: "complete", listener: StatsCallback): this;
-        prependOnceListener(event: "request", listener: (req: Request) => void): this;
+        prependOnceListener(
+            event: "request",
+            listener: (req: Request) => void,
+        ): this;
         eventNames(): Array<"complete" | "request">;
     }
 }

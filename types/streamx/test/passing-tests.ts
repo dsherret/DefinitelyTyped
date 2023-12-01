@@ -1,7 +1,16 @@
 import streamx = require("streamx");
 import { Readable as NodeJSReadable, Writable as NodeJSWritable } from "stream";
 
-const { Readable, Writable, Duplex, Transform, PassThrough, Stream, isStream, isStreamx } = streamx;
+const {
+    Readable,
+    Writable,
+    Duplex,
+    Transform,
+    PassThrough,
+    Stream,
+    isStream,
+    isStreamx,
+} = streamx;
 
 // All instances can be done without arguments
 new Readable();
@@ -108,8 +117,8 @@ isStreamx(new Readable()); // $ExpectType boolean
             this.readable; // $ExpectType true
             cb();
         },
-        mapWritable: data => Buffer.from(data, "base64"),
-        mapReadable: data => parseInt(data.toString("base64"), 10),
+        mapWritable: (data) => Buffer.from(data, "base64"),
+        mapReadable: (data) => parseInt(data.toString("base64"), 10),
     });
     d.on("open", () => {});
     d.on("error", (_: Error) => {});
@@ -134,13 +143,13 @@ new Writable<{ hello: "world" }>().end({ hello: "world" });
 // Mapping functions
 new Readable<number, string>({
     map: (input: number) => input.toString(),
-    byteLength: input => input.length,
+    byteLength: (input) => input.length,
 }).pipe(new Writable<string>());
 
 new Readable<number, string>({
     map: (input: number) => input !== 0,
-    mapReadable: input => input.toString(),
-    byteLength: input => input.length,
+    mapReadable: (input) => input.toString(),
+    byteLength: (input) => input.length,
 }).pipe(new Writable<string>());
 
 new Readable<string>().pipe(
@@ -152,7 +161,7 @@ new Readable<string>().pipe(
 new Readable<string>().pipe(
     new Writable<string, number>({
         map: (input: string) => input !== "",
-        mapWritable: input => input.length,
+        mapWritable: (input) => input.length,
     }),
 );
 
@@ -160,7 +169,9 @@ new Readable<string>().pipe(
 new Readable<string>().pipe(new NodeJSWritable());
 
 // Since the streams are technically not nodejs streams but they work, there needs to be a helping hand here.
-new NodeJSReadable({ read() {} }).pipe((new Writable<string>() as unknown) as NodeJSWritable);
+new NodeJSReadable({ read() {} }).pipe(
+    new Writable<string>() as unknown as NodeJSWritable,
+);
 
 Readable.from(new Set(["a", "b", "c"])); // $ExpectType Readable<string, string, string, true, false, ReadableEvents<string>>
 Readable.from("string"); // $ExpectType Readable<string, string, string, true, false, ReadableEvents<string>>

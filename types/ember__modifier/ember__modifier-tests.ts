@@ -8,7 +8,7 @@ import {
 } from "@ember/modifier";
 
 on; // $ExpectType OnModifier
-setModifierManager(owner => {}, {}); // $ExpectType {}
+setModifierManager((owner) => {}, {}); // $ExpectType {}
 const capabilitiesFor3_22 = capabilities("3.22"); // $ExpectType ModifierCapabilities
 capabilitiesFor3_22.disableAutoTracking; // $ExpectType boolean
 

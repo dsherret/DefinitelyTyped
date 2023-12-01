@@ -13,6 +13,9 @@ export function create(options?: Font.FileOptions): Font;
  * 解析一个已有字体，支持svg,ttf的字体
  * @param input
  */
-export function transfer(path: string | Buffer, options?: Font.FontOptions): Font;
+export function transfer(
+    path: string | Buffer,
+    options?: Font.FontOptions,
+): Font;
 
 export { Font, FontFace, Glyph };

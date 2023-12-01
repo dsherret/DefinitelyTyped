@@ -49,7 +49,12 @@ declare namespace jackrabbit {
         options: QueueOptions;
         connect(con: Connection): void;
         consume: (
-            callback: (data: any, ack: AckCallback, nack: () => void, msg: Message) => void,
+            callback: (
+                data: any,
+                ack: AckCallback,
+                nack: () => void,
+                msg: Message,
+            ) => void,
             options?: Options.Consume,
         ) => void;
         cancel(done: any): void;

@@ -50,7 +50,11 @@ declare class AutocompletePrompt<T extends Answers> extends Base {
      * @param answers
      * The currently supplied answers
      */
-    constructor(questions: QuestionCollection<T>, rl: ReadlineInterface, answers: Answers);
+    constructor(
+        questions: QuestionCollection<T>,
+        rl: ReadlineInterface,
+        answers: Answers,
+    );
 
     /**
      * Render the prompt to screen
@@ -92,7 +96,10 @@ declare class AutocompletePrompt<T extends Answers> extends Base {
      * @param e
      * Object containing info on the key pressed and the value of the selected option
      */
-    onKeypress(e: { key: { name: string; ctrl: boolean }; value: string }): void;
+    onKeypress(e: {
+        key: { name: string; ctrl: boolean };
+        value: string;
+    }): void;
 }
 
 /**
@@ -105,7 +112,8 @@ declare namespace AutocompletePrompt {
      * @template T
      * The type of the answers.
      */
-    interface AutocompleteQuestionOptions<T extends Answers = Answers> extends Question<T> {
+    interface AutocompleteQuestionOptions<T extends Answers = Answers>
+        extends Question<T> {
         /**
          * The key to save the answer to the answers-hash.
          */

@@ -28,13 +28,19 @@ export interface Pane {
     observeActive(callback: (active: boolean) => void): Disposable;
 
     /** Invoke the given callback when an item is added to the pane. */
-    onDidAddItem(callback: (event: PaneListItemShiftedEvent) => void): Disposable;
+    onDidAddItem(
+        callback: (event: PaneListItemShiftedEvent) => void,
+    ): Disposable;
 
     /** Invoke the given callback when an item is removed from the pane. */
-    onDidRemoveItem(callback: (event: PaneListItemShiftedEvent) => void): Disposable;
+    onDidRemoveItem(
+        callback: (event: PaneListItemShiftedEvent) => void,
+    ): Disposable;
 
     /** Invoke the given callback before an item is removed from the pane. */
-    onWillRemoveItem(callback: (event: PaneListItemShiftedEvent) => void): Disposable;
+    onWillRemoveItem(
+        callback: (event: PaneListItemShiftedEvent) => void,
+    ): Disposable;
 
     /** Invoke the given callback when an item is moved within the pane. */
     onDidMoveItem(callback: (event: PaneItemMovedEvent) => void): Disposable;
@@ -49,13 +55,17 @@ export interface Pane {
      *  Invoke the given callback when ::activateNextRecentlyUsedItem has been called,
      *  either initiating or continuing a forward MRU traversal of pane items.
      */
-    onChooseNextMRUItem(callback: (nextRecentlyUsedItem: object) => void): Disposable;
+    onChooseNextMRUItem(
+        callback: (nextRecentlyUsedItem: object) => void,
+    ): Disposable;
 
     /**
      *  Invoke the given callback when ::activatePreviousRecentlyUsedItem has been called,
      *  either initiating or continuing a reverse MRU traversal of pane items.
      */
-    onChooseLastMRUItem(callback: (previousRecentlyUsedItem: object) => void): Disposable;
+    onChooseLastMRUItem(
+        callback: (previousRecentlyUsedItem: object) => void,
+    ): Disposable;
 
     /**
      *  Invoke the given callback when ::moveActiveItemToTopOfStack has been called,
@@ -68,7 +78,9 @@ export interface Pane {
     observeActiveItem(callback: (activeItem: object) => void): Disposable;
 
     /** Invoke the given callback before items are destroyed. */
-    onWillDestroyItem(callback: (event: PaneListItemShiftedEvent) => void): Disposable;
+    onWillDestroyItem(
+        callback: (event: PaneListItemShiftedEvent) => void,
+    ): Disposable;
 
     // Items
     /** Get the items in this pane. */
@@ -102,7 +114,10 @@ export interface Pane {
     activateItem(item: object, options?: { pending: boolean }): void;
 
     /** Add the given item to the pane. */
-    addItem(item: object, options?: { index?: number | undefined; pending?: boolean | undefined }): object;
+    addItem(
+        item: object,
+        options?: { index?: number | undefined; pending?: boolean | undefined },
+    ): object;
 
     /** Add the given items to the pane. */
     addItems(items: object[], index?: number): object[];
@@ -126,22 +141,32 @@ export interface Pane {
     destroyInactiveItems(): Promise<boolean[]>;
 
     /** Save the active item. */
-    saveActiveItem<T = void>(nextAction?: (error?: Error) => T): Promise<T> | undefined;
+    saveActiveItem<T = void>(
+        nextAction?: (error?: Error) => T,
+    ): Promise<T> | undefined;
 
     /**
      *  Prompt the user for a location and save the active item with the path
      *  they select.
      */
-    saveActiveItemAs<T = void>(nextAction?: (error?: Error) => T): Promise<T> | undefined;
+    saveActiveItemAs<T = void>(
+        nextAction?: (error?: Error) => T,
+    ): Promise<T> | undefined;
 
     /** Save the given item. */
-    saveItem<T = void>(item: object, nextAction?: (error?: Error) => T): Promise<T> | undefined;
+    saveItem<T = void>(
+        item: object,
+        nextAction?: (error?: Error) => T,
+    ): Promise<T> | undefined;
 
     /**
      *  Prompt the user for a location and save the active item with the path
      *  they select.
      */
-    saveItemAs<T = void>(item: object, nextAction?: (error?: Error) => T): Promise<T> | undefined;
+    saveItemAs<T = void>(
+        item: object,
+        nextAction?: (error?: Error) => T,
+    ): Promise<T> | undefined;
 
     /** Save all items. */
     saveItems(): void;
@@ -167,16 +192,28 @@ export interface Pane {
 
     // Splitting
     /** Create a new pane to the left of this pane. */
-    splitLeft(params?: { items?: object[] | undefined; copyActiveItem?: boolean | undefined }): Pane;
+    splitLeft(params?: {
+        items?: object[] | undefined;
+        copyActiveItem?: boolean | undefined;
+    }): Pane;
 
     /** Create a new pane to the right of this pane. */
-    splitRight(params?: { items?: object[] | undefined; copyActiveItem?: boolean | undefined }): Pane;
+    splitRight(params?: {
+        items?: object[] | undefined;
+        copyActiveItem?: boolean | undefined;
+    }): Pane;
 
     /** Creates a new pane above the receiver. */
-    splitUp(params?: { items?: object[] | undefined; copyActiveItem?: boolean | undefined }): Pane;
+    splitUp(params?: {
+        items?: object[] | undefined;
+        copyActiveItem?: boolean | undefined;
+    }): Pane;
 
     /** Creates a new pane below the receiver. */
-    splitDown(params?: { items?: object[] | undefined; copyActiveItem?: boolean | undefined }): Pane;
+    splitDown(params?: {
+        items?: object[] | undefined;
+        copyActiveItem?: boolean | undefined;
+    }): Pane;
 }
 
 export interface PaneListItemShiftedEvent {

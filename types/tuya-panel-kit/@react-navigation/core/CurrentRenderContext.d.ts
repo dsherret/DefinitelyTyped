@@ -4,9 +4,10 @@ import * as React from "react";
  * Intended for use in SSR. This is not safe to use on the client.
  */
 declare const CurrentRenderContext: React.Context<
-    {
-        // tslint:disable-next-line no-redundant-undefined
-        options?: object | undefined;
-    } | undefined
+    | {
+          // tslint:disable-next-line no-redundant-undefined
+          options?: object | undefined;
+      }
+    | undefined
 >;
 export default CurrentRenderContext;

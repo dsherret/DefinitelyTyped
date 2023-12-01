@@ -11,7 +11,8 @@ import {
 let textFormat: TextFormat = "text/html";
 textFormat = "text/plain";
 
-let mimeType: MIMEType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+let mimeType: MIMEType =
+    "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 mimeType = "image/png";
 
 const mailLocation: MailLocation = { addr: "" };
@@ -111,7 +112,7 @@ mailbox.toObject();
 
 const mimeHeader: MIMEHeader = {
     custom: true,
-    dump: v => v,
+    dump: (v) => v,
     name: "",
     placement: "content",
     value: "",
@@ -130,7 +131,10 @@ messageContent.isAttachment();
 
 // $ExpectType string
 messageContent.dump({}, { alt: "", mixed: "" });
-messageContent.dump({ toBase64: input => `${input}`, store: [mimeHeader] }, { alt: "", mixed: "" });
+messageContent.dump(
+    { toBase64: (input) => `${input}`, store: [mimeHeader] },
+    { alt: "", mixed: "" },
+);
 
 // $ExpectType MIMEMessageContent
 messageContent.setHeader("", "");

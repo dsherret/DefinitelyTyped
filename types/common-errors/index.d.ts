@@ -3,7 +3,7 @@ import * as express from "express";
 export type GenerateMessageMethod = () => string;
 
 export interface ErrorConstructor {
-    new(...params: any[]): Error;
+    new (...params: any[]): Error;
 }
 
 /**
@@ -59,13 +59,24 @@ export namespace middleware {
      * an error is thrown from an asynchronous context. Any error that would
      * have caused a crash is logged to stderr.
      */
-    function crashProtector(errorHandler: (err: Error, req: express.Request, res: express.Response) => void): void;
+    function crashProtector(
+        errorHandler: (
+            err: Error,
+            req: express.Request,
+            res: express.Response,
+        ) => void,
+    ): void;
 
     /**
      * Express middleware that translates common errors into HTTP status
      * codes and messages.
      */
-    function errorHandler(err: Error, req: express.Request, res: express.Response, next: express.NextFunction): void;
+    function errorHandler(
+        err: Error,
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction,
+    ): void;
 }
 
 /**

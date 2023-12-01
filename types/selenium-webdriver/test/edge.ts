@@ -51,5 +51,7 @@ function TestServiceBuilder() {
 
 function TestEdgeModule() {
     let service: any = edge.getDefaultService();
-    edge.setDefaultService(new remote.DriverService("executable", new edge.Options()));
+    edge.setDefaultService(
+        new remote.DriverService("executable", new edge.Options()),
+    );
 }

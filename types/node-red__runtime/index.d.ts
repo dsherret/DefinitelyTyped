@@ -144,7 +144,9 @@ declare namespace runtime {
          * in front of all admin http routes. For example, to set custom http
          * headers. It can be a single function or an array of middleware functions.
          */
-        httpAdminMiddleware?: ((req: Request, res: Response, next: NextFunction) => void) | undefined;
+        httpAdminMiddleware?:
+            | ((req: Request, res: Response, next: NextFunction) => void)
+            | undefined;
 
         /**
          * By default, the Node-RED UI is available at http://localhost:1880/
@@ -177,9 +179,9 @@ declare namespace runtime {
          */
         httpStatic?:
             | Array<{
-                path: string;
-                root?: string | undefined;
-            }>
+                  path: string;
+                  root?: string | undefined;
+              }>
             | string
             | undefined;
 
@@ -212,33 +214,40 @@ declare namespace runtime {
          */
         adminAuth?:
             | {
-                type: "credentials";
-                users: Array<{
-                    username: string;
-                    password: string;
-                    permissions: Permission | Permission[];
-                }>;
-                default?: {
-                    permissions: Permission | Permission[];
-                } | undefined;
-            }
+                  type: "credentials";
+                  users: Array<{
+                      username: string;
+                      password: string;
+                      permissions: Permission | Permission[];
+                  }>;
+                  default?:
+                      | {
+                            permissions: Permission | Permission[];
+                        }
+                      | undefined;
+              }
             | {
-                type: "credentials";
-                users: (username: string) => Promise<UsernamePermissions | null>;
-                authenticate: (username: string, password: string) => Promise<UsernamePermissions | null>;
-                default: () => Promise<AnonymousPermissions | null>;
-            }
+                  type: "credentials";
+                  users: (
+                      username: string,
+                  ) => Promise<UsernamePermissions | null>;
+                  authenticate: (
+                      username: string,
+                      password: string,
+                  ) => Promise<UsernamePermissions | null>;
+                  default: () => Promise<AnonymousPermissions | null>;
+              }
             | {
-                type: "strategy";
-                strategy: {
-                    name: string;
-                    label: string;
-                    icon: string;
-                    strategy: Strategy;
-                    options: object;
-                };
-                users: UsernamePermissions[];
-            }
+                  type: "strategy";
+                  strategy: {
+                      name: string;
+                      label: string;
+                      icon: string;
+                      strategy: Strategy;
+                      options: object;
+                  };
+                  users: UsernamePermissions[];
+              }
             | undefined;
 
         /**
@@ -278,7 +287,9 @@ declare namespace runtime {
          * in front of all http in nodes. This allows custom authentication to be
          * applied to all http in nodes, or any other sort of common request processing.
          */
-        httpNodeMiddleware?: ((req: Request, res: Response, next: NextFunction) => void) | undefined;
+        httpNodeMiddleware?:
+            | ((req: Request, res: Response, next: NextFunction) => void)
+            | undefined;
 
         /**
          * The following property can be used to pass custom options to the Express.js
@@ -293,15 +304,23 @@ declare namespace runtime {
          * they include valid authentication information.
          */
         webSocketNodeVerifyClient?:
-            | ((info: { origin: string; req: Request; secure: boolean }) => boolean)
+            | ((info: {
+                  origin: string;
+                  req: Request;
+                  secure: boolean;
+              }) => boolean)
             | ((
-                info: {
-                    origin: string;
-                    req: Request;
-                    secure: boolean;
-                },
-                callback: (result: boolean, code?: string | undefined, reason?: string | undefined) => void,
-            ) => void)
+                  info: {
+                      origin: string;
+                      req: Request;
+                      secure: boolean;
+                  },
+                  callback: (
+                      result: boolean,
+                      code?: string | undefined,
+                      reason?: string | undefined,
+                  ) => void,
+              ) => void)
             | undefined;
 
         /** Allow the Function node to load additional npm modules directly */
@@ -338,28 +357,42 @@ declare namespace runtime {
          * The allow/denyList options can be used to limit what modules the runtime
          * will install/load. It can use '*' as a wildcard that matches anything.
          */
-        externalModules?: {
-            autoInstall?:
-                | boolean
-                | undefined; /** Whether the runtime will attempt to automatically install missing modules */
-            autoInstallRetry?: number | undefined; /** Interval, in seconds, between reinstall attempts */
-            palette?: {
-                /** Configuration for the Palette Manager */
-                allowInstall?: boolean | undefined; /** Enable the Palette Manager in the editor */
-                allowUpdate?: boolean | undefined; /** Allow modules to be updated in the Palette Manager */
-                allowUpload?: boolean | undefined; /** Allow module tgz files to be uploaded and installed */
-                allowList?: string[] | undefined;
-                denyList?: string[] | undefined;
-                allowUpdateList?: string[] | undefined;
-                denyUpdateList?: string[] | undefined;
-            } | undefined;
-            modules?: {
-                /** Configuration for node-specified modules */
-                allowInstall?: boolean | undefined;
-                allowList?: string[] | undefined;
-                denyList?: string[] | undefined;
-            } | undefined;
-        } | undefined;
+        externalModules?:
+            | {
+                  autoInstall?:
+                      | boolean
+                      | undefined /** Whether the runtime will attempt to automatically install missing modules */;
+                  autoInstallRetry?:
+                      | number
+                      | undefined /** Interval, in seconds, between reinstall attempts */;
+                  palette?:
+                      | {
+                            /** Configuration for the Palette Manager */
+                            allowInstall?:
+                                | boolean
+                                | undefined /** Enable the Palette Manager in the editor */;
+                            allowUpdate?:
+                                | boolean
+                                | undefined /** Allow modules to be updated in the Palette Manager */;
+                            allowUpload?:
+                                | boolean
+                                | undefined /** Allow module tgz files to be uploaded and installed */;
+                            allowList?: string[] | undefined;
+                            denyList?: string[] | undefined;
+                            allowUpdateList?: string[] | undefined;
+                            denyUpdateList?: string[] | undefined;
+                        }
+                      | undefined;
+                  modules?:
+                      | {
+                            /** Configuration for node-specified modules */
+                            allowInstall?: boolean | undefined;
+                            allowList?: string[] | undefined;
+                            denyList?: string[] | undefined;
+                        }
+                      | undefined;
+              }
+            | undefined;
 
         /**
          * Context Storage
@@ -367,13 +400,15 @@ declare namespace runtime {
          * provided here will enable file-based context that flushes to disk every 30 seconds.
          * Refer to the documentation for further options: https://nodered.org/docs/api/context/
          */
-        contextStorage?: {
-            [key: string]:
-                | string
-                | {
-                    module: string;
-                };
-        } | undefined;
+        contextStorage?:
+            | {
+                  [key: string]:
+                      | string
+                      | {
+                            module: string;
+                        };
+              }
+            | undefined;
 
         /**
          * The following property can be used to order the categories in the editor
@@ -387,130 +422,161 @@ declare namespace runtime {
         /**
          * Configure the logging output
          */
-        logging?: {
-            /**
-             * Only console logging is currently supported
-             */
-            console?: {
-                /**
-                 * Level of logging to be recorded. Options are:
-                 * fatal - only those errors which make the application unusable should be recorded
-                 * error - record errors which are deemed fatal for a particular request + fatal errors
-                 * warn - record problems which are non fatal + errors + fatal errors
-                 * info - record information about the general running of the application + warn + error + fatal errors
-                 * debug - record information which is more verbose than info + info + warn + error + fatal errors
-                 * trace - record very detailed logging + debug + info + warn + error + fatal errors
-                 * off - turn off all logging (doesn't affect metrics or audit)
-                 */
-                level: "fatal" | "error" | "warn" | "info" | "debug" | "trace" | "off";
+        logging?:
+            | {
+                  /**
+                   * Only console logging is currently supported
+                   */
+                  console?:
+                      | {
+                            /**
+                             * Level of logging to be recorded. Options are:
+                             * fatal - only those errors which make the application unusable should be recorded
+                             * error - record errors which are deemed fatal for a particular request + fatal errors
+                             * warn - record problems which are non fatal + errors + fatal errors
+                             * info - record information about the general running of the application + warn + error + fatal errors
+                             * debug - record information which is more verbose than info + info + warn + error + fatal errors
+                             * trace - record very detailed logging + debug + info + warn + error + fatal errors
+                             * off - turn off all logging (doesn't affect metrics or audit)
+                             */
+                            level:
+                                | "fatal"
+                                | "error"
+                                | "warn"
+                                | "info"
+                                | "debug"
+                                | "trace"
+                                | "off";
 
-                /**
-                 * Whether or not to include metric events in the log output
-                 */
-                metrics: boolean;
+                            /**
+                             * Whether or not to include metric events in the log output
+                             */
+                            metrics: boolean;
 
-                /**
-                 * Whether or not to include audit events in the log output
-                 */
-                audit: boolean;
-            } | undefined;
-        } | undefined;
+                            /**
+                             * Whether or not to include audit events in the log output
+                             */
+                            audit: boolean;
+                        }
+                      | undefined;
+              }
+            | undefined;
 
         /**
          * Customising the editor
          */
-        editorTheme?: {
-            page?: {
-                /**
-                 * Page title
-                 */
-                title?: string | undefined;
-                /**
-                 * Absolute path to theme icon
-                 */
-                favicon?: string | undefined;
-                /**
-                 * Absolute path to custom css file
-                 */
-                css?: string | undefined;
-                /**
-                 * Absolute paths to custom script files
-                 */
-                scripts?: string | undefined[];
-            } | undefined;
-            header?: {
-                /**
-                 * Header title
-                 */
-                title?: string | undefined;
-                /**
-                 * Absolute path to header image, or `null` to remove image
-                 */
-                image?: string | undefined | null;
-                /**
-                 * Url to make the header text/image a link to this url
-                 */
-                url?: string | undefined;
-            } | undefined;
-            deployButton?: {
-                type: "simple";
-                /**
-                 * Deploy button label
-                 */
-                label: string;
-                /**
-                 * Absolute path to deploy button image or `null` to remove image
-                 */
-                icon: string;
-            } | undefined;
-            /**
-             * Hide unwanted menu items by id
-             */
-            menu?: {
-                "menu-item-import-library"?: boolean | undefined;
-                "menu-item-export-library"?: boolean | undefined;
-                "menu-item-keyboard-shortcuts"?: boolean | undefined;
-                "menu-item-help"?: {
-                    /** Help Link Text */
-                    label: string;
-                    /** Help Link URL */
-                    url: string;
-                } | undefined;
-            } | undefined;
-            /**
-             * Hide the user-menu even if adminAuth is enabled
-             */
-            userMenu?: boolean | undefined;
-            login?: {
-                image?: string | undefined;
-            } | undefined;
-            palette?: {
-                /**
-                 * Enable/disable the Palette Manager
-                 */
-                editable?: boolean | undefined;
-                /**
-                 * Alternative palette manager catalogues
-                 */
-                catalogues?: string | undefined[];
-                /**
-                 * Override node colours - rules test against category/type by RegExp.
-                 */
-                theme?:
-                    | Array<{
-                        category: string;
-                        type: string;
-                        color: string;
-                    }>
-                    | undefined;
-            } | undefined;
-            projects?: {
-                /**
-                 * To enable the Projects feature, set this value to true
-                 */
-                enabled: boolean;
-            } | undefined;
-        } | undefined;
+        editorTheme?:
+            | {
+                  page?:
+                      | {
+                            /**
+                             * Page title
+                             */
+                            title?: string | undefined;
+                            /**
+                             * Absolute path to theme icon
+                             */
+                            favicon?: string | undefined;
+                            /**
+                             * Absolute path to custom css file
+                             */
+                            css?: string | undefined;
+                            /**
+                             * Absolute paths to custom script files
+                             */
+                            scripts?: string | undefined[];
+                        }
+                      | undefined;
+                  header?:
+                      | {
+                            /**
+                             * Header title
+                             */
+                            title?: string | undefined;
+                            /**
+                             * Absolute path to header image, or `null` to remove image
+                             */
+                            image?: string | undefined | null;
+                            /**
+                             * Url to make the header text/image a link to this url
+                             */
+                            url?: string | undefined;
+                        }
+                      | undefined;
+                  deployButton?:
+                      | {
+                            type: "simple";
+                            /**
+                             * Deploy button label
+                             */
+                            label: string;
+                            /**
+                             * Absolute path to deploy button image or `null` to remove image
+                             */
+                            icon: string;
+                        }
+                      | undefined;
+                  /**
+                   * Hide unwanted menu items by id
+                   */
+                  menu?:
+                      | {
+                            "menu-item-import-library"?: boolean | undefined;
+                            "menu-item-export-library"?: boolean | undefined;
+                            "menu-item-keyboard-shortcuts"?:
+                                | boolean
+                                | undefined;
+                            "menu-item-help"?:
+                                | {
+                                      /** Help Link Text */
+                                      label: string;
+                                      /** Help Link URL */
+                                      url: string;
+                                  }
+                                | undefined;
+                        }
+                      | undefined;
+                  /**
+                   * Hide the user-menu even if adminAuth is enabled
+                   */
+                  userMenu?: boolean | undefined;
+                  login?:
+                      | {
+                            image?: string | undefined;
+                        }
+                      | undefined;
+                  palette?:
+                      | {
+                            /**
+                             * Enable/disable the Palette Manager
+                             */
+                            editable?: boolean | undefined;
+                            /**
+                             * Alternative palette manager catalogues
+                             */
+                            catalogues?: string | undefined[];
+                            /**
+                             * Override node colours - rules test against category/type by RegExp.
+                             */
+                            theme?:
+                                | Array<{
+                                      category: string;
+                                      type: string;
+                                      color: string;
+                                  }>
+                                | undefined;
+                        }
+                      | undefined;
+                  projects?:
+                      | {
+                            /**
+                             * To enable the Projects feature, set this value to true
+                             */
+                            enabled: boolean;
+                        }
+                      | undefined;
+              }
+            | undefined;
 
         verbose?: boolean | undefined;
         safeMode?: boolean | undefined;
@@ -561,7 +627,10 @@ declare namespace runtime {
          * @param opts.client - the client connection
          * @param opts.topic - the topic to subscribe to
          */
-        subscribe: (opts: { client: CommsConnection; topic: string }) => Promise<void>;
+        subscribe: (opts: {
+            client: CommsConnection;
+            topic: string;
+        }) => Promise<void>;
 
         /**
          * Unsubscribes a comms connection from a given topic
@@ -569,7 +638,10 @@ declare namespace runtime {
          * @param opts.client - the client connection
          * @param opts.topic - the topic to unsubscribe from
          */
-        unsubscribe: (opts: { client: CommsConnection; topic: string }) => Promise<void>;
+        unsubscribe: (opts: {
+            client: CommsConnection;
+            topic: string;
+        }) => Promise<void>;
     }
 
     interface ContextModule {
@@ -640,7 +712,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          */
         setFlows: (opts: {
-            flows: { flows: object[]; credentials: object; req?: object | undefined };
+            flows: {
+                flows: object[];
+                credentials: object;
+                req?: object | undefined;
+            };
         }) => Promise<{ rev: string }>;
 
         /**
@@ -650,7 +726,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the id of the added flow
          */
-        addFlow: (opts: { flow: object; req?: object | undefined }) => Promise<string>;
+        addFlow: (opts: {
+            flow: object;
+            req?: object | undefined;
+        }) => Promise<string>;
 
         /**
          * Gets an individual flow configuration
@@ -658,7 +737,10 @@ declare namespace runtime {
          * @param opts.id - the id of the flow to retrieve
          * @param opts.req - the request to log (optional)
          */
-        getFlow: (opts: { id: string; req?: object | undefined }) => Promise<Flow>;
+        getFlow: (opts: {
+            id: string;
+            req?: object | undefined;
+        }) => Promise<Flow>;
 
         /**
          * Updates an existing flow configuration
@@ -668,7 +750,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the id of the updated flow
          */
-        updateFlow: (opts: { id: string; flow: object; req?: object | undefined }) => Promise<string>;
+        updateFlow: (opts: {
+            id: string;
+            flow: object;
+            req?: object | undefined;
+        }) => Promise<string>;
 
         /**
          * Deletes a flow
@@ -676,7 +762,10 @@ declare namespace runtime {
          * @param opts.id - the id of the flow to delete
          * @param opts.req - the request to log (optional)
          */
-        deleteFlow: (opts: { id: string; req?: object | undefined }) => Promise<void>;
+        deleteFlow: (opts: {
+            id: string;
+            req?: object | undefined;
+        }) => Promise<void>;
 
         /**
          * Gets the safe credentials for a node
@@ -686,7 +775,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the safe credentials
          */
-        getNodeCredentials: (opts: { type: string; id: string; req?: object | undefined }) => Promise<object>;
+        getNodeCredentials: (opts: {
+            type: string;
+            id: string;
+            req?: object | undefined;
+        }) => Promise<object>;
     }
 
     interface LibraryModule {
@@ -733,7 +826,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the node information
          */
-        getNodeInfo: (opts: { id: string; req?: object | undefined }) => Promise<object>;
+        getNodeInfo: (opts: {
+            id: string;
+            req?: object | undefined;
+        }) => Promise<object>;
 
         /**
          * Gets the list of node modules installed in the runtime
@@ -751,7 +847,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns - the node html content
          */
-        getNodeConfig: (opts: { id: string; lang: string; req?: object | undefined }) => Promise<string>;
+        getNodeConfig: (opts: {
+            id: string;
+            lang: string;
+            req?: object | undefined;
+        }) => Promise<string>;
 
         /**
          * Gets all node html content
@@ -760,7 +860,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the node html content
          */
-        getNodeConfigs: (opts: { lang: string; req?: object | undefined }) => Promise<string>;
+        getNodeConfigs: (opts: {
+            lang: string;
+            req?: object | undefined;
+        }) => Promise<string>;
 
         /**
          * Gets the info of a node module
@@ -769,7 +872,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the node module info
          */
-        getModuleInfo: (opts: { module: string; req?: object | undefined }) => Promise<object>;
+        getModuleInfo: (opts: {
+            module: string;
+            req?: object | undefined;
+        }) => Promise<object>;
 
         /**
          * Install a new module into the runtime
@@ -794,7 +900,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns resolves when complete
          */
-        removeModule: (opts: { module: string; req?: object | undefined }) => Promise<void>;
+        removeModule: (opts: {
+            module: string;
+            req?: object | undefined;
+        }) => Promise<void>;
 
         /**
          * Enables or disables a module in the runtime
@@ -804,7 +913,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the module info object
          */
-        setModuleState: (opts: { module: string; enabled: boolean; req?: object | undefined }) => Promise<object>;
+        setModuleState: (opts: {
+            module: string;
+            enabled: boolean;
+            req?: object | undefined;
+        }) => Promise<object>;
 
         /**
          * Enables or disables a n individual node-set in the runtime
@@ -814,7 +927,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the module info object
          */
-        setNodeSetState: (opts: { id: string; enabled: boolean; req?: object | undefined }) => Promise<object>;
+        setNodeSetState: (opts: {
+            id: string;
+            enabled: boolean;
+            req?: object | undefined;
+        }) => Promise<object>;
 
         /**
          * Gets all registered module message catalogs
@@ -823,7 +940,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the message catalogs
          */
-        getModuleCatalogs: (opts: { lang: string; req?: object | undefined }) => Promise<object>;
+        getModuleCatalogs: (opts: {
+            lang: string;
+            req?: object | undefined;
+        }) => Promise<object>;
 
         /**
          * Gets a modules message catalog
@@ -833,7 +953,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the message catalog
          */
-        getModuleCatalog: (opts: { module: string; lang: string; req?: object | undefined }) => Promise<object>;
+        getModuleCatalog: (opts: {
+            module: string;
+            lang: string;
+            req?: object | undefined;
+        }) => Promise<object>;
 
         /**
          * Gets the list of all icons available in the modules installed within the runtime
@@ -851,7 +975,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the icon file as a Buffer or null if no icon available
          */
-        getIcon: (opts: { module: string; icon: string; req?: object | undefined }) => Promise<Buffer>;
+        getIcon: (opts: {
+            module: string;
+            icon: string;
+            req?: object | undefined;
+        }) => Promise<Buffer>;
     }
 
     interface ProjectUser {
@@ -868,7 +996,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns resolves when complete
          */
-        listProjects: (opts: { user?: ProjectUser | undefined; req?: object | undefined }) => Promise<void>;
+        listProjects: (opts: {
+            user?: ProjectUser | undefined;
+            req?: object | undefined;
+        }) => Promise<void>;
 
         /**
          * Create a new project
@@ -905,7 +1036,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the active project
          */
-        getActiveProject: (opts: { user?: ProjectUser | undefined; req?: object | undefined }) => Promise<object>;
+        getActiveProject: (opts: {
+            user?: ProjectUser | undefined;
+            req?: object | undefined;
+        }) => Promise<object>;
         /**
          * @param opts
          * @param opts.user - the user calling the api
@@ -926,7 +1060,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the project metadata
          */
-        getProject: (opts: { user?: ProjectUser | undefined; id: string; req?: object | undefined }) => Promise<object>;
+        getProject: (opts: {
+            user?: ProjectUser | undefined;
+            id: string;
+            req?: object | undefined;
+        }) => Promise<object>;
         /**
          * Updates the metadata of an existing project
          * @param opts
@@ -1089,7 +1227,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns resolves when complete
          */
-        abortMerge: (opts: { user?: ProjectUser | undefined; id: string; req?: object | undefined }) => Promise<object>;
+        abortMerge: (opts: {
+            user?: ProjectUser | undefined;
+            id: string;
+            req?: object | undefined;
+        }) => Promise<object>;
         /**
          * Resolves a merge conflict
          * @param opts
@@ -1115,7 +1257,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the file listing
          */
-        getFiles: (opts: { user?: ProjectUser | undefined; id: string; req?: object | undefined }) => Promise<object>;
+        getFiles: (opts: {
+            user?: ProjectUser | undefined;
+            id: string;
+            req?: object | undefined;
+        }) => Promise<object>;
         /**
          * Gets the contents of a file
          * @param opts
@@ -1201,7 +1347,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns a list of project remotes
          */
-        getRemotes: (opts: { user?: ProjectUser | undefined; id: string; req?: object | undefined }) => Promise<object>;
+        getRemotes: (opts: {
+            user?: ProjectUser | undefined;
+            id: string;
+            req?: object | undefined;
+        }) => Promise<object>;
         /**
          * @param opts
          * @param opts.user - the user calling the api
@@ -1292,7 +1442,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the runtime settings
          */
-        getRuntimeSettings: (opts: { user?: User | undefined; req?: object | undefined }) => Promise<object>;
+        getRuntimeSettings: (opts: {
+            user?: User | undefined;
+            req?: object | undefined;
+        }) => Promise<object>;
         /**
          * Gets an individual user's settings object
          * @param opts
@@ -1300,7 +1453,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the user settings
          */
-        getUserSettings: (opts: { user?: User | undefined; req?: object | undefined }) => Promise<object>;
+        getUserSettings: (opts: {
+            user?: User | undefined;
+            req?: object | undefined;
+        }) => Promise<object>;
         /**
          * Updates an individual user's settings object.
          * @param opts
@@ -1321,7 +1477,10 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the user's ssh keys
          */
-        getUserKeys: (opts: { user?: User | undefined; req?: object | undefined }) => Promise<object>;
+        getUserKeys: (opts: {
+            user?: User | undefined;
+            req?: object | undefined;
+        }) => Promise<object>;
         /**
          * Gets a user's ssh public key
          * @param opts
@@ -1330,7 +1489,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns the user's ssh public key
          */
-        getUserKey: (opts: { user?: User | undefined; id: string; req?: object | undefined }) => Promise<string>;
+        getUserKey: (opts: {
+            user?: User | undefined;
+            id: string;
+            req?: object | undefined;
+        }) => Promise<string>;
         /**
          * Generates a new ssh key pair
          * @param opts
@@ -1358,7 +1521,11 @@ declare namespace runtime {
          * @param opts.req - the request to log (optional)
          * @returns resolves when deleted
          */
-        removeUserKey: (opts: { user?: User | undefined; id: string; req?: object | undefined }) => Promise<void>;
+        removeUserKey: (opts: {
+            user?: User | undefined;
+            id: string;
+            req?: object | undefined;
+        }) => Promise<void>;
     }
 
     interface StorageModule {
@@ -1379,7 +1546,12 @@ declare namespace runtime {
         getSessions(): Promise<object | null>;
         saveSessions(sessions: object): Promise<void>;
         getLibraryEntry(type: string, path: string): Promise<string | string[]>;
-        saveLibraryEntry(type: string, path: string, meta: Record<string, string>, body: string): Promise<void>;
+        saveLibraryEntry(
+            type: string,
+            path: string,
+            meta: Record<string, string>,
+            body: string,
+        ): Promise<void>;
     }
 
     interface InternalNodesModule {} // eslint-disable-line @typescript-eslint/no-empty-interface
@@ -1413,7 +1585,11 @@ declare namespace runtime {
          * @param server - the http server instance for the server to use
          * @param adminApi - an instance of @node-red/editor-api
          */
-        init: (userSettings: LocalSettings, httpServer: HttpsServer, _adminApi: EditorAPIModule) => void;
+        init: (
+            userSettings: LocalSettings,
+            httpServer: HttpsServer,
+            _adminApi: EditorAPIModule,
+        ) => void;
 
         /**
          * Start the runtime. Resolves when the runtime is started. This does not

@@ -1,4 +1,10 @@
-import { DataFactory, DatasetCore, DatasetCoreFactory, Literal, NamedNode } from "@rdfjs/types";
+import {
+    DataFactory,
+    DatasetCore,
+    DatasetCoreFactory,
+    Literal,
+    NamedNode,
+} from "@rdfjs/types";
 import { GraphPointer } from "clownface";
 import SHACLValidator = require("rdf-validate-shacl");
 import $rdf from "rdf-ext";
@@ -8,10 +14,10 @@ import BlankNodeExt from "rdf-ext/lib/BlankNode";
 import LiteralExt from "rdf-ext/lib/Literal";
 import NamedNodeExt from "rdf-ext/lib/NamedNode";
 
-const shapes: DatasetCore = <any> {};
-const data: DatasetCore = <any> {};
-const factory1: DataFactory & DatasetCoreFactory = <any> {};
-const factory2: typeof $rdf = <any> {};
+const shapes: DatasetCore = <any>{};
+const data: DatasetCore = <any>{};
+const factory1: DataFactory & DatasetCoreFactory = <any>{};
+const factory2: typeof $rdf = <any>{};
 
 const validator1 = new SHACLValidator(shapes);
 
@@ -90,7 +96,8 @@ for (const result of report3.results) {
     result.term; // $ExpectType BlankNodeExt | NamedNodeExt<string>
     result.dataset; // $ExpectType DatasetExt
     result.pointer; // $ExpectType GraphPointer<BlankNodeExt | NamedNodeExt<string>, DatasetExt> || AnyPointer<BlankNodeExt | NamedNodeExt<string>, DatasetExt>
-    const message: Array<BlankNodeExt | LiteralExt | NamedNodeExt> = result.message;
+    const message: Array<BlankNodeExt | LiteralExt | NamedNodeExt> =
+        result.message;
     result.path; // $ExpectType BlankNodeExt | NamedNodeExt<string> | null
     result.focusNode; // $ExpectType BlankNodeExt | NamedNodeExt<string> | null
     result.severity; // $ExpectType NamedNodeExt<string> | null
@@ -108,9 +115,11 @@ report3.dataset;
 // $ExpectType GraphPointer<BlankNodeExt | NamedNodeExt<string>, DatasetExt>
 report3.pointer;
 
-const pointer: GraphPointer<NamedNode> = <any> {};
+const pointer: GraphPointer<NamedNode> = <any>{};
 let reportFromCtor = new ValidationReport(pointer, { factory: factory1 });
 
-const nonResourcePointer: GraphPointer<Literal> = <any> {};
+const nonResourcePointer: GraphPointer<Literal> = <any>{};
 // @ts-expect-error
-reportFromCtor = new ValidationReport(nonResourcePointer, { factory: factory1 });
+reportFromCtor = new ValidationReport(nonResourcePointer, {
+    factory: factory1,
+});

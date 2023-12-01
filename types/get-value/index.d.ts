@@ -1,7 +1,11 @@
 export = get;
 
 declare function get<T>(obj: T): T;
-declare function get(obj: object, key: string | string[], options?: get.Options): any;
+declare function get(
+    obj: object,
+    key: string | string[],
+    options?: get.Options,
+): any;
 
 declare namespace get {
     interface Options {
@@ -15,7 +19,9 @@ declare namespace get {
          * If defined, this function is called on each resolved value.
          * Useful if you want to do `.hasOwnProperty` or `Object.prototype.propertyIsEnumerable`.
          */
-        isValid?: (<K extends string>(key: K, object: Record<K, any>) => boolean) | undefined;
+        isValid?:
+            | (<K extends string>(key: K, object: Record<K, any>) => boolean)
+            | undefined;
         /**
          * Custom function to use for splitting the string into object path segments.
          *

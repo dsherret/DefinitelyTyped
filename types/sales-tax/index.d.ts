@@ -25,7 +25,11 @@ declare namespace SalesTax {
     class SalesTax {
         hasSalesTax(countryCode: string): boolean;
         hasStateSalesTax(countryCode: string, stateCode: string): boolean;
-        getSalesTax(countryCode: string, stateCode?: string | null, taxNumber?: string): Promise<SalesTaxResult>;
+        getSalesTax(
+            countryCode: string,
+            stateCode?: string | null,
+            taxNumber?: string,
+        ): Promise<SalesTaxResult>;
         getAmountWithSalesTax(
             countryCode: string,
             stateCode?: string | null,
@@ -37,9 +41,15 @@ declare namespace SalesTax {
             stateCode?: string | null,
             taxNumber?: string,
         ): Promise<TaxExchangeStatus>;
-        validateTaxNumber(countryCode: string, taxNumber: string): Promise<boolean>;
+        validateTaxNumber(
+            countryCode: string,
+            taxNumber: string,
+        ): Promise<boolean>;
 
-        setTaxOriginCountry(countryCode: string, useRegionalTax?: boolean): void;
+        setTaxOriginCountry(
+            countryCode: string,
+            useRegionalTax?: boolean,
+        ): void;
         toggleEnabledTaxNumberFraudCheck(isEnabled: boolean): void;
         toggleEnabledTaxNumberValidation(isEnabled: boolean): void;
     }

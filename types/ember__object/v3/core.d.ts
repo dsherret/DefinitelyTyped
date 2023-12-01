@@ -170,9 +170,8 @@ export default class CoreObject {
         arg1: MixinOrLiteral<T1, B1> & ThisType<Fix<Instance & T1>>,
         arg2: MixinOrLiteral<T2, B2> & ThisType<Fix<Instance & T1 & T2>>,
         arg3: MixinOrLiteral<T3, B3> & ThisType<Fix<Instance & T1 & T2 & T3>>,
-        arg4:
-            & MixinOrLiteral<T4, B4>
-            & ThisType<Fix<Instance & T1 & T2 & T3 & T4>>,
+        arg4: MixinOrLiteral<T4, B4> &
+            ThisType<Fix<Instance & T1 & T2 & T3 & T4>>,
     ): Objectify<Statics> & EmberClassConstructor<T1 & T2 & T3 & T4 & Instance>;
 
     static reopen<Statics, Instance>(

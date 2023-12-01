@@ -1,13 +1,18 @@
-export const colabFunction = (name: string) => async (...args: Array<{}>) => {
-    // stricter types are coming in the future.  for now, just importing from
-    // @googlecolab
-    const response = (await google.colab.kernel.invokeFunction(name, args)) as {
-        data: {
-            ["application/json"]: [{}]; // eslint-disable-line @definitelytyped/no-single-element-tuple-type
+export const colabFunction =
+    (name: string) =>
+    async (...args: Array<{}>) => {
+        // stricter types are coming in the future.  for now, just importing from
+        // @googlecolab
+        const response = (await google.colab.kernel.invokeFunction(
+            name,
+            args,
+        )) as {
+            data: {
+                ["application/json"]: [{}]; // eslint-disable-line @definitelytyped/no-single-element-tuple-type
+            };
         };
+        return response.data["application/json"][0];
     };
-    return response.data["application/json"][0];
-};
 
 if (google.colab.kernel.accessAllowed) {
     let channel: google.colab.kernel.comms.Comm;

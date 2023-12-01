@@ -11,7 +11,10 @@ interface TestStatelessProps {
 
 function TestStateless(props: TestStatelessProps) {
     return (
-        <div onKeyUp={props.enableOnClickOutside} onKeyDown={props.disableOnClickOutside}>
+        <div
+            onKeyUp={props.enableOnClickOutside}
+            onKeyDown={props.disableOnClickOutside}
+        >
             {props.nonClickOutsideProp}
         </div>
     );
@@ -43,7 +46,10 @@ render(
     document.getElementById("main"),
 );
 
-class TestComponent extends React.Component<{ disableOnClickOutside(): void; enableOnClickOutside(): void }> {
+class TestComponent extends React.Component<{
+    disableOnClickOutside(): void;
+    enableOnClickOutside(): void;
+}> {
     handleClickOutside = () => {
         console.log("this.handleClickOutside");
     };
@@ -55,12 +61,16 @@ class TestComponent extends React.Component<{ disableOnClickOutside(): void; ena
     render() {
         this.props.disableOnClickOutside();
         this.props.enableOnClickOutside();
-        return <div onClick={this.props.disableOnClickOutside}>TestComponent</div>;
+        return (
+            <div onClick={this.props.disableOnClickOutside}>TestComponent</div>
+        );
     }
 }
 
 const WrappedComponent = onClickOutside(TestComponent);
-const wrappedComponentRef: React.RefObject<InstanceType<typeof WrappedComponent>> = React.createRef();
+const wrappedComponentRef: React.RefObject<
+    InstanceType<typeof WrappedComponent>
+> = React.createRef();
 
 render(
     <WrappedComponent

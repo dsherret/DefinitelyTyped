@@ -26,4 +26,7 @@ export interface authOptions {
  * `payload` is the decoded JWT payload
  * `done` is an error-first callback with three args: done(err, user, message).
  */
-export type verifyFunc = (payload: any, done: (err?: Error | null, user?: any, message?: string) => void) => void;
+export type verifyFunc = (
+    payload: any,
+    done: (err?: Error | null, user?: any, message?: string) => void,
+) => void;

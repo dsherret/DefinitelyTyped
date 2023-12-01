@@ -12,7 +12,7 @@ app.get(
         issuer: "the-issuer",
         cert: fs.readFileSync(path.join(__dirname, "some-cert.pem")),
         key: fs.readFileSync(path.join(__dirname, "some-cert.key")),
-        getPostURL: function(wtrealm, wreply, req, cb) {
+        getPostURL: function (wtrealm, wreply, req, cb) {
             return cb(null, "http://someurl.com");
         },
     }),
@@ -26,8 +26,14 @@ app.get(
     }),
 );
 
-app.use((req: express.Request, res: express.Response, next: express.NextFunction) => {
-    samlp.parseRequest(req, (err: any, data: any) => {
-        next();
-    });
-});
+app.use(
+    (
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction,
+    ) => {
+        samlp.parseRequest(req, (err: any, data: any) => {
+            next();
+        });
+    },
+);

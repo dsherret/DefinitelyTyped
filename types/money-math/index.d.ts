@@ -16,7 +16,19 @@ export function isNegative(value: string): boolean;
 export function isPositive(value: string): boolean;
 export function floatToAmount(value: number): string;
 export function format(
-    currency: "CHF" | "CNY" | "EUR" | "GBP" | "JPY" | "LTL" | "PLN" | "SEK" | "SKK" | "UAH" | "USD" | string,
+    currency:
+        | "CHF"
+        | "CNY"
+        | "EUR"
+        | "GBP"
+        | "JPY"
+        | "LTL"
+        | "PLN"
+        | "SEK"
+        | "SKK"
+        | "UAH"
+        | "USD"
+        | string,
     value: string,
 ): string;
 export function roundUpTo5Cents(value: string): string;

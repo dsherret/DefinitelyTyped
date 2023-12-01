@@ -48,10 +48,7 @@ ReactDOM.render(
 
 /** GridRef Options */
 ReactDOM.render(
-    <StackGrid
-        columnWidth={150}
-        gridRef={grid => grid.updateLayout()}
-    >
+    <StackGrid columnWidth={150} gridRef={(grid) => grid.updateLayout()}>
         <div key="key1">Item 1</div>
         <div key="key2">Item 2</div>
         <div key="key3">Item 3</div>

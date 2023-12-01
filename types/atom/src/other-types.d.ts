@@ -1,7 +1,14 @@
 // This file holds the types that don't belong to a specific file.
 // Please don't import types from this file directly as its content might change in other versions.
 
-import { AtomEnvironment, DecorationOptions, MarkerLayer, Pane, Point, TextEditor } from "../index";
+import {
+    AtomEnvironment,
+    DecorationOptions,
+    MarkerLayer,
+    Pane,
+    Point,
+    TextEditor,
+} from "../index";
 
 export interface PixelPosition {
     left: number;
@@ -14,7 +21,8 @@ export interface PixelPosition {
  *  intent to stop propagation so event bubbling can be properly simulated for
  *  detached elements.
  */
-export interface CommandEvent<CurrentTarget extends EventTarget = EventTarget> extends CustomEvent {
+export interface CommandEvent<CurrentTarget extends EventTarget = EventTarget>
+    extends CustomEvent {
     keyBindingAborted: boolean;
     propagationStopped: boolean;
 
@@ -49,7 +57,10 @@ export interface FileSavedEvent {
 }
 
 export interface FilesystemChangeBasic<
-    Action extends "created" | "modified" | "deleted" | "renamed" = "created" | "modified" | "deleted",
+    Action extends "created" | "modified" | "deleted" | "renamed" =
+        | "created"
+        | "modified"
+        | "deleted",
 > {
     /** A string describing the filesystem action that occurred. */
     action: Action;
@@ -58,7 +69,8 @@ export interface FilesystemChangeBasic<
     path: string;
 }
 
-export interface FilesystemChangeRename extends FilesystemChangeBasic<"renamed"> {
+export interface FilesystemChangeRename
+    extends FilesystemChangeBasic<"renamed"> {
     /**
      *  For rename events, a string containing the filesystem entry's former
      *  absolute path.

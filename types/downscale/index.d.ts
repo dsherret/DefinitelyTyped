@@ -16,7 +16,10 @@ declare function downscale(
     source: ImageSource,
     width: number,
     height: number,
-    options?: DownscaleOptions & { returnBlob?: false | undefined; returnCanvas?: false | undefined },
+    options?: DownscaleOptions & {
+        returnBlob?: false | undefined;
+        returnCanvas?: false | undefined;
+    },
 ): Promise<string>;
 declare function downscale(
     source: ImageSource,

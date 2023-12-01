@@ -6,8 +6,7 @@ function original(): void {
 }
 
 let ee = {
-    on(name: string, fn: () => void) {
-    },
+    on(name: string, fn: () => void) {},
 };
 
 let spiedFn = chai.spy(original);
@@ -27,17 +26,17 @@ chai.spy.on(array, "push");
 chai.spy.on(array, ["push", "pop"]);
 
 // or you can have a custom function implementation
-chai.spy.on(array, "push", function(item) {
+chai.spy.on(array, "push", function (item) {
     array.push(item);
 });
 
 // or you can have custom function with multiple parameters
-chai.spy.on(array, "push", function(first, second, third) {
+chai.spy.on(array, "push", function (first, second, third) {
     array.push(first, second, third);
 });
 
 // or you can have custom function with variable length parameters
-chai.spy.on(array, "push", function(...elements) {
+chai.spy.on(array, "push", function (...elements) {
     array.push(...elements);
 });
 
@@ -76,7 +75,9 @@ spyStringArg("foo");
 expect(spyStringArg).to.have.been.called.with("foo");
 spyStringArg.should.have.been.called.with("foo");
 
-const spyTwoStringArgsAndOneNumber = chai.spy((arg1: string, arg2: string, arg3: number) => arg3);
+const spyTwoStringArgsAndOneNumber = chai.spy(
+    (arg1: string, arg2: string, arg3: number) => arg3,
+);
 spyTwoStringArgsAndOneNumber("foo", "bar", 1);
 expect(spyTwoStringArgsAndOneNumber).to.have.been.called.with("bar", "foo");
 spyTwoStringArgsAndOneNumber.should.have.been.called.with("bar", "foo");

@@ -74,5 +74,8 @@ declare let SORT_DESC: string;
 declare let DIMENSION_SEP: string;
 declare function colNameFromField(fld: Field, prefix: string): string;
 declare function fromField(fld: Field, prefix: string): DataSourceColumn;
-declare function getRootFromLeafNode(leafNode: number, opt_suggestedRoot: number): number;
+declare function getRootFromLeafNode(
+    leafNode: number,
+    opt_suggestedRoot: number,
+): number;
 type Field = import("@nginstack/engine/lib/classdef/Field");

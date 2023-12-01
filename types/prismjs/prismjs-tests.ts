@@ -54,15 +54,15 @@ Prism.util.type(/prism/giu);
 // $ExpectType "Array"
 Prism.util.type([1, 2, 3]);
 
-const hookCallback: Prism.hooks.HookCallback = env => null;
+const hookCallback: Prism.hooks.HookCallback = (env) => null;
 Prism.hooks.add("before-highlightall", hookCallback);
 Prism.hooks.add("future-hook", hookCallback);
 
-Prism.hooks.add("before-highlightall", env => {
+Prism.hooks.add("before-highlightall", (env) => {
     env.selector.trim();
 });
 
-Prism.hooks.add("complete", env => {
+Prism.hooks.add("complete", (env) => {
     env.code.trim();
     env.highlightedCode.trim();
 });

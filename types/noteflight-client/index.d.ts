@@ -20,7 +20,11 @@ declare var NFClient: {
      * @param noteflightID - the ID of the noteflight score. This ID is displayed at the end of a noteflight score URL.
      * @param options - An object specificing the options of the embedded score.
      */
-    ScoreView: new(elementID: string, noteflightID: string, options: Options) => ScoreView;
+    ScoreView: new (
+        elementID: string,
+        noteflightID: string,
+        options: Options,
+    ) => ScoreView;
 };
 
 interface Options {
@@ -109,13 +113,16 @@ type EventType =
     | "pageSizeChange"
     | "partsTransposed";
 
-type NoteflightEvent<T> =
-    & NoteflightEventProps
-    & EventFilter<T, "scoreDataLoaded", ScoreDataLoadedProps>
-    & EventFilter<T, "selectionChange", SelectionChangeProps>
-    & EventFilter<T, "playbackRequest" | "playbackStop", PlaybackProps>;
+type NoteflightEvent<T> = NoteflightEventProps &
+    EventFilter<T, "scoreDataLoaded", ScoreDataLoadedProps> &
+    EventFilter<T, "selectionChange", SelectionChangeProps> &
+    EventFilter<T, "playbackRequest" | "playbackStop", PlaybackProps>;
 
-type EventFilter<T, Event, Props> = T extends Event ? Props : T extends "any" ? Partial<Props> : {};
+type EventFilter<T, Event, Props> = T extends Event
+    ? Props
+    : T extends "any"
+      ? Partial<Props>
+      : {};
 
 interface NoteflightEventProps {
     /**
@@ -198,7 +205,9 @@ interface DocumentMethodPromise<Result> {
      * call done() on the Promise object returned by the method and pass a callback that will receive the return value of the method (if any).
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    done: (callback: (result: Result) => void | Array<(result: Result) => void>) => DocumentMethodPromise<Result>;
+    done: (
+        callback: (result: Result) => void | Array<(result: Result) => void>,
+    ) => DocumentMethodPromise<Result>;
     /**
      * Internal function that stores the callback functions as passed through the done() method.
      */
@@ -282,7 +291,16 @@ interface Note {
     /**
      * Type of note head: normal, stemless, slash, hit, cross, square, diamond, triangle, or harmonic.
      */
-    noteHead: "normal" | "stemless" | "slash" | "hit" | "cross" | "square" | "diamond" | "triangle" | "harmonic";
+    noteHead:
+        | "normal"
+        | "stemless"
+        | "slash"
+        | "hit"
+        | "cross"
+        | "square"
+        | "diamond"
+        | "triangle"
+        | "harmonic";
 }
 
 interface Part {
@@ -412,7 +430,10 @@ interface ScoreView {
      * @param endIndex f positive, the exclusive zero-based index of the measure following the selected range.
      * If -1, this parameter is taken as the number of measures in the score, as a convenience for selecting the entire score.
      */
-    selectMeasures: (startIndex: number, endIndex: number) => DocumentMethodPromise<undefined>;
+    selectMeasures: (
+        startIndex: number,
+        endIndex: number,
+    ) => DocumentMethodPromise<undefined>;
     /**
      * Causes a contiguous time range in the document to be selected, covering some or all of the staves in the document.
      * The starting point of the range is defined by startIndex and startOffset, while the end is defined by endIndex and endOffset.
@@ -491,7 +512,10 @@ interface ScoreView {
      * @param index The zero-based index of the measure at which the cursor is displayed.
      * @param offset The offset from measure start at which the cursor is displayed, in quarter notes.
      */
-    showPositionCursor: (index: number, offset: number) => DocumentMethodPromise<undefined>;
+    showPositionCursor: (
+        index: number,
+        offset: number,
+    ) => DocumentMethodPromise<undefined>;
     /**
      * Hides any currently visible position cursor.
      */
@@ -501,19 +525,25 @@ interface ScoreView {
      * This can be selectively disabled in situations where the focus is on chord entry.
      * @param flag True if the default behavior of auto-advance on note entry is enabled.
      */
-    setAdvanceAfterNoteEntry: (flag: boolean) => DocumentMethodPromise<undefined>;
+    setAdvanceAfterNoteEntry: (
+        flag: boolean,
+    ) => DocumentMethodPromise<undefined>;
     /**
      * Changes the playback mode setting after an embed has started and loaded its score.
      * @param mode This parameter may be used to control how playback is handled in the embed,
      * and also whether instrument sounds are downloaded or not.
      */
-    setPlaybackMode: (mode: "normal" | "audioTrack" | "echo" | "silent") => DocumentMethodPromise<undefined>;
+    setPlaybackMode: (
+        mode: "normal" | "audioTrack" | "echo" | "silent",
+    ) => DocumentMethodPromise<undefined>;
     /**
      *  Determines the set of parts that will be shown in the embed.
      *  @param partIndicies An array containing one or more zero-based indices of parts in the score to be shown.
      * If an empty array is given, all parts in the score are displayed.
      */
-    setVisibleParts: (partIndicies: number[]) => DocumentMethodPromise<undefined>;
+    setVisibleParts: (
+        partIndicies: number[],
+    ) => DocumentMethodPromise<undefined>;
     /**
      *  Loads an entire MusicXML score into the embed client.
      * Usage Restrictions: This function is only available to communities that are enabled for content injection into Noteflight embeds.
@@ -556,7 +586,10 @@ interface ScoreView {
      * @param partIndex The index of the part whose properties will be set (same as its index in the array returned by getParts()).
      * @param properites An object all of whose properties will be copied onto the part.
      */
-    setPartProperties: (partIndex: number, properties: Part) => DocumentMethodPromise<undefined>;
+    setPartProperties: (
+        partIndex: number,
+        properties: Part,
+    ) => DocumentMethodPromise<undefined>;
     /**
      * Sets the zoom factor.
      * @param zoomFactor A number representing the hundreds place of the zoom in percentage (1 => 100%, 2 => 200%, etc).
@@ -587,7 +620,9 @@ interface ScoreView {
      * Additionally an optional alternateKey property may be present,
      * pointing to an alternate, enharmonic key signature that may be obtained by setting the alternateKey option when calling setTransposeParts().
      */
-    getTranspositions: () => DocumentMethodPromise<Array<KeySignature & { alternateKey?: KeySignature }>>;
+    getTranspositions: () => DocumentMethodPromise<
+        Array<KeySignature & { alternateKey?: KeySignature }>
+    >;
     /**
      * Gets the initial tempo of the piece.
      * @returns An integer indicating the initial tempo of the piece in beats per minute.
@@ -597,7 +632,9 @@ interface ScoreView {
      * Sets whether to show parts' transpositions.
      * @param transposeParts If false, the embed will show parts at concert pitch; if true, with their per-part transposition applied.
      */
-    setTransposeParts: (transposeParts: boolean) => DocumentMethodPromise<undefined>;
+    setTransposeParts: (
+        transposeParts: boolean,
+    ) => DocumentMethodPromise<undefined>;
     /**
      * Gets whether the parts are being shown transposed.
      * @returns A boolean indicating whether parts are being shown transposed.
@@ -651,10 +688,14 @@ interface ScoreView {
      * "audioTrack" for a synchronized track, "silent" for no playback,
      * or "echo" for playing selection only.
      */
-    getPlaybackMode: () => DocumentMethodPromise<"normal" | "audioTrack" | "silent" | "echo">;
+    getPlaybackMode: () => DocumentMethodPromise<
+        "normal" | "audioTrack" | "silent" | "echo"
+    >;
     /**
      * Prints the score displayed in the client.
      * @param option Print the score using a real printer or download a PDF. Available only in HTML5.
      */
-    printScore: (option?: { usePrinter?: boolean }) => DocumentMethodPromise<undefined>;
+    printScore: (option?: {
+        usePrinter?: boolean;
+    }) => DocumentMethodPromise<undefined>;
 }

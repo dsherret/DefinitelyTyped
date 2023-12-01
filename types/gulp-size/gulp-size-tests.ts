@@ -2,7 +2,9 @@ import * as gulp from "gulp";
 import size = require("gulp-size");
 import debug = require("gulp-debug");
 
-gulp.task("default", () => gulp.src("fixture.js").pipe(size()).pipe(gulp.dest("dist")));
+gulp.task("default", () =>
+    gulp.src("fixture.js").pipe(size()).pipe(gulp.dest("dist")),
+);
 
 gulp.task("default", () => {
     const s = size();
@@ -15,4 +17,12 @@ gulp.task("default", () => {
 });
 
 size();
-size({ showFiles: true, gzip: true, title: "", brotli: false, uncompressed: false, pretty: true, showTotal: true });
+size({
+    showFiles: true,
+    gzip: true,
+    title: "",
+    brotli: false,
+    uncompressed: false,
+    pretty: true,
+    showTotal: true,
+});

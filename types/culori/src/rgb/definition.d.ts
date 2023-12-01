@@ -8,7 +8,13 @@ import parseTransparent from "./parseTransparent";
 declare const definition: {
     mode: "rgb";
     channels: ["r", "g", "b", "alpha"];
-    parse: [typeof parseHex, typeof parseRgb, typeof parseNamed, typeof parseTransparent, "srgb"];
+    parse: [
+        typeof parseHex,
+        typeof parseRgb,
+        typeof parseNamed,
+        typeof parseTransparent,
+        "srgb",
+    ];
     serialize: "srgb";
 
     interpolate: {

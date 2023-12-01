@@ -77,7 +77,11 @@ export type PatchResultWithRevert = ApplyResultWithRevert;
  * @param options With `{reversible: false}` it will not return an additional value in the form of a `revert` property.
  * @returns An object with a doc property because per specification a patch can replace the original root document.
  */
-export function apply(doc: any, patch: JsonPatch, options?: { reversible: false }): ApplyResult;
+export function apply(
+    doc: any,
+    patch: JsonPatch,
+    options?: { reversible: false },
+): ApplyResult;
 /**
  * The operation is atomic, if any of the patch operation fails, the document will be restored to its original state and an error will be thrown.
  * @param doc The document to apply the patch operation to
@@ -85,15 +89,27 @@ export function apply(doc: any, patch: JsonPatch, options?: { reversible: false 
  * @param options With `{reversible: true}` it will return an additional value in the form of a `revert` property.
  * @returns An object with a doc property because per specification a patch can replace the original root document.
  */
-export function apply(doc: any, patch: JsonPatch, options?: { reversible: true }): ApplyResultWithRevert;
+export function apply(
+    doc: any,
+    patch: JsonPatch,
+    options?: { reversible: true },
+): ApplyResultWithRevert;
 /**
  * Alias for the `apply()` method.
  */
-export function patch(doc: any, patch: JsonPatch, options?: { reversible: false }): PatchResult;
+export function patch(
+    doc: any,
+    patch: JsonPatch,
+    options?: { reversible: false },
+): PatchResult;
 /**
  * Alias for the `apply()` method.
  */
-export function patch(doc: any, patch: JsonPatch, options?: { reversible: true }): PatchResultWithRevert;
+export function patch(
+    doc: any,
+    patch: JsonPatch,
+    options?: { reversible: true },
+): PatchResultWithRevert;
 /**
  * ```javascript
  * ooPatch.diff(true, false);
@@ -178,7 +194,11 @@ export interface OperationResult {
  * @param path JSON Pointer string or tokens path
  * @param value The value to add
  */
-export function add(doc: any, path: string | string[], value: unknown): OperationResult;
+export function add(
+    doc: any,
+    path: string | string[],
+    value: unknown,
+): OperationResult;
 /**
  * Copy the value at the specified JSON Pointer location to another location.
  *
@@ -186,7 +206,11 @@ export function add(doc: any, path: string | string[], value: unknown): Operatio
  * @param path JSON Pointer string or tokens path
  * @param dest JSON Pointer string destination of the value
  */
-export function copy(doc: any, path: string | string[], dest: string): OperationResult;
+export function copy(
+    doc: any,
+    path: string | string[],
+    dest: string,
+): OperationResult;
 /**
  * Moves the value at the specified JSON Pointer location to another location.
  *
@@ -194,7 +218,11 @@ export function copy(doc: any, path: string | string[], dest: string): Operation
  * @param path JSON Pointer string or tokens path
  * @param dest JSON Pointer string destination of the value
  */
-export function move(doc: any, path: string | string[], dest: string): OperationResult;
+export function move(
+    doc: any,
+    path: string | string[],
+    dest: string,
+): OperationResult;
 /**
  * Removes the value at the JSON Pointer location.
  *
@@ -209,7 +237,11 @@ export function remove(doc: any, path: string | string[]): OperationResult;
  * @param path JSON Pointer string or tokens patch
  * @param value JSON object to replace with
  */
-export function replace(doc: any, path: string | string[], value: unknown): OperationResult;
+export function replace(
+    doc: any,
+    path: string | string[],
+    value: unknown,
+): OperationResult;
 /**
  * Tests that the value at the specified JSON Pointer location is equal to the specified value.
  *
@@ -217,7 +249,11 @@ export function replace(doc: any, path: string | string[], value: unknown): Oper
  * @param path JSON Pointer string or tokens patch
  * @param value The value to compare with
  */
-export function test(doc: any, path: string | string[], value: unknown): OperationResult;
+export function test(
+    doc: any,
+    path: string | string[],
+    value: unknown,
+): OperationResult;
 /**
  * Get the value at the JSON Pointer location.
  *

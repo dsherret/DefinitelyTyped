@@ -39,7 +39,10 @@ https://github.com/pinterest/gestalt/blob/master/packages/gestalt-datepicker/src
 
 export interface DatePickerProps {
     id: string;
-    onChange: (args: { event: React.SyntheticEvent<HTMLInputElement>; value: Date }) => void;
+    onChange: (args: {
+        event: React.SyntheticEvent<HTMLInputElement>;
+        value: Date;
+    }) => void;
     disabled?: boolean | undefined;
     errorMessage?: string | undefined;
     excludeDates?: readonly Date[] | undefined;

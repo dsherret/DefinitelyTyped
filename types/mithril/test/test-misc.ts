@@ -9,7 +9,9 @@ const params = parseQueryString("?id=123");
 
 const qstr = buildQueryString({ id: 123 });
 
-const censored = censor({ one: "two", enabled: false, oninit: () => {} }, ["enabled"] as const);
+const censored = censor({ one: "two", enabled: false, oninit: () => {} }, [
+    "enabled",
+] as const);
 // @ts-expect-error
 censored.enabled;
 // @ts-expect-error

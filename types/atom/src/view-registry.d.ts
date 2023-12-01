@@ -11,14 +11,16 @@ export interface ViewRegistry {
      *  Add a provider that will be used to construct views in the workspace's view
      *  layer based on model objects in its model layer.
      */
-    addViewProvider(createView: (model: object) => HTMLElement | undefined): Disposable;
+    addViewProvider(
+        createView: (model: object) => HTMLElement | undefined,
+    ): Disposable;
     /**
      *  Add a provider that will be used to construct views in the workspace's view
      *  layer based on model objects in its model layer.
      */
     // tslint:disable-next-line:no-any
     addViewProvider<T>(
-        modelConstructor: { new(...args: any[]): T }, // tslint:disable-line no-any
+        modelConstructor: { new (...args: any[]): T }, // tslint:disable-line no-any
         createView: (instance: T) => HTMLElement | undefined,
     ): Disposable;
 

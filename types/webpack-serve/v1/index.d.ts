@@ -14,7 +14,9 @@ declare module "webpack" {
     }
 }
 
-declare function WebpackServe(options: WebpackServe.Options): Promise<WebpackServe.Instance>;
+declare function WebpackServe(
+    options: WebpackServe.Options,
+): Promise<WebpackServe.Instance>;
 
 declare namespace WebpackServe {
     interface WebpackServeOpen {
@@ -33,16 +35,31 @@ declare namespace WebpackServe {
 
     interface Instance {
         /** Subscriber function for events */
-        on(event: "build-started", listener: (args: { compiler: webpack.Compiler }) => void): this;
+        on(
+            event: "build-started",
+            listener: (args: { compiler: webpack.Compiler }) => void,
+        ): this;
         on(
             event: "build-finished",
-            listener: (args: { compiler: webpack.Compiler; stats: webpack.Stats }) => void,
+            listener: (args: {
+                compiler: webpack.Compiler;
+                stats: webpack.Stats;
+            }) => void,
         ): this;
         on(
             event: "compiler-error" | "compiler-warning",
-            listener: (args: { compiler: webpack.Compiler; stats: any }) => void,
+            listener: (args: {
+                compiler: webpack.Compiler;
+                stats: any;
+            }) => void,
         ): this;
-        on(event: "listening", listener: (args: { server: koa; options: NormalisedOptions }) => void): this;
+        on(
+            event: "listening",
+            listener: (args: {
+                server: koa;
+                options: NormalisedOptions;
+            }) => void,
+        ): this;
 
         /** Close webpack-serve */
         close: () => void;
@@ -50,15 +67,30 @@ declare namespace WebpackServe {
 
     interface ListenersObject {
         "build-started": (args: { compiler: webpack.Compiler }) => void;
-        "build-finished": (args: { compiler: webpack.Compiler; stats: webpack.Stats }) => void;
-        "compiler-error": (args: { compiler: webpack.Compiler; stats: any }) => void;
-        "compiler-warning": (args: { compiler: webpack.Compiler; stats: any }) => void;
-        "listening": (args: { server: koa; options: NormalisedOptions }) => void;
+        "build-finished": (args: {
+            compiler: webpack.Compiler;
+            stats: webpack.Stats;
+        }) => void;
+        "compiler-error": (args: {
+            compiler: webpack.Compiler;
+            stats: any;
+        }) => void;
+        "compiler-warning": (args: {
+            compiler: webpack.Compiler;
+            stats: any;
+        }) => void;
+        listening: (args: { server: koa; options: NormalisedOptions }) => void;
     }
 
     interface Options {
         /** Addon to webpack-serve that allows access to the Koa server instance */
-        add?: ((app: koa, middleware: WebpackServeMiddleware, options: Options) => void) | undefined;
+        add?:
+            | ((
+                  app: koa,
+                  middleware: WebpackServeMiddleware,
+                  options: Options,
+              ) => void)
+            | undefined;
         /** Copy the server URL to the clipboard when the server is started */
         clipboard?: boolean | undefined;
         /** Custom instance of a webpack compiler */
@@ -78,7 +110,14 @@ declare namespace WebpackServe {
         /** Configuration object for the server to use HTTPS */
         https?: https.ServerOptions | undefined;
         /** Level of information for webpack-serve to output */
-        logLevel?: "trace" | "debug" | "info" | "warn" | "error" | "silent" | undefined;
+        logLevel?:
+            | "trace"
+            | "debug"
+            | "info"
+            | "warn"
+            | "error"
+            | "silent"
+            | undefined;
         /** Prepend timestamp to each log line */
         logTime?: boolean | undefined;
         /** Object of subscribers to webpack-serve bus events */

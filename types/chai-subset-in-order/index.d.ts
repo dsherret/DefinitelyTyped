@@ -6,7 +6,11 @@ declare global {
             containSubsetInOrder(expected: unknown): Assertion;
         }
         interface Assert {
-            containSubsetInOrder(val: unknown, exp: unknown, msg?: string): void;
+            containSubsetInOrder(
+                val: unknown,
+                exp: unknown,
+                msg?: string,
+            ): void;
         }
     }
 }

@@ -1,4 +1,8 @@
-import { AbstractIterator, AbstractLevelDOWN, ErrorCallback } from "abstract-leveldown";
+import {
+    AbstractIterator,
+    AbstractLevelDOWN,
+    ErrorCallback,
+} from "abstract-leveldown";
 import { LevelUp } from "levelup";
 
 declare namespace ttl {
@@ -41,7 +45,8 @@ declare namespace ttl {
         sub?: LevelUp | undefined;
     }
 
-    interface LevelTTL<K = any, V = any> extends LevelUp<AbstractLevelDOWN<K, V>, AbstractIterator<K, V>> {
+    interface LevelTTL<K = any, V = any>
+        extends LevelUp<AbstractLevelDOWN<K, V>, AbstractIterator<K, V>> {
         ttl(key: K, ttl: number, callback?: ErrorCallback): void;
         stop(callback?: ErrorCallback): void;
     }

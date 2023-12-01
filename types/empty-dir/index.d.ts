@@ -17,5 +17,8 @@ declare function emptyDir(
 ): Promise<boolean>;
 
 declare namespace emptyDir {
-    function sync(dir: string | readonly string[], filter?: (path: string) => boolean): boolean;
+    function sync(
+        dir: string | readonly string[],
+        filter?: (path: string) => boolean,
+    ): boolean;
 }

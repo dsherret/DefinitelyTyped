@@ -1,4 +1,15 @@
-import { Comment, Data, Doctype, Element, Literal, Node, Parent, Properties, Root, Text } from "hast";
+import {
+    Comment,
+    Data,
+    Doctype,
+    Element,
+    Literal,
+    Node,
+    Parent,
+    Properties,
+    Root,
+    Text,
+} from "hast";
 
 const data: Data = {};
 
@@ -48,7 +59,11 @@ const element: Element = {
     type: "element",
     tagName: "x",
     properties,
-    children: [{ type: "element", tagName: "y", properties: {}, children: [] }, comment, text],
+    children: [
+        { type: "element", tagName: "y", properties: {}, children: [] },
+        comment,
+        text,
+    ],
 };
 
 const elementWithWrongChild: Element = {

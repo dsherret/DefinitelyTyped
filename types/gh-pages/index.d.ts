@@ -12,7 +12,12 @@ export interface Git {
     push: (remote: string, branch: string, force?: boolean) => Promise<this>;
     getRemoteUrl: (remote: string) => Promise<this>;
     deleteRef: (branch: string) => Promise<this>;
-    clone: (repo: string, dir: string, branch: string, options: PublishOptions) => Promise<this>;
+    clone: (
+        repo: string,
+        dir: string,
+        branch: string,
+        options: PublishOptions,
+    ) => Promise<this>;
 }
 export interface PublishOptions {
     beforeAdd?: ((git: Git) => Promise<Git | undefined>) | null | undefined;
@@ -43,9 +48,9 @@ export interface PublishOptions {
     user?:
         | null
         | {
-            name: string;
-            email: string;
-        }
+              name: string;
+              email: string;
+          }
         | undefined;
 }
 
@@ -53,8 +58,15 @@ export interface PublishOptions {
  *  Get the cache directory.
  */
 export function getCacheDir(optPath?: string): string;
-export function publish(basePath: string, callback: (err: any) => void): Promise<void>;
-export function publish(basePath: string, config: PublishOptions, callback?: (err: any) => void): Promise<void>;
+export function publish(
+    basePath: string,
+    callback: (err: any) => void,
+): Promise<void>;
+export function publish(
+    basePath: string,
+    config: PublishOptions,
+    callback?: (err: any) => void,
+): Promise<void>;
 
 export function clean(): void;
 

@@ -21,11 +21,11 @@ Alert.getOrCreateInstance(element).close();
 Alert.VERSION; // $ExpectType string
 Alert.NAME; // $ExpectType "alert"
 
-element.addEventListener(Alert.Events.close, event => {
+element.addEventListener(Alert.Events.close, (event) => {
     // do something…
 });
 
-element.addEventListener(Alert.Events.closed, event => {
+element.addEventListener(Alert.Events.closed, (event) => {
     // do something…
 });
 

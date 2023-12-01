@@ -10,7 +10,12 @@ import { MaterialPropertiesDefaults } from "./Texture";
  */
 
 export default class BodySprite extends Initializer {
-    constructor(THREE: THREE, texture: string, materialProperties?: MaterialPropertiesDefaults, isEnabled?: boolean);
+    constructor(
+        THREE: THREE,
+        texture: string,
+        materialProperties?: MaterialPropertiesDefaults,
+        isEnabled?: boolean,
+    );
     /**
      * @description The material properties for this object's SpriteMaterial
      * NOTE This is required for testing purposes

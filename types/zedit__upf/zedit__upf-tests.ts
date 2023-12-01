@@ -51,7 +51,7 @@ registerPatcher({
         return ["foo.esp", "bar.esp"];
     },
     getFilesToPatch(filenames) {
-        return filenames.filter(f => f !== "baz.esp");
+        return filenames.filter((f) => f !== "baz.esp");
     },
     execute(patchFile, helpers) {
         // Check types

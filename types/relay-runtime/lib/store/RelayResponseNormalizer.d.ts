@@ -1,7 +1,15 @@
 import { PayloadData } from "../network/RelayNetworkTypes";
-import { MutableRecordSource, NormalizationSelector, RelayResponsePayload, RequestDescriptor } from "./RelayStoreTypes";
+import {
+    MutableRecordSource,
+    NormalizationSelector,
+    RelayResponsePayload,
+    RequestDescriptor,
+} from "./RelayStoreTypes";
 
-export type GetDataID = (fieldValue: { [key: string]: any }, typeName: string) => any;
+export type GetDataID = (
+    fieldValue: { [key: string]: any },
+    typeName: string,
+) => any;
 
 export interface NormalizationOptions {
     getDataID: GetDataID;

@@ -1,6 +1,14 @@
-type FunctionBasedParameter = (element: HTMLElement, index: number, length: number) => number;
+type FunctionBasedParameter = (
+    element: HTMLElement,
+    index: number,
+    length: number,
+) => number;
 type AnimeCallbackFunction = (anim: anime.AnimeInstance) => void;
-type CustomEasingFunction = (el: HTMLElement, index: number, length: number) => (time: number) => number;
+type CustomEasingFunction = (
+    el: HTMLElement,
+    index: number,
+    length: number,
+) => (time: number) => number;
 // Allowing null is necessary because DOM queries may not return anything.
 type AnimeTarget = string | object | HTMLElement | SVGElement | NodeList | null;
 
@@ -66,7 +74,12 @@ declare namespace anime {
         round?: number | boolean | FunctionBasedParameter | undefined;
         keyframes?: readonly AnimeAnimParams[] | undefined;
 
-        easing?: EasingOptions | string | CustomEasingFunction | ((el: HTMLElement) => string) | undefined;
+        easing?:
+            | EasingOptions
+            | string
+            | CustomEasingFunction
+            | ((el: HTMLElement) => string)
+            | undefined;
 
         [AnyAnimatedProperty: string]: any;
     }
@@ -126,7 +139,10 @@ declare namespace anime {
     }
 
     interface AnimeTimelineInstance extends AnimeInstance {
-        add(params: AnimeAnimParams, timelineOffset?: string | number): AnimeTimelineInstance;
+        add(
+            params: AnimeAnimParams,
+            timelineOffset?: string | number,
+        ): AnimeTimelineInstance;
     }
 
     interface StaggerOptions {
@@ -144,21 +160,38 @@ declare namespace anime {
     const running: AnimeInstance[];
     const easings: { [EasingFunction: string]: (t: number) => any };
     function remove(targets: AnimeTarget | readonly AnimeTarget[]): void;
-    function get(targets: AnimeTarget, prop: string, unit?: string): string | number;
-    function path(path: string | HTMLElement | SVGElement | null, percent?: number): (prop: string) => {
+    function get(
+        targets: AnimeTarget,
+        prop: string,
+        unit?: string,
+    ): string | number;
+    function path(
+        path: string | HTMLElement | SVGElement | null,
+        percent?: number,
+    ): (prop: string) => {
         el: HTMLElement | SVGElement;
         property: string;
         totalLength: number;
     };
     function setDashoffset(el: HTMLElement | SVGElement | null): number;
-    function bezier(x1: number, y1: number, x2: number, y2: number): (t: number) => number;
+    function bezier(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+    ): (t: number) => number;
     function stagger(
         value: number | string | ReadonlyArray<number | string>,
         options?: StaggerOptions,
     ): FunctionBasedParameter;
-    function set(targets: AnimeTarget, value: { [AnyAnimatedProperty: string]: any }): void;
+    function set(
+        targets: AnimeTarget,
+        value: { [AnyAnimatedProperty: string]: any },
+    ): void;
     // Timeline
-    function timeline(params?: AnimeParams | readonly AnimeInstance[]): AnimeTimelineInstance;
+    function timeline(
+        params?: AnimeParams | readonly AnimeInstance[],
+    ): AnimeTimelineInstance;
     function random(min: number, max: number): number;
 }
 

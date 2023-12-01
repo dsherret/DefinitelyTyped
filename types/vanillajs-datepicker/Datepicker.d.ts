@@ -26,8 +26,16 @@ export interface DatepickerOptionsShortcutKeys {
     exitEditMode?: DatepickerOptionsShortcutKeysDefinition;
 }
 
-export type DatepickerOptionsOrientationVertical = "top" | "middle" | "bottom" | "auto";
-export type DatepickerOptionsOrientationHorizontal = "left" | "center" | "right" | "auto";
+export type DatepickerOptionsOrientationVertical =
+    | "top"
+    | "middle"
+    | "bottom"
+    | "auto";
+export type DatepickerOptionsOrientationHorizontal =
+    | "left"
+    | "center"
+    | "right"
+    | "auto";
 export type DatepickerOptionsOrientation =
     | `${DatepickerOptionsOrientationVertical} ${DatepickerOptionsOrientationHorizontal}`
     | "auto";
@@ -73,7 +81,11 @@ export interface DatepickerOptions {
 }
 
 export default class Datepicker {
-    constructor(element: HTMLElement, options?: DatepickerOptions, rangepicker?: DateRangePicker);
+    constructor(
+        element: HTMLElement,
+        options?: DatepickerOptions,
+        rangepicker?: DateRangePicker,
+    );
     element: HTMLElement;
     dates: any;
     config: DatepickerOptions;
@@ -81,8 +93,16 @@ export default class Datepicker {
     editMode: boolean;
     picker: any;
 
-    static formatDate(date: Date | number, format: string, lang?: string): string;
-    static parseDate(dateStr: string | Date | number, format: string, lang?: string): number;
+    static formatDate(
+        date: Date | number,
+        format: string,
+        lang?: string,
+    ): string;
+    static parseDate(
+        dateStr: string | Date | number,
+        format: string,
+        lang?: string,
+    ): number;
 
     static get locales(): object;
 
@@ -105,7 +125,10 @@ export default class Datepicker {
 
     getFocusedDate(format?: string): Date | string;
 
-    setFocusedDate(viewDate?: Date | number | string, resetView?: boolean): void;
+    setFocusedDate(
+        viewDate?: Date | number | string,
+        resetView?: boolean,
+    ): void;
 
     refresh(target?: "picker" | "input", forceRender?: boolean): void;
 

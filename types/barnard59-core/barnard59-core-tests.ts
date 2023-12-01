@@ -1,4 +1,10 @@
-import { createPipeline, defaultLogger, PipelineStep, run, VariableMap } from "barnard59-core";
+import {
+    createPipeline,
+    defaultLogger,
+    PipelineStep,
+    run,
+    VariableMap,
+} from "barnard59-core";
 import Pipeline, { Context } from "barnard59-core/lib/Pipeline";
 import Step from "barnard59-core/lib/Step";
 import StreamObject from "barnard59-core/lib/StreamObject";
@@ -8,9 +14,9 @@ import * as Stream from "readable-stream";
 import { Logger } from "winston";
 
 function testCreatePipeline() {
-    const ptr: GraphPointer = <any> {};
-    const loaderRegistry: LoaderRegistry = <any> {};
-    const logger: Logger = <any> {};
+    const ptr: GraphPointer = <any>{};
+    const loaderRegistry: LoaderRegistry = <any>{};
+    const logger: Logger = <any>{};
 
     let pipeline: Pipeline;
 
@@ -50,7 +56,7 @@ function testDefaultLogger() {
 }
 
 async function testRun() {
-    const pipeline: Pipeline = <any> {};
+    const pipeline: Pipeline = <any>{};
 
     await run(pipeline);
     await run(pipeline, {
@@ -89,7 +95,7 @@ function testPipeline() {
     let variables: VariableMap;
     let stream: Stream.Readable | Stream.Writable;
 
-    const pipeline: Pipeline = <any> {};
+    const pipeline: Pipeline = <any>{};
 
     ({
         basePath,
@@ -115,7 +121,7 @@ function testStep() {
     let operation: unknown;
     let stream: Stream.Readable | Stream.Writable;
 
-    const step: Step = <any> {};
+    const step: Step = <any>{};
 
     ({
         basePath,

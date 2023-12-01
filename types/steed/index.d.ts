@@ -6,12 +6,20 @@ declare namespace steed {
 
     type SteedResultCallback<T, E> = (err: E, result: T) => void;
     type SteedResultArrayCallback<T, E> = (err: E, results: T[]) => void;
-    type SteedResultObjectCallback<T, E> = (err: E, results: Dictionary<T>) => void;
+    type SteedResultObjectCallback<T, E> = (
+        err: E,
+        results: Dictionary<T>,
+    ) => void;
 
     type SteedWorker<T, E> = (task: T, callback: ErrorCallback<E>) => void;
     type SteedIterator<T, E> = (item: T, callback: ErrorCallback<E>) => void;
-    type SteedResultIterator<T, R, E> = (item: T, callback: SteedResultCallback<R, E>) => void;
-    type SteedFunction<T, E> = (callback: (err?: E, result?: T) => void) => void;
+    type SteedResultIterator<T, R, E> = (
+        item: T,
+        callback: SteedResultCallback<R, E>,
+    ) => void;
+    type SteedFunction<T, E> = (
+        callback: (err?: E, result?: T) => void,
+    ) => void;
 
     interface SteedQueue<T> {
         push<E>(task: T | T[], callback?: SteedResultCallback<T, E>): void;
@@ -28,12 +36,31 @@ declare namespace steed {
     }
 
     interface Steed {
-        parallel<T, E>(tasks: Array<SteedFunction<T, E>>, callback?: SteedResultArrayCallback<T, E>): void;
-        parallel<T, E>(tasks: Dictionary<SteedFunction<T, E>>, callback?: SteedResultObjectCallback<T, E>): void;
-        series<T, E>(tasks: Array<SteedFunction<T, E>>, callback?: SteedResultArrayCallback<T, E>): void;
-        series<T, E>(tasks: Dictionary<SteedFunction<T, E>>, callback?: SteedResultObjectCallback<T, E>): void;
-        waterfall<T, E>(tasks: Function[], callback?: SteedResultCallback<T, E>): void;
-        each<T, E>(arr: T[] | Dictionary<T>, iterator: SteedIterator<T, E>, callback?: ErrorCallback<E>): void;
+        parallel<T, E>(
+            tasks: Array<SteedFunction<T, E>>,
+            callback?: SteedResultArrayCallback<T, E>,
+        ): void;
+        parallel<T, E>(
+            tasks: Dictionary<SteedFunction<T, E>>,
+            callback?: SteedResultObjectCallback<T, E>,
+        ): void;
+        series<T, E>(
+            tasks: Array<SteedFunction<T, E>>,
+            callback?: SteedResultArrayCallback<T, E>,
+        ): void;
+        series<T, E>(
+            tasks: Dictionary<SteedFunction<T, E>>,
+            callback?: SteedResultObjectCallback<T, E>,
+        ): void;
+        waterfall<T, E>(
+            tasks: Function[],
+            callback?: SteedResultCallback<T, E>,
+        ): void;
+        each<T, E>(
+            arr: T[] | Dictionary<T>,
+            iterator: SteedIterator<T, E>,
+            callback?: ErrorCallback<E>,
+        ): void;
         eachSeries: typeof steed.each;
         map<T, R, E>(
             arr: T[] | Dictionary<T>,
@@ -41,8 +68,14 @@ declare namespace steed {
             callback?: SteedResultArrayCallback<R, E>,
         ): void;
         mapSeries: typeof steed.map;
-        queue<T, E>(worker: SteedWorker<T, E>, concurrency?: number): SteedQueue<T>;
-        queue<T, R, E>(worker: SteedResultIterator<T, R, E>, concurrency?: number): SteedQueue<T>;
+        queue<T, E>(
+            worker: SteedWorker<T, E>,
+            concurrency?: number,
+        ): SteedQueue<T>;
+        queue<T, R, E>(
+            worker: SteedResultIterator<T, R, E>,
+            concurrency?: number,
+        ): SteedQueue<T>;
     }
 }
 

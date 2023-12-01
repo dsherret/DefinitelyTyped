@@ -19,7 +19,12 @@ declare namespace parse {
     }
 
     interface Token {
-        type: "OPERATOR" | "LICENSE" | "DOCUMENTREF" | "LICENSEREF" | "EXCEPTION";
+        type:
+            | "OPERATOR"
+            | "LICENSE"
+            | "DOCUMENTREF"
+            | "LICENSEREF"
+            | "EXCEPTION";
         string: string;
     }
 }

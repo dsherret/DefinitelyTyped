@@ -51,7 +51,9 @@ export type PopoverProps = {
     type?: PopoverTypes | undefined;
     useArrowKeyNavigation?: boolean | undefined;
     widthSizingType?: PopperSizingTypes | undefined;
-    onClickOutside?: ((event: MouseEvent | TouchEvent | FocusEvent) => void) | undefined;
+    onClickOutside?:
+        | ((event: MouseEvent | TouchEvent | FocusEvent) => void)
+        | undefined;
     onEscapeKey?: (() => void) | undefined;
 } & React.HTMLAttributes<HTMLDivElement>;
 

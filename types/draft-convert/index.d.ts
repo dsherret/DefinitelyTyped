@@ -12,7 +12,10 @@ declare module "draft-convert" {
     } from "draft-js";
     import { ReactNode } from "react";
 
-    type RawDraftContentBlockWithCustomType<T> = Omit<RawDraftContentBlock, "type"> & {
+    type RawDraftContentBlockWithCustomType<T> = Omit<
+        RawDraftContentBlock,
+        "type"
+    > & {
         type: T;
     };
 
@@ -28,7 +31,9 @@ declare module "draft-convert" {
         styleToHTML?: ((style: S) => Tag | void) | undefined;
 
         // Block styles:
-        blockToHTML?: ((block: RawDraftContentBlockWithCustomType<B>) => Tag) | undefined;
+        blockToHTML?:
+            | ((block: RawDraftContentBlockWithCustomType<B>) => Tag)
+            | undefined;
 
         // Entity styling:
         entityToHTML?: ((entity: E, originalText: string) => Tag) | undefined;
@@ -45,53 +50,68 @@ declare module "draft-convert" {
     > {
         // Inline styles:
         htmlToStyle?:
-            | ((nodeName: string, node: ExtendedHTMLElement<S>, currentStyle: Set<string>) => Set<string>)
+            | ((
+                  nodeName: string,
+                  node: ExtendedHTMLElement<S>,
+                  currentStyle: Set<string>,
+              ) => Set<string>)
             | undefined;
 
         // Block styles:
         htmlToBlock?:
             | ((
-                nodeName: string,
-                node: ExtendedHTMLElement<S>,
-            ) => B | { type: B; data: object } | false | undefined)
+                  nodeName: string,
+                  node: ExtendedHTMLElement<S>,
+              ) => B | { type: B; data: object } | false | undefined)
             | undefined;
 
         // Html entities
         htmlToEntity?:
             | ((
-                nodeName: string,
-                node: ExtendedHTMLElement<S>,
-                createEntity: (type: E["type"], mutability: DraftEntityMutability, data: E["data"]) => EntityKey,
-                getEntity: (key: EntityKey) => Entity,
-                mergeEntityData: (key: string, data: object) => void,
-                replaceEntityData: (key: string, data: object) => void,
-            ) => EntityKey | undefined)
+                  nodeName: string,
+                  node: ExtendedHTMLElement<S>,
+                  createEntity: (
+                      type: E["type"],
+                      mutability: DraftEntityMutability,
+                      data: E["data"],
+                  ) => EntityKey,
+                  getEntity: (key: EntityKey) => Entity,
+                  mergeEntityData: (key: string, data: object) => void,
+                  replaceEntityData: (key: string, data: object) => void,
+              ) => EntityKey | undefined)
             | undefined;
 
         // Text entities
         textToEntity?:
             | ((
-                text: string,
-                createEntity: (type: E["type"], mutability: DraftEntityMutability, data: E["data"]) => EntityKey,
-                getEntity: (key: EntityKey) => Entity,
-                mergeEntityData: (key: string, data: object) => void,
-                replaceEntityData: (key: string, data: object) => void,
-            ) => Array<{
-                entity: EntityKey;
-                offset: number;
-                length: number;
-                result?: string | undefined;
-            }>)
+                  text: string,
+                  createEntity: (
+                      type: E["type"],
+                      mutability: DraftEntityMutability,
+                      data: E["data"],
+                  ) => EntityKey,
+                  getEntity: (key: EntityKey) => Entity,
+                  mergeEntityData: (key: string, data: object) => void,
+                  replaceEntityData: (key: string, data: object) => void,
+              ) => Array<{
+                  entity: EntityKey;
+                  offset: number;
+                  length: number;
+                  result?: string | undefined;
+              }>)
             | undefined;
     }
 
     type ContentStateConverter = (contentState: ContentState) => string;
     type HTMLConverter = (html: string) => ContentState;
 
-    type Tag = ReactNode | { start: string; end: string; empty?: string | undefined } | {
-        element: ReactNode;
-        empty?: ReactNode | undefined;
-    };
+    type Tag =
+        | ReactNode
+        | { start: string; end: string; empty?: string | undefined }
+        | {
+              element: ReactNode;
+              empty?: ReactNode | undefined;
+          };
 
     export function convertToHTML<
         S = DraftInlineStyleType,

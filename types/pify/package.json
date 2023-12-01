@@ -1,25 +1,25 @@
 {
-    "private": true,
-    "name": "@types/pify",
-    "version": "5.0.9999",
-    "projects": [
-        "https://github.com/sindresorhus/pify"
-    ],
-    "devDependencies": {
-        "@types/pify": "workspace:."
+  "private": true,
+  "name": "@types/pify",
+  "version": "5.0.9999",
+  "projects": [
+    "https://github.com/sindresorhus/pify"
+  ],
+  "devDependencies": {
+    "@types/pify": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Sam Verschueren",
+      "githubUsername": "samverschueren"
     },
-    "owners": [
-        {
-            "name": "Sam Verschueren",
-            "githubUsername": "samverschueren"
-        },
-        {
-            "name": "Michael Müller",
-            "githubUsername": "mad-mike"
-        },
-        {
-            "name": "Christoph Müller",
-            "githubUsername": "c7hm4r"
-        }
-    ]
+    {
+      "name": "Michael Müller",
+      "githubUsername": "mad-mike"
+    },
+    {
+      "name": "Christoph Müller",
+      "githubUsername": "c7hm4r"
+    }
+  ]
 }

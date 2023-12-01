@@ -1,7 +1,11 @@
 import sql = require("sql-tagged-template-literal");
 
 const userInput = `Robert'); DROP TABLE Students;--`;
-const twoDimensionalArray = [[`a`, 1], [`b`, 2], [`c`, 3]];
+const twoDimensionalArray = [
+    [`a`, 1],
+    [`b`, 2],
+    [`c`, 3],
+];
 
 // $ExpectType string
 sql`INSERT INTO awesome_table (sweet_column) VALUES (${userInput})`;

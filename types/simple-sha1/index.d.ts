@@ -1,6 +1,9 @@
 export = sha1;
 
-declare function sha1(buf: string | sha1.ArrayBufferView, cb: (data: string) => void): void;
+declare function sha1(
+    buf: string | sha1.ArrayBufferView,
+    cb: (data: string) => void,
+): void;
 
 declare namespace sha1 {
     type TypedArray =

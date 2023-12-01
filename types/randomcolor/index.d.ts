@@ -5,7 +5,16 @@ interface RandomColorOptionsSingle {
     hue?: number | string | undefined;
     luminosity?: "bright" | "light" | "dark" | "random" | undefined;
     seed?: number | string | undefined;
-    format?: "hsvArray" | "hslArray" | "hsl" | "hsla" | "rgbArray" | "rgb" | "rgba" | "hex" | undefined;
+    format?:
+        | "hsvArray"
+        | "hslArray"
+        | "hsl"
+        | "hsla"
+        | "rgbArray"
+        | "rgb"
+        | "rgba"
+        | "hex"
+        | undefined;
     alpha?: number | undefined;
 }
 

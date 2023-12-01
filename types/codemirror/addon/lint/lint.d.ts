@@ -40,15 +40,19 @@ export interface AsyncLintStateOptions<T> extends BaseLintStateOptions<T> {
     getAnnotations?: AsyncLinter<T> | undefined;
 }
 
-export type LintStateOptions<T> = SyncLintStateOptions<T> | AsyncLintStateOptions<T>;
+export type LintStateOptions<T> =
+    | SyncLintStateOptions<T>
+    | AsyncLintStateOptions<T>;
 
 /**
  * A function that return errors found during the linting process.
  */
 export interface Linter<T> {
-    (content: string, options: T, codeMirror: CodeMirror.Editor):
-        | Annotation[]
-        | PromiseLike<Annotation[]>;
+    (
+        content: string,
+        options: T,
+        codeMirror: CodeMirror.Editor,
+    ): Annotation[] | PromiseLike<Annotation[]>;
 }
 
 /**

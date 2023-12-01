@@ -11,7 +11,7 @@ const ds = new DragSelect({
         const element = event.target as HTMLElement;
 
         // If clicked element matches a card's checkbox
-        if (element.matches("input[type=\"checkbox\"]")) {
+        if (element.matches('input[type="checkbox"]')) {
             ds.multiSelectMode = true;
             const card = element.closest(".card-outer") as HTMLElement;
             // If card is checked, uncheck it and break drag execution

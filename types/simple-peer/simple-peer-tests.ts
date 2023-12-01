@@ -13,9 +13,9 @@ declare const stream: MediaStream;
         allowHalfTrickle: false,
     });
 
-    p.on("error", err => console.log("error", err));
+    p.on("error", (err) => console.log("error", err));
 
-    p.on("signal", data => {
+    p.on("signal", (data) => {
         signal = data;
     });
 
@@ -28,11 +28,11 @@ declare const stream: MediaStream;
         p.send("whatever" + Math.random());
     });
 
-    p.on("data", data => {
+    p.on("data", (data) => {
         console.log("data: " + data);
     });
 
-    p.on("stream", stream => {
+    p.on("stream", (stream) => {
         // got remote video stream, now let's show it in a video tag
         const video = document.querySelector("video");
         if (video) {
@@ -44,7 +44,7 @@ declare const stream: MediaStream;
 
 {
     const peer = new SimplePeer();
-    peer.on("data", chunk => {
+    peer.on("data", (chunk) => {
         console.log(`got a chunk: ${chunk}`);
     });
     peer.write(Buffer.from("hey"));

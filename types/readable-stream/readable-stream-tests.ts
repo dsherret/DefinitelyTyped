@@ -6,7 +6,8 @@ import ErrnoException = NodeJS.ErrnoException;
 function testTypes() {
     const ANY: any = undefined;
     const _readableOpts = ANY as RStream.ReadableOptions;
-    const _writableOpts: stream.WritableOptions = ANY as RStream.WritableOptions;
+    const _writableOpts: stream.WritableOptions =
+        ANY as RStream.WritableOptions;
     const _transformOpts = ANY as RStream.TransformOptions;
     const _duplexOpts = ANY as RStream.DuplexOptions;
 
@@ -21,7 +22,7 @@ function testTypes() {
 }
 
 function test() {
-    const rs: stream.Stream = (null as any) as RStream.Stream;
+    const rs: stream.Stream = null as any as RStream.Stream;
     const RS_Readable = RStream;
     const RS_Writable = RStream.Writable;
     const RS_Transform = RStream.Transform;
@@ -103,7 +104,11 @@ function test() {
     streamD.setEncoding(typedEncoding);
 
     const testBufferEncoding = new RS_Duplex({
-        write(chunk: any, enc: BufferEncoding, cb: (err?: Error | null) => void) {
+        write(
+            chunk: any,
+            enc: BufferEncoding,
+            cb: (err?: Error | null) => void,
+        ) {
             assertType<BufferEncoding>(enc);
         },
     });
@@ -112,7 +117,7 @@ function test() {
     rs.emit("read", 1, 2, 3);
     rs.pipe(streamW);
 
-    const rState = (null as any) as RStream.ReadableState;
+    const rState = null as any as RStream.ReadableState;
     rState.buffer.push(new Buffer("buffer-write"));
     assertType<boolean>(rState.destroyed);
     assertType<number>(rState.awaitDrain);
@@ -120,7 +125,7 @@ function test() {
         rState.decoder.write(new Buffer("decoder-write"));
     }
 
-    const wState = (null as any) as RStream.WritableState;
+    const wState = null as any as RStream.WritableState;
     assertType<boolean>(wState.bufferProcessing);
     assertType<number>(wState.corked);
     const wBufNext = wState.buffer[0].next;
@@ -150,33 +155,32 @@ function test() {
     };
 }
 
-function callback(err: ErrnoException | undefined | null) {
-}
+function callback(err: ErrnoException | undefined | null) {}
 
 function testFinished() {
-    const _readable: stream.Readable = <any> {};
+    const _readable: stream.Readable = <any>{};
     RStream.finished(_readable, callback);
 
-    const _writable: stream.Writable = <any> {};
+    const _writable: stream.Writable = <any>{};
     RStream.finished(_writable, callback);
 
-    const _transform: stream.Transform = <any> {};
+    const _transform: stream.Transform = <any>{};
     RStream.finished(_transform, callback);
 
-    const _duplex: stream.Duplex = <any> {};
+    const _duplex: stream.Duplex = <any>{};
     RStream.finished(_duplex, callback);
 }
 
 function testPipeline() {
-    const _readable: stream.Readable = <any> {};
-    const _transform: stream.Transform = <any> {};
-    const _writable: stream.Writable = <any> {};
+    const _readable: stream.Readable = <any>{};
+    const _transform: stream.Transform = <any>{};
+    const _writable: stream.Writable = <any>{};
 
     RStream.pipeline([_readable], callback);
     RStream.pipeline([_readable], _transform, _writable, callback);
 }
 
 function assertType<T>(value: T, msg?: string): T {
-    if (!(typeof value)) throw new Error(msg);
+    if (!typeof value) throw new Error(msg);
     return value;
 }

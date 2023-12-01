@@ -19,7 +19,9 @@ interface LanguageDescriptorMap {
 declare let lang: Language;
 
 // $ExpectType LanguageDescriptorMap & PropertyDescriptorMap
-const langDesc = expectType<LanguageDescriptorMap & PropertyDescriptorMap>(getOwnPropertyDescriptors(lang));
+const langDesc = expectType<LanguageDescriptorMap & PropertyDescriptorMap>(
+    getOwnPropertyDescriptors(lang),
+);
 
 langDesc.language; // $ExpectType TypedPropertyDescriptor<string>
 langDesc.description; // $ExpectType TypedPropertyDescriptor<string | undefined> | undefined

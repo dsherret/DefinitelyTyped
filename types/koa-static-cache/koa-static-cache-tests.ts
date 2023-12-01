@@ -19,7 +19,7 @@ app.use(
         ".",
         {
             maxAge: 0,
-            filter: path => !!path,
+            filter: (path) => !!path,
         },
         files,
     ),

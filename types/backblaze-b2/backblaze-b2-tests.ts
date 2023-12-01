@@ -102,7 +102,7 @@ b2.uploadFile({
         key1: "value",
         key2: "value",
     },
-    onUploadProgress: event => {},
+    onUploadProgress: (event) => {},
 });
 
 b2.uploadFile({
@@ -212,7 +212,7 @@ b2.downloadFileByName({
     bucketName: "bucketName",
     fileName: "fileName",
     responseType: "arraybuffer",
-    onDownloadProgress: event => {},
+    onDownloadProgress: (event) => {},
     axios: { someAxiosConfig: true },
     axiosOverride: { someOtherParam: "" },
 });

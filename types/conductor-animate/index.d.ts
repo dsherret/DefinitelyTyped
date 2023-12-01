@@ -19,7 +19,9 @@ declare class Animated extends React.PureComponent<AnimatedProps> {}
 interface ConductorProps {
     animations: Animations;
     children: React.ReactNode | React.ReactNodeArray;
-    config: { [K: string]: Config } | ((id: string, additional: object) => Config);
+    config:
+        | { [K: string]: Config }
+        | ((id: string, additional: object) => Config);
 }
 
 declare class Conductor extends React.PureComponent<ConductorProps> {}

@@ -9,7 +9,11 @@ speakeasy.hotp({ secret: "secret", counter: 582 });
 speakeasy.hotp({ secret: "secret", counter: 582, length: 8 });
 
 // use a custom encoding.
-speakeasy.hotp({ secret: "AJFIEJGEHIFIU7148SF", counter: 147, encoding: "base32" });
+speakeasy.hotp({
+    secret: "AJFIEJGEHIFIU7148SF",
+    counter: 147,
+    encoding: "base32",
+});
 
 // normal use.
 speakeasy.totp({ secret: "secret" });

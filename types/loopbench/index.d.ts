@@ -60,7 +60,10 @@ declare namespace loopbench {
         emit(event: "load" | "unload"): boolean;
         listenerCount(type: "load" | "unload"): number;
         prependListener(event: "load" | "unload", listener: () => void): this;
-        prependOnceListener(event: "load" | "unload", listener: () => void): this;
+        prependOnceListener(
+            event: "load" | "unload",
+            listener: () => void,
+        ): this;
         eventNames(): Array<"load" | "unload">;
     }
 }

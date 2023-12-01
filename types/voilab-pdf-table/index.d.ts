@@ -8,7 +8,10 @@ interface VoilabPdfTableDefaultType {
 
 declare class VoilabPdfTable<T = VoilabPdfTableDefaultType> {
     // eslint-disable-next-line @typescript-eslint/no-misused-new
-    constructor(pdf: PDFKit.PDFDocument, conf?: VoilabPdfTable.VoilabPdfTableConfig<T>);
+    constructor(
+        pdf: PDFKit.PDFDocument,
+        conf?: VoilabPdfTable.VoilabPdfTableConfig<T>,
+    );
 
     /** Add action before data rows are added */
     onBodyAdd(cb: (table: this, data: T[]) => void): this;
@@ -23,10 +26,20 @@ declare class VoilabPdfTable<T = VoilabPdfTableDefaultType> {
     onRowAdded(cb: (table: this, row: T, rowIdx: number) => void): this;
 
     /** Add action before a header is added */
-    onHeaderAdd(cb: (table: this, header: VoilabPdfTable.VoilabPdfTableHeader<T>) => void): this;
+    onHeaderAdd(
+        cb: (
+            table: this,
+            header: VoilabPdfTable.VoilabPdfTableHeader<T>,
+        ) => void,
+    ): this;
 
     /** Add action after a header is added */
-    onHeaderAdded(cb: (table: this, header: VoilabPdfTable.VoilabPdfTableHeader<T>) => void): this;
+    onHeaderAdded(
+        cb: (
+            table: this,
+            header: VoilabPdfTable.VoilabPdfTableHeader<T>,
+        ) => void,
+    ): this;
 
     /** Add action before a page is added */
     onPageAdd(cb: (table: this, row: T, ev: { cancel: boolean }) => void): this;
@@ -41,13 +54,28 @@ declare class VoilabPdfTable<T = VoilabPdfTableDefaultType> {
     onRowHeightCalculated(cb: (table: this, data: T[]) => void): this;
 
     /** Add action before height is calculated for the header */
-    onHeaderHeightCalculate(cb: (table: this, header: VoilabPdfTable.VoilabPdfTableHeader<T>) => void): this;
+    onHeaderHeightCalculate(
+        cb: (
+            table: this,
+            header: VoilabPdfTable.VoilabPdfTableHeader<T>,
+        ) => void,
+    ): this;
 
     /** Add action after height is calculated for the header */
-    onHeaderHeightCalculated(cb: (table: this, header: VoilabPdfTable.VoilabPdfTableHeader<T>) => void): this;
+    onHeaderHeightCalculated(
+        cb: (
+            table: this,
+            header: VoilabPdfTable.VoilabPdfTableHeader<T>,
+        ) => void,
+    ): this;
 
     /** Add action after a column is added */
-    onColumnAdded(cb: (table: this, column: VoilabPdfTable.VoilabPdfTableColumn<T>) => void): this;
+    onColumnAdded(
+        cb: (
+            table: this,
+            column: VoilabPdfTable.VoilabPdfTableColumn<T>,
+        ) => void,
+    ): this;
 
     /** Add action before a cell background is added */
     onCellBackgroundAdd(
@@ -73,17 +101,32 @@ declare class VoilabPdfTable<T = VoilabPdfTableDefaultType> {
 
     /** Add action before a cell border is added */
     onCellBorderAdd(
-        cb: (table: this, column: VoilabPdfTable.VoilabPdfTableColumn<T>, row: T, isHeader: boolean) => void,
+        cb: (
+            table: this,
+            column: VoilabPdfTable.VoilabPdfTableColumn<T>,
+            row: T,
+            isHeader: boolean,
+        ) => void,
     ): this;
 
     /** Add action after a cell border is added */
     onCellBorderAdded(
-        cb: (table: this, column: VoilabPdfTable.VoilabPdfTableColumn<T>, row: T, isHeader: boolean) => void,
+        cb: (
+            table: this,
+            column: VoilabPdfTable.VoilabPdfTableColumn<T>,
+            row: T,
+            isHeader: boolean,
+        ) => void,
     ): this;
 
     /** Add action after a column's property is changed */
     onColumnPropertyChanged(
-        cb: (table: this, column: VoilabPdfTable.VoilabPdfTableColumn<T>, prop: string, oldValue: any) => void,
+        cb: (
+            table: this,
+            column: VoilabPdfTable.VoilabPdfTableColumn<T>,
+            prop: string,
+            oldValue: any,
+        ) => void,
     ): this;
 
     /** Add a plugin */
@@ -102,16 +145,25 @@ declare class VoilabPdfTable<T = VoilabPdfTableDefaultType> {
     addColumn(column: VoilabPdfTable.VoilabPdfTableColumn<T>): this;
 
     /** Set defaults for all new columns to add */
-    setColumnsDefaults(defaults: Partial<VoilabPdfTable.VoilabPdfTableColumnDefaults<T>>): this;
+    setColumnsDefaults(
+        defaults: Partial<VoilabPdfTable.VoilabPdfTableColumnDefaults<T>>,
+    ): this;
 
     /** Add multiple columns */
-    addColumns(columns: ReadonlyArray<VoilabPdfTable.VoilabPdfTableColumn<T>>): this;
+    addColumns(
+        columns: ReadonlyArray<VoilabPdfTable.VoilabPdfTableColumn<T>>,
+    ): this;
 
     /** Set columns in one shot */
-    setColumns(columns: ReadonlyArray<VoilabPdfTable.VoilabPdfTableColumn<T>>, add?: boolean): this;
+    setColumns(
+        columns: ReadonlyArray<VoilabPdfTable.VoilabPdfTableColumn<T>>,
+        add?: boolean,
+    ): this;
 
     /** Get all table columns */
-    getColumns(withHidden?: boolean): Array<VoilabPdfTable.VoilabPdfTableColumn<T>>;
+    getColumns(
+        withHidden?: boolean,
+    ): Array<VoilabPdfTable.VoilabPdfTableColumn<T>>;
 
     /** Get a definition for a column */
     getColumn(columnId: keyof T): VoilabPdfTable.VoilabPdfTableColumn<T>;
@@ -171,54 +223,65 @@ declare namespace VoilabPdfTable {
         };
     }
 
-    type VoilabPdfTableColumn<T> =
-        & (
-            & {
-                id: keyof T;
-                renderer?: (table: VoilabPdfTable<T>, row: T, draw: boolean) => void;
-                cellAdded?: (table: VoilabPdfTable<T>, row: T, draw: boolean) => void;
-                hidden?: boolean;
-                border?: string;
-                borderOpacity?: number;
-                width?: number;
-                height?: number;
-                valign?: "top" | "center" | "bottom";
-                align?: "left" | "center" | "right";
-                fill?: boolean;
-                cache?: boolean;
-                padding?: [number] | [number, number] | [number, number, number, number];
-                headerPadding?: [number] | [number, number] | [number, number, number, number];
-            }
-            & (
-                | {
-                    header: string;
-                    headerRenderer?: (table: VoilabPdfTable<T>, header: VoilabPdfTableHeader<T>, draw: boolean) => void;
-                    headerCellAdded?: (
-                        table: VoilabPdfTable<T>,
-                        header: VoilabPdfTableHeader<T>,
-                        draw: boolean,
-                    ) => void;
-                    headerBorder?: string;
-                    headerBorderOpacity?: number;
-                    headerFill?: boolean;
-                    headerHeight?: number;
-                }
-                | {
-                    header?: never;
-                    headerRenderer?: never;
-                    headerCellAdded?: never;
-                    headerBorder?: never;
-                    headerBorderOpacity?: never;
-                    headerFill?: never;
-                    headerHeight?: never;
-                }
-            )
-        )
-        & PDFKit.Mixins.TextOptions;
+    type VoilabPdfTableColumn<T> = ({
+        id: keyof T;
+        renderer?: (table: VoilabPdfTable<T>, row: T, draw: boolean) => void;
+        cellAdded?: (table: VoilabPdfTable<T>, row: T, draw: boolean) => void;
+        hidden?: boolean;
+        border?: string;
+        borderOpacity?: number;
+        width?: number;
+        height?: number;
+        valign?: "top" | "center" | "bottom";
+        align?: "left" | "center" | "right";
+        fill?: boolean;
+        cache?: boolean;
+        padding?:
+            | [number]
+            | [number, number]
+            | [number, number, number, number];
+        headerPadding?:
+            | [number]
+            | [number, number]
+            | [number, number, number, number];
+    } & (
+        | {
+              header: string;
+              headerRenderer?: (
+                  table: VoilabPdfTable<T>,
+                  header: VoilabPdfTableHeader<T>,
+                  draw: boolean,
+              ) => void;
+              headerCellAdded?: (
+                  table: VoilabPdfTable<T>,
+                  header: VoilabPdfTableHeader<T>,
+                  draw: boolean,
+              ) => void;
+              headerBorder?: string;
+              headerBorderOpacity?: number;
+              headerFill?: boolean;
+              headerHeight?: number;
+          }
+        | {
+              header?: never;
+              headerRenderer?: never;
+              headerCellAdded?: never;
+              headerBorder?: never;
+              headerBorderOpacity?: never;
+              headerFill?: never;
+              headerHeight?: never;
+          }
+    )) &
+        PDFKit.Mixins.TextOptions;
 
-    type DistributiveOmit<T, K extends keyof T> = T extends unknown ? Omit<T, K> : never;
+    type DistributiveOmit<T, K extends keyof T> = T extends unknown
+        ? Omit<T, K>
+        : never;
 
-    type VoilabPdfTableColumnDefaults<T> = DistributiveOmit<VoilabPdfTableColumn<T>, "id">;
+    type VoilabPdfTableColumnDefaults<T> = DistributiveOmit<
+        VoilabPdfTableColumn<T>,
+        "id"
+    >;
 
     type VoilabPdfTableHeader<T> = {
         [key in keyof T]: string;

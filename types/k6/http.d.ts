@@ -185,7 +185,11 @@ export function batch<Q extends BatchRequests>(requests: Q): BatchResponses<Q>;
  *   console.log(f.content_type);
  * }
  */
-export function file(data: string | bytes | ArrayBuffer, filename?: string, contentType?: string): FileData;
+export function file(
+    data: string | bytes | ArrayBuffer,
+    filename?: string,
+    contentType?: string,
+): FileData;
 
 /**
  * Get active cookie jar.
@@ -201,13 +205,17 @@ export function cookieJar(): CookieJar;
  * as expected based only on their status codes.
  * https://staging.k6.io/docs/javascript-api/k6-http/expectedstatuses-statuses
  */
-export function expectedStatuses(...param: Array<number | ExpectedStatusesObject>): ExpectedStatusesCallback;
+export function expectedStatuses(
+    ...param: Array<number | ExpectedStatusesObject>
+): ExpectedStatusesCallback;
 
 /**
  * Set the response callback to be called to determine if a response was expected/successful or not.
  * https://k6.io/docs/javascript-api/k6-http/setresponsecallback-callback
  */
-export function setResponseCallback(responseCallback: ExpectedStatusesCallback): void;
+export function setResponseCallback(
+    responseCallback: ExpectedStatusesCallback,
+): void;
 
 // === SSL/TLS versions ===
 // ------------------------
@@ -299,7 +307,8 @@ export interface Params {
  * Request parameters with refined response type.
  * Used to infer response body type.
  */
-export interface RefinedParams<RT extends ResponseType | undefined> extends Params {
+export interface RefinedParams<RT extends ResponseType | undefined>
+    extends Params {
     responseType?: RT;
 }
 
@@ -341,12 +350,21 @@ export interface StructuredRequestBody {
  * Batch request specification.
  * https://k6.io/docs/javascript-api/k6-http/batch-requests
  */
-export type BatchRequest = string | HttpURL | ArrayBatchRequest | ObjectBatchRequest;
+export type BatchRequest =
+    | string
+    | HttpURL
+    | ArrayBatchRequest
+    | ObjectBatchRequest;
 
 /**
  * Array form batch request specification.
  */
-export type ArrayBatchRequest = [string, string | HttpURL, (RequestBody | null)?, (Params | null)?];
+export type ArrayBatchRequest = [
+    string,
+    string | HttpURL,
+    (RequestBody | null)?,
+    (Params | null)?,
+];
 
 /**
  * Object form batch request specification.
@@ -396,7 +414,9 @@ export type ArrayRefinedBatchRequest<RT extends ResponseType | undefined> = [
 /**
  * Object form refined batch request specification.
  */
-export interface ObjectRefinedBatchRequest<RT extends ResponseType | undefined> {
+export interface ObjectRefinedBatchRequest<
+    RT extends ResponseType | undefined,
+> {
     method: string;
     url: string | HttpURL;
     body?: RequestBody | null;
@@ -410,7 +430,9 @@ export interface ObjectRefinedBatchRequest<RT extends ResponseType | undefined> 
  * Set of batch responses. Array or object.
  */
 export type BatchResponses<Q> = {
-    [K in keyof Q]: Q[K] extends RefinedBatchRequest<infer RT> ? RefinedResponse<RT> : never;
+    [K in keyof Q]: Q[K] extends RefinedBatchRequest<infer RT>
+        ? RefinedResponse<RT>
+        : never;
 };
 
 // === Response ===
@@ -613,7 +635,8 @@ export type CipherSuite =
  * Refined response.
  * Exposes body with best possible type.
  */
-export interface RefinedResponse<RT extends ResponseType | undefined> extends Response {
+export interface RefinedResponse<RT extends ResponseType | undefined>
+    extends Response {
     body: RefinedResponseBody<RT>;
 }
 
@@ -628,11 +651,16 @@ export type ResponseBody = string | bytes | null;
  * @template RT - `Params.responseType` value.
  * @privateRemarks Default type is a union due to depending on program options.
  */
-export type RefinedResponseBody<RT extends ResponseType | undefined> = RT extends "binary" ? bytes
-    : RT extends "none" ? null
-    : RT extends "text" ? string
-    : RT extends undefined ? string | null
-    : never;
+export type RefinedResponseBody<RT extends ResponseType | undefined> =
+    RT extends "binary"
+        ? bytes
+        : RT extends "none"
+          ? null
+          : RT extends "text"
+            ? string
+            : RT extends undefined
+              ? string | null
+              : never;
 
 /**
  * Request cookie description in response.
@@ -723,7 +751,12 @@ export class CookieJar {
      * @param value - Cookie value.
      * @param options - Optional settings.
      */
-    set(url: string, name: string, value: string, options?: CookieOptions | null): void;
+    set(
+        url: string,
+        name: string,
+        value: string,
+        options?: CookieOptions | null,
+    ): void;
 
     /**
      * Delete all cookies for the given URL.
@@ -948,7 +981,10 @@ declare namespace http {
      * @example
      * http.get(http.url`http://example.com/posts/${id}`) // tags.name="http://example.com/posts/${}",
      */
-    function url(strings: TemplateStringsArray, ...args: Array<string | number | boolean>): HttpURL;
+    function url(
+        strings: TemplateStringsArray,
+        ...args: Array<string | number | boolean>
+    ): HttpURL;
 
     /**
      * Batch multiple HTTP requests together,
@@ -992,7 +1028,11 @@ declare namespace http {
      *   console.log(f.content_type);
      * }
      */
-    function file(data: string | bytes | ArrayBuffer, filename?: string, contentType?: string): FileData;
+    function file(
+        data: string | bytes | ArrayBuffer,
+        filename?: string,
+        contentType?: string,
+    ): FileData;
 
     /**
      * Get active cookie jar.
@@ -1007,13 +1047,17 @@ declare namespace http {
      * as expected based only on their status codes.
      * https://staging.k6.io/docs/javascript-api/k6-http/expectedstatuses-statuses/
      */
-    function expectedStatuses(...param: Array<number | ExpectedStatusesObject>): ExpectedStatusesCallback;
+    function expectedStatuses(
+        ...param: Array<number | ExpectedStatusesObject>
+    ): ExpectedStatusesCallback;
 
     /**
      * Set the response callback to be called to determine if a response was expected/successful or not.
      * https://k6.io/docs/javascript-api/k6-http/setresponsecallback-callback/
      */
-    function setResponseCallback(responseCallback: ExpectedStatusesCallback): void;
+    function setResponseCallback(
+        responseCallback: ExpectedStatusesCallback,
+    ): void;
 }
 
 export default http;

@@ -9,10 +9,17 @@ import unwind = require("./transforms/unwind");
 
 export as namespace json2csv;
 
-export { JSON2CSVAsyncParser as AsyncParser, JSON2CSVParser as Parser, JSON2CSVTransform as Transform };
+export {
+    JSON2CSVAsyncParser as AsyncParser,
+    JSON2CSVParser as Parser,
+    JSON2CSVTransform as Transform,
+};
 
 // Convenience method to keep the API similar to version 3.X
-export function parse<T>(data: Readonly<T> | readonly T[], opts?: json2csv.Options<T>): string;
+export function parse<T>(
+    data: Readonly<T> | readonly T[],
+    opts?: json2csv.Options<T>,
+): string;
 
 export function parseAsync<T>(
     data: Readonly<T> | readonly T[] | Readable,
@@ -30,7 +37,9 @@ export interface FieldValueCallbackInfo {
     default?: string | undefined;
 }
 
-export type FieldValueCallback<T> = FieldValueCallbackWithoutField<T> | FieldValueCallbackWithField<T>;
+export type FieldValueCallback<T> =
+    | FieldValueCallbackWithoutField<T>
+    | FieldValueCallbackWithField<T>;
 
 export interface FieldValueCallbackWithoutField<T> {
     (row: T): any;

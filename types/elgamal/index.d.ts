@@ -12,7 +12,10 @@ export default class ElGamal {
         y: BigInt | string | number,
         x: BigInt | string | number,
     );
-    encryptAsync(m: BigInt | string | number, k?: BigInt | string | number): Promise<EncryptedValue>;
+    encryptAsync(
+        m: BigInt | string | number,
+        k?: BigInt | string | number,
+    ): Promise<EncryptedValue>;
     decryptAsync(m: EncryptedValue): Promise<DecryptedValue>;
 }
 

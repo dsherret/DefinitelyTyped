@@ -27,7 +27,11 @@ function hrefDecorator(urlHref: string): string {
     return urlHref;
 }
 
-function componentDecorator(decoratedHref: string, decoratedText: string, key: number): React.ReactNode {
+function componentDecorator(
+    decoratedHref: string,
+    decoratedText: string,
+    key: number,
+): React.ReactNode {
     return (
         <a href={decoratedHref} key={key}>
             {decoratedText}

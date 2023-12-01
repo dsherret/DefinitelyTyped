@@ -4,7 +4,11 @@ interface JQueryTimepickerOptions {
     // Override where the dropdown is appended.
     // Takes either a string to use as a selector, a function that gets passed the clicked input element as argument or a jquery object to use directly.
     // default: "body"
-    appendTo?: string | ((clickedElement: JQuery) => JQuery) | JQuery | undefined;
+    appendTo?:
+        | string
+        | ((clickedElement: JQuery) => JQuery)
+        | JQuery
+        | undefined;
 
     // A class name to apply to the HTML element that contains the timepicker dropdown.
     // default: null
@@ -42,15 +46,15 @@ interface JQueryTimepickerOptions {
     // default: { am: 'am', pm: 'pm', AM: 'AM', PM: 'PM', decimal: '.', mins: 'mins', hr: 'hr', hrs: 'hrs' }
     lang?:
         | {
-            am?: string | undefined;
-            pm?: string | undefined;
-            AM?: string | undefined;
-            PM?: string | undefined;
-            decimal?: string | undefined;
-            mins?: string | undefined;
-            hr?: string | undefined;
-            hrs?: string | undefined;
-        }
+              am?: string | undefined;
+              pm?: string | undefined;
+              AM?: string | undefined;
+              PM?: string | undefined;
+              decimal?: string | undefined;
+              mins?: string | undefined;
+              hr?: string | undefined;
+              hrs?: string | undefined;
+          }
         | undefined;
 
     // Set this to override CSS styling and set the list width to match the input element's width.
@@ -77,18 +81,18 @@ interface JQueryTimepickerOptions {
         | boolean
         | string
         | {
-            label?: string;
-            value?: string;
-            className?: string;
-        }
+              label?: string;
+              value?: string;
+              className?: string;
+          }
         | Array<
-            | string
-            | {
-                label?: string;
-                value?: string;
-                className?: string;
-            }
-        >
+              | string
+              | {
+                    label?: string;
+                    value?: string;
+                    className?: string;
+                }
+          >
         | undefined;
 
     // By default the timepicker dropdown will be aligned to the bottom right of the input element, or aligned to the top left if there isn't enough room below the input.
@@ -97,7 +101,12 @@ interface JQueryTimepickerOptions {
 
     // Function used to compute rounded times. The function will receive time in seconds and a settings object as arguments.
     // The function should handle a null value for seconds. default: round to nearest step
-    roundingFunction?: ((seconds: number | null, settings: JQueryTimepickerOptions) => number) | undefined;
+    roundingFunction?:
+        | ((
+              seconds: number | null,
+              settings: JQueryTimepickerOptions,
+          ) => number)
+        | undefined;
 
     // If no time value is selected, set the dropdown scroll position to show the time provided, e.g. "09:00".
     // A time string, Date object, or integer (seconds past midnight) is acceptible, as well as the string 'now'.

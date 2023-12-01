@@ -28,7 +28,7 @@ gulpCleanCSS({
 });
 
 // callback
-gulpCleanCSS({}, details => {
+gulpCleanCSS({}, (details) => {
     console.log(details);
     console.log(details.errors);
     console.log(details.name);

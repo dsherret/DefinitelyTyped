@@ -44,7 +44,15 @@ declare namespace HtmlReporter {
         searchSettings?: SearchSettings;
         columnSettings?: ColumnSettings;
         showTotalDurationIn?: "header" | "belowHeader" | "footer";
-        totalDurationFormat?: "h" | "m" | "s" | "hm" | "h:m" | "hms" | "h:m:s" | "ms";
+        totalDurationFormat?:
+            | "h"
+            | "m"
+            | "s"
+            | "hm"
+            | "h:m"
+            | "hms"
+            | "h:m:s"
+            | "ms";
         useAjax?: boolean;
     }
 

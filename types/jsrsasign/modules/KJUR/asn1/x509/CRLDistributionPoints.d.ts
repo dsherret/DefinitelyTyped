@@ -30,7 +30,10 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
      * ```
      */
     class CRLDistributionPoints extends Extension {
-        constructor(params?: { uri?: string | undefined; array?: ASN1Object[] | undefined });
+        constructor(params?: {
+            uri?: string | undefined;
+            array?: ASN1Object[] | undefined;
+        });
 
         getExtnValueHex(): string;
 

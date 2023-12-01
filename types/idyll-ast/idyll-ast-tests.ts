@@ -57,7 +57,7 @@ walkNodes(ast, (n: Node) => {
 });
 
 // $ExpectType Node[]
-findNodes(ast, n => n instanceof Array);
+findNodes(ast, (n) => n instanceof Array);
 
 // $ExpectType Node
 modifyChildren(ast[0], (n: Node) => {
@@ -69,13 +69,13 @@ modifyChildren(ast[0], (n: Node) => {
 getNodesByName(ast, "h1");
 
 // $ExpectType Node
-filterChildren(ast[1], n => n === "world");
+filterChildren(ast[1], (n) => n === "world");
 
 // $ExpectType Node[] || AST
-filterNodes(ast, n => (n instanceof Object ? n[0] === "h1" : false));
+filterNodes(ast, (n) => (n instanceof Object ? n[0] === "h1" : false));
 
 // $ExpectType Node[] || AST
-modifyNodesByName(ast, "h2", n => {
+modifyNodesByName(ast, "h2", (n) => {
     typeof n === "object" ? (n[1] = []) : undefined;
 });
 

@@ -31,13 +31,17 @@ export interface Workspace {
     onDidChangeActivePaneItem(callback: (item: object) => void): Disposable;
 
     /** Invoke the given callback when the active pane item stops changing. */
-    onDidStopChangingActivePaneItem(callback: (item: object) => void): Disposable;
+    onDidStopChangingActivePaneItem(
+        callback: (item: object) => void,
+    ): Disposable;
 
     /**
      *  Invoke the given callback when a text editor becomes the active text editor and
      *  when there is no longer an active text editor.
      */
-    onDidChangeActiveTextEditor(callback: (editor?: TextEditor) => void): Disposable;
+    onDidChangeActiveTextEditor(
+        callback: (editor?: TextEditor) => void,
+    ): Disposable;
 
     /**
      *  Invoke the given callback with the current active pane item and with all
@@ -49,7 +53,9 @@ export interface Workspace {
      *  Invoke the given callback with the current active text editor (if any), with all
      *  future active text editors, and when there is no longer an active text editor.
      */
-    observeActiveTextEditor(callback: (editor?: TextEditor) => void): Disposable;
+    observeActiveTextEditor(
+        callback: (editor?: TextEditor) => void,
+    ): Disposable;
 
     /**
      *  Invoke the given callback whenever an item is opened. Unlike ::onDidAddPaneItem,
@@ -80,7 +86,9 @@ export interface Workspace {
     observeActivePane(callback: (pane: Pane) => void): Disposable;
 
     /** Invoke the given callback when a pane item is added to the workspace. */
-    onDidAddPaneItem(callback: (event: PaneItemObservedEvent) => void): Disposable;
+    onDidAddPaneItem(
+        callback: (event: PaneItemObservedEvent) => void,
+    ): Disposable;
 
     /**
      *  Invoke the given callback when a pane item is about to be destroyed,
@@ -89,13 +97,19 @@ export interface Workspace {
      *      If this function returns a Promise, then the item will not be destroyed
      *      until the promise resolves.
      */
-    onWillDestroyPaneItem(callback: (event: PaneItemObservedEvent) => void | Promise<void>): Disposable;
+    onWillDestroyPaneItem(
+        callback: (event: PaneItemObservedEvent) => void | Promise<void>,
+    ): Disposable;
 
     /** Invoke the given callback when a pane item is destroyed. */
-    onDidDestroyPaneItem(callback: (event: PaneItemObservedEvent) => void): Disposable;
+    onDidDestroyPaneItem(
+        callback: (event: PaneItemObservedEvent) => void,
+    ): Disposable;
 
     /** Invoke the given callback when a text editor is added to the workspace. */
-    onDidAddTextEditor(callback: (event: TextEditorObservedEvent) => void): Disposable;
+    onDidAddTextEditor(
+        callback: (event: TextEditorObservedEvent) => void,
+    ): Disposable;
 
     // Opening
     /**
@@ -109,7 +123,10 @@ export interface Workspace {
      *  the existing item will be activated. If no item is given, a new empty TextEditor
      *  will be created.
      */
-    open<T extends ViewModel = ViewModel>(item: T, options?: WorkspaceOpenOptions): Promise<T>;
+    open<T extends ViewModel = ViewModel>(
+        item: T,
+        options?: WorkspaceOpenOptions,
+    ): Promise<T>;
     /**
      *  Opens the given URI in Atom asynchronously. If the URI is already open,
      *  the existing item for that URI will be activated. If no URI is given, or
@@ -147,7 +164,12 @@ export interface Workspace {
     reopenItem(): Promise<object | undefined>;
 
     /** Register an opener for a URI. */
-    addOpener(opener: (uri: string, options?: WorkspaceOpenOptions) => ViewModel | undefined): Disposable;
+    addOpener(
+        opener: (
+            uri: string,
+            options?: WorkspaceOpenOptions,
+        ) => ViewModel | undefined,
+    ): Disposable;
 
     /** Create a new text editor. */
     buildTextEditor(params: object): TextEditor;
@@ -214,37 +236,61 @@ export interface Workspace {
     getBottomPanels(): Panel[];
 
     /** Adds a panel item to the bottom of the editor window. */
-    addBottomPanel<T>(options: { item: T; visible?: boolean | undefined; priority?: number | undefined }): Panel<T>;
+    addBottomPanel<T>(options: {
+        item: T;
+        visible?: boolean | undefined;
+        priority?: number | undefined;
+    }): Panel<T>;
 
     /** Get an Array of all the panel items to the left of the editor window. */
     getLeftPanels(): Panel[];
 
     /** Adds a panel item to the left of the editor window. */
-    addLeftPanel<T>(options: { item: T; visible?: boolean | undefined; priority?: number | undefined }): Panel<T>;
+    addLeftPanel<T>(options: {
+        item: T;
+        visible?: boolean | undefined;
+        priority?: number | undefined;
+    }): Panel<T>;
 
     /** Get an Array of all the panel items to the right of the editor window. */
     getRightPanels(): Panel[];
 
     /** Adds a panel item to the right of the editor window. */
-    addRightPanel<T>(options: { item: T; visible?: boolean | undefined; priority?: number | undefined }): Panel<T>;
+    addRightPanel<T>(options: {
+        item: T;
+        visible?: boolean | undefined;
+        priority?: number | undefined;
+    }): Panel<T>;
 
     /** Get an Array of all the panel items at the top of the editor window. */
     getTopPanels(): Panel[];
 
     /** Adds a panel item to the top of the editor window above the tabs. */
-    addTopPanel<T>(options: { item: T; visible?: boolean | undefined; priority?: number | undefined }): Panel<T>;
+    addTopPanel<T>(options: {
+        item: T;
+        visible?: boolean | undefined;
+        priority?: number | undefined;
+    }): Panel<T>;
 
     /** Get an Array of all the panel items in the header. */
     getHeaderPanels(): Panel[];
 
     /** Adds a panel item to the header. */
-    addHeaderPanel<T>(options: { item: T; visible?: boolean | undefined; priority?: number | undefined }): Panel<T>;
+    addHeaderPanel<T>(options: {
+        item: T;
+        visible?: boolean | undefined;
+        priority?: number | undefined;
+    }): Panel<T>;
 
     /** Get an Array of all the panel items in the footer. */
     getFooterPanels(): Panel[];
 
     /** Adds a panel item to the footer. */
-    addFooterPanel<T>(options: { item: T; visible?: boolean | undefined; priority?: number | undefined }): Panel<T>;
+    addFooterPanel<T>(options: {
+        item: T;
+        visible?: boolean | undefined;
+        priority?: number | undefined;
+    }): Panel<T>;
 
     /** Get an Array of all the modal panel items. */
     getModalPanels(): Panel[];
@@ -265,7 +311,10 @@ export interface Workspace {
 
     // Searching and Replacing
     /** Performs a search across all files in the workspace. */
-    scan(regex: RegExp, iterator: (result: ScandalResult) => void): CancellablePromise<string | null>;
+    scan(
+        regex: RegExp,
+        iterator: (result: ScandalResult) => void,
+    ): CancellablePromise<string | null>;
     /** Performs a search across all files in the workspace. */
     scan(
         regex: RegExp,
@@ -278,7 +327,10 @@ export interface Workspace {
         regex: RegExp,
         replacementText: string,
         filePaths: readonly string[],
-        iterator: (result: { filePath: string | undefined; replacements: number }) => void,
+        iterator: (result: {
+            filePath: string | undefined;
+            replacements: number;
+        }) => void,
     ): Promise<void>;
 }
 

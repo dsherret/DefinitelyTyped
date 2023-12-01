@@ -14,9 +14,10 @@ function test_validate() {
         invalidHandler: (form, validator) => {
             const errors = validator.numberOfInvalids();
             if (errors) {
-                const message = errors === 1
-                    ? "You missed 1 field. It has been highlighted"
-                    : `You missed ${errors} fields. They have been highlighted`;
+                const message =
+                    errors === 1
+                        ? "You missed 1 field. It has been highlighted"
+                        : `You missed ${errors} fields. They have been highlighted`;
                 $("div.error span").html(message);
                 $("div.error").show();
             } else {
@@ -56,8 +57,8 @@ function test_validate() {
         },
         errorPlacement: (error, element) => {
             if (
-                element.attr("name") === "fname"
-                || element.attr("name") === "lname"
+                element.attr("name") === "fname" ||
+                element.attr("name") === "lname"
             ) {
                 error.insertAfter("#lastname");
             } else {
@@ -133,8 +134,13 @@ function test_validate() {
         },
     });
     $(".selector").validate({
-        showErrors: (errorMap: JQueryValidation.ErrorDictionary, errorList: JQueryValidation.ErrorListItem[]) => {
-            $("#summary").html(`Your form contains ${this.numberOfInvalids()} errors, see details below.`);
+        showErrors: (
+            errorMap: JQueryValidation.ErrorDictionary,
+            errorList: JQueryValidation.ErrorListItem[],
+        ) => {
+            $("#summary").html(
+                `Your form contains ${this.numberOfInvalids()} errors, see details below.`,
+            );
             this.defaultShowErrors();
         },
     });
@@ -168,12 +174,14 @@ function test_validate() {
     $(".selector").validate({
         highlight: (element: HTMLInputElement, errorClass, validClass) => {
             $(element).addClass(errorClass).removeClass(validClass);
-            $(element.form).find(`label[for=${element.id}]`)
+            $(element.form)
+                .find(`label[for=${element.id}]`)
                 .addClass(errorClass);
         },
         unhighlight: (element: HTMLInputElement, errorClass, validClass) => {
             $(element).removeClass(errorClass).addClass(validClass);
-            $(element.form).find(`label[for=${element.id}]`)
+            $(element.form)
+                .find(`label[for=${element.id}]`)
                 .removeClass(errorClass);
         },
     });
@@ -190,7 +198,7 @@ function test_validate() {
     $(".selector").validate({
         onfocusout: () => {},
         onkeyup: () => {},
-        onclick: elt => 2,
+        onclick: (elt) => 2,
     });
 }
 
@@ -205,7 +213,9 @@ function test_methods() {
         minlength: 2,
         messages: {
             required: "Required input",
-            minlength: jQuery.format("Please, at least {0} characters are necessary"),
+            minlength: jQuery.format(
+                "Please, at least {0} characters are necessary",
+            ),
         },
     });
     $("#myinput").rules("remove");
@@ -215,7 +225,9 @@ function test_methods() {
         minlength: 2,
         messages: {
             required: "Required input",
-            minlength: jQuery.format("Please, at least {0} characters are necessary"),
+            minlength: jQuery.format(
+                "Please, at least {0} characters are necessary",
+            ),
         },
     });
     $("#skip").click(() => {
@@ -229,7 +241,9 @@ function test_methods() {
     $("#myform").validate().element($("#myselect"));
     const validator = $("#myform").validate();
     validator.resetForm();
-    validator.showErrors({ firstname: "I know that your firstname is Pete, Pete!" });
+    validator.showErrors({
+        firstname: "I know that your firstname is Pete, Pete!",
+    });
     validator.hideErrors();
     const isValid: boolean = validator.valid();
     const size: number = validator.size();
@@ -245,9 +259,16 @@ function test_static_methods() {
     jQuery.validator.setDefaults({
         debug: true,
     });
-    jQuery.validator.addMethod("domain", function(value, element) {
-        return this.optional(element) || /^http:\/\/mycorporatedomain.com/.test(value);
-    }, "Please specify the correct domain for your documents");
+    jQuery.validator.addMethod(
+        "domain",
+        function (value, element) {
+            return (
+                this.optional(element) ||
+                /^http:\/\/mycorporatedomain.com/.test(value)
+            );
+        },
+        "Please specify the correct domain for your documents",
+    );
     jQuery.validator.addClassRules({
         name: {
             required: true,

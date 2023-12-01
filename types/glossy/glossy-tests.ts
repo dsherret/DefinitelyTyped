@@ -1,14 +1,15 @@
 import * as glossy from "glossy";
 
-const rawMessage = "<166>1 2021-10-15T16:59:18.00-04:00 localhost sudo 123 - - Nice, Neat, New, Oh Wow";
+const rawMessage =
+    "<166>1 2021-10-15T16:59:18.00-04:00 localhost sudo 123 - - Nice, Neat, New, Oh Wow";
 
 const parser = glossy.Parse;
 
 let parsedMessage = parser.parse(rawMessage); // $ExpectType void | SyslogMessage
 parsedMessage = parser.parse(Buffer.from(rawMessage, "utf8")); // $ExpectType void | SyslogMessage
 
-parser.parse(rawMessage, parsedMessage => {}); // $ExpectType void | SyslogMessage
-parser.parse(Buffer.from(rawMessage, "utf8"), parsedMessage => {}); // $ExpectType void | SyslogMessage
+parser.parse(rawMessage, (parsedMessage) => {}); // $ExpectType void | SyslogMessage
+parser.parse(Buffer.from(rawMessage, "utf8"), (parsedMessage) => {}); // $ExpectType void | SyslogMessage
 
 const messageOptions = {
     facility: "local4",
@@ -52,11 +53,11 @@ compiledMessage = producerWithOptions.notice(messageOptions); // $ExpectType str
 compiledMessage = producerWithOptions.produce(messageOptions); // $ExpectType string | void
 compiledMessage = producerWithOptions.warn(messageOptions); // $ExpectType string | void
 
-producerWithOptions.alert(messageOptions, compiledMessage => {}); // $ExpectType string | void
-producerWithOptions.crit(messageOptions, compiledMessage => {}); // $ExpectType string | void
-producerWithOptions.debug(messageOptions, compiledMessage => {}); // $ExpectType string | void
-producerWithOptions.emergency(messageOptions, compiledMessage => {}); // $ExpectType string | void
-producerWithOptions.info(messageOptions, compiledMessage => {}); // $ExpectType string | void
-producerWithOptions.notice(messageOptions, compiledMessage => {}); // $ExpectType string | void
-producerWithOptions.produce(messageOptions, compiledMessage => {}); // $ExpectType string | void
-producerWithOptions.warn(messageOptions, compiledMessage => {}); // $ExpectType string | void
+producerWithOptions.alert(messageOptions, (compiledMessage) => {}); // $ExpectType string | void
+producerWithOptions.crit(messageOptions, (compiledMessage) => {}); // $ExpectType string | void
+producerWithOptions.debug(messageOptions, (compiledMessage) => {}); // $ExpectType string | void
+producerWithOptions.emergency(messageOptions, (compiledMessage) => {}); // $ExpectType string | void
+producerWithOptions.info(messageOptions, (compiledMessage) => {}); // $ExpectType string | void
+producerWithOptions.notice(messageOptions, (compiledMessage) => {}); // $ExpectType string | void
+producerWithOptions.produce(messageOptions, (compiledMessage) => {}); // $ExpectType string | void
+producerWithOptions.warn(messageOptions, (compiledMessage) => {}); // $ExpectType string | void

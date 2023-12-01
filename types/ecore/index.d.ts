@@ -70,13 +70,28 @@ export interface EList extends EObject {
     at: (position: number) => EObject;
     array: () => EObject[];
     first: () => EObject;
-    find: (iterator: (value: any, key: any, list: EList) => boolean, context?: any) => EObject[];
+    find: (
+        iterator: (value: any, key: any, list: EList) => boolean,
+        context?: any,
+    ) => EObject[];
     last: () => EObject;
     rest: (position: number) => EObject[];
-    each: (iterator: (value: any, key: any, list: EList) => void, context?: any) => void;
-    filter: (iterator: (value: any, key: any, list: EList) => boolean, context?: any) => EObject[];
-    map: (iterator: (value: any, key: any, list: EList) => any, context?: any) => any[];
-    reject: (iterator: (value: any, key: any, list: EList) => boolean, context?: any) => EObject[];
+    each: (
+        iterator: (value: any, key: any, list: EList) => void,
+        context?: any,
+    ) => void;
+    filter: (
+        iterator: (value: any, key: any, list: EList) => boolean,
+        context?: any,
+    ) => EObject[];
+    map: (
+        iterator: (value: any, key: any, list: EList) => any,
+        context?: any,
+    ) => any[];
+    reject: (
+        iterator: (value: any, key: any, list: EList) => boolean,
+        context?: any,
+    ) => EObject[];
     contains: (eObject: EObject) => boolean;
     indexOf: (eObject: EObject) => number;
 }
@@ -111,7 +126,10 @@ export interface Resource extends EObject {
     add: (value: EObject) => void;
     addAll: (values: EObject[]) => EObject;
     clear: () => EList;
-    each: (iterator: (value: any, key: any, list: EList) => void, context?: any) => void;
+    each: (
+        iterator: (value: any, key: any, list: EList) => void,
+        context?: any,
+    ) => void;
     save: (callback: () => void, options: any) => void;
     parse: (data: EObject, loader?: () => void) => any;
     remove: () => void;

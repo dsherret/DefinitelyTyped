@@ -30,10 +30,25 @@ ffmpeg("/path/to/file.avi")
     .output("outputfile.mp4")
     .complexFilter(
         [
-            { inputs: "0:v", filter: "scale", options: { w: 1920, h: 1080, interl: 1 }, outputs: [] },
-            { inputs: "0:a", filter: "amerge", options: { inputs: 2 }, outputs: "am" },
+            {
+                inputs: "0:v",
+                filter: "scale",
+                options: { w: 1920, h: 1080, interl: 1 },
+                outputs: [],
+            },
+            {
+                inputs: "0:a",
+                filter: "amerge",
+                options: { inputs: 2 },
+                outputs: "am",
+            },
             "[am]aresample=48000:async=1[are]",
-            { inputs: "are", filter: "channelsplit", options: { channel_layout: "stereo" }, outputs: [] },
+            {
+                inputs: "are",
+                filter: "channelsplit",
+                options: { channel_layout: "stereo" },
+                outputs: [],
+            },
         ],
         [],
     )
@@ -51,7 +66,10 @@ ffmpeg("/path/to/file.avi")
     .run();
 
 // Create a command to convert source.avi to MP4
-const command = ffmpeg("/path/to/source.avi").audioCodec("libfaac").videoCodec("libx264").format("mp4");
+const command = ffmpeg("/path/to/source.avi")
+    .audioCodec("libfaac")
+    .videoCodec("libx264")
+    .format("mp4");
 
 // Create a clone to save a small resized version
 command.clone().size("320x200").save("/path/to/output-small.mp4");
@@ -97,7 +115,7 @@ ffmpeg.ffprobe("/path/to/file.mp4", (err, data) => {
 
 ffmpeg("/path/to.mp4").loop().videoBitrate(300, true);
 
-ffmpeg("/path/to/file.avi").preset(command => {
+ffmpeg("/path/to/file.avi").preset((command) => {
     command.format("avi").size("720x?");
 });
 

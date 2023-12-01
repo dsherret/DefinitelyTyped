@@ -3,7 +3,15 @@
  * Created by Linus Brolin <https://github.com/linusbrolin/>.
  */
 
-import { Document, Model, model, Schema, SequenceDocument, SequenceOptions, SequenceSchema } from "mongoose";
+import {
+    Document,
+    Model,
+    model,
+    Schema,
+    SequenceDocument,
+    SequenceOptions,
+    SequenceSchema,
+} from "mongoose";
 import mongooseSequence = require("mongoose-sequence");
 
 // #region Test Models
@@ -40,7 +48,7 @@ let user: User = new UserModel({
 user.save();
 console.log(user.inhabitant_number);
 
-user.setNext("inhabitant_seq", function(err: any, user: User) {
+user.setNext("inhabitant_seq", function (err: any, user: User) {
     if (err) {
         console.log(err);
         return;

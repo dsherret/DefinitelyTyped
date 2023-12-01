@@ -15,9 +15,13 @@ interface Props extends Omit<MUIDataTableProps, "columns"> {
     columns?: MUIDataTableColumn[] | undefined;
 }
 
-const MuiCustomTable: React.FC<Props> = props => {
-    const data: string[][] = props.data.map((asset: any) => Object.values(asset));
-    const tableRef = React.useRef<React.Component<MUIDataTableProps, MUIDataTableState> | null | undefined>();
+const MuiCustomTable: React.FC<Props> = (props) => {
+    const data: string[][] = props.data.map((asset: any) =>
+        Object.values(asset),
+    );
+    const tableRef = React.useRef<
+        React.Component<MUIDataTableProps, MUIDataTableState> | null | undefined
+    >();
     const columns: MUIDataTableColumn[] = [
         {
             name: "id",
@@ -32,8 +36,11 @@ const MuiCustomTable: React.FC<Props> = props => {
             label: "Name",
             options: {
                 filterType: "custom",
-                sortCompare: order => (val1, val2) => {
-                    return (val1.data.length - val2.data.length) * (order === "asc" ? 1 : -1);
+                sortCompare: (order) => (val1, val2) => {
+                    return (
+                        (val1.data.length - val2.data.length) *
+                        (order === "asc" ? 1 : -1)
+                    );
                 },
                 customBodyRender: (value, tableMeta, updateValue) => {
                     return (
@@ -41,7 +48,9 @@ const MuiCustomTable: React.FC<Props> = props => {
                             type="text"
                             value={value}
                             name={`${tableMeta.columnData.name}-${tableMeta.rowIndex}`}
-                            onChange={event => updateValue(event.target.value)}
+                            onChange={(event) =>
+                                updateValue(event.target.value)
+                            }
                         />
                     );
                 },
@@ -53,7 +62,11 @@ const MuiCustomTable: React.FC<Props> = props => {
             options: {
                 filter: true,
                 filterOptions: {
-                    logic: (prop: string, filterValue: any[], row: any[] | undefined) => {
+                    logic: (
+                        prop: string,
+                        filterValue: any[],
+                        row: any[] | undefined,
+                    ) => {
                         if (prop === "test") return true;
                         if (filterValue.length === 0) return true;
                         return true;
@@ -68,7 +81,7 @@ const MuiCustomTable: React.FC<Props> = props => {
             name: "amount",
             label: "Amount",
             options: {
-                customHeadLabelRender: options => {
+                customHeadLabelRender: (options) => {
                     return <p>Some customize Header - {options.name}</p>;
                 },
             },
@@ -78,8 +91,12 @@ const MuiCustomTable: React.FC<Props> = props => {
             label: "Score",
             options: {
                 customBodyRender: (value, tableMeta, updateValue) => {
-                    const testIndex = tableMeta.currentTableData.map(item => item.index);
-                    const testData = tableMeta.currentTableData.map(item => item.data);
+                    const testIndex = tableMeta.currentTableData.map(
+                        (item) => item.index,
+                    );
+                    const testData = tableMeta.currentTableData.map(
+                        (item) => item.data,
+                    );
 
                     return <div>{value}</div>;
                 },
@@ -119,7 +136,10 @@ const MuiCustomTable: React.FC<Props> = props => {
         customToolbarSelect: (selectedRows, displayData, setSelectedRows) => {
             return (
                 <span>
-                    Custom Selected Toolbar: {`${selectedRows.data.length} - ${JSON.stringify(displayData[0])}`}
+                    Custom Selected Toolbar:{" "}
+                    {`${selectedRows.data.length} - ${JSON.stringify(
+                        displayData[0],
+                    )}`}
                     <button
                         onClick={() => {
                             setSelectedRows([]);
@@ -134,8 +154,13 @@ const MuiCustomTable: React.FC<Props> = props => {
             lookup: { [dataIndex: number]: boolean };
             data: Array<{ index: number; dataIndex: number }>;
         }) => {
-            if (rowsDeleted.data[0].index === rowsDeleted.data[0].dataIndex && rowsDeleted.lookup[0]) {
-                console.log(`Data deleted on index ${rowsDeleted.data[0].dataIndex}`);
+            if (
+                rowsDeleted.data[0].index === rowsDeleted.data[0].dataIndex &&
+                rowsDeleted.lookup[0]
+            ) {
+                console.log(
+                    `Data deleted on index ${rowsDeleted.data[0].dataIndex}`,
+                );
             }
         },
         onTableChange: (action, tableState) => {
@@ -169,7 +194,8 @@ const MuiCustomTable: React.FC<Props> = props => {
             body: {
                 noMatch: "Sorry, no matching records found",
                 toolTip: "Sort",
-                columnHeaderTooltip: column => (column.label ? `Sort on ${column.label}` : `Sort`),
+                columnHeaderTooltip: (column) =>
+                    column.label ? `Sort on ${column.label}` : `Sort`,
             },
             pagination: {
                 next: "Next Page",
@@ -254,7 +280,8 @@ const todoOptions: MUIDataTableOptions = {
 
 const CustomCheckbox = (props: MUIDataTableCheckboxProps) => {
     const newProps = { ...props };
-    newProps.color = props["data-description"] === "row-select" ? "secondary" : "primary";
+    newProps.color =
+        props["data-description"] === "row-select" ? "secondary" : "primary";
     if (props["data-description"] === "row-select") {
         return <Radio {...newProps} />;
     } else {
@@ -263,8 +290,9 @@ const CustomCheckbox = (props: MUIDataTableCheckboxProps) => {
 };
 
 const customComponents: MUIDataTableProps["components"] = {
-    ExpandButton: ({ dataIndex }) => (dataIndex === 1 ? <>expand button</> : null),
-    TableFooter: props => <>table footer</>,
+    ExpandButton: ({ dataIndex }) =>
+        dataIndex === 1 ? <>expand button</> : null,
+    TableFooter: (props) => <>table footer</>,
     Checkbox: CustomCheckbox,
     icons: {
         DownloadIcon: <>DownloadIcon</>,
@@ -273,7 +301,12 @@ const customComponents: MUIDataTableProps["components"] = {
     },
 };
 
-<MuiCustomTable title="Todo Table" data={Todos} options={todoOptions} components={customComponents} />;
+<MuiCustomTable
+    title="Todo Table"
+    data={Todos}
+    options={todoOptions}
+    components={customComponents}
+/>;
 
 const disabledOptions: MUIDataTableOptions = {
     print: "true",
@@ -282,7 +315,11 @@ const disabledOptions: MUIDataTableOptions = {
     filter: true,
 };
 
-<MuiCustomTable title="Disabled Buttons" data={Todos} options={disabledOptions} />;
+<MuiCustomTable
+    title="Disabled Buttons"
+    data={Todos}
+    options={disabledOptions}
+/>;
 
 const MuiTheme = createTheme({
     components: {

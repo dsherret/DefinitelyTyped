@@ -331,7 +331,9 @@ export interface InterfaceConfig {
     PROVIDER_NAME?: string | undefined;
     RECENT_LIST_ENABLED?: boolean | undefined;
     REMOTE_THUMBNAIL_RATIO?: number | undefined;
-    SETTINGS_SECTIONS?: Array<"devices" | "language" | "moderator" | "profile" | "calendar"> | undefined;
+    SETTINGS_SECTIONS?:
+        | Array<"devices" | "language" | "moderator" | "profile" | "calendar">
+        | undefined;
     SHOW_BRAND_WATERMARK?: boolean | undefined;
     SHOW_CHROME_EXTENSION_BANNER?: boolean | undefined;
 
@@ -346,35 +348,35 @@ export interface InterfaceConfig {
     TOOLBAR_ALWAYS_VISIBLE?: boolean | undefined;
     TOOLBAR_BUTTONS?:
         | Array<
-            | "microphone"
-            | "camera"
-            | "closedcaptions"
-            | "desktop"
-            | "embedmeeting"
-            | "fullscreen"
-            | "fodeviceselection"
-            | "hangup"
-            | "profile"
-            | "chat"
-            | "recording"
-            | "livestreaming"
-            | "etherpad"
-            | "sharedvideo"
-            | "settings"
-            | "raisehand"
-            | "videoquality"
-            | "filmstrip"
-            | "invite"
-            | "feedback"
-            | "stats"
-            | "shortcuts"
-            | "tileview"
-            | "videobackgroundblur"
-            | "download"
-            | "help"
-            | "mute-everyone"
-            | "security"
-        >
+              | "microphone"
+              | "camera"
+              | "closedcaptions"
+              | "desktop"
+              | "embedmeeting"
+              | "fullscreen"
+              | "fodeviceselection"
+              | "hangup"
+              | "profile"
+              | "chat"
+              | "recording"
+              | "livestreaming"
+              | "etherpad"
+              | "sharedvideo"
+              | "settings"
+              | "raisehand"
+              | "videoquality"
+              | "filmstrip"
+              | "invite"
+              | "feedback"
+              | "stats"
+              | "shortcuts"
+              | "tileview"
+              | "videobackgroundblur"
+              | "download"
+              | "help"
+              | "mute-everyone"
+              | "security"
+          >
         | undefined;
 
     TOOLBAR_TIMEOUT?: number | undefined;
@@ -683,8 +685,10 @@ export interface TypedEventEmitter<Events, K extends keyof Events> {
  * @see https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe
  */
 export interface JitsiMeetExternalAPI
-    extends TypedEventEmitter<ExternalAPIEventCallbacks, keyof ExternalAPIEventCallbacks>
-{
+    extends TypedEventEmitter<
+        ExternalAPIEventCallbacks,
+        keyof ExternalAPIEventCallbacks
+    > {
     // tslint gets unhappy about a constructor on an interface, but this is what is passed to it
     // constructor(domain: string, options?: ExternalAPIOptions): this;
 
@@ -746,7 +750,7 @@ export interface JitsiMeetExternalAPI
 }
 
 export interface JitsiMeetExternalAPIConstructor {
-    new(domain: string, options?: ExternalAPIOptions): JitsiMeetExternalAPI;
+    new (domain: string, options?: ExternalAPIOptions): JitsiMeetExternalAPI;
 }
 
 // this helps with `import type Jitsi` declarations as sometimes babel can get upset that the implementation is loaded

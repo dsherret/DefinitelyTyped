@@ -26,7 +26,10 @@ declare namespace gulpHtmlhint {
         failAfterError(options?: Record<string, unknown>): Transform;
         failOnError(options?: FailOnErrorOptions): Transform;
         failReporter(options?: Record<string, unknown>): Transform; // Backward compatibility
-        reporter(customReporter?: Reported | ReporterFunction | string, options?: Record<string, unknown>): Transform;
+        reporter(
+            customReporter?: Reported | ReporterFunction | string,
+            options?: Record<string, unknown>,
+        ): Transform;
     }
 }
 

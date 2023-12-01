@@ -45,7 +45,12 @@ export interface Logger {
     verbose?: ((error: string) => void) | undefined;
 }
 export interface SDKEventCustomFlags {
-    [key: string]: number | string | boolean | unknown[] | Record<string, unknown>;
+    [key: string]:
+        | number
+        | string
+        | boolean
+        | unknown[]
+        | Record<string, unknown>;
 }
 
 export interface SDKEventOptions {
@@ -100,11 +105,21 @@ interface LogEvent {
 }
 
 interface LogForm {
-    (selector: string | HTMLElement, eventName: string, eventType?: EventType, eventInfo?: SDKEventAttrs): void;
+    (
+        selector: string | HTMLElement,
+        eventName: string,
+        eventType?: EventType,
+        eventInfo?: SDKEventAttrs,
+    ): void;
 }
 
 interface LogLink {
-    (selector: string | HTMLElement, eventName: string, eventType?: EventType, eventInfo?: SDKEventAttrs): void;
+    (
+        selector: string | HTMLElement,
+        eventName: string,
+        eventType?: EventType,
+        eventInfo?: SDKEventAttrs,
+    ): void;
 }
 
 interface LogPageView {
@@ -205,7 +220,10 @@ interface Login {
     (identityApiData: IdentityApiData, callback?: IdentityCallback): void;
 }
 interface Logout {
-    (identityApiData?: IdentityApiData | {} | null, callback?: IdentityCallback): void;
+    (
+        identityApiData?: IdentityApiData | {} | null,
+        callback?: IdentityCallback,
+    ): void;
 }
 interface Modify {
     (identityApiData: IdentityApiData, callback?: IdentityCallback): void;
@@ -228,7 +246,12 @@ interface CreateProduct {
     ): Product;
 }
 interface CreatePromotion {
-    (id: string, creative?: string, name?: string, position?: number): Promotion;
+    (
+        id: string,
+        creative?: string,
+        name?: string,
+        position?: number,
+    ): Promotion;
 }
 interface CreateTransactionAttributes {
     (
@@ -241,7 +264,12 @@ interface CreateTransactionAttributes {
     ): TransactionAttributes;
 }
 interface LogCheckout {
-    (step: number, options?: string, attrs?: SDKEventAttrs, customFlags?: SDKEventCustomFlags): void;
+    (
+        step: number,
+        options?: string,
+        attrs?: SDKEventAttrs,
+        customFlags?: SDKEventCustomFlags,
+    ): void;
 }
 interface LogImpression {
     (
@@ -360,7 +388,10 @@ export namespace Consent {
 export interface ConsentState {
     setGDPRConsentState: (gdprConsentState: GDPRConsentState) => ConsentState;
     setCCPAConsentState: (ccpaConsentState: CCPAConsentState) => ConsentState;
-    addGDPRConsentState: (purpose: string, gdprConsent: PrivacyConsentState) => ConsentState;
+    addGDPRConsentState: (
+        purpose: string,
+        gdprConsent: PrivacyConsentState,
+    ) => ConsentState;
     getGDPRConsentState: () => GDPRConsentState;
     getCCPAConsentState: () => CCPAConsentState;
     removeGDPRConsentState: (purpose: string) => ConsentState;
@@ -513,7 +544,10 @@ export interface User {
     getFirstSeenTime: () => number;
 }
 export type UserAttributesValue = string | number | boolean | null;
-export type AllUserAttributes = Record<string, UserAttributesValue | UserAttributesValue[]>;
+export type AllUserAttributes = Record<
+    string,
+    UserAttributesValue | UserAttributesValue[]
+>;
 export interface UserIdentities {
     customerid?: string | undefined;
     email?: string | undefined;

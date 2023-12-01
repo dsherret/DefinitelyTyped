@@ -80,7 +80,7 @@ bag.readMessages(
         endTime: { sec: 1, nsec: 1 },
         freeze: false,
     },
-    msg => {
+    (msg) => {
         msg;
     },
 );

@@ -3,7 +3,10 @@ import * as OAuth2Server from "oauth2-server";
 import express = require("express");
 
 const oauth2Model: OAuth2Server.AuthorizationCodeModel = {
-    getClient: async (clientId: string, clientSecret: string): Promise<OAuth2Server.Client | OAuth2Server.Falsey> => {
+    getClient: async (
+        clientId: string,
+        clientSecret: string,
+    ): Promise<OAuth2Server.Client | OAuth2Server.Falsey> => {
         return undefined;
     },
     saveToken: async (
@@ -13,17 +16,24 @@ const oauth2Model: OAuth2Server.AuthorizationCodeModel = {
     ): Promise<OAuth2Server.Token> => {
         return token;
     },
-    getAccessToken: async (accessToken: string): Promise<OAuth2Server.Token> => {
+    getAccessToken: async (
+        accessToken: string,
+    ): Promise<OAuth2Server.Token> => {
         return {
             accessToken,
             client: { id: "testClient", grants: ["access_token"] },
             user: { id: "testUser" },
         };
     },
-    verifyScope: async (token: OAuth2Server.Token, scope: string): Promise<boolean> => {
+    verifyScope: async (
+        token: OAuth2Server.Token,
+        scope: string,
+    ): Promise<boolean> => {
         return true;
     },
-    getAuthorizationCode: async (authorizationCode: string): Promise<OAuth2Server.AuthorizationCode> => {
+    getAuthorizationCode: async (
+        authorizationCode: string,
+    ): Promise<OAuth2Server.AuthorizationCode> => {
         return {
             authorizationCode,
             expiresAt: new Date(),
@@ -39,7 +49,9 @@ const oauth2Model: OAuth2Server.AuthorizationCodeModel = {
     ): Promise<OAuth2Server.AuthorizationCode> => {
         return code;
     },
-    revokeAuthorizationCode: async (code: OAuth2Server.AuthorizationCode): Promise<boolean> => {
+    revokeAuthorizationCode: async (
+        code: OAuth2Server.AuthorizationCode,
+    ): Promise<boolean> => {
         return true;
     },
 };
@@ -49,7 +61,9 @@ const serverOptions: ExpressOAuthServer.Options = {
     useErrorHandler: true,
     continueMiddleware: false,
 };
-const expressOAuthServer: ExpressOAuthServer = new ExpressOAuthServer(serverOptions);
+const expressOAuthServer: ExpressOAuthServer = new ExpressOAuthServer(
+    serverOptions,
+);
 
 let oAuthServer: OAuth2Server;
 let resultingTokenMiddleware: (
@@ -75,7 +89,11 @@ const expressApp = express();
 expressApp.all(
     "/path",
     expressOAuthServer.authenticate(),
-    (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    (
+        req: express.Request,
+        res: express.Response,
+        next: express.NextFunction,
+    ) => {
         res.json({ message: "Secure data" });
     },
 );

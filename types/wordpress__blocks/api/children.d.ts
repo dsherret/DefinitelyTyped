@@ -38,7 +38,9 @@ declare namespace children {
      *
      * @deprecated since 11.17.0. Use the html source instead.
      */
-    function matcher(selector: string): (domNode: Node & ParentNode) => ReactChild[];
+    function matcher(
+        selector: string,
+    ): (domNode: Node & ParentNode) => ReactChild[];
 
     /**
      * Given a block node, returns its HTML string representation.

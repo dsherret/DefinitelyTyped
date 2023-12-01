@@ -57,7 +57,7 @@ map1.addFileCoverage("foo.js");
 map1.addFileCoverage(fileCoverageData);
 map1.files()[0];
 map1.fileCoverageFor("foo").path;
-map1.filter(name => false);
+map1.filter((name) => false);
 map1.merge(map2);
 map1.merge(coverageMapData);
 

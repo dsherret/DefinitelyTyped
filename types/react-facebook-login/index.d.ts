@@ -2,7 +2,9 @@ import * as React from "react";
 
 export interface ReactFacebookLoginProps {
     appId: string;
-    callback(userInfo: ReactFacebookLoginInfo | ReactFacebookFailureResponse): void;
+    callback(
+        userInfo: ReactFacebookLoginInfo | ReactFacebookFailureResponse,
+    ): void;
     onFailure?(response: ReactFacebookFailureResponse): void;
 
     autoLoad?: boolean | undefined;
@@ -44,13 +46,13 @@ export interface ReactFacebookLoginInfo {
     email?: string | undefined;
     picture?:
         | {
-            data: {
-                height?: number | undefined;
-                is_silhouette?: boolean | undefined;
-                url?: string | undefined;
-                width?: number | undefined;
-            };
-        }
+              data: {
+                  height?: number | undefined;
+                  is_silhouette?: boolean | undefined;
+                  url?: string | undefined;
+                  width?: number | undefined;
+              };
+          }
         | undefined;
 }
 
@@ -59,4 +61,7 @@ export interface ReactFacebookLoginState {
     isProcessing?: boolean | undefined;
 }
 
-export default class ReactFacebookLogin extends React.Component<ReactFacebookLoginProps, ReactFacebookLoginState> {}
+export default class ReactFacebookLogin extends React.Component<
+    ReactFacebookLoginProps,
+    ReactFacebookLoginState
+> {}

@@ -77,7 +77,11 @@ export class SMTPServer extends events.EventEmitter {
      * @param {String} [host] The hostname to listen
      * @param {Function} callback The callback function to run when the server is listening
      */
-    public listen(port: number, host: string, callback?: (error: Error) => void): void;
+    public listen(
+        port: number,
+        host: string,
+        callback?: (error: Error) => void,
+    ): void;
 
     /**
      * <p>Closes the server</p>
@@ -89,7 +93,10 @@ export class SMTPServer extends events.EventEmitter {
 
 export class SimpleServer extends events.EventEmitter {
     constructor(callback?: (connection: SimpleServerConnection) => void);
-    constructor(options?: SmtpServerOptions, callback?: (connection: SimpleServerConnection) => void);
+    constructor(
+        options?: SmtpServerOptions,
+        callback?: (connection: SimpleServerConnection) => void,
+    );
 
     public server: SMTPServer;
 
@@ -100,7 +107,11 @@ export class SimpleServer extends events.EventEmitter {
      * @param {String} [host] The hostname to listen
      * @param {Function} callback The callback function to run when the server is listening
      */
-    public listen(port: number, host: string, callback?: (error: Error) => void): void;
+    public listen(
+        port: number,
+        host: string,
+        callback?: (error: Error) => void,
+    ): void;
 }
 
 /**
@@ -135,7 +146,9 @@ export interface SimpleServerConnection extends NodeJS.ReadableStream {
     reject(reason?: string): void;
 }
 
-export function createSimpleServer(callback?: (connection: SimpleServerConnection) => void): SimpleServer;
+export function createSimpleServer(
+    callback?: (connection: SimpleServerConnection) => void,
+): SimpleServer;
 export function createSimpleServer(
     options?: SmtpServerOptions,
     callback?: (connection: SimpleServerConnection) => void,

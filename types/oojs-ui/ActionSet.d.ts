@@ -164,7 +164,11 @@ declare namespace OO.ui {
          */
         forEach(
             filter: ActionSet.ActionFilter | null,
-            callback: (action: ActionWidget, index: number, list: ActionWidget[]) => void,
+            callback: (
+                action: ActionWidget,
+                index: number,
+                list: ActionWidget[],
+            ) => void,
         ): this;
 
         /**
@@ -195,9 +199,16 @@ declare namespace OO.ui {
         clear(): this;
 
         // #region EventEmitter overloads
-        on<K extends keyof ActionSet.EventMap, A extends ArgTuple = [], C = null>(
+        on<
+            K extends keyof ActionSet.EventMap,
+            A extends ArgTuple = [],
+            C = null,
+        >(
             event: K,
-            method: EventHandler<C, (this: C, ...args: [...A, ...ActionSet.EventMap[K]]) => void>,
+            method: EventHandler<
+                C,
+                (this: C, ...args: [...A, ...ActionSet.EventMap[K]]) => void
+            >,
             args?: A,
             context?: C,
         ): this;
@@ -219,7 +230,10 @@ declare namespace OO.ui {
 
         off<K extends keyof ActionSet.EventMap, C = null>(
             event: K,
-            method?: EventHandler<C, (this: C, ...args: ActionSet.EventMap[K]) => void>,
+            method?: EventHandler<
+                C,
+                (this: C, ...args: ActionSet.EventMap[K]) => void
+            >,
             context?: C,
         ): this;
         off<K extends string, C = null>(
@@ -228,11 +242,23 @@ declare namespace OO.ui {
             context?: C,
         ): this;
 
-        emit<K extends keyof ActionSet.EventMap>(event: K, ...args: ActionSet.EventMap[K]): boolean;
-        emit<K extends string>(event: K extends keyof ActionSet.EventMap ? never : K, ...args: any[]): boolean;
+        emit<K extends keyof ActionSet.EventMap>(
+            event: K,
+            ...args: ActionSet.EventMap[K]
+        ): boolean;
+        emit<K extends string>(
+            event: K extends keyof ActionSet.EventMap ? never : K,
+            ...args: any[]
+        ): boolean;
 
-        emitThrow<K extends keyof ActionSet.EventMap>(event: K, ...args: ActionSet.EventMap[K]): boolean;
-        emitThrow<K extends string>(event: K extends keyof ActionSet.EventMap ? never : K, ...args: any[]): boolean;
+        emitThrow<K extends keyof ActionSet.EventMap>(
+            event: K,
+            ...args: ActionSet.EventMap[K]
+        ): boolean;
+        emitThrow<K extends string>(
+            event: K extends keyof ActionSet.EventMap ? never : K,
+            ...args: any[]
+        ): boolean;
 
         connect<T extends Partial<Record<keyof ActionSet.EventMap, any>>, C>( // eslint-disable-line @definitelytyped/no-unnecessary-generics
             context: C,
@@ -279,7 +305,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: {}): ActionSet;
+            new (config?: {}): ActionSet;
             prototype: ActionSet;
             static: Static;
         }

@@ -23,9 +23,9 @@ const typeConstructorOptions: TypeConstructorOptions = {
     resolve: fn,
     construct: fn,
     instanceOf: obj,
-    predicate: obj => false,
+    predicate: (obj) => false,
     represent: fn,
-    representName: obj => "name",
+    representName: (obj) => "name",
     defaultStyle: str,
     multi: false,
     styleAliases: map,
@@ -114,7 +114,7 @@ dumpOpts = {
     schema: yaml.FAILSAFE_SCHEMA,
 };
 dumpOpts = {
-    quotingType: "\"",
+    quotingType: '"',
 };
 dumpOpts = {
     replacer: (_key, _value) => "new_value",
@@ -159,13 +159,13 @@ value = yaml.loadAll(str, null, loadOpts);
 value = yaml.loadAll(str, undefined, loadOpts);
 
 // $ExpectType void
-yaml.loadAll(str, doc => {
+yaml.loadAll(str, (doc) => {
     value = doc;
 });
 // $ExpectType void
 yaml.loadAll(
     str,
-    doc => {
+    (doc) => {
         value = doc;
     },
     loadOpts,

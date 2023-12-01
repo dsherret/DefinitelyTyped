@@ -44,7 +44,11 @@ async function REDTests() {
 
 type CheckTypeShortcutsForJs =
     | RED.NodeInitializer
-    | RED.NodeConstructor<RED.Node<RED.NodeCredentials<{}>>, RED.NodeDef, RED.NodeCredentials<{}>>
+    | RED.NodeConstructor<
+          RED.Node<RED.NodeCredentials<{}>>,
+          RED.NodeDef,
+          RED.NodeCredentials<{}>
+      >
     | RED.NodeAPISettingsWithData
     | RED.NodeSetting<string>
     | RED.NodeSettings<{}>
@@ -64,7 +68,10 @@ type CheckTypeShortcutsForJs =
 
 type CheckTypeShortcutsForHtml =
     | RED.EditorNodePropertyDef<string, RED.EditorNodeProperties>
-    | RED.EditorNodePropertiesDef<RED.EditorNodeProperties, RED.EditorNodeProperties>
+    | RED.EditorNodePropertiesDef<
+          RED.EditorNodeProperties,
+          RED.EditorNodeProperties
+      >
     | RED.EditorNodeProperties
     | RED.EditorNodeInstance
     | RED.EditorNodeCredentials<{}>

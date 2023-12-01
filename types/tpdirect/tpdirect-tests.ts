@@ -50,24 +50,27 @@ TPDirect.card.setup({
 });
 
 // $ExpectType void
-TPDirect.card.setup({
-    number: {
-        element: "#body",
-        placeholder: "**** **** **** ****",
+TPDirect.card.setup(
+    {
+        number: {
+            element: "#body",
+            placeholder: "**** **** **** ****",
+        },
+        ccv: {
+            element: "#body",
+            placeholder: "***",
+        },
+        expirationDate: {
+            element: "#body",
+            placeholder: "MM / YYYY",
+        },
     },
-    ccv: {
-        element: "#body",
-        placeholder: "***",
+    {
+        input: {
+            color: "red",
+        },
     },
-    expirationDate: {
-        element: "#body",
-        placeholder: "MM / YYYY",
-    },
-}, {
-    input: {
-        color: "red",
-    },
-});
+);
 
 /**
  * Test Apple Pay
@@ -77,27 +80,32 @@ TPDirect.card.setup({
 TPDirect.paymentRequestApi.checkAvailability();
 
 // $ExpectType void
-TPDirect.paymentRequestApi.setupPaymentRequest({
-    supportedNetworks: ["AMEX", "JCB", "MASTERCARD", "VISA"],
-    supportedMethods: ["apple_pay"],
-    displayItems: [{
-        amount: {
-            currency: "TWD",
-            value: "1.00",
+TPDirect.paymentRequestApi.setupPaymentRequest(
+    {
+        supportedNetworks: ["AMEX", "JCB", "MASTERCARD", "VISA"],
+        supportedMethods: ["apple_pay"],
+        displayItems: [
+            {
+                amount: {
+                    currency: "TWD",
+                    value: "1.00",
+                },
+                label: "hi",
+            },
+        ],
+        total: {
+            amount: {
+                currency: "TWD",
+                value: "1.00",
+            },
+            label: "total",
         },
-        label: "hi",
-    }],
-    total: {
-        amount: {
-            currency: "TWD",
-            value: "1.00",
-        },
-        label: "total",
     },
-}, (result) => {
-    result.browserSupportPaymentRequest; // $ExpectType boolean
-    result.canMakePaymentWithActiveCard; // $ExpectType boolean
-});
+    (result) => {
+        result.browserSupportPaymentRequest; // $ExpectType boolean
+        result.canMakePaymentWithActiveCard; // $ExpectType boolean
+    },
+);
 
 // $ExpectType void
 TPDirect.paymentRequestApi.setupApplePay({
@@ -221,14 +229,11 @@ TPDirect.samsungPay.setupPaymentRequest({
 });
 
 // $ExpectType void
-TPDirect.samsungPay.setupSamsungPayButton(
-    "#button",
-    {
-        color: "black",
-        shape: "rectangular",
-        type: "buy",
-    },
-);
+TPDirect.samsungPay.setupSamsungPayButton("#button", {
+    color: "black",
+    shape: "rectangular",
+    type: "buy",
+});
 
 /**
  * Test LINE Pay

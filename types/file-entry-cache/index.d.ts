@@ -5,7 +5,10 @@
  * @param useCheckSum - Whether to use md5 checksum to verify if file changed.
  * If false the default will be to use the mtime and size of the file
  */
-export function createFromFile(pathToCache: string, useCheckSum?: boolean): FileEntryCache;
+export function createFromFile(
+    pathToCache: string,
+    useCheckSum?: boolean,
+): FileEntryCache;
 
 /**
  * @param cacheName - the name of the cache to be created
@@ -13,7 +16,11 @@ export function createFromFile(pathToCache: string, useCheckSum?: boolean): File
  * @param usecheckSum - Whether to use md5 checksum to verify if file changed.
  * If false the default will be to use the mtime and size of the file
  */
-export function create(cacheName: string, directory?: string, usecheckSum?: boolean): FileEntryCache;
+export function create(
+    cacheName: string,
+    directory?: string,
+    usecheckSum?: boolean,
+): FileEntryCache;
 
 export interface FileEntryCache {
     /** the flat cache storage used to persist the metadata of the `files */
@@ -70,9 +77,11 @@ export interface FileDescriptor {
     readonly notFound: boolean;
     readonly err?: Error | undefined;
     readonly changed?: boolean | undefined;
-    readonly meta?: {
-        readonly size?: number | undefined;
-        readonly mtime?: number | undefined;
-        readonly hash?: string | undefined;
-    } | undefined;
+    readonly meta?:
+        | {
+              readonly size?: number | undefined;
+              readonly mtime?: number | undefined;
+              readonly hash?: string | undefined;
+          }
+        | undefined;
 }

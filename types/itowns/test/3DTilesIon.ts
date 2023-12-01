@@ -24,7 +24,7 @@ const view = new itowns.GlobeView(viewerDiv, placement, viewOptions);
 // defined as a plain js object. See `Layer` documentation for more info.
 itowns.Fetcher.json("./layers/JSONLayers/OPENSM.json").then(function _(json) {
     const config = {
-        ...json as OpenSM,
+        ...(json as OpenSM),
         source: new itowns.TMSSource((json as OpenSM).source),
     };
     const layer = new itowns.ColorLayer("Ortho", config);
@@ -40,14 +40,14 @@ function addElevationLayerFromConfig(json: WorldDTM | IgnMNTHighres) {
         ...json,
         source: new itowns.WMTSSource(json.source),
     };
-    view.addLayer(
-        new itowns.ElevationLayer(config.id, config),
-    );
+    view.addLayer(new itowns.ElevationLayer(config.id, config));
 }
-itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json")
-    .then((json) => addElevationLayerFromConfig(json as IgnMNTHighres));
-itowns.Fetcher.json("./layers/JSONLayers/WORLD_DTM.json")
-    .then((json) => addElevationLayerFromConfig(json as WorldDTM));
+itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json").then((json) =>
+    addElevationLayerFromConfig(json as IgnMNTHighres),
+);
+itowns.Fetcher.json("./layers/JSONLayers/WORLD_DTM.json").then((json) =>
+    addElevationLayerFromConfig(json as WorldDTM),
+);
 
 // ---------- ADD 3D TILES MODEL FROM CESIUM ION SERVER : ----------
 
@@ -68,11 +68,15 @@ const threeDTilesIonSource = new itowns.C3DTilesIonSource({
     assetId: 96188,
 });
 threeDTilesIonSource.whenReady.then(displayAttributions); // Add attributions returned by cesium ion server
-const threeDTilesIonLayer = new itowns.C3DTilesLayer("3d-tiles-cesium-ion", {
-    name: "3D Tiles from Cesium Ion",
-    source: threeDTilesIonSource,
-    registeredExtensions: extensions,
-}, view);
+const threeDTilesIonLayer = new itowns.C3DTilesLayer(
+    "3d-tiles-cesium-ion",
+    {
+        name: "3D Tiles from Cesium Ion",
+        source: threeDTilesIonSource,
+        registeredExtensions: extensions,
+    },
+    view,
+);
 
 itowns.View.prototype.addLayer.call(view, threeDTilesIonLayer);
 

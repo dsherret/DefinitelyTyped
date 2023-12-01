@@ -26,10 +26,18 @@ export function isPlainText(value: string): boolean;
 export function hasLongerLines(str: string, lineLength: number): boolean;
 
 /** Encodes a string or an Buffer to an UTF-8 MIME Word (rfc2047) */
-export function encodeWord(data: Buffer | string, mimeWordEncoding?: "Q" | "B", maxLength?: number): string;
+export function encodeWord(
+    data: Buffer | string,
+    mimeWordEncoding?: "Q" | "B",
+    maxLength?: number,
+): string;
 
 /** Finds word sequences with non ascii text and converts these to mime words */
-export function encodeWords(value: string, mimeWordEncoding?: "Q" | "B", maxLength?: number): string;
+export function encodeWords(
+    value: string,
+    mimeWordEncoding?: "Q" | "B",
+    maxLength?: number,
+): string;
 
 /**
  * Joins parsed header value together as 'value; param1=value1; param2=value2'
@@ -52,7 +60,11 @@ export function buildHeaderValue(structured: HeaderValue): string;
  *     title*1*=%20string
  * ```
  */
-export function buildHeaderParam(key: string, data: Buffer | string, maxLength?: number): ParsedHeaderParam[];
+export function buildHeaderParam(
+    key: string,
+    data: Buffer | string,
+    maxLength?: number,
+): ParsedHeaderParam[];
 
 /**
  * Parses a header value with key=value arguments into a structured
@@ -77,7 +89,11 @@ export function detectExtension(mimeType: string): string;
 export function detectMimeType(extension: string): string;
 
 /** Folds long lines, useful for folding header lines (afterSpace=false) and flowed text (afterSpace=true) */
-export function foldLines(str: string, lineLength?: number, afterSpace?: boolean): string;
+export function foldLines(
+    str: string,
+    lineLength?: number,
+    afterSpace?: boolean,
+): string;
 
 /** Splits a mime encoded string. Needed for dividing mime words into smaller chunks */
 export function splitMimeEncodedString(str: string, maxlen?: number): string[];

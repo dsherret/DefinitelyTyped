@@ -4,14 +4,17 @@ const filenames: string[] = dotenv.listFiles("/path/to/project");
 dotenv.listFiles("/path/to/project", {});
 dotenv.listFiles("/path/to/project", { node_env: "development" });
 
-const parsed: { [name: string]: string } = dotenv.parse("/path/to/project/.env");
+const parsed: { [name: string]: string } = dotenv.parse(
+    "/path/to/project/.env",
+);
 dotenv.parse("/path/to/project/.env", {});
 dotenv.parse(["/path/to/project/.env"], {});
 dotenv.parse("/path/to/project/.env", { encoding: "utf8" });
 dotenv.parse(["/path/to/project/.env"], { encoding: "utf8" });
 
 const result = dotenv.load("/path");
-const value: string | null = result.error || !result.parsed ? null : result.parsed["BASIC"];
+const value: string | null =
+    result.error || !result.parsed ? null : result.parsed["BASIC"];
 
 dotenv.load(["/path"]);
 dotenv.load("/path", {});
@@ -27,7 +30,8 @@ dotenv.unload("/path/to/project/.env", { encoding: "utf8" });
 dotenv.unload(["/path/to/project/.env"], { encoding: "utf8" });
 
 const config = dotenv.config();
-const dbUrl: string | null = config.error || !config.parsed ? null : config.parsed["BASIC"];
+const dbUrl: string | null =
+    config.error || !config.parsed ? null : config.parsed["BASIC"];
 
 dotenv.config({});
 dotenv.config({

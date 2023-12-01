@@ -64,14 +64,22 @@ interface Array<T> extends Enumerable<T> {
      * invalidate any related properties. Pass the starting index of the change
      * as well as a delta of the amounts to change.
      */
-    arrayContentWillChange(startIdx: number, removeAmt: number, addAmt: number): this;
+    arrayContentWillChange(
+        startIdx: number,
+        removeAmt: number,
+        addAmt: number,
+    ): this;
     /**
      * If you are implementing an object that supports `Ember.Array`, call this
      * method just after the array content changes to notify any observers and
      * invalidate any related properties. Pass the starting index of the change
      * as well as a delta of the amounts to change.
      */
-    arrayContentDidChange(startIdx: number, removeAmt: number, addAmt: number): this;
+    arrayContentDidChange(
+        startIdx: number,
+        removeAmt: number,
+        addAmt: number,
+    ): this;
     /**
      * Returns a special object that can be used to observe individual properties
      * on the array. Just get an equivalent property on this object and it will

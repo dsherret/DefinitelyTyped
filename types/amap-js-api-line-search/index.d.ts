@@ -134,7 +134,10 @@ declare namespace AMap {
          */
         searchById(
             id: string,
-            callback: (status: LineSearch.SearchStatus, result: string | LineSearch.SearchResult) => void,
+            callback: (
+                status: LineSearch.SearchStatus,
+                result: string | LineSearch.SearchResult,
+            ) => void,
         ): void;
         /**
          * 根据给定公交线路名称进行公交线路详情查询
@@ -143,7 +146,10 @@ declare namespace AMap {
          */
         search(
             keyword: string,
-            callback: (status: LineSearch.SearchStatus, result: string | LineSearch.SearchResult) => void,
+            callback: (
+                status: LineSearch.SearchStatus,
+                result: string | LineSearch.SearchResult,
+            ) => void,
         ): void;
         /**
          * 设置查询结果页码

@@ -30,6 +30,9 @@ var mailOptions: nodemailer.SendMailOptions = {
     text: "Hello world ✔", // plaintext body
     html: "<b>Hello world ✔</b>", // html body
 };
-transport.send(mailOptions, (error: Error, info: nodemailer.SentMessageInfo): void => {
-    // nothing
-});
+transport.send(
+    mailOptions,
+    (error: Error, info: nodemailer.SentMessageInfo): void => {
+        // nothing
+    },
+);

@@ -8,12 +8,12 @@ const WebSocketServer = WebSocket.Server;
 const non_ssl = new WebSocketServer({ port: 3000 });
 
 let non_ssl_disconnections = 0;
-non_ssl.on("connection", function(ws) {
-    ws.on("message", function(message) {
+non_ssl.on("connection", function (ws) {
+    ws.on("message", function (message) {
         ws.send(message);
     });
 
-    ws.on("close", function() {
+    ws.on("close", function () {
         if (++non_ssl_disconnections == 519) {
             non_ssl.close();
         }
@@ -33,12 +33,12 @@ const httpsServer = https.createServer(options, (req: any, res: any) => {
 const ssl = new WebSocketServer({ server: httpsServer });
 
 let ssl_disconnections = 0;
-ssl.on("connection", function(ws) {
-    ws.on("message", function(message) {
+ssl.on("connection", function (ws) {
+    ws.on("message", function (message) {
         ws.send(message);
     });
 
-    ws.on("close", function() {
+    ws.on("close", function () {
         if (++ssl_disconnections == 519) {
             ssl.close();
         }
@@ -61,7 +61,9 @@ const server: http.Server = WebSocket.http.createServer(
             req.on("data", (chunk: Buffer) => {
                 body.push(Buffer.from(chunk));
             }).on("end", () => {
-                res.end("You posted me this: " + Buffer.concat(body).toString());
+                res.end(
+                    "You posted me this: " + Buffer.concat(body).toString(),
+                );
             });
             // handle some GET url
         } else if (req.url === "/") {

@@ -63,9 +63,15 @@ declare module "wallabyjs" {
      * @see {@link https://wallabyjs.com/docs/config/compilers.html} for details.
      */
     export interface IWallabyBuiltInCompilers {
-        babel(compilerOptions?: IWallabyBuiltInCompilerOptions): IWallabyCompilerResult;
-        coffeeScript(compilerOptions?: IWallabyBuiltInCompilerOptions): IWallabyCompilerResult;
-        typeScript(compilerOptions?: IWallabyBuiltInCompilerOptions): IWallabyCompilerResult;
+        babel(
+            compilerOptions?: IWallabyBuiltInCompilerOptions,
+        ): IWallabyCompilerResult;
+        coffeeScript(
+            compilerOptions?: IWallabyBuiltInCompilerOptions,
+        ): IWallabyCompilerResult;
+        typeScript(
+            compilerOptions?: IWallabyBuiltInCompilerOptions,
+        ): IWallabyCompilerResult;
     }
 
     /**

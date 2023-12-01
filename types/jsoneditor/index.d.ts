@@ -12,7 +12,13 @@ export interface EditableNode {
 
 export type NodeType = "object" | "array" | "string" | "auto";
 
-export type JSONEditorMode = "tree" | "view" | "form" | "code" | "text" | "preview";
+export type JSONEditorMode =
+    | "tree"
+    | "view"
+    | "form"
+    | "code"
+    | "text"
+    | "preview";
 
 export interface ValidationError {
     path: JSONPath;
@@ -77,7 +83,10 @@ export interface Template {
     value: any;
 }
 
-export type AutoCompleteCompletion = null | string[] | { startFrom: number; options: string[] };
+export type AutoCompleteCompletion =
+    | null
+    | string[]
+    | { startFrom: number; options: string[] };
 
 export type AutoCompleteMatchingStrategy = "start" | "contain";
 
@@ -98,7 +107,10 @@ export interface AutoCompleteOptions {
      * - 'start': Match your input from the start, e.g. 'ap' matches 'apple' but 'pl' does not.
      * - 'contain': Contains the user's input or not, e.g. 'pl' matches 'apple' too.
      */
-    filter?: AutoCompleteMatchingStrategy | ((query: string) => boolean) | undefined;
+    filter?:
+        | AutoCompleteMatchingStrategy
+        | ((query: string) => boolean)
+        | undefined;
     /**
      * Indicate the way to trigger autocomplete menu.
      * - 'keydown': When you type something in the field or value, it will trigger autocomplete immediately.
@@ -346,7 +358,9 @@ export interface JSONEditorOptions {
      * The function must either return a string containing CSS class names, or return undefined in order to do nothing for a specific node.
      * In order to update css classes when they depend on external state, you can call `editor.refresh()`.
      */
-    onClassName?: ((classNameParams: OnClassNameParams) => string | undefined) | undefined;
+    onClassName?:
+        | ((classNameParams: OnClassNameParams) => string | undefined)
+        | undefined;
     /**
      * Set a callback function to be invoked when a node is expanded/collapsed (not programtically via APIs).
      * Only applicable when option mode is `tree`, `form`, or `view`.
@@ -362,7 +376,9 @@ export interface JSONEditorOptions {
      * In modes `text` and `code`, the callback is invoked as `editable(node)` where node is an empty object (no field, value, or path).
      * In that case the function can return false to make the text or code editor completely readonly.
      */
-    onEditable?: ((node: EditableNode | object) => boolean | FieldEditable) | undefined;
+    onEditable?:
+        | ((node: EditableNode | object) => boolean | FieldEditable)
+        | undefined;
     /**
      * Set a callback function triggered when an error occurs.
      * Invoked with the error as first argument. The callback is only invoked
@@ -374,13 +390,17 @@ export interface JSONEditorOptions {
      * Set a callback function triggered right after the mode is changed by the user.
      * Only applicable when the mode can be changed by the user (i.e. when option modes is set).
      */
-    onModeChange?: ((newMode: JSONEditorMode, oldMode: JSONEditorMode) => void) | undefined;
+    onModeChange?:
+        | ((newMode: JSONEditorMode, oldMode: JSONEditorMode) => void)
+        | undefined;
     /**
      * Customize the name of object and array nodes. By default the names are brackets with the number of children inside, like {5} and [32].
      * The number inside can be customized. using onNodeName. The onNodeName function should return a string containing the name for the node.
      * If nothing is returned, the size (number of children) will be displayed.
      */
-    onNodeName?: ((nodeName: OnNodeNameParams) => string | undefined) | undefined;
+    onNodeName?:
+        | ((nodeName: OnNodeNameParams) => string | undefined)
+        | undefined;
     /**
      * Set a callback function for custom validation. Available in all modes.
      * On a change of the JSON, the callback function is invoked with the changed data.
@@ -388,21 +408,27 @@ export interface JSONEditorOptions {
      * The function can also return a Promise resolving with the errors retrieved via an asynchronous validation (like sending a request to a server for validation).
      * @see schema for JSON schema validation.
      */
-    onValidate?: ((json: any) => ValidationError[] | Promise<ValidationError[]>) | undefined;
+    onValidate?:
+        | ((json: any) => ValidationError[] | Promise<ValidationError[]>)
+        | undefined;
     /**
      * Set a callback function for validation and parse errors. Available in all modes.
      * On validation of the json, if errors of any kind were found this callback is invoked with the errors data.
      * On change, the callback will be invoked only if errors were changed.
      * @param errors validation errors
      */
-    onValidationError?: ((errors: ReadonlyArray<SchemaValidationError | ParseError>) => void) | undefined;
+    onValidationError?:
+        | ((errors: ReadonlyArray<SchemaValidationError | ParseError>) => void)
+        | undefined;
     /**
      * Set a callback function to customize the context menu in tree mode. Each time the user clicks on the context menu button, an array of menu items is created.
      * If this callback is configured, the array with menu items is passed to this function. The menu items can be customized in this function in any aspect of these menu items,
      * including deleting them and/or adding new items. The function should return the final array of menu items to be displayed to the user.
      * Each menu item is represented by an object, which may also contain a submenu array of items.
      */
-    onCreateMenu?: ((menuItems: MenuItem[], node: MenuItemNode) => MenuItem[]) | undefined;
+    onCreateMenu?:
+        | ((menuItems: MenuItem[], node: MenuItemNode) => MenuItem[])
+        | undefined;
     /**
      * If true, unicode characters are escaped and displayed as their hexadecimal code (like \u260E) instead of of the character itself (like ☎).
      * @default false
@@ -506,14 +532,22 @@ export interface JSONEditorOptions {
      * @param end Selected end position
      * @param text selected text
      */
-    onTextSelectionChange?: ((start: SelectionPosition, end: SelectionPosition, text: string) => void) | undefined;
+    onTextSelectionChange?:
+        | ((
+              start: SelectionPosition,
+              end: SelectionPosition,
+              text: string,
+          ) => void)
+        | undefined;
     /**
      * Set a callback function triggered when Nodes are selected in the JSONEditor.
      * Only applicable when mode is `tree`.
      * @param start
      * @param end
      */
-    onSelectionChange?: ((start: SerializableNode, end: SerializableNode) => void) | undefined;
+    onSelectionChange?:
+        | ((start: SerializableNode, end: SerializableNode) => void)
+        | undefined;
     /**
      * Set a callback function that will be triggered when an event will occur in a JSON field or value.
      * Only applicable when mode is `form`, `tree` or `view`.
@@ -543,7 +577,13 @@ export interface JSONEditorOptions {
      * @param color The current color.
      * @param onChange A callback which has to be invoked with the new color selected in the color picker.
      */
-    onColorPicker?: ((parent: HTMLElement, color: string, onChange: (color: Color) => void) => void) | undefined;
+    onColorPicker?:
+        | ((
+              parent: HTMLElement,
+              color: string,
+              onChange: (color: Color) => void,
+          ) => void)
+        | undefined;
     /**
      * By default (true), a tag with the date/time of a timestamp is displayed right from values containing a timestamp.
      * By default, a value is considered a timestamp when it is an integer number with a value larger than Jan 1th 2000, 946684800000.
@@ -572,7 +612,9 @@ export interface JSONEditorOptions {
      * All available fields for translation can be found in the source file `src/js/i18n.js`.
      * @example { 'pt-BR': { 'auto': 'Automático testing' }, 'en': { 'auto': 'Auto testing' } }
      */
-    languages?: Record<string, Partial<Record<TranslationKey, string>>> | undefined;
+    languages?:
+        | Record<string, Partial<Record<TranslationKey, string>>>
+        | undefined;
     /**
      * The container element where modals (like for sorting and filtering) are attached:
      * an overlay will be created on top of this container, and the modal will be created in the center of this container.
@@ -606,7 +648,9 @@ export interface JSONEditorOptions {
      * This query will be executed using `executeQuery`. Note that there is a special case '@' for filter.field and sort.field.
      * It means that the field itself is selected, for example when having an array containing numbers.
      */
-    createQuery?: ((json: any, queryOptions: QueryOptions) => string) | undefined;
+    createQuery?:
+        | ((json: any, queryOptions: QueryOptions) => string)
+        | undefined;
     /**
      * Replace the build-in query language used in the Transform modal with a custom language. Normally used in combination with `createQuery`.
      * The input for the function is the current JSON and a query string, and output must be the transformed JSON.
@@ -627,7 +671,11 @@ export default class JSONEditor {
      * @param json Initial JSON data to be loaded into the JSONEditor. Alternatively, the method JSONEditor.set(json) can be used to load JSON data into the editor.
      * @returns New instance of a JSONEditor.
      */
-    constructor(container: HTMLElement, options?: JSONEditorOptions, json?: any);
+    constructor(
+        container: HTMLElement,
+        options?: JSONEditorOptions,
+        json?: any,
+    );
     /**
      * Collapse all fields. Only applicable for mode `tree`, `view`, and `form`.
      */
@@ -669,7 +717,10 @@ export default class JSONEditor {
      * @param start Path for the first node in range
      * @param end Path for the last node in range
      */
-    getNodesByRange(start: { path: JSONPath }, end: { path: JSONPath }): SerializableNode[];
+    getNodesByRange(
+        start: { path: JSONPath },
+        end: { path: JSONPath },
+    ): SerializableNode[];
     /**
      * Get the current selected nodes. Only applicable for mode `tree`.
      */
@@ -682,7 +733,11 @@ export default class JSONEditor {
     /**
      * Get the current selected text with the selection range. Only applicable for mode `text` and `code`.
      */
-    getTextSelection(): { start: SelectionPosition; end: SelectionPosition; text: string };
+    getTextSelection(): {
+        start: SelectionPosition;
+        end: SelectionPosition;
+        text: string;
+    };
     /**
      * Force the editor to refresh the user interface and update all rendered HTML. This can be useful for example when using `onClassName` and the returned class name depends on external factors.
      */

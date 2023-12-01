@@ -9,8 +9,16 @@ export class SMTPServer extends EventEmitter {
     onClose(callback: (err?: Error) => any): any;
     onConnect(session: Session, callback: (err?: Error) => any): any;
     onData(stream: any, session: Session, callback: (err?: Error) => any): any;
-    onMailFrom(address: Address, session: Session, callback: (err?: Error) => any): any;
-    onRcptTo(address: Address, session: Session, callback: (err?: Error) => any): any;
+    onMailFrom(
+        address: Address,
+        session: Session,
+        callback: (err?: Error) => any,
+    ): any;
+    onRcptTo(
+        address: Address,
+        session: Session,
+        callback: (err?: Error) => any,
+    ): any;
 }
 
 export interface SMTPServerOptions {
@@ -136,27 +144,47 @@ export interface SMTPServerOptions {
      */
     onAuth?:
         | ((
-            auth: Authentication,
-            session: Session,
-            callback: (err?: Error, response?: AuthenticationResponse) => any,
-        ) => any)
+              auth: Authentication,
+              session: Session,
+              callback: (err?: Error, response?: AuthenticationResponse) => any,
+          ) => any)
         | undefined;
     /**
      * The callback to handle the client connection. (see details https://github.com/andris9/smtp-server#validating-client-connection)
      */
-    onConnect?: ((session: Session, callback: (err?: Error) => any) => any) | undefined;
+    onConnect?:
+        | ((session: Session, callback: (err?: Error) => any) => any)
+        | undefined;
     /**
      * the callback to validate MAIL FROM commands (see details https://github.com/andris9/smtp-server#validating-sender-addresses)
      */
-    onMailFrom?: ((address: Address, session: Session, callback: (err?: Error) => any) => any) | undefined;
+    onMailFrom?:
+        | ((
+              address: Address,
+              session: Session,
+              callback: (err?: Error) => any,
+          ) => any)
+        | undefined;
     /**
      * The callback to validate RCPT TO commands (see details https://github.com/andris9/smtp-server#validating-recipient-addresses)
      */
-    onRcptTo?: ((address: Address, session: Session, callback: (err?: Error) => any) => any) | undefined;
+    onRcptTo?:
+        | ((
+              address: Address,
+              session: Session,
+              callback: (err?: Error) => any,
+          ) => any)
+        | undefined;
     /**
      * the callback to handle incoming messages (see details https://github.com/andris9/smtp-server#processing-incoming-message)
      */
-    onData?: ((stream: any, session: Session, callback: (err?: Error) => any) => any) | undefined;
+    onData?:
+        | ((
+              stream: any,
+              session: Session,
+              callback: (err?: Error) => any,
+          ) => any)
+        | undefined;
     /**
      * the callback that informs about closed client connection
      */

@@ -8,21 +8,35 @@ declare namespace Gun {
     type DisallowArray<T> = ArrayOf<T> extends never ? T : never;
     /** These types cannot be stored on Gun */
 
-    type AlwaysDisallowedType<T> = T extends (...args: any[]) => void ? never
-        : T extends { new(...args: any[]): any } ? never
-        : AccessObject<T>;
+    type AlwaysDisallowedType<T> = T extends (...args: any[]) => void
+        ? never
+        : T extends { new (...args: any[]): any }
+          ? never
+          : AccessObject<T>;
     type AccessObject<T> = T extends object
-        ? { [key in keyof T]: (AlwaysDisallowedType<T[key]> extends never ? never : AccessObject<T[key]>) }
+        ? {
+              [key in keyof T]: AlwaysDisallowedType<T[key]> extends never
+                  ? never
+                  : AccessObject<T[key]>;
+          }
         : T;
     /** These types cannot be stored on Gun's root level */
-    type DisallowPrimitives<Open, T> = Open extends false ? T
-        : T extends string ? never
-        : T extends number ? never
-        : T extends boolean ? never
-        : T extends null ? never
-        : T extends undefined ? never
-        : T;
-    type ArrayAsRecord<DataType> = ArrayOf<DataType> extends never ? DataType : Record<string, any>;
+    type DisallowPrimitives<Open, T> = Open extends false
+        ? T
+        : T extends string
+          ? never
+          : T extends number
+            ? never
+            : T extends boolean
+              ? never
+              : T extends null
+                ? never
+                : T extends undefined
+                  ? never
+                  : T;
+    type ArrayAsRecord<DataType> = ArrayOf<DataType> extends never
+        ? DataType
+        : Record<string, any>;
     /**
      * options['module name'] allows you to pass options to a 3rd party module.
      * Their project README will likely list the exposed options
@@ -53,10 +67,26 @@ declare namespace Gun {
          */
         [key: string]: any;
     }>;
-    type Saveable<DataType> = Partial<DataType> | string | number | boolean | null | ChainReference<DataType>;
-    type AckCallback = (ack: { err: Error; ok: any } | { err: undefined; ok: string }) => void;
-    type Parameters<T extends (...args: any[]) => any> = T extends (...args: infer P) => any ? P : never;
-    interface ChainReference<DataType = any, ReferenceKey = any, IsTop extends "pre_root" | "root" | false = false> {
+    type Saveable<DataType> =
+        | Partial<DataType>
+        | string
+        | number
+        | boolean
+        | null
+        | ChainReference<DataType>;
+    type AckCallback = (
+        ack: { err: Error; ok: any } | { err: undefined; ok: string },
+    ) => void;
+    type Parameters<T extends (...args: any[]) => any> = T extends (
+        ...args: infer P
+    ) => any
+        ? P
+        : never;
+    interface ChainReference<
+        DataType = any,
+        ReferenceKey = any,
+        IsTop extends "pre_root" | "root" | false = false,
+    > {
         // #region API
         /**
          * Save data into gun, syncing it with your connected peers.
@@ -72,7 +102,11 @@ declare namespace Gun {
          * @param callback invoked on each acknowledgment
          */
         put(
-            data: Partial<AlwaysDisallowedType<DisallowPrimitives<IsTop, DisallowArray<DataType>>>>,
+            data: Partial<
+                AlwaysDisallowedType<
+                    DisallowPrimitives<IsTop, DisallowArray<DataType>>
+                >
+            >,
             callback?: AckCallback,
         ): ChainReference<DataType, ReferenceKey, IsTop>;
         /**
@@ -92,13 +126,38 @@ declare namespace Gun {
             callback?: (
                 /** the raw data. Internal node of gun. Will not typed here. */
                 paramA: Record<
-                    "gun" | "$" | "root" | "id" | "back" | "on" | "tag" | "get" | "soul" | "ack" | "put",
+                    | "gun"
+                    | "$"
+                    | "root"
+                    | "id"
+                    | "back"
+                    | "on"
+                    | "tag"
+                    | "get"
+                    | "soul"
+                    | "ack"
+                    | "put",
                     any
                 >,
                 /** the key, ID, or property name of the data. */
-                paramB: Record<"off" | "to" | "next" | "the" | "on" | "as" | "back" | "rid" | "id", any>,
+                paramB: Record<
+                    | "off"
+                    | "to"
+                    | "next"
+                    | "the"
+                    | "on"
+                    | "as"
+                    | "back"
+                    | "rid"
+                    | "id",
+                    any
+                >,
             ) => void,
-        ): ChainReference<DataType[K], K, IsTop extends "pre_root" ? "root" : false>;
+        ): ChainReference<
+            DataType[K],
+            K,
+            IsTop extends "pre_root" ? "root" : false
+        >;
         /**
          * Change the configuration of the gun database instance.
          * @param options The options argument is the same object you pass to the constructor.
@@ -106,7 +165,9 @@ declare namespace Gun {
          * The options's properties replace those in the instance's configuration but options.peers are **added** to peers known to the gun instance.
          * @returns No mention in the document, behavior as `ChainReference<DataType, ReferenceKey>`
          */
-        opt(options: ConstructorOptions): ChainReference<DataType, ReferenceKey>;
+        opt(
+            options: ConstructorOptions,
+        ): ChainReference<DataType, ReferenceKey>;
         /**
          * Move up to the parent context on the chain.
          *
@@ -131,7 +192,10 @@ declare namespace Gun {
          */
         on(
             callback: (
-                data: DisallowPrimitives<IsTop, AlwaysDisallowedType<ArrayAsRecord<DataType>>>,
+                data: DisallowPrimitives<
+                    IsTop,
+                    AlwaysDisallowedType<ArrayAsRecord<DataType>>
+                >,
                 key: ReferenceKey,
             ) => void,
             option?: { change: boolean } | boolean,
@@ -142,7 +206,12 @@ declare namespace Gun {
          */
         once(
             callback?: (
-                data: (DisallowPrimitives<IsTop, AlwaysDisallowedType<ArrayAsRecord<DataType>>>) | undefined,
+                data:
+                    | DisallowPrimitives<
+                          IsTop,
+                          AlwaysDisallowedType<ArrayAsRecord<DataType>>
+                      >
+                    | undefined,
                 key: ReferenceKey,
             ) => void,
             option?: { wait: number },
@@ -159,8 +228,9 @@ declare namespace Gun {
         set(
             data: AlwaysDisallowedType<
                 DataType extends Array<infer U>
-                    ? U extends { [key: string]: any; [key: number]: any } ? ArrayOf<DataType>
-                    : never
+                    ? U extends { [key: string]: any; [key: number]: any }
+                        ? ArrayOf<DataType>
+                        : never
                     : never
             >,
             callback?: AckCallback,
@@ -171,7 +241,10 @@ declare namespace Gun {
          * It also subscribes to every item as well and listens for newly inserted items.
          */
         map(
-            callback?: (value: ArrayOf<DataType>, key: DataType) => ArrayOf<DataType> | undefined,
+            callback?: (
+                value: ArrayOf<DataType>,
+                key: DataType,
+            ) => ArrayOf<DataType> | undefined,
         ): ChainReference<ArrayOf<DataType>, ReferenceKey>;
         /**
          * Undocumented, but extremely useful and mentioned in the document
@@ -197,7 +270,9 @@ declare namespace Gun {
          * **Warning**: Not included by default! You must include it yourself via `require('gun/lib/not.js')` or
          * `<script src="https://cdn.jsdelivr.net/npm/gun/lib/not.js"></script>`!
          */
-        not?(callback: (key: ReferenceKey) => void): ChainReference<DataType, ReferenceKey>;
+        not?(
+            callback: (key: ReferenceKey) => void,
+        ): ChainReference<DataType, ReferenceKey>;
         /**
          * Open behaves very similarly to gun.on, except it gives you the **full depth of a document** on every update.
          * It also works with graphs, tables, or other data structures. Think of it as opening up a live connection to a document.
@@ -205,14 +280,18 @@ declare namespace Gun {
          * **Warning**: Not included by default! You must include it yourself via `require('gun/lib/open.js')` or
          * `<script src="https://cdn.jsdelivr.net/npm/gun/lib/open.js"></script>`!
          */
-        open?(callback: (data: ArrayAsRecord<DataType>) => void): ChainReference<DataType, ReferenceKey>;
+        open?(
+            callback: (data: ArrayAsRecord<DataType>) => void,
+        ): ChainReference<DataType, ReferenceKey>;
         /**
          * Loads the full object once. It is the same as `open` but with the behavior of `once`.
          *
          * **Warning**: Not included by default! You must include it yourself via `require('gun/lib/load.js')` or
          * `<script src="https://cdn.jsdelivr.net/npm/gun/lib/load.js"></script>`!
          */
-        load?(callback: (data: ArrayAsRecord<DataType>) => void): ChainReference<DataType, ReferenceKey>;
+        load?(
+            callback: (data: ArrayAsRecord<DataType>) => void,
+        ): ChainReference<DataType, ReferenceKey>;
         /**
          * Returns a promise for you to use.
          *
@@ -229,7 +308,11 @@ declare namespace Gun {
          *  `<script src="https://cdn.jsdelivr.net/npm/gun/lib/then.js"></script>`!
          */
         promise?<
-            TResult1 = { put: ArrayAsRecord<DataType>; key: ReferenceKey; gun: ChainReference<DataType, ReferenceKey> },
+            TResult1 = {
+                put: ArrayAsRecord<DataType>;
+                key: ReferenceKey;
+                gun: ChainReference<DataType, ReferenceKey>;
+            },
         >(
             onfulfilled?: (value: TResult1) => TResult1 | PromiseLike<TResult1>,
         ): Promise<TResult1>;
@@ -272,7 +355,11 @@ declare namespace Gun {
          * **Warning**: The Timegraph extension isn't required by default, you would need to include at "gun/lib/time.js"
          */
         time?(
-            callback: (data: ArrayOf<DataType>, key: ReferenceKey, time: number) => void,
+            callback: (
+                data: ArrayOf<DataType>,
+                key: ReferenceKey,
+                time: number,
+            ) => void,
             alsoReceiveNOldEvents?: number,
         ): ChainReference<DataType, ReferenceKey>;
         /** Pushes data to a Timegraph with it's time set to Gun.state()'s time */
@@ -305,13 +392,18 @@ declare namespace Gun {
             cb?: (
                 ack:
                     | {
-                        ack: 2;
-                        get: string;
-                        on: (...args: [unknown, unknown, unknown]) => unknown;
-                        put: { alias: string; auth: any; epub: string; pub: string };
-                        sea: CryptoKeyPair;
-                        soul: string;
-                    }
+                          ack: 2;
+                          get: string;
+                          on: (...args: [unknown, unknown, unknown]) => unknown;
+                          put: {
+                              alias: string;
+                              auth: any;
+                              epub: string;
+                              pub: string;
+                          };
+                          sea: CryptoKeyPair;
+                          soul: string;
+                      }
                     | { err: string },
             ) => void,
             opt?: {},
@@ -332,13 +424,20 @@ declare namespace Gun {
          * @param pass Passphrase for the user.
          * @param cb Callback that is called when the user was successfully deleted.
          */
-        delete(alias: string, pass: string, cb?: (ack: { ok: 0 }) => void): Promise<void>;
+        delete(
+            alias: string,
+            pass: string,
+            cb?: (ack: { ok: 0 }) => void,
+        ): Promise<void>;
         /**
          * Recall saves a users credentials in sessionStorage of the browser. As long as the tab of your app is not closed the user stays logged in, even through page refreshes and reloads.
          * @param opt option object If you want to use browser sessionStorage to allow users to stay logged in as long as the session is open, set opt.sessionStorage to true
          * @param cb internally the callback is passed on to the user.auth function to logged the user back in. Refer to user.auth for callback documentation.
          */
-        recall(opt?: { sessionStorage: boolean }, cb?: Parameters<ChainReference["auth"]>[2]): ChainReference;
+        recall(
+            opt?: { sessionStorage: boolean },
+            cb?: Parameters<ChainReference["auth"]>[2],
+        ): ChainReference;
         /**
          * @param publicKey If you know a users publicKey you can get their user graph and see any unencrypted data they may have stored there.
          */
@@ -356,12 +455,12 @@ declare namespace Gun {
          *
          * or you can pass in an array of URLs to sync with multiple peers.
          */
-        <DataType = any>(options?: string | string[] | ConstructorOptions): ChainReference<DataType, any, "pre_root">;
-        new<DataType = any>(options?: string | string[] | ConstructorOptions): ChainReference<
-            DataType,
-            any,
-            "pre_root"
-        >;
+        <DataType = any>(
+            options?: string | string[] | ConstructorOptions,
+        ): ChainReference<DataType, any, "pre_root">;
+        new <DataType = any>(
+            options?: string | string[] | ConstructorOptions,
+        ): ChainReference<DataType, any, "pre_root">;
         node: {
             /** Returns true if data is a gun node, otherwise false. */
             is(anything: any): anything is ChainReference;
@@ -409,7 +508,10 @@ declare namespace Gun {
              * You will need this for most of SEA's API, see those method's examples.
              * The default cryptographic primitives for the asymmetric keys are ECDSA for signing and ECDH for encryption.
              */
-            pair(cb: (data: CryptoKeyPair) => void, opt?: {}): Promise<CryptoKeyPair | undefined>;
+            pair(
+                cb: (data: CryptoKeyPair) => void,
+                opt?: {},
+            ): Promise<CryptoKeyPair | undefined>;
             /**
              * Adds a signature to a message, for data that you want to prevent attackers tampering with.
              * @param data is the content that you want to prove is authorized.
@@ -421,7 +523,10 @@ declare namespace Gun {
              * @param message is what comes from .sign.
              * @param pair from .pair or its public key text (pair.pub).
              */
-            verify(message: any, pair: CryptoKeyPair | string): Promise<unknown>;
+            verify(
+                message: any,
+                pair: CryptoKeyPair | string,
+            ): Promise<unknown>;
             /**
              * Takes some data that you want to keep secret and encrypts it so nobody else can read it.
              * @param data is the content that you want to encrypt.
@@ -433,7 +538,10 @@ declare namespace Gun {
              * @param message is what comes from .encrypt.
              * @param pair from .pair or the passphrase to decypher the message.
              */
-            decrypt(message: any, pair: CryptoKeyPair | string): Promise<unknown>;
+            decrypt(
+                message: any,
+                pair: CryptoKeyPair | string,
+            ): Promise<unknown>;
         };
     }
 }

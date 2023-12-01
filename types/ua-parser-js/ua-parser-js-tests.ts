@@ -2,9 +2,22 @@ import UAParser = require("ua-parser-js");
 // eslint-disable-next-line no-duplicate-imports -- testing imports
 import { UAParser as UAParserAlias } from "ua-parser-js";
 // eslint-disable-next-line no-duplicate-imports -- testing imports
-import { BROWSER, CPU, DEVICE, ENGINE, IBrowser, ICPU, IDevice, IEngine, IOS, IResult, OS } from "ua-parser-js";
+import {
+    BROWSER,
+    CPU,
+    DEVICE,
+    ENGINE,
+    IBrowser,
+    ICPU,
+    IDevice,
+    IEngine,
+    IOS,
+    IResult,
+    OS,
+} from "ua-parser-js";
 
-const ua = "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6";
+const ua =
+    "Mozilla/5.0 (Windows NT 6.2) AppleWebKit/536.6 (KHTML, like Gecko) Chrome/20.0.1090.0 Safari/536.6";
 new UAParser(); // $ExpectType UAParserInstance
 const parser = new UAParser(ua); // $ExpectType UAParserInstance
 const result = parser.getResult(); // $ExpectType IResult
@@ -51,7 +64,10 @@ parser.getCPU().architecture; // $ExpectType string | undefined
 
 // Extensions
 const uaString = "ownbrowser/1.3";
-const ownBrowser = [[/(ownbrowser)\/([\w\.]+)/i], [UAParser.BROWSER.NAME, UAParser.BROWSER.VERSION]];
+const ownBrowser = [
+    [/(ownbrowser)\/([\w\.]+)/i],
+    [UAParser.BROWSER.NAME, UAParser.BROWSER.VERSION],
+];
 new UAParser({ browser: ownBrowser }); // $ExpectType UAParserInstance
 new UAParser(uaString, { browser: ownBrowser }); // $ExpectType UAParserInstance
 UAParser({ browser: ownBrowser }); // $ExpectType IResult

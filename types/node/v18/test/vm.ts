@@ -27,7 +27,7 @@ import {
         },
     });
     console.log(isContext(context));
-    const script = new Script("count += 1; name = \"kitty\"");
+    const script = new Script('count += 1; name = "kitty"');
 
     for (let i = 0; i < 10; ++i) {
         script.runInContext(context);
@@ -35,14 +35,14 @@ import {
 
     console.log(inspect(sandbox));
 
-    runInNewContext("count += 1; name = \"kitty\"", sandbox);
+    runInNewContext('count += 1; name = "kitty"', sandbox);
     console.log(inspect(sandbox));
 }
 
 {
     const sandboxes = [{}, {}, {}];
 
-    const script = new Script("globalVar = \"set\"");
+    const script = new Script('globalVar = "set"');
 
     sandboxes.forEach((sandbox) => {
         script.runInNewContext(sandbox);
@@ -52,24 +52,30 @@ import {
     console.log(inspect(sandboxes));
 
     const localVar = "initial value";
-    runInThisContext("localVar = \"vm\";");
+    runInThisContext('localVar = "vm";');
 
     console.log(localVar);
 }
 
 {
-    runInThisContext("console.log(\"hello world\"", "./my-file.js");
+    runInThisContext('console.log("hello world"', "./my-file.js");
 }
 
 {
-    const fn: Function = compileFunction("console.log(\"test\")", [] as readonly string[], {
-        parsingContext: createContext(),
-        contextExtensions: [{
-            a: 1,
-        }],
-        produceCachedData: false,
-        cachedData: Buffer.from("nope"),
-    });
+    const fn: Function = compileFunction(
+        'console.log("test")',
+        [] as readonly string[],
+        {
+            parsingContext: createContext(),
+            contextExtensions: [
+                {
+                    a: 1,
+                },
+            ],
+            produceCachedData: false,
+            cachedData: Buffer.from("nope"),
+        },
+    );
 }
 
 {
@@ -80,11 +86,7 @@ import {
 }
 
 {
-    runInNewContext(
-        "blah",
-        {},
-        { timeout: 5, microtaskMode: "afterEvaluate" },
-    );
+    runInNewContext("blah", {}, { timeout: 5, microtaskMode: "afterEvaluate" });
 }
 
 {
@@ -113,7 +115,7 @@ import {
     console.log(isContext(context));
 }
 
-(async () => {
+async () => {
     const contextifiedObject = createContext({
         secret: 42,
         print: console.log,
@@ -143,12 +145,12 @@ import {
     });
 
     await bar.evaluate();
-});
+};
 
-(async () => {
-    const source = "{ \"a\": 1 }";
-    const module = new SyntheticModule(["default"], function() {
+async () => {
+    const source = '{ "a": 1 }';
+    const module = new SyntheticModule(["default"], function () {
         const obj = JSON.parse(source);
         this.setExport("default", obj);
     });
-});
+};

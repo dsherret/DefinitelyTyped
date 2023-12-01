@@ -6,7 +6,9 @@ export interface InnerImageZoomProps {
     src: string;
     srcSet?: string | undefined;
     sizes?: string | undefined;
-    sources?: Array<{ srcSet?: string | undefined; media?: string | undefined }> | undefined;
+    sources?:
+        | Array<{ srcSet?: string | undefined; media?: string | undefined }>
+        | undefined;
     width?: number | undefined;
     height?: number | undefined;
     hasSpacer?: boolean | undefined;

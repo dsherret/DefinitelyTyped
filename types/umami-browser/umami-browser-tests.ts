@@ -8,7 +8,7 @@ umami.track({ website: "", screen: "" });
 umami.track({ website: "", title: "" });
 umami.track({ website: "", url: "" });
 
-umami.track(properties => {
+umami.track((properties) => {
     return { ...properties, url: "", title: "" };
 });
 

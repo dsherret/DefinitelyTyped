@@ -1,6 +1,12 @@
 export = CMarketItem;
 
-declare function CMarketItem(appid: any, hashName: any, community: any, body: any, $: any): void;
+declare function CMarketItem(
+    appid: any,
+    hashName: any,
+    community: any,
+    body: any,
+    $: any,
+): void;
 
 declare class CMarketItem {
     constructor(appid: any, hashName: any, community: any, body: any, $: any);

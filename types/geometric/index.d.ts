@@ -30,7 +30,11 @@ export function pointRotate(point: Point, angle: number, origin?: Point): Point;
 /**
  * Returns the coordinates resulting from translating a point by an angle in degrees and a distance.
  */
-export function pointTranslate(point: Point, angle: number, distance: number): Point;
+export function pointTranslate(
+    point: Point,
+    angle: number,
+    distance: number,
+): Point;
 
 // -------------------------------LINES-------------------------------------------//
 
@@ -67,7 +71,11 @@ export function lineRotate(line: Line, angle: number, origin?: Point): Line;
 /**
  * Returns the coordinates resulting from translating a line by an angle in degrees and a distance.
  */
-export function lineTranslate(line: Line, angle: number, distance: number): Line;
+export function lineTranslate(
+    line: Line,
+    angle: number,
+    distance: number,
+): Line;
 
 // -------------------------------POLYGONS-------------------------------------------//
 
@@ -125,32 +133,50 @@ export function polygonMean(polygon: Polygon): Point;
  * The returned polygon's winding order will be counter-clockwise.
  * Based on an algorithm by Pavel Valtr and an implementation by Maneesh Agrawala.
  */
-export function polygonRandom(sides?: number, area?: number, centroid?: Point): Polygon;
+export function polygonRandom(
+    sides?: number,
+    area?: number,
+    centroid?: Point,
+): Polygon;
 
 /**
  * Reflects a polygon over its vertical midline. Pass an optional reflectFactor between 0 and 1, where 1 indicates
  * a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its vertical midline.
  */
-export function polygonReflectX(polygon: Polygon, reflectFactor?: number): Polygon;
+export function polygonReflectX(
+    polygon: Polygon,
+    reflectFactor?: number,
+): Polygon;
 
 /**
  * Reflects a polygon over its horizontal midline. Pass an optional reflectFactor between 0 and 1, where 1 indicates
  * a full reflection, 0 leaves the polygon unchanged, and 0.5 collapses the polygon on its horizontal midline.
  */
-export function polygonReflectY(polygon: Polygon, reflectFactor?: number): Polygon;
+export function polygonReflectY(
+    polygon: Polygon,
+    reflectFactor?: number,
+): Polygon;
 
 /**
  * Returns the vertices of a regular polygon of the specified number of sides, area, and center coordinates. If
  * sides is not specified, defaults to 3. If area is not specified, defaults to 100. If center is not specified,
  * defaults to [0, 0].
  */
-export function polygonRegular(sides?: number, area?: number, center?: Point): Polygon;
+export function polygonRegular(
+    sides?: number,
+    area?: number,
+    center?: Point,
+): Polygon;
 
 /**
  * Returns the vertices resulting from rotating a polygon about an origin by an angle in degrees. If origin is not
  * specified, the origin defaults to [0, 0].
  */
-export function polygonRotate(polygon: Polygon, angle: number, origin?: Point): Polygon;
+export function polygonRotate(
+    polygon: Polygon,
+    angle: number,
+    origin?: Point,
+): Polygon;
 
 /**
  * Returns the vertices resulting from scaling a polygon by a scaleFactor (where 1 is the polygon's current size)
@@ -159,7 +185,11 @@ export function polygonRotate(polygon: Polygon, angle: number, origin?: Point): 
  * The returned polygon's area is equal to the input polygon's area multiplied by the square of the scaleFactor.
  * To scale the polygon's area by the scaleFactor itself, see geometric.polygonScaleArea.
  */
-export function polygonScale(polygon: Polygon, scaleFactor: number, origin?: Point): Polygon;
+export function polygonScale(
+    polygon: Polygon,
+    scaleFactor: number,
+    origin?: Point,
+): Polygon;
 
 /**
  * Returns the vertices resulting from scaling a polygon by a scaleFactor (where 1 is the polygon's current size)
@@ -168,7 +198,11 @@ export function polygonScale(polygon: Polygon, scaleFactor: number, origin?: Poi
  * The returned polygon's area is equal to the input polygon's area multiplied by the scaleFactor.
  * To scale the polygon's area by the square of the scaleFactor, see geometric.polygonScale.
  */
-export function polygonScaleArea(polygon: Polygon, scaleFactor: number, origin?: Point): Polygon;
+export function polygonScaleArea(
+    polygon: Polygon,
+    scaleFactor: number,
+    origin?: Point,
+): Polygon;
 
 /**
  * Returns the vertices resulting from scaling the horizontal coordinates of a
@@ -177,7 +211,11 @@ export function polygonScaleArea(polygon: Polygon, scaleFactor: number, origin?:
  *
  * The returned polygon's area is equal to the input polygon's area multiplied by the scaleFactor.
  */
-export function polygonScaleX(polygon: Polygon, scaleFactor: number, origin?: Point): Polygon;
+export function polygonScaleX(
+    polygon: Polygon,
+    scaleFactor: number,
+    origin?: Point,
+): Polygon;
 
 /**
  * Returns the vertices resulting from scaling the vertical coordinates of a polygon
@@ -186,12 +224,20 @@ export function polygonScaleX(polygon: Polygon, scaleFactor: number, origin?: Po
  *
  * The returned polygon's area is equal to the input polygon's area multiplied by the scaleFactor.
  */
-export function polygonScaleY(polygon: Polygon, scaleFactor: number, origin?: Point): Polygon;
+export function polygonScaleY(
+    polygon: Polygon,
+    scaleFactor: number,
+    origin?: Point,
+): Polygon;
 
 /**
  * Returns the vertices resulting from translating a polygon by an angle in degrees and a distance.
  */
-export function polygonTranslate(polygon: Polygon, angle: number, distance: number): Polygon;
+export function polygonTranslate(
+    polygon: Polygon,
+    angle: number,
+    distance: number,
+): Polygon;
 
 /**
  * Returns a polygon in the specified winding order. If an order string is passed as either "cw" or "clockwise",
@@ -201,7 +247,10 @@ export function polygonTranslate(polygon: Polygon, angle: number, distance: numb
  * On computer screens where the top-left corner is at [0, 0], a polygon with a negative signed area has a
  * counter-clockwise winding order.
  */
-export function polygonWind(polygon: Polygon, order?: "cw" | "ccw" | "clockwise"): Polygon;
+export function polygonWind(
+    polygon: Polygon,
+    order?: "cw" | "ccw" | "clockwise",
+): Polygon;
 
 // -------------------------------RELATIONSHIPS-------------------------------------------//
 
@@ -224,21 +273,33 @@ export function pointInPolygon(point: Point, polygon: Polygon): boolean;
  * Returns a boolean representing whether a point is located on one of the edges of a polygon.
  * An optional epsilon number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
  */
-export function pointOnPolygon(point: Point, polygon: Polygon, epsilon?: number): boolean;
+export function pointOnPolygon(
+    point: Point,
+    polygon: Polygon,
+    epsilon?: number,
+): boolean;
 
 /**
  * Returns a boolean representing whether a point is collinear with a line and is also located on the line segment.
  * An optional epsilon number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
  * See also pointWithLine.
  */
-export function pointOnLine(point: Point, line: Line, epsilon?: number): boolean;
+export function pointOnLine(
+    point: Point,
+    line: Line,
+    epsilon?: number,
+): boolean;
 
 /**
  * Returns a boolean representing whether a point is collinear with a line.
  * An optional epsilon number, such as 1e-6, can be passed to reduce the precision with which the relationship is measured.
  * See also pointOnLine.
  */
-export function pointWithLine(point: Point, line: Line, epsilon?: number): boolean;
+export function pointWithLine(
+    point: Point,
+    line: Line,
+    epsilon?: number,
+): boolean;
 
 /**
  * Returns a boolean representing whether a point is to the left of a line.
@@ -258,7 +319,10 @@ export function polygonInPolygon(polygonA: Polygon, polygonB: Polygon): boolean;
 /**
  * Returns a boolean representing whether polygonA intersects but is not contained by polygonB.
  */
-export function polygonIntersectsPolygon(polygonA: Polygon, polygonB: Polygon): boolean;
+export function polygonIntersectsPolygon(
+    polygonA: Polygon,
+    polygonB: Polygon,
+): boolean;
 
 // -------------------------------ANGLES-------------------------------------------//
 
@@ -266,7 +330,10 @@ export function polygonIntersectsPolygon(polygonA: Polygon, polygonB: Polygon): 
  * Returns the angle of reflection given a starting angle, also known as the angle of incidence, and the angle of
  * the surface off of which it is reflected.
  */
-export function angleReflect(incidenceAngle: number, surfaceAngle: number): number;
+export function angleReflect(
+    incidenceAngle: number,
+    surfaceAngle: number,
+): number;
 
 /**
  * Returns the result of a converting an angle in radians to the same angle in degrees.

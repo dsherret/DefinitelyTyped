@@ -39,7 +39,10 @@ accounting.formatColumn([123.5, 3456.49, 777888.99, 12345678, -5432], "$ ");
 accounting.formatColumn([123, 12345], "$ ", 0); // ["$    123", "$ 12,345"]
 
 // List of numbers can be a multi-dimensional array (formatColumn is applied recursively):
-accounting.formatColumn([[1, 100], [900, 9]]); // [["$  1.00", "$100.00"], ["$900.00", "$  9.00"]]
+accounting.formatColumn([
+    [1, 100],
+    [900, 9],
+]); // [["$  1.00", "$100.00"], ["$900.00", "$  9.00"]]
 
 // formatNumber
 

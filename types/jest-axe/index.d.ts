@@ -22,7 +22,10 @@ export const axe: JestAxe;
  * @param options   Options to run aXe.
  * @returns Promise for the results of running aXe.
  */
-export type JestAxe = (html: Element | string, options?: RunOptions) => Promise<AxeResults>;
+export type JestAxe = (
+    html: Element | string,
+    options?: RunOptions,
+) => Promise<AxeResults>;
 
 /**
  * Creates a new aXe verifier function.
@@ -58,7 +61,9 @@ export interface AssertionsResult {
  * @param results   aXe verification result, if not running via expect().
  * @returns Jest expectations for the aXe result.
  */
-export type IToHaveNoViolations = (results?: Partial<AxeResults>) => AssertionsResult;
+export type IToHaveNoViolations = (
+    results?: Partial<AxeResults>,
+) => AssertionsResult;
 
 export const toHaveNoViolations: {
     toHaveNoViolations: IToHaveNoViolations;

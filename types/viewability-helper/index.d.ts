@@ -8,7 +8,11 @@ export interface Options {
 }
 
 export class ViewabilityHelper {
-    constructor(element: Element | HTMLElement, callback: () => void, options?: Options);
+    constructor(
+        element: Element | HTMLElement,
+        callback: () => void,
+        options?: Options,
+    );
 
     observe(): void;
 }

@@ -1,5 +1,12 @@
 declare namespace GorillaEngine.UI {
-    interface LabelProps extends Common, Bounds, Background, Font, Clickable, Margin, Keyable {
+    interface LabelProps
+        extends Common,
+            Bounds,
+            Background,
+            Font,
+            Clickable,
+            Margin,
+            Keyable {
         value: any;
         text: string | number;
         format: string;

@@ -18,7 +18,14 @@ export interface Signal {
 }
 
 /** Query Process: Focus on pid & cmd */
-export function lookup(query: Query, cb: (err: Error, list: Program[]) => void): void;
+export function lookup(
+    query: Query,
+    cb: (err: Error, list: Program[]) => void,
+): void;
 
 export function kill(pID: number | string, cb?: (err?: Error) => void): void;
-export function kill(pID: number | string, signal?: string | Signal, cb?: (err?: Error) => void): void;
+export function kill(
+    pID: number | string,
+    signal?: string | Signal,
+    cb?: (err?: Error) => void,
+): void;

@@ -1,4 +1,8 @@
-var beforeShowCallback, onSelectCallback, onCloseCallback, onHourShow, onMinuteShow;
+var beforeShowCallback,
+    onSelectCallback,
+    onCloseCallback,
+    onHourShow,
+    onMinuteShow;
 $("#timepicker").timepicker({
     timeSeparator: ":",
     showLeadingZero: true,

@@ -30,7 +30,7 @@ resemble.outputSettings({
     },
 });
 
-resemble("images/image.png").onComplete(function(data) {
+resemble("images/image.png").onComplete(function (data) {
     const r: number = data.red;
     const g: number = data.green;
     const b: number = data.blue;
@@ -43,7 +43,7 @@ resemble("images/image.png")
     .scaleToSameSize()
     .repaint()
     .setReturnEarlyThreshold(8)
-    .onComplete(function(data) {
+    .onComplete(function (data) {
         if (data.error) {
             return;
         }
@@ -77,12 +77,21 @@ const options: resemble.ComparisonOptions = {
     ignore: "antialiasing",
 };
 
-resemble.compare("images/image2.png", "images/image2.png", options, function(err, data) {
-    if (err) {
-        console.log("An error!");
-    } else {
-        console.log(data);
-    }
-});
+resemble.compare(
+    "images/image2.png",
+    "images/image2.png",
+    options,
+    function (err, data) {
+        if (err) {
+            console.log("An error!");
+        } else {
+            console.log(data);
+        }
+    },
+);
 
-const promise = compareImages("./your-image-path/People.jpg", "./your-image-path/People2.jpg", options);
+const promise = compareImages(
+    "./your-image-path/People.jpg",
+    "./your-image-path/People2.jpg",
+    options,
+);

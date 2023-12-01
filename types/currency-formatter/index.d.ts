@@ -42,9 +42,9 @@ export interface FormatOptions {
     format?:
         | string
         | {
-            pos: string;
-            neg: string;
-            zero: string;
-        }
+              pos: string;
+              neg: string;
+              zero: string;
+          }
         | undefined;
 }

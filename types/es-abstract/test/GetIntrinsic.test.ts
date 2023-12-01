@@ -7,16 +7,30 @@ declare const boolean: boolean;
 {
     GetIntrinsic("%Array%"); // $ExpectType ArrayConstructor
     GetIntrinsic("%Array.prototype%"); // $ExpectType any[]
-    expectType<typeof Array.prototype.entries>(GetIntrinsic("%Array.prototype.entries%"));
-    expectType<typeof Array.prototype.forEach>(GetIntrinsic("%Array.prototype.forEach%"));
-    expectType<typeof Array.prototype.keys>(GetIntrinsic("%Array.prototype.keys%"));
-    expectType<typeof Array.prototype.values>(GetIntrinsic("%Array.prototype.values%"));
+    expectType<typeof Array.prototype.entries>(
+        GetIntrinsic("%Array.prototype.entries%"),
+    );
+    expectType<typeof Array.prototype.forEach>(
+        GetIntrinsic("%Array.prototype.forEach%"),
+    );
+    expectType<typeof Array.prototype.keys>(
+        GetIntrinsic("%Array.prototype.keys%"),
+    );
+    expectType<typeof Array.prototype.values>(
+        GetIntrinsic("%Array.prototype.values%"),
+    );
 
     GetIntrinsic("%ArrayPrototype%"); // $ExpectType any[]
-    expectType<typeof Array.prototype.entries>(GetIntrinsic("%ArrayProto_entries%"));
-    expectType<typeof Array.prototype.forEach>(GetIntrinsic("%ArrayProto_forEach%"));
+    expectType<typeof Array.prototype.entries>(
+        GetIntrinsic("%ArrayProto_entries%"),
+    );
+    expectType<typeof Array.prototype.forEach>(
+        GetIntrinsic("%ArrayProto_forEach%"),
+    );
     expectType<typeof Array.prototype.keys>(GetIntrinsic("%ArrayProto_keys%"));
-    expectType<typeof Array.prototype.values>(GetIntrinsic("%ArrayProto_values%"));
+    expectType<typeof Array.prototype.values>(
+        GetIntrinsic("%ArrayProto_values%"),
+    );
 
     GetIntrinsic("%ArrayBuffer%"); // $ExpectType ArrayBufferConstructor
     GetIntrinsic("%ArrayBuffer.prototype%"); // $ExpectType ArrayBuffer
@@ -114,12 +128,20 @@ declare const boolean: boolean;
 
     GetIntrinsic("%Object%"); // $ExpectType ObjectConstructor
     GetIntrinsic("%Object.prototype%"); // $ExpectType Object
-    expectType<typeof Object.prototype.toString>(GetIntrinsic("%Object.prototype.toString%"));
-    expectType<typeof Object.prototype.valueOf>(GetIntrinsic("%Object.prototype.valueOf%"));
+    expectType<typeof Object.prototype.toString>(
+        GetIntrinsic("%Object.prototype.toString%"),
+    );
+    expectType<typeof Object.prototype.valueOf>(
+        GetIntrinsic("%Object.prototype.valueOf%"),
+    );
 
     GetIntrinsic("%ObjectPrototype%"); // $ExpectType Object
-    expectType<typeof Object.prototype.toString>(GetIntrinsic("%ObjProto_toString%"));
-    expectType<typeof Object.prototype.valueOf>(GetIntrinsic("%ObjProto_valueOf%"));
+    expectType<typeof Object.prototype.toString>(
+        GetIntrinsic("%ObjProto_toString%"),
+    );
+    expectType<typeof Object.prototype.valueOf>(
+        GetIntrinsic("%ObjProto_valueOf%"),
+    );
 
     expectType<typeof parseFloat>(GetIntrinsic("%parseFloat%"));
     expectType<typeof parseInt>(GetIntrinsic("%parseInt%"));
@@ -216,16 +238,32 @@ declare const boolean: boolean;
 {
     GetIntrinsic("%Array%", false); // $ExpectType ArrayConstructor
     GetIntrinsic("%Array.prototype%", false); // $ExpectType any[]
-    expectType<typeof Array.prototype.entries>(GetIntrinsic("%Array.prototype.entries%", false));
-    expectType<typeof Array.prototype.forEach>(GetIntrinsic("%Array.prototype.forEach%", false));
-    expectType<typeof Array.prototype.keys>(GetIntrinsic("%Array.prototype.keys%", false));
-    expectType<typeof Array.prototype.values>(GetIntrinsic("%Array.prototype.values%", false));
+    expectType<typeof Array.prototype.entries>(
+        GetIntrinsic("%Array.prototype.entries%", false),
+    );
+    expectType<typeof Array.prototype.forEach>(
+        GetIntrinsic("%Array.prototype.forEach%", false),
+    );
+    expectType<typeof Array.prototype.keys>(
+        GetIntrinsic("%Array.prototype.keys%", false),
+    );
+    expectType<typeof Array.prototype.values>(
+        GetIntrinsic("%Array.prototype.values%", false),
+    );
 
     GetIntrinsic("%ArrayPrototype%", false); // $ExpectType any[]
-    expectType<typeof Array.prototype.entries>(GetIntrinsic("%ArrayProto_entries%", false));
-    expectType<typeof Array.prototype.forEach>(GetIntrinsic("%ArrayProto_forEach%", false));
-    expectType<typeof Array.prototype.keys>(GetIntrinsic("%ArrayProto_keys%", false));
-    expectType<typeof Array.prototype.values>(GetIntrinsic("%ArrayProto_values%", false));
+    expectType<typeof Array.prototype.entries>(
+        GetIntrinsic("%ArrayProto_entries%", false),
+    );
+    expectType<typeof Array.prototype.forEach>(
+        GetIntrinsic("%ArrayProto_forEach%", false),
+    );
+    expectType<typeof Array.prototype.keys>(
+        GetIntrinsic("%ArrayProto_keys%", false),
+    );
+    expectType<typeof Array.prototype.values>(
+        GetIntrinsic("%ArrayProto_values%", false),
+    );
 
     GetIntrinsic("%ArrayBuffer%", false); // $ExpectType ArrayBufferConstructor
     GetIntrinsic("%ArrayBuffer.prototype%", false); // $ExpectType ArrayBuffer
@@ -258,10 +296,14 @@ declare const boolean: boolean;
     GetIntrinsic("%DatePrototype%", false); // $ExpectType Date
 
     expectType<typeof decodeURI>(GetIntrinsic("%decodeURI%", false));
-    expectType<typeof decodeURIComponent>(GetIntrinsic("%decodeURIComponent%", false));
+    expectType<typeof decodeURIComponent>(
+        GetIntrinsic("%decodeURIComponent%", false),
+    );
 
     expectType<typeof encodeURI>(GetIntrinsic("%encodeURI%", false));
-    expectType<typeof encodeURIComponent>(GetIntrinsic("%encodeURIComponent%", false));
+    expectType<typeof encodeURIComponent>(
+        GetIntrinsic("%encodeURIComponent%", false),
+    );
 
     GetIntrinsic("%Error%", false); // $ExpectType ErrorConstructor
     GetIntrinsic("%Error.prototype%", false); // $ExpectType Error
@@ -323,12 +365,20 @@ declare const boolean: boolean;
 
     GetIntrinsic("%Object%", false); // $ExpectType ObjectConstructor
     GetIntrinsic("%Object.prototype%", false); // $ExpectType Object
-    expectType<typeof Object.prototype.toString>(GetIntrinsic("%Object.prototype.toString%", false));
-    expectType<typeof Object.prototype.valueOf>(GetIntrinsic("%Object.prototype.valueOf%", false));
+    expectType<typeof Object.prototype.toString>(
+        GetIntrinsic("%Object.prototype.toString%", false),
+    );
+    expectType<typeof Object.prototype.valueOf>(
+        GetIntrinsic("%Object.prototype.valueOf%", false),
+    );
 
     GetIntrinsic("%ObjectPrototype%", false); // $ExpectType Object
-    expectType<typeof Object.prototype.toString>(GetIntrinsic("%ObjProto_toString%", false));
-    expectType<typeof Object.prototype.valueOf>(GetIntrinsic("%ObjProto_valueOf%", false));
+    expectType<typeof Object.prototype.toString>(
+        GetIntrinsic("%ObjProto_toString%", false),
+    );
+    expectType<typeof Object.prototype.valueOf>(
+        GetIntrinsic("%ObjProto_valueOf%", false),
+    );
 
     expectType<typeof parseFloat>(GetIntrinsic("%parseFloat%", false));
     expectType<typeof parseInt>(GetIntrinsic("%parseInt%", false));
@@ -336,11 +386,15 @@ declare const boolean: boolean;
     GetIntrinsic("%Promise%", false); // $ExpectType PromiseConstructor
     GetIntrinsic("%Promise.prototype%", false); // $ExpectType Promise<any>
     expectType<typeof Promise.reject>(GetIntrinsic("%Promise.reject%", false));
-    expectType<typeof Promise.resolve>(GetIntrinsic("%Promise.resolve%", false));
+    expectType<typeof Promise.resolve>(
+        GetIntrinsic("%Promise.resolve%", false),
+    );
 
     GetIntrinsic("%PromisePrototype%", false); // $ExpectType Promise<any>
     expectType<typeof Promise.reject>(GetIntrinsic("%Promise_reject%", false));
-    expectType<typeof Promise.resolve>(GetIntrinsic("%Promise_resolve%", false));
+    expectType<typeof Promise.resolve>(
+        GetIntrinsic("%Promise_resolve%", false),
+    );
 
     GetIntrinsic("%Proxy%", false); // $ExpectType ProxyConstructor
 
@@ -425,16 +479,32 @@ declare const boolean: boolean;
 {
     GetIntrinsic("%Array%", true); // $ExpectType ArrayConstructor | undefined
     GetIntrinsic("%Array.prototype%", true); // $ExpectType any[] | undefined
-    expectType<typeof Array.prototype.entries | undefined>(GetIntrinsic("%Array.prototype.entries%", true));
-    expectType<typeof Array.prototype.forEach | undefined>(GetIntrinsic("%Array.prototype.forEach%", true));
-    expectType<typeof Array.prototype.keys | undefined>(GetIntrinsic("%Array.prototype.keys%", true));
-    expectType<typeof Array.prototype.values | undefined>(GetIntrinsic("%Array.prototype.values%", true));
+    expectType<typeof Array.prototype.entries | undefined>(
+        GetIntrinsic("%Array.prototype.entries%", true),
+    );
+    expectType<typeof Array.prototype.forEach | undefined>(
+        GetIntrinsic("%Array.prototype.forEach%", true),
+    );
+    expectType<typeof Array.prototype.keys | undefined>(
+        GetIntrinsic("%Array.prototype.keys%", true),
+    );
+    expectType<typeof Array.prototype.values | undefined>(
+        GetIntrinsic("%Array.prototype.values%", true),
+    );
 
     GetIntrinsic("%ArrayPrototype%", true); // $ExpectType any[] | undefined
-    expectType<typeof Array.prototype.entries | undefined>(GetIntrinsic("%ArrayProto_entries%", true));
-    expectType<typeof Array.prototype.forEach | undefined>(GetIntrinsic("%ArrayProto_forEach%", true));
-    expectType<typeof Array.prototype.keys | undefined>(GetIntrinsic("%ArrayProto_keys%", true));
-    expectType<typeof Array.prototype.values | undefined>(GetIntrinsic("%ArrayProto_values%", true));
+    expectType<typeof Array.prototype.entries | undefined>(
+        GetIntrinsic("%ArrayProto_entries%", true),
+    );
+    expectType<typeof Array.prototype.forEach | undefined>(
+        GetIntrinsic("%ArrayProto_forEach%", true),
+    );
+    expectType<typeof Array.prototype.keys | undefined>(
+        GetIntrinsic("%ArrayProto_keys%", true),
+    );
+    expectType<typeof Array.prototype.values | undefined>(
+        GetIntrinsic("%ArrayProto_values%", true),
+    );
 
     GetIntrinsic("%ArrayBuffer%", true); // $ExpectType ArrayBufferConstructor | undefined
     GetIntrinsic("%ArrayBuffer.prototype%", true); // $ExpectType ArrayBuffer | undefined
@@ -467,10 +537,14 @@ declare const boolean: boolean;
     GetIntrinsic("%DatePrototype%", true); // $ExpectType Date | undefined
 
     expectType<typeof decodeURI | undefined>(GetIntrinsic("%decodeURI%", true));
-    expectType<typeof decodeURIComponent | undefined>(GetIntrinsic("%decodeURIComponent%", true));
+    expectType<typeof decodeURIComponent | undefined>(
+        GetIntrinsic("%decodeURIComponent%", true),
+    );
 
     expectType<typeof encodeURI | undefined>(GetIntrinsic("%encodeURI%", true));
-    expectType<typeof encodeURIComponent | undefined>(GetIntrinsic("%encodeURIComponent%", true));
+    expectType<typeof encodeURIComponent | undefined>(
+        GetIntrinsic("%encodeURIComponent%", true),
+    );
 
     GetIntrinsic("%Error%", true); // $ExpectType ErrorConstructor | undefined
     GetIntrinsic("%Error.prototype%", true); // $ExpectType Error | undefined
@@ -515,9 +589,15 @@ declare const boolean: boolean;
     expectType<typeof isNaN | undefined>(GetIntrinsic("%isNaN%", true));
 
     GetIntrinsic("%JSON%", true); // $ExpectType JSON | undefined
-    expectType<typeof JSON.parse | undefined>(GetIntrinsic("%JSON.parse%", true));
-    expectType<typeof JSON.parse | undefined>(GetIntrinsic("%JSONParse%", true));
-    expectType<typeof JSON.stringify | undefined>(GetIntrinsic("%JSON.stringify%", true));
+    expectType<typeof JSON.parse | undefined>(
+        GetIntrinsic("%JSON.parse%", true),
+    );
+    expectType<typeof JSON.parse | undefined>(
+        GetIntrinsic("%JSONParse%", true),
+    );
+    expectType<typeof JSON.stringify | undefined>(
+        GetIntrinsic("%JSON.stringify%", true),
+    );
 
     GetIntrinsic("%Map%", true); // $ExpectType MapConstructor | undefined
     GetIntrinsic("%Map.prototype%", true); // $ExpectType Map<any, any> | undefined
@@ -532,24 +612,42 @@ declare const boolean: boolean;
 
     GetIntrinsic("%Object%", true); // $ExpectType ObjectConstructor | undefined
     GetIntrinsic("%Object.prototype%", true); // $ExpectType Object | undefined
-    expectType<typeof Object.prototype.toString | undefined>(GetIntrinsic("%Object.prototype.toString%", true));
-    expectType<typeof Object.prototype.valueOf | undefined>(GetIntrinsic("%Object.prototype.valueOf%", true));
+    expectType<typeof Object.prototype.toString | undefined>(
+        GetIntrinsic("%Object.prototype.toString%", true),
+    );
+    expectType<typeof Object.prototype.valueOf | undefined>(
+        GetIntrinsic("%Object.prototype.valueOf%", true),
+    );
 
     GetIntrinsic("%ObjectPrototype%", true); // $ExpectType Object | undefined
-    expectType<typeof Object.prototype.toString | undefined>(GetIntrinsic("%ObjProto_toString%", true));
-    expectType<typeof Object.prototype.valueOf | undefined>(GetIntrinsic("%ObjProto_valueOf%", true));
+    expectType<typeof Object.prototype.toString | undefined>(
+        GetIntrinsic("%ObjProto_toString%", true),
+    );
+    expectType<typeof Object.prototype.valueOf | undefined>(
+        GetIntrinsic("%ObjProto_valueOf%", true),
+    );
 
-    expectType<typeof parseFloat | undefined>(GetIntrinsic("%parseFloat%", true));
+    expectType<typeof parseFloat | undefined>(
+        GetIntrinsic("%parseFloat%", true),
+    );
     expectType<typeof parseInt | undefined>(GetIntrinsic("%parseInt%", true));
 
     GetIntrinsic("%Promise%", true); // $ExpectType PromiseConstructor | undefined
     GetIntrinsic("%Promise.prototype%", true); // $ExpectType Promise<any> | undefined
-    expectType<typeof Promise.reject | undefined>(GetIntrinsic("%Promise.reject%", true));
-    expectType<typeof Promise.resolve | undefined>(GetIntrinsic("%Promise.resolve%", true));
+    expectType<typeof Promise.reject | undefined>(
+        GetIntrinsic("%Promise.reject%", true),
+    );
+    expectType<typeof Promise.resolve | undefined>(
+        GetIntrinsic("%Promise.resolve%", true),
+    );
 
     GetIntrinsic("%PromisePrototype%", true); // $ExpectType Promise<any> | undefined
-    expectType<typeof Promise.reject | undefined>(GetIntrinsic("%Promise_reject%", true));
-    expectType<typeof Promise.resolve | undefined>(GetIntrinsic("%Promise_resolve%", true));
+    expectType<typeof Promise.reject | undefined>(
+        GetIntrinsic("%Promise_reject%", true),
+    );
+    expectType<typeof Promise.resolve | undefined>(
+        GetIntrinsic("%Promise_resolve%", true),
+    );
 
     GetIntrinsic("%Proxy%", true); // $ExpectType ProxyConstructor | undefined
 
@@ -634,16 +732,32 @@ declare const boolean: boolean;
 {
     GetIntrinsic("%Array%", boolean); // $ExpectType ArrayConstructor | undefined
     GetIntrinsic("%Array.prototype%", boolean); // $ExpectType any[] | undefined
-    expectType<typeof Array.prototype.entries | undefined>(GetIntrinsic("%Array.prototype.entries%", boolean));
-    expectType<typeof Array.prototype.forEach | undefined>(GetIntrinsic("%Array.prototype.forEach%", boolean));
-    expectType<typeof Array.prototype.keys | undefined>(GetIntrinsic("%Array.prototype.keys%", boolean));
-    expectType<typeof Array.prototype.values | undefined>(GetIntrinsic("%Array.prototype.values%", boolean));
+    expectType<typeof Array.prototype.entries | undefined>(
+        GetIntrinsic("%Array.prototype.entries%", boolean),
+    );
+    expectType<typeof Array.prototype.forEach | undefined>(
+        GetIntrinsic("%Array.prototype.forEach%", boolean),
+    );
+    expectType<typeof Array.prototype.keys | undefined>(
+        GetIntrinsic("%Array.prototype.keys%", boolean),
+    );
+    expectType<typeof Array.prototype.values | undefined>(
+        GetIntrinsic("%Array.prototype.values%", boolean),
+    );
 
     GetIntrinsic("%ArrayPrototype%", boolean); // $ExpectType any[] | undefined
-    expectType<typeof Array.prototype.entries | undefined>(GetIntrinsic("%ArrayProto_entries%", boolean));
-    expectType<typeof Array.prototype.forEach | undefined>(GetIntrinsic("%ArrayProto_forEach%", boolean));
-    expectType<typeof Array.prototype.keys | undefined>(GetIntrinsic("%ArrayProto_keys%", boolean));
-    expectType<typeof Array.prototype.values | undefined>(GetIntrinsic("%ArrayProto_values%", boolean));
+    expectType<typeof Array.prototype.entries | undefined>(
+        GetIntrinsic("%ArrayProto_entries%", boolean),
+    );
+    expectType<typeof Array.prototype.forEach | undefined>(
+        GetIntrinsic("%ArrayProto_forEach%", boolean),
+    );
+    expectType<typeof Array.prototype.keys | undefined>(
+        GetIntrinsic("%ArrayProto_keys%", boolean),
+    );
+    expectType<typeof Array.prototype.values | undefined>(
+        GetIntrinsic("%ArrayProto_values%", boolean),
+    );
 
     GetIntrinsic("%ArrayBuffer%", boolean); // $ExpectType ArrayBufferConstructor | undefined
     GetIntrinsic("%ArrayBuffer.prototype%", boolean); // $ExpectType ArrayBuffer | undefined
@@ -675,11 +789,19 @@ declare const boolean: boolean;
     GetIntrinsic("%Date.prototype%", boolean); // $ExpectType Date | undefined
     GetIntrinsic("%DatePrototype%", boolean); // $ExpectType Date | undefined
 
-    expectType<typeof decodeURI | undefined>(GetIntrinsic("%decodeURI%", boolean));
-    expectType<typeof decodeURIComponent | undefined>(GetIntrinsic("%decodeURIComponent%", boolean));
+    expectType<typeof decodeURI | undefined>(
+        GetIntrinsic("%decodeURI%", boolean),
+    );
+    expectType<typeof decodeURIComponent | undefined>(
+        GetIntrinsic("%decodeURIComponent%", boolean),
+    );
 
-    expectType<typeof encodeURI | undefined>(GetIntrinsic("%encodeURI%", boolean));
-    expectType<typeof encodeURIComponent | undefined>(GetIntrinsic("%encodeURIComponent%", boolean));
+    expectType<typeof encodeURI | undefined>(
+        GetIntrinsic("%encodeURI%", boolean),
+    );
+    expectType<typeof encodeURIComponent | undefined>(
+        GetIntrinsic("%encodeURIComponent%", boolean),
+    );
 
     GetIntrinsic("%Error%", boolean); // $ExpectType ErrorConstructor | undefined
     GetIntrinsic("%Error.prototype%", boolean); // $ExpectType Error | undefined
@@ -720,13 +842,21 @@ declare const boolean: boolean;
     GetIntrinsic("%Int32Array.prototype%", boolean); // $ExpectType Int32Array | undefined
     GetIntrinsic("%Int32ArrayPrototype%", boolean); // $ExpectType Int32Array | undefined
 
-    expectType<typeof isFinite | undefined>(GetIntrinsic("%isFinite%", boolean));
+    expectType<typeof isFinite | undefined>(
+        GetIntrinsic("%isFinite%", boolean),
+    );
     expectType<typeof isNaN | undefined>(GetIntrinsic("%isNaN%", boolean));
 
     GetIntrinsic("%JSON%", boolean); // $ExpectType JSON | undefined
-    expectType<typeof JSON.parse | undefined>(GetIntrinsic("%JSON.parse%", boolean));
-    expectType<typeof JSON.parse | undefined>(GetIntrinsic("%JSONParse%", boolean));
-    expectType<typeof JSON.stringify | undefined>(GetIntrinsic("%JSON.stringify%", boolean));
+    expectType<typeof JSON.parse | undefined>(
+        GetIntrinsic("%JSON.parse%", boolean),
+    );
+    expectType<typeof JSON.parse | undefined>(
+        GetIntrinsic("%JSONParse%", boolean),
+    );
+    expectType<typeof JSON.stringify | undefined>(
+        GetIntrinsic("%JSON.stringify%", boolean),
+    );
 
     GetIntrinsic("%Map%", boolean); // $ExpectType MapConstructor | undefined
     GetIntrinsic("%Map.prototype%", boolean); // $ExpectType Map<any, any> | undefined
@@ -741,24 +871,44 @@ declare const boolean: boolean;
 
     GetIntrinsic("%Object%", boolean); // $ExpectType ObjectConstructor | undefined
     GetIntrinsic("%Object.prototype%", boolean); // $ExpectType Object | undefined
-    expectType<typeof Object.prototype.toString | undefined>(GetIntrinsic("%Object.prototype.toString%", boolean));
-    expectType<typeof Object.prototype.valueOf | undefined>(GetIntrinsic("%Object.prototype.valueOf%", boolean));
+    expectType<typeof Object.prototype.toString | undefined>(
+        GetIntrinsic("%Object.prototype.toString%", boolean),
+    );
+    expectType<typeof Object.prototype.valueOf | undefined>(
+        GetIntrinsic("%Object.prototype.valueOf%", boolean),
+    );
 
     GetIntrinsic("%ObjectPrototype%", boolean); // $ExpectType Object | undefined
-    expectType<typeof Object.prototype.toString | undefined>(GetIntrinsic("%ObjProto_toString%", boolean));
-    expectType<typeof Object.prototype.valueOf | undefined>(GetIntrinsic("%ObjProto_valueOf%", boolean));
+    expectType<typeof Object.prototype.toString | undefined>(
+        GetIntrinsic("%ObjProto_toString%", boolean),
+    );
+    expectType<typeof Object.prototype.valueOf | undefined>(
+        GetIntrinsic("%ObjProto_valueOf%", boolean),
+    );
 
-    expectType<typeof parseFloat | undefined>(GetIntrinsic("%parseFloat%", boolean));
-    expectType<typeof parseInt | undefined>(GetIntrinsic("%parseInt%", boolean));
+    expectType<typeof parseFloat | undefined>(
+        GetIntrinsic("%parseFloat%", boolean),
+    );
+    expectType<typeof parseInt | undefined>(
+        GetIntrinsic("%parseInt%", boolean),
+    );
 
     GetIntrinsic("%Promise%", boolean); // $ExpectType PromiseConstructor | undefined
     GetIntrinsic("%Promise.prototype%", boolean); // $ExpectType Promise<any> | undefined
-    expectType<typeof Promise.reject | undefined>(GetIntrinsic("%Promise.reject%", boolean));
-    expectType<typeof Promise.resolve | undefined>(GetIntrinsic("%Promise.resolve%", boolean));
+    expectType<typeof Promise.reject | undefined>(
+        GetIntrinsic("%Promise.reject%", boolean),
+    );
+    expectType<typeof Promise.resolve | undefined>(
+        GetIntrinsic("%Promise.resolve%", boolean),
+    );
 
     GetIntrinsic("%PromisePrototype%", boolean); // $ExpectType Promise<any> | undefined
-    expectType<typeof Promise.reject | undefined>(GetIntrinsic("%Promise_reject%", boolean));
-    expectType<typeof Promise.resolve | undefined>(GetIntrinsic("%Promise_resolve%", boolean));
+    expectType<typeof Promise.reject | undefined>(
+        GetIntrinsic("%Promise_reject%", boolean),
+    );
+    expectType<typeof Promise.resolve | undefined>(
+        GetIntrinsic("%Promise_resolve%", boolean),
+    );
 
     GetIntrinsic("%Proxy%", boolean); // $ExpectType ProxyConstructor | undefined
 

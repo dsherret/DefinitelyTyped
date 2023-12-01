@@ -27,18 +27,28 @@ declare namespace Windows {
                 index: number;
             }
             export interface IPropertySet
-                extends
-                    Windows.Foundation.Collections.IObservableMap<string, any>,
+                extends Windows.Foundation.Collections.IObservableMap<
+                        string,
+                        any
+                    >,
                     Windows.Foundation.Collections.IMap<string, any>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
-            {
-            }
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
+                    > {}
             export class PropertySet
                 implements
                     Windows.Foundation.Collections.IPropertySet,
                     Windows.Foundation.Collections.IObservableMap<string, any>,
                     Windows.Foundation.Collections.IMap<string, any>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
+                    >
             {
                 size: number;
                 onmapchanged: any /* TODO */;
@@ -57,7 +67,12 @@ declare namespace Windows {
                     Windows.Foundation.Collections.IPropertySet,
                     Windows.Foundation.Collections.IObservableMap<string, any>,
                     Windows.Foundation.Collections.IMap<string, any>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
+                    >
             {
                 size: number;
                 onmapchanged: any /* TODO */;
@@ -80,11 +95,15 @@ declare namespace Windows {
                 moveNext(): boolean;
                 getMany(): { items: T[]; returnValue: number };
             }
-            export interface IVectorView<T> extends Windows.Foundation.Collections.IIterable<T> {
+            export interface IVectorView<T>
+                extends Windows.Foundation.Collections.IIterable<T> {
                 size: number;
                 getAt(index: number): T;
                 indexOf(value: T): { index: number; returnValue: boolean };
-                getMany(startIndex: number): { items: T[]; returnValue: number };
+                getMany(startIndex: number): {
+                    items: T[];
+                    returnValue: number;
+                };
 
                 toString(): string;
                 toLocaleString(): string;
@@ -103,33 +122,103 @@ declare namespace Windows {
                 unshift(...items: T[]): number;
                 lastIndexOf(searchElement: T): number;
                 lastIndexOf(searchElement: T, fromIndex: number): number;
-                every(callbackfn: (value: T, index: number, array: T[]) => boolean): boolean;
-                every(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg: any): boolean;
-                some(callbackfn: (value: T, index: number, array: T[]) => boolean): boolean;
-                some(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg: any): boolean;
-                forEach(callbackfn: (value: T, index: number, array: T[]) => void): void;
-                forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg: any): void;
-                map(callbackfn: (value: T, index: number, array: T[]) => any): any[];
-                map(callbackfn: (value: T, index: number, array: T[]) => any, thisArg: any): any[];
-                filter(callbackfn: (value: T, index: number, array: T[]) => boolean): T[];
-                filter(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg: any): T[];
+                every(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                ): boolean;
+                every(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                    thisArg: any,
+                ): boolean;
+                some(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                ): boolean;
+                some(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                    thisArg: any,
+                ): boolean;
+                forEach(
+                    callbackfn: (value: T, index: number, array: T[]) => void,
+                ): void;
+                forEach(
+                    callbackfn: (value: T, index: number, array: T[]) => void,
+                    thisArg: any,
+                ): void;
+                map(
+                    callbackfn: (value: T, index: number, array: T[]) => any,
+                ): any[];
+                map(
+                    callbackfn: (value: T, index: number, array: T[]) => any,
+                    thisArg: any,
+                ): any[];
+                filter(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                ): T[];
+                filter(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                    thisArg: any,
+                ): T[];
                 reduce(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: T[],
+                    ) => any,
                 ): any;
                 reduce(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: T[],
+                    ) => any,
                     initialValue: any,
                 ): any;
                 reduceRight(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: T[],
+                    ) => any,
                 ): any;
                 reduceRight(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: T[],
+                    ) => any,
                     initialValue: any,
                 ): any;
                 length: number;
             }
-            export interface IVector<T> extends Windows.Foundation.Collections.IIterable<T> {
+            export interface IVector<T>
+                extends Windows.Foundation.Collections.IIterable<T> {
                 size: number;
                 getAt(index: number): T;
                 getView(): Windows.Foundation.Collections.IVectorView<T>;
@@ -140,7 +229,10 @@ declare namespace Windows {
                 append(value: T): void;
                 removeAtEnd(): void;
                 clear(): void;
-                getMany(startIndex: number): { items: T[]; returnValue: number };
+                getMany(startIndex: number): {
+                    items: T[];
+                    returnValue: number;
+                };
                 replaceAll(items: T[]): void;
 
                 toString(): string;
@@ -160,28 +252,97 @@ declare namespace Windows {
                 unshift(...items: T[]): number;
                 lastIndexOf(searchElement: T): number;
                 lastIndexOf(searchElement: T, fromIndex: number): number;
-                every(callbackfn: (value: T, index: number, array: T[]) => boolean): boolean;
-                every(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg: any): boolean;
-                some(callbackfn: (value: T, index: number, array: T[]) => boolean): boolean;
-                some(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg: any): boolean;
-                forEach(callbackfn: (value: T, index: number, array: T[]) => void): void;
-                forEach(callbackfn: (value: T, index: number, array: T[]) => void, thisArg: any): void;
-                map(callbackfn: (value: T, index: number, array: T[]) => any): any[];
-                map(callbackfn: (value: T, index: number, array: T[]) => any, thisArg: any): any[];
-                filter(callbackfn: (value: T, index: number, array: T[]) => boolean): T[];
-                filter(callbackfn: (value: T, index: number, array: T[]) => boolean, thisArg: any): T[];
+                every(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                ): boolean;
+                every(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                    thisArg: any,
+                ): boolean;
+                some(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                ): boolean;
+                some(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                    thisArg: any,
+                ): boolean;
+                forEach(
+                    callbackfn: (value: T, index: number, array: T[]) => void,
+                ): void;
+                forEach(
+                    callbackfn: (value: T, index: number, array: T[]) => void,
+                    thisArg: any,
+                ): void;
+                map(
+                    callbackfn: (value: T, index: number, array: T[]) => any,
+                ): any[];
+                map(
+                    callbackfn: (value: T, index: number, array: T[]) => any,
+                    thisArg: any,
+                ): any[];
+                filter(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                ): T[];
+                filter(
+                    callbackfn: (
+                        value: T,
+                        index: number,
+                        array: T[],
+                    ) => boolean,
+                    thisArg: any,
+                ): T[];
                 reduce(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: T[],
+                    ) => any,
                 ): any;
                 reduce(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: T[],
+                    ) => any,
                     initialValue: any,
                 ): any;
                 reduceRight(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: T[],
+                    ) => any,
                 ): any;
                 reduceRight(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: T[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: T[],
+                    ) => any,
                     initialValue: any,
                 ): any;
                 length: number;
@@ -191,8 +352,9 @@ declare namespace Windows {
                 value: V;
             }
             export interface IMap<K, V>
-                extends Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<K, V>>
-            {
+                extends Windows.Foundation.Collections.IIterable<
+                    Windows.Foundation.Collections.IKeyValuePair<K, V>
+                > {
                 size: number;
                 lookup(key: K): V;
                 hasKey(key: K): boolean;
@@ -202,8 +364,9 @@ declare namespace Windows {
                 clear(): void;
             }
             export interface IMapView<K, V>
-                extends Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<K, V>>
-            {
+                extends Windows.Foundation.Collections.IIterable<
+                    Windows.Foundation.Collections.IKeyValuePair<K, V>
+                > {
                 size: number;
                 lookup(key: K): V;
                 hasKey(key: K): boolean;
@@ -219,8 +382,8 @@ declare namespace Windows {
                 ): void;
             }
             export interface IObservableVector<T>
-                extends Windows.Foundation.Collections.IVector<T>, Windows.Foundation.Collections.IIterable<T>
-            {
+                extends Windows.Foundation.Collections.IVector<T>,
+                    Windows.Foundation.Collections.IIterable<T> {
                 onvectorchanged: any /* TODO */;
             }
             export interface IMapChangedEventArgs<K> {
@@ -234,10 +397,10 @@ declare namespace Windows {
                 ): void;
             }
             export interface IObservableMap<K, V>
-                extends
-                    Windows.Foundation.Collections.IMap<K, V>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<K, V>>
-            {
+                extends Windows.Foundation.Collections.IMap<K, V>,
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<K, V>
+                    > {
                 onmapchanged: any /* TODO */;
             }
         }
@@ -267,16 +430,24 @@ declare namespace Windows {
         export class WwwFormUrlDecoder
             implements
                 Windows.Foundation.IWwwFormUrlDecoderRuntimeClass,
-                Windows.Foundation.Collections.IIterable<Windows.Foundation.IWwwFormUrlDecoderEntry>,
-                Windows.Foundation.Collections.IVectorView<Windows.Foundation.IWwwFormUrlDecoderEntry>
+                Windows.Foundation.Collections
+                    .IIterable<Windows.Foundation.IWwwFormUrlDecoderEntry>,
+                Windows.Foundation.Collections
+                    .IVectorView<Windows.Foundation.IWwwFormUrlDecoderEntry>
         {
             constructor(query: string);
             size: number;
             getFirstValueByName(name: string): string;
             first(): Windows.Foundation.Collections.IIterator<Windows.Foundation.IWwwFormUrlDecoderEntry>;
             getAt(index: number): Windows.Foundation.IWwwFormUrlDecoderEntry;
-            indexOf(value: Windows.Foundation.IWwwFormUrlDecoderEntry): { index: number; returnValue: boolean };
-            getMany(startIndex: number): { items: Windows.Foundation.IWwwFormUrlDecoderEntry[]; returnValue: number };
+            indexOf(value: Windows.Foundation.IWwwFormUrlDecoderEntry): {
+                index: number;
+                returnValue: boolean;
+            };
+            getMany(startIndex: number): {
+                items: Windows.Foundation.IWwwFormUrlDecoderEntry[];
+                returnValue: number;
+            };
             toString(): string;
             toLocaleString(): string;
             concat(
@@ -288,7 +459,10 @@ declare namespace Windows {
             reverse(): Windows.Foundation.IWwwFormUrlDecoderEntry[];
             shift(): Windows.Foundation.IWwwFormUrlDecoderEntry;
             slice(start: number): Windows.Foundation.IWwwFormUrlDecoderEntry[];
-            slice(start: number, end: number): Windows.Foundation.IWwwFormUrlDecoderEntry[];
+            slice(
+                start: number,
+                end: number,
+            ): Windows.Foundation.IWwwFormUrlDecoderEntry[];
             sort(): Windows.Foundation.IWwwFormUrlDecoderEntry[];
             sort(
                 compareFn: (
@@ -302,9 +476,16 @@ declare namespace Windows {
                 deleteCount: number,
                 ...items: Windows.Foundation.IWwwFormUrlDecoderEntry[]
             ): Windows.Foundation.IWwwFormUrlDecoderEntry[];
-            unshift(...items: Windows.Foundation.IWwwFormUrlDecoderEntry[]): number;
-            lastIndexOf(searchElement: Windows.Foundation.IWwwFormUrlDecoderEntry): number;
-            lastIndexOf(searchElement: Windows.Foundation.IWwwFormUrlDecoderEntry, fromIndex: number): number;
+            unshift(
+                ...items: Windows.Foundation.IWwwFormUrlDecoderEntry[]
+            ): number;
+            lastIndexOf(
+                searchElement: Windows.Foundation.IWwwFormUrlDecoderEntry,
+            ): number;
+            lastIndexOf(
+                searchElement: Windows.Foundation.IWwwFormUrlDecoderEntry,
+                fromIndex: number,
+            ): number;
             every(
                 callbackfn: (
                     value: Windows.Foundation.IWwwFormUrlDecoderEntry,
@@ -417,7 +598,9 @@ declare namespace Windows {
             length: number;
         }
         export class Uri
-            implements Windows.Foundation.IUriRuntimeClass, Windows.Foundation.IUriRuntimeClassWithAbsoluteCanonicalUri
+            implements
+                Windows.Foundation.IUriRuntimeClass,
+                Windows.Foundation.IUriRuntimeClassWithAbsoluteCanonicalUri
         {
             constructor(uri: string);
             constructor(baseUri: string, relativeUri: string);
@@ -453,21 +636,26 @@ declare namespace Windows {
         }
         export interface IUriRuntimeClassFactory {
             createUri(uri: string): Windows.Foundation.Uri;
-            createUri(baseUri: string, relativeUri: string): Windows.Foundation.Uri;
+            createUri(
+                baseUri: string,
+                relativeUri: string,
+            ): Windows.Foundation.Uri;
         }
         export interface IWwwFormUrlDecoderEntry {
             name: string;
             value: string;
         }
         export interface IWwwFormUrlDecoderRuntimeClass
-            extends
-                Windows.Foundation.Collections.IIterable<Windows.Foundation.IWwwFormUrlDecoderEntry>,
-                Windows.Foundation.Collections.IVectorView<Windows.Foundation.IWwwFormUrlDecoderEntry>
-        {
+            extends Windows.Foundation.Collections
+                    .IIterable<Windows.Foundation.IWwwFormUrlDecoderEntry>,
+                Windows.Foundation.Collections
+                    .IVectorView<Windows.Foundation.IWwwFormUrlDecoderEntry> {
             getFirstValueByName(name: string): string;
         }
         export interface IWwwFormUrlDecoderRuntimeClassFactory {
-            createWwwFormUrlDecoder(query: string): Windows.Foundation.WwwFormUrlDecoder;
+            createWwwFormUrlDecoder(
+                query: string,
+            ): Windows.Foundation.WwwFormUrlDecoder;
         }
         export interface IGetActivationFactory {
             getActivationFactory(activatableClassId: string): any;
@@ -662,7 +850,10 @@ declare namespace Windows {
             static createRectArray(value: Windows.Foundation.Rect[]): any;
         }
         export interface AsyncActionCompletedHandler {
-            (asyncInfo: Windows.Foundation.IAsyncAction, asyncStatus: Windows.Foundation.AsyncStatus): void;
+            (
+                asyncInfo: Windows.Foundation.IAsyncAction,
+                asyncStatus: Windows.Foundation.AsyncStatus,
+            ): void;
         }
         export enum AsyncStatus {
             canceled,
@@ -699,31 +890,56 @@ declare namespace Windows {
                 error?: (error: any) => IPromise<U>,
                 progress?: (progress: any) => void,
             ): IPromise<U>;
-            then<U>(success?: () => U, error?: (error: any) => U, progress?: (progress: any) => void): IPromise<U>;
-            done?<U>(success?: () => any, error?: (error: any) => any, progress?: (progress: any) => void): void;
+            then<U>(
+                success?: () => U,
+                error?: (error: any) => U,
+                progress?: (progress: any) => void,
+            ): IPromise<U>;
+            done?<U>(
+                success?: () => any,
+                error?: (error: any) => any,
+                progress?: (progress: any) => void,
+            ): void;
 
             cancel(): void;
 
             completed: Windows.Foundation.AsyncActionCompletedHandler;
             getResults(): void;
         }
-        export interface AsyncOperationWithProgressCompletedHandler<TResult, TProgress> {
+        export interface AsyncOperationWithProgressCompletedHandler<
+            TResult,
+            TProgress,
+        > {
             (
-                asyncInfo: Windows.Foundation.IAsyncOperationWithProgress<TResult, TProgress>,
+                asyncInfo: Windows.Foundation.IAsyncOperationWithProgress<
+                    TResult,
+                    TProgress
+                >,
                 asyncStatus: Windows.Foundation.AsyncStatus,
             ): void;
         }
-        export interface IAsyncOperationWithProgress<TResult, TProgress> extends Windows.Foundation.IPromise<TResult> {
+        export interface IAsyncOperationWithProgress<TResult, TProgress>
+            extends Windows.Foundation.IPromise<TResult> {
             operation: {
-                progress: Windows.Foundation.AsyncOperationProgressHandler<TResult, TProgress>;
-                completed: Windows.Foundation.AsyncOperationWithProgressCompletedHandler<TResult, TProgress>;
+                progress: Windows.Foundation.AsyncOperationProgressHandler<
+                    TResult,
+                    TProgress
+                >;
+                completed: Windows.Foundation.AsyncOperationWithProgressCompletedHandler<
+                    TResult,
+                    TProgress
+                >;
                 getResults(): TResult;
             };
         }
         export interface AsyncOperationCompletedHandler<TResult> {
-            (asyncInfo: Windows.Foundation.IAsyncOperation<TResult>, asyncStatus: Windows.Foundation.AsyncStatus): void;
+            (
+                asyncInfo: Windows.Foundation.IAsyncOperation<TResult>,
+                asyncStatus: Windows.Foundation.AsyncStatus,
+            ): void;
         }
-        export interface IAsyncOperation<TResult> extends Windows.Foundation.IPromise<TResult> {
+        export interface IAsyncOperation<TResult>
+            extends Windows.Foundation.IPromise<TResult> {
             operation: {
                 completed: Windows.Foundation.AsyncOperationCompletedHandler<TResult>;
                 getResults(): TResult;
@@ -736,25 +952,33 @@ declare namespace Windows {
             ): void;
         }
         export interface IAsyncActionWithProgress<TProgress>
-            extends Windows.Foundation.IAsyncInfo, Windows.Foundation.IPromise<void>
-        {
+            extends Windows.Foundation.IAsyncInfo,
+                Windows.Foundation.IPromise<void> {
             progress: Windows.Foundation.AsyncActionProgressHandler<TProgress>;
             completed: Windows.Foundation.AsyncActionWithProgressCompletedHandler<TProgress>;
             getResults(): void;
         }
         export interface AsyncOperationProgressHandler<TResult, TProgress> {
             (
-                asyncInfo: Windows.Foundation.IAsyncOperationWithProgress<TResult, TProgress>,
+                asyncInfo: Windows.Foundation.IAsyncOperationWithProgress<
+                    TResult,
+                    TProgress
+                >,
                 progressInfo: TProgress,
             ): void;
         }
         export interface AsyncActionProgressHandler<TProgress> {
-            (asyncInfo: Windows.Foundation.IAsyncActionWithProgress<TProgress>, progressInfo: TProgress): void;
+            (
+                asyncInfo: Windows.Foundation.IAsyncActionWithProgress<TProgress>,
+                progressInfo: TProgress,
+            ): void;
         }
-        export interface IReference<T> extends Windows.Foundation.IPropertyValue {
+        export interface IReference<T>
+            extends Windows.Foundation.IPropertyValue {
             value: T;
         }
-        export interface IReferenceArray<T> extends Windows.Foundation.IPropertyValue {
+        export interface IReferenceArray<T>
+            extends Windows.Foundation.IPropertyValue {
             value: T[];
         }
         export interface TypedEventHandler<TSender, TResult> {
@@ -768,23 +992,17 @@ declare namespace Windows {
 declare namespace Windows {
     export namespace Foundation {
         export namespace Metadata {
-            export class WebHostHiddenAttribute {
-            }
-            export class VariantAttribute {
-            }
-            export class HasVariantAttribute {
-            }
-            export class DualApiPartitionAttribute {
-            }
-            export class MuseAttribute {
-            }
+            export class WebHostHiddenAttribute {}
+            export class VariantAttribute {}
+            export class HasVariantAttribute {}
+            export class DualApiPartitionAttribute {}
+            export class MuseAttribute {}
             export enum GCPressureAmount {
                 low,
                 medium,
                 high,
             }
-            export class GCPressureAttribute {
-            }
+            export class GCPressureAttribute {}
             export class ActivatableAttribute {
                 constructor(version: number);
                 constructor(type: string, /* TODO: really? */ version: number);
@@ -792,10 +1010,11 @@ declare namespace Windows {
             export class VersionAttribute {
                 constructor(version: number);
             }
-            export class AllowMultipleAttribute {
-            }
+            export class AllowMultipleAttribute {}
             export class AttributeUsageAttribute {
-                constructor(targets: Windows.Foundation.Metadata.AttributeTargets /* TODO: Really part of WinRT? */);
+                constructor(
+                    targets: Windows.Foundation.Metadata.AttributeTargets /* TODO: Really part of WinRT? */,
+                );
             }
             export enum AttributeTargets {
                 all,
@@ -811,10 +1030,8 @@ declare namespace Windows {
                 struct,
                 interfaceImpl,
             }
-            export class DefaultOverloadAttribute {
-            }
-            export class DefaultAttribute {
-            }
+            export class DefaultOverloadAttribute {}
+            export class DefaultAttribute {}
             export class GuidAttribute {
                 constructor(
                     a: number,
@@ -832,7 +1049,7 @@ declare namespace Windows {
             }
             export class ComposableAttribute {
                 constructor(
-                    type: string, /* TODO: really? */
+                    type: string /* TODO: really? */,
                     compositionType: Windows.Foundation.Metadata.CompositionType,
                     version: number,
                 );
@@ -847,10 +1064,8 @@ declare namespace Windows {
             export class StaticAttribute {
                 constructor(type: string, /* TODO: really? */ version: number);
             }
-            export class OverridableAttribute {
-            }
-            export class ProtectedAttribute {
-            }
+            export class OverridableAttribute {}
+            export class ProtectedAttribute {}
             export class ThreadingAttribute {
                 constructor(model: Windows.Foundation.Metadata.ThreadingModel);
             }
@@ -861,7 +1076,9 @@ declare namespace Windows {
                 invalidThreading,
             }
             export class MarshalingBehaviorAttribute {
-                constructor(behavior: Windows.Foundation.Metadata.MarshalingType);
+                constructor(
+                    behavior: Windows.Foundation.Metadata.MarshalingType,
+                );
             }
             export enum MarshalingType {
                 none,
@@ -892,11 +1109,18 @@ declare namespace Windows {
                 suppressSetErrorInfo,
             }
             export interface IErrorReportingSettings {
-                setErrorOptions(value: Windows.Foundation.Diagnostics.ErrorOptions): void;
+                setErrorOptions(
+                    value: Windows.Foundation.Diagnostics.ErrorOptions,
+                ): void;
                 getErrorOptions(): Windows.Foundation.Diagnostics.ErrorOptions;
             }
-            export class RuntimeBrokerErrorSettings implements Windows.Foundation.Diagnostics.IErrorReportingSettings {
-                setErrorOptions(value: Windows.Foundation.Diagnostics.ErrorOptions): void;
+            export class RuntimeBrokerErrorSettings
+                implements
+                    Windows.Foundation.Diagnostics.IErrorReportingSettings
+            {
+                setErrorOptions(
+                    value: Windows.Foundation.Diagnostics.ErrorOptions,
+                ): void;
                 getErrorOptions(): Windows.Foundation.Diagnostics.ErrorOptions;
             }
         }
@@ -912,21 +1136,19 @@ declare namespace Windows {
                 denied,
             }
             export interface IBackgroundExecutionManagerStatics {
-                requestAccessAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.ApplicationModel.Background.BackgroundAccessStatus
-                >;
+                requestAccessAsync(): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Background.BackgroundAccessStatus>;
                 requestAccessAsync(
                     applicationId: string,
                 ): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Background.BackgroundAccessStatus>;
                 removeAccess(): void;
                 removeAccess(applicationId: string): void;
                 getAccessStatus(): Windows.ApplicationModel.Background.BackgroundAccessStatus;
-                getAccessStatus(applicationId: string): Windows.ApplicationModel.Background.BackgroundAccessStatus;
+                getAccessStatus(
+                    applicationId: string,
+                ): Windows.ApplicationModel.Background.BackgroundAccessStatus;
             }
             export class BackgroundExecutionManager {
-                static requestAccessAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.ApplicationModel.Background.BackgroundAccessStatus
-                >;
+                static requestAccessAsync(): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Background.BackgroundAccessStatus>;
                 static requestAccessAsync(
                     applicationId: string,
                 ): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Background.BackgroundAccessStatus>;
@@ -959,7 +1181,9 @@ declare namespace Windows {
                 getDeferral(): Windows.ApplicationModel.Background.BackgroundTaskDeferral;
             }
             export class BackgroundTaskRegistration
-                implements Windows.ApplicationModel.Background.IBackgroundTaskRegistration
+                implements
+                    Windows.ApplicationModel.Background
+                        .IBackgroundTaskRegistration
             {
                 name: string;
                 taskId: string;
@@ -971,7 +1195,10 @@ declare namespace Windows {
                     Windows.ApplicationModel.Background.IBackgroundTaskRegistration
                 >;
             }
-            export class BackgroundTaskDeferral implements Windows.ApplicationModel.Background.IBackgroundTaskDeferral {
+            export class BackgroundTaskDeferral
+                implements
+                    Windows.ApplicationModel.Background.IBackgroundTaskDeferral
+            {
                 complete(): void;
             }
             export interface BackgroundTaskProgressEventHandler {
@@ -981,7 +1208,9 @@ declare namespace Windows {
                 ): void;
             }
             export class BackgroundTaskProgressEventArgs
-                implements Windows.ApplicationModel.Background.IBackgroundTaskProgressEventArgs
+                implements
+                    Windows.ApplicationModel.Background
+                        .IBackgroundTaskProgressEventArgs
             {
                 instanceId: string;
                 progress: number;
@@ -993,7 +1222,9 @@ declare namespace Windows {
                 ): void;
             }
             export class BackgroundTaskCompletedEventArgs
-                implements Windows.ApplicationModel.Background.IBackgroundTaskCompletedEventArgs
+                implements
+                    Windows.ApplicationModel.Background
+                        .IBackgroundTaskCompletedEventArgs
             {
                 instanceId: string;
                 checkResult(): void;
@@ -1002,7 +1233,9 @@ declare namespace Windows {
                 complete(): void;
             }
             export interface IBackgroundTask {
-                run(taskInstance: Windows.ApplicationModel.Background.IBackgroundTaskInstance): void;
+                run(
+                    taskInstance: Windows.ApplicationModel.Background.IBackgroundTaskInstance,
+                ): void;
             }
             export interface IBackgroundTaskRegistration {
                 name: string;
@@ -1020,14 +1253,16 @@ declare namespace Windows {
             export interface IBackgroundTaskBuilder {
                 name: string;
                 taskEntryPoint: string;
-                setTrigger(trigger: Windows.ApplicationModel.Background.IBackgroundTrigger): void;
-                addCondition(condition: Windows.ApplicationModel.Background.IBackgroundCondition): void;
+                setTrigger(
+                    trigger: Windows.ApplicationModel.Background.IBackgroundTrigger,
+                ): void;
+                addCondition(
+                    condition: Windows.ApplicationModel.Background.IBackgroundCondition,
+                ): void;
                 register(): Windows.ApplicationModel.Background.BackgroundTaskRegistration;
             }
-            export interface IBackgroundTrigger {
-            }
-            export interface IBackgroundCondition {
-            }
+            export interface IBackgroundTrigger {}
+            export interface IBackgroundCondition {}
             export interface IBackgroundTaskCompletedEventArgs {
                 instanceId: string;
                 checkResult(): void;
@@ -1036,11 +1271,18 @@ declare namespace Windows {
                 instanceId: string;
                 progress: number;
             }
-            export class BackgroundTaskBuilder implements Windows.ApplicationModel.Background.IBackgroundTaskBuilder {
+            export class BackgroundTaskBuilder
+                implements
+                    Windows.ApplicationModel.Background.IBackgroundTaskBuilder
+            {
                 name: string;
                 taskEntryPoint: string;
-                setTrigger(trigger: Windows.ApplicationModel.Background.IBackgroundTrigger): void;
-                addCondition(condition: Windows.ApplicationModel.Background.IBackgroundCondition): void;
+                setTrigger(
+                    trigger: Windows.ApplicationModel.Background.IBackgroundTrigger,
+                ): void;
+                addCondition(
+                    condition: Windows.ApplicationModel.Background.IBackgroundCondition,
+                ): void;
                 register(): Windows.ApplicationModel.Background.BackgroundTaskRegistration;
             }
             export enum SystemTriggerType {
@@ -1067,7 +1309,8 @@ declare namespace Windows {
                 sessionConnected,
                 sessionDisconnected,
             }
-            export interface ISystemTrigger extends Windows.ApplicationModel.Background.IBackgroundTrigger {
+            export interface ISystemTrigger
+                extends Windows.ApplicationModel.Background.IBackgroundTrigger {
                 oneShot: boolean;
                 triggerType: Windows.ApplicationModel.Background.SystemTriggerType;
             }
@@ -1082,11 +1325,16 @@ declare namespace Windows {
                     Windows.ApplicationModel.Background.ISystemTrigger,
                     Windows.ApplicationModel.Background.IBackgroundTrigger
             {
-                constructor(triggerType: Windows.ApplicationModel.Background.SystemTriggerType, oneShot: boolean);
+                constructor(
+                    triggerType: Windows.ApplicationModel.Background.SystemTriggerType,
+                    oneShot: boolean,
+                );
                 oneShot: boolean;
                 triggerType: Windows.ApplicationModel.Background.SystemTriggerType;
             }
-            export interface ISystemCondition extends Windows.ApplicationModel.Background.IBackgroundCondition {
+            export interface ISystemCondition
+                extends Windows.ApplicationModel.Background
+                    .IBackgroundCondition {
                 conditionType: Windows.ApplicationModel.Background.SystemConditionType;
             }
             export interface ISystemConditionFactory {
@@ -1099,12 +1347,13 @@ declare namespace Windows {
                     Windows.ApplicationModel.Background.ISystemCondition,
                     Windows.ApplicationModel.Background.IBackgroundCondition
             {
-                constructor(conditionType: Windows.ApplicationModel.Background.SystemConditionType);
+                constructor(
+                    conditionType: Windows.ApplicationModel.Background.SystemConditionType,
+                );
                 conditionType: Windows.ApplicationModel.Background.SystemConditionType;
             }
             export interface INetworkOperatorNotificationTrigger
-                extends Windows.ApplicationModel.Background.IBackgroundTrigger
-            {
+                extends Windows.ApplicationModel.Background.IBackgroundTrigger {
                 networkAccountId: string;
             }
             export interface INetworkOperatorNotificationTriggerFactory {
@@ -1114,18 +1363,23 @@ declare namespace Windows {
             }
             export class NetworkOperatorNotificationTrigger
                 implements
-                    Windows.ApplicationModel.Background.INetworkOperatorNotificationTrigger,
+                    Windows.ApplicationModel.Background
+                        .INetworkOperatorNotificationTrigger,
                     Windows.ApplicationModel.Background.IBackgroundTrigger
             {
                 constructor(networkAccountId: string);
                 networkAccountId: string;
             }
-            export interface ITimeTrigger extends Windows.ApplicationModel.Background.IBackgroundTrigger {
+            export interface ITimeTrigger
+                extends Windows.ApplicationModel.Background.IBackgroundTrigger {
                 freshnessTime: number;
                 oneShot: boolean;
             }
             export interface ITimeTriggerFactory {
-                create(freshnessTime: number, oneShot: boolean): Windows.ApplicationModel.Background.TimeTrigger;
+                create(
+                    freshnessTime: number,
+                    oneShot: boolean,
+                ): Windows.ApplicationModel.Background.TimeTrigger;
             }
             export class TimeTrigger
                 implements
@@ -1136,12 +1390,16 @@ declare namespace Windows {
                 freshnessTime: number;
                 oneShot: boolean;
             }
-            export interface IMaintenanceTrigger extends Windows.ApplicationModel.Background.IBackgroundTrigger {
+            export interface IMaintenanceTrigger
+                extends Windows.ApplicationModel.Background.IBackgroundTrigger {
                 freshnessTime: number;
                 oneShot: boolean;
             }
             export interface IMaintenanceTriggerFactory {
-                create(freshnessTime: number, oneShot: boolean): Windows.ApplicationModel.Background.MaintenanceTrigger;
+                create(
+                    freshnessTime: number,
+                    oneShot: boolean,
+                ): Windows.ApplicationModel.Background.MaintenanceTrigger;
             }
             export class MaintenanceTrigger
                 implements
@@ -1153,19 +1411,22 @@ declare namespace Windows {
                 oneShot: boolean;
             }
             export interface INetworkOperatorHotspotAuthenticationTrigger
-                extends Windows.ApplicationModel.Background.IBackgroundTrigger
-            {
-            }
+                extends Windows.ApplicationModel.Background
+                    .IBackgroundTrigger {}
             export class NetworkOperatorHotspotAuthenticationTrigger
                 implements
-                    Windows.ApplicationModel.Background.INetworkOperatorHotspotAuthenticationTrigger,
+                    Windows.ApplicationModel.Background
+                        .INetworkOperatorHotspotAuthenticationTrigger,
+                    Windows.ApplicationModel.Background.IBackgroundTrigger {}
+            export interface IPushNotificationTriggerFactory {
+                create(
+                    applicationId: string,
+                ): Windows.ApplicationModel.Background.PushNotificationTrigger;
+            }
+            export class PushNotificationTrigger
+                implements
                     Windows.ApplicationModel.Background.IBackgroundTrigger
             {
-            }
-            export interface IPushNotificationTriggerFactory {
-                create(applicationId: string): Windows.ApplicationModel.Background.PushNotificationTrigger;
-            }
-            export class PushNotificationTrigger implements Windows.ApplicationModel.Background.IBackgroundTrigger {
                 constructor(applicationId: string);
                 constructor();
             }
@@ -1199,8 +1460,13 @@ declare namespace Windows {
                 type: Windows.ApplicationModel.Contacts.ContactFieldType;
                 value: string;
             }
-            export class ContactField implements Windows.ApplicationModel.Contacts.IContactField {
-                constructor(value: string, type: Windows.ApplicationModel.Contacts.ContactFieldType);
+            export class ContactField
+                implements Windows.ApplicationModel.Contacts.IContactField
+            {
+                constructor(
+                    value: string,
+                    type: Windows.ApplicationModel.Contacts.ContactFieldType,
+                );
                 constructor(
                     value: string,
                     type: Windows.ApplicationModel.Contacts.ContactFieldType,
@@ -1217,7 +1483,8 @@ declare namespace Windows {
                 type: Windows.ApplicationModel.Contacts.ContactFieldType;
                 value: string;
             }
-            export interface IContactLocationField extends Windows.ApplicationModel.Contacts.IContactField {
+            export interface IContactLocationField
+                extends Windows.ApplicationModel.Contacts.IContactField {
                 city: string;
                 country: string;
                 postalCode: string;
@@ -1255,7 +1522,8 @@ declare namespace Windows {
                 type: Windows.ApplicationModel.Contacts.ContactFieldType;
                 value: string;
             }
-            export interface IContactInstantMessageField extends Windows.ApplicationModel.Contacts.IContactField {
+            export interface IContactInstantMessageField
+                extends Windows.ApplicationModel.Contacts.IContactField {
                 displayText: string;
                 launchUri: Windows.Foundation.Uri;
                 service: string;
@@ -1263,11 +1531,15 @@ declare namespace Windows {
             }
             export class ContactInstantMessageField
                 implements
-                    Windows.ApplicationModel.Contacts.IContactInstantMessageField,
+                    Windows.ApplicationModel.Contacts
+                        .IContactInstantMessageField,
                     Windows.ApplicationModel.Contacts.IContactField
             {
                 constructor(userName: string);
-                constructor(userName: string, category: Windows.ApplicationModel.Contacts.ContactFieldCategory);
+                constructor(
+                    userName: string,
+                    category: Windows.ApplicationModel.Contacts.ContactFieldCategory,
+                );
                 constructor(
                     userName: string,
                     category: Windows.ApplicationModel.Contacts.ContactFieldCategory,
@@ -1289,57 +1561,48 @@ declare namespace Windows {
                 instantMessage: string;
                 location: string;
                 phoneNumber: string;
-                convertNameToType(name: string): Windows.ApplicationModel.Contacts.ContactFieldType;
-                convertTypeToName(type: Windows.ApplicationModel.Contacts.ContactFieldType): string;
+                convertNameToType(
+                    name: string,
+                ): Windows.ApplicationModel.Contacts.ContactFieldType;
+                convertTypeToName(
+                    type: Windows.ApplicationModel.Contacts.ContactFieldType,
+                ): string;
             }
             export class KnownContactField {
                 static email: string;
                 static instantMessage: string;
                 static location: string;
                 static phoneNumber: string;
-                static convertNameToType(name: string): Windows.ApplicationModel.Contacts.ContactFieldType;
-                static convertTypeToName(type: Windows.ApplicationModel.Contacts.ContactFieldType): string;
+                static convertNameToType(
+                    name: string,
+                ): Windows.ApplicationModel.Contacts.ContactFieldType;
+                static convertTypeToName(
+                    type: Windows.ApplicationModel.Contacts.ContactFieldType,
+                ): string;
             }
             export interface IContactInformation {
-                customFields: Windows.Foundation.Collections.IVectorView<
-                    Windows.ApplicationModel.Contacts.ContactField
-                >;
+                customFields: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactField>;
                 emails: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactField>;
-                instantMessages: Windows.Foundation.Collections.IVectorView<
-                    Windows.ApplicationModel.Contacts.ContactInstantMessageField
-                >;
-                locations: Windows.Foundation.Collections.IVectorView<
-                    Windows.ApplicationModel.Contacts.ContactLocationField
-                >;
+                instantMessages: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactInstantMessageField>;
+                locations: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactLocationField>;
                 name: string;
-                phoneNumbers: Windows.Foundation.Collections.IVectorView<
-                    Windows.ApplicationModel.Contacts.ContactField
-                >;
-                getThumbnailAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.Streams.IRandomAccessStreamWithContentType
-                >;
+                phoneNumbers: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactField>;
+                getThumbnailAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStreamWithContentType>;
                 queryCustomFields(
                     customName: string,
                 ): Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactField>;
             }
-            export class ContactInformation implements Windows.ApplicationModel.Contacts.IContactInformation {
-                customFields: Windows.Foundation.Collections.IVectorView<
-                    Windows.ApplicationModel.Contacts.ContactField
-                >;
+            export class ContactInformation
+                implements
+                    Windows.ApplicationModel.Contacts.IContactInformation
+            {
+                customFields: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactField>;
                 emails: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactField>;
-                instantMessages: Windows.Foundation.Collections.IVectorView<
-                    Windows.ApplicationModel.Contacts.ContactInstantMessageField
-                >;
-                locations: Windows.Foundation.Collections.IVectorView<
-                    Windows.ApplicationModel.Contacts.ContactLocationField
-                >;
+                instantMessages: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactInstantMessageField>;
+                locations: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactLocationField>;
                 name: string;
-                phoneNumbers: Windows.Foundation.Collections.IVectorView<
-                    Windows.ApplicationModel.Contacts.ContactField
-                >;
-                getThumbnailAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.Streams.IRandomAccessStreamWithContentType
-                >;
+                phoneNumbers: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactField>;
+                getThumbnailAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStreamWithContentType>;
                 queryCustomFields(
                     customName: string,
                 ): Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactField>;
@@ -1348,20 +1611,18 @@ declare namespace Windows {
                 commitButtonText: string;
                 desiredFields: Windows.Foundation.Collections.IVector<string>;
                 selectionMode: Windows.ApplicationModel.Contacts.ContactSelectionMode;
-                pickSingleContactAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.ApplicationModel.Contacts.ContactInformation
-                >;
+                pickSingleContactAsync(): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Contacts.ContactInformation>;
                 pickMultipleContactsAsync(): Windows.Foundation.IAsyncOperation<
                     Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactInformation>
                 >;
             }
-            export class ContactPicker implements Windows.ApplicationModel.Contacts.IContactPicker {
+            export class ContactPicker
+                implements Windows.ApplicationModel.Contacts.IContactPicker
+            {
                 commitButtonText: string;
                 desiredFields: Windows.Foundation.Collections.IVector<string>;
                 selectionMode: Windows.ApplicationModel.Contacts.ContactSelectionMode;
-                pickSingleContactAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.ApplicationModel.Contacts.ContactInformation
-                >;
+                pickSingleContactAsync(): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Contacts.ContactInformation>;
                 pickMultipleContactsAsync(): Windows.Foundation.IAsyncOperation<
                     Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Contacts.ContactInformation>
                 >;
@@ -1371,7 +1632,9 @@ declare namespace Windows {
                 name: string;
                 thumbnail: Windows.Storage.Streams.IRandomAccessStreamReference;
             }
-            export class Contact implements Windows.ApplicationModel.Contacts.IContact {
+            export class Contact
+                implements Windows.ApplicationModel.Contacts.IContact
+            {
                 fields: Windows.Foundation.Collections.IVector<Windows.ApplicationModel.Contacts.IContactField>;
                 name: string;
                 thumbnail: Windows.Storage.Streams.IRandomAccessStreamReference;
@@ -1394,7 +1657,9 @@ declare namespace Windows {
                 ): Windows.ApplicationModel.Contacts.ContactField;
             }
             export interface IContactLocationFieldFactory {
-                createLocation(unstructuredAddress: string): Windows.ApplicationModel.Contacts.ContactLocationField;
+                createLocation(
+                    unstructuredAddress: string,
+                ): Windows.ApplicationModel.Contacts.ContactLocationField;
                 createLocation(
                     unstructuredAddress: string,
                     category: Windows.ApplicationModel.Contacts.ContactFieldCategory,
@@ -1410,7 +1675,9 @@ declare namespace Windows {
                 ): Windows.ApplicationModel.Contacts.ContactLocationField;
             }
             export interface IContactInstantMessageFieldFactory {
-                createInstantMessage(userName: string): Windows.ApplicationModel.Contacts.ContactInstantMessageField;
+                createInstantMessage(
+                    userName: string,
+                ): Windows.ApplicationModel.Contacts.ContactInstantMessageField;
                 createInstantMessage(
                     userName: string,
                     category: Windows.ApplicationModel.Contacts.ContactFieldCategory,
@@ -1426,8 +1693,10 @@ declare namespace Windows {
             export class ContactFieldFactory
                 implements
                     Windows.ApplicationModel.Contacts.IContactFieldFactory,
-                    Windows.ApplicationModel.Contacts.IContactLocationFieldFactory,
-                    Windows.ApplicationModel.Contacts.IContactInstantMessageFieldFactory
+                    Windows.ApplicationModel.Contacts
+                        .IContactLocationFieldFactory,
+                    Windows.ApplicationModel.Contacts
+                        .IContactInstantMessageFieldFactory
             {
                 createField(
                     value: string,
@@ -1444,7 +1713,9 @@ declare namespace Windows {
                     type: Windows.ApplicationModel.Contacts.ContactFieldType,
                     category: Windows.ApplicationModel.Contacts.ContactFieldCategory,
                 ): Windows.ApplicationModel.Contacts.ContactField;
-                createLocation(unstructuredAddress: string): Windows.ApplicationModel.Contacts.ContactLocationField;
+                createLocation(
+                    unstructuredAddress: string,
+                ): Windows.ApplicationModel.Contacts.ContactLocationField;
                 createLocation(
                     unstructuredAddress: string,
                     category: Windows.ApplicationModel.Contacts.ContactFieldCategory,
@@ -1458,7 +1729,9 @@ declare namespace Windows {
                     country: string,
                     postalCode: string,
                 ): Windows.ApplicationModel.Contacts.ContactLocationField;
-                createInstantMessage(userName: string): Windows.ApplicationModel.Contacts.ContactInstantMessageField;
+                createInstantMessage(
+                    userName: string,
+                ): Windows.ApplicationModel.Contacts.ContactInstantMessageField;
                 createInstantMessage(
                     userName: string,
                     category: Windows.ApplicationModel.Contacts.ContactFieldCategory,
@@ -1482,7 +1755,9 @@ declare namespace Windows {
                     id: string;
                 }
                 export class ContactRemovedEventArgs
-                    implements Windows.ApplicationModel.Contacts.Provider.IContactRemovedEventArgs
+                    implements
+                        Windows.ApplicationModel.Contacts.Provider
+                            .IContactRemovedEventArgs
                 {
                     id: string;
                 }
@@ -1502,7 +1777,11 @@ declare namespace Windows {
                     containsContact(id: string): boolean;
                     oncontactremoved: any /* TODO */;
                 }
-                export class ContactPickerUI implements Windows.ApplicationModel.Contacts.Provider.IContactPickerUI {
+                export class ContactPickerUI
+                    implements
+                        Windows.ApplicationModel.Contacts.Provider
+                            .IContactPickerUI
+                {
                     desiredFields: Windows.Foundation.Collections.IVectorView<string>;
                     selectionMode: Windows.ApplicationModel.Contacts.ContactSelectionMode;
                     addContact(
@@ -1537,10 +1816,13 @@ declare namespace Windows {
                 static uri: string;
             }
             export interface IDataPackagePropertySetView
-                extends
-                    Windows.Foundation.Collections.IMapView<string, any>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
-            {
+                extends Windows.Foundation.Collections.IMapView<string, any>,
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
+                    > {
                 applicationListingUri: Windows.Foundation.Uri;
                 applicationName: string;
                 description: string;
@@ -1549,10 +1831,13 @@ declare namespace Windows {
                 title: string;
             }
             export interface IDataPackagePropertySet
-                extends
-                    Windows.Foundation.Collections.IMap<string, any>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
-            {
+                extends Windows.Foundation.Collections.IMap<string, any>,
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
+                    > {
                 applicationListingUri: Windows.Foundation.Uri;
                 applicationName: string;
                 description: string;
@@ -1562,9 +1847,15 @@ declare namespace Windows {
             }
             export class DataPackagePropertySetView
                 implements
-                    Windows.ApplicationModel.DataTransfer.IDataPackagePropertySetView,
+                    Windows.ApplicationModel.DataTransfer
+                        .IDataPackagePropertySetView,
                     Windows.Foundation.Collections.IMapView<string, any>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
+                    >
             {
                 applicationListingUri: Windows.Foundation.Uri;
                 applicationName: string;
@@ -1577,7 +1868,10 @@ declare namespace Windows {
                 hasKey(key: string): boolean;
                 split(): {
                     first: Windows.Foundation.Collections.IMapView<string, any>;
-                    second: Windows.Foundation.Collections.IMapView<string, any>;
+                    second: Windows.Foundation.Collections.IMapView<
+                        string,
+                        any
+                    >;
                 };
                 first(): Windows.Foundation.Collections.IIterator<
                     Windows.Foundation.Collections.IKeyValuePair<string, any>
@@ -1585,9 +1879,15 @@ declare namespace Windows {
             }
             export class DataPackagePropertySet
                 implements
-                    Windows.ApplicationModel.DataTransfer.IDataPackagePropertySet,
+                    Windows.ApplicationModel.DataTransfer
+                        .IDataPackagePropertySet,
                     Windows.Foundation.Collections.IMap<string, any>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
+                    >
             {
                 applicationListingUri: Windows.Foundation.Uri;
                 applicationName: string;
@@ -1609,7 +1909,10 @@ declare namespace Windows {
             export interface IDataProviderDeferral {
                 complete(): void;
             }
-            export class DataProviderDeferral implements Windows.ApplicationModel.DataTransfer.IDataProviderDeferral {
+            export class DataProviderDeferral
+                implements
+                    Windows.ApplicationModel.DataTransfer.IDataProviderDeferral
+            {
                 complete(): void;
             }
             export interface IDataProviderRequest {
@@ -1618,14 +1921,19 @@ declare namespace Windows {
                 getDeferral(): Windows.ApplicationModel.DataTransfer.DataProviderDeferral;
                 setData(value: any): void;
             }
-            export class DataProviderRequest implements Windows.ApplicationModel.DataTransfer.IDataProviderRequest {
+            export class DataProviderRequest
+                implements
+                    Windows.ApplicationModel.DataTransfer.IDataProviderRequest
+            {
                 deadline: Date;
                 formatId: string;
                 getDeferral(): Windows.ApplicationModel.DataTransfer.DataProviderDeferral;
                 setData(value: any): void;
             }
             export interface DataProviderHandler {
-                (request: Windows.ApplicationModel.DataTransfer.DataProviderRequest): void;
+                (
+                    request: Windows.ApplicationModel.DataTransfer.DataProviderRequest,
+                ): void;
             }
             export enum DataPackageOperation {
                 none,
@@ -1637,7 +1945,9 @@ declare namespace Windows {
                 operation: Windows.ApplicationModel.DataTransfer.DataPackageOperation;
             }
             export class OperationCompletedEventArgs
-                implements Windows.ApplicationModel.DataTransfer.IOperationCompletedEventArgs
+                implements
+                    Windows.ApplicationModel.DataTransfer
+                        .IOperationCompletedEventArgs
             {
                 operation: Windows.ApplicationModel.DataTransfer.DataPackageOperation;
             }
@@ -1645,20 +1955,27 @@ declare namespace Windows {
                 availableFormats: Windows.Foundation.Collections.IVectorView<string>;
                 properties: Windows.ApplicationModel.DataTransfer.DataPackagePropertySetView;
                 requestedOperation: Windows.ApplicationModel.DataTransfer.DataPackageOperation;
-                reportOperationCompleted(value: Windows.ApplicationModel.DataTransfer.DataPackageOperation): void;
+                reportOperationCompleted(
+                    value: Windows.ApplicationModel.DataTransfer.DataPackageOperation,
+                ): void;
                 contains(formatId: string): boolean;
-                getDataAsync(formatId: string): Windows.Foundation.IAsyncOperation<any>;
+                getDataAsync(
+                    formatId: string,
+                ): Windows.Foundation.IAsyncOperation<any>;
                 getTextAsync(): Windows.Foundation.IAsyncOperation<string>;
-                getTextAsync(formatId: string): Windows.Foundation.IAsyncOperation<string>;
+                getTextAsync(
+                    formatId: string,
+                ): Windows.Foundation.IAsyncOperation<string>;
                 getUriAsync(): Windows.Foundation.IAsyncOperation<Windows.Foundation.Uri>;
                 getHtmlFormatAsync(): Windows.Foundation.IAsyncOperation<string>;
                 getResourceMapAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Foundation.Collections.IMapView<string, Windows.Storage.Streams.RandomAccessStreamReference>
+                    Windows.Foundation.Collections.IMapView<
+                        string,
+                        Windows.Storage.Streams.RandomAccessStreamReference
+                    >
                 >;
                 getRtfAsync(): Windows.Foundation.IAsyncOperation<string>;
-                getBitmapAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.Streams.RandomAccessStreamReference
-                >;
+                getBitmapAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.RandomAccessStreamReference>;
                 getStorageItemsAsync(): Windows.Foundation.IAsyncOperation<
                     Windows.Foundation.Collections.IVectorView<Windows.Storage.IStorageItem>
                 >;
@@ -1682,36 +1999,52 @@ declare namespace Windows {
                 setUri(value: Windows.Foundation.Uri): void;
                 setHtmlFormat(value: string): void;
                 setRtf(value: string): void;
-                setBitmap(value: Windows.Storage.Streams.RandomAccessStreamReference): void;
-                setStorageItems(value: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageItem>): void;
+                setBitmap(
+                    value: Windows.Storage.Streams.RandomAccessStreamReference,
+                ): void;
+                setStorageItems(
+                    value: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageItem>,
+                ): void;
                 setStorageItems(
                     value: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageItem>,
                     readOnly: boolean,
                 ): void;
             }
-            export class DataPackageView implements Windows.ApplicationModel.DataTransfer.IDataPackageView {
+            export class DataPackageView
+                implements
+                    Windows.ApplicationModel.DataTransfer.IDataPackageView
+            {
                 availableFormats: Windows.Foundation.Collections.IVectorView<string>;
                 properties: Windows.ApplicationModel.DataTransfer.DataPackagePropertySetView;
                 requestedOperation: Windows.ApplicationModel.DataTransfer.DataPackageOperation;
-                reportOperationCompleted(value: Windows.ApplicationModel.DataTransfer.DataPackageOperation): void;
+                reportOperationCompleted(
+                    value: Windows.ApplicationModel.DataTransfer.DataPackageOperation,
+                ): void;
                 contains(formatId: string): boolean;
-                getDataAsync(formatId: string): Windows.Foundation.IAsyncOperation<any>;
+                getDataAsync(
+                    formatId: string,
+                ): Windows.Foundation.IAsyncOperation<any>;
                 getTextAsync(): Windows.Foundation.IAsyncOperation<string>;
-                getTextAsync(formatId: string): Windows.Foundation.IAsyncOperation<string>;
+                getTextAsync(
+                    formatId: string,
+                ): Windows.Foundation.IAsyncOperation<string>;
                 getUriAsync(): Windows.Foundation.IAsyncOperation<Windows.Foundation.Uri>;
                 getHtmlFormatAsync(): Windows.Foundation.IAsyncOperation<string>;
                 getResourceMapAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Foundation.Collections.IMapView<string, Windows.Storage.Streams.RandomAccessStreamReference>
+                    Windows.Foundation.Collections.IMapView<
+                        string,
+                        Windows.Storage.Streams.RandomAccessStreamReference
+                    >
                 >;
                 getRtfAsync(): Windows.Foundation.IAsyncOperation<string>;
-                getBitmapAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.Streams.RandomAccessStreamReference
-                >;
+                getBitmapAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.RandomAccessStreamReference>;
                 getStorageItemsAsync(): Windows.Foundation.IAsyncOperation<
                     Windows.Foundation.Collections.IVectorView<Windows.Storage.IStorageItem>
                 >;
             }
-            export class DataPackage implements Windows.ApplicationModel.DataTransfer.IDataPackage {
+            export class DataPackage
+                implements Windows.ApplicationModel.DataTransfer.IDataPackage
+            {
                 properties: Windows.ApplicationModel.DataTransfer.DataPackagePropertySet;
                 requestedOperation: Windows.ApplicationModel.DataTransfer.DataPackageOperation;
                 resourceMap: Windows.Foundation.Collections.IMap<
@@ -1730,8 +2063,12 @@ declare namespace Windows {
                 setUri(value: Windows.Foundation.Uri): void;
                 setHtmlFormat(value: string): void;
                 setRtf(value: string): void;
-                setBitmap(value: Windows.Storage.Streams.RandomAccessStreamReference): void;
-                setStorageItems(value: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageItem>): void;
+                setBitmap(
+                    value: Windows.Storage.Streams.RandomAccessStreamReference,
+                ): void;
+                setStorageItems(
+                    value: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageItem>,
+                ): void;
                 setStorageItems(
                     value: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageItem>,
                     readOnly: boolean,
@@ -1747,14 +2084,18 @@ declare namespace Windows {
             }
             export interface IClipboardStatics {
                 getContent(): Windows.ApplicationModel.DataTransfer.DataPackageView;
-                setContent(content: Windows.ApplicationModel.DataTransfer.DataPackage): void;
+                setContent(
+                    content: Windows.ApplicationModel.DataTransfer.DataPackage,
+                ): void;
                 flush(): void;
                 clear(): void;
                 oncontentchanged: any /* TODO */;
             }
             export class Clipboard {
                 static getContent(): Windows.ApplicationModel.DataTransfer.DataPackageView;
-                static setContent(content: Windows.ApplicationModel.DataTransfer.DataPackage): void;
+                static setContent(
+                    content: Windows.ApplicationModel.DataTransfer.DataPackage,
+                ): void;
                 static flush(): void;
                 static clear(): void;
                 static oncontentchanged: any /* TODO */;
@@ -1762,7 +2103,10 @@ declare namespace Windows {
             export interface IDataRequestDeferral {
                 complete(): void;
             }
-            export class DataRequestDeferral implements Windows.ApplicationModel.DataTransfer.IDataRequestDeferral {
+            export class DataRequestDeferral
+                implements
+                    Windows.ApplicationModel.DataTransfer.IDataRequestDeferral
+            {
                 complete(): void;
             }
             export interface IDataRequest {
@@ -1771,7 +2115,9 @@ declare namespace Windows {
                 failWithDisplayText(value: string): void;
                 getDeferral(): Windows.ApplicationModel.DataTransfer.DataRequestDeferral;
             }
-            export class DataRequest implements Windows.ApplicationModel.DataTransfer.IDataRequest {
+            export class DataRequest
+                implements Windows.ApplicationModel.DataTransfer.IDataRequest
+            {
                 data: Windows.ApplicationModel.DataTransfer.DataPackage;
                 deadline: Date;
                 failWithDisplayText(value: string): void;
@@ -1781,7 +2127,9 @@ declare namespace Windows {
                 request: Windows.ApplicationModel.DataTransfer.DataRequest;
             }
             export class DataRequestedEventArgs
-                implements Windows.ApplicationModel.DataTransfer.IDataRequestedEventArgs
+                implements
+                    Windows.ApplicationModel.DataTransfer
+                        .IDataRequestedEventArgs
             {
                 request: Windows.ApplicationModel.DataTransfer.DataRequest;
             }
@@ -1789,7 +2137,9 @@ declare namespace Windows {
                 applicationName: string;
             }
             export class TargetApplicationChosenEventArgs
-                implements Windows.ApplicationModel.DataTransfer.ITargetApplicationChosenEventArgs
+                implements
+                    Windows.ApplicationModel.DataTransfer
+                        .ITargetApplicationChosenEventArgs
             {
                 applicationName: string;
             }
@@ -1797,7 +2147,10 @@ declare namespace Windows {
                 ondatarequested: any /* TODO */;
                 ontargetapplicationchosen: any /* TODO */;
             }
-            export class DataTransferManager implements Windows.ApplicationModel.DataTransfer.IDataTransferManager {
+            export class DataTransferManager
+                implements
+                    Windows.ApplicationModel.DataTransfer.IDataTransferManager
+            {
                 ondatarequested: any /* TODO */;
                 ontargetapplicationchosen: any /* TODO */;
                 static showShareUI(): void;
@@ -1819,7 +2172,9 @@ declare namespace Windows {
                 queryTextCompositionStart: number;
             }
             export class SearchPaneQueryLinguisticDetails
-                implements Windows.ApplicationModel.Search.ISearchPaneQueryLinguisticDetails
+                implements
+                    Windows.ApplicationModel.Search
+                        .ISearchPaneQueryLinguisticDetails
             {
                 queryTextAlternatives: Windows.Foundation.Collections.IVectorView<string>;
                 queryTextCompositionLength: number;
@@ -1829,7 +2184,9 @@ declare namespace Windows {
                 visible: boolean;
             }
             export class SearchPaneVisibilityChangedEventArgs
-                implements Windows.ApplicationModel.Search.ISearchPaneVisibilityChangedEventArgs
+                implements
+                    Windows.ApplicationModel.Search
+                        .ISearchPaneVisibilityChangedEventArgs
             {
                 visible: boolean;
             }
@@ -1839,7 +2196,9 @@ declare namespace Windows {
                 queryText: string;
             }
             export class SearchPaneQueryChangedEventArgs
-                implements Windows.ApplicationModel.Search.ISearchPaneQueryChangedEventArgs
+                implements
+                    Windows.ApplicationModel.Search
+                        .ISearchPaneQueryChangedEventArgs
             {
                 language: string;
                 linguisticDetails: Windows.ApplicationModel.Search.SearchPaneQueryLinguisticDetails;
@@ -1850,7 +2209,9 @@ declare namespace Windows {
                 queryText: string;
             }
             export class SearchPaneQuerySubmittedEventArgs
-                implements Windows.ApplicationModel.Search.ISearchPaneQuerySubmittedEventArgs
+                implements
+                    Windows.ApplicationModel.Search
+                        .ISearchPaneQuerySubmittedEventArgs
             {
                 language: string;
                 queryText: string;
@@ -1859,14 +2220,18 @@ declare namespace Windows {
                 tag: string;
             }
             export class SearchPaneResultSuggestionChosenEventArgs
-                implements Windows.ApplicationModel.Search.ISearchPaneResultSuggestionChosenEventArgs
+                implements
+                    Windows.ApplicationModel.Search
+                        .ISearchPaneResultSuggestionChosenEventArgs
             {
                 tag: string;
             }
             export interface ISearchSuggestionCollection {
                 size: number;
                 appendQuerySuggestion(text: string): void;
-                appendQuerySuggestions(suggestions: Windows.Foundation.Collections.IIterable<string>): void;
+                appendQuerySuggestions(
+                    suggestions: Windows.Foundation.Collections.IIterable<string>,
+                ): void;
                 appendResultSuggestion(
                     text: string,
                     detailText: string,
@@ -1877,11 +2242,14 @@ declare namespace Windows {
                 appendSearchSeparator(label: string): void;
             }
             export class SearchSuggestionCollection
-                implements Windows.ApplicationModel.Search.ISearchSuggestionCollection
+                implements
+                    Windows.ApplicationModel.Search.ISearchSuggestionCollection
             {
                 size: number;
                 appendQuerySuggestion(text: string): void;
-                appendQuerySuggestions(suggestions: Windows.Foundation.Collections.IIterable<string>): void;
+                appendQuerySuggestions(
+                    suggestions: Windows.Foundation.Collections.IIterable<string>,
+                ): void;
                 appendResultSuggestion(
                     text: string,
                     detailText: string,
@@ -1900,26 +2268,32 @@ declare namespace Windows {
                 getDeferral(): Windows.ApplicationModel.Search.SearchPaneSuggestionsRequestDeferral;
             }
             export class SearchPaneSuggestionsRequestDeferral
-                implements Windows.ApplicationModel.Search.ISearchPaneSuggestionsRequestDeferral
+                implements
+                    Windows.ApplicationModel.Search
+                        .ISearchPaneSuggestionsRequestDeferral
             {
                 complete(): void;
             }
             export class SearchPaneSuggestionsRequest
-                implements Windows.ApplicationModel.Search.ISearchPaneSuggestionsRequest
+                implements
+                    Windows.ApplicationModel.Search
+                        .ISearchPaneSuggestionsRequest
             {
                 isCanceled: boolean;
                 searchSuggestionCollection: Windows.ApplicationModel.Search.SearchSuggestionCollection;
                 getDeferral(): Windows.ApplicationModel.Search.SearchPaneSuggestionsRequestDeferral;
             }
             export interface ISearchPaneSuggestionsRequestedEventArgs
-                extends Windows.ApplicationModel.Search.ISearchPaneQueryChangedEventArgs
-            {
+                extends Windows.ApplicationModel.Search
+                    .ISearchPaneQueryChangedEventArgs {
                 request: Windows.ApplicationModel.Search.SearchPaneSuggestionsRequest;
             }
             export class SearchPaneSuggestionsRequestedEventArgs
                 implements
-                    Windows.ApplicationModel.Search.ISearchPaneSuggestionsRequestedEventArgs,
-                    Windows.ApplicationModel.Search.ISearchPaneQueryChangedEventArgs
+                    Windows.ApplicationModel.Search
+                        .ISearchPaneSuggestionsRequestedEventArgs,
+                    Windows.ApplicationModel.Search
+                        .ISearchPaneQueryChangedEventArgs
             {
                 request: Windows.ApplicationModel.Search.SearchPaneSuggestionsRequest;
                 language: string;
@@ -1933,7 +2307,9 @@ declare namespace Windows {
                 propertiesToMatch: Windows.Foundation.Collections.IVector<string>;
             }
             export class LocalContentSuggestionSettings
-                implements Windows.ApplicationModel.Search.ILocalContentSuggestionSettings
+                implements
+                    Windows.ApplicationModel.Search
+                        .ILocalContentSuggestionSettings
             {
                 aqsFilter: string;
                 enabled: boolean;
@@ -1943,7 +2319,9 @@ declare namespace Windows {
             export interface ISearchPaneStatics {
                 getForCurrentView(): Windows.ApplicationModel.Search.SearchPane;
             }
-            export class SearchPane implements Windows.ApplicationModel.Search.ISearchPane {
+            export class SearchPane
+                implements Windows.ApplicationModel.Search.ISearchPane
+            {
                 language: string;
                 placeholderText: string;
                 queryText: string;
@@ -1998,7 +2376,11 @@ declare namespace Windows {
                     thumbnail: Windows.Storage.Streams.RandomAccessStreamReference;
                     title: string;
                 }
-                export class QuickLink implements Windows.ApplicationModel.DataTransfer.ShareTarget.IQuickLink {
+                export class QuickLink
+                    implements
+                        Windows.ApplicationModel.DataTransfer.ShareTarget
+                            .IQuickLink
+                {
                     id: string;
                     supportedDataFormats: Windows.Foundation.Collections.IVector<string>;
                     supportedFileTypes: Windows.Foundation.Collections.IVector<string>;
@@ -2012,12 +2394,16 @@ declare namespace Windows {
                     reportStarted(): void;
                     reportDataRetrieved(): void;
                     reportSubmittedBackgroundTask(): void;
-                    reportCompleted(quicklink: Windows.ApplicationModel.DataTransfer.ShareTarget.QuickLink): void;
+                    reportCompleted(
+                        quicklink: Windows.ApplicationModel.DataTransfer.ShareTarget.QuickLink,
+                    ): void;
                     reportCompleted(): void;
                     reportError(value: string): void;
                 }
                 export class ShareOperation
-                    implements Windows.ApplicationModel.DataTransfer.ShareTarget.IShareOperation
+                    implements
+                        Windows.ApplicationModel.DataTransfer.ShareTarget
+                            .IShareOperation
                 {
                     data: Windows.ApplicationModel.DataTransfer.DataPackageView;
                     quickLinkId: string;
@@ -2025,7 +2411,9 @@ declare namespace Windows {
                     reportStarted(): void;
                     reportDataRetrieved(): void;
                     reportSubmittedBackgroundTask(): void;
-                    reportCompleted(quicklink: Windows.ApplicationModel.DataTransfer.ShareTarget.QuickLink): void;
+                    reportCompleted(
+                        quicklink: Windows.ApplicationModel.DataTransfer.ShareTarget.QuickLink,
+                    ): void;
                     reportCompleted(): void;
                     reportError(value: string): void;
                 }
@@ -2040,7 +2428,9 @@ declare namespace Windows {
                 imageLocation: Windows.Foundation.Rect;
                 ondismissed: any /* TODO */;
             }
-            export class SplashScreen implements Windows.ApplicationModel.Activation.ISplashScreen {
+            export class SplashScreen
+                implements Windows.ApplicationModel.Activation.ISplashScreen
+            {
                 imageLocation: Windows.Foundation.Rect;
                 ondismissed: any /* TODO */;
             }
@@ -2088,13 +2478,16 @@ declare namespace Windows {
                 previousExecutionState: Windows.ApplicationModel.Activation.ApplicationExecutionState;
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
-            export interface ILaunchActivatedEventArgs extends Windows.ApplicationModel.Activation.IActivatedEventArgs {
+            export interface ILaunchActivatedEventArgs
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 arguments: string;
                 tileId: string;
             }
             export class LaunchActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.ILaunchActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .ILaunchActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 arguments: string;
@@ -2103,13 +2496,16 @@ declare namespace Windows {
                 previousExecutionState: Windows.ApplicationModel.Activation.ApplicationExecutionState;
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
-            export interface ISearchActivatedEventArgs extends Windows.ApplicationModel.Activation.IActivatedEventArgs {
+            export interface ISearchActivatedEventArgs
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 language: string;
                 queryText: string;
             }
             export class SearchActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.ISearchActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .ISearchActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 language: string;
@@ -2119,13 +2515,14 @@ declare namespace Windows {
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
             export interface IShareTargetActivatedEventArgs
-                extends Windows.ApplicationModel.Activation.IActivatedEventArgs
-            {
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 shareOperation: Windows.ApplicationModel.DataTransfer.ShareTarget.ShareOperation;
             }
             export class ShareTargetActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IShareTargetActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IShareTargetActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 shareOperation: Windows.ApplicationModel.DataTransfer.ShareTarget.ShareOperation;
@@ -2133,7 +2530,9 @@ declare namespace Windows {
                 previousExecutionState: Windows.ApplicationModel.Activation.ApplicationExecutionState;
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
-            export interface IFileActivatedEventArgs extends Windows.ApplicationModel.Activation.IActivatedEventArgs {
+            export interface IFileActivatedEventArgs
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 files: Windows.Foundation.Collections.IVectorView<Windows.Storage.IStorageItem>;
                 verb: string;
             }
@@ -2149,13 +2548,14 @@ declare namespace Windows {
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
             export interface IProtocolActivatedEventArgs
-                extends Windows.ApplicationModel.Activation.IActivatedEventArgs
-            {
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 uri: Windows.Foundation.Uri;
             }
             export class ProtocolActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IProtocolActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IProtocolActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 uri: Windows.Foundation.Uri;
@@ -2164,13 +2564,14 @@ declare namespace Windows {
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
             export interface IFileOpenPickerActivatedEventArgs
-                extends Windows.ApplicationModel.Activation.IActivatedEventArgs
-            {
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 fileOpenPickerUI: Windows.Storage.Pickers.Provider.FileOpenPickerUI;
             }
             export class FileOpenPickerActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IFileOpenPickerActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IFileOpenPickerActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 fileOpenPickerUI: Windows.Storage.Pickers.Provider.FileOpenPickerUI;
@@ -2179,13 +2580,14 @@ declare namespace Windows {
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
             export interface IFileSavePickerActivatedEventArgs
-                extends Windows.ApplicationModel.Activation.IActivatedEventArgs
-            {
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 fileSavePickerUI: Windows.Storage.Pickers.Provider.FileSavePickerUI;
             }
             export class FileSavePickerActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IFileSavePickerActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IFileSavePickerActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 fileSavePickerUI: Windows.Storage.Pickers.Provider.FileSavePickerUI;
@@ -2194,13 +2596,14 @@ declare namespace Windows {
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
             export interface ICachedFileUpdaterActivatedEventArgs
-                extends Windows.ApplicationModel.Activation.IActivatedEventArgs
-            {
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 cachedFileUpdaterUI: Windows.Storage.Provider.CachedFileUpdaterUI;
             }
             export class CachedFileUpdaterActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.ICachedFileUpdaterActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .ICachedFileUpdaterActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 cachedFileUpdaterUI: Windows.Storage.Provider.CachedFileUpdaterUI;
@@ -2209,13 +2612,14 @@ declare namespace Windows {
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
             export interface IContactPickerActivatedEventArgs
-                extends Windows.ApplicationModel.Activation.IActivatedEventArgs
-            {
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 contactPickerUI: Windows.ApplicationModel.Contacts.Provider.ContactPickerUI;
             }
             export class ContactPickerActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IContactPickerActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IContactPickerActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 contactPickerUI: Windows.ApplicationModel.Contacts.Provider.ContactPickerUI;
@@ -2223,13 +2627,16 @@ declare namespace Windows {
                 previousExecutionState: Windows.ApplicationModel.Activation.ApplicationExecutionState;
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
-            export interface IDeviceActivatedEventArgs extends Windows.ApplicationModel.Activation.IActivatedEventArgs {
+            export interface IDeviceActivatedEventArgs
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 deviceInformationId: string;
                 verb: string;
             }
             export class DeviceActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IDeviceActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IDeviceActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 deviceInformationId: string;
@@ -2239,13 +2646,14 @@ declare namespace Windows {
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
             export interface IPrintTaskSettingsActivatedEventArgs
-                extends Windows.ApplicationModel.Activation.IActivatedEventArgs
-            {
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 configuration: Windows.Devices.Printers.Extensions.PrintTaskConfiguration;
             }
             export class PrintTaskSettingsActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IPrintTaskSettingsActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IPrintTaskSettingsActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 configuration: Windows.Devices.Printers.Extensions.PrintTaskConfiguration;
@@ -2254,14 +2662,15 @@ declare namespace Windows {
                 splashScreen: Windows.ApplicationModel.Activation.SplashScreen;
             }
             export interface ICameraSettingsActivatedEventArgs
-                extends Windows.ApplicationModel.Activation.IActivatedEventArgs
-            {
+                extends Windows.ApplicationModel.Activation
+                    .IActivatedEventArgs {
                 videoDeviceController: any;
                 videoDeviceExtension: any;
             }
             export class CameraSettingsActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.ICameraSettingsActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .ICameraSettingsActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs
             {
                 videoDeviceController: any;
@@ -2278,9 +2687,7 @@ declare namespace Windows {
         export namespace Core {
             export class CoreApplication {
                 static mainView: Windows.ApplicationModel.Core.CoreApplicationView;
-                static views: Windows.Foundation.Collections.IVectorView<
-                    Windows.ApplicationModel.Core.CoreApplicationView
-                >;
+                static views: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Core.CoreApplicationView>;
                 static id: string;
                 static properties: Windows.Foundation.Collections.IPropertySet;
                 static incrementApplicationUseCount(): void;
@@ -2294,19 +2701,25 @@ declare namespace Windows {
                 static onsuspending: any /* TODO */;
                 static onresuming: any /* TODO */;
                 static getCurrentView(): Windows.ApplicationModel.Core.CoreApplicationView;
-                static run(viewSource: Windows.ApplicationModel.Core.IFrameworkViewSource): void;
+                static run(
+                    viewSource: Windows.ApplicationModel.Core.IFrameworkViewSource,
+                ): void;
                 static runWithActivationFactories(
                     activationFactoryCallback: Windows.Foundation.IGetActivationFactory,
                 ): void;
             }
-            export class CoreApplicationView implements Windows.ApplicationModel.Core.ICoreApplicationView {
+            export class CoreApplicationView
+                implements Windows.ApplicationModel.Core.ICoreApplicationView
+            {
                 coreWindow: Windows.UI.Core.CoreWindow;
                 isHosted: boolean;
                 isMain: boolean;
                 onactivated: any /* TODO */;
             }
             export interface IFrameworkView {
-                initialize(applicationView: Windows.ApplicationModel.Core.CoreApplicationView): void;
+                initialize(
+                    applicationView: Windows.ApplicationModel.Core.CoreApplicationView,
+                ): void;
                 setWindow(window: Windows.UI.Core.CoreWindow): void;
                 load(entryPoint: string): void;
                 run(): void;
@@ -2321,8 +2734,12 @@ declare namespace Windows {
                 onsuspending: any /* TODO */;
                 onresuming: any /* TODO */;
                 getCurrentView(): Windows.ApplicationModel.Core.CoreApplicationView;
-                run(viewSource: Windows.ApplicationModel.Core.IFrameworkViewSource): void;
-                runWithActivationFactories(activationFactoryCallback: Windows.Foundation.IGetActivationFactory): void;
+                run(
+                    viewSource: Windows.ApplicationModel.Core.IFrameworkViewSource,
+                ): void;
+                runWithActivationFactories(
+                    activationFactoryCallback: Windows.Foundation.IGetActivationFactory,
+                ): void;
             }
             export interface ICoreApplicationUseCount {
                 incrementApplicationUseCount(): void;
@@ -2351,20 +2768,26 @@ declare namespace Windows {
 }
 declare namespace Windows {
     export namespace ApplicationModel {
-        export class SuspendingEventArgs implements Windows.ApplicationModel.ISuspendingEventArgs {
+        export class SuspendingEventArgs
+            implements Windows.ApplicationModel.ISuspendingEventArgs
+        {
             suspendingOperation: Windows.ApplicationModel.SuspendingOperation;
         }
         export interface ISuspendingDeferral {
             complete(): void;
         }
-        export class SuspendingDeferral implements Windows.ApplicationModel.ISuspendingDeferral {
+        export class SuspendingDeferral
+            implements Windows.ApplicationModel.ISuspendingDeferral
+        {
             complete(): void;
         }
         export interface ISuspendingOperation {
             deadline: Date;
             getDeferral(): Windows.ApplicationModel.SuspendingDeferral;
         }
-        export class SuspendingOperation implements Windows.ApplicationModel.ISuspendingOperation {
+        export class SuspendingOperation
+            implements Windows.ApplicationModel.ISuspendingOperation
+        {
             deadline: Date;
             getDeferral(): Windows.ApplicationModel.SuspendingDeferral;
         }
@@ -2442,17 +2865,23 @@ declare namespace Windows {
             export interface IResourceLoader {
                 getString(resource: string): string;
             }
-            export class ResourceLoader implements Windows.ApplicationModel.Resources.IResourceLoader {
+            export class ResourceLoader
+                implements Windows.ApplicationModel.Resources.IResourceLoader
+            {
                 constructor(name: string);
                 constructor();
                 getString(resource: string): string;
-                static getStringForReference(uri: Windows.Foundation.Uri): string;
+                static getStringForReference(
+                    uri: Windows.Foundation.Uri,
+                ): string;
             }
             export interface IResourceLoaderStatics {
                 getStringForReference(uri: Windows.Foundation.Uri): string;
             }
             export interface IResourceLoaderFactory {
-                createResourceLoaderByName(name: string): Windows.ApplicationModel.Resources.ResourceLoader;
+                createResourceLoaderByName(
+                    name: string,
+                ): Windows.ApplicationModel.Resources.ResourceLoader;
             }
         }
     }
@@ -2468,8 +2897,12 @@ declare namespace Windows {
                     >;
                     defaultContext: Windows.ApplicationModel.Resources.Core.ResourceContext;
                     mainResourceMap: Windows.ApplicationModel.Resources.Core.ResourceMap;
-                    loadPriFiles(files: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageFile>): void;
-                    unloadPriFiles(files: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageFile>): void;
+                    loadPriFiles(
+                        files: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageFile>,
+                    ): void;
+                    unloadPriFiles(
+                        files: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageFile>,
+                    ): void;
                 }
                 export class ResourceMap
                     implements
@@ -2487,13 +2920,19 @@ declare namespace Windows {
                 {
                     uri: Windows.Foundation.Uri;
                     size: number;
-                    getValue(resource: string): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
+                    getValue(
+                        resource: string,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
                     getValue(
                         resource: string,
                         context: Windows.ApplicationModel.Resources.Core.ResourceContext,
                     ): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
-                    getSubtree(reference: string): Windows.ApplicationModel.Resources.Core.ResourceMap;
-                    lookup(key: string): Windows.ApplicationModel.Resources.Core.NamedResource;
+                    getSubtree(
+                        reference: string,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceMap;
+                    lookup(
+                        key: string,
+                    ): Windows.ApplicationModel.Resources.Core.NamedResource;
                     hasKey(key: string): boolean;
                     split(): {
                         first: Windows.Foundation.Collections.IMapView<
@@ -2512,38 +2951,53 @@ declare namespace Windows {
                         >
                     >;
                 }
-                export class ResourceContext implements Windows.ApplicationModel.Resources.Core.IResourceContext {
+                export class ResourceContext
+                    implements
+                        Windows.ApplicationModel.Resources.Core
+                            .IResourceContext
+                {
                     languages: Windows.Foundation.Collections.IVectorView<string>;
-                    qualifierValues: Windows.Foundation.Collections.IObservableMap<string, string>;
+                    qualifierValues: Windows.Foundation.Collections.IObservableMap<
+                        string,
+                        string
+                    >;
                     reset(): void;
-                    reset(qualifierNames: Windows.Foundation.Collections.IIterable<string>): void;
+                    reset(
+                        qualifierNames: Windows.Foundation.Collections.IIterable<string>,
+                    ): void;
                     overrideToMatch(
-                        result: Windows.Foundation.Collections.IIterable<
-                            Windows.ApplicationModel.Resources.Core.ResourceQualifier
-                        >,
+                        result: Windows.Foundation.Collections.IIterable<Windows.ApplicationModel.Resources.Core.ResourceQualifier>,
                     ): void;
                     clone(): Windows.ApplicationModel.Resources.Core.ResourceContext;
                     static createMatchingContext(
-                        result: Windows.Foundation.Collections.IIterable<
-                            Windows.ApplicationModel.Resources.Core.ResourceQualifier
-                        >,
+                        result: Windows.Foundation.Collections.IIterable<Windows.ApplicationModel.Resources.Core.ResourceQualifier>,
                     ): Windows.ApplicationModel.Resources.Core.ResourceContext;
                 }
                 export interface IResourceManagerStatics {
                     current: Windows.ApplicationModel.Resources.Core.ResourceManager;
                     isResourceReference(resourceReference: string): boolean;
                 }
-                export class ResourceManager implements Windows.ApplicationModel.Resources.Core.IResourceManager {
+                export class ResourceManager
+                    implements
+                        Windows.ApplicationModel.Resources.Core
+                            .IResourceManager
+                {
                     allResourceMaps: Windows.Foundation.Collections.IMapView<
                         string,
                         Windows.ApplicationModel.Resources.Core.ResourceMap
                     >;
                     defaultContext: Windows.ApplicationModel.Resources.Core.ResourceContext;
                     mainResourceMap: Windows.ApplicationModel.Resources.Core.ResourceMap;
-                    loadPriFiles(files: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageFile>): void;
-                    unloadPriFiles(files: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageFile>): void;
+                    loadPriFiles(
+                        files: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageFile>,
+                    ): void;
+                    unloadPriFiles(
+                        files: Windows.Foundation.Collections.IIterable<Windows.Storage.IStorageFile>,
+                    ): void;
                     static current: Windows.ApplicationModel.Resources.Core.ResourceManager;
-                    static isResourceReference(resourceReference: string): boolean;
+                    static isResourceReference(
+                        resourceReference: string,
+                    ): boolean;
                 }
                 export interface IResourceQualifier {
                     isDefault: boolean;
@@ -2552,7 +3006,11 @@ declare namespace Windows {
                     qualifierValue: string;
                     score: number;
                 }
-                export class ResourceQualifier implements Windows.ApplicationModel.Resources.Core.IResourceQualifier {
+                export class ResourceQualifier
+                    implements
+                        Windows.ApplicationModel.Resources.Core
+                            .IResourceQualifier
+                {
                     isDefault: boolean;
                     isMatch: boolean;
                     qualifierName: string;
@@ -2561,108 +3019,104 @@ declare namespace Windows {
                 }
                 export interface IResourceContext {
                     languages: Windows.Foundation.Collections.IVectorView<string>;
-                    qualifierValues: Windows.Foundation.Collections.IObservableMap<string, string>;
+                    qualifierValues: Windows.Foundation.Collections.IObservableMap<
+                        string,
+                        string
+                    >;
                     reset(): void;
-                    reset(qualifierNames: Windows.Foundation.Collections.IIterable<string>): void;
+                    reset(
+                        qualifierNames: Windows.Foundation.Collections.IIterable<string>,
+                    ): void;
                     overrideToMatch(
-                        result: Windows.Foundation.Collections.IIterable<
-                            Windows.ApplicationModel.Resources.Core.ResourceQualifier
-                        >,
+                        result: Windows.Foundation.Collections.IIterable<Windows.ApplicationModel.Resources.Core.ResourceQualifier>,
                     ): void;
                     clone(): Windows.ApplicationModel.Resources.Core.ResourceContext;
                 }
                 export interface IResourceContextStatics {
                     createMatchingContext(
-                        result: Windows.Foundation.Collections.IIterable<
-                            Windows.ApplicationModel.Resources.Core.ResourceQualifier
-                        >,
+                        result: Windows.Foundation.Collections.IIterable<Windows.ApplicationModel.Resources.Core.ResourceQualifier>,
                     ): Windows.ApplicationModel.Resources.Core.ResourceContext;
                 }
                 export interface IResourceCandidate {
                     isDefault: boolean;
                     isMatch: boolean;
                     isMatchAsDefault: boolean;
-                    qualifiers: Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceQualifier
-                    >;
+                    qualifiers: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Core.ResourceQualifier>;
                     valueAsString: string;
                     getValueAsFileAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
                     getQualifierValue(qualifierName: string): string;
                 }
-                export class ResourceCandidate implements Windows.ApplicationModel.Resources.Core.IResourceCandidate {
+                export class ResourceCandidate
+                    implements
+                        Windows.ApplicationModel.Resources.Core
+                            .IResourceCandidate
+                {
                     isDefault: boolean;
                     isMatch: boolean;
                     isMatchAsDefault: boolean;
-                    qualifiers: Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceQualifier
-                    >;
+                    qualifiers: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Core.ResourceQualifier>;
                     valueAsString: string;
                     getValueAsFileAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
                     getQualifierValue(qualifierName: string): string;
                 }
                 export interface INamedResource {
-                    candidates: Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceCandidate
-                    >;
+                    candidates: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Core.ResourceCandidate>;
                     uri: Windows.Foundation.Uri;
                     resolve(): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
                     resolve(
                         resourceContext: Windows.ApplicationModel.Resources.Core.ResourceContext,
                     ): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
-                    resolveAll(): Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceCandidate
-                    >;
+                    resolveAll(): Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Core.ResourceCandidate>;
                     resolveAll(
                         resourceContext: Windows.ApplicationModel.Resources.Core.ResourceContext,
-                    ): Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceCandidate
-                    >;
+                    ): Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Core.ResourceCandidate>;
                 }
-                export class NamedResource implements Windows.ApplicationModel.Resources.Core.INamedResource {
-                    candidates: Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceCandidate
-                    >;
+                export class NamedResource
+                    implements
+                        Windows.ApplicationModel.Resources.Core.INamedResource
+                {
+                    candidates: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Core.ResourceCandidate>;
                     uri: Windows.Foundation.Uri;
                     resolve(): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
                     resolve(
                         resourceContext: Windows.ApplicationModel.Resources.Core.ResourceContext,
                     ): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
-                    resolveAll(): Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceCandidate
-                    >;
+                    resolveAll(): Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Core.ResourceCandidate>;
                     resolveAll(
                         resourceContext: Windows.ApplicationModel.Resources.Core.ResourceContext,
-                    ): Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceCandidate
-                    >;
+                    ): Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Core.ResourceCandidate>;
                 }
-                export interface IResourceMap extends
-                    Windows.Foundation.Collections.IMapView<
-                        string,
-                        Windows.ApplicationModel.Resources.Core.NamedResource
-                    >,
-                    Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<
+                export interface IResourceMap
+                    extends Windows.Foundation.Collections.IMapView<
                             string,
                             Windows.ApplicationModel.Resources.Core.NamedResource
-                        >
-                    >
-                {
+                        >,
+                        Windows.Foundation.Collections.IIterable<
+                            Windows.Foundation.Collections.IKeyValuePair<
+                                string,
+                                Windows.ApplicationModel.Resources.Core.NamedResource
+                            >
+                        > {
                     uri: Windows.Foundation.Uri;
-                    getValue(resource: string): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
+                    getValue(
+                        resource: string,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
                     getValue(
                         resource: string,
                         context: Windows.ApplicationModel.Resources.Core.ResourceContext,
                     ): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
-                    getSubtree(reference: string): Windows.ApplicationModel.Resources.Core.ResourceMap;
+                    getSubtree(
+                        reference: string,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceMap;
                 }
-                export class ResourceMapIterator implements
-                    Windows.Foundation.Collections.IIterator<
-                        Windows.Foundation.Collections.IKeyValuePair<
-                            string,
-                            Windows.ApplicationModel.Resources.Core.NamedResource
+                export class ResourceMapIterator
+                    implements
+                        Windows.Foundation.Collections.IIterator<
+                            Windows.Foundation.Collections.IKeyValuePair<
+                                string,
+                                Windows.ApplicationModel.Resources.Core.NamedResource
+                            >
                         >
-                    >
                 {
                     current: Windows.Foundation.Collections.IKeyValuePair<
                         string,
@@ -2680,20 +3134,23 @@ declare namespace Windows {
                         returnValue: number;
                     };
                 }
-                export class ResourceMapMapView implements
-                    Windows.Foundation.Collections.IMapView<
-                        string,
-                        Windows.ApplicationModel.Resources.Core.ResourceMap
-                    >,
-                    Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<
+                export class ResourceMapMapView
+                    implements
+                        Windows.Foundation.Collections.IMapView<
                             string,
                             Windows.ApplicationModel.Resources.Core.ResourceMap
+                        >,
+                        Windows.Foundation.Collections.IIterable<
+                            Windows.Foundation.Collections.IKeyValuePair<
+                                string,
+                                Windows.ApplicationModel.Resources.Core.ResourceMap
+                            >
                         >
-                    >
                 {
                     size: number;
-                    lookup(key: string): Windows.ApplicationModel.Resources.Core.ResourceMap;
+                    lookup(
+                        key: string,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceMap;
                     hasKey(key: string): boolean;
                     split(): {
                         first: Windows.Foundation.Collections.IMapView<
@@ -2712,13 +3169,14 @@ declare namespace Windows {
                         >
                     >;
                 }
-                export class ResourceMapMapViewIterator implements
-                    Windows.Foundation.Collections.IIterator<
-                        Windows.Foundation.Collections.IKeyValuePair<
-                            string,
-                            Windows.ApplicationModel.Resources.Core.ResourceMap
+                export class ResourceMapMapViewIterator
+                    implements
+                        Windows.Foundation.Collections.IIterator<
+                            Windows.Foundation.Collections.IKeyValuePair<
+                                string,
+                                Windows.ApplicationModel.Resources.Core.ResourceMap
+                            >
                         >
-                    >
                 {
                     current: Windows.Foundation.Collections.IKeyValuePair<
                         string,
@@ -2738,61 +3196,88 @@ declare namespace Windows {
                 }
                 export class ResourceQualifierObservableMap
                     implements
-                        Windows.Foundation.Collections.IObservableMap<string, string>,
+                        Windows.Foundation.Collections.IObservableMap<
+                            string,
+                            string
+                        >,
                         Windows.Foundation.Collections.IMap<string, string>,
                         Windows.Foundation.Collections.IIterable<
-                            Windows.Foundation.Collections.IKeyValuePair<string, string>
+                            Windows.Foundation.Collections.IKeyValuePair<
+                                string,
+                                string
+                            >
                         >
                 {
                     size: number;
                     onmapchanged: any /* TODO */;
                     lookup(key: string): string;
                     hasKey(key: string): boolean;
-                    getView(): Windows.Foundation.Collections.IMapView<string, string>;
+                    getView(): Windows.Foundation.Collections.IMapView<
+                        string,
+                        string
+                    >;
                     insert(key: string, value: string): boolean;
                     remove(key: string): void;
                     clear(): void;
                     first(): Windows.Foundation.Collections.IIterator<
-                        Windows.Foundation.Collections.IKeyValuePair<string, string>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            string
+                        >
                     >;
                 }
                 export class ResourceQualifierMapView
                     implements
                         Windows.Foundation.Collections.IMapView<string, string>,
                         Windows.Foundation.Collections.IIterable<
-                            Windows.Foundation.Collections.IKeyValuePair<string, string>
+                            Windows.Foundation.Collections.IKeyValuePair<
+                                string,
+                                string
+                            >
                         >
                 {
                     size: number;
                     lookup(key: string): string;
                     hasKey(key: string): boolean;
                     split(): {
-                        first: Windows.Foundation.Collections.IMapView<string, string>;
-                        second: Windows.Foundation.Collections.IMapView<string, string>;
+                        first: Windows.Foundation.Collections.IMapView<
+                            string,
+                            string
+                        >;
+                        second: Windows.Foundation.Collections.IMapView<
+                            string,
+                            string
+                        >;
                     };
                     first(): Windows.Foundation.Collections.IIterator<
-                        Windows.Foundation.Collections.IKeyValuePair<string, string>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            string
+                        >
                     >;
                 }
-                export class ResourceQualifierVectorView implements
-                    Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceQualifier
-                    >,
-                    Windows.Foundation.Collections.IIterable<
-                        Windows.ApplicationModel.Resources.Core.ResourceQualifier
-                    >
+                export class ResourceQualifierVectorView
+                    implements
+                        Windows.Foundation.Collections
+                            .IVectorView<Windows.ApplicationModel.Resources.Core.ResourceQualifier>,
+                        Windows.Foundation.Collections
+                            .IIterable<Windows.ApplicationModel.Resources.Core.ResourceQualifier>
                 {
                     size: number;
-                    getAt(index: number): Windows.ApplicationModel.Resources.Core.ResourceQualifier;
+                    getAt(
+                        index: number,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceQualifier;
                     indexOf(
                         value: Windows.ApplicationModel.Resources.Core.ResourceQualifier,
-                    ): { index: number; returnValue: boolean };
-                    getMany(
-                        startIndex: number,
-                    ): { items: Windows.ApplicationModel.Resources.Core.ResourceQualifier[]; returnValue: number };
-                    first(): Windows.Foundation.Collections.IIterator<
-                        Windows.ApplicationModel.Resources.Core.ResourceQualifier
-                    >;
+                    ): {
+                        index: number;
+                        returnValue: boolean;
+                    };
+                    getMany(startIndex: number): {
+                        items: Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
+                        returnValue: number;
+                    };
+                    first(): Windows.Foundation.Collections.IIterator<Windows.ApplicationModel.Resources.Core.ResourceQualifier>;
                     toString(): string;
                     toLocaleString(): string;
                     concat(
@@ -2800,11 +3285,18 @@ declare namespace Windows {
                     ): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
                     join(seperator: string): string;
                     pop(): Windows.ApplicationModel.Resources.Core.ResourceQualifier;
-                    push(...items: Windows.ApplicationModel.Resources.Core.ResourceQualifier[]): void;
+                    push(
+                        ...items: Windows.ApplicationModel.Resources.Core.ResourceQualifier[]
+                    ): void;
                     reverse(): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
                     shift(): Windows.ApplicationModel.Resources.Core.ResourceQualifier;
-                    slice(start: number): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
-                    slice(start: number, end: number): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
+                    slice(
+                        start: number,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
+                    slice(
+                        start: number,
+                        end: number,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
                     sort(): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
                     sort(
                         compareFn: (
@@ -2812,14 +3304,20 @@ declare namespace Windows {
                             b: Windows.ApplicationModel.Resources.Core.ResourceQualifier,
                         ) => number,
                     ): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
-                    splice(start: number): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
+                    splice(
+                        start: number,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
                     splice(
                         start: number,
                         deleteCount: number,
                         ...items: Windows.ApplicationModel.Resources.Core.ResourceQualifier[]
                     ): Windows.ApplicationModel.Resources.Core.ResourceQualifier[];
-                    unshift(...items: Windows.ApplicationModel.Resources.Core.ResourceQualifier[]): number;
-                    lastIndexOf(searchElement: Windows.ApplicationModel.Resources.Core.ResourceQualifier): number;
+                    unshift(
+                        ...items: Windows.ApplicationModel.Resources.Core.ResourceQualifier[]
+                    ): number;
+                    lastIndexOf(
+                        searchElement: Windows.ApplicationModel.Resources.Core.ResourceQualifier,
+                    ): number;
                     lastIndexOf(
                         searchElement: Windows.ApplicationModel.Resources.Core.ResourceQualifier,
                         fromIndex: number,
@@ -2935,25 +3433,28 @@ declare namespace Windows {
                     ): any;
                     length: number;
                 }
-                export class ResourceCandidateVectorView implements
-                    Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Core.ResourceCandidate
-                    >,
-                    Windows.Foundation.Collections.IIterable<
-                        Windows.ApplicationModel.Resources.Core.ResourceCandidate
-                    >
+                export class ResourceCandidateVectorView
+                    implements
+                        Windows.Foundation.Collections
+                            .IVectorView<Windows.ApplicationModel.Resources.Core.ResourceCandidate>,
+                        Windows.Foundation.Collections
+                            .IIterable<Windows.ApplicationModel.Resources.Core.ResourceCandidate>
                 {
                     size: number;
-                    getAt(index: number): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
+                    getAt(
+                        index: number,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
                     indexOf(
                         value: Windows.ApplicationModel.Resources.Core.ResourceCandidate,
-                    ): { index: number; returnValue: boolean };
-                    getMany(
-                        startIndex: number,
-                    ): { items: Windows.ApplicationModel.Resources.Core.ResourceCandidate[]; returnValue: number };
-                    first(): Windows.Foundation.Collections.IIterator<
-                        Windows.ApplicationModel.Resources.Core.ResourceCandidate
-                    >;
+                    ): {
+                        index: number;
+                        returnValue: boolean;
+                    };
+                    getMany(startIndex: number): {
+                        items: Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
+                        returnValue: number;
+                    };
+                    first(): Windows.Foundation.Collections.IIterator<Windows.ApplicationModel.Resources.Core.ResourceCandidate>;
                     toString(): string;
                     toLocaleString(): string;
                     concat(
@@ -2961,11 +3462,18 @@ declare namespace Windows {
                     ): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
                     join(seperator: string): string;
                     pop(): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
-                    push(...items: Windows.ApplicationModel.Resources.Core.ResourceCandidate[]): void;
+                    push(
+                        ...items: Windows.ApplicationModel.Resources.Core.ResourceCandidate[]
+                    ): void;
                     reverse(): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
                     shift(): Windows.ApplicationModel.Resources.Core.ResourceCandidate;
-                    slice(start: number): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
-                    slice(start: number, end: number): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
+                    slice(
+                        start: number,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
+                    slice(
+                        start: number,
+                        end: number,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
                     sort(): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
                     sort(
                         compareFn: (
@@ -2973,14 +3481,20 @@ declare namespace Windows {
                             b: Windows.ApplicationModel.Resources.Core.ResourceCandidate,
                         ) => number,
                     ): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
-                    splice(start: number): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
+                    splice(
+                        start: number,
+                    ): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
                     splice(
                         start: number,
                         deleteCount: number,
                         ...items: Windows.ApplicationModel.Resources.Core.ResourceCandidate[]
                     ): Windows.ApplicationModel.Resources.Core.ResourceCandidate[];
-                    unshift(...items: Windows.ApplicationModel.Resources.Core.ResourceCandidate[]): number;
-                    lastIndexOf(searchElement: Windows.ApplicationModel.Resources.Core.ResourceCandidate): number;
+                    unshift(
+                        ...items: Windows.ApplicationModel.Resources.Core.ResourceCandidate[]
+                    ): number;
+                    lastIndexOf(
+                        searchElement: Windows.ApplicationModel.Resources.Core.ResourceCandidate,
+                    ): number;
                     lastIndexOf(
                         searchElement: Windows.ApplicationModel.Resources.Core.ResourceCandidate,
                         fromIndex: number,
@@ -3103,8 +3617,14 @@ declare namespace Windows {
                 {
                     size: number;
                     getAt(index: number): string;
-                    indexOf(value: string): { index: number; returnValue: boolean };
-                    getMany(startIndex: number): { items: string[]; returnValue: number };
+                    indexOf(value: string): {
+                        index: number;
+                        returnValue: boolean;
+                    };
+                    getMany(startIndex: number): {
+                        items: string[];
+                        returnValue: number;
+                    };
                     first(): Windows.Foundation.Collections.IIterator<string>;
                     toString(): string;
                     toLocaleString(): string;
@@ -3119,24 +3639,90 @@ declare namespace Windows {
                     sort(): string[];
                     sort(compareFn: (a: string, b: string) => number): string[];
                     splice(start: number): string[];
-                    splice(start: number, deleteCount: number, ...items: string[]): string[];
+                    splice(
+                        start: number,
+                        deleteCount: number,
+                        ...items: string[]
+                    ): string[];
                     unshift(...items: string[]): number;
                     lastIndexOf(searchElement: string): number;
-                    lastIndexOf(searchElement: string, fromIndex: number): number;
-                    every(callbackfn: (value: string, index: number, array: string[]) => boolean): boolean;
+                    lastIndexOf(
+                        searchElement: string,
+                        fromIndex: number,
+                    ): number;
                     every(
-                        callbackfn: (value: string, index: number, array: string[]) => boolean,
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => boolean,
+                    ): boolean;
+                    every(
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => boolean,
                         thisArg: any,
                     ): boolean;
-                    some(callbackfn: (value: string, index: number, array: string[]) => boolean): boolean;
-                    some(callbackfn: (value: string, index: number, array: string[]) => boolean, thisArg: any): boolean;
-                    forEach(callbackfn: (value: string, index: number, array: string[]) => void): void;
-                    forEach(callbackfn: (value: string, index: number, array: string[]) => void, thisArg: any): void;
-                    map(callbackfn: (value: string, index: number, array: string[]) => any): any[];
-                    map(callbackfn: (value: string, index: number, array: string[]) => any, thisArg: any): any[];
-                    filter(callbackfn: (value: string, index: number, array: string[]) => boolean): string[];
+                    some(
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => boolean,
+                    ): boolean;
+                    some(
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => boolean,
+                        thisArg: any,
+                    ): boolean;
+                    forEach(
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => void,
+                    ): void;
+                    forEach(
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => void,
+                        thisArg: any,
+                    ): void;
+                    map(
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => any,
+                    ): any[];
+                    map(
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => any,
+                        thisArg: any,
+                    ): any[];
                     filter(
-                        callbackfn: (value: string, index: number, array: string[]) => boolean,
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => boolean,
+                    ): string[];
+                    filter(
+                        callbackfn: (
+                            value: string,
+                            index: number,
+                            array: string[],
+                        ) => boolean,
                         thisArg: any,
                     ): string[];
                     reduce(
@@ -3194,18 +3780,19 @@ declare namespace Windows {
                     indexFileContentsAsync(
                         file: Windows.Foundation.Uri,
                     ): Windows.Foundation.IAsyncOperation<
-                        Windows.Foundation.Collections.IVectorView<
-                            Windows.ApplicationModel.Resources.Management.IndexedResourceCandidate
-                        >
+                        Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Management.IndexedResourceCandidate>
                     >;
                 }
                 export class IndexedResourceCandidate
-                    implements Windows.ApplicationModel.Resources.Management.IIndexedResourceCandidate
+                    implements
+                        Windows.ApplicationModel.Resources.Management
+                            .IIndexedResourceCandidate
                 {
-                    metadata: Windows.Foundation.Collections.IMapView<string, string>;
-                    qualifiers: Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Management.IndexedResourceQualifier
+                    metadata: Windows.Foundation.Collections.IMapView<
+                        string,
+                        string
                     >;
+                    qualifiers: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Management.IndexedResourceQualifier>;
                     type: Windows.ApplicationModel.Resources.Management.IndexedResourceType;
                     uri: Windows.Foundation.Uri;
                     valueAsString: string;
@@ -3216,7 +3803,11 @@ declare namespace Windows {
                         projectRoot: Windows.Foundation.Uri,
                     ): Windows.ApplicationModel.Resources.Management.ResourceIndexer;
                 }
-                export class ResourceIndexer implements Windows.ApplicationModel.Resources.Management.IResourceIndexer {
+                export class ResourceIndexer
+                    implements
+                        Windows.ApplicationModel.Resources.Management
+                            .IResourceIndexer
+                {
                     constructor(projectRoot: Windows.Foundation.Uri);
                     indexFilePath(
                         filePath: Windows.Foundation.Uri,
@@ -3224,9 +3815,7 @@ declare namespace Windows {
                     indexFileContentsAsync(
                         file: Windows.Foundation.Uri,
                     ): Windows.Foundation.IAsyncOperation<
-                        Windows.Foundation.Collections.IVectorView<
-                            Windows.ApplicationModel.Resources.Management.IndexedResourceCandidate
-                        >
+                        Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Management.IndexedResourceCandidate>
                     >;
                 }
                 export interface IIndexedResourceQualifier {
@@ -3234,17 +3823,20 @@ declare namespace Windows {
                     qualifierValue: string;
                 }
                 export interface IIndexedResourceCandidate {
-                    metadata: Windows.Foundation.Collections.IMapView<string, string>;
-                    qualifiers: Windows.Foundation.Collections.IVectorView<
-                        Windows.ApplicationModel.Resources.Management.IndexedResourceQualifier
+                    metadata: Windows.Foundation.Collections.IMapView<
+                        string,
+                        string
                     >;
+                    qualifiers: Windows.Foundation.Collections.IVectorView<Windows.ApplicationModel.Resources.Management.IndexedResourceQualifier>;
                     type: Windows.ApplicationModel.Resources.Management.IndexedResourceType;
                     uri: Windows.Foundation.Uri;
                     valueAsString: string;
                     getQualifierValue(qualifierName: string): string;
                 }
                 export class IndexedResourceQualifier
-                    implements Windows.ApplicationModel.Resources.Management.IIndexedResourceQualifier
+                    implements
+                        Windows.ApplicationModel.Resources.Management
+                            .IIndexedResourceQualifier
                 {
                     qualifierName: string;
                     qualifierValue: string;
@@ -3263,18 +3855,22 @@ declare namespace Windows {
                 appId: string;
                 licenseInformation: Windows.ApplicationModel.Store.LicenseInformation;
                 linkUri: Windows.Foundation.Uri;
-                requestAppPurchaseAsync(includeReceipt: boolean): Windows.Foundation.IAsyncOperation<string>;
+                requestAppPurchaseAsync(
+                    includeReceipt: boolean,
+                ): Windows.Foundation.IAsyncOperation<string>;
                 requestProductPurchaseAsync(
                     productId: string,
                     includeReceipt: boolean,
                 ): Windows.Foundation.IAsyncOperation<string>;
-                loadListingInformationAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.ApplicationModel.Store.ListingInformation
-                >;
+                loadListingInformationAsync(): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Store.ListingInformation>;
                 getAppReceiptAsync(): Windows.Foundation.IAsyncOperation<string>;
-                getProductReceiptAsync(productId: string): Windows.Foundation.IAsyncOperation<string>;
+                getProductReceiptAsync(
+                    productId: string,
+                ): Windows.Foundation.IAsyncOperation<string>;
             }
-            export class LicenseInformation implements Windows.ApplicationModel.Store.ILicenseInformation {
+            export class LicenseInformation
+                implements Windows.ApplicationModel.Store.ILicenseInformation
+            {
                 expirationDate: Date;
                 isActive: boolean;
                 isTrial: boolean;
@@ -3284,7 +3880,9 @@ declare namespace Windows {
                 >;
                 onlicensechanged: any /* TODO */;
             }
-            export class ListingInformation implements Windows.ApplicationModel.Store.IListingInformation {
+            export class ListingInformation
+                implements Windows.ApplicationModel.Store.IListingInformation
+            {
                 ageRating: number;
                 currentMarket: string;
                 description: string;
@@ -3299,16 +3897,18 @@ declare namespace Windows {
                 appId: string;
                 licenseInformation: Windows.ApplicationModel.Store.LicenseInformation;
                 linkUri: Windows.Foundation.Uri;
-                requestAppPurchaseAsync(includeReceipt: boolean): Windows.Foundation.IAsyncOperation<string>;
+                requestAppPurchaseAsync(
+                    includeReceipt: boolean,
+                ): Windows.Foundation.IAsyncOperation<string>;
                 requestProductPurchaseAsync(
                     productId: string,
                     includeReceipt: boolean,
                 ): Windows.Foundation.IAsyncOperation<string>;
-                loadListingInformationAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.ApplicationModel.Store.ListingInformation
-                >;
+                loadListingInformationAsync(): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Store.ListingInformation>;
                 getAppReceiptAsync(): Windows.Foundation.IAsyncOperation<string>;
-                getProductReceiptAsync(productId: string): Windows.Foundation.IAsyncOperation<string>;
+                getProductReceiptAsync(
+                    productId: string,
+                ): Windows.Foundation.IAsyncOperation<string>;
                 reloadSimulatorAsync(
                     simulatorSettingsFile: Windows.Storage.StorageFile,
                 ): Windows.Foundation.IAsyncAction;
@@ -3323,7 +3923,9 @@ declare namespace Windows {
                 >;
                 onlicensechanged: any /* TODO */;
             }
-            export class ProductLicense implements Windows.ApplicationModel.Store.IProductLicense {
+            export class ProductLicense
+                implements Windows.ApplicationModel.Store.IProductLicense
+            {
                 expirationDate: Date;
                 isActive: boolean;
                 productId: string;
@@ -3344,7 +3946,9 @@ declare namespace Windows {
                     Windows.ApplicationModel.Store.ProductListing
                 >;
             }
-            export class ProductListing implements Windows.ApplicationModel.Store.IProductListing {
+            export class ProductListing
+                implements Windows.ApplicationModel.Store.IProductListing
+            {
                 formattedPrice: string;
                 name: string;
                 productId: string;
@@ -3358,31 +3962,35 @@ declare namespace Windows {
                 static appId: string;
                 static licenseInformation: Windows.ApplicationModel.Store.LicenseInformation;
                 static linkUri: Windows.Foundation.Uri;
-                static requestAppPurchaseAsync(includeReceipt: boolean): Windows.Foundation.IAsyncOperation<string>;
+                static requestAppPurchaseAsync(
+                    includeReceipt: boolean,
+                ): Windows.Foundation.IAsyncOperation<string>;
                 static requestProductPurchaseAsync(
                     productId: string,
                     includeReceipt: boolean,
                 ): Windows.Foundation.IAsyncOperation<string>;
-                static loadListingInformationAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.ApplicationModel.Store.ListingInformation
-                >;
+                static loadListingInformationAsync(): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Store.ListingInformation>;
                 static getAppReceiptAsync(): Windows.Foundation.IAsyncOperation<string>;
-                static getProductReceiptAsync(productId: string): Windows.Foundation.IAsyncOperation<string>;
+                static getProductReceiptAsync(
+                    productId: string,
+                ): Windows.Foundation.IAsyncOperation<string>;
             }
             export class CurrentAppSimulator {
                 static appId: string;
                 static licenseInformation: Windows.ApplicationModel.Store.LicenseInformation;
                 static linkUri: Windows.Foundation.Uri;
-                static requestAppPurchaseAsync(includeReceipt: boolean): Windows.Foundation.IAsyncOperation<string>;
+                static requestAppPurchaseAsync(
+                    includeReceipt: boolean,
+                ): Windows.Foundation.IAsyncOperation<string>;
                 static requestProductPurchaseAsync(
                     productId: string,
                     includeReceipt: boolean,
                 ): Windows.Foundation.IAsyncOperation<string>;
-                static loadListingInformationAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.ApplicationModel.Store.ListingInformation
-                >;
+                static loadListingInformationAsync(): Windows.Foundation.IAsyncOperation<Windows.ApplicationModel.Store.ListingInformation>;
                 static getAppReceiptAsync(): Windows.Foundation.IAsyncOperation<string>;
-                static getProductReceiptAsync(productId: string): Windows.Foundation.IAsyncOperation<string>;
+                static getProductReceiptAsync(
+                    productId: string,
+                ): Windows.Foundation.IAsyncOperation<string>;
                 static reloadSimulatorAsync(
                     simulatorSettingsFile: Windows.Storage.StorageFile,
                 ): Windows.Foundation.IAsyncAction;
@@ -3433,8 +4041,10 @@ declare namespace Windows {
                 implements
                     Windows.Data.Json.IJsonArray,
                     Windows.Data.Json.IJsonValue,
-                    Windows.Foundation.Collections.IVector<Windows.Data.Json.IJsonValue>,
-                    Windows.Foundation.Collections.IIterable<Windows.Data.Json.IJsonValue>
+                    Windows.Foundation.Collections
+                        .IVector<Windows.Data.Json.IJsonValue>,
+                    Windows.Foundation.Collections
+                        .IIterable<Windows.Data.Json.IJsonValue>
             {
                 valueType: Windows.Data.Json.JsonValueType;
                 size: number;
@@ -3451,31 +4061,51 @@ declare namespace Windows {
                 getObject(): Windows.Data.Json.JsonObject;
                 getAt(index: number): Windows.Data.Json.IJsonValue;
                 getView(): Windows.Foundation.Collections.IVectorView<Windows.Data.Json.IJsonValue>;
-                indexOf(value: Windows.Data.Json.IJsonValue): { index: number; returnValue: boolean };
+                indexOf(value: Windows.Data.Json.IJsonValue): {
+                    index: number;
+                    returnValue: boolean;
+                };
                 setAt(index: number, value: Windows.Data.Json.IJsonValue): void;
-                insertAt(index: number, value: Windows.Data.Json.IJsonValue): void;
+                insertAt(
+                    index: number,
+                    value: Windows.Data.Json.IJsonValue,
+                ): void;
                 removeAt(index: number): void;
                 append(value: Windows.Data.Json.IJsonValue): void;
                 removeAtEnd(): void;
                 clear(): void;
-                getMany(startIndex: number): { items: Windows.Data.Json.IJsonValue[]; returnValue: number };
+                getMany(startIndex: number): {
+                    items: Windows.Data.Json.IJsonValue[];
+                    returnValue: number;
+                };
                 replaceAll(items: Windows.Data.Json.IJsonValue[]): void;
                 first(): Windows.Foundation.Collections.IIterator<Windows.Data.Json.IJsonValue>;
                 static parse(input: string): Windows.Data.Json.JsonArray;
-                static tryParse(input: string): { result: Windows.Data.Json.JsonArray; succeeded: boolean };
+                static tryParse(input: string): {
+                    result: Windows.Data.Json.JsonArray;
+                    succeeded: boolean;
+                };
                 toString(): string;
                 toLocaleString(): string;
-                concat(...items: Windows.Data.Json.IJsonValue[][]): Windows.Data.Json.IJsonValue[];
+                concat(
+                    ...items: Windows.Data.Json.IJsonValue[][]
+                ): Windows.Data.Json.IJsonValue[];
                 join(seperator: string): string;
                 pop(): Windows.Data.Json.IJsonValue;
                 push(...items: Windows.Data.Json.IJsonValue[]): void;
                 reverse(): Windows.Data.Json.IJsonValue[];
                 shift(): Windows.Data.Json.IJsonValue;
                 slice(start: number): Windows.Data.Json.IJsonValue[];
-                slice(start: number, end: number): Windows.Data.Json.IJsonValue[];
+                slice(
+                    start: number,
+                    end: number,
+                ): Windows.Data.Json.IJsonValue[];
                 sort(): Windows.Data.Json.IJsonValue[];
                 sort(
-                    compareFn: (a: Windows.Data.Json.IJsonValue, b: Windows.Data.Json.IJsonValue) => number,
+                    compareFn: (
+                        a: Windows.Data.Json.IJsonValue,
+                        b: Windows.Data.Json.IJsonValue,
+                    ) => number,
                 ): Windows.Data.Json.IJsonValue[];
                 splice(start: number): Windows.Data.Json.IJsonValue[];
                 splice(
@@ -3484,8 +4114,13 @@ declare namespace Windows {
                     ...items: Windows.Data.Json.IJsonValue[]
                 ): Windows.Data.Json.IJsonValue[];
                 unshift(...items: Windows.Data.Json.IJsonValue[]): number;
-                lastIndexOf(searchElement: Windows.Data.Json.IJsonValue): number;
-                lastIndexOf(searchElement: Windows.Data.Json.IJsonValue, fromIndex: number): number;
+                lastIndexOf(
+                    searchElement: Windows.Data.Json.IJsonValue,
+                ): number;
+                lastIndexOf(
+                    searchElement: Windows.Data.Json.IJsonValue,
+                    fromIndex: number,
+                ): number;
                 every(
                     callbackfn: (
                         value: Windows.Data.Json.IJsonValue,
@@ -3601,15 +4236,24 @@ declare namespace Windows {
                 implements
                     Windows.Data.Json.IJsonObject,
                     Windows.Data.Json.IJsonValue,
-                    Windows.Foundation.Collections.IMap<string, Windows.Data.Json.IJsonValue>,
+                    Windows.Foundation.Collections.IMap<
+                        string,
+                        Windows.Data.Json.IJsonValue
+                    >,
                     Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, Windows.Data.Json.IJsonValue>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            Windows.Data.Json.IJsonValue
+                        >
                     >
             {
                 valueType: Windows.Data.Json.JsonValueType;
                 size: number;
                 getNamedValue(name: string): Windows.Data.Json.JsonValue;
-                setNamedValue(name: string, value: Windows.Data.Json.IJsonValue): void;
+                setNamedValue(
+                    name: string,
+                    value: Windows.Data.Json.IJsonValue,
+                ): void;
                 getNamedObject(name: string): Windows.Data.Json.JsonObject;
                 getNamedArray(name: string): Windows.Data.Json.JsonArray;
                 getNamedString(name: string): string;
@@ -3623,19 +4267,34 @@ declare namespace Windows {
                 getObject(): Windows.Data.Json.JsonObject;
                 lookup(key: string): Windows.Data.Json.IJsonValue;
                 hasKey(key: string): boolean;
-                getView(): Windows.Foundation.Collections.IMapView<string, Windows.Data.Json.IJsonValue>;
-                insert(key: string, value: Windows.Data.Json.IJsonValue): boolean;
+                getView(): Windows.Foundation.Collections.IMapView<
+                    string,
+                    Windows.Data.Json.IJsonValue
+                >;
+                insert(
+                    key: string,
+                    value: Windows.Data.Json.IJsonValue,
+                ): boolean;
                 remove(key: string): void;
                 clear(): void;
                 first(): Windows.Foundation.Collections.IIterator<
-                    Windows.Foundation.Collections.IKeyValuePair<string, Windows.Data.Json.IJsonValue>
+                    Windows.Foundation.Collections.IKeyValuePair<
+                        string,
+                        Windows.Data.Json.IJsonValue
+                    >
                 >;
                 static parse(input: string): Windows.Data.Json.JsonObject;
-                static tryParse(input: string): { result: Windows.Data.Json.JsonObject; succeeded: boolean };
+                static tryParse(input: string): {
+                    result: Windows.Data.Json.JsonObject;
+                    succeeded: boolean;
+                };
             }
             export interface IJsonValueStatics {
                 parse(input: string): Windows.Data.Json.JsonValue;
-                tryParse(input: string): { result: Windows.Data.Json.JsonValue; succeeded: boolean };
+                tryParse(input: string): {
+                    result: Windows.Data.Json.JsonValue;
+                    succeeded: boolean;
+                };
                 createBooleanValue(input: boolean): Windows.Data.Json.JsonValue;
                 createNumberValue(input: number): Windows.Data.Json.JsonValue;
                 createStringValue(input: string): Windows.Data.Json.JsonValue;
@@ -3649,14 +4308,26 @@ declare namespace Windows {
                 getArray(): Windows.Data.Json.JsonArray;
                 getObject(): Windows.Data.Json.JsonObject;
                 static parse(input: string): Windows.Data.Json.JsonValue;
-                static tryParse(input: string): { result: Windows.Data.Json.JsonValue; succeeded: boolean };
-                static createBooleanValue(input: boolean): Windows.Data.Json.JsonValue;
-                static createNumberValue(input: number): Windows.Data.Json.JsonValue;
-                static createStringValue(input: string): Windows.Data.Json.JsonValue;
+                static tryParse(input: string): {
+                    result: Windows.Data.Json.JsonValue;
+                    succeeded: boolean;
+                };
+                static createBooleanValue(
+                    input: boolean,
+                ): Windows.Data.Json.JsonValue;
+                static createNumberValue(
+                    input: number,
+                ): Windows.Data.Json.JsonValue;
+                static createStringValue(
+                    input: string,
+                ): Windows.Data.Json.JsonValue;
             }
             export interface IJsonObject extends Windows.Data.Json.IJsonValue {
                 getNamedValue(name: string): Windows.Data.Json.JsonValue;
-                setNamedValue(name: string, value: Windows.Data.Json.IJsonValue): void;
+                setNamedValue(
+                    name: string,
+                    value: Windows.Data.Json.IJsonValue,
+                ): void;
                 getNamedObject(name: string): Windows.Data.Json.JsonObject;
                 getNamedArray(name: string): Windows.Data.Json.JsonArray;
                 getNamedString(name: string): string;
@@ -3665,7 +4336,10 @@ declare namespace Windows {
             }
             export interface IJsonObjectStatics {
                 parse(input: string): Windows.Data.Json.JsonObject;
-                tryParse(input: string): { result: Windows.Data.Json.JsonObject; succeeded: boolean };
+                tryParse(input: string): {
+                    result: Windows.Data.Json.JsonObject;
+                    succeeded: boolean;
+                };
             }
             export interface IJsonArray extends Windows.Data.Json.IJsonValue {
                 getObjectAt(index: number): Windows.Data.Json.JsonObject;
@@ -3676,13 +4350,18 @@ declare namespace Windows {
             }
             export interface IJsonArrayStatics {
                 parse(input: string): Windows.Data.Json.JsonArray;
-                tryParse(input: string): { result: Windows.Data.Json.JsonArray; succeeded: boolean };
+                tryParse(input: string): {
+                    result: Windows.Data.Json.JsonArray;
+                    succeeded: boolean;
+                };
             }
             export interface IJsonErrorStatics {
                 getStatus(hresult: number): Windows.Data.Json.JsonErrorStatus;
             }
             export class JsonError {
-                static getStatus(hresult: number): Windows.Data.Json.JsonErrorStatus;
+                static getStatus(
+                    hresult: number,
+                ): Windows.Data.Json.JsonErrorStatus;
             }
         }
     }
@@ -3707,37 +4386,63 @@ declare namespace Windows {
                     notationNode,
                 }
                 export interface IXmlNodeSelector {
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                 }
                 export class XmlNodeList
                     implements
                         Windows.Data.Xml.Dom.IXmlNodeList,
-                        Windows.Foundation.Collections.IVectorView<Windows.Data.Xml.Dom.IXmlNode>,
-                        Windows.Foundation.Collections.IIterable<Windows.Data.Xml.Dom.IXmlNode>
+                        Windows.Foundation.Collections
+                            .IVectorView<Windows.Data.Xml.Dom.IXmlNode>,
+                        Windows.Foundation.Collections
+                            .IIterable<Windows.Data.Xml.Dom.IXmlNode>
                 {
                     length: number;
                     size: number;
                     item(index: number): Windows.Data.Xml.Dom.IXmlNode;
                     getAt(index: number): Windows.Data.Xml.Dom.IXmlNode;
-                    indexOf(value: Windows.Data.Xml.Dom.IXmlNode): { index: number; returnValue: boolean };
-                    getMany(startIndex: number): { items: Windows.Data.Xml.Dom.IXmlNode[]; returnValue: number };
+                    indexOf(value: Windows.Data.Xml.Dom.IXmlNode): {
+                        index: number;
+                        returnValue: boolean;
+                    };
+                    getMany(startIndex: number): {
+                        items: Windows.Data.Xml.Dom.IXmlNode[];
+                        returnValue: number;
+                    };
                     first(): Windows.Foundation.Collections.IIterator<Windows.Data.Xml.Dom.IXmlNode>;
                     toString(): string;
                     toLocaleString(): string;
-                    concat(...items: Windows.Data.Xml.Dom.IXmlNode[][]): Windows.Data.Xml.Dom.IXmlNode[];
+                    concat(
+                        ...items: Windows.Data.Xml.Dom.IXmlNode[][]
+                    ): Windows.Data.Xml.Dom.IXmlNode[];
                     join(seperator: string): string;
                     pop(): Windows.Data.Xml.Dom.IXmlNode;
                     push(...items: Windows.Data.Xml.Dom.IXmlNode[]): void;
                     reverse(): Windows.Data.Xml.Dom.IXmlNode[];
                     shift(): Windows.Data.Xml.Dom.IXmlNode;
                     slice(start: number): Windows.Data.Xml.Dom.IXmlNode[];
-                    slice(start: number, end: number): Windows.Data.Xml.Dom.IXmlNode[];
+                    slice(
+                        start: number,
+                        end: number,
+                    ): Windows.Data.Xml.Dom.IXmlNode[];
                     sort(): Windows.Data.Xml.Dom.IXmlNode[];
                     sort(
-                        compareFn: (a: Windows.Data.Xml.Dom.IXmlNode, b: Windows.Data.Xml.Dom.IXmlNode) => number,
+                        compareFn: (
+                            a: Windows.Data.Xml.Dom.IXmlNode,
+                            b: Windows.Data.Xml.Dom.IXmlNode,
+                        ) => number,
                     ): Windows.Data.Xml.Dom.IXmlNode[];
                     splice(start: number): Windows.Data.Xml.Dom.IXmlNode[];
                     splice(
@@ -3746,8 +4451,13 @@ declare namespace Windows {
                         ...items: Windows.Data.Xml.Dom.IXmlNode[]
                     ): Windows.Data.Xml.Dom.IXmlNode[];
                     unshift(...items: Windows.Data.Xml.Dom.IXmlNode[]): number;
-                    lastIndexOf(searchElement: Windows.Data.Xml.Dom.IXmlNode): number;
-                    lastIndexOf(searchElement: Windows.Data.Xml.Dom.IXmlNode, fromIndex: number): number;
+                    lastIndexOf(
+                        searchElement: Windows.Data.Xml.Dom.IXmlNode,
+                    ): number;
+                    lastIndexOf(
+                        searchElement: Windows.Data.Xml.Dom.IXmlNode,
+                        fromIndex: number,
+                    ): number;
                     every(
                         callbackfn: (
                             value: Windows.Data.Xml.Dom.IXmlNode,
@@ -3861,35 +4571,63 @@ declare namespace Windows {
                 export class XmlNamedNodeMap
                     implements
                         Windows.Data.Xml.Dom.IXmlNamedNodeMap,
-                        Windows.Foundation.Collections.IVectorView<Windows.Data.Xml.Dom.IXmlNode>,
-                        Windows.Foundation.Collections.IIterable<Windows.Data.Xml.Dom.IXmlNode>
+                        Windows.Foundation.Collections
+                            .IVectorView<Windows.Data.Xml.Dom.IXmlNode>,
+                        Windows.Foundation.Collections
+                            .IIterable<Windows.Data.Xml.Dom.IXmlNode>
                 {
                     length: number;
                     size: number;
                     item(index: number): Windows.Data.Xml.Dom.IXmlNode;
                     getNamedItem(name: string): Windows.Data.Xml.Dom.IXmlNode;
-                    setNamedItem(node: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    removeNamedItem(name: string): Windows.Data.Xml.Dom.IXmlNode;
-                    getNamedItemNS(namespaceUri: any, name: string): Windows.Data.Xml.Dom.IXmlNode;
-                    removeNamedItemNS(namespaceUri: any, name: string): Windows.Data.Xml.Dom.IXmlNode;
-                    setNamedItemNS(node: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    setNamedItem(
+                        node: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    removeNamedItem(
+                        name: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    getNamedItemNS(
+                        namespaceUri: any,
+                        name: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    removeNamedItemNS(
+                        namespaceUri: any,
+                        name: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    setNamedItemNS(
+                        node: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     getAt(index: number): Windows.Data.Xml.Dom.IXmlNode;
-                    indexOf(value: Windows.Data.Xml.Dom.IXmlNode): { index: number; returnValue: boolean };
-                    getMany(startIndex: number): { items: Windows.Data.Xml.Dom.IXmlNode[]; returnValue: number };
+                    indexOf(value: Windows.Data.Xml.Dom.IXmlNode): {
+                        index: number;
+                        returnValue: boolean;
+                    };
+                    getMany(startIndex: number): {
+                        items: Windows.Data.Xml.Dom.IXmlNode[];
+                        returnValue: number;
+                    };
                     first(): Windows.Foundation.Collections.IIterator<Windows.Data.Xml.Dom.IXmlNode>;
                     toString(): string;
                     toLocaleString(): string;
-                    concat(...items: Windows.Data.Xml.Dom.IXmlNode[][]): Windows.Data.Xml.Dom.IXmlNode[];
+                    concat(
+                        ...items: Windows.Data.Xml.Dom.IXmlNode[][]
+                    ): Windows.Data.Xml.Dom.IXmlNode[];
                     join(seperator: string): string;
                     pop(): Windows.Data.Xml.Dom.IXmlNode;
                     push(...items: Windows.Data.Xml.Dom.IXmlNode[]): void;
                     reverse(): Windows.Data.Xml.Dom.IXmlNode[];
                     shift(): Windows.Data.Xml.Dom.IXmlNode;
                     slice(start: number): Windows.Data.Xml.Dom.IXmlNode[];
-                    slice(start: number, end: number): Windows.Data.Xml.Dom.IXmlNode[];
+                    slice(
+                        start: number,
+                        end: number,
+                    ): Windows.Data.Xml.Dom.IXmlNode[];
                     sort(): Windows.Data.Xml.Dom.IXmlNode[];
                     sort(
-                        compareFn: (a: Windows.Data.Xml.Dom.IXmlNode, b: Windows.Data.Xml.Dom.IXmlNode) => number,
+                        compareFn: (
+                            a: Windows.Data.Xml.Dom.IXmlNode,
+                            b: Windows.Data.Xml.Dom.IXmlNode,
+                        ) => number,
                     ): Windows.Data.Xml.Dom.IXmlNode[];
                     splice(start: number): Windows.Data.Xml.Dom.IXmlNode[];
                     splice(
@@ -3898,8 +4636,13 @@ declare namespace Windows {
                         ...items: Windows.Data.Xml.Dom.IXmlNode[]
                     ): Windows.Data.Xml.Dom.IXmlNode[];
                     unshift(...items: Windows.Data.Xml.Dom.IXmlNode[]): number;
-                    lastIndexOf(searchElement: Windows.Data.Xml.Dom.IXmlNode): number;
-                    lastIndexOf(searchElement: Windows.Data.Xml.Dom.IXmlNode, fromIndex: number): number;
+                    lastIndexOf(
+                        searchElement: Windows.Data.Xml.Dom.IXmlNode,
+                    ): number;
+                    lastIndexOf(
+                        searchElement: Windows.Data.Xml.Dom.IXmlNode,
+                        fromIndex: number,
+                    ): number;
                     every(
                         callbackfn: (
                             value: Windows.Data.Xml.Dom.IXmlNode,
@@ -4037,22 +4780,45 @@ declare namespace Windows {
                     prefix: any;
                     previousSibling: Windows.Data.Xml.Dom.IXmlNode;
                     innerText: string;
-                    createElement(tagName: string): Windows.Data.Xml.Dom.XmlElement;
+                    createElement(
+                        tagName: string,
+                    ): Windows.Data.Xml.Dom.XmlElement;
                     createDocumentFragment(): Windows.Data.Xml.Dom.XmlDocumentFragment;
                     createTextNode(data: string): Windows.Data.Xml.Dom.XmlText;
-                    createComment(data: string): Windows.Data.Xml.Dom.XmlComment;
+                    createComment(
+                        data: string,
+                    ): Windows.Data.Xml.Dom.XmlComment;
                     createProcessingInstruction(
                         target: string,
                         data: string,
                     ): Windows.Data.Xml.Dom.XmlProcessingInstruction;
-                    createAttribute(name: string): Windows.Data.Xml.Dom.XmlAttribute;
-                    createEntityReference(name: string): Windows.Data.Xml.Dom.XmlEntityReference;
-                    getElementsByTagName(tagName: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    createCDataSection(data: string): Windows.Data.Xml.Dom.XmlCDataSection;
-                    createAttributeNS(namespaceUri: any, qualifiedName: string): Windows.Data.Xml.Dom.XmlAttribute;
-                    createElementNS(namespaceUri: any, qualifiedName: string): Windows.Data.Xml.Dom.XmlElement;
-                    getElementById(elementId: string): Windows.Data.Xml.Dom.XmlElement;
-                    importNode(node: Windows.Data.Xml.Dom.IXmlNode, deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
+                    createAttribute(
+                        name: string,
+                    ): Windows.Data.Xml.Dom.XmlAttribute;
+                    createEntityReference(
+                        name: string,
+                    ): Windows.Data.Xml.Dom.XmlEntityReference;
+                    getElementsByTagName(
+                        tagName: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    createCDataSection(
+                        data: string,
+                    ): Windows.Data.Xml.Dom.XmlCDataSection;
+                    createAttributeNS(
+                        namespaceUri: any,
+                        qualifiedName: string,
+                    ): Windows.Data.Xml.Dom.XmlAttribute;
+                    createElementNS(
+                        namespaceUri: any,
+                        qualifiedName: string,
+                    ): Windows.Data.Xml.Dom.XmlElement;
+                    getElementById(
+                        elementId: string,
+                    ): Windows.Data.Xml.Dom.XmlElement;
+                    importNode(
+                        node: Windows.Data.Xml.Dom.IXmlNode,
+                        deep: boolean,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     hasChildNodes(): boolean;
                     insertBefore(
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
@@ -4062,18 +4828,37 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                     loadXml(xml: string): void;
-                    loadXml(xml: string, loadSettings: Windows.Data.Xml.Dom.XmlLoadSettings): void;
-                    saveToFileAsync(file: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
+                    loadXml(
+                        xml: string,
+                        loadSettings: Windows.Data.Xml.Dom.XmlLoadSettings,
+                    ): void;
+                    saveToFileAsync(
+                        file: Windows.Storage.IStorageFile,
+                    ): Windows.Foundation.IAsyncAction;
                     static loadFromUriAsync(
                         uri: Windows.Foundation.Uri,
                     ): Windows.Foundation.IAsyncOperation<Windows.Data.Xml.Dom.XmlDocument>;
@@ -4094,8 +4879,8 @@ declare namespace Windows {
                     getXml(): string;
                 }
                 export interface IXmlNode
-                    extends Windows.Data.Xml.Dom.IXmlNodeSelector, Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                    extends Windows.Data.Xml.Dom.IXmlNodeSelector,
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     attributes: Windows.Data.Xml.Dom.XmlNamedNodeMap;
                     childNodes: Windows.Data.Xml.Dom.XmlNodeList;
                     firstChild: Windows.Data.Xml.Dom.IXmlNode;
@@ -4119,8 +4904,12 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
                 }
@@ -4128,57 +4917,68 @@ declare namespace Windows {
                     hasFeature(feature: string, version: any): boolean;
                 }
                 export interface IXmlDocumentType
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     entities: Windows.Data.Xml.Dom.XmlNamedNodeMap;
                     name: string;
                     notations: Windows.Data.Xml.Dom.XmlNamedNodeMap;
                 }
                 export interface IXmlAttribute
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     name: string;
                     specified: boolean;
                     value: string;
                 }
                 export interface IXmlDocumentFragment
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
-                }
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {}
                 export interface IXmlElement
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     tagName: string;
                     getAttribute(attributeName: string): string;
-                    setAttribute(attributeName: string, attributeValue: string): void;
+                    setAttribute(
+                        attributeName: string,
+                        attributeValue: string,
+                    ): void;
                     removeAttribute(attributeName: string): void;
-                    getAttributeNode(attributeName: string): Windows.Data.Xml.Dom.XmlAttribute;
+                    getAttributeNode(
+                        attributeName: string,
+                    ): Windows.Data.Xml.Dom.XmlAttribute;
                     setAttributeNode(
                         newAttribute: Windows.Data.Xml.Dom.XmlAttribute,
                     ): Windows.Data.Xml.Dom.XmlAttribute;
                     removeAttributeNode(
                         attributeNode: Windows.Data.Xml.Dom.XmlAttribute,
                     ): Windows.Data.Xml.Dom.XmlAttribute;
-                    getElementsByTagName(tagName: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    setAttributeNS(namespaceUri: any, qualifiedName: string, value: string): void;
-                    getAttributeNS(namespaceUri: any, localName: string): string;
-                    removeAttributeNS(namespaceUri: any, localName: string): void;
+                    getElementsByTagName(
+                        tagName: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    setAttributeNS(
+                        namespaceUri: any,
+                        qualifiedName: string,
+                        value: string,
+                    ): void;
+                    getAttributeNS(
+                        namespaceUri: any,
+                        localName: string,
+                    ): string;
+                    removeAttributeNS(
+                        namespaceUri: any,
+                        localName: string,
+                    ): void;
                     setAttributeNodeNS(
                         newAttribute: Windows.Data.Xml.Dom.XmlAttribute,
                     ): Windows.Data.Xml.Dom.XmlAttribute;
-                    getAttributeNodeNS(namespaceUri: any, localName: string): Windows.Data.Xml.Dom.XmlAttribute;
+                    getAttributeNodeNS(
+                        namespaceUri: any,
+                        localName: string,
+                    ): Windows.Data.Xml.Dom.XmlAttribute;
                 }
                 export class XmlAttribute
                     implements
@@ -4214,117 +5014,137 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
                 export interface IDtdNotation
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     publicId: any;
                     systemId: any;
                 }
                 export interface IDtdEntity
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     notationName: any;
                     publicId: any;
                     systemId: any;
                 }
                 export interface IXmlEntityReference
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
-                }
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {}
                 export interface IXmlProcessingInstruction
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     data: string;
                     target: string;
                 }
                 export interface IXmlCharacterData
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     data: string;
                     length: number;
                     substringData(offset: number, count: number): string;
                     appendData(data: string): void;
                     insertData(offset: number, data: string): void;
                     deleteData(offset: number, count: number): void;
-                    replaceData(offset: number, count: number, data: string): void;
+                    replaceData(
+                        offset: number,
+                        count: number,
+                        data: string,
+                    ): void;
                 }
                 export interface IXmlComment
-                    extends
-                        Windows.Data.Xml.Dom.IXmlCharacterData,
+                    extends Windows.Data.Xml.Dom.IXmlCharacterData,
                         Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
-                }
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {}
                 export interface IXmlText
-                    extends
-                        Windows.Data.Xml.Dom.IXmlCharacterData,
+                    extends Windows.Data.Xml.Dom.IXmlCharacterData,
                         Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     splitText(offset: number): Windows.Data.Xml.Dom.IXmlText;
                 }
                 export interface IXmlCDataSection
-                    extends
-                        Windows.Data.Xml.Dom.IXmlText,
+                    extends Windows.Data.Xml.Dom.IXmlText,
                         Windows.Data.Xml.Dom.IXmlCharacterData,
                         Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
-                }
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {}
                 export interface IXmlDocument
-                    extends
-                        Windows.Data.Xml.Dom.IXmlNode,
+                    extends Windows.Data.Xml.Dom.IXmlNode,
                         Windows.Data.Xml.Dom.IXmlNodeSelector,
-                        Windows.Data.Xml.Dom.IXmlNodeSerializer
-                {
+                        Windows.Data.Xml.Dom.IXmlNodeSerializer {
                     doctype: Windows.Data.Xml.Dom.XmlDocumentType;
                     documentElement: Windows.Data.Xml.Dom.XmlElement;
                     documentUri: string;
                     implementation: Windows.Data.Xml.Dom.XmlDomImplementation;
-                    createElement(tagName: string): Windows.Data.Xml.Dom.XmlElement;
+                    createElement(
+                        tagName: string,
+                    ): Windows.Data.Xml.Dom.XmlElement;
                     createDocumentFragment(): Windows.Data.Xml.Dom.XmlDocumentFragment;
                     createTextNode(data: string): Windows.Data.Xml.Dom.XmlText;
-                    createComment(data: string): Windows.Data.Xml.Dom.XmlComment;
+                    createComment(
+                        data: string,
+                    ): Windows.Data.Xml.Dom.XmlComment;
                     createProcessingInstruction(
                         target: string,
                         data: string,
                     ): Windows.Data.Xml.Dom.XmlProcessingInstruction;
-                    createAttribute(name: string): Windows.Data.Xml.Dom.XmlAttribute;
-                    createEntityReference(name: string): Windows.Data.Xml.Dom.XmlEntityReference;
-                    getElementsByTagName(tagName: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    createCDataSection(data: string): Windows.Data.Xml.Dom.XmlCDataSection;
-                    createAttributeNS(namespaceUri: any, qualifiedName: string): Windows.Data.Xml.Dom.XmlAttribute;
-                    createElementNS(namespaceUri: any, qualifiedName: string): Windows.Data.Xml.Dom.XmlElement;
-                    getElementById(elementId: string): Windows.Data.Xml.Dom.XmlElement;
-                    importNode(node: Windows.Data.Xml.Dom.IXmlNode, deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
+                    createAttribute(
+                        name: string,
+                    ): Windows.Data.Xml.Dom.XmlAttribute;
+                    createEntityReference(
+                        name: string,
+                    ): Windows.Data.Xml.Dom.XmlEntityReference;
+                    getElementsByTagName(
+                        tagName: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    createCDataSection(
+                        data: string,
+                    ): Windows.Data.Xml.Dom.XmlCDataSection;
+                    createAttributeNS(
+                        namespaceUri: any,
+                        qualifiedName: string,
+                    ): Windows.Data.Xml.Dom.XmlAttribute;
+                    createElementNS(
+                        namespaceUri: any,
+                        qualifiedName: string,
+                    ): Windows.Data.Xml.Dom.XmlElement;
+                    getElementById(
+                        elementId: string,
+                    ): Windows.Data.Xml.Dom.XmlElement;
+                    importNode(
+                        node: Windows.Data.Xml.Dom.IXmlNode,
+                        deep: boolean,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                 }
                 export class XmlDocumentType
                     implements
@@ -4360,17 +5180,33 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
-                export class XmlDomImplementation implements Windows.Data.Xml.Dom.IXmlDomImplementation {
+                export class XmlDomImplementation
+                    implements Windows.Data.Xml.Dom.IXmlDomImplementation
+                {
                     hasFeature(feature: string, version: any): boolean;
                 }
                 export class XmlElement
@@ -4397,23 +5233,43 @@ declare namespace Windows {
                     previousSibling: Windows.Data.Xml.Dom.IXmlNode;
                     innerText: string;
                     getAttribute(attributeName: string): string;
-                    setAttribute(attributeName: string, attributeValue: string): void;
+                    setAttribute(
+                        attributeName: string,
+                        attributeValue: string,
+                    ): void;
                     removeAttribute(attributeName: string): void;
-                    getAttributeNode(attributeName: string): Windows.Data.Xml.Dom.XmlAttribute;
+                    getAttributeNode(
+                        attributeName: string,
+                    ): Windows.Data.Xml.Dom.XmlAttribute;
                     setAttributeNode(
                         newAttribute: Windows.Data.Xml.Dom.XmlAttribute,
                     ): Windows.Data.Xml.Dom.XmlAttribute;
                     removeAttributeNode(
                         attributeNode: Windows.Data.Xml.Dom.XmlAttribute,
                     ): Windows.Data.Xml.Dom.XmlAttribute;
-                    getElementsByTagName(tagName: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    setAttributeNS(namespaceUri: any, qualifiedName: string, value: string): void;
-                    getAttributeNS(namespaceUri: any, localName: string): string;
-                    removeAttributeNS(namespaceUri: any, localName: string): void;
+                    getElementsByTagName(
+                        tagName: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    setAttributeNS(
+                        namespaceUri: any,
+                        qualifiedName: string,
+                        value: string,
+                    ): void;
+                    getAttributeNS(
+                        namespaceUri: any,
+                        localName: string,
+                    ): string;
+                    removeAttributeNS(
+                        namespaceUri: any,
+                        localName: string,
+                    ): void;
                     setAttributeNodeNS(
                         newAttribute: Windows.Data.Xml.Dom.XmlAttribute,
                     ): Windows.Data.Xml.Dom.XmlAttribute;
-                    getAttributeNodeNS(namespaceUri: any, localName: string): Windows.Data.Xml.Dom.XmlAttribute;
+                    getAttributeNodeNS(
+                        namespaceUri: any,
+                        localName: string,
+                    ): Windows.Data.Xml.Dom.XmlAttribute;
                     hasChildNodes(): boolean;
                     insertBefore(
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
@@ -4423,14 +5279,28 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
                 export class XmlDocumentFragment
@@ -4464,14 +5334,28 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
                 export class XmlText
@@ -4504,7 +5388,11 @@ declare namespace Windows {
                     appendData(data: string): void;
                     insertData(offset: number, data: string): void;
                     deleteData(offset: number, count: number): void;
-                    replaceData(offset: number, count: number, data: string): void;
+                    replaceData(
+                        offset: number,
+                        count: number,
+                        data: string,
+                    ): void;
                     hasChildNodes(): boolean;
                     insertBefore(
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
@@ -4514,14 +5402,28 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
                 export class XmlComment
@@ -4553,7 +5455,11 @@ declare namespace Windows {
                     appendData(data: string): void;
                     insertData(offset: number, data: string): void;
                     deleteData(offset: number, count: number): void;
-                    replaceData(offset: number, count: number, data: string): void;
+                    replaceData(
+                        offset: number,
+                        count: number,
+                        data: string,
+                    ): void;
                     hasChildNodes(): boolean;
                     insertBefore(
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
@@ -4563,14 +5469,28 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
                 export class XmlProcessingInstruction
@@ -4606,14 +5526,28 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
                 export class XmlEntityReference
@@ -4647,14 +5581,28 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
                 export class XmlCDataSection
@@ -4688,7 +5636,11 @@ declare namespace Windows {
                     appendData(data: string): void;
                     insertData(offset: number, data: string): void;
                     deleteData(offset: number, count: number): void;
-                    replaceData(offset: number, count: number, data: string): void;
+                    replaceData(
+                        offset: number,
+                        count: number,
+                        data: string,
+                    ): void;
                     hasChildNodes(): boolean;
                     insertBefore(
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
@@ -4698,35 +5650,61 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
                 export interface IXmlNamedNodeMap
-                    extends
-                        Windows.Foundation.Collections.IVectorView<Windows.Data.Xml.Dom.IXmlNode>,
-                        Windows.Foundation.Collections.IIterable<Windows.Data.Xml.Dom.IXmlNode>
-                {
+                    extends Windows.Foundation.Collections
+                            .IVectorView<Windows.Data.Xml.Dom.IXmlNode>,
+                        Windows.Foundation.Collections
+                            .IIterable<Windows.Data.Xml.Dom.IXmlNode> {
                     length: number;
                     item(index: number): Windows.Data.Xml.Dom.IXmlNode;
                     getNamedItem(name: string): Windows.Data.Xml.Dom.IXmlNode;
-                    setNamedItem(node: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    removeNamedItem(name: string): Windows.Data.Xml.Dom.IXmlNode;
-                    getNamedItemNS(namespaceUri: any, name: string): Windows.Data.Xml.Dom.IXmlNode;
-                    removeNamedItemNS(namespaceUri: any, name: string): Windows.Data.Xml.Dom.IXmlNode;
-                    setNamedItemNS(node: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    setNamedItem(
+                        node: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    removeNamedItem(
+                        name: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    getNamedItemNS(
+                        namespaceUri: any,
+                        name: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    removeNamedItemNS(
+                        namespaceUri: any,
+                        name: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    setNamedItemNS(
+                        node: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                 }
                 export interface IXmlNodeList
-                    extends
-                        Windows.Foundation.Collections.IVectorView<Windows.Data.Xml.Dom.IXmlNode>,
-                        Windows.Foundation.Collections.IIterable<Windows.Data.Xml.Dom.IXmlNode>
-                {
+                    extends Windows.Foundation.Collections
+                            .IVectorView<Windows.Data.Xml.Dom.IXmlNode>,
+                        Windows.Foundation.Collections
+                            .IIterable<Windows.Data.Xml.Dom.IXmlNode> {
                     length: number;
                     item(index: number): Windows.Data.Xml.Dom.IXmlNode;
                 }
@@ -4739,10 +5717,17 @@ declare namespace Windows {
                 }
                 export interface IXmlDocumentIO {
                     loadXml(xml: string): void;
-                    loadXml(xml: string, loadSettings: Windows.Data.Xml.Dom.XmlLoadSettings): void;
-                    saveToFileAsync(file: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
+                    loadXml(
+                        xml: string,
+                        loadSettings: Windows.Data.Xml.Dom.XmlLoadSettings,
+                    ): void;
+                    saveToFileAsync(
+                        file: Windows.Storage.IStorageFile,
+                    ): Windows.Foundation.IAsyncAction;
                 }
-                export class XmlLoadSettings implements Windows.Data.Xml.Dom.IXmlLoadSettings {
+                export class XmlLoadSettings
+                    implements Windows.Data.Xml.Dom.IXmlLoadSettings
+                {
                     elementContentWhiteSpace: boolean;
                     maxElementDepth: number;
                     prohibitDtd: boolean;
@@ -4798,14 +5783,28 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
                 export class DtdEntity
@@ -4842,14 +5841,28 @@ declare namespace Windows {
                         newChild: Windows.Data.Xml.Dom.IXmlNode,
                         referenceChild: Windows.Data.Xml.Dom.IXmlNode,
                     ): Windows.Data.Xml.Dom.IXmlNode;
-                    removeChild(childNode: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
-                    appendChild(newChild: Windows.Data.Xml.Dom.IXmlNode): Windows.Data.Xml.Dom.IXmlNode;
+                    removeChild(
+                        childNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    appendChild(
+                        newChild: Windows.Data.Xml.Dom.IXmlNode,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
                     cloneNode(deep: boolean): Windows.Data.Xml.Dom.IXmlNode;
                     normalize(): void;
-                    selectSingleNode(xpath: string): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodes(xpath: string): Windows.Data.Xml.Dom.XmlNodeList;
-                    selectSingleNodeNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.IXmlNode;
-                    selectNodesNS(xpath: string, namespaces: any): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNode(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodes(
+                        xpath: string,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
+                    selectSingleNodeNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.IXmlNode;
+                    selectNodesNS(
+                        xpath: string,
+                        namespaces: any,
+                    ): Windows.Data.Xml.Dom.XmlNodeList;
                     getXml(): string;
                 }
             }
@@ -4861,14 +5874,22 @@ declare namespace Windows {
         export namespace Xml {
             export namespace Xsl {
                 export interface IXsltProcessor {
-                    transformToString(inputNode: Windows.Data.Xml.Dom.IXmlNode): string;
+                    transformToString(
+                        inputNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): string;
                 }
                 export interface IXsltProcessorFactory {
-                    createInstance(document: Windows.Data.Xml.Dom.XmlDocument): Windows.Data.Xml.Xsl.XsltProcessor;
+                    createInstance(
+                        document: Windows.Data.Xml.Dom.XmlDocument,
+                    ): Windows.Data.Xml.Xsl.XsltProcessor;
                 }
-                export class XsltProcessor implements Windows.Data.Xml.Xsl.IXsltProcessor {
+                export class XsltProcessor
+                    implements Windows.Data.Xml.Xsl.IXsltProcessor
+                {
                     constructor(document: Windows.Data.Xml.Dom.XmlDocument);
-                    transformToString(inputNode: Windows.Data.Xml.Dom.IXmlNode): string;
+                    transformToString(
+                        inputNode: Windows.Data.Xml.Dom.IXmlNode,
+                    ): string;
                 }
             }
         }
@@ -4895,13 +5916,16 @@ declare namespace Windows {
                 cdmaDeliver,
                 gsmDeliver,
             }
-            export interface ISmsBinaryMessage extends Windows.Devices.Sms.ISmsMessage {
+            export interface ISmsBinaryMessage
+                extends Windows.Devices.Sms.ISmsMessage {
                 format: Windows.Devices.Sms.SmsDataFormat;
                 getData(): Uint8Array;
                 setData(value: Uint8Array): void;
             }
             export class SmsBinaryMessage
-                implements Windows.Devices.Sms.ISmsBinaryMessage, Windows.Devices.Sms.ISmsMessage
+                implements
+                    Windows.Devices.Sms.ISmsBinaryMessage,
+                    Windows.Devices.Sms.ISmsMessage
             {
                 format: Windows.Devices.Sms.SmsDataFormat;
                 id: number;
@@ -4916,7 +5940,8 @@ declare namespace Windows {
                 unicode,
                 gsmSevenBit,
             }
-            export interface ISmsTextMessage extends Windows.Devices.Sms.ISmsMessage {
+            export interface ISmsTextMessage
+                extends Windows.Devices.Sms.ISmsMessage {
                 body: string;
                 encoding: Windows.Devices.Sms.SmsEncoding;
                 from: string;
@@ -4939,7 +5964,9 @@ declare namespace Windows {
                 ): Windows.Devices.Sms.SmsTextMessage;
             }
             export class SmsTextMessage
-                implements Windows.Devices.Sms.ISmsTextMessage, Windows.Devices.Sms.ISmsMessage
+                implements
+                    Windows.Devices.Sms.ISmsTextMessage,
+                    Windows.Devices.Sms.ISmsMessage
             {
                 body: string;
                 encoding: Windows.Devices.Sms.SmsEncoding;
@@ -4974,7 +6001,9 @@ declare namespace Windows {
                 text,
             }
             export class DeleteSmsMessageOperation
-                implements Windows.Foundation.IAsyncAction, Windows.Foundation.IAsyncInfo
+                implements
+                    Windows.Foundation.IAsyncAction,
+                    Windows.Foundation.IAsyncInfo
             {
                 completed: Windows.Foundation.AsyncActionCompletedHandler;
                 errorCode: number;
@@ -5014,7 +6043,9 @@ declare namespace Windows {
                 };
             }
             export class DeleteSmsMessagesOperation
-                implements Windows.Foundation.IAsyncAction, Windows.Foundation.IAsyncInfo
+                implements
+                    Windows.Foundation.IAsyncAction,
+                    Windows.Foundation.IAsyncInfo
             {
                 completed: Windows.Foundation.AsyncActionCompletedHandler;
                 errorCode: number;
@@ -5055,7 +6086,8 @@ declare namespace Windows {
             }
             export class GetSmsMessageOperation
                 implements
-                    Windows.Foundation.IAsyncOperation<Windows.Devices.Sms.ISmsMessage>,
+                    Windows.Foundation
+                        .IAsyncOperation<Windows.Devices.Sms.ISmsMessage>,
                     Windows.Foundation.IAsyncInfo
             {
                 completed: Windows.Foundation.AsyncOperationCompletedHandler<Windows.Devices.Sms.ISmsMessage>;
@@ -5071,7 +6103,9 @@ declare namespace Windows {
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
                 then<U>(
-                    success?: (value: Windows.Devices.Sms.ISmsMessage) => Windows.Foundation.IPromise<U>,
+                    success?: (
+                        value: Windows.Devices.Sms.ISmsMessage,
+                    ) => Windows.Foundation.IPromise<U>,
                     error?: (error: any) => U,
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
@@ -5081,7 +6115,9 @@ declare namespace Windows {
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
                 then<U>(
-                    success?: (value: Windows.Devices.Sms.ISmsMessage) => Windows.Foundation.IPromise<U>,
+                    success?: (
+                        value: Windows.Devices.Sms.ISmsMessage,
+                    ) => Windows.Foundation.IPromise<U>,
                     error?: (error: any) => Windows.Foundation.IPromise<U>,
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
@@ -5095,12 +6131,13 @@ declare namespace Windows {
                     getResults(): Windows.Devices.Sms.ISmsMessage;
                 };
             }
-            export class GetSmsMessagesOperation implements
-                Windows.Foundation.IAsyncOperationWithProgress<
-                    Windows.Foundation.Collections.IVectorView<Windows.Devices.Sms.ISmsMessage>,
-                    number
-                >,
-                Windows.Foundation.IAsyncInfo
+            export class GetSmsMessagesOperation
+                implements
+                    Windows.Foundation.IAsyncOperationWithProgress<
+                        Windows.Foundation.Collections.IVectorView<Windows.Devices.Sms.ISmsMessage>,
+                        number
+                    >,
+                    Windows.Foundation.IAsyncInfo
             {
                 completed: Windows.Foundation.AsyncOperationWithProgressCompletedHandler<
                     Windows.Foundation.Collections.IVectorView<Windows.Devices.Sms.ISmsMessage>,
@@ -5117,7 +6154,9 @@ declare namespace Windows {
                 cancel(): void;
                 close(): void;
                 then<U>(
-                    success?: (value: Windows.Foundation.Collections.IVectorView<Windows.Devices.Sms.ISmsMessage>) => U,
+                    success?: (
+                        value: Windows.Foundation.Collections.IVectorView<Windows.Devices.Sms.ISmsMessage>,
+                    ) => U,
                     error?: (error: any) => U,
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
@@ -5129,7 +6168,9 @@ declare namespace Windows {
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
                 then<U>(
-                    success?: (value: Windows.Foundation.Collections.IVectorView<Windows.Devices.Sms.ISmsMessage>) => U,
+                    success?: (
+                        value: Windows.Foundation.Collections.IVectorView<Windows.Devices.Sms.ISmsMessage>,
+                    ) => U,
                     error?: (error: any) => Windows.Foundation.IPromise<U>,
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
@@ -5160,11 +6201,15 @@ declare namespace Windows {
             }
             export interface ISmsDeviceMessageStore {
                 maxMessages: number;
-                deleteMessageAsync(messageId: number): Windows.Foundation.IAsyncAction;
+                deleteMessageAsync(
+                    messageId: number,
+                ): Windows.Foundation.IAsyncAction;
                 deleteMessagesAsync(
                     messageFilter: Windows.Devices.Sms.SmsMessageFilter,
                 ): Windows.Foundation.IAsyncAction;
-                getMessageAsync(messageId: number): Windows.Foundation.IAsyncOperation<Windows.Devices.Sms.ISmsMessage>;
+                getMessageAsync(
+                    messageId: number,
+                ): Windows.Foundation.IAsyncOperation<Windows.Devices.Sms.ISmsMessage>;
                 getMessagesAsync(
                     messageFilter: Windows.Devices.Sms.SmsMessageFilter,
                 ): Windows.Foundation.IAsyncOperationWithProgress<
@@ -5172,13 +6217,19 @@ declare namespace Windows {
                     number
                 >;
             }
-            export class SmsDeviceMessageStore implements Windows.Devices.Sms.ISmsDeviceMessageStore {
+            export class SmsDeviceMessageStore
+                implements Windows.Devices.Sms.ISmsDeviceMessageStore
+            {
                 maxMessages: number;
-                deleteMessageAsync(messageId: number): Windows.Foundation.IAsyncAction;
+                deleteMessageAsync(
+                    messageId: number,
+                ): Windows.Foundation.IAsyncAction;
                 deleteMessagesAsync(
                     messageFilter: Windows.Devices.Sms.SmsMessageFilter,
                 ): Windows.Foundation.IAsyncAction;
-                getMessageAsync(messageId: number): Windows.Foundation.IAsyncOperation<Windows.Devices.Sms.ISmsMessage>;
+                getMessageAsync(
+                    messageId: number,
+                ): Windows.Foundation.IAsyncOperation<Windows.Devices.Sms.ISmsMessage>;
                 getMessagesAsync(
                     messageFilter: Windows.Devices.Sms.SmsMessageFilter,
                 ): Windows.Foundation.IAsyncOperationWithProgress<
@@ -5209,7 +6260,9 @@ declare namespace Windows {
                 deviceBlocked,
             }
             export class SendSmsMessageOperation
-                implements Windows.Foundation.IAsyncAction, Windows.Foundation.IAsyncInfo
+                implements
+                    Windows.Foundation.IAsyncAction,
+                    Windows.Foundation.IAsyncInfo
             {
                 completed: Windows.Foundation.AsyncActionCompletedHandler;
                 errorCode: number;
@@ -5238,7 +6291,11 @@ declare namespace Windows {
                     error?: (error: any) => U,
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
-                done<U>(success?: () => any, error?: (error: any) => any, progress?: (progress: any) => void): void;
+                done<U>(
+                    success?: () => any,
+                    error?: (error: any) => any,
+                    progress?: (progress: any) => void,
+                ): void;
                 operation: {
                     completed: Windows.Foundation.AsyncOperationCompletedHandler<any>;
                     getResults(): any;
@@ -5248,20 +6305,29 @@ declare namespace Windows {
                 binaryMessage: Windows.Devices.Sms.SmsBinaryMessage;
                 textMessage: Windows.Devices.Sms.SmsTextMessage;
             }
-            export class SmsMessageReceivedEventArgs implements Windows.Devices.Sms.ISmsMessageReceivedEventArgs {
+            export class SmsMessageReceivedEventArgs
+                implements Windows.Devices.Sms.ISmsMessageReceivedEventArgs
+            {
                 binaryMessage: Windows.Devices.Sms.SmsBinaryMessage;
                 textMessage: Windows.Devices.Sms.SmsTextMessage;
             }
             export interface SmsMessageReceivedEventHandler {
-                (sender: Windows.Devices.Sms.SmsDevice, e: Windows.Devices.Sms.SmsMessageReceivedEventArgs): void;
+                (
+                    sender: Windows.Devices.Sms.SmsDevice,
+                    e: Windows.Devices.Sms.SmsMessageReceivedEventArgs,
+                ): void;
             }
             export class SmsDevice implements Windows.Devices.Sms.ISmsDevice {
                 accountPhoneNumber: string;
                 cellularClass: Windows.Devices.Sms.CellularClass;
                 deviceStatus: Windows.Devices.Sms.SmsDeviceStatus;
                 messageStore: Windows.Devices.Sms.SmsDeviceMessageStore;
-                sendMessageAsync(message: Windows.Devices.Sms.ISmsMessage): Windows.Devices.Sms.SendSmsMessageOperation;
-                calculateLength(message: Windows.Devices.Sms.SmsTextMessage): Windows.Devices.Sms.SmsEncodedLength;
+                sendMessageAsync(
+                    message: Windows.Devices.Sms.ISmsMessage,
+                ): Windows.Devices.Sms.SendSmsMessageOperation;
+                calculateLength(
+                    message: Windows.Devices.Sms.SmsTextMessage,
+                ): Windows.Devices.Sms.SmsEncodedLength;
                 onsmsmessagereceived: any /* TODO */;
                 onsmsdevicestatuschanged: any /* TODO */;
                 static getDeviceSelector(): string;
@@ -5275,7 +6341,8 @@ declare namespace Windows {
             }
             export class GetSmsDeviceOperation
                 implements
-                    Windows.Foundation.IAsyncOperation<Windows.Devices.Sms.SmsDevice>,
+                    Windows.Foundation
+                        .IAsyncOperation<Windows.Devices.Sms.SmsDevice>,
                     Windows.Foundation.IAsyncInfo
             {
                 completed: Windows.Foundation.AsyncOperationCompletedHandler<Windows.Devices.Sms.SmsDevice>;
@@ -5291,7 +6358,9 @@ declare namespace Windows {
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
                 then<U>(
-                    success?: (value: Windows.Devices.Sms.SmsDevice) => Windows.Foundation.IPromise<U>,
+                    success?: (
+                        value: Windows.Devices.Sms.SmsDevice,
+                    ) => Windows.Foundation.IPromise<U>,
                     error?: (error: any) => U,
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
@@ -5301,7 +6370,9 @@ declare namespace Windows {
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
                 then<U>(
-                    success?: (value: Windows.Devices.Sms.SmsDevice) => Windows.Foundation.IPromise<U>,
+                    success?: (
+                        value: Windows.Devices.Sms.SmsDevice,
+                    ) => Windows.Foundation.IPromise<U>,
                     error?: (error: any) => Windows.Foundation.IPromise<U>,
                     progress?: (progress: any) => void,
                 ): Windows.Foundation.IPromise<U>;
@@ -5327,8 +6398,12 @@ declare namespace Windows {
                 cellularClass: Windows.Devices.Sms.CellularClass;
                 deviceStatus: Windows.Devices.Sms.SmsDeviceStatus;
                 messageStore: Windows.Devices.Sms.SmsDeviceMessageStore;
-                sendMessageAsync(message: Windows.Devices.Sms.ISmsMessage): Windows.Devices.Sms.SendSmsMessageOperation;
-                calculateLength(message: Windows.Devices.Sms.SmsTextMessage): Windows.Devices.Sms.SmsEncodedLength;
+                sendMessageAsync(
+                    message: Windows.Devices.Sms.ISmsMessage,
+                ): Windows.Devices.Sms.SendSmsMessageOperation;
+                calculateLength(
+                    message: Windows.Devices.Sms.SmsTextMessage,
+                ): Windows.Devices.Sms.SmsEncodedLength;
                 onsmsmessagereceived: any /* TODO */;
                 onsmsdevicestatuschanged: any /* TODO */;
             }
@@ -5336,7 +6411,9 @@ declare namespace Windows {
                 deviceId: string;
                 messageIndex: number;
             }
-            export class SmsReceivedEventDetails implements Windows.Devices.Sms.ISmsReceivedEventDetails {
+            export class SmsReceivedEventDetails
+                implements Windows.Devices.Sms.ISmsReceivedEventDetails
+            {
                 deviceId: string;
                 messageIndex: number;
             }
@@ -5375,8 +6452,12 @@ declare namespace Windows {
                 position: number;
                 size: number;
                 contentType: string;
-                getInputStreamAt(position: number): Windows.Storage.Streams.IInputStream;
-                getOutputStreamAt(position: number): Windows.Storage.Streams.IOutputStream;
+                getInputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
+                getOutputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IOutputStream;
                 seek(position: number): void;
                 cloneStream(): Windows.Storage.Streams.IRandomAccessStream;
                 dispose(): void;
@@ -5384,10 +6465,16 @@ declare namespace Windows {
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 close(): void;
             }
@@ -5405,30 +6492,48 @@ declare namespace Windows {
                 inLid: boolean;
                 panel: Windows.Devices.Enumeration.Panel;
             }
-            export class EnclosureLocation implements Windows.Devices.Enumeration.IEnclosureLocation {
+            export class EnclosureLocation
+                implements Windows.Devices.Enumeration.IEnclosureLocation
+            {
                 inDock: boolean;
                 inLid: boolean;
                 panel: Windows.Devices.Enumeration.Panel;
             }
             export interface IDeviceInformationUpdate {
                 id: string;
-                properties: Windows.Foundation.Collections.IMapView<string, any>;
+                properties: Windows.Foundation.Collections.IMapView<
+                    string,
+                    any
+                >;
             }
-            export class DeviceInformationUpdate implements Windows.Devices.Enumeration.IDeviceInformationUpdate {
+            export class DeviceInformationUpdate
+                implements Windows.Devices.Enumeration.IDeviceInformationUpdate
+            {
                 id: string;
-                properties: Windows.Foundation.Collections.IMapView<string, any>;
+                properties: Windows.Foundation.Collections.IMapView<
+                    string,
+                    any
+                >;
             }
             export class DeviceInformationCollection
                 implements
-                    Windows.Foundation.Collections.IVectorView<Windows.Devices.Enumeration.DeviceInformation>,
-                    Windows.Foundation.Collections.IIterable<Windows.Devices.Enumeration.DeviceInformation>
+                    Windows.Foundation.Collections
+                        .IVectorView<Windows.Devices.Enumeration.DeviceInformation>,
+                    Windows.Foundation.Collections
+                        .IIterable<Windows.Devices.Enumeration.DeviceInformation>
             {
                 size: number;
-                getAt(index: number): Windows.Devices.Enumeration.DeviceInformation;
-                indexOf(value: Windows.Devices.Enumeration.DeviceInformation): { index: number; returnValue: boolean };
-                getMany(
-                    startIndex: number,
-                ): { items: Windows.Devices.Enumeration.DeviceInformation[]; returnValue: number };
+                getAt(
+                    index: number,
+                ): Windows.Devices.Enumeration.DeviceInformation;
+                indexOf(value: Windows.Devices.Enumeration.DeviceInformation): {
+                    index: number;
+                    returnValue: boolean;
+                };
+                getMany(startIndex: number): {
+                    items: Windows.Devices.Enumeration.DeviceInformation[];
+                    returnValue: number;
+                };
                 first(): Windows.Foundation.Collections.IIterator<Windows.Devices.Enumeration.DeviceInformation>;
                 toString(): string;
                 toLocaleString(): string;
@@ -5437,11 +6542,18 @@ declare namespace Windows {
                 ): Windows.Devices.Enumeration.DeviceInformation[];
                 join(seperator: string): string;
                 pop(): Windows.Devices.Enumeration.DeviceInformation;
-                push(...items: Windows.Devices.Enumeration.DeviceInformation[]): void;
+                push(
+                    ...items: Windows.Devices.Enumeration.DeviceInformation[]
+                ): void;
                 reverse(): Windows.Devices.Enumeration.DeviceInformation[];
                 shift(): Windows.Devices.Enumeration.DeviceInformation;
-                slice(start: number): Windows.Devices.Enumeration.DeviceInformation[];
-                slice(start: number, end: number): Windows.Devices.Enumeration.DeviceInformation[];
+                slice(
+                    start: number,
+                ): Windows.Devices.Enumeration.DeviceInformation[];
+                slice(
+                    start: number,
+                    end: number,
+                ): Windows.Devices.Enumeration.DeviceInformation[];
                 sort(): Windows.Devices.Enumeration.DeviceInformation[];
                 sort(
                     compareFn: (
@@ -5449,15 +6561,24 @@ declare namespace Windows {
                         b: Windows.Devices.Enumeration.DeviceInformation,
                     ) => number,
                 ): Windows.Devices.Enumeration.DeviceInformation[];
-                splice(start: number): Windows.Devices.Enumeration.DeviceInformation[];
+                splice(
+                    start: number,
+                ): Windows.Devices.Enumeration.DeviceInformation[];
                 splice(
                     start: number,
                     deleteCount: number,
                     ...items: Windows.Devices.Enumeration.DeviceInformation[]
                 ): Windows.Devices.Enumeration.DeviceInformation[];
-                unshift(...items: Windows.Devices.Enumeration.DeviceInformation[]): number;
-                lastIndexOf(searchElement: Windows.Devices.Enumeration.DeviceInformation): number;
-                lastIndexOf(searchElement: Windows.Devices.Enumeration.DeviceInformation, fromIndex: number): number;
+                unshift(
+                    ...items: Windows.Devices.Enumeration.DeviceInformation[]
+                ): number;
+                lastIndexOf(
+                    searchElement: Windows.Devices.Enumeration.DeviceInformation,
+                ): number;
+                lastIndexOf(
+                    searchElement: Windows.Devices.Enumeration.DeviceInformation,
+                    fromIndex: number,
+                ): number;
                 every(
                     callbackfn: (
                         value: Windows.Devices.Enumeration.DeviceInformation,
@@ -5579,7 +6700,9 @@ declare namespace Windows {
                 start(): void;
                 stop(): void;
             }
-            export class DeviceWatcher implements Windows.Devices.Enumeration.IDeviceWatcher {
+            export class DeviceWatcher
+                implements Windows.Devices.Enumeration.IDeviceWatcher
+            {
                 status: Windows.Devices.Enumeration.DeviceWatcherStatus;
                 onadded: any /* TODO */;
                 onupdated: any /* TODO */;
@@ -5589,18 +6712,23 @@ declare namespace Windows {
                 start(): void;
                 stop(): void;
             }
-            export class DeviceInformation implements Windows.Devices.Enumeration.IDeviceInformation {
+            export class DeviceInformation
+                implements Windows.Devices.Enumeration.IDeviceInformation
+            {
                 enclosureLocation: Windows.Devices.Enumeration.EnclosureLocation;
                 id: string;
                 isDefault: boolean;
                 isEnabled: boolean;
                 name: string;
-                properties: Windows.Foundation.Collections.IMapView<string, any>;
-                update(updateInfo: Windows.Devices.Enumeration.DeviceInformationUpdate): void;
-                getThumbnailAsync(): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceThumbnail>;
-                getGlyphThumbnailAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Devices.Enumeration.DeviceThumbnail
+                properties: Windows.Foundation.Collections.IMapView<
+                    string,
+                    any
                 >;
+                update(
+                    updateInfo: Windows.Devices.Enumeration.DeviceInformationUpdate,
+                ): void;
+                getThumbnailAsync(): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceThumbnail>;
+                getGlyphThumbnailAsync(): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceThumbnail>;
                 static createFromIdAsync(
                     id: string,
                 ): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceInformation>;
@@ -5608,9 +6736,7 @@ declare namespace Windows {
                     id: string,
                     additionalProperties: Windows.Foundation.Collections.IIterable<string>,
                 ): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceInformation>;
-                static findAllAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Devices.Enumeration.DeviceInformationCollection
-                >;
+                static findAllAsync(): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceInformationCollection>;
                 static findAllAsync(
                     deviceClass: Windows.Devices.Enumeration.DeviceClass,
                 ): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceInformationCollection>;
@@ -5625,7 +6751,9 @@ declare namespace Windows {
                 static createWatcher(
                     deviceClass: Windows.Devices.Enumeration.DeviceClass,
                 ): Windows.Devices.Enumeration.DeviceWatcher;
-                static createWatcher(aqsFilter: string): Windows.Devices.Enumeration.DeviceWatcher;
+                static createWatcher(
+                    aqsFilter: string,
+                ): Windows.Devices.Enumeration.DeviceWatcher;
                 static createWatcher(
                     aqsFilter: string,
                     additionalProperties: Windows.Foundation.Collections.IIterable<string>,
@@ -5639,9 +6767,7 @@ declare namespace Windows {
                     id: string,
                     additionalProperties: Windows.Foundation.Collections.IIterable<string>,
                 ): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceInformation>;
-                findAllAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Devices.Enumeration.DeviceInformationCollection
-                >;
+                findAllAsync(): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceInformationCollection>;
                 findAllAsync(
                     deviceClass: Windows.Devices.Enumeration.DeviceClass,
                 ): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceInformationCollection>;
@@ -5656,7 +6782,9 @@ declare namespace Windows {
                 createWatcher(
                     deviceClass: Windows.Devices.Enumeration.DeviceClass,
                 ): Windows.Devices.Enumeration.DeviceWatcher;
-                createWatcher(aqsFilter: string): Windows.Devices.Enumeration.DeviceWatcher;
+                createWatcher(
+                    aqsFilter: string,
+                ): Windows.Devices.Enumeration.DeviceWatcher;
                 createWatcher(
                     aqsFilter: string,
                     additionalProperties: Windows.Foundation.Collections.IIterable<string>,
@@ -5668,12 +6796,15 @@ declare namespace Windows {
                 isDefault: boolean;
                 isEnabled: boolean;
                 name: string;
-                properties: Windows.Foundation.Collections.IMapView<string, any>;
-                update(updateInfo: Windows.Devices.Enumeration.DeviceInformationUpdate): void;
-                getThumbnailAsync(): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceThumbnail>;
-                getGlyphThumbnailAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Devices.Enumeration.DeviceThumbnail
+                properties: Windows.Foundation.Collections.IMapView<
+                    string,
+                    any
                 >;
+                update(
+                    updateInfo: Windows.Devices.Enumeration.DeviceInformationUpdate,
+                ): void;
+                getThumbnailAsync(): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceThumbnail>;
+                getGlyphThumbnailAsync(): Windows.Foundation.IAsyncOperation<Windows.Devices.Enumeration.DeviceThumbnail>;
             }
         }
     }
@@ -5691,25 +6822,41 @@ declare namespace Windows {
                 }
                 export interface IPnpObjectUpdate {
                     id: string;
-                    properties: Windows.Foundation.Collections.IMapView<string, any>;
+                    properties: Windows.Foundation.Collections.IMapView<
+                        string,
+                        any
+                    >;
                     type: Windows.Devices.Enumeration.Pnp.PnpObjectType;
                 }
-                export class PnpObjectUpdate implements Windows.Devices.Enumeration.Pnp.IPnpObjectUpdate {
+                export class PnpObjectUpdate
+                    implements Windows.Devices.Enumeration.Pnp.IPnpObjectUpdate
+                {
                     id: string;
-                    properties: Windows.Foundation.Collections.IMapView<string, any>;
+                    properties: Windows.Foundation.Collections.IMapView<
+                        string,
+                        any
+                    >;
                     type: Windows.Devices.Enumeration.Pnp.PnpObjectType;
                 }
                 export class PnpObjectCollection
                     implements
-                        Windows.Foundation.Collections.IVectorView<Windows.Devices.Enumeration.Pnp.PnpObject>,
-                        Windows.Foundation.Collections.IIterable<Windows.Devices.Enumeration.Pnp.PnpObject>
+                        Windows.Foundation.Collections
+                            .IVectorView<Windows.Devices.Enumeration.Pnp.PnpObject>,
+                        Windows.Foundation.Collections
+                            .IIterable<Windows.Devices.Enumeration.Pnp.PnpObject>
                 {
                     size: number;
-                    getAt(index: number): Windows.Devices.Enumeration.Pnp.PnpObject;
-                    indexOf(value: Windows.Devices.Enumeration.Pnp.PnpObject): { index: number; returnValue: boolean };
-                    getMany(
-                        startIndex: number,
-                    ): { items: Windows.Devices.Enumeration.Pnp.PnpObject[]; returnValue: number };
+                    getAt(
+                        index: number,
+                    ): Windows.Devices.Enumeration.Pnp.PnpObject;
+                    indexOf(value: Windows.Devices.Enumeration.Pnp.PnpObject): {
+                        index: number;
+                        returnValue: boolean;
+                    };
+                    getMany(startIndex: number): {
+                        items: Windows.Devices.Enumeration.Pnp.PnpObject[];
+                        returnValue: number;
+                    };
                     first(): Windows.Foundation.Collections.IIterator<Windows.Devices.Enumeration.Pnp.PnpObject>;
                     toString(): string;
                     toLocaleString(): string;
@@ -5718,11 +6865,18 @@ declare namespace Windows {
                     ): Windows.Devices.Enumeration.Pnp.PnpObject[];
                     join(seperator: string): string;
                     pop(): Windows.Devices.Enumeration.Pnp.PnpObject;
-                    push(...items: Windows.Devices.Enumeration.Pnp.PnpObject[]): void;
+                    push(
+                        ...items: Windows.Devices.Enumeration.Pnp.PnpObject[]
+                    ): void;
                     reverse(): Windows.Devices.Enumeration.Pnp.PnpObject[];
                     shift(): Windows.Devices.Enumeration.Pnp.PnpObject;
-                    slice(start: number): Windows.Devices.Enumeration.Pnp.PnpObject[];
-                    slice(start: number, end: number): Windows.Devices.Enumeration.Pnp.PnpObject[];
+                    slice(
+                        start: number,
+                    ): Windows.Devices.Enumeration.Pnp.PnpObject[];
+                    slice(
+                        start: number,
+                        end: number,
+                    ): Windows.Devices.Enumeration.Pnp.PnpObject[];
                     sort(): Windows.Devices.Enumeration.Pnp.PnpObject[];
                     sort(
                         compareFn: (
@@ -5730,15 +6884,24 @@ declare namespace Windows {
                             b: Windows.Devices.Enumeration.Pnp.PnpObject,
                         ) => number,
                     ): Windows.Devices.Enumeration.Pnp.PnpObject[];
-                    splice(start: number): Windows.Devices.Enumeration.Pnp.PnpObject[];
+                    splice(
+                        start: number,
+                    ): Windows.Devices.Enumeration.Pnp.PnpObject[];
                     splice(
                         start: number,
                         deleteCount: number,
                         ...items: Windows.Devices.Enumeration.Pnp.PnpObject[]
                     ): Windows.Devices.Enumeration.Pnp.PnpObject[];
-                    unshift(...items: Windows.Devices.Enumeration.Pnp.PnpObject[]): number;
-                    lastIndexOf(searchElement: Windows.Devices.Enumeration.Pnp.PnpObject): number;
-                    lastIndexOf(searchElement: Windows.Devices.Enumeration.Pnp.PnpObject, fromIndex: number): number;
+                    unshift(
+                        ...items: Windows.Devices.Enumeration.Pnp.PnpObject[]
+                    ): number;
+                    lastIndexOf(
+                        searchElement: Windows.Devices.Enumeration.Pnp.PnpObject,
+                    ): number;
+                    lastIndexOf(
+                        searchElement: Windows.Devices.Enumeration.Pnp.PnpObject,
+                        fromIndex: number,
+                    ): number;
                     every(
                         callbackfn: (
                             value: Windows.Devices.Enumeration.Pnp.PnpObject,
@@ -5860,7 +7023,10 @@ declare namespace Windows {
                     start(): void;
                     stop(): void;
                 }
-                export class PnpObjectWatcher implements Windows.Devices.Enumeration.Pnp.IPnpObjectWatcher {
+                export class PnpObjectWatcher
+                    implements
+                        Windows.Devices.Enumeration.Pnp.IPnpObjectWatcher
+                {
                     status: Windows.Devices.Enumeration.DeviceWatcherStatus;
                     onadded: any /* TODO */;
                     onupdated: any /* TODO */;
@@ -5870,11 +7036,18 @@ declare namespace Windows {
                     start(): void;
                     stop(): void;
                 }
-                export class PnpObject implements Windows.Devices.Enumeration.Pnp.IPnpObject {
+                export class PnpObject
+                    implements Windows.Devices.Enumeration.Pnp.IPnpObject
+                {
                     id: string;
-                    properties: Windows.Foundation.Collections.IMapView<string, any>;
+                    properties: Windows.Foundation.Collections.IMapView<
+                        string,
+                        any
+                    >;
                     type: Windows.Devices.Enumeration.Pnp.PnpObjectType;
-                    update(updateInfo: Windows.Devices.Enumeration.Pnp.PnpObjectUpdate): void;
+                    update(
+                        updateInfo: Windows.Devices.Enumeration.Pnp.PnpObjectUpdate,
+                    ): void;
                     static createFromIdAsync(
                         type: Windows.Devices.Enumeration.Pnp.PnpObjectType,
                         id: string,
@@ -5926,9 +7099,14 @@ declare namespace Windows {
                 }
                 export interface IPnpObject {
                     id: string;
-                    properties: Windows.Foundation.Collections.IMapView<string, any>;
+                    properties: Windows.Foundation.Collections.IMapView<
+                        string,
+                        any
+                    >;
                     type: Windows.Devices.Enumeration.Pnp.PnpObjectType;
-                    update(updateInfo: Windows.Devices.Enumeration.Pnp.PnpObjectUpdate): void;
+                    update(
+                        updateInfo: Windows.Devices.Enumeration.Pnp.PnpObjectUpdate,
+                    ): void;
                 }
             }
         }
@@ -5959,7 +7137,9 @@ declare namespace Windows {
                 speed: number;
                 timestamp: Date;
             }
-            export class Geocoordinate implements Windows.Devices.Geolocation.IGeocoordinate {
+            export class Geocoordinate
+                implements Windows.Devices.Geolocation.IGeocoordinate
+            {
                 accuracy: number;
                 altitude: number;
                 altitudeAccuracy: number;
@@ -5976,7 +7156,9 @@ declare namespace Windows {
                 state: string;
                 timestamp: Date;
             }
-            export class CivicAddress implements Windows.Devices.Geolocation.ICivicAddress {
+            export class CivicAddress
+                implements Windows.Devices.Geolocation.ICivicAddress
+            {
                 city: string;
                 country: string;
                 postalCode: string;
@@ -5987,20 +7169,27 @@ declare namespace Windows {
                 civicAddress: Windows.Devices.Geolocation.CivicAddress;
                 coordinate: Windows.Devices.Geolocation.Geocoordinate;
             }
-            export class Geoposition implements Windows.Devices.Geolocation.IGeoposition {
+            export class Geoposition
+                implements Windows.Devices.Geolocation.IGeoposition
+            {
                 civicAddress: Windows.Devices.Geolocation.CivicAddress;
                 coordinate: Windows.Devices.Geolocation.Geocoordinate;
             }
             export interface IPositionChangedEventArgs {
                 position: Windows.Devices.Geolocation.Geoposition;
             }
-            export class PositionChangedEventArgs implements Windows.Devices.Geolocation.IPositionChangedEventArgs {
+            export class PositionChangedEventArgs
+                implements
+                    Windows.Devices.Geolocation.IPositionChangedEventArgs
+            {
                 position: Windows.Devices.Geolocation.Geoposition;
             }
             export interface IStatusChangedEventArgs {
                 status: Windows.Devices.Geolocation.PositionStatus;
             }
-            export class StatusChangedEventArgs implements Windows.Devices.Geolocation.IStatusChangedEventArgs {
+            export class StatusChangedEventArgs
+                implements Windows.Devices.Geolocation.IStatusChangedEventArgs
+            {
                 status: Windows.Devices.Geolocation.PositionStatus;
             }
             export interface IGeolocator {
@@ -6016,7 +7205,9 @@ declare namespace Windows {
                 onpositionchanged: any /* TODO */;
                 onstatuschanged: any /* TODO */;
             }
-            export class Geolocator implements Windows.Devices.Geolocation.IGeolocator {
+            export class Geolocator
+                implements Windows.Devices.Geolocation.IGeolocator
+            {
                 desiredAccuracy: Windows.Devices.Geolocation.PositionAccuracy;
                 locationStatus: Windows.Devices.Geolocation.PositionStatus;
                 movementThreshold: number;
@@ -6069,20 +7260,24 @@ declare namespace Windows {
                 touchPresent: number;
             }
             export interface IPointerDeviceStatics {
-                getPointerDevice(pointerId: number): Windows.Devices.Input.PointerDevice;
+                getPointerDevice(
+                    pointerId: number,
+                ): Windows.Devices.Input.PointerDevice;
                 getPointerDevices(): Windows.Foundation.Collections.IVectorView<Windows.Devices.Input.PointerDevice>;
             }
-            export class PointerDevice implements Windows.Devices.Input.IPointerDevice {
+            export class PointerDevice
+                implements Windows.Devices.Input.IPointerDevice
+            {
                 isIntegrated: boolean;
                 maxContacts: number;
                 physicalDeviceRect: Windows.Foundation.Rect;
                 pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
                 screenRect: Windows.Foundation.Rect;
                 supportedUsages: Windows.Foundation.Collections.IVectorView<Windows.Devices.Input.PointerDeviceUsage>;
-                static getPointerDevice(pointerId: number): Windows.Devices.Input.PointerDevice;
-                static getPointerDevices(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Devices.Input.PointerDevice
-                >;
+                static getPointerDevice(
+                    pointerId: number,
+                ): Windows.Devices.Input.PointerDevice;
+                static getPointerDevices(): Windows.Foundation.Collections.IVectorView<Windows.Devices.Input.PointerDevice>;
             }
             export interface IPointerDevice {
                 isIntegrated: boolean;
@@ -6098,27 +7293,37 @@ declare namespace Windows {
             export interface IMouseDevice {
                 onmousemoved: any /* TODO */;
             }
-            export class MouseDevice implements Windows.Devices.Input.IMouseDevice {
+            export class MouseDevice
+                implements Windows.Devices.Input.IMouseDevice
+            {
                 onmousemoved: any /* TODO */;
                 static getForCurrentView(): Windows.Devices.Input.MouseDevice;
             }
-            export class MouseEventArgs implements Windows.Devices.Input.IMouseEventArgs {
+            export class MouseEventArgs
+                implements Windows.Devices.Input.IMouseEventArgs
+            {
                 mouseDelta: Windows.Devices.Input.MouseDelta;
             }
             export interface IMouseDeviceStatics {
                 getForCurrentView(): Windows.Devices.Input.MouseDevice;
             }
-            export class MouseCapabilities implements Windows.Devices.Input.IMouseCapabilities {
+            export class MouseCapabilities
+                implements Windows.Devices.Input.IMouseCapabilities
+            {
                 horizontalWheelPresent: number;
                 mousePresent: number;
                 numberOfButtons: number;
                 swapButtons: number;
                 verticalWheelPresent: number;
             }
-            export class KeyboardCapabilities implements Windows.Devices.Input.IKeyboardCapabilities {
+            export class KeyboardCapabilities
+                implements Windows.Devices.Input.IKeyboardCapabilities
+            {
                 keyboardPresent: number;
             }
-            export class TouchCapabilities implements Windows.Devices.Input.ITouchCapabilities {
+            export class TouchCapabilities
+                implements Windows.Devices.Input.ITouchCapabilities
+            {
                 contacts: number;
                 touchPresent: number;
             }
@@ -6142,16 +7347,24 @@ declare namespace Windows {
                 getDeviceSelector(): string;
             }
             export interface IServiceDeviceStatics {
-                getDeviceSelector(serviceType: Windows.Devices.Portable.ServiceDeviceType): string;
+                getDeviceSelector(
+                    serviceType: Windows.Devices.Portable.ServiceDeviceType,
+                ): string;
                 getDeviceSelectorFromServiceId(serviceId: string): string;
             }
             export class StorageDevice {
-                static fromId(interfaceId: string): Windows.Storage.StorageFolder;
+                static fromId(
+                    interfaceId: string,
+                ): Windows.Storage.StorageFolder;
                 static getDeviceSelector(): string;
             }
             export class ServiceDevice {
-                static getDeviceSelector(serviceType: Windows.Devices.Portable.ServiceDeviceType): string;
-                static getDeviceSelectorFromServiceId(serviceId: string): string;
+                static getDeviceSelector(
+                    serviceType: Windows.Devices.Portable.ServiceDeviceType,
+                ): string;
+                static getDeviceSelectorFromServiceId(
+                    serviceId: string,
+                ): string;
             }
         }
     }
@@ -6164,7 +7377,9 @@ declare namespace Windows {
                     complete(): void;
                 }
                 export class PrintTaskConfigurationSaveRequestedDeferral
-                    implements Windows.Devices.Printers.Extensions.IPrintTaskConfigurationSaveRequestedDeferral
+                    implements
+                        Windows.Devices.Printers.Extensions
+                            .IPrintTaskConfigurationSaveRequestedDeferral
                 {
                     complete(): void;
                 }
@@ -6175,7 +7390,9 @@ declare namespace Windows {
                     getDeferral(): Windows.Devices.Printers.Extensions.PrintTaskConfigurationSaveRequestedDeferral;
                 }
                 export class PrintTaskConfigurationSaveRequest
-                    implements Windows.Devices.Printers.Extensions.IPrintTaskConfigurationSaveRequest
+                    implements
+                        Windows.Devices.Printers.Extensions
+                            .IPrintTaskConfigurationSaveRequest
                 {
                     deadline: Date;
                     cancel(): void;
@@ -6186,7 +7403,9 @@ declare namespace Windows {
                     request: Windows.Devices.Printers.Extensions.PrintTaskConfigurationSaveRequest;
                 }
                 export class PrintTaskConfigurationSaveRequestedEventArgs
-                    implements Windows.Devices.Printers.Extensions.IPrintTaskConfigurationSaveRequestedEventArgs
+                    implements
+                        Windows.Devices.Printers.Extensions
+                            .IPrintTaskConfigurationSaveRequestedEventArgs
                 {
                     request: Windows.Devices.Printers.Extensions.PrintTaskConfigurationSaveRequest;
                 }
@@ -6195,7 +7414,9 @@ declare namespace Windows {
                     onsaverequested: any /* TODO */;
                 }
                 export class PrintTaskConfiguration
-                    implements Windows.Devices.Printers.Extensions.IPrintTaskConfiguration
+                    implements
+                        Windows.Devices.Printers.Extensions
+                            .IPrintTaskConfiguration
                 {
                     printerExtensionContext: any;
                     onsaverequested: any /* TODO */;
@@ -6205,7 +7426,9 @@ declare namespace Windows {
                     printerName: string;
                 }
                 export class PrintNotificationEventDetails
-                    implements Windows.Devices.Printers.Extensions.IPrintNotificationEventDetails
+                    implements
+                        Windows.Devices.Printers.Extensions
+                            .IPrintNotificationEventDetails
                 {
                     eventData: string;
                     printerName: string;
@@ -6226,7 +7449,9 @@ declare namespace Windows {
             export interface IAccelerometerStatics {
                 getDefault(): Windows.Devices.Sensors.Accelerometer;
             }
-            export class Accelerometer implements Windows.Devices.Sensors.IAccelerometer {
+            export class Accelerometer
+                implements Windows.Devices.Sensors.IAccelerometer
+            {
                 minimumReportInterval: number;
                 reportInterval: number;
                 getCurrentReading(): Windows.Devices.Sensors.AccelerometerReading;
@@ -6241,18 +7466,25 @@ declare namespace Windows {
                 onreadingchanged: any /* TODO */;
                 onshaken: any /* TODO */;
             }
-            export class AccelerometerReading implements Windows.Devices.Sensors.IAccelerometerReading {
+            export class AccelerometerReading
+                implements Windows.Devices.Sensors.IAccelerometerReading
+            {
                 accelerationX: number;
                 accelerationY: number;
                 accelerationZ: number;
                 timestamp: Date;
             }
             export class AccelerometerReadingChangedEventArgs
-                implements Windows.Devices.Sensors.IAccelerometerReadingChangedEventArgs
+                implements
+                    Windows.Devices.Sensors
+                        .IAccelerometerReadingChangedEventArgs
             {
                 reading: Windows.Devices.Sensors.AccelerometerReading;
             }
-            export class AccelerometerShakenEventArgs implements Windows.Devices.Sensors.IAccelerometerShakenEventArgs {
+            export class AccelerometerShakenEventArgs
+                implements
+                    Windows.Devices.Sensors.IAccelerometerShakenEventArgs
+            {
                 timestamp: Date;
             }
             export interface IAccelerometerReading {
@@ -6270,7 +7502,9 @@ declare namespace Windows {
             export interface IInclinometerStatics {
                 getDefault(): Windows.Devices.Sensors.Inclinometer;
             }
-            export class Inclinometer implements Windows.Devices.Sensors.IInclinometer {
+            export class Inclinometer
+                implements Windows.Devices.Sensors.IInclinometer
+            {
                 minimumReportInterval: number;
                 reportInterval: number;
                 getCurrentReading(): Windows.Devices.Sensors.InclinometerReading;
@@ -6283,14 +7517,18 @@ declare namespace Windows {
                 getCurrentReading(): Windows.Devices.Sensors.InclinometerReading;
                 onreadingchanged: any /* TODO */;
             }
-            export class InclinometerReading implements Windows.Devices.Sensors.IInclinometerReading {
+            export class InclinometerReading
+                implements Windows.Devices.Sensors.IInclinometerReading
+            {
                 pitchDegrees: number;
                 rollDegrees: number;
                 timestamp: Date;
                 yawDegrees: number;
             }
             export class InclinometerReadingChangedEventArgs
-                implements Windows.Devices.Sensors.IInclinometerReadingChangedEventArgs
+                implements
+                    Windows.Devices.Sensors
+                        .IInclinometerReadingChangedEventArgs
             {
                 reading: Windows.Devices.Sensors.InclinometerReading;
             }
@@ -6306,7 +7544,9 @@ declare namespace Windows {
             export interface IGyrometerStatics {
                 getDefault(): Windows.Devices.Sensors.Gyrometer;
             }
-            export class Gyrometer implements Windows.Devices.Sensors.IGyrometer {
+            export class Gyrometer
+                implements Windows.Devices.Sensors.IGyrometer
+            {
                 minimumReportInterval: number;
                 reportInterval: number;
                 getCurrentReading(): Windows.Devices.Sensors.GyrometerReading;
@@ -6319,14 +7559,17 @@ declare namespace Windows {
                 getCurrentReading(): Windows.Devices.Sensors.GyrometerReading;
                 onreadingchanged: any /* TODO */;
             }
-            export class GyrometerReading implements Windows.Devices.Sensors.IGyrometerReading {
+            export class GyrometerReading
+                implements Windows.Devices.Sensors.IGyrometerReading
+            {
                 angularVelocityX: number;
                 angularVelocityY: number;
                 angularVelocityZ: number;
                 timestamp: Date;
             }
             export class GyrometerReadingChangedEventArgs
-                implements Windows.Devices.Sensors.IGyrometerReadingChangedEventArgs
+                implements
+                    Windows.Devices.Sensors.IGyrometerReadingChangedEventArgs
             {
                 reading: Windows.Devices.Sensors.GyrometerReading;
             }
@@ -6355,13 +7598,16 @@ declare namespace Windows {
                 getCurrentReading(): Windows.Devices.Sensors.CompassReading;
                 onreadingchanged: any /* TODO */;
             }
-            export class CompassReading implements Windows.Devices.Sensors.ICompassReading {
+            export class CompassReading
+                implements Windows.Devices.Sensors.ICompassReading
+            {
                 headingMagneticNorth: number;
                 headingTrueNorth: number;
                 timestamp: Date;
             }
             export class CompassReadingChangedEventArgs
-                implements Windows.Devices.Sensors.ICompassReadingChangedEventArgs
+                implements
+                    Windows.Devices.Sensors.ICompassReadingChangedEventArgs
             {
                 reading: Windows.Devices.Sensors.CompassReading;
             }
@@ -6376,7 +7622,9 @@ declare namespace Windows {
             export interface ILightSensorStatics {
                 getDefault(): Windows.Devices.Sensors.LightSensor;
             }
-            export class LightSensor implements Windows.Devices.Sensors.ILightSensor {
+            export class LightSensor
+                implements Windows.Devices.Sensors.ILightSensor
+            {
                 minimumReportInterval: number;
                 reportInterval: number;
                 getCurrentReading(): Windows.Devices.Sensors.LightSensorReading;
@@ -6389,12 +7637,15 @@ declare namespace Windows {
                 getCurrentReading(): Windows.Devices.Sensors.LightSensorReading;
                 onreadingchanged: any /* TODO */;
             }
-            export class LightSensorReading implements Windows.Devices.Sensors.ILightSensorReading {
+            export class LightSensorReading
+                implements Windows.Devices.Sensors.ILightSensorReading
+            {
                 illuminanceInLux: number;
                 timestamp: Date;
             }
             export class LightSensorReadingChangedEventArgs
-                implements Windows.Devices.Sensors.ILightSensorReadingChangedEventArgs
+                implements
+                    Windows.Devices.Sensors.ILightSensorReadingChangedEventArgs
             {
                 reading: Windows.Devices.Sensors.LightSensorReading;
             }
@@ -6422,7 +7673,9 @@ declare namespace Windows {
                 y: number;
                 z: number;
             }
-            export class SensorRotationMatrix implements Windows.Devices.Sensors.ISensorRotationMatrix {
+            export class SensorRotationMatrix
+                implements Windows.Devices.Sensors.ISensorRotationMatrix
+            {
                 m11: number;
                 m12: number;
                 m13: number;
@@ -6433,7 +7686,9 @@ declare namespace Windows {
                 m32: number;
                 m33: number;
             }
-            export class SensorQuaternion implements Windows.Devices.Sensors.ISensorQuaternion {
+            export class SensorQuaternion
+                implements Windows.Devices.Sensors.ISensorQuaternion
+            {
                 w: number;
                 x: number;
                 y: number;
@@ -6442,7 +7697,9 @@ declare namespace Windows {
             export interface IOrientationSensorStatics {
                 getDefault(): Windows.Devices.Sensors.OrientationSensor;
             }
-            export class OrientationSensor implements Windows.Devices.Sensors.IOrientationSensor {
+            export class OrientationSensor
+                implements Windows.Devices.Sensors.IOrientationSensor
+            {
                 minimumReportInterval: number;
                 reportInterval: number;
                 getCurrentReading(): Windows.Devices.Sensors.OrientationSensorReading;
@@ -6455,13 +7712,17 @@ declare namespace Windows {
                 getCurrentReading(): Windows.Devices.Sensors.OrientationSensorReading;
                 onreadingchanged: any /* TODO */;
             }
-            export class OrientationSensorReading implements Windows.Devices.Sensors.IOrientationSensorReading {
+            export class OrientationSensorReading
+                implements Windows.Devices.Sensors.IOrientationSensorReading
+            {
                 quaternion: Windows.Devices.Sensors.SensorQuaternion;
                 rotationMatrix: Windows.Devices.Sensors.SensorRotationMatrix;
                 timestamp: Date;
             }
             export class OrientationSensorReadingChangedEventArgs
-                implements Windows.Devices.Sensors.IOrientationSensorReadingChangedEventArgs
+                implements
+                    Windows.Devices.Sensors
+                        .IOrientationSensorReadingChangedEventArgs
             {
                 reading: Windows.Devices.Sensors.OrientationSensorReading;
             }
@@ -6484,7 +7745,9 @@ declare namespace Windows {
             export interface ISimpleOrientationSensorStatics {
                 getDefault(): Windows.Devices.Sensors.SimpleOrientationSensor;
             }
-            export class SimpleOrientationSensor implements Windows.Devices.Sensors.ISimpleOrientationSensor {
+            export class SimpleOrientationSensor
+                implements Windows.Devices.Sensors.ISimpleOrientationSensor
+            {
                 getCurrentOrientation(): Windows.Devices.Sensors.SimpleOrientation;
                 onorientationchanged: any /* TODO */;
                 static getDefault(): Windows.Devices.Sensors.SimpleOrientationSensor;
@@ -6494,7 +7757,9 @@ declare namespace Windows {
                 onorientationchanged: any /* TODO */;
             }
             export class SimpleOrientationSensorOrientationChangedEventArgs
-                implements Windows.Devices.Sensors.ISimpleOrientationSensorOrientationChangedEventArgs
+                implements
+                    Windows.Devices.Sensors
+                        .ISimpleOrientationSensorOrientationChangedEventArgs
             {
                 orientation: Windows.Devices.Sensors.SimpleOrientation;
                 timestamp: Date;
@@ -6522,7 +7787,9 @@ declare namespace Windows {
                 uITextFont: Windows.Globalization.Fonts.LanguageFont;
                 uITitleFont: Windows.Globalization.Fonts.LanguageFont;
             }
-            export class LanguageFont implements Windows.Globalization.Fonts.ILanguageFont {
+            export class LanguageFont
+                implements Windows.Globalization.Fonts.ILanguageFont
+            {
                 fontFamily: string;
                 fontStretch: Windows.UI.Text.FontStretch;
                 fontStyle: Windows.UI.Text.FontStyle;
@@ -6530,9 +7797,13 @@ declare namespace Windows {
                 scaleFactor: number;
             }
             export interface ILanguageFontGroupFactory {
-                createLanguageFontGroup(languageTag: string): Windows.Globalization.Fonts.LanguageFontGroup;
+                createLanguageFontGroup(
+                    languageTag: string,
+                ): Windows.Globalization.Fonts.LanguageFontGroup;
             }
-            export class LanguageFontGroup implements Windows.Globalization.Fonts.ILanguageFontGroup {
+            export class LanguageFontGroup
+                implements Windows.Globalization.Fonts.ILanguageFontGroup
+            {
                 constructor(languageTag: string);
                 documentAlternate1Font: Windows.Globalization.Fonts.LanguageFont;
                 documentAlternate2Font: Windows.Globalization.Fonts.LanguageFont;
@@ -6607,9 +7878,13 @@ declare namespace Windows {
             nativeName: string;
         }
         export interface IGeographicRegionFactory {
-            createGeographicRegion(geographicRegionCode: string): Windows.Globalization.GeographicRegion;
+            createGeographicRegion(
+                geographicRegionCode: string,
+            ): Windows.Globalization.GeographicRegion;
         }
-        export class GeographicRegion implements Windows.Globalization.IGeographicRegion {
+        export class GeographicRegion
+            implements Windows.Globalization.IGeographicRegion
+        {
             constructor(geographicRegionCode: string);
             constructor();
             code: string;
@@ -6737,8 +8012,14 @@ declare namespace Windows {
             copyTo(other: Windows.Globalization.Calendar): void;
         }
         export class Calendar implements Windows.Globalization.ICalendar {
-            constructor(languages: Windows.Foundation.Collections.IIterable<string>);
-            constructor(languages: Windows.Foundation.Collections.IIterable<string>, calendar: string, clock: string);
+            constructor(
+                languages: Windows.Foundation.Collections.IIterable<string>,
+            );
+            constructor(
+                languages: Windows.Foundation.Collections.IIterable<string>,
+                calendar: string,
+                clock: string,
+            );
             constructor();
             day: number;
             dayOfWeek: Windows.Globalization.DayOfWeek;
@@ -6958,9 +8239,15 @@ declare namespace Windows {
                     clock: string,
                 ): Windows.Globalization.DateTimeFormatting.DateTimeFormatter;
             }
-            export class DateTimeFormatter implements Windows.Globalization.DateTimeFormatting.IDateTimeFormatter {
+            export class DateTimeFormatter
+                implements
+                    Windows.Globalization.DateTimeFormatting.IDateTimeFormatter
+            {
                 constructor(formatTemplate: string);
-                constructor(formatTemplate: string, languages: Windows.Foundation.Collections.IIterable<string>);
+                constructor(
+                    formatTemplate: string,
+                    languages: Windows.Foundation.Collections.IIterable<string>,
+                );
                 constructor(
                     formatTemplate: string,
                     languages: Windows.Foundation.Collections.IIterable<string>,
@@ -7068,12 +8355,16 @@ declare namespace Windows {
             }
             export class DecimalFormatter
                 implements
-                    Windows.Globalization.NumberFormatting.INumberFormatterOptions,
+                    Windows.Globalization.NumberFormatting
+                        .INumberFormatterOptions,
                     Windows.Globalization.NumberFormatting.INumberFormatter,
                     Windows.Globalization.NumberFormatting.INumberFormatter2,
                     Windows.Globalization.NumberFormatting.INumberParser
             {
-                constructor(languages: Windows.Foundation.Collections.IIterable<string>, geographicRegion: string);
+                constructor(
+                    languages: Windows.Foundation.Collections.IIterable<string>,
+                    geographicRegion: string,
+                );
                 constructor();
                 fractionDigits: number;
                 geographicRegion: string;
@@ -7100,12 +8391,16 @@ declare namespace Windows {
             }
             export class PercentFormatter
                 implements
-                    Windows.Globalization.NumberFormatting.INumberFormatterOptions,
+                    Windows.Globalization.NumberFormatting
+                        .INumberFormatterOptions,
                     Windows.Globalization.NumberFormatting.INumberFormatter,
                     Windows.Globalization.NumberFormatting.INumberFormatter2,
                     Windows.Globalization.NumberFormatting.INumberParser
             {
-                constructor(languages: Windows.Foundation.Collections.IIterable<string>, geographicRegion: string);
+                constructor(
+                    languages: Windows.Foundation.Collections.IIterable<string>,
+                    geographicRegion: string,
+                );
                 constructor();
                 fractionDigits: number;
                 geographicRegion: string;
@@ -7132,12 +8427,16 @@ declare namespace Windows {
             }
             export class PermilleFormatter
                 implements
-                    Windows.Globalization.NumberFormatting.INumberFormatterOptions,
+                    Windows.Globalization.NumberFormatting
+                        .INumberFormatterOptions,
                     Windows.Globalization.NumberFormatting.INumberFormatter,
                     Windows.Globalization.NumberFormatting.INumberFormatter2,
                     Windows.Globalization.NumberFormatting.INumberParser
             {
-                constructor(languages: Windows.Foundation.Collections.IIterable<string>, geographicRegion: string);
+                constructor(
+                    languages: Windows.Foundation.Collections.IIterable<string>,
+                    geographicRegion: string,
+                );
                 constructor();
                 fractionDigits: number;
                 geographicRegion: string;
@@ -7169,7 +8468,8 @@ declare namespace Windows {
             export class CurrencyFormatter
                 implements
                     Windows.Globalization.NumberFormatting.ICurrencyFormatter,
-                    Windows.Globalization.NumberFormatting.INumberFormatterOptions,
+                    Windows.Globalization.NumberFormatting
+                        .INumberFormatterOptions,
                     Windows.Globalization.NumberFormatting.INumberFormatter,
                     Windows.Globalization.NumberFormatting.INumberFormatter2,
                     Windows.Globalization.NumberFormatting.INumberParser
@@ -7199,12 +8499,11 @@ declare namespace Windows {
                 parseDouble(text: string): number;
             }
             export interface ICurrencyFormatter
-                extends
-                    Windows.Globalization.NumberFormatting.INumberFormatterOptions,
+                extends Windows.Globalization.NumberFormatting
+                        .INumberFormatterOptions,
                     Windows.Globalization.NumberFormatting.INumberFormatter,
                     Windows.Globalization.NumberFormatting.INumberFormatter2,
-                    Windows.Globalization.NumberFormatting.INumberParser
-            {
+                    Windows.Globalization.NumberFormatting.INumberParser {
                 currency: string;
             }
         }
@@ -7217,32 +8516,42 @@ declare namespace Windows {
                 first: string;
                 label: string;
             }
-            export class CharacterGrouping implements Windows.Globalization.Collation.ICharacterGrouping {
+            export class CharacterGrouping
+                implements Windows.Globalization.Collation.ICharacterGrouping
+            {
                 first: string;
                 label: string;
             }
             export interface ICharacterGroupings
-                extends
-                    Windows.Foundation.Collections.IVectorView<Windows.Globalization.Collation.CharacterGrouping>,
-                    Windows.Foundation.Collections.IIterable<Windows.Globalization.Collation.CharacterGrouping>
-            {
+                extends Windows.Foundation.Collections
+                        .IVectorView<Windows.Globalization.Collation.CharacterGrouping>,
+                    Windows.Foundation.Collections
+                        .IIterable<Windows.Globalization.Collation.CharacterGrouping> {
                 lookup(text: string): string;
             }
             export class CharacterGroupings
                 implements
                     Windows.Globalization.Collation.ICharacterGroupings,
-                    Windows.Foundation.Collections.IVectorView<Windows.Globalization.Collation.CharacterGrouping>,
-                    Windows.Foundation.Collections.IIterable<Windows.Globalization.Collation.CharacterGrouping>
+                    Windows.Foundation.Collections
+                        .IVectorView<Windows.Globalization.Collation.CharacterGrouping>,
+                    Windows.Foundation.Collections
+                        .IIterable<Windows.Globalization.Collation.CharacterGrouping>
             {
                 size: number;
                 lookup(text: string): string;
-                getAt(index: number): Windows.Globalization.Collation.CharacterGrouping;
+                getAt(
+                    index: number,
+                ): Windows.Globalization.Collation.CharacterGrouping;
                 indexOf(
                     value: Windows.Globalization.Collation.CharacterGrouping,
-                ): { index: number; returnValue: boolean };
-                getMany(
-                    startIndex: number,
-                ): { items: Windows.Globalization.Collation.CharacterGrouping[]; returnValue: number };
+                ): {
+                    index: number;
+                    returnValue: boolean;
+                };
+                getMany(startIndex: number): {
+                    items: Windows.Globalization.Collation.CharacterGrouping[];
+                    returnValue: number;
+                };
                 first(): Windows.Foundation.Collections.IIterator<Windows.Globalization.Collation.CharacterGrouping>;
                 toString(): string;
                 toLocaleString(): string;
@@ -7251,11 +8560,18 @@ declare namespace Windows {
                 ): Windows.Globalization.Collation.CharacterGrouping[];
                 join(seperator: string): string;
                 pop(): Windows.Globalization.Collation.CharacterGrouping;
-                push(...items: Windows.Globalization.Collation.CharacterGrouping[]): void;
+                push(
+                    ...items: Windows.Globalization.Collation.CharacterGrouping[]
+                ): void;
                 reverse(): Windows.Globalization.Collation.CharacterGrouping[];
                 shift(): Windows.Globalization.Collation.CharacterGrouping;
-                slice(start: number): Windows.Globalization.Collation.CharacterGrouping[];
-                slice(start: number, end: number): Windows.Globalization.Collation.CharacterGrouping[];
+                slice(
+                    start: number,
+                ): Windows.Globalization.Collation.CharacterGrouping[];
+                slice(
+                    start: number,
+                    end: number,
+                ): Windows.Globalization.Collation.CharacterGrouping[];
                 sort(): Windows.Globalization.Collation.CharacterGrouping[];
                 sort(
                     compareFn: (
@@ -7263,14 +8579,20 @@ declare namespace Windows {
                         b: Windows.Globalization.Collation.CharacterGrouping,
                     ) => number,
                 ): Windows.Globalization.Collation.CharacterGrouping[];
-                splice(start: number): Windows.Globalization.Collation.CharacterGrouping[];
+                splice(
+                    start: number,
+                ): Windows.Globalization.Collation.CharacterGrouping[];
                 splice(
                     start: number,
                     deleteCount: number,
                     ...items: Windows.Globalization.Collation.CharacterGrouping[]
                 ): Windows.Globalization.Collation.CharacterGrouping[];
-                unshift(...items: Windows.Globalization.Collation.CharacterGrouping[]): number;
-                lastIndexOf(searchElement: Windows.Globalization.Collation.CharacterGrouping): number;
+                unshift(
+                    ...items: Windows.Globalization.Collation.CharacterGrouping[]
+                ): number;
+                lastIndexOf(
+                    searchElement: Windows.Globalization.Collation.CharacterGrouping,
+                ): number;
                 lastIndexOf(
                     searchElement: Windows.Globalization.Collation.CharacterGrouping,
                     fromIndex: number,
@@ -7432,9 +8754,7 @@ declare namespace Windows {
                 static onorientationchanged: any /* TODO */;
                 static onlogicaldpichanged: any /* TODO */;
                 static onstereoenabledchanged: any /* TODO */;
-                static getColorProfileAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.Streams.IRandomAccessStream
-                >;
+                static getColorProfileAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStream>;
                 static oncolorprofilechanged: any /* TODO */;
                 static ondisplaycontentsinvalidated: any /* TODO */;
             }
@@ -7519,7 +8839,9 @@ declare namespace Windows {
                 scaledHeight: number;
                 scaledWidth: number;
             }
-            export class BitmapTransform implements Windows.Graphics.Imaging.IBitmapTransform {
+            export class BitmapTransform
+                implements Windows.Graphics.Imaging.IBitmapTransform
+            {
                 bounds: Windows.Graphics.Imaging.BitmapBounds;
                 flip: Windows.Graphics.Imaging.BitmapFlip;
                 interpolationMode: Windows.Graphics.Imaging.BitmapInterpolationMode;
@@ -7532,29 +8854,49 @@ declare namespace Windows {
                 value: any;
             }
             export interface IBitmapTypedValueFactory {
-                create(value: any, type: Windows.Foundation.PropertyType): Windows.Graphics.Imaging.BitmapTypedValue;
+                create(
+                    value: any,
+                    type: Windows.Foundation.PropertyType,
+                ): Windows.Graphics.Imaging.BitmapTypedValue;
             }
-            export class BitmapTypedValue implements Windows.Graphics.Imaging.IBitmapTypedValue {
+            export class BitmapTypedValue
+                implements Windows.Graphics.Imaging.IBitmapTypedValue
+            {
                 constructor(value: any, type: Windows.Foundation.PropertyType);
                 type: Windows.Foundation.PropertyType;
                 value: any;
             }
             export class BitmapPropertySet
                 implements
-                    Windows.Foundation.Collections.IMap<string, Windows.Graphics.Imaging.BitmapTypedValue>,
+                    Windows.Foundation.Collections.IMap<
+                        string,
+                        Windows.Graphics.Imaging.BitmapTypedValue
+                    >,
                     Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, Windows.Graphics.Imaging.BitmapTypedValue>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            Windows.Graphics.Imaging.BitmapTypedValue
+                        >
                     >
             {
                 size: number;
                 lookup(key: string): Windows.Graphics.Imaging.BitmapTypedValue;
                 hasKey(key: string): boolean;
-                getView(): Windows.Foundation.Collections.IMapView<string, Windows.Graphics.Imaging.BitmapTypedValue>;
-                insert(key: string, value: Windows.Graphics.Imaging.BitmapTypedValue): boolean;
+                getView(): Windows.Foundation.Collections.IMapView<
+                    string,
+                    Windows.Graphics.Imaging.BitmapTypedValue
+                >;
+                insert(
+                    key: string,
+                    value: Windows.Graphics.Imaging.BitmapTypedValue,
+                ): boolean;
                 remove(key: string): void;
                 clear(): void;
                 first(): Windows.Foundation.Collections.IIterator<
-                    Windows.Foundation.Collections.IKeyValuePair<string, Windows.Graphics.Imaging.BitmapTypedValue>
+                    Windows.Foundation.Collections.IKeyValuePair<
+                        string,
+                        Windows.Graphics.Imaging.BitmapTypedValue
+                    >
                 >;
             }
             export interface IBitmapPropertiesView {
@@ -7562,24 +8904,35 @@ declare namespace Windows {
                     propertiesToRetrieve: Windows.Foundation.Collections.IIterable<string>,
                 ): Windows.Foundation.IAsyncOperation<Windows.Graphics.Imaging.BitmapPropertySet>;
             }
-            export interface IBitmapProperties extends Windows.Graphics.Imaging.IBitmapPropertiesView {
+            export interface IBitmapProperties
+                extends Windows.Graphics.Imaging.IBitmapPropertiesView {
                 setPropertiesAsync(
                     propertiesToSet: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, Windows.Graphics.Imaging.BitmapTypedValue>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            Windows.Graphics.Imaging.BitmapTypedValue
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
             }
-            export class BitmapPropertiesView implements Windows.Graphics.Imaging.IBitmapPropertiesView {
+            export class BitmapPropertiesView
+                implements Windows.Graphics.Imaging.IBitmapPropertiesView
+            {
                 getPropertiesAsync(
                     propertiesToRetrieve: Windows.Foundation.Collections.IIterable<string>,
                 ): Windows.Foundation.IAsyncOperation<Windows.Graphics.Imaging.BitmapPropertySet>;
             }
             export class BitmapProperties
-                implements Windows.Graphics.Imaging.IBitmapProperties, Windows.Graphics.Imaging.IBitmapPropertiesView
+                implements
+                    Windows.Graphics.Imaging.IBitmapProperties,
+                    Windows.Graphics.Imaging.IBitmapPropertiesView
             {
                 setPropertiesAsync(
                     propertiesToSet: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, Windows.Graphics.Imaging.BitmapTypedValue>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            Windows.Graphics.Imaging.BitmapTypedValue
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 getPropertiesAsync(
@@ -7589,7 +8942,9 @@ declare namespace Windows {
             export interface IPixelDataProvider {
                 detachPixelData(): Uint8Array;
             }
-            export class PixelDataProvider implements Windows.Graphics.Imaging.IPixelDataProvider {
+            export class PixelDataProvider
+                implements Windows.Graphics.Imaging.IPixelDataProvider
+            {
                 detachPixelData(): Uint8Array;
             }
             export class ImageStream
@@ -7606,8 +8961,12 @@ declare namespace Windows {
                 position: number;
                 size: number;
                 contentType: string;
-                getInputStreamAt(position: number): Windows.Storage.Streams.IInputStream;
-                getOutputStreamAt(position: number): Windows.Storage.Streams.IOutputStream;
+                getInputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
+                getOutputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IOutputStream;
                 seek(position: number): void;
                 cloneStream(): Windows.Storage.Streams.IRandomAccessStream;
                 dispose(): void;
@@ -7615,10 +8974,16 @@ declare namespace Windows {
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 close(): void;
             }
@@ -7642,7 +9007,9 @@ declare namespace Windows {
                     colorManagementMode: Windows.Graphics.Imaging.ColorManagementMode,
                 ): Windows.Foundation.IAsyncOperation<Windows.Graphics.Imaging.PixelDataProvider>;
             }
-            export class BitmapFrame implements Windows.Graphics.Imaging.IBitmapFrame {
+            export class BitmapFrame
+                implements Windows.Graphics.Imaging.IBitmapFrame
+            {
                 bitmapAlphaMode: Windows.Graphics.Imaging.BitmapAlphaMode;
                 bitmapPixelFormat: Windows.Graphics.Imaging.BitmapPixelFormat;
                 bitmapProperties: Windows.Graphics.Imaging.BitmapPropertiesView;
@@ -7668,7 +9035,9 @@ declare namespace Windows {
                 friendlyName: string;
                 mimeTypes: Windows.Foundation.Collections.IVectorView<string>;
             }
-            export class BitmapCodecInformation implements Windows.Graphics.Imaging.IBitmapCodecInformation {
+            export class BitmapCodecInformation
+                implements Windows.Graphics.Imaging.IBitmapCodecInformation
+            {
                 codecId: string;
                 fileExtensions: Windows.Foundation.Collections.IVectorView<string>;
                 friendlyName: string;
@@ -7682,9 +9051,7 @@ declare namespace Windows {
                 jpegXRDecoderId: string;
                 pngDecoderId: string;
                 tiffDecoderId: string;
-                getDecoderInformationEnumerator(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Graphics.Imaging.BitmapCodecInformation
-                >;
+                getDecoderInformationEnumerator(): Windows.Foundation.Collections.IVectorView<Windows.Graphics.Imaging.BitmapCodecInformation>;
                 createAsync(
                     stream: Windows.Storage.Streams.IRandomAccessStream,
                 ): Windows.Foundation.IAsyncOperation<Windows.Graphics.Imaging.BitmapDecoder>;
@@ -7694,7 +9061,9 @@ declare namespace Windows {
                 ): Windows.Foundation.IAsyncOperation<Windows.Graphics.Imaging.BitmapDecoder>;
             }
             export class BitmapDecoder
-                implements Windows.Graphics.Imaging.IBitmapDecoder, Windows.Graphics.Imaging.IBitmapFrame
+                implements
+                    Windows.Graphics.Imaging.IBitmapDecoder,
+                    Windows.Graphics.Imaging.IBitmapFrame
             {
                 bitmapContainerProperties: Windows.Graphics.Imaging.BitmapPropertiesView;
                 decoderInformation: Windows.Graphics.Imaging.BitmapCodecInformation;
@@ -7728,9 +9097,7 @@ declare namespace Windows {
                 static jpegXRDecoderId: string;
                 static pngDecoderId: string;
                 static tiffDecoderId: string;
-                static getDecoderInformationEnumerator(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Graphics.Imaging.BitmapCodecInformation
-                >;
+                static getDecoderInformationEnumerator(): Windows.Foundation.Collections.IVectorView<Windows.Graphics.Imaging.BitmapCodecInformation>;
                 static createAsync(
                     stream: Windows.Storage.Streams.IRandomAccessStream,
                 ): Windows.Foundation.IAsyncOperation<Windows.Graphics.Imaging.BitmapDecoder>;
@@ -7755,9 +9122,7 @@ declare namespace Windows {
                 jpegXREncoderId: string;
                 pngEncoderId: string;
                 tiffEncoderId: string;
-                getEncoderInformationEnumerator(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Graphics.Imaging.BitmapCodecInformation
-                >;
+                getEncoderInformationEnumerator(): Windows.Foundation.Collections.IVectorView<Windows.Graphics.Imaging.BitmapCodecInformation>;
                 createAsync(
                     encoderId: string,
                     stream: Windows.Storage.Streams.IRandomAccessStream,
@@ -7766,7 +9131,10 @@ declare namespace Windows {
                     encoderId: string,
                     stream: Windows.Storage.Streams.IRandomAccessStream,
                     encodingOptions: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, Windows.Graphics.Imaging.BitmapTypedValue>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            Windows.Graphics.Imaging.BitmapTypedValue
+                        >
                     >,
                 ): Windows.Foundation.IAsyncOperation<Windows.Graphics.Imaging.BitmapEncoder>;
                 createForTranscodingAsync(
@@ -7777,7 +9145,9 @@ declare namespace Windows {
                     bitmapDecoder: Windows.Graphics.Imaging.BitmapDecoder,
                 ): Windows.Foundation.IAsyncOperation<Windows.Graphics.Imaging.BitmapEncoder>;
             }
-            export class BitmapEncoder implements Windows.Graphics.Imaging.IBitmapEncoder {
+            export class BitmapEncoder
+                implements Windows.Graphics.Imaging.IBitmapEncoder
+            {
                 bitmapContainerProperties: Windows.Graphics.Imaging.BitmapProperties;
                 bitmapProperties: Windows.Graphics.Imaging.BitmapProperties;
                 bitmapTransform: Windows.Graphics.Imaging.BitmapTransform;
@@ -7797,7 +9167,10 @@ declare namespace Windows {
                 goToNextFrameAsync(): Windows.Foundation.IAsyncAction;
                 goToNextFrameAsync(
                     encodingOptions: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, Windows.Graphics.Imaging.BitmapTypedValue>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            Windows.Graphics.Imaging.BitmapTypedValue
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 flushAsync(): Windows.Foundation.IAsyncAction;
@@ -7807,9 +9180,7 @@ declare namespace Windows {
                 static jpegXREncoderId: string;
                 static pngEncoderId: string;
                 static tiffEncoderId: string;
-                static getEncoderInformationEnumerator(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Graphics.Imaging.BitmapCodecInformation
-                >;
+                static getEncoderInformationEnumerator(): Windows.Foundation.Collections.IVectorView<Windows.Graphics.Imaging.BitmapCodecInformation>;
                 static createAsync(
                     encoderId: string,
                     stream: Windows.Storage.Streams.IRandomAccessStream,
@@ -7818,7 +9189,10 @@ declare namespace Windows {
                     encoderId: string,
                     stream: Windows.Storage.Streams.IRandomAccessStream,
                     encodingOptions: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, Windows.Graphics.Imaging.BitmapTypedValue>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            Windows.Graphics.Imaging.BitmapTypedValue
+                        >
                     >,
                 ): Windows.Foundation.IAsyncOperation<Windows.Graphics.Imaging.BitmapEncoder>;
                 static createForTranscodingAsync(
@@ -7849,7 +9223,10 @@ declare namespace Windows {
                 goToNextFrameAsync(): Windows.Foundation.IAsyncAction;
                 goToNextFrameAsync(
                     encodingOptions: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, Windows.Graphics.Imaging.BitmapTypedValue>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            Windows.Graphics.Imaging.BitmapTypedValue
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 flushAsync(): Windows.Foundation.IAsyncAction;
@@ -7881,25 +9258,27 @@ declare namespace Windows {
                     trySetValue(value: any): boolean;
                 }
                 export interface IPrintNumberOptionDetails
-                    extends Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails
-                {
+                    extends Windows.Graphics.Printing.OptionDetails
+                        .IPrintOptionDetails {
                     maxValue: number;
                     minValue: number;
                 }
                 export interface IPrintTextOptionDetails
-                    extends Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails
-                {
+                    extends Windows.Graphics.Printing.OptionDetails
+                        .IPrintOptionDetails {
                     maxCharacters: number;
                 }
                 export interface IPrintItemListOptionDetails
-                    extends Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails
-                {
+                    extends Windows.Graphics.Printing.OptionDetails
+                        .IPrintOptionDetails {
                     items: Windows.Foundation.Collections.IVectorView<any>;
                 }
                 export class PrintCopiesOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintNumberOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintNumberOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -7912,8 +9291,10 @@ declare namespace Windows {
                 }
                 export class PrintMediaSizeOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -7925,8 +9306,10 @@ declare namespace Windows {
                 }
                 export class PrintMediaTypeOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -7938,8 +9321,10 @@ declare namespace Windows {
                 }
                 export class PrintOrientationOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -7951,8 +9336,10 @@ declare namespace Windows {
                 }
                 export class PrintQualityOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -7964,8 +9351,10 @@ declare namespace Windows {
                 }
                 export class PrintColorModeOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -7977,8 +9366,10 @@ declare namespace Windows {
                 }
                 export class PrintDuplexOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -7990,8 +9381,10 @@ declare namespace Windows {
                 }
                 export class PrintCollationOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -8003,8 +9396,10 @@ declare namespace Windows {
                 }
                 export class PrintStapleOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -8016,8 +9411,10 @@ declare namespace Windows {
                 }
                 export class PrintHolePunchOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -8029,8 +9426,10 @@ declare namespace Windows {
                 }
                 export class PrintBindingOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -8041,22 +9440,25 @@ declare namespace Windows {
                     trySetValue(value: any): boolean;
                 }
                 export interface IPrintCustomOptionDetails
-                    extends Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails
-                {
+                    extends Windows.Graphics.Printing.OptionDetails
+                        .IPrintOptionDetails {
                     displayName: string;
                 }
                 export interface IPrintCustomTextOptionDetails
-                    extends
-                        Windows.Graphics.Printing.OptionDetails.IPrintCustomOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails
-                {
+                    extends Windows.Graphics.Printing.OptionDetails
+                            .IPrintCustomOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails {
                     maxCharacters: number;
                 }
                 export class PrintCustomTextOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintCustomOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintCustomTextOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintCustomOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintCustomTextOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -8072,25 +9474,32 @@ declare namespace Windows {
                     itemId: string;
                 }
                 export class PrintCustomItemDetails
-                    implements Windows.Graphics.Printing.OptionDetails.IPrintCustomItemDetails
+                    implements
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintCustomItemDetails
                 {
                     itemDisplayName: string;
                     itemId: string;
                 }
                 export interface IPrintCustomItemListOptionDetails
-                    extends
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintCustomOptionDetails
-                {
+                    extends Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintCustomOptionDetails {
                     addItem(itemId: string, displayName: string): void;
                 }
                 export class PrintCustomItemListOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintCustomOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintItemListOptionDetails,
-                        Windows.Graphics.Printing.OptionDetails.IPrintCustomItemListOptionDetails
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintCustomOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintItemListOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintCustomItemListOptionDetails
                 {
                     errorText: string;
                     optionId: string;
@@ -8106,7 +9515,9 @@ declare namespace Windows {
                     optionId: any;
                 }
                 export class PrintTaskOptionChangedEventArgs
-                    implements Windows.Graphics.Printing.OptionDetails.IPrintTaskOptionChangedEventArgs
+                    implements
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintTaskOptionChangedEventArgs
                 {
                     optionId: any;
                 }
@@ -8128,9 +9539,11 @@ declare namespace Windows {
                 }
                 export class PrintTaskOptionDetails
                     implements
-                        Windows.Graphics.Printing.OptionDetails.IPrintTaskOptionDetails,
+                        Windows.Graphics.Printing.OptionDetails
+                            .IPrintTaskOptionDetails,
                         Windows.Graphics.Printing.IPrintTaskOptionsCore,
-                        Windows.Graphics.Printing.IPrintTaskOptionsCoreUIConfiguration
+                        Windows.Graphics.Printing
+                            .IPrintTaskOptionsCoreUIConfiguration
                 {
                     options: Windows.Foundation.Collections.IMapView<
                         string,
@@ -8147,7 +9560,9 @@ declare namespace Windows {
                     ): Windows.Graphics.Printing.OptionDetails.PrintCustomTextOptionDetails;
                     onoptionchanged: any /* TODO */;
                     onbeginvalidation: any /* TODO */;
-                    getPageDescription(jobPageNumber: number): Windows.Graphics.Printing.PrintPageDescription;
+                    getPageDescription(
+                        jobPageNumber: number,
+                    ): Windows.Graphics.Printing.PrintPageDescription;
                     static getFromPrintTaskOptions(
                         printTaskOptions: Windows.Graphics.Printing.PrintTaskOptions,
                     ): Windows.Graphics.Printing.OptionDetails.PrintTaskOptionDetails;
@@ -8486,13 +9901,16 @@ declare namespace Windows {
                 displayedOptions: Windows.Foundation.Collections.IVector<string>;
             }
             export interface IPrintTaskOptionsCore {
-                getPageDescription(jobPageNumber: number): Windows.Graphics.Printing.PrintPageDescription;
+                getPageDescription(
+                    jobPageNumber: number,
+                ): Windows.Graphics.Printing.PrintPageDescription;
             }
             export class PrintTaskOptions
                 implements
                     Windows.Graphics.Printing.IPrintTaskOptionsCore,
                     Windows.Graphics.Printing.IPrintTaskOptionsCoreProperties,
-                    Windows.Graphics.Printing.IPrintTaskOptionsCoreUIConfiguration
+                    Windows.Graphics.Printing
+                        .IPrintTaskOptionsCoreUIConfiguration
             {
                 binding: Windows.Graphics.Printing.PrintBinding;
                 collation: Windows.Graphics.Printing.PrintCollation;
@@ -8508,7 +9926,9 @@ declare namespace Windows {
                 printQuality: Windows.Graphics.Printing.PrintQuality;
                 staple: Windows.Graphics.Printing.PrintStaple;
                 displayedOptions: Windows.Foundation.Collections.IVector<string>;
-                getPageDescription(jobPageNumber: number): Windows.Graphics.Printing.PrintPageDescription;
+                getPageDescription(
+                    jobPageNumber: number,
+                ): Windows.Graphics.Printing.PrintPageDescription;
             }
             export interface IStandardPrintTaskOptionsStatic {
                 binding: string;
@@ -8540,13 +9960,13 @@ declare namespace Windows {
                 static printQuality: string;
                 static staple: string;
             }
-            export interface IPrintDocumentSource {
-            }
+            export interface IPrintDocumentSource {}
             export interface IPrintTaskProgressingEventArgs {
                 documentPageCount: number;
             }
             export class PrintTaskProgressingEventArgs
-                implements Windows.Graphics.Printing.IPrintTaskProgressingEventArgs
+                implements
+                    Windows.Graphics.Printing.IPrintTaskProgressingEventArgs
             {
                 documentPageCount: number;
             }
@@ -8559,7 +9979,10 @@ declare namespace Windows {
             export interface IPrintTaskCompletedEventArgs {
                 completion: Windows.Graphics.Printing.PrintTaskCompletion;
             }
-            export class PrintTaskCompletedEventArgs implements Windows.Graphics.Printing.IPrintTaskCompletedEventArgs {
+            export class PrintTaskCompletedEventArgs
+                implements
+                    Windows.Graphics.Printing.IPrintTaskCompletedEventArgs
+            {
                 completion: Windows.Graphics.Printing.PrintTaskCompletion;
             }
             export interface IPrintTask {
@@ -8571,7 +9994,9 @@ declare namespace Windows {
                 onprogressing: any /* TODO */;
                 oncompleted: any /* TODO */;
             }
-            export class PrintTask implements Windows.Graphics.Printing.IPrintTask {
+            export class PrintTask
+                implements Windows.Graphics.Printing.IPrintTask
+            {
                 options: Windows.Graphics.Printing.PrintTaskOptions;
                 properties: Windows.ApplicationModel.DataTransfer.DataPackagePropertySet;
                 source: Windows.Graphics.Printing.IPrintDocumentSource;
@@ -8584,29 +10009,40 @@ declare namespace Windows {
                 complete(): void;
             }
             export class PrintTaskSourceRequestedDeferral
-                implements Windows.Graphics.Printing.IPrintTaskSourceRequestedDeferral
+                implements
+                    Windows.Graphics.Printing.IPrintTaskSourceRequestedDeferral
             {
                 complete(): void;
             }
             export interface IPrintTaskSourceRequestedArgs {
                 deadline: Date;
-                setSource(source: Windows.Graphics.Printing.IPrintDocumentSource): void;
+                setSource(
+                    source: Windows.Graphics.Printing.IPrintDocumentSource,
+                ): void;
                 getDeferral(): Windows.Graphics.Printing.PrintTaskSourceRequestedDeferral;
             }
             export class PrintTaskSourceRequestedArgs
-                implements Windows.Graphics.Printing.IPrintTaskSourceRequestedArgs
+                implements
+                    Windows.Graphics.Printing.IPrintTaskSourceRequestedArgs
             {
                 deadline: Date;
-                setSource(source: Windows.Graphics.Printing.IPrintDocumentSource): void;
+                setSource(
+                    source: Windows.Graphics.Printing.IPrintDocumentSource,
+                ): void;
                 getDeferral(): Windows.Graphics.Printing.PrintTaskSourceRequestedDeferral;
             }
             export interface PrintTaskSourceRequestedHandler {
-                (args: Windows.Graphics.Printing.PrintTaskSourceRequestedArgs): void;
+                (
+                    args: Windows.Graphics.Printing.PrintTaskSourceRequestedArgs,
+                ): void;
             }
             export interface IPrintTaskRequestedDeferral {
                 complete(): void;
             }
-            export class PrintTaskRequestedDeferral implements Windows.Graphics.Printing.IPrintTaskRequestedDeferral {
+            export class PrintTaskRequestedDeferral
+                implements
+                    Windows.Graphics.Printing.IPrintTaskRequestedDeferral
+            {
                 complete(): void;
             }
             export interface IPrintTaskRequest {
@@ -8617,7 +10053,9 @@ declare namespace Windows {
                 ): Windows.Graphics.Printing.PrintTask;
                 getDeferral(): Windows.Graphics.Printing.PrintTaskRequestedDeferral;
             }
-            export class PrintTaskRequest implements Windows.Graphics.Printing.IPrintTaskRequest {
+            export class PrintTaskRequest
+                implements Windows.Graphics.Printing.IPrintTaskRequest
+            {
                 deadline: Date;
                 createPrintTask(
                     title: string,
@@ -8628,14 +10066,19 @@ declare namespace Windows {
             export interface IPrintTaskRequestedEventArgs {
                 request: Windows.Graphics.Printing.PrintTaskRequest;
             }
-            export class PrintTaskRequestedEventArgs implements Windows.Graphics.Printing.IPrintTaskRequestedEventArgs {
+            export class PrintTaskRequestedEventArgs
+                implements
+                    Windows.Graphics.Printing.IPrintTaskRequestedEventArgs
+            {
                 request: Windows.Graphics.Printing.PrintTaskRequest;
             }
             export interface IPrintManagerStatic {
                 getForCurrentView(): Windows.Graphics.Printing.PrintManager;
                 showPrintUIAsync(): Windows.Foundation.IAsyncOperation<boolean>;
             }
-            export class PrintManager implements Windows.Graphics.Printing.IPrintManager {
+            export class PrintManager
+                implements Windows.Graphics.Printing.IPrintManager
+            {
                 onprinttaskrequested: any /* TODO */;
                 static getForCurrentView(): Windows.Graphics.Printing.PrintManager;
                 static showPrintUIAsync(): Windows.Foundation.IAsyncOperation<boolean>;
@@ -8667,7 +10110,9 @@ declare namespace Windows {
                 errorText: string;
                 extendedErrorCode: number;
             }
-            export class DeploymentResult implements Windows.Management.Deployment.IDeploymentResult {
+            export class DeploymentResult
+                implements Windows.Management.Deployment.IDeploymentResult
+            {
                 activityId: string;
                 errorText: string;
                 extendedErrorCode: number;
@@ -8681,7 +10126,10 @@ declare namespace Windows {
                 installState: Windows.Management.Deployment.PackageInstallState;
                 userSecurityId: string;
             }
-            export class PackageUserInformation implements Windows.Management.Deployment.IPackageUserInformation {
+            export class PackageUserInformation
+                implements
+                    Windows.Management.Deployment.IPackageUserInformation
+            {
                 installState: Windows.Management.Deployment.PackageInstallState;
                 userSecurityId: string;
             }
@@ -8749,7 +10197,9 @@ declare namespace Windows {
                     packageFullName: string,
                     packageState: Windows.Management.Deployment.PackageState,
                 ): void;
-                findPackage(packageFullName: string): Windows.ApplicationModel.Package;
+                findPackage(
+                    packageFullName: string,
+                ): Windows.ApplicationModel.Package;
                 cleanupPackageForUserAsync(
                     packageName: string,
                     userSecurityId: string,
@@ -8764,9 +10214,14 @@ declare namespace Windows {
                     userSecurityId: string,
                     packageFamilyName: string,
                 ): Windows.Foundation.Collections.IIterable<Windows.ApplicationModel.Package>;
-                findPackageForUser(userSecurityId: string, packageFullName: string): Windows.ApplicationModel.Package;
+                findPackageForUser(
+                    userSecurityId: string,
+                    packageFullName: string,
+                ): Windows.ApplicationModel.Package;
             }
-            export class PackageManager implements Windows.Management.Deployment.IPackageManager {
+            export class PackageManager
+                implements Windows.Management.Deployment.IPackageManager
+            {
                 addPackageAsync(
                     packageUri: Windows.Foundation.Uri,
                     dependencyPackageUris: Windows.Foundation.Collections.IIterable<Windows.Foundation.Uri>,
@@ -8824,7 +10279,9 @@ declare namespace Windows {
                     packageFullName: string,
                     packageState: Windows.Management.Deployment.PackageState,
                 ): void;
-                findPackage(packageFullName: string): Windows.ApplicationModel.Package;
+                findPackage(
+                    packageFullName: string,
+                ): Windows.ApplicationModel.Package;
                 cleanupPackageForUserAsync(
                     packageName: string,
                     userSecurityId: string,
@@ -8839,7 +10296,10 @@ declare namespace Windows {
                     userSecurityId: string,
                     packageFamilyName: string,
                 ): Windows.Foundation.Collections.IIterable<Windows.ApplicationModel.Package>;
-                findPackageForUser(userSecurityId: string, packageFullName: string): Windows.ApplicationModel.Package;
+                findPackageForUser(
+                    userSecurityId: string,
+                    packageFullName: string,
+                ): Windows.ApplicationModel.Package;
             }
         }
     }
@@ -8848,12 +10308,17 @@ declare namespace Windows {
     export namespace Management {
         export namespace Core {
             export interface IApplicationDataManagerStatics {
-                createForPackageFamily(packageFamilyName: string): Windows.Storage.ApplicationData;
+                createForPackageFamily(
+                    packageFamilyName: string,
+                ): Windows.Storage.ApplicationData;
             }
-            export interface IApplicationDataManager {
-            }
-            export class ApplicationDataManager implements Windows.Management.Core.IApplicationDataManager {
-                static createForPackageFamily(packageFamilyName: string): Windows.Storage.ApplicationData;
+            export interface IApplicationDataManager {}
+            export class ApplicationDataManager
+                implements Windows.Management.Core.IApplicationDataManager
+            {
+                static createForPackageFamily(
+                    packageFamilyName: string,
+                ): Windows.Storage.ApplicationData;
             }
         }
     }
@@ -8897,7 +10362,8 @@ declare namespace Windows {
                 maxResolution: Windows.Media.Capture.CameraCaptureUIMaxPhotoResolution;
             }
             export class CameraCaptureUIPhotoCaptureSettings
-                implements Windows.Media.Capture.ICameraCaptureUIPhotoCaptureSettings
+                implements
+                    Windows.Media.Capture.ICameraCaptureUIPhotoCaptureSettings
             {
                 allowCropping: boolean;
                 croppedAspectRatio: Windows.Foundation.Size;
@@ -8912,7 +10378,8 @@ declare namespace Windows {
                 maxResolution: Windows.Media.Capture.CameraCaptureUIMaxVideoResolution;
             }
             export class CameraCaptureUIVideoCaptureSettings
-                implements Windows.Media.Capture.ICameraCaptureUIVideoCaptureSettings
+                implements
+                    Windows.Media.Capture.ICameraCaptureUIVideoCaptureSettings
             {
                 allowTrimming: boolean;
                 format: Windows.Media.Capture.CameraCaptureUIVideoFormat;
@@ -8926,7 +10393,9 @@ declare namespace Windows {
                     mode: Windows.Media.Capture.CameraCaptureUIMode,
                 ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
             }
-            export class CameraCaptureUI implements Windows.Media.Capture.ICameraCaptureUI {
+            export class CameraCaptureUI
+                implements Windows.Media.Capture.ICameraCaptureUI
+            {
                 photoSettings: Windows.Media.Capture.CameraCaptureUIPhotoCaptureSettings;
                 videoSettings: Windows.Media.Capture.CameraCaptureUIVideoCaptureSettings;
                 captureFileAsync(
@@ -8937,7 +10406,9 @@ declare namespace Windows {
                 show(mediaCapture: Windows.Media.Capture.MediaCapture): void;
             }
             export class CameraOptionsUI {
-                static show(mediaCapture: Windows.Media.Capture.MediaCapture): void;
+                static show(
+                    mediaCapture: Windows.Media.Capture.MediaCapture,
+                ): void;
             }
             export enum MediaStreamType {
                 videoPreview,
@@ -8977,7 +10448,9 @@ declare namespace Windows {
                 code: number;
                 message: string;
             }
-            export class MediaCaptureFailedEventArgs implements Windows.Media.Capture.IMediaCaptureFailedEventArgs {
+            export class MediaCaptureFailedEventArgs
+                implements Windows.Media.Capture.IMediaCaptureFailedEventArgs
+            {
                 code: number;
                 message: string;
             }
@@ -8988,7 +10461,9 @@ declare namespace Windows {
                 ): void;
             }
             export class MediaCapture
-                implements Windows.Media.Capture.IMediaCapture, Windows.Media.Capture.IMediaCaptureVideoPreview
+                implements
+                    Windows.Media.Capture.IMediaCapture,
+                    Windows.Media.Capture.IMediaCaptureVideoPreview
             {
                 audioDeviceController: Windows.Media.Devices.AudioDeviceController;
                 mediaCaptureSettings: Windows.Media.Capture.MediaCaptureSettings;
@@ -9036,14 +10511,21 @@ declare namespace Windows {
                     propertyId: string,
                     propertyValue: any,
                 ): void;
-                getEncoderProperty(mediaStreamType: Windows.Media.Capture.MediaStreamType, propertyId: string): any;
+                getEncoderProperty(
+                    mediaStreamType: Windows.Media.Capture.MediaStreamType,
+                    propertyId: string,
+                ): any;
                 onfailed: any /* TODO */;
                 onrecordlimitationexceeded: any /* TODO */;
                 setPreviewMirroring(value: boolean): void;
                 getPreviewMirroring(): boolean;
-                setPreviewRotation(value: Windows.Media.Capture.VideoRotation): void;
+                setPreviewRotation(
+                    value: Windows.Media.Capture.VideoRotation,
+                ): void;
                 getPreviewRotation(): Windows.Media.Capture.VideoRotation;
-                setRecordRotation(value: Windows.Media.Capture.VideoRotation): void;
+                setRecordRotation(
+                    value: Windows.Media.Capture.VideoRotation,
+                ): void;
                 getRecordRotation(): Windows.Media.Capture.VideoRotation;
                 startPreviewAsync(): Windows.Foundation.IAsyncAction;
                 startPreviewToCustomSinkAsync(
@@ -9067,7 +10549,8 @@ declare namespace Windows {
                 videoDeviceId: string;
             }
             export class MediaCaptureInitializationSettings
-                implements Windows.Media.Capture.IMediaCaptureInitializationSettings
+                implements
+                    Windows.Media.Capture.IMediaCaptureInitializationSettings
             {
                 audioDeviceId: string;
                 photoCaptureSource: Windows.Media.Capture.PhotoCaptureSource;
@@ -9121,17 +10604,26 @@ declare namespace Windows {
                     propertyId: string,
                     propertyValue: any,
                 ): void;
-                getEncoderProperty(mediaStreamType: Windows.Media.Capture.MediaStreamType, propertyId: string): any;
+                getEncoderProperty(
+                    mediaStreamType: Windows.Media.Capture.MediaStreamType,
+                    propertyId: string,
+                ): any;
                 onfailed: any /* TODO */;
                 onrecordlimitationexceeded: any /* TODO */;
                 setPreviewMirroring(value: boolean): void;
                 getPreviewMirroring(): boolean;
-                setPreviewRotation(value: Windows.Media.Capture.VideoRotation): void;
+                setPreviewRotation(
+                    value: Windows.Media.Capture.VideoRotation,
+                ): void;
                 getPreviewRotation(): Windows.Media.Capture.VideoRotation;
-                setRecordRotation(value: Windows.Media.Capture.VideoRotation): void;
+                setRecordRotation(
+                    value: Windows.Media.Capture.VideoRotation,
+                ): void;
                 getRecordRotation(): Windows.Media.Capture.VideoRotation;
             }
-            export class MediaCaptureSettings implements Windows.Media.Capture.IMediaCaptureSettings {
+            export class MediaCaptureSettings
+                implements Windows.Media.Capture.IMediaCaptureSettings
+            {
                 audioDeviceId: string;
                 photoCaptureSource: Windows.Media.Capture.PhotoCaptureSource;
                 streamingCaptureMode: Windows.Media.Capture.StreamingCaptureMode;
@@ -9186,28 +10678,39 @@ declare namespace Windows {
                 contact: any;
                 handled(): void;
             }
-            export class DialRequestedEventArgs implements Windows.Media.Devices.IDialRequestedEventArgs {
+            export class DialRequestedEventArgs
+                implements Windows.Media.Devices.IDialRequestedEventArgs
+            {
                 contact: any;
                 handled(): void;
             }
             export interface IRedialRequestedEventArgs {
                 handled(): void;
             }
-            export class RedialRequestedEventArgs implements Windows.Media.Devices.IRedialRequestedEventArgs {
+            export class RedialRequestedEventArgs
+                implements Windows.Media.Devices.IRedialRequestedEventArgs
+            {
                 handled(): void;
             }
             export interface IKeypadPressedEventArgs {
                 telephonyKey: Windows.Media.Devices.TelephonyKey;
             }
-            export class KeypadPressedEventArgs implements Windows.Media.Devices.IKeypadPressedEventArgs {
+            export class KeypadPressedEventArgs
+                implements Windows.Media.Devices.IKeypadPressedEventArgs
+            {
                 telephonyKey: Windows.Media.Devices.TelephonyKey;
             }
             export interface CallControlEventHandler {
                 (sender: Windows.Media.Devices.CallControl): void;
             }
-            export class CallControl implements Windows.Media.Devices.ICallControl {
+            export class CallControl
+                implements Windows.Media.Devices.ICallControl
+            {
                 hasRinger: boolean;
-                indicateNewIncomingCall(enableRinger: boolean, callerId: string): number;
+                indicateNewIncomingCall(
+                    enableRinger: boolean,
+                    callerId: string,
+                ): number;
                 indicateNewOutgoingCall(): number;
                 indicateActiveCall(callToken: number): void;
                 endCall(callToken: number): void;
@@ -9218,20 +10721,34 @@ declare namespace Windows {
                 onkeypadpressed: any /* TODO */;
                 onaudiotransferrequested: any /* TODO */;
                 static getDefault(): Windows.Media.Devices.CallControl;
-                static fromId(deviceInterfaceId: string): Windows.Media.Devices.CallControl;
+                static fromId(
+                    deviceInterfaceId: string,
+                ): Windows.Media.Devices.CallControl;
             }
             export interface DialRequestedEventHandler {
-                (sender: Windows.Media.Devices.CallControl, e: Windows.Media.Devices.DialRequestedEventArgs): void;
+                (
+                    sender: Windows.Media.Devices.CallControl,
+                    e: Windows.Media.Devices.DialRequestedEventArgs,
+                ): void;
             }
             export interface RedialRequestedEventHandler {
-                (sender: Windows.Media.Devices.CallControl, e: Windows.Media.Devices.RedialRequestedEventArgs): void;
+                (
+                    sender: Windows.Media.Devices.CallControl,
+                    e: Windows.Media.Devices.RedialRequestedEventArgs,
+                ): void;
             }
             export interface KeypadPressedEventHandler {
-                (sender: Windows.Media.Devices.CallControl, e: Windows.Media.Devices.KeypadPressedEventArgs): void;
+                (
+                    sender: Windows.Media.Devices.CallControl,
+                    e: Windows.Media.Devices.KeypadPressedEventArgs,
+                ): void;
             }
             export interface ICallControl {
                 hasRinger: boolean;
-                indicateNewIncomingCall(enableRinger: boolean, callerId: string): number;
+                indicateNewIncomingCall(
+                    enableRinger: boolean,
+                    callerId: string,
+                ): number;
                 indicateNewOutgoingCall(): number;
                 indicateActiveCall(callToken: number): void;
                 endCall(callToken: number): void;
@@ -9244,7 +10761,9 @@ declare namespace Windows {
             }
             export interface ICallControlStatics {
                 getDefault(): Windows.Media.Devices.CallControl;
-                fromId(deviceInterfaceId: string): Windows.Media.Devices.CallControl;
+                fromId(
+                    deviceInterfaceId: string,
+                ): Windows.Media.Devices.CallControl;
             }
             export enum AudioDeviceRole {
                 default,
@@ -9258,19 +10777,25 @@ declare namespace Windows {
                 getAudioCaptureSelector(): string;
                 getAudioRenderSelector(): string;
                 getVideoCaptureSelector(): string;
-                getDefaultAudioCaptureId(role: Windows.Media.Devices.AudioDeviceRole): string;
-                getDefaultAudioRenderId(role: Windows.Media.Devices.AudioDeviceRole): string;
+                getDefaultAudioCaptureId(
+                    role: Windows.Media.Devices.AudioDeviceRole,
+                ): string;
+                getDefaultAudioRenderId(
+                    role: Windows.Media.Devices.AudioDeviceRole,
+                ): string;
                 ondefaultaudiocapturedevicechanged: any /* TODO */;
                 ondefaultaudiorenderdevicechanged: any /* TODO */;
             }
             export class DefaultAudioCaptureDeviceChangedEventArgs
-                implements Windows.Media.Devices.IDefaultAudioDeviceChangedEventArgs
+                implements
+                    Windows.Media.Devices.IDefaultAudioDeviceChangedEventArgs
             {
                 id: string;
                 role: Windows.Media.Devices.AudioDeviceRole;
             }
             export class DefaultAudioRenderDeviceChangedEventArgs
-                implements Windows.Media.Devices.IDefaultAudioDeviceChangedEventArgs
+                implements
+                    Windows.Media.Devices.IDefaultAudioDeviceChangedEventArgs
             {
                 id: string;
                 role: Windows.Media.Devices.AudioDeviceRole;
@@ -9279,13 +10804,19 @@ declare namespace Windows {
                 static getAudioCaptureSelector(): string;
                 static getAudioRenderSelector(): string;
                 static getVideoCaptureSelector(): string;
-                static getDefaultAudioCaptureId(role: Windows.Media.Devices.AudioDeviceRole): string;
-                static getDefaultAudioRenderId(role: Windows.Media.Devices.AudioDeviceRole): string;
+                static getDefaultAudioCaptureId(
+                    role: Windows.Media.Devices.AudioDeviceRole,
+                ): string;
+                static getDefaultAudioRenderId(
+                    role: Windows.Media.Devices.AudioDeviceRole,
+                ): string;
                 static ondefaultaudiocapturedevicechanged: any /* TODO */;
                 static ondefaultaudiorenderdevicechanged: any /* TODO */;
             }
             export class AudioDeviceController
-                implements Windows.Media.Devices.IAudioDeviceController, Windows.Media.Devices.IMediaDeviceController
+                implements
+                    Windows.Media.Devices.IAudioDeviceController,
+                    Windows.Media.Devices.IMediaDeviceController
             {
                 muted: boolean;
                 volumePercent: number;
@@ -9317,8 +10848,13 @@ declare namespace Windows {
                 tilt: Windows.Media.Devices.MediaDeviceControl;
                 whiteBalance: Windows.Media.Devices.MediaDeviceControl;
                 zoom: Windows.Media.Devices.MediaDeviceControl;
-                trySetPowerlineFrequency(value: Windows.Media.Capture.PowerlineFrequency): boolean;
-                tryGetPowerlineFrequency(): { value: Windows.Media.Capture.PowerlineFrequency; succeeded: boolean };
+                trySetPowerlineFrequency(
+                    value: Windows.Media.Capture.PowerlineFrequency,
+                ): boolean;
+                tryGetPowerlineFrequency(): {
+                    value: Windows.Media.Capture.PowerlineFrequency;
+                    succeeded: boolean;
+                };
                 getAvailableMediaStreamProperties(
                     mediaStreamType: Windows.Media.Capture.MediaStreamType,
                 ): Windows.Foundation.Collections.IVectorView<Windows.Media.MediaProperties.IMediaEncodingProperties>;
@@ -9344,11 +10880,13 @@ declare namespace Windows {
                     mediaEncodingProperties: Windows.Media.MediaProperties.IMediaEncodingProperties,
                 ): Windows.Foundation.IAsyncAction;
             }
-            export interface IAudioDeviceController extends Windows.Media.Devices.IMediaDeviceController {
+            export interface IAudioDeviceController
+                extends Windows.Media.Devices.IMediaDeviceController {
                 muted: boolean;
                 volumePercent: number;
             }
-            export interface IVideoDeviceController extends Windows.Media.Devices.IMediaDeviceController {
+            export interface IVideoDeviceController
+                extends Windows.Media.Devices.IMediaDeviceController {
                 backlightCompensation: Windows.Media.Devices.MediaDeviceControl;
                 brightness: Windows.Media.Devices.MediaDeviceControl;
                 contrast: Windows.Media.Devices.MediaDeviceControl;
@@ -9360,10 +10898,17 @@ declare namespace Windows {
                 tilt: Windows.Media.Devices.MediaDeviceControl;
                 whiteBalance: Windows.Media.Devices.MediaDeviceControl;
                 zoom: Windows.Media.Devices.MediaDeviceControl;
-                trySetPowerlineFrequency(value: Windows.Media.Capture.PowerlineFrequency): boolean;
-                tryGetPowerlineFrequency(): { value: Windows.Media.Capture.PowerlineFrequency; succeeded: boolean };
+                trySetPowerlineFrequency(
+                    value: Windows.Media.Capture.PowerlineFrequency,
+                ): boolean;
+                tryGetPowerlineFrequency(): {
+                    value: Windows.Media.Capture.PowerlineFrequency;
+                    succeeded: boolean;
+                };
             }
-            export class MediaDeviceControl implements Windows.Media.Devices.IMediaDeviceControl {
+            export class MediaDeviceControl
+                implements Windows.Media.Devices.IMediaDeviceControl
+            {
                 capabilities: Windows.Media.Devices.MediaDeviceControlCapabilities;
                 tryGetValue(): { value: number; succeeded: boolean };
                 trySetValue(value: number): boolean;
@@ -9378,7 +10923,8 @@ declare namespace Windows {
                 trySetAuto(value: boolean): boolean;
             }
             export class MediaDeviceControlCapabilities
-                implements Windows.Media.Devices.IMediaDeviceControlCapabilities
+                implements
+                    Windows.Media.Devices.IMediaDeviceControlCapabilities
             {
                 autoModeSupported: boolean;
                 default: number;
@@ -9448,44 +10994,69 @@ declare namespace Windows {
             static onchanneldownpressed: any /* TODO */;
         }
         export interface IMediaExtension {
-            setProperties(configuration: Windows.Foundation.Collections.IPropertySet): void;
+            setProperties(
+                configuration: Windows.Foundation.Collections.IPropertySet,
+            ): void;
         }
         export interface IMediaExtensionManager {
-            registerSchemeHandler(activatableClassId: string, scheme: string): void;
+            registerSchemeHandler(
+                activatableClassId: string,
+                scheme: string,
+            ): void;
             registerSchemeHandler(
                 activatableClassId: string,
                 scheme: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerByteStreamHandler(activatableClassId: string, fileExtension: string, mimeType: string): void;
+            registerByteStreamHandler(
+                activatableClassId: string,
+                fileExtension: string,
+                mimeType: string,
+            ): void;
             registerByteStreamHandler(
                 activatableClassId: string,
                 fileExtension: string,
                 mimeType: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerAudioDecoder(activatableClassId: string, inputSubtype: string, outputSubtype: string): void;
+            registerAudioDecoder(
+                activatableClassId: string,
+                inputSubtype: string,
+                outputSubtype: string,
+            ): void;
             registerAudioDecoder(
                 activatableClassId: string,
                 inputSubtype: string,
                 outputSubtype: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerAudioEncoder(activatableClassId: string, inputSubtype: string, outputSubtype: string): void;
+            registerAudioEncoder(
+                activatableClassId: string,
+                inputSubtype: string,
+                outputSubtype: string,
+            ): void;
             registerAudioEncoder(
                 activatableClassId: string,
                 inputSubtype: string,
                 outputSubtype: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerVideoDecoder(activatableClassId: string, inputSubtype: string, outputSubtype: string): void;
+            registerVideoDecoder(
+                activatableClassId: string,
+                inputSubtype: string,
+                outputSubtype: string,
+            ): void;
             registerVideoDecoder(
                 activatableClassId: string,
                 inputSubtype: string,
                 outputSubtype: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerVideoEncoder(activatableClassId: string, inputSubtype: string, outputSubtype: string): void;
+            registerVideoEncoder(
+                activatableClassId: string,
+                inputSubtype: string,
+                outputSubtype: string,
+            ): void;
             registerVideoEncoder(
                 activatableClassId: string,
                 inputSubtype: string,
@@ -9493,42 +11064,67 @@ declare namespace Windows {
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
         }
-        export class MediaExtensionManager implements Windows.Media.IMediaExtensionManager {
-            registerSchemeHandler(activatableClassId: string, scheme: string): void;
+        export class MediaExtensionManager
+            implements Windows.Media.IMediaExtensionManager
+        {
+            registerSchemeHandler(
+                activatableClassId: string,
+                scheme: string,
+            ): void;
             registerSchemeHandler(
                 activatableClassId: string,
                 scheme: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerByteStreamHandler(activatableClassId: string, fileExtension: string, mimeType: string): void;
+            registerByteStreamHandler(
+                activatableClassId: string,
+                fileExtension: string,
+                mimeType: string,
+            ): void;
             registerByteStreamHandler(
                 activatableClassId: string,
                 fileExtension: string,
                 mimeType: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerAudioDecoder(activatableClassId: string, inputSubtype: string, outputSubtype: string): void;
+            registerAudioDecoder(
+                activatableClassId: string,
+                inputSubtype: string,
+                outputSubtype: string,
+            ): void;
             registerAudioDecoder(
                 activatableClassId: string,
                 inputSubtype: string,
                 outputSubtype: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerAudioEncoder(activatableClassId: string, inputSubtype: string, outputSubtype: string): void;
+            registerAudioEncoder(
+                activatableClassId: string,
+                inputSubtype: string,
+                outputSubtype: string,
+            ): void;
             registerAudioEncoder(
                 activatableClassId: string,
                 inputSubtype: string,
                 outputSubtype: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerVideoDecoder(activatableClassId: string, inputSubtype: string, outputSubtype: string): void;
+            registerVideoDecoder(
+                activatableClassId: string,
+                inputSubtype: string,
+                outputSubtype: string,
+            ): void;
             registerVideoDecoder(
                 activatableClassId: string,
                 inputSubtype: string,
                 outputSubtype: string,
                 configuration: Windows.Foundation.Collections.IPropertySet,
             ): void;
-            registerVideoEncoder(activatableClassId: string, inputSubtype: string, outputSubtype: string): void;
+            registerVideoEncoder(
+                activatableClassId: string,
+                inputSubtype: string,
+                outputSubtype: string,
+            ): void;
             registerVideoEncoder(
                 activatableClassId: string,
                 inputSubtype: string,
@@ -9601,13 +11197,17 @@ declare namespace Windows {
                 next: Windows.Media.PlayTo.PlayToSource;
                 playNext(): void;
             }
-            export class PlayToConnection implements Windows.Media.PlayTo.IPlayToConnection {
+            export class PlayToConnection
+                implements Windows.Media.PlayTo.IPlayToConnection
+            {
                 state: Windows.Media.PlayTo.PlayToConnectionState;
                 onstatechanged: any /* TODO */;
                 ontransferred: any /* TODO */;
                 onerror: any /* TODO */;
             }
-            export class PlayToSource implements Windows.Media.PlayTo.IPlayToSource {
+            export class PlayToSource
+                implements Windows.Media.PlayTo.IPlayToSource
+            {
                 connection: Windows.Media.PlayTo.PlayToConnection;
                 next: Windows.Media.PlayTo.PlayToSource;
                 playNext(): void;
@@ -9622,7 +11222,8 @@ declare namespace Windows {
                 previousState: Windows.Media.PlayTo.PlayToConnectionState;
             }
             export class PlayToConnectionStateChangedEventArgs
-                implements Windows.Media.PlayTo.IPlayToConnectionStateChangedEventArgs
+                implements
+                    Windows.Media.PlayTo.IPlayToConnectionStateChangedEventArgs
             {
                 currentState: Windows.Media.PlayTo.PlayToConnectionState;
                 previousState: Windows.Media.PlayTo.PlayToConnectionState;
@@ -9632,7 +11233,8 @@ declare namespace Windows {
                 previousSource: Windows.Media.PlayTo.PlayToSource;
             }
             export class PlayToConnectionTransferredEventArgs
-                implements Windows.Media.PlayTo.IPlayToConnectionTransferredEventArgs
+                implements
+                    Windows.Media.PlayTo.IPlayToConnectionTransferredEventArgs
             {
                 currentSource: Windows.Media.PlayTo.PlayToSource;
                 previousSource: Windows.Media.PlayTo.PlayToSource;
@@ -9665,7 +11267,10 @@ declare namespace Windows {
                 date: Date;
                 description: string;
                 genre: string;
-                properties: Windows.Foundation.Collections.IMapView<string, any>;
+                properties: Windows.Foundation.Collections.IMapView<
+                    string,
+                    any
+                >;
                 rating: number;
                 stream: Windows.Storage.Streams.IRandomAccessStreamWithContentType;
                 thumbnail: Windows.Storage.Streams.IRandomAccessStreamReference;
@@ -9679,7 +11284,10 @@ declare namespace Windows {
                 date: Date;
                 description: string;
                 genre: string;
-                properties: Windows.Foundation.Collections.IMapView<string, any>;
+                properties: Windows.Foundation.Collections.IMapView<
+                    string,
+                    any
+                >;
                 rating: number;
                 stream: Windows.Storage.Streams.IRandomAccessStreamWithContentType;
                 thumbnail: Windows.Storage.Streams.IRandomAccessStreamReference;
@@ -9689,7 +11297,8 @@ declare namespace Windows {
                 rate: number;
             }
             export class PlaybackRateChangeRequestedEventArgs
-                implements Windows.Media.PlayTo.IPlaybackRateChangeRequestedEventArgs
+                implements
+                    Windows.Media.PlayTo.IPlaybackRateChangeRequestedEventArgs
             {
                 rate: number;
             }
@@ -9697,14 +11306,17 @@ declare namespace Windows {
                 time: number;
             }
             export class CurrentTimeChangeRequestedEventArgs
-                implements Windows.Media.PlayTo.ICurrentTimeChangeRequestedEventArgs
+                implements
+                    Windows.Media.PlayTo.ICurrentTimeChangeRequestedEventArgs
             {
                 time: number;
             }
             export interface IMuteChangeRequestedEventArgs {
                 mute: boolean;
             }
-            export class MuteChangeRequestedEventArgs implements Windows.Media.PlayTo.IMuteChangeRequestedEventArgs {
+            export class MuteChangeRequestedEventArgs
+                implements Windows.Media.PlayTo.IMuteChangeRequestedEventArgs
+            {
                 mute: boolean;
             }
             export interface IVolumeChangeRequestedEventArgs {
@@ -9745,7 +11357,9 @@ declare namespace Windows {
                 startAsync(): Windows.Foundation.IAsyncAction;
                 stopAsync(): Windows.Foundation.IAsyncAction;
             }
-            export class PlayToReceiver implements Windows.Media.PlayTo.IPlayToReceiver {
+            export class PlayToReceiver
+                implements Windows.Media.PlayTo.IPlayToReceiver
+            {
                 friendlyName: string;
                 properties: Windows.Foundation.Collections.IPropertySet;
                 supportsAudio: boolean;
@@ -9782,7 +11396,9 @@ declare namespace Windows {
                 supportsImage: boolean;
                 supportsVideo: boolean;
             }
-            export class PlayToSourceSelectedEventArgs implements Windows.Media.PlayTo.IPlayToSourceSelectedEventArgs {
+            export class PlayToSourceSelectedEventArgs
+                implements Windows.Media.PlayTo.IPlayToSourceSelectedEventArgs
+            {
                 friendlyName: string;
                 icon: Windows.Storage.Streams.IRandomAccessStreamWithContentType;
                 supportsAudio: boolean;
@@ -9792,7 +11408,9 @@ declare namespace Windows {
             export interface IPlayToSourceDeferral {
                 complete(): void;
             }
-            export class PlayToSourceDeferral implements Windows.Media.PlayTo.IPlayToSourceDeferral {
+            export class PlayToSourceDeferral
+                implements Windows.Media.PlayTo.IPlayToSourceDeferral
+            {
                 complete(): void;
             }
             export interface IPlayToSourceRequest {
@@ -9801,7 +11419,9 @@ declare namespace Windows {
                 getDeferral(): Windows.Media.PlayTo.PlayToSourceDeferral;
                 setSource(value: Windows.Media.PlayTo.PlayToSource): void;
             }
-            export class PlayToSourceRequest implements Windows.Media.PlayTo.IPlayToSourceRequest {
+            export class PlayToSourceRequest
+                implements Windows.Media.PlayTo.IPlayToSourceRequest
+            {
                 deadline: Date;
                 displayErrorString(errorString: string): void;
                 getDeferral(): Windows.Media.PlayTo.PlayToSourceDeferral;
@@ -9820,7 +11440,9 @@ declare namespace Windows {
                 onsourcerequested: any /* TODO */;
                 onsourceselected: any /* TODO */;
             }
-            export class PlayToManager implements Windows.Media.PlayTo.IPlayToManager {
+            export class PlayToManager
+                implements Windows.Media.PlayTo.IPlayToManager
+            {
                 defaultSourceSelection: boolean;
                 onsourcerequested: any /* TODO */;
                 onsourceselected: any /* TODO */;
@@ -9841,14 +11463,21 @@ declare namespace Windows {
                 denominator: number;
                 numerator: number;
             }
-            export class MediaRatio implements Windows.Media.MediaProperties.IMediaRatio {
+            export class MediaRatio
+                implements Windows.Media.MediaProperties.IMediaRatio
+            {
                 denominator: number;
                 numerator: number;
             }
             export class MediaPropertySet
                 implements
                     Windows.Foundation.Collections.IMap<string, any>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
+                    >
             {
                 size: number;
                 lookup(key: string): any;
@@ -9866,7 +11495,8 @@ declare namespace Windows {
                 subtype: string;
                 type: string;
             }
-            export interface IAudioEncodingProperties extends Windows.Media.MediaProperties.IMediaEncodingProperties {
+            export interface IAudioEncodingProperties
+                extends Windows.Media.MediaProperties.IMediaEncodingProperties {
                 bitrate: number;
                 bitsPerSample: number;
                 channelCount: number;
@@ -9885,7 +11515,8 @@ declare namespace Windows {
                 subtype: string;
                 type: string;
             }
-            export interface IVideoEncodingProperties extends Windows.Media.MediaProperties.IMediaEncodingProperties {
+            export interface IVideoEncodingProperties
+                extends Windows.Media.MediaProperties.IMediaEncodingProperties {
                 bitrate: number;
                 frameRate: Windows.Media.MediaProperties.MediaRatio;
                 height: number;
@@ -9906,7 +11537,8 @@ declare namespace Windows {
                 subtype: string;
                 type: string;
             }
-            export interface IImageEncodingProperties extends Windows.Media.MediaProperties.IMediaEncodingProperties {
+            export interface IImageEncodingProperties
+                extends Windows.Media.MediaProperties.IMediaEncodingProperties {
                 height: number;
                 width: number;
             }
@@ -9930,9 +11562,8 @@ declare namespace Windows {
                 static createJpegXR(): Windows.Media.MediaProperties.ImageEncodingProperties;
             }
             export interface IContainerEncodingProperties
-                extends Windows.Media.MediaProperties.IMediaEncodingProperties
-            {
-            }
+                extends Windows.Media.MediaProperties
+                    .IMediaEncodingProperties {}
             export class ContainerEncodingProperties
                 implements
                     Windows.Media.MediaProperties.IContainerEncodingProperties,
@@ -9981,7 +11612,9 @@ declare namespace Windows {
                     stream: Windows.Storage.Streams.IRandomAccessStream,
                 ): Windows.Foundation.IAsyncOperation<Windows.Media.MediaProperties.MediaEncodingProfile>;
             }
-            export class MediaEncodingProfile implements Windows.Media.MediaProperties.IMediaEncodingProfile {
+            export class MediaEncodingProfile
+                implements Windows.Media.MediaProperties.IMediaEncodingProfile
+            {
                 audio: Windows.Media.MediaProperties.AudioEncodingProperties;
                 container: Windows.Media.MediaProperties.ContainerEncodingProperties;
                 video: Windows.Media.MediaProperties.VideoEncodingProperties;
@@ -10018,33 +11651,42 @@ declare namespace Windows {
 declare namespace Windows {
     export namespace Media {
         export namespace Protection {
-            export class MediaProtectionManager implements Windows.Media.Protection.IMediaProtectionManager {
+            export class MediaProtectionManager
+                implements Windows.Media.Protection.IMediaProtectionManager
+            {
                 properties: Windows.Foundation.Collections.IPropertySet;
                 onservicerequested: any /* TODO */;
                 onrebootneeded: any /* TODO */;
                 oncomponentloadfailed: any /* TODO */;
             }
-            export class ServiceRequestedEventArgs implements Windows.Media.Protection.IServiceRequestedEventArgs {
+            export class ServiceRequestedEventArgs
+                implements Windows.Media.Protection.IServiceRequestedEventArgs
+            {
                 completion: Windows.Media.Protection.MediaProtectionServiceCompletion;
                 request: Windows.Media.Protection.IMediaProtectionServiceRequest;
             }
             export class ComponentLoadFailedEventArgs
-                implements Windows.Media.Protection.IComponentLoadFailedEventArgs
+                implements
+                    Windows.Media.Protection.IComponentLoadFailedEventArgs
             {
                 completion: Windows.Media.Protection.MediaProtectionServiceCompletion;
                 information: Windows.Media.Protection.RevocationAndRenewalInformation;
             }
             export class MediaProtectionServiceCompletion
-                implements Windows.Media.Protection.IMediaProtectionServiceCompletion
+                implements
+                    Windows.Media.Protection.IMediaProtectionServiceCompletion
             {
                 complete(success: boolean): void;
             }
             export class RevocationAndRenewalInformation
-                implements Windows.Media.Protection.IRevocationAndRenewalInformation
+                implements
+                    Windows.Media.Protection.IRevocationAndRenewalInformation
             {
                 items: Windows.Foundation.Collections.IVector<Windows.Media.Protection.RevocationAndRenewalItem>;
             }
-            export class RevocationAndRenewalItem implements Windows.Media.Protection.IRevocationAndRenewalItem {
+            export class RevocationAndRenewalItem
+                implements Windows.Media.Protection.IRevocationAndRenewalItem
+            {
                 headerHash: string;
                 name: string;
                 publicKeyHash: string;
@@ -10117,7 +11759,10 @@ declare namespace Windows {
             export class ComponentRenewal {
                 static renewSystemComponentsAsync(
                     information: Windows.Media.Protection.RevocationAndRenewalInformation,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Media.Protection.RenewalStatus, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Media.Protection.RenewalStatus,
+                    number
+                >;
             }
             export enum RenewalStatus {
                 notStarted,
@@ -10129,7 +11774,10 @@ declare namespace Windows {
             export interface IComponentRenewalStatics {
                 renewSystemComponentsAsync(
                     information: Windows.Media.Protection.RevocationAndRenewalInformation,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Media.Protection.RenewalStatus, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Media.Protection.RenewalStatus,
+                    number
+                >;
             }
         }
     }
@@ -10172,7 +11820,9 @@ declare namespace Windows {
                     profile: Windows.Media.MediaProperties.MediaEncodingProfile,
                 ): Windows.Foundation.IAsyncOperation<Windows.Media.Transcoding.PrepareTranscodeResult>;
             }
-            export class PrepareTranscodeResult implements Windows.Media.Transcoding.IPrepareTranscodeResult {
+            export class PrepareTranscodeResult
+                implements Windows.Media.Transcoding.IPrepareTranscodeResult
+            {
                 canTranscode: boolean;
                 failureReason: Windows.Media.Transcoding.TranscodeFailureReason;
                 transcodeAsync(): Windows.Foundation.IAsyncActionWithProgress<number>;
@@ -10182,7 +11832,9 @@ declare namespace Windows {
                 failureReason: Windows.Media.Transcoding.TranscodeFailureReason;
                 transcodeAsync(): Windows.Foundation.IAsyncActionWithProgress<number>;
             }
-            export class MediaTranscoder implements Windows.Media.Transcoding.IMediaTranscoder {
+            export class MediaTranscoder
+                implements Windows.Media.Transcoding.IMediaTranscoder
+            {
                 alwaysReencode: boolean;
                 hardwareAccelerationEnabled: boolean;
                 trimStartTime: number;
@@ -10288,7 +11940,10 @@ declare namespace Windows {
                     networkAccountId: string,
                 ): Windows.Networking.NetworkOperators.MobileBroadbandAccount;
             }
-            export class MobileBroadbandAccount implements Windows.Networking.NetworkOperators.IMobileBroadbandAccount {
+            export class MobileBroadbandAccount
+                implements
+                    Windows.Networking.NetworkOperators.IMobileBroadbandAccount
+            {
                 currentDeviceInformation: Windows.Networking.NetworkOperators.MobileBroadbandDeviceInformation;
                 currentNetwork: Windows.Networking.NetworkOperators.MobileBroadbandNetwork;
                 networkAccountId: string;
@@ -10306,7 +11961,10 @@ declare namespace Windows {
                 serviceProviderGuid: string;
                 serviceProviderName: string;
             }
-            export class MobileBroadbandNetwork implements Windows.Networking.NetworkOperators.IMobileBroadbandNetwork {
+            export class MobileBroadbandNetwork
+                implements
+                    Windows.Networking.NetworkOperators.IMobileBroadbandNetwork
+            {
                 accessPointName: string;
                 activationNetworkError: number;
                 networkAdapter: Windows.Networking.Connectivity.NetworkAdapter;
@@ -10319,7 +11977,9 @@ declare namespace Windows {
                 showConnectionUI(): void;
             }
             export class MobileBroadbandDeviceInformation
-                implements Windows.Networking.NetworkOperators.IMobileBroadbandDeviceInformation
+                implements
+                    Windows.Networking.NetworkOperators
+                        .IMobileBroadbandDeviceInformation
             {
                 cellularClass: Windows.Devices.Sms.CellularClass;
                 currentRadioState: Windows.Networking.NetworkOperators.MobileBroadbandRadioState;
@@ -10373,7 +12033,9 @@ declare namespace Windows {
                 smsMessage: Windows.Devices.Sms.ISmsMessage;
             }
             export class NetworkOperatorNotificationEventDetails
-                implements Windows.Networking.NetworkOperators.INetworkOperatorNotificationEventDetails
+                implements
+                    Windows.Networking.NetworkOperators
+                        .INetworkOperatorNotificationEventDetails
             {
                 encodingType: number;
                 message: string;
@@ -10386,7 +12048,9 @@ declare namespace Windows {
                 networkAccountId: string;
             }
             export class MobileBroadbandAccountEventArgs
-                implements Windows.Networking.NetworkOperators.IMobileBroadbandAccountEventArgs
+                implements
+                    Windows.Networking.NetworkOperators
+                        .IMobileBroadbandAccountEventArgs
             {
                 networkAccountId: string;
             }
@@ -10396,7 +12060,9 @@ declare namespace Windows {
                 networkAccountId: string;
             }
             export class MobileBroadbandAccountUpdatedEventArgs
-                implements Windows.Networking.NetworkOperators.IMobileBroadbandAccountUpdatedEventArgs
+                implements
+                    Windows.Networking.NetworkOperators
+                        .IMobileBroadbandAccountUpdatedEventArgs
             {
                 hasDeviceInformationChanged: boolean;
                 hasNetworkChanged: boolean;
@@ -10413,7 +12079,9 @@ declare namespace Windows {
                 stop(): void;
             }
             export class MobileBroadbandAccountWatcher
-                implements Windows.Networking.NetworkOperators.IMobileBroadbandAccountWatcher
+                implements
+                    Windows.Networking.NetworkOperators
+                        .IMobileBroadbandAccountWatcher
             {
                 status: Windows.Networking.NetworkOperators.MobileBroadbandAccountWatcherStatus;
                 onaccountadded: any /* TODO */;
@@ -10428,17 +12096,22 @@ declare namespace Windows {
                 eventToken: string;
             }
             export class HotspotAuthenticationEventDetails
-                implements Windows.Networking.NetworkOperators.IHotspotAuthenticationEventDetails
+                implements
+                    Windows.Networking.NetworkOperators
+                        .IHotspotAuthenticationEventDetails
             {
                 eventToken: string;
             }
             export interface IHotspotAuthenticationContextStatics {
-                tryGetAuthenticationContext(
-                    evenToken: string,
-                ): { context: Windows.Networking.NetworkOperators.HotspotAuthenticationContext; isValid: boolean };
+                tryGetAuthenticationContext(evenToken: string): {
+                    context: Windows.Networking.NetworkOperators.HotspotAuthenticationContext;
+                    isValid: boolean;
+                };
             }
             export class HotspotAuthenticationContext
-                implements Windows.Networking.NetworkOperators.IHotspotAuthenticationContext
+                implements
+                    Windows.Networking.NetworkOperators
+                        .IHotspotAuthenticationContext
             {
                 authenticationUrl: Windows.Foundation.Uri;
                 networkAdapter: Windows.Networking.Connectivity.NetworkAdapter;
@@ -10453,10 +12126,14 @@ declare namespace Windows {
                 ): void;
                 abortAuthentication(markAsManual: boolean): void;
                 skipAuthentication(): void;
-                triggerAttentionRequired(packageRelativeApplicationId: string, applicationParameters: string): void;
-                static tryGetAuthenticationContext(
-                    evenToken: string,
-                ): { context: Windows.Networking.NetworkOperators.HotspotAuthenticationContext; isValid: boolean };
+                triggerAttentionRequired(
+                    packageRelativeApplicationId: string,
+                    applicationParameters: string,
+                ): void;
+                static tryGetAuthenticationContext(evenToken: string): {
+                    context: Windows.Networking.NetworkOperators.HotspotAuthenticationContext;
+                    isValid: boolean;
+                };
             }
             export interface IHotspotAuthenticationContext {
                 authenticationUrl: Windows.Foundation.Uri;
@@ -10472,7 +12149,10 @@ declare namespace Windows {
                 ): void;
                 abortAuthentication(markAsManual: boolean): void;
                 skipAuthentication(): void;
-                triggerAttentionRequired(packageRelativeApplicationId: string, applicationParameters: string): void;
+                triggerAttentionRequired(
+                    packageRelativeApplicationId: string,
+                    applicationParameters: string,
+                ): void;
             }
             export enum ProfileMediaType {
                 wlan,
@@ -10483,7 +12163,9 @@ declare namespace Windows {
                 provisionResultsXml: string;
             }
             export class ProvisionFromXmlDocumentResults
-                implements Windows.Networking.NetworkOperators.IProvisionFromXmlDocumentResults
+                implements
+                    Windows.Networking.NetworkOperators
+                        .IProvisionFromXmlDocumentResults
             {
                 allElementsProvisioned: boolean;
                 provisionResultsXml: string;
@@ -10493,19 +12175,28 @@ declare namespace Windows {
                 lastSyncTime: Date;
             }
             export interface IProvisionedProfile {
-                updateCost(value: Windows.Networking.Connectivity.NetworkCostType): void;
-                updateUsage(value: Windows.Networking.NetworkOperators.ProfileUsage): void;
+                updateCost(
+                    value: Windows.Networking.Connectivity.NetworkCostType,
+                ): void;
+                updateUsage(
+                    value: Windows.Networking.NetworkOperators.ProfileUsage,
+                ): void;
             }
-            export class ProvisionedProfile implements Windows.Networking.NetworkOperators.IProvisionedProfile {
-                updateCost(value: Windows.Networking.Connectivity.NetworkCostType): void;
-                updateUsage(value: Windows.Networking.NetworkOperators.ProfileUsage): void;
+            export class ProvisionedProfile
+                implements
+                    Windows.Networking.NetworkOperators.IProvisionedProfile
+            {
+                updateCost(
+                    value: Windows.Networking.Connectivity.NetworkCostType,
+                ): void;
+                updateUsage(
+                    value: Windows.Networking.NetworkOperators.ProfileUsage,
+                ): void;
             }
             export interface IProvisioningAgent {
                 provisionFromXmlDocumentAsync(
                     provisioningXmlDocument: string,
-                ): Windows.Foundation.IAsyncOperation<
-                    Windows.Networking.NetworkOperators.ProvisionFromXmlDocumentResults
-                >;
+                ): Windows.Foundation.IAsyncOperation<Windows.Networking.NetworkOperators.ProvisionFromXmlDocumentResults>;
                 getProvisionedProfile(
                     mediaType: Windows.Networking.NetworkOperators.ProfileMediaType,
                     profileName: string,
@@ -10516,12 +12207,13 @@ declare namespace Windows {
                     networkAccountId: string,
                 ): Windows.Networking.NetworkOperators.ProvisioningAgent;
             }
-            export class ProvisioningAgent implements Windows.Networking.NetworkOperators.IProvisioningAgent {
+            export class ProvisioningAgent
+                implements
+                    Windows.Networking.NetworkOperators.IProvisioningAgent
+            {
                 provisionFromXmlDocumentAsync(
                     provisioningXmlDocument: string,
-                ): Windows.Foundation.IAsyncOperation<
-                    Windows.Networking.NetworkOperators.ProvisionFromXmlDocumentResults
-                >;
+                ): Windows.Foundation.IAsyncOperation<Windows.Networking.NetworkOperators.ProvisionFromXmlDocumentResults>;
                 getProvisionedProfile(
                     mediaType: Windows.Networking.NetworkOperators.ProfileMediaType,
                     profileName: string,
@@ -10545,9 +12237,13 @@ declare namespace Windows {
                 setPayload(value: Uint8Array): void;
             }
             export interface IUssdMessageFactory {
-                createMessage(messageText: string): Windows.Networking.NetworkOperators.UssdMessage;
+                createMessage(
+                    messageText: string,
+                ): Windows.Networking.NetworkOperators.UssdMessage;
             }
-            export class UssdMessage implements Windows.Networking.NetworkOperators.IUssdMessage {
+            export class UssdMessage
+                implements Windows.Networking.NetworkOperators.IUssdMessage
+            {
                 constructor(messageText: string);
                 dataCodingScheme: number;
                 payloadAsText: string;
@@ -10558,7 +12254,9 @@ declare namespace Windows {
                 message: Windows.Networking.NetworkOperators.UssdMessage;
                 resultCode: Windows.Networking.NetworkOperators.UssdResultCode;
             }
-            export class UssdReply implements Windows.Networking.NetworkOperators.IUssdReply {
+            export class UssdReply
+                implements Windows.Networking.NetworkOperators.IUssdReply
+            {
                 message: Windows.Networking.NetworkOperators.UssdMessage;
                 resultCode: Windows.Networking.NetworkOperators.UssdResultCode;
             }
@@ -10569,12 +12267,16 @@ declare namespace Windows {
                 close(): void;
             }
             export interface IUssdSessionStatics {
-                createFromNetworkAccountId(networkAccountId: string): Windows.Networking.NetworkOperators.UssdSession;
+                createFromNetworkAccountId(
+                    networkAccountId: string,
+                ): Windows.Networking.NetworkOperators.UssdSession;
                 createFromNetworkInterfaceId(
                     networkInterfaceId: string,
                 ): Windows.Networking.NetworkOperators.UssdSession;
             }
-            export class UssdSession implements Windows.Networking.NetworkOperators.IUssdSession {
+            export class UssdSession
+                implements Windows.Networking.NetworkOperators.IUssdSession
+            {
                 sendMessageAndGetReplyAsync(
                     message: Windows.Networking.NetworkOperators.UssdMessage,
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.NetworkOperators.UssdReply>;
@@ -10632,8 +12334,8 @@ declare namespace Windows {
                 setRequestHeader(headerName: string, headerValue: string): void;
             }
             export interface IBackgroundDownloader
-                extends Windows.Networking.BackgroundTransfer.IBackgroundTransferBase
-            {
+                extends Windows.Networking.BackgroundTransfer
+                    .IBackgroundTransferBase {
                 createDownload(
                     uri: Windows.Foundation.Uri,
                     resultFile: Windows.Storage.IStorageFile,
@@ -10652,7 +12354,8 @@ declare namespace Windows {
             export class DownloadOperation
                 implements
                     Windows.Networking.BackgroundTransfer.IDownloadOperation,
-                    Windows.Networking.BackgroundTransfer.IBackgroundTransferOperation
+                    Windows.Networking.BackgroundTransfer
+                        .IBackgroundTransferOperation
             {
                 progress: Windows.Networking.BackgroundTransfer.BackgroundDownloadProgress;
                 resultFile: Windows.Storage.IStorageFile;
@@ -10671,10 +12374,14 @@ declare namespace Windows {
                 >;
                 pause(): void;
                 resume(): void;
-                getResultStreamAt(position: number): Windows.Storage.Streams.IInputStream;
+                getResultStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
                 getResponseInformation(): Windows.Networking.BackgroundTransfer.ResponseInformation;
             }
-            export interface IBackgroundUploader extends Windows.Networking.BackgroundTransfer.IBackgroundTransferBase {
+            export interface IBackgroundUploader
+                extends Windows.Networking.BackgroundTransfer
+                    .IBackgroundTransferBase {
                 createUpload(
                     uri: Windows.Foundation.Uri,
                     sourceFile: Windows.Storage.IStorageFile,
@@ -10685,22 +12392,16 @@ declare namespace Windows {
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.BackgroundTransfer.UploadOperation>;
                 createUploadAsync(
                     uri: Windows.Foundation.Uri,
-                    parts: Windows.Foundation.Collections.IIterable<
-                        Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart
-                    >,
+                    parts: Windows.Foundation.Collections.IIterable<Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart>,
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.BackgroundTransfer.UploadOperation>;
                 createUploadAsync(
                     uri: Windows.Foundation.Uri,
-                    parts: Windows.Foundation.Collections.IIterable<
-                        Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart
-                    >,
+                    parts: Windows.Foundation.Collections.IIterable<Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart>,
                     subType: string,
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.BackgroundTransfer.UploadOperation>;
                 createUploadAsync(
                     uri: Windows.Foundation.Uri,
-                    parts: Windows.Foundation.Collections.IIterable<
-                        Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart
-                    >,
+                    parts: Windows.Foundation.Collections.IIterable<Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart>,
                     subType: string,
                     boundary: string,
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.BackgroundTransfer.UploadOperation>;
@@ -10708,7 +12409,8 @@ declare namespace Windows {
             export class UploadOperation
                 implements
                     Windows.Networking.BackgroundTransfer.IUploadOperation,
-                    Windows.Networking.BackgroundTransfer.IBackgroundTransferOperation
+                    Windows.Networking.BackgroundTransfer
+                        .IBackgroundTransferOperation
             {
                 progress: Windows.Networking.BackgroundTransfer.BackgroundUploadProgress;
                 sourceFile: Windows.Storage.IStorageFile;
@@ -10725,11 +12427,15 @@ declare namespace Windows {
                     Windows.Networking.BackgroundTransfer.UploadOperation,
                     Windows.Networking.BackgroundTransfer.UploadOperation
                 >;
-                getResultStreamAt(position: number): Windows.Storage.Streams.IInputStream;
+                getResultStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
                 getResponseInformation(): Windows.Networking.BackgroundTransfer.ResponseInformation;
             }
             export class BackgroundTransferContentPart
-                implements Windows.Networking.BackgroundTransfer.IBackgroundTransferContentPart
+                implements
+                    Windows.Networking.BackgroundTransfer
+                        .IBackgroundTransferContentPart
             {
                 constructor(name: string);
                 constructor(name: string, fileName: string);
@@ -10744,18 +12450,26 @@ declare namespace Windows {
                 guid: string;
                 method: string;
                 requestedUri: Windows.Foundation.Uri;
-                getResultStreamAt(position: number): Windows.Storage.Streams.IInputStream;
+                getResultStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
                 getResponseInformation(): Windows.Networking.BackgroundTransfer.ResponseInformation;
             }
-            export class ResponseInformation implements Windows.Networking.BackgroundTransfer.IResponseInformation {
+            export class ResponseInformation
+                implements
+                    Windows.Networking.BackgroundTransfer.IResponseInformation
+            {
                 actualUri: Windows.Foundation.Uri;
-                headers: Windows.Foundation.Collections.IMapView<string, string>;
+                headers: Windows.Foundation.Collections.IMapView<
+                    string,
+                    string
+                >;
                 isResumable: boolean;
                 statusCode: number;
             }
             export interface IDownloadOperation
-                extends Windows.Networking.BackgroundTransfer.IBackgroundTransferOperation
-            {
+                extends Windows.Networking.BackgroundTransfer
+                    .IBackgroundTransferOperation {
                 progress: Windows.Networking.BackgroundTransfer.BackgroundDownloadProgress;
                 resultFile: Windows.Storage.IStorageFile;
                 startAsync(): Windows.Foundation.IAsyncOperationWithProgress<
@@ -10770,8 +12484,8 @@ declare namespace Windows {
                 resume(): void;
             }
             export interface IUploadOperation
-                extends Windows.Networking.BackgroundTransfer.IBackgroundTransferOperation
-            {
+                extends Windows.Networking.BackgroundTransfer
+                    .IBackgroundTransferOperation {
                 progress: Windows.Networking.BackgroundTransfer.BackgroundUploadProgress;
                 sourceFile: Windows.Storage.IStorageFile;
                 startAsync(): Windows.Foundation.IAsyncOperationWithProgress<
@@ -10805,7 +12519,10 @@ declare namespace Windows {
             }
             export interface IResponseInformation {
                 actualUri: Windows.Foundation.Uri;
-                headers: Windows.Foundation.Collections.IMapView<string, string>;
+                headers: Windows.Foundation.Collections.IMapView<
+                    string,
+                    string
+                >;
                 isResumable: boolean;
                 statusCode: number;
             }
@@ -10818,7 +12535,9 @@ declare namespace Windows {
                 setFile(value: Windows.Storage.IStorageFile): void;
             }
             export interface IBackgroundTransferContentPartFactory {
-                createWithName(name: string): Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart;
+                createWithName(
+                    name: string,
+                ): Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart;
                 createWithNameAndFileName(
                     name: string,
                     fileName: string,
@@ -10827,7 +12546,8 @@ declare namespace Windows {
             export class BackgroundDownloader
                 implements
                     Windows.Networking.BackgroundTransfer.IBackgroundDownloader,
-                    Windows.Networking.BackgroundTransfer.IBackgroundTransferBase
+                    Windows.Networking.BackgroundTransfer
+                        .IBackgroundTransferBase
             {
                 costPolicy: Windows.Networking.BackgroundTransfer.BackgroundTransferCostPolicy;
                 group: string;
@@ -10861,7 +12581,8 @@ declare namespace Windows {
             export class BackgroundUploader
                 implements
                     Windows.Networking.BackgroundTransfer.IBackgroundUploader,
-                    Windows.Networking.BackgroundTransfer.IBackgroundTransferBase
+                    Windows.Networking.BackgroundTransfer
+                        .IBackgroundTransferBase
             {
                 costPolicy: Windows.Networking.BackgroundTransfer.BackgroundTransferCostPolicy;
                 group: string;
@@ -10878,22 +12599,16 @@ declare namespace Windows {
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.BackgroundTransfer.UploadOperation>;
                 createUploadAsync(
                     uri: Windows.Foundation.Uri,
-                    parts: Windows.Foundation.Collections.IIterable<
-                        Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart
-                    >,
+                    parts: Windows.Foundation.Collections.IIterable<Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart>,
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.BackgroundTransfer.UploadOperation>;
                 createUploadAsync(
                     uri: Windows.Foundation.Uri,
-                    parts: Windows.Foundation.Collections.IIterable<
-                        Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart
-                    >,
+                    parts: Windows.Foundation.Collections.IIterable<Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart>,
                     subType: string,
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.BackgroundTransfer.UploadOperation>;
                 createUploadAsync(
                     uri: Windows.Foundation.Uri,
-                    parts: Windows.Foundation.Collections.IIterable<
-                        Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart
-                    >,
+                    parts: Windows.Foundation.Collections.IIterable<Windows.Networking.BackgroundTransfer.BackgroundTransferContentPart>,
                     subType: string,
                     boundary: string,
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.BackgroundTransfer.UploadOperation>;
@@ -10922,7 +12637,9 @@ declare namespace Windows {
                 messageType: string;
                 subscriptionId: number;
             }
-            export class ProximityMessage implements Windows.Networking.Proximity.IProximityMessage {
+            export class ProximityMessage
+                implements Windows.Networking.Proximity.IProximityMessage
+            {
                 data: Windows.Storage.Streams.IBuffer;
                 dataAsString: string;
                 messageType: string;
@@ -10934,7 +12651,9 @@ declare namespace Windows {
                     message: Windows.Networking.Proximity.ProximityMessage,
                 ): void;
             }
-            export class ProximityDevice implements Windows.Networking.Proximity.IProximityDevice {
+            export class ProximityDevice
+                implements Windows.Networking.Proximity.IProximityDevice
+            {
                 bitsPerSecond: number;
                 deviceId: string;
                 maxMessageBytes: number;
@@ -10948,7 +12667,10 @@ declare namespace Windows {
                     message: string,
                     messageTransmittedHandler: Windows.Networking.Proximity.MessageTransmittedHandler,
                 ): number;
-                publishBinaryMessage(messageType: string, message: Windows.Storage.Streams.IBuffer): number;
+                publishBinaryMessage(
+                    messageType: string,
+                    message: Windows.Storage.Streams.IBuffer,
+                ): number;
                 publishBinaryMessage(
                     messageType: string,
                     message: Windows.Storage.Streams.IBuffer,
@@ -10965,10 +12687,15 @@ declare namespace Windows {
                 ondevicedeparted: any /* TODO */;
                 static getDeviceSelector(): string;
                 static getDefault(): Windows.Networking.Proximity.ProximityDevice;
-                static fromId(deviceInterfaceId: string): Windows.Networking.Proximity.ProximityDevice;
+                static fromId(
+                    deviceInterfaceId: string,
+                ): Windows.Networking.Proximity.ProximityDevice;
             }
             export interface MessageTransmittedHandler {
-                (sender: Windows.Networking.Proximity.ProximityDevice, messageId: number): void;
+                (
+                    sender: Windows.Networking.Proximity.ProximityDevice,
+                    messageId: number,
+                ): void;
             }
             export interface DeviceArrivedEventHandler {
                 (sender: Windows.Networking.Proximity.ProximityDevice): void;
@@ -10990,7 +12717,10 @@ declare namespace Windows {
                     message: string,
                     messageTransmittedHandler: Windows.Networking.Proximity.MessageTransmittedHandler,
                 ): number;
-                publishBinaryMessage(messageType: string, message: Windows.Storage.Streams.IBuffer): number;
+                publishBinaryMessage(
+                    messageType: string,
+                    message: Windows.Storage.Streams.IBuffer,
+                ): number;
                 publishBinaryMessage(
                     messageType: string,
                     message: Windows.Storage.Streams.IBuffer,
@@ -11009,7 +12739,9 @@ declare namespace Windows {
             export interface IProximityDeviceStatics {
                 getDeviceSelector(): string;
                 getDefault(): Windows.Networking.Proximity.ProximityDevice;
-                fromId(deviceInterfaceId: string): Windows.Networking.Proximity.ProximityDevice;
+                fromId(
+                    deviceInterfaceId: string,
+                ): Windows.Networking.Proximity.ProximityDevice;
             }
             export enum TriggeredConnectState {
                 peerFound,
@@ -11025,7 +12757,9 @@ declare namespace Windows {
                 state: Windows.Networking.Proximity.TriggeredConnectState;
             }
             export class TriggeredConnectionStateChangedEventArgs
-                implements Windows.Networking.Proximity.ITriggeredConnectionStateChangedEventArgs
+                implements
+                    Windows.Networking.Proximity
+                        .ITriggeredConnectionStateChangedEventArgs
             {
                 id: number;
                 socket: Windows.Networking.Sockets.StreamSocket;
@@ -11034,14 +12768,17 @@ declare namespace Windows {
             export interface IPeerInformation {
                 displayName: string;
             }
-            export class PeerInformation implements Windows.Networking.Proximity.IPeerInformation {
+            export class PeerInformation
+                implements Windows.Networking.Proximity.IPeerInformation
+            {
                 displayName: string;
             }
             export interface IConnectionRequestedEventArgs {
                 peerInformation: Windows.Networking.Proximity.PeerInformation;
             }
             export class ConnectionRequestedEventArgs
-                implements Windows.Networking.Proximity.IConnectionRequestedEventArgs
+                implements
+                    Windows.Networking.Proximity.IConnectionRequestedEventArgs
             {
                 peerInformation: Windows.Networking.Proximity.PeerInformation;
             }
@@ -11054,7 +12791,10 @@ declare namespace Windows {
                 allowBluetooth: boolean;
                 allowInfrastructure: boolean;
                 allowWiFiDirect: boolean;
-                alternateIdentities: Windows.Foundation.Collections.IMap<string, string>;
+                alternateIdentities: Windows.Foundation.Collections.IMap<
+                    string,
+                    string
+                >;
                 displayName: string;
                 supportedDiscoveryTypes: Windows.Networking.Proximity.PeerDiscoveryTypes;
                 start(): void;
@@ -11073,7 +12813,10 @@ declare namespace Windows {
                 static allowBluetooth: boolean;
                 static allowInfrastructure: boolean;
                 static allowWiFiDirect: boolean;
-                static alternateIdentities: Windows.Foundation.Collections.IMap<string, string>;
+                static alternateIdentities: Windows.Foundation.Collections.IMap<
+                    string,
+                    string
+                >;
                 static displayName: string;
                 static supportedDiscoveryTypes: Windows.Networking.Proximity.PeerDiscoveryTypes;
                 static start(): void;
@@ -11111,7 +12854,8 @@ declare namespace Windows {
                 fastUserSwitched,
                 lowPowerExit,
             }
-            export interface IControlChannelTrigger extends Windows.Foundation.IClosable {
+            export interface IControlChannelTrigger
+                extends Windows.Foundation.IClosable {
                 controlChannelTriggerId: string;
                 currentKeepAliveIntervalInMinutes: number;
                 keepAliveTrigger: Windows.ApplicationModel.Background.IBackgroundTrigger;
@@ -11135,9 +12879,14 @@ declare namespace Windows {
                 ): Windows.Networking.Sockets.ControlChannelTrigger;
             }
             export class ControlChannelTrigger
-                implements Windows.Networking.Sockets.IControlChannelTrigger, Windows.Foundation.IClosable
+                implements
+                    Windows.Networking.Sockets.IControlChannelTrigger,
+                    Windows.Foundation.IClosable
             {
-                constructor(channelId: string, serverKeepAliveIntervalInMinutes: number);
+                constructor(
+                    channelId: string,
+                    serverKeepAliveIntervalInMinutes: number,
+                );
                 constructor(
                     channelId: string,
                     serverKeepAliveIntervalInMinutes: number,
@@ -11265,7 +13014,8 @@ declare namespace Windows {
                     Windows.Foundation.Collections.IVectorView<Windows.Networking.EndpointPair>
                 >;
             }
-            export interface IDatagramSocket extends Windows.Foundation.IClosable {
+            export interface IDatagramSocket
+                extends Windows.Foundation.IClosable {
                 control: Windows.Networking.Sockets.DatagramSocketControl;
                 information: Windows.Networking.Sockets.DatagramSocketInformation;
                 outputStream: Windows.Storage.Streams.IOutputStream;
@@ -11273,8 +13023,12 @@ declare namespace Windows {
                     remoteHostName: Windows.Networking.HostName,
                     remoteServiceName: string,
                 ): Windows.Foundation.IAsyncAction;
-                connectAsync(endpointPair: Windows.Networking.EndpointPair): Windows.Foundation.IAsyncAction;
-                bindServiceNameAsync(localServiceName: string): Windows.Foundation.IAsyncAction;
+                connectAsync(
+                    endpointPair: Windows.Networking.EndpointPair,
+                ): Windows.Foundation.IAsyncAction;
+                bindServiceNameAsync(
+                    localServiceName: string,
+                ): Windows.Foundation.IAsyncAction;
                 bindEndpointAsync(
                     localHostName: Windows.Networking.HostName,
                     localServiceName: string,
@@ -11289,18 +13043,25 @@ declare namespace Windows {
                 ): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IOutputStream>;
                 onmessagereceived: any /* TODO */;
             }
-            export class DatagramSocketControl implements Windows.Networking.Sockets.IDatagramSocketControl {
+            export class DatagramSocketControl
+                implements Windows.Networking.Sockets.IDatagramSocketControl
+            {
                 outboundUnicastHopLimit: number;
                 qualityOfService: Windows.Networking.Sockets.SocketQualityOfService;
             }
-            export class DatagramSocketInformation implements Windows.Networking.Sockets.IDatagramSocketInformation {
+            export class DatagramSocketInformation
+                implements
+                    Windows.Networking.Sockets.IDatagramSocketInformation
+            {
                 localAddress: Windows.Networking.HostName;
                 localPort: string;
                 remoteAddress: Windows.Networking.HostName;
                 remotePort: string;
             }
             export class DatagramSocket
-                implements Windows.Networking.Sockets.IDatagramSocket, Windows.Foundation.IClosable
+                implements
+                    Windows.Networking.Sockets.IDatagramSocket,
+                    Windows.Foundation.IClosable
             {
                 control: Windows.Networking.Sockets.DatagramSocketControl;
                 information: Windows.Networking.Sockets.DatagramSocketInformation;
@@ -11309,8 +13070,12 @@ declare namespace Windows {
                     remoteHostName: Windows.Networking.HostName,
                     remoteServiceName: string,
                 ): Windows.Foundation.IAsyncAction;
-                connectAsync(endpointPair: Windows.Networking.EndpointPair): Windows.Foundation.IAsyncAction;
-                bindServiceNameAsync(localServiceName: string): Windows.Foundation.IAsyncAction;
+                connectAsync(
+                    endpointPair: Windows.Networking.EndpointPair,
+                ): Windows.Foundation.IAsyncAction;
+                bindServiceNameAsync(
+                    localServiceName: string,
+                ): Windows.Foundation.IAsyncAction;
                 bindEndpointAsync(
                     localHostName: Windows.Networking.HostName,
                     localServiceName: string,
@@ -11341,7 +13106,9 @@ declare namespace Windows {
                 close(): void;
             }
             export class DatagramSocketMessageReceivedEventArgs
-                implements Windows.Networking.Sockets.IDatagramSocketMessageReceivedEventArgs
+                implements
+                    Windows.Networking.Sockets
+                        .IDatagramSocketMessageReceivedEventArgs
             {
                 localAddress: Windows.Networking.HostName;
                 remoteAddress: Windows.Networking.HostName;
@@ -11368,12 +13135,15 @@ declare namespace Windows {
                 outboundUnicastHopLimit: number;
                 qualityOfService: Windows.Networking.Sockets.SocketQualityOfService;
             }
-            export interface IStreamSocket extends Windows.Foundation.IClosable {
+            export interface IStreamSocket
+                extends Windows.Foundation.IClosable {
                 control: Windows.Networking.Sockets.StreamSocketControl;
                 information: Windows.Networking.Sockets.StreamSocketInformation;
                 inputStream: Windows.Storage.Streams.IInputStream;
                 outputStream: Windows.Storage.Streams.IOutputStream;
-                connectAsync(endpointPair: Windows.Networking.EndpointPair): Windows.Foundation.IAsyncAction;
+                connectAsync(
+                    endpointPair: Windows.Networking.EndpointPair,
+                ): Windows.Foundation.IAsyncAction;
                 connectAsync(
                     remoteHostName: Windows.Networking.HostName,
                     remoteServiceName: string,
@@ -11392,14 +13162,18 @@ declare namespace Windows {
                     validationHostName: Windows.Networking.HostName,
                 ): Windows.Foundation.IAsyncAction;
             }
-            export class StreamSocketControl implements Windows.Networking.Sockets.IStreamSocketControl {
+            export class StreamSocketControl
+                implements Windows.Networking.Sockets.IStreamSocketControl
+            {
                 keepAlive: boolean;
                 noDelay: boolean;
                 outboundBufferSizeInBytes: number;
                 outboundUnicastHopLimit: number;
                 qualityOfService: Windows.Networking.Sockets.SocketQualityOfService;
             }
-            export class StreamSocketInformation implements Windows.Networking.Sockets.IStreamSocketInformation {
+            export class StreamSocketInformation
+                implements Windows.Networking.Sockets.IStreamSocketInformation
+            {
                 bandwidthStatistics: Windows.Networking.Sockets.BandwidthStatistics;
                 localAddress: Windows.Networking.HostName;
                 localPort: string;
@@ -11421,13 +13195,17 @@ declare namespace Windows {
                 socket: Windows.Networking.Sockets.StreamSocket;
             }
             export class StreamSocket
-                implements Windows.Networking.Sockets.IStreamSocket, Windows.Foundation.IClosable
+                implements
+                    Windows.Networking.Sockets.IStreamSocket,
+                    Windows.Foundation.IClosable
             {
                 control: Windows.Networking.Sockets.StreamSocketControl;
                 information: Windows.Networking.Sockets.StreamSocketInformation;
                 inputStream: Windows.Storage.Streams.IInputStream;
                 outputStream: Windows.Storage.Streams.IOutputStream;
-                connectAsync(endpointPair: Windows.Networking.EndpointPair): Windows.Foundation.IAsyncAction;
+                connectAsync(
+                    endpointPair: Windows.Networking.EndpointPair,
+                ): Windows.Foundation.IAsyncAction;
                 connectAsync(
                     remoteHostName: Windows.Networking.HostName,
                     remoteServiceName: string,
@@ -11448,10 +13226,13 @@ declare namespace Windows {
                 dispose(): void;
                 close(): void;
             }
-            export interface IStreamSocketListener extends Windows.Foundation.IClosable {
+            export interface IStreamSocketListener
+                extends Windows.Foundation.IClosable {
                 control: Windows.Networking.Sockets.StreamSocketListenerControl;
                 information: Windows.Networking.Sockets.StreamSocketListenerInformation;
-                bindServiceNameAsync(localServiceName: string): Windows.Foundation.IAsyncAction;
+                bindServiceNameAsync(
+                    localServiceName: string,
+                ): Windows.Foundation.IAsyncAction;
                 bindEndpointAsync(
                     localHostName: Windows.Networking.HostName,
                     localServiceName: string,
@@ -11459,21 +13240,27 @@ declare namespace Windows {
                 onconnectionreceived: any /* TODO */;
             }
             export class StreamSocketListenerControl
-                implements Windows.Networking.Sockets.IStreamSocketListenerControl
+                implements
+                    Windows.Networking.Sockets.IStreamSocketListenerControl
             {
                 qualityOfService: Windows.Networking.Sockets.SocketQualityOfService;
             }
             export class StreamSocketListenerInformation
-                implements Windows.Networking.Sockets.IStreamSocketListenerInformation
+                implements
+                    Windows.Networking.Sockets.IStreamSocketListenerInformation
             {
                 localPort: string;
             }
             export class StreamSocketListener
-                implements Windows.Networking.Sockets.IStreamSocketListener, Windows.Foundation.IClosable
+                implements
+                    Windows.Networking.Sockets.IStreamSocketListener,
+                    Windows.Foundation.IClosable
             {
                 control: Windows.Networking.Sockets.StreamSocketListenerControl;
                 information: Windows.Networking.Sockets.StreamSocketListenerInformation;
-                bindServiceNameAsync(localServiceName: string): Windows.Foundation.IAsyncAction;
+                bindServiceNameAsync(
+                    localServiceName: string,
+                ): Windows.Foundation.IAsyncAction;
                 bindEndpointAsync(
                     localHostName: Windows.Networking.HostName,
                     localServiceName: string,
@@ -11483,7 +13270,9 @@ declare namespace Windows {
                 close(): void;
             }
             export class StreamSocketListenerConnectionReceivedEventArgs
-                implements Windows.Networking.Sockets.IStreamSocketListenerConnectionReceivedEventArgs
+                implements
+                    Windows.Networking.Sockets
+                        .IStreamSocketListenerConnectionReceivedEventArgs
             {
                 socket: Windows.Networking.Sockets.StreamSocket;
             }
@@ -11500,23 +13289,28 @@ declare namespace Windows {
             }
             export interface IWebSocket extends Windows.Foundation.IClosable {
                 outputStream: Windows.Storage.Streams.IOutputStream;
-                connectAsync(uri: Windows.Foundation.Uri): Windows.Foundation.IAsyncAction;
+                connectAsync(
+                    uri: Windows.Foundation.Uri,
+                ): Windows.Foundation.IAsyncAction;
                 setRequestHeader(headerName: string, headerValue: string): void;
                 onclosed: any /* TODO */;
                 close(): void;
                 close(code: number, reason: string): void;
             }
-            export class WebSocketClosedEventArgs implements Windows.Networking.Sockets.IWebSocketClosedEventArgs {
+            export class WebSocketClosedEventArgs
+                implements Windows.Networking.Sockets.IWebSocketClosedEventArgs
+            {
                 code: number;
                 reason: string;
             }
-            export interface IMessageWebSocketControl extends Windows.Networking.Sockets.IWebSocketControl {
+            export interface IMessageWebSocketControl
+                extends Windows.Networking.Sockets.IWebSocketControl {
                 maxMessageSize: number;
                 messageType: Windows.Networking.Sockets.SocketMessageType;
             }
             export interface IMessageWebSocket
-                extends Windows.Networking.Sockets.IWebSocket, Windows.Foundation.IClosable
-            {
+                extends Windows.Networking.Sockets.IWebSocket,
+                    Windows.Foundation.IClosable {
                 control: Windows.Networking.Sockets.MessageWebSocketControl;
                 information: Windows.Networking.Sockets.MessageWebSocketInformation;
                 onmessagereceived: any /* TODO */;
@@ -11535,7 +13329,9 @@ declare namespace Windows {
                 serverCredential: Windows.Security.Credentials.PasswordCredential;
                 supportedProtocols: Windows.Foundation.Collections.IVector<string>;
             }
-            export class MessageWebSocketInformation implements Windows.Networking.Sockets.IWebSocketInformation {
+            export class MessageWebSocketInformation
+                implements Windows.Networking.Sockets.IWebSocketInformation
+            {
                 bandwidthStatistics: Windows.Networking.Sockets.BandwidthStatistics;
                 localAddress: Windows.Networking.HostName;
                 protocol: string;
@@ -11550,7 +13346,9 @@ declare namespace Windows {
                 information: Windows.Networking.Sockets.MessageWebSocketInformation;
                 outputStream: Windows.Storage.Streams.IOutputStream;
                 onmessagereceived: any /* TODO */;
-                connectAsync(uri: Windows.Foundation.Uri): Windows.Foundation.IAsyncAction;
+                connectAsync(
+                    uri: Windows.Foundation.Uri,
+                ): Windows.Foundation.IAsyncAction;
                 setRequestHeader(headerName: string, headerValue: string): void;
                 onclosed: any /* TODO */;
                 close(code: number, reason: string): void;
@@ -11558,18 +13356,21 @@ declare namespace Windows {
                 close(): void;
             }
             export class MessageWebSocketMessageReceivedEventArgs
-                implements Windows.Networking.Sockets.IMessageWebSocketMessageReceivedEventArgs
+                implements
+                    Windows.Networking.Sockets
+                        .IMessageWebSocketMessageReceivedEventArgs
             {
                 messageType: Windows.Networking.Sockets.SocketMessageType;
                 getDataReader(): Windows.Storage.Streams.DataReader;
                 getDataStream(): Windows.Storage.Streams.IInputStream;
             }
-            export interface IStreamWebSocketControl extends Windows.Networking.Sockets.IWebSocketControl {
+            export interface IStreamWebSocketControl
+                extends Windows.Networking.Sockets.IWebSocketControl {
                 noDelay: boolean;
             }
             export interface IStreamWebSocket
-                extends Windows.Networking.Sockets.IWebSocket, Windows.Foundation.IClosable
-            {
+                extends Windows.Networking.Sockets.IWebSocket,
+                    Windows.Foundation.IClosable {
                 control: Windows.Networking.Sockets.StreamWebSocketControl;
                 information: Windows.Networking.Sockets.StreamWebSocketInformation;
                 inputStream: Windows.Storage.Streams.IInputStream;
@@ -11587,13 +13388,17 @@ declare namespace Windows {
                 serverCredential: Windows.Security.Credentials.PasswordCredential;
                 supportedProtocols: Windows.Foundation.Collections.IVector<string>;
             }
-            export class StreamWebSocketInformation implements Windows.Networking.Sockets.IWebSocketInformation {
+            export class StreamWebSocketInformation
+                implements Windows.Networking.Sockets.IWebSocketInformation
+            {
                 bandwidthStatistics: Windows.Networking.Sockets.BandwidthStatistics;
                 localAddress: Windows.Networking.HostName;
                 protocol: string;
             }
             export interface ISocketErrorStatics {
-                getStatus(hresult: number): Windows.Networking.Sockets.SocketErrorStatus;
+                getStatus(
+                    hresult: number,
+                ): Windows.Networking.Sockets.SocketErrorStatus;
             }
             export interface IWebSocketErrorStatics {
                 getStatus(hresult: number): Windows.Web.WebErrorStatus;
@@ -11608,18 +13413,26 @@ declare namespace Windows {
                 information: Windows.Networking.Sockets.StreamWebSocketInformation;
                 inputStream: Windows.Storage.Streams.IInputStream;
                 outputStream: Windows.Storage.Streams.IOutputStream;
-                connectAsync(uri: Windows.Foundation.Uri): Windows.Foundation.IAsyncAction;
+                connectAsync(
+                    uri: Windows.Foundation.Uri,
+                ): Windows.Foundation.IAsyncAction;
                 setRequestHeader(headerName: string, headerValue: string): void;
                 onclosed: any /* TODO */;
                 close(code: number, reason: string): void;
                 dispose(): void;
                 close(): void;
             }
-            export class WebSocketKeepAlive implements Windows.ApplicationModel.Background.IBackgroundTask {
-                run(taskInstance: Windows.ApplicationModel.Background.IBackgroundTaskInstance): void;
+            export class WebSocketKeepAlive
+                implements Windows.ApplicationModel.Background.IBackgroundTask
+            {
+                run(
+                    taskInstance: Windows.ApplicationModel.Background.IBackgroundTaskInstance,
+                ): void;
             }
             export class SocketError {
-                static getStatus(hresult: number): Windows.Networking.Sockets.SocketErrorStatus;
+                static getStatus(
+                    hresult: number,
+                ): Windows.Networking.Sockets.SocketErrorStatus;
             }
             export class WebSocketError {
                 static getStatus(hresult: number): Windows.Web.WebErrorStatus;
@@ -11694,7 +13507,9 @@ declare namespace Windows {
 declare namespace Windows {
     export namespace Networking {
         export namespace Connectivity {
-            export class IPInformation implements Windows.Networking.Connectivity.IIPInformation {
+            export class IPInformation
+                implements Windows.Networking.Connectivity.IIPInformation
+            {
                 networkAdapter: Windows.Networking.Connectivity.NetworkAdapter;
                 prefixLength: number;
             }
@@ -11760,7 +13575,9 @@ declare namespace Windows {
                 nextBillingCycle: Date;
                 outboundBitsPerSecond: number;
             }
-            export class DataPlanUsage implements Windows.Networking.Connectivity.IDataPlanUsage {
+            export class DataPlanUsage
+                implements Windows.Networking.Connectivity.IDataPlanUsage
+            {
                 lastSyncTime: Date;
                 megabytesUsed: number;
             }
@@ -11782,7 +13599,10 @@ declare namespace Windows {
                 getNetworkNames(): Windows.Foundation.Collections.IVectorView<string>;
                 getConnectionCost(): Windows.Networking.Connectivity.ConnectionCost;
                 getDataPlanStatus(): Windows.Networking.Connectivity.DataPlanStatus;
-                getLocalUsage(StartTime: Date, EndTime: Date): Windows.Networking.Connectivity.DataUsage;
+                getLocalUsage(
+                    StartTime: Date,
+                    EndTime: Date,
+                ): Windows.Networking.Connectivity.DataUsage;
                 getLocalUsage(
                     StartTime: Date,
                     EndTime: Date,
@@ -11790,13 +13610,17 @@ declare namespace Windows {
                 ): Windows.Networking.Connectivity.DataUsage;
                 getSignalBars(): Windows.Foundation.IReference<number>;
             }
-            export class ConnectionCost implements Windows.Networking.Connectivity.IConnectionCost {
+            export class ConnectionCost
+                implements Windows.Networking.Connectivity.IConnectionCost
+            {
                 approachingDataLimit: boolean;
                 networkCostType: Windows.Networking.Connectivity.NetworkCostType;
                 overDataLimit: boolean;
                 roaming: boolean;
             }
-            export class DataPlanStatus implements Windows.Networking.Connectivity.IDataPlanStatus {
+            export class DataPlanStatus
+                implements Windows.Networking.Connectivity.IDataPlanStatus
+            {
                 dataLimitInMegabytes: number;
                 dataPlanUsage: Windows.Networking.Connectivity.DataPlanUsage;
                 inboundBitsPerSecond: number;
@@ -11804,21 +13628,26 @@ declare namespace Windows {
                 nextBillingCycle: Date;
                 outboundBitsPerSecond: number;
             }
-            export class NetworkAdapter implements Windows.Networking.Connectivity.INetworkAdapter {
+            export class NetworkAdapter
+                implements Windows.Networking.Connectivity.INetworkAdapter
+            {
                 ianaInterfaceType: number;
                 inboundMaxBitsPerSecond: number;
                 networkAdapterId: string;
                 networkItem: Windows.Networking.Connectivity.NetworkItem;
                 outboundMaxBitsPerSecond: number;
-                getConnectedProfileAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Networking.Connectivity.ConnectionProfile
-                >;
+                getConnectedProfileAsync(): Windows.Foundation.IAsyncOperation<Windows.Networking.Connectivity.ConnectionProfile>;
             }
-            export class DataUsage implements Windows.Networking.Connectivity.IDataUsage {
+            export class DataUsage
+                implements Windows.Networking.Connectivity.IDataUsage
+            {
                 bytesReceived: number;
                 bytesSent: number;
             }
-            export class NetworkSecuritySettings implements Windows.Networking.Connectivity.INetworkSecuritySettings {
+            export class NetworkSecuritySettings
+                implements
+                    Windows.Networking.Connectivity.INetworkSecuritySettings
+            {
                 networkAuthenticationType: Windows.Networking.Connectivity.NetworkAuthenticationType;
                 networkEncryptionType: Windows.Networking.Connectivity.NetworkEncryptionType;
             }
@@ -11831,7 +13660,9 @@ declare namespace Windows {
                 networkAdapterId: string;
                 portId: Windows.Networking.Connectivity.LanIdentifierData;
             }
-            export class LanIdentifierData implements Windows.Networking.Connectivity.ILanIdentifierData {
+            export class LanIdentifierData
+                implements Windows.Networking.Connectivity.ILanIdentifierData
+            {
                 type: number;
                 value: Windows.Foundation.Collections.IVectorView<number>;
             }
@@ -11839,13 +13670,9 @@ declare namespace Windows {
                 (sender: any): void;
             }
             export interface INetworkInformationStatics {
-                getConnectionProfiles(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Networking.Connectivity.ConnectionProfile
-                >;
+                getConnectionProfiles(): Windows.Foundation.Collections.IVectorView<Windows.Networking.Connectivity.ConnectionProfile>;
                 getInternetConnectionProfile(): Windows.Networking.Connectivity.ConnectionProfile;
-                getLanIdentifiers(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Networking.Connectivity.LanIdentifier
-                >;
+                getLanIdentifiers(): Windows.Foundation.Collections.IVectorView<Windows.Networking.Connectivity.LanIdentifier>;
                 getHostNames(): Windows.Foundation.Collections.IVectorView<Windows.Networking.HostName>;
                 getProxyConfigurationAsync(
                     uri: Windows.Foundation.Uri,
@@ -11856,7 +13683,9 @@ declare namespace Windows {
                 ): Windows.Foundation.Collections.IVectorView<Windows.Networking.EndpointPair>;
                 onnetworkstatuschanged: any /* TODO */;
             }
-            export class ConnectionProfile implements Windows.Networking.Connectivity.IConnectionProfile {
+            export class ConnectionProfile
+                implements Windows.Networking.Connectivity.IConnectionProfile
+            {
                 networkAdapter: Windows.Networking.Connectivity.NetworkAdapter;
                 networkSecuritySettings: Windows.Networking.Connectivity.NetworkSecuritySettings;
                 profileName: string;
@@ -11864,7 +13693,10 @@ declare namespace Windows {
                 getNetworkNames(): Windows.Foundation.Collections.IVectorView<string>;
                 getConnectionCost(): Windows.Networking.Connectivity.ConnectionCost;
                 getDataPlanStatus(): Windows.Networking.Connectivity.DataPlanStatus;
-                getLocalUsage(StartTime: Date, EndTime: Date): Windows.Networking.Connectivity.DataUsage;
+                getLocalUsage(
+                    StartTime: Date,
+                    EndTime: Date,
+                ): Windows.Networking.Connectivity.DataUsage;
                 getLocalUsage(
                     StartTime: Date,
                     EndTime: Date,
@@ -11872,12 +13704,16 @@ declare namespace Windows {
                 ): Windows.Networking.Connectivity.DataUsage;
                 getSignalBars(): Windows.Foundation.IReference<number>;
             }
-            export class LanIdentifier implements Windows.Networking.Connectivity.ILanIdentifier {
+            export class LanIdentifier
+                implements Windows.Networking.Connectivity.ILanIdentifier
+            {
                 infrastructureId: Windows.Networking.Connectivity.LanIdentifierData;
                 networkAdapterId: string;
                 portId: Windows.Networking.Connectivity.LanIdentifierData;
             }
-            export class ProxyConfiguration implements Windows.Networking.Connectivity.IProxyConfiguration {
+            export class ProxyConfiguration
+                implements Windows.Networking.Connectivity.IProxyConfiguration
+            {
                 canConnectDirectly: boolean;
                 proxyUris: Windows.Foundation.Collections.IVectorView<Windows.Foundation.Uri>;
             }
@@ -11891,11 +13727,11 @@ declare namespace Windows {
                 networkAdapterId: string;
                 networkItem: Windows.Networking.Connectivity.NetworkItem;
                 outboundMaxBitsPerSecond: number;
-                getConnectedProfileAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Networking.Connectivity.ConnectionProfile
-                >;
+                getConnectedProfileAsync(): Windows.Foundation.IAsyncOperation<Windows.Networking.Connectivity.ConnectionProfile>;
             }
-            export class NetworkItem implements Windows.Networking.Connectivity.INetworkItem {
+            export class NetworkItem
+                implements Windows.Networking.Connectivity.INetworkItem
+            {
                 networkId: string;
                 getNetworkTypes(): Windows.Networking.Connectivity.NetworkTypes;
             }
@@ -11908,13 +13744,9 @@ declare namespace Windows {
                 proxyUris: Windows.Foundation.Collections.IVectorView<Windows.Foundation.Uri>;
             }
             export class NetworkInformation {
-                static getConnectionProfiles(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Networking.Connectivity.ConnectionProfile
-                >;
+                static getConnectionProfiles(): Windows.Foundation.Collections.IVectorView<Windows.Networking.Connectivity.ConnectionProfile>;
                 static getInternetConnectionProfile(): Windows.Networking.Connectivity.ConnectionProfile;
-                static getLanIdentifiers(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Networking.Connectivity.LanIdentifier
-                >;
+                static getLanIdentifiers(): Windows.Foundation.Collections.IVectorView<Windows.Networking.Connectivity.LanIdentifier>;
                 static getHostNames(): Windows.Foundation.Collections.IVectorView<Windows.Networking.HostName>;
                 static getProxyConfigurationAsync(
                     uri: Windows.Foundation.Uri,
@@ -11938,9 +13770,7 @@ declare namespace Windows {
                 raw,
             }
             export interface IPushNotificationChannelManagerStatics {
-                createPushNotificationChannelForApplicationAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Networking.PushNotifications.PushNotificationChannel
-                >;
+                createPushNotificationChannelForApplicationAsync(): Windows.Foundation.IAsyncOperation<Windows.Networking.PushNotifications.PushNotificationChannel>;
                 createPushNotificationChannelForApplicationAsync(
                     applicationId: string,
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.PushNotifications.PushNotificationChannel>;
@@ -11949,7 +13779,9 @@ declare namespace Windows {
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.PushNotifications.PushNotificationChannel>;
             }
             export class PushNotificationChannel
-                implements Windows.Networking.PushNotifications.IPushNotificationChannel
+                implements
+                    Windows.Networking.PushNotifications
+                        .IPushNotificationChannel
             {
                 expirationTime: Date;
                 uri: string;
@@ -11963,7 +13795,9 @@ declare namespace Windows {
                 onpushnotificationreceived: any /* TODO */;
             }
             export class PushNotificationReceivedEventArgs
-                implements Windows.Networking.PushNotifications.IPushNotificationReceivedEventArgs
+                implements
+                    Windows.Networking.PushNotifications
+                        .IPushNotificationReceivedEventArgs
             {
                 badgeNotification: Windows.UI.Notifications.BadgeNotification;
                 cancel: boolean;
@@ -11980,16 +13814,17 @@ declare namespace Windows {
                 tileNotification: Windows.UI.Notifications.TileNotification;
                 toastNotification: Windows.UI.Notifications.ToastNotification;
             }
-            export class RawNotification implements Windows.Networking.PushNotifications.IRawNotification {
+            export class RawNotification
+                implements
+                    Windows.Networking.PushNotifications.IRawNotification
+            {
                 content: string;
             }
             export interface IRawNotification {
                 content: string;
             }
             export class PushNotificationChannelManager {
-                static createPushNotificationChannelForApplicationAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Networking.PushNotifications.PushNotificationChannel
-                >;
+                static createPushNotificationChannelForApplicationAsync(): Windows.Foundation.IAsyncOperation<Windows.Networking.PushNotifications.PushNotificationChannel>;
                 static createPushNotificationChannelForApplicationAsync(
                     applicationId: string,
                 ): Windows.Foundation.IAsyncOperation<Windows.Networking.PushNotifications.PushNotificationChannel>;
@@ -12023,7 +13858,9 @@ declare namespace Windows {
                     ): Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest;
                 }
                 export class OnlineIdServiceTicketRequest
-                    implements Windows.Security.Authentication.OnlineId.IOnlineIdServiceTicketRequest
+                    implements
+                        Windows.Security.Authentication.OnlineId
+                            .IOnlineIdServiceTicketRequest
                 {
                     constructor(service: string, policy: string);
                     constructor(service: string);
@@ -12043,12 +13880,12 @@ declare namespace Windows {
                     lastName: string;
                     safeCustomerId: string;
                     signInName: string;
-                    tickets: Windows.Foundation.Collections.IVectorView<
-                        Windows.Security.Authentication.OnlineId.OnlineIdServiceTicket
-                    >;
+                    tickets: Windows.Foundation.Collections.IVectorView<Windows.Security.Authentication.OnlineId.OnlineIdServiceTicket>;
                 }
                 export class OnlineIdServiceTicket
-                    implements Windows.Security.Authentication.OnlineId.IOnlineIdServiceTicket
+                    implements
+                        Windows.Security.Authentication.OnlineId
+                            .IOnlineIdServiceTicket
                 {
                     errorCode: number;
                     request: Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest;
@@ -12062,21 +13899,18 @@ declare namespace Windows {
                         request: Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest,
                     ): Windows.Security.Authentication.OnlineId.UserAuthenticationOperation;
                     authenticateUserAsync(
-                        requests: Windows.Foundation.Collections.IIterable<
-                            Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest
-                        >,
+                        requests: Windows.Foundation.Collections.IIterable<Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest>,
                         credentialPromptType: Windows.Security.Authentication.OnlineId.CredentialPromptType,
                     ): Windows.Security.Authentication.OnlineId.UserAuthenticationOperation;
                     signOutUserAsync(): Windows.Security.Authentication.OnlineId.SignOutUserOperation;
                 }
                 export class UserAuthenticationOperation
                     implements
-                        Windows.Foundation.IAsyncOperation<Windows.Security.Authentication.OnlineId.UserIdentity>,
+                        Windows.Foundation
+                            .IAsyncOperation<Windows.Security.Authentication.OnlineId.UserIdentity>,
                         Windows.Foundation.IAsyncInfo
                 {
-                    completed: Windows.Foundation.AsyncOperationCompletedHandler<
-                        Windows.Security.Authentication.OnlineId.UserIdentity
-                    >;
+                    completed: Windows.Foundation.AsyncOperationCompletedHandler<Windows.Security.Authentication.OnlineId.UserIdentity>;
                     errorCode: number;
                     id: number;
                     status: Windows.Foundation.AsyncStatus;
@@ -12084,7 +13918,9 @@ declare namespace Windows {
                     cancel(): void;
                     close(): void;
                     then<U>(
-                        success?: (value: Windows.Security.Authentication.OnlineId.UserIdentity) => U,
+                        success?: (
+                            value: Windows.Security.Authentication.OnlineId.UserIdentity,
+                        ) => U,
                         error?: (error: any) => U,
                         progress?: (progress: any) => void,
                     ): Windows.Foundation.IPromise<U>;
@@ -12096,7 +13932,9 @@ declare namespace Windows {
                         progress?: (progress: any) => void,
                     ): Windows.Foundation.IPromise<U>;
                     then<U>(
-                        success?: (value: Windows.Security.Authentication.OnlineId.UserIdentity) => U,
+                        success?: (
+                            value: Windows.Security.Authentication.OnlineId.UserIdentity,
+                        ) => U,
                         error?: (error: any) => Windows.Foundation.IPromise<U>,
                         progress?: (progress: any) => void,
                     ): Windows.Foundation.IPromise<U>;
@@ -12108,19 +13946,21 @@ declare namespace Windows {
                         progress?: (progress: any) => void,
                     ): Windows.Foundation.IPromise<U>;
                     done<U>(
-                        success?: (value: Windows.Security.Authentication.OnlineId.UserIdentity) => any,
+                        success?: (
+                            value: Windows.Security.Authentication.OnlineId.UserIdentity,
+                        ) => any,
                         error?: (error: any) => any,
                         progress?: (progress: any) => void,
                     ): void;
                     operation: {
-                        completed: Windows.Foundation.AsyncOperationCompletedHandler<
-                            Windows.Security.Authentication.OnlineId.UserIdentity
-                        >;
+                        completed: Windows.Foundation.AsyncOperationCompletedHandler<Windows.Security.Authentication.OnlineId.UserIdentity>;
                         getResults(): Windows.Security.Authentication.OnlineId.UserIdentity;
                     };
                 }
                 export class SignOutUserOperation
-                    implements Windows.Foundation.IAsyncAction, Windows.Foundation.IAsyncInfo
+                    implements
+                        Windows.Foundation.IAsyncAction,
+                        Windows.Foundation.IAsyncInfo
                 {
                     completed: Windows.Foundation.AsyncActionCompletedHandler;
                     errorCode: number;
@@ -12149,13 +13989,20 @@ declare namespace Windows {
                         error?: (error: any) => U,
                         progress?: (progress: any) => void,
                     ): Windows.Foundation.IPromise<U>;
-                    done<U>(success?: () => any, error?: (error: any) => any, progress?: (progress: any) => void): void;
+                    done<U>(
+                        success?: () => any,
+                        error?: (error: any) => any,
+                        progress?: (progress: any) => void,
+                    ): void;
                     operation: {
                         completed: Windows.Foundation.AsyncOperationCompletedHandler<any>;
                         getResults(): any;
                     };
                 }
-                export class UserIdentity implements Windows.Security.Authentication.OnlineId.IUserIdentity {
+                export class UserIdentity
+                    implements
+                        Windows.Security.Authentication.OnlineId.IUserIdentity
+                {
                     firstName: string;
                     id: string;
                     isBetaAccount: boolean;
@@ -12163,12 +14010,12 @@ declare namespace Windows {
                     lastName: string;
                     safeCustomerId: string;
                     signInName: string;
-                    tickets: Windows.Foundation.Collections.IVectorView<
-                        Windows.Security.Authentication.OnlineId.OnlineIdServiceTicket
-                    >;
+                    tickets: Windows.Foundation.Collections.IVectorView<Windows.Security.Authentication.OnlineId.OnlineIdServiceTicket>;
                 }
                 export class OnlineIdAuthenticator
-                    implements Windows.Security.Authentication.OnlineId.IOnlineIdAuthenticator
+                    implements
+                        Windows.Security.Authentication.OnlineId
+                            .IOnlineIdAuthenticator
                 {
                     applicationId: string;
                     authenticatedSafeCustomerId: string;
@@ -12177,9 +14024,7 @@ declare namespace Windows {
                         request: Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest,
                     ): Windows.Security.Authentication.OnlineId.UserAuthenticationOperation;
                     authenticateUserAsync(
-                        requests: Windows.Foundation.Collections.IIterable<
-                            Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest
-                        >,
+                        requests: Windows.Foundation.Collections.IIterable<Windows.Security.Authentication.OnlineId.OnlineIdServiceTicketRequest>,
                         credentialPromptType: Windows.Security.Authentication.OnlineId.CredentialPromptType,
                     ): Windows.Security.Authentication.OnlineId.UserAuthenticationOperation;
                     signOutUserAsync(): Windows.Security.Authentication.OnlineId.SignOutUserOperation;
@@ -12210,7 +14055,9 @@ declare namespace Windows {
                     responseStatus: Windows.Security.Authentication.Web.WebAuthenticationStatus;
                 }
                 export class WebAuthenticationResult
-                    implements Windows.Security.Authentication.Web.IWebAuthenticationResult
+                    implements
+                        Windows.Security.Authentication.Web
+                            .IWebAuthenticationResult
                 {
                     responseData: string;
                     responseErrorDetail: number;
@@ -12226,7 +14073,9 @@ declare namespace Windows {
                         options: Windows.Security.Authentication.Web.WebAuthenticationOptions,
                         requestUri: Windows.Foundation.Uri,
                     ): Windows.Foundation.IAsyncOperation<Windows.Security.Authentication.Web.WebAuthenticationResult>;
-                    authenticateAndContinue(requestUri: Windows.Foundation.Uri): void;
+                    authenticateAndContinue(
+                        requestUri: Windows.Foundation.Uri,
+                    ): void;
                     authenticateAndContinue(
                         requestUri: Windows.Foundation.Uri,
                         callbackUri: Windows.Foundation.Uri,
@@ -12249,7 +14098,9 @@ declare namespace Windows {
                         options: Windows.Security.Authentication.Web.WebAuthenticationOptions,
                         requestUri: Windows.Foundation.Uri,
                     ): Windows.Foundation.IAsyncOperation<Windows.Security.Authentication.Web.WebAuthenticationResult>;
-                    static authenticateAndContinue(requestUri: Windows.Foundation.Uri): void;
+                    static authenticateAndContinue(
+                        requestUri: Windows.Foundation.Uri,
+                    ): void;
                     static authenticateAndContinue(
                         requestUri: Windows.Foundation.Uri,
                         callbackUri: Windows.Foundation.Uri,
@@ -12297,7 +14148,9 @@ declare namespace Windows {
                     targetName: string;
                 }
                 export class CredentialPickerOptions
-                    implements Windows.Security.Credentials.UI.ICredentialPickerOptions
+                    implements
+                        Windows.Security.Credentials.UI
+                            .ICredentialPickerOptions
                 {
                     alwaysDisplayDialog: boolean;
                     authenticationProtocol: Windows.Security.Credentials.UI.AuthenticationProtocol;
@@ -12325,7 +14178,9 @@ declare namespace Windows {
                     ): Windows.Foundation.IAsyncOperation<Windows.Security.Credentials.UI.CredentialPickerResults>;
                 }
                 export class CredentialPickerResults
-                    implements Windows.Security.Credentials.UI.ICredentialPickerResults
+                    implements
+                        Windows.Security.Credentials.UI
+                            .ICredentialPickerResults
                 {
                     credential: Windows.Storage.Streams.IBuffer;
                     credentialDomainName: string;
@@ -12372,8 +14227,14 @@ declare namespace Windows {
                 userName: string;
                 retrievePassword(): void;
             }
-            export class PasswordCredential implements Windows.Security.Credentials.IPasswordCredential {
-                constructor(resource: string, userName: string, password: string);
+            export class PasswordCredential
+                implements Windows.Security.Credentials.IPasswordCredential
+            {
+                constructor(
+                    resource: string,
+                    userName: string,
+                    password: string,
+                );
                 constructor();
                 password: string;
                 properties: Windows.Foundation.Collections.IPropertySet;
@@ -12389,39 +14250,56 @@ declare namespace Windows {
                 ): Windows.Security.Credentials.PasswordCredential;
             }
             export interface IPasswordVault {
-                add(credential: Windows.Security.Credentials.PasswordCredential): void;
-                remove(credential: Windows.Security.Credentials.PasswordCredential): void;
-                retrieve(resource: string, userName: string): Windows.Security.Credentials.PasswordCredential;
+                add(
+                    credential: Windows.Security.Credentials.PasswordCredential,
+                ): void;
+                remove(
+                    credential: Windows.Security.Credentials.PasswordCredential,
+                ): void;
+                retrieve(
+                    resource: string,
+                    userName: string,
+                ): Windows.Security.Credentials.PasswordCredential;
                 findAllByResource(
                     resource: string,
                 ): Windows.Foundation.Collections.IVectorView<Windows.Security.Credentials.PasswordCredential>;
                 findAllByUserName(
                     userName: string,
                 ): Windows.Foundation.Collections.IVectorView<Windows.Security.Credentials.PasswordCredential>;
-                retrieveAll(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Security.Credentials.PasswordCredential
-                >;
+                retrieveAll(): Windows.Foundation.Collections.IVectorView<Windows.Security.Credentials.PasswordCredential>;
             }
-            export class PasswordVault implements Windows.Security.Credentials.IPasswordVault {
-                add(credential: Windows.Security.Credentials.PasswordCredential): void;
-                remove(credential: Windows.Security.Credentials.PasswordCredential): void;
-                retrieve(resource: string, userName: string): Windows.Security.Credentials.PasswordCredential;
+            export class PasswordVault
+                implements Windows.Security.Credentials.IPasswordVault
+            {
+                add(
+                    credential: Windows.Security.Credentials.PasswordCredential,
+                ): void;
+                remove(
+                    credential: Windows.Security.Credentials.PasswordCredential,
+                ): void;
+                retrieve(
+                    resource: string,
+                    userName: string,
+                ): Windows.Security.Credentials.PasswordCredential;
                 findAllByResource(
                     resource: string,
                 ): Windows.Foundation.Collections.IVectorView<Windows.Security.Credentials.PasswordCredential>;
                 findAllByUserName(
                     userName: string,
                 ): Windows.Foundation.Collections.IVectorView<Windows.Security.Credentials.PasswordCredential>;
-                retrieveAll(): Windows.Foundation.Collections.IVectorView<
-                    Windows.Security.Credentials.PasswordCredential
-                >;
+                retrieveAll(): Windows.Foundation.Collections.IVectorView<Windows.Security.Credentials.PasswordCredential>;
             }
             export class PasswordCredentialPropertyStore
                 implements
                     Windows.Foundation.Collections.IPropertySet,
                     Windows.Foundation.Collections.IObservableMap<string, any>,
                     Windows.Foundation.Collections.IMap<string, any>,
-                    Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
+                    Windows.Foundation.Collections.IIterable<
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
+                    >
             {
                 size: number;
                 onmapchanged: any /* TODO */;
@@ -12479,7 +14357,9 @@ declare namespace Windows {
                     subject: string;
                 }
                 export class CertificateRequestProperties
-                    implements Windows.Security.Cryptography.Certificates.ICertificateRequestProperties
+                    implements
+                        Windows.Security.Cryptography.Certificates
+                            .ICertificateRequestProperties
                 {
                     exportable: Windows.Security.Cryptography.Certificates.ExportOption;
                     friendlyName: string;
@@ -12597,7 +14477,9 @@ declare namespace Windows {
                     ): Windows.Security.Cryptography.Core.KeyDerivationParameters;
                 }
                 export class KeyDerivationParameters
-                    implements Windows.Security.Cryptography.Core.IKeyDerivationParameters
+                    implements
+                        Windows.Security.Cryptography.Core
+                            .IKeyDerivationParameters
                 {
                     iterationCount: number;
                     kdfGenericBinary: Windows.Storage.Streams.IBuffer;
@@ -12628,7 +14510,10 @@ declare namespace Windows {
                         BlobType: Windows.Security.Cryptography.Core.CryptographicPublicKeyBlobType,
                     ): Windows.Storage.Streams.IBuffer;
                 }
-                export class CryptographicKey implements Windows.Security.Cryptography.Core.ICryptographicKey {
+                export class CryptographicKey
+                    implements
+                        Windows.Security.Cryptography.Core.ICryptographicKey
+                {
                     keySize: number;
                     export(): Windows.Storage.Streams.IBuffer;
                     export(
@@ -12643,14 +14528,19 @@ declare namespace Windows {
                     append(data: Windows.Storage.Streams.IBuffer): void;
                     getValueAndReset(): Windows.Storage.Streams.IBuffer;
                 }
-                export class CryptographicHash implements Windows.Security.Cryptography.Core.IHashComputation {
+                export class CryptographicHash
+                    implements
+                        Windows.Security.Cryptography.Core.IHashComputation
+                {
                     append(data: Windows.Storage.Streams.IBuffer): void;
                     getValueAndReset(): Windows.Storage.Streams.IBuffer;
                 }
                 export interface IHashAlgorithmProvider {
                     algorithmName: string;
                     hashLength: number;
-                    hashData(data: Windows.Storage.Streams.IBuffer): Windows.Storage.Streams.IBuffer;
+                    hashData(
+                        data: Windows.Storage.Streams.IBuffer,
+                    ): Windows.Storage.Streams.IBuffer;
                     createHash(): Windows.Security.Cryptography.Core.CryptographicHash;
                 }
                 export interface IMacAlgorithmProvider {
@@ -12675,7 +14565,9 @@ declare namespace Windows {
                 }
                 export interface IAsymmetricKeyAlgorithmProvider {
                     algorithmName: string;
-                    createKeyPair(keySize: number): Windows.Security.Cryptography.Core.CryptographicKey;
+                    createKeyPair(
+                        keySize: number,
+                    ): Windows.Security.Cryptography.Core.CryptographicKey;
                     importKeyPair(
                         keyBlob: Windows.Storage.Streams.IBuffer,
                     ): Windows.Security.Cryptography.Core.CryptographicKey;
@@ -12696,7 +14588,9 @@ declare namespace Windows {
                     encryptedData: Windows.Storage.Streams.IBuffer;
                 }
                 export class EncryptedAndAuthenticatedData
-                    implements Windows.Security.Cryptography.Core.IEncryptedAndAuthenticatedData
+                    implements
+                        Windows.Security.Cryptography.Core
+                            .IEncryptedAndAuthenticatedData
                 {
                     authenticationTag: Windows.Storage.Streams.IBuffer;
                     encryptedData: Windows.Storage.Streams.IBuffer;
@@ -12780,33 +14674,53 @@ declare namespace Windows {
                     ): Windows.Storage.Streams.IBuffer;
                 }
                 export interface IHashAlgorithmProviderStatics {
-                    openAlgorithm(algorithm: string): Windows.Security.Cryptography.Core.HashAlgorithmProvider;
+                    openAlgorithm(
+                        algorithm: string,
+                    ): Windows.Security.Cryptography.Core.HashAlgorithmProvider;
                 }
                 export class HashAlgorithmProvider
-                    implements Windows.Security.Cryptography.Core.IHashAlgorithmProvider
+                    implements
+                        Windows.Security.Cryptography.Core
+                            .IHashAlgorithmProvider
                 {
                     algorithmName: string;
                     hashLength: number;
-                    hashData(data: Windows.Storage.Streams.IBuffer): Windows.Storage.Streams.IBuffer;
+                    hashData(
+                        data: Windows.Storage.Streams.IBuffer,
+                    ): Windows.Storage.Streams.IBuffer;
                     createHash(): Windows.Security.Cryptography.Core.CryptographicHash;
-                    static openAlgorithm(algorithm: string): Windows.Security.Cryptography.Core.HashAlgorithmProvider;
+                    static openAlgorithm(
+                        algorithm: string,
+                    ): Windows.Security.Cryptography.Core.HashAlgorithmProvider;
                 }
                 export interface IMacAlgorithmProviderStatics {
-                    openAlgorithm(algorithm: string): Windows.Security.Cryptography.Core.MacAlgorithmProvider;
+                    openAlgorithm(
+                        algorithm: string,
+                    ): Windows.Security.Cryptography.Core.MacAlgorithmProvider;
                 }
-                export class MacAlgorithmProvider implements Windows.Security.Cryptography.Core.IMacAlgorithmProvider {
+                export class MacAlgorithmProvider
+                    implements
+                        Windows.Security.Cryptography.Core
+                            .IMacAlgorithmProvider
+                {
                     algorithmName: string;
                     macLength: number;
                     createKey(
                         keyMaterial: Windows.Storage.Streams.IBuffer,
                     ): Windows.Security.Cryptography.Core.CryptographicKey;
-                    static openAlgorithm(algorithm: string): Windows.Security.Cryptography.Core.MacAlgorithmProvider;
+                    static openAlgorithm(
+                        algorithm: string,
+                    ): Windows.Security.Cryptography.Core.MacAlgorithmProvider;
                 }
                 export interface IKeyDerivationAlgorithmProviderStatics {
-                    openAlgorithm(algorithm: string): Windows.Security.Cryptography.Core.KeyDerivationAlgorithmProvider;
+                    openAlgorithm(
+                        algorithm: string,
+                    ): Windows.Security.Cryptography.Core.KeyDerivationAlgorithmProvider;
                 }
                 export class KeyDerivationAlgorithmProvider
-                    implements Windows.Security.Cryptography.Core.IKeyDerivationAlgorithmProvider
+                    implements
+                        Windows.Security.Cryptography.Core
+                            .IKeyDerivationAlgorithmProvider
                 {
                     algorithmName: string;
                     createKey(
@@ -12817,10 +14731,14 @@ declare namespace Windows {
                     ): Windows.Security.Cryptography.Core.KeyDerivationAlgorithmProvider;
                 }
                 export interface ISymmetricKeyAlgorithmProviderStatics {
-                    openAlgorithm(algorithm: string): Windows.Security.Cryptography.Core.SymmetricKeyAlgorithmProvider;
+                    openAlgorithm(
+                        algorithm: string,
+                    ): Windows.Security.Cryptography.Core.SymmetricKeyAlgorithmProvider;
                 }
                 export class SymmetricKeyAlgorithmProvider
-                    implements Windows.Security.Cryptography.Core.ISymmetricKeyAlgorithmProvider
+                    implements
+                        Windows.Security.Cryptography.Core
+                            .ISymmetricKeyAlgorithmProvider
                 {
                     algorithmName: string;
                     blockLength: number;
@@ -12832,13 +14750,19 @@ declare namespace Windows {
                     ): Windows.Security.Cryptography.Core.SymmetricKeyAlgorithmProvider;
                 }
                 export interface IAsymmetricKeyAlgorithmProviderStatics {
-                    openAlgorithm(algorithm: string): Windows.Security.Cryptography.Core.AsymmetricKeyAlgorithmProvider;
+                    openAlgorithm(
+                        algorithm: string,
+                    ): Windows.Security.Cryptography.Core.AsymmetricKeyAlgorithmProvider;
                 }
                 export class AsymmetricKeyAlgorithmProvider
-                    implements Windows.Security.Cryptography.Core.IAsymmetricKeyAlgorithmProvider
+                    implements
+                        Windows.Security.Cryptography.Core
+                            .IAsymmetricKeyAlgorithmProvider
                 {
                     algorithmName: string;
-                    createKeyPair(keySize: number): Windows.Security.Cryptography.Core.CryptographicKey;
+                    createKeyPair(
+                        keySize: number,
+                    ): Windows.Security.Cryptography.Core.CryptographicKey;
                     importKeyPair(
                         keyBlob: Windows.Storage.Streams.IBuffer,
                     ): Windows.Security.Cryptography.Core.CryptographicKey;
@@ -13033,7 +14957,9 @@ declare namespace Windows {
                     ): Windows.Security.Cryptography.DataProtection.DataProtectionProvider;
                 }
                 export class DataProtectionProvider
-                    implements Windows.Security.Cryptography.DataProtection.IDataProtectionProvider
+                    implements
+                        Windows.Security.Cryptography.DataProtection
+                            .IDataProtectionProvider
                 {
                     constructor(protectionDescriptor: string);
                     constructor();
@@ -13065,15 +14991,30 @@ declare namespace Windows {
                 utf16BE,
             }
             export interface ICryptographicBufferStatics {
-                compare(object1: Windows.Storage.Streams.IBuffer, object2: Windows.Storage.Streams.IBuffer): boolean;
+                compare(
+                    object1: Windows.Storage.Streams.IBuffer,
+                    object2: Windows.Storage.Streams.IBuffer,
+                ): boolean;
                 generateRandom(length: number): Windows.Storage.Streams.IBuffer;
                 generateRandomNumber(): number;
-                createFromByteArray(value: Uint8Array): Windows.Storage.Streams.IBuffer;
-                copyToByteArray(buffer: Windows.Storage.Streams.IBuffer): Uint8Array;
-                decodeFromHexString(value: string): Windows.Storage.Streams.IBuffer;
-                encodeToHexString(buffer: Windows.Storage.Streams.IBuffer): string;
-                decodeFromBase64String(value: string): Windows.Storage.Streams.IBuffer;
-                encodeToBase64String(buffer: Windows.Storage.Streams.IBuffer): string;
+                createFromByteArray(
+                    value: Uint8Array,
+                ): Windows.Storage.Streams.IBuffer;
+                copyToByteArray(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                ): Uint8Array;
+                decodeFromHexString(
+                    value: string,
+                ): Windows.Storage.Streams.IBuffer;
+                encodeToHexString(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                ): string;
+                decodeFromBase64String(
+                    value: string,
+                ): Windows.Storage.Streams.IBuffer;
+                encodeToBase64String(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                ): string;
                 convertStringToBinary(
                     value: string,
                     encoding: Windows.Security.Cryptography.BinaryStringEncoding,
@@ -13088,14 +15029,28 @@ declare namespace Windows {
                     object1: Windows.Storage.Streams.IBuffer,
                     object2: Windows.Storage.Streams.IBuffer,
                 ): boolean;
-                static generateRandom(length: number): Windows.Storage.Streams.IBuffer;
+                static generateRandom(
+                    length: number,
+                ): Windows.Storage.Streams.IBuffer;
                 static generateRandomNumber(): number;
-                static createFromByteArray(value: Uint8Array): Windows.Storage.Streams.IBuffer;
-                static copyToByteArray(buffer: Windows.Storage.Streams.IBuffer): Uint8Array;
-                static decodeFromHexString(value: string): Windows.Storage.Streams.IBuffer;
-                static encodeToHexString(buffer: Windows.Storage.Streams.IBuffer): string;
-                static decodeFromBase64String(value: string): Windows.Storage.Streams.IBuffer;
-                static encodeToBase64String(buffer: Windows.Storage.Streams.IBuffer): string;
+                static createFromByteArray(
+                    value: Uint8Array,
+                ): Windows.Storage.Streams.IBuffer;
+                static copyToByteArray(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                ): Uint8Array;
+                static decodeFromHexString(
+                    value: string,
+                ): Windows.Storage.Streams.IBuffer;
+                static encodeToHexString(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                ): string;
+                static decodeFromBase64String(
+                    value: string,
+                ): Windows.Storage.Streams.IBuffer;
+                static encodeToBase64String(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                ): string;
                 static convertStringToBinary(
                     value: string,
                     encoding: Windows.Security.Cryptography.BinaryStringEncoding,
@@ -13215,22 +15170,18 @@ declare namespace Windows {
                 passwordHistory: number;
                 requireEncryption: boolean;
                 checkCompliance(): Windows.Security.ExchangeActiveSyncProvisioning.EasComplianceResults;
-                applyAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasComplianceResults
-                >;
+                applyAsync(): Windows.Foundation.IAsyncOperation<Windows.Security.ExchangeActiveSyncProvisioning.EasComplianceResults>;
             }
             export class EasComplianceResults
-                implements Windows.Security.ExchangeActiveSyncProvisioning.IEasComplianceResults
+                implements
+                    Windows.Security.ExchangeActiveSyncProvisioning
+                        .IEasComplianceResults
             {
                 compliant: boolean;
-                disallowConvenienceLogonResult:
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasDisallowConvenienceLogonResult;
-                maxInactivityTimeLockResult:
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasMaxInactivityTimeLockResult;
-                maxPasswordFailedAttemptsResult:
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasMaxPasswordFailedAttemptsResult;
-                minPasswordComplexCharactersResult:
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasMinPasswordComplexCharactersResult;
+                disallowConvenienceLogonResult: Windows.Security.ExchangeActiveSyncProvisioning.EasDisallowConvenienceLogonResult;
+                maxInactivityTimeLockResult: Windows.Security.ExchangeActiveSyncProvisioning.EasMaxInactivityTimeLockResult;
+                maxPasswordFailedAttemptsResult: Windows.Security.ExchangeActiveSyncProvisioning.EasMaxPasswordFailedAttemptsResult;
+                minPasswordComplexCharactersResult: Windows.Security.ExchangeActiveSyncProvisioning.EasMinPasswordComplexCharactersResult;
                 minPasswordLengthResult: Windows.Security.ExchangeActiveSyncProvisioning.EasMinPasswordLengthResult;
                 passwordExpirationResult: Windows.Security.ExchangeActiveSyncProvisioning.EasPasswordExpirationResult;
                 passwordHistoryResult: Windows.Security.ExchangeActiveSyncProvisioning.EasPasswordHistoryResult;
@@ -13238,21 +15189,19 @@ declare namespace Windows {
             }
             export interface IEasComplianceResults {
                 compliant: boolean;
-                disallowConvenienceLogonResult:
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasDisallowConvenienceLogonResult;
-                maxInactivityTimeLockResult:
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasMaxInactivityTimeLockResult;
-                maxPasswordFailedAttemptsResult:
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasMaxPasswordFailedAttemptsResult;
-                minPasswordComplexCharactersResult:
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasMinPasswordComplexCharactersResult;
+                disallowConvenienceLogonResult: Windows.Security.ExchangeActiveSyncProvisioning.EasDisallowConvenienceLogonResult;
+                maxInactivityTimeLockResult: Windows.Security.ExchangeActiveSyncProvisioning.EasMaxInactivityTimeLockResult;
+                maxPasswordFailedAttemptsResult: Windows.Security.ExchangeActiveSyncProvisioning.EasMaxPasswordFailedAttemptsResult;
+                minPasswordComplexCharactersResult: Windows.Security.ExchangeActiveSyncProvisioning.EasMinPasswordComplexCharactersResult;
                 minPasswordLengthResult: Windows.Security.ExchangeActiveSyncProvisioning.EasMinPasswordLengthResult;
                 passwordExpirationResult: Windows.Security.ExchangeActiveSyncProvisioning.EasPasswordExpirationResult;
                 passwordHistoryResult: Windows.Security.ExchangeActiveSyncProvisioning.EasPasswordHistoryResult;
                 requireEncryptionResult: Windows.Security.ExchangeActiveSyncProvisioning.EasRequireEncryptionResult;
             }
             export class EasClientSecurityPolicy
-                implements Windows.Security.ExchangeActiveSyncProvisioning.IEasClientSecurityPolicy
+                implements
+                    Windows.Security.ExchangeActiveSyncProvisioning
+                        .IEasClientSecurityPolicy
             {
                 disallowConvenienceLogon: boolean;
                 maxInactivityTimeLock: number;
@@ -13263,12 +15212,12 @@ declare namespace Windows {
                 passwordHistory: number;
                 requireEncryption: boolean;
                 checkCompliance(): Windows.Security.ExchangeActiveSyncProvisioning.EasComplianceResults;
-                applyAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Security.ExchangeActiveSyncProvisioning.EasComplianceResults
-                >;
+                applyAsync(): Windows.Foundation.IAsyncOperation<Windows.Security.ExchangeActiveSyncProvisioning.EasComplianceResults>;
             }
             export class EasClientDeviceInformation
-                implements Windows.Security.ExchangeActiveSyncProvisioning.IEasClientDeviceInformation
+                implements
+                    Windows.Security.ExchangeActiveSyncProvisioning
+                        .IEasClientDeviceInformation
             {
                 friendlyName: string;
                 id: string;
@@ -13293,7 +15242,9 @@ declare namespace Windows {
                 utf16BE,
             }
             export class DataReaderLoadOperation
-                implements Windows.Foundation.IAsyncOperation<number>, Windows.Foundation.IAsyncInfo
+                implements
+                    Windows.Foundation.IAsyncOperation<number>,
+                    Windows.Foundation.IAsyncInfo
             {
                 completed: Windows.Foundation.AsyncOperationCompletedHandler<number>;
                 errorCode: number;
@@ -13354,14 +15305,22 @@ declare namespace Windows {
                 readString(codeUnitCount: number): string;
                 readDateTime(): Date;
                 readTimeSpan(): number;
-                loadAsync(count: number): Windows.Storage.Streams.DataReaderLoadOperation;
+                loadAsync(
+                    count: number,
+                ): Windows.Storage.Streams.DataReaderLoadOperation;
                 detachBuffer(): Windows.Storage.Streams.IBuffer;
                 detachStream(): Windows.Storage.Streams.IInputStream;
             }
             export interface IDataReaderFactory {
-                createDataReader(inputStream: Windows.Storage.Streams.IInputStream): Windows.Storage.Streams.DataReader;
+                createDataReader(
+                    inputStream: Windows.Storage.Streams.IInputStream,
+                ): Windows.Storage.Streams.DataReader;
             }
-            export class DataReader implements Windows.Storage.Streams.IDataReader, Windows.Foundation.IClosable {
+            export class DataReader
+                implements
+                    Windows.Storage.Streams.IDataReader,
+                    Windows.Foundation.IClosable
+            {
                 constructor(inputStream: Windows.Storage.Streams.IInputStream);
                 byteOrder: Windows.Storage.Streams.ByteOrder;
                 inputStreamOptions: Windows.Storage.Streams.InputStreamOptions;
@@ -13384,18 +15343,26 @@ declare namespace Windows {
                 readString(codeUnitCount: number): string;
                 readDateTime(): Date;
                 readTimeSpan(): number;
-                loadAsync(count: number): Windows.Storage.Streams.DataReaderLoadOperation;
+                loadAsync(
+                    count: number,
+                ): Windows.Storage.Streams.DataReaderLoadOperation;
                 detachBuffer(): Windows.Storage.Streams.IBuffer;
                 detachStream(): Windows.Storage.Streams.IInputStream;
                 dispose(): void;
-                static fromBuffer(buffer: Windows.Storage.Streams.IBuffer): Windows.Storage.Streams.DataReader;
+                static fromBuffer(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                ): Windows.Storage.Streams.DataReader;
                 close(): void;
             }
             export interface IDataReaderStatics {
-                fromBuffer(buffer: Windows.Storage.Streams.IBuffer): Windows.Storage.Streams.DataReader;
+                fromBuffer(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                ): Windows.Storage.Streams.DataReader;
             }
             export class DataWriterStoreOperation
-                implements Windows.Foundation.IAsyncOperation<number>, Windows.Foundation.IAsyncInfo
+                implements
+                    Windows.Foundation.IAsyncOperation<number>,
+                    Windows.Foundation.IAsyncInfo
             {
                 completed: Windows.Foundation.AsyncOperationCompletedHandler<number>;
                 errorCode: number;
@@ -13442,7 +15409,11 @@ declare namespace Windows {
                 writeBytes(value: number[]): void;
                 writeBytes(value: Uint8Array): void;
                 writeBuffer(buffer: Windows.Storage.Streams.IBuffer): void;
-                writeBuffer(buffer: Windows.Storage.Streams.IBuffer, start: number, count: number): void;
+                writeBuffer(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                    start: number,
+                    count: number,
+                ): void;
                 writeBoolean(value: boolean): void;
                 writeGuid(value: string): void;
                 writeInt16(value: number): void;
@@ -13467,8 +15438,14 @@ declare namespace Windows {
                     outputStream: Windows.Storage.Streams.IOutputStream,
                 ): Windows.Storage.Streams.DataWriter;
             }
-            export class DataWriter implements Windows.Storage.Streams.IDataWriter, Windows.Foundation.IClosable {
-                constructor(outputStream: Windows.Storage.Streams.IOutputStream);
+            export class DataWriter
+                implements
+                    Windows.Storage.Streams.IDataWriter,
+                    Windows.Foundation.IClosable
+            {
+                constructor(
+                    outputStream: Windows.Storage.Streams.IOutputStream,
+                );
                 constructor();
                 byteOrder: Windows.Storage.Streams.ByteOrder;
                 unicodeEncoding: Windows.Storage.Streams.UnicodeEncoding;
@@ -13477,7 +15454,11 @@ declare namespace Windows {
                 writeBytes(value: number[]): void;
                 writeBytes(value: Uint8Array): void;
                 writeBuffer(buffer: Windows.Storage.Streams.IBuffer): void;
-                writeBuffer(buffer: Windows.Storage.Streams.IBuffer, start: number, count: number): void;
+                writeBuffer(
+                    buffer: Windows.Storage.Streams.IBuffer,
+                    start: number,
+                    count: number,
+                ): void;
                 writeBoolean(value: boolean): void;
                 writeGuid(value: string): void;
                 writeInt16(value: number): void;
@@ -13503,31 +15484,49 @@ declare namespace Windows {
                 copyAsync(
                     source: Windows.Storage.Streams.IInputStream,
                     destination: Windows.Storage.Streams.IOutputStream,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 copyAsync(
                     source: Windows.Storage.Streams.IInputStream,
                     destination: Windows.Storage.Streams.IOutputStream,
                     bytesToCopy: number,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 copyAndCloseAsync(
                     source: Windows.Storage.Streams.IInputStream,
                     destination: Windows.Storage.Streams.IOutputStream,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
             }
             export class RandomAccessStream {
                 static copyAsync(
                     source: Windows.Storage.Streams.IInputStream,
                     destination: Windows.Storage.Streams.IOutputStream,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 static copyAsync(
                     source: Windows.Storage.Streams.IInputStream,
                     destination: Windows.Storage.Streams.IOutputStream,
                     bytesToCopy: number,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 static copyAndCloseAsync(
                     source: Windows.Storage.Streams.IInputStream,
                     destination: Windows.Storage.Streams.IOutputStream,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
             }
             export interface IBufferFactory {
                 create(capacity: number): Windows.Storage.Streams.Buffer;
@@ -13550,28 +15549,32 @@ declare namespace Windows {
                 contentType: string;
             }
             export interface IRandomAccessStreamReference {
-                openReadAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.Streams.IRandomAccessStreamWithContentType
-                >;
+                openReadAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStreamWithContentType>;
             }
             export interface IInputStreamReference {
                 openSequentialReadAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IInputStream>;
             }
             export interface IRandomAccessStreamReferenceStatics {
-                createFromFile(file: Windows.Storage.IStorageFile): Windows.Storage.Streams.RandomAccessStreamReference;
-                createFromUri(uri: Windows.Foundation.Uri): Windows.Storage.Streams.RandomAccessStreamReference;
+                createFromFile(
+                    file: Windows.Storage.IStorageFile,
+                ): Windows.Storage.Streams.RandomAccessStreamReference;
+                createFromUri(
+                    uri: Windows.Foundation.Uri,
+                ): Windows.Storage.Streams.RandomAccessStreamReference;
                 createFromStream(
                     stream: Windows.Storage.Streams.IRandomAccessStream,
                 ): Windows.Storage.Streams.RandomAccessStreamReference;
             }
-            export class RandomAccessStreamReference implements Windows.Storage.Streams.IRandomAccessStreamReference {
-                openReadAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.Streams.IRandomAccessStreamWithContentType
-                >;
+            export class RandomAccessStreamReference
+                implements Windows.Storage.Streams.IRandomAccessStreamReference
+            {
+                openReadAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStreamWithContentType>;
                 static createFromFile(
                     file: Windows.Storage.IStorageFile,
                 ): Windows.Storage.Streams.RandomAccessStreamReference;
-                static createFromUri(uri: Windows.Foundation.Uri): Windows.Storage.Streams.RandomAccessStreamReference;
+                static createFromUri(
+                    uri: Windows.Foundation.Uri,
+                ): Windows.Storage.Streams.RandomAccessStreamReference;
                 static createFromStream(
                     stream: Windows.Storage.Streams.IRandomAccessStream,
                 ): Windows.Storage.Streams.RandomAccessStreamReference;
@@ -13587,8 +15590,12 @@ declare namespace Windows {
                 canWrite: boolean;
                 position: number;
                 size: number;
-                getInputStreamAt(position: number): Windows.Storage.Streams.IInputStream;
-                getOutputStreamAt(position: number): Windows.Storage.Streams.IOutputStream;
+                getInputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
+                getOutputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IOutputStream;
                 seek(position: number): void;
                 cloneStream(): Windows.Storage.Streams.IRandomAccessStream;
                 dispose(): void;
@@ -13596,28 +15603,46 @@ declare namespace Windows {
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 close(): void;
             }
-            export class FileInputStream implements Windows.Storage.Streams.IInputStream, Windows.Foundation.IClosable {
+            export class FileInputStream
+                implements
+                    Windows.Storage.Streams.IInputStream,
+                    Windows.Foundation.IClosable
+            {
                 readAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
                 dispose(): void;
                 close(): void;
             }
             export class FileOutputStream
-                implements Windows.Storage.Streams.IOutputStream, Windows.Foundation.IClosable
+                implements
+                    Windows.Storage.Streams.IOutputStream,
+                    Windows.Foundation.IClosable
             {
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 dispose(): void;
                 close(): void;
@@ -13633,8 +15658,12 @@ declare namespace Windows {
                 canWrite: boolean;
                 position: number;
                 size: number;
-                getInputStreamAt(position: number): Windows.Storage.Streams.IInputStream;
-                getOutputStreamAt(position: number): Windows.Storage.Streams.IOutputStream;
+                getInputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
+                getOutputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IOutputStream;
                 seek(position: number): void;
                 cloneStream(): Windows.Storage.Streams.IRandomAccessStream;
                 dispose(): void;
@@ -13642,30 +15671,46 @@ declare namespace Windows {
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 close(): void;
             }
             export class InputStreamOverStream
-                implements Windows.Storage.Streams.IInputStream, Windows.Foundation.IClosable
+                implements
+                    Windows.Storage.Streams.IInputStream,
+                    Windows.Foundation.IClosable
             {
                 readAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
                 dispose(): void;
                 close(): void;
             }
             export class OutputStreamOverStream
-                implements Windows.Storage.Streams.IOutputStream, Windows.Foundation.IClosable
+                implements
+                    Windows.Storage.Streams.IOutputStream,
+                    Windows.Foundation.IClosable
             {
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 dispose(): void;
                 close(): void;
@@ -13681,8 +15726,12 @@ declare namespace Windows {
                 canWrite: boolean;
                 position: number;
                 size: number;
-                getInputStreamAt(position: number): Windows.Storage.Streams.IInputStream;
-                getOutputStreamAt(position: number): Windows.Storage.Streams.IOutputStream;
+                getInputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
+                getOutputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IOutputStream;
                 seek(position: number): void;
                 cloneStream(): Windows.Storage.Streams.IRandomAccessStream;
                 dispose(): void;
@@ -13690,10 +15739,16 @@ declare namespace Windows {
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 close(): void;
             }
@@ -13702,38 +15757,44 @@ declare namespace Windows {
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
             }
-            export interface IOutputStream extends Windows.Foundation.IClosable {
+            export interface IOutputStream
+                extends Windows.Foundation.IClosable {
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
             }
             export interface IRandomAccessStream
-                extends
-                    Windows.Foundation.IClosable,
+                extends Windows.Foundation.IClosable,
                     Windows.Storage.Streams.IInputStream,
-                    Windows.Storage.Streams.IOutputStream
-            {
+                    Windows.Storage.Streams.IOutputStream {
                 canRead: boolean;
                 canWrite: boolean;
                 position: number;
                 size: number;
-                getInputStreamAt(position: number): Windows.Storage.Streams.IInputStream;
-                getOutputStreamAt(position: number): Windows.Storage.Streams.IOutputStream;
+                getInputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
+                getOutputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IOutputStream;
                 seek(position: number): void;
                 cloneStream(): Windows.Storage.Streams.IRandomAccessStream;
             }
             export interface IRandomAccessStreamWithContentType
-                extends
-                    Windows.Storage.Streams.IRandomAccessStream,
+                extends Windows.Storage.Streams.IRandomAccessStream,
                     Windows.Foundation.IClosable,
                     Windows.Storage.Streams.IInputStream,
                     Windows.Storage.Streams.IOutputStream,
-                    Windows.Storage.Streams.IContentTypeProvider
-            {
-            }
+                    Windows.Storage.Streams.IContentTypeProvider {}
         }
     }
 }
@@ -13744,7 +15805,10 @@ declare namespace Windows {
                 export interface IFileRemovedEventArgs {
                     id: string;
                 }
-                export class FileRemovedEventArgs implements Windows.Storage.Pickers.Provider.IFileRemovedEventArgs {
+                export class FileRemovedEventArgs
+                    implements
+                        Windows.Storage.Pickers.Provider.IFileRemovedEventArgs
+                {
                     id: string;
                 }
                 export enum AddFileResult {
@@ -13772,7 +15836,10 @@ declare namespace Windows {
                     onfileremoved: any /* TODO */;
                     onclosing: any /* TODO */;
                 }
-                export class FileOpenPickerUI implements Windows.Storage.Pickers.Provider.IFileOpenPickerUI {
+                export class FileOpenPickerUI
+                    implements
+                        Windows.Storage.Pickers.Provider.IFileOpenPickerUI
+                {
                     allowedFileTypes: Windows.Foundation.Collections.IVectorView<string>;
                     selectionMode: Windows.Storage.Pickers.Provider.FileSelectionMode;
                     settingsIdentifier: string;
@@ -13788,7 +15855,9 @@ declare namespace Windows {
                     onclosing: any /* TODO */;
                 }
                 export class PickerClosingEventArgs
-                    implements Windows.Storage.Pickers.Provider.IPickerClosingEventArgs
+                    implements
+                        Windows.Storage.Pickers.Provider
+                            .IPickerClosingEventArgs
                 {
                     closingOperation: Windows.Storage.Pickers.Provider.PickerClosingOperation;
                     isCanceled: boolean;
@@ -13798,7 +15867,9 @@ declare namespace Windows {
                     isCanceled: boolean;
                 }
                 export class PickerClosingOperation
-                    implements Windows.Storage.Pickers.Provider.IPickerClosingOperation
+                    implements
+                        Windows.Storage.Pickers.Provider
+                            .IPickerClosingOperation
                 {
                     deadline: Date;
                     getDeferral(): Windows.Storage.Pickers.Provider.PickerClosingDeferral;
@@ -13807,7 +15878,10 @@ declare namespace Windows {
                     deadline: Date;
                     getDeferral(): Windows.Storage.Pickers.Provider.PickerClosingDeferral;
                 }
-                export class PickerClosingDeferral implements Windows.Storage.Pickers.Provider.IPickerClosingDeferral {
+                export class PickerClosingDeferral
+                    implements
+                        Windows.Storage.Pickers.Provider.IPickerClosingDeferral
+                {
                     complete(): void;
                 }
                 export interface IPickerClosingDeferral {
@@ -13823,28 +15897,40 @@ declare namespace Windows {
                     fileName: string;
                     settingsIdentifier: string;
                     title: string;
-                    trySetFileName(value: string): Windows.Storage.Pickers.Provider.SetFileNameResult;
+                    trySetFileName(
+                        value: string,
+                    ): Windows.Storage.Pickers.Provider.SetFileNameResult;
                     onfilenamechanged: any /* TODO */;
                     ontargetfilerequested: any /* TODO */;
                 }
-                export class FileSavePickerUI implements Windows.Storage.Pickers.Provider.IFileSavePickerUI {
+                export class FileSavePickerUI
+                    implements
+                        Windows.Storage.Pickers.Provider.IFileSavePickerUI
+                {
                     allowedFileTypes: Windows.Foundation.Collections.IVectorView<string>;
                     fileName: string;
                     settingsIdentifier: string;
                     title: string;
-                    trySetFileName(value: string): Windows.Storage.Pickers.Provider.SetFileNameResult;
+                    trySetFileName(
+                        value: string,
+                    ): Windows.Storage.Pickers.Provider.SetFileNameResult;
                     onfilenamechanged: any /* TODO */;
                     ontargetfilerequested: any /* TODO */;
                 }
                 export class TargetFileRequestedEventArgs
-                    implements Windows.Storage.Pickers.Provider.ITargetFileRequestedEventArgs
+                    implements
+                        Windows.Storage.Pickers.Provider
+                            .ITargetFileRequestedEventArgs
                 {
                     request: Windows.Storage.Pickers.Provider.TargetFileRequest;
                 }
                 export interface ITargetFileRequestedEventArgs {
                     request: Windows.Storage.Pickers.Provider.TargetFileRequest;
                 }
-                export class TargetFileRequest implements Windows.Storage.Pickers.Provider.ITargetFileRequest {
+                export class TargetFileRequest
+                    implements
+                        Windows.Storage.Pickers.Provider.ITargetFileRequest
+                {
                     targetFile: Windows.Storage.IStorageFile;
                     getDeferral(): Windows.Storage.Pickers.Provider.TargetFileRequestDeferral;
                 }
@@ -13853,7 +15939,9 @@ declare namespace Windows {
                     getDeferral(): Windows.Storage.Pickers.Provider.TargetFileRequestDeferral;
                 }
                 export class TargetFileRequestDeferral
-                    implements Windows.Storage.Pickers.Provider.ITargetFileRequestDeferral
+                    implements
+                        Windows.Storage.Pickers.Provider
+                            .ITargetFileRequestDeferral
                 {
                     complete(): void;
                 }
@@ -13884,7 +15972,9 @@ declare namespace Windows {
                 onfileupdaterequested: any /* TODO */;
                 onuirequested: any /* TODO */;
             }
-            export class CachedFileUpdaterUI implements Windows.Storage.Provider.ICachedFileUpdaterUI {
+            export class CachedFileUpdaterUI
+                implements Windows.Storage.Provider.ICachedFileUpdaterUI
+            {
                 title: string;
                 uIStatus: Windows.Storage.Provider.UIStatus;
                 updateTarget: Windows.Storage.Provider.CachedFileTarget;
@@ -13892,14 +15982,17 @@ declare namespace Windows {
                 onuirequested: any /* TODO */;
             }
             export class FileUpdateRequestedEventArgs
-                implements Windows.Storage.Provider.IFileUpdateRequestedEventArgs
+                implements
+                    Windows.Storage.Provider.IFileUpdateRequestedEventArgs
             {
                 request: Windows.Storage.Provider.FileUpdateRequest;
             }
             export interface IFileUpdateRequestedEventArgs {
                 request: Windows.Storage.Provider.FileUpdateRequest;
             }
-            export class FileUpdateRequest implements Windows.Storage.Provider.IFileUpdateRequest {
+            export class FileUpdateRequest
+                implements Windows.Storage.Provider.IFileUpdateRequest
+            {
                 contentId: string;
                 file: Windows.Storage.StorageFile;
                 status: Windows.Storage.Provider.FileUpdateStatus;
@@ -13913,7 +16006,9 @@ declare namespace Windows {
                 getDeferral(): Windows.Storage.Provider.FileUpdateRequestDeferral;
                 updateLocalFile(value: Windows.Storage.IStorageFile): void;
             }
-            export class FileUpdateRequestDeferral implements Windows.Storage.Provider.IFileUpdateRequestDeferral {
+            export class FileUpdateRequestDeferral
+                implements Windows.Storage.Provider.IFileUpdateRequestDeferral
+            {
                 complete(): void;
             }
             export interface IFileUpdateRequestDeferral {
@@ -14003,8 +16098,12 @@ declare namespace Windows {
                 originalWidth: number;
                 returnedSmallerCachedSize: boolean;
                 type: Windows.Storage.FileProperties.ThumbnailType;
-                getInputStreamAt(position: number): Windows.Storage.Streams.IInputStream;
-                getOutputStreamAt(position: number): Windows.Storage.Streams.IOutputStream;
+                getInputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IInputStream;
+                getOutputStreamAt(
+                    position: number,
+                ): Windows.Storage.Streams.IOutputStream;
                 seek(position: number): void;
                 cloneStream(): Windows.Storage.Streams.IRandomAccessStream;
                 dispose(): void;
@@ -14012,10 +16111,16 @@ declare namespace Windows {
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 close(): void;
             }
@@ -14053,29 +16158,26 @@ declare namespace Windows {
             export interface IStorageItemExtraProperties {
                 retrievePropertiesAsync(
                     propertiesToRetrieve: Windows.Foundation.Collections.IIterable<string>,
-                ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IMap<string, any>>;
+                ): Windows.Foundation.IAsyncOperation<
+                    Windows.Foundation.Collections.IMap<string, any>
+                >;
                 savePropertiesAsync(
                     propertiesToSave: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, any>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 savePropertiesAsync(): Windows.Foundation.IAsyncAction;
             }
             export interface IStorageItemContentProperties
-                extends Windows.Storage.FileProperties.IStorageItemExtraProperties
-            {
-                getMusicPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.MusicProperties
-                >;
-                getVideoPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.VideoProperties
-                >;
-                getImagePropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.ImageProperties
-                >;
-                getDocumentPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.DocumentProperties
-                >;
+                extends Windows.Storage.FileProperties
+                    .IStorageItemExtraProperties {
+                getMusicPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.MusicProperties>;
+                getVideoPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.VideoProperties>;
+                getImagePropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.ImageProperties>;
+                getDocumentPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.DocumentProperties>;
             }
             export class MusicProperties
                 implements
@@ -14100,10 +16202,15 @@ declare namespace Windows {
                 year: number;
                 retrievePropertiesAsync(
                     propertiesToRetrieve: Windows.Foundation.Collections.IIterable<string>,
-                ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IMap<string, any>>;
+                ): Windows.Foundation.IAsyncOperation<
+                    Windows.Foundation.Collections.IMap<string, any>
+                >;
                 savePropertiesAsync(
                     propertiesToSave: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, any>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 savePropertiesAsync(): Windows.Foundation.IAsyncAction;
@@ -14131,10 +16238,15 @@ declare namespace Windows {
                 year: number;
                 retrievePropertiesAsync(
                     propertiesToRetrieve: Windows.Foundation.Collections.IIterable<string>,
-                ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IMap<string, any>>;
+                ): Windows.Foundation.IAsyncOperation<
+                    Windows.Foundation.Collections.IMap<string, any>
+                >;
                 savePropertiesAsync(
                     propertiesToSave: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, any>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 savePropertiesAsync(): Windows.Foundation.IAsyncAction;
@@ -14158,10 +16270,15 @@ declare namespace Windows {
                 width: number;
                 retrievePropertiesAsync(
                     propertiesToRetrieve: Windows.Foundation.Collections.IIterable<string>,
-                ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IMap<string, any>>;
+                ): Windows.Foundation.IAsyncOperation<
+                    Windows.Foundation.Collections.IMap<string, any>
+                >;
                 savePropertiesAsync(
                     propertiesToSave: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, any>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 savePropertiesAsync(): Windows.Foundation.IAsyncAction;
@@ -14177,15 +16294,22 @@ declare namespace Windows {
                 title: string;
                 retrievePropertiesAsync(
                     propertiesToRetrieve: Windows.Foundation.Collections.IIterable<string>,
-                ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IMap<string, any>>;
+                ): Windows.Foundation.IAsyncOperation<
+                    Windows.Foundation.Collections.IMap<string, any>
+                >;
                 savePropertiesAsync(
                     propertiesToSave: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, any>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 savePropertiesAsync(): Windows.Foundation.IAsyncAction;
             }
-            export interface IMusicProperties extends Windows.Storage.FileProperties.IStorageItemExtraProperties {
+            export interface IMusicProperties
+                extends Windows.Storage.FileProperties
+                    .IStorageItemExtraProperties {
                 album: string;
                 albumArtist: string;
                 artist: string;
@@ -14203,7 +16327,9 @@ declare namespace Windows {
                 writers: Windows.Foundation.Collections.IVector<string>;
                 year: number;
             }
-            export interface IImageProperties extends Windows.Storage.FileProperties.IStorageItemExtraProperties {
+            export interface IImageProperties
+                extends Windows.Storage.FileProperties
+                    .IStorageItemExtraProperties {
                 cameraManufacturer: string;
                 cameraModel: string;
                 dateTaken: Date;
@@ -14217,7 +16343,9 @@ declare namespace Windows {
                 title: string;
                 width: number;
             }
-            export interface IVideoProperties extends Windows.Storage.FileProperties.IStorageItemExtraProperties {
+            export interface IVideoProperties
+                extends Windows.Storage.FileProperties
+                    .IStorageItemExtraProperties {
                 bitrate: number;
                 directors: Windows.Foundation.Collections.IVector<string>;
                 duration: number;
@@ -14235,7 +16363,9 @@ declare namespace Windows {
                 writers: Windows.Foundation.Collections.IVector<string>;
                 year: number;
             }
-            export interface IDocumentProperties extends Windows.Storage.FileProperties.IStorageItemExtraProperties {
+            export interface IDocumentProperties
+                extends Windows.Storage.FileProperties
+                    .IStorageItemExtraProperties {
                 author: Windows.Foundation.Collections.IVector<string>;
                 comment: string;
                 keywords: Windows.Foundation.Collections.IVector<string>;
@@ -14248,27 +16378,25 @@ declare namespace Windows {
             }
             export class StorageItemContentProperties
                 implements
-                    Windows.Storage.FileProperties.IStorageItemContentProperties,
+                    Windows.Storage.FileProperties
+                        .IStorageItemContentProperties,
                     Windows.Storage.FileProperties.IStorageItemExtraProperties
             {
-                getMusicPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.MusicProperties
-                >;
-                getVideoPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.VideoProperties
-                >;
-                getImagePropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.ImageProperties
-                >;
-                getDocumentPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.DocumentProperties
-                >;
+                getMusicPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.MusicProperties>;
+                getVideoPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.VideoProperties>;
+                getImagePropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.ImageProperties>;
+                getDocumentPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.DocumentProperties>;
                 retrievePropertiesAsync(
                     propertiesToRetrieve: Windows.Foundation.Collections.IIterable<string>,
-                ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IMap<string, any>>;
+                ): Windows.Foundation.IAsyncOperation<
+                    Windows.Foundation.Collections.IMap<string, any>
+                >;
                 savePropertiesAsync(
                     propertiesToSave: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, any>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 savePropertiesAsync(): Windows.Foundation.IAsyncAction;
@@ -14283,10 +16411,15 @@ declare namespace Windows {
                 size: number;
                 retrievePropertiesAsync(
                     propertiesToRetrieve: Windows.Foundation.Collections.IIterable<string>,
-                ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IMap<string, any>>;
+                ): Windows.Foundation.IAsyncOperation<
+                    Windows.Foundation.Collections.IMap<string, any>
+                >;
                 savePropertiesAsync(
                     propertiesToSave: Windows.Foundation.Collections.IIterable<
-                        Windows.Foundation.Collections.IKeyValuePair<string, any>
+                        Windows.Foundation.Collections.IKeyValuePair<
+                            string,
+                            any
+                        >
                     >,
                 ): Windows.Foundation.IAsyncAction;
                 savePropertiesAsync(): Windows.Foundation.IAsyncAction;
@@ -14321,19 +16454,29 @@ declare namespace Windows {
             displayType: string;
             folderRelativeId: string;
             properties: Windows.Storage.FileProperties.StorageItemContentProperties;
-            createFileAsync(desiredName: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+            createFileAsync(
+                desiredName: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
             createFileAsync(
                 desiredName: string,
                 options: Windows.Storage.CreationCollisionOption,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-            createFolderAsync(desiredName: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+            createFolderAsync(
+                desiredName: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
             createFolderAsync(
                 desiredName: string,
                 options: Windows.Storage.CreationCollisionOption,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
-            getFileAsync(name: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-            getFolderAsync(name: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
-            getItemAsync(name: string): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
+            getFileAsync(
+                name: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+            getFolderAsync(
+                name: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+            getItemAsync(
+                name: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
             getFilesAsync(): Windows.Foundation.IAsyncOperation<
                 Windows.Foundation.Collections.IVectorView<Windows.Storage.StorageFile>
             >;
@@ -14349,10 +16492,10 @@ declare namespace Windows {
                 option: Windows.Storage.NameCollisionOption,
             ): Windows.Foundation.IAsyncAction;
             deleteAsync(): Windows.Foundation.IAsyncAction;
-            deleteAsync(option: Windows.Storage.StorageDeleteOption): Windows.Foundation.IAsyncAction;
-            getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                Windows.Storage.FileProperties.BasicProperties
-            >;
+            deleteAsync(
+                option: Windows.Storage.StorageDeleteOption,
+            ): Windows.Foundation.IAsyncAction;
+            getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.BasicProperties>;
             isOfType(type: Windows.Storage.StorageItemTypes): boolean;
             getIndexedStateAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Search.IndexedState>;
             createFileQuery(): Windows.Storage.Search.StorageFileQueryResult;
@@ -14403,9 +16546,15 @@ declare namespace Windows {
             ): Windows.Foundation.IAsyncOperation<
                 Windows.Foundation.Collections.IVectorView<Windows.Storage.IStorageItem>
             >;
-            areQueryOptionsSupported(queryOptions: Windows.Storage.Search.QueryOptions): boolean;
-            isCommonFolderQuerySupported(query: Windows.Storage.Search.CommonFolderQuery): boolean;
-            isCommonFileQuerySupported(query: Windows.Storage.Search.CommonFileQuery): boolean;
+            areQueryOptionsSupported(
+                queryOptions: Windows.Storage.Search.QueryOptions,
+            ): boolean;
+            isCommonFolderQuerySupported(
+                query: Windows.Storage.Search.CommonFolderQuery,
+            ): boolean;
+            isCommonFileQuerySupported(
+                query: Windows.Storage.Search.CommonFileQuery,
+            ): boolean;
             getThumbnailAsync(
                 mode: Windows.Storage.FileProperties.ThumbnailMode,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.StorageItemThumbnail>;
@@ -14421,7 +16570,9 @@ declare namespace Windows {
             static getFolderFromPathAsync(
                 path: string,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
-            tryGetItemAsync(name: string): Windows.Foundation.IAsyncOperation<IStorageItem>;
+            tryGetItemAsync(
+                name: string,
+            ): Windows.Foundation.IAsyncOperation<IStorageItem>;
         }
         export class KnownFolders {
             static documentsLibrary: Windows.Storage.StorageFolder;
@@ -14439,8 +16590,12 @@ declare namespace Windows {
             openIfExists,
         }
         export interface IDownloadsFolderStatics {
-            createFileAsync(desiredName: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-            createFolderAsync(desiredName: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+            createFileAsync(
+                desiredName: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+            createFolderAsync(
+                desiredName: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
             createFileAsync(
                 desiredName: string,
                 option: Windows.Storage.CreationCollisionOption,
@@ -14484,8 +16639,12 @@ declare namespace Windows {
                 desiredNewName: string,
                 option: Windows.Storage.NameCollisionOption,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-            copyAndReplaceAsync(fileToReplace: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
-            moveAsync(destinationFolder: Windows.Storage.IStorageFolder): Windows.Foundation.IAsyncAction;
+            copyAndReplaceAsync(
+                fileToReplace: Windows.Storage.IStorageFile,
+            ): Windows.Foundation.IAsyncAction;
+            moveAsync(
+                destinationFolder: Windows.Storage.IStorageFolder,
+            ): Windows.Foundation.IAsyncAction;
             moveAsync(
                 destinationFolder: Windows.Storage.IStorageFolder,
                 desiredNewName: string,
@@ -14495,21 +16654,21 @@ declare namespace Windows {
                 desiredNewName: string,
                 option: Windows.Storage.NameCollisionOption,
             ): Windows.Foundation.IAsyncAction;
-            moveAndReplaceAsync(fileToReplace: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
+            moveAndReplaceAsync(
+                fileToReplace: Windows.Storage.IStorageFile,
+            ): Windows.Foundation.IAsyncAction;
             renameAsync(desiredName: string): Windows.Foundation.IAsyncAction;
             renameAsync(
                 desiredName: string,
                 option: Windows.Storage.NameCollisionOption,
             ): Windows.Foundation.IAsyncAction;
             deleteAsync(): Windows.Foundation.IAsyncAction;
-            deleteAsync(option: Windows.Storage.StorageDeleteOption): Windows.Foundation.IAsyncAction;
-            getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                Windows.Storage.FileProperties.BasicProperties
-            >;
+            deleteAsync(
+                option: Windows.Storage.StorageDeleteOption,
+            ): Windows.Foundation.IAsyncAction;
+            getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.BasicProperties>;
             isOfType(type: Windows.Storage.StorageItemTypes): boolean;
-            openReadAsync(): Windows.Foundation.IAsyncOperation<
-                Windows.Storage.Streams.IRandomAccessStreamWithContentType
-            >;
+            openReadAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStreamWithContentType>;
             openSequentialReadAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IInputStream>;
             getThumbnailAsync(
                 mode: Windows.Storage.FileProperties.ThumbnailMode,
@@ -14523,7 +16682,9 @@ declare namespace Windows {
                 requestedSize: number,
                 options: Windows.Storage.FileProperties.ThumbnailOptions,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.StorageItemThumbnail>;
-            static getFileFromPathAsync(path: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+            static getFileFromPathAsync(
+                path: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
             static getFileFromApplicationUriAsync(
                 uri: Windows.Foundation.Uri,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
@@ -14595,7 +16756,9 @@ declare namespace Windows {
             incomplete,
         }
         export interface IStreamedFileDataRequest {
-            failAndClose(failureMode: Windows.Storage.StreamedFileFailureMode): void;
+            failAndClose(
+                failureMode: Windows.Storage.StreamedFileFailureMode,
+            ): void;
         }
         export class StreamedFileDataRequest
             implements
@@ -14608,14 +16771,18 @@ declare namespace Windows {
             ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
             flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
             dispose(): void;
-            failAndClose(failureMode: Windows.Storage.StreamedFileFailureMode): void;
+            failAndClose(
+                failureMode: Windows.Storage.StreamedFileFailureMode,
+            ): void;
             close(): void;
         }
         export interface StreamedFileDataRequestedHandler {
             (stream: Windows.Storage.StreamedFileDataRequest): void;
         }
         export interface IStorageFileStatics {
-            getFileFromPathAsync(path: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+            getFileFromPathAsync(
+                path: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
             getFileFromApplicationUriAsync(
                 uri: Windows.Foundation.Uri,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
@@ -14641,7 +16808,9 @@ declare namespace Windows {
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
         }
         export class StorageStreamTransaction
-            implements Windows.Storage.IStorageStreamTransaction, Windows.Foundation.IClosable
+            implements
+                Windows.Storage.IStorageStreamTransaction,
+                Windows.Foundation.IClosable
         {
             stream: Windows.Storage.Streams.IRandomAccessStream;
             commitAsync(): Windows.Foundation.IAsyncAction;
@@ -14659,26 +16828,36 @@ declare namespace Windows {
                 option: Windows.Storage.NameCollisionOption,
             ): Windows.Foundation.IAsyncAction;
             deleteAsync(): Windows.Foundation.IAsyncAction;
-            deleteAsync(option: Windows.Storage.StorageDeleteOption): Windows.Foundation.IAsyncAction;
-            getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                Windows.Storage.FileProperties.BasicProperties
-            >;
+            deleteAsync(
+                option: Windows.Storage.StorageDeleteOption,
+            ): Windows.Foundation.IAsyncAction;
+            getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.BasicProperties>;
             isOfType(type: Windows.Storage.StorageItemTypes): boolean;
         }
         export interface IStorageFolder extends Windows.Storage.IStorageItem {
-            createFileAsync(desiredName: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+            createFileAsync(
+                desiredName: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
             createFileAsync(
                 desiredName: string,
                 options: Windows.Storage.CreationCollisionOption,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-            createFolderAsync(desiredName: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+            createFolderAsync(
+                desiredName: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
             createFolderAsync(
                 desiredName: string,
                 options: Windows.Storage.CreationCollisionOption,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
-            getFileAsync(name: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-            getFolderAsync(name: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
-            getItemAsync(name: string): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
+            getFileAsync(
+                name: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+            getFolderAsync(
+                name: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+            getItemAsync(
+                name: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
             getFilesAsync(): Windows.Foundation.IAsyncOperation<
                 Windows.Foundation.Collections.IVectorView<Windows.Storage.StorageFile>
             >;
@@ -14696,14 +16875,14 @@ declare namespace Windows {
             >;
         }
         export interface IStorageFolder2 {
-            tryGetItemAsync(name: string): Windows.Foundation.IAsyncOperation<IStorageItem>;
+            tryGetItemAsync(
+                name: string,
+            ): Windows.Foundation.IAsyncOperation<IStorageItem>;
         }
         export interface IStorageFile
-            extends
-                Windows.Storage.IStorageItem,
+            extends Windows.Storage.IStorageItem,
                 Windows.Storage.Streams.IRandomAccessStreamReference,
-                Windows.Storage.Streams.IInputStreamReference
-        {
+                Windows.Storage.Streams.IInputStreamReference {
             contentType: string;
             fileType: string;
             openAsync(
@@ -14722,8 +16901,12 @@ declare namespace Windows {
                 desiredNewName: string,
                 option: Windows.Storage.NameCollisionOption,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-            copyAndReplaceAsync(fileToReplace: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
-            moveAsync(destinationFolder: Windows.Storage.IStorageFolder): Windows.Foundation.IAsyncAction;
+            copyAndReplaceAsync(
+                fileToReplace: Windows.Storage.IStorageFile,
+            ): Windows.Foundation.IAsyncAction;
+            moveAsync(
+                destinationFolder: Windows.Storage.IStorageFolder,
+            ): Windows.Foundation.IAsyncAction;
             moveAsync(
                 destinationFolder: Windows.Storage.IStorageFolder,
                 desiredNewName: string,
@@ -14733,10 +16916,14 @@ declare namespace Windows {
                 desiredNewName: string,
                 option: Windows.Storage.NameCollisionOption,
             ): Windows.Foundation.IAsyncAction;
-            moveAndReplaceAsync(fileToReplace: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
+            moveAndReplaceAsync(
+                fileToReplace: Windows.Storage.IStorageFile,
+            ): Windows.Foundation.IAsyncAction;
         }
         export interface IStorageFolderStatics {
-            getFolderFromPathAsync(path: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+            getFolderFromPathAsync(
+                path: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
         }
         export interface IStorageItemProperties {
             displayName: string;
@@ -14757,18 +16944,26 @@ declare namespace Windows {
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.StorageItemThumbnail>;
         }
         export interface IFileIOStatics {
-            readTextAsync(file: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncOperation<string>;
+            readTextAsync(
+                file: Windows.Storage.IStorageFile,
+            ): Windows.Foundation.IAsyncOperation<string>;
             readTextAsync(
                 file: Windows.Storage.IStorageFile,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
             ): Windows.Foundation.IAsyncOperation<string>;
-            writeTextAsync(file: Windows.Storage.IStorageFile, contents: string): Windows.Foundation.IAsyncAction;
+            writeTextAsync(
+                file: Windows.Storage.IStorageFile,
+                contents: string,
+            ): Windows.Foundation.IAsyncAction;
             writeTextAsync(
                 file: Windows.Storage.IStorageFile,
                 contents: string,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
             ): Windows.Foundation.IAsyncAction;
-            appendTextAsync(file: Windows.Storage.IStorageFile, contents: string): Windows.Foundation.IAsyncAction;
+            appendTextAsync(
+                file: Windows.Storage.IStorageFile,
+                contents: string,
+            ): Windows.Foundation.IAsyncAction;
             appendTextAsync(
                 file: Windows.Storage.IStorageFile,
                 contents: string,
@@ -14776,11 +16971,15 @@ declare namespace Windows {
             ): Windows.Foundation.IAsyncAction;
             readLinesAsync(
                 file: Windows.Storage.IStorageFile,
-            ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVector<string>>;
+            ): Windows.Foundation.IAsyncOperation<
+                Windows.Foundation.Collections.IVector<string>
+            >;
             readLinesAsync(
                 file: Windows.Storage.IStorageFile,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
-            ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVector<string>>;
+            ): Windows.Foundation.IAsyncOperation<
+                Windows.Foundation.Collections.IVector<string>
+            >;
             writeLinesAsync(
                 file: Windows.Storage.IStorageFile,
                 lines: Windows.Foundation.Collections.IIterable<string>,
@@ -14806,10 +17005,15 @@ declare namespace Windows {
                 file: Windows.Storage.IStorageFile,
                 buffer: Windows.Storage.Streams.IBuffer,
             ): Windows.Foundation.IAsyncAction;
-            writeBytesAsync(file: Windows.Storage.IStorageFile, buffer: Uint8Array): Windows.Foundation.IAsyncAction;
+            writeBytesAsync(
+                file: Windows.Storage.IStorageFile,
+                buffer: Uint8Array,
+            ): Windows.Foundation.IAsyncAction;
         }
         export class FileIO {
-            static readTextAsync(file: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncOperation<string>;
+            static readTextAsync(
+                file: Windows.Storage.IStorageFile,
+            ): Windows.Foundation.IAsyncOperation<string>;
             static readTextAsync(
                 file: Windows.Storage.IStorageFile,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
@@ -14834,11 +17038,15 @@ declare namespace Windows {
             ): Windows.Foundation.IAsyncAction;
             static readLinesAsync(
                 file: Windows.Storage.IStorageFile,
-            ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVector<string>>;
+            ): Windows.Foundation.IAsyncOperation<
+                Windows.Foundation.Collections.IVector<string>
+            >;
             static readLinesAsync(
                 file: Windows.Storage.IStorageFile,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
-            ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVector<string>>;
+            ): Windows.Foundation.IAsyncOperation<
+                Windows.Foundation.Collections.IVector<string>
+            >;
             static writeLinesAsync(
                 file: Windows.Storage.IStorageFile,
                 lines: Windows.Foundation.Collections.IIterable<string>,
@@ -14870,18 +17078,26 @@ declare namespace Windows {
             ): Windows.Foundation.IAsyncAction;
         }
         export interface IPathIOStatics {
-            readTextAsync(absolutePath: string): Windows.Foundation.IAsyncOperation<string>;
+            readTextAsync(
+                absolutePath: string,
+            ): Windows.Foundation.IAsyncOperation<string>;
             readTextAsync(
                 absolutePath: string,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
             ): Windows.Foundation.IAsyncOperation<string>;
-            writeTextAsync(absolutePath: string, contents: string): Windows.Foundation.IAsyncAction;
+            writeTextAsync(
+                absolutePath: string,
+                contents: string,
+            ): Windows.Foundation.IAsyncAction;
             writeTextAsync(
                 absolutePath: string,
                 contents: string,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
             ): Windows.Foundation.IAsyncAction;
-            appendTextAsync(absolutePath: string, contents: string): Windows.Foundation.IAsyncAction;
+            appendTextAsync(
+                absolutePath: string,
+                contents: string,
+            ): Windows.Foundation.IAsyncAction;
             appendTextAsync(
                 absolutePath: string,
                 contents: string,
@@ -14889,11 +17105,15 @@ declare namespace Windows {
             ): Windows.Foundation.IAsyncAction;
             readLinesAsync(
                 absolutePath: string,
-            ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVector<string>>;
+            ): Windows.Foundation.IAsyncOperation<
+                Windows.Foundation.Collections.IVector<string>
+            >;
             readLinesAsync(
                 absolutePath: string,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
-            ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVector<string>>;
+            ): Windows.Foundation.IAsyncOperation<
+                Windows.Foundation.Collections.IVector<string>
+            >;
             writeLinesAsync(
                 absolutePath: string,
                 lines: Windows.Foundation.Collections.IIterable<string>,
@@ -14912,26 +17132,39 @@ declare namespace Windows {
                 lines: Windows.Foundation.Collections.IIterable<string>,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
             ): Windows.Foundation.IAsyncAction;
-            readBufferAsync(absolutePath: string): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IBuffer>;
+            readBufferAsync(
+                absolutePath: string,
+            ): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IBuffer>;
             writeBufferAsync(
                 absolutePath: string,
                 buffer: Windows.Storage.Streams.IBuffer,
             ): Windows.Foundation.IAsyncAction;
-            writeBytesAsync(absolutePath: string, buffer: Uint8Array): Windows.Foundation.IAsyncAction;
+            writeBytesAsync(
+                absolutePath: string,
+                buffer: Uint8Array,
+            ): Windows.Foundation.IAsyncAction;
         }
         export class PathIO {
-            static readTextAsync(absolutePath: string): Windows.Foundation.IAsyncOperation<string>;
+            static readTextAsync(
+                absolutePath: string,
+            ): Windows.Foundation.IAsyncOperation<string>;
             static readTextAsync(
                 absolutePath: string,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
             ): Windows.Foundation.IAsyncOperation<string>;
-            static writeTextAsync(absolutePath: string, contents: string): Windows.Foundation.IAsyncAction;
+            static writeTextAsync(
+                absolutePath: string,
+                contents: string,
+            ): Windows.Foundation.IAsyncAction;
             static writeTextAsync(
                 absolutePath: string,
                 contents: string,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
             ): Windows.Foundation.IAsyncAction;
-            static appendTextAsync(absolutePath: string, contents: string): Windows.Foundation.IAsyncAction;
+            static appendTextAsync(
+                absolutePath: string,
+                contents: string,
+            ): Windows.Foundation.IAsyncAction;
             static appendTextAsync(
                 absolutePath: string,
                 contents: string,
@@ -14939,11 +17172,15 @@ declare namespace Windows {
             ): Windows.Foundation.IAsyncAction;
             static readLinesAsync(
                 absolutePath: string,
-            ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVector<string>>;
+            ): Windows.Foundation.IAsyncOperation<
+                Windows.Foundation.Collections.IVector<string>
+            >;
             static readLinesAsync(
                 absolutePath: string,
                 encoding: Windows.Storage.Streams.UnicodeEncoding,
-            ): Windows.Foundation.IAsyncOperation<Windows.Foundation.Collections.IVector<string>>;
+            ): Windows.Foundation.IAsyncOperation<
+                Windows.Foundation.Collections.IVector<string>
+            >;
             static writeLinesAsync(
                 absolutePath: string,
                 lines: Windows.Foundation.Collections.IIterable<string>,
@@ -14969,7 +17206,10 @@ declare namespace Windows {
                 absolutePath: string,
                 buffer: Windows.Storage.Streams.IBuffer,
             ): Windows.Foundation.IAsyncAction;
-            static writeBytesAsync(absolutePath: string, buffer: Uint8Array): Windows.Foundation.IAsyncAction;
+            static writeBytesAsync(
+                absolutePath: string,
+                buffer: Uint8Array,
+            ): Windows.Foundation.IAsyncAction;
         }
         export interface ICachedFileManagerStatics {
             deferUpdates(file: Windows.Storage.IStorageFile): void;
@@ -14983,7 +17223,8 @@ declare namespace Windows {
                 file: Windows.Storage.IStorageFile,
             ): Windows.Foundation.IAsyncOperation<Windows.Storage.Provider.FileUpdateStatus>;
         }
-        export interface IStorageStreamTransaction extends Windows.Foundation.IClosable {
+        export interface IStorageStreamTransaction
+            extends Windows.Foundation.IClosable {
             stream: Windows.Storage.Streams.IRandomAccessStream;
             commitAsync(): Windows.Foundation.IAsyncAction;
         }
@@ -14999,7 +17240,9 @@ declare namespace Windows {
         export interface IApplicationDataStatics {
             current: Windows.Storage.ApplicationData;
         }
-        export class ApplicationData implements Windows.Storage.IApplicationData {
+        export class ApplicationData
+            implements Windows.Storage.IApplicationData
+        {
             localFolder: Windows.Storage.StorageFolder;
             localSettings: Windows.Storage.ApplicationDataContainer;
             roamingFolder: Windows.Storage.StorageFolder;
@@ -15012,7 +17255,9 @@ declare namespace Windows {
                 handler: Windows.Storage.ApplicationDataSetVersionHandler,
             ): Windows.Foundation.IAsyncAction;
             clearAsync(): Windows.Foundation.IAsyncAction;
-            clearAsync(locality: Windows.Storage.ApplicationDataLocality): Windows.Foundation.IAsyncAction;
+            clearAsync(
+                locality: Windows.Storage.ApplicationDataLocality,
+            ): Windows.Foundation.IAsyncAction;
             ondatachanged: any /* TODO */;
             signalDataChanged(): void;
             static current: Windows.Storage.ApplicationData;
@@ -15030,20 +17275,29 @@ declare namespace Windows {
                 handler: Windows.Storage.ApplicationDataSetVersionHandler,
             ): Windows.Foundation.IAsyncAction;
             clearAsync(): Windows.Foundation.IAsyncAction;
-            clearAsync(locality: Windows.Storage.ApplicationDataLocality): Windows.Foundation.IAsyncAction;
+            clearAsync(
+                locality: Windows.Storage.ApplicationDataLocality,
+            ): Windows.Foundation.IAsyncAction;
             ondatachanged: any /* TODO */;
             signalDataChanged(): void;
         }
         export interface ApplicationDataSetVersionHandler {
             (setVersionRequest: Windows.Storage.SetVersionRequest): void;
         }
-        export class SetVersionRequest implements Windows.Storage.ISetVersionRequest {
+        export class SetVersionRequest
+            implements Windows.Storage.ISetVersionRequest
+        {
             currentVersion: number;
             desiredVersion: number;
             getDeferral(): Windows.Storage.SetVersionDeferral;
         }
-        export class ApplicationDataContainer implements Windows.Storage.IApplicationDataContainer {
-            containers: Windows.Foundation.Collections.IMapView<string, Windows.Storage.ApplicationDataContainer>;
+        export class ApplicationDataContainer
+            implements Windows.Storage.IApplicationDataContainer
+        {
+            containers: Windows.Foundation.Collections.IMapView<
+                string,
+                Windows.Storage.ApplicationDataContainer
+            >;
             locality: Windows.Storage.ApplicationDataLocality;
             name: string;
             values: Windows.Foundation.Collections.IPropertySet;
@@ -15058,14 +17312,19 @@ declare namespace Windows {
             desiredVersion: number;
             getDeferral(): Windows.Storage.SetVersionDeferral;
         }
-        export class SetVersionDeferral implements Windows.Storage.ISetVersionDeferral {
+        export class SetVersionDeferral
+            implements Windows.Storage.ISetVersionDeferral
+        {
             complete(): void;
         }
         export interface ISetVersionDeferral {
             complete(): void;
         }
         export interface IApplicationDataContainer {
-            containers: Windows.Foundation.Collections.IMapView<string, Windows.Storage.ApplicationDataContainer>;
+            containers: Windows.Foundation.Collections.IMapView<
+                string,
+                Windows.Storage.ApplicationDataContainer
+            >;
             locality: Windows.Storage.ApplicationDataLocality;
             name: string;
             values: Windows.Foundation.Collections.IPropertySet;
@@ -15080,7 +17339,9 @@ declare namespace Windows {
                 Windows.Foundation.Collections.IPropertySet,
                 Windows.Foundation.Collections.IObservableMap<string, any>,
                 Windows.Foundation.Collections.IMap<string, any>,
-                Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
+                Windows.Foundation.Collections.IIterable<
+                    Windows.Foundation.Collections.IKeyValuePair<string, any>
+                >
         {
             size: number;
             onmapchanged: any /* TODO */;
@@ -15099,7 +17360,9 @@ declare namespace Windows {
                 Windows.Foundation.Collections.IPropertySet,
                 Windows.Foundation.Collections.IObservableMap<string, any>,
                 Windows.Foundation.Collections.IMap<string, any>,
-                Windows.Foundation.Collections.IIterable<Windows.Foundation.Collections.IKeyValuePair<string, any>>
+                Windows.Foundation.Collections.IIterable<
+                    Windows.Foundation.Collections.IKeyValuePair<string, any>
+                >
         {
             size: number;
             onmapchanged: any /* TODO */;
@@ -15196,7 +17459,9 @@ declare namespace Windows {
                     query: Windows.Storage.Search.CommonFolderQuery,
                 ): Windows.Storage.Search.QueryOptions;
             }
-            export class QueryOptions implements Windows.Storage.Search.IQueryOptions {
+            export class QueryOptions
+                implements Windows.Storage.Search.IQueryOptions
+            {
                 constructor(
                     query: Windows.Storage.Search.CommonFileQuery,
                     fileTypeFilter: Windows.Foundation.Collections.IIterable<string>,
@@ -15229,11 +17494,16 @@ declare namespace Windows {
                 getItemCountAsync(): Windows.Foundation.IAsyncOperation<number>;
                 oncontentschanged: any /* TODO */;
                 onoptionschanged: any /* TODO */;
-                findStartIndexAsync(value: any): Windows.Foundation.IAsyncOperation<number>;
+                findStartIndexAsync(
+                    value: any,
+                ): Windows.Foundation.IAsyncOperation<number>;
                 getCurrentQueryOptions(): Windows.Storage.Search.QueryOptions;
-                applyNewQueryOptions(newQueryOptions: Windows.Storage.Search.QueryOptions): void;
+                applyNewQueryOptions(
+                    newQueryOptions: Windows.Storage.Search.QueryOptions,
+                ): void;
             }
-            export interface IStorageFileQueryResult extends Windows.Storage.Search.IStorageQueryResultBase {
+            export interface IStorageFileQueryResult
+                extends Windows.Storage.Search.IStorageQueryResultBase {
                 getFilesAsync(
                     startIndex: number,
                     maxNumberOfItems: number,
@@ -15244,7 +17514,8 @@ declare namespace Windows {
                     Windows.Foundation.Collections.IVectorView<Windows.Storage.StorageFile>
                 >;
             }
-            export interface IStorageFolderQueryResult extends Windows.Storage.Search.IStorageQueryResultBase {
+            export interface IStorageFolderQueryResult
+                extends Windows.Storage.Search.IStorageQueryResultBase {
                 getFoldersAsync(
                     startIndex: number,
                     maxNumberOfItems: number,
@@ -15255,7 +17526,8 @@ declare namespace Windows {
                     Windows.Foundation.Collections.IVectorView<Windows.Storage.StorageFolder>
                 >;
             }
-            export interface IStorageItemQueryResult extends Windows.Storage.Search.IStorageQueryResultBase {
+            export interface IStorageItemQueryResult
+                extends Windows.Storage.Search.IStorageQueryResultBase {
                 getItemsAsync(
                     startIndex: number,
                     maxNumberOfItems: number,
@@ -15316,9 +17588,15 @@ declare namespace Windows {
                 ): Windows.Foundation.IAsyncOperation<
                     Windows.Foundation.Collections.IVectorView<Windows.Storage.IStorageItem>
                 >;
-                areQueryOptionsSupported(queryOptions: Windows.Storage.Search.QueryOptions): boolean;
-                isCommonFolderQuerySupported(query: Windows.Storage.Search.CommonFolderQuery): boolean;
-                isCommonFileQuerySupported(query: Windows.Storage.Search.CommonFileQuery): boolean;
+                areQueryOptionsSupported(
+                    queryOptions: Windows.Storage.Search.QueryOptions,
+                ): boolean;
+                isCommonFolderQuerySupported(
+                    query: Windows.Storage.Search.CommonFolderQuery,
+                ): boolean;
+                isCommonFileQuerySupported(
+                    query: Windows.Storage.Search.CommonFileQuery,
+                ): boolean;
             }
             export class StorageFileQueryResult
                 implements
@@ -15338,9 +17616,13 @@ declare namespace Windows {
                 getItemCountAsync(): Windows.Foundation.IAsyncOperation<number>;
                 oncontentschanged: any /* TODO */;
                 onoptionschanged: any /* TODO */;
-                findStartIndexAsync(value: any): Windows.Foundation.IAsyncOperation<number>;
+                findStartIndexAsync(
+                    value: any,
+                ): Windows.Foundation.IAsyncOperation<number>;
                 getCurrentQueryOptions(): Windows.Storage.Search.QueryOptions;
-                applyNewQueryOptions(newQueryOptions: Windows.Storage.Search.QueryOptions): void;
+                applyNewQueryOptions(
+                    newQueryOptions: Windows.Storage.Search.QueryOptions,
+                ): void;
             }
             export class StorageFolderQueryResult
                 implements
@@ -15360,9 +17642,13 @@ declare namespace Windows {
                 getItemCountAsync(): Windows.Foundation.IAsyncOperation<number>;
                 oncontentschanged: any /* TODO */;
                 onoptionschanged: any /* TODO */;
-                findStartIndexAsync(value: any): Windows.Foundation.IAsyncOperation<number>;
+                findStartIndexAsync(
+                    value: any,
+                ): Windows.Foundation.IAsyncOperation<number>;
                 getCurrentQueryOptions(): Windows.Storage.Search.QueryOptions;
-                applyNewQueryOptions(newQueryOptions: Windows.Storage.Search.QueryOptions): void;
+                applyNewQueryOptions(
+                    newQueryOptions: Windows.Storage.Search.QueryOptions,
+                ): void;
             }
             export class StorageItemQueryResult
                 implements
@@ -15382,41 +17668,67 @@ declare namespace Windows {
                 getItemCountAsync(): Windows.Foundation.IAsyncOperation<number>;
                 oncontentschanged: any /* TODO */;
                 onoptionschanged: any /* TODO */;
-                findStartIndexAsync(value: any): Windows.Foundation.IAsyncOperation<number>;
+                findStartIndexAsync(
+                    value: any,
+                ): Windows.Foundation.IAsyncOperation<number>;
                 getCurrentQueryOptions(): Windows.Storage.Search.QueryOptions;
-                applyNewQueryOptions(newQueryOptions: Windows.Storage.Search.QueryOptions): void;
+                applyNewQueryOptions(
+                    newQueryOptions: Windows.Storage.Search.QueryOptions,
+                ): void;
             }
             export class SortEntryVector
                 implements
-                    Windows.Foundation.Collections.IVector<Windows.Storage.Search.SortEntry>,
-                    Windows.Foundation.Collections.IIterable<Windows.Storage.Search.SortEntry>
+                    Windows.Foundation.Collections
+                        .IVector<Windows.Storage.Search.SortEntry>,
+                    Windows.Foundation.Collections
+                        .IIterable<Windows.Storage.Search.SortEntry>
             {
                 size: number;
                 getAt(index: number): Windows.Storage.Search.SortEntry;
                 getView(): Windows.Foundation.Collections.IVectorView<Windows.Storage.Search.SortEntry>;
-                indexOf(value: Windows.Storage.Search.SortEntry): { index: number; returnValue: boolean };
-                setAt(index: number, value: Windows.Storage.Search.SortEntry): void;
-                insertAt(index: number, value: Windows.Storage.Search.SortEntry): void;
+                indexOf(value: Windows.Storage.Search.SortEntry): {
+                    index: number;
+                    returnValue: boolean;
+                };
+                setAt(
+                    index: number,
+                    value: Windows.Storage.Search.SortEntry,
+                ): void;
+                insertAt(
+                    index: number,
+                    value: Windows.Storage.Search.SortEntry,
+                ): void;
                 removeAt(index: number): void;
                 append(value: Windows.Storage.Search.SortEntry): void;
                 removeAtEnd(): void;
                 clear(): void;
-                getMany(startIndex: number): { items: Windows.Storage.Search.SortEntry[]; returnValue: number };
+                getMany(startIndex: number): {
+                    items: Windows.Storage.Search.SortEntry[];
+                    returnValue: number;
+                };
                 replaceAll(items: Windows.Storage.Search.SortEntry[]): void;
                 first(): Windows.Foundation.Collections.IIterator<Windows.Storage.Search.SortEntry>;
                 toString(): string;
                 toLocaleString(): string;
-                concat(...items: Windows.Storage.Search.SortEntry[][]): Windows.Storage.Search.SortEntry[];
+                concat(
+                    ...items: Windows.Storage.Search.SortEntry[][]
+                ): Windows.Storage.Search.SortEntry[];
                 join(seperator: string): string;
                 pop(): Windows.Storage.Search.SortEntry;
                 push(...items: Windows.Storage.Search.SortEntry[]): void;
                 reverse(): Windows.Storage.Search.SortEntry[];
                 shift(): Windows.Storage.Search.SortEntry;
                 slice(start: number): Windows.Storage.Search.SortEntry[];
-                slice(start: number, end: number): Windows.Storage.Search.SortEntry[];
+                slice(
+                    start: number,
+                    end: number,
+                ): Windows.Storage.Search.SortEntry[];
                 sort(): Windows.Storage.Search.SortEntry[];
                 sort(
-                    compareFn: (a: Windows.Storage.Search.SortEntry, b: Windows.Storage.Search.SortEntry) => number,
+                    compareFn: (
+                        a: Windows.Storage.Search.SortEntry,
+                        b: Windows.Storage.Search.SortEntry,
+                    ) => number,
                 ): Windows.Storage.Search.SortEntry[];
                 splice(start: number): Windows.Storage.Search.SortEntry[];
                 splice(
@@ -15425,8 +17737,13 @@ declare namespace Windows {
                     ...items: Windows.Storage.Search.SortEntry[]
                 ): Windows.Storage.Search.SortEntry[];
                 unshift(...items: Windows.Storage.Search.SortEntry[]): number;
-                lastIndexOf(searchElement: Windows.Storage.Search.SortEntry): number;
-                lastIndexOf(searchElement: Windows.Storage.Search.SortEntry, fromIndex: number): number;
+                lastIndexOf(
+                    searchElement: Windows.Storage.Search.SortEntry,
+                ): number;
+                lastIndexOf(
+                    searchElement: Windows.Storage.Search.SortEntry,
+                    fromIndex: number,
+                ): number;
                 every(
                     callbackfn: (
                         value: Windows.Storage.Search.SortEntry,
@@ -15553,15 +17870,23 @@ declare namespace Windows {
             }
             export class AccessListEntryView
                 implements
-                    Windows.Foundation.Collections.IVectorView<Windows.Storage.AccessCache.AccessListEntry>,
-                    Windows.Foundation.Collections.IIterable<Windows.Storage.AccessCache.AccessListEntry>
+                    Windows.Foundation.Collections
+                        .IVectorView<Windows.Storage.AccessCache.AccessListEntry>,
+                    Windows.Foundation.Collections
+                        .IIterable<Windows.Storage.AccessCache.AccessListEntry>
             {
                 size: number;
-                getAt(index: number): Windows.Storage.AccessCache.AccessListEntry;
-                indexOf(value: Windows.Storage.AccessCache.AccessListEntry): { index: number; returnValue: boolean };
-                getMany(
-                    startIndex: number,
-                ): { items: Windows.Storage.AccessCache.AccessListEntry[]; returnValue: number };
+                getAt(
+                    index: number,
+                ): Windows.Storage.AccessCache.AccessListEntry;
+                indexOf(value: Windows.Storage.AccessCache.AccessListEntry): {
+                    index: number;
+                    returnValue: boolean;
+                };
+                getMany(startIndex: number): {
+                    items: Windows.Storage.AccessCache.AccessListEntry[];
+                    returnValue: number;
+                };
                 first(): Windows.Foundation.Collections.IIterator<Windows.Storage.AccessCache.AccessListEntry>;
                 toString(): string;
                 toLocaleString(): string;
@@ -15570,11 +17895,18 @@ declare namespace Windows {
                 ): Windows.Storage.AccessCache.AccessListEntry[];
                 join(seperator: string): string;
                 pop(): Windows.Storage.AccessCache.AccessListEntry;
-                push(...items: Windows.Storage.AccessCache.AccessListEntry[]): void;
+                push(
+                    ...items: Windows.Storage.AccessCache.AccessListEntry[]
+                ): void;
                 reverse(): Windows.Storage.AccessCache.AccessListEntry[];
                 shift(): Windows.Storage.AccessCache.AccessListEntry;
-                slice(start: number): Windows.Storage.AccessCache.AccessListEntry[];
-                slice(start: number, end: number): Windows.Storage.AccessCache.AccessListEntry[];
+                slice(
+                    start: number,
+                ): Windows.Storage.AccessCache.AccessListEntry[];
+                slice(
+                    start: number,
+                    end: number,
+                ): Windows.Storage.AccessCache.AccessListEntry[];
                 sort(): Windows.Storage.AccessCache.AccessListEntry[];
                 sort(
                     compareFn: (
@@ -15582,15 +17914,24 @@ declare namespace Windows {
                         b: Windows.Storage.AccessCache.AccessListEntry,
                     ) => number,
                 ): Windows.Storage.AccessCache.AccessListEntry[];
-                splice(start: number): Windows.Storage.AccessCache.AccessListEntry[];
+                splice(
+                    start: number,
+                ): Windows.Storage.AccessCache.AccessListEntry[];
                 splice(
                     start: number,
                     deleteCount: number,
                     ...items: Windows.Storage.AccessCache.AccessListEntry[]
                 ): Windows.Storage.AccessCache.AccessListEntry[];
-                unshift(...items: Windows.Storage.AccessCache.AccessListEntry[]): number;
-                lastIndexOf(searchElement: Windows.Storage.AccessCache.AccessListEntry): number;
-                lastIndexOf(searchElement: Windows.Storage.AccessCache.AccessListEntry, fromIndex: number): number;
+                unshift(
+                    ...items: Windows.Storage.AccessCache.AccessListEntry[]
+                ): number;
+                lastIndexOf(
+                    searchElement: Windows.Storage.AccessCache.AccessListEntry,
+                ): number;
+                lastIndexOf(
+                    searchElement: Windows.Storage.AccessCache.AccessListEntry,
+                    fromIndex: number,
+                ): number;
                 every(
                     callbackfn: (
                         value: Windows.Storage.AccessCache.AccessListEntry,
@@ -15713,12 +18054,28 @@ declare namespace Windows {
                 entries: Windows.Storage.AccessCache.AccessListEntryView;
                 maximumItemsAllowed: number;
                 add(file: Windows.Storage.IStorageItem): string;
-                add(file: Windows.Storage.IStorageItem, metadata: string): string;
-                addOrReplace(token: string, file: Windows.Storage.IStorageItem): void;
-                addOrReplace(token: string, file: Windows.Storage.IStorageItem, metadata: string): void;
-                getItemAsync(token: string): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
-                getFileAsync(token: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-                getFolderAsync(token: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+                add(
+                    file: Windows.Storage.IStorageItem,
+                    metadata: string,
+                ): string;
+                addOrReplace(
+                    token: string,
+                    file: Windows.Storage.IStorageItem,
+                ): void;
+                addOrReplace(
+                    token: string,
+                    file: Windows.Storage.IStorageItem,
+                    metadata: string,
+                ): void;
+                getItemAsync(
+                    token: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
+                getFileAsync(
+                    token: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+                getFolderAsync(
+                    token: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
                 getItemAsync(
                     token: string,
                     options: Windows.Storage.AccessCache.AccessCacheOptions,
@@ -15737,25 +18094,41 @@ declare namespace Windows {
                 checkAccess(file: Windows.Storage.IStorageItem): boolean;
             }
             export interface IStorageItemMostRecentlyUsedList
-                extends Windows.Storage.AccessCache.IStorageItemAccessList
-            {
+                extends Windows.Storage.AccessCache.IStorageItemAccessList {
                 onitemremoved: any /* TODO */;
             }
             export class StorageItemMostRecentlyUsedList
                 implements
-                    Windows.Storage.AccessCache.IStorageItemMostRecentlyUsedList,
+                    Windows.Storage.AccessCache
+                        .IStorageItemMostRecentlyUsedList,
                     Windows.Storage.AccessCache.IStorageItemAccessList
             {
                 entries: Windows.Storage.AccessCache.AccessListEntryView;
                 maximumItemsAllowed: number;
                 onitemremoved: any /* TODO */;
                 add(file: Windows.Storage.IStorageItem): string;
-                add(file: Windows.Storage.IStorageItem, metadata: string): string;
-                addOrReplace(token: string, file: Windows.Storage.IStorageItem): void;
-                addOrReplace(token: string, file: Windows.Storage.IStorageItem, metadata: string): void;
-                getItemAsync(token: string): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
-                getFileAsync(token: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-                getFolderAsync(token: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+                add(
+                    file: Windows.Storage.IStorageItem,
+                    metadata: string,
+                ): string;
+                addOrReplace(
+                    token: string,
+                    file: Windows.Storage.IStorageItem,
+                ): void;
+                addOrReplace(
+                    token: string,
+                    file: Windows.Storage.IStorageItem,
+                    metadata: string,
+                ): void;
+                getItemAsync(
+                    token: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
+                getFileAsync(
+                    token: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+                getFolderAsync(
+                    token: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
                 getItemAsync(
                     token: string,
                     options: Windows.Storage.AccessCache.AccessCacheOptions,
@@ -15773,23 +18146,43 @@ declare namespace Windows {
                 clear(): void;
                 checkAccess(file: Windows.Storage.IStorageItem): boolean;
             }
-            export class ItemRemovedEventArgs implements Windows.Storage.AccessCache.IItemRemovedEventArgs {
+            export class ItemRemovedEventArgs
+                implements Windows.Storage.AccessCache.IItemRemovedEventArgs
+            {
                 removedEntry: Windows.Storage.AccessCache.AccessListEntry;
             }
             export interface IStorageApplicationPermissionsStatics {
                 futureAccessList: Windows.Storage.AccessCache.StorageItemAccessList;
                 mostRecentlyUsedList: Windows.Storage.AccessCache.StorageItemMostRecentlyUsedList;
             }
-            export class StorageItemAccessList implements Windows.Storage.AccessCache.IStorageItemAccessList {
+            export class StorageItemAccessList
+                implements Windows.Storage.AccessCache.IStorageItemAccessList
+            {
                 entries: Windows.Storage.AccessCache.AccessListEntryView;
                 maximumItemsAllowed: number;
                 add(file: Windows.Storage.IStorageItem): string;
-                add(file: Windows.Storage.IStorageItem, metadata: string): string;
-                addOrReplace(token: string, file: Windows.Storage.IStorageItem): void;
-                addOrReplace(token: string, file: Windows.Storage.IStorageItem, metadata: string): void;
-                getItemAsync(token: string): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
-                getFileAsync(token: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-                getFolderAsync(token: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+                add(
+                    file: Windows.Storage.IStorageItem,
+                    metadata: string,
+                ): string;
+                addOrReplace(
+                    token: string,
+                    file: Windows.Storage.IStorageItem,
+                ): void;
+                addOrReplace(
+                    token: string,
+                    file: Windows.Storage.IStorageItem,
+                    metadata: string,
+                ): void;
+                getItemAsync(
+                    token: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
+                getFileAsync(
+                    token: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+                getFolderAsync(
+                    token: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
                 getItemAsync(
                     token: string,
                     options: Windows.Storage.AccessCache.AccessCacheOptions,
@@ -15851,7 +18244,9 @@ declare namespace Windows {
                     delayLoad: boolean,
                 ): Windows.Storage.BulkAccess.FileInformationFactory;
             }
-            export class FileInformationFactory implements Windows.Storage.BulkAccess.IFileInformationFactory {
+            export class FileInformationFactory
+                implements Windows.Storage.BulkAccess.IFileInformationFactory
+            {
                 constructor(
                     queryResult: Windows.Storage.Search.IStorageQueryResultBase,
                     mode: Windows.Storage.FileProperties.ThumbnailMode,
@@ -15967,9 +18362,7 @@ declare namespace Windows {
                 openAsync(
                     accessMode: Windows.Storage.FileAccessMode,
                 ): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStream>;
-                openTransactedWriteAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.StorageStreamTransaction
-                >;
+                openTransactedWriteAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageStreamTransaction>;
                 copyAsync(
                     destinationFolder: Windows.Storage.IStorageFolder,
                 ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
@@ -15982,8 +18375,12 @@ declare namespace Windows {
                     desiredNewName: string,
                     option: Windows.Storage.NameCollisionOption,
                 ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-                copyAndReplaceAsync(fileToReplace: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
-                moveAsync(destinationFolder: Windows.Storage.IStorageFolder): Windows.Foundation.IAsyncAction;
+                copyAndReplaceAsync(
+                    fileToReplace: Windows.Storage.IStorageFile,
+                ): Windows.Foundation.IAsyncAction;
+                moveAsync(
+                    destinationFolder: Windows.Storage.IStorageFolder,
+                ): Windows.Foundation.IAsyncAction;
                 moveAsync(
                     destinationFolder: Windows.Storage.IStorageFolder,
                     desiredNewName: string,
@@ -15993,21 +18390,23 @@ declare namespace Windows {
                     desiredNewName: string,
                     option: Windows.Storage.NameCollisionOption,
                 ): Windows.Foundation.IAsyncAction;
-                moveAndReplaceAsync(fileToReplace: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
-                renameAsync(desiredName: string): Windows.Foundation.IAsyncAction;
+                moveAndReplaceAsync(
+                    fileToReplace: Windows.Storage.IStorageFile,
+                ): Windows.Foundation.IAsyncAction;
+                renameAsync(
+                    desiredName: string,
+                ): Windows.Foundation.IAsyncAction;
                 renameAsync(
                     desiredName: string,
                     option: Windows.Storage.NameCollisionOption,
                 ): Windows.Foundation.IAsyncAction;
                 deleteAsync(): Windows.Foundation.IAsyncAction;
-                deleteAsync(option: Windows.Storage.StorageDeleteOption): Windows.Foundation.IAsyncAction;
-                getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.BasicProperties
-                >;
+                deleteAsync(
+                    option: Windows.Storage.StorageDeleteOption,
+                ): Windows.Foundation.IAsyncAction;
+                getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.BasicProperties>;
                 isOfType(type: Windows.Storage.StorageItemTypes): boolean;
-                openReadAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.Streams.IRandomAccessStreamWithContentType
-                >;
+                openReadAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IRandomAccessStreamWithContentType>;
                 openSequentialReadAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.Streams.IInputStream>;
                 getThumbnailAsync(
                     mode: Windows.Storage.FileProperties.ThumbnailMode,
@@ -16046,7 +18445,9 @@ declare namespace Windows {
                 properties: Windows.Storage.FileProperties.StorageItemContentProperties;
                 onthumbnailupdated: any /* TODO */;
                 onpropertiesupdated: any /* TODO */;
-                createFileAsync(desiredName: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+                createFileAsync(
+                    desiredName: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
                 createFileAsync(
                     desiredName: string,
                     options: Windows.Storage.CreationCollisionOption,
@@ -16058,9 +18459,15 @@ declare namespace Windows {
                     desiredName: string,
                     options: Windows.Storage.CreationCollisionOption,
                 ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
-                getFileAsync(name: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
-                getFolderAsync(name: string): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
-                getItemAsync(name: string): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
+                getFileAsync(
+                    name: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
+                getFolderAsync(
+                    name: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
+                getItemAsync(
+                    name: string,
+                ): Windows.Foundation.IAsyncOperation<Windows.Storage.IStorageItem>;
                 getFilesAsync(): Windows.Foundation.IAsyncOperation<
                     Windows.Foundation.Collections.IVectorView<Windows.Storage.StorageFile>
                 >;
@@ -16070,16 +18477,18 @@ declare namespace Windows {
                 getItemsAsync(): Windows.Foundation.IAsyncOperation<
                     Windows.Foundation.Collections.IVectorView<Windows.Storage.IStorageItem>
                 >;
-                renameAsync(desiredName: string): Windows.Foundation.IAsyncAction;
+                renameAsync(
+                    desiredName: string,
+                ): Windows.Foundation.IAsyncAction;
                 renameAsync(
                     desiredName: string,
                     option: Windows.Storage.NameCollisionOption,
                 ): Windows.Foundation.IAsyncAction;
                 deleteAsync(): Windows.Foundation.IAsyncAction;
-                deleteAsync(option: Windows.Storage.StorageDeleteOption): Windows.Foundation.IAsyncAction;
-                getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Storage.FileProperties.BasicProperties
-                >;
+                deleteAsync(
+                    option: Windows.Storage.StorageDeleteOption,
+                ): Windows.Foundation.IAsyncAction;
+                getBasicPropertiesAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.FileProperties.BasicProperties>;
                 isOfType(type: Windows.Storage.StorageItemTypes): boolean;
                 getThumbnailAsync(
                     mode: Windows.Storage.FileProperties.ThumbnailMode,
@@ -16142,9 +18551,15 @@ declare namespace Windows {
                 ): Windows.Foundation.IAsyncOperation<
                     Windows.Foundation.Collections.IVectorView<Windows.Storage.IStorageItem>
                 >;
-                areQueryOptionsSupported(queryOptions: Windows.Storage.Search.QueryOptions): boolean;
-                isCommonFolderQuerySupported(query: Windows.Storage.Search.CommonFolderQuery): boolean;
-                isCommonFileQuerySupported(query: Windows.Storage.Search.CommonFileQuery): boolean;
+                areQueryOptionsSupported(
+                    queryOptions: Windows.Storage.Search.QueryOptions,
+                ): boolean;
+                isCommonFolderQuerySupported(
+                    query: Windows.Storage.Search.CommonFolderQuery,
+                ): boolean;
+                isCommonFileQuerySupported(
+                    query: Windows.Storage.Search.CommonFileQuery,
+                ): boolean;
             }
         }
     }
@@ -16168,27 +18583,43 @@ declare namespace Windows {
             }
             export class FilePickerSelectedFilesArray
                 implements
-                    Windows.Foundation.Collections.IVectorView<Windows.Storage.StorageFile>,
-                    Windows.Foundation.Collections.IIterable<Windows.Storage.StorageFile>
+                    Windows.Foundation.Collections
+                        .IVectorView<Windows.Storage.StorageFile>,
+                    Windows.Foundation.Collections
+                        .IIterable<Windows.Storage.StorageFile>
             {
                 size: number;
                 getAt(index: number): Windows.Storage.StorageFile;
-                indexOf(value: Windows.Storage.StorageFile): { index: number; returnValue: boolean };
-                getMany(startIndex: number): { items: Windows.Storage.StorageFile[]; returnValue: number };
+                indexOf(value: Windows.Storage.StorageFile): {
+                    index: number;
+                    returnValue: boolean;
+                };
+                getMany(startIndex: number): {
+                    items: Windows.Storage.StorageFile[];
+                    returnValue: number;
+                };
                 first(): Windows.Foundation.Collections.IIterator<Windows.Storage.StorageFile>;
                 toString(): string;
                 toLocaleString(): string;
-                concat(...items: Windows.Storage.StorageFile[][]): Windows.Storage.StorageFile[];
+                concat(
+                    ...items: Windows.Storage.StorageFile[][]
+                ): Windows.Storage.StorageFile[];
                 join(seperator: string): string;
                 pop(): Windows.Storage.StorageFile;
                 push(...items: Windows.Storage.StorageFile[]): void;
                 reverse(): Windows.Storage.StorageFile[];
                 shift(): Windows.Storage.StorageFile;
                 slice(start: number): Windows.Storage.StorageFile[];
-                slice(start: number, end: number): Windows.Storage.StorageFile[];
+                slice(
+                    start: number,
+                    end: number,
+                ): Windows.Storage.StorageFile[];
                 sort(): Windows.Storage.StorageFile[];
                 sort(
-                    compareFn: (a: Windows.Storage.StorageFile, b: Windows.Storage.StorageFile) => number,
+                    compareFn: (
+                        a: Windows.Storage.StorageFile,
+                        b: Windows.Storage.StorageFile,
+                    ) => number,
                 ): Windows.Storage.StorageFile[];
                 splice(start: number): Windows.Storage.StorageFile[];
                 splice(
@@ -16198,7 +18629,10 @@ declare namespace Windows {
                 ): Windows.Storage.StorageFile[];
                 unshift(...items: Windows.Storage.StorageFile[]): number;
                 lastIndexOf(searchElement: Windows.Storage.StorageFile): number;
-                lastIndexOf(searchElement: Windows.Storage.StorageFile, fromIndex: number): number;
+                lastIndexOf(
+                    searchElement: Windows.Storage.StorageFile,
+                    fromIndex: number,
+                ): number;
                 every(
                     callbackfn: (
                         value: Windows.Storage.StorageFile,
@@ -16312,7 +18746,10 @@ declare namespace Windows {
             }
             export class FilePickerFileTypesOrderedMap
                 implements
-                    Windows.Foundation.Collections.IMap<string, Windows.Foundation.Collections.IVector<string>>,
+                    Windows.Foundation.Collections.IMap<
+                        string,
+                        Windows.Foundation.Collections.IVector<string>
+                    >,
                     Windows.Foundation.Collections.IIterable<
                         Windows.Foundation.Collections.IKeyValuePair<
                             string,
@@ -16321,17 +18758,25 @@ declare namespace Windows {
                     >
             {
                 size: number;
-                lookup(key: string): Windows.Foundation.Collections.IVector<string>;
+                lookup(
+                    key: string,
+                ): Windows.Foundation.Collections.IVector<string>;
                 hasKey(key: string): boolean;
                 getView(): Windows.Foundation.Collections.IMapView<
                     string,
                     Windows.Foundation.Collections.IVector<string>
                 >;
-                insert(key: string, value: Windows.Foundation.Collections.IVector<string>): boolean;
+                insert(
+                    key: string,
+                    value: Windows.Foundation.Collections.IVector<string>,
+                ): boolean;
                 remove(key: string): void;
                 clear(): void;
                 first(): Windows.Foundation.Collections.IIterator<
-                    Windows.Foundation.Collections.IKeyValuePair<string, Windows.Foundation.Collections.IVector<string>>
+                    Windows.Foundation.Collections.IKeyValuePair<
+                        string,
+                        Windows.Foundation.Collections.IVector<string>
+                    >
                 >;
             }
             export class FileExtensionVector
@@ -16349,7 +18794,10 @@ declare namespace Windows {
                 append(value: string): void;
                 removeAtEnd(): void;
                 clear(): void;
-                getMany(startIndex: number): { items: string[]; returnValue: number };
+                getMany(startIndex: number): {
+                    items: string[];
+                    returnValue: number;
+                };
                 replaceAll(items: string[]): void;
                 first(): Windows.Foundation.Collections.IIterator<string>;
                 toString(): string;
@@ -16365,32 +18813,121 @@ declare namespace Windows {
                 sort(): string[];
                 sort(compareFn: (a: string, b: string) => number): string[];
                 splice(start: number): string[];
-                splice(start: number, deleteCount: number, ...items: string[]): string[];
+                splice(
+                    start: number,
+                    deleteCount: number,
+                    ...items: string[]
+                ): string[];
                 unshift(...items: string[]): number;
                 lastIndexOf(searchElement: string): number;
                 lastIndexOf(searchElement: string, fromIndex: number): number;
-                every(callbackfn: (value: string, index: number, array: string[]) => boolean): boolean;
-                every(callbackfn: (value: string, index: number, array: string[]) => boolean, thisArg: any): boolean;
-                some(callbackfn: (value: string, index: number, array: string[]) => boolean): boolean;
-                some(callbackfn: (value: string, index: number, array: string[]) => boolean, thisArg: any): boolean;
-                forEach(callbackfn: (value: string, index: number, array: string[]) => void): void;
-                forEach(callbackfn: (value: string, index: number, array: string[]) => void, thisArg: any): void;
-                map(callbackfn: (value: string, index: number, array: string[]) => any): any[];
-                map(callbackfn: (value: string, index: number, array: string[]) => any, thisArg: any): any[];
-                filter(callbackfn: (value: string, index: number, array: string[]) => boolean): string[];
-                filter(callbackfn: (value: string, index: number, array: string[]) => boolean, thisArg: any): string[];
+                every(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => boolean,
+                ): boolean;
+                every(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => boolean,
+                    thisArg: any,
+                ): boolean;
+                some(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => boolean,
+                ): boolean;
+                some(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => boolean,
+                    thisArg: any,
+                ): boolean;
+                forEach(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => void,
+                ): void;
+                forEach(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => void,
+                    thisArg: any,
+                ): void;
+                map(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => any,
+                ): any[];
+                map(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => any,
+                    thisArg: any,
+                ): any[];
+                filter(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => boolean,
+                ): string[];
+                filter(
+                    callbackfn: (
+                        value: string,
+                        index: number,
+                        array: string[],
+                    ) => boolean,
+                    thisArg: any,
+                ): string[];
                 reduce(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: string[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: string[],
+                    ) => any,
                 ): any;
                 reduce(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: string[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: string[],
+                    ) => any,
                     initialValue: any,
                 ): any;
                 reduceRight(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: string[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: string[],
+                    ) => any,
                 ): any;
                 reduceRight(
-                    callbackfn: (previousValue: any, currentValue: any, currentIndex: number, array: string[]) => any,
+                    callbackfn: (
+                        previousValue: any,
+                        currentValue: any,
+                        currentIndex: number,
+                        array: string[],
+                    ) => any,
                     initialValue: any,
                 ): any;
                 length: number;
@@ -16434,7 +18971,9 @@ declare namespace Windows {
                 pickFolderAndContinue(): void;
                 pickSingleFolderAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFolder>;
             }
-            export class FileOpenPicker implements Windows.Storage.Pickers.IFileOpenPicker {
+            export class FileOpenPicker
+                implements Windows.Storage.Pickers.IFileOpenPicker
+            {
                 commitButtonText: string;
                 fileTypeFilter: Windows.Foundation.Collections.IVector<string>;
                 settingsIdentifier: string;
@@ -16448,7 +18987,9 @@ declare namespace Windows {
                     Windows.Foundation.Collections.IVectorView<Windows.Storage.StorageFile>
                 >;
             }
-            export class FileSavePicker implements Windows.Storage.Pickers.IFileSavePicker {
+            export class FileSavePicker
+                implements Windows.Storage.Pickers.IFileSavePicker
+            {
                 commitButtonText: string;
                 defaultFileExtension: string;
                 fileTypeChoices: Windows.Foundation.Collections.IMap<
@@ -16463,7 +19004,9 @@ declare namespace Windows {
                 pickSaveFileAndContinue(): void;
                 pickSaveFileAsync(): Windows.Foundation.IAsyncOperation<Windows.Storage.StorageFile>;
             }
-            export class FolderPicker implements Windows.Storage.Pickers.IFolderPicker {
+            export class FolderPicker
+                implements Windows.Storage.Pickers.IFolderPicker
+            {
                 commitButtonText: string;
                 fileTypeFilter: Windows.Foundation.Collections.IVector<string>;
                 settingsIdentifier: string;
@@ -16487,7 +19030,9 @@ declare namespace Windows {
                 xpressHuff,
                 lzms,
             }
-            export interface ICompressor extends Windows.Storage.Streams.IOutputStream, Windows.Foundation.IClosable {
+            export interface ICompressor
+                extends Windows.Storage.Streams.IOutputStream,
+                    Windows.Foundation.IClosable {
                 finishAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 detachStream(): Windows.Storage.Streams.IOutputStream;
             }
@@ -16497,7 +19042,9 @@ declare namespace Windows {
                     Windows.Storage.Streams.IOutputStream,
                     Windows.Foundation.IClosable
             {
-                constructor(underlyingStream: Windows.Storage.Streams.IOutputStream);
+                constructor(
+                    underlyingStream: Windows.Storage.Streams.IOutputStream,
+                );
                 constructor(
                     underlyingStream: Windows.Storage.Streams.IOutputStream,
                     algorithm: Windows.Storage.Compression.CompressAlgorithm,
@@ -16507,12 +19054,17 @@ declare namespace Windows {
                 detachStream(): Windows.Storage.Streams.IOutputStream;
                 writeAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
-                ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    number,
+                    number
+                >;
                 flushAsync(): Windows.Foundation.IAsyncOperation<boolean>;
                 dispose(): void;
                 close(): void;
             }
-            export interface IDecompressor extends Windows.Storage.Streams.IInputStream, Windows.Foundation.IClosable {
+            export interface IDecompressor
+                extends Windows.Storage.Streams.IInputStream,
+                    Windows.Foundation.IClosable {
                 detachStream(): Windows.Storage.Streams.IInputStream;
             }
             export class Decompressor
@@ -16521,13 +19073,18 @@ declare namespace Windows {
                     Windows.Storage.Streams.IInputStream,
                     Windows.Foundation.IClosable
             {
-                constructor(underlyingStream: Windows.Storage.Streams.IInputStream);
+                constructor(
+                    underlyingStream: Windows.Storage.Streams.IInputStream,
+                );
                 detachStream(): Windows.Storage.Streams.IInputStream;
                 readAsync(
                     buffer: Windows.Storage.Streams.IBuffer,
                     count: number,
                     options: Windows.Storage.Streams.InputStreamOptions,
-                ): Windows.Foundation.IAsyncOperationWithProgress<Windows.Storage.Streams.IBuffer, number>;
+                ): Windows.Foundation.IAsyncOperationWithProgress<
+                    Windows.Storage.Streams.IBuffer,
+                    number
+                >;
                 dispose(): void;
                 close(): void;
             }
@@ -16557,13 +19114,17 @@ declare namespace Windows {
                 id: Windows.Storage.Streams.IBuffer;
                 signature: Windows.Storage.Streams.IBuffer;
             }
-            export class HardwareToken implements Windows.System.Profile.IHardwareToken {
+            export class HardwareToken
+                implements Windows.System.Profile.IHardwareToken
+            {
                 certificate: Windows.Storage.Streams.IBuffer;
                 id: Windows.Storage.Streams.IBuffer;
                 signature: Windows.Storage.Streams.IBuffer;
             }
             export interface IHardwareIdentificationStatics {
-                getPackageSpecificToken(nonce: Windows.Storage.Streams.IBuffer): Windows.System.Profile.HardwareToken;
+                getPackageSpecificToken(
+                    nonce: Windows.Storage.Streams.IBuffer,
+                ): Windows.System.Profile.HardwareToken;
             }
             export class HardwareIdentification {
                 static getPackageSpecificToken(
@@ -16588,7 +19149,9 @@ declare namespace Windows {
             export interface TimerElapsedHandler {
                 (timer: Windows.System.Threading.ThreadPoolTimer): void;
             }
-            export class ThreadPoolTimer implements Windows.System.Threading.IThreadPoolTimer {
+            export class ThreadPoolTimer
+                implements Windows.System.Threading.IThreadPoolTimer
+            {
                 delay: number;
                 period: number;
                 cancel(): void;
@@ -16618,7 +19181,9 @@ declare namespace Windows {
                 (operation: Windows.Foundation.IAsyncAction): void;
             }
             export interface IThreadPoolStatics {
-                runAsync(handler: Windows.System.Threading.WorkItemHandler): Windows.Foundation.IAsyncAction;
+                runAsync(
+                    handler: Windows.System.Threading.WorkItemHandler,
+                ): Windows.Foundation.IAsyncAction;
                 runAsync(
                     handler: Windows.System.Threading.WorkItemHandler,
                     priority: Windows.System.Threading.WorkItemPriority,
@@ -16655,7 +19220,9 @@ declare namespace Windows {
                 ): Windows.System.Threading.ThreadPoolTimer;
             }
             export class ThreadPool {
-                static runAsync(handler: Windows.System.Threading.WorkItemHandler): Windows.Foundation.IAsyncAction;
+                static runAsync(
+                    handler: Windows.System.Threading.WorkItemHandler,
+                ): Windows.Foundation.IAsyncAction;
                 static runAsync(
                     handler: Windows.System.Threading.WorkItemHandler,
                     priority: Windows.System.Threading.WorkItemPriority,
@@ -16674,9 +19241,14 @@ declare namespace Windows {
         export namespace Threading {
             export namespace Core {
                 export interface SignalHandler {
-                    (signalNotifier: Windows.System.Threading.Core.SignalNotifier, timedOut: boolean): void;
+                    (
+                        signalNotifier: Windows.System.Threading.Core.SignalNotifier,
+                        timedOut: boolean,
+                    ): void;
                 }
-                export class SignalNotifier implements Windows.System.Threading.Core.ISignalNotifier {
+                export class SignalNotifier
+                    implements Windows.System.Threading.Core.ISignalNotifier
+                {
                     enable(): void;
                     terminate(): void;
                     static attachToEvent(
@@ -16732,8 +19304,13 @@ declare namespace Windows {
                         options: Windows.System.Threading.WorkItemOptions,
                     ): Windows.System.Threading.Core.PreallocatedWorkItem;
                 }
-                export class PreallocatedWorkItem implements Windows.System.Threading.Core.IPreallocatedWorkItem {
-                    constructor(handler: Windows.System.Threading.WorkItemHandler);
+                export class PreallocatedWorkItem
+                    implements
+                        Windows.System.Threading.Core.IPreallocatedWorkItem
+                {
+                    constructor(
+                        handler: Windows.System.Threading.WorkItemHandler,
+                    );
                     constructor(
                         handler: Windows.System.Threading.WorkItemHandler,
                         priority: Windows.System.Threading.WorkItemPriority,
@@ -16775,7 +19352,9 @@ declare namespace Windows {
             export interface IUserInformationStatics {
                 accountPictureChangeEnabled: boolean;
                 nameAccessAllowed: boolean;
-                getAccountPicture(kind: Windows.System.UserProfile.AccountPictureKind): Windows.Storage.IStorageFile;
+                getAccountPicture(
+                    kind: Windows.System.UserProfile.AccountPictureKind,
+                ): Windows.Storage.IStorageFile;
                 setAccountPictureAsync(
                     image: Windows.Storage.IStorageFile,
                 ): Windows.Foundation.IAsyncOperation<Windows.System.UserProfile.SetAccountPictureResult>;
@@ -16827,15 +19406,15 @@ declare namespace Windows {
                 static getFirstNameAsync(): Windows.Foundation.IAsyncOperation<string>;
                 static getLastNameAsync(): Windows.Foundation.IAsyncOperation<string>;
                 static getPrincipalNameAsync(): Windows.Foundation.IAsyncOperation<string>;
-                static getSessionInitiationProtocolUriAsync(): Windows.Foundation.IAsyncOperation<
-                    Windows.Foundation.Uri
-                >;
+                static getSessionInitiationProtocolUriAsync(): Windows.Foundation.IAsyncOperation<Windows.Foundation.Uri>;
                 static getDomainNameAsync(): Windows.Foundation.IAsyncOperation<string>;
             }
             export interface ILockScreenStatics {
                 originalImageFile: Windows.Foundation.Uri;
                 getImageStream(): Windows.Storage.Streams.IRandomAccessStream;
-                setImageFileAsync(value: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
+                setImageFileAsync(
+                    value: Windows.Storage.IStorageFile,
+                ): Windows.Foundation.IAsyncAction;
                 setImageStreamAsync(
                     value: Windows.Storage.Streams.IRandomAccessStream,
                 ): Windows.Foundation.IAsyncAction;
@@ -16843,7 +19422,9 @@ declare namespace Windows {
             export class LockScreen {
                 static originalImageFile: Windows.Foundation.Uri;
                 static getImageStream(): Windows.Storage.Streams.IRandomAccessStream;
-                static setImageFileAsync(value: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncAction;
+                static setImageFileAsync(
+                    value: Windows.Storage.IStorageFile,
+                ): Windows.Foundation.IAsyncAction;
                 static setImageStreamAsync(
                     value: Windows.Storage.Streams.IRandomAccessStream,
                 ): Windows.Foundation.IAsyncAction;
@@ -16874,7 +19455,9 @@ declare namespace Windows {
             preferredPlacement: Windows.UI.Popups.Placement;
             selectionRect: Windows.Foundation.Rect;
         }
-        export class LauncherUIOptions implements Windows.System.ILauncherUIOptions {
+        export class LauncherUIOptions
+            implements Windows.System.ILauncherUIOptions
+        {
             invocationPoint: Windows.Foundation.Point;
             preferredPlacement: Windows.UI.Popups.Placement;
             selectionRect: Windows.Foundation.Rect;
@@ -16889,7 +19472,9 @@ declare namespace Windows {
             treatAsUntrusted: boolean;
             uI: Windows.System.LauncherUIOptions;
         }
-        export class LauncherOptions implements Windows.System.ILauncherOptions {
+        export class LauncherOptions
+            implements Windows.System.ILauncherOptions
+        {
             contentType: string;
             desiredRemainingView: Windows.UI.ViewManagement.ViewSizePreference;
             displayApplicationPicker: boolean;
@@ -16900,24 +19485,32 @@ declare namespace Windows {
             uI: Windows.System.LauncherUIOptions;
         }
         export interface ILauncherStatics {
-            launchFileAsync(file: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncOperation<boolean>;
+            launchFileAsync(
+                file: Windows.Storage.IStorageFile,
+            ): Windows.Foundation.IAsyncOperation<boolean>;
             launchFileAsync(
                 file: Windows.Storage.IStorageFile,
                 options: Windows.System.LauncherOptions,
             ): Windows.Foundation.IAsyncOperation<boolean>;
-            launchUriAsync(uri: Windows.Foundation.Uri): Windows.Foundation.IAsyncOperation<boolean>;
+            launchUriAsync(
+                uri: Windows.Foundation.Uri,
+            ): Windows.Foundation.IAsyncOperation<boolean>;
             launchUriAsync(
                 uri: Windows.Foundation.Uri,
                 options: Windows.System.LauncherOptions,
             ): Windows.Foundation.IAsyncOperation<boolean>;
         }
         export class Launcher {
-            static launchFileAsync(file: Windows.Storage.IStorageFile): Windows.Foundation.IAsyncOperation<boolean>;
+            static launchFileAsync(
+                file: Windows.Storage.IStorageFile,
+            ): Windows.Foundation.IAsyncOperation<boolean>;
             static launchFileAsync(
                 file: Windows.Storage.IStorageFile,
                 options: Windows.System.LauncherOptions,
             ): Windows.Foundation.IAsyncOperation<boolean>;
-            static launchUriAsync(uri: Windows.Foundation.Uri): Windows.Foundation.IAsyncOperation<boolean>;
+            static launchUriAsync(
+                uri: Windows.Foundation.Uri,
+            ): Windows.Foundation.IAsyncOperation<boolean>;
             static launchUriAsync(
                 uri: Windows.Foundation.Uri,
                 options: Windows.System.LauncherOptions,
@@ -17079,7 +19672,9 @@ declare namespace Windows {
                 requestActive(): void;
                 requestRelease(): void;
             }
-            export class DisplayRequest implements Windows.System.Display.IDisplayRequest {
+            export class DisplayRequest
+                implements Windows.System.Display.IDisplayRequest
+            {
                 requestActive(): void;
                 requestRelease(): void;
             }
@@ -17108,29 +19703,34 @@ declare namespace Windows {
                     handler: Windows.UI.Popups.UICommandInvokedHandler,
                 ): Windows.UI.ApplicationSettings.SettingsCommand;
             }
-            export class SettingsCommand implements Windows.UI.Popups.IUICommand {
-                constructor(settingsCommandId: any, label: string, handler: Windows.UI.Popups.UICommandInvokedHandler);
+            export class SettingsCommand
+                implements Windows.UI.Popups.IUICommand
+            {
+                constructor(
+                    settingsCommandId: any,
+                    label: string,
+                    handler: Windows.UI.Popups.UICommandInvokedHandler,
+                );
                 id: any;
                 invoked: Windows.UI.Popups.UICommandInvokedHandler;
                 label: string;
             }
             export interface ISettingsPaneCommandsRequest {
-                applicationCommands: Windows.Foundation.Collections.IVector<
-                    Windows.UI.ApplicationSettings.SettingsCommand
-                >;
+                applicationCommands: Windows.Foundation.Collections.IVector<Windows.UI.ApplicationSettings.SettingsCommand>;
             }
             export class SettingsPaneCommandsRequest
-                implements Windows.UI.ApplicationSettings.ISettingsPaneCommandsRequest
+                implements
+                    Windows.UI.ApplicationSettings.ISettingsPaneCommandsRequest
             {
-                applicationCommands: Windows.Foundation.Collections.IVector<
-                    Windows.UI.ApplicationSettings.SettingsCommand
-                >;
+                applicationCommands: Windows.Foundation.Collections.IVector<Windows.UI.ApplicationSettings.SettingsCommand>;
             }
             export interface ISettingsPaneCommandsRequestedEventArgs {
                 request: Windows.UI.ApplicationSettings.SettingsPaneCommandsRequest;
             }
             export class SettingsPaneCommandsRequestedEventArgs
-                implements Windows.UI.ApplicationSettings.ISettingsPaneCommandsRequestedEventArgs
+                implements
+                    Windows.UI.ApplicationSettings
+                        .ISettingsPaneCommandsRequestedEventArgs
             {
                 request: Windows.UI.ApplicationSettings.SettingsPaneCommandsRequest;
             }
@@ -17143,7 +19743,9 @@ declare namespace Windows {
                 getForCurrentView(): Windows.UI.ApplicationSettings.SettingsPane;
                 show(): void;
             }
-            export class SettingsPane implements Windows.UI.ApplicationSettings.ISettingsPane {
+            export class SettingsPane
+                implements Windows.UI.ApplicationSettings.ISettingsPane
+            {
                 oncommandsrequested: any /* TODO */;
                 static edge: Windows.UI.ApplicationSettings.SettingsEdgeLocation;
                 static getForCurrentView(): Windows.UI.ApplicationSettings.SettingsPane;
@@ -17256,7 +19858,8 @@ declare namespace Windows {
                 occludedRect: Windows.Foundation.Rect;
             }
             export class InputPaneVisibilityEventArgs
-                implements Windows.UI.ViewManagement.IInputPaneVisibilityEventArgs
+                implements
+                    Windows.UI.ViewManagement.IInputPaneVisibilityEventArgs
             {
                 ensuredFocusedElementInView: boolean;
                 occludedRect: Windows.Foundation.Rect;
@@ -17266,7 +19869,9 @@ declare namespace Windows {
                 onshowing: any /* TODO */;
                 onhiding: any /* TODO */;
             }
-            export class InputPane implements Windows.UI.ViewManagement.IInputPane {
+            export class InputPane
+                implements Windows.UI.ViewManagement.IInputPane
+            {
                 occludedRect: Windows.Foundation.Rect;
                 onshowing: any /* TODO */;
                 onhiding: any /* TODO */;
@@ -17299,7 +19904,9 @@ declare namespace Windows {
                 highContrastScheme: string;
                 onhighcontrastchanged: any /* TODO */;
             }
-            export class AccessibilitySettings implements Windows.UI.ViewManagement.IAccessibilitySettings {
+            export class AccessibilitySettings
+                implements Windows.UI.ViewManagement.IAccessibilitySettings
+            {
                 highContrast: boolean;
                 highContrastScheme: string;
                 onhighcontrastchanged: any /* TODO */;
@@ -17317,9 +19924,13 @@ declare namespace Windows {
                 scrollBarArrowSize: Windows.Foundation.Size;
                 scrollBarSize: Windows.Foundation.Size;
                 scrollBarThumbBoxSize: Windows.Foundation.Size;
-                uIElementColor(desiredElement: Windows.UI.ViewManagement.UIElementType): Windows.UI.Color;
+                uIElementColor(
+                    desiredElement: Windows.UI.ViewManagement.UIElementType,
+                ): Windows.UI.Color;
             }
-            export class UISettings implements Windows.UI.ViewManagement.IUISettings {
+            export class UISettings
+                implements Windows.UI.ViewManagement.IUISettings
+            {
                 animationsEnabled: boolean;
                 caretBlinkRate: number;
                 caretBrowsingEnabled: boolean;
@@ -17332,7 +19943,9 @@ declare namespace Windows {
                 scrollBarArrowSize: Windows.Foundation.Size;
                 scrollBarSize: Windows.Foundation.Size;
                 scrollBarThumbBoxSize: Windows.Foundation.Size;
-                uIElementColor(desiredElement: Windows.UI.ViewManagement.UIElementType): Windows.UI.Color;
+                uIElementColor(
+                    desiredElement: Windows.UI.ViewManagement.UIElementType,
+                ): Windows.UI.Color;
             }
         }
     }
@@ -17348,7 +19961,9 @@ declare namespace Windows {
             export interface IEdgeGestureEventArgs {
                 kind: Windows.UI.Input.EdgeGestureKind;
             }
-            export class EdgeGestureEventArgs implements Windows.UI.Input.IEdgeGestureEventArgs {
+            export class EdgeGestureEventArgs
+                implements Windows.UI.Input.IEdgeGestureEventArgs
+            {
                 kind: Windows.UI.Input.EdgeGestureKind;
             }
             export interface IEdgeGestureStatics {
@@ -17496,7 +20111,9 @@ declare namespace Windows {
                 showGestureFeedback: boolean;
                 canBeDoubleTap(value: Windows.UI.Input.PointerPoint): boolean;
                 processDownEvent(value: Windows.UI.Input.PointerPoint): void;
-                processMoveEvents(value: Windows.Foundation.Collections.IVector<Windows.UI.Input.PointerPoint>): void;
+                processMoveEvents(
+                    value: Windows.Foundation.Collections.IVector<Windows.UI.Input.PointerPoint>,
+                ): void;
                 processUpEvent(value: Windows.UI.Input.PointerPoint): void;
                 processMouseWheelEvent(
                     value: Windows.UI.Input.PointerPoint,
@@ -17515,13 +20132,17 @@ declare namespace Windows {
                 onmanipulationcompleted: any /* TODO */;
                 oncrosssliding: any /* TODO */;
             }
-            export class MouseWheelParameters implements Windows.UI.Input.IMouseWheelParameters {
+            export class MouseWheelParameters
+                implements Windows.UI.Input.IMouseWheelParameters
+            {
                 charTranslation: Windows.Foundation.Point;
                 deltaRotationAngle: number;
                 deltaScale: number;
                 pageTranslation: Windows.Foundation.Point;
             }
-            export class GestureRecognizer implements Windows.UI.Input.IGestureRecognizer {
+            export class GestureRecognizer
+                implements Windows.UI.Input.IGestureRecognizer
+            {
                 autoProcessInertia: boolean;
                 crossSlideExact: boolean;
                 crossSlideHorizontally: boolean;
@@ -17542,7 +20163,9 @@ declare namespace Windows {
                 showGestureFeedback: boolean;
                 canBeDoubleTap(value: Windows.UI.Input.PointerPoint): boolean;
                 processDownEvent(value: Windows.UI.Input.PointerPoint): void;
-                processMoveEvents(value: Windows.Foundation.Collections.IVector<Windows.UI.Input.PointerPoint>): void;
+                processMoveEvents(
+                    value: Windows.Foundation.Collections.IVector<Windows.UI.Input.PointerPoint>,
+                ): void;
                 processUpEvent(value: Windows.UI.Input.PointerPoint): void;
                 processMouseWheelEvent(
                     value: Windows.UI.Input.PointerPoint,
@@ -17561,39 +20184,42 @@ declare namespace Windows {
                 onmanipulationcompleted: any /* TODO */;
                 oncrosssliding: any /* TODO */;
             }
-            export class TappedEventArgs implements Windows.UI.Input.ITappedEventArgs {
+            export class TappedEventArgs
+                implements Windows.UI.Input.ITappedEventArgs
+            {
                 pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
                 position: Windows.Foundation.Point;
                 tapCount: number;
             }
-            export class RightTappedEventArgs implements Windows.UI.Input.IRightTappedEventArgs {
+            export class RightTappedEventArgs
+                implements Windows.UI.Input.IRightTappedEventArgs
+            {
                 pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
                 position: Windows.Foundation.Point;
             }
-            export class HoldingEventArgs implements Windows.UI.Input.IHoldingEventArgs {
+            export class HoldingEventArgs
+                implements Windows.UI.Input.IHoldingEventArgs
+            {
                 holdingState: Windows.UI.Input.HoldingState;
                 pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
                 position: Windows.Foundation.Point;
             }
-            export class DraggingEventArgs implements Windows.UI.Input.IDraggingEventArgs {
+            export class DraggingEventArgs
+                implements Windows.UI.Input.IDraggingEventArgs
+            {
                 draggingState: Windows.UI.Input.DraggingState;
                 pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
                 position: Windows.Foundation.Point;
             }
-            export class ManipulationStartedEventArgs implements Windows.UI.Input.IManipulationStartedEventArgs {
+            export class ManipulationStartedEventArgs
+                implements Windows.UI.Input.IManipulationStartedEventArgs
+            {
                 cumulative: Windows.UI.Input.ManipulationDelta;
                 pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
                 position: Windows.Foundation.Point;
             }
-            export class ManipulationUpdatedEventArgs implements Windows.UI.Input.IManipulationUpdatedEventArgs {
-                cumulative: Windows.UI.Input.ManipulationDelta;
-                delta: Windows.UI.Input.ManipulationDelta;
-                pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
-                position: Windows.Foundation.Point;
-                velocities: Windows.UI.Input.ManipulationVelocities;
-            }
-            export class ManipulationInertiaStartingEventArgs
-                implements Windows.UI.Input.IManipulationInertiaStartingEventArgs
+            export class ManipulationUpdatedEventArgs
+                implements Windows.UI.Input.IManipulationUpdatedEventArgs
             {
                 cumulative: Windows.UI.Input.ManipulationDelta;
                 delta: Windows.UI.Input.ManipulationDelta;
@@ -17601,19 +20227,35 @@ declare namespace Windows {
                 position: Windows.Foundation.Point;
                 velocities: Windows.UI.Input.ManipulationVelocities;
             }
-            export class ManipulationCompletedEventArgs implements Windows.UI.Input.IManipulationCompletedEventArgs {
+            export class ManipulationInertiaStartingEventArgs
+                implements
+                    Windows.UI.Input.IManipulationInertiaStartingEventArgs
+            {
+                cumulative: Windows.UI.Input.ManipulationDelta;
+                delta: Windows.UI.Input.ManipulationDelta;
+                pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
+                position: Windows.Foundation.Point;
+                velocities: Windows.UI.Input.ManipulationVelocities;
+            }
+            export class ManipulationCompletedEventArgs
+                implements Windows.UI.Input.IManipulationCompletedEventArgs
+            {
                 cumulative: Windows.UI.Input.ManipulationDelta;
                 pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
                 position: Windows.Foundation.Point;
                 velocities: Windows.UI.Input.ManipulationVelocities;
             }
-            export class CrossSlidingEventArgs implements Windows.UI.Input.ICrossSlidingEventArgs {
+            export class CrossSlidingEventArgs
+                implements Windows.UI.Input.ICrossSlidingEventArgs
+            {
                 crossSlidingState: Windows.UI.Input.CrossSlidingState;
                 pointerDeviceType: Windows.Devices.Input.PointerDeviceType;
                 position: Windows.Foundation.Point;
             }
             export interface IPointerPointStatics {
-                getCurrentPoint(pointerId: number): Windows.UI.Input.PointerPoint;
+                getCurrentPoint(
+                    pointerId: number,
+                ): Windows.UI.Input.PointerPoint;
                 getIntermediatePoints(
                     pointerId: number,
                 ): Windows.Foundation.Collections.IVector<Windows.UI.Input.PointerPoint>;
@@ -17626,7 +20268,9 @@ declare namespace Windows {
                     transform: Windows.UI.Input.IPointerPointTransform,
                 ): Windows.Foundation.Collections.IVector<Windows.UI.Input.PointerPoint>;
             }
-            export class PointerPoint implements Windows.UI.Input.IPointerPoint {
+            export class PointerPoint
+                implements Windows.UI.Input.IPointerPoint
+            {
                 frameId: number;
                 isInContact: boolean;
                 pointerDevice: Windows.Devices.Input.PointerDevice;
@@ -17635,7 +20279,9 @@ declare namespace Windows {
                 properties: Windows.UI.Input.PointerPointProperties;
                 rawPosition: Windows.Foundation.Point;
                 timestamp: number;
-                static getCurrentPoint(pointerId: number): Windows.UI.Input.PointerPoint;
+                static getCurrentPoint(
+                    pointerId: number,
+                ): Windows.UI.Input.PointerPoint;
                 static getIntermediatePoints(
                     pointerId: number,
                 ): Windows.Foundation.Collections.IVector<Windows.UI.Input.PointerPoint>;
@@ -17650,10 +20296,13 @@ declare namespace Windows {
             }
             export interface IPointerPointTransform {
                 inverse: Windows.UI.Input.IPointerPointTransform;
-                tryTransform(
-                    inPoint: Windows.Foundation.Point,
-                ): { outPoint: Windows.Foundation.Point; returnValue: boolean };
-                transformBounds(rect: Windows.Foundation.Rect): Windows.Foundation.Rect;
+                tryTransform(inPoint: Windows.Foundation.Point): {
+                    outPoint: Windows.Foundation.Point;
+                    returnValue: boolean;
+                };
+                transformBounds(
+                    rect: Windows.Foundation.Rect,
+                ): Windows.Foundation.Rect;
             }
             export interface IPointerPoint {
                 frameId: number;
@@ -17665,7 +20314,9 @@ declare namespace Windows {
                 rawPosition: Windows.Foundation.Point;
                 timestamp: number;
             }
-            export class PointerPointProperties implements Windows.UI.Input.IPointerPointProperties {
+            export class PointerPointProperties
+                implements Windows.UI.Input.IPointerPointProperties
+            {
                 contactRect: Windows.Foundation.Rect;
                 contactRectRaw: Windows.Foundation.Rect;
                 isBarrelButtonPressed: boolean;
@@ -17737,7 +20388,9 @@ declare namespace Windows {
             export interface IPointerVisualizationSettingsStatics {
                 getForCurrentView(): Windows.UI.Input.PointerVisualizationSettings;
             }
-            export class PointerVisualizationSettings implements Windows.UI.Input.IPointerVisualizationSettings {
+            export class PointerVisualizationSettings
+                implements Windows.UI.Input.IPointerVisualizationSettings
+            {
                 isBarrelButtonFeedbackEnabled: boolean;
                 isContactFeedbackEnabled: boolean;
                 static getForCurrentView(): Windows.UI.Input.PointerVisualizationSettings;
@@ -17763,9 +20416,14 @@ declare namespace Windows {
             }
             export interface IMessageDialogFactory {
                 create(content: string): Windows.UI.Popups.MessageDialog;
-                createWithTitle(content: string, title: string): Windows.UI.Popups.MessageDialog;
+                createWithTitle(
+                    content: string,
+                    title: string,
+                ): Windows.UI.Popups.MessageDialog;
             }
-            export class MessageDialog implements Windows.UI.Popups.IMessageDialog {
+            export class MessageDialog
+                implements Windows.UI.Popups.IMessageDialog
+            {
                 constructor(content: string);
                 constructor(content: string, title: string);
                 cancelCommandIndex: number;
@@ -17805,14 +20463,23 @@ declare namespace Windows {
             }
             export class UICommand implements Windows.UI.Popups.IUICommand {
                 constructor(label: string);
-                constructor(label: string, action: Windows.UI.Popups.UICommandInvokedHandler);
-                constructor(label: string, action: Windows.UI.Popups.UICommandInvokedHandler, commandId: any);
+                constructor(
+                    label: string,
+                    action: Windows.UI.Popups.UICommandInvokedHandler,
+                );
+                constructor(
+                    label: string,
+                    action: Windows.UI.Popups.UICommandInvokedHandler,
+                    commandId: any,
+                );
                 constructor();
                 id: any;
                 invoked: Windows.UI.Popups.UICommandInvokedHandler;
                 label: string;
             }
-            export class UICommandSeparator implements Windows.UI.Popups.IUICommand {
+            export class UICommandSeparator
+                implements Windows.UI.Popups.IUICommand
+            {
                 id: any;
                 invoked: Windows.UI.Popups.UICommandInvokedHandler;
                 label: string;
@@ -17914,9 +20581,13 @@ declare namespace Windows {
                     logoReference: Windows.Foundation.Uri,
                     wideLogoReference: Windows.Foundation.Uri,
                 ): Windows.UI.StartScreen.SecondaryTile;
-                createWithId(tileId: string): Windows.UI.StartScreen.SecondaryTile;
+                createWithId(
+                    tileId: string,
+                ): Windows.UI.StartScreen.SecondaryTile;
             }
-            export class SecondaryTile implements Windows.UI.StartScreen.ISecondaryTile {
+            export class SecondaryTile
+                implements Windows.UI.StartScreen.ISecondaryTile
+            {
                 constructor(
                     tileId: string,
                     shortName: string,
@@ -18339,7 +21010,10 @@ declare namespace Windows {
                 endUndoGroup(): void;
                 getDefaultCharacterFormat(): Windows.UI.Text.ITextCharacterFormat;
                 getDefaultParagraphFormat(): Windows.UI.Text.ITextParagraphFormat;
-                getRange(startPosition: number, endPosition: number): Windows.UI.Text.ITextRange;
+                getRange(
+                    startPosition: number,
+                    endPosition: number,
+                ): Windows.UI.Text.ITextRange;
                 getRangeFromPoint(
                     point: Windows.Foundation.Point,
                     options: Windows.UI.Text.PointOptions,
@@ -18354,9 +21028,16 @@ declare namespace Windows {
                     options: Windows.UI.Text.TextGetOptions,
                     value: Windows.Storage.Streams.IRandomAccessStream,
                 ): void;
-                setDefaultCharacterFormat(value: Windows.UI.Text.ITextCharacterFormat): void;
-                setDefaultParagraphFormat(value: Windows.UI.Text.ITextParagraphFormat): void;
-                setText(options: Windows.UI.Text.TextSetOptions, value: string): void;
+                setDefaultCharacterFormat(
+                    value: Windows.UI.Text.ITextCharacterFormat,
+                ): void;
+                setDefaultParagraphFormat(
+                    value: Windows.UI.Text.ITextParagraphFormat,
+                ): void;
+                setText(
+                    options: Windows.UI.Text.TextSetOptions,
+                    value: string,
+                ): void;
                 undo(): void;
             }
             export interface ITextRange {
@@ -18376,10 +21057,20 @@ declare namespace Windows {
                 collapse(value: boolean): void;
                 copy(): void;
                 cut(): void;
-                delete_(unit: Windows.UI.Text.TextRangeUnit, count: number): number;
-                endOf(unit: Windows.UI.Text.TextRangeUnit, extend: boolean): number;
+                delete_(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    count: number,
+                ): number;
+                endOf(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    extend: boolean,
+                ): number;
                 expand(unit: Windows.UI.Text.TextRangeUnit): number;
-                findText(value: string, scanLength: number, options: Windows.UI.Text.FindOptions): number;
+                findText(
+                    value: string,
+                    scanLength: number,
+                    options: Windows.UI.Text.FindOptions,
+                ): number;
                 getCharacterUtf32(offset: number): number;
                 getClone(): Windows.UI.Text.ITextRange;
                 getIndex(unit: Windows.UI.Text.TextRangeUnit): number;
@@ -18388,7 +21079,10 @@ declare namespace Windows {
                     verticalAlign: Windows.UI.Text.VerticalCharacterAlignment,
                     options: Windows.UI.Text.PointOptions,
                 ): Windows.Foundation.Point;
-                getRect(options: Windows.UI.Text.PointOptions): { rect: Windows.Foundation.Rect; hit: number };
+                getRect(options: Windows.UI.Text.PointOptions): {
+                    rect: Windows.Foundation.Rect;
+                    hit: number;
+                };
                 getText(options: Windows.UI.Text.TextGetOptions): string;
                 getTextViaStream(
                     options: Windows.UI.Text.TextGetOptions,
@@ -18405,31 +21099,76 @@ declare namespace Windows {
                 ): void;
                 inStory(range: Windows.UI.Text.ITextRange): boolean;
                 isEqual(range: Windows.UI.Text.ITextRange): boolean;
-                move(unit: Windows.UI.Text.TextRangeUnit, count: number): number;
-                moveEnd(unit: Windows.UI.Text.TextRangeUnit, count: number): number;
-                moveStart(unit: Windows.UI.Text.TextRangeUnit, count: number): number;
+                move(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    count: number,
+                ): number;
+                moveEnd(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    count: number,
+                ): number;
+                moveStart(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    count: number,
+                ): number;
                 paste(format: number): void;
                 scrollIntoView(value: Windows.UI.Text.PointOptions): void;
                 matchSelection(): void;
-                setIndex(unit: Windows.UI.Text.TextRangeUnit, index: number, extend: boolean): void;
-                setPoint(point: Windows.Foundation.Point, options: Windows.UI.Text.PointOptions, extend: boolean): void;
+                setIndex(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    index: number,
+                    extend: boolean,
+                ): void;
+                setPoint(
+                    point: Windows.Foundation.Point,
+                    options: Windows.UI.Text.PointOptions,
+                    extend: boolean,
+                ): void;
                 setRange(startPosition: number, endPosition: number): void;
-                setText(options: Windows.UI.Text.TextSetOptions, value: string): void;
+                setText(
+                    options: Windows.UI.Text.TextSetOptions,
+                    value: string,
+                ): void;
                 setTextViaStream(
                     options: Windows.UI.Text.TextSetOptions,
                     value: Windows.Storage.Streams.IRandomAccessStream,
                 ): void;
-                startOf(unit: Windows.UI.Text.TextRangeUnit, extend: boolean): number;
+                startOf(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    extend: boolean,
+                ): number;
             }
             export interface ITextSelection extends Windows.UI.Text.ITextRange {
                 options: Windows.UI.Text.SelectionOptions;
                 type: Windows.UI.Text.SelectionType;
-                endKey(unit: Windows.UI.Text.TextRangeUnit, extend: boolean): number;
-                homeKey(unit: Windows.UI.Text.TextRangeUnit, extend: boolean): number;
-                moveDown(unit: Windows.UI.Text.TextRangeUnit, count: number, extend: boolean): number;
-                moveLeft(unit: Windows.UI.Text.TextRangeUnit, count: number, extend: boolean): number;
-                moveRight(unit: Windows.UI.Text.TextRangeUnit, count: number, extend: boolean): number;
-                moveUp(unit: Windows.UI.Text.TextRangeUnit, count: number, extend: boolean): number;
+                endKey(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    extend: boolean,
+                ): number;
+                homeKey(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    extend: boolean,
+                ): number;
+                moveDown(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    count: number,
+                    extend: boolean,
+                ): number;
+                moveLeft(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    count: number,
+                    extend: boolean,
+                ): number;
+                moveRight(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    count: number,
+                    extend: boolean,
+                ): number;
+                moveUp(
+                    unit: Windows.UI.Text.TextRangeUnit,
+                    count: number,
+                    extend: boolean,
+                ): number;
                 typeText(value: string): void;
             }
             export interface ITextCharacterFormat {
@@ -18484,17 +21223,26 @@ declare namespace Windows {
                 style: Windows.UI.Text.ParagraphStyle;
                 tabCount: number;
                 widowControl: Windows.UI.Text.FormatEffect;
-                addTab(position: number, align: Windows.UI.Text.TabAlignment, leader: Windows.UI.Text.TabLeader): void;
+                addTab(
+                    position: number,
+                    align: Windows.UI.Text.TabAlignment,
+                    leader: Windows.UI.Text.TabLeader,
+                ): void;
                 clearAllTabs(): void;
                 deleteTab(position: number): void;
                 getClone(): Windows.UI.Text.ITextParagraphFormat;
-                getTab(
-                    index: number,
-                ): { position: number; align: Windows.UI.Text.TabAlignment; leader: Windows.UI.Text.TabLeader };
+                getTab(index: number): {
+                    position: number;
+                    align: Windows.UI.Text.TabAlignment;
+                    leader: Windows.UI.Text.TabLeader;
+                };
                 isEqual(format: Windows.UI.Text.ITextParagraphFormat): boolean;
                 setClone(format: Windows.UI.Text.ITextParagraphFormat): void;
                 setIndents(start: number, left: number, right: number): void;
-                setLineSpacing(rule: Windows.UI.Text.LineSpacingRule, spacing: number): void;
+                setLineSpacing(
+                    rule: Windows.UI.Text.LineSpacingRule,
+                    spacing: number,
+                ): void;
             }
             export enum FontStyle {
                 normal,
@@ -18516,8 +21264,7 @@ declare namespace Windows {
             export interface FontWeight {
                 weight: number;
             }
-            export interface IFontWeights {
-            }
+            export interface IFontWeights {}
             export interface IFontWeightsStatics {
                 black: Windows.UI.Text.FontWeight;
                 bold: Windows.UI.Text.FontWeight;
@@ -18563,14 +21310,18 @@ declare namespace Windows {
                     duration: number;
                     type: Windows.UI.Core.AnimationMetrics.PropertyAnimationType;
                 }
-                export interface IScaleAnimation extends Windows.UI.Core.AnimationMetrics.IPropertyAnimation {
+                export interface IScaleAnimation
+                    extends Windows.UI.Core.AnimationMetrics
+                        .IPropertyAnimation {
                     finalScaleX: number;
                     finalScaleY: number;
                     initialScaleX: number;
                     initialScaleY: number;
                     normalizedOrigin: Windows.Foundation.Point;
                 }
-                export interface IOpacityAnimation extends Windows.UI.Core.AnimationMetrics.IPropertyAnimation {
+                export interface IOpacityAnimation
+                    extends Windows.UI.Core.AnimationMetrics
+                        .IPropertyAnimation {
                     finalOpacity: number;
                     initialOpacity: number;
                 }
@@ -18635,9 +21386,7 @@ declare namespace Windows {
                     tapped,
                 }
                 export interface IAnimationDescription {
-                    animations: Windows.Foundation.Collections.IVectorView<
-                        Windows.UI.Core.AnimationMetrics.IPropertyAnimation
-                    >;
+                    animations: Windows.Foundation.Collections.IVectorView<Windows.UI.Core.AnimationMetrics.IPropertyAnimation>;
                     delayLimit: number;
                     staggerDelay: number;
                     staggerDelayFactor: number;
@@ -18649,20 +21398,24 @@ declare namespace Windows {
                         target: Windows.UI.Core.AnimationMetrics.AnimationEffectTarget,
                     ): Windows.UI.Core.AnimationMetrics.AnimationDescription;
                 }
-                export class AnimationDescription implements Windows.UI.Core.AnimationMetrics.IAnimationDescription {
+                export class AnimationDescription
+                    implements
+                        Windows.UI.Core.AnimationMetrics.IAnimationDescription
+                {
                     constructor(
                         effect: Windows.UI.Core.AnimationMetrics.AnimationEffect,
                         target: Windows.UI.Core.AnimationMetrics.AnimationEffectTarget,
                     );
-                    animations: Windows.Foundation.Collections.IVectorView<
-                        Windows.UI.Core.AnimationMetrics.IPropertyAnimation
-                    >;
+                    animations: Windows.Foundation.Collections.IVectorView<Windows.UI.Core.AnimationMetrics.IPropertyAnimation>;
                     delayLimit: number;
                     staggerDelay: number;
                     staggerDelayFactor: number;
                     zOrder: number;
                 }
-                export class PropertyAnimation implements Windows.UI.Core.AnimationMetrics.IPropertyAnimation {
+                export class PropertyAnimation
+                    implements
+                        Windows.UI.Core.AnimationMetrics.IPropertyAnimation
+                {
                     control1: Windows.Foundation.Point;
                     control2: Windows.Foundation.Point;
                     delay: number;
@@ -18685,7 +21438,10 @@ declare namespace Windows {
                     duration: number;
                     type: Windows.UI.Core.AnimationMetrics.PropertyAnimationType;
                 }
-                export class TranslationAnimation implements Windows.UI.Core.AnimationMetrics.IPropertyAnimation {
+                export class TranslationAnimation
+                    implements
+                        Windows.UI.Core.AnimationMetrics.IPropertyAnimation
+                {
                     control1: Windows.Foundation.Point;
                     control2: Windows.Foundation.Point;
                     delay: number;
@@ -18783,39 +21539,52 @@ declare namespace Windows {
             export interface ICoreWindowEventArgs {
                 handled: boolean;
             }
-            export interface IAutomationProviderRequestedEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface IAutomationProviderRequestedEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 automationProvider: any;
             }
-            export interface ICharacterReceivedEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface ICharacterReceivedEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 keyCode: number;
                 keyStatus: Windows.UI.Core.CorePhysicalKeyStatus;
             }
-            export interface IInputEnabledEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface IInputEnabledEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 inputEnabled: boolean;
             }
-            export interface IKeyEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface IKeyEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 keyStatus: Windows.UI.Core.CorePhysicalKeyStatus;
                 virtualKey: Windows.System.VirtualKey;
             }
-            export interface IPointerEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface IPointerEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 currentPoint: Windows.UI.Input.PointerPoint;
                 keyModifiers: Windows.System.VirtualKeyModifiers;
                 getIntermediatePoints(): Windows.Foundation.Collections.IVector<Windows.UI.Input.PointerPoint>;
             }
-            export interface ITouchHitTestingEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface ITouchHitTestingEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 boundingBox: Windows.Foundation.Rect;
                 point: Windows.Foundation.Point;
                 proximityEvaluation: Windows.UI.Core.CoreProximityEvaluation;
-                evaluateProximity(controlBoundingBox: Windows.Foundation.Rect): Windows.UI.Core.CoreProximityEvaluation;
-                evaluateProximity(controlVertices: Windows.Foundation.Point[]): Windows.UI.Core.CoreProximityEvaluation;
+                evaluateProximity(
+                    controlBoundingBox: Windows.Foundation.Rect,
+                ): Windows.UI.Core.CoreProximityEvaluation;
+                evaluateProximity(
+                    controlVertices: Windows.Foundation.Point[],
+                ): Windows.UI.Core.CoreProximityEvaluation;
             }
-            export interface IWindowActivatedEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface IWindowActivatedEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 windowActivationState: Windows.UI.Core.CoreWindowActivationState;
             }
-            export interface IWindowSizeChangedEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface IWindowSizeChangedEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 size: Windows.Foundation.Size;
             }
-            export interface IVisibilityChangedEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface IVisibilityChangedEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 visible: boolean;
             }
             export interface ICoreWindow {
@@ -18830,8 +21599,12 @@ declare namespace Windows {
                 visible: boolean;
                 activate(): void;
                 close(): void;
-                getAsyncKeyState(virtualKey: Windows.System.VirtualKey): Windows.UI.Core.CoreVirtualKeyStates;
-                getKeyState(virtualKey: Windows.System.VirtualKey): Windows.UI.Core.CoreVirtualKeyStates;
+                getAsyncKeyState(
+                    virtualKey: Windows.System.VirtualKey,
+                ): Windows.UI.Core.CoreVirtualKeyStates;
+                getKeyState(
+                    virtualKey: Windows.System.VirtualKey,
+                ): Windows.UI.Core.CoreVirtualKeyStates;
                 releasePointerCapture(): void;
                 setPointerCapture(): void;
                 onactivated: any /* TODO */;
@@ -18853,15 +21626,21 @@ declare namespace Windows {
                 onvisibilitychanged: any /* TODO */;
             }
             export class CoreDispatcher
-                implements Windows.UI.Core.ICoreDispatcher, Windows.UI.Core.ICoreAcceleratorKeys
+                implements
+                    Windows.UI.Core.ICoreDispatcher,
+                    Windows.UI.Core.ICoreAcceleratorKeys
             {
                 hasThreadAccess: boolean;
-                processEvents(options: Windows.UI.Core.CoreProcessEventsOption): void;
+                processEvents(
+                    options: Windows.UI.Core.CoreProcessEventsOption,
+                ): void;
                 runAsync(
                     priority: Windows.UI.Core.CoreDispatcherPriority,
                     agileCallback: Windows.UI.Core.DispatchedHandler,
                 ): Windows.Foundation.IAsyncAction;
-                runIdleAsync(agileCallback: Windows.UI.Core.IdleDispatchedHandler): Windows.Foundation.IAsyncAction;
+                runIdleAsync(
+                    agileCallback: Windows.UI.Core.IdleDispatchedHandler,
+                ): Windows.Foundation.IAsyncAction;
                 onacceleratorkeyactivated: any /* TODO */;
             }
             export class CoreCursor implements Windows.UI.Core.ICoreCursor {
@@ -18881,8 +21660,12 @@ declare namespace Windows {
                 visible: boolean;
                 activate(): void;
                 close(): void;
-                getAsyncKeyState(virtualKey: Windows.System.VirtualKey): Windows.UI.Core.CoreVirtualKeyStates;
-                getKeyState(virtualKey: Windows.System.VirtualKey): Windows.UI.Core.CoreVirtualKeyStates;
+                getAsyncKeyState(
+                    virtualKey: Windows.System.VirtualKey,
+                ): Windows.UI.Core.CoreVirtualKeyStates;
+                getKeyState(
+                    virtualKey: Windows.System.VirtualKey,
+                ): Windows.UI.Core.CoreVirtualKeyStates;
                 releasePointerCapture(): void;
                 setPointerCapture(): void;
                 onactivated: any /* TODO */;
@@ -18905,40 +21688,56 @@ declare namespace Windows {
                 static getForCurrentThread(): Windows.UI.Core.CoreWindow;
             }
             export class WindowActivatedEventArgs
-                implements Windows.UI.Core.IWindowActivatedEventArgs, Windows.UI.Core.ICoreWindowEventArgs
+                implements
+                    Windows.UI.Core.IWindowActivatedEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
             {
                 windowActivationState: Windows.UI.Core.CoreWindowActivationState;
                 handled: boolean;
             }
             export class AutomationProviderRequestedEventArgs
-                implements Windows.UI.Core.IAutomationProviderRequestedEventArgs, Windows.UI.Core.ICoreWindowEventArgs
+                implements
+                    Windows.UI.Core.IAutomationProviderRequestedEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
             {
                 automationProvider: any;
                 handled: boolean;
             }
             export class CharacterReceivedEventArgs
-                implements Windows.UI.Core.ICharacterReceivedEventArgs, Windows.UI.Core.ICoreWindowEventArgs
+                implements
+                    Windows.UI.Core.ICharacterReceivedEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
             {
                 keyCode: number;
                 keyStatus: Windows.UI.Core.CorePhysicalKeyStatus;
                 handled: boolean;
             }
-            export class CoreWindowEventArgs implements Windows.UI.Core.ICoreWindowEventArgs {
+            export class CoreWindowEventArgs
+                implements Windows.UI.Core.ICoreWindowEventArgs
+            {
                 handled: boolean;
             }
             export class InputEnabledEventArgs
-                implements Windows.UI.Core.IInputEnabledEventArgs, Windows.UI.Core.ICoreWindowEventArgs
+                implements
+                    Windows.UI.Core.IInputEnabledEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
             {
                 inputEnabled: boolean;
                 handled: boolean;
             }
-            export class KeyEventArgs implements Windows.UI.Core.IKeyEventArgs, Windows.UI.Core.ICoreWindowEventArgs {
+            export class KeyEventArgs
+                implements
+                    Windows.UI.Core.IKeyEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
+            {
                 keyStatus: Windows.UI.Core.CorePhysicalKeyStatus;
                 virtualKey: Windows.System.VirtualKey;
                 handled: boolean;
             }
             export class PointerEventArgs
-                implements Windows.UI.Core.IPointerEventArgs, Windows.UI.Core.ICoreWindowEventArgs
+                implements
+                    Windows.UI.Core.IPointerEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
             {
                 currentPoint: Windows.UI.Input.PointerPoint;
                 keyModifiers: Windows.System.VirtualKeyModifiers;
@@ -18946,23 +21745,33 @@ declare namespace Windows {
                 getIntermediatePoints(): Windows.Foundation.Collections.IVector<Windows.UI.Input.PointerPoint>;
             }
             export class TouchHitTestingEventArgs
-                implements Windows.UI.Core.ITouchHitTestingEventArgs, Windows.UI.Core.ICoreWindowEventArgs
+                implements
+                    Windows.UI.Core.ITouchHitTestingEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
             {
                 boundingBox: Windows.Foundation.Rect;
                 point: Windows.Foundation.Point;
                 proximityEvaluation: Windows.UI.Core.CoreProximityEvaluation;
                 handled: boolean;
-                evaluateProximity(controlBoundingBox: Windows.Foundation.Rect): Windows.UI.Core.CoreProximityEvaluation;
-                evaluateProximity(controlVertices: Windows.Foundation.Point[]): Windows.UI.Core.CoreProximityEvaluation;
+                evaluateProximity(
+                    controlBoundingBox: Windows.Foundation.Rect,
+                ): Windows.UI.Core.CoreProximityEvaluation;
+                evaluateProximity(
+                    controlVertices: Windows.Foundation.Point[],
+                ): Windows.UI.Core.CoreProximityEvaluation;
             }
             export class WindowSizeChangedEventArgs
-                implements Windows.UI.Core.IWindowSizeChangedEventArgs, Windows.UI.Core.ICoreWindowEventArgs
+                implements
+                    Windows.UI.Core.IWindowSizeChangedEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
             {
                 size: Windows.Foundation.Size;
                 handled: boolean;
             }
             export class VisibilityChangedEventArgs
-                implements Windows.UI.Core.IVisibilityChangedEventArgs, Windows.UI.Core.ICoreWindowEventArgs
+                implements
+                    Windows.UI.Core.IVisibilityChangedEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
             {
                 visible: boolean;
                 handled: boolean;
@@ -18976,10 +21785,13 @@ declare namespace Windows {
             export interface IdleDispatchedHandler {
                 (e: Windows.UI.Core.IdleDispatchedHandlerArgs): void;
             }
-            export class IdleDispatchedHandlerArgs implements Windows.UI.Core.IIdleDispatchedHandlerArgs {
+            export class IdleDispatchedHandlerArgs
+                implements Windows.UI.Core.IIdleDispatchedHandlerArgs
+            {
                 isDispatcherIdle: boolean;
             }
-            export interface IAcceleratorKeyEventArgs extends Windows.UI.Core.ICoreWindowEventArgs {
+            export interface IAcceleratorKeyEventArgs
+                extends Windows.UI.Core.ICoreWindowEventArgs {
                 eventType: Windows.UI.Core.CoreAcceleratorKeyEventType;
                 keyStatus: Windows.UI.Core.CorePhysicalKeyStatus;
                 virtualKey: Windows.System.VirtualKey;
@@ -18988,26 +21800,35 @@ declare namespace Windows {
                 onacceleratorkeyactivated: any /* TODO */;
             }
             export class AcceleratorKeyEventArgs
-                implements Windows.UI.Core.IAcceleratorKeyEventArgs, Windows.UI.Core.ICoreWindowEventArgs
+                implements
+                    Windows.UI.Core.IAcceleratorKeyEventArgs,
+                    Windows.UI.Core.ICoreWindowEventArgs
             {
                 eventType: Windows.UI.Core.CoreAcceleratorKeyEventType;
                 keyStatus: Windows.UI.Core.CorePhysicalKeyStatus;
                 virtualKey: Windows.System.VirtualKey;
                 handled: boolean;
             }
-            export interface ICoreDispatcher extends Windows.UI.Core.ICoreAcceleratorKeys {
+            export interface ICoreDispatcher
+                extends Windows.UI.Core.ICoreAcceleratorKeys {
                 hasThreadAccess: boolean;
-                processEvents(options: Windows.UI.Core.CoreProcessEventsOption): void;
+                processEvents(
+                    options: Windows.UI.Core.CoreProcessEventsOption,
+                ): void;
                 runAsync(
                     priority: Windows.UI.Core.CoreDispatcherPriority,
                     agileCallback: Windows.UI.Core.DispatchedHandler,
                 ): Windows.Foundation.IAsyncAction;
-                runIdleAsync(agileCallback: Windows.UI.Core.IdleDispatchedHandler): Windows.Foundation.IAsyncAction;
+                runIdleAsync(
+                    agileCallback: Windows.UI.Core.IdleDispatchedHandler,
+                ): Windows.Foundation.IAsyncAction;
             }
             export interface IIdleDispatchedHandlerArgs {
                 isDispatcherIdle: boolean;
             }
-            export class CoreAcceleratorKeys implements Windows.UI.Core.ICoreAcceleratorKeys {
+            export class CoreAcceleratorKeys
+                implements Windows.UI.Core.ICoreAcceleratorKeys
+            {
                 onacceleratorkeyactivated: any /* TODO */;
             }
             export interface ICoreCursor {
@@ -19015,7 +21836,10 @@ declare namespace Windows {
                 type: Windows.UI.Core.CoreCursorType;
             }
             export interface ICoreCursorFactory {
-                createCursor(type: Windows.UI.Core.CoreCursorType, id: number): Windows.UI.Core.CoreCursor;
+                createCursor(
+                    type: Windows.UI.Core.CoreCursorType,
+                    id: number,
+                ): Windows.UI.Core.CoreCursor;
             }
             export interface IInitializeWithCoreWindow {
                 initialize(window: Windows.UI.Core.CoreWindow): void;
@@ -19026,14 +21850,18 @@ declare namespace Windows {
             export interface ICoreWindowResizeManagerStatics {
                 getForCurrentView(): Windows.UI.Core.CoreWindowResizeManager;
             }
-            export class CoreWindowResizeManager implements Windows.UI.Core.ICoreWindowResizeManager {
+            export class CoreWindowResizeManager
+                implements Windows.UI.Core.ICoreWindowResizeManager
+            {
                 notifyLayoutCompleted(): void;
                 static getForCurrentView(): Windows.UI.Core.CoreWindowResizeManager;
             }
             export interface ICoreWindowPopupShowingEventArgs {
                 setDesiredSize(value: Windows.Foundation.Size): void;
             }
-            export class CoreWindowPopupShowingEventArgs implements Windows.UI.Core.ICoreWindowPopupShowingEventArgs {
+            export class CoreWindowPopupShowingEventArgs
+                implements Windows.UI.Core.ICoreWindowPopupShowingEventArgs
+            {
                 setDesiredSize(value: Windows.Foundation.Size): void;
             }
             export interface ICoreWindowDialog {
@@ -19049,9 +21877,13 @@ declare namespace Windows {
                 showAsync(): Windows.Foundation.IAsyncOperation<Windows.UI.Popups.IUICommand>;
             }
             export interface ICoreWindowDialogFactory {
-                createWithTitle(title: string): Windows.UI.Core.CoreWindowDialog;
+                createWithTitle(
+                    title: string,
+                ): Windows.UI.Core.CoreWindowDialog;
             }
-            export class CoreWindowDialog implements Windows.UI.Core.ICoreWindowDialog {
+            export class CoreWindowDialog
+                implements Windows.UI.Core.ICoreWindowDialog
+            {
                 constructor(title: string);
                 constructor();
                 backButtonCommand: Windows.UI.Popups.UICommandInvokedHandler;
@@ -19077,10 +21909,17 @@ declare namespace Windows {
                 showAsync(): Windows.Foundation.IAsyncOperation<Windows.UI.Popups.IUICommand>;
             }
             export interface ICoreWindowFlyoutFactory {
-                create(position: Windows.Foundation.Point): Windows.UI.Core.CoreWindowFlyout;
-                createWithTitle(position: Windows.Foundation.Point, title: string): Windows.UI.Core.CoreWindowFlyout;
+                create(
+                    position: Windows.Foundation.Point,
+                ): Windows.UI.Core.CoreWindowFlyout;
+                createWithTitle(
+                    position: Windows.Foundation.Point,
+                    title: string,
+                ): Windows.UI.Core.CoreWindowFlyout;
             }
-            export class CoreWindowFlyout implements Windows.UI.Core.ICoreWindowFlyout {
+            export class CoreWindowFlyout
+                implements Windows.UI.Core.ICoreWindowFlyout
+            {
                 constructor(position: Windows.Foundation.Point);
                 constructor(position: Windows.Foundation.Point, title: string);
                 backButtonCommand: Windows.UI.Popups.UICommandInvokedHandler;
@@ -19121,7 +21960,9 @@ declare namespace Windows {
                     penTip: Windows.UI.Input.Inking.PenTipShape;
                     size: Windows.Foundation.Size;
                 }
-                export class InkDrawingAttributes implements Windows.UI.Input.Inking.IInkDrawingAttributes {
+                export class InkDrawingAttributes
+                    implements Windows.UI.Input.Inking.IInkDrawingAttributes
+                {
                     color: Windows.UI.Color;
                     fitToCurve: boolean;
                     ignorePressure: boolean;
@@ -19137,7 +21978,10 @@ declare namespace Windows {
                     tiltY: number;
                     twist: number;
                 }
-                export class InkStrokeRenderingSegment implements Windows.UI.Input.Inking.IInkStrokeRenderingSegment {
+                export class InkStrokeRenderingSegment
+                    implements
+                        Windows.UI.Input.Inking.IInkStrokeRenderingSegment
+                {
                     bezierControlPoint1: Windows.Foundation.Point;
                     bezierControlPoint2: Windows.Foundation.Point;
                     position: Windows.Foundation.Point;
@@ -19151,45 +21995,63 @@ declare namespace Windows {
                     drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes;
                     recognized: boolean;
                     selected: boolean;
-                    getRenderingSegments(): Windows.Foundation.Collections.IVectorView<
-                        Windows.UI.Input.Inking.InkStrokeRenderingSegment
-                    >;
+                    getRenderingSegments(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkStrokeRenderingSegment>;
                     clone(): Windows.UI.Input.Inking.InkStroke;
                 }
-                export class InkStroke implements Windows.UI.Input.Inking.IInkStroke {
+                export class InkStroke
+                    implements Windows.UI.Input.Inking.IInkStroke
+                {
                     boundingRect: Windows.Foundation.Rect;
                     drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes;
                     recognized: boolean;
                     selected: boolean;
-                    getRenderingSegments(): Windows.Foundation.Collections.IVectorView<
-                        Windows.UI.Input.Inking.InkStrokeRenderingSegment
-                    >;
+                    getRenderingSegments(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkStrokeRenderingSegment>;
                     clone(): Windows.UI.Input.Inking.InkStroke;
                 }
                 export interface IInkStrokeBuilder {
-                    beginStroke(pointerPoint: Windows.UI.Input.PointerPoint): void;
-                    appendToStroke(pointerPoint: Windows.UI.Input.PointerPoint): Windows.UI.Input.PointerPoint;
-                    endStroke(pointerPoint: Windows.UI.Input.PointerPoint): Windows.UI.Input.Inking.InkStroke;
+                    beginStroke(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): void;
+                    appendToStroke(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): Windows.UI.Input.PointerPoint;
+                    endStroke(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): Windows.UI.Input.Inking.InkStroke;
                     createStroke(
                         points: Windows.Foundation.Collections.IIterable<Windows.Foundation.Point>,
                     ): Windows.UI.Input.Inking.InkStroke;
-                    setDefaultDrawingAttributes(drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes): void;
+                    setDefaultDrawingAttributes(
+                        drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes,
+                    ): void;
                 }
-                export class InkStrokeBuilder implements Windows.UI.Input.Inking.IInkStrokeBuilder {
-                    beginStroke(pointerPoint: Windows.UI.Input.PointerPoint): void;
-                    appendToStroke(pointerPoint: Windows.UI.Input.PointerPoint): Windows.UI.Input.PointerPoint;
-                    endStroke(pointerPoint: Windows.UI.Input.PointerPoint): Windows.UI.Input.Inking.InkStroke;
+                export class InkStrokeBuilder
+                    implements Windows.UI.Input.Inking.IInkStrokeBuilder
+                {
+                    beginStroke(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): void;
+                    appendToStroke(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): Windows.UI.Input.PointerPoint;
+                    endStroke(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): Windows.UI.Input.Inking.InkStroke;
                     createStroke(
                         points: Windows.Foundation.Collections.IIterable<Windows.Foundation.Point>,
                     ): Windows.UI.Input.Inking.InkStroke;
-                    setDefaultDrawingAttributes(drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes): void;
+                    setDefaultDrawingAttributes(
+                        drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes,
+                    ): void;
                 }
                 export interface IInkRecognitionResult {
                     boundingRect: Windows.Foundation.Rect;
                     getTextCandidates(): Windows.Foundation.Collections.IVectorView<string>;
                     getStrokes(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkStroke>;
                 }
-                export class InkRecognitionResult implements Windows.UI.Input.Inking.IInkRecognitionResult {
+                export class InkRecognitionResult
+                    implements Windows.UI.Input.Inking.IInkRecognitionResult
+                {
                     boundingRect: Windows.Foundation.Rect;
                     getTextCandidates(): Windows.Foundation.Collections.IVectorView<string>;
                     getStrokes(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkStroke>;
@@ -19198,7 +22060,9 @@ declare namespace Windows {
                     boundingRect: Windows.Foundation.Rect;
                     addStroke(stroke: Windows.UI.Input.Inking.InkStroke): void;
                     deleteSelected(): Windows.Foundation.Rect;
-                    moveSelected(translation: Windows.Foundation.Point): Windows.Foundation.Rect;
+                    moveSelected(
+                        translation: Windows.Foundation.Point,
+                    ): Windows.Foundation.Rect;
                     selectWithPolyLine(
                         polyline: Windows.Foundation.Collections.IIterable<Windows.Foundation.Point>,
                     ): Windows.Foundation.Rect;
@@ -19207,29 +22071,34 @@ declare namespace Windows {
                         to: Windows.Foundation.Point,
                     ): Windows.Foundation.Rect;
                     copySelectedToClipboard(): void;
-                    pasteFromClipboard(position: Windows.Foundation.Point): Windows.Foundation.Rect;
+                    pasteFromClipboard(
+                        position: Windows.Foundation.Point,
+                    ): Windows.Foundation.Rect;
                     canPasteFromClipboard(): boolean;
                     loadAsync(
                         inputStream: Windows.Storage.Streams.IInputStream,
                     ): Windows.Foundation.IAsyncActionWithProgress<number>;
                     saveAsync(
                         outputStream: Windows.Storage.Streams.IOutputStream,
-                    ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                    ): Windows.Foundation.IAsyncOperationWithProgress<
+                        number,
+                        number
+                    >;
                     updateRecognitionResults(
-                        recognitionResults: Windows.Foundation.Collections.IVectorView<
-                            Windows.UI.Input.Inking.InkRecognitionResult
-                        >,
+                        recognitionResults: Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkRecognitionResult>,
                     ): void;
                     getStrokes(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkStroke>;
-                    getRecognitionResults(): Windows.Foundation.Collections.IVectorView<
-                        Windows.UI.Input.Inking.InkRecognitionResult
-                    >;
+                    getRecognitionResults(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkRecognitionResult>;
                 }
-                export class InkStrokeContainer implements Windows.UI.Input.Inking.IInkStrokeContainer {
+                export class InkStrokeContainer
+                    implements Windows.UI.Input.Inking.IInkStrokeContainer
+                {
                     boundingRect: Windows.Foundation.Rect;
                     addStroke(stroke: Windows.UI.Input.Inking.InkStroke): void;
                     deleteSelected(): Windows.Foundation.Rect;
-                    moveSelected(translation: Windows.Foundation.Point): Windows.Foundation.Rect;
+                    moveSelected(
+                        translation: Windows.Foundation.Point,
+                    ): Windows.Foundation.Rect;
                     selectWithPolyLine(
                         polyline: Windows.Foundation.Collections.IIterable<Windows.Foundation.Point>,
                     ): Windows.Foundation.Rect;
@@ -19238,32 +22107,37 @@ declare namespace Windows {
                         to: Windows.Foundation.Point,
                     ): Windows.Foundation.Rect;
                     copySelectedToClipboard(): void;
-                    pasteFromClipboard(position: Windows.Foundation.Point): Windows.Foundation.Rect;
+                    pasteFromClipboard(
+                        position: Windows.Foundation.Point,
+                    ): Windows.Foundation.Rect;
                     canPasteFromClipboard(): boolean;
                     loadAsync(
                         inputStream: Windows.Storage.Streams.IInputStream,
                     ): Windows.Foundation.IAsyncActionWithProgress<number>;
                     saveAsync(
                         outputStream: Windows.Storage.Streams.IOutputStream,
-                    ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                    ): Windows.Foundation.IAsyncOperationWithProgress<
+                        number,
+                        number
+                    >;
                     updateRecognitionResults(
-                        recognitionResults: Windows.Foundation.Collections.IVectorView<
-                            Windows.UI.Input.Inking.InkRecognitionResult
-                        >,
+                        recognitionResults: Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkRecognitionResult>,
                     ): void;
                     getStrokes(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkStroke>;
-                    getRecognitionResults(): Windows.Foundation.Collections.IVectorView<
-                        Windows.UI.Input.Inking.InkRecognitionResult
-                    >;
+                    getRecognitionResults(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkRecognitionResult>;
                 }
                 export interface IInkRecognizer {
                     name: string;
                 }
-                export class InkRecognizer implements Windows.UI.Input.Inking.IInkRecognizer {
+                export class InkRecognizer
+                    implements Windows.UI.Input.Inking.IInkRecognizer
+                {
                     name: string;
                 }
                 export interface IInkRecognizerContainer {
-                    setDefaultRecognizer(recognizer: Windows.UI.Input.Inking.InkRecognizer): void;
+                    setDefaultRecognizer(
+                        recognizer: Windows.UI.Input.Inking.InkRecognizer,
+                    ): void;
                     recognizeAsync(
                         strokeCollection: Windows.UI.Input.Inking.InkStrokeContainer,
                         recognitionTarget: Windows.UI.Input.Inking.InkRecognitionTarget,
@@ -19272,8 +22146,12 @@ declare namespace Windows {
                     >;
                     getRecognizers(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkRecognizer>;
                 }
-                export class InkRecognizerContainer implements Windows.UI.Input.Inking.IInkRecognizerContainer {
-                    setDefaultRecognizer(recognizer: Windows.UI.Input.Inking.InkRecognizer): void;
+                export class InkRecognizerContainer
+                    implements Windows.UI.Input.Inking.IInkRecognizerContainer
+                {
+                    setDefaultRecognizer(
+                        recognizer: Windows.UI.Input.Inking.InkRecognizer,
+                    ): void;
                     recognizeAsync(
                         strokeCollection: Windows.UI.Input.Inking.InkStrokeContainer,
                         recognitionTarget: Windows.UI.Input.Inking.InkRecognitionTarget,
@@ -19283,13 +22161,21 @@ declare namespace Windows {
                     getRecognizers(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkRecognizer>;
                 }
                 export interface IInkManager
-                    extends Windows.UI.Input.Inking.IInkStrokeContainer, Windows.UI.Input.Inking.IInkRecognizerContainer
-                {
+                    extends Windows.UI.Input.Inking.IInkStrokeContainer,
+                        Windows.UI.Input.Inking.IInkRecognizerContainer {
                     mode: Windows.UI.Input.Inking.InkManipulationMode;
-                    processPointerDown(pointerPoint: Windows.UI.Input.PointerPoint): void;
-                    processPointerUpdate(pointerPoint: Windows.UI.Input.PointerPoint): any;
-                    processPointerUp(pointerPoint: Windows.UI.Input.PointerPoint): Windows.Foundation.Rect;
-                    setDefaultDrawingAttributes(drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes): void;
+                    processPointerDown(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): void;
+                    processPointerUpdate(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): any;
+                    processPointerUp(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): Windows.Foundation.Rect;
+                    setDefaultDrawingAttributes(
+                        drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes,
+                    ): void;
                     recognizeAsync(
                         strokeCollection: Windows.UI.Input.Inking.InkStrokeContainer,
                         recognitionTarget: Windows.UI.Input.Inking.InkRecognitionTarget,
@@ -19310,10 +22196,18 @@ declare namespace Windows {
                 {
                     mode: Windows.UI.Input.Inking.InkManipulationMode;
                     boundingRect: Windows.Foundation.Rect;
-                    processPointerDown(pointerPoint: Windows.UI.Input.PointerPoint): void;
-                    processPointerUpdate(pointerPoint: Windows.UI.Input.PointerPoint): any;
-                    processPointerUp(pointerPoint: Windows.UI.Input.PointerPoint): Windows.Foundation.Rect;
-                    setDefaultDrawingAttributes(drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes): void;
+                    processPointerDown(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): void;
+                    processPointerUpdate(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): any;
+                    processPointerUp(
+                        pointerPoint: Windows.UI.Input.PointerPoint,
+                    ): Windows.Foundation.Rect;
+                    setDefaultDrawingAttributes(
+                        drawingAttributes: Windows.UI.Input.Inking.InkDrawingAttributes,
+                    ): void;
                     recognizeAsync(
                         recognitionTarget: Windows.UI.Input.Inking.InkRecognitionTarget,
                     ): Windows.Foundation.IAsyncOperation<
@@ -19321,7 +22215,9 @@ declare namespace Windows {
                     >;
                     addStroke(stroke: Windows.UI.Input.Inking.InkStroke): void;
                     deleteSelected(): Windows.Foundation.Rect;
-                    moveSelected(translation: Windows.Foundation.Point): Windows.Foundation.Rect;
+                    moveSelected(
+                        translation: Windows.Foundation.Point,
+                    ): Windows.Foundation.Rect;
                     selectWithPolyLine(
                         polyline: Windows.Foundation.Collections.IIterable<Windows.Foundation.Point>,
                     ): Windows.Foundation.Rect;
@@ -19330,24 +22226,27 @@ declare namespace Windows {
                         to: Windows.Foundation.Point,
                     ): Windows.Foundation.Rect;
                     copySelectedToClipboard(): void;
-                    pasteFromClipboard(position: Windows.Foundation.Point): Windows.Foundation.Rect;
+                    pasteFromClipboard(
+                        position: Windows.Foundation.Point,
+                    ): Windows.Foundation.Rect;
                     canPasteFromClipboard(): boolean;
                     loadAsync(
                         inputStream: Windows.Storage.Streams.IInputStream,
                     ): Windows.Foundation.IAsyncActionWithProgress<number>;
                     saveAsync(
                         outputStream: Windows.Storage.Streams.IOutputStream,
-                    ): Windows.Foundation.IAsyncOperationWithProgress<number, number>;
+                    ): Windows.Foundation.IAsyncOperationWithProgress<
+                        number,
+                        number
+                    >;
                     updateRecognitionResults(
-                        recognitionResults: Windows.Foundation.Collections.IVectorView<
-                            Windows.UI.Input.Inking.InkRecognitionResult
-                        >,
+                        recognitionResults: Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkRecognitionResult>,
                     ): void;
                     getStrokes(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkStroke>;
-                    getRecognitionResults(): Windows.Foundation.Collections.IVectorView<
-                        Windows.UI.Input.Inking.InkRecognitionResult
-                    >;
-                    setDefaultRecognizer(recognizer: Windows.UI.Input.Inking.InkRecognizer): void;
+                    getRecognitionResults(): Windows.Foundation.Collections.IVectorView<Windows.UI.Input.Inking.InkRecognitionResult>;
+                    setDefaultRecognizer(
+                        recognizer: Windows.UI.Input.Inking.InkRecognizer,
+                    ): void;
                     recognizeAsync(
                         strokeCollection: Windows.UI.Input.Inking.InkStrokeContainer,
                         recognitionTarget: Windows.UI.Input.Inking.InkRecognitionTarget,
@@ -19366,13 +22265,17 @@ declare namespace Windows {
             export interface IActivatedDeferral {
                 complete(): void;
             }
-            export class ActivatedDeferral implements Windows.UI.WebUI.IActivatedDeferral {
+            export class ActivatedDeferral
+                implements Windows.UI.WebUI.IActivatedDeferral
+            {
                 complete(): void;
             }
             export interface IActivatedOperation {
                 getDeferral(): Windows.UI.WebUI.ActivatedDeferral;
             }
-            export class ActivatedOperation implements Windows.UI.WebUI.IActivatedOperation {
+            export class ActivatedOperation
+                implements Windows.UI.WebUI.IActivatedOperation
+            {
                 getDeferral(): Windows.UI.WebUI.ActivatedDeferral;
             }
             export interface IActivatedEventArgsDeferral {
@@ -19380,7 +22283,8 @@ declare namespace Windows {
             }
             export class WebUILaunchActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.ILaunchActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .ILaunchActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19393,7 +22297,8 @@ declare namespace Windows {
             }
             export class WebUISearchActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.ISearchActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .ISearchActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19406,7 +22311,8 @@ declare namespace Windows {
             }
             export class WebUIShareTargetActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IShareTargetActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IShareTargetActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19431,7 +22337,8 @@ declare namespace Windows {
             }
             export class WebUIProtocolActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IProtocolActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IProtocolActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19443,7 +22350,8 @@ declare namespace Windows {
             }
             export class WebUIFileOpenPickerActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IFileOpenPickerActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IFileOpenPickerActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19455,7 +22363,8 @@ declare namespace Windows {
             }
             export class WebUIFileSavePickerActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IFileSavePickerActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IFileSavePickerActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19467,7 +22376,8 @@ declare namespace Windows {
             }
             export class WebUICachedFileUpdaterActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.ICachedFileUpdaterActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .ICachedFileUpdaterActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19479,7 +22389,8 @@ declare namespace Windows {
             }
             export class WebUIContactPickerActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IContactPickerActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IContactPickerActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19491,7 +22402,8 @@ declare namespace Windows {
             }
             export class WebUIDeviceActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IDeviceActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IDeviceActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19504,7 +22416,8 @@ declare namespace Windows {
             }
             export class WebUIPrintTaskSettingsActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.IPrintTaskSettingsActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .IPrintTaskSettingsActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19516,7 +22429,8 @@ declare namespace Windows {
             }
             export class WebUICameraSettingsActivatedEventArgs
                 implements
-                    Windows.ApplicationModel.Activation.ICameraSettingsActivatedEventArgs,
+                    Windows.ApplicationModel.Activation
+                        .ICameraSettingsActivatedEventArgs,
                     Windows.ApplicationModel.Activation.IActivatedEventArgs,
                     Windows.UI.WebUI.IActivatedEventArgsDeferral
             {
@@ -19528,31 +22442,48 @@ declare namespace Windows {
                 activatedOperation: Windows.UI.WebUI.ActivatedOperation;
             }
             export interface ActivatedEventHandler {
-                (sender: any, eventArgs: Windows.ApplicationModel.Activation.IActivatedEventArgs): void;
+                (
+                    sender: any,
+                    eventArgs: Windows.ApplicationModel.Activation.IActivatedEventArgs,
+                ): void;
             }
             export interface ResumingEventHandler {
                 (sender: any): void;
             }
             export interface SuspendingEventHandler {
-                (sender: any, e: Windows.ApplicationModel.ISuspendingEventArgs): void;
+                (
+                    sender: any,
+                    e: Windows.ApplicationModel.ISuspendingEventArgs,
+                ): void;
             }
             export interface NavigatedEventHandler {
-                (sender: any, e: Windows.UI.WebUI.IWebUINavigatedEventArgs): void;
+                (
+                    sender: any,
+                    e: Windows.UI.WebUI.IWebUINavigatedEventArgs,
+                ): void;
             }
             export interface IWebUINavigatedEventArgs {
                 navigatedOperation: Windows.UI.WebUI.WebUINavigatedOperation;
             }
-            export class WebUINavigatedOperation implements Windows.UI.WebUI.IWebUINavigatedOperation {
+            export class WebUINavigatedOperation
+                implements Windows.UI.WebUI.IWebUINavigatedOperation
+            {
                 getDeferral(): Windows.UI.WebUI.WebUINavigatedDeferral;
             }
-            export class SuspendingDeferral implements Windows.ApplicationModel.ISuspendingDeferral {
+            export class SuspendingDeferral
+                implements Windows.ApplicationModel.ISuspendingDeferral
+            {
                 complete(): void;
             }
-            export class SuspendingOperation implements Windows.ApplicationModel.ISuspendingOperation {
+            export class SuspendingOperation
+                implements Windows.ApplicationModel.ISuspendingOperation
+            {
                 deadline: Date;
                 getDeferral(): Windows.ApplicationModel.SuspendingDeferral;
             }
-            export class SuspendingEventArgs implements Windows.ApplicationModel.ISuspendingEventArgs {
+            export class SuspendingEventArgs
+                implements Windows.ApplicationModel.ISuspendingEventArgs
+            {
                 suspendingOperation: Windows.ApplicationModel.SuspendingOperation;
             }
             export interface IWebUIBackgroundTaskInstance {
@@ -19581,13 +22512,17 @@ declare namespace Windows {
             export interface IWebUINavigatedDeferral {
                 complete(): void;
             }
-            export class WebUINavigatedDeferral implements Windows.UI.WebUI.IWebUINavigatedDeferral {
+            export class WebUINavigatedDeferral
+                implements Windows.UI.WebUI.IWebUINavigatedDeferral
+            {
                 complete(): void;
             }
             export interface IWebUINavigatedOperation {
                 getDeferral(): Windows.UI.WebUI.WebUINavigatedDeferral;
             }
-            export class WebUINavigatedEventArgs implements Windows.UI.WebUI.IWebUINavigatedEventArgs {
+            export class WebUINavigatedEventArgs
+                implements Windows.UI.WebUI.IWebUINavigatedEventArgs
+            {
                 navigatedOperation: Windows.UI.WebUI.WebUINavigatedOperation;
             }
             export interface IWebUIActivationStatics {
@@ -19607,8 +22542,7 @@ declare namespace Windows {
 }
 declare namespace Windows {
     export namespace UI {
-        export interface IColors {
-        }
+        export interface IColors {}
         export interface IColorsStatics {
             aliceBlue: Windows.UI.Color;
             antiqueWhite: Windows.UI.Color;
@@ -19901,13 +22835,22 @@ declare namespace Windows {
             g: number;
             b: number;
         }
-        export interface IColorHelper {
-        }
+        export interface IColorHelper {}
         export interface IColorHelperStatics {
-            fromArgb(a: number, r: number, g: number, b: number): Windows.UI.Color;
+            fromArgb(
+                a: number,
+                r: number,
+                g: number,
+                b: number,
+            ): Windows.UI.Color;
         }
         export class ColorHelper implements Windows.UI.IColorHelper {
-            static fromArgb(a: number, r: number, g: number, b: number): Windows.UI.Color;
+            static fromArgb(
+                a: number,
+                r: number,
+                g: number,
+                b: number,
+            ): Windows.UI.Color;
         }
     }
 }
@@ -20003,20 +22946,32 @@ declare namespace Windows {
             }
             export interface ITileUpdateManagerStatics {
                 createTileUpdaterForApplication(): Windows.UI.Notifications.TileUpdater;
-                createTileUpdaterForApplication(applicationId: string): Windows.UI.Notifications.TileUpdater;
-                createTileUpdaterForSecondaryTile(tileId: string): Windows.UI.Notifications.TileUpdater;
-                getTemplateContent(type: Windows.UI.Notifications.TileTemplateType): Windows.Data.Xml.Dom.XmlDocument;
+                createTileUpdaterForApplication(
+                    applicationId: string,
+                ): Windows.UI.Notifications.TileUpdater;
+                createTileUpdaterForSecondaryTile(
+                    tileId: string,
+                ): Windows.UI.Notifications.TileUpdater;
+                getTemplateContent(
+                    type: Windows.UI.Notifications.TileTemplateType,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
-            export class TileUpdater implements Windows.UI.Notifications.ITileUpdater {
+            export class TileUpdater
+                implements Windows.UI.Notifications.ITileUpdater
+            {
                 setting: Windows.UI.Notifications.NotificationSetting;
-                update(notification: Windows.UI.Notifications.TileNotification): void;
+                update(
+                    notification: Windows.UI.Notifications.TileNotification,
+                ): void;
                 clear(): void;
                 enableNotificationQueue(enable: boolean): void;
-                addToSchedule(scheduledTile: Windows.UI.Notifications.ScheduledTileNotification): void;
-                removeFromSchedule(scheduledTile: Windows.UI.Notifications.ScheduledTileNotification): void;
-                getScheduledTileNotifications(): Windows.Foundation.Collections.IVectorView<
-                    Windows.UI.Notifications.ScheduledTileNotification
-                >;
+                addToSchedule(
+                    scheduledTile: Windows.UI.Notifications.ScheduledTileNotification,
+                ): void;
+                removeFromSchedule(
+                    scheduledTile: Windows.UI.Notifications.ScheduledTileNotification,
+                ): void;
+                getScheduledTileNotifications(): Windows.Foundation.Collections.IVectorView<Windows.UI.Notifications.ScheduledTileNotification>;
                 startPeriodicUpdate(
                     tileContent: Windows.Foundation.Uri,
                     requestedInterval: Windows.UI.Notifications.PeriodicUpdateRecurrence,
@@ -20039,14 +22994,18 @@ declare namespace Windows {
             }
             export interface ITileUpdater {
                 setting: Windows.UI.Notifications.NotificationSetting;
-                update(notification: Windows.UI.Notifications.TileNotification): void;
+                update(
+                    notification: Windows.UI.Notifications.TileNotification,
+                ): void;
                 clear(): void;
                 enableNotificationQueue(enable: boolean): void;
-                addToSchedule(scheduledTile: Windows.UI.Notifications.ScheduledTileNotification): void;
-                removeFromSchedule(scheduledTile: Windows.UI.Notifications.ScheduledTileNotification): void;
-                getScheduledTileNotifications(): Windows.Foundation.Collections.IVectorView<
-                    Windows.UI.Notifications.ScheduledTileNotification
-                >;
+                addToSchedule(
+                    scheduledTile: Windows.UI.Notifications.ScheduledTileNotification,
+                ): void;
+                removeFromSchedule(
+                    scheduledTile: Windows.UI.Notifications.ScheduledTileNotification,
+                ): void;
+                getScheduledTileNotifications(): Windows.Foundation.Collections.IVectorView<Windows.UI.Notifications.ScheduledTileNotification>;
                 startPeriodicUpdate(
                     tileContent: Windows.Foundation.Uri,
                     requestedInterval: Windows.UI.Notifications.PeriodicUpdateRecurrence,
@@ -20067,14 +23026,21 @@ declare namespace Windows {
                     requestedInterval: Windows.UI.Notifications.PeriodicUpdateRecurrence,
                 ): void;
             }
-            export class TileNotification implements Windows.UI.Notifications.ITileNotification {
+            export class TileNotification
+                implements Windows.UI.Notifications.ITileNotification
+            {
                 constructor(content: Windows.Data.Xml.Dom.XmlDocument);
                 content: Windows.Data.Xml.Dom.XmlDocument;
                 expirationTime: Date;
                 tag: string;
             }
-            export class ScheduledTileNotification implements Windows.UI.Notifications.IScheduledTileNotification {
-                constructor(content: Windows.Data.Xml.Dom.XmlDocument, deliveryTime: Date);
+            export class ScheduledTileNotification
+                implements Windows.UI.Notifications.IScheduledTileNotification
+            {
+                constructor(
+                    content: Windows.Data.Xml.Dom.XmlDocument,
+                    deliveryTime: Date,
+                );
                 content: Windows.Data.Xml.Dom.XmlDocument;
                 deliveryTime: Date;
                 expirationTime: Date;
@@ -20083,12 +23049,22 @@ declare namespace Windows {
             }
             export interface IBadgeUpdateManagerStatics {
                 createBadgeUpdaterForApplication(): Windows.UI.Notifications.BadgeUpdater;
-                createBadgeUpdaterForApplication(applicationId: string): Windows.UI.Notifications.BadgeUpdater;
-                createBadgeUpdaterForSecondaryTile(tileId: string): Windows.UI.Notifications.BadgeUpdater;
-                getTemplateContent(type: Windows.UI.Notifications.BadgeTemplateType): Windows.Data.Xml.Dom.XmlDocument;
+                createBadgeUpdaterForApplication(
+                    applicationId: string,
+                ): Windows.UI.Notifications.BadgeUpdater;
+                createBadgeUpdaterForSecondaryTile(
+                    tileId: string,
+                ): Windows.UI.Notifications.BadgeUpdater;
+                getTemplateContent(
+                    type: Windows.UI.Notifications.BadgeTemplateType,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
-            export class BadgeUpdater implements Windows.UI.Notifications.IBadgeUpdater {
-                update(notification: Windows.UI.Notifications.BadgeNotification): void;
+            export class BadgeUpdater
+                implements Windows.UI.Notifications.IBadgeUpdater
+            {
+                update(
+                    notification: Windows.UI.Notifications.BadgeNotification,
+                ): void;
                 clear(): void;
                 startPeriodicUpdate(
                     badgeContent: Windows.Foundation.Uri,
@@ -20102,7 +23078,9 @@ declare namespace Windows {
                 stopPeriodicUpdate(): void;
             }
             export interface IBadgeUpdater {
-                update(notification: Windows.UI.Notifications.BadgeNotification): void;
+                update(
+                    notification: Windows.UI.Notifications.BadgeNotification,
+                ): void;
                 clear(): void;
                 startPeriodicUpdate(
                     badgeContent: Windows.Foundation.Uri,
@@ -20115,37 +23093,59 @@ declare namespace Windows {
                 ): void;
                 stopPeriodicUpdate(): void;
             }
-            export class BadgeNotification implements Windows.UI.Notifications.IBadgeNotification {
+            export class BadgeNotification
+                implements Windows.UI.Notifications.IBadgeNotification
+            {
                 constructor(content: Windows.Data.Xml.Dom.XmlDocument);
                 content: Windows.Data.Xml.Dom.XmlDocument;
                 expirationTime: Date;
             }
             export interface IToastNotificationManagerStatics {
                 createToastNotifier(): Windows.UI.Notifications.ToastNotifier;
-                createToastNotifier(applicationId: string): Windows.UI.Notifications.ToastNotifier;
-                getTemplateContent(type: Windows.UI.Notifications.ToastTemplateType): Windows.Data.Xml.Dom.XmlDocument;
+                createToastNotifier(
+                    applicationId: string,
+                ): Windows.UI.Notifications.ToastNotifier;
+                getTemplateContent(
+                    type: Windows.UI.Notifications.ToastTemplateType,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
-            export class ToastNotifier implements Windows.UI.Notifications.IToastNotifier {
+            export class ToastNotifier
+                implements Windows.UI.Notifications.IToastNotifier
+            {
                 setting: Windows.UI.Notifications.NotificationSetting;
-                show(notification: Windows.UI.Notifications.ToastNotification): void;
-                hide(notification: Windows.UI.Notifications.ToastNotification): void;
-                addToSchedule(scheduledToast: Windows.UI.Notifications.ScheduledToastNotification): void;
-                removeFromSchedule(scheduledToast: Windows.UI.Notifications.ScheduledToastNotification): void;
-                getScheduledToastNotifications(): Windows.Foundation.Collections.IVectorView<
-                    Windows.UI.Notifications.ScheduledToastNotification
-                >;
+                show(
+                    notification: Windows.UI.Notifications.ToastNotification,
+                ): void;
+                hide(
+                    notification: Windows.UI.Notifications.ToastNotification,
+                ): void;
+                addToSchedule(
+                    scheduledToast: Windows.UI.Notifications.ScheduledToastNotification,
+                ): void;
+                removeFromSchedule(
+                    scheduledToast: Windows.UI.Notifications.ScheduledToastNotification,
+                ): void;
+                getScheduledToastNotifications(): Windows.Foundation.Collections.IVectorView<Windows.UI.Notifications.ScheduledToastNotification>;
             }
             export interface IToastNotifier {
                 setting: Windows.UI.Notifications.NotificationSetting;
-                show(notification: Windows.UI.Notifications.ToastNotification): void;
-                hide(notification: Windows.UI.Notifications.ToastNotification): void;
-                addToSchedule(scheduledToast: Windows.UI.Notifications.ScheduledToastNotification): void;
-                removeFromSchedule(scheduledToast: Windows.UI.Notifications.ScheduledToastNotification): void;
-                getScheduledToastNotifications(): Windows.Foundation.Collections.IVectorView<
-                    Windows.UI.Notifications.ScheduledToastNotification
-                >;
+                show(
+                    notification: Windows.UI.Notifications.ToastNotification,
+                ): void;
+                hide(
+                    notification: Windows.UI.Notifications.ToastNotification,
+                ): void;
+                addToSchedule(
+                    scheduledToast: Windows.UI.Notifications.ScheduledToastNotification,
+                ): void;
+                removeFromSchedule(
+                    scheduledToast: Windows.UI.Notifications.ScheduledToastNotification,
+                ): void;
+                getScheduledToastNotifications(): Windows.Foundation.Collections.IVectorView<Windows.UI.Notifications.ScheduledToastNotification>;
             }
-            export class ToastNotification implements Windows.UI.Notifications.IToastNotification {
+            export class ToastNotification
+                implements Windows.UI.Notifications.IToastNotification
+            {
                 constructor(content: Windows.Data.Xml.Dom.XmlDocument);
                 content: Windows.Data.Xml.Dom.XmlDocument;
                 expirationTime: Date;
@@ -20153,8 +23153,13 @@ declare namespace Windows {
                 onactivated: any /* TODO */;
                 onfailed: any /* TODO */;
             }
-            export class ScheduledToastNotification implements Windows.UI.Notifications.IScheduledToastNotification {
-                constructor(content: Windows.Data.Xml.Dom.XmlDocument, deliveryTime: Date);
+            export class ScheduledToastNotification
+                implements Windows.UI.Notifications.IScheduledToastNotification
+            {
+                constructor(
+                    content: Windows.Data.Xml.Dom.XmlDocument,
+                    deliveryTime: Date,
+                );
                 constructor(
                     content: Windows.Data.Xml.Dom.XmlDocument,
                     deliveryTime: Date,
@@ -20198,10 +23203,14 @@ declare namespace Windows {
                 onactivated: any /* TODO */;
                 onfailed: any /* TODO */;
             }
-            export class ToastDismissedEventArgs implements Windows.UI.Notifications.IToastDismissedEventArgs {
+            export class ToastDismissedEventArgs
+                implements Windows.UI.Notifications.IToastDismissedEventArgs
+            {
                 reason: Windows.UI.Notifications.ToastDismissalReason;
             }
-            export class ToastFailedEventArgs implements Windows.UI.Notifications.IToastFailedEventArgs {
+            export class ToastFailedEventArgs
+                implements Windows.UI.Notifications.IToastFailedEventArgs
+            {
                 errorCode: number;
             }
             export interface IScheduledToastNotificationFactory {
@@ -20238,23 +23247,33 @@ declare namespace Windows {
             }
             export class TileUpdateManager {
                 static createTileUpdaterForApplication(): Windows.UI.Notifications.TileUpdater;
-                static createTileUpdaterForApplication(applicationId: string): Windows.UI.Notifications.TileUpdater;
-                static createTileUpdaterForSecondaryTile(tileId: string): Windows.UI.Notifications.TileUpdater;
+                static createTileUpdaterForApplication(
+                    applicationId: string,
+                ): Windows.UI.Notifications.TileUpdater;
+                static createTileUpdaterForSecondaryTile(
+                    tileId: string,
+                ): Windows.UI.Notifications.TileUpdater;
                 static getTemplateContent(
                     type: Windows.UI.Notifications.TileTemplateType,
                 ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export class BadgeUpdateManager {
                 static createBadgeUpdaterForApplication(): Windows.UI.Notifications.BadgeUpdater;
-                static createBadgeUpdaterForApplication(applicationId: string): Windows.UI.Notifications.BadgeUpdater;
-                static createBadgeUpdaterForSecondaryTile(tileId: string): Windows.UI.Notifications.BadgeUpdater;
+                static createBadgeUpdaterForApplication(
+                    applicationId: string,
+                ): Windows.UI.Notifications.BadgeUpdater;
+                static createBadgeUpdaterForSecondaryTile(
+                    tileId: string,
+                ): Windows.UI.Notifications.BadgeUpdater;
                 static getTemplateContent(
                     type: Windows.UI.Notifications.BadgeTemplateType,
                 ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export class ToastNotificationManager {
                 static createToastNotifier(): Windows.UI.Notifications.ToastNotifier;
-                static createToastNotifier(applicationId: string): Windows.UI.Notifications.ToastNotifier;
+                static createToastNotifier(
+                    applicationId: string,
+                ): Windows.UI.Notifications.ToastNotifier;
                 static getTemplateContent(
                     type: Windows.UI.Notifications.ToastTemplateType,
                 ): Windows.Data.Xml.Dom.XmlDocument;
@@ -20361,8 +23380,14 @@ declare namespace Windows {
                 namespace: string;
                 value: string;
             }
-            export class SyndicationAttribute implements Windows.Web.Syndication.ISyndicationAttribute {
-                constructor(attributeName: string, attributeNamespace: string, attributeValue: string);
+            export class SyndicationAttribute
+                implements Windows.Web.Syndication.ISyndicationAttribute
+            {
+                constructor(
+                    attributeName: string,
+                    attributeNamespace: string,
+                    attributeValue: string,
+                );
                 constructor();
                 name: string;
                 namespace: string;
@@ -20376,30 +23401,36 @@ declare namespace Windows {
                 ): Windows.Web.Syndication.SyndicationAttribute;
             }
             export interface ISyndicationNode {
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
-            export class SyndicationNode implements Windows.Web.Syndication.ISyndicationNode {
-                constructor(nodeName: string, nodeNamespace: string, nodeValue: string);
+            export class SyndicationNode
+                implements Windows.Web.Syndication.ISyndicationNode
+            {
+                constructor(
+                    nodeName: string,
+                    nodeNamespace: string,
+                    nodeValue: string,
+                );
                 constructor();
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export interface ISyndicationNodeFactory {
                 createSyndicationNode(
@@ -20414,51 +23445,61 @@ declare namespace Windows {
                 version: string;
             }
             export class SyndicationGenerator
-                implements Windows.Web.Syndication.ISyndicationGenerator, Windows.Web.Syndication.ISyndicationNode
+                implements
+                    Windows.Web.Syndication.ISyndicationGenerator,
+                    Windows.Web.Syndication.ISyndicationNode
             {
                 constructor(text: string);
                 constructor();
                 text: string;
                 uri: Windows.Foundation.Uri;
                 version: string;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export interface ISyndicationGeneratorFactory {
-                createSyndicationGenerator(text: string): Windows.Web.Syndication.SyndicationGenerator;
+                createSyndicationGenerator(
+                    text: string,
+                ): Windows.Web.Syndication.SyndicationGenerator;
             }
-            export interface ISyndicationText extends Windows.Web.Syndication.ISyndicationNode {
+            export interface ISyndicationText
+                extends Windows.Web.Syndication.ISyndicationNode {
                 text: string;
                 type: string;
                 xml: Windows.Data.Xml.Dom.XmlDocument;
             }
             export class SyndicationText
-                implements Windows.Web.Syndication.ISyndicationText, Windows.Web.Syndication.ISyndicationNode
+                implements
+                    Windows.Web.Syndication.ISyndicationText,
+                    Windows.Web.Syndication.ISyndicationNode
             {
                 constructor(text: string);
-                constructor(text: string, type: Windows.Web.Syndication.SyndicationTextType);
+                constructor(
+                    text: string,
+                    type: Windows.Web.Syndication.SyndicationTextType,
+                );
                 constructor();
                 text: string;
                 type: string;
                 xml: Windows.Data.Xml.Dom.XmlDocument;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export enum SyndicationTextType {
                 text,
@@ -20466,15 +23507,17 @@ declare namespace Windows {
                 xhtml,
             }
             export interface ISyndicationTextFactory {
-                createSyndicationText(text: string): Windows.Web.Syndication.SyndicationText;
+                createSyndicationText(
+                    text: string,
+                ): Windows.Web.Syndication.SyndicationText;
                 createSyndicationText(
                     text: string,
                     type: Windows.Web.Syndication.SyndicationTextType,
                 ): Windows.Web.Syndication.SyndicationText;
             }
             export interface ISyndicationContent
-                extends Windows.Web.Syndication.ISyndicationText, Windows.Web.Syndication.ISyndicationNode
-            {
+                extends Windows.Web.Syndication.ISyndicationText,
+                    Windows.Web.Syndication.ISyndicationNode {
                 sourceUri: Windows.Foundation.Uri;
             }
             export class SyndicationContent
@@ -20483,15 +23526,16 @@ declare namespace Windows {
                     Windows.Web.Syndication.ISyndicationNode,
                     Windows.Web.Syndication.ISyndicationContent
             {
-                constructor(text: string, type: Windows.Web.Syndication.SyndicationTextType);
+                constructor(
+                    text: string,
+                    type: Windows.Web.Syndication.SyndicationTextType,
+                );
                 constructor(sourceUri: Windows.Foundation.Uri);
                 constructor();
                 text: string;
                 type: string;
                 xml: Windows.Data.Xml.Dom.XmlDocument;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
@@ -20499,16 +23543,21 @@ declare namespace Windows {
                 nodeNamespace: string;
                 nodeValue: string;
                 sourceUri: Windows.Foundation.Uri;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export interface ISyndicationContentFactory {
                 createSyndicationContent(
                     text: string,
                     type: Windows.Web.Syndication.SyndicationTextType,
                 ): Windows.Web.Syndication.SyndicationContent;
-                createSyndicationContent(sourceUri: Windows.Foundation.Uri): Windows.Web.Syndication.SyndicationContent;
+                createSyndicationContent(
+                    sourceUri: Windows.Foundation.Uri,
+                ): Windows.Web.Syndication.SyndicationContent;
             }
-            export interface ISyndicationLink extends Windows.Web.Syndication.ISyndicationNode {
+            export interface ISyndicationLink
+                extends Windows.Web.Syndication.ISyndicationNode {
                 length: number;
                 mediaType: string;
                 relationship: string;
@@ -20517,7 +23566,9 @@ declare namespace Windows {
                 uri: Windows.Foundation.Uri;
             }
             export class SyndicationLink
-                implements Windows.Web.Syndication.ISyndicationLink, Windows.Web.Syndication.ISyndicationNode
+                implements
+                    Windows.Web.Syndication.ISyndicationLink,
+                    Windows.Web.Syndication.ISyndicationNode
             {
                 constructor(uri: Windows.Foundation.Uri);
                 constructor(
@@ -20534,19 +23585,21 @@ declare namespace Windows {
                 resourceLanguage: string;
                 title: string;
                 uri: Windows.Foundation.Uri;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export interface ISyndicationLinkFactory {
-                createSyndicationLink(uri: Windows.Foundation.Uri): Windows.Web.Syndication.SyndicationLink;
+                createSyndicationLink(
+                    uri: Windows.Foundation.Uri,
+                ): Windows.Web.Syndication.SyndicationLink;
                 createSyndicationLink(
                     uri: Windows.Foundation.Uri,
                     relationship: string,
@@ -20555,46 +23608,58 @@ declare namespace Windows {
                     length: number,
                 ): Windows.Web.Syndication.SyndicationLink;
             }
-            export interface ISyndicationPerson extends Windows.Web.Syndication.ISyndicationNode {
+            export interface ISyndicationPerson
+                extends Windows.Web.Syndication.ISyndicationNode {
                 email: string;
                 name: string;
                 uri: Windows.Foundation.Uri;
             }
             export class SyndicationPerson
-                implements Windows.Web.Syndication.ISyndicationPerson, Windows.Web.Syndication.ISyndicationNode
+                implements
+                    Windows.Web.Syndication.ISyndicationPerson,
+                    Windows.Web.Syndication.ISyndicationNode
             {
                 constructor(name: string);
-                constructor(name: string, email: string, uri: Windows.Foundation.Uri);
+                constructor(
+                    name: string,
+                    email: string,
+                    uri: Windows.Foundation.Uri,
+                );
                 constructor();
                 email: string;
                 name: string;
                 uri: Windows.Foundation.Uri;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export interface ISyndicationPersonFactory {
-                createSyndicationPerson(name: string): Windows.Web.Syndication.SyndicationPerson;
+                createSyndicationPerson(
+                    name: string,
+                ): Windows.Web.Syndication.SyndicationPerson;
                 createSyndicationPerson(
                     name: string,
                     email: string,
                     uri: Windows.Foundation.Uri,
                 ): Windows.Web.Syndication.SyndicationPerson;
             }
-            export interface ISyndicationCategory extends Windows.Web.Syndication.ISyndicationNode {
+            export interface ISyndicationCategory
+                extends Windows.Web.Syndication.ISyndicationNode {
                 label: string;
                 scheme: string;
                 term: string;
             }
             export class SyndicationCategory
-                implements Windows.Web.Syndication.ISyndicationCategory, Windows.Web.Syndication.ISyndicationNode
+                implements
+                    Windows.Web.Syndication.ISyndicationCategory,
+                    Windows.Web.Syndication.ISyndicationNode
             {
                 constructor(term: string);
                 constructor(term: string, scheme: string, label: string);
@@ -20602,26 +23667,29 @@ declare namespace Windows {
                 label: string;
                 scheme: string;
                 term: string;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export interface ISyndicationCategoryFactory {
-                createSyndicationCategory(term: string): Windows.Web.Syndication.SyndicationCategory;
+                createSyndicationCategory(
+                    term: string,
+                ): Windows.Web.Syndication.SyndicationCategory;
                 createSyndicationCategory(
                     term: string,
                     scheme: string,
                     label: string,
                 ): Windows.Web.Syndication.SyndicationCategory;
             }
-            export interface ISyndicationItem extends Windows.Web.Syndication.ISyndicationNode {
+            export interface ISyndicationItem
+                extends Windows.Web.Syndication.ISyndicationNode {
                 authors: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationPerson>;
                 categories: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationCategory>;
                 commentsUri: Windows.Foundation.Uri;
@@ -20640,12 +23708,20 @@ declare namespace Windows {
                 summary: Windows.Web.Syndication.ISyndicationText;
                 title: Windows.Web.Syndication.ISyndicationText;
                 load(item: string): void;
-                loadFromXml(itemDocument: Windows.Data.Xml.Dom.XmlDocument): void;
+                loadFromXml(
+                    itemDocument: Windows.Data.Xml.Dom.XmlDocument,
+                ): void;
             }
             export class SyndicationFeed
-                implements Windows.Web.Syndication.ISyndicationFeed, Windows.Web.Syndication.ISyndicationNode
+                implements
+                    Windows.Web.Syndication.ISyndicationFeed,
+                    Windows.Web.Syndication.ISyndicationNode
             {
-                constructor(title: string, subtitle: string, uri: Windows.Foundation.Uri);
+                constructor(
+                    title: string,
+                    subtitle: string,
+                    uri: Windows.Foundation.Uri,
+                );
                 constructor();
                 authors: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationPerson>;
                 categories: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationCategory>;
@@ -20665,9 +23741,7 @@ declare namespace Windows {
                 sourceFormat: Windows.Web.Syndication.SyndicationFormat;
                 subtitle: Windows.Web.Syndication.ISyndicationText;
                 title: Windows.Web.Syndication.ISyndicationText;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
@@ -20675,11 +23749,17 @@ declare namespace Windows {
                 nodeNamespace: string;
                 nodeValue: string;
                 load(feed: string): void;
-                loadFromXml(feedDocument: Windows.Data.Xml.Dom.XmlDocument): void;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                loadFromXml(
+                    feedDocument: Windows.Data.Xml.Dom.XmlDocument,
+                ): void;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export class SyndicationItem
-                implements Windows.Web.Syndication.ISyndicationItem, Windows.Web.Syndication.ISyndicationNode
+                implements
+                    Windows.Web.Syndication.ISyndicationItem,
+                    Windows.Web.Syndication.ISyndicationNode
             {
                 constructor(
                     title: string,
@@ -20704,9 +23784,7 @@ declare namespace Windows {
                 source: Windows.Web.Syndication.SyndicationFeed;
                 summary: Windows.Web.Syndication.ISyndicationText;
                 title: Windows.Web.Syndication.ISyndicationText;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
@@ -20714,8 +23792,12 @@ declare namespace Windows {
                 nodeNamespace: string;
                 nodeValue: string;
                 load(item: string): void;
-                loadFromXml(itemDocument: Windows.Data.Xml.Dom.XmlDocument): void;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                loadFromXml(
+                    itemDocument: Windows.Data.Xml.Dom.XmlDocument,
+                ): void;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
             export interface ISyndicationItemFactory {
                 createSyndicationItem(
@@ -20724,7 +23806,8 @@ declare namespace Windows {
                     uri: Windows.Foundation.Uri,
                 ): Windows.Web.Syndication.SyndicationItem;
             }
-            export interface ISyndicationFeed extends Windows.Web.Syndication.ISyndicationNode {
+            export interface ISyndicationFeed
+                extends Windows.Web.Syndication.ISyndicationNode {
                 authors: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationPerson>;
                 categories: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationCategory>;
                 contributors: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationPerson>;
@@ -20744,7 +23827,9 @@ declare namespace Windows {
                 subtitle: Windows.Web.Syndication.ISyndicationText;
                 title: Windows.Web.Syndication.ISyndicationText;
                 load(feed: string): void;
-                loadFromXml(feedDocument: Windows.Data.Xml.Dom.XmlDocument): void;
+                loadFromXml(
+                    feedDocument: Windows.Data.Xml.Dom.XmlDocument,
+                ): void;
             }
             export interface ISyndicationFeedFactory {
                 createSyndicationFeed(
@@ -20767,8 +23852,12 @@ declare namespace Windows {
                     Windows.Web.Syndication.RetrievalProgress
                 >;
             }
-            export class SyndicationClient implements Windows.Web.Syndication.ISyndicationClient {
-                constructor(serverCredential: Windows.Security.Credentials.PasswordCredential);
+            export class SyndicationClient
+                implements Windows.Web.Syndication.ISyndicationClient
+            {
+                constructor(
+                    serverCredential: Windows.Security.Credentials.PasswordCredential,
+                );
                 constructor();
                 bypassCacheOnRetrieve: boolean;
                 maxResponseBufferSize: number;
@@ -20789,10 +23878,14 @@ declare namespace Windows {
                 ): Windows.Web.Syndication.SyndicationClient;
             }
             export interface ISyndicationErrorStatics {
-                getStatus(hresult: number): Windows.Web.Syndication.SyndicationErrorStatus;
+                getStatus(
+                    hresult: number,
+                ): Windows.Web.Syndication.SyndicationErrorStatus;
             }
             export class SyndicationError {
-                static getStatus(hresult: number): Windows.Web.Syndication.SyndicationErrorStatus;
+                static getStatus(
+                    hresult: number,
+                ): Windows.Web.Syndication.SyndicationErrorStatus;
             }
         }
     }
@@ -20800,67 +23893,79 @@ declare namespace Windows {
 declare namespace Windows {
     export namespace Web {
         export namespace AtomPub {
-            export interface IResourceCollection extends Windows.Web.Syndication.ISyndicationNode {
+            export interface IResourceCollection
+                extends Windows.Web.Syndication.ISyndicationNode {
                 accepts: Windows.Foundation.Collections.IVectorView<string>;
                 categories: Windows.Foundation.Collections.IVectorView<Windows.Web.Syndication.SyndicationCategory>;
                 title: Windows.Web.Syndication.ISyndicationText;
                 uri: Windows.Foundation.Uri;
             }
             export class ResourceCollection
-                implements Windows.Web.AtomPub.IResourceCollection, Windows.Web.Syndication.ISyndicationNode
+                implements
+                    Windows.Web.AtomPub.IResourceCollection,
+                    Windows.Web.Syndication.ISyndicationNode
             {
                 accepts: Windows.Foundation.Collections.IVectorView<string>;
                 categories: Windows.Foundation.Collections.IVectorView<Windows.Web.Syndication.SyndicationCategory>;
                 title: Windows.Web.Syndication.ISyndicationText;
                 uri: Windows.Foundation.Uri;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
-            export interface IWorkspace extends Windows.Web.Syndication.ISyndicationNode {
+            export interface IWorkspace
+                extends Windows.Web.Syndication.ISyndicationNode {
                 collections: Windows.Foundation.Collections.IVectorView<Windows.Web.AtomPub.ResourceCollection>;
                 title: Windows.Web.Syndication.ISyndicationText;
             }
-            export class Workspace implements Windows.Web.AtomPub.IWorkspace, Windows.Web.Syndication.ISyndicationNode {
+            export class Workspace
+                implements
+                    Windows.Web.AtomPub.IWorkspace,
+                    Windows.Web.Syndication.ISyndicationNode
+            {
                 collections: Windows.Foundation.Collections.IVectorView<Windows.Web.AtomPub.ResourceCollection>;
                 title: Windows.Web.Syndication.ISyndicationText;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
-            export interface IServiceDocument extends Windows.Web.Syndication.ISyndicationNode {
+            export interface IServiceDocument
+                extends Windows.Web.Syndication.ISyndicationNode {
                 workspaces: Windows.Foundation.Collections.IVectorView<Windows.Web.AtomPub.Workspace>;
             }
             export class ServiceDocument
-                implements Windows.Web.AtomPub.IServiceDocument, Windows.Web.Syndication.ISyndicationNode
+                implements
+                    Windows.Web.AtomPub.IServiceDocument,
+                    Windows.Web.Syndication.ISyndicationNode
             {
                 workspaces: Windows.Foundation.Collections.IVectorView<Windows.Web.AtomPub.Workspace>;
-                attributeExtensions: Windows.Foundation.Collections.IVector<
-                    Windows.Web.Syndication.SyndicationAttribute
-                >;
+                attributeExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.SyndicationAttribute>;
                 baseUri: Windows.Foundation.Uri;
                 elementExtensions: Windows.Foundation.Collections.IVector<Windows.Web.Syndication.ISyndicationNode>;
                 language: string;
                 nodeName: string;
                 nodeNamespace: string;
                 nodeValue: string;
-                getXmlDocument(format: Windows.Web.Syndication.SyndicationFormat): Windows.Data.Xml.Dom.XmlDocument;
+                getXmlDocument(
+                    format: Windows.Web.Syndication.SyndicationFormat,
+                ): Windows.Data.Xml.Dom.XmlDocument;
             }
-            export interface IAtomPubClient extends Windows.Web.Syndication.ISyndicationClient {
+            export interface IAtomPubClient
+                extends Windows.Web.Syndication.ISyndicationClient {
                 retrieveServiceDocumentAsync(
                     uri: Windows.Foundation.Uri,
                 ): Windows.Foundation.IAsyncOperationWithProgress<
@@ -20917,9 +24022,13 @@ declare namespace Windows {
                 cancelAsyncOperations(): void;
             }
             export class AtomPubClient
-                implements Windows.Web.AtomPub.IAtomPubClient, Windows.Web.Syndication.ISyndicationClient
+                implements
+                    Windows.Web.AtomPub.IAtomPubClient,
+                    Windows.Web.Syndication.ISyndicationClient
             {
-                constructor(serverCredential: Windows.Security.Credentials.PasswordCredential);
+                constructor(
+                    serverCredential: Windows.Security.Credentials.PasswordCredential,
+                );
                 constructor();
                 bypassCacheOnRetrieve: boolean;
                 maxResponseBufferSize: number;
@@ -21013,15 +24122,31 @@ declare namespace Windows.Foundation {
             error?: (error: any) => IPromise<U>,
             progress?: (progress: any) => void,
         ): IPromise<U>;
-        then<U>(success?: (value: T) => U, error?: (error: any) => U, progress?: (progress: any) => void): IPromise<U>;
-        done<U>(success?: (value: T) => any, error?: (error: any) => any, progress?: (progress: any) => void): void;
+        then<U>(
+            success?: (value: T) => U,
+            error?: (error: any) => U,
+            progress?: (progress: any) => void,
+        ): IPromise<U>;
+        done<U>(
+            success?: (value: T) => any,
+            error?: (error: any) => any,
+            progress?: (progress: any) => void,
+        ): void;
 
         cancel(): void;
 
         onerror?(eventInfo: CustomEvent): void;
-        addEventListener?(type: string, listener: Function, capture?: boolean): void;
+        addEventListener?(
+            type: string,
+            listener: Function,
+            capture?: boolean,
+        ): void;
         dispatchEvent?(type: string, details: any): boolean;
-        removeEventListener?(eventType: string, listener: Function, capture?: boolean): void;
+        removeEventListener?(
+            eventType: string,
+            listener: Function,
+            capture?: boolean,
+        ): void;
     }
 }
 

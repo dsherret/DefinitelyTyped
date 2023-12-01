@@ -8,7 +8,12 @@ interface Calq {
 declare namespace Calq {
     interface Action {
         track(action: string, params?: { [index: string]: any }): void;
-        trackSale(action: string, params: { [index: string]: any }, currency: string, amount: number): void;
+        trackSale(
+            action: string,
+            params: { [index: string]: any },
+            currency: string,
+            amount: number,
+        ): void;
         trackHTMLLink(action: string, params?: { [index: string]: any }): void;
         trackPageView(action?: string): void;
 

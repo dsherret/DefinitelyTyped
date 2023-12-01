@@ -13,7 +13,9 @@ type Question = ConfirmQuestionOptions;
  * @template TQuestion
  * The options for the question.
  */
-declare class ConfirmPrompt<TQuestion extends Question = Question> extends Prompt<TQuestion> {
+declare class ConfirmPrompt<
+    TQuestion extends Question = Question,
+> extends Prompt<TQuestion> {
     /**
      * Initializes a new instance of the {@link ConfirmPrompt `ConfirmPrompt<TQuestion>`} class.
      *
@@ -26,7 +28,11 @@ declare class ConfirmPrompt<TQuestion extends Question = Question> extends Promp
      * @param answers
      * The answer-object.
      */
-    constructor(question: TQuestion, readLine: ReadlineInterface, answers: Answers);
+    constructor(
+        question: TQuestion,
+        readLine: ReadlineInterface,
+        answers: Answers,
+    );
 
     /**
      * Renders the prompt.

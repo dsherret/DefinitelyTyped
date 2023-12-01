@@ -140,9 +140,8 @@ export interface ClientTypeSignature {
     arguments: ClientTypeSignatureParameter[];
     literalArguments: any[];
     // https://github.com/prestodb/presto/blob/494d5c8f17f1ee19d328535cbfa78914923fc177/presto-common/src/main/java/com/facebook/presto/common/type/StandardTypes.java#L22
-    rawType:
-        // boolean
-        | "boolean"
+    rawType: // boolean
+    | "boolean"
         // integer
         | "tinyint"
         | "smallint"
@@ -194,7 +193,14 @@ export interface RuntimeStats {
     wallTimeMillis: number;
     cpuTimeMillis: number;
     userTimeMillis: number;
-    state: "QUEUED" | "PLANNING" | "STARTING" | "RUNNING" | "FINISHED" | "CANCELED" | "FAILED";
+    state:
+        | "QUEUED"
+        | "PLANNING"
+        | "STARTING"
+        | "RUNNING"
+        | "FINISHED"
+        | "CANCELED"
+        | "FAILED";
     scheduled: boolean;
     nodes: number;
     totalSplits: number;
@@ -278,7 +284,12 @@ export interface QueryOptions {
     /**
      * Called per fetch of query results (may be called 2 or more)
      */
-    data?: (error: null, data: any[][], columns: Column[], stats: RuntimeStats) => void;
+    data?: (
+        error: null,
+        data: any[][],
+        columns: Column[],
+        stats: RuntimeStats,
+    ) => void;
     /**
      * Called once when all results are fetched
      */
@@ -304,14 +315,25 @@ export class Client {
     /**
      * Get query current status.
      */
-    query(query_id: string, callback: (error: PrestoRequestError | null, data: any) => void): void;
+    query(
+        query_id: string,
+        callback: (error: PrestoRequestError | null, data: any) => void,
+    ): void;
     /**
      * Stop query immediately.
      */
-    kill(query_id: string, callback: (error: PrestoRequestError | null) => void): void;
-    nodes(callback: (error: PrestoRequestError | null, data: any[]) => void): void;
+    kill(
+        query_id: string,
+        callback: (error: PrestoRequestError | null) => void,
+    ): void;
+    nodes(
+        callback: (error: PrestoRequestError | null, data: any[]) => void,
+    ): void;
     /**
      * Get node list of presto cluster and return it.
      */
-    nodes(opts: null | Record<string, never>, callback: (error: PrestoRequestError | null, data: any[]) => void): void;
+    nodes(
+        opts: null | Record<string, never>,
+        callback: (error: PrestoRequestError | null, data: any[]) => void,
+    ): void;
 }

@@ -194,13 +194,20 @@ declare namespace GoogleAppsScript {
             isRootElement(): boolean;
             removeAttribute(attribute: Attribute): boolean;
             removeAttribute(attributeName: string): boolean;
-            removeAttribute(attributeName: string, namespace: Namespace): boolean;
+            removeAttribute(
+                attributeName: string,
+                namespace: Namespace,
+            ): boolean;
             removeContent(): Content[];
             removeContent(content: Content): boolean;
             removeContent(index: Integer): Content;
             setAttribute(attribute: Attribute): Element;
             setAttribute(name: string, value: string): Element;
-            setAttribute(name: string, value: string, namespace: Namespace): Element;
+            setAttribute(
+                name: string,
+                value: string,
+                namespace: Namespace,
+            ): Element;
             setName(name: string): Element;
             setNamespace(namespace: Namespace): Element;
             setText(text: string): Element;
@@ -315,7 +322,11 @@ declare namespace GoogleAppsScript {
             createComment(text: string): Comment;
             createDocType(elementName: string): DocType;
             createDocType(elementName: string, systemId: string): DocType;
-            createDocType(elementName: string, publicId: string, systemId: string): DocType;
+            createDocType(
+                elementName: string,
+                publicId: string,
+                systemId: string,
+            ): DocType;
             createDocument(): Document;
             createDocument(rootElement: Element): Document;
             createElement(name: string): Element;

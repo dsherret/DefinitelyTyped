@@ -13,14 +13,17 @@ declare namespace Flow {
     type FileRemovedCallbackArguments = flowjs.FileRemovedCallbackArguments;
     type FileRetryCallbackArguments = flowjs.FileRetryCallbackArguments;
     type FilesAddedCallbackArguments = flowjs.FilesAddedCallbackArguments;
-    type FilesSubmittedCallbackArguments = flowjs.FilesSubmittedCallbackArguments;
+    type FilesSubmittedCallbackArguments =
+        flowjs.FilesSubmittedCallbackArguments;
     type FileSuccessCallbackArguments = flowjs.FileSuccessCallbackArguments;
     type FlowChunk = flowjs.FlowChunk;
     type FlowChunkParams = flowjs.FlowChunkParams;
     type FlowEvent = flowjs.FlowEvent;
-    type FlowEventFromEventName<T extends EventName> = flowjs.FlowEventFromEventName<T>;
+    type FlowEventFromEventName<T extends EventName> =
+        flowjs.FlowEventFromEventName<T>;
     type FlowEventMap = flowjs.FlowEventMap;
-    type FlowEventTypeFromFlowEvent<T extends FlowEvent> = flowjs.FlowEventTypeFromFlowEvent<T>;
+    type FlowEventTypeFromFlowEvent<T extends FlowEvent> =
+        flowjs.FlowEventTypeFromFlowEvent<T>;
     type FlowFile = flowjs.FlowFile;
     type FlowOptions = flowjs.FlowOptions;
     type ProgressCallbackArguments = flowjs.ProgressCallbackArguments;

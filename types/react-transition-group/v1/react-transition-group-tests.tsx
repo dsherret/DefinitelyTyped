@@ -1,9 +1,16 @@
 import * as React from "react";
 import TransitionGroup = require("react-transition-group/TransitionGroup");
 import CSSTransitionGroup = require("react-transition-group/CSSTransitionGroup");
-import { CSSTransitionGroupProps, TransitionGroupChildLifecycle, TransitionGroupProps } from "react-transition-group";
+import {
+    CSSTransitionGroupProps,
+    TransitionGroupChildLifecycle,
+    TransitionGroupProps,
+} from "react-transition-group";
 
-class TestChild extends React.Component implements TransitionGroupChildLifecycle {
+class TestChild
+    extends React.Component
+    implements TransitionGroupChildLifecycle
+{
     componentWillAppear(callback: () => void) {
         callback();
     }

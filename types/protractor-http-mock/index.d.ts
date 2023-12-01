@@ -50,27 +50,31 @@ declare namespace mock {
              */
             protractorConfig?: string | undefined;
 
-            mocks?: {
-                /**
-                 * Name of the folder where mocks will reside.
-                 * Default: 'mocks'
-                 */
-                dir?: string | undefined;
+            mocks?:
+                | {
+                      /**
+                       * Name of the folder where mocks will reside.
+                       * Default: 'mocks'
+                       */
+                      dir?: string | undefined;
 
-                /**
-                 * Collection of default mocks to load for every test.
-                 * Default: []
-                 */
-                default?: readonly string[] | undefined;
-            } | undefined;
+                      /**
+                       * Collection of default mocks to load for every test.
+                       * Default: []
+                       */
+                      default?: readonly string[] | undefined;
+                  }
+                | undefined;
 
-            plugins?: {
-                /**
-                 * Collection of default plugins to load for every test.
-                 * Default: []
-                 */
-                default?: readonly string[] | undefined;
-            } | undefined;
+            plugins?:
+                | {
+                      /**
+                       * Collection of default plugins to load for every test.
+                       * Default: []
+                       */
+                      default?: readonly string[] | undefined;
+                  }
+                | undefined;
         };
 
         /**
@@ -80,7 +84,9 @@ declare namespace mock {
          *
          * @param mocks An array of mock modules to load into the application.
          */
-        add(mocks: readonly requests.AllRequests[]): webdriver.promise.Promise<boolean>;
+        add(
+            mocks: readonly requests.AllRequests[],
+        ): webdriver.promise.Promise<boolean>;
 
         /**
          * Remove mocks during test execution.
@@ -89,7 +95,9 @@ declare namespace mock {
          *
          * @param mocks An array of mock modules to remove from the application.
          */
-        remove(mocks: readonly requests.AllRequests[]): webdriver.promise.Promise<boolean>;
+        remove(
+            mocks: readonly requests.AllRequests[],
+        ): webdriver.promise.Promise<boolean>;
     }
 
     /**
@@ -111,13 +119,34 @@ declare namespace mock {
          * @param mockRequest The mock to compare request with.
          * @param requestConfig The request object to compare mock with.
          */
-        match<O extends requests.Get<T1>>(mockRequest: O, requestConfig: O): boolean;
-        match<O extends requests.Post<T1>>(mockRequest: O, requestConfig: O): boolean;
-        match<O extends requests.Head<T1>>(mockRequest: O, requestConfig: O): boolean;
-        match<O extends requests.Delete<T1>>(mockRequest: O, requestConfig: O): boolean;
-        match<O extends requests.Put<T1>>(mockRequest: O, requestConfig: O): boolean;
-        match<O extends requests.Patch<T1>>(mockRequest: O, requestConfig: O): boolean;
-        match<O extends requests.Jsonp<T1>>(mockRequest: O, requestConfig: O): boolean;
+        match<O extends requests.Get<T1>>(
+            mockRequest: O,
+            requestConfig: O,
+        ): boolean;
+        match<O extends requests.Post<T1>>(
+            mockRequest: O,
+            requestConfig: O,
+        ): boolean;
+        match<O extends requests.Head<T1>>(
+            mockRequest: O,
+            requestConfig: O,
+        ): boolean;
+        match<O extends requests.Delete<T1>>(
+            mockRequest: O,
+            requestConfig: O,
+        ): boolean;
+        match<O extends requests.Put<T1>>(
+            mockRequest: O,
+            requestConfig: O,
+        ): boolean;
+        match<O extends requests.Patch<T1>>(
+            mockRequest: O,
+            requestConfig: O,
+        ): boolean;
+        match<O extends requests.Jsonp<T1>>(
+            mockRequest: O,
+            requestConfig: O,
+        ): boolean;
     }
 
     /**
@@ -131,15 +160,28 @@ declare namespace mock {
          * @param mockRequest The mock to compare request with.
          * @param requestConfig The request object to compare mock with.
          */
-        match<O extends requests.PostData<T1, T2>>(mockRequest: O, requestConfig: O): boolean;
-        match<O extends requests.PutData<T1, T2>>(mockRequest: O, requestConfig: O): boolean;
+        match<O extends requests.PostData<T1, T2>>(
+            mockRequest: O,
+            requestConfig: O,
+        ): boolean;
+        match<O extends requests.PutData<T1, T2>>(
+            mockRequest: O,
+            requestConfig: O,
+        ): boolean;
     }
 
     namespace requests {
         /**
          * Request methods type
          */
-        type Method = "GET" | "POST" | "DELETE" | "PUT" | "HEAD" | "PATCH" | "JSONP";
+        type Method =
+            | "GET"
+            | "POST"
+            | "DELETE"
+            | "PUT"
+            | "HEAD"
+            | "PATCH"
+            | "JSONP";
 
         type Headers = Record<string, string>;
 

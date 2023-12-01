@@ -14,16 +14,16 @@ export type Models =
     | "sentiment-analysis"
     | "text-tagging";
 export interface ModelInputs {
-    "colorizer": { image: string };
-    "text2img": { text: string };
+    colorizer: { image: string };
+    text2img: { text: string };
     "text-generator": { text: string };
     "torch-srgan": { image: string };
-    "waifu2x": { image: string };
+    waifu2x: { image: string };
     "nsfw-detector": { image: string };
-    "toonify": { image: string };
+    toonify: { image: string };
     "image-similarity": { image1: string; image2: string };
-    "deepdream": { image: string };
-    "summarization": { text: string };
+    deepdream: { image: string };
+    summarization: { text: string };
     "sentiment-analysis": { text: string };
     "text-tagging": { text: string };
 }

@@ -276,7 +276,13 @@ export namespace Poool {
          *
          * More infos: https://poool.dev/docs/access/javascript/access/configuration
          */
-        alternative_widget?: "none" | "video" | "gift" | "question" | "subscription" | "newsletter";
+        alternative_widget?:
+            | "none"
+            | "video"
+            | "gift"
+            | "question"
+            | "subscription"
+            | "newsletter";
         /**
          * URL needed to display video ads inside the video widget on the desktop.
          *
@@ -326,7 +332,11 @@ export namespace Poool {
          *
          * More infos: https://poool.dev/docs/access/javascript/access/configuration
          */
-        consent_rejection_widget?: "invisible" | "unlock" | "gift" | "subscription";
+        consent_rejection_widget?:
+            | "invisible"
+            | "unlock"
+            | "gift"
+            | "subscription";
         /**
          * Link URL shown inside widgets that require the collection of user information.
          * - `{return_url}` variable can be used to get the current URL.
@@ -683,7 +693,11 @@ export namespace Poool {
          *
          * More infos: https://poool.dev/docs/access/javascript/access/configuration
          */
-        (optionName: string, optionValue: any, readonly?: boolean): AccessFactory;
+        (
+            optionName: string,
+            optionValue: any,
+            readonly?: boolean,
+        ): AccessFactory;
     }
 
     interface AccessTexts {
@@ -702,7 +716,12 @@ export namespace Poool {
          *
          * More infos: https://poool.dev/docs/access/javascript/access/texts
          */
-        (keyName: string, value: string, readonly?: boolean, locale?: string): AccessFactory;
+        (
+            keyName: string,
+            value: string,
+            readonly?: boolean,
+            locale?: string,
+        ): AccessFactory;
         /**
          * You may need to override the default text displayed to your visitors, either to change the wording, or to add a new locale.
          *
@@ -717,7 +736,11 @@ export namespace Poool {
          *
          * More infos: https://poool.dev/docs/access/javascript/access/texts
          */
-        (texts: { [key: string]: string }, readonly?: boolean, locale?: string): AccessFactory;
+        (
+            texts: { [key: string]: string },
+            readonly?: boolean,
+            locale?: string,
+        ): AccessFactory;
     }
 
     interface AccessStyles {
@@ -1000,7 +1023,10 @@ export namespace Poool {
          *
          * More infos: https://poool.dev/docs/access/javascript/access/methods
          */
-        once(event: EventsList, callback: (...props: any) => any): AccessFactory;
+        once(
+            event: EventsList,
+            callback: (...props: any) => any,
+        ): AccessFactory;
         /**
          * Allows to remove an event callback previously set with {@link on} or {@link once}.
          *

@@ -32,10 +32,18 @@ declare module "express-session" {
 io.use(sharedsession(session));
 io.use(sharedsession(session, { autoSave: true, saveUninitialized: true }));
 io.use(sharedsession(session, cookieParser));
-io.use(sharedsession(session, cookieParser, { autoSave: true, saveUninitialized: true }));
+io.use(
+    sharedsession(session, cookieParser, {
+        autoSave: true,
+        saveUninitialized: true,
+    }),
+);
 
-io.on("connection", socket => {
-    const sessionID = [socket.handshake.sessionID, socket.handshake.session!.id];
+io.on("connection", (socket) => {
+    const sessionID = [
+        socket.handshake.sessionID,
+        socket.handshake.session!.id,
+    ];
     const sessionData = socket.handshake.session && [
         socket.handshake.session.sessionEntry,
         socket.handshake.session.anotherSessionEntry,

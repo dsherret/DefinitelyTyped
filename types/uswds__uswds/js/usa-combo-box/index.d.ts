@@ -29,7 +29,11 @@ interface ComboBox {
     /**
      * Generate a dynamic regular expression based off of a replaceable and possibly filtered value.
      */
-    generateDynamicRegExp(filter: string, query?: string, extras?: object): RegExp;
+    generateDynamicRegExp(
+        filter: string,
+        query?: string,
+        extras?: object,
+    ): RegExp;
     /**
      * Disable the combo-box component
      */

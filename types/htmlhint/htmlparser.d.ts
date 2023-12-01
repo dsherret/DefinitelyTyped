@@ -31,9 +31,7 @@ export default class HTMLParser {
 
     constructor();
 
-    makeMap(
-        str: string,
-    ): {
+    makeMap(str: string): {
         [key: string]: boolean;
     };
     parse(html: string): void;
@@ -47,9 +45,7 @@ export default class HTMLParser {
         line: number;
         col: number;
     };
-    getMapAttrs(
-        arrAttrs: Attr[],
-    ): {
+    getMapAttrs(arrAttrs: Attr[]): {
         [name: string]: string;
     };
 }

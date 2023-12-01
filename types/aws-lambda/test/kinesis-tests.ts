@@ -34,7 +34,11 @@ const handler: KinesisStreamHandler = async (event, context, callback) => {
     callback(new Error());
 };
 
-const tumblingWindowHandler: KinesisStreamTumblingWindowHandler = async (event, context, callback) => {
+const tumblingWindowHandler: KinesisStreamTumblingWindowHandler = async (
+    event,
+    context,
+    callback,
+) => {
     bool = event.isFinalInvokeForWindow;
     bool = event.isWindowTerminatedEarly;
     str = event.window.start;
@@ -54,7 +58,11 @@ const tumblingWindowHandler: KinesisStreamTumblingWindowHandler = async (event, 
     }
 };
 
-const handlerWithResponse: KinesisStreamHandler = async (event, context, callback) => {
+const handlerWithResponse: KinesisStreamHandler = async (
+    event,
+    context,
+    callback,
+) => {
     callback(null, {
         batchItemFailures: [
             {
@@ -64,7 +72,11 @@ const handlerWithResponse: KinesisStreamHandler = async (event, context, callbac
     });
 };
 
-const firehoseHandler: FirehoseTransformationHandler = async (event, context, callback) => {
+const firehoseHandler: FirehoseTransformationHandler = async (
+    event,
+    context,
+    callback,
+) => {
     let firehoseRecordMetadata: FirehoseRecordMetadata | undefined;
 
     str = event.records[0].recordId;

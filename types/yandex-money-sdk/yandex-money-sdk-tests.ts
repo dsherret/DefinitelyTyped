@@ -19,7 +19,13 @@ let externalPayment: ymsdk.ExternalPayment;
     let clientSecret: string;
     let callback: ymsdk.ResponseCallback<YandexMoneySDK.Wallet.GetAccessTokenResult>;
 
-    ymsdk.Wallet.getAccessToken(clientId, code, redirectURI, clientSecret, callback);
+    ymsdk.Wallet.getAccessToken(
+        clientId,
+        code,
+        redirectURI,
+        clientSecret,
+        callback,
+    );
 }
 
 {

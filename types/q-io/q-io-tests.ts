@@ -32,8 +32,7 @@ var stream: Qio.Stream;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-fs.open(path, options).then((x) => {
-});
+fs.open(path, options).then((x) => {});
 // fs.open(path, options):Q.Promise<Qio.Reader>;
 // fs.open(path, options):Q.Promise<Qio.Writer>;
 // fs.open(path, options):Q.Promise<Buffer>;
@@ -164,8 +163,7 @@ response = http.normalizeResponse(response);
 num = response.status;
 headers = response.headers;
 reader = response.body;
-response.onclose = () => {
-};
+response.onclose = () => {};
 x = response.node;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

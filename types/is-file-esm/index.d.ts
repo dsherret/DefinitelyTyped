@@ -14,7 +14,10 @@ declare const isFileEsm: {
         ERR_PATH_MUST_HAVE_VALID_EXT: string;
     };
 
-    (path: string, callback: (error: Error | null, result?: Result) => void): void;
+    (
+        path: string,
+        callback: (error: Error | null, result?: Result) => void,
+    ): void;
     (path: string): Promise<Result>;
     sync(path: string): Result;
 };

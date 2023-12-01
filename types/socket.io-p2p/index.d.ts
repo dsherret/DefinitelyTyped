@@ -101,7 +101,11 @@ declare namespace SocketioP2PStatic {
          * Custom WebRTC implementation, mainly useful in node to specify the wrtc package
          * @default {}
          */
-        wrtc?: RTCPeerConnection | RTCSessionDescription | RTCIceCandidate | undefined;
+        wrtc?:
+            | RTCPeerConnection
+            | RTCSessionDescription
+            | RTCIceCandidate
+            | undefined;
         /**
          * Set to true to create the stream in Object Mode. In this mode, incoming string data is not automatically converted to Buffer objects
          * @default false

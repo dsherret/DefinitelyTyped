@@ -19,9 +19,10 @@ const test1 = (
     />
 );
 
-const InputComponent = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>((props, ref) => (
-    <input ref={ref} {...props} />
-));
+const InputComponent = React.forwardRef<
+    HTMLInputElement,
+    React.InputHTMLAttributes<HTMLInputElement>
+>((props, ref) => <input ref={ref} {...props} />);
 
 const test2 = (
     <PhoneInput

@@ -1,4 +1,8 @@
-import { ParameterAllowableValuesType, ParameterDataType, PeriodType } from "./enums";
+import {
+    ParameterAllowableValuesType,
+    ParameterDataType,
+    PeriodType,
+} from "./enums";
 import { DataValue } from "./filtering";
 
 export class Parameter {

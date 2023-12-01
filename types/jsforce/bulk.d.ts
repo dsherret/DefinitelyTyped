@@ -31,7 +31,10 @@ export class Bulk {
         operation: BulkLoadOperation,
         options?: BulkOptions,
         input?: Record[] | Stream | string,
-        callback?: (err: Error, result: RecordResult[] | BatchResultInfo[]) => void,
+        callback?: (
+            err: Error,
+            result: RecordResult[] | BatchResultInfo[],
+        ) => void,
     ): Batch;
     query(soql: string): any;
 }

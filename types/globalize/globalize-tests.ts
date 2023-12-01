@@ -109,7 +109,9 @@ strOutput = Globalize.plural(20, { type: "ordinal" });
 let relativeTimeFormatter = en.relativeTimeFormatter("week");
 strOutput = relativeTimeFormatter(20);
 
-relativeTimeFormatter = Globalize.relativeTimeFormatter("day", { form: "short" });
+relativeTimeFormatter = Globalize.relativeTimeFormatter("day", {
+    form: "short",
+});
 strOutput = relativeTimeFormatter(20);
 
 strOutput = en.formatRelativeTime(20, "day");
@@ -122,4 +124,6 @@ unitFormatter = Globalize.unitFormatter("week", { form: "narrow" });
 strOutput = unitFormatter(10);
 
 strOutput = en.formatUnit(10, "day");
-strOutput = Globalize.formatUnit(10, "week", { numberFormatter: { style: "decimal" } });
+strOutput = Globalize.formatUnit(10, "week", {
+    numberFormatter: { style: "decimal" },
+});

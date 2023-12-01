@@ -13,11 +13,13 @@ import { ListBoxSelectionTranslationKey } from "../ListBox/ListBoxSelection";
 
 type ExcludedAttributes = "id" | "onChange" | "ref" | "size";
 
-export interface ComboBoxProps<ItemType = string, CustomElementProps = Extract<ItemType, object>>
-    extends
-        Omit<ReactInputAttr, ExcludedAttributes>,
-        InternationalProps<ListBoxMenuIconTranslationKey | ListBoxSelectionTranslationKey>
-{
+export interface ComboBoxProps<
+    ItemType = string,
+    CustomElementProps = Extract<ItemType, object>,
+> extends Omit<ReactInputAttr, ExcludedAttributes>,
+        InternationalProps<
+            ListBoxMenuIconTranslationKey | ListBoxSelectionTranslationKey
+        > {
     ariaLabel?: string | undefined;
     direction?: VerticalDirection | undefined;
     downshiftProps?: any; // TODO
@@ -27,7 +29,8 @@ export interface ComboBoxProps<ItemType = string, CustomElementProps = Extract<I
     invalid?: boolean | undefined;
     invalidText?: React.ReactNode | undefined;
     items: readonly ItemType[];
-    itemToElement?: CustomElementProps extends object ? React.JSXElementConstructor<CustomElementProps>
+    itemToElement?: CustomElementProps extends object
+        ? React.JSXElementConstructor<CustomElementProps>
         : never | undefined;
     itemToString?(item: ItemType | null | undefined): string;
     light?: boolean | undefined;
@@ -47,6 +50,8 @@ export interface ComboBoxProps<ItemType = string, CustomElementProps = Extract<I
     warnText?: React.ReactNode | undefined;
 }
 
-declare function ComboBox<T = string>(props: ForwardRefProps<HTMLInputElement, ComboBoxProps<T>>): FCReturn;
+declare function ComboBox<T = string>(
+    props: ForwardRefProps<HTMLInputElement, ComboBoxProps<T>>,
+): FCReturn;
 
 export default ComboBox;

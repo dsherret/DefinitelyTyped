@@ -5,6 +5,9 @@ declare namespace findDown {
     }
 }
 
-declare function findDown(filename: string | string[], options?: findDown.Options): Promise<string | null>;
+declare function findDown(
+    filename: string | string[],
+    options?: findDown.Options,
+): Promise<string | null>;
 
 export = findDown;

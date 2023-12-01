@@ -71,7 +71,15 @@ declare class ProcessManager {
     getCurrentProcess(): Process;
 }
 declare namespace ProcessManager {
-    export { Controller, DataSet, Event, getInstance, parseLayoutLinkContent, SessionTimeoutsInfo, TabInfo };
+    export {
+        Controller,
+        DataSet,
+        Event,
+        getInstance,
+        parseLayoutLinkContent,
+        SessionTimeoutsInfo,
+        TabInfo,
+    };
 }
 type DataSet = import("@nginstack/engine/lib/dataset/DataSet");
 type Event = import("@nginstack/engine/lib/event/Event");

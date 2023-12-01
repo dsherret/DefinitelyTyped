@@ -9,7 +9,11 @@ export let templateSettings: TemplateSettings;
 export type RenderFunction = (...args: any[]) => string;
 
 /** Compile template */
-export function template(tmpl: string, c?: TemplateSettings, def?: {}): RenderFunction;
+export function template(
+    tmpl: string,
+    c?: TemplateSettings,
+    def?: {},
+): RenderFunction;
 
 /** For express */
 export function compile(tmpl: string, def?: {}): RenderFunction;

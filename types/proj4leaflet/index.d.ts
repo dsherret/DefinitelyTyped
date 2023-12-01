@@ -12,8 +12,15 @@ declare module "leaflet" {
             wrapLat?: [number, number] | undefined;
             infinite: boolean;
 
-            constructor(projection: proj4.InterfaceProjection, options?: ProjCRSOptions);
-            constructor(code: string, proj4def: string, options?: ProjCRSOptions);
+            constructor(
+                projection: proj4.InterfaceProjection,
+                options?: ProjCRSOptions,
+            );
+            constructor(
+                code: string,
+                proj4def: string,
+                options?: ProjCRSOptions,
+            );
 
             latLngToPoint(latlng: LatLngExpression, zoom: number): Point;
 
@@ -29,14 +36,20 @@ declare module "leaflet" {
 
             getProjectedBounds(zoom: number): Bounds;
 
-            distance(latlng1: LatLngExpression, latlng2: LatLngExpression): number;
+            distance(
+                latlng1: LatLngExpression,
+                latlng2: LatLngExpression,
+            ): number;
 
             wrapLatLng(latlng: LatLng | LatLngLiteral): LatLng;
         }
 
         class GeoJSON extends L.GeoJSON {}
 
-        function geoJson(geojson?: Proj4GeoJSONFeature, options?: GeoJSONOptions): GeoJSON;
+        function geoJson(
+            geojson?: Proj4GeoJSONFeature,
+            options?: GeoJSONOptions,
+        ): GeoJSON;
 
         class ImageOverlay extends L.ImageOverlay {}
 

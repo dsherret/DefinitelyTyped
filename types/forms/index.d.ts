@@ -6,7 +6,8 @@ export interface FieldObjectChoice {
     [key: string]: string | FieldObjectChoice;
 }
 
-export interface FieldArrayChoice extends Array<[string, string | FieldArrayChoice]> {}
+export interface FieldArrayChoice
+    extends Array<[string, string | FieldArrayChoice]> {}
 
 export interface FieldParameters {
     /** Optional label text which overrides the default. */
@@ -28,10 +29,12 @@ export interface FieldParameters {
     choices?: FieldObjectChoice | FieldArrayChoice | undefined;
 
     /** A list of CSS classes for label and field wrapper. */
-    cssClasses?: {
-        field?: string[] | undefined;
-        label?: string[] | undefined;
-    } | undefined;
+    cssClasses?:
+        | {
+              field?: string[] | undefined;
+              label?: string[] | undefined;
+          }
+        | undefined;
 
     /** If true, errors won't be rendered automatically. */
     hideError?: boolean | undefined;
@@ -94,7 +97,10 @@ export type FieldBound<Data = unknown, RawData = unknown> = Field<Data> & {
      * Checks if the field is required and whether it is empty. Then runs the validator functions in order until one fails or they all pass.
      * If a validator fails, the resulting message is stored in the field's error attribute.
      */
-    validate: (form: Form, callback: (err: string, field: Field) => void) => void;
+    validate: (
+        form: Form,
+        callback: (err: string, field: Field) => void,
+    ) => void;
 };
 
 export interface Widget extends WidgetParameters {
@@ -120,7 +126,11 @@ export interface WidgetParameters {
  * It should apply a test to the field to assert its validity.
  * Once processing has completed it must call the callback with no arguments if the field is valid or with an error message if the field is invalid.
  */
-export type ValidatorFunction = (form: FormBound, field: FieldBound, callback: (err?: string) => void) => void;
+export type ValidatorFunction = (
+    form: FormBound,
+    field: FieldBound,
+    callback: (err?: string) => void,
+) => void;
 
 export interface FormFields {
     [key: string]: Field | FormFields;
@@ -128,11 +138,21 @@ export interface FormFields {
 
 export type FormHandleCallback<
     Fields extends FormFields = FormFields,
-    Data extends (IncomingMessage | (Partial<FormData<Fields>> & { [key: string]: unknown })) = FormData<Fields>,
-> = (form: FormBound<Fields, Data extends IncomingMessage ? FormData<Fields> : Data>) => void;
+    Data extends
+        | IncomingMessage
+        | (Partial<FormData<Fields>> & {
+              [key: string]: unknown;
+          }) = FormData<Fields>,
+> = (
+    form: FormBound<
+        Fields,
+        Data extends IncomingMessage ? FormData<Fields> : Data
+    >,
+) => void;
 
 export type FormData<Fields extends FormFields = FormFields> = {
-    [Key in keyof Fields]: Fields[Key] extends Field ? ReturnType<Fields[Key]["parse"]>
+    [Key in keyof Fields]: Fields[Key] extends Field
+        ? ReturnType<Fields[Key]["parse"]>
         : never;
 };
 
@@ -141,7 +161,11 @@ export interface Form<Fields extends FormFields = FormFields> {
     fields: Fields;
 
     /** Inspects a request or object literal and binds any data to the correct fields. */
-    handle: <Data extends IncomingMessage | (Partial<FormData<Fields>> & { [key: string]: unknown })>(
+    handle: <
+        Data extends
+            | IncomingMessage
+            | (Partial<FormData<Fields>> & { [key: string]: unknown }),
+    >(
         req: Data | undefined,
         callbacks: {
             success?: FormHandleCallback<Fields, Data> | undefined;
@@ -163,22 +187,30 @@ export interface Form<Fields extends FormFields = FormFields> {
     toHTML: (iterator?: FieldIterator) => string;
 }
 
-export interface FormBound<Fields extends FormFields = any, Data extends Partial<FormData<Fields>> = FormData<Fields>> {
+export interface FormBound<
+    Fields extends FormFields = any,
+    Data extends Partial<FormData<Fields>> = FormData<Fields>,
+> {
     /** Object containing all the parsed data keyed by field name. */
     data: FormData<Fields> & Data;
 
     /** Calls validate on each field in the bound form and returns the resulting form object to the callback. */
-    validate: (callback: (err: string, form: FormBound<Fields, Data>) => void) => void;
+    validate: (
+        callback: (err: string, form: FormBound<Fields, Data>) => void,
+    ) => void;
 
     /** Checks all fields for an error attribute. Returns false if any exist, otherwise returns true. */
     isValid: () => boolean;
 }
 
 /** Converts a form definition (an object literal containing field objects) into a form object. */
-export function create<Fields extends FormFields = FormFields>(fields: Fields, options?: {
-    /** If false, the first validation error will halt form validation, otherwise all fields will be validated. */
-    validatePastFirstError?: boolean | undefined;
-}): Form<Fields>;
+export function create<Fields extends FormFields = FormFields>(
+    fields: Fields,
+    options?: {
+        /** If false, the first validation error will halt form validation, otherwise all fields will be validated. */
+        validatePastFirstError?: boolean | undefined;
+    },
+): Form<Fields>;
 
 export namespace fields {
     function array(params?: FieldParameters): Field<unknown[]>;
@@ -199,17 +231,34 @@ export namespace validators {
     function digits(errorMessage?: string): ValidatorFunction;
     function integer(errorMessage?: string): ValidatorFunction;
     function email(errorMessage?: string): ValidatorFunction;
-    function matchField(matchedField: string, errorMessage?: string): ValidatorFunction;
-    function matchValue(valueGetter: () => any, errorMessage?: string): ValidatorFunction;
+    function matchField(
+        matchedField: string,
+        errorMessage?: string,
+    ): ValidatorFunction;
+    function matchValue(
+        valueGetter: () => any,
+        errorMessage?: string,
+    ): ValidatorFunction;
     function max(value: number, errorMessage?: string): ValidatorFunction;
     function maxlength(value: number, errorMessage?: string): ValidatorFunction;
     function min(value: number, errorMessage?: string): ValidatorFunction;
     function minlength(value: number, errorMessage?: string): ValidatorFunction;
-    function range(min: number, max: number, errorMessage?: string): ValidatorFunction;
-    function rangelength(min: number, max: number, errorMessage?: string): ValidatorFunction;
+    function range(
+        min: number,
+        max: number,
+        errorMessage?: string,
+    ): ValidatorFunction;
+    function rangelength(
+        min: number,
+        max: number,
+        errorMessage?: string,
+    ): ValidatorFunction;
     function regexp(regexp: RegExp, errorMessage?: string): ValidatorFunction;
     function required(errorMessage?: string): ValidatorFunction;
-    function requiresFieldIfEmpty(alternateField: string, errorMessage?: string): ValidatorFunction;
+    function requiresFieldIfEmpty(
+        alternateField: string,
+        errorMessage?: string,
+    ): ValidatorFunction;
     function url(errorMessage?: string): ValidatorFunction;
 }
 
@@ -228,7 +277,12 @@ export namespace widgets {
     function select(params?: WidgetParameters): Widget;
     function tel(params?: WidgetParameters): Widget;
     function text(params?: WidgetParameters): Widget;
-    function textarea(params?: WidgetParameters & { rows?: number | undefined; cols?: number | undefined }): Widget;
+    function textarea(
+        params?: WidgetParameters & {
+            rows?: number | undefined;
+            cols?: number | undefined;
+        },
+    ): Widget;
 }
 
 /** A function which accepts a name and field as arguments and returns a string containing a HTML representation of the field. */

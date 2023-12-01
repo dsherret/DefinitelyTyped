@@ -1153,11 +1153,7 @@ export interface Notification {
 }
 
 export namespace Notification {
-    type level =
-        | "none"
-        | "note"
-        | "warning"
-        | "error";
+    type level = "none" | "note" | "warning" | "error";
 }
 
 /**
@@ -1358,11 +1354,7 @@ export interface ReportingConfiguration {
 }
 
 export namespace ReportingConfiguration {
-    type level =
-        | "none"
-        | "note"
-        | "warning"
-        | "error";
+    type level = "none" | "note" | "warning" | "error";
 }
 
 /**
@@ -1673,17 +1665,9 @@ export namespace Result {
         | "open"
         | "informational";
 
-    type level =
-        | "none"
-        | "note"
-        | "warning"
-        | "error";
+    type level = "none" | "note" | "warning" | "error";
 
-    type baselineState =
-        | "new"
-        | "unchanged"
-        | "updated"
-        | "absent";
+    type baselineState = "new" | "unchanged" | "updated" | "absent";
 }
 
 /**
@@ -1890,9 +1874,7 @@ export interface Run {
 }
 
 export namespace Run {
-    type columnKind =
-        | "utf16CodeUnits"
-        | "unicodeCodePoints";
+    type columnKind = "utf16CodeUnits" | "unicodeCodePoints";
 }
 
 /**
@@ -2029,14 +2011,9 @@ export interface Suppression {
 }
 
 export namespace Suppression {
-    type kind =
-        | "inSource"
-        | "external";
+    type kind = "inSource" | "external";
 
-    type status =
-        | "accepted"
-        | "underReview"
-        | "rejected";
+    type status = "accepted" | "underReview" | "rejected";
 }
 
 /**
@@ -2158,10 +2135,7 @@ export interface ThreadFlowLocation {
 }
 
 export namespace ThreadFlowLocation {
-    type importance =
-        | "important"
-        | "essential"
-        | "unimportant";
+    type importance = "important" | "essential" | "unimportant";
 }
 
 /**
@@ -2227,7 +2201,9 @@ export interface ToolComponent {
      * placeholders, which can be used to construct a message in combination with an arbitrary number of additional
      * string arguments.
      */
-    globalMessageStrings?: { [key: string]: MultiformatMessageString } | undefined;
+    globalMessageStrings?:
+        | { [key: string]: MultiformatMessageString }
+        | undefined;
 
     /**
      * A unique identifer for the tool component in the form of a GUID.
@@ -2344,9 +2320,7 @@ export interface ToolComponent {
 }
 
 export namespace ToolComponent {
-    type contents =
-        | "localizedData"
-        | "nonLocalizedData";
+    type contents = "localizedData" | "nonLocalizedData";
 }
 
 /**

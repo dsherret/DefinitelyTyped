@@ -10,9 +10,7 @@ const sampleEvent = {
 };
 
 const AddToCalendarRequiredOptions: JSX.Element = (
-    <AddToCalendar
-        event={sampleEvent}
-    />
+    <AddToCalendar event={sampleEvent} />
 );
 
 const AddToCalendarAllOptions: JSX.Element = (

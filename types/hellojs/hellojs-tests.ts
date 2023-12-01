@@ -13,7 +13,7 @@ hello.init({
             const id_token = hello("networkName").getAuthResponse().id_token;
             hello.utils.store("networkName", null);
         },
-        xhr: p => {
+        xhr: (p) => {
             const token = p.query.access_token;
             delete p.query.access_token;
             if (token) {
@@ -70,7 +70,7 @@ hello.init({
             offline_access: "",
         },
         scope_delim: " ",
-        login: p => {
+        login: (p) => {
             p.options.popup.width = 400;
             p.options.popup.height = 700;
         },
@@ -179,10 +179,10 @@ hello("facebook").login();
 hello("facebook").logout();
 
 hello
-    .on("auth.login", auth => {
+    .on("auth.login", (auth) => {
         alert("log to " + auth.network);
     })
-    .on("auth.logout", auth => {
+    .on("auth.logout", (auth) => {
         alert("unlog from " + auth.network);
     });
 
@@ -197,7 +197,7 @@ hello.logout("facebook");
 hello("facebook")
     .api("me")
     .then(
-        json => {
+        (json) => {
             alert("Your name is " + json.name);
         },
         () => {

@@ -9,8 +9,11 @@ declare namespace _default {
         out?: {};
     }
 
-    function parse(gtx: ArrayBuffer, options?: {
-        in?: ParsingOptions;
-    }): Promise<GeoidGrid>;
+    function parse(
+        gtx: ArrayBuffer,
+        options?: {
+            in?: ParsingOptions;
+        },
+    ): Promise<GeoidGrid>;
 }
 export default _default;

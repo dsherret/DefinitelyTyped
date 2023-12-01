@@ -8,11 +8,7 @@ let lexer = moo.compile({
 });
 
 lexer = moo.compile({
-    number: [
-        /\d+\.\d+/,
-        /\d+\./,
-        /\.\d+/,
-    ],
+    number: [/\d+\.\d+/, /\d+\./, /\.\d+/],
 });
 
 lexer = moo.compile({
@@ -96,9 +92,21 @@ Array.from(lexer.reset("lex this"));
 // Transform: https://github.com/no-context/moo#transform
 moo.compile({
     STRING: [
-        { match: /"""[^]*?"""/, lineBreaks: true, value: x => x.slice(3, -3) },
-        { match: /"(?:\\["\\rn]|[^"\\])*?"/, lineBreaks: true, value: x => x.slice(1, -1) },
-        { match: /'(?:\\['\\rn]|[^'\\])*?'/, lineBreaks: true, value: x => x.slice(1, -1) },
+        {
+            match: /"""[^]*?"""/,
+            lineBreaks: true,
+            value: (x) => x.slice(3, -3),
+        },
+        {
+            match: /"(?:\\["\\rn]|[^"\\])*?"/,
+            lineBreaks: true,
+            value: (x) => x.slice(1, -1),
+        },
+        {
+            match: /'(?:\\['\\rn]|[^'\\])*?'/,
+            lineBreaks: true,
+            value: (x) => x.slice(1, -1),
+        },
     ],
     // ...
 });

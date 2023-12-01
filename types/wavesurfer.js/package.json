@@ -1,32 +1,32 @@
 {
-    "private": true,
-    "name": "@types/wavesurfer.js",
-    "version": "6.0.9999",
-    "projects": [
-        "https://github.com/katspaugh/wavesurfer.js"
-    ],
-    "dependencies": {
-        "@types/debounce": "*"
+  "private": true,
+  "name": "@types/wavesurfer.js",
+  "version": "6.0.9999",
+  "projects": [
+    "https://github.com/katspaugh/wavesurfer.js"
+  ],
+  "dependencies": {
+    "@types/debounce": "*"
+  },
+  "devDependencies": {
+    "@types/wavesurfer.js": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Yusuke Higuchi",
+      "githubUsername": "higuri"
     },
-    "devDependencies": {
-        "@types/wavesurfer.js": "workspace:."
+    {
+      "name": "Egor Gorbachev",
+      "githubUsername": "kubk"
     },
-    "owners": [
-        {
-            "name": "Yusuke Higuchi",
-            "githubUsername": "higuri"
-        },
-        {
-            "name": "Egor Gorbachev",
-            "githubUsername": "kubk"
-        },
-        {
-            "name": "Ben Nordstrom",
-            "githubUsername": "bennordgengo"
-        },
-        {
-            "name": "Thijs Triemstra",
-            "githubUsername": "thijstriemstra"
-        }
-    ]
+    {
+      "name": "Ben Nordstrom",
+      "githubUsername": "bennordgengo"
+    },
+    {
+      "name": "Thijs Triemstra",
+      "githubUsername": "thijstriemstra"
+    }
+  ]
 }

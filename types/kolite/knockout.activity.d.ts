@@ -19,7 +19,11 @@ interface KoLiteActivity {
     (options: KoLiteActivityOptions): JQuery;
     defaults: KoLiteActivityOptions;
     getOpacity(
-        options: { steps?: number | undefined; segments?: number | undefined; opacity?: number | undefined },
+        options: {
+            steps?: number | undefined;
+            segments?: number | undefined;
+            opacity?: number | undefined;
+        },
         i: number,
     ): number;
 }

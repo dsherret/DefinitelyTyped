@@ -1,8 +1,19 @@
-import { exec, ExecError, SubProcess, SubProcessOptions, TeenProcessExecOptions } from "teen_process";
+import {
+    exec,
+    ExecError,
+    SubProcess,
+    SubProcessOptions,
+    TeenProcessExecOptions,
+} from "teen_process";
 
 exec("bigfix");
 exec("echo", ["my name is bob", "lol"]);
-exec("echo", ["arg"], { cwd: process.cwd(), env: { FOO: "bar" }, timeout: 500, ignoreOutput: true });
+exec("echo", ["arg"], {
+    cwd: process.cwd(),
+    env: { FOO: "bar" },
+    timeout: 500,
+    ignoreOutput: true,
+});
 
 const options: TeenProcessExecOptions = {
     killSignal: 0,
@@ -57,6 +68,9 @@ subproc.start(0);
 subproc.start((stdout: string) => stdout.indexOf("nothere") !== -1);
 subproc.join();
 
-subproc.prependListener("exit", (code: number | null, signal: NodeJS.Signals | null) => {});
+subproc.prependListener(
+    "exit",
+    (code: number | null, signal: NodeJS.Signals | null) => {},
+);
 subproc.stop();
 subproc.detachProcess();

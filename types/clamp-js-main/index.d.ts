@@ -15,4 +15,7 @@ declare namespace clamp {
 }
 
 export = clamp;
-declare function clamp(element: HTMLElement, options?: clamp.ClampOptions): clamp.ClampResponse;
+declare function clamp(
+    element: HTMLElement,
+    options?: clamp.ClampOptions,
+): clamp.ClampResponse;

@@ -5,11 +5,18 @@ export = SerialPort;
 
 declare class SerialPort extends Stream<any> {
     // openImmediately already removed in 4.0.7
-    constructor(path: string, options?: SerialPort.Options | SerialPort.callback, callback?: SerialPort.callback);
+    constructor(
+        path: string,
+        options?: SerialPort.Options | SerialPort.callback,
+        callback?: SerialPort.callback,
+    );
     isOpen(): boolean;
     on(event: string, callback?: (data?: any) => void): void;
     open(callback?: SerialPort.callback): void;
-    write(buffer: any, callback?: (err: any, bytesWritten: number) => void): void;
+    write(
+        buffer: any,
+        callback?: (err: any, bytesWritten: number) => void,
+    ): void;
     pause(): void;
     resume(): void;
     disconnected(err: Error): void;
@@ -17,8 +24,13 @@ declare class SerialPort extends Stream<any> {
     flush(callback?: SerialPort.callback): void;
     set(options: SerialPort.SetOptions, callback: SerialPort.callback): void;
     drain(callback?: SerialPort.callback): void;
-    update(options: SerialPort.UpdateOptions, callback?: SerialPort.callback): void;
-    static list(callback: (err: any, ports: SerialPort.PortConfig[]) => void): void;
+    update(
+        options: SerialPort.UpdateOptions,
+        callback?: SerialPort.callback,
+    ): void;
+    static list(
+        callback: (err: any, ports: SerialPort.PortConfig[]) => void,
+    ): void;
     // https://github.com/EmergingTechnologyAdvisors/node-serialport/blob/4.0.7/lib/parsers.js
     static parsers: SerialPort.Parsers;
 }
@@ -46,11 +58,21 @@ declare namespace SerialPort {
         baudRate?: number | undefined;
     }
 
-    type serialParser = (emitter: NodeJS.EventEmitter, buffer: Buffer | string) => void;
+    type serialParser = (
+        emitter: NodeJS.EventEmitter,
+        buffer: Buffer | string,
+    ) => void;
 
     type readlineParser = (
         delimiter: string,
-        encoding?: "ascii" | "utf8" | "utf16le" | "ucs2" | "base64" | "binary" | "hex",
+        encoding?:
+            | "ascii"
+            | "utf8"
+            | "utf16le"
+            | "ucs2"
+            | "base64"
+            | "binary"
+            | "hex",
     ) => serialParser;
 
     type byteLengthParser = (delimiter: number) => serialParser;
@@ -98,9 +120,11 @@ declare namespace SerialPort {
         xoff?: boolean | undefined;
         bufferSize?: number | undefined;
         parser?: serialParser | undefined;
-        platformOptions?: {
-            vmin?: number | undefined;
-            vtime?: number | undefined;
-        } | undefined;
+        platformOptions?:
+            | {
+                  vmin?: number | undefined;
+                  vtime?: number | undefined;
+              }
+            | undefined;
     }
 }

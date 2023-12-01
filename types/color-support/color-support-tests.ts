@@ -17,21 +17,24 @@ import colorSupport = require("color-support");
 })();
 
 (() => {
-    const result = colorSupport({
-        alwaysReturn: false,
-        env: process.env,
-        ignoreCI: true,
-        ignoreDumb: true,
-        ignoreTTY: true,
-        level: 2,
-        stream: process.stdout,
-        term: process.env.TERM,
-    }, {
-        has16m: false,
-        has256: false,
-        hasBasic: false,
-        level: 0,
-    });
+    const result = colorSupport(
+        {
+            alwaysReturn: false,
+            env: process.env,
+            ignoreCI: true,
+            ignoreDumb: true,
+            ignoreTTY: true,
+            level: 2,
+            stream: process.stdout,
+            term: process.env.TERM,
+        },
+        {
+            has16m: false,
+            has256: false,
+            hasBasic: false,
+            level: 0,
+        },
+    );
 
     if (!result) {
         console.log("color is not supported");

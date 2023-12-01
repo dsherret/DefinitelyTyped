@@ -4,7 +4,7 @@ import cron = require("node-cron");
 
 const log = console.log;
 
-cron.schedule("* * * * *", now => {
+cron.schedule("* * * * *", (now) => {
     log("running a task every minute");
     if (now instanceof Date) {
         if (now.getTime() === Date.now()) {
@@ -70,12 +70,9 @@ task5.on("task-done", () => {
 });
 
 // manual execution
-cron.schedule(
-    "* * * * *",
-    () => {
-        log("will execute immediately and every minute after");
-    },
-).now();
+cron.schedule("* * * * *", () => {
+    log("will execute immediately and every minute after");
+}).now();
 
 cron.schedule(
     "* * * * *",

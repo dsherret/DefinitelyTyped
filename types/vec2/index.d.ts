@@ -65,14 +65,20 @@ declare class Vec2 {
      * Multiply this vectors components with the incoming, returning a clone if `returnNew` is truthy.
      */
     multiply(x: number, y: number, returnNew?: boolean): Vec2;
-    multiply(scalarArrayVec2: number | number[] | Vec2, returnNew?: boolean): Vec2;
+    multiply(
+        scalarArrayVec2: number | number[] | Vec2,
+        returnNew?: boolean,
+    ): Vec2;
 
     /**
      * Divide this vectors components by the incoming, returning a clone if `returnNew` is truthy.
      * _note_: this method will throw if you attempt to divide by zero or pass values that cause NaNs
      */
     divide(x: number, y: number, returnNew?: boolean): Vec2;
-    divide(scalarArrayVec2: number | number[] | Vec2, returnNew?: boolean): Vec2;
+    divide(
+        scalarArrayVec2: number | number[] | Vec2,
+        returnNew?: boolean,
+    ): Vec2;
 
     /**
      * Rotate this vector's cordinates around `(0,0)`.  If `returnNew` is specified, a new `Vec2` will be created and populated with the result and returned.

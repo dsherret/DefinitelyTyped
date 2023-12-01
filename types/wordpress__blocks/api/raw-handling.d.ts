@@ -56,9 +56,15 @@ export namespace pasteHandler {
  *
  * @returns A list of blocks or a string, depending on `options.mode`.
  */
-export function pasteHandler(options: pasteHandler.Options & { mode: "INLINE" }): string;
-export function pasteHandler(options: pasteHandler.Options & { mode: "BLOCKS" }): BlockInstance[];
-export function pasteHandler(options: pasteHandler.Options): BlockInstance[] | string;
+export function pasteHandler(
+    options: pasteHandler.Options & { mode: "INLINE" },
+): string;
+export function pasteHandler(
+    options: pasteHandler.Options & { mode: "BLOCKS" },
+): BlockInstance[];
+export function pasteHandler(
+    options: pasteHandler.Options,
+): BlockInstance[] | string;
 
 /**
  * Converts an HTML string to known blocks.

@@ -70,7 +70,9 @@ declare module "../globalize" {
          * @param {DateFormatterOptions} options see date/expand_pattern for more info.
          * @returns {Function} Return a function that formats a date into parts tokens according to the given options. The default formatting is numeric year, month, and day (i.e., `{ skeleton: "yMd" }`).
          */
-        dateToPartsFormatter(options?: DateFormatterOptions): (value: Date) => DateFormatPart[];
+        dateToPartsFormatter(
+            options?: DateFormatterOptions,
+        ): (value: Date) => DateFormatPart[];
 
         // Return a function that parses a string representing a date into a JavaScript Date object according to the given options. The default parsing assumes numeric year, month, and day (i.e., { skeleton: "yMd" }).
         dateParser(options?: DateFormatterOptions): (value: string) => Date;
@@ -79,7 +81,10 @@ declare module "../globalize" {
         formatDate(value: Date, options?: DateFormatterOptions): string;
 
         // Alias for .dateToPartsFormatter( [options] )( value ).
-        formatDateToParts(value: Date, options?: DateFormatterOptions): DateFormatPart[];
+        formatDateToParts(
+            value: Date,
+            options?: DateFormatterOptions,
+        ): DateFormatPart[];
 
         /**
          * Alias for .dateParser( [options] )( value ).

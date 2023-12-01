@@ -19,13 +19,19 @@ declare namespace Mailgun {
         retry?:
             | number
             | {
-                times: number;
-                interval: number;
-            }
+                  times: number;
+                  interval: number;
+              }
             | undefined;
         proxy?: string | undefined;
         testMode?: boolean | undefined;
-        testModeLogger?: ((httpOptions: LoggerHttpOptions, payload: string, form: FormData) => void) | undefined;
+        testModeLogger?:
+            | ((
+                  httpOptions: LoggerHttpOptions,
+                  payload: string,
+                  form: FormData,
+              ) => void)
+            | undefined;
     }
 
     interface LoggerHttpOptions {
@@ -63,13 +69,20 @@ declare namespace Mailgun {
     type AttachmentData = string | Buffer | NodeJS.ReadWriteStream | Attachment;
 
     interface MailgunExport {
-        new(options: ConstructorParams): Mailgun;
+        new (options: ConstructorParams): Mailgun;
         (options: ConstructorParams): Mailgun;
     }
 
     interface MailgunRequest {
-        (resource: string, data: any, callback: (error: Error, response: any) => void): void;
-        (resource: string, callback: (error: Error, response: any) => void): void;
+        (
+            resource: string,
+            data: any,
+            callback: (error: Error, response: any) => void,
+        ): void;
+        (
+            resource: string,
+            callback: (error: Error, response: any) => void,
+        ): void;
         (resource: string, data?: any): Promise<any>;
     }
 
@@ -87,14 +100,26 @@ declare namespace Mailgun {
             inline?: AttachmentData | readonly AttachmentData[] | undefined;
 
             // Mailgun options
-            "o:testmode"?: "yes" | "no" | "true" | "false" | "True" | "False" | undefined;
+            "o:testmode"?:
+                | "yes"
+                | "no"
+                | "true"
+                | "false"
+                | "True"
+                | "False"
+                | undefined;
             "o:tag"?: string | string[] | undefined;
             "o:deliverytime"?: string | undefined;
             "o:deliverytime-optimize-period"?: string | undefined;
             "o:dkim"?: "yes" | "no" | boolean | undefined;
             "o:tracking"?: "yes" | "no" | boolean | undefined;
             "o:tracking-opens"?: "yes" | "no" | boolean | undefined;
-            "o:tracking-clicks"?: "yes" | "no" | "htmlonly" | boolean | undefined;
+            "o:tracking-clicks"?:
+                | "yes"
+                | "no"
+                | "htmlonly"
+                | boolean
+                | undefined;
             "o:require-tls"?: "yes" | "no" | "True" | "False" | undefined;
             "o:skip-verification"?: "yes" | "no" | "True" | "False" | undefined;
 
@@ -148,15 +173,24 @@ declare namespace Mailgun {
         }
 
         interface Members {
-            create(data: MemberCreateData, callback?: (err: Error, data: any) => void): Promise<any>;
+            create(
+                data: MemberCreateData,
+                callback?: (err: Error, data: any) => void,
+            ): Promise<any>;
 
-            add(data: MemberAddMultipleData, callback?: (err: Error, data: any) => void): Promise<any>;
+            add(
+                data: MemberAddMultipleData,
+                callback?: (err: Error, data: any) => void,
+            ): Promise<any>;
 
             list(callback?: (err: Error, data: any) => void): Promise<any>;
         }
 
         interface Member {
-            update(data: MemberUpdateData, callback?: (err: Error, data: any) => void): Promise<any>;
+            update(
+                data: MemberUpdateData,
+                callback?: (err: Error, data: any) => void,
+            ): Promise<any>;
 
             delete(callback?: (err: Error, data: any) => void): Promise<any>;
         }
@@ -168,7 +202,10 @@ declare namespace Mailgun {
             unparseable: string[];
         }
 
-        type ValidationCallback = (error: Error, body: ValidateResponse) => void;
+        type ValidationCallback = (
+            error: Error,
+            body: ValidateResponse,
+        ) => void;
 
         interface ValidationOptionsPublic {
             api_key?: string | undefined;
@@ -197,19 +234,33 @@ declare namespace Mailgun {
     interface Mailgun {
         messages(): Messages;
         lists(list: string): Lists;
-        Attachment: new(params: AttachmentParams) => Attachment;
-        validateWebhook(bodyTimestamp: number, bodyToken: string, bodySignature: string): boolean;
+        Attachment: new (params: AttachmentParams) => Attachment;
+        validateWebhook(
+            bodyTimestamp: number,
+            bodyToken: string,
+            bodySignature: string,
+        ): boolean;
 
-        parse(addressList: string[], callback?: validation.ValidationCallback): Promise<validation.ParseResponse>;
+        parse(
+            addressList: string[],
+            callback?: validation.ValidationCallback,
+        ): Promise<validation.ParseResponse>;
 
-        validate(address: string, callback: validation.ValidationCallback): void;
+        validate(
+            address: string,
+            callback: validation.ValidationCallback,
+        ): void;
         validate(
             address: string,
             opts: validation.ValidationOptionsPublic,
             callback: validation.ValidationCallback,
         ): void;
         // tslint:disable-next-line unified-signatures
-        validate(address: string, isPrivate: boolean, callback: validation.ValidationCallback): void;
+        validate(
+            address: string,
+            isPrivate: boolean,
+            callback: validation.ValidationCallback,
+        ): void;
         validate(
             address: string,
             isPrivate: false,
@@ -223,7 +274,10 @@ declare namespace Mailgun {
             callback: validation.ValidationCallback,
         ): void;
 
-        validate(address: string, opts?: validation.ValidationOptionsPublic): Promise<validation.ValidateResponse>;
+        validate(
+            address: string,
+            opts?: validation.ValidationOptionsPublic,
+        ): Promise<validation.ValidateResponse>;
         validate(
             address: string,
             isPrivate: false,
@@ -251,12 +305,17 @@ declare namespace Mailgun {
         info(callback?: (error: Error, data: any) => void): Promise<any>;
         members(): lists.Members;
         members(member: string): lists.Member;
-        delete(callback?: (error: Error, body: DeleteResponse) => void): Promise<DeleteResponse>;
+        delete(
+            callback?: (error: Error, body: DeleteResponse) => void,
+        ): Promise<DeleteResponse>;
     }
 
     interface Messages {
         send(
-            data: messages.SendData | messages.BatchData | messages.SendTemplateData,
+            data:
+                | messages.SendData
+                | messages.BatchData
+                | messages.SendTemplateData,
             callback?: (error: Error, body: messages.SendResponse) => void,
         ): Promise<messages.SendResponse>;
     }

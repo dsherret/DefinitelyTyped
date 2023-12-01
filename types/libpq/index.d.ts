@@ -142,7 +142,10 @@ declare class Libpq extends EventEmitter {
      * @param [parameters=[]] the parameters to pass to the prepared
      *                                                  statement.
      */
-    execPrepared(statementName?: string, parameters?: Array<string | number>): void;
+    execPrepared(
+        statementName?: string,
+        parameters?: Array<string | number>,
+    ): void;
 
     /**
      * Disconnects from the backend and cleans up all memory used by the libpq connection.
@@ -324,7 +327,10 @@ declare class Libpq extends EventEmitter {
      *                                                  the parameterized query.
      * @returns true if the command was sent succesfully or false if it failed to send.
      */
-    sendQueryParams(commandText?: string, parameters?: Array<string | number>): boolean;
+    sendQueryParams(
+        commandText?: string,
+        parameters?: Array<string | number>,
+    ): boolean;
 
     /**
      * (async) Sends a request to the backend to prepare a named statement with the given name.
@@ -334,7 +340,11 @@ declare class Libpq extends EventEmitter {
      * @param nParams a count of the number of parameters in the commandText.
      * @returns true if the command was sent succesfully or false if it failed to send.
      */
-    sendPrepare(statementName: string, commandText: string, nParams: number): boolean;
+    sendPrepare(
+        statementName: string,
+        commandText: string,
+        nParams: number,
+    ): boolean;
 
     /**
      * (async) Sends a request to execute a previously prepared statement.

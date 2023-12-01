@@ -7,7 +7,7 @@ server.route({
     method: "GET",
     path: "/",
     config: {
-        handler: function(request, reply) {
+        handler: function (request, reply) {
             return reply();
         },
         id: "root",

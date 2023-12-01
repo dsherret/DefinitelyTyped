@@ -43,5 +43,9 @@ pacote.tarball("pacote"); // $ExpectType Promise<Buffer & FetchResult>
 pacote.tarball("pacote", opts); // $ExpectType Promise<Buffer & FetchResult>
 pacote.tarball.file("pacote", "./pacote.tgz"); // $ExpectType Promise<FetchResult>
 pacote.tarball.file("pacote", "./pacote.tgz", opts); // $ExpectType Promise<FetchResult>
-pacote.tarball.stream("pacote", stream => Promise.resolve(stream.readable)); // $ExpectType Promise<boolean>
-pacote.tarball.stream("pacote", stream => Promise.resolve(stream.readable), opts); // $ExpectType Promise<boolean>
+pacote.tarball.stream("pacote", (stream) => Promise.resolve(stream.readable)); // $ExpectType Promise<boolean>
+pacote.tarball.stream(
+    "pacote",
+    (stream) => Promise.resolve(stream.readable),
+    opts,
+); // $ExpectType Promise<boolean>

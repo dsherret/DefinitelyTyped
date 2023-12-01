@@ -14,10 +14,18 @@ export class Struct extends jspb.Message {
     toObject(includeInstance?: boolean): Struct.AsObject;
     static toObject(includeInstance: boolean, msg: Struct): Struct.AsObject;
     static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
-    static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
-    static serializeBinaryToWriter(message: Struct, writer: jspb.BinaryWriter): void;
+    static extensionsBinary: {
+        [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>;
+    };
+    static serializeBinaryToWriter(
+        message: Struct,
+        writer: jspb.BinaryWriter,
+    ): void;
     static deserializeBinary(bytes: Uint8Array): Struct;
-    static deserializeBinaryFromReader(message: Struct, reader: jspb.BinaryReader): Struct;
+    static deserializeBinaryFromReader(
+        message: Struct,
+        reader: jspb.BinaryReader,
+    ): Struct;
 }
 
 export namespace Struct {
@@ -66,10 +74,18 @@ export class Value extends jspb.Message {
     toObject(includeInstance?: boolean): Value.AsObject;
     static toObject(includeInstance: boolean, msg: Value): Value.AsObject;
     static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
-    static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
-    static serializeBinaryToWriter(message: Value, writer: jspb.BinaryWriter): void;
+    static extensionsBinary: {
+        [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>;
+    };
+    static serializeBinaryToWriter(
+        message: Value,
+        writer: jspb.BinaryWriter,
+    ): void;
     static deserializeBinary(bytes: Uint8Array): Value;
-    static deserializeBinaryFromReader(message: Value, reader: jspb.BinaryReader): Value;
+    static deserializeBinaryFromReader(
+        message: Value,
+        reader: jspb.BinaryReader,
+    ): Value;
 }
 
 export namespace Value {
@@ -104,12 +120,23 @@ export class ListValue extends jspb.Message {
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): ListValue.AsObject;
-    static toObject(includeInstance: boolean, msg: ListValue): ListValue.AsObject;
+    static toObject(
+        includeInstance: boolean,
+        msg: ListValue,
+    ): ListValue.AsObject;
     static extensions: { [key: number]: jspb.ExtensionFieldInfo<jspb.Message> };
-    static extensionsBinary: { [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message> };
-    static serializeBinaryToWriter(message: ListValue, writer: jspb.BinaryWriter): void;
+    static extensionsBinary: {
+        [key: number]: jspb.ExtensionFieldBinaryInfo<jspb.Message>;
+    };
+    static serializeBinaryToWriter(
+        message: ListValue,
+        writer: jspb.BinaryWriter,
+    ): void;
     static deserializeBinary(bytes: Uint8Array): ListValue;
-    static deserializeBinaryFromReader(message: ListValue, reader: jspb.BinaryReader): ListValue;
+    static deserializeBinaryFromReader(
+        message: ListValue,
+        reader: jspb.BinaryReader,
+    ): ListValue;
 }
 
 export namespace ListValue {

@@ -3,7 +3,9 @@ declare namespace GoogleAppsScript {
         namespace Collection {
             interface ReportsCollection {
                 // Returns the Analytics data.
-                batchGet(resource: Schema.GetReportsRequest): AnalyticsReporting.Schema.GetReportsResponse;
+                batchGet(
+                    resource: Schema.GetReportsRequest,
+                ): AnalyticsReporting.Schema.GetReportsResponse;
             }
             interface UserActivityCollection {
                 // Returns User Activity data.
@@ -19,7 +21,9 @@ declare namespace GoogleAppsScript {
                 appview?: AnalyticsReporting.Schema.ScreenviewData | undefined;
                 campaign?: string | undefined;
                 channelGrouping?: string | undefined;
-                customDimension?: AnalyticsReporting.Schema.CustomDimension[] | undefined;
+                customDimension?:
+                    | AnalyticsReporting.Schema.CustomDimension[]
+                    | undefined;
                 ecommerce?: AnalyticsReporting.Schema.EcommerceData | undefined;
                 event?: AnalyticsReporting.Schema.EventData | undefined;
                 goals?: AnalyticsReporting.Schema.GoalSetData | undefined;
@@ -41,7 +45,9 @@ declare namespace GoogleAppsScript {
             }
             interface ColumnHeader {
                 dimensions?: string[] | undefined;
-                metricHeader?: AnalyticsReporting.Schema.MetricHeader | undefined;
+                metricHeader?:
+                    | AnalyticsReporting.Schema.MetricHeader
+                    | undefined;
             }
             interface CustomDimension {
                 index?: number | undefined;
@@ -52,7 +58,9 @@ declare namespace GoogleAppsScript {
                 startDate?: string | undefined;
             }
             interface DateRangeValues {
-                pivotValueRegions?: AnalyticsReporting.Schema.PivotValueRegion[] | undefined;
+                pivotValueRegions?:
+                    | AnalyticsReporting.Schema.PivotValueRegion[]
+                    | undefined;
                 values?: string[] | undefined;
             }
             interface Dimension {
@@ -67,19 +75,27 @@ declare namespace GoogleAppsScript {
                 operator?: string | undefined;
             }
             interface DimensionFilterClause {
-                filters?: AnalyticsReporting.Schema.DimensionFilter[] | undefined;
+                filters?:
+                    | AnalyticsReporting.Schema.DimensionFilter[]
+                    | undefined;
                 operator?: string | undefined;
             }
             interface DynamicSegment {
                 name?: string | undefined;
-                sessionSegment?: AnalyticsReporting.Schema.SegmentDefinition | undefined;
-                userSegment?: AnalyticsReporting.Schema.SegmentDefinition | undefined;
+                sessionSegment?:
+                    | AnalyticsReporting.Schema.SegmentDefinition
+                    | undefined;
+                userSegment?:
+                    | AnalyticsReporting.Schema.SegmentDefinition
+                    | undefined;
             }
             interface EcommerceData {
                 actionType?: string | undefined;
                 ecommerceType?: string | undefined;
                 products?: AnalyticsReporting.Schema.ProductData[] | undefined;
-                transaction?: AnalyticsReporting.Schema.TransactionData | undefined;
+                transaction?:
+                    | AnalyticsReporting.Schema.TransactionData
+                    | undefined;
             }
             interface EventData {
                 eventAction?: string | undefined;
@@ -89,13 +105,17 @@ declare namespace GoogleAppsScript {
                 eventValue?: string | undefined;
             }
             interface GetReportsRequest {
-                reportRequests?: AnalyticsReporting.Schema.ReportRequest[] | undefined;
+                reportRequests?:
+                    | AnalyticsReporting.Schema.ReportRequest[]
+                    | undefined;
                 useResourceQuotas?: boolean | undefined;
             }
             interface GetReportsResponse {
                 queryCost?: number | undefined;
                 reports?: AnalyticsReporting.Schema.Report[] | undefined;
-                resourceQuotasRemaining?: AnalyticsReporting.Schema.ResourceQuotasRemaining | undefined;
+                resourceQuotasRemaining?:
+                    | AnalyticsReporting.Schema.ResourceQuotasRemaining
+                    | undefined;
             }
             interface GoalData {
                 goalCompletionLocation?: string | undefined;
@@ -126,15 +146,21 @@ declare namespace GoogleAppsScript {
                 operator?: string | undefined;
             }
             interface MetricHeader {
-                metricHeaderEntries?: AnalyticsReporting.Schema.MetricHeaderEntry[] | undefined;
-                pivotHeaders?: AnalyticsReporting.Schema.PivotHeader[] | undefined;
+                metricHeaderEntries?:
+                    | AnalyticsReporting.Schema.MetricHeaderEntry[]
+                    | undefined;
+                pivotHeaders?:
+                    | AnalyticsReporting.Schema.PivotHeader[]
+                    | undefined;
             }
             interface MetricHeaderEntry {
                 name?: string | undefined;
                 type?: string | undefined;
             }
             interface OrFiltersForSegment {
-                segmentFilterClauses?: AnalyticsReporting.Schema.SegmentFilterClause[] | undefined;
+                segmentFilterClauses?:
+                    | AnalyticsReporting.Schema.SegmentFilterClause[]
+                    | undefined;
             }
             interface OrderBy {
                 fieldName?: string | undefined;
@@ -146,20 +172,26 @@ declare namespace GoogleAppsScript {
                 pageTitle?: string | undefined;
             }
             interface Pivot {
-                dimensionFilterClauses?: AnalyticsReporting.Schema.DimensionFilterClause[] | undefined;
+                dimensionFilterClauses?:
+                    | AnalyticsReporting.Schema.DimensionFilterClause[]
+                    | undefined;
                 dimensions?: AnalyticsReporting.Schema.Dimension[] | undefined;
                 maxGroupCount?: number | undefined;
                 metrics?: AnalyticsReporting.Schema.Metric[] | undefined;
                 startGroup?: number | undefined;
             }
             interface PivotHeader {
-                pivotHeaderEntries?: AnalyticsReporting.Schema.PivotHeaderEntry[] | undefined;
+                pivotHeaderEntries?:
+                    | AnalyticsReporting.Schema.PivotHeaderEntry[]
+                    | undefined;
                 totalPivotGroupsCount?: number | undefined;
             }
             interface PivotHeaderEntry {
                 dimensionNames?: string[] | undefined;
                 dimensionValues?: string[] | undefined;
-                metric?: AnalyticsReporting.Schema.MetricHeaderEntry | undefined;
+                metric?:
+                    | AnalyticsReporting.Schema.MetricHeaderEntry
+                    | undefined;
             }
             interface PivotValueRegion {
                 values?: string[] | undefined;
@@ -171,31 +203,43 @@ declare namespace GoogleAppsScript {
                 productSku?: string | undefined;
             }
             interface Report {
-                columnHeader?: AnalyticsReporting.Schema.ColumnHeader | undefined;
+                columnHeader?:
+                    | AnalyticsReporting.Schema.ColumnHeader
+                    | undefined;
                 data?: AnalyticsReporting.Schema.ReportData | undefined;
                 nextPageToken?: string | undefined;
             }
             interface ReportData {
                 dataLastRefreshed?: string | undefined;
                 isDataGolden?: boolean | undefined;
-                maximums?: AnalyticsReporting.Schema.DateRangeValues[] | undefined;
-                minimums?: AnalyticsReporting.Schema.DateRangeValues[] | undefined;
+                maximums?:
+                    | AnalyticsReporting.Schema.DateRangeValues[]
+                    | undefined;
+                minimums?:
+                    | AnalyticsReporting.Schema.DateRangeValues[]
+                    | undefined;
                 rowCount?: number | undefined;
                 rows?: AnalyticsReporting.Schema.ReportRow[] | undefined;
                 samplesReadCounts?: string[] | undefined;
                 samplingSpaceSizes?: string[] | undefined;
-                totals?: AnalyticsReporting.Schema.DateRangeValues[] | undefined;
+                totals?:
+                    | AnalyticsReporting.Schema.DateRangeValues[]
+                    | undefined;
             }
             interface ReportRequest {
                 cohortGroup?: AnalyticsReporting.Schema.CohortGroup | undefined;
                 dateRanges?: AnalyticsReporting.Schema.DateRange[] | undefined;
-                dimensionFilterClauses?: AnalyticsReporting.Schema.DimensionFilterClause[] | undefined;
+                dimensionFilterClauses?:
+                    | AnalyticsReporting.Schema.DimensionFilterClause[]
+                    | undefined;
                 dimensions?: AnalyticsReporting.Schema.Dimension[] | undefined;
                 filtersExpression?: string | undefined;
                 hideTotals?: boolean | undefined;
                 hideValueRanges?: boolean | undefined;
                 includeEmptyRows?: boolean | undefined;
-                metricFilterClauses?: AnalyticsReporting.Schema.MetricFilterClause[] | undefined;
+                metricFilterClauses?:
+                    | AnalyticsReporting.Schema.MetricFilterClause[]
+                    | undefined;
                 metrics?: AnalyticsReporting.Schema.Metric[] | undefined;
                 orderBys?: AnalyticsReporting.Schema.OrderBy[] | undefined;
                 pageSize?: number | undefined;
@@ -207,7 +251,9 @@ declare namespace GoogleAppsScript {
             }
             interface ReportRow {
                 dimensions?: string[] | undefined;
-                metrics?: AnalyticsReporting.Schema.DateRangeValues[] | undefined;
+                metrics?:
+                    | AnalyticsReporting.Schema.DateRangeValues[]
+                    | undefined;
             }
             interface ResourceQuotasRemaining {
                 dailyQuotaTokensRemaining?: number | undefined;
@@ -230,15 +276,21 @@ declare namespace GoogleAppsScript {
             interface SearchUserActivityResponse {
                 nextPageToken?: string | undefined;
                 sampleRate?: number | undefined;
-                sessions?: AnalyticsReporting.Schema.UserActivitySession[] | undefined;
+                sessions?:
+                    | AnalyticsReporting.Schema.UserActivitySession[]
+                    | undefined;
                 totalRows?: number | undefined;
             }
             interface Segment {
-                dynamicSegment?: AnalyticsReporting.Schema.DynamicSegment | undefined;
+                dynamicSegment?:
+                    | AnalyticsReporting.Schema.DynamicSegment
+                    | undefined;
                 segmentId?: string | undefined;
             }
             interface SegmentDefinition {
-                segmentFilters?: AnalyticsReporting.Schema.SegmentFilter[] | undefined;
+                segmentFilters?:
+                    | AnalyticsReporting.Schema.SegmentFilter[]
+                    | undefined;
             }
             interface SegmentDimensionFilter {
                 caseSensitive?: boolean | undefined;
@@ -250,12 +302,20 @@ declare namespace GoogleAppsScript {
             }
             interface SegmentFilter {
                 not?: boolean | undefined;
-                sequenceSegment?: AnalyticsReporting.Schema.SequenceSegment | undefined;
-                simpleSegment?: AnalyticsReporting.Schema.SimpleSegment | undefined;
+                sequenceSegment?:
+                    | AnalyticsReporting.Schema.SequenceSegment
+                    | undefined;
+                simpleSegment?:
+                    | AnalyticsReporting.Schema.SimpleSegment
+                    | undefined;
             }
             interface SegmentFilterClause {
-                dimensionFilter?: AnalyticsReporting.Schema.SegmentDimensionFilter | undefined;
-                metricFilter?: AnalyticsReporting.Schema.SegmentMetricFilter | undefined;
+                dimensionFilter?:
+                    | AnalyticsReporting.Schema.SegmentDimensionFilter
+                    | undefined;
+                metricFilter?:
+                    | AnalyticsReporting.Schema.SegmentMetricFilter
+                    | undefined;
                 not?: boolean | undefined;
             }
             interface SegmentMetricFilter {
@@ -267,14 +327,20 @@ declare namespace GoogleAppsScript {
             }
             interface SegmentSequenceStep {
                 matchType?: string | undefined;
-                orFiltersForSegment?: AnalyticsReporting.Schema.OrFiltersForSegment[] | undefined;
+                orFiltersForSegment?:
+                    | AnalyticsReporting.Schema.OrFiltersForSegment[]
+                    | undefined;
             }
             interface SequenceSegment {
                 firstStepShouldMatchFirstHit?: boolean | undefined;
-                segmentSequenceSteps?: AnalyticsReporting.Schema.SegmentSequenceStep[] | undefined;
+                segmentSequenceSteps?:
+                    | AnalyticsReporting.Schema.SegmentSequenceStep[]
+                    | undefined;
             }
             interface SimpleSegment {
-                orFiltersForSegment?: AnalyticsReporting.Schema.OrFiltersForSegment[] | undefined;
+                orFiltersForSegment?:
+                    | AnalyticsReporting.Schema.OrFiltersForSegment[]
+                    | undefined;
             }
             interface TransactionData {
                 transactionId?: string | undefined;
@@ -298,7 +364,9 @@ declare namespace GoogleAppsScript {
     }
     interface AnalyticsReporting {
         Reports?: AnalyticsReporting.Collection.ReportsCollection | undefined;
-        UserActivity?: AnalyticsReporting.Collection.UserActivityCollection | undefined;
+        UserActivity?:
+            | AnalyticsReporting.Collection.UserActivityCollection
+            | undefined;
         // Create a new instance of Cohort
         newCohort(): AnalyticsReporting.Schema.Cohort;
         // Create a new instance of CohortGroup

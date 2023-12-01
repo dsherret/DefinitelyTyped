@@ -1,4 +1,8 @@
-import { matchesUA, normalizeQuery, resolveUserAgent } from "browserslist-useragent";
+import {
+    matchesUA,
+    normalizeQuery,
+    resolveUserAgent,
+} from "browserslist-useragent";
 
 // $ExpectType boolean
 matchesUA(

@@ -31,11 +31,14 @@ declare namespace Rx {
         /* protected */ getNext(): internals.ScheduledItem<TAbsolute>;
     }
 
-    interface HistoricalScheduler extends VirtualTimeScheduler<number, number> {
-    }
+    interface HistoricalScheduler
+        extends VirtualTimeScheduler<number, number> {}
 
     const HistoricalScheduler: {
-        new(initialClock: number, comparer: (first: number, second: number) => number): HistoricalScheduler;
+        new (
+            initialClock: number,
+            comparer: (first: number, second: number) => number,
+        ): HistoricalScheduler;
     };
 }
 

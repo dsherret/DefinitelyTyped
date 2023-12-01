@@ -1,14 +1,25 @@
-import kurento, { RtpEndpoint, RtpEndpointOptions, SDES, WebRtcEndpoint } from "kurento-client";
+import kurento, {
+    RtpEndpoint,
+    RtpEndpointOptions,
+    SDES,
+    WebRtcEndpoint,
+} from "kurento-client";
 
-(async () => {
+async () => {
     const sdpOffer = "sdpOffer";
     const candidate = new RTCIceCandidate();
 
-    const client = await kurento("//server", { failAfter: 500, useImplicitTransactions: true });
+    const client = await kurento("//server", {
+        failAfter: 500,
+        useImplicitTransactions: true,
+    });
     const pipeline = await client.create("MediaPipeline");
     const endpoint = await pipeline.create("WebRtcEndpoint");
 
-    await Promise.all([pipeline.addTag("roomId", "abc123"), pipeline.addTag("userId", "012345")]);
+    await Promise.all([
+        pipeline.addTag("roomId", "abc123"),
+        pipeline.addTag("userId", "012345"),
+    ]);
 
     const signaling = {
         emit: (...args: any[]): void => {},
@@ -21,7 +32,7 @@ import kurento, { RtpEndpoint, RtpEndpointOptions, SDES, WebRtcEndpoint } from "
         signaling.emit(candidate.candidate);
     });
 
-    signaling.on("icecandidate", candidate => {
+    signaling.on("icecandidate", (candidate) => {
         const value = kurento.getComplexType("IceCandidate")(candidate);
 
         endpoint.addIceCandidate(value);
@@ -29,52 +40,65 @@ import kurento, { RtpEndpoint, RtpEndpointOptions, SDES, WebRtcEndpoint } from "
 
     const sdpAnswer = await endpoint.processOffer(sdpOffer);
 
-    endpoint.gatherCandidates(error => {
+    endpoint.gatherCandidates((error) => {
         // ok
     });
 
     return { sdpAnswer };
-});
+};
 
-(async () => {
-    const client = await kurento("//server", { failAfter: 500, useImplicitTransactions: true });
+async () => {
+    const client = await kurento("//server", {
+        failAfter: 500,
+        useImplicitTransactions: true,
+    });
     const pipeline = await client.create("MediaPipeline");
 
     await pipeline.release();
-});
+};
 
-(async () => {
+async () => {
     const endpointId = "endpointId";
     const candidate = new RTCIceCandidate();
 
     const client = await kurento.getSingleton("//server", {});
-    const endpoint = (await client.getMediaobjectById(endpointId)) as any as WebRtcEndpoint;
+    const endpoint = (await client.getMediaobjectById(
+        endpointId,
+    )) as any as WebRtcEndpoint;
     const server = await client.getServerManager();
 
     endpoint.addIceCandidate(candidate);
 
     return { cpuUsage: server.getUsedCpu(5) };
-});
+};
 
-(async () => {
+async () => {
     const endpointId = "endpointId";
 
-    const client = await kurento("//server", { failAfter: 500, useImplicitTransactions: true });
-    const endpoint = await client.getMediaobjectById<WebRtcEndpoint>(endpointId); // $ExpectType WebRtcEndpoint
+    const client = await kurento("//server", {
+        failAfter: 500,
+        useImplicitTransactions: true,
+    });
+    const endpoint =
+        await client.getMediaobjectById<WebRtcEndpoint>(endpointId); // $ExpectType WebRtcEndpoint
 
     await endpoint.release();
-});
+};
 
-(async () => {
+async () => {
     // Test RecorderEndpoint
     const kurentoClient = await kurento("//server");
     const pipeline = await kurentoClient.create("MediaPipeline"); // $ExpectType MediaPipeline
     await pipeline.create("RecorderEndpoint", { uri: "" }); // $ExpectType RecorderEndpoint
     await pipeline.create("RecorderEndpoint", { uri: "", mediaProfile: "MP4" }); // $ExpectType RecorderEndpoint
-    await pipeline.create("RecorderEndpoint", { uri: "", mediaProfile: "MP4", stopOnEndOfStream: true }); // $ExpectType RecorderEndpoint
-});
+    await pipeline.create("RecorderEndpoint", {
+        uri: "",
+        mediaProfile: "MP4",
+        stopOnEndOfStream: true,
+    }); // $ExpectType RecorderEndpoint
+};
 
-(async () => {
+async () => {
     const kurentoClient = await kurento("//server");
     const pipeline = await kurentoClient.create("MediaPipeline"); // $ExpectType MediaPipeline
     const webRtcEp = await pipeline.create("WebRtcEndpoint"); // $ExpectType WebRtcEndpoint
@@ -94,8 +118,19 @@ import kurento, { RtpEndpoint, RtpEndpointOptions, SDES, WebRtcEndpoint } from "
 
     // Test MediaElement.connect with method overloading
     await webRtcEp.connect(webRtcEp, "VIDEO", "source description");
-    await webRtcEp.connect(webRtcEp, "VIDEO", "source description", "sink description");
-    await webRtcEp.connect(webRtcEp, "VIDEO", "source description", "sink description", () => {});
+    await webRtcEp.connect(
+        webRtcEp,
+        "VIDEO",
+        "source description",
+        "sink description",
+    );
+    await webRtcEp.connect(
+        webRtcEp,
+        "VIDEO",
+        "source description",
+        "sink description",
+        () => {},
+    );
 
     // Test MediaElement.disconnect with each MediaType
     await webRtcEp.disconnect(webRtcEp, "VIDEO");
@@ -104,8 +139,19 @@ import kurento, { RtpEndpoint, RtpEndpointOptions, SDES, WebRtcEndpoint } from "
 
     // Test MediaElement.disconnect with method overloading
     await webRtcEp.disconnect(webRtcEp, "VIDEO", "source description");
-    await webRtcEp.disconnect(webRtcEp, "VIDEO", "source description", "sink description");
-    await webRtcEp.disconnect(webRtcEp, "VIDEO", "source description", "sink description", () => {});
+    await webRtcEp.disconnect(
+        webRtcEp,
+        "VIDEO",
+        "source description",
+        "sink description",
+    );
+    await webRtcEp.disconnect(
+        webRtcEp,
+        "VIDEO",
+        "source description",
+        "sink description",
+        () => {},
+    );
 
     // Test MediaElement.getSinkConnections with method overloading
     await webRtcEp.getSinkConnections(); // $ExpectType ElementConnectionData[]
@@ -120,7 +166,7 @@ import kurento, { RtpEndpoint, RtpEndpointOptions, SDES, WebRtcEndpoint } from "
     await webRtcEp.getSourceConnections("VIDEO", "description", () => {}); // $ExpectType ElementConnectionData[]
 
     // Test the return type of MediaElement.getSinkConnections, ElementConnectionData
-    (await webRtcEp.getSinkConnections()).forEach(connectionData => {
+    (await webRtcEp.getSinkConnections()).forEach((connectionData) => {
         connectionData; // $ExpectType ElementConnectionData
         connectionData.source; // $ExpectType MediaElement
         connectionData.sink; // $ExpectType MediaElement
@@ -148,7 +194,7 @@ import kurento, { RtpEndpoint, RtpEndpointOptions, SDES, WebRtcEndpoint } from "
     await webRtcEp.isMediaFlowingOut("DATA"); // $ExpectType boolean
 
     // Test commonly used event listeners
-    webRtcEp.on("IceCandidateFound", ev => {
+    webRtcEp.on("IceCandidateFound", (ev) => {
         ev.candidate; // $ExpectType IceCandidate
     });
     recorderEp
@@ -156,9 +202,9 @@ import kurento, { RtpEndpoint, RtpEndpointOptions, SDES, WebRtcEndpoint } from "
         .on("Paused", () => {})
         .on("Stopped", () => {});
     playerEp.on("EndOfStream", () => {});
-});
+};
 
-(async () => {
+async () => {
     // Test SdpEndpoint
     const kurentoClient = await kurento("//server");
     const pipeline = await kurentoClient.create("MediaPipeline"); // $ExpectType MediaPipeline
@@ -173,12 +219,12 @@ import kurento, { RtpEndpoint, RtpEndpointOptions, SDES, WebRtcEndpoint } from "
         },
     };
     await pipeline.create("RtpEndpoint", options); // $ExpectType RtpEndpoint
-});
+};
 
-(async () => {
+async () => {
     // Test Composite
     const kurentoClient = await kurento("//server");
     const pipeline = await kurentoClient.create("MediaPipeline"); // $ExpectType MediaPipeline
     const composite = await pipeline.create("Composite"); // $ExpectType Composite
     await composite.createHubPort(); // $ExpectType HubPort
-});
+};

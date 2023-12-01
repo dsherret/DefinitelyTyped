@@ -1,6 +1,17 @@
-export type WooCommerceRestApiVersion = "wc/v3" | "wc/v2" | "wc/v1" | "wc-api/v3" | "wc-api/v2" | "wc-api/v1";
+export type WooCommerceRestApiVersion =
+    | "wc/v3"
+    | "wc/v2"
+    | "wc/v1"
+    | "wc-api/v3"
+    | "wc-api/v2"
+    | "wc-api/v1";
 export type WooCommerceRestApiEncoding = "utf-8" | "ascii";
-export type WooCommerceRestApiMethod = "get" | "post" | "put" | "delete" | "options";
+export type WooCommerceRestApiMethod =
+    | "get"
+    | "post"
+    | "put"
+    | "delete"
+    | "options";
 
 export interface WooCommerceRestApiOptions {
     /* Your Store URL, example: http://woo.dev/ */
@@ -78,7 +89,12 @@ export default class WooCommerceRestApi {
     /**
      * Do requests
      */
-    _request(method: WooCommerceRestApiMethod, endpoint: string, data: any, params: any): Promise<any>;
+    _request(
+        method: WooCommerceRestApiMethod,
+        endpoint: string,
+        data: any,
+        params: any,
+    ): Promise<any>;
 
     /**
      * GET requests

@@ -1,4 +1,9 @@
-import TRTCCalling, { InvitedInfo, UserAudioInfo, UserInfo, UserVideoInfo } from "trtc-calling-js";
+import TRTCCalling, {
+    InvitedInfo,
+    UserAudioInfo,
+    UserInfo,
+    UserVideoInfo,
+} from "trtc-calling-js";
 
 // 创建 TRTCCalling 组件实例
 const options = {
@@ -16,16 +21,31 @@ trtcCalling.login({ userID: "1", userSig: "2" });
 trtcCalling.logout();
 
 // 视频通话
-trtcCalling.call({ userID: "1", type: TRTCCalling.CALL_TYPE.VIDEO_CALL, timeout: 30 });
+trtcCalling.call({
+    userID: "1",
+    type: TRTCCalling.CALL_TYPE.VIDEO_CALL,
+    timeout: 30,
+});
 
 // 群组视频通话
-trtcCalling.groupCall({ userIDList: ["1", "2"], type: TRTCCalling.CALL_TYPE.VIDEO_CALL });
+trtcCalling.groupCall({
+    userIDList: ["1", "2"],
+    type: TRTCCalling.CALL_TYPE.VIDEO_CALL,
+});
 
 // 接受视频通话
-trtcCalling.accept({ inviteID: "1", roomID: 2, callType: TRTCCalling.CALL_TYPE.VIDEO_CALL });
+trtcCalling.accept({
+    inviteID: "1",
+    roomID: 2,
+    callType: TRTCCalling.CALL_TYPE.VIDEO_CALL,
+});
 
 // 拒绝视频通话
-trtcCalling.reject({ inviteID: "1", isBusy: true, callType: TRTCCalling.CALL_TYPE.VIDEO_CALL });
+trtcCalling.reject({
+    inviteID: "1",
+    isBusy: true,
+    callType: TRTCCalling.CALL_TYPE.VIDEO_CALL,
+});
 
 // 结束/取消通话
 trtcCalling.hangup();
@@ -85,7 +105,13 @@ function handleError(error: any) {
 }
 
 // 收到了邀请通知
-function handleInvited({ sponsor, userIDList, isFromGroup, inviteData, inviteID }: InvitedInfo) {}
+function handleInvited({
+    sponsor,
+    userIDList,
+    isFromGroup,
+    inviteData,
+    inviteID,
+}: InvitedInfo) {}
 
 // 用户进房
 function handleUserEnter({ userID }: UserInfo) {}

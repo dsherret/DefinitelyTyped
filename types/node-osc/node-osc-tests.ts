@@ -29,7 +29,7 @@ bundle.append(bundleNoTime);
 
 const client = new Client("127.0.0.1", 3333);
 
-const clientSendCallback: ClientSendCallback = err => {
+const clientSendCallback: ClientSendCallback = (err) => {
     if (err) {
         // console.log("Error", err);
     }
@@ -81,14 +81,14 @@ const oscServer = new Server(3333, "0.0.0.0", () => {
     // console.log("Server started");
 });
 
-oscServer.on("bundle", bundle => {
-    bundle.elements.forEach(element => {
+oscServer.on("bundle", (bundle) => {
+    bundle.elements.forEach((element) => {
         // console.log(`Timestamp: ${bundle.timetag}`);
         // console.log(`Message: ${element}`);
     });
 });
 
-oscServer.on("error", err => {
+oscServer.on("error", (err) => {
     // console.error("Error on OSC server", err);
 });
 
@@ -96,6 +96,6 @@ oscServer.on("message", (msg, rinfo) => {
     // console.log(`Message: ${msg} , request info`, rinfo);
 });
 
-oscServer.on("/test", msg => {
+oscServer.on("/test", (msg) => {
     // console.log(`Message: ${msg}`);
 });

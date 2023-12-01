@@ -35,7 +35,9 @@ console.assert(size > 0);
 
 // Test currentBackend
 var currentBackend = $.jStorage.currentBackend();
-console.assert(currentBackend != null && typeof currentBackend.getItem !== "undefined");
+console.assert(
+    currentBackend != null && typeof currentBackend.getItem !== "undefined",
+);
 
 // Test storageAvailable
 var isStorageAvailable = $.jStorage.storageAvailable();
@@ -70,7 +72,10 @@ $.jStorage.subscribe<Date>("ESPN", (channel, value) => {
 });
 
 // Test publish
-$.jStorage.publish("ESPN", { date: new Date(2013, 4, 26, 7), game: "Miami Heat" });
+$.jStorage.publish("ESPN", {
+    date: new Date(2013, 4, 26, 7),
+    game: "Miami Heat",
+});
 
 // Test reinit
 $.jStorage.reInit();

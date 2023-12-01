@@ -5,7 +5,8 @@ import {
     JetElementCustomEvent,
     JetSetPropertyType,
 } from "..";
-export interface ojSwipeActions extends baseComponent<ojSwipeActionsSettableProperties> {
+export interface ojSwipeActions
+    extends baseComponent<ojSwipeActionsSettableProperties> {
     translations: {
         ariaHideActionsDescription?: string | undefined;
         ariaShowEndActionsDescription?: string | undefined;
@@ -17,35 +18,45 @@ export interface ojSwipeActions extends baseComponent<ojSwipeActionsSettableProp
         listener: (this: HTMLElement, ev: ojSwipeActionsEventMap[T]) => any,
         useCapture?: boolean,
     ): void;
-    addEventListener(type: string, listener: EventListenerOrEventListenerObject, useCapture?: boolean): void;
-    getProperty<T extends keyof ojSwipeActionsSettableProperties>(property: T): ojSwipeActions[T];
+    addEventListener(
+        type: string,
+        listener: EventListenerOrEventListenerObject,
+        useCapture?: boolean,
+    ): void;
+    getProperty<T extends keyof ojSwipeActionsSettableProperties>(
+        property: T,
+    ): ojSwipeActions[T];
     getProperty(property: string): any;
     setProperty<T extends keyof ojSwipeActionsSettableProperties>(
         property: T,
         value: ojSwipeActionsSettableProperties[T],
     ): void;
-    setProperty<T extends string>(property: T, value: JetSetPropertyType<T, ojSwipeActionsSettableProperties>): void;
+    setProperty<T extends string>(
+        property: T,
+        value: JetSetPropertyType<T, ojSwipeActionsSettableProperties>,
+    ): void;
     setProperties(properties: ojSwipeActionsSettablePropertiesLenient): void;
     refresh(): void;
 }
 export namespace ojSwipeActions {
-    interface ojAction extends
-        CustomEvent<{
+    interface ojAction
+        extends CustomEvent<{
             [propName: string]: any;
-        }>
-    {
-    }
+        }> {}
 }
-export interface ojSwipeActionsEventMap extends baseComponentEventMap<ojSwipeActionsSettableProperties> {
-    "ojAction": ojSwipeActions.ojAction;
+export interface ojSwipeActionsEventMap
+    extends baseComponentEventMap<ojSwipeActionsSettableProperties> {
+    ojAction: ojSwipeActions.ojAction;
 }
-export interface ojSwipeActionsSettableProperties extends baseComponentSettableProperties {
+export interface ojSwipeActionsSettableProperties
+    extends baseComponentSettableProperties {
     translations: {
         ariaHideActionsDescription?: string | undefined;
         ariaShowEndActionsDescription?: string | undefined;
         ariaShowStartActionsDescription?: string | undefined;
     };
 }
-export interface ojSwipeActionsSettablePropertiesLenient extends Partial<ojSwipeActionsSettableProperties> {
+export interface ojSwipeActionsSettablePropertiesLenient
+    extends Partial<ojSwipeActionsSettableProperties> {
     [key: string]: any;
 }

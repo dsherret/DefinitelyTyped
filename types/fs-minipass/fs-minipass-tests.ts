@@ -25,7 +25,7 @@ writeStream.write("some file header or whatever\n");
 /**
  * Events
  */
-readStream.on("data", data => {
+readStream.on("data", (data) => {
     console.log(data.toString());
 });
 

@@ -3,7 +3,10 @@ import * as express from "express";
 declare global {
     namespace Express {
         interface Response {
-            cacheControl: (pattern: Pattern | Options, options?: Options) => void;
+            cacheControl: (
+                pattern: Pattern | Options,
+                options?: Options,
+            ) => void;
         }
     }
 }

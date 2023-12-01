@@ -252,7 +252,9 @@ declare namespace standardVersion {
             posttag?: string | undefined;
         }
 
-        type Skip = Partial<Record<"bump" | "changelog" | "commit" | "tag", boolean>>;
+        type Skip = Partial<
+            Record<"bump" | "changelog" | "commit" | "tag", boolean>
+        >;
     }
 }
 

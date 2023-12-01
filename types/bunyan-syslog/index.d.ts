@@ -1,7 +1,9 @@
 export {};
 
 type PrependNextNum<A extends unknown[]> = A["length"] extends infer T
-    ? ((t: T, ...a: A) => void) extends ((...x: infer X) => void) ? X : never
+    ? ((t: T, ...a: A) => void) extends (...x: infer X) => void
+        ? X
+        : never
     : never;
 
 type EnumerateInternal<A extends unknown[], N extends number> = {
@@ -9,9 +11,16 @@ type EnumerateInternal<A extends unknown[], N extends number> = {
     1: EnumerateInternal<PrependNextNum<A>, N>;
 }[N extends A["length"] ? 0 : 1];
 
-type Enumerate<N extends number> = EnumerateInternal<[], N> extends Array<infer E> ? E : never;
+type Enumerate<N extends number> = EnumerateInternal<[], N> extends Array<
+    infer E
+>
+    ? E
+    : never;
 
-type Range<FROM extends number, TO extends number> = Exclude<Enumerate<TO>, Enumerate<FROM>>;
+type Range<FROM extends number, TO extends number> = Exclude<
+    Enumerate<TO>,
+    Enumerate<FROM>
+>;
 
 type Facility = Range<0, 24>;
 
@@ -45,4 +54,6 @@ interface StreamOptions {
     port: number;
 }
 
-export function createBunyanStream(options: StreamOptions): NodeJS.WritableStream;
+export function createBunyanStream(
+    options: StreamOptions,
+): NodeJS.WritableStream;

@@ -5,7 +5,10 @@ declare namespace GoogleAppsScript {
                 // Inserts a new mail into the archive of the Google group.
                 insert(groupId: string): AdminGroupsMigration.Schema.Groups;
                 // Inserts a new mail into the archive of the Google group.
-                insert(groupId: string, mediaData: any): AdminGroupsMigration.Schema.Groups;
+                insert(
+                    groupId: string,
+                    mediaData: any,
+                ): AdminGroupsMigration.Schema.Groups;
             }
         }
         namespace Schema {

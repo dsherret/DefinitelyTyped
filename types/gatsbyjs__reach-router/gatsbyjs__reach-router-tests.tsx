@@ -22,7 +22,9 @@ interface UseParamsCheckParams {
 
 const Home = (props: RouteComponentProps) => <div>Home</div>;
 
-const Dash = (props: RouteComponentProps<DashParams>) => <div>Dash for item ${props.id}</div>;
+const Dash = (props: RouteComponentProps<DashParams>) => (
+    <div>Dash for item ${props.id}</div>
+);
 
 const NotFound = (props: RouteComponentProps) => <div>Route not found</div>;
 
@@ -68,14 +70,14 @@ render(
         <Redirect to="/somepath" replace={false} state={{ from: "/" }} />
 
         <Location>
-            {context => (
+            {(context) => (
                 <>
                     <div>hostname is {context.location.hostname}</div>
                 </>
             )}
         </Location>
         <LocationProvider>
-            {context => (
+            {(context) => (
                 <>
                     <div>hostname is {context.location.hostname}</div>
                 </>
@@ -89,11 +91,27 @@ const handleRef = (el: HTMLAnchorElement) => {
     el.focus();
 };
 
-render(<Link innerRef={handleRef} to="./foo"></Link>, document.getElementById("app-root"));
-render(<Link ref={handleRef} to="./foo"></Link>, document.getElementById("app-root"));
+render(
+    <Link innerRef={handleRef} to="./foo"></Link>,
+    document.getElementById("app-root"),
+);
+render(
+    <Link ref={handleRef} to="./foo"></Link>,
+    document.getElementById("app-root"),
+);
 
 const refObject: React.RefObject<HTMLAnchorElement> = { current: null };
-render(<Link innerRef={refObject} to="./foo"></Link>, document.getElementById("app-root"));
-render(<Link ref={refObject} to="./foo"></Link>, document.getElementById("app-root"));
+render(
+    <Link innerRef={refObject} to="./foo"></Link>,
+    document.getElementById("app-root"),
+);
+render(
+    <Link ref={refObject} to="./foo"></Link>,
+    document.getElementById("app-root"),
+);
 
-const elem: JSX.Element = <Link<number> state={5} to="./foo">Click me!</Link>;
+const elem: JSX.Element = (
+    <Link<number> state={5} to="./foo">
+        Click me!
+    </Link>
+);

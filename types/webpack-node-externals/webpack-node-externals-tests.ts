@@ -3,9 +3,7 @@ import webpackNodeExternals = require("webpack-node-externals");
 
 const a: webpack.Configuration = {
     entry: "test.js",
-    externals: [
-        webpackNodeExternals(),
-    ],
+    externals: [webpackNodeExternals()],
 };
 const b: webpack.Configuration = {
     entry: "test.js",

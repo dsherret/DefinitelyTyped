@@ -5,7 +5,9 @@ declare namespace QrReader {
         onScan: (data: string | null) => void;
         onError: (err: any) => void;
         onLoad?: (() => void) | undefined;
-        onImageLoad?: ((event: React.SyntheticEvent<HTMLImageElement>) => void) | undefined;
+        onImageLoad?:
+            | ((event: React.SyntheticEvent<HTMLImageElement>) => void)
+            | undefined;
         delay?: number | false | undefined;
         facingMode?: "user" | "environment" | undefined;
         legacyMode?: boolean | undefined;

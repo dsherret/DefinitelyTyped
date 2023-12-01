@@ -3,5 +3,9 @@ export interface Disposable {
 }
 
 export interface VSCodeEvent<T> {
-    (listener: (e: T) => any, thisArgs?: any, disposables?: Disposable[]): Disposable;
+    (
+        listener: (e: T) => any,
+        thisArgs?: any,
+        disposables?: Disposable[],
+    ): Disposable;
 }

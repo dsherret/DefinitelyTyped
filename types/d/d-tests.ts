@@ -48,14 +48,14 @@ class Foo {
 Object.defineProperties(
     Foo.prototype,
     autoBind({
-        increment: d(function(this: any) {
+        increment: d(function (this: any) {
             ++this._count;
         }),
     }),
 );
 autoBind(
     {
-        increment: d(function(this: any) {
+        increment: d(function (this: any) {
             ++this._count;
         }),
     },
@@ -63,7 +63,7 @@ autoBind(
 );
 autoBind(
     {
-        increment: d(function(this: any) {
+        increment: d(function (this: any) {
             ++this._count;
         }),
     },

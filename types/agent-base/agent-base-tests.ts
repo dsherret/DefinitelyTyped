@@ -31,4 +31,7 @@ agent((req, opts) => {}, true);
 // @ts-expect-error
 agent((req, opts) => {}, null);
 // @ts-expect-error
-agent((req, opts) => {}, (req, opts) => {});
+agent(
+    (req, opts) => {},
+    (req, opts) => {},
+);

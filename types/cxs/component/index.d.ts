@@ -4,7 +4,8 @@ import { CSSObject } from "../index";
 type ApparentComponentProps<
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     C extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any>,
-> = C extends React.JSXElementConstructor<infer P> ? JSX.LibraryManagedAttributes<C, P>
+> = C extends React.JSXElementConstructor<infer P>
+    ? JSX.LibraryManagedAttributes<C, P>
     : React.ComponentPropsWithRef<C>;
 
 declare const cxsComponent: {
@@ -16,7 +17,9 @@ declare const cxsComponent: {
         PropsType extends object & ApparentComponentProps<Component>,
     >(
         component: Component,
-    ): (arg: CSSObject | ((arg: PropsType) => CSSObject)) => React.JSXElementConstructor<PropsType>;
+    ): (
+        arg: CSSObject | ((arg: PropsType) => CSSObject),
+    ) => React.JSXElementConstructor<PropsType>;
 };
 
 export = cxsComponent;

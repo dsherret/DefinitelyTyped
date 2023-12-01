@@ -14,7 +14,9 @@ type Question = ListQuestionOptions;
  * @template TQuestion
  * The options for the question.
  */
-declare class ListPrompt<TQuestion extends Question = Question> extends Prompt<TQuestion> {
+declare class ListPrompt<
+    TQuestion extends Question = Question,
+> extends Prompt<TQuestion> {
     /**
      * Resolves the value of the prompt.
      */
@@ -47,7 +49,11 @@ declare class ListPrompt<TQuestion extends Question = Question> extends Prompt<T
      * @param answers
      * The answer-object.
      */
-    constructor(question: TQuestion, readLine: ReadlineInterface, answers: Answers);
+    constructor(
+        question: TQuestion,
+        readLine: ReadlineInterface,
+        answers: Answers,
+    );
 
     /**
      * Renders the prompt.

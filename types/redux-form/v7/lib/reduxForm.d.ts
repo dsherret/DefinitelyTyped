@@ -8,7 +8,14 @@ import {
     SyntheticEvent,
 } from "react";
 import { Dispatch } from "redux";
-import { ErrorOther, FormErrors, FormStateMap, FormWarnings, RegisteredFieldState, WarningOther } from "../index";
+import {
+    ErrorOther,
+    FormErrors,
+    FormStateMap,
+    FormWarnings,
+    RegisteredFieldState,
+    WarningOther,
+} from "../index";
 
 export type FormSubmitHandler<FormData = {}, P = {}, ErrorType = string> = (
     values: FormData,
@@ -120,8 +127,16 @@ export interface ConfigProps<FormData = {}, P = {}, ErrorType = string> {
         previousValues: Partial<FormData>,
     ): void;
     onSubmit?:
-        | FormSubmitHandler<FormData, P & InjectedFormProps<FormData, P, ErrorType>, ErrorType>
-        | SubmitHandler<FormData, P & InjectedFormProps<FormData, P, ErrorType>, ErrorType>
+        | FormSubmitHandler<
+              FormData,
+              P & InjectedFormProps<FormData, P, ErrorType>,
+              ErrorType
+          >
+        | SubmitHandler<
+              FormData,
+              P & InjectedFormProps<FormData, P, ErrorType>,
+              ErrorType
+          >
         | undefined;
     onSubmitFail?(
         errors: FormErrors<FormData, ErrorType> | undefined,
@@ -129,18 +144,30 @@ export interface ConfigProps<FormData = {}, P = {}, ErrorType = string> {
         submitError: any,
         props: P & InjectedFormProps<FormData, P, ErrorType>,
     ): void;
-    onSubmitSuccess?(result: any, dispatch: Dispatch<any>, props: P & InjectedFormProps<FormData, P, ErrorType>): void;
+    onSubmitSuccess?(
+        result: any,
+        dispatch: Dispatch<any>,
+        props: P & InjectedFormProps<FormData, P, ErrorType>,
+    ): void;
     propNamespace?: string | undefined;
     pure?: boolean | undefined;
     shouldValidate?(params: ValidateCallback<FormData, P, ErrorType>): boolean;
     shouldError?(params: ValidateCallback<FormData, P, ErrorType>): boolean;
     shouldWarn?(params: ValidateCallback<FormData, P, ErrorType>): boolean;
-    shouldAsyncValidate?(params: AsyncValidateCallback<FormData, ErrorType>): boolean;
+    shouldAsyncValidate?(
+        params: AsyncValidateCallback<FormData, ErrorType>,
+    ): boolean;
     touchOnBlur?: boolean | undefined;
     touchOnChange?: boolean | undefined;
     persistentSubmitErrors?: boolean | undefined;
-    validate?(values: FormData, props: P & InjectedFormProps<FormData, P, ErrorType>): FormErrors<FormData, ErrorType>;
-    warn?(values: FormData, props: P & InjectedFormProps<FormData, P, ErrorType>): FormWarnings<FormData>;
+    validate?(
+        values: FormData,
+        props: P & InjectedFormProps<FormData, P, ErrorType>,
+    ): FormErrors<FormData, ErrorType>;
+    warn?(
+        values: FormData,
+        props: P & InjectedFormProps<FormData, P, ErrorType>,
+    ): FormWarnings<FormData>;
 }
 
 export interface FormInstance<FormData, P, ErrorType> extends Component<P> {
@@ -153,11 +180,13 @@ export interface FormInstance<FormData, P, ErrorType> extends Component<P> {
     submit(): Promise<any>;
     valid: boolean;
     values: Partial<FormData>;
-    wrappedInstance: ReactElement<P & InjectedFormProps<FormData, P, ErrorType>>;
+    wrappedInstance: ReactElement<
+        P & InjectedFormProps<FormData, P, ErrorType>
+    >;
 }
 
 export interface DecoratedComponentClass<FormData, P, ErrorType> {
-    new(props?: P, context?: any): FormInstance<FormData, P, ErrorType>;
+    new (props?: P, context?: any): FormInstance<FormData, P, ErrorType>;
 }
 
 export type FormDecorator<FormData, P, Config, ErrorType = string> = (
@@ -166,7 +195,12 @@ export type FormDecorator<FormData, P, Config, ErrorType = string> = (
 
 export declare function reduxForm<FormData = {}, P = {}, ErrorType = string>(
     config: ConfigProps<FormData, P, ErrorType>,
-): FormDecorator<FormData, P, Partial<ConfigProps<FormData, P, ErrorType>>, ErrorType>;
+): FormDecorator<
+    FormData,
+    P,
+    Partial<ConfigProps<FormData, P, ErrorType>>,
+    ErrorType
+>;
 
 export declare function reduxForm<FormData = {}, P = {}, ErrorType = string>(
     config: Partial<ConfigProps<FormData, P, ErrorType>>,

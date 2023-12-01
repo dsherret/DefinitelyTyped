@@ -19,7 +19,10 @@ export namespace Dialogflow {
 
     function setConfiguration(accessToken: string, languageTag: string): void;
     function setEntities(entities: any[]): void;
-    function startListening(resultCallback: (result: object) => void, errorCallback: (error: Error) => void): void;
+    function startListening(
+        resultCallback: (result: object) => void,
+        errorCallback: (error: Error) => void,
+    ): void;
     function finishListening(): void;
     function requestEvent(
         eventName: string,
@@ -36,7 +39,10 @@ export namespace Dialogflow {
     function onListeningFinished(callback: () => void): void;
     function onAudioLevel(callback: (level: number) => void): void;
     function setContexts(contexts: any[]): void;
-    function resetContexts(resultCallback: (result: object) => void, errorCallback: (error: Error) => void): void;
+    function resetContexts(
+        resultCallback: (result: object) => void,
+        errorCallback: (error: Error) => void,
+    ): void;
     function setPermanentContexts(contexts: any[]): void;
 }
 
@@ -65,7 +71,10 @@ export namespace Dialogflow_V2 {
         language: string,
         projectId: string,
     ): void;
-    function startListening(resultCallback: (result: object) => void, errorCallback: (error: Error) => void): void;
+    function startListening(
+        resultCallback: (result: object) => void,
+        errorCallback: (error: Error) => void,
+    ): void;
     function finishListening(): void;
     function requestEvent(
         eventName: string,
@@ -82,6 +91,9 @@ export namespace Dialogflow_V2 {
     function onListeningFinished(callback: () => void): void;
     function onAudioLevel(callback: (level: number) => void): void;
     function setContexts(contexts: any[]): void;
-    function resetContexts(resultCallback: (result: object) => void, errorCallback: (error: Error) => void): void;
+    function resetContexts(
+        resultCallback: (result: object) => void,
+        errorCallback: (error: Error) => void,
+    ): void;
     function setPermanentContexts(contexts: any[]): void;
 }

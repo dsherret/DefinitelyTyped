@@ -40,10 +40,14 @@ cloudinary.applyUploadWidget(
     (error, result) => {},
 );
 
-cloudinary.createUploadWidget({ cloudName: "my-cloud-name", uploadSignature: "c347053314777423cd4f" });
 cloudinary.createUploadWidget({
     cloudName: "my-cloud-name",
-    uploadSignature: (next, options) => Promise.resolve("c347053314777423cd4f").then(next),
+    uploadSignature: "c347053314777423cd4f",
+});
+cloudinary.createUploadWidget({
+    cloudName: "my-cloud-name",
+    uploadSignature: (next, options) =>
+        Promise.resolve("c347053314777423cd4f").then(next),
     uploadSignatureTimestamp: 1315060076,
 });
 
@@ -52,7 +56,10 @@ widget.update({
     cloudName: "demo",
     uploadPreset: "preset1",
     sources: ["local", "url"],
-    encryption: { key: "ff234fe526725753fa45b53325", iv: "cd8a46d72e26a365dca78ef" },
+    encryption: {
+        key: "ff234fe526725753fa45b53325",
+        iv: "cd8a46d72e26a365dca78ef",
+    },
     defaultSource: "local",
     multiple: false,
     maxFiles: 3,
@@ -116,7 +123,8 @@ widget.update({
             sourceBg: "#E4EBF1",
         },
         fonts: {
-            "'Cute Font', cursive": "https://fonts.googleapis.com/css?family=Cute+Font",
+            "'Cute Font', cursive":
+                "https://fonts.googleapis.com/css?family=Cute+Font",
         },
     },
     text: {
@@ -151,7 +159,10 @@ cloudinary.createUploadWidget({
     form: "#my_form",
     fieldName: "file",
     thumbnails: ".thumbnails",
-    thumbnailTransformation: [{ width: 200, height: 200, crop: "fill" }, { effect: "sepia" }],
+    thumbnailTransformation: [
+        { width: 200, height: 200, crop: "fill" },
+        { effect: "sepia" },
+    ],
 });
 
 cloudinary.createUploadWidget({
@@ -182,16 +193,18 @@ cloudinary.openUploadWidget(
         prepareUploadParams: (cb, parameters) => {
             const params = ([] as object[]).concat(parameters);
             Promise.all(
-                params.map(req =>
+                params.map((req) =>
                     fetch("https://mysite.example.com/prepare", req)
-                        .then(res => res.json())
-                        .then(response => ({
+                        .then((res) => res.json())
+                        .then((response) => ({
                             signature: response.signature,
                             apiKey: response.api_key,
                             ...response.upload_params,
-                        }))
+                        })),
                 ),
-            ).then(results => cb(results.length === 1 ? results[0] : results));
+            ).then((results) =>
+                cb(results.length === 1 ? results[0] : results),
+            );
         },
     },
     (error, result) => {},
@@ -205,7 +218,7 @@ cloudinary.openUploadWidget(
     },
     (error, result) => {
         if (!error && result.event === "show-completed") {
-            result.info.items.forEach(item => {
+            result.info.items.forEach((item) => {
                 console.log(`show completed for item with id:
         ${item.uploadInfo.public_id}`); // uploadInfo is the data returned in the upload response
             });

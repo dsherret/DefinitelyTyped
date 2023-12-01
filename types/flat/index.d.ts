@@ -11,10 +11,7 @@ declare namespace FlatTypes {
     }
 
     interface Flatten {
-        <TTarget, TResult>(
-            target: TTarget,
-            options?: FlattenOptions,
-        ): TResult;
+        <TTarget, TResult>(target: TTarget, options?: FlattenOptions): TResult;
 
         flatten: Flatten;
         unflatten: Unflatten;

@@ -24,7 +24,11 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
      * algId = new KJUR.asn1.x509.AlgorithmIdentifier({name: "SHA256withRSA", paramempty: true});
      */
     class AlgorithmIdentifier extends ASN1Object {
-        constructor(params?: { name: string; asn1params?: ASN1Object | undefined; paramempty?: boolean | undefined });
+        constructor(params?: {
+            name: string;
+            asn1params?: ASN1Object | undefined;
+            paramempty?: boolean | undefined;
+        });
         getEncodedHex(): string;
     }
 }

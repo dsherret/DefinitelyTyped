@@ -18,7 +18,10 @@ declare module "angular" {
             template?: string | undefined;
             scope?: IScope | undefined; // default: new child scope
             preserveScope?: boolean | undefined; // default: false
-            controller?: string | Injectable<IControllerConstructor> | undefined;
+            controller?:
+                | string
+                | Injectable<IControllerConstructor>
+                | undefined;
             locals?: { [index: string]: any } | undefined;
             clickOutsideToClose?: boolean | undefined;
             bindToController?: boolean | undefined; // default: false
@@ -26,7 +29,12 @@ declare module "angular" {
             escapeToClose?: boolean | undefined;
             resolve?: ResolveObject | undefined;
             controllerAs?: string | undefined;
-            parent?: ((scope: IScope, element: JQuery) => Element | JQuery) | string | Element | JQuery | undefined; // default: root node
+            parent?:
+                | ((scope: IScope, element: JQuery) => Element | JQuery)
+                | string
+                | Element
+                | JQuery
+                | undefined; // default: root node
             disableParentScroll?: boolean | undefined; // default: true
         }
 
@@ -52,20 +60,23 @@ declare module "angular" {
             clickOutsideToClose(clickOutsideToClose?: boolean): T; // default: false
             escapeToClose(escapeToClose?: boolean): T; // default: true
             focusOnOpen(focusOnOpen?: boolean): T; // default: true
-            controller(controller?: string | Injectable<IControllerConstructor>): T;
+            controller(
+                controller?: string | Injectable<IControllerConstructor>,
+            ): T;
             locals(locals?: { [index: string]: any }): T;
             bindToController(bindToController?: boolean): T; // default: false
             resolve(resolve?: ResolveObject): T;
             controllerAs(controllerAs?: string): T;
             parent(parent?: string | Element | JQuery): T; // default: root node
             ariaLabel(ariaLabel: string): T;
-            openFrom(from: string | Element | Event | { top: number; left: number }): T;
+            openFrom(
+                from: string | Element | Event | { top: number; left: number },
+            ): T;
             closeTo(to: string | Element | { top: number; left: number }): T;
             multiple(multiple: boolean): T;
         }
 
-        interface IAlertDialog extends IPresetDialog<IAlertDialog> {
-        }
+        interface IAlertDialog extends IPresetDialog<IAlertDialog> {}
 
         interface IConfirmDialog extends IPresetDialog<IConfirmDialog> {
             cancel(cancel: string): IConfirmDialog;
@@ -84,7 +95,10 @@ declare module "angular" {
         }
 
         interface IColorService {
-            applyThemeColors(element: Element | JQuery, colorExpression: IColorExpression): void;
+            applyThemeColors(
+                element: Element | JQuery,
+                colorExpression: IColorExpression,
+            ): void;
             getThemeColor(expression: string): string;
             hasTheme(): boolean;
         }
@@ -104,7 +118,10 @@ declare module "angular" {
             clickOutsideToClose?: boolean | undefined; // default: false
             escapeToClose?: boolean | undefined; // default: true
             focusOnOpen?: boolean | undefined; // default: true
-            controller?: string | Injectable<IControllerConstructor> | undefined;
+            controller?:
+                | string
+                | Injectable<IControllerConstructor>
+                | undefined;
             locals?: { [index: string]: any } | undefined;
             bindToController?: boolean | undefined; // default: false
             resolve?: ResolveObject | undefined;
@@ -125,7 +142,13 @@ declare module "angular" {
             // eslint-disable-next-line @typescript-eslint/ban-types
             [presetName: string]: Function;
 
-            show(dialog: IDialogOptions | IAlertDialog | IConfirmDialog | IPromptDialog): IPromise<any>;
+            show(
+                dialog:
+                    | IDialogOptions
+                    | IAlertDialog
+                    | IConfirmDialog
+                    | IPromptDialog,
+            ): IPromise<any>;
             confirm(): IConfirmDialog;
             alert(): IAlertDialog;
             prompt(): IPromptDialog;
@@ -136,7 +159,10 @@ declare module "angular" {
         interface IDialogProvider {
             addPreset(
                 presetName: string,
-                presetOptions: { methods?: readonly string[] | undefined; options: () => IDialogOptions },
+                presetOptions: {
+                    methods?: readonly string[] | undefined;
+                    options: () => IDialogOptions;
+                },
             ): IDialogProvider;
         }
 
@@ -144,7 +170,11 @@ declare module "angular" {
 
         interface IIconProvider {
             icon(id: string, url: string, viewBoxSize?: number): IIconProvider; // viewBoxSize default: 24
-            iconSet(id: string, url: string, viewBoxSize?: number): IIconProvider; // viewBoxSize default: 24
+            iconSet(
+                id: string,
+                url: string,
+                viewBoxSize?: number,
+            ): IIconProvider; // viewBoxSize default: 24
             defaultIconSet(url: string, viewBoxSize?: number): IIconProvider; // viewBoxSize default: 24
             defaultViewBoxSize(viewBoxSize: number): IIconProvider; // default: 24
             defaultFontSet(name: string): IIconProvider;
@@ -183,8 +213,7 @@ declare module "angular" {
             toastClass(toastClass: string): T;
         }
 
-        interface ISimpleToastPreset extends IToastPreset<ISimpleToastPreset> {
-        }
+        interface ISimpleToastPreset extends IToastPreset<ISimpleToastPreset> {}
 
         interface IToastOptions {
             templateUrl?: string | undefined;
@@ -195,7 +224,10 @@ declare module "angular" {
             hideDelay?: number | false | undefined; // default (ms): 3000
             position?: string | undefined; // any combination of 'bottom'/'left'/'top'/'right'/'fit'; default: 'bottom left'
             toastClass?: string | undefined;
-            controller?: string | Injectable<IControllerConstructor> | undefined;
+            controller?:
+                | string
+                | Injectable<IControllerConstructor>
+                | undefined;
             locals?: { [index: string]: any } | undefined;
             bindToController?: boolean | undefined; // default: false
             resolve?: ResolveObject | undefined;
@@ -204,7 +236,9 @@ declare module "angular" {
         }
 
         interface IToastService {
-            show(optionsOrPreset: IToastOptions | IToastPreset<any>): IPromise<any>;
+            show(
+                optionsOrPreset: IToastOptions | IToastPreset<any>,
+            ): IPromise<any>;
             showSimple(content: string): IPromise<any>;
             simple(): ISimpleToastPreset;
             build(): IToastPreset<any>;
@@ -321,7 +355,10 @@ declare module "angular" {
             defaultTheme(): string;
             generateTheme(name: string): void;
             setBrowserColor(options: IBrowserColors): () => void;
-            defineTheme(name: string, options: IDefineThemeOptions): IPromise<string>;
+            defineTheme(
+                name: string,
+                options: IDefineThemeOptions,
+            ): IPromise<string>;
         }
 
         interface IDateLocaleProvider {
@@ -382,7 +419,10 @@ declare module "angular" {
             id?: string | undefined;
             template?: string | undefined;
             templateUrl?: string | undefined;
-            controller?: string | Injectable<IControllerConstructor> | undefined;
+            controller?:
+                | string
+                | Injectable<IControllerConstructor>
+                | undefined;
             controllerAs?: string | undefined;
             bindToController?: boolean | undefined; // default: true
             locals?: { [index: string]: any } | undefined;
@@ -405,7 +445,9 @@ declare module "angular" {
             onRemoving?(...args: any[]): PromiseLike<void> | void;
             onDomRemoved?(...args: any[]): PromiseLike<void> | void;
             origin?: string | JQuery | Element | undefined;
-            onCloseSuccess?: ((panel: IPanelRef, closeReason: string) => any) | undefined;
+            onCloseSuccess?:
+                | ((panel: IPanelRef, closeReason: string) => any)
+                | undefined;
         }
 
         interface IPanelRef {
@@ -426,8 +468,14 @@ declare module "angular" {
             toggleClass(toggleClass: string): void;
             updateAnimation(animation: IPanelAnimation): void;
             updatePosition(position: IPanelPosition): void;
-            registerInterceptor(type: string, callback: () => IPromise<any>): IPanelRef;
-            removeInterceptor(type: string, callback: () => IPromise<any>): IPanelRef;
+            registerInterceptor(
+                type: string,
+                callback: () => IPromise<any>,
+            ): IPanelRef;
+            removeInterceptor(
+                type: string,
+                callback: () => IPromise<any>,
+            ): IPanelRef;
             removeAllInterceptors(type?: string): IPanelRef;
         }
 
@@ -443,16 +491,31 @@ declare module "angular" {
             centerHorizontally(): IPanelPosition;
             centerVertically(): IPanelPosition;
             center(): IPanelPosition;
-            addPanelPosition(xPosition: string, yPosition: string): IPanelPosition;
-            withOffsetX(offsetX: string | ((panel: IPanelPosition) => string)): IPanelPosition;
-            withOffsetY(offsetY: string | ((panel: IPanelPosition) => string)): IPanelPosition;
+            addPanelPosition(
+                xPosition: string,
+                yPosition: string,
+            ): IPanelPosition;
+            withOffsetX(
+                offsetX: string | ((panel: IPanelPosition) => string),
+            ): IPanelPosition;
+            withOffsetY(
+                offsetY: string | ((panel: IPanelPosition) => string),
+            ): IPanelPosition;
         }
 
         interface IPanelAnimation {
-            openFrom(from: string | Element | Event | { top: number; left: number }): IPanelAnimation;
-            closeTo(to: string | Element | { top: number; left: number }): IPanelAnimation;
-            withAnimation(cssClass: string | { open: string; close: string }): IPanelAnimation;
-            duration(duration: number | { open: number; close: number }): IPanelAnimation;
+            openFrom(
+                from: string | Element | Event | { top: number; left: number },
+            ): IPanelAnimation;
+            closeTo(
+                to: string | Element | { top: number; left: number },
+            ): IPanelAnimation;
+            withAnimation(
+                cssClass: string | { open: string; close: string },
+            ): IPanelAnimation;
+            duration(
+                duration: number | { open: number; close: number },
+            ): IPanelAnimation;
         }
 
         interface IPanelService {
@@ -502,14 +565,23 @@ declare module "angular" {
             durationIndeterminate?: number | undefined;
             startIndeterminate?: number | undefined;
             endIndeterminate?: number | undefined;
-            easeFnIndeterminate?(t: number, b: number, c: number, d: number): number;
+            easeFnIndeterminate?(
+                t: number,
+                b: number,
+                c: number,
+                d: number,
+            ): number;
         }
 
         interface IProgressCircularProvider {
             configure(options: IProgressCircularConfig): void;
         }
 
-        type IStickyService = (scope: IScope, element: JQuery, elementClone?: JQuery) => void;
+        type IStickyService = (
+            scope: IScope,
+            element: JQuery,
+            elementClone?: JQuery,
+        ) => void;
 
         interface IInteractionService {
             getLastInteractionType(): string | null;
@@ -518,7 +590,12 @@ declare module "angular" {
 
         interface IUtilService {
             // eslint-disable-next-line @typescript-eslint/ban-types -- debounce takes in a user provided function
-            debounce<T extends Function>(func: T, wait?: number, scope?: any, invokeApply?: boolean): T;
+            debounce<T extends Function>(
+                func: T,
+                wait?: number,
+                scope?: any,
+                invokeApply?: boolean,
+            ): T;
             enableScrolling(): void;
         }
 

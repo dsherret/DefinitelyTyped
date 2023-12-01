@@ -1,4 +1,7 @@
-import BaseComponent, { GetInstanceFactory, GetOrCreateInstanceFactory } from "./base-component";
+import BaseComponent, {
+    GetInstanceFactory,
+    GetOrCreateInstanceFactory,
+} from "./base-component";
 
 declare class Collapse extends BaseComponent {
     /**
@@ -12,7 +15,10 @@ declare class Collapse extends BaseComponent {
      *  or create a new one in case it wasn't initialised.
      * You can use it like this: bootstrap.Collapse.getOrCreateInstance(element)
      */
-    static getOrCreateInstance: GetOrCreateInstanceFactory<Collapse, Partial<Collapse.Options>>;
+    static getOrCreateInstance: GetOrCreateInstanceFactory<
+        Collapse,
+        Partial<Collapse.Options>
+    >;
 
     static jQueryInterface: Collapse.jQueryInterface;
 
@@ -89,7 +95,9 @@ declare namespace Collapse {
         toggle: boolean;
     }
 
-    type jQueryInterface = (config?: Partial<Options> | "show" | "hide" | "toggle" | "dispose") => JQuery;
+    type jQueryInterface = (
+        config?: Partial<Options> | "show" | "hide" | "toggle" | "dispose",
+    ) => JQuery;
 }
 
 export default Collapse;

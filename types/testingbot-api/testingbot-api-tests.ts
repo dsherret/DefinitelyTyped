@@ -12,13 +12,19 @@ function noop(error: any, responseBody: any) {
     console.log(responseBody);
 }
 
-tb.updateUserInfo({
-    email: "new-email",
-}, noop);
+tb.updateUserInfo(
+    {
+        email: "new-email",
+    },
+    noop,
+);
 
 tb.getBrowsers(noop, "webdriver");
 
-tb.updateTest({
-    "test[name]": "test",
-    build: "01",
-}, sessionId);
+tb.updateTest(
+    {
+        "test[name]": "test",
+        build: "01",
+    },
+    sessionId,
+);

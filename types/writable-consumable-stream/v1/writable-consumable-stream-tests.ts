@@ -2,7 +2,9 @@ import WritableConsumableStream = require("writable-consumable-stream");
 
 const consumableStream = new WritableConsumableStream<string>();
 
-async function consumeAsyncIterable1(asyncIterable: WritableConsumableStream<string>) {
+async function consumeAsyncIterable1(
+    asyncIterable: WritableConsumableStream<string>,
+) {
     // Consume iterable data asynchronously.
     // tslint:disable-next-line: await-promise Bug in tslint: https://github.com/palantir/tslint/issues/3997
     for await (const packet of asyncIterable) {
@@ -16,7 +18,9 @@ setInterval(() => {
     consumableStream.write(`Timestamp: ${Date.now()}`);
 }, 100);
 
-async function consumeAsyncIterable2(asyncIterable: WritableConsumableStream<string>) {
+async function consumeAsyncIterable2(
+    asyncIterable: WritableConsumableStream<string>,
+) {
     // Consume iterable data asynchronously.
     // Works in older environments.
     const asyncIterator = asyncIterable.createConsumer();

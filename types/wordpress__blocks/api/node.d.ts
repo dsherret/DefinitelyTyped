@@ -33,7 +33,10 @@ declare namespace node {
      *
      * @deprecated since 11.17.0. Use the html source instead.
      */
-    function isNodeOfType(node: JSX.Element, type: ReactElement["type"]): boolean;
+    function isNodeOfType(
+        node: JSX.Element,
+        type: ReactElement["type"],
+    ): boolean;
 
     /**
      * Given a selector, returns an hpq matcher generating a WPBlockNode value

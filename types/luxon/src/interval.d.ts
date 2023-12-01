@@ -1,6 +1,24 @@
-import { CanBeInvalid, DefaultValidity, IfValid, Invalid, Valid } from "./_util";
-import { DateObjectUnits, DateTime, DateTimeOptions, DiffOptions, LocaleOptions, ToISOTimeOptions } from "./datetime";
-import { Duration, DurationLike, DurationMaybeValid, DurationUnit } from "./duration";
+import {
+    CanBeInvalid,
+    DefaultValidity,
+    IfValid,
+    Invalid,
+    Valid,
+} from "./_util";
+import {
+    DateObjectUnits,
+    DateTime,
+    DateTimeOptions,
+    DiffOptions,
+    LocaleOptions,
+    ToISOTimeOptions,
+} from "./datetime";
+import {
+    Duration,
+    DurationLike,
+    DurationMaybeValid,
+    DurationUnit,
+} from "./duration";
 
 export interface IntervalObject {
     start?: DateTime | undefined;
@@ -9,7 +27,9 @@ export interface IntervalObject {
 
 export type DateInput = DateTime | DateObjectUnits | Date;
 
-export type IntervalMaybeValid = CanBeInvalid extends true ? (Interval<Valid> | Interval<Invalid>) : Interval;
+export type IntervalMaybeValid = CanBeInvalid extends true
+    ? Interval<Valid> | Interval<Invalid>
+    : Interval;
 
 /**
  * An Interval object represents a half-open interval of time, where each endpoint is a {@link DateTime}.
@@ -283,7 +303,9 @@ export class Interval<IsValid extends boolean = DefaultValidity> {
      *
      * @param opts - The same options as {@link DateTime#toISO}
      */
-    toISO(opts?: ToISOTimeOptions): IfValid<string, "Invalid Interval", IsValid>;
+    toISO(
+        opts?: ToISOTimeOptions,
+    ): IfValid<string, "Invalid Interval", IsValid>;
 
     /**
      * Returns an ISO 8601-compliant string representation of the dates in this Interval.
@@ -299,7 +321,9 @@ export class Interval<IsValid extends boolean = DefaultValidity> {
      *
      * @param opts - The same options as {@link DateTime.toISO}
      */
-    toISOTime(opts?: ToISOTimeOptions): IfValid<string, "Invalid Interval", IsValid>;
+    toISOTime(
+        opts?: ToISOTimeOptions,
+    ): IfValid<string, "Invalid Interval", IsValid>;
 
     /**
      * Returns a string representation of this Interval formatted according to the specified format string.
@@ -333,7 +357,10 @@ export class Interval<IsValid extends boolean = DefaultValidity> {
      * @example
      * Interval.fromDateTimes(dt1, dt2).toDuration('seconds').toObject() //=> { seconds: 88489.257 }
      */
-    toDuration(unit?: DurationUnit | DurationUnit[], opts?: DiffOptions): DurationMaybeValid;
+    toDuration(
+        unit?: DurationUnit | DurationUnit[],
+        opts?: DiffOptions,
+    ): DurationMaybeValid;
 
     /**
      * Run mapFn on the interval start and end, returning a new Interval from the resulting DateTimes

@@ -71,7 +71,11 @@ export interface CollectionEndpoint extends Endpoint<CollectionEndpoint> {
      * Get a member in a collection. Returns a promise with an entity.
      * @param id
      */
-    get<T>(id: any, params?: any, headers?: Headers): Promise<MemberResponse<T>>;
+    get<T>(
+        id: any,
+        params?: any,
+        headers?: Headers,
+    ): Promise<MemberResponse<T>>;
     /**
      * Get a full collection. Returns a promise with an array of entities.
      */
@@ -93,7 +97,11 @@ export interface CollectionEndpoint extends Endpoint<CollectionEndpoint> {
      * @param data
      * @param headers
      */
-    delete<T>(id: any, data?: any, headers?: Headers): Promise<MemberResponse<T>>;
+    delete<T>(
+        id: any,
+        data?: any,
+        headers?: Headers,
+    ): Promise<MemberResponse<T>>;
     /**
      * Patch a member in a collection. Returns a promise with the response.
      * @param id
@@ -210,7 +218,13 @@ export interface RequestInterceptor {
 }
 
 export interface FullRequestInterceptor {
-    (params: any, headers: Headers, data: any, method: string, url: string): FullRequestInterceptorReturnValue;
+    (
+        params: any,
+        headers: Headers,
+        data: any,
+        method: string,
+        url: string,
+    ): FullRequestInterceptorReturnValue;
 }
 
 export interface FullRequestInterceptorReturnValue {
@@ -222,7 +236,12 @@ export interface FullRequestInterceptorReturnValue {
 }
 
 export interface ResponseInterceptor {
-    (data: any, headers: Headers, method: string, url: string): ResponseInterceptorReturnValue;
+    (
+        data: any,
+        headers: Headers,
+        method: string,
+        url: string,
+    ): ResponseInterceptorReturnValue;
 }
 
 export interface ResponseInterceptorReturnValue {

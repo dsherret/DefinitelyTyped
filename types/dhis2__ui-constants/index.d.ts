@@ -1,6 +1,16 @@
 // https://github.com/dhis2/ui/blob/master/constants/src/colors.js
 export type ColorBase = "blue" | "teal" | "red" | "yellow" | "green" | "grey";
-export type ColorVariant = "900" | "800" | "700" | "600" | "500" | "400" | "300" | "200" | "100" | "050";
+export type ColorVariant =
+    | "900"
+    | "800"
+    | "700"
+    | "600"
+    | "500"
+    | "400"
+    | "300"
+    | "200"
+    | "100"
+    | "050";
 export type ColorProp = `${ColorBase}${ColorVariant}` | "white";
 export const colors: Record<ColorProp, string>;
 
@@ -10,7 +20,17 @@ export const elevations: Record<ElevantionVariant, string>;
 
 // https://github.com/dhis2/ui/blob/master/constants/src/theme.js
 export type ThemeBase = "primary" | "secondary";
-export type ThemeVariant = "900" | "800" | "700" | "600" | "500" | "400" | "300" | "200" | "100" | "050";
+export type ThemeVariant =
+    | "900"
+    | "800"
+    | "700"
+    | "600"
+    | "500"
+    | "400"
+    | "300"
+    | "200"
+    | "100"
+    | "050";
 export type ThemeProp =
     | `${ThemeBase}${ThemeVariant}`
     | "default"

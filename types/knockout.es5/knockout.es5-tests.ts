@@ -1,7 +1,7 @@
 var empty = {},
     obj = { a: "string", b: 123, c: true, d: empty },
     observable = ko.observable(123),
-    computed = ko.computed(function() {
+    computed = ko.computed(function () {
         return observable() + 1;
     }),
     model = { prop: 100 },
@@ -27,20 +27,29 @@ ko.defineProperty(model, "propPlusOne", () => {
     return model.prop + 1;
 });
 ko.defineProperty(model, "propOne", {
-    get: function() {
+    get: function () {
         return 1;
     },
 });
-ko.defineProperty(model, "propPlusOne", { get: () => model.prop++, set: (value) => model.prop = value - 1 });
+ko.defineProperty(model, "propPlusOne", {
+    get: () => model.prop++,
+    set: (value) => (model.prop = value - 1),
+});
 
 // Utility functions
-ko.getObservable(model, "propPlusOne").subscribe((newValue) => notifiedValues.push(newValue));
+ko.getObservable(model, "propPlusOne").subscribe((newValue) =>
+    notifiedValues.push(newValue),
+);
 
 // Simple usage example
 class OrderLine {
     subtotal: string;
 
-    constructor(public item: any, public price: number, public quantity: number) {
+    constructor(
+        public item: any,
+        public price: number,
+        public quantity: number,
+    ) {
         // Instead of declaring ko.observable properties, we just have one call to ko.track
         ko.track(this);
 
@@ -50,7 +59,7 @@ class OrderLine {
         });
 
         // Accessing the observables
-        ko.getObservable(this, "price").subscribe(function(newPrice) {
+        ko.getObservable(this, "price").subscribe(function (newPrice) {
             console.log("The new price is " + newPrice);
         });
     }
@@ -73,7 +82,8 @@ class Order {
     }
 }
 
-var someOrderLine = new OrderLine(null, 0.445, 11), anOrder = new Order();
+var someOrderLine = new OrderLine(null, 0.445, 11),
+    anOrder = new Order();
 
 someOrderLine.item = "Test Item";
 someOrderLine.quantity += 1;

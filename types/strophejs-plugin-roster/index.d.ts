@@ -4,8 +4,17 @@ export {};
 
 export type IqCallback = (stanza: Element) => any;
 export type IqID = string;
-export type RosterSubscriptionState = "none" | "to" | "from" | "both" | "remove";
-export type PresenceSubscriptionType = "subscribe" | "unsubscribe" | "subscribed" | "unsubscribed";
+export type RosterSubscriptionState =
+    | "none"
+    | "to"
+    | "from"
+    | "both"
+    | "remove";
+export type PresenceSubscriptionType =
+    | "subscribe"
+    | "unsubscribe"
+    | "subscribed"
+    | "unsubscribed";
 
 export interface RosterResource {
     priority: string;
@@ -22,7 +31,11 @@ export interface RosterItem {
     resources: { [resourceId: string]: RosterResource };
 }
 
-export type RosterUpdateCallback = (items: RosterItem[], item: RosterItem, previousItem: RosterItem) => any;
+export type RosterUpdateCallback = (
+    items: RosterItem[],
+    item: RosterItem,
+    previousItem: RosterItem,
+) => any;
 export type PresenceRequestCallback = (from: string) => any;
 
 interface StropheRosterPlugin {
@@ -46,9 +59,19 @@ interface StropheRosterPlugin {
 
     unauthorize(jid: string, message?: string): void;
 
-    add(jid: string, name: string, groups: string[], call_back?: IqCallback): IqID;
+    add(
+        jid: string,
+        name: string,
+        groups: string[],
+        call_back?: IqCallback,
+    ): IqID;
 
-    update(jid: string, name?: string, groups?: string[], call_back?: IqCallback): IqID;
+    update(
+        jid: string,
+        name?: string,
+        groups?: string[],
+        call_back?: IqCallback,
+    ): IqID;
 
     remove(jid: string, call_back?: IqCallback): void;
 }

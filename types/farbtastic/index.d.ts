@@ -31,7 +31,9 @@ interface JQueryStatic {
         placeholder: JQueryFarbtastic.Placeholder,
         options: JQueryFarbtastic.Options,
     ): JQueryFarbtastic.Farbtastic;
-    farbtastic(placeholder: JQueryFarbtastic.Placeholder): JQueryFarbtastic.Farbtastic;
+    farbtastic(
+        placeholder: JQueryFarbtastic.Placeholder,
+    ): JQueryFarbtastic.Farbtastic;
 }
 
 interface JQuery {

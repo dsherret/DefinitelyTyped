@@ -49,7 +49,10 @@ export interface Node extends DomElement {
 }
 
 export class DomHandler {
-    constructor(callback: (error: any, dom: DomElement[]) => any, options?: DomHandlerOptions);
+    constructor(
+        callback: (error: any, dom: DomElement[]) => any,
+        options?: DomHandlerOptions,
+    );
 
     onparserinit(parser: any): void;
 

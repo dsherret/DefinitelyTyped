@@ -40,7 +40,7 @@ const codepenChart = new Chart(ctx, {
                         enabled: true,
                     },
                     // tslint:disable-next-line:object-literal-shorthand
-                    onClick: function(e) {
+                    onClick: function (e) {
                         // The annotation is is bound to the `this` variable
                         console.log("Annotation", e.type, this);
                     },
@@ -95,22 +95,24 @@ const exampleChart = new Chart(ctx, {
 
             // Array of annotation configuration objects
             // See below for detailed descriptions of the annotation options
-            annotations: [{
-                drawTime: "afterDraw", // overrides annotation.drawTime if set
-                id: "a-line-1", // optional
-                type: "line",
-                mode: "horizontal",
-                scaleID: "y-axis-0",
-                value: "25",
-                borderColor: "red",
-                borderWidth: 2,
+            annotations: [
+                {
+                    drawTime: "afterDraw", // overrides annotation.drawTime if set
+                    id: "a-line-1", // optional
+                    type: "line",
+                    mode: "horizontal",
+                    scaleID: "y-axis-0",
+                    value: "25",
+                    borderColor: "red",
+                    borderWidth: 2,
 
-                // Fires when the user clicks this annotation on the chart
-                // (be sure to enable the event in the events array below).
-                onClick(e) {
-                    // `this` is bound to the annotation element
+                    // Fires when the user clicks this annotation on the chart
+                    // (be sure to enable the event in the events array below).
+                    onClick(e) {
+                        // `this` is bound to the annotation element
+                    },
                 },
-            }],
+            ],
         },
     },
 });
@@ -282,11 +284,7 @@ const annotatedChart = new Chart(ctx, {
     data: chartData,
     options: {
         annotation: {
-            annotations: [
-                lineAnnotation,
-                boxAnnotation,
-                dateBox,
-            ],
+            annotations: [lineAnnotation, boxAnnotation, dateBox],
         },
     },
 });

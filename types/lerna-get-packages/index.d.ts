@@ -6,9 +6,11 @@ interface LernaPackage {
         name: string;
         dependencies: Record<string, string>;
         main?: string | undefined;
-        config?: {
-            additionalTsTypings?: string[] | undefined;
-        } | undefined;
+        config?:
+            | {
+                  additionalTsTypings?: string[] | undefined;
+              }
+            | undefined;
     };
 }
 declare function lernaGetPackages(path: string): LernaPackage[];

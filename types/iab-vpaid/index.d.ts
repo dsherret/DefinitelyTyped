@@ -218,14 +218,21 @@ declare namespace iab.vpaid {
          * @param event is the name of the event that the video player is subscribing to
          * @param listenerScope [optional] is a reference to the object in which the function is defined
          */
-        subscribe<E extends keyof EventsMap>(fn: EventsMap[E], event: E, listenerScope?: object): void;
+        subscribe<E extends keyof EventsMap>(
+            fn: EventsMap[E],
+            event: E,
+            listenerScope?: object,
+        ): void;
         /**
          * The video player calls this method to remove a listener for a particular event
          *
          * @param event is the name of the event that the video player is unsubscribing from
          * @param fn is the event listener that is being removed
          */
-        unsubscribe<E extends keyof EventsMap>(fn: EventsMap[E], event: E): void;
+        unsubscribe<E extends keyof EventsMap>(
+            fn: EventsMap[E],
+            event: E,
+        ): void;
         /**
          * The `adLinear` Boolean indicates whether the ad unit is in a linear (`true`) or non-linear (`false`)
          * mode of operation. The `adLinear` property should only be accessed after the ad unit has dispatched

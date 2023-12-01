@@ -9,5 +9,8 @@ const store = new RedisStore({
 });
 new ExpressBrute(store);
 
-const clientStore = new RedisStore({ client: redis.createClient(), prefix: "brute:" });
+const clientStore = new RedisStore({
+    client: redis.createClient(),
+    prefix: "brute:",
+});
 new ExpressBrute(clientStore);

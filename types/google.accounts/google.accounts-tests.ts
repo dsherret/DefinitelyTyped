@@ -2,7 +2,7 @@
 google.accounts.oauth2.initCodeClient({
     client_id: "",
     scope: "",
-    callback: response => {
+    callback: (response) => {
         // $ExpectType string
         response.code;
         // $ExpectType string
@@ -16,7 +16,7 @@ google.accounts.oauth2.initCodeClient({
         // $ExpectType string
         response.error_uri;
     },
-    error_callback: error => {
+    error_callback: (error) => {
         // $ExpectType string
         error.message;
         // $ExpectType string | undefined
@@ -33,7 +33,7 @@ google.accounts.oauth2.initCodeClient({
     scope: "",
     include_granted_scopes: true,
     redirect_uri: "",
-    callback: response => {
+    callback: (response) => {
         // $ExpectType string
         response.code;
         // $ExpectType string
@@ -53,7 +53,7 @@ google.accounts.oauth2.initCodeClient({
     hd: "",
     ux_mode: "popup",
     select_account: false,
-    error_callback: error => {
+    error_callback: (error) => {
         // $ExpectType string
         error.message;
         // $ExpectType string | undefined
@@ -66,7 +66,7 @@ google.accounts.oauth2.initCodeClient({
 // $ExpectType TokenClient
 google.accounts.oauth2.initTokenClient({
     client_id: "",
-    callback: response => {
+    callback: (response) => {
         // $ExpectType string
         response.access_token;
         // $ExpectType string
@@ -89,7 +89,7 @@ google.accounts.oauth2.initTokenClient({
         response.error_uri;
     },
     scope: "",
-    error_callback: error => {
+    error_callback: (error) => {
         // $ExpectType string
         error.message;
         // $ExpectType string | undefined
@@ -103,7 +103,7 @@ google.accounts.oauth2.initTokenClient({
 // $ExpectType TokenClient
 google.accounts.oauth2.initTokenClient({
     client_id: "",
-    callback: response => {
+    callback: (response) => {
         // $ExpectType string
         response.access_token;
         // $ExpectType string
@@ -131,7 +131,7 @@ google.accounts.oauth2.initTokenClient({
     enable_granular_consent: true,
     login_hint: "",
     hd: "",
-    error_callback: error => {
+    error_callback: (error) => {
         // $ExpectType string
         error.message;
         // $ExpectType string | undefined
@@ -185,7 +185,7 @@ google.accounts.id.initialize({ client_id: "YOUR_GOOGLE_CLIENT_ID" });
 // all options
 google.accounts.id.initialize({
     client_id: "YOUR_GOOGLE_CLIENT_ID",
-    callback: response => {
+    callback: (response) => {
         // $ExpectType string
         response.credential;
         // $ExpectType string
@@ -193,7 +193,7 @@ google.accounts.id.initialize({
     },
     auto_select: true,
     login_uri: "",
-    native_callback: response => {
+    native_callback: (response) => {
         // $ExpectType string
         response.credential;
         // $ExpectType string
@@ -215,7 +215,7 @@ google.accounts.id.initialize({
 
 google.accounts.id.prompt();
 
-google.accounts.id.prompt(notification => {
+google.accounts.id.prompt((notification) => {
     // $ExpectType boolean
     notification.isNotDisplayed();
     // $ExpectType boolean
@@ -237,28 +237,22 @@ google.accounts.id.prompt(notification => {
 });
 
 // required options
-google.accounts.id.renderButton(
-    document.getElementById("buttonDiv")!,
-    {
-        type: "standard",
-    },
-);
+google.accounts.id.renderButton(document.getElementById("buttonDiv")!, {
+    type: "standard",
+});
 
 // all options
-google.accounts.id.renderButton(
-    document.getElementById("buttonDiv")!,
-    {
-        type: "standard",
-        theme: "outline",
-        size: "small",
-        text: "signin_with",
-        shape: "rectangular",
-        logo_alignment: "left",
-        width: undefined,
-        locale: "",
-        click_listener: () => {},
-    },
-);
+google.accounts.id.renderButton(document.getElementById("buttonDiv")!, {
+    type: "standard",
+    theme: "outline",
+    size: "small",
+    text: "signin_with",
+    shape: "rectangular",
+    logo_alignment: "left",
+    width: undefined,
+    locale: "",
+    click_listener: () => {},
+});
 
 google.accounts.id.disableAutoSelect();
 
@@ -266,7 +260,7 @@ google.accounts.id.storeCredential({ id: "...", password: "..." });
 
 google.accounts.id.cancel();
 
-google.accounts.id.revoke("1618033988749895", done => {
+google.accounts.id.revoke("1618033988749895", (done) => {
     // $ExpectType boolean
     done.successful;
     if (done.error) {

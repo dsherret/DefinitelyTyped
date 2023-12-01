@@ -4,7 +4,7 @@ import session = require("express-session");
 
 declare module "socket.io" {
     interface Handshake {
-        session?: session.Session & Partial<session.SessionData> | undefined;
+        session?: (session.Session & Partial<session.SessionData>) | undefined;
         sessionID?: string | undefined;
     }
 }
@@ -26,7 +26,10 @@ declare namespace sharedsession {
         saveUninitialized?: boolean | undefined;
     }
 
-    type SocketIoSharedSessionMiddleware = (socket: socketio.Socket, next: (err?: any) => void) => void;
+    type SocketIoSharedSessionMiddleware = (
+        socket: socketio.Socket,
+        next: (err?: any) => void,
+    ) => void;
 }
 
 export = sharedsession;

@@ -93,7 +93,10 @@ declare namespace UglifyJS {
         map: string;
     }
 
-    function minify(files: string | string[], options?: MinifyOptions): MinifyOutput;
+    function minify(
+        files: string | string[],
+        options?: MinifyOptions,
+    ): MinifyOutput;
 
     interface ParseOptions {
         // Default is false
@@ -399,8 +402,7 @@ declare namespace UglifyJS {
     function Compressor(options?: CompressorOptions): AST_Toplevel;
 
     // TODO
-    interface TreeWalker {
-    }
+    interface TreeWalker {}
 
     type visitor = (node: AST_Node, descend: Function) => boolean;
 
@@ -411,8 +413,7 @@ declare namespace UglifyJS {
     function TreeWalker(visitor: visitor): TreeWalker;
 
     // TODO
-    interface TreeTransformer extends TreeWalker {
-    }
+    interface TreeTransformer extends TreeWalker {}
 
     /**
      * The tree transformer is a special case of a tree walker.

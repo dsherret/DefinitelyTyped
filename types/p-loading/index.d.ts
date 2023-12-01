@@ -12,11 +12,15 @@ interface PLoadingOptions {
     /**
      * @deprecated
      */
-    onShowContainer?: (($pluginElement: JQuery, $container: JQuery) => void) | undefined;
+    onShowContainer?:
+        | (($pluginElement: JQuery, $container: JQuery) => void)
+        | undefined;
     /**
      * @deprecated
      */
-    onHideContainer?: (($pluginElement: JQuery, $container: JQuery) => void) | undefined;
+    onHideContainer?:
+        | (($pluginElement: JQuery, $container: JQuery) => void)
+        | undefined;
     /**
      * @deprecated
      */

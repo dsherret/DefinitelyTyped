@@ -18,6 +18,10 @@ interface Options {
  * @return
  * The index of the next answer to be selected.
  */
-declare function incrementListIndex(current: number, dir: Direction, opt: Options): number;
+declare function incrementListIndex(
+    current: number,
+    dir: Direction,
+    opt: Options,
+): number;
 
 export = incrementListIndex;

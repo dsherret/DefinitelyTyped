@@ -26,7 +26,11 @@ declare namespace OSS {
         /** use time (ms) of refresh STSToken interval it should be less than sts info expire interval, default is 300000ms(5min) when sts info expires. */
         refreshSTSTokenInterval?: number;
         /** used by auto set stsToken、accessKeyId、accessKeySecret when sts info expires. return value must be object contains stsToken、accessKeyId、accessKeySecret */
-        refreshSTSToken?: () => Promise<{ accessKeyId: string; accessKeySecret: string; stsToken: string }>;
+        refreshSTSToken?: () => Promise<{
+            accessKeyId: string;
+            accessKeySecret: string;
+            stsToken: string;
+        }>;
     }
 
     /**
@@ -582,12 +586,14 @@ declare namespace OSS {
     interface PutChannelConf {
         Description?: string | undefined;
         Status?: string | undefined;
-        Target?: {
-            Type: string;
-            FragDuration: number;
-            FragCount: number;
-            PlaylistName: string;
-        } | undefined;
+        Target?:
+            | {
+                  Type: string;
+                  FragDuration: number;
+                  FragCount: number;
+                  PlaylistName: string;
+              }
+            | undefined;
     }
 
     interface PutChannelResult {
@@ -664,14 +670,24 @@ declare namespace OSS {
     class ClusterClient {
         constructor(options: ClusterOptions);
 
-        list(query: ListObjectsQuery | null, options: RequestOptions): Promise<ListObjectResult>;
+        list(
+            query: ListObjectsQuery | null,
+            options: RequestOptions,
+        ): Promise<ListObjectResult>;
 
         /**
          * @since 6.12.0
          */
-        listV2(query: ListV2ObjectsQuery | null, options?: RequestOptions): Promise<ListObjectResult>;
+        listV2(
+            query: ListV2ObjectsQuery | null,
+            options?: RequestOptions,
+        ): Promise<ListObjectResult>;
 
-        put(name: string, file: any, options?: PutObjectOptions): Promise<PutObjectResult>;
+        put(
+            name: string,
+            file: any,
+            options?: PutObjectOptions,
+        ): Promise<PutObjectResult>;
 
         putStream(
             name: string,
@@ -679,27 +695,58 @@ declare namespace OSS {
             options?: PutStreamOptions,
         ): Promise<{ name: string; res: NormalSuccessResponse }>;
 
-        head(name: string, options?: HeadObjectOptions): Promise<HeadObjectResult>;
+        head(
+            name: string,
+            options?: HeadObjectOptions,
+        ): Promise<HeadObjectResult>;
 
-        get(name: string, file?: any, options?: GetObjectOptions): Promise<GetObjectResult>;
+        get(
+            name: string,
+            file?: any,
+            options?: GetObjectOptions,
+        ): Promise<GetObjectResult>;
 
-        getStream(name?: string, options?: GetStreamOptions): Promise<GetStreamResult>;
+        getStream(
+            name?: string,
+            options?: GetStreamOptions,
+        ): Promise<GetStreamResult>;
 
         delete(name: string, options?: RequestOptions): Promise<DeleteResult>;
 
-        copy(name: string, sourceName: string, options?: CopyObjectOptions): Promise<CopyAndPutMetaResult>;
+        copy(
+            name: string,
+            sourceName: string,
+            options?: CopyObjectOptions,
+        ): Promise<CopyAndPutMetaResult>;
 
-        putMeta(name: string, meta: UserMeta, options: RequestOptions): Promise<CopyAndPutMetaResult>;
+        putMeta(
+            name: string,
+            meta: UserMeta,
+            options: RequestOptions,
+        ): Promise<CopyAndPutMetaResult>;
 
-        deleteMulti(names: string[], options?: DeleteMultiOptions): Promise<DeleteMultiResult>;
+        deleteMulti(
+            names: string[],
+            options?: DeleteMultiOptions,
+        ): Promise<DeleteMultiResult>;
 
         signatureUrl(name: string, options?: SignatureUrlOptions): string;
 
-        asyncSignatureUrl(name: string, options?: SignatureUrlOptions): Promise<string>;
+        asyncSignatureUrl(
+            name: string,
+            options?: SignatureUrlOptions,
+        ): Promise<string>;
 
-        putACL(name: string, acl: ACLType, options?: RequestOptions): Promise<NormalSuccessResponse>;
+        putACL(
+            name: string,
+            acl: ACLType,
+            options?: RequestOptions,
+        ): Promise<NormalSuccessResponse>;
 
-        restore(name: string, options?: RequestOptions): Promise<NormalSuccessResponse>;
+        restore(
+            name: string,
+            options?: RequestOptions,
+        ): Promise<NormalSuccessResponse>;
     }
 }
 
@@ -744,22 +791,35 @@ declare namespace OSS {
         /**
          * Get an image from the image channel.
          */
-        get(name: string, file?: any, options?: ImageGetOptions): Promise<{ content: any; res: NormalSuccessResponse }>;
+        get(
+            name: string,
+            file?: any,
+            options?: ImageGetOptions,
+        ): Promise<{ content: any; res: NormalSuccessResponse }>;
 
         /**
          * Get an image read stream.
          */
-        getStream(name: string, options?: ImageGetOptions): Promise<{ stream: any; res: NormalSuccessResponse }>;
+        getStream(
+            name: string,
+            options?: ImageGetOptions,
+        ): Promise<{ stream: any; res: NormalSuccessResponse }>;
 
         /**
          * Get a image exif info by image object name from the image channel.
          */
-        getExif(name: string, options?: RequestOptions): Promise<{ data: object; res: NormalSuccessResponse }>;
+        getExif(
+            name: string,
+            options?: RequestOptions,
+        ): Promise<{ data: object; res: NormalSuccessResponse }>;
 
         /**
          * Get a image info and exif info by image object name from the image channel.
          */
-        getInfo(name: string, options?: RequestOptions): Promise<{ data: object; res: NormalSuccessResponse }>;
+        getInfo(
+            name: string,
+            options?: RequestOptions,
+        ): Promise<{ data: object; res: NormalSuccessResponse }>;
 
         /**
          * todo
@@ -773,7 +833,10 @@ declare namespace OSS {
         /**
          * Get a style by name from the image channel.
          */
-        getStyle(name: string, options?: RequestOptions): Promise<{ data: StyleData; res: NormalSuccessResponse }>;
+        getStyle(
+            name: string,
+            options?: RequestOptions,
+        ): Promise<{ data: StyleData; res: NormalSuccessResponse }>;
 
         /**
          * Get all styles from the image channel.
@@ -783,17 +846,29 @@ declare namespace OSS {
         /**
          * todo
          */
-        deleteStyle(styleName: string, options?: RequestOptions): Promise<NormalSuccessResponse>;
+        deleteStyle(
+            styleName: string,
+            options?: RequestOptions,
+        ): Promise<NormalSuccessResponse>;
 
         /**
          * Create a signature url for directly download.
          */
-        signatureUrl(name: string, options?: { expires?: string | undefined; timeout?: string | undefined }): string;
+        signatureUrl(
+            name: string,
+            options?: {
+                expires?: string | undefined;
+                timeout?: string | undefined;
+            },
+        ): string;
 
         /**
          * Basically the same as signatureUrl, if refreshSTSToken is configured asyncSignatureUrl will refresh stsToken
          */
-        asyncSignatureUrl(name: string, options?: SignatureUrlOptions): Promise<string>;
+        asyncSignatureUrl(
+            name: string,
+            options?: SignatureUrlOptions,
+        ): Promise<string>;
     }
 }
 
@@ -806,7 +881,10 @@ declare class OSS {
     /**
      * List buckets in this account.
      */
-    listBuckets(query: OSS.ListBucketsQueryType | null, options?: OSS.RequestOptions): Promise<OSS.Bucket[]>;
+    listBuckets(
+        query: OSS.ListBucketsQueryType | null,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.Bucket[]>;
 
     /**
      * Create a new bucket.
@@ -824,7 +902,10 @@ declare class OSS {
     /**
      * Delete an empty bucket.
      */
-    deleteBucket(name: string, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    deleteBucket(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     /**
      * Get bucket information,include CreationDate、ExtranetEndpoint、IntranetEndpoint、Location、Name、StorageClass、 Owner、AccessControlList
@@ -840,19 +921,30 @@ declare class OSS {
     /**
      * Update the bucket ACL.
      */
-    putBucketACL(name: string, acl: OSS.ACLType, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    putBucketACL(
+        name: string,
+        acl: OSS.ACLType,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     /**
      * Get the bucket ACL.
      *   acl - acl settings string
      */
-    getBucketACL(name: string, options?: OSS.RequestOptions): Promise<{ acl: string; res: OSS.NormalSuccessResponse }>;
+    getBucketACL(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<{ acl: string; res: OSS.NormalSuccessResponse }>;
 
     // logging operations
     /**
      * Update the bucket logging settings. Log file will create every one hour and name format: <prefix><bucket>-YYYY-mm-DD-HH-MM-SS-UniqueString.
      */
-    putBucketLogging(name: string, prefix?: string, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    putBucketLogging(
+        name: string,
+        prefix?: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     /**
      * Get the bucket logging settings.
@@ -860,18 +952,28 @@ declare class OSS {
     getBucketLogging(
         name: string,
         options?: OSS.RequestOptions,
-    ): Promise<{ enable: boolean; prefix: string | null; res: OSS.NormalSuccessResponse }>;
+    ): Promise<{
+        enable: boolean;
+        prefix: string | null;
+        res: OSS.NormalSuccessResponse;
+    }>;
 
     /**
      * Delete the bucket logging settings.
      */
-    deleteBucketLogging(name: string, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    deleteBucketLogging(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     // Website operations
     /**
      * Set the bucket as a static website.
      */
-    putBucketWebsite(name: string, config: OSS.PutBucketWebsiteConfig): Promise<OSS.NormalSuccessResponse>;
+    putBucketWebsite(
+        name: string,
+        config: OSS.PutBucketWebsiteConfig,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     /**
      * Get the bucket website config.
@@ -879,12 +981,19 @@ declare class OSS {
     getBucketWebsite(
         name: string,
         options?: OSS.RequestOptions,
-    ): Promise<{ index: string; error: string; res: OSS.NormalSuccessResponse }>;
+    ): Promise<{
+        index: string;
+        error: string;
+        res: OSS.NormalSuccessResponse;
+    }>;
 
     /**
      * Delete the bucket website config.
      */
-    deleteBucketWebsite(name: string, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    deleteBucketWebsite(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     // referer operations
     /**
@@ -903,12 +1012,19 @@ declare class OSS {
     getBucketReferer(
         name: string,
         options?: OSS.RequestOptions,
-    ): Promise<{ allowEmpty: boolean; referers: string[]; res: OSS.NormalSuccessResponse }>;
+    ): Promise<{
+        allowEmpty: boolean;
+        referers: string[];
+        res: OSS.NormalSuccessResponse;
+    }>;
 
     /**
      * Delete the bucket request Referer white list.
      */
-    deleteBucketReferer(name: string, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    deleteBucketReferer(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     // lifecycle operations
     /**
@@ -931,7 +1047,10 @@ declare class OSS {
     /**
      * Delete the bucket object lifecycle.
      */
-    deleteBucketLifecycle(name: string, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    deleteBucketLifecycle(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     // CORS operations
     /**
@@ -946,7 +1065,9 @@ declare class OSS {
     /**
      * Get CORS rules of the bucket object.
      */
-    getBucketCORS(name: string): Promise<{ rules: OSS.CORSRule[]; res: OSS.NormalSuccessResponse }>;
+    getBucketCORS(
+        name: string,
+    ): Promise<{ rules: OSS.CORSRule[]; res: OSS.NormalSuccessResponse }>;
 
     /**
      * Delete CORS rules of the bucket object.
@@ -969,7 +1090,10 @@ declare class OSS {
     /**
      * Obtains the policy for a bucket.
      */
-    getBucketPolicy(name: string, options?: OSS.RequestOptions): Promise<OSS.GetBucketPolicyResult>;
+    getBucketPolicy(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.GetBucketPolicyResult>;
 
     /**
      * Deletes the policy added for a bucket.
@@ -986,17 +1110,27 @@ declare class OSS {
     /**
      * List objects in the bucket.
      */
-    list(query: OSS.ListObjectsQuery | null, options: OSS.RequestOptions): Promise<OSS.ListObjectResult>;
+    list(
+        query: OSS.ListObjectsQuery | null,
+        options: OSS.RequestOptions,
+    ): Promise<OSS.ListObjectResult>;
 
     /**
      * List Objects in the bucket.(V2)
      */
-    listV2(query: OSS.ListV2ObjectsQuery | null, options: OSS.RequestOptions): Promise<OSS.ListObjectResult>;
+    listV2(
+        query: OSS.ListV2ObjectsQuery | null,
+        options: OSS.RequestOptions,
+    ): Promise<OSS.ListObjectResult>;
 
     /**
      * Add an object to the bucket.
      */
-    put(name: string, file: any, options?: OSS.PutObjectOptions): Promise<OSS.PutObjectResult>;
+    put(
+        name: string,
+        file: any,
+        options?: OSS.PutObjectOptions,
+    ): Promise<OSS.PutObjectResult>;
 
     /**
      * Add a stream object to the bucket.
@@ -1010,7 +1144,11 @@ declare class OSS {
     /**
      * Append an object to the bucket, it's almost same as put, but it can add content to existing object rather than override it.
      */
-    append(name: string, file: any, options?: OSS.AppendObjectOptions): Promise<OSS.AppendObjectResult>;
+    append(
+        name: string,
+        file: any,
+        options?: OSS.AppendObjectOptions,
+    ): Promise<OSS.AppendObjectResult>;
 
     /**
      * Get the Object url. If provide baseUrl, will use baseUrl instead the default endpoint.
@@ -1025,27 +1163,44 @@ declare class OSS {
     /**
      * Head an object and get the meta info.
      */
-    head(name: string, options?: OSS.HeadObjectOptions): Promise<OSS.HeadObjectResult>;
+    head(
+        name: string,
+        options?: OSS.HeadObjectOptions,
+    ): Promise<OSS.HeadObjectResult>;
 
     /**
      * Get an object from the bucket.
      */
-    get(name: string, file?: any, options?: OSS.GetObjectOptions): Promise<OSS.GetObjectResult>;
+    get(
+        name: string,
+        file?: any,
+        options?: OSS.GetObjectOptions,
+    ): Promise<OSS.GetObjectResult>;
 
     /**
      * Get an object read stream.
      */
-    getStream(name?: string, options?: OSS.GetStreamOptions): Promise<OSS.GetStreamResult>;
+    getStream(
+        name?: string,
+        options?: OSS.GetStreamOptions,
+    ): Promise<OSS.GetStreamResult>;
 
     /**
      * Delete an object from the bucket.
      */
-    delete(name: string, options?: OSS.RequestOptions): Promise<OSS.DeleteResult>;
+    delete(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.DeleteResult>;
 
     /**
      * Copy an object from sourceName to name.
      */
-    copy(name: string, sourceName: string, options?: OSS.CopyObjectOptions): Promise<OSS.CopyAndPutMetaResult>;
+    copy(
+        name: string,
+        sourceName: string,
+        options?: OSS.CopyObjectOptions,
+    ): Promise<OSS.CopyAndPutMetaResult>;
     copy(
         name: string,
         sourceName: string,
@@ -1056,12 +1211,19 @@ declare class OSS {
     /**
      * Set an exists object meta.
      */
-    putMeta(name: string, meta: OSS.UserMeta, options: OSS.RequestOptions): Promise<OSS.CopyAndPutMetaResult>;
+    putMeta(
+        name: string,
+        meta: OSS.UserMeta,
+        options: OSS.RequestOptions,
+    ): Promise<OSS.CopyAndPutMetaResult>;
 
     /**
      * Delete multi objects in one request.
      */
-    deleteMulti(names: string[], options?: OSS.DeleteMultiOptions): Promise<OSS.DeleteMultiResult>;
+    deleteMulti(
+        names: string[],
+        options?: OSS.DeleteMultiOptions,
+    ): Promise<OSS.DeleteMultiResult>;
 
     /**
      * Create a signature url for download or upload object. When you put object with signatureUrl ,you need to pass Content-Type.Please look at the example.
@@ -1071,27 +1233,43 @@ declare class OSS {
     /**
      * Basically the same as signatureUrl, if refreshSTSToken is configured asyncSignatureUrl will refresh stsToken
      */
-    asyncSignatureUrl(name: string, options?: OSS.SignatureUrlOptions): Promise<string>;
+    asyncSignatureUrl(
+        name: string,
+        options?: OSS.SignatureUrlOptions,
+    ): Promise<string>;
 
     /**
      * Set object's ACL.
      */
-    putACL(name: string, acl: OSS.ACLType, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    putACL(
+        name: string,
+        acl: OSS.ACLType,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     /**
      * Get object's ACL.
      */
-    getACL(name: string, options?: OSS.RequestOptions): Promise<OSS.GetACLResult>;
+    getACL(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.GetACLResult>;
 
     /**
      * Restore Object.
      */
-    restore(name: string, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    restore(
+        name: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     /**
      * multi upload
      */
-    initMultipartUpload(name: string, options?: OSS.InitMultipartUploadOptions): Promise<OSS.InitMultipartUploadResult>;
+    initMultipartUpload(
+        name: string,
+        options?: OSS.InitMultipartUploadOptions,
+    ): Promise<OSS.InitMultipartUploadResult>;
 
     /**
      * After initiating a Multipart Upload event, you can upload data in parts based on the specified object name and Upload ID.
@@ -1132,7 +1310,11 @@ declare class OSS {
     /**
      * Upload file with OSS multipart.
      */
-    multipartUpload(name: string, file: any, options: OSS.MultipartUploadOptions): Promise<OSS.MultipartUploadResult>;
+    multipartUpload(
+        name: string,
+        file: any,
+        options: OSS.MultipartUploadOptions,
+    ): Promise<OSS.MultipartUploadResult>;
 
     /**
      * Copy file with OSS multipart.
@@ -1158,7 +1340,10 @@ declare class OSS {
     /**
      * List on-going multipart uploads, i.e.: those not completed and not aborted.
      */
-    listUploads(query: OSS.ListUploadsQuery, options?: OSS.RequestOptions): Promise<OSS.ListUploadsResult>;
+    listUploads(
+        query: OSS.ListUploadsQuery,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.ListUploadsResult>;
 
     /**
      * Abort a multipart upload for object.
@@ -1183,7 +1368,11 @@ declare class OSS {
     /**
      * Create a live channel.
      */
-    putChannel(id: string, conf: OSS.PutChannelConf, options?: OSS.RequestOptions): Promise<OSS.PutChannelResult>;
+    putChannel(
+        id: string,
+        conf: OSS.PutChannelConf,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.PutChannelResult>;
 
     /**
      * Get live channel info.
@@ -1196,27 +1385,43 @@ declare class OSS {
     /**
      * Delete a live channel.
      */
-    deleteChannel(id: string, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    deleteChannel(
+        id: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     /**
      * Change the live channel status.
      */
-    putChannelStatus(id: string, status?: string, options?: OSS.RequestOptions): Promise<OSS.NormalSuccessResponse>;
+    putChannelStatus(
+        id: string,
+        status?: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.NormalSuccessResponse>;
 
     /**
      * Get the live channel status.
      */
-    getChannelStatus(id: string, options?: OSS.RequestOptions): Promise<OSS.GetChannelResult>;
+    getChannelStatus(
+        id: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.GetChannelResult>;
 
     /**
      * List channels.
      */
-    listChannels(query: OSS.ListChannelsQuery, options?: OSS.RequestOptions): Promise<OSS.ListChannelsResult>;
+    listChannels(
+        query: OSS.ListChannelsQuery,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.ListChannelsResult>;
 
     /**
      * Get the live channel history.
      */
-    getChannelHistory(id: string, options?: OSS.RequestOptions): Promise<OSS.ChannelHistoryResult>;
+    getChannelHistory(
+        id: string,
+        options?: OSS.RequestOptions,
+    ): Promise<OSS.ChannelHistoryResult>;
 
     /**
      * Create a VOD playlist for the channel.

@@ -61,7 +61,11 @@ declare namespace nv {
     }
 
     interface Nvd3TooltipStatic {
-        show(leftTop: [number, number], content: string, gravity?: string): void; // todo sort out use on nv.tooltip.
+        show(
+            leftTop: [number, number],
+            content: string,
+            gravity?: string,
+        ): void; // todo sort out use on nv.tooltip.
         cleanup(): void; // todo sort out use on nv.tooltip.
     }
 
@@ -144,7 +148,9 @@ declare namespace nv {
         showYAxis(): boolean;
         showYAxis(value: boolean): this;
         brushExtent(): [number, number] | [[number, number], [number, number]];
-        brushExtent(value: [number, number] | [[number, number], [number, number]]): this;
+        brushExtent(
+            value: [number, number] | [[number, number], [number, number]],
+        ): this;
         duration(): number;
         duration(value: number): this;
         xTickFormat(): (d: any) => string;
@@ -187,7 +193,11 @@ declare namespace nv {
         range(): number[];
         range(range: number[]): this;
         rangeBand(): number;
-        rangeBands(interval: [number, number], padding?: number, outerPadding?: number): this;
+        rangeBands(
+            interval: [number, number],
+            padding?: number,
+            outerPadding?: number,
+        ): this;
         /*Rotates the X axis labels by the specified degree.*/
         rotateLabels(): number;
         /*Rotates the X axis labels by the specified degree.*/
@@ -2040,7 +2050,9 @@ declare namespace nv {
         tooltip: Tooltip;
 
         brushExtent(): [number, number] | [[number, number], [number, number]];
-        brushExtent(value: [number, number] | [[number, number], [number, number]]): this;
+        brushExtent(
+            value: [number, number] | [[number, number], [number, number]],
+        ): this;
         clearHighlights(): this;
         /*If true, masks lines within the X and Y scales using a clip-path*/
         clipEdge(): boolean;
@@ -2230,7 +2242,9 @@ declare namespace nv {
         tooltip: Tooltip;
 
         brushExtent(): [number, number] | [[number, number], [number, number]];
-        brushExtent(value: [number, number] | [[number, number], [number, number]]): this;
+        brushExtent(
+            value: [number, number] | [[number, number], [number, number]],
+        ): this;
         clearHighlights(): this;
         /*If true, masks lines within the X and Y scales using a clip-path*/
         clipEdge(): boolean;
@@ -3381,7 +3395,9 @@ declare namespace nv {
         showControls(): boolean;
         showControls(value: boolean): this;
         brushExtent(): [number, number] | [[number, number], [number, number]];
-        brushExtent(value: [number, number] | [[number, number], [number, number]]): this;
+        brushExtent(
+            value: [number, number] | [[number, number], [number, number]],
+        ): this;
     }
 
     interface SunburstChart extends Sunburst, Chart {
@@ -3453,8 +3469,13 @@ declare namespace nv {
         /*stores some statistics and potential error messages*/
         logs: any;
 
-        addGraph<TChart extends Nvd3Element>(factory: ChartFactory<TChart>): void;
-        addGraph<TChart extends Nvd3Element>(generate: () => TChart, callBack?: (chart: TChart) => void): void;
+        addGraph<TChart extends Nvd3Element>(
+            factory: ChartFactory<TChart>,
+        ): void;
+        addGraph<TChart extends Nvd3Element>(
+            generate: () => TChart,
+            callBack?: (chart: TChart) => void,
+        ): void;
 
         log(topic: string, value?: string): string; // returns last argument
         log(arg: any[]): any; // returns last argument

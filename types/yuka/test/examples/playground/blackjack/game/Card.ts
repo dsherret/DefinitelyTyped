@@ -1,4 +1,17 @@
-export type CardType = "A" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "J" | "Q" | "K";
+export type CardType =
+    | "A"
+    | "2"
+    | "3"
+    | "4"
+    | "5"
+    | "6"
+    | "7"
+    | "8"
+    | "9"
+    | "10"
+    | "J"
+    | "Q"
+    | "K";
 
 /**
  * Represents a French-suited playing card.
@@ -15,7 +28,7 @@ export class Card {
     }
 
     getColor() {
-        return (this.suit === "♣" || this.suit === "♠") ? "black" : "red";
+        return this.suit === "♣" || this.suit === "♠" ? "black" : "red";
     }
 
     getMarkup() {

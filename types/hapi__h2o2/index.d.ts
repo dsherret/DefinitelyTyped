@@ -3,7 +3,14 @@
 import { Boom } from "@hapi/boom";
 import { Agent, IncomingMessage } from "http";
 import Wreck = require("@hapi/wreck");
-import { Lifecycle, Plugin, Request, ResponseObject, ResponseToolkit, RouteOptions } from "@hapi/hapi";
+import {
+    Lifecycle,
+    Plugin,
+    Request,
+    ResponseObject,
+    ResponseToolkit,
+    RouteOptions,
+} from "@hapi/hapi";
 
 declare namespace h2o2 {
     /**
@@ -117,12 +124,19 @@ declare namespace h2o2 {
          * together with `host`, `port`, `protocol`, or `uri`.
          * @param request - is the incoming request object.
          */
-        mapUri?: ((this: ProxyHandlerOptions, request: Request) => Promise<ProxyTarget>) | undefined;
+        mapUri?:
+            | ((
+                  this: ProxyHandlerOptions,
+                  request: Request,
+              ) => Promise<ProxyTarget>)
+            | undefined;
         /**
          * a custom function which is passed the upstream request.
          * @param req - the [wreck] (https://github.com/hapijs/wreck) request to the upstream server.
          */
-        onRequest?: ((req: typeof Wreck) => Promise<IncomingMessage>) | undefined;
+        onRequest?:
+            | ((req: typeof Wreck) => Promise<IncomingMessage>)
+            | undefined;
         /**
          * a custom function for processing the response from the upstream
          * service before sending to the client. Useful for custom error
@@ -143,14 +157,14 @@ declare namespace h2o2 {
          */
         onResponse?:
             | ((
-                this: RouteOptions,
-                err: null | Boom,
-                res: IncomingMessage,
-                req: Request,
-                h: ResponseToolkit,
-                settings: ProxyHandlerOptions,
-                ttl: number,
-            ) => Lifecycle.ReturnValue)
+                  this: RouteOptions,
+                  err: null | Boom,
+                  res: IncomingMessage,
+                  req: Request,
+                  h: ResponseToolkit,
+                  settings: ProxyHandlerOptions,
+                  ttl: number,
+              ) => Lifecycle.ReturnValue)
             | undefined;
         /**
          * if set to 'upstream', applies the upstream response caching policy to

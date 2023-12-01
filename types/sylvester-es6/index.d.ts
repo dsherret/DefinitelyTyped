@@ -609,14 +609,21 @@ export class LineSegment {
     /**
      * Sets the initial point of the line segments
      */
-    setPoints(startPoint: Vector | number[], endPoint: Vector | number[]): LineSegment | null;
+    setPoints(
+        startPoint: Vector | number[],
+        endPoint: Vector | number[],
+    ): LineSegment | null;
 }
 
 export class Plane {
     /**
      * Constructor function.
      */
-    constructor(anchor: number[] | Vector, v1: number[] | Vector, v2?: number[] | Vector);
+    constructor(
+        anchor: number[] | Vector,
+        v1: number[] | Vector,
+        v2?: number[] | Vector,
+    );
 
     static XY: Plane;
     static YZ: Plane;
@@ -710,7 +717,11 @@ export class Plane {
      * Sets the anchor point and normal to the plane. The normal is calculated by assuming the three points
      * should lie in the same plane. Normal vector is normalised before storage.
      */
-    setVectors(anchor: number[] | Vector, v1: number[] | Vector, v2?: number[] | Vector): Plane;
+    setVectors(
+        anchor: number[] | Vector,
+        v1: number[] | Vector,
+        v2?: number[] | Vector,
+    ): Plane;
 }
 
 export class LinkedListNode {

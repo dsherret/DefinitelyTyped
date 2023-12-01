@@ -17,4 +17,7 @@ gcd([1, 2, 3] as number[]);
 // $ExpectType number | null
 gcd(...([1, 2, 3] as number[]));
 // $ExpectType number | null
-gcd([{ foo: 1 }, { foo: 2 }, { foo: 3 }] as Array<{ foo: number }>, ({ foo }) => foo);
+gcd(
+    [{ foo: 1 }, { foo: 2 }, { foo: 3 }] as Array<{ foo: number }>,
+    ({ foo }) => foo,
+);

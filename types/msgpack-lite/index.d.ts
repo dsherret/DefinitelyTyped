@@ -10,17 +10,24 @@ export function encode(input: any, options?: EncoderOptions): Buffer;
 /**
  * decode from MessagePack to JS Object
  */
-export function decode(input: Buffer | Uint8Array | number[], options?: DecoderOptions): any;
+export function decode(
+    input: Buffer | Uint8Array | number[],
+    options?: DecoderOptions,
+): any;
 
 /**
  * create a stream that encodes from JS Object to MessagePack
  */
-export function createEncodeStream(options?: EncoderOptions & stream.TransformOptions): EncodeStream;
+export function createEncodeStream(
+    options?: EncoderOptions & stream.TransformOptions,
+): EncodeStream;
 
 /**
  * create a stream that decodes from MessagePack (Buffer) to JS Object
  */
-export function createDecodeStream(options?: DecoderOptions & stream.TransformOptions): DecodeStream;
+export function createDecodeStream(
+    options?: DecoderOptions & stream.TransformOptions,
+): DecodeStream;
 
 /**
  * Codecs allow for Custom Extension Types
@@ -50,7 +57,7 @@ export interface Codec {
      */
     addExtPacker<T>(
         etype: number,
-        Class: new(...args: any[]) => T,
+        Class: new (...args: any[]) => T,
         packer: (t: T) => Buffer | Uint8Array,
     ): void;
 
@@ -60,7 +67,10 @@ export interface Codec {
      * @param etype an integer within the range of 0 and 127 (0x0 and 0x7F)
      * @param unpacker a function that converts bytes to an instance of T
      */
-    addExtUnpacker<T>(etype: number, unpacker: (data: Buffer | Uint8Array) => T): void;
+    addExtUnpacker<T>(
+        etype: number,
+        unpacker: (data: Buffer | Uint8Array) => T,
+    ): void;
 }
 
 export interface Encoder {

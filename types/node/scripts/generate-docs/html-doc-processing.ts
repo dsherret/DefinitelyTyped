@@ -1,4 +1,8 @@
-import { NodeHtmlMarkdown, TranslatorConfigFactory, TranslatorConfigObject } from "node-html-markdown";
+import {
+    NodeHtmlMarkdown,
+    TranslatorConfigFactory,
+    TranslatorConfigObject,
+} from "node-html-markdown";
 import { HTMLElement, Node } from "node-html-parser";
 
 /**
@@ -16,7 +20,8 @@ function getPreviousSibling(node: Node): Node | undefined {
 
 function padNode(node: HTMLElement): [string, string] {
     const pad: [string, string] = ["", ""];
-    const prevSiblingLastChar = getPreviousSibling(node)?.textContent?.slice(-1) ?? "";
+    const prevSiblingLastChar =
+        getPreviousSibling(node)?.textContent?.slice(-1) ?? "";
     if (prevSiblingLastChar.match(/[a-z]/i)) {
         pad[0] = " ";
     }
@@ -99,16 +104,22 @@ interface DocContext {
 
 export function fixupLocalLinks(text: string, moduleName: string): string {
     // handle weird "[`prefix.fnName()`][]" links
-    return text.replaceAll(/\[`(?:(.*?)\.)?(.*?)(\(\))?`\]\[\]/g, (_all, prefix: string | null, name: string) => {
-        if (!prefix || prefix === moduleName) {
-            return `{@link ${name}}`;
-        }
-        return `\`${name}\``;
-    })
-        // handle weird "[`ref` name][]" links
-        .replaceAll(/\[`(.*?)` (.*?)\]\[\]/g, "`$1` $2")
-        // handle weird "[ref][]" links
-        .replaceAll(/\[(.*?)\]\[\]/g, "`$1`");
+    return (
+        text
+            .replaceAll(
+                /\[`(?:(.*?)\.)?(.*?)(\(\))?`\]\[\]/g,
+                (_all, prefix: string | null, name: string) => {
+                    if (!prefix || prefix === moduleName) {
+                        return `{@link ${name}}`;
+                    }
+                    return `\`${name}\``;
+                },
+            )
+            // handle weird "[`ref` name][]" links
+            .replaceAll(/\[`(.*?)` (.*?)\]\[\]/g, "`$1` $2")
+            // handle weird "[ref][]" links
+            .replaceAll(/\[(.*?)\]\[\]/g, "`$1`")
+    );
 }
 
 export function fixupHtmlDocs(input: string, context: DocContext): string {
@@ -116,9 +127,12 @@ export function fixupHtmlDocs(input: string, context: DocContext): string {
 
     // This is not fast but it will do, also he is definitely coming for us now.
     const hasMultiExample =
-        /<pre><code class="language-mjs">.*?<\/code><\/pre>\n+<pre><code class="language-cjs">.*?<\/code><\/pre>/igms;
+        /<pre><code class="language-mjs">.*?<\/code><\/pre>\n+<pre><code class="language-cjs">.*?<\/code><\/pre>/gims;
     if (hasMultiExample) {
-        input = input.replace(/<pre><code class="language-cjs">.*?<\/code><\/pre>/igms, "");
+        input = input.replace(
+            /<pre><code class="language-cjs">.*?<\/code><\/pre>/gims,
+            "",
+        );
     }
 
     // workaround markdown generation bug
@@ -127,7 +141,11 @@ export function fixupHtmlDocs(input: string, context: DocContext): string {
     input = input.replaceAll(/language\-[mc]js/g, "language-js");
     // fixup breaking comments
     input = input.replace(/\/\*(.*?)\*\//g, "//$1");
-    let output = NodeHtmlMarkdown.translate(input, {}, makeCustomTranslators(context));
+    let output = NodeHtmlMarkdown.translate(
+        input,
+        {},
+        makeCustomTranslators(context),
+    );
     // remove redundant escaping of `<` (currently only used in code blocks)
     output = output.replaceAll("&#x3C;", "<");
     return output;

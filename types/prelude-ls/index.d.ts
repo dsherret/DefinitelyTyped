@@ -31,18 +31,33 @@ declare namespace PreludeLS {
     export function unique<A>(xs: A[]): A[];
     export function uniqueBy<A, B>(f: (x: A) => B): (xs: A[]) => A[];
     export function uniqueBy<A, B>(f: (x: A) => B, xs: A[]): A[];
-    export function fold<A, B>(f: (x: A) => (y: B) => A): (memo: A) => (xs: B[]) => A;
-    export function fold<A, B>(f: (x: A) => (y: B) => A, memo: A): (xs: B[]) => A;
+    export function fold<A, B>(
+        f: (x: A) => (y: B) => A,
+    ): (memo: A) => (xs: B[]) => A;
+    export function fold<A, B>(
+        f: (x: A) => (y: B) => A,
+        memo: A,
+    ): (xs: B[]) => A;
     export function fold<A, B>(f: (x: A) => (y: B) => A, memo: A, xs: B[]): A;
-    export function foldl<A, B>(f: (x: A) => (y: B) => A): (memo: A) => (xs: B[]) => A;
-    export function foldl<A, B>(f: (x: A) => (y: B) => A, memo: A): (xs: B[]) => A;
+    export function foldl<A, B>(
+        f: (x: A) => (y: B) => A,
+    ): (memo: A) => (xs: B[]) => A;
+    export function foldl<A, B>(
+        f: (x: A) => (y: B) => A,
+        memo: A,
+    ): (xs: B[]) => A;
     export function foldl<A, B>(f: (x: A) => (y: B) => A, memo: A, xs: B[]): A;
     export function fold1<A>(f: (x: A) => (y: A) => A): (xs: A[]) => A;
     export function fold1<A>(f: (x: A) => (y: A) => A, xs: A[]): A;
     export function foldl1<A>(f: (x: A) => (y: A) => A): (xs: A[]) => A;
     export function foldl1<A>(f: (x: A) => (y: A) => A, xs: A[]): A;
-    export function foldr<A, B>(f: (x: A) => (y: B) => B): (memo: B) => (xs: A[]) => B;
-    export function foldr<A, B>(f: (x: A) => (y: B) => B, memo: B): (xs: A[]) => B;
+    export function foldr<A, B>(
+        f: (x: A) => (y: B) => B,
+    ): (memo: B) => (xs: A[]) => B;
+    export function foldr<A, B>(
+        f: (x: A) => (y: B) => B,
+        memo: B,
+    ): (xs: A[]) => B;
     export function foldr<A, B>(f: (x: A) => (y: B) => B, memo: B, xs: A[]): B;
     export function foldr1<A>(f: (x: A) => (y: A) => A): (xs: A[]) => A;
     export function foldr1<A>(f: (x: A) => (y: A) => A, xs: A[]): A;
@@ -66,7 +81,9 @@ declare namespace PreludeLS {
     export function all<A>(f: (x: A) => boolean): (xs: A[]) => boolean;
     export function all<A>(f: (x: A) => boolean, xs: A[]): boolean;
     export function sort<A>(xs: A[]): A[];
-    export function sortWith<A>(f: (x: A) => (y: A) => number): (xs: A[]) => A[];
+    export function sortWith<A>(
+        f: (x: A) => (y: A) => number,
+    ): (xs: A[]) => A[];
     export function sortWith<A>(f: (x: A) => (y: A) => number, xs: A[]): A[];
     export function sortBy<A, B>(f: (x: A) => B): (xs: A[]) => A[];
     export function sortBy<A, B>(f: (x: A) => B, xs: A[]): A[];
@@ -79,19 +96,42 @@ declare namespace PreludeLS {
     export function maximumBy<A, B>(f: (x: A) => B, xs: A[]): A;
     export function minimumBy<A, B>(f: (x: A) => B): (xs: A[]) => A;
     export function minimumBy<A, B>(f: (x: A) => B, xs: A[]): A;
-    export function scan<A, B>(f: (x: A) => (y: B) => A): (memo: A) => (xs: B[]) => A[];
-    export function scan<A, B>(f: (x: A) => (y: B) => A, memo: A): (xs: B[]) => A[];
+    export function scan<A, B>(
+        f: (x: A) => (y: B) => A,
+    ): (memo: A) => (xs: B[]) => A[];
+    export function scan<A, B>(
+        f: (x: A) => (y: B) => A,
+        memo: A,
+    ): (xs: B[]) => A[];
     export function scan<A, B>(f: (x: A) => (y: B) => A, memo: A, xs: B[]): A[];
-    export function scanl<A, B>(f: (x: A) => (y: B) => A): (memo: A) => (xs: B[]) => A[];
-    export function scanl<A, B>(f: (x: A) => (y: B) => A, memo: A): (xs: B[]) => A[];
-    export function scanl<A, B>(f: (x: A) => (y: B) => A, memo: A, xs: B[]): A[];
+    export function scanl<A, B>(
+        f: (x: A) => (y: B) => A,
+    ): (memo: A) => (xs: B[]) => A[];
+    export function scanl<A, B>(
+        f: (x: A) => (y: B) => A,
+        memo: A,
+    ): (xs: B[]) => A[];
+    export function scanl<A, B>(
+        f: (x: A) => (y: B) => A,
+        memo: A,
+        xs: B[],
+    ): A[];
     export function scan1<A>(f: (x: A) => (y: A) => A): (xs: A[]) => A[];
     export function scan1<A>(f: (x: A) => (y: A) => A, xs: A[]): A[];
     export function scanl1<A>(f: (x: A) => (y: A) => A): (xs: A[]) => A[];
     export function scanl1<A>(f: (x: A) => (y: A) => A, xs: A[]): A[];
-    export function scanr<A, B>(f: (x: A) => (y: B) => B): (memo: B) => (xs: A[]) => B[];
-    export function scanr<A, B>(f: (x: A) => (y: B) => B, memo: B): (xs: A[]) => B[];
-    export function scanr<A, B>(f: (x: A) => (y: B) => B, memo: B, xs: A[]): B[];
+    export function scanr<A, B>(
+        f: (x: A) => (y: B) => B,
+    ): (memo: B) => (xs: A[]) => B[];
+    export function scanr<A, B>(
+        f: (x: A) => (y: B) => B,
+        memo: B,
+    ): (xs: A[]) => B[];
+    export function scanr<A, B>(
+        f: (x: A) => (y: B) => B,
+        memo: B,
+        xs: A[],
+    ): B[];
     export function scanr1<A>(f: (x: A) => (y: A) => A): (xs: A[]) => A[];
     export function scanr1<A>(f: (x: A) => (y: A) => A, xs: A[]): A[];
     export function slice<A>(x: number): (y: number) => (xs: A[]) => A[];
@@ -113,9 +153,18 @@ declare namespace PreludeLS {
     export function breakList<A>(p: (x: A) => boolean, xs: A[]): [A[], A[]];
     export function zip<A, B>(xs: A[]): (ys: B[]) => Array<[A, B]>;
     export function zip<A, B>(xs: A[], ys: B[]): Array<[A, B]>;
-    export function zipWith<A, B, C>(f: (x: A) => (y: B) => C): (xs: A[]) => (ys: B[]) => C[];
-    export function zipWith<A, B, C>(f: (x: A) => (y: B) => C, xs: A[]): (ys: B[]) => C[];
-    export function zipWith<A, B, C>(f: (x: A) => (y: B) => C, xs: A[], ys: B[]): C[];
+    export function zipWith<A, B, C>(
+        f: (x: A) => (y: B) => C,
+    ): (xs: A[]) => (ys: B[]) => C[];
+    export function zipWith<A, B, C>(
+        f: (x: A) => (y: B) => C,
+        xs: A[],
+    ): (ys: B[]) => C[];
+    export function zipWith<A, B, C>(
+        f: (x: A) => (y: B) => C,
+        xs: A[],
+        ys: B[],
+    ): C[];
     export function zipAll<A>(...xss: A[][]): A[][];
     export function zipAllWith<A, B>(f: (...xs: A[]) => B, ...xss: A[][]): B[];
     export function at<A>(n: number): (xs: A[]) => A;
@@ -135,92 +184,230 @@ declare namespace PreludeLS {
     export function keys<A>(object: { [key: number]: A }): number[];
     export function values<A>(object: { [key: string]: A }): A[];
     export function values<A>(object: { [key: number]: A }): A[];
-    export function pairsToObj<A>(object: Array<[string, A]>): { [key: string]: A };
-    export function pairsToObj<A>(object: Array<[number, A]>): { [key: number]: A };
-    export function objToPairs<A>(object: { [key: string]: A }): Array<[string, A]>;
-    export function objToPairs<A>(object: { [key: number]: A }): Array<[number, A]>;
-    export function listsToObj<A>(keys: string[]): (values: A[]) => { [key: string]: A };
-    export function listsToObj<A>(keys: string[], values: A[]): { [key: string]: A };
-    export function listsToObj<A>(keys: number[]): (values: A[]) => { [key: number]: A };
-    export function listsToObj<A>(keys: number[], values: A[]): { [key: number]: A };
-    export function objToLists<A>(object: { [key: string]: A }): [string[], A[]];
-    export function objToLists<A>(object: { [key: number]: A }): [number[], A[]];
+    export function pairsToObj<A>(object: Array<[string, A]>): {
+        [key: string]: A;
+    };
+    export function pairsToObj<A>(object: Array<[number, A]>): {
+        [key: number]: A;
+    };
+    export function objToPairs<A>(object: {
+        [key: string]: A;
+    }): Array<[string, A]>;
+    export function objToPairs<A>(object: {
+        [key: number]: A;
+    }): Array<[number, A]>;
+    export function listsToObj<A>(
+        keys: string[],
+    ): (values: A[]) => { [key: string]: A };
+    export function listsToObj<A>(
+        keys: string[],
+        values: A[],
+    ): { [key: string]: A };
+    export function listsToObj<A>(
+        keys: number[],
+    ): (values: A[]) => { [key: number]: A };
+    export function listsToObj<A>(
+        keys: number[],
+        values: A[],
+    ): { [key: number]: A };
+    export function objToLists<A>(object: {
+        [key: string]: A;
+    }): [string[], A[]];
+    export function objToLists<A>(object: {
+        [key: number]: A;
+    }): [number[], A[]];
     export function empty<A>(object: any): boolean;
-    export function each<A>(f: (x: A) => void): (object: { [key: string]: A }) => { [key: string]: A };
-    export function each<A>(f: (x: A) => void, object: { [key: string]: A }): { [key: string]: A };
-    export function each<A>(f: (x: A) => void): (object: { [key: number]: A }) => { [key: number]: A };
-    export function each<A>(f: (x: A) => void, object: { [key: number]: A }): { [key: number]: A };
-    export function map<A, B>(f: (x: A) => B): (object: { [key: string]: A }) => { [key: string]: B };
-    export function map<A, B>(f: (x: A) => B, object: { [key: string]: A }): { [key: string]: B };
-    export function map<A, B>(f: (x: A) => B): (object: { [key: number]: A }) => { [key: number]: B };
-    export function map<A, B>(f: (x: A) => B, object: { [key: number]: A }): { [key: number]: B };
-    export function compact<A>(object: { [key: string]: A }): { [key: string]: A };
-    export function compact<A>(object: { [key: number]: A }): { [key: number]: A };
-    export function filter<A>(f: (x: A) => boolean): (object: { [key: string]: A }) => { [key: string]: A };
-    export function filter<A>(f: (x: A) => boolean, object: { [key: string]: A }): { [key: string]: A };
-    export function filter<A>(f: (x: A) => boolean): (object: { [key: number]: A }) => { [key: number]: A };
-    export function filter<A>(f: (x: A) => boolean, object: { [key: number]: A }): { [key: number]: A };
-    export function reject<A>(f: (x: A) => boolean): (object: { [key: string]: A }) => { [key: string]: A };
-    export function reject<A>(f: (x: A) => boolean, object: { [key: string]: A }): { [key: string]: A };
-    export function reject<A>(f: (x: A) => boolean): (object: { [key: number]: A }) => { [key: number]: A };
-    export function reject<A>(f: (x: A) => boolean, object: { [key: number]: A }): { [key: number]: A };
+    export function each<A>(
+        f: (x: A) => void,
+    ): (object: { [key: string]: A }) => { [key: string]: A };
+    export function each<A>(
+        f: (x: A) => void,
+        object: { [key: string]: A },
+    ): { [key: string]: A };
+    export function each<A>(
+        f: (x: A) => void,
+    ): (object: { [key: number]: A }) => { [key: number]: A };
+    export function each<A>(
+        f: (x: A) => void,
+        object: { [key: number]: A },
+    ): { [key: number]: A };
+    export function map<A, B>(
+        f: (x: A) => B,
+    ): (object: { [key: string]: A }) => { [key: string]: B };
+    export function map<A, B>(
+        f: (x: A) => B,
+        object: { [key: string]: A },
+    ): { [key: string]: B };
+    export function map<A, B>(
+        f: (x: A) => B,
+    ): (object: { [key: number]: A }) => { [key: number]: B };
+    export function map<A, B>(
+        f: (x: A) => B,
+        object: { [key: number]: A },
+    ): { [key: number]: B };
+    export function compact<A>(object: { [key: string]: A }): {
+        [key: string]: A;
+    };
+    export function compact<A>(object: { [key: number]: A }): {
+        [key: number]: A;
+    };
+    export function filter<A>(
+        f: (x: A) => boolean,
+    ): (object: { [key: string]: A }) => { [key: string]: A };
+    export function filter<A>(
+        f: (x: A) => boolean,
+        object: { [key: string]: A },
+    ): { [key: string]: A };
+    export function filter<A>(
+        f: (x: A) => boolean,
+    ): (object: { [key: number]: A }) => { [key: number]: A };
+    export function filter<A>(
+        f: (x: A) => boolean,
+        object: { [key: number]: A },
+    ): { [key: number]: A };
+    export function reject<A>(
+        f: (x: A) => boolean,
+    ): (object: { [key: string]: A }) => { [key: string]: A };
+    export function reject<A>(
+        f: (x: A) => boolean,
+        object: { [key: string]: A },
+    ): { [key: string]: A };
+    export function reject<A>(
+        f: (x: A) => boolean,
+    ): (object: { [key: number]: A }) => { [key: number]: A };
+    export function reject<A>(
+        f: (x: A) => boolean,
+        object: { [key: number]: A },
+    ): { [key: number]: A };
     export function partition<A>(
         f: (x: A) => boolean,
-    ): (object: { [key: string]: A }) => [{ [key: string]: A }, { [key: string]: A }];
+    ): (object: {
+        [key: string]: A;
+    }) => [{ [key: string]: A }, { [key: string]: A }];
     export function partition<A>(
         f: (x: A) => boolean,
         object: { [key: string]: A },
     ): [{ [key: string]: A }, { [key: string]: A }];
     export function partition<A>(
         f: (x: A) => boolean,
-    ): (object: { [key: number]: A }) => [{ [key: number]: A }, { [key: number]: A }];
+    ): (object: {
+        [key: number]: A;
+    }) => [{ [key: number]: A }, { [key: number]: A }];
     export function partition<A>(
         f: (x: A) => boolean,
         object: { [key: number]: A },
     ): [{ [key: number]: A }, { [key: number]: A }];
-    export function find<A>(f: (x: A) => boolean): (object: { [key: string]: A }) => A;
-    export function find<A>(f: (x: A) => boolean, object: { [key: string]: A }): A;
-    export function find<A>(f: (x: A) => boolean): (object: { [key: number]: A }) => A;
-    export function find<A>(f: (x: A) => boolean, object: { [key: number]: A }): A;
+    export function find<A>(
+        f: (x: A) => boolean,
+    ): (object: { [key: string]: A }) => A;
+    export function find<A>(
+        f: (x: A) => boolean,
+        object: { [key: string]: A },
+    ): A;
+    export function find<A>(
+        f: (x: A) => boolean,
+    ): (object: { [key: number]: A }) => A;
+    export function find<A>(
+        f: (x: A) => boolean,
+        object: { [key: number]: A },
+    ): A;
 
     export namespace Obj {
         export function empty<A>(object: any): boolean;
-        export function each<A>(f: (x: A) => void): (object: { [key: string]: A }) => { [key: string]: A };
-        export function each<A>(f: (x: A) => void, object: { [key: string]: A }): { [key: string]: A };
-        export function each<A>(f: (x: A) => void): (object: { [key: number]: A }) => { [key: number]: A };
-        export function each<A>(f: (x: A) => void, object: { [key: number]: A }): { [key: number]: A };
-        export function map<A, B>(f: (x: A) => B): (object: { [key: string]: A }) => { [key: string]: B };
-        export function map<A, B>(f: (x: A) => B, object: { [key: string]: A }): { [key: string]: B };
-        export function map<A, B>(f: (x: A) => B): (object: { [key: number]: A }) => { [key: number]: B };
-        export function map<A, B>(f: (x: A) => B, object: { [key: number]: A }): { [key: number]: B };
-        export function compact<A>(object: { [key: string]: A }): { [key: string]: A };
-        export function compact<A>(object: { [key: number]: A }): { [key: number]: A };
-        export function filter<A>(f: (x: A) => boolean): (object: { [key: string]: A }) => { [key: string]: A };
-        export function filter<A>(f: (x: A) => boolean, object: { [key: string]: A }): { [key: string]: A };
-        export function filter<A>(f: (x: A) => boolean): (object: { [key: number]: A }) => { [key: number]: A };
-        export function filter<A>(f: (x: A) => boolean, object: { [key: number]: A }): { [key: number]: A };
-        export function reject<A>(f: (x: A) => boolean): (object: { [key: string]: A }) => { [key: string]: A };
-        export function reject<A>(f: (x: A) => boolean, object: { [key: string]: A }): { [key: string]: A };
-        export function reject<A>(f: (x: A) => boolean): (object: { [key: number]: A }) => { [key: number]: A };
-        export function reject<A>(f: (x: A) => boolean, object: { [key: number]: A }): { [key: number]: A };
+        export function each<A>(
+            f: (x: A) => void,
+        ): (object: { [key: string]: A }) => { [key: string]: A };
+        export function each<A>(
+            f: (x: A) => void,
+            object: { [key: string]: A },
+        ): { [key: string]: A };
+        export function each<A>(
+            f: (x: A) => void,
+        ): (object: { [key: number]: A }) => { [key: number]: A };
+        export function each<A>(
+            f: (x: A) => void,
+            object: { [key: number]: A },
+        ): { [key: number]: A };
+        export function map<A, B>(
+            f: (x: A) => B,
+        ): (object: { [key: string]: A }) => { [key: string]: B };
+        export function map<A, B>(
+            f: (x: A) => B,
+            object: { [key: string]: A },
+        ): { [key: string]: B };
+        export function map<A, B>(
+            f: (x: A) => B,
+        ): (object: { [key: number]: A }) => { [key: number]: B };
+        export function map<A, B>(
+            f: (x: A) => B,
+            object: { [key: number]: A },
+        ): { [key: number]: B };
+        export function compact<A>(object: { [key: string]: A }): {
+            [key: string]: A;
+        };
+        export function compact<A>(object: { [key: number]: A }): {
+            [key: number]: A;
+        };
+        export function filter<A>(
+            f: (x: A) => boolean,
+        ): (object: { [key: string]: A }) => { [key: string]: A };
+        export function filter<A>(
+            f: (x: A) => boolean,
+            object: { [key: string]: A },
+        ): { [key: string]: A };
+        export function filter<A>(
+            f: (x: A) => boolean,
+        ): (object: { [key: number]: A }) => { [key: number]: A };
+        export function filter<A>(
+            f: (x: A) => boolean,
+            object: { [key: number]: A },
+        ): { [key: number]: A };
+        export function reject<A>(
+            f: (x: A) => boolean,
+        ): (object: { [key: string]: A }) => { [key: string]: A };
+        export function reject<A>(
+            f: (x: A) => boolean,
+            object: { [key: string]: A },
+        ): { [key: string]: A };
+        export function reject<A>(
+            f: (x: A) => boolean,
+        ): (object: { [key: number]: A }) => { [key: number]: A };
+        export function reject<A>(
+            f: (x: A) => boolean,
+            object: { [key: number]: A },
+        ): { [key: number]: A };
         export function partition<A>(
             f: (x: A) => boolean,
-        ): (object: { [key: string]: A }) => [{ [key: string]: A }, { [key: string]: A }];
+        ): (object: {
+            [key: string]: A;
+        }) => [{ [key: string]: A }, { [key: string]: A }];
         export function partition<A>(
             f: (x: A) => boolean,
             object: { [key: string]: A },
         ): [{ [key: string]: A }, { [key: string]: A }];
         export function partition<A>(
             f: (x: A) => boolean,
-        ): (object: { [key: number]: A }) => [{ [key: number]: A }, { [key: number]: A }];
+        ): (object: {
+            [key: number]: A;
+        }) => [{ [key: number]: A }, { [key: number]: A }];
         export function partition<A>(
             f: (x: A) => boolean,
             object: { [key: number]: A },
         ): [{ [key: number]: A }, { [key: number]: A }];
-        export function find<A>(f: (x: A) => boolean): (object: { [key: string]: A }) => A;
-        export function find<A>(f: (x: A) => boolean, object: { [key: string]: A }): A;
-        export function find<A>(f: (x: A) => boolean): (object: { [key: number]: A }) => A;
-        export function find<A>(f: (x: A) => boolean, object: { [key: number]: A }): A;
+        export function find<A>(
+            f: (x: A) => boolean,
+        ): (object: { [key: string]: A }) => A;
+        export function find<A>(
+            f: (x: A) => boolean,
+            object: { [key: string]: A },
+        ): A;
+        export function find<A>(
+            f: (x: A) => boolean,
+        ): (object: { [key: number]: A }) => A;
+        export function find<A>(
+            f: (x: A) => boolean,
+            object: { [key: number]: A },
+        ): A;
     }
 
     // Str
@@ -251,19 +438,35 @@ declare namespace PreludeLS {
     export function drop(n: number, str: string): string;
     export function splitAt(n: number): (str: string) => [string, string];
     export function splitAt(n: number, str: string): [string, string];
-    export function takeWhile(f: (str: string) => boolean): (str: string) => string;
+    export function takeWhile(
+        f: (str: string) => boolean,
+    ): (str: string) => string;
     export function takeWhile(f: (str: string) => boolean, str: string): string;
-    export function dropWhile(f: (str: string) => boolean): (str: string) => string;
+    export function dropWhile(
+        f: (str: string) => boolean,
+    ): (str: string) => string;
     export function dropWhile(f: (str: string) => boolean, str: string): string;
-    export function span(f: (str: string) => boolean): (str: string) => [string, string];
-    export function span(f: (str: string) => boolean, str: string): [string, string];
-    export function breakStr(f: (str: string) => boolean): (str: string) => [string, string];
-    export function breakStr(f: (str: string) => boolean, str: string): [string, string];
+    export function span(
+        f: (str: string) => boolean,
+    ): (str: string) => [string, string];
+    export function span(
+        f: (str: string) => boolean,
+        str: string,
+    ): [string, string];
+    export function breakStr(
+        f: (str: string) => boolean,
+    ): (str: string) => [string, string];
+    export function breakStr(
+        f: (str: string) => boolean,
+        str: string,
+    ): [string, string];
 
     export namespace Str {
         export function empty(str: string): boolean;
         export function reverse(str: string): string;
-        export function slice(x: number): (y: number) => (str: string) => string;
+        export function slice(
+            x: number,
+        ): (y: number) => (str: string) => string;
         export function slice(x: number, y: number): (str: string) => string;
         export function slice(x: number, y: number, str: string): string;
         export function take(n: number): (str: string) => string;
@@ -272,14 +475,34 @@ declare namespace PreludeLS {
         export function drop(n: number, str: string): string;
         export function splitAt(n: number): (str: string) => [string, string];
         export function splitAt(n: number, str: string): [string, string];
-        export function takeWhile(f: (str: string) => boolean): (str: string) => string;
-        export function takeWhile(f: (str: string) => boolean, str: string): string;
-        export function dropWhile(f: (str: string) => boolean): (str: string) => string;
-        export function dropWhile(f: (str: string) => boolean, str: string): string;
-        export function span(f: (str: string) => boolean): (str: string) => [string, string];
-        export function span(f: (str: string) => boolean, str: string): [string, string];
-        export function breakStr(f: (str: string) => boolean): (str: string) => [string, string];
-        export function breakStr(f: (str: string) => boolean, str: string): [string, string];
+        export function takeWhile(
+            f: (str: string) => boolean,
+        ): (str: string) => string;
+        export function takeWhile(
+            f: (str: string) => boolean,
+            str: string,
+        ): string;
+        export function dropWhile(
+            f: (str: string) => boolean,
+        ): (str: string) => string;
+        export function dropWhile(
+            f: (str: string) => boolean,
+            str: string,
+        ): string;
+        export function span(
+            f: (str: string) => boolean,
+        ): (str: string) => [string, string];
+        export function span(
+            f: (str: string) => boolean,
+            str: string,
+        ): [string, string];
+        export function breakStr(
+            f: (str: string) => boolean,
+        ): (str: string) => [string, string];
+        export function breakStr(
+            f: (str: string) => boolean,
+            str: string,
+        ): [string, string];
     }
 
     // Func
@@ -287,23 +510,48 @@ declare namespace PreludeLS {
     export function apply<A, B>(f: (...args: A[]) => B): (args: A[]) => B;
     export function apply<A, B>(f: (...args: A[]) => B, args: A[]): B;
     export function curry(f: Function): Function;
-    export function flip<A, B, C>(f: (x: A) => (y: B) => C): (y: B) => (x: A) => C;
+    export function flip<A, B, C>(
+        f: (x: A) => (y: B) => C,
+    ): (y: B) => (x: A) => C;
     export function flip<A, B, C>(f: (x: A) => (y: B) => C, y: B): (x: A) => C;
     export function flip<A, B, C>(f: (x: A) => (y: B) => C, y: B, x: A): C;
     export function fix(f: Function): Function;
 
-    export function over<A, B, C>(f: (x: B) => (y: B) => C | ((x: B, y: B) => C), g: (x: A) => B, x: A, y: A): C;
-    export function over<A, B, C>(f: (x: B, y: B) => C | ((x: B) => (y: B) => C), g: (x: A) => B, x: A): (y: A) => C;
-    export function over<A, B, C>(f: (x: B, y: B) => C, g: (x: A) => B): (x: A, y: A) => C;
-    export function over<A, B, C>(f: (x: B) => (y: B) => C, g: (x: A) => B): (x: A) => (y: A) => C;
-    export function over<A, B, C>(f: (x: B, y: B) => C): (g: (x: A) => B) => (x: A, y: A) => C;
-    export function over<A, B, C>(f: (x: B) => (y: B) => C): (g: (x: A) => B) => (x: A) => (y: A) => C;
+    export function over<A, B, C>(
+        f: (x: B) => (y: B) => C | ((x: B, y: B) => C),
+        g: (x: A) => B,
+        x: A,
+        y: A,
+    ): C;
+    export function over<A, B, C>(
+        f: (x: B, y: B) => C | ((x: B) => (y: B) => C),
+        g: (x: A) => B,
+        x: A,
+    ): (y: A) => C;
+    export function over<A, B, C>(
+        f: (x: B, y: B) => C,
+        g: (x: A) => B,
+    ): (x: A, y: A) => C;
+    export function over<A, B, C>(
+        f: (x: B) => (y: B) => C,
+        g: (x: A) => B,
+    ): (x: A) => (y: A) => C;
+    export function over<A, B, C>(
+        f: (x: B, y: B) => C,
+    ): (g: (x: A) => B) => (x: A, y: A) => C;
+    export function over<A, B, C>(
+        f: (x: B) => (y: B) => C,
+    ): (g: (x: A) => B) => (x: A) => (y: A) => C;
 
     // Num
 
-    export function max<Comparable>(x: Comparable): (y: Comparable) => Comparable;
+    export function max<Comparable>(
+        x: Comparable,
+    ): (y: Comparable) => Comparable;
     export function max<Comparable>(x: Comparable, y: Comparable): Comparable;
-    export function min<Comparable>(x: Comparable): (y: Comparable) => Comparable;
+    export function min<Comparable>(
+        x: Comparable,
+    ): (y: Comparable) => Comparable;
     export function min<Comparable>(x: Comparable, y: Comparable): Comparable;
     export function negate(x: number): number;
     export function abs(x: number): number;

@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/complex",
-    "version": "3.0.9999",
-    "projects": [
-        "https://github.com/arian/Complex"
-    ],
-    "devDependencies": {
-        "@types/complex": "workspace:."
+  "private": true,
+  "name": "@types/complex",
+  "version": "3.0.9999",
+  "projects": [
+    "https://github.com/arian/Complex"
+  ],
+  "devDependencies": {
+    "@types/complex": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Aya Morisawa",
+      "githubUsername": "AyaMorisawa"
     },
-    "owners": [
-        {
-            "name": "Aya Morisawa",
-            "githubUsername": "AyaMorisawa"
-        },
-        {
-            "name": "Paul Vasich",
-            "githubUsername": "pavasich"
-        }
-    ]
+    {
+      "name": "Paul Vasich",
+      "githubUsername": "pavasich"
+    }
+  ]
 }

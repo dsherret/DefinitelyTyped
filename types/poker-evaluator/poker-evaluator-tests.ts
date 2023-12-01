@@ -1,4 +1,11 @@
-import { Deck, evalHand, EvaluatedHand, HandName, HANDTYPES, ranks } from "poker-evaluator";
+import {
+    Deck,
+    evalHand,
+    EvaluatedHand,
+    HandName,
+    HANDTYPES,
+    ranks,
+} from "poker-evaluator";
 
 HANDTYPES; // $ExpectType HandName[]
 ranks; // $ExpectType Buffer

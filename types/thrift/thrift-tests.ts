@@ -27,11 +27,9 @@ interface MockServiceHandlers {
     ping(): string;
 }
 
-class MockProcessor {
-}
+class MockProcessor {}
 
-class MockClient {
-}
+class MockClient {}
 
 const mockServiceHandlers: MockServiceHandlers = {
     ping(): string {
@@ -44,7 +42,10 @@ const mockGeneratedService = {
     Processor: MockProcessor,
 };
 
-createServer<MockProcessor, MockServiceHandlers>(mockGeneratedService, mockServiceHandlers);
+createServer<MockProcessor, MockServiceHandlers>(
+    mockGeneratedService,
+    mockServiceHandlers,
+);
 
 const httpOptions: http.RequestOptions = {
     timeout: 10000,
@@ -86,7 +87,10 @@ const mockBuffer: Buffer = Buffer.alloc(8);
 
 const mockCallback: TTransportCallback = (msg: Buffer, seq: number): void => {};
 
-const mockTransport: TTransport = new TBufferedTransport(mockBuffer, mockCallback);
+const mockTransport: TTransport = new TBufferedTransport(
+    mockBuffer,
+    mockCallback,
+);
 
 const mockProtocol: TProtocol = new TBinaryProtocol(mockTransport);
 
@@ -162,4 +166,8 @@ const tTrans: TTransport = mockProtocol.getTransport();
 mockProtocol.skip(Thrift.Type.STRUCT);
 
 const multiplexer = new Multiplexer();
-multiplexer.createClient("mock-service", mockGeneratedService, clientConnection);
+multiplexer.createClient(
+    "mock-service",
+    mockGeneratedService,
+    clientConnection,
+);

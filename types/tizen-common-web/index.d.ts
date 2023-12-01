@@ -534,7 +534,11 @@ export interface DownloadCallback {
      * @param receivedSize The size of data received in bytes.
      * @param totalSize The total size of data to receive in bytes.
      */
-    onprogress(downloadId: number, receivedSize: number, totalSize: number): void;
+    onprogress(
+        downloadId: number,
+        receivedSize: number,
+        totalSize: number,
+    ): void;
 }
 /**
  * Interface for handling ability events.
@@ -567,7 +571,10 @@ export interface MediaControllerAbilityChangeCallback {
      * @param server Server which triggered the event.
      * @param abilities Object with current state of playback abilities on the media controller server.
      */
-    onplaybackabilitychanged(server: MediaControllerServerInfo, abilities: MediaControllerPlaybackAbilitiesInfo): void;
+    onplaybackabilitychanged(
+        server: MediaControllerServerInfo,
+        abilities: MediaControllerPlaybackAbilitiesInfo,
+    ): void;
     /**
      * Event triggered when server's simple ability is updated.
      *
@@ -612,7 +619,10 @@ export interface MediaControllerChangeRequestPlaybackInfoCallback {
      *
      * @remark Parameter _clientName_ is passed since Tizen 5.5.
      */
-    onplaybackpositionrequest(position: number, clientName: ApplicationId): void;
+    onplaybackpositionrequest(
+        position: number,
+        clientName: ApplicationId,
+    ): void;
     /**
      * Called when client requested playback state changes.
      *
@@ -621,7 +631,10 @@ export interface MediaControllerChangeRequestPlaybackInfoCallback {
      *
      * @remark Parameter _clientName_ is passed since Tizen 5.5.
      */
-    onplaybackstaterequest(state: MediaControllerPlaybackState, clientName: ApplicationId): void;
+    onplaybackstaterequest(
+        state: MediaControllerPlaybackState,
+        clientName: ApplicationId,
+    ): void;
     /**
      * Called when client requested repeat mode changes.
      *
@@ -647,7 +660,10 @@ export interface MediaControllerChangeRequestPlaybackInfoCallback {
      * It is guaranteed that the [onrepeatstaterequest](#MediaControllerChangeRequestPlaybackInfoCallback::onrepeatstaterequest) callback
      * will be invoked after the [onrepeatmoderequest](#MediaControllerChangeRequestPlaybackInfoCallback::onrepeatmoderequest).
      */
-    onrepeatstaterequest(state: MediaControllerRepeatState, clientName: ApplicationId): void;
+    onrepeatstaterequest(
+        state: MediaControllerRepeatState,
+        clientName: ApplicationId,
+    ): void;
     /**
      * Called when client requested shuffle mode changes.
      *
@@ -675,7 +691,10 @@ export interface MediaControllerPlaybackInfoChangeCallback {
      * @param state Current playback state.
      * @param position Current playback position.
      */
-    onplaybackchanged(state: MediaControllerPlaybackState, position: number): void;
+    onplaybackchanged(
+        state: MediaControllerPlaybackState,
+        position: number,
+    ): void;
     /**
      * Called when repeat mode is changed.
      *
@@ -723,7 +742,10 @@ export interface MediaControllerPlaylistUpdatedCallback {
      * @param serverName Name of server which triggered the event.
      * @param playlist Playlist for which event was triggered.
      */
-    onplaylistupdated(serverName: string, playlist: MediaControllerPlaylist): void;
+    onplaylistupdated(
+        serverName: string,
+        playlist: MediaControllerPlaylist,
+    ): void;
 }
 /**
  * This callback interface specifies methods that are invoked when a package is installed, updated, or uninstalled.
@@ -791,7 +813,11 @@ export interface RequestCallback {
      * @param observeType The observation type of the request.
      * @param observeId The observation id of the request.
      */
-    onobserving(request: Request, observeType: ObserveType, observeId: number): void;
+    onobserving(
+        request: Request,
+        observeType: ObserveType,
+        observeId: number,
+    ): void;
     /**
      * Called when POST request was received.
      *
@@ -812,7 +838,8 @@ export interface RequestCallback {
  * Never use this base interface directly, instead use _AbstractFilter_ subtypes,
  * such as _AttributeFilter_, _AttributeRangeFilter_, and _CompositeFilter_.
  */
-export class AbstractFilter { // tslint:disable-line:no-unnecessary-class
+export class AbstractFilter {
+    // tslint:disable-line:no-unnecessary-class
     constructor();
 }
 /**
@@ -823,7 +850,10 @@ export class AbstractFilter { // tslint:disable-line:no-unnecessary-class
  * The information is hidden from web applications.
  */
 export class Account {
-    constructor(provider: AccountProvider, accountInitDict?: AccountInit | null);
+    constructor(
+        provider: AccountProvider,
+        accountInitDict?: AccountInit | null,
+    );
     /**
      * Name, identifier or URI of the icon.
      * By default, this attribute is set to null.
@@ -882,7 +912,10 @@ export class Account {
 }
 export interface AccountConstructor {
     prototype: Account;
-    new(provider: AccountProvider, accountInitDict?: AccountInit | null): Account;
+    new (
+        provider: AccountProvider,
+        accountInitDict?: AccountInit | null,
+    ): Account;
 }
 /**
  * The AccountExtendedData interface defines the extended data of an account.
@@ -1100,7 +1133,7 @@ export class Alarm {
 }
 export interface AlarmConstructor {
     prototype: Alarm;
-    new(): Alarm;
+    new (): Alarm;
 }
 /**
  * The AlarmAbsolute interface provides an absolute alarm, which triggers at a specified absolute date.
@@ -1145,9 +1178,9 @@ export class AlarmAbsolute extends Alarm {
 }
 export interface AlarmAbsoluteConstructor {
     prototype: AlarmAbsolute;
-    new(date: Date): AlarmAbsolute; // tslint:disable-line:unified-signatures
-    new(date: Date, daysOfTheWeek: ByDayValue[]): AlarmAbsolute; // tslint:disable-line:unified-signatures
-    new(date: Date, period: number): AlarmAbsolute; // tslint:disable-line:unified-signatures
+    new (date: Date): AlarmAbsolute; // tslint:disable-line:unified-signatures
+    new (date: Date, daysOfTheWeek: ByDayValue[]): AlarmAbsolute; // tslint:disable-line:unified-signatures
+    new (date: Date, period: number): AlarmAbsolute; // tslint:disable-line:unified-signatures
 }
 /**
  * The AlarmManager interface provides methods to manage alarms.
@@ -1172,7 +1205,11 @@ export interface AlarmManager {
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    add(alarm: Alarm, applicationId: ApplicationId, appControl?: ApplicationControl | null): void;
+    add(
+        alarm: Alarm,
+        applicationId: ApplicationId,
+        appControl?: ApplicationControl | null,
+    ): void;
     /**
      * Returns an alarm as per the specified identifier.
      *
@@ -1283,7 +1320,7 @@ export class AlarmRelative extends Alarm {
 }
 export interface AlarmRelativeConstructor {
     prototype: AlarmRelative;
-    new(delay: number, period?: number | null): AlarmRelative;
+    new (delay: number, period?: number | null): AlarmRelative;
 }
 /**
  * This interface defines the current application's information and
@@ -1487,7 +1524,7 @@ export class ApplicationControl {
 }
 export interface ApplicationControlConstructor {
     prototype: ApplicationControl;
-    new(
+    new (
         operation: string,
         uri?: string | null,
         mime?: string | null,
@@ -1515,7 +1552,7 @@ export class ApplicationControlData {
 }
 export interface ApplicationControlDataConstructor {
     prototype: ApplicationControlData;
-    new(key: string, value: string[]): ApplicationControlData;
+    new (key: string, value: string[]): ApplicationControlData;
 }
 /**
  * This interface defines the general information available to an installed application.
@@ -1607,7 +1644,9 @@ export interface ApplicationManager {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if it fails to add a listener because of an unknown error.
      */
-    addAppInfoEventListener(eventCallback: ApplicationInformationEventCallback): number;
+    addAppInfoEventListener(
+        eventCallback: ApplicationInformationEventCallback,
+    ): number;
     /**
      * Adds a listener for receiving any notification for status changes of the installed applications on a device.
      *
@@ -1622,7 +1661,10 @@ export interface ApplicationManager {
      * @throws WebAPIException with error type InvalidValuesError, if the application id parameter is an empty string.
      * @throws WebAPIException with error type AbortError, if it fails to add a listener.
      */
-    addAppStatusChangeListener(eventCallback: StatusEventCallback, appId?: ApplicationId | null): number;
+    addAppStatusChangeListener(
+        eventCallback: StatusEventCallback,
+        appId?: ApplicationId | null,
+    ): number;
     /**
      * Finds which applications can be launched with the given application control.
      *
@@ -1756,7 +1798,10 @@ export interface ApplicationManager {
      *
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      */
-    getAppsContext(successCallback: ApplicationContextArraySuccessCallback, errorCallback?: ErrorCallback | null): void;
+    getAppsContext(
+        successCallback: ApplicationContextArraySuccessCallback,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Gets the list of installed applications' information on a device.
      * The information contained on each application corresponds to the application state at the time when the list had been generated.
@@ -1830,7 +1875,11 @@ export interface ApplicationManager {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      */
-    launch(id: ApplicationId, successCallback?: SuccessCallback | null, errorCallback?: ErrorCallback | null): void;
+    launch(
+        id: ApplicationId,
+        successCallback?: SuccessCallback | null,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Launches an application with the specified application control.
      *
@@ -2075,7 +2124,10 @@ export class ArchiveFile {
      * @throws WebAPIException with error type InvalidAccessError, if the file mode is "w" or "a".
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method or the application does not have privilege to access the storage. For more information, see [Storage privileges](#StorageRemark).
      */
-    getEntries(onsuccess: ArchiveFileEntryArraySuccessCallback, onerror?: ErrorCallback | null): number;
+    getEntries(
+        onsuccess: ArchiveFileEntryArraySuccessCallback,
+        onerror?: ErrorCallback | null,
+    ): number;
     /**
      * Retrieves information about _ArchiveFileEntry_ with the specified name in _ArchiveFile_.
      *
@@ -2098,11 +2150,15 @@ export class ArchiveFile {
      * @throws WebAPIException with error type InvalidAccessError, if the file mode is "w" or "a".
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method or the application does not have privilege to access the storage. For more information, see [Storage privileges](#StorageRemark).
      */
-    getEntryByName(name: string, onsuccess: ArchiveFileEntrySuccessCallback, onerror?: ErrorCallback | null): number;
+    getEntryByName(
+        name: string,
+        onsuccess: ArchiveFileEntrySuccessCallback,
+        onerror?: ErrorCallback | null,
+    ): number;
 }
 export interface ArchiveFileConstructor {
     prototype: ArchiveFile;
-    new(): ArchiveFile;
+    new (): ArchiveFile;
 }
 /**
  * The ArchiveFileEntry interface provides access to ArchiveFile member information and file data.
@@ -2174,7 +2230,7 @@ export class ArchiveFileEntry {
 }
 export interface ArchiveFileEntryConstructor {
     prototype: ArchiveFileEntry;
-    new(): ArchiveFileEntry;
+    new (): ArchiveFileEntry;
 }
 /**
  * The ArchiveManager interface provides methods for global operations related to ArchiveFile.
@@ -2239,7 +2295,11 @@ export interface ArchiveManager {
  * the specified value.
  */
 export class AttributeFilter extends AbstractFilter {
-    constructor(attributeName: string, matchFlag?: FilterMatchFlag | null, matchValue?: any);
+    constructor(
+        attributeName: string,
+        matchFlag?: FilterMatchFlag | null,
+        matchValue?: any,
+    );
     /**
      * The name of the object attribute used for filtering.
      *
@@ -2269,7 +2329,11 @@ export class AttributeFilter extends AbstractFilter {
 }
 export interface AttributeFilterConstructor {
     prototype: AttributeFilter;
-    new(attributeName: string, matchFlag?: FilterMatchFlag | null, matchValue?: any): AttributeFilter;
+    new (
+        attributeName: string,
+        matchFlag?: FilterMatchFlag | null,
+        matchValue?: any,
+    ): AttributeFilter;
 }
 /**
  * _AttributeRangeFilter_ represents a filter based on an object attribute
@@ -2304,7 +2368,11 @@ export class AttributeRangeFilter extends AbstractFilter {
 }
 export interface AttributeRangeFilterConstructor {
     prototype: AttributeRangeFilter;
-    new(attributeName: string, initialValue?: any, endValue?: any): AttributeRangeFilter;
+    new (
+        attributeName: string,
+        initialValue?: any,
+        endValue?: any,
+    ): AttributeRangeFilter;
 }
 /**
  * The AudioContent interface extends a basic _Content_ object with audio-specific attributes.
@@ -2592,7 +2660,7 @@ export class Bundle {
 }
 export interface BundleConstructor {
     prototype: Bundle;
-    new(json?: any): Bundle;
+    new (json?: any): Bundle;
 }
 /**
  * The Client provides API for client side.
@@ -2748,7 +2816,10 @@ export class CompositeFilter extends AbstractFilter {
 }
 export interface CompositeFilterConstructor {
     prototype: CompositeFilter;
-    new(type: CompositeFilterType, filters?: AbstractFilter[] | null): CompositeFilter;
+    new (
+        type: CompositeFilterType,
+        filters?: AbstractFilter[] | null,
+    ): CompositeFilter;
 }
 /**
  * The Content interface provides access to the properties of a content item.
@@ -2990,7 +3061,10 @@ export interface ContentManager {
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter
      * is not compatible with the expected type for that parameter.
      */
-    getDirectories(successCallback: ContentDirectoryArraySuccessCallback, errorCallback?: ErrorCallback | null): void;
+    getDirectories(
+        successCallback: ContentDirectoryArraySuccessCallback,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Gets all playlists.
      *
@@ -3009,7 +3083,10 @@ export interface ContentManager {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      */
-    getPlaylists(successCallback: PlaylistArraySuccessCallback, errorCallback?: ErrorCallback | null): void;
+    getPlaylists(
+        successCallback: PlaylistArraySuccessCallback,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Removes a listener which receives notifications about content changes.
      *
@@ -3247,7 +3324,10 @@ export interface DataControlConsumerObject {
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      * @throws WebAPIException with error type ServiceNotAvailableError, if the application could not connect with the provider.
      */
-    addChangeListener(dataChangeCallback: DataControlChangeCallback, errorCallback?: ErrorCallback | null): number;
+    addChangeListener(
+        dataChangeCallback: DataControlChangeCallback,
+        errorCallback?: ErrorCallback | null,
+    ): number;
     /**
      * Removes data change listener.
      *
@@ -3289,7 +3369,11 @@ export interface DataControlManager {
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    getDataControlConsumer(providerId: string, dataId: string, type: DataType): DataControlConsumerObject;
+    getDataControlConsumer(
+        providerId: string,
+        dataId: string,
+        type: DataType,
+    ): DataControlConsumerObject;
 }
 /**
  * The DeviceInfo interface describes device properties.
@@ -3504,7 +3588,10 @@ export interface DownloadManager {
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method or the application does not have privilege to access the storage. For more information, see [Storage privileges](#StorageRemark).
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    start(downloadRequest: DownloadRequest, downloadCallback?: DownloadCallback | null): number;
+    start(
+        downloadRequest: DownloadRequest,
+        downloadCallback?: DownloadCallback | null,
+    ): number;
 }
 /**
  * The DownloadRequest interface defines the download request object.
@@ -3560,7 +3647,7 @@ export class DownloadRequest {
 }
 export interface DownloadRequestConstructor {
     prototype: DownloadRequest;
-    new(
+    new (
         url: string,
         destination?: string | null,
         fileName?: string | null,
@@ -3679,7 +3766,7 @@ export class ExifInformation {
 }
 export interface ExifInformationConstructor {
     prototype: ExifInformation;
-    new(ExifInitDict?: ExifInit | null): ExifInformation;
+    new (ExifInitDict?: ExifInit | null): ExifInformation;
 }
 /**
  * The ExifManager interface provides methods to retrieve the _ExifInformation_ object and save the Exif data of the _ExifInformation_ object in a JPEG file.
@@ -4087,7 +4174,11 @@ export interface File {
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method or the application does not have privilege to access the storage. For more information, see [Storage privileges](#StorageRemark).
      */
-    deleteFile(filePath: string, onsuccess?: SuccessCallback | null, onerror?: ErrorCallback | null): void;
+    deleteFile(
+        filePath: string,
+        onsuccess?: SuccessCallback | null,
+        onerror?: ErrorCallback | null,
+    ): void;
     /**
      * Lists all files in a directory.
      *
@@ -4115,7 +4206,11 @@ export interface File {
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method. For more information, see [Storage privileges](#StorageRemark).
      */
-    listFiles(onsuccess: FileArraySuccessCallback, onerror?: ErrorCallback | null, filter?: FileFilter | null): void;
+    listFiles(
+        onsuccess: FileArraySuccessCallback,
+        onerror?: ErrorCallback | null,
+        filter?: FileFilter | null,
+    ): void;
     /**
      * Moves (and overwrites if possible and specified) a file or a directory from a specified location to another.
      * This operation is different from instantiating copyTo() and then deleting the original file, as on certain platforms, this operation does not require extra disk space.
@@ -4218,7 +4313,11 @@ export interface File {
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method. For more information, see [Storage privileges](#StorageRemark).
      */
-    readAsText(onsuccess: FileStringSuccessCallback, onerror?: ErrorCallback | null, encoding?: string | null): void;
+    readAsText(
+        onsuccess: FileStringSuccessCallback,
+        onerror?: ErrorCallback | null,
+        encoding?: string | null,
+    ): void;
     /**
      * Resolves an existing file or directory relative to the current directory this operation is performed on and returns a file handle for it.
      *
@@ -4313,7 +4412,10 @@ export interface FileHandle {
      *
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      */
-    closeNonBlocking(onsuccess?: SuccessCallback | null, onerror?: ErrorCallback | null): void;
+    closeNonBlocking(
+        onsuccess?: SuccessCallback | null,
+        onerror?: ErrorCallback | null,
+    ): void;
     /**
      * Flushes data.
      *
@@ -4346,7 +4448,10 @@ export interface FileHandle {
      *
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      */
-    flushNonBlocking(onsuccess?: SuccessCallback | null, onerror?: ErrorCallback | null): void;
+    flushNonBlocking(
+        onsuccess?: SuccessCallback | null,
+        onerror?: ErrorCallback | null,
+    ): void;
     /**
      * Reads file content as [Blob](#Blob).
      *
@@ -4539,7 +4644,10 @@ export interface FileHandle {
      *
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      */
-    syncNonBlocking(onsuccess?: SuccessCallback | null, onerror?: ErrorCallback | null): void;
+    syncNonBlocking(
+        onsuccess?: SuccessCallback | null,
+        onerror?: ErrorCallback | null,
+    ): void;
     /**
      * Writes [Blob](#Blob) to file.
      *
@@ -4569,7 +4677,11 @@ export interface FileHandle {
      *
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      */
-    writeBlobNonBlocking(blob: Blob, onsuccess?: SuccessCallback | null, onerror?: ErrorCallback | null): void;
+    writeBlobNonBlocking(
+        blob: Blob,
+        onsuccess?: SuccessCallback | null,
+        onerror?: ErrorCallback | null,
+    ): void;
     /**
      * Writes binary data to file.
      *
@@ -4601,7 +4713,11 @@ export interface FileHandle {
      *
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      */
-    writeDataNonBlocking(data: Uint8Array, onsuccess?: SuccessCallback | null, onerror?: ErrorCallback | null): void;
+    writeDataNonBlocking(
+        data: Uint8Array,
+        onsuccess?: SuccessCallback | null,
+        onerror?: ErrorCallback | null,
+    ): void;
     /**
      * Writes inputString content to a file.
      *
@@ -4840,7 +4956,10 @@ export interface FileSystemManager {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addStorageStateChangeListener(onsuccess: FileSystemStorageSuccessCallback, onerror?: ErrorCallback | null): number;
+    addStorageStateChangeListener(
+        onsuccess: FileSystemStorageSuccessCallback,
+        onerror?: ErrorCallback | null,
+    ): number;
     /**
      * Recursively copies directory pointed by _sourcePath_ to _destinationPath_.
      *
@@ -5002,7 +5121,11 @@ export interface FileSystemManager {
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method or the application does not have privilege to access the storage. For more information, see [Storage privileges](#StorageRemark).
      * @throws WebAPIException with error type TypeMismatchError, if any of the input parameters is not compatible with the expected type for that parameter.
      */
-    deleteFile(path: Path, successCallback?: PathSuccessCallback | null, errorCallback?: ErrorCallback | null): void;
+    deleteFile(
+        path: Path,
+        successCallback?: PathSuccessCallback | null,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Returns path to directory for given _path_.
      *
@@ -5039,7 +5162,11 @@ export interface FileSystemManager {
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method. For more information, see [Storage privileges](#StorageRemark).
      */
-    getStorage(label: string, onsuccess: FileSystemStorageSuccessCallback, onerror?: ErrorCallback | null): void;
+    getStorage(
+        label: string,
+        onsuccess: FileSystemStorageSuccessCallback,
+        onerror?: ErrorCallback | null,
+    ): void;
     /**
      * Checks if given _path_ points to a directory.
      *
@@ -5135,7 +5262,10 @@ export interface FileSystemManager {
      * @throws WebAPIException with error type TypeMismatchError, if the input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method. For more information, see [Storage privileges](#StorageRemark).
      */
-    listStorages(onsuccess: FileSystemStorageArraySuccessCallback, onerror?: ErrorCallback | null): void;
+    listStorages(
+        onsuccess: FileSystemStorageArraySuccessCallback,
+        onerror?: ErrorCallback | null,
+    ): void;
     /**
      * Recursively moves directory pointed by _sourcePath_ to _destinationPath_.
      *
@@ -5567,7 +5697,7 @@ export class IotconOption {
 }
 export interface IotconOptionConstructor {
     prototype: IotconOption;
-    new(id: number, data: string): IotconOption;
+    new (id: number, data: string): IotconOption;
 }
 /**
  * The KeyManager interface provides methods to store, retrieve and remove the sensitive data of users and their applications.
@@ -6021,7 +6151,9 @@ export interface MediaControllerClient {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addAbilityChangeListener(listener: MediaControllerAbilityChangeCallback): number;
+    addAbilityChangeListener(
+        listener: MediaControllerAbilityChangeCallback,
+    ): number;
     /**
      * Retrieves all activated media controller servers.
      *
@@ -6088,7 +6220,9 @@ export interface MediaControllerClient {
      * @throws WebAPIException with error type TypeMismatchError, if any of the arguments has invalid types.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    setCustomEventListener(listener: MediaControllerReceiveCommandCallback): void;
+    setCustomEventListener(
+        listener: MediaControllerReceiveCommandCallback,
+    ): void;
     /**
      * Removes the server's events listener.
      *
@@ -6120,7 +6254,11 @@ export interface MediaControllerClientInfo {
      * @throws WebAPIException with error type TypeMismatchError, if any argument has invalid type.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    sendEvent(eventName: string, data: Bundle | null, successCallback: MediaControllerSendCommandSuccessCallback): void;
+    sendEvent(
+        eventName: string,
+        data: Bundle | null,
+        successCallback: MediaControllerSendCommandSuccessCallback,
+    ): void;
 }
 /**
  * Server-side object representing display mode of a media controller server.
@@ -6148,7 +6286,9 @@ export interface MediaControllerDisplayMode {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addChangeRequestListener(listener: MediaControllerDisplayModeChangeRequestCallback): number;
+    addChangeRequestListener(
+        listener: MediaControllerDisplayModeChangeRequestCallback,
+    ): number;
     /**
      * Removes the listener and stops receiving change requests of media controller display mode.
      *
@@ -6268,7 +6408,9 @@ export interface MediaControllerDisplayModeInfo {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addModeChangeListener(listener: MediaControllerDisplayModeChangeCallback): number;
+    addModeChangeListener(
+        listener: MediaControllerDisplayModeChangeCallback,
+    ): number;
     /**
      * Removes the listener, so stop receiving notifications about media controller server display mode changes.
      *
@@ -6292,7 +6434,10 @@ export interface MediaControllerDisplayModeInfo {
      * @throws WebAPIException with error type NotSupportedError, if related ability is not supported by the media controller server.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    sendRequest(type: MediaControllerDisplayModeType, replyCallback: MediaControllerSendCommandSuccessCallback): void;
+    sendRequest(
+        type: MediaControllerDisplayModeType,
+        replyCallback: MediaControllerSendCommandSuccessCallback,
+    ): void;
 }
 /**
  * Server-side object representing display rotation of a media controller server.
@@ -6320,7 +6465,9 @@ export interface MediaControllerDisplayRotation {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addChangeRequestListener(listener: MediaControllerDisplayRotationChangeRequestCallback): number;
+    addChangeRequestListener(
+        listener: MediaControllerDisplayRotationChangeRequestCallback,
+    ): number;
     /**
      * Removes the listener and stops receiving change requests of media controller display rotation.
      *
@@ -6434,7 +6581,9 @@ export interface MediaControllerDisplayRotationInfo {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addDisplayRotationChangeListener(listener: MediaControllerDisplayRotationChangeCallback): number;
+    addDisplayRotationChangeListener(
+        listener: MediaControllerDisplayRotationChangeCallback,
+    ): number;
     /**
      * Removes the listener, so stop receiving notifications about media controller server display rotation changes.
      *
@@ -6605,7 +6754,9 @@ export interface MediaControllerMode360 {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addChangeRequestListener(listener: MediaControllerEnabledChangeRequestCallback): number;
+    addChangeRequestListener(
+        listener: MediaControllerEnabledChangeRequestCallback,
+    ): number;
     /**
      * Removes the listener and stops receiving change requests of media controller spherical (360°) mode.
      *
@@ -6639,7 +6790,9 @@ export interface MediaControllerMode360Info {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addModeChangeListener(listener: MediaControllerEnabledChangeCallback): number;
+    addModeChangeListener(
+        listener: MediaControllerEnabledChangeCallback,
+    ): number;
     /**
      * Removes the listener, so stop receiving notifications about media controller server spherical (360°) mode changes.
      *
@@ -6663,7 +6816,10 @@ export interface MediaControllerMode360Info {
      * @throws WebAPIException with error type NotSupportedError, if related ability is not supported by the media controller server.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    sendRequest(enabled: boolean, replyCallback: MediaControllerSendCommandSuccessCallback): void;
+    sendRequest(
+        enabled: boolean,
+        replyCallback: MediaControllerSendCommandSuccessCallback,
+    ): void;
 }
 /**
  * Server-side object representing playback abilities of the media controller server.
@@ -6926,7 +7082,10 @@ export interface MediaControllerPlaylist {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    getItems(successCallback: MediaControllerGetItemsSuccessCallback, errorCallback?: ErrorCallback | null): void;
+    getItems(
+        successCallback: MediaControllerGetItemsSuccessCallback,
+        errorCallback?: ErrorCallback | null,
+    ): void;
 }
 /**
  * Object represents single playlist item.
@@ -7004,7 +7163,9 @@ export interface MediaControllerServer {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addChangeRequestPlaybackInfoListener(listener: MediaControllerChangeRequestPlaybackInfoCallback): number;
+    addChangeRequestPlaybackInfoListener(
+        listener: MediaControllerChangeRequestPlaybackInfoCallback,
+    ): number;
     /**
      * Adds the listener for receiving custom commands from client.
      * See _MediaControllerServerInfo_ to check how to [send custom commands](#MediaControllerServerInfo::sendCommand) from client.
@@ -7139,7 +7300,9 @@ export interface MediaControllerServer {
      * @throws WebAPIException with error type TypeMismatchError, if any of the arguments has invalid type.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    setSearchRequestListener(listener: MediaControllerSearchRequestCallback): void;
+    setSearchRequestListener(
+        listener: MediaControllerSearchRequestCallback,
+    ): void;
     /**
      * Unsets search request listener.
      *
@@ -7319,7 +7482,9 @@ export interface MediaControllerServerInfo {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addPlaybackInfoChangeListener(listener: MediaControllerPlaybackInfoChangeCallback): number;
+    addPlaybackInfoChangeListener(
+        listener: MediaControllerPlaybackInfoChangeCallback,
+    ): number;
     /**
      * Adds listener to be invoked when playlist is updated by server.
      *
@@ -7332,7 +7497,9 @@ export interface MediaControllerServerInfo {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addPlaylistUpdatedListener(listener: MediaControllerPlaylistUpdatedCallback): number;
+    addPlaylistUpdatedListener(
+        listener: MediaControllerPlaylistUpdatedCallback,
+    ): number;
     /**
      * Adds the listener for a media controller server status change.
      *
@@ -7343,7 +7510,9 @@ export interface MediaControllerServerInfo {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addServerStatusChangeListener(listener: MediaControllerServerStatusChangeCallback): number;
+    addServerStatusChangeListener(
+        listener: MediaControllerServerStatusChangeCallback,
+    ): number;
     /**
      * Retrieves all playlists saved in local database.
      *
@@ -7429,7 +7598,12 @@ export interface MediaControllerServerInfo {
      *
      * @throws WebAPIException with error type UnknownError, if any error occurs.
      */
-    sendPlaybackItem(playlistName: string, index: string, state: MediaControllerPlaybackState, position: number): void;
+    sendPlaybackItem(
+        playlistName: string,
+        index: string,
+        state: MediaControllerPlaybackState,
+        position: number,
+    ): void;
     /**
      * Allows to change playback position of media controller server.
      *
@@ -7473,7 +7647,11 @@ export interface MediaControllerServerInfo {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    sendRepeatMode(mode: boolean, successCallback?: SuccessCallback | null, errorCallback?: ErrorCallback | null): void;
+    sendRepeatMode(
+        mode: boolean,
+        successCallback?: SuccessCallback | null,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Allows to change repeat state of media controller server.
      *
@@ -7557,7 +7735,9 @@ export interface MediaControllerSubtitles {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addChangeRequestListener(listener: MediaControllerEnabledChangeRequestCallback): number;
+    addChangeRequestListener(
+        listener: MediaControllerEnabledChangeRequestCallback,
+    ): number;
     /**
      * Removes the listener and stops receiving change requests of media controller subtitles mode.
      *
@@ -7591,7 +7771,9 @@ export interface MediaControllerSubtitlesInfo {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    addModeChangeListener(listener: MediaControllerEnabledChangeCallback): number;
+    addModeChangeListener(
+        listener: MediaControllerEnabledChangeCallback,
+    ): number;
     /**
      * Removes the listener, so stop receiving notifications about media controller server subtitles mode changes.
      *
@@ -7615,7 +7797,10 @@ export interface MediaControllerSubtitlesInfo {
      * @throws WebAPIException with error type NotSupportedError, if related ability is not supported by the media controller server.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    sendRequest(enabled: boolean, replyCallback: MediaControllerSendCommandSuccessCallback): void;
+    sendRequest(
+        enabled: boolean,
+        replyCallback: MediaControllerSendCommandSuccessCallback,
+    ): void;
 }
 /**
  * The _MessagePortManager_ interface provides methods to request message port to communicate.
@@ -7647,7 +7832,10 @@ export interface MessagePortManager {
      * @throws WebAPIException with error type NotFoundError, if the port of the target application is not found.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    requestRemoteMessagePort(appId: ApplicationId, remoteMessagePortName: string): RemoteMessagePort;
+    requestRemoteMessagePort(
+        appId: ApplicationId,
+        remoteMessagePortName: string,
+    ): RemoteMessagePort;
     /**
      * Requests a trusted LocalMessagePort instance to receive message from another application.
      *
@@ -7662,7 +7850,9 @@ export interface MessagePortManager {
      * @throws WebAPIException with error type InvalidValuesError, if the input parameter contains an invalid value.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    requestTrustedLocalMessagePort(localMessagePortName: string): LocalMessagePort;
+    requestTrustedLocalMessagePort(
+        localMessagePortName: string,
+    ): LocalMessagePort;
     /**
      * Requests a trusted RemoteMessagePort instance to receive message from another application.
      *
@@ -7678,7 +7868,10 @@ export interface MessagePortManager {
      * @throws WebAPIException with error type InvalidAccessError, if the target application is not signed with the same certification.
      * @throws WebAPIException with error type UnknownError, if any other error occurs
      */
-    requestTrustedRemoteMessagePort(appId: ApplicationId, remoteMessagePortName: string): RemoteMessagePort;
+    requestTrustedRemoteMessagePort(
+        appId: ApplicationId,
+        remoteMessagePortName: string,
+    ): RemoteMessagePort;
 }
 /**
  * This interface defines the general information available to an installed package.
@@ -7821,7 +8014,9 @@ export interface PackageManager {
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      * @throws WebAPIException with error type UnknownError, if the package list change event cannot be generated because of a platform error.
      */
-    setPackageInfoEventListener(eventCallback: PackageInformationEventCallback): void;
+    setPackageInfoEventListener(
+        eventCallback: PackageInformationEventCallback,
+    ): void;
     /**
      * Uninstalls the package with a specified package ID.
      *
@@ -7844,7 +8039,11 @@ export interface PackageManager {
      * @throws WebAPIException with error type TypeMismatchError, if an input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      */
-    uninstall(id: PackageId, progressCallback: PackageProgressCallback, errorCallback?: ErrorCallback | null): void;
+    uninstall(
+        id: PackageId,
+        progressCallback: PackageProgressCallback,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Unsets the listener to stop receiving package notifications.
      *
@@ -7978,7 +8177,11 @@ export interface Playlist {
      * @throws WebAPIException with error type TypeMismatchError, if any input parameter is not compatible with the expected type for that parameter.
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      */
-    addBatch(items: Content[], successCallback?: SuccessCallback | null, errorCallback?: ErrorCallback | null): void;
+    addBatch(
+        items: Content[],
+        successCallback?: SuccessCallback | null,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Gets playlist items from a playlist.
      *
@@ -8254,7 +8457,10 @@ export interface PushManager {
      * @throws WebAPIException with error type InvalidStateError, if the application is not connected to the push service.
      * @throws WebAPIException with error type AbortError, if the operation cannot be finished properly.
      */
-    register(successCallback: PushRegisterSuccessCallback, errorCallback?: ErrorCallback | null): void;
+    register(
+        successCallback: PushRegisterSuccessCallback,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Unregisters an application from the Tizen push server.
      *
@@ -8276,7 +8482,10 @@ export interface PushManager {
      * @throws WebAPIException with error type InvalidStateError, if the application is not connected to the push service.
      * @throws WebAPIException with error type AbortError, if the operation cannot be finished properly.
      */
-    unregister(successCallback?: SuccessCallback | null, errorCallback?: ErrorCallback | null): void;
+    unregister(
+        successCallback?: SuccessCallback | null,
+        errorCallback?: ErrorCallback | null,
+    ): void;
 }
 /**
  * The PushMessage interface specifies the push message that is delivered from the push service.
@@ -8353,7 +8562,10 @@ export interface RemoteMessagePort {
      * @throws WebAPIException with error type QuotaExceededError, if the size of message has exceeded the maximum limit.
      * @throws WebAPIException with error type UnknownError, if any other error occurs.
      */
-    sendMessage(data: MessagePortDataItem[], localMessagePort?: LocalMessagePort | null): void;
+    sendMessage(
+        data: MessagePortDataItem[],
+        localMessagePort?: LocalMessagePort | null,
+    ): void;
 }
 /**
  * This interface provides API to manage remote resource for client side.
@@ -8444,7 +8656,10 @@ export class RemoteResource {
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      * @throws WebAPIException with error type AbortError, If the operation has been stopped.
      */
-    methodDelete(responseCallback: RemoteResourceResponseCallback, errorCallback?: ErrorCallback | null): void;
+    methodDelete(
+        responseCallback: RemoteResourceResponseCallback,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Gets the attributes of a resource.
      *
@@ -8533,7 +8748,9 @@ export class RemoteResource {
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      * @throws WebAPIException with error type AbortError, If the operation has been stopped.
      */
-    setResourceStateChangeListener(successCallback: ResourceStateChangeCallback): void;
+    setResourceStateChangeListener(
+        successCallback: ResourceStateChangeCallback,
+    ): void;
     /**
      * Starts caching of a remote resource. cached representation is updated when remote resource is changed.
      *
@@ -8607,7 +8824,7 @@ export class RemoteResource {
 }
 export interface RemoteResourceConstructor {
     prototype: RemoteResource;
-    new(): RemoteResource;
+    new (): RemoteResource;
 }
 /**
  * The RemoteResponse Interface holds response from server for specified request of client, this is client-side version of [Response](iotcon.html#Response) object.
@@ -8654,7 +8871,7 @@ export class Representation {
 }
 export interface RepresentationConstructor {
     prototype: Representation;
-    new(uriPath: string): Representation;
+    new (uriPath: string): Representation;
 }
 /**
  * The Request interface represents a details from client.
@@ -8701,7 +8918,7 @@ export class RequestReply {
 }
 export interface RequestReplyConstructor {
     prototype: RequestReply;
-    new(data: Bundle | null, code?: number): RequestReply;
+    new (data: Bundle | null, code?: number): RequestReply;
 }
 /**
  * This interface has an application control information requested and passed
@@ -8916,7 +9133,7 @@ export class Response {
 }
 export interface ResponseConstructor {
     prototype: Response;
-    new(request: Request): Response;
+    new (request: Request): Response;
 }
 /**
  * This interface defines SQL data type operators.
@@ -9076,7 +9293,7 @@ export class SearchFilter {
 }
 export interface SearchFilterConstructor {
     prototype: SearchFilter;
-    new(
+    new (
         contentType: MediaControllerContentType,
         category?: MediaControllerSearchCategory,
         keyword?: string | null,
@@ -9183,7 +9400,7 @@ export class SimpleCoordinates {
 }
 export interface SimpleCoordinatesConstructor {
     prototype: SimpleCoordinates;
-    new(latitude: number, longitude: number): SimpleCoordinates;
+    new (latitude: number, longitude: number): SimpleCoordinates;
 }
 /**
  * _SortMode_ is a common interface used for sorting of queried data.
@@ -9205,7 +9422,7 @@ export class SortMode {
 }
 export interface SortModeConstructor {
     prototype: SortMode;
-    new(attributeName: string, order?: SortModeOrder | null): SortMode;
+    new (attributeName: string, order?: SortModeOrder | null): SortMode;
 }
 /**
  * The SystemEventData interface defines what is retrieved from the event listener.
@@ -10300,8 +10517,7 @@ export interface SystemInfoPeripheral extends SystemInfoProperty {
 /**
  * This is a common abstract interface used by different types of system information objects.
  */
-export interface SystemInfoProperty {
-}
+export interface SystemInfoProperty {}
 /**
  * This property reflects the information of the SIM card information.
  *
@@ -10595,7 +10811,10 @@ export interface TVInfoManager {
      * @throws WebAPIException with error type InvalidValuesError, if any of the input parameters contain an invalid value.
      * @throws WebAPIException with error type UnknownError in any other error case.
      */
-    addCaptionValueChangeListener(key: CaptionInfoKey, callback: CaptionValueChangeCallback): number;
+    addCaptionValueChangeListener(
+        key: CaptionInfoKey,
+        callback: CaptionValueChangeCallback,
+    ): number;
     /**
      * Method returns the value for corresponding caption menu key.
      *
@@ -10757,7 +10976,10 @@ export interface TVWindowManager {
      * @privilegeLevel public
      * @privilegeName http://tizen.org/privilege/tv.window
      */
-    addVideoResolutionChangeListener(callback: VideoResolutionChangeCallback, type?: WindowType | null): number;
+    addVideoResolutionChangeListener(
+        callback: VideoResolutionChangeCallback,
+        type?: WindowType | null,
+    ): number;
     /**
      * Gets the list of available windows.
      *
@@ -10770,7 +10992,10 @@ export interface TVWindowManager {
      * @privilegeLevel public
      * @privilegeName http://tizen.org/privilege/tv.window
      */
-    getAvailableWindows(successCallback: AvailableWindowListCallback, errorCallback?: ErrorCallback | null): void;
+    getAvailableWindows(
+        successCallback: AvailableWindowListCallback,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Gets the area information of a TV window which is shown.
      *
@@ -10845,7 +11070,11 @@ export interface TVWindowManager {
      * @privilegeLevel public
      * @privilegeName http://tizen.org/privilege/tv.window
      */
-    hide(successCallback: SuccessCallback, errorCallback?: ErrorCallback | null, type?: WindowType | null): void;
+    hide(
+        successCallback: SuccessCallback,
+        errorCallback?: ErrorCallback | null,
+        type?: WindowType | null,
+    ): void;
     /**
      * Removes the listener to stop receiving notifications for the video resolution changes.
      *
@@ -11382,8 +11611,8 @@ export class TZDate {
 }
 export interface TZDateConstructor {
     prototype: TZDate;
-    new(datetime?: Date | null, timezone?: string | null): TZDate;
-    new(
+    new (datetime?: Date | null, timezone?: string | null): TZDate;
+    new (
         year: number,
         month: number,
         day: number,
@@ -11474,7 +11703,7 @@ export class TimeDuration {
 }
 export interface TimeDurationConstructor {
     prototype: TimeDuration;
-    new(length: number, unit?: TimeDurationUnit | null): TimeDuration;
+    new (length: number, unit?: TimeDurationUnit | null): TimeDuration;
 }
 /**
  * The TimeUtil interface that provides access to the time API.
@@ -12246,7 +12475,9 @@ export interface VoiceControlClient {
      * @throws WebAPIException with error type NotSupportedError, if this feature is not supported.
      * @throws WebAPIException with error type AbortError, if the operation cannot be finished properly.
      */
-    addLanguageChangeListener(listener: VoiceControlLanguageChangeCallback): number;
+    addLanguageChangeListener(
+        listener: VoiceControlLanguageChangeCallback,
+    ): number;
     /**
      * Registers a listener for getting recognition result.
      *
@@ -12323,7 +12554,10 @@ export interface VoiceControlClient {
      * @throws WebAPIException with error type SecurityError, if the application does not have the privilege to call this method.
      * @throws WebAPIException with error type AbortError, if the operation cannot be finished properly.
      */
-    setCommandList(list: VoiceControlCommand[], type?: VoiceControlCommandType | null): void;
+    setCommandList(
+        list: VoiceControlCommand[],
+        type?: VoiceControlCommandType | null,
+    ): void;
     /**
      * Unsets command list.
      *
@@ -12381,7 +12615,10 @@ export class VoiceControlCommand {
 }
 export interface VoiceControlCommandConstructor {
     prototype: VoiceControlCommand;
-    new(command: string, type?: VoiceControlCommandType | null): VoiceControlCommand;
+    new (
+        command: string,
+        type?: VoiceControlCommandType | null,
+    ): VoiceControlCommand;
 }
 /**
  * Generic error interface.
@@ -12429,7 +12666,11 @@ export interface WebAPIError {
  * @since 2.0
  */
 export class WebAPIException {
-    constructor(code: number | null, message: string | null, name: string | null);
+    constructor(
+        code: number | null,
+        message: string | null,
+        name: string | null,
+    );
     /**
      * 16-bit error code.
      *
@@ -12559,7 +12800,11 @@ export class WebAPIException {
 }
 export interface WebAPIExceptionConstructor {
     prototype: WebAPIException;
-    new(code: number | null, message: string | null, name: string | null): WebAPIException;
+    new (
+        code: number | null,
+        message: string | null,
+        name: string | null,
+    ): WebAPIException;
     /**
      * The operation has been aborted.
      */
@@ -12681,7 +12926,10 @@ export interface WebSettingManager {
      *
      * @warning http://tizen.org/privilege/websetting(public level privilege) **MUST NOT** be declared to use this API since 2.4.
      */
-    removeAllCookies(successCallback?: SuccessCallback | null, errorCallback?: ErrorCallback | null): void;
+    removeAllCookies(
+        successCallback?: SuccessCallback | null,
+        errorCallback?: ErrorCallback | null,
+    ): void;
     /**
      * Sets the custom user agent string for your Web application.
      *
@@ -13038,7 +13286,10 @@ export interface FileSystemStorageSuccessCallback {
  * @param appControl The application control that is passed to _ApplicationManager.findAppControl()_
  */
 export interface FindAppControlSuccessCallback {
-    (informationArray: ApplicationInformation[], appControl: ApplicationControl): void;
+    (
+        informationArray: ApplicationInformation[],
+        appControl: ApplicationControl,
+    ): void;
 }
 /**
  * Called when the device information is received.
@@ -13123,7 +13374,10 @@ export interface MediaControllerDisplayRotationChangeCallback {
  * @returns RequestReply object which is sent with the reply to the client.
  */
 export interface MediaControllerDisplayRotationChangeRequestCallback {
-    (clientName: ApplicationId, displayRotation: MediaControllerDisplayRotationType): void;
+    (
+        clientName: ApplicationId,
+        displayRotation: MediaControllerDisplayRotationType,
+    ): void;
 }
 /**
  * Called when server's attribute is changed.
@@ -13226,7 +13480,10 @@ export interface MediaControllerServerStatusChangeCallback {
  * @param remoteMessagePort RemoteMessagePort port that can be used to reply for the received message.
  */
 export interface MessagePortCallback {
-    (data: MessagePortDataItem[], remoteMessagePort: RemoteMessagePort | null): void;
+    (
+        data: MessagePortDataItem[],
+        remoteMessagePort: RemoteMessagePort | null,
+    ): void;
 }
 /**
  * Method invoked when the list of 3D modes is retrieved successfully.
@@ -13432,7 +13689,11 @@ export interface VoiceControlLanguageChangeCallback {
  * @param results The spoken text (e.g. registered command text like "play", "stop", etc.).
  */
 export interface VoiceControlResultCallback {
-    (event: VoiceControlResultEvent, list: VoiceControlCommand[], results: string): void;
+    (
+        event: VoiceControlResultEvent,
+        list: VoiceControlCommand[],
+        results: string,
+    ): void;
 }
 /**
  * The method invoked when the volume has been changed.
@@ -14110,7 +14371,9 @@ export type ByteStreamDataItemValue = ByteStream | ByteStream[];
  *
  * @since 3.0
  */
-export type MessagePortDataItem = MessagePortStringDataItem | MessagePortByteStreamDataItem;
+export type MessagePortDataItem =
+    | MessagePortStringDataItem
+    | MessagePortByteStreamDataItem;
 /**
  * A unique ID for an installed package.
  */
@@ -14143,24 +14406,23 @@ export type CaptionValue =
  * The actual list of supported keys depends on the platform.
  */
 export type InputDeviceKeyName = string;
-export type SystemInfoPropertyType =
-    & SystemInfoBattery
-    & SystemInfoCpu
-    & SystemInfoStorage
-    & SystemInfoStorageUnit
-    & SystemInfoDisplay
-    & SystemInfoPanel
-    & SystemInfoDeviceOrientation
-    & SystemInfoBuild
-    & SystemInfoLocale
-    & SystemInfoNetwork
-    & SystemInfoWifiNetwork
-    & SystemInfoEthernetNetwork
-    & SystemInfoCellularNetwork
-    & SystemInfoNetProxyNetwork
-    & SystemInfoPeripheral
-    & SystemInfoMemory
-    & SystemInfoVideoSource;
+export type SystemInfoPropertyType = SystemInfoBattery &
+    SystemInfoCpu &
+    SystemInfoStorage &
+    SystemInfoStorageUnit &
+    SystemInfoDisplay &
+    SystemInfoPanel &
+    SystemInfoDeviceOrientation &
+    SystemInfoBuild &
+    SystemInfoLocale &
+    SystemInfoNetwork &
+    SystemInfoWifiNetwork &
+    SystemInfoEthernetNetwork &
+    SystemInfoCellularNetwork &
+    SystemInfoNetProxyNetwork &
+    SystemInfoPeripheral &
+    SystemInfoMemory &
+    SystemInfoVideoSource;
 /**
  * Specifies the application launch mode when it is launched by _launchAppControl()_. This value may be overriden if application launched by _launchAppControl()_ has value _SINGLE_ configured in application manifest.
  *
@@ -14264,7 +14526,12 @@ export type AudioContentLyricsType = "SYNCHRONIZED" | "UNSYNCHRONIZED";
  *
  * @remark DOLBY\_DIGITAL\_PLUS is supported since Tizen 5.5
  */
-export type AudioOutputMode = "AAC" | "DOLBY" | "DOLBY_DIGITAL_PLUS" | "DTS" | "PCM";
+export type AudioOutputMode =
+    | "AAC"
+    | "DOLBY"
+    | "DOLBY_DIGITAL_PLUS"
+    | "DTS"
+    | "PCM";
 /**
  * Specifies starting point for seek operation.
  *
@@ -14289,7 +14556,11 @@ export type BaseSeekPosition = "BEGIN" | "CURRENT" | "END";
  *
  * @remark Empty array will be assigned STRING\_ARRAY type.
  */
-export type BundleValueType = "BYTES" | "BYTES_ARRAY" | "STRING" | "STRING_ARRAY";
+export type BundleValueType =
+    | "BYTES"
+    | "BYTES_ARRAY"
+    | "STRING"
+    | "STRING_ARRAY";
 /**
  * Specifies the values for the [daysOfTheWeek](#AlarmAbsolute::daysOfTheWeek) attribute.
  *
@@ -14482,7 +14753,13 @@ export type CompositeFilterType = "INTERSECTION" | "UNION";
  * *   IPV6\_ONLY - Internet Protocol version 6 connectivity only
  * *   ALL - All connectivities
  */
-export type ConnectivityType = "ALL" | "IP" | "IPV4_ONLY" | "IPV6_ONLY" | "PREFER_TCP" | "PREFER_UDP";
+export type ConnectivityType =
+    | "ALL"
+    | "IP"
+    | "IPV4_ONLY"
+    | "IPV6_ONLY"
+    | "PREFER_TCP"
+    | "PREFER_UDP";
 /**
  * Defines whether a content directory is stored on internal or external storage (such as a removable memory card).
  *
@@ -14569,7 +14846,14 @@ export type DownloadNetworkType = "ALL" | "CELLULAR" | "WIFI";
  * *   FAILED - Indicates that the download operation has failed due to some reasons.
  * *   ABANDONED - Indicates that the download operation has been abandoned.
  */
-export type DownloadState = "ABANDONED" | "CANCELED" | "COMPLETED" | "DOWNLOADING" | "FAILED" | "PAUSED" | "QUEUED";
+export type DownloadState =
+    | "ABANDONED"
+    | "CANCELED"
+    | "COMPLETED"
+    | "DOWNLOADING"
+    | "FAILED"
+    | "PAUSED"
+    | "QUEUED";
 /**
  * Specifies the data change event types. The possible values are:
  *
@@ -14582,7 +14866,13 @@ export type DownloadState = "ABANDONED" | "CANCELED" | "COMPLETED" | "DOWNLOADIN
  *
  * @since 4.0
  */
-export type EventType = "MAP_ADD" | "MAP_REMOVE" | "MAP_SET" | "SQL_DELETE" | "SQL_INSERT" | "SQL_UPDATE";
+export type EventType =
+    | "MAP_ADD"
+    | "MAP_REMOVE"
+    | "MAP_SET"
+    | "SQL_DELETE"
+    | "SQL_INSERT"
+    | "SQL_UPDATE";
 /**
  * Specifies an exposure balance program for an image.
  *
@@ -14651,7 +14941,13 @@ export type FileSystemStorageType = "EXTERNAL" | "INTERNAL";
  * *   ENDSWITH - Indicates that an attribute value should end with the specified string. This type of comparison works only on strings and is case insensitive.
  * *   EXISTS - Indicates that a filter comparison should match if the specified attribute exists.
  */
-export type FilterMatchFlag = "CONTAINS" | "ENDSWITH" | "EXACTLY" | "EXISTS" | "FULLSTRING" | "STARTSWITH";
+export type FilterMatchFlag =
+    | "CONTAINS"
+    | "ENDSWITH"
+    | "EXACTLY"
+    | "EXISTS"
+    | "FULLSTRING"
+    | "STARTSWITH";
 /**
  * Defines the orientation of an image.
  *
@@ -14729,7 +15025,12 @@ export type MediaControllerContentAgeRating =
  *
  * @since 5.5
  */
-export type MediaControllerContentType = "IMAGE" | "MUSIC" | "OTHER" | "UNDECIDED" | "VIDEO";
+export type MediaControllerContentType =
+    | "IMAGE"
+    | "MUSIC"
+    | "OTHER"
+    | "UNDECIDED"
+    | "VIDEO";
 /**
  * Types of supported media controller display modes.
  *
@@ -14740,7 +15041,11 @@ export type MediaControllerContentType = "IMAGE" | "MUSIC" | "OTHER" | "UNDECIDE
  *
  * @since 5.5
  */
-export type MediaControllerDisplayModeType = "CROPPED_FULL" | "FULL_SCREEN" | "LETTER_BOX" | "ORIGIN_SIZE";
+export type MediaControllerDisplayModeType =
+    | "CROPPED_FULL"
+    | "FULL_SCREEN"
+    | "LETTER_BOX"
+    | "ORIGIN_SIZE";
 /**
  * The media controller rotation values.
  *
@@ -14751,7 +15056,11 @@ export type MediaControllerDisplayModeType = "CROPPED_FULL" | "FULL_SCREEN" | "L
  *
  * @since 5.5
  */
-export type MediaControllerDisplayRotationType = "ROTATION_180" | "ROTATION_270" | "ROTATION_90" | "ROTATION_NONE";
+export type MediaControllerDisplayRotationType =
+    | "ROTATION_180"
+    | "ROTATION_270"
+    | "ROTATION_90"
+    | "ROTATION_NONE";
 /**
  * Defines media playback state.
  *
@@ -14763,7 +15072,14 @@ export type MediaControllerDisplayRotationType = "ROTATION_180" | "ROTATION_270"
  * *   FORWARD - Corresponds to the "forwarding" media controller playback state.
  * *   REWIND - Corresponds to the "rewinding" media controller playback state.
  */
-export type MediaControllerPlaybackState = "FORWARD" | "NEXT" | "PAUSE" | "PLAY" | "PREV" | "REWIND" | "STOP";
+export type MediaControllerPlaybackState =
+    | "FORWARD"
+    | "NEXT"
+    | "PAUSE"
+    | "PLAY"
+    | "PREV"
+    | "REWIND"
+    | "STOP";
 /**
  * Defines states for repeating media.
  *
@@ -14775,7 +15091,10 @@ export type MediaControllerPlaybackState = "FORWARD" | "NEXT" | "PAUSE" | "PLAY"
  *
  * @since 5.5
  */
-export type MediaControllerRepeatState = "REPEAT_ALL" | "REPEAT_OFF" | "REPEAT_ONE";
+export type MediaControllerRepeatState =
+    | "REPEAT_ALL"
+    | "REPEAT_OFF"
+    | "REPEAT_ONE";
 /**
  * Search category.
  *
@@ -14788,7 +15107,13 @@ export type MediaControllerRepeatState = "REPEAT_ALL" | "REPEAT_OFF" | "REPEAT_O
  *
  * @since 5.5
  */
-export type MediaControllerSearchCategory = "ALBUM" | "ARTIST" | "GENRE" | "NO_CATEGORY" | "TITLE" | "TPO";
+export type MediaControllerSearchCategory =
+    | "ALBUM"
+    | "ARTIST"
+    | "GENRE"
+    | "NO_CATEGORY"
+    | "TITLE"
+    | "TPO";
 /**
  * The media controller server state.
  *
@@ -14956,7 +15281,12 @@ export type SystemInfoLowMemoryStatus = "NORMAL" | "WARNING";
  *
  * @since 2.4
  */
-export type SystemInfoNetworkIpMode = "AUTO" | "DYNAMIC" | "FIXED" | "NONE" | "STATIC";
+export type SystemInfoNetworkIpMode =
+    | "AUTO"
+    | "DYNAMIC"
+    | "FIXED"
+    | "NONE"
+    | "STATIC";
 /**
  * Data Network Type.
  * @since 2.0
@@ -14981,7 +15311,12 @@ export type SystemInfoNetworkType =
  * @note _deprecated_ 2.3 MOBILE\_WEB
  * @note _deprecated_ 2.3 MOBILE\_FULL MOBILE\_FULL and MOBILE\_WEB are deprecated since 2.3. Beginning with Tizen 2.3, MOBILE is returned instead.
  */
-export type SystemInfoProfile = "MOBILE" | "MOBILE_FULL" | "MOBILE_WEB" | "TV" | "WEARABLE";
+export type SystemInfoProfile =
+    | "MOBILE"
+    | "MOBILE_FULL"
+    | "MOBILE_WEB"
+    | "TV"
+    | "WEARABLE";
 /**
  * The device property identifier.
  *
@@ -15045,7 +15380,16 @@ export type SystemInfoSimState =
  *
  * @since 2.3
  */
-export type SystemInfoVideoSourceType = "AV" | "COMP" | "DVI" | "HDMI" | "MEDIA" | "PC" | "SCART" | "SVIDEO" | "TV";
+export type SystemInfoVideoSourceType =
+    | "AV"
+    | "COMP"
+    | "DVI"
+    | "HDMI"
+    | "MEDIA"
+    | "PC"
+    | "SCART"
+    | "SVIDEO"
+    | "TV";
 /**
  * Wi-Fi Encryption Type.
  *
@@ -15057,7 +15401,12 @@ export type SystemInfoVideoSourceType = "AV" | "COMP" | "DVI" | "HDMI" | "MEDIA"
  *
  * @since 2.4
  */
-export type SystemInfoWifiEncryptionType = "AES" | "NONE" | "TKIP" | "TKIP_AES_MIXED" | "WEP";
+export type SystemInfoWifiEncryptionType =
+    | "AES"
+    | "NONE"
+    | "TKIP"
+    | "TKIP_AES_MIXED"
+    | "WEP";
 /**
  * Wi-Fi Security Mode.
  *
@@ -15069,7 +15418,12 @@ export type SystemInfoWifiEncryptionType = "AES" | "NONE" | "TKIP" | "TKIP_AES_M
  *
  * @since 2.4
  */
-export type SystemInfoWifiSecurityMode = "EAP" | "NONE" | "WEP" | "WPA2_PSK" | "WPA_PSK";
+export type SystemInfoWifiSecurityMode =
+    | "EAP"
+    | "NONE"
+    | "WEP"
+    | "WPA2_PSK"
+    | "WPA_PSK";
 /**
  * Specifies the TimeDuration unit (milliseconds, seconds, minutes, hours or days).
  *

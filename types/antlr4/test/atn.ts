@@ -40,7 +40,13 @@ import DoubleDict from "antlr4/utils/DoubleDict";
 
 // TODO go through all the ATN's and ensure they're all type tested.
 
-const { ATN, ATNDeserializer, LexerATNSimulator, ParserATNSimulator, PredictionMode } = atn;
+const {
+    ATN,
+    ATNDeserializer,
+    LexerATNSimulator,
+    ParserATNSimulator,
+    PredictionMode,
+} = atn;
 
 class NewLexerAction extends LexerAction {}
 
@@ -72,7 +78,10 @@ const noViableAltExceptionInstance = new NoViableAltException(
 const parserRuleContextInstance = new ParserRuleContext();
 const predicateInstance = new Predicate();
 const predictionContextCacheInstance = new PredictionContextCache();
-const atnSimulatorInstance = new ATNSimulator(atnInstance, predictionContextCacheInstance);
+const atnSimulatorInstance = new ATNSimulator(
+    atnInstance,
+    predictionContextCacheInstance,
+);
 const predPredictionInstance = new PredPrediction(predicateInstance, 0);
 const simStateInstance = new SimState();
 const tokenStreamInstance = new TokenStream();
@@ -190,7 +199,9 @@ atnDeserializerInstance.checkCondition(false); // $ExpectType void
 atnDeserializerInstance.checkCondition(true, ""); // $ExpectType void
 atnDeserializerInstance.readInt(); // $ExpectType number | undefined
 atnDeserializerInstance.readInt32(); // $ExpectType number
-atnDeserializerInstance.edgeFactory(atnInstance, 0, 0, 0, 0, 0, 0, [intervalSetInstance]); // $ExpectType Transition
+atnDeserializerInstance.edgeFactory(atnInstance, 0, 0, 0, 0, 0, 0, [
+    intervalSetInstance,
+]); // $ExpectType Transition
 atnDeserializerInstance.stateFactory(0, 0); // $ExpectType BasicState | undefined
 atnDeserializerInstance.lexerActionFactory(0, 0, 0); // $ExpectType LexerAction
 
@@ -224,10 +235,16 @@ LexerActionType.SKIP; // $ExpectType LexerActionType.SKIP
 LexerActionType.TYPE; // $ExpectType LexerActionType.TYPE
 
 // LexerATNConfig
-const lexerAtnConfigInstance = new LexerATNConfig(atnStateInstance, atnConfigInstance);
+const lexerAtnConfigInstance = new LexerATNConfig(
+    atnStateInstance,
+    atnConfigInstance,
+);
 lexerAtnConfigInstance.lexerActionExecutor; // $ExpectType LexerActionExecutor | null
 lexerAtnConfigInstance.passedThroughNonGreedyDecision; // $ExpectType boolean
-lexerAtnConfigInstance.checkNonGreedyDecision(atnConfigInstance, atnStateInstance); // $ExpectType
+lexerAtnConfigInstance.checkNonGreedyDecision(
+    atnConfigInstance,
+    atnStateInstance,
+); // $ExpectType
 
 // LexerATNSimulator
 const dfaInstance = new DFA(atnInstance, 0);
@@ -253,14 +270,45 @@ lexerAtnSimulatorInstance.reset(); // $ExpectType void
 lexerAtnSimulatorInstance.matchATN(inputStreamInstance); // $ExpectType number
 lexerAtnSimulatorInstance.execATN(inputStreamInstance, dfaStateInstance); // $ExpectType number
 lexerAtnSimulatorInstance.getExistingTargetState(dfaStateInstance, 0); // $ExpectType DFAState | null
-lexerAtnSimulatorInstance.computeTargetState(inputStreamInstance, dfaStateInstance, 0); // $ExpectType DFAState
-lexerAtnSimulatorInstance.failOrAccept(simStateInstance, inputStreamInstance, atnConfigSetInstance, 0); // $ExpectType number
-lexerAtnSimulatorInstance.getReachableConfigSet(inputStreamInstance, atnConfigSetInstance, atnConfigSetInstance, 0); // $ExpectType void
-lexerAtnSimulatorInstance.accept(inputStreamInstance, lexerActionExecutorInstance, 0, 0, 0, 0); // $ExpectType void
+lexerAtnSimulatorInstance.computeTargetState(
+    inputStreamInstance,
+    dfaStateInstance,
+    0,
+); // $ExpectType DFAState
+lexerAtnSimulatorInstance.failOrAccept(
+    simStateInstance,
+    inputStreamInstance,
+    atnConfigSetInstance,
+    0,
+); // $ExpectType number
+lexerAtnSimulatorInstance.getReachableConfigSet(
+    inputStreamInstance,
+    atnConfigSetInstance,
+    atnConfigSetInstance,
+    0,
+); // $ExpectType void
+lexerAtnSimulatorInstance.accept(
+    inputStreamInstance,
+    lexerActionExecutorInstance,
+    0,
+    0,
+    0,
+    0,
+); // $ExpectType void
 lexerAtnSimulatorInstance.accept(inputStreamInstance, null, 0, 0, 0, 0); // $ExpectType void
 lexerAtnSimulatorInstance.getReachableTarget(transitionInstance, 0); // $ExpectType ATNState
-lexerAtnSimulatorInstance.computeStartState(inputStreamInstance, decisionStateInstance); // $ExpectType OrderedATNConfigSet
-lexerAtnSimulatorInstance.closure(inputStreamInstance, atnConfigInstance, atnConfigSetInstance, false, false, false); // $ExpectType boolean
+lexerAtnSimulatorInstance.computeStartState(
+    inputStreamInstance,
+    decisionStateInstance,
+); // $ExpectType OrderedATNConfigSet
+lexerAtnSimulatorInstance.closure(
+    inputStreamInstance,
+    atnConfigInstance,
+    atnConfigSetInstance,
+    false,
+    false,
+    false,
+); // $ExpectType boolean
 // $ExpectType LexerATNConfig | null
 lexerAtnSimulatorInstance.getEpsilonTarget(
     inputStreamInstance,
@@ -271,11 +319,25 @@ lexerAtnSimulatorInstance.getEpsilonTarget(
     false,
 );
 lexerAtnSimulatorInstance.evaluatePredicate(inputStreamInstance, 0, 0, false); // $ExpectType boolean
-lexerAtnSimulatorInstance.captureSimState(simStateInstance, inputStreamInstance, dfaStateInstance); // $ExpectType void
+lexerAtnSimulatorInstance.captureSimState(
+    simStateInstance,
+    inputStreamInstance,
+    dfaStateInstance,
+); // $ExpectType void
 lexerAtnSimulatorInstance.addDFAEdge(dfaStateInstance, 0); // $ExpectType DFAState
 lexerAtnSimulatorInstance.addDFAEdge(dfaStateInstance, 0, dfaStateInstance); // $ExpectType DFAState
-lexerAtnSimulatorInstance.addDFAEdge(dfaStateInstance, 0, undefined, atnConfigSetInstance); // $ExpectType DFAState
-lexerAtnSimulatorInstance.addDFAEdge(dfaStateInstance, 0, dfaStateInstance, atnConfigSetInstance); // $ExpectType DFAState
+lexerAtnSimulatorInstance.addDFAEdge(
+    dfaStateInstance,
+    0,
+    undefined,
+    atnConfigSetInstance,
+); // $ExpectType DFAState
+lexerAtnSimulatorInstance.addDFAEdge(
+    dfaStateInstance,
+    0,
+    dfaStateInstance,
+    atnConfigSetInstance,
+); // $ExpectType DFAState
 lexerAtnSimulatorInstance.addDFAState(atnConfigSetInstance); // $ExpectType DFAState
 lexerAtnSimulatorInstance.getDFA(0); // $ExpectType DFA | undefined
 lexerAtnSimulatorInstance.getText(inputStreamInstance); // $ExpectType string
@@ -286,8 +348,16 @@ lexerAtnSimulatorInstance.getTokenName(0); // $ExpectType string
 LL1Analyzer.HIT_PRED; // $ExpectType 0
 const ll1AnalyzerInstance = new LL1Analyzer(atnStateInstance);
 ll1AnalyzerInstance.getDecisionLookahead(atnStateInstance); // $ExpectType (IntervalSet | null)[] | null
-ll1AnalyzerInstance.LOOK(atnStateInstance, atnStateInstance, parserRuleContextInstance); // $ExpectType IntervalSet
-ll1AnalyzerInstance.LOOK(atnStateInstance, blockEndStateInstance, parserRuleContextInstance); // $ExpectType IntervalSet
+ll1AnalyzerInstance.LOOK(
+    atnStateInstance,
+    atnStateInstance,
+    parserRuleContextInstance,
+); // $ExpectType IntervalSet
+ll1AnalyzerInstance.LOOK(
+    atnStateInstance,
+    blockEndStateInstance,
+    parserRuleContextInstance,
+); // $ExpectType IntervalSet
 
 // OrderedATNConfigSet
 new OrderedATNConfigSet();
@@ -314,11 +384,24 @@ parserATNSimulatorInstance.debug_list_atn_decisions; // $ExpectType boolean
 parserATNSimulatorInstance.dfa_debug; // $ExpectType boolean
 parserATNSimulatorInstance.retry_debug; // $ExpectType boolean
 parserATNSimulatorInstance.reset(); // $ExpectType void
-parserATNSimulatorInstance.adaptivePredict(tokenStreamInstance, 0, parserRuleContextInstance); // $ExpectType ParserATNSimulator
-parserATNSimulatorInstance.execATN(dfaInstance, dfaStateInstance, tokenStreamInstance, 0, parserRuleContextInstance); // $ExpectType number
+parserATNSimulatorInstance.adaptivePredict(
+    tokenStreamInstance,
+    0,
+    parserRuleContextInstance,
+); // $ExpectType ParserATNSimulator
+parserATNSimulatorInstance.execATN(
+    dfaInstance,
+    dfaStateInstance,
+    tokenStreamInstance,
+    0,
+    parserRuleContextInstance,
+); // $ExpectType number
 parserATNSimulatorInstance.getExistingTargetState(dfaStateInstance, 0); // $ExpectType DFAState
 parserATNSimulatorInstance.computeTargetState(dfaInstance, dfaStateInstance, 0); // $ExpectType DFAState
-parserATNSimulatorInstance.predicateDFAState(dfaStateInstance, decisionStateInstance); // $ExpectType void
+parserATNSimulatorInstance.predicateDFAState(
+    dfaStateInstance,
+    decisionStateInstance,
+); // $ExpectType void
 // $ExpectType number
 parserATNSimulatorInstance.execATNWithFullContext(
     dfaInstance,
@@ -329,21 +412,50 @@ parserATNSimulatorInstance.execATNWithFullContext(
     parserRuleContextInstance,
 );
 parserATNSimulatorInstance.computeReachSet(atnConfigSetInstance, 0, false); // $ExpectType ATNConfigSet
-parserATNSimulatorInstance.removeAllConfigsNotInRuleStopState(atnConfigSetInstance, false); // $ExpectType ATNConfigSet
-parserATNSimulatorInstance.computeStartState(atnStateInstance, parserRuleContextInstance, false); // $ExpectType ATNConfigSet
+parserATNSimulatorInstance.removeAllConfigsNotInRuleStopState(
+    atnConfigSetInstance,
+    false,
+); // $ExpectType ATNConfigSet
+parserATNSimulatorInstance.computeStartState(
+    atnStateInstance,
+    parserRuleContextInstance,
+    false,
+); // $ExpectType ATNConfigSet
 parserATNSimulatorInstance.applyPrecedenceFilter(atnConfigSetInstance); // $ExpectType ATNConfigSet
 parserATNSimulatorInstance.getReachableTarget(transitionInstance, 0); // $ExpectType ATNState
-parserATNSimulatorInstance.getPredsForAmbigAlts(bitsetInstance, atnConfigSetInstance, 0); // $ExpectType SemanticContext[]
-parserATNSimulatorInstance.getPredicatePredictions(bitsetInstance, [predicateInstance]); // $ExpectType PredPrediction[] | null
+parserATNSimulatorInstance.getPredsForAmbigAlts(
+    bitsetInstance,
+    atnConfigSetInstance,
+    0,
+); // $ExpectType SemanticContext[]
+parserATNSimulatorInstance.getPredicatePredictions(bitsetInstance, [
+    predicateInstance,
+]); // $ExpectType PredPrediction[] | null
 // $ExpectType number
 parserATNSimulatorInstance.getSynValidOrSemInvalidAltThatFinishedDecisionEntryRule(
     atnConfigSetInstance,
     parserRuleContextInstance,
 );
-parserATNSimulatorInstance.getAltThatFinishedDecisionEntryRule(atnConfigSetInstance); // $ExpectType number
-parserATNSimulatorInstance.splitAccordingToSemanticValidity(atnConfigSetInstance, parserRuleContextInstance); // $ExpectType ATNConfigSet[]
-parserATNSimulatorInstance.evalSemanticContext([predPredictionInstance], parserRuleContextInstance, false); // $ExpectType BitSet
-parserATNSimulatorInstance.closure(atnConfigInstance, atnConfigSetInstance, hashSetInstance, false, false, false); // $ExpectType void
+parserATNSimulatorInstance.getAltThatFinishedDecisionEntryRule(
+    atnConfigSetInstance,
+); // $ExpectType number
+parserATNSimulatorInstance.splitAccordingToSemanticValidity(
+    atnConfigSetInstance,
+    parserRuleContextInstance,
+); // $ExpectType ATNConfigSet[]
+parserATNSimulatorInstance.evalSemanticContext(
+    [predPredictionInstance],
+    parserRuleContextInstance,
+    false,
+); // $ExpectType BitSet
+parserATNSimulatorInstance.closure(
+    atnConfigInstance,
+    atnConfigSetInstance,
+    hashSetInstance,
+    false,
+    false,
+    false,
+); // $ExpectType void
 // $ExpectType void
 parserATNSimulatorInstance.closureCheckingStopState(
     atnConfigInstance,
@@ -354,24 +466,73 @@ parserATNSimulatorInstance.closureCheckingStopState(
     0,
     false,
 );
-parserATNSimulatorInstance.canDropLoopEntryEdgeInLeftRecursiveRule(atnConfigInstance); // $ExpectType boolean
+parserATNSimulatorInstance.canDropLoopEntryEdgeInLeftRecursiveRule(
+    atnConfigInstance,
+); // $ExpectType boolean
 parserATNSimulatorInstance.getRuleName(0); // $ExpectType string
-parserATNSimulatorInstance.getEpsilonTarget(atnConfigInstance, transitionInstance, false, false, false, false); // $ExpectType ATNConfig | null
-parserATNSimulatorInstance.actionTransition(atnConfigInstance, transitionInstance); // $ExpectType ATNConfig
-parserATNSimulatorInstance.precedenceTransition(atnConfigInstance, transitionInstance, false, false, false); // $ExpectType ATNConfig | null
-parserATNSimulatorInstance.predTransition(atnConfigInstance, transitionInstance, false, false, false); // $ExpectType ATNConfig | null
-parserATNSimulatorInstance.ruleTransition(atnConfigInstance, transitionInstance); // $ExpectType ATNConfig
+parserATNSimulatorInstance.getEpsilonTarget(
+    atnConfigInstance,
+    transitionInstance,
+    false,
+    false,
+    false,
+    false,
+); // $ExpectType ATNConfig | null
+parserATNSimulatorInstance.actionTransition(
+    atnConfigInstance,
+    transitionInstance,
+); // $ExpectType ATNConfig
+parserATNSimulatorInstance.precedenceTransition(
+    atnConfigInstance,
+    transitionInstance,
+    false,
+    false,
+    false,
+); // $ExpectType ATNConfig | null
+parserATNSimulatorInstance.predTransition(
+    atnConfigInstance,
+    transitionInstance,
+    false,
+    false,
+    false,
+); // $ExpectType ATNConfig | null
+parserATNSimulatorInstance.ruleTransition(
+    atnConfigInstance,
+    transitionInstance,
+); // $ExpectType ATNConfig
 parserATNSimulatorInstance.getConflictingAlts(atnConfigSetInstance); // $ExpectType BitSet
 parserATNSimulatorInstance.getConflictingAltsOrUniqueAlt(atnConfigSetInstance); // $ExpectType BitSet
 parserATNSimulatorInstance.getTokenName(0); // $ExpectType string
 parserATNSimulatorInstance.getLookaheadName(tokenStreamInstance); // $ExpectType string
 parserATNSimulatorInstance.dumpDeadEndConfigs(noViableAltExceptionInstance); // $ExpectType void
-parserATNSimulatorInstance.noViableAlt(tokenStreamInstance, parserRuleContextInstance, atnConfigSetInstance, 0); // $ExpectType NoViableAltException
+parserATNSimulatorInstance.noViableAlt(
+    tokenStreamInstance,
+    parserRuleContextInstance,
+    atnConfigSetInstance,
+    0,
+); // $ExpectType NoViableAltException
 parserATNSimulatorInstance.getUniqueAlt(atnConfigSetInstance); // $ExpectType number
-parserATNSimulatorInstance.addDFAEdge(dfaInstance, dfaStateInstance, 0, dfaStateInstance); // $ExpectType DFAState
+parserATNSimulatorInstance.addDFAEdge(
+    dfaInstance,
+    dfaStateInstance,
+    0,
+    dfaStateInstance,
+); // $ExpectType DFAState
 parserATNSimulatorInstance.addDFAState(dfaInstance, dfaStateInstance); // $ExpectType DFAState
-parserATNSimulatorInstance.reportAttemptingFullContext(dfaInstance, bitsetInstance, atnConfigSetInstance, 0, 0); // $ExpectType void
-parserATNSimulatorInstance.reportContextSensitivity(dfaInstance, 0, atnConfigSetInstance, 0, 0); // $ExpectType void
+parserATNSimulatorInstance.reportAttemptingFullContext(
+    dfaInstance,
+    bitsetInstance,
+    atnConfigSetInstance,
+    0,
+    0,
+); // $ExpectType void
+parserATNSimulatorInstance.reportContextSensitivity(
+    dfaInstance,
+    0,
+    atnConfigSetInstance,
+    0,
+    0,
+); // $ExpectType void
 // $ExpectType void
 parserATNSimulatorInstance.reportAmbiguity(
     dfaInstance,
@@ -387,7 +548,10 @@ parserATNSimulatorInstance.reportAmbiguity(
 const precedencePredicateInstance = new PrecedencePredicate(0);
 precedencePredicateInstance.precedence; // $ExpectType number
 precedencePredicateInstance.evaluate(parserInstance, parserRuleContextInstance); // $ExpectType boolean
-precedencePredicateInstance.evalPrecedence(parserInstance, parserRuleContextInstance); // $ExpectType PrecedencePredicate
+precedencePredicateInstance.evalPrecedence(
+    parserInstance,
+    parserRuleContextInstance,
+); // $ExpectType PrecedencePredicate
 precedencePredicateInstance.compareTo(precedencePredicateInstance); // $ExpectType number
 precedencePredicateInstance.updateHashCode(hashCodeInstance); // $ExpectType void
 precedencePredicateInstance.equals(precedencePredicateInstance); // $ExpectType boolean
@@ -439,11 +603,17 @@ class NewSemanticContext extends SemanticContext {
     evaluate(_parser: Recognizer, _outerContext: RuleContext): boolean {
         throw new Error("Method not implemented.");
     }
-    evalPrecedence(_parser: Recognizer, _outerContext: RuleContext): SemanticContext | null {
+    evalPrecedence(
+        _parser: Recognizer,
+        _outerContext: RuleContext,
+    ): SemanticContext | null {
         throw new Error("Method not implemented.");
     }
 }
 const newSemanticContextInstance = new NewSemanticContext();
 newSemanticContextInstance.hashCode(); // $ExpectType number
 newSemanticContextInstance.evaluate(parserInstance, parserRuleContextInstance); // $ExpectType boolean
-newSemanticContextInstance.evalPrecedence(parserInstance, parserRuleContextInstance); // $ExpectType SemanticContext | null
+newSemanticContextInstance.evalPrecedence(
+    parserInstance,
+    parserRuleContextInstance,
+); // $ExpectType SemanticContext | null

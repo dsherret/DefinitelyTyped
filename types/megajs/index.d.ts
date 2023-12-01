@@ -84,31 +84,73 @@ export class Storage extends EventEmitter {
     trash: MutableFile;
     inbox: MutableFile;
     mounts: readonly File[];
-    upload(options: UploadOptions | string, buffer?: Buffer, cb?: any): Writable;
-    mkdir(options: MakeDirectoryOptions | string, cb: (err: Error | undefined, file: MutableFile) => void): Readable;
+    upload(
+        options: UploadOptions | string,
+        buffer?: Buffer,
+        cb?: any,
+    ): Writable;
+    mkdir(
+        options: MakeDirectoryOptions | string,
+        cb: (err: Error | undefined, file: MutableFile) => void,
+    ): Readable;
     reload(cb: any): Readable;
     login(cb: any): Readable;
     getAccountInfo(cb: any): AccountInfo;
     toJSON(): JSON;
     on(event: "ready", listener: (storage: Storage) => void): this;
-    on(event: "move", listener: (file: MutableFile, oldDir: MutableFile) => void): this;
-    on(event: "add" | "delete" | "update", listener: (file: MutableFile) => void): this;
+    on(
+        event: "move",
+        listener: (file: MutableFile, oldDir: MutableFile) => void,
+    ): this;
+    on(
+        event: "add" | "delete" | "update",
+        listener: (file: MutableFile) => void,
+    ): this;
 }
 
 export class MutableFile extends File {
     constructor(options: FileOptions | string, storage: Storage);
-    upload(options: UploadOptions | string, buffer?: Buffer, cb?: any): Writable;
+    upload(
+        options: UploadOptions | string,
+        buffer?: Buffer,
+        cb?: any,
+    ): Writable;
     mkdir(options: MakeDirectoryOptions | string, cb?: any): Readable;
-    importFile(file: File | string, cb: (err: Error | undefined, file: MutableFile) => void): Readable;
-    link(options: LinkOptions | undefined, cb: (err: Error | undefined, url: string) => void): Readable;
-    shareFolder(options: LinkOptions | undefined, cb: (err: Error | undefined, url: string) => void): Readable;
-    delete(permanent: true | undefined, cb: (err: Error | undefined) => void): Readable;
-    moveTo(target: MutableFile | string, cb: (err: Error | undefined) => void): Readable;
-    setAttributes(attributes: object, cb: (err: Error | undefined) => void): Readable;
-    uploadAttribute(type: string | number, opt?: Buffer | Stream, cb?: any): Readable;
+    importFile(
+        file: File | string,
+        cb: (err: Error | undefined, file: MutableFile) => void,
+    ): Readable;
+    link(
+        options: LinkOptions | undefined,
+        cb: (err: Error | undefined, url: string) => void,
+    ): Readable;
+    shareFolder(
+        options: LinkOptions | undefined,
+        cb: (err: Error | undefined, url: string) => void,
+    ): Readable;
+    delete(
+        permanent: true | undefined,
+        cb: (err: Error | undefined) => void,
+    ): Readable;
+    moveTo(
+        target: MutableFile | string,
+        cb: (err: Error | undefined) => void,
+    ): Readable;
+    setAttributes(
+        attributes: object,
+        cb: (err: Error | undefined) => void,
+    ): Readable;
+    uploadAttribute(
+        type: string | number,
+        opt?: Buffer | Stream,
+        cb?: any,
+    ): Readable;
     rename(newFileName: string, cb: (err: Error | undefined) => void): Readable;
     setLabel(label: string, cb: (err: Error | undefined) => void): Readable;
-    setFavorite(isFavorite: boolean, cb: (err: Error | undefined) => void): Readable;
+    setFavorite(
+        isFavorite: boolean,
+        cb: (err: Error | undefined) => void,
+    ): Readable;
     on(event: "move", listener: (oldDir: MutableFile) => void): this;
     on(event: "delete" | "update", listener: () => void): this;
 }

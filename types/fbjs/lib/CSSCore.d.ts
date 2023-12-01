@@ -20,17 +20,27 @@ declare namespace CSSCore {
     /**
      * Helper to add or remove a class from an element based on a condition.
      */
-    function conditionClass(element: HTMLElement, className: string, condition: boolean): HTMLElement;
+    function conditionClass(
+        element: HTMLElement,
+        className: string,
+        condition: boolean,
+    ): HTMLElement;
 
     /**
      * Tests whether the element has the class specified.
      */
-    function hasClass(element: HTMLElement | DOMWindow, className: string): boolean;
+    function hasClass(
+        element: HTMLElement | DOMWindow,
+        className: string,
+    ): boolean;
 
     /**
      * Tests whether the element matches the selector specified
      */
-    function matchesSelector(element: HTMLElement | DOMWindow, selector: string): boolean;
+    function matchesSelector(
+        element: HTMLElement | DOMWindow,
+        selector: string,
+    ): boolean;
 }
 // eslint-disable-next-line @definitelytyped/export-just-namespace
 export = CSSCore;

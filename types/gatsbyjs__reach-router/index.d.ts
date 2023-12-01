@@ -54,7 +54,9 @@ export interface LocationProviderProps {
     children?: React.ReactNode | LocationProviderRenderFn | undefined;
 }
 
-export type LocationProviderRenderFn = (context: LocationContext) => React.ReactNode;
+export type LocationProviderRenderFn = (
+    context: LocationContext,
+) => React.ReactNode;
 
 export interface LocationContext {
     location: WindowLocation;

@@ -20,7 +20,12 @@ export declare class PathPoint {
     /**
      * @ignore
      */
-    constructor(index: number, subPathIndex: number, pathId: number, docId: number);
+    constructor(
+        index: number,
+        subPathIndex: number,
+        pathId: number,
+        docId: number,
+    );
     /**
      * The class name of the referenced object: *"PathPoint"*.
      * @minVersion 23.3

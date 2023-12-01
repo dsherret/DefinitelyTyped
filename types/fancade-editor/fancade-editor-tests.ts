@@ -63,10 +63,10 @@ setEventListener("block-placed", (x, y, z) => {});
 setEventListener("update", () => {});
 
 // $ExpectType void
-setEventListener("keydown", key => {});
+setEventListener("keydown", (key) => {});
 
 // $ExpectType void
-setEventListener("keyup", key => {});
+setEventListener("keyup", (key) => {});
 
 // $ExpectType void
 selectAt(0, 0, 0);

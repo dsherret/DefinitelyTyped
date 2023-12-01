@@ -67,7 +67,9 @@ export const PRESENTATIONML_FORMAT: string;
 
 export const sessionToken: string;
 
-export function authenticateBot(SymConfig: SymphonyConfiguration): Promise<AuthInfo>;
+export function authenticateBot(
+    SymConfig: SymphonyConfiguration,
+): Promise<AuthInfo>;
 
 export function authenticateExtApp(): Promise<AppInfo>;
 
@@ -79,7 +81,10 @@ export function getDatafeedEventsService(options: any): any;
 
 export function getFirehoseEventsService(subscriberCallback: any): void;
 
-export function initBot(pathToConfigFile: string, pathToLoadBalancerConfigFile?: string): Promise<AuthInfo>;
+export function initBot(
+    pathToConfigFile: string,
+    pathToLoadBalancerConfigFile?: string,
+): Promise<AuthInfo>;
 
 export function setDebugMode(mode: string): void;
 

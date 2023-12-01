@@ -2,7 +2,9 @@ import * as express from "express";
 
 export = expressLegacyExpires;
 
-declare function expressLegacyExpires(options?: expressLegacyExpires.Options): express.RequestHandler;
+declare function expressLegacyExpires(
+    options?: expressLegacyExpires.Options,
+): express.RequestHandler;
 
 declare namespace expressLegacyExpires {
     interface Options {

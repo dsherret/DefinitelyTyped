@@ -2,7 +2,13 @@ import * as React from "react";
 import { ReactDivAttr } from "../../../typings/shared";
 import { ButtonProps } from "../Button";
 
-type ExcludedAttributes = "role" | "onBlur" | "onClick" | "onKeyDown" | "onTransitionEnd" | "ref";
+type ExcludedAttributes =
+    | "role"
+    | "onBlur"
+    | "onClick"
+    | "onKeyDown"
+    | "onTransitionEnd"
+    | "ref";
 
 export interface ModalSecondaryButtonConfig {
     buttonText: NonNullable<React.ReactNode>;
@@ -30,8 +36,16 @@ export interface ModalProps extends Omit<ReactDivAttr, ExcludedAttributes> {
     modalHeading?: React.ReactNode | undefined;
     modalLabel?: React.ReactNode | undefined;
     open?: boolean | undefined;
-    onRequestClose?(event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLDivElement>): void;
-    onRequestSubmit?(event: React.MouseEvent<HTMLButtonElement> | React.KeyboardEvent<HTMLDivElement>): void;
+    onRequestClose?(
+        event:
+            | React.MouseEvent<HTMLButtonElement>
+            | React.KeyboardEvent<HTMLDivElement>,
+    ): void;
+    onRequestSubmit?(
+        event:
+            | React.MouseEvent<HTMLButtonElement>
+            | React.KeyboardEvent<HTMLDivElement>,
+    ): void;
     onSecondarySubmit?: ModalProps["onRequestClose"] | undefined;
     passiveModal?: boolean | undefined;
     preventCloseOnClickOutside?: boolean | undefined;

@@ -1,6 +1,6 @@
 declare namespace istanbul {
     interface Istanbul {
-        new(options?: any): Istanbul;
+        new (options?: any): Istanbul;
         Collector: Collector;
         config: Config;
         ContentWriter: ContentWriter;
@@ -16,50 +16,42 @@ declare namespace istanbul {
     }
 
     interface Collector {
-        new(options?: any): Collector;
+        new (options?: any): Collector;
         add(coverage: any, testName?: string): void;
         getFinalCoverage(): any;
     }
 
-    interface Config {
-    }
+    interface Config {}
 
-    interface ContentWriter {
-    }
+    interface ContentWriter {}
 
-    interface FileWriter {
-    }
+    interface FileWriter {}
 
-    interface Hook {
-    }
+    interface Hook {}
 
     interface Instrumenter {
-        new(options?: any): Instrumenter;
+        new (options?: any): Instrumenter;
         instrumentSync(code: string, filename: string): string;
     }
 
-    interface Report {
-    }
+    interface Report {}
 
     interface Configuration {
-        new(obj: any, overrides: any): Configuration;
+        new (obj: any, overrides: any): Configuration;
     }
 
     interface Reporter {
-        new(cfg?: Configuration, dir?: string): Reporter;
+        new (cfg?: Configuration, dir?: string): Reporter;
         add(fmt: string): void;
         addAll(fmts: string[]): void;
         write(collector: Collector, sync: boolean, callback: Function): void;
     }
 
-    interface Store {
-    }
+    interface Store {}
 
-    interface ObjectUtils {
-    }
+    interface ObjectUtils {}
 
-    interface Writer {
-    }
+    interface Writer {}
 }
 
 declare var istanbul: istanbul.Istanbul;

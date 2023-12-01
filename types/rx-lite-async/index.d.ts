@@ -9,9 +9,17 @@ declare namespace Rx {
          */
         startAsync<T>(functionAsync: () => IPromise<T>): Observable<T>;
 
-        start<T>(func: () => T, context?: any, scheduler?: IScheduler): Observable<T>;
+        start<T>(
+            func: () => T,
+            context?: any,
+            scheduler?: IScheduler,
+        ): Observable<T>;
 
-        toAsync<TResult>(func: () => TResult, context?: any, scheduler?: IScheduler): () => Observable<TResult>;
+        toAsync<TResult>(
+            func: () => TResult,
+            context?: any,
+            scheduler?: IScheduler,
+        ): () => Observable<TResult>;
         toAsync<T1, TResult>(
             func: (arg1: T1) => TResult,
             context?: any,
@@ -121,17 +129,32 @@ declare namespace Rx {
             func: (arg1: T1, arg2: T2, arg3?: T3, ...args: T4[]) => TResult,
             context?: any,
             scheduler?: IScheduler,
-        ): (arg1: T1, arg2: T2, arg3?: T3, ...args: T4[]) => Observable<TResult>;
+        ): (
+            arg1: T1,
+            arg2: T2,
+            arg3?: T3,
+            ...args: T4[]
+        ) => Observable<TResult>;
         toAsync<T1, T2, T3, T4, TResult>(
             func: (arg1: T1, arg2?: T2, arg3?: T3, ...args: T4[]) => TResult,
             context?: any,
             scheduler?: IScheduler,
-        ): (arg1: T1, arg2?: T2, arg3?: T3, ...args: T4[]) => Observable<TResult>;
+        ): (
+            arg1: T1,
+            arg2?: T2,
+            arg3?: T3,
+            ...args: T4[]
+        ) => Observable<TResult>;
         toAsync<T1, T2, T3, T4, TResult>(
             func: (arg1?: T1, arg2?: T2, arg3?: T3, ...args: T4[]) => TResult,
             context?: any,
             scheduler?: IScheduler,
-        ): (arg1?: T1, arg2?: T2, arg3?: T3, ...args: T4[]) => Observable<TResult>;
+        ): (
+            arg1?: T1,
+            arg2?: T2,
+            arg3?: T3,
+            ...args: T4[]
+        ) => Observable<TResult>;
     }
 }
 

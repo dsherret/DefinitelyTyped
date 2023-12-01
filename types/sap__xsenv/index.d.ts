@@ -1,4 +1,10 @@
-export type JSONValue = string | number | boolean | null | { [k: string]: JSONValue } | JSONValue[];
+export type JSONValue =
+    | string
+    | number
+    | boolean
+    | null
+    | { [k: string]: JSONValue }
+    | JSONValue[];
 export type ServiceCredentials = Record<string, JSONValue>;
 export interface ServiceBinding<T = ServiceCredentials> {
     name: string;
@@ -20,7 +26,12 @@ export interface ServiceBinding<T = ServiceCredentials> {
  */
 export type ServiceQuery =
     | string
-    | { name?: string | undefined; label?: string | undefined; tag?: string | undefined; plan?: string | undefined }
+    | {
+          name?: string | undefined;
+          label?: string | undefined;
+          tag?: string | undefined;
+          plan?: string | undefined;
+      }
     | ((service: ServiceBinding) => boolean);
 
 /**
@@ -45,10 +56,9 @@ export function loadCertificates(certPath?: string): string[] | undefined;
  * @returns Object with the same properties as in query argument where the value of each property is the respective service credentials object.
  * @throws Error, if for some of the requested services no or multiple instances are found; Error, if query parameter is not provided.
  */
-export function getServices<T extends Record<string, unknown> = Record<string, ServiceCredentials>>(
-    query: Record<keyof T, ServiceQuery>,
-    servicesFile?: string | null,
-): T;
+export function getServices<
+    T extends Record<string, unknown> = Record<string, ServiceCredentials>,
+>(query: Record<keyof T, ServiceQuery>, servicesFile?: string | null): T;
 /**
  * Looks up bound service instances matching the given query. If a service is not found - returns default service configuration loaded from a JSON file.
  * The order of lookup is: `VCAP_SERVICES`, mounted secrets path in K8S, default service configuration.
@@ -59,7 +69,9 @@ export function getServices<T extends Record<string, unknown> = Record<string, S
  * @returns Object with the same properties as in query argument where the value of each property is the respective service credentials object.
  * @throws Error, if for some of the requested services no or multiple instances are found; Error, if query parameter is not provided.
  */
-export function getServices<T extends Record<string, unknown> = Record<string, ServiceCredentials>>(
+export function getServices<
+    T extends Record<string, unknown> = Record<string, ServiceCredentials>,
+>(
     path: string,
     query: Record<keyof T, ServiceQuery>,
     servicesFile?: string | null,
@@ -71,7 +83,10 @@ export function getServices<T extends Record<string, unknown> = Record<string, S
  * @param options - (optional) object with options to customize behavior. Only supports field `disableCache` to disable K8s secrets caching.
  * @returns Object where each service instance is mapped to its name. Works in Kubernetes and Cloud Foundry.
  */
-export function readServices(path?: string, options?: { disableCache?: boolean }): Record<string, ServiceBinding>;
+export function readServices(
+    path?: string,
+    options?: { disableCache?: boolean },
+): Record<string, ServiceBinding>;
 /**
  * Same as readServices() but works only in Cloud Foundry. It is recommended to use the generic function.
  */
@@ -93,7 +108,10 @@ export function serviceCredentials(filter: ServiceQuery): ServiceCredentials;
  * @returns Credentials object of found service.
  * @throws Error in case no or multiple matching services are found.
  */
-export function serviceCredentials(path: string, filter: ServiceQuery): ServiceCredentials;
+export function serviceCredentials(
+    path: string,
+    filter: ServiceQuery,
+): ServiceCredentials;
 /**
  * Same as serviceCredentials(filter) but works only in Cloud Foundry. It is recommended to use the generic function.
  */
@@ -111,7 +129,10 @@ export function filterServices(filter: ServiceQuery): ServiceBinding[];
  * @param filter - Service lookup criteria as described in ServiceQuery.
  * @returns Array of credentials objects of matching services. Empty array, if no matches found.
  */
-export function filterServices(path: string, filter: ServiceQuery): ServiceBinding[];
+export function filterServices(
+    path: string,
+    filter: ServiceQuery,
+): ServiceBinding[];
 /**
  * Same as filterServices(filter) but works only in Cloud Foundry. It is recommended to use the generic function.
  */

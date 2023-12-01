@@ -16,8 +16,6 @@ interface StarRatingProps {
     name?: string;
 }
 
-declare class StarRatings extends React.Component<
-    StarRatingProps
-> {}
+declare class StarRatings extends React.Component<StarRatingProps> {}
 
 export = StarRatings;

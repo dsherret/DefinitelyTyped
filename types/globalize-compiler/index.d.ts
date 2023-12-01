@@ -68,7 +68,9 @@ interface CompileExtractsAttributes extends CompileOptions {
  *  parsers.
  */
 export function compile(
-    formattersAndParsers: FormatterOrParserFunction[] | { [key: string]: FormatterOrParserFunction },
+    formattersAndParsers:
+        | FormatterOrParserFunction[]
+        | { [key: string]: FormatterOrParserFunction },
     options?: CompileOptions,
 ): string;
 

@@ -92,7 +92,10 @@ class Comp4 implements m.ClassComponent<Comp4Attrs> {
     }
     view(vnode: m.Vnode<Comp4Attrs, Comp4>) {
         return [
-            m("h1", `This ${vnode.attrs.name} has been clicked ${this.count} times`),
+            m(
+                "h1",
+                `This ${vnode.attrs.name} has been clicked ${this.count} times`,
+            ),
             m(
                 "button",
                 {

@@ -21,7 +21,9 @@ export type MenuItemProps = {
     className?: string | undefined;
     disabled?: boolean | undefined;
     isLink?: boolean | undefined;
-    onClick?: ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void) | undefined;
+    onClick?:
+        | ((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void)
+        | undefined;
     selected?: boolean | undefined;
     separator?: boolean | undefined;
     url?: string | undefined;
@@ -36,7 +38,9 @@ export type MenuListProps = {
 
 declare const Menu: React.FunctionComponent<MenuProps> & {
     displayName: "Menu";
-    Group: React.FunctionComponent<MenuGroupProps> & { displayName: "Menu.Group" };
+    Group: React.FunctionComponent<MenuGroupProps> & {
+        displayName: "Menu.Group";
+    };
     Item: React.FunctionComponent<MenuItemProps> & { displayName: "Menu.Item" };
     List: React.FunctionComponent<MenuListProps> & { displayName: "Menu.List" };
 };

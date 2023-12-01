@@ -1,6 +1,8 @@
 class Component {
-    openFhirServiceUrl = "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open";
-    closedFhirServiceUrl = "https://sb-fhir-stu3.smarthealthit.org/smartstu3/data";
+    openFhirServiceUrl =
+        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open";
+    closedFhirServiceUrl =
+        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/data";
 
     clientSettings: FHIR.SMART.OAuth2ClientSettings = {
         client_id: "50a7f6ca-075a-47de-ab83-152814c3edb2",
@@ -27,208 +29,211 @@ class Component {
 
     observationEntry: FHIR.SMART.Entry = {
         resource: {
-            "resourceType": "Observation",
-            "id": "c179f87f-e7d2-49b0-8838-c7cbf9b0da27",
-            "meta": {
-                "versionId": "1",
-                "lastUpdated": "2018-01-12T19:22:57.000+00:00",
-                "profile": [
+            resourceType: "Observation",
+            id: "c179f87f-e7d2-49b0-8838-c7cbf9b0da27",
+            meta: {
+                versionId: "1",
+                lastUpdated: "2018-01-12T19:22:57.000+00:00",
+                profile: [
                     "http://standardhealthrecord.org/fhir/StructureDefinition/shr-observation-Observation",
                 ],
-                "tag": [
+                tag: [
                     {
-                        "system": "https://smarthealthit.org/tags",
-                        "code": "synthea-7-2017",
+                        system: "https://smarthealthit.org/tags",
+                        code: "synthea-7-2017",
                     },
                 ],
             },
-            "status": "final",
-            "category": [
+            status: "final",
+            category: [
                 {
-                    "coding": [
+                    coding: [
                         {
-                            "system": "http://hl7.org/fhir/observation-category",
+                            system: "http://hl7.org/fhir/observation-category",
                         },
                     ],
                 },
             ],
-            "code": {
-                "coding": [
+            code: {
+                coding: [
                     {
-                        "system": "http://loinc.org",
-                        "code": "69453-9",
-                        "display": "Cause of Death [US Standard Certificate of Death]",
+                        system: "http://loinc.org",
+                        code: "69453-9",
+                        display:
+                            "Cause of Death [US Standard Certificate of Death]",
                     },
                 ],
-                "text": "Cause of Death [US Standard Certificate of Death]",
+                text: "Cause of Death [US Standard Certificate of Death]",
             },
-            "subject": {
-                "reference": "Patient/a509406a-5098-478c-b183-037d68a953d9",
+            subject: {
+                reference: "Patient/a509406a-5098-478c-b183-037d68a953d9",
             },
-            "context": {
-                "reference": "Encounter/fbebfcf2-86d8-4c56-9539-314be0ce5bed",
+            context: {
+                reference: "Encounter/fbebfcf2-86d8-4c56-9539-314be0ce5bed",
             },
-            "effectiveDateTime": "1989-07-26T17:51:45-04:00",
-            "issued": "1989-07-26T17:51:45-04:00",
-            "valueCodeableConcept": {
-                "coding": [
+            effectiveDateTime: "1989-07-26T17:51:45-04:00",
+            issued: "1989-07-26T17:51:45-04:00",
+            valueCodeableConcept: {
+                coding: [
                     {
-                        "system": "http://snomed.info/sct",
-                        "code": "185086009",
-                        "display": "Chronic obstructive bronchitis (disorder)",
+                        system: "http://snomed.info/sct",
+                        code: "185086009",
+                        display: "Chronic obstructive bronchitis (disorder)",
                     },
                 ],
-                "text": "Chronic obstructive bronchitis (disorder)",
+                text: "Chronic obstructive bronchitis (disorder)",
             },
         },
     };
 
     weightObservationEntry: FHIR.SMART.Entry = {
-        "resource": {
-            "id": "RandomId",
-            "resourceType": "Observation",
-            "text": {
-                "status": "generated",
-                "div": "<div>Human readable form</div>",
+        resource: {
+            id: "RandomId",
+            resourceType: "Observation",
+            text: {
+                status: "generated",
+                div: "<div>Human readable form</div>",
             },
-            "status": "final",
-            "category": [
+            status: "final",
+            category: [
                 {
-                    "coding": [
+                    coding: [
                         {
-                            "system": "http://hl7.org/fhir/observation-category",
-                            "code": "vital-signs",
-                            "display": "Vital Signs",
+                            system: "http://hl7.org/fhir/observation-category",
+                            code: "vital-signs",
+                            display: "Vital Signs",
                         },
                     ],
                 },
             ],
-            "code": {
-                "coding": [
+            code: {
+                coding: [
                     {
-                        "system": "http://loinc.org",
-                        "code": "29463-7",
-                        "display": "Body Weight",
+                        system: "http://loinc.org",
+                        code: "29463-7",
+                        display: "Body Weight",
                     },
                     {
-                        "system": "http://loinc.org",
-                        "code": "3141-9",
-                        "display": "Body weight Measured",
+                        system: "http://loinc.org",
+                        code: "3141-9",
+                        display: "Body weight Measured",
                     },
                     {
-                        "system": "http://snomed.info/sct",
-                        "code": "27113001",
-                        "display": "Body weight",
+                        system: "http://snomed.info/sct",
+                        code: "27113001",
+                        display: "Body weight",
                     },
                     {
-                        "system": "http://acme.org/devices/clinical-codes",
-                        "code": "body-weight",
-                        "display": "Body Weight",
+                        system: "http://acme.org/devices/clinical-codes",
+                        code: "body-weight",
+                        display: "Body Weight",
                     },
                 ],
             },
-            "subject": {
-                "reference": "Patient/example",
+            subject: {
+                reference: "Patient/example",
             },
-            "context": {
-                "reference": "Encounter/example",
+            context: {
+                reference: "Encounter/example",
             },
-            "effectiveDateTime": "2016-03-28",
-            "valueQuantity": {
-                "value": 185,
-                "unit": "lbs",
-                "system": "http://unitsofmeasure.org",
-                "code": "[lb_us]",
+            effectiveDateTime: "2016-03-28",
+            valueQuantity: {
+                value: 185,
+                unit: "lbs",
+                system: "http://unitsofmeasure.org",
+                code: "[lb_us]",
             },
         },
     };
 
     bundle: FHIR.SMART.Bundle = {
         bundle: {
-            "resourceType": "Bundle",
-            "id": "936286e3-cf22-44c8-be9f-b8d1b950a9a3",
-            "meta": {
-                "lastUpdated": "2018-05-22T22:08:19.000+00:00",
+            resourceType: "Bundle",
+            id: "936286e3-cf22-44c8-be9f-b8d1b950a9a3",
+            meta: {
+                lastUpdated: "2018-05-22T22:08:19.000+00:00",
             },
-            "type": "searchset",
-            "total": 1,
-            "link": [
+            type: "searchset",
+            total: 1,
+            link: [
                 {
-                    "relation": "self",
-                    "url":
-                        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=10&_count=10&_pretty=true&_bundletype=searchset",
+                    relation: "self",
+                    url: "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=10&_count=10&_pretty=true&_bundletype=searchset",
                 },
                 {
-                    "relation": "next",
-                    "url":
-                        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=20&_count=10&_format=json&_pretty=true&_bundletype=searchset",
+                    relation: "next",
+                    url: "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=20&_count=10&_format=json&_pretty=true&_bundletype=searchset",
                 },
                 {
-                    "relation": "prev",
-                    "url":
-                        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=0&_count=10&_format=json&_pretty=true&_bundletype=searchset",
+                    relation: "prev",
+                    url: "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=0&_count=10&_format=json&_pretty=true&_bundletype=searchset",
                 },
             ],
-            "entry": [
+            entry: [
                 {
-                    "fullUrl": "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open/Observation/152759",
-                    "resource": {
-                        "resourceType": "Observation",
-                        "id": "152759",
-                        "meta": {
-                            "versionId": "1",
-                            "lastUpdated": "2018-05-22T20:42:56.000+00:00",
-                            "profile": [
+                    fullUrl:
+                        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open/Observation/152759",
+                    resource: {
+                        resourceType: "Observation",
+                        id: "152759",
+                        meta: {
+                            versionId: "1",
+                            lastUpdated: "2018-05-22T20:42:56.000+00:00",
+                            profile: [
                                 "http://standardhealthrecord.org/fhir/StructureDefinition/shr-observation-Observation",
                             ],
-                            "tag": [
+                            tag: [
                                 {
-                                    "system": "https://smarthealthit.org/tags",
-                                    "code": "synthea-7-2017",
+                                    system: "https://smarthealthit.org/tags",
+                                    code: "synthea-7-2017",
                                 },
                             ],
                         },
-                        "status": "final",
-                        "category": [
+                        status: "final",
+                        category: [
                             {
-                                "coding": [
+                                coding: [
                                     {
-                                        "system": "http://hl7.org/fhir/observation-category",
+                                        system: "http://hl7.org/fhir/observation-category",
                                     },
                                 ],
                             },
                         ],
-                        "code": {
-                            "coding": [
+                        code: {
+                            coding: [
                                 {
-                                    "system": "http://loinc.org",
-                                    "code": "69453-9",
-                                    "display": "Cause of Death [US Standard Certificate of Death]",
+                                    system: "http://loinc.org",
+                                    code: "69453-9",
+                                    display:
+                                        "Cause of Death [US Standard Certificate of Death]",
                                 },
                             ],
-                            "text": "Cause of Death [US Standard Certificate of Death]",
+                            text: "Cause of Death [US Standard Certificate of Death]",
                         },
-                        "subject": {
-                            "reference": "Patient/a509406a-5098-478c-b183-037d68a953d9",
+                        subject: {
+                            reference:
+                                "Patient/a509406a-5098-478c-b183-037d68a953d9",
                         },
-                        "context": {
-                            "reference": "Encounter/fbebfcf2-86d8-4c56-9539-314be0ce5bed",
+                        context: {
+                            reference:
+                                "Encounter/fbebfcf2-86d8-4c56-9539-314be0ce5bed",
                         },
-                        "effectiveDateTime": "1989-07-26T17:51:45-04:00",
-                        "issued": "1989-07-26T17:51:45-04:00",
-                        "valueCodeableConcept": {
-                            "coding": [
+                        effectiveDateTime: "1989-07-26T17:51:45-04:00",
+                        issued: "1989-07-26T17:51:45-04:00",
+                        valueCodeableConcept: {
+                            coding: [
                                 {
-                                    "system": "http://snomed.info/sct",
-                                    "code": "185086009",
-                                    "display": "Chronic obstructive bronchitis (disorder)",
+                                    system: "http://snomed.info/sct",
+                                    code: "185086009",
+                                    display:
+                                        "Chronic obstructive bronchitis (disorder)",
                                 },
                             ],
-                            "text": "Chronic obstructive bronchitis (disorder)",
+                            text: "Chronic obstructive bronchitis (disorder)",
                         },
                     },
-                    "search": {
-                        "mode": "match",
+                    search: {
+                        mode: "match",
                     },
                 },
             ],
@@ -236,141 +241,141 @@ class Component {
     };
 
     heightObservation: FHIR.SMART.Resource = {
-        "resourceType": "Observation",
-        "id": "body-height",
-        "meta": {
-            "profile": [
-                "http://hl7.org/fhir/StructureDefinition/vitalsigns",
-            ],
+        resourceType: "Observation",
+        id: "body-height",
+        meta: {
+            profile: ["http://hl7.org/fhir/StructureDefinition/vitalsigns"],
         },
-        "text": {
-            "status": "generated",
-            "div": "<div>Test</div>",
+        text: {
+            status: "generated",
+            div: "<div>Test</div>",
         },
-        "status": "final",
-        "category": [
+        status: "final",
+        category: [
             {
-                "coding": [
+                coding: [
                     {
-                        "system": "http://hl7.org/fhir/observation-category",
-                        "code": "vital-signs",
-                        "display": "Vital Signs",
+                        system: "http://hl7.org/fhir/observation-category",
+                        code: "vital-signs",
+                        display: "Vital Signs",
                     },
                 ],
-                "text": "Vital Signs",
+                text: "Vital Signs",
             },
         ],
-        "code": {
-            "coding": [
+        code: {
+            coding: [
                 {
-                    "system": "http://loinc.org",
-                    "code": "8302-2",
-                    "display": "Body height",
+                    system: "http://loinc.org",
+                    code: "8302-2",
+                    display: "Body height",
                 },
             ],
-            "text": "Body height",
+            text: "Body height",
         },
-        "subject": {
-            "reference": "Patient/example",
+        subject: {
+            reference: "Patient/example",
         },
-        "effectiveDateTime": "1999-07-02",
-        "valueQuantity": {
-            "value": 66.899999999999991,
-            "unit": "in",
-            "system": "http://unitsofmeasure.org",
-            "code": "[in_i]",
+        effectiveDateTime: "1999-07-02",
+        valueQuantity: {
+            value: 66.899999999999991,
+            unit: "in",
+            system: "http://unitsofmeasure.org",
+            code: "[in_i]",
         },
     };
 
     transactionBundle: FHIR.SMART.Bundle = {
         bundle: {
-            "resourceType": "Bundle",
-            "id": "936286e3-cf22-44c8-be9f-b8d1b950a9a3",
-            "meta": {
-                "lastUpdated": "2018-05-22T22:08:19.000+00:00",
+            resourceType: "Bundle",
+            id: "936286e3-cf22-44c8-be9f-b8d1b950a9a3",
+            meta: {
+                lastUpdated: "2018-05-22T22:08:19.000+00:00",
             },
-            "type": "transaction",
-            "total": 1,
-            "link": [
+            type: "transaction",
+            total: 1,
+            link: [
                 {
-                    "relation": "self",
-                    "url":
-                        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=10&_count=10&_pretty=true&_bundletype=searchset",
+                    relation: "self",
+                    url: "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=10&_count=10&_pretty=true&_bundletype=searchset",
                 },
                 {
-                    "relation": "next",
-                    "url":
-                        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=20&_count=10&_format=json&_pretty=true&_bundletype=searchset",
+                    relation: "next",
+                    url: "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=20&_count=10&_format=json&_pretty=true&_bundletype=searchset",
                 },
                 {
-                    "relation": "prev",
-                    "url":
-                        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=0&_count=10&_format=json&_pretty=true&_bundletype=searchset",
+                    relation: "prev",
+                    url: "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open?_getpages=8bbd1c3c-a90f-49c6-8394-ca7524b46774&_getpagesoffset=0&_count=10&_format=json&_pretty=true&_bundletype=searchset",
                 },
             ],
-            "entry": [
+            entry: [
                 {
-                    "fullUrl": "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open/Observation/152759",
-                    "resource": {
-                        "resourceType": "Observation",
-                        "id": "152759",
-                        "meta": {
-                            "versionId": "1",
-                            "lastUpdated": "2018-05-22T20:42:56.000+00:00",
-                            "profile": [
+                    fullUrl:
+                        "https://sb-fhir-stu3.smarthealthit.org/smartstu3/open/Observation/152759",
+                    resource: {
+                        resourceType: "Observation",
+                        id: "152759",
+                        meta: {
+                            versionId: "1",
+                            lastUpdated: "2018-05-22T20:42:56.000+00:00",
+                            profile: [
                                 "http://standardhealthrecord.org/fhir/StructureDefinition/shr-observation-Observation",
                             ],
-                            "tag": [
+                            tag: [
                                 {
-                                    "system": "https://smarthealthit.org/tags",
-                                    "code": "synthea-7-2017",
+                                    system: "https://smarthealthit.org/tags",
+                                    code: "synthea-7-2017",
                                 },
                             ],
                         },
-                        "status": "final",
-                        "category": [
+                        status: "final",
+                        category: [
                             {
-                                "coding": [
+                                coding: [
                                     {
-                                        "system": "http://hl7.org/fhir/observation-category",
+                                        system: "http://hl7.org/fhir/observation-category",
                                     },
                                 ],
                             },
                         ],
-                        "code": {
-                            "coding": [
+                        code: {
+                            coding: [
                                 {
-                                    "system": "http://loinc.org",
-                                    "code": "69453-9",
-                                    "display": "Cause of Death [US Standard Certificate of Death]",
+                                    system: "http://loinc.org",
+                                    code: "69453-9",
+                                    display:
+                                        "Cause of Death [US Standard Certificate of Death]",
                                 },
                             ],
-                            "text": "Cause of Death [US Standard Certificate of Death]",
+                            text: "Cause of Death [US Standard Certificate of Death]",
                         },
-                        "subject": {
-                            "reference": "Patient/a509406a-5098-478c-b183-037d68a953d9",
+                        subject: {
+                            reference:
+                                "Patient/a509406a-5098-478c-b183-037d68a953d9",
                         },
-                        "context": {
-                            "reference": "Encounter/fbebfcf2-86d8-4c56-9539-314be0ce5bed",
+                        context: {
+                            reference:
+                                "Encounter/fbebfcf2-86d8-4c56-9539-314be0ce5bed",
                         },
-                        "effectiveDateTime": "1989-07-26T17:51:45-04:00",
-                        "issued": "1989-07-26T17:51:45-04:00",
-                        "valueCodeableConcept": {
-                            "coding": [
+                        effectiveDateTime: "1989-07-26T17:51:45-04:00",
+                        issued: "1989-07-26T17:51:45-04:00",
+                        valueCodeableConcept: {
+                            coding: [
                                 {
-                                    "system": "http://snomed.info/sct",
-                                    "code": "185086009",
-                                    "display": "Chronic obstructive bronchitis (disorder)",
+                                    system: "http://snomed.info/sct",
+                                    code: "185086009",
+                                    display:
+                                        "Chronic obstructive bronchitis (disorder)",
                                 },
                             ],
-                            "text": "Chronic obstructive bronchitis (disorder)",
+                            text: "Chronic obstructive bronchitis (disorder)",
                         },
                     },
-                    "request": {
-                        "method": "POST",
+                    request: {
+                        method: "POST",
                     },
-                    "search": {
-                        "mode": "match",
+                    search: {
+                        mode: "match",
                     },
                 },
             ],
@@ -435,36 +440,67 @@ class Component {
         api.conformance(this.context).then(this.apiSuccess, this.apiError);
         api.create(this.observationEntry).then(this.apiSuccess, this.apiError);
         api.delete(this.observationEntry).then(this.apiSuccess, this.apiError);
-        api.document(this.observationEntry).then(this.apiSuccess, this.apiError);
-        api.drain(this.searchParameter, this.drainProcess, this.drainDone, this.apiError);
-        api.fetchAll(this.searchParameter).then(this.fetchAllSuccess, this.apiError);
-        api.fetchAllWithReferences(this.searchParameter, this.resolveParameter)
-            .then(this.fetchAllWithReferencesSuccess, this.apiError);
+        api.document(this.observationEntry).then(
+            this.apiSuccess,
+            this.apiError,
+        );
+        api.drain(
+            this.searchParameter,
+            this.drainProcess,
+            this.drainDone,
+            this.apiError,
+        );
+        api.fetchAll(this.searchParameter).then(
+            this.fetchAllSuccess,
+            this.apiError,
+        );
+        api.fetchAllWithReferences(
+            this.searchParameter,
+            this.resolveParameter,
+        ).then(this.fetchAllWithReferencesSuccess, this.apiError);
         api.history(this.historyParameter).then(this.apiSuccess, this.apiError);
         api.nextPage(this.bundle).then(this.apiSuccess, this.apiError);
         api.prevPage(this.bundle).then(this.apiSuccess, this.apiError);
         api.profile(this.resourceType).then(this.apiSuccess, this.apiError);
         api.read(this.readParameter).then(this.apiSuccess, this.apiError);
-        api.resolve(this.resolveParameter2).then(this.apiSuccess, this.apiError);
-        api.resourceHistory(this.historyParameter).then(this.apiSuccess, this.apiError);
+        api.resolve(this.resolveParameter2).then(
+            this.apiSuccess,
+            this.apiError,
+        );
+        api.resourceHistory(this.historyParameter).then(
+            this.apiSuccess,
+            this.apiError,
+        );
         api.search(this.searchParameter).then(this.apiSuccess, this.apiError);
-        api.search(this.patientSpecificSearchParams).then(this.apiSuccess, this.apiError);
-        api.transaction(this.transactionBundle).then(this.apiSuccess, this.apiError);
-        api.typeHistory(this.historyParameter).then(this.apiSuccess, this.apiError);
+        api.search(this.patientSpecificSearchParams).then(
+            this.apiSuccess,
+            this.apiError,
+        );
+        api.transaction(this.transactionBundle).then(
+            this.apiSuccess,
+            this.apiError,
+        );
+        api.typeHistory(this.historyParameter).then(
+            this.apiSuccess,
+            this.apiError,
+        );
         api.update(this.observationEntry).then(this.apiSuccess, this.apiError);
-        api.validate(this.observationEntry).then(this.apiSuccess, this.apiError);
+        api.validate(this.observationEntry).then(
+            this.apiSuccess,
+            this.apiError,
+        );
         api.vread(this.vreadParameter).then(this.apiSuccess, this.apiError);
 
         const objectPopulatedWithHeader = smartClient.authenticated({});
-        smartClient.fetchBinary(this.observationEntry.resource.subject.reference).then(
-            this.fetchBinarySuccess,
-            this.apiError,
-        );
-        smartClient.get(this.resourceParameter).then(this.apiSuccess, this.apiError);
-        smartClient.getBinary(this.observationEntry.resource.subject.reference).then(
-            this.fetchBinarySuccess,
-            this.apiError,
-        );
+        smartClient
+            .fetchBinary(this.observationEntry.resource.subject.reference)
+            .then(this.fetchBinarySuccess, this.apiError);
+        smartClient
+            .get(this.resourceParameter)
+            .then(this.apiSuccess, this.apiError);
+        smartClient
+            .getBinary(this.observationEntry.resource.subject.reference)
+            .then(this.fetchBinarySuccess, this.apiError);
 
         // Patient scoped FHIR API calls
         if (smartClient.patient) {
@@ -472,28 +508,75 @@ class Component {
             const patientId: string = patient.id;
             const patientApi: FHIR.SMART.Api = patient.api;
 
-            patientApi.conformance(this.context).then(this.apiSuccess, this.apiError);
-            patientApi.create(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.delete(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.document(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.drain(this.searchParameter, this.drainProcess, this.drainDone, this.apiError);
-            patientApi.fetchAll(this.searchParameter).then(this.fetchAllSuccess, this.apiError);
-            patientApi.fetchAllWithReferences(this.searchParameter, this.resolveParameter)
+            patientApi
+                .conformance(this.context)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .create(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .delete(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .document(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi.drain(
+                this.searchParameter,
+                this.drainProcess,
+                this.drainDone,
+                this.apiError,
+            );
+            patientApi
+                .fetchAll(this.searchParameter)
+                .then(this.fetchAllSuccess, this.apiError);
+            patientApi
+                .fetchAllWithReferences(
+                    this.searchParameter,
+                    this.resolveParameter,
+                )
                 .then(this.fetchAllWithReferencesSuccess, this.apiError);
-            patientApi.history(this.historyParameter).then(this.apiSuccess, this.apiError);
-            patientApi.nextPage(this.bundle).then(this.apiSuccess, this.apiError);
-            patientApi.prevPage(this.bundle).then(this.apiSuccess, this.apiError);
-            patientApi.profile(this.resourceType).then(this.apiSuccess, this.apiError);
-            patientApi.read(this.readParameter).then(this.apiSuccess, this.apiError);
-            patientApi.resolve(this.resolveParameter2).then(this.apiSuccess, this.apiError);
-            patientApi.resourceHistory(this.historyParameter).then(this.apiSuccess, this.apiError);
-            patientApi.search(this.searchParameter).then(this.apiSuccess, this.apiError);
-            patientApi.search(this.patientSpecificSearchParams).then(this.apiSuccess, this.apiError);
-            patientApi.transaction(this.transactionBundle).then(this.apiSuccess, this.apiError);
-            patientApi.typeHistory(this.historyParameter).then(this.apiSuccess, this.apiError);
-            patientApi.update(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.validate(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.vread(this.vreadParameter).then(this.apiSuccess, this.apiError);
+            patientApi
+                .history(this.historyParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .nextPage(this.bundle)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .prevPage(this.bundle)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .profile(this.resourceType)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .read(this.readParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .resolve(this.resolveParameter2)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .resourceHistory(this.historyParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .search(this.searchParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .search(this.patientSpecificSearchParams)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .transaction(this.transactionBundle)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .typeHistory(this.historyParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .update(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .validate(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .vread(this.vreadParameter)
+                .then(this.apiSuccess, this.apiError);
 
             patient.read().then(this.apiSuccess, this.apiError);
         }
@@ -520,16 +603,23 @@ class Component {
 
         // SMART client helper methods
         // Observation helpers
-        const observationByCodesFn = smartClient.byCodes(this.observationEntry.resource, "code");
-        const observations = observationByCodesFn("29463-7");
-        const observationsByCodes: FHIR.SMART.ObservationsByCode = smartClient.byCode(
+        const observationByCodesFn = smartClient.byCodes(
             this.observationEntry.resource,
             "code",
         );
+        const observations = observationByCodesFn("29463-7");
+        const observationsByCodes: FHIR.SMART.ObservationsByCode =
+            smartClient.byCode(this.observationEntry.resource, "code");
         // Unit helpers
-        const numericValue = smartClient.units.any(this.heightObservation.valueQuantity);
-        const convertedHeightValueInCm = smartClient.units.cm(this.heightObservation.valueQuantity);
-        const convertedWeightValueInKg = smartClient.units.kg(this.weightObservationEntry.resource.valueQuantity);
+        const numericValue = smartClient.units.any(
+            this.heightObservation.valueQuantity,
+        );
+        const convertedHeightValueInCm = smartClient.units.cm(
+            this.heightObservation.valueQuantity,
+        );
+        const convertedWeightValueInKg = smartClient.units.kg(
+            this.weightObservationEntry.resource.valueQuantity,
+        );
     };
 
     oauth2ReadyErrback = (error: any) => {
@@ -570,11 +660,19 @@ class Component {
         console.log(entries);
     };
 
-    fetchAllWithReferencesSuccess = (entries: FHIR.SMART.Entry[], resolvedReferences: FHIR.SMART.ResolveFn) => {
+    fetchAllWithReferencesSuccess = (
+        entries: FHIR.SMART.Entry[],
+        resolvedReferences: FHIR.SMART.ResolveFn,
+    ) => {
         console.log("Fetch all with references success:");
         console.log(entries);
         console.log("Resolved References");
-        console.log(resolvedReferences(this.observationEntry.resource, this.observationEntry.resource.subject));
+        console.log(
+            resolvedReferences(
+                this.observationEntry.resource,
+                this.observationEntry.resource.subject,
+            ),
+        );
     };
 
     genericCallback = (data: any) => {
@@ -598,62 +696,140 @@ class Component {
         api.conformance(this.context).then(this.apiSuccess, this.apiError);
         api.create(this.observationEntry).then(this.apiSuccess, this.apiError);
         api.delete(this.observationEntry).then(this.apiSuccess, this.apiError);
-        api.document(this.observationEntry).then(this.apiSuccess, this.apiError);
-        api.drain(this.searchParameter, this.drainProcess, this.drainDone, this.apiError);
-        api.fetchAll(this.searchParameter).then(this.fetchAllSuccess, this.apiError);
-        api.fetchAllWithReferences(this.searchParameter, this.resolveParameter)
-            .then(this.fetchAllWithReferencesSuccess, this.apiError);
+        api.document(this.observationEntry).then(
+            this.apiSuccess,
+            this.apiError,
+        );
+        api.drain(
+            this.searchParameter,
+            this.drainProcess,
+            this.drainDone,
+            this.apiError,
+        );
+        api.fetchAll(this.searchParameter).then(
+            this.fetchAllSuccess,
+            this.apiError,
+        );
+        api.fetchAllWithReferences(
+            this.searchParameter,
+            this.resolveParameter,
+        ).then(this.fetchAllWithReferencesSuccess, this.apiError);
         api.history(this.historyParameter).then(this.apiSuccess, this.apiError);
         api.nextPage(this.bundle).then(this.apiSuccess, this.apiError);
         api.prevPage(this.bundle).then(this.apiSuccess, this.apiError);
         api.profile(this.resourceType).then(this.apiSuccess, this.apiError);
         api.read(this.readParameter).then(this.apiSuccess, this.apiError);
-        api.resolve(this.resolveParameter2).then(this.apiSuccess, this.apiError);
-        api.resourceHistory(this.historyParameter).then(this.apiSuccess, this.apiError);
+        api.resolve(this.resolveParameter2).then(
+            this.apiSuccess,
+            this.apiError,
+        );
+        api.resourceHistory(this.historyParameter).then(
+            this.apiSuccess,
+            this.apiError,
+        );
         api.search(this.searchParameter).then(this.apiSuccess, this.apiError);
-        api.search(this.patientSpecificSearchParams).then(this.apiSuccess, this.apiError);
-        api.transaction(this.transactionBundle).then(this.apiSuccess, this.apiError);
-        api.typeHistory(this.historyParameter).then(this.apiSuccess, this.apiError);
+        api.search(this.patientSpecificSearchParams).then(
+            this.apiSuccess,
+            this.apiError,
+        );
+        api.transaction(this.transactionBundle).then(
+            this.apiSuccess,
+            this.apiError,
+        );
+        api.typeHistory(this.historyParameter).then(
+            this.apiSuccess,
+            this.apiError,
+        );
         api.update(this.observationEntry).then(this.apiSuccess, this.apiError);
-        api.validate(this.observationEntry).then(this.apiSuccess, this.apiError);
+        api.validate(this.observationEntry).then(
+            this.apiSuccess,
+            this.apiError,
+        );
         api.vread(this.vreadParameter).then(this.apiSuccess, this.apiError);
 
-        openSmartClient.fetchBinary(this.observationEntry.resource.subject.reference).then(
-            this.fetchBinarySuccess,
-            this.apiError,
-        );
-        openSmartClient.get(this.resourceParameter).then(this.apiSuccess, this.apiError);
-        openSmartClient.getBinary(this.observationEntry.resource.subject.reference).then(
-            this.fetchBinarySuccess,
-            this.apiError,
-        );
+        openSmartClient
+            .fetchBinary(this.observationEntry.resource.subject.reference)
+            .then(this.fetchBinarySuccess, this.apiError);
+        openSmartClient
+            .get(this.resourceParameter)
+            .then(this.apiSuccess, this.apiError);
+        openSmartClient
+            .getBinary(this.observationEntry.resource.subject.reference)
+            .then(this.fetchBinarySuccess, this.apiError);
 
         if (openSmartClient.patient) {
             const patient: FHIR.SMART.Patient = openSmartClient.patient;
             const patientApi: FHIR.SMART.Api = patient.api;
             const patientId: string = patient.id;
-            patientApi.conformance(this.context).then(this.apiSuccess, this.apiError);
-            patientApi.create(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.delete(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.document(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.drain(this.searchParameter, this.drainProcess, this.drainDone, this.apiError);
-            patientApi.fetchAll(this.searchParameter).then(this.fetchAllSuccess, this.apiError);
-            patientApi.fetchAllWithReferences(this.searchParameter, this.resolveParameter)
+            patientApi
+                .conformance(this.context)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .create(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .delete(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .document(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi.drain(
+                this.searchParameter,
+                this.drainProcess,
+                this.drainDone,
+                this.apiError,
+            );
+            patientApi
+                .fetchAll(this.searchParameter)
+                .then(this.fetchAllSuccess, this.apiError);
+            patientApi
+                .fetchAllWithReferences(
+                    this.searchParameter,
+                    this.resolveParameter,
+                )
                 .then(this.fetchAllWithReferencesSuccess, this.apiError);
-            patientApi.history(this.historyParameter).then(this.apiSuccess, this.apiError);
-            patientApi.nextPage(this.bundle).then(this.apiSuccess, this.apiError);
-            patientApi.prevPage(this.bundle).then(this.apiSuccess, this.apiError);
-            patientApi.profile(this.resourceType).then(this.apiSuccess, this.apiError);
-            patientApi.read(this.readParameter).then(this.apiSuccess, this.apiError);
-            patientApi.resolve(this.resolveParameter2).then(this.apiSuccess, this.apiError);
-            patientApi.resourceHistory(this.historyParameter).then(this.apiSuccess, this.apiError);
-            patientApi.search(this.searchParameter).then(this.apiSuccess, this.apiError);
-            patientApi.search(this.patientSpecificSearchParams).then(this.apiSuccess, this.apiError);
-            patientApi.transaction(this.transactionBundle).then(this.apiSuccess, this.apiError);
-            patientApi.typeHistory(this.historyParameter).then(this.apiSuccess, this.apiError);
-            patientApi.update(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.validate(this.observationEntry).then(this.apiSuccess, this.apiError);
-            patientApi.vread(this.vreadParameter).then(this.apiSuccess, this.apiError);
+            patientApi
+                .history(this.historyParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .nextPage(this.bundle)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .prevPage(this.bundle)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .profile(this.resourceType)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .read(this.readParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .resolve(this.resolveParameter2)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .resourceHistory(this.historyParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .search(this.searchParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .search(this.patientSpecificSearchParams)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .transaction(this.transactionBundle)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .typeHistory(this.historyParameter)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .update(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .validate(this.observationEntry)
+                .then(this.apiSuccess, this.apiError);
+            patientApi
+                .vread(this.vreadParameter)
+                .then(this.apiSuccess, this.apiError);
             patient.read().then(this.apiSuccess, this.apiError);
         }
 
@@ -673,16 +849,23 @@ class Component {
         const userInContext = openSmartClient.user;
         openSmartClient.user.read().then(this.apiSuccess, this.apiError);
 
-        const observationByCodesFn = openSmartClient.byCodes(this.observationEntry.resource, "code");
-        const observations = observationByCodesFn("29463-7");
-        const observationsByCodes: FHIR.SMART.ObservationsByCode = openSmartClient.byCode(
+        const observationByCodesFn = openSmartClient.byCodes(
             this.observationEntry.resource,
             "code",
         );
+        const observations = observationByCodesFn("29463-7");
+        const observationsByCodes: FHIR.SMART.ObservationsByCode =
+            openSmartClient.byCode(this.observationEntry.resource, "code");
 
-        const numericValue = openSmartClient.units.any(this.heightObservation.valueQuantity);
-        const convertedHeightValueInCm = openSmartClient.units.cm(this.heightObservation.valueQuantity);
-        const convertedWeightValueInKg = openSmartClient.units.kg(this.weightObservationEntry.resource.valueQuantity);
+        const numericValue = openSmartClient.units.any(
+            this.heightObservation.valueQuantity,
+        );
+        const convertedHeightValueInCm = openSmartClient.units.cm(
+            this.heightObservation.valueQuantity,
+        );
+        const convertedWeightValueInKg = openSmartClient.units.kg(
+            this.weightObservationEntry.resource.valueQuantity,
+        );
     }
 
     closedSmartOnFhir() {

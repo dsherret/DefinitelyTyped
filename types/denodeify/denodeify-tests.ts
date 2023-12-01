@@ -5,4 +5,7 @@ import fs = require("fs");
 import cp = require("child_process");
 
 const readFile = denodeify<string, BufferEncoding, string>(fs.readFile);
-const exec = denodeify<string, string>(cp.exec, (err, stdout, stderr) => [err, stdout]);
+const exec = denodeify<string, string>(cp.exec, (err, stdout, stderr) => [
+    err,
+    stdout,
+]);

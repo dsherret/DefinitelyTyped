@@ -9,7 +9,9 @@ const data = fs.readFileSync("image.jpg");
     probeResult = await probe(""); // $ExpectType ProbeResult
     probeResult = await probe("", { follow_max: 10 }); // $ExpectType ProbeResult
 
-    probeResult = await probe("http://example.com/image.jpg", { timeout: 5000 });
+    probeResult = await probe("http://example.com/image.jpg", {
+        timeout: 5000,
+    });
     const { variants, orientation } = probeResult;
     if (variants) {
         variants; // $ExpectType Variant[]

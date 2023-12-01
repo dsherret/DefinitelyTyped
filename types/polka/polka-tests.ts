@@ -5,7 +5,11 @@ interface MyResponse {
     foo: string;
 }
 
-const middleware: Polka.Middleware<any, MyResponse, any, any> = async (req, res, next) => {
+const middleware: Polka.Middleware<any, MyResponse, any, any> = async (
+    req,
+    res,
+    next,
+) => {
     const originalUrl = req.originalUrl;
     const path = req.path;
 
@@ -33,4 +37,6 @@ const app = Polka()
 
 app.listen(3000);
 
-const short = Polka().get("/abc", () => {}).listen(3000);
+const short = Polka()
+    .get("/abc", () => {})
+    .listen(3000);

@@ -9,8 +9,33 @@ export default class Reporter {
 
     constructor(html: string, ruleset: Ruleset);
 
-    info(message: string, line: number, col: number, rule: Rule, raw: string): void;
-    warn(message: string, line: number, col: number, rule: Rule, raw: string): void;
-    error(message: string, line: number, col: number, rule: Rule, raw: string): void;
-    private report(type: ReportType, message: string, line: number, col: number, rule: Rule, raw: string): void;
+    info(
+        message: string,
+        line: number,
+        col: number,
+        rule: Rule,
+        raw: string,
+    ): void;
+    warn(
+        message: string,
+        line: number,
+        col: number,
+        rule: Rule,
+        raw: string,
+    ): void;
+    error(
+        message: string,
+        line: number,
+        col: number,
+        rule: Rule,
+        raw: string,
+    ): void;
+    private report(
+        type: ReportType,
+        message: string,
+        line: number,
+        col: number,
+        rule: Rule,
+        raw: string,
+    ): void;
 }

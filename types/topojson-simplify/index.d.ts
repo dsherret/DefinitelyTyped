@@ -7,19 +7,36 @@ export type Ring = Array<[number, number]>;
 export type RingWeighter = (triangle: Ring) => number;
 export type Filter = (ring: Ring, interior: boolean) => boolean;
 
-export function presimplify<T extends Objects>(topology: Topology<T>, weight?: TriangleWeighter): Topology<T>;
+export function presimplify<T extends Objects>(
+    topology: Topology<T>,
+    weight?: TriangleWeighter,
+): Topology<T>;
 
-export function simplify<T extends Objects>(topology: Topology<T>, minWeight?: number): Topology<T>;
+export function simplify<T extends Objects>(
+    topology: Topology<T>,
+    minWeight?: number,
+): Topology<T>;
 
 export function quantile(topology: Topology, p: number): number;
 
-export function filter<K extends Objects>(topology: Topology<K>, filter: Filter): Topology<OrNull<K>>;
+export function filter<K extends Objects>(
+    topology: Topology<K>,
+    filter: Filter,
+): Topology<OrNull<K>>;
 
 export function filterAttached(topology: Topology): Filter;
 
-export function filterAttachedWeight(topology: Topology, minWeight?: number, weight?: RingWeighter): Filter;
+export function filterAttachedWeight(
+    topology: Topology,
+    minWeight?: number,
+    weight?: RingWeighter,
+): Filter;
 
-export function filterWeight(topology: Topology, minWeight?: number, weight?: RingWeighter): Filter;
+export function filterWeight(
+    topology: Topology,
+    minWeight?: number,
+    weight?: RingWeighter,
+): Filter;
 
 export function planarRingArea(ring: Ring): number;
 

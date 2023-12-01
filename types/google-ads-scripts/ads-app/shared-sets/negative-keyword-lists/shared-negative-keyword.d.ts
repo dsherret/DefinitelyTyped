@@ -23,7 +23,8 @@ declare namespace GoogleAdsScripts {
          *        var sharedNegativeKeyword = sharedNegativeKeywordIterator.next();
          *      }
          */
-        interface SharedNegativeKeywordIterator extends Base.Iterator<SharedNegativeKeyword> {}
+        interface SharedNegativeKeywordIterator
+            extends Base.Iterator<SharedNegativeKeyword> {}
 
         /**
          * Fetches shared negative keyword. Supports filtering and sorting.
@@ -43,11 +44,9 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface SharedNegativeKeywordSelector
-            extends
-                Base.Selector<SharedNegativeKeywordIterator>,
+            extends Base.Selector<SharedNegativeKeywordIterator>,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

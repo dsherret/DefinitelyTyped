@@ -1,11 +1,12 @@
 import { parse, safeParse, scan } from "secure-json-parse";
 
-const reviverFunc = (_key: string, value: any) => typeof value === "number" ? value * 2 : value;
+const reviverFunc = (_key: string, value: any) =>
+    typeof value === "number" ? value * 2 : value;
 
 let result: any;
 let tryResult = false;
 
-const simpleJson = "{\"a\": 3, \"b\": 4}";
+const simpleJson = '{"a": 3, "b": 4}';
 result = safeParse(simpleJson); // result === { a: 3, b: 4 }
 result = safeParse(simpleJson, reviverFunc); // result === { a: 6, b: 8 }
 result = parse(simpleJson); // result === { a: 3, b: 4 }
@@ -17,7 +18,7 @@ try {
     tryResult = false;
 } // tryResult === true;
 
-const jsonWithProto = "{\"a\": 3, \"__proto__\": 4}";
+const jsonWithProto = '{"a": 3, "__proto__": 4}';
 result = safeParse(jsonWithProto); // result === null
 result = safeParse(jsonWithProto, reviverFunc); // result === null
 result = parse(jsonWithProto, undefined, { protoAction: "remove" }); // result === { a: 3 }
@@ -29,7 +30,7 @@ try {
     tryResult = false;
 } // tryResult === false;
 
-const jsonWithNestedProto = "{\"a\": {\"__proto__\": 3}}";
+const jsonWithNestedProto = '{"a": {"__proto__": 3}}';
 result = safeParse(jsonWithNestedProto); // result === null
 result = safeParse(jsonWithNestedProto, reviverFunc); // result === null
 result = parse(jsonWithNestedProto, undefined, { protoAction: "remove" }); // result === { a: {} }

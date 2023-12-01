@@ -37,7 +37,10 @@ export namespace UIkit {
         toggle(index: string | number | UIkitNode, animate: boolean): void;
     }
 
-    type Accordion = (element: UIkitElement, options?: UIkitAccordionOptions) => UIkitAccordionElement;
+    type Accordion = (
+        element: UIkitElement,
+        options?: UIkitAccordionOptions,
+    ) => UIkitAccordionElement;
 
     interface UIkitAlertOptions {
         animation?: boolean | string | undefined;
@@ -49,7 +52,10 @@ export namespace UIkit {
         close(): void;
     }
 
-    type Alert = (element: UIkitElement, options?: UIkitAlertOptions) => UIkitAlertElement;
+    type Alert = (
+        element: UIkitElement,
+        options?: UIkitAlertOptions,
+    ) => UIkitAlertElement;
 
     interface UIkitCoverOptions {
         automute?: boolean | undefined;
@@ -79,7 +85,10 @@ export namespace UIkit {
         hide(delay?: boolean): void;
     }
 
-    type Drop = (element: UIkitElement, options?: UIkitDropOptions) => UIkitDropElement;
+    type Drop = (
+        element: UIkitElement,
+        options?: UIkitDropOptions,
+    ) => UIkitDropElement;
 
     interface UIkitDropdownOptions {
         toggle?: string | boolean | undefined;
@@ -100,13 +109,19 @@ export namespace UIkit {
         hide(delay?: boolean): void;
     }
 
-    type Dropdown = (element: UIkitElement, options?: UIkitDropdownOptions) => UIkitDropdownElement;
+    type Dropdown = (
+        element: UIkitElement,
+        options?: UIkitDropdownOptions,
+    ) => UIkitDropdownElement;
 
     interface UIkitFormOptions {
         target?: string | boolean | undefined;
     }
 
-    type FormCustom = (element: UIkitElement, options?: UIkitFormOptions) => void;
+    type FormCustom = (
+        element: UIkitElement,
+        options?: UIkitFormOptions,
+    ) => void;
 
     interface UIkitGridOptions {
         margin?: string | undefined;
@@ -122,7 +137,10 @@ export namespace UIkit {
         row?: boolean | undefined;
     }
 
-    type HeightMatch = (element: UIkitElement, options?: UIkitHeightMatchOptions) => void;
+    type HeightMatch = (
+        element: UIkitElement,
+        options?: UIkitHeightMatchOptions,
+    ) => void;
 
     interface UIkitIconOptions {
         icon?: string | undefined;
@@ -130,7 +148,10 @@ export namespace UIkit {
     }
 
     interface Icon {
-        (element: UIkitElement, options?: UIkitIconOptions): {
+        (
+            element: UIkitElement,
+            options?: UIkitIconOptions,
+        ): {
             svg: Promise<any>;
         };
         add(name: string, svg: string): void;
@@ -183,7 +204,11 @@ export namespace UIkit {
         (element: UIkitElement, options?: UIkitModalOptions): UIkitModalElement;
         alert(message: string, options?: UIkitModalOptions): Promise<void>;
         confirm(message: string, options?: UIkitModalOptions): Promise<void>;
-        prompt(content: string, value: string, options?: UIkitModalOptions): Promise<string | null>;
+        prompt(
+            content: string,
+            value: string,
+            options?: UIkitModalOptions,
+        ): Promise<string | null>;
         dialog(content: string, options?: UIkitModalOptions): Promise<void>;
         labels: {
             ok: string;
@@ -206,7 +231,10 @@ export namespace UIkit {
         toggle(index: string | number | UIkitNode, animate: boolean): void;
     }
 
-    type Nav = (element: UIkitElement, options?: UIkitNavOptions) => UIkitNavElement;
+    type Nav = (
+        element: UIkitElement,
+        options?: UIkitNavOptions,
+    ) => UIkitNavElement;
 
     interface UIkitNavbarOptions {
         align?: string | undefined;
@@ -237,7 +265,10 @@ export namespace UIkit {
         hide(): void;
     }
 
-    type Offcanvas = (element: UIkitElement, options?: UIkitOffcanvasOptions) => UIkitOffcanvasElement;
+    type Offcanvas = (
+        element: UIkitElement,
+        options?: UIkitOffcanvasOptions,
+    ) => UIkitOffcanvasElement;
 
     interface UIkitScrollOptions {
         offset?: number | undefined;
@@ -247,7 +278,10 @@ export namespace UIkit {
         scrollTo(el: string | UIkitNode): void;
     }
 
-    type Scroll = (element: UIkitElement, options?: UIkitScrollOptions) => UIkitScrollElement;
+    type Scroll = (
+        element: UIkitElement,
+        options?: UIkitScrollOptions,
+    ) => UIkitScrollElement;
 
     interface UIkitScrollspyOptions {
         cls?: string | undefined;
@@ -266,8 +300,14 @@ export namespace UIkit {
         offset?: number | undefined;
     }
 
-    type Scrollspy = (element: UIkitElement, options?: UIkitScrollspyOptions) => void;
-    type ScrollspyNav = (element: UIkitElement, options?: UIkitScrollspyNavOptions) => void;
+    type Scrollspy = (
+        element: UIkitElement,
+        options?: UIkitScrollspyOptions,
+    ) => void;
+    type ScrollspyNav = (
+        element: UIkitElement,
+        options?: UIkitScrollspyNavOptions,
+    ) => void;
 
     interface UIkitStickyOptions {
         position?: "top" | "bottom" | undefined;
@@ -337,7 +377,10 @@ export namespace UIkit {
         show(index: string | number | UIkitNode): void;
     }
 
-    type Tab = (element: UIkitElement, options?: UIkitTabOptions) => UIkitTabElement;
+    type Tab = (
+        element: UIkitElement,
+        options?: UIkitTabOptions,
+    ) => UIkitTabElement;
 
     interface UIkitToggleOptions {
         target?: string | undefined;
@@ -353,7 +396,10 @@ export namespace UIkit {
         toggle(): void;
     }
 
-    type Toggle = (element: UIkitElement, options?: UIkitToggleOptions) => UIkitToggleElement;
+    type Toggle = (
+        element: UIkitElement,
+        options?: UIkitToggleOptions,
+    ) => UIkitToggleElement;
 
     interface UIkitVideoOptions {
         autoplay?: boolean | string | undefined;
@@ -373,7 +419,10 @@ export namespace UIkit {
         stop(): void;
     }
 
-    type Countdown = (element: UIkitElement, options?: UIkitCountdownOptions) => UIkitCountdownElement;
+    type Countdown = (
+        element: UIkitElement,
+        options?: UIkitCountdownOptions,
+    ) => UIkitCountdownElement;
 
     interface UIkitFilterOptions {
         target?: string | undefined;
@@ -407,7 +456,9 @@ export namespace UIkit {
     }
 
     interface LightboxPanel {
-        (optionsOrElement: UIkitLightboxPanelOptions | UIkitElement): UIkitLightboxPanelElement;
+        (
+            optionsOrElement: UIkitLightboxPanelOptions | UIkitElement,
+        ): UIkitLightboxPanelElement;
     }
 
     interface UIkitLightboxOptions {
@@ -425,13 +476,23 @@ export namespace UIkit {
         hide(): void;
     }
 
-    type Lightbox = (element: UIkitElement, options?: UIkitLightboxOptions) => UIkitLightboxElement;
+    type Lightbox = (
+        element: UIkitElement,
+        options?: UIkitLightboxOptions,
+    ) => UIkitLightboxElement;
     interface UIkitNotificationOptions {
         message?: string | undefined;
         status?: "primary" | "success" | "warning" | "danger" | undefined;
         timeout?: number | undefined;
         group?: string | undefined;
-        pos?: "top-left" | "top-center" | "top-right" | "bottom-left" | "bottom-center" | "bottom-right" | undefined;
+        pos?:
+            | "top-left"
+            | "top-center"
+            | "top-right"
+            | "bottom-left"
+            | "bottom-center"
+            | "bottom-right"
+            | undefined;
     }
 
     interface UIkitNotificationElement {
@@ -440,7 +501,10 @@ export namespace UIkit {
 
     interface Notification {
         (options: UIkitNotificationOptions): UIkitNotificationElement;
-        (message: string, optionsOrStatus?: UIkitNotificationOptions | string): UIkitNotificationElement;
+        (
+            message: string,
+            optionsOrStatus?: UIkitNotificationOptions | string,
+        ): UIkitNotificationElement;
     }
 
     interface UIkitParallaxOptions {
@@ -451,7 +515,10 @@ export namespace UIkit {
         media?: number | string | undefined;
     }
 
-    type Parallax = (element: UIkitElement, options?: UIkitParallaxOptions) => void;
+    type Parallax = (
+        element: UIkitElement,
+        options?: UIkitParallaxOptions,
+    ) => void;
 
     interface UIkitSliderOptions {
         autoplay?: boolean | undefined;
@@ -472,7 +539,10 @@ export namespace UIkit {
         stopAutoplay(): void;
     }
 
-    type Slider = (element: UIkitElement, options?: UIkitSliderOptions) => UIkitSliderElement;
+    type Slider = (
+        element: UIkitElement,
+        options?: UIkitSliderOptions,
+    ) => UIkitSliderElement;
 
     interface UIkitSlideshowOptions {
         animation?: string | undefined;
@@ -495,7 +565,10 @@ export namespace UIkit {
         stopAutoplay(): void;
     }
 
-    type Slidershow = (element: UIkitElement, options?: UIkitSlideshowOptions) => UIkitSlidershowElement;
+    type Slidershow = (
+        element: UIkitElement,
+        options?: UIkitSlideshowOptions,
+    ) => UIkitSlidershowElement;
 
     interface UIkitSortableOptions {
         group?: string | undefined;
@@ -513,7 +586,10 @@ export namespace UIkit {
         handle?: string | undefined;
     }
 
-    type Sortable = (element: UIkitElement, options?: UIkitSortableOptions) => void;
+    type Sortable = (
+        element: UIkitElement,
+        options?: UIkitSortableOptions,
+    ) => void;
 
     interface UIkitTooltipOptions {
         title?: string | undefined;
@@ -531,7 +607,10 @@ export namespace UIkit {
         hide(): void;
     }
 
-    type Tooltip = (element: UIkitElement, options?: UIkitTooltipOptions) => UIkitTooltipElement;
+    type Tooltip = (
+        element: UIkitElement,
+        options?: UIkitTooltipOptions,
+    ) => UIkitTooltipElement;
 
     interface UIkitUploadOptions {
         url?: string | undefined;

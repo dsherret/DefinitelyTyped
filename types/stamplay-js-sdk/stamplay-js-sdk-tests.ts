@@ -10,18 +10,21 @@ const registrationData = {
     password: "mySecret",
 };
 
-user.signup(registrationData).then(() => {
-    user.set("phoneNumber", "020 123 4567");
-    return user.save();
-}).then(() => {
-    const number = user.get("phoneNumber");
-    console.log(number); // number value is 020 123 4567
-});
+user.signup(registrationData)
+    .then(() => {
+        user.set("phoneNumber", "020 123 4567");
+        return user.save();
+    })
+    .then(() => {
+        const number = user.get("phoneNumber");
+        console.log(number); // number value is 020 123 4567
+    });
 
 // Action
 const colFoo = Stamplay.Cobject("foo");
 const fooMod = new colFoo.Model();
-fooMod.fetch(5)
+fooMod
+    .fetch(5)
     .then(() => fooMod.upVote())
     .then(
         () => {

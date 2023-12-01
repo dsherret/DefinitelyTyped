@@ -19,7 +19,13 @@ export namespace launcher {
         constructor(emitter: NodeJS.EventEmitter, injector: any);
 
         // TODO: Can this return value ever be typified?
-        launch(names: string[], protocol: string, hostname: string, port: number, urlRoot: string): any[];
+        launch(
+            names: string[],
+            protocol: string,
+            hostname: string,
+            port: number,
+            urlRoot: string,
+        ): any[];
         kill(id: string, callback: () => void): boolean;
         restart(id: string): boolean;
         killAll(callback: () => void): void;
@@ -57,7 +63,10 @@ export class Server extends EventEmitter {
     constructor(options?: Config, callback?: ServerCallback);
     /** @deprecated */
     // tslint:disable-next-line:unified-signatures to correctly show deprecated overload
-    constructor(options?: ConfigOptions | ConfigFile, callback?: ServerCallback);
+    constructor(
+        options?: ConfigOptions | ConfigFile,
+        callback?: ServerCallback,
+    );
     /**
      * Start the server
      */
@@ -85,7 +94,10 @@ export class Server extends EventEmitter {
     /**
      * Listen to the 'run_complete' event.
      */
-    on(event: "run_complete", listener: (browsers: any, results: TestResults) => void): this;
+    on(
+        event: "run_complete",
+        listener: (browsers: any, results: TestResults) => void,
+    ): this;
 }
 
 export type ServerCallback = (exitCode: number) => void;
@@ -191,7 +203,7 @@ export interface UpstreamProxy {
 // description of inline plugins
 export type PluginName = string;
 // eslint-disable-next-line @typescript-eslint/ban-types -- support for constructor function and classes
-export type ConstructorFn = Function | (new(...params: any[]) => any);
+export type ConstructorFn = Function | (new (...params: any[]) => any);
 export type FactoryFn = (...params: any[]) => any;
 export type ConstructorFnType = ["type", ConstructorFn];
 export type FactoryFnType = ["factory", FactoryFn];
@@ -511,7 +523,9 @@ export interface ConfigOptions {
      * Called when requesting Proxy
      * @default undefined
      */
-    proxyReq?: ((proxyReq: any, req: any, res: any, options: object) => void) | undefined;
+    proxyReq?:
+        | ((proxyReq: any, req: any, res: any, options: object) => void)
+        | undefined;
     /**
      * Called when respnsing Proxy
      * @default undefined
@@ -702,7 +716,10 @@ interface ParseOptions {
 }
 
 export namespace config {
-    function parseConfig(configFilePath: string, cliOptions: ConfigOptions): Config;
+    function parseConfig(
+        configFilePath: string,
+        cliOptions: ConfigOptions,
+    ): Config;
     function parseConfig(
         configFilePath: string | null | undefined,
         cliOptions: ConfigOptions,

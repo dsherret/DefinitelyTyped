@@ -1,23 +1,23 @@
 {
-    "private": true,
-    "name": "@types/apple-music-api",
-    "version": "0.4.9999",
-    "nonNpm": true,
-    "nonNpmDescription": "Apple Music API",
-    "projects": [
-        "https://developer.apple.com/documentation/applemusicapi/"
-    ],
-    "devDependencies": {
-        "@types/apple-music-api": "workspace:."
+  "private": true,
+  "name": "@types/apple-music-api",
+  "version": "0.4.9999",
+  "nonNpm": true,
+  "nonNpmDescription": "Apple Music API",
+  "projects": [
+    "https://developer.apple.com/documentation/applemusicapi/"
+  ],
+  "devDependencies": {
+    "@types/apple-music-api": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Noah Chase",
+      "githubUsername": "nchase"
     },
-    "owners": [
-        {
-            "name": "Noah Chase",
-            "githubUsername": "nchase"
-        },
-        {
-            "name": "Useff Chase",
-            "githubUsername": "useffc"
-        }
-    ]
+    {
+      "name": "Useff Chase",
+      "githubUsername": "useffc"
+    }
+  ]
 }

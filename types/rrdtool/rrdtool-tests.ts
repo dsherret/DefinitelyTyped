@@ -1,4 +1,11 @@
-import { create, DataSource, now, open, RoundRobinArchive, RrdtoolDatabase } from "rrdtool";
+import {
+    create,
+    DataSource,
+    now,
+    open,
+    RoundRobinArchive,
+    RrdtoolDatabase,
+} from "rrdtool";
 
 let a: DataSource;
 // Test different data source types

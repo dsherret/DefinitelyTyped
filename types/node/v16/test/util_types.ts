@@ -67,18 +67,30 @@ if (types.isMap(object)) {
 if (types.isNativeError(object)) {
     object; // $ExpectType Error
 
-    ([
-        new EvalError(),
-        new RangeError(),
-        new ReferenceError(),
-        new SyntaxError(),
-        new TypeError(),
-        new URIError(),
-    ] as const).forEach((nativeError: EvalError | RangeError | ReferenceError | SyntaxError | TypeError | URIError) => {
-        if (!types.isNativeError(nativeError)) {
-            nativeError; // $ExpectType never
-        }
-    });
+    (
+        [
+            new EvalError(),
+            new RangeError(),
+            new ReferenceError(),
+            new SyntaxError(),
+            new TypeError(),
+            new URIError(),
+        ] as const
+    ).forEach(
+        (
+            nativeError:
+                | EvalError
+                | RangeError
+                | ReferenceError
+                | SyntaxError
+                | TypeError
+                | URIError,
+        ) => {
+            if (!types.isNativeError(nativeError)) {
+                nativeError; // $ExpectType never
+            }
+        },
+    );
 }
 if (types.isNumberObject(object)) {
     object; // $ExpectType Number
@@ -165,11 +177,7 @@ if (types.isKeyObject(keyObj)) {
     keyObj; // $ExpectType KeyObject
 }
 
-webcrypto.subtle.generateKey(
-    "Algorithm",
-    false,
-    [],
-).then(cryptoKeyObj => {
+webcrypto.subtle.generateKey("Algorithm", false, []).then((cryptoKeyObj) => {
     if (types.isCryptoKey(cryptoKeyObj)) {
         cryptoKeyObj; // $ExpectType CryptoKey
     } else {

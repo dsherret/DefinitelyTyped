@@ -7,4 +7,7 @@ const rnt: ReactNativeCustomTabs.CustomTabsOptions = {
     enableDefaultShare: true,
 };
 
-const url: Promise<boolean> = ReactNativeCustomTabs.CustomTabs.openURL("testurl.com", rnt);
+const url: Promise<boolean> = ReactNativeCustomTabs.CustomTabs.openURL(
+    "testurl.com",
+    rnt,
+);

@@ -9,7 +9,7 @@ import * as socketClusterServer from "socketcluster-server";
 let httpServer = http.createServer();
 let scServer = socketClusterServer.attach(httpServer);
 
-scServer.on("connection", socket => {
+scServer.on("connection", (socket) => {
     // ... Handle new socket connections here
 });
 
@@ -33,7 +33,7 @@ httpServer.on("request", app);
 // Attach socketcluster-server to our httpServer
 scServer = socketClusterServer.attach(httpServer);
 
-scServer.on("connection", socket => {
+scServer.on("connection", (socket) => {
     // ... Handle new socket connections here
 });
 
@@ -41,11 +41,11 @@ httpServer.listen(8000);
 
 // Tests of the server-side socket
 
-scServer.on("connection", socket => {
+scServer.on("connection", (socket) => {
     // Check the standard events, with normal subscription,
     // one-time subscription and unsubscription.
 
-    const errorListener: (error: Error) => void = err => {
+    const errorListener: (error: Error) => void = (err) => {
         console.log(err);
     };
     socket.on("error", errorListener);
@@ -53,7 +53,7 @@ scServer.on("connection", socket => {
     socket.off("error", errorListener);
     socket.off("error");
 
-    const messageListener: (message: WebSocket.Data) => void = message => {
+    const messageListener: (message: WebSocket.Data) => void = (message) => {
         console.log(message);
     };
     socket.on("message", messageListener);
@@ -84,16 +84,19 @@ scServer.on("connection", socket => {
     socket.off("close", closeListener);
     socket.off("close");
 
-    const authStateChangeListener: (stateChangeData: socketClusterServer.SCServerSocket.StateChangeData) => void =
-        data => {
-            console.log(data);
-        };
+    const authStateChangeListener: (
+        stateChangeData: socketClusterServer.SCServerSocket.StateChangeData,
+    ) => void = (data) => {
+        console.log(data);
+    };
     socket.on("authStateChange", authStateChangeListener);
     socket.once("authStateChange", authStateChangeListener);
     socket.off("authStateChange", authStateChangeListener);
     socket.off("authStateChange");
 
-    const authenticateListener: (authToken?: socketClusterServer.SCServer.AuthToken) => void = authToken => {
+    const authenticateListener: (
+        authToken?: socketClusterServer.SCServer.AuthToken,
+    ) => void = (authToken) => {
         console.log(authToken);
     };
     socket.on("authenticate", authenticateListener);
@@ -101,7 +104,9 @@ scServer.on("connection", socket => {
     socket.off("authenticate", authenticateListener);
     socket.off("authenticate");
 
-    const deauthenticateListener: (oldToken?: socketClusterServer.SCServer.AuthToken) => void = oldToken => {
+    const deauthenticateListener: (
+        oldToken?: socketClusterServer.SCServer.AuthToken,
+    ) => void = (oldToken) => {
         console.log(oldToken);
     };
     socket.on("deauthenticate", deauthenticateListener);
@@ -111,7 +116,7 @@ scServer.on("connection", socket => {
 
     // Check custom events, with normal subscription,
     // one-time subscription and unsubscription.
-    const customEventListener: (data?: any) => void = data => {
+    const customEventListener: (data?: any) => void = (data) => {
         console.log(data);
     };
     socket.on("custom-event", customEventListener);

@@ -10,7 +10,10 @@ interface Options {
 }
 
 interface Useref {
-    (options?: Options, ...transformStreams: NodeJS.ReadWriteStream[]): NodeJS.ReadWriteStream;
+    (
+        options?: Options,
+        ...transformStreams: NodeJS.ReadWriteStream[]
+    ): NodeJS.ReadWriteStream;
 }
 
 declare var useref: Useref;

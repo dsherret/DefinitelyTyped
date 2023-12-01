@@ -23,14 +23,32 @@ import amplitude = require("amplitude-js");
         },
         () => {},
     );
-    amplitude.init("API_KEY", "USER_ID", { includeReferrer: true, includeUtm: true });
+    amplitude.init("API_KEY", "USER_ID", {
+        includeReferrer: true,
+        includeUtm: true,
+    });
     amplitude.init("API_KEY", "USER_ID");
     amplitude.init("API_KEY");
 
-    amplitude.logEvent("Clicked Homepage Button", { finished_flow: false, clicks: 15 });
-    amplitude.logEvent("EVENT_IDENTIFIER_HERE", { color: "blue", age: 20, key: "value" });
-    amplitude.logEvent("EVENT_IDENTIFIER_HERE", null, (httpCode, response) => {});
-    amplitude.logEventWithGroups("initialize_game", { key: "value" }, { sport: "soccer" });
+    amplitude.logEvent("Clicked Homepage Button", {
+        finished_flow: false,
+        clicks: 15,
+    });
+    amplitude.logEvent("EVENT_IDENTIFIER_HERE", {
+        color: "blue",
+        age: 20,
+        key: "value",
+    });
+    amplitude.logEvent(
+        "EVENT_IDENTIFIER_HERE",
+        null,
+        (httpCode, response) => {},
+    );
+    amplitude.logEventWithGroups(
+        "initialize_game",
+        { key: "value" },
+        { sport: "soccer" },
+    );
 
     amplitude.setDeviceId("45f0954f-eb79-4463-ac8a-233a6f45a8f0");
     amplitude.setDomain(".amplitude.com");
@@ -59,14 +77,33 @@ import amplitude = require("amplitude-js");
         },
         () => {},
     );
-    client.init("API_KEY", "USER_ID", { includeReferrer: true, includeUtm: true });
+    client.init("API_KEY", "USER_ID", {
+        includeReferrer: true,
+        includeUtm: true,
+    });
     client.init("API_KEY", "USER_ID");
     client.init("API_KEY");
-    client.logEvent("Clicked Homepage Button", { finished_flow: false, clicks: 15 });
-    client.logEvent("EVENT_IDENTIFIER_HERE", { color: "blue", age: 20, key: "value" });
+    client.logEvent("Clicked Homepage Button", {
+        finished_flow: false,
+        clicks: 15,
+    });
+    client.logEvent("EVENT_IDENTIFIER_HERE", {
+        color: "blue",
+        age: 20,
+        key: "value",
+    });
     client.logEvent("EVENT_IDENTIFIER_HERE", null, (httpCode, response) => {});
-    client.logEventWithGroups("initialize_game", { key: "value" }, { sport: "soccer" });
-    client.logEventWithTimestamp("EVENT_IDENTIFIER_HERE", { key: "value" }, 1505430378000, (httpCode, response) => {});
+    client.logEventWithGroups(
+        "initialize_game",
+        { key: "value" },
+        { sport: "soccer" },
+    );
+    client.logEventWithTimestamp(
+        "EVENT_IDENTIFIER_HERE",
+        { key: "value" },
+        1505430378000,
+        (httpCode, response) => {},
+    );
     client.setDeviceId("45f0954f-eb79-4463-ac8a-233a6f45a8f0");
     client.setDomain(".amplitude.com");
     client.setUserId("joe@gmail.com");
@@ -75,7 +112,10 @@ import amplitude = require("amplitude-js");
     client.setGroup("type", "name");
     client.setGroup("type", ["name", "name2"]);
     client.setUserProperties({ gender: "female", sign_up_complete: true });
-    client.setGlobalUserProperties({ gender: "female", sign_up_complete: true });
+    client.setGlobalUserProperties({
+        gender: "female",
+        sign_up_complete: true,
+    });
     client.setVersionName("1.12.3");
     client.setSessionId(1505430378000);
     client.options.logLevel = "WARN";
@@ -110,7 +150,9 @@ import amplitude = require("amplitude-js");
     identify.setOnce("is_test_user", true);
     identify.set("is_alpha_user", false);
 
-    revenue = new amplitude.Revenue().setProductId("productIdentifier").setPrice(10.99);
+    revenue = new amplitude.Revenue()
+        .setProductId("productIdentifier")
+        .setPrice(10.99);
     revenue = new amplitude.Revenue()
         .setProductId("productIdentifier")
         .setPrice(10.99)
@@ -152,13 +194,23 @@ identify = new amplitude.Identify()
     .setOnce("sign_up_date", "2016-03-31");
 amplitude.identify(identify);
 
-amplitude.init("API_KEY", "USER_ID", { includeReferrer: true, includeUtm: true }, () => {});
+amplitude.init(
+    "API_KEY",
+    "USER_ID",
+    { includeReferrer: true, includeUtm: true },
+    () => {},
+);
 
-amplitude.logEvent("Clicked Homepage Button", { finished_flow: false, clicks: 15 });
+amplitude.logEvent("Clicked Homepage Button", {
+    finished_flow: false,
+    clicks: 15,
+});
 amplitude.logEventWithGroups("Clicked Button", null, { orgId: 24 });
 amplitude.logRevenue(3.99, 1, "product_1234");
 
-const revenue = new amplitude.Revenue().setProductId("productIdentifier").setPrice(10.99);
+const revenue = new amplitude.Revenue()
+    .setProductId("productIdentifier")
+    .setPrice(10.99);
 amplitude.logRevenueV2(revenue);
 amplitude.setDeviceId("45f0954f-eb79-4463-ac8a-233a6f45a8f0");
 amplitude.setGroup("orgId", "15"); // this adds the current user to orgId 15.

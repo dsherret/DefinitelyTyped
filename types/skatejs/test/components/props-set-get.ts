@@ -1,4 +1,10 @@
-import { define, PropOptions, props, WithComponent, withComponent } from "skatejs";
+import {
+    define,
+    PropOptions,
+    props,
+    WithComponent,
+    withComponent,
+} from "skatejs";
 
 export const Component = withComponent();
 

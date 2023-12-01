@@ -171,7 +171,10 @@ declare global {
         bootstrapSlider: SliderPlugin<this>;
 
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        on(event: "slide", handler: (slideEvt: SliderEvent) => false | void): this;
+        on(
+            event: "slide",
+            handler: (slideEvt: SliderEvent) => false | void,
+        ): this;
     }
 }
 
@@ -212,7 +215,11 @@ declare class Slider {
      * Set a new value for the slider. If optional triggerSlideEvent parameter is true, 'slide' events will be triggered.
      * If optional triggerChangeEvent parameter is true, 'change' events will be triggered.
      */
-    setValue(newValue: number, triggerSlideEvent?: boolean, triggerChangeEvent?: boolean): this;
+    setValue(
+        newValue: number,
+        triggerSlideEvent?: boolean,
+        triggerChangeEvent?: boolean,
+    ): this;
     /**
      * Get the div slider element
      */
@@ -252,11 +259,17 @@ declare class Slider {
     /**
      * When the slider event eventType is triggered, the callback function will be invoked
      */
-    on(eventType: SliderEventType, callback: (val: number | undefined) => void): this;
+    on(
+        eventType: SliderEventType,
+        callback: (val: number | undefined) => void,
+    ): this;
     /**
      * Removes the callback function from the slider event eventType
      */
-    off(eventType: SliderEventType, callback: (val: number | undefined) => void): void;
+    off(
+        eventType: SliderEventType,
+        callback: (val: number | undefined) => void,
+    ): void;
     /**
      * Renders the tooltip again, after initialization. Useful in situations when the slider and tooltip are initially hidden.
      */

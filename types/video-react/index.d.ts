@@ -2,7 +2,10 @@ import { LegacyRef } from "react";
 
 export type PlayerReference = HTMLVideoElement & StaticPlayerInstanceMethods;
 
-export type StateListener = (current: PlayerState, previous: PlayerState) => void;
+export type StateListener = (
+    current: PlayerState,
+    previous: PlayerState,
+) => void;
 
 export interface StaticPlayerInstanceMethods {
     /**
@@ -344,7 +347,14 @@ export interface BigPlayButtonProps {
     /**
      * Determines the position of the big play button.
      */
-    position?: "center" | "left" | "left-top" | "left-bottom" | "right" | "right-top" | "right-bottom";
+    position?:
+        | "center"
+        | "left"
+        | "left-top"
+        | "left-bottom"
+        | "right"
+        | "right-top"
+        | "right-bottom";
     className?: string;
 }
 
@@ -502,7 +512,9 @@ export interface ClosedCaptionButtonProps extends ControlBarControlProps {
  *
  * https://video-react.js.org/components/closed-caption-button
  */
-export function ClosedCaptionButton(props: ClosedCaptionButtonProps): JSX.Element;
+export function ClosedCaptionButton(
+    props: ClosedCaptionButtonProps,
+): JSX.Element;
 
 /**
  * ### Component - PlaybackRateMenuButton
@@ -513,7 +525,9 @@ export function ClosedCaptionButton(props: ClosedCaptionButtonProps): JSX.Elemen
  *
  * https://video-react.js.org/components/playback-rate-menu-button
  */
-export function PlaybackRateMenuButton(props: PlaybackRateMenuButtonProps): JSX.Element;
+export function PlaybackRateMenuButton(
+    props: PlaybackRateMenuButtonProps,
+): JSX.Element;
 
 /**
  * CurrentTimeDisplay, TimeDivider, DurationDisplay, ProgressControl

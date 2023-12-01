@@ -51,7 +51,10 @@ declare module "karma" {
      */
     interface SnapshotSerializer {
         serialize: (name: string, suite: SnapshotSuite) => string;
-        deserialize: (content: string) => { name: string; suite: SnapshotSuite };
+        deserialize: (content: string) => {
+            name: string;
+            suite: SnapshotSuite;
+        };
     }
 
     // these are required to correctly implement custom serializer

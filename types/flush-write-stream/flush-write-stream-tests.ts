@@ -8,7 +8,11 @@ stream.write("hello");
 stream.write("world");
 stream.end();
 
-function write(data: any, encoding: string, callback: (error?: Error) => void): void {
+function write(
+    data: any,
+    encoding: string,
+    callback: (error?: Error) => void,
+): void {
     console.log("Writing", data.toString());
     callback();
 }

@@ -21,7 +21,9 @@ export default class Vocabulary extends Entity {
      * @param vocabularyElementList - the vocabularyElements to add
      * @return the vocabulary instance
      */
-    addVocabularyElementList(vocabularyElementList: VocabularyElement[]): Vocabulary;
+    addVocabularyElementList(
+        vocabularyElementList: VocabularyElement[],
+    ): Vocabulary;
     /**
      * Clear the vocabularyElementList list
      * @return the vocabulary instance
@@ -39,7 +41,9 @@ export default class Vocabulary extends Entity {
      * @param vocabularyElementList - the vocabularyElement to remove
      * @return the vocabulary instance
      */
-    removeVocabularyElementList(vocabularyElementList: VocabularyElement[]): Vocabulary;
+    removeVocabularyElementList(
+        vocabularyElementList: VocabularyElement[],
+    ): Vocabulary;
     /**
      * Getter for the vocabularyElementList property
      * @return - the vocabularyElementList

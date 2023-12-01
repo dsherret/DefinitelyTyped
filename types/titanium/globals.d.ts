@@ -96,12 +96,18 @@ declare function require(moduleId: string): any;
 /**
  * Executes a function repeatedly with a fixed time delay between each call to that function.
  */
-declare function setInterval(func: (...args: any[]) => void, delay?: number): number;
+declare function setInterval(
+    func: (...args: any[]) => void,
+    delay?: number,
+): number;
 
 /**
  * Executes code or a function after a delay.
  */
-declare function setTimeout(func: (...args: any[]) => void, delay?: number): number;
+declare function setTimeout(
+    func: (...args: any[]) => void,
+    delay?: number,
+): number;
 
 // String constructor augmentation ---------------------------------------------
 

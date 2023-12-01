@@ -1,5 +1,9 @@
 import Image = require("@11ty/eleventy-img");
-import type { ImgAttributes, PictureAttributes, SourceAttributes } from "@11ty/eleventy-img/generate-html";
+import type {
+    ImgAttributes,
+    PictureAttributes,
+    SourceAttributes,
+} from "@11ty/eleventy-img/generate-html";
 
 Image.concurrency = 4;
 
@@ -31,7 +35,9 @@ function isImg<T>(
             return `${id}-${width}.${format}`;
         },
         urlFormat({ src, width, format }) {
-            return `https://sample-image-service.11ty.dev/${encodeURIComponent(src)}/${width}/${format}/`;
+            return `https://sample-image-service.11ty.dev/${encodeURIComponent(
+                src,
+            )}/${width}/${format}/`;
         },
         remoteImageMetadata: {
             width: 300,

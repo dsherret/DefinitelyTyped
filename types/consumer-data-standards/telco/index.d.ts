@@ -640,7 +640,11 @@ export interface TelcoAccountDetailResponse {
                 /**
                  * The billing type of then plan
                  */
-                billingType: "PRE_PAID" | "POST_PAID" | "UPFRONT_PAID" | "OTHER";
+                billingType:
+                    | "PRE_PAID"
+                    | "POST_PAID"
+                    | "UPFRONT_PAID"
+                    | "OTHER";
                 /**
                  * Optional display name for the plan provided by the customer to help differentiate multiple plans
                  */
@@ -915,7 +919,11 @@ export interface TelcoAccountListResponse {
                     /**
                      * The billing type of then plan
                      */
-                    billingType: "PRE_PAID" | "POST_PAID" | "UPFRONT_PAID" | "OTHER";
+                    billingType:
+                        | "PRE_PAID"
+                        | "POST_PAID"
+                        | "UPFRONT_PAID"
+                        | "OTHER";
                     /**
                      * Optional display name for the plan provided by the customer to help differentiate multiple plans
                      */
@@ -1034,7 +1042,11 @@ export interface TelcoAccountListResponseData {
                 /**
                  * The billing type of then plan
                  */
-                billingType: "PRE_PAID" | "POST_PAID" | "UPFRONT_PAID" | "OTHER";
+                billingType:
+                    | "PRE_PAID"
+                    | "POST_PAID"
+                    | "UPFRONT_PAID"
+                    | "OTHER";
                 /**
                  * Optional display name for the plan provided by the customer to help differentiate multiple plans
                  */
@@ -1906,7 +1918,11 @@ export interface TelcoBalanceListResponse {
                             /**
                              * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                              */
-                            planType: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                            planType:
+                                | "METERED"
+                                | "UNMETERED"
+                                | "LIMITED"
+                                | "UNSUPPORTED";
                             /**
                              * Balance of data roaming charges. Required unless planType is UNSUPPORTED
                              */
@@ -1964,7 +1980,11 @@ export interface TelcoBalanceListResponse {
                             /**
                              * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                              */
-                            planType?: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                            planType?:
+                                | "METERED"
+                                | "UNMETERED"
+                                | "LIMITED"
+                                | "UNSUPPORTED";
                             /**
                              * Summary of SMS Balance. Required if the service plan supports SMS messaging
                              */
@@ -2044,7 +2064,11 @@ export interface TelcoBalanceListResponse {
                             /**
                              * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                              */
-                            planType: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                            planType:
+                                | "METERED"
+                                | "UNMETERED"
+                                | "LIMITED"
+                                | "UNSUPPORTED";
                             /**
                              * Roaming voice calls
                              */
@@ -2177,7 +2201,11 @@ export interface TelcoBalanceListResponseData {
                         /**
                          * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                          */
-                        planType: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                        planType:
+                            | "METERED"
+                            | "UNMETERED"
+                            | "LIMITED"
+                            | "UNSUPPORTED";
                         /**
                          * Balance of data roaming charges. Required unless planType is UNSUPPORTED
                          */
@@ -2235,7 +2263,11 @@ export interface TelcoBalanceListResponseData {
                         /**
                          * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                          */
-                        planType?: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                        planType?:
+                            | "METERED"
+                            | "UNMETERED"
+                            | "LIMITED"
+                            | "UNSUPPORTED";
                         /**
                          * Summary of SMS Balance. Required if the service plan supports SMS messaging
                          */
@@ -2315,7 +2347,11 @@ export interface TelcoBalanceListResponseData {
                         /**
                          * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                          */
-                        planType: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                        planType:
+                            | "METERED"
+                            | "UNMETERED"
+                            | "LIMITED"
+                            | "UNSUPPORTED";
                         /**
                          * Roaming voice calls
                          */
@@ -2404,7 +2440,11 @@ export interface TelcoBalanceResponse {
                     /**
                      * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                      */
-                    planType: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                    planType:
+                        | "METERED"
+                        | "UNMETERED"
+                        | "LIMITED"
+                        | "UNSUPPORTED";
                     /**
                      * Balance of data roaming charges. Required unless planType is UNSUPPORTED
                      */
@@ -2462,7 +2502,11 @@ export interface TelcoBalanceResponse {
                     /**
                      * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                      */
-                    planType?: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                    planType?:
+                        | "METERED"
+                        | "UNMETERED"
+                        | "LIMITED"
+                        | "UNSUPPORTED";
                     /**
                      * Summary of SMS Balance. Required if the service plan supports SMS messaging
                      */
@@ -2542,7 +2586,11 @@ export interface TelcoBalanceResponse {
                     /**
                      * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                      */
-                    planType: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                    planType:
+                        | "METERED"
+                        | "UNMETERED"
+                        | "LIMITED"
+                        | "UNSUPPORTED";
                     /**
                      * Roaming voice calls
                      */
@@ -2643,7 +2691,11 @@ export interface TelcoBalanceResponseData {
                     /**
                      * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                      */
-                    planType: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                    planType:
+                        | "METERED"
+                        | "UNMETERED"
+                        | "LIMITED"
+                        | "UNSUPPORTED";
                     /**
                      * Balance of data roaming charges. Required unless planType is UNSUPPORTED
                      */
@@ -2701,7 +2753,11 @@ export interface TelcoBalanceResponseData {
                     /**
                      * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                      */
-                    planType?: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                    planType?:
+                        | "METERED"
+                        | "UNMETERED"
+                        | "LIMITED"
+                        | "UNSUPPORTED";
                     /**
                      * Summary of SMS Balance. Required if the service plan supports SMS messaging
                      */
@@ -2781,7 +2837,11 @@ export interface TelcoBalanceResponseData {
                     /**
                      * Plan type for this feature. METERED: A plan is charged by usage for the feature. UNMETERED: A plan with no limits for a feature. LIMITED: Where plan limit inclusions apply. UNSUPPORTED: Feature is not supported
                      */
-                    planType: "METERED" | "UNMETERED" | "LIMITED" | "UNSUPPORTED";
+                    planType:
+                        | "METERED"
+                        | "UNMETERED"
+                        | "LIMITED"
+                        | "UNSUPPORTED";
                     /**
                      * Roaming voice calls
                      */
@@ -2840,19 +2900,17 @@ export interface TelcoBillingAccountTransaction {
     /**
      * Optional array of adjustments arising for this transaction
      */
-    adjustments?:
-        | Array<{
-            /**
-             * The amount of the adjustment
-             */
-            amount: string;
-            /**
-             * A free text description of the adjustment
-             */
-            description: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    adjustments?: Array<{
+        /**
+         * The amount of the adjustment
+         */
+        amount: string;
+        /**
+         * A free text description of the adjustment
+         */
+        description: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
      */
@@ -2919,19 +2977,17 @@ export interface TelcoBillingOtherTransaction {
     /**
      * Optional array of adjustments arising for this transaction
      */
-    adjustments?:
-        | Array<{
-            /**
-             * The amount of the adjustment
-             */
-            amount: string;
-            /**
-             * A free text description of the adjustment
-             */
-            description: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    adjustments?: Array<{
+        /**
+         * The amount of the adjustment
+         */
+        amount: string;
+        /**
+         * A free text description of the adjustment
+         */
+        description: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The amount of the charge
      */
@@ -2972,7 +3028,15 @@ export interface TelcoBillingPaymentTransaction {
     /**
      * The method of payment
      */
-    method: "DIRECT_DEBIT" | "CARD" | "TRANSFER" | "BPAY" | "CASH" | "CHEQUE" | "VOUCHER" | "OTHER";
+    method:
+        | "DIRECT_DEBIT"
+        | "CARD"
+        | "TRANSFER"
+        | "BPAY"
+        | "CASH"
+        | "CHEQUE"
+        | "VOUCHER"
+        | "OTHER";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the telco api. */
@@ -2982,19 +3046,17 @@ export interface TelcoBillingTransaction {
         /**
          * Optional array of adjustments arising for this transaction
          */
-        adjustments?:
-            | Array<{
-                /**
-                 * The amount of the adjustment
-                 */
-                amount: string;
-                /**
-                 * A free text description of the adjustment
-                 */
-                description: string;
-                [k: string]: unknown;
-            }>
-            | null;
+        adjustments?: Array<{
+            /**
+             * The amount of the adjustment
+             */
+            amount: string;
+            /**
+             * A free text description of the adjustment
+             */
+            description: string;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
          */
@@ -3056,19 +3118,17 @@ export interface TelcoBillingTransaction {
         /**
          * Optional array of adjustments arising for this transaction
          */
-        adjustments?:
-            | Array<{
-                /**
-                 * The amount of the adjustment
-                 */
-                amount: string;
-                /**
-                 * A free text description of the adjustment
-                 */
-                description: string;
-                [k: string]: unknown;
-            }>
-            | null;
+        adjustments?: Array<{
+            /**
+             * The amount of the adjustment
+             */
+            amount: string;
+            /**
+             * A free text description of the adjustment
+             */
+            description: string;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The amount of the charge
          */
@@ -3096,7 +3156,9 @@ export interface TelcoBillingTransaction {
         /**
          * Type of charge. Assumed to be OTHER if absent
          */
-        type?: ("SERVICE" | "NETWORK" | "EQUIPMENT" | "METERING" | "OTHER") | null;
+        type?:
+            | ("SERVICE" | "NETWORK" | "EQUIPMENT" | "METERING" | "OTHER")
+            | null;
         [k: string]: unknown;
     };
     payment?: {
@@ -3107,7 +3169,15 @@ export interface TelcoBillingTransaction {
         /**
          * The method of payment
          */
-        method: "DIRECT_DEBIT" | "CARD" | "TRANSFER" | "BPAY" | "CASH" | "CHEQUE" | "VOUCHER" | "OTHER";
+        method:
+            | "DIRECT_DEBIT"
+            | "CARD"
+            | "TRANSFER"
+            | "BPAY"
+            | "CASH"
+            | "CHEQUE"
+            | "VOUCHER"
+            | "OTHER";
         [k: string]: unknown;
     };
     /**
@@ -3348,16 +3418,16 @@ export interface TelcoInvoice {
              */
             type?:
                 | (
-                    | "SERVICE"
-                    | "EQUIPMENT"
-                    | "NETWORK"
-                    | "HANDSET"
-                    | "DEVICE"
-                    | "ENTERTAINMENT"
-                    | "SUBSCRIPTION"
-                    | "SOFTWARE"
-                    | "OTHER"
-                )
+                      | "SERVICE"
+                      | "EQUIPMENT"
+                      | "NETWORK"
+                      | "HANDSET"
+                      | "DEVICE"
+                      | "ENTERTAINMENT"
+                      | "SUBSCRIPTION"
+                      | "SOFTWARE"
+                      | "OTHER"
+                  )
                 | null;
             [k: string]: unknown;
         };
@@ -3624,16 +3694,16 @@ export interface TelcoInvoiceAccountCharges {
          */
         type?:
             | (
-                | "SERVICE"
-                | "EQUIPMENT"
-                | "NETWORK"
-                | "HANDSET"
-                | "DEVICE"
-                | "ENTERTAINMENT"
-                | "SUBSCRIPTION"
-                | "SOFTWARE"
-                | "OTHER"
-            )
+                  | "SERVICE"
+                  | "EQUIPMENT"
+                  | "NETWORK"
+                  | "HANDSET"
+                  | "DEVICE"
+                  | "ENTERTAINMENT"
+                  | "SUBSCRIPTION"
+                  | "SOFTWARE"
+                  | "OTHER"
+              )
             | null;
         [k: string]: unknown;
     };
@@ -3674,16 +3744,16 @@ export interface TelcoInvoiceAccountChargesOtherCharges {
      */
     type?:
         | (
-            | "SERVICE"
-            | "EQUIPMENT"
-            | "NETWORK"
-            | "HANDSET"
-            | "DEVICE"
-            | "ENTERTAINMENT"
-            | "SUBSCRIPTION"
-            | "SOFTWARE"
-            | "OTHER"
-        )
+              | "SERVICE"
+              | "EQUIPMENT"
+              | "NETWORK"
+              | "HANDSET"
+              | "DEVICE"
+              | "ENTERTAINMENT"
+              | "SUBSCRIPTION"
+              | "SOFTWARE"
+              | "OTHER"
+          )
         | null;
     [k: string]: unknown;
 }
@@ -3716,16 +3786,16 @@ export interface TelcoInvoiceListResponse {
                      */
                     type?:
                         | (
-                            | "SERVICE"
-                            | "EQUIPMENT"
-                            | "NETWORK"
-                            | "HANDSET"
-                            | "DEVICE"
-                            | "ENTERTAINMENT"
-                            | "SUBSCRIPTION"
-                            | "SOFTWARE"
-                            | "OTHER"
-                        )
+                              | "SERVICE"
+                              | "EQUIPMENT"
+                              | "NETWORK"
+                              | "HANDSET"
+                              | "DEVICE"
+                              | "ENTERTAINMENT"
+                              | "SUBSCRIPTION"
+                              | "SOFTWARE"
+                              | "OTHER"
+                          )
                         | null;
                     [k: string]: unknown;
                 };
@@ -4035,16 +4105,16 @@ export interface TelcoInvoiceListResponseData {
                  */
                 type?:
                     | (
-                        | "SERVICE"
-                        | "EQUIPMENT"
-                        | "NETWORK"
-                        | "HANDSET"
-                        | "DEVICE"
-                        | "ENTERTAINMENT"
-                        | "SUBSCRIPTION"
-                        | "SOFTWARE"
-                        | "OTHER"
-                    )
+                          | "SERVICE"
+                          | "EQUIPMENT"
+                          | "NETWORK"
+                          | "HANDSET"
+                          | "DEVICE"
+                          | "ENTERTAINMENT"
+                          | "SUBSCRIPTION"
+                          | "SOFTWARE"
+                          | "OTHER"
+                      )
                     | null;
                 [k: string]: unknown;
             };
@@ -4355,16 +4425,16 @@ export interface TelcoInvoiceResponse {
                      */
                     type?:
                         | (
-                            | "SERVICE"
-                            | "EQUIPMENT"
-                            | "NETWORK"
-                            | "HANDSET"
-                            | "DEVICE"
-                            | "ENTERTAINMENT"
-                            | "SUBSCRIPTION"
-                            | "SOFTWARE"
-                            | "OTHER"
-                        )
+                              | "SERVICE"
+                              | "EQUIPMENT"
+                              | "NETWORK"
+                              | "HANDSET"
+                              | "DEVICE"
+                              | "ENTERTAINMENT"
+                              | "SUBSCRIPTION"
+                              | "SOFTWARE"
+                              | "OTHER"
+                          )
                         | null;
                     [k: string]: unknown;
                 };
@@ -4640,7 +4710,13 @@ export interface TelcoPaymentSchedule {
         /**
          * The type of credit card held on file
          */
-        cardScheme: "VISA" | "MASTERCARD" | "AMEX" | "DINERS" | "OTHER" | "UNKNOWN";
+        cardScheme:
+            | "VISA"
+            | "MASTERCARD"
+            | "AMEX"
+            | "DINERS"
+            | "OTHER"
+            | "UNKNOWN";
         /**
          * The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
          */
@@ -4716,7 +4792,11 @@ export interface TelcoPaymentSchedule {
     /**
      * The type of object present in this response
      */
-    paymentScheduleUType: "cardDebit" | "directDebit" | "manualPayment" | "digitalWallet";
+    paymentScheduleUType:
+        | "cardDebit"
+        | "directDebit"
+        | "manualPayment"
+        | "digitalWallet";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the telco api. */
@@ -4834,7 +4914,13 @@ export interface TelcoPaymentScheduleResponse {
                 /**
                  * The type of credit card held on file
                  */
-                cardScheme: "VISA" | "MASTERCARD" | "AMEX" | "DINERS" | "OTHER" | "UNKNOWN";
+                cardScheme:
+                    | "VISA"
+                    | "MASTERCARD"
+                    | "AMEX"
+                    | "DINERS"
+                    | "OTHER"
+                    | "UNKNOWN";
                 /**
                  * The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
                  */
@@ -4910,7 +4996,11 @@ export interface TelcoPaymentScheduleResponse {
             /**
              * The type of object present in this response
              */
-            paymentScheduleUType: "cardDebit" | "directDebit" | "manualPayment" | "digitalWallet";
+            paymentScheduleUType:
+                | "cardDebit"
+                | "directDebit"
+                | "manualPayment"
+                | "digitalWallet";
             [k: string]: unknown;
         }>;
         [k: string]: unknown;
@@ -4973,7 +5063,13 @@ export interface TelcoPaymentScheduleResponseData {
             /**
              * The type of credit card held on file
              */
-            cardScheme: "VISA" | "MASTERCARD" | "AMEX" | "DINERS" | "OTHER" | "UNKNOWN";
+            cardScheme:
+                | "VISA"
+                | "MASTERCARD"
+                | "AMEX"
+                | "DINERS"
+                | "OTHER"
+                | "UNKNOWN";
             /**
              * The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
              */
@@ -5049,7 +5145,11 @@ export interface TelcoPaymentScheduleResponseData {
         /**
          * The type of object present in this response
          */
-        paymentScheduleUType: "cardDebit" | "directDebit" | "manualPayment" | "digitalWallet";
+        paymentScheduleUType:
+            | "cardDebit"
+            | "directDebit"
+            | "manualPayment"
+            | "digitalWallet";
         [k: string]: unknown;
     }>;
     [k: string]: unknown;
@@ -5201,192 +5301,174 @@ export interface TelcoProductDetail {
     /**
      * Bundles the product can be part of
      */
-    bundles?:
-        | Array<{
+    bundles?: Array<{
+        /**
+         * The URI of the product bundle
+         */
+        bundleUri?: string | null;
+        /**
+         * The description of the product bundle
+         */
+        description?: string | null;
+        /**
+         * The display name of the product bundle
+         */
+        displayName: string;
+        /**
+         * Optional list of features of the bundle
+         */
+        features?: Array<{
             /**
-             * The URI of the product bundle
+             * The type of the feature
              */
-            bundleUri?: string | null;
+            category?:
+                | (
+                      | "DATA"
+                      | "VOICE"
+                      | "MESSAGING"
+                      | "HANDSET"
+                      | "DEVICE"
+                      | "NETWORK"
+                      | "ENTERTAINMENT"
+                      | "SUBSCRIPTION"
+                      | "SOFTWARE"
+                      | "OTHER"
+                  )
+                | null;
             /**
-             * The description of the product bundle
+             * The description of the feature
              */
             description?: string | null;
             /**
-             * The display name of the product bundle
+             * The display name of the feature
              */
             displayName: string;
-            /**
-             * Optional list of features of the bundle
-             */
-            features?:
-                | Array<{
-                    /**
-                     * The type of the feature
-                     */
-                    category?:
-                        | (
-                            | "DATA"
-                            | "VOICE"
-                            | "MESSAGING"
-                            | "HANDSET"
-                            | "DEVICE"
-                            | "NETWORK"
-                            | "ENTERTAINMENT"
-                            | "SUBSCRIPTION"
-                            | "SOFTWARE"
-                            | "OTHER"
-                        )
-                        | null;
-                    /**
-                     * The description of the feature
-                     */
-                    description?: string | null;
-                    /**
-                     * The display name of the feature
-                     */
-                    displayName: string;
-                    [k: string]: unknown;
-                }>
-                | null;
             [k: string]: unknown;
-        }>
-        | null;
+        }> | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * Discounts associated to the product
      */
-    discounts?:
-        | Array<{
+    discounts?: Array<{
+        /**
+         * The description name of the product plan
+         */
+        description?: string | null;
+        /**
+         * The URI of the discount
+         */
+        discountUri?: string | null;
+        /**
+         * The display name of the product plan
+         */
+        displayName: string;
+        /**
+         * Optional list of features of the discount
+         */
+        features?: Array<{
             /**
-             * The description name of the product plan
+             * The description of the discount feature
              */
             description?: string | null;
             /**
-             * The URI of the discount
-             */
-            discountUri?: string | null;
-            /**
-             * The display name of the product plan
+             * The display name of the discount feature
              */
             displayName: string;
-            /**
-             * Optional list of features of the discount
-             */
-            features?:
-                | Array<{
-                    /**
-                     * The description of the discount feature
-                     */
-                    description?: string | null;
-                    /**
-                     * The display name of the discount feature
-                     */
-                    displayName: string;
-                    [k: string]: unknown;
-                }>
-                | null;
             [k: string]: unknown;
-        }>
-        | null;
+        }> | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * Incentives associated to the product
      */
-    incentives?:
-        | Array<{
+    incentives?: Array<{
+        /**
+         * The description of the incentive
+         */
+        description?: string | null;
+        /**
+         * The display name of the incentive
+         */
+        displayName: string;
+        /**
+         * Optional list of features of the incentive
+         */
+        features?: Array<{
             /**
-             * The description of the incentive
+             * The description of the incentive feature
              */
             description?: string | null;
             /**
-             * The display name of the incentive
+             * The display name of the incentive feature
              */
             displayName: string;
-            /**
-             * Optional list of features of the incentive
-             */
-            features?:
-                | Array<{
-                    /**
-                     * The description of the incentive feature
-                     */
-                    description?: string | null;
-                    /**
-                     * The display name of the incentive feature
-                     */
-                    displayName: string;
-                    [k: string]: unknown;
-                }>
-                | null;
-            /**
-             * The URI of the incentive
-             */
-            incentiveUri?: string | null;
             [k: string]: unknown;
-        }>
-        | null;
+        }> | null;
+        /**
+         * The URI of the incentive
+         */
+        incentiveUri?: string | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * Charges for metering included in the plan
      */
-    meteringCharges?:
-        | Array<{
-            /**
-             * Description of the charge
-             */
-            description?: string | null;
-            /**
-             * Display name of the charge
-             */
-            displayName: string;
-            /**
-             * The upper limit of the charge if the charge could occur in a range
-             */
-            maximumValue?: string | null;
-            /**
-             * Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified
-             */
-            minimumValue: string;
-            /**
-             * The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
-             */
-            period?: string | null;
-            [k: string]: unknown;
-        }>
-        | null;
+    meteringCharges?: Array<{
+        /**
+         * Description of the charge
+         */
+        description?: string | null;
+        /**
+         * Display name of the charge
+         */
+        displayName: string;
+        /**
+         * The upper limit of the charge if the charge could occur in a range
+         */
+        maximumValue?: string | null;
+        /**
+         * Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified
+         */
+        minimumValue: string;
+        /**
+         * The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
+         */
+        period?: string | null;
+        [k: string]: unknown;
+    }> | null;
     /**
      * Plans associated to the product
      */
-    plans?:
-        | Array<{
+    plans?: Array<{
+        /**
+         * The display name of the product plan
+         */
+        description?: string | null;
+        /**
+         * The display name of the product plan
+         */
+        displayName: string;
+        /**
+         * Optional list of features of the plan
+         */
+        features?: Array<{
             /**
-             * The display name of the product plan
+             * The description of the feature
              */
             description?: string | null;
             /**
-             * The display name of the product plan
+             * The display name of the feature
              */
             displayName: string;
-            /**
-             * Optional list of features of the plan
-             */
-            features?:
-                | Array<{
-                    /**
-                     * The description of the feature
-                     */
-                    description?: string | null;
-                    /**
-                     * The display name of the feature
-                     */
-                    displayName: string;
-                    [k: string]: unknown;
-                }>
-                | null;
-            /**
-             * The URI of the product plan
-             */
-            planUri?: string | null;
             [k: string]: unknown;
-        }>
-        | null;
+        }> | null;
+        /**
+         * The URI of the product plan
+         */
+        planUri?: string | null;
+        [k: string]: unknown;
+    }> | null;
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the telco api. */
@@ -5407,36 +5489,34 @@ export interface TelcoProductDetailBundles {
     /**
      * Optional list of features of the bundle
      */
-    features?:
-        | Array<{
-            /**
-             * The type of the feature
-             */
-            category?:
-                | (
-                    | "DATA"
-                    | "VOICE"
-                    | "MESSAGING"
-                    | "HANDSET"
-                    | "DEVICE"
-                    | "NETWORK"
-                    | "ENTERTAINMENT"
-                    | "SUBSCRIPTION"
-                    | "SOFTWARE"
-                    | "OTHER"
-                )
-                | null;
-            /**
-             * The description of the feature
-             */
-            description?: string | null;
-            /**
-             * The display name of the feature
-             */
-            displayName: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    features?: Array<{
+        /**
+         * The type of the feature
+         */
+        category?:
+            | (
+                  | "DATA"
+                  | "VOICE"
+                  | "MESSAGING"
+                  | "HANDSET"
+                  | "DEVICE"
+                  | "NETWORK"
+                  | "ENTERTAINMENT"
+                  | "SUBSCRIPTION"
+                  | "SOFTWARE"
+                  | "OTHER"
+              )
+            | null;
+        /**
+         * The description of the feature
+         */
+        description?: string | null;
+        /**
+         * The display name of the feature
+         */
+        displayName: string;
+        [k: string]: unknown;
+    }> | null;
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the telco api. */
@@ -5470,19 +5550,17 @@ export interface TelcoProductDetailDiscounts {
     /**
      * Optional list of features of the discount
      */
-    features?:
-        | Array<{
-            /**
-             * The description of the discount feature
-             */
-            description?: string | null;
-            /**
-             * The display name of the discount feature
-             */
-            displayName: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    features?: Array<{
+        /**
+         * The description of the discount feature
+         */
+        description?: string | null;
+        /**
+         * The display name of the discount feature
+         */
+        displayName: string;
+        [k: string]: unknown;
+    }> | null;
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the telco api. */
@@ -5493,17 +5571,17 @@ export interface TelcoProductDetailFeature {
      */
     category?:
         | (
-            | "DATA"
-            | "VOICE"
-            | "MESSAGING"
-            | "HANDSET"
-            | "DEVICE"
-            | "NETWORK"
-            | "ENTERTAINMENT"
-            | "SUBSCRIPTION"
-            | "SOFTWARE"
-            | "OTHER"
-        )
+              | "DATA"
+              | "VOICE"
+              | "MESSAGING"
+              | "HANDSET"
+              | "DEVICE"
+              | "NETWORK"
+              | "ENTERTAINMENT"
+              | "SUBSCRIPTION"
+              | "SOFTWARE"
+              | "OTHER"
+          )
         | null;
     /**
      * The description of the feature
@@ -5542,19 +5620,17 @@ export interface TelcoProductDetailIncentives {
     /**
      * Optional list of features of the incentive
      */
-    features?:
-        | Array<{
-            /**
-             * The description of the incentive feature
-             */
-            description?: string | null;
-            /**
-             * The display name of the incentive feature
-             */
-            displayName: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    features?: Array<{
+        /**
+         * The description of the incentive feature
+         */
+        description?: string | null;
+        /**
+         * The display name of the incentive feature
+         */
+        displayName: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The URI of the incentive
      */
@@ -5600,19 +5676,17 @@ export interface TelcoProductDetailPlan {
     /**
      * Optional list of features of the plan
      */
-    features?:
-        | Array<{
-            /**
-             * The description of the feature
-             */
-            description?: string | null;
-            /**
-             * The display name of the feature
-             */
-            displayName: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    features?: Array<{
+        /**
+         * The description of the feature
+         */
+        description?: string | null;
+        /**
+         * The display name of the feature
+         */
+        displayName: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The URI of the product plan
      */
@@ -6111,192 +6185,174 @@ export interface TelcoProductResponse {
         /**
          * Bundles the product can be part of
          */
-        bundles?:
-            | Array<{
+        bundles?: Array<{
+            /**
+             * The URI of the product bundle
+             */
+            bundleUri?: string | null;
+            /**
+             * The description of the product bundle
+             */
+            description?: string | null;
+            /**
+             * The display name of the product bundle
+             */
+            displayName: string;
+            /**
+             * Optional list of features of the bundle
+             */
+            features?: Array<{
                 /**
-                 * The URI of the product bundle
+                 * The type of the feature
                  */
-                bundleUri?: string | null;
+                category?:
+                    | (
+                          | "DATA"
+                          | "VOICE"
+                          | "MESSAGING"
+                          | "HANDSET"
+                          | "DEVICE"
+                          | "NETWORK"
+                          | "ENTERTAINMENT"
+                          | "SUBSCRIPTION"
+                          | "SOFTWARE"
+                          | "OTHER"
+                      )
+                    | null;
                 /**
-                 * The description of the product bundle
+                 * The description of the feature
                  */
                 description?: string | null;
                 /**
-                 * The display name of the product bundle
+                 * The display name of the feature
                  */
                 displayName: string;
-                /**
-                 * Optional list of features of the bundle
-                 */
-                features?:
-                    | Array<{
-                        /**
-                         * The type of the feature
-                         */
-                        category?:
-                            | (
-                                | "DATA"
-                                | "VOICE"
-                                | "MESSAGING"
-                                | "HANDSET"
-                                | "DEVICE"
-                                | "NETWORK"
-                                | "ENTERTAINMENT"
-                                | "SUBSCRIPTION"
-                                | "SOFTWARE"
-                                | "OTHER"
-                            )
-                            | null;
-                        /**
-                         * The description of the feature
-                         */
-                        description?: string | null;
-                        /**
-                         * The display name of the feature
-                         */
-                        displayName: string;
-                        [k: string]: unknown;
-                    }>
-                    | null;
                 [k: string]: unknown;
-            }>
-            | null;
+            }> | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * Discounts associated to the product
          */
-        discounts?:
-            | Array<{
+        discounts?: Array<{
+            /**
+             * The description name of the product plan
+             */
+            description?: string | null;
+            /**
+             * The URI of the discount
+             */
+            discountUri?: string | null;
+            /**
+             * The display name of the product plan
+             */
+            displayName: string;
+            /**
+             * Optional list of features of the discount
+             */
+            features?: Array<{
                 /**
-                 * The description name of the product plan
+                 * The description of the discount feature
                  */
                 description?: string | null;
                 /**
-                 * The URI of the discount
-                 */
-                discountUri?: string | null;
-                /**
-                 * The display name of the product plan
+                 * The display name of the discount feature
                  */
                 displayName: string;
-                /**
-                 * Optional list of features of the discount
-                 */
-                features?:
-                    | Array<{
-                        /**
-                         * The description of the discount feature
-                         */
-                        description?: string | null;
-                        /**
-                         * The display name of the discount feature
-                         */
-                        displayName: string;
-                        [k: string]: unknown;
-                    }>
-                    | null;
                 [k: string]: unknown;
-            }>
-            | null;
+            }> | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * Incentives associated to the product
          */
-        incentives?:
-            | Array<{
+        incentives?: Array<{
+            /**
+             * The description of the incentive
+             */
+            description?: string | null;
+            /**
+             * The display name of the incentive
+             */
+            displayName: string;
+            /**
+             * Optional list of features of the incentive
+             */
+            features?: Array<{
                 /**
-                 * The description of the incentive
+                 * The description of the incentive feature
                  */
                 description?: string | null;
                 /**
-                 * The display name of the incentive
+                 * The display name of the incentive feature
                  */
                 displayName: string;
-                /**
-                 * Optional list of features of the incentive
-                 */
-                features?:
-                    | Array<{
-                        /**
-                         * The description of the incentive feature
-                         */
-                        description?: string | null;
-                        /**
-                         * The display name of the incentive feature
-                         */
-                        displayName: string;
-                        [k: string]: unknown;
-                    }>
-                    | null;
-                /**
-                 * The URI of the incentive
-                 */
-                incentiveUri?: string | null;
                 [k: string]: unknown;
-            }>
-            | null;
+            }> | null;
+            /**
+             * The URI of the incentive
+             */
+            incentiveUri?: string | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * Charges for metering included in the plan
          */
-        meteringCharges?:
-            | Array<{
-                /**
-                 * Description of the charge
-                 */
-                description?: string | null;
-                /**
-                 * Display name of the charge
-                 */
-                displayName: string;
-                /**
-                 * The upper limit of the charge if the charge could occur in a range
-                 */
-                maximumValue?: string | null;
-                /**
-                 * Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified
-                 */
-                minimumValue: string;
-                /**
-                 * The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
-                 */
-                period?: string | null;
-                [k: string]: unknown;
-            }>
-            | null;
+        meteringCharges?: Array<{
+            /**
+             * Description of the charge
+             */
+            description?: string | null;
+            /**
+             * Display name of the charge
+             */
+            displayName: string;
+            /**
+             * The upper limit of the charge if the charge could occur in a range
+             */
+            maximumValue?: string | null;
+            /**
+             * Minimum value of the charge if the charge is a range or the absolute value of the charge if no range is specified
+             */
+            minimumValue: string;
+            /**
+             * The charges that occur on a schedule indicates the frequency. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
+             */
+            period?: string | null;
+            [k: string]: unknown;
+        }> | null;
         /**
          * Plans associated to the product
          */
-        plans?:
-            | Array<{
+        plans?: Array<{
+            /**
+             * The display name of the product plan
+             */
+            description?: string | null;
+            /**
+             * The display name of the product plan
+             */
+            displayName: string;
+            /**
+             * Optional list of features of the plan
+             */
+            features?: Array<{
                 /**
-                 * The display name of the product plan
+                 * The description of the feature
                  */
                 description?: string | null;
                 /**
-                 * The display name of the product plan
+                 * The display name of the feature
                  */
                 displayName: string;
-                /**
-                 * Optional list of features of the plan
-                 */
-                features?:
-                    | Array<{
-                        /**
-                         * The description of the feature
-                         */
-                        description?: string | null;
-                        /**
-                         * The display name of the feature
-                         */
-                        displayName: string;
-                        [k: string]: unknown;
-                    }>
-                    | null;
-                /**
-                 * The URI of the product plan
-                 */
-                planUri?: string | null;
                 [k: string]: unknown;
-            }>
-            | null;
+            }> | null;
+            /**
+             * The URI of the product plan
+             */
+            planUri?: string | null;
+            [k: string]: unknown;
+        }> | null;
         [k: string]: unknown;
     };
     links: {
@@ -7655,19 +7711,17 @@ export interface TelcoTransactionListResponse {
                 /**
                  * Optional array of adjustments arising for this transaction
                  */
-                adjustments?:
-                    | Array<{
-                        /**
-                         * The amount of the adjustment
-                         */
-                        amount: string;
-                        /**
-                         * A free text description of the adjustment
-                         */
-                        description: string;
-                        [k: string]: unknown;
-                    }>
-                    | null;
+                adjustments?: Array<{
+                    /**
+                     * The amount of the adjustment
+                     */
+                    amount: string;
+                    /**
+                     * A free text description of the adjustment
+                     */
+                    description: string;
+                    [k: string]: unknown;
+                }> | null;
                 /**
                  * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
                  */
@@ -7729,19 +7783,17 @@ export interface TelcoTransactionListResponse {
                 /**
                  * Optional array of adjustments arising for this transaction
                  */
-                adjustments?:
-                    | Array<{
-                        /**
-                         * The amount of the adjustment
-                         */
-                        amount: string;
-                        /**
-                         * A free text description of the adjustment
-                         */
-                        description: string;
-                        [k: string]: unknown;
-                    }>
-                    | null;
+                adjustments?: Array<{
+                    /**
+                     * The amount of the adjustment
+                     */
+                    amount: string;
+                    /**
+                     * A free text description of the adjustment
+                     */
+                    description: string;
+                    [k: string]: unknown;
+                }> | null;
                 /**
                  * The amount of the charge
                  */
@@ -7769,7 +7821,15 @@ export interface TelcoTransactionListResponse {
                 /**
                  * Type of charge. Assumed to be OTHER if absent
                  */
-                type?: ("SERVICE" | "NETWORK" | "EQUIPMENT" | "METERING" | "OTHER") | null;
+                type?:
+                    | (
+                          | "SERVICE"
+                          | "NETWORK"
+                          | "EQUIPMENT"
+                          | "METERING"
+                          | "OTHER"
+                      )
+                    | null;
                 [k: string]: unknown;
             };
             payment?: {
@@ -7780,13 +7840,25 @@ export interface TelcoTransactionListResponse {
                 /**
                  * The method of payment
                  */
-                method: "DIRECT_DEBIT" | "CARD" | "TRANSFER" | "BPAY" | "CASH" | "CHEQUE" | "VOUCHER" | "OTHER";
+                method:
+                    | "DIRECT_DEBIT"
+                    | "CARD"
+                    | "TRANSFER"
+                    | "BPAY"
+                    | "CASH"
+                    | "CHEQUE"
+                    | "VOUCHER"
+                    | "OTHER";
                 [k: string]: unknown;
             };
             /**
              * Indicator of the type of transaction object present in this record
              */
-            transactionUType: "account" | "onceOff" | "otherCharges" | "payment";
+            transactionUType:
+                | "account"
+                | "onceOff"
+                | "otherCharges"
+                | "payment";
             [k: string]: unknown;
         }>;
         [k: string]: unknown;
@@ -7838,19 +7910,17 @@ export interface TelcoTransactionListResponseData {
             /**
              * Optional array of adjustments arising for this transaction
              */
-            adjustments?:
-                | Array<{
-                    /**
-                     * The amount of the adjustment
-                     */
-                    amount: string;
-                    /**
-                     * A free text description of the adjustment
-                     */
-                    description: string;
-                    [k: string]: unknown;
-                }>
-                | null;
+            adjustments?: Array<{
+                /**
+                 * The amount of the adjustment
+                 */
+                amount: string;
+                /**
+                 * A free text description of the adjustment
+                 */
+                description: string;
+                [k: string]: unknown;
+            }> | null;
             /**
              * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
              */
@@ -7912,19 +7982,17 @@ export interface TelcoTransactionListResponseData {
             /**
              * Optional array of adjustments arising for this transaction
              */
-            adjustments?:
-                | Array<{
-                    /**
-                     * The amount of the adjustment
-                     */
-                    amount: string;
-                    /**
-                     * A free text description of the adjustment
-                     */
-                    description: string;
-                    [k: string]: unknown;
-                }>
-                | null;
+            adjustments?: Array<{
+                /**
+                 * The amount of the adjustment
+                 */
+                amount: string;
+                /**
+                 * A free text description of the adjustment
+                 */
+                description: string;
+                [k: string]: unknown;
+            }> | null;
             /**
              * The amount of the charge
              */
@@ -7952,7 +8020,9 @@ export interface TelcoTransactionListResponseData {
             /**
              * Type of charge. Assumed to be OTHER if absent
              */
-            type?: ("SERVICE" | "NETWORK" | "EQUIPMENT" | "METERING" | "OTHER") | null;
+            type?:
+                | ("SERVICE" | "NETWORK" | "EQUIPMENT" | "METERING" | "OTHER")
+                | null;
             [k: string]: unknown;
         };
         payment?: {
@@ -7963,7 +8033,15 @@ export interface TelcoTransactionListResponseData {
             /**
              * The method of payment
              */
-            method: "DIRECT_DEBIT" | "CARD" | "TRANSFER" | "BPAY" | "CASH" | "CHEQUE" | "VOUCHER" | "OTHER";
+            method:
+                | "DIRECT_DEBIT"
+                | "CARD"
+                | "TRANSFER"
+                | "BPAY"
+                | "CASH"
+                | "CHEQUE"
+                | "VOUCHER"
+                | "OTHER";
             [k: string]: unknown;
         };
         /**

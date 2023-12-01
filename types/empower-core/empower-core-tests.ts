@@ -18,8 +18,14 @@ const partialOptions: empowerCore.Options = {
     const assert: typeof originalAssert = empowerCore(originalAssert);
 }
 {
-    const assert: typeof originalAssert = empowerCore(originalAssert, defaultOptions);
+    const assert: typeof originalAssert = empowerCore(
+        originalAssert,
+        defaultOptions,
+    );
 }
 {
-    const assert: typeof originalAssert = empowerCore(originalAssert, partialOptions);
+    const assert: typeof originalAssert = empowerCore(
+        originalAssert,
+        partialOptions,
+    );
 }

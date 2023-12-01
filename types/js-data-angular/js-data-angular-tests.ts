@@ -2,8 +2,7 @@ import * as ng from "angular";
 import * as angular from "angular";
 import * as JSData from "js-data";
 
-interface IUser {
-}
+interface IUser {}
 
 interface CustomScope extends ng.IScope {
     comments: any[];
@@ -11,16 +10,17 @@ interface CustomScope extends ng.IScope {
     users: IUser[];
 }
 
-angular.module("myApp")
+angular
+    .module("myApp")
     .controller(
         "commentsCtrl",
-        function(
+        function (
             $scope: CustomScope,
             store: JSData.DS,
             Comment: JSData.DSResourceDefinition<any>,
             User: JSData.DSResourceDefinition<any>,
         ) {
-            Comment.findAll().then(function(comments) {
+            Comment.findAll().then(function (comments) {
                 $scope.comments = comments;
             });
 
@@ -31,11 +31,14 @@ angular.module("myApp")
             store.bindOne("user", 1, $scope, "user");
 
             // long version
-            $scope.$watch(function() {
-                return store.lastModified("user", 1);
-            }, function() {
-                $scope.user = store.get<IUser>("user", 1);
-            });
+            $scope.$watch(
+                function () {
+                    return store.lastModified("user", 1);
+                },
+                function () {
+                    $scope.user = store.get<IUser>("user", 1);
+                },
+            );
 
             var params = {
                 where: {
@@ -52,16 +55,20 @@ angular.module("myApp")
             store.bindAll("user", params, $scope, "users");
 
             // long version
-            $scope.$watch(function() {
-                return store.lastModified("user");
-            }, function() {
-                $scope.users = store.filter("user", params);
-            });
+            $scope.$watch(
+                function () {
+                    return store.lastModified("user");
+                },
+                function () {
+                    $scope.users = store.filter("user", params);
+                },
+            );
         },
     );
 
-angular.module("myApp")
-    .run(function(DS: JSData.DS) {
+angular
+    .module("myApp")
+    .run(function (DS: JSData.DS) {
         // We don't register the "User" resource
         // as a service, so it can only be used
         // via DS.<method>('user', ...)
@@ -70,7 +77,7 @@ angular.module("myApp")
         // only ever have to inject "DS"
         DS.defineResource("user");
     })
-    .factory("Comment", function(DS: JSData.DS) {
+    .factory("Comment", function (DS: JSData.DS) {
         // This code won't execute unless you actually
         // inject "Comment" somewhere in your code.
         // Thanks Angular...
@@ -79,7 +86,6 @@ angular.module("myApp")
         return DS.defineResource("comment");
     });
 
-angular.module("myApp")
-    .config(function(DSProvider: JSData.DSProvider) {
-        DSProvider.defaults.basePath = "/myApi"; // etc.
-    });
+angular.module("myApp").config(function (DSProvider: JSData.DSProvider) {
+    DSProvider.defaults.basePath = "/myApi"; // etc.
+});

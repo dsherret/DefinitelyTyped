@@ -25,8 +25,20 @@ const channels = ws281x.init({
     dma: 10,
     freq: 800000,
     channels: [
-        { count: 20, gpio: 18, invert: false, brightness: 255, stripType: "ws2812" },
-        { count: 20, gpio: 13, invert: false, brightness: 128, stripType: "sk6812-rgbw" },
+        {
+            count: 20,
+            gpio: 18,
+            invert: false,
+            brightness: 255,
+            stripType: "ws2812",
+        },
+        {
+            count: 20,
+            gpio: 13,
+            invert: false,
+            brightness: 128,
+            stripType: "sk6812-rgbw",
+        },
     ],
 });
 channels[0].array[0] = 0xaabbcc;

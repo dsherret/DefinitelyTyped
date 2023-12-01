@@ -28,10 +28,7 @@ export type StructCharsTypes = "chars" | "charsnt";
 
 export type StructArrayType = "array";
 
-export type StructTypes =
-    | StructBaseTypes
-    | StructCharsTypes
-    | StructArrayType;
+export type StructTypes = StructBaseTypes | StructCharsTypes | StructArrayType;
 
 export class Struct<T = any> {
     word8(name: string): Struct<T>;
@@ -59,7 +56,7 @@ export class Struct<T = any> {
         name: string,
         length: number,
         type: StructTypes | Struct,
-        ...args: Array<(string | number | Struct)>
+        ...args: Array<string | number | Struct>
     ): Struct<T>;
     struct(name: string, struct: Struct): Struct<T>;
     get(fieldName: string): any;

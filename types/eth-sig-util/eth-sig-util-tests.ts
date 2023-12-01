@@ -1,6 +1,7 @@
 import * as util from "eth-sig-util";
 
-const hex32 = "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef";
+const hex32 =
+    "1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef";
 const buffer32 = Buffer.from(hex32, "hex");
 
 util.concatSig(28, buffer32, buffer32);
@@ -17,28 +18,44 @@ util.extractPublicKey({ data: "test data", sig: messageSig });
 ////////////////////////////////////////////////////////////////////////////////
 // EIP-712 legacy draft utils
 
-const legacyTypedData = [{
-    type: "uint32",
-    name: "testValue",
-    value: 42,
-}, {
-    type: "string",
-    name: "testName",
-    value: "test value",
-}];
+const legacyTypedData = [
+    {
+        type: "uint32",
+        name: "testValue",
+        value: 42,
+    },
+    {
+        type: "string",
+        name: "testName",
+        value: "test value",
+    },
+];
 util.typedSignatureHash(legacyTypedData);
-const typedSigLegacy = util.signTypedDataLegacy(buffer32, { data: legacyTypedData });
-util.recoverTypedSignatureLegacy({ data: legacyTypedData, sig: typedSigLegacy });
+const typedSigLegacy = util.signTypedDataLegacy(buffer32, {
+    data: legacyTypedData,
+});
+util.recoverTypedSignatureLegacy({
+    data: legacyTypedData,
+    sig: typedSigLegacy,
+});
 
 ////////////////////////////////////////////////////////////////////////////////
 // Elliptic curve encryption utils
 
 util.getEncryptionPublicKey(hex32);
 const encPubkey = util.getEncryptionPublicKey(buffer32);
-const encMessage = util.encrypt(encPubkey, { data: "test data" }, "x25519-xsalsa20-poly1305");
+const encMessage = util.encrypt(
+    encPubkey,
+    { data: "test data" },
+    "x25519-xsalsa20-poly1305",
+);
 util.decrypt(encMessage, buffer32);
 util.decrypt(encMessage, hex32);
-const encData = util.encryptSafely(encPubkey, { data: legacyTypedData }, "x25519-xsalsa20-poly1305");
+const encData = util.encryptSafely(
+    encPubkey,
+    { data: legacyTypedData },
+    "x25519-xsalsa20-poly1305",
+);
 util.decryptSafely(encData, buffer32);
 util.decryptSafely(encData, hex32);
 

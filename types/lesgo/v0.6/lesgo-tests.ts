@@ -23,7 +23,9 @@ import db from "lesgo/lib/utils/db";
 import dynamodb from "lesgo/lib/utils/dynamodb";
 import elasticsearch from "lesgo/lib/utils/elasticsearch";
 import generateUid from "lesgo/lib/utils/generateUid";
-import getJwtSubFromAuthHeader, { getTokenData } from "lesgo/lib/utils/getJwtSubFromAuthHeader";
+import getJwtSubFromAuthHeader, {
+    getTokenData,
+} from "lesgo/lib/utils/getJwtSubFromAuthHeader";
 import isDecimal from "lesgo/lib/utils/isDecimal";
 import isEmail from "lesgo/lib/utils/isEmail";
 import isEmpty from "lesgo/lib/utils/isEmpty";
@@ -88,7 +90,12 @@ db; // $ExpectType AuroraDbService
 })();
 dynamodb; // $ExpectType DynamoDb
 (async () => {
-    await dynamodb.query("analytics", "ForumName = :name", { ":title": { SS: ["The Man"] } }, "#title, tag"); // $ExpectType ItemList
+    await dynamodb.query(
+        "analytics",
+        "ForumName = :name",
+        { ":title": { SS: ["The Man"] } },
+        "#title, tag",
+    ); // $ExpectType ItemList
 })();
 elasticsearch("production"); // $ExpectType ElasticsearchService
 (async () => {
@@ -118,7 +125,10 @@ logger.info("SAVED TO DYNAMODB", {
 });
 objectStore; // $ExpectType S3Service
 (async () => {
-    await getObject("TILES/Level4/A3_B3_C2/A5_B67_C59_Tiles.par", "test-aws-imagery"); // $ExpectType GetObjectOutput
+    await getObject(
+        "TILES/Level4/A3_B3_C2/A5_B67_C59_Tiles.par",
+        "test-aws-imagery",
+    ); // $ExpectType GetObjectOutput
 })();
 // $ExpectType SQLInsertParams
 prepSQLInsertParams(

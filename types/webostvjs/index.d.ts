@@ -50,7 +50,8 @@ export interface WebOS {
         request<
             TParams extends Record<string, any> = Record<string, any>,
             TData extends OnCompleteSuccessResponse = OnCompleteSuccessResponse,
-            TError extends OnCompleteFailureResponse = OnCompleteFailureResponse,
+            TError extends
+                OnCompleteFailureResponse = OnCompleteFailureResponse,
         >(
             uri: string,
             parameters?: {
@@ -150,10 +151,7 @@ export interface WebOS {
      * - If your app is hosted by a server, the path will be the URL of the server
      * @returns The JSON object read from the app's appinfo.json file. If it is not found, undefined is returned.
      */
-    fetchAppInfo(
-        callback?: (appInfo?: AppInfo) => void,
-        path?: string,
-    ): void;
+    fetchAppInfo(callback?: (appInfo?: AppInfo) => void, path?: string): void;
     /**
      * Returns the full URI path of the caller app
      *
@@ -1041,52 +1039,43 @@ export interface MediaOptions {
         /**
          * 3D Mode Type
          */
-        "3dMode"?:
-            // This format displays content with the 2 Dimensional mode.
-            | "2D"
-            | // This format divides the screen lengthwise and puts two different frames for the left and right eyes top and down to create a single 3D frame image.
-            "top_bottom"
-            | // This format works in the same way as top_bottom, but the positions of the top and bottom frames are switched.
-            "bottom_top"
-            | // This format divides the screen widthwise and puts two different frames for the left and right eyes side by side to create a single 3D frame image.
-            "side_by_side_LR"
-            | // This format works in the same way as side_by_side_LR, but positions of the left and right frames are switched.
-            "side_by_side_RL"
-            | // In this format, a 3D frame image is created by arranging the left and right eye frames in a mosaic pattern like a checkerboard.
-            "check_board"
-            | // Left and right frames are sent alternately to the display and by diverse systems like shuttered glasses or polarized glasses are then shown to each eye.
-            "frame-sequential"
-            | // This format interleaves the left and right eye views on every other vertical column in the display window
-            "column_interleave"
-            | // Frame Packing refers to the combination of two frames,
+        "3dMode"?: // This format displays content with the 2 Dimensional mode.
+        | "2D" // This format divides the screen lengthwise and puts two different frames for the left and right eyes top and down to create a single 3D frame image.
+            | "top_bottom" // This format works in the same way as top_bottom, but the positions of the top and bottom frames are switched.
+            | "bottom_top" // This format divides the screen widthwise and puts two different frames for the left and right eyes side by side to create a single 3D frame image.
+            | "side_by_side_LR" // This format works in the same way as side_by_side_LR, but positions of the left and right frames are switched.
+            | "side_by_side_RL" // In this format, a 3D frame image is created by arranging the left and right eye frames in a mosaic pattern like a checkerboard.
+            | "check_board" // Left and right frames are sent alternately to the display and by diverse systems like shuttered glasses or polarized glasses are then shown to each eye.
+            | "frame-sequential" // This format interleaves the left and right eye views on every other vertical column in the display window
+            | "column_interleave" // Frame Packing refers to the combination of two frames,
             // one for the left eye and the other for the right eye,
             // into a single “packed” frame that consists of these two individual sub-frames.
             // The key difference of a Frame Packing signal is that each sub-frame for each eye is still at full resolution, i.e., 1920×1080 for a 1080p Frame Packing signal,
             // and 1280×720 for 720p Frame Packing 3D content.
-            "frame_packing"
-            | // Field Alternative is similar to Frame packing type. However, this type refers to the combination of more than 4 frames. This type breaks down each eye's frame to several field frames.
-            "field_alternative"
-            | // Line Alternative breaks down each eye's frame to the line by line.
-            "line_alternative"
-            | // This format encodes the screen framewise(L to R) and puts two different frames into each frame. for the left and right eyes side by side to create each frame.
-            "side_by_side_full_LR"
-            | // This format encodes the screen framewise(R to L) and puts two different frames into each frame. for the left and right eyes side by side to create each frame.
-            "side_by_side_full_RL";
+            | "frame_packing" // Field Alternative is similar to Frame packing type. However, this type refers to the combination of more than 4 frames. This type breaks down each eye's frame to several field frames.
+            | "field_alternative" // Line Alternative breaks down each eye's frame to the line by line.
+            | "line_alternative" // This format encodes the screen framewise(L to R) and puts two different frames into each frame. for the left and right eyes side by side to create each frame.
+            | "side_by_side_full_LR" // This format encodes the screen framewise(R to L) and puts two different frames into each frame. for the left and right eyes side by side to create each frame.
+            | "side_by_side_full_RL";
     };
 }
 
 export interface MediaOptionsDrm {
     clientId: string;
     type: "widevine" | "playready";
-    widevine?: {
-        seperatedStream: boolean;
-    } | undefined;
+    widevine?:
+        | {
+              seperatedStream: boolean;
+          }
+        | undefined;
 }
 
 export interface MediaOptionsTransmission {
-    playTime?: {
-        start?: number | undefined;
-    } | undefined;
+    playTime?:
+        | {
+              start?: number | undefined;
+          }
+        | undefined;
 }
 
 export interface MediaOptionsAdaptiveStreaming {
@@ -1121,20 +1110,22 @@ export interface MediaOptionsAdaptiveStreaming {
     /**
      * The object that holds information to control network transmit speed.
      */
-    bps?: {
-        /**
-         * Minimum speed of network transmission. (bps)
-         */
-        minimum?: number | undefined;
-        /**
-         * Maximum speed of network transmission. (bps)
-         */
-        maximum?: number | undefined;
-        /**
-         * Starting speed of network transmission. (bps)
-         */
-        start?: number | undefined;
-    } | undefined;
+    bps?:
+        | {
+              /**
+               * Minimum speed of network transmission. (bps)
+               */
+              minimum?: number | undefined;
+              /**
+               * Maximum speed of network transmission. (bps)
+               */
+              maximum?: number | undefined;
+              /**
+               * Starting speed of network transmission. (bps)
+               */
+              start?: number | undefined;
+          }
+        | undefined;
 }
 
 export interface MediaOptionsMediaFormat {

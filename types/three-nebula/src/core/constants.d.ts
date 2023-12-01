@@ -24,7 +24,13 @@ import {
     INITIALIZER_TYPE_TEXTURE,
     INITIALIZER_TYPE_VECTOR_VELOCITY,
 } from "../initializer/types";
-import { ZONE_TYPE_BOX, ZONE_TYPE_LINE, ZONE_TYPE_MESH, ZONE_TYPE_POINT, ZONE_TYPE_SPHERE } from "../zone/types";
+import {
+    ZONE_TYPE_BOX,
+    ZONE_TYPE_LINE,
+    ZONE_TYPE_MESH,
+    ZONE_TYPE_POINT,
+    ZONE_TYPE_SPHERE,
+} from "../zone/types";
 
 import { ease } from "../ease";
 import { RENDERER_TYPE_SPRITE } from "../renderer/types";

@@ -27,12 +27,24 @@ declare class FileCookieStore {
         domain: string,
         path: string,
         key: string,
-        cb: (whatever: null, cookie: FileCookieStore.Cookie | null | undefined) => void,
+        cb: (
+            whatever: null,
+            cookie: FileCookieStore.Cookie | null | undefined,
+        ) => void,
     ): void;
 
-    findCookies(domain: string, path: string, cb: (whatever: null, cookies: FileCookieStore.Cookie[]) => void): void;
+    findCookies(
+        domain: string,
+        path: string,
+        cb: (whatever: null, cookies: FileCookieStore.Cookie[]) => void,
+    ): void;
 
-    putCookie(cookie: FileCookieStore.Cookie, path: string, key: string, cb: (whatever: null) => void): void;
+    putCookie(
+        cookie: FileCookieStore.Cookie,
+        path: string,
+        key: string,
+        cb: (whatever: null) => void,
+    ): void;
 
     updateCookie(
         oldCookie: FileCookieStore.Cookie,
@@ -40,9 +52,18 @@ declare class FileCookieStore {
         cb: (whatever: null) => void,
     ): void;
 
-    removeCookie(domain: string, path: string, key: string, cb: (whatever: null) => void): void;
+    removeCookie(
+        domain: string,
+        path: string,
+        key: string,
+        cb: (whatever: null) => void,
+    ): void;
 
-    removeCookies(domain: string, path: string, cb: (whatever: null) => void): void;
+    removeCookies(
+        domain: string,
+        path: string,
+        cb: (whatever: null) => void,
+    ): void;
 
     saveToFile(filePath: string, data: any, cb: () => void): void;
 

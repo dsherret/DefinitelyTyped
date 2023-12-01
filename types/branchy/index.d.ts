@@ -24,8 +24,13 @@ declare function branchy<TFn extends (...args: any[]) => unknown>(
     options?: branchy.Options<TFn>,
 ): (
     ...args: Parameters<TFn>
-) => ReturnType<TFn> extends PromiseLike<infer TRet> ? Promise<TRet> : Promise<ReturnType<TFn>>;
-declare function branchy(callback: string, options?: branchy.Options): (...args: any[]) => Promise<unknown>;
+) => ReturnType<TFn> extends PromiseLike<infer TRet>
+    ? Promise<TRet>
+    : Promise<ReturnType<TFn>>;
+declare function branchy(
+    callback: string,
+    options?: branchy.Options,
+): (...args: any[]) => Promise<unknown>;
 
 declare namespace branchy {
     /**
@@ -57,14 +62,21 @@ declare namespace branchy {
         options?: Partial<BetterQueue.QueueOptions<T, K>>,
     ): ConcurrencyContext<T, K>;
 
-    interface Options<TFn extends (...args: any[]) => unknown = (...args: any[]) => unknown> {
+    interface Options<
+        TFn extends (...args: any[]) => unknown = (...args: any[]) => unknown,
+    > {
         /**
          * @default Infinity
          */
-        concurrent?: ConcurrencyOptions<TFn> | ConcurrencyOptions["threads"] | ConcurrencyContext<TFn>;
+        concurrent?:
+            | ConcurrencyOptions<TFn>
+            | ConcurrencyOptions["threads"]
+            | ConcurrencyContext<TFn>;
     }
 
-    interface ConcurrencyOptions<TFn extends (...args: any[]) => unknown = (...args: any[]) => unknown> {
+    interface ConcurrencyOptions<
+        TFn extends (...args: any[]) => unknown = (...args: any[]) => unknown,
+    > {
         /**
          * Concurrency control can be enabled by specifying number of concurrent threads.
          *

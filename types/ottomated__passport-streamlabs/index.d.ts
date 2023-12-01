@@ -50,7 +50,11 @@ declare class Strategy extends oauth2.Strategy {
             done: oauth2.VerifyCallback,
         ) => void,
     );
-    checkScope(scope: string, accessToken: string, cb: (err?: Error | null, value?: any) => void): void;
+    checkScope(
+        scope: string,
+        accessToken: string,
+        cb: (err?: Error | null, value?: any) => void,
+    ): void;
 }
 
 declare namespace Strategy {

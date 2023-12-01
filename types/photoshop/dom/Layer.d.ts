@@ -236,7 +236,11 @@ export declare class Layer {
      * @param monochromatic Adds black and white noise if true.
      * @async
      */
-    applyAddNoise(amount: number, distribution: Constants.NoiseDistribution, monochromatic: boolean): Promise<void>;
+    applyAddNoise(
+        amount: number,
+        distribution: Constants.NoiseDistribution,
+        monochromatic: boolean,
+    ): Promise<void>;
     /**
      * Applies the Average filter.
      *
@@ -284,7 +288,11 @@ export declare class Layer {
      * @param offset The value to be added to the result of the scale calculation.
      * @async
      */
-    applyCustomFilter(characteristics: number[], scale: number, offset: number): Promise<void>;
+    applyCustomFilter(
+        characteristics: number[],
+        scale: number,
+        offset: number,
+    ): Promise<void>;
     /**
      * Applies the De-Interlace filter.
      *
@@ -295,7 +303,10 @@ export declare class Layer {
      * @param createFields Create fields by either DUPLICATION or INTERPOLATION.
      * @async
      */
-    applyDeInterlace(eliminateFields: Constants.EliminateFields, createFields: Constants.CreateFields): Promise<void>;
+    applyDeInterlace(
+        eliminateFields: Constants.EliminateFields,
+        createFields: Constants.CreateFields,
+    ): Promise<void>;
     /**
      * Applies the Despeckle filter.
      *
@@ -325,7 +336,11 @@ export declare class Layer {
      * @param clearAmount The clear amount [0,20].
      * @async
      */
-    applyDiffuseGlow(graininess: number, glowAmount: number, clearAmount: number): Promise<void>;
+    applyDiffuseGlow(
+        graininess: number,
+        glowAmount: number,
+        clearAmount: number,
+    ): Promise<void>;
     /**
      * Applies the Displace filter using the specified horizontal
      * and vertical scale, mapping type, treatment of undistorted
@@ -452,10 +467,14 @@ export declare class Layer {
      * @param lensType The lens type used to produce the effect (default: `LensType.ZOOMLENS`).
      * @async
      */
-    applyLensFlare(brightness: number, flareCenter: {
-        x: number;
-        y: number;
-    }, lensType?: Constants.LensType): Promise<void>;
+    applyLensFlare(
+        brightness: number,
+        flareCenter: {
+            x: number;
+            y: number;
+        },
+        lensType?: Constants.LensType,
+    ): Promise<void>;
     /**
      * Applies the Maximum filter
      *
@@ -468,7 +487,10 @@ export declare class Layer {
      * @param preserveShape Favor hard corners or smooth curves around the edges<br/>
      *                      (default: `PreserveShape.SQUARENESS`)
      */
-    applyMaximum(radius: number, preserveShape?: Constants.PreserveShape): Promise<void>;
+    applyMaximum(
+        radius: number,
+        preserveShape?: Constants.PreserveShape,
+    ): Promise<void>;
     /**
      * Applies the Minimum filter
      *
@@ -481,7 +503,10 @@ export declare class Layer {
      * @param preserveShape Favor hard corners or smooth curves around the edges<br/>
      *                      (default: `PreserveShape.SQUARENESS`)
      */
-    applyMinimum(radius: number, preserveShape?: Constants.PreserveShape): Promise<void>;
+    applyMinimum(
+        radius: number,
+        preserveShape?: Constants.PreserveShape,
+    ): Promise<void>;
     /**
      * Applies the Median filter
      *
@@ -530,7 +555,11 @@ export declare class Layer {
      * @param undefinedAreas Method to use to fill the empty space left by the offset<br/>
      *                       (default: `OffsetUndefinedAreas.WRAPAROUND`).
      */
-    applyOffset(horizontal: number, vertical: number, undefinedAreas?: Constants.OffsetUndefinedAreas): Promise<void>;
+    applyOffset(
+        horizontal: number,
+        vertical: number,
+        undefinedAreas?: Constants.OffsetUndefinedAreas,
+    ): Promise<void>;
     /**
      * Applies the Twirl filter.
      *
@@ -561,7 +590,9 @@ export declare class Layer {
      * @param conversion The conversion type.
      * @async
      */
-    applyPolarCoordinates(conversion: Constants.PolarConversionType): Promise<void>;
+    applyPolarCoordinates(
+        conversion: Constants.PolarConversionType,
+    ): Promise<void>;
     /**
      * Applies the Ripple filter.
      *
@@ -663,7 +694,11 @@ export declare class Layer {
      * @async
      * @minVersion 24.0
      */
-    applyUnSharpMask(amount: number, radius: number, threshold: number): Promise<void>;
+    applyUnSharpMask(
+        amount: number,
+        radius: number,
+        threshold: number,
+    ): Promise<void>;
     /**
      * Applies the Wave filter.
      *
@@ -705,7 +740,11 @@ export declare class Layer {
      * @async
      * @minVersion 24.0
      */
-    applyZigZag(amount: number, ridges: number, style: Constants.ZigZagType): Promise<void>;
+    applyZigZag(
+        amount: number,
+        ridges: number,
+        style: Constants.ZigZagType,
+    ): Promise<void>;
     /**
      * The applyImage method lets you blend one image’s layer and channel (the source) with a this layer (the target).
      * This will change pixels contained in this layer.
@@ -781,7 +820,10 @@ export declare class Layer {
      * `ElementPlacement.PLACEINSIDE` is only valid when `relativeObject.kind === LayerKind.group`
      * @minVersion 23.0
      */
-    move(relativeObject: Layer, insertLocation: Constants.ElementPlacement): void;
+    move(
+        relativeObject: Layer,
+        insertLocation: Constants.ElementPlacement,
+    ): void;
     /**
      * Moves the layer to a position above the topmost layer or group.
      * @minVersion 23.0
@@ -877,9 +919,13 @@ export declare class Layer {
      * @async
      * @minVersion 23.0
      */
-    rotate(angle: number | Unit.AngleValue, anchor?: Constants.AnchorPosition, options?: {
-        interpolation?: Constants.InterpolationMethod;
-    }): Promise<void>;
+    rotate(
+        angle: number | Unit.AngleValue,
+        anchor?: Constants.AnchorPosition,
+        options?: {
+            interpolation?: Constants.InterpolationMethod;
+        },
+    ): Promise<void>;
     /**
      * Applies a skew to the layer.
      *
@@ -894,9 +940,13 @@ export declare class Layer {
      * @async
      * @minVersion 23.0
      */
-    skew(angleH: number | Unit.AngleValue, angleV: number | Unit.AngleValue, options?: {
-        interpolation?: Constants.InterpolationMethod;
-    }): Promise<void>;
+    skew(
+        angleH: number | Unit.AngleValue,
+        angleV: number | Unit.AngleValue,
+        options?: {
+            interpolation?: Constants.InterpolationMethod;
+        },
+    ): Promise<void>;
     /**
      * Clears the layer pixels and does not copy to the clipboard.
      * If no pixel selection is found, select all pixels and clear.

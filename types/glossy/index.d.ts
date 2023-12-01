@@ -41,7 +41,10 @@ export class Produce {
     debug(options: MessageOptions, callback?: ProducerCallback): string | void;
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    emergency(options: MessageOptions, callback?: ProducerCallback): string | void;
+    emergency(
+        options: MessageOptions,
+        callback?: ProducerCallback,
+    ): string | void;
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     info(options: MessageOptions, callback?: ProducerCallback): string | void;
@@ -50,7 +53,10 @@ export class Produce {
     notice(options: MessageOptions, callback?: ProducerCallback): string | void;
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    produce(options: MessageOptions, callback?: ProducerCallback): string | void;
+    produce(
+        options: MessageOptions,
+        callback?: ProducerCallback,
+    ): string | void;
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     warn(options: MessageOptions, callback?: ProducerCallback): string | void;
@@ -74,5 +80,8 @@ export interface SyslogMessage {
 
 export namespace Parse {
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    function parse(rawMessage: string | Buffer, callback?: ParserCallback): SyslogMessage | void;
+    function parse(
+        rawMessage: string | Buffer,
+        callback?: ParserCallback,
+    ): SyslogMessage | void;
 }

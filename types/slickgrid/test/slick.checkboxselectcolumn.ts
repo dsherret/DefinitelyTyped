@@ -14,7 +14,7 @@
         autoEdit: false,
     };
     var columns: Slick.SlickData[] = [];
-    $(function() {
+    $(function () {
         for (var i = 0; i < 100; i++) {
             // I'm not actually sure what this is supposed to be doing, but
             // this is verbatim the example :/
@@ -35,8 +35,12 @@
             });
         }
         grid = new Slick.Grid("#myGrid", data, columns, options);
-        grid.setSelectionModel(new Slick.RowSelectionModel({ selectActiveRow: false }));
+        grid.setSelectionModel(
+            new Slick.RowSelectionModel({ selectActiveRow: false }),
+        );
         grid.registerPlugin(checkboxSelector);
-        var columnpicker = new Slick.Controls.ColumnPicker(columns, grid, { fadeSpeed: 1 });
+        var columnpicker = new Slick.Controls.ColumnPicker(columns, grid, {
+            fadeSpeed: 1,
+        });
     });
 })();

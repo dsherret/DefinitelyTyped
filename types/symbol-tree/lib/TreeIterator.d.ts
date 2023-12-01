@@ -18,8 +18,15 @@ declare namespace TreeIterator {
     }
 }
 
-declare class TreeIterator<T extends object = any> implements IterableIterator<T> {
-    constructor(tree: SymbolTree, root: T, firstResult: T, iterateFunction: TreeIterator.IterateFunction);
+declare class TreeIterator<T extends object = any>
+    implements IterableIterator<T>
+{
+    constructor(
+        tree: SymbolTree,
+        root: T,
+        firstResult: T,
+        iterateFunction: TreeIterator.IterateFunction,
+    );
 
     next(): TreeIterator.TreeIteratorResult<T>;
 

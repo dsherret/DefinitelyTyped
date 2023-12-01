@@ -12,7 +12,9 @@ export interface CalendarContainerProps {
 export function registerLocale(localeName: string, localeData: Locale): void;
 export function setDefaultLocale(localeName: string): void;
 export function getDefaultLocale(): string;
-export function CalendarContainer(props: CalendarContainerProps): React.ReactElement;
+export function CalendarContainer(
+    props: CalendarContainerProps,
+): React.ReactElement;
 
 interface HighlightDates {
     [className: string]: Date[];
@@ -105,7 +107,9 @@ export interface ReactDatePickerProps<
     onCalendarClose?(): void;
     onCalendarOpen?(): void;
     onChange(
-        date: WithRange extends false | undefined ? Date | null : [Date | null, Date | null],
+        date: WithRange extends false | undefined
+            ? Date | null
+            : [Date | null, Date | null],
         event: React.SyntheticEvent<any> | undefined,
     ): void;
     onChangeRaw?(event: React.FocusEvent<HTMLInputElement>): void;
@@ -130,7 +134,9 @@ export interface ReactDatePickerProps<
     placeholderText?: string | undefined;
     popperClassName?: string | undefined;
     popperContainer?(props: { children: React.ReactNode[] }): React.ReactNode;
-    popperModifiers?: ReadonlyArray<Modifier<StrictModifierNames | CustomModifierNames>> | undefined;
+    popperModifiers?:
+        | ReadonlyArray<Modifier<StrictModifierNames | CustomModifierNames>>
+        | undefined;
     popperPlacement?: Popper.Placement | undefined;
     popperProps?: {} | undefined;
     preventOpenOnFocus?: boolean | undefined;
@@ -139,9 +145,15 @@ export interface ReactDatePickerProps<
     previousYearAriaLabel?: string | undefined;
     previousYearButtonLabel?: string | React.ReactNode | undefined;
     readOnly?: boolean | undefined;
-    renderCustomHeader?(params: ReactDatePickerCustomHeaderProps): React.ReactNode;
+    renderCustomHeader?(
+        params: ReactDatePickerCustomHeaderProps,
+    ): React.ReactNode;
     renderDayContents?(dayOfMonth: number, date?: Date): React.ReactNode;
-    renderMonthContent?(monthIndex: number, shortMonthText: string, fullMonthText: string): React.ReactNode;
+    renderMonthContent?(
+        monthIndex: number,
+        shortMonthText: string,
+        fullMonthText: string,
+    ): React.ReactNode;
     required?: boolean | undefined;
     scrollableMonthYearDropdown?: boolean | undefined;
     scrollableYearDropdown?: boolean | undefined;
@@ -196,7 +208,9 @@ export interface ReactDatePickerProps<
 export class ReactDatePicker<
     CustomModifierNames extends string = never,
     WithRange extends boolean | undefined = undefined,
-> extends React.Component<ReactDatePickerProps<CustomModifierNames, WithRange>> {
+> extends React.Component<
+    ReactDatePickerProps<CustomModifierNames, WithRange>
+> {
     readonly setBlur: () => void;
     readonly setFocus: () => void;
     readonly setOpen: (open: boolean, skipSetBlur?: boolean) => void;

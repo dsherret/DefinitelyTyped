@@ -39,7 +39,12 @@ declare module "restler" {
          * @param {RestlerOptions}  options Options.
          * @return {RestlerResult}  Result.
          */
-        json(url: string, data?: any, options?: RestlerOptions, method?: string): RestlerResult;
+        json(
+            url: string,
+            data?: any,
+            options?: RestlerOptions,
+            method?: string,
+        ): RestlerResult;
 
         /**
          * Create a PATCH request.
@@ -56,7 +61,11 @@ declare module "restler" {
          * @param {RestlerOptions}  options Options.
          * @return {RestlerResult}  Result.
          */
-        patchJson(url: string, data?: any, options?: RestlerOptions): RestlerResult;
+        patchJson(
+            url: string,
+            data?: any,
+            options?: RestlerOptions,
+        ): RestlerResult;
 
         /**
          * Create a POST request.
@@ -73,7 +82,11 @@ declare module "restler" {
          * @param {RestlerOptions}  options Options.
          * @return {RestlerResult}  Result.
          */
-        postJson(url: string, data?: any, options?: RestlerOptions): RestlerResult;
+        postJson(
+            url: string,
+            data?: any,
+            options?: RestlerOptions,
+        ): RestlerResult;
 
         /**
          * Create a PUT request.
@@ -90,7 +103,11 @@ declare module "restler" {
          * @param {RestlerOptions}  options Options.
          * @return {RestlerResult}  Result.
          */
-        putJson(url: string, data?: any, options?: RestlerOptions): RestlerResult;
+        putJson(
+            url: string,
+            data?: any,
+            options?: RestlerOptions,
+        ): RestlerResult;
 
         /**
          * Create a PUT request.
@@ -211,7 +228,10 @@ declare module "restler" {
          * @param {string}    eventName   The name of the event.
          * @param {Function}  listener    The callback function
          */
-        on(eventName: string, listener: (data?: any, response?: http.ServerResponse) => void): RestlerResult;
+        on(
+            eventName: string,
+            listener: (data?: any, response?: http.ServerResponse) => void,
+        ): RestlerResult;
     }
 
     let restler: RestlerStatic;

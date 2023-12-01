@@ -59,20 +59,62 @@ declare namespace GoogleAppsScript {
             base64EncodeWebSafe(data: string, charset: Charset): string;
             computeDigest(algorithm: DigestAlgorithm, value: Byte[]): Byte[];
             computeDigest(algorithm: DigestAlgorithm, value: string): Byte[];
-            computeDigest(algorithm: DigestAlgorithm, value: string, charset: Charset): Byte[];
+            computeDigest(
+                algorithm: DigestAlgorithm,
+                value: string,
+                charset: Charset,
+            ): Byte[];
             computeHmacSha256Signature(value: Byte[], key: Byte[]): Byte[];
             computeHmacSha256Signature(value: string, key: string): Byte[];
-            computeHmacSha256Signature(value: string, key: string, charset: Charset): Byte[];
-            computeHmacSignature(algorithm: MacAlgorithm, value: Byte[], key: Byte[]): Byte[];
-            computeHmacSignature(algorithm: MacAlgorithm, value: string, key: string): Byte[];
-            computeHmacSignature(algorithm: MacAlgorithm, value: string, key: string, charset: Charset): Byte[];
+            computeHmacSha256Signature(
+                value: string,
+                key: string,
+                charset: Charset,
+            ): Byte[];
+            computeHmacSignature(
+                algorithm: MacAlgorithm,
+                value: Byte[],
+                key: Byte[],
+            ): Byte[];
+            computeHmacSignature(
+                algorithm: MacAlgorithm,
+                value: string,
+                key: string,
+            ): Byte[];
+            computeHmacSignature(
+                algorithm: MacAlgorithm,
+                value: string,
+                key: string,
+                charset: Charset,
+            ): Byte[];
             computeRsaSha1Signature(value: string, key: string): Byte[];
-            computeRsaSha1Signature(value: string, key: string, charset: Charset): Byte[];
+            computeRsaSha1Signature(
+                value: string,
+                key: string,
+                charset: Charset,
+            ): Byte[];
             computeRsaSha256Signature(value: string, key: string): Byte[];
-            computeRsaSha256Signature(value: string, key: string, charset: Charset): Byte[];
-            computeRsaSignature(algorithm: RsaAlgorithm, value: string, key: string): Byte[];
-            computeRsaSignature(algorithm: RsaAlgorithm, value: string, key: string, charset: Charset): Byte[];
-            formatDate(date: Base.Date, timeZone: string, format: string): string;
+            computeRsaSha256Signature(
+                value: string,
+                key: string,
+                charset: Charset,
+            ): Byte[];
+            computeRsaSignature(
+                algorithm: RsaAlgorithm,
+                value: string,
+                key: string,
+            ): Byte[];
+            computeRsaSignature(
+                algorithm: RsaAlgorithm,
+                value: string,
+                key: string,
+                charset: Charset,
+            ): Byte[];
+            formatDate(
+                date: Base.Date,
+                timeZone: string,
+                format: string,
+            ): string;
             formatString(template: string, ...args: any[]): string;
             getUuid(): string;
             gzip(blob: Base.BlobSource): Base.Blob;

@@ -10,7 +10,10 @@ assert.fileContent("file", /abc/g);
 assert.fileContent(["file", "file2"], "abc");
 
 assert.equalsFileContent("file", "expectedContent");
-assert.equalsFileContent([["file", "expectedContent"], ["file2", "expectedContent2"]]);
+assert.equalsFileContent([
+    ["file", "expectedContent"],
+    ["file2", "expectedContent2"],
+]);
 
 assert.noFileContent("file", /abc/g);
 assert.noFileContent(["file", "file2"], "abc");

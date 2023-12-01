@@ -52,10 +52,12 @@ var peripheral: noble.Peripheral = new noble.Peripheral();
 peripheral.uuid = "12ad4e81";
 peripheral.advertisement = {
     localName: "device",
-    serviceData: [{
-        uuid: "180a",
-        data: new Buffer(1),
-    }],
+    serviceData: [
+        {
+            uuid: "180a",
+            data: new Buffer(1),
+        },
+    ],
     txPowerLevel: 1,
     manufacturerData: new Buffer(1),
     serviceUuids: ["0x180a", "0x180d"],
@@ -67,19 +69,35 @@ peripheral.disconnect((): void => {});
 peripheral.updateRssi();
 peripheral.updateRssi((error: string, rssi: number): void => {});
 peripheral.discoverServices(["180d"]);
-peripheral.discoverServices(["180d"], (error: string, services: noble.Service[]): void => {});
+peripheral.discoverServices(
+    ["180d"],
+    (error: string, services: noble.Service[]): void => {},
+);
 peripheral.discoverAllServicesAndCharacteristics();
 peripheral.discoverAllServicesAndCharacteristics(
-    (error: string, services: noble.Service[], characteristics: noble.Characteristic[]): void => {},
+    (
+        error: string,
+        services: noble.Service[],
+        characteristics: noble.Characteristic[],
+    ): void => {},
 );
 peripheral.discoverSomeServicesAndCharacteristics(["180d"], ["2a38"]);
 peripheral.discoverSomeServicesAndCharacteristics(
     ["180d"],
     ["2a38"],
-    (error: string, services: noble.Service[], characteristics: noble.Characteristic[]): void => {},
+    (
+        error: string,
+        services: noble.Service[],
+        characteristics: noble.Characteristic[],
+    ): void => {},
 );
 peripheral.readHandle(0x1234, (error: string, data: Buffer): void => {});
-peripheral.writeHandle(0x1234, new Buffer(1), true, (error: string): void => {});
+peripheral.writeHandle(
+    0x1234,
+    new Buffer(1),
+    true,
+    (error: string): void => {},
+);
 peripheral.on("connect", (error: string): void => {});
 peripheral.on("disconnect", (error: string): void => {});
 peripheral.on("rssiUpdate", (rssi: number): void => {});
@@ -95,13 +113,31 @@ service.name = "";
 service.type = "";
 service.includedServiceUuids = ["180d"];
 service.discoverIncludedServices(["180d"]);
-service.discoverIncludedServices(["180d"], (error: string, includedServiceUuids: string[]): void => {});
+service.discoverIncludedServices(
+    ["180d"],
+    (error: string, includedServiceUuids: string[]): void => {},
+);
 service.discoverCharacteristics(["2a38"]);
-service.discoverCharacteristics(["2a38"], (error: string, characteristics: noble.Characteristic[]): void => {});
-service.on("includedServicesDiscover", (includedServiceUuids: string[]): void => {});
-service.on("characteristicsDiscover", (characteristics: noble.Characteristic[]): void => {});
-service.once("includedServicesDiscover", (includedServiceUuids: string[]): void => {});
-service.once("characteristicsDiscover", (characteristics: noble.Characteristic[]): void => {});
+service.discoverCharacteristics(
+    ["2a38"],
+    (error: string, characteristics: noble.Characteristic[]): void => {},
+);
+service.on(
+    "includedServicesDiscover",
+    (includedServiceUuids: string[]): void => {},
+);
+service.on(
+    "characteristicsDiscover",
+    (characteristics: noble.Characteristic[]): void => {},
+);
+service.once(
+    "includedServicesDiscover",
+    (includedServiceUuids: string[]): void => {},
+);
+service.once(
+    "characteristicsDiscover",
+    (characteristics: noble.Characteristic[]): void => {},
+);
 
 var characteristic: noble.Characteristic = new noble.Characteristic();
 characteristic.uuid = "2a37";
@@ -117,17 +153,28 @@ characteristic.broadcast(true, (error: string): void => {});
 characteristic.notify(true);
 characteristic.notify(true, (error: string): void => {});
 characteristic.discoverDescriptors();
-characteristic.discoverDescriptors((error: string, descriptors: noble.Descriptor[]): void => {});
+characteristic.discoverDescriptors(
+    (error: string, descriptors: noble.Descriptor[]): void => {},
+);
 characteristic.on("read", (data: Buffer, isNotification: boolean): void => {});
 characteristic.on("write", true, (error: string): void => {});
 characteristic.on("broadcast", (state: string): void => {});
 characteristic.on("notify", (state: string): void => {});
-characteristic.on("descriptorsDiscover", (descriptors: noble.Descriptor[]): void => {});
-characteristic.once("read", (data: Buffer, isNotification: boolean): void => {});
+characteristic.on(
+    "descriptorsDiscover",
+    (descriptors: noble.Descriptor[]): void => {},
+);
+characteristic.once(
+    "read",
+    (data: Buffer, isNotification: boolean): void => {},
+);
 characteristic.once("write", true, (error: string): void => {});
 characteristic.once("broadcast", (state: string): void => {});
 characteristic.once("notify", (state: string): void => {});
-characteristic.once("descriptorsDiscover", (descriptors: noble.Descriptor[]): void => {});
+characteristic.once(
+    "descriptorsDiscover",
+    (descriptors: noble.Descriptor[]): void => {},
+);
 characteristic.subscribe();
 characteristic.subscribe((error: string) => {});
 characteristic.unsubscribe();

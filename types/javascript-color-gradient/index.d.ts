@@ -1,7 +1,12 @@
 export = Gradient;
 
 declare class Gradient {
-    constructor(gradients?: string, maxNum?: number, colors?: string[], intervals?: any[]);
+    constructor(
+        gradients?: string,
+        maxNum?: number,
+        colors?: string[],
+        intervals?: any[],
+    );
     getColor(index: number): string;
     getColors(): string[];
     setColorGradient(...args: string[]): Gradient;

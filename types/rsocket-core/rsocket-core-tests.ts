@@ -30,20 +30,28 @@ new RSocketClient<Buffer, Buffer>({
             metadata: encodeCompositeMetadata([
                 [TEXT_PLAIN, Buffer.from("Hello World")],
                 [MESSAGE_RSOCKET_ROUTING, encodeRoute("my.route")],
-                [MESSAGE_RSOCKET_AUTHENTICATION, encodeSimpleAuthMetadata("user", "pass")],
+                [
+                    MESSAGE_RSOCKET_AUTHENTICATION,
+                    encodeSimpleAuthMetadata("user", "pass"),
+                ],
             ]),
         },
     },
     // Transports default to sending/receiving strings:
     // Use BufferEncoders to enable binary
-    transport: (undefined as any),
+    transport: undefined as any,
 });
 
-const compositeMetadata = decodeCompositeMetadata(encodeCompositeMetadata([
-    [TEXT_PLAIN, Buffer.from("Hello World")],
-    [MESSAGE_RSOCKET_ROUTING, encodeRoute("my.route")],
-    [MESSAGE_RSOCKET_AUTHENTICATION, encodeSimpleAuthMetadata("user", "pass")],
-]));
+const compositeMetadata = decodeCompositeMetadata(
+    encodeCompositeMetadata([
+        [TEXT_PLAIN, Buffer.from("Hello World")],
+        [MESSAGE_RSOCKET_ROUTING, encodeRoute("my.route")],
+        [
+            MESSAGE_RSOCKET_AUTHENTICATION,
+            encodeSimpleAuthMetadata("user", "pass"),
+        ],
+    ]),
+);
 
 let compositeMetadataIterationResult = compositeMetadata.next();
 while (!compositeMetadataIterationResult.done) {
@@ -67,7 +75,10 @@ while (!compositeMetadataIterationResult.done) {
 
             switch (authMetadata.type.string) {
                 case SIMPLE.string: {
-                    console.log(" <- ", decodeSimpleAuthPayload(authMetadata.payload));
+                    console.log(
+                        " <- ",
+                        decodeSimpleAuthPayload(authMetadata.payload),
+                    );
                 }
             }
         }

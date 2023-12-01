@@ -38,7 +38,8 @@ export {
     Textarea,
 };
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+    extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     size?: string | undefined;
     variant?: string | undefined;
 }
@@ -74,7 +75,8 @@ export interface ContainerProps extends DivProps {
 export interface DivProps extends React.HTMLAttributes<HTMLDivElement> {}
 export type DividerProps = DivProps;
 
-export interface DropdownItemProps extends React.LiHTMLAttributes<HTMLLIElement> {
+export interface DropdownItemProps
+    extends React.LiHTMLAttributes<HTMLLIElement> {
     link?: string | undefined;
     target?: string | undefined;
 }
@@ -93,7 +95,8 @@ export interface FormProps extends React.FormHTMLAttributes<HTMLFormElement> {
     inline?: boolean | undefined;
 }
 
-export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface InputProps
+    extends React.InputHTMLAttributes<HTMLInputElement> {
     inputRef?: React.Ref<HTMLInputElement> | undefined;
     onLabelClick?: React.MouseEventHandler<HTMLInputElement> | undefined;
     hint?: string | undefined;
@@ -102,8 +105,8 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
     floatingLabel?: boolean | undefined;
 }
 
-export interface OptionProps extends React.OptionHTMLAttributes<HTMLOptionElement> {
-}
+export interface OptionProps
+    extends React.OptionHTMLAttributes<HTMLOptionElement> {}
 
 export type PanelProps = DivProps;
 export type RadioProps = CheckboxProps;
@@ -134,7 +137,8 @@ export interface TabsProps extends DivProps {
     justified?: boolean | undefined;
 }
 
-export interface TextareaProps extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+export interface TextareaProps
+    extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
     inputRef?: React.Ref<HTMLTextAreaElement> | undefined;
     onLabelClick?: React.MouseEventHandler<HTMLInputElement> | undefined;
     hint?: string | undefined;

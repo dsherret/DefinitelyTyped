@@ -12,7 +12,11 @@ interface StorageLog {
 
 type NodeCb<T> = (err: Error | null, value: T | null) => void;
 
-type ConfigFn<T> = (req: Express.Request, file: Express.Multer.File, cb: T) => void;
+type ConfigFn<T> = (
+    req: Express.Request,
+    file: Express.Multer.File,
+    cb: T,
+) => void;
 
 // TODO: PR and add this interface to the mongodb types
 interface GridFile {
@@ -37,8 +41,15 @@ interface MulterGfsOptions {
     logLevel?: logConfig | undefined;
 }
 
-declare class MulterGridfsStorage extends EventEmitter implements Multer.StorageEngine {
-    constructor(settings: MulterGridfsStorage.UrlStorageOptions | MulterGridfsStorage.GfsStorageOptions);
+declare class MulterGridfsStorage
+    extends EventEmitter
+    implements Multer.StorageEngine
+{
+    constructor(
+        settings:
+            | MulterGridfsStorage.UrlStorageOptions
+            | MulterGridfsStorage.GfsStorageOptions,
+    );
 
     _handleFile(
         req: Express.Request,
@@ -46,7 +57,11 @@ declare class MulterGridfsStorage extends EventEmitter implements Multer.Storage
         callback: (error?: any, info?: Express.Multer.File) => void,
     ): void;
 
-    _removeFile(req: Express.Request, file: Express.Multer.File, callback: (error: Error) => void): void;
+    _removeFile(
+        req: Express.Request,
+        file: Express.Multer.File,
+        callback: (error: Error) => void,
+    ): void;
 }
 
 declare namespace MulterGridfsStorage {

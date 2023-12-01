@@ -1,37 +1,45 @@
 // #region Basic Example taken from http://docs.urbanairship.com/platform/phonegap.html#actions
 
 // Register for any Urban Airship events
-document.addEventListener("urbanairship.registration", function(event: UrbanAirshipPlugin.RegistrationEvent) {
-    if (event.error) {
-        console.log("There was an error registering for push notifications");
-    } else {
-        console.log("Registered with channel ID: " + event.channelID);
-        console.log("Registered with device token: " + event.deviceToken);
-    }
-});
+document.addEventListener(
+    "urbanairship.registration",
+    function (event: UrbanAirshipPlugin.RegistrationEvent) {
+        if (event.error) {
+            console.log(
+                "There was an error registering for push notifications",
+            );
+        } else {
+            console.log("Registered with channel ID: " + event.channelID);
+            console.log("Registered with device token: " + event.deviceToken);
+        }
+    },
+);
 
-document.addEventListener("urbanairship.push", function(event: UrbanAirshipPlugin.PushEvent) {
-    console.log("Incoming push: " + event.message);
-});
+document.addEventListener(
+    "urbanairship.push",
+    function (event: UrbanAirshipPlugin.PushEvent) {
+        console.log("Incoming push: " + event.message);
+    },
+);
 
 // Set tags on a device, that you can push to
-UAirship.setTags(["loves_cats", "shops_for_games"], function() {
-    UAirship.getTags(function(tags: string[]) {
-        tags.forEach(function(tag: string) {
+UAirship.setTags(["loves_cats", "shops_for_games"], function () {
+    UAirship.getTags(function (tags: string[]) {
+        tags.forEach(function (tag: string) {
             console.log("Tag: " + tag);
         });
     });
 });
 
 // Set an alias, this lets you tie a device to a user in your system
-UAirship.setAlias("awesomeuser22", function() {
-    UAirship.getAlias(function(alias: string) {
+UAirship.setAlias("awesomeuser22", function () {
+    UAirship.getAlias(function (alias: string) {
         console.log("The user formerly known as " + alias);
     });
 });
 
 // Enable user notifications (will prompt the user to accept push notifications)
-UAirship.setUserNotificationsEnabled(true, function(status: string) {
+UAirship.setUserNotificationsEnabled(true, function (status: string) {
     console.log("User notifications are enabled! Fire away!");
 });
 
@@ -57,7 +65,10 @@ UAirship.isInQuietTime((inQuietTime: boolean) => {});
 UAirship.setNotificationTypes(UAirship.notificationType.sound, () => {});
 UAirship.setNotificationTypes(UAirship.notificationType.alert, () => {});
 UAirship.setNotificationTypes(UAirship.notificationType.badge, () => {});
-UAirship.setNotificationTypes(UAirship.notificationType.sound | UAirship.notificationType.badge, () => {});
+UAirship.setNotificationTypes(
+    UAirship.notificationType.sound | UAirship.notificationType.badge,
+    () => {},
+);
 
 UAirship.setAutobadgeEnabled(true, () => {});
 UAirship.setBadgeNumber(1, () => {});

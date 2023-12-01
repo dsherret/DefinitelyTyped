@@ -3,9 +3,10 @@ import { Request } from "express";
 // eslint-disable-next-line @definitelytyped/no-self-import
 import * as self from "@feathersjs/authentication-jwt";
 
-declare const feathersAuthenticationJwt:
-    & ((options?: Partial<FeathersAuthenticationJWTOptions>) => () => void)
-    & typeof self;
+declare const feathersAuthenticationJwt: ((
+    options?: Partial<FeathersAuthenticationJWTOptions>,
+) => () => void) &
+    typeof self;
 export default feathersAuthenticationJwt;
 
 export interface FeathersAuthenticationJWTOptions {
@@ -46,7 +47,11 @@ export interface FeathersAuthenticationJWTOptions {
 export class Verifier {
     constructor(app: Application, options: any); // the class constructor
 
-    verify(req: Request, payload: any, done: (error: any, user?: any, info?: any) => void): void;
+    verify(
+        req: Request,
+        payload: any,
+        done: (error: any, user?: any, info?: any) => void,
+    ): void;
 }
 
 export type JwtFromRequestFunction = (req: Request) => string | null;
@@ -57,7 +62,9 @@ export const ExtractJwt: {
     fromUrlQueryParameter(param_name: string): JwtFromRequestFunction;
     fromAuthHeaderWithScheme(auth_scheme: string): JwtFromRequestFunction;
     fromAuthHeader(): JwtFromRequestFunction;
-    fromExtractors(extractors: JwtFromRequestFunction[]): JwtFromRequestFunction;
+    fromExtractors(
+        extractors: JwtFromRequestFunction[],
+    ): JwtFromRequestFunction;
     fromAuthHeaderAsBearerToken(): JwtFromRequestFunction;
 };
 

@@ -1,4 +1,7 @@
-export type CompareFunction<T extends {} | null> = (options: { value: T; expected: unknown }) => Result;
+export type CompareFunction<T extends {} | null> = (options: {
+    value: T;
+    expected: unknown;
+}) => Result;
 
 // https://github.com/bahmutov/snap-shot-core/blob/4d238b869c78b21ae77e2a7e1fc83038c1be810d/src/file-system.js#L221-L223
 export interface Result {
@@ -56,7 +59,12 @@ export function core<T extends {} | null, U = T>(options: {
     /**
      * A function that throws an error when the given value does not match the expected value.
      */
-    raiser?: (options: { value: T; expected: unknown; specName: string; compare: CompareFunction<T> }) => void;
+    raiser?: (options: {
+        value: T;
+        expected: unknown;
+        specName: string;
+        compare: CompareFunction<T>;
+    }) => void;
     ext?: `.${string}`;
     comment?: string;
     opts?: Opts;
@@ -111,7 +119,11 @@ export function throwCannotSaveOnCI(options: {
  * Returns the name of the snapshot when it is saved.
  * Could be either an exact string or a combination of the spec name and index
  */
-export function savedSnapshotName(options?: { exactSpecName?: string; specName?: string; index?: number }): string;
+export function savedSnapshotName(options?: {
+    exactSpecName?: string;
+    specName?: string;
+    index?: number;
+}): string;
 
 /**
  * Stores new snapshot value if possible.

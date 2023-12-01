@@ -107,7 +107,11 @@ export type Event = RenamedEvent | OtherEvent;
 export type EventConsumer = (events: Event[]) => unknown;
 
 export class PathWatcher {
-    private constructor(nativeWatcherRegistry: unknown, watchedPath: string, options: WatcherOptions);
+    private constructor(
+        nativeWatcherRegistry: unknown,
+        watchedPath: string,
+        options: WatcherOptions,
+    );
 
     getOptions(): WatcherOptions;
 

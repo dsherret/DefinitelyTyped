@@ -136,7 +136,10 @@ declare global {
              *
              * @see https://github.com/bigbite/wp-cypress/wiki/Cypress-Commands
              */
-            editPost(id: number, options?: Partial<VisitOptions>): Chainable<AUTWindow>;
+            editPost(
+                id: number,
+                options?: Partial<VisitOptions>,
+            ): Chainable<AUTWindow>;
 
             /**
              * If on a post's edit page, save the post.
@@ -157,7 +160,10 @@ declare global {
              *
              * @see https://github.com/bigbite/wp-cypress/wiki/Cypress-Commands
              */
-            switchUser(user?: string, password?: string | null): Chainable<Exec>;
+            switchUser(
+                user?: string,
+                password?: string | null,
+            ): Chainable<Exec>;
 
             /**
              * Logout from the current user.

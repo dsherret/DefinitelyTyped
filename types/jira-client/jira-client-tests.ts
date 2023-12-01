@@ -13,10 +13,10 @@ const jira = new JiraApi({
 const issueNumber = "123";
 
 jira.findIssue(issueNumber)
-    .then(issue => {
+    .then((issue) => {
         console.log(`Status: ${issue.fields.status.name}`);
     })
-    .catch(err => {
+    .catch((err) => {
         console.error(err);
     });
 async function logIssueName() {
@@ -28,4 +28,13 @@ async function logIssueName() {
     }
 }
 
-jira.getBoardIssuesForSprint("123", "456", undefined, undefined, undefined, undefined, undefined, "changelog");
+jira.getBoardIssuesForSprint(
+    "123",
+    "456",
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+    "changelog",
+);

@@ -56,7 +56,10 @@ export function readInitialCoverage(code: string): InitialCoverage;
 
 export interface Visitor {
     enter(path: string): void;
-    exit(path: string): { fileCoverage: FileCoverage; sourceMappingURL: string };
+    exit(path: string): {
+        fileCoverage: FileCoverage;
+        sourceMappingURL: string;
+    };
 }
 
 export interface VisitorOptions {

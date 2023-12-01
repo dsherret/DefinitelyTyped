@@ -10,7 +10,9 @@ import Token from "antlr4/Token";
 import ParseTreeListener from "antlr4/tree/ParseTreeListener";
 import ParseTreeVisitor from "antlr4/tree/ParseTreeVisitor";
 
-const parserInstance = new Parser(new CommonTokenStream(new Lexer(new InputStream(""))));
+const parserInstance = new Parser(
+    new CommonTokenStream(new Lexer(new InputStream(""))),
+);
 const parseTreeListenerInstance = new ParseTreeListener();
 const tokenInstance = new Token();
 

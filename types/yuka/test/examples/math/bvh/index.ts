@@ -10,5 +10,9 @@ const params = {
 const vertices = new Float32Array(10);
 const meshGeometry = new YUKA.MeshGeometry(vertices);
 
-const bvh = new YUKA.BVH(params.branchingFactor, params.primitivesPerNode, params.depth);
+const bvh = new YUKA.BVH(
+    params.branchingFactor,
+    params.primitivesPerNode,
+    params.depth,
+);
 bvh.fromMeshGeometry(meshGeometry);

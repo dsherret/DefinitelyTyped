@@ -30,7 +30,8 @@ export interface QuadtreeLeaf<T> {
  *
  * A child quadrant may be undefined if it is empty.
  */
-export interface QuadtreeInternalNode<T> extends Array<QuadtreeInternalNode<T> | QuadtreeLeaf<T> | undefined> {
+export interface QuadtreeInternalNode<T>
+    extends Array<QuadtreeInternalNode<T> | QuadtreeLeaf<T> | undefined> {
     /**
      * The length property may be used to distinguish leaf nodes from internal nodes: it is undefined for leaf nodes, and 4 for internal nodes.
      */
@@ -213,4 +214,8 @@ export function quadtree<T = [number, number]>(): Quadtree<T>;
  * @param x The x-coordinate accessor.
  * @param y The y-coordinate accessor.
  */
-export function quadtree<T = [number, number]>(data: T[], x?: (d: T) => number, y?: (d: T) => number): Quadtree<T>;
+export function quadtree<T = [number, number]>(
+    data: T[],
+    x?: (d: T) => number,
+    y?: (d: T) => number,
+): Quadtree<T>;

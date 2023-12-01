@@ -14,12 +14,20 @@ export type CanBePromise<T> = Promise<T> | T;
 export type FindAccount = (
     ctx: KoaContextWithOIDC,
     sub: string,
-    token?: AuthorizationCode | AccessToken | DeviceCode | BackchannelAuthenticationRequest,
+    token?:
+        | AuthorizationCode
+        | AccessToken
+        | DeviceCode
+        | BackchannelAuthenticationRequest,
 ) => CanBePromise<Account | undefined>;
 export type TokenFormat = "opaque" | "jwt";
 export type FapiProfile = "1.0 ID2" | "1.0 Final";
 
-export type TTLFunction<T> = (ctx: KoaContextWithOIDC, token: T, client: Client) => number;
+export type TTLFunction<T> = (
+    ctx: KoaContextWithOIDC,
+    token: T,
+    client: Client,
+) => number;
 
 export interface UnknownObject {
     [key: string]: unknown;
@@ -152,13 +160,13 @@ export interface ClaimsParameterMember {
 export interface ClaimsParameter {
     id_token?:
         | {
-            [key: string]: null | ClaimsParameterMember;
-        }
+              [key: string]: null | ClaimsParameterMember;
+          }
         | undefined;
     userinfo?:
         | {
-            [key: string]: null | ClaimsParameterMember;
-        }
+              [key: string]: null | ClaimsParameterMember;
+          }
         | undefined;
 }
 
@@ -180,12 +188,12 @@ declare class Interaction extends BaseModel {
     exp: number;
     session?:
         | {
-            accountId: string;
-            uid: string;
-            cookie: string;
-            acr?: string | undefined;
-            amr?: string[] | undefined;
-        }
+              accountId: string;
+              uid: string;
+              cookie: string;
+              acr?: string | undefined;
+              amr?: string[] | undefined;
+          }
         | undefined;
     params: UnknownObject;
     prompt: PromptDetail;
@@ -217,8 +225,8 @@ declare class Session extends BaseModel {
     state?: UnknownObject | undefined;
     authorizations?:
         | {
-            [clientId: string]: ClientAuthorizationState;
-        }
+              [clientId: string]: ClientAuthorizationState;
+          }
         | undefined;
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
@@ -244,26 +252,32 @@ declare class Session extends BaseModel {
     persist(): Promise<string>;
     destroy(): Promise<void>;
     resetIdentifier(): void;
-    static find<T>(this: { new(...args: any[]): T }, cookieId: string): Promise<T | undefined>;
+    static find<T>(
+        this: { new (...args: any[]): T },
+        cookieId: string,
+    ): Promise<T | undefined>;
     static findByUid(uid: string): Promise<Session | undefined>;
     static get(ctx: Koa.Context): Promise<Session>;
 }
 
 declare class Grant extends BaseModel {
-    constructor(properties?: { clientId?: string | undefined; accountId?: string | undefined });
+    constructor(properties?: {
+        clientId?: string | undefined;
+        accountId?: string | undefined;
+    });
 
     accountId?: string | undefined;
     clientId?: string | undefined;
     openid?:
         | {
-            scope?: string | undefined;
-            claims?: string[] | undefined;
-        }
+              scope?: string | undefined;
+              claims?: string[] | undefined;
+          }
         | undefined;
     resources?:
         | {
-            [resource: string]: string;
-        }
+              [resource: string]: string;
+          }
         | undefined;
     rejected?: Pick<Grant, "openid" | "resources"> | undefined;
 
@@ -304,7 +318,11 @@ declare class BaseModel {
 
     static IN_PAYLOAD: string[];
 
-    static find<T>(this: { new(...args: any[]): T }, id: string, options?: object): Promise<T | undefined>;
+    static find<T>(
+        this: { new (...args: any[]): T },
+        id: string,
+        options?: object,
+    ): Promise<T | undefined>;
 }
 
 declare class BaseToken extends BaseModel {
@@ -327,7 +345,7 @@ declare class BaseToken extends BaseModel {
     static IN_PAYLOAD: string[];
 
     static find<T>(
-        this: { new(...args: any[]): T },
+        this: { new (...args: any[]): T },
         jti: string,
         options?: { ignoreExpiration?: boolean | undefined },
     ): Promise<T | undefined>;
@@ -489,7 +507,10 @@ declare class DeviceCode extends BaseToken {
 }
 
 declare class BackchannelAuthenticationRequest extends BaseToken {
-    constructor(properties?: { clientId?: string | undefined; accountId?: string | undefined });
+    constructor(properties?: {
+        clientId?: string | undefined;
+        accountId?: string | undefined;
+    });
 
     readonly kind: "BackchannelAuthenticationRequest";
     error?: string | undefined;
@@ -586,7 +607,13 @@ declare class AccessToken extends BaseToken {
 }
 
 declare class IdToken {
-    constructor(claims: UnknownObject, context?: { ctx?: KoaContextWithOIDC | undefined; client?: Client | undefined });
+    constructor(
+        claims: UnknownObject,
+        context?: {
+            ctx?: KoaContextWithOIDC | undefined;
+            client?: Client | undefined;
+        },
+    );
 
     readonly ctx: KoaContextWithOIDC;
     readonly client: Client;
@@ -596,10 +623,18 @@ declare class IdToken {
     set(key: string, value: any): void;
     payload(): Promise<UnknownObject>;
     issue(context: {
-        use: "idtoken" | "logout" | "userinfo" | "introspection" | "authorization";
+        use:
+            | "idtoken"
+            | "logout"
+            | "userinfo"
+            | "introspection"
+            | "authorization";
         expiresAt?: number | undefined;
     }): Promise<string>;
-    static validate(idToken: string, client: Client): Promise<{ header: UnknownObject; payload: UnknownObject }>;
+    static validate(
+        idToken: string,
+        client: Client,
+    ): Promise<{ header: UnknownObject; payload: UnknownObject }>;
 }
 
 declare class Client {
@@ -690,26 +725,26 @@ export interface ResourceServer {
     accessTokenFormat?: TokenFormat | undefined;
     jwt?:
         | {
-            sign?:
-                | {
-                    alg?: AsymmetricSigningAlgorithm | undefined;
-                    kid?: string | undefined;
-                }
-                | {
-                    alg: SymmetricSigningAlgorithm;
-                    key: crypto.KeyObject | Buffer;
-                    kid?: string | undefined;
-                }
-                | undefined;
-            encrypt?:
-                | {
-                    alg: EncryptionAlgValues;
-                    enc: EncryptionEncValues;
-                    key: crypto.KeyObject | Buffer;
-                    kid?: string | undefined;
-                }
-                | undefined;
-        }
+              sign?:
+                  | {
+                        alg?: AsymmetricSigningAlgorithm | undefined;
+                        kid?: string | undefined;
+                    }
+                  | {
+                        alg: SymmetricSigningAlgorithm;
+                        key: crypto.KeyObject | Buffer;
+                        kid?: string | undefined;
+                    }
+                  | undefined;
+              encrypt?:
+                  | {
+                        alg: EncryptionAlgValues;
+                        enc: EncryptionEncValues;
+                        key: crypto.KeyObject | Buffer;
+                        kid?: string | undefined;
+                    }
+                  | undefined;
+          }
         | undefined;
 }
 
@@ -718,8 +753,15 @@ declare class OIDCContext {
     readonly route: string;
 
     readonly cookies: {
-        get(name: string, opts?: { signed?: boolean | undefined }): string | undefined;
-        set(name: string, value: string | null, opts?: CookiesSetOptions): undefined;
+        get(
+            name: string,
+            opts?: { signed?: boolean | undefined },
+        ): string | undefined;
+        set(
+            name: string,
+            value: string | null,
+            opts?: CookiesSetOptions,
+        ): undefined;
     };
 
     readonly entities: {
@@ -730,15 +772,23 @@ declare class OIDCContext {
         readonly Grant?: Grant | undefined;
         readonly ClientCredentials?: ClientCredentials | undefined;
         readonly DeviceCode?: DeviceCode | undefined;
-        readonly IdTokenHint?: { header: UnknownObject; payload: UnknownObject } | undefined;
+        readonly IdTokenHint?:
+            | { header: UnknownObject; payload: UnknownObject }
+            | undefined;
         readonly InitialAccessToken?: InitialAccessToken | undefined;
         readonly Interaction?: Interaction | undefined;
-        readonly PushedAuthorizationRequest?: PushedAuthorizationRequest | undefined;
-        readonly BackchannelAuthenticationRequest?: BackchannelAuthenticationRequest | undefined;
+        readonly PushedAuthorizationRequest?:
+            | PushedAuthorizationRequest
+            | undefined;
+        readonly BackchannelAuthenticationRequest?:
+            | BackchannelAuthenticationRequest
+            | undefined;
         readonly RefreshToken?: RefreshToken | undefined;
         readonly RegistrationAccessToken?: RegistrationAccessToken | undefined;
         readonly RotatedRefreshToken?: RefreshToken | undefined;
-        readonly RotatedRegistrationAccessToken?: RegistrationAccessToken | undefined;
+        readonly RotatedRegistrationAccessToken?:
+            | RegistrationAccessToken
+            | undefined;
         readonly Session?: Session | undefined;
         readonly [key: string]: unknown;
     };
@@ -770,7 +820,10 @@ declare class OIDCContext {
     readonly body?: UnknownObject | undefined;
     readonly params?: UnknownObject | undefined;
 
-    getAccessToken(opts?: { acceptDPoP?: boolean | undefined; acceptQueryParam?: boolean | undefined }): string;
+    getAccessToken(opts?: {
+        acceptDPoP?: boolean | undefined;
+        acceptQueryParam?: boolean | undefined;
+    }): string;
 
     clientJwtAuthExpectedAudience(): Set<string>;
 }
@@ -806,8 +859,13 @@ export interface Account {
     [key: string]: unknown;
 }
 
-export type RotateRegistrationAccessTokenFunction = (ctx: KoaContextWithOIDC) => CanBePromise<boolean>;
-export type IssueRegistrationAccessTokenFunction = (ctx: KoaContextWithOIDC, client: Client) => boolean;
+export type RotateRegistrationAccessTokenFunction = (
+    ctx: KoaContextWithOIDC,
+) => CanBePromise<boolean>;
+export type IssueRegistrationAccessTokenFunction = (
+    ctx: KoaContextWithOIDC,
+    client: Client,
+) => boolean;
 
 export interface ErrorOut {
     error: string;
@@ -823,8 +881,8 @@ export interface AdapterPayload extends AllClientMetadata {
     aud?: string[] | undefined;
     authorizations?:
         | {
-            [clientId: string]: ClientAuthorizationState;
-        }
+              [clientId: string]: ClientAuthorizationState;
+          }
         | undefined;
     authTime?: number | undefined;
     claims?: ClaimsParameter | undefined;
@@ -860,12 +918,12 @@ export interface AdapterPayload extends AllClientMetadata {
     scope?: string | undefined;
     session?:
         | {
-            accountId?: string | undefined;
-            acr?: string | undefined;
-            amr?: string[] | undefined;
-            cookie?: string | undefined;
-            uid?: string | undefined;
-        }
+              accountId?: string | undefined;
+              acr?: string | undefined;
+              amr?: string[] | undefined;
+              cookie?: string | undefined;
+              uid?: string | undefined;
+          }
         | undefined;
     sessionUid?: string | undefined;
     sid?: string | undefined;
@@ -880,9 +938,15 @@ export interface AdapterPayload extends AllClientMetadata {
 }
 
 export interface Adapter {
-    upsert(id: string, payload: AdapterPayload, expiresIn: number): Promise<undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
+    upsert(
+        id: string,
+        payload: AdapterPayload,
+        expiresIn: number,
+    ): Promise<undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
     find(id: string): Promise<AdapterPayload | undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
-    findByUserCode(userCode: string): Promise<AdapterPayload | undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
+    findByUserCode(
+        userCode: string,
+    ): Promise<AdapterPayload | undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
     findByUid(uid: string): Promise<AdapterPayload | undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
     consume(id: string): Promise<undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
     destroy(id: string): Promise<undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
@@ -892,7 +956,7 @@ export interface Adapter {
 export type AdapterFactory = (name: string) => Adapter;
 
 export interface AdapterConstructor {
-    new(name: string): Adapter;
+    new (name: string): Adapter;
 }
 
 export interface CookiesSetOptions {
@@ -917,29 +981,34 @@ export interface Configuration {
 
     claims?:
         | {
-            [key: string]: null | string[];
-        }
+              [key: string]: null | string[];
+          }
         | undefined;
 
-    clientBasedCORS?: ((ctx: KoaContextWithOIDC, origin: string, client: Client) => boolean) | undefined;
+    clientBasedCORS?:
+        | ((ctx: KoaContextWithOIDC, origin: string, client: Client) => boolean)
+        | undefined;
 
     clients?: ClientMetadata[] | undefined;
 
     formats?:
         | {
-            bitsOfOpaqueRandomness?: number | ((ctx: KoaContextWithOIDC, model: BaseModel) => number) | undefined;
-            customizers?:
-                | {
-                    jwt?:
-                        | ((
-                            ctx: KoaContextWithOIDC,
-                            token: AccessToken | ClientCredentials,
-                            parts: JWTStructured,
-                        ) => CanBePromise<JWTStructured>)
-                        | undefined;
-                }
-                | undefined;
-        }
+              bitsOfOpaqueRandomness?:
+                  | number
+                  | ((ctx: KoaContextWithOIDC, model: BaseModel) => number)
+                  | undefined;
+              customizers?:
+                  | {
+                        jwt?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  token: AccessToken | ClientCredentials,
+                                  parts: JWTStructured,
+                              ) => CanBePromise<JWTStructured>)
+                            | undefined;
+                    }
+                  | undefined;
+          }
         | undefined;
 
     clientDefaults?: AllClientMetadata | undefined;
@@ -950,18 +1019,18 @@ export interface Configuration {
 
     cookies?:
         | {
-            names?:
-                | {
-                    session?: string | undefined;
-                    interaction?: string | undefined;
-                    resume?: string | undefined;
-                    state?: string | undefined;
-                }
-                | undefined;
-            long?: CookiesSetOptions | undefined;
-            short?: CookiesSetOptions | undefined;
-            keys?: Array<string | Buffer> | undefined;
-        }
+              names?:
+                  | {
+                        session?: string | undefined;
+                        interaction?: string | undefined;
+                        resume?: string | undefined;
+                        state?: string | undefined;
+                    }
+                  | undefined;
+              long?: CookiesSetOptions | undefined;
+              short?: CookiesSetOptions | undefined;
+              keys?: Array<string | Buffer> | undefined;
+          }
         | undefined;
 
     discovery?: UnknownObject | undefined;
@@ -970,271 +1039,339 @@ export interface Configuration {
 
     features?:
         | {
-            devInteractions?:
-                | {
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              devInteractions?:
+                  | {
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            claimsParameter?:
-                | {
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              claimsParameter?:
+                  | {
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            clientCredentials?:
-                | {
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              clientCredentials?:
+                  | {
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            introspection?:
-                | {
-                    enabled?: boolean | undefined;
-                    allowedPolicy?:
-                        | ((
-                            ctx: KoaContextWithOIDC,
-                            client: Client,
-                            token: AccessToken | ClientCredentials | RefreshToken,
-                        ) => CanBePromise<boolean>)
-                        | undefined;
-                }
-                | undefined;
+              introspection?:
+                  | {
+                        enabled?: boolean | undefined;
+                        allowedPolicy?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  client: Client,
+                                  token:
+                                      | AccessToken
+                                      | ClientCredentials
+                                      | RefreshToken,
+                              ) => CanBePromise<boolean>)
+                            | undefined;
+                    }
+                  | undefined;
 
-            revocation?:
-                | {
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              revocation?:
+                  | {
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            userinfo?:
-                | {
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              userinfo?:
+                  | {
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            jwtUserinfo?:
-                | {
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              jwtUserinfo?:
+                  | {
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            encryption?:
-                | {
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              encryption?:
+                  | {
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            registration?:
-                | {
-                    enabled?: boolean | undefined;
-                    initialAccessToken?: boolean | string | undefined;
-                    policies?:
-                        | {
-                            [key: string]: (
-                                ctx: KoaContextWithOIDC,
-                                metadata: ClientMetadata,
-                            ) => CanBePromise<undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
-                        }
-                        | undefined;
-                    idFactory?: ((ctx: KoaContextWithOIDC) => string) | undefined;
-                    secretFactory?: ((ctx: KoaContextWithOIDC) => string) | undefined;
-                }
-                | undefined;
+              registration?:
+                  | {
+                        enabled?: boolean | undefined;
+                        initialAccessToken?: boolean | string | undefined;
+                        policies?:
+                            | {
+                                  [key: string]: (
+                                      ctx: KoaContextWithOIDC,
+                                      metadata: ClientMetadata,
+                                  ) => CanBePromise<undefined | void>; // eslint-disable-line @typescript-eslint/no-invalid-void-type
+                              }
+                            | undefined;
+                        idFactory?:
+                            | ((ctx: KoaContextWithOIDC) => string)
+                            | undefined;
+                        secretFactory?:
+                            | ((ctx: KoaContextWithOIDC) => string)
+                            | undefined;
+                    }
+                  | undefined;
 
-            registrationManagement?:
-                | {
-                    enabled?: boolean | undefined;
-                    rotateRegistrationAccessToken?: RotateRegistrationAccessTokenFunction | boolean | undefined;
-                    issueRegistrationAccessToken?: IssueRegistrationAccessTokenFunction | boolean | undefined;
-                }
-                | undefined;
+              registrationManagement?:
+                  | {
+                        enabled?: boolean | undefined;
+                        rotateRegistrationAccessToken?:
+                            | RotateRegistrationAccessTokenFunction
+                            | boolean
+                            | undefined;
+                        issueRegistrationAccessToken?:
+                            | IssueRegistrationAccessTokenFunction
+                            | boolean
+                            | undefined;
+                    }
+                  | undefined;
 
-            deviceFlow?:
-                | {
-                    enabled?: boolean | undefined;
-                    charset?: "base-20" | "digits" | undefined;
-                    mask?: string | undefined;
-                    deviceInfo?: ((ctx: KoaContextWithOIDC) => UnknownObject) | undefined;
-                    userCodeInputSource?:
-                        | ((
-                            ctx: KoaContextWithOIDC,
-                            form: string,
-                            out?: ErrorOut,
-                            err?: errors.OIDCProviderError | Error,
-                        ) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
-                        | undefined;
-                    userCodeConfirmSource?:
-                        | ((
-                            ctx: KoaContextWithOIDC,
-                            form: string,
-                            client: Client,
-                            deviceInfo: UnknownObject,
-                            userCode: string,
-                        ) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
-                        | undefined;
-                    successSource?: ((ctx: KoaContextWithOIDC) => CanBePromise<undefined | void>) | undefined; // eslint-disable-line @typescript-eslint/no-invalid-void-type
-                }
-                | undefined;
+              deviceFlow?:
+                  | {
+                        enabled?: boolean | undefined;
+                        charset?: "base-20" | "digits" | undefined;
+                        mask?: string | undefined;
+                        deviceInfo?:
+                            | ((ctx: KoaContextWithOIDC) => UnknownObject)
+                            | undefined;
+                        userCodeInputSource?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  form: string,
+                                  out?: ErrorOut,
+                                  err?: errors.OIDCProviderError | Error,
+                              ) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
+                            | undefined;
+                        userCodeConfirmSource?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  form: string,
+                                  client: Client,
+                                  deviceInfo: UnknownObject,
+                                  userCode: string,
+                              ) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
+                            | undefined;
+                        successSource?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                              ) => CanBePromise<undefined | void>)
+                            | undefined; // eslint-disable-line @typescript-eslint/no-invalid-void-type
+                    }
+                  | undefined;
 
-            requestObjects?:
-                | {
-                    request?: boolean | undefined;
-                    requestUri?: boolean | undefined;
-                    requireUriRegistration?: boolean | undefined;
-                    requireSignedRequestObject?: boolean | undefined;
-                    mode?: "lax" | "strict" | undefined;
-                }
-                | undefined;
+              requestObjects?:
+                  | {
+                        request?: boolean | undefined;
+                        requestUri?: boolean | undefined;
+                        requireUriRegistration?: boolean | undefined;
+                        requireSignedRequestObject?: boolean | undefined;
+                        mode?: "lax" | "strict" | undefined;
+                    }
+                  | undefined;
 
-            dPoP?:
-                | {
-                    enabled?: boolean | undefined;
-                    nonceSecret?: Buffer | undefined;
-                    requireNonce?: (ctx: KoaContextWithOIDC) => boolean;
-                }
-                | undefined;
+              dPoP?:
+                  | {
+                        enabled?: boolean | undefined;
+                        nonceSecret?: Buffer | undefined;
+                        requireNonce?: (ctx: KoaContextWithOIDC) => boolean;
+                    }
+                  | undefined;
 
-            backchannelLogout?:
-                | {
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              backchannelLogout?:
+                  | {
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            fapi?:
-                | {
-                    enabled?: boolean | undefined;
-                    profile: FapiProfile | ((ctx: KoaContextWithOIDC, client: Client) => FapiProfile) | undefined;
-                }
-                | undefined;
+              fapi?:
+                  | {
+                        enabled?: boolean | undefined;
+                        profile:
+                            | FapiProfile
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  client: Client,
+                              ) => FapiProfile)
+                            | undefined;
+                    }
+                  | undefined;
 
-            ciba?:
-                | {
-                    enabled?: boolean | undefined;
-                    deliveryModes: CIBADeliveryMode[];
-                    triggerAuthenticationDevice?:
-                        | ((
-                            ctx: KoaContextWithOIDC,
-                            request: BackchannelAuthenticationRequest,
-                            account: Account,
-                            client: Client,
-                        ) => CanBePromise<void>)
-                        | undefined;
-                    validateBindingMessage?:
-                        | ((ctx: KoaContextWithOIDC, bindingMessage?: string) => CanBePromise<void>)
-                        | undefined;
-                    validateRequestContext?:
-                        | ((ctx: KoaContextWithOIDC, requestContext?: string) => CanBePromise<void>)
-                        | undefined;
-                    processLoginHintToken?:
-                        | ((ctx: KoaContextWithOIDC, loginHintToken?: string) => CanBePromise<string | undefined>)
-                        | undefined;
-                    processLoginHint?:
-                        | ((ctx: KoaContextWithOIDC, loginHint?: string) => CanBePromise<string | undefined>)
-                        | undefined;
-                    verifyUserCode?:
-                        | ((ctx: KoaContextWithOIDC, userCode?: string) => CanBePromise<void>)
-                        | undefined;
-                }
-                | undefined;
+              ciba?:
+                  | {
+                        enabled?: boolean | undefined;
+                        deliveryModes: CIBADeliveryMode[];
+                        triggerAuthenticationDevice?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  request: BackchannelAuthenticationRequest,
+                                  account: Account,
+                                  client: Client,
+                              ) => CanBePromise<void>)
+                            | undefined;
+                        validateBindingMessage?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  bindingMessage?: string,
+                              ) => CanBePromise<void>)
+                            | undefined;
+                        validateRequestContext?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  requestContext?: string,
+                              ) => CanBePromise<void>)
+                            | undefined;
+                        processLoginHintToken?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  loginHintToken?: string,
+                              ) => CanBePromise<string | undefined>)
+                            | undefined;
+                        processLoginHint?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  loginHint?: string,
+                              ) => CanBePromise<string | undefined>)
+                            | undefined;
+                        verifyUserCode?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  userCode?: string,
+                              ) => CanBePromise<void>)
+                            | undefined;
+                    }
+                  | undefined;
 
-            webMessageResponseMode?:
-                | {
-                    enabled?: boolean | undefined;
-                    ack?: string | undefined;
-                }
-                | undefined;
+              webMessageResponseMode?:
+                  | {
+                        enabled?: boolean | undefined;
+                        ack?: string | undefined;
+                    }
+                  | undefined;
 
-            jwtIntrospection?:
-                | {
-                    enabled?: boolean | undefined;
-                    ack?: string | undefined;
-                }
-                | undefined;
+              jwtIntrospection?:
+                  | {
+                        enabled?: boolean | undefined;
+                        ack?: string | undefined;
+                    }
+                  | undefined;
 
-            jwtResponseModes?:
-                | {
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              jwtResponseModes?:
+                  | {
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            pushedAuthorizationRequests?:
-                | {
-                    requirePushedAuthorizationRequests?: boolean | undefined;
-                    enabled?: boolean | undefined;
-                }
-                | undefined;
+              pushedAuthorizationRequests?:
+                  | {
+                        requirePushedAuthorizationRequests?:
+                            | boolean
+                            | undefined;
+                        enabled?: boolean | undefined;
+                    }
+                  | undefined;
 
-            rpInitiatedLogout?:
-                | {
-                    enabled?: boolean | undefined;
-                    postLogoutSuccessSource?:
-                        | ((ctx: KoaContextWithOIDC) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
-                        | undefined;
-                    logoutSource?:
-                        | ((ctx: KoaContextWithOIDC, form: string) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
-                        | undefined;
-                }
-                | undefined;
+              rpInitiatedLogout?:
+                  | {
+                        enabled?: boolean | undefined;
+                        postLogoutSuccessSource?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                              ) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
+                            | undefined;
+                        logoutSource?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  form: string,
+                              ) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
+                            | undefined;
+                    }
+                  | undefined;
 
-            mTLS?:
-                | {
-                    enabled?: boolean | undefined;
-                    certificateBoundAccessTokens?: boolean | undefined;
-                    selfSignedTlsClientAuth?: boolean | undefined;
-                    tlsClientAuth?: boolean | undefined;
-                    getCertificate?:
-                        | ((ctx: KoaContextWithOIDC) => crypto.X509Certificate | string | undefined)
-                        | undefined;
-                    certificateAuthorized?: ((ctx: KoaContextWithOIDC) => boolean) | undefined;
-                    certificateSubjectMatches?:
-                        | ((ctx: KoaContextWithOIDC, property: TLSClientAuthProperty, expected: string) => boolean)
-                        | undefined;
-                }
-                | undefined;
+              mTLS?:
+                  | {
+                        enabled?: boolean | undefined;
+                        certificateBoundAccessTokens?: boolean | undefined;
+                        selfSignedTlsClientAuth?: boolean | undefined;
+                        tlsClientAuth?: boolean | undefined;
+                        getCertificate?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                              ) => crypto.X509Certificate | string | undefined)
+                            | undefined;
+                        certificateAuthorized?:
+                            | ((ctx: KoaContextWithOIDC) => boolean)
+                            | undefined;
+                        certificateSubjectMatches?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  property: TLSClientAuthProperty,
+                                  expected: string,
+                              ) => boolean)
+                            | undefined;
+                    }
+                  | undefined;
 
-            resourceIndicators?:
-                | {
-                    enabled?: boolean | undefined;
-                    getResourceServerInfo?:
-                        | ((
-                            ctx: KoaContextWithOIDC,
-                            resourceIndicator: string,
-                            client: Client,
-                        ) => CanBePromise<ResourceServer>)
-                        | undefined;
-                    defaultResource?: ((ctx: KoaContextWithOIDC) => CanBePromise<string | string[]>) | undefined;
-                    useGrantedResource?:
-                        | ((
-                            ctx: KoaContextWithOIDC,
-                            model:
-                                | AuthorizationCode
-                                | RefreshToken
-                                | DeviceCode
-                                | BackchannelAuthenticationRequest,
-                        ) => CanBePromise<boolean>)
-                        | undefined;
-                }
-                | undefined;
-        }
+              resourceIndicators?:
+                  | {
+                        enabled?: boolean | undefined;
+                        getResourceServerInfo?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  resourceIndicator: string,
+                                  client: Client,
+                              ) => CanBePromise<ResourceServer>)
+                            | undefined;
+                        defaultResource?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                              ) => CanBePromise<string | string[]>)
+                            | undefined;
+                        useGrantedResource?:
+                            | ((
+                                  ctx: KoaContextWithOIDC,
+                                  model:
+                                      | AuthorizationCode
+                                      | RefreshToken
+                                      | DeviceCode
+                                      | BackchannelAuthenticationRequest,
+                              ) => CanBePromise<boolean>)
+                            | undefined;
+                    }
+                  | undefined;
+          }
         | undefined;
 
     extraTokenClaims?:
-        | ((ctx: KoaContextWithOIDC, token: AccessToken | ClientCredentials) => CanBePromise<UnknownObject | undefined>)
+        | ((
+              ctx: KoaContextWithOIDC,
+              token: AccessToken | ClientCredentials,
+          ) => CanBePromise<UnknownObject | undefined>)
         | undefined;
 
     httpOptions?: ((url: url.URL) => HttpOptions) | undefined;
 
     expiresWithSession?:
-        | ((ctx: KoaContextWithOIDC, token: AccessToken | AuthorizationCode | DeviceCode) => CanBePromise<boolean>)
+        | ((
+              ctx: KoaContextWithOIDC,
+              token: AccessToken | AuthorizationCode | DeviceCode,
+          ) => CanBePromise<boolean>)
         | undefined;
 
     issueRefreshToken?:
         | ((
-            ctx: KoaContextWithOIDC,
-            client: Client,
-            code: AuthorizationCode | DeviceCode | BackchannelAuthenticationRequest,
-        ) => CanBePromise<boolean>)
+              ctx: KoaContextWithOIDC,
+              client: Client,
+              code:
+                  | AuthorizationCode
+                  | DeviceCode
+                  | BackchannelAuthenticationRequest,
+          ) => CanBePromise<boolean>)
         | undefined;
 
     jwks?: JWKS | undefined;
@@ -1245,26 +1382,28 @@ export interface Configuration {
 
     pkce?:
         | {
-            methods?: PKCEMethods[] | undefined;
-            required?: ((ctx: KoaContextWithOIDC, client: Client) => boolean) | undefined;
-        }
+              methods?: PKCEMethods[] | undefined;
+              required?:
+                  | ((ctx: KoaContextWithOIDC, client: Client) => boolean)
+                  | undefined;
+          }
         | undefined;
 
     routes?:
         | {
-            authorization?: string | undefined;
-            code_verification?: string | undefined;
-            device_authorization?: string | undefined;
-            end_session?: string | undefined;
-            introspection?: string | undefined;
-            jwks?: string | undefined;
-            registration?: string | undefined;
-            revocation?: string | undefined;
-            token?: string | undefined;
-            userinfo?: string | undefined;
-            backchannel_authentication?: string | undefined;
-            pushed_authorization_request?: string | undefined;
-        }
+              authorization?: string | undefined;
+              code_verification?: string | undefined;
+              device_authorization?: string | undefined;
+              end_session?: string | undefined;
+              introspection?: string | undefined;
+              jwks?: string | undefined;
+              registration?: string | undefined;
+              revocation?: string | undefined;
+              token?: string | undefined;
+              userinfo?: string | undefined;
+              backchannel_authentication?: string | undefined;
+              pushed_authorization_request?: string | undefined;
+          }
         | undefined;
 
     scopes?: string[] | undefined;
@@ -1272,54 +1411,72 @@ export interface Configuration {
     subjectTypes?: SubjectTypes[] | undefined;
 
     pairwiseIdentifier?:
-        | ((ctx: KoaContextWithOIDC, accountId: string, client: Client) => CanBePromise<string>)
+        | ((
+              ctx: KoaContextWithOIDC,
+              accountId: string,
+              client: Client,
+          ) => CanBePromise<string>)
         | undefined;
 
     clientAuthMethods?: ClientAuthMethod[] | undefined;
 
     ttl?:
         | {
-            AccessToken?: TTLFunction<AccessToken> | number | undefined;
-            AuthorizationCode?: TTLFunction<AuthorizationCode> | number | undefined;
-            ClientCredentials?: TTLFunction<ClientCredentials> | number | undefined;
-            DeviceCode?: TTLFunction<DeviceCode> | number | undefined;
-            BackchannelAuthenticationRequest?: TTLFunction<BackchannelAuthenticationRequest> | number | undefined;
-            IdToken?: TTLFunction<IdToken> | number | undefined;
-            RefreshToken?: TTLFunction<RefreshToken> | number | undefined;
-            Interaction?: TTLFunction<Interaction> | number | undefined;
-            Session?: TTLFunction<Session> | number | undefined;
-            Grant?: TTLFunction<Grant> | number | undefined;
+              AccessToken?: TTLFunction<AccessToken> | number | undefined;
+              AuthorizationCode?:
+                  | TTLFunction<AuthorizationCode>
+                  | number
+                  | undefined;
+              ClientCredentials?:
+                  | TTLFunction<ClientCredentials>
+                  | number
+                  | undefined;
+              DeviceCode?: TTLFunction<DeviceCode> | number | undefined;
+              BackchannelAuthenticationRequest?:
+                  | TTLFunction<BackchannelAuthenticationRequest>
+                  | number
+                  | undefined;
+              IdToken?: TTLFunction<IdToken> | number | undefined;
+              RefreshToken?: TTLFunction<RefreshToken> | number | undefined;
+              Interaction?: TTLFunction<Interaction> | number | undefined;
+              Session?: TTLFunction<Session> | number | undefined;
+              Grant?: TTLFunction<Grant> | number | undefined;
 
-            [key: string]: unknown;
-        }
+              [key: string]: unknown;
+          }
         | undefined;
 
-    loadExistingGrant?: ((ctx: KoaContextWithOIDC) => CanBePromise<Grant | undefined>) | undefined;
+    loadExistingGrant?:
+        | ((ctx: KoaContextWithOIDC) => CanBePromise<Grant | undefined>)
+        | undefined;
 
     extraClientMetadata?:
         | {
-            properties?: string[] | undefined;
+              properties?: string[] | undefined;
 
-            validator?:
-                | ((
-                    ctx: KoaContextWithOIDC,
-                    key: string,
-                    value: unknown,
-                    metadata: ClientMetadata,
-                    // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-                ) => void | undefined)
-                | undefined;
-        }
+              validator?:
+                  | ((
+                        ctx: KoaContextWithOIDC,
+                        key: string,
+                        value: unknown,
+                        metadata: ClientMetadata,
+                        // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
+                    ) => void | undefined)
+                  | undefined;
+          }
         | undefined;
 
-    rotateRefreshToken?: ((ctx: KoaContextWithOIDC) => CanBePromise<boolean>) | boolean | undefined;
+    rotateRefreshToken?:
+        | ((ctx: KoaContextWithOIDC) => CanBePromise<boolean>)
+        | boolean
+        | undefined;
 
     renderError?:
         | ((
-            ctx: KoaContextWithOIDC,
-            out: ErrorOut,
-            error: errors.OIDCProviderError | Error,
-        ) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
+              ctx: KoaContextWithOIDC,
+              out: ErrorOut,
+              error: errors.OIDCProviderError | Error,
+          ) => CanBePromise<undefined | void>) // eslint-disable-line @typescript-eslint/no-invalid-void-type
         | undefined;
 
     allowOmittingSingleRegisteredRedirectUri?: boolean | undefined;
@@ -1328,33 +1485,54 @@ export interface Configuration {
 
     interactions?:
         | {
-            policy?: interactionPolicy.Prompt[] | undefined;
-            url?: ((ctx: KoaContextWithOIDC, interaction: Interaction) => CanBePromise<string>) | undefined;
-        }
+              policy?: interactionPolicy.Prompt[] | undefined;
+              url?:
+                  | ((
+                        ctx: KoaContextWithOIDC,
+                        interaction: Interaction,
+                    ) => CanBePromise<string>)
+                  | undefined;
+          }
         | undefined;
 
     findAccount?: FindAccount | undefined;
 
     enabledJWA?:
         | {
-            authorizationEncryptionAlgValues?: EncryptionAlgValues[] | undefined;
-            authorizationEncryptionEncValues?: EncryptionEncValues[] | undefined;
-            authorizationSigningAlgValues?: SigningAlgorithm[] | undefined;
-            dPoPSigningAlgValues?: AsymmetricSigningAlgorithm[] | undefined;
-            idTokenEncryptionAlgValues?: EncryptionAlgValues[] | undefined;
-            idTokenEncryptionEncValues?: EncryptionEncValues[] | undefined;
-            idTokenSigningAlgValues?: SigningAlgorithmWithNone[] | undefined;
-            introspectionEncryptionAlgValues?: EncryptionAlgValues[] | undefined;
-            introspectionEncryptionEncValues?: EncryptionEncValues[] | undefined;
-            introspectionSigningAlgValues?: SigningAlgorithmWithNone[] | undefined;
-            requestObjectEncryptionAlgValues?: EncryptionAlgValues[] | undefined;
-            requestObjectEncryptionEncValues?: EncryptionEncValues[] | undefined;
-            requestObjectSigningAlgValues?: SigningAlgorithmWithNone[] | undefined;
-            clientAuthSigningAlgValues?: SigningAlgorithm[] | undefined;
-            userinfoEncryptionAlgValues?: EncryptionAlgValues[] | undefined;
-            userinfoEncryptionEncValues?: EncryptionEncValues[] | undefined;
-            userinfoSigningAlgValues?: SigningAlgorithmWithNone[] | undefined;
-        }
+              authorizationEncryptionAlgValues?:
+                  | EncryptionAlgValues[]
+                  | undefined;
+              authorizationEncryptionEncValues?:
+                  | EncryptionEncValues[]
+                  | undefined;
+              authorizationSigningAlgValues?: SigningAlgorithm[] | undefined;
+              dPoPSigningAlgValues?: AsymmetricSigningAlgorithm[] | undefined;
+              idTokenEncryptionAlgValues?: EncryptionAlgValues[] | undefined;
+              idTokenEncryptionEncValues?: EncryptionEncValues[] | undefined;
+              idTokenSigningAlgValues?: SigningAlgorithmWithNone[] | undefined;
+              introspectionEncryptionAlgValues?:
+                  | EncryptionAlgValues[]
+                  | undefined;
+              introspectionEncryptionEncValues?:
+                  | EncryptionEncValues[]
+                  | undefined;
+              introspectionSigningAlgValues?:
+                  | SigningAlgorithmWithNone[]
+                  | undefined;
+              requestObjectEncryptionAlgValues?:
+                  | EncryptionAlgValues[]
+                  | undefined;
+              requestObjectEncryptionEncValues?:
+                  | EncryptionEncValues[]
+                  | undefined;
+              requestObjectSigningAlgValues?:
+                  | SigningAlgorithmWithNone[]
+                  | undefined;
+              clientAuthSigningAlgValues?: SigningAlgorithm[] | undefined;
+              userinfoEncryptionAlgValues?: EncryptionAlgValues[] | undefined;
+              userinfoEncryptionEncValues?: EncryptionEncValues[] | undefined;
+              userinfoSigningAlgValues?: SigningAlgorithmWithNone[] | undefined;
+          }
         | undefined;
 }
 
@@ -1377,8 +1555,12 @@ export type AsymmetricSigningAlgorithm =
     | "RS384"
     | "RS512";
 export type SymmetricSigningAlgorithm = "HS256" | "HS384" | "HS512";
-export type SigningAlgorithm = AsymmetricSigningAlgorithm | SymmetricSigningAlgorithm;
-export type SigningAlgorithmWithNone = AsymmetricSigningAlgorithm | SymmetricSigningAlgorithm;
+export type SigningAlgorithm =
+    | AsymmetricSigningAlgorithm
+    | SymmetricSigningAlgorithm;
+export type SigningAlgorithmWithNone =
+    | AsymmetricSigningAlgorithm
+    | SymmetricSigningAlgorithm;
 export type EncryptionAlgValues =
     | "RSA-OAEP"
     | "RSA-OAEP-256"
@@ -1406,20 +1588,20 @@ export type EncryptionEncValues =
 export interface InteractionResults {
     login?:
         | {
-            remember?: boolean | undefined;
-            accountId: string;
-            ts?: number | undefined;
-            amr?: string[] | undefined;
-            acr?: string | undefined;
-            [key: string]: unknown;
-        }
+              remember?: boolean | undefined;
+              accountId: string;
+              ts?: number | undefined;
+              amr?: string[] | undefined;
+              acr?: string | undefined;
+              [key: string]: unknown;
+          }
         | undefined;
 
     consent?:
         | {
-            grantId?: string | undefined;
-            [key: string]: unknown;
-        }
+              grantId?: string | undefined;
+              [key: string]: unknown;
+          }
         | undefined;
 
     [key: string]: unknown;
@@ -1438,7 +1620,11 @@ export default class Provider extends events.EventEmitter {
     backchannelResult(
         request: BackchannelAuthenticationRequest | string,
         result: Grant | errors.OIDCProviderError | string,
-        opts?: { acr?: string | undefined; amr?: string[] | undefined; authTime?: number | undefined },
+        opts?: {
+            acr?: string | undefined;
+            amr?: string[] | undefined;
+            authTime?: number | undefined;
+        },
     ): Promise<void>;
 
     interactionResult(
@@ -1462,7 +1648,10 @@ export default class Provider extends events.EventEmitter {
 
     registerGrantType(
         name: string,
-        handler: (ctx: KoaContextWithOIDC, next: () => Promise<void>) => CanBePromise<void>,
+        handler: (
+            ctx: KoaContextWithOIDC,
+            next: () => Promise<void>,
+        ) => CanBePromise<void>,
         params?: string | string[] | Set<string>,
         duplicates?: string | string[] | Set<string>,
     ): void;
@@ -1470,39 +1659,106 @@ export default class Provider extends events.EventEmitter {
 
     // tslint:disable:unified-signatures
     addListener(event: string, listener: (...args: any[]) => void): this;
-    addListener(event: "access_token.destroyed", listener: (accessToken: AccessToken) => void): this;
-    addListener(event: "access_token.saved", listener: (accessToken: AccessToken) => void): this;
-    addListener(event: "access_token.issued", listener: (accessToken: AccessToken) => void): this;
-    addListener(event: "authorization_code.saved", listener: (authorizationCode: AuthorizationCode) => void): this;
-    addListener(event: "authorization_code.destroyed", listener: (authorizationCode: AuthorizationCode) => void): this;
-    addListener(event: "authorization_code.consumed", listener: (authorizationCode: AuthorizationCode) => void): this;
-    addListener(event: "device_code.saved", listener: (deviceCode: DeviceCode) => void): this;
-    addListener(event: "device_code.destroyed", listener: (deviceCode: DeviceCode) => void): this;
-    addListener(event: "device_code.consumed", listener: (deviceCode: DeviceCode) => void): this;
-    addListener(event: "backchannel_authentication_request.saved", listener: (deviceCode: DeviceCode) => void): this;
+    addListener(
+        event: "access_token.destroyed",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    addListener(
+        event: "access_token.saved",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    addListener(
+        event: "access_token.issued",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    addListener(
+        event: "authorization_code.saved",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
+    addListener(
+        event: "authorization_code.destroyed",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
+    addListener(
+        event: "authorization_code.consumed",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
+    addListener(
+        event: "device_code.saved",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    addListener(
+        event: "device_code.destroyed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    addListener(
+        event: "device_code.consumed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    addListener(
+        event: "backchannel_authentication_request.saved",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
     addListener(
         event: "backchannel_authentication_request.destroyed",
         listener: (deviceCode: DeviceCode) => void,
     ): this;
-    addListener(event: "backchannel_authentication_request.consumed", listener: (deviceCode: DeviceCode) => void): this;
-    addListener(event: "client_credentials.destroyed", listener: (clientCredentials: ClientCredentials) => void): this;
-    addListener(event: "client_credentials.saved", listener: (clientCredentials: ClientCredentials) => void): this;
-    addListener(event: "client_credentials.issued", listener: (clientCredentials: ClientCredentials) => void): this;
-    addListener(event: "interaction.destroyed", listener: (interaction: Interaction) => void): this;
-    addListener(event: "interaction.saved", listener: (interaction: Interaction) => void): this;
-    addListener(event: "session.destroyed", listener: (session: Session) => void): this;
-    addListener(event: "session.saved", listener: (session: Session) => void): this;
-    addListener(event: "grant.destroyed", listener: (grant: Grant) => void): this;
+    addListener(
+        event: "backchannel_authentication_request.consumed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    addListener(
+        event: "client_credentials.destroyed",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    addListener(
+        event: "client_credentials.saved",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    addListener(
+        event: "client_credentials.issued",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    addListener(
+        event: "interaction.destroyed",
+        listener: (interaction: Interaction) => void,
+    ): this;
+    addListener(
+        event: "interaction.saved",
+        listener: (interaction: Interaction) => void,
+    ): this;
+    addListener(
+        event: "session.destroyed",
+        listener: (session: Session) => void,
+    ): this;
+    addListener(
+        event: "session.saved",
+        listener: (session: Session) => void,
+    ): this;
+    addListener(
+        event: "grant.destroyed",
+        listener: (grant: Grant) => void,
+    ): this;
     addListener(event: "grant.saved", listener: (grant: Grant) => void): this;
-    addListener(event: "replay_detection.destroyed", listener: (replayDetection: ReplayDetection) => void): this;
-    addListener(event: "replay_detection.saved", listener: (replayDetection: ReplayDetection) => void): this;
+    addListener(
+        event: "replay_detection.destroyed",
+        listener: (replayDetection: ReplayDetection) => void,
+    ): this;
+    addListener(
+        event: "replay_detection.saved",
+        listener: (replayDetection: ReplayDetection) => void,
+    ): this;
     addListener(
         event: "pushed_authorization_request.destroyed",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     addListener(
         event: "pushed_authorization_request.saved",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     addListener(
         event: "registration_access_token.destroyed",
@@ -1512,40 +1768,96 @@ export default class Provider extends events.EventEmitter {
         event: "registration_access_token.saved",
         listener: (registrationAccessToken: RegistrationAccessToken) => void,
     ): this;
-    addListener(event: "refresh_token.destroyed", listener: (refreshToken: RefreshToken) => void): this;
-    addListener(event: "refresh_token.saved", listener: (refreshToken: RefreshToken) => void): this;
-    addListener(event: "refresh_token.consumed", listener: (refreshToken: RefreshToken) => void): this;
-    addListener(event: "authorization.accepted", listener: (ctx: KoaContextWithOIDC) => void): this;
-    addListener(event: "authorization.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    addListener(
+        event: "refresh_token.destroyed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    addListener(
+        event: "refresh_token.saved",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    addListener(
+        event: "refresh_token.consumed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    addListener(
+        event: "authorization.accepted",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    addListener(
+        event: "authorization.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     addListener(
         event: "authorization.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    addListener(event: "end_session.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    addListener(
+        event: "end_session.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     addListener(
         event: "end_session.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    addListener(event: "grant.success", listener: (ctx: KoaContextWithOIDC) => void): this;
-    addListener(event: "interaction.ended", listener: (ctx: KoaContextWithOIDC) => void): this;
+    addListener(
+        event: "grant.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    addListener(
+        event: "interaction.ended",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     addListener(
         event: "interaction.started",
         listener: (ctx: KoaContextWithOIDC, interaction: PromptDetail) => void,
     ): this;
-    addListener(event: "grant.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    addListener(event: "grant.revoked", listener: (ctx: KoaContextWithOIDC, grantId: string) => void): this;
+    addListener(
+        event: "grant.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    addListener(
+        event: "grant.revoked",
+        listener: (ctx: KoaContextWithOIDC, grantId: string) => void,
+    ): this;
     addListener(
         event: "backchannel.success",
-        listener: (ctx: KoaContextWithOIDC, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
     addListener(
         event: "backchannel.error",
-        listener: (ctx: KoaContextWithOIDC, err: Error, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: Error,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
-    addListener(event: "pushed_authorization_request.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    addListener(
+        event: "pushed_authorization_request.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     addListener(
         event: "pushed_authorization_request.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     addListener(
         event: "registration_update.success",
@@ -1553,7 +1865,10 @@ export default class Provider extends events.EventEmitter {
     ): this;
     addListener(
         event: "registration_update.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     addListener(
         event: "registration_delete.success",
@@ -1561,7 +1876,10 @@ export default class Provider extends events.EventEmitter {
     ): this;
     addListener(
         event: "registration_delete.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     addListener(
         event: "registration_create.success",
@@ -1569,62 +1887,150 @@ export default class Provider extends events.EventEmitter {
     ): this;
     addListener(
         event: "registration_create.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     addListener(
         event: "introspection.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     addListener(
         event: "registration_read.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    addListener(event: "jwks.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
+    addListener(
+        event: "jwks.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
     addListener(
         event: "discovery.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     addListener(
         event: "userinfo.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     addListener(
         event: "revocation.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    addListener(event: "server_error", listener: (ctx: KoaContextWithOIDC, err: Error) => void): this;
+    addListener(
+        event: "server_error",
+        listener: (ctx: KoaContextWithOIDC, err: Error) => void,
+    ): this;
 
     on(event: string, listener: (...args: any[]) => void): this;
-    on(event: "access_token.destroyed", listener: (accessToken: AccessToken) => void): this;
-    on(event: "access_token.saved", listener: (accessToken: AccessToken) => void): this;
-    on(event: "access_token.issued", listener: (accessToken: AccessToken) => void): this;
-    on(event: "authorization_code.saved", listener: (authorizationCode: AuthorizationCode) => void): this;
-    on(event: "authorization_code.destroyed", listener: (authorizationCode: AuthorizationCode) => void): this;
-    on(event: "authorization_code.consumed", listener: (authorizationCode: AuthorizationCode) => void): this;
-    on(event: "device_code.saved", listener: (deviceCode: DeviceCode) => void): this;
-    on(event: "device_code.destroyed", listener: (deviceCode: DeviceCode) => void): this;
-    on(event: "device_code.consumed", listener: (deviceCode: DeviceCode) => void): this;
-    on(event: "backchannel_authentication_request.saved", listener: (deviceCode: DeviceCode) => void): this;
-    on(event: "backchannel_authentication_request.destroyed", listener: (deviceCode: DeviceCode) => void): this;
-    on(event: "backchannel_authentication_request.consumed", listener: (deviceCode: DeviceCode) => void): this;
-    on(event: "client_credentials.destroyed", listener: (clientCredentials: ClientCredentials) => void): this;
-    on(event: "client_credentials.saved", listener: (clientCredentials: ClientCredentials) => void): this;
-    on(event: "client_credentials.issued", listener: (clientCredentials: ClientCredentials) => void): this;
-    on(event: "interaction.destroyed", listener: (interaction: Interaction) => void): this;
-    on(event: "interaction.saved", listener: (interaction: Interaction) => void): this;
+    on(
+        event: "access_token.destroyed",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    on(
+        event: "access_token.saved",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    on(
+        event: "access_token.issued",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    on(
+        event: "authorization_code.saved",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
+    on(
+        event: "authorization_code.destroyed",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
+    on(
+        event: "authorization_code.consumed",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
+    on(
+        event: "device_code.saved",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    on(
+        event: "device_code.destroyed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    on(
+        event: "device_code.consumed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    on(
+        event: "backchannel_authentication_request.saved",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    on(
+        event: "backchannel_authentication_request.destroyed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    on(
+        event: "backchannel_authentication_request.consumed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    on(
+        event: "client_credentials.destroyed",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    on(
+        event: "client_credentials.saved",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    on(
+        event: "client_credentials.issued",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    on(
+        event: "interaction.destroyed",
+        listener: (interaction: Interaction) => void,
+    ): this;
+    on(
+        event: "interaction.saved",
+        listener: (interaction: Interaction) => void,
+    ): this;
     on(event: "session.destroyed", listener: (session: Session) => void): this;
     on(event: "session.saved", listener: (session: Session) => void): this;
     on(event: "grant.destroyed", listener: (grant: Grant) => void): this;
     on(event: "grant.saved", listener: (grant: Grant) => void): this;
-    on(event: "replay_detection.destroyed", listener: (replayDetection: ReplayDetection) => void): this;
-    on(event: "replay_detection.saved", listener: (replayDetection: ReplayDetection) => void): this;
+    on(
+        event: "replay_detection.destroyed",
+        listener: (replayDetection: ReplayDetection) => void,
+    ): this;
+    on(
+        event: "replay_detection.saved",
+        listener: (replayDetection: ReplayDetection) => void,
+    ): this;
     on(
         event: "pushed_authorization_request.destroyed",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     on(
         event: "pushed_authorization_request.saved",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     on(
         event: "registration_access_token.destroyed",
@@ -1634,89 +2040,272 @@ export default class Provider extends events.EventEmitter {
         event: "registration_access_token.saved",
         listener: (registrationAccessToken: RegistrationAccessToken) => void,
     ): this;
-    on(event: "refresh_token.destroyed", listener: (refreshToken: RefreshToken) => void): this;
-    on(event: "refresh_token.saved", listener: (refreshToken: RefreshToken) => void): this;
-    on(event: "refresh_token.consumed", listener: (refreshToken: RefreshToken) => void): this;
-    on(event: "authorization.accepted", listener: (ctx: KoaContextWithOIDC) => void): this;
-    on(event: "authorization.success", listener: (ctx: KoaContextWithOIDC) => void): this;
-    on(event: "authorization.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    on(event: "end_session.success", listener: (ctx: KoaContextWithOIDC) => void): this;
-    on(event: "end_session.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    on(event: "grant.success", listener: (ctx: KoaContextWithOIDC) => void): this;
-    on(event: "interaction.ended", listener: (ctx: KoaContextWithOIDC) => void): this;
-    on(event: "interaction.started", listener: (ctx: KoaContextWithOIDC, interaction: PromptDetail) => void): this;
-    on(event: "grant.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    on(event: "grant.revoked", listener: (ctx: KoaContextWithOIDC, grantId: string) => void): this;
+    on(
+        event: "refresh_token.destroyed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    on(
+        event: "refresh_token.saved",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    on(
+        event: "refresh_token.consumed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    on(
+        event: "authorization.accepted",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    on(
+        event: "authorization.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    on(
+        event: "authorization.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    on(
+        event: "end_session.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    on(
+        event: "end_session.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    on(
+        event: "grant.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    on(
+        event: "interaction.ended",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    on(
+        event: "interaction.started",
+        listener: (ctx: KoaContextWithOIDC, interaction: PromptDetail) => void,
+    ): this;
+    on(
+        event: "grant.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    on(
+        event: "grant.revoked",
+        listener: (ctx: KoaContextWithOIDC, grantId: string) => void,
+    ): this;
     on(
         event: "backchannel.success",
-        listener: (ctx: KoaContextWithOIDC, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
     on(
         event: "backchannel.error",
-        listener: (ctx: KoaContextWithOIDC, err: Error, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: Error,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
-    on(event: "pushed_authorization_request.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    on(
+        event: "pushed_authorization_request.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     on(
         event: "pushed_authorization_request.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    on(event: "registration_update.success", listener: (ctx: KoaContextWithOIDC, client: Client) => void): this;
+    on(
+        event: "registration_update.success",
+        listener: (ctx: KoaContextWithOIDC, client: Client) => void,
+    ): this;
     on(
         event: "registration_update.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    on(event: "registration_delete.success", listener: (ctx: KoaContextWithOIDC, client: Client) => void): this;
+    on(
+        event: "registration_delete.success",
+        listener: (ctx: KoaContextWithOIDC, client: Client) => void,
+    ): this;
     on(
         event: "registration_delete.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    on(event: "registration_create.success", listener: (ctx: KoaContextWithOIDC, client: Client) => void): this;
+    on(
+        event: "registration_create.success",
+        listener: (ctx: KoaContextWithOIDC, client: Client) => void,
+    ): this;
     on(
         event: "registration_create.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    on(event: "introspection.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
+    on(
+        event: "introspection.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
     on(
         event: "registration_read.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    on(event: "jwks.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    on(event: "discovery.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    on(event: "userinfo.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    on(event: "revocation.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    on(event: "server_error", listener: (ctx: KoaContextWithOIDC, err: Error) => void): this;
+    on(
+        event: "jwks.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    on(
+        event: "discovery.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    on(
+        event: "userinfo.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    on(
+        event: "revocation.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    on(
+        event: "server_error",
+        listener: (ctx: KoaContextWithOIDC, err: Error) => void,
+    ): this;
 
     once(event: string, listener: (...args: any[]) => void): this;
-    once(event: "access_token.destroyed", listener: (accessToken: AccessToken) => void): this;
-    once(event: "access_token.saved", listener: (accessToken: AccessToken) => void): this;
-    once(event: "access_token.issued", listener: (accessToken: AccessToken) => void): this;
-    once(event: "authorization_code.saved", listener: (authorizationCode: AuthorizationCode) => void): this;
-    once(event: "authorization_code.destroyed", listener: (authorizationCode: AuthorizationCode) => void): this;
-    once(event: "authorization_code.consumed", listener: (authorizationCode: AuthorizationCode) => void): this;
-    once(event: "device_code.saved", listener: (deviceCode: DeviceCode) => void): this;
-    once(event: "device_code.destroyed", listener: (deviceCode: DeviceCode) => void): this;
-    once(event: "device_code.consumed", listener: (deviceCode: DeviceCode) => void): this;
-    once(event: "backchannel_authentication_request.saved", listener: (deviceCode: DeviceCode) => void): this;
-    once(event: "backchannel_authentication_request.destroyed", listener: (deviceCode: DeviceCode) => void): this;
-    once(event: "backchannel_authentication_request.consumed", listener: (deviceCode: DeviceCode) => void): this;
-    once(event: "client_credentials.destroyed", listener: (clientCredentials: ClientCredentials) => void): this;
-    once(event: "client_credentials.saved", listener: (clientCredentials: ClientCredentials) => void): this;
-    once(event: "client_credentials.issued", listener: (clientCredentials: ClientCredentials) => void): this;
-    once(event: "interaction.destroyed", listener: (interaction: Interaction) => void): this;
-    once(event: "interaction.saved", listener: (interaction: Interaction) => void): this;
-    once(event: "session.destroyed", listener: (session: Session) => void): this;
+    once(
+        event: "access_token.destroyed",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    once(
+        event: "access_token.saved",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    once(
+        event: "access_token.issued",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    once(
+        event: "authorization_code.saved",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
+    once(
+        event: "authorization_code.destroyed",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
+    once(
+        event: "authorization_code.consumed",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
+    once(
+        event: "device_code.saved",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    once(
+        event: "device_code.destroyed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    once(
+        event: "device_code.consumed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    once(
+        event: "backchannel_authentication_request.saved",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    once(
+        event: "backchannel_authentication_request.destroyed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    once(
+        event: "backchannel_authentication_request.consumed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    once(
+        event: "client_credentials.destroyed",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    once(
+        event: "client_credentials.saved",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    once(
+        event: "client_credentials.issued",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    once(
+        event: "interaction.destroyed",
+        listener: (interaction: Interaction) => void,
+    ): this;
+    once(
+        event: "interaction.saved",
+        listener: (interaction: Interaction) => void,
+    ): this;
+    once(
+        event: "session.destroyed",
+        listener: (session: Session) => void,
+    ): this;
     once(event: "session.saved", listener: (session: Session) => void): this;
     once(event: "grant.destroyed", listener: (grant: Grant) => void): this;
     once(event: "grant.saved", listener: (grant: Grant) => void): this;
-    once(event: "replay_detection.destroyed", listener: (replayDetection: ReplayDetection) => void): this;
-    once(event: "replay_detection.saved", listener: (replayDetection: ReplayDetection) => void): this;
+    once(
+        event: "replay_detection.destroyed",
+        listener: (replayDetection: ReplayDetection) => void,
+    ): this;
+    once(
+        event: "replay_detection.saved",
+        listener: (replayDetection: ReplayDetection) => void,
+    ): this;
     once(
         event: "pushed_authorization_request.destroyed",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     once(
         event: "pushed_authorization_request.saved",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     once(
         event: "registration_access_token.destroyed",
@@ -1726,69 +2315,194 @@ export default class Provider extends events.EventEmitter {
         event: "registration_access_token.saved",
         listener: (registrationAccessToken: RegistrationAccessToken) => void,
     ): this;
-    once(event: "refresh_token.destroyed", listener: (refreshToken: RefreshToken) => void): this;
-    once(event: "refresh_token.saved", listener: (refreshToken: RefreshToken) => void): this;
-    once(event: "refresh_token.consumed", listener: (refreshToken: RefreshToken) => void): this;
-    once(event: "authorization.accepted", listener: (ctx: KoaContextWithOIDC) => void): this;
-    once(event: "authorization.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    once(
+        event: "refresh_token.destroyed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    once(
+        event: "refresh_token.saved",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    once(
+        event: "refresh_token.consumed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    once(
+        event: "authorization.accepted",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    once(
+        event: "authorization.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     once(
         event: "authorization.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    once(event: "end_session.success", listener: (ctx: KoaContextWithOIDC) => void): this;
-    once(event: "end_session.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    once(event: "grant.success", listener: (ctx: KoaContextWithOIDC) => void): this;
-    once(event: "interaction.ended", listener: (ctx: KoaContextWithOIDC) => void): this;
-    once(event: "interaction.started", listener: (ctx: KoaContextWithOIDC, interaction: PromptDetail) => void): this;
-    once(event: "grant.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    once(event: "grant.revoked", listener: (ctx: KoaContextWithOIDC, grantId: string) => void): this;
+    once(
+        event: "end_session.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    once(
+        event: "end_session.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    once(
+        event: "grant.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    once(
+        event: "interaction.ended",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    once(
+        event: "interaction.started",
+        listener: (ctx: KoaContextWithOIDC, interaction: PromptDetail) => void,
+    ): this;
+    once(
+        event: "grant.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    once(
+        event: "grant.revoked",
+        listener: (ctx: KoaContextWithOIDC, grantId: string) => void,
+    ): this;
     once(
         event: "backchannel.success",
-        listener: (ctx: KoaContextWithOIDC, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
     once(
         event: "backchannel.error",
-        listener: (ctx: KoaContextWithOIDC, err: Error, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: Error,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
-    once(event: "pushed_authorization_request.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    once(
+        event: "pushed_authorization_request.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     once(
         event: "pushed_authorization_request.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    once(event: "registration_update.success", listener: (ctx: KoaContextWithOIDC, client: Client) => void): this;
+    once(
+        event: "registration_update.success",
+        listener: (ctx: KoaContextWithOIDC, client: Client) => void,
+    ): this;
     once(
         event: "registration_update.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    once(event: "registration_delete.success", listener: (ctx: KoaContextWithOIDC, client: Client) => void): this;
+    once(
+        event: "registration_delete.success",
+        listener: (ctx: KoaContextWithOIDC, client: Client) => void,
+    ): this;
     once(
         event: "registration_delete.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    once(event: "registration_create.success", listener: (ctx: KoaContextWithOIDC, client: Client) => void): this;
+    once(
+        event: "registration_create.success",
+        listener: (ctx: KoaContextWithOIDC, client: Client) => void,
+    ): this;
     once(
         event: "registration_create.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     once(
         event: "introspection.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     once(
         event: "registration_read.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    once(event: "jwks.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    once(event: "discovery.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    once(event: "userinfo.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    once(event: "revocation.error", listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void): this;
-    once(event: "server_error", listener: (ctx: KoaContextWithOIDC, err: Error) => void): this;
+    once(
+        event: "jwks.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    once(
+        event: "discovery.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    once(
+        event: "userinfo.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    once(
+        event: "revocation.error",
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
+    ): this;
+    once(
+        event: "server_error",
+        listener: (ctx: KoaContextWithOIDC, err: Error) => void,
+    ): this;
 
     prependListener(event: string, listener: (...args: any[]) => void): this;
-    prependListener(event: "access_token.destroyed", listener: (accessToken: AccessToken) => void): this;
-    prependListener(event: "access_token.saved", listener: (accessToken: AccessToken) => void): this;
-    prependListener(event: "access_token.issued", listener: (accessToken: AccessToken) => void): this;
-    prependListener(event: "authorization_code.saved", listener: (authorizationCode: AuthorizationCode) => void): this;
+    prependListener(
+        event: "access_token.destroyed",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    prependListener(
+        event: "access_token.saved",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    prependListener(
+        event: "access_token.issued",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    prependListener(
+        event: "authorization_code.saved",
+        listener: (authorizationCode: AuthorizationCode) => void,
+    ): this;
     prependListener(
         event: "authorization_code.destroyed",
         listener: (authorizationCode: AuthorizationCode) => void,
@@ -1797,9 +2511,18 @@ export default class Provider extends events.EventEmitter {
         event: "authorization_code.consumed",
         listener: (authorizationCode: AuthorizationCode) => void,
     ): this;
-    prependListener(event: "device_code.saved", listener: (deviceCode: DeviceCode) => void): this;
-    prependListener(event: "device_code.destroyed", listener: (deviceCode: DeviceCode) => void): this;
-    prependListener(event: "device_code.consumed", listener: (deviceCode: DeviceCode) => void): this;
+    prependListener(
+        event: "device_code.saved",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    prependListener(
+        event: "device_code.destroyed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    prependListener(
+        event: "device_code.consumed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
     prependListener(
         event: "backchannel_authentication_request.saved",
         listener: (deviceCode: DeviceCode) => void,
@@ -1816,23 +2539,57 @@ export default class Provider extends events.EventEmitter {
         event: "client_credentials.destroyed",
         listener: (clientCredentials: ClientCredentials) => void,
     ): this;
-    prependListener(event: "client_credentials.saved", listener: (clientCredentials: ClientCredentials) => void): this;
-    prependListener(event: "client_credentials.issued", listener: (clientCredentials: ClientCredentials) => void): this;
-    prependListener(event: "interaction.destroyed", listener: (interaction: Interaction) => void): this;
-    prependListener(event: "interaction.saved", listener: (interaction: Interaction) => void): this;
-    prependListener(event: "session.destroyed", listener: (session: Session) => void): this;
-    prependListener(event: "session.saved", listener: (session: Session) => void): this;
-    prependListener(event: "grant.destroyed", listener: (grant: Grant) => void): this;
-    prependListener(event: "grant.saved", listener: (grant: Grant) => void): this;
-    prependListener(event: "replay_detection.destroyed", listener: (replayDetection: ReplayDetection) => void): this;
-    prependListener(event: "replay_detection.saved", listener: (replayDetection: ReplayDetection) => void): this;
+    prependListener(
+        event: "client_credentials.saved",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    prependListener(
+        event: "client_credentials.issued",
+        listener: (clientCredentials: ClientCredentials) => void,
+    ): this;
+    prependListener(
+        event: "interaction.destroyed",
+        listener: (interaction: Interaction) => void,
+    ): this;
+    prependListener(
+        event: "interaction.saved",
+        listener: (interaction: Interaction) => void,
+    ): this;
+    prependListener(
+        event: "session.destroyed",
+        listener: (session: Session) => void,
+    ): this;
+    prependListener(
+        event: "session.saved",
+        listener: (session: Session) => void,
+    ): this;
+    prependListener(
+        event: "grant.destroyed",
+        listener: (grant: Grant) => void,
+    ): this;
+    prependListener(
+        event: "grant.saved",
+        listener: (grant: Grant) => void,
+    ): this;
+    prependListener(
+        event: "replay_detection.destroyed",
+        listener: (replayDetection: ReplayDetection) => void,
+    ): this;
+    prependListener(
+        event: "replay_detection.saved",
+        listener: (replayDetection: ReplayDetection) => void,
+    ): this;
     prependListener(
         event: "pushed_authorization_request.destroyed",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     prependListener(
         event: "pushed_authorization_request.saved",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     prependListener(
         event: "registration_access_token.destroyed",
@@ -1842,43 +2599,96 @@ export default class Provider extends events.EventEmitter {
         event: "registration_access_token.saved",
         listener: (registrationAccessToken: RegistrationAccessToken) => void,
     ): this;
-    prependListener(event: "refresh_token.destroyed", listener: (refreshToken: RefreshToken) => void): this;
-    prependListener(event: "refresh_token.saved", listener: (refreshToken: RefreshToken) => void): this;
-    prependListener(event: "refresh_token.consumed", listener: (refreshToken: RefreshToken) => void): this;
-    prependListener(event: "authorization.accepted", listener: (ctx: KoaContextWithOIDC) => void): this;
-    prependListener(event: "authorization.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    prependListener(
+        event: "refresh_token.destroyed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    prependListener(
+        event: "refresh_token.saved",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    prependListener(
+        event: "refresh_token.consumed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    prependListener(
+        event: "authorization.accepted",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    prependListener(
+        event: "authorization.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     prependListener(
         event: "authorization.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    prependListener(event: "end_session.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    prependListener(
+        event: "end_session.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     prependListener(
         event: "end_session.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    prependListener(event: "grant.success", listener: (ctx: KoaContextWithOIDC) => void): this;
-    prependListener(event: "interaction.ended", listener: (ctx: KoaContextWithOIDC) => void): this;
+    prependListener(
+        event: "grant.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    prependListener(
+        event: "interaction.ended",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     prependListener(
         event: "interaction.started",
         listener: (ctx: KoaContextWithOIDC, interaction: PromptDetail) => void,
     ): this;
     prependListener(
         event: "grant.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    prependListener(event: "grant.revoked", listener: (ctx: KoaContextWithOIDC, grantId: string) => void): this;
+    prependListener(
+        event: "grant.revoked",
+        listener: (ctx: KoaContextWithOIDC, grantId: string) => void,
+    ): this;
     prependListener(
         event: "backchannel.success",
-        listener: (ctx: KoaContextWithOIDC, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
     prependListener(
         event: "backchannel.error",
-        listener: (ctx: KoaContextWithOIDC, err: Error, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: Error,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
-    prependListener(event: "pushed_authorization_request.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    prependListener(
+        event: "pushed_authorization_request.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     prependListener(
         event: "pushed_authorization_request.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependListener(
         event: "registration_update.success",
@@ -1886,7 +2696,10 @@ export default class Provider extends events.EventEmitter {
     ): this;
     prependListener(
         event: "registration_update.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependListener(
         event: "registration_delete.success",
@@ -1894,7 +2707,10 @@ export default class Provider extends events.EventEmitter {
     ): this;
     prependListener(
         event: "registration_delete.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependListener(
         event: "registration_create.success",
@@ -1902,38 +2718,74 @@ export default class Provider extends events.EventEmitter {
     ): this;
     prependListener(
         event: "registration_create.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependListener(
         event: "introspection.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependListener(
         event: "registration_read.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependListener(
         event: "jwks.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependListener(
         event: "discovery.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependListener(
         event: "userinfo.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependListener(
         event: "revocation.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    prependListener(event: "server_error", listener: (ctx: KoaContextWithOIDC, err: Error) => void): this;
+    prependListener(
+        event: "server_error",
+        listener: (ctx: KoaContextWithOIDC, err: Error) => void,
+    ): this;
 
-    prependOnceListener(event: string, listener: (...args: any[]) => void): this;
-    prependOnceListener(event: "access_token.destroyed", listener: (accessToken: AccessToken) => void): this;
-    prependOnceListener(event: "access_token.saved", listener: (accessToken: AccessToken) => void): this;
-    prependOnceListener(event: "access_token.issued", listener: (accessToken: AccessToken) => void): this;
+    prependOnceListener(
+        event: string,
+        listener: (...args: any[]) => void,
+    ): this;
+    prependOnceListener(
+        event: "access_token.destroyed",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    prependOnceListener(
+        event: "access_token.saved",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
+    prependOnceListener(
+        event: "access_token.issued",
+        listener: (accessToken: AccessToken) => void,
+    ): this;
     prependOnceListener(
         event: "authorization_code.saved",
         listener: (authorizationCode: AuthorizationCode) => void,
@@ -1946,9 +2798,18 @@ export default class Provider extends events.EventEmitter {
         event: "authorization_code.consumed",
         listener: (authorizationCode: AuthorizationCode) => void,
     ): this;
-    prependOnceListener(event: "device_code.saved", listener: (deviceCode: DeviceCode) => void): this;
-    prependOnceListener(event: "device_code.destroyed", listener: (deviceCode: DeviceCode) => void): this;
-    prependOnceListener(event: "device_code.consumed", listener: (deviceCode: DeviceCode) => void): this;
+    prependOnceListener(
+        event: "device_code.saved",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    prependOnceListener(
+        event: "device_code.destroyed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
+    prependOnceListener(
+        event: "device_code.consumed",
+        listener: (deviceCode: DeviceCode) => void,
+    ): this;
     prependOnceListener(
         event: "backchannel_authentication_request.saved",
         listener: (deviceCode: DeviceCode) => void,
@@ -1973,24 +2834,49 @@ export default class Provider extends events.EventEmitter {
         event: "client_credentials.issued",
         listener: (clientCredentials: ClientCredentials) => void,
     ): this;
-    prependOnceListener(event: "interaction.destroyed", listener: (interaction: Interaction) => void): this;
-    prependOnceListener(event: "interaction.saved", listener: (interaction: Interaction) => void): this;
-    prependOnceListener(event: "session.destroyed", listener: (session: Session) => void): this;
-    prependOnceListener(event: "session.saved", listener: (session: Session) => void): this;
-    prependOnceListener(event: "grant.destroyed", listener: (grant: Grant) => void): this;
-    prependOnceListener(event: "grant.saved", listener: (grant: Grant) => void): this;
+    prependOnceListener(
+        event: "interaction.destroyed",
+        listener: (interaction: Interaction) => void,
+    ): this;
+    prependOnceListener(
+        event: "interaction.saved",
+        listener: (interaction: Interaction) => void,
+    ): this;
+    prependOnceListener(
+        event: "session.destroyed",
+        listener: (session: Session) => void,
+    ): this;
+    prependOnceListener(
+        event: "session.saved",
+        listener: (session: Session) => void,
+    ): this;
+    prependOnceListener(
+        event: "grant.destroyed",
+        listener: (grant: Grant) => void,
+    ): this;
+    prependOnceListener(
+        event: "grant.saved",
+        listener: (grant: Grant) => void,
+    ): this;
     prependOnceListener(
         event: "replay_detection.destroyed",
         listener: (replayDetection: ReplayDetection) => void,
     ): this;
-    prependOnceListener(event: "replay_detection.saved", listener: (replayDetection: ReplayDetection) => void): this;
+    prependOnceListener(
+        event: "replay_detection.saved",
+        listener: (replayDetection: ReplayDetection) => void,
+    ): this;
     prependOnceListener(
         event: "pushed_authorization_request.destroyed",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "pushed_authorization_request.saved",
-        listener: (pushedAuthorizationRequest: PushedAuthorizationRequest) => void,
+        listener: (
+            pushedAuthorizationRequest: PushedAuthorizationRequest,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "registration_access_token.destroyed",
@@ -2000,38 +2886,85 @@ export default class Provider extends events.EventEmitter {
         event: "registration_access_token.saved",
         listener: (registrationAccessToken: RegistrationAccessToken) => void,
     ): this;
-    prependOnceListener(event: "refresh_token.destroyed", listener: (refreshToken: RefreshToken) => void): this;
-    prependOnceListener(event: "refresh_token.saved", listener: (refreshToken: RefreshToken) => void): this;
-    prependOnceListener(event: "refresh_token.consumed", listener: (refreshToken: RefreshToken) => void): this;
-    prependOnceListener(event: "authorization.accepted", listener: (ctx: KoaContextWithOIDC) => void): this;
-    prependOnceListener(event: "authorization.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    prependOnceListener(
+        event: "refresh_token.destroyed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    prependOnceListener(
+        event: "refresh_token.saved",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    prependOnceListener(
+        event: "refresh_token.consumed",
+        listener: (refreshToken: RefreshToken) => void,
+    ): this;
+    prependOnceListener(
+        event: "authorization.accepted",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    prependOnceListener(
+        event: "authorization.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     prependOnceListener(
         event: "authorization.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    prependOnceListener(event: "end_session.success", listener: (ctx: KoaContextWithOIDC) => void): this;
+    prependOnceListener(
+        event: "end_session.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     prependOnceListener(
         event: "end_session.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    prependOnceListener(event: "grant.success", listener: (ctx: KoaContextWithOIDC) => void): this;
-    prependOnceListener(event: "interaction.ended", listener: (ctx: KoaContextWithOIDC) => void): this;
+    prependOnceListener(
+        event: "grant.success",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
+    prependOnceListener(
+        event: "interaction.ended",
+        listener: (ctx: KoaContextWithOIDC) => void,
+    ): this;
     prependOnceListener(
         event: "interaction.started",
         listener: (ctx: KoaContextWithOIDC, interaction: PromptDetail) => void,
     ): this;
     prependOnceListener(
         event: "grant.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    prependOnceListener(event: "grant.revoked", listener: (ctx: KoaContextWithOIDC, grantId: string) => void): this;
+    prependOnceListener(
+        event: "grant.revoked",
+        listener: (ctx: KoaContextWithOIDC, grantId: string) => void,
+    ): this;
     prependOnceListener(
         event: "backchannel.success",
-        listener: (ctx: KoaContextWithOIDC, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "backchannel.error",
-        listener: (ctx: KoaContextWithOIDC, err: Error, client: Client, accountId: string, sid: string) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: Error,
+            client: Client,
+            accountId: string,
+            sid: string,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "pushed_authorization_request.success",
@@ -2039,7 +2972,10 @@ export default class Provider extends events.EventEmitter {
     ): this;
     prependOnceListener(
         event: "pushed_authorization_request.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "registration_update.success",
@@ -2047,7 +2983,10 @@ export default class Provider extends events.EventEmitter {
     ): this;
     prependOnceListener(
         event: "registration_update.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "registration_delete.success",
@@ -2055,7 +2994,10 @@ export default class Provider extends events.EventEmitter {
     ): this;
     prependOnceListener(
         event: "registration_delete.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "registration_create.success",
@@ -2063,33 +3005,57 @@ export default class Provider extends events.EventEmitter {
     ): this;
     prependOnceListener(
         event: "registration_create.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "introspection.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "registration_read.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "jwks.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "discovery.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "userinfo.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
     prependOnceListener(
         event: "revocation.error",
-        listener: (ctx: KoaContextWithOIDC, err: errors.OIDCProviderError) => void,
+        listener: (
+            ctx: KoaContextWithOIDC,
+            err: errors.OIDCProviderError,
+        ) => void,
     ): this;
-    prependOnceListener(event: "server_error", listener: (ctx: KoaContextWithOIDC, err: Error) => void): this;
+    prependOnceListener(
+        event: "server_error",
+        listener: (ctx: KoaContextWithOIDC, err: Error) => void,
+    ): this;
     // tslint:enable:unified-signatures
 
     readonly Grant: typeof Grant;
@@ -2150,7 +3116,10 @@ export namespace interactionPolicy {
     }
 
     class Prompt {
-        constructor(info: { name: string; requestable?: boolean | undefined }, ...checks: Check[]);
+        constructor(
+            info: { name: string; requestable?: boolean | undefined },
+            ...checks: Check[]
+        );
         constructor(
             info: { name: string; requestable?: boolean | undefined },
             details: (ctx: KoaContextWithOIDC) => CanBePromise<UnknownObject>,
@@ -2159,7 +3128,9 @@ export namespace interactionPolicy {
 
         name: string;
         requestable: boolean;
-        details?: ((ctx: KoaContextWithOIDC) => Promise<UnknownObject>) | undefined;
+        details?:
+            | ((ctx: KoaContextWithOIDC) => Promise<UnknownObject>)
+            | undefined;
         checks: Checks;
     }
 

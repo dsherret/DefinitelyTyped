@@ -10,7 +10,9 @@ declare namespace bodyParser {
         /**
          * @deprecated  use individual json/urlencoded middlewares
          */
-        (options?: OptionsJson & OptionsText & OptionsUrlencoded): NextHandleFunction;
+        (
+            options?: OptionsJson & OptionsText & OptionsUrlencoded,
+        ): NextHandleFunction;
         /**
          * Returns middleware that only parses json and only looks at requests
          * where the Content-Type header matches the type option.
@@ -46,12 +48,21 @@ declare namespace bodyParser {
         /**
          * The type option is used to determine what media type the middleware will parse
          */
-        type?: string | string[] | ((req: http.IncomingMessage) => any) | undefined;
+        type?:
+            | string
+            | string[]
+            | ((req: http.IncomingMessage) => any)
+            | undefined;
         /**
          * The verify option, if supplied, is called as verify(req, res, buf, encoding),
          * where buf is a Buffer of the raw request body and encoding is the encoding of the request.
          */
-        verify?(req: http.IncomingMessage, res: http.ServerResponse, buf: Buffer, encoding: string): void;
+        verify?(
+            req: http.IncomingMessage,
+            res: http.ServerResponse,
+            buf: Buffer,
+            encoding: string,
+        ): void;
     }
 
     interface OptionsJson extends Options {

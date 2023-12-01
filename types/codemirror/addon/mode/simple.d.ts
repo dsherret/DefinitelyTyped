@@ -9,11 +9,13 @@ declare module "../../" {
         next?: string | undefined;
         push?: string | undefined;
         pop?: boolean | undefined;
-        mode?: {
-            spec: string | ModeSpec<any>;
-            end?: RegExp | undefined;
-            persistent?: boolean | undefined;
-        } | undefined;
+        mode?:
+            | {
+                  spec: string | ModeSpec<any>;
+                  end?: RegExp | undefined;
+                  persistent?: boolean | undefined;
+              }
+            | undefined;
         indent?: boolean | undefined;
         dedent?: boolean | undefined;
         dedentIfLineStart?: boolean | undefined;
@@ -22,6 +24,8 @@ declare module "../../" {
     function defineSimpleMode<K extends string>(
         name: string,
         // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-        mode: { [P in K]: P extends "meta" ? Record<string, any> : Rule[] } & { start: Rule[] },
+        mode: { [P in K]: P extends "meta" ? Record<string, any> : Rule[] } & {
+            start: Rule[];
+        },
     ): void;
 }

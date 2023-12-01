@@ -13,7 +13,9 @@ import {
 
 const router = ThrowableRouter({ base: "" });
 
-router.get("/test", withContent, withCookies, withParams, () => json({ test: "test" }, { status: 200 }));
+router.get("/test", withContent, withCookies, withParams, () =>
+    json({ test: "test" }, { status: 200 }),
+);
 
 router.get("/error1", () => error(500, "Test message"));
 router.get("/error2", () => error(500, { test: "Error" }));

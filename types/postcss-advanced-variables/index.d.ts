@@ -1,7 +1,15 @@
 import { Node, PluginCreator } from "postcss";
 
 declare namespace advancedVariables {
-    type Features = "@content" | "@each" | "@else" | "@if" | "@include" | "@import" | "@for" | "@mixin";
+    type Features =
+        | "@content"
+        | "@each"
+        | "@else"
+        | "@if"
+        | "@include"
+        | "@import"
+        | "@for"
+        | "@mixin";
 
     interface Options {
         /**
@@ -9,7 +17,10 @@ declare namespace advancedVariables {
          * Can be a function, which should return the value when given the variable name
          * @see {@link <https://github.com/csstools/postcss-advanced-variables#variables-1>}
          */
-        variables?: Record<string, string> | ((name: string, node: Node) => string | undefined) | undefined;
+        variables?:
+            | Record<string, string>
+            | ((name: string, node: Node) => string | undefined)
+            | undefined;
         /**
          * How unresolved variables, mixins, and imports should be handled
          * @default 'throw'
@@ -36,7 +47,11 @@ declare namespace advancedVariables {
          * @returns An object containing the full path and the contents of the file
          * @see {@link <https://github.com/csstools/postcss-advanced-variables#importresolve>}
          */
-        importResolve?(id: string, cwd: string, opts: Options): Promise<{ file: string; contents: string }>;
+        importResolve?(
+            id: string,
+            cwd: string,
+            opts: Options,
+        ): Promise<{ file: string; contents: string }>;
         /**
          * Determines whether an import will be inlined.
          * The value can be a function or a regular expression. When providing a function,

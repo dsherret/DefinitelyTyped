@@ -16,7 +16,10 @@ declare class RedisStore implements session.stores {
      */
     set(
         key: string,
-        sess: Partial<session.Session> & { _expire?: number | undefined; _maxAge?: number | undefined },
+        sess: Partial<session.Session> & {
+            _expire?: number | undefined;
+            _maxAge?: number | undefined;
+        },
         maxAge: session.opts["maxAge"],
     ): any;
 

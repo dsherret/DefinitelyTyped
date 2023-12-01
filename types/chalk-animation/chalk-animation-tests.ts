@@ -1,6 +1,8 @@
 import * as chalkAnimation from "chalk-animation";
 
-const rainbow: chalkAnimation.Animation = chalkAnimation.rainbow("Lorem ipsum dolor sit amet");
+const rainbow: chalkAnimation.Animation = chalkAnimation.rainbow(
+    "Lorem ipsum dolor sit amet",
+);
 chalkAnimation.rainbow("Lorem ipsum dolor sit amet", 2);
 chalkAnimation.pulse("Lorem ipsum dolor sit amet");
 chalkAnimation.pulse("Lorem ipsum dolor sit amet", 2);

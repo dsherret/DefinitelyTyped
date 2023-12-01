@@ -28,7 +28,10 @@ interface Api<D extends DatasetCore = DatasetCore> extends Api.Api<D> {}
 declare class Api<D extends DatasetCore = DatasetCore> {
     constructor(options?: Api.ApiInit<D>);
 
-    static fromFile<D extends DatasetCore = DatasetCore>(fielPath: string, options?: Api.ApiInit<D>): Api<D>;
+    static fromFile<D extends DatasetCore = DatasetCore>(
+        fielPath: string,
+        options?: Api.ApiInit<D>,
+    ): Api<D>;
     fromFile(filePath: string, options?: Api.ApiInit): this;
     rebase(from: string | NamedNode, to: string | NamedNode): this;
 }

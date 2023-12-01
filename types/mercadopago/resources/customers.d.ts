@@ -14,11 +14,17 @@ export type CustomerUpdateResponse = MercadoPagoResponse<
     ExecOptions<DefaultConfigurationOmitQs, UpdateCustomerPayload>
 >;
 
-export type CustomerGetResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, any>>;
+export type CustomerGetResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, any>
+>;
 
-export type CustomerSearchResponse = MercadoPagoResponse<ExecOptions<CustomerSearchConfiguration, any>>;
+export type CustomerSearchResponse = MercadoPagoResponse<
+    ExecOptions<CustomerSearchConfiguration, any>
+>;
 
-export type CustomerDeleteResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, any>>;
+export type CustomerDeleteResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, any>
+>;
 
 export interface MercadoPagoCustomer {
     create(
@@ -53,7 +59,10 @@ export interface MercadoPagoCustomer {
         callback?: CallbackFunction,
     ): Promise<CustomerGetResponse>;
 
-    search(configuration: CustomerSearchConfiguration, callback?: CallbackFunction): Promise<CustomerSearchResponse>;
+    search(
+        configuration: CustomerSearchConfiguration,
+        callback?: CallbackFunction,
+    ): Promise<CustomerSearchResponse>;
 
     remove(
         id: string,

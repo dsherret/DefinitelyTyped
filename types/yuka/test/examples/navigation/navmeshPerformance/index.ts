@@ -12,41 +12,50 @@ const vehicles: CustomVehicle[] = [];
 
 // 3D assets are loaded, now load nav mesh
 const loader = new YUKA.NavMeshLoader();
-loader.load("../common/navmeshes/complex/navmesh.glb").then((navigationMesh) => {
-    pathPlanner = new PathPlanner(navigationMesh);
-    // setup spatial index
-    const width = 100;
-    const height = 40;
-    const depth = 75;
-    const cellsX = 20;
-    const cellsY = 5;
-    const cellsZ = 20;
+loader
+    .load("../common/navmeshes/complex/navmesh.glb")
+    .then((navigationMesh) => {
+        pathPlanner = new PathPlanner(navigationMesh);
+        // setup spatial index
+        const width = 100;
+        const height = 40;
+        const depth = 75;
+        const cellsX = 20;
+        const cellsY = 5;
+        const cellsZ = 20;
 
-    navigationMesh.spatialIndex = new YUKA.CellSpacePartitioning(width, height, depth, cellsX, cellsY, cellsZ);
-    navigationMesh.updateSpatialIndex();
+        navigationMesh.spatialIndex = new YUKA.CellSpacePartitioning(
+            width,
+            height,
+            depth,
+            cellsX,
+            cellsY,
+            cellsZ,
+        );
+        navigationMesh.updateSpatialIndex();
 
-    // create vehicles
-    for (let i = 0; i < vehicleCount; i++) {
-        const vehicle = new CustomVehicle();
-        vehicle.navMesh = navigationMesh;
-        vehicle.maxSpeed = 1.5;
-        vehicle.maxForce = 10;
+        // create vehicles
+        for (let i = 0; i < vehicleCount; i++) {
+            const vehicle = new CustomVehicle();
+            vehicle.navMesh = navigationMesh;
+            vehicle.maxSpeed = 1.5;
+            vehicle.maxForce = 10;
 
-        const toRegion = vehicle.navMesh.getRandomRegion();
-        vehicle.position.copy(toRegion.centroid);
-        vehicle.toRegion = toRegion;
+            const toRegion = vehicle.navMesh.getRandomRegion();
+            vehicle.position.copy(toRegion.centroid);
+            vehicle.toRegion = toRegion;
 
-        const followPathBehavior = new YUKA.FollowPathBehavior();
-        followPathBehavior.nextWaypointDistance = 0.5;
-        followPathBehavior.active = false;
-        vehicle.steering.add(followPathBehavior);
+            const followPathBehavior = new YUKA.FollowPathBehavior();
+            followPathBehavior.nextWaypointDistance = 0.5;
+            followPathBehavior.active = false;
+            vehicle.steering.add(followPathBehavior);
 
-        entityManager.add(vehicle);
-        vehicles.push(vehicle);
-    }
+            entityManager.add(vehicle);
+            vehicles.push(vehicle);
+        }
 
-    animate();
-});
+        animate();
+    });
 
 function onPathFound(vehicle: CustomVehicle, path: YUKA.Vector3[]) {
     // update path and steering

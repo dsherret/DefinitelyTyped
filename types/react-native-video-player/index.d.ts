@@ -1,10 +1,20 @@
 import * as React from "react";
-import { ImageSourcePropType, ImageStyle, StyleProp, TextStyle, ViewStyle } from "react-native";
+import {
+    ImageSourcePropType,
+    ImageStyle,
+    StyleProp,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
 import { VideoProperties } from "react-native-video";
 
 export interface VideoPlayerProps extends Omit<VideoProperties, "source"> {
     video?:
-        | { uri?: string | undefined; mainVer?: number | undefined; patchVer?: number | undefined }
+        | {
+              uri?: string | undefined;
+              mainVer?: number | undefined;
+              patchVer?: number | undefined;
+          }
         | number
         | undefined;
     thumbnail?: ImageSourcePropType | undefined;
@@ -26,25 +36,27 @@ export interface VideoPlayerProps extends Omit<VideoProperties, "source"> {
     disableSeek?: boolean | undefined;
     pauseOnPress?: boolean | undefined;
     fullScreenOnLongPress?: boolean | undefined;
-    customStyles?: {
-        wrapper?: StyleProp<ViewStyle> | undefined;
-        video?: StyleProp<ViewStyle> | undefined;
-        videoWrapper?: StyleProp<ViewStyle> | undefined;
-        controls?: StyleProp<ViewStyle> | undefined;
-        playControl?: StyleProp<ViewStyle> | undefined;
-        controlButton?: StyleProp<ViewStyle> | undefined;
-        controlIcon?: StyleProp<TextStyle> | undefined;
-        playIcon?: StyleProp<TextStyle> | undefined;
-        seekBar?: StyleProp<ViewStyle> | undefined;
-        seekBarFullWidth?: StyleProp<ViewStyle> | undefined;
-        seekBarProgress?: StyleProp<ViewStyle> | undefined;
-        seekBarKnob?: StyleProp<ViewStyle> | undefined;
-        seekBarKnobSeeking?: StyleProp<ViewStyle> | undefined;
-        seekBarBackground?: StyleProp<ViewStyle> | undefined;
-        thumbnail?: StyleProp<ImageStyle> | undefined;
-        playButton?: StyleProp<ViewStyle> | undefined;
-        playArrow?: StyleProp<TextStyle> | undefined;
-    } | undefined;
+    customStyles?:
+        | {
+              wrapper?: StyleProp<ViewStyle> | undefined;
+              video?: StyleProp<ViewStyle> | undefined;
+              videoWrapper?: StyleProp<ViewStyle> | undefined;
+              controls?: StyleProp<ViewStyle> | undefined;
+              playControl?: StyleProp<ViewStyle> | undefined;
+              controlButton?: StyleProp<ViewStyle> | undefined;
+              controlIcon?: StyleProp<TextStyle> | undefined;
+              playIcon?: StyleProp<TextStyle> | undefined;
+              seekBar?: StyleProp<ViewStyle> | undefined;
+              seekBarFullWidth?: StyleProp<ViewStyle> | undefined;
+              seekBarProgress?: StyleProp<ViewStyle> | undefined;
+              seekBarKnob?: StyleProp<ViewStyle> | undefined;
+              seekBarKnobSeeking?: StyleProp<ViewStyle> | undefined;
+              seekBarBackground?: StyleProp<ViewStyle> | undefined;
+              thumbnail?: StyleProp<ImageStyle> | undefined;
+              playButton?: StyleProp<ViewStyle> | undefined;
+              playArrow?: StyleProp<TextStyle> | undefined;
+          }
+        | undefined;
     onStart?: (() => any) | undefined;
     onPlayPress?: (() => any) | undefined;
     onHideControls?: (() => any) | undefined;
@@ -64,7 +76,10 @@ export interface VideoPlayerState {
     isSeeking: boolean;
 }
 
-export default class VideoPlayer extends React.Component<VideoPlayerProps, VideoPlayerState> {
+export default class VideoPlayer extends React.Component<
+    VideoPlayerProps,
+    VideoPlayerState
+> {
     constructor(props: object);
 
     private seekBarWidth: number;

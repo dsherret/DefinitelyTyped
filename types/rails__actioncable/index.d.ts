@@ -176,7 +176,10 @@ export class Subscriptions<C = Consumer> {
 
     readonly subscriptions: Array<Subscription<C>>;
 
-    create<M>(channelName: string | ChannelNameWithParams, mixin?: Mixin & M): Subscription<C> & Mixin & M;
+    create<M>(
+        channelName: string | ChannelNameWithParams,
+        mixin?: Mixin & M,
+    ): Subscription<C> & Mixin & M;
 
     private add<T extends Subscription>(subscription: T): T;
 
@@ -192,7 +195,11 @@ export class Subscriptions<C = Consumer> {
 
     private notifyAll(callbackName: string, ...args: any): Subscription[];
 
-    private notify(subscription: Subscription, callbackName: string, ...args: any): Subscription[];
+    private notify(
+        subscription: Subscription,
+        callbackName: string,
+        ...args: any
+    ): Subscription[];
 
     private subscribe(subscription: Subscription): void;
 

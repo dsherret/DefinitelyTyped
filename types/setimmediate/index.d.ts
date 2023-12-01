@@ -13,7 +13,10 @@
  * @return The ID of the macrotask, which can be used to abort
  *         the macrotask with `clearImmediate`.
  */
-declare function setImmediate<T extends unknown[]>(callback: (...args: T) => void, ...args: T): number;
+declare function setImmediate<T extends unknown[]>(
+    callback: (...args: T) => void,
+    ...args: T
+): number;
 
 /**
  * Aborts the specified macrotask before it's run.

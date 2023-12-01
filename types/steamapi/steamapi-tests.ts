@@ -2,89 +2,89 @@ import SteamAPI = require("steamapi");
 
 const api = new SteamAPI("XXXXXXXXX");
 
-api.getAppList().then(res => {
+api.getAppList().then((res) => {
     // do something with the result
 });
 
-api.getFeaturedCategories().then(res => {
+api.getFeaturedCategories().then((res) => {
     // do something with the result
 });
 
-api.getFeaturedGames().then(res => {
+api.getFeaturedGames().then((res) => {
     // do something with the result
 });
 
-api.getGameAchievements("730").then(res => {
+api.getGameAchievements("730").then((res) => {
     // do something with the result
 });
 
-api.getGameDetails("730").then(res => {
+api.getGameDetails("730").then((res) => {
     // do something with the result
 });
 
-api.getGameNews("730").then(res => {
+api.getGameNews("730").then((res) => {
     // do something with the result
 });
 
-api.getGamePlayers("730").then(res => {
+api.getGamePlayers("730").then((res) => {
     // do something with the result
 });
 
-api.getGameSchema("730").then(res => {
+api.getGameSchema("730").then((res) => {
     // do something with the result
 });
 
-api.getServers("69.69.69.69").then(res => {
+api.getServers("69.69.69.69").then((res) => {
     // do something with the result
 });
 
-api.getUserAchievements("76561197960287930", "730").then(res => {
+api.getUserAchievements("76561197960287930", "730").then((res) => {
     // do something with the result
 });
 
-api.getUserBadges("76561197960287930").then(res => {
+api.getUserBadges("76561197960287930").then((res) => {
     // do something with the result
 });
 
-api.getUserBans("76561197960287930").then(res => {
+api.getUserBans("76561197960287930").then((res) => {
     // do something with the result
     const res2 = res; // $ExpectType PlayerBans
 });
 
-api.getUserBans(["76561197960287930", "76561197960287934"]).then(res => {
+api.getUserBans(["76561197960287930", "76561197960287934"]).then((res) => {
     // do something with the result
     const res2 = res; // $ExpectType PlayerBans[]
 });
 
-api.getUserFriends("76561197960287930").then(res => {
+api.getUserFriends("76561197960287930").then((res) => {
     // do something with the result
 });
 
-api.getUserGroups("76561197960287930").then(res => {
+api.getUserGroups("76561197960287930").then((res) => {
     // do something with the result
 });
 
-api.getUserLevel("76561197960287930").then(res => {
+api.getUserLevel("76561197960287930").then((res) => {
     // do something with the result
 });
 
-api.getUserOwnedGames("76561197960287930").then(res => {
+api.getUserOwnedGames("76561197960287930").then((res) => {
     // do something with the result
 });
 
-api.getUserRecentGames("76561197960287930").then(res => {
+api.getUserRecentGames("76561197960287930").then((res) => {
     // do something with the result
 });
 
-api.getUserServers().then(res => {
+api.getUserServers().then((res) => {
     // do something with the result
 });
 
-api.getUserStats("76561197960287930", "730").then(res => {
+api.getUserStats("76561197960287930", "730").then((res) => {
     // do something with the result
 });
 
-api.getUserSummary("76561197960287930").then(res => {
+api.getUserSummary("76561197960287930").then((res) => {
     // do something with the result
     const res2 = res; // $ExpectType PlayerSummary
 
@@ -93,7 +93,7 @@ api.getUserSummary("76561197960287930").then(res => {
     res.createdAt = new Date();
 });
 
-api.getUserSummary(["76561197960287930", "76561197960287934"]).then(res => {
+api.getUserSummary(["76561197960287930", "76561197960287934"]).then((res) => {
     // do something with the result
     const res2 = res; // $ExpectType PlayerSummary[]
 });

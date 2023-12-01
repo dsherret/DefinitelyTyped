@@ -26,9 +26,18 @@ declare class ClientPool extends EventEmitter {
     constructor(options?: ClientPoolOptions);
 
     on(event: "error", listener: (err: Error) => void): this;
-    on(event: "subscribe", listener: (data: ClientPool.SubscribeData) => void): this;
-    on(event: "subscribeFail", listener: (data: ClientPool.SubscribeFailData) => void): this;
-    on(event: "publish" | "publishFail", listener: (data: ClientPool.PublishData) => void): this;
+    on(
+        event: "subscribe",
+        listener: (data: ClientPool.SubscribeData) => void,
+    ): this;
+    on(
+        event: "subscribeFail",
+        listener: (data: ClientPool.SubscribeFailData) => void,
+    ): this;
+    on(
+        event: "publish" | "publishFail",
+        listener: (data: ClientPool.PublishData) => void,
+    ): this;
 
     bindClientListeners(): void;
     unbindClientListeners(): void;

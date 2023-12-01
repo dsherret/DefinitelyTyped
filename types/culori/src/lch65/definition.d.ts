@@ -27,6 +27,7 @@ interface Lch65DefinitionMixin {
     };
 }
 
-declare const definition: Omit<typeof lch, keyof Lch65DefinitionMixin> & Lch65DefinitionMixin;
+declare const definition: Omit<typeof lch, keyof Lch65DefinitionMixin> &
+    Lch65DefinitionMixin;
 
 export default definition;

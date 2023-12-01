@@ -16,7 +16,10 @@ declare global {
         readonly fullPath: string;
         readonly filesystem: FileSystem;
 
-        getParent(successCallback?: FileSystemEntryCallback, errorCallback?: ErrorCallback): void;
+        getParent(
+            successCallback?: FileSystemEntryCallback,
+            errorCallback?: ErrorCallback,
+        ): void;
     }
 
     interface FileSystemDirectoryEntry extends FileSystemEntry {
@@ -36,11 +39,17 @@ declare global {
     }
 
     interface FileSystemDirectoryReader {
-        readEntries(successCallback: FileSystemEntriesCallback, errorCallback?: ErrorCallback): void;
+        readEntries(
+            successCallback: FileSystemEntriesCallback,
+            errorCallback?: ErrorCallback,
+        ): void;
     }
 
     interface FileSystemFileEntry extends FileSystemEntry {
-        file(successCallback: FileCallback, errorCallback?: ErrorCallback): void;
+        file(
+            successCallback: FileCallback,
+            errorCallback?: ErrorCallback,
+        ): void;
     }
 
     interface FileSystem {

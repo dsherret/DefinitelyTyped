@@ -31,7 +31,10 @@ declare namespace FeatureParser {
 declare class FeatureParser {
     constructor(language: Language<Language.Library>);
     constructor(options?: FeatureParser.Options);
-    parse(text: string, next: (specification: FeatureParser.SpecificationExport) => void): void;
+    parse(
+        text: string,
+        next: (specification: FeatureParser.SpecificationExport) => void,
+    ): void;
     parse(text: string): FeatureParser.SpecificationExport;
 }
 

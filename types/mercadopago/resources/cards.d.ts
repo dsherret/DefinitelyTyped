@@ -4,13 +4,21 @@ import { DefaultConfigurationOmitQs } from "../models/default-configuration.mode
 import { CallbackFunction } from "../shared/types";
 import { ExecOptions, MercadoPagoResponse } from "../utils/mercadopago-respose";
 
-export type CardCreateResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, CreateCardPayload>>;
+export type CardCreateResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, CreateCardPayload>
+>;
 
-export type CardUpdateResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, UpdateCardPayload>>;
+export type CardUpdateResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, UpdateCardPayload>
+>;
 
-export type CardGetResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, any>>;
+export type CardGetResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, any>
+>;
 
-export type CardDeleteResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, any>>;
+export type CardDeleteResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, any>
+>;
 
 export interface MercadoPagoCard {
     create(

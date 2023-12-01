@@ -32,7 +32,10 @@ type VoidOrUndefinedOnly = void | { [UNDEFINED_VOID_ONLY]: never };
 
 declare module "." {
     interface ThenableImpl<T> {
-        then(onFulfill: (value: T) => unknown, onReject: (error: unknown) => unknown): void | PromiseLike<unknown>;
+        then(
+            onFulfill: (value: T) => unknown,
+            onReject: (error: unknown) => unknown,
+        ): void | PromiseLike<unknown>;
     }
     interface UntrackedThenable<T> extends ThenableImpl<T> {
         status?: void;
@@ -52,13 +55,18 @@ declare module "." {
         reason: unknown;
     }
 
-    export type Thenable<T> = UntrackedThenable<T> | PendingThenable<T> | FulfilledThenable<T> | RejectedThenable<T>;
+    export type Thenable<T> =
+        | UntrackedThenable<T>
+        | PendingThenable<T>
+        | FulfilledThenable<T>
+        | RejectedThenable<T>;
 
     export type Usable<T> = Thenable<T> | Context<T>;
 
     export function use<T>(usable: Usable<T>): T;
 
-    interface ServerContextJSONArray extends ReadonlyArray<ServerContextJSONValue> {}
+    interface ServerContextJSONArray
+        extends ReadonlyArray<ServerContextJSONValue> {}
     export type ServerContextJSONValue =
         | string
         | boolean
@@ -76,14 +84,18 @@ declare module "." {
      * @version 16.8.0
      * @see https://react.dev/reference/react/useContext
      */
-    function useContext<T extends ServerContextJSONValue>(context: ServerContext<T>): T;
+    function useContext<T extends ServerContextJSONValue>(
+        context: ServerContext<T>,
+    ): T;
     export function createServerContext<T extends ServerContextJSONValue>(
         globalName: string,
         defaultValue: T,
     ): ServerContext<T>;
 
     // eslint-disable-next-line @typescript-eslint/ban-types
-    export function cache<CachedFunction extends Function>(fn: CachedFunction): CachedFunction;
+    export function cache<CachedFunction extends Function>(
+        fn: CachedFunction,
+    ): CachedFunction;
 
     export function unstable_useCacheRefresh(): () => void;
 

@@ -33,25 +33,25 @@ lz4.encode(Buffer.from(""), { highCompression: true }); // $ExpectType Buffer
 lz4.encode(Buffer.from(""), { streamChecksum: true }); // $ExpectType Buffer
 lz4.encode(Buffer.from(""), { streamSize: true }); // $ExpectType Buffer
 
-encoder.addListener("data", data => {
+encoder.addListener("data", (data) => {
     data; // $ExpectType Buffer
 });
-encoder.on("data", data => {
+encoder.on("data", (data) => {
     data; // $ExpectType Buffer
 });
-encoder.once("data", data => {
+encoder.once("data", (data) => {
     data; // $ExpectType Buffer
 });
-encoder.prependListener("data", data => {
+encoder.prependListener("data", (data) => {
     data; // $ExpectType Buffer
 });
-encoder.prependOnceListener("data", data => {
+encoder.prependOnceListener("data", (data) => {
     data; // $ExpectType Buffer
 });
-encoder.removeListener("data", data => {
+encoder.removeListener("data", (data) => {
     data; // $ExpectType Buffer
 });
-encoder.off("data", data => {
+encoder.off("data", (data) => {
     data; // $ExpectType Buffer
 });
 
@@ -62,25 +62,25 @@ lz4.createDecoderStream({ useJS: true }); // $ExpectType Decoder
 lz4.decode(Buffer.from("")); // $ExpectType Buffer
 lz4.decode(Buffer.from(""), { useJS: true }); // $ExpectType Buffer
 
-decoder.addListener("data", data => {
+decoder.addListener("data", (data) => {
     data; // $ExpectType Buffer
 });
-decoder.on("data", data => {
+decoder.on("data", (data) => {
     data; // $ExpectType Buffer
 });
-decoder.once("data", data => {
+decoder.once("data", (data) => {
     data; // $ExpectType Buffer
 });
-decoder.prependListener("data", data => {
+decoder.prependListener("data", (data) => {
     data; // $ExpectType Buffer
 });
-decoder.prependOnceListener("data", data => {
+decoder.prependOnceListener("data", (data) => {
     data; // $ExpectType Buffer
 });
-decoder.removeListener("data", data => {
+decoder.removeListener("data", (data) => {
     data; // $ExpectType Buffer
 });
-decoder.off("data", data => {
+decoder.off("data", (data) => {
     data; // $ExpectType Buffer
 });
 

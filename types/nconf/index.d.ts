@@ -6,8 +6,16 @@ export declare var sources: any[];
 
 export declare function clear(key: string, callback?: ICallbackFunction): any;
 export function get(key?: string, callback?: ICallbackFunction): any;
-export declare function merge(key: string, value: any, callback?: ICallbackFunction): any;
-export declare function set(key: string, value: any, callback?: ICallbackFunction): any;
+export declare function merge(
+    key: string,
+    value: any,
+    callback?: ICallbackFunction,
+): any;
+export declare function set(
+    key: string,
+    value: any,
+    callback?: ICallbackFunction,
+): any;
 export declare function reset(callback?: ICallbackFunction): any;
 export declare function any(keys: string[], callback?: ICallbackFunction): any;
 
@@ -33,8 +41,14 @@ export declare function create(name: string, options: IOptions): IStore;
 
 export declare function key(...values: any[]): string;
 export declare function path(key: any): any[];
-export declare function loadFiles(files: any, callback?: ICallbackFunction): void;
-export declare function loadFilesSync(files: any, callback?: ICallbackFunction): void;
+export declare function loadFiles(
+    files: any,
+    callback?: ICallbackFunction,
+): void;
+export declare function loadFilesSync(
+    files: any,
+    callback?: ICallbackFunction,
+): void;
 
 export interface IFormats {
     json: IFormat;

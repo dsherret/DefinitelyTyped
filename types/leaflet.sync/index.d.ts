@@ -5,7 +5,12 @@ declare module "leaflet" {
         noInitialSync?: boolean;
         syncCursor?: boolean;
         syncCursorMarkerOptions?: CircleMarkerOptions;
-        offsetFn?: (center: LatLngExpression, zoom: number, refMap: Map, targetMap: Map) => LatLngExpression;
+        offsetFn?: (
+            center: LatLngExpression,
+            zoom: number,
+            refMap: Map,
+            targetMap: Map,
+        ) => LatLngExpression;
     }
 
     interface Map {
@@ -18,7 +23,12 @@ declare module "leaflet" {
         offsetHelper(
             ratioRef: [number, number] | number[],
             ratioTarget: [number, number] | number[],
-        ): (center: LatLngExpression, zoom: number, refMap: Map, targetMap: Map) => LatLngExpression;
+        ): (
+            center: LatLngExpression,
+            zoom: number,
+            refMap: Map,
+            targetMap: Map,
+        ) => LatLngExpression;
     }
 
     const Sync: Sync;

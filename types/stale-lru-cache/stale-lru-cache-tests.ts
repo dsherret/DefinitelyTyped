@@ -20,14 +20,20 @@ cache.reset();
 cache.set("foo", "bar");
 
 // Get response from cache
-const revalidate = (url: string, callback: (error: any, value?: string, options?: string) => any) => {
+const revalidate = (
+    url: string,
+    callback: (error: any, value?: string, options?: string) => any,
+) => {
     request(url, (error, response, html) => {
         if (error) return callback(error);
         callback(null, html, response.headers["cache-control"]);
     });
 };
 
-declare const request: (url: string, cb: (error: any, response: any, html: string) => any) => any;
+declare const request: (
+    url: string,
+    cb: (error: any, response: any, html: string) => any,
+) => any;
 cache.wrap("http://www.google.com", revalidate, (error, html) => {
     // Do something with cached response
 });

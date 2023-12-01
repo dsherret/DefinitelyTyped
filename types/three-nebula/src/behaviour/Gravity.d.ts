@@ -9,7 +9,12 @@ export default class Gravity extends Force {
     /**
      * Constructs a Gravity behaviour instance.
      */
-    constructor(gravity?: number, life?: number, easing?: EasingFunction, isEnabled?: boolean);
+    constructor(
+        gravity?: number,
+        life?: number,
+        easing?: EasingFunction,
+        isEnabled?: boolean,
+    );
     /**
      * @description The class type.
      */

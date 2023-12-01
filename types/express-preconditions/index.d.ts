@@ -11,7 +11,12 @@ declare namespace preconditions {
     }
 
     interface ErrorCallback {
-        (statusCode: number, message: string, req: Request, res: Response): void;
+        (
+            statusCode: number,
+            message: string,
+            req: Request,
+            res: Response,
+        ): void;
     }
 
     interface Options {

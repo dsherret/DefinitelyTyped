@@ -1,6 +1,12 @@
 // Tests for videojs-vtt.js
 
-import { restore, shim, VTTCue, VTTRegion, WebVTT } from "videojs-vtt.js/index.js";
+import {
+    restore,
+    shim,
+    VTTCue,
+    VTTRegion,
+    WebVTT,
+} from "videojs-vtt.js/index.js";
 
 const json = {};
 const options = {};
@@ -26,10 +32,10 @@ parser.flush();
 
 vtt = "WEBVTT\n\nID\n00:00.000 --> 00:02.000\nText";
 parser = new WebVTT.Parser(window, WebVTT.StringDecoder());
-parser.oncue = cue => {
+parser.oncue = (cue) => {
     cues.push(cue);
 };
-parser.onregion = region => {
+parser.onregion = (region) => {
     regions.push(region);
 };
 parser.parse(vtt);

@@ -8,11 +8,18 @@ export class SoapApi {
         callback?: Callback<LeadConvertResult | LeadConvertResult[]>,
     ): Promise<LeadConvertResult | LeadConvertResult[]>;
 
-    describeTabs(callback?: Callback<DescribeTabSetResult[]>): Promise<DescribeTabSetResult[]>;
+    describeTabs(
+        callback?: Callback<DescribeTabSetResult[]>,
+    ): Promise<DescribeTabSetResult[]>;
 
-    emptyRecycleBin(ids: string[], callback?: Callback<EmptyRecycleBinResult[]>): Promise<EmptyRecycleBinResult[]>;
+    emptyRecycleBin(
+        ids: string[],
+        callback?: Callback<EmptyRecycleBinResult[]>,
+    ): Promise<EmptyRecycleBinResult[]>;
 
-    getServerTimestamp(callback?: Callback<ServerTimestampResult>): Promise<ServerTimestampResult>;
+    getServerTimestamp(
+        callback?: Callback<ServerTimestampResult>,
+    ): Promise<ServerTimestampResult>;
 
     getUserInfo(callback?: Callback<UserInfoResult>): Promise<UserInfoResult>;
 
@@ -21,11 +28,21 @@ export class SoapApi {
         callback?: Callback<MergeResult | MergeResult[]>,
     ): Promise<MergeResult | MergeResult[]>;
 
-    setPassword(userId: string, password: string, callback?: Callback<string>): Promise<ResetPasswordResult>;
+    setPassword(
+        userId: string,
+        password: string,
+        callback?: Callback<string>,
+    ): Promise<ResetPasswordResult>;
 
-    create(sObjects: Object[], callback?: Callback<SoapSaveResult>): Promise<SoapSaveResult>;
+    create(
+        sObjects: Object[],
+        callback?: Callback<SoapSaveResult>,
+    ): Promise<SoapSaveResult>;
 
-    update(sObjects: Object[], callback?: Callback<SoapSaveResult>): Promise<SoapSaveResult>;
+    update(
+        sObjects: Object[],
+        callback?: Callback<SoapSaveResult>,
+    ): Promise<SoapSaveResult>;
 
     upsert(
         externalIdFieldName: string,
@@ -33,7 +50,10 @@ export class SoapApi {
         callback?: Callback<SoapUpsertResult>,
     ): Promise<SoapUpsertResult>;
 
-    delete(ids: Object[], callback?: Callback<SoapDeleteResult>): Promise<SoapDeleteResult>;
+    delete(
+        ids: Object[],
+        callback?: Callback<SoapDeleteResult>,
+    ): Promise<SoapDeleteResult>;
 }
 
 export interface SoapDeleteResult {

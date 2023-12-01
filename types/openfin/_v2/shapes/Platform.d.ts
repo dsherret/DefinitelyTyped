@@ -62,17 +62,21 @@ export interface PlatformOptions extends ApplicationOption {
 }
 export interface Snapshot {
     windows: WindowOptions[];
-    snapshotDetails?: {
-        monitorInfo: MonitorInfo;
-        runtimeInfo: string;
-        timeStamp: string;
-    } | undefined;
+    snapshotDetails?:
+        | {
+              monitorInfo: MonitorInfo;
+              runtimeInfo: string;
+              timeStamp: string;
+          }
+        | undefined;
 }
 export interface DefaultWindowOptions extends WindowOption {
     stylesheetUrl: string;
 }
 declare type PlatformProvider = any;
-export declare type OverrideCallback<T extends PlatformProvider> = (arg: PlatformProvider) => T;
+export declare type OverrideCallback<T extends PlatformProvider> = (
+    arg: PlatformProvider,
+) => T;
 export interface InitPlatformOptions {
     overrideCallback: OverrideCallback<any>;
 }

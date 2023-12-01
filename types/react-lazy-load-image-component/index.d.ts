@@ -1,4 +1,11 @@
-import { ComponentType, CSSProperties, FunctionComponent, ImgHTMLAttributes, ReactElement, ReactNode } from "react";
+import {
+    ComponentType,
+    CSSProperties,
+    FunctionComponent,
+    ImgHTMLAttributes,
+    ReactElement,
+    ReactNode,
+} from "react";
 
 export type DelayMethod = "debounce" | "throttle";
 export type Effect = "blur" | "black-and-white" | "opacity";
@@ -32,8 +39,8 @@ export interface CommonProps {
 }
 
 export interface LazyLoadImageProps
-    extends CommonProps, Omit<ImgHTMLAttributes<HTMLImageElement>, "placeholder" | "onLoad">
-{
+    extends CommonProps,
+        Omit<ImgHTMLAttributes<HTMLImageElement>, "placeholder" | "onLoad"> {
     /** Name of the effect to use. Requires importing CSS, see README.md. */
     effect?: Effect | undefined;
     /** Image src to display while the image is not visible or loaded. */

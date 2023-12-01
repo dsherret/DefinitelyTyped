@@ -1637,7 +1637,7 @@ export namespace DynamsoftEnums {
         /** Disk File Mode Transfers. */
         TWSX_FILE = 1,
         /** Buffered Memory Mode Transfers. */
-        TWSX_MEMORY = 2, /*,*/
+        TWSX_MEMORY = 2 /*,*/,
         /**
          * added 1.91 , not supported in DWT yet
          */

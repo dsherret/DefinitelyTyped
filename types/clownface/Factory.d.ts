@@ -8,16 +8,19 @@ import {
     ClownfaceInitWithValues,
 } from "./index.js";
 
-type ExtractDataset<This> = This extends DatasetCoreFactory ? ReturnType<This["dataset"]> : never;
+type ExtractDataset<This> = This extends DatasetCoreFactory
+    ? ReturnType<This["dataset"]>
+    : never;
 
 export default class ClownfaceFactory {
     clownface<D extends DatasetCore = ExtractDataset<this>>(
         options?: ClownfaceInit<D>,
     ): AnyPointer<AnyContext, D>;
 
-    clownface<T extends Term | Term[], D extends DatasetCore = ExtractDataset<this>>(
-        options: ClownfaceInitWithTerms<T, D>,
-    ): AnyPointer<T, D>;
+    clownface<
+        T extends Term | Term[],
+        D extends DatasetCore = ExtractDataset<this>,
+    >(options: ClownfaceInitWithTerms<T, D>): AnyPointer<T, D>;
 
     clownface<D extends DatasetCore = ExtractDataset<this>>(
         options: ClownfaceInitWithValue<D>,
@@ -27,9 +30,10 @@ export default class ClownfaceFactory {
         options: ClownfaceInitWithValues<D>,
     ): AnyPointer<Literal[], D>;
 
-    clownface<T extends AnyContext, D extends DatasetCore = ExtractDataset<this>>(
-        other: AnyPointer<T, D>,
-    ): AnyPointer<T, D>;
+    clownface<
+        T extends AnyContext,
+        D extends DatasetCore = ExtractDataset<this>,
+    >(other: AnyPointer<T, D>): AnyPointer<T, D>;
     static readonly exports: ["clownface"];
 }
 

@@ -1,32 +1,36 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     interface FormatSpec {
         indent: number;
         value: string;
     }
 
-    const indentN = R.pipe(R.times(R.always(" ")), R.join(""), R.replace(/^(?!$)/gm));
+    const indentN = R.pipe(
+        R.times(R.always(" ")),
+        R.join(""),
+        R.replace(/^(?!$)/gm),
+    );
 
     // $ExpectType Curry<(args_0: FormatSpec) => any>
-    const format = R.converge(R.call, [({ indent }: FormatSpec) => indentN(indent), ({ value }: FormatSpec) => value]);
+    const format = R.converge(R.call, [
+        ({ indent }: FormatSpec) => indentN(indent),
+        ({ value }: FormatSpec) => value,
+    ]);
 
     format({ indent: 2, value: "foo\nbar\nbaz\n" }); // => '  foo\n  bar\n  baz\n'
 
     // $ExpectType Curry<(args_0: FormatSpec) => string>
-    const format2 = R.converge(
-        R.call,
-        [
-            ({ indent }: FormatSpec) => indentN(indent),
-            ({ value }: FormatSpec) => value,
-        ] as const,
-    );
+    const format2 = R.converge(R.call, [
+        ({ indent }: FormatSpec) => indentN(indent),
+        ({ value }: FormatSpec) => value,
+    ] as const);
 
     // $ExpectType string
     const indented = format2({ indent: 2, value: "foo\nbar\nbaz\n" }); // => '  foo\n  bar\n  baz\n'
-});
+};
 
-(() => {
+() => {
     function add(a: number, b: number) {
         return a + b;
     }
@@ -112,7 +116,18 @@ import * as R from "ramda";
 
     // because fifth function in branches has arity of 3 result function also must have largest arity
     // $ExpectType Curry<(a: number, b: number, c: number) => number>
-    const fn10WithAdd3 = R.converge(add10, [add, add, add, add, add3, add, add, add, add, add]);
+    const fn10WithAdd3 = R.converge(add10, [
+        add,
+        add,
+        add,
+        add,
+        add3,
+        add,
+        add,
+        add,
+        add,
+        add,
+    ]);
 
     // $ExpectType number
     fn10WithAdd3(1, 2, 3);
@@ -135,7 +150,11 @@ import * as R from "ramda";
 
     // types: `string`, `number | symbol`, and `number | bigint` - do not have common type
     // @ts-expect-error
-    const intersectionOfArgumentsIncompatible = R.converge(add3, [argsIncompatible, args2, args3]);
+    const intersectionOfArgumentsIncompatible = R.converge(add3, [
+        argsIncompatible,
+        args2,
+        args3,
+    ]);
 
     const addGeneric = <T>(a: T, b: T): T => b;
 
@@ -150,18 +169,27 @@ import * as R from "ramda";
     // need to use wrapper `(...args) => convergingFunction(...args)` if converging function
     // is generic that has overloads with different number of arguments
     // $ExpectType Curry<(a: number, b: number, c: number) => number>
-    const withGeneric1 = R.converge((...args) => R.or(...args), [add, add3] as const);
+    const withGeneric1 = R.converge((...args) => R.or(...args), [
+        add,
+        add3,
+    ] as const);
 
     // or explicitly set type for converging function arguments
     // $ExpectType Curry<(a: number, b: number) => number>
-    const withGeneric2 = R.converge((...args: [number, number]) => R.or(...args), [add, subtract]);
+    const withGeneric2 = R.converge(
+        (...args: [number, number]) => R.or(...args),
+        [add, subtract],
+    );
 
     // this was // $ExpectType Curry<(list: readonly number[] & ArrayLike<unknown>) => number>
     // I don't know why it has changed
     // $ExpectType Curry<(list: readonly number[] & { length: number; }) => number>
-    const getAverage = R.converge((...args) => R.divide(...args), [R.sum, R.length] as const);
+    const getAverage = R.converge((...args) => R.divide(...args), [
+        R.sum,
+        R.length,
+    ] as const);
     //    ^?
 
     // $ExpectType number
     const average = getAverage([1, 3, 0, 4]); // => 2
-});
+};

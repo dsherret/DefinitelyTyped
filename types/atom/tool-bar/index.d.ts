@@ -33,7 +33,15 @@ export declare interface ButtonOptions {
      *     iconset: 'ion'
      * ```
      */
-    iconset?: undefined | "ion" | "fa" | "fab" | "fi" | "icomoon" | "devicon" | "mdi";
+    iconset?:
+        | undefined
+        | "ion"
+        | "fa"
+        | "fab"
+        | "fi"
+        | "icomoon"
+        | "devicon"
+        | "mdi";
 
     /** (optional)
      * You can use `text` to:
@@ -115,16 +123,16 @@ export declare interface ButtonOptions {
         // similar to what TooltipManager.add options accepts:
         | { item?: object }
         | ({
-            title?: string | (() => string);
-            html?: boolean;
-            keyBindingCommand?: string;
-            keyBindingTarget?: HTMLElement;
-        } & {
-            class?: string;
-            placement?: TooltipPlacement | (() => TooltipPlacement);
-            trigger?: "click" | "hover" | "focus" | "manual";
-            delay?: { show: number; hide: number };
-        });
+              title?: string | (() => string);
+              html?: boolean;
+              keyBindingCommand?: string;
+              keyBindingTarget?: HTMLElement;
+          } & {
+              class?: string;
+              placement?: TooltipPlacement | (() => TooltipPlacement);
+              trigger?: "click" | "hover" | "focus" | "manual";
+              delay?: { show: number; hide: number };
+          });
 
     /** (optional) Color of the button */
     color?: string;

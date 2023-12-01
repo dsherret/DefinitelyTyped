@@ -31,11 +31,11 @@ export interface ReaderFragment {
     readonly abstractKey?: string | null | undefined;
     readonly metadata?:
         | {
-            readonly connection?: readonly ConnectionMetadata[];
-            readonly mask?: boolean;
-            readonly plural?: boolean;
-            readonly refetch?: ReaderRefetchMetadata;
-        }
+              readonly connection?: readonly ConnectionMetadata[];
+              readonly mask?: boolean;
+              readonly plural?: boolean;
+              readonly refetch?: ReaderRefetchMetadata;
+          }
         | null
         | undefined;
     readonly argumentDefinitions: readonly ReaderArgumentDefinition[];
@@ -105,7 +105,10 @@ export interface ReaderClientExtension {
     readonly selections: readonly ReaderSelection[];
 }
 
-export type ReaderField = ReaderScalarField | ReaderLinkedField | ReaderRelayResolver;
+export type ReaderField =
+    | ReaderScalarField
+    | ReaderLinkedField
+    | ReaderRelayResolver;
 
 export interface ReaderRootArgument {
     readonly kind: string; // 'RootArgument';
@@ -172,7 +175,11 @@ export interface ReaderObjectValueArgument {
     readonly fields: readonly ReaderArgument[];
 }
 
-export type ReaderNode = ReaderCondition | ReaderLinkedField | ReaderFragment | ReaderInlineFragment;
+export type ReaderNode =
+    | ReaderCondition
+    | ReaderLinkedField
+    | ReaderFragment
+    | ReaderInlineFragment;
 
 export interface ReaderScalarField {
     readonly kind: string; // 'ScalarField';

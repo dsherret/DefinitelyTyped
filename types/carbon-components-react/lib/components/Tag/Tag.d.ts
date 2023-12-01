@@ -1,5 +1,10 @@
 import * as React from "react";
-import { FCProps, FCReturn, ReactAttr, ReactDivAttr } from "../../../typings/shared";
+import {
+    FCProps,
+    FCReturn,
+    ReactAttr,
+    ReactDivAttr,
+} from "../../../typings/shared";
 
 export type TagTypeName =
     | "red"

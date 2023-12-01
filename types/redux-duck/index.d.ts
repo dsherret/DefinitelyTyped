@@ -18,7 +18,8 @@ export type ActionName = string;
 export type ActionType = string; // AppName/DuckName/ActionName or just DuckName/ActionName
 
 // Ducks define FSA actions
-export type ActionCreator<A extends FSAHack> = A extends { payload: any } ? (a: A["payload"]) => A
+export type ActionCreator<A extends FSAHack> = A extends { payload: any }
+    ? (a: A["payload"]) => A
     : () => A;
 
 // Ducks can listen for any actions (FSA or not)
@@ -28,8 +29,13 @@ export type ActionHandlers<S = any, A extends Action = AnyAction> = {
 
 export interface DuckBuilder<AppAction extends Action = AnyAction> {
     defineType: (a: ActionName) => ActionType;
-    createAction: <T extends string & AppAction["type"]>(a: T) => ActionCreator<Extract<AppAction, { type: T }>>;
-    createReducer: <S>(a: ActionHandlers<S, AppAction>, b: S) => Reducer<S, AppAction>;
+    createAction: <T extends string & AppAction["type"]>(
+        a: T,
+    ) => ActionCreator<Extract<AppAction, { type: T }>>;
+    createReducer: <S>(
+        a: ActionHandlers<S, AppAction>,
+        b: S,
+    ) => Reducer<S, AppAction>;
 }
 
 export function createDuck(a: DuckName, b?: AppName): DuckBuilder;

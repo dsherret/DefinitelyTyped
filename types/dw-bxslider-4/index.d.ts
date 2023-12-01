@@ -476,7 +476,13 @@ interface bxSliderOptions {
      *   oldIndex: element index of the previous slide (before the transition)
      *   newIndex: element index of the destination slide (after the transition)
      */
-    onSlideBefore?: (($slideElement?: JQuery, oldIndex?: number, newIndex?: number) => void) | undefined;
+    onSlideBefore?:
+        | ((
+              $slideElement?: JQuery,
+              oldIndex?: number,
+              newIndex?: number,
+          ) => void)
+        | undefined;
 
     /**
      * onSlideAfter Executes immediately after each slide transition. Function argument is the current slide element (when transition completes).
@@ -488,7 +494,13 @@ interface bxSliderOptions {
      *   oldIndex: element index of the previous slide (before the transition)
      *   newIndex: element index of the destination slide (after the transition)
      */
-    onSlideAfter?: (($slideElement?: JQuery, oldIndex?: number, newIndex?: number) => void) | undefined;
+    onSlideAfter?:
+        | ((
+              $slideElement?: JQuery,
+              oldIndex?: number,
+              newIndex?: number,
+          ) => void)
+        | undefined;
 
     /**
      * onSlideNext Executes immediately before each "Next" slide transition. Function argument is the target (next) slide element.
@@ -500,7 +512,13 @@ interface bxSliderOptions {
      *   oldIndex: element index of the previous slide (before the transition)
      *   newIndex: element index of the destination slide (after the transition)
      */
-    onSlideNext?: (($slideElement?: JQuery, oldIndex?: number, newIndex?: number) => void) | undefined;
+    onSlideNext?:
+        | ((
+              $slideElement?: JQuery,
+              oldIndex?: number,
+              newIndex?: number,
+          ) => void)
+        | undefined;
 
     /**
      * onSlidePrev Executes immediately before each "Prev" slide transition. Function argument is the target (prev) slide element.
@@ -512,7 +530,13 @@ interface bxSliderOptions {
      *   oldIndex: element index of the previous slide (before the transition)
      *   newIndex: element index of the destination slide (after the transition)
      */
-    onSlidePrev?: (($slideElement?: JQuery, oldIndex?: number, newIndex?: number) => void) | undefined;
+    onSlidePrev?:
+        | ((
+              $slideElement?: JQuery,
+              oldIndex?: number,
+              newIndex?: number,
+          ) => void)
+        | undefined;
 }
 
 interface bxSlider {

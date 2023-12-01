@@ -14,25 +14,27 @@ export interface Options {
      * The JSON data exported from Adobe After Effects using the Bodymovin plugin
      */
     animationData: any;
-    rendererSettings?: {
-        preserveAspectRatio?: string | undefined;
-        /**
-         * The canvas context
-         */
-        context?: any;
-        scaleMode?: any;
-        clearCanvas?: boolean | undefined;
-        /**
-         * Loads DOM elements when needed. Might speed up initialization for large number of elements. Only with SVG renderer.
-         */
-        progressiveLoad?: boolean | undefined;
-        /**
-         * Hides elements when opacity reaches 0. Only with SVG renderer.
-         * @default true
-         */
-        hideOnTransparent?: boolean | undefined;
-        className?: string | undefined;
-    } | undefined;
+    rendererSettings?:
+        | {
+              preserveAspectRatio?: string | undefined;
+              /**
+               * The canvas context
+               */
+              context?: any;
+              scaleMode?: any;
+              clearCanvas?: boolean | undefined;
+              /**
+               * Loads DOM elements when needed. Might speed up initialization for large number of elements. Only with SVG renderer.
+               */
+              progressiveLoad?: boolean | undefined;
+              /**
+               * Hides elements when opacity reaches 0. Only with SVG renderer.
+               * @default true
+               */
+              hideOnTransparent?: boolean | undefined;
+              className?: string | undefined;
+          }
+        | undefined;
 }
 
 export interface EventListener {

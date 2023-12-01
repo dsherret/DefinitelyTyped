@@ -1,4 +1,10 @@
-import { decode, encode, isBase64, isUrlSafeBase64, trim } from "url-safe-base64";
+import {
+    decode,
+    encode,
+    isBase64,
+    isUrlSafeBase64,
+    trim,
+} from "url-safe-base64";
 
 const safe = encode("A/B+C==");
 // > 'A-B_C..'

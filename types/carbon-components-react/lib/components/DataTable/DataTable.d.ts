@@ -1,5 +1,10 @@
 import * as React from "react";
-import { InternationalProps, ReactAttr, ReactDivAttr, ShapeOf } from "../../../typings/shared";
+import {
+    InternationalProps,
+    ReactAttr,
+    ReactDivAttr,
+    ShapeOf,
+} from "../../../typings/shared";
 import { DataTableSortState, DataTableSortStates } from "./state/sorting";
 import Table, { TableCarbonProps } from "./Table";
 import TableActionList from "./TableActionList";
@@ -39,7 +44,10 @@ export interface SortRowData {
     sortStates: DataTableSortStates;
 }
 
-export interface FilterRowsData<R extends DataTableRow = DataTableRow, H extends DataTableHeader = DataTableHeader> {
+export interface FilterRowsData<
+    R extends DataTableRow = DataTableRow,
+    H extends DataTableHeader = DataTableHeader,
+> {
     cellsById: { [cellId: string]: DataTableCell };
     headers: readonly H[];
     inputValue: string;
@@ -53,7 +61,9 @@ export interface DataTableCustomRowData<R extends DataTableRow = DataTableRow> {
     row: R;
 }
 
-export interface DataTableCustomRowProps<R extends DataTableRow = DataTableRow> {
+export interface DataTableCustomRowProps<
+    R extends DataTableRow = DataTableRow,
+> {
     ariaLabel: string;
     disabled: Exclude<R["disabled"], undefined>;
     isExpanded: Exclude<R["isExpanded"], undefined>;
@@ -62,12 +72,16 @@ export interface DataTableCustomRowProps<R extends DataTableRow = DataTableRow> 
     onExpand(event: React.MouseEvent<HTMLElement>): void;
 }
 
-export interface DataTableCustomSelectionData<R extends DataTableRow = DataTableRow> {
+export interface DataTableCustomSelectionData<
+    R extends DataTableRow = DataTableRow,
+> {
     onClick?(event: React.MouseEvent<HTMLElement>): void;
     row?: R | undefined;
 }
 
-export interface DataTableCustomSelectionProps<R extends DataTableRow = DataTableRow> {
+export interface DataTableCustomSelectionProps<
+    R extends DataTableRow = DataTableRow,
+> {
     ariaLabel?: string | undefined;
     checked: R extends never ? boolean : NonNullable<R["isSelected"]>;
     disabled: R extends never ? never : R["disabled"];
@@ -75,7 +89,9 @@ export interface DataTableCustomSelectionProps<R extends DataTableRow = DataTabl
     indeterminate: R extends never ? boolean : never;
     name: string;
     onSelect(event: React.MouseEvent<HTMLElement>): void;
-    radio?: R extends never ? never : (Extract<DataTableProps["radio"], boolean>) | undefined;
+    radio?: R extends never
+        ? never
+        : Extract<DataTableProps["radio"], boolean> | undefined;
 }
 
 // endregion Row Types
@@ -87,13 +103,17 @@ export interface DataTableHeader<K extends string = string> {
     key: K;
 }
 
-export interface DataTableCustomHeaderData<H extends DataTableHeader = DataTableHeader> {
+export interface DataTableCustomHeaderData<
+    H extends DataTableHeader = DataTableHeader,
+> {
     header: H;
     isSortable?: boolean | undefined;
     onClick?(event: React.MouseEvent<HTMLElement>): void;
 }
 
-export interface DataTableCustomHeaderProps<H extends { key: string } = DataTableHeader> {
+export interface DataTableCustomHeaderProps<
+    H extends { key: string } = DataTableHeader,
+> {
     isSortable?: boolean | undefined;
     isSortHeader: boolean;
     key: H["key"];
@@ -105,7 +125,10 @@ export interface DataTableCustomHeaderProps<H extends { key: string } = DataTabl
 
 // region Cell Types
 
-export interface DataTableCell<V = any, H extends DataTableHeader = DataTableHeader> {
+export interface DataTableCell<
+    V = any,
+    H extends DataTableHeader = DataTableHeader,
+> {
     errors?: any[] | null | undefined;
     id: string;
     info: {
@@ -143,7 +166,9 @@ export interface DataTableCustomRenderProps<
     getBatchActionProps<E extends object = ReactDivAttr>(
         data?: ShapeOf<DataTableCustomBatchActionsData, E>,
     ): ShapeOf<DataTableCustomBatchActionsProps, E>;
-    getExpandHeaderProps(props?: TableExpandHeaderProps): TableExpandHeaderProps;
+    getExpandHeaderProps(
+        props?: TableExpandHeaderProps,
+    ): TableExpandHeaderProps;
     getHeaderProps<E extends object = ReactAttr>(
         data: ShapeOf<DataTableCustomHeaderData<H>, E>,
     ): ShapeOf<DataTableCustomHeaderProps<H>, E>;
@@ -152,8 +177,13 @@ export interface DataTableCustomRenderProps<
     ): ShapeOf<DataTableCustomRowProps, E>;
     getSelectionProps<E extends object = {}>(
         data?: ShapeOf<DataTableCustomSelectionData, E>,
-    ): ShapeOf<DataTableCustomSelectionProps<R>, E> | ShapeOf<DataTableCustomSelectionProps<never>, E>;
-    getTableContainerProps(): Pick<TableContainerProps, "stickyHeader" | "useStaticWidth">;
+    ):
+        | ShapeOf<DataTableCustomSelectionProps<R>, E>
+        | ShapeOf<DataTableCustomSelectionProps<never>, E>;
+    getTableContainerProps(): Pick<
+        TableContainerProps,
+        "stickyHeader" | "useStaticWidth"
+    >;
     getTableProps(): TableCarbonProps;
     getToolbarProps(props?: TableToolbarProps): TableToolbarProps;
     headers: DataTableProps<R, H>["headers"];
@@ -179,7 +209,8 @@ export type DataTableTranslationKey =
 export interface DataTableProps<
     R extends DataTableRow = DataTableRow,
     H extends DataTableHeader = DataTableHeader,
-> extends InternationalProps<DataTableTranslationKey>, TableCarbonProps {
+> extends InternationalProps<DataTableTranslationKey>,
+        TableCarbonProps {
     filterRows?(data: FilterRowsData<R, H>): Array<R["id"]>;
     headers: H[];
     locale?: string | undefined;

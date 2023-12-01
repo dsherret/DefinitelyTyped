@@ -16,12 +16,9 @@ wrench.copyDirSyncRecursive(str, str, {
 wrench.chmodSyncRecursive(str, num);
 wrench.chownSyncRecursive(str, num, num);
 wrench.mkdirSyncRecursive(str, num);
-wrench.readdirRecursive(str, (err: Error, files: string[]) => {
-});
-wrench.rmdirRecursive(str, (err: Error) => {
-});
-wrench.copyDirRecursive(str, str, (err: Error) => {
-});
+wrench.readdirRecursive(str, (err: Error, files: string[]) => {});
+wrench.rmdirRecursive(str, (err: Error) => {});
+wrench.copyDirRecursive(str, str, (err: Error) => {});
 
 line = new wrench.LineReader(str);
 line = new wrench.LineReader(str, num);

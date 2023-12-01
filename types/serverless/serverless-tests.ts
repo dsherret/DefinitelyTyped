@@ -32,7 +32,11 @@ class CustomPlugin implements Plugin {
     hooks: Plugin.Hooks;
     variableResolvers: Plugin.VariableResolvers;
 
-    constructor(serverless: Serverless, options: Serverless.Options, logging: Plugin.Logging) {
+    constructor(
+        serverless: Serverless,
+        options: Serverless.Options,
+        logging: Plugin.Logging,
+    ) {
         this.hooks = {
             "command:start": () => {},
         };
@@ -42,7 +46,14 @@ class CustomPlugin implements Plugin {
 
         logging.log.info("logging some text");
         logging.log.info("logging with %i format %s", 2, "parameters");
-        logging.log.info("logging with lots of different arguments", 123, ["ah"], { thing: true });
+        logging.log.info(
+            "logging with lots of different arguments",
+            123,
+            ["ah"],
+            {
+                thing: true,
+            },
+        );
 
         const myProgress = logging.progress.create({
             message: "Doing extra work in custom-plugin",
@@ -123,7 +134,7 @@ provider.request(
 );
 
 // Test provider's 'getServerlessDeploymentBucketName'
-provider.getServerlessDeploymentBucketName().then(bucketName => {});
+provider.getServerlessDeploymentBucketName().then((bucketName) => {});
 
 // $ExpectType Credentials
 provider.getCredentials();
@@ -169,7 +180,8 @@ const awsServerless: Aws.Serverless = {
         stackName: "testStackName",
         apiName: "testapiName",
         websocketsApiName: "testwebsocketsApiName",
-        websocketsApiRouteSelectionExpression: "testwebsocketsApiRouteSelectionExpression",
+        websocketsApiRouteSelectionExpression:
+            "testwebsocketsApiRouteSelectionExpression",
         profile: "testprofile",
         memorySize: 1,
         ephemeralStorageSize: 1,
@@ -200,21 +212,27 @@ const awsServerless: Aws.Serverless = {
             testenvironmentkey: "testenvironmentvalue",
         },
         endpointType: "regional",
-        apiKeys: [{
-            name: "testApiKeyName",
-            value: "testApiKeyValue",
-            description: "testApiKeyDescription",
-            customerId: "testApiKeyCustomerId",
-            enabled: true,
-        }, "testApiKeys"],
-        apiGateway: {
-            apiKeys: [{
+        apiKeys: [
+            {
                 name: "testApiKeyName",
                 value: "testApiKeyValue",
                 description: "testApiKeyDescription",
                 customerId: "testApiKeyCustomerId",
                 enabled: true,
-            }, "testApiKeys"],
+            },
+            "testApiKeys",
+        ],
+        apiGateway: {
+            apiKeys: [
+                {
+                    name: "testApiKeyName",
+                    value: "testApiKeyValue",
+                    description: "testApiKeyDescription",
+                    customerId: "testApiKeyCustomerId",
+                    enabled: true,
+                },
+                "testApiKeys",
+            ],
             restApiId: "testrestApiId",
             restApiRootResourceId: "testrestApiRootResourceId",
             restApiResources: {
@@ -402,7 +420,9 @@ const awsServerless: Aws.Serverless = {
         eventBridge: {
             useCloudFormation: true,
         },
-        layers: ["arn:aws:lambda:us-east-2:451483290750:layer:NewRelicNodeJS14X:45"],
+        layers: [
+            "arn:aws:lambda:us-east-2:451483290750:layer:NewRelicNodeJS14X:45",
+        ],
     },
     package: {
         include: ["testinclude"],
@@ -474,7 +494,8 @@ const awsServerless: Aws.Serverless = {
                             arn: "testarn",
                             resultTtlInSeconds: 1,
                             identitySource: "testidentitySource",
-                            identityValidationExpression: "testidentityValidationExpression",
+                            identityValidationExpression:
+                                "testidentityValidationExpression",
                             type: "testtype",
                         },
                         request: {
@@ -528,7 +549,8 @@ const awsServerless: Aws.Serverless = {
                 {
                     websocket: {
                         route: "testroute",
-                        routeResponseSelectionExpression: "testrouteResponseSelectionExpression",
+                        routeResponseSelectionExpression:
+                            "testrouteResponseSelectionExpression",
                         authorizer: {
                             name: "testname",
                             arn: "testarn",
@@ -823,7 +845,8 @@ const awsServerless: Aws.Serverless = {
                             DomainName: "testDomainName",
                             OriginPath: "testOriginPath",
                             CustomOriginConfig: {
-                                OriginProtocolPolicy: "testOriginProtocolPolicy",
+                                OriginProtocolPolicy:
+                                    "testOriginProtocolPolicy",
                             },
                         },
                     },
@@ -943,9 +966,7 @@ const bunchOfConfigs: Aws.Serverless[] = [
     },
     {
         service: "users",
-        disabledDeprecations: [
-            "*",
-        ],
+        disabledDeprecations: ["*"],
         provider: { name: "aws" },
         functions: {},
     },

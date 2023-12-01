@@ -6,7 +6,13 @@ type Init = (factoryArg: any, ctx?: Context) => any;
 /**
  * Composer function
  */
-type Composer = ({ stamp, composables }: { stamp: stampit.Stamp; composables: Composable[] }) => any;
+type Composer = ({
+    stamp,
+    composables,
+}: {
+    stamp: stampit.Stamp;
+    composables: Composable[];
+}) => any;
 
 /** The stamp Descriptor */
 interface Descriptor {

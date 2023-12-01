@@ -31,7 +31,10 @@ declare global {
              *     viewer of the notebook to access the port. This URL is only valid for
              *     the current viewer while this notebook is open.
              */
-            function proxyPort(port: number, { cache }?: { cache?: boolean }): Promise<string>;
+            function proxyPort(
+                port: number,
+                { cache }?: { cache?: boolean },
+            ): Promise<string>;
 
             /**
              * True if this is a trusted output and can communicate with the kernel.
@@ -65,7 +68,10 @@ declare global {
                      * @return Promise which will be resolved when the kernel successfully
                      *     receives the comm message.
                      */
-                    send(data: JsonType, opts?: { buffers?: ArrayBuffer[] }): Promise<void>;
+                    send(
+                        data: JsonType,
+                        opts?: { buffers?: ArrayBuffer[] },
+                    ): Promise<void>;
                     /**
                      * Closes the comm channel and notifies the kernel that the channel
                      * is closed.
@@ -90,7 +96,11 @@ declare global {
                  * @param buffers Any binary data to be sent with the open message.
                  * @return The established comm channel.
                  */
-                function open(targetName: string, data?: JsonType, buffers?: ArrayBuffer[]): Promise<Comm>;
+                function open(
+                    targetName: string,
+                    data?: JsonType,
+                    buffers?: ArrayBuffer[],
+                ): Promise<Comm>;
 
                 /**
                  * Listen comm channels opened by the kernel.
@@ -101,7 +111,10 @@ declare global {
                  * @param targetName The name used by the kernel to open a new comm channel.
                  * @param callback Function invoked with any new comm channels.
                  */
-                function registerTarget(targetName: string, callback: (comm: Comm) => void): void;
+                function registerTarget(
+                    targetName: string,
+                    callback: (comm: Comm) => void,
+                ): void;
             }
         }
 
@@ -140,7 +153,11 @@ declare global {
              * @param height The height in pixels that the iframe height should be set to.
              * @param autoResize False if automatic resizing should be disabled.
              */
-            function setIframeHeight(height: number, autoResize?: boolean, options?: ResizeOptions): void;
+            function setIframeHeight(
+                height: number,
+                autoResize?: boolean,
+                options?: ResizeOptions,
+            ): void;
 
             /**
              * Request that the outputframe get resized to the content height.
@@ -172,7 +189,10 @@ declare global {
          * ```
          */
         interface WidgetManagerModule {
-            createWidgetManager(state: WidgetEnvironment, arguments?: unknown): WidgetManager;
+            createWidgetManager(
+                state: WidgetEnvironment,
+                arguments?: unknown,
+            ): WidgetManager;
         }
 
         /**

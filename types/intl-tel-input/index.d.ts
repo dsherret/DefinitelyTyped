@@ -6,7 +6,10 @@ export = intlTelInput;
  * initialise the plugin with optional options.
  * @param options options that can be provided during initialization.
  */
-declare function intlTelInput(node: Element, options?: intlTelInput.Options): intlTelInput.Plugin;
+declare function intlTelInput(
+    node: Element,
+    options?: intlTelInput.Options,
+): intlTelInput.Plugin;
 
 declare namespace intlTelInput {
     // TODO: remove alias at v18
@@ -155,7 +158,10 @@ declare namespace intlTelInput {
          * Default = null
          */
         customPlaceholder?:
-            | ((selectedCountryPlaceholder: string, selectedCountryData: CountryData) => string)
+            | ((
+                  selectedCountryPlaceholder: string,
+                  selectedCountryData: CountryData,
+              ) => string)
             | undefined;
 
         /**
@@ -195,7 +201,9 @@ declare namespace intlTelInput {
          * do something like iti.promise.then(callback) to know when initialisation requests like this have completed.
          * Default = null
          */
-        geoIpLookup?: ((callback: (countryCode: string) => void) => void) | undefined;
+        geoIpLookup?:
+            | ((callback: (countryCode: string) => void) => void)
+            | undefined;
 
         /**
          * Add a hidden input with the given name (or if your input name contains square brackets then it will give the hidden input the same name,
@@ -332,10 +340,21 @@ declare namespace intlTelInputUtils {
 
 declare global {
     namespace intlTelInputUtils {
-        function formatNumber(number: string, countryCode: string, format: numberFormat): string;
-        function getExampleNumber(countryCode: string, isNational: boolean, numberType: numberType): string;
+        function formatNumber(
+            number: string,
+            countryCode: string,
+            format: numberFormat,
+        ): string;
+        function getExampleNumber(
+            countryCode: string,
+            isNational: boolean,
+            numberType: numberType,
+        ): string;
         function getNumberType(number: string, countryCode: string): numberType;
-        function getValidationError(number: string, countryCode: string): string;
+        function getValidationError(
+            number: string,
+            countryCode: string,
+        ): string;
         function isValidNumber(number: string, countryCode: string): string;
 
         enum numberFormat {
@@ -376,6 +395,9 @@ declare global {
          * initialise the plugin with optional options.
          * @param options options that can be provided during initialization.
          */
-        intlTelInput(node: Element, options?: intlTelInput.Options): intlTelInput.Plugin;
+        intlTelInput(
+            node: Element,
+            options?: intlTelInput.Options,
+        ): intlTelInput.Plugin;
     }
 }

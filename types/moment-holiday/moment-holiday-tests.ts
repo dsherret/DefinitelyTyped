@@ -1,7 +1,10 @@
 import moment = require("moment");
 import "moment-holiday";
 
-let holidayResult: moment.Moment | false | { [holidayName: string]: moment.Moment };
+let holidayResult:
+    | moment.Moment
+    | false
+    | { [holidayName: string]: moment.Moment };
 holidayResult = moment().holiday([]);
 holidayResult = moment().holiday([], false);
 holidayResult = moment().holiday([], true);
@@ -125,6 +128,8 @@ holidayModifier = holidayModifier.load("string");
 holidayModifier = holidayModifier.load(["string"]);
 holidayModifier = holidayModifier.extendParser(
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    (m: moment.Moment, d: string): moment.Moment | moment.Moment[] | false | void => {
-    },
+    (
+        m: moment.Moment,
+        d: string,
+    ): moment.Moment | moment.Moment[] | false | void => {},
 );

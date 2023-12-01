@@ -217,10 +217,16 @@ export interface Client {
     switchRole(role: Role): Promise<void>;
 
     /** 监听客户端对象事件 */
-    on<K extends keyof ClientEventMap>(event: K, handler: Callback<ClientEventMap[K]>): void;
+    on<K extends keyof ClientEventMap>(
+        event: K,
+        handler: Callback<ClientEventMap[K]>,
+    ): void;
 
     /** 取消事件绑定 */
-    off<K extends keyof ClientEventMap>(event: K, handler: Callback<ClientEventMap[K]>): void;
+    off<K extends keyof ClientEventMap>(
+        event: K,
+        handler: Callback<ClientEventMap[K]>,
+    ): void;
 
     /** 取消所有事件绑定 */
     off(event: "*"): void;
@@ -333,7 +339,10 @@ export interface Stream {
      * @param elementId HTML <div> 标签ID，该方法内部自动创建的音视频标签将被添加到该容器中。
      * @param options 播放选项
      */
-    play(elementId: HTMLDivElement["id"] | HTMLDivElement, options?: PlayOptions): Promise<void>;
+    play(
+        elementId: HTMLDivElement["id"] | HTMLDivElement,
+        options?: PlayOptions,
+    ): Promise<void>;
 
     /** 停止播放音视频流,该方法还会将由 `play()` 创建的音视频标签从 HTML 页面中删除。 */
     stop(): void;
@@ -440,7 +449,10 @@ export interface Stream {
     getVideoFrame(): Nullable<string>;
 
     /** 监听Stream事件 */
-    on<K extends keyof StreamEventMap>(event: K, handler: Callback<StreamEventMap[K]>): void;
+    on<K extends keyof StreamEventMap>(
+        event: K,
+        handler: Callback<StreamEventMap[K]>,
+    ): void;
 }
 
 export interface LocalStream extends Stream {
@@ -762,12 +774,22 @@ export interface RemoteUserInfo {
  * - `RECONNECTING`: 自动重连中
  * - `CONNECTED`: 已连接
  */
-export type ConnectionState = "DISCONNECTED" | "CONNECTING" | "RECONNECTING" | "CONNECTED";
+export type ConnectionState =
+    | "DISCONNECTED"
+    | "CONNECTING"
+    | "RECONNECTING"
+    | "CONNECTED";
 
 /** 播放选项 */
 export interface PlayOptions {
     /** 视频画面显示模式，参考 [CSS object-fit 属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/object-fit) */
-    objectFit?: "contain" | "cover" | "fill" | "none" | "scale-down" | undefined;
+    objectFit?:
+        | "contain"
+        | "cover"
+        | "fill"
+        | "none"
+        | "scale-down"
+        | undefined;
     /** 是否需要 mute 声音，对于本地流通常需要 mute 声音以防止播放从麦克风采集回来的声音。 */
     muted?: boolean | undefined;
 }
@@ -783,9 +805,24 @@ export interface Profile {
     bitrate: number;
 }
 
-export type VideoProfileString = "120p" | "180p" | "240p" | "360p" | "480p" | "720p" | "1080p" | "1440p" | "4K";
+export type VideoProfileString =
+    | "120p"
+    | "180p"
+    | "240p"
+    | "360p"
+    | "480p"
+    | "720p"
+    | "1080p"
+    | "1440p"
+    | "4K";
 
-export type ScreenProfileString = "480p" | "480p_2" | "720p" | "720p_2" | "1080p" | "1080p_2";
+export type ScreenProfileString =
+    | "480p"
+    | "480p_2"
+    | "720p"
+    | "720p_2"
+    | "1080p"
+    | "1080p_2";
 
 export interface CheckResult {
     /** 检测结果 */

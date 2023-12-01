@@ -42,7 +42,7 @@ thing.matches("", ""); // $ExpectType boolean
 thing.matches(1);
 thing.matches(); // $ExpectType boolean
 
-const func: (i: number) => string = i => i.toString();
+const func: (i: number) => string = (i) => i.toString();
 Thing.type(func); // $ExpectType ((i: number) => string) & Thing
 Thing.mixin(func); // $ExpectType ((i: number) => string) & Thing
 thing.extendWith(func); // $ExpectType ((i: number) => string) & Thing

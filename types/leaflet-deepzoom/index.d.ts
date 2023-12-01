@@ -17,6 +17,9 @@ declare module "leaflet" {
     }
 
     namespace tileLayer {
-        function deepzoom(urlTemplate: string, options?: TileLayer.DeepZoomOptions): TileLayer.DeepZoom;
+        function deepzoom(
+            urlTemplate: string,
+            options?: TileLayer.DeepZoomOptions,
+        ): TileLayer.DeepZoom;
     }
 }

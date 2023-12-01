@@ -9,7 +9,10 @@ declare namespace observejs {
          * @param onChange the function that gets invoked if a change is detected
          * @param the target of observation
          */
-        open(onChange: (newValue: any, oldValue: any) => any, receiver?: any): void;
+        open(
+            onChange: (newValue: any, oldValue: any) => any,
+            receiver?: any,
+        ): void;
 
         /**
          * Report any changes now (does nothing if there are no changes to report).
@@ -38,7 +41,11 @@ declare namespace observejs {
          * @param path specifies the paht to observe. If path === '' the receiver itself gets observed.
          * @param defaultValue the defaultValue
          */
-        new(receiver: any, path: string, defaultValue?: any): PathObserver_instance;
+        new (
+            receiver: any,
+            path: string,
+            defaultValue?: any,
+        ): PathObserver_instance;
     }
 
     interface PathObserver_instance extends Observable {
@@ -80,7 +87,7 @@ declare namespace observejs {
          * Constructor
          * @param receiver the target for observation
          */
-        new(receiver: any[]): ArrayObserver_instance;
+        new (receiver: any[]): ArrayObserver_instance;
 
         /**
          * transforms a copy of an old state of an array into a copy of its current state.
@@ -113,7 +120,7 @@ declare namespace observejs {
          * Constructor
          * @param receiver the target for observation
          */
-        new(receiver: any): ObjectObserver_instance;
+        new (receiver: any): ObjectObserver_instance;
     }
 
     interface ObjectObserver_instance extends Observable {
@@ -140,7 +147,7 @@ declare namespace observejs {
         /**
          * Constructor
          */
-        new(): CompoundObserver_instance;
+        new (): CompoundObserver_instance;
     }
 
     interface CompoundObserver_instance extends Observable {
@@ -175,7 +182,7 @@ declare namespace observejs {
          * @param getValue function that proxys getting a value
          * @param setValue function that proxys setting a value
          */
-        new(
+        new (
             observer: Observable,
             getValue: (value: any) => any,
             setValue: (value: any) => any,
@@ -186,7 +193,10 @@ declare namespace observejs {
          * @param observer the observer to transform
          * @param valueFn function that gets invoked with all observed values. May return a single new value.
          */
-        new(observer: Observable, valueFn: (values: any[]) => any): ObserverTransform_instance;
+        new (
+            observer: Observable,
+            valueFn: (values: any[]) => any,
+        ): ObserverTransform_instance;
     }
 
     interface ObserverTransform_instance extends Observable {
@@ -229,4 +239,11 @@ declare var CompoundObserver: typeof observejs.CompoundObserver;
 declare var ObserverTransform: typeof observejs.ObserverTransform;
 declare var Path: observejs.Path;
 
-export { ArrayObserver, CompoundObserver, ObjectObserver, ObserverTransform, Path, PathObserver };
+export {
+    ArrayObserver,
+    CompoundObserver,
+    ObjectObserver,
+    ObserverTransform,
+    Path,
+    PathObserver,
+};

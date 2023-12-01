@@ -1,4 +1,10 @@
-import { AudioManager as AM, Behavior, Drawable, InputManager as IM, Sprite } from "athenajs";
+import {
+    AudioManager as AM,
+    Behavior,
+    Drawable,
+    InputManager as IM,
+    Sprite,
+} from "athenajs";
 import Shape from "./shape";
 
 /**
@@ -124,7 +130,10 @@ class ShapeBehavior extends Behavior {
             this.checkKeyDelay(2, timestamp, -1, 0);
         } else if (IM.isKeyDown("RIGHT")) {
             this.checkKeyDelay(3, timestamp, 1, 0);
-        } else if ((IM.isKeyDown("UP") || IM.isKeyDown("SPACE")) && (timestamp - this.lastRotation > 150)) {
+        } else if (
+            (IM.isKeyDown("UP") || IM.isKeyDown("SPACE")) &&
+            timestamp - this.lastRotation > 150
+        ) {
             this.lastRotation = timestamp;
             sprite.nextRotation();
         } else if (this.state) {

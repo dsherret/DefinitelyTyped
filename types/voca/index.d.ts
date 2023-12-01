@@ -4,7 +4,11 @@ export = v;
 export as namespace v;
 
 declare namespace v {
-    type CountPredicate = (character: string, index: number, str: string) => boolean;
+    type CountPredicate = (
+        character: string,
+        index: number,
+        str: string,
+    ) => boolean;
     type ReplacementFunction = (match?: string, ...groups: string[]) => string;
 
     interface WordWrapOptions {
@@ -46,8 +50,16 @@ declare namespace v {
         count(subject?: string): number;
         countGraphemes(subject?: string): number;
         countSubstrings(subject?: string, substring?: string): number;
-        countWhere(subject?: string, predicate?: CountPredicate, context?: any): number;
-        countWords(subject?: string, pattern?: string | RegExp, flags?: string): number;
+        countWhere(
+            subject?: string,
+            predicate?: CountPredicate,
+            context?: any,
+        ): number;
+        countWords(
+            subject?: string,
+            pattern?: string | RegExp,
+            flags?: string,
+        ): number;
 
         // Escape
         escapeHtml(subject?: string): string;
@@ -60,8 +72,16 @@ declare namespace v {
 
         // Index
         indexOf(subject?: string, search?: string, fromIndex?: number): number;
-        lastIndexOf(subject?: string, search?: string, fromIndex?: number): number;
-        search(subject?: string, pattern?: string | RegExp, fromIndex?: number): number;
+        lastIndexOf(
+            subject?: string,
+            search?: string,
+            fromIndex?: number,
+        ): number;
+        search(
+            subject?: string,
+            pattern?: string | RegExp,
+            fromIndex?: number,
+        ): number;
 
         // Manipulate
         insert(subject?: string, toInsert?: string, position?: number): string;
@@ -70,12 +90,25 @@ declare namespace v {
         padLeft(subject?: string, length?: number, pad?: string): string;
         padRight(subject?: string, length?: number, pad?: string): string;
         repeat(subject?: string, times?: number): string;
-        replace(subject?: string, pattern?: string | RegExp, replacement?: string | ReplacementFunction): string;
-        replaceAll(subject?: string, pattern?: string | RegExp, replacement?: string | ReplacementFunction): string;
+        replace(
+            subject?: string,
+            pattern?: string | RegExp,
+            replacement?: string | ReplacementFunction,
+        ): string;
+        replaceAll(
+            subject?: string,
+            pattern?: string | RegExp,
+            replacement?: string | ReplacementFunction,
+        ): string;
         reverse(subject?: string): string;
         reverseGrapheme(subject?: string): string;
         slugify(subject?: string): string;
-        splice(subject?: string, start?: number, deleteCount?: number, toAdd?: string): string;
+        splice(
+            subject?: string,
+            start?: number,
+            deleteCount?: number,
+            toAdd?: string,
+        ): string;
         tr(subject?: string, from?: string, to?: string): string;
         tr(subject?: string, from?: { [key: string]: string }): string;
         trim(subject?: string, whitespace?: string): string;
@@ -95,19 +128,39 @@ declare namespace v {
         isNumeric(subject?: string): boolean;
         isString(subject?: any): boolean;
         isUpperCase(subject?: string): boolean;
-        matches(subject?: string, pattern?: string | RegExp, flags?: string): boolean;
-        startsWith(subject?: string, start?: string, position?: number): boolean;
+        matches(
+            subject?: string,
+            pattern?: string | RegExp,
+            flags?: string,
+        ): boolean;
+        startsWith(
+            subject?: string,
+            start?: string,
+            position?: number,
+        ): boolean;
 
         // Split
         chars(subject?: string): string[];
         codePoints(subject?: string): number[];
         graphemes(subject?: string): string[];
-        split(subject?: string, separator?: string | RegExp, limit?: number): string[];
-        words(subject?: string, pattern?: string | RegExp, flag?: string): string[];
+        split(
+            subject?: string,
+            separator?: string | RegExp,
+            limit?: number,
+        ): string[];
+        words(
+            subject?: string,
+            pattern?: string | RegExp,
+            flag?: string,
+        ): string[];
 
         // Strip
         stripBom(subject?: string): string;
-        stripTags(subject?: string, allowbleTags?: string | string[], replacement?: string): string;
+        stripTags(
+            subject?: string,
+            allowbleTags?: string | string[],
+            replacement?: string,
+        ): string;
 
         // Util
         noConflict(): VocaStatic;
@@ -170,8 +223,14 @@ declare namespace v {
         padLeft(length?: number, pad?: string): Chain;
         padRight(length?: number, pad?: string): Chain;
         repeat(times?: number): Chain;
-        replace(pattern?: string | RegExp, replacement?: string | ReplacementFunction): Chain;
-        replaceAll(pattern?: string | RegExp, replacement?: string | ReplacementFunction): Chain;
+        replace(
+            pattern?: string | RegExp,
+            replacement?: string | ReplacementFunction,
+        ): Chain;
+        replaceAll(
+            pattern?: string | RegExp,
+            replacement?: string | ReplacementFunction,
+        ): Chain;
         reverse(): Chain;
         reverseGrapheme(): Chain;
         slugify(): Chain;
@@ -207,7 +266,10 @@ declare namespace v {
 
         // Strip
         stripBom(): Chain;
-        stripTags(allowbleTags?: string | string[], replacement?: string): Chain;
+        stripTags(
+            allowbleTags?: string | string[],
+            replacement?: string,
+        ): Chain;
     }
 
     interface ExplicitChain<T> {
@@ -242,8 +304,14 @@ declare namespace v {
         count(): ExplicitChain<number>;
         countGraphemes(): ExplicitChain<number>;
         countSubstrings(substring?: string): ExplicitChain<number>;
-        countWhere(predicate?: CountPredicate, context?: any): ExplicitChain<number>;
-        countWords(pattern?: string | RegExp, flags?: string): ExplicitChain<number>;
+        countWhere(
+            predicate?: CountPredicate,
+            context?: any,
+        ): ExplicitChain<number>;
+        countWords(
+            pattern?: string | RegExp,
+            flags?: string,
+        ): ExplicitChain<number>;
 
         // Escape
         escapeHtml(): ExplicitChain<string>;
@@ -257,7 +325,10 @@ declare namespace v {
         // Index
         indexOf(search?: string, fromIndex?: number): ExplicitChain<number>;
         lastIndexOf(search?: string, fromIndex?: number): ExplicitChain<number>;
-        search(pattern?: string | RegExp, fromIndex?: number): ExplicitChain<number>;
+        search(
+            pattern?: string | RegExp,
+            fromIndex?: number,
+        ): ExplicitChain<number>;
 
         // Multipulate
         insert(toInsert?: string, position?: number): ExplicitChain<string>;
@@ -266,12 +337,22 @@ declare namespace v {
         padLeft(length?: number, pad?: string): ExplicitChain<string>;
         padRight(length?: number, pad?: string): ExplicitChain<string>;
         repeat(times?: number): ExplicitChain<string>;
-        replace(pattern?: string | RegExp, replacement?: string | ReplacementFunction): ExplicitChain<string>;
-        replaceAll(pattern?: string | RegExp, replacement?: string | ReplacementFunction): ExplicitChain<string>;
+        replace(
+            pattern?: string | RegExp,
+            replacement?: string | ReplacementFunction,
+        ): ExplicitChain<string>;
+        replaceAll(
+            pattern?: string | RegExp,
+            replacement?: string | ReplacementFunction,
+        ): ExplicitChain<string>;
         reverse(): ExplicitChain<string>;
         reverseGrapheme(): ExplicitChain<string>;
         slugify(): ExplicitChain<string>;
-        splice(start?: number, deleteCount?: number, toAdd?: string): ExplicitChain<string>;
+        splice(
+            start?: number,
+            deleteCount?: number,
+            toAdd?: string,
+        ): ExplicitChain<string>;
         tr(from?: string, to?: string): ExplicitChain<string>;
         tr(from?: { [key: string]: string }): ExplicitChain<string>;
         trim(whitespace?: string): ExplicitChain<string>;
@@ -291,18 +372,30 @@ declare namespace v {
         isNumeric(): ExplicitChain<boolean>;
         isString(): ExplicitChain<boolean>;
         isUpperCase(): ExplicitChain<boolean>;
-        matches(pattern?: string | RegExp, flags?: string): ExplicitChain<boolean>;
+        matches(
+            pattern?: string | RegExp,
+            flags?: string,
+        ): ExplicitChain<boolean>;
         startsWith(start?: string, position?: number): ExplicitChain<boolean>;
 
         // Split
         chars(): ExplicitChain<string[]>;
         codePoints(): ExplicitChain<number[]>;
         graphemes(): ExplicitChain<string[]>;
-        split(separator?: string | RegExp, limit?: number): ExplicitChain<string[]>;
-        words(pattern?: string | RegExp, flag?: string): ExplicitChain<string[]>;
+        split(
+            separator?: string | RegExp,
+            limit?: number,
+        ): ExplicitChain<string[]>;
+        words(
+            pattern?: string | RegExp,
+            flag?: string,
+        ): ExplicitChain<string[]>;
 
         // Strip
         stripBom(): ExplicitChain<string>;
-        stripTags(allowbleTags?: string | string[], replacement?: string): ExplicitChain<string>;
+        stripTags(
+            allowbleTags?: string | string[],
+            replacement?: string,
+        ): ExplicitChain<string>;
     }
 }

@@ -14,9 +14,9 @@ export type KeyframesObject = KeyframesPercentageObject & {
 // Unrecognized properties are assumed to be media queries
 // or pseudo selectors w/ nested style objects.
 // See: https://github.com/styletron/styletron-standard
-export type StyleObject =
-    & Properties
-    & { [key in string]: Properties[keyof Properties] | StyleObject };
+export type StyleObject = Properties & {
+    [key in string]: Properties[keyof Properties] | StyleObject;
+};
 
 export interface StandardEngine {
     renderStyle(style: StyleObject): string;

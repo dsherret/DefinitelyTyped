@@ -6,12 +6,18 @@ export type KeyType<TData = unknown> = Readonly<{
     " $fragmentSpreads": FragmentType;
 }>;
 
-export type KeyTypeData<TKey extends KeyType<TData>, TData = unknown> = Required<TKey>[" $data"];
+export type KeyTypeData<
+    TKey extends KeyType<TData>,
+    TData = unknown,
+> = Required<TKey>[" $data"];
 
-export type ArrayKeyType<TData = unknown> = ReadonlyArray<KeyType<readonly TData[]> | null>;
-export type ArrayKeyTypeData<TKey extends ArrayKeyType<TData>, TData = unknown> = KeyTypeData<
-    NonNullable<TKey[number]>
->;
+export type ArrayKeyType<TData = unknown> = ReadonlyArray<KeyType<
+    readonly TData[]
+> | null>;
+export type ArrayKeyTypeData<
+    TKey extends ArrayKeyType<TData>,
+    TData = unknown,
+> = KeyTypeData<NonNullable<TKey[number]>>;
 
 export interface ResolverContext {
     getDataForResolverFragment: (
@@ -25,7 +31,10 @@ export interface ResolverContext {
 
 export const RESOLVER_FRAGMENT_MISSING_DATA_SENTINEL: unknown;
 
-export function withResolverContext<T>(context: ResolverContext, cb: () => T): T;
+export function withResolverContext<T>(
+    context: ResolverContext,
+    cb: () => T,
+): T;
 
 export function readFragment<TKey extends KeyType>(
     fragmentInput: GraphQLTaggedNode,

@@ -1,4 +1,8 @@
-import { TrustedTypeConfig, trustedTypes as importedTrustedTypes, TrustedTypesEnforcer } from "trusted-types";
+import {
+    TrustedTypeConfig,
+    trustedTypes as importedTrustedTypes,
+    TrustedTypesEnforcer,
+} from "trusted-types";
 
 // $ExpectType InternalTrustedTypePolicyFactory
 importedTrustedTypes;
@@ -68,7 +72,10 @@ genericPolicy.createScript("", true, {});
 genericPolicy.createScriptURL("", true, {});
 
 const genericOptions: TrustedTypePolicyOptions = {};
-const genericPolicy2 = importedTrustedTypes.createPolicy("generic", genericOptions);
+const genericPolicy2 = importedTrustedTypes.createPolicy(
+    "generic",
+    genericOptions,
+);
 
 // $ExpectType TrustedHTML
 genericPolicy2.createHTML("", true, {});
@@ -77,11 +84,12 @@ genericPolicy2.createScript("", true, {});
 // $ExpectType TrustedScriptURL
 genericPolicy2.createScriptURL("", true, {});
 
-const castedAsGenericPolicy: TrustedTypePolicy = importedTrustedTypes.createPolicy("castedAsGeneric", {
-    createHTML: (val: string, option1: number, option2: boolean) => val,
-    createScriptURL: (val: string) => val,
-    createScript: (val: string) => val,
-});
+const castedAsGenericPolicy: TrustedTypePolicy =
+    importedTrustedTypes.createPolicy("castedAsGeneric", {
+        createHTML: (val: string, option1: number, option2: boolean) => val,
+        createScriptURL: (val: string) => val,
+        createScript: (val: string) => val,
+    });
 
 // $ExpectType TrustedHTML
 castedAsGenericPolicy.createHTML("", true, {});
@@ -111,6 +119,13 @@ const config = new TrustedTypeConfig(false, false, ["foo"], false);
 // $ExpectType TrustedTypesEnforcer
 new TrustedTypesEnforcer(config);
 
-const config2 = new TrustedTypeConfig(false, false, ["foo"], false, null, window);
+const config2 = new TrustedTypeConfig(
+    false,
+    false,
+    ["foo"],
+    false,
+    null,
+    window,
+);
 // $ExpectType TrustedTypesEnforcer
 new TrustedTypesEnforcer(config);

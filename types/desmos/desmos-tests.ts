@@ -73,7 +73,9 @@ calculator.asyncScreenshot(setImageSrc);
 
 // Preserve the aspect ratio if the axes are square, otherwise show the exact region
 const opts = {
-    mode: calculator.isProjectionUniform() ? "contain" as const : "stretch" as const,
+    mode: calculator.isProjectionUniform()
+        ? ("contain" as const)
+        : ("stretch" as const),
     width: 500,
     height: 300,
     mathBounds: { left: -5, right: 5, bottom: -20, top: 0 },
@@ -239,17 +241,19 @@ calculator.updateSettings({ language: "fr" });
 
 // All features enabled
 // $ExpectType boolean
-Desmos.enabledFeatures.GraphingCalculator
-    && Desmos.enabledFeatures.FourFunctionCalculator
-    && Desmos.enabledFeatures.ScientificCalculator;
+Desmos.enabledFeatures.GraphingCalculator &&
+    Desmos.enabledFeatures.FourFunctionCalculator &&
+    Desmos.enabledFeatures.ScientificCalculator;
 
 // Only graphing calculator enabled
 // $ExpectType boolean
-Desmos.enabledFeatures.GraphingCalculator
-    && !Desmos.enabledFeatures.FourFunctionCalculator
-    && !Desmos.enabledFeatures.ScientificCalculator;
+Desmos.enabledFeatures.GraphingCalculator &&
+    !Desmos.enabledFeatures.FourFunctionCalculator &&
+    !Desmos.enabledFeatures.ScientificCalculator;
 
-const elt1 = document.getElementById("four-function-calculator") as HTMLDivElement;
+const elt1 = document.getElementById(
+    "four-function-calculator",
+) as HTMLDivElement;
 const calculator1 = Desmos.FourFunctionCalculator(elt1);
 
 const elt2 = document.getElementById("scientific-calculator") as HTMLDivElement;

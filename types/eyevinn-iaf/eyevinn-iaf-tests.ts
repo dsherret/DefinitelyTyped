@@ -7,14 +7,24 @@ class FileUploader implements IafUploadModule {
     progressDelegate: (result: any) => any;
     fileUploadedDelegate: (result: any, error?: any) => any;
 
-    onFileAdd(filePath: string, readStream: Readable, contentType?: string): void {}
+    onFileAdd(
+        filePath: string,
+        readStream: Readable,
+        contentType?: string,
+    ): void {}
 }
 
 class FileWatcher implements IafFileWatchModule {
     fileInput: string;
     logger: Logger;
 
-    onAdd(callback: (filePath: string, readStream: Readable, contentType?: string) => any): void {}
+    onAdd(
+        callback: (
+            filePath: string,
+            readStream: Readable,
+            contentType?: string,
+        ) => any,
+    ): void {}
 }
 
 const fileWatchModule = new FileWatcher();

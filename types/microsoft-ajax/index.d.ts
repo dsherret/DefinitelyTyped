@@ -66,7 +66,11 @@ interface ArrayConstructor {
     /**
      * Performs a specified action on each element of an Array object.
      */
-    forEach<T>(array: T[], method: (element: T, index: number, array: T[]) => void, instance: any): void;
+    forEach<T>(
+        array: T[],
+        method: (element: T, index: number, array: T[]) => void,
+        instance: any,
+    ): void;
     /**
      * Searches for the specified element of an Array object and returns its index.
      */
@@ -186,7 +190,11 @@ interface FunctionConstructor {
      * Validates the parameters to a method are as expected.
      * @see {@link http://msdn.microsoft.com/en-us/library/dd393712(v=vs.100).aspx }
      */
-    validateParameters(parameters: any, expectedParameters: Object[], validateParameterCount?: boolean): any;
+    validateParameters(
+        parameters: any,
+        expectedParameters: Object[],
+        validateParameterCount?: boolean,
+    ): any;
 
     // #endregion
 }
@@ -218,11 +226,20 @@ interface ErrorConstructor {
     /**
      * Creates an Error object that represents the Sys.ArgumentOutOfRangeException exception.
      */
-    argumentOutOfRange(paramName?: string, actualValue?: any, message?: string): Error;
+    argumentOutOfRange(
+        paramName?: string,
+        actualValue?: any,
+        message?: string,
+    ): Error;
     /**
      * Creates an Error object that represents the Sys.ArgumentTypeException exception.
      */
-    argumentType(paramName?: string, actualType?: any, expectedType?: any, message?: string): Error;
+    argumentType(
+        paramName?: string,
+        actualType?: any,
+        expectedType?: any,
+        message?: string,
+    ): Error;
     /**
      * Creates an Error object that represents the Sys.ArgumentUndefinedException exception.
      */
@@ -463,7 +480,11 @@ declare class Type {
      *           (Optional) An unbounded array of interface type definitions that the type implements.
      * @return The registered type.
      */
-    registerClass(typeName: string, baseType?: any, interfaceTypes?: any[]): any;
+    registerClass(
+        typeName: string,
+        baseType?: any,
+        interfaceTypes?: any[],
+    ): any;
     /**
      * Registers an enumeration.
      * @param name
@@ -599,7 +620,11 @@ declare function $get(id: string, element?: HTMLElement): HTMLElement;
  * @param eventName The name of the DOM event.
  * @param handler The event handler to remove.
  */
-declare function $removeHandler(element: HTMLElement, eventName: string, handler: (e: Sys.UI.DomEvent) => void): void;
+declare function $removeHandler(
+    element: HTMLElement,
+    eventName: string,
+    handler: (e: Sys.UI.DomEvent) => void,
+): void;
 
 // #endregion
 
@@ -623,7 +648,7 @@ declare namespace Sys {
     interface Application extends Component, IContainer {
         // #region Constructors
 
-        new(): void;
+        new (): void;
 
         // #endregion
 
@@ -632,27 +657,45 @@ declare namespace Sys {
         /**
          * Raised after all scripts have been loaded but before objects are created.
          */
-        add_init(handler: (sender: Application, eventArgs: EventArgs) => void): void;
+        add_init(
+            handler: (sender: Application, eventArgs: EventArgs) => void,
+        ): void;
         /**
          * Raised after all scripts have been loaded but before objects are created.
          */
-        remove_init(handler: (sender: Application, eventArgs: EventArgs) => void): void;
+        remove_init(
+            handler: (sender: Application, eventArgs: EventArgs) => void,
+        ): void;
         /**
          * Raised after all scripts have been loaded and after the objects in the application have been created and initialized.
          */
-        add_load(handler: (sender: Application, eventArgs: ApplicationLoadEventArgs) => void): void;
+        add_load(
+            handler: (
+                sender: Application,
+                eventArgs: ApplicationLoadEventArgs,
+            ) => void,
+        ): void;
         /**
          * Raised after all scripts have been loaded and after the objects in the application have been created and initialized.
          */
-        remove_load(handler: (sender: Application, eventArgs: ApplicationLoadEventArgs) => void): void;
+        remove_load(
+            handler: (
+                sender: Application,
+                eventArgs: ApplicationLoadEventArgs,
+            ) => void,
+        ): void;
         /**
          * Occurs when the user clicks the browser's Back or Forward button.
          */
-        add_navigate(handler: (sender: Application, eventArgs: HistoryEventArgs) => void): void;
+        add_navigate(
+            handler: (sender: Application, eventArgs: HistoryEventArgs) => void,
+        ): void;
         /**
          * Occurs when the user clicks the browser's Back or Forward button.
          */
-        remove_navigate(handler: (sender: Application, eventArgs: HistoryEventArgs) => void): void;
+        remove_navigate(
+            handler: (sender: Application, eventArgs: HistoryEventArgs) => void,
+        ): void;
 
         /**
          * Raised before all objects in the client application are disposed, typically when the DOM window.unload event is raised.
@@ -1034,7 +1077,11 @@ declare namespace Sys {
          * @param displayCaller
          *      (Optional) true to indicate that the name of the function that is calling assert should be displayed in the message. The default is false.
          */
-        static assert(condition: boolean, message?: string, displayCaller?: boolean): void;
+        static assert(
+            condition: boolean,
+            message?: string,
+            displayCaller?: boolean,
+        ): void;
         /**
          * Clears all trace messages from the trace console.
          */
@@ -1152,7 +1199,11 @@ declare namespace Sys {
          * @param eventName A string that contains the event name.
          * @param handler The added function.
          */
-        static addEventHandler(target: any, eventName: string, handler: Function): void;
+        static addEventHandler(
+            target: any,
+            eventName: string,
+            handler: Function,
+        ): void;
         /**
          * Adds a propertyChanged event handler to the target.
          * @param target The object to observe.
@@ -1199,14 +1250,21 @@ declare namespace Sys {
          * @param target The collection to which an event is raised.
          * @param changes A Sys.CollectionChange object that contains the list of changes that were performed on the collection since the last event.
          */
-        static raiseCollectionChanged(target: any[], changes: Sys.CollectionChange): void;
+        static raiseCollectionChanged(
+            target: any[],
+            changes: Sys.CollectionChange,
+        ): void;
         /**
          * Raises an observable event on the target.
          * @param target The target object.
          * @param eventName A string that contains the event name.
          * @param eventArgs A Sys.EventArgs object used to pass event argument information.
          */
-        static raiseEvent(target: any, eventName: string, eventArgs: Sys.EventArgs): void;
+        static raiseEvent(
+            target: any,
+            eventName: string,
+            eventArgs: Sys.EventArgs,
+        ): void;
         /**
          * Raises a propertyChanged notification event.
          * @param target The object to which an event is raised.
@@ -1696,7 +1754,11 @@ declare namespace Sys {
     class CommandEventArgs extends EventArgs {
         // #region Constructors
 
-        constructor(commandName: string, commandArgument: any, commandSource: any);
+        constructor(
+            commandName: string,
+            commandArgument: any,
+            commandSource: any,
+        );
 
         // #endregion
 
@@ -2006,13 +2068,17 @@ declare namespace Sys {
              * Registers a handler for the completed request event of the Web request.
              * @see {@link http://msdn.microsoft.com/en-us/library/bb310841(v=vs.100).aspx}
              */
-            add_completed(handler: (reference: any, eventArgs: Sys.EventArgs) => void): void;
+            add_completed(
+                handler: (reference: any, eventArgs: Sys.EventArgs) => void,
+            ): void;
 
             /**
              * Removes the event handler added by the add_completed method.
              * @see {@link http://msdn.microsoft.com/en-us/library/bb397454(v=vs.100).aspx}
              */
-            remove_completed(handler: (reference: any, eventArgs: Sys.EventArgs) => void): void;
+            remove_completed(
+                handler: (reference: any, eventArgs: Sys.EventArgs) => void,
+            ): void;
 
             /**
              * Gets the resolved URL of the Sys.Net.WebRequest instance.
@@ -2165,14 +2231,22 @@ declare namespace Sys {
              * @param handler
              *      The function registered to handle the completed request event.
              */
-            add_completedRequest(handler: (sender: WebRequestExecutor, eventArgs: EventArgs) => void): void;
+            add_completedRequest(
+                handler: (
+                    sender: WebRequestExecutor,
+                    eventArgs: EventArgs,
+                ) => void,
+            ): void;
             /**
              * Registers a handler for processing the invoking request event of the WebRequestManager.
              * @param handler
              *      The function registered to handle the invoking request event.
              */
             add_invokingRequest(
-                handler: (sender: WebRequestExecutor, networkRequestEventArgs: NetworkRequestEventArgs) => void,
+                handler: (
+                    sender: WebRequestExecutor,
+                    networkRequestEventArgs: NetworkRequestEventArgs,
+                ) => void,
             ): void;
             /**
              * Sends Web requests to the default network executor.
@@ -2187,7 +2261,12 @@ declare namespace Sys {
              * @param handler
              *      The function that handles the completed request event.
              */
-            remove_completedRequest(handler: (sender: WebRequestExecutor, eventArgs: EventArgs) => void): void;
+            remove_completedRequest(
+                handler: (
+                    sender: WebRequestExecutor,
+                    eventArgs: EventArgs,
+                ) => void,
+            ): void;
             /**
              * Removes the event handler set by the add_invokingRequest method.
              * Use the remove_invokingRequest method to remove the event handler you set using the add_invokingRequest method.
@@ -2195,7 +2274,10 @@ declare namespace Sys {
              *          The function that handles the invoking request event.
              */
             remove_invokingRequest(
-                handler: (sender: WebRequestExecutor, networkRequestEventArgs: NetworkRequestEventArgs) => void,
+                handler: (
+                    sender: WebRequestExecutor,
+                    networkRequestEventArgs: NetworkRequestEventArgs,
+                ) => void,
             ): void;
 
             // #endregion
@@ -2480,8 +2562,7 @@ declare namespace Sys {
          * Provides the client proxy class for the role service.
          * @see {@link http://msdn.microsoft.com/en-us/library/bb513880(v=vs.100).aspx}
          */
-        class RoleService {
-        }
+        class RoleService {}
 
         /**
          * Provides the client proxy class for the profile service.
@@ -2641,12 +2722,18 @@ declare namespace Sys {
              * Gets a Sys.UI.Behavior instance with the specified name property from the specified HTML Document Object Model (DOM) element. This member a static member and can be invoked without creating an instance of the class.
              * @return The specified Behavior object, if found; otherwise, null.
              */
-            static getBehaviorByName(element: HTMLElement, name: string): Behavior;
+            static getBehaviorByName(
+                element: HTMLElement,
+                name: string,
+            ): Behavior;
             /**
              * Gets an array of Sys.UI.Behavior objects that are of the specified type from the specified HTML Document Object Model (DOM) element. This method is static and can be invoked without creating an instance of the class.
              * @return An array of all Behavior objects of the specified type that are associated with the specified DOM element, if found; otherwise, an empty array.
              */
-            static getBehaviorsByType(element: HTMLElement, type: Sys.UI.Behavior): Behavior[];
+            static getBehaviorsByType(
+                element: HTMLElement,
+                type: Sys.UI.Behavior,
+            ): Behavior[];
             /**
              * Gets the Sys.UI.Behavior objects that are associated with the specified HTML Document Object Model (DOM) element. This member is static and can be invoked without creating an instance of the class.
              * @param element
@@ -2881,7 +2968,12 @@ declare namespace Sys {
              * @return
              *      An object of the JavaScript type Object that contains the x-coordinate and y-coordinate of the upper-left corner, the width, and the height of the element in pixels.
              */
-            getBounds(element: HTMLElement): { x: number; y: number; width: number; height: number };
+            getBounds(element: HTMLElement): {
+                x: number;
+                y: number;
+                width: number;
+                height: number;
+            };
             /**
              * @param id
              *      The ID of the element to find.
@@ -2952,7 +3044,10 @@ declare namespace Sys {
              * @return
              *      A DOM element.
              */
-            resolveElement(elementOrElementId: string | HTMLElement, containerElement?: HTMLElement): HTMLElement;
+            resolveElement(
+                elementOrElementId: string | HTMLElement,
+                containerElement?: HTMLElement,
+            ): HTMLElement;
             /**
              * Sets the position of a DOM element. This member is static and can be invoked without creating an instance of the class.
              * The left and top style attributes (upper-left corner) of an element specify the relative position of an element.
@@ -2974,7 +3069,10 @@ declare namespace Sys {
              * @param value
              *          A Sys.UI.VisibilityMode enumeration value.
              */
-            setVisibilityMode(element: HTMLElement, value: Sys.UI.VisibilityMode): void;
+            setVisibilityMode(
+                element: HTMLElement,
+                value: Sys.UI.VisibilityMode,
+            ): void;
             /**
              * Sets a DOM element to be visible or hidden. This member is static and can be invoked without creating an instance of the class.
              *
@@ -3088,7 +3186,11 @@ declare namespace Sys {
              * @param handler
              *          The event handler to remove.
              */
-            static removeHandler(element: HTMLElement, eventName: string, handler: (e: DomEvent) => void): void;
+            static removeHandler(
+                element: HTMLElement,
+                eventName: string,
+                handler: (e: DomEvent) => void,
+            ): void;
             /**
              * Prevents the default DOM event action from happening.
              * Use the preventDefault method to prevent the default event action for the browser from occurring.
@@ -3339,7 +3441,11 @@ declare namespace Sys {
              * @param updatePanelsToUpdate
              *           (Optional) A list of UniqueIDs for UpdatePanel controls that are requested to update their rendering by the client. Server-side processing may update additional UpdatePanels.
              */
-            constructor(request: Sys.Net.WebRequest, postBackElement: any, updatePanelsToUpdate: string[]);
+            constructor(
+                request: Sys.Net.WebRequest,
+                postBackElement: any,
+                updatePanelsToUpdate: string[],
+            );
 
             // #endregion
 
@@ -3381,7 +3487,11 @@ declare namespace Sys {
              * @param response
              *           An object of type Sys.Net.WebRequestExecutor.
              */
-            constructor(error: Error, dataItems: any, response: Sys.Net.WebRequestExecutor);
+            constructor(
+                error: Error,
+                dataItems: any,
+                response: Sys.Net.WebRequestExecutor,
+            );
 
             // #endregion
 
@@ -3437,7 +3547,11 @@ declare namespace Sys {
              * @param updatePanelsToUpdate
              *           (Optional) A list of UniqueID values for UpdatePanel controls that are being requested to update their rendering by the client. Server-side processing might update additional UpdatePanel controls.
              */
-            constructor(request: Sys.Net.WebRequest, postBackElement: any, updatePanelsToUpdate: string[]);
+            constructor(
+                request: Sys.Net.WebRequest,
+                postBackElement: any,
+                updatePanelsToUpdate: string[],
+            );
 
             // #endregion
 
@@ -3572,7 +3686,12 @@ declare namespace Sys {
              * @param beginRequestHandler
              *               The name of the handler method that will be called.
              */
-            add_beginRequest(beginRequestHandler: (sender: any, args: BeginRequestEventArgs) => void): void;
+            add_beginRequest(
+                beginRequestHandler: (
+                    sender: any,
+                    args: BeginRequestEventArgs,
+                ) => void,
+            ): void;
             /**
              * Raised before the processing of an asynchronous postback starts and the postback request is sent to the server.
              *  @param beginRequestHandler
@@ -3584,20 +3703,33 @@ declare namespace Sys {
              * @param endRequestHandler
              *               The name of the handler method that will be called.
              */
-            add_endRequest(endRequestHandler: (sender: any, args: Sys.WebForms.EndRequestEventArgs) => void): void;
+            add_endRequest(
+                endRequestHandler: (
+                    sender: any,
+                    args: Sys.WebForms.EndRequestEventArgs,
+                ) => void,
+            ): void;
             /**
              * Raised after an asynchronous postback is finished and control has been returned to the browser.
              * @param endRequestHandler
              *               The name of the handler method that will be removed.
              */
-            remove_endRequest(endRequestHandler: (sender: any, args: Sys.WebForms.EndRequestEventArgs) => void): void;
+            remove_endRequest(
+                endRequestHandler: (
+                    sender: any,
+                    args: Sys.WebForms.EndRequestEventArgs,
+                ) => void,
+            ): void;
             /**
              * Raised during the initialization of the asynchronous postback.
              * @param initializeRequestHandler
              *               The name of the handler method that will be called.
              */
             add_initializeRequest(
-                initializeRequestHandler: (sender: any, args: InitializeRequestEventArgs) => void,
+                initializeRequestHandler: (
+                    sender: any,
+                    args: InitializeRequestEventArgs,
+                ) => void,
             ): void;
             /**
              * Raised during the initialization of the asynchronous postback.
@@ -3605,32 +3737,55 @@ declare namespace Sys {
              *               The name of the handler method that will be called.
              */
             remove_initializeRequest(
-                initializeRequestHandler: (sender: any, args: InitializeRequestEventArgs) => void,
+                initializeRequestHandler: (
+                    sender: any,
+                    args: InitializeRequestEventArgs,
+                ) => void,
             ): void;
             /**
              * Raised after all content on the page is refreshed as a result of either a synchronous or an asynchronous postback.
              * @param pageLoadedHandler
              *               The name of the handler method that will be called.
              */
-            add_pageLoaded(pageLoadedHandler: (sender: any, args: PageLoadedEventArgs) => void): void;
+            add_pageLoaded(
+                pageLoadedHandler: (
+                    sender: any,
+                    args: PageLoadedEventArgs,
+                ) => void,
+            ): void;
             /**
              * Raised after all content on the page is refreshed as a result of either a synchronous or an asynchronous postback.
              * @param pageLoadedHandler
              *               The name of the handler method that will be called.
              */
-            remove_pageLoaded(pageLoadedHandler: (sender: any, args: PageLoadedEventArgs) => void): void;
+            remove_pageLoaded(
+                pageLoadedHandler: (
+                    sender: any,
+                    args: PageLoadedEventArgs,
+                ) => void,
+            ): void;
             /**
              * Raised after the response from the server to an asynchronous postback is received but before any content on the page is updated.
              * @param pageLoadedHandler
              *               The name of the handler method that will be called.
              */
-            add_pageLoading(pageLoadingHandler: (sender: any, args: PageLoadingEventArgs) => void): void;
+            add_pageLoading(
+                pageLoadingHandler: (
+                    sender: any,
+                    args: PageLoadingEventArgs,
+                ) => void,
+            ): void;
             /**
              * Raised after the response from the server to an asynchronous postback is received but before any content on the page is updated.
              * @param pageLoadedHandler
              *               The name of the handler method that will be called.
              */
-            remove_pageLoading(pageLoadingHandler: (sender: any, args: PageLoadingEventArgs) => void): void;
+            remove_pageLoading(
+                pageLoadingHandler: (
+                    sender: any,
+                    args: PageLoadingEventArgs,
+                ) => void,
+            ): void;
 
             // #endregion
 

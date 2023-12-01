@@ -8,10 +8,12 @@ interface Profile {
         code: string;
         phoneNumber: string;
     };
-    addresses: [{
-        street: string;
-        city: string;
-    }];
+    addresses: [
+        {
+            street: string;
+            city: string;
+        },
+    ];
     jsonColumn: hasura.ScalarJSON<{
         foo: string;
     }>;
@@ -21,14 +23,18 @@ interface Profile {
 }
 
 const profileInput: hasura.HasuraInsertInput<Profile> = {
-    objects: [{
-        name: "foo",
-        addresses: {
-            data: [{
-                street: "N/A",
-            }],
+    objects: [
+        {
+            name: "foo",
+            addresses: {
+                data: [
+                    {
+                        street: "N/A",
+                    },
+                ],
+            },
         },
-    }],
+    ],
     on_conflict: {
         constraint: "profile_pkey",
         update_columns: ["id"],
@@ -39,13 +45,15 @@ const profileWhere: hasura.WhereBoolExp<Profile> = {
     name: {
         _eq: "abc",
     },
-    _and: [{
-        quantity: { _eq: 10 },
-        jsonColumn: { _eq: "{}" },
-        addresses: {
-            city: { _eq: "" },
+    _and: [
+        {
+            quantity: { _eq: 10 },
+            jsonColumn: { _eq: "{}" },
+            addresses: {
+                city: { _eq: "" },
+            },
         },
-    }],
+    ],
 };
 
 type ProfileOrderBy = hasura.OrderBy<Profile>;
@@ -78,33 +86,44 @@ const profileOrderByAgg: ProfileOrderByAggregate = {
     },
 };
 
-type ProfileQueryResponse = hasura.HasuraQueryResponse<"profiles", Partial<Profile>>;
+type ProfileQueryResponse = hasura.HasuraQueryResponse<
+    "profiles",
+    Partial<Profile>
+>;
 const profileQueryResp: ProfileQueryResponse = {
     data: {
-        profiles: [{
-            name: "test",
-            quantity: 10,
-            addresses: [{
-                street: "N/A",
-                city: "New York",
-            }],
-        }],
+        profiles: [
+            {
+                name: "test",
+                quantity: 10,
+                addresses: [
+                    {
+                        street: "N/A",
+                        city: "New York",
+                    },
+                ],
+            },
+        ],
     },
 };
 
 const profileInsertInput: hasura.HasuraInsertInput<Profile> = {
-    objects: [{
-        quantity: 0,
-        addresses: {
-            data: [{
-                street: "",
-            }],
-            on_conflict: {
-                constraint: "",
-                update_columns: ["street"],
+    objects: [
+        {
+            quantity: 0,
+            addresses: {
+                data: [
+                    {
+                        street: "",
+                    },
+                ],
+                on_conflict: {
+                    constraint: "",
+                    update_columns: ["street"],
+                },
             },
         },
-    }],
+    ],
 };
 
 const profileUpdateInput: hasura.HasuraUpdateInput<Profile> = {
@@ -121,7 +140,10 @@ const profileUpdateInput: hasura.HasuraUpdateInput<Profile> = {
     },
 };
 
-type ProfileAggregateResponse = hasura.HasuraAggregateQueryResponse<"profiles_aggregate", Partial<Profile>>;
+type ProfileAggregateResponse = hasura.HasuraAggregateQueryResponse<
+    "profiles_aggregate",
+    Partial<Profile>
+>;
 const profileAggregateResp: ProfileAggregateResponse = {
     data: {
         profiles_aggregate: {
@@ -139,14 +161,18 @@ const profileAggregateResp: ProfileAggregateResponse = {
                     quantity: 0.1,
                 },
             },
-            nodes: [{
-                name: "test",
-                quantity: 10,
-                addresses: [{
-                    street: "N/A",
-                    city: "New York",
-                }],
-            }],
+            nodes: [
+                {
+                    name: "test",
+                    quantity: 10,
+                    addresses: [
+                        {
+                            street: "N/A",
+                            city: "New York",
+                        },
+                    ],
+                },
+            ],
         },
     },
 };

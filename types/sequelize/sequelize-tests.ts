@@ -36,7 +36,7 @@ var Group = s.define<AnyInstance, AnyAttributes>("group", {});
 var Comment = s.define<AnyInstance, AnyAttributes>("comment", {});
 var Post = s.define<AnyInstance, AnyAttributes>("post", {});
 var t: Sequelize.Transaction = null;
-s.transaction().then((a) => t = a);
+s.transaction().then((a) => (t = a));
 
 //
 //  Generics
@@ -55,13 +55,20 @@ interface GUserAttributes {
     email: string;
 }
 
-interface GUserInstance extends Sequelize.Instance<GUserAttributes>, GUserAttributes {}
-const GUser = s.define<GUserInstance, GUserAttributes, GUserCreationAttributes>("user", {
-    id: Sequelize.INTEGER,
-    username: Sequelize.STRING,
-    email: Sequelize.STRING,
-});
-GUser.create({ id: 1, username: "one", email: "one@lol.com" }).then((guser) => guser.save());
+interface GUserInstance
+    extends Sequelize.Instance<GUserAttributes>,
+        GUserAttributes {}
+const GUser = s.define<GUserInstance, GUserAttributes, GUserCreationAttributes>(
+    "user",
+    {
+        id: Sequelize.INTEGER,
+        username: Sequelize.STRING,
+        email: Sequelize.STRING,
+    },
+);
+GUser.create({ id: 1, username: "one", email: "one@lol.com" }).then((guser) =>
+    guser.save(),
+);
 GUser.create({ email: "two@lol.com" }).then((guser) => guser.save());
 
 var schema: Sequelize.DefineAttributes = {
@@ -78,7 +85,10 @@ interface GTaskAttributes {
 interface GTaskInstance extends Sequelize.Instance<GTaskAttributes> {
     upRevision(): void;
 }
-var GTask = s.define<GTaskInstance, GTaskAttributes>("task", { revision: Sequelize.INTEGER, name: Sequelize.STRING });
+var GTask = s.define<GTaskInstance, GTaskAttributes>("task", {
+    revision: Sequelize.INTEGER,
+    name: Sequelize.STRING,
+});
 
 GUser.hasMany(GTask);
 
@@ -94,7 +104,11 @@ GTask.create({ revision: 1, name: "test" }).then((gtask) => gtask.upRevision());
 User.hasOne(Task);
 User.hasOne(Task, { foreignKey: "primaryGroupId", as: "primaryUsers" });
 User.hasOne(Task, { foreignKey: "userCoolIdTag" });
-User.hasOne(Task, { foreignKey: "userId", keyType: Sequelize.STRING, constraints: false });
+User.hasOne(Task, {
+    foreignKey: "userId",
+    keyType: Sequelize.STRING,
+    constraints: false,
+});
 Task.hasOne(User, { foreignKey: { name: "taskId", field: "task_id" } });
 User.hasOne(Task, { foreignKey: { name: "uid", allowNull: false } });
 User.hasOne(Task, { onDelete: "cascade" });
@@ -107,8 +121,14 @@ User.belongsTo(Task);
 User.belongsTo(Task, { foreignKey: "primaryGroupId", as: "primaryUsers" });
 Task.belongsTo(User, { foreignKey: "user_id" });
 Task.belongsTo(User, { foreignKey: "user_name", targetKey: "username" });
-User.belongsTo(User, { foreignKey: "userId", keyType: Sequelize.STRING, constraints: false });
-User.belongsTo(Post, { foreignKey: { name: "AccountId", field: "account_id" } });
+User.belongsTo(User, {
+    foreignKey: "userId",
+    keyType: Sequelize.STRING,
+    constraints: false,
+});
+User.belongsTo(Post, {
+    foreignKey: { name: "AccountId", field: "account_id" },
+});
 Task.belongsTo(User, { foreignKey: { allowNull: false, name: "uid" } });
 Task.belongsTo(User, { constraints: false });
 Task.belongsTo(User, { onDelete: "cascade" });
@@ -122,8 +142,16 @@ User.belongsTo(User, {
 User.hasMany(User);
 User.hasMany(User, { foreignKey: "primaryGroupId", as: "primaryUsers" });
 User.hasMany(Task, { foreignKey: "userId" });
-User.hasMany(Task, { foreignKey: "userId", as: "activeTasks", scope: { active: true } });
-User.hasMany(Task, { foreignKey: "userId", keyType: Sequelize.STRING, constraints: false });
+User.hasMany(Task, {
+    foreignKey: "userId",
+    as: "activeTasks",
+    scope: { active: true },
+});
+User.hasMany(Task, {
+    foreignKey: "userId",
+    keyType: Sequelize.STRING,
+    constraints: false,
+});
 User.hasMany(Task, { foreignKey: { name: "uid", allowNull: false } });
 User.hasMany(Task, { foreignKey: { allowNull: true } });
 User.hasMany(Task, { as: "Children" });
@@ -131,20 +159,42 @@ User.hasMany(Task, { as: { singular: "task", plural: "taskz" } });
 User.hasMany(Task, { constraints: false });
 User.hasMany(Task, { onDelete: "cascade" });
 User.hasMany(Task, { onUpdate: "cascade" });
-Post.hasMany(Task, { foreignKey: "commentable_id", scope: { commentable: "post" } });
+Post.hasMany(Task, {
+    foreignKey: "commentable_id",
+    scope: { commentable: "post" },
+});
 User.hasMany(User, {
     as: "childBlocks",
     foreignKey: "parent",
     foreignKeyConstraint: true,
 });
-User.hasOne(Task, { foreignKey: "userId", as: "activeTasks", scope: { active: true } });
+User.hasOne(Task, {
+    foreignKey: "userId",
+    as: "activeTasks",
+    scope: { active: true },
+});
 
 User.belongsToMany(Task, { through: "UserTasks" });
 User.belongsToMany(User, { through: Task });
-User.belongsToMany(Group, { as: "groups", through: Task, foreignKey: "id_user" });
-User.belongsToMany(Task, { as: "activeTasks", through: Task, scope: { active: true } });
-User.belongsToMany(Task, { as: "startedTasks", through: { model: Task, scope: { started: true } } });
-User.belongsToMany(Group, { through: "group_members", foreignKey: "group_id", otherKey: "member_id" });
+User.belongsToMany(Group, {
+    as: "groups",
+    through: Task,
+    foreignKey: "id_user",
+});
+User.belongsToMany(Task, {
+    as: "activeTasks",
+    through: Task,
+    scope: { active: true },
+});
+User.belongsToMany(Task, {
+    as: "startedTasks",
+    through: { model: Task, scope: { started: true } },
+});
+User.belongsToMany(Group, {
+    through: "group_members",
+    foreignKey: "group_id",
+    otherKey: "member_id",
+});
 User.belongsToMany(User, { as: "Participants", through: User });
 User.belongsToMany(Group, { through: "user_places", foreignKey: "user_id" });
 User.belongsToMany(Group, {
@@ -161,9 +211,16 @@ User.belongsToMany(Group, {
 });
 User.belongsToMany(Task, { onDelete: "RESTRICT", through: "tasksusers" });
 User.belongsToMany(Task, { constraints: false, through: "tasksusers" });
-User.belongsToMany(Task, { foreignKey: { name: "user_id", defaultValue: 42 }, through: "UserProjects" });
+User.belongsToMany(Task, {
+    foreignKey: { name: "user_id", defaultValue: 42 },
+    through: "UserProjects",
+});
 User.belongsToMany(Post, { through: User });
-Post.belongsToMany(User, { as: "categories", through: User, scope: { type: "category" } });
+Post.belongsToMany(User, {
+    as: "categories",
+    through: User,
+    scope: { type: "category" },
+});
 Post.belongsToMany(User, { as: "tags", through: User, scope: { type: "tag" } });
 Post.belongsToMany(User, {
     through: {
@@ -176,8 +233,16 @@ Post.belongsToMany(User, {
     foreignKey: "taggable_id",
     constraints: false,
 });
-Post.belongsToMany(Post, { through: { model: Post, unique: false }, foreignKey: "tag_id" });
-Post.belongsToMany(Post, { as: "Parents", through: "Family", foreignKey: "ChildId", otherKey: "PersonId" });
+Post.belongsToMany(Post, {
+    through: { model: Post, unique: false },
+    foreignKey: "tag_id",
+});
+Post.belongsToMany(Post, {
+    as: "Parents",
+    through: "Family",
+    foreignKey: "ChildId",
+    otherKey: "PersonId",
+});
 
 //
 // Mixins
@@ -192,13 +257,19 @@ var product = Product.build();
 var Barcode = s.define<BarcodeInstance, BarcodeAttributes>("barcode", {});
 var barcode = Barcode.build();
 
-var Warehouse = s.define<WarehouseInstance, WarehouseAttributes>("warehouse", {});
+var Warehouse = s.define<WarehouseInstance, WarehouseAttributes>(
+    "warehouse",
+    {},
+);
 var warehouse = Warehouse.build();
 
 var Branch = s.define<BranchInstance, BranchAttributes>("brach", {});
 var branch = Branch.build();
 
-var WarehouseBranch = s.define<WarehouseBranchInstance, WarehouseBranchAttributes>("warehouseBranch", {});
+var WarehouseBranch = s.define<
+    WarehouseBranchInstance,
+    WarehouseBranchAttributes
+>("warehouseBranch", {});
 
 var Customer = s.define<CustomerInstance, CustomerAttributes>("customer", {});
 var customer = Customer.build();
@@ -217,7 +288,7 @@ Customer.belongsToMany(Branch, { through: "branchCustomer" });
 
 // hasOne
 product.getBarcode();
-product.getBarcode({ scope: null }).then(b => b.code);
+product.getBarcode({ scope: null }).then((b) => b.code);
 
 product.setBarcode();
 product.setBarcode(1);
@@ -230,7 +301,7 @@ product.createBarcode({ id: 1 }, { save: true, silent: true }).then(() => {});
 
 // belongsTo
 barcode.getProduct();
-barcode.getProduct({ scope: "foo" }).then(p => p.name);
+barcode.getProduct({ scope: "foo" }).then((p) => p.name);
 
 barcode.setProduct();
 barcode.setProduct(1);
@@ -239,10 +310,12 @@ barcode.setProduct(product, { save: true }).then(() => {});
 
 barcode.createProduct();
 barcode.createProduct({ id: 1, name: "Crowbar" });
-barcode.createProduct({ id: 1 }, { save: true, silent: true }).then((product: ProductInstance) => {});
+barcode
+    .createProduct({ id: 1 }, { save: true, silent: true })
+    .then((product: ProductInstance) => {});
 
 product.getWarehouse();
-product.getWarehouse({ scope: null }).then(w => w.capacity);
+product.getWarehouse({ scope: null }).then((w) => w.capacity);
 
 product.setWarehouse();
 product.setWarehouse(1);
@@ -256,14 +329,22 @@ product.createWarehouse({ id: 1 }, { save: true, silent: true }).then(() => {});
 // hasMany
 warehouse.getProducts();
 warehouse.getProducts({ where: {}, scope: false });
-warehouse.getProducts({ where: {}, scope: false }).then((products) => products[0].id);
+warehouse
+    .getProducts({ where: {}, scope: false })
+    .then((products) => products[0].id);
 
 interface ProductInstanceIncludeBarcode extends ProductInstance {
     barcode: BarcodeInstance;
 }
-warehouse.getProducts({ where: {}, scope: false, include: { model: Barcode, as: "barcode" } }).then((products) => {
-    (products[0] as ProductInstanceIncludeBarcode).barcode;
-});
+warehouse
+    .getProducts({
+        where: {},
+        scope: false,
+        include: { model: Barcode, as: "barcode" },
+    })
+    .then((products) => {
+        (products[0] as ProductInstanceIncludeBarcode).barcode;
+    });
 
 warehouse.setProducts();
 warehouse.setProducts([product]);
@@ -290,7 +371,9 @@ warehouse.removeProduct(product);
 warehouse.removeProduct(2, { validate: true }).then(() => {});
 
 warehouse.hasProducts([product]);
-warehouse.hasProducts([product, 2], { scope: "bar" }).then((result: boolean) => {});
+warehouse
+    .hasProducts([product, 2], { scope: "bar" })
+    .then((result: boolean) => {});
 
 warehouse.hasProduct(product);
 warehouse.hasProduct(2, { scope: "baz" }).then((result: boolean) => {});
@@ -305,19 +388,27 @@ warehouse.getBranches({ where: {} }).then((branches) => branches[0].rank);
 
 warehouse.setBranches();
 warehouse.setBranches([branch]);
-warehouse.setBranches([branch, 2], { validate: true, through: { distance: 1 } }).then(() => {});
+warehouse
+    .setBranches([branch, 2], { validate: true, through: { distance: 1 } })
+    .then(() => {});
 
 warehouse.addBranches();
 warehouse.addBranches([branch]);
-warehouse.addBranches([branch, 2], { validate: false, through: { distance: 1 } }).then(() => {});
+warehouse
+    .addBranches([branch, 2], { validate: false, through: { distance: 1 } })
+    .then(() => {});
 
 warehouse.addBranch();
 warehouse.addBranch(branch);
-warehouse.addBranch(2, { validate: true, through: { distance: 1 } }).then(() => {});
+warehouse
+    .addBranch(2, { validate: true, through: { distance: 1 } })
+    .then(() => {});
 
 warehouse.createBranch();
 warehouse.createBranch({ id: 1, address: "baz" });
-warehouse.createBranch({ id: 1 }, { silent: true, through: { distance: 1 } }).then((branch) => {});
+warehouse
+    .createBranch({ id: 1 }, { silent: true, through: { distance: 1 } })
+    .then((branch) => {});
 
 warehouse.removeBranches();
 warehouse.removeBranches([branch]);
@@ -328,7 +419,9 @@ warehouse.removeBranch(branch);
 warehouse.removeBranch(2, { validate: true }).then(() => {});
 
 warehouse.hasBranches([branch]);
-warehouse.hasBranches([branch, 2], { scope: "bar" }).then((result: boolean) => {});
+warehouse
+    .hasBranches([branch, 2], { scope: "bar" })
+    .then((result: boolean) => {});
 
 warehouse.hasBranch(branch);
 warehouse.hasBranch(2, { scope: "baz" }).then((result: boolean) => {});
@@ -366,7 +459,9 @@ customer.removeBranch(branch);
 customer.removeBranch(2, { validate: true }).then(() => {});
 
 customer.hasBranches([branch]);
-customer.hasBranches([branch, 2], { scope: "bar" }).then((result: boolean) => {});
+customer
+    .hasBranches([branch, 2], { scope: "bar" })
+    .then((result: boolean) => {});
 
 customer.hasBranch(branch);
 customer.hasBranch(2, { scope: "baz" }).then((result: boolean) => {});
@@ -380,7 +475,9 @@ interface ProductAttributes {
     price?: number | undefined;
 }
 
-interface ProductInstance extends Sequelize.Instance<ProductAttributes>, ProductAttributes {
+interface ProductInstance
+    extends Sequelize.Instance<ProductAttributes>,
+        ProductAttributes {
     // hasOne association mixins:
     getBarcode: Sequelize.HasOneGetAssociationMixin<BarcodeInstance>;
     setBarcode: Sequelize.HasOneSetAssociationMixin<BarcodeInstance, number>;
@@ -388,8 +485,14 @@ interface ProductInstance extends Sequelize.Instance<ProductAttributes>, Product
 
     // belongsTo association mixins:
     getWarehouse: Sequelize.BelongsToGetAssociationMixin<WarehouseInstance>;
-    setWarehouse: Sequelize.BelongsToSetAssociationMixin<WarehouseInstance, number>;
-    createWarehouse: Sequelize.BelongsToCreateAssociationMixin<WarehouseAttributes, WarehouseInstance>;
+    setWarehouse: Sequelize.BelongsToSetAssociationMixin<
+        WarehouseInstance,
+        number
+    >;
+    createWarehouse: Sequelize.BelongsToCreateAssociationMixin<
+        WarehouseAttributes,
+        WarehouseInstance
+    >;
 }
 
 interface BarcodeAttributes {
@@ -398,11 +501,16 @@ interface BarcodeAttributes {
     dateIssued?: Date | undefined;
 }
 
-interface BarcodeInstance extends Sequelize.Instance<BarcodeAttributes>, BarcodeAttributes {
+interface BarcodeInstance
+    extends Sequelize.Instance<BarcodeAttributes>,
+        BarcodeAttributes {
     // belongsTo association mixins:
     getProduct: Sequelize.BelongsToGetAssociationMixin<ProductInstance>;
     setProduct: Sequelize.BelongsToSetAssociationMixin<ProductInstance, number>;
-    createProduct: Sequelize.BelongsToCreateAssociationMixin<ProductAttributes, ProductInstance>;
+    createProduct: Sequelize.BelongsToCreateAssociationMixin<
+        ProductAttributes,
+        ProductInstance
+    >;
 }
 
 interface WarehouseAttributes {
@@ -411,33 +519,68 @@ interface WarehouseAttributes {
     capacity?: number | undefined;
 }
 
-interface WarehouseInstance extends Sequelize.Instance<WarehouseAttributes>, WarehouseAttributes {
+interface WarehouseInstance
+    extends Sequelize.Instance<WarehouseAttributes>,
+        WarehouseAttributes {
     // hasMany association mixins:
     getProducts: Sequelize.HasManyGetAssociationsMixin<ProductInstance>;
     setProducts: Sequelize.HasManySetAssociationsMixin<ProductInstance, number>;
     addProducts: Sequelize.HasManyAddAssociationsMixin<ProductInstance, number>;
     addProduct: Sequelize.HasManyAddAssociationMixin<ProductInstance, number>;
-    createProduct: Sequelize.HasManyCreateAssociationMixin<ProductAttributes, ProductInstance>;
-    removeProduct: Sequelize.HasManyRemoveAssociationMixin<ProductInstance, number>;
-    removeProducts: Sequelize.HasManyRemoveAssociationsMixin<ProductInstance, number>;
+    createProduct: Sequelize.HasManyCreateAssociationMixin<
+        ProductAttributes,
+        ProductInstance
+    >;
+    removeProduct: Sequelize.HasManyRemoveAssociationMixin<
+        ProductInstance,
+        number
+    >;
+    removeProducts: Sequelize.HasManyRemoveAssociationsMixin<
+        ProductInstance,
+        number
+    >;
     hasProduct: Sequelize.HasManyHasAssociationMixin<ProductInstance, number>;
     hasProducts: Sequelize.HasManyHasAssociationsMixin<ProductInstance, number>;
     countProducts: Sequelize.HasManyCountAssociationsMixin;
 
     // belongsToMany association mixins:
     getBranches: Sequelize.BelongsToManyGetAssociationsMixin<BranchInstance>;
-    setBranches: Sequelize.BelongsToManySetAssociationsMixin<BranchInstance, number, WarehouseBranchAttributes>;
-    addBranches: Sequelize.BelongsToManyAddAssociationsMixin<BranchInstance, number, WarehouseBranchAttributes>;
-    addBranch: Sequelize.BelongsToManyAddAssociationMixin<BranchInstance, number, WarehouseBranchAttributes>;
+    setBranches: Sequelize.BelongsToManySetAssociationsMixin<
+        BranchInstance,
+        number,
+        WarehouseBranchAttributes
+    >;
+    addBranches: Sequelize.BelongsToManyAddAssociationsMixin<
+        BranchInstance,
+        number,
+        WarehouseBranchAttributes
+    >;
+    addBranch: Sequelize.BelongsToManyAddAssociationMixin<
+        BranchInstance,
+        number,
+        WarehouseBranchAttributes
+    >;
     createBranch: Sequelize.BelongsToManyCreateAssociationMixin<
         BranchAttributes,
         BranchInstance,
         WarehouseBranchAttributes
     >;
-    removeBranch: Sequelize.BelongsToManyRemoveAssociationMixin<BranchInstance, number>;
-    removeBranches: Sequelize.BelongsToManyRemoveAssociationsMixin<BranchInstance, number>;
-    hasBranch: Sequelize.BelongsToManyHasAssociationMixin<BranchInstance, number>;
-    hasBranches: Sequelize.BelongsToManyHasAssociationsMixin<BranchInstance, number>;
+    removeBranch: Sequelize.BelongsToManyRemoveAssociationMixin<
+        BranchInstance,
+        number
+    >;
+    removeBranches: Sequelize.BelongsToManyRemoveAssociationsMixin<
+        BranchInstance,
+        number
+    >;
+    hasBranch: Sequelize.BelongsToManyHasAssociationMixin<
+        BranchInstance,
+        number
+    >;
+    hasBranches: Sequelize.BelongsToManyHasAssociationsMixin<
+        BranchInstance,
+        number
+    >;
     countBranches: Sequelize.BelongsToManyCountAssociationsMixin;
 }
 
@@ -447,33 +590,87 @@ interface BranchAttributes {
     rank?: number | undefined;
 }
 
-interface BranchInstance extends Sequelize.Instance<BranchAttributes>, BranchAttributes {
+interface BranchInstance
+    extends Sequelize.Instance<BranchAttributes>,
+        BranchAttributes {
     // belongsToMany association mixins:
     getWarehouses: Sequelize.BelongsToManyGetAssociationsMixin<WarehouseInstance>;
-    setWarehouses: Sequelize.BelongsToManySetAssociationsMixin<WarehouseInstance, number, WarehouseBranchAttributes>;
-    addWarehouses: Sequelize.BelongsToManyAddAssociationsMixin<WarehouseInstance, number, WarehouseBranchAttributes>;
-    addWarehouse: Sequelize.BelongsToManyAddAssociationMixin<WarehouseInstance, number, WarehouseBranchAttributes>;
+    setWarehouses: Sequelize.BelongsToManySetAssociationsMixin<
+        WarehouseInstance,
+        number,
+        WarehouseBranchAttributes
+    >;
+    addWarehouses: Sequelize.BelongsToManyAddAssociationsMixin<
+        WarehouseInstance,
+        number,
+        WarehouseBranchAttributes
+    >;
+    addWarehouse: Sequelize.BelongsToManyAddAssociationMixin<
+        WarehouseInstance,
+        number,
+        WarehouseBranchAttributes
+    >;
     createWarehouse: Sequelize.BelongsToManyCreateAssociationMixin<
         WarehouseAttributes,
         WarehouseInstance,
         WarehouseBranchAttributes
     >;
-    removeWarehouse: Sequelize.BelongsToManyRemoveAssociationMixin<WarehouseInstance, number>;
-    removeWarehouses: Sequelize.BelongsToManyRemoveAssociationsMixin<WarehouseInstance, number>;
-    hasWarehouse: Sequelize.BelongsToManyHasAssociationMixin<WarehouseInstance, number>;
-    hasWarehouses: Sequelize.BelongsToManyHasAssociationsMixin<WarehouseInstance, number>;
+    removeWarehouse: Sequelize.BelongsToManyRemoveAssociationMixin<
+        WarehouseInstance,
+        number
+    >;
+    removeWarehouses: Sequelize.BelongsToManyRemoveAssociationsMixin<
+        WarehouseInstance,
+        number
+    >;
+    hasWarehouse: Sequelize.BelongsToManyHasAssociationMixin<
+        WarehouseInstance,
+        number
+    >;
+    hasWarehouses: Sequelize.BelongsToManyHasAssociationsMixin<
+        WarehouseInstance,
+        number
+    >;
     countWarehouses: Sequelize.BelongsToManyCountAssociationsMixin;
 
     // belongsToMany association mixins:
     getCustomers: Sequelize.BelongsToManyGetAssociationsMixin<CustomerInstance>;
-    setCustomers: Sequelize.BelongsToManySetAssociationsMixin<CustomerInstance, number, void>;
-    addCustomers: Sequelize.BelongsToManyAddAssociationsMixin<CustomerInstance, number, void>;
-    addCustomer: Sequelize.BelongsToManyAddAssociationMixin<CustomerInstance, number, void>;
-    createCustomer: Sequelize.BelongsToManyCreateAssociationMixin<CustomerAttributes, CustomerInstance, void>;
-    removeCustomer: Sequelize.BelongsToManyRemoveAssociationMixin<CustomerInstance, number>;
-    removeCustomers: Sequelize.BelongsToManyRemoveAssociationsMixin<CustomerInstance, number>;
-    hasCustomer: Sequelize.BelongsToManyHasAssociationMixin<CustomerInstance, number>;
-    hasCustomers: Sequelize.BelongsToManyHasAssociationsMixin<CustomerInstance, number>;
+    setCustomers: Sequelize.BelongsToManySetAssociationsMixin<
+        CustomerInstance,
+        number,
+        void
+    >;
+    addCustomers: Sequelize.BelongsToManyAddAssociationsMixin<
+        CustomerInstance,
+        number,
+        void
+    >;
+    addCustomer: Sequelize.BelongsToManyAddAssociationMixin<
+        CustomerInstance,
+        number,
+        void
+    >;
+    createCustomer: Sequelize.BelongsToManyCreateAssociationMixin<
+        CustomerAttributes,
+        CustomerInstance,
+        void
+    >;
+    removeCustomer: Sequelize.BelongsToManyRemoveAssociationMixin<
+        CustomerInstance,
+        number
+    >;
+    removeCustomers: Sequelize.BelongsToManyRemoveAssociationsMixin<
+        CustomerInstance,
+        number
+    >;
+    hasCustomer: Sequelize.BelongsToManyHasAssociationMixin<
+        CustomerInstance,
+        number
+    >;
+    hasCustomers: Sequelize.BelongsToManyHasAssociationsMixin<
+        CustomerInstance,
+        number
+    >;
     countCustomers: Sequelize.BelongsToManyCountAssociationsMixin;
 }
 
@@ -481,7 +678,9 @@ interface WarehouseBranchAttributes {
     distance?: number | undefined;
 }
 
-interface WarehouseBranchInstance extends Sequelize.Instance<WarehouseBranchAttributes>, WarehouseBranchAttributes {}
+interface WarehouseBranchInstance
+    extends Sequelize.Instance<WarehouseBranchAttributes>,
+        WarehouseBranchAttributes {}
 
 interface CustomerAttributes {
     id?: number | undefined;
@@ -489,17 +688,47 @@ interface CustomerAttributes {
     credit?: number | undefined;
 }
 
-interface CustomerInstance extends Sequelize.Instance<CustomerAttributes>, CustomerAttributes {
+interface CustomerInstance
+    extends Sequelize.Instance<CustomerAttributes>,
+        CustomerAttributes {
     // belongsToMany association mixins:
     getBranches: Sequelize.BelongsToManyGetAssociationsMixin<BranchInstance>;
-    setBranches: Sequelize.BelongsToManySetAssociationsMixin<BranchInstance, number, void>;
-    addBranches: Sequelize.BelongsToManyAddAssociationsMixin<BranchInstance, number, void>;
-    addBranch: Sequelize.BelongsToManyAddAssociationMixin<BranchInstance, number, void>;
-    createBranch: Sequelize.BelongsToManyCreateAssociationMixin<BranchAttributes, BranchInstance, void>;
-    removeBranch: Sequelize.BelongsToManyRemoveAssociationMixin<BranchInstance, number>;
-    removeBranches: Sequelize.BelongsToManyRemoveAssociationsMixin<BranchInstance, number>;
-    hasBranch: Sequelize.BelongsToManyHasAssociationMixin<BranchInstance, number>;
-    hasBranches: Sequelize.BelongsToManyHasAssociationsMixin<BranchInstance, number>;
+    setBranches: Sequelize.BelongsToManySetAssociationsMixin<
+        BranchInstance,
+        number,
+        void
+    >;
+    addBranches: Sequelize.BelongsToManyAddAssociationsMixin<
+        BranchInstance,
+        number,
+        void
+    >;
+    addBranch: Sequelize.BelongsToManyAddAssociationMixin<
+        BranchInstance,
+        number,
+        void
+    >;
+    createBranch: Sequelize.BelongsToManyCreateAssociationMixin<
+        BranchAttributes,
+        BranchInstance,
+        void
+    >;
+    removeBranch: Sequelize.BelongsToManyRemoveAssociationMixin<
+        BranchInstance,
+        number
+    >;
+    removeBranches: Sequelize.BelongsToManyRemoveAssociationsMixin<
+        BranchInstance,
+        number
+    >;
+    hasBranch: Sequelize.BelongsToManyHasAssociationMixin<
+        BranchInstance,
+        number
+    >;
+    hasBranches: Sequelize.BelongsToManyHasAssociationsMixin<
+        BranchInstance,
+        number
+    >;
     countBranches: Sequelize.BelongsToManyCountAssociationsMixin;
 }
 
@@ -684,8 +913,18 @@ Sequelize.ValidationError;
 s.Error;
 s.ValidationError;
 new s.ValidationError("Validation Error", [
-    new s.ValidationErrorItem("<field name> cannot be null", "notNull Violation", "<field name>", null),
-    new s.ValidationErrorItem("<field name> cannot be an array or an object", "string violation", "<field name>", null),
+    new s.ValidationErrorItem(
+        "<field name> cannot be null",
+        "notNull Violation",
+        "<field name>",
+        null,
+    ),
+    new s.ValidationErrorItem(
+        "<field name> cannot be an array or an object",
+        "string violation",
+        "<field name>",
+        null,
+    ),
 ]);
 new s.Error();
 new s.ValidationError();
@@ -701,7 +940,8 @@ new s.InvalidConnectionError(new Error("original connection error message"));
 new s.ConnectionTimedOutError(new Error("original connection error message"));
 new s.EmptyResultError();
 
-const uniqueConstraintError: Sequelize.ValidationError = new s.UniqueConstraintError({});
+const uniqueConstraintError: Sequelize.ValidationError =
+    new s.UniqueConstraintError({});
 
 //
 //  Hooks
@@ -710,235 +950,270 @@ const uniqueConstraintError: Sequelize.ValidationError = new s.UniqueConstraintE
 //  https://github.com/sequelize/sequelize/blob/v3.4.1/test/integration/hooks.test.js
 //
 
-User.addHook("afterCreate", function(instance: Sequelize.Instance<any>, options: Object, next: Function) {
-    next();
-});
-User.addHook("afterCreate", "myHook", function(instance: Sequelize.Instance<any>, options: Object, next: Function) {
-    next();
-});
-s.addHook("beforeInit", function(config: Object, options: Object) {});
-User.hook("afterCreate", "myHook", function(instance: Sequelize.Instance<any>, options: Object, next: Function) {
-    next();
-});
-User.hook("afterCreate", "myHook", function(instance: Sequelize.Instance<any>, options: Object, next: Function) {
-    next();
-});
+User.addHook(
+    "afterCreate",
+    function (
+        instance: Sequelize.Instance<any>,
+        options: Object,
+        next: Function,
+    ) {
+        next();
+    },
+);
+User.addHook(
+    "afterCreate",
+    "myHook",
+    function (
+        instance: Sequelize.Instance<any>,
+        options: Object,
+        next: Function,
+    ) {
+        next();
+    },
+);
+s.addHook("beforeInit", function (config: Object, options: Object) {});
+User.hook(
+    "afterCreate",
+    "myHook",
+    function (
+        instance: Sequelize.Instance<any>,
+        options: Object,
+        next: Function,
+    ) {
+        next();
+    },
+);
+User.hook(
+    "afterCreate",
+    "myHook",
+    function (
+        instance: Sequelize.Instance<any>,
+        options: Object,
+        next: Function,
+    ) {
+        next();
+    },
+);
 
 User.removeHook("afterCreate", "myHook");
 
 User.hasHook("afterCreate");
 User.hasHooks("afterCreate");
 
-User.beforeValidate(function(user, options) {
+User.beforeValidate(function (user, options) {
     user.isNewRecord;
 });
-User.beforeValidate("myHook", function(user, options) {
-    user.isNewRecord;
-});
-
-User.afterValidate(function(user, options) {
-    user.isNewRecord;
-});
-User.afterValidate("myHook", function(user, options) {
+User.beforeValidate("myHook", function (user, options) {
     user.isNewRecord;
 });
 
-User.beforeCreate(function(user, options) {
+User.afterValidate(function (user, options) {
     user.isNewRecord;
 });
-User.beforeCreate(function(user, options, fn) {
-    fn();
-});
-User.beforeCreate("myHook", function(user, options) {
+User.afterValidate("myHook", function (user, options) {
     user.isNewRecord;
 });
 
-User.afterCreate(function(user, options) {
+User.beforeCreate(function (user, options) {
     user.isNewRecord;
 });
-User.afterCreate(function(user, options, fn) {
+User.beforeCreate(function (user, options, fn) {
     fn();
 });
-User.afterCreate("myHook", function(user, options) {
+User.beforeCreate("myHook", function (user, options) {
     user.isNewRecord;
 });
 
-User.beforeDestroy(function(user, options) {
-    throw new Error("Whoops!");
+User.afterCreate(function (user, options) {
+    user.isNewRecord;
 });
-User.beforeDestroy(function(user, options, fn) {
+User.afterCreate(function (user, options, fn) {
     fn();
 });
-User.beforeDestroy("myHook", function(user, options) {
+User.afterCreate("myHook", function (user, options) {
+    user.isNewRecord;
+});
+
+User.beforeDestroy(function (user, options) {
     throw new Error("Whoops!");
 });
-User.beforeDelete(function(user, options) {
+User.beforeDestroy(function (user, options, fn) {
+    fn();
+});
+User.beforeDestroy("myHook", function (user, options) {
     throw new Error("Whoops!");
 });
-User.beforeDelete("myHook", function(user, options) {
+User.beforeDelete(function (user, options) {
+    throw new Error("Whoops!");
+});
+User.beforeDelete("myHook", function (user, options) {
     throw new Error("Whoops!");
 });
 
-User.afterDestroy(function(user, options) {
+User.afterDestroy(function (user, options) {
     throw new Error("Whoops!");
 });
-User.afterDestroy("myHook", function(user, options) {
+User.afterDestroy("myHook", function (user, options) {
     throw new Error("Whoops!");
 });
-User.afterDestroy(function(user, options, fn) {
+User.afterDestroy(function (user, options, fn) {
     fn();
 });
-User.afterDelete(function(user, options) {
+User.afterDelete(function (user, options) {
     throw new Error("Whoops!");
 });
-User.afterDelete("myHook", function(user, options) {
+User.afterDelete("myHook", function (user, options) {
     throw new Error("Whoops!");
 });
 
-User.beforeUpdate(function(user, options) {
+User.beforeUpdate(function (user, options) {
     throw new Error("Whoops!");
 });
-User.beforeUpdate("myHook", function(user, options) {
-    throw new Error("Whoops!");
-});
-
-User.afterUpdate(function(user, options) {
-    throw new Error("Whoops!");
-});
-User.afterUpdate("myHook", function(user, options) {
+User.beforeUpdate("myHook", function (user, options) {
     throw new Error("Whoops!");
 });
 
-User.beforeBulkCreate(function(daos, options) {
+User.afterUpdate(function (user, options) {
     throw new Error("Whoops!");
 });
-User.beforeBulkCreate("myHook", function(daos, options) {
+User.afterUpdate("myHook", function (user, options) {
     throw new Error("Whoops!");
-});
-User.beforeBulkCreate(function(daos, options, fn) {
-    fn();
 });
 
-User.afterBulkCreate(function(daos, options) {
+User.beforeBulkCreate(function (daos, options) {
     throw new Error("Whoops!");
 });
-User.afterBulkCreate("myHook", function(daos, options) {
+User.beforeBulkCreate("myHook", function (daos, options) {
     throw new Error("Whoops!");
 });
-User.afterBulkCreate(function(daos, options, fn) {
-    fn();
-});
-
-User.beforeBulkDestroy(function(options) {
-    throw new Error("Whoops!");
-});
-User.beforeBulkDestroy(function(options, fn) {
-    fn();
-});
-User.beforeBulkDestroy("myHook", function(options, fn) {
-    fn();
-});
-User.beforeBulkDelete("myHook", function(options, fn) {
+User.beforeBulkCreate(function (daos, options, fn) {
     fn();
 });
 
-User.afterBulkDestroy(function(options) {
+User.afterBulkCreate(function (daos, options) {
     throw new Error("Whoops!");
 });
-User.afterBulkDestroy(function(options, fn) {
-    fn();
+User.afterBulkCreate("myHook", function (daos, options) {
+    throw new Error("Whoops!");
 });
-User.afterBulkDestroy("myHook", function(options, fn) {
-    fn();
-});
-User.afterBulkDelete("myHook", function(options, fn) {
+User.afterBulkCreate(function (daos, options, fn) {
     fn();
 });
 
-User.beforeBulkUpdate(function(options) {
+User.beforeBulkDestroy(function (options) {
     throw new Error("Whoops!");
 });
-User.beforeBulkUpdate("myHook", function(options) {
+User.beforeBulkDestroy(function (options, fn) {
+    fn();
+});
+User.beforeBulkDestroy("myHook", function (options, fn) {
+    fn();
+});
+User.beforeBulkDelete("myHook", function (options, fn) {
+    fn();
+});
+
+User.afterBulkDestroy(function (options) {
+    throw new Error("Whoops!");
+});
+User.afterBulkDestroy(function (options, fn) {
+    fn();
+});
+User.afterBulkDestroy("myHook", function (options, fn) {
+    fn();
+});
+User.afterBulkDelete("myHook", function (options, fn) {
+    fn();
+});
+
+User.beforeBulkUpdate(function (options) {
+    throw new Error("Whoops!");
+});
+User.beforeBulkUpdate("myHook", function (options) {
     throw new Error("Whoops!");
 });
 
-User.afterBulkUpdate(function(options) {
+User.afterBulkUpdate(function (options) {
     throw new Error("Whoops!");
 });
-User.afterBulkUpdate("myHook", function(options) {
+User.afterBulkUpdate("myHook", function (options) {
     throw new Error("Whoops!");
 });
 
-User.beforeFind(function(options) {});
-User.beforeFind("myHook", function(options) {});
+User.beforeFind(function (options) {});
+User.beforeFind("myHook", function (options) {});
 
-User.beforeFindAfterExpandIncludeAll(function(options) {});
-User.beforeFindAfterExpandIncludeAll("myHook", function(options) {});
+User.beforeFindAfterExpandIncludeAll(function (options) {});
+User.beforeFindAfterExpandIncludeAll("myHook", function (options) {});
 
-User.beforeFindAfterOptions(function(options) {});
-User.beforeFindAfterOptions("myHook", function(options) {});
+User.beforeFindAfterOptions(function (options) {});
+User.beforeFindAfterOptions("myHook", function (options) {});
 
-User.afterFind(function(user) {});
-User.afterFind("myHook", function(user) {});
+User.afterFind(function (user) {});
+User.afterFind("myHook", function (user) {});
 
-User.beforeSync(function(options) {});
-User.beforeSync("myHook", function(options) {});
+User.beforeSync(function (options) {});
+User.beforeSync("myHook", function (options) {});
 
-User.afterSync(function(options) {});
-User.afterSync("myHook", function(options) {});
+User.afterSync(function (options) {});
+User.afterSync("myHook", function (options) {});
 
-s.beforeDefine(function(attributes, options) {});
-s.beforeDefine("myHook", function(attributes, options) {});
+s.beforeDefine(function (attributes, options) {});
+s.beforeDefine("myHook", function (attributes, options) {});
 
-s.afterDefine(function(model) {});
-s.afterDefine("myHook", function(model) {});
+s.afterDefine(function (model) {});
+s.afterDefine("myHook", function (model) {});
 
-s.beforeInit(function(config, options) {});
-s.beforeInit("myHook", function(attributes, options) {});
+s.beforeInit(function (config, options) {});
+s.beforeInit("myHook", function (attributes, options) {});
 
-s.afterInit(function(model) {});
-s.afterInit("myHook", function(model) {});
+s.afterInit(function (model) {});
+s.afterInit("myHook", function (model) {});
 
-s.beforeBulkSync(function(options) {});
-s.beforeBulkSync("myHook", function(options) {});
+s.beforeBulkSync(function (options) {});
+s.beforeBulkSync("myHook", function (options) {});
 
-s.afterBulkSync(function(options) {});
-s.afterBulkSync("myHook", function(options) {});
+s.afterBulkSync(function (options) {});
+s.afterBulkSync("myHook", function (options) {});
 
-s.define("User", {}, {
-    hooks: {
-        beforeValidate: function(user, options, fn) {
-            fn();
-        },
-        afterValidate: function(user, options, fn) {
-            fn();
-        },
-        beforeCreate: function(user, options, fn) {
-            fn();
-        },
-        afterCreate: function(user, options, fn) {
-            fn();
-        },
-        beforeDestroy: function(user, options, fn) {
-            fn();
-        },
-        afterDestroy: function(user, options, fn) {
-            fn();
-        },
-        beforeDelete: function(user, options, fn) {
-            fn();
-        },
-        afterDelete: function(user, options, fn) {
-            fn();
-        },
-        beforeUpdate: function(user, options, fn) {
-            fn();
-        },
-        afterUpdate: function(user, options, fn) {
-            fn();
+s.define(
+    "User",
+    {},
+    {
+        hooks: {
+            beforeValidate: function (user, options, fn) {
+                fn();
+            },
+            afterValidate: function (user, options, fn) {
+                fn();
+            },
+            beforeCreate: function (user, options, fn) {
+                fn();
+            },
+            afterCreate: function (user, options, fn) {
+                fn();
+            },
+            beforeDestroy: function (user, options, fn) {
+                fn();
+            },
+            afterDestroy: function (user, options, fn) {
+                fn();
+            },
+            beforeDelete: function (user, options, fn) {
+                fn();
+            },
+            afterDelete: function (user, options, fn) {
+                fn();
+            },
+            beforeUpdate: function (user, options, fn) {
+                fn();
+            },
+            afterUpdate: function (user, options, fn) {
+                fn();
+            },
         },
     },
-});
+);
 
 //
 //  Instance
@@ -966,11 +1241,26 @@ user.get("aNumber", { plain: true, clone: true });
 user.get();
 
 user.set("email", "B");
-user.set({ name: "B", bio: "B" }).save().then((p) => p);
+user.set({ name: "B", bio: "B" })
+    .save()
+    .then((p) => p);
 user.set("birthdate", new Date());
-user.set({ id: 1, t: "c", q: [{ id: 1, n: "a" }, { id: 2, n: "Beta" }], u: { id: 1, f: "b", l: "d" } });
+user.set({
+    id: 1,
+    t: "c",
+    q: [
+        { id: 1, n: "a" },
+        { id: 2, n: "Beta" },
+    ],
+    u: { id: 1, f: "b", l: "d" },
+});
 user.setAttributes({ a: 3 });
-user.setAttributes({ id: 1, a: "n", c: [{ id: 1 }, { id: 2, f: "e" }], x: { id: 1, f: "h", l: "d" } });
+user.setAttributes({
+    id: 1,
+    a: "n",
+    c: [{ id: 1 }, { id: 2, f: "e" }],
+    x: { id: 1, f: "h", l: "d" },
+});
 
 user.changed("name");
 user.changed();
@@ -992,13 +1282,19 @@ user.validate();
 
 user.update({ bNumber: 2 }, { where: { id: 1 } });
 user.update({ username: "userman" }, { silent: true });
-user.update({ username: "yolo" }, { logging: function() {} });
-user.update({ username: "bar" }, { where: { username: "foo" }, transaction: t }).then((p) => p);
+user.update({ username: "yolo" }, { logging: function () {} });
+user.update(
+    { username: "bar" },
+    { where: { username: "foo" }, transaction: t },
+).then((p) => p);
 user.updateAttributes({ a: 3 }).then((p) => p);
-user.updateAttributes({ a: 3 }, { fields: ["secretValue"], logging: function() {} });
+user.updateAttributes(
+    { a: 3 },
+    { fields: ["secretValue"], logging: function () {} },
+);
 
 user.destroy().then((p) => p);
-user.destroy({ logging: function() {} });
+user.destroy({ logging: function () {} });
 user.destroy({ transaction: t }).then((p) => p);
 
 user.restore();
@@ -1007,13 +1303,13 @@ user.increment("number", { by: 2 }).then((p) => p);
 user.increment(["aNumber"], { by: 2, where: { bNumber: 1 } }).then((p) => p);
 user.increment(["aNumber"], { by: 2 }).then((p) => p);
 user.increment("aNumber").then((p) => p);
-user.increment({ "aNumber": 1, "bNumber": 2 }).then((p) => p);
+user.increment({ aNumber: 1, bNumber: 2 }).then((p) => p);
 user.increment("number", { by: 2, transaction: t }).then((p) => p);
 
 user.decrement("aNumber", { by: 2 }).then((p) => p);
 user.decrement(["aNumber"], { by: 2 }).then((p) => p);
 user.decrement("aNumber").then((p) => p);
-user.decrement({ "aNumber": 1, "bNumber": 2 }).then((p) => p);
+user.decrement({ aNumber: 1, bNumber: 2 }).then((p) => p);
 user.decrement("number", { by: 2, transaction: t }).then((p) => p);
 
 user.equals(user);
@@ -1031,42 +1327,59 @@ user.toJSON();
 
 User.removeAttribute("id");
 
-User.sync({ force: true }).then(function() {});
-User.sync({ force: true, logging: function() {} });
+User.sync({ force: true }).then(function () {});
+User.sync({ force: true, logging: function () {} });
 
 User.drop();
 
 User.schema("special");
-User.schema("special").create({ age: 3 }, { logging: function() {} });
+User.schema("special").create({ age: 3 }, { logging: function () {} });
 
 User.getTableName();
 
 User.addScope("lowAccess", { where: { parent_id: 2 } });
 User.addScope("lowAccess", { where: { parent_id: 2 } }, { override: true });
-User.addScope("lowAccessWithParam", function(id: number) {
+User.addScope("lowAccessWithParam", function (id: number) {
     return { where: { parent_id: id } };
 });
 
 User.scope("lowAccess").count();
 User.scope("lowAccess").findUser("foo");
 User.scope({ where: { parent_id: 2 } });
-User.scope(["lowAccess", { method: ["lowAccessWithParam", 2] }, { where: { parent_id: 2 } }]);
+User.scope([
+    "lowAccess",
+    { method: ["lowAccessWithParam", 2] },
+    { where: { parent_id: 2 } },
+]);
 
 User.findAll();
 User.findAll({ where: { data: { employment: null } } });
 User.findAll({ where: { aNumber: { gte: 10 } } }).then((u) => u[0].isNewRecord);
-User.findAll({ where: [s.or({ u: "b" }, { u: ";" }), s.and({ id: [1, 2] })], include: [{ model: User }] });
+User.findAll({
+    where: [s.or({ u: "b" }, { u: ";" }), s.and({ id: [1, 2] })],
+    include: [{ model: User }],
+});
 User.findAll({
     where: [
         s.or({ a: "b" }, { c: "d" }),
-        s.and({ id: [1, 2, 3] }, s.or({ deletedAt: null }, { deletedAt: { gt: new Date(0) } })),
+        s.and(
+            { id: [1, 2, 3] },
+            s.or({ deletedAt: null }, { deletedAt: { gt: new Date(0) } }),
+        ),
     ],
 });
-User.findAll({ paranoid: false, where: [" IS NOT NULL "], include: [{ model: User }] });
+User.findAll({
+    paranoid: false,
+    where: [" IS NOT NULL "],
+    include: [{ model: User }],
+});
 User.findAll({ include: [{ model: Task, paranoid: false }] });
 User.findAll({ include: { model: Task, include: Task, paranoid: false } });
 User.findAll({ transaction: t });
-User.findAll({ where: { data: { name: { last: "s" }, employment: { $ne: "a" } } }, order: [["id", "ASC"]] });
+User.findAll({
+    where: { data: { name: { last: "s" }, employment: { $ne: "a" } } },
+    order: [["id", "ASC"]],
+});
 User.findAll({ where: { username: ["boo", "boo2"] } });
 User.findAll({ where: { username: Buffer.from("a name") } });
 User.findAll({ where: { username: [Buffer.from("a name")] } });
@@ -1075,16 +1388,28 @@ User.findAll({ where: { username: { like: "%2" } } });
 User.findAll({ where: { theDate: { "..": ["2013-01-02", "2013-01-11"] } } });
 User.findAll({ where: { intVal: { "!..": [8, 10] } } });
 User.findAll({ where: { theDate: { between: ["2013-01-02", "2013-01-11"] } } });
-User.findAll({ where: { theDate: { between: ["2013-01-02", "2013-01-11"] }, intVal: 10 } });
+User.findAll({
+    where: { theDate: { between: ["2013-01-02", "2013-01-11"] }, intVal: 10 },
+});
 User.findAll({ where: { theDate: { between: ["2012-12-10", "2013-01-02"] } } });
 User.findAll({ where: { theDate: { between: [1, 3] } } });
-User.findAll({ where: { theDate: { between: [new Date(0), new Date(1000)] } } });
-User.findAll({ where: { theDate: { nbetween: ["2013-01-04", "2013-01-20"] } } });
+User.findAll({
+    where: { theDate: { between: [new Date(0), new Date(1000)] } },
+});
+User.findAll({
+    where: { theDate: { nbetween: ["2013-01-04", "2013-01-20"] } },
+});
 User.findAll({ order: [s.col("name")] });
 User.findAll({ order: [["theDate", "DESC"]] });
 User.findAll({ include: [User], order: [[User, User, "numYears", "c"]] });
-User.findAll({ include: [{ model: User, include: [User, { model: User, as: "residents" }] }] });
-User.findAll({ order: [[User, { model: User, as: "residents" }, "lastName", "c"]] });
+User.findAll({
+    include: [
+        { model: User, include: [User, { model: User, as: "residents" }] },
+    ],
+});
+User.findAll({
+    order: [[User, { model: User, as: "residents" }, "lastName", "c"]],
+});
 User.findAll({ include: [User], order: [[User, "name", "c"]] });
 User.findAll({ include: [{ all: "HasMany", attributes: ["name"] }] });
 User.findAll({ include: [{ all: true }, { model: User, attributes: ["id"] }] });
@@ -1092,48 +1417,116 @@ User.findAll({ include: [{ all: "BelongsTo" }] });
 User.findAll({ include: [{ all: true }] });
 User.findAll({ include: [{ nested: true }] });
 User.findAll({ where: { username: "barfooz" }, raw: true });
-User.findAll({ where: { name: "worker" }, include: [{ model: User, as: "ToDos" }] });
-User.findAll({ where: { user_id: 1 }, attributes: ["a", "b"], include: [{ model: User, attributes: ["c"] }] });
+User.findAll({
+    where: { name: "worker" },
+    include: [{ model: User, as: "ToDos" }],
+});
+User.findAll({
+    where: { user_id: 1 },
+    attributes: ["a", "b"],
+    include: [{ model: User, attributes: ["c"] }],
+});
 User.findAll({ order: s.literal("email =") });
-User.findAll({ order: [s.literal("email = " + s.escape("test@sequelizejs.com"))] });
+User.findAll({
+    order: [s.literal("email = " + s.escape("test@sequelizejs.com"))],
+});
 User.findAll({ order: [["id", ";DELETE YOLO INJECTIONS"]] });
 User.findAll({ order: s.random() });
 User.findAll({ order: [s.random()] });
-User.findAll({ include: [User], order: [[User, "id", ";DELETE YOLO INJECTIONS"]] });
-User.findAll({ include: [User], order: [["id", "ASC NULLS LAST"], [User, "id", "DESC NULLS FIRST"]] });
-User.findAll({ include: [{ model: User, where: { title: "DoDat" }, include: [{ model: User }] }] });
+User.findAll({
+    include: [User],
+    order: [[User, "id", ";DELETE YOLO INJECTIONS"]],
+});
+User.findAll({
+    include: [User],
+    order: [
+        ["id", "ASC NULLS LAST"],
+        [User, "id", "DESC NULLS FIRST"],
+    ],
+});
+User.findAll({
+    include: [
+        { model: User, where: { title: "DoDat" }, include: [{ model: User }] },
+    ],
+});
 User.findAll({ attributes: ["username", "data"] });
 User.findAll({ attributes: { include: ["username", "data"] } });
-User.findAll({ attributes: [["username", "user_name"], ["email", "user_email"]] });
+User.findAll({
+    attributes: [
+        ["username", "user_name"],
+        ["email", "user_email"],
+    ],
+});
 User.findAll({ attributes: [s.fn("count", Sequelize.col("*"))] });
 User.findAll({ attributes: [[s.fn("count", Sequelize.col("*")), "count"]] });
-User.findAll({ attributes: [[s.fn("count", Sequelize.col("*")), "count"]], group: ["sex"] });
-User.findAll({ attributes: [s.cast(s.fn("count", Sequelize.col("*")), "INTEGER")] });
-User.findAll({ attributes: [[s.cast(s.fn("count", Sequelize.col("*")), "INTEGER"), "count"]] });
+User.findAll({
+    attributes: [[s.fn("count", Sequelize.col("*")), "count"]],
+    group: ["sex"],
+});
+User.findAll({
+    attributes: [s.cast(s.fn("count", Sequelize.col("*")), "INTEGER")],
+});
+User.findAll({
+    attributes: [
+        [s.cast(s.fn("count", Sequelize.col("*")), "INTEGER"), "count"],
+    ],
+});
 User.findAll({ where: s.fn("count", [0, 10]) });
-User.findAll({ where: s.where(s.fn("lower", s.col("email")), s.fn("lower", "TEST@SEQUELIZEJS.COM")) });
-User.findAll({ subQuery: false, include: [User], order: [[User, User, "numYears", "c"]] });
+User.findAll({
+    where: s.where(
+        s.fn("lower", s.col("email")),
+        s.fn("lower", "TEST@SEQUELIZEJS.COM"),
+    ),
+});
+User.findAll({
+    subQuery: false,
+    include: [User],
+    order: [[User, User, "numYears", "c"]],
+});
 User.findAll({ rejectOnEmpty: true });
 
-User.findAll({ include: [{ association: User.hasOne(Task, { foreignKey: "userId" }) }] });
-User.findAll({ include: [{ association: User.hasMany(Task, { foreignKey: "userId" }) }] });
-User.findAll({ include: [{ association: Task.belongsTo(User, { foreignKey: "userId" }) }] });
-User.findAll({ include: [{ association: User.belongsToMany(User, { through: Task }) }] });
+User.findAll({
+    include: [{ association: User.hasOne(Task, { foreignKey: "userId" }) }],
+});
+User.findAll({
+    include: [{ association: User.hasMany(Task, { foreignKey: "userId" }) }],
+});
+User.findAll({
+    include: [{ association: Task.belongsTo(User, { foreignKey: "userId" }) }],
+});
+User.findAll({
+    include: [{ association: User.belongsToMany(User, { through: Task }) }],
+});
 
-User.findAll({ where: { $and: [{ username: "user" }, { theDate: new Date() }] } });
-User.findAll({ where: { $or: [{ username: "user" }, { theDate: new Date() }] } });
-User.findAll({ where: { $and: [{ username: { $not: "user" } }, { theDate: new Date() }] } });
-User.findAll({ where: { $or: [{ username: { $not: "user" } }, { theDate: new Date() }] } });
-User.findAll({ where: { emails: { $overlap: ["me@mail.com", "you@mail.com"] } } });
+User.findAll({
+    where: { $and: [{ username: "user" }, { theDate: new Date() }] },
+});
+User.findAll({
+    where: { $or: [{ username: "user" }, { theDate: new Date() }] },
+});
+User.findAll({
+    where: { $and: [{ username: { $not: "user" } }, { theDate: new Date() }] },
+});
+User.findAll({
+    where: { $or: [{ username: { $not: "user" } }, { theDate: new Date() }] },
+});
+User.findAll({
+    where: { emails: { $overlap: ["me@mail.com", "you@mail.com"] } },
+});
 
 var options: Sequelize.AnyFindOptions = {
-    where: { $and: Sequelize.where(Sequelize.fn("char_length", Sequelize.col("username")), 4) },
+    where: {
+        $and: Sequelize.where(
+            Sequelize.fn("char_length", Sequelize.col("username")),
+            4,
+        ),
+    },
 };
 User.findAll(options);
 
 User.findById(1);
 User.findById(1, { attributes: ["id"] });
-User.findById(1, { logging: function() {} });
+User.findById(1, { logging: function () {} });
 User.findById(1, { transaction: t });
 User.findById(1, { include: [User] });
 User.findById(1, { include: [{ model: User }] });
@@ -1141,7 +1534,7 @@ User.findById(1, { include: [{ model: User, as: "ToDo" }] });
 User.findById(1, { include: [User, { model: User, as: "ToDo" }] });
 User.findById("id");
 User.findById("id", { attributes: ["id"] });
-User.findById("id", { logging: function() {} });
+User.findById("id", { logging: function () {} });
 User.findById("id", { transaction: t });
 User.findById("id", { include: [User] });
 User.findById("id", { include: [{ model: User }] });
@@ -1149,16 +1542,18 @@ User.findById("id", { include: [{ model: User, as: "ToDo" }] });
 User.findById("id", { include: [User, { model: User, as: "ToDo" }] });
 User.findById(Buffer.from("id"));
 User.findById(Buffer.from("id"), { attributes: ["id"] });
-User.findById(Buffer.from("id"), { logging: function() {} });
+User.findById(Buffer.from("id"), { logging: function () {} });
 User.findById(Buffer.from("id"), { transaction: t });
 User.findById(Buffer.from("id"), { include: [User] });
 User.findById(Buffer.from("id"), { include: [{ model: User }] });
 User.findById(Buffer.from("id"), { include: [{ model: User, as: "ToDo" }] });
-User.findById(Buffer.from("id"), { include: [User, { model: User, as: "ToDo" }] });
+User.findById(Buffer.from("id"), {
+    include: [User, { model: User, as: "ToDo" }],
+});
 
 User.findByPrimary(1);
 User.findByPrimary(1, { attributes: ["id"] });
-User.findByPrimary(1, { logging: function() {} });
+User.findByPrimary(1, { logging: function () {} });
 User.findByPrimary(1, { transaction: t });
 User.findByPrimary(1, { include: [User] });
 User.findByPrimary(1, { include: [{ model: User }] });
@@ -1166,7 +1561,7 @@ User.findByPrimary(1, { include: [{ model: User, as: "ToDo" }] });
 User.findByPrimary(1, { include: [User, { model: User, as: "ToDo" }] });
 User.findByPrimary("id");
 User.findByPrimary("id", { attributes: ["id"] });
-User.findByPrimary("id", { logging: function() {} });
+User.findByPrimary("id", { logging: function () {} });
 User.findByPrimary("id", { transaction: t });
 User.findByPrimary("id", { include: [User] });
 User.findByPrimary("id", { include: [{ model: User }] });
@@ -1174,16 +1569,20 @@ User.findByPrimary("id", { include: [{ model: User, as: "ToDo" }] });
 User.findByPrimary("id", { include: [User, { model: User, as: "ToDo" }] });
 User.findByPrimary(Buffer.from("id"));
 User.findByPrimary(Buffer.from("id"), { attributes: ["id"] });
-User.findByPrimary(Buffer.from("id"), { logging: function() {} });
+User.findByPrimary(Buffer.from("id"), { logging: function () {} });
 User.findByPrimary(Buffer.from("id"), { transaction: t });
 User.findByPrimary(Buffer.from("id"), { include: [User] });
 User.findByPrimary(Buffer.from("id"), { include: [{ model: User }] });
-User.findByPrimary(Buffer.from("id"), { include: [{ model: User, as: "ToDo" }] });
-User.findByPrimary(Buffer.from("id"), { include: [User, { model: User, as: "ToDo" }] });
+User.findByPrimary(Buffer.from("id"), {
+    include: [{ model: User, as: "ToDo" }],
+});
+User.findByPrimary(Buffer.from("id"), {
+    include: [User, { model: User, as: "ToDo" }],
+});
 
 User.findByPk(1);
 User.findByPk(1, { attributes: ["id"] });
-User.findByPk(1, { logging: function() {} });
+User.findByPk(1, { logging: function () {} });
 User.findByPk(1, { transaction: t });
 User.findByPk(1, { include: [User] });
 User.findByPk(1, { include: [{ model: User }] });
@@ -1191,7 +1590,7 @@ User.findByPk(1, { include: [{ model: User, as: "ToDo" }] });
 User.findByPk(1, { include: [User, { model: User, as: "ToDo" }] });
 User.findByPk("id");
 User.findByPk("id", { attributes: ["id"] });
-User.findByPk("id", { logging: function() {} });
+User.findByPk("id", { logging: function () {} });
 User.findByPk("id", { transaction: t });
 User.findByPk("id", { include: [User] });
 User.findByPk("id", { include: [{ model: User }] });
@@ -1199,31 +1598,52 @@ User.findByPk("id", { include: [{ model: User, as: "ToDo" }] });
 User.findByPk("id", { include: [User, { model: User, as: "ToDo" }] });
 User.findByPk(Buffer.from("id"));
 User.findByPk(Buffer.from("id"), { attributes: ["id"] });
-User.findByPk(Buffer.from("id"), { logging: function() {} });
+User.findByPk(Buffer.from("id"), { logging: function () {} });
 User.findByPk(Buffer.from("id"), { transaction: t });
 User.findByPk(Buffer.from("id"), { include: [User] });
 User.findByPk(Buffer.from("id"), { include: [{ model: User }] });
 User.findByPk(Buffer.from("id"), { include: [{ model: User, as: "ToDo" }] });
-User.findByPk(Buffer.from("id"), { include: [User, { model: User, as: "ToDo" }] });
+User.findByPk(Buffer.from("id"), {
+    include: [User, { model: User, as: "ToDo" }],
+});
 
 User.findOne({ where: { username: "foo" } });
 User.findOne({ where: { id: 1 }, attributes: ["id", ["username", "name"]] });
 User.findOne({ where: { id: 1 }, attributes: ["id"] });
-User.findOne({ where: { username: "foo" }, logging: function() {} });
+User.findOne({ where: { username: "foo" }, logging: function () {} });
 User.findOne({ limit: 10 });
 User.findOne({ where: { title: "homework" }, include: [User] });
-User.findOne({ where: { name: "environment" }, include: [{ model: User, as: "PrivateDomain" }] });
+User.findOne({
+    where: { name: "environment" },
+    include: [{ model: User, as: "PrivateDomain" }],
+});
 User.findOne({ where: { username: "foo" }, transaction: t }).then((p) => p);
 User.findOne({ include: [User] });
 User.findOne({ include: [{ model: User, as: "Work" }] });
-User.findOne({ where: { name: "worker" }, include: [{ model: User, as: "ToDo" }] });
-User.findOne({ include: [{ model: User, as: "ToDo" }, { model: User, as: "DoTo" }] });
+User.findOne({
+    where: { name: "worker" },
+    include: [{ model: User, as: "ToDo" }],
+});
+User.findOne({
+    include: [
+        { model: User, as: "ToDo" },
+        { model: User, as: "DoTo" },
+    ],
+});
 User.findOne({ where: { name: "worker" }, include: [User] });
-User.findOne({ where: { name: "Boris" }, include: [User, { model: User, as: "Photos" }] });
+User.findOne({
+    where: { name: "Boris" },
+    include: [User, { model: User, as: "Photos" }],
+});
 User.findOne({ where: { username: "someone" }, include: [User] });
 User.findOne({ where: { username: "barfooz" }, raw: true });
 User.findOne({ where: s.fn("count", []) });
-User.findOne({ where: s.where(s.fn("lower", s.col("email")), s.fn("lower", "TEST@SEQUELIZEJS.COM")) });
+User.findOne({
+    where: s.where(
+        s.fn("lower", s.col("email")),
+        s.fn("lower", "TEST@SEQUELIZEJS.COM"),
+    ),
+});
 /* NOTE https://github.com/DefinitelyTyped/DefinitelyTyped/pull/5590
 User.findOne( { updatedAt : { ne : null } } );
  */
@@ -1232,7 +1652,7 @@ User.find({ where: { intVal: { lte: 5 } } });
 
 User.count();
 User.count({ transaction: t });
-User.count().then(function(c) {
+User.count().then(function (c) {
     c.toFixed();
 });
 User.count({ where: ["username LIKE '%us%'"] });
@@ -1241,26 +1661,45 @@ User.count({ include: User });
 User.count({ distinct: true, include: [{ model: User, required: false }] });
 User.count({ attributes: ["data"], group: ["data"] });
 User.count({ where: { access_level: { gt: 5 } } });
-User.count({ col: "title", distinct: true, where: { access_level: { gt: 5 } } });
+User.count({
+    col: "title",
+    distinct: true,
+    where: { access_level: { gt: 5 } },
+});
 
-User.findAndCountAll({ offset: 5, limit: 1, include: [User, { model: User, as: "a" }] });
+User.findAndCountAll({
+    offset: 5,
+    limit: 1,
+    include: [User, { model: User, as: "a" }],
+});
 
 User.max("age", { transaction: t });
 User.max("age");
-User.max("age", { logging: function() {} });
+User.max("age", { logging: function () {} });
 
 User.min("age", { transaction: t });
 User.min("age");
-User.min("age", { logging: function() {} });
+User.min("age", { logging: function () {} });
 
 User.sum("order");
-User.sum("age", { where: { "gender": "male" } });
-User.sum("age", { logging: function() {} });
+User.sum("age", { where: { gender: "male" } });
+User.sum("age", { logging: function () {} });
 
 User.build({ username: "John Wayne" }).save();
 User.build();
-User.build({ id: 1, T: [{ n: "a" }, { id: 2 }], A: { id: 1, n: "a", c: "a" } }, { include: [User, Task] });
-User.build({ id: 1 }, { include: [{ model: User, as: "followers" }, { model: Task, as: "categories" }] });
+User.build(
+    { id: 1, T: [{ n: "a" }, { id: 2 }], A: { id: 1, n: "a", c: "a" } },
+    { include: [User, Task] },
+);
+User.build(
+    { id: 1 },
+    {
+        include: [
+            { model: User, as: "followers" },
+            { model: Task, as: "categories" },
+        ],
+    },
+);
 
 User.create();
 User.create({ createdAt: 1, updatedAt: 2 }, { silent: true });
@@ -1268,61 +1707,154 @@ User.create({}, { returning: true });
 User.create({ intVal: s.literal("CAST(1-2 AS") });
 User.create({ secretValue: s.fn("upper", "sequelize") });
 User.create({ myvals: [1, 2, 3, 4], mystr: ["One", "Two", "Three", "Four"] });
-User.create({ name: "Fluffy Bunny", smth: "else" }, { logging: function() {} });
+User.create(
+    { name: "Fluffy Bunny", smth: "else" },
+    { logging: function () {} },
+);
 User.create({}, { fields: [] });
-User.create({ name: "Yolo Bear", email: "yolo@bear.com" }, { fields: ["name"] });
-User.create({ title: "Chair", User: { first_name: "Mick", last_name: "Broadstone" } }, { include: [User] });
-User.create({ title: "Chair", creator: { first_name: "Matt", last_name: "Hansen" } }, { include: [User] });
-User.create({ id: 1, title: "e", Tags: [{ id: 1, name: "c" }, { id: 2, name: "d" }] }, { include: [User] });
+User.create(
+    { name: "Yolo Bear", email: "yolo@bear.com" },
+    { fields: ["name"] },
+);
+User.create(
+    { title: "Chair", User: { first_name: "Mick", last_name: "Broadstone" } },
+    { include: [User] },
+);
+User.create(
+    { title: "Chair", creator: { first_name: "Matt", last_name: "Hansen" } },
+    { include: [User] },
+);
+User.create(
+    {
+        id: 1,
+        title: "e",
+        Tags: [
+            { id: 1, name: "c" },
+            { id: 2, name: "d" },
+        ],
+    },
+    { include: [User] },
+);
 User.create({ id: "My own ID!" }).then((i) => i.isNewRecord);
 
 let findOrRetVal: Bluebird<[AnyInstance, boolean]>;
 findOrRetVal = User.findOrInitialize({ where: { username: "foo" } });
-findOrRetVal = User.findOrInitialize({ where: { username: "foo" }, transaction: t });
-findOrRetVal = User.findOrInitialize({ where: { username: "foo" }, defaults: { foo: "asd" }, transaction: t });
-findOrRetVal = User.findOrInitialize({ where: { username: "foo" }, defaults: { foo: "asd" }, paranoid: false });
+findOrRetVal = User.findOrInitialize({
+    where: { username: "foo" },
+    transaction: t,
+});
+findOrRetVal = User.findOrInitialize({
+    where: { username: "foo" },
+    defaults: { foo: "asd" },
+    transaction: t,
+});
+findOrRetVal = User.findOrInitialize({
+    where: { username: "foo" },
+    defaults: { foo: "asd" },
+    paranoid: false,
+});
 
-findOrRetVal = User.findOrCreate({ where: { a: "b" }, defaults: { json: { a: { b: "c" }, d: [1, 2, 3] } } });
-findOrRetVal = User.findOrCreate({ where: { a: "b" }, defaults: { json: "a", data: "b" } });
+findOrRetVal = User.findOrCreate({
+    where: { a: "b" },
+    defaults: { json: { a: { b: "c" }, d: [1, 2, 3] } },
+});
+findOrRetVal = User.findOrCreate({
+    where: { a: "b" },
+    defaults: { json: "a", data: "b" },
+});
 /* NOTE https://github.com/DefinitelyTyped/DefinitelyTyped/pull/5590
 User.findOrCreate( { where : { a : 'b' }, transaction : t, lock : t.LOCK.UPDATE } );
  */
-findOrRetVal = User.findOrCreate({ where: { a: "b" }, logging: function() {} });
-findOrRetVal = User.findOrCreate({ where: { username: "Username" }, defaults: { data: "some data" }, transaction: t });
-findOrRetVal = User.findOrCreate({ where: { objectId: "asdasdasd" }, defaults: { username: "gottlieb" } });
-findOrRetVal = User.findOrCreate({ where: { id: undefined }, defaults: { name: Math.random().toString() } });
-findOrRetVal = User.findOrCreate({ where: { email: "unique.email.@d.com", companyId: Math.floor(Math.random() * 5) } });
-findOrRetVal = User.findOrCreate({ where: { objectId: 1 }, defaults: { bool: false } });
+findOrRetVal = User.findOrCreate({
+    where: { a: "b" },
+    logging: function () {},
+});
+findOrRetVal = User.findOrCreate({
+    where: { username: "Username" },
+    defaults: { data: "some data" },
+    transaction: t,
+});
+findOrRetVal = User.findOrCreate({
+    where: { objectId: "asdasdasd" },
+    defaults: { username: "gottlieb" },
+});
+findOrRetVal = User.findOrCreate({
+    where: { id: undefined },
+    defaults: { name: Math.random().toString() },
+});
+findOrRetVal = User.findOrCreate({
+    where: {
+        email: "unique.email.@d.com",
+        companyId: Math.floor(Math.random() * 5),
+    },
+});
+findOrRetVal = User.findOrCreate({
+    where: { objectId: 1 },
+    defaults: { bool: false },
+});
 
 let upsertPromiseNoOptions: Bluebird<boolean> = User.upsert({
     id: 42,
     username: "doe",
     foo: s.fn("upper", "mixedCase2"),
 });
-let upsertPromiseWithNonReturningOptions: Bluebird<boolean> = User.upsert({
-    id: 42,
-    username: "doe",
-    foo: s.fn("upper", "mixedCase2"),
-}, { logging: true });
-let upsertPromiseReturning: Bluebird<[AnyInstance, boolean]> = User.upsert({
-    id: 42,
-    username: "doe",
-    foo: s.fn("upper", "mixedCase2"),
-}, { returning: true });
-let upsertPromiseNotReturning: Bluebird<boolean> = User.upsert({
-    id: 42,
-    username: "doe",
-    foo: s.fn("upper", "mixedCase2"),
-}, { returning: false });
+let upsertPromiseWithNonReturningOptions: Bluebird<boolean> = User.upsert(
+    {
+        id: 42,
+        username: "doe",
+        foo: s.fn("upper", "mixedCase2"),
+    },
+    { logging: true },
+);
+let upsertPromiseReturning: Bluebird<[AnyInstance, boolean]> = User.upsert(
+    {
+        id: 42,
+        username: "doe",
+        foo: s.fn("upper", "mixedCase2"),
+    },
+    { returning: true },
+);
+let upsertPromiseNotReturning: Bluebird<boolean> = User.upsert(
+    {
+        id: 42,
+        username: "doe",
+        foo: s.fn("upper", "mixedCase2"),
+    },
+    { returning: false },
+);
 
-User.bulkCreate([{ aNumber: 10 }, { aNumber: 12 }]).then((i) => i[0].isNewRecord);
-User.bulkCreate([{ username: "bar" }, { username: "bar" }, { username: "bar" }]);
+User.bulkCreate([{ aNumber: 10 }, { aNumber: 12 }]).then(
+    (i) => i[0].isNewRecord,
+);
+User.bulkCreate([
+    { username: "bar" },
+    { username: "bar" },
+    { username: "bar" },
+]);
 User.bulkCreate([{}, {}], { validate: true, individualHooks: true });
-User.bulkCreate([{ style: "ipa" }], { logging: function() {} });
-User.bulkCreate([{ a: "b", c: "d", e: "f" }, { a: "b", c: "d", e: "f" }], { fields: ["a", "b"] });
-User.bulkCreate([{ name: "foo", code: "123" }, { code: "c" }, { name: "bar", code: "1" }], { validate: true });
-User.bulkCreate([{ name: "foo", code: "123" }, { code: "1234" }], { fields: ["code"], validate: true });
-User.bulkCreate([{ name: "a", c: "b" }, { name: "e", c: "f" }], { fields: ["e", "f"], ignoreDuplicates: true });
+User.bulkCreate([{ style: "ipa" }], { logging: function () {} });
+User.bulkCreate(
+    [
+        { a: "b", c: "d", e: "f" },
+        { a: "b", c: "d", e: "f" },
+    ],
+    { fields: ["a", "b"] },
+);
+User.bulkCreate(
+    [{ name: "foo", code: "123" }, { code: "c" }, { name: "bar", code: "1" }],
+    { validate: true },
+);
+User.bulkCreate([{ name: "foo", code: "123" }, { code: "1234" }], {
+    fields: ["code"],
+    validate: true,
+});
+User.bulkCreate(
+    [
+        { name: "a", c: "b" },
+        { name: "e", c: "f" },
+    ],
+    { fields: ["e", "f"], ignoreDuplicates: true },
+);
 
 User.truncate();
 User.truncate({ cascade: true });
@@ -1341,36 +1873,74 @@ User.restore({ where: { secretValue: "42" } });
 User.update({ username: "ruben" }, { where: {} });
 User.update({ username: "ruben" }, { where: { access_level: { lt: 5 } } });
 User.update({ username: "ruben" }, { where: { username: "dan" } });
-User.update({ username: "bar" }, { where: { username: "foo" }, transaction: t });
-User.update({ username: "Bill", secretValue: "43" }, { where: { secretValue: "42" }, fields: ["username"] });
+User.update(
+    { username: "bar" },
+    { where: { username: "foo" }, transaction: t },
+);
+User.update(
+    { username: "Bill", secretValue: "43" },
+    { where: { secretValue: "42" }, fields: ["username"] },
+);
 User.update({ username: s.cast("1", "char") }, { where: { username: "John" } });
-User.update({ username: s.fn("upper", s.col("username")) }, { where: { username: "John" } });
-User.update({ username: "Bill" }, { where: { secretValue: "42" }, returning: true });
-User.update({ deletedAt: new Date() }, { where: { username: "dan", deleted_at: null } });
+User.update(
+    { username: s.fn("upper", s.col("username")) },
+    { where: { username: "John" } },
+);
+User.update(
+    { username: "Bill" },
+    { where: { secretValue: "42" }, returning: true },
+);
+User.update(
+    { deletedAt: new Date() },
+    { where: { username: "dan", deleted_at: null } },
+);
 User.update({ secretValue: "43" }, { where: { username: "Peter" }, limit: 1 });
 User.update({ name: Math.random().toString() }, { where: { id: "1" } });
-User.update({ a: { b: 10, c: "d" } }, { where: { username: "Jan" }, sideEffects: false });
-User.update({ geometry: { type: "Point", coordinates: [49.807222, -86.984722] } }, {
-    where: {
-        u: {
-            u: "u",
-            geometry: { type: "Point", coordinates: [49.807222, -86.984722] },
+User.update(
+    { a: { b: 10, c: "d" } },
+    { where: { username: "Jan" }, sideEffects: false },
+);
+User.update(
+    { geometry: { type: "Point", coordinates: [49.807222, -86.984722] } },
+    {
+        where: {
+            u: {
+                u: "u",
+                geometry: {
+                    type: "Point",
+                    coordinates: [49.807222, -86.984722],
+                },
+            },
         },
     },
-});
-User.update({
-    geometry: {
-        type: "Polygon",
-        coordinates: [[[100.0, 0.0], [102.0, 0.0], [102.0, 1.0], [100.0, 1.0], [100.0, 0.0]]],
-    },
-}, {
-    where: {
-        username: {
-            username: "username",
-            geometry: { type: "Point", coordinates: [49.807222, -86.984722] },
+);
+User.update(
+    {
+        geometry: {
+            type: "Polygon",
+            coordinates: [
+                [
+                    [100.0, 0.0],
+                    [102.0, 0.0],
+                    [102.0, 1.0],
+                    [100.0, 1.0],
+                    [100.0, 0.0],
+                ],
+            ],
         },
     },
-});
+    {
+        where: {
+            username: {
+                username: "username",
+                geometry: {
+                    type: "Point",
+                    coordinates: [49.807222, -86.984722],
+                },
+            },
+        },
+    },
+);
 
 User.unscoped().find({ where: { username: "bob" } });
 User.unscoped().count();
@@ -1385,55 +1955,115 @@ User.unscoped().count();
 var queryInterface = s.getQueryInterface();
 
 queryInterface.dropAllTables();
-queryInterface.showAllTables({ logging: function() {} });
-queryInterface.createTable("table", { name: Sequelize.STRING }, { logging: function() {} });
+queryInterface.showAllTables({ logging: function () {} });
+queryInterface.createTable(
+    "table",
+    { name: Sequelize.STRING },
+    { logging: function () {} },
+);
 queryInterface.createTable("skipme", { name: Sequelize.STRING });
 /* NOTE https://github.com/DefinitelyTyped/DefinitelyTyped/pull/5590
 queryInterface.dropAllTables( { skip : ['skipme'] } );
  */
-queryInterface.dropTable("Group", { logging: function() {} });
-queryInterface.addIndex("Group", ["username", "isAdmin"], { logging: function() {} });
-queryInterface.showIndex("Group", { logging: function() {} });
-queryInterface.removeIndex("Group", ["username", "isAdmin"], { logging: function() {} });
+queryInterface.dropTable("Group", { logging: function () {} });
+queryInterface.addIndex("Group", ["username", "isAdmin"], {
+    logging: function () {},
+});
+queryInterface.showIndex("Group", { logging: function () {} });
+queryInterface.removeIndex("Group", ["username", "isAdmin"], {
+    logging: function () {},
+});
 queryInterface.showIndex("Group");
 /* NOTE https://github.com/DefinitelyTyped/DefinitelyTyped/pull/5590
 queryInterface.createTable( 'table', { name : { type : Sequelize.STRING } }, { schema : 'schema' } );
  */
-queryInterface.addIndex({ schema: "a", tableName: "c" }, ["d", "e"], { logging: function() {} }, "schema_table");
-queryInterface.showIndex({ schema: "schema", tableName: "table" }, { logging: function() {} });
+queryInterface.addIndex(
+    { schema: "a", tableName: "c" },
+    ["d", "e"],
+    { logging: function () {} },
+    "schema_table",
+);
+queryInterface.showIndex(
+    { schema: "schema", tableName: "table" },
+    { logging: function () {} },
+);
 queryInterface.addIndex("Group", ["from"]);
 queryInterface.addIndex("Group", ["from"], { indexName: "group_from" });
 queryInterface.addIndex("Group", ["from"], { type: "FULLTEXT" });
 queryInterface.addIndex("Group", ["from"], { indicesType: "FULLTEXT" });
 queryInterface.addIndex("Group", ["from"], { concurrently: true });
-queryInterface.addIndex("Group", ["data"], { using: "gin", operator: "jsonb_path_ops" });
-queryInterface.addIndex("Group", { fields: ["data"], using: "gin", operator: "jsonb_path_ops" });
-queryInterface.describeTable("_Users", { logging: function() {} });
-queryInterface.createTable("s", { table_id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true } });
+queryInterface.addIndex("Group", ["data"], {
+    using: "gin",
+    operator: "jsonb_path_ops",
+});
+queryInterface.addIndex("Group", {
+    fields: ["data"],
+    using: "gin",
+    operator: "jsonb_path_ops",
+});
+queryInterface.describeTable("_Users", { logging: function () {} });
+queryInterface.createTable("s", {
+    table_id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+    },
+});
 /* NOTE https://github.com/DefinitelyTyped/DefinitelyTyped/pull/5590
 queryInterface.insert( null, 'TableWithPK', {}, { raw : true, returning : true, plain : true } );
  */
-queryInterface.createTable("SomeTable", { someEnum: Sequelize.ENUM("value1", "value2", "value3") });
-queryInterface.createTable("SomeTable", { someEnum: { type: Sequelize.ENUM, values: ["b1", "b2", "b3"] } });
-queryInterface.createTable("t", { someEnum: { type: Sequelize.ENUM, values: ["c1", "c2", "c3"], field: "d" } });
+queryInterface.createTable("SomeTable", {
+    someEnum: Sequelize.ENUM("value1", "value2", "value3"),
+});
+queryInterface.createTable("SomeTable", {
+    someEnum: { type: Sequelize.ENUM, values: ["b1", "b2", "b3"] },
+});
+queryInterface.createTable("t", {
+    someEnum: { type: Sequelize.ENUM, values: ["c1", "c2", "c3"], field: "d" },
+});
 /* NOTE https://github.com/DefinitelyTyped/DefinitelyTyped/pull/5590
 queryInterface.createTable( 'User', { name : { type : Sequelize.STRING } }, { schema : 'hero' } );
 queryInterface.rawSelect( 'User', { schema : 'hero', logging : function() {} }, 'name' );
  */
-queryInterface.renameColumn("_Users", "username", "pseudo", { logging: function() {} });
-queryInterface.renameColumn({ schema: "archive", tableName: "Users" }, "username", "pseudo");
-queryInterface.renameColumn("_Users", "username", "pseudo");
-queryInterface.createTable({ tableName: "y", schema: "a" }, {
-    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-    currency: Sequelize.INTEGER,
+queryInterface.renameColumn("_Users", "username", "pseudo", {
+    logging: function () {},
 });
-queryInterface.changeColumn({ tableName: "a", schema: "b" }, "c", { type: Sequelize.FLOAT }, { logging: () => s });
-queryInterface.createTable("users", { id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true } });
+queryInterface.renameColumn(
+    { schema: "archive", tableName: "Users" },
+    "username",
+    "pseudo",
+);
+queryInterface.renameColumn("_Users", "username", "pseudo");
+queryInterface.createTable(
+    { tableName: "y", schema: "a" },
+    {
+        id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+        currency: Sequelize.INTEGER,
+    },
+);
+queryInterface.changeColumn(
+    { tableName: "a", schema: "b" },
+    "c",
+    { type: Sequelize.FLOAT },
+    { logging: () => s },
+);
+queryInterface.createTable("users", {
+    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+});
 queryInterface.bulkInsert({ tableName: "users", schema: "test" }, [{}, {}, {}]);
 queryInterface.getForeignKeysForTables(["users"]);
-queryInterface.createTable("level", { id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true } });
-queryInterface.addColumn("users", "someEnum", Sequelize.ENUM("value1", "value2", "value3"));
-queryInterface.addColumn("users", "so", { type: Sequelize.ENUM, values: ["value1", "value2", "value3"] });
+queryInterface.createTable("level", {
+    id: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
+});
+queryInterface.addColumn(
+    "users",
+    "someEnum",
+    Sequelize.ENUM("value1", "value2", "value3"),
+);
+queryInterface.addColumn("users", "so", {
+    type: Sequelize.ENUM,
+    values: ["value1", "value2", "value3"],
+});
 queryInterface.addColumn({ tableName: "users", schema: "test" }, "enum", {
     type: Sequelize.ENUM,
     values: ["value1", "value2", "value3"],
@@ -1484,18 +2114,30 @@ s.isDefined("");
 s.model("pp");
 s.query("", { raw: true });
 s.query("");
-s.query("").then(function(res) {});
-s.query({ query: "select ? as foo, ? as bar", values: [1, 2] }, { raw: true, replacements: [1, 2] });
+s.query("").then(function (res) {});
+s.query(
+    { query: "select ? as foo, ? as bar", values: [1, 2] },
+    { raw: true, replacements: [1, 2] },
+);
 s.query("", { raw: true, nest: false });
-s.query("select ? as foo, ? as bar", { type: sequelize.QueryTypes.SELECT, replacements: [1, 2] });
-s.query({ query: "select ? as foo, ? as bar", values: [1, 2] }, { type: s.QueryTypes.SELECT });
-s.query("select :one as foo, :two as bar", { raw: true, replacements: { one: 1, two: 2 } });
-s.transaction().then(function(t) {
+s.query("select ? as foo, ? as bar", {
+    type: sequelize.QueryTypes.SELECT,
+    replacements: [1, 2],
+});
+s.query(
+    { query: "select ? as foo, ? as bar", values: [1, 2] },
+    { type: s.QueryTypes.SELECT },
+);
+s.query("select :one as foo, :two as bar", {
+    raw: true,
+    replacements: { one: 1, two: 2 },
+});
+s.transaction().then(function (t) {
     s.set({ foo: "bar" }, { transaction: t });
 });
 s.define("foo", { bar: Sequelize.STRING }, { collate: "utf8_bin" });
 s.define("Foto", { name: Sequelize.STRING }, { tableName: "photos" });
-s.databaseVersion().then(function(version) {});
+s.databaseVersion().then(function (version) {});
 
 //
 //  Sequelize
@@ -1508,17 +2150,22 @@ new Sequelize("db", "user", "pass", {
     port: 99999,
     pool: {},
 });
-new Sequelize("").query("", { type: s.QueryTypes.FOREIGNKEYS, logging: function() {} });
+new Sequelize("").query("", {
+    type: s.QueryTypes.FOREIGNKEYS,
+    logging: function () {},
+});
 new Sequelize("sqlite://test.sqlite");
 new Sequelize("wat", "trololo", "wow", { port: 99999 });
 new Sequelize("localhost", "wtf", "lol", { port: 99999 });
 new Sequelize("sequelize", null, null, {
     replication: {
-        read: [{
-            host: "localhost",
-            username: "omg",
-            password: "lol",
-        }],
+        read: [
+            {
+                host: "localhost",
+                username: "omg",
+                password: "lol",
+            },
+        ],
     },
 });
 new Sequelize({
@@ -1559,18 +2206,22 @@ var testModel = s.define("User", {
     aBool: Sequelize.BOOLEAN,
 });
 const testFrozenModel = s.define("FrozenUser", {}, { freezeTableName: true });
-s.define("UserWithClassAndInstanceMethods", {}, {
-    classMethods: {
-        doSmth: function() {
-            return 1;
+s.define(
+    "UserWithClassAndInstanceMethods",
+    {},
+    {
+        classMethods: {
+            doSmth: function () {
+                return 1;
+            },
+        },
+        instanceMethods: {
+            makeItSo: function () {
+                return 2;
+            },
         },
     },
-    instanceMethods: {
-        makeItSo: function() {
-            return 2;
-        },
-    },
-});
+);
 s.define("UserCol", {
     id: {
         type: Sequelize.STRING,
@@ -1580,89 +2231,135 @@ s.define("UserCol", {
 });
 s.define("UserWithTwoAutoIncrements", {
     userid: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-    userscore: { type: Sequelize.INTEGER, primaryKey: true, autoIncrement: true },
-});
-s.define("Foo", {
-    field: Sequelize.INTEGER,
-}, {
-    validate: {
-        field: function() {},
+    userscore: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
     },
 });
-var UserTable = s.define("UserCol", {
-    aNumber: Sequelize.INTEGER,
-    createdAt: {
-        type: Sequelize.DATE,
-        defaultValue: new Date(),
+s.define(
+    "Foo",
+    {
+        field: Sequelize.INTEGER,
     },
-    updatedAt: {
-        type: Sequelize.DATE,
-        defaultValue: new Date(),
+    {
+        validate: {
+            field: function () {},
+        },
     },
-}, { timestamps: true });
+);
+var UserTable = s.define(
+    "UserCol",
+    {
+        aNumber: Sequelize.INTEGER,
+        createdAt: {
+            type: Sequelize.DATE,
+            defaultValue: new Date(),
+        },
+        updatedAt: {
+            type: Sequelize.DATE,
+            defaultValue: new Date(),
+        },
+    },
+    { timestamps: true },
+);
 
-s.define("UserCol", {
-    aNumber: Sequelize.INTEGER,
-}, {
-    timestamps: true,
-    updatedAt: "updatedOn",
-    createdAt: "dateCreated",
-    deletedAt: "deletedAtThisTime",
-    paranoid: true,
-});
-s.define("UpdatingUser", {
-    name: Sequelize.STRING,
-}, {
-    timestamps: true,
-    updatedAt: false,
-    createdAt: false,
-    deletedAt: "deletedAtThisTime",
-    paranoid: true,
-});
-s.define("TaskBuild", {
-    title: {
-        type: Sequelize.STRING(50),
-        allowNull: false,
-        defaultValue: "",
+s.define(
+    "UserCol",
+    {
+        aNumber: Sequelize.INTEGER,
     },
-}, {
-    setterMethods: {
-        title: function() {},
+    {
+        timestamps: true,
+        updatedAt: "updatedOn",
+        createdAt: "dateCreated",
+        deletedAt: "deletedAtThisTime",
+        paranoid: true,
     },
-});
-s.define("UserCol", {
-    aNumber: Sequelize.INTEGER,
-}, {
-    paranoid: true,
-    underscored: true,
-});
+);
+s.define(
+    "UpdatingUser",
+    {
+        name: Sequelize.STRING,
+    },
+    {
+        timestamps: true,
+        updatedAt: false,
+        createdAt: false,
+        deletedAt: "deletedAtThisTime",
+        paranoid: true,
+    },
+);
+s.define(
+    "TaskBuild",
+    {
+        title: {
+            type: Sequelize.STRING(50),
+            allowNull: false,
+            defaultValue: "",
+        },
+    },
+    {
+        setterMethods: {
+            title: function () {},
+        },
+    },
+);
+s.define(
+    "UserCol",
+    {
+        aNumber: Sequelize.INTEGER,
+    },
+    {
+        paranoid: true,
+        underscored: true,
+    },
+);
 
 s.define("UserWithUniqueUsername", {
-    username: { type: Sequelize.STRING, unique: { name: "user_and_email", msg: "User and email must be unique" } },
+    username: {
+        type: Sequelize.STRING,
+        unique: {
+            name: "user_and_email",
+            msg: "User and email must be unique",
+        },
+    },
     email: { type: Sequelize.STRING, unique: "user_and_email" },
 });
 
-s.define("UserWithUniqueUsername", {
-    user_id: { type: Sequelize.INTEGER },
-    email: { type: Sequelize.STRING },
-}, {
-    indexes: [
-        {
-            name: "user_and_email_index",
-            unique: true,
-            method: "BTREE",
-            fields: ["user_id", { attribute: "email", collate: "en_US", order: "DESC", length: 5 }],
-            where: {
-                user_id: { $not: null },
+s.define(
+    "UserWithUniqueUsername",
+    {
+        user_id: { type: Sequelize.INTEGER },
+        email: { type: Sequelize.STRING },
+    },
+    {
+        indexes: [
+            {
+                name: "user_and_email_index",
+                unique: true,
+                method: "BTREE",
+                fields: [
+                    "user_id",
+                    {
+                        attribute: "email",
+                        collate: "en_US",
+                        order: "DESC",
+                        length: 5,
+                    },
+                ],
+                where: {
+                    user_id: { $not: null },
+                },
             },
-        },
-        {
-            fields: ["data"],
-            using: "gin",
-            operator: "jsonb_path_ops",
-        },
-    ],
-});
+            {
+                fields: ["data"],
+                using: "gin",
+                operator: "jsonb_path_ops",
+            },
+        ],
+    },
+);
 
 s.define("TaskBuild", {
     title: { type: Sequelize.STRING, defaultValue: "a task!" },
@@ -1674,40 +2371,54 @@ s.define("TaskBuild", {
 s.define("ProductWithSettersAndGetters1", {
     price: {
         type: Sequelize.INTEGER,
-        get: function() {
+        get: function () {
             return "answer = " + this.getDataValue("price");
         },
-        set: function(v: number) {
+        set: function (v: number) {
             return this.setDataValue("price", v + 42);
         },
     },
 });
-s.define("ProductWithSettersAndGetters2", {
-    priceInCents: Sequelize.INTEGER,
-}, {
-    setterMethods: {
-        price: function(value) {
-            this.dataValues.priceInCents = value * 100;
+s.define(
+    "ProductWithSettersAndGetters2",
+    {
+        priceInCents: Sequelize.INTEGER,
+    },
+    {
+        setterMethods: {
+            price: function (value) {
+                this.dataValues.priceInCents = value * 100;
+            },
+        },
+        getterMethods: {
+            price: function () {
+                return "$" + this.getDataValue("priceInCents") / 100;
+            },
+
+            priceInCents: function () {
+                return this.dataValues.priceInCents;
+            },
         },
     },
-    getterMethods: {
-        price: function() {
-            return "$" + (this.getDataValue("priceInCents") / 100);
-        },
+);
 
-        priceInCents: function() {
-            return this.dataValues.priceInCents;
+s.define(
+    "post",
+    {
+        title: Sequelize.STRING,
+        authorId: {
+            type: Sequelize.INTEGER,
+            references: testModel,
+            referencesKey: "id",
         },
+    } as any /* TODO please remove `as any` */,
+);
+s.define("post", {
+    title: Sequelize.STRING,
+    authorId: {
+        type: Sequelize.INTEGER,
+        references: { model: testModel, key: "id" },
     },
-});
-
-s.define("post", {
-    title: Sequelize.STRING,
-    authorId: { type: Sequelize.INTEGER, references: testModel, referencesKey: "id" },
-} as any /* TODO please remove `as any` */);
-s.define("post", {
-    title: Sequelize.STRING,
-    authorId: { type: Sequelize.INTEGER, references: { model: testModel, key: "id" } },
 });
 
 s.define("User", {
@@ -1715,89 +2426,105 @@ s.define("User", {
     geometry: Sequelize.GEOMETRY("POINT"),
 });
 
-s.define("ScopeMe", {
-    username: Sequelize.STRING,
-    email: Sequelize.STRING,
-    access_level: Sequelize.INTEGER,
-    other_value: Sequelize.INTEGER,
-    parent_id: Sequelize.INTEGER,
-}, {
-    defaultScope: {
-        where: {
-            access_level: {
-                $gte: 5,
-            },
-        },
+s.define(
+    "ScopeMe",
+    {
+        username: Sequelize.STRING,
+        email: Sequelize.STRING,
+        access_level: Sequelize.INTEGER,
+        other_value: Sequelize.INTEGER,
+        parent_id: Sequelize.INTEGER,
     },
-    scopes: {
-        isTony: {
-            where: {
-                username: "tony",
-            },
-        },
-    },
-});
-s.define("company", {
-    active: Sequelize.BOOLEAN,
-}, {
-    defaultScope: {
-        where: { active: true },
-    },
-    scopes: {
-        notActive: {
-            where: {
-                active: false,
-            },
-        },
-        reversed: {
-            order: [["id", "DESC"]],
-        },
-    },
-});
-s.define("profile", {
-    active: Sequelize.BOOLEAN,
-}, {
-    defaultScope: {
-        where: { active: true },
-    },
-    scopes: {
-        notActive: {
-            where: {
-                active: false,
-            },
-        },
-    },
-});
-
-s.define("ScopeMe", {
-    username: Sequelize.STRING,
-    email: Sequelize.STRING,
-    access_level: Sequelize.TINYINT,
-    other_value: Sequelize.INTEGER,
-}, {
-    defaultScope: {
-        where: {
-            access_level: {
-                $gte: 5,
-            },
-        },
-    },
-    scopes: {
-        lowAccess: {
+    {
+        defaultScope: {
             where: {
                 access_level: {
-                    $lte: 5,
+                    $gte: 5,
                 },
             },
         },
-        withOrder: {
-            order: "username",
+        scopes: {
+            isTony: {
+                where: {
+                    username: "tony",
+                },
+            },
         },
     },
-});
+);
+s.define(
+    "company",
+    {
+        active: Sequelize.BOOLEAN,
+    },
+    {
+        defaultScope: {
+            where: { active: true },
+        },
+        scopes: {
+            notActive: {
+                where: {
+                    active: false,
+                },
+            },
+            reversed: {
+                order: [["id", "DESC"]],
+            },
+        },
+    },
+);
+s.define(
+    "profile",
+    {
+        active: Sequelize.BOOLEAN,
+    },
+    {
+        defaultScope: {
+            where: { active: true },
+        },
+        scopes: {
+            notActive: {
+                where: {
+                    active: false,
+                },
+            },
+        },
+    },
+);
+
+s.define(
+    "ScopeMe",
+    {
+        username: Sequelize.STRING,
+        email: Sequelize.STRING,
+        access_level: Sequelize.TINYINT,
+        other_value: Sequelize.INTEGER,
+    },
+    {
+        defaultScope: {
+            where: {
+                access_level: {
+                    $gte: 5,
+                },
+            },
+        },
+        scopes: {
+            lowAccess: {
+                where: {
+                    access_level: {
+                        $lte: 5,
+                    },
+                },
+            },
+            withOrder: {
+                order: "username",
+            },
+        },
+    },
+);
 
 // Test convention method used to associate models after creation
-Object.keys(s.models).forEach(modelName => {
+Object.keys(s.models).forEach((modelName) => {
     if (s.models[modelName].associate) {
         s.models[modelName].associate(s.models);
     }
@@ -1845,187 +2572,225 @@ Chair.findAll<any>({
     },
 });
 
-s.define("ScopeMe", {
-    username: Sequelize.STRING,
-    email: Sequelize.STRING,
-    access_level: Sequelize.INTEGER,
-    other_value: Sequelize.INTEGER,
-}, {
-    defaultScope: {
-        where: {
-            access_level: {
-                $gte: 5,
-            },
-        },
+s.define(
+    "ScopeMe",
+    {
+        username: Sequelize.STRING,
+        email: Sequelize.STRING,
+        access_level: Sequelize.INTEGER,
+        other_value: Sequelize.INTEGER,
     },
-    scopes: {
-        lowAccess: {
+    {
+        defaultScope: {
             where: {
                 access_level: {
-                    $lte: 5,
+                    $gte: 5,
+                },
+            },
+        },
+        scopes: {
+            lowAccess: {
+                where: {
+                    access_level: {
+                        $lte: 5,
+                    },
                 },
             },
         },
     },
-});
+);
 
-s.define("user", {
-    id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-        field: "userId",
-    },
-    name: {
-        type: Sequelize.STRING,
-        field: "full_name",
-    },
-    taskCount: {
-        type: Sequelize.INTEGER,
-        field: "task_count",
-        defaultValue: 0,
-        allowNull: false,
-    },
-}, {
-    tableName: "users",
-    timestamps: false,
-});
-s.define("task", {
-    id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-        field: "taskId",
-    },
-    title: {
-        type: Sequelize.STRING,
-        field: "name",
-    },
-}, {
-    tableName: "tasks",
-    timestamps: false,
-});
-s.define("comment", {
-    id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true,
-        field: "commentId",
-    },
-    text: {
-        type: Sequelize.STRING,
-        field: "comment_text",
-    },
-    notes: {
-        type: Sequelize.STRING,
-        field: "notes",
-    },
-}, {
-    tableName: "comments",
-    timestamps: false,
-});
-s.define("test", {
-    id: {
-        type: Sequelize.INTEGER,
-        field: "test_id",
-        autoIncrement: true,
-        primaryKey: true,
-        validate: {
-            min: 1,
+s.define(
+    "user",
+    {
+        id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+            field: "userId",
+        },
+        name: {
+            type: Sequelize.STRING,
+            field: "full_name",
+        },
+        taskCount: {
+            type: Sequelize.INTEGER,
+            field: "task_count",
+            defaultValue: 0,
+            allowNull: false,
         },
     },
-    title: {
-        allowNull: false,
-        type: Sequelize.STRING(255),
-        field: "test_title",
+    {
+        tableName: "users",
+        timestamps: false,
     },
-}, {
-    timestamps: true,
-    underscored: true,
-    freezeTableName: true,
-});
-s.define("testBooeanVersionOption", {
-    version: {
-        type: Sequelize.INTEGER,
+);
+s.define(
+    "task",
+    {
+        id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+            field: "taskId",
+        },
+        title: {
+            type: Sequelize.STRING,
+            field: "name",
+        },
     },
-}, {
-    version: true,
-});
-s.define("testStringVersionOption", {
-    nameOfOptimisticLockColumn: {
-        type: Sequelize.INTEGER,
+    {
+        tableName: "tasks",
+        timestamps: false,
     },
-}, {
-    version: "nameOfOptimisticLockColumn",
-});
-s.define("User", {
-    deletedAt: {
-        type: Sequelize.DATE,
-        field: "deleted_at",
+);
+s.define(
+    "comment",
+    {
+        id: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+            primaryKey: true,
+            autoIncrement: true,
+            field: "commentId",
+        },
+        text: {
+            type: Sequelize.STRING,
+            field: "comment_text",
+        },
+        notes: {
+            type: Sequelize.STRING,
+            field: "notes",
+        },
     },
-}, {
-    timestamps: true,
-    paranoid: true,
-});
+    {
+        tableName: "comments",
+        timestamps: false,
+    },
+);
+s.define(
+    "test",
+    {
+        id: {
+            type: Sequelize.INTEGER,
+            field: "test_id",
+            autoIncrement: true,
+            primaryKey: true,
+            validate: {
+                min: 1,
+            },
+        },
+        title: {
+            allowNull: false,
+            type: Sequelize.STRING(255),
+            field: "test_title",
+        },
+    },
+    {
+        timestamps: true,
+        underscored: true,
+        freezeTableName: true,
+    },
+);
+s.define(
+    "testBooeanVersionOption",
+    {
+        version: {
+            type: Sequelize.INTEGER,
+        },
+    },
+    {
+        version: true,
+    },
+);
+s.define(
+    "testStringVersionOption",
+    {
+        nameOfOptimisticLockColumn: {
+            type: Sequelize.INTEGER,
+        },
+    },
+    {
+        version: "nameOfOptimisticLockColumn",
+    },
+);
+s.define(
+    "User",
+    {
+        deletedAt: {
+            type: Sequelize.DATE,
+            field: "deleted_at",
+        },
+    },
+    {
+        timestamps: true,
+        paranoid: true,
+    },
+);
 
-s.define("TriggerTest", {
-    id: {
-        type: Sequelize.INTEGER,
-        field: "test_id",
-        autoIncrement: true,
-        primaryKey: true,
-        validate: {
-            min: 1,
+s.define(
+    "TriggerTest",
+    {
+        id: {
+            type: Sequelize.INTEGER,
+            field: "test_id",
+            autoIncrement: true,
+            primaryKey: true,
+            validate: {
+                min: 1,
+            },
+        },
+        title: {
+            allowNull: false,
+            type: Sequelize.STRING(255),
+            field: "test_title",
         },
     },
-    title: {
-        allowNull: false,
-        type: Sequelize.STRING(255),
-        field: "test_title",
+    {
+        timestamps: false,
+        underscored: true,
+        hasTrigger: true,
     },
-}, {
-    timestamps: false,
-    underscored: true,
-    hasTrigger: true,
-});
+);
 
-s.define("DefineOptionsIndexesTest", {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true,
-        validate: {
-            min: 1,
+s.define(
+    "DefineOptionsIndexesTest",
+    {
+        id: {
+            type: Sequelize.INTEGER,
+            autoIncrement: true,
+            primaryKey: true,
+            validate: {
+                min: 1,
+            },
+        },
+        email: {
+            allowNull: false,
+            type: Sequelize.STRING(255),
+            set: function (val: any) {
+                if (typeof val === "string") {
+                    val = val.toLowerCase();
+                } else {
+                    throw new Error("email must be a string");
+                }
+                this.setDataValue("email", val);
+            },
         },
     },
-    email: {
-        allowNull: false,
-        type: Sequelize.STRING(255),
-        set: function(val: any) {
-            if (typeof val === "string") {
-                val = val.toLowerCase();
-            } else {
-                throw new Error("email must be a string");
-            }
-            this.setDataValue("email", val);
-        },
+    {
+        timestamps: false,
+        indexes: [
+            {
+                name: "DefineOptionsIndexesTest_lower_email",
+                unique: true,
+                type: "SPATIAL",
+                fields: [Sequelize.fn("LOWER", Sequelize.col("email"))],
+            },
+        ],
     },
-}, {
-    timestamps: false,
-    indexes: [
-        {
-            name: "DefineOptionsIndexesTest_lower_email",
-            unique: true,
-            type: "SPATIAL",
-            fields: [
-                Sequelize.fn("LOWER", Sequelize.col("email")),
-            ],
-        },
-    ],
-});
+);
 
 //
 //  Transaction
@@ -2034,7 +2799,7 @@ s.define("DefineOptionsIndexesTest", {
 //  https://github.com/sequelize/sequelize/blob/v3.4.1/test/integration/transaction.test.js
 //
 
-s.transaction().then(function(t) {
+s.transaction().then(function (t) {
     t.commit();
     t.rollback();
 
@@ -2057,14 +2822,17 @@ s.transaction().then(function(t) {
         },
         transaction: t,
     });
-    User.update({
-        active: true,
-    }, {
-        where: {
-            active: false,
+    User.update(
+        {
+            active: true,
         },
-        transaction: t,
-    });
+        {
+            where: {
+                active: false,
+            },
+            transaction: t,
+        },
+    );
     User.find({
         where: {
             username: "jan",
@@ -2083,7 +2851,7 @@ s.transaction().then(function(t) {
 
 s.transaction({
     isolationLevel: s.Transaction.ISOLATION_LEVELS.READ_COMMITTED,
-}).then(function(t2) {
+}).then(function (t2) {
     return User.find({
         where: {
             username: "jan",
@@ -2093,14 +2861,20 @@ s.transaction({
     });
 });
 
-s.transaction(function() {
+s.transaction(function () {
     return Bluebird.resolve();
 });
-s.transaction({ isolationLevel: "SERIALIZABLE" }, function(t) {
+s.transaction({ isolationLevel: "SERIALIZABLE" }, function (t) {
     return Bluebird.resolve();
 });
-s.transaction({ isolationLevel: s.Transaction.ISOLATION_LEVELS.SERIALIZABLE }, (t) => Bluebird.resolve());
-s.transaction({ isolationLevel: s.Transaction.ISOLATION_LEVELS.READ_COMMITTED }, (t) => Bluebird.resolve());
+s.transaction(
+    { isolationLevel: s.Transaction.ISOLATION_LEVELS.SERIALIZABLE },
+    (t) => Bluebird.resolve(),
+);
+s.transaction(
+    { isolationLevel: s.Transaction.ISOLATION_LEVELS.READ_COMMITTED },
+    (t) => Bluebird.resolve(),
+);
 
 // transaction types
 new Sequelize("", { transactionType: "DEFERRED" });
@@ -2108,13 +2882,18 @@ new Sequelize("", { transactionType: Sequelize.Transaction.TYPES.DEFERRED });
 new Sequelize("", { transactionType: Sequelize.Transaction.TYPES.IMMEDIATE });
 new Sequelize("", { transactionType: Sequelize.Transaction.TYPES.EXCLUSIVE });
 s.transaction({ type: "DEFERRED" }, (t) => Bluebird.resolve());
-s.transaction({ type: s.Transaction.TYPES.DEFERRED }, (t) => Bluebird.resolve());
-s.transaction({ type: s.Transaction.TYPES.IMMEDIATE }, (t) => Bluebird.resolve());
-s.transaction({ type: s.Transaction.TYPES.EXCLUSIVE }, (t) => Bluebird.resolve());
+s.transaction({ type: s.Transaction.TYPES.DEFERRED }, (t) =>
+    Bluebird.resolve(),
+);
+s.transaction({ type: s.Transaction.TYPES.IMMEDIATE }, (t) =>
+    Bluebird.resolve(),
+);
+s.transaction({ type: s.Transaction.TYPES.EXCLUSIVE }, (t) =>
+    Bluebird.resolve(),
+);
 
 // promise transaction
-s.transaction(async () => {
-});
+s.transaction(async () => {});
 s.transaction((): Promise<void> => {
     return Promise.resolve();
 });
@@ -2136,5 +2915,5 @@ s.sync({
     searchPath: "some/path/",
     schema: "schema",
     logging: () => {},
-    match: new RegExp("\d{4,}"),
+    match: new RegExp("d{4,}"),
 });

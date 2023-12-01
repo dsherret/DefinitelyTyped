@@ -122,11 +122,17 @@ export interface Node {
 
     updateMiddlegroundElementsTooltip: (middleG: SVGGElement) => void;
 
-    updateMiddlegroundElementsText: (gMiddlegroundTextNodes: SVGGElement) => void;
+    updateMiddlegroundElementsText: (
+        gMiddlegroundTextNodes: SVGGElement,
+    ) => void;
 
-    updateMiddlegroundElementsImage: (gMiddlegroundImageNodes: SVGGElement) => void;
+    updateMiddlegroundElementsImage: (
+        gMiddlegroundImageNodes: SVGGElement,
+    ) => void;
 
-    updateMiddlegroundElementsSymbol: (gMiddlegroundSymbolNodes: SVGGElement) => void;
+    updateMiddlegroundElementsSymbol: (
+        gMiddlegroundSymbolNodes: SVGGElement,
+    ) => void;
 
     updateMiddlegroundElementsSVG: (gMiddlegroundSVGNodes: SVGGElement) => void;
 
@@ -277,7 +283,12 @@ export interface Node {
      * @param values
      * @param isNegative
      */
-    addRelatedBranch: (n: Node, relPath: Node[], values: Node[], isNegative: boolean) => void;
+    addRelatedBranch: (
+        n: Node,
+        relPath: Node[],
+        values: Node[],
+        isNegative: boolean,
+    ) => void;
 
     /**
      * A value is defined with the following structure
@@ -308,7 +319,11 @@ export interface Node {
      * @param callback
      * @param directionAngle
      */
-    loadRelationshipData: (n: Node, callback: () => void, directionAngle: number) => void;
+    loadRelationshipData: (
+        n: Node,
+        callback: () => void,
+        directionAngle: number,
+    ) => void;
 
     /**
      * Expands all the relationships available in node.

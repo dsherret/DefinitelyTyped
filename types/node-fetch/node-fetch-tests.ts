@@ -1,5 +1,13 @@
 import { Agent } from "http";
-import fetch, { AbortError, Blob, FetchError, Headers, Request, RequestInit, Response } from "node-fetch";
+import fetch, {
+    AbortError,
+    Blob,
+    FetchError,
+    Headers,
+    Request,
+    RequestInit,
+    Response,
+} from "node-fetch";
 import { URL } from "url";
 
 function test_AbortError() {
@@ -66,19 +74,23 @@ function test_fetchUrlWithRequestObject() {
             addEventListener: (
                 type: "abort",
                 listener: (event: any) => any,
-                options?: boolean | {
-                    capture?: boolean | undefined;
-                    once?: boolean | undefined;
-                    passive?: boolean | undefined;
-                },
+                options?:
+                    | boolean
+                    | {
+                          capture?: boolean | undefined;
+                          once?: boolean | undefined;
+                          passive?: boolean | undefined;
+                      },
             ) => undefined,
 
             removeEventListener: (
                 type: "abort",
                 listener: (event: any) => any,
-                options?: boolean | {
-                    capture?: boolean | undefined;
-                },
+                options?:
+                    | boolean
+                    | {
+                          capture?: boolean | undefined;
+                      },
             ) => undefined,
 
             dispatchEvent: (event: any) => false,
@@ -92,7 +104,11 @@ function test_fetchUrlWithRequestObject() {
     );
     const timeout: number = request.timeout;
     const size: number = request.size;
-    const agent: Agent | ((parsedUrl: URL) => boolean | Agent | undefined) | boolean | undefined = request.agent;
+    const agent:
+        | Agent
+        | ((parsedUrl: URL) => boolean | Agent | undefined)
+        | boolean
+        | undefined = request.agent;
     const protocol: string = request.protocol;
 
     handlePromise(fetch(request));
@@ -128,19 +144,23 @@ function test_fetchUrlObjectWithRequestObject() {
             addEventListener: (
                 type: "abort",
                 listener: (event: any) => any,
-                options?: boolean | {
-                    capture?: boolean | undefined;
-                    once?: boolean | undefined;
-                    passive?: boolean | undefined;
-                },
+                options?:
+                    | boolean
+                    | {
+                          capture?: boolean | undefined;
+                          once?: boolean | undefined;
+                          passive?: boolean | undefined;
+                      },
             ) => undefined,
 
             removeEventListener: (
                 type: "abort",
                 listener: (event: any) => any,
-                options?: boolean | {
-                    capture?: boolean | undefined;
-                },
+                options?:
+                    | boolean
+                    | {
+                          capture?: boolean | undefined;
+                      },
             ) => undefined,
 
             dispatchEvent: (event: any) => false,
@@ -154,14 +174,18 @@ function test_fetchUrlObjectWithRequestObject() {
     );
     const timeout: number = request.timeout;
     const size: number = request.size;
-    const agent: Agent | ((parsedUrl: URL) => boolean | Agent | undefined) | boolean | undefined = request.agent;
+    const agent:
+        | Agent
+        | ((parsedUrl: URL) => boolean | Agent | undefined)
+        | boolean
+        | undefined = request.agent;
     const protocol: string = request.protocol;
 
     handlePromise(fetch(request));
 }
 
 function test_globalFetchVar() {
-    fetch("http://test.com", {}).then(response => {
+    fetch("http://test.com", {}).then((response) => {
         // for test only
     });
 }
@@ -171,18 +195,16 @@ function handlePromise(
     isArrayBuffer: boolean = false,
 ) {
     promise
-        .then(
-            (response): Promise<string | ArrayBuffer> => {
-                if (response.type === "basic") {
-                    // for test only
-                }
-                if (isArrayBuffer) {
-                    return response.arrayBuffer();
-                } else {
-                    return response.text();
-                }
-            },
-        )
+        .then((response): Promise<string | ArrayBuffer> => {
+            if (response.type === "basic") {
+                // for test only
+            }
+            if (isArrayBuffer) {
+                return response.arrayBuffer();
+            } else {
+                return response.text();
+            }
+        })
         .then((text: string | ArrayBuffer) => {
             console.log(text);
         });
@@ -225,7 +247,7 @@ function test_Blob() {
 }
 
 function test_ResponseInit() {
-    fetch("http://test.com", {}).then(response => {
+    fetch("http://test.com", {}).then((response) => {
         new Response(response.body);
         new Response(response.body, {
             url: response.url,
@@ -257,19 +279,23 @@ function test_AbortSignal() {
         addEventListener: (
             type: "abort",
             listener: (event: any) => any,
-            options?: boolean | {
-                capture?: boolean | undefined;
-                once?: boolean | undefined;
-                passive?: boolean | undefined;
-            },
+            options?:
+                | boolean
+                | {
+                      capture?: boolean | undefined;
+                      once?: boolean | undefined;
+                      passive?: boolean | undefined;
+                  },
         ) => undefined,
 
         removeEventListener: (
             type: "abort",
             listener: (event: any) => any,
-            options?: boolean | {
-                capture?: boolean | undefined;
-            },
+            options?:
+                | boolean
+                | {
+                      capture?: boolean | undefined;
+                  },
         ) => undefined,
 
         dispatchEvent: (event: any) => false,
@@ -284,19 +310,23 @@ function test_AbortSignal() {
         addEventListener: (
             type: "abort",
             listener: (event: any) => any,
-            options?: boolean | {
-                capture?: boolean | undefined;
-                once?: boolean | undefined;
-                passive?: boolean | undefined;
-            },
+            options?:
+                | boolean
+                | {
+                      capture?: boolean | undefined;
+                      once?: boolean | undefined;
+                      passive?: boolean | undefined;
+                  },
         ) => {},
 
         removeEventListener: (
             type: "abort",
             listener: (event: any) => any,
-            options?: boolean | {
-                capture?: boolean | undefined;
-            },
+            options?:
+                | boolean
+                | {
+                      capture?: boolean | undefined;
+                  },
         ) => {},
 
         dispatchEvent: (event: any) => true,
@@ -311,19 +341,23 @@ function test_AbortSignal() {
         addEventListener: (
             type: "abort",
             listener: (event: string) => string,
-            options?: boolean | {
-                capture?: boolean | undefined;
-                once?: boolean | undefined;
-                passive?: boolean | undefined;
-            },
+            options?:
+                | boolean
+                | {
+                      capture?: boolean | undefined;
+                      once?: boolean | undefined;
+                      passive?: boolean | undefined;
+                  },
         ) => undefined,
 
         removeEventListener: (
             type: "abort",
             listener: (event: any) => any,
-            options?: boolean | {
-                capture?: boolean | undefined;
-            },
+            options?:
+                | boolean
+                | {
+                      capture?: boolean | undefined;
+                  },
         ) => undefined,
 
         dispatchEvent: (event: any) => false,

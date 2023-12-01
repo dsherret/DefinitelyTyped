@@ -11,7 +11,9 @@ export interface TriggerProps {
 }
 
 type ExcludedModalProps = "onRequestClose" | "onRequestSubmit" | "open";
-export interface ModalWrapperProps extends Omit<ModalProps, ExcludedModalProps>, TriggerProps {
+export interface ModalWrapperProps
+    extends Omit<ModalProps, ExcludedModalProps>,
+        TriggerProps {
     handleOpen?(e: React.MouseEvent<HTMLElement>): void;
     handleSubmit(): boolean;
     shouldCloseAfterSubmit?: boolean | undefined;

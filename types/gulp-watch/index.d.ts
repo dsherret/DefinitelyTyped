@@ -21,6 +21,10 @@ interface IWatchStream extends NodeJS.ReadWriteStream {
 type Cb = (file: File & { event: "add" | "change" | "unlink" }) => void;
 
 declare function watch(glob: string | string[], callback?: Cb): IWatchStream;
-declare function watch(glob: string | string[], options?: IOptions, callback?: Cb): IWatchStream;
+declare function watch(
+    glob: string | string[],
+    options?: IOptions,
+    callback?: Cb,
+): IWatchStream;
 declare namespace watch {}
 export = watch;

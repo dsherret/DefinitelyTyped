@@ -28,32 +28,29 @@ interface CustomValidationOptions extends Joi.ValidationOptions {
     myOption: number;
 }
 
-const inputValidationFunction: Hapi.ValidationFunctionForRouteInput<CustomValidationOptions> = (
-    value,
-    options,
-    next,
-) => {
+const inputValidationFunction: Hapi.ValidationFunctionForRouteInput<
+    CustomValidationOptions
+> = (value, options, next) => {
     options.myOption; // check custom options
     options.context.auth.artifacts; // check context
     next(null, value); // check with value
     next(); // check without value
 };
 
-const validateWithFunctions: Hapi.RouteValidationConfigurationObject<CustomValidationOptions> = {
-    params: inputValidationFunction,
-    headers: inputValidationFunction,
-    payload: inputValidationFunction,
-    query: inputValidationFunction,
-    options: {
-        myOption: 18,
-    },
-};
+const validateWithFunctions: Hapi.RouteValidationConfigurationObject<CustomValidationOptions> =
+    {
+        params: inputValidationFunction,
+        headers: inputValidationFunction,
+        payload: inputValidationFunction,
+        query: inputValidationFunction,
+        options: {
+            myOption: 18,
+        },
+    };
 
-const responseValidationFunction: Hapi.ValidationFunctionForRouteResponse<CustomValidationOptions> = (
-    value,
-    options,
-    next,
-) => {
+const responseValidationFunction: Hapi.ValidationFunctionForRouteResponse<
+    CustomValidationOptions
+> = (value, options, next) => {
     options.myOption; // check custom options
     options.context.auth.isAuthenticated; // check context
     next(null, value); // check with value

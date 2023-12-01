@@ -32,7 +32,9 @@ jsf.extend("faker", () => {
 
     faker.mixin("custom", {
         statement(length: number) {
-            return `${faker.name.firstName()} has ${faker.finance.amount()} on ${faker.finance.account(length)}.`;
+            return `${faker.name.firstName()} has ${faker.finance.amount()} on ${faker.finance.account(
+                length,
+            )}.`;
         },
     });
 
@@ -43,7 +45,10 @@ jsf.extend("faker", () => {
 jsf.format("semver", () => jsf.random.randexp("\\d\\.\\d\\.[1-9]\\d?"));
 
 // add custom format using object input format
-jsf.format({ name: "semver2", callback: () => jsf.random.randexp("\\d\\.\\d\\.[1-9]\\d?") });
+jsf.format({
+    name: "semver2",
+    callback: () => jsf.random.randexp("\\d\\.\\d\\.[1-9]\\d?"),
+});
 
 // register an option using arg input format
 jsf.option("failOnInvalidTypes", false);
@@ -84,7 +89,15 @@ const testSchema: Schema = {
                     chance: "user",
                 },
             },
-            required: ["id", "name", "email", "version", "version2", "reffed", "randomname"],
+            required: [
+                "id",
+                "name",
+                "email",
+                "version",
+                "version2",
+                "reffed",
+                "randomname",
+            ],
         },
     },
     required: ["user"],
@@ -119,7 +132,7 @@ const generatedList = jsf.generate(testListSchema);
 generatedList.forEach(testItem);
 
 // resolve
-jsf.resolve(testSchema, testRef).then(res => {
+jsf.resolve(testSchema, testRef).then((res) => {
     res.forEach(testItem);
 });
 

@@ -1,12 +1,18 @@
 import { Location } from "./Destinations";
 
 declare class Team {
-    autoDispatch(id: string, obj?: Team.AutoDispatchTeamProps): Promise<Team.AutoDispatchTeamResult>;
+    autoDispatch(
+        id: string,
+        obj?: Team.AutoDispatchTeamProps,
+    ): Promise<Team.AutoDispatchTeamResult>;
     create(obj: any): Promise<Team.OnfleetTeam>;
     deleteOne(id: string): Promise<void>;
     get(): Promise<Team.OnfleetTeam[]>;
     get(id: string): Promise<Team.OnfleetTeam>;
-    getWorkerEta(id: string, obj?: Team.GetWorkerETAProps): Promise<Team.GetWorkerEtaResult>;
+    getWorkerEta(
+        id: string,
+        obj?: Team.GetWorkerETAProps,
+    ): Promise<Team.GetWorkerEtaResult>;
     insertTask(id: string, obj: { tasks: string[] }): Promise<Team.OnfleetTeam>;
     update(id: string, obj: Team.UpdateTeamProps): Promise<Team.OnfleetTeam>;
 }
@@ -107,7 +113,12 @@ declare namespace Team {
         /**
          * Vehicle types to ignore in the query. Valid vehicle types are CAR, MOTORCYCLE, BICYCLE, TRUCK
          */
-        restrictedVehicleTypes?: "BICYCLE" | "CAR" | "MOTORCYCLE" | "TRUCK" | undefined;
+        restrictedVehicleTypes?:
+            | "BICYCLE"
+            | "CAR"
+            | "MOTORCYCLE"
+            | "TRUCK"
+            | undefined;
         /**
          * The expected time a worker will take at the pickupLocation, dropoffLocation,
          * or both (as applicable)

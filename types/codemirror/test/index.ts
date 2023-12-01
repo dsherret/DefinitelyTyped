@@ -6,10 +6,10 @@ const myCodeMirror2: CodeMirror.Editor = CodeMirror(document.body, {
     value: "function myScript(){return 100;}\n",
     mode: { name: "javascript", json: true },
     extraKeys: {
-        Enter: cm => {
+        Enter: (cm) => {
             console.log("save");
         },
-        Esc: cm => {
+        Esc: (cm) => {
             return CodeMirror.Pass;
         },
     },
@@ -18,7 +18,7 @@ const myCodeMirror2: CodeMirror.Editor = CodeMirror(document.body, {
 const myCodeMirror2_1: CodeMirror.Editor = CodeMirror(document.body, {
     extraKeys: {
         // @ts-expect-error
-        "Shift-Enter": cm => {
+        "Shift-Enter": (cm) => {
             return 42;
         }, // not a valid return value
     },
@@ -32,7 +32,7 @@ const to = range.to();
 
 const myTextArea: HTMLTextAreaElement = undefined!;
 const myCodeMirror3: CodeMirror.Editor = CodeMirror(
-    elt => {
+    (elt) => {
         myTextArea.parentNode!.replaceChild(elt, myTextArea);
     },
     { value: myTextArea.value },
@@ -52,13 +52,26 @@ myCodeMirror.getCursor();
 myCodeMirror.getCursor("from");
 myCodeMirror.setCursor({ ch: 1, line: 0 });
 
-myCodeMirror.on("renderLine", (instance: CodeMirror.Editor, line: CodeMirror.LineHandle, element: HTMLElement) => {});
+myCodeMirror.on(
+    "renderLine",
+    (
+        instance: CodeMirror.Editor,
+        line: CodeMirror.LineHandle,
+        element: HTMLElement,
+    ) => {},
+);
 
-myCodeMirror.on("beforeChange", (instance: CodeMirror.Editor, change: CodeMirror.EditorChangeCancellable) => {
-    // @ts-expect-error
-    change.update();
-    if (change.update != null) change.update();
-});
+myCodeMirror.on(
+    "beforeChange",
+    (
+        instance: CodeMirror.Editor,
+        change: CodeMirror.EditorChangeCancellable,
+    ) => {
+        // @ts-expect-error
+        change.update();
+        if (change.update != null) change.update();
+    },
+);
 
 CodeMirror.registerHelper("lint", "javascript", {});
 

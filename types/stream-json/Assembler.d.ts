@@ -28,7 +28,10 @@ declare class Assembler extends EventEmitter {
     on(event: "done", listener: (asm: Assembler) => void): this;
     once(event: "done", listener: (asm: Assembler) => void): this;
     prependListener(event: "done", listener: (asm: Assembler) => void): this;
-    prependOnceListener(event: "done", listener: (asm: Assembler) => void): this;
+    prependOnceListener(
+        event: "done",
+        listener: (asm: Assembler) => void,
+    ): this;
     removeListener(event: "done", listener: (asm: Assembler) => void): this;
 }
 

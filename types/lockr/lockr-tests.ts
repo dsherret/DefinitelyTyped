@@ -1,7 +1,7 @@
 Lockr.set("test", 123);
 Lockr.sadd("array", 2);
 Lockr.sadd("array", 3);
-Lockr.set("hash", { "test": 123, "hey": "whatsup" });
+Lockr.set("hash", { test: 123, hey: "whatsup" });
 Lockr.set("hash", [1, 2, 3]);
 Lockr.set("valueFalse", false);
 Lockr.set("value0", 0);

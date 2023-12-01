@@ -28,5 +28,8 @@ export class PatternMatcher {
      * @param replacer The string or function to replace. This is the same as the 2nd argument of `String.prototype.replace`.
      * @returns The replaced string.
      */
-    [Symbol.replace](str: string, replacer: string | ((...strs: string[]) => string)): string;
+    [Symbol.replace](
+        str: string,
+        replacer: string | ((...strs: string[]) => string),
+    ): string;
 }

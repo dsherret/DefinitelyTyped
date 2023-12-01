@@ -1,6 +1,10 @@
 export class Vector {
     static fromAngle(angle: number, outVector?: Vector): Vector;
-    static randomRange(vectorMin: Vector, vectorMax: Vector, outVector?: Vector): Vector;
+    static randomRange(
+        vectorMin: Vector,
+        vectorMax: Vector,
+        outVector?: Vector,
+    ): Vector;
     constructor(x?: number, y?: number);
     x: number;
     y: number;

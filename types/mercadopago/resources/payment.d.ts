@@ -1,17 +1,28 @@
-import { DefaultConfigurationOmitQs, SearchConfiguration } from "../models/default-configuration.model";
+import {
+    DefaultConfigurationOmitQs,
+    SearchConfiguration,
+} from "../models/default-configuration.model";
 import { CapturePartialPaymentPayload } from "../models/payment/capture-partial-payload.model";
 import { CreatePaymentPayload } from "../models/payment/create-payload.model";
 import { UpdatePaymentPayload } from "../models/payment/update-payload.model";
 import { CallbackFunction } from "../shared/types";
 import { ExecOptions, MercadoPagoResponse } from "../utils/mercadopago-respose";
 
-export type PaymentCreateResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, CreatePaymentPayload>>;
+export type PaymentCreateResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, CreatePaymentPayload>
+>;
 
-export type PaymentUpdateResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, CreatePaymentPayload>>;
+export type PaymentUpdateResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, CreatePaymentPayload>
+>;
 
-export type PaymentGetResponse = MercadoPagoResponse<ExecOptions<DefaultConfigurationOmitQs, any>>;
+export type PaymentGetResponse = MercadoPagoResponse<
+    ExecOptions<DefaultConfigurationOmitQs, any>
+>;
 
-export type PaymentSearchResponse = MercadoPagoResponse<ExecOptions<SearchConfiguration, any>>;
+export type PaymentSearchResponse = MercadoPagoResponse<
+    ExecOptions<SearchConfiguration, any>
+>;
 
 export interface MercadoPagoPayment {
     create(
@@ -58,7 +69,10 @@ export interface MercadoPagoPayment {
         callback?: CallbackFunction,
     ): Promise<PaymentGetResponse>;
 
-    search(configuration: SearchConfiguration, callback?: CallbackFunction): Promise<PaymentSearchResponse>;
+    search(
+        configuration: SearchConfiguration,
+        callback?: CallbackFunction,
+    ): Promise<PaymentSearchResponse>;
 
     /** Cancel payment */
     cancel(

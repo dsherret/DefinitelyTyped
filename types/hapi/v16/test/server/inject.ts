@@ -4,7 +4,7 @@ import * as Hapi from "hapi";
 const server = new Hapi.Server();
 server.connection({ port: 80 });
 
-const handler: Hapi.RouteHandler = function(request, reply) {
+const handler: Hapi.RouteHandler = function (request, reply) {
     return reply("Success!");
 };
 

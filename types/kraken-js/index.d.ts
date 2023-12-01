@@ -14,7 +14,10 @@ declare namespace k {
         mountpath?: string | undefined;
         inheritViews?: boolean | undefined;
         startupHeaders?: { [key: string]: string } | undefined;
-        onconfig?(config: Map<string, any>, next: (err: Error | null, config?: object) => any): any;
+        onconfig?(
+            config: Map<string, any>,
+            next: (err: Error | null, config?: object) => any,
+        ): any;
         uncaughtException?(err: Error): any;
     }
 }

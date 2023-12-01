@@ -1,4 +1,6 @@
-import feathersAuthClient, { defaults } from "@feathersjs/authentication-client";
+import feathersAuthClient, {
+    defaults,
+} from "@feathersjs/authentication-client";
 import feathers from "@feathersjs/feathers";
 
 const app = feathers();
@@ -9,4 +11,6 @@ app.logout().then(() => {});
 
 // check if the non-augmented @feathersjs/feathers typings still work
 app.on("asd", () => {});
-app.service("asd").get(0).then(() => {});
+app.service("asd")
+    .get(0)
+    .then(() => {});

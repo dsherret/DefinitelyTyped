@@ -23,14 +23,20 @@ db.del("key");
 db.del("key", (error) => {});
 db.del("key", { sync: true }, (error) => {});
 
-db.batch([{
-    type: "put",
-    key: "k",
-    value: "v",
-}, {
-    type: "del",
-    key: "k",
-}], (error) => {});
+db.batch(
+    [
+        {
+            type: "put",
+            key: "k",
+            value: "v",
+        },
+        {
+            type: "del",
+            key: "k",
+        },
+    ],
+    (error) => {},
+);
 
 const keyAsStringIterator = db.iterator({ keyAsBuffer: false });
 keyAsStringIterator.next((err, k, v) => {
@@ -44,13 +50,19 @@ valueAsStringIterator.next((err, k, v) => {
     console.log(v.toUpperCase());
 });
 
-const keyAndValueAsStringIterator = db.iterator({ keyAsBuffer: false, valueAsBuffer: false });
+const keyAndValueAsStringIterator = db.iterator({
+    keyAsBuffer: false,
+    valueAsBuffer: false,
+});
 keyAndValueAsStringIterator.next((err, k, v) => {
     console.log(k.toUpperCase());
     console.log(v.toUpperCase());
 });
 
-const keyAndValueAsBufferIterator1 = db.iterator({ keyAsBuffer: true, valueAsBuffer: true });
+const keyAndValueAsBufferIterator1 = db.iterator({
+    keyAsBuffer: true,
+    valueAsBuffer: true,
+});
 keyAndValueAsBufferIterator1.next((err, k, v) => {
     console.log(k.readUInt32BE(0));
     console.log(v.readUInt32BE(0));

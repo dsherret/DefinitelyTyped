@@ -2,17 +2,20 @@ import * as tern from "tern";
 
 const server: tern.Server = null as any;
 
-server.request({
-    query: {
-        type: "completions",
-        file: "",
-        end: 0,
+server.request(
+    {
+        query: {
+            type: "completions",
+            file: "",
+            end: 0,
+        },
     },
-}, (error, response) => {
-    if (response && response.isProperty) {
-        //
-    }
-});
+    (error, response) => {
+        if (response && response.isProperty) {
+            //
+        }
+    },
+);
 
 server.request({}, (error, response) => {
     // @ts-expect-error
@@ -34,21 +37,27 @@ declare module "tern/lib/tern" {
     }
 }
 
-server.request({
-    query: {
-        type: "someUnknownType",
+server.request(
+    {
+        query: {
+            type: "someUnknownType",
+        },
     },
-}, (error, response) => {
-    if (response && response.abc) {
-        //
-    }
-});
+    (error, response) => {
+        if (response && response.abc) {
+            //
+        }
+    },
+);
 
-server.request({
-    query: undefined,
-}, (error, response) => {
-    // @ts-expect-error
-    if (response && response.isProperty) {
-        //
-    }
-});
+server.request(
+    {
+        query: undefined,
+    },
+    (error, response) => {
+        // @ts-expect-error
+        if (response && response.isProperty) {
+            //
+        }
+    },
+);

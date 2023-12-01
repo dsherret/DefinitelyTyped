@@ -115,7 +115,11 @@ declare class DataFrame {
      *
      * new DataFrame(yourData, yourColumns, {modules: [MyOwnModule, MyOtherModule]})
      */
-    constructor(data: DataFrame | Record<string, any>, columns?: any[], options?: any);
+    constructor(
+        data: DataFrame | Record<string, any>,
+        columns?: any[],
+        options?: any,
+    );
     options: any;
     [Symbol.iterator](): Generator;
     _columnsAreEquals(columns: any, columns2?: any): boolean;
@@ -285,7 +289,11 @@ declare class DataFrame {
      * @example
      * df.replace(undefined, 0, 'column1', 'column2')
      */
-    replace(value: any, replacement: any, columnNames?: string | any[]): DataFrame;
+    replace(
+        value: any,
+        replacement: any,
+        columnNames?: string | any[],
+    ): DataFrame;
     /**
      * Compute unique values into a column.
      * @param columnName The column to distinct.
@@ -524,7 +532,11 @@ declare class DataFrame {
      * df.sortBy(['id1', 'id2'])
      * df.sortBy(['id1'], true)
      */
-    sortBy(columnNames: string | string[], reverse?: boolean, missingValuesPosition?: string): DataFrame;
+    sortBy(
+        columnNames: string | string[],
+        reverse?: boolean,
+        missingValuesPosition?: string,
+    ): DataFrame;
     /**
      * Concat two DataFrames.
      * @param dfToUnion The DataFrame to concat.
@@ -542,7 +554,11 @@ declare class DataFrame {
      * @example
      * df.join(df2, 'column1', 'full')
      */
-    join(dfToJoin: DataFrame, columnNames: string | string[], how?: string): DataFrame;
+    join(
+        dfToJoin: DataFrame,
+        columnNames: string | string[],
+        how?: string,
+    ): DataFrame;
     /**
      * Join two DataFrames with inner mode.
      * @param dfToJoin The DataFrame to join.

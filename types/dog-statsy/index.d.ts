@@ -26,17 +26,30 @@ declare class Client extends EventEmitter {
     /**
      * Send a counter value with optional sample rate.
      */
-    count(name: string, val: number, sample?: number | null, tags?: readonly string[] | null): void;
+    count(
+        name: string,
+        val: number,
+        sample?: number | null,
+        tags?: readonly string[] | null,
+    ): void;
 
     /**
      * Increment counter by `val` or `1`.
      */
-    incr(name: string, val?: number | null, tags?: readonly string[] | null): void;
+    incr(
+        name: string,
+        val?: number | null,
+        tags?: readonly string[] | null,
+    ): void;
 
     /**
      * Decrement counter by `val` or `1`.
      */
-    decr(name: string, val?: number | null, tags?: readonly string[] | null): void;
+    decr(
+        name: string,
+        val?: number | null,
+        tags?: readonly string[] | null,
+    ): void;
 
     /**
      * Send a histogram value or omit the value to return a completion function.
@@ -57,7 +70,11 @@ declare class Client extends EventEmitter {
      * @param tags The default tags set to all stats of the trace.
      * @param now The start time of the trace.
      */
-    trace(name: string, tags?: readonly string[] | null, now?: Date | null): Client.Trace;
+    trace(
+        name: string,
+        tags?: readonly string[] | null,
+        now?: Date | null,
+    ): Client.Trace;
 
     /**
      * Set the buffer flush interval as a number of milliseconds.
@@ -78,28 +95,52 @@ declare class Client extends EventEmitter {
 
     addListener(event: "close" | "connect", listener: () => void): this;
     addListener(event: "error", listener: (err: Error) => void): this;
-    addListener(event: "message", listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void): this;
-    addListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    addListener(
+        event: "message",
+        listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void,
+    ): this;
+    addListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
     emit(event: "close" | "connect"): boolean;
     emit(event: "error", err: Error): boolean;
     emit(event: "message", msg: Buffer, rinfo: dgram.RemoteInfo): boolean;
     emit(event: string | symbol, ...args: any[]): boolean;
     on(event: "close" | "connect", listener: () => void): this;
     on(event: "error", listener: (err: Error) => void): this;
-    on(event: "message", listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void): this;
+    on(
+        event: "message",
+        listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void,
+    ): this;
     on(event: string | symbol, listener: (...args: any[]) => void): this;
     once(event: "close" | "connect", listener: () => void): this;
     once(event: "error", listener: (err: Error) => void): this;
-    once(event: "message", listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void): this;
+    once(
+        event: "message",
+        listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void,
+    ): this;
     once(event: string | symbol, listener: (...args: any[]) => void): this;
     prependListener(event: "close" | "connect", listener: () => void): this;
     prependListener(event: "error", listener: (err: Error) => void): this;
-    prependListener(event: "message", listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void): this;
-    prependListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependListener(
+        event: "message",
+        listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void,
+    ): this;
+    prependListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
     prependOnceListener(event: "close" | "connect", listener: () => void): this;
     prependOnceListener(event: "error", listener: (err: Error) => void): this;
-    prependOnceListener(event: "message", listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void): this;
-    prependOnceListener(event: string | symbol, listener: (...args: any[]) => void): this;
+    prependOnceListener(
+        event: "message",
+        listener: (msg: Buffer, rinfo: dgram.RemoteInfo) => void,
+    ): this;
+    prependOnceListener(
+        event: string | symbol,
+        listener: (...args: any[]) => void,
+    ): this;
 }
 
 declare namespace Client {
@@ -137,7 +178,11 @@ declare namespace Client {
         /**
          * Adds a step to a trace.
          */
-        step(step: string, tags?: readonly string[] | null, now?: Date | null): void;
+        step(
+            step: string,
+            tags?: readonly string[] | null,
+            now?: Date | null,
+        ): void;
 
         /**
          * Completes a trace.

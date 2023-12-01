@@ -75,7 +75,11 @@ export interface UIFormatter {
      * @return
      * The jQuery-object of the created control.
      */
-    uiDateCompare(cell: JQuery, index: number, options?: UIDateCompareOptions): JQuery;
+    uiDateCompare(
+        cell: JQuery,
+        index: number,
+        options?: UIDateCompareOptions,
+    ): JQuery;
 
     /**
      * Creates a jQueryUI datepicker-control.
@@ -92,5 +96,9 @@ export interface UIFormatter {
      * @return
      * The jQuery-object of the created control.
      */
-    uiDatepicker(cell: JQuery, index: number, options?: UIDateRangeOptions): JQuery;
+    uiDatepicker(
+        cell: JQuery,
+        index: number,
+        options?: UIDateRangeOptions,
+    ): JQuery;
 }

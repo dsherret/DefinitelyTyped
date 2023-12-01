@@ -23,7 +23,10 @@ export interface ZoomInterpolator extends Function {
 }
 
 export interface ColorGammaInterpolationFactory extends Function {
-    (a: string | ColorCommonInstance, b: string | ColorCommonInstance): (t: number) => string;
+    (
+        a: string | ColorCommonInstance,
+        b: string | ColorCommonInstance,
+    ): (t: number) => string;
     /**
      * Returns a new interpolator factory of the same type using the specified *gamma*.
      * For example, to interpolate from purple to orange with a gamma of 2.2 in RGB space: `d3.interpolateRgb.gamma(2.2)("purple", "orange")`.
@@ -69,7 +72,10 @@ export function interpolate(a: any, b: boolean): (t: number) => boolean;
 /**
  * Returns a `interpolateRgb` interpolator.
  */
-export function interpolate(a: string | ColorCommonInstance, b: ColorCommonInstance): (t: number) => string;
+export function interpolate(
+    a: string | ColorCommonInstance,
+    b: ColorCommonInstance,
+): (t: number) => string;
 /**
  * Returns a `interpolateDate` interpolator.
  */
@@ -84,11 +90,17 @@ export function interpolate(
 /**
  * Returns a `interpolateNumberArray` interpolator.
  */
-export function interpolate<T extends NumberArray>(a: NumberArray | number[], b: T): (t: number) => T;
+export function interpolate<T extends NumberArray>(
+    a: NumberArray | number[],
+    b: T,
+): (t: number) => T;
 /**
  * Returns a `interpolateString` interpolator. If `b` is a string coercible to a color use use `interpolateRgb`.
  */
-export function interpolate(a: string | { toString(): string }, b: string): (t: number) => string;
+export function interpolate(
+    a: string | { toString(): string },
+    b: string,
+): (t: number) => string;
 /**
  * Returns a `interpolateArray` interpolator.
  */
@@ -155,11 +167,17 @@ export type ArrayInterpolator<A extends any[]> = (t: number) => A;
  * Note: *no defensive copy* of the template array is created; modifications of the returned array may adversely affect subsequent evaluation of the interpolator.
  * No copy is made for performance reasons; interpolators are often part of the inner loop of animated transitions.
  */
-export function interpolateArray<A extends any[]>(a: any[], b: A): ArrayInterpolator<A>;
+export function interpolateArray<A extends any[]>(
+    a: any[],
+    b: A,
+): ArrayInterpolator<A>;
 /**
  * interpolateNumberArray is called
  */
-export function interpolateArray<T extends NumberArray>(a: NumberArray | number[], b: T): (t: number) => T;
+export function interpolateArray<T extends NumberArray>(
+    a: NumberArray | number[],
+    b: T,
+): (t: number) => T;
 
 /**
  * Returns an interpolator between the two arrays of numbers a and b.
@@ -186,21 +204,30 @@ export function interpolateNumberArray<T extends NumberArray | number[]>(
  * Note: *no defensive copy* of the template object is created; modifications of the returned object may adversely affect subsequent evaluation of the interpolator.
  * No copy is made for performance reasons; interpolators are often part of the inner loop of animated transitions.
  */
-export function interpolateObject<U extends object>(a: any, b: U): (t: number) => U;
+export function interpolateObject<U extends object>(
+    a: any,
+    b: U,
+): (t: number) => U;
 
 /**
  * Returns an interpolator between the two 2D CSS transforms represented by `a` and `b`.
  * Each transform is decomposed to a standard representation of translate, rotate, *x*-skew and scale; these component transformations are then interpolated.
  * This behavior is standardized by CSS: see [matrix decomposition for animation](http://www.w3.org/TR/css3-2d-transforms/#matrix-decomposition).
  */
-export function interpolateTransformCss(a: string, b: string): (t: number) => string;
+export function interpolateTransformCss(
+    a: string,
+    b: string,
+): (t: number) => string;
 
 /**
  * Returns an interpolator between the two 2D SVG transforms represented by `a` and `b`.
  * Each transform is decomposed to a standard representation of translate, rotate, *x*-skew and scale; these component transformations are then interpolated.
  * This behavior is standardized by CSS: see [matrix decomposition for animation](http://www.w3.org/TR/css3-2d-transforms/#matrix-decomposition).
  */
-export function interpolateTransformSvg(a: string, b: string): (t: number) => string;
+export function interpolateTransformSvg(
+    a: string,
+    b: string,
+): (t: number) => string;
 
 /**
  * Returns an interpolator between the two views `a` and `b` of a two-dimensional plane,
@@ -246,7 +273,9 @@ export const interpolateRgb: ColorGammaInterpolationFactory;
  * Implicit control points are generated such that the interpolator returns `colors[0]` at `t = 0` and `colors[colors.length - 1]` at `t = 1`.
  * Opacity interpolation is not currently supported. See also `d3.interpolateBasis`, and see [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic) for examples.
  */
-export function interpolateRgbBasis(colors: Array<string | ColorCommonInstance>): (t: number) => string;
+export function interpolateRgbBasis(
+    colors: Array<string | ColorCommonInstance>,
+): (t: number) => string;
 
 /**
  * Returns a uniform nonrational B-spline interpolator through the specified array of colors, which are converted to RGB color space.
@@ -254,14 +283,19 @@ export function interpolateRgbBasis(colors: Array<string | ColorCommonInstance>)
  * this is useful, for example, to create cyclical color scales. Opacity interpolation is not currently supported.
  * See also `d3.interpolateBasisClosed, and see [d3-scale-chromatic](https://github.com/d3/d3-scale-chromatic) for examples.
  */
-export function interpolateRgbBasisClosed(colors: Array<string | ColorCommonInstance>): (t: number) => string;
+export function interpolateRgbBasisClosed(
+    colors: Array<string | ColorCommonInstance>,
+): (t: number) => string;
 
 /**
  * Returns an HSL color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in HSL;
  * they will be converted to HSL using `d3.hsl`. If either color’s hue or saturation is NaN, the opposing color’s channel value is used.
  * The shortest path between hues is used. The return value of the interpolator is an RGB string.
  */
-export function interpolateHsl(a: string | ColorCommonInstance, b: string | ColorCommonInstance): (t: number) => string;
+export function interpolateHsl(
+    a: string | ColorCommonInstance,
+    b: string | ColorCommonInstance,
+): (t: number) => string;
 
 /**
  * Like `interpolateHsl`, but does not use the shortest path between hues.
@@ -275,14 +309,20 @@ export function interpolateHslLong(
  * Returns a Lab color space interpolator between the two colors *a* and *b*. The colors *a* and *b* need not be in Lab;
  * they will be converted to Lab using `d3.lab`. The return value of the interpolator is an RGB string.
  */
-export function interpolateLab(a: string | ColorCommonInstance, b: string | ColorCommonInstance): (t: number) => string;
+export function interpolateLab(
+    a: string | ColorCommonInstance,
+    b: string | ColorCommonInstance,
+): (t: number) => string;
 
 /**
  * Returns an HCL color space interpolator between the two colors `a` and `b`. The colors `a` and `b` need not be in HCL;
  * they will be converted to HCL using `d3.hcl`. If either color’s hue or chroma is NaN, the opposing color’s channel value is used.
  * The shortest path between hues is used. The return value of the interpolator is an RGB string.
  */
-export function interpolateHcl(a: string | ColorCommonInstance, b: string | ColorCommonInstance): (t: number) => string;
+export function interpolateHcl(
+    a: string | ColorCommonInstance,
+    b: string | ColorCommonInstance,
+): (t: number) => string;
 
 /**
  * Like `interpolateHcl`, but does not use the shortest path between hues.
@@ -325,7 +365,9 @@ export function interpolateBasis(splineNodes: number[]): (t: number) => number;
  * The control points are implicitly repeated such that the resulting one-dimensional spline has cyclical C² continuity when repeated around `t` in [0,1].
  * See also [`d3.curveBasisClosed`](https://github.com/d3/d3-shape#curveBasisClosed).
  */
-export function interpolateBasisClosed(splineNodes: number[]): (t: number) => number;
+export function interpolateBasisClosed(
+    splineNodes: number[],
+): (t: number) => number;
 
 // Piecewise -----------------------------------------------------------------
 
@@ -384,4 +426,7 @@ export function piecewise(values: unknown[]): (t: number) => any;
  * and so on, where `n = values.length`. In effect, this is a lightweight linear scale.
  * For example, to blend through red, green and blue: `d3.piecewise(d3.interpolateRgb.gamma(2.2), ["red", "green", "blue"])`.
  */
-export function piecewise<TData>(interpolate: (a: TData, b: TData) => unknown, values: TData[]): (t: number) => any;
+export function piecewise<TData>(
+    interpolate: (a: TData, b: TData) => unknown,
+    values: TData[],
+): (t: number) => any;

@@ -2,8 +2,16 @@ export = QueryString;
 export as namespace qs;
 
 declare namespace QueryString {
-    type defaultEncoder = (str: any, defaultEncoder?: any, charset?: string) => string;
-    type defaultDecoder = (str: string, decoder?: any, charset?: string) => string;
+    type defaultEncoder = (
+        str: any,
+        defaultEncoder?: any,
+        charset?: string,
+    ) => string;
+    type defaultDecoder = (
+        str: string,
+        decoder?: any,
+        charset?: string,
+    ) => string;
 
     interface IStringifyOptions {
         delimiter?: string | undefined;
@@ -11,9 +19,17 @@ declare namespace QueryString {
         skipNulls?: boolean | undefined;
         encode?: boolean | undefined;
         encoder?:
-            | ((str: any, defaultEncoder: defaultEncoder, charset: string, type: "key" | "value") => string)
+            | ((
+                  str: any,
+                  defaultEncoder: defaultEncoder,
+                  charset: string,
+                  type: "key" | "value",
+              ) => string)
             | undefined;
-        filter?: Array<string | number> | ((prefix: string, value: any) => any) | undefined;
+        filter?:
+            | Array<string | number>
+            | ((prefix: string, value: any) => any)
+            | undefined;
         arrayFormat?: "indices" | "brackets" | "repeat" | "comma" | undefined;
         indices?: boolean | undefined;
         sort?: ((a: any, b: any) => number) | undefined;
@@ -31,7 +47,12 @@ declare namespace QueryString {
         delimiter?: string | RegExp | undefined;
         depth?: number | false | undefined;
         decoder?:
-            | ((str: string, defaultDecoder: defaultDecoder, charset: string, type: "key" | "value") => any)
+            | ((
+                  str: string,
+                  defaultDecoder: defaultDecoder,
+                  charset: string,
+                  type: "key" | "value",
+              ) => any)
             | undefined;
         arrayLimit?: number | undefined;
         parseArrays?: boolean | undefined;
@@ -51,6 +72,12 @@ declare namespace QueryString {
     }
 
     function stringify(obj: any, options?: IStringifyOptions): string;
-    function parse(str: string, options?: IParseOptions & { decoder?: never | undefined }): ParsedQs;
-    function parse(str: string | Record<string, string>, options?: IParseOptions): { [key: string]: unknown };
+    function parse(
+        str: string,
+        options?: IParseOptions & { decoder?: never | undefined },
+    ): ParsedQs;
+    function parse(
+        str: string | Record<string, string>,
+        options?: IParseOptions,
+    ): { [key: string]: unknown };
 }

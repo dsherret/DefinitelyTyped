@@ -80,4 +80,10 @@ const feedWithItems = new RSS(feedOptions, [feedItem]); // $ExpectType RSS
 feedWithItems.xml(); // $ExpectType string
 
 // test type exports
-type Types = typeof RSS | RSS | RSS.FeedOptions | RSS.EnclosureObject | RSS.ItemOptions | RSS.XmlOptions;
+type Types =
+    | typeof RSS
+    | RSS
+    | RSS.FeedOptions
+    | RSS.EnclosureObject
+    | RSS.ItemOptions
+    | RSS.XmlOptions;

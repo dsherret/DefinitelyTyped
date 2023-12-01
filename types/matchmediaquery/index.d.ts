@@ -17,7 +17,11 @@ type MediaValues = Record<
 >;
 
 declare class Mql {
-    constructor(query: string, values?: Partial<MediaValues>, forceStatic?: boolean);
+    constructor(
+        query: string,
+        values?: Partial<MediaValues>,
+        forceStatic?: boolean,
+    );
 
     update(evt: Mql): void;
 
@@ -28,5 +32,9 @@ declare class Mql {
     media: string;
 }
 
-declare function matchMedia(query: string, values?: Partial<MediaValues>, forceStatic?: boolean): Mql;
+declare function matchMedia(
+    query: string,
+    values?: Partial<MediaValues>,
+    forceStatic?: boolean,
+): Mql;
 export = matchMedia;

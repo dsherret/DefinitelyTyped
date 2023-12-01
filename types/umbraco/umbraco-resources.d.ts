@@ -58,7 +58,10 @@ declare namespace umbraco.resources {
          * @param {string} password Password of backoffice user
          * @returns {Promise} resourcePromise object
          */
-        performLogin(username: string, password: string): ng.IPromise<IResourcePromise>;
+        performLogin(
+            username: string,
+            password: string,
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -372,7 +375,10 @@ declare namespace umbraco.resources {
          * @param {String} alias contenttype alias to base the scaffold on
          * @returns {Promise} resourcePromise object containing the content scaffold.
          */
-        getScaffold(parentId: number, alias: string): ng.IPromise<IResourcePromise>;
+        getScaffold(
+            parentId: number,
+            alias: string,
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -453,7 +459,10 @@ declare namespace umbraco.resources {
          * @param {Int} id id of content item to delete
          * @returns {Promise} resourcePromise object.
          */
-        checkPermission(permission: string, id: number): ng.IPromise<IResourcePromise>;
+        checkPermission(
+            permission: string,
+            id: number,
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -481,7 +490,11 @@ declare namespace umbraco.resources {
          * @param {Array} files collection of files for the document
          * @returns {Promise} resourcePromise object containing the saved content item.
          */
-        save(content: IContentResource, isNew: boolean, files: any[]): ng.IPromise<IResourcePromise>;
+        save(
+            content: IContentResource,
+            isNew: boolean,
+            files: any[],
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -509,7 +522,11 @@ declare namespace umbraco.resources {
          * @param {Array} files collection of files for the document
          * @returns {Promise} resourcePromise object containing the saved content item.
          */
-        publish(content: IContentResource, isNew: boolean, files: any[]): ng.IPromise<IResourcePromise>;
+        publish(
+            content: IContentResource,
+            isNew: boolean,
+            files: any[],
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -536,7 +553,11 @@ declare namespace umbraco.resources {
          * @param {Array} files collection of files for the document
          * @returns {Promise} resourcePromise object containing the saved content item.
          */
-        sendToPublish(content: IContentResource, isNew: boolean, files: any[]): ng.IPromise<IResourcePromise>;
+        sendToPublish(
+            content: IContentResource,
+            isNew: boolean,
+            files: any[],
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -674,7 +695,10 @@ declare namespace umbraco.resources {
          * @param {Int} id id of datatype to retrieve prevalues for
          * @returns {Promise} resourcePromise object.
          */
-        getPreValues(editorAlias: string, dataTypeId: number): ng.IPromise<IResourcePromise>;
+        getPreValues(
+            editorAlias: string,
+            dataTypeId: number,
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -761,7 +785,11 @@ declare namespace umbraco.resources {
          * @param {Bool} isNew set to true if type should be create instead of updated
          * @returns {Promise} resourcePromise object.
          */
-        save(dataType: Object, preValues: any[], isNew: boolean): ng.IPromise<IResourcePromise>;
+        save(
+            dataType: Object,
+            preValues: any[],
+            isNew: boolean,
+        ): ng.IPromise<IResourcePromise>;
     }
 
     /**
@@ -844,7 +872,11 @@ declare namespace umbraco.resources {
          */
         getById(id: number, type: string): ng.IPromise<IResourcePromise>;
 
-        getByQuery(query: string, nodeContextId: number | string, type: string): ng.IPromise<IResourcePromise>;
+        getByQuery(
+            query: string,
+            nodeContextId: number | string,
+            type: string,
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -894,7 +926,11 @@ declare namespace umbraco.resources {
          * @param {string} postFilterParams optional parameters for the postFilter expression
          * @returns {Promise} resourcePromise object containing the entity.
          */
-        getAll(type: string, postFilter: string, postFilterParams: string): ng.IPromise<IResourcePromise>;
+        getAll(
+            type: string,
+            postFilter: string,
+            postFilterParams: string,
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -943,7 +979,12 @@ declare namespace umbraco.resources {
          * @param {String} Type type of conten to search
          * @returns {Promise} resourcePromise object containing the entity array.
          */
-        search(query: string, type: string, searchFrom: any, canceler: any): ng.IPromise<IResourcePromise>;
+        search(
+            query: string,
+            type: string,
+            searchFrom: any,
+            canceler: any,
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -1078,7 +1119,11 @@ declare namespace umbraco.resources {
          * @param {int} pageId The current page id
          * @param {Array} macroParamDictionary A dictionary of macro parameters
          */
-        getMacroResultAsHtmlForEditor(macroId: number, pageId: number, macroParamDictionary: any[]): any;
+        getMacroResultAsHtmlForEditor(
+            macroId: number,
+            pageId: number,
+            macroParamDictionary: any[],
+        ): any;
     }
 
     /**
@@ -1230,7 +1275,10 @@ declare namespace umbraco.resources {
          * @param {String} alias mediatype alias to base the scaffold on
          * @returns {Promise} resourcePromise object containing the media scaffold.
          */
-        getScaffold(parentId: number, alias: string): ng.IPromise<IResourcePromise>;
+        getScaffold(
+            parentId: number,
+            alias: string,
+        ): ng.IPromise<IResourcePromise>;
 
         rootMedia(): any;
 
@@ -1297,7 +1345,11 @@ declare namespace umbraco.resources {
          * @param {Array} files collection of files for the media item
          * @returns {Promise} resourcePromise object containing the saved media item.
          */
-        save(media: Object, isNew: boolean, files: any[]): ng.IPromise<IResourcePromise>;
+        save(
+            media: Object,
+            isNew: boolean,
+            files: any[],
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -1319,7 +1371,10 @@ declare namespace umbraco.resources {
          * @param {int} parentId Id of the media item to create the folder underneath
          * @returns {Promise} resourcePromise object.
          */
-        addFolder(name: string, parentId: number): ng.IPromise<IResourcePromise>;
+        addFolder(
+            name: string,
+            parentId: number,
+        ): ng.IPromise<IResourcePromise>;
 
         /**
          * @ngdoc method
@@ -1479,7 +1534,11 @@ declare namespace umbraco.resources {
          * @param {Array} files collection of files for the media item
          * @returns {Promise} resourcePromise object containing the saved media item.
          */
-        save(member: Object, isNew: boolean, files: any[]): ng.IPromise<IResourcePromise>;
+        save(
+            member: Object,
+            isNew: boolean,
+            files: any[],
+        ): ng.IPromise<IResourcePromise>;
     }
 
     /**

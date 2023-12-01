@@ -17,18 +17,40 @@ import EventEmitter = require("node:events");
     process.addListener("beforeExit", (code: number) => {});
     process.once("disconnect", () => {});
     process.prependListener("exit", (code: number) => {});
-    process.prependOnceListener("rejectionHandled", (promise: Promise<any>) => {});
-    process.on("uncaughtException", (error: Error, origin: NodeJS.UncaughtExceptionOrigin) => {});
+    process.prependOnceListener(
+        "rejectionHandled",
+        (promise: Promise<any>) => {},
+    );
+    process.on(
+        "uncaughtException",
+        (error: Error, origin: NodeJS.UncaughtExceptionOrigin) => {},
+    );
     process.once("uncaughtExceptionMonitor", (error: Error) => {});
-    process.addListener("unhandledRejection", (reason: unknown, promise: Promise<unknown>) => {});
+    process.addListener(
+        "unhandledRejection",
+        (reason: unknown, promise: Promise<unknown>) => {},
+    );
     process.once("warning", (warning: Error) => {});
     process.prependListener("message", (message: any, sendHandle: any) => {});
     process.prependOnceListener("SIGBREAK", () => {});
-    process.on("newListener", (event: string | symbol, listener: Function) => {});
-    process.once("removeListener", (event: string | symbol, listener: Function) => {});
-    process.on("multipleResolves", (type: NodeJS.MultipleResolveType, prom: Promise<any>, value: any) => {});
+    process.on(
+        "newListener",
+        (event: string | symbol, listener: Function) => {},
+    );
+    process.once(
+        "removeListener",
+        (event: string | symbol, listener: Function) => {},
+    );
+    process.on(
+        "multipleResolves",
+        (
+            type: NodeJS.MultipleResolveType,
+            prom: Promise<any>,
+            value: any,
+        ) => {},
+    );
     process.on("customEvent", () => {});
-    process.on("worker", w => {
+    process.on("worker", (w) => {
         w; // $ExpectType Worker
     });
 
@@ -41,8 +63,7 @@ import EventEmitter = require("node:events");
     const stdErrorFd = process.stderr.fd;
 }
 {
-    function myCb(err: Error): void {
-    }
+    function myCb(err: Error): void {}
     process.setUncaughtExceptionCaptureCallback(myCb);
     process.setUncaughtExceptionCaptureCallback(null);
     const b: boolean = process.hasUncaughtExceptionCaptureCallback();
@@ -66,7 +87,12 @@ import EventEmitter = require("node:events");
         let r: boolean = process.send("aMessage");
         r = process.send({ msg: "foo" }, {});
         r = process.send({ msg: "foo" }, {}, { swallowErrors: true });
-        r = process.send({ msg: "foo" }, {}, { swallowErrors: true }, (err: Error | null) => {});
+        r = process.send(
+            { msg: "foo" },
+            {},
+            { swallowErrors: true },
+            (err: Error | null) => {},
+        );
     }
 }
 

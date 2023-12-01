@@ -1,8 +1,15 @@
-import { PluginDefinition, PluginParams, WaveSurferPlugin } from "../../types/plugin";
+import {
+    PluginDefinition,
+    PluginParams,
+    WaveSurferPlugin,
+} from "../../types/plugin";
 import Observer from "../util/observer";
 import WaveSurfer from "../wavesurfer";
 
-export default class TimelinePlugin extends Observer implements WaveSurferPlugin {
+export default class TimelinePlugin
+    extends Observer
+    implements WaveSurferPlugin
+{
     constructor(params: TimelinePluginParams, ws: WaveSurfer);
     static create(params: TimelinePluginParams): PluginDefinition;
     destroy(): void;
@@ -71,7 +78,9 @@ export interface TimelinePluginParams extends PluginParams {
     fontSize?: number | undefined;
     /** Length of the track in seconds. Overrides getDuration() for setting length of timeline. */
     duration?: number | null | undefined;
-    formatTimecallback?: ((sec: number, pxPerSec: number) => string) | undefined;
+    formatTimecallback?:
+        | ((sec: number, pxPerSec: number) => string)
+        | undefined;
     timeInterval?: ((pxPerSec: number) => number) | undefined;
     /** Cadence between labels in primary color. */
     primaryLabelInterval?: ((pxPerSec: number) => number) | undefined;

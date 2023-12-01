@@ -51,19 +51,23 @@ setTimeout(() => {
 pump(createReadStream("/dev/random"), toHex(), createWriteStream("/dev/null"));
 
 // $ExpectType Stream
-pump([createReadStream("/dev/random"), toHex(), createWriteStream("/dev/null")]);
+pump([
+    createReadStream("/dev/random"),
+    toHex(),
+    createWriteStream("/dev/null"),
+]);
 
 let lastErr: Error | undefined;
 const copy = (cb: (err: Error) => void) => {
-    pump([
-        createReadStream("/dev/random"),
-        createWriteStream("/dev/null"),
-    ], (err) => {
-        if (err) {
+    pump(
+        [createReadStream("/dev/random"), createWriteStream("/dev/null")],
+        (err) => {
+            if (err) {
+                lastErr = err;
+                cb(err);
+                return;
+            }
             lastErr = err;
-            cb(err);
-            return;
-        }
-        lastErr = err;
-    });
+        },
+    );
 };

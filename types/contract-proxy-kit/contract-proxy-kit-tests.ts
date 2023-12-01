@@ -30,7 +30,10 @@ CPK.create({});
 // $ExpectType Promise<CPK>
 CPK.create({ web3 });
 // $ExpectType Promise<CPK>
-CPK.create({ web3, ownerAccount: "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1" });
+CPK.create({
+    web3,
+    ownerAccount: "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1",
+});
 // @ts-expect-error
 CPK.create({
     ownerAccount: "0x90F8bf6A479f320ead074411a4B0e7944Ea8c9C1",
@@ -54,7 +57,7 @@ CPK.create({
     networks: { 4447: networkConfigEntry },
 });
 
-CPK.create({ web3 }).then(async cpk => {
+CPK.create({ web3 }).then(async (cpk) => {
     // $ExpectType CPK
     cpk;
 

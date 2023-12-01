@@ -24,7 +24,10 @@ export interface Calendar extends VueConstructor {
         };
     };
     watch: {
-        [propName: string]: (newValue: Date | string, oldValue: Date | string) => void;
+        [propName: string]: (
+            newValue: Date | string,
+            oldValue: Date | string,
+        ) => void;
     };
     methods: {
         handleClickTitle(): void;

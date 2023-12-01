@@ -1,6 +1,8 @@
 export = CertManager;
 
-declare function CertManager(options: CertManager.CertManagerOptions): CertManager;
+declare function CertManager(
+    options: CertManager.CertManagerOptions,
+): CertManager;
 declare class CertManager {
     constructor(options: CertManager.CertManagerOptions);
 
@@ -16,7 +18,10 @@ declare class CertManager {
      * @param config Configuration for the new Root CA.
      * @param callback Callback called when certificate is ready with key and cert paths.
      */
-    generateRootCA(config: CertManager.GenerateConfig, callback?: CertManager.GenerateCallback): void;
+    generateRootCA(
+        config: CertManager.GenerateConfig,
+        callback?: CertManager.GenerateCallback,
+    ): void;
 
     /**
      * Get or create a new Certificate for given hostname.
@@ -24,7 +29,10 @@ declare class CertManager {
      * @param hostname Hostname for the new certificate.
      * @param callback Callback called with key and cert content.
      */
-    getCertificate(hostname: string, callback?: CertManager.GetCertificateCallback): void;
+    getCertificate(
+        hostname: string,
+        callback?: CertManager.GetCertificateCallback,
+    ): void;
 
     /**
      * Clear all certificates in Root directory.
@@ -69,9 +77,17 @@ declare namespace CertManager {
         overwrite?: boolean | undefined;
     }
 
-    type GenerateCallback = (err: Error | CertErrors | null, keyPath: string, certPath: string) => any;
+    type GenerateCallback = (
+        err: Error | CertErrors | null,
+        keyPath: string,
+        certPath: string,
+    ) => any;
 
-    type GetCertificateCallback = (err: Error | CertErrors | null, keyContent: string, certContent: string) => any;
+    type GetCertificateCallback = (
+        err: Error | CertErrors | null,
+        keyContent: string,
+        certContent: string,
+    ) => any;
 
     type CertErrors =
         /** Error thrown when Root CA has not been generated yet. */
@@ -79,7 +95,9 @@ declare namespace CertManager {
         | /** Error thrown when Root CA was existed, beware that it will be overwrited. */ "ROOT_CA_EXISTED"
         | /** Error thrown when no commonName options is specified when generating Root CA. */ "ROOT_CA_COMMON_NAME_UNSPECIFIED";
 
-    type CertificateAttribute = CertificateAttributeName | CertificateAttributeShortName;
+    type CertificateAttribute =
+        | CertificateAttributeName
+        | CertificateAttributeShortName;
 
     interface CertificateAttributeName {
         name: string;

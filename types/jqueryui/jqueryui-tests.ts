@@ -1,10 +1,19 @@
 function test_draggable() {
     $("#draggable").draggable({ axis: "y" });
     $("#draggable2").draggable({ axis: "x" });
-    $("#draggable3").draggable({ containment: "#containment-wrapper", scroll: false });
+    $("#draggable3").draggable({
+        containment: "#containment-wrapper",
+        scroll: false,
+    });
     $("#draggable5").draggable({ containment: "parent" });
-    $("#draggable").draggable({ cursor: "move", cursorAt: { top: 56, left: 56 } });
-    $("#draggable2").draggable({ cursor: "crosshair", cursorAt: { top: -5, left: -5 } });
+    $("#draggable").draggable({
+        cursor: "move",
+        cursorAt: { top: 56, left: 56 },
+    });
+    $("#draggable2").draggable({
+        cursor: "crosshair",
+        cursorAt: { top: -5, left: -5 },
+    });
     $("#draggable3").draggable({ cursorAt: { bottom: 0 } });
     $("#draggable").draggable();
     $("#draggable").draggable({ distance: 20 });
@@ -25,7 +34,10 @@ function test_draggable() {
     $("#draggable3").draggable({ scroll: true, scrollSpeed: 100 });
     $("#draggable").draggable({ snap: true });
     $("#draggable2").draggable({ snap: ".ui-widget-header" });
-    $("#draggable3").draggable({ snap: ".ui-widget-header", snapMode: "outer" });
+    $("#draggable3").draggable({
+        snap: ".ui-widget-header",
+        snapMode: "outer",
+    });
     $("#draggable4").draggable({ grid: [20, 20] });
     $("#draggable5").draggable({ grid: [80, 80] });
     $("#sortable").sortable({ revert: true });
@@ -54,19 +66,13 @@ function test_droppable() {
         hoverClass: "ui-state-active",
         drop: (event, ui) => {
             console.log(`${event.screenX}, ${event.screenY}`);
-            $(this)
-                .addClass("ui-state-highlight")
-                .find("p")
-                .html("Dropped!");
+            $(this).addClass("ui-state-highlight").find("p").html("Dropped!");
         },
     });
     $("#draggable").draggable();
     $("#droppable").droppable({
         drop: (event, ui) => {
-            $(this)
-                .addClass("ui-state-highlight")
-                .find("p")
-                .html("Dropped!");
+            $(this).addClass("ui-state-highlight").find("p").html("Dropped!");
         },
     });
 
@@ -101,12 +107,15 @@ function test_droppable() {
                 : $("<ul class='gallery ui-helper-reset'/>").appendTo($trash);
 
             $item.find("a.ui-icon-trash").remove();
-            $item.append(recycle_icon).appendTo($list).fadeIn(() => {
-                $item
-                    .animate({ width: "48px" })
-                    .find("img")
-                    .animate({ height: "36px" });
-            });
+            $item
+                .append(recycle_icon)
+                .appendTo($list)
+                .fadeIn(() => {
+                    $item
+                        .animate({ width: "48px" })
+                        .find("img")
+                        .animate({ height: "36px" });
+                });
         });
     }
 
@@ -136,11 +145,16 @@ function test_droppable() {
         if ($modal.length) {
             $modal.dialog("open");
         } else {
-            var img = $("<img alt='" + title + "' width='384' height='288' style='display: none; padding: 8px;' />")
-                .attr("src", src).appendTo("body");
+            var img = $(
+                "<img alt='" +
+                    title +
+                    "' width='384' height='288' style='display: none; padding: 8px;' />",
+            )
+                .attr("src", src)
+                .appendTo("body");
             setTimeout(() => {
                 img.dialog({
-                    title: <string> title,
+                    title: <string>title,
                     width: 400,
                     modal: true,
                 });
@@ -169,10 +183,7 @@ function test_droppable() {
         activeClass: "ui-state-hover",
         hoverClass: "ui-state-active",
         drop: (event, ui) => {
-            $(this)
-                .addClass("ui-state-highlight")
-                .find("> p")
-                .html("Dropped!");
+            $(this).addClass("ui-state-highlight").find("> p").html("Dropped!");
             return false;
         },
     });
@@ -182,10 +193,7 @@ function test_droppable() {
         activeClass: "ui-state-hover",
         hoverClass: "ui-state-active",
         drop: (event, ui) => {
-            $(this)
-                .addClass("ui-state-highlight")
-                .find("> p")
-                .html("Dropped!");
+            $(this).addClass("ui-state-highlight").find("> p").html("Dropped!");
         },
     });
 
@@ -195,10 +203,7 @@ function test_droppable() {
         activeClass: "ui-state-hover",
         hoverClass: "ui-state-active",
         drop: (event, ui) => {
-            $(this)
-                .addClass("ui-state-highlight")
-                .find("p")
-                .html("Dropped!");
+            $(this).addClass("ui-state-highlight").find("p").html("Dropped!");
         },
     });
     $("#catalog").accordion();
@@ -206,31 +211,30 @@ function test_droppable() {
         appendTo: "body",
         helper: "clone",
     });
-    $("#cart ol").droppable({
-        activeClass: "ui-state-default",
-        hoverClass: "ui-state-hover",
-        accept: ":not(.ui-sortable-helper)",
-        drop: (event, ui) => {
-            $(this).find(".placeholder").remove();
-            $("<li></li>").text(ui.draggable.text()).appendTo(this);
-        },
-    }).sortable({
-        items: "li:not(.placeholder)",
-        sort: () => {
-            // gets added unintentionally by droppable interacting with sortable
-            // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
-            $(this).removeClass("ui-state-default");
-        },
-    });
+    $("#cart ol")
+        .droppable({
+            activeClass: "ui-state-default",
+            hoverClass: "ui-state-hover",
+            accept: ":not(.ui-sortable-helper)",
+            drop: (event, ui) => {
+                $(this).find(".placeholder").remove();
+                $("<li></li>").text(ui.draggable.text()).appendTo(this);
+            },
+        })
+        .sortable({
+            items: "li:not(.placeholder)",
+            sort: () => {
+                // gets added unintentionally by droppable interacting with sortable
+                // using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+                $(this).removeClass("ui-state-default");
+            },
+        });
 
     $("#draggable").draggable();
     $("#droppable").droppable({
         hoverClass: "ui-state-active",
         drop: (event, ui) => {
-            $(this)
-                .addClass("ui-state-highlight")
-                .find("p")
-                .html("Dropped!");
+            $(this).addClass("ui-state-highlight").find("p").html("Dropped!");
         },
     });
 
@@ -239,10 +243,7 @@ function test_droppable() {
         accept: "#draggable2",
         activeClass: "ui-state-hover",
         drop: (event, ui) => {
-            $(this)
-                .addClass("ui-state-highlight")
-                .find("p")
-                .html("Dropped!");
+            $(this).addClass("ui-state-highlight").find("p").html("Dropped!");
         },
     });
 }
@@ -351,9 +352,9 @@ function test_resizable() {
 function test_selectable() {
     $("#selectable").selectable();
     $("#selectable").selectable({
-        stop: function() {
+        stop: function () {
             var result = $("#select-result").empty();
-            $(".ui-selected", this).each(function() {
+            $(".ui-selected", this).each(function () {
                 var index = $("#selectable li").index(this);
                 result.append(" #" + (index + 1));
             });
@@ -362,9 +363,15 @@ function test_selectable() {
     $(".selector").selectable({ autoRefresh: false });
     var autoRefresh = $(".selector").selectable("option", "autoRefresh");
     $(".selector").selectable("option", "autoRefresh", false);
-    $(".selector").selectable({ cancel: "input,textarea,button,select,option" });
+    $(".selector").selectable({
+        cancel: "input,textarea,button,select,option",
+    });
     var cancel = $(".selector").selectable("option", "cancel");
-    $(".selector").selectable("option", "cancel", "input,textarea,button,select,option");
+    $(".selector").selectable(
+        "option",
+        "cancel",
+        "input,textarea,button,select,option",
+    );
     $(".selector").selectable({ delay: 150 });
     var delay = $(".selector").selectable("option", "delay");
     $(".selector").selectable("option", "delay", 150);
@@ -393,19 +400,22 @@ function test_selectable() {
 function test_sortable() {
     $("#sortable").sortable();
     $("#sortable").disableSelection();
-    $("#sortable1, #sortable2").sortable({
-        connectWith: ".connectedSortable",
-    }).disableSelection();
+    $("#sortable1, #sortable2")
+        .sortable({
+            connectWith: ".connectedSortable",
+        })
+        .disableSelection();
     $("#sortable1, #sortable2").sortable().disableSelection();
     var $tabs = $("#tabs").tabs();
     var $tab_items = $("ul:first li", $tabs).droppable({
         accept: ".connectedSortable li",
         hoverClass: "ui-state-hover",
-        drop: function(event, ui) {
+        drop: function (event, ui) {
             var $item = $(this);
-            var $list = $($item.find("a").attr("href"))
-                .find(".connectedSortable");
-            ui.draggable.hide("slow", function() {
+            var $list = $($item.find("a").attr("href")).find(
+                ".connectedSortable",
+            );
+            ui.draggable.hide("slow", function () {
                 $tabs.tabs("select", $tab_items.index($item));
                 $(this).appendTo($list).show("slow");
             });
@@ -437,14 +447,19 @@ function test_sortable() {
     $(".column").sortable({
         connectWith: ".column",
     });
-    $(".portlet").addClass("ui-widget ui-widget-content ui-helper-clearfix ui-corner-all")
+    $(".portlet")
+        .addClass(
+            "ui-widget ui-widget-content ui-helper-clearfix ui-corner-all",
+        )
         .find(".portlet-header")
         .addClass("ui-widget-header ui-corner-all")
         .prepend("<span class='ui-icon ui-icon-minusthick'></span>")
         .end()
         .find(".portlet-content");
-    $(".portlet-header .ui-icon").click(function() {
-        $(this).toggleClass("ui-icon-minusthick").toggleClass("ui-icon-plusthick");
+    $(".portlet-header .ui-icon").click(function () {
+        $(this)
+            .toggleClass("ui-icon-minusthick")
+            .toggleClass("ui-icon-plusthick");
         $(this).parents(".portlet:first").find(".portlet-content").toggle();
     });
     $(".selector").sortable({ appendTo: document.body });
@@ -484,7 +499,10 @@ function test_sortable() {
     var forceHelperSize = $(".selector").sortable("option", "forceHelperSize");
     $(".selector").sortable("option", "forceHelperSize", true);
     $(".selector").sortable({ forcePlaceholderSize: true });
-    var forcePlaceholderSize = $(".selector").sortable("option", "forcePlaceholderSize");
+    var forcePlaceholderSize = $(".selector").sortable(
+        "option",
+        "forcePlaceholderSize",
+    );
     $(".selector").sortable("option", "forcePlaceholderSize", true);
     $(".selector").sortable({ grid: [20, 10] });
     var grid = $(".selector").sortable("option", "grid");
@@ -511,7 +529,10 @@ function test_sortable() {
     var scroll = $(".selector").sortable("option", "scroll");
     $(".selector").sortable("option", "scroll", false);
     $(".selector").sortable({ scrollSensitivity: 10 });
-    var scrollSensitivity = $(".selector").sortable("option", "scrollSensitivity");
+    var scrollSensitivity = $(".selector").sortable(
+        "option",
+        "scrollSensitivity",
+    );
     $(".selector").sortable("option", "scrollSensitivity", 10);
     $(".selector").sortable({ scrollSpeed: 40 });
     var scrollSpeed = $(".selector").sortable("option", "scrollSpeed");
@@ -536,13 +557,15 @@ function test_accordion() {
         activeHeader: "ui-icon-circle-arrow-s",
     };
     $("#accordion").accordion({ icons: icons });
-    $("#toggle").button().click(() => {
-        if ($("#accordion").accordion("option", "icons")) {
-            $("#accordion").accordion("option", "icons", null);
-        } else {
-            $("#accordion").accordion("option", "icons", icons);
-        }
-    });
+    $("#toggle")
+        .button()
+        .click(() => {
+            if ($("#accordion").accordion("option", "icons")) {
+                $("#accordion").accordion("option", "icons", null);
+            } else {
+                $("#accordion").accordion("option", "icons", icons);
+            }
+        });
     $("#accordion").accordion({ heightStyle: "fill" });
 
     $("#accordion-resizer").resizable({
@@ -586,9 +609,14 @@ function test_accordion() {
     $(".selector").accordion({ heightStyle: "fill" });
     var heightStyle = $(".selector").accordion("option", "heightStyle");
     $(".selector").accordion("option", "heightStyle", "fill");
-    $(".selector").accordion({ icons: { "header": "ui-icon-plus", "headerSelected": "ui-icon-minus" } });
+    $(".selector").accordion({
+        icons: { header: "ui-icon-plus", headerSelected: "ui-icon-minus" },
+    });
     icons = $(".selector").accordion("option", "icons");
-    $(".selector").accordion("option", "icons", { "header": "ui-icon-plus", "headerSelected": "ui-icon-minus" });
+    $(".selector").accordion("option", "icons", {
+        header: "ui-icon-plus",
+        headerSelected: "ui-icon-minus",
+    });
     var isDisabled = $(".selector").accordion("option", "disabled");
     $(".selector").accordion("option", { disabled: true });
 }
@@ -600,7 +628,11 @@ function test_autocomplete() {
                 currentCategory = "";
             $.each(items, (index, item) => {
                 if (item.category != currentCategory) {
-                    ul.append("<li class='ui-autocomplete-category'>" + item.category + "</li>");
+                    ul.append(
+                        "<li class='ui-autocomplete-category'>" +
+                            item.category +
+                            "</li>",
+                    );
                     currentCategory = item.category;
                 }
                 that._renderItemData(ul, item);
@@ -632,13 +664,16 @@ function test_autocomplete() {
                 select = this.element.hide(),
                 selected = select.children(":selected"),
                 value = selected.val() ? selected.text() : "",
-                wrapper = this.wrapper = $("<span>")
+                wrapper = (this.wrapper = $("<span>")
                     .addClass("ui-combobox")
-                    .insertAfter(select);
+                    .insertAfter(select));
 
             function removeIfInvalid(element) {
                 var value = $(element).val() as string,
-                    matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(value) + "$", "i"),
+                    matcher = new RegExp(
+                        "^" + $.ui.autocomplete.escapeRegex(value) + "$",
+                        "i",
+                    ),
                     valid = false;
                 select.children("option").each(() => {
                     if ($(this).text().match(matcher)) {
@@ -670,17 +705,25 @@ function test_autocomplete() {
                     delay: 0,
                     minLength: 0,
                     source: (request, response) => {
-                        var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+                        var matcher = new RegExp(
+                            $.ui.autocomplete.escapeRegex(request.term),
+                            "i",
+                        );
                         response(
                             select.children("option").map(() => {
                                 var text = $(this).text();
-                                if (this.value && (!request.term || matcher.test(text))) {
+                                if (
+                                    this.value &&
+                                    (!request.term || matcher.test(text))
+                                ) {
                                     return {
                                         label: text.replace(
                                             new RegExp(
-                                                "(?![^&;]+;)(?!<[^<>]*)("
-                                                    + $.ui.autocomplete.escapeRegex(request.term)
-                                                    + ")(?![^<>]*>)(?![^&;]+;)",
+                                                "(?![^&;]+;)(?!<[^<>]*)(" +
+                                                    $.ui.autocomplete.escapeRegex(
+                                                        request.term,
+                                                    ) +
+                                                    ")(?![^<>]*>)(?![^&;]+;)",
                                                 "gi",
                                             ),
                                             "<strong>$1</strong>",
@@ -739,13 +782,12 @@ function test_autocomplete() {
                     input.focus();
                 });
 
-            input
-                .tooltip({
-                    position: {
-                        of: this.button,
-                    },
-                    tooltipClass: "ui-state-highlight",
-                });
+            input.tooltip({
+                position: {
+                    of: this.button,
+                },
+                tooltipClass: "ui-state-highlight",
+            });
         },
 
         destroy: () => {
@@ -775,7 +817,10 @@ function test_autocomplete() {
 
     $("#developer").autocomplete({
         source: (request, response) => {
-            var matcher = new RegExp($.ui.autocomplete.escapeRegex(request.term), "i");
+            var matcher = new RegExp(
+                $.ui.autocomplete.escapeRegex(request.term),
+                "i",
+            );
         },
     });
 
@@ -807,17 +852,21 @@ function test_autocomplete() {
     $("#birds")
         .bind("keydown", (event) => {
             if (
-                event.keyCode === $.ui.keyCode.TAB
-                && $(this).data("autocomplete").menu.active
+                event.keyCode === $.ui.keyCode.TAB &&
+                $(this).data("autocomplete").menu.active
             ) {
                 event.preventDefault();
             }
         })
         .autocomplete({
             source: (request, response) => {
-                $.getJSON("search.php", {
-                    term: null,
-                }, response);
+                $.getJSON(
+                    "search.php",
+                    {
+                        term: null,
+                    },
+                    response,
+                );
             },
             search: () => {
                 return false;
@@ -832,8 +881,8 @@ function test_autocomplete() {
     $("#tags")
         .bind("keydown", (event) => {
             if (
-                event.keyCode === $.ui.keyCode.TAB
-                && $(this).data("autocomplete").menu.active
+                event.keyCode === $.ui.keyCode.TAB &&
+                $(this).data("autocomplete").menu.active
             ) {
                 event.preventDefault();
             }
@@ -860,13 +909,20 @@ function test_autocomplete() {
                     name_startsWith: request.term,
                 },
                 success: (data) => {
-                    response($.map(data.geonames, (item) => {
-                        return {
-                            label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", "
-                                + item.countryName,
-                            value: item.name,
-                        };
-                    }));
+                    response(
+                        $.map(data.geonames, (item) => {
+                            return {
+                                label:
+                                    item.name +
+                                    (item.adminName1
+                                        ? ", " + item.adminName1
+                                        : "") +
+                                    ", " +
+                                    item.countryName,
+                                value: item.name,
+                            };
+                        }),
+                    );
                 },
             });
         },
@@ -922,7 +978,10 @@ function test_autocomplete() {
         select: (event, ui) => {
             log(
                 ui.item
-                    ? "Selected: " + ui.item.value + ", geonameId: " + ui.item.id
+                    ? "Selected: " +
+                          ui.item.value +
+                          ", geonameId: " +
+                          ui.item.id
                     : "Nothing selected, input was " + this.value,
             );
         },
@@ -943,30 +1002,37 @@ function test_button() {
         .click((event) => {
             event.preventDefault();
         });
-    $("button:first").button({
-        icons: {
-            primary: "ui-icon-locked",
-        },
-        text: false,
-    }).next().button({
-        icons: {
-            primary: "ui-icon-locked",
-        },
-    }).next().button({
-        icons: {
-            primary: "ui-icon-gear",
-            secondary: "ui-icon-triangle-1-s",
-        },
-    }).next().button({
-        icons: {
-            primary: "ui-icon-gear",
-            secondary: "ui-icon-triangle-1-s",
-        },
-        text: false,
-    });
+    $("button:first")
+        .button({
+            icons: {
+                primary: "ui-icon-locked",
+            },
+            text: false,
+        })
+        .next()
+        .button({
+            icons: {
+                primary: "ui-icon-locked",
+            },
+        })
+        .next()
+        .button({
+            icons: {
+                primary: "ui-icon-gear",
+                secondary: "ui-icon-triangle-1-s",
+            },
+        })
+        .next()
+        .button({
+            icons: {
+                primary: "ui-icon-gear",
+                secondary: "ui-icon-triangle-1-s",
+            },
+            text: false,
+        });
     $("#rerun")
         .button()
-        .click(function() {
+        .click(function () {
             alert("Running the last action");
         })
         .next()
@@ -976,13 +1042,13 @@ function test_button() {
                 primary: "ui-icon-triangle-1-s",
             },
         })
-        .click(function() {
+        .click(function () {
             var menu = $(this).parent().next().show().position({
                 my: "left top",
                 at: "left bottom",
                 of: this,
             });
-            $(document).one("click", function() {
+            $(document).one("click", function () {
                 menu.hide();
             });
             return false;
@@ -1004,13 +1070,14 @@ function test_button() {
             primary: "ui-icon-seek-prev",
         },
     });
-    $("#play").button({
-        text: false,
-        icons: {
-            primary: "ui-icon-play",
-        },
-    })
-        .click(function() {
+    $("#play")
+        .button({
+            text: false,
+            icons: {
+                primary: "ui-icon-play",
+            },
+        })
+        .click(function () {
             var options;
             if ($(this).text() === "play") {
                 options = {
@@ -1029,13 +1096,14 @@ function test_button() {
             }
             $(this).button("option", options);
         });
-    $("#stop").button({
-        text: false,
-        icons: {
-            primary: "ui-icon-stop",
-        },
-    })
-        .click(function() {
+    $("#stop")
+        .button({
+            text: false,
+            icons: {
+                primary: "ui-icon-stop",
+            },
+        })
+        .click(function () {
             $("#play").button("option", {
                 label: "play",
                 icons: {
@@ -1058,7 +1126,9 @@ function test_button() {
     $(".selector").button({ disabled: true });
     var disabled = $(".selector").button("option", "disabled");
     $(".selector").button("option", "disabled", true);
-    $(".selector").button({ icons: { primary: "ui-icon-gear", secondary: "ui-icon-triangle-1-s" } });
+    $(".selector").button({
+        icons: { primary: "ui-icon-gear", secondary: "ui-icon-triangle-1-s" },
+    });
     $(".selector").button({ label: "custom label" });
     $(".selector").button({ text: false });
     $(".selector").button("destroy");
@@ -1096,10 +1166,13 @@ function test_datepicker() {
         buttonImage: "images/calendar.gif",
         buttonImageOnly: true,
     });
-    $.datepicker.setDefaults($.datepicker.regional[<string> ""]);
+    $.datepicker.setDefaults($.datepicker.regional[<string>""]);
     $("#datepicker").datepicker($.datepicker.regional["fr"]);
-    $("#locale").change(function() {
-        $("#datepicker").datepicker("option", $.datepicker.regional[$(this).val() as string]);
+    $("#locale").change(function () {
+        $("#datepicker").datepicker(
+            "option",
+            $.datepicker.regional[$(this).val() as string],
+        );
     });
     $("#datepicker").datepicker({
         altField: "#alternate",
@@ -1110,7 +1183,7 @@ function test_datepicker() {
         defaultDate: "+1w",
         changeMonth: true,
         numberOfMonths: 3,
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             $("#to").datepicker("option", "minDate", selectedDate);
         },
     });
@@ -1118,7 +1191,7 @@ function test_datepicker() {
         defaultDate: "+1w",
         changeMonth: true,
         numberOfMonths: 3,
-        onClose: function(selectedDate) {
+        onClose: function (selectedDate) {
             $("#from").datepicker("option", "maxDate", selectedDate);
         },
     });
@@ -1140,10 +1213,22 @@ function test_datepicker() {
     $(".selector").datepicker({ constrainInput: false });
     $(".selector").datepicker({ currentText: "Now" });
     $(".selector").datepicker({ dateFormat: "yy-mm-dd" });
-    $(".selector").datepicker({ dayNames: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"] });
-    $(".selector").datepicker({ dayNamesMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"] });
+    $(".selector").datepicker({
+        dayNames: [
+            "Dimanche",
+            "Lundi",
+            "Mardi",
+            "Mercredi",
+            "Jeudi",
+            "Vendredi",
+            "Samedi",
+        ],
+    });
+    $(".selector").datepicker({
+        dayNamesMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"],
+    });
 
-    $.datepicker.setDefaults($.datepicker.regional[<string> ""]);
+    $.datepicker.setDefaults($.datepicker.regional[<string>""]);
     $(".selector").datepicker($.datepicker.regional["fr"]);
 
     // Methods
@@ -1167,27 +1252,45 @@ function test_datepicker() {
         var altField: any = $(".selector").datepicker("option", "altField");
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "altField", "#actualDate");
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "altField",
+            "#actualDate",
+        );
     }
 
     function altFormat() {
         $(".selector").datepicker({ altFormat: "yy-mm-dd" });
 
         // getter
-        var altFormat: string = $(".selector").datepicker("option", "altFormat");
+        var altFormat: string = $(".selector").datepicker(
+            "option",
+            "altFormat",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "altFormat", "yy-mm-dd");
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "altFormat",
+            "yy-mm-dd",
+        );
     }
 
     function appendText() {
         $(".selector").datepicker({ appendText: "(yyyy-mm-dd)" });
 
         // getter
-        var appendText: string = $(".selector").datepicker("option", "appendText");
+        var appendText: string = $(".selector").datepicker(
+            "option",
+            "appendText",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "appendText", "(yyyy-mm-dd)");
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "appendText",
+            "(yyyy-mm-dd)",
+        );
     }
 
     function autoSize() {
@@ -1197,7 +1300,11 @@ function test_datepicker() {
         var autoSize: boolean = $(".selector").datepicker("option", "autoSize");
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "autoSize", true);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "autoSize",
+            true,
+        );
     }
 
     function beforeShow() {
@@ -1208,62 +1315,102 @@ function test_datepicker() {
         $(".selector").datepicker({ beforeShow: myFunction });
 
         // getter
-        var beforeShow: (input: Element, inst: any) => JQueryUI.DatepickerOptions = $(".selector").datepicker(
+        var beforeShow: (
+            input: Element,
+            inst: any,
+        ) => JQueryUI.DatepickerOptions = $(".selector").datepicker(
             "option",
             "beforeShow",
         );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "beforeShow", myFunction);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "beforeShow",
+            myFunction,
+        );
     }
 
     function beforeShowDay() {
         $("#datepicker").datepicker({ beforeShowDay: $.datepicker.noWeekends });
 
         // getter
-        var beforeShowDay: (date: Date) => any[] = $(".selector").datepicker("option", "beforeShowDay");
+        var beforeShowDay: (date: Date) => any[] = $(".selector").datepicker(
+            "option",
+            "beforeShowDay",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "beforeShowDay", $.datepicker.noWeekends);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "beforeShowDay",
+            $.datepicker.noWeekends,
+        );
     }
 
     function buttonImage() {
         $(".selector").datepicker({ buttonImage: "/images/datepicker.gif" });
 
         // getter
-        var buttonImage: string = $(".selector").datepicker("option", "buttonImage");
+        var buttonImage: string = $(".selector").datepicker(
+            "option",
+            "buttonImage",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "buttonImage", "/images/datepicker.gif");
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "buttonImage",
+            "/images/datepicker.gif",
+        );
     }
 
     function buttonImageOnly() {
         $(".selector").datepicker({ buttonImageOnly: true });
 
         // getter
-        var buttonImageOnly: boolean = $(".selector").datepicker("option", "buttonImageOnly");
+        var buttonImageOnly: boolean = $(".selector").datepicker(
+            "option",
+            "buttonImageOnly",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "buttonImageOnly", true);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "buttonImageOnly",
+            true,
+        );
     }
 
     function buttonText() {
         $(".selector").datepicker({ buttonText: "Choose" });
 
-        var buttonText: string = $(".selector").datepicker("option", "buttonText");
+        var buttonText: string = $(".selector").datepicker(
+            "option",
+            "buttonText",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "buttonText", "Choose");
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "buttonText",
+            "Choose",
+        );
     }
 
     function calculateWeek() {
         function myWeekCalc(date: Date) {
             var checkDate = new Date(date.getTime());
-            checkDate.setDate(checkDate.getDate() + 4 - (checkDate.getDay() || 7));
+            checkDate.setDate(
+                checkDate.getDate() + 4 - (checkDate.getDay() || 7),
+            );
             var time = checkDate.getTime();
             checkDate.setMonth(7);
             checkDate.setDate(28);
-            var week = Math.floor(Math.round((time - checkDate.getTime()) / 86400000) / 7) + 2;
+            var week =
+                Math.floor(
+                    Math.round((time - checkDate.getTime()) / 86400000) / 7,
+                ) + 2;
             if (week < 1) {
                 week = 52 + week;
             }
@@ -1273,72 +1420,132 @@ function test_datepicker() {
         $(".selector").datepicker({ calculateWeek: myWeekCalc });
 
         // getter
-        var calculateWeek: (date: Date) => string = $(".selector").datepicker("option", "calculateWeek");
+        var calculateWeek: (date: Date) => string = $(".selector").datepicker(
+            "option",
+            "calculateWeek",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "calculateWeek", myWeekCalc);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "calculateWeek",
+            myWeekCalc,
+        );
     }
 
     function changeMonth() {
         $(".selector").datepicker({ changeMonth: true });
 
-        var changeMonth: boolean = $(".selector").datepicker("option", "changeMonth");
+        var changeMonth: boolean = $(".selector").datepicker(
+            "option",
+            "changeMonth",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "changeMonth", true);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "changeMonth",
+            true,
+        );
     }
 
     function changeYear() {
         $(".selector").datepicker({ changeYear: true });
 
-        var changeYear: boolean = $(".selector").datepicker("option", "changeYear");
+        var changeYear: boolean = $(".selector").datepicker(
+            "option",
+            "changeYear",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "changeYear", true);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "changeYear",
+            true,
+        );
     }
 
     function closeText() {
         $(".selector").datepicker({ closeText: "Close" });
 
-        var closeText: string = $(".selector").datepicker("option", "closeText");
+        var closeText: string = $(".selector").datepicker(
+            "option",
+            "closeText",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "closeText", "Close");
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "closeText",
+            "Close",
+        );
     }
 
     function constrainInput() {
         $(".selector").datepicker({ constrainInput: false });
 
-        var constrainInput: boolean = $(".selector").datepicker("option", "constrainInput");
+        var constrainInput: boolean = $(".selector").datepicker(
+            "option",
+            "constrainInput",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "constrainInput", false);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "constrainInput",
+            false,
+        );
     }
 
     function currentText() {
         $(".selector").datepicker({ currentText: "Now" });
 
-        var currentText: string = $(".selector").datepicker("option", "currentText");
+        var currentText: string = $(".selector").datepicker(
+            "option",
+            "currentText",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "currentText", "Now");
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "currentText",
+            "Now",
+        );
     }
 
     function dateFormat() {
         $(".selector").datepicker({ dateFormat: "yy-mm-dd" });
 
-        var dateFormat: string = $(".selector").datepicker("option", "dateFormat");
+        var dateFormat: string = $(".selector").datepicker(
+            "option",
+            "dateFormat",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "dateFormat", "yy-mm-dd");
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "dateFormat",
+            "yy-mm-dd",
+        );
     }
 
     function dayNames() {
         $(".selector").datepicker({
-            dayNames: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
+            dayNames: [
+                "Dimanche",
+                "Lundi",
+                "Mardi",
+                "Mercredi",
+                "Jeudi",
+                "Vendredi",
+                "Samedi",
+            ],
         });
 
-        var dayNames: string[] = $(".selector").datepicker("option", "dayNames");
+        var dayNames: string[] = $(".selector").datepicker(
+            "option",
+            "dayNames",
+        );
 
         // setter
         var $set: JQuery = $(".selector").datepicker("option", "dayNames", [
@@ -1353,9 +1560,14 @@ function test_datepicker() {
     }
 
     function dayNamesMin() {
-        $(".selector").datepicker({ dayNamesMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"] });
+        $(".selector").datepicker({
+            dayNamesMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"],
+        });
 
-        var dayNamesMin: string[] = $(".selector").datepicker("option", "dayNamesMin");
+        var dayNamesMin: string[] = $(".selector").datepicker(
+            "option",
+            "dayNamesMin",
+        );
 
         // setter
         var $set: JQuery = $(".selector").datepicker("option", "dayNamesMin", [
@@ -1370,29 +1582,37 @@ function test_datepicker() {
     }
 
     function dayNamesShort() {
-        $(".selector").datepicker({ dayNamesShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"] });
+        $(".selector").datepicker({
+            dayNamesShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+        });
 
-        var dayNamesShort: string[] = $(".selector").datepicker("option", "dayNamesShort");
+        var dayNamesShort: string[] = $(".selector").datepicker(
+            "option",
+            "dayNamesShort",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "dayNamesShort", [
-            "Dim",
-            "Lun",
-            "Mar",
-            "Mer",
-            "Jeu",
-            "Ven",
-            "Sam",
-        ]);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "dayNamesShort",
+            ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
+        );
     }
 
     function defaultDate() {
         $(".selector").datepicker({ defaultDate: +7 });
 
-        var defaultDate: any = $(".selector").datepicker("option", "defaultDate");
+        var defaultDate: any = $(".selector").datepicker(
+            "option",
+            "defaultDate",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "defaultDate", +7);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "defaultDate",
+            +7,
+        );
         $set = $(".selector").datepicker("option", "defaultDate", new Date());
         $set = $(".selector").datepicker("option", "defaultDate", "+1m +7d");
     }
@@ -1403,7 +1623,11 @@ function test_datepicker() {
         var duration: string = $(".selector").datepicker("option", "duration");
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "duration", "slow");
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "duration",
+            "slow",
+        );
     }
 
     function firstDay() {
@@ -1418,10 +1642,17 @@ function test_datepicker() {
     function gotoCurrent() {
         $(".selector").datepicker({ gotoCurrent: true });
 
-        var gotoCurrent: boolean = $(".selector").datepicker("option", "gotoCurrent");
+        var gotoCurrent: boolean = $(".selector").datepicker(
+            "option",
+            "gotoCurrent",
+        );
 
         // setter
-        var $set: JQuery = $(".selector").datepicker("option", "gotoCurrent", true);
+        var $set: JQuery = $(".selector").datepicker(
+            "option",
+            "gotoCurrent",
+            true,
+        );
     }
 }
 
@@ -1432,7 +1663,7 @@ function test_dialog() {
         show: "blind",
         hide: "explode",
     });
-    $("#opener").click(function() {
+    $("#opener").click(function () {
         var $el = $("#dialog").dialog("open");
         return false;
     });
@@ -1445,10 +1676,10 @@ function test_dialog() {
         height: 140,
         modal: true,
         buttons: {
-            "Delete all items": function() {
+            "Delete all items": function () {
                 var $el = $(this).dialog("close");
             },
-            Cancel: function() {
+            Cancel: function () {
                 $(this).dialog("close");
             },
         },
@@ -1459,10 +1690,10 @@ function test_dialog() {
         width: 350,
         modal: true,
         buttons: {
-            Cancel: function() {
+            Cancel: function () {
                 $(this).dialog("close");
             },
-            close: function() {
+            close: function () {
                 var $el = $(this).dialog("destroy");
             },
         },
@@ -1470,7 +1701,7 @@ function test_dialog() {
     $("#dialog-message").dialog({
         modal: true,
         buttons: {
-            Ok: function() {
+            Ok: function () {
                 $(this).dialog("close");
             },
         },
@@ -1478,20 +1709,27 @@ function test_dialog() {
     $(".selector").dialog({ autoOpen: false });
     $(".selector").dialog({
         buttons: {
-            Ok: function() {
+            Ok: function () {
                 $(this).dialog("close");
             },
         },
     });
     $(".selector").dialog({
-        buttons: [{
-            text: "Ok",
-            click: function() {
-                $(this).dialog("close");
+        buttons: [
+            {
+                text: "Ok",
+                click: function () {
+                    $(this).dialog("close");
+                },
             },
-        }],
+        ],
     });
-    $(".selector").dialog({ classes: { "ui-dialog": "custom", "ui-dialog-content": "custom-content" } });
+    $(".selector").dialog({
+        classes: {
+            "ui-dialog": "custom",
+            "ui-dialog-content": "custom-content",
+        },
+    });
     $(".selector").dialog({ closeOnEscape: false });
     $(".selector").dialog({ closeText: "hide" });
     $(".selector").dialog({ appendTo: "appendTo" });
@@ -1505,7 +1743,9 @@ function test_dialog() {
     $(".selector").dialog({ minHeight: 200 });
     $(".selector").dialog({ minWidth: 200 });
     $(".selector").dialog({ modal: true });
-    $(".selector").dialog({ position: { my: "left top", at: "left bottom", of: null } });
+    $(".selector").dialog({
+        position: { my: "left top", at: "left bottom", of: null },
+    });
     $(".selector").dialog({ resizable: false });
     $(".selector").dialog({ show: "slow" });
     $(".selector").dialog({ stack: false });
@@ -1532,8 +1772,12 @@ function test_selectmenu() {
     $("#selectmenu").selectmenu();
     $(".selector").selectmenu({ appendTo: ".selector" });
     $(".selector").selectmenu({ disabled: true });
-    $(".selector").selectmenu({ icons: { submenu: "ui-icon-circle-triangle-e" } });
-    $(".selector").selectmenu({ position: { my: "left top", at: "right-5 top+5" } });
+    $(".selector").selectmenu({
+        icons: { submenu: "ui-icon-circle-triangle-e" },
+    });
+    $(".selector").selectmenu({
+        position: { my: "left top", at: "right-5 top+5" },
+    });
     $(".selector").selectmenu({ width: 47 });
 
     // Events
@@ -1547,7 +1791,10 @@ function test_selectmenu() {
     // Events and options
     $("#selectmenu").selectmenu({
         appendTo: ".selector",
-        classes: { "ui-selectmenu-button": "custom-button", "ui-selectmenu-menu": "custom-menu" },
+        classes: {
+            "ui-selectmenu-button": "custom-button",
+            "ui-selectmenu-menu": "custom-menu",
+        },
         disabled: true,
         icons: { submenu: "ui-icon-circle-triangle-e" },
         position: { my: "left top", at: "right-5 top+5" },
@@ -1568,17 +1815,17 @@ function test_selectmenu() {
 
     // Setting option value
     $(".selector").selectmenu("option", "disabled", true);
-    $(".selector").selectmenu("option", "position", { my: "left top", at: "right-5 top+5" });
+    $(".selector").selectmenu("option", "position", {
+        my: "left top",
+        at: "right-5 top+5",
+    });
 
     // Methods
     $(".selector").selectmenu("close");
     $(".selector").selectmenu("destroy");
 
     // Chaining
-    $("#number")
-        .selectmenu()
-        .selectmenu("menuWidget")
-        .addClass("overflow");
+    $("#number").selectmenu().selectmenu("menuWidget").addClass("overflow");
 }
 
 function test_progressbar() {
@@ -1603,23 +1850,26 @@ function test_slider() {
         min: 0,
         max: 500,
         values: [75, 300],
-        slide: function(event, ui) {
+        slide: function (event, ui) {
             $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
         },
     });
     $("#amount").val(
-        "$" + $("#slider-range").slider("values", 0)
-            + " - $" + $("#slider-range").slider("values", 1),
+        "$" +
+            $("#slider-range").slider("values", 0) +
+            " - $" +
+            $("#slider-range").slider("values", 1),
     );
     var scrollPane = $(".scroll-pane"),
         scrollContent = $(".scroll-content");
     var scrollbar = $(".scroll-bar").slider({
-        slide: function(event, ui) {
+        slide: function (event, ui) {
             if (scrollContent.width() > scrollPane.width()) {
                 scrollContent.css(
                     "margin-left",
                     Math.round(
-                        ui.value / 100 * (scrollPane.width() - scrollContent.width()),
+                        (ui.value / 100) *
+                            (scrollPane.width() - scrollContent.width()),
                     ) + "px",
                 );
             } else {
@@ -1628,21 +1878,23 @@ function test_slider() {
         },
     });
 
-    var handleHelper = scrollbar.find(".ui-slider-handle")
-        .mousedown(function() {
+    var handleHelper = scrollbar
+        .find(".ui-slider-handle")
+        .mousedown(function () {
             scrollbar.width(handleHelper.width());
         })
-        .mouseup(function() {
+        .mouseup(function () {
             scrollbar.width("100%");
         })
         .append("<span class='ui-icon ui-icon-grip-dotted-vertical'></span>")
-        .wrap("<div class='ui-handle-helper-parent'></div>").parent();
+        .wrap("<div class='ui-handle-helper-parent'></div>")
+        .parent();
     $("#slider").slider({
         value: 100,
         min: 0,
         max: 500,
         step: 50,
-        slide: function(event, ui) {
+        slide: function (event, ui) {
             $("#amount").val("$" + ui.value);
         },
     });
@@ -1656,32 +1908,34 @@ function test_slider() {
     $(".selector").slider({ step: 5 });
     $(".selector").slider({ value: 10 });
     $(".selector").slider({ values: [10, 25] });
-    $(".selector").slider({ classes: { "ui-slider": "custom", "ui-slider-handle": "custom-handle" } });
+    $(".selector").slider({
+        classes: { "ui-slider": "custom", "ui-slider-handle": "custom-handle" },
+    });
 }
 
 function test_spinner() {
     var spinner = $("#spinner").spinner();
 
-    $("#disable").click(function() {
+    $("#disable").click(function () {
         if (spinner.spinner("option", "disabled")) {
             spinner.spinner("enable");
         } else {
             spinner.spinner("disable");
         }
     });
-    $("#destroy").click(function() {
+    $("#destroy").click(function () {
         if (spinner.data("ui-spinner")) {
             spinner.spinner("destroy");
         } else {
             spinner.spinner();
         }
     });
-    $("#getvalue").click(function() {});
-    $("#setvalue").click(function() {
+    $("#getvalue").click(function () {});
+    $("#setvalue").click(function () {
         spinner.spinner("value", 5);
     });
     $("button").button();
-    $("#currency").change(function() {
+    $("#currency").change(function () {
         $("#spinner").spinner("option", "culture", $(this).val());
     });
 
@@ -1689,7 +1943,7 @@ function test_spinner() {
         min: 5,
         max: 2500,
         step: 25,
-        start: function() {
+        start: function () {
             return;
         },
         numberFormat: "C",
@@ -1699,17 +1953,17 @@ function test_spinner() {
         numberFormat: "n",
     });
 
-    $("#culture").change(function() {
+    $("#culture").change(function () {
         var current = $("#spinner").spinner("value");
         $("#spinner").spinner("value", current);
     });
     $("#lat, #lng").spinner({
-        step: .001,
+        step: 0.001,
         change() {},
         stop() {},
     });
     $("#spinner").spinner({
-        spin: function(event, ui) {
+        spin: function (event, ui) {
             if (ui.value > 10) {
                 $(this).spinner("value", -10);
                 return false;
@@ -1726,21 +1980,22 @@ function test_spinner() {
             // hours
             page: 60,
         },
-        _parse: function(value) {
+        _parse: function (value) {
             if (typeof value === "string") {
-                if (Number(value) == <any> value) {
+                if (Number(value) == <any>value) {
                     return Number(value);
                 }
                 return 123;
             }
             return value;
         },
-        _format: function(value) {
-        },
+        _format: function (value) {},
     });
     $(".selector").spinner({ culture: "fr" });
     $(".selector").spinner({ disabled: true });
-    $(".selector").spinner({ icons: { down: "custom-down-icon", up: "custom-up-icon" } });
+    $(".selector").spinner({
+        icons: { down: "custom-down-icon", up: "custom-up-icon" },
+    });
     $(".selector").spinner({ incremental: false });
     $(".selector").spinner({ max: 50 });
     $(".selector").spinner({ min: 0 });
@@ -1755,11 +2010,11 @@ function test_tabs() {
         collapsible: true,
     });
     $("#tabs").tabs({
-        beforeLoad: function(event, ui) {
-            ui.jqXHR.fail(function() {
+        beforeLoad: function (event, ui) {
+            ui.jqXHR.fail(function () {
                 ui.panel.html(
-                    "Couldn't load this tab. We'll try to fix this as soon as possible. "
-                        + "If this wouldn't be a demo.",
+                    "Couldn't load this tab. We'll try to fix this as soon as possible. " +
+                        "If this wouldn't be a demo.",
                 );
             });
         },
@@ -1770,14 +2025,16 @@ function test_tabs() {
     var tabs = $("#tabs").tabs();
     tabs.find(".ui-tabs-nav").sortable({
         axis: "x",
-        stop: function() {
+        stop: function () {
             tabs.tabs("refresh");
         },
     });
     $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
     $("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
     $(".selector").tabs({ active: 1 });
-    $(".selector").tabs({ classes: { "ui-tabs": "custom", "ui-tabs-panel": "custom-panel" } });
+    $(".selector").tabs({
+        classes: { "ui-tabs": "custom", "ui-tabs-panel": "custom-panel" },
+    });
     $(".selector").tabs({ collapsible: true });
     $(".selector").tabs({ disabled: [0, 2] });
     $(".selector").tabs({ event: "mouseover" });
@@ -1792,7 +2049,7 @@ function test_tooltip() {
         position: {
             my: "center bottom-20",
             at: "center top",
-            using: function(position, feedback) {
+            using: function (position, feedback) {
                 $(this).css(position);
                 $("<div>")
                     .addClass("arrow")
@@ -1807,23 +2064,27 @@ function test_tooltip() {
             effect: "slideDown",
             delay: 250,
         },
-        open: function(event, ui) {
+        open: function (event, ui) {
             ui.tooltip.animate({ top: ui.tooltip.position().top + 5 }, "fast");
         },
-        close: function(event, ui) {
+        close: function (event, ui) {
             ui.tooltip.animate({ top: ui.tooltip.position().top + 5 }, "fast");
         },
     });
     $(document).tooltip({
         items: "img, [data-geo], [title]",
-        content: function() {
+        content: function () {
             var element = $(this);
             if (element.is("[data-geo]")) {
                 var text = element.text();
-                return "<img class='map' alt='" + text
-                    + "' src='http://maps.google.com/maps/api/staticmap?"
-                    + "zoom=11&size=350x350&maptype=terrain&sensor=false&center="
-                    + text + "'>";
+                return (
+                    "<img class='map' alt='" +
+                    text +
+                    "' src='http://maps.google.com/maps/api/staticmap?" +
+                    "zoom=11&size=350x350&maptype=terrain&sensor=false&center=" +
+                    text +
+                    "'>"
+                );
             }
             if (element.is("[title]")) {
                 return element.attr("title");
@@ -1837,7 +2098,7 @@ function test_tooltip() {
     $("<button>")
         .text("Show help")
         .button()
-        .click(function() {
+        .click(function () {
             tooltips.tooltip("open");
         })
         .insertAfter("form");
@@ -1845,7 +2106,9 @@ function test_tooltip() {
     $(".selector").tooltip({ disabled: true });
     $(".selector").tooltip({ hide: { effect: "explode", duration: 1000 } });
     $(".selector").tooltip({ items: "img[alt]" });
-    $(".selector").tooltip({ position: { my: "left+15 center", at: "right center" } });
+    $(".selector").tooltip({
+        position: { my: "left+15 center", at: "right center" },
+    });
     $(".selector").tooltip({ show: { effect: "blind", duration: 800 } });
     $(".selector").tooltip({ tooltipClass: "custom-tooltip-styling" });
     $(".selector").tooltip({ track: true });
@@ -1854,11 +2117,14 @@ function test_tooltip() {
 function test_effects() {
     $("#effect").addClass("newClass", 1000, callback);
     function callback() {}
-    $("#effect").animate({
-        backgroundColor: "#aa0000",
-        color: "#fff",
-        width: 500,
-    }, 1000);
+    $("#effect").animate(
+        {
+            backgroundColor: "#aa0000",
+            color: "#fff",
+            width: 500,
+        },
+        1000,
+    );
     $("div").effect("bounce", "slow");
     var selectedEffect = $("#effectTypes").val() as string;
     var options: any;
@@ -1880,7 +2146,10 @@ function test_effects() {
         of: $("#parent"),
         my: $("#my_horizontal").val() + " " + $("#my_vertical").val(),
         at: $("#at_horizontal").val() + " " + $("#at_vertical").val(),
-        collision: $("#collision_horizontal").val() + " " + $("#collision_vertical").val(),
+        collision:
+            $("#collision_horizontal").val() +
+            " " +
+            $("#collision_vertical").val(),
     });
     $("#toggle").toggle({ effect: "scale", direction: "horizontal" });
     $(this).effect("transfer", { to: $("div").eq(5) }, 1000);
@@ -1889,7 +2158,9 @@ function test_effects() {
     $(this).toggleClass("big-blue", 1000, "easeOutSine");
 
     // test with non-HTMLElement
-    var $svg: JQuery<SVGElement> = <unknown> $("<svg>") as JQuery<SVGSVGElement>,
+    var $svg: JQuery<SVGElement> = (<unknown>(
+            $("<svg>")
+        )) as JQuery<SVGSVGElement>,
         $ret: JQuery<SVGElement>;
     $ret = $svg.addClass("newClass", 1000, callback);
     $ret = $svg.removeClass("newClass", 1000, callback);
@@ -1918,7 +2189,7 @@ function test_methods() {
         at: "right bottom",
         of: "#targetElement",
     });
-    $(document).mousemove(function(event) {
+    $(document).mousemove(function (event) {
         $("#position4").position({
             my: "left+3 bottom-3",
             of: event,
@@ -1934,8 +2205,8 @@ function test_ui() {
     $(".selector").jQuery.ui.mouse({ delay: 300 });
     $(".selector").jQuery.ui.mouse({ distance: 10 });
     $(".selector").jQuery.ui.mouse("_mouseCapture");
-    $("aDialog").keypress(function(e) {
-        return (e.keyCode == $.ui.keyCode.ENTER);
+    $("aDialog").keypress(function (e) {
+        return e.keyCode == $.ui.keyCode.ENTER;
     });
     $(".selector").jQuery.ui.selectmenu({ disabled: true });
 }
@@ -1944,7 +2215,9 @@ function test_widget() {
     $(".selector").jQuery.Widget({ disabled: true });
     var disabled = $(".selector").jQuery.Widget("option", "disabled");
     $(".selector").jQuery.Widget("option", "disabled", true);
-    $(".selector").jQuery.Widget({ hide: { effect: "explode", duration: 1000 } });
+    $(".selector").jQuery.Widget({
+        hide: { effect: "explode", duration: 1000 },
+    });
     $(".selector").jQuery.Widget({ show: { effect: "blind", duration: 800 } });
     var options = $(".selector").jQuery.Widget("option");
     var isDisabled = $(".selector").jQuery.Widget("option", "disabled");
@@ -1953,7 +2226,7 @@ function test_widget() {
 }
 
 function test_easing() {
-    const easing = (<any> jQuery).easing;
+    const easing = (<any>jQuery).easing;
 
     function test_easing_function(name: string, fn: JQueryEasingFunction) {
         const step = Math.pow(2, -3); // use power of 2 to prevent floating point rounding error

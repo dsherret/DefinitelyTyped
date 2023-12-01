@@ -1,6 +1,6 @@
 const dropzoneFromString = new Dropzone(".test");
 const dropzoneFromElement = new Dropzone(document.getElementById("test"));
-const dropzoneRenameFunction = function(name: string): string {
+const dropzoneRenameFunction = function (name: string): string {
     return name + "new";
 };
 
@@ -47,7 +47,10 @@ const dropzoneWithOptions = new Dropzone(".test", {
     dictRemoveFileConfirmation: "",
     dictMaxFilesExceeded: "",
 
-    accept: (file: Dropzone.DropzoneFile, done: (error?: string | Error) => void) => {
+    accept: (
+        file: Dropzone.DropzoneFile,
+        done: (error?: string | Error) => void,
+    ) => {
         if (file.accepted) {
             file.previewElement.classList.add("accepted");
             file.previewTemplate.classList.add("accepted");
@@ -86,33 +89,53 @@ const dropzoneWithOptions = new Dropzone(".test", {
     addedfile: (file: Dropzone.DropzoneFile) => console.log("Addedfile"),
     addedfiles: (files: Dropzone.DropzoneFile[]) => console.log("Addedfiles"),
     removedfile: (file: Dropzone.DropzoneFile) => console.log("Removedfile"),
-    thumbnail: (file: Dropzone.DropzoneFile, dataUrl: string) => console.log("Thumbnail"),
+    thumbnail: (file: Dropzone.DropzoneFile, dataUrl: string) =>
+        console.log("Thumbnail"),
 
-    error: (file: Dropzone.DropzoneFile, message: string | Error) => console.log("Error"),
-    errormultiple: (files: Dropzone.DropzoneFile[], message: string | Error) => console.log("Errormultiple"),
+    error: (file: Dropzone.DropzoneFile, message: string | Error) =>
+        console.log("Error"),
+    errormultiple: (files: Dropzone.DropzoneFile[], message: string | Error) =>
+        console.log("Errormultiple"),
 
     processing: (file: Dropzone.DropzoneFile) => console.log("Processing"),
-    processingmultiple: (files: Dropzone.DropzoneFile[]) => console.log("Processingmultiple"),
+    processingmultiple: (files: Dropzone.DropzoneFile[]) =>
+        console.log("Processingmultiple"),
 
-    uploadprogress: (file: Dropzone.DropzoneFile, progress: number, bytesSent: number) => console.log("Uploadprogress"),
-    totaluploadprogress: (totalProgress: number, totalBytes: number, totalBytesSent: number) =>
-        console.log("Totaluploadprogress"),
+    uploadprogress: (
+        file: Dropzone.DropzoneFile,
+        progress: number,
+        bytesSent: number,
+    ) => console.log("Uploadprogress"),
+    totaluploadprogress: (
+        totalProgress: number,
+        totalBytes: number,
+        totalBytesSent: number,
+    ) => console.log("Totaluploadprogress"),
 
-    sending: (file: Dropzone.DropzoneFile, xhr: XMLHttpRequest, formData: {}) => console.log("Sending"),
-    sendingmultiple: (files: Dropzone.DropzoneFile[], xhr: XMLHttpRequest, formData: {}) =>
-        console.log("Sendingmultiple"),
+    sending: (file: Dropzone.DropzoneFile, xhr: XMLHttpRequest, formData: {}) =>
+        console.log("Sending"),
+    sendingmultiple: (
+        files: Dropzone.DropzoneFile[],
+        xhr: XMLHttpRequest,
+        formData: {},
+    ) => console.log("Sendingmultiple"),
 
     success: (file: Dropzone.DropzoneFile) => console.log("Success"),
-    successmultiple: (files: Dropzone.DropzoneFile[]) => console.log("Successmultiple"),
+    successmultiple: (files: Dropzone.DropzoneFile[]) =>
+        console.log("Successmultiple"),
 
     canceled: (file: Dropzone.DropzoneFile) => console.log("Canceled"),
-    canceledmultiple: (file: Dropzone.DropzoneFile[]) => console.log("Canceledmultiple"),
+    canceledmultiple: (file: Dropzone.DropzoneFile[]) =>
+        console.log("Canceledmultiple"),
 
     complete: (file: Dropzone.DropzoneFile) => console.log("Complete"),
-    completemultiple: (file: Dropzone.DropzoneFile[]) => console.log("Completemultiple"),
+    completemultiple: (file: Dropzone.DropzoneFile[]) =>
+        console.log("Completemultiple"),
 
-    maxfilesexceeded: (file: Dropzone.DropzoneFile) => console.log("Maxfilesexceeded"),
-    maxfilesreached: (files: Dropzone.DropzoneFile[]) => console.log("Maxfilesreached"),
+    maxfilesexceeded: (file: Dropzone.DropzoneFile) =>
+        console.log("Maxfilesexceeded"),
+    maxfilesreached: (files: Dropzone.DropzoneFile[]) =>
+        console.log("Maxfilesreached"),
     queuecomplete: () => console.log("Queuecomplete"),
 
     previewTemplate: "<div></div>",
@@ -129,17 +152,22 @@ dropzoneWithOptionsVariations = new Dropzone(".test", {
     clickable: [".test", ".test"],
 });
 dropzoneWithOptionsVariations = new Dropzone(".test", {
-    clickable: [document.getElementById("test"), document.getElementById("test")],
+    clickable: [
+        document.getElementById("test"),
+        document.getElementById("test"),
+    ],
 });
 dropzoneWithOptionsVariations = new Dropzone(".test", {
     clickable: ["test", document.getElementById("test")],
 });
 
 dropzoneWithOptionsVariations = new Dropzone(".test", {
-    success: (file: Dropzone.DropzoneFile, response: Object) => console.log(file, response),
+    success: (file: Dropzone.DropzoneFile, response: Object) =>
+        console.log(file, response),
 });
 dropzoneWithOptionsVariations = new Dropzone(".test", {
-    success: (file: Dropzone.DropzoneFile, response: string) => console.log(file, response),
+    success: (file: Dropzone.DropzoneFile, response: string) =>
+        console.log(file, response),
 });
 
 const dropzone = new Dropzone(".test");
@@ -147,7 +175,7 @@ const dropzone = new Dropzone(".test");
 dropzone.enable();
 dropzone.disable();
 
-dropzone.files.forEach(f => {
+dropzone.files.forEach((f) => {
     if (f.xhr) {
         console.log(f.xhr.readyState);
     }
@@ -287,9 +315,10 @@ dropzone
         console.count("queuecomplete");
     });
 
-dropzone.off("drop", () => {
-    console.count("drop");
-})
+dropzone
+    .off("drop", () => {
+        console.count("drop");
+    })
     .off("dragstart")
     .off();
 

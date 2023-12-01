@@ -18,8 +18,14 @@ export interface Progress {
     total: number;
 }
 
-export function encrypt(arg: Arguments, cb: (err: Error | null, buff: Buffer | null) => void): void;
-export function decrypt(arg: Arguments, cb: (err: Error | null, buff: Buffer | null) => void): void;
+export function encrypt(
+    arg: Arguments,
+    cb: (err: Error | null, buff: Buffer | null) => void,
+): void;
+export function decrypt(
+    arg: Arguments,
+    cb: (err: Error | null, buff: Buffer | null) => void,
+): void;
 
 export namespace prng {
     function generate(n: number, cb: (words: WordArray) => void): void;

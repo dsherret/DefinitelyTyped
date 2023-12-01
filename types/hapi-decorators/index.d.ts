@@ -1,7 +1,7 @@
 import * as hapi from "hapi";
 import * as Joi from "joi";
 interface ControllerStatic {
-    new(...args: any[]): Controller;
+    new (...args: any[]): Controller;
 }
 export interface Controller {
     baseUrl: string;
@@ -36,7 +36,9 @@ interface ICacheConfig {
     expiresIn?: number | undefined;
     expiresAt?: number | undefined;
 }
-export function cache(cacheConfig: ICacheConfig): (target: any, key: any, descriptor: any) => any;
+export function cache(
+    cacheConfig: ICacheConfig,
+): (target: any, key: any, descriptor: any) => any;
 export function pre(pre: {
     [key: string]: any;
 }): (target: any, key: any, descriptor: any) => any;

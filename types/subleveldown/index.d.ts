@@ -1,4 +1,8 @@
-import { AbstractIterator, AbstractLevelDOWN, ErrorCallback } from "abstract-leveldown";
+import {
+    AbstractIterator,
+    AbstractLevelDOWN,
+    ErrorCallback,
+} from "abstract-leveldown";
 import { CodecOptions } from "level-codec";
 import { LevelUp } from "levelup";
 

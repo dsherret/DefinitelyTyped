@@ -46,7 +46,10 @@ export function computeStaticExpression(
  * @param node The target node from the AST parser.
  * @returns A boolean asserting the variable exists.
  */
-export function containsIdentifier(name: string, node: ESTree.Node | ESLint.Rule.Node): boolean;
+export function containsIdentifier(
+    name: string,
+    node: ESTree.Node | ESLint.Rule.Node,
+): boolean;
 
 /**
  * Get the name of a `MemberExpression`'s property.
@@ -67,7 +70,9 @@ export function containsIdentifier(name: string, node: ESTree.Node | ESLint.Rule
  * @param node The target node from the AST parser.
  * @returns The name of the property or `undefined`
  */
-export function getPropertyName(node: ESTree.Node | ESLint.Rule.Node): string | number | undefined;
+export function getPropertyName(
+    node: ESTree.Node | ESLint.Rule.Node,
+): string | number | undefined;
 
 /**
  * Gets the source of a `require()` call. If `node` is not a `require` call
@@ -78,7 +83,9 @@ export function getPropertyName(node: ESTree.Node | ESLint.Rule.Node): string | 
  * @param node The target node from the AST parser.
  * @returns The require source or `undefined`.
  */
-export function getRequireSource(node: ESTree.Node | ESLint.Rule.Node): string | undefined;
+export function getRequireSource(
+    node: ESTree.Node | ESLint.Rule.Node,
+): string | undefined;
 
 /**
  * Checks whether node is a function expression or an arrow function
@@ -90,7 +97,9 @@ export function getRequireSource(node: ESTree.Node | ESLint.Rule.Node): string |
  * @param node The target node from the AST parser.
  * @returns A boolean asserting the node is function expression
  */
-export function isFunctionExpression(node: ESTree.Node | ESLint.Rule.Node): boolean;
+export function isFunctionExpression(
+    node: ESTree.Node | ESLint.Rule.Node,
+): boolean;
 
 /**
  * Checks whether `node` is a Promise.
@@ -143,4 +152,7 @@ export function isStaticRequire(node: ESTree.Node | ESLint.Rule.Node): boolean;
  * @param nodes An array of target nodes from the AST parser.
  * @returns A boolean asserting the variable exists.
  */
-export function someContainIdentifier(name: string, nodes: Array<ESTree.Node | ESLint.Rule.Node>): boolean;
+export function someContainIdentifier(
+    name: string,
+    nodes: Array<ESTree.Node | ESLint.Rule.Node>,
+): boolean;

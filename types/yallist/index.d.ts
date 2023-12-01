@@ -15,17 +15,35 @@ declare class Yallist<T> implements Iterable<T> {
     constructor(list: Yallist.ForEachIterable<T>);
     constructor(...items: T[]);
 
-    forEach<U = this>(callbackFn: (this: U, value: T, index: number, list: this) => void, thisArg?: U): void;
-    forEachReverse<U = this>(callbackFn: (this: U, value: T, index: number, list: this) => void, thisArg?: U): void;
+    forEach<U = this>(
+        callbackFn: (this: U, value: T, index: number, list: this) => void,
+        thisArg?: U,
+    ): void;
+    forEachReverse<U = this>(
+        callbackFn: (this: U, value: T, index: number, list: this) => void,
+        thisArg?: U,
+    ): void;
     get(n: number): T | undefined;
     getReverse(n: number): T | undefined;
-    map<U = this, R = T>(callbackFn: (this: U, value: T, list: this) => R, thisArg?: U): Yallist<R>;
-    mapReverse<U = this, R = T>(callbackFn: (this: U, value: T, list: this) => R, thisArg?: U): Yallist<R>;
+    map<U = this, R = T>(
+        callbackFn: (this: U, value: T, list: this) => R,
+        thisArg?: U,
+    ): Yallist<R>;
+    mapReverse<U = this, R = T>(
+        callbackFn: (this: U, value: T, list: this) => R,
+        thisArg?: U,
+    ): Yallist<R>;
     pop(): T | undefined;
     push(...items: T[]): number;
     pushNode(node: Yallist.Node<T>): void;
-    reduce<U = T>(fn: (previousValue: U, currentValue: T, index: number) => U, initialValue?: U): U;
-    reduceReverse<U = T>(fn: (previousValue: U, currentValue: T, index: number) => U, initialValue?: U): U;
+    reduce<U = T>(
+        fn: (previousValue: U, currentValue: T, index: number) => U,
+        initialValue?: U,
+    ): U;
+    reduceReverse<U = T>(
+        fn: (previousValue: U, currentValue: T, index: number) => U,
+        initialValue?: U,
+    ): U;
     removeNode(node: Yallist.Node<T>): void;
     reverse(): this;
     shift(): T | undefined;
@@ -46,8 +64,18 @@ declare namespace Yallist {
     }
 
     interface NodeConstructor {
-        <T>(value: T, prev?: Node<T>, next?: Node<T>, list?: Yallist<T>): Node<T>;
-        new<T>(value: T, prev?: Node<T>, next?: Node<T>, list?: Yallist<T>): Node<T>;
+        <T>(
+            value: T,
+            prev?: Node<T>,
+            next?: Node<T>,
+            list?: Yallist<T>,
+        ): Node<T>;
+        new <T>(
+            value: T,
+            prev?: Node<T>,
+            next?: Node<T>,
+            list?: Yallist<T>,
+        ): Node<T>;
     }
 
     interface Node<T> {

@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/bootstrap-fileinput",
-    "version": "5.2.9999",
-    "projects": [
-        "https://github.com/kartik-v/bootstrap-fileinput"
-    ],
-    "dependencies": {
-        "@types/jquery": "*"
+  "private": true,
+  "name": "@types/bootstrap-fileinput",
+  "version": "5.2.9999",
+  "projects": [
+    "https://github.com/kartik-v/bootstrap-fileinput"
+  ],
+  "dependencies": {
+    "@types/jquery": "*"
+  },
+  "devDependencies": {
+    "@types/bootstrap-fileinput": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Ché Coxshall",
+      "githubUsername": "CheCoxshall"
     },
-    "devDependencies": {
-        "@types/bootstrap-fileinput": "workspace:."
+    {
+      "name": "Piotr Błażejewicz",
+      "githubUsername": "peterblazejewicz"
     },
-    "owners": [
-        {
-            "name": "Ché Coxshall",
-            "githubUsername": "CheCoxshall"
-        },
-        {
-            "name": "Piotr Błażejewicz",
-            "githubUsername": "peterblazejewicz"
-        },
-        {
-            "name": "Zach Hall",
-            "githubUsername": "zshall"
-        }
-    ]
+    {
+      "name": "Zach Hall",
+      "githubUsername": "zshall"
+    }
+  ]
 }

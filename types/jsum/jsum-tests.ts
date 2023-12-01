@@ -7,10 +7,7 @@ const testObject = {
         prop1: "prop1",
         prop2: "prop2",
     },
-    prop4: [
-        "prop1",
-        "prop2",
-    ],
+    prop4: ["prop1", "prop2"],
 };
 jsum.digest(testObject, "sha256", "base64"); // $ExpectType string
 // @ts-expect-error

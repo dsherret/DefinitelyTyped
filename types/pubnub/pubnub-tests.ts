@@ -15,7 +15,9 @@ const config: Pubnub.PubnubConfig = {
     subscribeRequestTimeout: 60,
     uuid: "myUUID",
     dedupeOnSubscribe: false,
-    cryptoModule: Pubnub.CryptoModule.aesCbcCryptoModule({ cipherKey: "cipher" }),
+    cryptoModule: Pubnub.CryptoModule.aesCbcCryptoModule({
+        cipherKey: "cipher",
+    }),
 };
 
 // userId should work
@@ -35,20 +37,25 @@ const pubnub = new Pubnub(config);
 pubnub.setAuthKey("myAuthenKey");
 
 // publish with callback
-pubnub.publish({ channel: "channel-1", message: { data: 1 } }, (status, response) => {
-    /*
-     * Do something
-     */
-    console.log(response.timetoken);
-});
+pubnub.publish(
+    { channel: "channel-1", message: { data: 1 } },
+    (status, response) => {
+        /*
+         * Do something
+         */
+        console.log(response.timetoken);
+    },
+);
 
 // publish promise
-pubnub.publish({ channel: "channel-1", message: { data: 1 } }).then(response => {
-    /*
-     * Do something
-     */
-    console.log(response.timetoken);
-});
+pubnub
+    .publish({ channel: "channel-1", message: { data: 1 } })
+    .then((response) => {
+        /*
+         * Do something
+         */
+        console.log(response.timetoken);
+    });
 
 pubnub.signal(
     { channel: "channel-1", message: { data: "small payload" } },
@@ -62,10 +69,12 @@ pubnub
 pubnub.subscribe({ channels: ["channel-1", "user-1", "space-1"] });
 
 pubnub.addListener({
-    status: statusEvent => {
+    status: (statusEvent) => {
         if (statusEvent.category === Pubnub.CATEGORIES.PNConnectedCategory) {
             console.log(statusEvent.category);
-        } else if (statusEvent.operation === Pubnub.OPERATIONS.PNAccessManagerAudit) {
+        } else if (
+            statusEvent.operation === Pubnub.OPERATIONS.PNAccessManagerAudit
+        ) {
             console.log(statusEvent.operation);
         }
     },
@@ -99,25 +108,19 @@ pubnub.addListener({
         publisher,
         subscription,
         timetoken,
-        message: {
-            type,
-            event,
-            data,
-        },
+        message: { type, event, data },
     }) => {
-        console.log(
-            {
-                channel,
-                publisher,
-                subscription,
-                timetoken,
-                message: {
-                    type,
-                    event,
-                    data,
-                },
+        console.log({
+            channel,
+            publisher,
+            subscription,
+            timetoken,
+            message: {
+                type,
+                event,
+                data,
             },
-        );
+        });
     },
     file: ({
         channel,
@@ -125,11 +128,7 @@ pubnub.addListener({
         timetoken,
         publisher,
         message,
-        file: {
-            id,
-            name,
-            url,
-        },
+        file: { id, name, url },
         userMetadata,
     }) =>
         console.log({
@@ -164,7 +163,7 @@ pubnub.whereNow({ uuid: "" }, (status, res) => {
     }
 });
 
-pubnub.whereNow({ uuid: "" }).then(res => {
+pubnub.whereNow({ uuid: "" }).then((res) => {
     console.log(res.channels[1]);
 });
 
@@ -174,7 +173,7 @@ pubnub.getState({ uuid: "" }, (status, res) => {
     }
 });
 
-pubnub.getState({ uuid: "" }).then(res => {
+pubnub.getState({ uuid: "" }).then((res) => {
     console.log(res.channels[1]);
 });
 
@@ -184,7 +183,7 @@ pubnub.setState({ channels: [] }, (status, res) => {
     }
 });
 
-pubnub.setState({ channels: [] }).then(res => {
+pubnub.setState({ channels: [] }).then((res) => {
     console.log(res.state);
 });
 
@@ -199,7 +198,7 @@ const grantOptions = {
     join: true,
     ttl: 1440,
 };
-pubnub.grant(grantOptions).then(status => {
+pubnub.grant(grantOptions).then((status) => {
     console.log(status);
 });
 
@@ -208,7 +207,7 @@ const grantUuidOptions = {
     authKeys: ["auth-key"],
     update: true,
 };
-pubnub.grant(grantUuidOptions).then(status => {
+pubnub.grant(grantUuidOptions).then((status) => {
     console.log(status);
 });
 
@@ -219,7 +218,7 @@ const grantchannelGroupsOptions = {
     manage: false,
     ttl: 1440,
 };
-pubnub.grant(grantchannelGroupsOptions).then(status => {
+pubnub.grant(grantchannelGroupsOptions).then((status) => {
     console.log(status);
 });
 
@@ -268,7 +267,7 @@ const grantTokenParameters = {
     },
 };
 
-pubnub.grantToken(grantTokenParameters).then(token => console.log(token));
+pubnub.grantToken(grantTokenParameters).then((token) => console.log(token));
 
 pubnub.parseToken("someToken");
 
@@ -278,9 +277,13 @@ pubnub.getToken();
 
 pubnub.revokeToken("someToken");
 
-pubnub.history({ channel: "channel-1", count: 2 }, (status, res) => console.log(status, res));
+pubnub.history({ channel: "channel-1", count: 2 }, (status, res) =>
+    console.log(status, res),
+);
 
-pubnub.history({ channel: "channel-1", count: 2 }).then(res => console.log(res));
+pubnub
+    .history({ channel: "channel-1", count: 2 })
+    .then((res) => console.log(res));
 
 pubnub.fetchMessages(
     {
@@ -294,17 +297,20 @@ pubnub.fetchMessages(
         includeMessageActions: true,
     },
     (status, { channels }) =>
-        Object.keys(channels).forEach(channel =>
-            channels[channel].forEach(({ message, timetoken, meta, actions = {} }) => {
-                console.log({ message, timetoken, meta });
-                Object.keys(actions).forEach(type =>
-                    Object.keys(actions[type]).forEach(value =>
-                        actions[type][value].forEach(({ uuid, actionTimetoken }) =>
-                            console.log({ uuid, actionTimetoken })
-                        )
-                    )
-                );
-            })
+        Object.keys(channels).forEach((channel) =>
+            channels[channel].forEach(
+                ({ message, timetoken, meta, actions = {} }) => {
+                    console.log({ message, timetoken, meta });
+                    Object.keys(actions).forEach((type) =>
+                        Object.keys(actions[type]).forEach((value) =>
+                            actions[type][value].forEach(
+                                ({ uuid, actionTimetoken }) =>
+                                    console.log({ uuid, actionTimetoken }),
+                            ),
+                        ),
+                    );
+                },
+            ),
         ),
 );
 
@@ -315,7 +321,7 @@ pubnub
         start: "15343325214676133",
         end: "15343325004275466",
     })
-    .then(res => console.log(res));
+    .then((res) => console.log(res));
 
 pubnub.deleteMessages(
     {
@@ -323,7 +329,7 @@ pubnub.deleteMessages(
         start: "15088506076921021",
         end: "15088532035597390",
     },
-    status => console.log(status),
+    (status) => console.log(status),
 );
 
 pubnub
@@ -340,7 +346,7 @@ pubnub.messageCounts(
         channelTimetokens: ["15518041524300251"],
     },
     (status, { channels }) => {
-        Object.keys(channels).forEach(channel => {
+        Object.keys(channels).forEach((channel) => {
             console.log(channels[channel]);
         });
     },
@@ -351,7 +357,7 @@ pubnub
         channels: ["ch1"],
         channelTimetokens: ["15518041524300251"],
     })
-    .then(res => console.log(res));
+    .then((res) => console.log(res));
 
 pubnub.push.addChannels(
     {
@@ -359,7 +365,7 @@ pubnub.push.addChannels(
         device: "niceDevice",
         pushGateway: "apns",
     },
-    status => console.log(status),
+    (status) => console.log(status),
 );
 
 pubnub.push
@@ -375,7 +381,8 @@ pubnub.push.listChannels(
         device: "niceDevice",
         pushGateway: "apns",
     },
-    (status, { channels = [] }) => channels.forEach(channel => console.log(channel)),
+    (status, { channels = [] }) =>
+        channels.forEach((channel) => console.log(channel)),
 );
 
 pubnub.push
@@ -383,7 +390,7 @@ pubnub.push
         device: "niceDevice",
         pushGateway: "apns",
     })
-    .then(res => console.log(res));
+    .then((res) => console.log(res));
 
 pubnub.push.removeChannels(
     {
@@ -391,7 +398,7 @@ pubnub.push.removeChannels(
         device: "niceDevice",
         pushGateway: "apns", // apns, gcm, mpns
     },
-    status => console.log(status),
+    (status) => console.log(status),
 );
 pubnub.push
     .removeChannels({
@@ -406,7 +413,7 @@ pubnub.push.deleteDevice(
         device: "niceDevice",
         pushGateway: "apns", // apns, gcm, mpns
     },
-    status => console.log(status),
+    (status) => console.log(status),
 );
 
 pubnub.push
@@ -431,32 +438,50 @@ pubnub.decrypt(mySecret, undefined, cryptoOptions);
 pubnub.decrypt("mySecretString", undefined, cryptoOptions);
 pubnub.encrypt("egrah5rwgrehwqh5eh3hwfwef", undefined, cryptoOptions);
 
-pubnub.time().then(response => console.log(response));
+pubnub.time().then((response) => console.log(response));
 
 pubnub.time((status, response) => console.log(status, response));
 
 const channelGroup = "channel-group-1";
 const channels = ["channel-1"];
 
-pubnub.channelGroups.addChannels({ channelGroup, channels }).then(response => console.log(response));
+pubnub.channelGroups
+    .addChannels({ channelGroup, channels })
+    .then((response) => console.log(response));
 
-pubnub.channelGroups.listChannels({ channelGroup }).then(response => console.log(response));
+pubnub.channelGroups
+    .listChannels({ channelGroup })
+    .then((response) => console.log(response));
 
-pubnub.channelGroups.listGroups().then(response => console.log(response));
+pubnub.channelGroups.listGroups().then((response) => console.log(response));
 
-pubnub.channelGroups.removeChannels({ channelGroup, channels }).then(response => console.log(response));
+pubnub.channelGroups
+    .removeChannels({ channelGroup, channels })
+    .then((response) => console.log(response));
 
-pubnub.channelGroups.deleteGroup({ channelGroup }).then(response => console.log(response));
+pubnub.channelGroups
+    .deleteGroup({ channelGroup })
+    .then((response) => console.log(response));
 
-pubnub.channelGroups.addChannels({ channelGroup, channels }, status => console.log(status));
+pubnub.channelGroups.addChannels({ channelGroup, channels }, (status) =>
+    console.log(status),
+);
 
-pubnub.channelGroups.listChannels({ channelGroup }, (status, response) => console.log(status, response));
+pubnub.channelGroups.listChannels({ channelGroup }, (status, response) =>
+    console.log(status, response),
+);
 
-pubnub.channelGroups.listGroups((status, response) => console.log(status, response));
+pubnub.channelGroups.listGroups((status, response) =>
+    console.log(status, response),
+);
 
-pubnub.channelGroups.removeChannels({ channelGroup, channels }, status => console.log(status));
+pubnub.channelGroups.removeChannels({ channelGroup, channels }, (status) =>
+    console.log(status),
+);
 
-pubnub.channelGroups.deleteGroup({ channelGroup }, status => console.log(status));
+pubnub.channelGroups.deleteGroup({ channelGroup }, (status) =>
+    console.log(status),
+);
 
 pubnub.addMessageAction(
     {
@@ -467,8 +492,10 @@ pubnub.addMessageAction(
             value: "smiley_face",
         },
     },
-    (status, { data: { type, value, uuid, actionTimetoken, messageTimetoken } }) =>
-        console.log({ type, value, uuid, actionTimetoken, messageTimetoken }),
+    (
+        status,
+        { data: { type, value, uuid, actionTimetoken, messageTimetoken } },
+    ) => console.log({ type, value, uuid, actionTimetoken, messageTimetoken }),
 );
 
 pubnub
@@ -480,7 +507,7 @@ pubnub
             value: "smiley_face",
         },
     })
-    .then(res => console.log(res));
+    .then((res) => console.log(res));
 
 pubnub.removeMessageAction(
     {
@@ -497,7 +524,7 @@ pubnub
         messageTimetoken: "15610547826970040",
         actionTimetoken: "15610547826970040",
     })
-    .then(res => console.log(res));
+    .then((res) => console.log(res));
 
 pubnub.getMessageActions(
     {
@@ -507,9 +534,20 @@ pubnub.getMessageActions(
         limit: 100,
     },
     (status, { data }) => {
-        data.forEach(({ type, value, uuid, actionTimetoken, messageTimetoken }, index) => {
-            console.log(index, { type, value, uuid, actionTimetoken, messageTimetoken });
-        });
+        data.forEach(
+            (
+                { type, value, uuid, actionTimetoken, messageTimetoken },
+                index,
+            ) => {
+                console.log(index, {
+                    type,
+                    value,
+                    uuid,
+                    actionTimetoken,
+                    messageTimetoken,
+                });
+            },
+        );
     },
 );
 
@@ -520,11 +558,14 @@ pubnub
         end: "15610547826970040",
         limit: 100,
     })
-    .then(res => console.log(res));
+    .then((res) => console.log(res));
 
 // APNS
 
-Pubnub.notificationPayload("Chat invitation", "You have been invited to 'quiz' chat").buildPayload(["apns2", "fcm"]);
+Pubnub.notificationPayload(
+    "Chat invitation",
+    "You have been invited to 'quiz' chat",
+).buildPayload(["apns2", "fcm"]);
 
 // Objects v2 (examples taken from docs https://www.pubnub.com/docs/web-javascript/api-reference-objects)
 
@@ -603,7 +644,11 @@ pubnub.objects.setMemberships({
 // using passed in UUID
 pubnub.objects.setMemberships({
     uuid: "my-uuid",
-    channels: ["my-channel-1", { id: "my-channel-2" }, { id: "my-channel-3", custom: { hello: "world" } }],
+    channels: [
+        "my-channel-1",
+        { id: "my-channel-2" },
+        { id: "my-channel-3", custom: { hello: "world" } },
+    ],
     include: {
         // To include channel fields in response
         channelFields: true,

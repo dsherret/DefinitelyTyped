@@ -97,7 +97,10 @@ function loader2(this: loader.LoaderContext) {
     // => /app/dir/file.png?9473fdd0d880a43c21b7778d34872157
 
     // loaderContext.resourcePath = "/app/js/page-home.js"
-    interpolateName(this, "script-[1].[ext]", { regExp: "page-(.*)\\.js", content: "" });
+    interpolateName(this, "script-[1].[ext]", {
+        regExp: "page-(.*)\\.js",
+        content: "",
+    });
     // => script-home.js
 }
 

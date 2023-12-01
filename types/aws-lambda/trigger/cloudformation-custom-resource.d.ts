@@ -1,7 +1,10 @@
 import { Handler } from "../handler";
 
 // Note, responses are *not* lambda results, they are sent to the event ResponseURL.
-export type CloudFormationCustomResourceHandler = Handler<CloudFormationCustomResourceEvent, void>;
+export type CloudFormationCustomResourceHandler = Handler<
+    CloudFormationCustomResourceEvent,
+    void
+>;
 
 export type CloudFormationCustomResourceEvent =
     | CloudFormationCustomResourceCreateEvent
@@ -29,11 +32,13 @@ export interface CloudFormationCustomResourceEventCommon {
     };
 }
 
-export interface CloudFormationCustomResourceCreateEvent extends CloudFormationCustomResourceEventCommon {
+export interface CloudFormationCustomResourceCreateEvent
+    extends CloudFormationCustomResourceEventCommon {
     RequestType: "Create";
 }
 
-export interface CloudFormationCustomResourceUpdateEvent extends CloudFormationCustomResourceEventCommon {
+export interface CloudFormationCustomResourceUpdateEvent
+    extends CloudFormationCustomResourceEventCommon {
     RequestType: "Update";
     PhysicalResourceId: string;
     OldResourceProperties: {
@@ -41,7 +46,8 @@ export interface CloudFormationCustomResourceUpdateEvent extends CloudFormationC
     };
 }
 
-export interface CloudFormationCustomResourceDeleteEvent extends CloudFormationCustomResourceEventCommon {
+export interface CloudFormationCustomResourceDeleteEvent
+    extends CloudFormationCustomResourceEventCommon {
     RequestType: "Delete";
     PhysicalResourceId: string;
 }
@@ -53,18 +59,20 @@ export interface CloudFormationCustomResourceResponseCommon {
     LogicalResourceId: string;
     Data?:
         | {
-            [Key: string]: any;
-        }
+              [Key: string]: any;
+          }
         | undefined;
     NoEcho?: boolean | undefined;
 }
 
-export interface CloudFormationCustomResourceSuccessResponse extends CloudFormationCustomResourceResponseCommon {
+export interface CloudFormationCustomResourceSuccessResponse
+    extends CloudFormationCustomResourceResponseCommon {
     Status: "SUCCESS";
     Reason?: string | undefined;
 }
 
-export interface CloudFormationCustomResourceFailedResponse extends CloudFormationCustomResourceResponseCommon {
+export interface CloudFormationCustomResourceFailedResponse
+    extends CloudFormationCustomResourceResponseCommon {
     Status: "FAILED";
     Reason: string;
 }

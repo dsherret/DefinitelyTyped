@@ -15,7 +15,10 @@ declare module "js-data" {
             params: DSFilterParams,
             scope: ng.IScope,
             expr: string,
-            cb?: (err: DSError, items: Array<T & DSInstanceShorthands<T>>) => void,
+            cb?: (
+                err: DSError,
+                items: Array<T & DSInstanceShorthands<T>>,
+            ) => void,
         ): Function;
         bindOne<T>(
             resourceName: string,
@@ -31,7 +34,10 @@ declare module "js-data" {
             params: DSFilterParams,
             scope: ng.IScope,
             expr: string,
-            cb?: (err: DSError, items: Array<T & DSInstanceShorthands<T>>) => void,
+            cb?: (
+                err: DSError,
+                items: Array<T & DSInstanceShorthands<T>>,
+            ) => void,
         ): Function;
         bindOne(
             id: string | number,

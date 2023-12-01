@@ -21,9 +21,9 @@ interface IHashSet<TValue> {
 }
 
 interface IHashSetStatic {
-    new<TValue>(): IHashSet<TValue>;
-    new<TValue>(options: IHashtableOptions<TValue>): IHashSet<TValue>;
-    new<TValue>(
+    new <TValue>(): IHashSet<TValue>;
+    new <TValue>(options: IHashtableOptions<TValue>): IHashSet<TValue>;
+    new <TValue>(
         hashCode?: (value: TValue) => any,
         equals?: (value1: TValue, value2: TValue) => boolean,
     ): IHashSet<TValue>;

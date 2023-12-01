@@ -16,7 +16,10 @@ declare var fetch: any;
 // ------------------------------ //
 
 // simple initial omelette object: with array choices
-omelette`github ${["pull", "push"]} ${["origin", "upstream"]} ${["master", "develop"]}`.init();
+omelette`github ${["pull", "push"]} ${["origin", "upstream"]} ${[
+    "master",
+    "develop",
+]}`.init();
 
 const firstArgument: Callback = ({ reply }) => {
     reply(["beautiful", "cruel", "far"]);
@@ -46,7 +49,10 @@ completion.on("user", ({ reply }) => {
 });
 
 completion.on("repo", ({ before, reply }) => {
-    reply([`https://github.com/${before}/helloworld`, `https://github.com/${before}/blabla`]);
+    reply([
+        `https://github.com/${before}/helloworld`,
+        `https://github.com/${before}/blabla`,
+    ]);
 });
 
 completion.on("complete", (fragment, { reply }) => reply(["hello", "world"]));
@@ -82,7 +88,10 @@ omelette`
   githubber|gh
   ${["clone", "update", "push"]}
   ${() => fs.readdirSync("/Users/")}
-  ${({ before }) => [`https://github.com/${before}/helloworld`, `https://github.com/${before}/blabla`]}
+  ${({ before }) => [
+      `https://github.com/${before}/helloworld`,
+      `https://github.com/${before}/blabla`,
+  ]}
 `.init();
 
 // ------------------------------ //
@@ -92,14 +101,23 @@ omelette`
 omelette`
   githubber|gh
       ${["pull", "push", "star"] /* Direct command list */}
-      ${getFromRemote("http://api.example.com/commands") /* Remote call at the beginning */}
-      ${({ reply }) => fetch("http://api.example.com/lazy-commands").then(reply) /* Fetch when argument <tab>bed */}
+      ${
+          getFromRemote(
+              "http://api.example.com/commands",
+          ) /* Remote call at the beginning */
+      }
+      ${
+          ({ reply }) =>
+              fetch("http://api.example.com/lazy-commands").then(
+                  reply,
+              ) /* Fetch when argument <tab>bed */
+      }
       ${() => fs.readdirSync("/Users/") /* Access filesystem via Node */}
       ${({ before }) => [
-    /* Use parameters like `before`, `line`, `fragment` or `reply` */
-    `${before}/helloworld`,
-    `${before}/blabla`,
-]}
+          /* Use parameters like `before`, `line`, `fragment` or `reply` */
+          `${before}/helloworld`,
+          `${before}/blabla`,
+      ]}
   `.init();
 
 // No extra configuration required.
@@ -113,7 +131,7 @@ console.log(process.argv);
 
 completion.onAsync("user", async ({ reply }) => {
     reply(
-        new Promise(resolve => {
+        new Promise((resolve) => {
             fs.readdir("/Users/", (err: any, users: any) => {
                 resolve(users);
             });

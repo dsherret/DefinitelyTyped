@@ -31,7 +31,11 @@ class StateComponent extends React.Component<{}, State> {
     }
 
     render() {
-        return <div>{this.state.constructed ? "Constructed" : "Not constructed"}</div>;
+        return (
+            <div>
+                {this.state.constructed ? "Constructed" : "Not constructed"}
+            </div>
+        );
     }
 }
 
@@ -47,7 +51,9 @@ class StatePropsComponent extends React.Component<Props, State> {
     render() {
         return (
             <div>
-                <div>{this.state.constructed ? "Constructed" : "Not constructed"}</div>
+                <div>
+                    {this.state.constructed ? "Constructed" : "Not constructed"}
+                </div>
                 <div>{this.props.id}</div>
             </div>
         );

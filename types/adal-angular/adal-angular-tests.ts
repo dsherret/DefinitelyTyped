@@ -1,6 +1,10 @@
 import AuthenticationContext = require("adal-angular");
 
-const onLogin: AuthenticationContext.TokenCallback = (errorDescription, idToken, error) => {
+const onLogin: AuthenticationContext.TokenCallback = (
+    errorDescription,
+    idToken,
+    error,
+) => {
     if (error) {
         console.error(errorDescription, error);
         return;
@@ -10,7 +14,11 @@ const onLogin: AuthenticationContext.TokenCallback = (errorDescription, idToken,
     }
 };
 
-const onToken: AuthenticationContext.TokenCallback = (errorDesc, token, error) => {
+const onToken: AuthenticationContext.TokenCallback = (
+    errorDesc,
+    token,
+    error,
+) => {
     if (error) {
         console.error(error);
         return;

@@ -1,4 +1,10 @@
-const defaultBehavior = ["drag", "scrollZoom", "dblClickZoom", "multiTouch", "rightMouseButtonMagnifier"];
+const defaultBehavior = [
+    "drag",
+    "scrollZoom",
+    "dblClickZoom",
+    "multiTouch",
+    "rightMouseButtonMagnifier",
+];
 const element: HTMLDivElement = document.createElement("div");
 
 const zoomControl = new ymaps.control.ZoomControl({
@@ -29,11 +35,7 @@ const map = new ymaps.Map(
     {
         behaviors: defaultBehavior,
         center: [55.76, 37.64],
-        controls: [
-            "trafficControl",
-            zoomControl,
-            typeSelector,
-        ],
+        controls: ["trafficControl", zoomControl, typeSelector],
         type: "yandex#map",
         zoom: 10,
     },
@@ -69,34 +71,44 @@ ymaps.template.filtersStorage.add("date", (data: ymaps.data.Manager) => {
 });
 
 const balloonLayout = ymaps.templateLayoutFactory.createClass(
-    "<div class=\"map-marker-balloon\"></div>",
+    '<div class="map-marker-balloon"></div>',
     {
         build(this: ymaps.ILayout): void {
-            ((this.constructor as any).superclass as ymaps.layout.templateBased.Base).build.call(this);
-            this.getParentElement().children.item(0)!.children.item(0)!.appendChild(
-                (this.getData() as any).properties.get("balloonContent"),
-            );
+            (
+                (this.constructor as any)
+                    .superclass as ymaps.layout.templateBased.Base
+            ).build.call(this);
+            this.getParentElement()
+                .children.item(0)!
+                .children.item(0)!
+                .appendChild(
+                    (this.getData() as any).properties.get("balloonContent"),
+                );
         },
     },
 );
 
-const mapMarker = new ymaps.Placemark([55.76, 37.64], {}, {
-    balloonContent: "test",
-    balloonAutoPan: true,
-    balloonCloseButton: false,
-    balloonZIndex: "10",
-    balloonLayout,
-    balloonPanelMaxMapArea: 0,
-    iconLayout: "default#image",
-    iconImageHref: "./test/icon.png",
-    iconImageSize: [26, 26],
-    iconImageOffset: [13, 13],
-    hasBalloon: true,
-    hasHint: false,
-    hideIconOnBalloonOpen: true,
-    openBalloonOnClick: false,
-    zIndex: 1,
-});
+const mapMarker = new ymaps.Placemark(
+    [55.76, 37.64],
+    {},
+    {
+        balloonContent: "test",
+        balloonAutoPan: true,
+        balloonCloseButton: false,
+        balloonZIndex: "10",
+        balloonLayout,
+        balloonPanelMaxMapArea: 0,
+        iconLayout: "default#image",
+        iconImageHref: "./test/icon.png",
+        iconImageSize: [26, 26],
+        iconImageOffset: [13, 13],
+        hasBalloon: true,
+        hasHint: false,
+        hideIconOnBalloonOpen: true,
+        openBalloonOnClick: false,
+        zIndex: 1,
+    },
+);
 
 mapMarker.events.add("click", (event) => {
     console.log(event);
@@ -113,7 +125,11 @@ mapMarker.events.add("wheel", (event) => {
 
 map.geoObjects.add(mapMarker);
 
-map.setCenter((mapMarker.geometry as ymaps.IPointGeometry).getCoordinates() || [55.76, 37.64]);
+map.setCenter(
+    (mapMarker.geometry as ymaps.IPointGeometry).getCoordinates() || [
+        55.76, 37.64,
+    ],
+);
 
 map.layers.each((layer) => {
     if (layer.getBrightness) {
@@ -129,33 +145,39 @@ const shapeCircle = new ymaps.shape.Circle(
 shapeCircle.getGeometry();
 
 const placemark = new ymaps.Placemark([0, 1], {});
-placemark.events.add("dragend", (event: ymaps.IEvent<{}, ymaps.geometry.Point>) => {
-    const target = event.originalEvent.target;
-    if (!target) {
-        return;
-    }
+placemark.events.add(
+    "dragend",
+    (event: ymaps.IEvent<{}, ymaps.geometry.Point>) => {
+        const target = event.originalEvent.target;
+        if (!target) {
+            return;
+        }
 
-    const geometryPoint = target.geometry;
+        const geometryPoint = target.geometry;
 
-    if (!geometryPoint) {
-        return;
-    }
+        if (!geometryPoint) {
+            return;
+        }
 
-    const coordinates = geometryPoint.getCoordinates();
+        const coordinates = geometryPoint.getCoordinates();
 
-    if (!coordinates) {
-        return;
-    }
+        if (!coordinates) {
+            return;
+        }
 
-    coordinates.map((d: number) => d);
-});
+        coordinates.map((d: number) => d);
+    },
+);
 
 const balloon = new ymaps.Balloon(map, {});
 balloon.destroy();
 
 const layersCollections = map.layers.getAll();
 const layers = layersCollections.reduce(
-    (acc: ymaps.Layer[], collection: ymaps.Collection<ymaps.Layer>) => [...acc, ...collection.getAll()],
+    (acc: ymaps.Layer[], collection: ymaps.Collection<ymaps.Layer>) => [
+        ...acc,
+        ...collection.getAll(),
+    ],
     [],
 );
 const mapLayer = layers.find((layer: ymaps.Layer) => {
@@ -186,44 +208,63 @@ ymaps.panorama.Base.createPanorama({
 });
 
 ymaps.modules.define("test.module", (provide) => {
-    provide(function(this: any, value: any) {
+    provide(function (this: any, value: any) {
         this.value = value;
     });
 });
 
-ymaps.modules.define("test.module1", [
-    "test.module",
-    "templateLayoutFactory",
-], (provide, testModule, templateLayoutFactory: typeof ymaps.templateLayoutFactory) => {
-    const layoutClass = templateLayoutFactory.createClass("<div>{{ properties.header }}</div>", {
-        testMethod() {
-            return testModule;
-        },
-    });
+ymaps.modules.define(
+    "test.module1",
+    ["test.module", "templateLayoutFactory"],
+    (
+        provide,
+        testModule,
+        templateLayoutFactory: typeof ymaps.templateLayoutFactory,
+    ) => {
+        const layoutClass = templateLayoutFactory.createClass(
+            "<div>{{ properties.header }}</div>",
+            {
+                testMethod() {
+                    return testModule;
+                },
+            },
+        );
 
-    provide(layoutClass);
-});
+        provide(layoutClass);
+    },
+);
 
-ymaps.suggest("Mos", {
-    results: 5,
-    boundedBy: [[30, 40], [50, 50]],
-    provider: "yandex#map",
-}).then(items => {
-    return items.filter(el => el.value.toLowerCase() === "moscow");
-}).then(console.log);
+ymaps
+    .suggest("Mos", {
+        results: 5,
+        boundedBy: [
+            [30, 40],
+            [50, 50],
+        ],
+        provider: "yandex#map",
+    })
+    .then((items) => {
+        return items.filter((el) => el.value.toLowerCase() === "moscow");
+    })
+    .then(console.log);
 
 ymaps.geocode("Moscow"); // $ExpectType Promise<IGeocodeResult>
-ymaps.geocode([55.751244, 37.618423], {
-    boundedBy: [[30, 40], [50, 50]],
-    json: false,
-    kind: "district",
-    provider: "yandex#map",
-    results: 5,
-    searchCoordOrder: "latlong",
-    skip: 0,
-    strictBounds: false,
-}).then(result => result.geoObjects.get(0) as ymaps.GeocodeResult)
-    .then(result => result.getAddressLine() === "Moscow");
+ymaps
+    .geocode([55.751244, 37.618423], {
+        boundedBy: [
+            [30, 40],
+            [50, 50],
+        ],
+        json: false,
+        kind: "district",
+        provider: "yandex#map",
+        results: 5,
+        searchCoordOrder: "latlong",
+        skip: 0,
+        strictBounds: false,
+    })
+    .then((result) => result.geoObjects.get(0) as ymaps.GeocodeResult)
+    .then((result) => result.getAddressLine() === "Moscow");
 
 const geocodeProvider: ymaps.IGeocodeProvider = {
     suggest: (_request, _options) => {

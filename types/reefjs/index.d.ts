@@ -8,7 +8,13 @@ declare class Reef {
     debounce: number;
     lagoon: boolean;
     store: Reef.Store;
-    template: string | ((props?: Record<string, any>, elemOrRouter?: Element | Reef.Router, elem?: Element) => string);
+    template:
+        | string
+        | ((
+              props?: Record<string, any>,
+              elemOrRouter?: Element | Reef.Router,
+              elem?: Element,
+          ) => string);
 
     /**
      * Create a new Reef() instance, passing in two arguments: your selector, and your options.
@@ -68,7 +74,11 @@ declare class Reef {
      *
      * {@link https://reefjs.com/advanced/#event-hooks}
      */
-    static emit(elem: Element | Document, name: string, details?: Record<string, any>): void;
+    static emit(
+        elem: Element | Document,
+        name: string,
+        details?: Record<string, any>,
+    ): void;
 
     /**
      * By default, Reef fails silently. You can put Reef into debugging mode to expose helpful error message in the Console tab of your browser’s Developer Tools.
@@ -105,7 +115,11 @@ declare namespace Reef {
          */
         template:
             | string
-            | ((props: Record<string, any>, elemOrRouter?: Element | Router, elem?: Element) => string);
+            | ((
+                  props: Record<string, any>,
+                  elemOrRouter?: Element | Router,
+                  elem?: Element,
+              ) => string);
 
         /**
          * Prevents Cross-Site Scripting (XSS) Attacks. You can disable this feature by setting this option to true.
@@ -125,8 +139,17 @@ declare namespace Reef {
 
     interface DataStore {
         data: Record<string, any>;
-        setters?: { [key: string]: (data: Record<string, any>, ...args: any[]) => void } | undefined;
-        getters?: { [key: string]: (data: Record<string, any>) => any } | undefined;
+        setters?:
+            | {
+                  [key: string]: (
+                      data: Record<string, any>,
+                      ...args: any[]
+                  ) => void;
+              }
+            | undefined;
+        getters?:
+            | { [key: string]: (data: Record<string, any>) => any }
+            | undefined;
     }
 
     class Store {

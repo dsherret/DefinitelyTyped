@@ -9,14 +9,14 @@ const o3 = Observable(false);
 
 const test = computed([o1, o2, o3], (o1, o2, o3) => `${o1} ${o2}`);
 
-const removeListener = test(value => {
+const removeListener = test((value) => {
     // do something
 });
-watch(test, value => {
+watch(test, (value) => {
     // do something
 });
 o1.set("hello,");
 
 removeListener();
 
-const o4 = GeneratorSource(value => value, "hi");
+const o4 = GeneratorSource((value) => value, "hi");

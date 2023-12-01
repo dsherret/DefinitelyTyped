@@ -1,5 +1,8 @@
 import { FastBoot as _FastBoot } from "ember-cli-fastboot/-private";
-import FastBootService, { FastbootRequest, Shoebox } from "ember-cli-fastboot/services/fastboot";
+import FastBootService, {
+    FastbootRequest,
+    Shoebox,
+} from "ember-cli-fastboot/services/fastboot";
 import { assertType } from "./assert";
 
 /** type assertions for global FastBoot object */

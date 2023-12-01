@@ -2,9 +2,7 @@ import webpack = require("webpack");
 import { RawSourceMap } from "source-map";
 import { Tapable } from "tapable";
 
-const {
-    optimize,
-} = webpack;
+const { optimize } = webpack;
 
 let plugins: webpack.Plugin[];
 
@@ -16,9 +14,7 @@ let plugins: webpack.Plugin[];
  * optimize
  */
 
-const {
-    AggressiveMergingPlugin,
-} = optimize;
+const { AggressiveMergingPlugin } = optimize;
 
 plugins = [
     new AggressiveMergingPlugin(),
@@ -78,7 +74,7 @@ configuration = {
                 p1: "./page1",
                 p2: "./page2",
                 p3: "./page3",
-            })
+            }),
         ),
 };
 
@@ -113,7 +109,7 @@ configuration = {
     externals: [
         // Disable TSLint for allowing non-arrow functions
         /* tslint:disable-next-line:only-arrow-functions */
-        function(context, request, callback) {
+        function (context, request, callback) {
             if (/^yourregex$/.test(request)) {
                 // Disable TSLint for allowing non-arrow functions
                 /* tslint:disable-next-line:no-void-expression */
@@ -171,7 +167,7 @@ configuration = {
         },
         // Disable TSLint for allowing non-arrow functions
         /* tslint:disable-next-line:only-arrow-functions */
-        function(context, request, callback) {
+        function (context, request, callback) {
             if (/^yourregex$/.test(request)) {
                 // Disable TSLint for bypassing 'no-void-expression' to align with Webpack documentation
                 /* tslint:disable-next-line:no-void-expression */
@@ -248,10 +244,7 @@ configuration = { output: { chunkFilename: "[chunkhash].bundle.js" } };
 //
 
 configuration = {
-    entry: [
-        "./entry1",
-        "./entry2",
-    ],
+    entry: ["./entry1", "./entry2"],
 };
 
 configuration = {
@@ -274,9 +267,7 @@ rule = {
         path.resolve(__dirname, "app/src"),
         path.resolve(__dirname, "app/test"),
     ],
-    exclude: [
-        path.resolve(__dirname, "node_modules"),
-    ],
+    exclude: [path.resolve(__dirname, "node_modules")],
     loader: "babel-loader",
 };
 
@@ -301,10 +292,15 @@ configuration = {
                 "SomePlugin",
                 (compilation: webpack.compilation.Compilation) => {
                     for (const filepath in compilation.fileTimestamps.keys()) {
-                        const prevTimestamp = prevTimestamps.get(filepath) || startTime;
-                        const newTimestamp = compilation.fileTimestamps.get(filepath) || Infinity;
+                        const prevTimestamp =
+                            prevTimestamps.get(filepath) || startTime;
+                        const newTimestamp =
+                            compilation.fileTimestamps.get(filepath) ||
+                            Infinity;
                         if (prevTimestamp < newTimestamp) {
-                            this.inputFileSystem.readFileSync(filepath).toString("utf-8");
+                            this.inputFileSystem
+                                .readFileSync(filepath)
+                                .toString("utf-8");
                         }
                     }
                 },
@@ -313,7 +309,9 @@ configuration = {
             compiler.hooks.afterCompile.tap(
                 "SomePlugin",
                 (compilation: webpack.compilation.Compilation) => {
-                    ["path/to/extra/dep", "another/extra/dep"].forEach(path => compilation.fileDependencies.add(path));
+                    ["path/to/extra/dep", "another/extra/dep"].forEach((path) =>
+                        compilation.fileDependencies.add(path),
+                    );
                 },
             );
 
@@ -329,45 +327,66 @@ configuration = {
                 "SomePlugin",
                 (compiler: webpack.Compiler) => {},
             );
-            this.hooks.run.tap("SomePlugin", (compiler: webpack.Compiler) => {});
+            this.hooks.run.tap(
+                "SomePlugin",
+                (compiler: webpack.Compiler) => {},
+            );
 
-            compiler.hooks.compilation.tap("SomePlugin", compilation => {
+            compiler.hooks.compilation.tap("SomePlugin", (compilation) => {
                 const { mainTemplate } = compilation;
                 mainTemplate.requireFn.trimLeft();
                 mainTemplate.outputOptions.crossOriginLoading;
-                mainTemplate.hooks.require.tap("SomePlugin", resource => {
+                mainTemplate.hooks.require.tap("SomePlugin", (resource) => {
                     return `console.log('A module is required'); ${resource}`;
                 });
-                mainTemplate.hooks.requireExtensions.tap("SomePlugin", resource => {
-                    return resource.trimLeft();
-                });
+                mainTemplate.hooks.requireExtensions.tap(
+                    "SomePlugin",
+                    (resource) => {
+                        return resource.trimLeft();
+                    },
+                );
                 mainTemplate.hooks.requireEnsure.tap(
                     "SomePlugin",
                     (resource, chunk, hash, chunkIdExpression: string) => {
-                        mainTemplate.renderRequireFunctionForModule(hash, chunk, "moduleId");
-                        mainTemplate.renderAddModule(hash, chunk, "moduleId", JSON.stringify({ ok: true }));
+                        mainTemplate.renderRequireFunctionForModule(
+                            hash,
+                            chunk,
+                            "moduleId",
+                        );
+                        mainTemplate.renderAddModule(
+                            hash,
+                            chunk,
+                            "moduleId",
+                            JSON.stringify({ ok: true }),
+                        );
                         return `${resource};/* additional requests for ${chunkIdExpression} */`;
                     },
                 );
-                mainTemplate.hooks.localVars.tap("SomePlugin", resource => {
+                mainTemplate.hooks.localVars.tap("SomePlugin", (resource) => {
                     return resource.trimLeft();
                 });
-                mainTemplate.hooks.afterStartup.tap("SomePlugin", (resource, chunk) => {
-                    if (chunk.name) {
-                        return `/* In named chunk: ${chunk.name} */ ${resource};`;
-                    } else {
-                        return resource;
-                    }
-                });
-                mainTemplate.hooks.hash.tap("SomePlugin", hash => {
+                mainTemplate.hooks.afterStartup.tap(
+                    "SomePlugin",
+                    (resource, chunk) => {
+                        if (chunk.name) {
+                            return `/* In named chunk: ${chunk.name} */ ${resource};`;
+                        } else {
+                            return resource;
+                        }
+                    },
+                );
+                mainTemplate.hooks.hash.tap("SomePlugin", (hash) => {
                     hash.update("SomePlugin");
                     hash.update("1");
                 });
-                mainTemplate.hooks.hashForChunk.tap("SomePlugin", (hash, chunk) => {
-                    if (chunk.name) {
-                        hash.update(chunk.name);
-                    }
-                });
+                mainTemplate.hooks.hashForChunk.tap(
+                    "SomePlugin",
+                    (hash, chunk) => {
+                        if (chunk.name) {
+                            hash.update(chunk.name);
+                        }
+                    },
+                );
                 if (mainTemplate.hooks.jsonpScript == null) {
                     return;
                 }
@@ -426,11 +445,13 @@ plugin = new webpack.DllPlugin({
     name: "dll-name",
     path: "manifest-path",
 });
-plugin = new webpack.DllPlugin([{
-    context: "dir-context",
-    name: "dll-name",
-    path: "manifest-path",
-}]);
+plugin = new webpack.DllPlugin([
+    {
+        context: "dir-context",
+        name: "dll-name",
+        path: "manifest-path",
+    },
+]);
 plugin = new webpack.DllReferencePlugin({
     content: "dll content",
     context: "dir-context",
@@ -481,21 +502,21 @@ plugin = new webpack.DefinePlugin({
     OBJECT: {
         foo: "bar",
         bar: {
-            DEEP_RUNTIME: webpack.DefinePlugin.runtimeValue(
-                () => JSON.stringify("DEEP_RUUNTIME"),
+            DEEP_RUNTIME: webpack.DefinePlugin.runtimeValue(() =>
+                JSON.stringify("DEEP_RUUNTIME"),
             ),
             foofoo: {
                 barbar: false,
             },
         },
     },
-    RUNTIME: webpack.DefinePlugin.runtimeValue(
-        () => JSON.stringify("TEST_VALUE"),
+    RUNTIME: webpack.DefinePlugin.runtimeValue(() =>
+        JSON.stringify("TEST_VALUE"),
     ),
 });
 plugin = new webpack.DefinePlugin({
-    TEST_RUNTIME: webpack.DefinePlugin.runtimeValue(
-        ({ module }) => JSON.stringify(module.context),
+    TEST_RUNTIME: webpack.DefinePlugin.runtimeValue(({ module }) =>
+        JSON.stringify(module.context),
     ),
 });
 plugin = new webpack.DefinePlugin({
@@ -518,9 +539,7 @@ plugin = new webpack.SourceMapDevToolPlugin({
     //// asset matching
     test: /\.js$/,
     // include: Condition | Condition[],
-    exclude: [
-        /node_modules/,
-    ],
+    exclude: [/node_modules/],
     //
     //// file and reference
     filename: null, // | string
@@ -546,7 +565,13 @@ plugin = new webpack.EnvironmentPlugin(["a", "b"]);
 plugin = new webpack.EnvironmentPlugin({ a: true, b: "c" });
 plugin = new webpack.ProgressPlugin((percent: number, message: string) => {});
 plugin = new webpack.ProgressPlugin(
-    (percent: number, message: string, moduleProgress?: string, activeModules?: string, moduleName?: string) => {},
+    (
+        percent: number,
+        message: string,
+        moduleProgress?: string,
+        activeModules?: string,
+        moduleName?: string,
+    ) => {},
 );
 plugin = new webpack.ProgressPlugin({ profile: true });
 plugin = new webpack.ProgressPlugin({ activeModules: true, entries: false });
@@ -556,22 +581,21 @@ plugin = new webpack.HashedModuleIdsPlugin({
     hashDigest: "hex",
     hashDigestLength: 20,
 });
-plugin = new webpack.SingleEntryPlugin(
-    "/home",
-    "./main.js",
-    "main",
-);
+plugin = new webpack.SingleEntryPlugin("/home", "./main.js", "main");
 
 //
 // http://webpack.github.io/docs/node.js-api.html
 //
 
 // returns a Compiler instance
-webpack({
-    // configuration
-}, (err, stats) => {
-    // ...
-});
+webpack(
+    {
+        // configuration
+    },
+    (err, stats) => {
+        // ...
+    },
+);
 
 // returns a Compiler instance
 let compiler = webpack({
@@ -582,75 +606,90 @@ compiler.run((err, stats) => {
     // ...
 });
 // or
-compiler.watch({ // watch options:
-    aggregateTimeout: 300, // wait so long for more changes
-    poll: true, // use polling instead of native watchers
-    // pass a number to set the polling interval
-}, (err, stats) => {
-    // ...
-});
+compiler.watch(
+    {
+        // watch options:
+        aggregateTimeout: 300, // wait so long for more changes
+        poll: true, // use polling instead of native watchers
+        // pass a number to set the polling interval
+    },
+    (err, stats) => {
+        // ...
+    },
+);
 // or
-compiler.watch({ // watch options:
-    ignored: "foo/**/*",
-}, (err, stats) => {
-    // ...
-});
+compiler.watch(
+    {
+        // watch options:
+        ignored: "foo/**/*",
+    },
+    (err, stats) => {
+        // ...
+    },
+);
 // or
-compiler.watch({ // watch options:
-    ignored: /node_modules/,
-}, (err, stats) => {
-    // ...
-});
+compiler.watch(
+    {
+        // watch options:
+        ignored: /node_modules/,
+    },
+    (err, stats) => {
+        // ...
+    },
+);
 
 declare function handleFatalError(err: Error): void;
 declare function handleSoftErrors(errs: string[]): void;
 declare function handleWarnings(errs: string[]): void;
 declare function successfullyCompiled(): void;
 
-webpack({
-    // configuration
-}, (err, stats) => {
-    if (err) {
-        handleFatalError(err);
-        return;
-    }
-    const jsonStats = stats.toJson();
-    const jsonStatsWithAllOptions = stats.toJson({
-        assets: true,
-        assetsSort: "field",
-        builtAt: true,
-        cached: true,
-        children: true,
-        chunks: true,
-        chunkGroups: true,
-        chunkModules: true,
-        chunkOrigins: true,
-        chunksSort: "field",
-        context: "../src/",
-        errors: true,
-        errorDetails: true,
-        hash: true,
-        modules: true,
-        modulesSort: "field",
-        publicPath: true,
-        reasons: true,
-        source: true,
-        timings: true,
-        version: true,
-        warnings: true,
-        warningsFilter: ["filter", /filter/],
-        excludeAssets: ["filter", "excluded"],
-    });
+webpack(
+    {
+        // configuration
+    },
+    (err, stats) => {
+        if (err) {
+            handleFatalError(err);
+            return;
+        }
+        const jsonStats = stats.toJson();
+        const jsonStatsWithAllOptions = stats.toJson({
+            assets: true,
+            assetsSort: "field",
+            builtAt: true,
+            cached: true,
+            children: true,
+            chunks: true,
+            chunkGroups: true,
+            chunkModules: true,
+            chunkOrigins: true,
+            chunksSort: "field",
+            context: "../src/",
+            errors: true,
+            errorDetails: true,
+            hash: true,
+            modules: true,
+            modulesSort: "field",
+            publicPath: true,
+            reasons: true,
+            source: true,
+            timings: true,
+            version: true,
+            warnings: true,
+            warningsFilter: ["filter", /filter/],
+            excludeAssets: ["filter", "excluded"],
+        });
 
-    if (jsonStats.errors.length > 0) {
-        handleSoftErrors(jsonStats.errors);
-        return;
-    }
-    if (jsonStats.warnings.length > 0) {
-        handleWarnings(jsonStats.warnings);
-    }
-    successfullyCompiled();
-});
+        if (jsonStats.errors.length > 0) {
+            handleSoftErrors(jsonStats.errors);
+            return;
+        }
+        if (jsonStats.warnings.length > 0) {
+            handleWarnings(jsonStats.warnings);
+        }
+        successfullyCompiled();
+    },
+);
 
 declare const fs: any;
 
@@ -667,10 +706,7 @@ compiler.run((err, stats) => {
 
 rule = {
     test: {
-        or: [
-            require.resolve("./a"),
-            require.resolve("./c"),
-        ],
+        or: [require.resolve("./a"), require.resolve("./c")],
     },
     loader: "./loader",
     options: "third",
@@ -683,18 +719,12 @@ configuration = {
                 oneOf: [
                     {
                         test: {
-                            and: [
-                                /a.\.js$/,
-                                /b\.js$/,
-                            ],
+                            and: [/a.\.js$/, /b\.js$/],
                         },
                         loader: "./loader?first",
                     },
                     {
-                        test: [
-                            require.resolve("./a"),
-                            require.resolve("./c"),
-                        ],
+                        test: [require.resolve("./a"), require.resolve("./c")],
                         issuer: require.resolve("./b"),
                         use: [
                             "./loader?second-1",
@@ -728,9 +758,12 @@ configuration = {
 
 class TestResolvePlugin implements webpack.ResolvePlugin {
     apply(resolver: any) {
-        resolver.plugin("before-existing-directory", (request: any, callback: any) => {
-            callback();
-        });
+        resolver.plugin(
+            "before-existing-directory",
+            (request: any, callback: any) => {
+                callback();
+            },
+        );
     }
 }
 
@@ -738,14 +771,18 @@ const performance: webpack.Options.Performance = {
     hints: "error",
     maxEntrypointSize: 400000,
     maxAssetSize: 100000,
-    assetFilter: assetFilename => assetFilename.endsWith(".js"),
+    assetFilter: (assetFilename) => assetFilename.endsWith(".js"),
 };
 
 configuration = {
     performance,
 };
 
-function loader(this: webpack.loader.LoaderContext, source: string | Buffer, sourcemap?: RawSourceMap): void {
+function loader(
+    this: webpack.loader.LoaderContext,
+    source: string | Buffer,
+    sourcemap?: RawSourceMap,
+): void {
     this.cacheable();
 
     this.async();
@@ -753,7 +790,15 @@ function loader(this: webpack.loader.LoaderContext, source: string | Buffer, sou
     this.addDependency("");
     this.getDependencies();
 
-    this.loadModule("path", (err: Error | null, result: string, sourceMap: RawSourceMap, module: webpack.Module) => {});
+    this.loadModule(
+        "path",
+        (
+            err: Error | null,
+            result: string,
+            sourceMap: RawSourceMap,
+            module: webpack.Module,
+        ) => {},
+    );
     this.resolve("context", "request", (err: Error, result: string) => {});
 
     this.emitWarning("warning message");
@@ -766,7 +811,7 @@ function loader(this: webpack.loader.LoaderContext, source: string | Buffer, sou
 }
 
 (loader as webpack.loader.Loader).raw = true;
-(loader as webpack.loader.Loader).pitch = function(
+(loader as webpack.loader.Loader).pitch = function (
     this: webpack.loader.LoaderContext,
     remainingRequest: string,
     precedingRequest: string,
@@ -863,10 +908,7 @@ configuration = {
                 common: {
                     name: "common",
                     chunks(chunk: webpack.compilation.Chunk) {
-                        const allowedChunks = [
-                            "renderer",
-                            "component-window",
-                        ];
+                        const allowedChunks = ["renderer", "component-window"];
                         return allowedChunks.indexOf(chunk.name) >= 0;
                     },
                     minChunks: 2,
@@ -886,7 +928,10 @@ class MultiEntryPlugin extends webpack.Plugin {
         compiler.hooks.compilation.tap(
             "MultiEntryPlugin",
             (compilation, { normalModuleFactory }) => {
-                compilation.dependencyFactories.set(MultiEntryDependency, new MultiModuleFactory());
+                compilation.dependencyFactories.set(
+                    MultiEntryDependency,
+                    new MultiModuleFactory(),
+                );
             },
         );
         compiler.hooks.make.tapAsync(
@@ -900,14 +945,13 @@ class MultiEntryPlugin extends webpack.Plugin {
 }
 
 class IgnorePlugin extends webpack.Plugin {
-    checkIgnore(result: any) {
-    }
+    checkIgnore(result: any) {}
 
     apply(compiler: webpack.Compiler) {
-        compiler.hooks.normalModuleFactory.tap("IgnorePlugin", nmf => {
+        compiler.hooks.normalModuleFactory.tap("IgnorePlugin", (nmf) => {
             nmf.hooks.beforeResolve.tap("IgnorePlugin", this.checkIgnore);
         });
-        compiler.hooks.contextModuleFactory.tap("IgnorePlugin", cmf => {
+        compiler.hooks.contextModuleFactory.tap("IgnorePlugin", (cmf) => {
             cmf.hooks.beforeResolve.tap("IgnorePlugin", this.checkIgnore);
         });
     }
@@ -931,29 +975,40 @@ class DllEntryPlugin extends webpack.Plugin {
                 );
             },
         );
-        compiler.hooks.make.tapAsync("DllEntryPlugin", (compilation, callback) => {
-            compilation.addEntry("", new DllEntryDependency(), "", callback);
-        });
+        compiler.hooks.make.tapAsync(
+            "DllEntryPlugin",
+            (compilation, callback) => {
+                compilation.addEntry(
+                    "",
+                    new DllEntryDependency(),
+                    "",
+                    callback,
+                );
+            },
+        );
     }
 }
 
 class BannerPlugin extends webpack.Plugin {
     apply(compiler: webpack.Compiler) {
-        compiler.hooks.compilation.tap("BannerPlugin", compilation => {
-            compilation.hooks.optimizeChunkAssets.tap("BannerPlugin", chunks => {
-                for (const chunk of chunks) {
-                    if (!chunk.canBeInitial()) {
-                        continue;
+        compiler.hooks.compilation.tap("BannerPlugin", (compilation) => {
+            compilation.hooks.optimizeChunkAssets.tap(
+                "BannerPlugin",
+                (chunks) => {
+                    for (const chunk of chunks) {
+                        if (!chunk.canBeInitial()) {
+                            continue;
+                        }
+                        for (const file of chunk.files) {
+                            const pathA = compilation.getPath("", {});
+                            const pathB = compilation.getPath("", {
+                                contentHash: "abc",
+                                contentHashType: "javascript",
+                            });
+                        }
                     }
-                    for (const file of chunk.files) {
-                        const pathA = compilation.getPath("", {});
-                        const pathB = compilation.getPath("", {
-                            contentHash: "abc",
-                            contentHashType: "javascript",
-                        });
-                    }
-                }
-            });
+                },
+            );
         });
     }
 }
@@ -977,40 +1032,68 @@ class DefinePlugin extends webpack.Plugin {
 
 class ChunkGroupTestPlugin extends webpack.Plugin {
     apply(compiler: webpack.Compiler) {
-        compiler.hooks.compilation.tap("ChunkGroupTestPlugin", compilation => {
-            const namedChunkGroupA = compilation.addChunkInGroup("vendors-a");
-            const namedChunkGroupB = compilation.addChunkInGroup({ name: "vendors-b" });
-            const unnamedChunkGroup = compilation.addChunkInGroup({});
-            if (namedChunkGroupA.getNumberOfChildren() > 0) {
-                for (const chunk of namedChunkGroupA.chunks) {}
-            }
-            Array.from(namedChunkGroupA.childrenIterable).forEach(childGroup => {
-                namedChunkGroupA.removeChild(childGroup);
-                namedChunkGroupA.addChild(childGroup);
-            });
-            Array.from(namedChunkGroupA.parentsIterable).forEach(parentGroup => {});
-            namedChunkGroupA.setParents([namedChunkGroupB]);
-            namedChunkGroupA.setParents(new Set([unnamedChunkGroup]));
-            compilation.hooks.optimizeModules.tap("ChunkGroupTestPlugin", modules => {
-                for (const module of modules) {
-                    const group = compilation.addChunkInGroup("module", module, { start: { line: 0 } }, "module.js");
-                    if (module.index) {
-                        group.setModuleIndex(module, module.index);
+        compiler.hooks.compilation.tap(
+            "ChunkGroupTestPlugin",
+            (compilation) => {
+                const namedChunkGroupA =
+                    compilation.addChunkInGroup("vendors-a");
+                const namedChunkGroupB = compilation.addChunkInGroup({
+                    name: "vendors-b",
+                });
+                const unnamedChunkGroup = compilation.addChunkInGroup({});
+                if (namedChunkGroupA.getNumberOfChildren() > 0) {
+                    for (const chunk of namedChunkGroupA.chunks) {
                     }
-                    if (module.index2) {
-                        group.setModuleIndex2(module, module.index2);
-                    }
-                    console.log(group.getModuleIndex(module), group.getModuleIndex2(module));
-                    break;
                 }
-            });
-            compilation.hooks.optimizeChunks.tap("ChunkGroupTestPlugin", chunks => {
-                const firstChunk = chunks[0];
-                for (const groupChunk of namedChunkGroupA.chunks) {
-                    namedChunkGroupA.insertChunk(firstChunk, groupChunk);
-                }
-            });
-        });
+                Array.from(namedChunkGroupA.childrenIterable).forEach(
+                    (childGroup) => {
+                        namedChunkGroupA.removeChild(childGroup);
+                        namedChunkGroupA.addChild(childGroup);
+                    },
+                );
+                Array.from(namedChunkGroupA.parentsIterable).forEach(
+                    (parentGroup) => {},
+                );
+                namedChunkGroupA.setParents([namedChunkGroupB]);
+                namedChunkGroupA.setParents(new Set([unnamedChunkGroup]));
+                compilation.hooks.optimizeModules.tap(
+                    "ChunkGroupTestPlugin",
+                    (modules) => {
+                        for (const module of modules) {
+                            const group = compilation.addChunkInGroup(
+                                "module",
+                                module,
+                                { start: { line: 0 } },
+                                "module.js",
+                            );
+                            if (module.index) {
+                                group.setModuleIndex(module, module.index);
+                            }
+                            if (module.index2) {
+                                group.setModuleIndex2(module, module.index2);
+                            }
+                            console.log(
+                                group.getModuleIndex(module),
+                                group.getModuleIndex2(module),
+                            );
+                            break;
+                        }
+                    },
+                );
+                compilation.hooks.optimizeChunks.tap(
+                    "ChunkGroupTestPlugin",
+                    (chunks) => {
+                        const firstChunk = chunks[0];
+                        for (const groupChunk of namedChunkGroupA.chunks) {
+                            namedChunkGroupA.insertChunk(
+                                firstChunk,
+                                groupChunk,
+                            );
+                        }
+                    },
+                );
+            },
+        );
     }
 }
 
@@ -1020,7 +1103,10 @@ configuration = {
             {
                 test: /\.css$/,
                 oneOf: [
-                    { resourceQuery: /global/, use: ["style-loader", "css-loader"] },
+                    {
+                        resourceQuery: /global/,
+                        use: ["style-loader", "css-loader"],
+                    },
                     { use: ["to-string-loader", "css-loader"] },
                 ],
             },
@@ -1034,7 +1120,7 @@ configuration = {
             {
                 test: /\.ts$/,
                 include: "/foo/bar",
-                exclude: path => path.startsWith("/foo"),
+                exclude: (path) => path.startsWith("/foo"),
                 resourceQuery: ["foo", "bar"],
                 resolve: {
                     roots: [process.cwd()],
@@ -1070,7 +1156,7 @@ configuration = {
     plugins: [profiling],
 };
 
-compiler.hooks.done.tap("foo", stats => {
+compiler.hooks.done.tap("foo", (stats) => {
     if (stats.startTime === undefined || stats.endTime === undefined) {
         throw new Error("Well, this is odd");
     }
@@ -1092,7 +1178,10 @@ multiCompiler.hooks.done.tap("foo", (multiStats) => {
         throw new Error("Well, this is odd");
     }
 
-    console.log(`Compiled in ${firstStat.endTime - firstStat.startTime}ms`, multiStats.hash);
+    console.log(
+        `Compiled in ${firstStat.endTime - firstStat.startTime}ms`,
+        multiStats.hash,
+    );
 });
 
 webpack.Template.getFunctionContent(() => undefined).trimLeft();
@@ -1139,11 +1228,11 @@ chunk.size({
     entryChunkMultiplicator: 2,
 });
 chunk.hasModuleInGraph(
-    m => m.type === "webassembly/async",
-    chunk => chunk.name === "vendor",
+    (m) => m.type === "webassembly/async",
+    (chunk) => chunk.name === "vendor",
 );
 
-const moduleTemplate = ({} as any) as webpack.compilation.ModuleTemplate;
+const moduleTemplate = {} as any as webpack.compilation.ModuleTemplate;
 webpack.Template.renderChunkModules(
     chunk,
     (_, num) => {
@@ -1165,8 +1254,10 @@ webpack.Template.renderChunkModules(
 // https://webpack.js.org/configuration/output/#outputfilename
 configuration = {
     output: {
-        filename: chunkData => {
-            return chunkData.chunk.name === "main" ? "[name].js" : "[name]/[name].js";
+        filename: (chunkData) => {
+            return chunkData.chunk.name === "main"
+                ? "[name].js"
+                : "[name]/[name].js";
         },
     },
 };
@@ -1174,7 +1265,8 @@ configuration = {
 // https://webpack.js.org/api/logging/
 class LoggingPlugin extends webpack.Plugin {
     apply(compiler: webpack.Compiler): void {
-        const infrastructureLogger: webpack.Logger = compiler.getInfrastructureLogger("LoggingPlugin");
+        const infrastructureLogger: webpack.Logger =
+            compiler.getInfrastructureLogger("LoggingPlugin");
         infrastructureLogger.error("File not found");
         infrastructureLogger.warn("Ignoring unknown configuration option");
         infrastructureLogger.info("Maintaining flux");
@@ -1189,7 +1281,7 @@ class LoggingPlugin extends webpack.Plugin {
         infrastructureLogger.profile("How long does this take");
         infrastructureLogger.profileEnd();
 
-        compiler.hooks.emit.tap("LoggingPlugin", compilation => {
+        compiler.hooks.emit.tap("LoggingPlugin", (compilation) => {
             const logger = compilation.getLogger("LoggingPlugin");
             logger.error("File not found");
             logger.warn("Ignoring unknown configuration option");
@@ -1211,7 +1303,7 @@ class LoggingPlugin extends webpack.Plugin {
 // Stats Microsoft/DefinitelyTyped#43952
 const { Stats } = webpack;
 
-compiler.hooks.compilation.tap("SomePlugin", compilation => {
+compiler.hooks.compilation.tap("SomePlugin", (compilation) => {
     const stats = new Stats(compilation); // $ExpectType Stats
     Stats.filterWarnings([], [(warning: string) => true]); // $ExpectType string[]
     stats.formatFilePath("app/src/"); // $ExpectType string
@@ -1232,10 +1324,6 @@ const config2: webpack.MultiConfigurationFactory = (env) => {
 configuration = {
     infrastructureLogging: {
         level: "info",
-        debug: [
-            "MyPlugin",
-            /MyPlugin/,
-            (name) => name.includes("MyPlugin"),
-        ],
+        debug: ["MyPlugin", /MyPlugin/, (name) => name.includes("MyPlugin")],
     },
 };

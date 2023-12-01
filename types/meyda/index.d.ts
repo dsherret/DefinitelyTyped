@@ -1,6 +1,10 @@
 export as namespace Meyda;
 
-export type MeydaWindowingFunction = "blackman" | "sine" | "hanning" | "hamming";
+export type MeydaWindowingFunction =
+    | "blackman"
+    | "sine"
+    | "hanning"
+    | "hamming";
 
 export type MeydaAudioFeature =
     | "amplitudeSpectrum"
@@ -33,7 +37,10 @@ export interface MeydaAnalyzerOptions {
     startImmediately?: boolean | undefined;
     channel?: number | undefined;
     windowingFunction?: MeydaWindowingFunction | undefined;
-    featureExtractors?: MeydaAudioFeature | readonly MeydaAudioFeature[] | undefined;
+    featureExtractors?:
+        | MeydaAudioFeature
+        | readonly MeydaAudioFeature[]
+        | undefined;
     inputs?: number | undefined;
     outputs?: number | undefined;
     numberOfMFCCCoefficients?: number | undefined;
@@ -81,7 +88,9 @@ export class MeydaAnalyzer {
 
     setSource(source: AudioNode): void;
 
-    get(features?: MeydaAudioFeature | readonly MeydaAudioFeature[]): Partial<MeydaFeaturesObject> | null;
+    get(
+        features?: MeydaAudioFeature | readonly MeydaAudioFeature[],
+    ): Partial<MeydaFeaturesObject> | null;
 }
 
 export const audioContext: AudioContext | null;
@@ -97,9 +106,14 @@ export const featureExtractors: any;
 export const EXTRACTION_STARTED: boolean;
 export const numberOfMFCCCoefficients: number;
 
-export function windowing(signal: MeydaSignal, windowname?: MeydaWindowingFunction): MeydaSignal;
+export function windowing(
+    signal: MeydaSignal,
+    windowname?: MeydaWindowingFunction,
+): MeydaSignal;
 
-export function createMeydaAnalyzer(options: MeydaAnalyzerOptions): MeydaAnalyzer;
+export function createMeydaAnalyzer(
+    options: MeydaAnalyzerOptions,
+): MeydaAnalyzer;
 
 export function extract(
     feature: MeydaAudioFeature | MeydaAudioFeature[],

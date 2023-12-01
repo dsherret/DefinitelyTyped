@@ -28,7 +28,10 @@ export class Euler {
     reorder(newOrder: string): this;
     equals(euler: Euler): boolean;
     fromArray(array: [number, number, number, string?]): this;
-    toArray(array?: [number, number, number, string?], offset?: number): [number, number, number, string?];
+    toArray(
+        array?: [number, number, number, string?],
+        offset?: number,
+    ): [number, number, number, string?];
     toVector3(optionalResult?: Vector3): Vector3;
     _onChange(callback: () => void): this;
 

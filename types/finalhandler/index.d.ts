@@ -11,7 +11,9 @@ declare function finalhandler(
 declare namespace finalhandler {
     interface Options {
         env?: string | undefined;
-        onerror?: ((err: any, req: IncomingMessage, res: ServerResponse) => void) | undefined;
+        onerror?:
+            | ((err: any, req: IncomingMessage, res: ServerResponse) => void)
+            | undefined;
     }
 }
 

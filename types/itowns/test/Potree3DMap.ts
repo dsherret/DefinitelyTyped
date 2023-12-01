@@ -30,17 +30,20 @@ function onLayerReady() {
     // update stats window
     const info = document.getElementById("info") as HTMLDivElement;
     view.addFrameRequester(itowns.MAIN_LOOP_EVENTS.AFTER_RENDER, () => {
-        info.textContent = potreeLayer.displayedCount.toLocaleString() + " points";
+        info.textContent =
+            potreeLayer.displayedCount.toLocaleString() + " points";
     });
 }
 
 itowns.View.prototype.addLayer.call(view, potreeLayer).then(onLayerReady);
 
-itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json").then(function _(config) {
-    config.source = new itowns.WMTSSource(config.source);
-    const layer = new itowns.ElevationLayer(config.id, config);
-    view.addLayer(layer);
-});
+itowns.Fetcher.json("./layers/JSONLayers/IGN_MNT_HIGHRES.json").then(
+    function _(config) {
+        config.source = new itowns.WMTSSource(config.source);
+        const layer = new itowns.ElevationLayer(config.id, config);
+        view.addLayer(layer);
+    },
+);
 itowns.Fetcher.json("./layers/JSONLayers/Ortho.json").then(function _(config) {
     config.source = new itowns.WMTSSource(config.source);
     const layer = new itowns.ColorLayer(config.id, config);

@@ -16,9 +16,19 @@ declare namespace Expectations {
         parent: Expect;
         not: Expect;
 
-        constructor(value: any, assertions?: IAssertions, expr?: any, parent?: Expect);
+        constructor(
+            value: any,
+            assertions?: IAssertions,
+            expr?: any,
+            parent?: Expect,
+        );
 
-        generateMessage(value: any, expr: any, toDo: string, otherVal?: any): string;
+        generateMessage(
+            value: any,
+            expr: any,
+            toDo: string,
+            otherVal?: any,
+        ): string;
 
         toEqual(val: any): any;
 

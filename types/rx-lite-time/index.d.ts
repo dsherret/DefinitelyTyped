@@ -2,9 +2,17 @@
 
 declare namespace Rx {
     interface Observable<T> {
-        delaySubscription(dueTime: number, scheduler?: IScheduler): Observable<T>;
-        delayWithSelector(delayDurationSelector: (item: T) => number): Observable<T>;
-        delayWithSelector(subscriptionDelay: number, delayDurationSelector: (item: T) => number): Observable<T>;
+        delaySubscription(
+            dueTime: number,
+            scheduler?: IScheduler,
+        ): Observable<T>;
+        delayWithSelector(
+            delayDurationSelector: (item: T) => number,
+        ): Observable<T>;
+        delayWithSelector(
+            subscriptionDelay: number,
+            delayDurationSelector: (item: T) => number,
+        ): Observable<T>;
 
         timeoutWithSelector<TTimeout>(
             firstTimeout: Observable<TTimeout>,
@@ -12,34 +20,83 @@ declare namespace Rx {
             other?: Observable<T>,
         ): Observable<T>;
 
-        debounceWithSelector<TTimeout>(debounceDurationSelector: (item: T) => Observable<TTimeout>): Observable<T>;
+        debounceWithSelector<TTimeout>(
+            debounceDurationSelector: (item: T) => Observable<TTimeout>,
+        ): Observable<T>;
         /**
          * @deprecated use #debounceWithSelector instead.
          */
-        throttleWithSelector<TTimeout>(debounceDurationSelector: (item: T) => Observable<TTimeout>): Observable<T>;
+        throttleWithSelector<TTimeout>(
+            debounceDurationSelector: (item: T) => Observable<TTimeout>,
+        ): Observable<T>;
 
-        skipLastWithTime(duration: number, scheduler?: IScheduler): Observable<T>;
-        takeLastWithTime(duration: number, timerScheduler?: IScheduler, loopScheduler?: IScheduler): Observable<T>;
+        skipLastWithTime(
+            duration: number,
+            scheduler?: IScheduler,
+        ): Observable<T>;
+        takeLastWithTime(
+            duration: number,
+            timerScheduler?: IScheduler,
+            loopScheduler?: IScheduler,
+        ): Observable<T>;
 
-        takeLastBufferWithTime(duration: number, scheduler?: IScheduler): Observable<T[]>;
+        takeLastBufferWithTime(
+            duration: number,
+            scheduler?: IScheduler,
+        ): Observable<T[]>;
         takeWithTime(duration: number, scheduler?: IScheduler): Observable<T>;
         skipWithTime(duration: number, scheduler?: IScheduler): Observable<T>;
 
-        skipUntilWithTime(startTime: Date, scheduler?: IScheduler): Observable<T>;
-        skipUntilWithTime(duration: number, scheduler?: IScheduler): Observable<T>;
+        skipUntilWithTime(
+            startTime: Date,
+            scheduler?: IScheduler,
+        ): Observable<T>;
+        skipUntilWithTime(
+            duration: number,
+            scheduler?: IScheduler,
+        ): Observable<T>;
         takeUntilWithTime(endTime: Date, scheduler?: IScheduler): Observable<T>;
-        takeUntilWithTime(duration: number, scheduler?: IScheduler): Observable<T>;
+        takeUntilWithTime(
+            duration: number,
+            scheduler?: IScheduler,
+        ): Observable<T>;
 
-        windowWithTime(timeSpan: number, timeShift: number, scheduler?: IScheduler): Observable<Observable<T>>;
-        windowWithTime(timeSpan: number, scheduler?: IScheduler): Observable<Observable<T>>;
-        windowWithTimeOrCount(timeSpan: number, count: number, scheduler?: IScheduler): Observable<Observable<T>>;
-        bufferWithTime(timeSpan: number, timeShift: number, scheduler?: IScheduler): Observable<T[]>;
-        bufferWithTime(timeSpan: number, scheduler?: IScheduler): Observable<T[]>;
-        bufferWithTimeOrCount(timeSpan: number, count: number, scheduler?: IScheduler): Observable<T[]>;
+        windowWithTime(
+            timeSpan: number,
+            timeShift: number,
+            scheduler?: IScheduler,
+        ): Observable<Observable<T>>;
+        windowWithTime(
+            timeSpan: number,
+            scheduler?: IScheduler,
+        ): Observable<Observable<T>>;
+        windowWithTimeOrCount(
+            timeSpan: number,
+            count: number,
+            scheduler?: IScheduler,
+        ): Observable<Observable<T>>;
+        bufferWithTime(
+            timeSpan: number,
+            timeShift: number,
+            scheduler?: IScheduler,
+        ): Observable<T[]>;
+        bufferWithTime(
+            timeSpan: number,
+            scheduler?: IScheduler,
+        ): Observable<T[]>;
+        bufferWithTimeOrCount(
+            timeSpan: number,
+            count: number,
+            scheduler?: IScheduler,
+        ): Observable<T[]>;
     }
 
     interface ObservableStatic {
-        timer(dueTime: Date, period: number, scheduler?: IScheduler): Observable<number>;
+        timer(
+            dueTime: Date,
+            period: number,
+            scheduler?: IScheduler,
+        ): Observable<number>;
         timer(dueTime: Date, scheduler?: IScheduler): Observable<number>;
 
         generateWithRelativeTime<TState, TResult>(

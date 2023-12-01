@@ -1,4 +1,8 @@
-import { wordsToHours, wordsToMinutes, wordsToSeconds } from "words-to-time-converter";
+import {
+    wordsToHours,
+    wordsToMinutes,
+    wordsToSeconds,
+} from "words-to-time-converter";
 
 // $ExpectType string
 wordsToMinutes("Lorem Ipsum is simply dummy text ...", "slow");

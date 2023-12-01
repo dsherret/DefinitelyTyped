@@ -62,7 +62,13 @@ declare namespace Matter {
          * @param {number} [maxSides]
          * @returns {Body} A new circle body
          */
-        static circle(x: number, y: number, radius: number, options?: IBodyDefinition, maxSides?: number): Body;
+        static circle(
+            x: number,
+            y: number,
+            radius: number,
+            options?: IBodyDefinition,
+            maxSides?: number,
+        ): Body;
 
         /**
          * Creates a new rigid body model with a regular polygon hull with the given number of sides.
@@ -76,7 +82,13 @@ declare namespace Matter {
          * @param {any} [options]
          * @returns {Body} A new regular polygon body
          */
-        static polygon(x: number, y: number, sides: number, radius: number, options?: IChamferableBodyDefinition): Body;
+        static polygon(
+            x: number,
+            y: number,
+            sides: number,
+            radius: number,
+            options?: IChamferableBodyDefinition,
+        ): Body;
 
         /**
          * Creates a new rigid body model with a rectangle hull.
@@ -694,7 +706,12 @@ declare namespace Matter {
          * @param {number} scaleY
          * @param {Vector} [point]
          */
-        static scale(body: Body, scaleX: number, scaleY: number, point?: Vector): void;
+        static scale(
+            body: Body,
+            scaleX: number,
+            scaleY: number,
+            point?: Vector,
+        ): void;
 
         /**
          * Moves a body by a given vector relative to its current position, without imparting any velocity.
@@ -712,7 +729,12 @@ declare namespace Matter {
          * @param {number} timeScale
          * @param {number} correction
          */
-        static update(body: Body, deltaTime: number, timeScale: number, correction: number): void;
+        static update(
+            body: Body,
+            deltaTime: number,
+            timeScale: number,
+            correction: number,
+        ): void;
 
         /**
          * A `Number` specifying the angle of the body, in radians.
@@ -1012,7 +1034,11 @@ declare namespace Matter {
          * @param {Vertices} vertices
          * @param {Vector} velocity
          */
-        static update(bounds: Bounds, vertices: Vertices, velocity: Vector): void;
+        static update(
+            bounds: Bounds,
+            vertices: Vertices,
+            velocity: Vector,
+        ): void;
         /**
          * Returns true if the bounds contains the given point.
          * @method contains
@@ -1168,7 +1194,11 @@ declare namespace Matter {
          * @param {boolean} keepStatic
          * @param {boolean} [deep=false]
          */
-        static clear(composite: Composite, keepStatic: boolean, deep?: boolean): void;
+        static clear(
+            composite: Composite,
+            keepStatic: boolean,
+            deep?: boolean,
+        ): void;
 
         /**
          * Creates a new composite. The options parameter is an object that specifies any properties you wish to override the defaults.
@@ -1187,7 +1217,11 @@ declare namespace Matter {
          * @param {string} type
          * @returns {any} The requested object, if found
          */
-        static get(composite: Composite, id: number, type: string): Body | Composite | Constraint;
+        static get(
+            composite: Composite,
+            id: number,
+            type: string,
+        ): Body | Composite | Constraint;
 
         /**
          * Moves the given object(s) from compositeA to compositeB (equal to a remove followed by an add).
@@ -1240,7 +1274,11 @@ declare namespace Matter {
          * @param {Vector} translation
          * @param {boolean} [recursive=true]
          */
-        static translate(composite: Composite, translation: Vector, recursive?: boolean): void;
+        static translate(
+            composite: Composite,
+            translation: Vector,
+            recursive?: boolean,
+        ): void;
         /**
          * Rotates all children in the composite by a given angle about the given point, without imparting any angular velocity.
          * @method rotate
@@ -1249,7 +1287,12 @@ declare namespace Matter {
          * @param {Vector} point
          * @param {boolean} [recursive=true]
          */
-        static rotate(composite: Composite, rotation: number, point: Vector, recursive?: boolean): void;
+        static rotate(
+            composite: Composite,
+            rotation: number,
+            point: Vector,
+            recursive?: boolean,
+        ): void;
         /**
          * Scales all children in the composite, including updating physical properties (mass, area, axes, inertia), from a world-space point.
          * @method scale
@@ -1259,7 +1302,13 @@ declare namespace Matter {
          * @param {Vector} point
          * @param {boolean} [recursive=true]
          */
-        static scale(composite: Composite, scaleX: number, scaleY: number, point: Vector, recursive?: boolean): void;
+        static scale(
+            composite: Composite,
+            scaleX: number,
+            scaleY: number,
+            point: Vector,
+            recursive?: boolean,
+        ): void;
 
         /**
          * An integer `Number` uniquely identifying number generated in `Composite.create` by `Common.nextId`.
@@ -1347,7 +1396,13 @@ declare namespace Matter {
          * @param {number} wheelSize
          * @returns {Composite} A new composite car body
          */
-        static car(xx: number, yy: number, width: number, height: number, wheelSize: number): Composite;
+        static car(
+            xx: number,
+            yy: number,
+            width: number,
+            height: number,
+            wheelSize: number,
+        ): Composite;
 
         /**
          * Chains all bodies in the given composite together using constraints.
@@ -1379,7 +1434,13 @@ declare namespace Matter {
          * @param {any} options
          * @returns {Composite} The composite containing objects meshed together with constraints
          */
-        static mesh(composite: Composite, columns: number, rows: number, crossBrace: boolean, options: any): Composite;
+        static mesh(
+            composite: Composite,
+            columns: number,
+            rows: number,
+            crossBrace: boolean,
+            options: any,
+        ): Composite;
 
         /**
          * This has now moved to the [newtonsCradle example](https://github.com/liabru/matter-js/blob/master/examples/newtonsCradle.js), follow that instead as this function is deprecated here.
@@ -1392,7 +1453,13 @@ declare namespace Matter {
          * @param {number} length
          * @returns {Composite} A new composite newtonsCradle body
          */
-        static newtonsCradle(xx: number, yy: number, _number: number, size: number, length: number): Composite;
+        static newtonsCradle(
+            xx: number,
+            yy: number,
+            _number: number,
+            size: number,
+            length: number,
+        ): Composite;
 
         /**
          * Create a new composite containing bodies created in the callback in a pyramid arrangement.
@@ -1860,7 +1927,11 @@ declare namespace Matter {
          * @param {number} [delta=16.666]
          * @param {number} [correction=1]
          */
-        static update(engine: Engine, delta?: number, correction?: number): Engine;
+        static update(
+            engine: Engine,
+            delta?: number,
+            correction?: number,
+        ): Engine;
 
         /**
          * A deprecated alias for `Runner.run`, use `Matter.Runner.run(engine)` instead and see `Matter.Runner` for more information.
@@ -1995,7 +2066,12 @@ declare namespace Matter {
          * @param {engine} engine
          * @param {boolean} forceUpdate
          */
-        static update(grid: Grid, bodies: Body[], engine: Engine, forceUpdate: boolean): void;
+        static update(
+            grid: Grid,
+            bodies: Body[],
+            engine: Engine,
+            forceUpdate: boolean,
+        ): void;
 
         /**
          * Clears the grid.
@@ -2070,7 +2146,10 @@ declare namespace Matter {
          * @param {} options
          * @returns {MouseConstraint} A new MouseConstraint
          */
-        static create(engine: Engine, options?: IMouseConstraintDefinition): MouseConstraint;
+        static create(
+            engine: Engine,
+            options?: IMouseConstraintDefinition,
+        ): MouseConstraint;
 
         /**
          * The `Constraint` object that is used to move the body during interaction.
@@ -2134,7 +2213,11 @@ declare namespace Matter {
          * @param {Collision[]} collisions
          * @param {number} timestamp
          */
-        static update(pairs: Pairs, collisions: Collision[], timestamp: number): void;
+        static update(
+            pairs: Pairs,
+            collisions: Collision[],
+            timestamp: number,
+        ): void;
     }
 
     export interface Vertex extends Vector {
@@ -2180,7 +2263,11 @@ declare namespace Matter {
          * @param {Collision} collision
          * @param {number} timestamp
          */
-        static update(pair: Pair, collision: Collision, timestamp: number): void;
+        static update(
+            pair: Pair,
+            collision: Collision,
+            timestamp: number,
+        ): void;
 
         /**
          * Set a pair as active or inactive.
@@ -2189,7 +2276,11 @@ declare namespace Matter {
          * @param {boolean} isActive
          * @param {number} timestamp
          */
-        static setActive(pair: Pair, isActive: boolean, timestamp: number): void;
+        static setActive(
+            pair: Pair,
+            isActive: boolean,
+            timestamp: number,
+        ): void;
 
         /**
          * Get the id for the given pair.
@@ -2249,7 +2340,12 @@ declare namespace Matter {
          * @param {number} [rayWidth]
          * @returns {Collision[]} Collisions
          */
-        static ray(bodies: Body[], startPoint: Vector, endPoint: Vector, rayWidth?: number): Collision[];
+        static ray(
+            bodies: Body[],
+            startPoint: Vector,
+            endPoint: Vector,
+            rayWidth?: number,
+        ): Collision[];
 
         /**
          * Returns all bodies whose bounds are inside (or outside if set) the given set of bounds, from the given set of bodies.
@@ -2259,7 +2355,11 @@ declare namespace Matter {
          * @param {boolean} [outside=false]
          * @returns {Body[]} The bodies matching the query
          */
-        static region(bodies: Body[], bounds: Bounds, outside?: boolean): Body[];
+        static region(
+            bodies: Body[],
+            bounds: Bounds,
+            outside?: boolean,
+        ): Body[];
 
         /**
          * Returns all bodies whose vertices contain the given point, from the given set of bodies.
@@ -2492,21 +2592,21 @@ declare namespace Matter {
         bounds?: Bounds | undefined;
         position?:
             | {
-                x: number;
-                y: number;
-            }
+                  x: number;
+                  y: number;
+              }
             | undefined;
         min?:
             | {
-                x: number;
-                y: number;
-            }
+                  x: number;
+                  y: number;
+              }
             | undefined;
         max?:
             | {
-                x: number;
-                y: number;
-            }
+                  x: number;
+                  y: number;
+              }
             | undefined;
     }
 
@@ -2787,7 +2887,10 @@ declare namespace Matter {
          * @param {Number} [sampleLength=15]
          * @returns {Vector[]} points
          */
-        static pathToVertices(path: SVGPathElement, sampleLength: number): Vector[];
+        static pathToVertices(
+            path: SVGPathElement,
+            sampleLength: number,
+        ): Vector[];
     }
 
     /**
@@ -2826,7 +2929,11 @@ declare namespace Matter {
          * @param {Vector} vectorC
          * @returns {number} The cross product of the three vectors
          */
-        static cross3(vectorA: Vector, vectorB: Vector, vectorC: Vector): number;
+        static cross3(
+            vectorA: Vector,
+            vectorB: Vector,
+            vectorC: Vector,
+        ): number;
 
         /**
          * Adds the two vectors.
@@ -2942,7 +3049,12 @@ declare namespace Matter {
          * @param {Vector} [output]
          * @returns {Vector} A new vector rotated about the point
          */
-        static rotateAbout(vector: Vector, angle: number, point: Vector, output?: Vector): Vector;
+        static rotateAbout(
+            vector: Vector,
+            angle: number,
+            point: Vector,
+            output?: Vector,
+        ): Vector;
 
         /**
          * Subtracts the two vectors.
@@ -3086,7 +3198,11 @@ declare namespace Matter {
          * @param {Vector} point
          * @returns {Vertices} vertices
          */
-        static rotate(vertices: Vector[], angle: number, point: Vector): Vector[];
+        static rotate(
+            vertices: Vector[],
+            angle: number,
+            point: Vector,
+        ): Vector[];
 
         /**
          * Scales the vertices from a point (default is centre) in-place.
@@ -3097,7 +3213,12 @@ declare namespace Matter {
          * @param {Vector} point
          * @returns {Vertices} vertices
          */
-        static scale(vertices: Vector[], scaleX: number, scaleY: number, point: Vector): Vector[];
+        static scale(
+            vertices: Vector[],
+            scaleX: number,
+            scaleY: number,
+            point: Vector,
+        ): Vector[];
 
         /**
          * Translates the set of vertices in-place.
@@ -3107,7 +3228,11 @@ declare namespace Matter {
          * @param {number} scalar
          * @returns {Vertices} vertices
          */
-        static translate(vertices: Vector[], vector: Vector, scalar: number): Vector[];
+        static translate(
+            vertices: Vector[],
+            vector: Vector,
+            scalar: number,
+        ): Vector[];
     }
 
     interface IWorldDefinition extends ICompositeDefinition {
@@ -3301,7 +3426,13 @@ declare namespace Matter {
          * @param {number} [end] Path slice end
          * @returns {} Pass through `val` for chaining
          */
-        static set(obj: any, path: string, val: any, begin: number, end: number): any;
+        static set(
+            obj: any,
+            path: string,
+            val: any,
+            begin: number,
+            end: number,
+        ): any;
 
         /**
          * Shuffles the given array in-place.
@@ -3485,7 +3616,11 @@ declare namespace Matter {
          * @param {function} func The function to chain before the original
          * @returns {function} The chained function that replaced the original
          */
-        static chainPathBefore(base: any, path: string, func: Function): Function;
+        static chainPathBefore(
+            base: any,
+            path: string,
+            func: Function,
+        ): Function;
 
         /**
          * Chains a function to excute after the original function on the given `path` relative to `base`.
@@ -3496,7 +3631,11 @@ declare namespace Matter {
          * @param {function} func The function to chain after the original
          * @returns {function} The chained function that replaced the original
          */
-        static chainPathAfter(base: any, path: string, func: Function): Function;
+        static chainPathAfter(
+            base: any,
+            path: string,
+            func: Function,
+        ): Function;
 
         /**
          * Used to require external libraries outside of the bundle.
@@ -3607,7 +3746,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends ICallback<Body>>(obj: Body, name: "sleepStart", callback: C): C;
+        static on<C extends ICallback<Body>>(
+            obj: Body,
+            name: "sleepStart",
+            callback: C,
+        ): C;
 
         /**
          * Fired when a body ends sleeping (where `this` is the body).
@@ -3618,7 +3761,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends ICallback<Body>>(obj: Body, name: "sleepEnd", callback: C): C;
+        static on<C extends ICallback<Body>>(
+            obj: Body,
+            name: "sleepEnd",
+            callback: C,
+        ): C;
 
         /**
          * Fired when a call to `Composite.add` is made, before objects have been added.
@@ -3629,7 +3776,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends ICompositeCallback>(obj: Composite, name: "beforeAdd", callback: C): C;
+        static on<C extends ICompositeCallback>(
+            obj: Composite,
+            name: "beforeAdd",
+            callback: C,
+        ): C;
 
         /**
          * Fired when a call to `Composite.add` is made, after objects have been added.
@@ -3640,7 +3791,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends ICompositeCallback>(obj: Composite, name: "afterAdd", callback: C): C;
+        static on<C extends ICompositeCallback>(
+            obj: Composite,
+            name: "afterAdd",
+            callback: C,
+        ): C;
 
         /**
          * Fired when a call to `Composite.remove` is made, before objects have been removed.
@@ -3651,7 +3806,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends ICompositeCallback>(obj: Composite, name: "beforeRemove", callback: C): C;
+        static on<C extends ICompositeCallback>(
+            obj: Composite,
+            name: "beforeRemove",
+            callback: C,
+        ): C;
 
         /**
          * Fired when a call to `Composite.remove` is made, after objects have been removed.
@@ -3662,7 +3821,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends ICompositeCallback>(obj: Composite, name: "afterRemove", callback: C): C;
+        static on<C extends ICompositeCallback>(
+            obj: Composite,
+            name: "afterRemove",
+            callback: C,
+        ): C;
 
         /**
          * Fired after engine update and all collision events
@@ -3673,7 +3836,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends IEngineCallback>(obj: Engine, name: "afterUpdate", callback: C): C;
+        static on<C extends IEngineCallback>(
+            obj: Engine,
+            name: "afterUpdate",
+            callback: C,
+        ): C;
 
         /**
          * Fired before rendering
@@ -3684,7 +3851,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends IRenderCallback>(obj: Render, name: "beforeRender", callback: C): C;
+        static on<C extends IRenderCallback>(
+            obj: Render,
+            name: "beforeRender",
+            callback: C,
+        ): C;
         /**
          * Fired after rendering
          *
@@ -3694,7 +3865,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends IRenderCallback>(obj: Render, name: "afterRender", callback: C): C;
+        static on<C extends IRenderCallback>(
+            obj: Render,
+            name: "afterRender",
+            callback: C,
+        ): C;
 
         /**
          * Fired just before an update
@@ -3705,7 +3880,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends IEngineCallback>(obj: Engine, name: "beforeUpdate", callback: C): C;
+        static on<C extends IEngineCallback>(
+            obj: Engine,
+            name: "beforeUpdate",
+            callback: C,
+        ): C;
 
         /**
          * Fired after engine update, provides a list of all pairs that are colliding in the current tick (if any)
@@ -3717,7 +3896,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends ICollisionCallback>(obj: Engine, name: "collisionActive", callback: C): C;
+        static on<C extends ICollisionCallback>(
+            obj: Engine,
+            name: "collisionActive",
+            callback: C,
+        ): C;
 
         /**
          * Fired after engine update, provides a list of all pairs that have ended collision in the current tick (if any)
@@ -3729,7 +3912,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends ICollisionCallback>(obj: Engine, name: "collisionEnd", callback: C): C;
+        static on<C extends ICollisionCallback>(
+            obj: Engine,
+            name: "collisionEnd",
+            callback: C,
+        ): C;
 
         /**
          * Fired after engine update, provides a list of all pairs that have started to collide in the current tick (if any)
@@ -3741,7 +3928,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends ICollisionCallback>(obj: Engine, name: "collisionStart", callback: C): C;
+        static on<C extends ICollisionCallback>(
+            obj: Engine,
+            name: "collisionStart",
+            callback: C,
+        ): C;
 
         /**
          * Fired at the start of a tick, before any updates to the engine or timing
@@ -3752,7 +3943,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends IRunnerCallback>(obj: Runner, name: "beforeTick", callback: C): C;
+        static on<C extends IRunnerCallback>(
+            obj: Runner,
+            name: "beforeTick",
+            callback: C,
+        ): C;
 
         /**
          * Fired after engine timing updated, but just before update
@@ -3763,7 +3958,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends IRunnerCallback>(obj: Runner, name: "tick", callback: C): C;
+        static on<C extends IRunnerCallback>(
+            obj: Runner,
+            name: "tick",
+            callback: C,
+        ): C;
 
         /**
          * Fired at the end of a tick, after engine update and after rendering
@@ -3774,7 +3973,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends IRunnerCallback>(obj: Runner, name: "afterTick", callback: C): C;
+        static on<C extends IRunnerCallback>(
+            obj: Runner,
+            name: "afterTick",
+            callback: C,
+        ): C;
 
         /**
          * Fired before rendering
@@ -3785,7 +3988,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends IRenderCallback>(obj: Render, name: "beforeRender", callback: C): C;
+        static on<C extends IRenderCallback>(
+            obj: Render,
+            name: "beforeRender",
+            callback: C,
+        ): C;
 
         /**
          * Fired after rendering
@@ -3796,7 +4003,11 @@ declare namespace Matter {
          * @param {} event.source The source object of the event
          * @param {} event.name The name of the event
          */
-        static on<C extends IRenderCallback>(obj: Render, name: "afterRender", callback: C): C;
+        static on<C extends IRenderCallback>(
+            obj: Render,
+            name: "afterRender",
+            callback: C,
+        ): C;
 
         /**
          * Fired when the mouse is down (or a touch has started) during the last step
@@ -3804,7 +4015,11 @@ declare namespace Matter {
          * @param name
          * @param callback
          */
-        static on<C extends IMouseCallback>(obj: MouseConstraint, name: "mousedown", callback: C): C;
+        static on<C extends IMouseCallback>(
+            obj: MouseConstraint,
+            name: "mousedown",
+            callback: C,
+        ): C;
 
         /**
          * Fired when the mouse has moved (or a touch moves) during the last step
@@ -3812,7 +4027,11 @@ declare namespace Matter {
          * @param name
          * @param callback
          */
-        static on<C extends IMouseCallback>(obj: MouseConstraint, name: "mousemove", callback: C): C;
+        static on<C extends IMouseCallback>(
+            obj: MouseConstraint,
+            name: "mousemove",
+            callback: C,
+        ): C;
 
         /**
          * Fired when the mouse is up (or a touch has ended) during the last step
@@ -3820,9 +4039,17 @@ declare namespace Matter {
          * @param name
          * @param callback
          */
-        static on<C extends IMouseCallback>(obj: MouseConstraint, name: "mouseup", callback: C): C;
+        static on<C extends IMouseCallback>(
+            obj: MouseConstraint,
+            name: "mouseup",
+            callback: C,
+        ): C;
 
-        static on<T, C extends (e: IEvent<T>) => void>(obj: T, name: string, callback: C): C;
+        static on<T, C extends (e: IEvent<T>) => void>(
+            obj: T,
+            name: string,
+            callback: C,
+        ): C;
 
         /**
          * Removes the given event callback. If no callback, clears all callbacks in eventNames. If no eventNames, clears all events.
@@ -3831,7 +4058,11 @@ declare namespace Matter {
          * @param eventName
          * @param callback
          */
-        static off(obj: any, eventName: string, callback: (e: any) => void): void;
+        static off(
+            obj: any,
+            eventName: string,
+            callback: (e: any) => void,
+        ): void;
 
         /**
          * Fires all the callbacks subscribed to the given object's eventName, in the order they subscribed, if any.
@@ -3843,7 +4074,10 @@ declare namespace Matter {
         static trigger(object: any, eventNames: string, event?: any): void;
     }
 
-    type Dependency = { name: string; range: string } | { name: string; version: string } | string;
+    type Dependency =
+        | { name: string; range: string }
+        | { name: string; version: string }
+        | string;
 
     export class Plugin {
         name: string;
@@ -3897,7 +4131,10 @@ declare namespace Matter {
          * @param {} module The module.
          * @returns {boolean} `true` if `plugin.for` is applicable to `module`, otherwise `false`.
          */
-        static isFor(plugin: Plugin, module: { name?: string | undefined; [_: string]: any }): boolean;
+        static isFor(
+            plugin: Plugin,
+            module: { name?: string | undefined; [_: string]: any },
+        ): boolean;
 
         /**
          * Installs the plugins by calling `plugin.install` on each plugin specified in `plugins` if passed, otherwise `module.uses`.
@@ -3916,7 +4153,10 @@ declare namespace Matter {
          * @param [plugins=module.uses] {} The plugins to install on module (optional, defaults to `module.uses`).
          */
         static use(
-            module: { uses?: Array<Plugin | string> | undefined; [_: string]: any },
+            module: {
+                uses?: Array<Plugin | string> | undefined;
+                [_: string]: any;
+            },
             plugins: Array<Plugin | string>,
         ): void;
 
@@ -3940,7 +4180,10 @@ declare namespace Matter {
          * @param {Dependency} dependency The dependency of the format `'module-name'` or `'module-name@version'`.
          * @returns {any} The dependency parsed into its components.
          */
-        static dependencyParse(dependency: Dependency): { name: string; range: string };
+        static dependencyParse(dependency: Dependency): {
+            name: string;
+            range: string;
+        };
 
         /**
          * Parses a version string into its components.
@@ -4003,7 +4246,11 @@ declare namespace Matter {
          * @param {pairs} [Pairs] Optionally reuse collision records from existing pairs.
          * @returns {collision|null} A collision record if detected, otherwise null
          */
-        static collides(bodyA: Body, bodyB: Body, pairs: Pairs): Collision | null;
+        static collides(
+            bodyA: Body,
+            bodyB: Body,
+            pairs: Pairs,
+        ): Collision | null;
 
         /**
          * A reference to the pair using this collision record, if there is one.
@@ -4114,7 +4361,10 @@ declare namespace Matter {
          * @param ICollisionFilter filterB
          * @returns {boolean} `true` if collision can occur
          */
-        static canCollide(filterA: ICollisionFilter, filterB: ICollisionFilter): boolean;
+        static canCollide(
+            filterA: ICollisionFilter,
+            filterB: ICollisionFilter,
+        ): boolean;
 
         /**
          * Clears the detector including its list of bodies.
@@ -4177,6 +4427,10 @@ declare namespace Matter {
          * @param {Collision} previousCollision
          * @returns {Collision} collision
          */
-        static collides(bodyA: Body, bodyB: Body, previousCollision?: Collision): Collision;
+        static collides(
+            bodyA: Body,
+            bodyB: Body,
+            previousCollision?: Collision,
+        ): Collision;
     }
 }

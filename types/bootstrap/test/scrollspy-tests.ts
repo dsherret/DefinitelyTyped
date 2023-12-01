@@ -22,7 +22,7 @@ ScrollSpy.VERSION;
 // $ExpectType Options
 ScrollSpy.Default;
 
-element.addEventListener(ScrollSpy.Events.activate, event => {
+element.addEventListener(ScrollSpy.Events.activate, (event) => {
     // do something…
 });
 

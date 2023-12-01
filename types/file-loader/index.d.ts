@@ -226,7 +226,11 @@ declare namespace FileLoader {
      *
      * @return the path to use for the asset
      */
-    type BuildResourcePathFn = (url: string, resourcePath: string, context: string) => string;
+    type BuildResourcePathFn = (
+        url: string,
+        resourcePath: string,
+        context: string,
+    ) => string;
 }
 
 declare const FileLoader: loader.Loader;

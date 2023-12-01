@@ -157,11 +157,15 @@ export interface UnionPay {
      * });
      */
     enroll(
-        options: { card: any; mobile: any } | { hostedFields: HostedFields; mobile: any },
+        options:
+            | { card: any; mobile: any }
+            | { hostedFields: HostedFields; mobile: any },
         callback: callback<UnionPayEnrollPayload>,
     ): void;
     enroll(
-        options: { card: any; mobile: any } | { hostedFields: HostedFields; mobile: any },
+        options:
+            | { card: any; mobile: any }
+            | { hostedFields: HostedFields; mobile: any },
     ): Promise<UnionPayEnrollPayload>;
 
     /**
@@ -201,17 +205,21 @@ export interface UnionPay {
     tokenize(
         options:
             | { card: any; enrollmentId: string; smsCode: string }
-            | { hostedFields: HostedFields; enrollmentId: string; smsCode: string },
+            | {
+                  hostedFields: HostedFields;
+                  enrollmentId: string;
+                  smsCode: string;
+              },
         callback: callback<UnionPayTokenizePayload>,
     ): void;
     tokenize(
         options:
             | { card: any; enrollmentId: string; smsCode: string }
             | {
-                hostedFields: HostedFields;
-                enrollmentId: string;
-                smsCode: string;
-            },
+                  hostedFields: HostedFields;
+                  enrollmentId: string;
+                  smsCode: string;
+              },
     ): Promise<UnionPayTokenizePayload>;
 
     /**
@@ -239,4 +247,7 @@ export interface UnionPay {
  * });
  */
 export function create(options: { client: Client }): Promise<UnionPay>;
-export function create(options: { client: Client }, callback: callback<UnionPay>): void;
+export function create(
+    options: { client: Client },
+    callback: callback<UnionPay>,
+): void;

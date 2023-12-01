@@ -20,7 +20,14 @@ export default class CanvasEntry {
         end: number,
     ): void;
     /** Render the actual wave and progress lines. */
-    drawLines(peaks: number[], absmax: number, halfH: number, offsetY: number, start: number, end: number): void;
+    drawLines(
+        peaks: number[],
+        absmax: number,
+        halfH: number,
+        offsetY: number,
+        start: number,
+        end: number,
+    ): void;
     /** Draw a rounded rectangle on Canvas. */
     drawRoundedRect(
         ctx: CanvasRenderingContext2D,
@@ -40,11 +47,24 @@ export default class CanvasEntry {
         radius: number,
     ): void;
     /** Draw a rectangle for wave and progress. */
-    fillRects(x: number, y: number, width: number, height: number, radius: number): void;
+    fillRects(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        radius: number,
+    ): void;
     /** Utility function to handle wave color arguments. */
-    getFillStyle(ctx: CanvasRenderingContext2D, color: string): string | CanvasGradient;
+    getFillStyle(
+        ctx: CanvasRenderingContext2D,
+        color: string,
+    ): string | CanvasGradient;
     /** Return image data of the wave canvas element. */
-    getImage(format: string, quality: number, type: string): string | Promise<string>;
+    getImage(
+        format: string,
+        quality: number,
+        type: string,
+    ): string | Promise<string>;
     /** Store the progress wave canvas element and create the 2D rendering context. */
     initProgress(element: HTMLCanvasElement): string;
     /** Store the wave canvas element and create the 2D rendering context. */
@@ -52,7 +72,12 @@ export default class CanvasEntry {
     /** Set the fill styles for wave and progress. */
     setFillStyles(waveColor: string, progressColor: string): void;
     /** Update the dimensions. */
-    updateDimensions(elementWidth: number, totalWidth: number, width: number, height: number): void;
+    updateDimensions(
+        elementWidth: number,
+        totalWidth: number,
+        width: number,
+        height: number,
+    ): void;
 
     /** Canvas 2d context attributes. */
     readonly canvasContextAttributes: DrawingContextAttributes;

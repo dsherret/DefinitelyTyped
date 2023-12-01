@@ -31,7 +31,11 @@ declare namespace validator {
      *
      * @param seed - Seed
      */
-    function contains(str: string, seed: any, options?: ContainsOptions): boolean;
+    function contains(
+        str: string,
+        seed: any,
+        options?: ContainsOptions,
+    ): boolean;
 
     /**
      * Check if the string matches the comparison.
@@ -118,7 +122,11 @@ declare namespace validator {
      * @param [locale] - AlphaLocale
      * @param [options] - IsAlphaOptions
      */
-    function isAlpha(str: string, locale?: AlphaLocale, options?: IsAlphaOptions): boolean;
+    function isAlpha(
+        str: string,
+        locale?: AlphaLocale,
+        options?: IsAlphaOptions,
+    ): boolean;
 
     type AlphanumericLocale =
         | "en-US"
@@ -191,7 +199,11 @@ declare namespace validator {
      * @param [locale] - AlphanumericLocale
      * @param [options] - IsAlphanumericOptions
      */
-    function isAlphanumeric(str: string, locale?: AlphanumericLocale, options?: IsAlphanumericOptions): boolean;
+    function isAlphanumeric(
+        str: string,
+        locale?: AlphanumericLocale,
+        options?: IsAlphanumericOptions,
+    ): boolean;
 
     /**
      * Check if the string contains ASCII chars only.
@@ -260,7 +272,15 @@ declare namespace validator {
         /**
          * @default undefined
          */
-        provider?: "amex" | "dinersclub" | "discover" | "jcb" | "mastercard" | "unionpay" | "visa" | "";
+        provider?:
+            | "amex"
+            | "dinersclub"
+            | "discover"
+            | "jcb"
+            | "mastercard"
+            | "unionpay"
+            | "visa"
+            | "";
     }
 
     /**
@@ -605,7 +625,10 @@ declare namespace validator {
      *
      * @param [locale="any"] - IdentityCardLocale
      */
-    function isIdentityCard(str: string, locale?: "any" | IdentityCardLocale): boolean;
+    function isIdentityCard(
+        str: string,
+        locale?: "any" | IdentityCardLocale,
+    ): boolean;
 
     interface IsIMEIOptions {
         /**
@@ -969,7 +992,15 @@ declare namespace validator {
         | "vi-VN"
         | "zh-CN"
         | "zh-TW";
-    type PhoneLocaleAlias = "en-CA" | "fr-CA" | "fr-BE" | "zh-HK" | "zh-MO" | "ga-IE" | "fr-CH" | "it-CH";
+    type PhoneLocaleAlias =
+        | "en-CA"
+        | "fr-CA"
+        | "fr-BE"
+        | "zh-HK"
+        | "zh-MO"
+        | "ga-IE"
+        | "fr-CH"
+        | "it-CH";
 
     const isMobilePhoneLocales: MobilePhoneLocale[];
 
@@ -1102,7 +1133,10 @@ declare namespace validator {
      *
      * @param locale - PostalCodeLocale
      */
-    function isPostalCode(str: string, locale: "any" | PostalCodeLocale): boolean;
+    function isPostalCode(
+        str: string,
+        locale: "any" | PostalCodeLocale,
+    ): boolean;
 
     /**
      * Check if the string is a Semantic Versioning Specification (SemVer).
@@ -1132,7 +1166,10 @@ declare namespace validator {
         str: string,
         options?: StrongPasswordOptions & { returnScore?: false | undefined },
     ): boolean;
-    function isStrongPassword(str: string, options: StrongPasswordOptions & { returnScore: true }): number;
+    function isStrongPassword(
+        str: string,
+        options: StrongPasswordOptions & { returnScore: true },
+    ): number;
 
     /**
      * Check if the string contains any surrogate pairs chars.
@@ -1327,7 +1364,10 @@ declare namespace validator {
      *
      * @param [options] - Options
      */
-    function normalizeEmail(email: string, options?: NormalizeEmailOptions): string | false;
+    function normalizeEmail(
+        email: string,
+        options?: NormalizeEmailOptions,
+    ): string | false;
 
     /**
      * Trim characters from the right-side of the input.

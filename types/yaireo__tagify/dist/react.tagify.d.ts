@@ -130,7 +130,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onChange?: ((event: CustomEvent<ChangeEventData<T>>) => void) | undefined;
+        onChange?:
+            | ((event: CustomEvent<ChangeEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when a tag was clicked.
@@ -149,7 +151,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onDropdownHide?: ((event: CustomEvent<DropDownHideEventData<T>>) => void) | undefined;
+        onDropdownHide?:
+            | ((event: CustomEvent<DropDownHideEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when no whitelist suggestion item matched for the
@@ -161,7 +165,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onDropdownNoMatch?: ((event: CustomEvent<DropDownNoMatchEventData<T>>) => void) | undefined;
+        onDropdownNoMatch?:
+            | ((event: CustomEvent<DropDownNoMatchEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when the dropdown was scrolled by the user. Use
@@ -171,7 +177,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onDropdownScroll?: ((event: CustomEvent<DropDownScrollEventData<T>>) => void) | undefined;
+        onDropdownScroll?:
+            | ((event: CustomEvent<DropDownScrollEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when a suggestions dropdown item was selected (by
@@ -181,7 +189,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onDropdownSelect?: ((event: CustomEvent<DropDownSelectEventData<T>>) => void) | undefined;
+        onDropdownSelect?:
+            | ((event: CustomEvent<DropDownSelectEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when the suggestions dropdown is about to be
@@ -191,7 +201,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onDropdownShow?: ((event: CustomEvent<DropDownShowEventData<T>>) => void) | undefined;
+        onDropdownShow?:
+            | ((event: CustomEvent<DropDownShowEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when the dropdown menu is open and its items were
@@ -201,7 +213,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onDropdownUpdated?: ((event: CustomEvent<DropDownUpdatedEventData<T>>) => void) | undefined;
+        onDropdownUpdated?:
+            | ((event: CustomEvent<DropDownUpdatedEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked just before a tag has been updated, while still in
@@ -211,7 +225,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onEditBeforeUpdate?: ((event: CustomEvent<EditBeforeUpdateEventData<T>>) => void) | undefined;
+        onEditBeforeUpdate?:
+            | ((event: CustomEvent<EditBeforeUpdateEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when typing inside an edited tag.
@@ -220,7 +236,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onEditInput?: ((event: CustomEvent<EditInputEventData<T>>) => void) | undefined;
+        onEditInput?:
+            | ((event: CustomEvent<EditInputEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when a keydown event occurs while an edited tag is
@@ -230,7 +248,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onEditKeydown?: ((event: CustomEvent<EditKeydownEventData<T>>) => void) | undefined;
+        onEditKeydown?:
+            | ((event: CustomEvent<EditKeydownEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when a tag is now in "edit mode".
@@ -239,7 +259,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onEditStart?: ((event: CustomEvent<EditStartEventData<T>>) => void) | undefined;
+        onEditStart?:
+            | ((event: CustomEvent<EditStartEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when a tag has been updated (changed view editing or
@@ -249,7 +271,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onEditUpdated?: ((event: CustomEvent<EditUpdatedEventData<T>>) => void) | undefined;
+        onEditUpdated?:
+            | ((event: CustomEvent<EditUpdatedEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when the component gained focus.
@@ -277,7 +301,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onInvalid?: ((event: CustomEvent<InvalidTagEventData<T>>) => void) | undefined;
+        onInvalid?:
+            | ((event: CustomEvent<InvalidTagEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when the tagify input element (for adding new tags
@@ -287,7 +313,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onKeydown?: ((event: CustomEvent<KeydownEventData<T>>) => void) | undefined;
+        onKeydown?:
+            | ((event: CustomEvent<KeydownEventData<T>>) => void)
+            | undefined;
 
         /**
          * Callback invoked when a tag has been removed.
@@ -296,7 +324,9 @@ declare namespace Tags {
          * value after the initial render is not supported.
          * @default () => {}
          */
-        onRemove?: ((event: CustomEvent<RemoveEventData<T>>) => void) | undefined;
+        onRemove?:
+            | ((event: CustomEvent<RemoveEventData<T>>) => void)
+            | undefined;
 
         /**
          * Placeholder text for input where the user can enter more tags.
@@ -380,7 +410,8 @@ declare namespace Tags {
         whitelist?: string[] | T[] | undefined;
     }
 
-    interface TagifyTagsReactProps<T extends BaseTagData = TagData> extends TagifyBaseReactProps<T> {
+    interface TagifyTagsReactProps<T extends BaseTagData = TagData>
+        extends TagifyBaseReactProps<T> {
         /**
          * `textarea` will create a TEXTAREA (hidden) element instead of the
          * default INPUT element and automatically make Tagify act as
@@ -402,7 +433,8 @@ declare namespace Tags {
      * {@link BaseTagData},specify the allowed properties and use that as the
      * type parameter.
      */
-    interface TagifyMixedTagsReactProps<T extends BaseTagData = TagData> extends TagifyBaseReactProps<T> {}
+    interface TagifyMixedTagsReactProps<T extends BaseTagData = TagData>
+        extends TagifyBaseReactProps<T> {}
 
     /**
      * React wrapper component that renders a tagify editor in mixed-mode. This
@@ -412,7 +444,9 @@ declare namespace Tags {
      */
     // Type parameter is used more than once within the TagifyMixedTagsReactProps interface
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    function MixedTags<T extends BaseTagData = TagData>(props: TagifyMixedTagsReactProps<T>): ReactElement;
+    function MixedTags<T extends BaseTagData = TagData>(
+        props: TagifyMixedTagsReactProps<T>,
+    ): ReactElement;
 }
 
 /**
@@ -425,6 +459,8 @@ declare namespace Tags {
  */
 // Type parameter is used more than once within the TagifyTagsReactProps interface
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-declare function Tags<T extends BaseTagData = TagData>(props: Tags.TagifyTagsReactProps<T>): ReactElement;
+declare function Tags<T extends BaseTagData = TagData>(
+    props: Tags.TagifyTagsReactProps<T>,
+): ReactElement;
 
 export = Tags;

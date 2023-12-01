@@ -11,4 +11,14 @@ import { ConnectConfig } from "./transport/wire";
 export declare function connect(config: ConnectConfig): Promise<Fin>;
 export declare function launch(config: ConnectConfig): Promise<number>;
 export { Identity } from "./identity";
-export { Application, ChannelClient, ChannelProvider, Fin, Frame, Notification, System, View, Window };
+export {
+    Application,
+    ChannelClient,
+    ChannelProvider,
+    Fin,
+    Frame,
+    Notification,
+    System,
+    View,
+    Window,
+};

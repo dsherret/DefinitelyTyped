@@ -32,7 +32,7 @@ function example(marker: TextBuffer.Marker) {}
 
 ### Exposing Private Methods and Properties
 
-[Declaration Merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) can be used to augment any of the types used within Text Buffer. As an example, if we wanted to reveal the private ```emitDidStopChangingEvent``` method within the TextBuffer class, then we would create a file with the following contents:
+[Declaration Merging](https://www.typescriptlang.org/docs/handbook/declaration-merging.html) can be used to augment any of the types used within Text Buffer. As an example, if we wanted to reveal the private `emitDidStopChangingEvent` method within the TextBuffer class, then we would create a file with the following contents:
 
 ```ts
 // <<filename>>.d.ts

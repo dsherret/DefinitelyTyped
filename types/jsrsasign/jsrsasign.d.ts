@@ -1,5 +1,10 @@
 declare namespace jsrsasign {
-    type EncryptionAlgorithms = "DES-CBC" | "DES-EDE3-CBC" | "AES-128-CBC" | "AES-192-CBC" | "AES-256-CBC";
+    type EncryptionAlgorithms =
+        | "DES-CBC"
+        | "DES-EDE3-CBC"
+        | "AES-128-CBC"
+        | "AES-192-CBC"
+        | "AES-256-CBC";
     type PrivateKeyOutputFormatType = "PKCS1PRV" | "PKCS5PRV" | "PKCS8PRV";
 
     /**
@@ -131,7 +136,11 @@ declare namespace jsrsasign {
      * datetozulu(d, true) → "170520235959Z"
      * datetozulu(d, false, true) → "20170520235959.67Z"
      */
-    function datetozulu(d: Date, flagUTCTime: boolean, flagMilli: boolean): string;
+    function datetozulu(
+        d: Date,
+        flagUTCTime: boolean,
+        flagMilli: boolean,
+    ): string;
 
     /**
      * convert UTFa hexadecimal string to a URLComponent string such like "%67%68".

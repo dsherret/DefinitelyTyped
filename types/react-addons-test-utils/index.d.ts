@@ -66,11 +66,14 @@ declare namespace TestUtils {
     }
 
     export interface EventSimulator {
-        (element: Element | Component<any>, eventData?: SyntheticEventData): void;
+        (
+            element: Element | Component<any>,
+            eventData?: SyntheticEventData,
+        ): void;
     }
 
     export interface MockedComponentClass {
-        new(): any;
+        new (): any;
     }
 
     export interface ShallowRenderer {
@@ -122,9 +125,7 @@ declare namespace TestUtils {
     export function renderIntoDocument<T extends Element>(
         element: DOMElement<any, T>,
     ): T;
-    export function renderIntoDocument(
-        element: SFCElement<any>,
-    ): void;
+    export function renderIntoDocument(element: SFCElement<any>): void;
     export function renderIntoDocument<T extends Component<any>>(
         element: CElement<any, T>,
     ): T;
@@ -142,25 +143,33 @@ declare namespace TestUtils {
         element: ReactElement,
         type: string,
     ): element is ReactHTMLElement<T>;
-    export function isElementOfType<P extends DOMAttributes<{}>, T extends Element>(
-        element: ReactElement,
-        type: string,
-    ): element is DOMElement<P, T>;
+    export function isElementOfType<
+        P extends DOMAttributes<{}>,
+        T extends Element,
+    >(element: ReactElement, type: string): element is DOMElement<P, T>;
     export function isElementOfType<P>(
         element: ReactElement,
         type: SFC<P>,
     ): element is SFCElement<P>;
-    export function isElementOfType<P, T extends Component<P>, C extends ComponentClass<P>>(
+    export function isElementOfType<
+        P,
+        T extends Component<P>,
+        C extends ComponentClass<P>,
+    >(
         element: ReactElement,
         type: ClassType<P, T, C>,
     ): element is CElement<P, T>;
 
-    export function isDOMComponent(instance: ReactInstance): instance is Element;
-    export function isCompositeComponent(instance: ReactInstance): instance is Component<any>;
-    export function isCompositeComponentWithType<T extends Component<any>, C extends ComponentClass<any>>(
+    export function isDOMComponent(
         instance: ReactInstance,
-        type: ClassType<any, T, C>,
-    ): T;
+    ): instance is Element;
+    export function isCompositeComponent(
+        instance: ReactInstance,
+    ): instance is Component<any>;
+    export function isCompositeComponentWithType<
+        T extends Component<any>,
+        C extends ComponentClass<any>,
+    >(instance: ReactInstance, type: ClassType<any, T, C>): T;
 
     export function findAllInRenderedTree(
         root: Component<any>,
@@ -185,15 +194,15 @@ declare namespace TestUtils {
         tagName: string,
     ): Element;
 
-    export function scryRenderedComponentsWithType<T extends Component<any>, C extends ComponentClass<any>>(
-        root: Component<any>,
-        type: ClassType<any, T, C>,
-    ): T[];
+    export function scryRenderedComponentsWithType<
+        T extends Component<any>,
+        C extends ComponentClass<any>,
+    >(root: Component<any>, type: ClassType<any, T, C>): T[];
 
-    export function findRenderedComponentWithType<T extends Component<any>, C extends ComponentClass<any>>(
-        root: Component<any>,
-        type: ClassType<any, T, C>,
-    ): T;
+    export function findRenderedComponentWithType<
+        T extends Component<any>,
+        C extends ComponentClass<any>,
+    >(root: Component<any>, type: ClassType<any, T, C>): T;
 
     export function createRenderer(): ShallowRenderer;
 }

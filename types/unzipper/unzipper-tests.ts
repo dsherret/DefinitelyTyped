@@ -5,9 +5,12 @@ import { CentralDirectory, Entry, Open, Parse } from "unzipper";
 createReadStream("http://example.org/path/to/archive.zip")
     .pipe(Parse())
     .on("entry", (entry: Entry) => {
-        entry.autodrain().promise().then(() => {
-            console.log("Finished draining stream");
-        });
+        entry
+            .autodrain()
+            .promise()
+            .then(() => {
+                console.log("Finished draining stream");
+            });
     });
 
 createReadStream("http://example.org/path/to/archive.zip")

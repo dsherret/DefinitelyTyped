@@ -2,7 +2,11 @@
 /// <reference types="react"/>
 
 import type { NextConfig } from "next";
-import type { GenerateSWOptions, InjectManifestOptions, RuntimeCaching } from "workbox-build";
+import type {
+    GenerateSWOptions,
+    InjectManifestOptions,
+    RuntimeCaching,
+} from "workbox-build";
 
 declare global {
     interface PopStateEventInit extends EventInit {
@@ -22,7 +26,7 @@ declare global {
 
     var PopStateEvent: {
         prototype: PopStateEvent;
-        new(type: string, eventInitDict?: PopStateEventInit): PopStateEvent;
+        new (type: string, eventInitDict?: PopStateEventInit): PopStateEvent;
     };
 }
 

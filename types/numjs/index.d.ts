@@ -178,9 +178,18 @@ export function add<T = number>(a: NjParam<T>, b: NjParam<T>): NdArray<T>;
  * @param [dtype = Array] The type of the output array.
  * @returns Array of evenly spaced values.
  */
-export function arange<T = number>(start: number, stop?: number, dtype?: NdType<T>): NdArray<T>;
+export function arange<T = number>(
+    start: number,
+    stop?: number,
+    dtype?: NdType<T>,
+): NdArray<T>;
 export function arange<T = number>(stop: number, dtype: NdType<T>): NdArray<T>;
-export function arange<T = number>(start: number, stop: number, step: number, dtype?: NdType<T>): NdArray<T>;
+export function arange<T = number>(
+    start: number,
+    stop: number,
+    step: number,
+    dtype?: NdType<T>,
+): NdArray<T>;
 
 /**
  * Return trigonometric inverse cosine of the input array, element-wise.
@@ -200,11 +209,17 @@ export function arctan<T = number>(x: NjParam<T>): NdArray<T>;
 /**
  * Clip (limit) the values in an array between min and max, element-wise.
  */
-export function clip<T = number>(x: NjParam<T>, min?: number, max?: number): NdArray<T>;
+export function clip<T = number>(
+    x: NjParam<T>,
+    min?: number,
+    max?: number,
+): NdArray<T>;
 /**
  * Join given arrays along the last axis.
  */
-export function concatenate<T = number>(...arrays: Array<NjArray<T>>): NdArray<T>;
+export function concatenate<T = number>(
+    ...arrays: Array<NjArray<T>>
+): NdArray<T>;
 
 /**
  * Convolve 2 N-dimensionnal arrays
@@ -233,7 +248,10 @@ export function dot<T = number>(a: NjArray<T>, b: NjArray<T>): NdArray<T>;
  * @param [dtype]    The type of the output array.
  * @returns Array of `undefined` values with the given shape and dtype
  */
-export function empty<T = number>(shape: NdArrayData<T> | number, dtype?: NdType<T>): NdArray<T>;
+export function empty<T = number>(
+    shape: NdArrayData<T> | number,
+    dtype?: NdType<T>,
+): NdArray<T>;
 
 /**
  * Return true if two arrays have the same shape and elements, false otherwise.
@@ -248,7 +266,10 @@ export function exp<T = number>(x: NjParam<T>): NdArray<T>;
 /**
  * Convolve 2 N-dimensionnal arrays using Fast Fourier Transform (FFT)
  */
-export function fftconvolve<T = number>(a: NjArray<T>, b: NjArray<T>): NdArray<T>;
+export function fftconvolve<T = number>(
+    a: NjArray<T>,
+    b: NjArray<T>,
+): NdArray<T>;
 
 /**
  * Return a copy of the array collapsed into one dimension using row-major order (C-style)
@@ -256,7 +277,10 @@ export function fftconvolve<T = number>(a: NjArray<T>, b: NjArray<T>): NdArray<T
 export function flatten<T = number>(array: NjArray<T>): NdArray<T>;
 
 export function getRawData<T = number>(array: NdArrayData<T>): Uint8Array;
-export function setRawData<T = number>(array: NdArrayData<T>, data: NdArrayData<T>): Uint8Array;
+export function setRawData<T = number>(
+    array: NdArrayData<T>,
+    data: NdArrayData<T>,
+): Uint8Array;
 
 /**
  * Return the maximum value of the array
@@ -295,7 +319,10 @@ export function negative<T = number>(x: NjParam<T>): NdArray<T>;
  * @param [dtype] The type of the output array.
  * @returns Array of ones with the given shape and dtype
  */
-export function ones<T = number>(shape: NdArrayData<T> | number, dtype?: DataType): NdArray<T>;
+export function ones<T = number>(
+    shape: NdArrayData<T> | number,
+    dtype?: DataType,
+): NdArray<T>;
 
 /**
  * Raise first array elements to powers from second array, element-wise.
@@ -314,7 +341,10 @@ export function random<T = number>(shape?: NdArrayData<T> | number): NdArray<T>;
  *
  * @param shape The new shape should be compatible with the original shape. If an integer, then the result will be a 1-D array of that length
  */
-export function reshape<T = number>(array: NjArray<T>, shape: NdArray<T>): NdArray<T>;
+export function reshape<T = number>(
+    array: NjArray<T>,
+    shape: NdArray<T>,
+): NdArray<T>;
 
 /**
  * Round an array to the to the nearest integer.
@@ -396,7 +426,10 @@ export function transpose<T = number>(x: NjParam<T>, axes?: number): NdArray<T>;
  * @param [dtype = Array] The type of the output array.
  * @returns Array of zeros with the given shape and dtype
  */
-export function zeros<T = number>(shape: NdArrayData<T> | number, dtype?: DataType): NdArray<T>;
+export function zeros<T = number>(
+    shape: NdArrayData<T> | number,
+    dtype?: DataType,
+): NdArray<T>;
 
 export namespace errors {
     function ValueError(message?: string): Error;
@@ -433,7 +466,10 @@ export function identity<T = number>(n: T, dtype?: DataType): NdArray<T>;
  * @param [axis=0] The axis in the result array along which the input arrays are stacked.
  * @return The stacked array has one more dimension than the input arrays.
  */
-export function stack<T = number>(arrays: Array<NdArray<T>>, axis?: number): NdArray<T>;
+export function stack<T = number>(
+    arrays: Array<NdArray<T>>,
+    axis?: number,
+): NdArray<T>;
 
 export namespace images {
     namespace data {
@@ -468,18 +504,31 @@ export namespace images {
     }
     function read(input: string): NdArray<Uint8Array>;
     function save<T = number>(img: NdArray<T>, dest: string): void;
-    function resize<T = number>(img: NdArray<T>, height: number, width: number): NdArray<Uint8Array>;
+    function resize<T = number>(
+        img: NdArray<T>,
+        height: number,
+        width: number,
+    ): NdArray<Uint8Array>;
     function sat<T = number>(img: NdArray<T>): NdArray<Uint32Array>;
     function ssat<T = number>(img: NdArray<T>): NdArray<Uint32Array>;
     function sobel<T = number>(img: NdArray<T>): NdArray<Float32Array>;
     function scharr<T = number>(img: NdArray<T>): NdArray<Float32Array>;
-    function areaSum<T = number>(h0: number, w0: number, H: number, W: number, SAT: NdArray<T>): number;
+    function areaSum<T = number>(
+        h0: number,
+        w0: number,
+        H: number,
+        W: number,
+        SAT: NdArray<T>,
+    ): number;
     function areaValue<T = number>(img: NdArray<T>): number;
     function rgb2gray<T = number>(img: NdArray<T>): NdArray<Uint8Array>;
     function flip<T = number, O = T>(img: NdArray<T>): NdArray<O>;
 }
 
-export function array<T = number>(arr: NjArray<T>, dtype?: DataType): NdArray<T>;
+export function array<T = number>(
+    arr: NjArray<T>,
+    dtype?: DataType,
+): NdArray<T>;
 
 export function int8<T = number>(arr: NjArray<T>): NjArray<Int8Array>;
 

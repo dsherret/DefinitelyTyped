@@ -39,7 +39,9 @@ jsonquery<TestData>({ $or: [{ number: "Number 7" }, { val: 50 }] });
 jsonquery<TestData>({ $and: [{ number: "Number 7" }, { val: 70 }] });
 
 // $ExpectType ReadWriteStream
-jsonquery<TestData>({ $or: [{ $and: [{ number: "Number 7" }, { val: 70 }] }, { val: 50 }] });
+jsonquery<TestData>({
+    $or: [{ $and: [{ number: "Number 7" }, { val: 70 }] }, { val: 50 }],
+});
 
 // $ExpectType ReadWriteStream
 jsonquery<TestData>({ val: { $in: [70, 50] } });
@@ -102,7 +104,9 @@ jsonquery<TestData>({ val: { $mod: [7, 1] } });
 jsonquery<TestData>({ favorites: { $size: 2 } });
 
 // $ExpectType ReadWriteStream
-jsonquery<TestData>({ $and: [{ tree: { $exists: true } }, { missing: { $exists: false } }] });
+jsonquery<TestData>({
+    $and: [{ tree: { $exists: true } }, { missing: { $exists: false } }],
+});
 
 // $ExpectType ReadWriteStream
 jsonquery<TestData>({ $not: { number: "Number 7", val: 70 } });

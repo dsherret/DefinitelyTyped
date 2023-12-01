@@ -14,7 +14,11 @@ const options: empower.Options = {
 };
 
 {
-    const assert: typeof baseAssert = empower(baseAssert, fakeFormatter, options);
+    const assert: typeof baseAssert = empower(
+        baseAssert,
+        fakeFormatter,
+        options,
+    );
 }
 
 const defaultOptions: empower.Options = empower.defaultOptions();

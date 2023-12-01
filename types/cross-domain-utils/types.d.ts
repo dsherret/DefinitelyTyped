@@ -4,7 +4,11 @@ export interface CrossDomainWindowType {
     location: string | {};
     self: CrossDomainWindowType;
     closed: boolean;
-    open: (url?: string, target?: string, features?: string) => CrossDomainWindowType | null;
+    open: (
+        url?: string,
+        target?: string,
+        features?: string,
+    ) => CrossDomainWindowType | null;
     close: () => void;
     focus: () => void;
     top: CrossDomainWindowType | null;
@@ -19,7 +23,11 @@ export interface SameDomainWindowType {
     location: string | {};
     self: CrossDomainWindowType;
     closed: boolean;
-    open: (url?: string, target?: string, features?: string) => CrossDomainWindowType | null;
+    open: (
+        url?: string,
+        target?: string,
+        features?: string,
+    ) => CrossDomainWindowType | null;
     close: () => void;
     focus: () => void;
     XMLHttpRequest?: typeof XMLHttpRequest | undefined;

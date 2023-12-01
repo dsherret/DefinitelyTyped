@@ -131,15 +131,31 @@ export namespace download {
 }
 
 export namespace meta {
-    function get(token: string, path: string, props?: GetProps): Promise<Resource>;
+    function get(
+        token: string,
+        path: string,
+        props?: GetProps,
+    ): Promise<Resource>;
 
-    function add(token: string, path: string, props?: Record<string, string | number>): Promise<Resource>;
+    function add(
+        token: string,
+        path: string,
+        props?: Record<string, string | number>,
+    ): Promise<Resource>;
 }
 
 export namespace upload {
-    function link(token: string, path: string, overwrite?: boolean): Promise<Link>;
+    function link(
+        token: string,
+        path: string,
+        overwrite?: boolean,
+    ): Promise<Link>;
 
-    function remoteFile(token: string, url: string, path: string): Promise<Link>;
+    function remoteFile(
+        token: string,
+        url: string,
+        path: string,
+    ): Promise<Link>;
 }
 
 export namespace resources {
@@ -161,15 +177,25 @@ export namespace resources {
         fields?: string,
     ): Promise<ApiResponse<Link>>;
 
-    function remove(token: string, path: string, permanently?: boolean): Promise<ApiResponse<Link>>;
+    function remove(
+        token: string,
+        path: string,
+        permanently?: boolean,
+    ): Promise<ApiResponse<Link>>;
 }
 
 export function info(token: string): Promise<Disk>;
 
-export function list(token: string, props: ListProps): Promise<FilesResourceList>;
+export function list(
+    token: string,
+    props: ListProps,
+): Promise<FilesResourceList>;
 
 export function operations(token: string, id: string): Promise<Operation>;
 
-export function recent(token: string, options: RecentProps): Promise<LastUploadedResourceList>;
+export function recent(
+    token: string,
+    options: RecentProps,
+): Promise<LastUploadedResourceList>;
 
 export {};

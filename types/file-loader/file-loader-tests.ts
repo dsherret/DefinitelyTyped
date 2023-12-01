@@ -7,7 +7,7 @@ fn = () => {};
 // @ts-expect-error
 fn = () => 1;
 fn = () => ""; // $ExpectType () => string
-fn = url => ""; // $ExpectType (url: string) => string
+fn = (url) => ""; // $ExpectType (url: string) => string
 // @ts-expect-error
 fn = (url, resourcePath, context, forth) => "";
 

@@ -1,17 +1,18 @@
 import telnetlib = require("telnetlib");
 import blessed = require("blessed");
 
-const { commands, options, optionState, q, reason, state, where } = telnetlib.constants;
+const { commands, options, optionState, q, reason, state, where } =
+    telnetlib.constants;
 const { GMCP, ECHO, TRANSMIT_BINARY, NAWS, SGA } = telnetlib.options;
 
-(() => {
+() => {
     // Server
-    const server = telnetlib.createServer({}, c => {
+    const server = telnetlib.createServer({}, (c) => {
         c.on("negotiated", () => {
             c.write("Hello World!");
         });
 
-        c.on("data", data => {
+        c.on("data", (data) => {
             c.write(data);
         });
     });
@@ -25,26 +26,26 @@ const { GMCP, ECHO, TRANSMIT_BINARY, NAWS, SGA } = telnetlib.options;
             port: 9001,
         },
         () => {
-            client.on("data", data => {
+            client.on("data", (data) => {
                 client.write(data);
             });
         },
     );
-});
+};
 
-(() => {
+() => {
     // Server
     const server = telnetlib.createServer(
         {
             localOptions: [GMCP],
         },
-        c => {
+        (c) => {
             const gmcp = c.getOption(GMCP);
             c.on("negotiated", () => {
                 gmcp.send("herp", "derp", 42);
             });
 
-            gmcp.on("gmcp/herp.derp", data => {
+            gmcp.on("gmcp/herp.derp", (data) => {
                 gmcp.send("herp", "derp", data);
             });
         },
@@ -61,20 +62,20 @@ const { GMCP, ECHO, TRANSMIT_BINARY, NAWS, SGA } = telnetlib.options;
         },
         () => {
             const gmcp = client.getOption(GMCP);
-            gmcp.on("gmcp/herp.derp", data => {
+            gmcp.on("gmcp/herp.derp", (data) => {
                 gmcp.send("herp", "derp", data);
             });
         },
     );
-});
+};
 
-(() => {
+() => {
     const server = telnetlib.createServer(
         {
             remoteOptions: [NAWS, TRANSMIT_BINARY, SGA],
             localOptions: [ECHO, TRANSMIT_BINARY, SGA],
         },
-        c => {
+        (c) => {
             let screen: blessed.Widgets.Screen;
 
             c.on("negotiated", () => {
@@ -108,4 +109,4 @@ const { GMCP, ECHO, TRANSMIT_BINARY, NAWS, SGA } = telnetlib.options;
     );
 
     server.listen(9001);
-});
+};

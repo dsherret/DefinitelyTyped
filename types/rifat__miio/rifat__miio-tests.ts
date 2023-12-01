@@ -10,7 +10,7 @@ device({ address: "192.168.0.1", token: "" }); // $ExpectType Promise<MiioDevice
 
 device({ address: "192.168.0.1" }); // $ExpectType Promise<MiioDevice>
 
-device({ address: "192.168.0.1" }).then(miooDevice => {
+device({ address: "192.168.0.1" }).then((miooDevice) => {
     const d = miooDevice as AirPurifier3; // $ExpectType AirPurifier3
 
     d.matches("type:air-purifier"); // $ExpectType true

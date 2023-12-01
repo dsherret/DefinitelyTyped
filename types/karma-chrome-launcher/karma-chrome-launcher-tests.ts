@@ -11,7 +11,10 @@ module.exports = (config: karma.Config) => {
         customLaunchers: {
             Chrome_without_security: {
                 base: "Chrome",
-                flags: ["--disable-web-security", "--disable-site-isolation-trials"],
+                flags: [
+                    "--disable-web-security",
+                    "--disable-site-isolation-trials",
+                ],
                 // Chrome launcher specific configuration
                 chromeDataDir: path.resolve(__dirname, ".chrome"),
             },

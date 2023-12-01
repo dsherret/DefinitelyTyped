@@ -23,21 +23,23 @@ export function asBlob(
          * [WordprocessingML documentation](http://officeopenxml.com/WPsectionPgMar.php)
          * for details).
          */
-        margins?: {
-            /** The top page margin (default: 1440, i.e. 2.54 cm). */
-            top?: number | undefined;
-            /** The right page margin (default: 1440). */
-            right?: number | undefined;
-            /** The bottom page margin (default: 1440). */
-            bottom?: number | undefined;
-            /** The left page margin (default: 1440). */
-            left?: number | undefined;
-            /** The margin for the header (default: 720). */
-            header?: number | undefined;
-            /** The margin for the footer (default: 720). */
-            footer?: number | undefined;
-            /** The margin for the gutter (default: 0). */
-            gutter?: number | undefined;
-        } | undefined;
+        margins?:
+            | {
+                  /** The top page margin (default: 1440, i.e. 2.54 cm). */
+                  top?: number | undefined;
+                  /** The right page margin (default: 1440). */
+                  right?: number | undefined;
+                  /** The bottom page margin (default: 1440). */
+                  bottom?: number | undefined;
+                  /** The left page margin (default: 1440). */
+                  left?: number | undefined;
+                  /** The margin for the header (default: 720). */
+                  header?: number | undefined;
+                  /** The margin for the footer (default: 720). */
+                  footer?: number | undefined;
+                  /** The margin for the gutter (default: 0). */
+                  gutter?: number | undefined;
+              }
+            | undefined;
     },
 ): Blob | Buffer;

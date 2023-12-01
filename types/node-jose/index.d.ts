@@ -1,6 +1,9 @@
 /// <reference types="node" />
 
-export function canYouSee(ks: JWK.Key | JWK.KeyStore, opts: object): JWS.Verifier;
+export function canYouSee(
+    ks: JWK.Key | JWK.KeyStore,
+    opts: object,
+): JWS.Verifier;
 
 export namespace JWA {
     interface DecryptEncryptOptions {
@@ -57,9 +60,17 @@ export namespace JWA {
         props?: DecryptEncryptOptions,
     ): Promise<Buffer>;
 
-    function derive(alg: string, key: string | Buffer, props?: DeriveOptions): Promise<Buffer>;
+    function derive(
+        alg: string,
+        key: string | Buffer,
+        props?: DeriveOptions,
+    ): Promise<Buffer>;
 
-    function digest(alg: string, data: string | Buffer, props?: any): Promise<Buffer>;
+    function digest(
+        alg: string,
+        data: string | Buffer,
+        props?: any,
+    ): Promise<Buffer>;
 
     function encrypt(
         alg: string,
@@ -95,7 +106,10 @@ export namespace JWE {
     }
 
     function createEncrypt(keys: JWK.Key | JWK.Key[]): Encryptor;
-    function createEncrypt(options: EncryptOptions, key: JWK.Key | JWK.Key[]): Encryptor;
+    function createEncrypt(
+        options: EncryptOptions,
+        key: JWK.Key | JWK.Key[],
+    ): Encryptor;
 
     function createDecrypt(key: JWK.Key | JWK.KeyStore, opts?: any): Decryptor;
 
@@ -144,7 +158,15 @@ export namespace JWK {
 
     function asKey(
         key: string | Buffer | object | RawKey,
-        form?: "json" | "private" | "pkcs8" | "public" | "spki" | "pkix" | "x509" | "pem",
+        form?:
+            | "json"
+            | "private"
+            | "pkcs8"
+            | "public"
+            | "spki"
+            | "pkix"
+            | "x509"
+            | "pem",
         extras?: Record<string, unknown>,
     ): Promise<Key>;
     /**
@@ -219,7 +241,15 @@ export namespace JWK {
          */
         add(
             key: string | Buffer | Key | object,
-            form?: "json" | "private" | "pkcs8" | "public" | "spki" | "pkix" | "x509" | "pem",
+            form?:
+                | "json"
+                | "private"
+                | "pkcs8"
+                | "public"
+                | "spki"
+                | "pkix"
+                | "x509"
+                | "pem",
             extras?: Record<string, unknown>,
         ): Promise<Key>;
 
@@ -240,7 +270,11 @@ export namespace JWK {
          * generated key to have a specific key identifier, or to specify its
          * acceptable usage.
          */
-        generate(kty: string, size?: string | number, props?: any): Promise<Key>;
+        generate(
+            kty: string,
+            size?: string | number,
+            props?: any,
+        ): Promise<Key>;
 
         remove(key: Key): void;
     }
@@ -275,7 +309,11 @@ export namespace JWS {
      */
     function createVerify(
         input?: string | JWK.Key | JWK.KeyStore | object,
-        opts?: { allowEmbeddedKey?: boolean | undefined; algorithms?: string[] | undefined; handlers?: any },
+        opts?: {
+            allowEmbeddedKey?: boolean | undefined;
+            algorithms?: string[] | undefined;
+            handlers?: any;
+        },
     ): Verifier;
 
     interface CreateSignResult {
@@ -311,7 +349,10 @@ export namespace JWS {
     }
 
     interface Verifier {
-        verify(input: string, opts?: { allowEmbeddedKey?: boolean | undefined }): Promise<VerificationResult>;
+        verify(
+            input: string,
+            opts?: { allowEmbeddedKey?: boolean | undefined },
+        ): Promise<VerificationResult>;
     }
 
     interface Exp {
@@ -333,7 +374,9 @@ export namespace parse {
         format: "compact" | "json";
         input: Buffer | string | object;
         header: object;
-        perform: (ks: JWK.KeyStore) => Promise<JWE.DecryptResult> | Promise<JWS.VerificationResult>;
+        perform: (
+            ks: JWK.KeyStore,
+        ) => Promise<JWE.DecryptResult> | Promise<JWS.VerificationResult>;
     }
     function compact(input: Buffer | string | object): ParseReturn;
 

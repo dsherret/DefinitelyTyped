@@ -29,13 +29,17 @@ export type GeoGeometryObjects = GeoJSON.GeometryObject | GeoSphere;
  *
  * The generic refers to the type(s) of d3-geo geometry objects contained in the collection.
  */
-export interface ExtendedGeometryCollection<GeometryType extends GeoGeometryObjects = GeoGeometryObjects> {
+export interface ExtendedGeometryCollection<
+    GeometryType extends GeoGeometryObjects = GeoGeometryObjects,
+> {
     type: string;
     bbox?: number[] | undefined;
-    crs?: {
-        type: string;
-        properties: any;
-    } | undefined;
+    crs?:
+        | {
+              type: string;
+              properties: any;
+          }
+        | undefined;
     geometries: GeometryType[];
 }
 
@@ -64,9 +68,9 @@ export interface ExtendedFeature<
  *
  * The generic refers to the type of ExtendedFeature contained in the ExtendedFeatureCollection.
  */
-export interface ExtendedFeatureCollection<FeatureType extends ExtendedFeature = ExtendedFeature>
-    extends GeoJSON.GeoJsonObject
-{
+export interface ExtendedFeatureCollection<
+    FeatureType extends ExtendedFeature = ExtendedFeature,
+> extends GeoJSON.GeoJsonObject {
     features: FeatureType[];
 }
 
@@ -89,7 +93,11 @@ export type GeoPermissibleObjects =
  * This is the spherical equivalent of path.area.
  */
 export function geoArea(
-    object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+    object:
+        | ExtendedFeature
+        | ExtendedFeatureCollection
+        | GeoGeometryObjects
+        | ExtendedGeometryCollection,
 ): number;
 
 /**
@@ -101,7 +109,11 @@ export function geoArea(
  * This is the spherical equivalent of path.bounds.
  */
 export function geoBounds(
-    object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+    object:
+        | ExtendedFeature
+        | ExtendedFeatureCollection
+        | GeoGeometryObjects
+        | ExtendedGeometryCollection,
 ): [[number, number], [number, number]];
 
 /**
@@ -109,7 +121,11 @@ export function geoBounds(
  * This is the spherical equivalent of path.centroid.
  */
 export function geoCentroid(
-    object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+    object:
+        | ExtendedFeature
+        | ExtendedFeatureCollection
+        | GeoGeometryObjects
+        | ExtendedGeometryCollection,
 ): [number, number];
 
 /**
@@ -118,7 +134,11 @@ export function geoCentroid(
  * For Point and MultiPoint geometries, an exact test is used; for a Sphere, true is always returned; for other geometries, an epsilon threshold is applied.
  */
 export function geoContains(
-    object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+    object:
+        | ExtendedFeature
+        | ExtendedFeatureCollection
+        | GeoGeometryObjects
+        | ExtendedGeometryCollection,
     point: [number, number],
 ): boolean;
 
@@ -137,7 +157,11 @@ export function geoDistance(a: [number, number], b: [number, number]): number;
  * This is the spherical equivalent of path.measure.
  */
 export function geoLength(
-    object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+    object:
+        | ExtendedFeature
+        | ExtendedFeatureCollection
+        | GeoGeometryObjects
+        | ExtendedGeometryCollection,
 ): number;
 
 /**
@@ -147,7 +171,10 @@ export function geoLength(
  * @param a Point specified as a two-element array [longitude, latitude] in degrees.
  * @param b Point specified as a two-element array [longitude, latitude] in degrees.
  */
-export function geoInterpolate(a: [number, number], b: [number, number]): (t: number) => [number, number];
+export function geoInterpolate(
+    a: [number, number],
+    b: [number, number],
+): (t: number) => [number, number];
 
 /**
  * A Geo Rotation
@@ -174,7 +201,9 @@ export interface GeoRotation {
  * @param angles  A two- or three-element array of numbers [lambda, phi, gamma] specifying the rotation angles in degrees about each spherical axis.
  * (These correspond to yaw, pitch and roll.) If the rotation angle gamma is omitted, it defaults to 0.
  */
-export function geoRotation(angles: [number, number] | [number, number, number]): GeoRotation;
+export function geoRotation(
+    angles: [number, number] | [number, number, number],
+): GeoRotation;
 
 // ----------------------------------------------------------------------
 // Spherical Shapes
@@ -204,7 +233,11 @@ export interface GeoCircleGenerator<This = any, Datum = any> {
      * Sets the circle center to the specified point [longitude, latitude] in degrees, and returns this circle generator.
      * The center may also be specified as a function; this function will be invoked whenever a circle is generated, being passed any arguments passed to the circle generator.
      */
-    center(center: [number, number] | ((this: This, d: Datum, ...args: any[]) => [number, number])): this;
+    center(
+        center:
+            | [number, number]
+            | ((this: This, d: Datum, ...args: any[]) => [number, number]),
+    ): this;
 
     /**
      * Returns the current radius accessor, which defaults to a function returning 90.
@@ -214,7 +247,9 @@ export interface GeoCircleGenerator<This = any, Datum = any> {
      * Sets the circle radius to the specified angle in degrees, and returns this circle generator.
      * The radius may also be specified as a function; this function will be invoked whenever a circle is generated, being passed any arguments passed to the circle generator.
      */
-    radius(radius: number | ((this: This, d: Datum, ...args: any[]) => number)): this;
+    radius(
+        radius: number | ((this: This, d: Datum, ...args: any[]) => number),
+    ): this;
 
     /**
      * Returns the current precision accessor, which defaults to a function returning 6.
@@ -224,7 +259,9 @@ export interface GeoCircleGenerator<This = any, Datum = any> {
      * Sets the circle precision to the specified angle in degrees, and returns this circle generator.
      * The precision may also be specified as a function; this function will be invoked whenever a circle is generated, being passed any arguments passed to the circle generator.
      */
-    precision(precision: number | ((this: This, d: Datum, ...args: any[]) => number)): this;
+    precision(
+        precision: number | ((this: This, d: Datum, ...args: any[]) => number),
+    ): this;
 }
 
 /**
@@ -415,7 +452,11 @@ export interface GeoStream {
  * While both features and geometry objects are supported as input, the stream interface only describes the geometry, and thus additional feature properties are not visible to streams.
  */
 export function geoStream(
-    object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+    object:
+        | ExtendedFeature
+        | ExtendedFeatureCollection
+        | GeoGeometryObjects
+        | ExtendedGeometryCollection,
     stream: GeoStream,
 ): void;
 
@@ -642,7 +683,11 @@ export interface GeoProjection extends GeoStreamWrapper {
      */
     fitExtent(
         extent: [[number, number], [number, number]],
-        object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+        object:
+            | ExtendedFeature
+            | ExtendedFeatureCollection
+            | GeoGeometryObjects
+            | ExtendedGeometryCollection,
     ): this;
 
     /**
@@ -650,7 +695,11 @@ export interface GeoProjection extends GeoStreamWrapper {
      */
     fitSize(
         size: [number, number],
-        object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+        object:
+            | ExtendedFeature
+            | ExtendedFeatureCollection
+            | GeoGeometryObjects
+            | ExtendedGeometryCollection,
     ): this;
 
     /**
@@ -658,7 +707,11 @@ export interface GeoProjection extends GeoStreamWrapper {
      */
     fitWidth(
         width: number,
-        object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+        object:
+            | ExtendedFeature
+            | ExtendedFeatureCollection
+            | GeoGeometryObjects
+            | ExtendedGeometryCollection,
     ): this;
 
     /**
@@ -666,7 +719,11 @@ export interface GeoProjection extends GeoStreamWrapper {
      */
     fitHeight(
         height: number,
-        object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+        object:
+            | ExtendedFeature
+            | ExtendedFeatureCollection
+            | GeoGeometryObjects
+            | ExtendedGeometryCollection,
     ): this;
 }
 
@@ -706,7 +763,14 @@ export interface GeoContext {
      * @param endAngle The end angle of the arc, measured clockwise from the positive x axis and expressed in radians.
      * @param anticlockwise Optional boolean flag, if true the arc is drawn counter-clockwise between the two angles.
      */
-    arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: boolean): void;
+    arc(
+        x: number,
+        y: number,
+        radius: number,
+        startAngle: number,
+        endAngle: number,
+        anticlockwise?: boolean,
+    ): void;
 
     /**
      * Start a new path by emptying the list of sub-paths.
@@ -745,7 +809,10 @@ export interface GeoContext {
  *
  * The second generic corresponds to the type of the DatumObject which will be passed into the geo path generator for rendering.
  */
-export interface GeoPath<This = any, DatumObject extends GeoPermissibleObjects = GeoPermissibleObjects> {
+export interface GeoPath<
+    This = any,
+    DatumObject extends GeoPermissibleObjects = GeoPermissibleObjects,
+> {
     /**
      * Renders the given object, which may be any GeoJSON feature or geometry object:
      *
@@ -870,7 +937,9 @@ export interface GeoPath<This = any, DatumObject extends GeoPermissibleObjects =
      * Use the generic to cast the return type of the projection, if it is known for a specific application.
      */
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    projection<P extends GeoConicProjection | GeoProjection | GeoStreamWrapper | null>(): P;
+    projection<
+        P extends GeoConicProjection | GeoProjection | GeoStreamWrapper | null,
+    >(): P;
 
     /**
      * Sets the current projection to the specified projection.
@@ -883,7 +952,9 @@ export interface GeoPath<This = any, DatumObject extends GeoPermissibleObjects =
      * Returns the current radius or radius accessor used to determine the radius for the display of Point and MultiPoint geometries.
      * The default is a constant radius of 4.5.
      */
-    pointRadius(): ((this: This, object: DatumObject, ...args: any[]) => number) | number;
+    pointRadius():
+        | ((this: This, object: DatumObject, ...args: any[]) => number)
+        | number;
 
     /**
      * Sets the radius used to display Point and MultiPoint geometries to the specified number.
@@ -891,7 +962,11 @@ export interface GeoPath<This = any, DatumObject extends GeoPermissibleObjects =
      * For example, if your GeoJSON data has additional properties, you might access those properties inside the radius function to vary the point size;
      * alternatively, you could d3.symbol and a projection for greater flexibility.
      */
-    pointRadius(value: number | ((this: This, object: DatumObject, ...args: any[]) => number)): this;
+    pointRadius(
+        value:
+            | number
+            | ((this: This, object: DatumObject, ...args: any[]) => number),
+    ): this;
 
     /**
      * Returns the current number of digits, which defaults to 3.
@@ -919,7 +994,10 @@ export interface GeoPath<This = any, DatumObject extends GeoPermissibleObjects =
  * @param context An (optional) rendering context to be used. If a context is provided, it must at least implement the interface described by GeoContext, a subset of the CanvasRenderingContext2D API.
  * Setting the context to "null" means that the path generator will return an SVG path string representing the to be rendered object. The default is "null".
  */
-export function geoPath(projection?: GeoProjection | GeoStreamWrapper | null, context?: GeoContext | null): GeoPath;
+export function geoPath(
+    projection?: GeoProjection | GeoStreamWrapper | null,
+    context?: GeoContext | null,
+): GeoPath;
 /**
  * Creates a new geographic path generator with the default settings.
  *
@@ -989,7 +1067,9 @@ export function geoProjection(project: GeoRawProjection): GeoProjection;
  *
  * When creating a mutable projection, the mutate function is typically not exposed.
  */
-export function geoProjectionMutator(factory: (...args: any[]) => GeoRawProjection): () => GeoProjection;
+export function geoProjectionMutator(
+    factory: (...args: any[]) => GeoRawProjection,
+): () => GeoProjection;
 
 // Pre-Defined Projections and Raw Projections =============================
 
@@ -1080,7 +1160,10 @@ export function geoConicConformal(): GeoConicProjection;
 /**
  * The raw conic conformal projection.
  */
-export function geoConicConformalRaw(phi0: number, phi1: number): GeoRawProjection;
+export function geoConicConformalRaw(
+    phi0: number,
+    phi1: number,
+): GeoRawProjection;
 
 /**
  * The Albers’ equal-area conic projection.
@@ -1090,7 +1173,10 @@ export function geoConicEqualArea(): GeoConicProjection;
 /**
  * The raw Albers’ equal-area conic projection.
  */
-export function geoConicEqualAreaRaw(phi0: number, phi1: number): GeoRawProjection;
+export function geoConicEqualAreaRaw(
+    phi0: number,
+    phi1: number,
+): GeoRawProjection;
 
 /**
  * The conic equidistant projection.
@@ -1100,7 +1186,10 @@ export function geoConicEquidistant(): GeoConicProjection;
 /**
  * The raw conic equidistant projection.
  */
-export function geoConicEquidistantRaw(phi0: number, phi1: number): GeoRawProjection;
+export function geoConicEquidistantRaw(
+    phi0: number,
+    phi1: number,
+): GeoRawProjection;
 
 // Cylindrical Projections ------------------------------------------------
 
@@ -1176,7 +1265,12 @@ export interface GeoTransformPrototype {
      * @param y y-coordinate of point.
      * @param z Optional z-coordinate of point.
      */
-    point?(this: this & { stream: GeoStream }, x: number, y: number, z?: number): void;
+    point?(
+        this: this & { stream: GeoStream },
+        x: number,
+        y: number,
+        z?: number,
+    ): void;
     /**
      * Indicates the end of a polygon.
      */
@@ -1201,7 +1295,9 @@ export interface GeoTransformPrototype {
  *
  * @param methods An object with custom method implementations, which are used to create a transform projection.
  */
-export function geoTransform<T extends GeoTransformPrototype>(methods: T): { stream(s: GeoStream): T & GeoStream };
+export function geoTransform<T extends GeoTransformPrototype>(
+    methods: T,
+): { stream(s: GeoStream): T & GeoStream };
 
 // geoIdentity() =================================================================
 
@@ -1287,7 +1383,11 @@ export interface GeoIdentityTransform extends GeoStreamWrapper {
      */
     fitExtent(
         extent: [[number, number], [number, number]],
-        object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+        object:
+            | ExtendedFeature
+            | ExtendedFeatureCollection
+            | GeoGeometryObjects
+            | ExtendedGeometryCollection,
     ): this;
 
     /**
@@ -1295,7 +1395,11 @@ export interface GeoIdentityTransform extends GeoStreamWrapper {
      */
     fitSize(
         size: [number, number],
-        object: ExtendedFeature | ExtendedFeatureCollection | GeoGeometryObjects | ExtendedGeometryCollection,
+        object:
+            | ExtendedFeature
+            | ExtendedFeatureCollection
+            | GeoGeometryObjects
+            | ExtendedGeometryCollection,
     ): this;
 
     /**
@@ -1368,4 +1472,9 @@ export function geoClipCircle(angle: number): (stream: GeoStream) => GeoStream;
  * @param x1 x1 coordinate.
  * @param y1 y1 coordinate.
  */
-export function geoClipRectangle(x0: number, y0: number, x1: number, y1: number): (stream: GeoStream) => GeoStream;
+export function geoClipRectangle(
+    x0: number,
+    y0: number,
+    x1: number,
+    y1: number,
+): (stream: GeoStream) => GeoStream;

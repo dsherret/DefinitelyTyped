@@ -18,7 +18,7 @@ blake2b.SUPPORTED; // $ExpectType boolean
 
 blake2b.ready(); // $ExpectType Promise<void>
 // $ExpectType Promise<void>
-blake2b.ready(err => {
+blake2b.ready((err) => {
     err; // $ExpectType Error | undefined
 });
 
@@ -50,7 +50,7 @@ hash.final(new Uint8Array(10)); // $ExpectType Uint8Array
 hash.final(Buffer.alloc(10)); // $ExpectType Buffer
 hash.ready(); // $ExpectType Promise<void>
 // $ExpectType Promise<void>
-hash.ready(err => {
+hash.ready((err) => {
     err; // $ExpectType Error | undefined
 });
 hash.getPartialHash(); // $ExpectType Uint8Array

@@ -10,7 +10,9 @@ import express = require("express");
  *   `${base}/sitemap-0.xml` becomes `https://bitmidi.com/sitemap-0.xml`.
  */
 declare function expressSitemapXml(
-    getUrls: () => expressSitemapXml.SitemapLeaf[] | Promise<expressSitemapXml.SitemapLeaf[]>,
+    getUrls: () =>
+        | expressSitemapXml.SitemapLeaf[]
+        | Promise<expressSitemapXml.SitemapLeaf[]>,
     base: string,
 ): express.RequestHandler;
 

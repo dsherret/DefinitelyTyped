@@ -32,7 +32,10 @@ export interface CarouselProps<T> {
      * Function that takes an item from the `data` array and returns a React
      * Element. See `react-native`'s `FlatList`
      */
-    renderItem(item: { item: T; index: number }, parallaxProps?: AdditionalParallaxProps): React.ReactNode;
+    renderItem(
+        item: { item: T; index: number },
+        parallaxProps?: AdditionalParallaxProps,
+    ): React.ReactNode;
     /**
      * Width in pixels of your slides, must be the same for all of them
      * Note: Required with horizontal carousel
@@ -263,9 +266,13 @@ export interface CarouselProps<T> {
     onBeforeSnapToItem?(slideIndex: number): void;
 }
 
-export type CarouselProperties<T> = ScrollViewProps & FlatListProps<T> & CarouselProps<T>;
+export type CarouselProperties<T> = ScrollViewProps &
+    FlatListProps<T> &
+    CarouselProps<T>;
 
-export interface ParallaxImageProps extends ImageProps, AdditionalParallaxProps {
+export interface ParallaxImageProps
+    extends ImageProps,
+        AdditionalParallaxProps {
     /**
      * Optional style for image's container
      */
@@ -386,7 +393,11 @@ export interface PaginationProps {
      * It will receive three parameters : (activeIndex, total, context).
      * This can be especially useful in order to replace dots with numbers
      */
-    renderDots?(activeIndex: number, total: number, context: any): React.ReactNode;
+    renderDots?(
+        activeIndex: number,
+        total: number,
+        context: any,
+    ): React.ReactNode;
     /**
      * Make default dots tappable, e.g. your carousel will slide to the corresponding item.
      * Note that carouselRef must be specified for this to work
@@ -407,7 +418,9 @@ export type PaginationProperties = PaginationProps & {
 
 export class Pagination extends React.Component<PaginationProperties> {}
 
-export default class Carousel<T> extends React.Component<CarouselProperties<T>> {
+export default class Carousel<T> extends React.Component<
+    CarouselProperties<T>
+> {
     /**
      * Current active item (int, starts at 0)
      */
@@ -463,4 +476,8 @@ export default class Carousel<T> extends React.Component<CarouselProperties<T>> 
  *     (index + 1) * sizeRef // active - 1
  * ]
  */
-export function getInputRangeFromIndexes(range: number[], index: number, carouselProps: CarouselProps<any>): number[];
+export function getInputRangeFromIndexes(
+    range: number[],
+    index: number,
+    carouselProps: CarouselProps<any>,
+): number[];

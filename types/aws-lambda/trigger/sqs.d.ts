@@ -33,7 +33,11 @@ export interface SQSRecordAttributes {
     DeadLetterQueueSourceArn?: string | undefined; // Undocumented, but used by AWS to support their re-drive functionality in the console
 }
 
-export type SQSMessageAttributeDataType = "String" | "Number" | "Binary" | string;
+export type SQSMessageAttributeDataType =
+    | "String"
+    | "Number"
+    | "Binary"
+    | string;
 
 export interface SQSMessageAttribute {
     stringValue?: string | undefined;

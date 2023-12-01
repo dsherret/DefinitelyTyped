@@ -17,7 +17,7 @@ $("div").slimScroll({
     disableFadeOut: false,
 });
 
-$(function() {
+$(function () {
     $("#inner-content-div").slimScroll({
         height: "250px",
     });
@@ -45,9 +45,11 @@ $("#slimtest3").slimScroll({
     destroy: true,
 });
 
-$("div").slimScroll().bind("slimscroll", function(e) {
-    console.log("Reached " + e);
-});
+$("div")
+    .slimScroll()
+    .bind("slimscroll", function (e) {
+        console.log("Reached " + e);
+    });
 var options: IJQuerySlimScrollOptions = {
     destroy: true,
     position: "left",

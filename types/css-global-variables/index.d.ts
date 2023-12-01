@@ -3,11 +3,9 @@ export interface CGVInterface {
 }
 
 export const CSSGlobalVariables: {
-    new(
-        config?: {
-            filter?: string | undefined;
-            autoprefix?: boolean | undefined;
-            normalize?: ((name: string) => string) | undefined;
-        },
-    ): CGVInterface;
+    new (config?: {
+        filter?: string | undefined;
+        autoprefix?: boolean | undefined;
+        normalize?: ((name: string) => string) | undefined;
+    }): CGVInterface;
 };

@@ -1,69 +1,72 @@
-$("#tree").fancytree(
-    <Fancytree.FancytreeOptions> {
-        source: [
-            { title: "Node 1", key: "1" },
-            {
-                title: "Folder 2",
-                key: "2",
-                folder: true,
-                children: [
-                    { title: "Node 2.1", key: "3" },
-                    { title: "Node 2.2", key: "4" },
-                    {
-                        foo: "bar",
-                        baz: 17,
-                        children: [
-                            { title: "Node 1", key: "1" },
-                            {
-                                title: "Folder 2",
-                                key: "2",
-                                folder: true,
-                                children: [
-                                    { title: "Node 2.1", key: "3" },
-                                    { title: "Node 2.2", key: "4" },
-                                    { title: "NOde 2.3", key: "5", icon: "./icon.svg", checkbox: "radio" },
-                                ],
-                            },
-                        ],
-                    },
-                ],
-            },
-        ],
-        extensions: ["dnd5"],
-        dnd5: {
-            dragDrag: (node, data) => {},
+$("#tree").fancytree(<Fancytree.FancytreeOptions>{
+    source: [
+        { title: "Node 1", key: "1" },
+        {
+            title: "Folder 2",
+            key: "2",
+            folder: true,
+            children: [
+                { title: "Node 2.1", key: "3" },
+                { title: "Node 2.2", key: "4" },
+                {
+                    foo: "bar",
+                    baz: 17,
+                    children: [
+                        { title: "Node 1", key: "1" },
+                        {
+                            title: "Folder 2",
+                            key: "2",
+                            folder: true,
+                            children: [
+                                { title: "Node 2.1", key: "3" },
+                                { title: "Node 2.2", key: "4" },
+                                {
+                                    title: "NOde 2.3",
+                                    key: "5",
+                                    icon: "./icon.svg",
+                                    checkbox: "radio",
+                                },
+                            ],
+                        },
+                    ],
+                },
+            ],
         },
-        click: (ev: JQueryEventObject, node: Fancytree.EventData) => {
-            return true;
-        },
-        checkbox: "radio", // boolean or "radio"
-        expand: () => {
-            console.log("expanded");
-        },
-        activate: function(event, data) {
-            // A node was activated: display its title:
-            var node = data.node;
-            console.log(node.title);
-        },
-        beforeSelect: function(event, data) {
-            // A node is about to be selected: prevent this for folders:
-            if (data.node.isFolder()) {
-                return false;
-            }
-        },
-        unselectable: function(event, data) {
-            return true;
-        },
-        unselectableIgnore: false,
-        unselectableStatus: function(event, data) {
-            return false;
-        },
-        strings: {
-            noData: "custom no data message",
-        },
-        rtl: true,
+    ],
+    extensions: ["dnd5"],
+    dnd5: {
+        dragDrag: (node, data) => {},
     },
-);
+    click: (ev: JQueryEventObject, node: Fancytree.EventData) => {
+        return true;
+    },
+    checkbox: "radio", // boolean or "radio"
+    expand: () => {
+        console.log("expanded");
+    },
+    activate: function (event, data) {
+        // A node was activated: display its title:
+        var node = data.node;
+        console.log(node.title);
+    },
+    beforeSelect: function (event, data) {
+        // A node is about to be selected: prevent this for folders:
+        if (data.node.isFolder()) {
+            return false;
+        }
+    },
+    unselectable: function (event, data) {
+        return true;
+    },
+    unselectableIgnore: false,
+    unselectableStatus: function (event, data) {
+        return false;
+    },
+    strings: {
+        noData: "custom no data message",
+    },
+    rtl: true,
+});
 
 // $("#tree").fancytree();
 
@@ -82,7 +85,7 @@ activeNode.sortChildren();
 activeNode.icon = "./icon.svg";
 
 // Expand all tree nodes
-tree.visit(function(node) {
+tree.visit(function (node) {
     node.setExpanded(true);
 });
 
@@ -92,7 +95,7 @@ activeNode.addChildren({
     icon: "customdoc1.gif",
 });
 
-tree.loadKeyPath("/1/2", function(node, status) {
+tree.loadKeyPath("/1/2", function (node, status) {
     if (status === "loaded") {
         console.log("loaded intermiediate node " + node);
     } else if (status === "ok") {
@@ -107,13 +110,17 @@ tree.expandAll(true, { noAnimation: true });
 
 var node = $.ui.fancytree.getNode($("#tree"));
 alert($.ui.fancytree.version);
-var f = $.ui.fancytree.debounce(50, (a: number) => {
-    console.log(a);
-}, true);
+var f = $.ui.fancytree.debounce(
+    50,
+    (a: number) => {
+        console.log(a);
+    },
+    true,
+);
 f(2);
 
 node = tree.getFirstChild();
-node.setExpanded().done(function() {
+node.setExpanded().done(function () {
     alert("expand animation has finished");
 });
 
@@ -142,12 +149,15 @@ nodes = tree.findAll((node) => {
 });
 nodes = tree.findAll("Node");
 
-node.addChildren({
-    title: "New Node",
-    key: "15",
-    type: "book",
-    iconTooltip: "Icon toolip",
-    statusNodeType: "loading",
-    unselectableIgnore: true,
-    unselectableStatus: false,
-}, 0);
+node.addChildren(
+    {
+        title: "New Node",
+        key: "15",
+        type: "book",
+        iconTooltip: "Icon toolip",
+        statusNodeType: "loading",
+        unselectableIgnore: true,
+        unselectableStatus: false,
+    },
+    0,
+);

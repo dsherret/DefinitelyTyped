@@ -172,10 +172,7 @@ function test_search() {
             actionText: "actionText",
             actionURL: "actionURL",
         },
-        searchFields: [
-            "field1",
-            "field2",
-        ],
+        searchFields: ["field1", "field2"],
         hideDelay: 20,
         searchDelay: 10,
         easing: "easeOutExpo",
@@ -231,7 +228,7 @@ function test_search() {
         },
         regExp: {
             escape: /[\-\[\]\/{}()*+?.\\^$|]/g,
-            beginsWith: "(?:\s|^)",
+            beginsWith: "(?:s|^)",
         },
         selector: {
             prompt: "prompt",

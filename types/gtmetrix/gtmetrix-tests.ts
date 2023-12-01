@@ -18,7 +18,9 @@ gtmetrix.test.get("Ao0AYQbz", console.log);
 gtmetrix.test.get("Ao0AYQbz", console.log);
 gtmetrix.test
     .get("Ao0AYQbz", "screenshot", 5000)
-    .then(data => fs.writeFile(__dirname + "/screenshot.jpg", data, console.log));
+    .then((data) =>
+        fs.writeFile(__dirname + "/screenshot.jpg", data, console.log),
+    );
 gtmetrix.locations.list(console.log);
 gtmetrix.browsers.get(3, console.log);
 gtmetrix.account.status(console.log);

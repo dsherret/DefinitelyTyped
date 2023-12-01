@@ -5,7 +5,16 @@
  */
 export interface ProductType {
     id: string;
-    mode: "train" | "bus" | "watercraft" | "taxi" | "gondola" | "aircraft" | "car" | "bicycle" | "walking";
+    mode:
+        | "train"
+        | "bus"
+        | "watercraft"
+        | "taxi"
+        | "gondola"
+        | "aircraft"
+        | "car"
+        | "bicycle"
+        | "walking";
     name: string;
     short: string;
     bitmasks: number[];
@@ -130,7 +139,16 @@ export interface Line {
     additionalName?: string;
     product?: string;
     public?: boolean;
-    mode?: "train" | "bus" | "watercraft" | "taxi" | "gondola" | "aircraft" | "car" | "bicycle" | "walking";
+    mode?:
+        | "train"
+        | "bus"
+        | "watercraft"
+        | "taxi"
+        | "gondola"
+        | "aircraft"
+        | "car"
+        | "bicycle"
+        | "walking";
     /** routes ids */
     routes?: readonly string[];
     operator?: Operator;
@@ -152,7 +170,16 @@ export interface Route {
     type: "route";
     id: string;
     line: string;
-    mode: "train" | "bus" | "watercraft" | "taxi" | "gondola" | "aircraft" | "car" | "bicycle" | "walking";
+    mode:
+        | "train"
+        | "bus"
+        | "watercraft"
+        | "taxi"
+        | "gondola"
+        | "aircraft"
+        | "car"
+        | "bicycle"
+        | "walking";
     /** stop ids */
     stops: readonly string[];
 }
@@ -174,7 +201,16 @@ export interface Schedule {
     type: "schedule";
     id: string;
     route: string;
-    mode: "train" | "bus" | "watercraft" | "taxi" | "gondola" | "aircraft" | "car" | "bicycle" | "walking";
+    mode:
+        | "train"
+        | "bus"
+        | "watercraft"
+        | "taxi"
+        | "gondola"
+        | "aircraft"
+        | "car"
+        | "bicycle"
+        | "walking";
     sequence: readonly ArrivalDeparture[];
     /** array of Unix timestamps */
     starts: readonly string[];
@@ -185,14 +221,28 @@ export interface Operator {
     name: string;
 }
 export interface Hint {
-    type: "hint" | "status" | "foreign-id" | "local-fare-zone" | "stop-website" | "stop-dhid" | "transit-authority";
+    type:
+        | "hint"
+        | "status"
+        | "foreign-id"
+        | "local-fare-zone"
+        | "stop-website"
+        | "stop-dhid"
+        | "transit-authority";
     code?: string;
     summary?: string;
     text: string;
     tripId?: string;
 }
 export interface Status {
-    type: "hint" | "status" | "foreign-id" | "local-fare-zone" | "stop-website" | "stop-dhid" | "transit-authority";
+    type:
+        | "hint"
+        | "status"
+        | "foreign-id"
+        | "local-fare-zone"
+        | "stop-website"
+        | "stop-dhid"
+        | "transit-authority";
     code?: string;
     summary?: string;
     text: string;
@@ -577,7 +627,13 @@ export interface LoyaltyCard {
     class?: number;
 }
 export type AgeGroup = "B" | "K" | "Y" | "E" | "S";
-export type RoutingMode = "OFF" | "INFOS" | "FULL" | "REALTIME" | "SERVER_DEFAULT" | "HYBRID";
+export type RoutingMode =
+    | "OFF"
+    | "INFOS"
+    | "FULL"
+    | "REALTIME"
+    | "SERVER_DEFAULT"
+    | "HYBRID";
 /**
  * JourneysOptions specific to Db Profile
  */
@@ -1098,7 +1154,10 @@ export interface HafasClient {
      * @param name name
      * @param options options
      */
-    trip?: (id: string, options: TripOptions | undefined) => Promise<TripWithRealtimeData>;
+    trip?: (
+        id: string,
+        options: TripOptions | undefined,
+    ) => Promise<TripWithRealtimeData>;
     /**
      * Retrieves departures
      * @param station uid of station
@@ -1144,7 +1203,10 @@ export interface HafasClient {
      * @param id uid of station
      * @param options options for search
      */
-    stop: (id: string | Stop, options: StopOptions | undefined) => Promise<Station | Stop | Location>;
+    stop: (
+        id: string | Stop,
+        options: StopOptions | undefined,
+    ) => Promise<Station | Stop | Location>;
     /**
      * Retrieves nearby stops from location
      * @param location location
@@ -1168,7 +1230,10 @@ export interface HafasClient {
      * @param box area
      * @param options options for search
      */
-    radar?: (box: BoundingBox, options: RadarOptions | undefined) => Promise<Radar>;
+    radar?: (
+        box: BoundingBox,
+        options: RadarOptions | undefined,
+    ) => Promise<Radar>;
     /**
      * Retrieves trips by name.
      * @param lineNameOrFahrtNr string
@@ -1182,13 +1247,18 @@ export interface HafasClient {
      * Fetches all remarks known to the HAFAS endpoint
      * @param opt RemarksOptions
      */
-    remarks?: (opt: RemarksOptions | undefined) => Promise<WarningsWithRealtimeData>;
+    remarks?: (
+        opt: RemarksOptions | undefined,
+    ) => Promise<WarningsWithRealtimeData>;
     /**
      * Fetches all lines known to the HAFAS endpoint
      * @param query string
      * @param opt LinesOptions
      */
-    lines?: (query: string, opt: LinesOptions | undefined) => Promise<LinesWithRealtimeData>;
+    lines?: (
+        query: string,
+        opt: LinesOptions | undefined,
+    ) => Promise<LinesWithRealtimeData>;
     /**
      * Fetches meta information from the HAFAS endpoint
      * @param opt ServerOptions
@@ -1196,4 +1266,8 @@ export interface HafasClient {
     serverInfo: (opt: ServerOptions | undefined) => Promise<ServerInfo>;
 }
 
-export function createClient(commonProfile: Profile, userAgent: string, opt?: any): HafasClient;
+export function createClient(
+    commonProfile: Profile,
+    userAgent: string,
+    opt?: any,
+): HafasClient;

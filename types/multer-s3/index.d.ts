@@ -4,41 +4,61 @@ import { StorageEngine } from "multer";
 interface Options {
     s3: S3Client;
     bucket:
-        | ((req: Express.Request, file: Express.Multer.File, callback: (error: any, bucket?: string) => void) => void)
+        | ((
+              req: Express.Request,
+              file: Express.Multer.File,
+              callback: (error: any, bucket?: string) => void,
+          ) => void)
         | string;
-    key?(req: Express.Request, file: Express.Multer.File, callback: (error: any, key?: string) => void): void;
+    key?(
+        req: Express.Request,
+        file: Express.Multer.File,
+        callback: (error: any, key?: string) => void,
+    ): void;
     acl?:
-        | ((req: Express.Request, file: Express.Multer.File, callback: (error: any, acl?: string) => void) => void)
+        | ((
+              req: Express.Request,
+              file: Express.Multer.File,
+              callback: (error: any, acl?: string) => void,
+          ) => void)
         | string
         | undefined;
     contentType?(
         req: Express.Request,
         file: Express.Multer.File,
-        callback: (error: any, mime?: string, stream?: NodeJS.ReadableStream) => void,
+        callback: (
+            error: any,
+            mime?: string,
+            stream?: NodeJS.ReadableStream,
+        ) => void,
     ): void;
     contentDisposition?:
         | ((
-            req: Express.Request,
-            file: Express.Multer.File,
-            callback: (error: any, contentDisposition?: string) => void,
-        ) => void)
+              req: Express.Request,
+              file: Express.Multer.File,
+              callback: (error: any, contentDisposition?: string) => void,
+          ) => void)
         | string
         | undefined;
-    metadata?(req: Express.Request, file: Express.Multer.File, callback: (error: any, metadata?: any) => void): void;
+    metadata?(
+        req: Express.Request,
+        file: Express.Multer.File,
+        callback: (error: any, metadata?: any) => void,
+    ): void;
     cacheControl?:
         | ((
-            req: Express.Request,
-            file: Express.Multer.File,
-            callback: (error: any, cacheControl?: string) => void,
-        ) => void)
+              req: Express.Request,
+              file: Express.Multer.File,
+              callback: (error: any, cacheControl?: string) => void,
+          ) => void)
         | string
         | undefined;
     serverSideEncryption?:
         | ((
-            req: Express.Request,
-            file: Express.Multer.File,
-            callback: (error: any, serverSideEncryption?: string) => void,
-        ) => void)
+              req: Express.Request,
+              file: Express.Multer.File,
+              callback: (error: any, serverSideEncryption?: string) => void,
+          ) => void)
         | string
         | undefined;
 }
@@ -68,7 +88,11 @@ interface S3Storage {
     AUTO_CONTENT_TYPE(
         req: Express.Request,
         file: Express.Multer.File,
-        callback: (error: any, mime?: string, stream?: NodeJS.ReadableStream) => void,
+        callback: (
+            error: any,
+            mime?: string,
+            stream?: NodeJS.ReadableStream,
+        ) => void,
     ): void;
     DEFAULT_CONTENT_TYPE(
         req: Express.Request,

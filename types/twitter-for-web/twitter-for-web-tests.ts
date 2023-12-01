@@ -1,5 +1,5 @@
 function getReady() {
-    twttr.ready(twttr => {
+    twttr.ready((twttr) => {
         function load() {
             twttr.widgets.load();
             twttr.widgets.load(document.getElementById("elm"));
@@ -208,13 +208,13 @@ function getReady() {
         }
 
         function bindEvent() {
-            twttr.events.bind("click", ev => {
+            twttr.events.bind("click", (ev) => {
                 console.log(ev);
             });
         }
 
         function bindLoadedEvent() {
-            twttr.events.bind("loaded", event => {
+            twttr.events.bind("loaded", (event) => {
                 event.widgets.forEach((widget: any) => {
                     console.log("Created widget", widget.id);
                 });
@@ -222,32 +222,32 @@ function getReady() {
         }
 
         function bindRenderedEvent() {
-            twttr.events.bind("rendered", event => {
+            twttr.events.bind("rendered", (event) => {
                 console.log("Created widget", event.target.id);
             });
         }
 
         function bindTweetEvent() {
-            twttr.events.bind("tweet", event => {
+            twttr.events.bind("tweet", (event) => {
                 // Do something there
             });
         }
 
         function bindFollowEvent() {
-            twttr.events.bind("follow", event => {
+            twttr.events.bind("follow", (event) => {
                 var followedUserId = event.data.user_id;
                 var followedScreenName = event.data.screen_name;
             });
         }
 
         function bindRetweetEvent() {
-            twttr.events.bind("retweet", event => {
+            twttr.events.bind("retweet", (event) => {
                 var retweetedTweetId = event.data.source_tweet_id;
             });
         }
 
         function bindFavoriteEvent() {
-            twttr.events.bind("favorite", event => {
+            twttr.events.bind("favorite", (event) => {
                 var favoritedTweetId = event.data.tweet_id;
             });
         }

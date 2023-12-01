@@ -1,6 +1,6 @@
 import { lory } from "lory.js";
 
-(function() {
+(function () {
     var elm = document.querySelector(".js-foo");
     var elm2 = document.querySelector(".js-bar");
     var elm3 = document.querySelector(".js-baz");
@@ -54,7 +54,7 @@ import { lory } from "lory.js";
         rewind: true,
         infinite: 4,
         beforeInit: () => {
-            return function() {
+            return function () {
                 console.log("foo");
             };
         },

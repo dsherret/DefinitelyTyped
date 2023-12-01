@@ -26,13 +26,11 @@ export class Login extends React.Component {
                         } else if (result.isCancelled) {
                             alert("login is cancelled.");
                         } else {
-                            AccessToken.getCurrentAccessToken().then(
-                                (data) => {
-                                    if (data) {
-                                        alert(data.accessToken.toString());
-                                    }
-                                },
-                            );
+                            AccessToken.getCurrentAccessToken().then((data) => {
+                                if (data) {
+                                    alert(data.accessToken.toString());
+                                }
+                            });
                         }
                     }}
                     onLogoutFinished={() => alert("logout.")}
@@ -44,14 +42,16 @@ export class Login extends React.Component {
 
 // Attempt a login using the Facebook login dialog asking for default permissions.
 LoginManager.logInWithPermissions(["public_profile"]).then(
-    result => {
+    (result) => {
         if (result.isCancelled) {
             alert("Login cancelled");
         } else {
-            alert(`Login success with permissions: ${result.grantedPermissions}`);
+            alert(
+                `Login success with permissions: ${result.grantedPermissions}`,
+            );
         }
     },
-    error => {
+    (error) => {
         alert(`Login fail with error: ${error}`);
     },
 );
@@ -65,24 +65,24 @@ const shareLinkContent: FBSDK.ShareLinkContent = {
 
 // Share the link using the share dialog.
 export const shareLinkWithShareDialog = (): void => {
-    ShareDialog.canShow(shareLinkContent).then(
-        (canShow) => {
+    ShareDialog.canShow(shareLinkContent)
+        .then((canShow) => {
             if (canShow) {
                 return ShareDialog.show(shareLinkContent);
             }
-        },
-    ).then(
-        (result) => {
-            if (result.isCancelled) {
-                alert("Share cancelled");
-            } else {
-                alert(`Share success with postId: ${result.postId}`);
-            }
-        },
-        (error: Error) => {
-            alert(`Share fail with error: ${error}`);
-        },
-    );
+        })
+        .then(
+            (result) => {
+                if (result.isCancelled) {
+                    alert("Share cancelled");
+                } else {
+                    alert(`Share success with postId: ${result.postId}`);
+                }
+            },
+            (error: Error) => {
+                alert(`Share fail with error: ${error}`);
+            },
+        );
 };
 
 const obj = { param: "value" };
@@ -112,11 +112,7 @@ const responseInfoCallback: FBSDK.GraphRequestCallback = (error, result) => {
 };
 
 // Create a graph request asking for user information with a callback to handle the response.
-const infoRequest = new GraphRequest(
-    "/me",
-    null,
-    responseInfoCallback,
-);
+const infoRequest = new GraphRequest("/me", null, responseInfoCallback);
 
 // Start the graph request.
 new GraphRequestManager().addRequest(infoRequest).start();

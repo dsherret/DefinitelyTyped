@@ -8,7 +8,12 @@
  * https://k6.io/docs/javascript-api/k6-experimental/tracing/
  */
 
-import { RefinedParams, RefinedResponse, RequestBody, ResponseType } from "../http";
+import {
+    RefinedParams,
+    RefinedResponse,
+    RequestBody,
+    ResponseType,
+} from "../http";
 
 /**
  * The instrumentHTTP function instruments the k6 http module

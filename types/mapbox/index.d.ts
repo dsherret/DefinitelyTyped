@@ -14,7 +14,11 @@ declare global {
         /**
          * Create and automatically configure a map with layers, markers, and interactivity.
          */
-        function map(element: string | Element, idOrTileJson: any, options?: MapOptions): Map;
+        function map(
+            element: string | Element,
+            idOrTileJson: any,
+            options?: MapOptions,
+        ): Map;
 
         interface MapOptions extends Leaflet.Map.MapOptions {
             featureLayer?: FeatureLayerOptions | undefined;
@@ -50,7 +54,10 @@ declare global {
         /**
          * You can add a tiled layer to your map with L.mapbox.tileLayer(), a simple interface to layers from Mapbox and elsewhere.
          */
-        function tileLayer(idOrTileJson: string, options?: TileLayerOptions): TileLayer;
+        function tileLayer(
+            idOrTileJson: string,
+            options?: TileLayerOptions,
+        ): TileLayer;
 
         interface TileLayerOptions extends Leaflet.TileLayerOptions {
             retinaVersion?: string | undefined;
@@ -105,7 +112,10 @@ declare global {
         /**
          * L.mapbox.featureLayer provides an easy way to integrate GeoJSON from Mapbox and elsewhere into your map.
          */
-        function featureLayer(idOrGeoJson?: any, options?: FeatureLayerOptions): FeatureLayer;
+        function featureLayer(
+            idOrGeoJson?: any,
+            options?: FeatureLayerOptions,
+        ): FeatureLayer;
 
         interface FeatureLayerOptions {
             filter?: FilterFunction | undefined;
@@ -154,7 +164,10 @@ declare global {
         /**
          * L.mapbox.styleLayer provides a way to integrate styles created with Mapbox Studio into your map.
          */
-        function styleLayer(url: string, options?: StyleLayerOptions): StyleLayer;
+        function styleLayer(
+            url: string,
+            options?: StyleLayerOptions,
+        ): StyleLayer;
 
         interface StyleLayerOptions extends Leaflet.TileLayerOptions {
             sanitizer?(template: string): string;
@@ -253,7 +266,10 @@ declare global {
          * Interaction is what we call interactive parts of maps that are created with
          * the powerful tooltips & regions system in TileMill. Under the hood, it's powered by the open UTFGrid specification.
          */
-        function gridControl(layer: string, options?: GridControlOptions): GridControl;
+        function gridControl(
+            layer: string,
+            options?: GridControlOptions,
+        ): GridControl;
 
         interface GridControlOptions extends ControlOptions {
             template?: string | undefined;
@@ -284,7 +300,10 @@ declare global {
         /**
          * Adds geocoder functionality as well as a UI element to a map. This uses the Mapbox Geocoding API.
          */
-        function geocoderControl(id: string, options?: GeocoderControlOptions): GeocoderControl;
+        function geocoderControl(
+            id: string,
+            options?: GeocoderControlOptions,
+        ): GeocoderControl;
 
         interface GeocoderControlOptions extends Leaflet.ControlOptions {
             keepOpen?: boolean | undefined;
@@ -321,7 +340,10 @@ declare global {
         /**
          * Adds a "Share" button to the map, which can be used to share the map to Twitter or Facebook, or generate HTML for a map embed.
          */
-        function shareControl(id: string, options?: ShareControlOptions): ShareControl;
+        function shareControl(
+            id: string,
+            options?: ShareControlOptions,
+        ): ShareControl;
 
         interface ShareControlOptions extends ControlOptions {
             url?: string | undefined;

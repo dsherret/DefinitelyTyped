@@ -81,7 +81,13 @@ export class HttpClient {
  * @param {?string=} opt_data The data to send with the request.
  * @param {?string=} opt_proxy The proxy server to use for the request.
  */
-export function sendRequest(options: Object, onOk: any, onError: any, opt_data?: string, opt_proxy?: string): any;
+export function sendRequest(
+    options: Object,
+    onOk: any,
+    onError: any,
+    opt_data?: string,
+    opt_proxy?: string,
+): any;
 
 /**
  * A command executor that communicates with the server using HTTP + JSON.
@@ -135,7 +141,10 @@ export function tryParse(str: string): any;
  * @return {{value: ?}} The parsed response.
  * @throws {WebDriverError} If the HTTP response is an error.
  */
-export function parseHttpResponse(httpResponse: HttpResponse, w3c: boolean): any;
+export function parseHttpResponse(
+    httpResponse: HttpResponse,
+    w3c: boolean,
+): any;
 
 /**
  * Builds a fully qualified path using the given set of command parameters. Each

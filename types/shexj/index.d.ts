@@ -76,7 +76,13 @@ export interface ShapeDecl {
  * Union of shape expression types.
  * @see <a href="http://shex.io/shex-semantics/#dfn-shapeexpr">ShEx shapeExpr definition</a>
  */
-export type shapeExpr = ShapeOr | ShapeAnd | ShapeNot | NodeConstraint | Shape | ShapeExternal;
+export type shapeExpr =
+    | ShapeOr
+    | ShapeAnd
+    | ShapeNot
+    | NodeConstraint
+    | Shape
+    | ShapeExternal;
 
 /**
  * Union of shapeExpr and shapeDeclRef.
@@ -187,8 +193,7 @@ export interface NodeConstraint extends xsFacets, semactsAndAnnotations {
  * The set of XML Schema Facets supported in ShEx; defers to {@link stringFacets} and {@link numericFacets}.
  * @see <a href="http://shex.io/shex-semantics/#xs-string">ShEx String Facet Constraints</a> and <a href="http://shex.io/shex-semantics/#xs-numeric">ShEx Numeric Facet Constraints</a>.
  */
-export interface xsFacets extends stringFacets, numericFacets {
-}
+export interface xsFacets extends stringFacets, numericFacets {}
 
 /**
  * The set of <a href="https://www.w3.org/TR/xmlschema-2/#facets">XML Schema Facets</a> applying to <a href="https://www.w3.org/TR/rdf11-concepts/#dfn-lexical-form">lexical forms of RDF terms</a>.

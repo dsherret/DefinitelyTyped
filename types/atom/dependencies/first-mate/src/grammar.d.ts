@@ -28,7 +28,11 @@ export interface Grammar {
      *  in the file which defaults to `false`.
      *  @return An object representing the result of the tokenize.
      */
-    tokenizeLine(line: string, ruleStack?: null, firstLine?: boolean): TokenizeLineResult;
+    tokenizeLine(
+        line: string,
+        ruleStack?: null,
+        firstLine?: boolean,
+    ): TokenizeLineResult;
     /**
      *  Tokenizes the line of text.
      *  @param line A string of text to tokenize.
@@ -38,7 +42,11 @@ export interface Grammar {
      *  in the file which defaults to `false`.
      *  @return An object representing the result of the tokenize.
      */
-    tokenizeLine(line: string, ruleStack: GrammarRule[], firstLine?: false): TokenizeLineResult;
+    tokenizeLine(
+        line: string,
+        ruleStack: GrammarRule[],
+        firstLine?: false,
+    ): TokenizeLineResult;
 }
 
 export interface GrammarToken {

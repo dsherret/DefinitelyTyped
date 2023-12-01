@@ -13,17 +13,23 @@ function actuatorTest() {
     app.use(actuator({ infoGitMode: "simple" }));
     app.use(actuator({ infoGitMode: "full" }));
     app.use(actuator({ infoDateFormat: "YYYY-DD-MM" }));
-    app.use(actuator({
-        infoBuildOptions: {
-            string: "123",
-            bool: true,
-            number: 1,
-        },
-    }));
-    app.use(actuator({
-        customEndpoints: [{
-            id: "dependencies",
-            controller: (req, res) => {},
-        }],
-    }));
+    app.use(
+        actuator({
+            infoBuildOptions: {
+                string: "123",
+                bool: true,
+                number: 1,
+            },
+        }),
+    );
+    app.use(
+        actuator({
+            customEndpoints: [
+                {
+                    id: "dependencies",
+                    controller: (req, res) => {},
+                },
+            ],
+        }),
+    );
 }

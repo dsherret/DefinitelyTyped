@@ -13,13 +13,11 @@ import { UIOptionsBase } from "./UIOptionsBase";
  * Provides options for the ui-slider control.
  */
 export interface UISliderOptions
-    extends
-        Omit<UIOptionsBase<JQueryUI.SliderOptions>, "values">,
+    extends Omit<UIOptionsBase<JQueryUI.SliderOptions>, "values">,
         RangeOptions,
         ControlOptions,
         DefaultValueOptions<number>,
         ComparableOptions,
         PreviewableOptions,
         DelayableOptions,
-        StrictOptions
-{}
+        StrictOptions {}

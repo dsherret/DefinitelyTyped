@@ -14,9 +14,7 @@ new Line(outputBuffer)
     .fill()
     .store();
 
-new Line(outputBuffer)
-    .fill()
-    .store();
+new Line(outputBuffer).fill().store();
 
 new Line(outputBuffer)
     .column("Suscipit", 20, [clc.cyan])
@@ -80,7 +78,16 @@ const thisPercentBar = new Progress(20);
 console.log(thisPercentBar.update(0.4));
 
 // Spinner
-const countdown = new Spinner("Exiting in 10 seconds...  ", ["⣾", "⣽", "⣻", "⢿", "⡿", "⣟", "⣯", "⣷"]);
+const countdown = new Spinner("Exiting in 10 seconds...  ", [
+    "⣾",
+    "⣽",
+    "⣻",
+    "⢿",
+    "⡿",
+    "⣟",
+    "⣯",
+    "⣷",
+]);
 
 countdown.start();
 

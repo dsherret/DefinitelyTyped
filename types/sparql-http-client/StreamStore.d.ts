@@ -18,7 +18,11 @@ declare class StreamStore<Q extends BaseQuad = Quad> {
     constructor(options: StreamStore.StreamStoreInit<Q>);
 
     protected read({ graph }: { graph: Term }): Promise<Stream>;
-    protected writeRequest(method: WriteMethod, graph: Term, stream: ReadableStream): Promise<void>;
+    protected writeRequest(
+        method: WriteMethod,
+        graph: Term,
+        stream: ReadableStream,
+    ): Promise<void>;
 }
 
 export = StreamStore;

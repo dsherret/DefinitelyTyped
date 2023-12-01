@@ -25,7 +25,11 @@ const options: Options<stateType, associatedActionsType> = {
 };
 
 // with options
-const store = useStore<stateType, associatedActionsType>({ value: "" }, {}, options);
+const store = useStore<stateType, associatedActionsType>(
+    { value: "" },
+    {},
+    options,
+);
 
 // default
 store(); // $ExpectType [stateType, associatedActionsType]

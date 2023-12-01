@@ -44,7 +44,8 @@ declare namespace GoogleAdsScripts {
             Sunday: "SUNDAY";
         };
 
-        type AdScheduleDayOfWeekType = typeof AdScheduleDayOfWeek[keyof typeof AdScheduleDayOfWeek];
+        type AdScheduleDayOfWeekType =
+            (typeof AdScheduleDayOfWeek)[keyof typeof AdScheduleDayOfWeek];
 
         /**
          * An iterator of ad schedules.
@@ -87,13 +88,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface AdScheduleSelector
-            extends
-                Base.Selector<AdScheduleIterator>,
+            extends Base.Selector<AdScheduleIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

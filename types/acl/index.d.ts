@@ -20,7 +20,7 @@ type AllowedCallback = (err: Error, allowed: boolean) => any;
 type GetUserId = (req: http.IncomingMessage, res: http.ServerResponse) => Value;
 
 interface AclStatic {
-    new(
+    new (
         backend: AclStatic.Backend<any>,
         logger?: AclStatic.Logger,
         options?: AclStatic.Option,
@@ -36,20 +36,43 @@ declare namespace AclStatic {
     }
 
     interface Acl {
-        addUserRoles: (userId: Value, roles: strings, cb?: Callback) => Promise<void>;
-        removeUserRoles: (userId: Value, roles: strings, cb?: Callback) => Promise<void>;
-        userRoles: (userId: Value, cb?: (err: Error, roles: string[]) => any) => Promise<string[]>;
-        roleUsers: (role: Value, cb?: (err: Error, users: Values) => any) => Promise<any>;
+        addUserRoles: (
+            userId: Value,
+            roles: strings,
+            cb?: Callback,
+        ) => Promise<void>;
+        removeUserRoles: (
+            userId: Value,
+            roles: strings,
+            cb?: Callback,
+        ) => Promise<void>;
+        userRoles: (
+            userId: Value,
+            cb?: (err: Error, roles: string[]) => any,
+        ) => Promise<string[]>;
+        roleUsers: (
+            role: Value,
+            cb?: (err: Error, users: Values) => any,
+        ) => Promise<any>;
         hasRole: (
             userId: Value,
             role: string,
             cb?: (err: Error, isInRole: boolean) => any,
         ) => Promise<boolean>;
-        addRoleParents: (role: string, parents: Values, cb?: Callback) => Promise<void>;
+        addRoleParents: (
+            role: string,
+            parents: Values,
+            cb?: Callback,
+        ) => Promise<void>;
         removeRole: (role: string, cb?: Callback) => Promise<void>;
         removeResource: (resource: string, cb?: Callback) => Promise<void>;
         allow: {
-            (roles: Values, resources: strings, permissions: strings, cb?: Callback): Promise<void>;
+            (
+                roles: Values,
+                resources: strings,
+                permissions: strings,
+                cb?: Callback,
+            ): Promise<void>;
             (aclSets: AclSet | AclSet[]): Promise<void>;
         };
         removeAllow: (
@@ -64,7 +87,11 @@ declare namespace AclStatic {
             permissions: strings,
             cb?: Callback,
         ) => Promise<void>;
-        allowedPermissions: (userId: Value, resources: strings, cb?: AnyCallback) => Promise<void>;
+        allowedPermissions: (
+            userId: Value,
+            resources: strings,
+            cb?: AnyCallback,
+        ) => Promise<void>;
         isAllowed: (
             userId: Value,
             resources: strings,
@@ -79,9 +106,17 @@ declare namespace AclStatic {
         ) => Promise<any>;
         whatResources: {
             (roles: strings, cb?: AnyCallback): Promise<any>;
-            (roles: strings, permissions: strings, cb?: AnyCallback): Promise<any>;
+            (
+                roles: strings,
+                permissions: strings,
+                cb?: AnyCallback,
+            ): Promise<any>;
         };
-        permittedResources: (roles: strings, permissions: strings, cb?: Callback) => Promise<void>;
+        permittedResources: (
+            roles: strings,
+            permissions: strings,
+            cb?: Callback,
+        ) => Promise<void>;
         middleware: (
             numPathComponents?: number,
             userId?: Value | GetUserId,
@@ -114,7 +149,7 @@ declare namespace AclStatic {
 
     interface MemoryBackend extends Backend<Action[]> {}
     interface MemoryBackendStatic {
-        new(): MemoryBackend;
+        new (): MemoryBackend;
     }
 
     //
@@ -126,11 +161,24 @@ declare namespace AclStatic {
         clean: (cb?: Action) => void;
         get: (bucket: string, key: Value, cb?: Action) => void;
         union: (bucket: string, keys: Value[], cb?: Action) => void;
-        add: (transaction: T, bucket: string, key: Value, values: Values) => void;
+        add: (
+            transaction: T,
+            bucket: string,
+            key: Value,
+            values: Values,
+        ) => void;
         del: (transaction: T, bucket: string, keys: Value[]) => void;
-        remove: (transaction: T, bucket: string, key: Value, values: Values) => void;
+        remove: (
+            transaction: T,
+            bucket: string,
+            key: Value,
+            values: Values,
+        ) => void;
 
-        endAsync: (transaction: T, cb?: (err: Error | null) => void) => Promise<void>;
+        endAsync: (
+            transaction: T,
+            cb?: (err: Error | null) => void,
+        ) => Promise<void>;
         getAsync: (
             bucket: string,
             key: Value,
@@ -162,12 +210,16 @@ declare namespace AclStatic {
     // for redis backend
     interface RedisBackend extends Backend<redis.RedisClient> {}
     interface RedisBackendStatic {
-        new(redis: redis.RedisClient, prefix?: string): RedisBackend;
+        new (redis: redis.RedisClient, prefix?: string): RedisBackend;
     }
 
     // for mongodb backend
     interface MongodbBackend extends Backend<Callback> {}
     interface MongodbBackendStatic {
-        new(db: mongo.Db, prefix?: string, useSingle?: boolean): MongodbBackend;
+        new (
+            db: mongo.Db,
+            prefix?: string,
+            useSingle?: boolean,
+        ): MongodbBackend;
     }
 }

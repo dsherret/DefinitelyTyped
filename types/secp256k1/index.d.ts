@@ -5,12 +5,12 @@ export interface SignOptions {
     /** Nonce generator. By default it is rfc6979 */
     noncefn?:
         | ((
-            message: Uint8Array,
-            privateKey: Uint8Array,
-            algo: Uint8Array | null,
-            data: Uint8Array | null,
-            attempt: number,
-        ) => Uint8Array)
+              message: Uint8Array,
+              privateKey: Uint8Array,
+              algo: Uint8Array | null,
+              data: Uint8Array | null,
+              attempt: number,
+          ) => Uint8Array)
         | undefined;
 
     /**
@@ -25,7 +25,9 @@ export interface ecdhOptions {
     data?: Uint8Array | undefined;
     xbuf?: Uint8Array | undefined;
     ybuf?: Uint8Array | undefined;
-    hashfn?: ((x: Uint8Array, y: Uint8Array, data: Uint8Array) => Uint8Array) | undefined;
+    hashfn?:
+        | ((x: Uint8Array, y: Uint8Array, data: Uint8Array) => Uint8Array)
+        | undefined;
 }
 
 /**
@@ -41,7 +43,10 @@ export function privateKeyVerify(privateKey: Uint8Array): boolean;
 /**
  * Export a privateKey in DER format.
  */
-export function privateKeyExport(privateKey: Uint8Array, compressed?: boolean): Uint8Array;
+export function privateKeyExport(
+    privateKey: Uint8Array,
+    compressed?: boolean,
+): Uint8Array;
 
 /**
  * Import a privateKey in DER format.
@@ -61,12 +66,18 @@ export function privateKeyModInverse(privateKey: Uint8Array): Uint8Array;
 /**
  * Tweak a privateKey by adding tweak to it.
  */
-export function privateKeyTweakAdd(privateKey: Uint8Array, tweak: Uint8Array): Uint8Array;
+export function privateKeyTweakAdd(
+    privateKey: Uint8Array,
+    tweak: Uint8Array,
+): Uint8Array;
 
 /**
  * Tweak a privateKey by multiplying it by a tweak.
  */
-export function privateKeyTweakMul(privateKey: Uint8Array, tweak: Uint8Array): Uint8Array;
+export function privateKeyTweakMul(
+    privateKey: Uint8Array,
+    tweak: Uint8Array,
+): Uint8Array;
 
 /**
  * Compute the public key for a privateKey.
@@ -137,12 +148,18 @@ export function signatureNormalize(signature: Uint8Array): Uint8Array;
 /**
  * Serialize an ECDSA signature in DER format.
  */
-export function signatureExport(signature: Uint8Array, output?: Uint8Array | ((len: number) => Uint8Array)): Uint8Array;
+export function signatureExport(
+    signature: Uint8Array,
+    output?: Uint8Array | ((len: number) => Uint8Array),
+): Uint8Array;
 
 /**
  * Parse a DER ECDSA signature (follow by BIP66).
  */
-export function signatureImport(signature: Uint8Array, output?: Uint8Array | ((len: number) => Uint8Array)): Uint8Array;
+export function signatureImport(
+    signature: Uint8Array,
+    output?: Uint8Array | ((len: number) => Uint8Array),
+): Uint8Array;
 
 /**
  * Create an ECDSA signature. Always return low-S signature.
@@ -171,7 +188,11 @@ export function ecdsaSign(
  * - Compute point `R = (s^-1 * m * G + s^-1 * r * Q)`. Reject if `R` is infinity.
  * - Signature is valid if R's `x` coordinate equals to `r`.
  */
-export function ecdsaVerify(signature: Uint8Array, message: Uint8Array, publicKey: Uint8Array): boolean;
+export function ecdsaVerify(
+    signature: Uint8Array,
+    message: Uint8Array,
+    publicKey: Uint8Array,
+): boolean;
 
 /**
  * Recover an ECDSA public key from a signature.

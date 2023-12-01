@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/winreg",
-    "version": "1.2.9999",
-    "projects": [
-        "http://fresc81.github.io/node-winreg/"
-    ],
-    "devDependencies": {
-        "@types/winreg": "workspace:."
+  "private": true,
+  "name": "@types/winreg",
+  "version": "1.2.9999",
+  "projects": [
+    "http://fresc81.github.io/node-winreg/"
+  ],
+  "devDependencies": {
+    "@types/winreg": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "RX14",
+      "githubUsername": "RX14"
     },
-    "owners": [
-        {
-            "name": "RX14",
-            "githubUsername": "RX14"
-        },
-        {
-            "name": "BobBuehler",
-            "githubUsername": "BobBuehler"
-        }
-    ]
+    {
+      "name": "BobBuehler",
+      "githubUsername": "BobBuehler"
+    }
+  ]
 }

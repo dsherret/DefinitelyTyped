@@ -1,4 +1,11 @@
-import { IWebElementId, Locator, Serializable, WebDriver, WebElement, WebElementPromise } from "..";
+import {
+    IWebElementId,
+    Locator,
+    Serializable,
+    WebDriver,
+    WebElement,
+    WebElementPromise,
+} from "..";
 import { Command } from "./command";
 
 /**

@@ -77,13 +77,13 @@ constantExample.add_argument("-a", {
 constantExample.add_argument("--str", {
     action: "append_const",
     dest: "types",
-    help: "append constant \"str\" to types",
+    help: 'append constant "str" to types',
     const: "str",
 });
 constantExample.add_argument("--int", {
     action: "append_const",
     dest: "types",
-    help: "append constant \"int\" to types",
+    help: 'append constant "int" to types',
     const: "int",
 });
 
@@ -187,7 +187,11 @@ bar.add_argument("-f", "--foo", {
     action: "store",
     help: "foo3 bar3",
 });
-bar = subparsers.add_parser("c2", { aliases: ["co"], add_help: true, help: "c2 help" });
+bar = subparsers.add_parser("c2", {
+    aliases: ["co"],
+    add_help: true,
+    help: "c2 help",
+});
 bar.add_argument("-b", "--bar", {
     action: "store",
     type: "int",
@@ -207,7 +211,9 @@ console.dir(args);
 console.log("-----------");
 subparserExample.parse_args(["c1", "-h"]);
 
-const functionExample = new ArgumentParser({ description: "Process some integers." });
+const functionExample = new ArgumentParser({
+    description: "Process some integers.",
+});
 function sum(arr: number[]) {
     return arr.reduce((a, b) => a + b, 0);
 }
@@ -260,14 +266,24 @@ class CustomAction1 extends Action {
     constructor(options: ActionConstructorOptions) {
         super(options);
     }
-    call(parser: ArgumentParser, namespace: Namespace, values: string | string[], optionString: string | null) {
+    call(
+        parser: ArgumentParser,
+        namespace: Namespace,
+        values: string | string[],
+        optionString: string | null,
+    ) {
         namespace[this.dest] = values;
         console.log("custom action 1");
     }
 }
 
 class CustomAction2 extends Action {
-    call(parser: ArgumentParser, namespace: Namespace, values: string | string[], optionString: string | null) {
+    call(
+        parser: ArgumentParser,
+        namespace: Namespace,
+        values: string | string[],
+        optionString: string | null,
+    ) {
         namespace.custom = values;
         console.log("custom action 2");
     }
@@ -305,12 +321,17 @@ constExample.add_argument("quux", {
 constExample.print_help();
 console.log("-----------");
 
-args = constExample.parse_args("--foo x --bar --baz y --qux z a b c d e".split(" "));
+args = constExample.parse_args(
+    "--foo x --bar --baz y --qux z a b c d e".split(" "),
+);
 console.dir(args);
 console.log("-----------");
 
 const versionExample = new ArgumentParser({ description: "Add version" });
-versionExample.add_argument("-v", "--v", { action: "version", version: "1.0.0" });
+versionExample.add_argument("-v", "--v", {
+    action: "version",
+    version: "1.0.0",
+});
 versionExample.print_help();
 console.log("-----------");
 
@@ -329,7 +350,9 @@ try {
 console.log("-----------");
 
 const booleanOptionalActionExample = new ArgumentParser();
-booleanOptionalActionExample.add_argument("--foo", { action: BooleanOptionalAction });
+booleanOptionalActionExample.add_argument("--foo", {
+    action: BooleanOptionalAction,
+});
 booleanOptionalActionExample.print_help();
 console.log("-----------");
 booleanOptionalActionExample.parse_args(["--foo"]);

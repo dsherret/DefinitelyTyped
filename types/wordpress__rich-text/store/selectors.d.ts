@@ -9,7 +9,9 @@ export function getFormatTypes(): NamedFormatConfiguration[];
 /**
  * Returns a format type by name.
  */
-export function getFormatType(name: string): NamedFormatConfiguration | undefined;
+export function getFormatType(
+    name: string,
+): NamedFormatConfiguration | undefined;
 
 /**
  * Gets the format type, if any, that can handle a bare element (without a
@@ -22,4 +24,6 @@ export function getFormatTypeForBareElement(
 /**
  * Gets the format type, if any, that can handle an element, given its classes.
  */
-export function getFormatTypeForClassName(elementClassName: string): NamedFormatConfiguration | undefined;
+export function getFormatTypeForClassName(
+    elementClassName: string,
+): NamedFormatConfiguration | undefined;

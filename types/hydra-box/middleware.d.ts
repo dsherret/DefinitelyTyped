@@ -8,8 +8,14 @@ import { Api } from "./Api";
 
 declare namespace middleware {
     interface HydraBoxMiddleware {
-        resource?: express.RequestHandler | express.RequestHandler[] | undefined;
-        operations?: express.RequestHandler | express.RequestHandler[] | undefined;
+        resource?:
+            | express.RequestHandler
+            | express.RequestHandler[]
+            | undefined;
+        operations?:
+            | express.RequestHandler
+            | express.RequestHandler[]
+            | undefined;
     }
 
     interface Options {
@@ -20,6 +26,9 @@ declare namespace middleware {
     }
 }
 
-declare function middleware(api: Api, options?: middleware.Options): express.Router;
+declare function middleware(
+    api: Api,
+    options?: middleware.Options,
+): express.Router;
 
 export = middleware;

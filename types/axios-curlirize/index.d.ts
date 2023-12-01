@@ -10,6 +10,9 @@ interface Callback {
     (result: Result, error: Error): void;
 }
 
-declare function AxiosCurlirize(instance: AxiosInstance, callback?: Callback): void;
+declare function AxiosCurlirize(
+    instance: AxiosInstance,
+    callback?: Callback,
+): void;
 
 declare namespace AxiosCurlirize {}

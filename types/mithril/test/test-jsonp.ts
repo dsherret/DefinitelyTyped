@@ -4,7 +4,7 @@ interface Result {
     id: number;
 }
 
-jsonp<Result>("/item").then(data => {
+jsonp<Result>("/item").then((data) => {
     console.log(data.id);
 });
 
@@ -23,6 +23,6 @@ jsonp<User>({
     callbackName: "getuser",
     callbackKey: "key",
     background: true,
-}).then(user => {
+}).then((user) => {
     console.log(user.id);
 });

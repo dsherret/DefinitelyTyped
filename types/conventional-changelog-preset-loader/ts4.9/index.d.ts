@@ -18,16 +18,22 @@ import { Commit } from "conventional-commits-parser";
  *
  * @param path
  */
-declare function conventionalChangelogPresetLoader(path: string | Config): CoreOptions.Config;
+declare function conventionalChangelogPresetLoader(
+    path: string | Config,
+): CoreOptions.Config;
 
 declare namespace conventionalChangelogPresetLoader {
-    function presetLoader(requireMethod: presetLoader.RequireMethod): typeof conventionalChangelogPresetLoader;
+    function presetLoader(
+        requireMethod: presetLoader.RequireMethod,
+    ): typeof conventionalChangelogPresetLoader;
 
     namespace presetLoader {
         type RequireMethod = (id: string) => any;
     }
 
-    type Builder = (config: CoreOptions.Config.Object & Config) => CoreOptions.Config;
+    type Builder = (
+        config: CoreOptions.Config.Object & Config,
+    ) => CoreOptions.Config;
 
     interface Config {
         /**

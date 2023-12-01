@@ -3,12 +3,13 @@ declare namespace CKEDITOR {
         event: eventConstructor;
     }
 
-    type eventDataTypes = dom.domObject<Event | EventTarget> | dom.event<Event | EventTarget> | eventData;
+    type eventDataTypes =
+        | dom.domObject<Event | EventTarget>
+        | dom.event<Event | EventTarget>
+        | eventData;
 
     /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_eventInfo.html */
-    interface eventInfo<
-        T extends eventDataTypes = dom.event,
-    > {
+    interface eventInfo<T extends eventDataTypes = dom.event> {
         data: T;
         editor: editor;
         listenerData: unknown;
@@ -27,7 +28,7 @@ declare namespace CKEDITOR {
     }
 
     interface eventConstructor<T extends event = event> {
-        new(): T;
+        new (): T;
 
         useCapture: boolean;
 
@@ -40,9 +41,17 @@ declare namespace CKEDITOR {
 
         define(name: string, meta: eventData): void;
 
-        fire(eventName: string, data?: eventData, editor?: editor): boolean | unknown;
+        fire(
+            eventName: string,
+            data?: eventData,
+            editor?: editor,
+        ): boolean | unknown;
 
-        fireOnce(eventName: string, data?: eventData, editor?: editor): boolean | unknown;
+        fireOnce(
+            eventName: string,
+            data?: eventData,
+            editor?: editor,
+        ): boolean | unknown;
 
         hasListeners(eventName: string): boolean;
 
@@ -64,6 +73,9 @@ declare namespace CKEDITOR {
 
         removeAllListeners(): void;
 
-        removeListener(eventName: string, listenerFunction: (eventInfo: eventInfo<eventDataTypes>) => void): void;
+        removeListener(
+            eventName: string,
+            listenerFunction: (eventInfo: eventInfo<eventDataTypes>) => void,
+        ): void;
     }
 }

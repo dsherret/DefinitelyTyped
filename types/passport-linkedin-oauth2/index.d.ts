@@ -53,7 +53,10 @@ export type VerifyFunctionWithRequest = (
 ) => void;
 
 export class Strategy extends passportStrategy {
-    constructor(options: StrategyOptionWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: StrategyOptionWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
     constructor(options: StrategyOption, verify: VerifyFunction);
 
     name: string;

@@ -340,4 +340,7 @@ export function isErrorResponse(data?: any): boolean;
  * @throws {WebDriverError} the decoded error.
  * @see https://w3c.github.io/webdriver/webdriver-spec.html#protocol
  */
-export function throwDecodedError(data: { error: string; message: string }): void;
+export function throwDecodedError(data: {
+    error: string;
+    message: string;
+}): void;

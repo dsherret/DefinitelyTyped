@@ -11,7 +11,10 @@ import {
 function test() {
     const mask: Mask = ["a"];
 
-    const pipeAddResult: PipeAddResult = { value: "abc", indexesOfPipedChars: [1] };
+    const pipeAddResult: PipeAddResult = {
+        value: "abc",
+        indexesOfPipedChars: [1],
+    };
 
     let pipeResult: PipeResult = pipeAddResult;
     pipeResult = false;

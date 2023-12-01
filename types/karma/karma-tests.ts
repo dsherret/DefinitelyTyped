@@ -1,12 +1,12 @@
 import karma = require("karma");
 import { Config, ConfigOptions, Server } from "karma";
 
-karma.runner.run({ port: 9876 }, exitCode => {
+karma.runner.run({ port: 9876 }, (exitCode) => {
     exitCode; // $ExpectType number
     process.exit(exitCode);
 });
 
-karma.stopper.stop({ port: 9876 }, exitCode => {
+karma.stopper.stop({ port: 9876 }, (exitCode) => {
     exitCode; // $ExpectType number
     if (exitCode === 0) {
         // do something
@@ -14,48 +14,54 @@ karma.stopper.stop({ port: 9876 }, exitCode => {
     process.exit(exitCode);
 });
 
-new Server({ logLevel: "debug", port: 9876 }, exitCode => {
+new Server({ logLevel: "debug", port: 9876 }, (exitCode) => {
     exitCode; // $ExpectType number
     process.exit(exitCode);
 });
 
-karma.config.parseConfig(null, { port: 9876 }, { promiseConfig: true, throwErrors: true }).then(karmaConfig => {
-    const server = new Server(karmaConfig, exitCode => {
-        exitCode; // $ExpectType number
-        process.exit(exitCode);
+karma.config
+    .parseConfig(
+        null,
+        { port: 9876 },
+        { promiseConfig: true, throwErrors: true },
+    )
+    .then((karmaConfig) => {
+        const server = new Server(karmaConfig, (exitCode) => {
+            exitCode; // $ExpectType number
+            process.exit(exitCode);
+        });
+
+        server.start(); // $ExpectType Promise<void>
+
+        server.refreshFiles(); // $ExpectType Promise<any>
+        server.refreshFile("src/js/module-dep.js"); // $ExpectType Promise<any>
+        server.on("browser_register", (browser: any) => {
+            browser; // $ExpectType any
+        });
+
+        server.on("run_complete", (browsers, results) => {
+            results.disconnected = false;
+            results.error = false;
+            results.exitCode = 0;
+            results.failed = 9;
+            results.success = 10;
+        });
+
+        server.stop(); // $ExpectType Promise<void>
+
+        karma.runner.run(karmaConfig, (exitCode: number) => {
+            exitCode; // $ExpectType number
+            process.exit(exitCode);
+        });
+
+        karma.stopper.stop(karmaConfig, (exitCode) => {
+            exitCode; // $ExpectType number
+            if (exitCode === 0) {
+                // do something
+            }
+            process.exit(exitCode);
+        });
     });
-
-    server.start(); // $ExpectType Promise<void>
-
-    server.refreshFiles(); // $ExpectType Promise<any>
-    server.refreshFile("src/js/module-dep.js"); // $ExpectType Promise<any>
-    server.on("browser_register", (browser: any) => {
-        browser; // $ExpectType any
-    });
-
-    server.on("run_complete", (browsers, results) => {
-        results.disconnected = false;
-        results.error = false;
-        results.exitCode = 0;
-        results.failed = 9;
-        results.success = 10;
-    });
-
-    server.stop(); // $ExpectType Promise<void>
-
-    karma.runner.run(karmaConfig, (exitCode: number) => {
-        exitCode; // $ExpectType number
-        process.exit(exitCode);
-    });
-
-    karma.stopper.stop(karmaConfig, exitCode => {
-        exitCode; // $ExpectType number
-        if (exitCode === 0) {
-            // do something
-        }
-        process.exit(exitCode);
-    });
-});
 
 const testLauncher = (launcher: karma.launcher.Launcher) => {
     const captured = launcher.areAllCaptured(); // $ExpectType boolean
@@ -90,8 +96,20 @@ module.exports = (config: Config) => {
             "test/unit/*.spec.js",
             { pattern: "compiled/index.html", watched: false },
             { pattern: "app/index.html", included: false, served: false },
-            { pattern: "compiled/app.js.map", included: false, served: true, watched: false, nocache: true },
-            { pattern: "test/images/*.jpg", watched: false, included: false, served: true, nocache: false },
+            {
+                pattern: "compiled/app.js.map",
+                included: false,
+                served: true,
+                watched: false,
+                nocache: true,
+            },
+            {
+                pattern: "test/images/*.jpg",
+                watched: false,
+                included: false,
+                served: true,
+                nocache: false,
+            },
         ],
 
         loggers: {
@@ -139,7 +157,7 @@ module.exports = (config: Config) => {
         failOnSkippedTests: true,
         failOnFailingTestSuite: false,
         forceJSONP: true,
-        formatError: msg => `error: ${msg}`,
+        formatError: (msg) => `error: ${msg}`,
         listenAddress: "0.0.0.0",
         pingTimeout: 2000,
         processKillTimeout: 3000,
@@ -157,7 +175,9 @@ module.exports = (config: Config) => {
         },
         proxyRes: (proxyRes, req, res) => {
             if (proxyRes.headers["set-cookie"]) {
-                proxyRes.headers["set-cookie"] = proxyRes.headers["set-cookie"].map((cookie: string) => {
+                proxyRes.headers["set-cookie"] = proxyRes.headers[
+                    "set-cookie"
+                ].map((cookie: string) => {
                     return cookie.replace(/\s*secure;?/i, "");
                 });
             }
@@ -183,7 +203,12 @@ module.exports = (config: Config) => {
 // custom browser config
 const customBrowser = (config: Config) => {
     config.set({
-        browsers: ["Safari", "my-custom-browser", "Firefox", "/usr/local/bin/custom-browser.sh"],
+        browsers: [
+            "Safari",
+            "my-custom-browser",
+            "Firefox",
+            "/usr/local/bin/custom-browser.sh",
+        ],
     });
 };
 

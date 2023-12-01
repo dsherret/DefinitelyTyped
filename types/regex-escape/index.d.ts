@@ -16,7 +16,9 @@ declare namespace RegexEscape {
      * RegexEscape.proto(RegExp);
      * RegExp.escape("$foo"); // "\\$foo"
      */
-    function proto(regexp: RegExpConstructor): asserts regexp is RegExpConstructor & { escape: typeof RegexEscape };
+    function proto(
+        regexp: RegExpConstructor,
+    ): asserts regexp is RegExpConstructor & { escape: typeof RegexEscape };
 }
 
 /**

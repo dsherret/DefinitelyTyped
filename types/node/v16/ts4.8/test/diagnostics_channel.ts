@@ -1,4 +1,10 @@
-import { Channel, channel, hasSubscribers, subscribe, unsubscribe } from "node:diagnostics_channel";
+import {
+    Channel,
+    channel,
+    hasSubscribers,
+    subscribe,
+    unsubscribe,
+} from "node:diagnostics_channel";
 
 const ch1: Channel = channel(Symbol.for("test"));
 function listener(data: unknown) {}

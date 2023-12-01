@@ -1,4 +1,8 @@
-import { PluginDefinition, PluginParams, WaveSurferPlugin } from "../../types/plugin";
+import {
+    PluginDefinition,
+    PluginParams,
+    WaveSurferPlugin,
+} from "../../types/plugin";
 import { Styles } from "../../types/util";
 import Observer from "../util/observer";
 import WaveSurfer from "../wavesurfer";

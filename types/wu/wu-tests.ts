@@ -42,7 +42,7 @@ describe("wu.asyncEach", () => {
         let n = 0;
 
         return wu(arr)
-            .asyncEach(x => {
+            .asyncEach((x) => {
                 n++;
                 const start = Date.now();
                 while (Date.now() - start <= 3) {
@@ -61,12 +61,21 @@ describe("wu.chain", () => {
 });
 describe("wu.chunk", () => {
     it("should chunk items into tuples", () => {
-        assert.eqArray([[1, 2, 3], [4, 5, 6]], wu.chunk(3, [1, 2, 3, 4, 5, 6]));
+        assert.eqArray(
+            [
+                [1, 2, 3],
+                [4, 5, 6],
+            ],
+            wu.chunk(3, [1, 2, 3, 4, 5, 6]),
+        );
     });
 });
 describe("wu.concatMap", () => {
     it("should map the function over the iterable and concatenate results", () => {
-        assert.eqArray([1, 1, 2, 4, 3, 9], wu.concatMap(x => [x, x * x], [1, 2, 3]));
+        assert.eqArray(
+            [1, 1, 2, 4, 3, 9],
+            wu.concatMap((x) => [x, x * x], [1, 2, 3]),
+        );
     });
 });
 describe("wu.count", () => {
@@ -137,13 +146,17 @@ describe("wu.drop", () => {
 });
 describe("wu.dropWhile", () => {
     it("should drop items while the predicate is true", () => {
-        const count = wu.dropWhile(x => x < 5, wu.count());
+        const count = wu.dropWhile((x) => x < 5, wu.count());
         assert.equal(count.next().value, 5);
     });
 });
 describe("wu.entries", () => {
     it("should iterate over entries", () => {
-        const expected = new Map([["foo", 1], ["bar", 2], ["baz", 3]]);
+        const expected = new Map([
+            ["foo", 1],
+            ["bar", 2],
+            ["baz", 3],
+        ]);
         for (const [k, v] of wu.entries({ foo: 1, bar: 2, baz: 3 })) {
             assert.equal(expected.get(k), v);
         }
@@ -151,55 +164,96 @@ describe("wu.entries", () => {
 });
 describe("wu.enumerate", () => {
     it("should yield items with their index", () => {
-        assert.eqArray([["a", 0], ["b", 1], ["c", 2]], wu.enumerate("abc"));
+        assert.eqArray(
+            [
+                ["a", 0],
+                ["b", 1],
+                ["c", 2],
+            ],
+            wu.enumerate("abc"),
+        );
     });
 });
 describe("wu.every", () => {
     it("should return true when the predicate succeeds for all items", () => {
-        assert.equal(true, wu.every(x => typeof x === "number", [1, 2, 3]));
+        assert.equal(
+            true,
+            wu.every((x) => typeof x === "number", [1, 2, 3]),
+        );
     });
 
     it("should return false when the predicate fails for any item", () => {
-        assert.equal(false, wu.every(x => typeof x === "number", [1, 2, "3"]));
+        assert.equal(
+            false,
+            wu.every((x) => typeof x === "number", [1, 2, "3"]),
+        );
     });
 });
 describe("wu.filter", () => {
     it("should filter based on the predicate", () => {
-        assert.eqArray(["a", "b", "c"], wu.filter(x => typeof x === "string", [1, "a", true, "b", {}, "c"]));
+        assert.eqArray(
+            ["a", "b", "c"],
+            wu.filter(
+                (x) => typeof x === "string",
+                [1, "a", true, "b", {}, "c"],
+            ),
+        );
     });
 });
 describe("wu.find", () => {
     it("should return the first item that matches the predicate", () => {
         assert.deepEqual(
             { name: "rza" },
-            wu.find(x => !!x.name.match(/.za$/), [{ name: "odb" }, { name: "method man" }, { name: "rza" }, {
-                name: "gza",
-            }]),
+            wu.find(
+                (x) => !!x.name.match(/.za$/),
+                [
+                    { name: "odb" },
+                    { name: "method man" },
+                    { name: "rza" },
+                    {
+                        name: "gza",
+                    },
+                ],
+            ),
         );
     });
 
     it("should return undefined if no items match the predicate", () => {
         assert.equal(
             undefined,
-            wu.find(x => (<any> x) === "raekwon", [{ name: "odb" }, { name: "method man" }, { name: "rza" }, {
-                name: "gza",
-            }]),
+            wu.find(
+                (x) => <any>x === "raekwon",
+                [
+                    { name: "odb" },
+                    { name: "method man" },
+                    { name: "rza" },
+                    {
+                        name: "gza",
+                    },
+                ],
+            ),
         );
     });
 });
 describe("wu.flatten", () => {
     it("should flatten iterables", () => {
-        assert.eqArray(["I", "like", "LISP"], wu(["I", ["like", ["LISP"]]]).flatten());
+        assert.eqArray(
+            ["I", "like", "LISP"],
+            wu(["I", ["like", ["LISP"]]]).flatten(),
+        );
     });
 
     it("should shallowly flatten iterables", () => {
-        assert.eqArray([1, 2, 3, [[4]]], wu.flatten(true, [1, [2], [3, [[4]]]]));
+        assert.eqArray(
+            [1, 2, 3, [[4]]],
+            wu.flatten(true, [1, [2], [3, [[4]]]]),
+        );
     });
 });
 describe("wu.forEach", () => {
     it("should iterate over every item", () => {
         const items: any[] = [];
-        wu.forEach(x => items.push(x), [1, 2, 3]);
+        wu.forEach((x) => items.push(x), [1, 2, 3]);
         assert.eqArray([1, 2, 3], items);
     });
 });
@@ -209,7 +263,7 @@ describe("wu.has", () => {
     });
 
     it("should return false if the item is not in the iterable", () => {
-        assert.ok(!wu.has(<any> "36 chambers", [1, 2, 3]));
+        assert.ok(!wu.has(<any>"36 chambers", [1, 2, 3]));
     });
 });
 describe("wu.invoke", () => {
@@ -222,42 +276,69 @@ describe("wu.invoke", () => {
         }
         assert.eqArray(
             ["hello world!", "hello test!"],
-            wu.invoke("greet", "!", [new Greeter("world"), new Greeter("test")]),
+            wu.invoke("greet", "!", [
+                new Greeter("world"),
+                new Greeter("test"),
+            ]),
         );
     });
 });
 describe("wu.keys", () => {
     it("should iterate over keys", () => {
-        assert.eqSet(new Set(["foo", "bar", "baz"]), wu.keys({ foo: 1, bar: 2, baz: 3 }));
+        assert.eqSet(
+            new Set(["foo", "bar", "baz"]),
+            wu.keys({ foo: 1, bar: 2, baz: 3 }),
+        );
     });
 });
 describe("wu.map", () => {
     it("should map the function over the iterable", () => {
-        assert.eqArray([1, 4, 9], wu.map(x => x * x, [1, 2, 3]));
+        assert.eqArray(
+            [1, 4, 9],
+            wu.map((x) => x * x, [1, 2, 3]),
+        );
     });
 });
 describe("wu.pluck", () => {
     it("should access the named property of each item in the iterable", () => {
-        assert.eqArray([1, 2, 3], wu.pluck("i", [{ i: 1 }, { i: 2 }, { i: 3 }]));
+        assert.eqArray(
+            [1, 2, 3],
+            wu.pluck("i", [{ i: 1 }, { i: 2 }, { i: 3 }]),
+        );
     });
 });
 describe("wu.reduce", () => {
     it("should reduce the iterable with the function", () => {
-        assert.equal(6, wu([1, 2, 3]).reduce((x, y) => x + y));
+        assert.equal(
+            6,
+            wu([1, 2, 3]).reduce((x, y) => x + y),
+        );
     });
 
     it("should accept an initial state for the reducer function", () => {
-        assert.equal(16, wu.reduce((x, y) => x + y, 10, [1, 2, 3]));
+        assert.equal(
+            16,
+            wu.reduce((x, y) => x + y, 10, [1, 2, 3]),
+        );
     });
 });
 describe("wu.reductions", () => {
     it("should yield the intermediate reductions of the iterable", () => {
-        assert.eqArray([1, 3, 6], wu.reductions((x, y) => x + y, undefined, [1, 2, 3]));
+        assert.eqArray(
+            [1, 3, 6],
+            wu.reductions((x, y) => x + y, undefined, [1, 2, 3]),
+        );
     });
 });
 describe("wu.reject", () => {
     it("should yield items for which the predicate is false", () => {
-        assert.eqArray([1, true, {}], wu.reject(x => typeof x === "string", [1, "a", true, "b", {}, "c"]));
+        assert.eqArray(
+            [1, true, {}],
+            wu.reject(
+                (x) => typeof x === "string",
+                [1, "a", true, "b", {}, "c"],
+            ),
+        );
     });
 });
 describe("wu.repeat", () => {
@@ -291,16 +372,23 @@ describe("wu.slice", () => {
 });
 describe("wu.some", () => {
     it("should return true if any item matches the predicate", () => {
-        assert.ok(wu.some(x => x % 2 === 0, [1, 2, 3]));
+        assert.ok(wu.some((x) => x % 2 === 0, [1, 2, 3]));
     });
 
     it("should return false if no items match the predicate", () => {
-        assert.ok(!wu.some(x => x % 5 === 0, [1, 2, 3]));
+        assert.ok(!wu.some((x) => x % 5 === 0, [1, 2, 3]));
     });
 });
 describe("wu.spreadMap", () => {
     it("should map the function over the iterable with spread arguments", () => {
-        assert.eqArray([32, 9, 1000], wu.spreadMap(Math.pow, [[2, 5], [3, 2], [10, 3]]));
+        assert.eqArray(
+            [32, 9, 1000],
+            wu.spreadMap(Math.pow, [
+                [2, 5],
+                [3, 2],
+                [10, 3],
+            ]),
+        );
     });
 });
 describe("wu.take", () => {
@@ -310,13 +398,19 @@ describe("wu.take", () => {
 });
 describe("wu.takeWhile", () => {
     it("should keep yielding items from the iterable until the predicate is false", () => {
-        assert.eqArray([0, 1, 2, 3, 4], wu.takeWhile(x => x < 5, wu.count()));
+        assert.eqArray(
+            [0, 1, 2, 3, 4],
+            wu.takeWhile((x) => x < 5, wu.count()),
+        );
     });
 });
 describe("wu.tap", () => {
     it("should perform side effects and yield the original item", () => {
         let i = 0;
-        assert.eqArray([1, 2, 3], wu.tap(x => i++, [1, 2, 3]));
+        assert.eqArray(
+            [1, 2, 3],
+            wu.tap((x) => i++, [1, 2, 3]),
+        );
         assert.equal(i, 3);
     });
 });
@@ -338,14 +432,8 @@ describe("wu.tee", () => {
 });
 describe("wu.toArray", () => {
     it("should return array from the iterable", () => {
-        assert.eqArray(
-            wu.count(0).take(3).toArray(),
-            [0, 1, 2],
-        );
-        assert.eqArray(
-            wu([0, 1, 2]).toArray(),
-            [0, 1, 2],
-        );
+        assert.eqArray(wu.count(0).take(3).toArray(), [0, 1, 2]);
+        assert.eqArray(wu([0, 1, 2]).toArray(), [0, 1, 2]);
     });
 });
 describe("wu.unique", () => {
@@ -372,11 +460,25 @@ describe("wu.values", () => {
 });
 describe("wu.zip", () => {
     it("should zip two iterables together", () => {
-        assert.eqArray([["a", 1], ["b", 2], ["c", 3]], wu.zip("abc", [1, 2, 3]));
+        assert.eqArray(
+            [
+                ["a", 1],
+                ["b", 2],
+                ["c", 3],
+            ],
+            wu.zip("abc", [1, 2, 3]),
+        );
     });
 
     it("should stop with the shorter iterable", () => {
-        assert.eqArray([["a", 1], ["b", 2], ["c", 3]], wu.zip("abc", wu.count(1)));
+        assert.eqArray(
+            [
+                ["a", 1],
+                ["b", 2],
+                ["c", 3],
+            ],
+            wu.zip("abc", wu.count(1)),
+        );
     });
 });
 describe("wu.zipLongest", () => {
@@ -391,6 +493,9 @@ describe("wu.zipLongest", () => {
 describe("wu.zipWith", () => {
     it("should spread map over the zipped iterables", () => {
         const add3 = (a: any, b: any, c: any) => a + b + c;
-        assert.eqArray([12, 15, 18], wu.zipWith(add3, [1, 2, 3], [4, 5, 6], [7, 8, 9]));
+        assert.eqArray(
+            [12, 15, 18],
+            wu.zipWith(add3, [1, 2, 3], [4, 5, 6], [7, 8, 9]),
+        );
     });
 });

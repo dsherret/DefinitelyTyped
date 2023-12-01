@@ -35,7 +35,8 @@ declare namespace GoogleAdsScripts {
          *          .build();                // add the audience, or .exclude() to exclude the audience.
          *      var audience = audienceOperation.getResult();
          */
-        interface SearchCampaignAudienceBuilder extends Base.Builder<SearchCampaignAudienceOperation> {
+        interface SearchCampaignAudienceBuilder
+            extends Base.Builder<SearchCampaignAudienceOperation> {
             /** Builds the excluded audience. */
             exclude(): SearchCampaignExcludedAudienceOperation;
             /** Sets the user list of the audience. */
@@ -55,10 +56,12 @@ declare namespace GoogleAdsScripts {
          *        var audience = audienceIterator.next();
          *      }
          */
-        interface SearchCampaignAudienceIterator extends Base.Iterator<SearchCampaignAudience> {}
+        interface SearchCampaignAudienceIterator
+            extends Base.Iterator<SearchCampaignAudience> {}
 
         /** An operation representing creation of a new audience. */
-        interface SearchCampaignAudienceOperation extends Base.Operation<SearchCampaignAudience> {}
+        interface SearchCampaignAudienceOperation
+            extends Base.Operation<SearchCampaignAudience> {}
 
         /**
          * Fetches audiences. Supports filtering and sorting.
@@ -78,13 +81,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface SearchCampaignAudienceSelector
-            extends
-                Base.Selector<SearchCampaignAudienceIterator>,
+            extends Base.Selector<SearchCampaignAudienceIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

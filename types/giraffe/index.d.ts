@@ -48,10 +48,28 @@ declare namespace Giraffe {
 
     function bindAppEvents(instance: GiraffeObject): GiraffeObject;
     function bindDataEvents(instance: GiraffeObject): GiraffeObject;
-    function bindEvent(context: Backbone.Events, target: Backbone.Events, event: any, callback: Function);
-    function unbindEvent(context: Backbone.Events, target: Backbone.Events, event: any, callback: Function);
-    function bindEventMap(context: Backbone.Events, target: Backbone.Events, eventMap: any);
-    function unbindEventMap(context: Backbone.Events, target: Backbone.Events, eventMap: any);
+    function bindEvent(
+        context: Backbone.Events,
+        target: Backbone.Events,
+        event: any,
+        callback: Function,
+    );
+    function unbindEvent(
+        context: Backbone.Events,
+        target: Backbone.Events,
+        event: any,
+        callback: Function,
+    );
+    function bindEventMap(
+        context: Backbone.Events,
+        target: Backbone.Events,
+        eventMap: any,
+    );
+    function unbindEventMap(
+        context: Backbone.Events,
+        target: Backbone.Events,
+        eventMap: any,
+    );
 
     function configure(instance: any, options?: any);
     function dispose(instance: GiraffeObject, ...args: any[]): GiraffeObject;
@@ -59,10 +77,13 @@ declare namespace Giraffe {
 
     function wrapFn(obj: any, name: string, before: Function, after: Function);
 
-    class Collection<TModel extends Model> extends Backbone.Collection<TModel> implements GiraffeObject {
+    class Collection<TModel extends Model>
+        extends Backbone.Collection<TModel>
+        implements GiraffeObject
+    {
         app: App;
         // model: typeof TModel;
-        model: { new(): TModel }; // workaround
+        model: { new (): TModel }; // workaround
     }
 
     class Model extends Backbone.Model implements GiraffeObject {
@@ -81,7 +102,10 @@ declare namespace Giraffe {
         reload(url: string);
     }
 
-    class View<TModel extends Model> extends Backbone.View<TModel> implements GiraffeObject {
+    class View<TModel extends Model>
+        extends Backbone.View<TModel>
+        implements GiraffeObject
+    {
         app: App;
         appEvents: StringMap;
         children: Array<View<TModel>>;
@@ -131,13 +155,18 @@ declare namespace Giraffe {
     class App extends View<Model> {
         routes: StringMap;
 
-        addInitializer(initializer: (options?: any, callback?: () => void) => void): App;
+        addInitializer(
+            initializer: (options?: any, callback?: () => void) => void,
+        ): App;
 
         start(options?: any): App;
     }
 
     namespace Contrib {
-        class Controller extends Backbone.EventsMixin implements GiraffeObject, Backbone.Events {
+        class Controller
+            extends Backbone.EventsMixin
+            implements GiraffeObject, Backbone.Events
+        {
             /**
              * Faulty overgeneralization of Backbone.Events.on, for historical
              * reasons.

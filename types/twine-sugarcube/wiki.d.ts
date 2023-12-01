@@ -5,9 +5,17 @@ export interface WikifierOptions {
 }
 
 export interface WikifierAPI {
-    new(destination: OutputDestination | null, source: string, options?: WikifierOptions): unknown;
+    new (
+        destination: OutputDestination | null,
+        source: string,
+        options?: WikifierOptions,
+    ): unknown;
 
-    createExternalLink(destination: OutputDestination, url: string, text: string): HTMLAnchorElement;
+    createExternalLink(
+        destination: OutputDestination,
+        url: string,
+        text: string,
+    ): HTMLAnchorElement;
     createInternalLink(
         destination: OutputDestination,
         passage: string,

@@ -1,5 +1,19 @@
 import { Transform, TransformCallback, TransformOptions } from "node:stream";
-import { after, afterEach, before, beforeEach, describe, it, Mock, mock, only, run, skip, test, todo } from "node:test";
+import {
+    after,
+    afterEach,
+    before,
+    beforeEach,
+    describe,
+    it,
+    Mock,
+    mock,
+    only,
+    run,
+    skip,
+    test,
+    todo,
+} from "node:test";
 import { dot, junit, spec, tap, TestEvent } from "node:test/reporters";
 
 // run without options
@@ -33,7 +47,7 @@ run({
 // TestsStream should be a NodeJS.ReadableStream
 run().pipe(process.stdout);
 
-test("foo", t => {
+test("foo", (t) => {
     // $ExpectType TestContext
     t;
 });
@@ -81,7 +95,7 @@ test((t, cb) => {
 });
 
 // Test the context's methods
-test(undefined, undefined, t => {
+test(undefined, undefined, (t) => {
     // $ExpectType void
     t.diagnostic("tap diagnostic");
     // $ExpectType void
@@ -105,10 +119,10 @@ test(undefined, undefined, t => {
 });
 
 // Test the subtest approach.
-test(t => {
+test((t) => {
     // $ExpectType TestContext
     t;
-    const sub = t.test("sub", {}, t => {
+    const sub = t.test("sub", {}, (t) => {
         // $ExpectType TestContext
         t;
     });
@@ -291,7 +305,7 @@ it.only("only shorthand", {
 });
 
 // Test with suite context
-describe(s => {
+describe((s) => {
     // $ExpectType SuiteContext
     s;
     // $ExpectType string
@@ -355,9 +369,15 @@ afterEach((s, cb) => {
 });
 // - with options
 before(() => {}, { signal: new AbortController().signal, timeout: Infinity });
-beforeEach(() => {}, { signal: new AbortController().signal, timeout: Infinity });
+beforeEach(() => {}, {
+    signal: new AbortController().signal,
+    timeout: Infinity,
+});
 after(() => {}, { signal: new AbortController().signal, timeout: Infinity });
-beforeEach(() => {}, { signal: new AbortController().signal, timeout: Infinity });
+beforeEach(() => {}, {
+    signal: new AbortController().signal,
+    timeout: Infinity,
+});
 
 test("mocks a counting function", (t) => {
     let cnt = 0;
@@ -453,7 +473,10 @@ test("spies on a constructor", (t) => {
     class Clazz extends ParentClazz {
         #privateValue;
 
-        constructor(public a: number, b: number) {
+        constructor(
+            public a: number,
+            b: number,
+        ) {
             super(a + b);
             this.a = a;
             this.#privateValue = b;
@@ -534,7 +557,9 @@ test("mocks a getter", (t) => {
     }
 
     {
-        const getter = t.mock.method(obj, "method", mockMethod, { getter: true });
+        const getter = t.mock.method(obj, "method", mockMethod, {
+            getter: true,
+        });
         console.log(obj.method);
         const call = getter.mock.calls[0];
 
@@ -614,7 +639,9 @@ test("mocks a setter", (t) => {
     }
 
     {
-        const setter = t.mock.method(obj, "method", mockMethod, { setter: true });
+        const setter = t.mock.method(obj, "method", mockMethod, {
+            setter: true,
+        });
         obj.method = 77;
         const call = setter.mock.calls[0];
 
@@ -673,15 +700,32 @@ class TestReporter extends Transform {
     constructor(options: TransformOptions) {
         super(options);
     }
-    _transform(event: TestEvent, _encoding: BufferEncoding, callback: TransformCallback): void {
+    _transform(
+        event: TestEvent,
+        _encoding: BufferEncoding,
+        callback: TransformCallback,
+    ): void {
         switch (event.type) {
             case "test:diagnostic": {
                 const { file, column, line, message, nesting } = event.data;
-                callback(null, `${message}/${nesting}/${file}/${column}/${line}`);
+                callback(
+                    null,
+                    `${message}/${nesting}/${file}/${column}/${line}`,
+                );
                 break;
             }
             case "test:fail": {
-                const { file, column, line, details, name, nesting, testNumber, skip, todo } = event.data;
+                const {
+                    file,
+                    column,
+                    line,
+                    details,
+                    name,
+                    nesting,
+                    testNumber,
+                    skip,
+                    todo,
+                } = event.data;
                 callback(
                     null,
                     `${name}/${details.duration_ms}/${details.type}/
@@ -690,7 +734,17 @@ class TestReporter extends Transform {
                 break;
             }
             case "test:pass": {
-                const { file, column, line, details, name, nesting, testNumber, skip, todo } = event.data;
+                const {
+                    file,
+                    column,
+                    line,
+                    details,
+                    name,
+                    nesting,
+                    testNumber,
+                    skip,
+                    todo,
+                } = event.data;
                 callback(
                     null,
                     `${name}/${details.duration_ms}/${details.type}/

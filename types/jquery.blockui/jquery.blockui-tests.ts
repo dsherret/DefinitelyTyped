@@ -17,7 +17,7 @@ $.unblockUI({ fadeOut: 200 });
 $.blockUI({
     fadeIn: 1000,
     timeout: 2000,
-    onBlock: function() {
+    onBlock: function () {
         alert("Page is now blocked; fadeIn complete");
     },
 });

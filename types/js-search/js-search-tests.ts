@@ -45,14 +45,14 @@ search.search("scott"); // [theGreatGatsby]
 search.search("dan"); // [angelsAndDemons, theDaVinciCode]
 search.search("mystery"); // [angelsAndDemons, theDaVinciCode]
 
-search.tokenizer = <ITokenizer> {
+search.tokenizer = <ITokenizer>{
     tokenize(text: any) {
         // Convert text to an Array of strings and return the Array
     },
 };
 
 // Function should accept a string param and return a string
-var stemmer = function() {
+var stemmer = function () {
     return "foobar";
 };
 

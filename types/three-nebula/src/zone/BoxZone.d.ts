@@ -10,7 +10,14 @@ export default class BoxZone extends Zone {
      * or
      * var boxZone = new BoxZone(new Vector3D(0,0,0), 50, 50, 50);
      */
-    constructor(a: number, b?: number, c?: number, d?: number, e?: number, f?: number);
+    constructor(
+        a: number,
+        b?: number,
+        c?: number,
+        d?: number,
+        e?: number,
+        f?: number,
+    );
     /**
      * Returns true to indicate this is a BoxZone.
      */

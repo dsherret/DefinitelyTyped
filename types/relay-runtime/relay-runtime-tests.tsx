@@ -54,7 +54,11 @@ const storeWithOptions = new Store(source, {
 // ~~~~~~~~~~~~~~~~~~~~~
 // Define a function that fetches the results of an operation (query/mutation/etc)
 // and returns its results as a Promise:
-function fetchFunction(operation: any, variables: { [key: string]: string }, cacheConfig: {}) {
+function fetchFunction(
+    operation: any,
+    variables: { [key: string]: string },
+    cacheConfig: {},
+) {
     return fetch("/graphql", {
         method: "POST",
         body: JSON.stringify({
@@ -97,19 +101,19 @@ const environment = new Environment({
         {
             handle(field, record, argValues) {
                 if (
-                    record != null
-                    && record.getType() === ROOT_TYPE
-                    && field.name === "user"
-                    && argValues.hasOwnProperty("id")
+                    record != null &&
+                    record.getType() === ROOT_TYPE &&
+                    field.name === "user" &&
+                    argValues.hasOwnProperty("id")
                 ) {
                     // If field is user(id: $id), look up the record by the value of $id
                     return argValues.id;
                 }
                 if (
-                    record != null
-                    && record.getType() === ROOT_TYPE
-                    && field.name === "story"
-                    && argValues.hasOwnProperty("story_id")
+                    record != null &&
+                    record.getType() === ROOT_TYPE &&
+                    field.name === "story" &&
+                    argValues.hasOwnProperty("story_id")
                 ) {
                     // If field is story(story_id: $story_id), look up the record by the
                     // value of $story_id.
@@ -121,7 +125,7 @@ const environment = new Environment({
             kind: "linked",
         },
     ],
-    log: logEvent => {
+    log: (logEvent) => {
         switch (logEvent.name) {
             case "network.start":
             case "network.complete":
@@ -134,7 +138,7 @@ const environment = new Environment({
                 break;
         }
     },
-    requiredFieldLogger: arg => {
+    requiredFieldLogger: (arg) => {
         if (arg.kind === "missing_field.log") {
             console.log(arg.fieldPath, arg.owner);
         } else if (arg.kind === "missing_field.throw") {
@@ -155,9 +159,9 @@ function handlerProvider(handle: any) {
         // Augment (or remove from) this list:
         case "connection":
             return ConnectionHandler;
-            // case 'viewer':
-            //     // ViewerHandler is special-cased and does not have an `update` method
-            //     return ViewerHandler;
+        // case 'viewer':
+        //     // ViewerHandler is special-cased and does not have an `update` method
+        //     return ViewerHandler;
     }
     throw new Error(`handlerProvider: No handler provided for ${handle}`);
 }
@@ -182,13 +186,19 @@ interface UserQuery {
     variables: {};
 }
 
-function storeUpdater(store: RecordSourceSelectorProxy, dataRef: UserFragment_updatable$key) {
+function storeUpdater(
+    store: RecordSourceSelectorProxy,
+    dataRef: UserFragment_updatable$key,
+) {
     store.invalidateStore();
     const mutationPayload = store.getRootField("sendConversationMessage");
     const newMessageEdge = mutationPayload!.getLinkedRecord("messageEdge");
     const conversationStore = store.get("a-conversation-id");
     conversationStore!.invalidateRecord();
-    const connection = ConnectionHandler.getConnection(conversationStore!, "Messages_messages");
+    const connection = ConnectionHandler.getConnection(
+        conversationStore!,
+        "Messages_messages",
+    );
     if (connection) {
         ConnectionHandler.insertEdgeBefore(connection, newMessageEdge!);
     }
@@ -202,16 +212,17 @@ function storeUpdater(store: RecordSourceSelectorProxy, dataRef: UserFragment_up
     );
     updatableFragment.name = "NewName";
 
-    const { updatableData: updatableQuery } = store.readUpdatableQuery<UserQuery>(
-        graphql`
-            query UserQuery {
-                user {
-                    name
+    const { updatableData: updatableQuery } =
+        store.readUpdatableQuery<UserQuery>(
+            graphql`
+                query UserQuery {
+                    user {
+                        name
+                    }
                 }
-            }
-        `,
-        {},
-    );
+            `,
+            {},
+        );
     updatableQuery.userName = "NewName";
 }
 
@@ -235,14 +246,19 @@ function passToHelper(edge: RecordProxy<MessageEdge>) {
     edge.getValue("id");
 }
 
-function storeUpdaterWithTypes(store: RecordSourceSelectorProxy<SendConversationMessageMutationResponse>) {
+function storeUpdaterWithTypes(
+    store: RecordSourceSelectorProxy<SendConversationMessageMutationResponse>,
+) {
     store.invalidateStore();
     const mutationPayload = store.getRootField("sendConversationMessage");
     const newMessageEdge = mutationPayload.getLinkedRecord("messageEdge");
     const id = newMessageEdge.getValue("id");
     const conversationStore = store.get<TConversation>(id);
     conversationStore!.invalidateRecord();
-    const connection = ConnectionHandler.getConnection(conversationStore!, "Messages_messages");
+    const connection = ConnectionHandler.getConnection(
+        conversationStore!,
+        "Messages_messages",
+    );
     if (connection) {
         ConnectionHandler.insertEdgeBefore(connection, newMessageEdge);
     }
@@ -252,13 +268,24 @@ function storeUpdaterWithTypes(store: RecordSourceSelectorProxy<SendConversation
 function connectionHandlerWithoutStore() {
     let connectionId: DataID;
 
-    connectionId = ConnectionHandler.getConnectionID("4", "ConnectionQuery_friends");
+    connectionId = ConnectionHandler.getConnectionID(
+        "4",
+        "ConnectionQuery_friends",
+    );
 
-    connectionId = ConnectionHandler.getConnectionID("4", "ConnectionQuery_friends", null);
+    connectionId = ConnectionHandler.getConnectionID(
+        "4",
+        "ConnectionQuery_friends",
+        null,
+    );
 
-    connectionId = ConnectionHandler.getConnectionID("4", "ConnectionQuery_friends", {
-        orderby: ["first name"],
-    });
+    connectionId = ConnectionHandler.getConnectionID(
+        "4",
+        "ConnectionQuery_friends",
+        {
+            orderby: ["first name"],
+        },
+    );
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~
@@ -268,13 +295,15 @@ function connectionHandlerWithoutStore() {
 store.publish(source);
 const get_store_recorditem = store.getSource().get("someDataId");
 // $ExpectType Record<TConversation> | null | undefined
-const get_store_recorditem_typed = store.getSource().get<TConversation>("someDataId");
+const get_store_recorditem_typed = store
+    .getSource()
+    .get<TConversation>("someDataId");
 
 // ~~~~~~~~~~~~~~~~~~~~~
 // commitLocalUpdate
 // ~~~~~~~~~~~~~~~~~~~~~
 
-commitLocalUpdate(environment, store => {
+commitLocalUpdate(environment, (store) => {
     const root = store.get(ROOT_ID);
     root!.setValue("foo", "localKey");
 });
@@ -307,7 +336,7 @@ query FooQuery {
 */
 
 /* tslint:disable:only-arrow-functions no-var-keyword prefer-const */
-const node: ConcreteRequest = (function() {
+const node: ConcreteRequest = (function () {
     var v0 = [
         {
             kind: "ScalarField",
@@ -337,13 +366,13 @@ const node: ConcreteRequest = (function() {
             type: "Query",
             metadata: null,
             argumentDefinitions: [],
-            selections: v0, /*: any*/
+            selections: v0 /*: any*/,
         },
         operation: {
             kind: "Operation",
             name: "FooQuery",
             argumentDefinitions: [],
-            selections: v0, /*: any*/
+            selections: v0 /*: any*/,
         },
         params: {
             operationKind: "query",
@@ -545,9 +574,23 @@ const request = getRequest(gqlQuery);
 const variables: Variables = { pageID };
 const dataID: DataID = "dataID";
 const operation = createOperationDescriptor(request, variables);
-const operationWithCacheConfig = createOperationDescriptor(request, variables, cacheConfig);
-const operationWithDataID = createOperationDescriptor(request, variables, undefined, dataID);
-const operationWithAll = createOperationDescriptor(request, variables, cacheConfig, dataID);
+const operationWithCacheConfig = createOperationDescriptor(
+    request,
+    variables,
+    cacheConfig,
+);
+const operationWithDataID = createOperationDescriptor(
+    request,
+    variables,
+    undefined,
+    dataID,
+);
+const operationWithAll = createOperationDescriptor(
+    request,
+    variables,
+    cacheConfig,
+    dataID,
+);
 
 // ~~~~~~~~~~~~~~~~~~~~~~~
 // MULTI ACTOR ENVIRONMENT
@@ -660,10 +703,14 @@ function NonNullableArrayFragmentResolver(usersKey: UserComponent_users$key) {
         usersKey,
     );
 
-    return data.map(thing => `${thing.id}: ${thing.name}, ${thing.profile_picture}`);
+    return data.map(
+        (thing) => `${thing.id}: ${thing.name}, ${thing.profile_picture}`,
+    );
 }
 
-function NullableArrayFragmentResolver(usersKey: UserComponent_users$key | null) {
+function NullableArrayFragmentResolver(
+    usersKey: UserComponent_users$key | null,
+) {
     const data = readFragment(
         graphql`
             fragment UserComponent_users on User @relay(plural: true) {
@@ -676,10 +723,14 @@ function NullableArrayFragmentResolver(usersKey: UserComponent_users$key | null)
         usersKey,
     );
 
-    return data?.map(thing => `${thing.id}: ${thing.name}, ${thing.profile_picture}`);
+    return data?.map(
+        (thing) => `${thing.id}: ${thing.name}, ${thing.profile_picture}`,
+    );
 }
 
-function ArrayOfNullableFragmentResolver(usersKey: ReadonlyArray<UserComponent_users$key[0] | null>) {
+function ArrayOfNullableFragmentResolver(
+    usersKey: ReadonlyArray<UserComponent_users$key[0] | null>,
+) {
     const data = readFragment(
         graphql`
             fragment UserComponent_users on User @relay(plural: true) {
@@ -692,7 +743,9 @@ function ArrayOfNullableFragmentResolver(usersKey: ReadonlyArray<UserComponent_u
         usersKey,
     );
 
-    return data?.map(thing => `${thing.id}: ${thing.name}, ${thing.profile_picture}`);
+    return data?.map(
+        (thing) => `${thing.id}: ${thing.name}, ${thing.profile_picture}`,
+    );
 }
 
 // ~~~~~~~~~~~~~~~~~~~~~
@@ -720,10 +773,10 @@ requestSubscription(environment, {
     onCompleted: () => {
         return;
     },
-    onError: _error => {
+    onError: (_error) => {
         return;
     },
-    onNext: _response => {
+    onNext: (_response) => {
         return;
     },
     updater: (_store, _data) => {
@@ -735,8 +788,17 @@ requestSubscription(environment, {
 // ConnectionInterface
 // ~~~~~~~~~~~~~~~~~~~~~
 
-const { CURSOR, EDGES, END_CURSOR, HAS_NEXT_PAGE, HAS_PREV_PAGE, NODE, PAGE_INFO, PAGE_INFO_TYPE, START_CURSOR } =
-    ConnectionInterface.get();
+const {
+    CURSOR,
+    EDGES,
+    END_CURSOR,
+    HAS_NEXT_PAGE,
+    HAS_PREV_PAGE,
+    NODE,
+    PAGE_INFO,
+    PAGE_INFO_TYPE,
+    START_CURSOR,
+} = ConnectionInterface.get();
 
 ConnectionInterface.inject({
     CURSOR: "cursor",

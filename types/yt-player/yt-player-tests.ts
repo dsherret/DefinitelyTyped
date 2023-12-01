@@ -71,7 +71,7 @@ player.videoId;
 
 player.on("timeupdate", (sec: number) => {});
 player.on("playbackRateChange", (rate: number) => {});
-player.on("playbackQualityChange", quality => {});
+player.on("playbackQualityChange", (quality) => {});
 
 player.on("buffering", () => {});
 player.on("unstarted", () => {});

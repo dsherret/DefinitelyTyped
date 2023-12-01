@@ -39,7 +39,10 @@ export declare class PNG extends stream.Writable {
     on(event: "parsed", callback: (data: Buffer) => void): this;
     on(event: "error", callback: (err: Error) => void): this;
 
-    parse(data: string | Buffer, callback?: (err: Error, data: Buffer) => void): PNG;
+    parse(
+        data: string | Buffer,
+        callback?: (err: Error, data: Buffer) => void,
+    ): PNG;
     pack(): PNG;
 
     static bitblt(
@@ -53,7 +56,15 @@ export declare class PNG extends stream.Writable {
         deltaY: number,
     ): void;
 
-    bitblt(dst: PNG, srcX: number, srcY: number, width: number, height: number, deltaX: number, deltaY: number): PNG;
+    bitblt(
+        dst: PNG,
+        srcX: number,
+        srcY: number,
+        width: number,
+        height: number,
+        deltaX: number,
+        deltaY: number,
+    ): PNG;
 }
 
 export declare namespace PNG {

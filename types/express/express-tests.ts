@@ -18,7 +18,7 @@ namespace express_tests {
     app.use(
         "/static",
         express.static(__dirname + "/public", {
-            setHeaders: res => {
+            setHeaders: (res) => {
                 // $ExpectType Response<any, Record<string, any>>
                 res;
                 res.set("foo", "bar");
@@ -32,10 +32,17 @@ namespace express_tests {
         next();
     });
 
-    app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
-        console.error(err);
-        next(err);
-    });
+    app.use(
+        (
+            err: any,
+            req: express.Request,
+            res: express.Response,
+            next: express.NextFunction,
+        ) => {
+            console.error(err);
+            next(err);
+        },
+    );
 
     app.get("/", (req, res) => {
         res.send("hello world");
@@ -58,7 +65,11 @@ namespace express_tests {
         res.json(Object.keys(req.body));
     });
 
-    const router = express.Router({ caseSensitive: true, mergeParams: true, strict: true });
+    const router = express.Router({
+        caseSensitive: true,
+        mergeParams: true,
+        strict: true,
+    });
 
     const pathStr = "test";
     const pathRE: RegExp = /test/;
@@ -120,7 +131,7 @@ namespace express_tests {
         const header3: string | undefined = req.header("header");
 
         req.headers.existingHeader as string;
-        (req.headers.nonExistingHeader as any) as undefined;
+        req.headers.nonExistingHeader as any as undefined;
 
         // Since 4.14.0 req.range() has options
         req.range(2, { combine: true });
@@ -140,14 +151,14 @@ namespace express_tests {
     );
 
     // Params defaults to typed object
-    router.get("/:foo", req => {
+    router.get("/:foo", (req) => {
         req.params.foo; // $ExpectType string
         // @ts-expect-error
         req.params[0];
     });
 
     // Params can used as an array
-    router.get<ParamsArray>("/*", req => {
+    router.get<ParamsArray>("/*", (req) => {
         req.params[0]; // $ExpectType string
         req.params.length; // $ExpectType number
     });
@@ -166,7 +177,7 @@ namespace express_tests {
 
     // Params can be a custom type
     // NB. out-of-the-box all params are strings, however, other types are allowed to accomadate request validation/coersion middleware
-    router.get<{ foo: string; bar: number }>("/:foo/:bar", req => {
+    router.get<{ foo: string; bar: number }>("/:foo/:bar", (req) => {
         req.params.foo; // $ExpectType string
         req.params.bar; // $ExpectType number
         // @ts-expect-error
@@ -182,12 +193,15 @@ namespace express_tests {
     });
 
     // Params can be a custom type and can be specified via an explicit param type (express)
-    router.get("/:foo/:bar", (req: express.Request<{ foo: string; bar: number }>) => {
-        req.params.foo; // $ExpectType string
-        req.params.bar; // $ExpectType number
-        // @ts-expect-error
-        req.params.baz;
-    });
+    router.get(
+        "/:foo/:bar",
+        (req: express.Request<{ foo: string; bar: number }>) => {
+            req.params.foo; // $ExpectType string
+            req.params.bar; // $ExpectType number
+            // @ts-expect-error
+            req.params.baz;
+        },
+    );
 
     // Query can be a custom type
     router.get("/:foo", (req: express.Request<{}, any, any, { q: string }>) => {
@@ -202,11 +216,14 @@ namespace express_tests {
     });
 
     // Locals can be a custom type
-    router.get("/locals", (req, res: express.Response<any, { foo: boolean }>) => {
-        res.locals.foo; // $ExpectType boolean
-        // @ts-expect-error
-        res.locals.bar;
-    });
+    router.get(
+        "/locals",
+        (req, res: express.Response<any, { foo: boolean }>) => {
+            res.locals.foo; // $ExpectType boolean
+            // @ts-expect-error
+            res.locals.bar;
+        },
+    );
 
     // Response will default to any type
     router.get("/", (req: Request, res: express.Response) => {
@@ -247,7 +264,7 @@ namespace express_tests {
     app.use("/sub-app", express());
 
     // Test on mount event
-    app.on("mount", parent => true);
+    app.on("mount", (parent) => true);
 
     // Test mountpath
     const mountPath: string | string[] = app.mountpath;
@@ -257,10 +274,20 @@ namespace express_tests {
     const next: express.NextFunction = () => {};
 
     // Make sure we can use every generic
-    const someOtherHandler: express.RequestHandler<{}, any, any, { foo: string }> = (req, res, next) => next();
+    const someOtherHandler: express.RequestHandler<
+        {},
+        any,
+        any,
+        { foo: string }
+    > = (req, res, next) => next();
 
     // Make sure we can use every generic
-    const someOtherErrorHandler: express.ErrorRequestHandler<{}, any, any, { foo: string }> = (req, res) => {};
+    const someOtherErrorHandler: express.ErrorRequestHandler<
+        {},
+        any,
+        any,
+        { foo: string }
+    > = (req, res) => {};
 }
 
 /***************************

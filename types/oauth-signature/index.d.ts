@@ -13,7 +13,11 @@ declare namespace OauthSignature {
     }
 
     class SignatureBaseString {
-        constructor(httpMethod: string, url: string, parameters: { [key: string]: any });
+        constructor(
+            httpMethod: string,
+            url: string,
+            parameters: { [key: string]: any },
+        );
 
         generate(): string;
     }
@@ -56,7 +60,11 @@ declare namespace OauthSignature {
     }
 
     class HmacSha1Signature {
-        constructor(signatureBaseString: string, consumerSecret?: string, tokenSecret?: string);
+        constructor(
+            signatureBaseString: string,
+            consumerSecret?: string,
+            tokenSecret?: string,
+        );
         generate(encode?: boolean): string;
     }
 

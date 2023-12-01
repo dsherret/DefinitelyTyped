@@ -6,22 +6,66 @@ interface KnockoutObservableArrayFunctions<T> {
     /* **
    Collections
   *****/
-    each<TResult>(iterator: _.ListIterator<T, TResult>, context?: any): TResult[];
-    each<TResult>(iterator: _.ObjectIterator<T, TResult>, context?: any): TResult[];
-    forEach<TResult>(iterator: _.ObjectIterator<T, TResult>, context?: any): TResult[];
-    forEach<TResult>(iterator: _.ListIterator<T, TResult>, context?: any): TResult[];
+    each<TResult>(
+        iterator: _.ListIterator<T, TResult>,
+        context?: any,
+    ): TResult[];
+    each<TResult>(
+        iterator: _.ObjectIterator<T, TResult>,
+        context?: any,
+    ): TResult[];
+    forEach<TResult>(
+        iterator: _.ObjectIterator<T, TResult>,
+        context?: any,
+    ): TResult[];
+    forEach<TResult>(
+        iterator: _.ListIterator<T, TResult>,
+        context?: any,
+    ): TResult[];
 
-    map<TResult>(iterator: _.ListIterator<T, TResult>, context?: any): TResult[];
-    map<TResult>(iterator: _.ObjectIterator<T, TResult>, context?: any): TResult[];
-    collect<TResult>(iterator: _.ListIterator<T, TResult>, context?: any): TResult[];
-    collect<TResult>(iterator: _.ObjectIterator<T, TResult>, context?: any): TResult[];
+    map<TResult>(
+        iterator: _.ListIterator<T, TResult>,
+        context?: any,
+    ): TResult[];
+    map<TResult>(
+        iterator: _.ObjectIterator<T, TResult>,
+        context?: any,
+    ): TResult[];
+    collect<TResult>(
+        iterator: _.ListIterator<T, TResult>,
+        context?: any,
+    ): TResult[];
+    collect<TResult>(
+        iterator: _.ObjectIterator<T, TResult>,
+        context?: any,
+    ): TResult[];
 
-    reduce<TResult>(iterator: _.MemoIterator<T, TResult>, memo: TResult, context?: any): TResult;
-    inject<TResult>(iterator: _.MemoIterator<T, TResult>, memo: TResult, context?: any): TResult;
-    foldl<TResult>(iterator: _.MemoIterator<T, TResult>, memo: TResult, context?: any): TResult;
+    reduce<TResult>(
+        iterator: _.MemoIterator<T, TResult>,
+        memo: TResult,
+        context?: any,
+    ): TResult;
+    inject<TResult>(
+        iterator: _.MemoIterator<T, TResult>,
+        memo: TResult,
+        context?: any,
+    ): TResult;
+    foldl<TResult>(
+        iterator: _.MemoIterator<T, TResult>,
+        memo: TResult,
+        context?: any,
+    ): TResult;
 
-    reduceRight<TResult>(iterator: _.MemoIterator<T, TResult>, memo: TResult, context?: any): TResult;
-    foldr<TResult>(iterator: _.MemoIterator<T, TResult>, memo: TResult, context?: any): TResult;
+    reduceRight<TResult>(
+        iterator: _.MemoIterator<T, TResult>,
+        memo: TResult,
+        context?: any,
+    ): TResult;
+    foldr<TResult>(
+        iterator: _.MemoIterator<T, TResult>,
+        memo: TResult,
+        context?: any,
+    ): TResult;
 
     find(iterator: _.ListIterator<T, boolean>, context?: any): T;
     detect(iterator: _.ListIterator<T, boolean>, context?: any): T;
@@ -103,7 +147,10 @@ interface KnockoutObservableArrayFunctions<T> {
     uniq<TSort>(isSorted?: boolean, iterator?: _.ListIterator<T, TSort>): T[];
     uniq_<TSort>(isSorted?: boolean, iterator?: _.ListIterator<T, TSort>): T[];
     unique<TSort>(isSorted?: boolean, iterator?: _.ListIterator<T, TSort>): T[];
-    unique_<TSort>(isSorted?: boolean, iterator?: _.ListIterator<T, TSort>): T[];
+    unique_<TSort>(
+        isSorted?: boolean,
+        iterator?: _.ListIterator<T, TSort>,
+    ): T[];
 
     zip(...arrays: any[]): any[];
     zip_(...arrays: any[]): any[];

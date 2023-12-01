@@ -11,10 +11,14 @@ $form.deserialize(data);
 $form.deserialize(data, { filter: ":input" });
 
 // filter on function
-$form.deserialize(data, { filter: (index: number, element: HTMLInputElement) => false });
+$form.deserialize(data, {
+    filter: (index: number, element: HTMLInputElement) => false,
+});
 
 // filter on element
-$form.deserialize(data, { filter: document.getElementById("#test") as HTMLInputElement });
+$form.deserialize(data, {
+    filter: document.getElementById("#test") as HTMLInputElement,
+});
 
 // filter on selection
 $form.deserialize(data, { filter: $(".test") });

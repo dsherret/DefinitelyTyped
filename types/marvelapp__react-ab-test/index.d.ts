@@ -1,6 +1,9 @@
 /// <reference types="react" />
 
-export type ListenerCallback = (experimentName: string, variantName: string) => void;
+export type ListenerCallback = (
+    experimentName: string,
+    variantName: string,
+) => void;
 export interface Subscription {
     remove(): void;
     listener: ListenerCallback;
@@ -9,11 +12,27 @@ export interface Subscription {
 
 export namespace emitter {
     function emitWin(experimentName: string): void;
-    function addActiveVariantListener(eventName: string | ListenerCallback, callback?: ListenerCallback): Subscription;
-    function addPlayListener(eventName: string | ListenerCallback, callback?: ListenerCallback): Subscription;
-    function addWinListener(eventName: string | ListenerCallback, callback?: ListenerCallback): Subscription;
-    function defineVariants(experimentName: string, variantNames: string[], variantWeights?: number[]): void;
-    function setActiveVariant(experimentName: string, variantName: string): void;
+    function addActiveVariantListener(
+        eventName: string | ListenerCallback,
+        callback?: ListenerCallback,
+    ): Subscription;
+    function addPlayListener(
+        eventName: string | ListenerCallback,
+        callback?: ListenerCallback,
+    ): Subscription;
+    function addWinListener(
+        eventName: string | ListenerCallback,
+        callback?: ListenerCallback,
+    ): Subscription;
+    function defineVariants(
+        experimentName: string,
+        variantNames: string[],
+        variantWeights?: number[],
+    ): void;
+    function setActiveVariant(
+        experimentName: string,
+        variantName: string,
+    ): void;
     function getActiveVariant(experimentName: string): string;
     function calculateActiveVariant(
         experimentName: string,
@@ -22,7 +41,11 @@ export namespace emitter {
     ): string;
     function getSortedVariants(experimentName: string): string[];
     function setCustomDistributionAlgorithm(
-        customAlgorithm: (experimentName: string, userIdentifier: string, defaultVariantName?: string) => void,
+        customAlgorithm: (
+            experimentName: string,
+            userIdentifier: string,
+            defaultVariantName?: string,
+        ) => void,
     ): void;
 }
 
@@ -43,7 +66,10 @@ export function Experiment({
 export function Variant({
     name,
     children,
-}: { name: string; children: React.ReactNode }): JSX.Element;
+}: {
+    name: string;
+    children: React.ReactNode;
+}): JSX.Element;
 
 export namespace experimentDebugger {
     function setDebuggerAvailable(isAvailable: boolean): void;

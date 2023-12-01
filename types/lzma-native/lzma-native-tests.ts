@@ -7,18 +7,18 @@ const output = fs.createWriteStream("tsconfig.json.xz");
 
 input.pipe(compressor).pipe(output);
 
-lzma.compress("Banana", undefined, result => {
+lzma.compress("Banana", undefined, (result) => {
     console.log(result); // <Buffer fd 37 7a 58 5a 00 00 01 69 22 de 36 02 00 21 ...>
 });
 
-lzma.compress("Bananas", 6, result => {
-    lzma.decompress(result, undefined, decompressedResult => {
+lzma.compress("Bananas", 6, (result) => {
+    lzma.decompress(result, undefined, (decompressedResult) => {
         console.log(decompressedResult.toString() === "Bananas");
     });
 });
 
-lzma.LZMA().compress("Bananas", 4, result => {
-    lzma.LZMA().decompress(result, decompressedResult => {
+lzma.LZMA().compress("Bananas", 4, (result) => {
+    lzma.LZMA().decompress(result, (decompressedResult) => {
         console.log("Bananas" === decompressedResult.toString());
     });
 });

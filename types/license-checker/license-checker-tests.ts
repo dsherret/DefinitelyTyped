@@ -30,18 +30,15 @@ checker.init(
         if (err) {
             throw err;
         } else {
-            const licenses = Object.keys(json).reduce(
-                (memo, key) => {
-                    const license = json[key];
-                    const { name, version, repository, licenseText } = license;
-                    if (licenseText == null) {
-                        return memo;
-                    }
-                    memo.push(license);
+            const licenses = Object.keys(json).reduce((memo, key) => {
+                const license = json[key];
+                const { name, version, repository, licenseText } = license;
+                if (licenseText == null) {
                     return memo;
-                },
-                [] as checker.ModuleInfo[],
-            );
+                }
+                memo.push(license);
+                return memo;
+            }, [] as checker.ModuleInfo[]);
         }
     },
 );

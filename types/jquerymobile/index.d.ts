@@ -208,7 +208,9 @@ interface FilterableOptions {
     defaults?: boolean | undefined;
     disabled?: boolean | undefined;
     enhanced?: boolean | undefined;
-    filterCallback?: { (index: number, searchValue?: string): boolean } | undefined;
+    filterCallback?:
+        | { (index: number, searchValue?: string): boolean }
+        | undefined;
     filterPlaceholder?: string | undefined;
     filterReveal?: boolean | undefined;
     filterTheme?: string | undefined;

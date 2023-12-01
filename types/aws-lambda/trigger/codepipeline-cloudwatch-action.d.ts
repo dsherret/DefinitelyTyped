@@ -1,9 +1,22 @@
 import { Handler } from "../handler";
 
-export type CodePipelineCloudWatchActionHandler = Handler<CodePipelineCloudWatchActionEvent, void>;
+export type CodePipelineCloudWatchActionHandler = Handler<
+    CodePipelineCloudWatchActionEvent,
+    void
+>;
 
-export type CodePipelineActionCategory = "Approval" | "Build" | "Deploy" | "Invoke" | "Source" | "Test";
-export type CodePipelineActionState = "STARTED" | "SUCCEEDED" | "FAILED" | "CANCELED";
+export type CodePipelineActionCategory =
+    | "Approval"
+    | "Build"
+    | "Deploy"
+    | "Invoke"
+    | "Source"
+    | "Test";
+export type CodePipelineActionState =
+    | "STARTED"
+    | "SUCCEEDED"
+    | "FAILED"
+    | "CANCELED";
 
 export interface CodePipelineCloudWatchActionEvent {
     version: string;

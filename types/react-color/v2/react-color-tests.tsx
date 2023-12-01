@@ -16,7 +16,13 @@ import {
     SwatchesPicker,
     TwitterPicker,
 } from "react-color";
-import { Alpha, Checkboard, EditableInput, Hue, Saturation } from "react-color/lib/components/common";
+import {
+    Alpha,
+    Checkboard,
+    EditableInput,
+    Hue,
+    Saturation,
+} from "react-color/lib/components/common";
 import { AlphaColorResult } from "react-color/lib/components/common/Alpha";
 import { EditableInputColorResult } from "react-color/lib/components/common/EditableInput";
 import { HueColorResult } from "react-color/lib/components/common/Hue";
@@ -27,7 +33,9 @@ interface CustomProps extends CustomPickerInjectedProps {
     customProp: string;
 }
 
-const CustomComponent: React.ComponentType<CustomProps> = (props: CustomProps) => {
+const CustomComponent: React.ComponentType<CustomProps> = (
+    props: CustomProps,
+) => {
     const { customProp } = props;
 
     function onChangeAlpha(color: AlphaColorResult) {
@@ -110,7 +118,6 @@ const CustomComponent: React.ComponentType<CustomProps> = (props: CustomProps) =
                 {...props}
                 onChange={onChangeSaturation}
             />
-
             <EditableInput onChange={onChangeInputNoLabel} />
             // prettier-ignore
             {/* @ts-expect-error */}

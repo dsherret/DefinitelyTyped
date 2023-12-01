@@ -6,13 +6,20 @@ declare global {
 /**
  * The implementation of the generator.
  */
-export type InnerFunction<T = undefined, TYield = unknown, TReturn = unknown, TNext = unknown> = (
-    this: T,
-    context: Context<TYield, TReturn, TNext>,
-) => unknown;
+export type InnerFunction<
+    T = undefined,
+    TYield = unknown,
+    TReturn = unknown,
+    TNext = unknown,
+> = (this: T, context: Context<TYield, TReturn, TNext>) => unknown;
 
 export type ContextLocation = number | "end";
-export type CompletionType = "normal" | "return" | "throw" | "break" | "continue";
+export type CompletionType =
+    | "normal"
+    | "return"
+    | "throw"
+    | "break"
+    | "continue";
 
 // prettier-ignore
 export type TryLocationsList = ReadonlyArray<
@@ -125,7 +132,10 @@ export interface Context<TYield = unknown, TReturn = unknown, TNext = unknown> {
      * @param record The completion record.
      * @param afterLoc The location to resume the generator at, only used by normal completions.
      */
-    complete(record: Readonly<CompletionRecord>, afterLoc?: ContextLocation): unknown;
+    complete(
+        record: Readonly<CompletionRecord>,
+        afterLoc?: ContextLocation,
+    ): unknown;
 
     /**
      * Used to signify the end of a finally block.
@@ -160,7 +170,12 @@ export interface Context<TYield = unknown, TReturn = unknown, TNext = unknown> {
     ]: any;
 }
 
-export function wrap<T = undefined, TYield = unknown, TReturn = unknown, TNext = unknown>(
+export function wrap<
+    T = undefined,
+    TYield = unknown,
+    TReturn = unknown,
+    TNext = unknown,
+>(
     innerFn: InnerFunction<T, TYield, TReturn, TNext>,
     // eslint-disable-next-line @typescript-eslint/ban-types
     outerFn?: Function | null,
@@ -168,7 +183,8 @@ export function wrap<T = undefined, TYield = unknown, TReturn = unknown, TNext =
     tryLocsList?: TryLocationsList,
 ): Generator<TYield, TReturn, TNext>;
 
-export interface ResolvablePromiseConstructorLike extends PromiseConstructorLike {
+export interface ResolvablePromiseConstructorLike
+    extends PromiseConstructorLike {
     resolve<T = void>(value?: T): PromiseLike<T>;
 }
 
@@ -185,7 +201,9 @@ export class AsyncIterator<TYield = unknown, TReturn = unknown, TNext = unknown>
 
     // NOTE: 'next' is defined using a tuple to ensure we report the correct assignability errors in all places.
     next(...args: [] | [TNext]): Promise<IteratorResult<TYield, TReturn>>;
-    return(value: TReturn | PromiseLike<TReturn>): Promise<IteratorResult<TYield, TReturn>>;
+    return(
+        value: TReturn | PromiseLike<TReturn>,
+    ): Promise<IteratorResult<TYield, TReturn>>;
     throw(e: any): Promise<IteratorResult<TYield, TReturn>>;
 
     [Symbol.asyncIterator](): this;
@@ -198,8 +216,12 @@ export function async<T = undefined, TYield = unknown, TReturn = unknown>(
     tryLocsList?: TryLocationsList,
     PromiseImpl?: ResolvablePromiseConstructorLike,
 ): AsyncIterator<
-    TYield extends PromiseLike<infer Await> ? Await : Exclude<TYield, awrap<unknown>>,
-    TReturn extends PromiseLike<infer Await> ? Await : Exclude<TReturn, awrap<unknown>>
+    TYield extends PromiseLike<infer Await>
+        ? Await
+        : Exclude<TYield, awrap<unknown>>,
+    TReturn extends PromiseLike<infer Await>
+        ? Await
+        : Exclude<TReturn, awrap<unknown>>
 >;
 export function async<T = undefined, TReturn = unknown>(
     innerFn: InnerFunction<T, unknown, TReturn>,
@@ -227,5 +249,9 @@ export function keys(object: {}): () => IteratorResult<string, undefined>;
 // eslint-disable-next-line @typescript-eslint/ban-types
 export function mark<F extends Function>(genFun: F): F & GeneratorFunction;
 
-export function values<I extends Iterator<unknown, unknown, unknown>>(iterable: { [Symbol.iterator](): I }): I;
-export function values<T>(iterableOrArrayLike: Iterable<T> | ArrayLike<T>): Iterator<T, unknown, unknown>;
+export function values<
+    I extends Iterator<unknown, unknown, unknown>,
+>(iterable: { [Symbol.iterator](): I }): I;
+export function values<T>(
+    iterableOrArrayLike: Iterable<T> | ArrayLike<T>,
+): Iterator<T, unknown, unknown>;

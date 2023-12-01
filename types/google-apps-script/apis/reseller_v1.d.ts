@@ -5,13 +5,24 @@ declare namespace GoogleAppsScript {
                 // Get a customer account.
                 get(customerId: string): AdminReseller.Schema.Customer;
                 // Order a new customer's account.
-                insert(resource: Schema.Customer): AdminReseller.Schema.Customer;
+                insert(
+                    resource: Schema.Customer,
+                ): AdminReseller.Schema.Customer;
                 // Order a new customer's account.
-                insert(resource: Schema.Customer, optionalArgs: object): AdminReseller.Schema.Customer;
+                insert(
+                    resource: Schema.Customer,
+                    optionalArgs: object,
+                ): AdminReseller.Schema.Customer;
                 // Update a customer account's settings. This method supports patch semantics.
-                patch(resource: Schema.Customer, customerId: string): AdminReseller.Schema.Customer;
+                patch(
+                    resource: Schema.Customer,
+                    customerId: string,
+                ): AdminReseller.Schema.Customer;
                 // Update a customer account's settings.
-                update(resource: Schema.Customer, customerId: string): AdminReseller.Schema.Customer;
+                update(
+                    resource: Schema.Customer,
+                    customerId: string,
+                ): AdminReseller.Schema.Customer;
             }
             interface ResellernotifyCollection {
                 // Returns all the details of the watch corresponding to the reseller.
@@ -19,15 +30,22 @@ declare namespace GoogleAppsScript {
                 // Registers a Reseller for receiving notifications.
                 register(): AdminReseller.Schema.ResellernotifyResource;
                 // Registers a Reseller for receiving notifications.
-                register(optionalArgs: object): AdminReseller.Schema.ResellernotifyResource;
+                register(
+                    optionalArgs: object,
+                ): AdminReseller.Schema.ResellernotifyResource;
                 // Unregisters a Reseller for receiving notifications.
                 unregister(): AdminReseller.Schema.ResellernotifyResource;
                 // Unregisters a Reseller for receiving notifications.
-                unregister(optionalArgs: object): AdminReseller.Schema.ResellernotifyResource;
+                unregister(
+                    optionalArgs: object,
+                ): AdminReseller.Schema.ResellernotifyResource;
             }
             interface SubscriptionsCollection {
                 // Activates a subscription previously suspended by the reseller
-                activate(customerId: string, subscriptionId: string): AdminReseller.Schema.Subscription;
+                activate(
+                    customerId: string,
+                    subscriptionId: string,
+                ): AdminReseller.Schema.Subscription;
                 // Update a subscription plan. Use this method to update a plan for a 30-day trial or a flexible plan subscription to an annual commitment plan with monthly or yearly payments.
                 changePlan(
                     resource: Schema.ChangePlanRequest,
@@ -47,9 +65,15 @@ declare namespace GoogleAppsScript {
                     subscriptionId: string,
                 ): AdminReseller.Schema.Subscription;
                 // Get a specific subscription.
-                get(customerId: string, subscriptionId: string): AdminReseller.Schema.Subscription;
+                get(
+                    customerId: string,
+                    subscriptionId: string,
+                ): AdminReseller.Schema.Subscription;
                 // Create or transfer a subscription.
-                insert(resource: Schema.Subscription, customerId: string): AdminReseller.Schema.Subscription;
+                insert(
+                    resource: Schema.Subscription,
+                    customerId: string,
+                ): AdminReseller.Schema.Subscription;
                 // Create or transfer a subscription.
                 insert(
                     resource: Schema.Subscription,
@@ -61,11 +85,21 @@ declare namespace GoogleAppsScript {
                 // List of subscriptions managed by the reseller. The list can be all subscriptions, all of a customer's subscriptions, or all of a customer's transferable subscriptions.
                 list(optionalArgs: object): AdminReseller.Schema.Subscriptions;
                 // Cancel or transfer a subscription to direct.
-                remove(customerId: string, subscriptionId: string, deletionType: string): void;
+                remove(
+                    customerId: string,
+                    subscriptionId: string,
+                    deletionType: string,
+                ): void;
                 // Immediately move a 30-day free trial subscription to a paid service subscription.
-                startPaidService(customerId: string, subscriptionId: string): AdminReseller.Schema.Subscription;
+                startPaidService(
+                    customerId: string,
+                    subscriptionId: string,
+                ): AdminReseller.Schema.Subscription;
                 // Suspends an active subscription.
-                suspend(customerId: string, subscriptionId: string): AdminReseller.Schema.Subscription;
+                suspend(
+                    customerId: string,
+                    subscriptionId: string,
+                ): AdminReseller.Schema.Subscription;
             }
         }
         namespace Schema {
@@ -124,7 +158,9 @@ declare namespace GoogleAppsScript {
                 kind?: string | undefined;
                 plan?: AdminReseller.Schema.SubscriptionPlan | undefined;
                 purchaseOrderId?: string | undefined;
-                renewalSettings?: AdminReseller.Schema.RenewalSettings | undefined;
+                renewalSettings?:
+                    | AdminReseller.Schema.RenewalSettings
+                    | undefined;
                 resourceUiUrl?: string | undefined;
                 seats?: AdminReseller.Schema.Seats | undefined;
                 skuId?: string | undefined;
@@ -132,11 +168,17 @@ declare namespace GoogleAppsScript {
                 status?: string | undefined;
                 subscriptionId?: string | undefined;
                 suspensionReasons?: string[] | undefined;
-                transferInfo?: AdminReseller.Schema.SubscriptionTransferInfo | undefined;
-                trialSettings?: AdminReseller.Schema.SubscriptionTrialSettings | undefined;
+                transferInfo?:
+                    | AdminReseller.Schema.SubscriptionTransferInfo
+                    | undefined;
+                trialSettings?:
+                    | AdminReseller.Schema.SubscriptionTrialSettings
+                    | undefined;
             }
             interface SubscriptionPlan {
-                commitmentInterval?: AdminReseller.Schema.SubscriptionPlanCommitmentInterval | undefined;
+                commitmentInterval?:
+                    | AdminReseller.Schema.SubscriptionPlanCommitmentInterval
+                    | undefined;
                 isCommitmentPlan?: boolean | undefined;
                 planName?: string | undefined;
             }
@@ -161,8 +203,12 @@ declare namespace GoogleAppsScript {
     }
     interface AdminReseller {
         Customers?: AdminReseller.Collection.CustomersCollection | undefined;
-        Resellernotify?: AdminReseller.Collection.ResellernotifyCollection | undefined;
-        Subscriptions?: AdminReseller.Collection.SubscriptionsCollection | undefined;
+        Resellernotify?:
+            | AdminReseller.Collection.ResellernotifyCollection
+            | undefined;
+        Subscriptions?:
+            | AdminReseller.Collection.SubscriptionsCollection
+            | undefined;
         // Create a new instance of Address
         newAddress(): AdminReseller.Schema.Address;
         // Create a new instance of ChangePlanRequest

@@ -22,7 +22,7 @@ blend(["white", "rgba(0, 0, 0, 0.5)"]);
 blend(["white", "rgba(0, 0, 0, 0.5)"], "darken");
 
 // $ExpectType Rgb
-blend(["white", "rgba(0, 0, 0, 0.5)"], b => b * 2);
+blend(["white", "rgba(0, 0, 0, 0.5)"], (b) => b * 2);
 
 // $ExpectType Rgb
 blend(["white", "rgba(0, 0, 0, 0.5)"], (b, s) => b + s);

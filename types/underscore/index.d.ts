@@ -68,27 +68,42 @@ declare namespace _ {
 
     type Collection<T> = List<T> | Dictionary<T>;
 
-    type CollectionKey<V> = V extends never ? any
-        : V extends List<any> ? number
-        : V extends Dictionary<any> ? string
-        : V extends undefined ? undefined
-        : never;
+    type CollectionKey<V> = V extends never
+        ? any
+        : V extends List<any>
+          ? number
+          : V extends Dictionary<any>
+            ? string
+            : V extends undefined
+              ? undefined
+              : never;
 
     interface Predicate<T> {
         (value: T): boolean;
     }
 
-    interface CollectionIterator<T extends TypeOfList<V> | TypeOfDictionary<V, any>, TResult, V = Collection<T>> {
+    interface CollectionIterator<
+        T extends TypeOfList<V> | TypeOfDictionary<V, any>,
+        TResult,
+        V = Collection<T>,
+    > {
         (element: T, key: CollectionKey<V>, collection: V): TResult;
     }
 
-    interface ListIterator<T extends TypeOfList<V>, TResult, V = List<T>> extends CollectionIterator<T, TResult, V> {}
+    interface ListIterator<T extends TypeOfList<V>, TResult, V = List<T>>
+        extends CollectionIterator<T, TResult, V> {}
 
-    interface ObjectIterator<T extends TypeOfDictionary<V, any>, TResult, V = Dictionary<T>>
-        extends CollectionIterator<T, TResult, V>
-    {}
+    interface ObjectIterator<
+        T extends TypeOfDictionary<V, any>,
+        TResult,
+        V = Dictionary<T>,
+    > extends CollectionIterator<T, TResult, V> {}
 
-    type Iteratee<V, R, T extends TypeOfCollection<V, any> = TypeOfCollection<V>> =
+    type Iteratee<
+        V,
+        R,
+        T extends TypeOfCollection<V, any> = TypeOfCollection<V>,
+    > =
         | CollectionIterator<T, R, V>
         | string
         | number
@@ -97,41 +112,57 @@ declare namespace _ {
         | null
         | undefined;
 
-    type IterateeResult<I, T> = I extends (...args: any[]) => infer R ? R
-        : I extends keyof T ? T[I]
-        : I extends string | number | Array<string | number> ? any
-        : I extends object ? boolean
-        : I extends null | undefined ? T
-        : never;
+    type IterateeResult<I, T> = I extends (...args: any[]) => infer R
+        ? R
+        : I extends keyof T
+          ? T[I]
+          : I extends string | number | Array<string | number>
+            ? any
+            : I extends object
+              ? boolean
+              : I extends null | undefined
+                ? T
+                : never;
 
     type PropertyTypeOrAny<T, K> = K extends keyof T ? T[K] : any;
 
-    interface MemoCollectionIterator<T extends TypeOfList<V> | TypeOfDictionary<V, any>, TResult, V = Collection<T>> {
+    interface MemoCollectionIterator<
+        T extends TypeOfList<V> | TypeOfDictionary<V, any>,
+        TResult,
+        V = Collection<T>,
+    > {
         (prev: TResult, curr: T, key: CollectionKey<V>, collection: V): TResult;
     }
 
     interface MemoIterator<T extends TypeOfList<V>, TResult, V = List<T>>
-        extends MemoCollectionIterator<T, TResult, V>
-    {}
+        extends MemoCollectionIterator<T, TResult, V> {}
 
-    interface MemoObjectIterator<T extends TypeOfDictionary<V>, TResult, V = Dictionary<T>>
-        extends MemoCollectionIterator<T, TResult, V>
-    {}
+    interface MemoObjectIterator<
+        T extends TypeOfDictionary<V>,
+        TResult,
+        V = Dictionary<T>,
+    > extends MemoCollectionIterator<T, TResult, V> {}
 
-    type TypeOfList<V> = V extends never ? any
-        : V extends List<infer T> ? T
-        : never;
+    type TypeOfList<V> = V extends never
+        ? any
+        : V extends List<infer T>
+          ? T
+          : never;
 
-    type TypeOfDictionary<V, TDefault = never> = V extends never ? any
-        : V extends Dictionary<infer T> ? T
-        : TDefault;
+    type TypeOfDictionary<V, TDefault = never> = V extends never
+        ? any
+        : V extends Dictionary<infer T>
+          ? T
+          : TDefault;
 
-    type TypeOfCollection<V, TObjectDefault = never> = V extends List<any> ? TypeOfList<V>
+    type TypeOfCollection<V, TObjectDefault = never> = V extends List<any>
+        ? TypeOfList<V>
         : TypeOfDictionary<V, TObjectDefault>;
 
     type DeepTypeOfCollection<V, P> = P extends [infer H, ...infer R]
-        ? H extends keyof V ? DeepTypeOfCollection<V[H], R>
-        : never
+        ? H extends keyof V
+            ? DeepTypeOfCollection<V[H], R>
+            : never
         : V;
 
     type ListItemOrSelf<T> = T extends List<infer TItem> ? TItem : T;
@@ -139,28 +170,35 @@ declare namespace _ {
     // unfortunately it's not possible to recursively collapse all possible list dimensions to T[] at this time,
     // so give up after one dimension since that's likely the most common case
     // '& object' prevents strings from being matched by list checks so types like string[] don't end up resulting in any
-    type DeepestListItemOrSelf<T> = T extends List<infer TItem> & object ? TItem extends List<any> & object ? any
-        : TItem
+    type DeepestListItemOrSelf<T> = T extends List<infer TItem> & object
+        ? TItem extends List<any> & object
+            ? any
+            : TItem
         : T;
 
     // if T is an inferrable pair, the value type for the pair
     // if T is a list, assume that it contains pairs of some type, so any
     // if T isn't a list, there's no way that it can provide pairs, so never
-    type PairValue<T> = T extends Readonly<[string | number, infer TValue]> ? TValue
-        : T extends List<infer TValue> ? TValue
-        : never;
+    type PairValue<T> = T extends Readonly<[string | number, infer TValue]>
+        ? TValue
+        : T extends List<infer TValue>
+          ? TValue
+          : never;
 
     type AnyFalsy = undefined | null | false | "" | 0;
 
     type Truthy<T> = Exclude<T, AnyFalsy>;
 
-    type _Pick<V, K extends string> = Extract<K, keyof V> extends never ? Partial<V>
+    type _Pick<V, K extends string> = Extract<K, keyof V> extends never
+        ? Partial<V>
         : Pick<V, Extract<K, keyof V>>;
 
     // switch to Omit when the minimum TS version moves past 3.5
-    type _Omit<V, K extends string> = V extends never ? any
-        : Extract<K, keyof V> extends never ? Partial<V>
-        : Pick<V, Exclude<keyof V, K>>;
+    type _Omit<V, K extends string> = V extends never
+        ? any
+        : Extract<K, keyof V> extends never
+          ? Partial<V>
+          : Pick<V, Exclude<keyof V, K>>;
 
     type _ChainSingle<V> = _Chain<TypeOfCollection<V>, V>;
 
@@ -263,7 +301,11 @@ declare namespace _ {
         ): TResult;
         reduce<V extends Collection<any>, TResult = TypeOfCollection<V>>(
             collection: V,
-            iteratee: MemoCollectionIterator<TypeOfCollection<V>, TResult | TypeOfCollection<V>, V>,
+            iteratee: MemoCollectionIterator<
+                TypeOfCollection<V>,
+                TResult | TypeOfCollection<V>,
+                V
+            >,
         ): TResult | TypeOfCollection<V> | undefined;
 
         /**
@@ -297,7 +339,11 @@ declare namespace _ {
         ): TResult;
         reduceRight<V extends Collection<any>, TResult = TypeOfCollection<V>>(
             collection: V,
-            iteratee: MemoCollectionIterator<TypeOfCollection<V>, TResult | TypeOfCollection<V>, V>,
+            iteratee: MemoCollectionIterator<
+                TypeOfCollection<V>,
+                TResult | TypeOfCollection<V>,
+                V
+            >,
         ): TResult | TypeOfCollection<V> | undefined;
 
         /**
@@ -671,13 +717,8 @@ declare namespace _ {
          * @returns The first `n` elements of `list` or the first element if
          * `n` is omitted.
          */
-        first<V extends List<any>>(
-            list: V,
-        ): TypeOfList<V> | undefined;
-        first<V extends List<any>>(
-            list: V,
-            n: number,
-        ): Array<TypeOfList<V>>;
+        first<V extends List<any>>(list: V): TypeOfList<V> | undefined;
+        first<V extends List<any>>(list: V, n: number): Array<TypeOfList<V>>;
 
         /**
          * @see first
@@ -698,10 +739,7 @@ declare namespace _ {
          * optional, default = 1.
          * @returns The elements of `list` with the last `n` items omitted.
          */
-        initial<V extends List<any>>(
-            list: V,
-            n?: number,
-        ): Array<TypeOfList<V>>;
+        initial<V extends List<any>>(list: V, n?: number): Array<TypeOfList<V>>;
 
         /**
          * Returns the last element of `list`. Passing `n` will return the last
@@ -711,13 +749,8 @@ declare namespace _ {
          * @returns The last `n` elements of `list` or the last element if `n`
          * is omitted.
          */
-        last<V extends List<any>>(
-            list: V,
-        ): TypeOfList<V> | undefined;
-        last<V extends List<any>>(
-            list: V,
-            n: number,
-        ): Array<TypeOfList<V>>;
+        last<V extends List<any>>(list: V): TypeOfList<V> | undefined;
+        last<V extends List<any>>(list: V, n: number): Array<TypeOfList<V>>;
 
         /**
          * Returns the rest of the elements in `list`. Pass an `index` to
@@ -811,10 +844,7 @@ declare namespace _ {
          * @param others The lists of values to exclude from `list`.
          * @returns The contents of `list` without the values in `others`.
          */
-        difference<T>(
-            list: List<T>,
-            ...others: Array<List<T>>
-        ): T[];
+        difference<T>(list: List<T>, ...others: Array<List<T>>): T[];
 
         /**
          * Produces a duplicate-free version of `list`, using === to test
@@ -1007,11 +1037,7 @@ declare namespace _ {
          * @returns An array of numbers from start to `stop` with increments
          * of `step`.
          */
-        range(
-            startOrStop: number,
-            stop?: number,
-            step?: number,
-        ): number[];
+        range(startOrStop: number, stop?: number, step?: number): number[];
 
         /**
          * Chunks `list` into multiple arrays, each containing `length` or
@@ -1021,7 +1047,10 @@ declare namespace _ {
          * @returns The contents of `list` in chunks no greater than `length`
          * in size.
          */
-        chunk<V extends List<any>>(list: V, length: number): Array<Array<TypeOfList<V>>>;
+        chunk<V extends List<any>>(
+            list: V,
+            length: number,
+        ): Array<Array<TypeOfList<V>>>;
 
         /*************
          * Functions *
@@ -1035,11 +1064,7 @@ declare namespace _ {
          * @param arguments Additional arguments to pass to `fn` when called.
          * @return `fn` with `this` bound to `object`.
          */
-        bind(
-            func: Function,
-            context: any,
-            ...args: any[]
-        ): () => any;
+        bind(func: Function, context: any, ...args: any[]): () => any;
 
         /**
          * Binds a number of methods on the object, specified by methodNames, to be run in the context of that object
@@ -1050,10 +1075,7 @@ declare namespace _ {
          * @param methodNames The methods to bind to `object`, optional and if not provided all of `object`'s
          * methods are bound.
          */
-        bindAll(
-            object: any,
-            ...methodNames: string[]
-        ): any;
+        bindAll(object: any, ...methodNames: string[]): any;
 
         /**
          * Partially apply a function by filling in any number of its arguments, without changing its dynamic this value.
@@ -1064,10 +1086,7 @@ declare namespace _ {
          * @return `fn` with partially filled in arguments.
          */
 
-        partial<T1, T2>(
-            fn: { (p1: T1): T2 },
-            p1: T1,
-        ): { (): T2 };
+        partial<T1, T2>(fn: { (p1: T1): T2 }, p1: T1): { (): T2 };
 
         partial<T1, T2, T3>(
             fn: { (p1: T1, p2: T2): T3 },
@@ -2067,52 +2086,68 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5): T7 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
         ): { (p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
         ): { (p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
         ): { (p1: T1, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
         ): { (p4: T4, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
         ): { (p1: T1, p4: T4, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
         ): { (p2: T2, p4: T4, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
         ): { (p1: T1, p2: T2, p4: T4, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2120,7 +2155,9 @@ declare namespace _ {
         ): { (p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2128,7 +2165,9 @@ declare namespace _ {
         ): { (p1: T1, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2136,7 +2175,9 @@ declare namespace _ {
         ): { (p2: T2, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2144,7 +2185,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2152,7 +2195,9 @@ declare namespace _ {
         ): { (p3: T3, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2160,7 +2205,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2168,7 +2215,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2176,7 +2225,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p5: T5, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2185,7 +2236,9 @@ declare namespace _ {
         ): { (p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2194,7 +2247,9 @@ declare namespace _ {
         ): { (p1: T1, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2203,7 +2258,9 @@ declare namespace _ {
         ): { (p2: T2, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2212,7 +2269,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2221,7 +2280,9 @@ declare namespace _ {
         ): { (p3: T3, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2230,7 +2291,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2239,7 +2302,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2248,7 +2313,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2257,7 +2324,9 @@ declare namespace _ {
         ): { (p4: T4, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2266,7 +2335,9 @@ declare namespace _ {
         ): { (p1: T1, p4: T4, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2275,7 +2346,9 @@ declare namespace _ {
         ): { (p2: T2, p4: T4, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2284,7 +2357,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p4: T4, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2293,7 +2368,9 @@ declare namespace _ {
         ): { (p3: T3, p4: T4, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2302,7 +2379,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p4: T4, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2311,7 +2390,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p4: T4, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2320,7 +2401,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p4: T4, p6: T6, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2330,7 +2413,9 @@ declare namespace _ {
         ): { (p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2340,7 +2425,9 @@ declare namespace _ {
         ): { (p1: T1, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2350,7 +2437,9 @@ declare namespace _ {
         ): { (p2: T2, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2360,7 +2449,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2370,7 +2461,9 @@ declare namespace _ {
         ): { (p3: T3, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2380,7 +2473,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2390,7 +2485,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2400,7 +2497,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2410,7 +2509,9 @@ declare namespace _ {
         ): { (p4: T4, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2420,7 +2521,9 @@ declare namespace _ {
         ): { (p1: T1, p4: T4, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2430,7 +2533,9 @@ declare namespace _ {
         ): { (p2: T2, p4: T4, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2440,7 +2545,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p4: T4, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2450,7 +2557,9 @@ declare namespace _ {
         ): { (p3: T3, p4: T4, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2460,7 +2569,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p4: T4, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2470,7 +2581,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p4: T4, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2480,7 +2593,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p4: T4, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2490,7 +2605,9 @@ declare namespace _ {
         ): { (p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2500,7 +2617,9 @@ declare namespace _ {
         ): { (p1: T1, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2510,7 +2629,9 @@ declare namespace _ {
         ): { (p2: T2, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2520,7 +2641,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2530,7 +2653,9 @@ declare namespace _ {
         ): { (p3: T3, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2540,7 +2665,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2550,7 +2677,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2560,7 +2689,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2570,7 +2701,9 @@ declare namespace _ {
         ): { (p4: T4, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2580,7 +2713,9 @@ declare namespace _ {
         ): { (p1: T1, p4: T4, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2590,7 +2725,9 @@ declare namespace _ {
         ): { (p2: T2, p4: T4, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2600,7 +2737,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p4: T4, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2610,7 +2749,9 @@ declare namespace _ {
         ): { (p3: T3, p4: T4, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2620,7 +2761,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p4: T4, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2630,7 +2773,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p4: T4, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2640,7 +2785,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p7: T7): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2651,7 +2798,9 @@ declare namespace _ {
         ): { (): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2662,7 +2811,9 @@ declare namespace _ {
         ): { (p1: T1): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2673,7 +2824,9 @@ declare namespace _ {
         ): { (p2: T2): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2684,7 +2837,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2695,7 +2850,9 @@ declare namespace _ {
         ): { (p3: T3): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2706,7 +2863,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2717,7 +2876,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2728,7 +2889,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2739,7 +2902,9 @@ declare namespace _ {
         ): { (p4: T4): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2750,7 +2915,9 @@ declare namespace _ {
         ): { (p1: T1, p4: T4): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2761,7 +2928,9 @@ declare namespace _ {
         ): { (p2: T2, p4: T4): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2772,7 +2941,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p4: T4): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2783,7 +2954,9 @@ declare namespace _ {
         ): { (p3: T3, p4: T4): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2794,7 +2967,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p4: T4): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2805,7 +2980,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p4: T4): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2816,7 +2993,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p4: T4): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2827,7 +3006,9 @@ declare namespace _ {
         ): { (p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2838,7 +3019,9 @@ declare namespace _ {
         ): { (p1: T1, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2849,7 +3032,9 @@ declare namespace _ {
         ): { (p2: T2, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2860,7 +3045,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2871,7 +3058,9 @@ declare namespace _ {
         ): { (p3: T3, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2882,7 +3071,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2893,7 +3084,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2904,7 +3097,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -2915,7 +3110,9 @@ declare namespace _ {
         ): { (p4: T4, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -2926,7 +3123,9 @@ declare namespace _ {
         ): { (p1: T1, p4: T4, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2937,7 +3136,9 @@ declare namespace _ {
         ): { (p2: T2, p4: T4, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -2948,7 +3149,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p4: T4, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2959,7 +3162,9 @@ declare namespace _ {
         ): { (p3: T3, p4: T4, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -2970,7 +3175,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p4: T4, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2981,7 +3188,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p4: T4, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -2992,7 +3201,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -3003,7 +3214,9 @@ declare namespace _ {
         ): { (p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -3014,7 +3227,9 @@ declare namespace _ {
         ): { (p1: T1, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -3025,7 +3240,9 @@ declare namespace _ {
         ): { (p2: T2, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -3036,7 +3253,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -3047,7 +3266,9 @@ declare namespace _ {
         ): { (p3: T3, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -3058,7 +3279,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -3069,7 +3292,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -3080,7 +3305,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -3091,7 +3318,9 @@ declare namespace _ {
         ): { (p4: T4, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -3102,7 +3331,9 @@ declare namespace _ {
         ): { (p1: T1, p4: T4, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -3113,7 +3344,9 @@ declare namespace _ {
         ): { (p2: T2, p4: T4, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -3124,7 +3357,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p4: T4, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -3135,7 +3370,9 @@ declare namespace _ {
         ): { (p3: T3, p4: T4, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -3146,7 +3383,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p4: T4, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -3157,7 +3396,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p4: T4, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -3168,7 +3409,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p4: T4, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -3179,7 +3422,9 @@ declare namespace _ {
         ): { (p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -3190,7 +3435,9 @@ declare namespace _ {
         ): { (p1: T1, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -3201,7 +3448,9 @@ declare namespace _ {
         ): { (p2: T2, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -3212,7 +3461,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -3223,7 +3474,9 @@ declare namespace _ {
         ): { (p3: T3, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -3234,7 +3487,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -3245,7 +3500,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -3256,7 +3513,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p3: T3, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             p3: T3,
@@ -3267,7 +3526,9 @@ declare namespace _ {
         ): { (p4: T4, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             p3: T3,
@@ -3278,7 +3539,9 @@ declare namespace _ {
         ): { (p1: T1, p4: T4, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -3289,7 +3552,9 @@ declare namespace _ {
         ): { (p2: T2, p4: T4, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             p3: T3,
@@ -3300,7 +3565,9 @@ declare namespace _ {
         ): { (p1: T1, p2: T2, p4: T4, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -3311,7 +3578,9 @@ declare namespace _ {
         ): { (p3: T3, p4: T4, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             p2: T2,
             stub3: UnderscoreStatic,
@@ -3322,7 +3591,9 @@ declare namespace _ {
         ): { (p1: T1, p3: T3, p4: T4, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             p1: T1,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -3333,7 +3604,9 @@ declare namespace _ {
         ): { (p2: T2, p3: T3, p4: T4, p5: T5, p6: T6): T8 };
 
         partial<T1, T2, T3, T4, T5, T6, T7, T8>(
-            fn: { (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8 },
+            fn: {
+                (p1: T1, p2: T2, p3: T3, p4: T4, p5: T5, p6: T6, p7: T7): T8;
+            },
             stub1: UnderscoreStatic,
             stub2: UnderscoreStatic,
             stub3: UnderscoreStatic,
@@ -3352,10 +3625,7 @@ declare namespace _ {
          * @param hashFn Hash function for storing the result of `fn`.
          * @return Memoized version of `fn`.
          */
-        memoize<T = Function>(
-            fn: T,
-            hashFn?: (...args: any[]) => string,
-        ): T;
+        memoize<T = Function>(fn: T, hashFn?: (...args: any[]) => string): T;
 
         /**
          * Much like setTimeout, invokes function after wait milliseconds. If you pass the optional arguments,
@@ -3364,19 +3634,12 @@ declare namespace _ {
          * @param wait The amount of milliseconds to delay `fn`.
          * @param args Additional arguments to pass to `fn`.
          */
-        delay(
-            func: Function,
-            wait: number,
-            ...args: any[]
-        ): any;
+        delay(func: Function, wait: number, ...args: any[]): any;
 
         /**
          * @see _delay
          */
-        delay(
-            func: Function,
-            ...args: any[]
-        ): any;
+        delay(func: Function, ...args: any[]): any;
 
         /**
          * Defers invoking the function until the current call stack has cleared, similar to using setTimeout
@@ -3386,10 +3649,7 @@ declare namespace _ {
          * @param fn The function to defer.
          * @param arguments Additional arguments to pass to `fn`.
          */
-        defer(
-            fn: Function,
-            ...args: any[]
-        ): void;
+        defer(fn: Function, ...args: any[]): void;
 
         /**
          * Creates and returns a new, throttled version of the passed function, that, when invoked repeatedly,
@@ -3453,10 +3713,7 @@ declare namespace _ {
          * @param Function fn The function to defer execution `count` times.
          * @return Copy of `fn` that will not execute until it is invoked `count` times.
          */
-        after(
-            count: number,
-            fn: Function,
-        ): Function;
+        after(count: number, fn: Function): Function;
 
         /**
          * Creates a version of the function that can be called no more than count times.  The result of
@@ -3465,10 +3722,7 @@ declare namespace _ {
          * @param Function fn The function to limit the number of times it can be called.
          * @return Copy of `fn` that can only be called `count` times.
          */
-        before(
-            count: number,
-            fn: Function,
-        ): Function;
+        before(count: number, fn: Function): Function;
 
         /**
          * Wraps the first function inside of the wrapper function, passing it as the first argument. This allows
@@ -3488,7 +3742,9 @@ declare namespace _ {
          * @param (...args: any[]) => boolean predicate
          * @return (...args: any[]) => boolean
          */
-        negate(predicate: (...args: any[]) => boolean): (...args: any[]) => boolean;
+        negate(
+            predicate: (...args: any[]) => boolean,
+        ): (...args: any[]) => boolean;
 
         /**
          * Returns the composition of a list of functions, where each function consumes the return value of the
@@ -3539,7 +3795,10 @@ declare namespace _ {
          * @returns A new object with all of `object`'s property values
          * transformed through `iteratee`.
          */
-        mapObject<V extends object, I extends Iteratee<V, any, TypeOfCollection<V, any>>>(
+        mapObject<
+            V extends object,
+            I extends Iteratee<V, any, TypeOfCollection<V, any>>,
+        >(
             object: V,
             iteratee: I,
             context?: any,
@@ -3584,26 +3843,17 @@ declare namespace _ {
          * @param sources Extends `destination` with all properties from these source objects.
          * @return `destination` extended with all the properties from the `sources` objects.
          */
-        extend(
-            destination: any,
-            ...sources: any[]
-        ): any;
+        extend(destination: any, ...sources: any[]): any;
 
         /**
          * Like extend, but only copies own properties over to the destination object. (alias: assign)
          */
-        extendOwn(
-            destination: any,
-            ...source: any[]
-        ): any;
+        extendOwn(destination: any, ...source: any[]): any;
 
         /**
          * Like extend, but only copies own properties over to the destination object. (alias: extendOwn)
          */
-        assign(
-            destination: any,
-            ...source: any[]
-        ): any;
+        assign(destination: any, ...source: any[]): any;
 
         /**
          * Similar to `findIndex` but for keys in objects. Returns the key
@@ -3679,10 +3929,7 @@ declare namespace _ {
          * @param defaults The default values to add to `object`.
          * @return `object` with added `defaults` values.
          */
-        defaults(
-            object: any,
-            ...defaults: any[]
-        ): any;
+        defaults(object: any, ...defaults: any[]): any;
 
         /**
          * Creates an object that inherits from the given prototype object.
@@ -3744,10 +3991,7 @@ declare namespace _ {
          * @param defaultValue Default if not found.
          * @returns The item on the `object` or the `defaultValue`
          */
-        get(
-            object: null | undefined,
-            path: string | string[],
-        ): undefined;
+        get(object: null | undefined, path: string | string[]): undefined;
         get<U>(
             object: null | undefined,
             path: string | string[],
@@ -3762,7 +4006,11 @@ declare namespace _ {
             path: string,
             defaultValue?: U,
         ): TypeOfCollection<V> | U;
-        get<V extends Collection<any>, P extends Array<string | number>, U = undefined>(
+        get<
+            V extends Collection<any>,
+            P extends Array<string | number>,
+            U = undefined,
+        >(
             object: V,
             // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
             path: readonly [...P],
@@ -3774,14 +4022,18 @@ declare namespace _ {
          * @param key Property of the object.
          * @return Function which accept an object an returns the value of key in that object.
          */
-        property(key: string | number | Array<string | number>): (object: any) => any;
+        property(
+            key: string | number | Array<string | number>,
+        ): (object: any) => any;
 
         /**
          * Returns a function that will itself return the value of a object key property.
          * @param key The object to get the property value from.
          * @return Function which accept a key property in `object` and returns its value.
          */
-        propertyOf(object: object): (key: string | number | Array<string | number>) => any;
+        propertyOf(
+            object: object,
+        ): (key: string | number | Array<string | number>) => any;
 
         /**
          * Performs an optimized deep comparison between `object` and `other`
@@ -3989,7 +4241,11 @@ declare namespace _ {
          * @param iterator Function iterator to invoke `n` times.
          * @param context `this` object in `iterator`, optional.
          */
-        times<TResult>(n: number, iterator: (n: number) => TResult, context?: any): TResult[];
+        times<TResult>(
+            n: number,
+            iterator: (n: number) => TResult,
+            context?: any,
+        ): TResult[];
 
         /**
          * Returns a random integer between min and max, inclusive. If you only pass one argument,
@@ -4072,7 +4328,10 @@ declare namespace _ {
          * @param settings Settings to use while compiling.
          * @return Returns the compiled Underscore HTML template.
          */
-        template(templateString: string, settings?: _.TemplateSettings): CompiledTemplate;
+        template(
+            templateString: string,
+            settings?: _.TemplateSettings,
+        ): CompiledTemplate;
 
         /**
          * By default, Underscore uses ERB-style template delimiters, change the
@@ -4168,7 +4427,11 @@ declare namespace _ {
             context?: any,
         ): TResult;
         reduce<TResult = TypeOfCollection<V>>(
-            iteratee: MemoCollectionIterator<TypeOfCollection<V>, TResult | TypeOfCollection<V>, V>,
+            iteratee: MemoCollectionIterator<
+                TypeOfCollection<V>,
+                TResult | TypeOfCollection<V>,
+                V
+            >,
         ): TResult | TypeOfCollection<V> | undefined;
 
         /**
@@ -4199,7 +4462,11 @@ declare namespace _ {
             context?: any,
         ): TResult;
         reduceRight<TResult = TypeOfCollection<V>>(
-            iteratee: MemoCollectionIterator<TypeOfCollection<V>, TResult | TypeOfCollection<V>, V>,
+            iteratee: MemoCollectionIterator<
+                TypeOfCollection<V>,
+                TResult | TypeOfCollection<V>,
+                V
+            >,
         ): TResult | TypeOfCollection<V> | undefined;
 
         /**
@@ -4413,7 +4680,10 @@ declare namespace _ {
          * @returns A dictionary where each item in the wrapped collection is
          * assigned to the property designated by `iteratee`.
          */
-        indexBy(iteratee?: Iteratee<V, string | number>, context?: any): Dictionary<T>;
+        indexBy(
+            iteratee?: Iteratee<V, string | number>,
+            context?: any,
+        ): Dictionary<T>;
 
         /**
          * Sorts the wrapped collection into groups and returns a count for the
@@ -4620,10 +4890,7 @@ declare namespace _ {
             iteratee?: Iteratee<V, any>,
             cotext?: any,
         ): T[];
-        uniq(
-            iteratee?: Iteratee<V, any>,
-            context?: any,
-        ): T[];
+        uniq(iteratee?: Iteratee<V, any>, context?: any): T[];
 
         /**
          * @see uniq
@@ -4650,18 +4917,24 @@ declare namespace _ {
          * the second elements, and so on. (alias: transpose)
          * @returns The unzipped version of the wrapped lists.
          */
-        unzip(): T extends [infer A, infer B, infer C] ? [A[], B[], C[]]
-            : T extends [infer A, infer B] ? [A[], B[]]
-            : T extends [infer A] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
+        unzip(): T extends [infer A, infer B, infer C]
+            ? [A[], B[], C[]]
+            : T extends [infer A, infer B]
+              ? [A[], B[]]
+              : T extends [infer A] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
                 ? [A[]] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
-            : T extends List<infer A> ? A[][]
-            : [];
-        transpose(): T extends [infer A, infer B, infer C] ? [A[], B[], C[]]
-            : T extends [infer A, infer B] ? [A[], B[]]
-            : T extends [infer A] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
+                : T extends List<infer A>
+                  ? A[][]
+                  : [];
+        transpose(): T extends [infer A, infer B, infer C]
+            ? [A[], B[], C[]]
+            : T extends [infer A, infer B]
+              ? [A[], B[]]
+              : T extends [infer A] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
                 ? [A[]] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
-            : T extends List<infer A> ? A[][]
-            : [];
+                : T extends List<infer A>
+                  ? A[][]
+                  : [];
 
         /**
          * Converts lists into objects. Call on either a wrapped list of
@@ -4672,9 +4945,7 @@ declare namespace _ {
          * values corresponding to those keys.
          * @returns An object comprised of the provided keys and values.
          */
-        object<TValue>(
-            values: List<TValue>,
-        ): Dictionary<TValue | undefined>;
+        object<TValue>(values: List<TValue>): Dictionary<TValue | undefined>;
         object(): Dictionary<PairValue<T>>;
 
         /**
@@ -4690,10 +4961,7 @@ declare namespace _ {
          * @returns The index of the first occurrence of `value` within the
          * wrapped list or -1 if `value` is not found.
          */
-        indexOf(
-            value: T,
-            isSortedOrFromIndex?: boolean | number,
-        ): number;
+        indexOf(value: T, isSortedOrFromIndex?: boolean | number): number;
 
         /**
          * Returns the index of the last occurrence of `value` in the wrapped
@@ -4704,10 +4972,7 @@ declare namespace _ {
          * @returns The index of the last occurrence of `value` within the
          * wrapped list or -1 if `value` is not found.
          */
-        lastIndexOf(
-            value: T,
-            fromIndex?: number,
-        ): number;
+        lastIndexOf(value: T, fromIndex?: number): number;
 
         /**
          * Returns the first index of an element in the wrapped list where the
@@ -4717,10 +4982,7 @@ declare namespace _ {
          * @returns The index of the first element in the wrapped list where
          * the truth test passes or -1 if no elements pass.
          */
-        findIndex(
-            iteratee?: Iteratee<V, boolean>,
-            context?: any,
-        ): number;
+        findIndex(iteratee?: Iteratee<V, boolean>, context?: any): number;
 
         /**
          * Returns the last index of an element in the wrapped list where the
@@ -4730,10 +4992,7 @@ declare namespace _ {
          * @returns The index of the last element in the wrapped list where the
          * truth test passes or -1 if no elements pass.
          */
-        findLastIndex(
-            iteratee?: Iteratee<V, boolean>,
-            context?: any,
-        ): number;
+        findLastIndex(iteratee?: Iteratee<V, boolean>, context?: any): number;
 
         /**
          * Uses a binary search to determine the lowest index at which the
@@ -4831,7 +5090,10 @@ declare namespace _ {
          * Wrapped type `Function`.
          * @see _.throttle
          */
-        throttle(wait: number, options?: _.ThrottleSettings): Function & _.Cancelable;
+        throttle(
+            wait: number,
+            options?: _.ThrottleSettings,
+        ): Function & _.Cancelable;
 
         /**
          * Wrapped type `Function`.
@@ -5046,13 +5308,8 @@ declare namespace _ {
          * Wrapped type `any`.
          * @see _.get
          */
-        get(
-            path: string,
-        ): TypeOfCollection<V> | undefined;
-        get<U>(
-            path: string,
-            defaultValue?: U,
-        ): TypeOfCollection<V> | U;
+        get(path: string): TypeOfCollection<V> | undefined;
+        get<U>(path: string, defaultValue?: U): TypeOfCollection<V> | U;
         get<P extends Array<string | number>, U = undefined>(
             // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
             path: [...P],
@@ -5243,7 +5500,10 @@ declare namespace _ {
          * Wrapped type `number`.
          * @see _.times
          */
-        times<TResult>(iterator: (n: number) => TResult, context?: any): TResult[];
+        times<TResult>(
+            iterator: (n: number) => TResult,
+            context?: any,
+        ): TResult[];
 
         /**
          * Wrapped type `number`.
@@ -5381,7 +5641,11 @@ declare namespace _ {
             context?: any,
         ): _ChainSingle<TResult>;
         reduce<TResult = TypeOfCollection<V>>(
-            iteratee: MemoCollectionIterator<TypeOfCollection<V>, TResult | TypeOfCollection<V>, V>,
+            iteratee: MemoCollectionIterator<
+                TypeOfCollection<V>,
+                TResult | TypeOfCollection<V>,
+                V
+            >,
         ): _ChainSingle<TResult | TypeOfCollection<V> | undefined>;
 
         /**
@@ -5412,7 +5676,11 @@ declare namespace _ {
             context?: any,
         ): _ChainSingle<TResult>;
         reduceRight<TResult = TypeOfCollection<V>>(
-            iteratee: MemoCollectionIterator<TypeOfCollection<V>, TResult | TypeOfCollection<V>, V>,
+            iteratee: MemoCollectionIterator<
+                TypeOfCollection<V>,
+                TResult | TypeOfCollection<V>,
+                V
+            >,
         ): _ChainSingle<TResult | TypeOfCollection<V> | undefined>;
 
         /**
@@ -5872,10 +6140,7 @@ declare namespace _ {
             iteratee?: Iteratee<V, any>,
             context?: any,
         ): _Chain<T>;
-        uniq(
-            iteratee?: Iteratee<V, any>,
-            context?: any,
-        ): _Chain<T>;
+        uniq(iteratee?: Iteratee<V, any>, context?: any): _Chain<T>;
 
         /**
          * Wrapped type List<T>.
@@ -5905,18 +6170,24 @@ declare namespace _ {
          * @returns A chain wrapper around the unzipped version of the wrapped
          * lists.
          */
-        unzip(): T extends [infer A, infer B, infer C] ? _Chain<A[] | B[] | C[], [A[], B[], C[]]>
-            : T extends [infer A, infer B] ? _Chain<A[] | B[], [A[], B[]]>
-            : T extends [infer A] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
+        unzip(): T extends [infer A, infer B, infer C]
+            ? _Chain<A[] | B[] | C[], [A[], B[], C[]]>
+            : T extends [infer A, infer B]
+              ? _Chain<A[] | B[], [A[], B[]]>
+              : T extends [infer A] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
                 ? _Chain<A[], [A[]]> // eslint-disable-line @definitelytyped/no-single-element-tuple-type
-            : T extends List<infer A> ? _Chain<A[]>
-            : _Chain<never, []>;
-        transpose(): T extends [infer A, infer B, infer C] ? _Chain<A[] | B[] | C[], [A[], B[], C[]]>
-            : T extends [infer A, infer B] ? _Chain<A[] | B[], [A[], B[]]>
-            : T extends [infer A] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
+                : T extends List<infer A>
+                  ? _Chain<A[]>
+                  : _Chain<never, []>;
+        transpose(): T extends [infer A, infer B, infer C]
+            ? _Chain<A[] | B[] | C[], [A[], B[], C[]]>
+            : T extends [infer A, infer B]
+              ? _Chain<A[] | B[], [A[], B[]]>
+              : T extends [infer A] // eslint-disable-line @definitelytyped/no-single-element-tuple-type
                 ? _Chain<A[], [A[]]> // eslint-disable-line @definitelytyped/no-single-element-tuple-type
-            : T extends List<infer A> ? _Chain<A[]>
-            : _Chain<never, []>;
+                : T extends List<infer A>
+                  ? _Chain<A[]>
+                  : _Chain<never, []>;
 
         /**
          * Converts lists into objects. Call on either a wrapped list of
@@ -5960,10 +6231,7 @@ declare namespace _ {
          * @returns A chain wrapper around the index of the last occurrence of
          * `value` within the wrapped list or -1 if `value` is not found.
          */
-        lastIndexOf(
-            value: T,
-            fromIndex?: number,
-        ): _ChainSingle<number>;
+        lastIndexOf(value: T, fromIndex?: number): _ChainSingle<number>;
 
         /**
          * Returns the first index of an element in the wrapped list where the
@@ -6171,7 +6439,10 @@ declare namespace _ {
         mapObject<I extends Iteratee<V, any, TypeOfCollection<V, any>>>(
             iteratee: I,
             context?: any,
-        ): _Chain<IterateeResult<I, TypeOfCollection<V, any>>, { [K in keyof V]: IterateeResult<I, V[K]> }>;
+        ): _Chain<
+            IterateeResult<I, TypeOfCollection<V, any>>,
+            { [K in keyof V]: IterateeResult<I, V[K]> }
+        >;
 
         /**
          * Convert the wrapped object into a list of [key, value] pairs. The
@@ -6224,7 +6495,9 @@ declare namespace _ {
          * @returns A chain wrapper around a copy of the wrapped object with
          * only the `keys` properties.
          */
-        pick<K extends string>(...keys: Array<K | K[]>): _ChainSingle<_Pick<V, K>>;
+        pick<K extends string>(
+            ...keys: Array<K | K[]>
+        ): _ChainSingle<_Pick<V, K>>;
 
         /**
          * Return a copy of the wrapped object that is filtered to only have
@@ -6245,7 +6518,9 @@ declare namespace _ {
          * @returns A chain wrapper around a copy of the wrapped object without
          * the `keys` properties.
          */
-        omit<K extends string>(...keys: Array<K | K[]>): _ChainSingle<_Omit<V, K>>;
+        omit<K extends string>(
+            ...keys: Array<K | K[]>
+        ): _ChainSingle<_Omit<V, K>>;
 
         /**
          * Return a copy of the wrapped object that is filtered to not have
@@ -6312,7 +6587,11 @@ declare namespace _ {
             path: string,
             defaultValue?: U,
         ): _Chain<TypeOfCollection<V> | U, T | U>;
-        get<P extends Array<string | number>, W = DeepTypeOfCollection<Exclude<V, undefined>, P>, U = undefined>(
+        get<
+            P extends Array<string | number>,
+            W = DeepTypeOfCollection<Exclude<V, undefined>, P>,
+            U = undefined,
+        >(
             // eslint-disable-next-line @definitelytyped/no-single-element-tuple-type
             path: [...P],
             defaultValue?: U,
@@ -6524,7 +6803,10 @@ declare namespace _ {
          * Wrapped type `number`.
          * @see _.times
          */
-        times<TResult>(iterator: (n: number) => TResult, context?: any): _Chain<T>;
+        times<TResult>(
+            iterator: (n: number) => TResult,
+            context?: any,
+        ): _Chain<T>;
 
         /**
          * Wrapped type `number`.

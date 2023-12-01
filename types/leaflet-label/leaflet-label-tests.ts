@@ -8,7 +8,9 @@ let label: L.Label;
 const icon: L.Icon = new L.Icon({ labelAnchor: L.point(1, 1) });
 
 // CircleMarker
-let circleMarker: L.CircleMarker = new L.CircleMarker(new L.LatLng(0, 0), { labelAnchor: L.point(1, 1) });
+let circleMarker: L.CircleMarker = new L.CircleMarker(new L.LatLng(0, 0), {
+    labelAnchor: L.point(1, 1),
+});
 
 circleMarker = circleMarker.bindLabel("test", {
     className: "thingy",
@@ -80,15 +82,19 @@ label.close();
 let example: () => void;
 
 example = () => {
-    L.marker(L.latLng(-37.7772, 175.2606)).bindLabel("Look revealing label!").addTo(map);
+    L.marker(L.latLng(-37.7772, 175.2606))
+        .bindLabel("Look revealing label!")
+        .addTo(map);
 };
 
 example = () => {
     L.polyline([
         L.latLng(-37.7612, 175.2756),
         L.latLng(-37.7702, 175.2796),
-        L.latLng(-37.7802, 175.2750),
-    ]).bindLabel("Even polylines can have labels.").addTo(map);
+        L.latLng(-37.7802, 175.275),
+    ])
+        .bindLabel("Even polylines can have labels.")
+        .addTo(map);
 };
 
 example = () => {
@@ -121,11 +127,15 @@ example = () => {
     });
     L.marker(L.latLng(-37.7772, 175.2606), {
         icon: myIcon,
-    }).bindLabel("Look revealing label!").addTo(map);
+    })
+        .bindLabel("Look revealing label!")
+        .addTo(map);
 };
 
 example = () => {
-    const markerLabel = L.marker(L.latLng(-37.7772, 175.2606)).bindLabel("Look revealing label!").addTo(map);
+    const markerLabel = L.marker(L.latLng(-37.7772, 175.2606))
+        .bindLabel("Look revealing label!")
+        .addTo(map);
 
     // Sets opacity of marker to 0.3 and opacity of label to 1
     markerLabel.setOpacity(0.3);

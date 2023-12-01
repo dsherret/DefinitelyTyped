@@ -21,7 +21,10 @@ import ISelectionIdBuilder = powerbi.visuals.ISelectionIdBuilder;
 import ISelectionId = powerbi.visuals.ISelectionId;
 
 const selectionBuilder: ISelectionIdBuilder = {
-    withCategory: (categoryColumn: powerbi.DataViewCategoryColumn, index: number): ISelectionIdBuilder => {
+    withCategory: (
+        categoryColumn: powerbi.DataViewCategoryColumn,
+        index: number,
+    ): ISelectionIdBuilder => {
         return selectionBuilder;
     },
     withSeries: (
@@ -90,7 +93,9 @@ const dataView: DataView = {
                     },
                     isMeasure: false,
                     queryName: "string",
-                    sort: powerbi.SortDirection.Ascending || powerbi.SortDirection.Descending,
+                    sort:
+                        powerbi.SortDirection.Ascending ||
+                        powerbi.SortDirection.Descending,
                     index: 0,
                     type: {
                         text: true,

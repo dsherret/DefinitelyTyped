@@ -1,7 +1,10 @@
 declare const stringify: typeof JSON.stringify;
 declare const parse: typeof JSON.parse;
 
-declare function JSONBig(options?: Options): { parse: typeof parse; stringify: typeof stringify };
+declare function JSONBig(options?: Options): {
+    parse: typeof parse;
+    stringify: typeof stringify;
+};
 
 interface Options {
     /**
@@ -26,7 +29,10 @@ interface Options {
     constructorAction?: "error" | "ignore" | "preserve" | undefined;
 }
 
-type JSONBigExport = typeof JSONBig & { parse: typeof parse; stringify: typeof stringify };
+type JSONBigExport = typeof JSONBig & {
+    parse: typeof parse;
+    stringify: typeof stringify;
+};
 
 declare const _: JSONBigExport;
 export = _;

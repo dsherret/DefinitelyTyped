@@ -9,21 +9,36 @@ interface CordovaPlugins {
 declare namespace OneSignalCordovaPlugin {
     interface OneSignalCordovaPlugin {
         OSInFocusDisplayOption: { None: 0; InAppAlert: 1; Notification: 2 };
-        OSNotificationPermission: { NotDetermined: 0; Authorized: 1; Denied: 2 };
+        OSNotificationPermission: {
+            NotDetermined: 0;
+            Authorized: 1;
+            Denied: 2;
+        };
         addEmailSubscriptionObserver(
-            callback: (change: { from: OSEmailSubscriptionState; to: OSEmailSubscriptionState }) => void,
+            callback: (change: {
+                from: OSEmailSubscriptionState;
+                to: OSEmailSubscriptionState;
+            }) => void,
         ): void;
         /**
          *  The passed in function will be fired when a notification permission
          *  setting changes.
          */
-        addPermissionObserver(callback: (change: { from: OSPermissionState; to: OSPermissionState }) => void): void;
+        addPermissionObserver(
+            callback: (change: {
+                from: OSPermissionState;
+                to: OSPermissionState;
+            }) => void,
+        ): void;
         /**
          *  The passed in function will be fired when a notification subscription
          *  property changes.
          */
         addSubscriptionObserver(
-            callback: (change: { from: OSSubscriptionState; to: OSSubscriptionState }) => void,
+            callback: (change: {
+                from: OSSubscriptionState;
+                to: OSSubscriptionState;
+            }) => void,
         ): void;
         /**
          *  Add a trigger, may show an In-App Message if its triggers conditions
@@ -63,29 +78,44 @@ declare namespace OneSignalCordovaPlugin {
          *  device is in it's vibrate only mode.
          */
         enableVibrate(enable: boolean): void;
-        getIds(IdsReceivedCallBack: (id: { userId: string; pushToken: string }) => void): void;
+        getIds(
+            IdsReceivedCallBack: (id: {
+                userId: string;
+                pushToken: string;
+            }) => void,
+        ): void;
         /**
          *  Get the current notification and permission state. Returns an object
          *  of OSPermissionSubscriptionState type described below.
          */
-        getPermissionSubscriptionState(callback: (status: OSPermissionSubscriptionState) => void): void;
+        getPermissionSubscriptionState(
+            callback: (status: OSPermissionSubscriptionState) => void,
+        ): void;
         /**
          *  Retrieve a list of tags that have been set on the user from the
          *  OneSignal server.
          */
         getTags(callback: (tags: any) => void): void;
         /** Gets a trigger value for a provided trigger key. */
-        getTriggerValueForKey(key: string, callback: (value: any) => void): void;
+        getTriggerValueForKey(
+            key: string,
+            callback: (value: any) => void,
+        ): void;
         /**
          *  Sets a In-App Message clicked handler. The instance will be called
          *  when an In-App Message action is tapped on.
          */
-        handleInAppMessageClicked(handler: (action: OSNotificationAction) => void): void;
+        handleInAppMessageClicked(
+            handler: (action: OSNotificationAction) => void,
+        ): void;
         /**
          *  If your app implements logout functionality, you can call logoutEmail
          *  to dissociate the email from the device:
          */
-        logoutEmail(onSuccess: (success: any) => void, onFailure: (error: any) => void): void;
+        logoutEmail(
+            onSuccess: (success: any) => void,
+            onFailure: (error: any) => void,
+        ): void;
         /**
          *  Allows you to temporarily pause all In-App Messages. You may want to
          *  do this while the user is watching a video playing a match in your
@@ -105,7 +135,9 @@ declare namespace OneSignalCordovaPlugin {
          *  Prompt the user for notification permissions. Callback fires as soon
          *  as the user accepts or declines notifications.
          */
-        promptForPushNotificationsWithUserResponse(callback: (accepted: boolean) => void): void;
+        promptForPushNotificationsWithUserResponse(
+            callback: (accepted: boolean) => void,
+        ): void;
         /**
          *  Prompts the user for location permissions. This allows for
          *  geotagging so you can send notifications to users based on location.
@@ -176,7 +208,10 @@ declare namespace OneSignalCordovaPlugin {
          *  Enable logging to help debug if you run into an issue setting up
          *  OneSignal.
          */
-        setLogLevel(logLevel: { logLevel: OSLogLevel; visualLevel: OSLogLevel }): void;
+        setLogLevel(logLevel: {
+            logLevel: OSLogLevel;
+            visualLevel: OSLogLevel;
+        }): void;
         /**
          *  Allows you to delay the initialization of the SDK until the user
          *  provides privacy consent. The SDK will not be fully initialized
@@ -199,19 +234,28 @@ declare namespace OneSignalCordovaPlugin {
          *  Starts initialization of OneSignal, call this from the deviceready
          *  event.
          */
-        startInit(appId: string, googleProjectNumber?: string): OneSignalBuilder;
+        startInit(
+            appId: string,
+            googleProjectNumber?: string,
+        ): OneSignalBuilder;
         syncHashedEmail(email: string): void;
         /**
          *  Accepts a callback, which returns a boolean variable indicating if
          *  the user has given privacy consent yet.
          */
-        userProvidedPrivacyConsent(callback: (providedConsent: boolean) => void): void;
+        userProvidedPrivacyConsent(
+            callback: (providedConsent: boolean) => void,
+        ): void;
     }
 
     interface OneSignalBuilder {
         endInit(): void;
-        handleNotificationOpened(callback: (json: OSNotificationOpenedResult) => void): OneSignalBuilder;
-        handleNotificationReceived(callback: (json: OSNotification) => void): OneSignalBuilder;
+        handleNotificationOpened(
+            callback: (json: OSNotificationOpenedResult) => void,
+        ): OneSignalBuilder;
+        handleNotificationReceived(
+            callback: (json: OSNotification) => void,
+        ): OneSignalBuilder;
         inFocusDisplaying(displayOption: OSDisplayType): OneSignalBuilder;
         iOSSettings(settings: {
             kOSSettingsKeyAutoPrompt: boolean;

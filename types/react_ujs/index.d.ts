@@ -55,23 +55,37 @@ declare namespace ReactRailsUJS {
     /**
      * Given a Webpack `require.context`, try finding components with `require`, then falling back to global lookup.
      */
-    function useContext(this: typeof ReactRailsUJS, context: WebpackRequireContext): void;
+    function useContext(
+        this: typeof ReactRailsUJS,
+        context: WebpackRequireContext,
+    ): void;
 
     /**
      * Render `componentName` with `props` to a string,
      * using the specified `renderFunction` from `react-dom/server`.
      */
-    function serverRender(this: typeof ReactRailsUJS, renderFunction: string, componentName: string, props: any): any;
+    function serverRender(
+        this: typeof ReactRailsUJS,
+        renderFunction: string,
+        componentName: string,
+        props: any,
+    ): any;
 
     /**
      * Within `searchSelector`, find nodes which should have React components inside them, and mount them with their props.
      */
-    function mountComponents(this: typeof ReactRailsUJS, searchSelector?: SearchSelector): void;
+    function mountComponents(
+        this: typeof ReactRailsUJS,
+        searchSelector?: SearchSelector,
+    ): void;
 
     /**
      * Within `searchSelector`, find nodes which have React components inside them, and unmount those components.
      */
-    function unmountComponents(this: typeof ReactRailsUJS, searchSelector?: SearchSelector): void;
+    function unmountComponents(
+        this: typeof ReactRailsUJS,
+        searchSelector?: SearchSelector,
+    ): void;
 
     /**
      * Check the global context for installed libraries and figure out which library to hook up to (pjax, Turbolinks,

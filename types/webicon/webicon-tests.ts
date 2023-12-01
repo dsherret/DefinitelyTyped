@@ -27,7 +27,9 @@ export class WebiconTests {
         return result;
     }
 
-    getStringUrlCallback<TUriParam = undefined>(): DynamicUrlDeclaration<TUriParam> {
+    getStringUrlCallback<
+        TUriParam = undefined,
+    >(): DynamicUrlDeclaration<TUriParam> {
         const result: DynamicUrlDeclaration<TUriParam> = {
             url: (arg) => {
                 // $ExpectType TUriParam
@@ -39,7 +41,9 @@ export class WebiconTests {
         return result;
     }
 
-    getObjectUrlCallback<TUriParam = undefined>(): DynamicUrlDeclaration<TUriParam> {
+    getObjectUrlCallback<
+        TUriParam = undefined,
+    >(): DynamicUrlDeclaration<TUriParam> {
         const result: DynamicUrlDeclaration<TUriParam> = {
             url: (arg) => {
                 // $ExpectType TUriParam
@@ -186,76 +190,86 @@ export class WebiconTests {
         /**
          * Configuring `webicon` using a configuration-handler.
          */
-        $().webicons(
-            (config) => {
-                // $ExpectType PublicApi
-                config;
-                config.icon("", "", icon);
-                config.icon("", this.getUrlObject(), icon);
-                config.icon("", this.getStringUrlCallback(), icon);
-                config.icon("", this.getObjectUrlCallback(), icon);
+        $().webicons((config) => {
+            // $ExpectType PublicApi
+            config;
+            config.icon("", "", icon);
+            config.icon("", this.getUrlObject(), icon);
+            config.icon("", this.getStringUrlCallback(), icon);
+            config.icon("", this.getObjectUrlCallback(), icon);
 
-                config.svgSet("", "");
-                config.svgSet("", "", set);
-                config.svgSet("", "", cumulativeSet);
-                config.svgSet("", this.getUrlObject());
-                config.svgSet("", this.getUrlObject(), set);
-                config.svgSet("", this.getUrlObject<string[]>(), cumulativeSet);
-                config.svgSet("", this.getStringUrlCallback());
-                config.svgSet("", this.getStringUrlCallback(), set);
-                config.svgSet("", this.getStringUrlCallback<string[]>(), cumulativeSet);
-                config.svgSet("", this.getObjectUrlCallback());
-                config.svgSet("", this.getObjectUrlCallback(), set);
-                config.svgSet("", this.getObjectUrlCallback<string[]>(), cumulativeSet);
-                config.iconSet("", "");
-                config.iconSet("", "", set);
-                config.iconSet("", "", cumulativeSet);
-                config.iconSet("", this.getUrlObject());
-                config.iconSet("", this.getUrlObject(), set);
-                config.iconSet("", this.getUrlObject<string[]>(), cumulativeSet);
-                config.iconSet("", this.getStringUrlCallback());
-                config.iconSet("", this.getStringUrlCallback(), set);
-                config.iconSet("", this.getStringUrlCallback<string[]>(), cumulativeSet);
-                config.iconSet("", this.getObjectUrlCallback());
-                config.iconSet("", this.getObjectUrlCallback(), set);
-                config.iconSet("", this.getObjectUrlCallback<string[]>(), cumulativeSet);
+            config.svgSet("", "");
+            config.svgSet("", "", set);
+            config.svgSet("", "", cumulativeSet);
+            config.svgSet("", this.getUrlObject());
+            config.svgSet("", this.getUrlObject(), set);
+            config.svgSet("", this.getUrlObject<string[]>(), cumulativeSet);
+            config.svgSet("", this.getStringUrlCallback());
+            config.svgSet("", this.getStringUrlCallback(), set);
+            config.svgSet(
+                "",
+                this.getStringUrlCallback<string[]>(),
+                cumulativeSet,
+            );
+            config.svgSet("", this.getObjectUrlCallback());
+            config.svgSet("", this.getObjectUrlCallback(), set);
+            config.svgSet(
+                "",
+                this.getObjectUrlCallback<string[]>(),
+                cumulativeSet,
+            );
+            config.iconSet("", "");
+            config.iconSet("", "", set);
+            config.iconSet("", "", cumulativeSet);
+            config.iconSet("", this.getUrlObject());
+            config.iconSet("", this.getUrlObject(), set);
+            config.iconSet("", this.getUrlObject<string[]>(), cumulativeSet);
+            config.iconSet("", this.getStringUrlCallback());
+            config.iconSet("", this.getStringUrlCallback(), set);
+            config.iconSet(
+                "",
+                this.getStringUrlCallback<string[]>(),
+                cumulativeSet,
+            );
+            config.iconSet("", this.getObjectUrlCallback());
+            config.iconSet("", this.getObjectUrlCallback(), set);
+            config.iconSet(
+                "",
+                this.getObjectUrlCallback<string[]>(),
+                cumulativeSet,
+            );
 
-                config.font("", "", cssIconSet);
-                config.font("", ClassResolver, cssIconSet);
+            config.font("", "", cssIconSet);
+            config.font("", ClassResolver, cssIconSet);
 
-                config.sprite("", "", cssIconSet);
-                config.sprite("", ClassResolver, cssIconSet);
+            config.sprite("", "", cssIconSet);
+            config.sprite("", ClassResolver, cssIconSet);
 
-                config.alias("", "");
-                config.sourceAlias("", "");
+            config.alias("", "");
+            config.sourceAlias("", "");
 
-                config.defaultIconSetUrl("");
-                config.defaultIconSetUrl("", set);
-                config.defaultSvgSetUrl("");
-                config.defaultSvgSetUrl("", set);
-                config.defaultSvgIconSetUrl("");
-                config.defaultSvgIconSetUrl("", set);
+            config.defaultIconSetUrl("");
+            config.defaultIconSetUrl("", set);
+            config.defaultSvgSetUrl("");
+            config.defaultSvgSetUrl("", set);
+            config.defaultSvgIconSetUrl("");
+            config.defaultSvgIconSetUrl("", set);
 
-                config.defaultSource("");
-                config.default("");
+            config.defaultSource("");
+            config.default("");
 
-                config.defaultSvgIconSize(1);
+            config.defaultSvgIconSize(1);
 
-                config.preload(
-                    (loader) => {
-                        // $ExpectType IconPreloader
-                        loader;
-                    },
-                );
+            config.preload((loader) => {
+                // $ExpectType IconPreloader
+                loader;
+            });
 
-                config.ready(
-                    (injector) => {
-                        // $ExpectType Injector
-                        injector;
-                    },
-                );
-            },
-        );
+            config.ready((injector) => {
+                // $ExpectType Injector
+                injector;
+            });
+        });
 
         /**
          * Declaring urls
@@ -316,29 +330,21 @@ export class WebiconTests {
          * Setting icons
          * Simple
          */
-        config.icons =
-            config.icon =
-                {
-                    clock: "",
-                };
+        config.icons = config.icon = {
+            clock: "",
+        };
 
         /**
          * Complex
          */
-        config.icons =
-            config.icon =
-                {
-                    clock: iconOptions,
-                };
+        config.icons = config.icon = {
+            clock: iconOptions,
+        };
 
         /**
          * Array
          */
-        config.icons =
-            config.icon =
-                [
-                    idIconOptions,
-                ];
+        config.icons = config.icon = [idIconOptions];
 
         /**
          * Setting svg-sets
@@ -371,9 +377,7 @@ export class WebiconTests {
             config.svgSet =
             config.iconSets =
             config.iconSet =
-                [
-                    idSetOptions,
-                ];
+                [idSetOptions];
 
         /**
          * Setting css-class icons
@@ -405,42 +409,34 @@ export class WebiconTests {
             config.font =
             config.sprites =
             config.sprite =
-                [
-                    idCssIconOptions,
-                ];
+                [idCssIconOptions];
 
         /**
          * Setting aliases
          * Simple
          */
-        config.alias =
-            config.sourceAlias =
-                {
-                    alt: "clock",
-                };
+        config.alias = config.sourceAlias = {
+            alt: "clock",
+        };
 
         /**
          * Complex
          */
-        config.alias =
-            config.sourceAlias =
-                {
-                    id: {
-                        alias: "",
-                    },
-                };
+        config.alias = config.sourceAlias = {
+            id: {
+                alias: "",
+            },
+        };
 
         /**
          * Array
          */
-        config.alias =
-            config.sourceAlias =
-                [
-                    {
-                        id: "id",
-                        alias: "",
-                    },
-                ];
+        config.alias = config.sourceAlias = [
+            {
+                id: "id",
+                alias: "",
+            },
+        ];
 
         /**
          * Setting a default icon-set url
@@ -463,18 +459,14 @@ export class WebiconTests {
          * Setting a default icon-set
          * Simple
          */
-        config.defaultSource =
-            config.default =
-                "";
+        config.defaultSource = config.default = "";
 
         /**
          * Complex
          */
-        config.defaultSource =
-            config.default =
-                {
-                    id: "",
-                };
+        config.defaultSource = config.default = {
+            id: "",
+        };
 
         /**
          * Setting a default icon-size for vector-icons

@@ -1,4 +1,8 @@
-declare function AddEvent(htmlElement: HTMLElement, eventName: string, eventFunction: (e: Event) => void): void;
+declare function AddEvent(
+    htmlElement: HTMLElement,
+    eventName: string,
+    eventFunction: (e: Event) => void,
+): void;
 declare function l(name: string): HTMLElement | null;
 declare function escapeRegExp(str: string): string;
 declare function replaceAll(find: string, replace: string, str: string): string;
@@ -103,7 +107,10 @@ type LanguageData = {
          */
         language: string;
     };
-} & Record<string, string[] | string | LanguageOptions | Record<string, string>>;
+} & Record<
+    string,
+    string[] | string | LanguageOptions | Record<string, string>
+>;
 
 /**
  * The strings looked up by `loc`
@@ -200,7 +207,12 @@ declare function ModLanguage(id: string, json: LanguageData): void;
  * @param name Unused
  * @param mod If set, modifies an existing language
  */
-declare function AddLanguage(id: string, name: string, json: LanguageData, mod?: boolean): void;
+declare function AddLanguage(
+    id: string,
+    name: string,
+    json: LanguageData,
+    mod?: boolean,
+): void;
 
 type LocParameter = string | number | LocalizedBeautify;
 
@@ -210,12 +222,19 @@ type LocParameter = string | number | LocalizedBeautify;
  * @param params The parameters to insert
  * @param baseline The English text to default to
  */
-declare function loc(id: string, params?: LocParameter | LocParameter[], baseline?: string): string;
+declare function loc(
+    id: string,
+    params?: LocParameter | LocParameter[],
+    baseline?: string,
+): string;
 
 /**
  * Parses the localized string and replaces the templating
  */
-declare function parseLoc(str: string, params?: LocParameter | LocParameter[]): string;
+declare function parseLoc(
+    str: string,
+    params?: LocParameter | LocParameter[],
+): string;
 
 interface Math {
     /**
@@ -335,7 +354,10 @@ declare namespace ________COOKIECLICKER_TYPES_HACK_DOESNT_EXIST {
         let cues: Record<string, (arg: any) => void>;
         function cue(cue: string, arg?: any): void;
         let playing: boolean;
-        function playTrack(name: string, callback: (track: Track) => void): void;
+        function playTrack(
+            name: string,
+            callback: (track: Track) => void,
+        ): void;
         function loopTrack(name: string): void;
         function setFilter(val: number, secs?: number): void;
         function setVolume(val: number, secs?: number): void;
@@ -346,11 +368,21 @@ declare namespace ________COOKIECLICKER_TYPES_HACK_DOESNT_EXIST {
     }
 }
 
-declare let Steam: Game.PseudoNull | typeof ________COOKIECLICKER_TYPES_HACK_DOESNT_EXIST.Steam;
-declare let App: Game.PseudoNull | typeof ________COOKIECLICKER_TYPES_HACK_DOESNT_EXIST.Steam;
-declare let Music: Game.PseudoNull | typeof ________COOKIECLICKER_TYPES_HACK_DOESNT_EXIST.Music;
+declare let Steam:
+    | Game.PseudoNull
+    | typeof ________COOKIECLICKER_TYPES_HACK_DOESNT_EXIST.Steam;
+declare let App:
+    | Game.PseudoNull
+    | typeof ________COOKIECLICKER_TYPES_HACK_DOESNT_EXIST.Steam;
+declare let Music:
+    | Game.PseudoNull
+    | typeof ________COOKIECLICKER_TYPES_HACK_DOESNT_EXIST.Music;
 
-declare function LoadScript(url: string, callback?: () => void, error?: OnErrorEventHandler): void;
+declare function LoadScript(
+    url: string,
+    callback?: () => void,
+    error?: OnErrorEventHandler,
+): void;
 declare let LoadLang: typeof LoadScript;
 
 /**
@@ -373,7 +405,10 @@ declare function getAchievementName(name: string): string;
 
 declare function localStorageGet(key: string): Game.PseudoNull | null | string;
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-declare function localStorageSet(key: string, str: string): Game.PseudoNull | void;
+declare function localStorageSet(
+    key: string,
+    str: string,
+): Game.PseudoNull | void;
 
 declare function writeIcon(icon: Game.Icon): string;
 declare function tinyIcon(icon: Game.Icon, css?: string): string;
@@ -715,7 +750,15 @@ declare namespace Game {
      * Updates the bakery name prompt input space to be a random name
      */
     export function bakeryNamePromptRandom(): string;
-    export type TooltipOrigins = "store" | "left" | "bottom-right" | "bottom" | "top" | "left" | "this" | undefined;
+    export type TooltipOrigins =
+        | "store"
+        | "left"
+        | "bottom-right"
+        | "bottom"
+        | "top"
+        | "left"
+        | "this"
+        | undefined;
     export interface Tooltip {
         /**
          * The html text the tooltip should have
@@ -755,7 +798,11 @@ declare namespace Game {
          * @param text The text (or the text function) to use in the tooltip
          * @param origin The mode of position of the tooltip
          */
-        draw(from: HTMLElement, text: (() => string) | string, origin: TooltipOrigins): void;
+        draw(
+            from: HTMLElement,
+            text: (() => string) | string,
+            origin: TooltipOrigins,
+        ): void;
         /**
          * Updates the tooltip position and contents
          */
@@ -783,20 +830,32 @@ declare namespace Game {
      * @param text The text to display on the tooltip
      * @returns The properties to include in the html tag
      */
-    export function getTooltip(text: string, origin?: TooltipOrigins, isCrate?: PseudoBoolean | boolean): string;
+    export function getTooltip(
+        text: string,
+        origin?: TooltipOrigins,
+        isCrate?: PseudoBoolean | boolean,
+    ): string;
 
     /**
      * Creates the needed tooltip properties for a dynamic tooltip
      * @param func The text function name or string to display on the tooltip
      * @returns The properties to include in the html tag
      */
-    export function getDynamicTooltip(func: string, origin?: TooltipOrigins, isCrate?: PseudoBoolean | boolean): string;
+    export function getDynamicTooltip(
+        func: string,
+        origin?: TooltipOrigins,
+        isCrate?: PseudoBoolean | boolean,
+    ): string;
     /**
      * Attaches the tooltip properties to an element
      * @param el The element to attach properties to
      * @param func The text function (or text) to show in the tooltip
      */
-    export function attachTooltip(el: HTMLElement, func: string | (() => string), origin: TooltipOrigins): void;
+    export function attachTooltip(
+        el: HTMLElement,
+        func: string | (() => string),
+        origin: TooltipOrigins,
+    ): void;
     export function CheckUpdates(): void;
     export function CheckUpdatesResponse(response: string): void;
     export let externalDataLoaded: boolean;
@@ -844,7 +903,10 @@ declare namespace Game {
         style?: string,
     ): string;
 
-    export function crateTooltip(me: Upgrade | Achievement, context: "store" | "ascend" | "stats" | undefined): string;
+    export function crateTooltip(
+        me: Upgrade | Achievement,
+        context: "store" | "ascend" | "stats" | undefined,
+    ): string;
 
     export function costDetails(cost: number): void;
     export let HCfactor: number;
@@ -854,7 +916,10 @@ declare namespace Game {
     export function HowManyCookiesReset(chips: number): number;
     export let gainedPrestige: number;
 
-    export function EarnHeavenlyChips(cookiesForfeited: number, silent: boolean): void;
+    export function EarnHeavenlyChips(
+        cookiesForfeited: number,
+        silent: boolean,
+    ): void;
 
     export function GetHeavenlyMultiplier(): number;
     /**
@@ -906,7 +971,10 @@ declare namespace Game {
     export let AscendZoomT: number;
     export let AscendDragging: number;
     export let AscendGridSnap: number;
-    export let heavenlyBounds: Record<"top" | "right" | "bottom" | "left", number>;
+    export let heavenlyBounds: Record<
+        "top" | "right" | "bottom" | "left",
+        number
+    >;
 
     export function UpdateAscend(): void;
 
@@ -946,7 +1014,12 @@ declare namespace Game {
     export function refillLump(n: number, func: () => void): void;
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    export function spendLump(n: number, str: string, func: () => void, free?: boolean): () => void | false;
+    export function spendLump(
+        n: number,
+        str: string,
+        func: () => void,
+        free?: boolean,
+    ): () => void | false;
 
     export function doLumps(): void;
 
@@ -1021,7 +1094,10 @@ declare namespace Game {
     export function CalculateGains(): void;
 
     export function dropRateMult(): number;
-    export class shimmer<N extends string = keyof typeof shimmerTypes, C extends object = {}> {
+    export class shimmer<
+        N extends string = keyof typeof shimmerTypes,
+        C extends object = {},
+    > {
         /**
          * Creates a new shimmer
          * @param type The type of the shimmer, must be a key of `shimmerTypes`
@@ -1071,7 +1147,10 @@ declare namespace Game {
     export let shimmerTypes: Record<string, ShimmerType>;
 
     export let goldenCookieChoices: string[];
-    export let goldenCookieBuildingBuffs: Record<keyof typeof Objects, [string, string]>;
+    export let goldenCookieBuildingBuffs: Record<
+        keyof typeof Objects,
+        [string, string]
+    >;
 
     interface Particle {
         life: number;
@@ -1111,7 +1190,12 @@ declare namespace Game {
     export let textParticlesY: number;
 
     export function textParticlesUpdate(): void;
-    export function textParticlesAdd(text: string, el: undefined | 0, posX: number, posY: number): Particle;
+    export function textParticlesAdd(
+        text: string,
+        el: undefined | 0,
+        posX: number,
+        posY: number,
+    ): Particle;
     export let popups: number;
 
     export function Popup(text: string, x: number, y: number): void;
@@ -1156,7 +1240,13 @@ declare namespace Game {
 
     export function NotesDraw(): void;
 
-    export function Notify(title: string, desc: string, pic?: Icon, quick?: number, noLog?: boolean): void;
+    export function Notify(
+        title: string,
+        desc: string,
+        pic?: Icon,
+        quick?: number,
+        noLog?: boolean,
+    ): void;
     export let darkenL: HTMLDivElement;
     export let promptL: HTMLDivElement;
     export let promptAnchorL: HTMLDivElement;
@@ -1497,7 +1587,10 @@ declare namespace Game {
          * @param neighsM The amount of mature neighbors for each plant
          * @returns An array of possible mutations, first value is the name of the plant, the second on is the raw chance
          */
-        getMuts(neighs: Record<string, number>, neighsM: Record<string, number>): Array<[string, number]>;
+        getMuts(
+            neighs: Record<string, number>,
+            neighsM: Record<string, number>,
+        ): Array<[string, number]>;
         /**
          * Updates the age, power and weed boosts of plant tiles
          */
@@ -1655,7 +1748,11 @@ declare namespace Game {
          * @param mature If set and true, filters to only harvesting mature plants
          * @param mortal If set and true, filters to only harvesting mortal plants
          */
-        harvestAll(type?: GardenPlant | null | PseudoNull, mature?: boolean, mortal?: boolean): void;
+        harvestAll(
+            type?: GardenPlant | null | PseudoNull,
+            mature?: boolean,
+            mortal?: boolean,
+        ): void;
         /**
          * Harvests a plot space
          * @param manual Unused
@@ -2153,7 +2250,9 @@ declare namespace Game {
          * Loan name, Loan power, Load duration, Loan payback power,
          * Loan payback duration, downpayement (mult of bank) and the quote (flavour text)
          */
-        loanTypes: Array<[string, number, number, number, number, number, string]>;
+        loanTypes: Array<
+            [string, number, number, number, number, number, string]
+        >;
         /**
          * Generates the tooltip function for loans
          */
@@ -2195,7 +2294,9 @@ declare namespace Game {
         x?: number | undefined;
         y?: number | undefined;
         pic: string | ((building: GameObject, i: number) => string);
-        bg: string | ((building: GameObject, ctx: CanvasRenderingContext2D) => void);
+        bg:
+            | string
+            | ((building: GameObject, ctx: CanvasRenderingContext2D) => void);
         frames?: number | undefined;
     }
 
@@ -2208,8 +2309,14 @@ declare namespace Game {
         rows?: number | undefined;
         x?: number | undefined;
         y?: number | undefined;
-        pic?: string | ((building: GameObject, i: number) => string) | undefined;
-        bg?: string | ((building: GameObject, ctx: CanvasRenderingContext2D) => void) | undefined;
+        pic?:
+            | string
+            | ((building: GameObject, i: number) => string)
+            | undefined;
+        bg?:
+            | string
+            | ((building: GameObject, ctx: CanvasRenderingContext2D) => void)
+            | undefined;
         frames?: number | undefined;
     }
 
@@ -2540,7 +2647,10 @@ declare namespace Game {
     export function sortSprites(a: any, b: any): number;
     export function sortSpritesById(a: any, b: any): number;
 
-    export function modifyBuildingPrice(building: string, price: number): number;
+    export function modifyBuildingPrice(
+        building: string,
+        price: number,
+    ): number;
 
     export function storeBulkButton(id: number): void;
 
@@ -2548,7 +2658,11 @@ declare namespace Game {
 
     export function RefreshStore(): void;
 
-    export function ComputeCps(base: number, mult: number, bonus: number): number;
+    export function ComputeCps(
+        base: number,
+        mult: number,
+        bonus: number,
+    ): number;
     export function isMinigameReady(me: GameObject): undefined | boolean;
     export let scriptBindings: undefined[] & Record<string, GameObject>;
 
@@ -2578,13 +2692,20 @@ declare namespace Game {
          */
         n: number;
     }
-    export type YouCustomizerAddonGeneId = "face" | "head" | "hair" | "acc1" | "acc2";
+    export type YouCustomizerAddonGeneId =
+        | "face"
+        | "head"
+        | "hair"
+        | "acc1"
+        | "acc2";
     export type YouCustomizerColorGeneId = "skinCol" | "hairCol";
 
     export let YouCustomizer: YouCustomizerT;
     export interface YouCustomizerT {
         render(): void;
-        genes: Array<YouCustomizerGene<number> | YouCustomizerGene<[number, number]>>;
+        genes: Array<
+            YouCustomizerGene<number> | YouCustomizerGene<[number, number]>
+        >;
         /**
          * Returns a string representation of the YouCustomizer.
          */
@@ -2599,10 +2720,15 @@ declare namespace Game {
          * Maps the ID of the gene to the gene itself.
          * The last line is there to support modded genes.
          */
-        genesById:
-            & Record<YouCustomizerAddonGeneId, YouCustomizerGene<[number, number]>>
-            & Record<YouCustomizerColorGeneId, YouCustomizerGene<number>>
-            & Record<string, YouCustomizerGene<number> | YouCustomizerGene<[number, number]>>;
+        genesById: Record<
+            YouCustomizerAddonGeneId,
+            YouCustomizerGene<[number, number]>
+        > &
+            Record<YouCustomizerColorGeneId, YouCustomizerGene<number>> &
+            Record<
+                string,
+                YouCustomizerGene<number> | YouCustomizerGene<[number, number]>
+            >;
 
         /**
          * currentGenes[i] is an index to genes[i].choices
@@ -2658,7 +2784,15 @@ declare namespace Game {
     export let UpgradesInStore: Upgrade[];
     export let UpgradesOwned: number;
 
-    export type UpgradePool = "" | "prestige" | "tech" | "cookie" | "debug" | "toggle" | "prestigeDecor" | "unused";
+    export type UpgradePool =
+        | ""
+        | "prestige"
+        | "tech"
+        | "cookie"
+        | "debug"
+        | "toggle"
+        | "prestigeDecor"
+        | "unused";
     export class Upgrade {
         /**
          * Creates a new generic upgrade
@@ -2668,7 +2802,13 @@ declare namespace Game {
          * @param icon The Icon to use for the upgrade
          * @param buyFunction The function which gets called when the upgrade bought
          */
-        constructor(name: string, desc: string, price: number, icon: Icon, buyFunction?: () => void);
+        constructor(
+            name: string,
+            desc: string,
+            price: number,
+            icon: Icon,
+            buyFunction?: () => void,
+        );
 
         /**
          * The description of the upgrade without auto-adjusted text
@@ -2813,7 +2953,10 @@ declare namespace Game {
 
     export function CountsAsUpgradeOwned(pool: string): boolean;
 
-    export function RequiresConfirmation(upgrade: Upgrade, prompt: string): void;
+    export function RequiresConfirmation(
+        upgrade: Upgrade,
+        prompt: string,
+    ): void;
     /**
      * Unlocks an upgrade
      * @param what The name of the upgrade to unlock
@@ -2874,7 +3017,9 @@ declare namespace Game {
      * Creates a cookie upgrade
      * @factory
      */
-    export function NewUpgradeCookie(obj: CookieUpgradeParameter): CookieUpgrade;
+    export function NewUpgradeCookie(
+        obj: CookieUpgradeParameter,
+    ): CookieUpgrade;
     export interface Tier {
         name: string;
         /**
@@ -2915,16 +3060,24 @@ declare namespace Game {
      * @param tier The tier to use
      */
     export function SetTier(building: string, tier: string | number): void;
-    export function MakeTiered(upgrade: Upgrade, tier: number | string, col: number): void;
+    export function MakeTiered(
+        upgrade: Upgrade,
+        tier: number | string,
+        col: number,
+    ): void;
     /**
      * A generic tiered upgrade, which represents any upgrade which has a tier, mouses, cursors, kittens, etc,
      * (Different from `TieredUpgradeClass`, since that interface only applies to building tiered upgrades, names based from the original Cookie Clicker code)
      */
-    export interface GenericTieredUpgrade<Tier extends string | number = string | number> extends Upgrade {
+    export interface GenericTieredUpgrade<
+        Tier extends string | number = string | number,
+    > extends Upgrade {
         pool: "";
         tier: Tier;
     }
-    export interface KittenUpgrade<Tier extends string | number = string | number> extends GenericTieredUpgrade<Tier> {
+    export interface KittenUpgrade<
+        Tier extends string | number = string | number,
+    > extends GenericTieredUpgrade<Tier> {
         // Pseudo-true
         kitten: 1 | true;
     }
@@ -2932,9 +3085,9 @@ declare namespace Game {
      * A tiered upgrade which represents any upgrade which upgrades a building
      * (Different from `GenericTieredUpgrade`, since that interface applies to all upgrades which are tiered, names based from the original Cookie Clicker code)
      */
-    export interface TieredUpgradeClass<Tier extends string | number = string | number>
-        extends GenericTieredUpgrade<Tier>
-    {
+    export interface TieredUpgradeClass<
+        Tier extends string | number = string | number,
+    > extends GenericTieredUpgrade<Tier> {
         buildingTie1: GameObject;
         buildingTie: GameObject;
     }
@@ -2953,7 +3106,8 @@ declare namespace Game {
         tier: Tier,
     ): TieredUpgradeClass<Tier>;
 
-    export interface SynergyUpgradeClass<Tier extends string | number> extends Upgrade {
+    export interface SynergyUpgradeClass<Tier extends string | number>
+        extends Upgrade {
         pool: "";
         buildingTie1: GameObject;
         buildingTie2: GameObject;
@@ -2997,7 +3151,11 @@ declare namespace Game {
      * @param desc The quote(not the full description, it's generated automatically) to include in the upgrade
      * @param building The building name to use
      */
-    export function GrandmaSynergy(name: string, desc: string, building: string): GrandmaSynergyClass;
+    export function GrandmaSynergy(
+        name: string,
+        desc: string,
+        building: string,
+    ): GrandmaSynergyClass;
     export interface SelectorSwitchChoice {
         name: string;
         selected?: boolean | PseudoBoolean | undefined;
@@ -3092,7 +3250,10 @@ declare namespace Game {
     export function AssignPermanentSlot(slot: number): void;
     export let SelectingPermanentUpgrade: number;
 
-    export function PutUpgradeInPermanentSlot(upgrade: Upgrade, slot: number): void;
+    export function PutUpgradeInPermanentSlot(
+        upgrade: Upgrade,
+        slot: number,
+    ): void;
 
     /**
      * A generic cosmetic which the game uses, can be chosen by the player
@@ -3251,7 +3412,9 @@ declare namespace Game {
      * @param what The name of the achievement
      */
     export function HasAchiev(what: string): PseudoBoolean;
-    export interface TieredAchievementClass<Tier extends string | number = string | number> extends Achievement {
+    export interface TieredAchievementClass<
+        Tier extends string | number = string | number,
+    > extends Achievement {
         tier: Tier;
         buildingTie: GameObject;
     }
@@ -3312,7 +3475,10 @@ declare namespace Game {
      * @param name The name of the achievement
      * @param q The quote to use in the achievement description
      */
-    export function BankAchievement(name: string, q?: string): BankAchievementClass;
+    export function BankAchievement(
+        name: string,
+        q?: string,
+    ): BankAchievementClass;
 
     export interface CpsAchievementClass extends Achievement {
         /**
@@ -3327,7 +3493,10 @@ declare namespace Game {
      * @param name The name of the achievement
      * @param q The quote to use in the achievement description
      */
-    export function CpsAchievement(name: string, q?: string): CpsAchievementClass;
+    export function CpsAchievement(
+        name: string,
+        q?: string,
+    ): CpsAchievementClass;
 
     export interface BuffParameter {
         name?: string | undefined;
@@ -3383,7 +3552,13 @@ declare namespace Game {
     export let buffsN: number;
     export let buffsL: HTMLDivElement;
 
-    export function gainBuff(type: string, time: number, arg1?: number, arg2?: number, arg3?: number): Buff;
+    export function gainBuff(
+        type: string,
+        time: number,
+        arg1?: number,
+        arg2?: number,
+        arg3?: number,
+    ): Buff;
     /**
      * Returns 0 if there is no buff in effect with this name; else, returns it
      */
@@ -3399,10 +3574,23 @@ declare namespace Game {
     export let buffTypesByName: undefined[] & Record<string, buffType>;
     export let buffTypesN: number;
     export class buffType {
-        constructor(name: string, func: (time: number, arg1?: number, arg2?: number, arg3?: number) => BuffParameter);
+        constructor(
+            name: string,
+            func: (
+                time: number,
+                arg1?: number,
+                arg2?: number,
+                arg3?: number,
+            ) => BuffParameter,
+        );
         name: string;
         dname: string;
-        func: (time: number, arg1?: number, arg2?: number, arg3?: number) => Buff;
+        func: (
+            time: number,
+            arg1?: number,
+            arg2?: number,
+            arg3?: number,
+        ) => Buff;
         id: number;
         vanilla: PseudoBoolean;
     }
@@ -3452,7 +3640,12 @@ declare namespace Game {
 
     export function SaveWrinklers(): WrinklerSave;
 
-    export function LoadWrinklers(amount: number, number: number, shinies: number, amountShinies: number): void;
+    export function LoadWrinklers(
+        amount: number,
+        number: number,
+        shinies: number,
+        amountShinies: number,
+    ): void;
     export let specialTab: string;
     export let specialTabHovered: string;
 
@@ -3621,10 +3814,19 @@ declare namespace Game {
         hook: "cps" | "cookiesPerClick",
         func: ((num: number) => number) | Array<(num: number) => number>,
     ): void;
-    export function registerHook(hook: "reset", func: ((hard: boolean) => void) | Array<(hard: boolean) => void>): void;
-    export function registerHook(hook: "ticker", func: (() => string[]) | Array<() => string[]>): void;
     export function registerHook(
-        hook: Exclude<GameHooks, "cps" | "cookiesPerClick" | "reset" | "ticker">,
+        hook: "reset",
+        func: ((hard: boolean) => void) | Array<(hard: boolean) => void>,
+    ): void;
+    export function registerHook(
+        hook: "ticker",
+        func: (() => string[]) | Array<() => string[]>,
+    ): void;
+    export function registerHook(
+        hook: Exclude<
+            GameHooks,
+            "cps" | "cookiesPerClick" | "reset" | "ticker"
+        >,
         func: (() => void) | Array<() => void>,
     ): void;
     export let brokenMods: string[];
@@ -3675,12 +3877,16 @@ declare namespace Game {
         building: string;
         q: string;
     }
-    export function NewUnshackleBuilding(obj: UnshackledBuildingObj): HeavenlyUpgrade;
+    export function NewUnshackleBuilding(
+        obj: UnshackledBuildingObj,
+    ): HeavenlyUpgrade;
     export interface UnshackledTierObj {
         tier: number;
         q: string;
     }
-    export function NewUnshackleUpgradeTier(obj: UnshackledTierObj): HeavenlyUpgrade;
+    export function NewUnshackleUpgradeTier(
+        obj: UnshackledTierObj,
+    ): HeavenlyUpgrade;
     export interface Jukebox {
         sounds: string[];
         tracks: [];

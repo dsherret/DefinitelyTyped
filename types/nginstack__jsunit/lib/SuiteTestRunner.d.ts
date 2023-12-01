@@ -1,5 +1,8 @@
 export = SuiteTestRunner;
-declare function SuiteTestRunner(suite: TestSuite, opt_trackingId?: string): void;
+declare function SuiteTestRunner(
+    suite: TestSuite,
+    opt_trackingId?: string,
+): void;
 declare class SuiteTestRunner {
     constructor(suite: TestSuite, opt_trackingId?: string);
     private suite_;

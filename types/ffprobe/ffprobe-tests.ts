@@ -38,7 +38,7 @@ const handleSideData = (side_data: ffprobe.SideData) => {
 };
 
 ffprobe("./file.mp4", { path: ffprobeStatic.path })
-    .then(info => {
+    .then((info) => {
         info; // $ExpectType FFProbeResult
 
         for (const stream of info.streams) {
@@ -61,5 +61,7 @@ ffprobe("./file.mp4", { path: ffprobeStatic.path }, (err, info) => {
 });
 (async () => {
     // $ExpectType FFProbeResult
-    const result = await ffprobe("/path/to/movie.avi", { path: ffprobeStatic.path });
+    const result = await ffprobe("/path/to/movie.avi", {
+        path: ffprobeStatic.path,
+    });
 })();

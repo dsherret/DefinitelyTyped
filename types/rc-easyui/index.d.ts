@@ -1728,15 +1728,43 @@ export namespace Accordion {
 
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function multiple(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onPanelSelect(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onPanelSelect(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function onPanelUnselect(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onPanelUnselect(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selectedIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectedIndex(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -1836,45 +1864,136 @@ export namespace AccordionPanel {
 
         function bodyCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function bodyStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function bodyStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function closable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function closeIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function closeIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function closed(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function collapseIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapseIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsed(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsed(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsible(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsible(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function expandIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function expandIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function footer(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function footerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function footerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function header(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function headerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function headerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onCollapse(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onCollapse(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onExpand(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function showFooter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showFooter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showHeader(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showHeader(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function title(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2013,7 +2132,14 @@ export namespace ButtonGroup {
     }
 
     namespace propTypes {
-        function selectionMode(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectionMode(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace selectionMode {
             // Circular reference from rc_easyui.ButtonGroup.propTypes.selectionMode
@@ -2070,7 +2196,14 @@ export namespace Calendar {
     namespace propTypes {
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function firstDay(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2080,7 +2213,14 @@ export namespace Calendar {
 
         function months(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function selection(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selection(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function showInfo(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2088,9 +2228,23 @@ export namespace Calendar {
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function validator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function weekNumberHeader(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function weekNumberHeader(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function weeks(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2172,15 +2326,50 @@ export namespace CheckBox {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2295,15 +2484,50 @@ export namespace ComboBox {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2421,15 +2645,50 @@ export namespace ComboBox {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2441,11 +2700,32 @@ export namespace ComboBox {
 
         function filter(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function groupField(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function groupField(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function hasDownArrow(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function hasDownArrow(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2453,13 +2733,34 @@ export namespace ComboBox {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function lazy(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function limitToList(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function limitToList(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function multiple(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2469,39 +2770,116 @@ export namespace ComboBox {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function pageNumber(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageNumber(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function pageSize(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function panelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function panelStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function renderItem(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function renderItem(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function rowHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function rowHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function separator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function separator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textField(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textField(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function total(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function valueField(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function valueField(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function virtualScroll(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function virtualScroll(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace addonLeft {
             // Circular reference from rc_easyui.ComboBox.propTypes.addonLeft
@@ -2714,15 +3092,50 @@ export namespace ComboGrid {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2822,15 +3235,50 @@ export namespace ComboGrid {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2840,9 +3288,23 @@ export namespace ComboGrid {
 
         function editable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function hasDownArrow(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function hasDownArrow(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2850,9 +3312,23 @@ export namespace ComboGrid {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function multiple(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -2862,21 +3338,56 @@ export namespace ComboGrid {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function panelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function panelStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function separator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function separator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3031,15 +3542,50 @@ export namespace ComboTree {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3139,15 +3685,50 @@ export namespace ComboTree {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3157,9 +3738,23 @@ export namespace ComboTree {
 
         function editable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function hasDownArrow(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function hasDownArrow(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3167,9 +3762,23 @@ export namespace ComboTree {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function multiple(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3179,21 +3788,56 @@ export namespace ComboTree {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function panelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function panelStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function separator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function separator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3519,39 +4163,144 @@ export namespace DataGrid {
     namespace propTypes {
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function clickToEdit(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function clickToEdit(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function columnMoving(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function columnMoving(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function dblclickToEdit(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function dblclickToEdit(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function editMode(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function expanderWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function expanderWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterBtnPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterBtnPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterDelay(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterDelay(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterMatchingType(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterMatchingType(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterOperators(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterOperators(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterRules(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterRules(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterable(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterable(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function footerData(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerData(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function frozenAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function frozenAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function frozenWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function frozenWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function groupField(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function groupField(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function idField(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3561,33 +4310,117 @@ export namespace DataGrid {
 
         function loading(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function multiSort(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiSort(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pageNumber(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageNumber(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pageOptions(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageOptions(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pagePosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pagePosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function pageSize(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function pagination(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pagination(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function renderDetail(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function renderDetail(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function renderGroup(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function renderGroup(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function rowCss(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function rowHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function rowHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selection(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selection(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selectionMode(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectionMode(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showFooter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showFooter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showHeader(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showHeader(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function sorts(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3595,7 +4428,14 @@ export namespace DataGrid {
 
         function total(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function virtualScroll(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function virtualScroll(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace border {
             // Circular reference from rc_easyui.DataGrid.propTypes.border
@@ -3930,19 +4770,68 @@ export namespace DataList {
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function filterBtnPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterBtnPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterDelay(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterDelay(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterMatchingType(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterMatchingType(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterOperators(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterOperators(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterRules(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterRules(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterable(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterable(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function hoverCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3950,7 +4839,14 @@ export namespace DataList {
 
         function itemCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function itemStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function itemStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function lazy(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -3958,33 +4854,117 @@ export namespace DataList {
 
         function loading(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onListScroll(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onListScroll(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pageNumber(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageNumber(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pageOptions(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageOptions(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pagePosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pagePosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function pageSize(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function pagination(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pagination(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function renderItem(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function renderItem(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function rowHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function rowHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function scrollPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function scrollPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selectedCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectedCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selection(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selection(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selectionMode(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectionMode(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function total(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function virtualScroll(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function virtualScroll(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace border {
             // Circular reference from rc_easyui.DataList.propTypes.border
@@ -4142,15 +5122,50 @@ export namespace DateBox {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4254,21 +5269,77 @@ export namespace DateBox {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function calendarOptions(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function calendarOptions(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function closeText(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function closeText(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function currentText(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function currentText(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function delay(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4278,9 +5349,23 @@ export namespace DateBox {
 
         function format(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function hasDownArrow(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function hasDownArrow(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4290,9 +5375,23 @@ export namespace DateBox {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function multiple(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4304,15 +5403,43 @@ export namespace DateBox {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function panelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function panelStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function separator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function separator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function showInfo(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4320,7 +5447,14 @@ export namespace DateBox {
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4505,15 +5639,50 @@ export namespace DateTimeSpinner {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4607,13 +5776,34 @@ export namespace DateTimeSpinner {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function ampm(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4621,25 +5811,60 @@ export namespace DateTimeSpinner {
 
         function format(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function highlight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function highlight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function increment(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function increment(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function inputCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function max(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function min(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4647,15 +5872,36 @@ export namespace DateTimeSpinner {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function reversed(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function selections(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selections(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function spinAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function spinAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function spinners(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4663,7 +5909,14 @@ export namespace DateTimeSpinner {
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -4885,57 +6138,176 @@ export namespace Dialog {
     namespace propTypes {
         function animate(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function autoCenter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function autoCenter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function bodyCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function bodyStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function bodyStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function borderType(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function borderType(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function closable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function closeIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function closeIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function closed(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function collapseIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapseIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsed(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsed(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsible(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsible(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function draggable(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function draggable(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function expandIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function expandIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function footer(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function footerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function footerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function header(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function headerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function headerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function modal(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onCollapse(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onCollapse(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onExpand(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function resizable(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function resizable(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showFooter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showFooter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showHeader(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showHeader(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function title(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -5135,15 +6507,36 @@ export namespace Draggable {
 
         function onDrag(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onDragEnd(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onDragEnd(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function onDragStart(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onDragStart(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function proxy(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function proxyCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function proxyStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function proxyStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function revert(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -5249,7 +6642,14 @@ export namespace DraggableProxy {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -5315,15 +6715,50 @@ export namespace FieldBase {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -5375,11 +6810,32 @@ export namespace FieldBase {
 
         function name(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function validateOnBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function validateOnChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function validateOnCreate(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnCreate(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace invalid {
             // Circular reference from rc_easyui.FieldBase.propTypes.invalid
@@ -5466,17 +6922,38 @@ export namespace FileButton {
     namespace propTypes {
         function accept(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function autoUpload(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function autoUpload(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function capture(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function href(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -5502,7 +6979,14 @@ export namespace FileButton {
 
         function url(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function withCredentials(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function withCredentials(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace accept {
             // Circular reference from rc_easyui.FileButton.propTypes.accept
@@ -5610,23 +7094,86 @@ export namespace Form {
     namespace childContextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function floatingLabel(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function floatingLabel(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace fieldAdd {
             // Circular reference from rc_easyui.Form.childContextTypes.fieldAdd
@@ -5718,33 +7265,96 @@ export namespace Form {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function delay(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function errorType(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function errorType(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function floatingLabel(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function floatingLabel(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function model(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function onChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onValidate(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onValidate(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function rules(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function tooltipPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function tooltipPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function validateRules(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateRules(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace className {
             // Circular reference from rc_easyui.Form.propTypes.className
@@ -5820,13 +7430,41 @@ export namespace Form {
 
 export namespace FormField {
     namespace contextTypes {
-        function floatingLabel(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function floatingLabel(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -5864,15 +7502,43 @@ export namespace FormField {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function label(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function labelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function labelWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function labelWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function name(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6080,35 +7746,126 @@ export namespace GridBase {
     namespace propTypes {
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function clickToEdit(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function clickToEdit(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function columnMoving(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function columnMoving(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function dblclickToEdit(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function dblclickToEdit(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function editMode(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function filterBtnPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterBtnPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterDelay(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterDelay(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterMatchingType(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterMatchingType(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterOperators(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterOperators(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterRules(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterRules(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterable(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterable(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function footerData(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerData(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function frozenAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function frozenAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function frozenWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function frozenWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function idField(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6118,29 +7875,99 @@ export namespace GridBase {
 
         function loading(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function multiSort(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiSort(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pageNumber(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageNumber(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pageOptions(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageOptions(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pagePosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pagePosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function pageSize(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function pagination(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pagination(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function rowCss(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function rowHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function rowHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selection(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selection(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selectionMode(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectionMode(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showFooter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showFooter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showHeader(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showHeader(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function sorts(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6148,7 +7975,14 @@ export namespace GridBase {
 
         function total(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function virtualScroll(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function virtualScroll(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace border {
             // Circular reference from rc_easyui.GridBase.propTypes.border
@@ -6356,9 +8190,23 @@ export namespace GridColumn {
 
         function colspan(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function defaultFilterOperator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function defaultFilterOperator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function editRules(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function editRules(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function editable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6370,9 +8218,23 @@ export namespace GridColumn {
 
         function filter(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function filterOperators(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterOperators(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterable(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterable(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function footer(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6572,7 +8434,14 @@ export namespace GridHeaderRow {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6592,15 +8461,50 @@ export namespace InputBase {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6678,17 +8582,45 @@ export namespace InputBase {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function editable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6696,9 +8628,23 @@ export namespace InputBase {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6706,7 +8652,14 @@ export namespace InputBase {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6714,7 +8667,14 @@ export namespace InputBase {
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -6864,7 +8824,14 @@ export namespace Layout {
     }
 
     namespace propTypes {
-        function selectedTab(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectedTab(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace selectedTab {
             // Circular reference from rc_easyui.Layout.propTypes.selectedTab
@@ -6931,51 +8898,149 @@ export namespace LayoutPanel {
 
         function bodyCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function bodyStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function bodyStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function closable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function closeIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function closeIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function closed(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function collapseIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapseIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsed(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsed(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsedSize(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsedSize(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsible(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsible(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function expandIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function expandIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function expander(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function footer(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function footerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function footerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function header(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function headerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function headerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onCollapse(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onCollapse(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onExpand(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function region(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function showFooter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showFooter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showHeader(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showHeader(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function split(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7154,13 +9219,27 @@ export namespace LinkButton {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function href(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7265,7 +9344,14 @@ export namespace LocaleBase {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7303,15 +9389,50 @@ export namespace MaskedBox {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7397,17 +9518,45 @@ export namespace MaskedBox {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function editable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7415,13 +9564,27 @@ export namespace MaskedBox {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function mask(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function masks(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7429,9 +9592,23 @@ export namespace MaskedBox {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function promptChar(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function promptChar(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7439,7 +9616,14 @@ export namespace MaskedBox {
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7592,7 +9776,14 @@ export namespace Menu {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function duration(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7600,9 +9791,23 @@ export namespace Menu {
 
         function menuCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function menuStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function menuStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function menuWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function menuWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function noline(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7696,7 +9901,14 @@ export namespace MenuButton {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7704,13 +9916,27 @@ export namespace MenuButton {
 
         function href(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function menu(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function menuAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function menuAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onClick(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7828,7 +10054,14 @@ export namespace MenuItem {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7892,13 +10125,27 @@ export namespace Messager {
     namespace propTypes {
         function buttons(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function content(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function icon(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function messagerType(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function messagerType(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function msg(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -7945,15 +10192,50 @@ export namespace NumberBox {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8049,37 +10331,100 @@ export namespace NumberBox {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function decimalSeparator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function decimalSeparator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function editable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function groupSeparator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function groupSeparator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function increment(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function increment(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function inputCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function max(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function min(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8087,9 +10432,23 @@ export namespace NumberBox {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function precision(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function precision(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function prefix(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8097,7 +10456,14 @@ export namespace NumberBox {
 
         function reversed(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function spinAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function spinAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function spinners(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8107,7 +10473,14 @@ export namespace NumberBox {
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8316,11 +10689,32 @@ export namespace Pagination {
     }
 
     namespace propTypes {
-        function afterPageText(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function afterPageText(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function beforePageText(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function beforePageText(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function displayMsg(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function displayMsg(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function layout(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8328,21 +10722,63 @@ export namespace Pagination {
 
         function loading(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onPageChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onPageChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function pageList(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function pageNumber(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageNumber(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function pageSize(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function renderExt(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function renderExt(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showPageInfo(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showPageInfo(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showPageList(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showPageList(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showPageRefresh(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showPageRefresh(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function total(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8473,45 +10909,136 @@ export namespace Panel {
 
         function bodyCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function bodyStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function bodyStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function closable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function closeIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function closeIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function closed(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function collapseIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapseIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsed(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsed(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsible(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsible(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function expandIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function expandIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function footer(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function footerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function footerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function header(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function headerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function headerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onCollapse(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onCollapse(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onExpand(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function showFooter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showFooter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showHeader(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showHeader(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function title(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8636,15 +11163,50 @@ export namespace PasswordBox {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8734,13 +11296,41 @@ export namespace PasswordBox {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function checkInterval(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function checkInterval(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8748,7 +11338,14 @@ export namespace PasswordBox {
 
         function eyeAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8756,11 +11353,32 @@ export namespace PasswordBox {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function lastDelay(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function lastDelay(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8768,9 +11386,23 @@ export namespace PasswordBox {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function passwordChar(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function passwordChar(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8782,7 +11414,14 @@ export namespace PasswordBox {
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8940,9 +11579,23 @@ export namespace ProgressBar {
 
         function barStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showValue(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showValue(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -8984,15 +11637,50 @@ export namespace RadioButton {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9048,7 +11736,14 @@ export namespace RadioButton {
     namespace propTypes {
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function groupValue(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function groupValue(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9129,19 +11824,54 @@ export namespace Resizable {
 
         function handles(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function maxHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function maxHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function maxWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function minHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function minHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function minWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onResizeStart(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onResizeStart(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function onResizeStop(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onResizeStop(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function onResizing(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onResizing(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace disabled {
             // Circular reference from rc_easyui.Resizable.propTypes.disabled
@@ -9199,15 +11929,50 @@ export namespace SearchBox {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9295,25 +12060,74 @@ export namespace SearchBox {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function buttonAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function buttonAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function buttonIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function buttonIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function categories(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function categories(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function category(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function editable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9321,11 +12135,32 @@ export namespace SearchBox {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function menuAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function menuAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9335,7 +12170,14 @@ export namespace SearchBox {
 
         function onSearch(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9343,7 +12185,14 @@ export namespace SearchBox {
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9521,23 +12370,72 @@ export namespace SideMenu {
 
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsed(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsed(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsedCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsedCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function floatMenuPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function floatMenuPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function floatMenuWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function floatMenuWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function multiple(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function selection(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selection(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showCollapsedText(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showCollapsedText(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9607,15 +12505,50 @@ export namespace Slider {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9715,11 +12648,32 @@ export namespace Slider {
 
         function step(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function validateOnBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function validateOnChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function validateOnCreate(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnCreate(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9846,7 +12800,14 @@ export namespace SplitButton {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9854,13 +12815,27 @@ export namespace SplitButton {
 
         function href(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function menu(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function menuAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function menuAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onClick(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -9978,13 +12953,34 @@ export namespace SubMenu {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function menuCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function menuStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function menuStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function menuWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function menuWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10019,15 +13015,50 @@ export namespace SwitchButton {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10097,7 +13128,14 @@ export namespace SwitchButton {
     namespace propTypes {
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function handleText(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function handleText(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10111,11 +13149,32 @@ export namespace SwitchButton {
 
         function readonly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function validateOnBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function validateOnChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function validateOnCreate(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnCreate(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10235,49 +13294,140 @@ export namespace TabPanel {
 
         function bodyCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function bodyStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function bodyStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function closable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function closeIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function closeIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function closed(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function collapseIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapseIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsed(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsed(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function collapsible(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function collapsible(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function expandIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function expandIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function footer(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function footerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function footerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function header(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function headerCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function headerStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onCollapse(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onCollapse(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onExpand(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function selected(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function showFooter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showFooter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showHeader(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showHeader(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function title(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10458,29 +13608,92 @@ export namespace Tabs {
     namespace propTypes {
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function headerHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function headerWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function headerWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function justified(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function justified(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function narrow(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function plain(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function scrollIncrement(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function scrollIncrement(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function scrollable(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function scrollable(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selectedIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectedIndex(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function tabHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function tabHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function tabPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function tabPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function tabWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10560,15 +13773,50 @@ export namespace TagBox {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10686,15 +13934,50 @@ export namespace TagBox {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10706,11 +13989,32 @@ export namespace TagBox {
 
         function filter(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function groupField(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function groupField(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function hasDownArrow(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function hasDownArrow(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10718,13 +14022,34 @@ export namespace TagBox {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function lazy(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function limitToList(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function limitToList(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function multiple(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10734,23 +14059,72 @@ export namespace TagBox {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function pageNumber(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageNumber(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function pageSize(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function panelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function panelStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function renderItem(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function renderItem(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function rowHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function rowHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function separator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function separator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -10758,17 +14132,45 @@ export namespace TagBox {
 
         function tagCss(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textField(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textField(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function total(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function valueField(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function valueField(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function virtualScroll(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function virtualScroll(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace addonLeft {
             // Circular reference from rc_easyui.TagBox.propTypes.addonLeft
@@ -10986,15 +14388,50 @@ export namespace TextBox {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11072,17 +14509,45 @@ export namespace TextBox {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function editable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11090,9 +14555,23 @@ export namespace TextBox {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11100,7 +14579,14 @@ export namespace TextBox {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11108,7 +14594,14 @@ export namespace TextBox {
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11218,15 +14711,50 @@ export namespace TextEditor {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11292,11 +14820,32 @@ export namespace TextEditor {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function validateOnBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function validateOnChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function validateOnCreate(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateOnCreate(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace invalid {
             // Circular reference from rc_easyui.TextEditor.propTypes.invalid
@@ -11344,15 +14893,50 @@ export namespace TimePicker {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11450,17 +15034,52 @@ export namespace TimePicker {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function ampm(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function arrowAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function arrowIconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function arrowIconCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function delay(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11468,9 +15087,23 @@ export namespace TimePicker {
 
         function editable(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function hasDownArrow(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function hasDownArrow(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11478,9 +15111,23 @@ export namespace TimePicker {
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function multiple(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11490,21 +15137,56 @@ export namespace TimePicker {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function panelAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function panelStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function panelStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function separator(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function separator(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11659,15 +15341,50 @@ export namespace TimeSpinner {
     namespace contextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function locale(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11761,13 +15478,34 @@ export namespace TimeSpinner {
     }
 
     namespace propTypes {
-        function addonLeft(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonLeft(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function addonRight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function addonRight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function ampm(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11775,25 +15513,60 @@ export namespace TimeSpinner {
 
         function format(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function highlight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function highlight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function iconAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function iconAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function iconCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function increment(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function increment(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function inputCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function inputId(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function inputStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function inputStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function max(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function min(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function multiline(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiline(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11801,15 +15574,36 @@ export namespace TimeSpinner {
 
         function onFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function placeholder(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function placeholder(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function readOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function reversed(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function selections(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selections(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function spinAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function spinAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function spinners(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -11817,7 +15611,14 @@ export namespace TimeSpinner {
 
         function tabIndex(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function textFormatter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function textFormatter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function value(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -12023,7 +15824,14 @@ export namespace Tooltip {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function content(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -12033,31 +15841,87 @@ export namespace Tooltip {
 
         function disabled(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function hideDelay(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function hideDelay(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function hideEvent(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function hideEvent(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onHide(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onShow(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function position(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function showDelay(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showDelay(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showEvent(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showEvent(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function target(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function tooltipCls(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function tooltipCls(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function tooltipStyle(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function tooltipStyle(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function trackMouse(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function trackMouse(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function tracking(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -12236,27 +16100,69 @@ export namespace Tree {
     namespace propTypes {
         function animate(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function cascadeCheck(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function cascadeCheck(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function checkbox(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function clickToEdit(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function clickToEdit(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function dblclickToEdit(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function dblclickToEdit(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function editor(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function filter(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function filterIncludingChild(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterIncludingChild(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function render(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function selectLeafOnly(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectLeafOnly(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selection(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selection(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace animate {
             // Circular reference from rc_easyui.Tree.propTypes.animate
@@ -12509,43 +16415,148 @@ export namespace TreeGrid {
 
         function border(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function cascadeCheck(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function cascadeCheck(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function checkbox(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function clickToEdit(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function clickToEdit(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function columnMoving(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function columnMoving(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function data(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function dblclickToEdit(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function dblclickToEdit(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function editMode(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function filter(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function filterBtnPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterBtnPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterDelay(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterDelay(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterIncludingChild(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterIncludingChild(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterMatchingType(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterMatchingType(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterOperators(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterOperators(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterPosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterPosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterRules(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterRules(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function filterable(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function filterable(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function footerData(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function footerData(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function frozenAlign(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function frozenAlign(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function frozenWidth(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function frozenWidth(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function idField(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -12555,29 +16566,99 @@ export namespace TreeGrid {
 
         function loading(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function multiSort(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function multiSort(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pageNumber(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageNumber(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pageOptions(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageOptions(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function pagePosition(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pagePosition(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function pageSize(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function pagination(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pagination(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function rowCss(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function rowHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function rowHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selection(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selection(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function selectionMode(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function selectionMode(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showFooter(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showFooter(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function showHeader(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function showHeader(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function sorts(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -12585,9 +16666,23 @@ export namespace TreeGrid {
 
         function total(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function treeField(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function treeField(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function virtualScroll(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function virtualScroll(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace animate {
             // Circular reference from rc_easyui.TreeGrid.propTypes.animate
@@ -12805,15 +16900,50 @@ export namespace Validation {
     namespace childContextTypes {
         function fieldAdd(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function fieldBlur(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldBlur(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldFocus(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldFocus(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldName(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldName(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function fieldRemove(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function fieldRemove(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace fieldAdd {
             // Circular reference from rc_easyui.Validation.childContextTypes.fieldAdd
@@ -12871,7 +17001,14 @@ export namespace Validation {
     }
 
     namespace propTypes {
-        function className(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function className(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function delay(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
@@ -12879,13 +17016,27 @@ export namespace Validation {
 
         function onChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function onValidate(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onValidate(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function rules(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
         function style(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function validateRules(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function validateRules(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         namespace className {
             // Circular reference from rc_easyui.Validation.propTypes.className
@@ -12975,25 +17126,74 @@ export namespace VirtualScroll {
 
         function lazy(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function maxDivHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function maxDivHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function maxVisibleHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function maxVisibleHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function onPageChange(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function onPageChange(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function onUpdate(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function pageNumber(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function pageNumber(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function pageSize(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function renderItem(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function renderItem(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
-        function renderItems(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function renderItems(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function reset(e: any, t: any, n: any, r: any, i: any, a: any): void;
 
-        function rowHeight(e: any, t: any, n: any, r: any, i: any, a: any): void;
+        function rowHeight(
+            e: any,
+            t: any,
+            n: any,
+            r: any,
+            i: any,
+            a: any,
+        ): void;
 
         function total(e: any, t: any, n: any, r: any, i: any, a: any): void;
 

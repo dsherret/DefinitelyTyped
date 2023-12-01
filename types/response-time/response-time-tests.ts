@@ -16,8 +16,8 @@ import http = require("http");
 {
     // create "middleware"
     var _responseTime = responseTime();
-    http.createServer(function(req, res) {
-        _responseTime(req, res, function(err) {
+    http.createServer(function (req, res) {
+        _responseTime(req, res, function (err) {
             if (err) return console.log(err);
 
             // respond to request
@@ -32,7 +32,11 @@ import http = require("http");
 //////////////////////////////////////////////////////////////////////////////////////////////////
 {
     const app = express();
-    app.use(responseTime((req: express.Request, res: express.Response, time: number) => {
-        let num: number = time;
-    }));
+    app.use(
+        responseTime(
+            (req: express.Request, res: express.Response, time: number) => {
+                let num: number = time;
+            },
+        ),
+    );
 }

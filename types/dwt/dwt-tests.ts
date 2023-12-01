@@ -20,21 +20,32 @@ function acquireImage() {
         DWObject.SelectSourceByIndex(0); // Use method SelectSourceByIndex to avoid the 'Select Source' dialog
         DWObject.OpenSource();
         DWObject.IfDisableSourceAfterAcquire = true; // Scanner source will be disabled/closed automatically after the scan.
-        DWObject.AcquireImage({}, () => {}, (settings: DeviceConfiguration, errorCode: number, errorString: string) => {
-            DWObject.CloseSource();
-        });
+        DWObject.AcquireImage(
+            {},
+            () => {},
+            (
+                settings: DeviceConfiguration,
+                errorCode: number,
+                errorString: string,
+            ) => {
+                DWObject.CloseSource();
+            },
+        );
     }
 }
 
 function registerEvent() {
     const DWObject = Dynamsoft.WebTwainEnv.GetWebTwain("dwtcontrolContainer");
     if (DWObject) {
-        DWObject.RegisterEvent("OnPostTransfer", function() {});
-        DWObject.RegisterEvent("OnPostLoad", function() {});
-        DWObject.RegisterEvent("OnMouseClick", function() {});
-        DWObject.RegisterEvent("OnTopImageInTheViewChanged", function(index: number) {
-            DWObject.CurrentImageIndexInBuffer = index;
-        });
+        DWObject.RegisterEvent("OnPostTransfer", function () {});
+        DWObject.RegisterEvent("OnPostLoad", function () {});
+        DWObject.RegisterEvent("OnMouseClick", function () {});
+        DWObject.RegisterEvent(
+            "OnTopImageInTheViewChanged",
+            function (index: number) {
+                DWObject.CurrentImageIndexInBuffer = index;
+            },
+        );
     }
 }
 
@@ -67,19 +78,28 @@ function saveImage() {
     const DWObject = Dynamsoft.WebTwainEnv.GetWebTwain("dwtcontrolContainer");
     if (DWObject) {
         DWObject.ConvertToGrayScale(DWObject.CurrentImageIndexInBuffer);
-        DWObject.SaveAsJPEG("DynamicWebTWAIN.jpg", DWObject.CurrentImageIndexInBuffer);
+        DWObject.SaveAsJPEG(
+            "DynamicWebTWAIN.jpg",
+            DWObject.CurrentImageIndexInBuffer,
+        );
         DWObject.SaveAllAsMultiPageTIFF(
             "DynamicWebTWAIN.tiff",
             () => {},
             (errorCode: number, errorString: string) => {},
         );
-        DWObject.SaveAllAsPDF("DynamicWebTWAIN.pdf", () => {}, (errorCode: number, errorString: string) => {});
+        DWObject.SaveAllAsPDF(
+            "DynamicWebTWAIN.pdf",
+            () => {},
+            (errorCode: number, errorString: string) => {},
+        );
     }
 }
 
 function updateLargeViewer() {
     const DWObject = Dynamsoft.WebTwainEnv.GetWebTwain("dwtcontrolContainer");
-    const DWObjectLargeViewer = Dynamsoft.WebTwainEnv.GetWebTwain("dwtcontrolContainerLargeViewer");
+    const DWObjectLargeViewer = Dynamsoft.WebTwainEnv.GetWebTwain(
+        "dwtcontrolContainerLargeViewer",
+    );
     if (DWObject) {
         DWObject.CopyToClipboard(DWObject.CurrentImageIndexInBuffer); // Copy the current image in the thumbnail to clipboard in DIB format.
         DWObjectLargeViewer.LoadDibFromClipboard(); // Load the image from Clipboard into the large viewer.
@@ -106,7 +126,12 @@ function downloadImage() {
     const DWObject = Dynamsoft.WebTwainEnv.GetWebTwain("dwtcontrolContainer");
     if (DWObject) {
         DWObject.HTTPPort = 80;
-        DWObject.HTTPDownload("www.dynamsoft.com", "img.png", () => {}, (errorCode: number, errorString: string) => {});
+        DWObject.HTTPDownload(
+            "www.dynamsoft.com",
+            "img.png",
+            () => {},
+            (errorCode: number, errorString: string) => {},
+        );
     }
 }
 

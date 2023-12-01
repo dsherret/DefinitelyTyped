@@ -8,7 +8,11 @@ export function openDatabase(
     error?: (e: SQLError) => void,
 ): SQLiteDatabase;
 export function deleteDatabase(params: DatabaseParams): Promise<void>;
-export function deleteDatabase(params: DatabaseParams, success?: () => void, error?: (err: SQLError) => void): void;
+export function deleteDatabase(
+    params: DatabaseParams,
+    success?: () => void,
+    error?: (err: SQLError) => void,
+): void;
 export type Location = "default" | "Library" | "Documents" | "Shared";
 export interface DatabaseOptionalParams {
     createFromLocation?: number | string | undefined;
@@ -62,10 +66,19 @@ export interface SQLError {
     message: string;
 }
 
-export type StatementCallback = (transaction: Transaction, resultSet: ResultSet) => void;
-export type StatementErrorCallback = (transaction: Transaction, error: SQLError) => void;
+export type StatementCallback = (
+    transaction: Transaction,
+    resultSet: ResultSet,
+) => void;
+export type StatementErrorCallback = (
+    transaction: Transaction,
+    error: SQLError,
+) => void;
 export interface Transaction {
-    executeSql(sqlStatement: string, arguments?: any[]): Promise<[Transaction, ResultSet]>;
+    executeSql(
+        sqlStatement: string,
+        arguments?: any[],
+    ): Promise<[Transaction, ResultSet]>;
     executeSql(
         sqlStatement: string,
         arguments?: any[],
@@ -95,11 +108,25 @@ export interface SQLiteDatabase {
     close(): Promise<void>;
     close(success: () => void, error: (err: SQLError) => void): void;
     executeSql(statement: string, params?: any[]): Promise<[ResultSet]>;
-    executeSql(statement: string, params?: any[], success?: StatementCallback, error?: StatementErrorCallback): void;
+    executeSql(
+        statement: string,
+        params?: any[],
+        success?: StatementCallback,
+        error?: StatementErrorCallback,
+    ): void;
 
     attach(nameToAttach: string, alias: string): Promise<void>;
-    attach(nameToAttach: string, alias: string, success?: () => void, error?: (err: SQLError) => void): void;
+    attach(
+        nameToAttach: string,
+        alias: string,
+        success?: () => void,
+        error?: (err: SQLError) => void,
+    ): void;
 
     detach(alias: string): Promise<void>;
-    detach(alias: string, success?: () => void, error?: (err: SQLError) => void): void;
+    detach(
+        alias: string,
+        success?: () => void,
+        error?: (err: SQLError) => void,
+    ): void;
 }

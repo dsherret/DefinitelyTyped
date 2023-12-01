@@ -34,7 +34,11 @@ declare namespace cardform {
     interface CardFormProperties {
         id: string;
         placeholder?: string;
-        element?: HTMLElement | HTMLInputElement | HTMLSelectElement | HTMLFormElement;
+        element?:
+            | HTMLElement
+            | HTMLInputElement
+            | HTMLSelectElement
+            | HTMLFormElement;
         listeners?: CardFormListeners;
         hidden?: boolean;
         style?: { [key: string]: string };
@@ -92,11 +96,26 @@ declare namespace cardform {
     type FechingCallback = () => unknown;
     type OnFormMounted = (error?: Error) => void;
     type OnFormUnmounted = (error?: Error) => void;
-    type OnIdentificationTypesReceived = (error?: Error, response?: IdentificationTypesResponseCardForm[]) => void;
-    type OnInstallmentsReceived = (error?: Error, response?: InstallmentsResponseCardForm) => void;
-    type OnPaymentMethodsReceived = (error?: Error, response?: PaymentMethodsResponseCardForm[]) => void;
-    type OnCardTokenReceived = (error?: Error, response?: CardTokenResponseCardForm) => void;
-    type OnIssuersReceived = (error?: Error, response?: IssuersResponseCardForm[]) => void;
+    type OnIdentificationTypesReceived = (
+        error?: Error,
+        response?: IdentificationTypesResponseCardForm[],
+    ) => void;
+    type OnInstallmentsReceived = (
+        error?: Error,
+        response?: InstallmentsResponseCardForm,
+    ) => void;
+    type OnPaymentMethodsReceived = (
+        error?: Error,
+        response?: PaymentMethodsResponseCardForm[],
+    ) => void;
+    type OnCardTokenReceived = (
+        error?: Error,
+        response?: CardTokenResponseCardForm,
+    ) => void;
+    type OnIssuersReceived = (
+        error?: Error,
+        response?: IssuersResponseCardForm[],
+    ) => void;
     type OnSubmit = (event: Event) => void;
     type OnFetching = (name: string) => FechingCallback;
     type OnReady = () => void;

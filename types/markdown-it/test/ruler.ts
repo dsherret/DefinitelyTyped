@@ -32,10 +32,10 @@ md.core.ruler.disable("link");
 
 declare const state: StateCore;
 const coreRules = md.core.ruler.getRules("");
-coreRules.forEach(rule => {
+coreRules.forEach((rule) => {
     rule(state);
 });
 
 const terminatorRules = md.block.ruler.getRules("blockquote");
 
-md.core.ruler.push("foobar", state => false, { alt: ["foo", "bar"] });
+md.core.ruler.push("foobar", (state) => false, { alt: ["foo", "bar"] });

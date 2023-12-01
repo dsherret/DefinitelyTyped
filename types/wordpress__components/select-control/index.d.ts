@@ -20,13 +20,11 @@ declare namespace SelectControl {
          */
         disabled?: boolean;
     }
-    type Props<T extends string | readonly string[]> =
-        & Omit<
-            HTMLProps<HTMLSelectElement>,
-            keyof BaseControl.ControlProps | "multiple" | "onChange" | "value"
-        >
-        & BaseControl.ControlProps
-        & {
+    type Props<T extends string | readonly string[]> = Omit<
+        HTMLProps<HTMLSelectElement>,
+        keyof BaseControl.ControlProps | "multiple" | "onChange" | "value"
+    > &
+        BaseControl.ControlProps & {
             options?: readonly Option[] | undefined;
             value?: T | undefined;
             /**
@@ -36,8 +34,9 @@ declare namespace SelectControl {
              * is a single value with the new selected value.
              */
             onChange(value: T): void;
-        }
-        & (T extends readonly string[] ? { multiple: true } : { multiple?: false | undefined });
+        } & (T extends readonly string[]
+            ? { multiple: true }
+            : { multiple?: false | undefined });
 }
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
 declare function SelectControl<T extends string | readonly string[]>(

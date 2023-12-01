@@ -47,7 +47,8 @@ const playingNowTrack: SpotifyApi.CurrentlyPlayingResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/5jfz7uWPwf03hdEewW8AI8",
+                        spotify:
+                            "https://open.spotify.com/artist/5jfz7uWPwf03hdEewW8AI8",
                     },
                     href: "https://api.spotify.com/v1/artists/5jfz7uWPwf03hdEewW8AI8",
                     id: "5jfz7uWPwf03hdEewW8AI8",
@@ -57,7 +58,8 @@ const playingNowTrack: SpotifyApi.CurrentlyPlayingResponse = {
                 },
             ],
             external_urls: {
-                spotify: "https://open.spotify.com/album/4ZgWBr16niSFDwCIiJ4iBk",
+                spotify:
+                    "https://open.spotify.com/album/4ZgWBr16niSFDwCIiJ4iBk",
             },
             href: "https://api.spotify.com/v1/albums/4ZgWBr16niSFDwCIiJ4iBk",
             id: "4ZgWBr16niSFDwCIiJ4iBk",
@@ -87,7 +89,8 @@ const playingNowTrack: SpotifyApi.CurrentlyPlayingResponse = {
         artists: [
             {
                 external_urls: {
-                    spotify: "https://open.spotify.com/artist/5jfz7uWPwf03hdEewW8AI8",
+                    spotify:
+                        "https://open.spotify.com/artist/5jfz7uWPwf03hdEewW8AI8",
                 },
                 href: "https://api.spotify.com/v1/artists/5jfz7uWPwf03hdEewW8AI8",
                 id: "5jfz7uWPwf03hdEewW8AI8",
@@ -158,7 +161,8 @@ const playingNowEpisode: SpotifyApi.CurrentlyPlayingResponse = {
     },
     progress_ms: 3210,
     item: {
-        audio_preview_url: "https://p.scdn.co/mp3-preview/a5a9580f9c95680b56f6a9198e605c41cce1f6fd",
+        audio_preview_url:
+            "https://p.scdn.co/mp3-preview/a5a9580f9c95680b56f6a9198e605c41cce1f6fd",
         description: "Com Luís Franco-Bastos",
         duration_ms: 278700,
         explicit: false,
@@ -193,7 +197,18 @@ const playingNowEpisode: SpotifyApi.CurrentlyPlayingResponse = {
         release_date: "2020-12-11",
         release_date_precision: "day",
         show: {
-            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+            available_markets: [
+                "AR",
+                "AT",
+                "AU",
+                "BE",
+                "BR",
+                "CL",
+                "CO",
+                "CY",
+                "CZ",
+                "DE",
+            ],
             copyrights: [],
             description:
                 "Todos os dias, Luís Franco-Bastos traz à RFM Informação Privilegiada. Uma entrevista, um depoimento, um comentário de alguém que todos os meios de comunicação queriam, mas a que só a RFM teve acesso. Esse alguém fica a cargo da imaginação e da voz do Luís - mails, processos e eventuais queixas ficam a cargo de advogadodarfm.naomechateiem@telepac.pt",
@@ -259,7 +274,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
     artists: [
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                spotify:
+                    "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
             },
             href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
             id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -313,7 +329,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -327,7 +344,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 305560,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/3f9zqUnrnIq0LANhmnaF0V",
+                    spotify:
+                        "https://open.spotify.com/track/3f9zqUnrnIq0LANhmnaF0V",
                 },
                 href: "https://api.spotify.com/v1/tracks/3f9zqUnrnIq0LANhmnaF0V",
                 id: "3f9zqUnrnIq0LANhmnaF0V",
@@ -341,7 +359,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -355,7 +374,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 238266,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/2joHDtKFVDDyWDHnOxZMAX",
+                    spotify:
+                        "https://open.spotify.com/track/2joHDtKFVDDyWDHnOxZMAX",
                 },
                 href: "https://api.spotify.com/v1/tracks/2joHDtKFVDDyWDHnOxZMAX",
                 id: "2joHDtKFVDDyWDHnOxZMAX",
@@ -369,7 +389,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -383,7 +404,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 306706,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/6ClztHzretmPHCeiNqR5wD",
+                    spotify:
+                        "https://open.spotify.com/track/6ClztHzretmPHCeiNqR5wD",
                 },
                 href: "https://api.spotify.com/v1/tracks/6ClztHzretmPHCeiNqR5wD",
                 id: "6ClztHzretmPHCeiNqR5wD",
@@ -397,7 +419,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -411,7 +434,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 241333,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/2tVHvZK4YYzTloSCBPm2tg",
+                    spotify:
+                        "https://open.spotify.com/track/2tVHvZK4YYzTloSCBPm2tg",
                 },
                 href: "https://api.spotify.com/v1/tracks/2tVHvZK4YYzTloSCBPm2tg",
                 id: "2tVHvZK4YYzTloSCBPm2tg",
@@ -425,7 +449,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -439,7 +464,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 229266,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/6iLhMDtOr52OVXaZdha5M6",
+                    spotify:
+                        "https://open.spotify.com/track/6iLhMDtOr52OVXaZdha5M6",
                 },
                 href: "https://api.spotify.com/v1/tracks/6iLhMDtOr52OVXaZdha5M6",
                 id: "6iLhMDtOr52OVXaZdha5M6",
@@ -453,7 +479,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -467,7 +494,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 272840,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/3csiLr2B2wRj4lsExn6jLf",
+                    spotify:
+                        "https://open.spotify.com/track/3csiLr2B2wRj4lsExn6jLf",
                 },
                 href: "https://api.spotify.com/v1/tracks/3csiLr2B2wRj4lsExn6jLf",
                 id: "3csiLr2B2wRj4lsExn6jLf",
@@ -481,7 +509,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -495,7 +524,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 220333,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/4mRAnuBGYsW4WGbpW0QUkp",
+                    spotify:
+                        "https://open.spotify.com/track/4mRAnuBGYsW4WGbpW0QUkp",
                 },
                 href: "https://api.spotify.com/v1/tracks/4mRAnuBGYsW4WGbpW0QUkp",
                 id: "4mRAnuBGYsW4WGbpW0QUkp",
@@ -509,7 +539,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -523,7 +554,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 252626,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/3AIeUnffkLQaUaX1pkHyeD",
+                    spotify:
+                        "https://open.spotify.com/track/3AIeUnffkLQaUaX1pkHyeD",
                 },
                 href: "https://api.spotify.com/v1/tracks/3AIeUnffkLQaUaX1pkHyeD",
                 id: "3AIeUnffkLQaUaX1pkHyeD",
@@ -537,7 +569,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -551,7 +584,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 45933,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/53eCpAFNbA9MQNfLilN3CH",
+                    spotify:
+                        "https://open.spotify.com/track/53eCpAFNbA9MQNfLilN3CH",
                 },
                 href: "https://api.spotify.com/v1/tracks/53eCpAFNbA9MQNfLilN3CH",
                 id: "53eCpAFNbA9MQNfLilN3CH",
@@ -565,7 +599,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -579,7 +614,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 196373,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/51JS0KXziu9U1T8EBdRTUF",
+                    spotify:
+                        "https://open.spotify.com/track/51JS0KXziu9U1T8EBdRTUF",
                 },
                 href: "https://api.spotify.com/v1/tracks/51JS0KXziu9U1T8EBdRTUF",
                 id: "51JS0KXziu9U1T8EBdRTUF",
@@ -593,7 +629,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -607,7 +644,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 275560,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/2BGJvRarwOa2kiIGpLjIXT",
+                    spotify:
+                        "https://open.spotify.com/track/2BGJvRarwOa2kiIGpLjIXT",
                 },
                 href: "https://api.spotify.com/v1/tracks/2BGJvRarwOa2kiIGpLjIXT",
                 id: "2BGJvRarwOa2kiIGpLjIXT",
@@ -621,7 +659,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -635,7 +674,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 320400,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/5ggatiDTbCIJsUAa7IUP65",
+                    spotify:
+                        "https://open.spotify.com/track/5ggatiDTbCIJsUAa7IUP65",
                 },
                 href: "https://api.spotify.com/v1/tracks/5ggatiDTbCIJsUAa7IUP65",
                 id: "5ggatiDTbCIJsUAa7IUP65",
@@ -649,7 +689,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
+                            spotify:
+                                "https://open.spotify.com/artist/2BTZIqw0ntH9MvilQ3ewNY",
                         },
                         href: "https://api.spotify.com/v1/artists/2BTZIqw0ntH9MvilQ3ewNY",
                         id: "2BTZIqw0ntH9MvilQ3ewNY",
@@ -663,7 +704,8 @@ const getSingleAlbum: SpotifyApi.SingleAlbumResponse = {
                 duration_ms: 288240,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/5ZBxoa2kBrBah3qNIV4rm7",
+                    spotify:
+                        "https://open.spotify.com/track/5ZBxoa2kBrBah3qNIV4rm7",
                 },
                 href: "https://api.spotify.com/v1/tracks/5ZBxoa2kBrBah3qNIV4rm7",
                 id: "5ZBxoa2kBrBah3qNIV4rm7",
@@ -698,7 +740,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                        spotify:
+                            "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                     },
                     href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                     id: "53A0W3U0s8diEn9RhXQhVz",
@@ -780,7 +823,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                 upc: "00602537518357",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/album/41MnTivkwTO3UUJ8DrqEJJ",
+                spotify:
+                    "https://open.spotify.com/album/41MnTivkwTO3UUJ8DrqEJJ",
             },
             genres: [],
             href: "https://api.spotify.com/v1/albums/41MnTivkwTO3UUJ8DrqEJJ",
@@ -814,7 +858,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -823,17 +868,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 215986,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/4r9PmSmbAOOWqaGWLf6M9Q",
+                            spotify:
+                                "https://open.spotify.com/track/4r9PmSmbAOOWqaGWLf6M9Q",
                         },
                         href: "https://api.spotify.com/v1/tracks/4r9PmSmbAOOWqaGWLf6M9Q",
                         id: "4r9PmSmbAOOWqaGWLf6M9Q",
                         name: "Everybody's Changing",
-                        preview_url: "https://p.scdn.co/mp3-preview/fe9d90cd8a51ea672789c13856d886901125bc05",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/fe9d90cd8a51ea672789c13856d886901125bc05",
                         track_number: 1,
                         type: "track",
                         uri: "spotify:track:4r9PmSmbAOOWqaGWLf6M9Q",
@@ -842,7 +900,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -851,17 +910,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 235880,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/0HJQD8uqX2Bq5HVdLnd3ep",
+                            spotify:
+                                "https://open.spotify.com/track/0HJQD8uqX2Bq5HVdLnd3ep",
                         },
                         href: "https://api.spotify.com/v1/tracks/0HJQD8uqX2Bq5HVdLnd3ep",
                         id: "0HJQD8uqX2Bq5HVdLnd3ep",
                         name: "Somewhere Only We Know",
-                        preview_url: "https://p.scdn.co/mp3-preview/af246a57475c5491157fa21c069b130baaaacccd",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/af246a57475c5491157fa21c069b130baaaacccd",
                         track_number: 2,
                         type: "track",
                         uri: "spotify:track:0HJQD8uqX2Bq5HVdLnd3ep",
@@ -870,7 +942,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -879,17 +952,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 218426,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/087AcwkqBIuIebZWpwbOI4",
+                            spotify:
+                                "https://open.spotify.com/track/087AcwkqBIuIebZWpwbOI4",
                         },
                         href: "https://api.spotify.com/v1/tracks/087AcwkqBIuIebZWpwbOI4",
                         id: "087AcwkqBIuIebZWpwbOI4",
                         name: "Bend & Break",
-                        preview_url: "https://p.scdn.co/mp3-preview/e3bdc5a44b62df8135f893730ce1124526b9c5c1",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/e3bdc5a44b62df8135f893730ce1124526b9c5c1",
                         track_number: 3,
                         type: "track",
                         uri: "spotify:track:087AcwkqBIuIebZWpwbOI4",
@@ -898,7 +984,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -907,17 +994,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 275093,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5s2TY4v3WTECwelIqqqtuS",
+                            spotify:
+                                "https://open.spotify.com/track/5s2TY4v3WTECwelIqqqtuS",
                         },
                         href: "https://api.spotify.com/v1/tracks/5s2TY4v3WTECwelIqqqtuS",
                         id: "5s2TY4v3WTECwelIqqqtuS",
                         name: "Bedshaped",
-                        preview_url: "https://p.scdn.co/mp3-preview/11bcd8e1e5817414e09da5ffdca88ea97925767c",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/11bcd8e1e5817414e09da5ffdca88ea97925767c",
                         track_number: 4,
                         type: "track",
                         uri: "spotify:track:5s2TY4v3WTECwelIqqqtuS",
@@ -926,7 +1026,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -935,17 +1036,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 207653,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5Q9h1xA3xqUJyx1dDlq6MI",
+                            spotify:
+                                "https://open.spotify.com/track/5Q9h1xA3xqUJyx1dDlq6MI",
                         },
                         href: "https://api.spotify.com/v1/tracks/5Q9h1xA3xqUJyx1dDlq6MI",
                         id: "5Q9h1xA3xqUJyx1dDlq6MI",
                         name: "This Is The Last Time",
-                        preview_url: "https://p.scdn.co/mp3-preview/4fcf428b407ca80ca4d40ebcde15642ecfda17c8",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/4fcf428b407ca80ca4d40ebcde15642ecfda17c8",
                         track_number: 5,
                         type: "track",
                         uri: "spotify:track:5Q9h1xA3xqUJyx1dDlq6MI",
@@ -954,7 +1068,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -963,17 +1078,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 250786,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/0BIpP7vmh35JEpT1zkv7Sl",
+                            spotify:
+                                "https://open.spotify.com/track/0BIpP7vmh35JEpT1zkv7Sl",
                         },
                         href: "https://api.spotify.com/v1/tracks/0BIpP7vmh35JEpT1zkv7Sl",
                         id: "0BIpP7vmh35JEpT1zkv7Sl",
                         name: "Atlantic",
-                        preview_url: "https://p.scdn.co/mp3-preview/7c1ba58788479e16da1ed98b73523bfd731683b4",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/7c1ba58788479e16da1ed98b73523bfd731683b4",
                         track_number: 6,
                         type: "track",
                         uri: "spotify:track:0BIpP7vmh35JEpT1zkv7Sl",
@@ -982,7 +1110,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -991,17 +1120,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 185813,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/64rOSkztPrTECtWTB0F2OD",
+                            spotify:
+                                "https://open.spotify.com/track/64rOSkztPrTECtWTB0F2OD",
                         },
                         href: "https://api.spotify.com/v1/tracks/64rOSkztPrTECtWTB0F2OD",
                         id: "64rOSkztPrTECtWTB0F2OD",
                         name: "Is It Any Wonder?",
-                        preview_url: "https://p.scdn.co/mp3-preview/aeb8fcb164cf337f5233edc62bd74d78441ea096",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/aeb8fcb164cf337f5233edc62bd74d78441ea096",
                         track_number: 7,
                         type: "track",
                         uri: "spotify:track:64rOSkztPrTECtWTB0F2OD",
@@ -1010,7 +1152,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1019,17 +1162,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 239986,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5XulFHMk0X9foui8If85qV",
+                            spotify:
+                                "https://open.spotify.com/track/5XulFHMk0X9foui8If85qV",
                         },
                         href: "https://api.spotify.com/v1/tracks/5XulFHMk0X9foui8If85qV",
                         id: "5XulFHMk0X9foui8If85qV",
                         name: "Nothing In My Way",
-                        preview_url: "https://p.scdn.co/mp3-preview/f10421f201ba60bcf470da0347ae0fa1eccd2195",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/f10421f201ba60bcf470da0347ae0fa1eccd2195",
                         track_number: 8,
                         type: "track",
                         uri: "spotify:track:5XulFHMk0X9foui8If85qV",
@@ -1038,7 +1194,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1047,17 +1204,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 277360,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/7EbeyS7knwgd3TtJepU1On",
+                            spotify:
+                                "https://open.spotify.com/track/7EbeyS7knwgd3TtJepU1On",
                         },
                         href: "https://api.spotify.com/v1/tracks/7EbeyS7knwgd3TtJepU1On",
                         id: "7EbeyS7knwgd3TtJepU1On",
                         name: "Hamburg Song",
-                        preview_url: "https://p.scdn.co/mp3-preview/39f70e54618d6cca3f240edcb552ed39d4fc5202",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/39f70e54618d6cca3f240edcb552ed39d4fc5202",
                         track_number: 9,
                         type: "track",
                         uri: "spotify:track:7EbeyS7knwgd3TtJepU1On",
@@ -1066,7 +1236,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1075,17 +1246,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 233520,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5faIME3g9Lxo4Myf8ArY9l",
+                            spotify:
+                                "https://open.spotify.com/track/5faIME3g9Lxo4Myf8ArY9l",
                         },
                         href: "https://api.spotify.com/v1/tracks/5faIME3g9Lxo4Myf8ArY9l",
                         id: "5faIME3g9Lxo4Myf8ArY9l",
                         name: "Crystal Ball",
-                        preview_url: "https://p.scdn.co/mp3-preview/8eb1a3df454cb9137771b60f26df71034fc80f47",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/8eb1a3df454cb9137771b60f26df71034fc80f47",
                         track_number: 10,
                         type: "track",
                         uri: "spotify:track:5faIME3g9Lxo4Myf8ArY9l",
@@ -1094,7 +1278,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1103,17 +1288,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 302813,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/3dkTbaMEfF8mqCNSSZKB5S",
+                            spotify:
+                                "https://open.spotify.com/track/3dkTbaMEfF8mqCNSSZKB5S",
                         },
                         href: "https://api.spotify.com/v1/tracks/3dkTbaMEfF8mqCNSSZKB5S",
                         id: "3dkTbaMEfF8mqCNSSZKB5S",
                         name: "A Bad Dream",
-                        preview_url: "https://p.scdn.co/mp3-preview/264f4474ff324def0e3d454d769be615ab105f94",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/264f4474ff324def0e3d454d769be615ab105f94",
                         track_number: 11,
                         type: "track",
                         uri: "spotify:track:3dkTbaMEfF8mqCNSSZKB5S",
@@ -1122,7 +1320,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1131,17 +1330,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 267320,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/38zl5v3L94wzbl3iQHAxNM",
+                            spotify:
+                                "https://open.spotify.com/track/38zl5v3L94wzbl3iQHAxNM",
                         },
                         href: "https://api.spotify.com/v1/tracks/38zl5v3L94wzbl3iQHAxNM",
                         id: "38zl5v3L94wzbl3iQHAxNM",
                         name: "Try Again",
-                        preview_url: "https://p.scdn.co/mp3-preview/5620e5b33fe3f2d2dcbb559029a1370aac341411",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/5620e5b33fe3f2d2dcbb559029a1370aac341411",
                         track_number: 12,
                         type: "track",
                         uri: "spotify:track:38zl5v3L94wzbl3iQHAxNM",
@@ -1150,7 +1362,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1159,17 +1372,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 204013,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1K4SP6flGBk73cgshPqDCp",
+                            spotify:
+                                "https://open.spotify.com/track/1K4SP6flGBk73cgshPqDCp",
                         },
                         href: "https://api.spotify.com/v1/tracks/1K4SP6flGBk73cgshPqDCp",
                         id: "1K4SP6flGBk73cgshPqDCp",
                         name: "Spiralling",
-                        preview_url: "https://p.scdn.co/mp3-preview/3dc0aaa8015d0fbb2377b970d9048381831953fd",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/3dc0aaa8015d0fbb2377b970d9048381831953fd",
                         track_number: 13,
                         type: "track",
                         uri: "spotify:track:1K4SP6flGBk73cgshPqDCp",
@@ -1178,7 +1404,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1187,17 +1414,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 311533,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/7DNKgwHgPgbGhqdXJGkxf6",
+                            spotify:
+                                "https://open.spotify.com/track/7DNKgwHgPgbGhqdXJGkxf6",
                         },
                         href: "https://api.spotify.com/v1/tracks/7DNKgwHgPgbGhqdXJGkxf6",
                         id: "7DNKgwHgPgbGhqdXJGkxf6",
                         name: "Perfect Symmetry",
-                        preview_url: "https://p.scdn.co/mp3-preview/3475936f1b54849a64ea70eb6467a8a3a3800bad",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/3475936f1b54849a64ea70eb6467a8a3a3800bad",
                         track_number: 14,
                         type: "track",
                         uri: "spotify:track:7DNKgwHgPgbGhqdXJGkxf6",
@@ -1206,7 +1446,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1215,17 +1456,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 289386,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/3CFNKsHlpAleVotCDI78ca",
+                            spotify:
+                                "https://open.spotify.com/track/3CFNKsHlpAleVotCDI78ca",
                         },
                         href: "https://api.spotify.com/v1/tracks/3CFNKsHlpAleVotCDI78ca",
                         id: "3CFNKsHlpAleVotCDI78ca",
                         name: "My Shadow",
-                        preview_url: "https://p.scdn.co/mp3-preview/bf11da166dc76f5f4392a57146467e36e7173cc9",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/bf11da166dc76f5f4392a57146467e36e7173cc9",
                         track_number: 15,
                         type: "track",
                         uri: "spotify:track:3CFNKsHlpAleVotCDI78ca",
@@ -1234,7 +1488,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1243,17 +1498,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 196333,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5OVyLOs64kq6zL12QrQD6o",
+                            spotify:
+                                "https://open.spotify.com/track/5OVyLOs64kq6zL12QrQD6o",
                         },
                         href: "https://api.spotify.com/v1/tracks/5OVyLOs64kq6zL12QrQD6o",
                         id: "5OVyLOs64kq6zL12QrQD6o",
                         name: "Silenced By The Night",
-                        preview_url: "https://p.scdn.co/mp3-preview/ab222c63169f5b847c24ebfe21875d9313ec8bc8",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/ab222c63169f5b847c24ebfe21875d9313ec8bc8",
                         track_number: 16,
                         type: "track",
                         uri: "spotify:track:5OVyLOs64kq6zL12QrQD6o",
@@ -1262,7 +1530,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1271,17 +1540,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 236973,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5AHNNMMn7dApuo4OuqZcPb",
+                            spotify:
+                                "https://open.spotify.com/track/5AHNNMMn7dApuo4OuqZcPb",
                         },
                         href: "https://api.spotify.com/v1/tracks/5AHNNMMn7dApuo4OuqZcPb",
                         id: "5AHNNMMn7dApuo4OuqZcPb",
                         name: "Disconnected",
-                        preview_url: "https://p.scdn.co/mp3-preview/8a5201b1a061c5bfca5db879d22c580d7a9eb99a",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/8a5201b1a061c5bfca5db879d22c580d7a9eb99a",
                         track_number: 17,
                         type: "track",
                         uri: "spotify:track:5AHNNMMn7dApuo4OuqZcPb",
@@ -1290,7 +1572,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1299,17 +1582,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 208133,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5wPQMzWTFxKI0Aw3I3OJG6",
+                            spotify:
+                                "https://open.spotify.com/track/5wPQMzWTFxKI0Aw3I3OJG6",
                         },
                         href: "https://api.spotify.com/v1/tracks/5wPQMzWTFxKI0Aw3I3OJG6",
                         id: "5wPQMzWTFxKI0Aw3I3OJG6",
                         name: "Sovereign Light Café",
-                        preview_url: "https://p.scdn.co/mp3-preview/5df8fdaa9938b599b9bbc7fbd2cfea2c2bd3a734",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/5df8fdaa9938b599b9bbc7fbd2cfea2c2bd3a734",
                         track_number: 18,
                         type: "track",
                         uri: "spotify:track:5wPQMzWTFxKI0Aw3I3OJG6",
@@ -1318,7 +1614,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1327,17 +1624,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 201653,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1Vz9mv3ITvzSxm9sH2pAdn",
+                            spotify:
+                                "https://open.spotify.com/track/1Vz9mv3ITvzSxm9sH2pAdn",
                         },
                         href: "https://api.spotify.com/v1/tracks/1Vz9mv3ITvzSxm9sH2pAdn",
                         id: "1Vz9mv3ITvzSxm9sH2pAdn",
                         name: "Higher Than The Sun",
-                        preview_url: "https://p.scdn.co/mp3-preview/75ea8651daefb9da6cbca3e6d4e970e7b8b84693",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/75ea8651daefb9da6cbca3e6d4e970e7b8b84693",
                         track_number: 19,
                         type: "track",
                         uri: "spotify:track:1Vz9mv3ITvzSxm9sH2pAdn",
@@ -1346,7 +1656,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1355,17 +1666,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 222426,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/3FYyMnHLaImyLctEoXZolK",
+                            spotify:
+                                "https://open.spotify.com/track/3FYyMnHLaImyLctEoXZolK",
                         },
                         href: "https://api.spotify.com/v1/tracks/3FYyMnHLaImyLctEoXZolK",
                         id: "3FYyMnHLaImyLctEoXZolK",
                         name: "Won't Be Broken",
-                        preview_url: "https://p.scdn.co/mp3-preview/2c8dfeb19ead5b96dcf34858b43b96a9e6d70117",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/2c8dfeb19ead5b96dcf34858b43b96a9e6d70117",
                         track_number: 20,
                         type: "track",
                         uri: "spotify:track:3FYyMnHLaImyLctEoXZolK",
@@ -1374,7 +1698,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1383,17 +1708,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 229533,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/0wnewiCeFaZQKejFECOzS2",
+                            spotify:
+                                "https://open.spotify.com/track/0wnewiCeFaZQKejFECOzS2",
                         },
                         href: "https://api.spotify.com/v1/tracks/0wnewiCeFaZQKejFECOzS2",
                         id: "0wnewiCeFaZQKejFECOzS2",
                         name: "Snowed Under",
-                        preview_url: "https://p.scdn.co/mp3-preview/5a04228466a49f12e839bf3001d6c15eef015953",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/5a04228466a49f12e839bf3001d6c15eef015953",
                         track_number: 1,
                         type: "track",
                         uri: "spotify:track:0wnewiCeFaZQKejFECOzS2",
@@ -1402,7 +1740,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1411,17 +1750,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 217440,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5sqAs4udmaaTWn6xXTpmGL",
+                            spotify:
+                                "https://open.spotify.com/track/5sqAs4udmaaTWn6xXTpmGL",
                         },
                         href: "https://api.spotify.com/v1/tracks/5sqAs4udmaaTWn6xXTpmGL",
                         id: "5sqAs4udmaaTWn6xXTpmGL",
                         name: "Walnut Tree",
-                        preview_url: "https://p.scdn.co/mp3-preview/834c91889c0d86d4e3f724150976919844c5baa7",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/834c91889c0d86d4e3f724150976919844c5baa7",
                         track_number: 2,
                         type: "track",
                         uri: "spotify:track:5sqAs4udmaaTWn6xXTpmGL",
@@ -1430,7 +1782,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1439,17 +1792,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 332973,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1WvLaBfQpk3dv3ciU0we8f",
+                            spotify:
+                                "https://open.spotify.com/track/1WvLaBfQpk3dv3ciU0we8f",
                         },
                         href: "https://api.spotify.com/v1/tracks/1WvLaBfQpk3dv3ciU0we8f",
                         id: "1WvLaBfQpk3dv3ciU0we8f",
                         name: "Fly To Me",
-                        preview_url: "https://p.scdn.co/mp3-preview/06bc6f513cb7406660182e0a9a24b19238be019c",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/06bc6f513cb7406660182e0a9a24b19238be019c",
                         track_number: 3,
                         type: "track",
                         uri: "spotify:track:1WvLaBfQpk3dv3ciU0we8f",
@@ -1458,7 +1824,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1467,17 +1834,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 182733,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1UBiGrtXAKjc0C7GG937pD",
+                            spotify:
+                                "https://open.spotify.com/track/1UBiGrtXAKjc0C7GG937pD",
                         },
                         href: "https://api.spotify.com/v1/tracks/1UBiGrtXAKjc0C7GG937pD",
                         id: "1UBiGrtXAKjc0C7GG937pD",
                         name: "To The End Of The Earth",
-                        preview_url: "https://p.scdn.co/mp3-preview/b347bf5ce7c9fc4fc823ab1bc98f119194d06a66",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/b347bf5ce7c9fc4fc823ab1bc98f119194d06a66",
                         track_number: 4,
                         type: "track",
                         uri: "spotify:track:1UBiGrtXAKjc0C7GG937pD",
@@ -1486,7 +1866,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1500,7 +1881,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         duration_ms: 196826,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/7eNyrwrLzbO8URXaaSU9g1",
+                            spotify:
+                                "https://open.spotify.com/track/7eNyrwrLzbO8URXaaSU9g1",
                         },
                         href: "https://api.spotify.com/v1/tracks/7eNyrwrLzbO8URXaaSU9g1",
                         id: "7eNyrwrLzbO8URXaaSU9g1",
@@ -1514,7 +1896,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1523,17 +1906,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 286200,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5JLkkHYBZHUpQKnrIIVhpV",
+                            spotify:
+                                "https://open.spotify.com/track/5JLkkHYBZHUpQKnrIIVhpV",
                         },
                         href: "https://api.spotify.com/v1/tracks/5JLkkHYBZHUpQKnrIIVhpV",
                         id: "5JLkkHYBZHUpQKnrIIVhpV",
                         name: "Something In Me Was Dying",
-                        preview_url: "https://p.scdn.co/mp3-preview/79aa74fde8a0da6bb6ebdbbac6fd3b081ececace",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/79aa74fde8a0da6bb6ebdbbac6fd3b081ececace",
                         track_number: 6,
                         type: "track",
                         uri: "spotify:track:5JLkkHYBZHUpQKnrIIVhpV",
@@ -1542,7 +1938,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1556,7 +1953,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         duration_ms: 263200,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/6aTi9DrnoLLvVdFSfzUuKP",
+                            spotify:
+                                "https://open.spotify.com/track/6aTi9DrnoLLvVdFSfzUuKP",
                         },
                         href: "https://api.spotify.com/v1/tracks/6aTi9DrnoLLvVdFSfzUuKP",
                         id: "6aTi9DrnoLLvVdFSfzUuKP",
@@ -1570,7 +1968,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1579,17 +1978,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 249426,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1igaBkvf5KZFTsu1fMfDfb",
+                            spotify:
+                                "https://open.spotify.com/track/1igaBkvf5KZFTsu1fMfDfb",
                         },
                         href: "https://api.spotify.com/v1/tracks/1igaBkvf5KZFTsu1fMfDfb",
                         id: "1igaBkvf5KZFTsu1fMfDfb",
                         name: "Let It Slide",
-                        preview_url: "https://p.scdn.co/mp3-preview/a4905211b213f0443c6302585e241071a25055df",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/a4905211b213f0443c6302585e241071a25055df",
                         track_number: 8,
                         type: "track",
                         uri: "spotify:track:1igaBkvf5KZFTsu1fMfDfb",
@@ -1598,7 +2010,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1607,17 +2020,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 216200,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/4rCgYClAhCLuf9xD2Y8sI6",
+                            spotify:
+                                "https://open.spotify.com/track/4rCgYClAhCLuf9xD2Y8sI6",
                         },
                         href: "https://api.spotify.com/v1/tracks/4rCgYClAhCLuf9xD2Y8sI6",
                         id: "4rCgYClAhCLuf9xD2Y8sI6",
                         name: "He Used To Be A Lovely Boy",
-                        preview_url: "https://p.scdn.co/mp3-preview/d238b8f92367915eb08c389a55b35c4353aa4cc5",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/d238b8f92367915eb08c389a55b35c4353aa4cc5",
                         track_number: 9,
                         type: "track",
                         uri: "spotify:track:4rCgYClAhCLuf9xD2Y8sI6",
@@ -1626,7 +2052,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1635,17 +2062,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 236986,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/2RsfSyrYHjUtGeCVBf6ib2",
+                            spotify:
+                                "https://open.spotify.com/track/2RsfSyrYHjUtGeCVBf6ib2",
                         },
                         href: "https://api.spotify.com/v1/tracks/2RsfSyrYHjUtGeCVBf6ib2",
                         id: "2RsfSyrYHjUtGeCVBf6ib2",
                         name: "Thin Air",
-                        preview_url: "https://p.scdn.co/mp3-preview/95f2501973e2571c16c85efa1fc8ab92bf187739",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/95f2501973e2571c16c85efa1fc8ab92bf187739",
                         track_number: 10,
                         type: "track",
                         uri: "spotify:track:2RsfSyrYHjUtGeCVBf6ib2",
@@ -1654,7 +2094,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1663,17 +2104,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 269880,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/2UwM9vm7I4wx3RxGx8DR17",
+                            spotify:
+                                "https://open.spotify.com/track/2UwM9vm7I4wx3RxGx8DR17",
                         },
                         href: "https://api.spotify.com/v1/tracks/2UwM9vm7I4wx3RxGx8DR17",
                         id: "2UwM9vm7I4wx3RxGx8DR17",
                         name: "The Iron Sea",
-                        preview_url: "https://p.scdn.co/mp3-preview/e75172d8becfd594645de8e070e4473edebbedf0",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/e75172d8becfd594645de8e070e4473edebbedf0",
                         track_number: 11,
                         type: "track",
                         uri: "spotify:track:2UwM9vm7I4wx3RxGx8DR17",
@@ -1682,7 +2136,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1691,17 +2146,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 235440,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/2WMpag1ouW7zIySG8PcrIW",
+                            spotify:
+                                "https://open.spotify.com/track/2WMpag1ouW7zIySG8PcrIW",
                         },
                         href: "https://api.spotify.com/v1/tracks/2WMpag1ouW7zIySG8PcrIW",
                         id: "2WMpag1ouW7zIySG8PcrIW",
                         name: "Maybe I Can Change",
-                        preview_url: "https://p.scdn.co/mp3-preview/e84716f556f8d770605f78c2ddacb5a879bb49a2",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/e84716f556f8d770605f78c2ddacb5a879bb49a2",
                         track_number: 12,
                         type: "track",
                         uri: "spotify:track:2WMpag1ouW7zIySG8PcrIW",
@@ -1710,7 +2178,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1719,17 +2188,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 229586,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/7ngI6zHe2AA4YncwFytNR1",
+                            spotify:
+                                "https://open.spotify.com/track/7ngI6zHe2AA4YncwFytNR1",
                         },
                         href: "https://api.spotify.com/v1/tracks/7ngI6zHe2AA4YncwFytNR1",
                         id: "7ngI6zHe2AA4YncwFytNR1",
                         name: "Time To Go",
-                        preview_url: "https://p.scdn.co/mp3-preview/5413cb1452a1c5a0a6aaa49d5ec289d8e9f28dc1",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/5413cb1452a1c5a0a6aaa49d5ec289d8e9f28dc1",
                         track_number: 13,
                         type: "track",
                         uri: "spotify:track:7ngI6zHe2AA4YncwFytNR1",
@@ -1738,7 +2220,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1747,17 +2230,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 230880,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/2BUKGneA8BFCelJhoCIZ7u",
+                            spotify:
+                                "https://open.spotify.com/track/2BUKGneA8BFCelJhoCIZ7u",
                         },
                         href: "https://api.spotify.com/v1/tracks/2BUKGneA8BFCelJhoCIZ7u",
                         id: "2BUKGneA8BFCelJhoCIZ7u",
                         name: "Staring At The Ceiling",
-                        preview_url: "https://p.scdn.co/mp3-preview/744949b7bf0d516eac9a7a231ead9b623d073574",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/744949b7bf0d516eac9a7a231ead9b623d073574",
                         track_number: 14,
                         type: "track",
                         uri: "spotify:track:2BUKGneA8BFCelJhoCIZ7u",
@@ -1766,7 +2262,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1775,17 +2272,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 294693,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/7rY5n8rnQnNwAtnNfCUQ0O",
+                            spotify:
+                                "https://open.spotify.com/track/7rY5n8rnQnNwAtnNfCUQ0O",
                         },
                         href: "https://api.spotify.com/v1/tracks/7rY5n8rnQnNwAtnNfCUQ0O",
                         id: "7rY5n8rnQnNwAtnNfCUQ0O",
                         name: "Myth",
-                        preview_url: "https://p.scdn.co/mp3-preview/a69a1fc94953c480bde888dcb82eab9a1cac91fc",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/a69a1fc94953c480bde888dcb82eab9a1cac91fc",
                         track_number: 15,
                         type: "track",
                         uri: "spotify:track:7rY5n8rnQnNwAtnNfCUQ0O",
@@ -1794,7 +2304,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1803,17 +2314,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 224986,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/0SY7oTzyTMpiXgP4ufO7VW",
+                            spotify:
+                                "https://open.spotify.com/track/0SY7oTzyTMpiXgP4ufO7VW",
                         },
                         href: "https://api.spotify.com/v1/tracks/0SY7oTzyTMpiXgP4ufO7VW",
                         id: "0SY7oTzyTMpiXgP4ufO7VW",
                         name: "Difficult Child",
-                        preview_url: "https://p.scdn.co/mp3-preview/e48a7b0b0fa708312b4850c97d28337c215a2c95",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/e48a7b0b0fa708312b4850c97d28337c215a2c95",
                         track_number: 16,
                         type: "track",
                         uri: "spotify:track:0SY7oTzyTMpiXgP4ufO7VW",
@@ -1822,7 +2346,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1831,17 +2356,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 221200,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/7dDuGGxttttGh0h9CJ4cUu",
+                            spotify:
+                                "https://open.spotify.com/track/7dDuGGxttttGh0h9CJ4cUu",
                         },
                         href: "https://api.spotify.com/v1/tracks/7dDuGGxttttGh0h9CJ4cUu",
                         id: "7dDuGGxttttGh0h9CJ4cUu",
                         name: "Sea Fog - Live At Arena Ciudad De Mexico, Mexico City / 2012",
-                        preview_url: "https://p.scdn.co/mp3-preview/a940bc357a2cd29cae8e5dfe337c874baf334b82",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/a940bc357a2cd29cae8e5dfe337c874baf334b82",
                         track_number: 17,
                         type: "track",
                         uri: "spotify:track:7dDuGGxttttGh0h9CJ4cUu",
@@ -1850,7 +2388,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1859,17 +2398,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 2,
                         duration_ms: 394786,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/0bxCO9Bbm1SkK9BU2DbsYg",
+                            spotify:
+                                "https://open.spotify.com/track/0bxCO9Bbm1SkK9BU2DbsYg",
                         },
                         href: "https://api.spotify.com/v1/tracks/0bxCO9Bbm1SkK9BU2DbsYg",
                         id: "0bxCO9Bbm1SkK9BU2DbsYg",
                         name: "Russian Farmer's Song",
-                        preview_url: "https://p.scdn.co/mp3-preview/59264a05ed0ce01ba5b78f3b9507fe80b3aea94e",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/59264a05ed0ce01ba5b78f3b9507fe80b3aea94e",
                         track_number: 18,
                         type: "track",
                         uri: "spotify:track:0bxCO9Bbm1SkK9BU2DbsYg",
@@ -1890,7 +2442,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                        spotify:
+                            "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                     },
                     href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                     id: "53A0W3U0s8diEn9RhXQhVz",
@@ -1972,7 +2525,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                 upc: "00602537055425",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/album/6JWc4iAiJ9FjyK0B59ABb4",
+                spotify:
+                    "https://open.spotify.com/album/6JWc4iAiJ9FjyK0B59ABb4",
             },
             genres: [],
             href: "https://api.spotify.com/v1/albums/6JWc4iAiJ9FjyK0B59ABb4",
@@ -2006,7 +2560,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2015,17 +2570,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 214666,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/07h75cQlaZBLwwyeWTeIZX",
+                            spotify:
+                                "https://open.spotify.com/track/07h75cQlaZBLwwyeWTeIZX",
                         },
                         href: "https://api.spotify.com/v1/tracks/07h75cQlaZBLwwyeWTeIZX",
                         id: "07h75cQlaZBLwwyeWTeIZX",
                         name: "You Are Young",
-                        preview_url: "https://p.scdn.co/mp3-preview/77459b8644db7f0b14d1a04f9732619bca75d3c9",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/77459b8644db7f0b14d1a04f9732619bca75d3c9",
                         track_number: 1,
                         type: "track",
                         uri: "spotify:track:07h75cQlaZBLwwyeWTeIZX",
@@ -2034,7 +2602,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2043,17 +2612,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 196466,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/0BhGZmaQ1SET53qGkGvwxD",
+                            spotify:
+                                "https://open.spotify.com/track/0BhGZmaQ1SET53qGkGvwxD",
                         },
                         href: "https://api.spotify.com/v1/tracks/0BhGZmaQ1SET53qGkGvwxD",
                         id: "0BhGZmaQ1SET53qGkGvwxD",
                         name: "Silenced By The Night",
-                        preview_url: "https://p.scdn.co/mp3-preview/801c7eecca00b1880c75a15cff92043dbc0d6878",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/801c7eecca00b1880c75a15cff92043dbc0d6878",
                         track_number: 2,
                         type: "track",
                         uri: "spotify:track:0BhGZmaQ1SET53qGkGvwxD",
@@ -2062,7 +2644,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2071,17 +2654,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 237893,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1wL2u2BP9T3cpskdffyfn5",
+                            spotify:
+                                "https://open.spotify.com/track/1wL2u2BP9T3cpskdffyfn5",
                         },
                         href: "https://api.spotify.com/v1/tracks/1wL2u2BP9T3cpskdffyfn5",
                         id: "1wL2u2BP9T3cpskdffyfn5",
                         name: "Disconnected",
-                        preview_url: "https://p.scdn.co/mp3-preview/210fed3f055f5c275bfac85894acd076f84c8d65",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/210fed3f055f5c275bfac85894acd076f84c8d65",
                         track_number: 3,
                         type: "track",
                         uri: "spotify:track:1wL2u2BP9T3cpskdffyfn5",
@@ -2090,7 +2686,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2099,17 +2696,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 220386,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/3Wxu8QRCZdTvwFvwtWOMst",
+                            spotify:
+                                "https://open.spotify.com/track/3Wxu8QRCZdTvwFvwtWOMst",
                         },
                         href: "https://api.spotify.com/v1/tracks/3Wxu8QRCZdTvwFvwtWOMst",
                         id: "3Wxu8QRCZdTvwFvwtWOMst",
                         name: "Watch How You Go",
-                        preview_url: "https://p.scdn.co/mp3-preview/155dd49cb3c54702b139d6de388ace09041d3a16",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/155dd49cb3c54702b139d6de388ace09041d3a16",
                         track_number: 4,
                         type: "track",
                         uri: "spotify:track:3Wxu8QRCZdTvwFvwtWOMst",
@@ -2118,7 +2728,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2127,17 +2738,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 218840,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/4QRkCwqwHFaZ7xeoR9CHL6",
+                            spotify:
+                                "https://open.spotify.com/track/4QRkCwqwHFaZ7xeoR9CHL6",
                         },
                         href: "https://api.spotify.com/v1/tracks/4QRkCwqwHFaZ7xeoR9CHL6",
                         id: "4QRkCwqwHFaZ7xeoR9CHL6",
                         name: "Sovereign Light Café",
-                        preview_url: "https://p.scdn.co/mp3-preview/3f44115c51b854605f707a9d24903cad7b27e6b8",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/3f44115c51b854605f707a9d24903cad7b27e6b8",
                         track_number: 5,
                         type: "track",
                         uri: "spotify:track:4QRkCwqwHFaZ7xeoR9CHL6",
@@ -2146,7 +2770,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2155,17 +2780,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 236733,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/4IGKv5K4HbAfufzf2OUEg0",
+                            spotify:
+                                "https://open.spotify.com/track/4IGKv5K4HbAfufzf2OUEg0",
                         },
                         href: "https://api.spotify.com/v1/tracks/4IGKv5K4HbAfufzf2OUEg0",
                         id: "4IGKv5K4HbAfufzf2OUEg0",
                         name: "On The Road",
-                        preview_url: "https://p.scdn.co/mp3-preview/0fd8c40ab8fb97a4a9e69b3b5c4669cbcfcef330",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/0fd8c40ab8fb97a4a9e69b3b5c4669cbcfcef330",
                         track_number: 6,
                         type: "track",
                         uri: "spotify:track:4IGKv5K4HbAfufzf2OUEg0",
@@ -2174,7 +2812,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2183,17 +2822,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 252333,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/3jQg3xqVv1H6Y3jp6FzR3M",
+                            spotify:
+                                "https://open.spotify.com/track/3jQg3xqVv1H6Y3jp6FzR3M",
                         },
                         href: "https://api.spotify.com/v1/tracks/3jQg3xqVv1H6Y3jp6FzR3M",
                         id: "3jQg3xqVv1H6Y3jp6FzR3M",
                         name: "The Starting Line",
-                        preview_url: "https://p.scdn.co/mp3-preview/693b6baa37c37ee1a90e12b24e92c3145663c007",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/693b6baa37c37ee1a90e12b24e92c3145663c007",
                         track_number: 7,
                         type: "track",
                         uri: "spotify:track:3jQg3xqVv1H6Y3jp6FzR3M",
@@ -2202,7 +2854,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2211,17 +2864,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 226560,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/3NT6rwZk7igASQR4HJFP0x",
+                            spotify:
+                                "https://open.spotify.com/track/3NT6rwZk7igASQR4HJFP0x",
                         },
                         href: "https://api.spotify.com/v1/tracks/3NT6rwZk7igASQR4HJFP0x",
                         id: "3NT6rwZk7igASQR4HJFP0x",
                         name: "Black Rain",
-                        preview_url: "https://p.scdn.co/mp3-preview/68932717dfc96a006b3d2f30f0899bc7b5b6e83c",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/68932717dfc96a006b3d2f30f0899bc7b5b6e83c",
                         track_number: 8,
                         type: "track",
                         uri: "spotify:track:3NT6rwZk7igASQR4HJFP0x",
@@ -2230,7 +2896,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2239,17 +2906,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 292946,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1QKQ8eP3aEsW4LEd42umP6",
+                            spotify:
+                                "https://open.spotify.com/track/1QKQ8eP3aEsW4LEd42umP6",
                         },
                         href: "https://api.spotify.com/v1/tracks/1QKQ8eP3aEsW4LEd42umP6",
                         id: "1QKQ8eP3aEsW4LEd42umP6",
                         name: "Neon River",
-                        preview_url: "https://p.scdn.co/mp3-preview/da1d919d5b2b59392577e3a55335fcd93e4d40bd",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/da1d919d5b2b59392577e3a55335fcd93e4d40bd",
                         track_number: 9,
                         type: "track",
                         uri: "spotify:track:1QKQ8eP3aEsW4LEd42umP6",
@@ -2258,7 +2938,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2267,17 +2948,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 191906,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/7uuSUJdpPRoXeR37IAV1a0",
+                            spotify:
+                                "https://open.spotify.com/track/7uuSUJdpPRoXeR37IAV1a0",
                         },
                         href: "https://api.spotify.com/v1/tracks/7uuSUJdpPRoXeR37IAV1a0",
                         id: "7uuSUJdpPRoXeR37IAV1a0",
                         name: "Day Will Come",
-                        preview_url: "https://p.scdn.co/mp3-preview/b2ba652d57410f72e1d4d34f96f72277701aa6d6",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/b2ba652d57410f72e1d4d34f96f72277701aa6d6",
                         track_number: 10,
                         type: "track",
                         uri: "spotify:track:7uuSUJdpPRoXeR37IAV1a0",
@@ -2286,7 +2980,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2295,17 +2990,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 223800,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/6dksuIyuNHcFVcx9ixCMbq",
+                            spotify:
+                                "https://open.spotify.com/track/6dksuIyuNHcFVcx9ixCMbq",
                         },
                         href: "https://api.spotify.com/v1/tracks/6dksuIyuNHcFVcx9ixCMbq",
                         id: "6dksuIyuNHcFVcx9ixCMbq",
                         name: "In Your Own Time",
-                        preview_url: "https://p.scdn.co/mp3-preview/a9950ccfb4db1596840e9696a3b7db6cebab200d",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/a9950ccfb4db1596840e9696a3b7db6cebab200d",
                         track_number: 11,
                         type: "track",
                         uri: "spotify:track:6dksuIyuNHcFVcx9ixCMbq",
@@ -2314,7 +3022,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2323,17 +3032,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 203386,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/7F4jALhmdEQv49Dy6tNYLq",
+                            spotify:
+                                "https://open.spotify.com/track/7F4jALhmdEQv49Dy6tNYLq",
                         },
                         href: "https://api.spotify.com/v1/tracks/7F4jALhmdEQv49Dy6tNYLq",
                         id: "7F4jALhmdEQv49Dy6tNYLq",
                         name: "Sea Fog",
-                        preview_url: "https://p.scdn.co/mp3-preview/7e31e76de98d697f17610af2a0e0d7a823b48e71",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/7e31e76de98d697f17610af2a0e0d7a823b48e71",
                         track_number: 12,
                         type: "track",
                         uri: "spotify:track:7F4jALhmdEQv49Dy6tNYLq",
@@ -2342,7 +3064,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2351,17 +3074,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 276440,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1VI5LFMf7SFbcT3dz8XYHJ",
+                            spotify:
+                                "https://open.spotify.com/track/1VI5LFMf7SFbcT3dz8XYHJ",
                         },
                         href: "https://api.spotify.com/v1/tracks/1VI5LFMf7SFbcT3dz8XYHJ",
                         id: "1VI5LFMf7SFbcT3dz8XYHJ",
                         name: "Strangeland - Bonus Track",
-                        preview_url: "https://p.scdn.co/mp3-preview/873eeb6117633d8d66540ffcfc106fb57564acd2",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/873eeb6117633d8d66540ffcfc106fb57564acd2",
                         track_number: 13,
                         type: "track",
                         uri: "spotify:track:1VI5LFMf7SFbcT3dz8XYHJ",
@@ -2370,7 +3106,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2379,17 +3116,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 210986,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/75Zc9ZHq8PY7NMtkIpbwM0",
+                            spotify:
+                                "https://open.spotify.com/track/75Zc9ZHq8PY7NMtkIpbwM0",
                         },
                         href: "https://api.spotify.com/v1/tracks/75Zc9ZHq8PY7NMtkIpbwM0",
                         id: "75Zc9ZHq8PY7NMtkIpbwM0",
                         name: "Run With Me - Bonus Track",
-                        preview_url: "https://p.scdn.co/mp3-preview/068afaf6676c7edd937222f5f916e638481ddaba",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/068afaf6676c7edd937222f5f916e638481ddaba",
                         track_number: 14,
                         type: "track",
                         uri: "spotify:track:75Zc9ZHq8PY7NMtkIpbwM0",
@@ -2398,7 +3148,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2407,17 +3158,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 212560,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/4dsiRFi3mmpI0pklauyoQx",
+                            spotify:
+                                "https://open.spotify.com/track/4dsiRFi3mmpI0pklauyoQx",
                         },
                         href: "https://api.spotify.com/v1/tracks/4dsiRFi3mmpI0pklauyoQx",
                         id: "4dsiRFi3mmpI0pklauyoQx",
                         name: "The Boys - Bonus Track",
-                        preview_url: "https://p.scdn.co/mp3-preview/f6dc960a09c8e10b7a5525914170101140f8e333",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/f6dc960a09c8e10b7a5525914170101140f8e333",
                         track_number: 15,
                         type: "track",
                         uri: "spotify:track:4dsiRFi3mmpI0pklauyoQx",
@@ -2426,7 +3190,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2435,17 +3200,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 229200,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/3GmNkKokMo8RgUxMdgRbiR",
+                            spotify:
+                                "https://open.spotify.com/track/3GmNkKokMo8RgUxMdgRbiR",
                         },
                         href: "https://api.spotify.com/v1/tracks/3GmNkKokMo8RgUxMdgRbiR",
                         id: "3GmNkKokMo8RgUxMdgRbiR",
                         name: "It's Not True - Bonus Track",
-                        preview_url: "https://p.scdn.co/mp3-preview/806f8f7110acdf970db90840f0d3d3f95353379f",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/806f8f7110acdf970db90840f0d3d3f95353379f",
                         track_number: 16,
                         type: "track",
                         uri: "spotify:track:3GmNkKokMo8RgUxMdgRbiR",
@@ -2454,7 +3232,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2463,17 +3242,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 210120,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/2BLnrhqfHx6G3ZAnHzIYxI",
+                            spotify:
+                                "https://open.spotify.com/track/2BLnrhqfHx6G3ZAnHzIYxI",
                         },
                         href: "https://api.spotify.com/v1/tracks/2BLnrhqfHx6G3ZAnHzIYxI",
                         id: "2BLnrhqfHx6G3ZAnHzIYxI",
                         name: "Silenced By The Night - Bonus Track",
-                        preview_url: "https://p.scdn.co/mp3-preview/0fb339bdcd390f43c8fd00114fb7b1dac11617a9",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/0fb339bdcd390f43c8fd00114fb7b1dac11617a9",
                         track_number: 17,
                         type: "track",
                         uri: "spotify:track:2BLnrhqfHx6G3ZAnHzIYxI",
@@ -2482,7 +3274,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2491,17 +3284,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 272671,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5uwUXAth3No4DVv6x4lXQ9",
+                            spotify:
+                                "https://open.spotify.com/track/5uwUXAth3No4DVv6x4lXQ9",
                         },
                         href: "https://api.spotify.com/v1/tracks/5uwUXAth3No4DVv6x4lXQ9",
                         id: "5uwUXAth3No4DVv6x4lXQ9",
                         name: "The Starting Line - Bonus Track",
-                        preview_url: "https://p.scdn.co/mp3-preview/5350d96164b2bb17d5711334b30eefd5dac0043c",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/5350d96164b2bb17d5711334b30eefd5dac0043c",
                         track_number: 18,
                         type: "track",
                         uri: "spotify:track:5uwUXAth3No4DVv6x4lXQ9",
@@ -2522,7 +3328,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                        spotify:
+                            "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                     },
                     href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                     id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2604,7 +3411,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                 upc: "00602527420608",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/album/6UXCm6bOO4gFlDQZV5yL37",
+                spotify:
+                    "https://open.spotify.com/album/6UXCm6bOO4gFlDQZV5yL37",
             },
             genres: [],
             href: "https://api.spotify.com/v1/albums/6UXCm6bOO4gFlDQZV5yL37",
@@ -2638,7 +3446,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2647,17 +3456,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 83546,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/3ugblcbYKHrhIvRL4IVY20",
+                            spotify:
+                                "https://open.spotify.com/track/3ugblcbYKHrhIvRL4IVY20",
                         },
                         href: "https://api.spotify.com/v1/tracks/3ugblcbYKHrhIvRL4IVY20",
                         id: "3ugblcbYKHrhIvRL4IVY20",
                         name: "House Lights",
-                        preview_url: "https://p.scdn.co/mp3-preview/36b8ecff155ad6e9d7682f753c642fe48900d19a",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/36b8ecff155ad6e9d7682f753c642fe48900d19a",
                         track_number: 1,
                         type: "track",
                         uri: "spotify:track:3ugblcbYKHrhIvRL4IVY20",
@@ -2666,7 +3488,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2675,17 +3498,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 232320,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/06qEl8bMI8qCJiB68M0Ab6",
+                            spotify:
+                                "https://open.spotify.com/track/06qEl8bMI8qCJiB68M0Ab6",
                         },
                         href: "https://api.spotify.com/v1/tracks/06qEl8bMI8qCJiB68M0Ab6",
                         id: "06qEl8bMI8qCJiB68M0Ab6",
                         name: "Back In Time",
-                        preview_url: "https://p.scdn.co/mp3-preview/bac9cec3411411bdceed91cf18061b3e0bf1646d",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/bac9cec3411411bdceed91cf18061b3e0bf1646d",
                         track_number: 2,
                         type: "track",
                         uri: "spotify:track:06qEl8bMI8qCJiB68M0Ab6",
@@ -2694,7 +3530,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2704,7 +3541,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                             },
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/7pGyQZx9thVa8GxMBeXscB",
+                                    spotify:
+                                        "https://open.spotify.com/artist/7pGyQZx9thVa8GxMBeXscB",
                                 },
                                 href: "https://api.spotify.com/v1/artists/7pGyQZx9thVa8GxMBeXscB",
                                 id: "7pGyQZx9thVa8GxMBeXscB",
@@ -2713,17 +3551,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:7pGyQZx9thVa8GxMBeXscB",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 246800,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/3R1MKirozQBVYaBErWy8LB",
+                            spotify:
+                                "https://open.spotify.com/track/3R1MKirozQBVYaBErWy8LB",
                         },
                         href: "https://api.spotify.com/v1/tracks/3R1MKirozQBVYaBErWy8LB",
                         id: "3R1MKirozQBVYaBErWy8LB",
                         name: "Stop For A Minute",
-                        preview_url: "https://p.scdn.co/mp3-preview/e2d22f632e556a8d68d41290f4d64cb11c0fa3ec",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/e2d22f632e556a8d68d41290f4d64cb11c0fa3ec",
                         track_number: 3,
                         type: "track",
                         uri: "spotify:track:3R1MKirozQBVYaBErWy8LB",
@@ -2732,7 +3583,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2741,17 +3593,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 293106,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/5TWT6yV2KdJAMH9lblIRi6",
+                            spotify:
+                                "https://open.spotify.com/track/5TWT6yV2KdJAMH9lblIRi6",
                         },
                         href: "https://api.spotify.com/v1/tracks/5TWT6yV2KdJAMH9lblIRi6",
                         id: "5TWT6yV2KdJAMH9lblIRi6",
                         name: "Clear Skies",
-                        preview_url: "https://p.scdn.co/mp3-preview/ec4f00fba6b0ec2ba4ec2b8cc7faac79cbe9bd0a",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/ec4f00fba6b0ec2ba4ec2b8cc7faac79cbe9bd0a",
                         track_number: 4,
                         type: "track",
                         uri: "spotify:track:5TWT6yV2KdJAMH9lblIRi6",
@@ -2760,7 +3625,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2770,7 +3636,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                             },
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/0I8EcYNKMh0Pj6CGJovHOT",
+                                    spotify:
+                                        "https://open.spotify.com/artist/0I8EcYNKMh0Pj6CGJovHOT",
                                 },
                                 href: "https://api.spotify.com/v1/artists/0I8EcYNKMh0Pj6CGJovHOT",
                                 id: "0I8EcYNKMh0Pj6CGJovHOT",
@@ -2779,17 +3646,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:0I8EcYNKMh0Pj6CGJovHOT",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 236706,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1IEVCAISZpS9GiAdZkHTR6",
+                            spotify:
+                                "https://open.spotify.com/track/1IEVCAISZpS9GiAdZkHTR6",
                         },
                         href: "https://api.spotify.com/v1/tracks/1IEVCAISZpS9GiAdZkHTR6",
                         id: "1IEVCAISZpS9GiAdZkHTR6",
                         name: "Ishin Denshin (You've Got To Help Yourself)",
-                        preview_url: "https://p.scdn.co/mp3-preview/b1217e00e762770534aed53e4109f514f049766f",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/b1217e00e762770534aed53e4109f514f049766f",
                         track_number: 5,
                         type: "track",
                         uri: "spotify:track:1IEVCAISZpS9GiAdZkHTR6",
@@ -2798,7 +3678,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2807,17 +3688,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 276720,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1EAoq7c9LRsJIo2bAt4Lxr",
+                            spotify:
+                                "https://open.spotify.com/track/1EAoq7c9LRsJIo2bAt4Lxr",
                         },
                         href: "https://api.spotify.com/v1/tracks/1EAoq7c9LRsJIo2bAt4Lxr",
                         id: "1EAoq7c9LRsJIo2bAt4Lxr",
                         name: "Your Love",
-                        preview_url: "https://p.scdn.co/mp3-preview/8db14d0124403200fd14c33d7d2b234fa627ff74",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/8db14d0124403200fd14c33d7d2b234fa627ff74",
                         track_number: 6,
                         type: "track",
                         uri: "spotify:track:1EAoq7c9LRsJIo2bAt4Lxr",
@@ -2826,7 +3720,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2836,7 +3731,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                             },
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/7pGyQZx9thVa8GxMBeXscB",
+                                    spotify:
+                                        "https://open.spotify.com/artist/7pGyQZx9thVa8GxMBeXscB",
                                 },
                                 href: "https://api.spotify.com/v1/artists/7pGyQZx9thVa8GxMBeXscB",
                                 id: "7pGyQZx9thVa8GxMBeXscB",
@@ -2845,17 +3741,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:7pGyQZx9thVa8GxMBeXscB",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 226480,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/2ctReR81XVD8JPlJqJqF1C",
+                            spotify:
+                                "https://open.spotify.com/track/2ctReR81XVD8JPlJqJqF1C",
                         },
                         href: "https://api.spotify.com/v1/tracks/2ctReR81XVD8JPlJqJqF1C",
                         id: "2ctReR81XVD8JPlJqJqF1C",
                         name: "Looking Back",
-                        preview_url: "https://p.scdn.co/mp3-preview/a379bcd0dfb21162d2337f51b5d89e67a94ae755",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/a379bcd0dfb21162d2337f51b5d89e67a94ae755",
                         track_number: 7,
                         type: "track",
                         uri: "spotify:track:2ctReR81XVD8JPlJqJqF1C",
@@ -2864,7 +3773,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2873,17 +3783,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 289360,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1lqTqfWG6dOUR1DHav23JH",
+                            spotify:
+                                "https://open.spotify.com/track/1lqTqfWG6dOUR1DHav23JH",
                         },
                         href: "https://api.spotify.com/v1/tracks/1lqTqfWG6dOUR1DHav23JH",
                         id: "1lqTqfWG6dOUR1DHav23JH",
                         name: "My Shadow",
-                        preview_url: "https://p.scdn.co/mp3-preview/63f4dbf7c5e792d19eb773f1dfc351e20fd0f139",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/63f4dbf7c5e792d19eb773f1dfc351e20fd0f139",
                         track_number: 8,
                         type: "track",
                         uri: "spotify:track:1lqTqfWG6dOUR1DHav23JH",
@@ -2892,7 +3815,8 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
+                                    spotify:
+                                        "https://open.spotify.com/artist/53A0W3U0s8diEn9RhXQhVz",
                                 },
                                 href: "https://api.spotify.com/v1/artists/53A0W3U0s8diEn9RhXQhVz",
                                 id: "53A0W3U0s8diEn9RhXQhVz",
@@ -2901,17 +3825,30 @@ const getMultipleAlbumsResponse: SpotifyApi.MultipleAlbumsResponse = {
                                 uri: "spotify:artist:53A0W3U0s8diEn9RhXQhVz",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         disc_number: 1,
                         duration_ms: 619079,
                         explicit: false,
                         external_urls: {
-                            spotify: "https://open.spotify.com/track/1OiJZvD8pQmgLwA0HU3YLs",
+                            spotify:
+                                "https://open.spotify.com/track/1OiJZvD8pQmgLwA0HU3YLs",
                         },
                         href: "https://api.spotify.com/v1/tracks/1OiJZvD8pQmgLwA0HU3YLs",
                         id: "1OiJZvD8pQmgLwA0HU3YLs",
                         name: "Night Train Track By Track Commentary",
-                        preview_url: "https://p.scdn.co/mp3-preview/387cd4efd9b9c16425cf8e0e77aa7cf174878572",
+                        preview_url:
+                            "https://p.scdn.co/mp3-preview/387cd4efd9b9c16425cf8e0e77aa7cf174878572",
                         track_number: 9,
                         type: "track",
                         uri: "spotify:track:1OiJZvD8pQmgLwA0HU3YLs",
@@ -2942,7 +3879,8 @@ const getAlbumTracks: SpotifyApi.AlbumTracksResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q",
+                        spotify:
+                            "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q",
                     },
                     href: "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
                     id: "08td7MxkoHQkXnWAYD8d6Q",
@@ -3017,12 +3955,14 @@ const getAlbumTracks: SpotifyApi.AlbumTracksResponse = {
             duration_ms: 276773,
             explicit: false,
             external_urls: {
-                spotify: "https://open.spotify.com/track/2TpxZ7JUBn3uw46aR7qd6V",
+                spotify:
+                    "https://open.spotify.com/track/2TpxZ7JUBn3uw46aR7qd6V",
             },
             href: "https://api.spotify.com/v1/tracks/2TpxZ7JUBn3uw46aR7qd6V",
             id: "2TpxZ7JUBn3uw46aR7qd6V",
             name: "All I Want",
-            preview_url: "https://p.scdn.co/mp3-preview/12b8cee72118f995f5494e1b34251e4ac997445e",
+            preview_url:
+                "https://p.scdn.co/mp3-preview/12b8cee72118f995f5494e1b34251e4ac997445e",
             track_number: 1,
             type: "track",
             uri: "spotify:track:2TpxZ7JUBn3uw46aR7qd6V",
@@ -3031,7 +3971,8 @@ const getAlbumTracks: SpotifyApi.AlbumTracksResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q",
+                        spotify:
+                            "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q",
                     },
                     href: "https://api.spotify.com/v1/artists/08td7MxkoHQkXnWAYD8d6Q",
                     id: "08td7MxkoHQkXnWAYD8d6Q",
@@ -3106,12 +4047,14 @@ const getAlbumTracks: SpotifyApi.AlbumTracksResponse = {
             duration_ms: 247680,
             explicit: false,
             external_urls: {
-                spotify: "https://open.spotify.com/track/4PjcfyZZVE10TFd9EKA72r",
+                spotify:
+                    "https://open.spotify.com/track/4PjcfyZZVE10TFd9EKA72r",
             },
             href: "https://api.spotify.com/v1/tracks/4PjcfyZZVE10TFd9EKA72r",
             id: "4PjcfyZZVE10TFd9EKA72r",
             name: "Someday",
-            preview_url: "https://p.scdn.co/mp3-preview/4a54d83c195d0bc17b1b23fc931d37fb363224d8",
+            preview_url:
+                "https://p.scdn.co/mp3-preview/4a54d83c195d0bc17b1b23fc931d37fb363224d8",
             track_number: 2,
             type: "track",
             uri: "spotify:track:4PjcfyZZVE10TFd9EKA72r",
@@ -3179,7 +4122,8 @@ const getSeveralArtists: SpotifyApi.MultipleArtistsResponse = {
     artists: [
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/0oSGxfWSnnOXhD2fKuz2Gy",
+                spotify:
+                    "https://open.spotify.com/artist/0oSGxfWSnnOXhD2fKuz2Gy",
             },
             followers: {
                 href: null,
@@ -3217,7 +4161,8 @@ const getSeveralArtists: SpotifyApi.MultipleArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/3dBVyJ7JuOMt4GE9607Qin",
+                spotify:
+                    "https://open.spotify.com/artist/3dBVyJ7JuOMt4GE9607Qin",
             },
             followers: {
                 href: null,
@@ -3263,8 +4208,7 @@ const getSeveralArtists: SpotifyApi.MultipleArtistsResponse = {
  * https://developer.spotify.com/web-api/get-artists-albums/
  */
 const getArtistsAlbums: SpotifyApi.ArtistsAlbumsResponse = {
-    href:
-        "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&include_groups=appears_on&market=ES",
+    href: "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=0&limit=2&include_groups=appears_on&market=ES",
     items: [
         {
             album_group: "appears_on",
@@ -3273,7 +4217,8 @@ const getArtistsAlbums: SpotifyApi.ArtistsAlbumsResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of",
+                        spotify:
+                            "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of",
                     },
                     href: "https://api.spotify.com/v1/artists/0LyfQWJT6nXafLPZqxe9Of",
                     id: "0LyfQWJT6nXafLPZqxe9Of",
@@ -3347,7 +4292,8 @@ const getArtistsAlbums: SpotifyApi.ArtistsAlbumsResponse = {
                 "ZA",
             ],
             external_urls: {
-                spotify: "https://open.spotify.com/album/43977e0YlJeMXG77uCCSMX",
+                spotify:
+                    "https://open.spotify.com/album/43977e0YlJeMXG77uCCSMX",
             },
             href: "https://api.spotify.com/v1/albums/43977e0YlJeMXG77uCCSMX",
             id: "43977e0YlJeMXG77uCCSMX",
@@ -3381,7 +4327,8 @@ const getArtistsAlbums: SpotifyApi.ArtistsAlbumsResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of",
+                        spotify:
+                            "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of",
                     },
                     href: "https://api.spotify.com/v1/artists/0LyfQWJT6nXafLPZqxe9Of",
                     id: "0LyfQWJT6nXafLPZqxe9Of",
@@ -3458,7 +4405,8 @@ const getArtistsAlbums: SpotifyApi.ArtistsAlbumsResponse = {
                 "ZA",
             ],
             external_urls: {
-                spotify: "https://open.spotify.com/album/189ngoT3WxR5mZSYkAGOLF",
+                spotify:
+                    "https://open.spotify.com/album/189ngoT3WxR5mZSYkAGOLF",
             },
             href: "https://api.spotify.com/v1/albums/189ngoT3WxR5mZSYkAGOLF",
             id: "189ngoT3WxR5mZSYkAGOLF",
@@ -3487,8 +4435,7 @@ const getArtistsAlbums: SpotifyApi.ArtistsAlbumsResponse = {
         },
     ],
     limit: 2,
-    next:
-        "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&include_groups=appears_on&market=ES",
+    next: "https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?offset=2&limit=2&include_groups=appears_on&market=ES",
     offset: 0,
     previous: null,
     total: 308,
@@ -3509,7 +4456,8 @@ const getArtistsTopTracks: SpotifyApi.ArtistsTopTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/43ZHCT0cAZBISjO8DG9PnE",
+                            spotify:
+                                "https://open.spotify.com/artist/43ZHCT0cAZBISjO8DG9PnE",
                         },
                         href: "https://api.spotify.com/v1/artists/43ZHCT0cAZBISjO8DG9PnE",
                         id: "43ZHCT0cAZBISjO8DG9PnE",
@@ -3581,7 +4529,8 @@ const getArtistsTopTracks: SpotifyApi.ArtistsTopTracksResponse = {
                     "UY",
                 ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/7xe8VI48TxUpU1IIo0RfGi",
+                    spotify:
+                        "https://open.spotify.com/album/7xe8VI48TxUpU1IIo0RfGi",
                 },
                 href: "https://api.spotify.com/v1/albums/7xe8VI48TxUpU1IIo0RfGi",
                 id: "7xe8VI48TxUpU1IIo0RfGi",
@@ -3611,7 +4560,8 @@ const getArtistsTopTracks: SpotifyApi.ArtistsTopTracksResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/43ZHCT0cAZBISjO8DG9PnE",
+                        spotify:
+                            "https://open.spotify.com/artist/43ZHCT0cAZBISjO8DG9PnE",
                     },
                     href: "https://api.spotify.com/v1/artists/43ZHCT0cAZBISjO8DG9PnE",
                     id: "43ZHCT0cAZBISjO8DG9PnE",
@@ -3689,13 +4639,15 @@ const getArtistsTopTracks: SpotifyApi.ArtistsTopTracksResponse = {
                 isrc: "USRC16101350",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/track/44AyOl4qVkzS48vBsbNXaC",
+                spotify:
+                    "https://open.spotify.com/track/44AyOl4qVkzS48vBsbNXaC",
             },
             href: "https://api.spotify.com/v1/tracks/44AyOl4qVkzS48vBsbNXaC",
             id: "44AyOl4qVkzS48vBsbNXaC",
             name: "Can't Help Falling in Love",
             popularity: 70,
-            preview_url: "https://p.scdn.co/mp3-preview/26e409b39a2da6dc18fab61020c90be2938dc0e9",
+            preview_url:
+                "https://p.scdn.co/mp3-preview/26e409b39a2da6dc18fab61020c90be2938dc0e9",
             track_number: 5,
             type: "track",
             uri: "spotify:track:44AyOl4qVkzS48vBsbNXaC",
@@ -3713,7 +4665,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
     artists: [
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/0JDkhL4rjiPNEp92jAgJnS",
+                spotify:
+                    "https://open.spotify.com/artist/0JDkhL4rjiPNEp92jAgJnS",
             },
             followers: {
                 href: null,
@@ -3751,7 +4704,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/2zyz0VJqrDXeFDIyrfVXSo",
+                spotify:
+                    "https://open.spotify.com/artist/2zyz0VJqrDXeFDIyrfVXSo",
             },
             followers: {
                 href: null,
@@ -3789,7 +4743,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/3wYyutjgII8LJVVOLrGI0D",
+                spotify:
+                    "https://open.spotify.com/artist/3wYyutjgII8LJVVOLrGI0D",
             },
             followers: {
                 href: null,
@@ -3827,7 +4782,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/73sSFVlM6pkweLXE8qw1OS",
+                spotify:
+                    "https://open.spotify.com/artist/73sSFVlM6pkweLXE8qw1OS",
             },
             followers: {
                 href: null,
@@ -3865,7 +4821,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/5hIClg6noTaCzMu2s5wp4f",
+                spotify:
+                    "https://open.spotify.com/artist/5hIClg6noTaCzMu2s5wp4f",
             },
             followers: {
                 href: null,
@@ -3903,7 +4860,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/4ACplpEqD6JIVgKrafauzs",
+                spotify:
+                    "https://open.spotify.com/artist/4ACplpEqD6JIVgKrafauzs",
             },
             followers: {
                 href: null,
@@ -3941,7 +4899,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/4xls23Ye9WR9yy3yYMpAMm",
+                spotify:
+                    "https://open.spotify.com/artist/4xls23Ye9WR9yy3yYMpAMm",
             },
             followers: {
                 href: null,
@@ -3979,7 +4938,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/1p0t3JtUTayV2wb1RGN9mO",
+                spotify:
+                    "https://open.spotify.com/artist/1p0t3JtUTayV2wb1RGN9mO",
             },
             followers: {
                 href: null,
@@ -4017,7 +4977,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/293zczrfYafIItmnmM3coR",
+                spotify:
+                    "https://open.spotify.com/artist/293zczrfYafIItmnmM3coR",
             },
             followers: {
                 href: null,
@@ -4055,7 +5016,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/5Y9xEAGW4GwGJgbiI6W85P",
+                spotify:
+                    "https://open.spotify.com/artist/5Y9xEAGW4GwGJgbiI6W85P",
             },
             followers: {
                 href: null,
@@ -4093,7 +5055,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/4cPHsZM98sKzmV26wlwD2W",
+                spotify:
+                    "https://open.spotify.com/artist/4cPHsZM98sKzmV26wlwD2W",
             },
             followers: {
                 href: null,
@@ -4131,7 +5094,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/2XBzvyw3fwtZu4iUz12x0G",
+                spotify:
+                    "https://open.spotify.com/artist/2XBzvyw3fwtZu4iUz12x0G",
             },
             followers: {
                 href: null,
@@ -4169,7 +5133,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/6KWcxMWVNVIYbdOQyJtsSy",
+                spotify:
+                    "https://open.spotify.com/artist/6KWcxMWVNVIYbdOQyJtsSy",
             },
             followers: {
                 href: null,
@@ -4207,7 +5172,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/5ZKMPRDHc7qElVJFh3uRqB",
+                spotify:
+                    "https://open.spotify.com/artist/5ZKMPRDHc7qElVJFh3uRqB",
             },
             followers: {
                 href: null,
@@ -4245,7 +5211,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/5VAHm7V5mnsxvQrWw3KHmx",
+                spotify:
+                    "https://open.spotify.com/artist/5VAHm7V5mnsxvQrWw3KHmx",
             },
             followers: {
                 href: null,
@@ -4283,7 +5250,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/09C0xjtosNAIXP36wTnWxd",
+                spotify:
+                    "https://open.spotify.com/artist/09C0xjtosNAIXP36wTnWxd",
             },
             followers: {
                 href: null,
@@ -4321,7 +5289,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/3MFp4cYuYtTZe3d3xkLLbr",
+                spotify:
+                    "https://open.spotify.com/artist/3MFp4cYuYtTZe3d3xkLLbr",
             },
             followers: {
                 href: null,
@@ -4354,13 +5323,19 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/7ceUfdWq2t5nbatS6ollHh",
+                spotify:
+                    "https://open.spotify.com/artist/7ceUfdWq2t5nbatS6ollHh",
             },
             followers: {
                 href: null,
                 total: 34766,
             },
-            genres: ["adult standards", "brill building pop", "christmas", "lounge"],
+            genres: [
+                "adult standards",
+                "brill building pop",
+                "christmas",
+                "lounge",
+            ],
             href: "https://api.spotify.com/v1/artists/7ceUfdWq2t5nbatS6ollHh",
             id: "7ceUfdWq2t5nbatS6ollHh",
             images: [
@@ -4392,7 +5367,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/7qQJQ3YtcGlqaLg5tcypN2",
+                spotify:
+                    "https://open.spotify.com/artist/7qQJQ3YtcGlqaLg5tcypN2",
             },
             followers: {
                 href: null,
@@ -4430,7 +5406,8 @@ const getArtistRelatedArtists: SpotifyApi.ArtistsRelatedArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/1T0wRBO0CK0vK8ouUMqEl5",
+                spotify:
+                    "https://open.spotify.com/artist/1T0wRBO0CK0vK8ouUMqEl5",
             },
             followers: {
                 href: null,
@@ -4520,7 +5497,8 @@ const severalAudioFeaturesResponse: SpotifyApi.MultipleAudioFeaturesResponse = {
             type: "audio_features",
             id: "4JpKVNYnVcJ8tuMKjAj50A",
             uri: "spotify:track:4JpKVNYnVcJ8tuMKjAj50A",
-            track_href: "https://api.spotify.com/v1/tracks/4JpKVNYnVcJ8tuMKjAj50A",
+            track_href:
+                "https://api.spotify.com/v1/tracks/4JpKVNYnVcJ8tuMKjAj50A",
             analysis_url:
                 "http://echonest-analysis.s3.amazonaws.com/TR/WhpYUARk1kNJ_qP0AdKGcDDFKOQTTgsOoINrqyPQjkUnbteuuBiyj_u94iFCSGzdxGiwqQ6d77f4QLL_8=/3/full.json?AWSAccessKeyId=AKIAJRDFEY23UEVW42BQ&Expires=1458063189&Signature=JRE8SDZStpNOdUsPN/PoS49FMtQ%3D",
             duration_ms: 535223,
@@ -4541,7 +5519,8 @@ const severalAudioFeaturesResponse: SpotifyApi.MultipleAudioFeaturesResponse = {
             type: "audio_features",
             id: "2NRANZE9UCmPAS5XVbXL40",
             uri: "spotify:track:2NRANZE9UCmPAS5XVbXL40",
-            track_href: "https://api.spotify.com/v1/tracks/2NRANZE9UCmPAS5XVbXL40",
+            track_href:
+                "https://api.spotify.com/v1/tracks/2NRANZE9UCmPAS5XVbXL40",
             analysis_url:
                 "http://echonest-analysis.s3.amazonaws.com/TR/WhuQhwPDhmEg5TO4JjbJu0my-awIhk3eaXkRd1ofoJ7tXogPnMtbxkTyLOeHXu5Jke0FCIt52saKJyfPM=/3/full.json?AWSAccessKeyId=AKIAJRDFEY23UEVW42BQ&Expires=1458063189&Signature=qfclum7FwTaR/7aQbnBNO0daCsM%3D",
             duration_ms: 187800,
@@ -4562,7 +5541,8 @@ const severalAudioFeaturesResponse: SpotifyApi.MultipleAudioFeaturesResponse = {
             type: "audio_features",
             id: "24JygzOLM0EmRQeGtFcIcG",
             uri: "spotify:track:24JygzOLM0EmRQeGtFcIcG",
-            track_href: "https://api.spotify.com/v1/tracks/24JygzOLM0EmRQeGtFcIcG",
+            track_href:
+                "https://api.spotify.com/v1/tracks/24JygzOLM0EmRQeGtFcIcG",
             analysis_url:
                 "http://echonest-analysis.s3.amazonaws.com/TR/ehbkMg05Ck-FN7p3lV7vd8TUdBCvM6z5mgDiZRv6iSlw8P_b8GYBZ4PRAlOgTl3e5rS34_l3dZGDeYzH4=/3/full.json?AWSAccessKeyId=AKIAJRDFEY23UEVW42BQ&Expires=1458063189&Signature=bnTm0Hcb%2Bxo8ZCmuxm1mY0JY4Hs%3D",
             duration_ms: 497493,
@@ -4711,20 +5691,13 @@ const audioAnalysisResponse: SpotifyApi.AudioAnalysisResponse = {
             loudness_max_time: 0.08651,
             loudness_max: -29.761,
             loudness_end: 0.0,
-            pitches: [0.014, 0.108, 0.363, 0.034, 0.015, 0.006, 0.025, 0.003, 0.045, 1.0, 0.028, 0.007],
+            pitches: [
+                0.014, 0.108, 0.363, 0.034, 0.015, 0.006, 0.025, 0.003, 0.045,
+                1.0, 0.028, 0.007,
+            ],
             timbre: [
-                22.505,
-                -153.067,
-                -47.5,
-                -115.018,
-                47.436,
-                90.497,
-                13.039,
-                -2.794,
-                -37.921,
-                103.598,
-                31.091,
-                -2.627,
+                22.505, -153.067, -47.5, -115.018, 47.436, 90.497, 13.039,
+                -2.794, -37.921, 103.598, 31.091, -2.627,
             ],
         },
         {
@@ -4735,20 +5708,13 @@ const audioAnalysisResponse: SpotifyApi.AudioAnalysisResponse = {
             loudness_max_time: 0.08151,
             loudness_max: -30.891,
             loudness_end: 0.0,
-            pitches: [0.018, 0.288, 1.0, 0.141, 0.022, 0.012, 0.031, 0.004, 0.055, 0.478, 0.021, 0.008],
+            pitches: [
+                0.018, 0.288, 1.0, 0.141, 0.022, 0.012, 0.031, 0.004, 0.055,
+                0.478, 0.021, 0.008,
+            ],
             timbre: [
-                26.769,
-                -180.012,
-                -35.768,
-                -49.867,
-                23.686,
-                -34.285,
-                0.491,
-                -8.718,
-                1.786,
-                9.423,
-                -10.056,
-                -13.106,
+                26.769, -180.012, -35.768, -49.867, 23.686, -34.285, 0.491,
+                -8.718, 1.786, 9.423, -10.056, -13.106,
             ],
         },
         {
@@ -4759,20 +5725,13 @@ const audioAnalysisResponse: SpotifyApi.AudioAnalysisResponse = {
             loudness_max_time: 0.11882,
             loudness_max: -31.918,
             loudness_end: 0.0,
-            pitches: [0.085, 0.375, 0.241, 0.018, 0.045, 0.01, 0.024, 0.006, 0.15, 1.0, 0.13, 0.011],
+            pitches: [
+                0.085, 0.375, 0.241, 0.018, 0.045, 0.01, 0.024, 0.006, 0.15,
+                1.0, 0.13, 0.011,
+            ],
             timbre: [
-                26.504,
-                -191.592,
-                -49.144,
-                -72.098,
-                12.416,
-                -37.892,
-                -3.938,
-                -11.801,
-                -15.181,
-                -1.893,
-                -0.331,
-                4.853,
+                26.504, -191.592, -49.144, -72.098, 12.416, -37.892, -3.938,
+                -11.801, -15.181, -1.893, -0.331, 4.853,
             ],
         },
         {
@@ -4783,20 +5742,13 @@ const audioAnalysisResponse: SpotifyApi.AudioAnalysisResponse = {
             loudness_max_time: 0.02115,
             loudness_max: -29.891,
             loudness_end: 0.0,
-            pitches: [0.091, 0.246, 0.222, 0.021, 0.028, 0.009, 0.031, 0.007, 0.329, 1.0, 0.175, 0.01],
+            pitches: [
+                0.091, 0.246, 0.222, 0.021, 0.028, 0.009, 0.031, 0.007, 0.329,
+                1.0, 0.175, 0.01,
+            ],
             timbre: [
-                29.385,
-                -205.941,
-                -46.058,
-                -60.547,
-                1.273,
-                -51.343,
-                -15.048,
-                2.766,
-                -7.125,
-                -13.577,
-                22.316,
-                -1.46,
+                29.385, -205.941, -46.058, -60.547, 1.273, -51.343, -15.048,
+                2.766, -7.125, -13.577, 22.316, -1.46,
             ],
         },
     ],
@@ -4863,14 +5815,14 @@ const audioAnalysisResponse: SpotifyApi.AudioAnalysisResponse = {
 const featuredPlaylists: SpotifyApi.ListOfFeaturedPlaylistsResponse = {
     message: "Enjoy a mellow afternoon.",
     playlists: {
-        href:
-            "https://api.spotify.com/v1/browse/featured-playlists?country=SE&timestamp=2015-12-25T15:10:15&offset=0&limit=2",
+        href: "https://api.spotify.com/v1/browse/featured-playlists?country=SE&timestamp=2015-12-25T15:10:15&offset=0&limit=2",
         items: [
             {
                 collaborative: false,
                 description: "",
                 external_urls: {
-                    spotify: "http://open.spotify.com/user/spotify/playlist/16BpjqQV1Ey0HeDueNDSYz",
+                    spotify:
+                        "http://open.spotify.com/user/spotify/playlist/16BpjqQV1Ey0HeDueNDSYz",
                 },
                 href: "https://api.spotify.com/v1/users/spotify/playlists/16BpjqQV1Ey0HeDueNDSYz",
                 id: "16BpjqQV1Ey0HeDueNDSYz",
@@ -4892,7 +5844,8 @@ const featuredPlaylists: SpotifyApi.ListOfFeaturedPlaylistsResponse = {
                     uri: "spotify:user:spotify",
                 },
                 public: null,
-                snapshot_id: "ymcdjXlXzZPZClmP0Pm4iuHaWk4r5OejEOoCOIstJdfxgYNljKWePUZm2v2PzHJT",
+                snapshot_id:
+                    "ymcdjXlXzZPZClmP0Pm4iuHaWk4r5OejEOoCOIstJdfxgYNljKWePUZm2v2PzHJT",
                 tracks: {
                     href: "https://api.spotify.com/v1/users/spotify/playlists/16BpjqQV1Ey0HeDueNDSYz/tracks",
                     total: 111,
@@ -4904,7 +5857,8 @@ const featuredPlaylists: SpotifyApi.ListOfFeaturedPlaylistsResponse = {
                 collaborative: false,
                 description: "",
                 external_urls: {
-                    spotify: "http://open.spotify.com/user/spotify/playlist/7nUikuZL4MgIXS43cMpQZE",
+                    spotify:
+                        "http://open.spotify.com/user/spotify/playlist/7nUikuZL4MgIXS43cMpQZE",
                 },
                 href: "https://api.spotify.com/v1/users/spotify/playlists/7nUikuZL4MgIXS43cMpQZE",
                 id: "7nUikuZL4MgIXS43cMpQZE",
@@ -4926,7 +5880,8 @@ const featuredPlaylists: SpotifyApi.ListOfFeaturedPlaylistsResponse = {
                     uri: "spotify:user:spotify",
                 },
                 public: null,
-                snapshot_id: "v2Y0q77RziNFIIFIdUrHIw6om2Wqx/kBny4u5REQYj3mcf8EFVVigOdzg8kRTJxU",
+                snapshot_id:
+                    "v2Y0q77RziNFIIFIdUrHIw6om2Wqx/kBny4u5REQYj3mcf8EFVVigOdzg8kRTJxU",
                 tracks: {
                     href: "https://api.spotify.com/v1/users/spotify/playlists/7nUikuZL4MgIXS43cMpQZE/tracks",
                     total: 22,
@@ -4936,8 +5891,7 @@ const featuredPlaylists: SpotifyApi.ListOfFeaturedPlaylistsResponse = {
             },
         ],
         limit: 2,
-        next:
-            "https://api.spotify.com/v1/browse/featured-playlists?country=SE&timestamp=2015-12-25T15:10:15&offset=2&limit=2",
+        next: "https://api.spotify.com/v1/browse/featured-playlists?country=SE&timestamp=2015-12-25T15:10:15&offset=2&limit=2",
         offset: 0,
         previous: null,
         total: 13,
@@ -4960,7 +5914,8 @@ const newReleases: SpotifyApi.ListOfNewReleasesResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/4IWBUUAFIplrNtaOHcJPRM",
+                            spotify:
+                                "https://open.spotify.com/artist/4IWBUUAFIplrNtaOHcJPRM",
                         },
                         href: "https://api.spotify.com/v1/artists/4IWBUUAFIplrNtaOHcJPRM",
                         id: "4IWBUUAFIplrNtaOHcJPRM",
@@ -4969,9 +5924,21 @@ const newReleases: SpotifyApi.ListOfNewReleasesResponse = {
                         uri: "spotify:artist:4IWBUUAFIplrNtaOHcJPRM",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/0EW257HwkJ1CblYgM9GIAY",
+                    spotify:
+                        "https://open.spotify.com/album/0EW257HwkJ1CblYgM9GIAY",
                 },
                 href: "https://api.spotify.com/v1/albums/0EW257HwkJ1CblYgM9GIAY",
                 id: "0EW257HwkJ1CblYgM9GIAY",
@@ -5004,7 +5971,8 @@ const newReleases: SpotifyApi.ListOfNewReleasesResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/6KImCVD70vtIoJWnq6nGn3",
+                            spotify:
+                                "https://open.spotify.com/artist/6KImCVD70vtIoJWnq6nGn3",
                         },
                         href: "https://api.spotify.com/v1/artists/6KImCVD70vtIoJWnq6nGn3",
                         id: "6KImCVD70vtIoJWnq6nGn3",
@@ -5013,9 +5981,21 @@ const newReleases: SpotifyApi.ListOfNewReleasesResponse = {
                         uri: "spotify:artist:6KImCVD70vtIoJWnq6nGn3",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/4Aag1alBrdk2TFnATVmn8D",
+                    spotify:
+                        "https://open.spotify.com/album/4Aag1alBrdk2TFnATVmn8D",
                 },
                 href: "https://api.spotify.com/v1/albums/4Aag1alBrdk2TFnATVmn8D",
                 id: "4Aag1alBrdk2TFnATVmn8D",
@@ -5048,7 +6028,8 @@ const newReleases: SpotifyApi.ListOfNewReleasesResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/0x3PXj1WnuW7YsBxQK57xM",
+                            spotify:
+                                "https://open.spotify.com/artist/0x3PXj1WnuW7YsBxQK57xM",
                         },
                         href: "https://api.spotify.com/v1/artists/0x3PXj1WnuW7YsBxQK57xM",
                         id: "0x3PXj1WnuW7YsBxQK57xM",
@@ -5057,9 +6038,21 @@ const newReleases: SpotifyApi.ListOfNewReleasesResponse = {
                         uri: "spotify:artist:0x3PXj1WnuW7YsBxQK57xM",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/4uEX8XMeZ0sNk5hHKaVS0X",
+                    spotify:
+                        "https://open.spotify.com/album/4uEX8XMeZ0sNk5hHKaVS0X",
                 },
                 href: "https://api.spotify.com/v1/albums/4uEX8XMeZ0sNk5hHKaVS0X",
                 id: "4uEX8XMeZ0sNk5hHKaVS0X",
@@ -5387,7 +6380,8 @@ const categoryPlaylists: SpotifyApi.CategoryPlaylistsResponse = {
                 collaborative: false,
                 description: "",
                 external_urls: {
-                    spotify: "http://open.spotify.com/user/spotifybrazilian/playlist/6U9RHRz1G477YpMNeLy9uI",
+                    spotify:
+                        "http://open.spotify.com/user/spotifybrazilian/playlist/6U9RHRz1G477YpMNeLy9uI",
                 },
                 href: "https://api.spotify.com/v1/users/spotifybrazilian/playlists/6U9RHRz1G477YpMNeLy9uI",
                 id: "6U9RHRz1G477YpMNeLy9uI",
@@ -5401,7 +6395,8 @@ const categoryPlaylists: SpotifyApi.CategoryPlaylistsResponse = {
                 name: "Esquenta Sertanejo",
                 owner: {
                     external_urls: {
-                        spotify: "http://open.spotify.com/user/spotifybrazilian",
+                        spotify:
+                            "http://open.spotify.com/user/spotifybrazilian",
                     },
                     href: "https://api.spotify.com/v1/users/spotifybrazilian",
                     id: "spotifybrazilian",
@@ -5409,7 +6404,8 @@ const categoryPlaylists: SpotifyApi.CategoryPlaylistsResponse = {
                     uri: "spotify:user:spotifybrazilian",
                 },
                 public: null,
-                snapshot_id: "+jMowNjnBWpQqnkgYk47IRKrEsXLxUXR348Mtg/+kZWjLkpS4HTADpzyV6X/iIJm",
+                snapshot_id:
+                    "+jMowNjnBWpQqnkgYk47IRKrEsXLxUXR348Mtg/+kZWjLkpS4HTADpzyV6X/iIJm",
                 tracks: {
                     href: "https://api.spotify.com/v1/users/spotifybrazilian/playlists/6U9RHRz1G477YpMNeLy9uI/tracks",
                     total: 100,
@@ -5421,7 +6417,8 @@ const categoryPlaylists: SpotifyApi.CategoryPlaylistsResponse = {
                 collaborative: false,
                 description: "",
                 external_urls: {
-                    spotify: "http://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen",
+                    spotify:
+                        "http://open.spotify.com/user/spotifybrazilian/playlist/4k7EZPI3uKMz4aRRrLVfen",
                 },
                 href: "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4k7EZPI3uKMz4aRRrLVfen",
                 id: "4k7EZPI3uKMz4aRRrLVfen",
@@ -5435,7 +6432,8 @@ const categoryPlaylists: SpotifyApi.CategoryPlaylistsResponse = {
                 name: "Noite Eletrônica",
                 owner: {
                     external_urls: {
-                        spotify: "http://open.spotify.com/user/spotifybrazilian",
+                        spotify:
+                            "http://open.spotify.com/user/spotifybrazilian",
                     },
                     href: "https://api.spotify.com/v1/users/spotifybrazilian",
                     id: "spotifybrazilian",
@@ -5443,7 +6441,8 @@ const categoryPlaylists: SpotifyApi.CategoryPlaylistsResponse = {
                     uri: "spotify:user:spotifybrazilian",
                 },
                 public: null,
-                snapshot_id: "JWtQF9AcG8yXA/xIihTpZNxJuVdcJ0UwPZQrkRi8kP2om0nZJNg/WvwAz1TMBdlX",
+                snapshot_id:
+                    "JWtQF9AcG8yXA/xIihTpZNxJuVdcJ0UwPZQrkRi8kP2om0nZJNg/WvwAz1TMBdlX",
                 tracks: {
                     href: "https://api.spotify.com/v1/users/spotifybrazilian/playlists/4k7EZPI3uKMz4aRRrLVfen/tracks",
                     total: 100,
@@ -5511,7 +6510,8 @@ const followedArtists: SpotifyApi.UsersFollowedArtistsResponse = {
         items: [
             {
                 external_urls: {
-                    spotify: "https://open.spotify.com/artist/1F102kNzMqsmOpF7AfFmm5",
+                    spotify:
+                        "https://open.spotify.com/artist/1F102kNzMqsmOpF7AfFmm5",
                 },
                 followers: {
                     href: null,
@@ -5544,7 +6544,8 @@ const followedArtists: SpotifyApi.UsersFollowedArtistsResponse = {
             },
             {
                 external_urls: {
-                    spotify: "https://open.spotify.com/artist/1oM1vgebNTCZmVYwC3YYl8",
+                    spotify:
+                        "https://open.spotify.com/artist/1oM1vgebNTCZmVYwC3YYl8",
                 },
                 followers: {
                     href: null,
@@ -5613,7 +6614,11 @@ const unfollowArtistsOrUsers: SpotifyApi.UnfollowArtistsOrUsersResponse = {};
  * GET /v1/me/following/contains
  * https://developer.spotify.com/web-api/check-current-user-follows/
  */
-const checkCurrentUserFollows: SpotifyApi.UserFollowsUsersOrArtistsResponse = [true, true, false];
+const checkCurrentUserFollows: SpotifyApi.UserFollowsUsersOrArtistsResponse = [
+    true,
+    true,
+    false,
+];
 
 /**
  * Follow a Playlist
@@ -5657,7 +6662,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/5FKchcZpQOkqFvXBj1aCvb",
+                                spotify:
+                                    "https://open.spotify.com/artist/5FKchcZpQOkqFvXBj1aCvb",
                             },
                             href: "https://api.spotify.com/v1/artists/5FKchcZpQOkqFvXBj1aCvb",
                             id: "5FKchcZpQOkqFvXBj1aCvb",
@@ -5667,7 +6673,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                         },
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/45eNHdiiabvmbp4erw26rg",
+                                spotify:
+                                    "https://open.spotify.com/artist/45eNHdiiabvmbp4erw26rg",
                             },
                             href: "https://api.spotify.com/v1/artists/45eNHdiiabvmbp4erw26rg",
                             id: "45eNHdiiabvmbp4erw26rg",
@@ -5676,9 +6683,21 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                             uri: "spotify:artist:45eNHdiiabvmbp4erw26rg",
                         },
                     ],
-                    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                    available_markets: [
+                        "AR",
+                        "AT",
+                        "AU",
+                        "BE",
+                        "BR",
+                        "CL",
+                        "CO",
+                        "CY",
+                        "CZ",
+                        "DE",
+                    ],
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/1DCg2NhX15z5fOKfMwXMnw",
+                        spotify:
+                            "https://open.spotify.com/album/1DCg2NhX15z5fOKfMwXMnw",
                     },
                     href: "https://api.spotify.com/v1/albums/1DCg2NhX15z5fOKfMwXMnw",
                     id: "1DCg2NhX15z5fOKfMwXMnw",
@@ -5708,7 +6727,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/5FKchcZpQOkqFvXBj1aCvb",
+                            spotify:
+                                "https://open.spotify.com/artist/5FKchcZpQOkqFvXBj1aCvb",
                         },
                         href: "https://api.spotify.com/v1/artists/5FKchcZpQOkqFvXBj1aCvb",
                         id: "5FKchcZpQOkqFvXBj1aCvb",
@@ -5718,7 +6738,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     },
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/45eNHdiiabvmbp4erw26rg",
+                            spotify:
+                                "https://open.spotify.com/artist/45eNHdiiabvmbp4erw26rg",
                         },
                         href: "https://api.spotify.com/v1/artists/45eNHdiiabvmbp4erw26rg",
                         id: "45eNHdiiabvmbp4erw26rg",
@@ -5728,7 +6749,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     },
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/2D03NzGIqn32zlCG1DViBu",
+                            spotify:
+                                "https://open.spotify.com/artist/2D03NzGIqn32zlCG1DViBu",
                         },
                         href: "https://api.spotify.com/v1/artists/2D03NzGIqn32zlCG1DViBu",
                         id: "2D03NzGIqn32zlCG1DViBu",
@@ -5737,7 +6759,18 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                         uri: "spotify:artist:2D03NzGIqn32zlCG1DViBu",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 disc_number: 1,
                 duration_ms: 295890,
                 explicit: false,
@@ -5745,7 +6778,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     isrc: "NLRD51831603",
                 },
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/5ZzjNL4J31lqU853Un7T3f",
+                    spotify:
+                        "https://open.spotify.com/track/5ZzjNL4J31lqU853Un7T3f",
                 },
                 href: "https://api.spotify.com/v1/tracks/5ZzjNL4J31lqU853Un7T3f",
                 id: "5ZzjNL4J31lqU853Un7T3f",
@@ -5767,7 +6801,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/4gzpq5DPGxSnKTe4SA8HAU",
+                                spotify:
+                                    "https://open.spotify.com/artist/4gzpq5DPGxSnKTe4SA8HAU",
                             },
                             href: "https://api.spotify.com/v1/artists/4gzpq5DPGxSnKTe4SA8HAU",
                             id: "4gzpq5DPGxSnKTe4SA8HAU",
@@ -5776,9 +6811,21 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                             uri: "spotify:artist:4gzpq5DPGxSnKTe4SA8HAU",
                         },
                     ],
-                    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                    available_markets: [
+                        "AR",
+                        "AT",
+                        "AU",
+                        "BE",
+                        "BR",
+                        "CL",
+                        "CO",
+                        "CY",
+                        "CZ",
+                        "DE",
+                    ],
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/573eP6oKtAJDqnpco7Fn9c",
+                        spotify:
+                            "https://open.spotify.com/album/573eP6oKtAJDqnpco7Fn9c",
                     },
                     href: "https://api.spotify.com/v1/albums/573eP6oKtAJDqnpco7Fn9c",
                     id: "573eP6oKtAJDqnpco7Fn9c",
@@ -5808,7 +6855,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/4gzpq5DPGxSnKTe4SA8HAU",
+                            spotify:
+                                "https://open.spotify.com/artist/4gzpq5DPGxSnKTe4SA8HAU",
                         },
                         href: "https://api.spotify.com/v1/artists/4gzpq5DPGxSnKTe4SA8HAU",
                         id: "4gzpq5DPGxSnKTe4SA8HAU",
@@ -5817,7 +6865,18 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                         uri: "spotify:artist:4gzpq5DPGxSnKTe4SA8HAU",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 disc_number: 1,
                 duration_ms: 258613,
                 explicit: false,
@@ -5825,7 +6884,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     isrc: "GBAYE1601838",
                 },
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/2XiSB3m4WSkxD3xIUrYHfV",
+                    spotify:
+                        "https://open.spotify.com/track/2XiSB3m4WSkxD3xIUrYHfV",
                 },
                 href: "https://api.spotify.com/v1/tracks/2XiSB3m4WSkxD3xIUrYHfV",
                 id: "2XiSB3m4WSkxD3xIUrYHfV",
@@ -5847,7 +6907,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
+                                spotify:
+                                    "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
                             },
                             href: "https://api.spotify.com/v1/artists/53XhwfbYqKCa1cC15pYq2q",
                             id: "53XhwfbYqKCa1cC15pYq2q",
@@ -5858,7 +6919,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     ],
                     available_markets: [],
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/5GlPAy2PRJW06GVFhKwGTl",
+                        spotify:
+                            "https://open.spotify.com/album/5GlPAy2PRJW06GVFhKwGTl",
                     },
                     href: "https://api.spotify.com/v1/albums/5GlPAy2PRJW06GVFhKwGTl",
                     id: "5GlPAy2PRJW06GVFhKwGTl",
@@ -5888,7 +6950,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
+                            spotify:
+                                "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
                         },
                         href: "https://api.spotify.com/v1/artists/53XhwfbYqKCa1cC15pYq2q",
                         id: "53XhwfbYqKCa1cC15pYq2q",
@@ -5905,7 +6968,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     isrc: "USUM71704167",
                 },
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/0tKcYR2II1VCQWT79i5NrW",
+                    spotify:
+                        "https://open.spotify.com/track/0tKcYR2II1VCQWT79i5NrW",
                 },
                 href: "https://api.spotify.com/v1/tracks/0tKcYR2II1VCQWT79i5NrW",
                 id: "0tKcYR2II1VCQWT79i5NrW",
@@ -5926,7 +6990,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of",
+                                spotify:
+                                    "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of",
                             },
                             href: "https://api.spotify.com/v1/artists/0LyfQWJT6nXafLPZqxe9Of",
                             id: "0LyfQWJT6nXafLPZqxe9Of",
@@ -5937,7 +7002,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     ],
                     available_markets: [],
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/1sZqT6BpNJ2Lh69dYfZwka",
+                        spotify:
+                            "https://open.spotify.com/album/1sZqT6BpNJ2Lh69dYfZwka",
                     },
                     href: "https://api.spotify.com/v1/albums/1sZqT6BpNJ2Lh69dYfZwka",
                     id: "1sZqT6BpNJ2Lh69dYfZwka",
@@ -5967,11 +7033,12 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/1F1U8ssjF8uD2OjRoSssWO",
+                            spotify:
+                                "https://open.spotify.com/artist/1F1U8ssjF8uD2OjRoSssWO",
                         },
                         href: "https://api.spotify.com/v1/artists/1F1U8ssjF8uD2OjRoSssWO",
                         id: "1F1U8ssjF8uD2OjRoSssWO",
-                        name: "Interpreti dello spettacolo \"Bella Ciao\"",
+                        name: 'Interpreti dello spettacolo "Bella Ciao"',
                         type: "artist",
                         uri: "spotify:artist:1F1U8ssjF8uD2OjRoSssWO",
                     },
@@ -5984,7 +7051,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     isrc: "ITOOJ1300228",
                 },
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/0EayXisPHaulRoFgazbi0A",
+                    spotify:
+                        "https://open.spotify.com/track/0EayXisPHaulRoFgazbi0A",
                 },
                 href: "https://api.spotify.com/v1/tracks/0EayXisPHaulRoFgazbi0A",
                 id: "0EayXisPHaulRoFgazbi0A",
@@ -6005,7 +7073,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
+                                spotify:
+                                    "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
                             },
                             href: "https://api.spotify.com/v1/artists/53XhwfbYqKCa1cC15pYq2q",
                             id: "53XhwfbYqKCa1cC15pYq2q",
@@ -6014,9 +7083,21 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                             uri: "spotify:artist:53XhwfbYqKCa1cC15pYq2q",
                         },
                     ],
-                    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                    available_markets: [
+                        "AR",
+                        "AT",
+                        "AU",
+                        "BE",
+                        "BR",
+                        "CL",
+                        "CO",
+                        "CY",
+                        "CZ",
+                        "DE",
+                    ],
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/33pt9HBdGlAbRGBHQgsZsU",
+                        spotify:
+                            "https://open.spotify.com/album/33pt9HBdGlAbRGBHQgsZsU",
                     },
                     href: "https://api.spotify.com/v1/albums/33pt9HBdGlAbRGBHQgsZsU",
                     id: "33pt9HBdGlAbRGBHQgsZsU",
@@ -6046,7 +7127,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
+                            spotify:
+                                "https://open.spotify.com/artist/53XhwfbYqKCa1cC15pYq2q",
                         },
                         href: "https://api.spotify.com/v1/artists/53XhwfbYqKCa1cC15pYq2q",
                         id: "53XhwfbYqKCa1cC15pYq2q",
@@ -6055,7 +7137,18 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                         uri: "spotify:artist:53XhwfbYqKCa1cC15pYq2q",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 disc_number: 1,
                 duration_ms: 204346,
                 explicit: false,
@@ -6063,7 +7156,8 @@ const getSavedTracks: SpotifyApi.UsersSavedTracksResponse = {
                     isrc: "USUM71700626",
                 },
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/0pqnGHJpmpxLKifKRmU6WP",
+                    spotify:
+                        "https://open.spotify.com/track/0pqnGHJpmpxLKifKRmU6WP",
                 },
                 href: "https://api.spotify.com/v1/tracks/0pqnGHJpmpxLKifKRmU6WP",
                 id: "0pqnGHJpmpxLKifKRmU6WP",
@@ -6098,7 +7192,11 @@ const removeUsersTracks: SpotifyApi.RemoveUsersSavedTracksResponse = {};
  * GET /v1/me/tracks/contains?ids={ids}
  * https://developer.spotify.com/web-api/check-users-saved-tracks/
  */
-const checkUsersTracks: SpotifyApi.CheckUserSavedAlbumsResponse = [false, false, true];
+const checkUsersTracks: SpotifyApi.CheckUserSavedAlbumsResponse = [
+    false,
+    false,
+    true,
+];
 
 /**
  * Save albums for user
@@ -6125,7 +7223,8 @@ const usersSavedAlbums: SpotifyApi.UsersSavedAlbumsResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/58RMTlPJKbmpmVk1AmRK3h",
+                            spotify:
+                                "https://open.spotify.com/artist/58RMTlPJKbmpmVk1AmRK3h",
                         },
                         href: "https://api.spotify.com/v1/artists/58RMTlPJKbmpmVk1AmRK3h",
                         id: "58RMTlPJKbmpmVk1AmRK3h",
@@ -6134,7 +7233,18 @@ const usersSavedAlbums: SpotifyApi.UsersSavedAlbumsResponse = {
                         uri: "spotify:artist:58RMTlPJKbmpmVk1AmRK3h",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 copyrights: [
                     {
                         text: "(C) 2013 Soblue Music Group AB, Under exclusive license to Universal Music AB",
@@ -6149,7 +7259,8 @@ const usersSavedAlbums: SpotifyApi.UsersSavedAlbumsResponse = {
                     upc: "00602537623730",
                 },
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/5m4VYOPoIpkV0XgOiRKkWC",
+                    spotify:
+                        "https://open.spotify.com/album/5m4VYOPoIpkV0XgOiRKkWC",
                 },
                 genres: [],
                 href: "https://api.spotify.com/v1/albums/5m4VYOPoIpkV0XgOiRKkWC",
@@ -6183,7 +7294,8 @@ const usersSavedAlbums: SpotifyApi.UsersSavedAlbumsResponse = {
                             artists: [
                                 {
                                     external_urls: {
-                                        spotify: "https://open.spotify.com/artist/58RMTlPJKbmpmVk1AmRK3h",
+                                        spotify:
+                                            "https://open.spotify.com/artist/58RMTlPJKbmpmVk1AmRK3h",
                                     },
                                     href: "https://api.spotify.com/v1/artists/58RMTlPJKbmpmVk1AmRK3h",
                                     id: "58RMTlPJKbmpmVk1AmRK3h",
@@ -6193,7 +7305,8 @@ const usersSavedAlbums: SpotifyApi.UsersSavedAlbumsResponse = {
                                 },
                                 {
                                     external_urls: {
-                                        spotify: "https://open.spotify.com/artist/1l63szZeUpN1m87MOD1u7K",
+                                        spotify:
+                                            "https://open.spotify.com/artist/1l63szZeUpN1m87MOD1u7K",
                                     },
                                     href: "https://api.spotify.com/v1/artists/1l63szZeUpN1m87MOD1u7K",
                                     id: "1l63szZeUpN1m87MOD1u7K",
@@ -6203,7 +7316,8 @@ const usersSavedAlbums: SpotifyApi.UsersSavedAlbumsResponse = {
                                 },
                                 {
                                     external_urls: {
-                                        spotify: "https://open.spotify.com/artist/1VLf7Ncxb5Jga6eyd3jh6K",
+                                        spotify:
+                                            "https://open.spotify.com/artist/1VLf7Ncxb5Jga6eyd3jh6K",
                                     },
                                     href: "https://api.spotify.com/v1/artists/1VLf7Ncxb5Jga6eyd3jh6K",
                                     id: "1VLf7Ncxb5Jga6eyd3jh6K",
@@ -6212,17 +7326,30 @@ const usersSavedAlbums: SpotifyApi.UsersSavedAlbumsResponse = {
                                     uri: "spotify:artist:1VLf7Ncxb5Jga6eyd3jh6K",
                                 },
                             ],
-                            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                            available_markets: [
+                                "AR",
+                                "AT",
+                                "AU",
+                                "BE",
+                                "BR",
+                                "CL",
+                                "CO",
+                                "CY",
+                                "CZ",
+                                "DE",
+                            ],
                             disc_number: 1,
                             duration_ms: 170920,
                             explicit: false,
                             external_urls: {
-                                spotify: "https://open.spotify.com/track/3VNWq8rTnQG6fM1eldSpZ0",
+                                spotify:
+                                    "https://open.spotify.com/track/3VNWq8rTnQG6fM1eldSpZ0",
                             },
                             href: "https://api.spotify.com/v1/tracks/3VNWq8rTnQG6fM1eldSpZ0",
                             id: "3VNWq8rTnQG6fM1eldSpZ0",
                             name: "E.C.",
-                            preview_url: "https://p.scdn.co/mp3-preview/f95e0dba1a76b44fa2b52da2bc273d4f1c4126a5",
+                            preview_url:
+                                "https://p.scdn.co/mp3-preview/f95e0dba1a76b44fa2b52da2bc273d4f1c4126a5",
                             track_number: 1,
                             type: "track",
                             uri: "spotify:track:3VNWq8rTnQG6fM1eldSpZ0",
@@ -6231,7 +7358,8 @@ const usersSavedAlbums: SpotifyApi.UsersSavedAlbumsResponse = {
                             artists: [
                                 {
                                     external_urls: {
-                                        spotify: "https://open.spotify.com/artist/58RMTlPJKbmpmVk1AmRK3h",
+                                        spotify:
+                                            "https://open.spotify.com/artist/58RMTlPJKbmpmVk1AmRK3h",
                                     },
                                     href: "https://api.spotify.com/v1/artists/58RMTlPJKbmpmVk1AmRK3h",
                                     id: "58RMTlPJKbmpmVk1AmRK3h",
@@ -6240,17 +7368,32 @@ const usersSavedAlbums: SpotifyApi.UsersSavedAlbumsResponse = {
                                     uri: "spotify:artist:58RMTlPJKbmpmVk1AmRK3h",
                                 },
                             ],
-                            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE", "DK", "EE"],
+                            available_markets: [
+                                "AR",
+                                "AT",
+                                "AU",
+                                "BE",
+                                "BR",
+                                "CL",
+                                "CO",
+                                "CY",
+                                "CZ",
+                                "DE",
+                                "DK",
+                                "EE",
+                            ],
                             disc_number: 1,
                             duration_ms: 165946,
                             explicit: false,
                             external_urls: {
-                                spotify: "https://open.spotify.com/track/6ZrVKylVlxkaXHj42O0q2r",
+                                spotify:
+                                    "https://open.spotify.com/track/6ZrVKylVlxkaXHj42O0q2r",
                             },
                             href: "https://api.spotify.com/v1/tracks/6ZrVKylVlxkaXHj42O0q2r",
                             id: "6ZrVKylVlxkaXHj42O0q2r",
                             name: "Råknas - Radio Edit",
-                            preview_url: "https://p.scdn.co/mp3-preview/a7c9a4bfa9e346e3733e9d88076ad1ae409136fb",
+                            preview_url:
+                                "https://p.scdn.co/mp3-preview/a7c9a4bfa9e346e3733e9d88076ad1ae409136fb",
                             track_number: 13,
                             type: "track",
                             uri: "spotify:track:6ZrVKylVlxkaXHj42O0q2r",
@@ -6288,7 +7431,12 @@ const removeAlbumForUser: SpotifyApi.RemoveAlbumsForUserResponse = {};
  * DELETE /v1/me/albums/contains?ids={ids}
  * https://developer.spotify.com/web-api/check-users-saved-albums/
  */
-const checkUsersSavedAlbums: SpotifyApi.CheckUserSavedAlbumsResponse = [true, false, false, true];
+const checkUsersSavedAlbums: SpotifyApi.CheckUserSavedAlbumsResponse = [
+    true,
+    false,
+    false,
+    true,
+];
 
 /**
  * Get user's saved shows
@@ -6310,7 +7458,8 @@ const usersSavedShows: SpotifyApi.UsersSavedShowsResponse = {
                     "Explore the dark side of the Internet with host Jack Rhysider as he takes you on a journey through the chilling world of privacy hacks, data breaches, and cyber crime. The masterful criminal hackers who dwell on the dark side show us just how vulnerable we all are.",
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/show/4XPl3uEEL9hvqMkoZrzbx5",
+                    spotify:
+                        "https://open.spotify.com/show/4XPl3uEEL9hvqMkoZrzbx5",
                 },
                 href: "https://api.spotify.com/v1/shows/4XPl3uEEL9hvqMkoZrzbx5",
                 id: "4XPl3uEEL9hvqMkoZrzbx5",
@@ -6351,7 +7500,8 @@ const usersSavedShows: SpotifyApi.UsersSavedShowsResponse = {
                     "Fest & Flauschig mit Jan Böhmermann und Olli Schulz. Der preisgekrönte, verblüffend fabelhafte, grenzenlos fantastische Podcast für sie, ihn und es.",
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/show/1OLcQdw2PFDPG1jo3s0wbp",
+                    spotify:
+                        "https://open.spotify.com/show/1OLcQdw2PFDPG1jo3s0wbp",
                 },
                 href: "https://api.spotify.com/v1/shows/1OLcQdw2PFDPG1jo3s0wbp",
                 id: "1OLcQdw2PFDPG1jo3s0wbp",
@@ -6386,11 +7536,14 @@ const usersSavedShows: SpotifyApi.UsersSavedShowsResponse = {
             show: {
                 available_markets: ["AD", "AE"],
                 copyrights: [],
-                description: "A series about what it's really like to start a business.",
-                html_description: "A series about what it's really like to start a business.",
+                description:
+                    "A series about what it's really like to start a business.",
+                html_description:
+                    "A series about what it's really like to start a business.",
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/show/5CnDmMUG0S5bSSw612fs8C",
+                    spotify:
+                        "https://open.spotify.com/show/5CnDmMUG0S5bSSw612fs8C",
                 },
                 href: "https://api.spotify.com/v1/shows/5CnDmMUG0S5bSSw612fs8C",
                 id: "5CnDmMUG0S5bSSw612fs8C",
@@ -6464,13 +7617,15 @@ const usersSavedEpisodes: SpotifyApi.UsersSavedEpisodesResponse = {
         {
             added_at: "2021-08-08T18:10:00Z",
             episode: {
-                audio_preview_url: "https://p.scdn.co/mp3-preview/7e8f7a00f1425d495bcb992bae48a19c31342490",
+                audio_preview_url:
+                    "https://p.scdn.co/mp3-preview/7e8f7a00f1425d495bcb992bae48a19c31342490",
                 description:
                     "Följ med till Riddarhuset och hör om dråpliga motiv och billiga lösningar på husets drygt 2 300 vapensköldar som nu studerats. Och hör hur stormakten Sveriges krig finansierades av Frankrike.  Skelögda ugglor och halshuggna troll är några av motiven på de drygt 2&nbsp;300 vapensköldar som hänger i Riddarhuset i Stockholm. Den svenska adelns grafiska profiler har nu hamnat under luppen när heraldikern Magnus Bäckmark som förste forskare skärskådat detta bortglömda kulturarvs estetik och historia. Vetenskapsradion Historia följer med honom till Riddarhuset för att fascineras av både vackra och tokfula motiv. Dessutom om att den svenska stormaktstiden nu måste omvärderas efter att historikern Svante Norrhem undersökt de enorma summor som Sverige erhöll av Frankrike. Under närmare 170 år var Sverige närmast en klientstat till Frankrike, där närmare 20 procent av svensk ekonomi bestod av franska subsidier. Tobias Svanelid undersöker hur förhållandet påverkade länderna och hur mycket av den svenska stormaktstiden som egentligen var fransk.",
                 duration_ms: 2685023,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/episode/77o6BIVlYM3msb4MMIL1jH",
+                    spotify:
+                        "https://open.spotify.com/episode/77o6BIVlYM3msb4MMIL1jH",
                 },
                 href: "https://api.spotify.com/v1/episodes/77o6BIVlYM3msb4MMIL1jH",
                 html_description:
@@ -6500,13 +7655,27 @@ const usersSavedEpisodes: SpotifyApi.UsersSavedEpisodesResponse = {
                 release_date: "2019-09-10",
                 release_date_precision: "day",
                 show: {
-                    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                    available_markets: [
+                        "AR",
+                        "AT",
+                        "AU",
+                        "BE",
+                        "BR",
+                        "CL",
+                        "CO",
+                        "CY",
+                        "CZ",
+                        "DE",
+                    ],
                     copyrights: [],
-                    description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
-                    html_description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
+                    description:
+                        "Vi är där historien är. Ansvarig utgivare: Nina Glans",
+                    html_description:
+                        "Vi är där historien är. Ansvarig utgivare: Nina Glans",
                     explicit: false,
                     external_urls: {
-                        spotify: "https://open.spotify.com/show/38bS44xjbVVZ3No3ByF1dJ",
+                        spotify:
+                            "https://open.spotify.com/show/38bS44xjbVVZ3No3ByF1dJ",
                     },
                     href: "https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ",
                     id: "38bS44xjbVVZ3No3ByF1dJ",
@@ -6542,13 +7711,15 @@ const usersSavedEpisodes: SpotifyApi.UsersSavedEpisodesResponse = {
         {
             added_at: "2021-06-20T22:10:29Z",
             episode: {
-                audio_preview_url: "https://p.scdn.co/mp3-preview/83bc7f2d40e850582a4ca118b33c256358de06ff",
+                audio_preview_url:
+                    "https://p.scdn.co/mp3-preview/83bc7f2d40e850582a4ca118b33c256358de06ff",
                 description:
                     "Följ med Tobias Svanelid till Sveriges äldsta tegelkyrka, till Edsleskog mitt i den dalsländska granskogen, där ett religiöst skrytbygge skulle resas över ett skändligt brott.  I Edsleskog i Dalsland gräver arkeologerna nu ut vad som en gång verkar ha varit en av Sveriges största medeltidskyrkor, och kanske också den äldsta som byggts i tegel, 1200-talets high-tech-material. Tobias Svanelid reser dit för att höra historien om den märkliga och bortglömda kyrkan som grundlades på platsen för ett prästmord och dessutom kan ha varit Skarabiskopens försök att lägga beslag på det vilda Dalsland. Dessutom om sjudagarsveckan  idag ett välkänt koncept runt hela världen, men hur gammal är egentligen veckans historia? Dick Harrison vet svaret.",
                 duration_ms: 2685023,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/episode/0Q86acNRm6V9GYx55SXKwf",
+                    spotify:
+                        "https://open.spotify.com/episode/0Q86acNRm6V9GYx55SXKwf",
                 },
                 href: "https://api.spotify.com/v1/episodes/0Q86acNRm6V9GYx55SXKwf",
                 html_description:
@@ -6578,13 +7749,27 @@ const usersSavedEpisodes: SpotifyApi.UsersSavedEpisodesResponse = {
                 release_date: "2019-09-03",
                 release_date_precision: "day",
                 show: {
-                    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                    available_markets: [
+                        "AR",
+                        "AT",
+                        "AU",
+                        "BE",
+                        "BR",
+                        "CL",
+                        "CO",
+                        "CY",
+                        "CZ",
+                        "DE",
+                    ],
                     copyrights: [],
-                    description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
-                    html_description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
+                    description:
+                        "Vi är där historien är. Ansvarig utgivare: Nina Glans",
+                    html_description:
+                        "Vi är där historien är. Ansvarig utgivare: Nina Glans",
                     explicit: false,
                     external_urls: {
-                        spotify: "https://open.spotify.com/show/38bS44xjbVVZ3No3ByF1dJ",
+                        spotify:
+                            "https://open.spotify.com/show/38bS44xjbVVZ3No3ByF1dJ",
                     },
                     href: "https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ",
                     id: "38bS44xjbVVZ3No3ByF1dJ",
@@ -6647,7 +7832,10 @@ const removeEpisodesForUser: SpotifyApi.RemoveEpisodesForUserResponse = {};
  * GET /v1/me/shows/episodes
  * https://developer.spotify.com/documentation/web-api/reference/#/operations/check-users-saved-episodes
  */
-const checkEpisodesForUser: SpotifyApi.CheckUserSavedEpisodesResponse = [true, false];
+const checkEpisodesForUser: SpotifyApi.CheckUserSavedEpisodesResponse = [
+    true,
+    false,
+];
 
 /**
  * Get a User’s Top Artists and Tracks (Note: This is only Artists)
@@ -6659,7 +7847,8 @@ const usersTopArtists: SpotifyApi.UsersTopArtistsResponse = {
     items: [
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/3qqhR4mOQZP2t2I6QmU8lE",
+                spotify:
+                    "https://open.spotify.com/artist/3qqhR4mOQZP2t2I6QmU8lE",
             },
             followers: {
                 href: null,
@@ -6692,13 +7881,19 @@ const usersTopArtists: SpotifyApi.UsersTopArtistsResponse = {
         },
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/5CuU6SRJjbbZL926nSGGxX",
+                spotify:
+                    "https://open.spotify.com/artist/5CuU6SRJjbbZL926nSGGxX",
             },
             followers: {
                 href: null,
                 total: 18429,
             },
-            genres: ["abstract hip hop", "alternative hip hop", "escape room", "underground hip hop"],
+            genres: [
+                "abstract hip hop",
+                "alternative hip hop",
+                "escape room",
+                "underground hip hop",
+            ],
             href: "https://api.spotify.com/v1/artists/5CuU6SRJjbbZL926nSGGxX",
             id: "5CuU6SRJjbbZL926nSGGxX",
             images: [
@@ -6752,7 +7947,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/5FKchcZpQOkqFvXBj1aCvb",
+                            spotify:
+                                "https://open.spotify.com/artist/5FKchcZpQOkqFvXBj1aCvb",
                         },
                         href: "https://api.spotify.com/v1/artists/5FKchcZpQOkqFvXBj1aCvb",
                         id: "5FKchcZpQOkqFvXBj1aCvb",
@@ -6761,9 +7957,21 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                         uri: "spotify:artist:5FKchcZpQOkqFvXBj1aCvb",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/0CKyKbUSlqEeNPmRrrENEH",
+                    spotify:
+                        "https://open.spotify.com/album/0CKyKbUSlqEeNPmRrrENEH",
                 },
                 href: "https://api.spotify.com/v1/albums/0CKyKbUSlqEeNPmRrrENEH",
                 id: "0CKyKbUSlqEeNPmRrrENEH",
@@ -6793,7 +8001,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/5FKchcZpQOkqFvXBj1aCvb",
+                        spotify:
+                            "https://open.spotify.com/artist/5FKchcZpQOkqFvXBj1aCvb",
                     },
                     href: "https://api.spotify.com/v1/artists/5FKchcZpQOkqFvXBj1aCvb",
                     id: "5FKchcZpQOkqFvXBj1aCvb",
@@ -6803,7 +8012,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 },
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/45eNHdiiabvmbp4erw26rg",
+                        spotify:
+                            "https://open.spotify.com/artist/45eNHdiiabvmbp4erw26rg",
                     },
                     href: "https://api.spotify.com/v1/artists/45eNHdiiabvmbp4erw26rg",
                     id: "45eNHdiiabvmbp4erw26rg",
@@ -6813,7 +8023,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 },
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/2D03NzGIqn32zlCG1DViBu",
+                        spotify:
+                            "https://open.spotify.com/artist/2D03NzGIqn32zlCG1DViBu",
                     },
                     href: "https://api.spotify.com/v1/artists/2D03NzGIqn32zlCG1DViBu",
                     id: "2D03NzGIqn32zlCG1DViBu",
@@ -6822,7 +8033,18 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                     uri: "spotify:artist:2D03NzGIqn32zlCG1DViBu",
                 },
             ],
-            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+            available_markets: [
+                "AR",
+                "AT",
+                "AU",
+                "BE",
+                "BR",
+                "CL",
+                "CO",
+                "CY",
+                "CZ",
+                "DE",
+            ],
             disc_number: 1,
             duration_ms: 295890,
             explicit: false,
@@ -6830,7 +8052,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 isrc: "NLRD51831603",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/track/7nEE5RihPZU6L5LZqDeEZD",
+                spotify:
+                    "https://open.spotify.com/track/7nEE5RihPZU6L5LZqDeEZD",
             },
             href: "https://api.spotify.com/v1/tracks/7nEE5RihPZU6L5LZqDeEZD",
             id: "7nEE5RihPZU6L5LZqDeEZD",
@@ -6849,7 +8072,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/58lV9VcRSjABbAbfWS6skp",
+                            spotify:
+                                "https://open.spotify.com/artist/58lV9VcRSjABbAbfWS6skp",
                         },
                         href: "https://api.spotify.com/v1/artists/58lV9VcRSjABbAbfWS6skp",
                         id: "58lV9VcRSjABbAbfWS6skp",
@@ -6858,9 +8082,21 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                         uri: "spotify:artist:58lV9VcRSjABbAbfWS6skp",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/3AkIHz2xtJzBOGopjuVWxR",
+                    spotify:
+                        "https://open.spotify.com/album/3AkIHz2xtJzBOGopjuVWxR",
                 },
                 href: "https://api.spotify.com/v1/albums/3AkIHz2xtJzBOGopjuVWxR",
                 id: "3AkIHz2xtJzBOGopjuVWxR",
@@ -6890,7 +8126,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/58lV9VcRSjABbAbfWS6skp",
+                        spotify:
+                            "https://open.spotify.com/artist/58lV9VcRSjABbAbfWS6skp",
                     },
                     href: "https://api.spotify.com/v1/artists/58lV9VcRSjABbAbfWS6skp",
                     id: "58lV9VcRSjABbAbfWS6skp",
@@ -6899,7 +8136,18 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                     uri: "spotify:artist:58lV9VcRSjABbAbfWS6skp",
                 },
             ],
-            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+            available_markets: [
+                "AR",
+                "AT",
+                "AU",
+                "BE",
+                "BR",
+                "CL",
+                "CO",
+                "CY",
+                "CZ",
+                "DE",
+            ],
             disc_number: 1,
             duration_ms: 197493,
             explicit: false,
@@ -6907,7 +8155,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 isrc: "USUM71509824",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/track/0UseVSSLnJx2VvsSv5WIhX",
+                spotify:
+                    "https://open.spotify.com/track/0UseVSSLnJx2VvsSv5WIhX",
             },
             href: "https://api.spotify.com/v1/tracks/0UseVSSLnJx2VvsSv5WIhX",
             id: "0UseVSSLnJx2VvsSv5WIhX",
@@ -6926,7 +8175,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/58lV9VcRSjABbAbfWS6skp",
+                            spotify:
+                                "https://open.spotify.com/artist/58lV9VcRSjABbAbfWS6skp",
                         },
                         href: "https://api.spotify.com/v1/artists/58lV9VcRSjABbAbfWS6skp",
                         id: "58lV9VcRSjABbAbfWS6skp",
@@ -6935,9 +8185,21 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                         uri: "spotify:artist:58lV9VcRSjABbAbfWS6skp",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/1UUOBzIHw0noiRGRpbt3sz",
+                    spotify:
+                        "https://open.spotify.com/album/1UUOBzIHw0noiRGRpbt3sz",
                 },
                 href: "https://api.spotify.com/v1/albums/1UUOBzIHw0noiRGRpbt3sz",
                 id: "1UUOBzIHw0noiRGRpbt3sz",
@@ -6967,7 +8229,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/58lV9VcRSjABbAbfWS6skp",
+                        spotify:
+                            "https://open.spotify.com/artist/58lV9VcRSjABbAbfWS6skp",
                     },
                     href: "https://api.spotify.com/v1/artists/58lV9VcRSjABbAbfWS6skp",
                     id: "58lV9VcRSjABbAbfWS6skp",
@@ -6976,7 +8239,18 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                     uri: "spotify:artist:58lV9VcRSjABbAbfWS6skp",
                 },
             ],
-            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+            available_markets: [
+                "AR",
+                "AT",
+                "AU",
+                "BE",
+                "BR",
+                "CL",
+                "CO",
+                "CY",
+                "CZ",
+                "DE",
+            ],
             disc_number: 1,
             duration_ms: 230666,
             explicit: false,
@@ -6984,7 +8258,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 isrc: "USPR39402231",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/track/0X1sqQ652p1sceKM2nJlIJ",
+                spotify:
+                    "https://open.spotify.com/track/0X1sqQ652p1sceKM2nJlIJ",
             },
             href: "https://api.spotify.com/v1/tracks/0X1sqQ652p1sceKM2nJlIJ",
             id: "0X1sqQ652p1sceKM2nJlIJ",
@@ -7003,7 +8278,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of",
+                            spotify:
+                                "https://open.spotify.com/artist/0LyfQWJT6nXafLPZqxe9Of",
                         },
                         href: "https://api.spotify.com/v1/artists/0LyfQWJT6nXafLPZqxe9Of",
                         id: "0LyfQWJT6nXafLPZqxe9Of",
@@ -7014,7 +8290,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 ],
                 available_markets: ["RO"],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/4fNKXos9UDVdjf9bCwlize",
+                    spotify:
+                        "https://open.spotify.com/album/4fNKXos9UDVdjf9bCwlize",
                 },
                 href: "https://api.spotify.com/v1/albums/4fNKXos9UDVdjf9bCwlize",
                 id: "4fNKXos9UDVdjf9bCwlize",
@@ -7044,7 +8321,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/7f5Zgnp2spUuuzKplmRkt7",
+                        spotify:
+                            "https://open.spotify.com/artist/7f5Zgnp2spUuuzKplmRkt7",
                     },
                     href: "https://api.spotify.com/v1/artists/7f5Zgnp2spUuuzKplmRkt7",
                     id: "7f5Zgnp2spUuuzKplmRkt7",
@@ -7054,7 +8332,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 },
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/5TgQ66WuWkoQ2xYxaSTnVP",
+                        spotify:
+                            "https://open.spotify.com/artist/5TgQ66WuWkoQ2xYxaSTnVP",
                     },
                     href: "https://api.spotify.com/v1/artists/5TgQ66WuWkoQ2xYxaSTnVP",
                     id: "5TgQ66WuWkoQ2xYxaSTnVP",
@@ -7071,7 +8350,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 isrc: "NLF711705510",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/track/1xEUpWv6oWv18Nel5zVXsr",
+                spotify:
+                    "https://open.spotify.com/track/1xEUpWv6oWv18Nel5zVXsr",
             },
             href: "https://api.spotify.com/v1/tracks/1xEUpWv6oWv18Nel5zVXsr",
             id: "1xEUpWv6oWv18Nel5zVXsr",
@@ -7090,7 +8370,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH",
+                            spotify:
+                                "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH",
                         },
                         href: "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
                         id: "7Ln80lUS6He07XvHI8qqHH",
@@ -7099,9 +8380,21 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                         uri: "spotify:artist:7Ln80lUS6He07XvHI8qqHH",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/78bpIziExqiI9qztvNFlQu",
+                    spotify:
+                        "https://open.spotify.com/album/78bpIziExqiI9qztvNFlQu",
                 },
                 href: "https://api.spotify.com/v1/albums/78bpIziExqiI9qztvNFlQu",
                 id: "78bpIziExqiI9qztvNFlQu",
@@ -7131,7 +8424,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH",
+                        spotify:
+                            "https://open.spotify.com/artist/7Ln80lUS6He07XvHI8qqHH",
                     },
                     href: "https://api.spotify.com/v1/artists/7Ln80lUS6He07XvHI8qqHH",
                     id: "7Ln80lUS6He07XvHI8qqHH",
@@ -7140,7 +8434,18 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                     uri: "spotify:artist:7Ln80lUS6He07XvHI8qqHH",
                 },
             ],
-            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+            available_markets: [
+                "AR",
+                "AT",
+                "AU",
+                "BE",
+                "BR",
+                "CL",
+                "CO",
+                "CY",
+                "CZ",
+                "DE",
+            ],
             disc_number: 1,
             duration_ms: 272394,
             explicit: false,
@@ -7148,7 +8453,8 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
                 isrc: "GBCEL1300362",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/track/5FVd6KXrgO9B3JPmC8OPst",
+                spotify:
+                    "https://open.spotify.com/track/5FVd6KXrgO9B3JPmC8OPst",
             },
             href: "https://api.spotify.com/v1/tracks/5FVd6KXrgO9B3JPmC8OPst",
             id: "5FVd6KXrgO9B3JPmC8OPst",
@@ -7175,24 +8481,254 @@ const usersTopTracks: SpotifyApi.UsersTopTracksResponse = {
  * GET /v1/recommendations
  * https://developer.spotify.com/get-recommendations/
  */
-const recommendationsBasedOnSeeds: SpotifyApi.RecommendationsFromSeedsResponse = {
-    tracks: [
-        {
-            "album": {
-                "album_type": "SINGLE",
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/7jy3rLJdDQY21OgRLCZ9sD",
+const recommendationsBasedOnSeeds: SpotifyApi.RecommendationsFromSeedsResponse =
+    {
+        tracks: [
+            {
+                album: {
+                    album_type: "SINGLE",
+                    artists: [
+                        {
+                            external_urls: {
+                                spotify:
+                                    "https://open.spotify.com/artist/7jy3rLJdDQY21OgRLCZ9sD",
+                            },
+                            href: "https://api.spotify.com/v1/artists/7jy3rLJdDQY21OgRLCZ9sD",
+                            id: "7jy3rLJdDQY21OgRLCZ9sD",
+                            name: "Foo Fighters",
+                            type: "artist",
+                            uri: "spotify:artist:7jy3rLJdDQY21OgRLCZ9sD",
                         },
-                        "href": "https://api.spotify.com/v1/artists/7jy3rLJdDQY21OgRLCZ9sD",
-                        "id": "7jy3rLJdDQY21OgRLCZ9sD",
-                        "name": "Foo Fighters",
-                        "type": "artist",
-                        "uri": "spotify:artist:7jy3rLJdDQY21OgRLCZ9sD",
+                    ],
+                    available_markets: [
+                        "AD",
+                        "AE",
+                        "AG",
+                        "AL",
+                        "AM",
+                        "AO",
+                        "AR",
+                        "AT",
+                        "AU",
+                        "AZ",
+                        "BA",
+                        "BB",
+                        "BD",
+                        "BE",
+                        "BF",
+                        "BG",
+                        "BH",
+                        "BI",
+                        "BJ",
+                        "BN",
+                        "BO",
+                        "BR",
+                        "BS",
+                        "BT",
+                        "BW",
+                        "BY",
+                        "BZ",
+                        "CA",
+                        "CD",
+                        "CG",
+                        "CH",
+                        "CI",
+                        "CL",
+                        "CM",
+                        "CO",
+                        "CR",
+                        "CV",
+                        "CW",
+                        "CY",
+                        "CZ",
+                        "DE",
+                        "DJ",
+                        "DK",
+                        "DM",
+                        "DO",
+                        "DZ",
+                        "EC",
+                        "EE",
+                        "EG",
+                        "ES",
+                        "FI",
+                        "FJ",
+                        "FM",
+                        "FR",
+                        "GA",
+                        "GB",
+                        "GD",
+                        "GE",
+                        "GH",
+                        "GM",
+                        "GN",
+                        "GQ",
+                        "GR",
+                        "GT",
+                        "GW",
+                        "GY",
+                        "HK",
+                        "HN",
+                        "HR",
+                        "HT",
+                        "HU",
+                        "ID",
+                        "IE",
+                        "IL",
+                        "IN",
+                        "IQ",
+                        "IS",
+                        "IT",
+                        "JM",
+                        "JO",
+                        "JP",
+                        "KE",
+                        "KG",
+                        "KH",
+                        "KI",
+                        "KM",
+                        "KN",
+                        "KR",
+                        "KW",
+                        "KZ",
+                        "LA",
+                        "LB",
+                        "LC",
+                        "LI",
+                        "LK",
+                        "LR",
+                        "LS",
+                        "LT",
+                        "LU",
+                        "LV",
+                        "LY",
+                        "MA",
+                        "MC",
+                        "MD",
+                        "ME",
+                        "MG",
+                        "MH",
+                        "MK",
+                        "ML",
+                        "MN",
+                        "MO",
+                        "MR",
+                        "MT",
+                        "MU",
+                        "MV",
+                        "MW",
+                        "MX",
+                        "MY",
+                        "MZ",
+                        "NA",
+                        "NE",
+                        "NG",
+                        "NI",
+                        "NL",
+                        "NO",
+                        "NP",
+                        "NR",
+                        "NZ",
+                        "OM",
+                        "PA",
+                        "PE",
+                        "PG",
+                        "PH",
+                        "PK",
+                        "PL",
+                        "PS",
+                        "PT",
+                        "PW",
+                        "PY",
+                        "QA",
+                        "RO",
+                        "RS",
+                        "RW",
+                        "SA",
+                        "SB",
+                        "SC",
+                        "SE",
+                        "SG",
+                        "SI",
+                        "SK",
+                        "SL",
+                        "SM",
+                        "SN",
+                        "SR",
+                        "ST",
+                        "SV",
+                        "SZ",
+                        "TD",
+                        "TG",
+                        "TH",
+                        "TJ",
+                        "TL",
+                        "TN",
+                        "TO",
+                        "TR",
+                        "TT",
+                        "TV",
+                        "TW",
+                        "TZ",
+                        "UA",
+                        "UG",
+                        "US",
+                        "UY",
+                        "UZ",
+                        "VC",
+                        "VE",
+                        "VN",
+                        "VU",
+                        "WS",
+                        "XK",
+                        "ZA",
+                        "ZM",
+                        "ZW",
+                    ],
+                    external_urls: {
+                        spotify:
+                            "https://open.spotify.com/album/6wGcuJq8QjSeoYMJWgW7Wo",
+                    },
+                    href: "https://api.spotify.com/v1/albums/6wGcuJq8QjSeoYMJWgW7Wo",
+                    id: "6wGcuJq8QjSeoYMJWgW7Wo",
+                    images: [
+                        {
+                            height: 640,
+                            url: "https://i.scdn.co/image/ab67616d0000b273afbc7f53bedd56843c7dc239",
+                            width: 640,
+                        },
+                        {
+                            height: 300,
+                            url: "https://i.scdn.co/image/ab67616d00001e02afbc7f53bedd56843c7dc239",
+                            width: 300,
+                        },
+                        {
+                            height: 64,
+                            url: "https://i.scdn.co/image/ab67616d00004851afbc7f53bedd56843c7dc239",
+                            width: 64,
+                        },
+                    ],
+                    name: "Saint Cecilia EP",
+                    release_date: "2015-11-23",
+                    release_date_precision: "day",
+                    total_tracks: 5,
+                    type: "album",
+                    uri: "spotify:album:6wGcuJq8QjSeoYMJWgW7Wo",
+                },
+                artists: [
+                    {
+                        external_urls: {
+                            spotify:
+                                "https://open.spotify.com/artist/7jy3rLJdDQY21OgRLCZ9sD",
+                        },
+                        href: "https://api.spotify.com/v1/artists/7jy3rLJdDQY21OgRLCZ9sD",
+                        id: "7jy3rLJdDQY21OgRLCZ9sD",
+                        name: "Foo Fighters",
+                        type: "artist",
+                        uri: "spotify:artist:7jy3rLJdDQY21OgRLCZ9sD",
                     },
                 ],
-                "available_markets": [
+                available_markets: [
                     "AD",
                     "AE",
                     "AG",
@@ -7377,268 +8913,272 @@ const recommendationsBasedOnSeeds: SpotifyApi.RecommendationsFromSeedsResponse =
                     "ZM",
                     "ZW",
                 ],
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/album/6wGcuJq8QjSeoYMJWgW7Wo",
+                disc_number: 1,
+                duration_ms: 221666,
+                explicit: false,
+                external_ids: {
+                    isrc: "USRW31500013",
                 },
-                "href": "https://api.spotify.com/v1/albums/6wGcuJq8QjSeoYMJWgW7Wo",
-                "id": "6wGcuJq8QjSeoYMJWgW7Wo",
-                "images": [
-                    {
-                        "height": 640,
-                        "url": "https://i.scdn.co/image/ab67616d0000b273afbc7f53bedd56843c7dc239",
-                        "width": 640,
-                    },
-                    {
-                        "height": 300,
-                        "url": "https://i.scdn.co/image/ab67616d00001e02afbc7f53bedd56843c7dc239",
-                        "width": 300,
-                    },
-                    {
-                        "height": 64,
-                        "url": "https://i.scdn.co/image/ab67616d00004851afbc7f53bedd56843c7dc239",
-                        "width": 64,
-                    },
-                ],
-                "name": "Saint Cecilia EP",
-                "release_date": "2015-11-23",
-                "release_date_precision": "day",
-                "total_tracks": 5,
-                "type": "album",
-                "uri": "spotify:album:6wGcuJq8QjSeoYMJWgW7Wo",
-            },
-            "artists": [
-                {
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/artist/7jy3rLJdDQY21OgRLCZ9sD",
-                    },
-                    "href": "https://api.spotify.com/v1/artists/7jy3rLJdDQY21OgRLCZ9sD",
-                    "id": "7jy3rLJdDQY21OgRLCZ9sD",
-                    "name": "Foo Fighters",
-                    "type": "artist",
-                    "uri": "spotify:artist:7jy3rLJdDQY21OgRLCZ9sD",
+                external_urls: {
+                    spotify:
+                        "https://open.spotify.com/track/7bdUH0npz854dv3plG8ieT",
                 },
-            ],
-            "available_markets": [
-                "AD",
-                "AE",
-                "AG",
-                "AL",
-                "AM",
-                "AO",
-                "AR",
-                "AT",
-                "AU",
-                "AZ",
-                "BA",
-                "BB",
-                "BD",
-                "BE",
-                "BF",
-                "BG",
-                "BH",
-                "BI",
-                "BJ",
-                "BN",
-                "BO",
-                "BR",
-                "BS",
-                "BT",
-                "BW",
-                "BY",
-                "BZ",
-                "CA",
-                "CD",
-                "CG",
-                "CH",
-                "CI",
-                "CL",
-                "CM",
-                "CO",
-                "CR",
-                "CV",
-                "CW",
-                "CY",
-                "CZ",
-                "DE",
-                "DJ",
-                "DK",
-                "DM",
-                "DO",
-                "DZ",
-                "EC",
-                "EE",
-                "EG",
-                "ES",
-                "FI",
-                "FJ",
-                "FM",
-                "FR",
-                "GA",
-                "GB",
-                "GD",
-                "GE",
-                "GH",
-                "GM",
-                "GN",
-                "GQ",
-                "GR",
-                "GT",
-                "GW",
-                "GY",
-                "HK",
-                "HN",
-                "HR",
-                "HT",
-                "HU",
-                "ID",
-                "IE",
-                "IL",
-                "IN",
-                "IQ",
-                "IS",
-                "IT",
-                "JM",
-                "JO",
-                "JP",
-                "KE",
-                "KG",
-                "KH",
-                "KI",
-                "KM",
-                "KN",
-                "KR",
-                "KW",
-                "KZ",
-                "LA",
-                "LB",
-                "LC",
-                "LI",
-                "LK",
-                "LR",
-                "LS",
-                "LT",
-                "LU",
-                "LV",
-                "LY",
-                "MA",
-                "MC",
-                "MD",
-                "ME",
-                "MG",
-                "MH",
-                "MK",
-                "ML",
-                "MN",
-                "MO",
-                "MR",
-                "MT",
-                "MU",
-                "MV",
-                "MW",
-                "MX",
-                "MY",
-                "MZ",
-                "NA",
-                "NE",
-                "NG",
-                "NI",
-                "NL",
-                "NO",
-                "NP",
-                "NR",
-                "NZ",
-                "OM",
-                "PA",
-                "PE",
-                "PG",
-                "PH",
-                "PK",
-                "PL",
-                "PS",
-                "PT",
-                "PW",
-                "PY",
-                "QA",
-                "RO",
-                "RS",
-                "RW",
-                "SA",
-                "SB",
-                "SC",
-                "SE",
-                "SG",
-                "SI",
-                "SK",
-                "SL",
-                "SM",
-                "SN",
-                "SR",
-                "ST",
-                "SV",
-                "SZ",
-                "TD",
-                "TG",
-                "TH",
-                "TJ",
-                "TL",
-                "TN",
-                "TO",
-                "TR",
-                "TT",
-                "TV",
-                "TW",
-                "TZ",
-                "UA",
-                "UG",
-                "US",
-                "UY",
-                "UZ",
-                "VC",
-                "VE",
-                "VN",
-                "VU",
-                "WS",
-                "XK",
-                "ZA",
-                "ZM",
-                "ZW",
-            ],
-            "disc_number": 1,
-            "duration_ms": 221666,
-            "explicit": false,
-            "external_ids": {
-                "isrc": "USRW31500013",
+                href: "https://api.spotify.com/v1/tracks/7bdUH0npz854dv3plG8ieT",
+                id: "7bdUH0npz854dv3plG8ieT",
+                is_local: false,
+                name: "Saint Cecilia",
+                popularity: 56,
+                preview_url:
+                    "https://p.scdn.co/mp3-preview/0db593456f130f7431d4f081d58353c9f6bde7fa?cid=38402ac25609445a89ae62d7a0d114d8",
+                track_number: 1,
+                type: "track",
+                uri: "spotify:track:7bdUH0npz854dv3plG8ieT",
             },
-            "external_urls": {
-                "spotify": "https://open.spotify.com/track/7bdUH0npz854dv3plG8ieT",
-            },
-            "href": "https://api.spotify.com/v1/tracks/7bdUH0npz854dv3plG8ieT",
-            "id": "7bdUH0npz854dv3plG8ieT",
-            "is_local": false,
-            "name": "Saint Cecilia",
-            "popularity": 56,
-            "preview_url":
-                "https://p.scdn.co/mp3-preview/0db593456f130f7431d4f081d58353c9f6bde7fa?cid=38402ac25609445a89ae62d7a0d114d8",
-            "track_number": 1,
-            "type": "track",
-            "uri": "spotify:track:7bdUH0npz854dv3plG8ieT",
-        },
-        {
-            "album": {
-                "album_type": "ALBUM",
-                "artists": [
-                    {
-                        "external_urls": {
-                            "spotify": "https://open.spotify.com/artist/6olE6TJLqED3rqDCT0FyPh",
+            {
+                album: {
+                    album_type: "ALBUM",
+                    artists: [
+                        {
+                            external_urls: {
+                                spotify:
+                                    "https://open.spotify.com/artist/6olE6TJLqED3rqDCT0FyPh",
+                            },
+                            href: "https://api.spotify.com/v1/artists/6olE6TJLqED3rqDCT0FyPh",
+                            id: "6olE6TJLqED3rqDCT0FyPh",
+                            name: "Nirvana",
+                            type: "artist",
+                            uri: "spotify:artist:6olE6TJLqED3rqDCT0FyPh",
                         },
-                        "href": "https://api.spotify.com/v1/artists/6olE6TJLqED3rqDCT0FyPh",
-                        "id": "6olE6TJLqED3rqDCT0FyPh",
-                        "name": "Nirvana",
-                        "type": "artist",
-                        "uri": "spotify:artist:6olE6TJLqED3rqDCT0FyPh",
+                    ],
+                    available_markets: [
+                        "AD",
+                        "AE",
+                        "AG",
+                        "AL",
+                        "AM",
+                        "AO",
+                        "AR",
+                        "AT",
+                        "AU",
+                        "AZ",
+                        "BA",
+                        "BB",
+                        "BD",
+                        "BE",
+                        "BF",
+                        "BG",
+                        "BH",
+                        "BI",
+                        "BJ",
+                        "BN",
+                        "BO",
+                        "BR",
+                        "BS",
+                        "BT",
+                        "BW",
+                        "BY",
+                        "BZ",
+                        "CA",
+                        "CD",
+                        "CG",
+                        "CH",
+                        "CI",
+                        "CL",
+                        "CM",
+                        "CO",
+                        "CR",
+                        "CV",
+                        "CW",
+                        "CY",
+                        "CZ",
+                        "DE",
+                        "DJ",
+                        "DK",
+                        "DM",
+                        "DO",
+                        "DZ",
+                        "EC",
+                        "EE",
+                        "EG",
+                        "ES",
+                        "FI",
+                        "FJ",
+                        "FM",
+                        "FR",
+                        "GA",
+                        "GB",
+                        "GD",
+                        "GE",
+                        "GH",
+                        "GM",
+                        "GN",
+                        "GQ",
+                        "GR",
+                        "GT",
+                        "GW",
+                        "GY",
+                        "HK",
+                        "HN",
+                        "HR",
+                        "HT",
+                        "HU",
+                        "ID",
+                        "IE",
+                        "IL",
+                        "IN",
+                        "IQ",
+                        "IS",
+                        "IT",
+                        "JM",
+                        "JO",
+                        "JP",
+                        "KE",
+                        "KG",
+                        "KH",
+                        "KI",
+                        "KM",
+                        "KN",
+                        "KR",
+                        "KW",
+                        "KZ",
+                        "LA",
+                        "LB",
+                        "LC",
+                        "LI",
+                        "LK",
+                        "LR",
+                        "LS",
+                        "LT",
+                        "LU",
+                        "LV",
+                        "LY",
+                        "MA",
+                        "MC",
+                        "MD",
+                        "ME",
+                        "MG",
+                        "MH",
+                        "MK",
+                        "ML",
+                        "MN",
+                        "MO",
+                        "MR",
+                        "MT",
+                        "MU",
+                        "MV",
+                        "MW",
+                        "MX",
+                        "MY",
+                        "MZ",
+                        "NA",
+                        "NE",
+                        "NG",
+                        "NI",
+                        "NL",
+                        "NO",
+                        "NP",
+                        "NR",
+                        "NZ",
+                        "OM",
+                        "PA",
+                        "PE",
+                        "PG",
+                        "PH",
+                        "PK",
+                        "PL",
+                        "PS",
+                        "PT",
+                        "PW",
+                        "PY",
+                        "QA",
+                        "RO",
+                        "RS",
+                        "RW",
+                        "SA",
+                        "SB",
+                        "SC",
+                        "SE",
+                        "SG",
+                        "SI",
+                        "SK",
+                        "SL",
+                        "SM",
+                        "SN",
+                        "SR",
+                        "ST",
+                        "SV",
+                        "SZ",
+                        "TD",
+                        "TG",
+                        "TH",
+                        "TJ",
+                        "TL",
+                        "TN",
+                        "TO",
+                        "TR",
+                        "TT",
+                        "TV",
+                        "TW",
+                        "TZ",
+                        "UA",
+                        "UG",
+                        "US",
+                        "UY",
+                        "UZ",
+                        "VC",
+                        "VE",
+                        "VN",
+                        "VU",
+                        "WS",
+                        "XK",
+                        "ZA",
+                        "ZM",
+                        "ZW",
+                    ],
+                    external_urls: {
+                        spotify:
+                            "https://open.spotify.com/album/5zBPRXCAc801vyHWoRurNZ",
+                    },
+                    href: "https://api.spotify.com/v1/albums/5zBPRXCAc801vyHWoRurNZ",
+                    id: "5zBPRXCAc801vyHWoRurNZ",
+                    images: [
+                        {
+                            height: 640,
+                            url: "https://i.scdn.co/image/ab67616d0000b27356072fea6785a3ad2d24237c",
+                            width: 640,
+                        },
+                        {
+                            height: 300,
+                            url: "https://i.scdn.co/image/ab67616d00001e0256072fea6785a3ad2d24237c",
+                            width: 300,
+                        },
+                        {
+                            height: 64,
+                            url: "https://i.scdn.co/image/ab67616d0000485156072fea6785a3ad2d24237c",
+                            width: 64,
+                        },
+                    ],
+                    name: "Nirvana",
+                    release_date: "2002-10-29",
+                    release_date_precision: "day",
+                    total_tracks: 14,
+                    type: "album",
+                    uri: "spotify:album:5zBPRXCAc801vyHWoRurNZ",
+                },
+                artists: [
+                    {
+                        external_urls: {
+                            spotify:
+                                "https://open.spotify.com/artist/6olE6TJLqED3rqDCT0FyPh",
+                        },
+                        href: "https://api.spotify.com/v1/artists/6olE6TJLqED3rqDCT0FyPh",
+                        id: "6olE6TJLqED3rqDCT0FyPh",
+                        name: "Nirvana",
+                        type: "artist",
+                        uri: "spotify:artist:6olE6TJLqED3rqDCT0FyPh",
                     },
                 ],
-                "available_markets": [
+                available_markets: [
                     "AD",
                     "AE",
                     "AG",
@@ -7823,271 +9363,46 @@ const recommendationsBasedOnSeeds: SpotifyApi.RecommendationsFromSeedsResponse =
                     "ZM",
                     "ZW",
                 ],
-                "external_urls": {
-                    "spotify": "https://open.spotify.com/album/5zBPRXCAc801vyHWoRurNZ",
+                disc_number: 1,
+                duration_ms: 227466,
+                explicit: false,
+                external_ids: {
+                    isrc: "USGF19972704",
                 },
-                "href": "https://api.spotify.com/v1/albums/5zBPRXCAc801vyHWoRurNZ",
-                "id": "5zBPRXCAc801vyHWoRurNZ",
-                "images": [
-                    {
-                        "height": 640,
-                        "url": "https://i.scdn.co/image/ab67616d0000b27356072fea6785a3ad2d24237c",
-                        "width": 640,
-                    },
-                    {
-                        "height": 300,
-                        "url": "https://i.scdn.co/image/ab67616d00001e0256072fea6785a3ad2d24237c",
-                        "width": 300,
-                    },
-                    {
-                        "height": 64,
-                        "url": "https://i.scdn.co/image/ab67616d0000485156072fea6785a3ad2d24237c",
-                        "width": 64,
-                    },
-                ],
-                "name": "Nirvana",
-                "release_date": "2002-10-29",
-                "release_date_precision": "day",
-                "total_tracks": 14,
-                "type": "album",
-                "uri": "spotify:album:5zBPRXCAc801vyHWoRurNZ",
-            },
-            "artists": [
-                {
-                    "external_urls": {
-                        "spotify": "https://open.spotify.com/artist/6olE6TJLqED3rqDCT0FyPh",
-                    },
-                    "href": "https://api.spotify.com/v1/artists/6olE6TJLqED3rqDCT0FyPh",
-                    "id": "6olE6TJLqED3rqDCT0FyPh",
-                    "name": "Nirvana",
-                    "type": "artist",
-                    "uri": "spotify:artist:6olE6TJLqED3rqDCT0FyPh",
+                external_urls: {
+                    spotify:
+                        "https://open.spotify.com/track/1XnPVbzLhuBv0sHaCTgyoi",
                 },
-            ],
-            "available_markets": [
-                "AD",
-                "AE",
-                "AG",
-                "AL",
-                "AM",
-                "AO",
-                "AR",
-                "AT",
-                "AU",
-                "AZ",
-                "BA",
-                "BB",
-                "BD",
-                "BE",
-                "BF",
-                "BG",
-                "BH",
-                "BI",
-                "BJ",
-                "BN",
-                "BO",
-                "BR",
-                "BS",
-                "BT",
-                "BW",
-                "BY",
-                "BZ",
-                "CA",
-                "CD",
-                "CG",
-                "CH",
-                "CI",
-                "CL",
-                "CM",
-                "CO",
-                "CR",
-                "CV",
-                "CW",
-                "CY",
-                "CZ",
-                "DE",
-                "DJ",
-                "DK",
-                "DM",
-                "DO",
-                "DZ",
-                "EC",
-                "EE",
-                "EG",
-                "ES",
-                "FI",
-                "FJ",
-                "FM",
-                "FR",
-                "GA",
-                "GB",
-                "GD",
-                "GE",
-                "GH",
-                "GM",
-                "GN",
-                "GQ",
-                "GR",
-                "GT",
-                "GW",
-                "GY",
-                "HK",
-                "HN",
-                "HR",
-                "HT",
-                "HU",
-                "ID",
-                "IE",
-                "IL",
-                "IN",
-                "IQ",
-                "IS",
-                "IT",
-                "JM",
-                "JO",
-                "JP",
-                "KE",
-                "KG",
-                "KH",
-                "KI",
-                "KM",
-                "KN",
-                "KR",
-                "KW",
-                "KZ",
-                "LA",
-                "LB",
-                "LC",
-                "LI",
-                "LK",
-                "LR",
-                "LS",
-                "LT",
-                "LU",
-                "LV",
-                "LY",
-                "MA",
-                "MC",
-                "MD",
-                "ME",
-                "MG",
-                "MH",
-                "MK",
-                "ML",
-                "MN",
-                "MO",
-                "MR",
-                "MT",
-                "MU",
-                "MV",
-                "MW",
-                "MX",
-                "MY",
-                "MZ",
-                "NA",
-                "NE",
-                "NG",
-                "NI",
-                "NL",
-                "NO",
-                "NP",
-                "NR",
-                "NZ",
-                "OM",
-                "PA",
-                "PE",
-                "PG",
-                "PH",
-                "PK",
-                "PL",
-                "PS",
-                "PT",
-                "PW",
-                "PY",
-                "QA",
-                "RO",
-                "RS",
-                "RW",
-                "SA",
-                "SB",
-                "SC",
-                "SE",
-                "SG",
-                "SI",
-                "SK",
-                "SL",
-                "SM",
-                "SN",
-                "SR",
-                "ST",
-                "SV",
-                "SZ",
-                "TD",
-                "TG",
-                "TH",
-                "TJ",
-                "TL",
-                "TN",
-                "TO",
-                "TR",
-                "TT",
-                "TV",
-                "TW",
-                "TZ",
-                "UA",
-                "UG",
-                "US",
-                "UY",
-                "UZ",
-                "VC",
-                "VE",
-                "VN",
-                "VU",
-                "WS",
-                "XK",
-                "ZA",
-                "ZM",
-                "ZW",
-            ],
-            "disc_number": 1,
-            "duration_ms": 227466,
-            "explicit": false,
-            "external_ids": {
-                "isrc": "USGF19972704",
+                href: "https://api.spotify.com/v1/tracks/1XnPVbzLhuBv0sHaCTgyoi",
+                id: "1XnPVbzLhuBv0sHaCTgyoi",
+                is_local: false,
+                name: "The Man Who Sold The World - Live Version",
+                popularity: 59,
+                preview_url: null,
+                track_number: 14,
+                type: "track",
+                uri: "spotify:track:1XnPVbzLhuBv0sHaCTgyoi",
             },
-            "external_urls": {
-                "spotify": "https://open.spotify.com/track/1XnPVbzLhuBv0sHaCTgyoi",
+        ],
+        seeds: [
+            {
+                initialPoolSize: 500,
+                afterFilteringSize: 380,
+                afterRelinkingSize: 365,
+                href: "https://api.spotify.com/v1/artists/4NHQUGzhtTLFvgF5SZesLK",
+                id: "4NHQUGzhtTLFvgF5SZesLK",
+                type: "artist",
             },
-            "href": "https://api.spotify.com/v1/tracks/1XnPVbzLhuBv0sHaCTgyoi",
-            "id": "1XnPVbzLhuBv0sHaCTgyoi",
-            "is_local": false,
-            "name": "The Man Who Sold The World - Live Version",
-            "popularity": 59,
-            "preview_url": null,
-            "track_number": 14,
-            "type": "track",
-            "uri": "spotify:track:1XnPVbzLhuBv0sHaCTgyoi",
-        },
-    ],
-    seeds: [
-        {
-            initialPoolSize: 500,
-            afterFilteringSize: 380,
-            afterRelinkingSize: 365,
-            href: "https://api.spotify.com/v1/artists/4NHQUGzhtTLFvgF5SZesLK",
-            id: "4NHQUGzhtTLFvgF5SZesLK",
-            type: "artist",
-        },
-        {
-            initialPoolSize: 250,
-            afterFilteringSize: 172,
-            afterRelinkingSize: 144,
-            href: "https://api.spotify.com/v1/tracks/0c6xIDDpzE81m2q797ordA",
-            id: "0c6xIDDpzE81m2q797ordA",
-            type: "track",
-        },
-    ],
-};
+            {
+                initialPoolSize: 250,
+                afterFilteringSize: 172,
+                afterRelinkingSize: 144,
+                href: "https://api.spotify.com/v1/tracks/0c6xIDDpzE81m2q797ordA",
+                id: "0c6xIDDpzE81m2q797ordA",
+                type: "track",
+            },
+        ],
+    };
 
 /**
  * Get available genre seeds
@@ -8234,8 +9549,7 @@ const availableGenreSeeds: SpotifyApi.AvailableGenreSeedsResponse = {
  */
 const searchAlbums: SpotifyApi.AlbumSearchResponse = {
     albums: {
-        href:
-            "https://api.spotify.com/v1/search?query=album%3Aarrival+artist%3Aabba&type=album&market=RO&offset=0&limit=2",
+        href: "https://api.spotify.com/v1/search?query=album%3Aarrival+artist%3Aabba&type=album&market=RO&offset=0&limit=2",
         items: [
             {
                 album_type: "album",
@@ -8243,7 +9557,8 @@ const searchAlbums: SpotifyApi.AlbumSearchResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
+                            spotify:
+                                "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
                         },
                         href: "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
                         id: "0LcJLqbBmaGUft1e9Mm8HV",
@@ -8252,9 +9567,21 @@ const searchAlbums: SpotifyApi.AlbumSearchResponse = {
                         uri: "spotify:artist:0LcJLqbBmaGUft1e9Mm8HV",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/1V6a99EbTTIegOhWoPxYI9",
+                    spotify:
+                        "https://open.spotify.com/album/1V6a99EbTTIegOhWoPxYI9",
                 },
                 href: "https://api.spotify.com/v1/albums/1V6a99EbTTIegOhWoPxYI9",
                 id: "1V6a99EbTTIegOhWoPxYI9",
@@ -8302,7 +9629,8 @@ const searchArtists: SpotifyApi.ArtistSearchResponse = {
         items: [
             {
                 external_urls: {
-                    spotify: "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q",
+                    spotify:
+                        "https://open.spotify.com/artist/08td7MxkoHQkXnWAYD8d6Q",
                 },
                 followers: {
                     href: null,
@@ -8356,7 +9684,8 @@ const searchPlaylists: SpotifyApi.PlaylistSearchResponse = {
                 collaborative: false,
                 description: "",
                 external_urls: {
-                    spotify: "http://open.spotify.com/user/twistoffame/playlist/4atqr0nDMUxQFLd09yhk9w",
+                    spotify:
+                        "http://open.spotify.com/user/twistoffame/playlist/4atqr0nDMUxQFLd09yhk9w",
                 },
                 href: "https://api.spotify.com/v1/users/twistoffame/playlists/4atqr0nDMUxQFLd09yhk9w",
                 id: "4atqr0nDMUxQFLd09yhk9w",
@@ -8388,7 +9717,8 @@ const searchPlaylists: SpotifyApi.PlaylistSearchResponse = {
                     uri: "spotify:user:twistoffame",
                 },
                 public: null,
-                snapshot_id: "4Hfz5J478TU3Iljnxc5qXAJt/mCS8Q92XNvbRJjd1CPDjiDAP4Aj+3PZKYT5VxZ6",
+                snapshot_id:
+                    "4Hfz5J478TU3Iljnxc5qXAJt/mCS8Q92XNvbRJjd1CPDjiDAP4Aj+3PZKYT5VxZ6",
                 tracks: {
                     href: "https://api.spotify.com/v1/users/twistoffame/playlists/4atqr0nDMUxQFLd09yhk9w/tracks",
                     total: 116,
@@ -8400,7 +9730,8 @@ const searchPlaylists: SpotifyApi.PlaylistSearchResponse = {
                 collaborative: false,
                 description: "",
                 external_urls: {
-                    spotify: "http://open.spotify.com/user/1174077483/playlist/3fAKyVYIkAiinuipRUGJHj",
+                    spotify:
+                        "http://open.spotify.com/user/1174077483/playlist/3fAKyVYIkAiinuipRUGJHj",
                 },
                 href: "https://api.spotify.com/v1/users/1174077483/playlists/3fAKyVYIkAiinuipRUGJHj",
                 id: "3fAKyVYIkAiinuipRUGJHj",
@@ -8432,7 +9763,8 @@ const searchPlaylists: SpotifyApi.PlaylistSearchResponse = {
                     uri: "spotify:user:1174077483",
                 },
                 public: null,
-                snapshot_id: "4hO+Np6z7Pvla+BDmNGTP8cOuBjPcnY0YhpQdH9Kj2AvuvhyokjcIXLhw59Ufsof",
+                snapshot_id:
+                    "4hO+Np6z7Pvla+BDmNGTP8cOuBjPcnY0YhpQdH9Kj2AvuvhyokjcIXLhw59Ufsof",
                 tracks: {
                     href: "https://api.spotify.com/v1/users/1174077483/playlists/3fAKyVYIkAiinuipRUGJHj/tracks",
                     total: 162,
@@ -8444,7 +9776,8 @@ const searchPlaylists: SpotifyApi.PlaylistSearchResponse = {
         limit: 2,
         next: "https://api.spotify.com/v1/search?query=Summer&offset=22&limit=2&type=playlist",
         offset: 20,
-        previous: "https://api.spotify.com/v1/search?query=Summer&offset=18&limit=2&type=playlist",
+        previous:
+            "https://api.spotify.com/v1/search?query=Summer&offset=18&limit=2&type=playlist",
         total: 9721,
     },
 };
@@ -8466,7 +9799,8 @@ const searchTracks: SpotifyApi.TrackSearchResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
+                                spotify:
+                                    "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
                             },
                             href: "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
                             id: "0LcJLqbBmaGUft1e9Mm8HV",
@@ -8476,7 +9810,8 @@ const searchTracks: SpotifyApi.TrackSearchResponse = {
                         },
                     ],
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/1M4anG49aEs4YimBdj96Oy",
+                        spotify:
+                            "https://open.spotify.com/album/1M4anG49aEs4YimBdj96Oy",
                     },
                     href: "https://api.spotify.com/v1/albums/1M4anG49aEs4YimBdj96Oy",
                     id: "1M4anG49aEs4YimBdj96Oy",
@@ -8506,7 +9841,8 @@ const searchTracks: SpotifyApi.TrackSearchResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
+                            spotify:
+                                "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
                         },
                         href: "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
                         id: "0LcJLqbBmaGUft1e9Mm8HV",
@@ -8522,7 +9858,8 @@ const searchTracks: SpotifyApi.TrackSearchResponse = {
                     isrc: "SEAYD7601020",
                 },
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/4NtUY5IGzHCaqfZemmAu56",
+                    spotify:
+                        "https://open.spotify.com/track/4NtUY5IGzHCaqfZemmAu56",
                 },
                 href: "https://api.spotify.com/v1/tracks/4NtUY5IGzHCaqfZemmAu56",
                 id: "4NtUY5IGzHCaqfZemmAu56",
@@ -8541,7 +9878,8 @@ const searchTracks: SpotifyApi.TrackSearchResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
+                                spotify:
+                                    "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
                             },
                             href: "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
                             id: "0LcJLqbBmaGUft1e9Mm8HV",
@@ -8551,7 +9889,8 @@ const searchTracks: SpotifyApi.TrackSearchResponse = {
                         },
                     ],
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/5GwbPSgiTECzQiE6u7s0ZN",
+                        spotify:
+                            "https://open.spotify.com/album/5GwbPSgiTECzQiE6u7s0ZN",
                     },
                     href: "https://api.spotify.com/v1/albums/5GwbPSgiTECzQiE6u7s0ZN",
                     id: "5GwbPSgiTECzQiE6u7s0ZN",
@@ -8581,7 +9920,8 @@ const searchTracks: SpotifyApi.TrackSearchResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
+                            spotify:
+                                "https://open.spotify.com/artist/0LcJLqbBmaGUft1e9Mm8HV",
                         },
                         href: "https://api.spotify.com/v1/artists/0LcJLqbBmaGUft1e9Mm8HV",
                         id: "0LcJLqbBmaGUft1e9Mm8HV",
@@ -8597,7 +9937,8 @@ const searchTracks: SpotifyApi.TrackSearchResponse = {
                     isrc: "SEAYD7702020",
                 },
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/6vQN2a9QSgWcm74KEZYfDL",
+                    spotify:
+                        "https://open.spotify.com/track/6vQN2a9QSgWcm74KEZYfDL",
                 },
                 href: "https://api.spotify.com/v1/tracks/6vQN2a9QSgWcm74KEZYfDL",
                 id: "6vQN2a9QSgWcm74KEZYfDL",
@@ -8629,7 +9970,18 @@ const searchShow: SpotifyApi.ShowSearchResponse = {
         href: "https://api.spotify.com/v1/search?query=Test&type=show&market=US&offset=5&limit=2",
         items: [
             {
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 copyrights: [],
                 description:
                     "Kris Keefer puts bikes, gear, accessories, hard parts... you name it, through the paces to bring you the straight verdict.",
@@ -8637,7 +9989,8 @@ const searchShow: SpotifyApi.ShowSearchResponse = {
                     "Kris Keefer puts bikes, gear, accessories, hard parts... you name it, through the paces to bring you the straight verdict.",
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/show/0zyTcPkKwiDCuThj0R9PwP",
+                    spotify:
+                        "https://open.spotify.com/show/0zyTcPkKwiDCuThj0R9PwP",
                 },
                 href: "https://api.spotify.com/v1/shows/0zyTcPkKwiDCuThj0R9PwP",
                 id: "0zyTcPkKwiDCuThj0R9PwP",
@@ -8668,7 +10021,18 @@ const searchShow: SpotifyApi.ShowSearchResponse = {
                 uri: "spotify:show:0zyTcPkKwiDCuThj0R9PwP",
             },
             {
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 copyrights: [],
                 description:
                     "This is the official podcast of Tested.com. Tested brings you the week's technology and science news, with hosts Will Smith, Norman Chan, and Jeremy Williams. There's no jargon here, just solid explanations of the week's news--and plenty of wacky tangents. Make sure you stick around after the outro for fake outtakes!",
@@ -8676,7 +10040,8 @@ const searchShow: SpotifyApi.ShowSearchResponse = {
                     "This is the official podcast of Tested.com. Tested brings you the week's technology and science news, with hosts Will Smith, Norman Chan, and Jeremy Williams. There's no jargon here, just solid explanations of the week's news--and plenty of wacky tangents. Make sure you stick around after the outro for fake outtakes!",
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/show/4B7l3R0HeI8gkp0n6BVlyy",
+                    spotify:
+                        "https://open.spotify.com/show/4B7l3R0HeI8gkp0n6BVlyy",
                 },
                 href: "https://api.spotify.com/v1/shows/4B7l3R0HeI8gkp0n6BVlyy",
                 id: "4B7l3R0HeI8gkp0n6BVlyy",
@@ -8710,7 +10075,8 @@ const searchShow: SpotifyApi.ShowSearchResponse = {
         limit: 2,
         next: "https://api.spotify.com/v1/search?query=Test&type=show&market=US&offset=7&limit=2",
         offset: 5,
-        previous: "https://api.spotify.com/v1/search?query=Test&type=show&market=US&offset=3&limit=2",
+        previous:
+            "https://api.spotify.com/v1/search?query=Test&type=show&market=US&offset=3&limit=2",
         total: 16889,
     },
 };
@@ -8726,13 +10092,15 @@ const searchEpisode: SpotifyApi.EpisodeSearchResponse = {
         href: "https://api.spotify.com/v1/search?query=Test&type=episode&market=US&offset=5&limit=2",
         items: [
             {
-                audio_preview_url: "https://p.scdn.co/mp3-preview/e1576ab4ef989d498d2845d1cb7ceb92f7876dd5",
+                audio_preview_url:
+                    "https://p.scdn.co/mp3-preview/e1576ab4ef989d498d2845d1cb7ceb92f7876dd5",
                 description:
                     "Disinformation, foreign interference, a global pandemic and an incumbent president who refused to say he'd accept the results — all were concerns headed into the 2020 election. If those challenges were a test of America's democratic system, did we pass? Jelani Cobb of The New Yorker and election law expert Michael Kang weigh in, with Joe Biden on the verge of becoming the president-elect. Listen to more election coverage from NPR: Up First on Apple Podcasts or Spotify The NPR Politics Podcast on Apple Podcasts or SpotifyIn participating regions, you'll also hear a local news segment that will help you make sense of what's going on in your community.Email us at considerthis@npr.org.",
                 duration_ms: 842553,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/episode/0ObtgY2z58L4lf0p56j1OK",
+                    spotify:
+                        "https://open.spotify.com/episode/0ObtgY2z58L4lf0p56j1OK",
                 },
                 href: "https://api.spotify.com/v1/episodes/0ObtgY2z58L4lf0p56j1OK",
                 html_description:
@@ -8766,13 +10134,15 @@ const searchEpisode: SpotifyApi.EpisodeSearchResponse = {
                 uri: "spotify:episode:0ObtgY2z58L4lf0p56j1OK",
             },
             {
-                audio_preview_url: "https://p.scdn.co/mp3-preview/dde954d108987fec62dc87ee142627c12fc549bc",
+                audio_preview_url:
+                    "https://p.scdn.co/mp3-preview/dde954d108987fec62dc87ee142627c12fc549bc",
                 description:
                     "Even though we've been living with the pandemic for months, there's still lots of confusion about coronavirus tests and what the results do — and don't — mean. NPR correspondent Rob Stein explains the types of tests, when they are most accurate and how to make sense of the results. Email the show at shortwave@npr.org.",
                 duration_ms: 643527,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/episode/08FNi0gs2eA14wHUxGftKw",
+                    spotify:
+                        "https://open.spotify.com/episode/08FNi0gs2eA14wHUxGftKw",
                 },
                 href: "https://api.spotify.com/v1/episodes/08FNi0gs2eA14wHUxGftKw",
                 html_description:
@@ -8809,7 +10179,8 @@ const searchEpisode: SpotifyApi.EpisodeSearchResponse = {
         limit: 2,
         next: "https://api.spotify.com/v1/search?query=Test&type=episode&market=US&offset=7&limit=2",
         offset: 5,
-        previous: "https://api.spotify.com/v1/search?query=Test&type=episode&market=US&offset=3&limit=2",
+        previous:
+            "https://api.spotify.com/v1/search?query=Test&type=episode&market=US&offset=3&limit=2",
         total: 50000,
     },
 };
@@ -8827,7 +10198,8 @@ const track: SpotifyApi.SingleTrackResponse = {
         artists: [
             {
                 external_urls: {
-                    spotify: "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu",
+                    spotify:
+                        "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu",
                 },
                 href: "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
                 id: "0C0XlULifJtAgn6ZNCW2eu",
@@ -8836,7 +10208,18 @@ const track: SpotifyApi.SingleTrackResponse = {
                 uri: "spotify:artist:0C0XlULifJtAgn6ZNCW2eu",
             },
         ],
-        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+        available_markets: [
+            "AR",
+            "AT",
+            "AU",
+            "BE",
+            "BR",
+            "CL",
+            "CO",
+            "CY",
+            "CZ",
+            "DE",
+        ],
         external_urls: {
             spotify: "https://open.spotify.com/album/4OHNH3sDzIxnmUADXzv2kT",
         },
@@ -8868,7 +10251,8 @@ const track: SpotifyApi.SingleTrackResponse = {
     artists: [
         {
             external_urls: {
-                spotify: "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu",
+                spotify:
+                    "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu",
             },
             href: "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
             id: "0C0XlULifJtAgn6ZNCW2eu",
@@ -8877,7 +10261,18 @@ const track: SpotifyApi.SingleTrackResponse = {
             uri: "spotify:artist:0C0XlULifJtAgn6ZNCW2eu",
         },
     ],
-    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+    available_markets: [
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BR",
+        "CL",
+        "CO",
+        "CY",
+        "CZ",
+        "DE",
+    ],
     disc_number: 1,
     duration_ms: 222200,
     explicit: false,
@@ -8913,7 +10308,8 @@ const tracks: SpotifyApi.MultipleTracksResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu",
+                            spotify:
+                                "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu",
                         },
                         href: "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
                         id: "0C0XlULifJtAgn6ZNCW2eu",
@@ -8922,9 +10318,21 @@ const tracks: SpotifyApi.MultipleTracksResponse = {
                         uri: "spotify:artist:0C0XlULifJtAgn6ZNCW2eu",
                     },
                 ],
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/4OHNH3sDzIxnmUADXzv2kT",
+                    spotify:
+                        "https://open.spotify.com/album/4OHNH3sDzIxnmUADXzv2kT",
                 },
                 href: "https://api.spotify.com/v1/albums/4OHNH3sDzIxnmUADXzv2kT",
                 id: "4OHNH3sDzIxnmUADXzv2kT",
@@ -8954,7 +10362,8 @@ const tracks: SpotifyApi.MultipleTracksResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu",
+                        spotify:
+                            "https://open.spotify.com/artist/0C0XlULifJtAgn6ZNCW2eu",
                     },
                     href: "https://api.spotify.com/v1/artists/0C0XlULifJtAgn6ZNCW2eu",
                     id: "0C0XlULifJtAgn6ZNCW2eu",
@@ -8963,7 +10372,18 @@ const tracks: SpotifyApi.MultipleTracksResponse = {
                     uri: "spotify:artist:0C0XlULifJtAgn6ZNCW2eu",
                 },
             ],
-            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+            available_markets: [
+                "AR",
+                "AT",
+                "AU",
+                "BE",
+                "BR",
+                "CL",
+                "CO",
+                "CY",
+                "CZ",
+                "DE",
+            ],
             disc_number: 1,
             duration_ms: 222200,
             explicit: false,
@@ -8971,7 +10391,8 @@ const tracks: SpotifyApi.MultipleTracksResponse = {
                 isrc: "GBFFP0300052",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp",
+                spotify:
+                    "https://open.spotify.com/track/3n3Ppam7vgaVa1iaRUc9Lp",
             },
             href: "https://api.spotify.com/v1/tracks/3n3Ppam7vgaVa1iaRUc9Lp",
             id: "3n3Ppam7vgaVa1iaRUc9Lp",
@@ -8993,7 +10414,18 @@ const tracks: SpotifyApi.MultipleTracksResponse = {
  * https://developer.spotify.com/web-api/get-show/
  */
 const show: SpotifyApi.SingleShowResponse = {
-    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+    available_markets: [
+        "AR",
+        "AT",
+        "AU",
+        "BE",
+        "BR",
+        "CL",
+        "CO",
+        "CY",
+        "CZ",
+        "DE",
+    ],
     copyrights: [],
     description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
     html_description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
@@ -9001,13 +10433,15 @@ const show: SpotifyApi.SingleShowResponse = {
         href: "https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ/episodes?offset=0&limit=50",
         items: [
             {
-                audio_preview_url: "https://p.scdn.co/mp3-preview/99180ec43a984c61b079bd3e71443a1886d0290c",
+                audio_preview_url:
+                    "https://p.scdn.co/mp3-preview/99180ec43a984c61b079bd3e71443a1886d0290c",
                 description:
                     "Tobias Svanelid besöker den svenska arkeologiska expeditionen på Cypern där man nu söker efter svaret på vad som drabbade bronsåldersstäderna för 3000 år sedan och orsakade bronsålderns kollaps.  - Det är som att jobba som Indiana Jones, berättar Alfred Sjelvgren som är en av arkeologerna som gräver på platsen.",
                 duration_ms: 2666659,
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/episode/4nLBHCqEvCcRyWImnKo009",
+                    spotify:
+                        "https://open.spotify.com/episode/4nLBHCqEvCcRyWImnKo009",
                 },
                 href: "https://api.spotify.com/v1/episodes/4nLBHCqEvCcRyWImnKo009",
                 html_description:
@@ -9088,7 +10522,18 @@ const show: SpotifyApi.SingleShowResponse = {
 const shows: SpotifyApi.MultipleShowsResponse = {
     shows: [
         {
-            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+            available_markets: [
+                "AR",
+                "AT",
+                "AU",
+                "BE",
+                "BR",
+                "CL",
+                "CO",
+                "CY",
+                "CZ",
+                "DE",
+            ],
             copyrights: [],
             description:
                 "Candid conversations with entrepreneurs, artists, athletes, visionaries of all kinds—about their successes, and their failures, and what they learned from both. Hosted by Alex Blumberg, from Gimlet Media.",
@@ -9126,7 +10571,18 @@ const shows: SpotifyApi.MultipleShowsResponse = {
             uri: "spotify:show:5CfCWKI5pZ28U0uOzXkDHe",
         },
         {
-            available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+            available_markets: [
+                "AR",
+                "AT",
+                "AU",
+                "BE",
+                "BR",
+                "CL",
+                "CO",
+                "CY",
+                "CZ",
+                "DE",
+            ],
             copyrights: [],
             description:
                 "Giant Bomb discusses the latest video game news and new releases, taste-test questionable beverages, and get wildly off-topic in this weekly podcast.",
@@ -9173,7 +10629,8 @@ const shows: SpotifyApi.MultipleShowsResponse = {
  * https://developer.spotify.com/documentation/web-api/reference/episodes/get-an-episode/
  */
 const episode: SpotifyApi.SingleEpisodeResponse = {
-    audio_preview_url: "https://p.scdn.co/mp3-preview/566fcc94708f39bcddc09e4ce84a8e5db8f07d4d",
+    audio_preview_url:
+        "https://p.scdn.co/mp3-preview/566fcc94708f39bcddc09e4ce84a8e5db8f07d4d",
     description:
         "En ny tysk bok granskar för första gången Tredje rikets drogberoende, från Führerns knarkande till hans soldater på speed. Och kändisförfattaren Antony Beevor får nu kritik av en svensk kollega.  Hitler var beroende av sin livläkare, som gav honom mängder av narkotiska preparat, och blitzkrigssoldaterna knaprade 35 miljoner speedtabletter under invasionen av Frankrike 1940. I den nyutkomna boken Der Totale Rausch, Det totala ruset, ger författaren Norman Ohler för första gången en samlad bild av knarkandet i Tredje riket. Mycket tyder på att Hitler var gravt drogpåverkad under flera avgörande beslut under kriget, säger han, och får medhåll av medicinhistorikern Peter Steinkamp som undersökt de tyska soldaternas intensiva användande av pervitin, en variant av crystal meth.Dessutom får nu den kände militärhistoriska författaren Antony Beevor kritik för att hans senaste bok om Ardenneroffensiven lutar sig alltför tungt mot amerikanska källor, och dessutom innehåller många felaktiga detaljer. Det menar författarkollegan Christer Bergström, som själv skrivit en bok om striderna i Ardennerna.Programledare är Tobias Svanelid.",
     duration_ms: 1502795,
@@ -9210,10 +10667,22 @@ const episode: SpotifyApi.SingleEpisodeResponse = {
     release_date: "2015-10-01",
     release_date_precision: "day",
     show: {
-        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+        available_markets: [
+            "AR",
+            "AT",
+            "AU",
+            "BE",
+            "BR",
+            "CL",
+            "CO",
+            "CY",
+            "CZ",
+            "DE",
+        ],
         copyrights: [],
         description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
-        html_description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
+        html_description:
+            "Vi är där historien är. Ansvarig utgivare: Nina Glans",
         explicit: false,
         external_urls: {
             spotify: "https://open.spotify.com/show/38bS44xjbVVZ3No3ByF1dJ",
@@ -9258,13 +10727,15 @@ const episode: SpotifyApi.SingleEpisodeResponse = {
 const episodes: SpotifyApi.MultipleEpisodesResponse = {
     episodes: [
         {
-            audio_preview_url: "https://p.scdn.co/mp3-preview/7e8f7a00f1425d495bcb992bae48a19c31342490",
+            audio_preview_url:
+                "https://p.scdn.co/mp3-preview/7e8f7a00f1425d495bcb992bae48a19c31342490",
             description:
                 "Följ med till Riddarhuset och hör om dråpliga motiv och billiga lösningar på husets drygt 2 300 vapensköldar som nu studerats. Och hör hur stormakten Sveriges krig finansierades av Frankrike.  Skelögda ugglor och halshuggna troll är några av motiven på de drygt 2&nbsp;300 vapensköldar som hänger i Riddarhuset i Stockholm. Den svenska adelns grafiska profiler har nu hamnat under luppen när heraldikern Magnus Bäckmark som förste forskare skärskådat detta bortglömda kulturarvs estetik och historia. Vetenskapsradion Historia följer med honom till Riddarhuset för att fascineras av både vackra och tokfula motiv. Dessutom om att den svenska stormaktstiden nu måste omvärderas efter att historikern Svante Norrhem undersökt de enorma summor som Sverige erhöll av Frankrike. Under närmare 170 år var Sverige närmast en klientstat till Frankrike, där närmare 20 procent av svensk ekonomi bestod av franska subsidier. Tobias Svanelid undersöker hur förhållandet påverkade länderna och hur mycket av den svenska stormaktstiden som egentligen var fransk.",
             duration_ms: 2685023,
             explicit: false,
             external_urls: {
-                spotify: "https://open.spotify.com/episode/77o6BIVlYM3msb4MMIL1jH",
+                spotify:
+                    "https://open.spotify.com/episode/77o6BIVlYM3msb4MMIL1jH",
             },
             href: "https://api.spotify.com/v1/episodes/77o6BIVlYM3msb4MMIL1jH",
             html_description:
@@ -9294,13 +10765,27 @@ const episodes: SpotifyApi.MultipleEpisodesResponse = {
             release_date: "2019-09-10",
             release_date_precision: "day",
             show: {
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 copyrights: [],
-                description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
-                html_description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
+                description:
+                    "Vi är där historien är. Ansvarig utgivare: Nina Glans",
+                html_description:
+                    "Vi är där historien är. Ansvarig utgivare: Nina Glans",
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/show/38bS44xjbVVZ3No3ByF1dJ",
+                    spotify:
+                        "https://open.spotify.com/show/38bS44xjbVVZ3No3ByF1dJ",
                 },
                 href: "https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ",
                 id: "38bS44xjbVVZ3No3ByF1dJ",
@@ -9333,13 +10818,15 @@ const episodes: SpotifyApi.MultipleEpisodesResponse = {
             uri: "spotify:episode:77o6BIVlYM3msb4MMIL1jH",
         },
         {
-            audio_preview_url: "https://p.scdn.co/mp3-preview/83bc7f2d40e850582a4ca118b33c256358de06ff",
+            audio_preview_url:
+                "https://p.scdn.co/mp3-preview/83bc7f2d40e850582a4ca118b33c256358de06ff",
             description:
                 "Följ med Tobias Svanelid till Sveriges äldsta tegelkyrka, till Edsleskog mitt i den dalsländska granskogen, där ett religiöst skrytbygge skulle resas över ett skändligt brott.  I Edsleskog i Dalsland gräver arkeologerna nu ut vad som en gång verkar ha varit en av Sveriges största medeltidskyrkor, och kanske också den äldsta som byggts i tegel, 1200-talets high-tech-material. Tobias Svanelid reser dit för att höra historien om den märkliga och bortglömda kyrkan som grundlades på platsen för ett prästmord och dessutom kan ha varit Skarabiskopens försök att lägga beslag på det vilda Dalsland. Dessutom om sjudagarsveckan  idag ett välkänt koncept runt hela världen, men hur gammal är egentligen veckans historia? Dick Harrison vet svaret.",
             duration_ms: 2685023,
             explicit: false,
             external_urls: {
-                spotify: "https://open.spotify.com/episode/0Q86acNRm6V9GYx55SXKwf",
+                spotify:
+                    "https://open.spotify.com/episode/0Q86acNRm6V9GYx55SXKwf",
             },
             href: "https://api.spotify.com/v1/episodes/0Q86acNRm6V9GYx55SXKwf",
             html_description:
@@ -9369,13 +10856,27 @@ const episodes: SpotifyApi.MultipleEpisodesResponse = {
             release_date: "2019-09-03",
             release_date_precision: "day",
             show: {
-                available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                available_markets: [
+                    "AR",
+                    "AT",
+                    "AU",
+                    "BE",
+                    "BR",
+                    "CL",
+                    "CO",
+                    "CY",
+                    "CZ",
+                    "DE",
+                ],
                 copyrights: [],
-                description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
-                html_description: "Vi är där historien är. Ansvarig utgivare: Nina Glans",
+                description:
+                    "Vi är där historien är. Ansvarig utgivare: Nina Glans",
+                html_description:
+                    "Vi är där historien är. Ansvarig utgivare: Nina Glans",
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/show/38bS44xjbVVZ3No3ByF1dJ",
+                    spotify:
+                        "https://open.spotify.com/show/38bS44xjbVVZ3No3ByF1dJ",
                 },
                 href: "https://api.spotify.com/v1/shows/38bS44xjbVVZ3No3ByF1dJ",
                 id: "38bS44xjbVVZ3No3ByF1dJ",
@@ -9451,7 +10952,8 @@ const usersPlaylists: SpotifyApi.ListOfUsersPlaylistsResponse = {
             collaborative: false,
             description: "",
             external_urls: {
-                spotify: "http://open.spotify.com/user/wizzler/playlist/6yRf9SJ1YiAhNAu7UCwgXQ",
+                spotify:
+                    "http://open.spotify.com/user/wizzler/playlist/6yRf9SJ1YiAhNAu7UCwgXQ",
             },
             href: "https://api.spotify.com/v1/users/wizzler/playlists/6yRf9SJ1YiAhNAu7UCwgXQ",
             id: "6yRf9SJ1YiAhNAu7UCwgXQ",
@@ -9473,7 +10975,8 @@ const usersPlaylists: SpotifyApi.ListOfUsersPlaylistsResponse = {
                 uri: "spotify:user:wizzler",
             },
             public: true,
-            snapshot_id: "WlQppvajE5kH/Xt5cHfHxJ6mSsFckwYixA06q7y1asdUz+m5v7pq6xb1f0FiFa7I",
+            snapshot_id:
+                "WlQppvajE5kH/Xt5cHfHxJ6mSsFckwYixA06q7y1asdUz+m5v7pq6xb1f0FiFa7I",
             tracks: {
                 href: "https://api.spotify.com/v1/users/wizzler/playlists/6yRf9SJ1YiAhNAu7UCwgXQ/tracks",
                 total: 1,
@@ -9485,7 +10988,8 @@ const usersPlaylists: SpotifyApi.ListOfUsersPlaylistsResponse = {
             collaborative: false,
             description: "",
             external_urls: {
-                spotify: "http://open.spotify.com/user/wizzler/playlist/3FJd21jWvCjGCLx7eKrext",
+                spotify:
+                    "http://open.spotify.com/user/wizzler/playlist/3FJd21jWvCjGCLx7eKrext",
             },
             href: "https://api.spotify.com/v1/users/wizzler/playlists/3FJd21jWvCjGCLx7eKrext",
             id: "3FJd21jWvCjGCLx7eKrext",
@@ -9507,7 +11011,8 @@ const usersPlaylists: SpotifyApi.ListOfUsersPlaylistsResponse = {
                 uri: "spotify:user:wizzler",
             },
             public: true,
-            snapshot_id: "LO0O/RGsDLEgeDC3xVR4HisMNsDqoPLE8QBRqllyvevTJ09tFWIUbjrYoEJbUhCa",
+            snapshot_id:
+                "LO0O/RGsDLEgeDC3xVR4HisMNsDqoPLE8QBRqllyvevTJ09tFWIUbjrYoEJbUhCa",
             tracks: {
                 href: "https://api.spotify.com/v1/users/wizzler/playlists/3FJd21jWvCjGCLx7eKrext/tracks",
                 total: 33,
@@ -9536,7 +11041,8 @@ const currentUsersPlaylists: SpotifyApi.ListOfUsersPlaylistsResponse = {
             collaborative: false,
             description: "",
             external_urls: {
-                spotify: "http://open.spotify.com/user/wizzler/playlist/6yRf9SJ1YiAhNAu7UCwgXQ",
+                spotify:
+                    "http://open.spotify.com/user/wizzler/playlist/6yRf9SJ1YiAhNAu7UCwgXQ",
             },
             href: "https://api.spotify.com/v1/users/wizzler/playlists/6yRf9SJ1YiAhNAu7UCwgXQ",
             id: "6yRf9SJ1YiAhNAu7UCwgXQ",
@@ -9558,7 +11064,8 @@ const currentUsersPlaylists: SpotifyApi.ListOfUsersPlaylistsResponse = {
                 uri: "spotify:user:wizzler",
             },
             public: true,
-            snapshot_id: "WlQppvajE5kH/Xt5cHfHxJ6mSsFckwYixA06q7y1asdUz+m5v7pq6xb1f0FiFa7I",
+            snapshot_id:
+                "WlQppvajE5kH/Xt5cHfHxJ6mSsFckwYixA06q7y1asdUz+m5v7pq6xb1f0FiFa7I",
             tracks: {
                 href: "https://api.spotify.com/v1/users/wizzler/playlists/6yRf9SJ1YiAhNAu7UCwgXQ/tracks",
                 total: 1,
@@ -9570,7 +11077,8 @@ const currentUsersPlaylists: SpotifyApi.ListOfUsersPlaylistsResponse = {
             collaborative: false,
             description: "",
             external_urls: {
-                spotify: "http://open.spotify.com/user/wizzler/playlist/3FJd21jWvCjGCLx7eKrext",
+                spotify:
+                    "http://open.spotify.com/user/wizzler/playlist/3FJd21jWvCjGCLx7eKrext",
             },
             href: "https://api.spotify.com/v1/users/wizzler/playlists/3FJd21jWvCjGCLx7eKrext",
             id: "3FJd21jWvCjGCLx7eKrext",
@@ -9592,7 +11100,8 @@ const currentUsersPlaylists: SpotifyApi.ListOfUsersPlaylistsResponse = {
                 uri: "spotify:user:wizzler",
             },
             public: true,
-            snapshot_id: "LO0O/RGsDLEgeDC3xVR4HisMNsDqoPLE8QBRqllyvevTJ09tFWIUbjrYoEJbUhCa",
+            snapshot_id:
+                "LO0O/RGsDLEgeDC3xVR4HisMNsDqoPLE8QBRqllyvevTJ09tFWIUbjrYoEJbUhCa",
             tracks: {
                 href: "https://api.spotify.com/v1/users/wizzler/playlists/3FJd21jWvCjGCLx7eKrext/tracks",
                 total: 33,
@@ -9668,7 +11177,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/7MSUfLeTdDEoZiJPDSBXgi",
+                                    spotify:
+                                        "https://open.spotify.com/artist/7MSUfLeTdDEoZiJPDSBXgi",
                                 },
                                 href: "https://api.spotify.com/v1/artists/7MSUfLeTdDEoZiJPDSBXgi",
                                 id: "7MSUfLeTdDEoZiJPDSBXgi",
@@ -9677,9 +11187,21 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                                 uri: "spotify:artist:7MSUfLeTdDEoZiJPDSBXgi",
                             },
                         ],
-                        available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         external_urls: {
-                            spotify: "https://open.spotify.com/album/063f8Ej8rLVTz9KkjQKEMa",
+                            spotify:
+                                "https://open.spotify.com/album/063f8Ej8rLVTz9KkjQKEMa",
                         },
                         href: "https://api.spotify.com/v1/albums/063f8Ej8rLVTz9KkjQKEMa",
                         id: "063f8Ej8rLVTz9KkjQKEMa",
@@ -9709,7 +11231,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/7MSUfLeTdDEoZiJPDSBXgi",
+                                spotify:
+                                    "https://open.spotify.com/artist/7MSUfLeTdDEoZiJPDSBXgi",
                             },
                             href: "https://api.spotify.com/v1/artists/7MSUfLeTdDEoZiJPDSBXgi",
                             id: "7MSUfLeTdDEoZiJPDSBXgi",
@@ -9718,7 +11241,18 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                             uri: "spotify:artist:7MSUfLeTdDEoZiJPDSBXgi",
                         },
                     ],
-                    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                    available_markets: [
+                        "AR",
+                        "AT",
+                        "AU",
+                        "BE",
+                        "BR",
+                        "CL",
+                        "CO",
+                        "CY",
+                        "CZ",
+                        "DE",
+                    ],
                     disc_number: 1,
                     duration_ms: 1041520,
                     explicit: false,
@@ -9726,7 +11260,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                         isrc: "GBAAA0400426",
                     },
                     external_urls: {
-                        spotify: "https://open.spotify.com/track/3bCmDqflFBHijgJfvtqev5",
+                        spotify:
+                            "https://open.spotify.com/track/3bCmDqflFBHijgJfvtqev5",
                     },
                     href: "https://api.spotify.com/v1/tracks/3bCmDqflFBHijgJfvtqev5",
                     id: "3bCmDqflFBHijgJfvtqev5",
@@ -9758,7 +11293,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/4xls23Ye9WR9yy3yYMpAMm",
+                                    spotify:
+                                        "https://open.spotify.com/artist/4xls23Ye9WR9yy3yYMpAMm",
                                 },
                                 href: "https://api.spotify.com/v1/artists/4xls23Ye9WR9yy3yYMpAMm",
                                 id: "4xls23Ye9WR9yy3yYMpAMm",
@@ -9769,7 +11305,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                         ],
                         available_markets: [],
                         external_urls: {
-                            spotify: "https://open.spotify.com/album/3LXNSUpx48PQxUn2StRqfu",
+                            spotify:
+                                "https://open.spotify.com/album/3LXNSUpx48PQxUn2StRqfu",
                         },
                         href: "https://api.spotify.com/v1/albums/3LXNSUpx48PQxUn2StRqfu",
                         id: "3LXNSUpx48PQxUn2StRqfu",
@@ -9799,7 +11336,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/4xls23Ye9WR9yy3yYMpAMm",
+                                spotify:
+                                    "https://open.spotify.com/artist/4xls23Ye9WR9yy3yYMpAMm",
                             },
                             href: "https://api.spotify.com/v1/artists/4xls23Ye9WR9yy3yYMpAMm",
                             id: "4xls23Ye9WR9yy3yYMpAMm",
@@ -9816,7 +11354,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                         isrc: "USC4R0817279",
                     },
                     external_urls: {
-                        spotify: "https://open.spotify.com/track/1fMMRoalpb7E8m5FsAta2y",
+                        spotify:
+                            "https://open.spotify.com/track/1fMMRoalpb7E8m5FsAta2y",
                     },
                     href: "https://api.spotify.com/v1/tracks/1fMMRoalpb7E8m5FsAta2y",
                     id: "1fMMRoalpb7E8m5FsAta2y",
@@ -9847,7 +11386,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                         artists: [
                             {
                                 external_urls: {
-                                    spotify: "https://open.spotify.com/artist/2Mu5NfyYm8n5iTomuKAEHl",
+                                    spotify:
+                                        "https://open.spotify.com/artist/2Mu5NfyYm8n5iTomuKAEHl",
                                 },
                                 href: "https://api.spotify.com/v1/artists/2Mu5NfyYm8n5iTomuKAEHl",
                                 id: "2Mu5NfyYm8n5iTomuKAEHl",
@@ -9858,7 +11398,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                         ],
                         available_markets: [],
                         external_urls: {
-                            spotify: "https://open.spotify.com/album/2Uc0HAF0Cj0LAgyzYZX5e3",
+                            spotify:
+                                "https://open.spotify.com/album/2Uc0HAF0Cj0LAgyzYZX5e3",
                         },
                         href: "https://api.spotify.com/v1/albums/2Uc0HAF0Cj0LAgyzYZX5e3",
                         id: "2Uc0HAF0Cj0LAgyzYZX5e3",
@@ -9888,7 +11429,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/2Mu5NfyYm8n5iTomuKAEHl",
+                                spotify:
+                                    "https://open.spotify.com/artist/2Mu5NfyYm8n5iTomuKAEHl",
                             },
                             href: "https://api.spotify.com/v1/artists/2Mu5NfyYm8n5iTomuKAEHl",
                             id: "2Mu5NfyYm8n5iTomuKAEHl",
@@ -9898,7 +11440,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                         },
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/336vr2M3Va0FjyvB55lJEd",
+                                spotify:
+                                    "https://open.spotify.com/artist/336vr2M3Va0FjyvB55lJEd",
                             },
                             href: "https://api.spotify.com/v1/artists/336vr2M3Va0FjyvB55lJEd",
                             id: "336vr2M3Va0FjyvB55lJEd",
@@ -9915,7 +11458,8 @@ const playlist: SpotifyApi.SinglePlaylistResponse = {
                         isrc: "USSM19803112",
                     },
                     external_urls: {
-                        spotify: "https://open.spotify.com/track/3xhXKRGahWzcXF8rD5gUvd",
+                        spotify:
+                            "https://open.spotify.com/track/3xhXKRGahWzcXF8rD5gUvd",
                     },
                     href: "https://api.spotify.com/v1/tracks/3xhXKRGahWzcXF8rD5gUvd",
                     id: "3xhXKRGahWzcXF8rD5gUvd",
@@ -9951,7 +11495,8 @@ const playlistTracks: SpotifyApi.PlaylistTrackResponse = {
             added_at: "2019-10-06T11:24:48Z",
             added_by: {
                 external_urls: {
-                    spotify: "https://open.spotify.com/user/31k5kqd5ec6o3k5tyaxgdpcgquju",
+                    spotify:
+                        "https://open.spotify.com/user/31k5kqd5ec6o3k5tyaxgdpcgquju",
                 },
                 href: "https://api.spotify.com/v1/users/31k5kqd5ec6o3k5tyaxgdpcgquju",
                 id: "31k5kqd5ec6o3k5tyaxgdpcgquju",
@@ -9966,7 +11511,8 @@ const playlistTracks: SpotifyApi.PlaylistTrackResponse = {
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/7jVv8c5Fj3E9VhNjxT4snq",
+                                spotify:
+                                    "https://open.spotify.com/artist/7jVv8c5Fj3E9VhNjxT4snq",
                             },
                             href: "https://api.spotify.com/v1/artists/7jVv8c5Fj3E9VhNjxT4snq",
                             id: "7jVv8c5Fj3E9VhNjxT4snq",
@@ -9977,7 +11523,8 @@ const playlistTracks: SpotifyApi.PlaylistTrackResponse = {
                     ],
                     available_markets: [],
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/6sC8l8bVvMckgES0c3VpCZ",
+                        spotify:
+                            "https://open.spotify.com/album/6sC8l8bVvMckgES0c3VpCZ",
                     },
                     href: "https://api.spotify.com/v1/albums/6sC8l8bVvMckgES0c3VpCZ",
                     id: "6sC8l8bVvMckgES0c3VpCZ",
@@ -10007,7 +11554,8 @@ const playlistTracks: SpotifyApi.PlaylistTrackResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/7jVv8c5Fj3E9VhNjxT4snq",
+                            spotify:
+                                "https://open.spotify.com/artist/7jVv8c5Fj3E9VhNjxT4snq",
                         },
                         href: "https://api.spotify.com/v1/artists/7jVv8c5Fj3E9VhNjxT4snq",
                         id: "7jVv8c5Fj3E9VhNjxT4snq",
@@ -10024,7 +11572,8 @@ const playlistTracks: SpotifyApi.PlaylistTrackResponse = {
                     isrc: "SE6A91836283",
                 },
                 external_urls: {
-                    spotify: "https://open.spotify.com/track/2pMl9Sx4glsuk5ikZtFBtX",
+                    spotify:
+                        "https://open.spotify.com/track/2pMl9Sx4glsuk5ikZtFBtX",
                 },
                 href: "https://api.spotify.com/v1/tracks/2pMl9Sx4glsuk5ikZtFBtX",
                 id: "2pMl9Sx4glsuk5ikZtFBtX",
@@ -10054,7 +11603,8 @@ const newPlaylist: SpotifyApi.CreatePlaylistResponse = {
     collaborative: false,
     description: null,
     external_urls: {
-        spotify: "http://open.spotify.com/user/physicaltunes/playlist/7tlEEvpdUKuXsS1EAHYKnD",
+        spotify:
+            "http://open.spotify.com/user/physicaltunes/playlist/7tlEEvpdUKuXsS1EAHYKnD",
     },
     followers: {
         href: null,
@@ -10074,7 +11624,8 @@ const newPlaylist: SpotifyApi.CreatePlaylistResponse = {
         uri: "spotify:user:physicaltunes",
     },
     public: false,
-    snapshot_id: "6ZasQLSA1dudU/rJlMKbTESXYRont3Bh8XwhSCGfUI3+bDjCXG8CWycbzWo4mxGu",
+    snapshot_id:
+        "6ZasQLSA1dudU/rJlMKbTESXYRont3Bh8XwhSCGfUI3+bDjCXG8CWycbzWo4mxGu",
     tracks: {
         href: "https://api.spotify.com/v1/users/physicaltunes/playlists/7tlEEvpdUKuXsS1EAHYKnD/tracks",
         items: [],
@@ -10103,7 +11654,8 @@ const changePlaylistDetails: SpotifyApi.ChangePlaylistDetailsResponse = {};
  * https://developer.spotify.com/web-api/add-tracks-to-playlist/
  */
 const addTracksToPlaylist: SpotifyApi.AddTracksToPlaylistResponse = {
-    snapshot_id: "4qQeMTnHV5LCL9w/lI9Mlu5shi2pk+iiIm6VEpmKdMPCE6adhRNTG9SXflxh8DTt",
+    snapshot_id:
+        "4qQeMTnHV5LCL9w/lI9Mlu5shi2pk+iiIm6VEpmKdMPCE6adhRNTG9SXflxh8DTt",
 };
 
 /**
@@ -10113,7 +11665,8 @@ const addTracksToPlaylist: SpotifyApi.AddTracksToPlaylistResponse = {
  * https://developer.spotify.com/web-api/remove-tracks-playlist/
  */
 const removeTracksFromPlaylist: SpotifyApi.RemoveTracksFromPlaylistResponse = {
-    snapshot_id: "t3+4ZWOqedj+bmcHHu1HKNqYfIyYAfXKlSHHykvS4KAm7hoVhDoCpn+KIuFZebZp",
+    snapshot_id:
+        "t3+4ZWOqedj+bmcHHu1HKNqYfIyYAfXKlSHHykvS4KAm7hoVhDoCpn+KIuFZebZp",
 };
 
 /**
@@ -10123,7 +11676,8 @@ const removeTracksFromPlaylist: SpotifyApi.RemoveTracksFromPlaylistResponse = {
  * https://developer.spotify.com/web-api/reorder-playlists-tracks/
  */
 const reorderTracksInPlaylist: SpotifyApi.ReorderPlaylistTracksResponse = {
-    snapshot_id: "t3+4ZWOqedj+bmcHHu1HKNqYfIyYAfXKlSHHykvS4KAm7hoVhDoCpn+KIuFZebZp",
+    snapshot_id:
+        "t3+4ZWOqedj+bmcHHu1HKNqYfIyYAfXKlSHHykvS4KAm7hoVhDoCpn+KIuFZebZp",
 };
 
 /**
@@ -10133,7 +11687,8 @@ const reorderTracksInPlaylist: SpotifyApi.ReorderPlaylistTracksResponse = {
  * https://developer.spotify.com/web-api/replace-playlists-tracks/
  */
 const replacePlaylistTracks: SpotifyApi.ReplacePlaylistTracksResponse = {
-    snapshot_id: "t3+4ZWOqedj+bmcHHu1HKNqYfIyYAfXKlSHHykvS4KAm7hoVhDoCpn+KIuFZebZp",
+    snapshot_id:
+        "t3+4ZWOqedj+bmcHHu1HKNqYfIyYAfXKlSHHykvS4KAm7hoVhDoCpn+KIuFZebZp",
 };
 
 /**
@@ -10142,7 +11697,11 @@ const replacePlaylistTracks: SpotifyApi.ReplacePlaylistTracksResponse = {
  * GET /v1/users/{user_id}/playlists/{playlist_id}/followers/contains
  * https://developer.spotify.com/web-api/check-user-following-playlist/
  */
-const checkUserFollowsPlaylist: SpotifyApi.UsersFollowPlaylistResponse = [true, false, true];
+const checkUserFollowsPlaylist: SpotifyApi.UsersFollowPlaylistResponse = [
+    true,
+    false,
+    true,
+];
 
 /**
  * Get current user's recently played tracks
@@ -10150,16 +11709,73 @@ const checkUserFollowsPlaylist: SpotifyApi.UsersFollowPlaylistResponse = [true, 
  * GET /v1/me/player/recently-played
  * https://developer.spotify.com/web-api/web-api-personalization-endpoints/get-recently-played/
  */
-const getMyRecentlyPlayedTracks: SpotifyApi.UsersRecentlyPlayedTracksResponse = {
-    items: [
-        {
-            track: {
-                album: {
-                    album_type: "album",
+const getMyRecentlyPlayedTracks: SpotifyApi.UsersRecentlyPlayedTracksResponse =
+    {
+        items: [
+            {
+                track: {
+                    album: {
+                        album_type: "album",
+                        artists: [
+                            {
+                                external_urls: {
+                                    spotify:
+                                        "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
+                                },
+                                href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
+                                id: "5INjqkS1o8h1imAzPqGZBb",
+                                name: "Tame Impala",
+                                type: "artist",
+                                uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
+                            },
+                        ],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
+                        external_urls: {
+                            spotify:
+                                "https://open.spotify.com/album/79dL7FLiJFOO0EoehUHQBv",
+                        },
+                        href: "https://api.spotify.com/v1/albums/79dL7FLiJFOO0EoehUHQBv",
+                        id: "79dL7FLiJFOO0EoehUHQBv",
+                        images: [
+                            {
+                                height: 640,
+                                url: "https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79",
+                                width: 640,
+                            },
+                            {
+                                height: 300,
+                                url: "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
+                                width: 300,
+                            },
+                            {
+                                height: 64,
+                                url: "https://i.scdn.co/image/ab67616d000048519e1cfc756886ac782e363d79",
+                                width: 64,
+                            },
+                        ],
+                        name: "Currents",
+                        release_date: "2015-07-17",
+                        release_date_precision: "day",
+                        total_tracks: 13,
+                        type: "album",
+                        uri: "spotify:album:79dL7FLiJFOO0EoehUHQBv",
+                    },
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
+                                spotify:
+                                    "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
                             },
                             href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
                             id: "5INjqkS1o8h1imAzPqGZBb",
@@ -10168,85 +11784,102 @@ const getMyRecentlyPlayedTracks: SpotifyApi.UsersRecentlyPlayedTracksResponse = 
                             uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
                         },
                     ],
-                    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                    available_markets: ["CA", "MX", "US"],
+                    disc_number: 1,
+                    duration_ms: 108546,
+                    explicit: false,
+                    external_ids: {
+                        isrc: "AUUM71500297",
+                    },
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/79dL7FLiJFOO0EoehUHQBv",
+                        spotify:
+                            "https://open.spotify.com/track/2gNfxysfBRfl9Lvi9T3v6R",
                     },
-                    href: "https://api.spotify.com/v1/albums/79dL7FLiJFOO0EoehUHQBv",
-                    id: "79dL7FLiJFOO0EoehUHQBv",
-                    images: [
-                        {
-                            height: 640,
-                            url: "https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79",
-                            width: 640,
-                        },
-                        {
-                            height: 300,
-                            url: "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
-                            width: 300,
-                        },
-                        {
-                            height: 64,
-                            url: "https://i.scdn.co/image/ab67616d000048519e1cfc756886ac782e363d79",
-                            width: 64,
-                        },
-                    ],
-                    name: "Currents",
-                    release_date: "2015-07-17",
-                    release_date_precision: "day",
-                    total_tracks: 13,
-                    type: "album",
-                    uri: "spotify:album:79dL7FLiJFOO0EoehUHQBv",
+                    href: "https://api.spotify.com/v1/tracks/2gNfxysfBRfl9Lvi9T3v6R",
+                    id: "2gNfxysfBRfl9Lvi9T3v6R",
+                    name: "Disciples",
+                    popularity: 62,
+                    preview_url:
+                        "https://p.scdn.co/mp3-preview/6023e5aac2123d098ce490488966b28838b14fa2",
+                    track_number: 9,
+                    type: "track",
+                    uri: "spotify:track:2gNfxysfBRfl9Lvi9T3v6R",
                 },
-                artists: [
-                    {
+                played_at: "2016-12-13T20:44:04.589Z",
+                context: {
+                    uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
+                    external_urls: {
+                        spotify:
+                            "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
+                    },
+                    href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
+                    type: "artist",
+                },
+            },
+            {
+                track: {
+                    album: {
+                        album_type: "album",
+                        artists: [
+                            {
+                                external_urls: {
+                                    spotify:
+                                        "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
+                                },
+                                href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
+                                id: "5INjqkS1o8h1imAzPqGZBb",
+                                name: "Tame Impala",
+                                type: "artist",
+                                uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
+                            },
+                        ],
+                        available_markets: [
+                            "AR",
+                            "AT",
+                            "AU",
+                            "BE",
+                            "BR",
+                            "CL",
+                            "CO",
+                            "CY",
+                            "CZ",
+                            "DE",
+                        ],
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
+                            spotify:
+                                "https://open.spotify.com/album/79dL7FLiJFOO0EoehUHQBv",
                         },
-                        href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
-                        id: "5INjqkS1o8h1imAzPqGZBb",
-                        name: "Tame Impala",
-                        type: "artist",
-                        uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
+                        href: "https://api.spotify.com/v1/albums/79dL7FLiJFOO0EoehUHQBv",
+                        id: "79dL7FLiJFOO0EoehUHQBv",
+                        images: [
+                            {
+                                height: 640,
+                                url: "https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79",
+                                width: 640,
+                            },
+                            {
+                                height: 300,
+                                url: "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
+                                width: 300,
+                            },
+                            {
+                                height: 64,
+                                url: "https://i.scdn.co/image/ab67616d000048519e1cfc756886ac782e363d79",
+                                width: 64,
+                            },
+                        ],
+                        name: "Currents",
+                        release_date: "2015-07-17",
+                        release_date_precision: "day",
+                        total_tracks: 13,
+                        type: "album",
+                        uri: "spotify:album:79dL7FLiJFOO0EoehUHQBv",
                     },
-                ],
-                available_markets: ["CA", "MX", "US"],
-                disc_number: 1,
-                duration_ms: 108546,
-                explicit: false,
-                external_ids: {
-                    isrc: "AUUM71500297",
-                },
-                external_urls: {
-                    spotify: "https://open.spotify.com/track/2gNfxysfBRfl9Lvi9T3v6R",
-                },
-                href: "https://api.spotify.com/v1/tracks/2gNfxysfBRfl9Lvi9T3v6R",
-                id: "2gNfxysfBRfl9Lvi9T3v6R",
-                name: "Disciples",
-                popularity: 62,
-                preview_url: "https://p.scdn.co/mp3-preview/6023e5aac2123d098ce490488966b28838b14fa2",
-                track_number: 9,
-                type: "track",
-                uri: "spotify:track:2gNfxysfBRfl9Lvi9T3v6R",
-            },
-            played_at: "2016-12-13T20:44:04.589Z",
-            context: {
-                uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
-                external_urls: {
-                    spotify: "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
-                },
-                href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
-                type: "artist",
-            },
-        },
-        {
-            track: {
-                album: {
-                    album_type: "album",
                     artists: [
                         {
                             external_urls: {
-                                spotify: "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
+                                spotify:
+                                    "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
                             },
                             href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
                             id: "5INjqkS1o8h1imAzPqGZBb",
@@ -10255,86 +11888,47 @@ const getMyRecentlyPlayedTracks: SpotifyApi.UsersRecentlyPlayedTracksResponse = 
                             uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
                         },
                     ],
-                    available_markets: ["AR", "AT", "AU", "BE", "BR", "CL", "CO", "CY", "CZ", "DE"],
+                    available_markets: ["CA", "MX", "US"],
+                    disc_number: 1,
+                    duration_ms: 467586,
+                    explicit: false,
+                    external_ids: {
+                        isrc: "AUUM71500292",
+                    },
                     external_urls: {
-                        spotify: "https://open.spotify.com/album/79dL7FLiJFOO0EoehUHQBv",
+                        spotify:
+                            "https://open.spotify.com/track/2X485T9Z5Ly0xyaghN73ed",
                     },
-                    href: "https://api.spotify.com/v1/albums/79dL7FLiJFOO0EoehUHQBv",
-                    id: "79dL7FLiJFOO0EoehUHQBv",
-                    images: [
-                        {
-                            height: 640,
-                            url: "https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79",
-                            width: 640,
-                        },
-                        {
-                            height: 300,
-                            url: "https://i.scdn.co/image/ab67616d00001e029e1cfc756886ac782e363d79",
-                            width: 300,
-                        },
-                        {
-                            height: 64,
-                            url: "https://i.scdn.co/image/ab67616d000048519e1cfc756886ac782e363d79",
-                            width: 64,
-                        },
-                    ],
-                    name: "Currents",
-                    release_date: "2015-07-17",
-                    release_date_precision: "day",
-                    total_tracks: 13,
-                    type: "album",
-                    uri: "spotify:album:79dL7FLiJFOO0EoehUHQBv",
+                    href: "https://api.spotify.com/v1/tracks/2X485T9Z5Ly0xyaghN73ed",
+                    id: "2X485T9Z5Ly0xyaghN73ed",
+                    name: "Let It Happen",
+                    popularity: 74,
+                    preview_url:
+                        "https://p.scdn.co/mp3-preview/05dee1ad0d2a6fa4ad07fbd24ae49d58468e8194",
+                    track_number: 1,
+                    type: "track",
+                    uri: "spotify:track:2X485T9Z5Ly0xyaghN73ed",
                 },
-                artists: [
-                    {
-                        external_urls: {
-                            spotify: "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
-                        },
-                        href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
-                        id: "5INjqkS1o8h1imAzPqGZBb",
-                        name: "Tame Impala",
-                        type: "artist",
-                        uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
+                played_at: "2016-12-13T20:42:17.016Z",
+                context: {
+                    uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
+                    external_urls: {
+                        spotify:
+                            "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
                     },
-                ],
-                available_markets: ["CA", "MX", "US"],
-                disc_number: 1,
-                duration_ms: 467586,
-                explicit: false,
-                external_ids: {
-                    isrc: "AUUM71500292",
+                    href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
+                    type: "artist",
                 },
-                external_urls: {
-                    spotify: "https://open.spotify.com/track/2X485T9Z5Ly0xyaghN73ed",
-                },
-                href: "https://api.spotify.com/v1/tracks/2X485T9Z5Ly0xyaghN73ed",
-                id: "2X485T9Z5Ly0xyaghN73ed",
-                name: "Let It Happen",
-                popularity: 74,
-                preview_url: "https://p.scdn.co/mp3-preview/05dee1ad0d2a6fa4ad07fbd24ae49d58468e8194",
-                track_number: 1,
-                type: "track",
-                uri: "spotify:track:2X485T9Z5Ly0xyaghN73ed",
             },
-            played_at: "2016-12-13T20:42:17.016Z",
-            context: {
-                uri: "spotify:artist:5INjqkS1o8h1imAzPqGZBb",
-                external_urls: {
-                    spotify: "https://open.spotify.com/artist/5INjqkS1o8h1imAzPqGZBb",
-                },
-                href: "https://api.spotify.com/v1/artists/5INjqkS1o8h1imAzPqGZBb",
-                type: "artist",
-            },
+        ],
+        next: "https://api.spotify.com/v1/me/player/recently-played?before=1481661737016&limit=2",
+        cursors: {
+            after: "1481661844589",
+            before: "1481661737016",
         },
-    ],
-    next: "https://api.spotify.com/v1/me/player/recently-played?before=1481661737016&limit=2",
-    cursors: {
-        after: "1481661844589",
-        before: "1481661737016",
-    },
-    limit: 2,
-    href: "https://api.spotify.com/v1/me/player/recently-played?limit=2",
-};
+        limit: 2,
+        href: "https://api.spotify.com/v1/me/player/recently-played?limit=2",
+    };
 
 /**
  * Get Available Markets
@@ -10359,7 +11953,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/5Pb27ujIyYb33zBqVysBkj",
+                        spotify:
+                            "https://open.spotify.com/artist/5Pb27ujIyYb33zBqVysBkj",
                     },
                     href: "https://api.spotify.com/v1/artists/5Pb27ujIyYb33zBqVysBkj",
                     id: "5Pb27ujIyYb33zBqVysBkj",
@@ -10370,7 +11965,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
             ],
             available_markets: ["AD", "ZM", "ZW"],
             external_urls: {
-                spotify: "https://open.spotify.com/album/73TcBRSRsPLKmxnjnVsSV3",
+                spotify:
+                    "https://open.spotify.com/album/73TcBRSRsPLKmxnjnVsSV3",
             },
             href: "https://api.spotify.com/v1/albums/73TcBRSRsPLKmxnjnVsSV3",
             id: "73TcBRSRsPLKmxnjnVsSV3",
@@ -10401,7 +11997,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
         artists: [
             {
                 external_urls: {
-                    spotify: "https://open.spotify.com/artist/5Pb27ujIyYb33zBqVysBkj",
+                    spotify:
+                        "https://open.spotify.com/artist/5Pb27ujIyYb33zBqVysBkj",
                 },
                 href: "https://api.spotify.com/v1/artists/5Pb27ujIyYb33zBqVysBkj",
                 id: "5Pb27ujIyYb33zBqVysBkj",
@@ -10411,7 +12008,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
             },
             {
                 external_urls: {
-                    spotify: "https://open.spotify.com/artist/02DWGcShQivFepRvGJ7xhB",
+                    spotify:
+                        "https://open.spotify.com/artist/02DWGcShQivFepRvGJ7xhB",
                 },
                 href: "https://api.spotify.com/v1/artists/02DWGcShQivFepRvGJ7xhB",
                 id: "02DWGcShQivFepRvGJ7xhB",
@@ -10443,13 +12041,15 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
     },
     queue: [
         {
-            audio_preview_url: "https://p.scdn.co/mp3-preview/7708c9c59a97446ac43dee8d7c4376618766286e",
+            audio_preview_url:
+                "https://p.scdn.co/mp3-preview/7708c9c59a97446ac43dee8d7c4376618766286e",
             description:
                 "Wer trägt einen Kissenbezug, zwei Crocs mit Blumenmuster & jede Menge geklauten Krims-Krams aus Schmittis Wohnsiedlung?",
             duration_ms: 2790321,
             explicit: false,
             external_urls: {
-                spotify: "https://open.spotify.com/episode/23tuzIyN84My7br2VbzocW",
+                spotify:
+                    "https://open.spotify.com/episode/23tuzIyN84My7br2VbzocW",
             },
             href: "https://api.spotify.com/v1/episodes/23tuzIyN84My7br2VbzocW",
             html_description:
@@ -10486,7 +12086,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
                     "Das Beautiful Mind Klaas Heufer-Umlauf probiert in diesem Podcast nach über 10 Jahren weltfremden Jet Set Spaß Kontakt zur echten Welt aufzunehmen.  Wie einst in der Weihnachtsgeschichte wird er dabei von seinen Freunden Thomas Schmitt und Jakob Lundt an die Hand genommen und langsam wieder mit den Themen des wahren Lebens in Kontakt gebracht. Tauchen Sie ein und seien Sie die Kugel im Flipperautomaten „Baywatch Berlin“!  Du möchtest mehr über unsere Werbepartner erfahren? Hier findest du alle Infos & Rabatte: https://linktr.ee/BaywatchBerlin",
                 explicit: false,
                 external_urls: {
-                    spotify: "https://open.spotify.com/show/3jtLk2Zlutfjo91QZYXmlA",
+                    spotify:
+                        "https://open.spotify.com/show/3jtLk2Zlutfjo91QZYXmlA",
                 },
                 href: "https://api.spotify.com/v1/shows/3jtLk2Zlutfjo91QZYXmlA",
                 html_description:
@@ -10513,7 +12114,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
                 languages: ["de"],
                 media_type: "audio",
                 name: "Baywatch Berlin",
-                publisher: "Klaas Heufer-Umlauf, Thomas Schmitt, Jakob Lundt & Studio Bummens",
+                publisher:
+                    "Klaas Heufer-Umlauf, Thomas Schmitt, Jakob Lundt & Studio Bummens",
                 total_episodes: 145,
                 type: "show",
                 uri: "spotify:show:3jtLk2Zlutfjo91QZYXmlA",
@@ -10527,7 +12129,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
                 artists: [
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/5tDjiBYUsTqzd0RkTZxK7u",
+                            spotify:
+                                "https://open.spotify.com/artist/5tDjiBYUsTqzd0RkTZxK7u",
                         },
                         href: "https://api.spotify.com/v1/artists/5tDjiBYUsTqzd0RkTZxK7u",
                         id: "5tDjiBYUsTqzd0RkTZxK7u",
@@ -10537,7 +12140,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
                     },
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/5EmEZjq8eHEC6qFnT63Lza",
+                            spotify:
+                                "https://open.spotify.com/artist/5EmEZjq8eHEC6qFnT63Lza",
                         },
                         href: "https://api.spotify.com/v1/artists/5EmEZjq8eHEC6qFnT63Lza",
                         id: "5EmEZjq8eHEC6qFnT63Lza",
@@ -10547,7 +12151,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
                     },
                     {
                         external_urls: {
-                            spotify: "https://open.spotify.com/artist/4nknUpUYu4baxWwkunq81Z",
+                            spotify:
+                                "https://open.spotify.com/artist/4nknUpUYu4baxWwkunq81Z",
                         },
                         href: "https://api.spotify.com/v1/artists/4nknUpUYu4baxWwkunq81Z",
                         id: "4nknUpUYu4baxWwkunq81Z",
@@ -10558,7 +12163,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
                 ],
                 available_markets: ["AD", "ZM", "ZW"],
                 external_urls: {
-                    spotify: "https://open.spotify.com/album/3KP04xsSyd236fx8GJPfxK",
+                    spotify:
+                        "https://open.spotify.com/album/3KP04xsSyd236fx8GJPfxK",
                 },
                 href: "https://api.spotify.com/v1/albums/3KP04xsSyd236fx8GJPfxK",
                 id: "3KP04xsSyd236fx8GJPfxK",
@@ -10589,7 +12195,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
             artists: [
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/5tDjiBYUsTqzd0RkTZxK7u",
+                        spotify:
+                            "https://open.spotify.com/artist/5tDjiBYUsTqzd0RkTZxK7u",
                     },
                     href: "https://api.spotify.com/v1/artists/5tDjiBYUsTqzd0RkTZxK7u",
                     id: "5tDjiBYUsTqzd0RkTZxK7u",
@@ -10599,7 +12206,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
                 },
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/5EmEZjq8eHEC6qFnT63Lza",
+                        spotify:
+                            "https://open.spotify.com/artist/5EmEZjq8eHEC6qFnT63Lza",
                     },
                     href: "https://api.spotify.com/v1/artists/5EmEZjq8eHEC6qFnT63Lza",
                     id: "5EmEZjq8eHEC6qFnT63Lza",
@@ -10609,7 +12217,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
                 },
                 {
                     external_urls: {
-                        spotify: "https://open.spotify.com/artist/4nknUpUYu4baxWwkunq81Z",
+                        spotify:
+                            "https://open.spotify.com/artist/4nknUpUYu4baxWwkunq81Z",
                     },
                     href: "https://api.spotify.com/v1/artists/4nknUpUYu4baxWwkunq81Z",
                     id: "4nknUpUYu4baxWwkunq81Z",
@@ -10626,7 +12235,8 @@ const usersQueue: SpotifyApi.UsersQueueResponse = {
                 isrc: "GBEWA2100121",
             },
             external_urls: {
-                spotify: "https://open.spotify.com/track/7MaeDTjnd8zh4Dx0XpZmUQ",
+                spotify:
+                    "https://open.spotify.com/track/7MaeDTjnd8zh4Dx0XpZmUQ",
             },
             href: "https://api.spotify.com/v1/tracks/7MaeDTjnd8zh4Dx0XpZmUQ",
             id: "7MaeDTjnd8zh4Dx0XpZmUQ",

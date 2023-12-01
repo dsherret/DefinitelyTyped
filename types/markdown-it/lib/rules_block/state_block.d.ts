@@ -2,7 +2,12 @@ import MarkdownIt = require("..");
 import Token = require("../token");
 
 declare namespace StateBlock {
-    type ParentType = "blockquote" | "list" | "root" | "paragraph" | "reference";
+    type ParentType =
+        | "blockquote"
+        | "list"
+        | "root"
+        | "paragraph"
+        | "reference";
 }
 
 declare class StateBlock {
@@ -126,7 +131,12 @@ declare class StateBlock {
     /**
      * cut lines range from source.
      */
-    getLines(begin: number, end: number, indent: number, keepLastLF: boolean): string;
+    getLines(
+        begin: number,
+        end: number,
+        indent: number,
+        keepLastLF: boolean,
+    ): string;
 
     Token: typeof Token;
 }

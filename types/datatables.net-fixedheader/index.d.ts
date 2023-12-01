@@ -14,7 +14,7 @@ declare namespace DataTables {
     }
 
     interface FixedHeaderStaticFunctions {
-        new(dt: Api, settings: boolean | FixedHeaderSettings): undefined;
+        new (dt: Api, settings: boolean | FixedHeaderSettings): undefined;
         version: string;
         defaults: FixedHeaderSettings;
     }

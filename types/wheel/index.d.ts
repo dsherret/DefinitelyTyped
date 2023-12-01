@@ -1,7 +1,11 @@
 /**
  * Adds a callback to receive mouse wheel events from the given element.
  */
-declare function wheel(element: GlobalEventHandlers, callback: (event: WheelEvent) => void, useCapture?: boolean): void;
+declare function wheel(
+    element: GlobalEventHandlers,
+    callback: (event: WheelEvent) => void,
+    useCapture?: boolean,
+): void;
 
 declare namespace wheel {
     /**

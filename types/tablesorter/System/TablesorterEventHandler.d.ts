@@ -13,5 +13,8 @@ export interface TablesorterEventHandler<TElement = HTMLElement> {
      * @param table
      * The table which is processed by the `tablesorter`.
      */
-    (eventArgs: JQuery.TriggeredEvent<TElement, null, TElement, TElement>, table: TElement): void;
+    (
+        eventArgs: JQuery.TriggeredEvent<TElement, null, TElement, TElement>,
+        table: TElement,
+    ): void;
 }

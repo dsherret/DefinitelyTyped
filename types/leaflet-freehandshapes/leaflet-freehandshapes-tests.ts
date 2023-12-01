@@ -25,9 +25,15 @@ const freehandOptions: L.FreeHandShapesOptions = {
     concave_polygons: undefined,
 };
 
-const leafletMouseEvent: L.LeafletMouseEvent = {} as unknown as L.LeafletMouseEvent;
+const leafletMouseEvent: L.LeafletMouseEvent =
+    {} as unknown as L.LeafletMouseEvent;
 
-const simplePolygonLatLngs: L.LatLngExpression[] = [[37, -109.05], [41, -109.03], [41, -102.05], [37, -102.04]];
+const simplePolygonLatLngs: L.LatLngExpression[] = [
+    [37, -109.05],
+    [41, -109.03],
+    [41, -102.05],
+    [37, -102.04],
+];
 const polygon = new L.Polygon(simplePolygonLatLngs);
 polygon.getGroup();
 polygon.destroy();

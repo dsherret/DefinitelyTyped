@@ -77,8 +77,16 @@ declare module "url" {
         parseQueryString: false | undefined,
         slashesDenoteHost?: boolean,
     ): UrlWithStringQuery;
-    function parse(urlString: string, parseQueryString: true, slashesDenoteHost?: boolean): UrlWithParsedQuery;
-    function parse(urlString: string, parseQueryString: boolean, slashesDenoteHost?: boolean): Url;
+    function parse(
+        urlString: string,
+        parseQueryString: true,
+        slashesDenoteHost?: boolean,
+    ): UrlWithParsedQuery;
+    function parse(
+        urlString: string,
+        parseQueryString: boolean,
+        slashesDenoteHost?: boolean,
+    ): Url;
     /**
      * The URL object has both a `toString()` method and `href` property that return string serializations of the URL.
      * These are not, however, customizable in any way. The `url.format(URL[, options])` method allows for basic
@@ -755,7 +763,12 @@ declare module "url" {
          * @param thisArg To be used as `this` value for when `fn` is called
          */
         forEach<TThis = this>(
-            callback: (this: TThis, value: string, name: string, searchParams: URLSearchParams) => void,
+            callback: (
+                this: TThis,
+                value: string,
+                name: string,
+                searchParams: URLSearchParams,
+            ) => void,
             thisArg?: TThis,
         ): void;
         /**
@@ -848,19 +861,22 @@ declare module "url" {
          * https://nodejs.org/api/url.html#the-whatwg-url-api
          * @since v10.0.0
          */
-        var URL:
-            // For compatibility with "dom" and "webworker" URL declarations
-            typeof globalThis extends { onmessage: any; URL: infer URL } ? URL
-                : typeof _URL;
+        var URL: // For compatibility with "dom" and "webworker" URL declarations
+        typeof globalThis extends { onmessage: any; URL: infer URL }
+            ? URL
+            : typeof _URL;
         /**
          * `URLSearchParams` class is a global reference for `require('url').URLSearchParams`.
          * https://nodejs.org/api/url.html#class-urlsearchparams
          * @since v10.0.0
          */
-        var URLSearchParams:
-            // For compatibility with "dom" and "webworker" URLSearchParams declarations
-            typeof globalThis extends { onmessage: any; URLSearchParams: infer URLSearchParams } ? URLSearchParams
-                : typeof _URLSearchParams;
+        var URLSearchParams: // For compatibility with "dom" and "webworker" URLSearchParams declarations
+        typeof globalThis extends {
+            onmessage: any;
+            URLSearchParams: infer URLSearchParams;
+        }
+            ? URLSearchParams
+            : typeof _URLSearchParams;
     }
 }
 declare module "node:url" {

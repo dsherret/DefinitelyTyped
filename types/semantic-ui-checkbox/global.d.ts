@@ -57,7 +57,11 @@ declare namespace SemanticUI {
         /**
          * Attach checkbox events to another element
          */
-        (behavior: "attach events", selector: string | JQuery, event?: string): JQuery;
+        (
+            behavior: "attach events",
+            selector: string | JQuery,
+            event?: string,
+        ): JQuery;
         /**
          * Returns whether element is radio selection
          */
@@ -95,8 +99,16 @@ declare namespace SemanticUI {
          */
         (behavior: "can uncheck"): boolean;
         (behavior: "destroy"): JQuery;
-        <K extends keyof CheckboxSettings>(behavior: "setting", name: K, value?: undefined): CheckboxSettings._Impl[K];
-        <K extends keyof CheckboxSettings>(behavior: "setting", name: K, value: CheckboxSettings._Impl[K]): JQuery;
+        <K extends keyof CheckboxSettings>(
+            behavior: "setting",
+            name: K,
+            value?: undefined,
+        ): CheckboxSettings._Impl[K];
+        <K extends keyof CheckboxSettings>(
+            behavior: "setting",
+            name: K,
+            value: CheckboxSettings._Impl[K],
+        ): JQuery;
         (behavior: "setting", value: CheckboxSettings): JQuery;
         (settings?: CheckboxSettings): JQuery;
     }
@@ -107,34 +119,33 @@ declare namespace SemanticUI {
     type CheckboxSettings = CheckboxSettings.Param;
 
     namespace CheckboxSettings {
-        type Param =
-            & (
-                | Pick<_Impl, "uncheckable">
-                | Pick<_Impl, "fireOnInit">
-                | Pick<_Impl, "onChange">
-                | Pick<_Impl, "onChecked">
-                | Pick<_Impl, "onIndeterminate">
-                | Pick<_Impl, "onDeterminate">
-                | Pick<_Impl, "onUnchecked">
-                | Pick<_Impl, "beforeChecked">
-                | Pick<_Impl, "beforeIndeterminate">
-                | Pick<_Impl, "beforeDeterminate">
-                | Pick<_Impl, "beforeUnchecked">
-                | Pick<_Impl, "onEnable">
-                | Pick<_Impl, "onDisable">
-                | Pick<_Impl, "onEnabled">
-                | Pick<_Impl, "onDisabled">
-                | Pick<_Impl, "selector">
-                | Pick<_Impl, "className">
-                | Pick<_Impl, "error">
-                | Pick<_Impl, "namespace">
-                | Pick<_Impl, "name">
-                | Pick<_Impl, "silent">
-                | Pick<_Impl, "debug">
-                | Pick<_Impl, "performance">
-                | Pick<_Impl, "verbose">
-            )
-            & Partial<Pick<_Impl, keyof _Impl>>;
+        type Param = (
+            | Pick<_Impl, "uncheckable">
+            | Pick<_Impl, "fireOnInit">
+            | Pick<_Impl, "onChange">
+            | Pick<_Impl, "onChecked">
+            | Pick<_Impl, "onIndeterminate">
+            | Pick<_Impl, "onDeterminate">
+            | Pick<_Impl, "onUnchecked">
+            | Pick<_Impl, "beforeChecked">
+            | Pick<_Impl, "beforeIndeterminate">
+            | Pick<_Impl, "beforeDeterminate">
+            | Pick<_Impl, "beforeUnchecked">
+            | Pick<_Impl, "onEnable">
+            | Pick<_Impl, "onDisable">
+            | Pick<_Impl, "onEnabled">
+            | Pick<_Impl, "onDisabled">
+            | Pick<_Impl, "selector">
+            | Pick<_Impl, "className">
+            | Pick<_Impl, "error">
+            | Pick<_Impl, "namespace">
+            | Pick<_Impl, "name">
+            | Pick<_Impl, "silent">
+            | Pick<_Impl, "debug">
+            | Pick<_Impl, "performance">
+            | Pick<_Impl, "verbose">
+        ) &
+            Partial<Pick<_Impl, keyof _Impl>>;
 
         interface _Impl {
             // region Behavior
@@ -282,12 +293,8 @@ declare namespace SemanticUI {
         type SelectorSettings = SelectorSettings.Param;
 
         namespace SelectorSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "input">
-                    | Pick<_Impl, "label">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "input"> | Pick<_Impl, "label">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -304,14 +311,13 @@ declare namespace SemanticUI {
         type ClassNameSettings = ClassNameSettings.Param;
 
         namespace ClassNameSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "checked">
-                    | Pick<_Impl, "disabled">
-                    | Pick<_Impl, "radio">
-                    | Pick<_Impl, "readOnly">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "checked">
+                | Pick<_Impl, "disabled">
+                | Pick<_Impl, "radio">
+                | Pick<_Impl, "readOnly">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -336,9 +342,8 @@ declare namespace SemanticUI {
         type ErrorSettings = ErrorSettings.Param;
 
         namespace ErrorSettings {
-            type Param =
-                & (Pick<_Impl, "method">)
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = Pick<_Impl, "method"> &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**

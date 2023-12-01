@@ -5,10 +5,10 @@ declare namespace AlignmentToolbar {
     interface Props {
         alignmentControls?:
             | Array<{
-                align: string;
-                icon: Dashicon.Icon | JSX.Element;
-                title: string;
-            }>
+                  align: string;
+                  icon: Dashicon.Icon | JSX.Element;
+                  title: string;
+              }>
             | undefined;
         children?: never | undefined;
         value: string | undefined;

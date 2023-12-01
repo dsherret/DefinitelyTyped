@@ -1,4 +1,7 @@
-import BaseComponent, { GetInstanceFactory, GetOrCreateInstanceFactory } from "./base-component";
+import BaseComponent, {
+    GetInstanceFactory,
+    GetOrCreateInstanceFactory,
+} from "./base-component";
 
 declare class Carousel extends BaseComponent {
     /**
@@ -20,7 +23,10 @@ declare class Carousel extends BaseComponent {
      * You can use it like this: bootstrap.Carousel.getOrCreateInstance(element)
      */
     static carouselInstance: typeof Carousel.getOrCreateInstance;
-    static getOrCreateInstance: GetOrCreateInstanceFactory<Carousel, Partial<Carousel.Options>>;
+    static getOrCreateInstance: GetOrCreateInstanceFactory<
+        Carousel,
+        Partial<Carousel.Options>
+    >;
 
     static jQueryInterface: Carousel.jQueryInterface;
 
@@ -154,7 +160,16 @@ declare namespace Carousel {
     }
 
     type jQueryInterface = (
-        config?: Partial<Options> | number | "cycle" | "pause" | "prev" | "next" | "nextWhenVisible" | "to" | "dispose",
+        config?:
+            | Partial<Options>
+            | number
+            | "cycle"
+            | "pause"
+            | "prev"
+            | "next"
+            | "nextWhenVisible"
+            | "to"
+            | "dispose",
     ) => JQuery;
 }
 

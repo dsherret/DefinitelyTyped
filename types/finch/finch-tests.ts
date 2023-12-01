@@ -1,46 +1,46 @@
 function test_Finch() {
-    Finch.route("Hello/Route", function() {
+    Finch.route("Hello/Route", function () {
         return console.log("Well hello there! How you doin'?!");
     });
 
-    Finch.route("Hello/Route/:someId", function(bindings) {
+    Finch.route("Hello/Route/:someId", function (bindings) {
         return console.log("Hey! Here's Some Id: " + bindings.someId);
     });
 
-    Finch.route("Hello/Route/:someId", function(bindings, childCallback) {
+    Finch.route("Hello/Route/:someId", function (bindings, childCallback) {
         console.log("Hey! Here's Some Id: " + bindings.someId);
         return childCallback();
     });
 
     Finch.route("some/route", {
-        setup: function(bindings) {
+        setup: function (bindings) {
             return console.log("Some Route has been setup! :)");
         },
-        load: function(bindings) {
+        load: function (bindings) {
             return console.log("Some Route has been loaed! :D");
         },
-        unload: function(bindings) {
+        unload: function (bindings) {
             return console.log("Some Route has been loaed! :(");
         },
-        teardown: function(bindings) {
+        teardown: function (bindings) {
             return console.log("Some Route has been torndown! :'(");
         },
     });
 
     Finch.route("some/route", {
-        setup: function(bindings, childCallback) {
+        setup: function (bindings, childCallback) {
             console.log("Some Route has been setup! :)");
             return childCallback();
         },
-        load: function(bindings, childCallback) {
+        load: function (bindings, childCallback) {
             console.log("Some Route has been loaed! :D");
             return childCallback();
         },
-        unload: function(bindings, childCallback) {
+        unload: function (bindings, childCallback) {
             console.log("Some Route has been loaed! :(");
             return childCallback();
         },
-        teardown: function(bindings, childCallback) {
+        teardown: function (bindings, childCallback) {
             console.log("Some Route has been torndown! :'(");
             return childCallback();
         },
@@ -48,21 +48,24 @@ function test_Finch() {
 
     Finch.call("Some/Route");
 
-    Finch.route("Some/Route", function() {
-        return Finch.observe("hello", "foo", function(hello: any, foo: string) {
+    Finch.route("Some/Route", function () {
+        return Finch.observe(
+            "hello",
+            "foo",
+            function (hello: any, foo: string) {
+                return console.log("" + hello + " and " + foo);
+            },
+        );
+    });
+
+    Finch.route("Some/Route", function () {
+        return Finch.observe(["hello", "foo"], function (hello: any, foo: any) {
             return console.log("" + hello + " and " + foo);
         });
     });
 
-    Finch.route("Some/Route", function() {
-        return Finch.observe(["hello", "foo"], function(hello: any, foo: any) {
-            return console.log("" + hello + " and " + foo);
-        });
-    });
-
-    Finch.route("Some/Route", function(bindings) {
-        return Finch.observe(function(params) {
-        });
+    Finch.route("Some/Route", function (bindings) {
+        return Finch.observe(function (params) {});
     });
 
     Finch.navigate("Some/Route");
@@ -72,9 +75,13 @@ function test_Finch() {
         foo: "bar",
     });
 
-    Finch.navigate("Some/Route", {
-        foo: "bar",
-    }, true);
+    Finch.navigate(
+        "Some/Route",
+        {
+            foo: "bar",
+        },
+        true,
+    );
 
     Finch.navigate("Some/Route", true);
 
@@ -88,9 +95,12 @@ function test_Finch() {
         wow: "wee!!!",
     });
 
-    Finch.navigate({
-        hello: "world2",
-    }, true);
+    Finch.navigate(
+        {
+            hello: "world2",
+        },
+        true,
+    );
 
     Finch.listen();
     Finch.ignore();
@@ -118,34 +128,34 @@ function test_Finch() {
 
     var cb: any;
     Finch.route("foo", {
-        setup: cb.setup_foo = this.stub(),
-        load: cb.load_foo = this.stub(),
-        unload: cb.unload_foo = this.stub(),
-        teardown: cb.teardown_foo = this.stub(),
+        setup: (cb.setup_foo = this.stub()),
+        load: (cb.load_foo = this.stub()),
+        unload: (cb.unload_foo = this.stub()),
+        teardown: (cb.teardown_foo = this.stub()),
     });
     Finch.route("[foo]/bar", {
-        setup: cb.setup_foo_bar = this.stub(),
-        load: cb.load_foo_bar = this.stub(),
-        unload: cb.unload_foo_bar = this.stub(),
-        teardown: cb.teardown_foo_bar = this.stub(),
+        setup: (cb.setup_foo_bar = this.stub()),
+        load: (cb.load_foo_bar = this.stub()),
+        unload: (cb.unload_foo_bar = this.stub()),
+        teardown: (cb.teardown_foo_bar = this.stub()),
     });
     Finch.route("[foo/bar]/:id", {
-        setup: cb.setup_foo_bar_id = this.stub(),
-        load: cb.load_foo_bar_id = this.stub(),
-        unload: cb.unload_foo_bar_id = this.stub(),
-        teardown: cb.teardown_foo_bar_id = this.stub(),
+        setup: (cb.setup_foo_bar_id = this.stub()),
+        load: (cb.load_foo_bar_id = this.stub()),
+        unload: (cb.unload_foo_bar_id = this.stub()),
+        teardown: (cb.teardown_foo_bar_id = this.stub()),
     });
     Finch.route("[foo]/baz", {
-        setup: cb.setup_foo_baz = this.stub(),
-        load: cb.load_foo_baz = this.stub(),
-        unload: cb.unload_foo_baz = this.stub(),
-        teardown: cb.teardown_foo_baz = this.stub(),
+        setup: (cb.setup_foo_baz = this.stub()),
+        load: (cb.load_foo_baz = this.stub()),
+        unload: (cb.unload_foo_baz = this.stub()),
+        teardown: (cb.teardown_foo_baz = this.stub()),
     });
     Finch.route("[foo/baz]/:id", {
-        setup: cb.setup_foo_baz_id = this.stub(),
-        load: cb.load_foo_baz_id = this.stub(),
-        unload: cb.unload_foo_baz_id = this.stub(),
-        teardown: cb.teardown_foo_baz_id = this.stub(),
+        setup: (cb.setup_foo_baz_id = this.stub()),
+        load: (cb.load_foo_baz_id = this.stub()),
+        unload: (cb.unload_foo_baz_id = this.stub()),
+        teardown: (cb.teardown_foo_baz_id = this.stub()),
     });
     Finch.call("/foo");
     Finch.call("/foo/bar");
@@ -160,43 +170,33 @@ function test_Finch() {
     Finch.route("bar", this.stub());
     Finch.call("/foo");
     Finch.call("/bar");
-    Finch.route("/", function() {
-    });
-    Finch.route("[/]home", function() {
-    });
+    Finch.route("/", function () {});
+    Finch.route("[/]home", function () {});
     Finch.route("[/home]/news", {
-        setup: function() {
-        },
-        load: function() {
-        },
-        unload: function() {
+        setup: function () {},
+        load: function () {},
+        unload: function () {
             return true;
         },
-        teardown: function() {
+        teardown: function () {
             return false;
         },
     });
     Finch.route("/foo", {
-        setup: function() {
+        setup: function () {
             return true;
         },
-        load: function() {
+        load: function () {
             return true;
         },
-        unload: function() {
-        },
-        teardown: function() {
-        },
+        unload: function () {},
+        teardown: function () {},
     });
     Finch.route("[/]bar", {
-        setup: function() {
-        },
-        load: function() {
-        },
-        unload: function() {
-        },
-        teardown: function() {
-        },
+        setup: function () {},
+        load: function () {},
+        unload: function () {},
+        teardown: function () {},
     });
     Finch.call("/bar");
     Finch.call("/home/news");
@@ -208,30 +208,30 @@ function test_Finch() {
     Finch.call("/foo/bar");
     Finch.call("/baz");
     Finch.route("/home", {
-        setup: function(bindings, next) {
+        setup: function (bindings, next) {
             return next();
         },
-        load: function(bindings, next) {
+        load: function (bindings, next) {
             return next();
         },
-        unload: function(bindings, next) {
+        unload: function (bindings, next) {
             return next();
         },
-        teardown: function(bindings, next) {
+        teardown: function (bindings, next) {
             return next();
         },
     });
     Finch.route("[/home]/news", {
-        setup: function(bindings, next) {
+        setup: function (bindings, next) {
             return next();
         },
-        load: function(bindings, next) {
+        load: function (bindings, next) {
             return next();
         },
-        unload: function(bindings, next) {
+        unload: function (bindings, next) {
             return next();
         },
-        teardown: function(bindings, next) {
+        teardown: function (bindings, next) {
             return next();
         },
     });
@@ -239,9 +239,8 @@ function test_Finch() {
     Finch.call("/home/news");
     Finch.call("/foo");
 
-    Finch.route("/", function(bindings) {
-        return Finch.observe(["x"], function(x) {
-        });
+    Finch.route("/", function (bindings) {
+        return Finch.observe(["x"], function (x) {});
     });
     Finch.call("/?x=123");
     Finch.call("/?x=123.456");
@@ -256,8 +255,7 @@ function test_Finch() {
     Finch.call("/?x=true");
     Finch.call("/?x=false");
     Finch.call("/?x=stuff");
-    Finch.route("/:x", function(_arg) {
-    });
+    Finch.route("/:x", function (_arg) {});
     Finch.call("/123");
     Finch.call("/123.456");
     Finch.call("/true");
@@ -287,12 +285,18 @@ function test_Finch() {
     Finch.navigate({
         foos: "baz",
     });
-    Finch.navigate({
-        hello: "world",
-    }, true);
-    Finch.navigate({
-        foos: null,
-    }, true);
+    Finch.navigate(
+        {
+            hello: "world",
+        },
+        true,
+    );
+    Finch.navigate(
+        {
+            foos: null,
+        },
+        true,
+    );
     Finch.navigate("/home/news", true);
     Finch.navigate("/hello world", {});
     Finch.navigate("/hello world", {
@@ -301,9 +305,12 @@ function test_Finch() {
     Finch.navigate({
         foo: "baz baz",
     });
-    Finch.navigate({
-        hello: "world world",
-    }, true);
+    Finch.navigate(
+        {
+            hello: "world world",
+        },
+        true,
+    );
     Finch.navigate("/home?foo=bar", {
         hello: "world",
     });
@@ -321,9 +328,13 @@ function test_Finch() {
         free: "birds",
         hello: "worlds",
     });
-    Finch.navigate("#/home/news", {
-        foo: "bar",
-    }, true);
+    Finch.navigate(
+        "#/home/news",
+        {
+            foo: "bar",
+        },
+        true,
+    );
     Finch.navigate("/home/news");
     Finch.navigate("../");
     Finch.navigate("./");
@@ -333,31 +344,29 @@ function test_Finch() {
 
     Finch.listen();
     Finch.ignore();
-    Finch.route("/home", function(bindings, continuation) {
-    });
-    Finch.route("/foo", function(bindings, continuation) {
-    });
+    Finch.route("/home", function (bindings, continuation) {});
+    Finch.route("/foo", function (bindings, continuation) {});
     Finch.call("home");
     Finch.call("foo");
     Finch.abort();
     Finch.call("foo");
     Finch.route("/", {
-        "setup": cb.slash_setup = this.stub(),
-        "load": cb.slash_load = this.stub(),
-        "unload": cb.slash_unload = this.stub(),
-        "teardown": cb.slash_teardown = this.stub(),
+        setup: (cb.slash_setup = this.stub()),
+        load: (cb.slash_load = this.stub()),
+        unload: (cb.slash_unload = this.stub()),
+        teardown: (cb.slash_teardown = this.stub()),
     });
     Finch.route("[/]users/profile", {
-        "setup": cb.profile_setup = this.stub(),
-        "load": cb.profile_load = this.stub(),
-        "unload": cb.profile_unload = this.stub(),
-        "teardown": cb.profile_teardown = this.stub(),
+        setup: (cb.profile_setup = this.stub()),
+        load: (cb.profile_load = this.stub()),
+        unload: (cb.profile_unload = this.stub()),
+        teardown: (cb.profile_teardown = this.stub()),
     });
     Finch.route("[/]:page", {
-        "setup": cb.page_setup = this.stub(),
-        "load": cb.page_load = this.stub(),
-        "unload": cb.page_unload = this.stub(),
-        "teardown": cb.page_teardown = this.stub(),
+        setup: (cb.page_setup = this.stub()),
+        load: (cb.page_load = this.stub()),
+        unload: (cb.page_unload = this.stub()),
+        teardown: (cb.page_teardown = this.stub()),
     });
     Finch.call("/users");
 }

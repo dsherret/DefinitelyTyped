@@ -38,7 +38,14 @@ declare namespace bodyParserXml {
          * where buf is a Buffer of the raw request body and encoding is the encoding of the request.
          * The parsing can be aborted by throwing an error.
          */
-        verify?: ((req: Request, res: Response, buf: Buffer, encoding: BufferEncoding) => void) | undefined;
+        verify?:
+            | ((
+                  req: Request,
+                  res: Response,
+                  buf: Buffer,
+                  encoding: BufferEncoding,
+              ) => void)
+            | undefined;
         /**
          * This option controls the behaviour of the XML parser
          */

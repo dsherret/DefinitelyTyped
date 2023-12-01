@@ -7,7 +7,8 @@ const mandatoryOptions = {
 
 const verifyOptions = {
     pass: "Qwerty12?",
-    encoded: "$argon2d$v=19$m=1024,t=1,p=1$c29tZXNhbHQ$TOg+KXa3SC9Wv+UvX9HP7NUsOY/0IM4b1PlasiUwhHs",
+    encoded:
+        "$argon2d$v=19$m=1024,t=1,p=1$c29tZXNhbHQ$TOg+KXa3SC9Wv+UvX9HP7NUsOY/0IM4b1PlasiUwhHs",
 };
 
 (async () => {
@@ -29,13 +30,25 @@ const verifyOptions = {
     // $ExpectType string
     (await argon2.hash({ ...mandatoryOptions, time: 1 })).encoded;
     // $ExpectType string
-    const encodedSecret = (await argon2.hash({ ...mandatoryOptions, secret: new Uint8Array([1, 2, 3]) })).encoded;
+    const encodedSecret = (
+        await argon2.hash({
+            ...mandatoryOptions,
+            secret: new Uint8Array([1, 2, 3]),
+        })
+    ).encoded;
     // $ExpectType string
-    const encodedAdditional = (await argon2.hash({ ...mandatoryOptions, ad: new Uint8Array([1, 2, 3]) })).encoded;
+    const encodedAdditional = (
+        await argon2.hash({
+            ...mandatoryOptions,
+            ad: new Uint8Array([1, 2, 3]),
+        })
+    ).encoded;
     // $ExpectType string
-    (await argon2.hash({ ...mandatoryOptions, type: argon2.ArgonType.Argon2d })).encoded;
+    (await argon2.hash({ ...mandatoryOptions, type: argon2.ArgonType.Argon2d }))
+        .encoded;
     // $ExpectType string
-    (await argon2.hash({ ...mandatoryOptions, type: argon2.ArgonType.Argon2i })).encoded;
+    (await argon2.hash({ ...mandatoryOptions, type: argon2.ArgonType.Argon2i }))
+        .encoded;
 
     // $ExpectType undefined
     await argon2.verify(verifyOptions);

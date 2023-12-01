@@ -27,14 +27,14 @@ import * as Stream from "mithril/stream";
 
 {
     const s = Stream<number>();
-    const doubled = Stream.combine(s => s() * 2, [s]);
+    const doubled = Stream.combine((s) => s() * 2, [s]);
     s(2);
     console.assert(doubled() === 4);
 }
 
 {
     const s = Stream(2);
-    const doubled = Stream.combine(s => s() * 2, [s]);
+    const doubled = Stream.combine((s) => s() * 2, [s]);
     console.assert(doubled() === 4);
 }
 
@@ -65,8 +65,8 @@ import * as Stream from "mithril/stream";
 {
     let count = 0;
     const a = Stream<number>();
-    const b = Stream.combine(a => a() * 2, [a]);
-    const c = Stream.combine(a => a() * a(), [a]);
+    const b = Stream.combine((a) => a() * 2, [a]);
+    const c = Stream.combine((a) => a() * a(), [a]);
     const d = Stream.combine(
         (b, c) => {
             count++;
@@ -82,8 +82,8 @@ import * as Stream from "mithril/stream";
 {
     let count = 0;
     const a = Stream(3);
-    const b = Stream.combine(a => a() * 2, [a]);
-    const c = Stream.combine(a => a() * a(), [a]);
+    const b = Stream.combine((a) => a() * 2, [a]);
+    const c = Stream.combine((a) => a() * a(), [a]);
     const d = Stream.combine(
         (b, c) => {
             count++;
@@ -128,26 +128,26 @@ import * as Stream from "mithril/stream";
 
 {
     const a = Stream(1);
-    const b = Stream.combine(a => undefined, [a]);
+    const b = Stream.combine((a) => undefined, [a]);
 
     console.assert(b() === undefined);
 }
 
 {
     const a = Stream(1);
-    const b = Stream.combine(a => Stream(2), [a]);
+    const b = Stream.combine((a) => Stream(2), [a]);
     console.assert(b()() === 2);
 }
 
 {
     const a = Stream(1);
-    const b = Stream.combine(a => Stream(), [a]);
+    const b = Stream.combine((a) => Stream(), [a]);
     console.assert(b()() === undefined);
 }
 
 {
     const s = Stream(2);
-    const doubled = Stream.lift(v => v * 2, s);
+    const doubled = Stream.lift((v) => v * 2, s);
     console.assert(doubled() === 4);
 }
 
@@ -186,7 +186,7 @@ import * as Stream from "mithril/stream";
 
     const ab1 = Stream.merge([a, b]);
     value = ab1()[0] + ab1()[1];
-    const ab2: Stream<number[]> = Stream.merge([a, b]).map(data => {
+    const ab2: Stream<number[]> = Stream.merge([a, b]).map((data) => {
         value = data[0] + data[1];
         return data;
     });
@@ -202,7 +202,7 @@ import * as Stream from "mithril/stream";
 
 {
     const s = Stream<number>();
-    const doubled = Stream.combine(stream => stream() * 2, [s]);
+    const doubled = Stream.combine((stream) => stream() * 2, [s]);
     s.end(true);
     s(3);
     console.assert(doubled() === undefined);
@@ -210,7 +210,7 @@ import * as Stream from "mithril/stream";
 
 {
     const s = Stream(2);
-    const doubled = Stream.combine(stream => stream() * 2, [s]);
+    const doubled = Stream.combine((stream) => stream() * 2, [s]);
     s.end(true);
     s(3);
     console.assert(doubled() === 4);
@@ -219,14 +219,14 @@ import * as Stream from "mithril/stream";
 {
     const s = Stream(2);
     s.end(true);
-    const doubled = Stream.combine(stream => stream() * 2, [s]);
+    const doubled = Stream.combine((stream) => stream() * 2, [s]);
     s(3);
     console.assert(doubled() === undefined);
 }
 
 {
     const s = Stream(2);
-    const doubled = Stream.combine(stream => stream() * 2, [s]);
+    const doubled = Stream.combine((stream) => stream() * 2, [s]);
     doubled.end(true);
     s(4);
     console.assert(doubled() === 4);
@@ -243,7 +243,7 @@ import * as Stream from "mithril/stream";
 
 {
     const s = Stream(2);
-    const t = s.map(n => (n % 2 === 0 ? n : Stream.SKIP));
+    const t = s.map((n) => (n % 2 === 0 ? n : Stream.SKIP));
     s(3);
     const evenNum: number = t();
     console.assert(evenNum === 2);
@@ -258,7 +258,11 @@ import * as Stream from "mithril/stream";
 
 {
     const parent = Stream<number>();
-    const child = Stream.scan((arr, p) => arr.concat(p), [] as number[], parent);
+    const child = Stream.scan(
+        (arr, p) => arr.concat(p),
+        [] as number[],
+        parent,
+    );
     parent(7);
 }
 

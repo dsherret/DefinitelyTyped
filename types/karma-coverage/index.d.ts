@@ -6,7 +6,11 @@ declare module "karma" {
         /**
          * {@link https://github.com/karma-runner/karma-coverage/blob/v1.1.2/docs/configuration.md }
          */
-        coverageReporter?: KarmaCoverageReporter & { reporters?: KarmaCoverageReporter[] | undefined } | undefined;
+        coverageReporter?:
+            | (KarmaCoverageReporter & {
+                  reporters?: KarmaCoverageReporter[] | undefined;
+              })
+            | undefined;
     }
 
     /** Reporter type */
@@ -85,13 +89,17 @@ declare module "karma" {
          * It is possible to override this behavior and point out an instrumenter
          * for the files matching a specific pattern.
          */
-        instrumenter?: {
-            [key: string]: string;
-        } | undefined;
+        instrumenter?:
+            | {
+                  [key: string]: string;
+              }
+            | undefined;
 
         instrumenters?: Record<string, any> | undefined;
 
-        instrumenterOptions?: Record<string, Record<string, unknown>> | undefined;
+        instrumenterOptions?:
+            | Record<string, Record<string, unknown>>
+            | undefined;
 
         /**
          * If set to true, then CoffeeScript files instrumented with Ibrik will use

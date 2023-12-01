@@ -31,12 +31,16 @@ declare var aboutWindow: ASPxClientPopupControl;
 declare var offersZone: ASPxClientDockZone;
 
 namespace DXDemo {
-    function showPage(page: string, params: { [key: string]: any }, skipHistory?: boolean): void {
+    function showPage(
+        page: string,
+        params: { [key: string]: any },
+        skipHistory?: boolean,
+    ): void {
         var queryString = getQueryString(params || {});
         hiddenField.Set("page", page);
         hiddenField.Set("parameters", queryString);
         hideMenu();
-        var uri = queryString.length ? (page + "?" + queryString) : page;
+        var uri = queryString.length ? page + "?" + queryString : page;
         try {
             if (!skipHistory && window.history && window.history.pushState) {
                 window.history.pushState(uri, "", uri || "Default.aspx");
@@ -45,12 +49,17 @@ namespace DXDemo {
         mainCallbackPanel.PerformCallback(uri);
     }
 
-    export function onMainMenuItemClick(s: ASPxClientMenu, e: ASPxClientMenuItemClickEventArgs): void {
+    export function onMainMenuItemClick(
+        s: ASPxClientMenu,
+        e: ASPxClientMenuItemClickEventArgs,
+    ): void {
         switch (e.item.name) {
             case "login":
                 hideMenu();
-                setTimeout(function() {
-                    loginPopup.ShowAtElementByID("MainCallbackPanel_ContentPane");
+                setTimeout(function () {
+                    loginPopup.ShowAtElementByID(
+                        "MainCallbackPanel_ContentPane",
+                    );
                 }, 300);
                 break;
             case "offers":
@@ -58,14 +67,17 @@ namespace DXDemo {
                 break;
             default:
                 hideMenu();
-                setTimeout(function() {
+                setTimeout(function () {
                     showAboutWindow();
                 }, 300);
                 break;
         }
     }
 
-    export function onLoginButtonClick(s: ASPxClientButton, e: ASPxClientButtonClickEventArgs): void {
+    export function onLoginButtonClick(
+        s: ASPxClientButton,
+        e: ASPxClientButtonClickEventArgs,
+    ): void {
         loginPopup.Hide();
         showAboutWindow();
     }
@@ -74,8 +86,8 @@ namespace DXDemo {
         if (ASPxClientEdit.ValidateGroup("DateEditors")) {
             showPage("ShowHotels", {
                 location: searchComboBox.GetValue(),
-                checkin: getFormattedDate(<Date> checkInDateEdit.GetValue()),
-                checkout: getFormattedDate(<Date> checkOutDateEdit.GetValue()),
+                checkin: getFormattedDate(<Date>checkInDateEdit.GetValue()),
+                checkout: getFormattedDate(<Date>checkOutDateEdit.GetValue()),
                 rooms: roomsNumberSpinEdit.GetValue() || 1,
                 adults: adultsNumberSpinEdit.GetValue() || 1,
                 children: childrenNumberSpinEdit.GetValue() || 0,
@@ -83,15 +95,24 @@ namespace DXDemo {
         }
     }
 
-    export function onSearchComboBoxIndexChanged(s: ASPxClientComboBox, e: ASPxClientProcessingModeEventArgs): void {
+    export function onSearchComboBoxIndexChanged(
+        s: ASPxClientComboBox,
+        e: ASPxClientProcessingModeEventArgs,
+    ): void {
         hideMenu();
         searchButton.AdjustControl();
     }
 
     export function onIndexOfferCloseClick(index: number): void {
-        var panel = <ASPxClientDockPanel> ASPxClientControl.GetControlCollection().GetByName("OfferDockPanel" + index);
-        var sibPanel = <ASPxClientDockPanel> ASPxClientControl.GetControlCollection().GetByName(
-            "OfferDockPanel" + (index == 1 ? 2 : 1),
+        var panel = <ASPxClientDockPanel>(
+            ASPxClientControl.GetControlCollection().GetByName(
+                "OfferDockPanel" + index,
+            )
+        );
+        var sibPanel = <ASPxClientDockPanel>(
+            ASPxClientControl.GetControlCollection().GetByName(
+                "OfferDockPanel" + (index == 1 ? 2 : 1),
+            )
         );
         panel.Hide();
         sibPanel.MakeFloat();
@@ -103,7 +124,10 @@ namespace DXDemo {
         showPage("", null, false);
     }
 
-    export function onMenuNavButtonCheckedChanged(s: ASPxClientCheckBox, e: ASPxClientProcessingModeEventArgs): void {
+    export function onMenuNavButtonCheckedChanged(
+        s: ASPxClientCheckBox,
+        e: ASPxClientProcessingModeEventArgs,
+    ): void {
         var mainContainer = mainCallbackPanel.GetMainElement();
         if (s.GetChecked()) {
             backSlider.Pause();
@@ -114,7 +138,10 @@ namespace DXDemo {
         }
     }
 
-    export function onBackNavButtonClick(s: ASPxClientButton, e: ASPxClientButtonClickEventArgs): void {
+    export function onBackNavButtonClick(
+        s: ASPxClientButton,
+        e: ASPxClientButtonClickEventArgs,
+    ): void {
         var params = getCurrentQueryParams();
         switch (getCurrentPage()) {
             case "PrintInvoice":
@@ -122,7 +149,9 @@ namespace DXDemo {
                 break;
             case "Booking":
                 if (bookingPageControl.GetActiveTabIndex() > 0) {
-                    bookingPageControl.SetActiveTabIndex(bookingPageControl.GetActiveTabIndex() - 1);
+                    bookingPageControl.SetActiveTabIndex(
+                        bookingPageControl.GetActiveTabIndex() - 1,
+                    );
                 } else {
                     showPage("ShowRooms", params, false);
                 }
@@ -146,7 +175,9 @@ namespace DXDemo {
         params["minprice"] = nightyRateTrackBar.GetPositionStart();
         params["maxprice"] = nightyRateTrackBar.GetPositionEnd();
         params["custrating"] = customerRatingTrackBar.GetPosition();
-        params["ourrating"] = ourRatingCheckBoxList.GetSelectedValues().join(",");
+        params["ourrating"] = ourRatingCheckBoxList
+            .GetSelectedValues()
+            .join(",");
         showPage("ShowHotels", params);
     }
 
@@ -162,15 +193,27 @@ namespace DXDemo {
         showPage("ShowDetails", queryParams);
     }
 
-    export function onShowStartFilterButtonClick(s: ASPxClientButton, e: ASPxClientButtonClickEventArgs): void {
-        startFilterPopupControl.ShowAtElementByID("MainCallbackPanel_ContentPane");
+    export function onShowStartFilterButtonClick(
+        s: ASPxClientButton,
+        e: ASPxClientButtonClickEventArgs,
+    ): void {
+        startFilterPopupControl.ShowAtElementByID(
+            "MainCallbackPanel_ContentPane",
+        );
     }
 
-    export function onChangeStartFilterButtonClick(s: ASPxClientButton, e: ASPxClientButtonClickEventArgs): void {
+    export function onChangeStartFilterButtonClick(
+        s: ASPxClientButton,
+        e: ASPxClientButtonClickEventArgs,
+    ): void {
         if (ASPxClientEdit.ValidateGroup("DateEditors")) {
             var params = getCurrentQueryParams();
-            params["checkin"] = getFormattedDate(<Date> checkInDateEdit.GetValue());
-            params["checkout"] = getFormattedDate(<Date> checkOutDateEdit.GetValue());
+            params["checkin"] = getFormattedDate(
+                <Date>checkInDateEdit.GetValue(),
+            );
+            params["checkout"] = getFormattedDate(
+                <Date>checkOutDateEdit.GetValue(),
+            );
             params["rooms"] = roomsNumberSpinEdit.GetValue() || 1;
             params["adults"] = adultsNumberSpinEdit.GetValue() || 1;
             params["children"] = childrenNumberSpinEdit.GetValue() || 0;
@@ -195,14 +238,22 @@ namespace DXDemo {
         showPage("ShowDetails", queryParams);
     }
 
-    export function onRoomImageNavItemClick(roomID: string, pictureName: string): void {
-        setTimeout(function() {
+    export function onRoomImageNavItemClick(
+        roomID: string,
+        pictureName: string,
+    ): void {
+        setTimeout(function () {
             imagePopupControl.PerformCallback(roomID + "|" + pictureName);
-            imagePopupControl.ShowAtElementByID("MainCallbackPanel_ContentPane");
+            imagePopupControl.ShowAtElementByID(
+                "MainCallbackPanel_ContentPane",
+            );
         }, 500);
     }
 
-    export function onRoomsNavBarExpandedChanged(s: ASPxClientNavBar, e: ASPxClientNavBarGroupEventArgs): void {
+    export function onRoomsNavBarExpandedChanged(
+        s: ASPxClientNavBar,
+        e: ASPxClientNavBarGroupEventArgs,
+    ): void {
         ASPxClientControl.AdjustControls(s.GetMainElement());
     }
 
@@ -221,16 +272,24 @@ namespace DXDemo {
 
         switch (step) {
             case 1:
-                valid = ASPxClientEdit.ValidateEditorsInContainer(bookingPageControl.GetMainElement(), "Account");
+                valid = ASPxClientEdit.ValidateEditorsInContainer(
+                    bookingPageControl.GetMainElement(),
+                    "Account",
+                );
                 if (valid) {
                     emailTextBox.SetValue(accountEmailTextBox.GetValue());
-                    creditCardEmailTextBox.SetValue(accountEmailTextBox.GetValue());
+                    creditCardEmailTextBox.SetValue(
+                        accountEmailTextBox.GetValue(),
+                    );
                     showPage("Booking", getCurrentQueryParams());
                     return;
                 }
                 break;
             case 2:
-                valid = ASPxClientEdit.ValidateEditorsInContainer(bookingPageControl.GetMainElement(), "RoomDetails");
+                valid = ASPxClientEdit.ValidateEditorsInContainer(
+                    bookingPageControl.GetMainElement(),
+                    "RoomDetails",
+                );
                 emailTextBox.SetValue(accountEmailTextBox.GetValue());
                 break;
             case 3:
@@ -241,9 +300,15 @@ namespace DXDemo {
                         "CreditCard",
                     );
                 } else if (paymentType == 1) {
-                    valid = ASPxClientEdit.ValidateEditorsInContainer(bookingPageControl.GetMainElement(), "Cash");
+                    valid = ASPxClientEdit.ValidateEditorsInContainer(
+                        bookingPageControl.GetMainElement(),
+                        "Cash",
+                    );
                 } else if (paymentType == 2) {
-                    valid = ASPxClientEdit.ValidateEditorsInContainer(bookingPageControl.GetMainElement(), "PayPal");
+                    valid = ASPxClientEdit.ValidateEditorsInContainer(
+                        bookingPageControl.GetMainElement(),
+                        "PayPal",
+                    );
                 }
                 break;
         }
@@ -253,7 +318,10 @@ namespace DXDemo {
         }
     }
 
-    export function onAccountCaptchaHiddenFieldInit(s: ASPxClientHiddenField, e: ASPxClientEventArgs): void {
+    export function onAccountCaptchaHiddenFieldInit(
+        s: ASPxClientHiddenField,
+        e: ASPxClientEventArgs,
+    ): void {
         if (s.Get("IsCaptchaValid")) {
             bookingPageControl.GetTab(1).SetEnabled(true);
             bookingPageControl.SetActiveTabIndex(1);
@@ -271,8 +339,12 @@ namespace DXDemo {
     export function onOfferClick(offerID: string): void {
         offerFormPopup.SetContentHtml("");
         offerFormPopup.PerformCallback(offerID);
-        var panel = <ASPxClientDockPanel> ASPxClientControl.GetControlCollection().GetByName("DockPanel" + offerID);
-        var panelElement = <HTMLElement> panel.GetMainElement();
+        var panel = <ASPxClientDockPanel>(
+            ASPxClientControl.GetControlCollection().GetByName(
+                "DockPanel" + offerID,
+            )
+        );
+        var panelElement = <HTMLElement>panel.GetMainElement();
         if (panelElement.offsetWidth < 330 || panelElement.offsetHeight < 250) {
             offerFormPopup.SetWidth(400);
             offerFormPopup.SetHeight(280);
@@ -284,13 +356,16 @@ namespace DXDemo {
         }
     }
 
-    export function onSpecialOfferCheckButtonClick(hotelID: string, locationID: string): void {
+    export function onSpecialOfferCheckButtonClick(
+        hotelID: string,
+        locationID: string,
+    ): void {
         if (ASPxClientEdit.ValidateGroup("DateEditors")) {
             var queryParams: { [key: string]: any } = {
                 location: locationID,
                 hotelID: hotelID,
-                checkin: getFormattedDate(<Date> checkInDateEdit.GetValue()),
-                checkout: getFormattedDate(<Date> checkOutDateEdit.GetValue()),
+                checkin: getFormattedDate(<Date>checkInDateEdit.GetValue()),
+                checkout: getFormattedDate(<Date>checkOutDateEdit.GetValue()),
                 rooms: roomsSpinEdit.GetValue() || 1,
                 adults: adultsSpinEdit.GetValue() || 1,
                 children: childrenSpinEdit.GetValue() || 0,
@@ -304,7 +379,11 @@ namespace DXDemo {
     }
 
     export function onControlsInit(): void {
-        ASPxClientUtils.AttachEventToElement(window, "popstate", onHistoryPopState);
+        ASPxClientUtils.AttachEventToElement(
+            window,
+            "popstate",
+            onHistoryPopState,
+        );
         var pathParts = document.location.href.split("/");
         var url = pathParts[pathParts.length - 1];
         try {
@@ -331,15 +410,18 @@ namespace DXDemo {
         hotelDetailsCallbackPanel.PerformCallback(s.GetValue().toString());
     }
 
-    export function onInputKeyDown(s: ASPxClientTextBox, e: ASPxClientEditKeyEventArgs): void {
+    export function onInputKeyDown(
+        s: ASPxClientTextBox,
+        e: ASPxClientEditKeyEventArgs,
+    ): void {
         var keyCode = ASPxClientUtils.GetKeyCode(e.htmlEvent);
         if (keyCode == 13) {
-            (<HTMLElement> s.GetInputElement()).blur();
+            (<HTMLElement>s.GetInputElement()).blur();
         }
     }
 
     function getCurrentPage(): string {
-        var hfPage = <string> hiddenField.Get("page");
+        var hfPage = <string>hiddenField.Get("page");
         if (hfPage) {
             return hfPage;
         }
@@ -364,40 +446,66 @@ namespace DXDemo {
 
     var _resizeSpecialOffersTimeoutID = -1;
     function onWindowResize(): void {
-        switch (<string> hiddenField.Get("page")) {
+        switch (<string>hiddenField.Get("page")) {
             case "SpecialOffers":
                 if (_resizeSpecialOffersTimeoutID == -1) {
-                    _resizeSpecialOffersTimeoutID = setTimeout(resizeSpecialOffers, 200);
+                    _resizeSpecialOffersTimeoutID = setTimeout(
+                        resizeSpecialOffers,
+                        200,
+                    );
                 }
                 break;
         }
-        hidePopups("AboutWindow", "StartFilterPopupControl", "LoginPopup", "OfferFormPopup", "ImagePopupControl");
+        hidePopups(
+            "AboutWindow",
+            "StartFilterPopupControl",
+            "LoginPopup",
+            "OfferFormPopup",
+            "ImagePopupControl",
+        );
     }
 
     function hidePopups(...names: string[]): void {
         for (var i = 0; i < names.length; i++) {
-            var popupControl = <ASPxClientPopupControl> ASPxClientControl.GetControlCollection().GetByName(names[i]);
+            var popupControl = <ASPxClientPopupControl>(
+                ASPxClientControl.GetControlCollection().GetByName(names[i])
+            );
             popupControl.Hide();
         }
     }
 
     function resizeSpecialOffers(): void {
         for (var i = 1; i <= 4; i++) {
-            var panel = <ASPxClientDockPanel> ASPxClientControl.GetControlCollection().GetByName("DockPanel" + i);
+            var panel = <ASPxClientDockPanel>(
+                ASPxClientControl.GetControlCollection().GetByName(
+                    "DockPanel" + i,
+                )
+            );
             if (panel && panel.IsVisible()) {
                 var zone = panel.GetOwnerZone();
-                zone.SetWidth((<HTMLElement> (<HTMLElement> zone.GetMainElement()).parentNode).offsetWidth);
+                zone.SetWidth(
+                    (<HTMLElement>(
+                        (<HTMLElement>zone.GetMainElement()).parentNode
+                    )).offsetWidth,
+                );
             }
         }
         _resizeSpecialOffersTimeoutID = -1;
     }
 
     function getFormattedDate(date: Date): string {
-        return (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getFullYear();
+        return (
+            date.getMonth() +
+            1 +
+            "-" +
+            date.getDate() +
+            "-" +
+            date.getFullYear()
+        );
     }
 
     function getCurrentQueryParams(): { [key: string]: any } {
-        var hfParams = <string> hiddenField.Get("parameters");
+        var hfParams = <string>hiddenField.Get("parameters");
         if (hfParams) {
             return getParamsByQueryString(hfParams);
         }
@@ -420,14 +528,18 @@ namespace DXDemo {
         return "";
     }
 
-    function getParamsByQueryString(queryString: string): { [key: string]: string } {
+    function getParamsByQueryString(queryString: string): {
+        [key: string]: string;
+    } {
         var result: { [key: string]: any } = {};
         if (queryString) {
             var queryStringArray = queryString.split("&");
             for (var i = 0; i < queryStringArray.length; i++) {
                 var part = queryStringArray[i].split("=");
                 if (part.length != 2) continue;
-                result[part[0]] = decodeURIComponent(part[1].replace(/\+/g, " "));
+                result[part[0]] = decodeURIComponent(
+                    part[1].replace(/\+/g, " "),
+                );
             }
         }
         return result;

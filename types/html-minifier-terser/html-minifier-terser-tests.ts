@@ -1,17 +1,17 @@
 import HtmlMinifier, { minify } from "html-minifier-terser";
 
 // $ExpectType Promise<string>
-HtmlMinifier.minify("<p title=\"blah\" id=\"moo\">foo</p>");
+HtmlMinifier.minify('<p title="blah" id="moo">foo</p>');
 
 (async () => {
     // $ExpectType string
-    await HtmlMinifier.minify("<p title=\"blah\" id=\"moo\">foo</p>");
+    await HtmlMinifier.minify('<p title="blah" id="moo">foo</p>');
 
     // $ExpectType string
-    await minify("<p title=\"blah\" id=\"moo\">foo</p>", {});
+    await minify('<p title="blah" id="moo">foo</p>', {});
 
     // $ExpectType string
-    await minify("<p title=\"blah\" id=\"moo\">foo</p>", {
+    await minify('<p title="blah" id="moo">foo</p>', {
         caseSensitive: true,
         collapseBooleanAttributes: true,
         collapseInlineTagWhitespace: true,
@@ -37,7 +37,7 @@ HtmlMinifier.minify("<p title=\"blah\" id=\"moo\">foo</p>");
         preventAttributesEscaping: true,
         processConditionalComments: true,
         processScripts: ["text/v-text"],
-        quoteCharacter: "\"",
+        quoteCharacter: '"',
         removeAttributeQuotes: true,
         removeComments: true,
         removeEmptyAttributes: true,

@@ -13,10 +13,10 @@ const nodes = [
     },
 ];
 
-type INode = typeof nodes[number];
+type INode = (typeof nodes)[number];
 
 const links = [{ source: "node1", target: "node2" }];
-type ILink = typeof links[number];
+type ILink = (typeof links)[number];
 
 export class Example extends React.Component {
     ref: React.MutableRefObject<Graph<INode, ILink> | null> = React.createRef();
@@ -43,8 +43,8 @@ export class Example extends React.Component {
                             strokeWidth: 100,
                             svg: "<line />",
                             symbolType: "circle",
-                            viewGenerator: node => <div>{node.name}</div>,
-                            labelProperty: node => node.name || "No name",
+                            viewGenerator: (node) => <div>{node.name}</div>,
+                            labelProperty: (node) => node.name || "No name",
                             labelPosition: "bottom",
                         },
                         link: {
@@ -91,10 +91,18 @@ export class Example extends React.Component {
                     onMouseOverNode={(nodeId: string) => {}}
                     onMouseOutNode={(nodeId: string) => {}}
                     onClickLink={(source: string, target: string) => {}}
-                    onRightClickLink={(event: MouseEvent, source: string, target: string) => {}}
+                    onRightClickLink={(
+                        event: MouseEvent,
+                        source: string,
+                        target: string,
+                    ) => {}}
                     onMouseOverLink={(source: string, target: string) => {}}
                     onMouseOutLink={(source: string, target: string) => {}}
-                    onNodePositionChange={(nodeId: string, x: number, y: number) => {}}
+                    onNodePositionChange={(
+                        nodeId: string,
+                        x: number,
+                        y: number,
+                    ) => {}}
                     onZoomChange={(previousZoom: number, newZoom: number) => {}}
                 />
                 <Link />

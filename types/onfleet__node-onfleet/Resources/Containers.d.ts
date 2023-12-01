@@ -1,5 +1,8 @@
 declare class Container {
-    get(id: string, group: "organizations" | "teams" | "workers"): Promise<Container.OnfleetContainer>;
+    get(
+        id: string,
+        group: "organizations" | "teams" | "workers",
+    ): Promise<Container.OnfleetContainer>;
 }
 
 declare namespace Container {

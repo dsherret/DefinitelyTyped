@@ -2,8 +2,7 @@ import textr = require("textr");
 
 textr();
 
-textr()
-    .use(() => {});
+textr().use(() => {});
 
 textr()
     .use(() => {})

@@ -16,8 +16,8 @@ const ctors = [
 
 const optionsTests: Options[] = [
     { ignore: /^.+-one/ },
-    { ignore: name => name.length <= 4 },
-    { formatter: name => name.split("").reverse().join("") },
+    { ignore: (name) => name.length <= 4 },
+    { formatter: (name) => name.split("").reverse().join("") },
 ];
 const [options] = optionsTests;
 

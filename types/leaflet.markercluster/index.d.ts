@@ -44,7 +44,9 @@ declare module "leaflet" {
         /*
          * Function used to create the cluster icon
          */
-        iconCreateFunction?: ((cluster: MarkerCluster) => Icon | DivIcon) | undefined;
+        iconCreateFunction?:
+            | ((cluster: MarkerCluster) => Icon | DivIcon)
+            | undefined;
 
         /*
          * Map pane where the cluster icons will be added.
@@ -107,7 +109,9 @@ declare module "leaflet" {
         /*
          * Custom function to calculate spiderfy shape positions
          */
-        spiderfyShapePositions?: ((count: number, centerPoint: Point) => Point[]) | undefined;
+        spiderfyShapePositions?:
+            | ((count: number, centerPoint: Point) => Point[])
+            | undefined;
 
         /*
          * Increase from 1 to increase the distance away from the center that spiderfied markers are placed.
@@ -141,7 +145,13 @@ declare module "leaflet" {
          * Callback function that is called at the end of each chunkInterval.
          * Typically used to implement a progress indicator. Defaults to null.
          */
-        chunkProgress?: ((processedMarkers: number, totalMarkers: number, elapsedTime: number) => void) | undefined;
+        chunkProgress?:
+            | ((
+                  processedMarkers: number,
+                  totalMarkers: number,
+                  elapsedTime: number,
+              ) => void)
+            | undefined;
 
         /*
          * Options to pass when creating the L.Polygon(points, options) to show the bounds of a cluster.
@@ -195,23 +205,71 @@ declare module "leaflet" {
      * Extend Evented to include cluster events.
      */
     interface Evented {
-        on(type: "spiderfied" | "unspiderfied", fn?: SpiderfyEventHandlerFn, context?: any): this;
-        on(type: "animationend", fn?: AnimationEndEventHandlerFn, context?: any): this;
+        on(
+            type: "spiderfied" | "unspiderfied",
+            fn?: SpiderfyEventHandlerFn,
+            context?: any,
+        ): this;
+        on(
+            type: "animationend",
+            fn?: AnimationEndEventHandlerFn,
+            context?: any,
+        ): this;
 
-        off(type: "spiderfied" | "unspiderfied", fn?: SpiderfyEventHandlerFn, context?: any): this;
-        off(type: "animationend", fn?: AnimationEndEventHandlerFn, context?: any): this;
+        off(
+            type: "spiderfied" | "unspiderfied",
+            fn?: SpiderfyEventHandlerFn,
+            context?: any,
+        ): this;
+        off(
+            type: "animationend",
+            fn?: AnimationEndEventHandlerFn,
+            context?: any,
+        ): this;
 
-        once(type: "spiderfied" | "unspiderfied", fn?: SpiderfyEventHandlerFn, context?: any): this;
-        once(type: "animationend", fn?: AnimationEndEventHandlerFn, context?: any): this;
+        once(
+            type: "spiderfied" | "unspiderfied",
+            fn?: SpiderfyEventHandlerFn,
+            context?: any,
+        ): this;
+        once(
+            type: "animationend",
+            fn?: AnimationEndEventHandlerFn,
+            context?: any,
+        ): this;
 
-        addEventListener(type: "spiderfied" | "unspiderfied", fn?: SpiderfyEventHandlerFn, context?: any): this;
-        addEventListener(type: "animationend", fn?: AnimationEndEventHandlerFn, context?: any): this;
+        addEventListener(
+            type: "spiderfied" | "unspiderfied",
+            fn?: SpiderfyEventHandlerFn,
+            context?: any,
+        ): this;
+        addEventListener(
+            type: "animationend",
+            fn?: AnimationEndEventHandlerFn,
+            context?: any,
+        ): this;
 
-        removeEventListener(type: "spiderfied" | "unspiderfied", fn?: SpiderfyEventHandlerFn, context?: any): this;
-        removeEventListener(type: "animationend", fn?: AnimationEndEventHandlerFn, context?: any): this;
+        removeEventListener(
+            type: "spiderfied" | "unspiderfied",
+            fn?: SpiderfyEventHandlerFn,
+            context?: any,
+        ): this;
+        removeEventListener(
+            type: "animationend",
+            fn?: AnimationEndEventHandlerFn,
+            context?: any,
+        ): this;
 
-        addOneTimeEventListener(type: "spiderfied" | "unspiderfied", fn?: SpiderfyEventHandlerFn, context?: any): this;
-        addOneTimeEventListener(type: "animationend", fn?: AnimationEndEventHandlerFn, context?: any): this;
+        addOneTimeEventListener(
+            type: "spiderfied" | "unspiderfied",
+            fn?: SpiderfyEventHandlerFn,
+            context?: any,
+        ): this;
+        addOneTimeEventListener(
+            type: "animationend",
+            fn?: AnimationEndEventHandlerFn,
+            context?: any,
+        ): this;
     }
 
     class MarkerClusterGroup extends FeatureGroup {
@@ -237,7 +295,13 @@ declare module "leaflet" {
          * If you have customized the clusters icon to use some data from the contained markers,
          * and later that data changes, use this method to force a refresh of the cluster icons.
          */
-        refreshClusters(clusters?: Marker | Marker[] | LayerGroup | { [index: string]: Layer }): this;
+        refreshClusters(
+            clusters?:
+                | Marker
+                | Marker[]
+                | LayerGroup
+                | { [index: string]: Layer },
+        ): this;
 
         /*
          * Returns the total number of markers contained within that cluster.
@@ -264,5 +328,7 @@ declare module "leaflet" {
     /*
      * Create a marker cluster group, optionally given marker cluster group options.
      */
-    function markerClusterGroup(options?: MarkerClusterGroupOptions): MarkerClusterGroup;
+    function markerClusterGroup(
+        options?: MarkerClusterGroupOptions,
+    ): MarkerClusterGroup;
 }

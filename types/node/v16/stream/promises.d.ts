@@ -8,14 +8,16 @@ declare module "stream/promises" {
         PipelineTransform,
     } from "node:stream";
     function finished(
-        stream: NodeJS.ReadableStream | NodeJS.WritableStream | NodeJS.ReadWriteStream,
+        stream:
+            | NodeJS.ReadableStream
+            | NodeJS.WritableStream
+            | NodeJS.ReadWriteStream,
         options?: FinishedOptions,
     ): Promise<void>;
-    function pipeline<A extends PipelineSource<any>, B extends PipelineDestination<A, any>>(
-        source: A,
-        destination: B,
-        options?: PipelineOptions,
-    ): PipelinePromise<B>;
+    function pipeline<
+        A extends PipelineSource<any>,
+        B extends PipelineDestination<A, any>,
+    >(source: A, destination: B, options?: PipelineOptions): PipelinePromise<B>;
     function pipeline<
         A extends PipelineSource<any>,
         T1 extends PipelineTransform<A, any>,
@@ -69,13 +71,19 @@ declare module "stream/promises" {
         options?: PipelineOptions,
     ): PipelinePromise<B>;
     function pipeline(
-        streams: ReadonlyArray<NodeJS.ReadableStream | NodeJS.WritableStream | NodeJS.ReadWriteStream>,
+        streams: ReadonlyArray<
+            | NodeJS.ReadableStream
+            | NodeJS.WritableStream
+            | NodeJS.ReadWriteStream
+        >,
         options?: PipelineOptions,
     ): Promise<void>;
     function pipeline(
         stream1: NodeJS.ReadableStream,
         stream2: NodeJS.ReadWriteStream | NodeJS.WritableStream,
-        ...streams: Array<NodeJS.ReadWriteStream | NodeJS.WritableStream | PipelineOptions>
+        ...streams: Array<
+            NodeJS.ReadWriteStream | NodeJS.WritableStream | PipelineOptions
+        >
     ): Promise<void>;
 }
 declare module "node:stream/promises" {

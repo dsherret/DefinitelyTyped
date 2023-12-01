@@ -1,6 +1,6 @@
 import { Autohook } from "twitter-autohook";
 
-(async ƛ => {
+(async (ƛ) => {
     // $ExpectType Autohook
     const webhook = new Autohook({
         token: "value",
@@ -15,11 +15,14 @@ import { Autohook } from "twitter-autohook";
     // $ExpectType void
     await webhook.removeWebhooks();
 
-    webhook.on("event", event => console.log("Something happened:", event));
+    webhook.on("event", (event) => console.log("Something happened:", event));
 
     // $ExpectType void
     await webhook.start();
 
     // $ExpectType true
-    await webhook.subscribe({ oauth_token: "value", oauth_token_secret: "value" });
+    await webhook.subscribe({
+        oauth_token: "value",
+        oauth_token_secret: "value",
+    });
 })();

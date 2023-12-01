@@ -1,6 +1,6 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     interface User {
         followers: string[];
         name: string;
@@ -25,9 +25,15 @@ import * as R from "ramda";
     );
 
     // $ExpectType (userId: string) => Promise<User>
-    const getUser = R.pipeWith((f: (value: any) => any, res: Promise<unknown>) => res.then(f), [db.getUserById]);
+    const getUser = R.pipeWith(
+        (f: (value: any) => any, res: Promise<unknown>) => res.then(f),
+        [db.getUserById],
+    );
 
     // Should pipe at least on function.
     // @ts-expect-error
-    R.pipeWith((f: (value: any) => any, res: Promise<unknown>) => res.then(f), []);
-});
+    R.pipeWith(
+        (f: (value: any) => any, res: Promise<unknown>) => res.then(f),
+        [],
+    );
+};

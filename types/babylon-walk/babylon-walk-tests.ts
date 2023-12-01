@@ -15,7 +15,11 @@ const ancestorVisitors: walk.visitors<walk.AncestorVisitor> = {
 };
 
 const recursiveVisitors: walk.visitors<walk.RecursiveVisitor> = {
-    File: (node: babelTypes.Node, state: any, next: (node: babelTypes.Node) => void) => {
+    File: (
+        node: babelTypes.Node,
+        state: any,
+        next: (node: babelTypes.Node) => void,
+    ) => {
         state.out = 3;
     },
 };

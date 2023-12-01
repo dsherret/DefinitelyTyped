@@ -5,7 +5,9 @@ declare namespace markdownItPlantuml {
     interface Options {
         closeMarker?: string | undefined;
         diagramName?: string | undefined;
-        generateSource?: ((umlCode: string, pluginOptions: Options) => string) | undefined;
+        generateSource?:
+            | ((umlCode: string, pluginOptions: Options) => string)
+            | undefined;
         imageFormat?: string | undefined;
         openMarker?: string | undefined;
         render?: Renderer.RenderRule | undefined;

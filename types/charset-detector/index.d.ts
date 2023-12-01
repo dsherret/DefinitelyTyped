@@ -32,7 +32,10 @@ declare namespace detect {
          */
         readonly byteStats: readonly number[];
     }
-    type CharsetMatcher = (input: ArrayLike<number>, stats: InputStats) => CharsetMatch | null;
+    type CharsetMatcher = (
+        input: ArrayLike<number>,
+        stats: InputStats,
+    ) => CharsetMatch | null;
     const DEFAULT_CS_RECOGNIZERS: readonly CharsetMatcher[];
     const ALL_CS_RECOGNIZERS: readonly CharsetMatcher[];
 }

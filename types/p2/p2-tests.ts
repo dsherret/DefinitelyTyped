@@ -8,7 +8,10 @@ var world = new p2.World({
 world.defaultContactMaterial = new p2.ContactMaterial(
     new p2.Material(1),
     new p2.Material(2),
-    { friction: 1, restitution: 0 },
+    {
+        friction: 1,
+        restitution: 0,
+    },
 );
 
 // Create an empty dynamic body
@@ -35,16 +38,8 @@ world.addBody(groundBody);
 
 // Create a convex shape. Can use various array types.
 const convex = new p2.Convex({
-    vertices: [
-        new Float32Array([-1, 1]),
-        new Uint32Array([0, -1]),
-        [1, 1],
-    ],
-    axes: [
-        new Float32Array([-1, 1]),
-        new Int32Array([0, -1]),
-        [1, 1],
-    ],
+    vertices: [new Float32Array([-1, 1]), new Uint32Array([0, -1]), [1, 1]],
+    axes: [new Float32Array([-1, 1]), new Int32Array([0, -1]), [1, 1]],
 });
 
 // Test ImpactEvent type
@@ -58,7 +53,12 @@ const eventType: p2.ImpactEvent = {
 };
 
 // Test Constraint
-const contraint = new p2.Constraint(circleBody, groundBody, p2.Constraint.DISTANCE, { wakeUpBodies: true });
+const contraint = new p2.Constraint(
+    circleBody,
+    groundBody,
+    p2.Constraint.DISTANCE,
+    { wakeUpBodies: true },
+);
 
 // To get the trajectories of the bodies,
 // we must step the world forward in time.
@@ -72,7 +72,7 @@ circleBody.applyForce([10, 0]);
 circleBody.applyImpulse([0, 50]);
 
 // The "Game loop". Could be replaced by, for example, requestAnimationFrame.
-setInterval(function() {
+setInterval(function () {
     // The step method moves the bodies forward in time.
     world.step(timeStep);
 

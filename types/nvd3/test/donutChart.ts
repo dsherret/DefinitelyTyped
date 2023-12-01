@@ -13,18 +13,19 @@ namespace nvd3_test_donutChart {
     var width = 350;
 
     var chart1;
-    nv.addGraph(function() {
-        var chart1 = nv.models.pieChart()
-            .x(function(d) {
+    nv.addGraph(function () {
+        var chart1 = nv.models
+            .pieChart()
+            .x(function (d) {
                 return d.key;
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d.y;
             })
             .donut(true)
             .width(width)
             .height(height)
-            .padAngle(.08)
+            .padAngle(0.08)
             .cornerRadius(5)
             .id("donut1"); // allow custom CSS for this one svg
 
@@ -33,7 +34,8 @@ namespace nvd3_test_donutChart {
 
         d3.select("#test1")
             .datum(testdata)
-            .transition().duration(1200)
+            .transition()
+            .duration(1200)
             .call(chart1);
 
         // LISTEN TO WINDOW RESIZE
@@ -65,12 +67,13 @@ namespace nvd3_test_donutChart {
     });
 
     var chart2;
-    nv.addGraph(function() {
-        var chart2 = nv.models.pieChart()
-            .x(function(d) {
+    nv.addGraph(function () {
+        var chart2 = nv.models
+            .pieChart()
+            .x(function (d) {
                 return d.key;
             })
-            .y(function(d) {
+            .y(function (d) {
                 return d.y;
             })
             // .labelThreshold(.08)
@@ -85,17 +88,18 @@ namespace nvd3_test_donutChart {
 
         // MAKES IT HALF CIRCLE
         chart2.pie
-            .startAngle(function(d) {
+            .startAngle(function (d) {
                 return d.startAngle / 2 - Math.PI / 2;
             })
-            .endAngle(function(d) {
+            .endAngle(function (d) {
                 return d.endAngle / 2 - Math.PI / 2;
             });
 
         d3.select("#test2")
             // .datum(historicalBarChart)
             .datum(testdata)
-            .transition().duration(1200)
+            .transition()
+            .duration(1200)
             .call(chart2);
 
         return chart2;

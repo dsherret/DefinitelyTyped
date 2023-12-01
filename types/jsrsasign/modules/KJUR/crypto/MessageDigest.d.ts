@@ -39,7 +39,10 @@ declare namespace jsrsasign.KJUR.crypto {
             ripemd160: number;
         };
 
-        constructor(params: { alg?: string | undefined; prov?: string | undefined });
+        constructor(params: {
+            alg?: string | undefined;
+            prov?: string | undefined;
+        });
 
         /**
          * set hash algorithm and provider

@@ -1,5 +1,11 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import { createBrowserHistory, push, routerMiddleware, routerReducer, startListener } from "redux-first-routing";
+import {
+    createBrowserHistory,
+    push,
+    routerMiddleware,
+    routerReducer,
+    startListener,
+} from "redux-first-routing";
 
 // Create the history object
 const history = createBrowserHistory();
@@ -27,7 +33,9 @@ const unsubscribe = store.subscribe(() => {
     currentLocation = store.getState().router.pathname;
 
     if (previousLocation !== currentLocation) {
-        console.log(`Location changed from ${previousLocation} to ${currentLocation}`);
+        console.log(
+            `Location changed from ${previousLocation} to ${currentLocation}`,
+        );
         // Render your application reactively here (optionally using a compatible router)
     }
 });

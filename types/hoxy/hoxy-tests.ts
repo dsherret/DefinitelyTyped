@@ -13,7 +13,7 @@ a.listen(3, "0.0.0.0", () => {}); // $ExpectType Proxy
 
 a.log("error"); // $ExpectType Proxy
 a.log("error", process.stderr); // $ExpectType Proxy
-a.log("info", log => {
+a.log("info", (log) => {
     log; // $ExpectType Log
 });
 

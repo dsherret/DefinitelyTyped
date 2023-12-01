@@ -1,6 +1,13 @@
 // documentation taken from http://allenfang.github.io/react-bootstrap-table/docs.html
 
-import { Component, CSSProperties, LegacyRef, ReactElement, ReactNode, SyntheticEvent } from "react";
+import {
+    Component,
+    CSSProperties,
+    LegacyRef,
+    ReactElement,
+    ReactNode,
+    SyntheticEvent,
+} from "react";
 
 /**
  * Table scroll position.
@@ -166,7 +173,10 @@ export interface BootstrapTableProps {
      * we have following functionality you can control: sort, pagination, cellEdit, insertRow, dropRow, filter, search,
      * exportCSV.
      */
-    remote?: boolean | ((remobeObj: RemoteObjSpec) => RemoteObjSpec) | undefined;
+    remote?:
+        | boolean
+        | ((remobeObj: RemoteObjSpec) => RemoteObjSpec)
+        | undefined;
     /**
      * Use keyField to tell table which column is unique. This is same as isKey in <TableHeaderColumn>
      * Tips: react-bootstrap-table support data manipulation(CRUD) so that we need to fetch correct row by a unique column.
@@ -210,7 +220,10 @@ export interface BootstrapTableProps {
      *      return rowIndex % 2 == 0 ? "tr-odd" : "tr-even"; // return a class name.
      *    }
      */
-    trClassName?: string | ((rowData: any, rowIndex: number) => string) | undefined;
+    trClassName?:
+        | string
+        | ((rowData: any, rowIndex: number) => string)
+        | undefined;
     /**
      * Enable row insertion by setting insertRow to true, default is false.
      * If you enable row insertion, there's a button on the upper left side of table.
@@ -363,15 +376,20 @@ export interface BootstrapTableProps {
      * Is an object with three possible fields: sort, filter, search. Each field is a flag to specify whether that
      * action type should cause expanded rows to close. All three fields default to false.
      */
-    autoCollapse?: {
-        sort?: boolean | undefined;
-        filter?: boolean | undefined;
-        search?: boolean | undefined;
-    } | undefined;
+    autoCollapse?:
+        | {
+              sort?: boolean | undefined;
+              filter?: boolean | undefined;
+              search?: boolean | undefined;
+          }
+        | undefined;
     /**
      * Set a style to be used for the table rows. Example: https://github.com/AllenFang/react-bootstrap-table/blob/master/examples/js/style/tr-style-table.js
      */
-    trStyle?: CSSProperties | ((rowData: any, rowIndex: number) => CSSProperties) | undefined;
+    trStyle?:
+        | CSSProperties
+        | ((rowData: any, rowIndex: number) => CSSProperties)
+        | undefined;
     /**
      * Disable the automatic tabIndex for navigating between cells. This can be useful if you have a page with multiple
      * tables on the page, to stop the tab moving to another table. Default is false.
@@ -487,7 +505,12 @@ export interface SelectRow<TRow extends object = any> {
      * If the return value of this (function) is false, the select or deselect action will not be applied.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    onSelect?(row: TRow, isSelected: boolean, event: any, rowIndex: number): boolean | void;
+    onSelect?(
+        row: TRow,
+        isSelected: boolean,
+        event: any,
+        rowIndex: number,
+    ): boolean | void;
     /**
      * Accept a custom callback function, if click select all checkbox, this function will be called. This callback
      * function taking two arguments: isSelected, rows.
@@ -499,7 +522,10 @@ export interface SelectRow<TRow extends object = any> {
      * If return value of this function is an array of rowkeys, this array will be applied as selection row when
      * select all triggers. It's useful when you have a validation to filter some rows on selecting all.
      */
-    onSelectAll?(isSelected: boolean, rows: TRow[]): boolean | Array<number | string>;
+    onSelectAll?(
+        isSelected: boolean,
+        rows: TRow[],
+    ): boolean | Array<number | string>;
     /**
      * Function that returns a component to customize the display of the selection checkbox or radio button with.
      */
@@ -609,7 +635,10 @@ export interface Options<TRow extends object = any> {
      */
     onSortChange?:
         | ((sortName: keyof TRow, sortOrder: SortOrder) => void)
-        | ((sortName: ReadonlyArray<keyof TRow>, sortOrder: readonly SortOrder[]) => void)
+        | ((
+              sortName: ReadonlyArray<keyof TRow>,
+              sortOrder: readonly SortOrder[],
+          ) => void)
         | undefined;
     /**
      * Change the text displayed on the table if data is empty.
@@ -666,7 +695,10 @@ export interface Options<TRow extends object = any> {
      *   `rowKeys`: which means the row keys for the deleted rows
      *   `rows`: the array of row data that was deleted.
      */
-    afterDeleteRow?(rowKeys: ReadonlyArray<number | string>, rows: readonly TRow[]): void;
+    afterDeleteRow?(
+        rowKeys: ReadonlyArray<number | string>,
+        rows: readonly TRow[],
+    ): void;
     /**
      * Assign a callback function which will be called after inserting a row.
      * This function takes one argument: row, which means the whole row data you added.
@@ -681,7 +713,10 @@ export interface Options<TRow extends object = any> {
      * This function only work when you enable columnFilter on <BootstrapTable> or define
      * a filter on <TableHeaderColumn>.
      */
-    afterColumnFilter?(filterConds: readonly FilterData[], result: readonly TRow[]): void;
+    afterColumnFilter?(
+        filterConds: readonly FilterData[],
+        result: readonly TRow[],
+    ): void;
     /**
      * Assign a callback function which will be called when a row is added. This function
      * takes three arguments:
@@ -713,7 +748,10 @@ export interface Options<TRow extends object = any> {
      *   `rowKeys`: keys for the rows to be deleted.
      *   `rows`: row data for the rows to be deleted.
      */
-    onDeleteRow?(rowKeys: ReadonlyArray<number | string>, rows: readonly TRow[]): void;
+    onDeleteRow?(
+        rowKeys: ReadonlyArray<number | string>,
+        rows: readonly TRow[],
+    ): void;
     /**
      * Assign a callback function which will be called after a row click.
      * This function takes four arguments:
@@ -722,7 +760,12 @@ export interface Options<TRow extends object = any> {
      *   `rowIndex`: index of the row that was clicked on.
      *   `event`: the click event.
      */
-    onRowClick?(row: TRow, columnIndex: number, rowIndex: number, event: React.MouseEvent<any>): void;
+    onRowClick?(
+        row: TRow,
+        columnIndex: number,
+        rowIndex: number,
+        event: React.MouseEvent<any>,
+    ): void;
     /**
      * Assign a callback function which will be called after a row double click.
      * This function takes two arguments:
@@ -759,7 +802,10 @@ export interface Options<TRow extends object = any> {
      *   `next`: If you confirm the delete, call next() to continue the process.
      *   `rowKeys` Is the row keys to be deleted, you can call the `next` function to apply this deletion.
      */
-    handleConfirmDeleteRow?(next: () => void, rowKeys: ReadonlyArray<number | string>): void;
+    handleConfirmDeleteRow?(
+        next: () => void,
+        rowKeys: ReadonlyArray<number | string>,
+    ): void;
     /**
      * Customize the text of previouse page button.
      * If using the default pagination panel, this should be a string to use for the button label.
@@ -814,7 +860,10 @@ export interface Options<TRow extends object = any> {
      *  `to`: Current end index
      *  `total`: The total data volume.
      */
-    paginationShowsTotal?: boolean | ((start: number, to: number, total: number) => string | ReactElement) | undefined;
+    paginationShowsTotal?:
+        | boolean
+        | ((start: number, to: number, total: number) => string | ReactElement)
+        | undefined;
     /**
      * Allows you to modify where to start counting the pages, e.g. to set the first page number to 0.
      * Default is 1.
@@ -880,7 +929,11 @@ export interface Options<TRow extends object = any> {
      * Inputs match the EditValidatorObject.notification field types.
      */
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    beforeShowError?(type: EditValidatorType, msg: string, title: string): boolean | void;
+    beforeShowError?(
+        type: EditValidatorType,
+        msg: string,
+        title: string,
+    ): boolean | void;
     /**
      * Default is true. If false, during printing the toolbar is hidden.
      */
@@ -930,7 +983,10 @@ export interface Options<TRow extends object = any> {
      * The default `ShowSelectedOnlyButton` component is also exported as a component, so that you can use it as
      * the base for your custom component.
      */
-    showSelectedOnlyBtn?(onClick: (e: React.MouseEvent<any>) => void, showSelected: boolean): ReactElement;
+    showSelectedOnlyBtn?(
+        onClick: (e: React.MouseEvent<any>) => void,
+        showSelected: boolean,
+    ): ReactElement;
     /**
      * You can custom the whole search panel(right side) by searchPanel in options props. searchPanel only accept
      * a function and a JSX returned value is necessary. This function will take one argument: props, that contains:
@@ -949,7 +1005,9 @@ export interface Options<TRow extends object = any> {
      * The default `SearchField` component is also exported as a component, so that you can use it as the base for
      * your custom component.
      */
-    searchField?(props: SearchFieldProps): ReactElement<Component<any> & SearchFieldInterface>;
+    searchField?(
+        props: SearchFieldProps,
+    ): ReactElement<Component<any> & SearchFieldInterface>;
     /**
      * You can custom the clear button for search field by giving clearSearchBtn in options props.
      * clearSearchBtn only accept a function and a JSX returned value is necessary.
@@ -1025,7 +1083,11 @@ export interface Options<TRow extends object = any> {
      * The function allows you to make further modifications to the cell value prior to it being saved. You need to
      * return the final cell value to use.
      */
-    onCellEdit?<K extends string & keyof TRow>(row: TRow, fieldName: K, value: TRow[K]): TRow[K];
+    onCellEdit?<K extends string & keyof TRow>(
+        row: TRow,
+        fieldName: K,
+        value: TRow[K],
+    ): TRow[K];
     /**
      * Custom message to show when the InsertModal save fails validation.
      * Default message is 'Form validate errors, please checking!'
@@ -1050,14 +1112,20 @@ export interface Options<TRow extends object = any> {
      *   `rowIndex`: index number of the row.
      *   `isExpanding`: boolean flag specifying whether the field is expanding or collapsing.
      */
-    expandBodyClass?: string | ((row: TRow, rowIndex: number, isExpanding: boolean) => string) | undefined;
+    expandBodyClass?:
+        | string
+        | ((row: TRow, rowIndex: number, isExpanding: boolean) => string)
+        | undefined;
     /**
      * Custom class to use for the row itself for an expanded row when it has been expanded. This can either be a
      * string, or a function that returns a string and takes two arguments: row and rowIndex.
      *   `row`: the expanded row.
      *   `rowIndex`: index number of the row.
      */
-    expandParentClass?: string | ((row: TRow, rowIndex: number) => string) | undefined;
+    expandParentClass?:
+        | string
+        | ((row: TRow, rowIndex: number) => string)
+        | undefined;
     /**
      * Customize the field separator in a CSV export file. Default is ','.
      */
@@ -1068,7 +1136,11 @@ export interface Options<TRow extends object = any> {
      *   `isExpand`: True if the row is expanding, false if it is collapsing.
      *   `event`: The click event.
      */
-    onExpand?(rowKey: number | string, isExpand: boolean, event: React.MouseEvent<any>): void;
+    onExpand?(
+        rowKey: number | string,
+        isExpand: boolean,
+        event: React.MouseEvent<any>,
+    ): void;
     /**
      * Specify that only one row should be able to be expanded at the same time.
      */
@@ -1212,13 +1284,21 @@ export interface TableHeaderColumnProps {
      *   `direction`: the current sort order.
      *   `fieldName`: the dataField name of the field currently being sorted.
      */
-    caretRender?(direction: SortOrder | null, fieldName: string): string | ReactElement;
+    caretRender?(
+        direction: SortOrder | null,
+        fieldName: string,
+    ): string | ReactElement;
     /**
      * To customize the column. This callback function should return a String or a React Component.
      * In addition, this function taking four argument: cell, row, formatExtraData, rowIdx.
      * The formatExtraData will be the value which you assign it on <TableHeaderColumn>
      */
-    dataFormat?(cell: any, row: any, formatExtraData: any, rowIndex: number): string | ReactElement;
+    dataFormat?(
+        cell: any,
+        row: any,
+        formatExtraData: any,
+        rowIndex: number,
+    ): string | ReactElement;
     /**
      * It's useful with dataFormat, you can give any data you want to be passed to the formatter.
      */
@@ -1238,7 +1318,12 @@ export interface TableHeaderColumnProps {
      */
     tdStyle?:
         | CSSProperties
-        | ((cell: any, row: any, rowIndex: number, columnIndex: number) => CSSProperties)
+        | ((
+              cell: any,
+              row: any,
+              rowIndex: number,
+              columnIndex: number,
+          ) => CSSProperties)
         | undefined;
     /**
      * Allow you to add your custom style object on TH element.
@@ -1309,7 +1394,11 @@ export interface TableHeaderColumnProps {
      * Show the title on each column in the data section of the table.
      * @see https://github.com/AllenFang/react-bootstrap-table/blob/master/examples/js/column/column-title-table.js
      */
-    columnTitle?: boolean | string | ((cell: any, row: any, rowIndex: number, colIndex: number) => string) | undefined;
+    columnTitle?:
+        | boolean
+        | string
+        | ((cell: any, row: any, rowIndex: number, colIndex: number) => string)
+        | undefined;
     /**
      * Show the title on each column in the header section of the table, default is true.
      */
@@ -1324,7 +1413,13 @@ export interface TableHeaderColumnProps {
      * This function takes five arguments: a, b, order, sortField, extraData
      * The extraData value is the data from the sortFuncExtraData.
      */
-    sortFunc?(a: object, b: object, order: SortOrder, sortField: keyof object, extraData: any): number;
+    sortFunc?(
+        a: object,
+        b: object,
+        order: SortOrder,
+        sortField: keyof object,
+        extraData: any,
+    ): number;
     /**
      * Extra data for the custom sort function. If defined, this data will be passed as fifth argument in sortFunc.
      */
@@ -1334,21 +1429,43 @@ export interface TableHeaderColumnProps {
      * If Function, it takes four arguments: cell, row, rowIndex, columnIndex.
      * In addition, this function should return a String which is the class name you want to add on.
      */
-    className?: string | ((cell: any, row: any, rowIndex: number, columnIndex: number) => string) | undefined;
+    className?:
+        | string
+        | ((
+              cell: any,
+              row: any,
+              rowIndex: number,
+              columnIndex: number,
+          ) => string)
+        | undefined;
     /**
      * Add custom css class on table body column, this attribute only accept String or Function.
      * If Function, it taking four arguments: cell, row, rowIndex, columnIndex.
      * In addition, this function should return a String which is the class name you want to add on.
      */
-    columnClassName?: string | ((cell: any, row: any, rowIndex: number, columnIndex: number) => string) | undefined;
+    columnClassName?:
+        | string
+        | ((
+              cell: any,
+              row: any,
+              rowIndex: number,
+              columnIndex: number,
+          ) => string)
+        | undefined;
     /**
      * Add custom css class on editing cell, if assign a callback function, you are supposed to return a String for class name
      */
-    editColumnClassName?: string | ((cell: any, row: any) => string) | undefined;
+    editColumnClassName?:
+        | string
+        | ((cell: any, row: any) => string)
+        | undefined;
     /**
      * Add custom css class for invalid editing cell, if assign a callback function, you are supposed to return a String for class name
      */
-    invalidEditColumnClassName?: string | ((cell: any, row: any) => string) | undefined;
+    invalidEditColumnClassName?:
+        | string
+        | ((cell: any, row: any) => string)
+        | undefined;
     /**
      * boolean: Add True to set column editable, false is non-editable.
      * function: You have ability to control the editable level on cell instead of column level. For this
@@ -1359,7 +1476,12 @@ export interface TableHeaderColumnProps {
     editable?:
         | boolean
         | Editable<any, any>
-        | ((cell: any, row: any, rowIndex: number, columnIndex: number) => boolean | string | EditValidatorObject)
+        | ((
+              cell: any,
+              row: any,
+              rowIndex: number,
+              columnIndex: number,
+          ) => boolean | string | EditValidatorObject)
         | undefined;
     /**
      * Give an Object like following to able to customize your own editing component.
@@ -1402,7 +1524,10 @@ export interface TableHeaderColumnProps {
      * or 'desc'.
      * @see https://github.com/AllenFang/react-bootstrap-table/blob/master/examples/js/sort/sort-style-table.js#L36-L37
      */
-    sortHeaderColumnClassName?: string | ((order: SortOrder, dataField: string) => string) | undefined;
+    sortHeaderColumnClassName?:
+        | string
+        | ((order: SortOrder, dataField: string) => string)
+        | undefined;
     /**
      * Specify custom tdAttrs to use for a cell that is being edited within this column.
      */
@@ -1418,15 +1543,17 @@ export interface TableHeaderColumnProps {
      * The function should return either a JSX element for the field, or false to default back to the standard edit
      * element.
      */
-    customInsertEditor?: {
-        getElement(
-            column: InsertModalColumnDescription,
-            attr: EditableAttrs,
-            editorClass: string,
-            ignoreEditable: boolean,
-            defaultValue: any,
-        ): ReactElement | boolean;
-    } | undefined;
+    customInsertEditor?:
+        | {
+              getElement(
+                  column: InsertModalColumnDescription,
+                  attr: EditableAttrs,
+                  editorClass: string,
+                  ignoreEditable: boolean,
+                  defaultValue: any,
+              ): ReactElement | boolean;
+          }
+        | undefined;
     /**
      * Support specifying that the column should start sorting with the 'asc' option.
      */
@@ -1502,19 +1629,26 @@ export interface Editable<TRow extends object, K extends keyof TRow> {
      * Validation function for the column. It takes the new "cell value" as argument. This function should return
      * a boolean true/false for isValid, or an EditValidatorObject (so that an error message can be provided).
      */
-    validator?(cell: TRow[K], row: TRow): boolean | string | EditValidatorObject;
+    validator?(
+        cell: TRow[K],
+        row: TRow,
+    ): boolean | string | EditValidatorObject;
     /**
      * Data in a select or checkbox. If a checkbox, use a string with a ':'(colon) to separate the two values, ex: Y:N
      * The callback function can be used to customize the select options based on other field values within the row.
      * If the array is an array of objects, the fields 'text' can be used for the display text and 'value' to specify
      * the option's value.
      */
-    options?: {
-        values:
-            | EditSelectOptionValue
-            | EditCheckboxOptionValue
-            | ((row: TRow) => EditCheckboxOptionValue | EditSelectOptionValue);
-    } | undefined;
+    options?:
+        | {
+              values:
+                  | EditSelectOptionValue
+                  | EditCheckboxOptionValue
+                  | ((
+                        row: TRow,
+                    ) => EditCheckboxOptionValue | EditSelectOptionValue);
+          }
+        | undefined;
     /**
      * Default value to show in the edit field in the Insert Modal for this column.
      */
@@ -1648,16 +1782,18 @@ export interface NumberFilter {
     /**
      * Default value for the filter.
      */
-    defaultValue?: {
-        /**
-         * Number value.
-         */
-        number: number;
-        /**
-         * Comparator value.
-         */
-        comparator: FilterComparator;
-    } | undefined;
+    defaultValue?:
+        | {
+              /**
+               * Number value.
+               */
+              number: number;
+              /**
+               * Comparator value.
+               */
+              comparator: FilterComparator;
+          }
+        | undefined;
     /**
      * If this is a select number field, disable the empty option in the dropdown.
      */
@@ -1677,10 +1813,12 @@ export interface NumberFilter {
     /**
      * CSS Style to use for the select filter.
      */
-    style?: {
-        number: CSSProperties;
-        comparator: CSSProperties;
-    } | undefined;
+    style?:
+        | {
+              number: CSSProperties;
+              comparator: CSSProperties;
+          }
+        | undefined;
 }
 
 /**
@@ -1702,23 +1840,27 @@ export interface DateFilter {
     /**
      * Default value for the filter.
      */
-    defaultValue?: {
-        /**
-         * Date value. String values will be automatically converted to dates.
-         */
-        date: Date | string;
-        /**
-         * Comparator value.
-         */
-        comparator: FilterComparator;
-    } | undefined;
+    defaultValue?:
+        | {
+              /**
+               * Date value. String values will be automatically converted to dates.
+               */
+              date: Date | string;
+              /**
+               * Comparator value.
+               */
+              comparator: FilterComparator;
+          }
+        | undefined;
     /**
      * CSS Style to use for the select filter.
      */
-    style?: {
-        date: CSSProperties;
-        comparator: CSSProperties;
-    } | undefined;
+    style?:
+        | {
+              date: CSSProperties;
+              comparator: CSSProperties;
+          }
+        | undefined;
 }
 
 /**
@@ -1739,7 +1881,10 @@ export class CustomFilterElement extends Component<any> {
 /**
  * Custom filter type.
  */
-export interface CustomFilter<FParams extends object = any, FElement extends CustomFilterElement = any> {
+export interface CustomFilter<
+    FParams extends object = any,
+    FElement extends CustomFilterElement = any,
+> {
     /**
      * Type must be 'CustomFilter'
      */
@@ -1748,7 +1893,10 @@ export interface CustomFilter<FParams extends object = any, FElement extends Cus
      * Function to generate the filter component
      */
     getElement(
-        filterHandler: (value?: CustomFilterParameters<FParams>, type?: "CustomFilter") => void,
+        filterHandler: (
+            value?: CustomFilterParameters<FParams>,
+            type?: "CustomFilter",
+        ) => void,
         customFilterParameters: CustomFilterParameters<FParams>,
     ): ReactElement<FElement>;
     /**
@@ -1760,7 +1908,13 @@ export interface CustomFilter<FParams extends object = any, FElement extends Cus
 /**
  * Collection of filter types.
  */
-export type Filter = TextFilter | SelectFilter | RegexFilter | NumberFilter | DateFilter | CustomFilter;
+export type Filter =
+    | TextFilter
+    | SelectFilter
+    | RegexFilter
+    | NumberFilter
+    | DateFilter
+    | CustomFilter;
 
 /**
  * The "value" type for a number filter
@@ -1829,7 +1983,13 @@ export interface ArrayFilterData {
 /**
  * Valid types for the "value" field inside a filter's data object.
  */
-export type FilterValueData = string | number | string[] | number[] | DateFilterValue | NumberFilterValue;
+export type FilterValueData =
+    | string
+    | number
+    | string[]
+    | number[]
+    | DateFilterValue
+    | NumberFilterValue;
 
 /**
  * Combined types of filter data objects.
@@ -1925,7 +2085,9 @@ export interface ExpandColumnOptions {
     /**
      * a callback function to customize the appearance of the indicator column.
      */
-    expandColumnComponent?(props: ExpandColumnComponentProps): string | ReactElement;
+    expandColumnComponent?(
+        props: ExpandColumnComponentProps,
+    ): string | ReactElement;
     /**
      * set the width of indicator column.
      */
@@ -1938,7 +2100,9 @@ export interface ExpandColumnOptions {
     /**
      * a callback function to customise the header column
      */
-    expandedColumnHeaderComponent?(props: ExpandedColumnHeaderProps): string | ReactElement;
+    expandedColumnHeaderComponent?(
+        props: ExpandedColumnHeaderProps,
+    ): string | ReactElement;
 }
 
 /**
@@ -2003,7 +2167,12 @@ export interface ColumnDescription<TRow extends object = any> {
      * Column data format function.
      * Comes from TableHeader.dataFormat property.
      */
-    format(cell: any, row: TRow, formatExtraData: any, rowIndex: number): string | ReactElement;
+    format(
+        cell: any,
+        row: TRow,
+        formatExtraData: any,
+        rowIndex: number,
+    ): string | ReactElement;
     /**
      * The formatExtraData setting for the column.
      * Comes from TableHeader.formatExtraData property.
@@ -2026,7 +2195,12 @@ export interface ColumnDescription<TRow extends object = any> {
     editable:
         | boolean
         | Editable<TRow, any>
-        | ((cell: any, row: TRow, rowIndex: number, columnIndex: number) => boolean | string | EditValidatorObject);
+        | ((
+              cell: any,
+              row: TRow,
+              rowIndex: number,
+              columnIndex: number,
+          ) => boolean | string | EditValidatorObject);
     /**
      * Custom editor settings to use when editing the data in this column.
      * Comes from TableHeader.customEditor property.
@@ -2051,7 +2225,14 @@ export interface ColumnDescription<TRow extends object = any> {
      * Custom className setting for this column.
      * Comes from TableHeader.columnClassName property.
      */
-    className: string | ((cell: any, row: TRow, rowIndex: number, columnIndex: number) => string);
+    className:
+        | string
+        | ((
+              cell: any,
+              row: TRow,
+              rowIndex: number,
+              columnIndex: number,
+          ) => string);
     /**
      * Custom className setting for this column when a cell in the column is being edited.
      * Comes from TableHeader.editColumnClassName property.
@@ -2081,7 +2262,13 @@ export interface ColumnDescription<TRow extends object = any> {
      * Custom sort function to use for this column.
      * Comes from TableHeader.sortFunc property.
      */
-    sortFunc(a: TRow, b: TRow, order: SortOrder, sortField: keyof TRow, extraData: any): number;
+    sortFunc(
+        a: TRow,
+        b: TRow,
+        order: SortOrder,
+        sortField: keyof TRow,
+        extraData: any,
+    ): number;
     /**
      * Extra data to be provided to the search function for this column.
      * Comes from TableHeader.sortFuncExtraData property.
@@ -2309,7 +2496,8 @@ export interface SizePerPageFunctionProps {
 /**
  * Custom Editor Props passed to the getElement function in the TableHeader.customEditor object.
  */
-export interface CustomEditorProps<TRow extends object, K extends keyof TRow> extends EditableAttrs {
+export interface CustomEditorProps<TRow extends object, K extends keyof TRow>
+    extends EditableAttrs {
     /**
      * The row data for the cell being edited.
      */
@@ -2334,7 +2522,10 @@ export interface CustomEditor<TRow extends object, K extends keyof TRow> {
      *   `onUpdate`: callback function to call to update the value inside the cell.
      *   `props`:
      */
-    getElement(onUpdate: (updatedCell: TRow[K]) => void, props: CustomEditorProps<TRow, K>): ReactElement;
+    getElement(
+        onUpdate: (updatedCell: TRow[K]) => void,
+        props: CustomEditorProps<TRow, K>,
+    ): ReactElement;
     /**
      * Additional parameters to pass to the getElement function inside the props argument.
      */
@@ -2489,11 +2680,11 @@ export interface InsertModalColumnDescription<TRow extends object = any> {
         | boolean
         | Editable<TRow, keyof TRow>
         | ((
-            cell: TRow[keyof TRow],
-            row: TRow,
-            rowIndex: number,
-            columnIndex: number,
-        ) => boolean | string | EditValidatorObject);
+              cell: TRow[keyof TRow],
+              row: TRow,
+              rowIndex: number,
+              columnIndex: number,
+          ) => boolean | string | EditValidatorObject);
     /**
      * Custom element to use for the Insert field element.
      * Comes from TableHeader.customInsertEditor.
@@ -2684,7 +2875,10 @@ export class ShowSelectedOnlyButton extends Component<ShowSelectedButtonProps> {
 /**
  * Default SearchField component. Can be used to create custom toolbars, etc.
  */
-export class SearchField extends Component<SearchFieldProps> implements SearchFieldInterface {
+export class SearchField
+    extends Component<SearchFieldProps>
+    implements SearchFieldInterface
+{
     getValue(): string;
     setValue(search: string): void;
 }

@@ -31,7 +31,11 @@ interface BlocksStatic {
      * @param callback The callback that will be executed for each element in the collection
      * @param thisArg Optional this context for the callback
      */
-    each(collection: any, callback: (value: any, index: any, collection: any) => void, thisArg?: any): void;
+    each(
+        collection: any,
+        callback: (value: any, index: any, collection: any) => void,
+        thisArg?: any,
+    ): void;
 
     /**
      * Iterates over the collection from end to start
@@ -40,7 +44,11 @@ interface BlocksStatic {
      * @param callback The callback that will be executed for each element in the collection
      * @param thisArg Optional this context for the callback
      */
-    eachRight(collection: any, callback: (value: any, index: any, collection: any) => void, thisArg?: any): void;
+    eachRight(
+        collection: any,
+        callback: (value: any, index: any, collection: any) => void,
+        thisArg?: any,
+    ): void;
 
     /**
      * Determines if a value is an array.
@@ -566,10 +574,12 @@ interface ViewPrototype {
      */
     ready?: Function | undefined;
 
-    options?: {
-        route?: any;
-        url?: string | undefined;
-    } | undefined;
+    options?:
+        | {
+              route?: any;
+              url?: string | undefined;
+          }
+        | undefined;
 
     [propertyName: string]: any;
 }
@@ -626,14 +636,16 @@ interface ModelPrototype {
      */
     isNew?(): boolean;
 
-    options?: {
-        idAttr?: string | undefined;
-        baseUrl?: string | undefined;
-        read?: { url?: string | undefined } | undefined;
-        create?: { url?: string | undefined } | undefined;
-        destroy?: { url?: string | undefined } | undefined;
-        update?: { url?: string | undefined } | undefined;
-    } | undefined;
+    options?:
+        | {
+              idAttr?: string | undefined;
+              baseUrl?: string | undefined;
+              read?: { url?: string | undefined } | undefined;
+              create?: { url?: string | undefined } | undefined;
+              destroy?: { url?: string | undefined } | undefined;
+              update?: { url?: string | undefined } | undefined;
+          }
+        | undefined;
 
     [propertyName: string]: string | boolean | Object | Validator;
 }
@@ -669,12 +681,14 @@ interface Collection extends Extendable<Collection> {
 }
 
 interface CollectionPrototype {
-    options?: {
-        read?: { url?: string | undefined } | undefined;
-        create?: { url?: string | undefined } | undefined;
-        destroy?: { url?: string | undefined } | undefined;
-        update?: { url?: string | undefined } | undefined;
-    } | undefined;
+    options?:
+        | {
+              read?: { url?: string | undefined } | undefined;
+              create?: { url?: string | undefined } | undefined;
+              destroy?: { url?: string | undefined } | undefined;
+              update?: { url?: string | undefined } | undefined;
+          }
+        | undefined;
     [propertyName: string]: any;
 }
 

@@ -92,7 +92,9 @@ export function getActivePostLock(): string | undefined;
  *
  * @param attributeName - Autosave attribute name.
  */
-export function getAutosaveAttribute(attributeName: string): EntityRecord<any>[keyof EntityRecord<any>] | {};
+export function getAutosaveAttribute(
+    attributeName: string,
+): EntityRecord<any>[keyof EntityRecord<any>] | {};
 
 /**
  * Returns the post currently being edited in its last known saved state, not including unsaved
@@ -182,7 +184,11 @@ export function getPermalink(): string | null;
  * @returns An object containing the prefix, postName, and suffix for the permalink, or `null` if
  * the post is not viewable.
  */
-export function getPermalinkParts(): { postName: string; prefix: string; suffix?: string | undefined } | null;
+export function getPermalinkParts(): {
+    postName: string;
+    prefix: string;
+    suffix?: string | undefined;
+} | null;
 
 /**
  * Returns any post values which have been changed in the editor but not yet been saved.
@@ -234,7 +240,9 @@ export function hasEditorUndo(): boolean;
  *
  * @param predicate - Function given state, returning `true` if match.
  */
-export function inSomeHistory(predicate: (state: Record<string, any>) => boolean): boolean;
+export function inSomeHistory(
+    predicate: (state: Record<string, any>) => boolean,
+): boolean;
 
 /**
  * Returns `true` if the post is autosaving, or `false` otherwise.

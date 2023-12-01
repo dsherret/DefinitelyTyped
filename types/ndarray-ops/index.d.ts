@@ -28,9 +28,17 @@ export function modeq(array1: NdArray, array2: NdArray): boolean;
 export function mods(array1: NdArray, array2: NdArray, scalar: number): NdArray;
 export function modseq(array: NdArray, scalar: number): boolean;
 
-export function band(array1: NdArray, array2: NdArray, array3: NdArray): NdArray;
+export function band(
+    array1: NdArray,
+    array2: NdArray,
+    array3: NdArray,
+): NdArray;
 export function bandeq(array1: NdArray, array2: NdArray): boolean;
-export function bands(array1: NdArray, array2: NdArray, scalar: number): NdArray;
+export function bands(
+    array1: NdArray,
+    array2: NdArray,
+    scalar: number,
+): NdArray;
 export function bandseq(array: NdArray, scalar: number): boolean;
 
 export function bor(array1: NdArray, array2: NdArray, array3: NdArray): NdArray;
@@ -38,24 +46,56 @@ export function boreq(array1: NdArray, array2: NdArray): boolean;
 export function bors(array1: NdArray, array2: NdArray, scalar: number): NdArray;
 export function borseq(array: NdArray, scalar: number): boolean;
 
-export function bxor(array1: NdArray, array2: NdArray, array3: NdArray): NdArray;
+export function bxor(
+    array1: NdArray,
+    array2: NdArray,
+    array3: NdArray,
+): NdArray;
 export function bxoreq(array1: NdArray, array2: NdArray): boolean;
-export function bxors(array1: NdArray, array2: NdArray, scalar: number): NdArray;
+export function bxors(
+    array1: NdArray,
+    array2: NdArray,
+    scalar: number,
+): NdArray;
 export function bxorseq(array: NdArray, scalar: number): boolean;
 
-export function lshift(array1: NdArray, array2: NdArray, array3: NdArray): NdArray;
+export function lshift(
+    array1: NdArray,
+    array2: NdArray,
+    array3: NdArray,
+): NdArray;
 export function lshifteq(array1: NdArray, array2: NdArray): boolean;
-export function lshifts(array1: NdArray, array2: NdArray, scalar: number): NdArray;
+export function lshifts(
+    array1: NdArray,
+    array2: NdArray,
+    scalar: number,
+): NdArray;
 export function lshiftseq(array: NdArray, scalar: number): boolean;
 
-export function rshift(array1: NdArray, array2: NdArray, array3: NdArray): NdArray;
+export function rshift(
+    array1: NdArray,
+    array2: NdArray,
+    array3: NdArray,
+): NdArray;
 export function rshifteq(array1: NdArray, array2: NdArray): boolean;
-export function rshifts(array1: NdArray, array2: NdArray, scalar: number): NdArray;
+export function rshifts(
+    array1: NdArray,
+    array2: NdArray,
+    scalar: number,
+): NdArray;
 export function rshiftseq(array: NdArray, scalar: number): boolean;
 
-export function rrshift(array1: NdArray, array2: NdArray, array3: NdArray): NdArray;
+export function rrshift(
+    array1: NdArray,
+    array2: NdArray,
+    array3: NdArray,
+): NdArray;
 export function rrshifteq(array1: NdArray, array2: NdArray): boolean;
-export function rrshifts(array1: NdArray, array2: NdArray, scalar: number): NdArray;
+export function rrshifts(
+    array1: NdArray,
+    array2: NdArray,
+    scalar: number,
+): NdArray;
 export function rrshiftseq(array: NdArray, scalar: number): boolean;
 
 ////////////////
@@ -171,8 +211,16 @@ export function mins(array1: NdArray, array2: NdArray, scalar: number): NdArray;
 export function mineq(array1: NdArray, array2: NdArray): boolean;
 export function minseq(array: NdArray, scalar: number): boolean;
 
-export function atan2(array1: NdArray, array2: NdArray, array3: NdArray): NdArray;
-export function atan2s(array1: NdArray, array2: NdArray, scalar: number): NdArray;
+export function atan2(
+    array1: NdArray,
+    array2: NdArray,
+    array3: NdArray,
+): NdArray;
+export function atan2s(
+    array1: NdArray,
+    array2: NdArray,
+    scalar: number,
+): NdArray;
 export function atan2eq(array1: NdArray, array2: NdArray): boolean;
 export function atan2seq(array: NdArray, scalar: number): boolean;
 
@@ -184,13 +232,29 @@ export function powseq(array: NdArray, scalar: number): boolean;
 ////////////////
 /// Math non-common operations
 ////////////////
-export function atan2op(array1: NdArray, array2: NdArray, array3: NdArray): NdArray;
-export function atan2ops(array1: NdArray, array2: NdArray, scalar: number): NdArray;
+export function atan2op(
+    array1: NdArray,
+    array2: NdArray,
+    array3: NdArray,
+): NdArray;
+export function atan2ops(
+    array1: NdArray,
+    array2: NdArray,
+    scalar: number,
+): NdArray;
 export function atan2opeq(array1: NdArray, array2: NdArray): boolean;
 export function atan2opseq(array: NdArray, scalar: number): boolean;
 
-export function powop(array1: NdArray, array2: NdArray, array3: NdArray): NdArray;
-export function powops(array1: NdArray, array2: NdArray, scalar: number): NdArray;
+export function powop(
+    array1: NdArray,
+    array2: NdArray,
+    array3: NdArray,
+): NdArray;
+export function powops(
+    array1: NdArray,
+    array2: NdArray,
+    scalar: number,
+): NdArray;
 export function powopeq(array1: NdArray, array2: NdArray): boolean;
 export function powopseq(array: NdArray, scalar: number): boolean;
 
@@ -207,7 +271,10 @@ export function inf(array: NdArray): number;
 export function argmin(index: number, array: NdArray, shape: NdArray): number;
 export function argmax(index: number, array: NdArray, shape: NdArray): number;
 export function random(array: NdArray): NdArray;
-export function assign<D extends Data = Data<number>>(array: NdArray<D>, array2: NdArray<D>): NdArray<D>;
+export function assign<D extends Data = Data<number>>(
+    array: NdArray<D>,
+    array2: NdArray<D>,
+): NdArray<D>;
 export function assigns(array: NdArray, scalar: number): NdArray;
 export function equals(array1: NdArray, array2: NdArray): boolean;
 

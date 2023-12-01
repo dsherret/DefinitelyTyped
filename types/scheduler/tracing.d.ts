@@ -13,18 +13,22 @@ export {};
 export interface Build {}
 
 export type EnableSchedulerTracing = Build extends { type: infer BuildType }
-    ? BuildType extends "production" | "profiling" ? false
-    : BuildType extends "development" ? true
-    : undefined
+    ? BuildType extends "production" | "profiling"
+        ? false
+        : BuildType extends "development"
+          ? true
+          : undefined
     : undefined;
 
 type TypeByBuildFlag<
     Flag extends boolean | undefined,
     WhenTrue,
     WhenFalse,
-> = Flag extends undefined ? (WhenTrue | WhenFalse)
-    : Flag extends true ? WhenTrue
-    : WhenFalse;
+> = Flag extends undefined
+    ? WhenTrue | WhenFalse
+    : Flag extends true
+      ? WhenTrue
+      : WhenFalse;
 
 type IfSchedulerTracing<WhenTrue, WhenFalse> = TypeByBuildFlag<
     EnableSchedulerTracing,

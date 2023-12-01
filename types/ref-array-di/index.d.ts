@@ -7,22 +7,28 @@ import ref = require("ref-napi");
  */
 declare var ArrayType: {
     // NOTE: The `ref.NamedType` overload is a subset of the `ref.TypeLike` overload, but provides better completions.
-    new<TType extends ref.NamedType, TLength extends number = number>(
+    new <TType extends ref.NamedType, TLength extends number = number>(
         type: TType,
         length: TLength,
     ): array.FixedLengthArrayType<ref.UnderlyingType<TType>, TLength>;
-    new<TType extends ref.TypeLike, TLength extends number = number>(
+    new <TType extends ref.TypeLike, TLength extends number = number>(
         type: TType,
         length: TLength,
     ): array.FixedLengthArrayType<ref.UnderlyingType<TType>, TLength>;
-    new<T, TLength extends number = number>(
+    new <T, TLength extends number = number>(
         type: ref.TypeLike,
         length: TLength,
     ): array.FixedLengthArrayType<T, TLength>;
     // NOTE: The `ref.NamedType` overload is a subset of the `ref.TypeLike` overload, but provides better completions.
-    new<TType extends ref.NamedType>(type: TType, length?: number): array.ArrayType<ref.UnderlyingType<TType>>;
-    new<TType extends ref.TypeLike>(type: TType, length?: number): array.ArrayType<ref.UnderlyingType<TType>>;
-    new<T>(type: ref.TypeLike, length?: number): array.ArrayType<T>;
+    new <TType extends ref.NamedType>(
+        type: TType,
+        length?: number,
+    ): array.ArrayType<ref.UnderlyingType<TType>>;
+    new <TType extends ref.TypeLike>(
+        type: TType,
+        length?: number,
+    ): array.ArrayType<ref.UnderlyingType<TType>>;
+    new <T>(type: ref.TypeLike, length?: number): array.ArrayType<T>;
 
     // NOTE: The `ref.NamedType` overload is a subset of the `ref.TypeLike` overload, but provides better completions.
     <TType extends ref.NamedType, TLength extends number = number>(
@@ -33,10 +39,19 @@ declare var ArrayType: {
         type: TType,
         length: TLength,
     ): array.FixedLengthArrayType<ref.UnderlyingType<TType>, TLength>;
-    <T, TLength extends number = number>(type: ref.TypeLike, length: TLength): array.FixedLengthArrayType<T, TLength>;
+    <T, TLength extends number = number>(
+        type: ref.TypeLike,
+        length: TLength,
+    ): array.FixedLengthArrayType<T, TLength>;
     // NOTE: The `ref.NamedType` overload is a subset of the `ref.TypeLike` overload, but provides better completions.
-    <TType extends ref.NamedType>(type: TType, length?: number): array.ArrayType<ref.UnderlyingType<TType>>;
-    <TType extends ref.TypeLike>(type: TType, length?: number): array.ArrayType<ref.UnderlyingType<TType>>;
+    <TType extends ref.NamedType>(
+        type: TType,
+        length?: number,
+    ): array.ArrayType<ref.UnderlyingType<TType>>;
+    <TType extends ref.TypeLike>(
+        type: TType,
+        length?: number,
+    ): array.ArrayType<ref.UnderlyingType<TType>>;
     <T>(type: ref.TypeLike, length?: number): array.ArrayType<T>;
 };
 
@@ -82,26 +97,42 @@ declare namespace array {
          */
         untilZeros(buffer: Buffer): TypedArray<T>;
 
-        new<TLength extends number>(length: TLength): TypedArray<T, TLength>;
-        new(length?: number): TypedArray<T>;
-        new<TLength extends number>(data: readonly number[], length: TLength): TypedArray<T, TLength>;
-        new<TData extends readonly number[] | []>(data: TData): TypedArray<T, TData["length"]>;
-        new(data: readonly number[], length?: number): TypedArray<T>;
-        new<TLength extends number>(data: Buffer, length: TLength): TypedArray<T, TLength>;
-        new(data: Buffer, length?: number): TypedArray<T>;
+        new <TLength extends number>(length: TLength): TypedArray<T, TLength>;
+        new (length?: number): TypedArray<T>;
+        new <TLength extends number>(
+            data: readonly number[],
+            length: TLength,
+        ): TypedArray<T, TLength>;
+        new <TData extends readonly number[] | []>(
+            data: TData,
+        ): TypedArray<T, TData["length"]>;
+        new (data: readonly number[], length?: number): TypedArray<T>;
+        new <TLength extends number>(
+            data: Buffer,
+            length: TLength,
+        ): TypedArray<T, TLength>;
+        new (data: Buffer, length?: number): TypedArray<T>;
 
         <TLength extends number>(length: TLength): TypedArray<T, TLength>;
         (length?: number): TypedArray<T>;
-        <TLength extends number>(data: readonly number[], length: TLength): TypedArray<T, TLength>;
-        <TData extends readonly number[] | []>(data: TData): TypedArray<T, TData["length"]>;
+        <TLength extends number>(
+            data: readonly number[],
+            length: TLength,
+        ): TypedArray<T, TLength>;
+        <TData extends readonly number[] | []>(
+            data: TData,
+        ): TypedArray<T, TData["length"]>;
         (data: readonly number[], length?: number): TypedArray<T>;
-        <TLength extends number>(data: Buffer, length: TLength): TypedArray<T, TLength>;
+        <TLength extends number>(
+            data: Buffer,
+            length: TLength,
+        ): TypedArray<T, TLength>;
         (data: Buffer, length?: number): TypedArray<T>;
     }
 
     interface FixedLengthArrayType<T, TLength extends number = number>
-        extends ArrayType<T>, ref.Type<TypedArray<T, TLength>>
-    {
+        extends ArrayType<T>,
+            ref.Type<TypedArray<T, TLength>> {
         fixedLength: TLength;
 
         /**
@@ -111,28 +142,44 @@ declare namespace array {
          */
         untilZeros(buffer: Buffer): TypedArray<T, TLength>;
 
-        new(): TypedArray<T, TLength>;
-        new<TLength extends number>(length: TLength): TypedArray<T, TLength>;
-        new(length?: number): TypedArray<T>;
-        new(data: readonly number[]): TypedArray<T, TLength>;
-        new<TLength extends number>(data: readonly number[], length: TLength): TypedArray<T, TLength>;
-        new(data: readonly number[], length?: number): TypedArray<T>;
-        new(data: Buffer): TypedArray<T, TLength>;
-        new<TLength extends number>(data: Buffer, length: TLength): TypedArray<T, TLength>;
-        new(data: Buffer, length?: number): TypedArray<T>;
+        new (): TypedArray<T, TLength>;
+        new <TLength extends number>(length: TLength): TypedArray<T, TLength>;
+        new (length?: number): TypedArray<T>;
+        new (data: readonly number[]): TypedArray<T, TLength>;
+        new <TLength extends number>(
+            data: readonly number[],
+            length: TLength,
+        ): TypedArray<T, TLength>;
+        new (data: readonly number[], length?: number): TypedArray<T>;
+        new (data: Buffer): TypedArray<T, TLength>;
+        new <TLength extends number>(
+            data: Buffer,
+            length: TLength,
+        ): TypedArray<T, TLength>;
+        new (data: Buffer, length?: number): TypedArray<T>;
 
         (): TypedArray<T, TLength>;
         <TLength extends number>(length: TLength): TypedArray<T, TLength>;
         (length?: number): TypedArray<T>;
         (data: readonly number[]): TypedArray<T, TLength>;
-        <TLength extends number>(data: readonly number[], length: TLength): TypedArray<T, TLength>;
+        <TLength extends number>(
+            data: readonly number[],
+            length: TLength,
+        ): TypedArray<T, TLength>;
         (data: readonly number[], length?: number): TypedArray<T>;
         (data: Buffer): TypedArray<T, TLength>;
-        <TLength extends number>(data: Buffer, length: TLength): TypedArray<T, TLength>;
+        <TLength extends number>(
+            data: Buffer,
+            length: TLength,
+        ): TypedArray<T, TLength>;
         (data: Buffer, length?: number): TypedArray<T>;
 
         get(buffer: Buffer, offset: number): TypedArray<T, TLength>;
-        set(buffer: Buffer, offset: number, value: TypedArray<T, TLength>): void;
+        set(
+            buffer: Buffer,
+            offset: number,
+            value: TypedArray<T, TLength>,
+        ): void;
     }
 }
 

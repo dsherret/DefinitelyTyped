@@ -7,12 +7,16 @@
  */
 interface KnockoutObservable<T> {
     // starts validation for observable
-    validate(validationOptions?: Valerie.ValidationOptions): Valerie.PropertyValidationState<KnockoutObservable<T>>;
+    validate(
+        validationOptions?: Valerie.ValidationOptions,
+    ): Valerie.PropertyValidationState<KnockoutObservable<T>>;
 }
 
 interface KnockoutComputed<T> {
     // starts validation for observable
-    validate(validationOptions?: Valerie.ValidationOptions): Valerie.PropertyValidationState<KnockoutComputed<T>>;
+    validate(
+        validationOptions?: Valerie.ValidationOptions,
+    ): Valerie.PropertyValidationState<KnockoutComputed<T>>;
 }
 
 interface KnockoutObservableArray<T> {
@@ -237,11 +241,17 @@ declare namespace Valerie {
          * state
          * @return {valerie.ModelValidationState} the validation state belonging to the model
          */
-        validatableModel(model: any, options?: ValidationOptions): ModelValidationState;
+        validatableModel(
+            model: any,
+            options?: ValidationOptions,
+        ): ModelValidationState;
 
         // Makes the passed-in property validatable. After invocation the property will have a validation state.
         // (value should be observable or computed)
-        validatableProperty<T>(value: T, options?: ValidationOptions): PropertyValidationState<T>;
+        validatableProperty<T>(
+            value: T,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
 
         // Validation result class
         ValidationResult: ValidationResultStatic;
@@ -308,7 +318,10 @@ declare namespace Valerie {
         //  - either parameter can be omitted and a clone of the other parameter will be returned
         //  - the merge is shallow
         //  - array properties are shallow cloned
-        mergeOptions(defaultOptions: ValidationOptions, options: any): ValidationOptions;
+        mergeOptions(
+            defaultOptions: ValidationOptions,
+            options: any,
+        ): ValidationOptions;
     }
 
     // callback interface (see mapModel above)
@@ -319,7 +332,10 @@ declare namespace Valerie {
     // Constructs the validation state for a model, which may comprise of simple properties and sub-models.
     interface ModelValidationState {
         // ctor
-        new: (model: any, options?: ModelValidationStateOptions) => ModelValidationState;
+        new: (
+            model: any,
+            options?: ModelValidationStateOptions,
+        ) => ModelValidationState;
 
         model: any;
         options?: ModelValidationStateOptions | undefined;
@@ -426,7 +442,9 @@ declare namespace Valerie {
          * @param {object|array.<valerie.IValidationState>} validationStateOrStates the validation states to remove
          * @return {valerie.ModelValidationState}
          */
-        removeValidationStates(validationStateOrStates: any): ModelValidationState;
+        removeValidationStates(
+            validationStateOrStates: any,
+        ): ModelValidationState;
 
         /**
          * Stops validating the given sub-model by adding the validation state that belongs to it.
@@ -523,62 +541,164 @@ declare namespace Valerie {
         applicable(value: boolean): PropertyValidationState<T>;
         applicable(fn: () => boolean): PropertyValidationState<T>;
         currencyMajor(options?: ValidationOptions): PropertyValidationState<T>;
-        currencyMajorMinor(options?: ValidationOptions): PropertyValidationState<T>;
+        currencyMajorMinor(
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
 
         date(): PropertyValidationState<T>;
-        during(earliest: Date, latest: Date, options?: ValidationOptions): PropertyValidationState<T>; // date + date
-        during(earliest: () => Date, latest: Date, options?: ValidationOptions): PropertyValidationState<T>; // dateFN + date
-        during(earliest: Date, latest: () => Date, options?: ValidationOptions): PropertyValidationState<T>; // date + dateFN
-        during(earliest: () => Date, latest: () => Date, options?: ValidationOptions): PropertyValidationState<T>; // dateFN + dateFN
-        earliest(earliest: Date, options?: ValidationOptions): PropertyValidationState<T>; // date value
-        earliest(earliest: () => Date, options?: ValidationOptions): PropertyValidationState<T>; // date function
+        during(
+            earliest: Date,
+            latest: Date,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>; // date + date
+        during(
+            earliest: () => Date,
+            latest: Date,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>; // dateFN + date
+        during(
+            earliest: Date,
+            latest: () => Date,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>; // date + dateFN
+        during(
+            earliest: () => Date,
+            latest: () => Date,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>; // dateFN + dateFN
+        earliest(
+            earliest: Date,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>; // date value
+        earliest(
+            earliest: () => Date,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>; // date function
         email(): PropertyValidationState<T>;
         entryFormat(format: string): PropertyValidationState<T>;
         excludeFromSummary(): PropertyValidationState<T>;
-        expression(regularExpression: RegExp, options?: ValidationOptions): PropertyValidationState<T>; // regex
-        expression(regularExpressionString: string, options?: ValidationOptions): PropertyValidationState<T>; // regex string
+        expression(
+            regularExpression: RegExp,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>; // regex
+        expression(
+            regularExpressionString: string,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>; // regex string
         float(options?: ValidationOptions): PropertyValidationState<T>;
         integer(options?: ValidationOptions): PropertyValidationState<T>;
-        latest(latestValueOrFunction: Date, options?: ValidationOptions): PropertyValidationState<T>;
-        latest(latestValueOrFunction: () => Date, options?: ValidationOptions): PropertyValidationState<T>;
-        lengthBetween(shortest: number, longest: number, options?: ValidationOptions): PropertyValidationState<T>;
-        lengthBetween(shortest: number, longest: () => number, options?: ValidationOptions): PropertyValidationState<T>;
-        lengthBetween(shortest: () => number, longest: number, options?: ValidationOptions): PropertyValidationState<T>;
+        latest(
+            latestValueOrFunction: Date,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        latest(
+            latestValueOrFunction: () => Date,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        lengthBetween(
+            shortest: number,
+            longest: number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        lengthBetween(
+            shortest: number,
+            longest: () => number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        lengthBetween(
+            shortest: () => number,
+            longest: number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
         lengthBetween(
             shortest: () => number,
             longest: () => number,
             options?: ValidationOptions,
         ): PropertyValidationState<T>;
-        matches(permitted: any, options?: ValidationOptions): PropertyValidationState<T>;
-        matches(permitted: () => any, options?: ValidationOptions): PropertyValidationState<T>;
+        matches(
+            permitted: any,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        matches(
+            permitted: () => any,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
 
-        maximum(maximum: any, options?: ValidationOptions): PropertyValidationState<T>;
-        maximum(maximum: () => any, options?: ValidationOptions): PropertyValidationState<T>;
-        maximumLength(longest: number, options?: ValidationOptions): PropertyValidationState<T>;
-        maximumLength(longest: () => number, options?: ValidationOptions): PropertyValidationState<T>;
-        maximumNumberOfItems(maximum: number, options?: ValidationOptions): PropertyValidationState<T>;
-        maximumNumberOfItems(maximum: () => number, options?: ValidationOptions): PropertyValidationState<T>;
+        maximum(
+            maximum: any,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        maximum(
+            maximum: () => any,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        maximumLength(
+            longest: number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        maximumLength(
+            longest: () => number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        maximumNumberOfItems(
+            maximum: number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        maximumNumberOfItems(
+            maximum: () => number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
 
-        minimum(minimumValueOrFunction: any, options?: ValidationOptions): PropertyValidationState<T>;
-        minimumLength(shortest: number, options?: ValidationOptions): PropertyValidationState<T>;
-        minimumLength(shortest: () => number, options?: ValidationOptions): PropertyValidationState<T>;
-        minimumNumberOfItems(minimum: number, options?: ValidationOptions): PropertyValidationState<T>;
-        minimumNumberOfItems(minimum: () => number, options?: ValidationOptions): PropertyValidationState<T>;
+        minimum(
+            minimumValueOrFunction: any,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        minimumLength(
+            shortest: number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        minimumLength(
+            shortest: () => number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        minimumNumberOfItems(
+            minimum: number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        minimumNumberOfItems(
+            minimum: () => number,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
 
         name(value: string): PropertyValidationState<T>;
         name(value: () => string): PropertyValidationState<T>;
-        noneOf(forbiddenValues: any[], options?: ValidationOptions): PropertyValidationState<T>;
-        noneOf(forbiddenValues: () => any[], options?: ValidationOptions): PropertyValidationState<T>;
+        noneOf(
+            forbiddenValues: any[],
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        noneOf(
+            forbiddenValues: () => any[],
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
 
-        not(forbiddenValueOrFunction: any, options?: ValidationOptions): PropertyValidationState<T>;
+        not(
+            forbiddenValueOrFunction: any,
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
         number(): PropertyValidationState<T>;
         numberOfItems(
             minimumValueOrFunction: any,
             maximumValueOrFunction: any,
             options?: ValidationOptions,
         ): PropertyValidationState<T>;
-        oneOf(permittedValues: any[], options?: ValidationOptions): PropertyValidationState<T>;
-        oneOf(permittedValues: () => any[], options?: ValidationOptions): PropertyValidationState<T>;
+        oneOf(
+            permittedValues: any[],
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
+        oneOf(
+            permittedValues: () => any[],
+            options?: ValidationOptions,
+        ): PropertyValidationState<T>;
         postcode(): PropertyValidationState<T>;
         range(
             minimumValueOrFunction: any,

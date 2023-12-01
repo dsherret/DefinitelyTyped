@@ -22,7 +22,10 @@ declare namespace xhook {
 
     interface BeforeHandler {
         // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-        (request: Request, callback: (response?: Response) => void): Response | void;
+        (
+            request: Request,
+            callback: (response?: Response) => void,
+        ): Response | void;
     }
 
     interface AfterHandler {

@@ -7,7 +7,9 @@ export = ConnectionTCP;
 
 declare class ConnectionTCP extends Connection {
     sendMany(elements: Iterable<Element>): Promise<void>;
-    socketParameters(service: string | URL): ConnectionTCP.SocketParameters | undefined;
+    socketParameters(
+        service: string | URL,
+    ): ConnectionTCP.SocketParameters | undefined;
     headerElement(): Element;
 
     Socket: ConnectionTCP.SocketConstructor;
@@ -20,6 +22,6 @@ declare namespace ConnectionTCP {
     }
 
     interface SocketConstructor extends Connection.SocketConstructor {
-        new(): Socket;
+        new (): Socket;
     }
 }

@@ -16,13 +16,23 @@ const sink: Sink<EventEmitter, Stream> = parser1;
 
 const eventEmitter1: Stream = parser1.import(stream);
 const eventEmitter2: Stream = parser1.import(stream, {});
-const eventEmitter3: Stream = parser1.import(stream, { baseIRI, context, factory });
+const eventEmitter3: Stream = parser1.import(stream, {
+    baseIRI,
+    context,
+    factory,
+});
 
 interface SpecializedQuad extends BaseQuad {
     foo: string;
 }
-const typedStream: Stream<SpecializedQuad> = <any> {};
-const typedParser: Parser<SpecializedQuad> = <any> {};
+const typedStream: Stream<SpecializedQuad> = <any>{};
+const typedParser: Parser<SpecializedQuad> = <any>{};
 const typedImported: Stream<SpecializedQuad> = typedParser.import(typedStream);
-const typedImported1: Stream<SpecializedQuad> = typedParser.import(typedStream, {});
-const typedImported2: Stream<SpecializedQuad> = typedParser.import(typedStream, { baseIRI, context, factory });
+const typedImported1: Stream<SpecializedQuad> = typedParser.import(
+    typedStream,
+    {},
+);
+const typedImported2: Stream<SpecializedQuad> = typedParser.import(
+    typedStream,
+    { baseIRI, context, factory },
+);

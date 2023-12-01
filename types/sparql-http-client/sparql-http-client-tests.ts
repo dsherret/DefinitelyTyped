@@ -13,14 +13,14 @@ interface TestQuad extends Quad {
 
 const endpointUrl = "";
 const query = "";
-const factory: DataFactory<TestQuad> = <any> {};
-const headers: HeadersInit = <any> {};
-const password: string = <any> {};
-const user: string = <any> {};
-const storeUrl: string = <any> {};
-const updateUrl: string = <any> {};
-const graph: NamedNode = <any> {};
-const stream: Stream = <any> {};
+const factory: DataFactory<TestQuad> = <any>{};
+const headers: HeadersInit = <any>{};
+const password: string = <any>{};
+const user: string = <any>{};
+const storeUrl: string = <any>{};
+const updateUrl: string = <any>{};
+const graph: NamedNode = <any>{};
+const stream: Stream = <any>{};
 
 const endpoint: Endpoint = new Endpoint({
     endpointUrl,
@@ -72,11 +72,13 @@ async function streamingClient() {
     });
 
     // query.construct
-    const constructNoOptions: Stream<TestQuad> & Readable = await fullOptions.query.construct(query);
-    const constructFullOptions: Stream<TestQuad> & Readable = await fullOptions.query.construct(query, {
-        headers,
-        operation: "get",
-    });
+    const constructNoOptions: Stream<TestQuad> & Readable =
+        await fullOptions.query.construct(query);
+    const constructFullOptions: Stream<TestQuad> & Readable =
+        await fullOptions.query.construct(query, {
+            headers,
+            operation: "get",
+        });
 
     // query.update
     const updateNoOptions: Promise<void> = fullOptions.query.update(query);
@@ -128,18 +130,24 @@ async function parsingClient() {
     });
 
     // query.select
-    const selectNoOptions: Array<Record<string, Term>> = await fullOptions.query.select(query);
-    const selectFullOptions: Array<Record<string, Term>> = await fullOptions.query.select(query, {
-        headers,
-        operation: "postUrlencoded",
-    });
+    const selectNoOptions: Array<Record<string, Term>> =
+        await fullOptions.query.select(query);
+    const selectFullOptions: Array<Record<string, Term>> =
+        await fullOptions.query.select(query, {
+            headers,
+            operation: "postUrlencoded",
+        });
 
     // query.construct
-    const constructNoOptions: TestQuad[] = await fullOptions.query.construct(query);
-    const constructFullOptions: TestQuad[] = await fullOptions.query.construct(query, {
-        headers,
-        operation: "get",
-    });
+    const constructNoOptions: TestQuad[] =
+        await fullOptions.query.construct(query);
+    const constructFullOptions: TestQuad[] = await fullOptions.query.construct(
+        query,
+        {
+            headers,
+            operation: "get",
+        },
+    );
 
     // query.update
     const updateNoOptions: Promise<void> = fullOptions.query.update(query);

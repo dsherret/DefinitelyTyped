@@ -3,8 +3,7 @@ import CSSModules = require("react-css-modules");
 
 const styles = {};
 
-interface TableProps extends CSSModules.InjectedCSSModuleProps {
-}
+interface TableProps extends CSSModules.InjectedCSSModuleProps {}
 
 class Table extends React.Component<TableProps> {
     render() {
@@ -23,8 +22,7 @@ class Table extends React.Component<TableProps> {
 
 const TableHOC = CSSModules(Table, styles);
 
-interface TableDecoratedProps extends CSSModules.InjectedCSSModuleProps {
-}
+interface TableDecoratedProps extends CSSModules.InjectedCSSModuleProps {}
 
 @CSSModules(styles)
 class TableDecorated extends React.Component<TableDecoratedProps> {
@@ -42,8 +40,7 @@ class TableDecorated extends React.Component<TableDecoratedProps> {
     }
 }
 
-interface TableProps extends CSSModules.InjectedCSSModuleProps {
-}
+interface TableProps extends CSSModules.InjectedCSSModuleProps {}
 
 class Svg extends React.Component<TableProps> {
     render() {

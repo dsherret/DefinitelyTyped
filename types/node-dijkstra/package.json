@@ -1,17 +1,17 @@
 {
-    "private": true,
-    "name": "@types/node-dijkstra",
-    "version": "2.5.9999",
-    "projects": [
-        "https://github.com/albertorestifo/node-dijkstra"
-    ],
-    "devDependencies": {
-        "@types/node-dijkstra": "workspace:."
-    },
-    "owners": [
-        {
-            "name": "Jorge López",
-            "githubUsername": "nokutu"
-        }
-    ]
+  "private": true,
+  "name": "@types/node-dijkstra",
+  "version": "2.5.9999",
+  "projects": [
+    "https://github.com/albertorestifo/node-dijkstra"
+  ],
+  "devDependencies": {
+    "@types/node-dijkstra": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Jorge López",
+      "githubUsername": "nokutu"
+    }
+  ]
 }

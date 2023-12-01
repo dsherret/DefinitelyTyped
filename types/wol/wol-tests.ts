@@ -10,9 +10,12 @@ wol.wake("00:00:00:00:00:00", (error: Error | null) => {
     console.log(error);
 });
 // $ExpectType Promise<boolean>
-wol.wake("00:00:00:00:00:00", (error: Error | null, result: boolean | undefined) => {
-    console.log(error, result);
-});
+wol.wake(
+    "00:00:00:00:00:00",
+    (error: Error | null, result: boolean | undefined) => {
+        console.log(error, result);
+    },
+);
 
 // $ExpectType Promise<boolean>
 wol.wake("00:00:00:00:00:00");
@@ -21,9 +24,13 @@ wol.wake("00:00:00:00:00:00");
 wol.wake("00:00:00:00:00:00", optionsAll);
 
 // $ExpectType Promise<boolean>
-wol.wake("00:00:00:00:00:00", optionsAll, (error: Error | null, result: boolean | undefined) => {
-    console.log(error, result);
-});
+wol.wake(
+    "00:00:00:00:00:00",
+    optionsAll,
+    (error: Error | null, result: boolean | undefined) => {
+        console.log(error, result);
+    },
+);
 
 // $ExpectType Buffer
 wol.createMagicPacket("00:00:00:00:00:00");

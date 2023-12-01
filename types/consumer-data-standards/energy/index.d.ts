@@ -469,7 +469,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -509,7 +517,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -535,7 +551,16 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The days that the rate applies to
                              */
-                            days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days?: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * The end of the time period per day for which the controlled load rate applies. Required if startTime provided
                              */
@@ -561,7 +586,11 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                     /**
                      * The type of the discount.  Mandatory if the discount type is CONDITIONAL
                      */
-                    category?: "PAY_ON_TIME" | "DIRECT_DEBIT" | "GUARANTEED_DISCOUNT" | "OTHER";
+                    category?:
+                        | "PAY_ON_TIME"
+                        | "DIRECT_DEBIT"
+                        | "GUARANTEED_DISCOUNT"
+                        | "OTHER";
                     /**
                      * The description of the discount
                      */
@@ -587,7 +616,11 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                     /**
                      * The method of calculation of the discount
                      */
-                    methodUType: "percentOfBill" | "percentOfUse" | "fixedAmount" | "percentOverThreshold";
+                    methodUType:
+                        | "percentOfBill"
+                        | "percentOfUse"
+                        | "fixedAmount"
+                        | "percentOverThreshold";
                     /**
                      * Required if methodUType is percentOfBill
                      */
@@ -811,7 +844,13 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                 /**
                  * Payment options for this contract
                  */
-                paymentOption: Array<"PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER">;
+                paymentOption: Array<
+                    | "PAPER_BILL"
+                    | "CREDIT_CARD"
+                    | "DIRECT_DEBIT"
+                    | "BPAY"
+                    | "OTHER"
+                >;
                 /**
                  * The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>
                  */
@@ -872,7 +911,16 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The days that the tariff applies to. At least one entry required
                              */
-                            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)
                              */
@@ -914,7 +962,16 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                         /**
                          * The days that the demand tariff applies to
                          */
-                        days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                        days?: Array<
+                            | "SUN"
+                            | "MON"
+                            | "TUE"
+                            | "WED"
+                            | "THU"
+                            | "FRI"
+                            | "SAT"
+                            | "PUBLIC_HOLIDAYS"
+                        >;
                         /**
                          * Description of the charge
                          */
@@ -934,7 +991,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                         /**
                          * The measurement unit of charge amount. Assumed to be KWH if absent
                          */
-                        measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                        measureUnit?:
+                            | "KWH"
+                            | "KVA"
+                            | "KVAR"
+                            | "KVARH"
+                            | "KW"
+                            | "DAYS"
+                            | "METER"
+                            | "MONTH";
                         /**
                          * Application period for the demand tariff
                          */
@@ -960,7 +1025,10 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                     /**
                      * Specifies the type of rate applicable to this tariff period
                      */
-                    rateBlockUType: "singleRate" | "timeOfUseRates" | "demandCharges";
+                    rateBlockUType:
+                        | "singleRate"
+                        | "timeOfUseRates"
+                        | "demandCharges";
                     /**
                      * Object representing a single rate.  Required if rateBlockUType is singleRate
                      */
@@ -988,7 +1056,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per measure unit (exclusive of GST)
                              */
@@ -1024,7 +1100,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -1042,7 +1126,16 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The days that the rate applies to
                              */
-                            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * End of the period
                              */
@@ -1056,7 +1149,12 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                         /**
                          * The type of usage that the rate applies to
                          */
-                        type: "PEAK" | "OFF_PEAK" | "SHOULDER" | "SHOULDER1" | "SHOULDER2";
+                        type:
+                            | "PEAK"
+                            | "OFF_PEAK"
+                            | "SHOULDER"
+                            | "SHOULDER1"
+                            | "SHOULDER2";
                         [k: string]: unknown;
                     }>;
                     /**
@@ -1066,7 +1164,14 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                     /**
                      * Type of charge. Assumed to be other if absent
                      */
-                    type?: "ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER";
+                    type?:
+                        | "ENVIRONMENTAL"
+                        | "REGULATED"
+                        | "NETWORK"
+                        | "METERING"
+                        | "RETAIL_SERVICE"
+                        | "RCTI"
+                        | "OTHER";
                     [k: string]: unknown;
                 }>;
                 /**
@@ -1126,7 +1231,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -1166,7 +1279,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -1192,7 +1313,16 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The days that the rate applies to
                              */
-                            days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days?: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * The end of the time period per day for which the controlled load rate applies. Required if startTime provided
                              */
@@ -1218,7 +1348,11 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                     /**
                      * The type of the discount.  Mandatory if the discount type is CONDITIONAL
                      */
-                    category?: "PAY_ON_TIME" | "DIRECT_DEBIT" | "GUARANTEED_DISCOUNT" | "OTHER";
+                    category?:
+                        | "PAY_ON_TIME"
+                        | "DIRECT_DEBIT"
+                        | "GUARANTEED_DISCOUNT"
+                        | "OTHER";
                     /**
                      * The description of the discount
                      */
@@ -1244,7 +1378,11 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                     /**
                      * The method of calculation of the discount
                      */
-                    methodUType: "percentOfBill" | "percentOfUse" | "fixedAmount" | "percentOverThreshold";
+                    methodUType:
+                        | "percentOfBill"
+                        | "percentOfUse"
+                        | "fixedAmount"
+                        | "percentOverThreshold";
                     /**
                      * Required if methodUType is percentOfBill
                      */
@@ -1468,7 +1606,13 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                 /**
                  * Payment options for this contract
                  */
-                paymentOption: Array<"PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER">;
+                paymentOption: Array<
+                    | "PAPER_BILL"
+                    | "CREDIT_CARD"
+                    | "DIRECT_DEBIT"
+                    | "BPAY"
+                    | "OTHER"
+                >;
                 /**
                  * The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>
                  */
@@ -1529,7 +1673,16 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The days that the tariff applies to. At least one entry required
                              */
-                            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)
                              */
@@ -1571,7 +1724,16 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                         /**
                          * The days that the demand tariff applies to
                          */
-                        days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                        days?: Array<
+                            | "SUN"
+                            | "MON"
+                            | "TUE"
+                            | "WED"
+                            | "THU"
+                            | "FRI"
+                            | "SAT"
+                            | "PUBLIC_HOLIDAYS"
+                        >;
                         /**
                          * Description of the charge
                          */
@@ -1591,7 +1753,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                         /**
                          * The measurement unit of charge amount. Assumed to be KWH if absent
                          */
-                        measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                        measureUnit?:
+                            | "KWH"
+                            | "KVA"
+                            | "KVAR"
+                            | "KVARH"
+                            | "KW"
+                            | "DAYS"
+                            | "METER"
+                            | "MONTH";
                         /**
                          * Application period for the demand tariff
                          */
@@ -1617,7 +1787,10 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                     /**
                      * Specifies the type of rate applicable to this tariff period
                      */
-                    rateBlockUType: "singleRate" | "timeOfUseRates" | "demandCharges";
+                    rateBlockUType:
+                        | "singleRate"
+                        | "timeOfUseRates"
+                        | "demandCharges";
                     /**
                      * Object representing a single rate.  Required if rateBlockUType is singleRate
                      */
@@ -1645,7 +1818,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per measure unit (exclusive of GST)
                              */
@@ -1681,7 +1862,15 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -1699,7 +1888,16 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                             /**
                              * The days that the rate applies to
                              */
-                            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * End of the period
                              */
@@ -1713,7 +1911,12 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                         /**
                          * The type of usage that the rate applies to
                          */
-                        type: "PEAK" | "OFF_PEAK" | "SHOULDER" | "SHOULDER1" | "SHOULDER2";
+                        type:
+                            | "PEAK"
+                            | "OFF_PEAK"
+                            | "SHOULDER"
+                            | "SHOULDER1"
+                            | "SHOULDER2";
                         [k: string]: unknown;
                     }>;
                     /**
@@ -1723,7 +1926,14 @@ export interface EnergyAccountDetail extends EnergyAccountBase {
                     /**
                      * Type of charge. Assumed to be other if absent
                      */
-                    type?: "ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER";
+                    type?:
+                        | "ENVIRONMENTAL"
+                        | "REGULATED"
+                        | "NETWORK"
+                        | "METERING"
+                        | "RETAIL_SERVICE"
+                        | "RCTI"
+                        | "OTHER";
                     [k: string]: unknown;
                 }>;
                 /**
@@ -1902,7 +2112,15 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The measurement unit of rate. Assumed to be KWH if absent
                                  */
-                                measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                                measureUnit?:
+                                    | "KWH"
+                                    | "KVA"
+                                    | "KVAR"
+                                    | "KVARH"
+                                    | "KW"
+                                    | "DAYS"
+                                    | "METER"
+                                    | "MONTH";
                                 /**
                                  * Unit price of usage per  measure unit (exclusive of GST)
                                  */
@@ -1942,7 +2160,15 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The measurement unit of rate. Assumed to be KWH if absent
                                  */
-                                measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                                measureUnit?:
+                                    | "KWH"
+                                    | "KVA"
+                                    | "KVAR"
+                                    | "KVARH"
+                                    | "KW"
+                                    | "DAYS"
+                                    | "METER"
+                                    | "MONTH";
                                 /**
                                  * Unit price of usage per  measure unit (exclusive of GST)
                                  */
@@ -1968,7 +2194,16 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The days that the rate applies to
                                  */
-                                days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                                days?: Array<
+                                    | "SUN"
+                                    | "MON"
+                                    | "TUE"
+                                    | "WED"
+                                    | "THU"
+                                    | "FRI"
+                                    | "SAT"
+                                    | "PUBLIC_HOLIDAYS"
+                                >;
                                 /**
                                  * The end of the time period per day for which the controlled load rate applies. Required if startTime provided
                                  */
@@ -1982,7 +2217,11 @@ export interface EnergyAccountDetailResponse {
                             /**
                              * The type of usage that the rate applies to
                              */
-                            type: "PEAK" | "OFF_PEAK" | "SHOULDER" | "SOLAR_SPONGE";
+                            type:
+                                | "PEAK"
+                                | "OFF_PEAK"
+                                | "SHOULDER"
+                                | "SOLAR_SPONGE";
                             [k: string]: unknown;
                         }>;
                         [k: string]: unknown;
@@ -1994,7 +2233,11 @@ export interface EnergyAccountDetailResponse {
                         /**
                          * The type of the discount.  Mandatory if the discount type is CONDITIONAL
                          */
-                        category?: "PAY_ON_TIME" | "DIRECT_DEBIT" | "GUARANTEED_DISCOUNT" | "OTHER";
+                        category?:
+                            | "PAY_ON_TIME"
+                            | "DIRECT_DEBIT"
+                            | "GUARANTEED_DISCOUNT"
+                            | "OTHER";
                         /**
                          * The description of the discount
                          */
@@ -2020,7 +2263,11 @@ export interface EnergyAccountDetailResponse {
                         /**
                          * The method of calculation of the discount
                          */
-                        methodUType: "percentOfBill" | "percentOfUse" | "fixedAmount" | "percentOverThreshold";
+                        methodUType:
+                            | "percentOfBill"
+                            | "percentOfUse"
+                            | "fixedAmount"
+                            | "percentOverThreshold";
                         /**
                          * Required if methodUType is percentOfBill
                          */
@@ -2244,7 +2491,13 @@ export interface EnergyAccountDetailResponse {
                     /**
                      * Payment options for this contract
                      */
-                    paymentOption: Array<"PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER">;
+                    paymentOption: Array<
+                        | "PAPER_BILL"
+                        | "CREDIT_CARD"
+                        | "DIRECT_DEBIT"
+                        | "BPAY"
+                        | "OTHER"
+                    >;
                     /**
                      * The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>
                      */
@@ -2305,7 +2558,16 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The days that the tariff applies to. At least one entry required
                                  */
-                                days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                                days: Array<
+                                    | "SUN"
+                                    | "MON"
+                                    | "TUE"
+                                    | "WED"
+                                    | "THU"
+                                    | "FRI"
+                                    | "SAT"
+                                    | "PUBLIC_HOLIDAYS"
+                                >;
                                 /**
                                  * The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)
                                  */
@@ -2347,7 +2609,16 @@ export interface EnergyAccountDetailResponse {
                             /**
                              * The days that the demand tariff applies to
                              */
-                            days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days?: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * Description of the charge
                              */
@@ -2367,11 +2638,22 @@ export interface EnergyAccountDetailResponse {
                             /**
                              * The measurement unit of charge amount. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Application period for the demand tariff
                              */
-                            measurementPeriod: "DAY" | "MONTH" | "TARIFF_PERIOD";
+                            measurementPeriod:
+                                | "DAY"
+                                | "MONTH"
+                                | "TARIFF_PERIOD";
                             /**
                              * Minimum demand for this demand tariff in kW.  If absent then 0 is assumed
                              */
@@ -2393,7 +2675,10 @@ export interface EnergyAccountDetailResponse {
                         /**
                          * Specifies the type of rate applicable to this tariff period
                          */
-                        rateBlockUType: "singleRate" | "timeOfUseRates" | "demandCharges";
+                        rateBlockUType:
+                            | "singleRate"
+                            | "timeOfUseRates"
+                            | "demandCharges";
                         /**
                          * Object representing a single rate.  Required if rateBlockUType is singleRate
                          */
@@ -2421,7 +2706,15 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The measurement unit of rate. Assumed to be KWH if absent
                                  */
-                                measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                                measureUnit?:
+                                    | "KWH"
+                                    | "KVA"
+                                    | "KVAR"
+                                    | "KVARH"
+                                    | "KW"
+                                    | "DAYS"
+                                    | "METER"
+                                    | "MONTH";
                                 /**
                                  * Unit price of usage per measure unit (exclusive of GST)
                                  */
@@ -2457,7 +2750,15 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The measurement unit of rate. Assumed to be KWH if absent
                                  */
-                                measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                                measureUnit?:
+                                    | "KWH"
+                                    | "KVA"
+                                    | "KVAR"
+                                    | "KVARH"
+                                    | "KW"
+                                    | "DAYS"
+                                    | "METER"
+                                    | "MONTH";
                                 /**
                                  * Unit price of usage per  measure unit (exclusive of GST)
                                  */
@@ -2475,7 +2776,16 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The days that the rate applies to
                                  */
-                                days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                                days: Array<
+                                    | "SUN"
+                                    | "MON"
+                                    | "TUE"
+                                    | "WED"
+                                    | "THU"
+                                    | "FRI"
+                                    | "SAT"
+                                    | "PUBLIC_HOLIDAYS"
+                                >;
                                 /**
                                  * End of the period
                                  */
@@ -2489,7 +2799,12 @@ export interface EnergyAccountDetailResponse {
                             /**
                              * The type of usage that the rate applies to
                              */
-                            type: "PEAK" | "OFF_PEAK" | "SHOULDER" | "SHOULDER1" | "SHOULDER2";
+                            type:
+                                | "PEAK"
+                                | "OFF_PEAK"
+                                | "SHOULDER"
+                                | "SHOULDER1"
+                                | "SHOULDER2";
                             [k: string]: unknown;
                         }>;
                         /**
@@ -2566,7 +2881,15 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The measurement unit of rate. Assumed to be KWH if absent
                                  */
-                                measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                                measureUnit?:
+                                    | "KWH"
+                                    | "KVA"
+                                    | "KVAR"
+                                    | "KVARH"
+                                    | "KW"
+                                    | "DAYS"
+                                    | "METER"
+                                    | "MONTH";
                                 /**
                                  * Unit price of usage per  measure unit (exclusive of GST)
                                  */
@@ -2606,7 +2929,15 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The measurement unit of rate. Assumed to be KWH if absent
                                  */
-                                measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                                measureUnit?:
+                                    | "KWH"
+                                    | "KVA"
+                                    | "KVAR"
+                                    | "KVARH"
+                                    | "KW"
+                                    | "DAYS"
+                                    | "METER"
+                                    | "MONTH";
                                 /**
                                  * Unit price of usage per  measure unit (exclusive of GST)
                                  */
@@ -2632,7 +2963,16 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The days that the rate applies to
                                  */
-                                days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                                days?: Array<
+                                    | "SUN"
+                                    | "MON"
+                                    | "TUE"
+                                    | "WED"
+                                    | "THU"
+                                    | "FRI"
+                                    | "SAT"
+                                    | "PUBLIC_HOLIDAYS"
+                                >;
                                 /**
                                  * The end of the time period per day for which the controlled load rate applies. Required if startTime provided
                                  */
@@ -2646,7 +2986,11 @@ export interface EnergyAccountDetailResponse {
                             /**
                              * The type of usage that the rate applies to
                              */
-                            type: "PEAK" | "OFF_PEAK" | "SHOULDER" | "SOLAR_SPONGE";
+                            type:
+                                | "PEAK"
+                                | "OFF_PEAK"
+                                | "SHOULDER"
+                                | "SOLAR_SPONGE";
                             [k: string]: unknown;
                         }>;
                         [k: string]: unknown;
@@ -2658,7 +3002,11 @@ export interface EnergyAccountDetailResponse {
                         /**
                          * The type of the discount.  Mandatory if the discount type is CONDITIONAL
                          */
-                        category?: "PAY_ON_TIME" | "DIRECT_DEBIT" | "GUARANTEED_DISCOUNT" | "OTHER";
+                        category?:
+                            | "PAY_ON_TIME"
+                            | "DIRECT_DEBIT"
+                            | "GUARANTEED_DISCOUNT"
+                            | "OTHER";
                         /**
                          * The description of the discount
                          */
@@ -2684,7 +3032,11 @@ export interface EnergyAccountDetailResponse {
                         /**
                          * The method of calculation of the discount
                          */
-                        methodUType: "percentOfBill" | "percentOfUse" | "fixedAmount" | "percentOverThreshold";
+                        methodUType:
+                            | "percentOfBill"
+                            | "percentOfUse"
+                            | "fixedAmount"
+                            | "percentOverThreshold";
                         /**
                          * Required if methodUType is percentOfBill
                          */
@@ -2908,7 +3260,13 @@ export interface EnergyAccountDetailResponse {
                     /**
                      * Payment options for this contract
                      */
-                    paymentOption: Array<"PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER">;
+                    paymentOption: Array<
+                        | "PAPER_BILL"
+                        | "CREDIT_CARD"
+                        | "DIRECT_DEBIT"
+                        | "BPAY"
+                        | "OTHER"
+                    >;
                     /**
                      * The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>
                      */
@@ -2969,7 +3327,16 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The days that the tariff applies to. At least one entry required
                                  */
-                                days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                                days: Array<
+                                    | "SUN"
+                                    | "MON"
+                                    | "TUE"
+                                    | "WED"
+                                    | "THU"
+                                    | "FRI"
+                                    | "SAT"
+                                    | "PUBLIC_HOLIDAYS"
+                                >;
                                 /**
                                  * The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)
                                  */
@@ -3011,7 +3378,16 @@ export interface EnergyAccountDetailResponse {
                             /**
                              * The days that the demand tariff applies to
                              */
-                            days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days?: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * Description of the charge
                              */
@@ -3031,11 +3407,22 @@ export interface EnergyAccountDetailResponse {
                             /**
                              * The measurement unit of charge amount. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Application period for the demand tariff
                              */
-                            measurementPeriod: "DAY" | "MONTH" | "TARIFF_PERIOD";
+                            measurementPeriod:
+                                | "DAY"
+                                | "MONTH"
+                                | "TARIFF_PERIOD";
                             /**
                              * Minimum demand for this demand tariff in kW.  If absent then 0 is assumed
                              */
@@ -3057,7 +3444,10 @@ export interface EnergyAccountDetailResponse {
                         /**
                          * Specifies the type of rate applicable to this tariff period
                          */
-                        rateBlockUType: "singleRate" | "timeOfUseRates" | "demandCharges";
+                        rateBlockUType:
+                            | "singleRate"
+                            | "timeOfUseRates"
+                            | "demandCharges";
                         /**
                          * Object representing a single rate.  Required if rateBlockUType is singleRate
                          */
@@ -3085,7 +3475,15 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The measurement unit of rate. Assumed to be KWH if absent
                                  */
-                                measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                                measureUnit?:
+                                    | "KWH"
+                                    | "KVA"
+                                    | "KVAR"
+                                    | "KVARH"
+                                    | "KW"
+                                    | "DAYS"
+                                    | "METER"
+                                    | "MONTH";
                                 /**
                                  * Unit price of usage per measure unit (exclusive of GST)
                                  */
@@ -3121,7 +3519,15 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The measurement unit of rate. Assumed to be KWH if absent
                                  */
-                                measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                                measureUnit?:
+                                    | "KWH"
+                                    | "KVA"
+                                    | "KVAR"
+                                    | "KVARH"
+                                    | "KW"
+                                    | "DAYS"
+                                    | "METER"
+                                    | "MONTH";
                                 /**
                                  * Unit price of usage per  measure unit (exclusive of GST)
                                  */
@@ -3139,7 +3545,16 @@ export interface EnergyAccountDetailResponse {
                                 /**
                                  * The days that the rate applies to
                                  */
-                                days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                                days: Array<
+                                    | "SUN"
+                                    | "MON"
+                                    | "TUE"
+                                    | "WED"
+                                    | "THU"
+                                    | "FRI"
+                                    | "SAT"
+                                    | "PUBLIC_HOLIDAYS"
+                                >;
                                 /**
                                  * End of the period
                                  */
@@ -3153,7 +3568,12 @@ export interface EnergyAccountDetailResponse {
                             /**
                              * The type of usage that the rate applies to
                              */
-                            type: "PEAK" | "OFF_PEAK" | "SHOULDER" | "SHOULDER1" | "SHOULDER2";
+                            type:
+                                | "PEAK"
+                                | "OFF_PEAK"
+                                | "SHOULDER"
+                                | "SHOULDER1"
+                                | "SHOULDER2";
                             [k: string]: unknown;
                         }>;
                         /**
@@ -3360,7 +3780,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -3400,7 +3828,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -3426,7 +3862,16 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The days that the rate applies to
                              */
-                            days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days?: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * The end of the time period per day for which the controlled load rate applies. Required if startTime provided
                              */
@@ -3452,7 +3897,11 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                     /**
                      * The type of the discount.  Mandatory if the discount type is CONDITIONAL
                      */
-                    category?: "PAY_ON_TIME" | "DIRECT_DEBIT" | "GUARANTEED_DISCOUNT" | "OTHER";
+                    category?:
+                        | "PAY_ON_TIME"
+                        | "DIRECT_DEBIT"
+                        | "GUARANTEED_DISCOUNT"
+                        | "OTHER";
                     /**
                      * The description of the discount
                      */
@@ -3478,7 +3927,11 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                     /**
                      * The method of calculation of the discount
                      */
-                    methodUType: "percentOfBill" | "percentOfUse" | "fixedAmount" | "percentOverThreshold";
+                    methodUType:
+                        | "percentOfBill"
+                        | "percentOfUse"
+                        | "fixedAmount"
+                        | "percentOverThreshold";
                     /**
                      * Required if methodUType is percentOfBill
                      */
@@ -3702,7 +4155,13 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                 /**
                  * Payment options for this contract
                  */
-                paymentOption: Array<"PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER">;
+                paymentOption: Array<
+                    | "PAPER_BILL"
+                    | "CREDIT_CARD"
+                    | "DIRECT_DEBIT"
+                    | "BPAY"
+                    | "OTHER"
+                >;
                 /**
                  * The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>
                  */
@@ -3763,7 +4222,16 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The days that the tariff applies to. At least one entry required
                              */
-                            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)
                              */
@@ -3805,7 +4273,16 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                         /**
                          * The days that the demand tariff applies to
                          */
-                        days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                        days?: Array<
+                            | "SUN"
+                            | "MON"
+                            | "TUE"
+                            | "WED"
+                            | "THU"
+                            | "FRI"
+                            | "SAT"
+                            | "PUBLIC_HOLIDAYS"
+                        >;
                         /**
                          * Description of the charge
                          */
@@ -3825,7 +4302,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                         /**
                          * The measurement unit of charge amount. Assumed to be KWH if absent
                          */
-                        measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                        measureUnit?:
+                            | "KWH"
+                            | "KVA"
+                            | "KVAR"
+                            | "KVARH"
+                            | "KW"
+                            | "DAYS"
+                            | "METER"
+                            | "MONTH";
                         /**
                          * Application period for the demand tariff
                          */
@@ -3851,7 +4336,10 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                     /**
                      * Specifies the type of rate applicable to this tariff period
                      */
-                    rateBlockUType: "singleRate" | "timeOfUseRates" | "demandCharges";
+                    rateBlockUType:
+                        | "singleRate"
+                        | "timeOfUseRates"
+                        | "demandCharges";
                     /**
                      * Object representing a single rate.  Required if rateBlockUType is singleRate
                      */
@@ -3879,7 +4367,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per measure unit (exclusive of GST)
                              */
@@ -3915,7 +4411,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -3933,7 +4437,16 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The days that the rate applies to
                              */
-                            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * End of the period
                              */
@@ -3947,7 +4460,12 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                         /**
                          * The type of usage that the rate applies to
                          */
-                        type: "PEAK" | "OFF_PEAK" | "SHOULDER" | "SHOULDER1" | "SHOULDER2";
+                        type:
+                            | "PEAK"
+                            | "OFF_PEAK"
+                            | "SHOULDER"
+                            | "SHOULDER1"
+                            | "SHOULDER2";
                         [k: string]: unknown;
                     }>;
                     /**
@@ -3957,7 +4475,14 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                     /**
                      * Type of charge. Assumed to be other if absent
                      */
-                    type?: "ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER";
+                    type?:
+                        | "ENVIRONMENTAL"
+                        | "REGULATED"
+                        | "NETWORK"
+                        | "METERING"
+                        | "RETAIL_SERVICE"
+                        | "RCTI"
+                        | "OTHER";
                     [k: string]: unknown;
                 }>;
                 /**
@@ -4017,7 +4542,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -4057,7 +4590,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -4083,7 +4624,16 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The days that the rate applies to
                              */
-                            days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days?: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * The end of the time period per day for which the controlled load rate applies. Required if startTime provided
                              */
@@ -4109,7 +4659,11 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                     /**
                      * The type of the discount.  Mandatory if the discount type is CONDITIONAL
                      */
-                    category?: "PAY_ON_TIME" | "DIRECT_DEBIT" | "GUARANTEED_DISCOUNT" | "OTHER";
+                    category?:
+                        | "PAY_ON_TIME"
+                        | "DIRECT_DEBIT"
+                        | "GUARANTEED_DISCOUNT"
+                        | "OTHER";
                     /**
                      * The description of the discount
                      */
@@ -4135,7 +4689,11 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                     /**
                      * The method of calculation of the discount
                      */
-                    methodUType: "percentOfBill" | "percentOfUse" | "fixedAmount" | "percentOverThreshold";
+                    methodUType:
+                        | "percentOfBill"
+                        | "percentOfUse"
+                        | "fixedAmount"
+                        | "percentOverThreshold";
                     /**
                      * Required if methodUType is percentOfBill
                      */
@@ -4359,7 +4917,13 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                 /**
                  * Payment options for this contract
                  */
-                paymentOption: Array<"PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER">;
+                paymentOption: Array<
+                    | "PAPER_BILL"
+                    | "CREDIT_CARD"
+                    | "DIRECT_DEBIT"
+                    | "BPAY"
+                    | "OTHER"
+                >;
                 /**
                  * The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>
                  */
@@ -4420,7 +4984,16 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The days that the tariff applies to. At least one entry required
                              */
-                            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)
                              */
@@ -4462,7 +5035,16 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                         /**
                          * The days that the demand tariff applies to
                          */
-                        days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                        days?: Array<
+                            | "SUN"
+                            | "MON"
+                            | "TUE"
+                            | "WED"
+                            | "THU"
+                            | "FRI"
+                            | "SAT"
+                            | "PUBLIC_HOLIDAYS"
+                        >;
                         /**
                          * Description of the charge
                          */
@@ -4482,7 +5064,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                         /**
                          * The measurement unit of charge amount. Assumed to be KWH if absent
                          */
-                        measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                        measureUnit?:
+                            | "KWH"
+                            | "KVA"
+                            | "KVAR"
+                            | "KVARH"
+                            | "KW"
+                            | "DAYS"
+                            | "METER"
+                            | "MONTH";
                         /**
                          * Application period for the demand tariff
                          */
@@ -4508,7 +5098,10 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                     /**
                      * Specifies the type of rate applicable to this tariff period
                      */
-                    rateBlockUType: "singleRate" | "timeOfUseRates" | "demandCharges";
+                    rateBlockUType:
+                        | "singleRate"
+                        | "timeOfUseRates"
+                        | "demandCharges";
                     /**
                      * Object representing a single rate.  Required if rateBlockUType is singleRate
                      */
@@ -4536,7 +5129,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per measure unit (exclusive of GST)
                              */
@@ -4572,7 +5173,15 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The measurement unit of rate. Assumed to be KWH if absent
                              */
-                            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+                            measureUnit?:
+                                | "KWH"
+                                | "KVA"
+                                | "KVAR"
+                                | "KVARH"
+                                | "KW"
+                                | "DAYS"
+                                | "METER"
+                                | "MONTH";
                             /**
                              * Unit price of usage per  measure unit (exclusive of GST)
                              */
@@ -4590,7 +5199,16 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                             /**
                              * The days that the rate applies to
                              */
-                            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+                            days: Array<
+                                | "SUN"
+                                | "MON"
+                                | "TUE"
+                                | "WED"
+                                | "THU"
+                                | "FRI"
+                                | "SAT"
+                                | "PUBLIC_HOLIDAYS"
+                            >;
                             /**
                              * End of the period
                              */
@@ -4604,7 +5222,12 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                         /**
                          * The type of usage that the rate applies to
                          */
-                        type: "PEAK" | "OFF_PEAK" | "SHOULDER" | "SHOULDER1" | "SHOULDER2";
+                        type:
+                            | "PEAK"
+                            | "OFF_PEAK"
+                            | "SHOULDER"
+                            | "SHOULDER1"
+                            | "SHOULDER2";
                         [k: string]: unknown;
                     }>;
                     /**
@@ -4614,7 +5237,14 @@ export interface EnergyAccountDetailV2 extends EnergyAccountBaseV2 {
                     /**
                      * Type of charge. Assumed to be other if absent
                      */
-                    type?: "ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER";
+                    type?:
+                        | "ENVIRONMENTAL"
+                        | "REGULATED"
+                        | "NETWORK"
+                        | "METERING"
+                        | "RETAIL_SERVICE"
+                        | "RCTI"
+                        | "OTHER";
                     [k: string]: unknown;
                 }>;
                 /**
@@ -4955,19 +5585,17 @@ export interface EnergyBillingDemandTransaction {
     /**
      * Optional array of adjustments arising for this transaction
      */
-    adjustments?:
-        | Array<{
-            /**
-             * The amount of the adjustment
-             */
-            amount: string;
-            /**
-             * A free text description of the adjustment
-             */
-            description: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    adjustments?: Array<{
+        /**
+         * The amount of the adjustment
+         */
+        amount: string;
+        /**
+         * A free text description of the adjustment
+         */
+        description: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
      */
@@ -4975,19 +5603,17 @@ export interface EnergyBillingDemandTransaction {
     /**
      * Additional calculation factors that inform the transaction
      */
-    calculationFactors?:
-        | Array<{
-            /**
-             * The type of the calculation factor
-             */
-            type: "DLF" | "MLF";
-            /**
-             * The value of the calculation factor
-             */
-            value: number;
-            [k: string]: unknown;
-        }>
-        | null;
+    calculationFactors?: Array<{
+        /**
+         * The type of the calculation factor
+         */
+        type: "DLF" | "MLF";
+        /**
+         * The value of the calculation factor
+         */
+        value: number;
+        [k: string]: unknown;
+    }> | null;
     /**
      * Optional description of the transaction that can be used for display purposes
      */
@@ -5038,19 +5664,17 @@ export interface EnergyBillingDemandTransactionV2 {
     /**
      * Optional array of adjustments arising for this transaction
      */
-    adjustments?:
-        | Array<{
-            /**
-             * The amount of the adjustment
-             */
-            amount: string;
-            /**
-             * A free text description of the adjustment
-             */
-            description: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    adjustments?: Array<{
+        /**
+         * The amount of the adjustment
+         */
+        amount: string;
+        /**
+         * A free text description of the adjustment
+         */
+        description: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
      */
@@ -5058,19 +5682,17 @@ export interface EnergyBillingDemandTransactionV2 {
     /**
      * Additional calculation factors that inform the transaction
      */
-    calculationFactors?:
-        | Array<{
-            /**
-             * The type of the calculation factor
-             */
-            type: "DLF" | "MLF";
-            /**
-             * The value of the calculation factor
-             */
-            value: number;
-            [k: string]: unknown;
-        }>
-        | null;
+    calculationFactors?: Array<{
+        /**
+         * The type of the calculation factor
+         */
+        type: "DLF" | "MLF";
+        /**
+         * The value of the calculation factor
+         */
+        value: number;
+        [k: string]: unknown;
+    }> | null;
     /**
      * Optional description of the transaction that can be used for display purposes
      */
@@ -5170,19 +5792,17 @@ export interface EnergyBillingOtherTransaction {
     /**
      * Optional array of adjustments arising for this transaction
      */
-    adjustments?:
-        | Array<{
-            /**
-             * The amount of the adjustment
-             */
-            amount: string;
-            /**
-             * A free text description of the adjustment
-             */
-            description: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    adjustments?: Array<{
+        /**
+         * The amount of the adjustment
+         */
+        amount: string;
+        /**
+         * A free text description of the adjustment
+         */
+        description: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The amount of the charge
      */
@@ -5190,19 +5810,17 @@ export interface EnergyBillingOtherTransaction {
     /**
      * Additional calculation factors that inform the transaction
      */
-    calculationFactors?:
-        | Array<{
-            /**
-             * The type of the calculation factor
-             */
-            type: "DLF" | "MLF";
-            /**
-             * The value of the calculation factor
-             */
-            value: number;
-            [k: string]: unknown;
-        }>
-        | null;
+    calculationFactors?: Array<{
+        /**
+         * The type of the calculation factor
+         */
+        type: "DLF" | "MLF";
+        /**
+         * The value of the calculation factor
+         */
+        value: number;
+        [k: string]: unknown;
+    }> | null;
     /**
      * A free text description of the item
      */
@@ -5226,7 +5844,17 @@ export interface EnergyBillingOtherTransaction {
     /**
      * Type of charge. Assumed to be other if absent
      */
-    type?: ("ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER") | null;
+    type?:
+        | (
+              | "ENVIRONMENTAL"
+              | "REGULATED"
+              | "NETWORK"
+              | "METERING"
+              | "RETAIL_SERVICE"
+              | "RCTI"
+              | "OTHER"
+          )
+        | null;
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the energy api. */
@@ -5239,7 +5867,14 @@ export interface EnergyBillingPaymentTransaction {
     /**
      * The method of payment
      */
-    method: "DIRECT_DEBIT" | "CARD" | "TRANSFER" | "BPAY" | "CASH" | "CHEQUE" | "OTHER";
+    method:
+        | "DIRECT_DEBIT"
+        | "CARD"
+        | "TRANSFER"
+        | "BPAY"
+        | "CASH"
+        | "CHEQUE"
+        | "OTHER";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the energy api. */
@@ -5256,19 +5891,17 @@ export interface EnergyBillingTransaction {
         /**
          * Optional array of adjustments arising for this transaction
          */
-        adjustments?:
-            | Array<{
-                /**
-                 * The amount of the adjustment
-                 */
-                amount: string;
-                /**
-                 * A free text description of the adjustment
-                 */
-                description: string;
-                [k: string]: unknown;
-            }>
-            | null;
+        adjustments?: Array<{
+            /**
+             * The amount of the adjustment
+             */
+            amount: string;
+            /**
+             * A free text description of the adjustment
+             */
+            description: string;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
          */
@@ -5276,19 +5909,17 @@ export interface EnergyBillingTransaction {
         /**
          * Additional calculation factors that inform the transaction
          */
-        calculationFactors?:
-            | Array<{
-                /**
-                 * The type of the calculation factor
-                 */
-                type: "DLF" | "MLF";
-                /**
-                 * The value of the calculation factor
-                 */
-                value: number;
-                [k: string]: unknown;
-            }>
-            | null;
+        calculationFactors?: Array<{
+            /**
+             * The type of the calculation factor
+             */
+            type: "DLF" | "MLF";
+            /**
+             * The value of the calculation factor
+             */
+            value: number;
+            [k: string]: unknown;
+        }> | null;
         /**
          * Optional description of the transaction that can be used for display purposes
          */
@@ -5369,19 +6000,17 @@ export interface EnergyBillingTransaction {
         /**
          * Optional array of adjustments arising for this transaction
          */
-        adjustments?:
-            | Array<{
-                /**
-                 * The amount of the adjustment
-                 */
-                amount: string;
-                /**
-                 * A free text description of the adjustment
-                 */
-                description: string;
-                [k: string]: unknown;
-            }>
-            | null;
+        adjustments?: Array<{
+            /**
+             * The amount of the adjustment
+             */
+            amount: string;
+            /**
+             * A free text description of the adjustment
+             */
+            description: string;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The amount of the charge
          */
@@ -5389,19 +6018,17 @@ export interface EnergyBillingTransaction {
         /**
          * Additional calculation factors that inform the transaction
          */
-        calculationFactors?:
-            | Array<{
-                /**
-                 * The type of the calculation factor
-                 */
-                type: "DLF" | "MLF";
-                /**
-                 * The value of the calculation factor
-                 */
-                value: number;
-                [k: string]: unknown;
-            }>
-            | null;
+        calculationFactors?: Array<{
+            /**
+             * The type of the calculation factor
+             */
+            type: "DLF" | "MLF";
+            /**
+             * The value of the calculation factor
+             */
+            value: number;
+            [k: string]: unknown;
+        }> | null;
         /**
          * A free text description of the item
          */
@@ -5425,7 +6052,17 @@ export interface EnergyBillingTransaction {
         /**
          * Type of charge. Assumed to be other if absent
          */
-        type?: ("ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER") | null;
+        type?:
+            | (
+                  | "ENVIRONMENTAL"
+                  | "REGULATED"
+                  | "NETWORK"
+                  | "METERING"
+                  | "RETAIL_SERVICE"
+                  | "RCTI"
+                  | "OTHER"
+              )
+            | null;
         [k: string]: unknown;
     };
     /**
@@ -5439,13 +6076,25 @@ export interface EnergyBillingTransaction {
         /**
          * The method of payment
          */
-        method: "DIRECT_DEBIT" | "CARD" | "TRANSFER" | "BPAY" | "CASH" | "CHEQUE" | "OTHER";
+        method:
+            | "DIRECT_DEBIT"
+            | "CARD"
+            | "TRANSFER"
+            | "BPAY"
+            | "CASH"
+            | "CHEQUE"
+            | "OTHER";
         [k: string]: unknown;
     };
     /**
      * Indicator of the type of transaction object present in this record
      */
-    transactionUType: "usage" | "demand" | "onceOff" | "otherCharges" | "payment";
+    transactionUType:
+        | "usage"
+        | "demand"
+        | "onceOff"
+        | "otherCharges"
+        | "payment";
     /**
      * Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage
      */
@@ -5453,19 +6102,17 @@ export interface EnergyBillingTransaction {
         /**
          * Optional array of adjustments arising for this transaction
          */
-        adjustments?:
-            | Array<{
-                /**
-                 * The amount of the adjustment
-                 */
-                amount: string;
-                /**
-                 * A free text description of the adjustment
-                 */
-                description: string;
-                [k: string]: unknown;
-            }>
-            | null;
+        adjustments?: Array<{
+            /**
+             * The amount of the adjustment
+             */
+            amount: string;
+            /**
+             * A free text description of the adjustment
+             */
+            description: string;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
          */
@@ -5473,19 +6120,17 @@ export interface EnergyBillingTransaction {
         /**
          * Additional calculation factors that inform the transaction
          */
-        calculationFactors?:
-            | Array<{
-                /**
-                 * The type of the calculation factor
-                 */
-                type: "DLF" | "MLF";
-                /**
-                 * The value of the calculation factor
-                 */
-                value: number;
-                [k: string]: unknown;
-            }>
-            | null;
+        calculationFactors?: Array<{
+            /**
+             * The type of the calculation factor
+             */
+            type: "DLF" | "MLF";
+            /**
+             * The value of the calculation factor
+             */
+            value: number;
+            [k: string]: unknown;
+        }> | null;
         /**
          * Optional description of the transaction that can be used for display purposes
          */
@@ -5505,7 +6150,18 @@ export interface EnergyBillingTransaction {
         /**
          * The measurement unit of rate. Assumed to be KWH if absent
          */
-        measureUnit?: ("KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH") | null;
+        measureUnit?:
+            | (
+                  | "KWH"
+                  | "KVA"
+                  | "KVAR"
+                  | "KVARH"
+                  | "KW"
+                  | "DAYS"
+                  | "METER"
+                  | "MONTH"
+              )
+            | null;
         /**
          * The ID of the service point to which this transaction applies if any
          */
@@ -5550,19 +6206,17 @@ export interface EnergyBillingTransactionV2 {
         /**
          * Optional array of adjustments arising for this transaction
          */
-        adjustments?:
-            | Array<{
-                /**
-                 * The amount of the adjustment
-                 */
-                amount: string;
-                /**
-                 * A free text description of the adjustment
-                 */
-                description: string;
-                [k: string]: unknown;
-            }>
-            | null;
+        adjustments?: Array<{
+            /**
+             * The amount of the adjustment
+             */
+            amount: string;
+            /**
+             * A free text description of the adjustment
+             */
+            description: string;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
          */
@@ -5570,19 +6224,17 @@ export interface EnergyBillingTransactionV2 {
         /**
          * Additional calculation factors that inform the transaction
          */
-        calculationFactors?:
-            | Array<{
-                /**
-                 * The type of the calculation factor
-                 */
-                type: "DLF" | "MLF";
-                /**
-                 * The value of the calculation factor
-                 */
-                value: number;
-                [k: string]: unknown;
-            }>
-            | null;
+        calculationFactors?: Array<{
+            /**
+             * The type of the calculation factor
+             */
+            type: "DLF" | "MLF";
+            /**
+             * The value of the calculation factor
+             */
+            value: number;
+            [k: string]: unknown;
+        }> | null;
         /**
          * Optional description of the transaction that can be used for display purposes
          */
@@ -5665,19 +6317,17 @@ export interface EnergyBillingTransactionV2 {
         /**
          * Optional array of adjustments arising for this transaction
          */
-        adjustments?:
-            | Array<{
-                /**
-                 * The amount of the adjustment
-                 */
-                amount: string;
-                /**
-                 * A free text description of the adjustment
-                 */
-                description: string;
-                [k: string]: unknown;
-            }>
-            | null;
+        adjustments?: Array<{
+            /**
+             * The amount of the adjustment
+             */
+            amount: string;
+            /**
+             * A free text description of the adjustment
+             */
+            description: string;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The amount of the charge
          */
@@ -5685,19 +6335,17 @@ export interface EnergyBillingTransactionV2 {
         /**
          * Additional calculation factors that inform the transaction
          */
-        calculationFactors?:
-            | Array<{
-                /**
-                 * The type of the calculation factor
-                 */
-                type: "DLF" | "MLF";
-                /**
-                 * The value of the calculation factor
-                 */
-                value: number;
-                [k: string]: unknown;
-            }>
-            | null;
+        calculationFactors?: Array<{
+            /**
+             * The type of the calculation factor
+             */
+            type: "DLF" | "MLF";
+            /**
+             * The value of the calculation factor
+             */
+            value: number;
+            [k: string]: unknown;
+        }> | null;
         /**
          * A free text description of the item
          */
@@ -5721,7 +6369,17 @@ export interface EnergyBillingTransactionV2 {
         /**
          * Type of charge. Assumed to be other if absent
          */
-        type?: ("ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER") | null;
+        type?:
+            | (
+                  | "ENVIRONMENTAL"
+                  | "REGULATED"
+                  | "NETWORK"
+                  | "METERING"
+                  | "RETAIL_SERVICE"
+                  | "RCTI"
+                  | "OTHER"
+              )
+            | null;
         [k: string]: unknown;
     };
     /**
@@ -5735,13 +6393,25 @@ export interface EnergyBillingTransactionV2 {
         /**
          * The method of payment
          */
-        method: "DIRECT_DEBIT" | "CARD" | "TRANSFER" | "BPAY" | "CASH" | "CHEQUE" | "OTHER";
+        method:
+            | "DIRECT_DEBIT"
+            | "CARD"
+            | "TRANSFER"
+            | "BPAY"
+            | "CASH"
+            | "CHEQUE"
+            | "OTHER";
         [k: string]: unknown;
     };
     /**
      * Indicator of the type of transaction object present in this record
      */
-    transactionUType: "usage" | "demand" | "onceOff" | "otherCharges" | "payment";
+    transactionUType:
+        | "usage"
+        | "demand"
+        | "onceOff"
+        | "otherCharges"
+        | "payment";
     /**
      * Represents a usage charge or generation credit.  Mandatory if transactionUType is equal to usage
      */
@@ -5749,19 +6419,17 @@ export interface EnergyBillingTransactionV2 {
         /**
          * Optional array of adjustments arising for this transaction
          */
-        adjustments?:
-            | Array<{
-                /**
-                 * The amount of the adjustment
-                 */
-                amount: string;
-                /**
-                 * A free text description of the adjustment
-                 */
-                description: string;
-                [k: string]: unknown;
-            }>
-            | null;
+        adjustments?: Array<{
+            /**
+             * The amount of the adjustment
+             */
+            amount: string;
+            /**
+             * A free text description of the adjustment
+             */
+            description: string;
+            [k: string]: unknown;
+        }> | null;
         /**
          * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
          */
@@ -5769,19 +6437,17 @@ export interface EnergyBillingTransactionV2 {
         /**
          * Additional calculation factors that inform the transaction
          */
-        calculationFactors?:
-            | Array<{
-                /**
-                 * The type of the calculation factor
-                 */
-                type: "DLF" | "MLF";
-                /**
-                 * The value of the calculation factor
-                 */
-                value: number;
-                [k: string]: unknown;
-            }>
-            | null;
+        calculationFactors?: Array<{
+            /**
+             * The type of the calculation factor
+             */
+            type: "DLF" | "MLF";
+            /**
+             * The value of the calculation factor
+             */
+            value: number;
+            [k: string]: unknown;
+        }> | null;
         /**
          * Optional description of the transaction that can be used for display purposes
          */
@@ -5801,7 +6467,18 @@ export interface EnergyBillingTransactionV2 {
         /**
          * The measurement unit of rate. Assumed to be KWH if absent
          */
-        measureUnit?: ("KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH") | null;
+        measureUnit?:
+            | (
+                  | "KWH"
+                  | "KVA"
+                  | "KVAR"
+                  | "KVARH"
+                  | "KW"
+                  | "DAYS"
+                  | "METER"
+                  | "MONTH"
+              )
+            | null;
         /**
          * The ID of the service point to which this transaction applies if any
          */
@@ -5838,19 +6515,17 @@ export interface EnergyBillingUsageTransaction {
     /**
      * Optional array of adjustments arising for this transaction
      */
-    adjustments?:
-        | Array<{
-            /**
-             * The amount of the adjustment
-             */
-            amount: string;
-            /**
-             * A free text description of the adjustment
-             */
-            description: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    adjustments?: Array<{
+        /**
+         * The amount of the adjustment
+         */
+        amount: string;
+        /**
+         * A free text description of the adjustment
+         */
+        description: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
      */
@@ -5858,19 +6533,17 @@ export interface EnergyBillingUsageTransaction {
     /**
      * Additional calculation factors that inform the transaction
      */
-    calculationFactors?:
-        | Array<{
-            /**
-             * The type of the calculation factor
-             */
-            type: "DLF" | "MLF";
-            /**
-             * The value of the calculation factor
-             */
-            value: number;
-            [k: string]: unknown;
-        }>
-        | null;
+    calculationFactors?: Array<{
+        /**
+         * The type of the calculation factor
+         */
+        type: "DLF" | "MLF";
+        /**
+         * The value of the calculation factor
+         */
+        value: number;
+        [k: string]: unknown;
+    }> | null;
     /**
      * Optional description of the transaction that can be used for display purposes
      */
@@ -5890,7 +6563,9 @@ export interface EnergyBillingUsageTransaction {
     /**
      * The measurement unit of rate. Assumed to be KWH if absent
      */
-    measureUnit?: ("KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH") | null;
+    measureUnit?:
+        | ("KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH")
+        | null;
     /**
      * The ID of the service point to which this transaction applies if any
      */
@@ -5925,19 +6600,17 @@ export interface EnergyBillingUsageTransactionV2 {
     /**
      * Optional array of adjustments arising for this transaction
      */
-    adjustments?:
-        | Array<{
-            /**
-             * The amount of the adjustment
-             */
-            amount: string;
-            /**
-             * A free text description of the adjustment
-             */
-            description: string;
-            [k: string]: unknown;
-        }>
-        | null;
+    adjustments?: Array<{
+        /**
+         * The amount of the adjustment
+         */
+        amount: string;
+        /**
+         * A free text description of the adjustment
+         */
+        description: string;
+        [k: string]: unknown;
+    }> | null;
     /**
      * The amount charged or credited for this transaction prior to any adjustments being applied.  A negative value indicates a credit
      */
@@ -5945,19 +6618,17 @@ export interface EnergyBillingUsageTransactionV2 {
     /**
      * Additional calculation factors that inform the transaction
      */
-    calculationFactors?:
-        | Array<{
-            /**
-             * The type of the calculation factor
-             */
-            type: "DLF" | "MLF";
-            /**
-             * The value of the calculation factor
-             */
-            value: number;
-            [k: string]: unknown;
-        }>
-        | null;
+    calculationFactors?: Array<{
+        /**
+         * The type of the calculation factor
+         */
+        type: "DLF" | "MLF";
+        /**
+         * The value of the calculation factor
+         */
+        value: number;
+        [k: string]: unknown;
+    }> | null;
     /**
      * Optional description of the transaction that can be used for display purposes
      */
@@ -5977,7 +6648,9 @@ export interface EnergyBillingUsageTransactionV2 {
     /**
      * The measurement unit of rate. Assumed to be KWH if absent
      */
-    measureUnit?: ("KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH") | null;
+    measureUnit?:
+        | ("KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH")
+        | null;
     /**
      * The ID of the service point to which this transaction applies if any
      */
@@ -6024,7 +6697,9 @@ export interface EnergyConcession {
     /**
      * Array of ENUM's to specify what the concession applies to. Multiple ENUM values can be provided. If absent, USAGE is assumed
      */
-    appliedTo?: Array<"INVOICE" | "USAGE" | "SERVICE_CHARGE" | "CONTROLLED_LOAD"> | null;
+    appliedTo?: Array<
+        "INVOICE" | "USAGE" | "SERVICE_CHARGE" | "CONTROLLED_LOAD"
+    > | null;
     /**
      * Conditional attribute for frequency at which a concession is applied. Required if type is FIXED_AMOUNT or FIXED_PERCENTAGE. Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
      */
@@ -6138,7 +6813,15 @@ export interface EnergyDerRecord {
             /**
              * Used to indicate the primary technology used in the DER device
              */
-            type: "FOSSIL" | "HYDRO" | "WIND" | "SOLAR_PV" | "RENEWABLE" | "GEOTHERMAL" | "STORAGE" | "OTHER";
+            type:
+                | "FOSSIL"
+                | "HYDRO"
+                | "WIND"
+                | "SOLAR_PV"
+                | "RENEWABLE"
+                | "GEOTHERMAL"
+                | "STORAGE"
+                | "OTHER";
             [k: string]: unknown;
         }>;
         /**
@@ -6299,23 +6982,28 @@ export interface EnergyInvoice {
         /**
          * Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)
          */
-        otherCharges?:
-            | Array<{
-                /**
-                 * The aggregate total of charges for this item (exclusive of GST)
-                 */
-                amount: string;
-                /**
-                 * A free text description of the type of charge
-                 */
-                description: string;
-                /**
-                 * Type of charge. Assumed to be other if absent
-                 */
-                type?: "ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER";
-                [k: string]: unknown;
-            }>
-            | null;
+        otherCharges?: Array<{
+            /**
+             * The aggregate total of charges for this item (exclusive of GST)
+             */
+            amount: string;
+            /**
+             * A free text description of the type of charge
+             */
+            description: string;
+            /**
+             * Type of charge. Assumed to be other if absent
+             */
+            type?:
+                | "ENVIRONMENTAL"
+                | "REGULATED"
+                | "NETWORK"
+                | "METERING"
+                | "RETAIL_SERVICE"
+                | "RCTI"
+                | "OTHER";
+            [k: string]: unknown;
+        }> | null;
         /**
          * The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)
          */
@@ -6345,23 +7033,28 @@ export interface EnergyInvoice {
         /**
          * Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)
          */
-        otherCharges?:
-            | Array<{
-                /**
-                 * The aggregate total of charges for this item (exclusive of GST)
-                 */
-                amount: string;
-                /**
-                 * A free text description of the type of charge
-                 */
-                description: string;
-                /**
-                 * Type of charge. Assumed to be other if absent
-                 */
-                type?: "ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER";
-                [k: string]: unknown;
-            }>
-            | null;
+        otherCharges?: Array<{
+            /**
+             * The aggregate total of charges for this item (exclusive of GST)
+             */
+            amount: string;
+            /**
+             * A free text description of the type of charge
+             */
+            description: string;
+            /**
+             * Type of charge. Assumed to be other if absent
+             */
+            type?:
+                | "ENVIRONMENTAL"
+                | "REGULATED"
+                | "NETWORK"
+                | "METERING"
+                | "RETAIL_SERVICE"
+                | "RCTI"
+                | "OTHER";
+            [k: string]: unknown;
+        }> | null;
         /**
          * The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)
          */
@@ -6468,23 +7161,28 @@ export interface EnergyInvoiceElectricityUsageCharges {
     /**
      * Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)
      */
-    otherCharges?:
-        | Array<{
-            /**
-             * The aggregate total of charges for this item (exclusive of GST)
-             */
-            amount: string;
-            /**
-             * A free text description of the type of charge
-             */
-            description: string;
-            /**
-             * Type of charge. Assumed to be other if absent
-             */
-            type?: "ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER";
-            [k: string]: unknown;
-        }>
-        | null;
+    otherCharges?: Array<{
+        /**
+         * The aggregate total of charges for this item (exclusive of GST)
+         */
+        amount: string;
+        /**
+         * A free text description of the type of charge
+         */
+        description: string;
+        /**
+         * Type of charge. Assumed to be other if absent
+         */
+        type?:
+            | "ENVIRONMENTAL"
+            | "REGULATED"
+            | "NETWORK"
+            | "METERING"
+            | "RETAIL_SERVICE"
+            | "RCTI"
+            | "OTHER";
+        [k: string]: unknown;
+    }> | null;
     /**
      * The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)
      */
@@ -6513,23 +7211,28 @@ export interface EnergyInvoiceGasUsageCharges {
     /**
      * Optional array of charges that may be part of the invoice (for e.g. environmental charges for C&I consumers) (exclusive of GST)
      */
-    otherCharges?:
-        | Array<{
-            /**
-             * The aggregate total of charges for this item (exclusive of GST)
-             */
-            amount: string;
-            /**
-             * A free text description of the type of charge
-             */
-            description: string;
-            /**
-             * Type of charge. Assumed to be other if absent
-             */
-            type?: "ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER";
-            [k: string]: unknown;
-        }>
-        | null;
+    otherCharges?: Array<{
+        /**
+         * The aggregate total of charges for this item (exclusive of GST)
+         */
+        amount: string;
+        /**
+         * A free text description of the type of charge
+         */
+        description: string;
+        /**
+         * Type of charge. Assumed to be other if absent
+         */
+        type?:
+            | "ENVIRONMENTAL"
+            | "REGULATED"
+            | "NETWORK"
+            | "METERING"
+            | "RETAIL_SERVICE"
+            | "RCTI"
+            | "OTHER";
+        [k: string]: unknown;
+    }> | null;
     /**
      * The aggregate total of generation credits for the period covered by the invoice (exclusive of GST)
      */
@@ -6583,7 +7286,13 @@ export interface EnergyPaymentSchedule {
         /**
          * The type of credit card held on file
          */
-        cardScheme: "VISA" | "MASTERCARD" | "AMEX" | "DINERS" | "OTHER" | "UNKNOWN";
+        cardScheme:
+            | "VISA"
+            | "MASTERCARD"
+            | "AMEX"
+            | "DINERS"
+            | "OTHER"
+            | "UNKNOWN";
         /**
          * The frequency that payments will occur.  Formatted according to [ISO 8601 Durations](https://en.wikipedia.org/wiki/ISO_8601#Durations) (excludes recurrence syntax)
          */
@@ -6659,7 +7368,11 @@ export interface EnergyPaymentSchedule {
     /**
      * The type of object present in this response
      */
-    paymentScheduleUType: "cardDebit" | "directDebit" | "manualPayment" | "digitalWallet";
+    paymentScheduleUType:
+        | "cardDebit"
+        | "directDebit"
+        | "manualPayment"
+        | "digitalWallet";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the energy api. */
@@ -6825,7 +7538,9 @@ export interface EnergyPlanContract {
     /**
      * Payment options for this contract
      */
-    paymentOption: Array<"PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER">;
+    paymentOption: Array<
+        "PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER"
+    >;
     /**
      * The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>
      */
@@ -6908,7 +7623,9 @@ export interface EnergyPlanContractV2 {
     /**
      * Payment options for this contract
      */
-    paymentOption: Array<"PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER">;
+    paymentOption: Array<
+        "PAPER_BILL" | "CREDIT_CARD" | "DIRECT_DEBIT" | "BPAY" | "OTHER"
+    >;
     /**
      * The pricing model for the contract.  Contracts for gas must use SINGLE_RATE.  Note that the detail for the enumeration values are:<ul><li>**SINGLE_RATE** - all energy usage is charged at a single unit rate no matter when it is consumed. Multiple unit rates may exist that correspond to varying volumes of usage i.e. a ‘block’ or ‘step’ tariff (first 50kWh @ X cents, next 50kWh at Y cents etc.</li><li>**SINGLE_RATE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**TIME_OF_USE** - energy usage is charged at unit rates that vary dependent on time of day and day of week that the energy is consumed</li><li>**TIME_OF_USE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**FLEXIBLE** - energy usage is charged at unit rates that vary based on external factors</li><li>**FLEXIBLE_CONT_LOAD** - as above, but with an additional, separate unit rate charged for all energy usage from a controlled load i.e. separately metered appliance like hot water service, pool pump etc.</li><li>**QUOTA** - all energy usage is charged at a single fixed rate, up to a specified usage quota/allowance. All excess usage beyond the allowance is then charged at a single unit rate (may not be the best way to explain it but it is essentially a ‘subscription’ or telco style product i.e. $50/month for up to 150kWh included usage</li></ul>
      */
@@ -6944,7 +7661,14 @@ export interface EnergyPlanContractFull extends EnergyPlanContractV2 {
     /**
      * The term for the contract.  If absent assumes no specified term
      */
-    termType?: "1_YEAR" | "2_YEAR" | "3_YEAR" | "4_YEAR" | "5_YEAR" | "ONGOING" | "OTHER";
+    termType?:
+        | "1_YEAR"
+        | "2_YEAR"
+        | "3_YEAR"
+        | "4_YEAR"
+        | "5_YEAR"
+        | "ONGOING"
+        | "OTHER";
     /**
      * Description of the benefit period.  Should only be present if termType has the value ONGOING
      */
@@ -6974,7 +7698,14 @@ export interface EnergyPlanContractFullV2 extends EnergyPlanContractV2 {
     /**
      * The term for the contract.  If absent assumes no specified term
      */
-    termType?: "1_YEAR" | "2_YEAR" | "3_YEAR" | "4_YEAR" | "5_YEAR" | "ONGOING" | "OTHER";
+    termType?:
+        | "1_YEAR"
+        | "2_YEAR"
+        | "3_YEAR"
+        | "4_YEAR"
+        | "5_YEAR"
+        | "ONGOING"
+        | "OTHER";
     /**
      * Description of the benefit period.  Should only be present if termType has the value ONGOING
      */
@@ -7038,7 +7769,15 @@ export interface EnergyPlanControlledLoad {
             /**
              * The measurement unit of rate. Assumed to be KWH if absent
              */
-            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+            measureUnit?:
+                | "KWH"
+                | "KVA"
+                | "KVAR"
+                | "KVARH"
+                | "KW"
+                | "DAYS"
+                | "METER"
+                | "MONTH";
             /**
              * Unit price of usage per  measure unit (exclusive of GST)
              */
@@ -7078,7 +7817,15 @@ export interface EnergyPlanControlledLoad {
             /**
              * The measurement unit of rate. Assumed to be KWH if absent
              */
-            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+            measureUnit?:
+                | "KWH"
+                | "KVA"
+                | "KVAR"
+                | "KVARH"
+                | "KW"
+                | "DAYS"
+                | "METER"
+                | "MONTH";
             /**
              * Unit price of usage per  measure unit (exclusive of GST)
              */
@@ -7104,7 +7851,16 @@ export interface EnergyPlanControlledLoad {
             /**
              * The days that the rate applies to
              */
-            days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+            days?: Array<
+                | "SUN"
+                | "MON"
+                | "TUE"
+                | "WED"
+                | "THU"
+                | "FRI"
+                | "SAT"
+                | "PUBLIC_HOLIDAYS"
+            >;
             /**
              * The end of the time period per day for which the controlled load rate applies. Required if startTime provided
              */
@@ -7237,7 +7993,11 @@ export interface EnergyPlanDiscounts {
     /**
      * The method of calculation of the discount
      */
-    methodUType: "percentOfBill" | "percentOfUse" | "fixedAmount" | "percentOverThreshold";
+    methodUType:
+        | "percentOfBill"
+        | "percentOfUse"
+        | "fixedAmount"
+        | "percentOverThreshold";
     /**
      * Required if methodUType is percentOfBill
      */
@@ -7521,7 +8281,16 @@ export interface EnergyPlanSolarFeedInTariff {
             /**
              * The days that the tariff applies to. At least one entry required
              */
-            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+            days: Array<
+                | "SUN"
+                | "MON"
+                | "TUE"
+                | "WED"
+                | "THU"
+                | "FRI"
+                | "SAT"
+                | "PUBLIC_HOLIDAYS"
+            >;
             /**
              * The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)
              */
@@ -7569,7 +8338,15 @@ export interface EnergyPlanSolarFeedInTariffV2 {
          * Array of feed in rates
          */
         rates: Array<{
-            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+            measureUnit?:
+                | "KWH"
+                | "KVA"
+                | "KVAR"
+                | "KVARH"
+                | "KW"
+                | "DAYS"
+                | "METER"
+                | "MONTH";
             unitPrice: string;
             volume?: number;
         }>;
@@ -7587,7 +8364,15 @@ export interface EnergyPlanSolarFeedInTariffV2 {
          * The tariff amount
          */
         rates: Array<{
-            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+            measureUnit?:
+                | "KWH"
+                | "KVA"
+                | "KVAR"
+                | "KVARH"
+                | "KW"
+                | "DAYS"
+                | "METER"
+                | "MONTH";
             unitPrice: string;
             volume?: number;
         }>;
@@ -7598,7 +8383,16 @@ export interface EnergyPlanSolarFeedInTariffV2 {
             /**
              * The days that the tariff applies to. At least one entry required
              */
-            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+            days: Array<
+                | "SUN"
+                | "MON"
+                | "TUE"
+                | "WED"
+                | "THU"
+                | "FRI"
+                | "SAT"
+                | "PUBLIC_HOLIDAYS"
+            >;
             /**
              * The end of the time period per day for which the tariff applies.  If absent assumes end of day (ie. one second before midnight)
              */
@@ -7642,7 +8436,16 @@ export interface EnergyPlanTariffPeriod {
         /**
          * The days that the demand tariff applies to
          */
-        days?: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+        days?: Array<
+            | "SUN"
+            | "MON"
+            | "TUE"
+            | "WED"
+            | "THU"
+            | "FRI"
+            | "SAT"
+            | "PUBLIC_HOLIDAYS"
+        >;
         /**
          * Description of the charge
          */
@@ -7662,7 +8465,15 @@ export interface EnergyPlanTariffPeriod {
         /**
          * The measurement unit of charge amount. Assumed to be KWH if absent
          */
-        measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+        measureUnit?:
+            | "KWH"
+            | "KVA"
+            | "KVAR"
+            | "KVARH"
+            | "KW"
+            | "DAYS"
+            | "METER"
+            | "MONTH";
         /**
          * Application period for the demand tariff
          */
@@ -7716,7 +8527,15 @@ export interface EnergyPlanTariffPeriod {
             /**
              * The measurement unit of rate. Assumed to be KWH if absent
              */
-            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+            measureUnit?:
+                | "KWH"
+                | "KVA"
+                | "KVAR"
+                | "KVARH"
+                | "KW"
+                | "DAYS"
+                | "METER"
+                | "MONTH";
             /**
              * Unit price of usage per measure unit (exclusive of GST)
              */
@@ -7752,7 +8571,15 @@ export interface EnergyPlanTariffPeriod {
             /**
              * The measurement unit of rate. Assumed to be KWH if absent
              */
-            measureUnit?: "KWH" | "KVA" | "KVAR" | "KVARH" | "KW" | "DAYS" | "METER" | "MONTH";
+            measureUnit?:
+                | "KWH"
+                | "KVA"
+                | "KVAR"
+                | "KVARH"
+                | "KW"
+                | "DAYS"
+                | "METER"
+                | "MONTH";
             /**
              * Unit price of usage per  measure unit (exclusive of GST)
              */
@@ -7770,7 +8597,16 @@ export interface EnergyPlanTariffPeriod {
             /**
              * The days that the rate applies to
              */
-            days: Array<"SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT" | "PUBLIC_HOLIDAYS">;
+            days: Array<
+                | "SUN"
+                | "MON"
+                | "TUE"
+                | "WED"
+                | "THU"
+                | "FRI"
+                | "SAT"
+                | "PUBLIC_HOLIDAYS"
+            >;
             /**
              * End of the period
              */
@@ -7794,7 +8630,14 @@ export interface EnergyPlanTariffPeriod {
     /**
      * Type of charge. Assumed to be other if absent
      */
-    type?: "ENVIRONMENTAL" | "REGULATED" | "NETWORK" | "METERING" | "RETAIL_SERVICE" | "RCTI" | "OTHER";
+    type?:
+        | "ENVIRONMENTAL"
+        | "REGULATED"
+        | "NETWORK"
+        | "METERING"
+        | "RETAIL_SERVICE"
+        | "RCTI"
+        | "OTHER";
     [k: string]: unknown;
 }
 /* These are the schema definitions stipulated by the Data Standards Body for the energy api. */
@@ -7818,7 +8661,15 @@ export interface EnergyServicePoint {
     /**
      * Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>
      */
-    jurisdictionCode: "ALL" | "ACT" | "NEM" | "NSW" | "QLD" | "SA" | "TAS" | "VIC";
+    jurisdictionCode:
+        | "ALL"
+        | "ACT"
+        | "NEM"
+        | "NSW"
+        | "QLD"
+        | "SA"
+        | "TAS"
+        | "VIC";
     /**
      * The date and time that the information for this service point was modified
      */
@@ -7846,7 +8697,12 @@ export interface EnergyServicePoint {
     /**
      * Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>
      */
-    servicePointStatus: "ACTIVE" | "DE_ENERGISED" | "EXTINCT" | "GREENFIELD" | "OFF_MARKET";
+    servicePointStatus:
+        | "ACTIVE"
+        | "DE_ENERGISED"
+        | "EXTINCT"
+        | "GREENFIELD"
+        | "OFF_MARKET";
     /**
      * The start date from which this service point first became valid
      */
@@ -7889,7 +8745,15 @@ export interface EnergyServicePointDetail {
     /**
      * Jurisdiction code to which the service point belongs.This code defines the jurisdictional rules which apply to the service point. Note the details of enumeration values below:<ul><li>**ALL** - All Jurisdictions</li><li>**ACT** - Australian Capital Territory</li><li>**NEM** - National Electricity Market</li><li>**NSW** - New South Wales</li><li>**QLD** - Queensland</li><li>**SA** - South Australia</li><li>**TAS** - Tasmania</li><li>**VIC** - Victoria</li></ul>
      */
-    jurisdictionCode: "ALL" | "ACT" | "NEM" | "NSW" | "QLD" | "SA" | "TAS" | "VIC";
+    jurisdictionCode:
+        | "ALL"
+        | "ACT"
+        | "NEM"
+        | "NSW"
+        | "QLD"
+        | "SA"
+        | "TAS"
+        | "VIC";
     /**
      * The date and time that the information for this service point was modified
      */
@@ -8039,121 +8903,119 @@ export interface EnergyServicePointDetail {
     /**
      * The meters associated with the service point. This may be empty where there are no meters physically installed at the service point
      */
-    meters?:
-        | Array<{
+    meters?: Array<{
+        /**
+         * The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique
+         */
+        meterId: string;
+        /**
+         * Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point
+         */
+        registers?: Array<{
             /**
-             * The meter ID uniquely identifies a meter for a given service point.  It is unique in the context of the service point.  It is not globally unique
+             * The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.
              */
-            meterId: string;
+            averagedDailyLoad?: number;
             /**
-             * Usage data registers available from the meter. This may be empty where there are no meters physically installed at the service point
+             * Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>
              */
-            registers?: Array<{
-                /**
-                 * The energy delivered through a connection point or metering point over an extended period normalised to a 'per day' basis (kWh). This value is calculated annually.
-                 */
-                averagedDailyLoad?: number;
-                /**
-                 * Actual/Subtractive Indicator. Note the details of enumeration values below: <ul><li>**ACTUAL** implies volume of energy actually metered between two dates</li><li>**CUMULATIVE** indicates a meter reading for a specific date. A second Meter Reading is required to determine the consumption between those two Meter Reading dates</li></ul>
-                 */
-                consumptionType?: "ACTUAL" | "CUMULATIVE";
-                /**
-                 * Indicates whether the energy recorded by this register is created under a Controlled Load regime
-                 */
-                controlledLoad?: boolean;
-                /**
-                 * Multiplier required to take a register value and turn it into a value representing billable energy
-                 */
-                multiplier?: number;
-                /**
-                 * The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider
-                 */
-                networkTariffCode?: string;
-                /**
-                 * Indicates the consumption type of register
-                 */
-                registerConsumptionType:
-                    | "INTERVAL"
-                    | "BASIC"
-                    | "PROFILE_DATA"
-                    | "ACTIVE_IMPORT"
-                    | "ACTIVE"
-                    | "REACTIVE_IMPORT"
-                    | "REACTIVE";
-                /**
-                 * Unique identifier of the register within this service point.  Is not globally unique
-                 */
-                registerId: string;
-                /**
-                 * Register suffix of the meter register where the meter reads are obtained
-                 */
-                registerSuffix?: string;
-                /**
-                 * Code to identify the time validity of register contents
-                 */
-                timeOfDay?:
-                    | "ALLDAY"
-                    | "INTERVAL"
-                    | "PEAK"
-                    | "BUSINESS"
-                    | "SHOULDER"
-                    | "EVENING"
-                    | "OFFPEAK"
-                    | "CONTROLLED"
-                    | "DEMAND";
-                /**
-                 * The unit of measure for data held in this register
-                 */
-                unitOfMeasure?: string;
-                [k: string]: unknown;
-            }>;
+            consumptionType?: "ACTUAL" | "CUMULATIVE";
             /**
-             * Technical characteristics of the meter
+             * Indicates whether the energy recorded by this register is created under a Controlled Load regime
              */
-            specifications: {
-                /**
-                 * The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>
-                 */
-                installationType:
-                    | "BASIC"
-                    | "COMMS1"
-                    | "COMMS2"
-                    | "COMMS3"
-                    | "COMMS4"
-                    | "COMMS4C"
-                    | "COMMS4D"
-                    | "MRAM"
-                    | "MRIM"
-                    | "PROF"
-                    | "SAMPLE"
-                    | "UMCP"
-                    | "VICAMI"
-                    | "NCOLNUML";
-                /**
-                 * Free text field to identify the manufacturer of the installed meter
-                 */
-                manufacturer?: string;
-                /**
-                 * Free text field to identify the meter manufacturer’s designation for the meter model
-                 */
-                model?: string;
-                /**
-                 * This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required
-                 */
-                nextScheduledReadDate?: string;
-                /**
-                 * Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>
-                 */
-                readType?: string;
-                /**
-                 * A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>
-                 */
-                status: "CURRENT" | "DISCONNECTED";
-                [k: string]: unknown;
-            };
+            controlledLoad?: boolean;
+            /**
+             * Multiplier required to take a register value and turn it into a value representing billable energy
+             */
+            multiplier?: number;
+            /**
+             * The Network Tariff Code is a free text field containing a code supplied and published by the local network service provider
+             */
+            networkTariffCode?: string;
+            /**
+             * Indicates the consumption type of register
+             */
+            registerConsumptionType:
+                | "INTERVAL"
+                | "BASIC"
+                | "PROFILE_DATA"
+                | "ACTIVE_IMPORT"
+                | "ACTIVE"
+                | "REACTIVE_IMPORT"
+                | "REACTIVE";
+            /**
+             * Unique identifier of the register within this service point.  Is not globally unique
+             */
+            registerId: string;
+            /**
+             * Register suffix of the meter register where the meter reads are obtained
+             */
+            registerSuffix?: string;
+            /**
+             * Code to identify the time validity of register contents
+             */
+            timeOfDay?:
+                | "ALLDAY"
+                | "INTERVAL"
+                | "PEAK"
+                | "BUSINESS"
+                | "SHOULDER"
+                | "EVENING"
+                | "OFFPEAK"
+                | "CONTROLLED"
+                | "DEMAND";
+            /**
+             * The unit of measure for data held in this register
+             */
+            unitOfMeasure?: string;
             [k: string]: unknown;
-        }>
-        | null;
+        }>;
+        /**
+         * Technical characteristics of the meter
+         */
+        specifications: {
+            /**
+             * The metering Installation type code indicates whether the metering installation has to be manually read. Note the details of enumeration values below: <ul><li>**BASIC** - Accumulation Meter – Type 6</li><li>**COMMS1** - Interval Meter with communications – Type 1</li><li>**COMMS2** - Interval Meter with communications – Type 2</li><li>**COMMS3** - Interval Meter with communications – Type 3</li><li>**COMMS4** - Interval Meter with communications – Type 4</li><li>**COMMS4C** - CT connected metering installation that meets the minimum services specifications</li><li>**COMMS4D** - Whole current metering installation that meets the minimum services specifications</li><li>**MRAM** - Small customer metering installation – Type 4A</li><li>**MRIM** - Manually Read Interval Meter – Type 5</li><li>**UMCP** - Unmetered Supply – Type 7</li><li>**VICAMI** - A relevant metering installation as defined in clause 9.9C of the NER</li><li>**NCONUML** - Non-contestable unmeter load - Introduced as part of Global Settlement</li></ul>
+             */
+            installationType:
+                | "BASIC"
+                | "COMMS1"
+                | "COMMS2"
+                | "COMMS3"
+                | "COMMS4"
+                | "COMMS4C"
+                | "COMMS4D"
+                | "MRAM"
+                | "MRIM"
+                | "PROF"
+                | "SAMPLE"
+                | "UMCP"
+                | "VICAMI"
+                | "NCOLNUML";
+            /**
+             * Free text field to identify the manufacturer of the installed meter
+             */
+            manufacturer?: string;
+            /**
+             * Free text field to identify the meter manufacturer’s designation for the meter model
+             */
+            model?: string;
+            /**
+             * This date is the next scheduled meter read date (NSRD) if a manual Meter Reading is required
+             */
+            nextScheduledReadDate?: string;
+            /**
+             * Code to denote the method and frequency of Meter Reading. The value is formatted as follows: <ul><li>First Character = Remote (R) or Manual (M)</li><li>Second Character = Mode: T = telephone W = wireless P = powerline I = infra-red G = galvanic V = visual </li><li>Third Character = Frequency of Scheduled Meter Readings: 1 = Twelve times per year 2 = Six times per year 3 = Four times per year D = Daily or weekly</li><li>Optional Fourth Character = to identify what interval length the meter is capable of reading. This includes five, 15 and 30 minute granularity as the following: A – 5 minute B – 15 minute C – 30 minute D – Cannot convert to 5 minute (i.e. due to metering installation de-energised) M - Manually Read Accumulation Meter</li></ul> For example, <ul><li>MV3 = Manual, Visual, Quarterly</li> <li>MV3M = Manual, Visual, Quarterly, Manually Read Accumulation Meter</li> <li>RWDC = Remote, Wireless, Daily, 30 minutes interval</li></ul>
+             */
+            readType?: string;
+            /**
+             * A code to denote the status of the meter. Note the details of enumeration values below: <ul><li>**CURRENT** -Applies when a meter is current and not disconnected</li><li>**DISCONNECTED** - Applies when a meter is present but has been remotely disconnected</li></ul>
+             */
+            status: "CURRENT" | "DISCONNECTED";
+            [k: string]: unknown;
+        };
+        [k: string]: unknown;
+    }> | null;
     /**
      * The independent ID of the service point, known in the industry as the NMI
      */
@@ -8188,7 +9050,12 @@ export interface EnergyServicePointDetail {
     /**
      * Code used to indicate the status of the service point. Note the details for the enumeration values below:<ul><li>**ACTIVE** - An active, energised, service point</li><li>**DE_ENERGISED** - The service point exists but is deenergised</li><li>**EXTINCT** - The service point has been permanently decommissioned</li><li>**GREENFIELD** - Applies to a service point that has never been energised</li><li>**OFF_MARKET** - Applies when the service point is no longer settled in the NEM</li></ul>
      */
-    servicePointStatus: "ACTIVE" | "DE_ENERGISED" | "EXTINCT" | "GREENFIELD" | "OFF_MARKET";
+    servicePointStatus:
+        | "ACTIVE"
+        | "DE_ENERGISED"
+        | "EXTINCT"
+        | "GREENFIELD"
+        | "OFF_MARKET";
     /**
      * The latest start date from which the constituent data sets of this service point became valid
      */
@@ -8267,23 +9134,21 @@ export interface EnergyUsageRead {
         /**
          *  Specifies quality of reads that are not ACTUAL.  For read indices that are not specified, quality is assumed to be ACTUAL. If not present, all quality of all reads are assumed to be actual. Required when interval-reads query parameter equals FULL or MIN_30
          */
-        readQualities?:
-            | Array<{
-                /**
-                 * End interval for read quality flag
-                 */
-                endInterval: number;
-                /**
-                 * The quality of the read taken
-                 */
-                quality: "SUBSTITUTE" | "FINAL_SUBSTITUTE";
-                /**
-                 * Start interval for read quality flag. First read begins at 1
-                 */
-                startInterval: number;
-                [k: string]: unknown;
-            }>
-            | null;
+        readQualities?: Array<{
+            /**
+             * End interval for read quality flag
+             */
+            endInterval: number;
+            /**
+             * The quality of the read taken
+             */
+            quality: "SUBSTITUTE" | "FINAL_SUBSTITUTE";
+            /**
+             * Start interval for read quality flag. First read begins at 1
+             */
+            startInterval: number;
+            [k: string]: unknown;
+        }> | null;
         [k: string]: unknown;
     } | null;
     /**

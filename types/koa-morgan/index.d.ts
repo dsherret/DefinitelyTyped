@@ -4,11 +4,19 @@ import * as originalMorgan from "morgan";
 
 declare namespace morgan {
     interface FormatFn {
-        (tokens: TokenIndexer, req: IncomingMessage, res: ServerResponse): string;
+        (
+            tokens: TokenIndexer,
+            req: IncomingMessage,
+            res: ServerResponse,
+        ): string;
     }
 
     interface TokenCallbackFn {
-        (req: IncomingMessage, res: ServerResponse, arg?: string | number | boolean): string;
+        (
+            req: IncomingMessage,
+            res: ServerResponse,
+            arg?: string | number | boolean,
+        ): string;
     }
 
     type TokenIndexer = originalMorgan.TokenIndexer;
@@ -122,7 +130,9 @@ declare namespace morgan {
         /**
          * Function to determine if logging is skipped, defaults to false. This function will be called as skip(req, res).
          */
-        skip?: ((req: IncomingMessage, res: ServerResponse) => boolean) | undefined;
+        skip?:
+            | ((req: IncomingMessage, res: ServerResponse) => boolean)
+            | undefined;
 
         /**
          * Output stream for writing log lines, defaults to process.stdout.
@@ -135,43 +145,63 @@ declare namespace morgan {
  * Create a new morgan logger middleware function using the given format and options. The format argument may be a string
  * of a predefined name (see below for the names), or a string of a format string containing defined tokens.
  */
-declare function morgan(format: string, options?: morgan.Options): Koa.Middleware;
+declare function morgan(
+    format: string,
+    options?: morgan.Options,
+): Koa.Middleware;
 
 /**
  * Standard Apache combined log output.
  * :remote-addr - :remote-user [:date] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
  */
-declare function morgan(format: "combined", options?: morgan.Options): Koa.Middleware;
+declare function morgan(
+    format: "combined",
+    options?: morgan.Options,
+): Koa.Middleware;
 
 /**
  * Standard Apache common log output.
  * :remote-addr - :remote-user [:date] ":method :url HTTP/:http-version" :status :res[content-length]
  */
-declare function morgan(format: "common", options?: morgan.Options): Koa.Middleware;
+declare function morgan(
+    format: "common",
+    options?: morgan.Options,
+): Koa.Middleware;
 
 /**
  * Concise output colored by response status for development use. The :status token will be colored red for server error codes,
  * yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
  * :method :url :status :response-time ms - :res[content-length]
  */
-declare function morgan(format: "dev", options?: morgan.Options): Koa.Middleware;
+declare function morgan(
+    format: "dev",
+    options?: morgan.Options,
+): Koa.Middleware;
 
 /**
  * Shorter than default, also including response time.
  * :remote-addr :remote-user :method :url HTTP/:http-version :status :res[content-length] - :response-time ms
  */
-declare function morgan(format: "short", options?: morgan.Options): Koa.Middleware;
+declare function morgan(
+    format: "short",
+    options?: morgan.Options,
+): Koa.Middleware;
 
 /**
  * The minimal output.
  * :method :url :status :res[content-length] - :response-time ms
  */
-declare function morgan(format: "tiny", options?: morgan.Options): Koa.Middleware;
+declare function morgan(
+    format: "tiny",
+    options?: morgan.Options,
+): Koa.Middleware;
 
 /**
  * Create a new morgan logger middleware function using the given format and options. The format argument may be a
  * custom format function which adheres to the signature.
  */
-declare function morgan(custom: (req: IncomingMessage, res: ServerResponse) => string): Koa.Middleware;
+declare function morgan(
+    custom: (req: IncomingMessage, res: ServerResponse) => string,
+): Koa.Middleware;
 
 export = morgan;

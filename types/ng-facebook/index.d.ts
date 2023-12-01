@@ -15,7 +15,9 @@ declare module "angular" {
             setPermissions(permissions: string | string[]): IFacebookProvider;
             getPermissions(): string;
 
-            setCustomInit(customInit: Partial<facebook.InitParams>): IFacebookProvider;
+            setCustomInit(
+                customInit: Partial<facebook.InitParams>,
+            ): IFacebookProvider;
             getCustomInit(): facebook.InitParams;
         }
 
@@ -35,7 +37,9 @@ declare module "angular" {
             | facebook.CollectionAdsDialogParams;
 
         interface IFacebookService {
-            config<T extends string | number | facebook.InitParams>(property: string): T;
+            config<T extends string | number | facebook.InitParams>(
+                property: string,
+            ): T;
             init(): void;
 
             setCache<T>(attr: string, val: T): void;
@@ -45,14 +49,21 @@ declare module "angular" {
             isConnected(): boolean;
             getAuthResponse(): {};
             getLoginStatus(force?: boolean): angular.IPromise<{}>;
-            login(permissions?: string, rerequest?: boolean): angular.IPromise<{}>;
+            login(
+                permissions?: string,
+                rerequest?: boolean,
+            ): angular.IPromise<{}>;
             logout(): angular.IPromise<void>;
 
             ui(params: FBUIParams): angular.IPromise<any>;
             api(path: string): angular.IPromise<{}>;
             api(path: string, method: string): angular.IPromise<{}>;
             api(path: string, params: Object): angular.IPromise<{}>;
-            api(path: string, method: string, params: Object): angular.IPromise<{}>;
+            api(
+                path: string,
+                method: string,
+                params: Object,
+            ): angular.IPromise<{}>;
 
             cachedApi(path: string): angular.IPromise<any>;
         }

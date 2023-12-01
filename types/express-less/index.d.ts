@@ -1,6 +1,9 @@
 import express = require("express");
 
-declare function less(root: string, options?: less.Options): express.RequestHandler;
+declare function less(
+    root: string,
+    options?: less.Options,
+): express.RequestHandler;
 
 declare namespace less {
     export interface Options {

@@ -100,7 +100,11 @@ declare namespace Sylvester {
         /**
          * Constructor function.
          */
-        create(anchor: number[] | Vector, v1: number[] | Vector, v2: number[] | Vector): Plane;
+        create(
+            anchor: number[] | Vector,
+            v1: number[] | Vector,
+            v2: number[] | Vector,
+        ): Plane;
 
         XY: Plane;
         YZ: Plane;
@@ -767,7 +771,11 @@ interface Plane {
      * @param {Array<number>|Vector} v1 The first direction vector.
      * @param {Array<number>|Vector} v2 The second direction vector.
      */
-    setVectors(anchor: number[] | Vector, v1: number[] | Vector, v2: number[] | Vector): Plane;
+    setVectors(
+        anchor: number[] | Vector,
+        v1: number[] | Vector,
+        v2: number[] | Vector,
+    ): Plane;
 }
 
 declare namespace Sylvester {
@@ -800,7 +808,10 @@ declare function $M(elements: number[] | number[][] | Vector | Matrix): Matrix;
  * @param Array<number>|Vector anchor The anchor vector.
  * @param Array<number>|Vector direction The direction vector.
  */
-declare function $L(anchor: number[] | Vector, direction: number[] | Vector): Line;
+declare function $L(
+    anchor: number[] | Vector,
+    direction: number[] | Vector,
+): Line;
 
 /**
  * Constructor function.
@@ -808,7 +819,10 @@ declare function $L(anchor: number[] | Vector, direction: number[] | Vector): Li
  * @param {Array<number>|Vector} anchor The anchor vector.
  * @param {Array<number>|Vector} normal The normal vector.
  */
-declare function $P(anchor: number[] | Vector, normal: number[] | Vector): Plane;
+declare function $P(
+    anchor: number[] | Vector,
+    normal: number[] | Vector,
+): Plane;
 
 /**
  * Constructor function.
@@ -817,4 +831,8 @@ declare function $P(anchor: number[] | Vector, normal: number[] | Vector): Plane
  * @param {Array<number>|Vector} v1 The first direction vector.
  * @param {Array<number>|Vecotr} v2 The second direction vector.
  */
-declare function $P(anchor: number[] | Vector, v1: number[] | Vector, v2: number[] | Vector): Plane;
+declare function $P(
+    anchor: number[] | Vector,
+    v1: number[] | Vector,
+    v2: number[] | Vector,
+): Plane;

@@ -70,18 +70,18 @@ export interface CandlestickData {
     increasing: {
         line?:
             | {
-                color?: string | undefined;
-                width?: number | undefined;
-            }
+                  color?: string | undefined;
+                  width?: number | undefined;
+              }
             | undefined;
     };
 
     decreasing: {
         line?:
             | {
-                color?: string | undefined;
-                width?: number | undefined;
-            }
+                  color?: string | undefined;
+                  width?: number | undefined;
+              }
             | undefined;
     };
 

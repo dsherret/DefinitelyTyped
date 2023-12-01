@@ -10,19 +10,23 @@ const map = L.map("map", {
 L.control.locate().addTo(map);
 
 // Simple
-const lc = L.control.locate({
-    position: "topright",
-    strings: {
-        title: "Show me where I am, yo!",
-    },
-    initialZoomLevel: 10,
-    showCompass: false,
-}).addTo(map);
+const lc = L.control
+    .locate({
+        position: "topright",
+        strings: {
+            title: "Show me where I am, yo!",
+        },
+        initialZoomLevel: 10,
+        showCompass: false,
+    })
+    .addTo(map);
 
 // Locate Options
-map.addControl(L.control.locate({
-    locateOptions: {
-        maxZoom: 10,
-        enableHighAccuracy: true,
-    },
-}));
+map.addControl(
+    L.control.locate({
+        locateOptions: {
+            maxZoom: 10,
+            enableHighAccuracy: true,
+        },
+    }),
+);

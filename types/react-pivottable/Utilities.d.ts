@@ -8,7 +8,9 @@ declare function naturalSort(a: any, b: any): number;
 declare function numberFormat(opts_in: unknown): string;
 declare function sortAs(order: { [k: string]: string | number }): TSorterFn;
 declare function getSort(
-    sorters: { [k: string]: TSorterFn } | ((param: typeof attr) => TSorterFn | unknown),
+    sorters:
+        | { [k: string]: TSorterFn }
+        | ((param: typeof attr) => TSorterFn | unknown),
     attr: string,
 ): TSorterFn;
 

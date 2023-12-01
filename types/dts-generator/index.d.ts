@@ -3,7 +3,9 @@ import Bluebird = require("bluebird");
 
 export = dtsGenerator;
 
-declare function dtsGenerator(options: dtsGenerator.DtsGeneratorOptions): Bluebird<void>;
+declare function dtsGenerator(
+    options: dtsGenerator.DtsGeneratorOptions,
+): Bluebird<void>;
 
 declare namespace dtsGenerator {
     interface ResolveModuleIdParams {
@@ -75,7 +77,9 @@ declare namespace dtsGenerator {
         /** The target environment for generated code. Defaults to ts.ScriptTarget.Latest. */
         target?: ts.ScriptTarget | undefined;
 
-        sendMessage?: ((message: any, ...optionalParams: any[]) => void) | undefined;
+        sendMessage?:
+            | ((message: any, ...optionalParams: any[]) => void)
+            | undefined;
         /**
          * An optional callback provided by the invoker to customize the declared module ids the output d.ts files.
          * @see {@link https://github.com/SitePen/dts-generator/blob/master/docs/resolving-module-ids.md Resolving Module Ids}

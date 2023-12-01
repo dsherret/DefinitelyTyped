@@ -24,7 +24,11 @@ function registryTests() {
         // @ts-expect-error
         RED.settings.wrongKey;
 
-        const nodeConstructor: registry.NodeConstructor<MyNode, MyNodeDef, MyNodeCredentials> = function(nodeDef) {
+        const nodeConstructor: registry.NodeConstructor<
+            MyNode,
+            MyNodeDef,
+            MyNodeCredentials
+        > = function (nodeDef) {
             RED.nodes.createNode(this, nodeDef);
 
             // $ExpectType FlowInfo | undefined

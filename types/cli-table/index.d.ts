@@ -6,24 +6,22 @@ type TableRow = HorizontalTableRow | VerticalTableRow | CrossTableRow;
 interface TableOptions<T extends TableRow = TableRow> {
     rows?: T[];
     chars?: {
-        [
-            k in
-                | "top"
-                | "top-mid"
-                | "top-left"
-                | "top-right"
-                | "bottom"
-                | "bottom-mid"
-                | "bottom-left"
-                | "bottom-right"
-                | "left"
-                | "left-mid"
-                | "mid"
-                | "mid-mid"
-                | "right"
-                | "right-mid"
-                | "middle"
-        ]?: string;
+        [k in
+            | "top"
+            | "top-mid"
+            | "top-left"
+            | "top-right"
+            | "bottom"
+            | "bottom-mid"
+            | "bottom-left"
+            | "bottom-right"
+            | "left"
+            | "left-mid"
+            | "mid"
+            | "mid-mid"
+            | "right"
+            | "right-mid"
+            | "middle"]?: string;
     };
     truncate?: string;
     colors?: boolean;
@@ -47,7 +45,11 @@ declare class Table<T extends TableRow = TableRow> extends Array<T> {
      * @api public
      */
     constructor(options?: T extends CrossTableRow ? never : TableOptions<T>);
-    constructor(options: T extends CrossTableRow ? TableOptions<T> & { head: ["", ...string[]] } : never);
+    constructor(
+        options: T extends CrossTableRow
+            ? TableOptions<T> & { head: ["", ...string[]] }
+            : never,
+    );
 
     /**
      * Width getter

@@ -10,9 +10,15 @@ interface StderrMessages {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-type Handler = (exitCode: number | null, signal: string | null) => boolean | undefined | void;
+type Handler = (
+    exitCode: number | null,
+    signal: string | null,
+) => boolean | undefined | void;
 
-declare function install(cleanupHandler?: Handler, stderrMessages?: StderrMessages): void;
+declare function install(
+    cleanupHandler?: Handler,
+    stderrMessages?: StderrMessages,
+): void;
 
 declare namespace install {
     function uninstall(): void;

@@ -167,7 +167,14 @@ interface Sphere1Font {
     getColorMask(): Sphere1Color;
     drawText(x: number, y: number, text: any): void;
     drawZoomedText(x: number, y: number, scale: number, text: any): void;
-    drawTextBox(x: number, y: number, w: number, h: number, offset: number, text: any): void;
+    drawTextBox(
+        x: number,
+        y: number,
+        w: number,
+        h: number,
+        offset: number,
+        text: any,
+    ): void;
     wordWrapString(string: any, width: number): any[];
     getHeight(): number;
     getStringWidth(string: any): number;
@@ -187,7 +194,13 @@ interface Sphere1Image {
     width: number;
     height: number;
     blit(x: number, y: number, blendMode?: number): void;
-    blitMask(x: number, y: number, mask: Sphere1Color, blendMode?: number, maskBlendMode?: number): void;
+    blitMask(
+        x: number,
+        y: number,
+        mask: Sphere1Color,
+        blendMode?: number,
+        maskBlendMode?: number,
+    ): void;
     rotateBlit(x: number, y: number, radians: number, blendMode?: number): void;
     rotateBlitMask(
         x: number,
@@ -257,7 +270,13 @@ interface Sphere1Surface {
         blueLookup: number[],
         alphaLookup: number[],
     ): void;
-    applyColorFX(x: number, y: number, w: number, h: number, colorMatrix: any): void;
+    applyColorFX(
+        x: number,
+        y: number,
+        w: number,
+        h: number,
+        colorMatrix: any,
+    ): void;
     applyColorFX4(
         x: number,
         y: number,
@@ -270,8 +289,19 @@ interface Sphere1Surface {
     ): void;
     blit(x: number, y: number): void;
     blitSurface(surface: Sphere1Surface, x: number, y: number): void;
-    blitMaskSurface(surface: Sphere1Surface, x: number, y: number, mask: Sphere1Color, maskBlendMode: number): void;
-    rotateBlitSurface(surface: Sphere1Surface, x: number, y: number, radians: number): void;
+    blitMaskSurface(
+        surface: Sphere1Surface,
+        x: number,
+        y: number,
+        mask: Sphere1Color,
+        maskBlendMode: number,
+    ): void;
+    rotateBlitSurface(
+        surface: Sphere1Surface,
+        x: number,
+        y: number,
+        radians: number,
+    ): void;
     rotateBlitMaskSurface(
         surface: Sphere1Surface,
         x: number,
@@ -280,7 +310,12 @@ interface Sphere1Surface {
         mask: Sphere1Color,
         maskBlendMode: number,
     ): void;
-    zoomBlitSurface(surface: Sphere1Surface, x: number, y: number, factor: number): void;
+    zoomBlitSurface(
+        surface: Sphere1Surface,
+        x: number,
+        y: number,
+        factor: number,
+    ): void;
     zoomBlitMaskSurface(
         surface: Sphere1Surface,
         x: number,
@@ -322,8 +357,21 @@ interface Sphere1Surface {
     findColor(aColor: Sphere1Color): boolean;
     floodFill(x: number, y: number, color: Sphere1Color): void;
     pointSeries(array: Sphere1Color[], color: Sphere1Color): void;
-    line(x1: number, y1: number, x2: number, y2: number, color: Sphere1Color): void;
-    gradientLine(x1: number, y1: number, x2: number, y2: number, color1: Sphere1Color, color2: Sphere1Color): void;
+    line(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        color: Sphere1Color,
+    ): void;
+    gradientLine(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        color1: Sphere1Color,
+        color2: Sphere1Color,
+    ): void;
     lineSeries(array: Sphere1Point[], color: Sphere1Color, type?: number): void;
     bezierCurve(
         color: Sphere1Color,
@@ -337,8 +385,21 @@ interface Sphere1Surface {
         Dx?: number,
         Dy?: number,
     ): void;
-    outlinedRectangle(x: number, y: number, width: number, height: number, color: Sphere1Color, size?: number): void;
-    rectangle(x: number, y: number, width: number, height: number, color: Sphere1Color): void;
+    outlinedRectangle(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        color: Sphere1Color,
+        size?: number,
+    ): void;
+    rectangle(
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+        color: Sphere1Color,
+    ): void;
     gradientRectangle(
         x: number,
         y: number,
@@ -348,7 +409,15 @@ interface Sphere1Surface {
         colorLR: Sphere1Color,
         colorLL: Sphere1Color,
     ): void;
-    triangle(x1: number, y1: number, x2: number, y2: number, x3: number, y3: number, color: Sphere1Color): void;
+    triangle(
+        x1: number,
+        y1: number,
+        x2: number,
+        y2: number,
+        x3: number,
+        y3: number,
+        color: Sphere1Color,
+    ): void;
     gradientTriangle(
         x1: number,
         y1: number,
@@ -361,10 +430,34 @@ interface Sphere1Surface {
         c3: Sphere1Color,
     ): void;
     polygon(array: Sphere1Point[], color: Sphere1Color, invert: boolean): void;
-    outlinedEllipse(x: number, y: number, rx: number, ry: number, c: Sphere1Color): void;
-    filledEllipse(x: number, y: number, rx: number, ry: number, c: Sphere1Color): void;
-    outlinedCircle(x: number, y: number, radius: number, color: Sphere1Color, antialias?: boolean): void;
-    filledCircle(x: number, y: number, radius: number, color: Sphere1Color, antialias?: boolean): void;
+    outlinedEllipse(
+        x: number,
+        y: number,
+        rx: number,
+        ry: number,
+        c: Sphere1Color,
+    ): void;
+    filledEllipse(
+        x: number,
+        y: number,
+        rx: number,
+        ry: number,
+        c: Sphere1Color,
+    ): void;
+    outlinedCircle(
+        x: number,
+        y: number,
+        radius: number,
+        color: Sphere1Color,
+        antialias?: boolean,
+    ): void;
+    filledCircle(
+        x: number,
+        y: number,
+        radius: number,
+        color: Sphere1Color,
+        antialias?: boolean,
+    ): void;
     gradientCircle(
         x: number,
         y: number,
@@ -381,8 +474,22 @@ interface Sphere1Surface {
     clone(): Sphere1Surface;
     cloneSection(x: number, y: number, w: number, h: number): Sphere1Surface;
     drawText(font: Sphere1Font, x: number, y: number, text: string): void;
-    drawZoomedText(font: Sphere1Font, x: number, y: number, scale: number, text: string): void;
-    drawTextBox(font: Sphere1Font, x: number, y: number, w: number, h: number, offset: number, text: string): void;
+    drawZoomedText(
+        font: Sphere1Font,
+        x: number,
+        y: number,
+        scale: number,
+        text: string,
+    ): void;
+    drawTextBox(
+        font: Sphere1Font,
+        x: number,
+        y: number,
+        w: number,
+        h: number,
+        offset: number,
+        text: string,
+    ): void;
     save(filename: string): void;
 }
 
@@ -517,9 +624,7 @@ declare function Abort(message: any): void;
 /**
  * Opens `filename` as a log file
  */
-declare function OpenLog(
-    filename: string,
-): {
+declare function OpenLog(filename: string): {
     /**
      * writes `text` to the log file
      */
@@ -547,7 +652,12 @@ declare function GetTime(): number;
 /**
  * Creates and returns a Sphere 1.x color object. `r`, `g`, `b`, and `a` should be 0-255
  */
-declare function CreateColor(r: number, g: number, b: number, a: number): Sphere1Color;
+declare function CreateColor(
+    r: number,
+    g: number,
+    b: number,
+    a: number,
+): Sphere1Color;
 
 /**
  * Blends `c1` and `c2` and returns the result
@@ -733,7 +843,12 @@ declare function GetNumTiles(): number;
 /**
  * Changes the specified tile on the loaded map to `tile`, with 0 as the bottom layer
  */
-declare function SetTile(x: number, y: number, layer: number, tile: number): void;
+declare function SetTile(
+    x: number,
+    y: number,
+    layer: number,
+    tile: number,
+): void;
 
 /**
  * Returns the tile index at the specified location, with 0 as the bottom layer
@@ -798,19 +913,31 @@ declare function SetNextAnimatedTile(tile: number, nextTile: number): void;
 /**
  * Replaces all `oldTile` tiles with `newTile` on layer `layer`, with 0 as the bottom layer
  */
-declare function ReplaceTilesOnLayer(layer: number, oldTile: number, newTile: number): void;
+declare function ReplaceTilesOnLayer(
+    layer: number,
+    oldTile: number,
+    newTile: number,
+): void;
 
 /**
  * Returns true if there is a trigger at `mapX`,`mapY`,`layer`.
  * `mapX` and `mapY` are per-pixel coordinates.
  */
-declare function IsTriggerAt(mapX: number, mapY: number, layer: number): boolean;
+declare function IsTriggerAt(
+    mapX: number,
+    mapY: number,
+    layer: number,
+): boolean;
 
 /**
  * Activates the trigger positioned at `mapX`,`mapY`,`layer` if one exists.
  * `mapX` and `mapY` are per-pixel coordinates.
  */
-declare function ExecuteTrigger(mapX: number, mapY: number, layer: number): void;
+declare function ExecuteTrigger(
+    mapX: number,
+    mapY: number,
+    layer: number,
+): void;
 
 /**
  * Returns true if there are any zones at `mapX`,`mapY`,`layer`
@@ -1000,7 +1127,11 @@ declare function GetPersonList(): string[];
  * miniSphere will show an error message and exit. If `destroyWithMap` is true, the spriteset
  * will be destroyed when the current map is changed.
  */
-declare function CreatePerson(name: string, spriteset: string, destroyWithMap: boolean): void;
+declare function CreatePerson(
+    name: string,
+    spriteset: string,
+    destroyWithMap: boolean,
+): void;
 
 /**
  * Destroys the person with `name`
@@ -1114,7 +1245,11 @@ declare function SetPersonSpeed(name: string, speed: number): void;
 /**
  * Set the x and y movement speed of `name` to `speedX`,`speedY` respectively
  */
-declare function SetPersonSpeedXY(name: string, speedX: number, speedY: number): void;
+declare function SetPersonSpeedXY(
+    name: string,
+    speedX: number,
+    speedY: number,
+): void;
 
 /**
  * Returns the number of animation frames to delay for `name` between the first and last frame
@@ -1130,12 +1265,20 @@ declare function SetPersonFrameRevert(name: string, delay: number): void;
  * Rescales `name`'s spriteset by a factor of `scaleW`,`scaleH`
  * (e.g. 1.0 = original size, 1.5 = 1.5 times the original size, etc)
  */
-declare function SetPersonScaleFactor(name: string, scaleW: number, scaleH: number): void;
+declare function SetPersonScaleFactor(
+    name: string,
+    scaleW: number,
+    scaleH: number,
+): void;
 
 /**
  * Rescales `name`'s spriteset to exactly `width`,`height` pixels
  */
-declare function SetPersonScaleAbsolute(name: string, width: number, height: number): void;
+declare function SetPersonScaleAbsolute(
+    name: string,
+    width: number,
+    height: number,
+): void;
 
 /**
  * Returns the person's spriteset
@@ -1146,7 +1289,10 @@ declare function GetPersonSpriteset(name: string): SphereSpriteset;
  * Set `name`'s spriteset to `spriteset
  * @example SetPersonSpriteset("Jimmy", LoadSpriteset("jimmy.running.rss"));
  */
-declare function SetPersonSpriteset(name: string, spriteset: SphereSpriteset): void;
+declare function SetPersonSpriteset(
+    name: string,
+    spriteset: SphereSpriteset,
+): void;
 
 /**
  * Returns the person's base obstruction object.
@@ -1219,14 +1365,22 @@ declare function GetPersonValue(name: string, key: string): any;
  * Makes the sprite of `name` follow `pixels` behind the sprite of `leader`.
  * If `leader` is "", it will detach from anyone it is following
  */
-declare function FollowPerson(name: string, leader: string, pixels: number): void;
+declare function FollowPerson(
+    name: string,
+    leader: string,
+    pixels: number,
+): void;
 
 /**
  * Sets `script` to be called during `which` event for `name`
  * @example
  * SetPersonScript("Jimmy", SCRIPT_ON_DESTROY, "SSj.log('Jimmy spriteset destroyed'")
  */
-declare function SetPersonScript(name: string, which: number, script: string): void;
+declare function SetPersonScript(
+    name: string,
+    which: number,
+    script: string,
+): void;
 
 /**
  * Calls `which` script for `name`
@@ -1243,13 +1397,21 @@ declare function GetCurrentPerson(): string;
  * Adds a command to the `name`'s command queue. If `immediate` is true, it will be executed immediately.
  * Otherwise it will wait until the next frame.
  */
-declare function QueuePersonCommand(name: string, command: number, immediate: boolean): void;
+declare function QueuePersonCommand(
+    name: string,
+    command: number,
+    immediate: boolean,
+): void;
 
 /**
  * Adds `script` to `name`'s queue. If `immediate` is true, it will be executed immediately.
  * Otherwise it will wait until the next frame.
  */
-declare function QueuePersonScript(name: string, script: string, immediate: boolean): void;
+declare function QueuePersonScript(
+    name: string,
+    script: string,
+    immediate: boolean,
+): void;
 
 /**
  * Clears the command queue of `name`
@@ -1264,7 +1426,11 @@ declare function IsCommandQueueEmpty(name: string): boolean;
 /**
  * Returns true if `name` would be obstructed at `x`,`y`
  */
-declare function IsPersonObstructed(name: string, x: number, y: number): boolean;
+declare function IsPersonObstructed(
+    name: string,
+    x: number,
+    y: number,
+): boolean;
 
 /**
  * Returns the tile index of the tile `name` would be obstructed by at `x`,`y` or -1
@@ -1276,12 +1442,19 @@ declare function GetObstructingTile(name: string, x: number, y: number): number;
  * Returns the name of the person who `name` would be obstructed by at `x`,`y`
  * or "" if it isn't obstructed by a person at that position
  */
-declare function GetObstructingPerson(name: string, x: number, y: number): string;
+declare function GetObstructingPerson(
+    name: string,
+    x: number,
+    y: number,
+): string;
 
 /**
  * Sets whether `person` should ignore other spriteset obstruction bases
  */
-declare function IgnorePersonObstructions(person: string, ignore: boolean): void;
+declare function IgnorePersonObstructions(
+    person: string,
+    ignore: boolean,
+): void;
 
 /**
  * Returns true if `person` is ignoring person obstructions, else false
@@ -1307,7 +1480,10 @@ declare function GetPersonIgnoreList(person: string): string[];
  * Tells `person` to ignore everyone in `ignoreList`
  * @example SetPersonIgnoreList("White-Bomberman", ["bomb", "powerup"]);
  */
-declare function SetPersonIgnoreList(person: string, ignoreList: string[]): void;
+declare function SetPersonIgnoreList(
+    person: string,
+    ignoreList: string[],
+): void;
 
 /**
  * Get the (Sphere 1.x) key used to activate talk scripts

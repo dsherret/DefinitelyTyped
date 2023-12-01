@@ -22,6 +22,10 @@ interface TruncateOptions {
 /**
  * Truncate HTML text and also keep tag safe.
  */
-declare function truncate(input: string, maxLength: number, options?: TruncateOptions): string;
+declare function truncate(
+    input: string,
+    maxLength: number,
+    options?: TruncateOptions,
+): string;
 
 export = truncate;

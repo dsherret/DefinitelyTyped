@@ -9,7 +9,8 @@ export interface DefaultConfiguration {
 
 export type DefaultConfigurationOmitQs = Omit<DefaultConfiguration, "qs">;
 
-export interface SearchConfiguration<T = any> extends Omit<DefaultConfiguration, "qs"> {
+export interface SearchConfiguration<T = any>
+    extends Omit<DefaultConfiguration, "qs"> {
     /** Query string params. */
     qs: T;
 }

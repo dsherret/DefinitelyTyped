@@ -1,9 +1,18 @@
-import GoogleMapReact, { BootstrapURLKeys, fitBounds, MapOptions, NESWBounds, Size } from "google-map-react";
+import GoogleMapReact, {
+    BootstrapURLKeys,
+    fitBounds,
+    MapOptions,
+    NESWBounds,
+    Size,
+} from "google-map-react";
 import * as React from "react";
 
 const center = { lat: 0, lng: 0 };
 
-const key: BootstrapURLKeys = { key: "my-google-maps-key", libraries: "places" };
+const key: BootstrapURLKeys = {
+    key: "my-google-maps-key",
+    libraries: "places",
+};
 const client: BootstrapURLKeys = {
     client: "my-client-identifier",
     version: "3.28",
@@ -36,7 +45,13 @@ const options: MapOptions = {
     ],
 };
 
-<GoogleMapReact center={center} heatmapLibrary={true} zoom={3} bootstrapURLKeys={client} options={options}>
+<GoogleMapReact
+    center={center}
+    heatmapLibrary={true}
+    zoom={3}
+    bootstrapURLKeys={client}
+    options={options}
+>
     📍
 </GoogleMapReact>;
 

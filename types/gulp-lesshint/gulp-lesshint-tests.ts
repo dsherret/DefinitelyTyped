@@ -6,7 +6,7 @@ gulp.task("lint", () => {
         .src("./src/*.less")
         .pipe(
             lesshint({ configPath: "./path", maxWarnings: 1 })
-                .on("data", file => {
+                .on("data", (file) => {
                     file.lesshint.success; // $ExpectType boolean
                     file.lesshint.resultCount; // $ExpectType number
                     file.lesshint.results.column; // $ExpectType number

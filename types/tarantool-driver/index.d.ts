@@ -39,9 +39,18 @@ declare class TarantoolConnection extends EventEmitter {
         key: any[],
     ): Promise<any>;
 
-    delete(spaceId: number | string, indexId: number | string, key: any[]): Promise<any>;
+    delete(
+        spaceId: number | string,
+        indexId: number | string,
+        key: any[],
+    ): Promise<any>;
 
-    update(spaceId: number | string, indexId: number | string, key: any[], ops: any[]): Promise<any>;
+    update(
+        spaceId: number | string,
+        indexId: number | string,
+        key: any[],
+        ops: any[],
+    ): Promise<any>;
 
     upsert(spaceId: number | string, ops: any[], tuple: any[]): Promise<any>;
 

@@ -30,7 +30,11 @@ export interface ViewOptions {
     disableFocusOnStart?: boolean;
 }
 
-export type FrameRequester = (dt: number, updateLoopRestarted: boolean, ...args: any) => void;
+export type FrameRequester = (
+    dt: number,
+    updateLoopRestarted: boolean,
+    ...args: any
+) => void;
 
 export type Event = MouseEvent | TouchEvent;
 

@@ -47,7 +47,9 @@ consumer.ensureActiveConnection(); // $ExpectType boolean | void
             },
             appendLine(data: any) {
                 const html = this.createLine(data);
-                const element = document.querySelector("[data-chat-room='Best Room']");
+                const element = document.querySelector(
+                    "[data-chat-room='Best Room']",
+                );
 
                 if (element) {
                     element.insertAdjacentHTML("beforeend", html);

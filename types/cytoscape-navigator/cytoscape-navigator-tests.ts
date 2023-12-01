@@ -5,10 +5,7 @@ cytoscape.use(navigator);
 
 const cy = cytoscape({
     container: document.getElementById("cy"),
-    elements: [
-        { data: { id: "A" } },
-        { data: { id: "B" } },
-    ],
+    elements: [{ data: { id: "A" } }, { data: { id: "B" } }],
 });
 
 // $ExpectType Nav

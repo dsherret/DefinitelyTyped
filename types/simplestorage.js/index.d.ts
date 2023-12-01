@@ -16,7 +16,11 @@ declare const simpleStorage: simplestoragejs.SimpleStorage;
 declare const VERSION = "0.2.1";
 
 declare namespace simplestoragejs {
-    type StatusCode = "OK" | "LS_NOT_AVAILABLE" | "LS_DISABLED" | "LS_QUOTA_EXCEEDED";
+    type StatusCode =
+        | "OK"
+        | "LS_NOT_AVAILABLE"
+        | "LS_DISABLED"
+        | "LS_QUOTA_EXCEEDED";
 
     interface SimpleStorageError extends Error {
         code?: StatusCode | undefined;
@@ -49,7 +53,11 @@ declare namespace simplestoragejs {
          * @param [options] Optional options object.
          * @see https://github.com/andris9/simpleStorage#setkey-value-options
          */
-        set(key: string, value?: any, options?: SetOptions): boolean | SimpleStorageError;
+        set(
+            key: string,
+            value?: any,
+            options?: SetOptions,
+        ): boolean | SimpleStorageError;
 
         /**
          * Retrieve a value from local storage.

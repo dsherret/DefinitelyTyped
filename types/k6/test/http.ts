@@ -210,29 +210,29 @@ asyncRequest("get");
 // @ts-expect-error
 asyncRequest("get", 5);
 asyncRequest("get", addressFromHttpURL);
-asyncRequest("get", address).then(res => {
+asyncRequest("get", address).then((res) => {
     responseDefault = res;
 });
 // @ts-expect-error
 asyncRequest("post", address, 5);
-asyncRequest("post", address, "welcome to the internet").then(res => {
+asyncRequest("post", address, "welcome to the internet").then((res) => {
     responseDefault = res;
 });
-asyncRequest("post", address, {}).then(res => {
+asyncRequest("post", address, {}).then((res) => {
     responseDefault = res;
 });
-asyncRequest("post", address, { query: "quokka" }).then(res => {
+asyncRequest("post", address, { query: "quokka" }).then((res) => {
     responseDefault = res;
 });
-asyncRequest("post", address, new ArrayBuffer(8)).then(res => {
+asyncRequest("post", address, new ArrayBuffer(8)).then((res) => {
     responseDefault = res;
 });
 // @ts-expect-error
 asyncRequest("post", address, {}, 5);
-asyncRequest("post", address, {}, { responseType: "binary" }).then(res => {
+asyncRequest("post", address, {}, { responseType: "binary" }).then((res) => {
     responseBinary = res;
 });
-asyncRequest("post", address, {}, { responseType: "binary" }).then(res => {
+asyncRequest("post", address, {}, { responseType: "binary" }).then((res) => {
     // @ts-expect-error
     responseDefault = res;
 });
@@ -240,10 +240,10 @@ asyncRequest("post", address, {}, { responseType: "binary" }).then(res => {
 asyncRequest("post", address, {}, {}, 5);
 
 // asyncRequest params
-asyncRequest("post", address, {}, { timeout: "10s" }).then(res => {
+asyncRequest("post", address, {}, { timeout: "10s" }).then((res) => {
     responseDefault = res;
 });
-asyncRequest("post", address, {}, { timeout: 10 }).then(res => {
+asyncRequest("post", address, {}, { timeout: 10 }).then((res) => {
     responseDefault = res;
 });
 

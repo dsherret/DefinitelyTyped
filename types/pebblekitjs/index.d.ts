@@ -119,7 +119,10 @@ declare namespace PebbleKit {
          * @param successCallback
          * @param failureCallback
          */
-        getTimelineToken(successCallback: (token: string) => void, failureCallback: (error: string) => void): void;
+        getTimelineToken(
+            successCallback: (token: string) => void,
+            failureCallback: (error: string) => void,
+        ): void;
 
         /**
          * Subscribe the user to a timeline topic for your app.
@@ -129,7 +132,11 @@ declare namespace PebbleKit {
          * @param successCb     The developer-defined function to handle a successful subscription attempt.
          * @param errorCb       The developer-defined function to gracefully handle a failed subscription attempt.
          */
-        timelineSubscribe(topic: string, successCb: () => void, errorCb: (errorString: string) => void): void;
+        timelineSubscribe(
+            topic: string,
+            successCb: () => void,
+            errorCb: (errorString: string) => void,
+        ): void;
 
         /**
          * Unsubscribe a user from a timeline topic for this app. Once unsubscribed,
@@ -138,7 +145,11 @@ declare namespace PebbleKit {
          * @param successCb     The developer-defined function to handle a successful unsubscription attempt.
          * @param errorCb       The developer-defined function to gracefully handle a failed unsubscription attempt.
          */
-        timelineUnsubscribe(topic: string, successCb: () => void, errorCb: (errorString: string) => void): void;
+        timelineUnsubscribe(
+            topic: string,
+            successCb: () => void,
+            errorCb: (errorString: string) => void,
+        ): void;
 
         /**
          * Obtain a list of topics that the user is currently subscribed to.
@@ -146,7 +157,10 @@ declare namespace PebbleKit {
          * @param successCb     The developer-defined function to process the retuned list of topic strings.
          * @param errorCb       The developer-defined function to gracefully handle any errors in obtaining the user's subscriptions.
          */
-        timelineSubscriptions(successCb: (topics: string[]) => void, errorCb: (errorString: string) => void): void;
+        timelineSubscriptions(
+            successCb: (topics: string[]) => void,
+            errorCb: (errorString: string) => void,
+        ): void;
 
         /**
          * Returns a unique account token that is associated with the Pebble account of the current user.

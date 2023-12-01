@@ -30,7 +30,12 @@ declare namespace honeybadger {
     interface HoneyBadgerInstance extends EventEmitter {
         context: any;
         configure: (options: ConfigureOptions) => void;
-        notify: (err?: any, name?: any, extra?: CallbackFunction | metadata, callback?: CallbackFunction) => void;
+        notify: (
+            err?: any,
+            name?: any,
+            extra?: CallbackFunction | metadata,
+            callback?: CallbackFunction,
+        ) => void;
         setContext: (context: object) => void;
         resetContext: (context?: object) => void;
         factory: (options?: ConfigureOptions) => HoneyBadgerInstance;

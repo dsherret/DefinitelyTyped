@@ -5,10 +5,18 @@ interface ServerDetails {
     domainId: string;
 }
 
-declare function useAckee(pathname: string | null, server: ServerDetails, opts?: TrackingOptions): void;
+declare function useAckee(
+    pathname: string | null,
+    server: ServerDetails,
+    opts?: TrackingOptions,
+): void;
 
 declare namespace useAckee {
-    function useAckee(pathname: string | null, server: ServerDetails, opts?: TrackingOptions): void;
+    function useAckee(
+        pathname: string | null,
+        server: ServerDetails,
+        opts?: TrackingOptions,
+    ): void;
 }
 
 export = useAckee;

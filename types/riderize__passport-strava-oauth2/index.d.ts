@@ -13,8 +13,8 @@ declare module "@riderize/passport-strava-oauth2" {
         };
         photos?:
             | Array<{
-                value: string;
-            }>
+                  value: string;
+              }>
             | undefined;
         token?: string | undefined;
 
@@ -53,7 +53,10 @@ declare module "@riderize/passport-strava-oauth2" {
 
     class Strategy {
         constructor(options: StrategyOption, verify: VerifyFunction);
-        constructor(options: StrategyOptionWithRequest, verify: VerifyFunctionWithRequest);
+        constructor(
+            options: StrategyOptionWithRequest,
+            verify: VerifyFunctionWithRequest,
+        );
 
         name: string;
         authenticate(req: Request, options?: object): void;

@@ -46,7 +46,11 @@ declare class AsyncEventEmitter<
      * @param listener EventMap value (event function)
      * @see https://www.npmjs.com/package/async-eventemitter#important-differences-between-asynceventemitter-the-native-eventemitter
      */
-    at<E extends keyof T>(event: E & string, index: number, listener: T[E]): this;
+    at<E extends keyof T>(
+        event: E & string,
+        index: number,
+        listener: T[E],
+    ): this;
     /**
      * Adds a listener before the target listener in the listeners array for the specified event.
      * @param event EventMap key (event name)

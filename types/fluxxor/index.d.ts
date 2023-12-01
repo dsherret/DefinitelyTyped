@@ -34,7 +34,7 @@ declare namespace Fluxxor {
     }
 
     interface StoreClass {
-        new(options?: {}): any;
+        new (options?: {}): any;
     }
 
     interface Context {
@@ -55,7 +55,9 @@ declare namespace Fluxxor {
 
     function FluxMixin(react: typeof React): FluxMixin;
     function FluxChildMixin(react: typeof React): FluxChildMixin;
-    function StoreWatchMixin<StoreState>(...storeNames: string[]): StoreWatchMixin<StoreState>;
+    function StoreWatchMixin<StoreState>(
+        ...storeNames: string[]
+    ): StoreWatchMixin<StoreState>;
     function createStore(spec: StoreSpec): StoreClass;
     var version: string;
 }

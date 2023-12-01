@@ -117,7 +117,10 @@ interface ChocolateChipStatic {
      * Replace one element with another.
      * @return {HTMLElement[]}
      */
-    replace(newElement: ChocolateChipElementArray, oldElement: ChocolateChipElementArray): void;
+    replace(
+        newElement: ChocolateChipElementArray,
+        oldElement: ChocolateChipElementArray,
+    ): void;
 
     /**
      * Load a JavaScript file from a url, then execute it.
@@ -413,7 +416,10 @@ interface ChocolateChipStatic {
      * @param topic A topic to subscribe to. This can be a single term, or any type of namespaced term with delimiters.
      * @param callback You can receive any type: string, number, array, object, etc.
      */
-    subscribe(topic: string, callback: (topic: string, data: any) => any): boolean;
+    subscribe(
+        topic: string,
+        callback: (topic: string, data: any) => any,
+    ): boolean;
 
     /**
      * Unsubscribe from a topic. Pass this the topic you wish to unsubscribe from. The subscription will be terminated immediately.
@@ -468,7 +474,11 @@ interface ChocolateChipStatic {
              * @param template A string of markup.
              * @param data The iterable data the template will consume.
              */
-            (element: ChocolateChipElementArray, template: string, data: any): void;
+            (
+                element: ChocolateChipElementArray,
+                template: string,
+                data: any,
+            ): void;
         };
 
         /**
@@ -613,7 +623,14 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
     /**
      * Same overload as is present in the base type
      */
-    find(predicate: (value: HTMLElement, index: number, obj: HTMLElement[]) => boolean, thisArg?: any): HTMLElement;
+    find(
+        predicate: (
+            value: HTMLElement,
+            index: number,
+            obj: HTMLElement[],
+        ) => boolean,
+        thisArg?: any,
+    ): HTMLElement;
 
     /**
      * Get the descendants of each element in the current set of matched elements, filtered by a selector or element.
@@ -884,7 +901,10 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
      * @param speed A string or number determining how long the animation will run.
      * @param callback A function to call once the animation is complete.
      */
-    show(duration?: number | string, callback?: Function): ChocolateChipElementArray;
+    show(
+        duration?: number | string,
+        callback?: Function,
+    ): ChocolateChipElementArray;
 
     /**
      * Hide the matched elements.
@@ -892,21 +912,28 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
      * @param duration A string or number determining how long the animation will run.
      * @param callback A function to call once the animation is complete.
      */
-    hide(duration?: number | string, callback?: Function): ChocolateChipElementArray;
+    hide(
+        duration?: number | string,
+        callback?: Function,
+    ): ChocolateChipElementArray;
 
     /**
      * Insert content, specified by the parameter, before each element in the set of matched elements.
      *
      * @param content HTML string, DOM element, array of elements to insert before each element in the set of matched elements.
      */
-    before(content: ChocolateChipElementArray | HTMLElement | string): ChocolateChipElementArray;
+    before(
+        content: ChocolateChipElementArray | HTMLElement | string,
+    ): ChocolateChipElementArray;
 
     /**
      * Insert content, specified by the parameter, after each element in the set of matched elements.
      *
      * @param content HTML string, DOM element, array of elements to insert after each element in the set of matched elements.
      */
-    after(content: ChocolateChipElementArray | HTMLElement | string): ChocolateChipElementArray;
+    after(
+        content: ChocolateChipElementArray | HTMLElement | string,
+    ): ChocolateChipElementArray;
 
     /**
      * Insert content, specified by the parameter, to the end of each element in the set of matched elements.
@@ -914,14 +941,18 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
      * @param content DOM element, array of elements, or HTML string to insert at the end of each element in the set
      * of matched elements.
      */
-    append(content: ChocolateChipElementArray | HTMLElement | Text | string): ChocolateChipElementArray;
+    append(
+        content: ChocolateChipElementArray | HTMLElement | Text | string,
+    ): ChocolateChipElementArray;
 
     /**
      * Insert content, specified by the parameter, at the beginning of each element in the set of matched elements.
      *
      * @param content DOM element, array of elements, or HTML string to insert at the beginning of each element in the set of matched elements.
      */
-    prepend(content: ChocolateChipElementArray | HTMLElement | Text | string): ChocolateChipElementArray;
+    prepend(
+        content: ChocolateChipElementArray | HTMLElement | Text | string,
+    ): ChocolateChipElementArray;
 
     /**
      * Insert every element in the set of matched elements to the beginning of the target.
@@ -941,7 +972,10 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
     /**
      * Insert element(s) into the target element.
      */
-    insert(content: string, position?: number | string): ChocolateChipElementArray;
+    insert(
+        content: string,
+        position?: number | string,
+    ): ChocolateChipElementArray;
 
     /**
      * Create a copy of the set of matched elements.
@@ -1028,7 +1062,11 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
      * @param handler A function to execute each time the event is triggered.
      * @param useCapture Setting the third argument to true will trigger event bubbling. The default is false.
      */
-    bind(eventType: string, handler: (eventObject: Event) => any, useCapture?: boolean): ChocolateChipStatic;
+    bind(
+        eventType: string,
+        handler: (eventObject: Event) => any,
+        useCapture?: boolean,
+    ): ChocolateChipStatic;
 
     /**
      * Remove a handler for an event from the elements.
@@ -1037,7 +1075,11 @@ interface ChocolateChipElementArray extends Array<HTMLElement> {
      * @param handler A function to execute each time the event is triggered.
      * @param useCapture Setting the third argument to true will trigger event bubbling. The default is false.
      */
-    unbind(eventType?: string, handler?: (eventObject: Event) => any, useCapture?: boolean): ChocolateChipStatic;
+    unbind(
+        eventType?: string,
+        handler?: (eventObject: Event) => any,
+        useCapture?: boolean,
+    ): ChocolateChipStatic;
 
     /**
      * Add a delegated event to listen for the provided event on the descendant elements.
@@ -1143,25 +1185,28 @@ interface ChocolateChipStatic {
      * @param url A string defining the url to target.
      * @param options And object literal of properties: {timeout? number, callbackName?: string, clear?: boolean}
      */
-    jsonp(url: string, options?: {
-        /**
-         * A number representing milliseconds to express when to refect a JSONP request.
-         */
-        timeout?: number | undefined;
+    jsonp(
+        url: string,
+        options?: {
+            /**
+             * A number representing milliseconds to express when to refect a JSONP request.
+             */
+            timeout?: number | undefined;
 
-        /**
-         * The optional name for the callback when the server response will execute.
-         * The default value is "callback".
-         * However some sites may use a different name for their JSONP function.
-         * Consult the documentation on the site to ascertain the correct value for this callback.
-         */
-        callbackName?: string | undefined;
+            /**
+             * The optional name for the callback when the server response will execute.
+             * The default value is "callback".
+             * However some sites may use a different name for their JSONP function.
+             * Consult the documentation on the site to ascertain the correct value for this callback.
+             */
+            callbackName?: string | undefined;
 
-        /**
-         * This value determines whether the callbacks and script associate with JSONP persist or are purged after the request returns. By default this is set to true, meaning that they will be purged.
-         */
-        clear?: boolean | undefined;
-    }): any;
+            /**
+             * This value determines whether the callbacks and script associate with JSONP persist or are purged after the request returns. By default this is set to true, meaning that they will be purged.
+             */
+            clear?: boolean | undefined;
+        },
+    ): any;
 }
 
 interface Window {

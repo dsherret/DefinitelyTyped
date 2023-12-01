@@ -1,6 +1,10 @@
 /** @internal */
 declare class DOMExceptionImpl {
-    constructor(globalObject: object, [message, name]: [string?, string?], privateData?: {});
+    constructor(
+        globalObject: object,
+        [message, name]: [string?, string?],
+        privateData?: {},
+    );
 
     message: string;
     name: string;

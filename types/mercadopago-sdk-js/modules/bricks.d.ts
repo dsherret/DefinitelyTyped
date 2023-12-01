@@ -27,11 +27,18 @@ declare namespace bricks {
         onRenderPreviousStep?: (currentStep: string) => void;
     }
 
-    interface WalletBrickCallbacks<BrickType> extends BrickCallbacks, Submit<BrickType> {}
-    interface CardPaymentBrickCallbacks<BrickType> extends BrickCallbacks, Submit<BrickType>, BinChange {}
+    interface WalletBrickCallbacks<BrickType>
+        extends BrickCallbacks,
+            Submit<BrickType> {}
+    interface CardPaymentBrickCallbacks<BrickType>
+        extends BrickCallbacks,
+            Submit<BrickType>,
+            BinChange {}
     interface PaymentBrickCallbacks<BrickType>
-        extends BrickCallbacks, Submit<BrickType>, BinChange, ReviewStepsCallbacks
-    {}
+        extends BrickCallbacks,
+            Submit<BrickType>,
+            BinChange,
+            ReviewStepsCallbacks {}
 
     interface DefaultAddress {
         streetName: string;
@@ -234,10 +241,13 @@ declare namespace bricks {
 
     interface BrickSettings<BrickType> {
         // For a more detailed view of each Brick`s supported settings, please check the documentation at: https://github.com/mercadopago/sdk-js/blob/main/API/bricks/index.md
-        callbacks: BrickType extends "wallet" ? WalletBrickCallbacks<BrickType>
-            : BrickType extends "cardPayment" ? CardPaymentBrickCallbacks<BrickType>
-            : BrickType extends "payment" ? PaymentBrickCallbacks<BrickType>
-            : BrickCallbacks;
+        callbacks: BrickType extends "wallet"
+            ? WalletBrickCallbacks<BrickType>
+            : BrickType extends "cardPayment"
+              ? CardPaymentBrickCallbacks<BrickType>
+              : BrickType extends "payment"
+                ? PaymentBrickCallbacks<BrickType>
+                : BrickCallbacks;
         initialization?: BrickInitialization;
         customization?: BrickCustomization;
     }
@@ -325,13 +335,17 @@ declare namespace bricks {
         id: string;
     }
 
-    type FormData<BrickType> = BrickType extends "cardPayment" ? CardFormData
-        : BrickType extends "payment" ? PaymentFormData
-        : null;
+    type FormData<BrickType> = BrickType extends "cardPayment"
+        ? CardFormData
+        : BrickType extends "payment"
+          ? PaymentFormData
+          : null;
 
-    type AdditionalData<BrickType> = BrickType extends "cardPayment" ? AdditionalCardFormData
-        : BrickType extends "payment" ? AdditionalPaymentFormData
-        : null;
+    type AdditionalData<BrickType> = BrickType extends "cardPayment"
+        ? AdditionalCardFormData
+        : BrickType extends "payment"
+          ? AdditionalPaymentFormData
+          : null;
 
     interface CardFormData {
         token: string;
@@ -408,7 +422,9 @@ declare namespace bricks {
         cardholderName?: string;
     }
 
-    type AdditionalPaymentFormData = AdditionalCardFormData | AdditionalSavedCardFormData;
+    type AdditionalPaymentFormData =
+        | AdditionalCardFormData
+        | AdditionalSavedCardFormData;
 
     interface CardPaymentUpdatableValues {
         amount: number;
@@ -426,7 +442,10 @@ declare namespace bricks {
         paymentType: PaymentType;
         selectedPaymentMethod: PaymentType;
         formData?: CardFormData | SavedCardFormData | TicketFormData | null;
-        additionalData?: AdditionalSavedCardFormData | AdditionalCardFormData | null;
+        additionalData?:
+            | AdditionalSavedCardFormData
+            | AdditionalCardFormData
+            | null;
     }
 
     interface CardPaymentController {
@@ -461,10 +480,13 @@ declare namespace bricks {
             containerId: string,
             settings: BrickSettings<BrickType>,
         ): Promise<
-            BrickType extends "cardPayment" ? CardPaymentController
-                : BrickType extends "payment" ? PaymentController
-                : BrickType extends "statusScreen" ? StatusScreenController
-                : WalletController
+            BrickType extends "cardPayment"
+                ? CardPaymentController
+                : BrickType extends "payment"
+                  ? PaymentController
+                  : BrickType extends "statusScreen"
+                    ? StatusScreenController
+                    : WalletController
         >;
     }
 }

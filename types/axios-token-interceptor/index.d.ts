@@ -1,9 +1,14 @@
 import { AxiosInstance } from "axios";
 
 // Module
-declare function AxiosTokenProvider(Options: AxiosTokenProvider.InterceptorOptions): AxiosTokenProvider.TokenProvider;
+declare function AxiosTokenProvider(
+    Options: AxiosTokenProvider.InterceptorOptions,
+): AxiosTokenProvider.TokenProvider;
 declare namespace AxiosTokenProvider {
-    function tokenCache<T>(getToken: () => Promise<T>, options: TokenCacheOptions<T>): TokenCache<T>;
+    function tokenCache<T>(
+        getToken: () => Promise<T>,
+        options: TokenCacheOptions<T>,
+    ): TokenCache<T>;
 
     // Interfaces
     interface InterceptorOptions<T = unknown> {
@@ -18,9 +23,15 @@ declare namespace AxiosTokenProvider {
         expires_in: number;
     }
 
-    type _InterceptorsRequestUseParam = Parameters<AxiosInstance["interceptors"]["request"]["use"]>[0];
-    type InternalAxiosRequestConfig = Parameters<NonNullable<_InterceptorsRequestUseParam>>[0];
-    type TokenProvider = (config: InternalAxiosRequestConfig) => Promise<InternalAxiosRequestConfig>;
+    type _InterceptorsRequestUseParam = Parameters<
+        AxiosInstance["interceptors"]["request"]["use"]
+    >[0];
+    type InternalAxiosRequestConfig = Parameters<
+        NonNullable<_InterceptorsRequestUseParam>
+    >[0];
+    type TokenProvider = (
+        config: InternalAxiosRequestConfig,
+    ) => Promise<InternalAxiosRequestConfig>;
 
     interface TokenCacheOptions<T = unknown> {
         getMaxAge?: (() => number) | ((el: T) => number) | undefined;

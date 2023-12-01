@@ -5,10 +5,10 @@ var client = new ZeroClipboard(document.getElementById("copy-button"), {
     moviePath: "/path/to/ZeroClipboard.swf",
 });
 
-client.on("load", function(client) {
+client.on("load", function (client) {
     // alert( "movie is loaded" );
 
-    client.on("complete", function(client, args) {
+    client.on("complete", function (client, args) {
         // `this` is the element that was clicked
         this.style.display = "none";
         alert("Copied text to clipboard: " + args.text);
@@ -81,7 +81,7 @@ ZeroClipboard.config(_globalConfig);
 ZeroClipboard.config({ moviePath: "new/path" });
 
 var client = new ZeroClipboard($("#d_clip_button"), { moviePath: "new/path" });
-client.on("dataRequested", function(client, args) {
+client.on("dataRequested", function (client, args) {
     client.setText("Copy me!");
 });
 
@@ -91,64 +91,63 @@ client.clip(document.getElementById("d_clip_button"));
 
 var client = new ZeroClipboard($("button#my-button"));
 
-function my_load_handler() {
-}
+function my_load_handler() {}
 
 client.on("load", my_load_handler);
 
 client.off("load", my_load_handler);
 
-client.on("load", function(client, args) {
+client.on("load", function (client, args) {
     alert("movie has loaded");
 });
 
-client.on("mouseover", function(client, args) {
+client.on("mouseover", function (client, args) {
     alert("mouse is over movie");
 });
 
-client.on("mouseout", function(client, args) {
+client.on("mouseout", function (client, args) {
     alert("mouse has left movie");
 });
 
-client.on("mousedown", function(client, args) {
+client.on("mousedown", function (client, args) {
     alert("mouse button is down");
 });
 
-client.on("mouseup", function(client, args) {
+client.on("mouseup", function (client, args) {
     alert("mouse button is up");
 });
 
-client.on("complete", function(client, args) {
+client.on("complete", function (client, args) {
     alert("Copied text to clipboard: " + args.text);
 });
 
-client.on("noflash", function(client, args) {
+client.on("noflash", function (client, args) {
     alert("You don't support flash");
 });
 
-client.on("wrongflash", function(client, args) {
+client.on("wrongflash", function (client, args) {
     alert("Your flash is too old " + args.flashVersion);
 });
 
-client.on("dataRequested", function(client, args) {
+client.on("dataRequested", function (client, args) {
     client.setText("Copied to clipboard.");
 });
 
 var client = new ZeroClipboard($(".clip_button"));
 
-client.on("load", function(client) {
+client.on("load", function (client) {
     // alert( "movie is loaded" );
 
-    client.on("datarequested", function(client) {
+    client.on("datarequested", function (client) {
         client.setText(this.innerHTML);
     });
 
-    client.on("complete", function(client, args) {
+    client.on("complete", function (client, args) {
         alert("Copied text to clipboard: " + args.text);
     });
 });
 
-client.on("wrongflash noflash", function() {
+client.on("wrongflash noflash", function () {
     ZeroClipboard.destroy();
 });
 

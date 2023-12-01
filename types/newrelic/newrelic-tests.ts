@@ -35,7 +35,9 @@ newrelic.noticeError(Error("Oh no!"), false); // $ExpectType void
 newrelic.noticeError(Error("Oh no!"), { foo: "bar" }, true); // $ExpectType void
 newrelic.noticeError(Error("Oh no!"), { foo: 42 }, false); // $ExpectType void
 
-newrelic.setErrorGroupCallback((errMetadata) => errMetadata["error.expected"] ? "Expected Error" : "Unexpected Error"); // $ExpectType void
+newrelic.setErrorGroupCallback((errMetadata) =>
+    errMetadata["error.expected"] ? "Expected Error" : "Unexpected Error",
+); // $ExpectType void
 
 newrelic.recordLogEvent({ message: "" }); // $ExpectType void
 newrelic.recordLogEvent({ message: "", timestamp: 1 }); // $ExpectType void
@@ -50,10 +52,18 @@ newrelic.addIgnoringRule(/^[0-9]+$/); // $ExpectType void
 newrelic.getBrowserTimingHeader(); // $ExpectType string
 newrelic.getBrowserTimingHeader({ nonce: "foo" }); // $ExpectType string
 newrelic.getBrowserTimingHeader({ hasToRemoveScriptWrapper: true }); // $ExpectType string
-newrelic.getBrowserTimingHeader({ hasToRemoveScriptWrapper: true, nonce: "foo" }); // $ExpectType string
+newrelic.getBrowserTimingHeader({
+    hasToRemoveScriptWrapper: true,
+    nonce: "foo",
+}); // $ExpectType string
 
 newrelic.startSegment("foo", false, () => "bar"); // $ExpectType string
-newrelic.startSegment("foo", false, () => "bar", () => "baz"); // $ExpectType string
+newrelic.startSegment(
+    "foo",
+    false,
+    () => "bar",
+    () => "baz",
+); // $ExpectType string
 newrelic.startSegment("foo", true, async () => "bar"); // $ExpectType Promise<string>
 
 const wrappedFn = newrelic.createTracer("foo", (x: number) => {
@@ -71,7 +81,7 @@ newrelic.startWebTransaction("/some/url/path", () => {
 
 newrelic.startWebTransaction("/some/url/path", Promise.resolve(7)); // $ExpectType Promise<number>
 
-newrelic.startBackgroundTransaction("Red October", foo => foo); // $ExpectType any
+newrelic.startBackgroundTransaction("Red October", (foo) => foo); // $ExpectType any
 newrelic.startBackgroundTransaction("Red October", () => 7); // $ExpectType number
 newrelic.startBackgroundTransaction("Red October", Promise.resolve(7)); // $ExpectType Promise<number>
 newrelic.startBackgroundTransaction("Red October", "Subs", () => {
@@ -103,7 +113,11 @@ newrelic.recordCustomEvent("my_event", {
 });
 
 newrelic.instrument("foo", () => {}); // $ExpectType void
-newrelic.instrumentDatastore("foo", () => {}, (err: Error) => {});
+newrelic.instrumentDatastore(
+    "foo",
+    () => {},
+    (err: Error) => {},
+);
 newrelic.instrumentLoadedModule("foo", () => {}); // $ExpectType boolean
 newrelic.instrumentWebframework({
     moduleName: "foo",
@@ -112,7 +126,7 @@ newrelic.instrumentWebframework({
 newrelic.instrumentMessages({
     moduleName: "foo",
     onRequire: () => {},
-    onError: err => {
+    onError: (err) => {
         const error: Error = err;
     },
 });
@@ -123,14 +137,21 @@ newrelic.shutdown(); // $ExpectType void
 newrelic.shutdown({ collectPendingData: true });
 newrelic.shutdown({ timeout: 3000 });
 newrelic.shutdown({ collectPendingData: true, timeout: 3000 });
-newrelic.shutdown({ collectPendingData: true, timeout: 3000 }, err => {
+newrelic.shutdown({ collectPendingData: true, timeout: 3000 }, (err) => {
     const error: Error | undefined = err;
 });
-newrelic.shutdown({ collectPendingData: true, timeout: 3000, waitForIdle: true });
-newrelic.shutdown({ collectPendingData: true, timeout: 3000, waitForIdle: true }, err => {
-    const error: Error | undefined = err;
+newrelic.shutdown({
+    collectPendingData: true,
+    timeout: 3000,
+    waitForIdle: true,
 });
-newrelic.shutdown(err => {
+newrelic.shutdown(
+    { collectPendingData: true, timeout: 3000, waitForIdle: true },
+    (err) => {
+        const error: Error | undefined = err;
+    },
+);
+newrelic.shutdown((err) => {
     const error: Error | undefined = err;
 });
 
@@ -139,7 +160,10 @@ newrelic.getLinkingMetadata(true);
 newrelic.getTraceMetadata();
 
 newrelic.setLambdaHandler(() => void 0); // $ExpectType () => undefined
-newrelic.setLambdaHandler((event: unknown, context: unknown) => ({ statusCode: 200, body: "Hello!" })); // $ExpectType (event: unknown, context: unknown) => { statusCode: number; body: string; }
+newrelic.setLambdaHandler((event: unknown, context: unknown) => ({
+    statusCode: 200,
+    body: "Hello!",
+})); // $ExpectType (event: unknown, context: unknown) => { statusCode: number; body: string; }
 // @ts-expect-error
 newrelic.setLambdaHandler({ some: "object" });
 

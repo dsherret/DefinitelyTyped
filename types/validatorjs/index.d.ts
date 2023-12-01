@@ -44,7 +44,7 @@ declare namespace Validator {
     ) => void;
 
     interface ValidatorStatic {
-        new<A>(
+        new <A>(
             data: A,
             rules: Rules,
             customMessages?: ErrorMessages,

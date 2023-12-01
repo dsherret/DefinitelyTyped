@@ -4,7 +4,10 @@ import H = require("handlebars");
 /**
  * A simple templating utility, akin to envsubst, but using Handlebars for more complex logic.
  */
-declare function envhandlebars(opts?: envhandlebars.Options, cb?: envhandlebars.EnvHandlebarsCallback): void;
+declare function envhandlebars(
+    opts?: envhandlebars.Options,
+    cb?: envhandlebars.EnvHandlebarsCallback,
+): void;
 declare function envhandlebars(cb?: envhandlebars.EnvHandlebarsCallback): void;
 
 declare namespace envhandlebars {

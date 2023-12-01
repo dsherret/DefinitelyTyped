@@ -80,7 +80,10 @@ declare class Parallel<T> {
      * @param fail A function that gets called if the job fails.  The function is passed an error object.
      * @return Parallel instance.
      */
-    public then(success: (data: T) => void, fail?: (e: Error) => void): Parallel<T>;
+    public then(
+        success: (data: T) => void,
+        fail?: (e: Error) => void,
+    ): Parallel<T>;
 
     /**
      * If you have state that you want to share between your main thread and worker threads, this is how.  Require takes either a string or a function.  A string should point to a file name.  NOte that in order to use require with a file name as an argument, you have to provide the evalPath property in the options object.

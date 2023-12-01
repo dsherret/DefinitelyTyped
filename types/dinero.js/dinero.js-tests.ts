@@ -29,7 +29,7 @@ Dinero.globalExchangeRatesApi = {
                     USD: 1.337,
                 },
             },
-        })
+        }),
     ),
     propertyPath: "data.rates.{{to}}",
     roundingMode: "HALF_UP",
@@ -62,7 +62,7 @@ dinero = dinero.divide(2, "HALF_UP");
 dinero = dinero.percentage(50);
 dinero = dinero.percentage(50, "HALF_UP");
 dineroArr = dinero.allocate([50, 50]);
-dinero.convert("EUR").then(d => (dinero = d));
+dinero.convert("EUR").then((d) => (dinero = d));
 dinero.convert("XBT", {
     endpoint: "https://yourexchangerates.api/latest?base={{from}}",
     propertyPath: "data.rates.{{to}}",
@@ -95,11 +95,5 @@ dineroArr = Dinero.normalizePrecision([
     Dinero({ amount: 100, precision: 2 }),
     Dinero({ amount: 1000, precision: 3 }),
 ]);
-dinero = Dinero.minimum([
-    Dinero({ amount: 100 }),
-    Dinero({ amount: 1000 }),
-]);
-dinero = Dinero.maximum([
-    Dinero({ amount: 100 }),
-    Dinero({ amount: 1000 }),
-]);
+dinero = Dinero.minimum([Dinero({ amount: 100 }), Dinero({ amount: 1000 })]);
+dinero = Dinero.maximum([Dinero({ amount: 100 }), Dinero({ amount: 1000 })]);

@@ -96,17 +96,30 @@ export interface Options {
      * Minify CSS in style elements and style attributes
      * @default false
      */
-    minifyCSS?: boolean | object | ((text: string, type?: string) => string) | undefined;
+    minifyCSS?:
+        | boolean
+        | object
+        | ((text: string, type?: string) => string)
+        | undefined;
     /**
      * Minify JavaScript in script elements and event attributes
      * @default false
      */
-    minifyJS?: boolean | object | ((text: string, inline?: boolean) => string) | undefined;
+    minifyJS?:
+        | boolean
+        | object
+        | ((text: string, inline?: boolean) => string)
+        | undefined;
     /**
      * Minify URLs in various attributes
      * @default false
      */
-    minifyURLs?: boolean | string | object | ((text: string) => string) | undefined;
+    minifyURLs?:
+        | boolean
+        | string
+        | object
+        | ((text: string) => string)
+        | undefined;
     /**
      * Never add a newline before a tag that closes an element
      * @default false
@@ -152,7 +165,10 @@ export interface Options {
      * Remove all attributes with whitespace-only values
      * @default false
      */
-    removeEmptyAttributes?: boolean | ((attrName: string, tag: string) => boolean) | undefined;
+    removeEmptyAttributes?:
+        | boolean
+        | ((attrName: string, tag: string) => boolean)
+        | undefined;
     /**
      * Remove all elements with empty contents
      * @default false

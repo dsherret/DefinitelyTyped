@@ -16,7 +16,11 @@ declare namespace streamFeatures {
         use(
             name: string,
             xmlns: string | undefined,
-            handler: (ctx: IncomingContext<TEntity>, next: Koa.Next, feature: Element) => Promise<any>,
+            handler: (
+                ctx: IncomingContext<TEntity>,
+                next: Koa.Next,
+                feature: Element,
+            ) => Promise<any>,
         ): koaCompose.Middleware<IncomingContext<TEntity>>;
     }
 }

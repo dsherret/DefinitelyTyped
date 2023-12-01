@@ -45,7 +45,11 @@ class AntColony {
     ants: Loki.Collection<Ant>;
     queens: Loki.Collection<QueenAnt>;
 
-    constructor(location: EarthLocation, ants: Loki.Collection<Ant>, queens: Loki.Collection<QueenAnt>) {
+    constructor(
+        location: EarthLocation,
+        ants: Loki.Collection<Ant>,
+        queens: Loki.Collection<QueenAnt>,
+    ) {
         this.location = location;
         this.ants = ants;
         this.queens = queens;
@@ -68,11 +72,19 @@ class Test {
         }
 
         var collNames = lokiInst.listCollections().map((coll) => coll.name);
-        if (collNames.length != 2 || collNames.indexOf("ants") < 0 || collNames.indexOf("queenAnts") < 0) {
-            throw new Error("collections [" + collNames + "] does not equal expected ['ants', 'queenAnts']");
+        if (
+            collNames.length != 2 ||
+            collNames.indexOf("ants") < 0 ||
+            collNames.indexOf("queenAnts") < 0
+        ) {
+            throw new Error(
+                "collections [" +
+                    collNames +
+                    "] does not equal expected ['ants', 'queenAnts']",
+            );
         }
 
-        var firstQueenId = (<any> colony.queens.findOne({}))["$loki"];
+        var firstQueenId = (<any>colony.queens.findOne({}))["$loki"];
         if (firstQueenId == null || colony.queens.get(firstQueenId) == null) {
             throw new Error("queen object's '.$loki' property lookup failed");
         }
@@ -89,12 +101,12 @@ class Test {
 
         coll.on(
             "update",
-            onUpdate = function(target) {
+            (onUpdate = function (target) {
                 console.log("update", target);
-            },
+            }),
         );
 
-        coll.on("error", function(target) {
+        coll.on("error", function (target) {
             console.log("error", target);
         });
 
@@ -105,8 +117,8 @@ class Test {
 
     static insertUpdateRemove(lokiInst: Loki) {
         var coll = new Loki.Collection<Ant>("anotherCollection", {
-            unique: <["id"]> ["id"],
-            indices: <["dob"]> ["dob"],
+            unique: <["id"]>["id"],
+            indices: <["dob"]>["dob"],
             autoupdate: true,
         });
 
@@ -150,13 +162,13 @@ class Test {
         ]);
 
         var dv = users.addDynamicView("testview");
-        dv.applyWhere(function(obj) {
+        dv.applyWhere(function (obj) {
             return obj.name.length > 3;
         });
 
         console.log("expect 2 == " + dv.data().length);
 
-        users.removeWhere(function(obj: User) {
+        users.removeWhere(function (obj: User) {
             return obj.age > 35;
         });
 
@@ -165,14 +177,29 @@ class Test {
 
     static transform(lokiInst: Loki) {
         var ants = lokiInst.addCollection<Ant>("tmpAnts");
-        var len = ants.chain().transform(<Transform[]> [{ property: "id" }]).data().length;
-        ants.addTransform("tmpAnts", [{ type: "map", mapFun: (a: any) => a, desc: true }]);
+        var len = ants
+            .chain()
+            .transform(<Transform[]>[{ property: "id" }])
+            .data().length;
+        ants.addTransform("tmpAnts", [
+            { type: "map", mapFun: (a: any) => a, desc: true },
+        ]);
     }
 
-    static createAntColony(lokiInst: Loki, antCount: number, queenCount: number = 1) {
+    static createAntColony(
+        lokiInst: Loki,
+        antCount: number,
+        queenCount: number = 1,
+    ) {
         var ants = lokiInst.addCollection<Ant>("ants", { indices: "id" });
-        var queens = lokiInst.addCollection<QueenAnt>("queenAnts", { indices: "id" });
-        var antColony = new AntColony({ latitude: 0, longitude: 0 }, ants, queens);
+        var queens = lokiInst.addCollection<QueenAnt>("queenAnts", {
+            indices: "id",
+        });
+        var antColony = new AntColony(
+            { latitude: 0, longitude: 0 },
+            ants,
+            queens,
+        );
 
         for (var i = 0; i < antCount; i++) {
             ants.add(Ant.createAnt());

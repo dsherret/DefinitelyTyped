@@ -59,7 +59,14 @@ interface CanvasView extends HummerComponent {
      * @param endAngle 结束弧度 ，
      * @param clockwise ture 顺时针 ， false 逆时针
      */
-    arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, clockwise: boolean): void;
+    arc(
+        x: number,
+        y: number,
+        radius: number,
+        startAngle: number,
+        endAngle: number,
+        clockwise: boolean,
+    ): void;
     /**
      * 设置填充颜色
      * @param colorHex 颜色16进制
@@ -113,12 +120,18 @@ interface CanvasView extends HummerComponent {
      * @param width 图片宽 ,支持px，hm 单位， 如果不写单位就是dp
      * @param height 图片高 ,支持px，hm 单位， 如果不写单位就是dp
      */
-    drawImage(src: string, x: number, y: number, width: number, height: number): void;
+    drawImage(
+        src: string,
+        x: number,
+        y: number,
+        width: number,
+        height: number,
+    ): void;
 }
 declare const CanvasView: {
     prototype: CanvasView;
     /**
      * 画布组件，可用于绘制一些自定义图形，如：线段、矩形、圆形、椭圆、图片、文本等，从而实现复杂图形的展示。
      */
-    new(id?: string): CanvasView;
+    new (id?: string): CanvasView;
 };

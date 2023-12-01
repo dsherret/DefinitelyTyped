@@ -1,7 +1,13 @@
 /// <reference types="node" />
 
 type Stringifiable = NodeJS.Dict<
-    string | number | boolean | readonly string[] | readonly number[] | readonly boolean[] | null
+    | string
+    | number
+    | boolean
+    | readonly string[]
+    | readonly number[]
+    | readonly boolean[]
+    | null
 >;
 type Method = "GET" | "POST";
 
@@ -25,11 +31,13 @@ interface ReportOptions {
     timeout?: boolean | undefined;
     responseTime?: number[] | undefined;
     weight?: boolean | undefined;
-    graph?: {
-        dot?: string | undefined;
-        line?: string | undefined;
-        c2mem?: string | undefined;
-    } | undefined;
+    graph?:
+        | {
+              dot?: string | undefined;
+              line?: string | undefined;
+              c2mem?: string | undefined;
+          }
+        | undefined;
     type?: "json" | "plain" | "color" | undefined;
 }
 

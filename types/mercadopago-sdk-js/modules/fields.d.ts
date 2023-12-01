@@ -14,16 +14,34 @@ declare namespace fields {
         enableLuhnValidation?: boolean;
     }
 
-    type FieldsOptions<T> = T extends "cardNumber" ? CardNumberOptions
-        : T extends "securityCode" ? BaseFieldsOptions
-        : T extends "expirationMonth" ? BaseFieldsOptions
-        : T extends "expirationYear" ? DateYearFieldsOptions
-        : T extends "expirationDate" ? DateYearFieldsOptions
-        : never;
+    type FieldsOptions<T> = T extends "cardNumber"
+        ? CardNumberOptions
+        : T extends "securityCode"
+          ? BaseFieldsOptions
+          : T extends "expirationMonth"
+            ? BaseFieldsOptions
+            : T extends "expirationYear"
+              ? DateYearFieldsOptions
+              : T extends "expirationDate"
+                ? DateYearFieldsOptions
+                : never;
 
-    type FieldEvent = "blur" | "focus" | "change" | "ready" | "validityChange" | "error" | "binChange" | "paste";
+    type FieldEvent =
+        | "blur"
+        | "focus"
+        | "change"
+        | "ready"
+        | "validityChange"
+        | "error"
+        | "binChange"
+        | "paste";
 
-    type FieldName = "securityCode" | "cardNumber" | "expirationDate" | "expirationMonth" | "expirationYear";
+    type FieldName =
+        | "securityCode"
+        | "cardNumber"
+        | "expirationDate"
+        | "expirationMonth"
+        | "expirationYear";
 
     interface FieldsUpdatableProperties {
         style?: shared.FieldStyle;
@@ -55,31 +73,46 @@ declare namespace fields {
 
     interface ErrorMessage<FieldName> {
         message: string;
-        cause: FieldName extends "cardNumber" ? CardNumberCause
-            : FieldName extends "securityCode" ? SecurityCodeCause
-            : FieldName extends "expirationMonth" ? ExpirationDateCause
-            : FieldName extends "expirationYear" ? ExpirationYearCause
-            : FieldName extends "expirationDate" ? ExpirationDateCause
-            : never;
+        cause: FieldName extends "cardNumber"
+            ? CardNumberCause
+            : FieldName extends "securityCode"
+              ? SecurityCodeCause
+              : FieldName extends "expirationMonth"
+                ? ExpirationDateCause
+                : FieldName extends "expirationYear"
+                  ? ExpirationYearCause
+                  : FieldName extends "expirationDate"
+                    ? ExpirationDateCause
+                    : never;
     }
 
     interface ValidityChangeArg<FieldName> extends DefaultArg {
         errorMessages: ErrorMessage<FieldName[]>;
     }
 
-    type CallbackArgs<FieldEvent, FieldName> = FieldEvent extends "blur" ? DefaultArg
-        : FieldEvent extends "focus" ? DefaultArg
-        : FieldEvent extends "ready" ? DefaultArg
-        : FieldEvent extends "change" ? DefaultArg
-        : FieldEvent extends "validityChange" ? ValidityChangeArg<FieldName>
-        : FieldEvent extends "error" ? ErrorArg
-        : FieldEvent extends "binChange" ? BinChangeArg
-        : DefaultArg;
+    type CallbackArgs<FieldEvent, FieldName> = FieldEvent extends "blur"
+        ? DefaultArg
+        : FieldEvent extends "focus"
+          ? DefaultArg
+          : FieldEvent extends "ready"
+            ? DefaultArg
+            : FieldEvent extends "change"
+              ? DefaultArg
+              : FieldEvent extends "validityChange"
+                ? ValidityChangeArg<FieldName>
+                : FieldEvent extends "error"
+                  ? ErrorArg
+                  : FieldEvent extends "binChange"
+                    ? BinChangeArg
+                    : DefaultArg;
 
     interface Field {
         mount: (container: string) => void;
         unmount: () => void;
-        on: <FieldEvent>(event: FieldEvent, callback: (args: CallbackArgs<FieldEvent, FieldName>) => void) => void;
+        on: <FieldEvent>(
+            event: FieldEvent,
+            callback: (args: CallbackArgs<FieldEvent, FieldName>) => void,
+        ) => void;
         update: (properties: FieldsUpdatableProperties) => void;
         focus: () => void;
         blur: () => void;
@@ -94,11 +127,11 @@ declare namespace fields {
 
     type OptionsToken =
         | {
-            group: string;
-            productId?: string;
-            fingerprint?: unknown;
-            requireEsc?: boolean;
-        }
+              group: string;
+              productId?: string;
+              fingerprint?: unknown;
+              requireEsc?: boolean;
+          }
         | string
         | undefined;
 
@@ -108,6 +141,9 @@ declare namespace fields {
             nonPCIData: FieldsCardTokenParams,
             options: OptionsToken,
         ): Promise<shared.CardTokenResponse | undefined>;
-        updateCardToken(token: string, options: OptionsToken): Promise<shared.CardTokenResponse | undefined>;
+        updateCardToken(
+            token: string,
+            options: OptionsToken,
+        ): Promise<shared.CardTokenResponse | undefined>;
     }
 }

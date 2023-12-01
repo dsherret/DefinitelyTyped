@@ -1,6 +1,10 @@
 import { GraphQLResolveInfo } from "graphql";
 
-declare function graphqlFields(info: GraphQLResolveInfo, obj?: object, opts?: graphqlFields.Options): any;
+declare function graphqlFields(
+    info: GraphQLResolveInfo,
+    obj?: object,
+    opts?: graphqlFields.Options,
+): any;
 
 declare namespace graphqlFields {
     interface Options {

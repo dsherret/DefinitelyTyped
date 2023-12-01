@@ -15,6 +15,7 @@ export interface ColorSchemesOptions {
     custom?: ((schemeColors: string[]) => string[] | void) | undefined;
 }
 
-declare const ColorSchemesPlugin: Chart.PluginServiceGlobalRegistration & Chart.PluginServiceRegistrationOptions;
+declare const ColorSchemesPlugin: Chart.PluginServiceGlobalRegistration &
+    Chart.PluginServiceRegistrationOptions;
 
 export default ColorSchemesPlugin;

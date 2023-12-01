@@ -7,7 +7,12 @@ import { CertifiedAppInfo } from "./certifiedAppInfo";
 import { ClearCacheOption } from "./clearCacheOption";
 import { CookieInfo, CookieOption } from "./cookie";
 import { CrashReporterOption } from "./crashReporterOption";
-import { AppAssetInfo, AppAssetRequest, RuntimeDownloadOptions, RuntimeDownloadProgress } from "./download-asset";
+import {
+    AppAssetInfo,
+    AppAssetRequest,
+    RuntimeDownloadOptions,
+    RuntimeDownloadProgress,
+} from "./download-asset";
 import { DownloadPreloadInfo, DownloadPreloadOption } from "./download-preload";
 import { Entity, EntityInfo } from "./entity";
 import {
@@ -519,7 +524,9 @@ export default class System extends EmitterBase<SystemEvents> {
      * @return {Promise.<CrashReporterOption>}
      * @tutorial System.startCrashReporter
      */
-    startCrashReporter(options: CrashReporterOption): Promise<CrashReporterOption>;
+    startCrashReporter(
+        options: CrashReporterOption,
+    ): Promise<CrashReporterOption>;
     /**
      * Returns a hex encoded hash of the mac address and the currently logged in user name
      * @return {Promise.<string>}
@@ -652,7 +659,9 @@ export default class System extends EmitterBase<SystemEvents> {
      * @return {Promise.<Identity>}
      * @tutorial System.launchExternalProcess
      */
-    launchExternalProcess(options: ExternalProcessRequestType): Promise<Identity>;
+    launchExternalProcess(
+        options: ExternalProcessRequestType,
+    ): Promise<Identity>;
     /**
      * Monitors a running process. A pid for the process must be included in options.
      * <br> A uuid may be optionally provided. If not provided, OpenFin will create a uuid for the new process.
@@ -700,7 +709,9 @@ export default class System extends EmitterBase<SystemEvents> {
      * @return {Promise.<void>}
      * @tutorial System.terminateExternalProcess
      */
-    terminateExternalProcess(options: TerminateExternalRequestType): Promise<void>;
+    terminateExternalProcess(
+        options: TerminateExternalRequestType,
+    ): Promise<void>;
     /**
      * Update the OpenFin Runtime Proxy settings.
      * @param { ProxyConfig } options A config object defined in the ProxyConfig interface
@@ -716,7 +727,10 @@ export default class System extends EmitterBase<SystemEvents> {
      * @return {Promise.<void>}
      * @tutorial System.downloadAsset
      */
-    downloadAsset(appAsset: AppAssetInfo, progressListener: (progress: RuntimeDownloadProgress) => void): Promise<void>;
+    downloadAsset(
+        appAsset: AppAssetInfo,
+        progressListener: (progress: RuntimeDownloadProgress) => void,
+    ): Promise<void>;
     /**
      * Downloads a version of the runtime.
      * @param { RuntimeDownloadOptions } options - Download options.
@@ -734,7 +748,9 @@ export default class System extends EmitterBase<SystemEvents> {
      * @return {Promise.Array<DownloadPreloadInfo>}
      * @tutorial System.downloadPreloadScripts
      */
-    downloadPreloadScripts(scripts: DownloadPreloadOption[]): Promise<DownloadPreloadInfo[]>;
+    downloadPreloadScripts(
+        scripts: DownloadPreloadOption[],
+    ): Promise<DownloadPreloadInfo[]>;
     /**
      * Retrieves an array of data (name, ids, bounds) for all application windows.
      * @return {Promise.Array.<Identity>}
@@ -796,7 +812,11 @@ export default class System extends EmitterBase<SystemEvents> {
      * @return {Promise.<RegistryInfo>}
      * @tutorial System.readRegistryValue
      */
-    readRegistryValue(rootKey: string, subkey: string, value: string): Promise<RegistryInfo>;
+    readRegistryValue(
+        rootKey: string,
+        subkey: string,
+        value: string,
+    ): Promise<RegistryInfo>;
     /**
      * This function call will register a unique id and produce a token.
      * The token can be used to broker an external connection.
@@ -813,7 +833,9 @@ export default class System extends EmitterBase<SystemEvents> {
      * @return {Promise.<ServiceConfiguration>}
      * @tutorial System.getServiceConfiguration
      */
-    getServiceConfiguration(serviceIdentifier: ServiceIdentifier): Promise<ServiceConfiguration>;
+    getServiceConfiguration(
+        serviceIdentifier: ServiceIdentifier,
+    ): Promise<ServiceConfiguration>;
     /**
      * Signals the RVM to perform a health check and returns the results as json.
      * @return {Promise.<string[]>}

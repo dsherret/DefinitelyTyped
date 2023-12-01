@@ -126,7 +126,11 @@ declare module "hapi" {
          *  * an object with one or more of the following options @see IFileHandler
          * @see {@link https://github.com/hapijs/inert#the-file-handler}
          */
-        file?: string | inert.RequestHandler<string> | inert.FileHandlerRouteObject | undefined;
+        file?:
+            | string
+            | inert.RequestHandler<string>
+            | inert.FileHandlerRouteObject
+            | undefined;
         /**
          * The directory handler
          *
@@ -140,12 +144,14 @@ declare module "hapi" {
          * @see {@link https://github.com/hapijs/inert#the-directory-handler}
          */
         directory?: inert.DirectoryHandlerRouteObject | undefined;
-        files?: {
-            /**
-             * Set the relative path
-             */
-            relativeTo: string;
-        } | undefined;
+        files?:
+            | {
+                  /**
+                   * Set the relative path
+                   */
+                  relativeTo: string;
+              }
+            | undefined;
     }
 
     interface ResponseToolkit {
@@ -153,6 +159,9 @@ declare module "hapi" {
          * Transmits a file from the file system. The 'Content-Type' header defaults to the matching mime type based on filename extension.
          * @see {@link https://github.com/hapijs/inert#replyfilepath-options}
          */
-        file(path: string, options?: inert.ReplyFileHandlerOptions): ResponseObject;
+        file(
+            path: string,
+            options?: inert.ReplyFileHandlerOptions,
+        ): ResponseObject;
     }
 }

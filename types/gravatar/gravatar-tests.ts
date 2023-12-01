@@ -21,4 +21,6 @@ gravatar.profile_url("emerleite@gmail.com", { protocol: false });
 gravatar.profile_url("emerleite@gmail.com", { protocol: true });
 gravatar.profile_url("emerleite@gmail.com", { protocol: "http", format: "qr" });
 gravatar.url("email@example.com", { cdn: "http://cdn-gravatar.wuweixing.com" });
-gravatar.profile_url("email@example.com", { cdn: "http://cdn-gravatar.wuweixing.com" });
+gravatar.profile_url("email@example.com", {
+    cdn: "http://cdn-gravatar.wuweixing.com",
+});

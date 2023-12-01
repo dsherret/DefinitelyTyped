@@ -34,7 +34,10 @@ interface StateManagementChartComponentState {
     frames: Plotly.Frame[] | null;
 }
 
-class StateManagementChartComponent extends React.Component<{}, StateManagementChartComponentState> {
+class StateManagementChartComponent extends React.Component<
+    {},
+    StateManagementChartComponentState
+> {
     constructor(props: {}) {
         super(props);
         this.state = { data: [], layout: {}, frames: [] };
@@ -46,8 +49,8 @@ class StateManagementChartComponent extends React.Component<{}, StateManagementC
                 data={this.state.data}
                 layout={this.state.layout}
                 frames={this.state.frames || undefined}
-                onInitialized={figure => this.setState(figure)}
-                onUpdate={figure => this.setState(figure)}
+                onInitialized={(figure) => this.setState(figure)}
+                onUpdate={(figure) => this.setState(figure)}
             />
         );
     }
@@ -89,8 +92,8 @@ export const HoverPlot = () => {
                 },
             ]}
             layout={{ width: 320, height: 240, title: "A Fancy Plot" }}
-            onHover={e => console.log(e)}
-            onBeforeHover={e => Boolean(e.points[0].x === 1)}
+            onHover={(e) => console.log(e)}
+            onBeforeHover={(e) => Boolean(e.points[0].x === 1)}
         />
     );
 };
@@ -106,7 +109,7 @@ export const WebGLPlot = () => {
                 },
             ]}
             layout={{ width: 320, height: 240, title: "A Fancy Plot" }}
-            onHover={e => console.log(e)}
+            onHover={(e) => console.log(e)}
             onWebGlContextLost={() => console.log("WebGL context lost")}
         />
     );

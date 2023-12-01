@@ -11,9 +11,11 @@ import JsReportPdfUtils = require("jsreport-pdf-utils");
                 content: "",
                 recipe: "docx",
                 engine: "handlebars",
-                pdfOperations: [{
-                    type: "merge",
-                }],
+                pdfOperations: [
+                    {
+                        type: "merge",
+                    },
+                ],
             },
         });
     } catch (e) {

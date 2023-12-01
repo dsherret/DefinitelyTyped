@@ -96,7 +96,10 @@ export interface IndicatorOptions {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export type ScrollTarget = (newScrollPos: number, ...args: any[]) => void | number | ElementOrSelector | object;
+export type ScrollTarget = (
+    newScrollPos: number,
+    ...args: any[]
+) => void | number | ElementOrSelector | object;
 
 export interface ControllerInfo {
     size: number;
@@ -107,7 +110,13 @@ export interface ControllerInfo {
     isDocument: boolean;
 }
 
-export type InfoOption = "size" | "vertical" | "scrollPos" | "scrollDirection" | "container" | "isDocument";
+export type InfoOption =
+    | "size"
+    | "vertical"
+    | "scrollPos"
+    | "scrollDirection"
+    | "container"
+    | "isDocument";
 
 export interface ControllerConstructorOptions {
     container?: string | Element | undefined;
@@ -146,9 +155,15 @@ export class Scene {
     // leads to errors (the compiler tries to match the event interfaces rather than
     // treating the generic Event interface as an abstract base interface
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    off<T extends Event<EventType>>(events: string, callback: (event: T) => any): Scene;
+    off<T extends Event<EventType>>(
+        events: string,
+        callback: (event: T) => any,
+    ): Scene;
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    on<T extends Event<EventType>>(events: string, callback: (event: T) => any): Scene;
+    on<T extends Event<EventType>>(
+        events: string,
+        callback: (event: T) => any,
+    ): Scene;
     trigger(name: string, vars?: object): Scene;
 
     /* Control Methods */
@@ -179,12 +194,17 @@ export class Controller {
     loglevel(): LogLevel;
     scrollPos(calcFn: () => number): Controller;
     scrollPos(): number;
-    info(about?: InfoOption): ControllerInfo | number | string | boolean | Element | null;
+    info(
+        about?: InfoOption,
+    ): ControllerInfo | number | string | boolean | Element | null;
     /* Control Methods */
     addScene: (newScene: Scene) => Controller;
     destroy: (resetScenes: boolean) => void;
     removeScene: (newScene: Scene) => Controller;
-    scrollTo: (scrollTarget: ScrollTarget, additionalParameter?: any[]) => Controller;
+    scrollTo: (
+        scrollTarget: ScrollTarget,
+        additionalParameter?: any[],
+    ) => Controller;
     update: (immediately?: boolean) => Controller;
     updateScene: (scene: Scene, immediately?: boolean) => Controller;
 }

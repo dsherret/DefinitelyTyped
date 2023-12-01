@@ -20,6 +20,7 @@ interface OkhslDefinitionMixin {
     };
 }
 
-declare const modeOkhsl: Omit<typeof modeHsl, keyof OkhslDefinitionMixin> & OkhslDefinitionMixin;
+declare const modeOkhsl: Omit<typeof modeHsl, keyof OkhslDefinitionMixin> &
+    OkhslDefinitionMixin;
 
 export default modeOkhsl;

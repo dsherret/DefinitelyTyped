@@ -12,7 +12,8 @@ timers.clearTimeout(lolexTimeout);
 timers.clearInterval(lolexInterval);
 timers.clearImmediate(lolexImmediate);
 
-let browserClock: lolex.BrowserClock = lolex.createClock() as lolex.BrowserClock;
+let browserClock: lolex.BrowserClock =
+    lolex.createClock() as lolex.BrowserClock;
 let nodeClock: lolex.NodeClock = lolex.createClock() as lolex.NodeClock;
 
 browserClock = lolex.createClock<lolex.BrowserClock>();
@@ -58,15 +59,25 @@ const nodeDate: Date = new nodeClock.Date();
 const browserTimeout: number = browserClock.setTimeout(() => {}, 7);
 const browserInterval: number = browserClock.setInterval(() => {}, 7);
 const browserImmediate: number = browserClock.setImmediate(() => {});
-const browserAnimationFrame: number = browserClock.requestAnimationFrame(() => {});
+const browserAnimationFrame: number = browserClock.requestAnimationFrame(
+    () => {},
+);
 const browserIdleCallback: number = browserClock.requestIdleCallback(() => {});
-const browserIdleCallbackWithTimeout: number = browserClock.requestIdleCallback(() => {}, 7);
+const browserIdleCallbackWithTimeout: number = browserClock.requestIdleCallback(
+    () => {},
+    7,
+);
 const nodeTimeout: lolex.NodeTimer = nodeClock.setTimeout(() => {}, 7);
 const nodeInterval: lolex.NodeTimer = nodeClock.setInterval(() => {}, 7);
 const nodeImmediate: lolex.NodeTimer = nodeClock.setImmediate(() => {});
-const nodeAnimationFrame: lolex.NodeTimer = nodeClock.requestAnimationFrame(() => {});
-const nodeIdleCallback: lolex.NodeTimer = nodeClock.requestIdleCallback(() => {});
-const nodeIdleCallbackWithTimeout: lolex.NodeTimer = nodeClock.requestIdleCallback(() => {}, 7);
+const nodeAnimationFrame: lolex.NodeTimer = nodeClock.requestAnimationFrame(
+    () => {},
+);
+const nodeIdleCallback: lolex.NodeTimer = nodeClock.requestIdleCallback(
+    () => {},
+);
+const nodeIdleCallbackWithTimeout: lolex.NodeTimer =
+    nodeClock.requestIdleCallback(() => {}, 7);
 
 nodeTimeout.ref();
 nodeTimeout.unref();

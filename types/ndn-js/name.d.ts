@@ -12,7 +12,12 @@ export type CompareResult = -1 | 0 | 1;
 export namespace Name {
     class Component {
         constructor(
-            value?: readonly number[] | ArrayBuffer | Uint8Array | string | Blob,
+            value?:
+                | readonly number[]
+                | ArrayBuffer
+                | Uint8Array
+                | string
+                | Blob,
             type?: ComponentType,
             otherTypeCode?: number,
         );
@@ -31,7 +36,11 @@ export namespace Name {
         isParametersSha256Digest(): boolean;
         toEscapedString(): string;
 
-        static fromNumber(number: number, type?: ComponentType, otherTypeCode?: number): Component;
+        static fromNumber(
+            number: number,
+            type?: ComponentType,
+            otherTypeCode?: number,
+        ): Component;
         static fromNumberWithMarker(number: number, marker: number): Component;
         static fromSegment(segment: number): Component;
         static fromSegmentOffset(segmentOffset: number): Component;

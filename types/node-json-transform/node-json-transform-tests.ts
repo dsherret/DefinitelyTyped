@@ -1,10 +1,13 @@
 import { transform } from "node-json-transform";
 
 // Using transform method to convert the given json to expected json
-transform({
-    text: "hello",
-}, {
-    item: {
-        message: "text",
+transform(
+    {
+        text: "hello",
     },
-}); // Result: { message: "hello" }
+    {
+        item: {
+            message: "text",
+        },
+    },
+); // Result: { message: "hello" }

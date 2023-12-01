@@ -5,7 +5,12 @@ export as namespace feather;
 
 export type FeatherIconNames = keyof typeof genIcons;
 export type FeatherStrokeLineCap = "butt" | "round" | "square";
-export type FeatherStrokeLineJoin = "arcs" | "bevel" | "miter" | "miter-clip" | "round";
+export type FeatherStrokeLineJoin =
+    | "arcs"
+    | "bevel"
+    | "miter"
+    | "miter-clip"
+    | "round";
 
 type FeatherToSvg = (options?: Partial<FeatherAttributes>) => string;
 

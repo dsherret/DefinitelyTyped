@@ -4,5 +4,9 @@
  * `EDITOR` environment variables. For example, you can put `REACT_EDITOR=atom`
  * in your `.env.local` file, and Create React App will respect that.
  */
-declare function launchEditor(fileName: string, lineNumber: number, colNumber?: number): void;
+declare function launchEditor(
+    fileName: string,
+    lineNumber: number,
+    colNumber?: number,
+): void;
 export = launchEditor;

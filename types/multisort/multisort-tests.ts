@@ -143,10 +143,10 @@ const input6: Array<{ func: () => any }> = [
 multisort(input6, "func()?");
 multisort(input6, "func?");
 
-multisort(input1, [a => a % 2, a => a % 3, a => a]);
+multisort(input1, [(a) => a % 2, (a) => a % 3, (a) => a]);
 multisort(gameShowHosts, ["~fame", "retired", "name.last"]);
 
-const sorter = multisort<number>([a => a % 2, a => a % 3, a => a]);
+const sorter = multisort<number>([(a) => a % 2, (a) => a % 3, (a) => a]);
 sorter(input1);
 
 const comparator = sorter.comparator;

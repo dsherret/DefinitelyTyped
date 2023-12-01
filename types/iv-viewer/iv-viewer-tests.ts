@@ -1,4 +1,8 @@
-import ImageViewer, { FullScreenViewer, ImageViewer as DestructuredImageViewer, Options } from "iv-viewer";
+import ImageViewer, {
+    FullScreenViewer,
+    ImageViewer as DestructuredImageViewer,
+    Options,
+} from "iv-viewer";
 
 const iv = new ImageViewer(new Element());
 iv.destroy(); // $ExpectType void

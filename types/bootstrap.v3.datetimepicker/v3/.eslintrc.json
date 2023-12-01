@@ -1,5 +1,5 @@
 {
-    "rules": {
-        "@typescript-eslint/adjacent-overload-signatures": "off"
-    }
+  "rules": {
+    "@typescript-eslint/adjacent-overload-signatures": "off"
+  }
 }

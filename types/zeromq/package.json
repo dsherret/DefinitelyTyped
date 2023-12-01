@@ -1,28 +1,28 @@
 {
-    "private": true,
-    "name": "@types/zeromq",
-    "version": "5.2.9999",
-    "projects": [
-        "https://github.com/zeromq/zeromq.js"
-    ],
-    "dependencies": {
-        "@types/node": "*"
+  "private": true,
+  "name": "@types/zeromq",
+  "version": "5.2.9999",
+  "projects": [
+    "https://github.com/zeromq/zeromq.js"
+  ],
+  "dependencies": {
+    "@types/node": "*"
+  },
+  "devDependencies": {
+    "@types/zeromq": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Dave McKeown",
+      "githubUsername": "davemckeown"
     },
-    "devDependencies": {
-        "@types/zeromq": "workspace:."
+    {
+      "name": "Philippe D'Alva",
+      "githubUsername": "TitaneBoy"
     },
-    "owners": [
-        {
-            "name": "Dave McKeown",
-            "githubUsername": "davemckeown"
-        },
-        {
-            "name": "Philippe D'Alva",
-            "githubUsername": "TitaneBoy"
-        },
-        {
-            "name": "Nika Gogeshvili",
-            "githubUsername": "overflowz"
-        }
-    ]
+    {
+      "name": "Nika Gogeshvili",
+      "githubUsername": "overflowz"
+    }
+  ]
 }

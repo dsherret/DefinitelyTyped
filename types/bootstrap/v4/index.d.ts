@@ -121,7 +121,11 @@ export interface DropdownOption {
      *
      * @default 0
      */
-    offset?: number | string | ((this: DropdownOption, offset: OffsetsExtend) => OffsetsExtend) | undefined;
+    offset?:
+        | number
+        | string
+        | ((this: DropdownOption, offset: OffsetsExtend) => OffsetsExtend)
+        | undefined;
 
     /**
      * Allow Dropdown to flip in case of an overlapping on the reference element.
@@ -195,7 +199,12 @@ export interface PopoverOption extends TooltipOption {
      *
      * @default ""
      */
-    content?: string | Element | JQuery | ((this: Element) => string | Element | JQuery) | undefined;
+    content?:
+        | string
+        | Element
+        | JQuery
+        | ((this: Element) => string | Element | JQuery)
+        | undefined;
 }
 
 export interface ScrollspyOption {
@@ -297,7 +306,11 @@ export interface TooltipOption {
      */
     placement?:
         | Placement
-        | ((this: TooltipInstance<this>, node: HTMLElement, trigger: Element) => Placement)
+        | ((
+              this: TooltipInstance<this>,
+              node: HTMLElement,
+              trigger: Element,
+          ) => Placement)
         | undefined;
 
     /**
@@ -326,7 +339,12 @@ export interface TooltipOption {
      *
      * @default ""
      */
-    title?: string | Element | JQuery | ((this: Element) => string | Element | JQuery) | undefined;
+    title?:
+        | string
+        | Element
+        | JQuery
+        | ((this: Element) => string | Element | JQuery)
+        | undefined;
 
     /**
      * How tooltip or popover is triggered - click | hover | focus | manual. You may pass multiple triggers; separate them with a space.
@@ -351,7 +369,10 @@ export interface TooltipOption {
      *
      * @default "flip"
      */
-    fallbackPlacement?: Popper.Behavior | readonly Popper.Behavior[] | undefined;
+    fallbackPlacement?:
+        | Popper.Behavior
+        | readonly Popper.Behavior[]
+        | undefined;
 
     /**
      * Add classes to the tooltip when it is shown. Note that these classes will be added in addition to any classes specified in the template.
@@ -402,8 +423,12 @@ export interface TooltipOption {
 // --------------------------------------------------------------------------------------
 
 export interface CarouselEventHandler<TElement>
-    extends JQuery.TriggeredEvent<TElement, undefined, HTMLElement, HTMLElement>
-{
+    extends JQuery.TriggeredEvent<
+        TElement,
+        undefined,
+        HTMLElement,
+        HTMLElement
+    > {
     /**
      * The carousel dom element.
      */
@@ -431,8 +456,12 @@ export interface CarouselEventHandler<TElement>
 }
 
 export interface DropdownsEventHandler<TElement>
-    extends JQuery.TriggeredEvent<TElement, undefined, HTMLElement, HTMLElement>
-{
+    extends JQuery.TriggeredEvent<
+        TElement,
+        undefined,
+        HTMLElement,
+        HTMLElement
+    > {
     /**
      * The the dropdown's toggle and the dropdown menu container (the `.dropdown` element).
      */
@@ -445,8 +474,12 @@ export interface DropdownsEventHandler<TElement>
 }
 
 export interface ModalEventHandler<TElement>
-    extends JQuery.TriggeredEvent<TElement, undefined, HTMLElement, HTMLElement>
-{
+    extends JQuery.TriggeredEvent<
+        TElement,
+        undefined,
+        HTMLElement,
+        HTMLElement
+    > {
     /**
      * The modal dom element.
      */
@@ -460,8 +493,12 @@ export interface ModalEventHandler<TElement>
 }
 
 export interface TapEventHandler<TElement>
-    extends JQuery.TriggeredEvent<TElement, undefined, HTMLElement, HTMLElement>
-{
+    extends JQuery.TriggeredEvent<
+        TElement,
+        undefined,
+        HTMLElement,
+        HTMLElement
+    > {
     /**
      * * For `show.bs.tab` and `shown.bs.tab`, is the newly activated tab.
      * * For `hide.bs.tab`, is the current active tab.
@@ -479,8 +516,16 @@ export interface TapEventHandler<TElement>
 
 export type AlertEvent = "close.bs.alert" | "closed.bs.alert";
 export type CarouselEvent = "slide.bs.carousel" | "slid.bs.carousel";
-export type CollapseEvent = "show.bs.collapse" | "shown.bs.collapse" | "hide.bs.collapse" | "hidden.bs.collapse";
-export type DropdownEvent = "show.bs.dropdown" | "shown.bs.dropdown" | "hide.bs.dropdown" | "hidden.bs.dropdown";
+export type CollapseEvent =
+    | "show.bs.collapse"
+    | "shown.bs.collapse"
+    | "hide.bs.collapse"
+    | "hidden.bs.collapse";
+export type DropdownEvent =
+    | "show.bs.dropdown"
+    | "shown.bs.dropdown"
+    | "hide.bs.dropdown"
+    | "hidden.bs.dropdown";
 export type ModalEvent =
     | "show.bs.modal"
     | "shown.bs.modal"
@@ -494,8 +539,16 @@ export type PopoverEvent =
     | "hidden.bs.popover"
     | "inserted.bs.popover";
 export type ScrollspyEvent = "activate.bs.scrollspy";
-export type TapEvent = "show.bs.tab" | "shown.bs.tab" | "hide.bs.tab" | "hidden.bs.tab";
-export type ToastEvent = "show.bs.toast" | "shown.bs.toast" | "hide.bs.toast" | "hidden.bs.toast";
+export type TapEvent =
+    | "show.bs.tab"
+    | "shown.bs.tab"
+    | "hide.bs.tab"
+    | "hidden.bs.tab";
+export type ToastEvent =
+    | "show.bs.toast"
+    | "shown.bs.toast"
+    | "hide.bs.toast"
+    | "hidden.bs.toast";
 export type TooltipEvent =
     | "show.bs.tooltip"
     | "shown.bs.tooltip"
@@ -536,7 +589,9 @@ declare global {
          *
          * Returns to the caller before the target item has been shown (i.e. before the `slid.bs.carousel` event occurs).
          */
-        carousel(action: "cycle" | "pause" | number | "prev" | "next" | "dispose"): this;
+        carousel(
+            action: "cycle" | "pause" | number | "prev" | "next" | "dispose",
+        ): this;
         /**
          * Initializes the carousel and starts cycling through items.
          */
@@ -565,7 +620,9 @@ declare global {
          * * `update` – Updates the position of an element's dropdown.
          * * `dispose` – Destroys an element's dropdown.
          */
-        dropdown(action: "toggle" | "show" | "hide" | "update" | "dispose"): this;
+        dropdown(
+            action: "toggle" | "show" | "hide" | "update" | "dispose",
+        ): this;
         /**
          * Toggle contextual overlays for displaying lists of links.
          *
@@ -583,7 +640,9 @@ declare global {
          *
          * Returns to the caller before the modal has actually been shown or hidden (i.e. before the `shown.bs.modal` or `hidden.bs.modal` event occurs).
          */
-        modal(action: "toggle" | "show" | "hide" | "handleUpdate" | "dispose"): this;
+        modal(
+            action: "toggle" | "show" | "hide" | "handleUpdate" | "dispose",
+        ): this;
         /**
          * Activates a content as a modal.
          */
@@ -605,7 +664,15 @@ declare global {
          * This is considered a "manual" triggering of the popover.
          */
         popover(
-            action: "show" | "hide" | "toggle" | "dispose" | "enable" | "disable" | "toggleEnabled" | "update",
+            action:
+                | "show"
+                | "hide"
+                | "toggle"
+                | "dispose"
+                | "enable"
+                | "disable"
+                | "toggleEnabled"
+                | "update",
         ): this;
         /**
          * Initializes popovers for an element collection.
@@ -672,19 +739,57 @@ $('[data-spy="scroll"]').each(function () {
          * This is considered a "manual" triggering of the tooltip.
          */
         tooltip(
-            action: "show" | "hide" | "toggle" | "dispose" | "enable" | "disable" | "toggleEnabled" | "update",
+            action:
+                | "show"
+                | "hide"
+                | "toggle"
+                | "dispose"
+                | "enable"
+                | "disable"
+                | "toggleEnabled"
+                | "update",
         ): this;
         /**
          * Attaches a tooltip handler to an element collection.
          */
         tooltip(options?: TooltipOption): this;
 
-        on(events: CarouselEvent, handler: JQuery.EventHandlerBase<TElement, CarouselEventHandler<TElement>>): this;
-        on(events: DropdownEvent, handler: JQuery.EventHandlerBase<TElement, DropdownsEventHandler<TElement>>): this;
-        on(events: ModalEvent, handler: JQuery.EventHandlerBase<TElement, ModalEventHandler<TElement>>): this;
-        on(events: TapEvent, handler: JQuery.EventHandlerBase<TElement, TapEventHandler<TElement>>): this;
         on(
-            events: AlertEvent | CollapseEvent | PopoverEvent | ScrollspyEvent | ToastEvent | TooltipEvent,
+            events: CarouselEvent,
+            handler: JQuery.EventHandlerBase<
+                TElement,
+                CarouselEventHandler<TElement>
+            >,
+        ): this;
+        on(
+            events: DropdownEvent,
+            handler: JQuery.EventHandlerBase<
+                TElement,
+                DropdownsEventHandler<TElement>
+            >,
+        ): this;
+        on(
+            events: ModalEvent,
+            handler: JQuery.EventHandlerBase<
+                TElement,
+                ModalEventHandler<TElement>
+            >,
+        ): this;
+        on(
+            events: TapEvent,
+            handler: JQuery.EventHandlerBase<
+                TElement,
+                TapEventHandler<TElement>
+            >,
+        ): this;
+        on(
+            events:
+                | AlertEvent
+                | CollapseEvent
+                | PopoverEvent
+                | ScrollspyEvent
+                | ToastEvent
+                | TooltipEvent,
             handler: JQuery.EventHandler<TElement>,
         ): this;
     }

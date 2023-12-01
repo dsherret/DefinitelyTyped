@@ -16,7 +16,12 @@ import {
     scheduleOnce,
     throttle,
 } from "@ember/runloop";
-import { Backburner, DebugInfo, DeferredActionQueues, QueueItem } from "@ember/runloop/-private/backburner";
+import {
+    Backburner,
+    DebugInfo,
+    DeferredActionQueues,
+    QueueItem,
+} from "@ember/runloop/-private/backburner";
 
 // It will be the responsibility of each consuming package that needs access to the backburner property
 // to merge the private types in the public API.
@@ -25,7 +30,8 @@ declare module "@ember/runloop" {
 }
 
 function testRun() {
-    run(() => { // $ExpectType number
+    run(() => {
+        // $ExpectType number
         // code to be executed within a RunLoop
         return 123;
     });
@@ -55,7 +61,7 @@ function testRun() {
 
     function destroyApp(application: EmberObject) {
         run(application, "destroy");
-        run(application, function() {
+        run(application, function () {
             this.destroy();
         });
     }
@@ -97,9 +103,13 @@ function testCancel() {
 
     const aSimpleNext = next((name: string) => name.length, "hello");
 
-    const runLater = later(myContext, () => {
-        // will not be executed
-    }, 500);
+    const runLater = later(
+        myContext,
+        () => {
+            // will not be executed
+        },
+        500,
+    );
 
     cancel(runLater);
 
@@ -109,7 +119,13 @@ function testCancel() {
 
     cancel(runScheduleOnce);
 
-    const anotherScheduleOnce = scheduleOnce("render", myContext, "method", "hello", 123);
+    const anotherScheduleOnce = scheduleOnce(
+        "render",
+        myContext,
+        "method",
+        "hello",
+        123,
+    );
 
     const aBadScheduleOnce =
         // @ts-expect-error
@@ -133,15 +149,26 @@ function testCancel() {
     cancel(throttled);
 
     const aGoodThrottled = throttle(myContext, "method", "hello", 123, 1_000);
-    const anotherGoodThrottled = throttle(myContext, "method", "hello", 123, 1_000, true);
+    const anotherGoodThrottled = throttle(
+        myContext,
+        "method",
+        "hello",
+        123,
+        1_000,
+        true,
+    );
     // @ts-expect-error
     const aBadThrottled = throttle(myContext, "method", 1_000);
     // @ts-expect-error
     const anotherBadThrottled = throttle(myContext, "method", false, {}, 1_000);
 
-    const debounced = debounce(myContext, () => {
-        // will not be executed
-    }, 1);
+    const debounced = debounce(
+        myContext,
+        () => {
+            // will not be executed
+        },
+        1,
+    );
 
     cancel(debounced);
 
@@ -159,8 +186,7 @@ function testCancel() {
 }
 
 function testDebounce() {
-    function runIt() {
-    }
+    function runIt() {}
 
     const myContext = { name: "debounce" };
 
@@ -175,7 +201,12 @@ function testDebounce() {
         actions: {
             handleTyping() {
                 // the fetchResults function is passed into the component from its parent
-                debounce(this, this.get("fetchResults"), this.get("searchValue"), 250);
+                debounce(
+                    this,
+                    this.get("fetchResults"),
+                    this.get("searchValue"),
+                    250,
+                );
             },
         },
     });
@@ -207,9 +238,13 @@ function testJoin() {
 
 function testLater() {
     const myContext = {};
-    later(myContext, () => {
-        // code here will execute within a RunLoop in about 500ms with this == myContext
-    }, 500);
+    later(
+        myContext,
+        () => {
+            // code here will execute within a RunLoop in about 500ms with this == myContext
+        },
+        500,
+    );
 }
 
 function testNext() {
@@ -230,8 +265,7 @@ function testOnce() {
             once(this, "processFullName");
         },
 
-        processFullName() {
-        },
+        processFullName() {},
     });
 }
 
@@ -272,8 +306,7 @@ function testScheduleOnce() {
 }
 
 function testThrottle() {
-    function runIt() {
-    }
+    function runIt() {}
 
     const myContext = { name: "throttle" };
 
@@ -284,7 +317,8 @@ function testThrottle() {
 function testBackburner() {
     const debugInfo: DebugInfo = _backburner.getDebugInfo();
     const queueItems: QueueItem[] = debugInfo.timers;
-    const deferredActionQueues: DeferredActionQueues[] = debugInfo.instanceStack;
+    const deferredActionQueues: DeferredActionQueues[] =
+        debugInfo.instanceStack;
 
     function noop() {}
     _backburner.on("end", noop);

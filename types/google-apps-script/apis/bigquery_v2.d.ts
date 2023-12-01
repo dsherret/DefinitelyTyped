@@ -3,19 +3,36 @@ declare namespace GoogleAppsScript {
         namespace Collection {
             interface DatasetsCollection {
                 // Returns the dataset specified by datasetID.
-                get(projectId: string, datasetId: string): BigQuery.Schema.Dataset;
+                get(
+                    projectId: string,
+                    datasetId: string,
+                ): BigQuery.Schema.Dataset;
                 // Creates a new empty dataset.
-                insert(resource: BigQuery.Schema.Dataset, projectId: string): BigQuery.Schema.Dataset;
+                insert(
+                    resource: BigQuery.Schema.Dataset,
+                    projectId: string,
+                ): BigQuery.Schema.Dataset;
                 // Lists all datasets in the specified project to which you have been granted the READER dataset role.
                 list(projectId: string): BigQuery.Schema.DatasetList;
                 // Lists all datasets in the specified project to which you have been granted the READER dataset role.
-                list(projectId: string, optionalArgs: object): BigQuery.Schema.DatasetList;
+                list(
+                    projectId: string,
+                    optionalArgs: object,
+                ): BigQuery.Schema.DatasetList;
                 // Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource. This method supports patch semantics.
-                patch(resource: BigQuery.Schema.Dataset, projectId: string, datasetId: string): BigQuery.Schema.Dataset;
+                patch(
+                    resource: BigQuery.Schema.Dataset,
+                    projectId: string,
+                    datasetId: string,
+                ): BigQuery.Schema.Dataset;
                 // Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all its tables, either manually or by specifying deleteContents. Immediately after deletion, you can create another dataset with the same name.
                 remove(projectId: string, datasetId: string): void;
                 // Deletes the dataset specified by the datasetId value. Before you can delete a dataset, you must delete all its tables, either manually or by specifying deleteContents. Immediately after deletion, you can create another dataset with the same name.
-                remove(projectId: string, datasetId: string, optionalArgs: object): void;
+                remove(
+                    projectId: string,
+                    datasetId: string,
+                    optionalArgs: object,
+                ): void;
                 // Updates information in an existing dataset. The update method replaces the entire dataset resource, whereas the patch method only replaces fields that are provided in the submitted dataset resource.
                 update(
                     resource: BigQuery.Schema.Dataset,
@@ -25,15 +42,29 @@ declare namespace GoogleAppsScript {
             }
             interface JobsCollection {
                 // Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.
-                cancel(projectId: string, jobId: string): BigQuery.Schema.JobCancelResponse;
+                cancel(
+                    projectId: string,
+                    jobId: string,
+                ): BigQuery.Schema.JobCancelResponse;
                 // Requests that a job be cancelled. This call will return immediately, and the client will need to poll for the job status to see if the cancel completed successfully. Cancelled jobs may still incur costs.
-                cancel(projectId: string, jobId: string, optionalArgs: object): BigQuery.Schema.JobCancelResponse;
+                cancel(
+                    projectId: string,
+                    jobId: string,
+                    optionalArgs: object,
+                ): BigQuery.Schema.JobCancelResponse;
                 // Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.
                 get(projectId: string, jobId: string): BigQuery.Schema.Job;
                 // Returns information about a specific job. Job information is available for a six month period after creation. Requires that you're the person who ran the job, or have the Is Owner project role.
-                get(projectId: string, jobId: string, optionalArgs: object): BigQuery.Schema.Job;
+                get(
+                    projectId: string,
+                    jobId: string,
+                    optionalArgs: object,
+                ): BigQuery.Schema.Job;
                 // Retrieves the results of a query job.
-                getQueryResults(projectId: string, jobId: string): BigQuery.Schema.GetQueryResultsResponse;
+                getQueryResults(
+                    projectId: string,
+                    jobId: string,
+                ): BigQuery.Schema.GetQueryResultsResponse;
                 // Retrieves the results of a query job.
                 getQueryResults(
                     projectId: string,
@@ -41,19 +72,34 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): BigQuery.Schema.GetQueryResultsResponse;
                 // Starts a new asynchronous job. Requires the Can View project role.
-                insert(resource: BigQuery.Schema.Job, projectId: string): BigQuery.Schema.Job;
+                insert(
+                    resource: BigQuery.Schema.Job,
+                    projectId: string,
+                ): BigQuery.Schema.Job;
                 // Starts a new asynchronous job. Requires the Can View project role.
-                insert(resource: BigQuery.Schema.Job, projectId: string, mediaData: any): BigQuery.Schema.Job;
+                insert(
+                    resource: BigQuery.Schema.Job,
+                    projectId: string,
+                    mediaData: any,
+                ): BigQuery.Schema.Job;
                 // Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property.
                 list(projectId: string): BigQuery.Schema.JobList;
                 // Lists all jobs that you started in the specified project. Job information is available for a six month period after creation. The job list is sorted in reverse chronological order, by job creation time. Requires the Can View project role, or the Is Owner project role if you set the allUsers property.
-                list(projectId: string, optionalArgs: object): BigQuery.Schema.JobList;
+                list(
+                    projectId: string,
+                    optionalArgs: object,
+                ): BigQuery.Schema.JobList;
                 // Runs a BigQuery SQL query synchronously and returns query results if the query completes within a specified timeout.
-                query(resource: BigQuery.Schema.QueryRequest, projectId: string): BigQuery.Schema.QueryResponse;
+                query(
+                    resource: BigQuery.Schema.QueryRequest,
+                    projectId: string,
+                ): BigQuery.Schema.QueryResponse;
             }
             interface ProjectsCollection {
                 // Returns the email address of the service account for your project used for interactions with Google Cloud KMS.
-                getServiceAccount(projectId: string): BigQuery.Schema.GetServiceAccountResponse;
+                getServiceAccount(
+                    projectId: string,
+                ): BigQuery.Schema.GetServiceAccountResponse;
                 // Lists all projects to which you have been granted any project role.
                 list(): BigQuery.Schema.ProjectList;
                 // Lists all projects to which you have been granted any project role.
@@ -68,7 +114,11 @@ declare namespace GoogleAppsScript {
                     tableId: string,
                 ): BigQuery.Schema.TableDataInsertAllResponse;
                 // Retrieves table data from a specified set of rows. Requires the READER dataset role.
-                list(projectId: string, datasetId: string, tableId: string): BigQuery.Schema.TableDataList;
+                list(
+                    projectId: string,
+                    datasetId: string,
+                    tableId: string,
+                ): BigQuery.Schema.TableDataList;
                 // Retrieves table data from a specified set of rows. Requires the READER dataset role.
                 list(
                     projectId: string,
@@ -79,15 +129,35 @@ declare namespace GoogleAppsScript {
             }
             interface TablesCollection {
                 // Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
-                get(projectId: string, datasetId: string, tableId: string): BigQuery.Schema.Table;
+                get(
+                    projectId: string,
+                    datasetId: string,
+                    tableId: string,
+                ): BigQuery.Schema.Table;
                 // Gets the specified table resource by table ID. This method does not return the data in the table, it only returns the table resource, which describes the structure of this table.
-                get(projectId: string, datasetId: string, tableId: string, optionalArgs: object): BigQuery.Schema.Table;
+                get(
+                    projectId: string,
+                    datasetId: string,
+                    tableId: string,
+                    optionalArgs: object,
+                ): BigQuery.Schema.Table;
                 // Creates a new, empty table in the dataset.
-                insert(resource: BigQuery.Schema.Table, projectId: string, datasetId: string): BigQuery.Schema.Table;
+                insert(
+                    resource: BigQuery.Schema.Table,
+                    projectId: string,
+                    datasetId: string,
+                ): BigQuery.Schema.Table;
                 // Lists all tables in the specified dataset. Requires the READER dataset role.
-                list(projectId: string, datasetId: string): BigQuery.Schema.TableList;
+                list(
+                    projectId: string,
+                    datasetId: string,
+                ): BigQuery.Schema.TableList;
                 // Lists all tables in the specified dataset. Requires the READER dataset role.
-                list(projectId: string, datasetId: string, optionalArgs: object): BigQuery.Schema.TableList;
+                list(
+                    projectId: string,
+                    datasetId: string,
+                    optionalArgs: object,
+                ): BigQuery.Schema.TableList;
                 // Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource. This method supports patch semantics.
                 patch(
                     resource: BigQuery.Schema.Table,
@@ -96,7 +166,11 @@ declare namespace GoogleAppsScript {
                     tableId: string,
                 ): BigQuery.Schema.Table;
                 // Deletes the table specified by tableId from the dataset. If the table contains data, all the data will be deleted.
-                remove(projectId: string, datasetId: string, tableId: string): void;
+                remove(
+                    projectId: string,
+                    datasetId: string,
+                    tableId: string,
+                ): void;
                 // Updates information in an existing table. The update method replaces the entire table resource, whereas the patch method only replaces fields that are provided in the submitted table resource.
                 update(
                     resource: BigQuery.Schema.Table,
@@ -127,7 +201,9 @@ declare namespace GoogleAppsScript {
                 type?: string | undefined;
             }
             interface BigtableOptions {
-                columnFamilies?: BigQuery.Schema.BigtableColumnFamily[] | undefined;
+                columnFamilies?:
+                    | BigQuery.Schema.BigtableColumnFamily[]
+                    | undefined;
                 ignoreUnspecifiedColumnFamilies?: boolean | undefined;
                 readRowkeyAsString?: boolean | undefined;
             }
@@ -139,10 +215,14 @@ declare namespace GoogleAppsScript {
                 trainingLoss?: number | undefined;
             }
             interface BqmlTrainingRun {
-                iterationResults?: BigQuery.Schema.BqmlIterationResult[] | undefined;
+                iterationResults?:
+                    | BigQuery.Schema.BqmlIterationResult[]
+                    | undefined;
                 startTime?: string | undefined;
                 state?: string | undefined;
-                trainingOptions?: BigQuery.Schema.BqmlTrainingRunTrainingOptions | undefined;
+                trainingOptions?:
+                    | BigQuery.Schema.BqmlTrainingRunTrainingOptions
+                    | undefined;
             }
             interface BqmlTrainingRunTrainingOptions {
                 earlyStop?: boolean | undefined;
@@ -263,7 +343,9 @@ declare namespace GoogleAppsScript {
                 bigtableOptions?: BigQuery.Schema.BigtableOptions | undefined;
                 compression?: string | undefined;
                 csvOptions?: BigQuery.Schema.CsvOptions | undefined;
-                googleSheetsOptions?: BigQuery.Schema.GoogleSheetsOptions | undefined;
+                googleSheetsOptions?:
+                    | BigQuery.Schema.GoogleSheetsOptions
+                    | undefined;
                 hivePartitioningMode?: string | undefined;
                 ignoreUnknownValues?: boolean | undefined;
                 maxBadRecords?: number | undefined;
@@ -333,9 +415,13 @@ declare namespace GoogleAppsScript {
                 autodetect?: boolean | undefined;
                 clustering?: BigQuery.Schema.Clustering | undefined;
                 createDisposition?: string | undefined;
-                destinationEncryptionConfiguration?: BigQuery.Schema.EncryptionConfiguration | undefined;
+                destinationEncryptionConfiguration?:
+                    | BigQuery.Schema.EncryptionConfiguration
+                    | undefined;
                 destinationTable?: BigQuery.Schema.TableReference | undefined;
-                destinationTableProperties?: BigQuery.Schema.DestinationTableProperties | undefined;
+                destinationTableProperties?:
+                    | BigQuery.Schema.DestinationTableProperties
+                    | undefined;
                 encoding?: string | undefined;
                 fieldDelimiter?: string | undefined;
                 hivePartitioningMode?: string | undefined;
@@ -344,7 +430,9 @@ declare namespace GoogleAppsScript {
                 nullMarker?: string | undefined;
                 projectionFields?: string[] | undefined;
                 quote?: string | undefined;
-                rangePartitioning?: BigQuery.Schema.RangePartitioning | undefined;
+                rangePartitioning?:
+                    | BigQuery.Schema.RangePartitioning
+                    | undefined;
                 schema?: BigQuery.Schema.TableSchema | undefined;
                 schemaInline?: string | undefined;
                 schemaInlineFormat?: string | undefined;
@@ -361,7 +449,9 @@ declare namespace GoogleAppsScript {
                 clustering?: BigQuery.Schema.Clustering | undefined;
                 createDisposition?: string | undefined;
                 defaultDataset?: BigQuery.Schema.DatasetReference | undefined;
-                destinationEncryptionConfiguration?: BigQuery.Schema.EncryptionConfiguration | undefined;
+                destinationEncryptionConfiguration?:
+                    | BigQuery.Schema.EncryptionConfiguration
+                    | undefined;
                 destinationTable?: BigQuery.Schema.TableReference | undefined;
                 flattenResults?: boolean | undefined;
                 maximumBillingTier?: number | undefined;
@@ -371,18 +461,24 @@ declare namespace GoogleAppsScript {
                 priority?: string | undefined;
                 query?: string | undefined;
                 queryParameters?: BigQuery.Schema.QueryParameter[] | undefined;
-                rangePartitioning?: BigQuery.Schema.RangePartitioning | undefined;
+                rangePartitioning?:
+                    | BigQuery.Schema.RangePartitioning
+                    | undefined;
                 schemaUpdateOptions?: string[] | undefined;
                 tableDefinitions?: object | undefined;
                 timePartitioning?: BigQuery.Schema.TimePartitioning | undefined;
                 useLegacySql?: boolean | undefined;
                 useQueryCache?: boolean | undefined;
-                userDefinedFunctionResources?: BigQuery.Schema.UserDefinedFunctionResource[] | undefined;
+                userDefinedFunctionResources?:
+                    | BigQuery.Schema.UserDefinedFunctionResource[]
+                    | undefined;
                 writeDisposition?: string | undefined;
             }
             interface JobConfigurationTableCopy {
                 createDisposition?: string | undefined;
-                destinationEncryptionConfiguration?: BigQuery.Schema.EncryptionConfiguration | undefined;
+                destinationEncryptionConfiguration?:
+                    | BigQuery.Schema.EncryptionConfiguration
+                    | undefined;
                 destinationTable?: BigQuery.Schema.TableReference | undefined;
                 sourceTable?: BigQuery.Schema.TableReference | undefined;
                 sourceTables?: BigQuery.Schema.TableReference[] | undefined;
@@ -420,7 +516,9 @@ declare namespace GoogleAppsScript {
                 parentJobId?: string | undefined;
                 query?: BigQuery.Schema.JobStatistics2 | undefined;
                 quotaDeferments?: string[] | undefined;
-                reservationUsage?: BigQuery.Schema.JobStatisticsReservationUsage[] | undefined;
+                reservationUsage?:
+                    | BigQuery.Schema.JobStatisticsReservationUsage[]
+                    | undefined;
                 startTime?: string | undefined;
                 totalBytesProcessed?: string | undefined;
                 totalSlotMs?: string | undefined;
@@ -432,13 +530,17 @@ declare namespace GoogleAppsScript {
                 ddlTargetRoutine?: BigQuery.Schema.RoutineReference | undefined;
                 ddlTargetTable?: BigQuery.Schema.TableReference | undefined;
                 estimatedBytesProcessed?: string | undefined;
-                modelTraining?: BigQuery.Schema.BigQueryModelTraining | undefined;
+                modelTraining?:
+                    | BigQuery.Schema.BigQueryModelTraining
+                    | undefined;
                 modelTrainingCurrentIteration?: number | undefined;
                 modelTrainingExpectedTotalIteration?: string | undefined;
                 numDmlAffectedRows?: string | undefined;
                 queryPlan?: BigQuery.Schema.ExplainQueryStage[] | undefined;
                 referencedTables?: BigQuery.Schema.TableReference[] | undefined;
-                reservationUsage?: BigQuery.Schema.JobStatistics2ReservationUsage[] | undefined;
+                reservationUsage?:
+                    | BigQuery.Schema.JobStatistics2ReservationUsage[]
+                    | undefined;
                 schema?: BigQuery.Schema.TableSchema | undefined;
                 statementType?: string | undefined;
                 timeline?: BigQuery.Schema.QueryTimelineSample[] | undefined;
@@ -447,7 +549,9 @@ declare namespace GoogleAppsScript {
                 totalBytesProcessedAccuracy?: string | undefined;
                 totalPartitionsProcessed?: string | undefined;
                 totalSlotMs?: string | undefined;
-                undeclaredQueryParameters?: BigQuery.Schema.QueryParameter[] | undefined;
+                undeclaredQueryParameters?:
+                    | BigQuery.Schema.QueryParameter[]
+                    | undefined;
             }
             interface JobStatistics2ReservationUsage {
                 name?: string | undefined;
@@ -478,7 +582,9 @@ declare namespace GoogleAppsScript {
                 query?: string | undefined;
             }
             interface ModelDefinition {
-                modelOptions?: BigQuery.Schema.ModelDefinitionModelOptions | undefined;
+                modelOptions?:
+                    | BigQuery.Schema.ModelDefinitionModelOptions
+                    | undefined;
                 trainingRuns?: BigQuery.Schema.BqmlTrainingRun[] | undefined;
             }
             interface ModelDefinitionModelOptions {
@@ -506,11 +612,15 @@ declare namespace GoogleAppsScript {
             interface QueryParameter {
                 name?: string | undefined;
                 parameterType?: BigQuery.Schema.QueryParameterType | undefined;
-                parameterValue?: BigQuery.Schema.QueryParameterValue | undefined;
+                parameterValue?:
+                    | BigQuery.Schema.QueryParameterValue
+                    | undefined;
             }
             interface QueryParameterType {
                 arrayType?: BigQuery.Schema.QueryParameterType | undefined;
-                structTypes?: BigQuery.Schema.QueryParameterTypeStructTypes[] | undefined;
+                structTypes?:
+                    | BigQuery.Schema.QueryParameterTypeStructTypes[]
+                    | undefined;
                 type?: string | undefined;
             }
             interface QueryParameterTypeStructTypes {
@@ -580,23 +690,31 @@ declare namespace GoogleAppsScript {
                 clustering?: BigQuery.Schema.Clustering | undefined;
                 creationTime?: string | undefined;
                 description?: string | undefined;
-                encryptionConfiguration?: BigQuery.Schema.EncryptionConfiguration | undefined;
+                encryptionConfiguration?:
+                    | BigQuery.Schema.EncryptionConfiguration
+                    | undefined;
                 etag?: string | undefined;
                 expirationTime?: string | undefined;
-                externalDataConfiguration?: BigQuery.Schema.ExternalDataConfiguration | undefined;
+                externalDataConfiguration?:
+                    | BigQuery.Schema.ExternalDataConfiguration
+                    | undefined;
                 friendlyName?: string | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
                 labels?: object | undefined;
                 lastModifiedTime?: string | undefined;
                 location?: string | undefined;
-                materializedView?: BigQuery.Schema.MaterializedViewDefinition | undefined;
+                materializedView?:
+                    | BigQuery.Schema.MaterializedViewDefinition
+                    | undefined;
                 model?: BigQuery.Schema.ModelDefinition | undefined;
                 numBytes?: string | undefined;
                 numLongTermBytes?: string | undefined;
                 numPhysicalBytes?: string | undefined;
                 numRows?: string | undefined;
-                rangePartitioning?: BigQuery.Schema.RangePartitioning | undefined;
+                rangePartitioning?:
+                    | BigQuery.Schema.RangePartitioning
+                    | undefined;
                 requirePartitionFilter?: boolean | undefined;
                 schema?: BigQuery.Schema.TableSchema | undefined;
                 selfLink?: string | undefined;
@@ -612,7 +730,9 @@ declare namespace GoogleAppsScript {
             interface TableDataInsertAllRequest {
                 ignoreUnknownValues?: boolean | undefined;
                 kind?: string | undefined;
-                rows?: BigQuery.Schema.TableDataInsertAllRequestRows[] | undefined;
+                rows?:
+                    | BigQuery.Schema.TableDataInsertAllRequestRows[]
+                    | undefined;
                 skipInvalidRows?: boolean | undefined;
                 templateSuffix?: string | undefined;
             }
@@ -621,7 +741,9 @@ declare namespace GoogleAppsScript {
                 json?: object | undefined;
             }
             interface TableDataInsertAllResponse {
-                insertErrors?: BigQuery.Schema.TableDataInsertAllResponseInsertErrors[] | undefined;
+                insertErrors?:
+                    | BigQuery.Schema.TableDataInsertAllResponseInsertErrors[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface TableDataInsertAllResponseInsertErrors {
@@ -636,7 +758,9 @@ declare namespace GoogleAppsScript {
                 totalRows?: string | undefined;
             }
             interface TableFieldSchema {
-                categories?: BigQuery.Schema.TableFieldSchemaCategories | undefined;
+                categories?:
+                    | BigQuery.Schema.TableFieldSchemaCategories
+                    | undefined;
                 description?: string | undefined;
                 fields?: BigQuery.Schema.TableFieldSchema[] | undefined;
                 mode?: string | undefined;
@@ -693,7 +817,9 @@ declare namespace GoogleAppsScript {
             interface ViewDefinition {
                 query?: string | undefined;
                 useLegacySql?: boolean | undefined;
-                userDefinedFunctionResources?: BigQuery.Schema.UserDefinedFunctionResource[] | undefined;
+                userDefinedFunctionResources?:
+                    | BigQuery.Schema.UserDefinedFunctionResource[]
+                    | undefined;
             }
         }
     }

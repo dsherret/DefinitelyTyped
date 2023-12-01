@@ -18,15 +18,27 @@ db.changePassword({ password: "" }, (error: any) => {});
 
 /** Query */
 db.cypher(
-    { query: "MATCH (u:User {email: {email}}) RETURN u", params: { email: "alice@example.com" } },
+    {
+        query: "MATCH (u:User {email: {email}}) RETURN u",
+        params: { email: "alice@example.com" },
+    },
     (error: any, results: any) => {},
 );
 
 /** Constraint */
-db.createConstraint({ label: "", property: "" }, (error: any, constraint: any) => {});
+db.createConstraint(
+    { label: "", property: "" },
+    (error: any, constraint: any) => {},
+);
 db.dropConstraint({ label: "", property: "" }, (error: any) => {});
-db.getConstraints({ label: "", property: "" }, (error: any, constraints: any) => {});
-db.hasConstraint({ label: "", property: "" }, (error: any, exists: boolean) => {});
+db.getConstraints(
+    { label: "", property: "" },
+    (error: any, constraints: any) => {},
+);
+db.hasConstraint(
+    { label: "", property: "" },
+    (error: any, exists: boolean) => {},
+);
 
 /** Index */
 db.dropIndex({ label: "", property: "" }, (error: any) => {});
@@ -44,7 +56,10 @@ db.getPropertyKeys((error: any, keys: any) => {});
 db.getRelationshipTypes((error: any, types: any) => {});
 
 /** HTTP */
-db.http({ method: "", path: "", headers: {}, body: "", raw: "" }, (error: any, body: any) => {});
+db.http(
+    { method: "", path: "", headers: {}, body: "", raw: "" },
+    (error: any, body: any) => {},
+);
 
 /** Transaction */
 const transaction: neo4j.Transaction = db.beginTransaction();
@@ -52,7 +67,10 @@ transaction.rollback((error: any) => {});
 transaction.commit((error: any) => {});
 transaction.renew((error: any) => {});
 transaction.cypher(
-    { query: "MATCH (u:User {email: {email}}) RETURN u", params: { email: "alice@example.com" } },
+    {
+        query: "MATCH (u:User {email: {email}}) RETURN u",
+        params: { email: "alice@example.com" },
+    },
     (error: any, results: any) => {},
 );
 

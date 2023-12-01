@@ -1,4 +1,7 @@
-const d1 = dragula([document.querySelector("#left")!, document.querySelector("#right")!]);
+const d1 = dragula([
+    document.querySelector("#left")!,
+    document.querySelector("#right")!,
+]);
 
 const d2 = dragula({
     isContainer(el) {
@@ -48,7 +51,7 @@ dragula([document.getElementById("left")!, document.getElementById("right")!])
     .on("cancel", (el, container) => {})
     .on("cloned", (clone, original, type) => {})
     .on("drag", (el, source) => {})
-    .on("dragend", el => {})
+    .on("dragend", (el) => {})
     .on("drop", (el, target, source, sibling) => {})
     .on("out", (el, containers, source) => {})
     .on("over", (el, container, source) => {})

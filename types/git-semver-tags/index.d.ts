@@ -1,7 +1,10 @@
 /**
  * Get all git semver tags of your repository in reverse chronological order
  */
-declare function gitSemverTags(options: gitSemverTags.Options, callback: gitSemverTags.Callback): void;
+declare function gitSemverTags(
+    options: gitSemverTags.Options,
+    callback: gitSemverTags.Callback,
+): void;
 declare function gitSemverTags(callback: gitSemverTags.Callback): void;
 
 declare namespace gitSemverTags {

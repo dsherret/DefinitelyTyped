@@ -19,12 +19,11 @@ export type TypeaheadLabelKey<T extends TypeaheadModel> = T extends object
     : never;
 // don't allow onBlur, onChange, onFocus or onKeyDown as members of inputProps
 // those props should be supplied directly to <Typeahead /> or <AsyncTypeahead />
-export interface InputProps extends
-    Omit<
+export interface InputProps
+    extends Omit<
         React.InputHTMLAttributes<HTMLInputElement>,
         "onBlur" | "onChange" | "onFocus" | "onKeyDown"
-    >
-{
+    > {
     /* Callback function that determines whether the hint should be selected. */
     shouldSelectHint?: ShouldSelect | undefined;
 }
@@ -55,7 +54,8 @@ export interface TypeaheadState<T extends TypeaheadModel> {
     text: string;
 }
 
-export interface InputContainerPropsSingle<T extends TypeaheadModel> extends InputProps {
+export interface InputContainerPropsSingle<T extends TypeaheadModel>
+    extends InputProps {
     "aria-activedescendant": string;
     "aria-autocomplete": "list" | "both";
     "aria-expanded": boolean | "true" | "false";
@@ -76,17 +76,27 @@ export interface InputContainerPropsSingle<T extends TypeaheadModel> extends Inp
 }
 
 export interface InputContainerPropsMultiple<T extends TypeaheadModel>
-    extends Omit<InputContainerPropsSingle<T>, "role">
-{
+    extends Omit<InputContainerPropsSingle<T>, "role"> {
     labelKey: TypeaheadLabelKey<T>;
     onRemove: (e: Event) => void;
-    renderToken: (selectedItem: T, props: TypeaheadMenuProps<T>, index: number) => React.ReactNode;
+    renderToken: (
+        selectedItem: T,
+        props: TypeaheadMenuProps<T>,
+        index: number,
+    ) => React.ReactNode;
     role: "";
     selected: T[];
 }
 
-export type HintedInputContextKeys = "hintText" | "initialItem" | "onAdd" | "selectHintOnEnter";
-export type HintedInputContext<T extends TypeaheadModel> = Pick<TypeaheadContext<T>, HintedInputContextKeys>;
+export type HintedInputContextKeys =
+    | "hintText"
+    | "initialItem"
+    | "onAdd"
+    | "selectHintOnEnter";
+export type HintedInputContext<T extends TypeaheadModel> = Pick<
+    TypeaheadContext<T>,
+    HintedInputContextKeys
+>;
 
 export type MenuItemContextKeys =
     | "activeIndex"
@@ -94,7 +104,10 @@ export type MenuItemContextKeys =
     | "onActiveItemChange"
     | "onInitialItemChange"
     | "onMenuItemClick";
-export type MenuItemContext<T extends TypeaheadModel> = Pick<TypeaheadContext<T>, MenuItemContextKeys>;
+export type MenuItemContext<T extends TypeaheadModel> = Pick<
+    TypeaheadContext<T>,
+    MenuItemContextKeys
+>;
 
 export interface TokenContext {
     active: boolean;
@@ -118,7 +131,9 @@ export interface TypeaheadContainerProps<T extends TypeaheadModel> {
     text: string;
 }
 
-export type TypeaheadResult<T extends TypeaheadModel> = T & { customOption: boolean };
+export type TypeaheadResult<T extends TypeaheadModel> = T & {
+    customOption: boolean;
+};
 
 export interface TypeaheadProps<T extends TypeaheadModel> {
     /* Specify menu alignment. The default value is justify, which makes the menu as wide as the input and truncates long values.
@@ -129,7 +144,10 @@ export interface TypeaheadProps<T extends TypeaheadModel> {
     when the trimmed input is truthy and there is no exact match in the result set.
     If a function is specified, allows for a callback to decide whether the new entry menu item should be included in the results
     list. The callback should return a boolean value: */
-    allowNew?: boolean | ((results: T[], props: AllTypeaheadOwnAndInjectedProps<T>) => boolean) | undefined;
+    allowNew?:
+        | boolean
+        | ((results: T[], props: AllTypeaheadOwnAndInjectedProps<T>) => boolean)
+        | undefined;
 
     /* Autofocus the input when the component initially mounts. */
     autoFocus?: boolean | undefined;
@@ -165,7 +183,10 @@ export interface TypeaheadProps<T extends TypeaheadModel> {
     emptyLabel?: React.ReactNode | undefined;
 
     /* Either an array of fields in option to search, or a custom filtering callback. */
-    filterBy?: string[] | ((option: T, props: AllTypeaheadOwnAndInjectedProps<T>) => boolean) | undefined;
+    filterBy?:
+        | string[]
+        | ((option: T, props: AllTypeaheadOwnAndInjectedProps<T>) => boolean)
+        | undefined;
 
     /* Whether or not to automatically adjust the position of the menu when it reaches the viewport boundaries. */
     flip?: boolean | undefined;
@@ -250,28 +271,39 @@ export interface TypeaheadProps<T extends TypeaheadModel> {
     container with overflow: hidden;. Uses absolute positioning by default. */
     positionFixed?: boolean | undefined;
 
-    renderInput?: ((inputProps: InputContainerPropsSingle<T>, state: TypeaheadState<T>) => React.ReactNode) | undefined;
+    renderInput?:
+        | ((
+              inputProps: InputContainerPropsSingle<T>,
+              state: TypeaheadState<T>,
+          ) => React.ReactNode)
+        | undefined;
 
     /* Callback for custom menu rendering. */
     renderMenu?:
         | ((
-            results: Array<TypeaheadResult<T>>,
-            menuProps: TypeaheadMenuProps<T>,
-            state: TypeaheadState<T>,
-        ) => React.ReactNode)
+              results: Array<TypeaheadResult<T>>,
+              menuProps: TypeaheadMenuProps<T>,
+              state: TypeaheadState<T>,
+          ) => React.ReactNode)
         | undefined;
 
     /* Provides a hook for customized rendering of menu item contents. */
     renderMenuItemChildren?:
         | ((
-            option: TypeaheadResult<T>,
-            props: TypeaheadMenuProps<T>,
-            index: number,
-        ) => React.ReactNode)
+              option: TypeaheadResult<T>,
+              props: TypeaheadMenuProps<T>,
+              index: number,
+          ) => React.ReactNode)
         | undefined;
 
     /* Provides a hook for customized rendering of tokens when multiple selections are enabled. */
-    renderToken?: ((selectedItem: T, props: TokenProps, index: number) => React.ReactNode) | undefined;
+    renderToken?:
+        | ((
+              selectedItem: T,
+              props: TokenProps,
+              index: number,
+          ) => React.ReactNode)
+        | undefined;
 
     /* The selected option(s) displayed in the input. Use this prop if you want to control the component via its parent. */
     selected?: T[] | undefined;
@@ -283,8 +315,11 @@ export interface TypeaheadProps<T extends TypeaheadModel> {
     size?: TypeaheadBsSizes | undefined;
 }
 
-export type AllTypeaheadOwnAndInjectedProps<T extends TypeaheadModel> = TypeaheadProps<T> & TypeaheadContainerProps<T>;
-export class Typeahead<T extends TypeaheadModel> extends React.Component<TypeaheadProps<T>> {
+export type AllTypeaheadOwnAndInjectedProps<T extends TypeaheadModel> =
+    TypeaheadProps<T> & TypeaheadContainerProps<T>;
+export class Typeahead<T extends TypeaheadModel> extends React.Component<
+    TypeaheadProps<T>
+> {
     blur: () => void;
     clear: () => void;
     focus: () => void;
@@ -296,7 +331,8 @@ export class Typeahead<T extends TypeaheadModel> extends React.Component<Typeahe
 /* ---------------------------------------------------------------------------
                     AsyncTypeahead Props and Component
 --------------------------------------------------------------------------- */
-export interface AsyncTypeaheadProps<T extends TypeaheadModel> extends TypeaheadProps<T> {
+export interface AsyncTypeaheadProps<T extends TypeaheadModel>
+    extends TypeaheadProps<T> {
     /* Delay, in milliseconds, before performing search. */
     delay?: number | undefined;
 
@@ -316,7 +352,9 @@ export interface AsyncTypeaheadProps<T extends TypeaheadModel> extends Typeahead
     useCache?: boolean | undefined;
 }
 
-export class AsyncTypeahead<T extends TypeaheadModel> extends React.Component<AsyncTypeaheadProps<T>> {
+export class AsyncTypeahead<T extends TypeaheadModel> extends React.Component<
+    AsyncTypeaheadProps<T>
+> {
     blur: () => void;
     clear: () => void;
     focus: () => void;
@@ -328,20 +366,19 @@ export class AsyncTypeahead<T extends TypeaheadModel> extends React.Component<As
 /* ---------------------------------------------------------------------------
         TypeaheadInputSingle & TypeaheadInputMulti Props and Component
 --------------------------------------------------------------------------- */
-export interface BaseTypeaheadInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface BaseTypeaheadInputProps
+    extends React.InputHTMLAttributes<HTMLInputElement> {
     type: "text";
 }
 
 export interface TypeaheadSingleInputWithHocProps<T extends TypeaheadModel>
-    extends Omit<BaseTypeaheadInputProps, keyof InputContainerPropsSingle<T>>, InputContainerPropsSingle<T>
-{}
+    extends Omit<BaseTypeaheadInputProps, keyof InputContainerPropsSingle<T>>,
+        InputContainerPropsSingle<T> {}
 
 export interface TypeaheadMulitInputWithHocProps<T extends TypeaheadModel>
-    extends
-        Omit<BaseTypeaheadInputProps, keyof InputContainerPropsMultiple<T>>,
+    extends Omit<BaseTypeaheadInputProps, keyof InputContainerPropsMultiple<T>>,
         HintedInputContext<T>,
-        InputContainerPropsMultiple<T>
-{}
+        InputContainerPropsMultiple<T> {}
 
 export type TypeaheadInputPropKeys =
     | "disabled"
@@ -356,14 +393,17 @@ export type TypeaheadInputPropKeys =
     | "renderToken"
     | "selected";
 
-export type TypeaheadInputProps<T extends TypeaheadModel> = Pick<TypeaheadProps<T>, TypeaheadInputPropKeys>;
+export type TypeaheadInputProps<T extends TypeaheadModel> = Pick<
+    TypeaheadProps<T>,
+    TypeaheadInputPropKeys
+>;
 
-export class TypeaheadInputSingle<T extends TypeaheadModel> extends React.Component<
-    TypeaheadSingleInputWithHocProps<T>
-> {}
-export class TypeaheadInputMulti<T extends TypeaheadModel> extends React.Component<
-    TypeaheadMulitInputWithHocProps<T>
-> {}
+export class TypeaheadInputSingle<
+    T extends TypeaheadModel,
+> extends React.Component<TypeaheadSingleInputWithHocProps<T>> {}
+export class TypeaheadInputMulti<
+    T extends TypeaheadModel,
+> extends React.Component<TypeaheadMulitInputWithHocProps<T>> {}
 
 /* ---------------------------------------------------------------------------
                     Highlighter Props and Component
@@ -385,7 +425,10 @@ export class Highlighter extends React.PureComponent<HighligherProps> {}
 /* ---------------------------------------------------------------------------
                     Hint Props and Component
 --------------------------------------------------------------------------- */
-export type ShouldSelect = (shouldSelect: boolean, e: React.KeyboardEvent<HTMLInputElement>) => boolean;
+export type ShouldSelect = (
+    shouldSelect: boolean,
+    e: React.KeyboardEvent<HTMLInputElement>,
+) => boolean;
 
 export interface HintProps {
     className?: string | undefined;
@@ -422,7 +465,11 @@ export const Loader: React.FunctionComponent<LoaderProps>;
 /* ---------------------------------------------------------------------------
                     AutosizeInput Props and Component
 --------------------------------------------------------------------------- */
-export interface AutosizeInputProps extends Pick<React.InputHTMLAttributes<HTMLInputElement>, "className" | "style"> {
+export interface AutosizeInputProps
+    extends Pick<
+        React.InputHTMLAttributes<HTMLInputElement>,
+        "className" | "style"
+    > {
     inputClassName?: string | undefined;
     inputRef?: React.LegacyRef<HTMLInputElement> | undefined;
     inputStyle?: React.CSSProperties | undefined;
@@ -458,13 +505,19 @@ export class Menu extends React.Component<MenuProps> {
                     TypeaheadMenu Props and Component
 --------------------------------------------------------------------------- */
 // prop names that Typeahead provides to TypeaheadMenu
-export type TypeaheadMenuPropsPick = "labelKey" | "options" | "renderMenuItemChildren" | "paginationText";
+export type TypeaheadMenuPropsPick =
+    | "labelKey"
+    | "options"
+    | "renderMenuItemChildren"
+    | "paginationText";
 export interface TypeaheadMenuProps<T extends TypeaheadModel>
-    extends MenuProps, Pick<AllTypeaheadOwnAndInjectedProps<T>, TypeaheadMenuPropsPick>
-{
+    extends MenuProps,
+        Pick<AllTypeaheadOwnAndInjectedProps<T>, TypeaheadMenuPropsPick> {
     newSelectionPrefix?: React.ReactNode | undefined;
 }
-export class TypeaheadMenu<T extends TypeaheadModel> extends React.Component<TypeaheadMenuProps<T>> {}
+export class TypeaheadMenu<T extends TypeaheadModel> extends React.Component<
+    TypeaheadMenuProps<T>
+> {}
 
 /* ---------------------------------------------------------------------------
                     Menu Item Props and Component
@@ -475,18 +528,24 @@ export interface BaseMenuItemProps extends React.HTMLProps<"li"> {
 }
 export class BaseMenuItem extends React.Component<BaseMenuItemProps> {}
 
-export interface MenuItemProps<T extends TypeaheadModel> extends BaseMenuItemProps {
+export interface MenuItemProps<T extends TypeaheadModel>
+    extends BaseMenuItemProps {
     option: T;
     position: number;
     label?: string | undefined;
 }
 
-export class MenuItem<T extends TypeaheadModel> extends React.Component<MenuItemProps<T>> {}
+export class MenuItem<T extends TypeaheadModel> extends React.Component<
+    MenuItemProps<T>
+> {}
 
 /* ---------------------------------------------------------------------------
                     Overlay Props and Component
 --------------------------------------------------------------------------- */
-export type OverlayTypeaheadProps = Pick<TypeaheadProps<any>, "align" | "dropup" | "flip" | "onMenuToggle">;
+export type OverlayTypeaheadProps = Pick<
+    TypeaheadProps<any>,
+    "align" | "dropup" | "flip" | "onMenuToggle"
+>;
 
 export interface OverlayProps extends OverlayTypeaheadProps {
     children?: ((menuProps: MenuProps) => React.ReactNode) | undefined;

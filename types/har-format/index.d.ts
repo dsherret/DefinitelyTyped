@@ -544,11 +544,11 @@ export interface Entry {
     /** _non-standard_  */
     _webSocketMessages?:
         | Array<{
-            type: "send" | "receive";
-            time: number;
-            opcode: number;
-            data: string;
-        }>
+              type: "send" | "receive";
+              time: number;
+              opcode: number;
+              data: string;
+          }>
         | null
         | undefined;
     /**

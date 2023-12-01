@@ -31,7 +31,11 @@ interface LocalFileSystem {
      * @param successCallback A callback that is called to report the Entry to which the supplied URL refers.
      * @param errorCallback A callback that is called when errors happen, or when the request to obtain the Entry is denied.
      */
-    resolveLocalFileSystemURL(url: string, successCallback: EntryCallback, errorCallback?: ErrorCallback): void;
+    resolveLocalFileSystemURL(
+        url: string,
+        successCallback: EntryCallback,
+        errorCallback?: ErrorCallback,
+    ): void;
 
     /**
      * see requestFileSystem.
@@ -129,7 +133,10 @@ interface FileSystemEntry {
      * @param successCallback A callback that is called with the time of the last modification.
      * @param errorCallback ErrorCallback A callback that is called when errors happen.
      */
-    getMetadata(successCallback: MetadataCallback, errorCallback?: ErrorCallback): void;
+    getMetadata(
+        successCallback: MetadataCallback,
+        errorCallback?: ErrorCallback,
+    ): void;
 
     /**
      * The name of the entry, excluding the path leading to it.
@@ -206,7 +213,10 @@ interface FileSystemEntry {
      * @param successCallback A callback that is called to return the parent Entry.
      * @param errorCallback A callback that is called when errors happen.
      */
-    getParent(successCallback: DirectoryEntryCallback, errorCallback?: ErrorCallback): void;
+    getParent(
+        successCallback: DirectoryEntryCallback,
+        errorCallback?: ErrorCallback,
+    ): void;
 }
 
 /** Alias provided for backward compatibility */
@@ -235,7 +245,12 @@ interface FileSystemDirectoryEntry extends FileSystemEntry {
      * @param successCallback A callback that is called to return the File selected or created.
      * @param errorCallback A callback that is called when errors happen.
      */
-    getFile(path: string, options?: Flags, successCallback?: FileEntryCallback, errorCallback?: ErrorCallback): void;
+    getFile(
+        path: string,
+        options?: Flags,
+        successCallback?: FileEntryCallback,
+        errorCallback?: ErrorCallback,
+    ): void;
 
     /**
      * Creates or looks up a directory.
@@ -263,7 +278,10 @@ interface FileSystemDirectoryEntry extends FileSystemEntry {
      * @param successCallback A callback that is called on success.
      * @param errorCallback A callback that is called when errors happen.
      */
-    removeRecursively(successCallback: VoidCallback, errorCallback?: ErrorCallback): void;
+    removeRecursively(
+        successCallback: VoidCallback,
+        errorCallback?: ErrorCallback,
+    ): void;
 }
 
 /** Alias provided for backward compatibility */
@@ -284,7 +302,10 @@ interface DirectoryReader {
      * @param successCallback Called once per successful call to readEntries to deliver the next previously-unreported set of Entries in the associated Directory. If all Entries have already been returned from previous invocations of readEntries, successCallback must be called with a zero-length array as an argument.
      * @param errorCallback A callback indicating that there was an error reading from the Directory.
      */
-    readEntries(successCallback: EntriesCallback, errorCallback?: ErrorCallback): void;
+    readEntries(
+        successCallback: EntriesCallback,
+        errorCallback?: ErrorCallback,
+    ): void;
 }
 
 /**
@@ -296,7 +317,10 @@ interface FileEntry extends FileSystemEntry {
      * @param successCallback A callback that is called with the new FileWriter.
      * @param errorCallback A callback that is called when errors happen.
      */
-    createWriter(successCallback: FileWriterCallback, errorCallback?: ErrorCallback): void;
+    createWriter(
+        successCallback: FileWriterCallback,
+        errorCallback?: ErrorCallback,
+    ): void;
 
     /**
      * Returns a File that represents the current state of the file that this FileEntry represents.
@@ -557,8 +581,6 @@ interface FileEntrySync extends EntrySync {
     file(): File;
 }
 
-interface Window extends LocalFileSystem, LocalFileSystemSync {
-}
+interface Window extends LocalFileSystem, LocalFileSystemSync {}
 
-interface WorkerGlobalScope extends LocalFileSystem, LocalFileSystemSync {
-}
+interface WorkerGlobalScope extends LocalFileSystem, LocalFileSystemSync {}

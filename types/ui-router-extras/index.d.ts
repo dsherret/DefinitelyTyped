@@ -15,7 +15,10 @@ declare module "angular" {
              *    'paramName': 'paramvalue' | ['list', 'of', 'possible', 'paramvalues']
              *  }
              */
-            reset(stateName: string, stateParams?: { [key: string]: string | string[] }): void;
+            reset(
+                stateName: string,
+                stateParams?: { [key: string]: string | string[] },
+            ): void;
         }
 
         /*
@@ -37,7 +40,10 @@ declare module "angular" {
              * A callback function that determines whether or not the redirect should actually occur, or changes the redirect to some other state.
              * Return an object: IRedirectParams to change the redirect
              */
-            fn?($dsr$: { redirect: IRedirectParams; to: IRedirectParams }): boolean | IRedirectParams;
+            fn?($dsr$: {
+                redirect: IRedirectParams;
+                to: IRedirectParams;
+            }): boolean | IRedirectParams;
         }
 
         interface IRedirectParams {
@@ -78,7 +84,11 @@ declare module "angular" {
              * @param defaultStateName Default state name
              * @param defaultStateParams Default state parameters
              */
-            memo(memoName: string, defaultStateName?: string, defaultStateParams?: {}): void;
+            memo(
+                memoName: string,
+                defaultStateName?: string,
+                defaultStateParams?: {},
+            ): void;
 
             /**
              * Forget a memorized name
@@ -130,7 +140,10 @@ declare module "angular" {
              * If stateParams is provided, then the state is only exited if the params match the inactive params.
              * If inactiveStateName === '*', then all inactive states are exited
              */
-            reset(inactiveStateName: string, stateParams?: { [key: string]: string | string[] }): void;
+            reset(
+                inactiveStateName: string,
+                stateParams?: { [key: string]: string | string[] },
+            ): void;
         }
 
         /**
@@ -195,7 +208,9 @@ declare module "angular" {
         /**
          * `StateFactory` factories convert `FutureState` into a full UI-Router `state`, or `state` tree
          */
-        type IFutureStateFactory = Injectable<(...args: any[]) => IPromise<IState | undefined>>;
+        type IFutureStateFactory = Injectable<
+            (...args: any[]) => IPromise<IState | undefined>
+        >;
 
         type IResolveFunction = Injectable<(...args: any[]) => IPromise<any>>;
     }

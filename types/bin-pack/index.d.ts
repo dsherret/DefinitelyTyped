@@ -6,7 +6,10 @@
  * @param options Packing options.  Use inPlace: true to modify the bins
  *    argument in-place.
  */
-declare function pack<T extends pack.Bin>(bins: T[], options?: pack.Options): pack.PackResult<T>;
+declare function pack<T extends pack.Bin>(
+    bins: T[],
+    options?: pack.Options,
+): pack.PackResult<T>;
 
 declare namespace pack {
     /** Packing options. */

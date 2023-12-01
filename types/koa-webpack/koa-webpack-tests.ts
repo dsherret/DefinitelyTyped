@@ -7,13 +7,13 @@ const config: webpack.Configuration = {};
 const compiler = webpack(config);
 const multiCompiler = webpack([]);
 
-app.use(ctx => {
+app.use((ctx) => {
     // $ExpectType MemoryFileSystem | undefined
     ctx.state.fs;
     ctx.body = ctx.state.fs!.createReadStream("file.js");
 });
 
-app.use(ctx => {
+app.use((ctx) => {
     // $ExpectType Stats
     ctx.state.stats;
     ctx.body = ctx.state.stats.toJson();
@@ -55,7 +55,7 @@ koaWebpack({
         server: undefined,
         stats: { context: process.cwd() },
     },
-}).then(middleware => {
+}).then((middleware) => {
     app.use(middleware);
 
     // Accessing the underlying middleware

@@ -24,7 +24,12 @@ const jsonParser = app.use(
         inflate: true,
         limit: "100kb",
         type: "application/*",
-        verify: (req: http.IncomingMessage, res: http.ServerResponse, buf: Buffer, encoding: string) => {
+        verify: (
+            req: http.IncomingMessage,
+            res: http.ServerResponse,
+            buf: Buffer,
+            encoding: string,
+        ) => {
             return true;
         },
     }),

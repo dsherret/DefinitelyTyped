@@ -27,4 +27,7 @@ export interface SignerInfo {
 
 export function getAccountAddress(alias: string): Promise<string>;
 
-export function createAccount(props: { name?: string; keys?: KeyObject[] | PublicKey[] }): Promise<string>;
+export function createAccount(props: {
+    name?: string;
+    keys?: KeyObject[] | PublicKey[];
+}): Promise<string>;

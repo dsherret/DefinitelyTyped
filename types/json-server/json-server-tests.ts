@@ -4,14 +4,22 @@ import * as FileSync from "lowdb/adapters/FileSync";
 
 const server = jsonServer.create();
 
-const inMemoryDbRouter = jsonServer.router({ todos: [] as any[], users: [] as any[] });
+const inMemoryDbRouter = jsonServer.router({
+    todos: [] as any[],
+    users: [] as any[],
+});
 
-const inFileDbRouter = jsonServer.router("db.json", { foreignKeySuffix: "_id" });
+const inFileDbRouter = jsonServer.router("db.json", {
+    foreignKeySuffix: "_id",
+});
 
 const db = lowdb(new FileSync("db.json"));
 const preExistingDbRouter = jsonServer.router(db);
 
-console.log("Pre-existing DB is kept:", (db === preExistingDbRouter.db).toString());
+console.log(
+    "Pre-existing DB is kept:",
+    (db === preExistingDbRouter.db).toString(),
+);
 
 const middlewaresOptions: jsonServer.MiddlewaresOptions = {
     bodyParser: true,

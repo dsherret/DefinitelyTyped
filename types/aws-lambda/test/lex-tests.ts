@@ -101,7 +101,8 @@ lexDialogActionBase.message!.contentType === "PlainText";
 lexDialogActionBase.message!.contentType === "SSML";
 str = lexDialogActionBase.message!.content;
 num = lexDialogActionBase.responseCard!.version;
-lexDialogActionBase.responseCard!.contentType === "application/vnd.amazonaws.card.generic";
+lexDialogActionBase.responseCard!.contentType ===
+    "application/vnd.amazonaws.card.generic";
 // $ExpectType LexGenericAttachment
 lexDialogActionBase.responseCard!.genericAttachments[0];
 

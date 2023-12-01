@@ -12,7 +12,8 @@ taker.task("task1", (cb: () => void) => {
 });
 
 taker.task("task2", () => {
-    return fs.createReadStream("./myFile.js")
+    return fs
+        .createReadStream("./myFile.js")
         .pipe(fs.createWriteStream("./myFile.copy.js"));
 });
 
@@ -34,11 +35,7 @@ taker.task(task4);
 // $ExpectType TaskFunctionWrapped | undefined
 const wrappedTask4 = taker.task("task4");
 
-const {
-    displayName,
-    description,
-    flags,
-} = wrappedTask4!.unwrap();
+const { displayName, description, flags } = wrappedTask4!.unwrap();
 
 taker.task("task5", () => {
     const emitter = new EventEmitter();
@@ -49,7 +46,11 @@ taker.task("task5", () => {
 taker.task("task6", () => exec("ls"));
 
 declare const task7: () => {
-    subscribe(next?: (v: any) => void, error?: (e: any) => void, complete?: () => void): any;
+    subscribe(
+        next?: (v: any) => void,
+        error?: (e: any) => void,
+        complete?: () => void,
+    ): any;
 };
 taker.task("task7", task7);
 taker.task("combined", taker.series("task1", "task2"));

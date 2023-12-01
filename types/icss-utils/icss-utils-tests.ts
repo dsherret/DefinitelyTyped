@@ -1,4 +1,9 @@
-import { createICSSRules, extractICSS, replaceSymbols, replaceValueSymbols } from "icss-utils";
+import {
+    createICSSRules,
+    extractICSS,
+    replaceSymbols,
+    replaceValueSymbols,
+} from "icss-utils";
 import postcss = require("postcss");
 
 const root = postcss.parse("a#css.string { color: red }");
@@ -8,7 +13,10 @@ const replacements = {
     lazy: "energetic",
 };
 
-const s: string = replaceValueSymbols("The quick brown fox jumps over the lazy dog.", replacements);
+const s: string = replaceValueSymbols(
+    "The quick brown fox jumps over the lazy dog.",
+    replacements,
+);
 
 replaceSymbols(root, replacements);
 

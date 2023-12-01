@@ -9,7 +9,11 @@ declare function scryptsy(
     r: number,
     p: number,
     dkLen: number,
-    progressCallback?: (status: { current: number; total: number; percent: number }) => void,
+    progressCallback?: (status: {
+        current: number;
+        total: number;
+        percent: number;
+    }) => void,
 ): Buffer;
 
 declare namespace scryptsy {

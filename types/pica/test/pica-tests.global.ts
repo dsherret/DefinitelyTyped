@@ -23,7 +23,7 @@ const imageBitmapPromise: Promise<ImageBitmap> = createImageBitmap(image);
 // Resize image
 resizer.resize(image, canvas);
 resizerWithOptions.resize(image, canvas);
-imageBitmapPromise.then(imageBitmap => {
+imageBitmapPromise.then((imageBitmap) => {
     resizer.resize(imageBitmap, canvas);
     resizerWithOptions.resize(imageBitmap, canvas);
 });

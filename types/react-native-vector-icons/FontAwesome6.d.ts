@@ -19,14 +19,19 @@ export type Omit<T, K> = Pick<T, Exclude<keyof T, K>>;
 
 export type FontAwesome6IconVariants = keyof Omit<typeof FA6Style, "regular">;
 
-export type FontAwesome6IconProps = { [K in FontAwesome6IconVariants]?: boolean } & IconProps;
+export type FontAwesome6IconProps = {
+    [K in FontAwesome6IconVariants]?: boolean;
+} & IconProps;
 
 export class FontAwesome6IconButton extends Component<
     { [K in FontAwesome6IconVariants]?: boolean } & IconButtonProps,
     any
 > {}
 
-export default class FontAwesome6Icon extends Component<FontAwesome6IconProps, any> {
+export default class FontAwesome6Icon extends Component<
+    FontAwesome6IconProps,
+    any
+> {
     static getImageSource(
         name: string,
         size?: number,

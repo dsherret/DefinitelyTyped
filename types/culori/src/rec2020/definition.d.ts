@@ -23,6 +23,7 @@ interface Rec2020DefinitionMixin {
     serialize: "rec2020";
 }
 
-declare const definition: Omit<typeof rgb, keyof Rec2020DefinitionMixin> & Rec2020DefinitionMixin;
+declare const definition: Omit<typeof rgb, keyof Rec2020DefinitionMixin> &
+    Rec2020DefinitionMixin;
 
 export default definition;

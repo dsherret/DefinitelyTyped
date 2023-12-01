@@ -15,4 +15,7 @@ export interface OptimisticMutationConfig {
  * Higher-level helper function to execute a mutation against a specific
  * environment.
  */
-export function applyOptimisticMutation(environment: Environment, config: OptimisticMutationConfig): Disposable;
+export function applyOptimisticMutation(
+    environment: Environment,
+    config: OptimisticMutationConfig,
+): Disposable;

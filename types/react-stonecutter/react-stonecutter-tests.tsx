@@ -1,5 +1,10 @@
 import * as React from "react";
-import { layout, makeResponsive, SpringGrid, SpringGridProps } from "react-stonecutter";
+import {
+    layout,
+    makeResponsive,
+    SpringGrid,
+    SpringGridProps,
+} from "react-stonecutter";
 
 const ResponsiveGrid: typeof SpringGrid = makeResponsive(SpringGrid, {
     maxWidth: 1920,
@@ -31,13 +36,9 @@ const gridElems: JSX.Element[] = [
 ];
 
 const StonecutterGrid: JSX.Element = (
-    <SpringGrid {...gridConfig}>
-        {gridElems}
-    </SpringGrid>
+    <SpringGrid {...gridConfig}>{gridElems}</SpringGrid>
 );
 
 const StonecutterGridResponsive: JSX.Element = (
-    <ResponsiveGrid {...gridConfig}>
-        {gridElems}
-    </ResponsiveGrid>
+    <ResponsiveGrid {...gridConfig}>{gridElems}</ResponsiveGrid>
 );

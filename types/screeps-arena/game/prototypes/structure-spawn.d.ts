@@ -18,11 +18,18 @@ declare module "game/prototypes" {
          * Start the creep spawning process. The required energy amount can be withdrawn from all spawns and extensions in the room.
          * @returns A creep on success or an errorcode on failure
          */
-        spawnCreep(
-            body: BodyPartConstant[],
-        ): { object?: Creep | undefined; error?: ERR_BUSY | ERR_INVALID_ARGS | ERR_NOT_ENOUGH_ENERGY | undefined };
+        spawnCreep(body: BodyPartConstant[]): {
+            object?: Creep | undefined;
+            error?:
+                | ERR_BUSY
+                | ERR_INVALID_ARGS
+                | ERR_NOT_ENOUGH_ENERGY
+                | undefined;
+        };
     }
-    interface StructureSpawnConstructor extends _Constructor<StructureSpawn>, _ConstructorById<StructureSpawn> {}
+    interface StructureSpawnConstructor
+        extends _Constructor<StructureSpawn>,
+            _ConstructorById<StructureSpawn> {}
 
     export const StructureSpawn: StructureSpawnConstructor;
 }

@@ -132,23 +132,42 @@ class CallbacksTest {
     }
 
     OnScrollStart() {
-        $(".output .onScrollStart").stop(true, true).css("display", "inline-block").delay(500).fadeOut(500);
+        $(".output .onScrollStart")
+            .stop(true, true)
+            .css("display", "inline-block")
+            .delay(500)
+            .fadeOut(500);
     }
 
     OnScroll() {
-        $(".output .onScroll").stop(true, true).css("display", "inline-block").delay(500).fadeOut(500);
+        $(".output .onScroll")
+            .stop(true, true)
+            .css("display", "inline-block")
+            .delay(500)
+            .fadeOut(500);
     }
 
     OnTotalScroll() {
-        $(".output .onTotalScroll").stop(true, true).css("display", "inline-block").delay(500).fadeOut(500);
+        $(".output .onTotalScroll")
+            .stop(true, true)
+            .css("display", "inline-block")
+            .delay(500)
+            .fadeOut(500);
     }
 
     OnTotalScrollBack() {
-        $(".output .onTotalScrollBack").stop(true, true).css("display", "inline-block").delay(500).fadeOut(500);
+        $(".output .onTotalScrollBack")
+            .stop(true, true)
+            .css("display", "inline-block")
+            .delay(500)
+            .fadeOut(500);
     }
 
     WhileScrolling() {
-        $(".output .whileScrolling").stop(true, true).css("display", "inline-block").fadeOut(500);
+        $(".output .whileScrolling")
+            .stop(true, true)
+            .css("display", "inline-block")
+            .fadeOut(500);
     }
 }
 

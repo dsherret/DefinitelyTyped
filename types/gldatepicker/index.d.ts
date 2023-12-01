@@ -44,8 +44,12 @@ interface GlDatePickerOptions {
     monthNames?: string[] | undefined;
     dowNames?: string[] | undefined;
     dowOffset?: number | undefined;
-    onClick?: ((inputElement: JQuery, cell: JQuery, date: Date, data: any) => void) | undefined;
-    onHover?: ((inputElement: JQuery, cell: JQuery, date: Date, data: any) => void) | undefined;
+    onClick?:
+        | ((inputElement: JQuery, cell: JQuery, date: Date, data: any) => void)
+        | undefined;
+    onHover?:
+        | ((inputElement: JQuery, cell: JQuery, date: Date, data: any) => void)
+        | undefined;
     onShow?: ((calendar: JQuery) => void) | undefined;
     onHide?: ((calendar: JQuery) => void) | undefined;
 }

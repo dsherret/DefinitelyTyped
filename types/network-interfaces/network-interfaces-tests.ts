@@ -15,8 +15,7 @@ function test() {
         let ifc = ni.getInterface(options);
         const ifcList = ni.getInterfaces(ifcName);
         ifc = ni.fromIp(ip, options);
-    } catch (e) {
-    }
+    } catch (e) {}
 }
 
 test();

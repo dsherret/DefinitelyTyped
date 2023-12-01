@@ -10,6 +10,9 @@ export interface CallbackNode {
     prev: CallbackNode | null;
 }
 
-export function unstable_scheduleWork(callback: FrameCallbackType, options?: { timeout: number }): CallbackNode;
+export function unstable_scheduleWork(
+    callback: FrameCallbackType,
+    options?: { timeout: number },
+): CallbackNode;
 export function unstable_cancelScheduledWork(callbackNode: CallbackNode): void;
 export function unstable_now(): number;

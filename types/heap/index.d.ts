@@ -70,13 +70,25 @@ declare class Heap<T> {
     static heapify<T>(array: T[], cmp?: (a: T, b: T) => number): Heap<T>;
 
     // Update the position of the given item in the heap. This function should be called every time the item is being modified.
-    static updateItem<T>(array: T[], item: T, cmp?: (a: T, b: T) => number): void;
+    static updateItem<T>(
+        array: T[],
+        item: T,
+        cmp?: (a: T, b: T) => number,
+    ): void;
 
     // Find the n largest elements in a dataset.
-    static nlargest<T>(array: T[], n: number, cmp?: (a: T, b: T) => number): T[];
+    static nlargest<T>(
+        array: T[],
+        n: number,
+        cmp?: (a: T, b: T) => number,
+    ): T[];
 
     // Find the n smallest elements in a dataset.
-    static nsmallest<T>(array: T[], n: number, cmp?: (a: T, b: T) => number): T[];
+    static nsmallest<T>(
+        array: T[],
+        n: number,
+        cmp?: (a: T, b: T) => number,
+    ): T[];
 }
 
 export = Heap;

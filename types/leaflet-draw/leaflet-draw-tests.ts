@@ -2,9 +2,14 @@ import * as L from "leaflet";
 import "leaflet-draw";
 
 const osmUrl = "http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
-const osmAttrib = "&copy; <a href=\"http://openstreetmap.org/copyright\">OpenStreetMap</a> contributors";
+const osmAttrib =
+    '&copy; <a href="http://openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 const osm = L.tileLayer(osmUrl, { maxZoom: 18, attribution: osmAttrib });
-const map = L.map("map", { layers: [osm], center: L.latLng(-37.7772, 175.2756), zoom: 15 });
+const map = L.map("map", {
+    layers: [osm],
+    center: L.latLng(-37.7772, 175.2756),
+    zoom: 15,
+});
 
 const drawnItems = L.featureGroup();
 map.addLayer(drawnItems);
@@ -49,10 +54,16 @@ map.on(L.Draw.Event.CREATED, (e: L.DrawEvents.Created) => {
     drawnItems.addLayer(layer);
 });
 
-const examplePolygon: L.LatLngLiteral[] = [{ lng: 0, lat: 0 }, { lng: 10, lat: 0 }, { lng: 10, lat: 10 }, {
-    lng: 0,
-    lat: 10,
-}, { lng: 0, lat: 0 }];
+const examplePolygon: L.LatLngLiteral[] = [
+    { lng: 0, lat: 0 },
+    { lng: 10, lat: 0 },
+    { lng: 10, lat: 10 },
+    {
+        lng: 0,
+        lat: 10,
+    },
+    { lng: 0, lat: 0 },
+];
 const examplePolygonArea: number = L.GeometryUtil.geodesicArea(examplePolygon);
 L.GeometryUtil.readableArea(examplePolygonArea, true);
 
@@ -151,7 +162,8 @@ function testMarkerOptionsIcon() {
 }
 
 // Set the tooltip text when starting to draw a circle
-L.drawLocal.draw.handlers.circle.tooltip.start = "Click and drag to draw an amazingly cool circle.";
+L.drawLocal.draw.handlers.circle.tooltip.start =
+    "Click and drag to draw an amazingly cool circle.";
 
 // Set the button title text for the polygon button
 L.drawLocal.draw.toolbar.buttons.polygon = "Draw a cool polygon!";
@@ -160,11 +172,17 @@ L.drawLocal.draw.toolbar.buttons.polygon = "Draw a cool polygon!";
 L.drawLocal.draw.handlers.rectangle.tooltip.start = "Ssshhh, secrets!";
 
 // $ExpectType string
-type drawHandlerCircleRadius = L.Localization.Draw["handlers"]["circle"]["radius"];
+type drawHandlerCircleRadius =
+    L.Localization.Draw["handlers"]["circle"]["radius"];
 
 function testEditHandlers() {
-    const deleteHandler = new L.EditToolbar.Delete(map, { featureGroup: drawnItems });
-    const editHandler = new L.EditToolbar.Edit(map, { featureGroup: drawnItems, poly: { allowIntersection: false } });
+    const deleteHandler = new L.EditToolbar.Delete(map, {
+        featureGroup: drawnItems,
+    });
+    const editHandler = new L.EditToolbar.Edit(map, {
+        featureGroup: drawnItems,
+        poly: { allowIntersection: false },
+    });
 
     deleteHandler.enable();
     deleteHandler.disable();

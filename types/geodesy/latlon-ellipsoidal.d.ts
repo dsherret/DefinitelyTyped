@@ -28,7 +28,11 @@ declare class LatLonEllipsoidal {
     set datum(datum: Datum);
     static get ellipsoids(): Ellipsoids;
     static get datums(): Datums;
-    static parse(lat: number | string | object, lon?: number, height?: number): LatLonEllipsoidal;
+    static parse(
+        lat: number | string | object,
+        lon?: number,
+        height?: number,
+    ): LatLonEllipsoidal;
     toCartesian(): Cartesian;
     equals(point: LatLonEllipsoidal): boolean;
     toString(format?: string, dp?: Dp, dpHeight?: number): string;

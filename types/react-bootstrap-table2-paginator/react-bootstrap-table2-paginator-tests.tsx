@@ -34,7 +34,11 @@ const products: Product[] = [
     },
 ];
 
-const priceHeaderFormatter: HeaderFormatter<Product> = (column, colIndex, components) => {
+const priceHeaderFormatter: HeaderFormatter<Product> = (
+    column,
+    colIndex,
+    components,
+) => {
     return (
         <div>
             {column.text}
@@ -44,7 +48,11 @@ const priceHeaderFormatter: HeaderFormatter<Product> = (column, colIndex, compon
     );
 };
 
-const priceFormatter: ColumnFormatter<Product, { indexSquare: number }> = (cell, row, rowIndex) => {
+const priceFormatter: ColumnFormatter<Product, { indexSquare: number }> = (
+    cell,
+    row,
+    rowIndex,
+) => {
     return (
         <span>
             {rowIndex} - {cell}

@@ -8,7 +8,7 @@ let version: string = asana.VERSION;
 // Usage
 
 var client = asana.Client.create().useAccessToken("my_access_token");
-client.users.me().then(me => {
+client.users.me().then((me) => {
     console.log(me);
 });
 
@@ -91,7 +91,9 @@ client.users
         return response.data;
     })
     .filter((task: any) => {
-        return task.assignee_status === "today" || task.assignee_status === "new";
+        return (
+            task.assignee_status === "today" || task.assignee_status === "new"
+        );
     })
     .then((list: any) => {
         console.log(list);
@@ -132,7 +134,7 @@ client.workspaces.dispatchGet("/foo");
 client.webhooks.dispatchGet("/foo");
 
 // but not included in response objects
-client.tasks.getTask("123").then(task => {
+client.tasks.getTask("123").then((task) => {
     // @ts-expect-error
     task.dispatchGet("/foo");
 });
@@ -147,7 +149,7 @@ client.projects.findById("foobar", { opt_fields: "id,name" }).then();
 client.projects.findByWorkspace("foobar", { opt_fields: "id,name" }).then();
 client.projects.update("foobar", { name: "test" }).then();
 // minimal task update
-client.tasks.update("my_gid", {}).then(task => console.log(task.name));
+client.tasks.update("my_gid", {}).then((task) => console.log(task.name));
 // christmas tree update
 // https://developers.asana.com/docs/update-a-task
 client.tasks
@@ -172,7 +174,7 @@ client.tasks
         start_on: "some_date",
         workspace: "some_workspace_gid",
     })
-    .then(task => console.log(task.name));
+    .then((task) => console.log(task.name));
 
 // redacted response from client.tasks.getTask('gid here') with no options passed,
 // from a Premium-level account.
@@ -303,7 +305,7 @@ client.tasks
         start_on: "some_date",
         workspace: "some_workspace_gid",
     })
-    .then(task => console.log(task.name));
+    .then((task) => console.log(task.name));
 
 // https://github.com/Asana/node-asana/blob/master/test/resources/stories_spec.js
 client.stories.findById("foobar", { opt_fields: "id,name" }).then();
@@ -475,7 +477,7 @@ client.tasks.findAll({ section: "foobar" }).then();
 client.projects.findAll({ workspace: "foobar" }).then();
 
 // minimal task update
-client.tasks.updateTask("my_gid", {}).then(task => console.log(task.name));
+client.tasks.updateTask("my_gid", {}).then((task) => console.log(task.name));
 
 // christmas tree update
 // https://developers.asana.com/docs/update-a-task
@@ -496,7 +498,7 @@ client.tasks
         start_on: "some_date",
         workspace: "some_workspace_gid",
     })
-    .then(task => console.log(task.name));
+    .then((task) => console.log(task.name));
 
 client.tasks.getTask("task_gid");
 
@@ -510,36 +512,51 @@ client.workspaces.getWorkspaces();
 
 client.customFields
     .getCustomFieldsForWorkspace("workspace_gid")
-    .then((customFields: asana.resources.ResourceList<asana.resources.CustomFields.Type>) => {
-        const stream = customFields.stream();
-        stream.on("data", data => {
-            console.log(data);
-        });
-        stream.on("end", () => {});
-        stream.on("finish", () => {});
-        stream.on("error", () => {});
-    });
+    .then(
+        (
+            customFields: asana.resources.ResourceList<asana.resources.CustomFields.Type>,
+        ) => {
+            const stream = customFields.stream();
+            stream.on("data", (data) => {
+                console.log(data);
+            });
+            stream.on("end", () => {});
+            stream.on("finish", () => {});
+            stream.on("error", () => {});
+        },
+    );
 
 // no type in params
 // @ts-expect-error
 client.typeahead.typeaheadForWorkspace("workspace_gid", {});
 
 // opt_fields takes string, not array
-const badTypeaheadForWorkspaceQuery: asana.resources.Typeahead.TypeaheadParams = {
-    resource_type: "task",
-    query: "my query",
-    opt_pretty: true,
-    // @ts-expect-error
-    opt_fields: ["name", "completed", "parent", "custom_fields.gid", "custom_fields.number_value"],
-};
+const badTypeaheadForWorkspaceQuery: asana.resources.Typeahead.TypeaheadParams =
+    {
+        resource_type: "task",
+        query: "my query",
+        opt_pretty: true,
+        // @ts-expect-error
+        opt_fields: [
+            "name",
+            "completed",
+            "parent",
+            "custom_fields.gid",
+            "custom_fields.number_value",
+        ],
+    };
 
 const typeaheadForWorkspaceQuery: asana.resources.Typeahead.TypeaheadParams = {
     resource_type: "task",
     query: "my query",
     opt_pretty: true,
-    opt_fields: "name,completed,parent,custom_fields.gid,custom_fields.number_value",
+    opt_fields:
+        "name,completed,parent,custom_fields.gid,custom_fields.number_value",
 };
-client.typeahead.typeaheadForWorkspace("workspace_gid", typeaheadForWorkspaceQuery);
+client.typeahead.typeaheadForWorkspace(
+    "workspace_gid",
+    typeaheadForWorkspaceQuery,
+);
 
 client.tasks.create({
     workspace: "123",
@@ -552,7 +569,7 @@ client.tasks.create({
     ],
 });
 
-client.sections.findById("123").then(section => {
+client.sections.findById("123").then((section) => {
     const project: asana.resources.Projects.Type | undefined = section.project;
     const name: string = section.name;
     const createdAt: string = section.created_at;
@@ -560,33 +577,44 @@ client.sections.findById("123").then(section => {
 
 client.userTaskLists.findByUser("123", { workspace: "456" });
 
-client.typeahead.typeaheadForWorkspace("123", { resource_type: "custom_field", query: "foo" }).then(customFields => {
-    const customField = customFields.data[0];
-    // @ts-expect-error
-    customField.completed_at;
-});
+client.typeahead
+    .typeaheadForWorkspace("123", {
+        resource_type: "custom_field",
+        query: "foo",
+    })
+    .then((customFields) => {
+        const customField = customFields.data[0];
+        // @ts-expect-error
+        customField.completed_at;
+    });
 
-client.typeahead.typeaheadForWorkspace("123", { resource_type: "project", query: "foo" }).then(projects => {
-    const project = projects.data[0];
-    // $ExpectType string
-    project.color;
-    // @ts-expect-error
-    tag.completed_at;
-});
+client.typeahead
+    .typeaheadForWorkspace("123", { resource_type: "project", query: "foo" })
+    .then((projects) => {
+        const project = projects.data[0];
+        // $ExpectType string
+        project.color;
+        // @ts-expect-error
+        tag.completed_at;
+    });
 
-client.typeahead.typeaheadForWorkspace("123", { resource_type: "portfolio", query: "foo" }).then(portfolios => {
-    const portfolio = portfolios.data[0];
-    // @ts-expect-error
-    portfolio.completed_at;
-});
+client.typeahead
+    .typeaheadForWorkspace("123", { resource_type: "portfolio", query: "foo" })
+    .then((portfolios) => {
+        const portfolio = portfolios.data[0];
+        // @ts-expect-error
+        portfolio.completed_at;
+    });
 
-client.typeahead.typeaheadForWorkspace("123", { resource_type: "tag", query: "foo" }).then(tags => {
-    const tag = tags.data[0];
-    // $ExpectType string
-    tag.notes;
-    // @ts-expect-error
-    tag.completed_at;
-});
+client.typeahead
+    .typeaheadForWorkspace("123", { resource_type: "tag", query: "foo" })
+    .then((tags) => {
+        const tag = tags.data[0];
+        // $ExpectType string
+        tag.notes;
+        // @ts-expect-error
+        tag.completed_at;
+    });
 
 client.typeahead
     .typeaheadForWorkspace("123", { resource_type: "task", query: "foo" })
@@ -598,10 +626,12 @@ client.typeahead
         task.color;
     });
 
-client.typeahead.typeaheadForWorkspace("123", { resource_type: "user", query: "foo" }).then(users => {
-    const user = users.data[0];
-    // $ExpectType Resource[]
-    user.workspaces;
-    // @ts-expect-error
-    user.completed_at;
-});
+client.typeahead
+    .typeaheadForWorkspace("123", { resource_type: "user", query: "foo" })
+    .then((users) => {
+        const user = users.data[0];
+        // $ExpectType Resource[]
+        user.workspaces;
+        // @ts-expect-error
+        user.completed_at;
+    });

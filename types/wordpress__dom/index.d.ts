@@ -85,7 +85,10 @@ export function isEntirelySelected(element: HTMLElement): boolean;
  *
  * @returns `true` if at the horizontal edge, `false` if not.
  */
-export function isHorizontalEdge(container: HTMLElement, isReverse: boolean): boolean;
+export function isHorizontalEdge(
+    container: HTMLElement,
+    isReverse: boolean,
+): boolean;
 
 /**
  * Check whether the given element is a text field, where text field is defined
@@ -107,7 +110,10 @@ export function isTextField(element: HTMLElement): boolean;
  *
  * @returns `true` if at the vertical edge, `false` if not.
  */
-export function isVerticalEdge(container: HTMLElement, isReverse: boolean): boolean;
+export function isVerticalEdge(
+    container: HTMLElement,
+    isReverse: boolean,
+): boolean;
 
 /**
  * Places the caret at start or end of a given element.
@@ -115,7 +121,10 @@ export function isVerticalEdge(container: HTMLElement, isReverse: boolean): bool
  * @param container - Focusable element.
  * @param isReverse - `true` for end, `false` for start.
  */
-export function placeCaretAtHorizontalEdge(container: HTMLElement | undefined, isReverse: boolean): void;
+export function placeCaretAtHorizontalEdge(
+    container: HTMLElement | undefined,
+    isReverse: boolean,
+): void;
 
 /**
  * Places the caret at the top or bottom of a given element.
@@ -153,7 +162,10 @@ export function replace(processedNode: Node, newNode: Node): void;
  * @param node - The node to replace.
  * @param tagName - The new tag name.
  */
-export function replaceTag<T extends keyof HTMLElementTagNameMap>(node: Node, tagName: T): HTMLElementTagNameMap[T];
+export function replaceTag<T extends keyof HTMLElementTagNameMap>(
+    node: Node,
+    tagName: T,
+): HTMLElementTagNameMap[T];
 
 /**
  * Unwrap the given node. This means any child nodes are moved to the parent.

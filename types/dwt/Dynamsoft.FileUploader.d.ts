@@ -10,13 +10,8 @@ export interface FileUploader {
      */
     Init(
         URL: string,
-        successCallback: (
-            uploadManager: UploadManager,
-        ) => void,
-        failureCallback: (
-            errorCode: number,
-            errorString: string,
-        ) => void,
+        successCallback: (uploadManager: UploadManager) => void,
+        failureCallback: (errorCode: number, errorString: string) => void,
     ): void;
 }
 export interface UploadManager {
@@ -67,11 +62,7 @@ export interface Job {
      * @argument errorCode The error code.
      * @argument errorString The error string.
      */
-    OnRunFailure: (
-        job: Job,
-        errorCode: number,
-        errorString: string,
-    ) => void;
+    OnRunFailure: (job: Job, errorCode: number, errorString: string) => void;
     /**
      * A callback triggered when the job succeeds.
      * @argument job Specify the job.
@@ -82,10 +73,7 @@ export interface Job {
      * @argument job Specify the job.
      * @argument percentage Return the percentage.
      */
-    OnUploadTransferPercentage: (
-        job: Job,
-        percentage: number,
-    ) => void;
+    OnUploadTransferPercentage: (job: Job, percentage: number) => void;
     /**
      * Specify the URL of the script to receive the upload.
      */
@@ -111,11 +99,7 @@ export interface SourceValue {
      * @param name Specify the name of the file.
      * @param key Specify the key of the file in the request. This key can be used to retrieve the file content in server-side scripts.
      */
-    Add: (
-        source: string,
-        name: string,
-        key?: string,
-    ) => void;
+    Add: (source: string, name: string, key?: string) => void;
 }
 export interface FormField {
     /**
@@ -123,8 +107,5 @@ export interface FormField {
      * @param key Specify the key of the field.
      * @param value Sepcify the value of the field.
      */
-    Add: (
-        key: string,
-        value: string,
-    ) => void;
+    Add: (key: string, value: string) => void;
 }

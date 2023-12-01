@@ -3,17 +3,21 @@ class EmployeesFactory {
     private readonly hub: ngSignalr.Hub;
     public all: Employee[];
 
-    constructor($rootScope: ng.IRootScopeService, Hub: ngSignalr.HubFactory, $timeout: ng.ITimeoutService) {
+    constructor(
+        $rootScope: ng.IRootScopeService,
+        Hub: ngSignalr.HubFactory,
+        $timeout: ng.ITimeoutService,
+    ) {
         // declaring the hub connection
         this.hub = new Hub("employee", {
             // client-side methods
             listeners: {
-                "lockEmployee": (id: number) => {
+                lockEmployee: (id: number) => {
                     var employee = this.find(id);
                     employee.Locked = true;
                     $rootScope.$apply();
                 },
-                "unlockEmployee": (id: number) => {
+                unlockEmployee: (id: number) => {
                     var employee = this.find(id);
                     employee.Locked = false;
                     $rootScope.$apply();
@@ -25,7 +29,7 @@ class EmployeesFactory {
 
             // query params sent on initial connection
             queryParams: {
-                "token": "exampletoken",
+                token: "exampletoken",
             },
 
             // handle connection error
@@ -67,6 +71,4 @@ interface Employee {
     Locked: boolean;
 }
 
-angular
-    .module("app", ["SignalR"])
-    .factory("Employees", EmployeesFactory);
+angular.module("app", ["SignalR"]).factory("Employees", EmployeesFactory);

@@ -32,7 +32,11 @@ declare namespace SemanticUI {
             name: K,
             value?: undefined,
         ): AccordionSettings._Impl[K];
-        <K extends keyof AccordionSettings>(behavior: "setting", name: K, value: AccordionSettings._Impl[K]): JQuery;
+        <K extends keyof AccordionSettings>(
+            behavior: "setting",
+            name: K,
+            value: AccordionSettings._Impl[K],
+        ): JQuery;
         (behavior: "setting", value: AccordionSettings): JQuery;
         (settings?: AccordionSettings): JQuery;
     }
@@ -43,32 +47,31 @@ declare namespace SemanticUI {
     type AccordionSettings = AccordionSettings.Param;
 
     namespace AccordionSettings {
-        type Param =
-            & (
-                | Pick<_Impl, "exclusive">
-                | Pick<_Impl, "on">
-                | Pick<_Impl, "animateChildren">
-                | Pick<_Impl, "closeNested">
-                | Pick<_Impl, "collapsible">
-                | Pick<_Impl, "duration">
-                | Pick<_Impl, "easing">
-                | Pick<_Impl, "observeChanges">
-                | Pick<_Impl, "onOpening">
-                | Pick<_Impl, "onOpen">
-                | Pick<_Impl, "onClosing">
-                | Pick<_Impl, "onClose">
-                | Pick<_Impl, "onChange">
-                | Pick<_Impl, "selector">
-                | Pick<_Impl, "className">
-                | Pick<_Impl, "error">
-                | Pick<_Impl, "namespace">
-                | Pick<_Impl, "name">
-                | Pick<_Impl, "silent">
-                | Pick<_Impl, "debug">
-                | Pick<_Impl, "performance">
-                | Pick<_Impl, "verbose">
-            )
-            & Partial<Pick<_Impl, keyof _Impl>>;
+        type Param = (
+            | Pick<_Impl, "exclusive">
+            | Pick<_Impl, "on">
+            | Pick<_Impl, "animateChildren">
+            | Pick<_Impl, "closeNested">
+            | Pick<_Impl, "collapsible">
+            | Pick<_Impl, "duration">
+            | Pick<_Impl, "easing">
+            | Pick<_Impl, "observeChanges">
+            | Pick<_Impl, "onOpening">
+            | Pick<_Impl, "onOpen">
+            | Pick<_Impl, "onClosing">
+            | Pick<_Impl, "onClose">
+            | Pick<_Impl, "onChange">
+            | Pick<_Impl, "selector">
+            | Pick<_Impl, "className">
+            | Pick<_Impl, "error">
+            | Pick<_Impl, "namespace">
+            | Pick<_Impl, "name">
+            | Pick<_Impl, "silent">
+            | Pick<_Impl, "debug">
+            | Pick<_Impl, "performance">
+            | Pick<_Impl, "verbose">
+        ) &
+            Partial<Pick<_Impl, keyof _Impl>>;
 
         interface _Impl {
             // region Behavior
@@ -213,14 +216,13 @@ declare namespace SemanticUI {
         type SelectorSettings = SelectorSettings.Param;
 
         namespace SelectorSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "accordion">
-                    | Pick<_Impl, "title">
-                    | Pick<_Impl, "trigger">
-                    | Pick<_Impl, "content">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (
+                | Pick<_Impl, "accordion">
+                | Pick<_Impl, "title">
+                | Pick<_Impl, "trigger">
+                | Pick<_Impl, "content">
+            ) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -245,12 +247,8 @@ declare namespace SemanticUI {
         type ClassNameSettings = ClassNameSettings.Param;
 
         namespace ClassNameSettings {
-            type Param =
-                & (
-                    | Pick<_Impl, "active">
-                    | Pick<_Impl, "animating">
-                )
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = (Pick<_Impl, "active"> | Pick<_Impl, "animating">) &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**
@@ -267,9 +265,8 @@ declare namespace SemanticUI {
         type ErrorSettings = ErrorSettings.Param;
 
         namespace ErrorSettings {
-            type Param =
-                & (Pick<_Impl, "method">)
-                & Partial<Pick<_Impl, keyof _Impl>>;
+            type Param = Pick<_Impl, "method"> &
+                Partial<Pick<_Impl, keyof _Impl>>;
 
             interface _Impl {
                 /**

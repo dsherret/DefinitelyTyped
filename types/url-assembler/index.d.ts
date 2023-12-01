@@ -18,8 +18,8 @@ interface UrlAssembler {
 interface UrlAssemblerConstructor {
     (baseUrl?: string): UrlAssembler;
     (urlAssembler: UrlAssembler): UrlAssembler;
-    new(baseUrl?: string): UrlAssembler;
-    new(urlAssembler: UrlAssembler): UrlAssembler;
+    new (baseUrl?: string): UrlAssembler;
+    new (urlAssembler: UrlAssembler): UrlAssembler;
 }
 
 declare const UrlAssembler: UrlAssemblerConstructor;

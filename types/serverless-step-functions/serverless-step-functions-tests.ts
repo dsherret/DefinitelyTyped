@@ -26,7 +26,8 @@ const stepFunctions: StepFunctions = {
             ],
             name: "myStateMachine",
             definition: {
-                Comment: "A Hello World example of the Amazon States Language using an AWS Lambda Function",
+                Comment:
+                    "A Hello World example of the Amazon States Language using an AWS Lambda Function",
                 StartAt: "HelloWorld1",
                 States: {
                     HelloWorld1: {
@@ -68,7 +69,8 @@ const stepFunctions: StepFunctions = {
                         Resource: "arn:aws:states:::dynamodb:updateItem",
                         Parameters: {
                             TableName: {
-                                "Fn::ImportValue": "MyExternalStack:ToDoTable:Name",
+                                "Fn::ImportValue":
+                                    "MyExternalStack:ToDoTable:Name",
                             },
                             Key: {
                                 id: {

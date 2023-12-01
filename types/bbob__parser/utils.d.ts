@@ -21,7 +21,10 @@ export interface CharGrabber {
 /**
  * Creates a grabber wrapper for source string, that helps to iterate over string char by char
  */
-export function createCharGrabber(source: string, options?: Options): CharGrabber;
+export function createCharGrabber(
+    source: string,
+    options?: Options,
+): CharGrabber;
 
 export function trimChar(str: string, charToRemove: string): string;
 

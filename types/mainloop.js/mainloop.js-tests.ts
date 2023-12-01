@@ -30,7 +30,7 @@ window.addEventListener("load", () => {
         ly = y,
         theta = 0;
     const radius = 120,
-        velocity = 0.1 * Math.PI / 180;
+        velocity = (0.1 * Math.PI) / 180;
 
     const actor = document.createElement("div");
     actor.style.width = "30px";
@@ -54,16 +54,15 @@ window.addEventListener("load", () => {
         cy = event.pageY;
     });
 
-    MainLoop
-        .setBegin((timestamp, delta) => {
-            lx = x;
-            ly = y;
-            x = cx + Math.cos(theta) * radius;
-            y = cy + Math.sin(theta) * radius;
-        })
+    MainLoop.setBegin((timestamp, delta) => {
+        lx = x;
+        ly = y;
+        x = cx + Math.cos(theta) * radius;
+        y = cy + Math.sin(theta) * radius;
+    })
         .setDraw((interpolationPercentage) => {
-            actor.style.left = (lx + (x - lx) * interpolationPercentage) + "px";
-            actor.style.top = (ly + (y - ly) * interpolationPercentage) + "px";
+            actor.style.left = lx + (x - lx) * interpolationPercentage + "px";
+            actor.style.top = ly + (y - ly) * interpolationPercentage + "px";
         })
         .setUpdate((delta) => {
             theta += velocity * delta;
@@ -79,7 +78,8 @@ window.addEventListener("load", () => {
         .start();
 
     document.body.addEventListener("keyup", (event) => {
-        if ((event.which || event.keyCode) === 80) { // Hit P to toggle Pause
+        if ((event.which || event.keyCode) === 80) {
+            // Hit P to toggle Pause
             if (MainLoop.isRunning()) {
                 MainLoop.stop();
             } else {

@@ -6,7 +6,9 @@ declare namespace vision {
          * Required object where each key is a file extension (e.g. 'html', 'hbr'), mapped to the npm module used for rendering the templates.
          * Alternatively, the extension can be mapped to an object
          */
-        engines: { [fileExtension: string]: NpmModule } | ServerViewsEnginesOptions;
+        engines:
+            | { [fileExtension: string]: NpmModule }
+            | ServerViewsEnginesOptions;
         /** defines the default filename extension to append to template names when multiple engines are configured and no explicit extension is provided for a given template. No default value. */
         defaultExtension?: string | undefined;
     }
@@ -21,7 +23,9 @@ declare namespace vision {
          */
         module: NpmModule;
     }
-    interface ServerViewsConfiguration extends ViewHandlerOrReplyOptions, EnginesConfiguration {
+    interface ServerViewsConfiguration
+        extends ViewHandlerOrReplyOptions,
+            EnginesConfiguration {
         /**
          * The root file path, or array of file paths, where partials are located.
          * Partials are small segments of template code that can be nested and reused throughout other templates.
@@ -113,14 +117,25 @@ declare namespace vision {
      * compiled is a function with signature function(context, options, callback) (the compiled async template)
      * and callback has the signature function(err, rendered).
      */
-    type ServerViewCompileSync = (template: string, options: any) => (context: any, options: any) => void;
-    type ServerViewCompileAsync = (template: string, options: any, next: ServerViewCompileNext) => void;
+    type ServerViewCompileSync = (
+        template: string,
+        options: any,
+    ) => (context: any, options: any) => void;
+    type ServerViewCompileAsync = (
+        template: string,
+        options: any,
+        next: ServerViewCompileNext,
+    ) => void;
 
     type ServerViewCompile = ServerViewCompileSync | ServerViewCompileAsync;
 
     type ServerViewCompileNext = (
         err: Error | null,
-        compiled: (context: any, options: any, callback: (err: null | Error, rendered: string | null) => void) => void,
+        compiled: (
+            context: any,
+            options: any,
+            callback: (err: null | Error, rendered: string | null) => void,
+        ) => void,
     ) => void;
 
     /**
@@ -136,7 +151,10 @@ declare namespace vision {
          * Initializes additional engine state.The config object is the engine configuration object allowing updates to be made.
          * This is useful for engines like Nunjucks that rely on additional state for rendering. next has the signature function(err).
          */
-        prepare?(config: EngineConfigurationObject, next: (err?: Error) => void): void;
+        prepare?(
+            config: EngineConfigurationObject,
+            next: (err?: Error) => void,
+        ): void;
         /**
          * Registers a partial for use during template rendering.
          * The name is the partial path that templates should use to reference the partial and src is the uncompiled template string for the partial.
@@ -157,7 +175,11 @@ declare namespace vision {
      * @param context - optional object used by the template to render context-specific result. Defaults to no context ({}).
      * @param options - optional object used to override the views manager configuration.
      */
-    type RenderMethod = (template: string, context?: any, options?: ServerViewsConfiguration) => Promise<string>;
+    type RenderMethod = (
+        template: string,
+        context?: any,
+        options?: ServerViewsConfiguration,
+    ) => Promise<string>;
 
     /**
      * View Manager
@@ -227,7 +249,11 @@ declare module "hapi" {
          *                 Cannot override isCached, partialsPath, or helpersPath which are only loaded at initialization.
          * @see {@link https://github.com/hapijs/vision/blob/master/API.md#replyviewtemplate-context-options}
          */
-        view(templatePath: string, context?: any, options?: vision.ViewHandlerOrReplyOptions): ResponseObject;
+        view(
+            templatePath: string,
+            context?: any,
+            options?: vision.ViewHandlerOrReplyOptions,
+        ): ResponseObject;
     }
 }
 
@@ -242,17 +268,20 @@ declare module "hapi" {
          * (these can be overriden by values explicitly set via the options).
          * @see {@link https://github.com/hapijs/vision/blob/master/API.md#the-view-handler}
          */
-        view?: string | {
-            /** the template filename and path, relative to the templates path configured via the server views manager. */
-            template: string;
-            /** optional object used by the template to render context-specific result. Defaults to no context {}. */
-            context?: object | undefined;
-            /**
-             * optional object used to override the server's views manager configuration for this response.
-             * Cannot override isCached, partialsPath, or helpersPath which are only loaded at initialization.
-             * TODO check if it can have `defaultExtension`.
-             */
-            options?: vision.ViewHandlerOrReplyOptions | undefined;
-        } | undefined;
+        view?:
+            | string
+            | {
+                  /** the template filename and path, relative to the templates path configured via the server views manager. */
+                  template: string;
+                  /** optional object used by the template to render context-specific result. Defaults to no context {}. */
+                  context?: object | undefined;
+                  /**
+                   * optional object used to override the server's views manager configuration for this response.
+                   * Cannot override isCached, partialsPath, or helpersPath which are only loaded at initialization.
+                   * TODO check if it can have `defaultExtension`.
+                   */
+                  options?: vision.ViewHandlerOrReplyOptions | undefined;
+              }
+            | undefined;
     }
 }

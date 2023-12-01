@@ -10,7 +10,9 @@ declare namespace OO.ui {
      *
      * @see https://doc.wikimedia.org/oojs-ui/master/js/#!/api/OO.ui.SearchInputWidget
      */
-    interface SearchInputWidget extends SearchInputWidget.Props, SearchInputWidget.Prototype {}
+    interface SearchInputWidget
+        extends SearchInputWidget.Props,
+            SearchInputWidget.Prototype {}
 
     namespace SearchInputWidget {
         type ConfigOptions = TextInputWidget.ConfigOptions;
@@ -46,7 +48,7 @@ declare namespace OO.ui {
 
         interface Constructor {
             /** @param config Configuration options */
-            new(config?: ConfigOptions): SearchInputWidget;
+            new (config?: ConfigOptions): SearchInputWidget;
             prototype: Prototype;
             static: Static;
             super: TextInputWidget.Constructor;

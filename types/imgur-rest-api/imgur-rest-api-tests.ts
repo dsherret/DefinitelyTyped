@@ -2,7 +2,9 @@ function testAccount(account: ImgurRestApi.Account): ImgurRestApi.Account {
     return account;
 }
 
-function testAccountSettings(accountSettings: ImgurRestApi.AccountSettings): ImgurRestApi.AccountSettings {
+function testAccountSettings(
+    accountSettings: ImgurRestApi.AccountSettings,
+): ImgurRestApi.AccountSettings {
     return accountSettings;
 }
 
@@ -18,35 +20,47 @@ function testComment(comment: ImgurRestApi.Comment): ImgurRestApi.Comment {
     return comment;
 }
 
-function testConversation(conversation: ImgurRestApi.Conversation): ImgurRestApi.Conversation {
+function testConversation(
+    conversation: ImgurRestApi.Conversation,
+): ImgurRestApi.Conversation {
     return conversation;
 }
 
-function testCustomGallery(customGallery: ImgurRestApi.CustomGallery): ImgurRestApi.CustomGallery {
+function testCustomGallery(
+    customGallery: ImgurRestApi.CustomGallery,
+): ImgurRestApi.CustomGallery {
     return customGallery;
 }
 
-function testGalleryItem(galleryItem: ImgurRestApi.GalleryItem): ImgurRestApi.GalleryItem {
+function testGalleryItem(
+    galleryItem: ImgurRestApi.GalleryItem,
+): ImgurRestApi.GalleryItem {
     return galleryItem;
 }
 
-function testGalleryAlbum(galleryItem: ImgurRestApi.GalleryItem): ImgurRestApi.GalleryAlbum {
+function testGalleryAlbum(
+    galleryItem: ImgurRestApi.GalleryItem,
+): ImgurRestApi.GalleryAlbum {
     if (galleryItem.is_album) {
-        var galleryAlbum = <ImgurRestApi.GalleryAlbum> galleryItem;
+        var galleryAlbum = <ImgurRestApi.GalleryAlbum>galleryItem;
         return galleryAlbum;
     }
     return null;
 }
 
-function testGalleryImage(galleryItem: ImgurRestApi.GalleryItem): ImgurRestApi.GalleryImage {
+function testGalleryImage(
+    galleryItem: ImgurRestApi.GalleryItem,
+): ImgurRestApi.GalleryImage {
     if (!galleryItem.is_album) {
-        var galleryImage = <ImgurRestApi.GalleryImage> galleryItem;
+        var galleryImage = <ImgurRestApi.GalleryImage>galleryItem;
         return galleryImage;
     }
     return null;
 }
 
-function testGalleryProfile(galleryProfile: ImgurRestApi.GalleryProfile): ImgurRestApi.GalleryProfile {
+function testGalleryProfile(
+    galleryProfile: ImgurRestApi.GalleryProfile,
+): ImgurRestApi.GalleryProfile {
     return galleryProfile;
 }
 
@@ -54,7 +68,9 @@ function testImage(image: ImgurRestApi.Image): ImgurRestApi.Image {
     return image;
 }
 
-function testMemeMeta(meta: ImgurRestApi.MemeMetadata): ImgurRestApi.MemeMetadata {
+function testMemeMeta(
+    meta: ImgurRestApi.MemeMetadata,
+): ImgurRestApi.MemeMetadata {
     return meta;
 }
 
@@ -90,9 +106,11 @@ function testVote(vote: ImgurRestApi.Vote): ImgurRestApi.Vote {
     return vote;
 }
 
-function testResponseWithError(response: ImgurRestApi.Response<ImgurRestApi.GalleryProfile>): ImgurRestApi.Error {
+function testResponseWithError(
+    response: ImgurRestApi.Response<ImgurRestApi.GalleryProfile>,
+): ImgurRestApi.Error {
     if (response.success === false) {
-        return <ImgurRestApi.Error> response.data;
+        return <ImgurRestApi.Error>response.data;
     }
     return null;
 }
@@ -101,7 +119,7 @@ function testResponseWithValue(
     response: ImgurRestApi.Response<ImgurRestApi.GalleryProfile>,
 ): ImgurRestApi.GalleryProfile {
     if (response.success === true) {
-        return <ImgurRestApi.GalleryProfile> response.data;
+        return <ImgurRestApi.GalleryProfile>response.data;
     }
     return null;
 }

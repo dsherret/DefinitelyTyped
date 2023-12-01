@@ -6,7 +6,7 @@
  * [Not an example]
  */
 (() => {
-    microsoftTeams.getContext(context => {
+    microsoftTeams.getContext((context) => {
         const {
             appIconPosition,
             appSessionId,
@@ -58,7 +58,7 @@
         context.isFullScreen = true;
     });
 
-    microsoftTeams.settings.getSettings(settings => {
+    microsoftTeams.settings.getSettings((settings) => {
         const { contentUrl, entityId } = settings;
     });
 
@@ -66,7 +66,7 @@
 
     microsoftTeams.navigateCrossDomain("https://bing.com");
 
-    microsoftTeams.registerOnThemeChangeHandler(theme => {
+    microsoftTeams.registerOnThemeChangeHandler((theme) => {
         microsoftTeams.shareDeepLink({
             subEntityId: "",
             subEntityLabel: theme,
@@ -79,14 +79,14 @@
         height: 200,
         width: 200,
         url: "",
-        successCallback: done => {},
+        successCallback: (done) => {},
     });
 
-    microsoftTeams.getTabInstances(tabInfo => {
+    microsoftTeams.getTabInstances((tabInfo) => {
         const tabInstances: microsoftTeams.TabInstance[] = tabInfo.teamTabs;
     });
 
-    microsoftTeams.getMruTabInstances(tabInfo => {
+    microsoftTeams.getMruTabInstances((tabInfo) => {
         const tabInstances: microsoftTeams.TabInstance[] = tabInfo.teamTabs;
     });
 })();

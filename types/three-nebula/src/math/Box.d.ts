@@ -1,7 +1,14 @@
 import { MATH_TYPE_BOX } from "./types";
 
 export default class Box {
-    constructor(x?: number, y?: number, z?: number, w?: number, h?: number, d?: number);
+    constructor(
+        x?: number,
+        y?: number,
+        z?: number,
+        w?: number,
+        h?: number,
+        d?: number,
+    );
     type: typeof MATH_TYPE_BOX;
     x: number;
     y: number;

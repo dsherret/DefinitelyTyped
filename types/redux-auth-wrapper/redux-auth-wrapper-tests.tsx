@@ -12,7 +12,10 @@ import {
 } from "redux-auth-wrapper/history3/redirect";
 
 import locationHelperBuilder from "redux-auth-wrapper/history4/locationHelper";
-import { connectedReduxRedirect, connectedRouterRedirect } from "redux-auth-wrapper/history4/redirect";
+import {
+    connectedReduxRedirect,
+    connectedRouterRedirect,
+} from "redux-auth-wrapper/history4/redirect";
 
 import authWrapper from "redux-auth-wrapper/authWrapper";
 import connectedAuthWrapper from "redux-auth-wrapper/connectedAuthWrapper";
@@ -25,10 +28,16 @@ interface TestComponentProps {
     foo: string;
 }
 
-const stringSelector = (state: TestReduxState, ownProps: TestComponentProps) => "fizz";
-const boolSelector = (state: TestReduxState, ownProps: TestComponentProps) => true;
-const stringStateSelector = (state: TestReduxState, nextState: TestReduxState) => "buzz";
-const boolStateSelector = (state: TestReduxState, nextState: TestReduxState) => true;
+const stringSelector = (state: TestReduxState, ownProps: TestComponentProps) =>
+    "fizz";
+const boolSelector = (state: TestReduxState, ownProps: TestComponentProps) =>
+    true;
+const stringStateSelector = (
+    state: TestReduxState,
+    nextState: TestReduxState,
+) => "buzz";
+const boolStateSelector = (state: TestReduxState, nextState: TestReduxState) =>
+    true;
 
 /* History 3 */
 
@@ -41,13 +50,8 @@ H3connectedRouterRedirect({
     allowRedirectBack: true,
     redirectQueryParamName: "redirect",
 })(
-    ({
-        foo,
-        isAuthenticated,
-        isAuthenticating,
-        redirect,
-        redirectPath,
-    }) => null,
+    ({ foo, isAuthenticated, isAuthenticating, redirect, redirectPath }) =>
+        null,
 );
 
 H3connectedReduxRedirect({
@@ -58,14 +62,7 @@ H3connectedReduxRedirect({
     wrapperDisplayName: "Auth",
     allowRedirectBack: boolSelector,
     redirectQueryParamName: "redirect",
-})(
-    ({
-        foo,
-        isAuthenticated,
-        isAuthenticating,
-        redirectPath,
-    }) => null,
-);
+})(({ foo, isAuthenticated, isAuthenticating, redirectPath }) => null);
 
 const store = createStore(() => ({}));
 
@@ -96,13 +93,8 @@ connectedRouterRedirect({
     allowRedirectBack: true,
     redirectQueryParamName: "redirect",
 })(
-    ({
-        foo,
-        isAuthenticated,
-        isAuthenticating,
-        redirect,
-        redirectPath,
-    }) => null,
+    ({ foo, isAuthenticated, isAuthenticating, redirect, redirectPath }) =>
+        null,
 );
 
 class Loading extends Component {
@@ -120,14 +112,7 @@ connectedReduxRedirect({
     wrapperDisplayName: "Auth",
     allowRedirectBack: true,
     redirectQueryParamName: "redirect",
-})(
-    ({
-        foo,
-        isAuthenticated,
-        isAuthenticating,
-        redirectPath,
-    }) => null,
-);
+})(({ foo, isAuthenticated, isAuthenticating, redirectPath }) => null);
 
 const helper = locationHelperBuilder<TestComponentProps>({
     redirectQueryParamName: "redirect",
@@ -142,13 +127,7 @@ authWrapper<TestComponentProps>({
     AuthenticatingComponent: "div",
     FailureComponent: "div",
     wrapperDisplayName: "Auth",
-})(
-    ({
-        foo,
-        isAuthenticated,
-        isAuthenticating,
-    }) => null,
-);
+})(({ foo, isAuthenticated, isAuthenticating }) => null);
 
 connectedAuthWrapper({
     authenticatedSelector: boolSelector,
@@ -156,10 +135,4 @@ connectedAuthWrapper({
     AuthenticatingComponent: "div",
     FailureComponent: "div",
     wrapperDisplayName: "Auth",
-})(
-    ({
-        foo,
-        isAuthenticated,
-        isAuthenticating,
-    }) => null,
-);
+})(({ foo, isAuthenticated, isAuthenticating }) => null);

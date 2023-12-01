@@ -15,7 +15,8 @@ class TestStream extends stream.Writable {
 function simpleUsage(callback: () => void) {
     var output = "";
     let testStream = new TestStream(output);
-    let out = asyncWriter.create(testStream)
+    let out = asyncWriter
+        .create(testStream)
         .on("error", (err: Error) => {
             console.error(err);
         })
@@ -34,7 +35,8 @@ function simpleUsage(callback: () => void) {
 function asyncUsage(callback: () => void) {
     var output = "";
     let testStream = new TestStream(output);
-    let out = asyncWriter.create(testStream)
+    let out = asyncWriter
+        .create(testStream)
         .on("error", (err: Error) => {
             console.error(err);
         })

@@ -206,7 +206,11 @@ export interface HostedFieldsTokenizePayload {
 /**
  * @description The name of a HostedFields attribute.
  */
-export type HostedFieldAttributeName = "aria-invalid" | "aria-required" | "disabled" | "placeholder";
+export type HostedFieldAttributeName =
+    | "aria-invalid"
+    | "aria-required"
+    | "disabled"
+    | "placeholder";
 
 /**
  * @description Fields used in setAttribute() and removeAttribute() for modifying a HostedFields instance's attributes.
@@ -317,7 +321,11 @@ export interface HostedFields {
         billingAddress?: any;
     }): Promise<HostedFieldsTokenizePayload>;
     tokenize(
-        options: { vault?: boolean | undefined; cardholderName?: string | undefined; billingAddress?: any },
+        options: {
+            vault?: boolean | undefined;
+            cardholderName?: string | undefined;
+            billingAddress?: any;
+        },
         callback: callback<HostedFieldsTokenizePayload>,
     ): void;
     tokenize(callback: callback<HostedFieldsTokenizePayload>): void;
@@ -370,7 +378,11 @@ export interface HostedFields {
      *   }
      * });
      */
-    setPlaceholder(field: string, placeholder: string, callback?: callback): void;
+    setPlaceholder(
+        field: string,
+        placeholder: string,
+        callback?: callback,
+    ): void;
 
     /**
      * @example
@@ -443,7 +455,10 @@ export interface HostedFields {
      *
      * @returns Returns a promise if no callback is provided.
      */
-    setAttribute(options: HostedFieldAttributeOptions, callback?: callback): void;
+    setAttribute(
+        options: HostedFieldAttributeOptions,
+        callback?: callback,
+    ): void;
 
     /**
      * Removes a supported attribute from a {@link module:braintree-web/hosted-fields~field field}.
@@ -465,7 +480,10 @@ export interface HostedFields {
      *
      * @returns Returns a promise if no callback is provided.
      */
-    removeAttribute(options: HostedFieldAttributeOptions, callback?: callback): void;
+    removeAttribute(
+        options: HostedFieldAttributeOptions,
+        callback?: callback,
+    ): void;
 
     /**
      * Sets a visually hidden message (for screen readers) on a {@link module:braintree-web/hosted-fields~field field}.

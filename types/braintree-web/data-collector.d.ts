@@ -19,6 +19,10 @@ export function create(options: {
     paypal?: boolean | undefined;
 }): Promise<DataCollector>;
 export function create(
-    options: { client: Client; kount?: boolean | undefined; paypal?: boolean | undefined },
+    options: {
+        client: Client;
+        kount?: boolean | undefined;
+        paypal?: boolean | undefined;
+    },
     callback: callback<DataCollector>,
 ): void;

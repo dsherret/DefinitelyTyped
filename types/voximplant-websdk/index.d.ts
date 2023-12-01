@@ -1403,7 +1403,9 @@ declare namespace VoxImplant {
          */
         addEventListener(
             eventName: VoxImplant.Events | VoxImplant.IMEvents,
-            eventHandler: (eventObject: VoxImplantEvent | VoxImplantIMEvent) => any,
+            eventHandler: (
+                eventObject: VoxImplantEvent | VoxImplantIMEvent,
+            ) => any,
         ): void;
         /**
          *    Add roster item (IM)
@@ -1426,7 +1428,10 @@ declare namespace VoxImplant {
          *    @param successCallback A function called in case of successful audio recording device change
          *    @param failedCallback A function called in case of problems while changing audio recording device
          */
-        attachRecordingDevice(successCallback?: () => any, failedCallback?: () => any): void;
+        attachRecordingDevice(
+            successCallback?: () => any,
+            failedCallback?: () => any,
+        ): void;
         /**
          *    Get a list of all currently available audio playback devices
          */
@@ -1451,7 +1456,12 @@ declare namespace VoxImplant {
          *    @param customData Custom string associated with the call session. It can be later obtained from Call History using HTTP API
          *    @param extraHeaders Optional custom parameters (SIP headers) that should be passed with call (INVITE) message. Parameter names must start with "X-" to be processed by application. IMPORTANT: Headers size limit is 200 bytes
          */
-        call(number: string, useVideo?: boolean, customData?: string, extraHeaders?: Object): Call;
+        call(
+            number: string,
+            useVideo?: boolean,
+            customData?: string,
+            extraHeaders?: Object,
+        ): Call;
         /**
          *    Get current config
          */
@@ -1478,7 +1488,11 @@ declare namespace VoxImplant {
          *    @param user_id User id (inviter)
          *    @param reason User-supplied decline reason
          */
-        declineChatRoomInvite(room: string, user_id: string, reason?: string): void;
+        declineChatRoomInvite(
+            room: string,
+            user_id: string,
+            reason?: string,
+        ): void;
         /**
          *    Disable microphone/camera if micRequired in VoxImplant.Config was set to false (WebRTC mode only)
          */
@@ -1494,7 +1508,11 @@ declare namespace VoxImplant {
          *    @param message_id Message id
          *    @param msg New message content
          */
-        editChatRoomMessage(room: string, message_id: string, msg: string): void;
+        editChatRoomMessage(
+            room: string,
+            message_id: string,
+            msg: string,
+        ): void;
         /**
          *    Edit message sent to user
          *
@@ -1511,7 +1529,12 @@ declare namespace VoxImplant {
          *    @param direction False/true to get messages older/newer than the message with specified id
          *    @param count Number of messages
          */
-        getChatRoomHistory(room: string, message_id?: string, direction?: boolean, count?: number): void;
+        getChatRoomHistory(
+            room: string,
+            message_id?: string,
+            direction?: boolean,
+            count?: number,
+        ): void;
         /**
          *    Get messages in a conversation with particular use
          *
@@ -1520,7 +1543,12 @@ declare namespace VoxImplant {
          *    @param direction False/true to get messages older/newer than the message with specified id
          *    @param count Number of messages
          */
-        getInstantMessagingHistory(user_id: string, message_id?: string, direction?: boolean, count?: number): void;
+        getInstantMessagingHistory(
+            user_id: string,
+            message_id?: string,
+            direction?: boolean,
+            count?: number,
+        ): void;
         /**
          *    Initialize SDK. SDKReady event will be dispatched after succesful SDK initialization. SDK can't be used until it's initialized
          *
@@ -1568,7 +1596,11 @@ declare namespace VoxImplant {
          *    @param code
          *    @param options Login options
          */
-        loginWithCode(username: string, code: string, options?: LoginOptions): void;
+        loginWithCode(
+            username: string,
+            code: string,
+            options?: LoginOptions,
+        ): void;
         /**
          *    Login into application using 'onetimekey' auth method
          *
@@ -1576,7 +1608,11 @@ declare namespace VoxImplant {
          *    @param hash
          *    @param options Login options
          */
-        loginWithOneTimeKey(username: string, hash: string, options?: LoginOptions): void;
+        loginWithOneTimeKey(
+            username: string,
+            hash: string,
+            options?: LoginOptions,
+        ): void;
         /**
          *    Move roster item group (IM)
          *
@@ -1584,7 +1620,11 @@ declare namespace VoxImplant {
          *    @param groupSrc Group name (source)
          *    @param groupDst Group name (destination)
          */
-        moveRosterItemGroup(user_id: string, groupSrc: string, groupDst: string): void;
+        moveRosterItemGroup(
+            user_id: string,
+            groupSrc: string,
+            groupDst: string,
+        ): void;
         /**
          *    Play ToneScript using WebAudio API
          *
@@ -1606,14 +1646,21 @@ declare namespace VoxImplant {
          *    @param user_id User id
          *    @param reason Reason
          */
-        removeChatRoomUser(room: string, user_id: string, reason?: string): void;
+        removeChatRoomUser(
+            room: string,
+            user_id: string,
+            reason?: string,
+        ): void;
         /**
          *    Remove handler for specified event
          *
          *    @param eventName Event name
          *    @param eventHandler Handler function
          */
-        removeEventListener(eventName: VoxImplant.Events | VoxImplant.IMEvents, eventHandler: () => any): void;
+        removeEventListener(
+            eventName: VoxImplant.Events | VoxImplant.IMEvents,
+            eventHandler: () => any,
+        ): void;
         /**
          *    Remove message sent to user
          *
@@ -1716,7 +1763,11 @@ declare namespace VoxImplant {
          *    @param type Message event type: VoxImplant.MessageEventType.Delivered or VoxImplant.MessageEventType.Displayed. See VoxImplant.MessageEventType enum
          *    @param message_id Message id(s)
          */
-        setMessageStatus(user_id: string, type: MessageEventType, message_id: string[]): void;
+        setMessageStatus(
+            user_id: string,
+            type: MessageEventType,
+            message_id: string[],
+        ): void;
         /**
          *    Set ACD status
          *
@@ -1792,7 +1843,11 @@ declare namespace VoxImplant {
          *    @param successCallback Called in WebRTC mode if audio source changed successfully
          *    @param failedCallback Called in WebRTC mode if audio source couldn't be changed successfully
          */
-        useAudioSource(id: number | string, successCallback?: () => any, failedCallback?: () => any): void;
+        useAudioSource(
+            id: number | string,
+            successCallback?: () => any,
+            failedCallback?: () => any,
+        ): void;
         /**
          *    Use specified audio source , use audioSources to get the list of available audio sources
          *
@@ -1800,7 +1855,11 @@ declare namespace VoxImplant {
          *    @param successCallback Called in WebRTC mode if video source changed successfully
          *    @param failedCallback Called in WebRTC mode if video source couldn't be changed successfully
          */
-        useVideoSource(id: number | string, successCallback?: () => any, failedCallback?: () => any): void;
+        useVideoSource(
+            id: number | string,
+            successCallback?: () => any,
+            failedCallback?: () => any,
+        ): void;
         /**
          *    Get a list of all currently available video sources / cameras
          */
@@ -1881,7 +1940,10 @@ declare namespace VoxImplant {
          *    @param eventName Event name
          *    @param eventHandler Handler function
          */
-        removeEventListener(eventName: VoxImplant.CallEvents, eventHandler: () => any): void;
+        removeEventListener(
+            eventName: VoxImplant.CallEvents,
+            eventHandler: () => any,
+        ): void;
         /**
          *    Send Info (SIP INFO) message inside the call
          *

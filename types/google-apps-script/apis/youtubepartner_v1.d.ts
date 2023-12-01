@@ -3,21 +3,34 @@ declare namespace GoogleAppsScript {
         namespace Collection {
             interface AssetLabelsCollection {
                 // Insert an asset label for an owner.
-                insert(resource: Schema.AssetLabel): YoutubePartner.Schema.AssetLabel;
+                insert(
+                    resource: Schema.AssetLabel,
+                ): YoutubePartner.Schema.AssetLabel;
                 // Insert an asset label for an owner.
-                insert(resource: Schema.AssetLabel, optionalArgs: object): YoutubePartner.Schema.AssetLabel;
+                insert(
+                    resource: Schema.AssetLabel,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.AssetLabel;
                 // Retrieves a list of all asset labels for an owner.
                 list(): YoutubePartner.Schema.AssetLabelListResponse;
                 // Retrieves a list of all asset labels for an owner.
-                list(optionalArgs: object): YoutubePartner.Schema.AssetLabelListResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.AssetLabelListResponse;
             }
             interface AssetMatchPolicyCollection {
                 // Retrieves the match policy assigned to the specified asset by the content owner associated with the authenticated user. This information is only accessible to an owner of the asset.
                 get(assetId: string): YoutubePartner.Schema.AssetMatchPolicy;
                 // Retrieves the match policy assigned to the specified asset by the content owner associated with the authenticated user. This information is only accessible to an owner of the asset.
-                get(assetId: string, optionalArgs: object): YoutubePartner.Schema.AssetMatchPolicy;
+                get(
+                    assetId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.AssetMatchPolicy;
                 // Updates the asset's match policy. If an asset has multiple owners, each owner may set its own match policy for the asset. YouTube then computes the match policy that is actually applied for the asset based on the territories where each owner owns the asset. This method supports patch semantics.
-                patch(resource: Schema.AssetMatchPolicy, assetId: string): YoutubePartner.Schema.AssetMatchPolicy;
+                patch(
+                    resource: Schema.AssetMatchPolicy,
+                    assetId: string,
+                ): YoutubePartner.Schema.AssetMatchPolicy;
                 // Updates the asset's match policy. If an asset has multiple owners, each owner may set its own match policy for the asset. YouTube then computes the match policy that is actually applied for the asset based on the territories where each owner owns the asset. This method supports patch semantics.
                 patch(
                     resource: Schema.AssetMatchPolicy,
@@ -25,7 +38,10 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): YoutubePartner.Schema.AssetMatchPolicy;
                 // Updates the asset's match policy. If an asset has multiple owners, each owner may set its own match policy for the asset. YouTube then computes the match policy that is actually applied for the asset based on the territories where each owner owns the asset.
-                update(resource: Schema.AssetMatchPolicy, assetId: string): YoutubePartner.Schema.AssetMatchPolicy;
+                update(
+                    resource: Schema.AssetMatchPolicy,
+                    assetId: string,
+                ): YoutubePartner.Schema.AssetMatchPolicy;
                 // Updates the asset's match policy. If an asset has multiple owners, each owner may set its own match policy for the asset. YouTube then computes the match policy that is actually applied for the asset based on the territories where each owner owns the asset.
                 update(
                     resource: Schema.AssetMatchPolicy,
@@ -35,16 +51,23 @@ declare namespace GoogleAppsScript {
             }
             interface AssetRelationshipsCollection {
                 // Creates a relationship that links two assets.
-                insert(resource: Schema.AssetRelationship): YoutubePartner.Schema.AssetRelationship;
+                insert(
+                    resource: Schema.AssetRelationship,
+                ): YoutubePartner.Schema.AssetRelationship;
                 // Creates a relationship that links two assets.
                 insert(
                     resource: Schema.AssetRelationship,
                     optionalArgs: object,
                 ): YoutubePartner.Schema.AssetRelationship;
                 // Retrieves a list of relationships for a given asset. The list contains relationships where the specified asset is either the parent (embedding) or child (embedded) asset in the relationship.
-                list(assetId: string): YoutubePartner.Schema.AssetRelationshipListResponse;
+                list(
+                    assetId: string,
+                ): YoutubePartner.Schema.AssetRelationshipListResponse;
                 // Retrieves a list of relationships for a given asset. The list contains relationships where the specified asset is either the parent (embedding) or child (embedded) asset in the relationship.
-                list(assetId: string, optionalArgs: object): YoutubePartner.Schema.AssetRelationshipListResponse;
+                list(
+                    assetId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.AssetRelationshipListResponse;
                 // Deletes a relationship between two assets.
                 remove(assetRelationshipId: string): void;
                 // Deletes a relationship between two assets.
@@ -54,53 +77,94 @@ declare namespace GoogleAppsScript {
                 // Searches for assets based on asset metadata. The method can retrieve all assets or only assets owned by the content owner. This method mimics the functionality of the advanced search feature on the Assets page in CMS.
                 list(): YoutubePartner.Schema.AssetSearchResponse;
                 // Searches for assets based on asset metadata. The method can retrieve all assets or only assets owned by the content owner. This method mimics the functionality of the advanced search feature on the Assets page in CMS.
-                list(optionalArgs: object): YoutubePartner.Schema.AssetSearchResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.AssetSearchResponse;
             }
             interface AssetSharesCollection {
                 // This method either retrieves a list of asset shares the partner owns and that map to a specified asset view ID or it retrieves a list of asset views associated with a specified asset share ID owned by the partner.
-                list(assetId: string): YoutubePartner.Schema.AssetShareListResponse;
+                list(
+                    assetId: string,
+                ): YoutubePartner.Schema.AssetShareListResponse;
                 // This method either retrieves a list of asset shares the partner owns and that map to a specified asset view ID or it retrieves a list of asset views associated with a specified asset share ID owned by the partner.
-                list(assetId: string, optionalArgs: object): YoutubePartner.Schema.AssetShareListResponse;
+                list(
+                    assetId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.AssetShareListResponse;
             }
             interface AssetsCollection {
                 // Retrieves the metadata for the specified asset. Note that if the request identifies an asset that has been merged with another asset, meaning that YouTube identified the requested asset as a duplicate, then the request retrieves the merged, or synthesized, asset.
                 get(assetId: string): YoutubePartner.Schema.Asset;
                 // Retrieves the metadata for the specified asset. Note that if the request identifies an asset that has been merged with another asset, meaning that YouTube identified the requested asset as a duplicate, then the request retrieves the merged, or synthesized, asset.
-                get(assetId: string, optionalArgs: object): YoutubePartner.Schema.Asset;
+                get(
+                    assetId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Asset;
                 // Inserts an asset with the specified metadata. After inserting an asset, you can set its ownership data and match policy.
                 insert(resource: Schema.Asset): YoutubePartner.Schema.Asset;
                 // Inserts an asset with the specified metadata. After inserting an asset, you can set its ownership data and match policy.
-                insert(resource: Schema.Asset, optionalArgs: object): YoutubePartner.Schema.Asset;
+                insert(
+                    resource: Schema.Asset,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Asset;
                 // Retrieves a list of assets based on asset metadata. The method can retrieve all assets or only assets owned by the content owner.
                 // Note that in cases where duplicate assets have been merged, the API response only contains the synthesized asset. (It does not contain the constituent assets that were merged into the synthesized asset.)
                 list(id: string): YoutubePartner.Schema.AssetListResponse;
                 // Retrieves a list of assets based on asset metadata. The method can retrieve all assets or only assets owned by the content owner.
                 // Note that in cases where duplicate assets have been merged, the API response only contains the synthesized asset. (It does not contain the constituent assets that were merged into the synthesized asset.)
-                list(id: string, optionalArgs: object): YoutubePartner.Schema.AssetListResponse;
+                list(
+                    id: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.AssetListResponse;
                 // Updates the metadata for the specified asset. This method supports patch semantics.
-                patch(resource: Schema.Asset, assetId: string): YoutubePartner.Schema.Asset;
+                patch(
+                    resource: Schema.Asset,
+                    assetId: string,
+                ): YoutubePartner.Schema.Asset;
                 // Updates the metadata for the specified asset. This method supports patch semantics.
-                patch(resource: Schema.Asset, assetId: string, optionalArgs: object): YoutubePartner.Schema.Asset;
+                patch(
+                    resource: Schema.Asset,
+                    assetId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Asset;
                 // Updates the metadata for the specified asset.
-                update(resource: Schema.Asset, assetId: string): YoutubePartner.Schema.Asset;
+                update(
+                    resource: Schema.Asset,
+                    assetId: string,
+                ): YoutubePartner.Schema.Asset;
                 // Updates the metadata for the specified asset.
-                update(resource: Schema.Asset, assetId: string, optionalArgs: object): YoutubePartner.Schema.Asset;
+                update(
+                    resource: Schema.Asset,
+                    assetId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Asset;
             }
             interface CampaignsCollection {
                 // Retrieves a particular campaign for an owner.
                 get(campaignId: string): YoutubePartner.Schema.Campaign;
                 // Retrieves a particular campaign for an owner.
-                get(campaignId: string, optionalArgs: object): YoutubePartner.Schema.Campaign;
+                get(
+                    campaignId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Campaign;
                 // Insert a new campaign for an owner using the specified campaign data.
-                insert(resource: Schema.Campaign): YoutubePartner.Schema.Campaign;
+                insert(
+                    resource: Schema.Campaign,
+                ): YoutubePartner.Schema.Campaign;
                 // Insert a new campaign for an owner using the specified campaign data.
-                insert(resource: Schema.Campaign, optionalArgs: object): YoutubePartner.Schema.Campaign;
+                insert(
+                    resource: Schema.Campaign,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Campaign;
                 // Retrieves a list of campaigns for an owner.
                 list(): YoutubePartner.Schema.CampaignList;
                 // Retrieves a list of campaigns for an owner.
                 list(optionalArgs: object): YoutubePartner.Schema.CampaignList;
                 // Update the data for a specific campaign. This method supports patch semantics.
-                patch(resource: Schema.Campaign, campaignId: string): YoutubePartner.Schema.Campaign;
+                patch(
+                    resource: Schema.Campaign,
+                    campaignId: string,
+                ): YoutubePartner.Schema.Campaign;
                 // Update the data for a specific campaign. This method supports patch semantics.
                 patch(
                     resource: Schema.Campaign,
@@ -112,7 +176,10 @@ declare namespace GoogleAppsScript {
                 // Deletes a specified campaign for an owner.
                 remove(campaignId: string, optionalArgs: object): void;
                 // Update the data for a specific campaign.
-                update(resource: Schema.Campaign, campaignId: string): YoutubePartner.Schema.Campaign;
+                update(
+                    resource: Schema.Campaign,
+                    campaignId: string,
+                ): YoutubePartner.Schema.Campaign;
                 // Update the data for a specific campaign.
                 update(
                     resource: Schema.Campaign,
@@ -124,19 +191,27 @@ declare namespace GoogleAppsScript {
                 // Retrieves the claim history for a specified claim.
                 get(claimId: string): YoutubePartner.Schema.ClaimHistory;
                 // Retrieves the claim history for a specified claim.
-                get(claimId: string, optionalArgs: object): YoutubePartner.Schema.ClaimHistory;
+                get(
+                    claimId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.ClaimHistory;
             }
             interface ClaimSearchCollection {
                 // Retrieves a list of claims that match the search criteria. You can search for claims that are associated with a specific asset or video or that match a specified query string.
                 list(): YoutubePartner.Schema.ClaimSearchResponse;
                 // Retrieves a list of claims that match the search criteria. You can search for claims that are associated with a specific asset or video or that match a specified query string.
-                list(optionalArgs: object): YoutubePartner.Schema.ClaimSearchResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.ClaimSearchResponse;
             }
             interface ClaimsCollection {
                 // Retrieves a specific claim by ID.
                 get(claimId: string): YoutubePartner.Schema.Claim;
                 // Retrieves a specific claim by ID.
-                get(claimId: string, optionalArgs: object): YoutubePartner.Schema.Claim;
+                get(
+                    claimId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Claim;
                 // Creates a claim. The video being claimed must have been uploaded to a channel associated with the same content owner as the API user sending the request. You can set the claim's policy in any of the following ways:
                 // - Use the claim resource's policy property to identify a saved policy by its unique ID.
                 // - Use the claim resource's policy property to specify a custom set of rules.
@@ -144,25 +219,46 @@ declare namespace GoogleAppsScript {
                 // Creates a claim. The video being claimed must have been uploaded to a channel associated with the same content owner as the API user sending the request. You can set the claim's policy in any of the following ways:
                 // - Use the claim resource's policy property to identify a saved policy by its unique ID.
                 // - Use the claim resource's policy property to specify a custom set of rules.
-                insert(resource: Schema.Claim, optionalArgs: object): YoutubePartner.Schema.Claim;
+                insert(
+                    resource: Schema.Claim,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Claim;
                 // Retrieves a list of claims administered by the content owner associated with the currently authenticated user. Results are sorted in descending order of creation time.
                 list(): YoutubePartner.Schema.ClaimListResponse;
                 // Retrieves a list of claims administered by the content owner associated with the currently authenticated user. Results are sorted in descending order of creation time.
-                list(optionalArgs: object): YoutubePartner.Schema.ClaimListResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.ClaimListResponse;
                 // Updates an existing claim by either changing its policy or its status. You can update a claim's status from active to inactive to effectively release the claim. This method supports patch semantics.
-                patch(resource: Schema.Claim, claimId: string): YoutubePartner.Schema.Claim;
+                patch(
+                    resource: Schema.Claim,
+                    claimId: string,
+                ): YoutubePartner.Schema.Claim;
                 // Updates an existing claim by either changing its policy or its status. You can update a claim's status from active to inactive to effectively release the claim. This method supports patch semantics.
-                patch(resource: Schema.Claim, claimId: string, optionalArgs: object): YoutubePartner.Schema.Claim;
+                patch(
+                    resource: Schema.Claim,
+                    claimId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Claim;
                 // Updates an existing claim by either changing its policy or its status. You can update a claim's status from active to inactive to effectively release the claim.
-                update(resource: Schema.Claim, claimId: string): YoutubePartner.Schema.Claim;
+                update(
+                    resource: Schema.Claim,
+                    claimId: string,
+                ): YoutubePartner.Schema.Claim;
                 // Updates an existing claim by either changing its policy or its status. You can update a claim's status from active to inactive to effectively release the claim.
-                update(resource: Schema.Claim, claimId: string, optionalArgs: object): YoutubePartner.Schema.Claim;
+                update(
+                    resource: Schema.Claim,
+                    claimId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Claim;
             }
             interface ContentOwnerAdvertisingOptionsCollection {
                 // Retrieves advertising options for the content owner associated with the authenticated user.
                 get(): YoutubePartner.Schema.ContentOwnerAdvertisingOption;
                 // Retrieves advertising options for the content owner associated with the authenticated user.
-                get(optionalArgs: object): YoutubePartner.Schema.ContentOwnerAdvertisingOption;
+                get(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.ContentOwnerAdvertisingOption;
                 // Updates advertising options for the content owner associated with the authenticated API user. This method supports patch semantics.
                 patch(
                     resource: Schema.ContentOwnerAdvertisingOption,
@@ -186,15 +282,23 @@ declare namespace GoogleAppsScript {
                 // Retrieves information about the specified content owner.
                 get(contentOwnerId: string): YoutubePartner.Schema.ContentOwner;
                 // Retrieves information about the specified content owner.
-                get(contentOwnerId: string, optionalArgs: object): YoutubePartner.Schema.ContentOwner;
+                get(
+                    contentOwnerId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.ContentOwner;
                 // Retrieves a list of content owners that match the request criteria.
                 list(): YoutubePartner.Schema.ContentOwnerListResponse;
                 // Retrieves a list of content owners that match the request criteria.
-                list(optionalArgs: object): YoutubePartner.Schema.ContentOwnerListResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.ContentOwnerListResponse;
             }
             interface LiveCuepointsCollection {
                 // Inserts a cuepoint into a live broadcast.
-                insert(resource: Schema.LiveCuepoint, channelId: string): YoutubePartner.Schema.LiveCuepoint;
+                insert(
+                    resource: Schema.LiveCuepoint,
+                    channelId: string,
+                ): YoutubePartner.Schema.LiveCuepoint;
                 // Inserts a cuepoint into a live broadcast.
                 insert(
                     resource: Schema.LiveCuepoint,
@@ -204,43 +308,76 @@ declare namespace GoogleAppsScript {
             }
             interface MetadataHistoryCollection {
                 // Retrieves a list of all metadata provided for an asset, regardless of which content owner provided the data.
-                list(assetId: string): YoutubePartner.Schema.MetadataHistoryListResponse;
+                list(
+                    assetId: string,
+                ): YoutubePartner.Schema.MetadataHistoryListResponse;
                 // Retrieves a list of all metadata provided for an asset, regardless of which content owner provided the data.
-                list(assetId: string, optionalArgs: object): YoutubePartner.Schema.MetadataHistoryListResponse;
+                list(
+                    assetId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.MetadataHistoryListResponse;
             }
             interface OrdersCollection {
                 // Retrieve the details of an existing order.
                 get(orderId: string): YoutubePartner.Schema.Order;
                 // Retrieve the details of an existing order.
-                get(orderId: string, optionalArgs: object): YoutubePartner.Schema.Order;
+                get(
+                    orderId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Order;
                 // Creates a new basic order entry in the YouTube premium asset order management system. You must supply at least a country and channel in the new order.
                 insert(resource: Schema.Order): YoutubePartner.Schema.Order;
                 // Creates a new basic order entry in the YouTube premium asset order management system. You must supply at least a country and channel in the new order.
-                insert(resource: Schema.Order, optionalArgs: object): YoutubePartner.Schema.Order;
+                insert(
+                    resource: Schema.Order,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Order;
                 // Return a list of orders, filtered by the parameters below, may return more than a single page of results.
                 list(): YoutubePartner.Schema.OrderListResponse;
                 // Return a list of orders, filtered by the parameters below, may return more than a single page of results.
-                list(optionalArgs: object): YoutubePartner.Schema.OrderListResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.OrderListResponse;
                 // Update the values in an existing order. This method supports patch semantics.
-                patch(resource: Schema.Order, orderId: string): YoutubePartner.Schema.Order;
+                patch(
+                    resource: Schema.Order,
+                    orderId: string,
+                ): YoutubePartner.Schema.Order;
                 // Update the values in an existing order. This method supports patch semantics.
-                patch(resource: Schema.Order, orderId: string, optionalArgs: object): YoutubePartner.Schema.Order;
+                patch(
+                    resource: Schema.Order,
+                    orderId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Order;
                 // Delete an order, which moves orders to inactive state and removes any associated video.
                 remove(orderId: string): void;
                 // Delete an order, which moves orders to inactive state and removes any associated video.
                 remove(orderId: string, optionalArgs: object): void;
                 // Update the values in an existing order.
-                update(resource: Schema.Order, orderId: string): YoutubePartner.Schema.Order;
+                update(
+                    resource: Schema.Order,
+                    orderId: string,
+                ): YoutubePartner.Schema.Order;
                 // Update the values in an existing order.
-                update(resource: Schema.Order, orderId: string, optionalArgs: object): YoutubePartner.Schema.Order;
+                update(
+                    resource: Schema.Order,
+                    orderId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Order;
             }
             interface OwnershipCollection {
                 // Retrieves the ownership data provided for the specified asset by the content owner associated with the authenticated user.
                 get(assetId: string): YoutubePartner.Schema.RightsOwnership;
                 // Retrieves the ownership data provided for the specified asset by the content owner associated with the authenticated user.
-                get(assetId: string, optionalArgs: object): YoutubePartner.Schema.RightsOwnership;
+                get(
+                    assetId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.RightsOwnership;
                 // Provides new ownership information for the specified asset. Note that YouTube may receive ownership information from multiple sources. For example, if an asset has multiple owners, each owner might send ownership data for the asset. YouTube algorithmically combines the ownership data received from all of those sources to generate the asset's canonical ownership data, which should provide the most comprehensive and accurate representation of the asset's ownership. This method supports patch semantics.
-                patch(resource: Schema.RightsOwnership, assetId: string): YoutubePartner.Schema.RightsOwnership;
+                patch(
+                    resource: Schema.RightsOwnership,
+                    assetId: string,
+                ): YoutubePartner.Schema.RightsOwnership;
                 // Provides new ownership information for the specified asset. Note that YouTube may receive ownership information from multiple sources. For example, if an asset has multiple owners, each owner might send ownership data for the asset. YouTube algorithmically combines the ownership data received from all of those sources to generate the asset's canonical ownership data, which should provide the most comprehensive and accurate representation of the asset's ownership. This method supports patch semantics.
                 patch(
                     resource: Schema.RightsOwnership,
@@ -248,7 +385,10 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): YoutubePartner.Schema.RightsOwnership;
                 // Provides new ownership information for the specified asset. Note that YouTube may receive ownership information from multiple sources. For example, if an asset has multiple owners, each owner might send ownership data for the asset. YouTube algorithmically combines the ownership data received from all of those sources to generate the asset's canonical ownership data, which should provide the most comprehensive and accurate representation of the asset's ownership.
-                update(resource: Schema.RightsOwnership, assetId: string): YoutubePartner.Schema.RightsOwnership;
+                update(
+                    resource: Schema.RightsOwnership,
+                    assetId: string,
+                ): YoutubePartner.Schema.RightsOwnership;
                 // Provides new ownership information for the specified asset. Note that YouTube may receive ownership information from multiple sources. For example, if an asset has multiple owners, each owner might send ownership data for the asset. YouTube algorithmically combines the ownership data received from all of those sources to generate the asset's canonical ownership data, which should provide the most comprehensive and accurate representation of the asset's ownership.
                 update(
                     resource: Schema.RightsOwnership,
@@ -258,47 +398,83 @@ declare namespace GoogleAppsScript {
             }
             interface OwnershipHistoryCollection {
                 // Retrieves a list of the ownership data for an asset, regardless of which content owner provided the data. The list only includes the most recent ownership data for each content owner. However, if the content owner has submitted ownership data through multiple data sources (API, content feeds, etc.), the list will contain the most recent data for each content owner and data source.
-                list(assetId: string): YoutubePartner.Schema.OwnershipHistoryListResponse;
+                list(
+                    assetId: string,
+                ): YoutubePartner.Schema.OwnershipHistoryListResponse;
                 // Retrieves a list of the ownership data for an asset, regardless of which content owner provided the data. The list only includes the most recent ownership data for each content owner. However, if the content owner has submitted ownership data through multiple data sources (API, content feeds, etc.), the list will contain the most recent data for each content owner and data source.
-                list(assetId: string, optionalArgs: object): YoutubePartner.Schema.OwnershipHistoryListResponse;
+                list(
+                    assetId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.OwnershipHistoryListResponse;
             }
             interface PackageCollection {
                 // Retrieves information for the specified package.
                 get(packageId: string): YoutubePartner.Schema.Package;
                 // Retrieves information for the specified package.
-                get(packageId: string, optionalArgs: object): YoutubePartner.Schema.Package;
+                get(
+                    packageId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Package;
                 // Inserts a metadata-only package.
-                insert(resource: Schema.Package): YoutubePartner.Schema.PackageInsertResponse;
+                insert(
+                    resource: Schema.Package,
+                ): YoutubePartner.Schema.PackageInsertResponse;
                 // Inserts a metadata-only package.
-                insert(resource: Schema.Package, optionalArgs: object): YoutubePartner.Schema.PackageInsertResponse;
+                insert(
+                    resource: Schema.Package,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.PackageInsertResponse;
             }
             interface PoliciesCollection {
                 // Retrieves the specified saved policy.
                 get(policyId: string): YoutubePartner.Schema.Policy;
                 // Retrieves the specified saved policy.
-                get(policyId: string, optionalArgs: object): YoutubePartner.Schema.Policy;
+                get(
+                    policyId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Policy;
                 // Creates a saved policy.
                 insert(resource: Schema.Policy): YoutubePartner.Schema.Policy;
                 // Creates a saved policy.
-                insert(resource: Schema.Policy, optionalArgs: object): YoutubePartner.Schema.Policy;
+                insert(
+                    resource: Schema.Policy,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Policy;
                 // Retrieves a list of the content owner's saved policies.
                 list(): YoutubePartner.Schema.PolicyList;
                 // Retrieves a list of the content owner's saved policies.
                 list(optionalArgs: object): YoutubePartner.Schema.PolicyList;
                 // Updates the specified saved policy. This method supports patch semantics.
-                patch(resource: Schema.Policy, policyId: string): YoutubePartner.Schema.Policy;
+                patch(
+                    resource: Schema.Policy,
+                    policyId: string,
+                ): YoutubePartner.Schema.Policy;
                 // Updates the specified saved policy. This method supports patch semantics.
-                patch(resource: Schema.Policy, policyId: string, optionalArgs: object): YoutubePartner.Schema.Policy;
+                patch(
+                    resource: Schema.Policy,
+                    policyId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Policy;
                 // Updates the specified saved policy.
-                update(resource: Schema.Policy, policyId: string): YoutubePartner.Schema.Policy;
+                update(
+                    resource: Schema.Policy,
+                    policyId: string,
+                ): YoutubePartner.Schema.Policy;
                 // Updates the specified saved policy.
-                update(resource: Schema.Policy, policyId: string, optionalArgs: object): YoutubePartner.Schema.Policy;
+                update(
+                    resource: Schema.Policy,
+                    policyId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Policy;
             }
             interface PublishersCollection {
                 // Retrieves information about the specified publisher.
                 get(publisherId: string): YoutubePartner.Schema.Publisher;
                 // Retrieves information about the specified publisher.
-                get(publisherId: string, optionalArgs: object): YoutubePartner.Schema.Publisher;
+                get(
+                    publisherId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Publisher;
                 // Retrieves a list of publishers that match the request criteria. This method is analogous to a publisher search function.
                 list(): YoutubePartner.Schema.PublisherList;
                 // Retrieves a list of publishers that match the request criteria. This method is analogous to a publisher search function.
@@ -306,27 +482,42 @@ declare namespace GoogleAppsScript {
             }
             interface ReferenceConflictsCollection {
                 // Retrieves information about the specified reference conflict.
-                get(referenceConflictId: string): YoutubePartner.Schema.ReferenceConflict;
+                get(
+                    referenceConflictId: string,
+                ): YoutubePartner.Schema.ReferenceConflict;
                 // Retrieves information about the specified reference conflict.
-                get(referenceConflictId: string, optionalArgs: object): YoutubePartner.Schema.ReferenceConflict;
+                get(
+                    referenceConflictId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.ReferenceConflict;
                 // Retrieves a list of unresolved reference conflicts.
                 list(): YoutubePartner.Schema.ReferenceConflictListResponse;
                 // Retrieves a list of unresolved reference conflicts.
-                list(optionalArgs: object): YoutubePartner.Schema.ReferenceConflictListResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.ReferenceConflictListResponse;
             }
             interface ReferencesCollection {
                 // Retrieves information about the specified reference.
                 get(referenceId: string): YoutubePartner.Schema.Reference;
                 // Retrieves information about the specified reference.
-                get(referenceId: string, optionalArgs: object): YoutubePartner.Schema.Reference;
+                get(
+                    referenceId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Reference;
                 // Creates a reference in one of the following ways:
                 // - If your request is uploading a reference file, YouTube creates the reference from the provided content. You can provide either a video/audio file or a pre-generated fingerprint. If you are providing a pre-generated fingerprint, set the reference resource's fpDirect property to true in the request body. In this flow, you can use either the multipart or resumable upload flows to provide the reference content.
                 // - If you want to create a reference using a claimed video as the reference content, use the claimId parameter to identify the claim.
-                insert(resource: Schema.Reference): YoutubePartner.Schema.Reference;
+                insert(
+                    resource: Schema.Reference,
+                ): YoutubePartner.Schema.Reference;
                 // Creates a reference in one of the following ways:
                 // - If your request is uploading a reference file, YouTube creates the reference from the provided content. You can provide either a video/audio file or a pre-generated fingerprint. If you are providing a pre-generated fingerprint, set the reference resource's fpDirect property to true in the request body. In this flow, you can use either the multipart or resumable upload flows to provide the reference content.
                 // - If you want to create a reference using a claimed video as the reference content, use the claimId parameter to identify the claim.
-                insert(resource: Schema.Reference, mediaData: any): YoutubePartner.Schema.Reference;
+                insert(
+                    resource: Schema.Reference,
+                    mediaData: any,
+                ): YoutubePartner.Schema.Reference;
                 // Creates a reference in one of the following ways:
                 // - If your request is uploading a reference file, YouTube creates the reference from the provided content. You can provide either a video/audio file or a pre-generated fingerprint. If you are providing a pre-generated fingerprint, set the reference resource's fpDirect property to true in the request body. In this flow, you can use either the multipart or resumable upload flows to provide the reference content.
                 // - If you want to create a reference using a claimed video as the reference content, use the claimId parameter to identify the claim.
@@ -338,9 +529,14 @@ declare namespace GoogleAppsScript {
                 // Retrieves a list of references by ID or the list of references for the specified asset.
                 list(): YoutubePartner.Schema.ReferenceListResponse;
                 // Retrieves a list of references by ID or the list of references for the specified asset.
-                list(optionalArgs: object): YoutubePartner.Schema.ReferenceListResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.ReferenceListResponse;
                 // Updates a reference. This method supports patch semantics.
-                patch(resource: Schema.Reference, referenceId: string): YoutubePartner.Schema.Reference;
+                patch(
+                    resource: Schema.Reference,
+                    referenceId: string,
+                ): YoutubePartner.Schema.Reference;
                 // Updates a reference. This method supports patch semantics.
                 patch(
                     resource: Schema.Reference,
@@ -348,7 +544,10 @@ declare namespace GoogleAppsScript {
                     optionalArgs: object,
                 ): YoutubePartner.Schema.Reference;
                 // Updates a reference.
-                update(resource: Schema.Reference, referenceId: string): YoutubePartner.Schema.Reference;
+                update(
+                    resource: Schema.Reference,
+                    referenceId: string,
+                ): YoutubePartner.Schema.Reference;
                 // Updates a reference.
                 update(
                     resource: Schema.Reference,
@@ -360,24 +559,32 @@ declare namespace GoogleAppsScript {
                 // Retrieves a list of spreadsheet templates for a content owner.
                 list(): YoutubePartner.Schema.SpreadsheetTemplateListResponse;
                 // Retrieves a list of spreadsheet templates for a content owner.
-                list(optionalArgs: object): YoutubePartner.Schema.SpreadsheetTemplateListResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.SpreadsheetTemplateListResponse;
             }
             interface UploaderCollection {
                 // Retrieves a list of uploaders for a content owner.
                 list(): YoutubePartner.Schema.UploaderListResponse;
                 // Retrieves a list of uploaders for a content owner.
-                list(optionalArgs: object): YoutubePartner.Schema.UploaderListResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.UploaderListResponse;
             }
             interface ValidatorCollection {
                 // Validate a metadata file.
-                validate(resource: Schema.ValidateRequest): YoutubePartner.Schema.ValidateResponse;
+                validate(
+                    resource: Schema.ValidateRequest,
+                ): YoutubePartner.Schema.ValidateResponse;
                 // Validate a metadata file.
                 validate(
                     resource: Schema.ValidateRequest,
                     optionalArgs: object,
                 ): YoutubePartner.Schema.ValidateResponse;
                 // Validate a metadata file asynchronously.
-                validateAsync(resource: Schema.ValidateAsyncRequest): YoutubePartner.Schema.ValidateAsyncResponse;
+                validateAsync(
+                    resource: Schema.ValidateAsyncRequest,
+                ): YoutubePartner.Schema.ValidateAsyncResponse;
                 // Validate a metadata file asynchronously.
                 validateAsync(
                     resource: Schema.ValidateAsyncRequest,
@@ -395,11 +602,18 @@ declare namespace GoogleAppsScript {
             }
             interface VideoAdvertisingOptionsCollection {
                 // Retrieves advertising settings for the specified video.
-                get(videoId: string): YoutubePartner.Schema.VideoAdvertisingOption;
+                get(
+                    videoId: string,
+                ): YoutubePartner.Schema.VideoAdvertisingOption;
                 // Retrieves advertising settings for the specified video.
-                get(videoId: string, optionalArgs: object): YoutubePartner.Schema.VideoAdvertisingOption;
+                get(
+                    videoId: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.VideoAdvertisingOption;
                 // Retrieves details about the types of allowed ads for a specified partner- or user-uploaded video.
-                getEnabledAds(videoId: string): YoutubePartner.Schema.VideoAdvertisingOptionGetEnabledAdsResponse;
+                getEnabledAds(
+                    videoId: string,
+                ): YoutubePartner.Schema.VideoAdvertisingOptionGetEnabledAdsResponse;
                 // Retrieves details about the types of allowed ads for a specified partner- or user-uploaded video.
                 getEnabledAds(
                     videoId: string,
@@ -432,15 +646,25 @@ declare namespace GoogleAppsScript {
                 // Retrieves a specific whitelisted channel by ID.
                 get(id: string): YoutubePartner.Schema.Whitelist;
                 // Retrieves a specific whitelisted channel by ID.
-                get(id: string, optionalArgs: object): YoutubePartner.Schema.Whitelist;
+                get(
+                    id: string,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Whitelist;
                 // Whitelist a YouTube channel for your content owner. Whitelisted channels are channels that are not owned or managed by you, but you would like to whitelist so that no claims from your assets are placed on videos uploaded to these channels.
-                insert(resource: Schema.Whitelist): YoutubePartner.Schema.Whitelist;
+                insert(
+                    resource: Schema.Whitelist,
+                ): YoutubePartner.Schema.Whitelist;
                 // Whitelist a YouTube channel for your content owner. Whitelisted channels are channels that are not owned or managed by you, but you would like to whitelist so that no claims from your assets are placed on videos uploaded to these channels.
-                insert(resource: Schema.Whitelist, optionalArgs: object): YoutubePartner.Schema.Whitelist;
+                insert(
+                    resource: Schema.Whitelist,
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.Whitelist;
                 // Retrieves a list of whitelisted channels for a content owner.
                 list(): YoutubePartner.Schema.WhitelistListResponse;
                 // Retrieves a list of whitelisted channels for a content owner.
-                list(optionalArgs: object): YoutubePartner.Schema.WhitelistListResponse;
+                list(
+                    optionalArgs: object,
+                ): YoutubePartner.Schema.WhitelistListResponse;
                 // Removes a whitelisted channel for a content owner.
                 remove(id: string): void;
                 // Removes a whitelisted channel for a content owner.
@@ -468,16 +692,28 @@ declare namespace GoogleAppsScript {
                 id?: string | undefined;
                 kind?: string | undefined;
                 label?: string[] | undefined;
-                matchPolicy?: YoutubePartner.Schema.AssetMatchPolicy | undefined;
-                matchPolicyEffective?: YoutubePartner.Schema.AssetMatchPolicy | undefined;
-                matchPolicyMine?: YoutubePartner.Schema.AssetMatchPolicy | undefined;
+                matchPolicy?:
+                    | YoutubePartner.Schema.AssetMatchPolicy
+                    | undefined;
+                matchPolicyEffective?:
+                    | YoutubePartner.Schema.AssetMatchPolicy
+                    | undefined;
+                matchPolicyMine?:
+                    | YoutubePartner.Schema.AssetMatchPolicy
+                    | undefined;
                 metadata?: YoutubePartner.Schema.Metadata | undefined;
                 metadataEffective?: YoutubePartner.Schema.Metadata | undefined;
                 metadataMine?: YoutubePartner.Schema.Metadata | undefined;
                 ownership?: YoutubePartner.Schema.RightsOwnership | undefined;
-                ownershipConflicts?: YoutubePartner.Schema.OwnershipConflicts | undefined;
-                ownershipEffective?: YoutubePartner.Schema.RightsOwnership | undefined;
-                ownershipMine?: YoutubePartner.Schema.RightsOwnership | undefined;
+                ownershipConflicts?:
+                    | YoutubePartner.Schema.OwnershipConflicts
+                    | undefined;
+                ownershipEffective?:
+                    | YoutubePartner.Schema.RightsOwnership
+                    | undefined;
+                ownershipMine?:
+                    | YoutubePartner.Schema.RightsOwnership
+                    | undefined;
                 status?: string | undefined;
                 timeCreated?: string | undefined;
                 type?: string | undefined;
@@ -547,10 +783,14 @@ declare namespace GoogleAppsScript {
                 timeLastModified?: string | undefined;
             }
             interface CampaignData {
-                campaignSource?: YoutubePartner.Schema.CampaignSource | undefined;
+                campaignSource?:
+                    | YoutubePartner.Schema.CampaignSource
+                    | undefined;
                 expireTime?: string | undefined;
                 name?: string | undefined;
-                promotedContent?: YoutubePartner.Schema.PromotedContent[] | undefined;
+                promotedContent?:
+                    | YoutubePartner.Schema.PromotedContent[]
+                    | undefined;
                 startTime?: string | undefined;
             }
             interface CampaignList {
@@ -586,7 +826,9 @@ declare namespace GoogleAppsScript {
                 source?: YoutubePartner.Schema.ClaimEventSource | undefined;
                 time?: string | undefined;
                 type?: string | undefined;
-                typeDetails?: YoutubePartner.Schema.ClaimEventTypeDetails | undefined;
+                typeDetails?:
+                    | YoutubePartner.Schema.ClaimEventTypeDetails
+                    | undefined;
             }
             interface ClaimEventSource {
                 contentOwnerId?: string | undefined;
@@ -613,10 +855,16 @@ declare namespace GoogleAppsScript {
                 previousPageToken?: string | undefined;
             }
             interface ClaimMatchInfo {
-                longestMatch?: YoutubePartner.Schema.ClaimMatchInfoLongestMatch | undefined;
-                matchSegments?: YoutubePartner.Schema.MatchSegment[] | undefined;
+                longestMatch?:
+                    | YoutubePartner.Schema.ClaimMatchInfoLongestMatch
+                    | undefined;
+                matchSegments?:
+                    | YoutubePartner.Schema.MatchSegment[]
+                    | undefined;
                 referenceId?: string | undefined;
-                totalMatch?: YoutubePartner.Schema.ClaimMatchInfoTotalMatch | undefined;
+                totalMatch?:
+                    | YoutubePartner.Schema.ClaimMatchInfoTotalMatch
+                    | undefined;
             }
             interface ClaimMatchInfoLongestMatch {
                 durationSecs?: string | undefined;
@@ -663,11 +911,21 @@ declare namespace GoogleAppsScript {
             }
             interface Conditions {
                 contentMatchType?: string[] | undefined;
-                matchDuration?: YoutubePartner.Schema.IntervalCondition[] | undefined;
-                matchPercent?: YoutubePartner.Schema.IntervalCondition[] | undefined;
-                referenceDuration?: YoutubePartner.Schema.IntervalCondition[] | undefined;
-                referencePercent?: YoutubePartner.Schema.IntervalCondition[] | undefined;
-                requiredTerritories?: YoutubePartner.Schema.TerritoryCondition | undefined;
+                matchDuration?:
+                    | YoutubePartner.Schema.IntervalCondition[]
+                    | undefined;
+                matchPercent?:
+                    | YoutubePartner.Schema.IntervalCondition[]
+                    | undefined;
+                referenceDuration?:
+                    | YoutubePartner.Schema.IntervalCondition[]
+                    | undefined;
+                referencePercent?:
+                    | YoutubePartner.Schema.IntervalCondition[]
+                    | undefined;
+                requiredTerritories?:
+                    | YoutubePartner.Schema.TerritoryCondition
+                    | undefined;
             }
             interface ConflictingOwnership {
                 owner?: string | undefined;
@@ -683,8 +941,12 @@ declare namespace GoogleAppsScript {
                 primaryNotificationEmails?: string[] | undefined;
             }
             interface ContentOwnerAdvertisingOption {
-                allowedOptions?: YoutubePartner.Schema.AllowedAdvertisingOptions | undefined;
-                claimedVideoOptions?: YoutubePartner.Schema.ClaimedVideoDefaults | undefined;
+                allowedOptions?:
+                    | YoutubePartner.Schema.AllowedAdvertisingOptions
+                    | undefined;
+                claimedVideoOptions?:
+                    | YoutubePartner.Schema.ClaimedVideoDefaults
+                    | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
             }
@@ -818,14 +1080,24 @@ declare namespace GoogleAppsScript {
                 source?: string | undefined;
             }
             interface OwnershipConflicts {
-                general?: YoutubePartner.Schema.TerritoryConflicts[] | undefined;
+                general?:
+                    | YoutubePartner.Schema.TerritoryConflicts[]
+                    | undefined;
                 kind?: string | undefined;
-                mechanical?: YoutubePartner.Schema.TerritoryConflicts[] | undefined;
-                performance?: YoutubePartner.Schema.TerritoryConflicts[] | undefined;
-                synchronization?: YoutubePartner.Schema.TerritoryConflicts[] | undefined;
+                mechanical?:
+                    | YoutubePartner.Schema.TerritoryConflicts[]
+                    | undefined;
+                performance?:
+                    | YoutubePartner.Schema.TerritoryConflicts[]
+                    | undefined;
+                synchronization?:
+                    | YoutubePartner.Schema.TerritoryConflicts[]
+                    | undefined;
             }
             interface OwnershipHistoryListResponse {
-                items?: YoutubePartner.Schema.RightsOwnershipHistory[] | undefined;
+                items?:
+                    | YoutubePartner.Schema.RightsOwnershipHistory[]
+                    | undefined;
                 kind?: string | undefined;
             }
             interface Package {
@@ -836,7 +1108,9 @@ declare namespace GoogleAppsScript {
                 locale?: string | undefined;
                 name?: string | undefined;
                 status?: string | undefined;
-                statusReports?: YoutubePartner.Schema.StatusReport[] | undefined;
+                statusReports?:
+                    | YoutubePartner.Schema.StatusReport[]
+                    | undefined;
                 timeCreated?: string | undefined;
                 type?: string | undefined;
                 uploaderName?: string | undefined;
@@ -895,7 +1169,9 @@ declare namespace GoogleAppsScript {
                 claimId?: string | undefined;
                 contentType?: string | undefined;
                 duplicateLeader?: string | undefined;
-                excludedIntervals?: YoutubePartner.Schema.ExcludedInterval[] | undefined;
+                excludedIntervals?:
+                    | YoutubePartner.Schema.ExcludedInterval[]
+                    | undefined;
                 fpDirect?: boolean | undefined;
                 hashCode?: string | undefined;
                 id?: string | undefined;
@@ -913,7 +1189,9 @@ declare namespace GoogleAppsScript {
                 expiryTime?: string | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
-                matches?: YoutubePartner.Schema.ReferenceConflictMatch[] | undefined;
+                matches?:
+                    | YoutubePartner.Schema.ReferenceConflictMatch[]
+                    | undefined;
                 originalReferenceId?: string | undefined;
                 status?: string | undefined;
             }
@@ -946,9 +1224,15 @@ declare namespace GoogleAppsScript {
             interface RightsOwnership {
                 general?: YoutubePartner.Schema.TerritoryOwners[] | undefined;
                 kind?: string | undefined;
-                mechanical?: YoutubePartner.Schema.TerritoryOwners[] | undefined;
-                performance?: YoutubePartner.Schema.TerritoryOwners[] | undefined;
-                synchronization?: YoutubePartner.Schema.TerritoryOwners[] | undefined;
+                mechanical?:
+                    | YoutubePartner.Schema.TerritoryOwners[]
+                    | undefined;
+                performance?:
+                    | YoutubePartner.Schema.TerritoryOwners[]
+                    | undefined;
+                synchronization?:
+                    | YoutubePartner.Schema.TerritoryOwners[]
+                    | undefined;
             }
             interface RightsOwnershipHistory {
                 kind?: string | undefined;
@@ -992,7 +1276,9 @@ declare namespace GoogleAppsScript {
                 type?: string | undefined;
             }
             interface TerritoryConflicts {
-                conflictingOwnership?: YoutubePartner.Schema.ConflictingOwnership[] | undefined;
+                conflictingOwnership?:
+                    | YoutubePartner.Schema.ConflictingOwnership[]
+                    | undefined;
                 territory?: string | undefined;
             }
             interface TerritoryOwners {
@@ -1064,7 +1350,9 @@ declare namespace GoogleAppsScript {
             interface VideoAdvertisingOptionGetEnabledAdsResponse {
                 adBreaks?: YoutubePartner.Schema.AdBreak[] | undefined;
                 adsOnEmbeds?: boolean | undefined;
-                countriesRestriction?: YoutubePartner.Schema.CountriesRestriction[] | undefined;
+                countriesRestriction?:
+                    | YoutubePartner.Schema.CountriesRestriction[]
+                    | undefined;
                 id?: string | undefined;
                 kind?: string | undefined;
             }
@@ -1082,32 +1370,62 @@ declare namespace GoogleAppsScript {
         }
     }
     interface YoutubePartner {
-        AssetLabels?: YoutubePartner.Collection.AssetLabelsCollection | undefined;
-        AssetMatchPolicy?: YoutubePartner.Collection.AssetMatchPolicyCollection | undefined;
-        AssetRelationships?: YoutubePartner.Collection.AssetRelationshipsCollection | undefined;
-        AssetSearch?: YoutubePartner.Collection.AssetSearchCollection | undefined;
-        AssetShares?: YoutubePartner.Collection.AssetSharesCollection | undefined;
+        AssetLabels?:
+            | YoutubePartner.Collection.AssetLabelsCollection
+            | undefined;
+        AssetMatchPolicy?:
+            | YoutubePartner.Collection.AssetMatchPolicyCollection
+            | undefined;
+        AssetRelationships?:
+            | YoutubePartner.Collection.AssetRelationshipsCollection
+            | undefined;
+        AssetSearch?:
+            | YoutubePartner.Collection.AssetSearchCollection
+            | undefined;
+        AssetShares?:
+            | YoutubePartner.Collection.AssetSharesCollection
+            | undefined;
         Assets?: YoutubePartner.Collection.AssetsCollection | undefined;
         Campaigns?: YoutubePartner.Collection.CampaignsCollection | undefined;
-        ClaimHistory?: YoutubePartner.Collection.ClaimHistoryCollection | undefined;
-        ClaimSearch?: YoutubePartner.Collection.ClaimSearchCollection | undefined;
+        ClaimHistory?:
+            | YoutubePartner.Collection.ClaimHistoryCollection
+            | undefined;
+        ClaimSearch?:
+            | YoutubePartner.Collection.ClaimSearchCollection
+            | undefined;
         Claims?: YoutubePartner.Collection.ClaimsCollection | undefined;
-        ContentOwnerAdvertisingOptions?: YoutubePartner.Collection.ContentOwnerAdvertisingOptionsCollection | undefined;
-        ContentOwners?: YoutubePartner.Collection.ContentOwnersCollection | undefined;
-        LiveCuepoints?: YoutubePartner.Collection.LiveCuepointsCollection | undefined;
-        MetadataHistory?: YoutubePartner.Collection.MetadataHistoryCollection | undefined;
+        ContentOwnerAdvertisingOptions?:
+            | YoutubePartner.Collection.ContentOwnerAdvertisingOptionsCollection
+            | undefined;
+        ContentOwners?:
+            | YoutubePartner.Collection.ContentOwnersCollection
+            | undefined;
+        LiveCuepoints?:
+            | YoutubePartner.Collection.LiveCuepointsCollection
+            | undefined;
+        MetadataHistory?:
+            | YoutubePartner.Collection.MetadataHistoryCollection
+            | undefined;
         Orders?: YoutubePartner.Collection.OrdersCollection | undefined;
         Ownership?: YoutubePartner.Collection.OwnershipCollection | undefined;
-        OwnershipHistory?: YoutubePartner.Collection.OwnershipHistoryCollection | undefined;
+        OwnershipHistory?:
+            | YoutubePartner.Collection.OwnershipHistoryCollection
+            | undefined;
         Package?: YoutubePartner.Collection.PackageCollection | undefined;
         Policies?: YoutubePartner.Collection.PoliciesCollection | undefined;
         Publishers?: YoutubePartner.Collection.PublishersCollection | undefined;
-        ReferenceConflicts?: YoutubePartner.Collection.ReferenceConflictsCollection | undefined;
+        ReferenceConflicts?:
+            | YoutubePartner.Collection.ReferenceConflictsCollection
+            | undefined;
         References?: YoutubePartner.Collection.ReferencesCollection | undefined;
-        SpreadsheetTemplate?: YoutubePartner.Collection.SpreadsheetTemplateCollection | undefined;
+        SpreadsheetTemplate?:
+            | YoutubePartner.Collection.SpreadsheetTemplateCollection
+            | undefined;
         Uploader?: YoutubePartner.Collection.UploaderCollection | undefined;
         Validator?: YoutubePartner.Collection.ValidatorCollection | undefined;
-        VideoAdvertisingOptions?: YoutubePartner.Collection.VideoAdvertisingOptionsCollection | undefined;
+        VideoAdvertisingOptions?:
+            | YoutubePartner.Collection.VideoAdvertisingOptionsCollection
+            | undefined;
         Whitelists?: YoutubePartner.Collection.WhitelistsCollection | undefined;
         // Create a new instance of AdBreak
         newAdBreak(): YoutubePartner.Schema.AdBreak;

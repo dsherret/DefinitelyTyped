@@ -23,10 +23,16 @@ declare namespace MithrilGlobal {
     export type CVnode<A = {}> = mithril.CVnode<A>;
     export type CVnodeDOM<A = {}> = mithril.CVnodeDOM<A>;
     export type Component<A = {}, S = {}> = mithril.Component<A, S>;
-    export type Comp<A = {}, S extends Partial<mithril.Component<A, S>> = {}> = mithril.Comp<A, S>;
+    export type Comp<
+        A = {},
+        S extends Partial<mithril.Component<A, S>> = {},
+    > = mithril.Comp<A, S>;
     export type ClassComponent<A = {}> = mithril.ClassComponent<A>;
     export type FactoryComponent<A = {}> = mithril.FactoryComponent<A>;
-    export type ComponentTypes<A = {}, S extends Partial<mithril.Component<A, S>> = {}> = mithril.ComponentTypes<A, S>;
+    export type ComponentTypes<
+        A = {},
+        S extends Partial<mithril.Component<A, S>> = {},
+    > = mithril.ComponentTypes<A, S>;
     export type Attributes = mithril.Attributes;
     export type Static = mithril.Static & { stream: typeof stream };
     export type Stream<T> = stream<T>;

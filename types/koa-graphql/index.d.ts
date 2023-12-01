@@ -1,7 +1,13 @@
 /// <reference types="node" />
 
 import { RequestInfo } from "express-graphql";
-import { ASTVisitor, GraphQLError, GraphQLFieldResolver, GraphQLSchema, ValidationContext } from "graphql";
+import {
+    ASTVisitor,
+    GraphQLError,
+    GraphQLFieldResolver,
+    GraphQLSchema,
+    ValidationContext,
+} from "graphql";
 import { Context, Middleware, Request, Response } from "koa";
 
 export = graphqlHTTP;
@@ -9,7 +15,13 @@ export = graphqlHTTP;
 declare function graphqlHTTP(options: graphqlHTTP.Options): Middleware;
 
 declare namespace graphqlHTTP {
-    type Options = ((request: Request, response: Response, ctx: Context) => OptionsResult) | OptionsResult;
+    type Options =
+        | ((
+              request: Request,
+              response: Response,
+              ctx: Context,
+          ) => OptionsResult)
+        | OptionsResult;
 
     type OptionsResult = OptionsData | Promise<OptionsData>;
 
@@ -45,7 +57,9 @@ declare namespace graphqlHTTP {
          * An optional array of validation rules that will be applied on the document
          * in addition to those defined by the GraphQL spec.
          */
-        validationRules?: Array<(arg0: ValidationContext) => ASTVisitor> | undefined;
+        validationRules?:
+            | Array<(arg0: ValidationContext) => ASTVisitor>
+            | undefined;
 
         /**
          * An optional function for adding additional metadata to the GraphQL response
@@ -57,7 +71,9 @@ declare namespace graphqlHTTP {
          *
          * This function may be async.
          */
-        extensions?: ((info: RequestInfo) => { [key: string]: any }) | undefined;
+        extensions?:
+            | ((info: RequestInfo) => { [key: string]: any })
+            | undefined;
 
         /**
          * A boolean to optionally enable GraphiQL mode.

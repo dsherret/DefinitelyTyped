@@ -27,7 +27,11 @@ SOFTWARE.
 /// <reference path="./bmapgl.maplayer.d.ts" />
 declare namespace BMapGL {
     class MapType {
-        constructor(name: string, layers: TileLayer | TileLayer[], opts?: MapTypeOptions);
+        constructor(
+            name: string,
+            layers: TileLayer | TileLayer[],
+            opts?: MapTypeOptions,
+        );
         getName(): string;
         getTileLayer(): TileLayer;
         getMinZoom(): number;

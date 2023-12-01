@@ -76,10 +76,7 @@ export declare class ColorSamplers extends Array<ColorSampler> {
      * ```
      * @minVersion 24.0
      */
-    add(position: {
-        x: number;
-        y: number;
-    }): ColorSampler;
+    add(position: { x: number; y: number }): ColorSampler;
     /**
      * Removes all ColorSampler instances from this collection.
      *

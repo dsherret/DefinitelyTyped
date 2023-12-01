@@ -9,7 +9,7 @@ const query = {
     order: "-consensus_weight",
 };
 
-onionoo.summary(query).then(response => {
+onionoo.summary(query).then((response) => {
     response.body; // $ExpectType Response<RelaySummary, BridgeSummary> || Summary
 
     const body = response.body;
@@ -29,7 +29,14 @@ onionoo.uptime(query); // $ExpectType GotPromise<Response<RelayUptime, BridgeUpt
 // $ExpectType Instance & Partial<Endpoints>
 new Onionoo({
     baseUrl: "https://onionoo.torproject.org",
-    endpoints: ["summary", "details", "bandwidth", "weights", "clients", "uptime"],
+    endpoints: [
+        "summary",
+        "details",
+        "bandwidth",
+        "weights",
+        "clients",
+        "uptime",
+    ],
     cache: false,
 });
 

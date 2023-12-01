@@ -56,9 +56,16 @@ declare global {
         static register(name: string, fun: DeferredizedFunction): void;
 
         static connect(funo: any, options: string): DeferredizedFunction;
-        static connect(funo: Function, options?: ConnectOption): DeferredizedFunction;
+        static connect(
+            funo: Function,
+            options?: ConnectOption,
+        ): DeferredizedFunction;
 
-        static retry(retryCount: number, funcDeferred: DeferredizedFunctionWithNumber, options?: RetryOption): Deferred;
+        static retry(
+            retryCount: number,
+            funcDeferred: DeferredizedFunctionWithNumber,
+            options?: RetryOption,
+        ): Deferred;
 
         static define(obj?: any, list?: string[]): any;
 

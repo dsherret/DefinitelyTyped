@@ -10,7 +10,7 @@ const asyncActions = Reflux.createActions({
     fireBall: { asyncResult: true },
 });
 
-asyncActions.fireBall.listen(function() {
+asyncActions.fireBall.listen(function () {
     // Trigger async action
     setTimeout(() => this.completed(true), 1000);
 });

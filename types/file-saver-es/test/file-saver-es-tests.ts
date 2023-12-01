@@ -4,7 +4,9 @@ import { FileSaverOptions, saveAs } from "file-saver-es";
  * @summary Test for "saveAs" function.
  */
 function testSaveAs() {
-    const data: Blob = new Blob(["Hello, world!"], { type: "text/plain;charset=utf-8" });
+    const data: Blob = new Blob(["Hello, world!"], {
+        type: "text/plain;charset=utf-8",
+    });
     const filename = "hello world.txt";
     const options: FileSaverOptions = {
         autoBom: false,
@@ -17,7 +19,9 @@ function testSaveAs() {
  * @summary Test for deprecated "saveAs" function.
  */
 function testDeprecatedSaveAs() {
-    const data: Blob = new Blob(["Hello, world!"], { type: "text/plain;charset=utf-8" });
+    const data: Blob = new Blob(["Hello, world!"], {
+        type: "text/plain;charset=utf-8",
+    });
     const filename = "hello world.txt";
     const disableAutoBOM = true;
 
@@ -28,7 +32,9 @@ function testDeprecatedSaveAs() {
  * @summary Test for "saveAs" function on the window object.
  */
 function testWindowSaveAs() {
-    const data: Blob = new Blob(["Hello, world!"], { type: "text/plain;charset=utf-8" });
+    const data: Blob = new Blob(["Hello, world!"], {
+        type: "text/plain;charset=utf-8",
+    });
     const filename = "hello world.txt";
     const options: FileSaverOptions = {
         autoBom: false,
@@ -56,7 +62,9 @@ function testUrlSaveAs() {
  * @summary Test for "saveAs" function with the 3rd parameter omitted
  */
 function testOptionalOneParamSaveAs() {
-    const data: Blob = new Blob(["Hello, world!"], { type: "text/plain;charset=utf-8" });
+    const data: Blob = new Blob(["Hello, world!"], {
+        type: "text/plain;charset=utf-8",
+    });
     const filename = "hello world.txt";
     saveAs(data, filename);
 }
@@ -65,6 +73,8 @@ function testOptionalOneParamSaveAs() {
  * @summary Test for "saveAs" function with the 2nd and 3rd parameters omitted
  */
 function testOptionalTwoParamsSaveAs() {
-    const data: Blob = new Blob(["Hello, world!"], { type: "text/plain;charset=utf-8" });
+    const data: Blob = new Blob(["Hello, world!"], {
+        type: "text/plain;charset=utf-8",
+    });
     saveAs(data);
 }

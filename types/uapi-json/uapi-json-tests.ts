@@ -1,7 +1,18 @@
-import { createAirService, createHotelService, createTerminalService, createUtilsService, errors } from "uapi-json";
+import {
+    createAirService,
+    createHotelService,
+    createTerminalService,
+    createUtilsService,
+    errors,
+} from "uapi-json";
 
 const settings = {
-    auth: { username: "USERNAME", password: "PASSWORD", region: "REGION", targetBranch: "TARGETBRANCH" },
+    auth: {
+        username: "USERNAME",
+        password: "PASSWORD",
+        region: "REGION",
+        targetBranch: "TARGETBRANCH",
+    },
 };
 const airService = createAirService(settings);
 
@@ -39,13 +50,15 @@ INS: 1, //infant with a seat
     })
     .catch((err: unknown) => {
         if (err instanceof errors.Common.ValidationError) {
-            "Validation error occurred";
+            ("Validation error occurred");
         }
         if (err instanceof errors.Request.RequestValidationError) {
-            "Validation error occurred in request";
+            ("Validation error occurred in request");
         }
-        if (err instanceof errors.Request.RequestValidationError.ParamsMissing) {
-            "Params are missing for request";
+        if (
+            err instanceof errors.Request.RequestValidationError.ParamsMissing
+        ) {
+            ("Params are missing for request");
         }
     });
 
@@ -60,13 +73,15 @@ utilService
     })
     .catch((err: unknown) => {
         if (err instanceof errors.Common.ValidationError) {
-            "Validation error occurred";
+            ("Validation error occurred");
         }
         if (err instanceof errors.Request.RequestValidationError) {
-            "Validation error occurred in request";
+            ("Validation error occurred in request");
         }
-        if (err instanceof errors.Request.RequestValidationError.ParamsMissing) {
-            "Params are missing for request";
+        if (
+            err instanceof errors.Request.RequestValidationError.ParamsMissing
+        ) {
+            ("Params are missing for request");
         }
     });
 
@@ -95,13 +110,15 @@ hotelService
     })
     .catch((err: unknown) => {
         if (err instanceof errors.Common.ValidationError) {
-            "Validation error occurred";
+            ("Validation error occurred");
         }
         if (err instanceof errors.Request.RequestValidationError) {
-            "Validation error occurred in request";
+            ("Validation error occurred in request");
         }
-        if (err instanceof errors.Request.RequestValidationError.ParamsMissing) {
-            "Params are missing for request";
+        if (
+            err instanceof errors.Request.RequestValidationError.ParamsMissing
+        ) {
+            ("Params are missing for request");
         }
     });
 
@@ -111,12 +128,14 @@ terminalService
     .executeCommand("command", (screens: string[]) => true)
     .catch((err: unknown) => {
         if (err instanceof errors.Common.ValidationError) {
-            "Validation error occurred";
+            ("Validation error occurred");
         }
         if (err instanceof errors.Request.RequestValidationError) {
-            "Validation error occurred in request";
+            ("Validation error occurred in request");
         }
-        if (err instanceof errors.Request.RequestValidationError.ParamsMissing) {
-            "Params are missing for request";
+        if (
+            err instanceof errors.Request.RequestValidationError.ParamsMissing
+        ) {
+            ("Params are missing for request");
         }
     });

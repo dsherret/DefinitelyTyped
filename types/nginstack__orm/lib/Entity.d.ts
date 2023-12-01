@@ -5,7 +5,11 @@ declare function Entity(
     opt_options?: EntityOptions | Record<any, any>,
 ): void;
 declare class Entity {
-    constructor(classKey: number, dataSet: DataSet, opt_options?: EntityOptions | Record<any, any>);
+    constructor(
+        classKey: number,
+        dataSet: DataSet,
+        opt_options?: EntityOptions | Record<any, any>,
+    );
     private userKey_;
     private fieldsFilter_;
     private dataSet_;
@@ -95,9 +99,9 @@ declare function fromKey(
     key: number,
     opt_options?:
         | {
-            userKey: number;
-            fields: string[] | ((arg0: Field) => boolean);
-        }
+              userKey: number;
+              fields: string[] | ((arg0: Field) => boolean);
+          }
         | Record<any, any>,
 ): Entity;
 declare function fromDataSet(
@@ -105,9 +109,9 @@ declare function fromDataSet(
     dataSet: DataSet,
     opt_options?:
         | {
-            userKey: number;
-            fields: string[] | ((arg0: Field) => boolean);
-        }
+              userKey: number;
+              fields: string[] | ((arg0: Field) => boolean);
+          }
         | Record<any, any>,
 ): Entity;
 declare let requiresStrictMode: boolean;
@@ -116,7 +120,8 @@ type ConfigDef = import("@nginstack/engine/lib/classdef/ConfigDef");
 type Field = import("@nginstack/engine/lib/classdef/Field");
 type Event = import("@nginstack/engine/lib/event/Event");
 type Emitter = import("@nginstack/engine/lib/event/Emitter");
-type FieldPermissions = import("@nginstack/engine/lib/security/FieldPermissions");
+type FieldPermissions =
+    import("@nginstack/engine/lib/security/FieldPermissions");
 interface EntityState {
     UNCHANGED: number;
     ADDED: number;

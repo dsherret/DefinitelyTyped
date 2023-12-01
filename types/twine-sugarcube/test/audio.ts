@@ -104,7 +104,13 @@ SimpleAudio.groups.delete(":ui"); // $ExpectType void
 SimpleAudio.groups.get(":ui"); // $ExpectType string[]
 SimpleAudio.groups.has(":ui");
 
-SimpleAudio.lists.add("bgm_lacuna", "swamped", "heavens_a_lie", "closer", "to_the_edge");
+SimpleAudio.lists.add(
+    "bgm_lacuna",
+    "swamped",
+    "heavens_a_lie",
+    "closer",
+    "to_the_edge",
+);
 // Using a mix of track IDs and descriptors
 SimpleAudio.lists.add(
     "bgm_lacuna",
@@ -162,9 +168,16 @@ SimpleAudio.tracks.add("boom", "media/audio/explosion.mp3");
 // Cache a track with the ID "boom" and one source via audio passage
 SimpleAudio.tracks.add("boom", "explosion");
 // Cache a track with the ID "bgm_space" and two sources via relative URLs
-SimpleAudio.tracks.add("bgm_space", "media/audio/space_quest.mp3", "media/audio/space_quest.ogg");
+SimpleAudio.tracks.add(
+    "bgm_space",
+    "media/audio/space_quest.mp3",
+    "media/audio/space_quest.ogg",
+);
 // Cache a track with the ID "what" and one source via URL with a format specifier
-SimpleAudio.tracks.add("what", "mp3|http://an-audio-service.com/a-user/a-track-id");
+SimpleAudio.tracks.add(
+    "what",
+    "mp3|http://an-audio-service.com/a-user/a-track-id",
+);
 
 SimpleAudio.tracks.clear(); // $ExpectType void
 SimpleAudio.tracks.delete(s); // $ExpectType void

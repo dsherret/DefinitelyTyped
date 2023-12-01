@@ -34,7 +34,8 @@ declare namespace GoogleAdsScripts {
          *        .withVideoId('_YUugB4IUl4')      // required
          *        .build();                        // create the YouTube video
          */
-        interface VideoYouTubeVideoBuilder extends Base.Builder<VideoYouTubeVideoOperation> {
+        interface VideoYouTubeVideoBuilder
+            extends Base.Builder<VideoYouTubeVideoOperation> {
             /** Builds the excluded video YouTube video. */
             exclude(): ExcludedVideoYouTubeVideoOperation;
             /** Sets the YouTube video ID. */
@@ -50,10 +51,12 @@ declare namespace GoogleAdsScripts {
          *        var videoYouTubeVideo = videoYouTubeVideoIterator.next();
          *      }
          */
-        interface VideoYouTubeVideoIterator extends Base.Iterator<VideoYouTubeVideo> {}
+        interface VideoYouTubeVideoIterator
+            extends Base.Iterator<VideoYouTubeVideo> {}
 
         /** An operation representing creation of a new video YouTube video. */
-        interface VideoYouTubeVideoOperation extends Base.Operation<VideoYouTubeVideo> {}
+        interface VideoYouTubeVideoOperation
+            extends Base.Operation<VideoYouTubeVideo> {}
 
         /**
          * Fetches video YouTube videos. Supports filtering and sorting.
@@ -72,13 +75,11 @@ declare namespace GoogleAdsScripts {
          *      }
          */
         interface VideoYouTubeVideoSelector
-            extends
-                Base.Selector<VideoYouTubeVideoIterator>,
+            extends Base.Selector<VideoYouTubeVideoIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
                 Base.SelectorWithIds,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

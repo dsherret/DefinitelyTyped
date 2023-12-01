@@ -56,7 +56,9 @@ export function azureResolver(ctx: koa.Context): boolean;
 /**
  * Custom proto header factory
  */
-export function customProtoHeaderResolver(header: string): (ctx: koa.Context) => boolean;
+export function customProtoHeaderResolver(
+    header: string,
+): (ctx: koa.Context) => boolean;
 
 /**
  * Resolver for `Forwarded` header

@@ -13,9 +13,11 @@ hbs.registerHelper("link", (text: string, url: string) => {
     return new hbs.SafeString(result);
 });
 
-app.use(hbs.middleware({
-    viewPath: Path.join(__dirname, "./views"),
-}));
+app.use(
+    hbs.middleware({
+        viewPath: Path.join(__dirname, "./views"),
+    }),
+);
 
 app.use(async (ctx, next) => {
     await ctx.render("index", {

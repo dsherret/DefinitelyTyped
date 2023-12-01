@@ -1,9 +1,7 @@
 import PouchDB = require("pouchdb");
 
-function isString(someString: string) {
-}
-function isNumber(someNumber: number) {
-}
+function isString(someString: string) {}
+function isNumber(someNumber: number) {}
 
 function testAllDocs() {
     const db = new PouchDB<{ foo: number }>();
@@ -40,11 +38,10 @@ function testAllDocs() {
 function testDestroy() {
     const db = new PouchDB();
 
-    db.destroy({}, (error) => {
-    });
-    db.destroy().then(() => {
-    }).catch((error) => {
-    });
+    db.destroy({}, (error) => {});
+    db.destroy()
+        .then(() => {})
+        .catch((error) => {});
 }
 
 function testBasics() {
@@ -84,23 +81,16 @@ function testBasics() {
     db.post(model).then((result) => {
         isString(result.id);
     });
-    db.post(model, null, (error, response) => {
-    });
+    db.post(model, null, (error, response) => {});
 
-    db.get(id).then((result) => model = result);
-    db.get(id, null, (error, result) => {
-    });
+    db.get(id).then((result) => (model = result));
+    db.get(id, null, (error, result) => {});
 
-    db.put(model).then((error) => {
-    });
-    db.put(model, null, (error) => {
-    });
+    db.put(model).then((error) => {});
+    db.put(model, null, (error) => {});
 
-    db.info().then((info) => {
-    });
-    db.info((error, result) => {
-    });
+    db.info().then((info) => {});
+    db.info((error, result) => {});
 
-    db.viewCleanup().catch((error) => {
-    });
+    db.viewCleanup().catch((error) => {});
 }

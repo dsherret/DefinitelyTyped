@@ -15,7 +15,10 @@ declare namespace crate {
         /**
          * Executes a parameterized sql statement.
          */
-        execute: (sql: string, args?: Array<string | number | Date>) => Promise<DBResultObject>;
+        execute: (
+            sql: string,
+            args?: Array<string | number | Date>,
+        ) => Promise<DBResultObject>;
         /**
          * Inserts a row in table.
          */
@@ -35,7 +38,11 @@ declare namespace crate {
         /**
          * Updates one or more rows in table.
          */
-        update: (tableName: string, data: object, where: string) => Promise<DBResultObject>;
+        update: (
+            tableName: string,
+            data: object,
+            where: string,
+        ) => Promise<DBResultObject>;
         /**
          * Deletes one or more rows in a table.
          */
@@ -43,7 +50,11 @@ declare namespace crate {
         /**
          * Creates a BLOB table
          */
-        createBlobTable: (tableName: string, replicas: number, shards: number) => Promise<DBResultObject>;
+        createBlobTable: (
+            tableName: string,
+            replicas: number,
+            shards: number,
+        ) => Promise<DBResultObject>;
         /**
          * Inserts a BLOB
          */
@@ -51,7 +62,10 @@ declare namespace crate {
         /**
          * Inserts a BLOB from the filesystem
          */
-        insertBlobFile: (tableName: string, filename: string) => Promise<string>;
+        insertBlobFile: (
+            tableName: string,
+            filename: string,
+        ) => Promise<string>;
         /**
          * Retrieves a BLOB with the given hash key
          */

@@ -13,12 +13,21 @@ export interface RestifyHttpErrorOptions extends vErrorOptions {
 export class HttpError extends VError {
     constructor(printf: string, ...args: any[]);
 
-    constructor(options: RestifyHttpErrorOptions, printf?: string, ...args: any[]);
+    constructor(
+        options: RestifyHttpErrorOptions,
+        printf?: string,
+        ...args: any[]
+    );
 
     // tslint:disable-next-line unified-signatures
     constructor(priorErr: any, printf?: string, ...args: any[]);
 
-    constructor(priorErr: any, options: RestifyHttpErrorOptions, printf?: string, ...args: any[]);
+    constructor(
+        priorErr: any,
+        options: RestifyHttpErrorOptions,
+        printf?: string,
+        ...args: any[]
+    );
 
     message: string;
 
@@ -40,12 +49,21 @@ export class DefinedHttpError extends HttpError {
     constructor(printf: string, ...args: any[]);
 
     // tslint:disable-next-line unified-signatures
-    constructor(options: RestifyHttpErrorOptions, printf?: string, ...args: any[]);
+    constructor(
+        options: RestifyHttpErrorOptions,
+        printf?: string,
+        ...args: any[]
+    );
 
     // tslint:disable-next-line unified-signatures
     constructor(priorErr: any, printf?: string, ...args: any[]);
 
-    constructor(priorErr: any, options: RestifyHttpErrorOptions, printf?: string, ...args: any[]);
+    constructor(
+        priorErr: any,
+        options: RestifyHttpErrorOptions,
+        printf?: string,
+        ...args: any[]
+    );
 }
 
 export interface RestifyRestErrorOptions extends RestifyHttpErrorOptions {
@@ -55,12 +73,21 @@ export interface RestifyRestErrorOptions extends RestifyHttpErrorOptions {
 export class RestError extends HttpError {
     constructor(printf: string, ...args: any[]);
 
-    constructor(options: RestifyRestErrorOptions, printf?: string, ...args: any[]);
+    constructor(
+        options: RestifyRestErrorOptions,
+        printf?: string,
+        ...args: any[]
+    );
 
     // tslint:disable-next-line unified-signatures
     constructor(priorErr: any, printf?: string, ...args: any[]);
 
-    constructor(priorErr: any, options: RestifyRestErrorOptions, printf?: string, ...args: any[]);
+    constructor(
+        priorErr: any,
+        options: RestifyRestErrorOptions,
+        printf?: string,
+        ...args: any[]
+    );
 
     restCode: string;
 }
@@ -72,12 +99,21 @@ export class DefinedRestError extends RestError {
     constructor(printf: string, ...args: any[]);
 
     // tslint:disable-next-line unified-signatures
-    constructor(options: RestifyHttpErrorOptions, printf?: string, ...args: any[]);
+    constructor(
+        options: RestifyHttpErrorOptions,
+        printf?: string,
+        ...args: any[]
+    );
 
     // tslint:disable-next-line unified-signatures
     constructor(priorErr: any, printf?: string, ...args: any[]);
 
-    constructor(priorErr: any, options: RestifyHttpErrorOptions, printf?: string, ...args: any[]);
+    constructor(
+        priorErr: any,
+        options: RestifyHttpErrorOptions,
+        printf?: string,
+        ...args: any[]
+    );
 }
 
 export function makeConstructor(name: string, defaults?: any): void;

@@ -44,7 +44,11 @@ const products: Product[] = [
     },
 ];
 
-const priceHeaderFormatter: HeaderFormatter<Product> = (column, colIndex, components) => {
+const priceHeaderFormatter: HeaderFormatter<Product> = (
+    column,
+    colIndex,
+    components,
+) => {
     return (
         <div>
             {column.text}
@@ -54,7 +58,11 @@ const priceHeaderFormatter: HeaderFormatter<Product> = (column, colIndex, compon
     );
 };
 
-const priceFormatter: ColumnFormatter<Product, { indexSquare: number }> = (cell, row, rowIndex) => {
+const priceFormatter: ColumnFormatter<Product, { indexSquare: number }> = (
+    cell,
+    row,
+    rowIndex,
+) => {
     return (
         <span>
             {rowIndex} - {cell}
@@ -62,7 +70,8 @@ const priceFormatter: ColumnFormatter<Product, { indexSquare: number }> = (cell,
     );
 };
 
-const sortValue: ColumnSortValue<Product> = (cell, row) => ProductCategory[cell];
+const sortValue: ColumnSortValue<Product> = (cell, row) =>
+    ProductCategory[cell];
 
 const SortCaret: ColumnSortCaret = (order, column) => {
     switch (order) {
@@ -77,8 +86,12 @@ const SortCaret: ColumnSortCaret = (order, column) => {
     }
 };
 
-const headerSortingClasses: HeaderSortingClasses = (column, sortOrder, isLastSorting, colIndex) =>
-    sortOrder === "asc" || sortOrder === "desc" ? "sort-active" : "";
+const headerSortingClasses: HeaderSortingClasses = (
+    column,
+    sortOrder,
+    isLastSorting,
+    colIndex,
+) => (sortOrder === "asc" || sortOrder === "desc" ? "sort-active" : "");
 
 const productColumns: Array<ColumnDescription<Product>> = [
     { dataField: "id", align: "center", sort: true, text: "Product ID" },
@@ -160,7 +173,14 @@ const productColumns: Array<ColumnDescription<Product>> = [
  * Basic table test with custom header and cell formatters
  */
 render(
-    <BootstrapTable data={products} bootstrap4 striped={true} hover={true} keyField="id" columns={productColumns} />,
+    <BootstrapTable
+        data={products}
+        bootstrap4
+        striped={true}
+        hover={true}
+        keyField="id"
+        columns={productColumns}
+    />,
     document.getElementById("app"),
 );
 
@@ -175,8 +195,18 @@ render(
         hover={true}
         keyField="id"
         columns={[
-            { dataField: "id", align: "center", sort: true, text: "Product ID" },
-            { dataField: "name", align: "center", sort: true, text: "Product Name" },
+            {
+                dataField: "id",
+                align: "center",
+                sort: true,
+                text: "Product ID",
+            },
+            {
+                dataField: "name",
+                align: "center",
+                sort: true,
+                text: "Product Name",
+            },
             {
                 isDummyField: true,
                 dataField: "",
@@ -294,7 +324,14 @@ render(
         selectRow={{
             mode: ROW_SELECT_MULTIPLE,
             selectionRenderer({ rowKey, checked, disabled }) {
-                return <input key={rowKey} type="checkbox" checked={checked} disabled={disabled} />;
+                return (
+                    <input
+                        key={rowKey}
+                        type="checkbox"
+                        checked={checked}
+                        disabled={disabled}
+                    />
+                );
             },
         }}
     />,
@@ -328,9 +365,22 @@ interface UserWithStringId {
 }
 
 const usersWithStringIds: UserWithStringId[] = [
-    { id: "1", name: "Jeremy", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-    { id: "2", name: "Richard", description: "Pellentesque gravida eros nulla, vitae dignissim urna laoreet nec." },
-    { id: "3", name: "James", description: "Phasellus fermentum interdum venenatis." },
+    {
+        id: "1",
+        name: "Jeremy",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+        id: "2",
+        name: "Richard",
+        description:
+            "Pellentesque gravida eros nulla, vitae dignissim urna laoreet nec.",
+    },
+    {
+        id: "3",
+        name: "James",
+        description: "Phasellus fermentum interdum venenatis.",
+    },
     { id: "4", name: "Stig", description: "Nulla feugiat pharetra eleifend." },
 ];
 
@@ -359,9 +409,22 @@ interface UserWithNumberId {
 }
 
 const usersWithNumberIds: UserWithNumberId[] = [
-    { id: 1, name: "Jeremy", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit." },
-    { id: 2, name: "Richard", description: "Pellentesque gravida eros nulla, vitae dignissim urna laoreet nec." },
-    { id: 3, name: "James", description: "Phasellus fermentum interdum venenatis." },
+    {
+        id: 1,
+        name: "Jeremy",
+        description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    },
+    {
+        id: 2,
+        name: "Richard",
+        description:
+            "Pellentesque gravida eros nulla, vitae dignissim urna laoreet nec.",
+    },
+    {
+        id: 3,
+        name: "James",
+        description: "Phasellus fermentum interdum venenatis.",
+    },
     { id: 4, name: "Stig", description: "Nulla feugiat pharetra eleifend." },
 ];
 

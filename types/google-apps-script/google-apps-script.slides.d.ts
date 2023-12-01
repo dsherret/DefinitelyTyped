@@ -128,8 +128,16 @@ declare namespace GoogleAppsScript {
             getConcreteColor(theme: ThemeColorType): Color;
             getThemeColors(): ThemeColorType[];
             setConcreteColor(type: ThemeColorType, color: Color): ColorScheme;
-            setConcreteColor(type: ThemeColorType, red: Integer, green: Integer, blue: Integer): ColorScheme;
-            setConcreteColor(type: ThemeColorType, hexColor: string): ColorScheme;
+            setConcreteColor(
+                type: ThemeColorType,
+                red: Integer,
+                green: Integer,
+                blue: Integer,
+            ): ColorScheme;
+            setConcreteColor(
+                type: ThemeColorType,
+                hexColor: string,
+            ): ColorScheme;
         }
         /**
          * The connection site on a PageElement that can connect to a connector.
@@ -178,7 +186,12 @@ declare namespace GoogleAppsScript {
             setSolidFill(color: Color): void;
             setSolidFill(color: Color, alpha: number): void;
             setSolidFill(red: Integer, green: Integer, blue: Integer): void;
-            setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): void;
+            setSolidFill(
+                red: Integer,
+                green: Integer,
+                blue: Integer,
+                alpha: number,
+            ): void;
             setSolidFill(hexString: string): void;
             setSolidFill(hexString: string, alpha: number): void;
             setSolidFill(color: ThemeColorType): void;
@@ -309,7 +322,10 @@ declare namespace GoogleAppsScript {
             getPageElements(): PageElement[];
             getPageType(): PageType;
             getPlaceholder(placeholderType: PlaceholderType): PageElement;
-            getPlaceholder(placeholderType: PlaceholderType, placeholderIndex: Integer): PageElement;
+            getPlaceholder(
+                placeholderType: PlaceholderType,
+                placeholderIndex: Integer,
+            ): PageElement;
             getPlaceholders(): PageElement[];
             getShapes(): Shape[];
             getSheetsCharts(): SheetsChart[];
@@ -319,10 +335,22 @@ declare namespace GoogleAppsScript {
             group(pageElements: PageElement[]): Group;
             insertGroup(group: Group): Group;
             insertImage(blobSource: Base.BlobSource): Image;
-            insertImage(blobSource: Base.BlobSource, left: number, top: number, width: number, height: number): Image;
+            insertImage(
+                blobSource: Base.BlobSource,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Image;
             insertImage(image: Image): Image;
             insertImage(imageUrl: string): Image;
-            insertImage(imageUrl: string, left: number, top: number, width: number, height: number): Image;
+            insertImage(
+                imageUrl: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Image;
             insertLine(line: Line): Line;
             insertLine(
                 lineCategory: LineCategory,
@@ -339,8 +367,16 @@ declare namespace GoogleAppsScript {
             insertPageElement(pageElement: PageElement): PageElement;
             insertShape(shape: Shape): Shape;
             insertShape(shapeType: ShapeType): Shape;
-            insertShape(shapeType: ShapeType, left: number, top: number, width: number, height: number): Shape;
-            insertSheetsChart(sourceChart: Spreadsheet.EmbeddedChart): SheetsChart;
+            insertShape(
+                shapeType: ShapeType,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Shape;
+            insertSheetsChart(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): SheetsChart;
             insertSheetsChart(
                 sourceChart: Spreadsheet.EmbeddedChart,
                 left: number,
@@ -349,7 +385,9 @@ declare namespace GoogleAppsScript {
                 height: number,
             ): SheetsChart;
             insertSheetsChart(sheetsChart: SheetsChart): SheetsChart;
-            insertSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
+            insertSheetsChartAsImage(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): Image;
             insertSheetsChartAsImage(
                 sourceChart: Spreadsheet.EmbeddedChart,
                 left: number,
@@ -368,14 +406,30 @@ declare namespace GoogleAppsScript {
             ): Table;
             insertTable(table: Table): Table;
             insertTextBox(text: string): Shape;
-            insertTextBox(text: string, left: number, top: number, width: number, height: number): Shape;
+            insertTextBox(
+                text: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Shape;
             insertVideo(videoUrl: string): Video;
-            insertVideo(videoUrl: string, left: number, top: number, width: number, height: number): Video;
+            insertVideo(
+                videoUrl: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Video;
             insertVideo(video: Video): Video;
             insertWordArt(wordArt: WordArt): WordArt;
             remove(): void;
             replaceAllText(findText: string, replaceText: string): Integer;
-            replaceAllText(findText: string, replaceText: string, matchCase: boolean): Integer;
+            replaceAllText(
+                findText: string,
+                replaceText: string,
+                matchCase: boolean,
+            ): Integer;
             selectAsCurrentPage(): void;
         }
         /**
@@ -469,7 +523,12 @@ declare namespace GoogleAppsScript {
             setSolidFill(color: Color): void;
             setSolidFill(color: Color, alpha: number): void;
             setSolidFill(red: Integer, green: Integer, blue: Integer): void;
-            setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): void;
+            setSolidFill(
+                red: Integer,
+                green: Integer,
+                blue: Integer,
+                alpha: number,
+            ): void;
             setSolidFill(hexString: string): void;
             setSolidFill(hexString: string, alpha: number): void;
             setSolidFill(color: ThemeColorType): void;
@@ -626,7 +685,10 @@ declare namespace GoogleAppsScript {
             getPageElements(): PageElement[];
             getPageType(): PageType;
             getPlaceholder(placeholderType: PlaceholderType): PageElement;
-            getPlaceholder(placeholderType: PlaceholderType, placeholderIndex: Integer): PageElement;
+            getPlaceholder(
+                placeholderType: PlaceholderType,
+                placeholderIndex: Integer,
+            ): PageElement;
             getPlaceholders(): PageElement[];
             getShapes(): Shape[];
             getSheetsCharts(): SheetsChart[];
@@ -636,10 +698,22 @@ declare namespace GoogleAppsScript {
             group(pageElements: PageElement[]): Group;
             insertGroup(group: Group): Group;
             insertImage(blobSource: Base.BlobSource): Image;
-            insertImage(blobSource: Base.BlobSource, left: number, top: number, width: number, height: number): Image;
+            insertImage(
+                blobSource: Base.BlobSource,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Image;
             insertImage(image: Image): Image;
             insertImage(imageUrl: string): Image;
-            insertImage(imageUrl: string, left: number, top: number, width: number, height: number): Image;
+            insertImage(
+                imageUrl: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Image;
             insertLine(line: Line): Line;
             insertLine(
                 lineCategory: LineCategory,
@@ -656,8 +730,16 @@ declare namespace GoogleAppsScript {
             insertPageElement(pageElement: PageElement): PageElement;
             insertShape(shape: Shape): Shape;
             insertShape(shapeType: ShapeType): Shape;
-            insertShape(shapeType: ShapeType, left: number, top: number, width: number, height: number): Shape;
-            insertSheetsChart(sourceChart: Spreadsheet.EmbeddedChart): SheetsChart;
+            insertShape(
+                shapeType: ShapeType,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Shape;
+            insertSheetsChart(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): SheetsChart;
             insertSheetsChart(
                 sourceChart: Spreadsheet.EmbeddedChart,
                 left: number,
@@ -666,7 +748,9 @@ declare namespace GoogleAppsScript {
                 height: number,
             ): SheetsChart;
             insertSheetsChart(sheetsChart: SheetsChart): SheetsChart;
-            insertSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
+            insertSheetsChartAsImage(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): Image;
             insertSheetsChartAsImage(
                 sourceChart: Spreadsheet.EmbeddedChart,
                 left: number,
@@ -685,14 +769,30 @@ declare namespace GoogleAppsScript {
             ): Table;
             insertTable(table: Table): Table;
             insertTextBox(text: string): Shape;
-            insertTextBox(text: string, left: number, top: number, width: number, height: number): Shape;
+            insertTextBox(
+                text: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Shape;
             insertVideo(videoUrl: string): Video;
-            insertVideo(videoUrl: string, left: number, top: number, width: number, height: number): Video;
+            insertVideo(
+                videoUrl: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Video;
             insertVideo(video: Video): Video;
             insertWordArt(wordArt: WordArt): WordArt;
             remove(): void;
             replaceAllText(findText: string, replaceText: string): Integer;
-            replaceAllText(findText: string, replaceText: string, matchCase: boolean): Integer;
+            replaceAllText(
+                findText: string,
+                replaceText: string,
+                matchCase: boolean,
+            ): Integer;
             selectAsCurrentPage(): void;
         }
         /**
@@ -709,7 +809,10 @@ declare namespace GoogleAppsScript {
             getPageElementById(id: string): PageElement;
             getPageElements(): PageElement[];
             getPlaceholder(placeholderType: PlaceholderType): PageElement;
-            getPlaceholder(placeholderType: PlaceholderType, placeholderIndex: Integer): PageElement;
+            getPlaceholder(
+                placeholderType: PlaceholderType,
+                placeholderIndex: Integer,
+            ): PageElement;
             getPlaceholders(): PageElement[];
             getShapes(): Shape[];
             getSheetsCharts(): SheetsChart[];
@@ -732,7 +835,10 @@ declare namespace GoogleAppsScript {
             getPageElementById(id: string): PageElement;
             getPageElements(): PageElement[];
             getPlaceholder(placeholderType: PlaceholderType): PageElement;
-            getPlaceholder(placeholderType: PlaceholderType, placeholderIndex: Integer): PageElement;
+            getPlaceholder(
+                placeholderType: PlaceholderType,
+                placeholderIndex: Integer,
+            ): PageElement;
             getPlaceholders(): PageElement[];
             getShapes(): Shape[];
             getSheetsCharts(): SheetsChart[];
@@ -741,7 +847,11 @@ declare namespace GoogleAppsScript {
             getVideos(): Video[];
             getWordArts(): WordArt[];
             replaceAllText(findText: string, replaceText: string): Integer;
-            replaceAllText(findText: string, replaceText: string, matchCase: boolean): Integer;
+            replaceAllText(
+                findText: string,
+                replaceText: string,
+                matchCase: boolean,
+            ): Integer;
         }
         /**
          * A page in a presentation.
@@ -760,7 +870,10 @@ declare namespace GoogleAppsScript {
             getPageElements(): PageElement[];
             getPageType(): PageType;
             getPlaceholder(placeholderType: PlaceholderType): PageElement;
-            getPlaceholder(placeholderType: PlaceholderType, placeholderIndex: Integer): PageElement;
+            getPlaceholder(
+                placeholderType: PlaceholderType,
+                placeholderIndex: Integer,
+            ): PageElement;
             getPlaceholders(): PageElement[];
             getShapes(): Shape[];
             getSheetsCharts(): SheetsChart[];
@@ -770,10 +883,22 @@ declare namespace GoogleAppsScript {
             group(pageElements: PageElement[]): Group;
             insertGroup(group: Group): Group;
             insertImage(blobSource: Base.BlobSource): Image;
-            insertImage(blobSource: Base.BlobSource, left: number, top: number, width: number, height: number): Image;
+            insertImage(
+                blobSource: Base.BlobSource,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Image;
             insertImage(image: Image): Image;
             insertImage(imageUrl: string): Image;
-            insertImage(imageUrl: string, left: number, top: number, width: number, height: number): Image;
+            insertImage(
+                imageUrl: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Image;
             insertLine(line: Line): Line;
             insertLine(
                 lineCategory: LineCategory,
@@ -790,8 +915,16 @@ declare namespace GoogleAppsScript {
             insertPageElement(pageElement: PageElement): PageElement;
             insertShape(shape: Shape): Shape;
             insertShape(shapeType: ShapeType): Shape;
-            insertShape(shapeType: ShapeType, left: number, top: number, width: number, height: number): Shape;
-            insertSheetsChart(sourceChart: Spreadsheet.EmbeddedChart): SheetsChart;
+            insertShape(
+                shapeType: ShapeType,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Shape;
+            insertSheetsChart(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): SheetsChart;
             insertSheetsChart(
                 sourceChart: Spreadsheet.EmbeddedChart,
                 left: number,
@@ -800,7 +933,9 @@ declare namespace GoogleAppsScript {
                 height: number,
             ): SheetsChart;
             insertSheetsChart(sheetsChart: SheetsChart): SheetsChart;
-            insertSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
+            insertSheetsChartAsImage(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): Image;
             insertSheetsChartAsImage(
                 sourceChart: Spreadsheet.EmbeddedChart,
                 left: number,
@@ -819,14 +954,30 @@ declare namespace GoogleAppsScript {
             ): Table;
             insertTable(table: Table): Table;
             insertTextBox(text: string): Shape;
-            insertTextBox(text: string, left: number, top: number, width: number, height: number): Shape;
+            insertTextBox(
+                text: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Shape;
             insertVideo(videoUrl: string): Video;
-            insertVideo(videoUrl: string, left: number, top: number, width: number, height: number): Video;
+            insertVideo(
+                videoUrl: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Video;
             insertVideo(video: Video): Video;
             insertWordArt(wordArt: WordArt): WordArt;
             remove(): void;
             replaceAllText(findText: string, replaceText: string): Integer;
-            replaceAllText(findText: string, replaceText: string, matchCase: boolean): Integer;
+            replaceAllText(
+                findText: string,
+                replaceText: string,
+                matchCase: boolean,
+            ): Integer;
             selectAsCurrentPage(): void;
         }
         /**
@@ -842,7 +993,12 @@ declare namespace GoogleAppsScript {
             setSolidFill(color: Color): void;
             setSolidFill(color: Color, alpha: number): void;
             setSolidFill(red: Integer, green: Integer, blue: Integer): void;
-            setSolidFill(red: Integer, green: Integer, blue: Integer, alpha: number): void;
+            setSolidFill(
+                red: Integer,
+                green: Integer,
+                blue: Integer,
+                alpha: number,
+            ): void;
             setSolidFill(hexString: string): void;
             setSolidFill(hexString: string, alpha: number): void;
             setSolidFill(color: ThemeColorType): void;
@@ -979,7 +1135,9 @@ declare namespace GoogleAppsScript {
             setIndentFirstLine(indent: number): ParagraphStyle;
             setIndentStart(indent: number): ParagraphStyle;
             setLineSpacing(spacing: number): ParagraphStyle;
-            setParagraphAlignment(alignment: ParagraphAlignment): ParagraphStyle;
+            setParagraphAlignment(
+                alignment: ParagraphAlignment,
+            ): ParagraphStyle;
             setSpaceAbove(space: number): ParagraphStyle;
             setSpaceBelow(space: number): ParagraphStyle;
             setSpacingMode(mode: SpacingMode): ParagraphStyle;
@@ -1080,15 +1238,26 @@ declare namespace GoogleAppsScript {
             getViewers(): Base.User[];
             insertSlide(insertionIndex: Integer): Slide;
             insertSlide(insertionIndex: Integer, layout: Layout): Slide;
-            insertSlide(insertionIndex: Integer, predefinedLayout: PredefinedLayout): Slide;
+            insertSlide(
+                insertionIndex: Integer,
+                predefinedLayout: PredefinedLayout,
+            ): Slide;
             insertSlide(insertionIndex: Integer, slide: Slide): Slide;
-            insertSlide(insertionIndex: Integer, slide: Slide, linkingMode: SlideLinkingMode): Slide;
+            insertSlide(
+                insertionIndex: Integer,
+                slide: Slide,
+                linkingMode: SlideLinkingMode,
+            ): Slide;
             removeEditor(emailAddress: string): Presentation;
             removeEditor(user: Base.User): Presentation;
             removeViewer(emailAddress: string): Presentation;
             removeViewer(user: Base.User): Presentation;
             replaceAllText(findText: string, replaceText: string): Integer;
-            replaceAllText(findText: string, replaceText: string, matchCase: boolean): Integer;
+            replaceAllText(
+                findText: string,
+                replaceText: string,
+                matchCase: boolean,
+            ): Integer;
             saveAndClose(): void;
             setName(name: string): void;
         }
@@ -1166,8 +1335,12 @@ declare namespace GoogleAppsScript {
             replaceWithImage(blobSource: Base.BlobSource, crop: boolean): Image;
             replaceWithImage(imageUrl: string): Image;
             replaceWithImage(imageUrl: string, crop: boolean): Image;
-            replaceWithSheetsChart(sourceChart: Spreadsheet.EmbeddedChart): SheetsChart;
-            replaceWithSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
+            replaceWithSheetsChart(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): SheetsChart;
+            replaceWithSheetsChartAsImage(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): Image;
             scaleHeight(ratio: number): Shape;
             scaleWidth(ratio: number): Shape;
             select(): void;
@@ -1418,7 +1591,10 @@ declare namespace GoogleAppsScript {
             getPageElements(): PageElement[];
             getPageType(): PageType;
             getPlaceholder(placeholderType: PlaceholderType): PageElement;
-            getPlaceholder(placeholderType: PlaceholderType, placeholderIndex: Integer): PageElement;
+            getPlaceholder(
+                placeholderType: PlaceholderType,
+                placeholderIndex: Integer,
+            ): PageElement;
             getPlaceholders(): PageElement[];
             getShapes(): Shape[];
             getSheetsCharts(): SheetsChart[];
@@ -1431,10 +1607,22 @@ declare namespace GoogleAppsScript {
             group(pageElements: PageElement[]): Group;
             insertGroup(group: Group): Group;
             insertImage(blobSource: Base.BlobSource): Image;
-            insertImage(blobSource: Base.BlobSource, left: number, top: number, width: number, height: number): Image;
+            insertImage(
+                blobSource: Base.BlobSource,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Image;
             insertImage(image: Image): Image;
             insertImage(imageUrl: string): Image;
-            insertImage(imageUrl: string, left: number, top: number, width: number, height: number): Image;
+            insertImage(
+                imageUrl: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Image;
             insertLine(line: Line): Line;
             insertLine(
                 lineCategory: LineCategory,
@@ -1451,8 +1639,16 @@ declare namespace GoogleAppsScript {
             insertPageElement(pageElement: PageElement): PageElement;
             insertShape(shape: Shape): Shape;
             insertShape(shapeType: ShapeType): Shape;
-            insertShape(shapeType: ShapeType, left: number, top: number, width: number, height: number): Shape;
-            insertSheetsChart(sourceChart: Spreadsheet.EmbeddedChart): SheetsChart;
+            insertShape(
+                shapeType: ShapeType,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Shape;
+            insertSheetsChart(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): SheetsChart;
             insertSheetsChart(
                 sourceChart: Spreadsheet.EmbeddedChart,
                 left: number,
@@ -1461,7 +1657,9 @@ declare namespace GoogleAppsScript {
                 height: number,
             ): SheetsChart;
             insertSheetsChart(sheetsChart: SheetsChart): SheetsChart;
-            insertSheetsChartAsImage(sourceChart: Spreadsheet.EmbeddedChart): Image;
+            insertSheetsChartAsImage(
+                sourceChart: Spreadsheet.EmbeddedChart,
+            ): Image;
             insertSheetsChartAsImage(
                 sourceChart: Spreadsheet.EmbeddedChart,
                 left: number,
@@ -1480,9 +1678,21 @@ declare namespace GoogleAppsScript {
             ): Table;
             insertTable(table: Table): Table;
             insertTextBox(text: string): Shape;
-            insertTextBox(text: string, left: number, top: number, width: number, height: number): Shape;
+            insertTextBox(
+                text: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Shape;
             insertVideo(videoUrl: string): Video;
-            insertVideo(videoUrl: string, left: number, top: number, width: number, height: number): Video;
+            insertVideo(
+                videoUrl: string,
+                left: number,
+                top: number,
+                width: number,
+                height: number,
+            ): Video;
             insertVideo(video: Video): Video;
             insertWordArt(wordArt: WordArt): WordArt;
             isSkipped(): boolean;
@@ -1490,7 +1700,11 @@ declare namespace GoogleAppsScript {
             refreshSlide(): void;
             remove(): void;
             replaceAllText(findText: string, replaceText: string): Integer;
-            replaceAllText(findText: string, replaceText: string, matchCase: boolean): Integer;
+            replaceAllText(
+                findText: string,
+                replaceText: string,
+                matchCase: boolean,
+            ): Integer;
             selectAsCurrentPage(): void;
             setSkipped(isSkipped: boolean): void;
             unlink(): void;
@@ -1695,7 +1909,10 @@ declare namespace GoogleAppsScript {
         interface TextRange {
             appendParagraph(text: string): Paragraph;
             appendRange(textRange: TextRange): TextRange;
-            appendRange(textRange: TextRange, matchSourceFormatting: boolean): TextRange;
+            appendRange(
+                textRange: TextRange,
+                matchSourceFormatting: boolean,
+            ): TextRange;
             appendText(text: string): TextRange;
             asRenderedString(): string;
             asString(): string;
@@ -1717,11 +1934,19 @@ declare namespace GoogleAppsScript {
             getTextStyle(): TextStyle;
             insertParagraph(startOffset: Integer, text: string): Paragraph;
             insertRange(startOffset: Integer, textRange: TextRange): TextRange;
-            insertRange(startOffset: Integer, textRange: TextRange, matchSourceFormatting: boolean): TextRange;
+            insertRange(
+                startOffset: Integer,
+                textRange: TextRange,
+                matchSourceFormatting: boolean,
+            ): TextRange;
             insertText(startOffset: Integer, text: string): TextRange;
             isEmpty(): boolean;
             replaceAllText(findText: string, replaceText: string): Integer;
-            replaceAllText(findText: string, replaceText: string, matchCase: boolean): Integer;
+            replaceAllText(
+                findText: string,
+                replaceText: string,
+                matchCase: boolean,
+            ): Integer;
             select(): void;
             setText(newText: string): TextRange;
         }
@@ -1749,17 +1974,28 @@ declare namespace GoogleAppsScript {
             isUnderline(): boolean;
             removeLink(): TextStyle;
             setBackgroundColor(color: Color): TextStyle;
-            setBackgroundColor(red: Integer, green: Integer, blue: Integer): TextStyle;
+            setBackgroundColor(
+                red: Integer,
+                green: Integer,
+                blue: Integer,
+            ): TextStyle;
             setBackgroundColor(hexColor: string): TextStyle;
             setBackgroundColor(color: ThemeColorType): TextStyle;
             setBackgroundColorTransparent(): TextStyle;
             setBaselineOffset(offset: TextBaselineOffset): TextStyle;
             setBold(bold: boolean): TextStyle;
             setFontFamily(fontFamily: string): TextStyle;
-            setFontFamilyAndWeight(fontFamily: string, fontWeight: Integer): TextStyle;
+            setFontFamilyAndWeight(
+                fontFamily: string,
+                fontWeight: Integer,
+            ): TextStyle;
             setFontSize(fontSize: number): TextStyle;
             setForegroundColor(foregroundColor: Color): TextStyle;
-            setForegroundColor(red: Integer, green: Integer, blue: Integer): TextStyle;
+            setForegroundColor(
+                red: Integer,
+                green: Integer,
+                blue: Integer,
+            ): TextStyle;
             setForegroundColor(hexColor: string): TextStyle;
             setForegroundColor(color: ThemeColorType): TextStyle;
             setItalic(italic: boolean): TextStyle;

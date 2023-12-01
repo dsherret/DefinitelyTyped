@@ -44,7 +44,13 @@ const b4: Box = Box("30x20", {
 const b5: Box = Box({ fullscreen: true, marks: {} }, "Hello World!");
 // console.log(b5.toString());
 
-const b5s: string = Box({ stringify: true, fullscreen: true, marks: {} }, "Hello World!");
-const b5ns: Box = Box({ stringify: false, fullscreen: true, marks: {} }, "Hello World!");
+const b5s: string = Box(
+    { stringify: true, fullscreen: true, marks: {} },
+    "Hello World!",
+);
+const b5ns: Box = Box(
+    { stringify: false, fullscreen: true, marks: {} },
+    "Hello World!",
+);
 
 const defaults = Box.defaults;

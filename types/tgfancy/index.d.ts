@@ -2,7 +2,11 @@ import * as TelegramBot from "node-telegram-bot-api";
 
 declare namespace Tgfancy {
     interface ChatIdResolutionOptions {
-        resolve(token: string, chatId: number | string, callback: (error: Error | null, target: any) => void): void;
+        resolve(
+            token: string,
+            chatId: number | string,
+            callback: (error: Error | null, target: any) => void,
+        ): void;
     }
 
     interface EmojificationOptions {
@@ -64,7 +68,11 @@ declare class Tgfancy extends TelegramBot {
 
     hasOpenWebSocket(): boolean;
 
-    kickChatMember(chatId: number | string, userId: number | string, ban?: boolean): Promise<boolean>;
+    kickChatMember(
+        chatId: number | string,
+        userId: number | string,
+        ban?: boolean,
+    ): Promise<boolean>;
 }
 
 export = Tgfancy;

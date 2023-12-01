@@ -13,7 +13,9 @@ import {
 } from "skatejs";
 
 // custom class definition needed to get Generics support for custom mixin composition
-interface CustomComponentBase<P = {}, S = {}> extends WithUpdate<P, S>, WithRenderer {}
+interface CustomComponentBase<P = {}, S = {}>
+    extends WithUpdate<P, S>,
+        WithRenderer {}
 declare class CustomComponentBase<P = {}, S = {}> extends HTMLElement {}
 
 // Explicitly defined renderer mixin interface type
@@ -21,9 +23,7 @@ export interface CustomRenderer extends HTMLElement, Renderer<string> {
     renderer(shadowRoot: HTMLElement, render: () => string): void;
 }
 
-export const withCustomRendererAsString = (
-    Base = HTMLElement,
-) => {
+export const withCustomRendererAsString = (Base = HTMLElement) => {
     class CustomRendererAsString extends Base implements Renderer<string> {
         renderer(shadowRoot: HTMLElement, render: () => string): void {
             // erease content && re-render
@@ -37,8 +37,12 @@ const customWithComponent = (Base = HTMLElement): typeof WithComponent =>
     withChildren(withUpdate(withRenderer(Base))) as any;
 
 const MComponent = customWithComponent(withCustomRendererAsString());
-const MComponent2 = withChildren(withUpdate(withRenderer(withCustomRendererAsString())));
-const MComponent3 = withRenderer(withUpdate(withCustomRendererAsString())) as typeof CustomComponentBase;
+const MComponent2 = withChildren(
+    withUpdate(withRenderer(withCustomRendererAsString())),
+);
+const MComponent3 = withRenderer(
+    withUpdate(withCustomRendererAsString()),
+) as typeof CustomComponentBase;
 
 export const Component = withComponent(withCustomRendererAsString());
 // @TODO this doesn't work :( I though this will extend base def and will restrict renderCallback return type

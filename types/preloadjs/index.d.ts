@@ -131,7 +131,11 @@ declare namespace createjs {
     }
 
     export class LoadQueue extends AbstractLoader {
-        constructor(preferXHR?: boolean, basePath?: string, crossOrigin?: string | boolean);
+        constructor(
+            preferXHR?: boolean,
+            basePath?: string,
+            crossOrigin?: string | boolean,
+        );
 
         // properties
         maintainScriptOrder: boolean;
@@ -142,8 +146,16 @@ declare namespace createjs {
         close(): void;
         getItems(loaded: boolean): Object[];
         installPlugin(plugin: any): void;
-        loadFile(file: Object | string, loadNow?: boolean, basePath?: string): void;
-        loadManifest(manifest: Object | string | any[], loadNow?: boolean, basePath?: string): void;
+        loadFile(
+            file: Object | string,
+            loadNow?: boolean,
+            basePath?: string,
+        ): void;
+        loadManifest(
+            manifest: Object | string | any[],
+            loadNow?: boolean,
+            basePath?: string,
+        ): void;
         registerLoader(loader: AbstractLoader): void;
         remove(idsOrUrls: string | any[]): void;
         removeAll(): void;
@@ -166,7 +178,11 @@ declare namespace createjs {
     }
 
     export class MediaTagRequest {
-        constructor(loadItem: LoadItem, tag: HTMLAudioElement | HTMLVideoElement, srcAttribute: string);
+        constructor(
+            loadItem: LoadItem,
+            tag: HTMLAudioElement | HTMLVideoElement,
+            srcAttribute: string,
+        );
     }
 
     export class PreloadJS {
@@ -224,8 +240,7 @@ declare namespace createjs {
         static canLoadItem(item: Object): boolean;
     }
 
-    export class TagRequest {
-    }
+    export class TagRequest {}
 
     export class TextLoader extends AbstractLoader {
         constructor(loadItem: Object);

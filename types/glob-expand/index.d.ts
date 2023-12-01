@@ -13,8 +13,14 @@ declare namespace expand {
     var VERSION: string;
 }
 
-declare function expand(opts: Option, patterns: Array<string | RegExp>): string[];
-declare function expand(opts: Option, ...patterns: Array<string | RegExp>): string[];
+declare function expand(
+    opts: Option,
+    patterns: Array<string | RegExp>,
+): string[];
+declare function expand(
+    opts: Option,
+    ...patterns: Array<string | RegExp>
+): string[];
 declare function expand(patterns: Array<string | RegExp>): string[];
 declare function expand(...patterns: Array<string | RegExp>): string[];
 

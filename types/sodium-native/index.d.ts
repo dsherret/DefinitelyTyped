@@ -250,7 +250,10 @@ export function randombytes_buf(buffer: Buffer): void;
  * Fill `buffer` with random data, generated from `seed`.
  * `seed` must be a Buffer of at least `sodium.randombytes_SEEDBYTES` length
  */
-export function randombytes_buf_deterministic(buffer: Buffer, seed: Buffer): void;
+export function randombytes_buf_deterministic(
+    buffer: Buffer,
+    seed: Buffer,
+): void;
 
 /**
  * Compare `b1` with `b2`, in **constant-time** for `b1.length`.
@@ -319,7 +322,11 @@ export function sodium_is_zero(buf: Buffer, len: number): boolean;
  *
  * Returns the length of the padded data (so you may `.slice` the buffer to here).
  */
-export function sodium_pad(buf: Buffer, unpaddedLength: number, blocksize: number): number;
+export function sodium_pad(
+    buf: Buffer,
+    unpaddedLength: number,
+    blocksize: number,
+): number;
 
 /**
  * Calculate `unpaddedLength` from a padded `buf` with `blocksize`
@@ -330,7 +337,11 @@ export function sodium_pad(buf: Buffer, unpaddedLength: number, blocksize: numbe
  *
  * Returns the length of the unpadded data (so you may `.slice` the buffer to here).
  */
-export function sodium_unpad(buf: Buffer, paddedLength: number, blocksize: number): number;
+export function sodium_unpad(
+    buf: Buffer,
+    paddedLength: number,
+    blocksize: number,
+): number;
 
 /**
  * Create a new keypair based on a seed.
@@ -341,7 +352,11 @@ export function sodium_unpad(buf: Buffer, paddedLength: number, blocksize: numbe
  *
  * The generated public and secret key will be stored in passed in buffers.
  */
-export function crypto_sign_seed_keypair(publicKey: Buffer, secretKey: Buffer, seed: Buffer): void;
+export function crypto_sign_seed_keypair(
+    publicKey: Buffer,
+    secretKey: Buffer,
+    seed: Buffer,
+): void;
 
 /**
  * Create a new keypair.
@@ -362,7 +377,11 @@ export function crypto_sign_keypair(publicKey: Buffer, secretKey: Buffer): void;
  *
  * The generated signed message will be stored in `signedMessage`.
  */
-export function crypto_sign(signedMessage: Buffer, message: Buffer, secretKey: Buffer): void;
+export function crypto_sign(
+    signedMessage: Buffer,
+    message: Buffer,
+    secretKey: Buffer,
+): void;
 
 /**
  * Verify and open a message.
@@ -374,7 +393,11 @@ export function crypto_sign(signedMessage: Buffer, message: Buffer, secretKey: B
  * Will return `true` if the message could be verified. Otherwise `false`.
  * If verified the originally signed message is stored in the `message` buffer.
  */
-export function crypto_sign_open(message: Buffer, signedMessage: Buffer, publicKey: Buffer): boolean;
+export function crypto_sign_open(
+    message: Buffer,
+    signedMessage: Buffer,
+    publicKey: Buffer,
+): boolean;
 
 /**
  * Same as `crypto_sign` except it only stores the signature.
@@ -385,7 +408,11 @@ export function crypto_sign_open(message: Buffer, signedMessage: Buffer, publicK
  *
  * The generated signature is stored in `signature`.
  */
-export function crypto_sign_detached(signature: Buffer, message: Buffer, secretKey: Buffer): void;
+export function crypto_sign_detached(
+    signature: Buffer,
+    message: Buffer,
+    secretKey: Buffer,
+): void;
 
 /**
  * Verify a signature.
@@ -396,7 +423,11 @@ export function crypto_sign_detached(signature: Buffer, message: Buffer, secretK
  *
  * Will return `true` if the message could be verified. Otherwise `false`.
  */
-export function crypto_sign_verify_detached(signature: Buffer, message: Buffer, publicKey: Buffer): boolean;
+export function crypto_sign_verify_detached(
+    signature: Buffer,
+    message: Buffer,
+    publicKey: Buffer,
+): boolean;
 
 /**
  * Convert an ed25519 public key to curve25519 (which can be used with `box` and `scalarmult`)
@@ -404,7 +435,10 @@ export function crypto_sign_verify_detached(signature: Buffer, message: Buffer, 
  * * `curve_pk` should be a buffer with length `crypto_box_PUBLICKEYBYTES`
  * * `ed_pk` should be a buffer with length `crypto_sign_PUBLICKEYBYTES`
  */
-export function crypto_sign_ed25519_pk_to_curve25519(curve_pk: Buffer, ed_pk: Buffer): void;
+export function crypto_sign_ed25519_pk_to_curve25519(
+    curve_pk: Buffer,
+    ed_pk: Buffer,
+): void;
 
 /**
  * Convert an ed25519 secret key to curve25519 (which can be used with `box` and `scalarmult`)
@@ -412,7 +446,10 @@ export function crypto_sign_ed25519_pk_to_curve25519(curve_pk: Buffer, ed_pk: Bu
  * * `curve_sk` should be a buffer with length `crypto_box_SECRETKEYBYTES`
  * * `ed_sk` should be a buffer with length `crypto_sign_SECRETKEYBYTES`
  */
-export function crypto_sign_ed25519_sk_to_curve25519(curve_sk: Buffer, ed_sk: Buffer): void;
+export function crypto_sign_ed25519_sk_to_curve25519(
+    curve_sk: Buffer,
+    ed_sk: Buffer,
+): void;
 
 /**
  * Extract an ed25519 public key from an ed25519 secret key
@@ -433,12 +470,20 @@ export function crypto_sign_ed25519_sk_to_pk(pk: Buffer, sk: Buffer): void;
  *
  * Also exposes `crypto_generichash_BYTES` and `crypto_generichash_KEYBYTES` that can be used as "default" buffer sizes.
  */
-export function crypto_generichash(output: Buffer, input: Buffer, key?: Buffer): void;
+export function crypto_generichash(
+    output: Buffer,
+    input: Buffer,
+    key?: Buffer,
+): void;
 
 /**
  * Same as `crypto_generichash` except this hashes an array of buffers instead of a single one.
  */
-export function crypto_generichash_batch(output: Buffer, inputArray: Buffer[], key?: Buffer): void;
+export function crypto_generichash_batch(
+    output: Buffer,
+    inputArray: Buffer[],
+    key?: Buffer,
+): void;
 
 /**
  * Create a generichash instance that can hash a stream of input buffers.
@@ -446,7 +491,10 @@ export function crypto_generichash_batch(output: Buffer, inputArray: Buffer[], k
  * * `key` is an optional buffer as above.
  * * `outputLength` the buffer size of your output.
  */
-export function crypto_generichash_instance(key?: Buffer, outputLength?: number): CryptoGenericHashWrap;
+export function crypto_generichash_instance(
+    key?: Buffer,
+    outputLength?: number,
+): CryptoGenericHashWrap;
 
 /**
  * Create a new keypair based on a seed.
@@ -457,7 +505,11 @@ export function crypto_generichash_instance(key?: Buffer, outputLength?: number)
  *
  * The generated public and secret key will be stored in passed in buffers.
  */
-export function crypto_box_seed_keypair(publicKey: Buffer, secretKey: Buffer, seed: Buffer): void;
+export function crypto_box_seed_keypair(
+    publicKey: Buffer,
+    secretKey: Buffer,
+    seed: Buffer,
+): void;
 
 /**
  * Create a new keypair.
@@ -562,7 +614,11 @@ export function crypto_box_open_easy(
  * * `message` should be a buffer with any length.
  * * `publicKey` should be the receipent's public key.
  */
-export function crypto_box_seal(ciphertext: Buffer, message: Buffer, publicKey: Buffer): void;
+export function crypto_box_seal(
+    ciphertext: Buffer,
+    message: Buffer,
+    publicKey: Buffer,
+): void;
 
 /**
  * Decrypt a message encoded with the sealed box method.
@@ -611,7 +667,12 @@ export function crypto_secretbox_detached(
  * * `nonce` should be a buffer with length `crypto_secretbox_NONCEBYTES`.
  * * `secretKey` should be a secret key with length `crypto_secretbox_KEYBYTES`.
  */
-export function crypto_secretbox_easy(ciphertext: Buffer, message: Buffer, nonce: Buffer, secretKey: Buffer): void;
+export function crypto_secretbox_easy(
+    ciphertext: Buffer,
+    message: Buffer,
+    nonce: Buffer,
+    secretKey: Buffer,
+): void;
 
 /**
  * Decrypt a message.
@@ -769,7 +830,11 @@ export function crypto_aead_xchacha20poly1305_ietf_decrypt_detached(
  *
  * The generated data is stored in `ciphertext`.
  */
-export function crypto_stream(ciphertext: Buffer, nonce: Buffer, key: Buffer): void;
+export function crypto_stream(
+    ciphertext: Buffer,
+    nonce: Buffer,
+    key: Buffer,
+): void;
 
 /**
  * Encrypt, but *not* authenticate, a message based on a nonce and key
@@ -785,7 +850,12 @@ export function crypto_stream(ciphertext: Buffer, nonce: Buffer, key: Buffer): v
  * Encryption defaults to XSalsa20, use `crypto_stream_chacha20_xor` if you want
  * to encrypt/decrypt with ChaCha20 instead.
  */
-export function crypto_stream_xor(ciphertext: Buffer, message: Buffer, nonce: Buffer, key: Buffer): void;
+export function crypto_stream_xor(
+    ciphertext: Buffer,
+    message: Buffer,
+    nonce: Buffer,
+    key: Buffer,
+): void;
 
 /**
  * Encrypt, but *not* authenticate, a message based on a nonce and key
@@ -798,7 +868,12 @@ export function crypto_stream_xor(ciphertext: Buffer, message: Buffer, nonce: Bu
  * The encrypted data is stored in `ciphertext`. To decrypt, swap `ciphertext` and `message`.
  * Also supports in-place encryption where you use the same buffer as `ciphertext` and `message`.
  */
-export function crypto_stream_chacha20_xor(ciphertext: Buffer, message: Buffer, nonce: Buffer, key: Buffer): void;
+export function crypto_stream_chacha20_xor(
+    ciphertext: Buffer,
+    message: Buffer,
+    nonce: Buffer,
+    key: Buffer,
+): void;
 
 /**
  * A streaming instance to the `crypto_stream_xor` api. Pass a nonce and key in the constructor.
@@ -806,12 +881,18 @@ export function crypto_stream_chacha20_xor(ciphertext: Buffer, message: Buffer, 
  * Encryption defaults to XSalsa20, use `crypto_stream_chacha20_xor_instance` if
  * you want to encrypt/decrypt with ChaCha20 instead.
  */
-export function crypto_stream_xor_instance(nonce: Buffer, key: Buffer): CryptoStreamChacha20XorWrap;
+export function crypto_stream_xor_instance(
+    nonce: Buffer,
+    key: Buffer,
+): CryptoStreamChacha20XorWrap;
 
 /**
  * A streaming instance to the `crypto_stream_xor` api. Pass a nonce and key in the constructor.
  */
-export function crypto_stream_chacha20_xor_instance(nonce: Buffer, key: Buffer): CryptoStreamChacha20XorWrap;
+export function crypto_stream_chacha20_xor_instance(
+    nonce: Buffer,
+    key: Buffer,
+): CryptoStreamChacha20XorWrap;
 
 /**
  * Create an authentication token.
@@ -833,7 +914,11 @@ export function crypto_auth(output: Buffer, input: Buffer, key: Buffer): void;
  *
  * Returns `true` if the token could be verified. Otherwise `false`.
  */
-export function crypto_auth_verify(output: Buffer, input: Buffer, key: Buffer): boolean;
+export function crypto_auth_verify(
+    output: Buffer,
+    input: Buffer,
+    key: Buffer,
+): boolean;
 
 /**
  * Generate a new encryption key.
@@ -922,7 +1007,9 @@ export function crypto_secretstream_xchacha20poly1305_pull(
 /**
  * Rekey the opaque `state` object.
  */
-export function crypto_secretstream_xchacha20poly1305_rekey(state: Xchacha20poly1305State): void;
+export function crypto_secretstream_xchacha20poly1305_rekey(
+    state: Xchacha20poly1305State,
+): void;
 
 /**
  * Create a authentication token based on a onetime key.
@@ -933,7 +1020,11 @@ export function crypto_secretstream_xchacha20poly1305_rekey(state: Xchacha20poly
  *
  * The generated token is stored in `output`.
  */
-export function crypto_onetimeauth(output: Buffer, input: Buffer, key: Buffer): void;
+export function crypto_onetimeauth(
+    output: Buffer,
+    input: Buffer,
+    key: Buffer,
+): void;
 
 /**
  * Verify a token.
@@ -944,7 +1035,11 @@ export function crypto_onetimeauth(output: Buffer, input: Buffer, key: Buffer): 
  *
  * Returns `true` if the token could be verified. Otherwise `false`.
  */
-export function crypto_onetimeauth_verify(output: Buffer, input: Buffer, key: Buffer): boolean;
+export function crypto_onetimeauth_verify(
+    output: Buffer,
+    input: Buffer,
+    key: Buffer,
+): boolean;
 
 /**
  * Create an instance that create a token from a onetime key and a stream of input data.
@@ -999,7 +1094,12 @@ export function crypto_pwhash(
  *
  * The generated hash, settings, salt, version and algorithm will be stored in `output` and the entire `output` buffer will be used.
  */
-export function crypto_pwhash_str(output: Buffer, password: Buffer, opslimit: number, memlimit: number): void;
+export function crypto_pwhash_str(
+    output: Buffer,
+    password: Buffer,
+    opslimit: number,
+    memlimit: number,
+): void;
 
 /**
  * Verify a password hash generated with the above method.
@@ -1009,7 +1109,10 @@ export function crypto_pwhash_str(output: Buffer, password: Buffer, opslimit: nu
  *
  * Returns `true` if the hash could be verified with the settings contained in `str`. Otherwise `false`.
  */
-export function crypto_pwhash_str_verify(str: Buffer, password: Buffer): boolean;
+export function crypto_pwhash_str_verify(
+    str: Buffer,
+    password: Buffer,
+): boolean;
 
 /**
  * Check if a password hash needs rehash, either because the default algorithm
@@ -1022,7 +1125,11 @@ export function crypto_pwhash_str_verify(str: Buffer, password: Buffer): boolean
  * Returns `true` if the hash should be rehashed the settings contained in `str`.
  * Otherwise `false` if it is still good.
  */
-export function crypto_pwhash_str_needs_rehash(hash: Buffer, opslimit: number, memlimit: number): boolean;
+export function crypto_pwhash_str_needs_rehash(
+    hash: Buffer,
+    opslimit: number,
+    memlimit: number,
+): boolean;
 
 /**
  * Just like `crypto_pwhash` but will run password hashing on a seperate worker so it will not block the event loop. `callback(err)` will receive any errors from the hashing but all argument
@@ -1078,7 +1185,11 @@ export function crypto_kx_keypair(publicKey: Buffer, secretKey: Buffer): void;
  * * `secretKey` should be a buffer of length `crypto_kx_SECRETKEYBYTES`.
  * * `seed` should be a buffer of length `crypto_kx_SEEDBYTES`
  */
-export function crypto_kx_seed_keypair(publicKey: Buffer, secretKey: Buffer, seed: Buffer): void;
+export function crypto_kx_seed_keypair(
+    publicKey: Buffer,
+    secretKey: Buffer,
+    seed: Buffer,
+): void;
 
 /**
  * Generate a session receive and transmission key for a client.
@@ -1126,7 +1237,10 @@ export function crypto_kx_server_session_keys(
  *
  * The generated public key is stored in `publicKey`.
  */
-export function crypto_scalarmult_base(publicKey: Buffer, secretKey: Buffer): void;
+export function crypto_scalarmult_base(
+    publicKey: Buffer,
+    secretKey: Buffer,
+): void;
 
 /**
  * Derive a shared secret from a local secret key and a remote public key.
@@ -1137,7 +1251,11 @@ export function crypto_scalarmult_base(publicKey: Buffer, secretKey: Buffer): vo
  *
  * The generated shared secret is stored in `sharedSecret`.
  */
-export function crypto_scalarmult(sharedSecret: Buffer, secretKey: Buffer, remotePublicKey: Buffer): void;
+export function crypto_scalarmult(
+    sharedSecret: Buffer,
+    secretKey: Buffer,
+    remotePublicKey: Buffer,
+): void;
 
 /**
  * > The crypto_core_ed25519_is_valid_point() function checks that p represents
@@ -1171,7 +1289,11 @@ export function crypto_core_ed25519_from_uniform(p: Buffer, r: Buffer): void;
  *
  * Note this function will throw if `n` is zero or `p` is an invalid curve point.
  */
-export function crypto_scalarmult_ed25519(q: Buffer, n: Buffer, p: Buffer): void;
+export function crypto_scalarmult_ed25519(
+    q: Buffer,
+    n: Buffer,
+    p: Buffer,
+): void;
 
 /**
  * Multiply the basepoint by scalar `n` and store its compressed representation in
@@ -1194,7 +1316,11 @@ export function crypto_scalarmult_ed25519_base(q: Buffer, n: Buffer): void;
  *
  * Note this function will throw if `n` is zero or `p` is an invalid curve point.
  */
-export function crypto_scalarmult_ed25519_noclamp(q: Buffer, n: Buffer, p: Buffer): void;
+export function crypto_scalarmult_ed25519_noclamp(
+    q: Buffer,
+    n: Buffer,
+    p: Buffer,
+): void;
 
 /**
  * Multiply the basepoint by scalar `n` and store its compressed representation in
@@ -1205,7 +1331,10 @@ export function crypto_scalarmult_ed25519_noclamp(q: Buffer, n: Buffer, p: Buffe
  *
  * Note this function will throw if `n` is zero
  */
-export function crypto_scalarmult_ed25519_base_noclamp(q: Buffer, n: Buffer): void;
+export function crypto_scalarmult_ed25519_base_noclamp(
+    q: Buffer,
+    n: Buffer,
+): void;
 
 /**
  * Add point `q` to `p`, storing the result to `r`.
@@ -1250,7 +1379,10 @@ export function crypto_core_ed25519_scalar_reduce(r: Buffer, s: Buffer): void;
  * * `recip` must be `Buffer` of at least `crypto_core_ed25519_SCALARBYTES` bytes
  * * `s` must be `Buffer` of at least `crypto_core_ed25519_SCALARBYTES` bytes
  */
-export function crypto_core_ed25519_scalar_invert(recip: Buffer, s: Buffer): void;
+export function crypto_core_ed25519_scalar_invert(
+    recip: Buffer,
+    s: Buffer,
+): void;
 
 /**
  * Find `neg` such that `s + neg = 0 (mod L)`, storing it in `recip`.
@@ -1266,7 +1398,10 @@ export function crypto_core_ed25519_scalar_negate(neg: Buffer, s: Buffer): void;
  * * `comp` must be `Buffer` of at least `crypto_core_ed25519_SCALARBYTES` bytes
  * * `s` must be `Buffer` of at least `crypto_core_ed25519_SCALARBYTES` bytes
  */
-export function crypto_core_ed25519_scalar_complement(comp: Buffer, s: Buffer): void;
+export function crypto_core_ed25519_scalar_complement(
+    comp: Buffer,
+    s: Buffer,
+): void;
 
 /**
  * Add `x` and `y` such that `x + y = z (mod L)`, storing it in `z`.
@@ -1275,7 +1410,11 @@ export function crypto_core_ed25519_scalar_complement(comp: Buffer, s: Buffer): 
  * * `y` must be `Buffer` of at least `crypto_core_ed25519_SCALARBYTES` bytes
  * * `z` must be `Buffer` of at least `crypto_core_ed25519_SCALARBYTES` bytes
  */
-export function crypto_core_ed25519_scalar_add(z: Buffer, x: Buffer, y: Buffer): void;
+export function crypto_core_ed25519_scalar_add(
+    z: Buffer,
+    x: Buffer,
+    y: Buffer,
+): void;
 
 /**
  * Subtract `x` and `y` such that `x - y = z (mod L)`, storing it in `z`.
@@ -1284,7 +1423,11 @@ export function crypto_core_ed25519_scalar_add(z: Buffer, x: Buffer, y: Buffer):
  * * `y` must be `Buffer` of at least `crypto_core_ed25519_SCALARBYTES` bytes
  * * `z` must be `Buffer` of at least `crypto_core_ed25519_SCALARBYTES` bytes
  */
-export function crypto_core_ed25519_scalar_sub(z: Buffer, x: Buffer, y: Buffer): void;
+export function crypto_core_ed25519_scalar_sub(
+    z: Buffer,
+    x: Buffer,
+    y: Buffer,
+): void;
 
 /**
  * Hash a value to a short hash based on a key.
@@ -1295,7 +1438,11 @@ export function crypto_core_ed25519_scalar_sub(z: Buffer, x: Buffer, y: Buffer):
  *
  * The generated short hash is stored in `output`.
  */
-export function crypto_shorthash(output: Buffer, input: Buffer, key: Buffer): void;
+export function crypto_shorthash(
+    output: Buffer,
+    input: Buffer,
+    key: Buffer,
+): void;
 
 /**
  * Generate a new master key.
@@ -1312,7 +1459,12 @@ export function crypto_kdf_keygen(key: Buffer): void;
  * * `context` should be a buffer of length `crypto_kdf_CONTEXTBYTES`
  * * `key` should by a buffer of length `crypto_kdf_KEYBYTES`
  */
-export function crypto_kdf_derive_from_key(subkey: Buffer, subkeyId: number, context: Buffer, key: Buffer): void;
+export function crypto_kdf_derive_from_key(
+    subkey: Buffer,
+    subkeyId: number,
+    context: Buffer,
+    key: Buffer,
+): void;
 
 /**
  * Hash a value to a short hash based on a key.

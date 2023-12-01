@@ -1,7 +1,10 @@
 import { Handler } from "../handler";
 
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export type DynamoDBStreamHandler = Handler<DynamoDBStreamEvent, DynamoDBBatchResponse | void>;
+export type DynamoDBStreamHandler = Handler<
+    DynamoDBStreamEvent,
+    DynamoDBBatchResponse | void
+>;
 
 // http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_streams_AttributeValue.html
 export interface AttributeValue {
@@ -25,7 +28,12 @@ export interface StreamRecord {
     OldImage?: { [key: string]: AttributeValue } | undefined;
     SequenceNumber?: string | undefined;
     SizeBytes?: number | undefined;
-    StreamViewType?: "KEYS_ONLY" | "NEW_IMAGE" | "OLD_IMAGE" | "NEW_AND_OLD_IMAGES" | undefined;
+    StreamViewType?:
+        | "KEYS_ONLY"
+        | "NEW_IMAGE"
+        | "OLD_IMAGE"
+        | "NEW_AND_OLD_IMAGES"
+        | undefined;
 }
 
 // http://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_streams_Record.html

@@ -5,15 +5,20 @@ export = Oninoo;
 declare const Oninoo: Onionoo;
 
 interface Onionoo {
-    new(options?: Onionoo.Options): Onionoo.Instance & Onionoo.Endpoints;
-    new(options: Onionoo.OptionsWithEndpoints): Onionoo.Instance & Partial<Onionoo.Endpoints>;
+    new (options?: Onionoo.Options): Onionoo.Instance & Onionoo.Endpoints;
+    new (
+        options: Onionoo.OptionsWithEndpoints,
+    ): Onionoo.Instance & Partial<Onionoo.Endpoints>;
 }
 
 declare namespace Onionoo {
     interface Instance {
         get(endpoint: "summary", query?: QueryParameters): GotPromise<Summary>;
         get(endpoint: "details", query?: QueryParameters): GotPromise<Details>;
-        get(endpoint: "bandwidth", query?: QueryParameters): GotPromise<Bandwidth>;
+        get(
+            endpoint: "bandwidth",
+            query?: QueryParameters,
+        ): GotPromise<Bandwidth>;
         get(endpoint: "weights", query?: QueryParameters): GotPromise<Weights>;
         get(endpoint: "clients", query?: QueryParameters): GotPromise<Clients>;
         get(endpoint: "uptime", query?: QueryParameters): GotPromise<Uptime>;
@@ -46,7 +51,14 @@ declare namespace Onionoo {
          * Array of endpoints to be returned as methods on the `Onionoo` instance.
          * @default ['summary', 'details', 'bandwidth', 'weights', 'clients', 'uptime']
          */
-        endpoints: Array<"summary" | "details" | "bandwidth" | "weights" | "clients" | "uptime">;
+        endpoints: Array<
+            | "summary"
+            | "details"
+            | "bandwidth"
+            | "weights"
+            | "clients"
+            | "uptime"
+        >;
     }
 
     interface QueryParameters {
@@ -442,10 +454,12 @@ declare namespace Onionoo {
          * `exit_policy` field in a rare edge case: this happens when the relay changes its exit policy after
          * the directory authorities summarized the previous exit policy.
          */
-        exit_policy_summary?: {
-            accept?: string[] | undefined;
-            reject?: string[] | undefined;
-        } | undefined;
+        exit_policy_summary?:
+            | {
+                  accept?: string[] | undefined;
+                  reject?: string[] | undefined;
+              }
+            | undefined;
         /**
          * Summary version of the relay's IPv6 exit policy containing a dictionary with either an `accept` or a `reject`
          * element. If there is an `accept` (`reject`) element, the relay accepts (rejects) all TCP ports or port ranges
@@ -454,10 +468,12 @@ declare namespace Onionoo {
          * this happens when the relay changes its exit policy after the directory authorities summarized the previous
          * exit policy.
          */
-        exit_policy_v6_summary?: {
-            accept?: string[] | undefined;
-            reject?: string[] | undefined;
-        } | undefined;
+        exit_policy_v6_summary?:
+            | {
+                  accept?: string[] | undefined;
+                  reject?: string[] | undefined;
+              }
+            | undefined;
         /**
          * Contact address of the relay operator. Omitted if empty or if descriptor containing this information
          * cannot be found.
@@ -680,8 +696,16 @@ declare namespace Onionoo {
          */
         write_history?:
             | Partial<
-                Record<"3_days" | "1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >
+                  Record<
+                      | "3_days"
+                      | "1_week"
+                      | "1_month"
+                      | "6_months"
+                      | "1_year"
+                      | "5_years",
+                      Histogram
+                  >
+              >
             | undefined;
         /**
          * Object containing graph history objects with read bytes for different time periods. The specification
@@ -689,8 +713,16 @@ declare namespace Onionoo {
          */
         read_history?:
             | Partial<
-                Record<"3_days" | "1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >
+                  Record<
+                      | "3_days"
+                      | "1_week"
+                      | "1_month"
+                      | "6_months"
+                      | "1_year"
+                      | "5_years",
+                      Histogram
+                  >
+              >
             | undefined;
     }
 
@@ -711,8 +743,11 @@ declare namespace Onionoo {
          */
         consensus_weight_fraction?:
             | Partial<
-                Record<"1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >
+                  Record<
+                      "1_week" | "1_month" | "6_months" | "1_year" | "5_years",
+                      Histogram
+                  >
+              >
             | undefined;
         /**
          * History object containing the probability of this relay to be selected for the guard position.
@@ -722,8 +757,11 @@ declare namespace Onionoo {
          */
         guard_probability?:
             | Partial<
-                Record<"1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >
+                  Record<
+                      "1_week" | "1_month" | "6_months" | "1_year" | "5_years",
+                      Histogram
+                  >
+              >
             | undefined;
         /**
          * History object containing the probability of this relay to be selected for the middle position.
@@ -733,8 +771,11 @@ declare namespace Onionoo {
          */
         middle_probability?:
             | Partial<
-                Record<"1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >
+                  Record<
+                      "1_week" | "1_month" | "6_months" | "1_year" | "5_years",
+                      Histogram
+                  >
+              >
             | undefined;
         /**
          * History object containing the probability of this relay to be selected for the exit position.
@@ -744,8 +785,11 @@ declare namespace Onionoo {
          */
         exit_probability?:
             | Partial<
-                Record<"1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >
+                  Record<
+                      "1_week" | "1_month" | "6_months" | "1_year" | "5_years",
+                      Histogram
+                  >
+              >
             | undefined;
         /**
          * History object containing the absolute consensus weight of this relay. The specification of this history
@@ -753,8 +797,11 @@ declare namespace Onionoo {
          */
         consensus_weight?:
             | Partial<
-                Record<"1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >
+                  Record<
+                      "1_week" | "1_month" | "6_months" | "1_year" | "5_years",
+                      Histogram
+                  >
+              >
             | undefined;
     }
 
@@ -772,7 +819,9 @@ declare namespace Onionoo {
          * data resolution. The unit is number of clients. Contained graph history objects may contain null values
          * if the bridge did not report client statistics for at least 50% of a given time period.
          */
-        average_clients?: Partial<Record<"6_months" | "1_year" | "5_years", Histogram>> | undefined;
+        average_clients?:
+            | Partial<Record<"6_months" | "1_year" | "5_years", Histogram>>
+            | undefined;
     }
 
     interface RelayUptime {
@@ -792,19 +841,31 @@ declare namespace Onionoo {
          */
         uptime?:
             | Partial<
-                Record<"1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >
+                  Record<
+                      "1_week" | "1_month" | "6_months" | "1_year" | "5_years",
+                      Histogram
+                  >
+              >
             | undefined;
         /**
          * Object containing fractional times of this relay having relay flags assigned. Keys are flag names like
          * `Running` or `Exit`, values are objects similar to the uptime field above, again with keys like
          * `1_week` etc. If a relay never had a given relay flag assigned, no object is included for that flag.
          */
-        flags?: {
-            [key: string]: Partial<
-                Record<"1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >;
-        } | undefined;
+        flags?:
+            | {
+                  [key: string]: Partial<
+                      Record<
+                          | "1_week"
+                          | "1_month"
+                          | "6_months"
+                          | "1_year"
+                          | "5_years",
+                          Histogram
+                      >
+                  >;
+              }
+            | undefined;
     }
 
     interface BridgeUptime {
@@ -818,8 +879,11 @@ declare namespace Onionoo {
          */
         uptime?:
             | Partial<
-                Record<"1_week" | "1_month" | "6_months" | "1_year" | "5_years", Histogram>
-            >
+                  Record<
+                      "1_week" | "1_month" | "6_months" | "1_year" | "5_years",
+                      Histogram
+                  >
+              >
             | undefined;
     }
 

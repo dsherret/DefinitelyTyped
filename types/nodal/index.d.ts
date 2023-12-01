@@ -3,7 +3,10 @@
 import * as fxn from "fxn";
 
 export class APIConstructor {
-    format(obj: any, arrInterface?: string[]): {
+    format(
+        obj: any,
+        arrInterface?: string[],
+    ): {
         meta: {
             total: number;
             count: number;
@@ -14,7 +17,14 @@ export class APIConstructor {
         };
         data: any;
     };
-    meta(total: number, count: number, offset: number, error: any, summary?: string | null, resource?: any): {
+    meta(
+        total: number,
+        count: number,
+        offset: number,
+        error: any,
+        summary?: string | null,
+        resource?: any,
+    ): {
         total: number;
         count: number;
         offset: number;
@@ -22,7 +32,10 @@ export class APIConstructor {
         summary: string | null | undefined;
         resource: any;
     };
-    error(message: string, details: string): {
+    error(
+        message: string,
+        details: string,
+    ): {
         meta: {
             total: number;
             count: number;
@@ -33,7 +46,10 @@ export class APIConstructor {
         };
         data: never[];
     };
-    spoof(obj: any, useResource?: boolean): {
+    spoof(
+        obj: any,
+        useResource?: boolean,
+    ): {
         meta: {
             total: number;
             count: number;
@@ -44,7 +60,11 @@ export class APIConstructor {
         };
         data: any;
     };
-    response(itemArray: any, arrInterface: any, useResource?: boolean): {
+    response(
+        itemArray: any,
+        arrInterface: any,
+        useResource?: boolean,
+    ): {
         meta: {
             total: number;
             count: number;
@@ -71,7 +91,14 @@ export class Application extends fxn.Application {
     /**
      * HTTP Error
      */
-    error(req: any, res: any, start: any, status: number, message: string, err: any): void;
+    error(
+        req: any,
+        res: any,
+        start: any,
+        status: number,
+        message: string,
+        err: any,
+    ): void;
 }
 
 export class Controller extends fxn.Controller {
@@ -128,7 +155,10 @@ export class Controller extends fxn.Controller {
      * @param {optional Array} The interface to use for the data being returned, if not an error.
      * @return {boolean}
      */
-    respond(data: Error | Object | any[] | Model | ModelArray<Model>, arrInterface?: string[]): boolean;
+    respond(
+        data: Error | Object | any[] | Model | ModelArray<Model>,
+        arrInterface?: string[],
+    ): boolean;
 }
 
 export interface IComparison {
@@ -301,7 +331,10 @@ export class Composer<T extends Model> {
      * @param {Object} fields The object containing columns (keys) and associated values you'd like to update
      * @param {function({Error}, {Nodal.ModelArray})} callback The callback for the update query
      */
-    update(fields: IAnyObject, callback: (err: Error, modelArray: ModelArray<T>) => void): void;
+    update(
+        fields: IAnyObject,
+        callback: (err: Error, modelArray: ModelArray<T>) => void,
+    ): void;
 }
 
 export const CLI: any;
@@ -355,14 +388,22 @@ export class GraphQuery {
     /**
      * Fully parse a GraphQL query, get necessary joins to make in SQL
      */
-    static parse(str: string, max: number): {
+    static parse(
+        str: string,
+        max: number,
+    ): {
         structure: any;
         joins: {};
     };
     /**
      * Format a parsed syntax tree in a way that the Composer expects
      */
-    static formatTree(tree: any[], max: number, joins: any, parents?: any): any[];
+    static formatTree(
+        tree: any[],
+        max: number,
+        joins: any,
+        parents?: any,
+    ): any[];
     /**
      * Query the GraphQuery object from the database
      * @param {Function} callback The function to execute upon completion
@@ -395,9 +436,24 @@ export class Migration {
     executeDown(callback: (err: Error) => void, prevId?: string): void;
     createTable(table: string, arrFieldData: Object[], modelName: string): any;
     dropTable(table: string): any;
-    renameTable(table: string, newTableName: string, renameModel: string, newModelName: string): any;
-    alterColumn(table: string, column: string, type: DataType, properties: IColumnProperties): any;
-    addColumn(table: string, column: string, type: DataType, properties: IColumnProperties): any;
+    renameTable(
+        table: string,
+        newTableName: string,
+        renameModel: string,
+        newModelName: string,
+    ): any;
+    alterColumn(
+        table: string,
+        column: string,
+        type: DataType,
+        properties: IColumnProperties,
+    ): any;
+    addColumn(
+        table: string,
+        column: string,
+        type: DataType,
+        properties: IColumnProperties,
+    ): any;
     dropColumn(table: string, column: string): any;
     renameColumn(table: string, column: string, newColumn: string): any;
     createIndex(table: string, column: string, type: DataType): any;
@@ -524,7 +580,10 @@ export class Model {
      * @param {string} field The field (name of the join relationship)
      * @param {Model|ModelArray} value The joined model or array of models
      */
-    setJoined(field: string, value: ModelArray<this> | Model): Model | ModelArray<this>;
+    setJoined(
+        field: string,
+        value: ModelArray<this> | Model,
+    ): Model | ModelArray<this>;
     /**
      * Calculate field from calculations (assumes it exists)
      *  @param {string} field Name of the calculated field
@@ -546,7 +605,12 @@ export class Model {
      *   Pass in a function with named parameters corresponding the relationships you'd like to retrieve.
      *   The first parameter is always an error callback.
      */
-    include(callback: (err: Error, ...models: Array<Model | ModelArray<this>>) => void): void;
+    include(
+        callback: (
+            err: Error,
+            ...models: Array<Model | ModelArray<this>>
+        ) => void,
+    ): void;
     /**
      * Creates a plain object from the Model, with properties matching an optional interface
      * @param {Array} arrInterface Interface to use for object creation
@@ -674,14 +738,24 @@ export class Model {
      * @param {Function} callback Callback to execute upon completion
      */
     update(fields: IAnyObject, callback: Function): void;
-    static find(id: number, callback: (err: IExtendedError, model?: Model) => void): void;
-    static findBy(field: string, value: any, callback: (err: IExtendedError, model?: Model) => void): void;
+    static find(
+        id: number,
+        callback: (err: IExtendedError, model?: Model) => void,
+    ): void;
+    static findBy(
+        field: string,
+        value: any,
+        callback: (err: IExtendedError, model?: Model) => void,
+    ): void;
     /**
      * Creates a new model instance using the provided data.
      * @param {object} data The data to load into the object.
      * @param {function({Error} err, {Nodal.Model} model)} callback The callback to execute upon completion
      */
-    static create(data: IAnyObject, callback: (err: IExtendedError, model?: Model) => void): void;
+    static create(
+        data: IAnyObject,
+        callback: (err: IExtendedError, model?: Model) => void,
+    ): void;
     /**
      * Finds a model with a provided field, value pair. Returns the first found.
      * @param {string} field Name of the field
@@ -699,13 +773,20 @@ export class Model {
      * @param {object} data The data to load into the object.
      * @param {function({Error} err, {Nodal.Model} model)} callback The callback to execute upon completion
      */
-    static update(id: number, data: IAnyObject, callback: (err: IExtendedError, model?: Model) => void): void;
+    static update(
+        id: number,
+        data: IAnyObject,
+        callback: (err: IExtendedError, model?: Model) => void,
+    ): void;
     /**
      * Finds and destroys a model with a specified id. Return a notFound error if model does not exist.
      * @param {number} id The id of the model you're looking for
      * @param {function({Error} err, {Nodal.Model} model)} callback The callback to execute upon completion
      */
-    static destroy(id: number, callback: (err: IExtendedError, model?: Model) => void): void;
+    static destroy(
+        id: number,
+        callback: (err: IExtendedError, model?: Model) => void,
+    ): void;
     /**
      * Creates a new Composer (ORM) instance to begin a new query.
      * @param {optional Nodal.Database} db Deprecated - provide a database to query from. Set the model's db in its constructor file, instead.
@@ -751,10 +832,7 @@ export class Model {
      * Set the schema to be used for this model
      * @param {Object} schema
      */
-    static setSchema(schema: {
-        table: string;
-        columns: IColumn[];
-    }): void;
+    static setSchema(schema: { table: string; columns: IColumn[] }): void;
     /**
      * FIXME
      */
@@ -772,19 +850,26 @@ export class Model {
      *   "as": What to display the name of the child as when joined to the parent (default to camelCase of child name)
      *   "multiple": Whether the child exists in multiples for the parent (defaults to false)
      */
-    static joinsTo(modelClass: typeof Model, options: {
-        name?: string | undefined;
-        via?: string | undefined;
-        as?: string | undefined;
-        multiple?: boolean | undefined;
-    }): RelationshipEdge | null;
+    static joinsTo(
+        modelClass: typeof Model,
+        options: {
+            name?: string | undefined;
+            via?: string | undefined;
+            as?: string | undefined;
+            multiple?: boolean | undefined;
+        },
+    ): RelationshipEdge | null;
     /**
      * Create a validator. These run synchronously and check every time a field is set / cleared.
      * @param {string} field The field you'd like to validate
      * @param {string} message The error message shown if a validation fails.
      * @param {function({any} value)} fnAction the validation to run - first parameter is the value you're testing.
      */
-    static validates(field: string, message: string, fnAction: (value: any) => void): void;
+    static validates(
+        field: string,
+        message: string,
+        fnAction: (value: any) => void,
+    ): void;
     /**
      * Creates a verifier. These run asynchronously, support multiple fields, and check every time you try to save a Model.
      * @param {string} message The error message shown if a validation fails.
@@ -870,7 +955,11 @@ export class ModelFactory {
      * @param {Object} objModelData Keys are model names, values are arrays of model data you wish to create
      * @param {Function} callback What to execute upon completion
      */
-    static createFromModels(Models: Array<typeof Model>, objModelData: IModelData, callback: Function): void;
+    static createFromModels(
+        Models: Array<typeof Model>,
+        objModelData: IModelData,
+        callback: Function,
+    ): void;
     /**
      * Populates a large amount of model data from an Object.
      * @param {Array} Models Array of Model constructors
@@ -918,7 +1007,11 @@ export class RelationshipEdge {
     parent: RelationshipNode;
     child: RelationshipNode;
     options: IOptions;
-    constructor(parent: RelationshipNode, child: RelationshipNode, options: IOptions);
+    constructor(
+        parent: RelationshipNode,
+        child: RelationshipNode,
+        options: IOptions,
+    );
     toString(): string;
     hasChild(child: RelationshipNode): boolean;
     hasParent(parent: RelationshipNode): boolean;
@@ -930,10 +1023,8 @@ export class RelationshipGraph {
     constructor();
     of(mModel: typeof Model): RelationshipNode;
 }
-export class Router extends fxn.Router {
-}
-export class Scheduler extends fxn.Scheduler {
-}
+export class Router extends fxn.Router {}
+export class Scheduler extends fxn.Scheduler {}
 
 /**
  * Random types used across multiple classes.
@@ -986,7 +1077,16 @@ export interface IArrInterface {
     [item: string]: [string];
 }
 export type InterfaceType = IArrInterface | string;
-export type DataType = "serial" | "int" | "currency" | "float" | "string" | "text" | "datetime" | "boolean" | "json";
+export type DataType =
+    | "serial"
+    | "int"
+    | "currency"
+    | "float"
+    | "string"
+    | "text"
+    | "datetime"
+    | "boolean"
+    | "json";
 
 export const my: {
     Config?: any;

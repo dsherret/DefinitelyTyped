@@ -10,7 +10,13 @@ export default class Scale extends Behaviour {
     /**
      * Constructs a Scale behaviour instance.
      */
-    constructor(scaleA?: number, scaleB?: number, life?: number, easing?: EasingFunction, isEnabled?: boolean);
+    constructor(
+        scaleA?: number,
+        scaleB?: number,
+        life?: number,
+        easing?: EasingFunction,
+        isEnabled?: boolean,
+    );
 
     /**
      * Gets the _same property which determines if the scale props are the same.
@@ -25,7 +31,12 @@ export default class Scale extends Behaviour {
     /**
      * Resets the behaviour properties.
      */
-    reset(scaleA?: number, scaleB?: number, life?: number, easing?: EasingFunction): void;
+    reset(
+        scaleA?: number,
+        scaleB?: number,
+        life?: number,
+        easing?: EasingFunction,
+    ): void;
     reset(life?: number, easing?: EasingFunction): void;
 
     /**

@@ -8,19 +8,36 @@ var labels: JQuerySteps.LabelSettings = {
     loading: "Loading...",
 };
 
-var onStepChangingFunc: JQuerySteps.FunctionOnStepChanging = (event, currentIndex, newIndex): boolean => true;
+var onStepChangingFunc: JQuerySteps.FunctionOnStepChanging = (
+    event,
+    currentIndex,
+    newIndex,
+): boolean => true;
 
-var onStepChangedFunc: JQuerySteps.FunctionOnStepChanged = (event, currentIndex, priorIndex) => {};
+var onStepChangedFunc: JQuerySteps.FunctionOnStepChanged = (
+    event,
+    currentIndex,
+    priorIndex,
+) => {};
 
 var onCancelledFunc: JQuerySteps.FunctionOnCancelled = (event) => {};
 
-var onFinishingFunc: JQuerySteps.FunctionOnFinishing = (event, currentIndex): boolean => true;
+var onFinishingFunc: JQuerySteps.FunctionOnFinishing = (
+    event,
+    currentIndex,
+): boolean => true;
 
-var onFinishedFunc: JQuerySteps.FunctionOnFinished = (event, currentIndex) => {};
+var onFinishedFunc: JQuerySteps.FunctionOnFinished = (
+    event,
+    currentIndex,
+) => {};
 
 var onInitFunc: JQuerySteps.FunctionOnInit = (event, currentIndex) => {};
 
-var onContentLoadedFunc: JQuerySteps.FunctionOnContentLoaded = (event, currentIndex) => {};
+var onContentLoadedFunc: JQuerySteps.FunctionOnContentLoaded = (
+    event,
+    currentIndex,
+) => {};
 
 var settings: JQuerySteps.Settings = {
     headerTag: "h3",
@@ -31,7 +48,7 @@ var settings: JQuerySteps.Settings = {
     cssClass: "wizard",
     stepsOrientation: "vertical",
     titleTemplate: "#title#",
-    loadingTemplate: "<span class=\"spinner\"></span> #text#",
+    loadingTemplate: '<span class="spinner"></span> #text#',
     autoFocus: true,
     enableAllSteps: true,
     enableKeyNavigation: false,

@@ -23,12 +23,31 @@ export interface Plugin {
 }
 
 export interface ProgressEmitter extends EventEmitter {
-    on(event: "progress", listener: (machine: string, progress: string, rate: string, remaining: string) => void): this;
+    on(
+        event: "progress",
+        listener: (
+            machine: string,
+            progress: string,
+            rate: string,
+            remaining: string,
+        ) => void,
+    ): this;
 }
 
 export interface MachineEmitter extends EventEmitter {
-    on(event: "stdout" | "stderr" | "up-progress", listener: (chunk: any) => void): this;
-    on(event: "progress", listener: (machine: string, progress: string, rate: string, remaining: string) => void): this;
+    on(
+        event: "stdout" | "stderr" | "up-progress",
+        listener: (chunk: any) => void,
+    ): this;
+    on(
+        event: "progress",
+        listener: (
+            machine: string,
+            progress: string,
+            rate: string,
+            remaining: string,
+        ) => void,
+    ): this;
 }
 
 export interface Machine extends MachineEmitter {
@@ -39,7 +58,12 @@ export interface Machine extends MachineEmitter {
     init(args: string | string[], config: any, cb: Callback): void;
     up(cb?: Callback): void;
     up(args?: string | string[], cb?: Callback): void;
-    status(cb: (err: ErrorArg, out?: Array<{ status: string; provider: string }>) => void): void;
+    status(
+        cb: (
+            err: ErrorArg,
+            out?: Array<{ status: string; provider: string }>,
+        ) => void,
+    ): void;
     sshConfig(
         cb: (
             err: ErrorArg,
@@ -62,7 +86,12 @@ export interface Machine extends MachineEmitter {
     destroy(cb?: Callback): void;
     destroy(args?: string | string[], cb?: Callback): void;
     snapshots(): Snapshots;
-    boxRepackage(name: string, provider: string, version: string, cb?: Callback): void;
+    boxRepackage(
+        name: string,
+        provider: string,
+        version: string,
+        cb?: Callback,
+    ): void;
     plugin(): Plugin;
     pluginUpdate(cb?: Callback): void;
     pluginRepair(cb?: Callback): void;
@@ -70,41 +99,91 @@ export interface Machine extends MachineEmitter {
 
 export function version(cb?: Callback): void;
 export function versionStatus(
-    cb: (err: ErrorArg, out?: { status: string; major: number; minor: number; patch: number }) => void,
+    cb: (
+        err: ErrorArg,
+        out?: { status: string; major: number; minor: number; patch: number },
+    ) => void,
 ): void;
 export function globalStatus(
-    cb: (err: ErrorArg, out?: Array<{ id: string; name: string; provider: string; state: string }>) => void,
+    cb: (
+        err: ErrorArg,
+        out?: Array<{
+            id: string;
+            name: string;
+            provider: string;
+            state: string;
+        }>,
+    ) => void,
 ): void;
 export function globalStatus(
     args: string | string[],
-    cb: (err: ErrorArg, out?: Array<{ id: string; name: string; provider: string; state: string }>) => void,
+    cb: (
+        err: ErrorArg,
+        out?: Array<{
+            id: string;
+            name: string;
+            provider: string;
+            state: string;
+        }>,
+    ) => void,
 ): void;
-export function create(opts?: { cwd?: string | undefined; env?: NodeJS.ProcessEnv | undefined }): Machine;
+export function create(opts?: {
+    cwd?: string | undefined;
+    env?: NodeJS.ProcessEnv | undefined;
+}): Machine;
 export function boxAdd(box: string, cb?: Callback): ProgressEmitter;
-export function boxAdd(box: string, args?: string | string[], cb?: Callback): ProgressEmitter;
+export function boxAdd(
+    box: string,
+    args?: string | string[],
+    cb?: Callback,
+): ProgressEmitter;
 export function boxList(
-    cb: (err: ErrorArg, out?: Array<{ name: string; provider: string; version: string }>) => void,
+    cb: (
+        err: ErrorArg,
+        out?: Array<{ name: string; provider: string; version: string }>,
+    ) => void,
 ): void;
 export function boxList(
     args: string | string[],
-    cb: (err: ErrorArg, out?: Array<{ name: string; provider: string; version: string }>) => void,
+    cb: (
+        err: ErrorArg,
+        out?: Array<{ name: string; provider: string; version: string }>,
+    ) => void,
 ): void;
 export function boxOutdated(
     cb: (
         err: ErrorArg,
-        out?: Array<{ name: string; status: string; currentVersion: string; latestVersion: string }>,
+        out?: Array<{
+            name: string;
+            status: string;
+            currentVersion: string;
+            latestVersion: string;
+        }>,
     ) => void,
 ): void;
 export function boxOutdated(
     args: string | string[],
     cb: (
         err: ErrorArg,
-        out?: Array<{ name: string; status: string; currentVersion: string; latestVersion: string }>,
+        out?: Array<{
+            name: string;
+            status: string;
+            currentVersion: string;
+            latestVersion: string;
+        }>,
     ) => void,
 ): void;
 export function boxPrune(cb?: Callback): void;
 export function boxPrune(args: string | string[], cb?: Callback): void;
 export function boxRemove(name: string, cb?: Callback): void;
-export function boxRemove(name: string, args: string | string[], cb?: Callback): void;
-export function boxUpdate(box: string, provider: string | null, cb?: Callback): ProgressEmitter;
+export function boxRemove(
+    name: string,
+    args: string | string[],
+    cb?: Callback,
+): void;
+export function boxUpdate(
+    box: string,
+    provider: string | null,
+    cb?: Callback,
+): ProgressEmitter;
 export function promisify(): void;

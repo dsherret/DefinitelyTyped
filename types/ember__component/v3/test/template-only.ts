@@ -1,4 +1,6 @@
-import templateOnly, { TemplateOnlyComponent } from "@ember/component/template-only";
+import templateOnly, {
+    TemplateOnlyComponent,
+} from "@ember/component/template-only";
 
 const to = templateOnly(); // $ExpectType TemplateOnlyComponent
 

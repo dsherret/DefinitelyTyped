@@ -14,7 +14,9 @@ type Question = RawListQuestionOptions;
  * @template TQuestion
  * The options for the question.
  */
-declare class RawListPrompt<TQuestion extends Question = Question> extends Prompt<TQuestion> {
+declare class RawListPrompt<
+    TQuestion extends Question = Question,
+> extends Prompt<TQuestion> {
     /**
      * Resolves the value of the prompt.
      */
@@ -47,7 +49,11 @@ declare class RawListPrompt<TQuestion extends Question = Question> extends Promp
      * @param answers
      * The answer-object.
      */
-    constructor(question: TQuestion, readLine: ReadlineInterface, answers: Answers);
+    constructor(
+        question: TQuestion,
+        readLine: ReadlineInterface,
+        answers: Answers,
+    );
 
     /**
      * Renders the prompt.
@@ -97,7 +103,9 @@ declare class RawListPrompt<TQuestion extends Question = Question> extends Promp
      * @param eventArgs
      * An object which contains event-data.
      */
-    protected onEnd(eventArgs: inquirer.prompts.SuccessfulPromptStateData): void;
+    protected onEnd(
+        eventArgs: inquirer.prompts.SuccessfulPromptStateData,
+    ): void;
 
     /**
      * Handles the `error`-event of the prompt.

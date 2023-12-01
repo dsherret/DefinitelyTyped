@@ -7,7 +7,11 @@ export {};
 
 declare global {
     // js/hdmap.js
-    interface HDProjection extends Omit<DynmapProjection, "fromLocationToLatLng" | "fromLatLngToLocation"> {
+    interface HDProjection
+        extends Omit<
+            DynmapProjection,
+            "fromLocationToLatLng" | "fromLatLngToLocation"
+        > {
         fromLocationToLatLng(location: Location): L.LatLng;
         fromLatLngToLocation(location: L.LatLng): Location;
     }
@@ -42,7 +46,10 @@ declare global {
         scrollHeight(height?: number): Element["scrollHeight"];
     }
 
-    function namedReplace(str: string, obj: Record<string | number | symbol, unknown | null | unknown[]>): string;
+    function namedReplace(
+        str: string,
+        obj: Record<string | number | symbol, unknown | null | unknown[]>,
+    ): string;
     function concatURL(base: string, addition: string): string;
 
     // js/sidebarutils.js
@@ -64,10 +71,28 @@ declare global {
     }
     function fixedAjax(obj: JQuery.AjaxSettings): void;
     interface JQueryStatic {
-        deleteJSON(url: string, success: JQuerySuccessHandlerFn, error: JQueryErrorHandlerFn): void;
-        postJSON(obj: any, url: string, success: JQuerySuccessHandlerFn, error: JQueryErrorHandlerFn): void;
-        putJSON(obj: any, url: string, success: JQuerySuccessHandlerFn, error: JQueryErrorHandlerFn): void;
-        getJSON(url: string, success: JQuerySuccessHandlerFn, error: JQueryErrorHandlerFn): void;
+        deleteJSON(
+            url: string,
+            success: JQuerySuccessHandlerFn,
+            error: JQueryErrorHandlerFn,
+        ): void;
+        postJSON(
+            obj: any,
+            url: string,
+            success: JQuerySuccessHandlerFn,
+            error: JQueryErrorHandlerFn,
+        ): void;
+        putJSON(
+            obj: any,
+            url: string,
+            success: JQuerySuccessHandlerFn,
+            error: JQueryErrorHandlerFn,
+        ): void;
+        getJSON(
+            url: string,
+            success: JQuerySuccessHandlerFn,
+            error: JQueryErrorHandlerFn,
+        ): void;
     }
 
     // js/minecraft.js
@@ -82,7 +107,9 @@ declare global {
         size: string,
         completed: () => HTMLImageElement,
     ): void;
-    function getMinecraftTime<S = number, D = boolean>(servertime: S): {
+    function getMinecraftTime<S = number, D = boolean>(
+        servertime: S,
+    ): {
         servertime: S;
         days: number;
         hours: number;
@@ -136,7 +163,12 @@ declare class DynmapProjection extends L.Class {
 declare class DynmapLayerControl extends L.Control.Layers {
     getPosition(): L.ControlPosition;
     addOverlay(layer: L.Layer, name: string, pos?: boolean): this;
-    _addLayer(layer: L.Layer, name: string, overlay: L.Layer, pos?: boolean): void;
+    _addLayer(
+        layer: L.Layer,
+        name: string,
+        overlay: L.Layer,
+        pos?: boolean,
+    ): void;
 }
 
 export interface TileInformation {
@@ -176,7 +208,12 @@ declare class DynmapTileLayer extends L.TileLayer {
     getTileInfo(coords: Location): TileInformation;
 }
 
-export class Location<W = string | World | null, X = number, Y = number, Z = number> {
+export class Location<
+    W = string | World | null,
+    X = number,
+    Y = number,
+    Z = number,
+> {
     constructor(world: W, x: X, y: Y, z: Z);
     world?: W;
     x: X;
@@ -194,15 +231,23 @@ export class LatLng<W = string | World | null, L = number, F = number> {
 // js/sidebarutils.js
 
 export interface SidebarUtils {
-    createSection<Content = JQuery<HTMLUListElement>>(labelText: string, content: Content): {
+    createSection<Content = JQuery<HTMLUListElement>>(
+        labelText: string,
+        content: Content,
+    ): {
         section: JQuery<HTMLFieldSetElement>;
         legend: JQuery<HTMLLegendElement>;
         upBtn: JQuery<HTMLButtonElement>;
         content: Content;
         downBtn: JQuery<HTMLButtonElement>;
     };
-    createListSection(labelText: string): ReturnType<SidebarUtils["createSection"]>;
-    createScrollButton(up: boolean, target: JQuery<HTMLDivElement>): JQuery<HTMLDivElement>;
+    createListSection(
+        labelText: string,
+    ): ReturnType<SidebarUtils["createSection"]>;
+    createScrollButton(
+        up: boolean,
+        target: JQuery<HTMLDivElement>,
+    ): JQuery<HTMLDivElement>;
 }
 
 // js/version.js
@@ -229,15 +274,25 @@ export interface ChatMessage {
 
 // js/map.js
 
-export type Component<Data extends Record<string | number | symbol, unknown | null | unknown[]>> = Data & {
-    new(dynmap: DynMap, configuration: Record<string | number | symbol, unknown | null | unknown[]>): Component<Data>;
+export type Component<
+    Data extends Record<string | number | symbol, unknown | null | unknown[]>,
+> = Data & {
+    new (
+        dynmap: DynMap,
+        configuration: Record<
+            string | number | symbol,
+            unknown | null | unknown[]
+        >,
+    ): Component<Data>;
     [data: string]: unknown;
 };
 
 export class WorldMap extends DynmapTileLayer {
     constructor(options: WorldMapOptions);
     dynmap: DynMap;
-    options: WorldMapConfiguration & DynmapTileLayer["options"] & WorldMapOptions;
+    options: WorldMapConfiguration &
+        DynmapTileLayer["options"] &
+        WorldMapOptions;
     _currentzoom: number;
     _limitedUpdate: L.LeafletEventHandlerFn;
 }
@@ -260,7 +315,12 @@ export interface ComponentRecord {
     [componentname: string]: Component<{}> | undefined;
     markers?: Component<{}>;
     chat?: Component<{}>;
-    chatballoon?: Component<{ chatpopups: Record<string | number | symbol, unknown | null | unknown[]> }>;
+    chatballoon?: Component<{
+        chatpopups: Record<
+            string | number | symbol,
+            unknown | null | unknown[]
+        >;
+    }>;
     chatbox?: Component<{}>;
     inactive?: Component<{}>;
     playermarkers?: Component<{}>;
@@ -303,10 +363,11 @@ export interface GlobalMap extends L.Map {
     };
     tap?: L.Handler;
     touchZoom: L.Handler;
-    zoomControl: L.Control.Zoom & L.Handler & {
-        _zoomInButton: HTMLElement;
-        _zoomOutButton: HTMLElement;
-    };
+    zoomControl: L.Control.Zoom &
+        L.Handler & {
+            _zoomInButton: HTMLElement;
+            _zoomOutButton: HTMLElement;
+        };
 }
 
 declare class DynMap {
@@ -345,15 +406,25 @@ declare class DynMap {
     initialize(): void;
     updateSidebarHeight(): void;
     getProjection: NonNullable<DynMap["maptype"]>["getProjection"];
-    selectMapAndPan(map: WorldMap, location: Location, completed?: () => void): void;
+    selectMapAndPan(
+        map: WorldMap,
+        location: Location,
+        completed?: () => void,
+    ): void;
     selectMap(map: WorldMap, completed?: () => void): void;
-    selectWorldAndPan(world: World, location: Location, completed?: () => void): void;
+    selectWorldAndPan(
+        world: World,
+        location: Location,
+        completed?: () => void,
+    ): void;
     selectWorld(world: World, completed?: () => void): void;
     panToLocation(location: Location, completion?: () => void): void;
     panToLayerPoint(point: L.Point, completed?: () => void): void;
     panToLatLng(latlng: LatLng, completed?: () => void): void;
     update(): void;
-    getTileUrl(tileName: keyof DynMap["registeredTiles"]): DynMap["registeredTiles"][keyof DynMap["registeredTiles"]];
+    getTileUrl(
+        tileName: keyof DynMap["registeredTiles"],
+    ): DynMap["registeredTiles"][keyof DynMap["registeredTiles"]];
     addPlayer(player: Player, update: Player): void;
     removePlayer(player: Player): void;
     followPlayer(player: Player): void;
@@ -398,7 +469,15 @@ export type WorldMapConversion = [
     number,
 ];
 
-export type CompassDirection = "N" | "NE" | "E" | "SE" | "S" | "SW" | "W" | "NW";
+export type CompassDirection =
+    | "N"
+    | "NE"
+    | "E"
+    | "SE"
+    | "S"
+    | "SW"
+    | "W"
+    | "NW";
 
 export type ImageFormat =
     | "jpg"
@@ -479,7 +558,7 @@ export interface Configuration extends StandaloneConfiguration {
     "msg-hiddennamequit"?: string;
     "msg-maptypes"?: string;
     "msg-players"?: string;
-    "quitmessage"?: string;
+    quitmessage?: string;
     label?: string | "x,y,z";
     linkurl?: string;
     logourl?: string;
@@ -497,7 +576,7 @@ export interface Configuration extends StandaloneConfiguration {
     updaterate?: number;
     "webchat-interval"?: number;
     "webchat-requires-login"?: boolean;
-    "webprefix"?: string;
+    webprefix?: string;
     worlds?: WorldConfiguration[];
     visiblelines?: number;
 }

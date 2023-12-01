@@ -18,7 +18,11 @@ export abstract class UI {
     private readonly swipeDistance;
     private onResize;
 
-    protected constructor(inBlock: HTMLElement, app: PageFlip, setting: FlipSetting);
+    protected constructor(
+        inBlock: HTMLElement,
+        app: PageFlip,
+        setting: FlipSetting,
+    );
     /**
      * Destructor. Remove all HTML elements and all event handlers
      */

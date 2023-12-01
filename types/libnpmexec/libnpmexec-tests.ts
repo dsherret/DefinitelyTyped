@@ -1,6 +1,6 @@
 import libnpmexec = require("libnpmexec");
 
-(async () => {
+async () => {
     // From package documentation.
     await libnpmexec({
         args: ["yosay", "Bom dia!"],
@@ -45,4 +45,4 @@ import libnpmexec = require("libnpmexec");
         scriptShell: "Test Script Shell",
         registry: "Test Registry",
     });
-});
+};

@@ -1,5 +1,11 @@
 import * as React from "react";
-import { TextInputProps, TextStyle, TouchableWithoutFeedbackProps, ViewProps, ViewStyle } from "react-native";
+import {
+    TextInputProps,
+    TextStyle,
+    TouchableWithoutFeedbackProps,
+    ViewProps,
+    ViewStyle,
+} from "react-native";
 
 ///////////////////////////////
 // COMPONENT STYLES
@@ -14,12 +20,14 @@ export interface ProgressStyle {
 export interface TextFieldStyle {
     tintColor?: string | undefined;
     highlightColor?: string | undefined;
-    textInputStyle?: {
-        color?: string | undefined;
-        fontSize?: number | undefined;
-        paddingLeft?: number | undefined;
-        paddingRight?: number | undefined;
-    } | undefined;
+    textInputStyle?:
+        | {
+              color?: string | undefined;
+              fontSize?: number | undefined;
+              paddingLeft?: number | undefined;
+              paddingRight?: number | undefined;
+          }
+        | undefined;
 }
 
 export interface SpinnerStyle {
@@ -69,10 +77,12 @@ export interface CardStyle {
     shadowColor?: string | undefined;
     shadowOpacity?: number | undefined;
     shadowRadius?: number | undefined;
-    shadowOffset?: {
-        height: number;
-        width: number;
-    } | undefined;
+    shadowOffset?:
+        | {
+              height: number;
+              width: number;
+          }
+        | undefined;
 }
 
 export interface CardImageStyle {
@@ -88,7 +98,19 @@ export interface CardTitleStyle {
     padding?: number | undefined;
     fontSize?: number | undefined;
     color?: string | undefined;
-    fontWeight?: "normal" | "bold" | "100" | "200" | "300" | "400" | "500" | "600" | "700" | "800" | "900" | undefined;
+    fontWeight?:
+        | "normal"
+        | "bold"
+        | "100"
+        | "200"
+        | "300"
+        | "400"
+        | "500"
+        | "600"
+        | "700"
+        | "800"
+        | "900"
+        | undefined;
 }
 
 export interface CardContentStyle {
@@ -249,12 +271,16 @@ export interface MKColorStatic {
     palette_yellow_600: string;
 }
 
-export interface MKButtonProperties extends TouchableWithoutFeedbackProps, MKRippleProperties {
+export interface MKButtonProperties
+    extends TouchableWithoutFeedbackProps,
+        MKRippleProperties {
     fab?: boolean | undefined;
     enabled?: boolean | undefined;
 }
 
-export interface MKTextFieldProperties extends TextInputProps, FloatingLabelProperties {
+export interface MKTextFieldProperties
+    extends TextInputProps,
+        FloatingLabelProperties {
     text?: string | undefined;
     password?: boolean | undefined;
     underlineEnabled?: boolean | undefined;
@@ -282,7 +308,9 @@ export interface MKSwitchProperties extends TouchableWithoutFeedbackProps {
     onCheckedChange?(opts: { checked: boolean }): void;
 }
 
-export interface MKIconToggleProperties extends MKRippleProperties, TouchableWithoutFeedbackProps {
+export interface MKIconToggleProperties
+    extends MKRippleProperties,
+        TouchableWithoutFeedbackProps {
     checked?: boolean | undefined;
     onCheckedChange?(checked: boolean): void;
 }
@@ -344,7 +372,9 @@ export interface MKSpinnerProperties extends ViewProps {
     spinnerAniDuration?: number | undefined;
 }
 
-export interface MKRadioButtonProperties extends MKRippleProperties, TouchableWithoutFeedbackProps {
+export interface MKRadioButtonProperties
+    extends MKRippleProperties,
+        TouchableWithoutFeedbackProps {
     borderOnColor?: string | undefined;
     borderOffColor?: string | undefined;
     fillColor?: string | undefined;
@@ -354,7 +384,10 @@ export interface MKRadioButtonProperties extends MKRippleProperties, TouchableWi
     onCheckedChange?(opts: { checked: boolean }): void;
 }
 
-export interface MKCheckboxProperties extends MKRippleProperties, TickProperties, TouchableWithoutFeedbackProps {
+export interface MKCheckboxProperties
+    extends MKRippleProperties,
+        TickProperties,
+        TouchableWithoutFeedbackProps {
     borderOnColor?: string | undefined;
     borderOffColor?: string | undefined;
     fillColor?: string | undefined;

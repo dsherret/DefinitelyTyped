@@ -98,7 +98,12 @@ declare namespace StatsdClient {
          * express route.
          */
         onResponseEnd?:
-            | ((client: StatsdClient, startTime: Date, req: express.Request, res: express.Response) => void)
+            | ((
+                  client: StatsdClient,
+                  startTime: Date,
+                  req: express.Request,
+                  res: express.Response,
+              ) => void)
             | undefined;
 
         /**
@@ -119,7 +124,12 @@ declare namespace StatsdClient {
 }
 
 declare class StatsdClient {
-    constructor(options: StatsdClient.TcpOptions | StatsdClient.UdpOptions | StatsdClient.HttpOptions);
+    constructor(
+        options:
+            | StatsdClient.TcpOptions
+            | StatsdClient.UdpOptions
+            | StatsdClient.HttpOptions,
+    );
 
     counter(metric: string, delta: number, tags?: StatsdClient.Tags): this;
     increment(metric: string, delta?: number, tags?: StatsdClient.Tags): this;
@@ -130,7 +140,11 @@ declare class StatsdClient {
 
     set(name: string, value: number, tags?: StatsdClient.Tags): this;
 
-    timing(name: string, startOrDuration: Date | number, tags?: StatsdClient.Tags): this;
+    timing(
+        name: string,
+        startOrDuration: Date | number,
+        tags?: StatsdClient.Tags,
+    ): this;
 
     histogram(name: string, value: number, tags?: StatsdClient.Tags): this;
 
@@ -145,7 +159,10 @@ declare class StatsdClient {
     formatTags(tags?: StatsdClient.Tags): string;
 
     helpers: {
-        getExpressMiddleware(prefix?: string, options?: StatsdClient.ExpressMiddlewareOptions): express.RequestHandler;
+        getExpressMiddleware(
+            prefix?: string,
+            options?: StatsdClient.ExpressMiddlewareOptions,
+        ): express.RequestHandler;
         wrapCallback(
             prefix: string,
             callback: (...args: any[]) => any,

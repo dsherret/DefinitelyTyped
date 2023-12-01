@@ -149,7 +149,10 @@ declare namespace PredictionMode {
      * the configurations to strip out all of the predicates so that a standard
      * {@link ATNConfigSet} will merge everything ignoring predicates.
      */
-    function hasSLLConflictTerminatingPrediction(mode: number, configs: ATNConfigSet): boolean;
+    function hasSLLConflictTerminatingPrediction(
+        mode: number,
+        configs: ATNConfigSet,
+    ): boolean;
 
     /**
      * Checks if any configuration in `configs` is in a

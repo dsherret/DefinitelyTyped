@@ -1,5 +1,11 @@
 export {};
-import { ReadCursorHook, RoomParams, UserAndRoomParams, UserHook, UserPresenceHook } from "./hooks";
+import {
+    ReadCursorHook,
+    RoomParams,
+    UserAndRoomParams,
+    UserHook,
+    UserPresenceHook,
+} from "./hooks";
 import { PusherMessage, SendMessagePayload } from "./message";
 import { PusherReadCursor, PusherRoom } from "./room";
 import { PusherUser } from "./user";
@@ -88,15 +94,21 @@ export interface CurrentUser {
     createRoom: (params: CreateRoomParams) => Promise<PusherRoom>;
     updateRoom: (params: UpdateRoomParams) => Promise<PusherRoom>;
     deleteRoom: (params: RoomIdParams) => Promise<void>;
-    fetchMultipartMessages: (params: FetchMultipartMessagesParams) => Promise<PusherMessage[]>;
+    fetchMultipartMessages: (
+        params: FetchMultipartMessagesParams,
+    ) => Promise<PusherMessage[]>;
     addUserToRoom: (params: UserAndRoomParams) => Promise<void>;
     removeUserFromRoom: (params: UserAndRoomParams) => Promise<void>;
     getJoinableRooms: () => Promise<PusherRoom[]>;
     joinRoom: (params: RoomIdParams) => Promise<PusherRoom>;
     leaveRoom: (params: RoomIdParams) => Promise<PusherRoom>;
-    subscribeToRoomMultipart: (params: RoomSubcriptionParams) => Promise<PusherRoom>;
+    subscribeToRoomMultipart: (
+        params: RoomSubcriptionParams,
+    ) => Promise<PusherRoom>;
     sendSimpleMessage: (params: SendSimpleMessageParams) => Promise<number>;
-    sendMultipartMessage: (params: SendMultipartMessageParams) => Promise<number>;
+    sendMultipartMessage: (
+        params: SendMultipartMessageParams,
+    ) => Promise<number>;
     isTypingIn: (params: RoomIdParams) => Promise<void>;
     setReadCursor: (params: SetReadCursorParams) => Promise<void>;
     readCursor: (params: ReadCursorParams) => Promise<PusherReadCursor>;

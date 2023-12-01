@@ -7,5 +7,7 @@ function TestRemoteFileDetector() {
         .build();
 
     const fileDetector: remote.FileDetector = new remote.FileDetector();
-    fileDetector.handleFile(driver, "path/to/file").then((path: string) => {/* empty */});
+    fileDetector.handleFile(driver, "path/to/file").then((path: string) => {
+        /* empty */
+    });
 }

@@ -18,7 +18,11 @@ import { Response } from "node-fetch";
  * await libpub.publish(manifest, tarData, { npmVersion: 'my-pub-script@1.0.2', token: 'my-auth-token-here' }, opts)
  * // Package has been published to the npm registry.
  */
-export function publish(manifest: PackageJson, tarballData: Buffer, options?: fetch.Options): Promise<Response>;
+export function publish(
+    manifest: PackageJson,
+    tarballData: Buffer,
+    options?: fetch.Options,
+): Promise<Response>;
 
 /**
  * Unpublishes spec from the appropriate registry. The registry in question may have its own limitations on unpublishing.
@@ -29,4 +33,7 @@ export function publish(manifest: PackageJson, tarballData: Buffer, options?: fe
  *          //
  *          // `lodash` has now been unpublished, along with all its versions
  */
-export function unpublish(spec: string | object, options?: fetch.Options): Promise<boolean>;
+export function unpublish(
+    spec: string | object,
+    options?: fetch.Options,
+): Promise<boolean>;

@@ -5,7 +5,11 @@ declare class OutgoingFrameStream {
 
     setVersion(versionId: string): boolean;
 
-    frame(command: string, headers?: any, streamOptions?: WritableOptions): Writable;
+    frame(
+        command: string,
+        headers?: any,
+        streamOptions?: WritableOptions,
+    ): Writable;
 
     heartbeat(): void;
 

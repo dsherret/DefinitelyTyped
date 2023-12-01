@@ -13,7 +13,7 @@ using(
             "index.js": "",
         },
     },
-    async mapFileToDoc => {
+    async (mapFileToDoc) => {
         mapFileToDoc["index.js"];
     },
 );
@@ -25,7 +25,7 @@ using(
             "index.js": "",
         },
     },
-    async mapFileToDoc => {
+    async (mapFileToDoc) => {
         // @ts-expect-error
         mapFileToDoc["unknown-file.js"];
     },
@@ -39,7 +39,7 @@ using(
             "window.showQuickPick": async () => "",
         },
     },
-    async mapFileToDoc => {},
+    async (mapFileToDoc) => {},
 );
 
 /* waitFor */

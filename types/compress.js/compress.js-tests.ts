@@ -8,7 +8,7 @@ uploadInput.type = "file";
 
 uploadInput.addEventListener(
     "change",
-    event => {
+    (event) => {
         const target = event.target as HTMLInputElement;
 
         if (!target.files) {

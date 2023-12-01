@@ -55,7 +55,10 @@ export declare function remove(name: string): void;
  * called when the service receives a stop request, e.g. because the Windows Service Controller was used to send a stop request to the service.
  * The program should perform cleanup tasks and then call the service.stop() function.
  */
-export declare function run(stdoutLogStream: stream.Writable, callback: () => void): void;
+export declare function run(
+    stdoutLogStream: stream.Writable,
+    callback: () => void,
+): void;
 export declare function run(
     stdoutLogStream: stream.Writable,
     stderrLogStream: stream.Writable,

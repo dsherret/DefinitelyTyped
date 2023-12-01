@@ -22,14 +22,24 @@ promiseFind.content; // $ExpectType Person | undefined
 
 promiseFind.get("firstName");
 
-let promiseArray = DS.PromiseArray.create({ promise: RSVP.Promise.resolve([1]) });
+let promiseArray = DS.PromiseArray.create({
+    promise: RSVP.Promise.resolve([1]),
+});
 
-let promiseObject = DS.PromiseObject.create({ promise: RSVP.Promise.resolve({ value: 1 }) });
+let promiseObject = DS.PromiseObject.create({
+    promise: RSVP.Promise.resolve({ value: 1 }),
+});
 
-let promiseObjectNull = DS.PromiseObject.create({ promise: RSVP.Promise.resolve(null) });
+let promiseObjectNull = DS.PromiseObject.create({
+    promise: RSVP.Promise.resolve(null),
+});
 
 declare const objectOrNull: { value: number } | null;
-let promiseObjectValueOrNull = DS.PromiseObject.create({ promise: RSVP.Promise.resolve(objectOrNull) });
+let promiseObjectValueOrNull = DS.PromiseObject.create({
+    promise: RSVP.Promise.resolve(objectOrNull),
+});
 
-let promiseManyArray = DS.PromiseManyArray.create({ promise: store.findAll("person") });
+let promiseManyArray = DS.PromiseManyArray.create({
+    promise: store.findAll("person"),
+});
 assertType<RSVP.Promise<ArrayProxy<DS.Model>>>(promiseManyArray.promise);

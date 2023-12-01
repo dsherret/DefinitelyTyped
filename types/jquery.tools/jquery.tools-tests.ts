@@ -13,7 +13,7 @@ const triggers = $(".modalInput").overlay({
     closeOnClick: false,
 });
 
-const buttons = $("#yesno button").click(function(e) {
+const buttons = $("#yesno button").click(function (e) {
     // get user input
     const yes = buttons.index(this) === 0;
 
@@ -32,7 +32,7 @@ $(".my_overlay_trigger").overlay({
     // ... the rest of the configuration properties
 });
 
-$("#prompt form").submit(function(e) {
+$("#prompt form").submit(function (e) {
     // close the overlay
     triggers.eq(1).overlay<JQueryTools.overlay.Overlay>().close();
     // or more straightforward:
@@ -48,19 +48,23 @@ $("#prompt form").submit(function(e) {
     return e.preventDefault();
 });
 
-$.tools.overlay.addEffect("", () => {}, () => {});
+$.tools.overlay.addEffect(
+    "",
+    () => {},
+    () => {},
+);
 
 /* custom effects */
 $.tools.overlay.addEffect(
     "myEffect",
-    function(position, done) {
+    function (position, done) {
         /*
         - 'this' variable is a reference to the overlay API
         - here we use jQuery's fadeIn() method to perform the effect
         */
         this.getOverlay().css(position).fadeIn(this.getConf().speed!, done);
     }, // close function
-    function(done) {
+    function (done) {
         // fade out the overlay
         this.getOverlay().fadeOut(this.getConf().closeSpeed!, done);
     },
@@ -114,7 +118,7 @@ $(() => {
     ];
 
     // setup triggers
-    $("button[rel]").each(function(i) {
+    $("button[rel]").each(function (i) {
         $(this).overlay({
             // common configuration for each overlay
             oneInstance: false,
@@ -130,43 +134,47 @@ $(() => {
 });
 
 // loading animation
-$.tools.overlay.addEffect("drop", function(css, done) {
-    // use Overlay API to gain access to crucial elements
-    const conf = this.getConf();
-    const overlay = this.getOverlay();
+$.tools.overlay.addEffect(
+    "drop",
+    function (css, done) {
+        // use Overlay API to gain access to crucial elements
+        const conf = this.getConf();
+        const overlay = this.getOverlay();
 
-    // determine initial position for the overlay
-    if (conf.fixed) {
-        css["position"] = "fixed";
-    } else {
-        css["top"] += $(window).scrollTop();
-        css["left"] += $(window).scrollLeft();
-        css["position"] = "absolute";
-    }
+        // determine initial position for the overlay
+        if (conf.fixed) {
+            css["position"] = "fixed";
+        } else {
+            css["top"] += $(window).scrollTop();
+            css["left"] += $(window).scrollLeft();
+            css["position"] = "absolute";
+        }
 
-    // position the overlay and show it
-    overlay.css(css).show();
+        // position the overlay and show it
+        overlay.css(css).show();
 
-    // begin animating with our custom easing
-    overlay.animate(
-        { top: "+=55", opacity: 1, width: "+=20" },
-        400,
-        "drop",
-        done,
-    );
+        // begin animating with our custom easing
+        overlay.animate(
+            { top: "+=55", opacity: 1, width: "+=20" },
+            400,
+            "drop",
+            done,
+        );
 
-    /* closing animation */
-}, function(done) {
-    this.getOverlay().animate(
-        { top: "-=55", opacity: 0, width: "-=20" },
-        300,
-        "drop",
-        function() {
-            $(this).hide();
-            done.call(null);
-        },
-    );
-});
+        /* closing animation */
+    },
+    function (done) {
+        this.getOverlay().animate(
+            { top: "-=55", opacity: 0, width: "-=20" },
+            300,
+            "drop",
+            function () {
+                $(this).hide();
+                done.call(null);
+            },
+        );
+    },
+);
 
 $("img[rel]").overlay({
     effect: "drop",

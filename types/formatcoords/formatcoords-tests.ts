@@ -17,7 +17,8 @@ for (const key in coords) {
     const { latValues, lonValues } = coord;
     const latAndLonValues = { latValues, lonValues };
     for (const latOrLonKey in latAndLonValues) {
-        const latOrLonValues = latAndLonValues[latOrLonKey as keyof typeof latAndLonValues];
+        const latOrLonValues =
+            latAndLonValues[latOrLonKey as keyof typeof latAndLonValues];
         latOrLonValues.initValue;
         latOrLonValues.degrees;
         latOrLonValues.degreesInt;

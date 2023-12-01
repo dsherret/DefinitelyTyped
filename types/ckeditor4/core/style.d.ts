@@ -19,11 +19,23 @@ declare namespace CKEDITOR {
 
         checkActive(elementPath: dom.elementPath, editor: editor): boolean;
 
-        checkApplicable(elementPath: dom.elementPath, editor: editor, filter?: filter): boolean;
+        checkApplicable(
+            elementPath: dom.elementPath,
+            editor: editor,
+            filter?: filter,
+        ): boolean;
 
-        checkElementMatch(element: dom.element, fullMatch: boolean, editor: editor): boolean;
+        checkElementMatch(
+            element: dom.element,
+            fullMatch: boolean,
+            editor: editor,
+        ): boolean;
 
-        checkElementRemovable(element: dom.element, fullMatch: boolean, editor: editor): boolean;
+        checkElementRemovable(
+            element: dom.element,
+            fullMatch: boolean,
+            editor: editor,
+        ): boolean;
 
         getDefinition(): style.definition;
 
@@ -35,7 +47,10 @@ declare namespace CKEDITOR {
     }
 
     interface styleStatic<T extends style> {
-        new(styleDefinition: style.definition, variableValues?: Record<string, string>): T;
+        new (
+            styleDefinition: style.definition,
+            variableValues?: Record<string, string>,
+        ): T;
         addCustomHandler(defintion: style.customHandler): T;
 
         getStyleText(style: style.definition): string;

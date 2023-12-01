@@ -1,15 +1,13 @@
 // Example from deku/examples/basic
-(function() {
+(function () {
     const { h, createApp } = deku;
 
     function view(state = { count: 0 }, dispatch: Function) {
-        return (
-            h("div", {}, [
-                h("div", {}, "Counter: " + state.count),
-                h("button", { onClick: increment(dispatch) }, "Increment"),
-                h("button", { onClick: decrement(dispatch) }, "Decrement"),
-            ])
-        );
+        return h("div", {}, [
+            h("div", {}, "Counter: " + state.count),
+            h("button", { onClick: increment(dispatch) }, "Increment"),
+            h("button", { onClick: decrement(dispatch) }, "Decrement"),
+        ]);
     }
 
     function increment(dispatch: Function) {
@@ -38,7 +36,7 @@
 })();
 
 // Example from deku/docs/api/create-app
-(function() {
+(function () {
     const { createApp, element } = deku;
 
     const App = ({ props = { size: "medium" } }) => {
@@ -53,35 +51,32 @@
 })();
 
 // Example from deku/docs/api/string
-(function() {
+(function () {
     const { h } = deku;
 
-    const html = deku.string.render(h("div", {}, [
-        h("header"),
-        h("sidebar"),
-        h("app"),
-    ]));
+    const html = deku.string.render(
+        h("div", {}, [h("header"), h("sidebar"), h("app")]),
+    );
 })();
 
 // Example from deku/docs/api/element
-(function() {
+(function () {
     const { element } = deku;
 
     // Native elements
-    element("div", { class: "greeting" }, [
-        element("span", {}, ["Hello"]),
-    ]);
+    element("div", { class: "greeting" }, [element("span", {}, ["Hello"])]);
 
     // Components
     let App = {
-        render: ({ props = { name: "" } }) => element("div", {}, `Hello ${props.name}!`),
+        render: ({ props = { name: "" } }) =>
+            element("div", {}, `Hello ${props.name}!`),
     };
 
     element(App, { name: "Tom" });
 })();
 
 // deku.createApp
-(function() {
+(function () {
     const { createApp, element } = deku;
 
     let render: Function = createApp(document.body);
@@ -96,18 +91,19 @@
 })();
 
 // deku.dom
-(function() {
+(function () {
     const { dom, element } = deku;
 
     let el: HTMLElement = dom.create(element("div"), "0.0", () => {}, {});
 
-    const update: (DOMElement: HTMLElement, action: any) => HTMLElement = dom.update(() => {}, {});
+    const update: (DOMElement: HTMLElement, action: any) => HTMLElement =
+        dom.update(() => {}, {});
 
     el = update(el, {});
 })();
 
 // deku.string
-(function() {
+(function () {
     const { element } = deku;
 
     let html: string = deku.string.render(element("div"));
@@ -116,7 +112,7 @@
 })();
 
 // deku.element
-(function() {
+(function () {
     const { element } = deku;
 
     let v: deku.VirtualElement = element("div");
@@ -147,7 +143,7 @@
 })();
 
 // deku.diff
-(function() {
+(function () {
     const { diff, element } = deku;
 
     const { Actions } = diff;
@@ -168,18 +164,23 @@
         Actions.updateThunk({}, {}, "0.0"),
     ];
 
-    actions.forEach(action => {
-        Actions.case({
-            setAttribute: (name: string, value: any, previousValue: any) => {
+    actions.forEach((action) => {
+        Actions.case(
+            {
+                setAttribute: (
+                    name: string,
+                    value: any,
+                    previousValue: any,
+                ) => {},
+                _: () => {},
             },
-            _: () => {
-            },
-        }, action);
+            action,
+        );
     });
 })();
 
 // deku.vnode
-(function() {
+(function () {
     const { vnode, element } = deku;
 
     let v: deku.VirtualElement = vnode.create("div");

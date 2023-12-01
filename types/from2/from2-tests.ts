@@ -28,22 +28,36 @@ stream = from(["foo", new Buffer(1), new Uint8Array(1), null]);
 stream = from((size, next) => next(null, "foo"));
 stream.destroy();
 stream = from((size, next) => next(null, "foo"));
-stream.on("error", err => {});
+stream.on("error", (err) => {});
 stream.destroy(new Error("destroyed"));
 
 stream = from({ objectMode: false }, (size, next) => next(null, "foo"));
 stream = from({ objectMode: false }, (size, next) => next(null, new Buffer(1)));
-stream = from({ objectMode: false }, (size, next) => next(null, new Uint8Array(1)));
+stream = from({ objectMode: false }, (size, next) =>
+    next(null, new Uint8Array(1)),
+);
 stream = from({ objectMode: false }, (size, next) => next(null, null));
-stream = from({ objectMode: false }, ["foo", new Buffer(1), new Uint8Array(1), null]);
+stream = from({ objectMode: false }, [
+    "foo",
+    new Buffer(1),
+    new Uint8Array(1),
+    null,
+]);
 // following should fail:
 // stream = from({objectMode: false}, (size, next) => next(null, {}));
 
 stream = from({ highWaterMark: 1 }, (size, next) => next(null, "foo"));
 stream = from({ highWaterMark: 1 }, (size, next) => next(null, new Buffer(1)));
-stream = from({ highWaterMark: 1 }, (size, next) => next(null, new Uint8Array(1)));
+stream = from({ highWaterMark: 1 }, (size, next) =>
+    next(null, new Uint8Array(1)),
+);
 stream = from({ highWaterMark: 1 }, (size, next) => next(null, null));
-stream = from({ highWaterMark: 1 }, ["foo", new Buffer(1), new Uint8Array(1), null]);
+stream = from({ highWaterMark: 1 }, [
+    "foo",
+    new Buffer(1),
+    new Uint8Array(1),
+    null,
+]);
 // following should fail:
 // stream = from({highWaterMark: 1}, (size, next) => next(null, {}));
 

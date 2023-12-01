@@ -1,9 +1,14 @@
 type lineNumberStyleFunction = (lineNumber: number) => React.CSSProperties;
-type lineTagPropsFunction = (lineNumber: number) => React.HTMLProps<HTMLElement>;
+type lineTagPropsFunction = (
+    lineNumber: number,
+) => React.HTMLProps<HTMLElement>;
 interface rendererNode {
     type: "element" | "text";
     value?: string | number | undefined;
-    tagName?: keyof JSX.IntrinsicElements | React.ComponentType<any> | undefined;
+    tagName?:
+        | keyof JSX.IntrinsicElements
+        | React.ComponentType<any>
+        | undefined;
     properties?: { className: any[]; [key: string]: any };
     children?: rendererNode[];
 }
@@ -25,13 +30,25 @@ declare module "react-syntax-highlighter" {
         showInlineLineNumbers?: boolean | undefined;
         startingLineNumber?: number | undefined;
         lineNumberContainerStyle?: React.CSSProperties | undefined;
-        lineNumberStyle?: React.CSSProperties | lineNumberStyleFunction | undefined;
+        lineNumberStyle?:
+            | React.CSSProperties
+            | lineNumberStyleFunction
+            | undefined;
         wrapLines?: boolean | undefined;
         wrapLongLines?: boolean | undefined;
-        lineProps?: lineTagPropsFunction | React.HTMLProps<HTMLElement> | undefined;
+        lineProps?:
+            | lineTagPropsFunction
+            | React.HTMLProps<HTMLElement>
+            | undefined;
         renderer?: (props: rendererProps) => React.ReactNode;
-        PreTag?: keyof JSX.IntrinsicElements | React.ComponentType<any> | undefined;
-        CodeTag?: keyof JSX.IntrinsicElements | React.ComponentType<any> | undefined;
+        PreTag?:
+            | keyof JSX.IntrinsicElements
+            | React.ComponentType<any>
+            | undefined;
+        CodeTag?:
+            | keyof JSX.IntrinsicElements
+            | React.ComponentType<any>
+            | undefined;
         [spread: string]: any;
     }
 

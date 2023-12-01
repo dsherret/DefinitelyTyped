@@ -8,17 +8,8 @@ const html = tableify({
     ],
     someObject: {
         key1: "value1",
-        someArray: [
-            "value2",
-            "value3",
-            "value4",
-            "value5",
-        ],
-        someArrayOfObjects: [
-            { key2: 123 },
-            { key2: 234 },
-            { key2: 345 },
-        ],
+        someArray: ["value2", "value3", "value4", "value5"],
+        someArrayOfObjects: [{ key2: 123 }, { key2: 234 }, { key2: 345 }],
     },
 });
 

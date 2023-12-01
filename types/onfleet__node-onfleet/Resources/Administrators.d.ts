@@ -5,7 +5,10 @@ declare class Admin {
     deleteOne(id: string): Promise<void>;
     get(): Promise<Admin.OnfleetAdmin[]>;
     matchMetadata: MatchMetadata<Admin.OnfleetAdmin["metadata"]>;
-    update(id: string, obj: Admin.UpdateAdminProps): Promise<Admin.OnfleetAdmin>;
+    update(
+        id: string,
+        obj: Admin.UpdateAdminProps,
+    ): Promise<Admin.OnfleetAdmin>;
 }
 
 declare namespace Admin {

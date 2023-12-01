@@ -1,5 +1,5 @@
 // $ExpectType ValueNode
-const ast = jsonToAst("{\"a\": 1}");
+const ast = jsonToAst('{"a": 1}');
 processValueNode(ast);
 
 function logPos(node: jsonToAst.ASTNode) {
@@ -19,7 +19,7 @@ function processValueNode(ast: jsonToAst.ValueNode) {
         case "Object":
             ast; // $ExpectType ObjectNode
 
-            ast.children.forEach(child => {
+            ast.children.forEach((child) => {
                 child; // $ExpectType PropertyNode
                 child.key; // $ExpectType IdentifierNode
 
@@ -29,7 +29,7 @@ function processValueNode(ast: jsonToAst.ValueNode) {
         case "Array":
             ast; // $ExpectType ArrayNode
 
-            ast.children.forEach(child => {
+            ast.children.forEach((child) => {
                 child; // $ExpectType ValueNode
 
                 processValueNode(child);

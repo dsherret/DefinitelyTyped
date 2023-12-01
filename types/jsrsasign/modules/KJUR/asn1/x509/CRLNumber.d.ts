@@ -18,6 +18,10 @@ declare namespace jsrsasign.KJUR.asn1.x509 {
      *                               num:{'int':147}})
      */
     class CRLNumber extends ASN1Object {
-        constructor(params?: { extname?: string; num: { [key: string]: number }; critical?: boolean });
+        constructor(params?: {
+            extname?: string;
+            num: { [key: string]: number };
+            critical?: boolean;
+        });
     }
 }

@@ -15,6 +15,9 @@ declare namespace markdownEscape {
     type CharacterSet = CharacterSets[number];
 }
 
-declare function markdownEscape(string: string, skips?: markdownEscape.CharacterSet[]): string;
+declare function markdownEscape(
+    string: string,
+    skips?: markdownEscape.CharacterSet[],
+): string;
 
 export = markdownEscape;

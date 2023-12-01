@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/kdbush",
-    "version": "3.0.9999",
-    "projects": [
-        "https://github.com/mourner/kdbush"
-    ],
-    "devDependencies": {
-        "@types/kdbush": "workspace:."
+  "private": true,
+  "name": "@types/kdbush",
+  "version": "3.0.9999",
+  "projects": [
+    "https://github.com/mourner/kdbush"
+  ],
+  "devDependencies": {
+    "@types/kdbush": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "DenisCarriere",
+      "githubUsername": "DenisCarriere"
     },
-    "owners": [
-        {
-            "name": "DenisCarriere",
-            "githubUsername": "DenisCarriere"
-        },
-        {
-            "name": "SangYeob Bono Yu",
-            "githubUsername": "deminoth"
-        }
-    ]
+    {
+      "name": "SangYeob Bono Yu",
+      "githubUsername": "deminoth"
+    }
+  ]
 }

@@ -8,6 +8,13 @@ const USER_REF = "";
 
 class Test extends React.Component {
     render() {
-        return <MessengerCheckbox pageId={PAGE_ID} appId={APP_ID} origin={ORIGIN} userRef={USER_REF} />;
+        return (
+            <MessengerCheckbox
+                pageId={PAGE_ID}
+                appId={APP_ID}
+                origin={ORIGIN}
+                userRef={USER_REF}
+            />
+        );
     }
 }

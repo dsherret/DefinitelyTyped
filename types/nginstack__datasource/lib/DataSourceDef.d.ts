@@ -10,12 +10,22 @@ declare class DataSourceDef {
     onDefineFilters: ((arg0: DataSourceDef, arg1: DataSource) => any) | null;
     onDefineColumns: ((arg0: DataSourceDef, arg1: DataSource) => any) | null;
     onCreate: ((arg0: DataSource) => any) | null;
-    onGetQuery: (arg0: DataSource, arg1: DataSourceFilters, arg2: DataSourceColumns) => string;
+    onGetQuery: (
+        arg0: DataSource,
+        arg1: DataSourceFilters,
+        arg2: DataSourceColumns,
+    ) => string;
     onMountDataSet: ((arg0: DataSource, arg1: DataSet) => DataSet) | null;
     private autoPurgeUnsolicitedColumns;
 }
 declare namespace DataSourceDef {
-    export { DataSet, DataSource, DataSourceColumns, DataSourceFilters, DataSourceSecurityMode };
+    export {
+        DataSet,
+        DataSource,
+        DataSourceColumns,
+        DataSourceFilters,
+        DataSourceSecurityMode,
+    };
 }
 type DataSourceSecurityMode = any;
 type DataSource = import("./DataSource");

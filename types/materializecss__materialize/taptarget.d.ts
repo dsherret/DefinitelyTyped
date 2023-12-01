@@ -10,12 +10,18 @@ declare namespace M {
         /**
          * Init TapTarget.
          */
-        static init(els: Element, options?: Partial<TapTargetOptions>): TapTarget;
+        static init(
+            els: Element,
+            options?: Partial<TapTargetOptions>,
+        ): TapTarget;
 
         /**
          * Init TapTargets.
          */
-        static init(els: MElements, options?: Partial<TapTargetOptions>): TapTarget[];
+        static init(
+            els: MElements,
+            options?: Partial<TapTargetOptions>,
+        ): TapTarget[];
 
         /**
          * If the tap target is open.
@@ -49,6 +55,8 @@ declare namespace M {
 }
 
 interface JQuery {
-    tapTarget(method: keyof Pick<M.TapTarget, "open" | "close" | "destroy">): JQuery;
+    tapTarget(
+        method: keyof Pick<M.TapTarget, "open" | "close" | "destroy">,
+    ): JQuery;
     tapTarget(options?: Partial<M.TapTargetOptions>): JQuery;
 }

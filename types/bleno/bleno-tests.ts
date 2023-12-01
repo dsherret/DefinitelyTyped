@@ -18,7 +18,12 @@ export class EchoCharacteristic extends Bleno.Characteristic {
         callback(Bleno.Characteristic.RESULT_SUCCESS, this._value);
     }
 
-    onWriteRequest(data: any, offset: number, withoutResponse: boolean, callback: any) {
+    onWriteRequest(
+        data: any,
+        offset: number,
+        withoutResponse: boolean,
+        callback: any,
+    ) {
         this._value = data;
 
         if (this._updateValueCallback) {
@@ -49,7 +54,12 @@ const characteristic = new EchoCharacteristic();
 Bleno.on("advertisingStart", (error?: Error | null) => {
     if (!error) {
         Bleno.setServices(
-            [new Bleno.PrimaryService({ uuid: "ec00", characteristics: [characteristic] })],
+            [
+                new Bleno.PrimaryService({
+                    uuid: "ec00",
+                    characteristics: [characteristic],
+                }),
+            ],
             () => {},
         );
     }
@@ -140,7 +150,10 @@ export class BluetoothController {
 
     private setup() {
         Bleno.on("stateChange", (state: string) => {
-            console.log("bluetooth", `stateChange: ${state}, address = ${Bleno.address}`);
+            console.log(
+                "bluetooth",
+                `stateChange: ${state}, address = ${Bleno.address}`,
+            );
 
             if (state === "poweredOn") {
                 Bleno.startAdvertising("device", [SERVICE_UUID]);
@@ -167,7 +180,10 @@ export class BluetoothController {
         });
 
         Bleno.on("advertisingStart", (error?: Error | null) => {
-            console.log("bluetooth", `advertisingStart: ${error ? error : "success"}`);
+            console.log(
+                "bluetooth",
+                `advertisingStart: ${error ? error : "success"}`,
+            );
             if (!error) {
                 this.isAdvertising = true;
                 Bleno.setServices([
@@ -190,7 +206,10 @@ export class BluetoothController {
         });
 
         Bleno.on("servicesSet", (error?: Error | null) => {
-            console.log("bluetooth", `servicesSet: ${error ? error : "success"}`);
+            console.log(
+                "bluetooth",
+                `servicesSet: ${error ? error : "success"}`,
+            );
         });
     }
 
@@ -221,7 +240,13 @@ function test2() {
     const measuredPower = -59; // -128 - 127
 
     bleno.startAdvertisingIBeacon(uuid, major, minor, measuredPower);
-    bleno.startAdvertisingIBeacon(uuid, major, minor, measuredPower, (error) => {});
+    bleno.startAdvertisingIBeacon(
+        uuid,
+        major,
+        minor,
+        measuredPower,
+        (error) => {},
+    );
 }
 
 function test3() {
@@ -230,7 +255,11 @@ function test3() {
 
     bleno.startAdvertisingWithEIRData(advertisementData);
     bleno.startAdvertisingWithEIRData(advertisementData, (error) => {});
-    bleno.startAdvertisingWithEIRData(advertisementData, scanData, (error) => {});
+    bleno.startAdvertisingWithEIRData(
+        advertisementData,
+        scanData,
+        (error) => {},
+    );
 }
 
 function test4() {
@@ -240,9 +269,7 @@ function test4() {
 
 function test5() {
     const service = new bleno.PrimaryService({ uuid: "0000" });
-    const services = [
-        service,
-    ];
+    const services = [service];
 
     bleno.setServices(services);
     bleno.setServices(services, (error) => {});

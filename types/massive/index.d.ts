@@ -260,10 +260,9 @@ declare namespace massive {
          */
         save(
             record: AnyObject,
-            options?:
-                & PersistenceInsertOptions
-                & PersistenceUpdateDocOptions
-                & ResultProcessingOptions,
+            options?: PersistenceInsertOptions &
+                PersistenceUpdateDocOptions &
+                ResultProcessingOptions,
         ): Promise<AnyObject>;
 
         /** Save a document to the database. This function will create or replace the entire document body. */

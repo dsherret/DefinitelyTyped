@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/swig",
-    "version": "0.0.9999",
-    "projects": [
-        "https://github.com/paularmstrong/swig"
-    ],
-    "devDependencies": {
-        "@types/swig": "workspace:."
+  "private": true,
+  "name": "@types/swig",
+  "version": "0.0.9999",
+  "projects": [
+    "https://github.com/paularmstrong/swig"
+  ],
+  "devDependencies": {
+    "@types/swig": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Peter Harris",
+      "githubUsername": "CodeAnimal"
     },
-    "owners": [
-        {
-            "name": "Peter Harris",
-            "githubUsername": "CodeAnimal"
-        },
-        {
-            "name": "Carlos Ballesteros Velasco",
-            "githubUsername": "soywiz"
-        }
-    ]
+    {
+      "name": "Carlos Ballesteros Velasco",
+      "githubUsername": "soywiz"
+    }
+  ]
 }

@@ -6,7 +6,9 @@ import customErrors = require("./errors");
 
 type Fetch = (url: string, options: RequestInit) => Promise<Response>;
 
-declare function tokenIntrospect(opts?: tokenIntrospect.Options): tokenIntrospect.IntrospectionFunction;
+declare function tokenIntrospect(
+    opts?: tokenIntrospect.Options,
+): tokenIntrospect.IntrospectionFunction;
 
 export = tokenIntrospect;
 
@@ -79,5 +81,8 @@ declare namespace tokenIntrospect {
     }
 
     /** @async */
-    type IntrospectionFunction = (token: string, tokenTypeHint?: string) => Promise<IntrospectResult>;
+    type IntrospectionFunction = (
+        token: string,
+        tokenTypeHint?: string,
+    ) => Promise<IntrospectResult>;
 }

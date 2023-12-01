@@ -28,9 +28,15 @@ zChat.clearVisitorDefaultDepartment(fakeCallback);
 zChat.sendChatMsg("fake_message", fakeCallback);
 zChat.sendFile(
     fakeFile,
-    (err: zChat.SendFileError, data: { mime_type: string; name: string; size: number; url: string }) => 0,
+    (
+        err: zChat.SendFileError,
+        data: { mime_type: string; name: string; size: number; url: string },
+    ) => 0,
 );
-zChat.sendOfflineMsg({ name: "fake_name", email: "fake_email", message: "fake_message" }, fakeCallback);
+zChat.sendOfflineMsg(
+    { name: "fake_name", email: "fake_email", message: "fake_message" },
+    fakeCallback,
+);
 zChat.addTags(["tag1", "tag2"]);
 zChat.removeTags(["tag1", "tag2"]);
 zChat.sendTyping(true);
@@ -42,7 +48,9 @@ zChat.getChatLog();
 zChat.getServingAgentsInfo();
 zChat.getOperatingHours();
 zChat.sendEmailTranscript("fake_email", fakeCallback);
-zChat.fetchChatHistory((err: Error, data: { count: number; has_more: boolean }) => 0);
+zChat.fetchChatHistory(
+    (err: Error, data: { count: number; has_more: boolean }) => 0,
+);
 zChat.markAsRead();
 zChat.reconnect();
 zChat.endChat();
@@ -55,7 +63,8 @@ const accountStatusHandler = (event_data: zChat.AccountsStatusEventData) => 0;
 zChat.on("account_status", accountStatusHandler);
 zChat.un("account_status", accountStatusHandler);
 
-const connectionUpdateHandler = (event_data: zChat.ConnectionUpdateEventData) => 0;
+const connectionUpdateHandler = (event_data: zChat.ConnectionUpdateEventData) =>
+    0;
 zChat.on("connection_update", connectionUpdateHandler);
 zChat.un("connection_update", connectionUpdateHandler);
 

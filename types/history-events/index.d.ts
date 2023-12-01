@@ -16,18 +16,30 @@ export function isHistorySupported(): boolean;
 /**
  * Add an event listener to an element, including an `onevent` function for old IE versions
  */
-export function addEventListener(el: EventTarget, type: string, handler: EventListener): void;
+export function addEventListener(
+    el: EventTarget,
+    type: string,
+    handler: EventListener,
+): void;
 
 /**
  * Remove an event listener from an element, including an `onevent` function for old IE versions
  */
-export function removeEventListener(el: EventTarget, type: string, handler: EventListener): void;
+export function removeEventListener(
+    el: EventTarget,
+    type: string,
+    handler: EventListener,
+): void;
 
 /**
  * Fire a history event on a given element.
  * Tries to fire using `dispatchEvent`. If not possible, calls the `onevent` method on the target element
  */
-export function triggerEvent(el: EventTarget, eventName: string, state: any): void;
+export function triggerEvent(
+    el: EventTarget,
+    eventName: string,
+    state: any,
+): void;
 
 declare global {
     interface WindowEventHandlersEventMap {

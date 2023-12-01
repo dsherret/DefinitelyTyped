@@ -2,7 +2,9 @@ type QueryMethods = "text" | "regex" | "id" | "xpath" | "query_selector";
 
 declare type clickQueryMethods = `by_${QueryMethods}`;
 
-declare type getAttributeQueryMethods = `by_${QueryMethods | "query_selector_all"}`;
+declare type getAttributeQueryMethods = `by_${
+    | QueryMethods
+    | "query_selector_all"}`;
 
 declare type typeQueryMethods = `by_${QueryMethods | "label" | "placeholder"}`;
 declare interface SetVarsVariable {
@@ -150,7 +152,11 @@ declare function click(query: string, options?: ClickQueryOptions): undefined;
  *
  * @returns undefined
  */
-declare function notify(message: string, type: "error" | "success", timeout: number): undefined;
+declare function notify(
+    message: string,
+    type: "error" | "success",
+    timeout: number,
+): undefined;
 
 /**
  * The type function writes a given string to a target input field. The input field can be specified using different query methods.
@@ -161,7 +167,11 @@ declare function notify(message: string, type: "error" | "success", timeout: num
  *
  * @returns undefined
  */
-declare function type(text: string, query: string, options?: TypeQueryInterface): undefined;
+declare function type(
+    text: string,
+    query: string,
+    options?: TypeQueryInterface,
+): undefined;
 
 /**
  * The download can be used to download data as part of the script
@@ -173,7 +183,11 @@ declare function type(text: string, query: string, options?: TypeQueryInterface)
  *
  * @returns undefined
  */
-declare function download(filename: string, content: string, contentType: string): undefined;
+declare function download(
+    filename: string,
+    content: string,
+    contentType: string,
+): undefined;
 
 /**
  * The event function generates an event on a target element.
@@ -184,7 +198,11 @@ declare function download(filename: string, content: string, contentType: string
  *
  * @returns undefined
  */
-declare function event(query: string, eventConfig: EventConfig, options?: ClickQueryOptions): undefined;
+declare function event(
+    query: string,
+    eventConfig: EventConfig,
+    options?: ClickQueryOptions,
+): undefined;
 
 /**
  * The prompt function opens a prompt to query user for input.
@@ -271,7 +289,11 @@ declare function runInTab(task: () => any, keepOpen: boolean): string;
  *
  * @returns undefined
  */
-declare function select(value: string, query: string, options?: SelectQueryOptions): undefined;
+declare function select(
+    value: string,
+    query: string,
+    options?: SelectQueryOptions,
+): undefined;
 
 /**
  * The submit function generates an the 'enter' keypress event on a target form element. This can result in the submission of the parent form.
@@ -343,7 +365,11 @@ declare function httpGet(url: string, headers?: object): APIResponse;
  *
  * * status: A number that is the Status Code returned by the remote server.
  */
-declare function httpDelete(url: string, data?: any, headers?: object): APIResponse;
+declare function httpDelete(
+    url: string,
+    data?: any,
+    headers?: object,
+): APIResponse;
 
 /**
  * The httpPost function can be used to make http post requests.
@@ -358,7 +384,11 @@ declare function httpDelete(url: string, data?: any, headers?: object): APIRespo
  *
  * * status: A number that is the Status Code returned by the remote server.
  */
-declare function httpPost(url: string, data?: any, headers?: object): APIResponse;
+declare function httpPost(
+    url: string,
+    data?: any,
+    headers?: object,
+): APIResponse;
 
 /**
  * The httpPut function can be used to make http put requests.
@@ -373,7 +403,11 @@ declare function httpPost(url: string, data?: any, headers?: object): APIRespons
  *
  * * status: A number that is the Status Code returned by the remote server.
  */
-declare function httpPut(url: string, data?: any, headers?: object): APIResponse;
+declare function httpPut(
+    url: string,
+    data?: any,
+    headers?: object,
+): APIResponse;
 
 /**
  * The setVars function sets required variables for a package, later package scripts
@@ -384,7 +418,10 @@ declare function httpPut(url: string, data?: any, headers?: object): APIResponse
  *
  * @returns undefined
  */
-declare function setVars(variables: SetVarsVariable[], options?: object): undefined;
+declare function setVars(
+    variables: SetVarsVariable[],
+    options?: object,
+): undefined;
 
 /**
  * The reIndex function updates the index based on path passed into the function, if nothing

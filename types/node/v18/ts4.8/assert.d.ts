@@ -64,7 +64,10 @@ declare module "assert" {
              * @return that wraps `fn`.
              */
             calls(exact?: number): () => void;
-            calls<Func extends (...args: any[]) => any>(fn?: Func, exact?: number): Func;
+            calls<Func extends (...args: any[]) => any>(
+                fn?: Func,
+                exact?: number,
+            ): Func;
             /**
              * Example:
              *
@@ -186,7 +189,12 @@ declare module "assert" {
             /** A stack trace of the function. */
             stack: object;
         }
-        type AssertPredicate = RegExp | (new() => object) | ((thrown: unknown) => boolean) | object | Error;
+        type AssertPredicate =
+            | RegExp
+            | (new () => object)
+            | ((thrown: unknown) => boolean)
+            | object
+            | Error;
         /**
          * Throws an `AssertionError` with the provided error message or a default
          * error message. If the `message` parameter is an instance of an `Error` then
@@ -310,7 +318,11 @@ declare module "assert" {
          * error message is assigned. If the `message`parameter is an instance of an `Error` then it will be thrown instead of the`AssertionError`.
          * @since v0.1.21
          */
-        function equal(actual: unknown, expected: unknown, message?: string | Error): void;
+        function equal(
+            actual: unknown,
+            expected: unknown,
+            message?: string | Error,
+        ): void;
         /**
          * **Strict assertion mode**
          *
@@ -340,7 +352,11 @@ declare module "assert" {
          * message is assigned. If the `message`parameter is an instance of an `Error` then it will be thrown instead of the`AssertionError`.
          * @since v0.1.21
          */
-        function notEqual(actual: unknown, expected: unknown, message?: string | Error): void;
+        function notEqual(
+            actual: unknown,
+            expected: unknown,
+            message?: string | Error,
+        ): void;
         /**
          * **Strict assertion mode**
          *
@@ -358,7 +374,11 @@ declare module "assert" {
          * are also recursively evaluated by the following rules.
          * @since v0.1.21
          */
-        function deepEqual(actual: unknown, expected: unknown, message?: string | Error): void;
+        function deepEqual(
+            actual: unknown,
+            expected: unknown,
+            message?: string | Error,
+        ): void;
         /**
          * **Strict assertion mode**
          *
@@ -408,7 +428,11 @@ declare module "assert" {
          * instead of the `AssertionError`.
          * @since v0.1.21
          */
-        function notDeepEqual(actual: unknown, expected: unknown, message?: string | Error): void;
+        function notDeepEqual(
+            actual: unknown,
+            expected: unknown,
+            message?: string | Error,
+        ): void;
         /**
          * Tests strict equality between the `actual` and `expected` parameters as
          * determined by [`Object.is()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is).
@@ -446,7 +470,11 @@ declare module "assert" {
          * instead of the `AssertionError`.
          * @since v0.1.21
          */
-        function strictEqual<T>(actual: unknown, expected: T, message?: string | Error): asserts actual is T;
+        function strictEqual<T>(
+            actual: unknown,
+            expected: T,
+            message?: string | Error,
+        ): asserts actual is T;
         /**
          * Tests strict inequality between the `actual` and `expected` parameters as
          * determined by [`Object.is()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is).
@@ -471,14 +499,22 @@ declare module "assert" {
          * instead of the `AssertionError`.
          * @since v0.1.21
          */
-        function notStrictEqual(actual: unknown, expected: unknown, message?: string | Error): void;
+        function notStrictEqual(
+            actual: unknown,
+            expected: unknown,
+            message?: string | Error,
+        ): void;
         /**
          * Tests for deep equality between the `actual` and `expected` parameters.
          * "Deep" equality means that the enumerable "own" properties of child objects
          * are recursively evaluated also by the following rules.
          * @since v1.2.0
          */
-        function deepStrictEqual<T>(actual: unknown, expected: T, message?: string | Error): asserts actual is T;
+        function deepStrictEqual<T>(
+            actual: unknown,
+            expected: T,
+            message?: string | Error,
+        ): asserts actual is T;
         /**
          * Tests for deep strict inequality. Opposite of {@link deepStrictEqual}.
          *
@@ -496,7 +532,11 @@ declare module "assert" {
          * instead of the `AssertionError`.
          * @since v1.2.0
          */
-        function notDeepStrictEqual(actual: unknown, expected: unknown, message?: string | Error): void;
+        function notDeepStrictEqual(
+            actual: unknown,
+            expected: unknown,
+            message?: string | Error,
+        ): void;
         /**
          * Expects the function `fn` to throw an error.
          *
@@ -683,7 +723,11 @@ declare module "assert" {
          * @since v0.1.21
          */
         function throws(block: () => unknown, message?: string | Error): void;
-        function throws(block: () => unknown, error: AssertPredicate, message?: string | Error): void;
+        function throws(
+            block: () => unknown,
+            error: AssertPredicate,
+            message?: string | Error,
+        ): void;
         /**
          * Asserts that the function `fn` does not throw an error.
          *
@@ -746,8 +790,15 @@ declare module "assert" {
          * ```
          * @since v0.1.21
          */
-        function doesNotThrow(block: () => unknown, message?: string | Error): void;
-        function doesNotThrow(block: () => unknown, error: AssertPredicate, message?: string | Error): void;
+        function doesNotThrow(
+            block: () => unknown,
+            message?: string | Error,
+        ): void;
+        function doesNotThrow(
+            block: () => unknown,
+            error: AssertPredicate,
+            message?: string | Error,
+        ): void;
         /**
          * Throws `value` if `value` is not `undefined` or `null`. This is useful when
          * testing the `error` argument in callbacks. The stack trace contains all frames
@@ -845,7 +896,10 @@ declare module "assert" {
          * argument gets considered.
          * @since v10.0.0
          */
-        function rejects(block: (() => Promise<unknown>) | Promise<unknown>, message?: string | Error): Promise<void>;
+        function rejects(
+            block: (() => Promise<unknown>) | Promise<unknown>,
+            message?: string | Error,
+        ): Promise<void>;
         function rejects(
             block: (() => Promise<unknown>) | Promise<unknown>,
             error: AssertPredicate,
@@ -924,7 +978,11 @@ declare module "assert" {
          * instance of an `Error` then it will be thrown instead of the `AssertionError`.
          * @since v13.6.0, v12.16.0
          */
-        function match(value: string, regExp: RegExp, message?: string | Error): void;
+        function match(
+            value: string,
+            regExp: RegExp,
+            message?: string | Error,
+        ): void;
         /**
          * Expects the `string` input not to match the regular expression.
          *
@@ -947,35 +1005,37 @@ declare module "assert" {
          * instance of an `Error` then it will be thrown instead of the `AssertionError`.
          * @since v13.6.0, v12.16.0
          */
-        function doesNotMatch(value: string, regExp: RegExp, message?: string | Error): void;
-        const strict:
-            & Omit<
-                typeof assert,
-                | "equal"
-                | "notEqual"
-                | "deepEqual"
-                | "notDeepEqual"
-                | "ok"
-                | "strictEqual"
-                | "deepStrictEqual"
-                | "ifError"
-                | "strict"
-            >
-            & {
-                (value: unknown, message?: string | Error): asserts value;
-                equal: typeof strictEqual;
-                notEqual: typeof notStrictEqual;
-                deepEqual: typeof deepStrictEqual;
-                notDeepEqual: typeof notDeepStrictEqual;
-                // Mapped types and assertion functions are incompatible?
-                // TS2775: Assertions require every name in the call target
-                // to be declared with an explicit type annotation.
-                ok: typeof ok;
-                strictEqual: typeof strictEqual;
-                deepStrictEqual: typeof deepStrictEqual;
-                ifError: typeof ifError;
-                strict: typeof strict;
-            };
+        function doesNotMatch(
+            value: string,
+            regExp: RegExp,
+            message?: string | Error,
+        ): void;
+        const strict: Omit<
+            typeof assert,
+            | "equal"
+            | "notEqual"
+            | "deepEqual"
+            | "notDeepEqual"
+            | "ok"
+            | "strictEqual"
+            | "deepStrictEqual"
+            | "ifError"
+            | "strict"
+        > & {
+            (value: unknown, message?: string | Error): asserts value;
+            equal: typeof strictEqual;
+            notEqual: typeof notStrictEqual;
+            deepEqual: typeof deepStrictEqual;
+            notDeepEqual: typeof notDeepStrictEqual;
+            // Mapped types and assertion functions are incompatible?
+            // TS2775: Assertions require every name in the call target
+            // to be declared with an explicit type annotation.
+            ok: typeof ok;
+            strictEqual: typeof strictEqual;
+            deepStrictEqual: typeof deepStrictEqual;
+            ifError: typeof ifError;
+            strict: typeof strict;
+        };
     }
     export = assert;
 }

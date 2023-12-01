@@ -28,21 +28,26 @@ export class TransformationAlgorithm {
 }
 
 export class SignedXml {
-    static CanonicalizationAlgorithms: { [uri: string]: new() => TransformationAlgorithm };
-    static HashAlgorithms: { [uri: string]: new() => HashAlgorithm };
-    static SignatureAlgorithms: { [uri: string]: new() => SignatureAlgorithm };
+    static CanonicalizationAlgorithms: {
+        [uri: string]: new () => TransformationAlgorithm;
+    };
+    static HashAlgorithms: { [uri: string]: new () => HashAlgorithm };
+    static SignatureAlgorithms: { [uri: string]: new () => SignatureAlgorithm };
     canonicalizationAlgorithm: string;
     keyInfoProvider: FileKeyInfo;
     references: Reference[];
     signatureAlgorithm: string;
     signingKey: Buffer | string;
     validationErrors: string[];
-    constructor(idMode?: string | null, options?: {
-        canonicalizationAlgorithm?: string | undefined;
-        idAttribute?: string | undefined;
-        implicitTransforms?: readonly string[] | undefined;
-        signatureAlgorithm?: string | undefined;
-    });
+    constructor(
+        idMode?: string | null,
+        options?: {
+            canonicalizationAlgorithm?: string | undefined;
+            idAttribute?: string | undefined;
+            implicitTransforms?: readonly string[] | undefined;
+            signatureAlgorithm?: string | undefined;
+        },
+    );
     addReference(
         xpath: string,
         transforms?: readonly string[],
@@ -58,10 +63,12 @@ export class SignedXml {
         opts?: {
             prefix?: string | undefined;
             attrs?: { [key: string]: any } | undefined;
-            location?: {
-                reference: string;
-                action: "append" | "prepend" | "before" | "after";
-            } | undefined;
+            location?:
+                | {
+                      reference: string;
+                      action: "append" | "prepend" | "before" | "after";
+                  }
+                | undefined;
             existingPrefixes?: { [prefix: string]: string } | undefined;
         },
     ): void;

@@ -165,7 +165,11 @@ declare namespace Selectize {
          *
          * Default: null
          */
-        plugins?: string[] | IPluginOption[] | { [name: string]: any } | undefined;
+        plugins?:
+            | string[]
+            | IPluginOption[]
+            | { [name: string]: any }
+            | undefined;
 
         // Data / Searching
         // ------------------------------------------------------------------------------------------------------------
@@ -247,7 +251,10 @@ declare namespace Selectize {
          *
          * Default: "$order"
          */
-        sortField?: string | Array<{ field: string; direction?: "asc" | "desc" | undefined }> | undefined;
+        sortField?:
+            | string
+            | Array<{ field: string; direction?: "asc" | "desc" | undefined }>
+            | undefined;
 
         /**
          * An array of property names to analyze when filtering options.
@@ -484,7 +491,11 @@ declare namespace Selectize {
          * Invokes the "create" method provided in the selectize options that should provide the data for the
          * new item, given the user input. Once this completes, it will be added to the item list.
          */
-        createItem(value: T, triggerDropdown?: boolean, callback?: (data?: any) => void): void;
+        createItem(
+            value: T,
+            triggerDropdown?: boolean,
+            callback?: (data?: any) => void,
+        ): void;
 
         /**
          * Re-renders the selected item lists.

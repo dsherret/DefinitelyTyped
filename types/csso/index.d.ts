@@ -7,20 +7,29 @@ export const version: string;
  * @param source
  * @param options
  */
-export function minify(source: string, options?: MinifyOptions & CompressOptions): Result;
+export function minify(
+    source: string,
+    options?: MinifyOptions & CompressOptions,
+): Result;
 
 /**
  * The same as minify() but for list of declarations. Usually it's a style attribute value.
  * @param source
  * @param options
  */
-export function minifyBlock(source: string, options?: MinifyOptions & CompressOptions): Result;
+export function minifyBlock(
+    source: string,
+    options?: MinifyOptions & CompressOptions,
+): Result;
 
 export const syntax: typeof csstree & {
     /**
      * Does the main task – compress an AST.
      */
-    compress(ast: csstree.CssNode, options?: CompressOptions): { ast: csstree.CssNode };
+    compress(
+        ast: csstree.CssNode,
+        options?: CompressOptions,
+    ): { ast: csstree.CssNode };
 };
 
 export interface Result {
@@ -41,10 +50,10 @@ export interface Usage {
     scopes?: string[][] | undefined;
     blacklist?:
         | {
-            tags?: string[] | undefined;
-            ids?: string[] | undefined;
-            classes?: string[] | undefined;
-        }
+              tags?: string[] | undefined;
+              ids?: string[] | undefined;
+              classes?: string[] | undefined;
+          }
         | undefined;
 }
 
@@ -111,4 +120,7 @@ export interface MinifyOptions {
 }
 
 export type BeforeCompressFn = (ast: object, options: CompressOptions) => void;
-export type AfterCompressFn = (compressResult: string, options: CompressOptions) => void;
+export type AfterCompressFn = (
+    compressResult: string,
+    options: CompressOptions,
+) => void;

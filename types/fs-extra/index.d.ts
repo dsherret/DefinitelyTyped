@@ -65,9 +65,22 @@ export * from "fs";
  *   }
  * )
  */
-export function copy(src: string, dest: string, options?: CopyOptions): Promise<void>;
-export function copy(src: string, dest: string, callback: NoParamCallbackWithUndefined): void;
-export function copy(src: string, dest: string, options: CopyOptions, callback: NoParamCallbackWithUndefined): void;
+export function copy(
+    src: string,
+    dest: string,
+    options?: CopyOptions,
+): Promise<void>;
+export function copy(
+    src: string,
+    dest: string,
+    callback: NoParamCallbackWithUndefined,
+): void;
+export function copy(
+    src: string,
+    dest: string,
+    options: CopyOptions,
+    callback: NoParamCallbackWithUndefined,
+): void;
 /**
  * Copy a file or directory. The directory can have contents.
  *
@@ -93,7 +106,11 @@ export function copy(src: string, dest: string, options: CopyOptions, callback: 
  *   }
  * })
  */
-export function copySync(src: string, dest: string, options?: CopyOptionsSync): void;
+export function copySync(
+    src: string,
+    dest: string,
+    options?: CopyOptionsSync,
+): void;
 
 /**
  * Moves a file or directory, even across devices.
@@ -139,9 +156,22 @@ export function copySync(src: string, dest: string, options?: CopyOptionsSync): 
  *   console.log('success!')
  * })
  */
-export function move(src: string, dest: string, options?: MoveOptions): Promise<void>;
-export function move(src: string, dest: string, callback: NoParamCallbackWithUndefined): void;
-export function move(src: string, dest: string, options: MoveOptions, callback: NoParamCallbackWithUndefined): void;
+export function move(
+    src: string,
+    dest: string,
+    options?: MoveOptions,
+): Promise<void>;
+export function move(
+    src: string,
+    dest: string,
+    callback: NoParamCallbackWithUndefined,
+): void;
+export function move(
+    src: string,
+    dest: string,
+    options: MoveOptions,
+    callback: NoParamCallbackWithUndefined,
+): void;
 /**
  * Moves a file or directory, even across devices.
  *
@@ -155,7 +185,11 @@ export function move(src: string, dest: string, options: MoveOptions, callback: 
  * // Using `overwrite` option
  * fs.moveSync('/tmp/somedir', '/tmp/may/already/exist/somedir', { overwrite: true })
  */
-export function moveSync(src: string, dest: string, options?: MoveOptions): void;
+export function moveSync(
+    src: string,
+    dest: string,
+    options?: MoveOptions,
+): void;
 
 /**
  * Ensures that the file exists. If the file that is requested to be created is in
@@ -195,7 +229,10 @@ export function moveSync(src: string, dest: string, options?: MoveOptions): void
  * asyncAwait()
  */
 export function ensureFile(file: string): Promise<void>;
-export function ensureFile(file: string, callback: NoParamCallbackWithUndefined): void;
+export function ensureFile(
+    file: string,
+    callback: NoParamCallbackWithUndefined,
+): void;
 /**
  * @see ensureFile
  */
@@ -255,7 +292,11 @@ export const createFileSync: typeof ensureFileSync;
  * asyncAwait()
  */
 export function ensureLink(src: string, dest: string): Promise<void>;
-export function ensureLink(src: string, dest: string, callback: fs.NoParamCallback): void;
+export function ensureLink(
+    src: string,
+    dest: string,
+    callback: fs.NoParamCallback,
+): void;
 /**
  * @see ensureLink
  */
@@ -315,9 +356,22 @@ export const createLinkSync: typeof ensureLinkSync;
  *
  * asyncAwait()
  */
-export function ensureSymlink(src: string, dest: string, type?: SymlinkType): Promise<void>;
-export function ensureSymlink(src: string, dest: string, callback: fs.NoParamCallback): void;
-export function ensureSymlink(src: string, dest: string, type: SymlinkType, callback: fs.NoParamCallback): void;
+export function ensureSymlink(
+    src: string,
+    dest: string,
+    type?: SymlinkType,
+): Promise<void>;
+export function ensureSymlink(
+    src: string,
+    dest: string,
+    callback: fs.NoParamCallback,
+): void;
+export function ensureSymlink(
+    src: string,
+    dest: string,
+    type: SymlinkType,
+    callback: fs.NoParamCallback,
+): void;
 /**
  * @see ensureSymlink
  */
@@ -335,7 +389,11 @@ export const createSymlink: typeof ensureSymlink;
  * fs.ensureSymlinkSync(srcPath, destPath)
  * // symlink has now been created, including the directory it is to be placed in
  */
-export function ensureSymlinkSync(src: string, dest: string, type?: SymlinkType): void;
+export function ensureSymlinkSync(
+    src: string,
+    dest: string,
+    type?: SymlinkType,
+): void;
 /**
  * @see ensureSymlinkSync
  */
@@ -405,9 +463,16 @@ export const createSymlinkSync: typeof ensureSymlinkSync;
  * }
  * asyncAwaitMode()
  */
-export function ensureDir(path: string, options?: EnsureDirOptions | number): Promise<void>;
+export function ensureDir(
+    path: string,
+    options?: EnsureDirOptions | number,
+): Promise<void>;
 export function ensureDir(path: string, callback: fs.NoParamCallback): void;
-export function ensureDir(path: string, options: EnsureDirOptions | number, callback: fs.NoParamCallback): void;
+export function ensureDir(
+    path: string,
+    options: EnsureDirOptions | number,
+    callback: fs.NoParamCallback,
+): void;
 /**
  * Ensures that the directory exists. If the directory structure does not exist, it is created.
  * If provided, options may specify the desired mode for the directory.
@@ -431,7 +496,10 @@ export function ensureDir(path: string, options: EnsureDirOptions | number, call
  * fs.ensureDirSync(dir, options)
  * // dir has now been created, including the directory it is to be placed in with permission 0o2775
  */
-export function ensureDirSync(path: string, options?: EnsureDirOptions | number): void;
+export function ensureDirSync(
+    path: string,
+    options?: EnsureDirOptions | number,
+): void;
 
 /**
  * @see ensureDir
@@ -500,7 +568,11 @@ export function outputFile(
     data: string | NodeJS.ArrayBufferView,
     options?: fs.WriteFileOptions,
 ): Promise<void>;
-export function outputFile(file: string, data: string | NodeJS.ArrayBufferView, callback: fs.NoParamCallback): void;
+export function outputFile(
+    file: string,
+    data: string | NodeJS.ArrayBufferView,
+    callback: fs.NoParamCallback,
+): void;
 export function outputFile(
     file: string,
     data: string | NodeJS.ArrayBufferView,
@@ -710,9 +782,22 @@ export const writeJSONSync: typeof jsonfile.writeFileSync;
  *
  * asyncAwait()
  */
-export function outputJson(file: string, data: any, options?: JsonOutputOptions): Promise<void>;
-export function outputJson(file: string, data: any, options: JsonOutputOptions, callback: fs.NoParamCallback): void;
-export function outputJson(file: string, data: any, callback: fs.NoParamCallback): void;
+export function outputJson(
+    file: string,
+    data: any,
+    options?: JsonOutputOptions,
+): Promise<void>;
+export function outputJson(
+    file: string,
+    data: any,
+    options: JsonOutputOptions,
+    callback: fs.NoParamCallback,
+): void;
+export function outputJson(
+    file: string,
+    data: any,
+    callback: fs.NoParamCallback,
+): void;
 /**
  * @see outputJson
  */
@@ -729,7 +814,11 @@ export const outputJSON: typeof outputJson;
  * const data = fs.readJsonSync(file)
  * console.log(data.name) // => JP
  */
-export function outputJsonSync(file: string, data: any, options?: JsonOutputOptions): void;
+export function outputJsonSync(
+    file: string,
+    data: any,
+    options?: JsonOutputOptions,
+): void;
 /**
  * @see outputJsonSync
  */
@@ -876,7 +965,10 @@ export const emptydirSync: typeof emptyDirSync;
  * asyncAwait()
  */
 export function pathExists(path: string): Promise<boolean>;
-export function pathExists(path: string, callback: (err: NodeJS.ErrnoException | null, exists: boolean) => void): void;
+export function pathExists(
+    path: string,
+    callback: (err: NodeJS.ErrnoException | null, exists: boolean) => void,
+): void;
 /**
  * An alias for [`fs.existsSync`](https://nodejs.org/api/fs.html#fs_fs_existssync_path), created for
  * consistency with `pathExists`.
@@ -884,7 +976,8 @@ export function pathExists(path: string, callback: (err: NodeJS.ErrnoException |
 export function pathExistsSync(path: string): boolean;
 
 export const access: typeof fs.access.__promisify__ & typeof fs.access;
-export const appendFile: typeof fs.appendFile.__promisify__ & typeof fs.appendFile;
+export const appendFile: typeof fs.appendFile.__promisify__ &
+    typeof fs.appendFile;
 export const chmod: typeof fs.chmod.__promisify__ & typeof fs.chmod;
 export const chown: typeof fs.chown.__promisify__ & typeof fs.chown;
 export const close: typeof fs.close.__promisify__ & typeof fs.close;
@@ -910,12 +1003,13 @@ export const readv: typeof fs.readv.__promisify__ & typeof fs.readv;
 export const readdir: typeof fs.readdir.__promisify__ & typeof fs.readdir;
 export const readFile: typeof fs.readFile.__promisify__ & typeof fs.readFile;
 export const readlink: typeof fs.readlink.__promisify__ & typeof fs.readlink;
-export const realpath:
-    & typeof fs.realpath.__promisify__
-    & typeof fs.realpath
-    & {
+export const realpath: typeof fs.realpath.__promisify__ &
+    typeof fs.realpath & {
         native(path: fs.PathLike, options?: fs.EncodingOption): Promise<string>;
-        native(path: fs.PathLike, options: fs.BufferEncodingOption): Promise<Buffer>;
+        native(
+            path: fs.PathLike,
+            options: fs.BufferEncodingOption,
+        ): Promise<Buffer>;
     };
 export const rename: typeof fs.rename.__promisify__ & typeof fs.rename;
 export const rm: typeof fs.rm.__promisify__ & typeof fs.rm;
@@ -929,7 +1023,9 @@ export const write: typeof fs.write.__promisify__ & typeof fs.write;
 export const writev: typeof fs.writev.__promisify__ & typeof fs.writev;
 export const writeFile: typeof fs.writeFile.__promisify__ & typeof fs.writeFile;
 
-export type NoParamCallbackWithUndefined = (err: NodeJS.ErrnoException | null | undefined) => void;
+export type NoParamCallbackWithUndefined = (
+    err: NodeJS.ErrnoException | null | undefined,
+) => void;
 
 export type SymlinkType = fs.symlink.Type;
 
@@ -991,6 +1087,9 @@ export interface MoveOptions {
     dereference?: boolean | undefined;
 }
 
-export { JFReadOptions as JsonReadOptions, JFWriteOptions as JsonWriteOptions } from "jsonfile";
+export {
+    JFReadOptions as JsonReadOptions,
+    JFWriteOptions as JsonWriteOptions,
+} from "jsonfile";
 
 export type JsonOutputOptions = fs.WriteFileOptions & StringifyOptions;

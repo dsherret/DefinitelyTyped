@@ -34,16 +34,35 @@ declare namespace dockspawn {
         /** Dock the [dialog] below the [referenceNode] node */
         dockDialogDown(referenceNode: DockNode, dialog: Dialog): DockNode;
         /** Dock the [dialog] as a tab inside the [referenceNode] node */
-        dockDialogFill(referenceNode: DockNode, container: PanelContainer): DockNode;
+        dockDialogFill(
+            referenceNode: DockNode,
+            container: PanelContainer,
+        ): DockNode;
 
         /** Dock the [container] to the left of the [referenceNode] node */
-        dockLeft(referenceNode: DockNode, container: PanelContainer, ratio: number): DockNode;
+        dockLeft(
+            referenceNode: DockNode,
+            container: PanelContainer,
+            ratio: number,
+        ): DockNode;
         /** Dock the [container] to the right of the [referenceNode] node */
-        dockRight(referenceNode: DockNode, container: PanelContainer, ratio: number): DockNode;
+        dockRight(
+            referenceNode: DockNode,
+            container: PanelContainer,
+            ratio: number,
+        ): DockNode;
         /** Dock the [container] above the [referenceNode] node */
-        dockUp(referenceNode: DockNode, container: PanelContainer, ratio: number): DockNode;
+        dockUp(
+            referenceNode: DockNode,
+            container: PanelContainer,
+            ratio: number,
+        ): DockNode;
         /** Dock the [container] below the [referenceNode] node */
-        dockDown(referenceNode: DockNode, container: PanelContainer, ratio: number): DockNode;
+        dockDown(
+            referenceNode: DockNode,
+            container: PanelContainer,
+            ratio: number,
+        ): DockNode;
         /** Dock the [container] as a tab inside the [referenceNode] node */
         dockFill(referenceNode: DockNode, container: PanelContainer): DockNode;
 
@@ -87,7 +106,10 @@ declare namespace dockspawn {
         separatorElement: HTMLDivElement;
         contentElement: HTMLDivElement;
 
-        constructor(tabStripDirection?: TabStripDirection, displayCloseButton?: boolean);
+        constructor(
+            tabStripDirection?: TabStripDirection,
+            displayCloseButton?: boolean,
+        );
 
         setActiveTab(container: PanelContainer): void;
 
@@ -117,7 +139,10 @@ declare namespace dockspawn {
         containerType: string;
         minimumAllowedChildNodes: number;
 
-        constructor(dockManager: DockManager, tabStripDirection?: TabStripDirection);
+        constructor(
+            dockManager: DockManager,
+            tabStripDirection?: TabStripDirection,
+        );
     }
 
     /**
@@ -137,7 +162,11 @@ declare namespace dockspawn {
         width: number;
         height: number;
 
-        constructor(element: HTMLElement, dockManager: DockManager, title?: string);
+        constructor(
+            element: HTMLElement,
+            dockManager: DockManager,
+            title?: string,
+        );
 
         setTitle(title: string): void;
         setTitleIcon(iconName: string): void;

@@ -44,18 +44,19 @@ new SVGIcons2SVGFontStream({
     }),
 });
 
-const customProvider: MetadataProvider = () => (file: string, cb: (err: any, metadata?: Metadata) => void) => {
-    if (!file) {
-        cb(new Error("wrong path"));
-        return;
-    }
-    cb(null, {
-        name: file,
-        path: file,
-        renamed: false,
-        unicode: [],
-    });
-};
+const customProvider: MetadataProvider =
+    () => (file: string, cb: (err: any, metadata?: Metadata) => void) => {
+        if (!file) {
+            cb(new Error("wrong path"));
+            return;
+        }
+        cb(null, {
+            name: file,
+            path: file,
+            renamed: false,
+            unicode: [],
+        });
+    };
 
 // $ExpectType SVGIcons2SVGFontStream
 new SVGIcons2SVGFontStream({

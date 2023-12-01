@@ -1,5 +1,11 @@
 "use strict";
-import { FsPaths, install, InstallOpts, start, StartOpts } from "selenium-standalone";
+import {
+    FsPaths,
+    install,
+    InstallOpts,
+    start,
+    StartOpts,
+} from "selenium-standalone";
 
 // InstallOpts interface
 let installOpts: InstallOpts = {
@@ -18,7 +24,11 @@ let installOpts: InstallOpts = {
             baseURL: "baseURL b",
         },
     },
-    progressCb: (totalLength: number, progressLength: number, chunkLength: number) => {},
+    progressCb: (
+        totalLength: number,
+        progressLength: number,
+        chunkLength: number,
+    ) => {},
     logger: (message: string) => {},
     requestOpts: "requestOpts",
 };

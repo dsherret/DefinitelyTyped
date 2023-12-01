@@ -111,7 +111,8 @@ export interface GenerateSecretOptions {
      */
     google_auth_qr?: boolean | undefined;
 }
-export interface GenerateSecretWithOtpAuthUrlOptions extends GenerateSecretOptions {
+export interface GenerateSecretWithOtpAuthUrlOptions
+    extends GenerateSecretOptions {
     /**
      * Whether to output a Google Authenticator-compatible otpauth:// URL
      * (only returns otpauth:// URL, no QR code), defaults to false
@@ -398,7 +399,9 @@ export const time: Totp;
  * URL). Use a QR code library to generate a QR code based on the Google
  * Authenticator URL to obtain a QR code you can scan into the app.
  */
-export function generateSecret(options: GenerateSecretWithOtpAuthUrlOptions): GeneratedSecretWithOtpAuthUrl;
+export function generateSecret(
+    options: GenerateSecretWithOtpAuthUrlOptions,
+): GeneratedSecretWithOtpAuthUrl;
 /**
  * Generates a random secret with the set A-Z a-z 0-9 and symbols, of any length
  * (default 32). Returns the secret key in ASCII, hexadecimal, and base32 format,
@@ -406,7 +409,9 @@ export function generateSecret(options: GenerateSecretWithOtpAuthUrlOptions): Ge
  * URL). Use a QR code library to generate a QR code based on the Google
  * Authenticator URL to obtain a QR code you can scan into the app.
  */
-export function generateSecret(options?: GenerateSecretOptions): GeneratedSecret;
+export function generateSecret(
+    options?: GenerateSecretOptions,
+): GeneratedSecret;
 /**
  * @deprecated use generateSecret
  */
@@ -420,10 +425,7 @@ export const generate_key: typeof generateSecret;
  * @param  symbols Whether to include symbols in the key, defaults to false
  * @return The generated key.
  */
-export function generateSecretASCII(
-    length?: number,
-    symbols?: boolean,
-): string;
+export function generateSecretASCII(length?: number, symbols?: boolean): string;
 /**
  * @deprecated use generateSecret
  */

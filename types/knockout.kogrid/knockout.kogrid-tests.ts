@@ -10,7 +10,10 @@ export class Tests {
     constructor() {
         this.items = ko.observableArray<IGridItem>();
         this.selectedItems = ko.observableArray<IGridItem>();
-        this.gridOptionsAlarms = this.createDefaultGridOptions(this.items, this.selectedItems);
+        this.gridOptionsAlarms = this.createDefaultGridOptions(
+            this.items,
+            this.selectedItems,
+        );
     }
 
     public createDefaultGridOptions<Type>(

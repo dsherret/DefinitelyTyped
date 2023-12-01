@@ -22,7 +22,11 @@ const clusterBrokerClient = attach(agBroker, {
     }
 
     // tslint:disable-next-line: await-promise Bug in tslint: https://github.com/palantir/tslint/issues/3997
-    for await (const { channel, poolIndex, targetURI } of clusterBrokerClient.listener("subscribe")) {
+    for await (const {
+        channel,
+        poolIndex,
+        targetURI,
+    } of clusterBrokerClient.listener("subscribe")) {
         // $ExpectType string
         channel;
 
@@ -34,7 +38,12 @@ const clusterBrokerClient = attach(agBroker, {
     }
 
     // tslint:disable-next-line: await-promise Bug in tslint: https://github.com/palantir/tslint/issues/3997
-    for await (const { channel, poolIndex, targetURI, error } of clusterBrokerClient.listener("subscribeFail")) {
+    for await (const {
+        channel,
+        poolIndex,
+        targetURI,
+        error,
+    } of clusterBrokerClient.listener("subscribeFail")) {
         // $ExpectType string
         channel;
 
@@ -49,7 +58,12 @@ const clusterBrokerClient = attach(agBroker, {
     }
 
     // tslint:disable-next-line: await-promise Bug in tslint: https://github.com/palantir/tslint/issues/3997
-    for await (const { targetURI, poolIndex, channel, data } of clusterBrokerClient.listener("publish")) {
+    for await (const {
+        targetURI,
+        poolIndex,
+        channel,
+        data,
+    } of clusterBrokerClient.listener("publish")) {
         // $ExpectType string
         targetURI;
 
@@ -64,7 +78,12 @@ const clusterBrokerClient = attach(agBroker, {
     }
 
     // tslint:disable-next-line: await-promise Bug in tslint: https://github.com/palantir/tslint/issues/3997
-    for await (const { targetURI, poolIndex, channel, error } of clusterBrokerClient.listener("publishFail")) {
+    for await (const {
+        targetURI,
+        poolIndex,
+        channel,
+        error,
+    } of clusterBrokerClient.listener("publishFail")) {
         // $ExpectType string
         targetURI;
 
@@ -79,7 +98,9 @@ const clusterBrokerClient = attach(agBroker, {
     }
 
     // tslint:disable-next-line: await-promise Bug in tslint: https://github.com/palantir/tslint/issues/3997
-    for await (const { channelName, packet } of clusterBrokerClient.listener("message")) {
+    for await (const { channelName, packet } of clusterBrokerClient.listener(
+        "message",
+    )) {
         // $ExpectType string
         channelName;
 

@@ -14,10 +14,10 @@ App({
         wx.setStorageSync("logs", logs);
 
         wx.getSetting({
-            success: res => {
+            success: (res) => {
                 if (res.authSetting["scope.userInfo"]) {
                     wx.getUserInfo({
-                        success: res => {
+                        success: (res) => {
                             this.globalData.userInfo = res.userInfo;
                             if (this.userInfoReadyCallback) {
                                 this.userInfoReadyCallback(res.userInfo);

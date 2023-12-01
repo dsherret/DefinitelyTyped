@@ -4,10 +4,15 @@ declare namespace CKEDITOR {
     }
 
     interface CKEditorUIStatic {
-        balloonPanel: { new(editor: editor, definition: ui.balloonPanel.definition): ui.balloonPanel };
+        balloonPanel: {
+            new (
+                editor: editor,
+                definition: ui.balloonPanel.definition,
+            ): ui.balloonPanel;
+        };
         button: ui.buttonConstructor<ui.button>;
         floatPanel: {
-            new(
+            new (
                 editor: editor,
                 parentElement: dom.element,
                 definition: { [key: string]: unknown },
@@ -16,25 +21,41 @@ declare namespace CKEDITOR {
         };
         handlerDefinition: ui.handlerDefinition;
         menuButton: ui.buttonConstructor<ui.menuButton>;
-        panel: { new(document: dom.document, definition: ui.uiDefinition): ui.panel };
+        panel: {
+            new (document: dom.document, definition: ui.uiDefinition): ui.panel;
+        };
         panelButton: ui.buttonConstructor<ui.panelButton>;
-        richCombo: { new(): ui.richCombo };
+        richCombo: { new (): ui.richCombo };
     }
 
     interface uiConstructor extends eventConstructor<ui> {
-        new(editor: editor): ui;
+        new (editor: editor): ui;
     }
 
     interface ui extends event {
-        add(name: string, type: { [key: string]: unknown }, definition: { [key: string]: unknown }): void;
+        add(
+            name: string,
+            type: { [key: string]: unknown },
+            definition: { [key: string]: unknown },
+        ): void;
 
         addButton(name: string, definition: ui.button.definition): void;
 
-        addHandler(type: { [key: string]: unknown }, handler: { [key: string]: unknown }): void;
+        addHandler(
+            type: { [key: string]: unknown },
+            handler: { [key: string]: unknown },
+        ): void;
 
-        addRichCombo(name: string, definition: { [key: string]: unknown }): void;
+        addRichCombo(
+            name: string,
+            definition: { [key: string]: unknown },
+        ): void;
 
-        addToolbarGroup(name: string, previous: number | string, subgroupOf?: string): void;
+        addToolbarGroup(
+            name: string,
+            previous: number | string,
+            subgroupOf?: string,
+        ): void;
 
         create(name: string): { [key: string]: unknown };
 
@@ -74,7 +95,9 @@ declare namespace CKEDITOR {
 
             activateShowListeners(): void;
 
-            addShowListener(listener: () => listenerRegistration): listenerRegistration;
+            addShowListener(
+                listener: () => listenerRegistration,
+            ): listenerRegistration;
 
             attach(
                 element: dom.element,
@@ -82,9 +105,9 @@ declare namespace CKEDITOR {
                     | dom.element
                     | boolean
                     | {
-                        focusElement?: dom.element | boolean;
-                        show?: boolean;
-                    },
+                          focusElement?: dom.element | boolean;
+                          show?: boolean;
+                      },
             ): void;
 
             blur(): void;
@@ -164,7 +187,7 @@ declare namespace CKEDITOR {
         }
 
         interface buttonConstructor<T extends button> {
-            new(definition: button.definition): T;
+            new (definition: button.definition): T;
         }
 
         interface button extends _uiElement {
@@ -227,7 +250,10 @@ declare namespace CKEDITOR {
             ): void;
         }
 
-        interface handlerDefinition<T extends _uiElement = _uiElement, U extends uiDefinition = uiDefinition> {
+        interface handlerDefinition<
+            T extends _uiElement = _uiElement,
+            U extends uiDefinition = uiDefinition,
+        > {
             contentsElement: dom.element;
 
             create(definition: U): T;

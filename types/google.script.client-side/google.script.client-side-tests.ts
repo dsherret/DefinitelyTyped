@@ -1,18 +1,32 @@
-google.script.url.getLocation(location => {
+google.script.url.getLocation((location) => {
     location.hash; // $ExpectType string
     location.parameter; // $ExpectType { [key: string]: string; }
     location.parameters; // $ExpectType { [key: string]: ReadonlyArray<string>; }
 });
 
 google.script.history.push(null);
-google.script.history.push({ timestamp: Date.now() }, { foo: "bar", fiz: "baz" });
-google.script.history.push({ timestamp: Date.now() }, { foo: ["bar", "cat"], fiz: "baz" }, "anchor1");
+google.script.history.push(
+    { timestamp: Date.now() },
+    { foo: "bar", fiz: "baz" },
+);
+google.script.history.push(
+    { timestamp: Date.now() },
+    { foo: ["bar", "cat"], fiz: "baz" },
+    "anchor1",
+);
 
 google.script.history.replace(null);
-google.script.history.replace({ timestamp: Date.now() }, { foo: "bar", fiz: "baz" });
-google.script.history.replace({ timestamp: Date.now() }, { foo: ["bar", "cat"], fiz: "baz" }, "anchor1");
+google.script.history.replace(
+    { timestamp: Date.now() },
+    { foo: "bar", fiz: "baz" },
+);
+google.script.history.replace(
+    { timestamp: Date.now() },
+    { foo: ["bar", "cat"], fiz: "baz" },
+    "anchor1",
+);
 
-google.script.history.setChangeHandler(e => {
+google.script.history.setChangeHandler((e) => {
     e.state; // $ExpectType State
     e.location.hash; // $ExpectType string
     e.location.parameter; // $ExpectType { [key: string]: string; }
@@ -30,8 +44,8 @@ google.script.run.withFailureHandler(() => {}); // $ExpectType RunnerFunctions &
 google.script.run.withUserObject({}); // $ExpectType RunnerFunctions & PublicEndpoints
 
 google.script.run
-    .withSuccessHandler(value => {})
-    .withFailureHandler(error => {
+    .withSuccessHandler((value) => {})
+    .withFailureHandler((error) => {
         error; // $ExpectType Error
     });
 
@@ -79,15 +93,7 @@ google.script.run.testFunctionWithMultipleParameters(
     "",
     null,
     undefined,
-    [
-        0,
-        true,
-        "",
-        null,
-        undefined,
-        [],
-        {},
-    ],
+    [0, true, "", null, undefined, [], {}],
     {
         number: 0,
         boolean: true,

@@ -52,6 +52,6 @@ const handler = (e: ExtendedKeyboardEvent, combo: string) => {
     return false;
 };
 Mousetrap.bind(["command+k", "ctrl+k"], handler);
-Mousetrap.bind(["command+k", "ctrl+k"], e => {
+Mousetrap.bind(["command+k", "ctrl+k"], (e) => {
     return false;
 });

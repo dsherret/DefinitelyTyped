@@ -14,7 +14,7 @@ app.listen(3000, () => {
     // no-op error callback
 });
 
-app.get("/:foo", req => {
+app.get("/:foo", (req) => {
     req.params.foo; // $ExpectType string
     // @ts-expect-error
     req.params.bar;
@@ -28,7 +28,7 @@ app.get("/:foo", req => {
     req.is(1);
 });
 
-app.route("/:foo").get(req => {
+app.route("/:foo").get((req) => {
     req.params.foo; // $ExpectType string
     // @ts-expect-error
     req.params.bar;
@@ -43,20 +43,20 @@ app.route("/:foo").get(req => {
 });
 
 // Params can used as an array
-app.get<express.ParamsArray>("/*", req => {
+app.get<express.ParamsArray>("/*", (req) => {
     req.params[0]; // $ExpectType string
     req.params.length; // $ExpectType number
 });
 
 // Params can used as an array - under route
-app.route("/*").get<express.ParamsArray>(req => {
+app.route("/*").get<express.ParamsArray>((req) => {
     req.params[0]; // $ExpectType string
     req.params.length; // $ExpectType number
 });
 
 // Params can be a custom type
 // NB. out-of-the-box all params are strings, however, other types are allowed to accommodate request validation/coercion middleware
-app.get<{ foo: string; bar: number }>("/:foo/:bar", req => {
+app.get<{ foo: string; bar: number }>("/:foo/:bar", (req) => {
     req.params.foo; // $ExpectType string
     req.params.bar; // $ExpectType number
     // @ts-expect-error
@@ -64,7 +64,7 @@ app.get<{ foo: string; bar: number }>("/:foo/:bar", req => {
 });
 
 // Params can be a custom type - under route
-app.route("/:foo/:bar").get<{ foo: string; bar: number }>(req => {
+app.route("/:foo/:bar").get<{ foo: string; bar: number }>((req) => {
     req.params.foo; // $ExpectType string
     req.params.bar; // $ExpectType number
     // @ts-expect-error
@@ -72,13 +72,13 @@ app.route("/:foo/:bar").get<{ foo: string; bar: number }>(req => {
 });
 
 // Optional params
-app.get("/:foo/:bar?", req => {
+app.get("/:foo/:bar?", (req) => {
     req.params.foo; // $ExpectType string
     req.params.bar; // $ExpectType string | undefined
 });
 
 // Different delimiters
-app.get("/:foo/:bar-:baz/:qux", req => {
+app.get("/:foo/:bar-:baz/:qux", (req) => {
     req.params.foo; // $ExpectType string
     req.params.bar; // $ExpectType string
     req.params.baz; // $ExpectType string
@@ -88,7 +88,7 @@ app.get("/:foo/:bar-:baz/:qux", req => {
 });
 
 // regex parameters - not supported
-app.get("/:foo/:bar(\\d:+)/:baz", req => {
+app.get("/:foo/:bar(\\d:+)/:baz", (req) => {
     req.params.foo; // $ExpectType string
     req.params.bar; // $ExpectType string
     req.params.qux; // $ExpectType string
@@ -96,7 +96,7 @@ app.get("/:foo/:bar(\\d:+)/:baz", req => {
 });
 
 // long path parameters - https://github.com/DefinitelyTyped/DefinitelyTyped/pull/53513#issuecomment-870550063
-app.get("/website-api/jobalarm/:jobalarmId/:subscriptionId/search", req => {
+app.get("/website-api/jobalarm/:jobalarmId/:subscriptionId/search", (req) => {
     req.params.jobalarmId; // $ExpectType string
     req.params.subscriptionId; // $ExpectType string
     // @ts-expect-error
@@ -104,26 +104,26 @@ app.get("/website-api/jobalarm/:jobalarmId/:subscriptionId/search", req => {
 });
 
 // Query can be a custom type
-app.get<{}, any, any, { q: string }>("/:foo", req => {
+app.get<{}, any, any, { q: string }>("/:foo", (req) => {
     req.query.q; // $ExpectType string
     // @ts-expect-error
     req.query.a;
 });
 
 // Query can be a custom type - under route
-app.route("/:foo").get<{}, any, any, { q: string }>(req => {
+app.route("/:foo").get<{}, any, any, { q: string }>((req) => {
     req.query.q; // $ExpectType string
     // @ts-expect-error
     req.query.a;
 });
 
 // Query will be defaulted to Query type
-app.get("/:foo", req => {
+app.get("/:foo", (req) => {
     req.query; // $ExpectType ParsedQs
 });
 
 // Query will be defaulted to Query type - under route
-app.route("/:foo").get(req => {
+app.route("/:foo").get((req) => {
     req.query; // $ExpectType ParsedQs
 });
 
@@ -261,10 +261,15 @@ app.get<{}, any, any, {}, { foo: boolean }>("/locals", (req, res, next) => {
 // Sending and downloading files
 
 app.get("/file.txt", (req, res) => {
-    res.download("/some/path/to/file.txt", "file.txt", { maxAge: 3_600_000 }, error => {
-        // $ExpectType Error
-        error;
-    });
+    res.download(
+        "/some/path/to/file.txt",
+        "file.txt",
+        { maxAge: 3_600_000 },
+        (error) => {
+            // $ExpectType Error
+            error;
+        },
+    );
 });
 
 app.get("/file2.txt", (req, res) => {
@@ -274,6 +279,6 @@ app.get("/file2.txt", (req, res) => {
 });
 
 // IP address may be undefined
-app.get("/:foo", req => {
+app.get("/:foo", (req) => {
     req.ip; // $ExpectType string | undefined
 });

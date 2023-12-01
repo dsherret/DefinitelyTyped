@@ -1,5 +1,11 @@
 import { createReadStream } from "fs";
-import { calculate, fromStream, hardware_support, sse42_crc, table_crc } from "sse4_crc32";
+import {
+    calculate,
+    fromStream,
+    hardware_support,
+    sse42_crc,
+    table_crc,
+} from "sse4_crc32";
 
 // $ExpectType Crc32CStream
 fromStream(createReadStream("./test.txt"), 1);

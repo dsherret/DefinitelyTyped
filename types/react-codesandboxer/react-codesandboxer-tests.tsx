@@ -16,12 +16,11 @@ const codeSandboxer = (
         providedFiles={{ "index.js": { content: "abcde...." } }}
     >
         {({ isLoading }) =>
-            isLoading
-                ? <div>Uploading</div>
-                : (
-                    <button type="submit">
-                        Upload to CodeSandbox
-                    </button>
-                )}
+            isLoading ? (
+                <div>Uploading</div>
+            ) : (
+                <button type="submit">Upload to CodeSandbox</button>
+            )
+        }
     </CodeSandboxer>
 );

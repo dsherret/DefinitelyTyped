@@ -586,8 +586,14 @@ declare module "leadfoot/Command" {
          */
         constructor(
             parent: Command<any> | Session,
-            initialiser?: (setContext: Command.ContextSetter, value: any) => Thenable<T> | T,
-            errback?: (setContext: Command.ContextSetter, error: Error) => Thenable<T> | T,
+            initialiser?: (
+                setContext: Command.ContextSetter,
+                value: any,
+            ) => Thenable<T> | T,
+            errback?: (
+                setContext: Command.ContextSetter,
+                error: Error,
+            ) => Thenable<T> | T,
         );
 
         /**
@@ -662,20 +668,34 @@ declare module "leadfoot/Command" {
          * @returns {module:leadfoot/Command.<any>}
          */
         then<U>(
-            callback: (value: T, setContext?: Command.ContextSetter) => Thenable<U> | U,
-            errback?: (error: Error, setContext?: Command.ContextSetter) => Thenable<U> | U,
+            callback: (
+                value: T,
+                setContext?: Command.ContextSetter,
+            ) => Thenable<U> | U,
+            errback?: (
+                error: Error,
+                setContext?: Command.ContextSetter,
+            ) => Thenable<U> | U,
         ): Command<U>;
 
         /**
          * Adds a callback to be invoked when any of the previously chained operations have failed.
          */
-        catch<U>(errback: (error: Error, setContext?: Command.ContextSetter) => Thenable<U> | U): Command<U>;
+        catch<U>(
+            errback: (
+                error: Error,
+                setContext?: Command.ContextSetter,
+            ) => Thenable<U> | U,
+        ): Command<U>;
 
         /**
          * Adds a callback to be invoked once the previously chained operations have resolved.
          */
         finally<U>(
-            callback: (valueOrError: T | Error, setContext?: Command.ContextSetter) => Thenable<U> | U,
+            callback: (
+                valueOrError: T | Error,
+                setContext?: Command.ContextSetter,
+            ) => Thenable<U> | U,
         ): Command<U>;
 
         /**
@@ -866,7 +886,11 @@ declare module "leadfoot/Command" {
          * @param height
          * The new height of the window, in CSS pixels.
          */
-        setWindowSize(windowHandle: string, width: number, height: number): Command<void>;
+        setWindowSize(
+            windowHandle: string,
+            width: number,
+            height: number,
+        ): Command<void>;
         setWindowSize(width: number, height: number): Command<void>;
 
         /**
@@ -879,7 +903,9 @@ declare module "leadfoot/Command" {
          * @returns
          * An object describing the width and height of the window, in CSS pixels.
          */
-        getWindowSize(windowHandle?: string): Command<{ width: number; height: number }>;
+        getWindowSize(
+            windowHandle?: string,
+        ): Command<{ width: number; height: number }>;
 
         /**
          * Sets the position of a window.
@@ -894,7 +920,11 @@ declare module "leadfoot/Command" {
          * @param y
          * The screen y-coordinate to move to, in CSS pixels, relative to the top edge of the primary monitor.
          */
-        setWindowPosition(windowHandle: string, x: number, y: number): Command<void>;
+        setWindowPosition(
+            windowHandle: string,
+            x: number,
+            y: number,
+        ): Command<void>;
         setWindowPosition(x: number, y: number): Command<void>;
 
         /**
@@ -909,7 +939,9 @@ declare module "leadfoot/Command" {
          * primary monitor. If a secondary monitor exists above or to the left of the primary monitor, these values
          * will be negative.
          */
-        getWindowPosition(windowHandle?: string): Command<{ x: number; y: number }>;
+        getWindowPosition(
+            windowHandle?: string,
+        ): Command<{ x: number; y: number }>;
 
         /**
          * Maximises a window according to the platform’s window system behaviour.
@@ -1054,7 +1086,11 @@ declare module "leadfoot/Command" {
          * client rectangle. If no element is specified, the offset is relative to the previous position of the mouse,
          * or to the top edge of the page’s root element if the mouse was never moved before.
          */
-        moveMouseTo(element: Element, xOffset?: number, yOffset?: number): Command<void>;
+        moveMouseTo(
+            element: Element,
+            xOffset?: number,
+            yOffset?: number,
+        ): Command<void>;
         moveMouseTo(xOffset: number, yOffset: number): Command<void>;
 
         /**
@@ -1133,7 +1169,11 @@ declare module "leadfoot/Command" {
          * An optional y-offset, relative to the top edge of the element, in CSS pixels. If no element is specified,
          * the offset is relative to the previous scroll position of the window.
          */
-        touchScroll(element: Element, xOffset: number, yOffset: number): Command<void>;
+        touchScroll(
+            element: Element,
+            xOffset: number,
+            yOffset: number,
+        ): Command<void>;
         touchScroll(xOffset: number, yOffset: number): Command<void>;
 
         /**
@@ -1160,7 +1200,12 @@ declare module "leadfoot/Command" {
          * @param speed The speed of the flick, in pixels per *second*. Most human flicks are 100–200ms, so
          * this value will be higher than expected.
          */
-        flickFinger(element: Element, xOffset: number, yOffset: number, speed: number): Command<void>;
+        flickFinger(
+            element: Element,
+            xOffset: number,
+            yOffset: number,
+            speed: number,
+        ): Command<void>;
 
         /**
          * Gets the current geographical location of the remote environment.
@@ -1639,7 +1684,11 @@ declare module "leadfoot/Command" {
          * - `usesElement` (boolean): If this property is specified, element(s) from the current context will be used as
          *   the first argument to the function, if the explicitly specified first argument is not already an element.
          */
-        static addSessionMethod(target: Command<any>, key: string, originalFn: Function): void;
+        static addSessionMethod(
+            target: Command<any>,
+            key: string,
+            originalFn: Function,
+        ): void;
 
         /**
          * Augments `target` with a method that will call `key` on all context elements stored within `target`.
@@ -1677,7 +1726,10 @@ declare module "leadfoot/Element" {
      * An Element represents a DOM or UI element within the remote environment.
      */
     class Element {
-        constructor(elementId: string | Element | { ELEMENT: string }, session: Session);
+        constructor(
+            elementId: string | Element | { ELEMENT: string },
+            session: Session,
+        );
 
         /**
          * The opaque, remote-provided ID of the element.
@@ -1702,7 +1754,11 @@ declare module "leadfoot/Element" {
          *
          * @param pathParts Optional placeholder values to inject into the path of the URL.
          */
-        protected _get(path: string, requestData: {}, pathParts?: string[]): Promise<{}>;
+        protected _get(
+            path: string,
+            requestData: {},
+            pathParts?: string[],
+        ): Promise<{}>;
 
         /**
          * A function that performs an HTTP request to a JsonWireProtocol endpoint and normalises response status and
@@ -1717,7 +1773,11 @@ declare module "leadfoot/Element" {
          *
          * @param pathParts Optional placeholder values to inject into the path of the URL.
          */
-        protected _post(path: string, requestData: {}, pathParts?: string[]): Promise<{}>;
+        protected _post(
+            path: string,
+            requestData: {},
+            pathParts?: string[],
+        ): Promise<{}>;
 
         toJSON(): { ELEMENT: string };
 
@@ -2057,123 +2117,123 @@ declare module "leadfoot/Element" {
 declare module "leadfoot/keys" {
     var keys: {
         /** Releases all held modifier keys. */
-        "NULL": string;
+        NULL: string;
         /** OS-specific keystroke sequence that performs a cancel action. */
-        "CANCEL": string;
+        CANCEL: string;
         /** The help key. This key only appears on older Apple keyboards in place of the Insert key. */
-        "HELP": string;
+        HELP: string;
         /** The backspace key. */
-        "BACKSPACE": string;
+        BACKSPACE: string;
         /** The tab key. */
-        "TAB": string;
+        TAB: string;
         /** The clear key. This key only appears on full-size Apple keyboards in place of Num Lock key. */
-        "CLEAR": string;
+        CLEAR: string;
         /** The return key. */
-        "RETURN": string;
+        RETURN: string;
         /** The enter (numpad) key. */
-        "ENTER": string;
+        ENTER: string;
         /** The shift key. */
-        "SHIFT": string;
+        SHIFT: string;
         /** The control key. */
-        "CONTROL": string;
+        CONTROL: string;
         /** The alt key. */
-        "ALT": string;
+        ALT: string;
         /** The pause key. */
-        "PAUSE": string;
+        PAUSE: string;
         /** The escape key. */
-        "ESCAPE": string;
+        ESCAPE: string;
 
         /** The space bar. */
-        "SPACE": string;
+        SPACE: string;
         /** The page up key. */
-        "PAGE_UP": string;
+        PAGE_UP: string;
         /** The page down key. */
-        "PAGE_DOWN": string;
+        PAGE_DOWN: string;
         /** The end key. */
-        "END": string;
+        END: string;
         /** The home key. */
-        "HOME": string;
+        HOME: string;
         /** The left arrow. */
-        "ARROW_LEFT": string;
+        ARROW_LEFT: string;
         /** The up arrow. */
-        "ARROW_UP": string;
+        ARROW_UP: string;
         /** The right arrow. */
-        "ARROW_RIGHT": string;
+        ARROW_RIGHT: string;
         /** The down arrow. */
-        "ARROW_DOWN": string;
+        ARROW_DOWN: string;
         /** The insert key. */
-        "INSERT": string;
+        INSERT: string;
         /** The delete key. */
-        "DELETE": string;
+        DELETE: string;
         /** The semicolon key. */
-        "SEMICOLON": string;
+        SEMICOLON: string;
         /** The equals key. */
-        "EQUALS": string;
+        EQUALS: string;
 
         /** The numpad zero key. */
-        "NUMPAD0": string;
+        NUMPAD0: string;
         /** The numpad one key. */
-        "NUMPAD1": string;
+        NUMPAD1: string;
         /** The numpad two key. */
-        "NUMPAD2": string;
+        NUMPAD2: string;
         /** The numpad three key. */
-        "NUMPAD3": string;
+        NUMPAD3: string;
         /** The numpad four key. */
-        "NUMPAD4": string;
+        NUMPAD4: string;
         /** The numpad five key. */
-        "NUMPAD5": string;
+        NUMPAD5: string;
         /** The numpad six key. */
-        "NUMPAD6": string;
+        NUMPAD6: string;
         /** The numpad seven key. */
-        "NUMPAD7": string;
+        NUMPAD7: string;
         /** The numpad eight key. */
-        "NUMPAD8": string;
+        NUMPAD8: string;
         /** The numpad nine key. */
-        "NUMPAD9": string;
+        NUMPAD9: string;
 
         /** The numpad multiply (*) key. */
-        "MULTIPLY": string;
+        MULTIPLY: string;
         /** The numpad add (+) key. */
-        "ADD": string;
+        ADD: string;
         /** The numpad separator (=) key. */
-        "SEPARATOR": string;
+        SEPARATOR: string;
         /** The numpad subtract (-) key. */
-        "SUBTRACT": string;
+        SUBTRACT: string;
         /** The numpad decimal (.) key. */
-        "DECIMAL": string;
+        DECIMAL: string;
         /** The numpad divide (/) key. */
-        "DIVIDE": string;
+        DIVIDE: string;
 
         /** The F1 key. */
-        "F1": string;
+        F1: string;
         /** The F2 key. */
-        "F2": string;
+        F2: string;
         /** The F3 key. */
-        "F3": string;
+        F3: string;
         /** The F4 key. */
-        "F4": string;
+        F4: string;
         /** The F5 key. */
-        "F5": string;
+        F5: string;
         /** The F6 key. */
-        "F6": string;
+        F6: string;
         /** The F7 key. */
-        "F7": string;
+        F7: string;
         /** The F8 key. */
-        "F8": string;
+        F8: string;
         /** The F9 key. */
-        "F9": string;
+        F9: string;
         /** The F10 key. */
-        "F10": string;
+        F10: string;
         /** The F11 key. */
-        "F11": string;
+        F11: string;
         /** The F12 key. */
-        "F12": string;
+        F12: string;
         /** The meta (Windows) key. */
-        "META": string;
+        META: string;
         /** The command (⌘) key. */
-        "COMMAND": string;
+        COMMAND: string;
         /** The zenkaku/hankaku key. */
-        "ZENKAKU_HANKAKU": string;
+        ZENKAKU_HANKAKU: string;
 
         "\uE000": string;
         "\uE001": string;
@@ -2282,7 +2342,11 @@ declare module "leadfoot/Server" {
          *
          * @param pathParts Optional placeholder values to inject into the path of the URL.
          */
-        protected _get(path: string, requestData: {}, pathParts?: string[]): Promise<{}>;
+        protected _get(
+            path: string,
+            requestData: {},
+            pathParts?: string[],
+        ): Promise<{}>;
 
         /**
          * A function that performs an HTTP request to a JsonWireProtocol endpoint and normalises response status and
@@ -2297,7 +2361,11 @@ declare module "leadfoot/Server" {
          *
          * @param pathParts Optional placeholder values to inject into the path of the URL.
          */
-        protected _post(path: string, requestData: {}, pathParts?: string[]): Promise<{}>;
+        protected _post(
+            path: string,
+            requestData: {},
+            pathParts?: string[],
+        ): Promise<{}>;
 
         /**
          * A function that performs an HTTP request to a JsonWireProtocol endpoint and normalises response status and
@@ -2312,7 +2380,11 @@ declare module "leadfoot/Server" {
          *
          * @param pathParts Optional placeholder values to inject into the path of the URL.
          */
-        protected _delete(path: string, requestData: {}, pathParts?: string[]): Promise<{}>;
+        protected _delete(
+            path: string,
+            requestData: {},
+            pathParts?: string[],
+        ): Promise<{}>;
 
         /**
          * Gets the status of the remote server.
@@ -2357,7 +2429,9 @@ declare module "leadfoot/Server" {
          *
          * @param sessionId
          */
-        getSessionCapabilities(sessionId: string): Promise<leadfoot.Capabilities>;
+        getSessionCapabilities(
+            sessionId: string,
+        ): Promise<leadfoot.Capabilities>;
 
         /**
          * Terminates a session on the server.
@@ -2384,7 +2458,11 @@ declare module "leadfoot/Session" {
          * @param server The server that the session belongs to.
          * @param capabilities A map of bugs and features that the remote environment exposes.
          */
-        constructor(sessionId: string, server: Server, capabilities: leadfoot.Capabilities);
+        constructor(
+            sessionId: string,
+            server: Server,
+            capabilities: leadfoot.Capabilities,
+        );
 
         /**
          * Information about the available features and bugs in the remote environment.
@@ -2416,7 +2494,11 @@ declare module "leadfoot/Session" {
          *
          * @param pathParts Optional placeholder values to inject into the path of the URL.
          */
-        protected _get(path: string, requestData: {}, pathParts?: string[]): Promise<{}>;
+        protected _get(
+            path: string,
+            requestData: {},
+            pathParts?: string[],
+        ): Promise<{}>;
 
         /**
          * A function that performs an HTTP request to a JsonWireProtocol endpoint and normalises response status and
@@ -2431,7 +2513,11 @@ declare module "leadfoot/Session" {
          *
          * @param pathParts Optional placeholder values to inject into the path of the URL.
          */
-        protected _post(path: string, requestData: {}, pathParts?: string[]): Promise<{}>;
+        protected _post(
+            path: string,
+            requestData: {},
+            pathParts?: string[],
+        ): Promise<{}>;
 
         /**
          * A function that performs an HTTP request to a JsonWireProtocol endpoint and normalises response status and
@@ -2446,7 +2532,11 @@ declare module "leadfoot/Session" {
          *
          * @param pathParts Optional placeholder values to inject into the path of the URL.
          */
-        protected _delete(path: string, requestData: {}, pathParts?: string[]): Promise<{}>;
+        protected _delete(
+            path: string,
+            requestData: {},
+            pathParts?: string[],
+        ): Promise<{}>;
 
         /**
          * Gets the current value of a timeout for the session.
@@ -2630,7 +2720,11 @@ declare module "leadfoot/Session" {
          * @param height
          * The new height of the window, in CSS pixels.
          */
-        setWindowSize(windowHandle: string, width: number, height: number): Promise<void>;
+        setWindowSize(
+            windowHandle: string,
+            width: number,
+            height: number,
+        ): Promise<void>;
         setWindowSize(width: number, height: number): Promise<void>;
 
         /**
@@ -2643,7 +2737,9 @@ declare module "leadfoot/Session" {
          * @returns
          * An object describing the width and height of the window, in CSS pixels.
          */
-        getWindowSize(windowHandle?: string): Promise<{ width: number; height: number }>;
+        getWindowSize(
+            windowHandle?: string,
+        ): Promise<{ width: number; height: number }>;
 
         /**
          * Sets the position of a window.
@@ -2658,7 +2754,11 @@ declare module "leadfoot/Session" {
          * @param y
          * The screen y-coordinate to move to, in CSS pixels, relative to the top edge of the primary monitor.
          */
-        setWindowPosition(windowHandle: string, x: number, y: number): Promise<void>;
+        setWindowPosition(
+            windowHandle: string,
+            x: number,
+            y: number,
+        ): Promise<void>;
         setWindowPosition(x: number, y: number): Promise<void>;
 
         /**
@@ -2673,7 +2773,9 @@ declare module "leadfoot/Session" {
          * primary monitor. If a secondary monitor exists above or to the left of the primary monitor, these values
          * will be negative.
          */
-        getWindowPosition(windowHandle?: string): Promise<{ x: number; y: number }>;
+        getWindowPosition(
+            windowHandle?: string,
+        ): Promise<{ x: number; y: number }>;
 
         /**
          * Maximises a window according to the platform’s window system behaviour.
@@ -2818,7 +2920,11 @@ declare module "leadfoot/Session" {
          * client rectangle. If no element is specified, the offset is relative to the previous position of the mouse,
          * or to the top edge of the page’s root element if the mouse was never moved before.
          */
-        moveMouseTo(element: Element, xOffset?: number, yOffset?: number): Promise<void>;
+        moveMouseTo(
+            element: Element,
+            xOffset?: number,
+            yOffset?: number,
+        ): Promise<void>;
         moveMouseTo(xOffset: number, yOffset: number): Promise<void>;
 
         /**
@@ -2897,7 +3003,11 @@ declare module "leadfoot/Session" {
          * An optional y-offset, relative to the top edge of the element, in CSS pixels. If no element is specified,
          * the offset is relative to the previous scroll position of the window.
          */
-        touchScroll(element: Element, xOffset: number, yOffset: number): Promise<void>;
+        touchScroll(
+            element: Element,
+            xOffset: number,
+            yOffset: number,
+        ): Promise<void>;
         touchScroll(xOffset: number, yOffset: number): Promise<void>;
 
         /**
@@ -2924,7 +3034,12 @@ declare module "leadfoot/Session" {
          * @param speed The speed of the flick, in pixels per *second*. Most human flicks are 100–200ms, so
          * this value will be higher than expected.
          */
-        flickFinger(element: Element, xOffset: number, yOffset: number, speed: number): Promise<void>;
+        flickFinger(
+            element: Element,
+            xOffset: number,
+            yOffset: number,
+            speed: number,
+        ): Promise<void>;
 
         /**
          * Gets the current geographical location of the remote environment.

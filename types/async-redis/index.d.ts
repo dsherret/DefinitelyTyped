@@ -128,14 +128,32 @@ interface Commands {
     /**
      * Perform bitwise operations between strings.
      */
-    bitop(operation: string, destkey: string, ...args: string[]): Promise<number>;
-    BITOP(operation: string, destkey: string, ...args: string[]): Promise<number>;
+    bitop(
+        operation: string,
+        destkey: string,
+        ...args: string[]
+    ): Promise<number>;
+    BITOP(
+        operation: string,
+        destkey: string,
+        ...args: string[]
+    ): Promise<number>;
 
     /**
      * Find first bit set or clear in a string.
      */
-    bitpos(key: string, bit: number, start?: number, end?: number): Promise<number>;
-    BITPOS(key: string, bit: number, start?: number, end?: number): Promise<number>;
+    bitpos(
+        key: string,
+        bit: number,
+        start?: number,
+        end?: number,
+    ): Promise<number>;
+    BITPOS(
+        key: string,
+        bit: number,
+        start?: number,
+        end?: number,
+    ): Promise<number>;
 
     /**
      * Remove and get the first element in a list, or block until one is available.
@@ -152,8 +170,16 @@ interface Commands {
     /**
      * Pop a value from a list, push it to another list and return it; or block until one is available.
      */
-    brpoplpush(source: string, destination: string, timeout: number): Promise<string | null>;
-    BRPOPLPUSH(source: string, destination: string, timeout: number): Promise<string | null>;
+    brpoplpush(
+        source: string,
+        destination: string,
+        timeout: number,
+    ): Promise<string | null>;
+    BRPOPLPUSH(
+        source: string,
+        destination: string,
+        timeout: number,
+    ): Promise<string | null>;
 
     /**
      * ADDSLOTS - Assign new hash slots to receiving node.
@@ -322,14 +348,26 @@ interface Commands {
     /**
      * Query a sorted set representing a geospatial index to fetch members matching a given maximum distance from a point.
      */
-    georadius: OverloadedKeyCommand<string | number, Array<string | [string, string | [string, string]]>>;
-    GEORADIUS: OverloadedKeyCommand<string | number, Array<string | [string, string | [string, string]]>>;
+    georadius: OverloadedKeyCommand<
+        string | number,
+        Array<string | [string, string | [string, string]]>
+    >;
+    GEORADIUS: OverloadedKeyCommand<
+        string | number,
+        Array<string | [string, string | [string, string]]>
+    >;
 
     /**
      * Query a sorted set representing a geospatial index to fetch members matching a given maximum distance from a member.
      */
-    georadiusbymember: OverloadedKeyCommand<string | number, Array<string | [string, string | [string, string]]>>;
-    GEORADIUSBYMEMBER: OverloadedKeyCommand<string | number, Array<string | [string, string | [string, string]]>>;
+    georadiusbymember: OverloadedKeyCommand<
+        string | number,
+        Array<string | [string, string | [string, string]]>
+    >;
+    GEORADIUSBYMEMBER: OverloadedKeyCommand<
+        string | number,
+        Array<string | [string, string | [string, string]]>
+    >;
 
     /**
      * Get the value of a key.
@@ -388,8 +426,16 @@ interface Commands {
     /**
      * Increment the float value of a hash field by the given amount.
      */
-    hincrbyfloat(key: string, field: string, increment: number): Promise<string>;
-    HINCRBYFLOAT(key: string, field: string, increment: number): Promise<string>;
+    hincrbyfloat(
+        key: string,
+        field: string,
+        increment: number,
+    ): Promise<string>;
+    HINCRBYFLOAT(
+        key: string,
+        field: string,
+        increment: number,
+    ): Promise<string>;
 
     /**
      * Get all the fields of a hash.
@@ -472,8 +518,18 @@ interface Commands {
     /**
      * Insert an element before or after another element in a list.
      */
-    linsert(key: string, dir: "BEFORE" | "AFTER", pivot: string, value: string): Promise<string>;
-    LINSERT(key: string, dir: "BEFORE" | "AFTER", pivot: string, value: string): Promise<string>;
+    linsert(
+        key: string,
+        dir: "BEFORE" | "AFTER",
+        pivot: string,
+        value: string,
+    ): Promise<string>;
+    LINSERT(
+        key: string,
+        dir: "BEFORE" | "AFTER",
+        pivot: string,
+        value: string,
+    ): Promise<string>;
 
     /**
      * Get the length of a list.
@@ -735,11 +791,35 @@ interface Commands {
      * Set the string value of a key.
      */
     set(key: string, value: string, flag?: string): Promise<"OK">;
-    set(key: string, value: string, mode: string, duration: number, flag?: string): Promise<"OK" | undefined>;
-    set(key: string, value: string, flag: string, mode: string, duration: number): Promise<"OK" | undefined>;
+    set(
+        key: string,
+        value: string,
+        mode: string,
+        duration: number,
+        flag?: string,
+    ): Promise<"OK" | undefined>;
+    set(
+        key: string,
+        value: string,
+        flag: string,
+        mode: string,
+        duration: number,
+    ): Promise<"OK" | undefined>;
     SET(key: string, value: string, flag?: string): Promise<"OK">;
-    SET(key: string, value: string, mode: string, duration: number, flag?: string): Promise<"OK" | undefined>;
-    SET(key: string, value: string, flag: string, mode: string, duration: number): Promise<"OK" | undefined>;
+    SET(
+        key: string,
+        value: string,
+        mode: string,
+        duration: number,
+        flag?: string,
+    ): Promise<"OK" | undefined>;
+    SET(
+        key: string,
+        value: string,
+        flag: string,
+        mode: string,
+        duration: number,
+    ): Promise<"OK" | undefined>;
 
     /**
      * Sets or clears the bit at offset in the string value stored at key.
@@ -798,8 +878,14 @@ interface Commands {
     /**
      * Manages the Redis slow queries log.
      */
-    slowlog: OverloadedCommand<string, Array<[number, number, number, string[]]>>;
-    SLOWLOG: OverloadedCommand<string, Array<[number, number, number, string[]]>>;
+    slowlog: OverloadedCommand<
+        string,
+        Array<[number, number, number, string[]]>
+    >;
+    SLOWLOG: OverloadedCommand<
+        string,
+        Array<[number, number, number, string[]]>
+    >;
 
     /**
      * Get all the members in a set.
@@ -924,8 +1010,16 @@ interface Commands {
     /**
      * Count the members in a sorted set with scores between the given values.
      */
-    zcount(key: string, min: number | string, max: number | string): Promise<number>;
-    ZCOUNT(key: string, min: number | string, max: number | string): Promise<number>;
+    zcount(
+        key: string,
+        min: number | string,
+        max: number | string,
+    ): Promise<number>;
+    ZCOUNT(
+        key: string,
+        min: number | string,
+        max: number | string,
+    ): Promise<number>;
 
     /**
      * Increment the score of a member in a sorted set.
@@ -948,16 +1042,40 @@ interface Commands {
     /**
      * Return a range of members in a sorted set, by index.
      */
-    zrange(key: string, start: number, stop: number, withscores?: string): Promise<string[]>;
-    ZRANGE(key: string, start: number, stop: number, withscores?: string): Promise<string[]>;
+    zrange(
+        key: string,
+        start: number,
+        stop: number,
+        withscores?: string,
+    ): Promise<string[]>;
+    ZRANGE(
+        key: string,
+        start: number,
+        stop: number,
+        withscores?: string,
+    ): Promise<string[]>;
 
     /**
      * Return a range of members in a sorted set, by lexicographical range.
      */
     zrangebylex(key: string, min: string, max: string): Promise<string[]>;
-    zrangebylex(key: string, min: string, max: string, limit: string, offset: number, count: number): Promise<string[]>;
+    zrangebylex(
+        key: string,
+        min: string,
+        max: string,
+        limit: string,
+        offset: number,
+        count: number,
+    ): Promise<string[]>;
     ZRANGEBYLEX(key: string, min: string, max: string): Promise<string[]>;
-    ZRANGEBYLEX(key: string, min: string, max: string, limit: string, offset: number, count: number): Promise<string[]>;
+    ZRANGEBYLEX(
+        key: string,
+        min: string,
+        max: string,
+        limit: string,
+        offset: number,
+        count: number,
+    ): Promise<string[]>;
 
     /**
      * Return a range of members in a sorted set, by lexicographical range, ordered from higher to lower strings.
@@ -984,7 +1102,12 @@ interface Commands {
     /**
      * Return a range of members in a sorted set, by score.
      */
-    zrangebyscore(key: string, min: number | string, max: number | string, withscores?: string): Promise<string[]>;
+    zrangebyscore(
+        key: string,
+        min: number | string,
+        max: number | string,
+        withscores?: string,
+    ): Promise<string[]>;
     zrangebyscore(
         key: string,
         min: number | string,
@@ -994,7 +1117,12 @@ interface Commands {
         offset: number,
         count?: number,
     ): Promise<string[]>;
-    ZRANGEBYSCORE(key: string, min: number | string, max: number | string, withscores?: string): Promise<string[]>;
+    ZRANGEBYSCORE(
+        key: string,
+        min: number | string,
+        max: number | string,
+        withscores?: string,
+    ): Promise<string[]>;
     ZRANGEBYSCORE(
         key: string,
         min: number | string,
@@ -1032,19 +1160,42 @@ interface Commands {
     /**
      * Remove all members in a sorted set within the given indexes.
      */
-    zremrangebyscore(key: string, min: string | number, max: string | number): Promise<number>;
-    ZREMRANGEBYSCORE(key: string, min: string | number, max: string | number): Promise<number>;
+    zremrangebyscore(
+        key: string,
+        min: string | number,
+        max: string | number,
+    ): Promise<number>;
+    ZREMRANGEBYSCORE(
+        key: string,
+        min: string | number,
+        max: string | number,
+    ): Promise<number>;
 
     /**
      * Return a range of members in a sorted set, by index, with scores ordered from high to low.
      */
-    zrevrange(key: string, start: number, stop: number, withscores?: string): Promise<string[]>;
-    ZREVRANGE(key: string, start: number, stop: number, withscores?: string): Promise<string[]>;
+    zrevrange(
+        key: string,
+        start: number,
+        stop: number,
+        withscores?: string,
+    ): Promise<string[]>;
+    ZREVRANGE(
+        key: string,
+        start: number,
+        stop: number,
+        withscores?: string,
+    ): Promise<string[]>;
 
     /**
      * Return a range of members in a sorted set, by score, with scores ordered from high to low.
      */
-    zrevrangebyscore(key: string, min: number | string, max: number | string, withscores?: string): Promise<string[]>;
+    zrevrangebyscore(
+        key: string,
+        min: number | string,
+        max: number | string,
+        withscores?: string,
+    ): Promise<string[]>;
     zrevrangebyscore(
         key: string,
         min: number | string,
@@ -1062,7 +1213,12 @@ interface Commands {
         offset: number,
         count: number,
     ): Promise<string[]>;
-    ZREVRANGEBYSCORE(key: string, min: number | string, max: number | string, withscores?: string): Promise<string[]>;
+    ZREVRANGEBYSCORE(
+        key: string,
+        min: number | string,
+        max: number | string,
+        withscores?: string,
+    ): Promise<string[]>;
     ZREVRANGEBYSCORE(
         key: string,
         min: number | string,
@@ -1127,12 +1283,16 @@ interface Commands {
 interface AsyncRedisClient extends Omitted, Commands {}
 
 interface AsyncRedisConstructor {
-    new(port: number, host?: string, options?: ClientOpts): AsyncRedisClient;
-    new(unix_socket: string, options?: ClientOpts): AsyncRedisClient;
-    new(redis_url: string, options?: ClientOpts): AsyncRedisClient;
-    new(options?: ClientOpts): AsyncRedisClient;
+    new (port: number, host?: string, options?: ClientOpts): AsyncRedisClient;
+    new (unix_socket: string, options?: ClientOpts): AsyncRedisClient;
+    new (redis_url: string, options?: ClientOpts): AsyncRedisClient;
+    new (options?: ClientOpts): AsyncRedisClient;
 
-    createClient(port: number, host?: string, options?: ClientOpts): AsyncRedisClient;
+    createClient(
+        port: number,
+        host?: string,
+        options?: ClientOpts,
+    ): AsyncRedisClient;
     createClient(unix_socket: string, options?: ClientOpts): AsyncRedisClient;
     createClient(redis_url: string, options?: ClientOpts): AsyncRedisClient;
     createClient(options?: ClientOpts): AsyncRedisClient;

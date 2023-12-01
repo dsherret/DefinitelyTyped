@@ -26,32 +26,96 @@ const columns: Array<Column<Data>> = [
             {
                 Header: "Age",
                 accessor: (data: Data) => data.age,
-                Cell: props => <span className="number">{props.value}</span>,
+                Cell: (props) => <span className="number">{props.value}</span>,
             },
             { Header: "Status", accessor: "status" },
         ],
     },
     {
         Header: "Stats",
-        columns: [
-            { Header: "Visits", accessor: "visits" },
-        ],
+        columns: [{ Header: "Visits", accessor: "visits" }],
     },
 ];
 
 const Component = (props: {}) => {
     const data: Data[] = [
-        { firstName: "plastic", lastName: "leather", age: 1, visits: 87, progress: 53 },
-        { firstName: "eggs", lastName: "quartz", age: 13, visits: 78, progress: 82 },
-        { firstName: "wash", lastName: "wrench", age: 29, visits: 75, progress: 49 },
-        { firstName: "introduction", lastName: "impression", age: 2, visits: 35, progress: 51 },
-        { firstName: "steel", lastName: "difference", age: 9, visits: 64, progress: 94 },
-        { firstName: "snakes", lastName: "corn", age: 17, visits: 55, progress: 47 },
-        { firstName: "ocean", lastName: "definition", age: 26, visits: 17, progress: 22 },
-        { firstName: "drawing", lastName: "fifth", age: 15, visits: 84, progress: 12 },
-        { firstName: "silver", lastName: "riddle", age: 15, visits: 59, progress: 24 },
-        { firstName: "surprise", lastName: "zinc", age: 23, visits: 7, progress: 48 },
-        { firstName: "riddle", lastName: "information", age: 2, visits: 63, progress: 3 },
+        {
+            firstName: "plastic",
+            lastName: "leather",
+            age: 1,
+            visits: 87,
+            progress: 53,
+        },
+        {
+            firstName: "eggs",
+            lastName: "quartz",
+            age: 13,
+            visits: 78,
+            progress: 82,
+        },
+        {
+            firstName: "wash",
+            lastName: "wrench",
+            age: 29,
+            visits: 75,
+            progress: 49,
+        },
+        {
+            firstName: "introduction",
+            lastName: "impression",
+            age: 2,
+            visits: 35,
+            progress: 51,
+        },
+        {
+            firstName: "steel",
+            lastName: "difference",
+            age: 9,
+            visits: 64,
+            progress: 94,
+        },
+        {
+            firstName: "snakes",
+            lastName: "corn",
+            age: 17,
+            visits: 55,
+            progress: 47,
+        },
+        {
+            firstName: "ocean",
+            lastName: "definition",
+            age: 26,
+            visits: 17,
+            progress: 22,
+        },
+        {
+            firstName: "drawing",
+            lastName: "fifth",
+            age: 15,
+            visits: 84,
+            progress: 12,
+        },
+        {
+            firstName: "silver",
+            lastName: "riddle",
+            age: 15,
+            visits: 59,
+            progress: 24,
+        },
+        {
+            firstName: "surprise",
+            lastName: "zinc",
+            age: 23,
+            visits: 7,
+            progress: 48,
+        },
+        {
+            firstName: "riddle",
+            lastName: "information",
+            age: 2,
+            visits: 63,
+            progress: 3,
+        },
     ];
     return (
         <div>
@@ -81,13 +145,15 @@ const Component = (props: {}) => {
                 defaultExpanded={{}}
                 defaultFilterMethod={(filter, row, column) => {
                     const id = filter.pivotId || filter.id;
-                    return row[id] !== undefined ? String(row[id]).startsWith(filter.value) : true;
+                    return row[id] !== undefined
+                        ? String(row[id]).startsWith(filter.value)
+                        : true;
                 }}
                 columns={columns}
                 defaultSortMethod={(a, b, desc) => {
                     // force null and undefined to the bottom
-                    a = (a === null || a === undefined) ? -Infinity : a;
-                    b = (b === null || b === undefined) ? -Infinity : b;
+                    a = a === null || a === undefined ? -Infinity : a;
+                    b = b === null || b === undefined ? -Infinity : b;
                     // force any string values to lowercase
                     a = a === "string" ? a.toLowerCase() : a;
                     b = b === "string" ? b.toLowerCase() : b;
@@ -181,10 +247,14 @@ const Component = (props: {}) => {
                             }}
                         >
                             <pre>
-                <code>
-                  state.allVisibleColumns ==={" "}
-                  {JSON.stringify(state.allVisibleColumns, null, 4)}
-                </code>
+                                <code>
+                                    state.allVisibleColumns ==={" "}
+                                    {JSON.stringify(
+                                        state.allVisibleColumns,
+                                        null,
+                                        4,
+                                    )}
+                                </code>
                             </pre>
                             {makeTable()}
                         </div>

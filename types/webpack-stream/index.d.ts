@@ -17,5 +17,4 @@ declare function webpackStream(
     callback?: webpack.Compiler.Handler,
 ): NodeJS.ReadWriteStream;
 
-declare namespace webpackStream {
-}
+declare namespace webpackStream {}

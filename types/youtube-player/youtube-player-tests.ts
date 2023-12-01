@@ -36,7 +36,9 @@ const player: YouTubePlayer = youTubePlayerFactory(
         events: {
             ready: (event: CustomEvent): void => {},
             stateChange: async (event: CustomEvent): Promise<void> => {
-                console.log((await player.getPlayerState()) === PlayerStates.PLAYING);
+                console.log(
+                    (await player.getPlayerState()) === PlayerStates.PLAYING,
+                );
             },
             playbackQualityChange: (event: CustomEvent): void => {},
             playbackRateChange: (event: CustomEvent): void => {},

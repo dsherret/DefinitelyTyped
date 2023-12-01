@@ -4,8 +4,8 @@ import * as streamBuffers from "stream-buffers";
 // https://github.com/samcday/node-stream-buffer
 
 const myWritableStreamBuffer = new streamBuffers.WritableStreamBuffer({
-    initialSize: (100 * 1024), // start at 100 kilobytes.
-    incrementAmount: (10 * 1024), // grow by 10 kilobytes each time buffer overflows.
+    initialSize: 100 * 1024, // start at 100 kilobytes.
+    incrementAmount: 10 * 1024, // grow by 10 kilobytes each time buffer overflows.
 });
 
 const a = streamBuffers.DEFAULT_INITIAL_SIZE; // (8 * 1024)
@@ -23,13 +23,18 @@ myWritableStreamBuffer.maxSize();
 const contents: Buffer = myWritableStreamBuffer.getContents() as Buffer;
 
 // Gets all held data as a utf8 string.
-const stringContents: string = myWritableStreamBuffer.getContentsAsString("utf8") as string;
+const stringContents: string = myWritableStreamBuffer.getContentsAsString(
+    "utf8",
+) as string;
 
 // Gets first 5 bytes as a Buffer.
 const contents2: Buffer = myWritableStreamBuffer.getContents(5) as Buffer;
 
 // Gets first 5 bytes as a utf8 string.
-const stringContents2: string = myWritableStreamBuffer.getContentsAsString("utf8", 5) as string;
+const stringContents2: string = myWritableStreamBuffer.getContentsAsString(
+    "utf8",
+    5,
+) as string;
 
 const myReadableStreamBuffer = new streamBuffers.ReadableStreamBuffer({
     frequency: 10, // in milliseconds.
@@ -49,5 +54,7 @@ myReadableStreamBuffer.stop();
 
 // Test empty buffer
 const myWritableEmptyStreamBuffer = new streamBuffers.WritableStreamBuffer();
-const emptyContents: boolean = myWritableEmptyStreamBuffer.getContents() as boolean;
-const emptyContentsString: boolean = myWritableEmptyStreamBuffer.getContentsAsString() as boolean;
+const emptyContents: boolean =
+    myWritableEmptyStreamBuffer.getContents() as boolean;
+const emptyContentsString: boolean =
+    myWritableEmptyStreamBuffer.getContentsAsString() as boolean;

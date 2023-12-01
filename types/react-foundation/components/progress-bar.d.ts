@@ -10,7 +10,9 @@ import { FlexboxPropTypes, GeneralPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const Progress: React.FunctionComponent<PaginationProps>;
-export interface PaginationProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface PaginationProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     min?: number | undefined;
     max?: number | undefined;
     value?: number | undefined;
@@ -25,8 +27,9 @@ export interface PaginationProps extends FlexboxPropTypes, React.HTMLAttributes<
  * @returns {Object}
  */
 export declare const ProgressMeter: React.FunctionComponent<ProgressMeterProps>;
-export interface ProgressMeterProps extends GeneralPropTypes, React.HTMLAttributes<HTMLDivElement> {
-}
+export interface ProgressMeterProps
+    extends GeneralPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {}
 /**
  * Progress meter with text sub-component.
  *
@@ -34,7 +37,9 @@ export interface ProgressMeterProps extends GeneralPropTypes, React.HTMLAttribut
  * @returns {Object}
  */
 export declare const ProgressMeterWithText: React.FunctionComponent<ProgressMeterWithTextProps>;
-export interface ProgressMeterWithTextProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLSpanElement> {
+export interface ProgressMeterWithTextProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLSpanElement> {
     text: string;
 }
 /**
@@ -44,7 +49,9 @@ export interface ProgressMeterWithTextProps extends FlexboxPropTypes, React.HTML
  * @returns {Object}
  */
 export declare const ProgressMeterText: React.FunctionComponent<ProgressMeterTextProps>;
-export interface ProgressMeterTextProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLParagraphElement> {
+export interface ProgressMeterTextProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLParagraphElement> {
     children?: string | undefined;
 }
 /**
@@ -54,7 +61,9 @@ export interface ProgressMeterTextProps extends FlexboxPropTypes, React.HTMLAttr
  * @returns {Object}
  */
 export declare const NativeProgress: React.FunctionComponent<NativeProgressProps>;
-export interface NativeProgressProps extends FlexboxPropTypes, React.ProgressHTMLAttributes<HTMLProgressElement> {
+export interface NativeProgressProps
+    extends FlexboxPropTypes,
+        React.ProgressHTMLAttributes<HTMLProgressElement> {
     max?: number | undefined;
     value?: number | undefined;
     color?: ProgressColors | undefined;

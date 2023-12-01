@@ -5,11 +5,17 @@ import printBuildError = require("react-dev-utils/printBuildError");
 import WebpackDevServerUtils = require("react-dev-utils/WebpackDevServerUtils");
 import getCSSModuleLocalIdent = require("react-dev-utils/getCSSModuleLocalIdent");
 
-FileSizeReporter.measureFileSizesBeforeBuild("src").then(previousFileSizes => {
-    webpack().run((err, webpackStats) => {
-        FileSizeReporter.printFileSizesAfterBuild(webpackStats, previousFileSizes, "src");
-    });
-});
+FileSizeReporter.measureFileSizesBeforeBuild("src").then(
+    (previousFileSizes) => {
+        webpack().run((err, webpackStats) => {
+            FileSizeReporter.printFileSizesAfterBuild(
+                webpackStats,
+                previousFileSizes,
+                "src",
+            );
+        });
+    },
+);
 
 webpack().run((err, stats) => {
     const rawMessages = stats.toJson();
@@ -19,12 +25,12 @@ webpack().run((err, stats) => {
     }
     if (messages.errors.length) {
         console.log("Failed to compile.");
-        messages.errors.forEach(e => console.log(e));
+        messages.errors.forEach((e) => console.log(e));
         return;
     }
     if (messages.warnings.length) {
         console.log("Compiled with warnings.");
-        messages.warnings.forEach(w => console.log(w));
+        messages.warnings.forEach((w) => console.log(w));
     }
 });
 
@@ -39,7 +45,13 @@ WebpackDevServerUtils.choosePort("localhost", 3000);
 const urls = WebpackDevServerUtils.prepareUrls("http", "localhost", 3000);
 
 // $ExpectType Compiler
-WebpackDevServerUtils.createCompiler({ webpack, config: {}, appName: "app", urls, useYarn: true });
+WebpackDevServerUtils.createCompiler({
+    webpack,
+    config: {},
+    appName: "app",
+    urls,
+    useYarn: true,
+});
 
 // $ExpectType ProxyConfigArrayItem[] || ProxyConfigArray
 WebpackDevServerUtils.prepareProxy(undefined, "build", "/test");

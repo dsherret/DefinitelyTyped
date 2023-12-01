@@ -29,18 +29,39 @@ declare class LatLonNvectorSpherical {
     initialBearingTo(point: LatLonNvectorSpherical): number;
     finalBearingTo(point: LatLonNvectorSpherical): number;
     midpointTo(point: LatLonNvectorSpherical): LatLonNvectorSpherical;
-    intermediatePointTo(point: LatLonNvectorSpherical, fraction: number): LatLonNvectorSpherical;
-    destinationPoint(distance: number, bearing: number, radius?: number): LatLonNvectorSpherical;
+    intermediatePointTo(
+        point: LatLonNvectorSpherical,
+        fraction: number,
+    ): LatLonNvectorSpherical;
+    destinationPoint(
+        distance: number,
+        bearing: number,
+        radius?: number,
+    ): LatLonNvectorSpherical;
     static intersection(
         path1start: LatLonNvectorSpherical,
         path1brngEnd: PathBrngEnd,
         path2start: LatLonNvectorSpherical,
         path2brngEnd: PathBrngEnd,
     ): LatLonNvectorSpherical;
-    crossTrackDistanceTo(pathStart: LatLonNvectorSpherical, pathBrngEnd: PathBrngEnd, radius?: number): number;
-    alongTrackDistanceTo(pathStart: LatLonNvectorSpherical, pathBrngEnd: PathBrngEnd, radius?: number): number;
-    nearestPointOnSegment(point1: LatLonNvectorSpherical, point2: LatLonNvectorSpherical): LatLonNvectorSpherical;
-    isWithinExtent(point1: LatLonNvectorSpherical, point2: LatLonNvectorSpherical): boolean;
+    crossTrackDistanceTo(
+        pathStart: LatLonNvectorSpherical,
+        pathBrngEnd: PathBrngEnd,
+        radius?: number,
+    ): number;
+    alongTrackDistanceTo(
+        pathStart: LatLonNvectorSpherical,
+        pathBrngEnd: PathBrngEnd,
+        radius?: number,
+    ): number;
+    nearestPointOnSegment(
+        point1: LatLonNvectorSpherical,
+        point2: LatLonNvectorSpherical,
+    ): LatLonNvectorSpherical;
+    isWithinExtent(
+        point1: LatLonNvectorSpherical,
+        point2: LatLonNvectorSpherical,
+    ): boolean;
     static triangulate(
         point1: LatLonNvectorSpherical,
         bearing1: number,
@@ -57,8 +78,13 @@ declare class LatLonNvectorSpherical {
         radius?: number,
     ): LatLonNvectorSpherical;
     isEnclosedBy(polygon: Polygon<LatLonNvectorSpherical>): boolean;
-    static areaOf(polygon: Polygon<LatLonNvectorSpherical>, radius?: number): number;
-    static meanOf(points: Polygon<LatLonNvectorSpherical>): LatLonNvectorSpherical;
+    static areaOf(
+        polygon: Polygon<LatLonNvectorSpherical>,
+        radius?: number,
+    ): number;
+    static meanOf(
+        points: Polygon<LatLonNvectorSpherical>,
+    ): LatLonNvectorSpherical;
     equals(point: LatLonNvectorSpherical): boolean;
     toGeoJSON(): GeoJSON;
     toString(format?: Format, dp?: Dp): string;

@@ -10,7 +10,11 @@ interface HtmlReplaceWebpackPluginOption {
 }
 
 declare class HtmlReplaceWebpackPlugin extends Plugin {
-    constructor(options: HtmlReplaceWebpackPluginOption | HtmlReplaceWebpackPluginOption[]);
+    constructor(
+        options:
+            | HtmlReplaceWebpackPluginOption
+            | HtmlReplaceWebpackPluginOption[],
+    );
 }
 
 export = HtmlReplaceWebpackPlugin;

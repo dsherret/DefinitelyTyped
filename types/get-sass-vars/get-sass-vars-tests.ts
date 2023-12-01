@@ -11,9 +11,7 @@ import sassVars = require("get-sass-vars");
             camelize: true,
             sassOptions: {
                 data: "",
-                includePaths: [
-                    "/workspace/src/scss",
-                ],
+                includePaths: ["/workspace/src/scss"],
             },
         },
     );

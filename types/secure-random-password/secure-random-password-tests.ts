@@ -29,7 +29,10 @@ import * as srp from "secure-random-password";
     });
     srp.randomPassword({ avoidAmbiguous: false, characters: "O0o" });
     srp.randomPassword({ characters: "abc" });
-    srp.randomPassword({ characters: srp.lower, predicate: (x: string) => !x.includes("secure") });
+    srp.randomPassword({
+        characters: srp.lower,
+        predicate: (x: string) => !x.includes("secure"),
+    });
 
     srp.randomString();
     srp.randomString({ length: 8 });

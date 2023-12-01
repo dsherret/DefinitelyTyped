@@ -18,7 +18,9 @@ export namespace i18nextFsBackend {
     }
 }
 
-export default class Backend implements BackendModule<i18nextFsBackend.i18nextFsBackendOptions> {
+export default class Backend
+    implements BackendModule<i18nextFsBackend.i18nextFsBackendOptions>
+{
     type: "backend";
     constructor(
         services: Services,
@@ -31,11 +33,22 @@ export default class Backend implements BackendModule<i18nextFsBackend.i18nextFs
         i18nextOptions: InitOptions,
     ): void;
     read(language: string, namespace: string, callback: ReadCallback): void;
-    create(languages: string[], namespace: string, key: string, fallbackValue: string): void;
+    create(
+        languages: string[],
+        namespace: string,
+        key: string,
+        fallbackValue: string,
+    ): void;
 
     write(): void;
     writeFile(lng: string, namespace: string): void;
-    queue(lng: string, namespace: string, key: string, fallbackValue: string, callback: unknown): void;
+    queue(
+        lng: string,
+        namespace: string,
+        key: string,
+        fallbackValue: string,
+        callback: unknown,
+    ): void;
 
     static type: "backend";
 }

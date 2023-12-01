@@ -16,7 +16,11 @@ export interface FilterStatic<TElement = HTMLElement> {
      * @param forceStart
      * A value indicating whether a new search should be performed after adding the controls.
      */
-    bindSearch(table: JQuery<TElement> | TElement, controls: JQuery, forceStart: boolean): void;
+    bindSearch(
+        table: JQuery<TElement> | TElement,
+        controls: JQuery,
+        forceStart: boolean,
+    ): void;
 
     /**
      * Updates a select-control.
@@ -59,7 +63,11 @@ export interface FilterStatic<TElement = HTMLElement> {
      * @return
      * The values which appear in the column.
      */
-    getOptionSource(table: JQuery<TElement> | TElement, column: number, visibleOnly?: boolean): ParsedOption[];
+    getOptionSource(
+        table: JQuery<TElement> | TElement,
+        column: number,
+        visibleOnly?: boolean,
+    ): ParsedOption[];
 
     /**
      * Gets all available column-values of a column.
@@ -76,7 +84,11 @@ export interface FilterStatic<TElement = HTMLElement> {
      * @return
      * The values which appear in the column.
      */
-    getOptions(table: JQuery<TElement> | TElement, column: number, visibleOnly?: boolean): string[];
+    getOptions(
+        table: JQuery<TElement> | TElement,
+        column: number,
+        visibleOnly?: boolean,
+    ): string[];
 
     /**
      * Processes and sorts the options according to the options of the specified `column`.

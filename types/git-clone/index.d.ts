@@ -1,8 +1,17 @@
 /**
  * Clone `repo` to `targetPath`, calling `cb` on completion.
  */
-declare function clone(repo: string, targetPath: string, opts?: clone.Options, cb?: (error?: Error) => void): void;
-declare function clone(repo: string, opts?: clone.Options, cb?: (error?: Error) => void): void;
+declare function clone(
+    repo: string,
+    targetPath: string,
+    opts?: clone.Options,
+    cb?: (error?: Error) => void,
+): void;
+declare function clone(
+    repo: string,
+    opts?: clone.Options,
+    cb?: (error?: Error) => void,
+): void;
 
 declare namespace clone {
     interface Options {

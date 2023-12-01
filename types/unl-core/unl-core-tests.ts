@@ -18,7 +18,8 @@ const atx_neighbors: UnlCore.Neighbours = UnlCore.neighbours(atx_locationId);
 const atx_adj_cell3: string = atx_neighbors.n;
 
 // Grid Lines
-const atx_gridLines: Array<[[number, number], [number, number]]> = UnlCore.gridLines(atx_bounds);
+const atx_gridLines: Array<[[number, number], [number, number]]> =
+    UnlCore.gridLines(atx_bounds);
 
 // Polyhash
 

@@ -35,7 +35,8 @@ const App = () => {
                                 width: "12px",
                                 height: "12px",
                                 borderRadius: "100%",
-                                background: "linear-gradient(to bottom, #eee 45%, #ddd 55%)",
+                                background:
+                                    "linear-gradient(to bottom, #eee 45%, #ddd 55%)",
                                 border: "solid 1px #888",
                             },
                         })}

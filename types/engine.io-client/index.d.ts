@@ -142,7 +142,10 @@ declare namespace client {
          * ping: Fired upon flushing a ping packet (ie: actual packet write out)
          * pong: Fired upon receiving a pong packet.
          */
-        on(ev: "open" | "flush" | "drain" | "ping" | "pong", cb: () => void): this;
+        on(
+            ev: "open" | "flush" | "drain" | "ping" | "pong",
+            cb: () => void,
+        ): this;
         /*
          * Fired when data is received from the server.
          */
@@ -176,6 +179,9 @@ declare namespace client {
     }
 }
 
-declare function client(url?: string, opts?: client.SocketOptions): client.Socket;
+declare function client(
+    url?: string,
+    opts?: client.SocketOptions,
+): client.Socket;
 
 export = client;

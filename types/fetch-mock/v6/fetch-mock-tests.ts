@@ -68,21 +68,17 @@ fetchMock.put("http://test.com", 200, { method: "PUT" });
 fetchMock.delete("http://test.com", 200, { method: "DELETE" });
 fetchMock.head("http://test.com", 200, { method: "HEAD" });
 
-fetchMock
-    .mock("http://test.com", 200)
-    .catch(503);
+fetchMock.mock("http://test.com", 200).catch(503);
 
-fetchMock
-    .mock("http://test.com", 200)
-    .spy();
+fetchMock.mock("http://test.com", 200).spy();
 
 const myMatcher: fetchMock.MockMatcherFunction = (
     url: string,
     opts: fetchMock.MockRequest,
 ) => true;
 
-fetchMock.flush().then(resolved => resolved.forEach(console.log));
-fetchMock.flush().catch(r => r);
+fetchMock.flush().then((resolved) => resolved.forEach(console.log));
+fetchMock.flush().catch((r) => r);
 
 fetchMock.get("http://test.com", {
     body: "abc",

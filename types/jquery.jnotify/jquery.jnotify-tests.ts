@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
     $("#StatusBar").jnotifyInizialize({
         oneAtTime: true,
     });
@@ -8,13 +8,13 @@ $(document).ready(function() {
             appendType: "append",
         })
         .css({
-            "position": "absolute",
-            "marginTop": "20px",
-            "right": "20px",
-            "width": "250px",
+            position: "absolute",
+            marginTop: "20px",
+            right: "20px",
+            width: "250px",
             "z-index": "9999",
         });
-    $("#addStatusBarMessage").click(function() {
+    $("#addStatusBarMessage").click(function () {
         $("#StatusBar").jnotifyAddMessage({
             text: "This is a non permanent message.",
             permanent: false,
@@ -22,7 +22,7 @@ $(document).ready(function() {
         });
     });
 
-    $("#addStatusBarError").click(function() {
+    $("#addStatusBarError").click(function () {
         $("#StatusBar").jnotifyAddMessage({
             text: "This is a permanent error.",
             permanent: true,
@@ -30,14 +30,14 @@ $(document).ready(function() {
         });
     });
 
-    $("#addNotificationMessage").click(function() {
+    $("#addNotificationMessage").click(function () {
         $("#Notification").jnotifyAddMessage({
             text: "This is a non permanent message.",
             permanent: false,
         });
     });
 
-    $("#addNotificationError").click(function() {
+    $("#addNotificationError").click(function () {
         $("#Notification").jnotifyAddMessage({
             text: "This is a permanent error.",
             permanent: true,

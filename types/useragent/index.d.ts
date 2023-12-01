@@ -25,7 +25,13 @@ declare namespace useragent {
          * @param [patch='0'] Patch version of the browser
          * @param [source] The actual user agent string
          */
-        constructor(family?: string, major?: string, minor?: string, patch?: string, source?: string);
+        constructor(
+            family?: string,
+            major?: string,
+            minor?: string,
+            patch?: string,
+            source?: string,
+        );
 
         /**
          * Generates a string output of the parsed user agent.
@@ -68,7 +74,12 @@ declare namespace useragent {
          * @param [minor='0'] Minor version of the os
          * @param [patch='0'] Patch version of the os
          */
-        constructor(family?: string, major?: string, minor?: string, patch?: string);
+        constructor(
+            family?: string,
+            major?: string,
+            minor?: string,
+            patch?: string,
+        );
 
         /**
          * Generates a stringified version of the Operating System.
@@ -104,7 +115,12 @@ declare namespace useragent {
          * @param [minor='0'] Minor version of the device
          * @param [patch='0'] Patch version of the device
          */
-        constructor(family?: string, major?: string, minor?: string, patch?: string);
+        constructor(
+            family?: string,
+            major?: string,
+            minor?: string,
+            patch?: string,
+        );
 
         /**
          * Generates a stringified version of the Device.
@@ -167,13 +183,13 @@ declare namespace useragent {
         obj:
             | string
             | {
-                family: string;
-                major: string;
-                minor: string;
-                patch: string;
-                device?: string | undefined;
-                os?: string | undefined;
-            },
+                  family: string;
+                  major: string;
+                  minor: string;
+                  patch: string;
+                  device?: string | undefined;
+                  os?: string | undefined;
+              },
     ): Agent;
 
     /**

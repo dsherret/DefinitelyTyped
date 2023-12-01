@@ -15,7 +15,8 @@ const SMS = async () => {
         from: "from",
     });
 
-    const checkoutTokenResponse = await token.createCheckoutToken("phoneNumber");
+    const checkoutTokenResponse =
+        await token.createCheckoutToken("phoneNumber");
 
     const options = {
         // Set your premium product shortCode and keyword

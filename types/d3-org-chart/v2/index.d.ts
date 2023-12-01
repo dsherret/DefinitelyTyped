@@ -55,13 +55,24 @@ export interface StatePublic<Datum> {
     /** Return type is the string representation of a SVG <defs> element */
     defs: (state: State<Datum>, visibleConnections: Connection[]) => string;
     connectionsUpdate: ValueFn<BaseType, Datum, void>;
-    linkUpdate: (node: HierarchyNode<Datum>, index: number, nodes: Array<HierarchyNode<Datum>>) => void;
-    nodeUpdate: (node: HierarchyNode<Datum>, index: number, nodes: Array<HierarchyNode<Datum>>) => void;
+    linkUpdate: (
+        node: HierarchyNode<Datum>,
+        index: number,
+        nodes: Array<HierarchyNode<Datum>>,
+    ) => void;
+    nodeUpdate: (
+        node: HierarchyNode<Datum>,
+        index: number,
+        nodes: Array<HierarchyNode<Datum>>,
+    ) => void;
     nodeWidth: (node: HierarchyNode<Datum>) => number;
     nodeHeight: (node: HierarchyNode<Datum>) => number;
     siblingsMargin: (node: HierarchyNode<Datum>) => number;
     childrenMargin: (node: HierarchyNode<Datum>) => number;
-    neightbourMargin: (node1: HierarchyNode<Datum>, node2: HierarchyNode<Datum>) => number;
+    neightbourMargin: (
+        node1: HierarchyNode<Datum>,
+        node2: HierarchyNode<Datum>,
+    ) => number;
     compactMarginPair: (node: HierarchyNode<Datum>) => number;
     compactMarginBetween: (node: HierarchyNode<Datum>) => number;
     /** A function which is triggered when the node is clicked. */
@@ -75,7 +86,10 @@ export interface StatePublic<Datum> {
         state: State<Datum>,
     ) => string;
     layout: Layout;
-    buttonContent: (params: { node: HierarchyNode<Datum>; state: State<Datum> }) => string;
+    buttonContent: (params: {
+        node: HierarchyNode<Datum>;
+        state: State<Datum>;
+    }) => string;
     layoutBindings: Record<Layout, LayoutBinding<Datum>>;
 }
 
@@ -107,8 +121,14 @@ export interface LayoutBinding<Datum> {
     linkY: (node: HierarchyNode<Datum>) => number;
     linkCompactXStart: (node: HierarchyNode<Datum>) => number;
     linkCompactYStart: (node: HierarchyNode<Datum>) => number;
-    compactLinkMidX: (node: HierarchyNode<Datum>, state: State<Datum>) => number;
-    compactLinkMidY: (node: HierarchyNode<Datum>, state: State<Datum>) => number;
+    compactLinkMidX: (
+        node: HierarchyNode<Datum>,
+        state: State<Datum>,
+    ) => number;
+    compactLinkMidY: (
+        node: HierarchyNode<Datum>,
+        state: State<Datum>,
+    ) => number;
     linkParentX: (node: HierarchyNode<Datum>) => number;
     linkParentY: (node: HierarchyNode<Datum>) => number;
     buttonX: (node: HierarchyNode<Datum>) => number;
@@ -140,17 +160,22 @@ export interface LayoutBinding<Datum> {
     diagonal(source: Point, target: Point, m: Point): string;
     /** Swaps x and y coordinates */
     swap: (d: Point) => Point;
-    nodeUpdateTransform: (params: { width: number; height: number } & Point) => string;
+    nodeUpdateTransform: (
+        params: { width: number; height: number } & Point,
+    ) => string;
 }
 
 // Helper type to remove the need to explicitly declare get / set methods
-export type StateGetSet<T, TSelf> =
-    & { [Property in keyof StatePublic<T>]: () => StatePublic<T>[Property] }
-    & { [Property in keyof StatePublic<T>]: (value: StatePublic<T>[Property]) => TSelf };
+export type StateGetSet<T, TSelf> = {
+    [Property in keyof StatePublic<T>]: () => StatePublic<T>[Property];
+} & {
+    [Property in keyof StatePublic<T>]: (
+        value: StatePublic<T>[Property],
+    ) => TSelf;
+};
 
 // This is separated from the implementation declaration to not have to replicate the propertied of StateGetSet
-export interface OrgChart<Datum> extends StateGetSet<Datum, OrgChart<Datum>> {
-}
+export interface OrgChart<Datum> extends StateGetSet<Datum, OrgChart<Datum>> {}
 
 export class OrgChart<Datum> {
     constructor();
@@ -165,14 +190,24 @@ export class OrgChart<Datum> {
     removeNode(nodeId: NodeId): this;
     calculateCompactFlexDimensions(root: HierarchyNode<Datum>): void;
     calculateCompactFlexPositions(root: HierarchyNode<Datum>): void;
-    update(params: { x0: number; y0: number; width: number; height: number } & Partial<Point>): void;
+    update(
+        params: {
+            x0: number;
+            y0: number;
+            width: number;
+            height: number;
+        } & Partial<Point>,
+    ): void;
     /** Whether the current browser is Microsoft Edge */
     isEdge(): boolean;
     hdiagonal(source: Point, target: Point, m: Point): string;
     diagonal(source: Point, target: Point, m: Point): string;
     restyleForeignObjectElements(): void;
     onButtonClick(event: any, node: HierarchyNode<Datum>): void;
-    setExpansionFlagToChildren(node: HierarchyNode<Datum>, isExpanded: boolean): void;
+    setExpansionFlagToChildren(
+        node: HierarchyNode<Datum>,
+        isExpanded: boolean,
+    ): void;
     expandSomeNodes(node: HierarchyNode<Datum>): void;
     updateNodesState(): void;
     setLayouts(params: { expandNodesFirst?: boolean }): void;
@@ -186,7 +221,11 @@ export class OrgChart<Datum> {
         y1: number;
         params: { animate?: boolean; scale?: boolean };
     }): void;
-    fit(params?: { animate?: boolean; nodes?: Iterable<HierarchyNode<Datum>>; scale?: boolean }): this;
+    fit(params?: {
+        animate?: boolean;
+        nodes?: Iterable<HierarchyNode<Datum>>;
+        scale?: boolean;
+    }): this;
     setExpanded(nodeId: NodeId, isExpanded?: boolean): this;
     setCentered(nodeId: NodeId): this;
     setHighlighted(nodeId: NodeId): this;
@@ -195,8 +234,16 @@ export class OrgChart<Datum> {
     fullscreen(element?: Element): void;
     zoomIn(): void;
     zoomOut(): void;
-    toDataUrl(url: string, callback: (result: string | ArrayBuffer) => void): void;
-    exportImg(params?: { full?: boolean; scale?: number; onLoad?: (s: string) => void; save?: boolean }): void;
+    toDataUrl(
+        url: string,
+        callback: (result: string | ArrayBuffer) => void,
+    ): void;
+    exportImg(params?: {
+        full?: boolean;
+        scale?: number;
+        onLoad?: (s: string) => void;
+        save?: boolean;
+    }): void;
     exportSvg(): this;
     expandAll(): this;
     collapseAll(): this;
@@ -210,6 +257,11 @@ export class OrgChart<Datum> {
     }): void;
     getTextWidth(
         text: string,
-        params: { fontSize?: number; fontWeight?: number; defaultFont?: string; ctx: CanvasRenderingContext2D },
+        params: {
+            fontSize?: number;
+            fontWeight?: number;
+            defaultFont?: string;
+            ctx: CanvasRenderingContext2D;
+        },
     ): number;
 }

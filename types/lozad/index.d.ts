@@ -17,12 +17,19 @@ declare namespace lozad {
         observer: IntersectionObserver;
     }
 
-    type Selector = string | Element | HTMLCollectionOf<Element> | NodeListOf<Element>;
+    type Selector =
+        | string
+        | Element
+        | HTMLCollectionOf<Element>
+        | NodeListOf<Element>;
 
     const prototype: {};
 }
 
-declare function lozad(selector?: lozad.Selector, options?: lozad.Options): lozad.Observer;
+declare function lozad(
+    selector?: lozad.Selector,
+    options?: lozad.Options,
+): lozad.Observer;
 
 export as namespace lozad;
 

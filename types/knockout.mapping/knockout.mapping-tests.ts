@@ -57,7 +57,11 @@ let badMapping = {
 
 ////////////////////////////////
 // fromJS function with JS object without Array properties
-let userInput: User = { firstName: "foo", age: 12, address: { street: "street name" } };
+let userInput: User = {
+    firstName: "foo",
+    age: 12,
+    address: { street: "street name" },
+};
 
 let mappedUserViewModel: MappedUser = mapping.fromJS(userInput); // $ExpectType KnockoutObservableType<User>
 mappedUserViewModel.age; // $ExpectType KnockoutObservable<number>
@@ -76,10 +80,15 @@ mapping.fromJS(untypedObject); // $ExpectType KnockoutObservable<any>
 
 ////////////////////////////////
 // fromJS function with JS object with Array properties
-let carInput: Car = { name: "hb20x", maintenance: [1, 2], drivers: [userInput] };
+let carInput: Car = {
+    name: "hb20x",
+    maintenance: [1, 2],
+    drivers: [userInput],
+};
 let mappedCar: MappedCar = mapping.fromJS(carInput);
 let drivers: KnockoutObservableArray<MappedUser> = mappedCar.drivers;
-let maintenance: KnockoutReadonlyObservableArray<number> = mappedCar.maintenance;
+let maintenance: KnockoutReadonlyObservableArray<number> =
+    mappedCar.maintenance;
 
 ////////////////////////////////
 // fromJS function with primitives
@@ -133,7 +142,7 @@ interface nameObject {
 }
 
 let nameObjectInput: nameObject = { name: "bar" };
-let nameObjectInputJSON = "{ name: \"foo\" }";
+let nameObjectInputJSON = '{ name: "foo" }';
 
 mapping.fromJSON(nameObjectInputJSON); // $ExpectType any
 mapping.fromJSON(nameObjectInputJSON, {}); // $ExpectType any

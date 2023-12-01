@@ -1,4 +1,7 @@
-import BaseComponent, { GetInstanceFactory, GetOrCreateInstanceFactory } from "./base-component";
+import BaseComponent, {
+    GetInstanceFactory,
+    GetOrCreateInstanceFactory,
+} from "./base-component";
 
 declare class Offcanvas extends BaseComponent {
     /**
@@ -10,11 +13,17 @@ declare class Offcanvas extends BaseComponent {
      * Static method which allows you to get the offcanvas instance associated with
      *  a DOM element, or create a new one in case it wasn’t initialised
      */
-    static getOrCreateInstance: GetOrCreateInstanceFactory<Offcanvas, Partial<Offcanvas.Options>>;
+    static getOrCreateInstance: GetOrCreateInstanceFactory<
+        Offcanvas,
+        Partial<Offcanvas.Options>
+    >;
 
     static jQueryInterface: Offcanvas.jQueryInterface;
 
-    constructor(element: string | Element, options?: Partial<Offcanvas.Options>);
+    constructor(
+        element: string | Element,
+        options?: Partial<Offcanvas.Options>,
+    );
 
     /**
      * Toggles an offcanvas element to shown or hidden. Returns to the caller before the offcanvas element has actually

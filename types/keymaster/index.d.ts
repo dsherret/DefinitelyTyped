@@ -184,7 +184,10 @@ declare namespace Keymaster {
     }
 
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-    type KeyHandler = (keyboardEvent: KeyboardEvent, handler: Handler) => boolean | void;
+    type KeyHandler = (
+        keyboardEvent: KeyboardEvent,
+        handler: Handler,
+    ) => boolean | void;
 
     type FilterEvent = EventTarget & {
         target: HTMLElement | null;

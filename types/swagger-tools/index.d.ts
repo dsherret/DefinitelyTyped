@@ -52,7 +52,11 @@ export interface SwaggerRouter12OptionsControllers {
 }
 
 export interface SwaggerRouter12Options {
-    controllers?: SwaggerRouter12OptionsControllers | string | string[] | undefined;
+    controllers?:
+        | SwaggerRouter12OptionsControllers
+        | string
+        | string[]
+        | undefined;
     ignoreMissingHandlers?: boolean | undefined;
     useStubs?: boolean | undefined;
 }
@@ -80,7 +84,8 @@ export interface Swagger20Operation {
     tags?: string[] | undefined;
 }
 
-export interface Swagger20Request<P extends SwaggerRequestParameters> extends IncomingMessage {
+export interface Swagger20Request<P extends SwaggerRequestParameters>
+    extends IncomingMessage {
     swagger: {
         apiPath: string;
         operation?: Swagger20Operation | undefined;
@@ -106,7 +111,11 @@ export interface SwaggerRouter20OptionsControllers {
 }
 
 export interface SwaggerRouter20Options {
-    controllers?: SwaggerRouter20OptionsControllers | string | string[] | undefined;
+    controllers?:
+        | SwaggerRouter20OptionsControllers
+        | string
+        | string[]
+        | undefined;
     ignoreMissingHandlers?: boolean | undefined;
     useStubs?: boolean | undefined;
 }
@@ -155,7 +164,10 @@ export interface Middleware {
 
 export interface Middleware12 extends Middleware {
     swaggerRouter(options?: SwaggerRouter12Options): NextHandleFunction;
-    swaggerUi(apiDeclarations: SwaggerUi12ApiDeclarations, options?: SwaggerUiOptions): NextHandleFunction;
+    swaggerUi(
+        apiDeclarations: SwaggerUi12ApiDeclarations,
+        options?: SwaggerUiOptions,
+    ): NextHandleFunction;
 }
 
 export interface Middleware20 extends Middleware {
@@ -171,7 +183,10 @@ export interface Resource {
     resourcePath: string;
 }
 
-export function initializeMiddleware(swaggerObject: any, callback: InitializeMiddlewareCallback20): void;
+export function initializeMiddleware(
+    swaggerObject: any,
+    callback: InitializeMiddlewareCallback20,
+): void;
 
 export function initializeMiddleware(
     swaggerObject: any,

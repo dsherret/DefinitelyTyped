@@ -133,34 +133,72 @@ declare namespace libphonenumber {
 
     export class PhoneNumberUtil {
         static getInstance(): PhoneNumberUtil;
-        extractCountryCode(fullNumber: StringBuffer, nationalNumber: StringBuffer): number;
+        extractCountryCode(
+            fullNumber: StringBuffer,
+            nationalNumber: StringBuffer,
+        ): number;
         format(phoneNumber: PhoneNumber, format: PhoneNumberFormat): string;
-        formatInOriginalFormat(phoneNumber: PhoneNumber, regionDialingFrom?: string): string;
-        formatOutOfCountryCallingNumber(phoneNumber: PhoneNumber, regionDialingFrom?: string): string;
-        getNddPrefixForRegion(regionCode?: string, stripNonDigits?: boolean): string | undefined;
+        formatInOriginalFormat(
+            phoneNumber: PhoneNumber,
+            regionDialingFrom?: string,
+        ): string;
+        formatOutOfCountryCallingNumber(
+            phoneNumber: PhoneNumber,
+            regionDialingFrom?: string,
+        ): string;
+        getNddPrefixForRegion(
+            regionCode?: string,
+            stripNonDigits?: boolean,
+        ): string | undefined;
         getNumberType(phoneNumber: PhoneNumber): PhoneNumberType;
         getCountryCodeForRegion(supportedRegion: string): number;
         getExampleNumber(regionCode: string): PhoneNumber;
-        getExampleNumberForType(regionCode: string, type: PhoneNumberType): PhoneNumber;
-        getRegionCodeForCountryCode(countryCallingCode: number): RegionCode | RegionCodeUnknown;
-        getRegionCodeForNumber(phoneNumber: PhoneNumber): RegionCode | undefined;
+        getExampleNumberForType(
+            regionCode: string,
+            type: PhoneNumberType,
+        ): PhoneNumber;
+        getRegionCodeForCountryCode(
+            countryCallingCode: number,
+        ): RegionCode | RegionCodeUnknown;
+        getRegionCodeForNumber(
+            phoneNumber: PhoneNumber,
+        ): RegionCode | undefined;
         getSupportedRegions(): RegionCode[];
         isAlphaNumber(number: string): boolean;
         isLeadingZeroPossible(countryCallingCode: number): boolean;
         isNANPACountry(regionCode?: string): boolean;
         isPossibleNumber(number: PhoneNumber): boolean;
         isPossibleNumber(phoneNumber: PhoneNumber): boolean;
-        isPossibleNumberForType(number: PhoneNumber, type: PhoneNumberType): boolean;
-        isPossibleNumberForTypeWithReason(number: PhoneNumber, type: PhoneNumberType): PhoneNumberUtil.ValidationResult;
-        isPossibleNumberString(number: string, regionDialingFrom: string): boolean;
-        isPossibleNumberWithReason(number: PhoneNumber): PhoneNumberUtil.ValidationResult;
-        isPossibleNumberWithReason(phoneNumber: PhoneNumber): PhoneNumberUtil.ValidationResult;
+        isPossibleNumberForType(
+            number: PhoneNumber,
+            type: PhoneNumberType,
+        ): boolean;
+        isPossibleNumberForTypeWithReason(
+            number: PhoneNumber,
+            type: PhoneNumberType,
+        ): PhoneNumberUtil.ValidationResult;
+        isPossibleNumberString(
+            number: string,
+            regionDialingFrom: string,
+        ): boolean;
+        isPossibleNumberWithReason(
+            number: PhoneNumber,
+        ): PhoneNumberUtil.ValidationResult;
+        isPossibleNumberWithReason(
+            phoneNumber: PhoneNumber,
+        ): PhoneNumberUtil.ValidationResult;
         isValidNumber(phoneNumber: PhoneNumber): boolean;
-        isValidNumberForRegion(phoneNumber: PhoneNumber, region?: string): boolean;
+        isValidNumberForRegion(
+            phoneNumber: PhoneNumber,
+            region?: string,
+        ): boolean;
         parse(number?: string, region?: string): PhoneNumber;
         parseAndKeepRawInput(number: string, regionCode?: string): PhoneNumber;
         truncateTooLongNumber(number: PhoneNumber): boolean;
-        isNumberMatch(firstNumber: string | PhoneNumber, secondNumber: string | PhoneNumber): PhoneNumberUtil.MatchType;
+        isNumberMatch(
+            firstNumber: string | PhoneNumber,
+            secondNumber: string | PhoneNumber,
+        ): PhoneNumberUtil.MatchType;
         getLengthOfGeographicalAreaCode(number: PhoneNumber): number;
         getNationalSignificantNumber(number: PhoneNumber): string;
         getLengthOfNationalDestinationCode(number: PhoneNumber): number;
@@ -194,7 +232,10 @@ declare namespace libphonenumber {
          * @param regionDialingFrom the region from which the number is dialed
          * @return whether the number is a possible short number
          */
-        isPossibleShortNumberForRegion(number: PhoneNumber, regionDialingFrom: RegionCode): boolean;
+        isPossibleShortNumberForRegion(
+            number: PhoneNumber,
+            regionDialingFrom: RegionCode,
+        ): boolean;
 
         /**
          * Check whether a short number is a possible number. If a country calling code is shared by
@@ -216,7 +257,10 @@ declare namespace libphonenumber {
          * @param regionDialingFrom the region from which the number is dialed
          * @return whether the short number matches a valid pattern
          */
-        isValidShortNumberForRegion(number: PhoneNumber, regionDialingFrom: RegionCode): boolean;
+        isValidShortNumberForRegion(
+            number: PhoneNumber,
+            regionDialingFrom: RegionCode,
+        ): boolean;
 
         /**
          * Tests whether a short number matches a valid pattern. If a country calling code is shared by
@@ -254,7 +298,10 @@ declare namespace libphonenumber {
          * the number does not match a cost category. Note that an invalid number may match any cost
          * category.
          */
-        getExpectedCostForRegion(number: PhoneNumber, regionDialingFrom: RegionCode): ShortNumberInfo.ShortNumberCost;
+        getExpectedCostForRegion(
+            number: PhoneNumber,
+            regionDialingFrom: RegionCode,
+        ): ShortNumberInfo.ShortNumberCost;
 
         /**
          * Gets the expected cost category of a short number (however, nothing is implied about its
@@ -293,7 +340,10 @@ declare namespace libphonenumber {
          * @param regionCode the region where the phone number is being dialed
          * @return whether the number might be used to connect to an emergency service in the given region
          */
-        connectsToEmergencyNumber(number: string, regionDialing: RegionCode): boolean;
+        connectsToEmergencyNumber(
+            number: string,
+            regionDialing: RegionCode,
+        ): boolean;
 
         /**
          * Returns true if the given number exactly matches an emergency service number in the given
@@ -335,7 +385,10 @@ declare namespace libphonenumber {
          * @return  whether the short number is carrier-specific in the provided region, assuming the
          * input was a valid short number
          */
-        isCarrierSpecificForRegion(number: PhoneNumber, regionDialingFrom: RegionCode): boolean;
+        isCarrierSpecificForRegion(
+            number: PhoneNumber,
+            regionDialingFrom: RegionCode,
+        ): boolean;
 
         /**
          * Given a valid short number, determines whether it is an SMS service (however, nothing is
@@ -351,7 +404,10 @@ declare namespace libphonenumber {
          * @return  whether the short number is an SMS service in the provided region, assuming the input
          * was a valid short number
          */
-        isSmsServiceForRegion(number: PhoneNumber, regionDialingFrom: string): boolean;
+        isSmsServiceForRegion(
+            number: PhoneNumber,
+            regionDialingFrom: string,
+        ): boolean;
     }
 
     export type RegionCodeUnknown = "ZZ";

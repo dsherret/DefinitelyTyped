@@ -4,13 +4,16 @@ import * as Hapi from "hapi";
 
 const server = new Hapi.Server();
 
-server.register({
-    register: require("plugin_name"),
-    options: {
-        message: "hello",
+server.register(
+    {
+        register: require("plugin_name"),
+        options: {
+            message: "hello",
+        },
     },
-}, (err) => {
-    if (err) {
-        console.log("Failed loading plugin");
-    }
-});
+    (err) => {
+        if (err) {
+            console.log("Failed loading plugin");
+        }
+    },
+);

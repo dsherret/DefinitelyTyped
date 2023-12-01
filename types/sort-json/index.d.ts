@@ -34,7 +34,10 @@ declare namespace visit {
      * * String: Absolute path to JSON file to sort and overwrite
      * * Array: Absolute paths to JSON files to sort and overwrite
      */
-    function overwrite(absolutePaths: string | string[], options?: OverwriteOptions): any;
+    function overwrite(
+        absolutePaths: string | string[],
+        options?: OverwriteOptions,
+    ): any;
 }
 
 /**

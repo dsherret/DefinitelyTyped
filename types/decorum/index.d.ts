@@ -21,7 +21,9 @@ declare namespace decorum {
      * @param message [Optional] Overrides the default validation error message.
      * @returns {function(Object, string): void} A field validation decorator.
      */
-    export function Email(message?: string | MessageHandler<EmailValidator>): PropertyDecorator;
+    export function Email(
+        message?: string | MessageHandler<EmailValidator>,
+    ): PropertyDecorator;
 
     /**
      * Sets the field's "friendly" name in validation error messages.
@@ -36,7 +38,10 @@ declare namespace decorum {
      * @param message [Optional] Overrides the default validation error message.
      * @returns {function(Object, string): void} A field validation decorator.
      */
-    export function Length(length: number, message?: string | MessageHandler<LengthValidator>): PropertyDecorator;
+    export function Length(
+        length: number,
+        message?: string | MessageHandler<LengthValidator>,
+    ): PropertyDecorator;
 
     /**
      * Validates a field's maximum length.
@@ -66,28 +71,37 @@ declare namespace decorum {
      * @param message [Optional] Overrides the default validation error message.
      * @returns {function(Object, string): void} A field validation decorator.
      */
-    export function Pattern(regex: RegExp, message?: string | MessageHandler<PatternValidator>): PropertyDecorator;
+    export function Pattern(
+        regex: RegExp,
+        message?: string | MessageHandler<PatternValidator>,
+    ): PropertyDecorator;
 
     /**
      * Marks the field as required.
      * @param message [Optional] Overrides the default validation error message.
      * @returns {function(Object, string): void} A field validation decorator.
      */
-    export function Required(message?: string | MessageHandler<RequiredFieldValidator>): PropertyDecorator;
+    export function Required(
+        message?: string | MessageHandler<RequiredFieldValidator>,
+    ): PropertyDecorator;
 
     /**
      * Validates that a given field only contains alpha values.
      * @param message [Optional] Overrides the default validation error message.
      * @returns {function(Object, string): void} A field validation decorator.
      */
-    export function Alpha(message?: string | MessageHandler<PatternValidator>): PropertyDecorator;
+    export function Alpha(
+        message?: string | MessageHandler<PatternValidator>,
+    ): PropertyDecorator;
 
     /**
      * Validates that a given field only contains alphanumeric values.
      * @param message [Optional] Overrides the default validation error message.
      * @returns {function(Object, string): void} A field validation decorator.
      */
-    export function AlphaNumeric(message?: string | MessageHandler<PatternValidator>): PropertyDecorator;
+    export function AlphaNumeric(
+        message?: string | MessageHandler<PatternValidator>,
+    ): PropertyDecorator;
 
     /**
      * A map from field name to array of field validation decorators.
@@ -114,7 +128,10 @@ declare namespace decorum {
          * @param objectType The class to decorate.
          * @param definitions One or more field validation definitions of the form { "fieldName": [ decorators ] }.
          */
-        static decorate(objectType: any, definitions: ValidationDefinitions): void;
+        static decorate(
+            objectType: any,
+            definitions: ValidationDefinitions,
+        ): void;
 
         /**
          * Creates an anonymous validator, immediately validates the model, and returns any validation errors on the
@@ -130,7 +147,11 @@ declare namespace decorum {
          * @param property The property to add the validator for.
          * @param validator The validator to add.
          */
-        static addValidator(targetPrototype: Object, property: string, validator: BaseValidator): void;
+        static addValidator(
+            targetPrototype: Object,
+            property: string,
+            validator: BaseValidator,
+        ): void;
     }
 
     /**
@@ -281,7 +302,10 @@ declare namespace decorum {
     export class LengthValidator extends BaseValidator {
         length: number;
 
-        constructor(length: number, message?: string | MessageHandler<LengthValidator>);
+        constructor(
+            length: number,
+            message?: string | MessageHandler<LengthValidator>,
+        );
 
         getMessage(opts: IMessageOpts): string;
 
@@ -294,7 +318,10 @@ declare namespace decorum {
     export class MaxLengthValidator extends BaseValidator {
         maxLength: number;
 
-        constructor(maxLength: number, message?: string | MessageHandler<MaxLengthValidator>);
+        constructor(
+            maxLength: number,
+            message?: string | MessageHandler<MaxLengthValidator>,
+        );
 
         getMessage(opts: IMessageOpts): string;
 
@@ -307,7 +334,10 @@ declare namespace decorum {
     export class MinLengthValidator extends BaseValidator {
         minLength: number;
 
-        constructor(minLength: number, message?: string | MessageHandler<MinLengthValidator>);
+        constructor(
+            minLength: number,
+            message?: string | MessageHandler<MinLengthValidator>,
+        );
 
         getMessage(opts: IMessageOpts): string;
 
@@ -320,7 +350,10 @@ declare namespace decorum {
     export class PatternValidator extends BaseValidator {
         pattern: RegExp;
 
-        constructor(pattern: RegExp, message?: string | MessageHandler<PatternValidator>);
+        constructor(
+            pattern: RegExp,
+            message?: string | MessageHandler<PatternValidator>,
+        );
 
         getMessage(opts: IMessageOpts): string;
 
@@ -353,7 +386,10 @@ declare namespace decorum {
          * @param message A custom error message to return. Should be passed down from concrete class' constructors to
          *     enable customizing error messages.
          */
-        constructor(validatorKey: string, message: string | MessageHandler<any>);
+        constructor(
+            validatorKey: string,
+            message: string | MessageHandler<any>,
+        );
 
         /**
          * Returns true if the validator instance was passed a custom error message.

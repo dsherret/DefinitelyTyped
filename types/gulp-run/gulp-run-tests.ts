@@ -26,7 +26,7 @@ new run("echo Hello World", {
 // GulpRunner#exec
 new run("echo Hello World").exec();
 new run("echo Hello World").exec("foo");
-new run("echo Hello World").exec("foo", error => {
+new run("echo Hello World").exec("foo", (error) => {
     error; // $ExpectType Error | null | undefined
 });
 
@@ -44,13 +44,17 @@ new run.Command("echo Hello, World!", {
 new run.Command("echo Hello World").exec(); // $ExpectType File
 new run.Command("echo Hello World").exec("foo"); // $ExpectType File
 // $ExpectType File
-new run.Command("echo Hello World").exec("foo", error => {
+new run.Command("echo Hello World").exec("foo", (error) => {
     error; // $ExpectType (Error & { status: number; }) | null
 });
 
-gulp.task("hello-world", () => run("echo Hello World").exec().pipe(gulp.dest("output")));
+gulp.task("hello-world", () =>
+    run("echo Hello World").exec().pipe(gulp.dest("output")),
+);
 
-gulp.task(
-    "even-lines",
-    () => gulp.src("path/to/input/*").pipe(run("awk \"NR % 2 == 0\"")).pipe(gulp.dest("path/to/output")),
+gulp.task("even-lines", () =>
+    gulp
+        .src("path/to/input/*")
+        .pipe(run('awk "NR % 2 == 0"'))
+        .pipe(gulp.dest("path/to/output")),
 );

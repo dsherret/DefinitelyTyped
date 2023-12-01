@@ -14,7 +14,7 @@ const wf = new global.Workflow();
 const rest = new sn_ws.RESTMessageV2();
 
 interface ScopedGlideRecord {
-    new(tableName: "othertype"): OtherType;
+    new (tableName: "othertype"): OtherType;
 }
 interface OtherType extends ScopedGlideRecord {
     someproperty: string;

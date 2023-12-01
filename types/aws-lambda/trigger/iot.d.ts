@@ -11,7 +11,10 @@ export type IoTEvent<T = never> = string | number | T;
 // PreProvisioningHook
 // https://docs.aws.amazon.com/iot/latest/developerguide/pre-provisioning-hook.html
 // When using AWS IoT fleet provisioning, you can set up a Lambda function to validate parameters passed from the device before allowing the device to be provisioned.
-export type IoTPreProvisioningHookHandler = Handler<IoTPreProvisioningHookEvent, IoTPreProvisioningHookResult>;
+export type IoTPreProvisioningHookHandler = Handler<
+    IoTPreProvisioningHookEvent,
+    IoTPreProvisioningHookResult
+>;
 
 export interface IoTPreProvisioningHookEvent {
     claimCertificateId: string;

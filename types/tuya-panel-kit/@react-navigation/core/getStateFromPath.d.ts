@@ -31,5 +31,8 @@ declare type ResultState = PartialState<NavigationState> & {
  * @param path Path string to parse and convert, e.g. /foo/bar?count=42.
  * @param options Extra options to fine-tune how to parse the path.
  */
-export default function getStateFromPath(path: string, options?: Options): ResultState | undefined;
+export default function getStateFromPath(
+    path: string,
+    options?: Options,
+): ResultState | undefined;
 export {};

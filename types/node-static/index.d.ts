@@ -34,7 +34,12 @@ export class Server {
     serverInfo: string;
     constructor(root: string, options?: Options);
 
-    serveDir: (pathname: string, req: http.IncomingMessage, res: http.ServerResponse, finish: Finish) => void;
+    serveDir: (
+        pathname: string,
+        req: http.IncomingMessage,
+        res: http.ServerResponse,
+        finish: Finish,
+    ) => void;
     serveFile: (
         pathname: string,
         status: number,
@@ -59,7 +64,11 @@ export class Server {
         finish: Finish,
     ) => events.EventEmitter;
     resolve: (pathname: string) => string;
-    serve: (req: http.IncomingMessage, res: http.ServerResponse, callback?: Callback) => events.EventEmitter;
+    serve: (
+        req: http.IncomingMessage,
+        res: http.ServerResponse,
+        callback?: Callback,
+    ) => events.EventEmitter;
     gzipOk: (req: http.IncomingMessage, contentType: string) => boolean;
     respondGzip: (
         pathname: string,

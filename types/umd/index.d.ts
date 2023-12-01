@@ -4,7 +4,11 @@
  * - CommonJS support
  * - prevents internal UMDs from conflicting
  */
-declare function Umd(name: string, src: string, options?: boolean | Umd.Options): string;
+declare function Umd(
+    name: string,
+    src: string,
+    options?: boolean | Umd.Options,
+): string;
 
 declare namespace Umd {
     interface Options {

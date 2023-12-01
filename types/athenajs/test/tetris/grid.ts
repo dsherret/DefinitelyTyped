@@ -1,4 +1,12 @@
-import { AudioManager as AM, Deferred, Dom, Map, Scene, SimpleText, Tile } from "athenajs";
+import {
+    AudioManager as AM,
+    Deferred,
+    Dom,
+    Map,
+    Scene,
+    SimpleText,
+    Tile,
+} from "athenajs";
 import FlashLines from "./flash_lines";
 import Shape from "./shape";
 
@@ -355,7 +363,12 @@ class Grid extends Scene {
         for (let j = 0; j < rows; ++j) {
             for (let i = 0; i < cols; ++i) {
                 if (buffer[j * cols + i]) {
-                    map.updateTile(pos.x + i, pos.y + j, data.color, Tile.TYPE.WALL);
+                    map.updateTile(
+                        pos.x + i,
+                        pos.y + j,
+                        data.color,
+                        Tile.TYPE.WALL,
+                    );
                 }
             }
         }
@@ -377,7 +390,8 @@ class Grid extends Scene {
         for (let j = lastLine; j >= startLine; --j) {
             let hole = false;
             for (let i = 1; i < map.numCols - 1; ++i) {
-                hole = hole || map.getTileBehaviorAtIndex(i, j) !== Tile.TYPE.WALL;
+                hole =
+                    hole || map.getTileBehaviorAtIndex(i, j) !== Tile.TYPE.WALL;
             }
             if (!hole) {
                 lines.push(j);
@@ -403,7 +417,9 @@ class Grid extends Scene {
      * Updates the player's score using line number & current level
      */
     increaseScore(lines: number) {
-        this.score += this.scoreTable[lines - 1] + this.level * this.scoreTable[lines - 1];
+        this.score +=
+            this.scoreTable[lines - 1] +
+            this.level * this.scoreTable[lines - 1];
         this.lines += lines;
         this.linesString.setText("Lines: " + this.lines);
         this.scoreString.setText("Score: " + this.score);
@@ -446,7 +462,9 @@ class Grid extends Scene {
 
             Dom(".athena-game").addClass("shake-vertical shake-constant");
             setTimeout(() => {
-                Dom(".athena-game").removeClass("shake-vertical shake-constant");
+                Dom(".athena-game").removeClass(
+                    "shake-vertical shake-constant",
+                );
             }, 300);
 
             this.increaseScore(lines.length);

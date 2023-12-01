@@ -14,7 +14,9 @@ type Question = inquirer.CheckboxQuestionOptions<inquirer.Answers>;
  * @template TQuestion
  * The options for the question.
  */
-declare class CheckboxPrompt<TQuestion extends Question = Question> extends Prompt<TQuestion> {
+declare class CheckboxPrompt<
+    TQuestion extends Question = Question,
+> extends Prompt<TQuestion> {
     /**
      * Gets or sets the index of the currently focused choice.
      */
@@ -37,7 +39,11 @@ declare class CheckboxPrompt<TQuestion extends Question = Question> extends Prom
      * @param answers
      * The answer-object.
      */
-    constructor(question: TQuestion, readLine: ReadLineInterface, answers: inquirer.Answers);
+    constructor(
+        question: TQuestion,
+        readLine: ReadLineInterface,
+        answers: inquirer.Answers,
+    );
 
     /**
      * Renders the prompt.
@@ -53,7 +59,9 @@ declare class CheckboxPrompt<TQuestion extends Question = Question> extends Prom
      * @param eventArgs
      * An object which contains event-data.
      */
-    protected onEnd(eventArgs: inquirer.prompts.SuccessfulPromptStateData): void;
+    protected onEnd(
+        eventArgs: inquirer.prompts.SuccessfulPromptStateData,
+    ): void;
 
     /**
      * Handles the `error`-event of the prompt.

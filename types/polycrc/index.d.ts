@@ -1,7 +1,13 @@
 /// <reference types="node" />
 
 export class CRC {
-    constructor(width: number, poly: number, xor_in: number, xor_out: number, reflect: boolean);
+    constructor(
+        width: number,
+        poly: number,
+        xor_in: number,
+        xor_out: number,
+        reflect: boolean,
+    );
     calculate(buffer: Buffer): number;
     calculate_no_table(buffer: Buffer): number;
     gen_table(): Int32Array;

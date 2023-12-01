@@ -13,9 +13,9 @@
     function checkAuth() {
         gapi.auth.authorize(
             {
-                "client_id": CLIENT_ID,
-                "scope": SCOPES.join(" "),
-                "immediate": true,
+                client_id: CLIENT_ID,
+                scope: SCOPES.join(" "),
+                immediate: true,
             },
             handleAuthResult,
         );
@@ -67,15 +67,15 @@
      */
     function listUpcomingEvents() {
         var request = gapi.client.calendar.events.list({
-            "calendarId": "primary",
-            "timeMin": (new Date()).toISOString(),
-            "showDeleted": false,
-            "singleEvents": true,
-            "maxResults": 10,
-            "orderBy": "startTime",
+            calendarId: "primary",
+            timeMin: new Date().toISOString(),
+            showDeleted: false,
+            singleEvents: true,
+            maxResults: 10,
+            orderBy: "startTime",
         });
 
-        request.execute(function(resp) {
+        request.execute(function (resp) {
             var events = resp.items;
             appendPre("Upcoming events:");
 
@@ -116,39 +116,37 @@
     // stored credentials.
 
     const event = {
-        "summary": "Google I/O 2015",
-        "location": "800 Howard St., San Francisco, CA 94103",
-        "description": "A chance to hear more about Google's developer products.",
-        "start": {
-            "dateTime": "2015-05-28T09:00:00-07:00",
-            "timeZone": "America/Los_Angeles",
+        summary: "Google I/O 2015",
+        location: "800 Howard St., San Francisco, CA 94103",
+        description: "A chance to hear more about Google's developer products.",
+        start: {
+            dateTime: "2015-05-28T09:00:00-07:00",
+            timeZone: "America/Los_Angeles",
         },
-        "end": {
-            "dateTime": "2015-05-28T17:00:00-07:00",
-            "timeZone": "America/Los_Angeles",
+        end: {
+            dateTime: "2015-05-28T17:00:00-07:00",
+            timeZone: "America/Los_Angeles",
         },
-        "recurrence": [
-            "RRULE:FREQ=DAILY;COUNT=2",
+        recurrence: ["RRULE:FREQ=DAILY;COUNT=2"],
+        attendees: [
+            { email: "lpage@example.com" },
+            { email: "sbrin@example.com" },
         ],
-        "attendees": [
-            { "email": "lpage@example.com" },
-            { "email": "sbrin@example.com" },
-        ],
-        "reminders": {
-            "useDefault": false,
-            "overrides": [
-                { "method": "email", "minutes": 24 * 60 },
-                { "method": "popup", "minutes": 10 },
+        reminders: {
+            useDefault: false,
+            overrides: [
+                { method: "email", minutes: 24 * 60 },
+                { method: "popup", minutes: 10 },
             ],
         },
     };
 
     var request = gapi.client.calendar.events.insert({
-        "calendarId": "primary",
-        "resource": event,
+        calendarId: "primary",
+        resource: event,
     });
 
-    request.execute(function(event) {
+    request.execute(function (event) {
         appendPre("Event created: " + event.htmlLink);
     });
 
@@ -164,7 +162,10 @@
                 appendPre("Successfully deleted event " + calendarEventId);
             },
             (error) => {
-                appendPre("Unable to delete event from your calendar" + calendarEventId);
+                appendPre(
+                    "Unable to delete event from your calendar" +
+                        calendarEventId,
+                );
             },
         );
     }

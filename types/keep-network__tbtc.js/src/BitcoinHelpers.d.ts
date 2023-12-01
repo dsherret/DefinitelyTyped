@@ -29,7 +29,10 @@ export default interface BitcoinHelpers {
     electrumConfig: ElectrumConfig | null;
     setElectrumConfig: (newConfig: ElectrumConfig) => void;
     signatureDER: (r: string, s: string) => Buffer;
-    publicKeyPointToPublicKeyString: (publicKeyX: string, publicKeyY: string) => string;
+    publicKeyPointToPublicKeyString: (
+        publicKeyX: string,
+        publicKeyY: string,
+    ) => string;
     Address: {
         pubKeyHashFrom: (address: string) => Buffer | null;
         publicKeyPointToP2WPKHAddress: (
@@ -37,17 +40,37 @@ export default interface BitcoinHelpers {
             publicKeyY: string,
             bitcoinNetwork: BitcoinNetworkType,
         ) => string;
-        pubKeyHashToBech32: (pubKeyHash: string, network: BitcoinNetworkType) => string;
-        publicKeyToP2WPKHAddress: (publicKeyString: string, network: BitcoinNetworkType) => string;
+        pubKeyHashToBech32: (
+            pubKeyHash: string,
+            network: BitcoinNetworkType,
+        ) => string;
+        publicKeyToP2WPKHAddress: (
+            publicKeyString: string,
+            network: BitcoinNetworkType,
+        ) => string;
         toScript: (address: string) => string;
         toRawScript: (address: string) => Buffer;
     };
-    withElectrumClient: <T>(block: (client: ElectrumClient) => Promise<T>) => Promise<T>;
+    withElectrumClient: <T>(
+        block: (client: ElectrumClient) => Promise<T>,
+    ) => Promise<T>;
     Transaction: {
-        find: (bitcoinAddress: string, expectedValue: number) => Promise<FoundTransaction>;
-        findScript: (outputScript: string, expectedValue: number) => Promise<FoundTransaction>;
-        findOrWaitFor: (bitcoinAddress: string, expectedValue: number) => Promise<FoundTransaction>;
-        checkForConfirmations: (transactionID: string, requiredConfirmations: number) => Promise<number>;
+        find: (
+            bitcoinAddress: string,
+            expectedValue: number,
+        ) => Promise<FoundTransaction>;
+        findScript: (
+            outputScript: string,
+            expectedValue: number,
+        ) => Promise<FoundTransaction>;
+        findOrWaitFor: (
+            bitcoinAddress: string,
+            expectedValue: number,
+        ) => Promise<FoundTransaction>;
+        checkForConfirmations: (
+            transactionID: string,
+            requiredConfirmations: number,
+        ) => Promise<number>;
         waitForConfirmations: (
             transactionID: string,
             requiredConfirmations: number,
@@ -57,7 +80,10 @@ export default interface BitcoinHelpers {
             }) => void,
         ) => Promise<number>;
         estimateFee: (tbtcConstantsContract: any) => Promise<number>;
-        getSPVProof: (transactionID: string, confirmations: number) => Promise<SPVProof>;
+        getSPVProof: (
+            transactionID: string,
+            confirmations: number,
+        ) => Promise<SPVProof>;
         broadcast: (signedTransaction: string) => Promise<{
             transactionID: string;
         }>;

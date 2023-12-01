@@ -1,6 +1,10 @@
 export as namespace amplitude;
 
-type Callback = (responseCode: number, responseBody: string, details?: { reason: string }) => void;
+type Callback = (
+    responseCode: number,
+    responseBody: string,
+    details?: { reason: string },
+) => void;
 type LogReturn = number | void;
 
 interface Config {
@@ -27,19 +31,21 @@ interface Config {
     saveParamsReferrerOncePerSession?: boolean | undefined;
     sessionTimeout?: number | undefined;
     useNativeDeviceInfo?: boolean | undefined;
-    trackingOptions?: {
-        city?: boolean | undefined;
-        country?: boolean | undefined;
-        device_model?: boolean | undefined;
-        dma?: boolean | undefined;
-        ip_address?: boolean | undefined;
-        language?: boolean | undefined;
-        os_name?: boolean | undefined;
-        os_version?: boolean | undefined;
-        platform?: boolean | undefined;
-        region?: boolean | undefined;
-        version_name?: boolean | undefined;
-    } | undefined;
+    trackingOptions?:
+        | {
+              city?: boolean | undefined;
+              country?: boolean | undefined;
+              device_model?: boolean | undefined;
+              dma?: boolean | undefined;
+              ip_address?: boolean | undefined;
+              language?: boolean | undefined;
+              os_name?: boolean | undefined;
+              os_version?: boolean | undefined;
+              platform?: boolean | undefined;
+              region?: boolean | undefined;
+              version_name?: boolean | undefined;
+          }
+        | undefined;
     unsentKey?: string | undefined;
     unsentIdentifyKey?: string | undefined;
     uploadBatchSize?: number | undefined;
@@ -68,7 +74,12 @@ export class AmplitudeClient {
 
     options: Config;
 
-    init(apiKey: string, userId?: string, config?: Config, callback?: (client: AmplitudeClient) => void): void;
+    init(
+        apiKey: string,
+        userId?: string,
+        config?: Config,
+        callback?: (client: AmplitudeClient) => void,
+    ): void;
 
     setVersionName(versionName: string): void;
 
@@ -93,10 +104,20 @@ export class AmplitudeClient {
     setGroup(groupType: string, groupName: string | string[]): void;
 
     logEvent(event: string, data?: any, callback?: Callback): LogReturn;
-    logEventWithGroups(event: string, data?: any, groups?: any, callback?: Callback): LogReturn;
+    logEventWithGroups(
+        event: string,
+        data?: any,
+        groups?: any,
+        callback?: Callback,
+    ): LogReturn;
     logRevenueV2(revenue_obj: Revenue): LogReturn;
     logRevenue(pric: number, quantity: number, product: string): LogReturn;
-    logEventWithTimestamp(event: string, data?: any, timestamp?: number, callback?: Callback): LogReturn;
+    logEventWithTimestamp(
+        event: string,
+        data?: any,
+        timestamp?: number,
+        callback?: Callback,
+    ): LogReturn;
 
     Identify: typeof Identify;
     Revenue: typeof Revenue;
@@ -133,11 +154,29 @@ export function setOptOut(optOut: boolean): void;
 
 export function setGroup(groupType: string, groupName: string | string[]): void;
 
-export function logEvent(event: string, data?: any, callback?: Callback): LogReturn;
-export function logEventWithGroups(event: string, data?: any, groups?: any, callback?: Callback): LogReturn;
+export function logEvent(
+    event: string,
+    data?: any,
+    callback?: Callback,
+): LogReturn;
+export function logEventWithGroups(
+    event: string,
+    data?: any,
+    groups?: any,
+    callback?: Callback,
+): LogReturn;
 export function logRevenueV2(revenue_obj: Revenue): LogReturn;
-export function logRevenue(pric: number, quantity: number, product: string): LogReturn;
-export function logEventWithTimestamp(event: string, data?: any, timestamp?: number, callback?: Callback): LogReturn;
+export function logRevenue(
+    pric: number,
+    quantity: number,
+    product: string,
+): LogReturn;
+export function logEventWithTimestamp(
+    event: string,
+    data?: any,
+    timestamp?: number,
+    callback?: Callback,
+): LogReturn;
 
 export function getInstance(instanceName?: string): AmplitudeClient;
 export const __VERSION__: string;

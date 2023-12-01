@@ -11,7 +11,8 @@ const minecraftAutoLauncher = new AutoLaunch({
 minecraftAutoLauncher.enable();
 minecraftAutoLauncher.disable();
 
-minecraftAutoLauncher.isEnabled()
+minecraftAutoLauncher
+    .isEnabled()
     .then((isEnabled) => {
         if (isEnabled) {
             return;

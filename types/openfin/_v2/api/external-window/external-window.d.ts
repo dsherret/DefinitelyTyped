@@ -185,7 +185,11 @@ export declare class ExternalWindow extends EmitterBase<ExternalWindowEvents> {
      * @experimental
      * @tutorial Window.resizeBy
      */
-    resizeBy(deltaWidth: number, deltaHeight: number, anchor: AnchorType): Promise<void>;
+    resizeBy(
+        deltaWidth: number,
+        deltaHeight: number,
+        anchor: AnchorType,
+    ): Promise<void>;
     /**
      * Resizes the external window to the specified dimensions.
      * @param { number } width The change in the width of the window

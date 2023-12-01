@@ -107,11 +107,13 @@ interface RequireConfig {
      *    }
      * });
      */
-    map?: {
-        [id: string]: {
-            [id: string]: string;
-        };
-    } | undefined;
+    map?:
+        | {
+              [id: string]: {
+                  [id: string]: string;
+              };
+          }
+        | undefined;
 
     /**
      * Allows pointing multiple module IDs to a module ID that contains a bundle of modules.
@@ -228,7 +230,12 @@ interface RequireConfig {
      * (SRI).
      */
     onNodeCreated?:
-        | ((node: HTMLScriptElement, config: RequireConfig, moduleName: string, url: string) => void)
+        | ((
+              node: HTMLScriptElement,
+              config: RequireConfig,
+              moduleName: string,
+              url: string,
+          ) => void)
         | undefined;
 }
 
@@ -326,7 +333,11 @@ interface Require {
     /**
      * Semi-private function, overload in special instance of undef()
      */
-    onResourceLoad(context: Object, map: RequireMap, depArray: RequireMap[]): void;
+    onResourceLoad(
+        context: Object,
+        map: RequireMap,
+        depArray: RequireMap[],
+    ): void;
 }
 
 interface RequireDefine {
@@ -359,7 +370,13 @@ interface RequireDefine {
      *    callback module module
      *    callback return module definition
      */
-    (ready: (require: Require, exports: { [key: string]: any }, module: RequireModule) => any): void;
+    (
+        ready: (
+            require: Require,
+            exports: { [key: string]: any },
+            module: RequireModule,
+        ) => any,
+    ): void;
 
     /**
      * Define a module with a name and dependencies.

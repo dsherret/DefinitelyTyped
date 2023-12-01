@@ -17,7 +17,10 @@ declare class Pool {
      * @param options argument passed directly to `new Worker(filename, options)`
      * @param callback will be called once the worker is created
      */
-    acquire(filename: string, callback: (error: Error | null, worker: Worker) => void): void;
+    acquire(
+        filename: string,
+        callback: (error: Error | null, worker: Worker) => void,
+    ): void;
     acquire(
         filename: string,
         options: WorkerOptions,

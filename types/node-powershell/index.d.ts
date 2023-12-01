@@ -65,13 +65,27 @@ interface NodeShellParameter {
      * The value of the parameter
      * @remark for switches this should be `''` (empty string), or `undefined`
      */
-    value?: string | number | boolean | unknown[] | Record<PropertyKey, unknown> | Date | undefined;
+    value?:
+        | string
+        | number
+        | boolean
+        | unknown[]
+        | Record<PropertyKey, unknown>
+        | Date
+        | undefined;
 
     /**
      * The name of the parameter with the value as its direct value
      * @remark for switches this should be `''` (empty string), or `undefined`
      */
-    [key: string]: string | number | boolean | unknown[] | Record<PropertyKey, unknown> | Date | undefined;
+    [key: string]:
+        | string
+        | number
+        | boolean
+        | unknown[]
+        | Record<PropertyKey, unknown>
+        | Date
+        | undefined;
 }
 
 declare class NodePowershell {
@@ -140,7 +154,10 @@ declare class NodePowershell {
      * - `end` - Emits when shell ends.
      * @param callback required - Callback function to be called when the event emits.
      */
-    on(eventName: "output" | "err" | "end", callback: (output: string) => void): void;
+    on(
+        eventName: "output" | "err" | "end",
+        callback: (output: string) => void,
+    ): void;
 
     /**
      * Adds an argument to the last added command.

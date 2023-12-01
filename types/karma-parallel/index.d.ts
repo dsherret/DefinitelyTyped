@@ -15,7 +15,11 @@ declare module "karma" {
          *  It is also useful for some programmatic reporters such as junit reporters that need to operate on a single set of test outputs and not once for each shard.
          * Set to null to disable aggregated reporting
          */
-        aggregatedReporterTest?: ((reporter: object) => boolean) | RegExp | null | undefined;
+        aggregatedReporterTest?:
+            | ((reporter: object) => boolean)
+            | RegExp
+            | null
+            | undefined;
         /**
          * The number of browser instances to use to test.
          * If you test on multiple types of browsers, this spin up the number of executors for each browser type
@@ -27,13 +31,19 @@ declare module "karma" {
          * When it encounters a describe, it must decide if it will skip the tests inside of it, or not
          * @default 'round-robin'
          */
-        shardStrategy?: "round-robin" | "description-length" | "custom" | undefined;
+        shardStrategy?:
+            | "round-robin"
+            | "description-length"
+            | "custom"
+            | undefined;
         /**
          * Custom function that will determine if a describe block should run in the current executor.
          * It is a function that is serialized and re-constructed on each executor.
          * The function will be called for every top level describe block and should return true if the describe block should run for a the current executor
          */
-        customShardStrategy?: ((options: ShardStrategOptions) => boolean) | undefined;
+        customShardStrategy?:
+            | ((options: ShardStrategOptions) => boolean)
+            | undefined;
     }
 
     interface ShardStrategOptions {

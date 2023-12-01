@@ -308,17 +308,21 @@ declare namespace apostrophe {
         removeFields?: Field[] | undefined;
         arrangeFields?:
             | Array<{
-                name: string;
-                label: string;
-                fields: string[];
-            }>
+                  name: string;
+                  label: string;
+                  fields: string[];
+              }>
             | undefined;
         beforeConstruct?: ((self: any, options: any) => any) | undefined;
         defer?: boolean | undefined;
-        filters?: {
-            projection?: {
-                [key: string]: number;
-            } | undefined;
-        } | undefined;
+        filters?:
+            | {
+                  projection?:
+                      | {
+                            [key: string]: number;
+                        }
+                      | undefined;
+              }
+            | undefined;
     }
 }

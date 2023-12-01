@@ -1,7 +1,8 @@
 import TransportStream = require("winston-transport");
 
 declare namespace DatadogWinston {
-    interface DatadogTransportOptions extends TransportStream.TransportStreamOptions {
+    interface DatadogTransportOptions
+        extends TransportStream.TransportStreamOptions {
         apiKey: string;
         hostname?: string | undefined;
         service?: string | undefined;

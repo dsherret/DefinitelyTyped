@@ -13,45 +13,109 @@ import tough = require("tough-cookie");
 import { Url } from "url";
 
 declare namespace request {
-    interface RequestAPI<TRequest extends Request, TOptions extends CoreOptions, TUriUrlOptions> {
-        defaults(options: TOptions): RequestAPI<TRequest, TOptions, RequiredUriUrl>;
-        defaults(options: RequiredUriUrl & TOptions): DefaultUriUrlRequestApi<TRequest, TOptions, OptionalUriUrl>;
+    interface RequestAPI<
+        TRequest extends Request,
+        TOptions extends CoreOptions,
+        TUriUrlOptions,
+    > {
+        defaults(
+            options: TOptions,
+        ): RequestAPI<TRequest, TOptions, RequiredUriUrl>;
+        defaults(
+            options: RequiredUriUrl & TOptions,
+        ): DefaultUriUrlRequestApi<TRequest, TOptions, OptionalUriUrl>;
 
         (uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
         (uri: string, callback?: RequestCallback): TRequest;
-        (options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        (
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
 
-        get(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        get(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         get(uri: string, callback?: RequestCallback): TRequest;
-        get(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        get(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
 
-        post(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        post(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         post(uri: string, callback?: RequestCallback): TRequest;
-        post(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        post(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
 
-        put(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        put(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         put(uri: string, callback?: RequestCallback): TRequest;
-        put(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        put(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
 
-        head(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        head(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         head(uri: string, callback?: RequestCallback): TRequest;
-        head(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        head(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
 
-        patch(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        patch(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         patch(uri: string, callback?: RequestCallback): TRequest;
-        patch(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        patch(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
 
-        del(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        del(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         del(uri: string, callback?: RequestCallback): TRequest;
-        del(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        del(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
 
-        delete(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        delete(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         delete(uri: string, callback?: RequestCallback): TRequest;
-        delete(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        delete(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
 
-        initParams(uri: string, options?: TOptions, callback?: RequestCallback): RequiredUriUrl & TOptions;
         initParams(
-            uriOrOpts: string | RequiredUriUrl & TOptions,
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): RequiredUriUrl & TOptions;
+        initParams(
+            uriOrOpts: string | (RequiredUriUrl & TOptions),
             callback?: RequestCallback,
         ): RequiredUriUrl & TOptions;
 
@@ -62,45 +126,98 @@ declare namespace request {
         debug: boolean;
     }
 
-    interface DefaultUriUrlRequestApi<TRequest extends Request, TOptions extends CoreOptions, TUriUrlOptions>
-        extends RequestAPI<TRequest, TOptions, TUriUrlOptions>
-    {
-        defaults(options: TOptions): DefaultUriUrlRequestApi<TRequest, TOptions, OptionalUriUrl>;
+    interface DefaultUriUrlRequestApi<
+        TRequest extends Request,
+        TOptions extends CoreOptions,
+        TUriUrlOptions,
+    > extends RequestAPI<TRequest, TOptions, TUriUrlOptions> {
+        defaults(
+            options: TOptions,
+        ): DefaultUriUrlRequestApi<TRequest, TOptions, OptionalUriUrl>;
         (callback?: RequestCallback): TRequest;
 
-        get(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        get(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         get(uri: string, callback?: RequestCallback): TRequest;
-        get(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        get(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         get(callback?: RequestCallback): TRequest;
 
-        post(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        post(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         post(uri: string, callback?: RequestCallback): TRequest;
-        post(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        post(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         post(callback?: RequestCallback): TRequest;
 
-        put(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        put(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         put(uri: string, callback?: RequestCallback): TRequest;
-        put(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        put(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         put(callback?: RequestCallback): TRequest;
 
-        head(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        head(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         head(uri: string, callback?: RequestCallback): TRequest;
-        head(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        head(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         head(callback?: RequestCallback): TRequest;
 
-        patch(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        patch(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         patch(uri: string, callback?: RequestCallback): TRequest;
-        patch(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        patch(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         patch(callback?: RequestCallback): TRequest;
 
-        del(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        del(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         del(uri: string, callback?: RequestCallback): TRequest;
-        del(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        del(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         del(callback?: RequestCallback): TRequest;
 
-        delete(uri: string, options?: TOptions, callback?: RequestCallback): TRequest;
+        delete(
+            uri: string,
+            options?: TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         delete(uri: string, callback?: RequestCallback): TRequest;
-        delete(options: TUriUrlOptions & TOptions, callback?: RequestCallback): TRequest;
+        delete(
+            options: TUriUrlOptions & TOptions,
+            callback?: RequestCallback,
+        ): TRequest;
         delete(callback?: RequestCallback): TRequest;
     }
 
@@ -131,7 +248,10 @@ declare namespace request {
         headers?: Headers | undefined;
         body?: any;
         family?: 4 | 6 | undefined;
-        followRedirect?: boolean | ((response: http.IncomingMessage) => boolean) | undefined;
+        followRedirect?:
+            | boolean
+            | ((response: http.IncomingMessage) => boolean)
+            | undefined;
         followAllRedirects?: boolean | undefined;
         followOriginalHttpMethod?: boolean | undefined;
         maxRedirects?: number | undefined;
@@ -179,17 +299,22 @@ declare namespace request {
         url?: string | undefined;
         method?: string | undefined;
         headers?: NameValuePair[] | undefined;
-        postData?: {
-            mimeType?: string | undefined;
-            params?: NameValuePair[] | undefined;
-        } | undefined;
+        postData?:
+            | {
+                  mimeType?: string | undefined;
+                  params?: NameValuePair[] | undefined;
+              }
+            | undefined;
     }
 
     interface ExtraPoolOptions {
         maxSockets?: number | undefined;
     }
 
-    type PoolOptions = false | { [key: string]: http.Agent | https.Agent } & ExtraPoolOptions | ExtraPoolOptions;
+    type PoolOptions =
+        | false
+        | ({ [key: string]: http.Agent | https.Agent } & ExtraPoolOptions)
+        | ExtraPoolOptions;
 
     interface NameValuePair {
         name: string;
@@ -200,9 +325,9 @@ declare namespace request {
         chunked?: boolean | undefined;
         data?:
             | Array<{
-                "content-type"?: string | undefined;
-                body: MultipartBody;
-            }>
+                  "content-type"?: string | undefined;
+                  body: MultipartBody;
+              }>
             | undefined;
     }
 
@@ -225,7 +350,12 @@ declare namespace request {
         json(val: any): Request;
         aws(opts: AWSOptions, now?: boolean): Request;
         hawk(opts: HawkOptions): void;
-        auth(username: string, password: string, sendImmediately?: boolean, bearer?: string): Request;
+        auth(
+            username: string,
+            password: string,
+            sendImmediately?: boolean,
+            bearer?: string,
+        ): Request;
         oauth(oauth: OAuthOptions): Request;
         jar(jar: CookieJar): Request;
 
@@ -234,12 +364,19 @@ declare namespace request {
         on(event: "response", listener: (resp: Response) => void): this;
         on(event: "data", listener: (data: Buffer | string) => void): this;
         on(event: "error", listener: (e: Error) => void): this;
-        on(event: "complete", listener: (resp: Response, body?: string | Buffer) => void): this;
+        on(
+            event: "complete",
+            listener: (resp: Response, body?: string | Buffer) => void,
+        ): this;
         on(event: "pipe", listener: (src: stream.Readable) => void): this;
         on(event: "socket", listener: (src: net.Socket) => void): this;
 
         write(buffer: Buffer | string, cb?: (err?: Error) => void): boolean;
-        write(str: string, encoding?: string, cb?: (err?: Error) => void): boolean;
+        write(
+            str: string,
+            encoding?: string,
+            cb?: (err?: Error) => void,
+        ): boolean;
         end(cb?: () => void): any;
         end(chunk: string | Buffer, cb?: () => void): any;
         end(str: string, encoding?: string, cb?: () => void): any;
@@ -293,13 +430,15 @@ declare namespace request {
         href: string;
         startTime?: number | undefined;
         startTimeNow?: number | undefined;
-        timings?: {
-            socket: number;
-            lookup: number;
-            connect: number;
-            response: number;
-            end: number;
-        } | undefined;
+        timings?:
+            | {
+                  socket: number;
+                  lookup: number;
+                  connect: number;
+                  response: number;
+                  end: number;
+              }
+            | undefined;
 
         // set in `Request.prototype.onRequestResponse`
         elapsedTime?: number | undefined;
@@ -316,21 +455,25 @@ declare namespace request {
 
         timingStart?: number | undefined;
         elapsedTime?: number | undefined;
-        timings?: {
-            socket: number;
-            lookup: number;
-            connect: number;
-            response: number;
-            end: number;
-        } | undefined;
-        timingPhases?: {
-            wait: number;
-            dns: number;
-            tcp: number;
-            firstByte: number;
-            download: number;
-            total: number;
-        } | undefined;
+        timings?:
+            | {
+                  socket: number;
+                  lookup: number;
+                  connect: number;
+                  response: number;
+                  end: number;
+              }
+            | undefined;
+        timingPhases?:
+            | {
+                  wait: number;
+                  dns: number;
+                  tcp: number;
+                  firstByte: number;
+                  download: number;
+                  total: number;
+              }
+            | undefined;
     }
 
     // aliases for backwards compatibility
@@ -386,10 +529,18 @@ declare namespace request {
     type Cookie = tough.Cookie;
 
     interface CookieJar {
-        setCookie(cookieOrStr: Cookie | string, uri: string | Url, options?: tough.CookieJar.SetCookieOptions): void;
+        setCookie(
+            cookieOrStr: Cookie | string,
+            uri: string | Url,
+            options?: tough.CookieJar.SetCookieOptions,
+        ): void;
         getCookieString(uri: string | Url): string;
         getCookies(uri: string | Url): Cookie[];
     }
 }
-declare var request: request.RequestAPI<request.Request, request.CoreOptions, request.RequiredUriUrl>;
+declare var request: request.RequestAPI<
+    request.Request,
+    request.CoreOptions,
+    request.RequiredUriUrl
+>;
 export = request;

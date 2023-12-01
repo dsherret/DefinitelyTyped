@@ -30,7 +30,9 @@ export interface Driver {
     ensureMigrations(cb: ErrorOnlyCallback): void;
     lockMigrations(cb: ErrorOnlyCallback): void;
     unlockMigrations(cb: ErrorOnlyCallback): void;
-    getMigrations(cb: (error: Error | null, migrations: DriverMigration[]) => void): void;
+    getMigrations(
+        cb: (error: Error | null, migrations: DriverMigration[]) => void,
+    ): void;
     runMigration(migration: ParsedMigration, cb: ErrorOnlyCallback): void;
 }
 

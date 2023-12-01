@@ -120,7 +120,7 @@ const d = new Dygraph(new HTMLDivElement(), "data", {
         // $ExpectType string
         seriesName;
     },
-    unhighlightCallback: event => {
+    unhighlightCallback: (event) => {
         // $ExpectType MouseEvent
         event;
     },
@@ -154,13 +154,17 @@ const d = new Dygraph(new HTMLDivElement(), "data", {
 });
 
 // $ExpectType Dygraph
-const dygraphWithErrorBars = new Dygraph(new HTMLDivElement(), [
-    [0, [1, 1], [3, 2]],
-    [1, [0, 2], [3, 1]],
-    [2, [5, 4], [3, 5]],
-], {
-    errorBars: true,
-});
+const dygraphWithErrorBars = new Dygraph(
+    new HTMLDivElement(),
+    [
+        [0, [1, 1], [3, 2]],
+        [1, [0, 2], [3, 1]],
+        [2, [5, 4], [3, 5]],
+    ],
+    {
+        errorBars: true,
+    },
+);
 
 // $ExpectType void
 d.resize();

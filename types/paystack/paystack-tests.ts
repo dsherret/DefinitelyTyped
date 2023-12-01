@@ -22,7 +22,11 @@ import Paystack = require("paystack");
 
     trans = await paystack.misc.list_banks({ perPage: 50, page: 1 });
 
-    trans = await paystack.plan.create({ name: "string", amount: 3000, interval: "hourly" });
+    trans = await paystack.plan.create({
+        name: "string",
+        amount: 3000,
+        interval: "hourly",
+    });
 
     trans = await paystack.subaccount.create({
         account_number: "",

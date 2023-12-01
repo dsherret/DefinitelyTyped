@@ -88,5 +88,5 @@ interface MessageEvent<T = any> extends Event {
 }
 declare var MessageEvent: {
     prototype: MessageEvent;
-    new<T>(type: string, eventInitDict?: MessageEventInit<T>): MessageEvent<T>;
+    new <T>(type: string, eventInitDict?: MessageEventInit<T>): MessageEvent<T>;
 };

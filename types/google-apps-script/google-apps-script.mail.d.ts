@@ -40,8 +40,18 @@ declare namespace GoogleAppsScript {
             getRemainingDailyQuota(): Integer;
             sendEmail(message: MailAdvancedParameters): void;
             sendEmail(recipient: string, subject: string, body: string): void;
-            sendEmail(recipient: string, subject: string, body: string, options: MailAdvancedParameters): void;
-            sendEmail(to: string, replyTo: string, subject: string, body: string): void;
+            sendEmail(
+                recipient: string,
+                subject: string,
+                body: string,
+                options: MailAdvancedParameters,
+            ): void;
+            sendEmail(
+                to: string,
+                replyTo: string,
+                subject: string,
+                body: string,
+            ): void;
         }
     }
 }

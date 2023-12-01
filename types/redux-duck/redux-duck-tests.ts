@@ -8,7 +8,9 @@ import { createDuck, DuckBuilder } from "redux-duck";
 // flux-standard-action is not part of types-publisher dependencywhitelist
 // https://github.com/redux-utilities/flux-standard-action/issues/119
 // below is a minimalistic implementation that should work until the above questions are answered
-type FSA<T extends string, P = undefined> = P extends undefined ? Action<T> : Action<T> & { payload: P };
+type FSA<T extends string, P = undefined> = P extends undefined
+    ? Action<T>
+    : Action<T> & { payload: P };
 
 type Food = string;
 
@@ -38,14 +40,16 @@ enum WinnieActions {
 
 type AlfredAction =
     | FSA<
-        AlfredActions.EAT,
-        {
-            readonly food: Food;
-        }
-    >
+          AlfredActions.EAT,
+          {
+              readonly food: Food;
+          }
+      >
     | FSA<AlfredActions.SLEEP>;
 
-type WinnieAction = FSA<WinnieActions.GO_TO_WORK> | FSA<WinnieActions.RETURN_HOME>;
+type WinnieAction =
+    | FSA<WinnieActions.GO_TO_WORK>
+    | FSA<WinnieActions.RETURN_HOME>;
 
 // Duck Initialization
 
@@ -83,11 +87,11 @@ const winnieExports = {
     WinnieActions,
     default: winnieBuilder.createReducer<WinnieState>(
         {
-            [WinnieActions.GO_TO_WORK]: state => ({
+            [WinnieActions.GO_TO_WORK]: (state) => ({
                 ...state,
                 home: false,
             }),
-            [WinnieActions.RETURN_HOME]: state => ({
+            [WinnieActions.RETURN_HOME]: (state) => ({
                 ...state,
                 home: true,
             }),
@@ -107,17 +111,17 @@ const alfredExports = {
                 ...state,
                 belly: [...state.belly, food],
             }),
-            [AlfredActions.SLEEP]: state => ({
+            [AlfredActions.SLEEP]: (state) => ({
                 ...state,
                 belly: [],
             }),
             // Winnie's action types are exported and
             // can therefore cause changes in Alfred.
-            [winnieExports.WinnieActions.GO_TO_WORK]: state => ({
+            [winnieExports.WinnieActions.GO_TO_WORK]: (state) => ({
                 ...state,
                 happy: false,
             }),
-            [winnieExports.WinnieActions.RETURN_HOME]: state => ({
+            [winnieExports.WinnieActions.RETURN_HOME]: (state) => ({
                 ...state,
                 happy: true,
             }),

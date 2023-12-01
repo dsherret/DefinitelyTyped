@@ -10,7 +10,12 @@ import {
     routinePromiseWatcherSaga,
 } from "redux-saga-routines";
 
-import { Action, ActionFunction0, ActionFunction1, ActionFunctionAny } from "redux-actions";
+import {
+    Action,
+    ActionFunction0,
+    ActionFunction1,
+    ActionFunctionAny,
+} from "redux-actions";
 
 type specific_number = PayloadTypeOrUndefinable<number>; // $ExpectType number
 type specific_struct = PayloadTypeOrUndefinable<{ value: string }>; // $ExpectType { value: string; }
@@ -27,7 +32,10 @@ routine_anyargs.trigger(42);
 routine_anyargs.request();
 
 const promisified_routine_anyargs = promisifyRoutine(routine_anyargs);
-const bound_promisified_routine_anyargs = bindPromiseCreators(promisified_routine_anyargs, (_: any) => _);
+const bound_promisified_routine_anyargs = bindPromiseCreators(
+    promisified_routine_anyargs,
+    (_: any) => _,
+);
 bound_promisified_routine_anyargs();
 bound_promisified_routine_anyargs("string");
 bound_promisified_routine_anyargs(42);
@@ -42,7 +50,10 @@ routine_noargs.trigger(42);
 routine_noargs.request();
 
 const promisified_routine_noargs = promisifyRoutine(routine_noargs);
-const bound_promisified_routine_noargs = bindPromiseCreators(promisified_routine_noargs, (_: any) => _);
+const bound_promisified_routine_noargs = bindPromiseCreators(
+    promisified_routine_noargs,
+    (_: any) => _,
+);
 bound_promisified_routine_noargs();
 // @ts-expect-error
 bound_promisified_routine_noargs("string");
@@ -62,7 +73,10 @@ routine_strarg.request();
 routine_strarg.request("string");
 
 const promisified_routine_strarg = promisifyRoutine(routine_strarg);
-const bound_promisified_routine_strarg = bindPromiseCreators(promisified_routine_strarg, (_: any) => _);
+const bound_promisified_routine_strarg = bindPromiseCreators(
+    promisified_routine_strarg,
+    (_: any) => _,
+);
 // @ts-expect-error
 bound_promisified_routine_strarg();
 bound_promisified_routine_strarg("string");

@@ -50,27 +50,34 @@ const VerifyFunctionWithRequest: VerifyFunctionWithRequest = (
     verifyCallback(new Error("unimplemented"));
 };
 
-const appleStrategy = new AppleStrategy({
-    clientID: "",
-    teamID: "",
-    callbackURL: "",
-    keyID: "",
-    privateKeyString: "",
-    privateKeyLocation: "",
-    passReqToCallback: false,
-}, (accessToken, refreshToken, idToken, profile, cb) => {
-    cb(null, {});
-});
+const appleStrategy = new AppleStrategy(
+    {
+        clientID: "",
+        teamID: "",
+        callbackURL: "",
+        keyID: "",
+        privateKeyString: "",
+        privateKeyLocation: "",
+        passReqToCallback: false,
+    },
+    (accessToken, refreshToken, idToken, profile, cb) => {
+        cb(null, {});
+    },
+);
 
-const appleStrategyWithRequest = new Strategy({
-    clientID: "",
-    teamID: "",
-    callbackURL: "",
-    keyID: "",
-    privateKeyString: "",
-    privateKeyLocation: "",
-}, (req, accessToken, refreshToken, idToken, profile, cb) => {
-    cb(null, {});
-});
+const appleStrategyWithRequest = new Strategy(
+    {
+        clientID: "",
+        teamID: "",
+        callbackURL: "",
+        keyID: "",
+        privateKeyString: "",
+        privateKeyLocation: "",
+    },
+    (req, accessToken, refreshToken, idToken, profile, cb) => {
+        cb(null, {});
+    },
+);
 
-const AppleAuthorizationParams: AppleAuthorizationParams = appleStrategy.authorizationParams({});
+const AppleAuthorizationParams: AppleAuthorizationParams =
+    appleStrategy.authorizationParams({});

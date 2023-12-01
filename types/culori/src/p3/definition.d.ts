@@ -20,6 +20,7 @@ interface P3DefinitionMixin {
     };
 }
 
-declare const definition: Omit<typeof rgb, keyof P3DefinitionMixin> & P3DefinitionMixin;
+declare const definition: Omit<typeof rgb, keyof P3DefinitionMixin> &
+    P3DefinitionMixin;
 
 export default definition;

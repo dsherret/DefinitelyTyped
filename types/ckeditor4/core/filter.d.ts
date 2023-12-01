@@ -2,7 +2,7 @@ declare namespace CKEDITOR {
     interface CKEditorStatic {
         readonly filter: {
             instances: { [id: string]: filter };
-            new(editorOrRules: editor | filter.allowedContentRules): filter;
+            new (editorOrRules: editor | filter.allowedContentRules): filter;
         };
     }
 
@@ -13,18 +13,28 @@ declare namespace CKEDITOR {
         readonly disabled: boolean;
         readonly disallowedContent: filter.disallowedContentRule[];
         readonly editor: editor;
-        readonly elementCallbacks: Array<(element: htmlParser.element) => number>;
+        readonly elementCallbacks: Array<
+            (element: htmlParser.element) => number
+        >;
         readonly id: number;
 
         addContentForms(forms: unknown[]): void;
 
-        addElementCallback(callback: (element: htmlParser.element) => number): void;
+        addElementCallback(
+            callback: (element: htmlParser.element) => number,
+        ): void;
 
         addFeature(feature: feature): boolean;
 
-        addTransformations(transformations: Array<Array<string | filter.transformation>>): void;
+        addTransformations(
+            transformations: Array<Array<string | filter.transformation>>,
+        ): void;
 
-        allow(newRules: filter.allowedContentRules, featureName?: string, overrideCustom?: boolean): boolean;
+        allow(
+            newRules: filter.allowedContentRules,
+            featureName?: string,
+            overrideCustom?: boolean,
+        ): boolean;
 
         applyTo(
             fragment: htmlParser.fragment | htmlParser.element,
@@ -33,7 +43,11 @@ declare namespace CKEDITOR {
             enterMode?: number,
         ): boolean;
 
-        check(test: filter.contentRule, applyTransformations?: boolean, strictCheck?: boolean): boolean;
+        check(
+            test: filter.contentRule,
+            applyTransformations?: boolean,
+            strictCheck?: boolean,
+        ): boolean;
 
         checkFeature(feature: feature): boolean;
 
@@ -55,20 +69,31 @@ declare namespace CKEDITOR {
         }
 
         /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_filter_allowedContentRules.html */
-        type allowedContentRule = string | style | allowedContentObject | allowedContentRule[];
+        type allowedContentRule =
+            | string
+            | style
+            | allowedContentObject
+            | allowedContentRule[];
         type allowedContentRules = allowedContentRule | allowedContentRule[];
 
         type contentRule = string | style;
 
         /** https://ckeditor.com/docs/ckeditor4/latest/api/CKEDITOR_filter_disallowedContentRules.html */
         type disallowedContentRule = string | { [key: string]: unknown };
-        type disallowedContentRules = disallowedContentRule | disallowedContentRule[];
+        type disallowedContentRules =
+            | disallowedContentRule
+            | disallowedContentRule[];
 
         interface transformation {
             check?: string | undefined;
             element?: string | style | undefined;
-            left?: ((element: htmlParser.element | style) => boolean) | undefined;
-            right: (element: htmlParser.element, tools: string | transformationTools) => boolean;
+            left?:
+                | ((element: htmlParser.element | style) => boolean)
+                | undefined;
+            right: (
+                element: htmlParser.element,
+                tools: string | transformationTools,
+            ) => boolean;
         }
 
         const transformationTools: transformationTools;
@@ -78,9 +103,17 @@ declare namespace CKEDITOR {
 
             alignmentToStyle(element: htmlParser.element): void;
 
-            lengthToAttribute(element: htmlParser.element, styleName: string, attrName?: string): void;
+            lengthToAttribute(
+                element: htmlParser.element,
+                styleName: string,
+                attrName?: string,
+            ): void;
 
-            lengthToStyle(element: htmlParser.element, styleName: string, attrName?: string): void;
+            lengthToStyle(
+                element: htmlParser.element,
+                styleName: string,
+                attrName?: string,
+            ): void;
 
             matchesTyle(element: htmlParser.element, style: style): void;
 

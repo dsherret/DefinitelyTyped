@@ -3,7 +3,7 @@ import * as L from "leaflet";
 declare module "leaflet" {
     namespace Control {
         interface PolylineMeasure extends Control {
-            new(options?: PolylineMeasureOptions): any;
+            new (options?: PolylineMeasureOptions): any;
         }
 
         interface PolylineMeasureOptions {
@@ -31,6 +31,8 @@ declare module "leaflet" {
     }
 
     namespace control {
-        function polylineMeasure(options?: Control.PolylineMeasureOptions): Control.PolylineMeasure;
+        function polylineMeasure(
+            options?: Control.PolylineMeasureOptions,
+        ): Control.PolylineMeasure;
     }
 }

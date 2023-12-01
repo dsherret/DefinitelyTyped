@@ -156,14 +156,20 @@ declare class HIDDevice extends EventTarget {
 
     receiveFeatureReport(reportId: number): Promise<DataView>;
 
-    addEventListener(type: "inputreport", listener: (this: this, ev: HIDInputReportEvent) => any): void;
+    addEventListener(
+        type: "inputreport",
+        listener: (this: this, ev: HIDInputReportEvent) => any,
+    ): void;
     addEventListener(
         type: string,
         listener: EventListenerOrEventListenerObject | null,
         options?: boolean | AddEventListenerOptions,
     ): void;
 
-    removeEventListener(type: "inputreport", callback: (this: this, ev: HIDInputReportEvent) => any): void;
+    removeEventListener(
+        type: "inputreport",
+        callback: (this: this, ev: HIDInputReportEvent) => any,
+    ): void;
     removeEventListener(
         type: string,
         callback: EventListenerOrEventListenerObject | null,

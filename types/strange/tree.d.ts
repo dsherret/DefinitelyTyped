@@ -29,7 +29,9 @@ declare class RangeTree<T extends Date | number | string> {
      * var ranges = [new Range(0, 10), new Range(20, 30), new Range(40, 50)]
      * RangeTree.from(ranges).search(42) // => [new Range(40, 50)]
      */
-    static from<U extends Date | number | string>(ranges: Array<Range<U>>): RangeTree<U>;
+    static from<U extends Date | number | string>(
+        ranges: Array<Range<U>>,
+    ): RangeTree<U>;
 
     /**
      * Ranges of current tree node.
@@ -38,7 +40,11 @@ declare class RangeTree<T extends Date | number | string> {
     private left: RangeTree<T> | null;
     private right: RangeTree<T> | null;
 
-    constructor(ranges: Range<T> | Array<Range<T>>, left?: RangeTree<T> | null, right?: RangeTree<T> | null);
+    constructor(
+        ranges: Range<T> | Array<Range<T>>,
+        left?: RangeTree<T> | null,
+        right?: RangeTree<T> | null,
+    );
 
     /**
      * Search for ranges that include the given value or, given a range, intersect
@@ -55,5 +61,4 @@ declare class RangeTree<T extends Date | number | string> {
     search(valueOrRange: null | T | Range<T>): Array<Range<T>>;
 }
 
-declare namespace RangeTree {
-}
+declare namespace RangeTree {}

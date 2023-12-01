@@ -60,6 +60,6 @@ declare namespace GoogleAdsScripts {
         };
 
         type ExtensionScheduleDayOfWeekType =
-            typeof ExtensionScheduleDayOfWeek[keyof typeof ExtensionScheduleDayOfWeek];
+            (typeof ExtensionScheduleDayOfWeek)[keyof typeof ExtensionScheduleDayOfWeek];
     }
 }

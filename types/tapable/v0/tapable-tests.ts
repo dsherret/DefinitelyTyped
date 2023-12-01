@@ -2,13 +2,16 @@ import Tapable = require("tapable");
 
 class DllPlugin {
     apply(compiler: Compiler) {
-        compiler.plugin("doSomething", function(...args: string[]) {
+        compiler.plugin("doSomething", function (...args: string[]) {
             console.log(args);
         });
 
-        compiler.plugin(["doSomething", "doNothing"], function(...args: string[]) {
-            console.log(args);
-        });
+        compiler.plugin(
+            ["doSomething", "doNothing"],
+            function (...args: string[]) {
+                console.log(args);
+            },
+        );
     }
 }
 
@@ -20,8 +23,7 @@ class Compiler extends Tapable {
 
 const compiler = new Compiler();
 
-let callback: Tapable.CallbackFunction = function() {
-};
+let callback: Tapable.CallbackFunction = function () {};
 
 compiler.apply(new DllPlugin());
 

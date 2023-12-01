@@ -44,10 +44,16 @@ const mapCenter = mercatorWithOptions.getMapCenterByLngLatPosition({
     pos: [100, 200],
 });
 
-const fittedMercator = mercatorWithOptions.fitBounds([[10, 20], [30, 40]], {
-    padding: 10,
-    offset: [10, 20],
-});
+const fittedMercator = mercatorWithOptions.fitBounds(
+    [
+        [10, 20],
+        [30, 40],
+    ],
+    {
+        padding: 10,
+        offset: [10, 20],
+    },
+);
 
 const equalFitted = fittedMercator.equals(mercatorWithOptions);
 

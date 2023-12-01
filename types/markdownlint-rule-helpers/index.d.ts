@@ -157,7 +157,11 @@ export type FilterTokensHandler = (token: MarkdownIt.Token) => void;
 /**
  * Calls the provided function for each matching token.
  */
-export function filterTokens(params: markdownlint.RuleParams, type: string, handler: FilterTokensHandler): void;
+export function filterTokens(
+    params: markdownlint.RuleParams,
+    type: string,
+    handler: FilterTokensHandler,
+): void;
 
 export type LineMetadata = [
     line: string,
@@ -169,14 +173,19 @@ export type LineMetadata = [
     inBreak: boolean,
 ];
 
-export function getLineMetadata(params: markdownlint.RuleParams): LineMetadata[];
+export function getLineMetadata(
+    params: markdownlint.RuleParams,
+): LineMetadata[];
 
 export type ForEachLineHandler = (metadata: LineMetadata) => void;
 
 /**
  * Calls the provided function for each line.
  */
-export function forEachLine(lineMetadata: LineMetadata[], handler: ForEachLineHandler): void;
+export function forEachLine(
+    lineMetadata: LineMetadata[],
+    handler: ForEachLineHandler,
+): void;
 
 export interface FlattenedList {
     unordered: boolean;
@@ -195,14 +204,26 @@ export interface FlattenedList {
  */
 export function flattenLists(tokens: MarkdownIt.Token[]): FlattenedList[];
 
-export type ForEachHeadingHandler = (heading: MarkdownIt.Token, content: string, token: MarkdownIt.Token) => void;
+export type ForEachHeadingHandler = (
+    heading: MarkdownIt.Token,
+    content: string,
+    token: MarkdownIt.Token,
+) => void;
 
 /**
  * Calls the provided function for each heading's content
  */
-export function forEachHeading(params: markdownlint.RuleParams, handler: ForEachHeadingHandler): void;
+export function forEachHeading(
+    params: markdownlint.RuleParams,
+    handler: ForEachHeadingHandler,
+): void;
 
-export type InlineCodeSpanHandler = (code: string, lineIndex: number, columnIndex: number, ticks: number) => void;
+export type InlineCodeSpanHandler = (
+    code: string,
+    lineIndex: number,
+    columnIndex: number,
+    ticks: number,
+) => void;
 
 /**
  * Calls the provided function for each inline code span's content.
@@ -211,7 +232,10 @@ export type InlineCodeSpanHandler = (code: string, lineIndex: number, columnInde
  * @param handler Callback function taking (code, lineIndex,
  * columnIndex, ticks).
  */
-export function forEachInlineCodeSpan(input: string, handler: InlineCodeSpanHandler): void;
+export function forEachInlineCodeSpan(
+    input: string,
+    handler: InlineCodeSpanHandler,
+): void;
 
 /**
  * Adds ellipsis to the left/right/middle of the specified text.
@@ -276,7 +300,10 @@ export function addErrorContext(
  * @param lineMetadata Line metadata object.
  * @returns Array of ranges (lineIndex, columnIndex, length).
  */
-export function codeBlockAndSpanRanges(params: markdownlint.RuleParams, lineMetadata: LineMetadata): number[][];
+export function codeBlockAndSpanRanges(
+    params: markdownlint.RuleParams,
+    lineMetadata: LineMetadata,
+): number[][];
 
 /**
  * Determines whether the specified range is within another range.
@@ -287,7 +314,12 @@ export function codeBlockAndSpanRanges(params: markdownlint.RuleParams, lineMeta
  * @param length Length to check.
  * @returns True iff the specified range is within.
  */
-export function withinAnyRange(ranges: number[][], lineIndex: number, index: number, length: number): boolean;
+export function withinAnyRange(
+    ranges: number[][],
+    lineIndex: number,
+    index: number,
+    length: number,
+): boolean;
 
 /**
  * @returns a range object for a line by applying a RegExp
@@ -297,7 +329,10 @@ export function rangeFromRegExp(line: string, regexp: RegExp): [number, number];
 /**
  * @returns Whether the front matter includes a title
  */
-export function frontMatterHasTitle(frontMatterLines: string[], frontMatterTitlePattern?: string): boolean;
+export function frontMatterHasTitle(
+    frontMatterLines: string[],
+    frontMatterTitlePattern?: string,
+): boolean;
 
 export interface ReferenceLinkImageData {
     references: Map<string, number>;
@@ -310,7 +345,9 @@ export interface ReferenceLinkImageData {
 /**
  * Returns an object with information about reference links and images.
  */
-export function getReferenceLinkImageData(params: markdownlint.RuleParams): ReferenceLinkImageData;
+export function getReferenceLinkImageData(
+    params: markdownlint.RuleParams,
+): ReferenceLinkImageData;
 
 /**
  * Gets the most common line ending, falling back to the platform default.
@@ -319,7 +356,10 @@ export function getReferenceLinkImageData(params: markdownlint.RuleParams): Refe
  * @param os Node.js "os" module.
  * @returns Preferred line ending.
  */
-export function getPreferredLineEnding(input: string, os?: typeof import("node:os")): string;
+export function getPreferredLineEnding(
+    input: string,
+    os?: typeof import("node:os"),
+): string;
 
 /**
  * Normalizes the fields of a RuleOnErrorFixInfo instance.
@@ -341,7 +381,11 @@ export function normalizeFixInfo(
  * @param lineEnding Line ending to use.
  * @returns Fixed content.
  */
-export function applyFix(line: string, fixInfo: markdownlint.RuleOnErrorFixInfo, lineEnding: string): string | null;
+export function applyFix(
+    line: string,
+    fixInfo: markdownlint.RuleOnErrorFixInfo,
+    lineEnding: string,
+): string | null;
 
 /**
  * Applies as many fixes as possible to Markdown content.
@@ -350,7 +394,10 @@ export function applyFix(line: string, fixInfo: markdownlint.RuleOnErrorFixInfo,
  * @param errors RuleOnErrorInfo instances.
  * @returns Corrected content.
  */
-export function applyFixes(input: string, errors: markdownlint.RuleOnErrorInfo[]): string;
+export function applyFixes(
+    input: string,
+    errors: markdownlint.RuleOnErrorInfo[],
+): string;
 
 /**
  * Expands a path with a tilde to an absolute path.
@@ -359,4 +406,7 @@ export function applyFixes(input: string, errors: markdownlint.RuleOnErrorInfo[]
  * @param os Node.js "os" module.
  * @returns Absolute path (or original path).
  */
-export function expandTildePath(file: string, os: typeof import("node:os")): string;
+export function expandTildePath(
+    file: string,
+    os: typeof import("node:os"),
+): string;

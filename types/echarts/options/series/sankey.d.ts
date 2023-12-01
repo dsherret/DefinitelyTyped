@@ -259,835 +259,844 @@ declare namespace echarts {
              *
              * @see https://echarts.apache.org/en/option.html#series-sankey.label
              */
-            label?: {
-                /**
-                 * Whether to show label.
-                 *
-                 * @default
-                 * "true"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.show
-                 */
-                show?: boolean | undefined;
+            label?:
+                | {
+                      /**
+                       * Whether to show label.
+                       *
+                       * @default
+                       * "true"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.show
+                       */
+                      show?: boolean | undefined;
 
-                /**
-                 * Label position.
-                 *
-                 * **Followings are the options:**
-                 *
-                 * + \[x, y\]
-                 *
-                 * Use relative percentage, or absolute pixel values to represent
-                 * position of label relative to top-left corner of bounding
-                 * box. For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
-                 *
-                 * + 'top'
-                 *
-                 * + 'left'
-                 * + 'right'
-                 * + 'bottom'
-                 * + 'inside'
-                 * + 'insideLeft'
-                 * + 'insideRight'
-                 * + 'insideTop'
-                 * + 'insideBottom'
-                 * + 'insideTopLeft'
-                 * + 'insideBottomLeft'
-                 * + 'insideTopRight'
-                 * + 'insideBottomRight'
-                 *
-                 * See:
-                 * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
-                 * .
-                 *
-                 * @default
-                 * "right"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.position
-                 */
-                position?: any[] | string | undefined;
+                      /**
+                       * Label position.
+                       *
+                       * **Followings are the options:**
+                       *
+                       * + \[x, y\]
+                       *
+                       * Use relative percentage, or absolute pixel values to represent
+                       * position of label relative to top-left corner of bounding
+                       * box. For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
+                       *
+                       * + 'top'
+                       *
+                       * + 'left'
+                       * + 'right'
+                       * + 'bottom'
+                       * + 'inside'
+                       * + 'insideLeft'
+                       * + 'insideRight'
+                       * + 'insideTop'
+                       * + 'insideBottom'
+                       * + 'insideTopLeft'
+                       * + 'insideBottomLeft'
+                       * + 'insideTopRight'
+                       * + 'insideBottomRight'
+                       *
+                       * See:
+                       * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
+                       * .
+                       *
+                       * @default
+                       * "right"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.position
+                       */
+                      position?: any[] | string | undefined;
 
-                /**
-                 * Distance to the host graphic element.
-                 * Works when position is string value (like `'top'`、`'insideRight'`).
-                 *
-                 * See:
-                 * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
-                 * .
-                 *
-                 * @default
-                 * 5
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.distance
-                 */
-                distance?: number | undefined;
+                      /**
+                       * Distance to the host graphic element.
+                       * Works when position is string value (like `'top'`、`'insideRight'`).
+                       *
+                       * See:
+                       * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
+                       * .
+                       *
+                       * @default
+                       * 5
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.distance
+                       */
+                      distance?: number | undefined;
 
-                /**
-                 * Rotate label, from -90 degree to 90, positive value represents
-                 * rotate anti-clockwise.
-                 *
-                 * See:
-                 * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
-                 * .
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.rotate
-                 */
-                rotate?: number | undefined;
+                      /**
+                       * Rotate label, from -90 degree to 90, positive value represents
+                       * rotate anti-clockwise.
+                       *
+                       * See:
+                       * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
+                       * .
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.rotate
+                       */
+                      rotate?: number | undefined;
 
-                /**
-                 * Whether to move text slightly.
-                 * For example: `[30, 40]` means move `30` horizontally and
-                 * move `40` vertically.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.offset
-                 */
-                offset?: any[] | undefined;
+                      /**
+                       * Whether to move text slightly.
+                       * For example: `[30, 40]` means move `30` horizontally and
+                       * move `40` vertically.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.offset
+                       */
+                      offset?: any[] | undefined;
 
-                /**
-                 * Data label formatter, which supports string template and
-                 * callback function.
-                 * In either form, `\n` is supported to represent a new line.
-                 *
-                 * **String template**
-                 *
-                 * Model variation includes:
-                 *
-                 * + `{a}`: series name.
-                 * + `{b}`: the name of a data item.
-                 * + `{c}`: the value of a data item.
-                 * + `{d}`: the percent.
-                 * + `{@xxx}: the value of a dimension named`'xxx'`, for example,`{@product}`refers
-                 * the value of`'product'\` dimension。
-                 * + `{@[n]}: the value of a dimension at the index of`n`, for
-                 * example,`{@\[3\]}\` refers the value at dimensions\[3\].
-                 *
-                 * **example:**
-                 *
-                 * ```
-                 * formatter: '{b}: {d}'
-                 *
-                 * ```
-                 *
-                 * **Callback function**
-                 *
-                 * Callback function is in form of:
-                 *
-                 * ```
-                 * (params: Object|Array) => string
-                 *
-                 * ```
-                 *
-                 * where `params` is the single dataset needed by formatter,
-                 * which is formed as:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.formatter
-                 */
-                formatter?: Function | string | undefined;
+                      /**
+                       * Data label formatter, which supports string template and
+                       * callback function.
+                       * In either form, `\n` is supported to represent a new line.
+                       *
+                       * **String template**
+                       *
+                       * Model variation includes:
+                       *
+                       * + `{a}`: series name.
+                       * + `{b}`: the name of a data item.
+                       * + `{c}`: the value of a data item.
+                       * + `{d}`: the percent.
+                       * + `{@xxx}: the value of a dimension named`'xxx'`, for example,`{@product}`refers
+                       * the value of`'product'\` dimension。
+                       * + `{@[n]}: the value of a dimension at the index of`n`, for
+                       * example,`{@\[3\]}\` refers the value at dimensions\[3\].
+                       *
+                       * **example:**
+                       *
+                       * ```
+                       * formatter: '{b}: {d}'
+                       *
+                       * ```
+                       *
+                       * **Callback function**
+                       *
+                       * Callback function is in form of:
+                       *
+                       * ```
+                       * (params: Object|Array) => string
+                       *
+                       * ```
+                       *
+                       * where `params` is the single dataset needed by formatter,
+                       * which is formed as:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.formatter
+                       */
+                      formatter?: Function | string | undefined;
 
-                /**
-                 * text color.
-                 *
-                 * If set as `'auto'`, the color will assigned as visual color,
-                 * such as series color.
-                 *
-                 * @default
-                 * ""#fff""
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.color
-                 */
-                color?: string | undefined;
+                      /**
+                       * text color.
+                       *
+                       * If set as `'auto'`, the color will assigned as visual color,
+                       * such as series color.
+                       *
+                       * @default
+                       * ""#fff""
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.color
+                       */
+                      color?: string | undefined;
 
-                /**
-                 * font style
-                 *
-                 * Options are:
-                 *
-                 * + `'normal'`
-                 * + `'italic'`
-                 * + `'oblique'`
-                 *
-                 * @default
-                 * "normal"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.fontStyle
-                 */
-                fontStyle?: string | undefined;
+                      /**
+                       * font style
+                       *
+                       * Options are:
+                       *
+                       * + `'normal'`
+                       * + `'italic'`
+                       * + `'oblique'`
+                       *
+                       * @default
+                       * "normal"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.fontStyle
+                       */
+                      fontStyle?: string | undefined;
 
-                /**
-                 * font thick weight
-                 *
-                 * Options are:
-                 *
-                 * + `'normal'`
-                 * + `'bold'`
-                 * + `'bolder'`
-                 * + `'lighter'`
-                 * + 100 | 200 | 300 | 400...
-                 *
-                 * @default
-                 * "normal"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.fontWeight
-                 */
-                fontWeight?: string | number | undefined;
+                      /**
+                       * font thick weight
+                       *
+                       * Options are:
+                       *
+                       * + `'normal'`
+                       * + `'bold'`
+                       * + `'bolder'`
+                       * + `'lighter'`
+                       * + 100 | 200 | 300 | 400...
+                       *
+                       * @default
+                       * "normal"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.fontWeight
+                       */
+                      fontWeight?: string | number | undefined;
 
-                /**
-                 * font family
-                 *
-                 * Can also be 'serif' , 'monospace', ...
-                 *
-                 * @default
-                 * "sans-serif"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.fontFamily
-                 */
-                fontFamily?: string | undefined;
+                      /**
+                       * font family
+                       *
+                       * Can also be 'serif' , 'monospace', ...
+                       *
+                       * @default
+                       * "sans-serif"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.fontFamily
+                       */
+                      fontFamily?: string | undefined;
 
-                /**
-                 * font size
-                 *
-                 * @default
-                 * 12
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.fontSize
-                 */
-                fontSize?: number | undefined;
+                      /**
+                       * font size
+                       *
+                       * @default
+                       * 12
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.fontSize
+                       */
+                      fontSize?: number | undefined;
 
-                /**
-                 * Horizontal alignment of text, automatic by default.
-                 *
-                 * Options are:
-                 *
-                 * + `'left'`
-                 * + `'center'`
-                 * + `'right'`
-                 *
-                 * If `align` is not set in `rich`, `align` in parent level
-                 * will be used. For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.align
-                 */
-                align?: string | undefined;
+                      /**
+                       * Horizontal alignment of text, automatic by default.
+                       *
+                       * Options are:
+                       *
+                       * + `'left'`
+                       * + `'center'`
+                       * + `'right'`
+                       *
+                       * If `align` is not set in `rich`, `align` in parent level
+                       * will be used. For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.align
+                       */
+                      align?: string | undefined;
 
-                /**
-                 * Vertical alignment of text, automatic by default.
-                 *
-                 * Options are:
-                 *
-                 * + `'top'`
-                 * + `'middle'`
-                 * + `'bottom'`
-                 *
-                 * If `verticalAlign` is not set in `rich`, `verticalAlign`
-                 * in parent level will be used. For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.verticalAlign
-                 */
-                verticalAlign?: string | undefined;
+                      /**
+                       * Vertical alignment of text, automatic by default.
+                       *
+                       * Options are:
+                       *
+                       * + `'top'`
+                       * + `'middle'`
+                       * + `'bottom'`
+                       *
+                       * If `verticalAlign` is not set in `rich`, `verticalAlign`
+                       * in parent level will be used. For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.verticalAlign
+                       */
+                      verticalAlign?: string | undefined;
 
-                /**
-                 * Line height of the text fregment.
-                 *
-                 * If `lineHeight` is not set in `rich`, `lineHeight` in parent
-                 * level will be used. For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.lineHeight
-                 */
-                lineHeight?: number | undefined;
+                      /**
+                       * Line height of the text fregment.
+                       *
+                       * If `lineHeight` is not set in `rich`, `lineHeight` in parent
+                       * level will be used. For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.lineHeight
+                       */
+                      lineHeight?: number | undefined;
 
-                /**
-                 * Background color of the text fregment.
-                 *
-                 * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
-                 *
-                 * Or image can be used, for example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
-                 *
-                 * `width` or `height` can be specified when using background
-                 * image, or auto adapted by default.
-                 *
-                 * If set as `'auto'`, the color will assigned as visual color,
-                 * such as series color.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.backgroundColor
-                 */
-                backgroundColor?: object | string | undefined;
+                      /**
+                       * Background color of the text fregment.
+                       *
+                       * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
+                       *
+                       * Or image can be used, for example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
+                       *
+                       * `width` or `height` can be specified when using background
+                       * image, or auto adapted by default.
+                       *
+                       * If set as `'auto'`, the color will assigned as visual color,
+                       * such as series color.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.backgroundColor
+                       */
+                      backgroundColor?: object | string | undefined;
 
-                /**
-                 * Border color of the text fregment.
-                 *
-                 * If set as `'auto'`, the color will assigned as visual color,
-                 * such as series color.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.borderColor
-                 */
-                borderColor?: string | undefined;
+                      /**
+                       * Border color of the text fregment.
+                       *
+                       * If set as `'auto'`, the color will assigned as visual color,
+                       * such as series color.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.borderColor
+                       */
+                      borderColor?: string | undefined;
 
-                /**
-                 * Border width of the text fregment.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.borderWidth
-                 */
-                borderWidth?: number | undefined;
+                      /**
+                       * Border width of the text fregment.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.borderWidth
+                       */
+                      borderWidth?: number | undefined;
 
-                /**
-                 * Border radius of the text fregment.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.borderRadius
-                 */
-                borderRadius?: number | undefined;
+                      /**
+                       * Border radius of the text fregment.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.borderRadius
+                       */
+                      borderRadius?: number | undefined;
 
-                /**
-                 * Padding of the text fregment, for example:
-                 *
-                 * + `padding: [3, 4, 5, 6]`: represents padding of `[top, right,
-                 * bottom, left]`.
-                 * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
-                 * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
-                 *
-                 * Notice, `width` and `height` specifies the width and height
-                 * of the content, without `padding`.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.padding
-                 */
-                padding?: any[] | number | undefined;
+                      /**
+                       * Padding of the text fregment, for example:
+                       *
+                       * + `padding: [3, 4, 5, 6]`: represents padding of `[top, right,
+                       * bottom, left]`.
+                       * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
+                       * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
+                       *
+                       * Notice, `width` and `height` specifies the width and height
+                       * of the content, without `padding`.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.padding
+                       */
+                      padding?: any[] | number | undefined;
 
-                /**
-                 * Shadow color of the text block.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.shadowColor
-                 */
-                shadowColor?: string | undefined;
+                      /**
+                       * Shadow color of the text block.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.shadowColor
+                       */
+                      shadowColor?: string | undefined;
 
-                /**
-                 * Show blur of the text block.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.shadowBlur
-                 */
-                shadowBlur?: number | undefined;
+                      /**
+                       * Show blur of the text block.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.shadowBlur
+                       */
+                      shadowBlur?: number | undefined;
 
-                /**
-                 * Shadow X offset of the text block.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.shadowOffsetX
-                 */
-                shadowOffsetX?: number | undefined;
+                      /**
+                       * Shadow X offset of the text block.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.shadowOffsetX
+                       */
+                      shadowOffsetX?: number | undefined;
 
-                /**
-                 * Shadow Y offset of the text block.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.shadowOffsetY
-                 */
-                shadowOffsetY?: number | undefined;
+                      /**
+                       * Shadow Y offset of the text block.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.shadowOffsetY
+                       */
+                      shadowOffsetY?: number | undefined;
 
-                /**
-                 * Width of the text block.
-                 * It is the width of the text by default.
-                 * In most cases, there is no need to specify it.
-                 * You may want to use it in some cases like make simple table
-                 * or using background image (see `backgroundColor`).
-                 *
-                 * Notice, `width` and `height` specifies the width and height
-                 * of the content, without `padding`.
-                 *
-                 * `width` can also be percent string, like `'100%'`, which
-                 * represents the percent of `contentWidth` (that is, the width
-                 * without `padding`) of its container box.
-                 * It is based on `contentWidth` because that each text fregment
-                 * is layout based on the `content box`, where it makes no sense
-                 * that calculating width based on `outerWith` in prectice.
-                 *
-                 * Notice, `width` and `height` only work when `rich` specified.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.width
-                 */
-                width?: number | string | undefined;
+                      /**
+                       * Width of the text block.
+                       * It is the width of the text by default.
+                       * In most cases, there is no need to specify it.
+                       * You may want to use it in some cases like make simple table
+                       * or using background image (see `backgroundColor`).
+                       *
+                       * Notice, `width` and `height` specifies the width and height
+                       * of the content, without `padding`.
+                       *
+                       * `width` can also be percent string, like `'100%'`, which
+                       * represents the percent of `contentWidth` (that is, the width
+                       * without `padding`) of its container box.
+                       * It is based on `contentWidth` because that each text fregment
+                       * is layout based on the `content box`, where it makes no sense
+                       * that calculating width based on `outerWith` in prectice.
+                       *
+                       * Notice, `width` and `height` only work when `rich` specified.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.width
+                       */
+                      width?: number | string | undefined;
 
-                /**
-                 * Height of the text block.
-                 * It is the width of the text by default.
-                 * You may want to use it in some cases like using background
-                 * image (see `backgroundColor`).
-                 *
-                 * Notice, `width` and `height` specifies the width and height
-                 * of the content, without `padding`.
-                 *
-                 * Notice, `width` and `height` only work when `rich` specified.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.height
-                 */
-                height?: number | string | undefined;
+                      /**
+                       * Height of the text block.
+                       * It is the width of the text by default.
+                       * You may want to use it in some cases like using background
+                       * image (see `backgroundColor`).
+                       *
+                       * Notice, `width` and `height` specifies the width and height
+                       * of the content, without `padding`.
+                       *
+                       * Notice, `width` and `height` only work when `rich` specified.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.height
+                       */
+                      height?: number | string | undefined;
 
-                /**
-                 * Storke color of the text.
-                 *
-                 * If set as `'auto'`, the color will assigned as visual color,
-                 * such as series color.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.textBorderColor
-                 */
-                textBorderColor?: string | undefined;
+                      /**
+                       * Storke color of the text.
+                       *
+                       * If set as `'auto'`, the color will assigned as visual color,
+                       * such as series color.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.textBorderColor
+                       */
+                      textBorderColor?: string | undefined;
 
-                /**
-                 * Storke line width of the text.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.textBorderWidth
-                 */
-                textBorderWidth?: number | undefined;
+                      /**
+                       * Storke line width of the text.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.textBorderWidth
+                       */
+                      textBorderWidth?: number | undefined;
 
-                /**
-                 * Shadow color of the text itself.
-                 *
-                 * @default
-                 * "transparent"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.textShadowColor
-                 */
-                textShadowColor?: string | undefined;
+                      /**
+                       * Shadow color of the text itself.
+                       *
+                       * @default
+                       * "transparent"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.textShadowColor
+                       */
+                      textShadowColor?: string | undefined;
 
-                /**
-                 * Shadow blue of the text itself.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.textShadowBlur
-                 */
-                textShadowBlur?: number | undefined;
+                      /**
+                       * Shadow blue of the text itself.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.textShadowBlur
+                       */
+                      textShadowBlur?: number | undefined;
 
-                /**
-                 * Shadow X offset of the text itself.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.textShadowOffsetX
-                 */
-                textShadowOffsetX?: number | undefined;
+                      /**
+                       * Shadow X offset of the text itself.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.textShadowOffsetX
+                       */
+                      textShadowOffsetX?: number | undefined;
 
-                /**
-                 * Shadow Y offset of the text itself.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.textShadowOffsetY
-                 */
-                textShadowOffsetY?: number | undefined;
+                      /**
+                       * Shadow Y offset of the text itself.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.textShadowOffsetY
+                       */
+                      textShadowOffsetY?: number | undefined;
 
-                /**
-                 * "Rich text styles" can be defined in this `rich` property.
-                 * For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
-                 *
-                 * For more details, see
-                 * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
-                 * please.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich
-                 */
-                rich?: {
-                    /**
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E
-                     */
-                    [userStyle: string]: {
-                        /**
-                         * text color.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * ""#fff""
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.color
-                         */
-                        color?: string | undefined;
+                      /**
+                       * "Rich text styles" can be defined in this `rich` property.
+                       * For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label)
+                       *
+                       * For more details, see
+                       * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
+                       * please.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich
+                       */
+                      rich?:
+                          | {
+                                /**
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E
+                                 */
+                                [userStyle: string]: {
+                                    /**
+                                     * text color.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * ""#fff""
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.color
+                                     */
+                                    color?: string | undefined;
 
-                        /**
-                         * font style
-                         *
-                         * Options are:
-                         *
-                         * + `'normal'`
-                         * + `'italic'`
-                         * + `'oblique'`
-                         *
-                         * @default
-                         * "normal"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
-                         */
-                        fontStyle?: string | undefined;
+                                    /**
+                                     * font style
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'normal'`
+                                     * + `'italic'`
+                                     * + `'oblique'`
+                                     *
+                                     * @default
+                                     * "normal"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
+                                     */
+                                    fontStyle?: string | undefined;
 
-                        /**
-                         * font thick weight
-                         *
-                         * Options are:
-                         *
-                         * + `'normal'`
-                         * + `'bold'`
-                         * + `'bolder'`
-                         * + `'lighter'`
-                         * + 100 | 200 | 300 | 400...
-                         *
-                         * @default
-                         * "normal"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
-                         */
-                        fontWeight?: string | number | undefined;
+                                    /**
+                                     * font thick weight
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'normal'`
+                                     * + `'bold'`
+                                     * + `'bolder'`
+                                     * + `'lighter'`
+                                     * + 100 | 200 | 300 | 400...
+                                     *
+                                     * @default
+                                     * "normal"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
+                                     */
+                                    fontWeight?: string | number | undefined;
 
-                        /**
-                         * font family
-                         *
-                         * Can also be 'serif' , 'monospace', ...
-                         *
-                         * @default
-                         * "sans-serif"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
-                         */
-                        fontFamily?: string | undefined;
+                                    /**
+                                     * font family
+                                     *
+                                     * Can also be 'serif' , 'monospace', ...
+                                     *
+                                     * @default
+                                     * "sans-serif"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
+                                     */
+                                    fontFamily?: string | undefined;
 
-                        /**
-                         * font size
-                         *
-                         * @default
-                         * 12
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
-                         */
-                        fontSize?: number | undefined;
+                                    /**
+                                     * font size
+                                     *
+                                     * @default
+                                     * 12
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
+                                     */
+                                    fontSize?: number | undefined;
 
-                        /**
-                         * Horizontal alignment of text, automatic by default.
-                         *
-                         * Options are:
-                         *
-                         * + `'left'`
-                         * + `'center'`
-                         * + `'right'`
-                         *
-                         * If `align` is not set in `rich`, `align` in parent
-                         * level will be used. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label.rich.%3Cuser%20defined%20style%20name%3E)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.align
-                         */
-                        align?: string | undefined;
+                                    /**
+                                     * Horizontal alignment of text, automatic by default.
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'left'`
+                                     * + `'center'`
+                                     * + `'right'`
+                                     *
+                                     * If `align` is not set in `rich`, `align` in parent
+                                     * level will be used. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.align
+                                     */
+                                    align?: string | undefined;
 
-                        /**
-                         * Vertical alignment of text, automatic by default.
-                         *
-                         * Options are:
-                         *
-                         * + `'top'`
-                         * + `'middle'`
-                         * + `'bottom'`
-                         *
-                         * If `verticalAlign` is not set in `rich`, `verticalAlign`
-                         * in parent level will be used. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label.rich.%3Cuser%20defined%20style%20name%3E)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
-                         */
-                        verticalAlign?: string | undefined;
+                                    /**
+                                     * Vertical alignment of text, automatic by default.
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'top'`
+                                     * + `'middle'`
+                                     * + `'bottom'`
+                                     *
+                                     * If `verticalAlign` is not set in `rich`, `verticalAlign`
+                                     * in parent level will be used. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
+                                     */
+                                    verticalAlign?: string | undefined;
 
-                        /**
-                         * Line height of the text fregment.
-                         *
-                         * If `lineHeight` is not set in `rich`, `lineHeight`
-                         * in parent level will be used. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label.rich.%3Cuser%20defined%20style%20name%3E)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
-                         */
-                        lineHeight?: number | undefined;
+                                    /**
+                                     * Line height of the text fregment.
+                                     *
+                                     * If `lineHeight` is not set in `rich`, `lineHeight`
+                                     * in parent level will be used. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
+                                     */
+                                    lineHeight?: number | undefined;
 
-                        /**
-                         * Background color of the text fregment.
-                         *
-                         * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
-                         *
-                         * Or image can be used, for example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label.rich.%3Cuser%20defined%20style%20name%3E)
-                         *
-                         * `width` or `height` can be specified when using background
-                         * image, or auto adapted by default.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
-                         */
-                        backgroundColor?: object | string | undefined;
+                                    /**
+                                     * Background color of the text fregment.
+                                     *
+                                     * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
+                                     *
+                                     * Or image can be used, for example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                     *
+                                     * `width` or `height` can be specified when using background
+                                     * image, or auto adapted by default.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
+                                     */
+                                    backgroundColor?:
+                                        | object
+                                        | string
+                                        | undefined;
 
-                        /**
-                         * Border color of the text fregment.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
-                         */
-                        borderColor?: string | undefined;
+                                    /**
+                                     * Border color of the text fregment.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
+                                     */
+                                    borderColor?: string | undefined;
 
-                        /**
-                         * Border width of the text fregment.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
-                         */
-                        borderWidth?: number | undefined;
+                                    /**
+                                     * Border width of the text fregment.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
+                                     */
+                                    borderWidth?: number | undefined;
 
-                        /**
-                         * Border radius of the text fregment.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
-                         */
-                        borderRadius?: number | undefined;
+                                    /**
+                                     * Border radius of the text fregment.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
+                                     */
+                                    borderRadius?: number | undefined;
 
-                        /**
-                         * Padding of the text fregment, for example:
-                         *
-                         * + `padding: [3, 4, 5, 6]`: represents padding of
-                         * `[top, right, bottom, left]`.
-                         * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
-                         * + `padding: [3, 4]`: represents `padding: [3, 4,
-                         * 3, 4]`.
-                         *
-                         * Notice, `width` and `height` specifies the width
-                         * and height of the content, without `padding`.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.padding
-                         */
-                        padding?: any[] | number | undefined;
+                                    /**
+                                     * Padding of the text fregment, for example:
+                                     *
+                                     * + `padding: [3, 4, 5, 6]`: represents padding of
+                                     * `[top, right, bottom, left]`.
+                                     * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
+                                     * + `padding: [3, 4]`: represents `padding: [3, 4,
+                                     * 3, 4]`.
+                                     *
+                                     * Notice, `width` and `height` specifies the width
+                                     * and height of the content, without `padding`.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.padding
+                                     */
+                                    padding?: any[] | number | undefined;
 
-                        /**
-                         * Shadow color of the text block.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
-                         */
-                        shadowColor?: string | undefined;
+                                    /**
+                                     * Shadow color of the text block.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
+                                     */
+                                    shadowColor?: string | undefined;
 
-                        /**
-                         * Show blur of the text block.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
-                         */
-                        shadowBlur?: number | undefined;
+                                    /**
+                                     * Show blur of the text block.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
+                                     */
+                                    shadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow X offset of the text block.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
-                         */
-                        shadowOffsetX?: number | undefined;
+                                    /**
+                                     * Shadow X offset of the text block.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
+                                     */
+                                    shadowOffsetX?: number | undefined;
 
-                        /**
-                         * Shadow Y offset of the text block.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
-                         */
-                        shadowOffsetY?: number | undefined;
+                                    /**
+                                     * Shadow Y offset of the text block.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
+                                     */
+                                    shadowOffsetY?: number | undefined;
 
-                        /**
-                         * Width of the text block.
-                         * It is the width of the text by default.
-                         * In most cases, there is no need to specify it.
-                         * You may want to use it in some cases like make simple
-                         * table or using background image (see `backgroundColor`).
-                         *
-                         * Notice, `width` and `height` specifies the width
-                         * and height of the content, without `padding`.
-                         *
-                         * `width` can also be percent string, like `'100%'`,
-                         * which represents the percent of `contentWidth` (that
-                         * is, the width without `padding`) of its container
-                         * box.
-                         * It is based on `contentWidth` because that each text
-                         * fregment is layout based on the `content box`, where
-                         * it makes no sense that calculating width based on
-                         * `outerWith` in prectice.
-                         *
-                         * Notice, `width` and `height` only work when `rich`
-                         * specified.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.width
-                         */
-                        width?: number | string | undefined;
+                                    /**
+                                     * Width of the text block.
+                                     * It is the width of the text by default.
+                                     * In most cases, there is no need to specify it.
+                                     * You may want to use it in some cases like make simple
+                                     * table or using background image (see `backgroundColor`).
+                                     *
+                                     * Notice, `width` and `height` specifies the width
+                                     * and height of the content, without `padding`.
+                                     *
+                                     * `width` can also be percent string, like `'100%'`,
+                                     * which represents the percent of `contentWidth` (that
+                                     * is, the width without `padding`) of its container
+                                     * box.
+                                     * It is based on `contentWidth` because that each text
+                                     * fregment is layout based on the `content box`, where
+                                     * it makes no sense that calculating width based on
+                                     * `outerWith` in prectice.
+                                     *
+                                     * Notice, `width` and `height` only work when `rich`
+                                     * specified.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.width
+                                     */
+                                    width?: number | string | undefined;
 
-                        /**
-                         * Height of the text block.
-                         * It is the width of the text by default.
-                         * You may want to use it in some cases like using background
-                         * image (see `backgroundColor`).
-                         *
-                         * Notice, `width` and `height` specifies the width
-                         * and height of the content, without `padding`.
-                         *
-                         * Notice, `width` and `height` only work when `rich`
-                         * specified.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.height
-                         */
-                        height?: number | string | undefined;
+                                    /**
+                                     * Height of the text block.
+                                     * It is the width of the text by default.
+                                     * You may want to use it in some cases like using background
+                                     * image (see `backgroundColor`).
+                                     *
+                                     * Notice, `width` and `height` specifies the width
+                                     * and height of the content, without `padding`.
+                                     *
+                                     * Notice, `width` and `height` only work when `rich`
+                                     * specified.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.height
+                                     */
+                                    height?: number | string | undefined;
 
-                        /**
-                         * Storke color of the text.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
-                         */
-                        textBorderColor?: string | undefined;
+                                    /**
+                                     * Storke color of the text.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
+                                     */
+                                    textBorderColor?: string | undefined;
 
-                        /**
-                         * Storke line width of the text.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
-                         */
-                        textBorderWidth?: number | undefined;
+                                    /**
+                                     * Storke line width of the text.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
+                                     */
+                                    textBorderWidth?: number | undefined;
 
-                        /**
-                         * Shadow color of the text itself.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
-                         */
-                        textShadowColor?: string | undefined;
+                                    /**
+                                     * Shadow color of the text itself.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
+                                     */
+                                    textShadowColor?: string | undefined;
 
-                        /**
-                         * Shadow blue of the text itself.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
-                         */
-                        textShadowBlur?: number | undefined;
+                                    /**
+                                     * Shadow blue of the text itself.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
+                                     */
+                                    textShadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow X offset of the text itself.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
-                         */
-                        textShadowOffsetX?: number | undefined;
+                                    /**
+                                     * Shadow X offset of the text itself.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
+                                     */
+                                    textShadowOffsetX?: number | undefined;
 
-                        /**
-                         * Shadow Y offset of the text itself.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
-                         */
-                        textShadowOffsetY?: number | undefined;
-                    };
-                } | undefined;
-            } | undefined;
+                                    /**
+                                     * Shadow Y offset of the text itself.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
+                                     */
+                                    textShadowOffsetY?: number | undefined;
+                                };
+                            }
+                          | undefined;
+                  }
+                | undefined;
 
             /**
              * The style of node rectangle in sankey graphs.
              *
              * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle
              */
-            itemStyle?: {
-                /**
-                 * color. Color is taken from
-                 * [option.color Palette](https://echarts.apache.org/en/option.html#color)
-                 * by default.
-                 *
-                 * > Color can be represented in RGB, for example `'rgb(128,
-                 * 128, 128)'`.
-                 * RGBA can be used when you need alpha channel, for example
-                 * `'rgba(128, 128, 128, 0.5)'`.
-                 * You may also use hexadecimal format, for example `'#ccc'`.
-                 * Gradient color and texture are also supported besides single
-                 * colors.
-                 * >
-                 * > [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.itemStyle)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.color
-                 */
-                color?: EChartOption.Color | undefined;
+            itemStyle?:
+                | {
+                      /**
+                       * color. Color is taken from
+                       * [option.color Palette](https://echarts.apache.org/en/option.html#color)
+                       * by default.
+                       *
+                       * > Color can be represented in RGB, for example `'rgb(128,
+                       * 128, 128)'`.
+                       * RGBA can be used when you need alpha channel, for example
+                       * `'rgba(128, 128, 128, 0.5)'`.
+                       * You may also use hexadecimal format, for example `'#ccc'`.
+                       * Gradient color and texture are also supported besides single
+                       * colors.
+                       * >
+                       * > [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.itemStyle)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.color
+                       */
+                      color?: EChartOption.Color | undefined;
 
-                /**
-                 * border color, whose format is similar to that of `color`.
-                 *
-                 * @default
-                 * "#aaa"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.borderColor
-                 */
-                borderColor?: EChartOption.Color | undefined;
+                      /**
+                       * border color, whose format is similar to that of `color`.
+                       *
+                       * @default
+                       * "#aaa"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.borderColor
+                       */
+                      borderColor?: EChartOption.Color | undefined;
 
-                /**
-                 * border width. No border when it is set to be 0.
-                 *
-                 * @default
-                 * 1
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.borderWidth
-                 */
-                borderWidth?: number | undefined;
+                      /**
+                       * border width. No border when it is set to be 0.
+                       *
+                       * @default
+                       * 1
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.borderWidth
+                       */
+                      borderWidth?: number | undefined;
 
-                /**
-                 * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
-                 * `'solid'` by default.
-                 *
-                 * @default
-                 * "solid"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.borderType
-                 */
-                borderType?: string | undefined;
+                      /**
+                       * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
+                       * `'solid'` by default.
+                       *
+                       * @default
+                       * "solid"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.borderType
+                       */
+                      borderType?: string | undefined;
 
-                /**
-                 * Size of shadow blur.
-                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                 * `shadowOffsetY` to set shadow to component.
-                 *
-                 * For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.itemStyle)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.shadowBlur
-                 */
-                shadowBlur?: number | undefined;
+                      /**
+                       * Size of shadow blur.
+                       * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                       * `shadowOffsetY` to set shadow to component.
+                       *
+                       * For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.itemStyle)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.shadowBlur
+                       */
+                      shadowBlur?: number | undefined;
 
-                /**
-                 * Shadow color. Support same format as `color`.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.shadowColor
-                 */
-                shadowColor?: EChartOption.Color | undefined;
+                      /**
+                       * Shadow color. Support same format as `color`.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.shadowColor
+                       */
+                      shadowColor?: EChartOption.Color | undefined;
 
-                /**
-                 * Offset distance on the horizontal direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.shadowOffsetX
-                 */
-                shadowOffsetX?: number | undefined;
+                      /**
+                       * Offset distance on the horizontal direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.shadowOffsetX
+                       */
+                      shadowOffsetX?: number | undefined;
 
-                /**
-                 * Offset distance on the vertical direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.shadowOffsetY
-                 */
-                shadowOffsetY?: number | undefined;
+                      /**
+                       * Offset distance on the vertical direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.shadowOffsetY
+                       */
+                      shadowOffsetY?: number | undefined;
 
-                /**
-                 * Opacity of the component.
-                 * Supports value from 0 to 1, and the component will not be
-                 * drawn when set to 0.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.opacity
-                 */
-                opacity?: number | undefined;
-            } | undefined;
+                      /**
+                       * Opacity of the component.
+                       * Supports value from 0 to 1, and the component will not be
+                       * drawn when set to 0.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.itemStyle.opacity
+                       */
+                      opacity?: number | undefined;
+                  }
+                | undefined;
 
             /**
              * The line style of sankey graph, in which
@@ -1098,966 +1107,1011 @@ declare namespace echarts {
              *
              * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle
              */
-            lineStyle?: {
-                /**
-                 * The color of the edge in sankey graphs.
-                 *
-                 * @default
-                 * "'#314656"
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.color
-                 */
-                color?: string | undefined;
+            lineStyle?:
+                | {
+                      /**
+                       * The color of the edge in sankey graphs.
+                       *
+                       * @default
+                       * "'#314656"
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.color
+                       */
+                      color?: string | undefined;
 
-                /**
-                 * The opacity of the edge in sankey graph.
-                 *
-                 * @default
-                 * 0.2
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.opacity
-                 */
-                opacity?: number | undefined;
+                      /**
+                       * The opacity of the edge in sankey graph.
+                       *
+                       * @default
+                       * 0.2
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.opacity
+                       */
+                      opacity?: number | undefined;
 
-                /**
-                 * The curveness of the edge in sankey graph.
-                 *
-                 * @default
-                 * 0.5
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.curveness
-                 */
-                curveness?: number | undefined;
+                      /**
+                       * The curveness of the edge in sankey graph.
+                       *
+                       * @default
+                       * 0.5
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.curveness
+                       */
+                      curveness?: number | undefined;
 
-                /**
-                 * Size of shadow blur.
-                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                 * `shadowOffsetY` to set shadow to component.
-                 *
-                 * For example:
-                 *
-                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.lineStyle)
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.shadowBlur
-                 */
-                shadowBlur?: number | undefined;
+                      /**
+                       * Size of shadow blur.
+                       * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                       * `shadowOffsetY` to set shadow to component.
+                       *
+                       * For example:
+                       *
+                       * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.lineStyle)
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.shadowBlur
+                       */
+                      shadowBlur?: number | undefined;
 
-                /**
-                 * Shadow color. Support same format as `color`.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.shadowColor
-                 */
-                shadowColor?: string | undefined;
+                      /**
+                       * Shadow color. Support same format as `color`.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.shadowColor
+                       */
+                      shadowColor?: string | undefined;
 
-                /**
-                 * Offset distance on the horizontal direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.shadowOffsetX
-                 */
-                shadowOffsetX?: number | undefined;
+                      /**
+                       * Offset distance on the horizontal direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.shadowOffsetX
+                       */
+                      shadowOffsetX?: number | undefined;
 
-                /**
-                 * Offset distance on the vertical direction of shadow.
-                 *
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.shadowOffsetY
-                 */
-                shadowOffsetY?: number | undefined;
-            } | undefined;
+                      /**
+                       * Offset distance on the vertical direction of shadow.
+                       *
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.lineStyle.shadowOffsetY
+                       */
+                      shadowOffsetY?: number | undefined;
+                  }
+                | undefined;
 
             /**
              * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis
              */
-            emphasis?: {
-                /**
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label
-                 */
-                label?: {
-                    /**
-                     * Whether to show label.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.show
-                     */
-                    show?: boolean | undefined;
-
-                    /**
-                     * Label position.
-                     *
-                     * **Followings are the options:**
-                     *
-                     * + \[x, y\]
-                     *
-                     * Use relative percentage, or absolute pixel values to
-                     * represent position of label relative to top-left corner
-                     * of bounding box. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
-                     *
-                     * + 'top'
-                     *
-                     * + 'left'
-                     * + 'right'
-                     * + 'bottom'
-                     * + 'inside'
-                     * + 'insideLeft'
-                     * + 'insideRight'
-                     * + 'insideTop'
-                     * + 'insideBottom'
-                     * + 'insideTopLeft'
-                     * + 'insideBottomLeft'
-                     * + 'insideTopRight'
-                     * + 'insideBottomRight'
-                     *
-                     * See:
-                     * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
-                     * .
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.position
-                     */
-                    position?: any[] | string | undefined;
-
-                    /**
-                     * Distance to the host graphic element.
-                     * Works when position is string value (like `'top'`、`'insideRight'`).
-                     *
-                     * See:
-                     * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
-                     * .
-                     *
-                     * @default
-                     * 5
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.distance
-                     */
-                    distance?: number | undefined;
-
-                    /**
-                     * Rotate label, from -90 degree to 90, positive value represents
-                     * rotate anti-clockwise.
-                     *
-                     * See:
-                     * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
-                     * .
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rotate
-                     */
-                    rotate?: number | undefined;
-
-                    /**
-                     * Whether to move text slightly.
-                     * For example: `[30, 40]` means move `30` horizontally
-                     * and move `40` vertically.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.offset
-                     */
-                    offset?: any[] | undefined;
-
-                    /**
-                     * Data label formatter, which supports string template
-                     * and callback function.
-                     * In either form, `\n` is supported to represent a new
-                     * line.
-                     *
-                     * **String template**
-                     *
-                     * Model variation includes:
-                     *
-                     * + `{a}`: series name.
-                     * + `{b}`: the name of a data item.
-                     * + `{c}`: the value of a data item.
-                     * + `{d}`: the percent.
-                     * + `{@xxx}: the value of a dimension named`'xxx'`, for
-                     * example,`{@product}`refers the value of`'product'\` dimension。
-                     * + `{@[n]}: the value of a dimension at the index of`n`,
-                     * for example,`{@\[3\]}\` refers the value at dimensions\[3\].
-                     *
-                     * **example:**
-                     *
-                     * ```
-                     * formatter: '{b}: {d}'
-                     *
-                     * ```
-                     *
-                     * **Callback function**
-                     *
-                     * Callback function is in form of:
-                     *
-                     * ```
-                     * (params: Object|Array) => string
-                     *
-                     * ```
-                     *
-                     * where `params` is the single dataset needed by formatter,
-                     * which is formed as:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.formatter
-                     */
-                    formatter?: Function | string | undefined;
-
-                    /**
-                     * text color.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * ""#fff""
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.color
-                     */
-                    color?: string | undefined;
-
-                    /**
-                     * font style
-                     *
-                     * Options are:
-                     *
-                     * + `'normal'`
-                     * + `'italic'`
-                     * + `'oblique'`
-                     *
-                     * @default
-                     * "normal"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.fontStyle
-                     */
-                    fontStyle?: string | undefined;
-
-                    /**
-                     * font thick weight
-                     *
-                     * Options are:
-                     *
-                     * + `'normal'`
-                     * + `'bold'`
-                     * + `'bolder'`
-                     * + `'lighter'`
-                     * + 100 | 200 | 300 | 400...
-                     *
-                     * @default
-                     * "normal"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.fontWeight
-                     */
-                    fontWeight?: string | number | undefined;
-
-                    /**
-                     * font family
-                     *
-                     * Can also be 'serif' , 'monospace', ...
-                     *
-                     * @default
-                     * "sans-serif"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.fontFamily
-                     */
-                    fontFamily?: string | undefined;
-
-                    /**
-                     * font size
-                     *
-                     * @default
-                     * 12
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.fontSize
-                     */
-                    fontSize?: number | undefined;
-
-                    /**
-                     * Horizontal alignment of text, automatic by default.
-                     *
-                     * Options are:
-                     *
-                     * + `'left'`
-                     * + `'center'`
-                     * + `'right'`
-                     *
-                     * If `align` is not set in `rich`, `align` in parent level
-                     * will be used. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.align
-                     */
-                    align?: string | undefined;
-
-                    /**
-                     * Vertical alignment of text, automatic by default.
-                     *
-                     * Options are:
-                     *
-                     * + `'top'`
-                     * + `'middle'`
-                     * + `'bottom'`
-                     *
-                     * If `verticalAlign` is not set in `rich`, `verticalAlign`
-                     * in parent level will be used. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.verticalAlign
-                     */
-                    verticalAlign?: string | undefined;
-
-                    /**
-                     * Line height of the text fregment.
-                     *
-                     * If `lineHeight` is not set in `rich`, `lineHeight` in
-                     * parent level will be used. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.lineHeight
-                     */
-                    lineHeight?: number | undefined;
-
-                    /**
-                     * Background color of the text fregment.
-                     *
-                     * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
-                     *
-                     * Or image can be used, for example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
-                     *
-                     * `width` or `height` can be specified when using background
-                     * image, or auto adapted by default.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.backgroundColor
-                     */
-                    backgroundColor?: object | string | undefined;
-
-                    /**
-                     * Border color of the text fregment.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.borderColor
-                     */
-                    borderColor?: string | undefined;
-
-                    /**
-                     * Border width of the text fregment.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.borderWidth
-                     */
-                    borderWidth?: number | undefined;
-
-                    /**
-                     * Border radius of the text fregment.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.borderRadius
-                     */
-                    borderRadius?: number | undefined;
-
-                    /**
-                     * Padding of the text fregment, for example:
-                     *
-                     * + `padding: [3, 4, 5, 6]`: represents padding of `[top,
-                     * right, bottom, left]`.
-                     * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
-                     * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
-                     *
-                     * Notice, `width` and `height` specifies the width and
-                     * height of the content, without `padding`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.padding
-                     */
-                    padding?: any[] | number | undefined;
-
-                    /**
-                     * Shadow color of the text block.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.shadowColor
-                     */
-                    shadowColor?: string | undefined;
-
-                    /**
-                     * Show blur of the text block.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
-
-                    /**
-                     * Shadow X offset of the text block.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
-
-                    /**
-                     * Shadow Y offset of the text block.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
-
-                    /**
-                     * Width of the text block.
-                     * It is the width of the text by default.
-                     * In most cases, there is no need to specify it.
-                     * You may want to use it in some cases like make simple
-                     * table or using background image (see `backgroundColor`).
-                     *
-                     * Notice, `width` and `height` specifies the width and
-                     * height of the content, without `padding`.
-                     *
-                     * `width` can also be percent string, like `'100%'`, which
-                     * represents the percent of `contentWidth` (that is, the
-                     * width without `padding`) of its container box.
-                     * It is based on `contentWidth` because that each text
-                     * fregment is layout based on the `content box`, where
-                     * it makes no sense that calculating width based on `outerWith`
-                     * in prectice.
-                     *
-                     * Notice, `width` and `height` only work when `rich` specified.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.width
-                     */
-                    width?: number | string | undefined;
-
-                    /**
-                     * Height of the text block.
-                     * It is the width of the text by default.
-                     * You may want to use it in some cases like using background
-                     * image (see `backgroundColor`).
-                     *
-                     * Notice, `width` and `height` specifies the width and
-                     * height of the content, without `padding`.
-                     *
-                     * Notice, `width` and `height` only work when `rich` specified.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.height
-                     */
-                    height?: number | string | undefined;
-
-                    /**
-                     * Storke color of the text.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textBorderColor
-                     */
-                    textBorderColor?: string | undefined;
-
-                    /**
-                     * Storke line width of the text.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textBorderWidth
-                     */
-                    textBorderWidth?: number | undefined;
-
-                    /**
-                     * Shadow color of the text itself.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textShadowColor
-                     */
-                    textShadowColor?: string | undefined;
-
-                    /**
-                     * Shadow blue of the text itself.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textShadowBlur
-                     */
-                    textShadowBlur?: number | undefined;
-
-                    /**
-                     * Shadow X offset of the text itself.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textShadowOffsetX
-                     */
-                    textShadowOffsetX?: number | undefined;
-
-                    /**
-                     * Shadow Y offset of the text itself.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textShadowOffsetY
-                     */
-                    textShadowOffsetY?: number | undefined;
-
-                    /**
-                     * "Rich text styles" can be defined in this `rich` property.
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
-                     *
-                     * For more details, see
-                     * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
-                     * please.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich
-                     */
-                    rich?: {
-                        /**
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E
-                         */
-                        [userStyle: string]: {
-                            /**
-                             * text color.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * ""#fff""
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.color
-                             */
-                            color?: string | undefined;
-
-                            /**
-                             * font style
-                             *
-                             * Options are:
-                             *
-                             * + `'normal'`
-                             * + `'italic'`
-                             * + `'oblique'`
-                             *
-                             * @default
-                             * "normal"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
-                             */
-                            fontStyle?: string | undefined;
-
-                            /**
-                             * font thick weight
-                             *
-                             * Options are:
-                             *
-                             * + `'normal'`
-                             * + `'bold'`
-                             * + `'bolder'`
-                             * + `'lighter'`
-                             * + 100 | 200 | 300 | 400...
-                             *
-                             * @default
-                             * "normal"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
-                             */
-                            fontWeight?: string | number | undefined;
-
-                            /**
-                             * font family
-                             *
-                             * Can also be 'serif' , 'monospace', ...
-                             *
-                             * @default
-                             * "sans-serif"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
-                             */
-                            fontFamily?: string | undefined;
-
-                            /**
-                             * font size
-                             *
-                             * @default
-                             * 12
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
-                             */
-                            fontSize?: number | undefined;
-
-                            /**
-                             * Horizontal alignment of text, automatic by default.
-                             *
-                             * Options are:
-                             *
-                             * + `'left'`
-                             * + `'center'`
-                             * + `'right'`
-                             *
-                             * If `align` is not set in `rich`, `align` in parent
-                             * level will be used. For example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.align
-                             */
-                            align?: string | undefined;
-
-                            /**
-                             * Vertical alignment of text, automatic by default.
-                             *
-                             * Options are:
-                             *
-                             * + `'top'`
-                             * + `'middle'`
-                             * + `'bottom'`
-                             *
-                             * If `verticalAlign` is not set in `rich`, `verticalAlign`
-                             * in parent level will be used. For example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
-                             */
-                            verticalAlign?: string | undefined;
-
-                            /**
-                             * Line height of the text fregment.
-                             *
-                             * If `lineHeight` is not set in `rich`, `lineHeight`
-                             * in parent level will be used. For example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
-                             */
-                            lineHeight?: number | undefined;
-
-                            /**
-                             * Background color of the text fregment.
-                             *
-                             * Can be color string, like `'#123234'`, `'red'`,
-                             * `rgba(0,23,11,0.3)'`.
-                             *
-                             * Or image can be used, for example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * `width` or `height` can be specified when using
-                             * background image, or auto adapted by default.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
-                             */
-                            backgroundColor?: object | string | undefined;
-
-                            /**
-                             * Border color of the text fregment.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
-                             */
-                            borderColor?: string | undefined;
-
-                            /**
-                             * Border width of the text fregment.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
-                             */
-                            borderWidth?: number | undefined;
-
-                            /**
-                             * Border radius of the text fregment.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
-                             */
-                            borderRadius?: number | undefined;
-
-                            /**
-                             * Padding of the text fregment, for example:
-                             *
-                             * + `padding: [3, 4, 5, 6]`: represents padding
-                             * of `[top, right, bottom, left]`.
-                             * + `padding: 4`: represents `padding: [4, 4, 4,
-                             * 4]`.
-                             * + `padding: [3, 4]`: represents `padding: [3,
-                             * 4, 3, 4]`.
-                             *
-                             * Notice, `width` and `height` specifies the width
-                             * and height of the content, without `padding`.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.padding
-                             */
-                            padding?: any[] | number | undefined;
-
-                            /**
-                             * Shadow color of the text block.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
-                             */
-                            shadowColor?: string | undefined;
-
-                            /**
-                             * Show blur of the text block.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
-                             */
-                            shadowBlur?: number | undefined;
-
-                            /**
-                             * Shadow X offset of the text block.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
-                             */
-                            shadowOffsetX?: number | undefined;
-
-                            /**
-                             * Shadow Y offset of the text block.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
-                             */
-                            shadowOffsetY?: number | undefined;
-
-                            /**
-                             * Width of the text block.
-                             * It is the width of the text by default.
-                             * In most cases, there is no need to specify it.
-                             * You may want to use it in some cases like make
-                             * simple table or using background image (see `backgroundColor`).
-                             *
-                             * Notice, `width` and `height` specifies the width
-                             * and height of the content, without `padding`.
-                             *
-                             * `width` can also be percent string, like `'100%'`,
-                             * which represents the percent of `contentWidth`
-                             * (that is, the width without `padding`) of its
-                             * container box.
-                             * It is based on `contentWidth` because that each
-                             * text fregment is layout based on the `content
-                             * box`, where it makes no sense that calculating
-                             * width based on `outerWith` in prectice.
-                             *
-                             * Notice, `width` and `height` only work when `rich`
-                             * specified.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.width
-                             */
-                            width?: number | string | undefined;
-
-                            /**
-                             * Height of the text block.
-                             * It is the width of the text by default.
-                             * You may want to use it in some cases like using
-                             * background image (see `backgroundColor`).
-                             *
-                             * Notice, `width` and `height` specifies the width
-                             * and height of the content, without `padding`.
-                             *
-                             * Notice, `width` and `height` only work when `rich`
-                             * specified.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.height
-                             */
-                            height?: number | string | undefined;
-
-                            /**
-                             * Storke color of the text.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
-                             */
-                            textBorderColor?: string | undefined;
-
-                            /**
-                             * Storke line width of the text.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
-                             */
-                            textBorderWidth?: number | undefined;
-
-                            /**
-                             * Shadow color of the text itself.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
-                             */
-                            textShadowColor?: string | undefined;
-
-                            /**
-                             * Shadow blue of the text itself.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
-                             */
-                            textShadowBlur?: number | undefined;
-
-                            /**
-                             * Shadow X offset of the text itself.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
-                             */
-                            textShadowOffsetX?: number | undefined;
-
-                            /**
-                             * Shadow Y offset of the text itself.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
-                             */
-                            textShadowOffsetY?: number | undefined;
-                        };
-                    } | undefined;
-                } | undefined;
-
-                /**
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle
-                 */
-                itemStyle?: {
-                    /**
-                     * color.
-                     *
-                     * > Color can be represented in RGB, for example `'rgb(128,
-                     * 128, 128)'`.
-                     * RGBA can be used when you need alpha channel, for example
-                     * `'rgba(128, 128, 128, 0.5)'`.
-                     * You may also use hexadecimal format, for example `'#ccc'`.
-                     * Gradient color and texture are also supported besides
-                     * single colors.
-                     * >
-                     * > [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.itemStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.color
-                     */
-                    color?: EChartOption.Color | undefined;
-
-                    /**
-                     * border color, whose format is similar to that of `color`.
-                     *
-                     * @default
-                     * "#000"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.borderColor
-                     */
-                    borderColor?: EChartOption.Color | undefined;
-
-                    /**
-                     * border width. No border when it is set to be 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.borderWidth
-                     */
-                    borderWidth?: number | undefined;
-
-                    /**
-                     * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
-                     * `'solid'` by default.
-                     *
-                     * @default
-                     * "solid"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.borderType
-                     */
-                    borderType?: string | undefined;
-
-                    /**
-                     * Size of shadow blur.
-                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                     * `shadowOffsetY` to set shadow to component.
-                     *
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.itemStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
-
-                    /**
-                     * Shadow color. Support same format as `color`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.shadowColor
-                     */
-                    shadowColor?: EChartOption.Color | undefined;
-
-                    /**
-                     * Offset distance on the horizontal direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
-
-                    /**
-                     * Offset distance on the vertical direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
-
-                    /**
-                     * Opacity of the component.
-                     * Supports value from 0 to 1, and the component will not
-                     * be drawn when set to 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.opacity
-                     */
-                    opacity?: number | undefined;
-                } | undefined;
-
-                /**
-                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle
-                 */
-                lineStyle?: {
-                    /**
-                     * The color of the edge in sankey graphs.
-                     *
-                     * @default
-                     * "'#314656"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.color
-                     */
-                    color?: string | undefined;
-
-                    /**
-                     * The opacity of the edge in sankey graph.
-                     *
-                     * @default
-                     * 0.2
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.opacity
-                     */
-                    opacity?: number | undefined;
-
-                    /**
-                     * The curveness of the edge in sankey graph.
-                     *
-                     * @default
-                     * 0.5
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.curveness
-                     */
-                    curveness?: number | undefined;
-
-                    /**
-                     * Size of shadow blur.
-                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                     * `shadowOffsetY` to set shadow to component.
-                     *
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.lineStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
-
-                    /**
-                     * Shadow color. Support same format as `color`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.shadowColor
-                     */
-                    shadowColor?: string | undefined;
-
-                    /**
-                     * Offset distance on the horizontal direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
-
-                    /**
-                     * Offset distance on the vertical direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
-                } | undefined;
-            } | undefined;
+            emphasis?:
+                | {
+                      /**
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label
+                       */
+                      label?:
+                          | {
+                                /**
+                                 * Whether to show label.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.show
+                                 */
+                                show?: boolean | undefined;
+
+                                /**
+                                 * Label position.
+                                 *
+                                 * **Followings are the options:**
+                                 *
+                                 * + \[x, y\]
+                                 *
+                                 * Use relative percentage, or absolute pixel values to
+                                 * represent position of label relative to top-left corner
+                                 * of bounding box. For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
+                                 *
+                                 * + 'top'
+                                 *
+                                 * + 'left'
+                                 * + 'right'
+                                 * + 'bottom'
+                                 * + 'inside'
+                                 * + 'insideLeft'
+                                 * + 'insideRight'
+                                 * + 'insideTop'
+                                 * + 'insideBottom'
+                                 * + 'insideTopLeft'
+                                 * + 'insideBottomLeft'
+                                 * + 'insideTopRight'
+                                 * + 'insideBottomRight'
+                                 *
+                                 * See:
+                                 * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
+                                 * .
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.position
+                                 */
+                                position?: any[] | string | undefined;
+
+                                /**
+                                 * Distance to the host graphic element.
+                                 * Works when position is string value (like `'top'`、`'insideRight'`).
+                                 *
+                                 * See:
+                                 * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
+                                 * .
+                                 *
+                                 * @default
+                                 * 5
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.distance
+                                 */
+                                distance?: number | undefined;
+
+                                /**
+                                 * Rotate label, from -90 degree to 90, positive value represents
+                                 * rotate anti-clockwise.
+                                 *
+                                 * See:
+                                 * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
+                                 * .
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rotate
+                                 */
+                                rotate?: number | undefined;
+
+                                /**
+                                 * Whether to move text slightly.
+                                 * For example: `[30, 40]` means move `30` horizontally
+                                 * and move `40` vertically.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.offset
+                                 */
+                                offset?: any[] | undefined;
+
+                                /**
+                                 * Data label formatter, which supports string template
+                                 * and callback function.
+                                 * In either form, `\n` is supported to represent a new
+                                 * line.
+                                 *
+                                 * **String template**
+                                 *
+                                 * Model variation includes:
+                                 *
+                                 * + `{a}`: series name.
+                                 * + `{b}`: the name of a data item.
+                                 * + `{c}`: the value of a data item.
+                                 * + `{d}`: the percent.
+                                 * + `{@xxx}: the value of a dimension named`'xxx'`, for
+                                 * example,`{@product}`refers the value of`'product'\` dimension。
+                                 * + `{@[n]}: the value of a dimension at the index of`n`,
+                                 * for example,`{@\[3\]}\` refers the value at dimensions\[3\].
+                                 *
+                                 * **example:**
+                                 *
+                                 * ```
+                                 * formatter: '{b}: {d}'
+                                 *
+                                 * ```
+                                 *
+                                 * **Callback function**
+                                 *
+                                 * Callback function is in form of:
+                                 *
+                                 * ```
+                                 * (params: Object|Array) => string
+                                 *
+                                 * ```
+                                 *
+                                 * where `params` is the single dataset needed by formatter,
+                                 * which is formed as:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.formatter
+                                 */
+                                formatter?: Function | string | undefined;
+
+                                /**
+                                 * text color.
+                                 *
+                                 * If set as `'auto'`, the color will assigned as visual
+                                 * color, such as series color.
+                                 *
+                                 * @default
+                                 * ""#fff""
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.color
+                                 */
+                                color?: string | undefined;
+
+                                /**
+                                 * font style
+                                 *
+                                 * Options are:
+                                 *
+                                 * + `'normal'`
+                                 * + `'italic'`
+                                 * + `'oblique'`
+                                 *
+                                 * @default
+                                 * "normal"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.fontStyle
+                                 */
+                                fontStyle?: string | undefined;
+
+                                /**
+                                 * font thick weight
+                                 *
+                                 * Options are:
+                                 *
+                                 * + `'normal'`
+                                 * + `'bold'`
+                                 * + `'bolder'`
+                                 * + `'lighter'`
+                                 * + 100 | 200 | 300 | 400...
+                                 *
+                                 * @default
+                                 * "normal"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.fontWeight
+                                 */
+                                fontWeight?: string | number | undefined;
+
+                                /**
+                                 * font family
+                                 *
+                                 * Can also be 'serif' , 'monospace', ...
+                                 *
+                                 * @default
+                                 * "sans-serif"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.fontFamily
+                                 */
+                                fontFamily?: string | undefined;
+
+                                /**
+                                 * font size
+                                 *
+                                 * @default
+                                 * 12
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.fontSize
+                                 */
+                                fontSize?: number | undefined;
+
+                                /**
+                                 * Horizontal alignment of text, automatic by default.
+                                 *
+                                 * Options are:
+                                 *
+                                 * + `'left'`
+                                 * + `'center'`
+                                 * + `'right'`
+                                 *
+                                 * If `align` is not set in `rich`, `align` in parent level
+                                 * will be used. For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.align
+                                 */
+                                align?: string | undefined;
+
+                                /**
+                                 * Vertical alignment of text, automatic by default.
+                                 *
+                                 * Options are:
+                                 *
+                                 * + `'top'`
+                                 * + `'middle'`
+                                 * + `'bottom'`
+                                 *
+                                 * If `verticalAlign` is not set in `rich`, `verticalAlign`
+                                 * in parent level will be used. For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.verticalAlign
+                                 */
+                                verticalAlign?: string | undefined;
+
+                                /**
+                                 * Line height of the text fregment.
+                                 *
+                                 * If `lineHeight` is not set in `rich`, `lineHeight` in
+                                 * parent level will be used. For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.lineHeight
+                                 */
+                                lineHeight?: number | undefined;
+
+                                /**
+                                 * Background color of the text fregment.
+                                 *
+                                 * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
+                                 *
+                                 * Or image can be used, for example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
+                                 *
+                                 * `width` or `height` can be specified when using background
+                                 * image, or auto adapted by default.
+                                 *
+                                 * If set as `'auto'`, the color will assigned as visual
+                                 * color, such as series color.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.backgroundColor
+                                 */
+                                backgroundColor?: object | string | undefined;
+
+                                /**
+                                 * Border color of the text fregment.
+                                 *
+                                 * If set as `'auto'`, the color will assigned as visual
+                                 * color, such as series color.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.borderColor
+                                 */
+                                borderColor?: string | undefined;
+
+                                /**
+                                 * Border width of the text fregment.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.borderWidth
+                                 */
+                                borderWidth?: number | undefined;
+
+                                /**
+                                 * Border radius of the text fregment.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.borderRadius
+                                 */
+                                borderRadius?: number | undefined;
+
+                                /**
+                                 * Padding of the text fregment, for example:
+                                 *
+                                 * + `padding: [3, 4, 5, 6]`: represents padding of `[top,
+                                 * right, bottom, left]`.
+                                 * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
+                                 * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
+                                 *
+                                 * Notice, `width` and `height` specifies the width and
+                                 * height of the content, without `padding`.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.padding
+                                 */
+                                padding?: any[] | number | undefined;
+
+                                /**
+                                 * Shadow color of the text block.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.shadowColor
+                                 */
+                                shadowColor?: string | undefined;
+
+                                /**
+                                 * Show blur of the text block.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.shadowBlur
+                                 */
+                                shadowBlur?: number | undefined;
+
+                                /**
+                                 * Shadow X offset of the text block.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.shadowOffsetX
+                                 */
+                                shadowOffsetX?: number | undefined;
+
+                                /**
+                                 * Shadow Y offset of the text block.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.shadowOffsetY
+                                 */
+                                shadowOffsetY?: number | undefined;
+
+                                /**
+                                 * Width of the text block.
+                                 * It is the width of the text by default.
+                                 * In most cases, there is no need to specify it.
+                                 * You may want to use it in some cases like make simple
+                                 * table or using background image (see `backgroundColor`).
+                                 *
+                                 * Notice, `width` and `height` specifies the width and
+                                 * height of the content, without `padding`.
+                                 *
+                                 * `width` can also be percent string, like `'100%'`, which
+                                 * represents the percent of `contentWidth` (that is, the
+                                 * width without `padding`) of its container box.
+                                 * It is based on `contentWidth` because that each text
+                                 * fregment is layout based on the `content box`, where
+                                 * it makes no sense that calculating width based on `outerWith`
+                                 * in prectice.
+                                 *
+                                 * Notice, `width` and `height` only work when `rich` specified.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.width
+                                 */
+                                width?: number | string | undefined;
+
+                                /**
+                                 * Height of the text block.
+                                 * It is the width of the text by default.
+                                 * You may want to use it in some cases like using background
+                                 * image (see `backgroundColor`).
+                                 *
+                                 * Notice, `width` and `height` specifies the width and
+                                 * height of the content, without `padding`.
+                                 *
+                                 * Notice, `width` and `height` only work when `rich` specified.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.height
+                                 */
+                                height?: number | string | undefined;
+
+                                /**
+                                 * Storke color of the text.
+                                 *
+                                 * If set as `'auto'`, the color will assigned as visual
+                                 * color, such as series color.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textBorderColor
+                                 */
+                                textBorderColor?: string | undefined;
+
+                                /**
+                                 * Storke line width of the text.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textBorderWidth
+                                 */
+                                textBorderWidth?: number | undefined;
+
+                                /**
+                                 * Shadow color of the text itself.
+                                 *
+                                 * @default
+                                 * "transparent"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textShadowColor
+                                 */
+                                textShadowColor?: string | undefined;
+
+                                /**
+                                 * Shadow blue of the text itself.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textShadowBlur
+                                 */
+                                textShadowBlur?: number | undefined;
+
+                                /**
+                                 * Shadow X offset of the text itself.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textShadowOffsetX
+                                 */
+                                textShadowOffsetX?: number | undefined;
+
+                                /**
+                                 * Shadow Y offset of the text itself.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.textShadowOffsetY
+                                 */
+                                textShadowOffsetY?: number | undefined;
+
+                                /**
+                                 * "Rich text styles" can be defined in this `rich` property.
+                                 * For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label)
+                                 *
+                                 * For more details, see
+                                 * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
+                                 * please.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich
+                                 */
+                                rich?:
+                                    | {
+                                          /**
+                                           * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E
+                                           */
+                                          [userStyle: string]: {
+                                              /**
+                                               * text color.
+                                               *
+                                               * If set as `'auto'`, the color will assigned as
+                                               * visual color, such as series color.
+                                               *
+                                               * @default
+                                               * ""#fff""
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.color
+                                               */
+                                              color?: string | undefined;
+
+                                              /**
+                                               * font style
+                                               *
+                                               * Options are:
+                                               *
+                                               * + `'normal'`
+                                               * + `'italic'`
+                                               * + `'oblique'`
+                                               *
+                                               * @default
+                                               * "normal"
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
+                                               */
+                                              fontStyle?: string | undefined;
+
+                                              /**
+                                               * font thick weight
+                                               *
+                                               * Options are:
+                                               *
+                                               * + `'normal'`
+                                               * + `'bold'`
+                                               * + `'bolder'`
+                                               * + `'lighter'`
+                                               * + 100 | 200 | 300 | 400...
+                                               *
+                                               * @default
+                                               * "normal"
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
+                                               */
+                                              fontWeight?:
+                                                  | string
+                                                  | number
+                                                  | undefined;
+
+                                              /**
+                                               * font family
+                                               *
+                                               * Can also be 'serif' , 'monospace', ...
+                                               *
+                                               * @default
+                                               * "sans-serif"
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
+                                               */
+                                              fontFamily?: string | undefined;
+
+                                              /**
+                                               * font size
+                                               *
+                                               * @default
+                                               * 12
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
+                                               */
+                                              fontSize?: number | undefined;
+
+                                              /**
+                                               * Horizontal alignment of text, automatic by default.
+                                               *
+                                               * Options are:
+                                               *
+                                               * + `'left'`
+                                               * + `'center'`
+                                               * + `'right'`
+                                               *
+                                               * If `align` is not set in `rich`, `align` in parent
+                                               * level will be used. For example:
+                                               *
+                                               * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.align
+                                               */
+                                              align?: string | undefined;
+
+                                              /**
+                                               * Vertical alignment of text, automatic by default.
+                                               *
+                                               * Options are:
+                                               *
+                                               * + `'top'`
+                                               * + `'middle'`
+                                               * + `'bottom'`
+                                               *
+                                               * If `verticalAlign` is not set in `rich`, `verticalAlign`
+                                               * in parent level will be used. For example:
+                                               *
+                                               * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
+                                               */
+                                              verticalAlign?:
+                                                  | string
+                                                  | undefined;
+
+                                              /**
+                                               * Line height of the text fregment.
+                                               *
+                                               * If `lineHeight` is not set in `rich`, `lineHeight`
+                                               * in parent level will be used. For example:
+                                               *
+                                               * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
+                                               */
+                                              lineHeight?: number | undefined;
+
+                                              /**
+                                               * Background color of the text fregment.
+                                               *
+                                               * Can be color string, like `'#123234'`, `'red'`,
+                                               * `rgba(0,23,11,0.3)'`.
+                                               *
+                                               * Or image can be used, for example:
+                                               *
+                                               * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                               *
+                                               * `width` or `height` can be specified when using
+                                               * background image, or auto adapted by default.
+                                               *
+                                               * If set as `'auto'`, the color will assigned as
+                                               * visual color, such as series color.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
+                                               */
+                                              backgroundColor?:
+                                                  | object
+                                                  | string
+                                                  | undefined;
+
+                                              /**
+                                               * Border color of the text fregment.
+                                               *
+                                               * If set as `'auto'`, the color will assigned as
+                                               * visual color, such as series color.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
+                                               */
+                                              borderColor?: string | undefined;
+
+                                              /**
+                                               * Border width of the text fregment.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
+                                               */
+                                              borderWidth?: number | undefined;
+
+                                              /**
+                                               * Border radius of the text fregment.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
+                                               */
+                                              borderRadius?: number | undefined;
+
+                                              /**
+                                               * Padding of the text fregment, for example:
+                                               *
+                                               * + `padding: [3, 4, 5, 6]`: represents padding
+                                               * of `[top, right, bottom, left]`.
+                                               * + `padding: 4`: represents `padding: [4, 4, 4,
+                                               * 4]`.
+                                               * + `padding: [3, 4]`: represents `padding: [3,
+                                               * 4, 3, 4]`.
+                                               *
+                                               * Notice, `width` and `height` specifies the width
+                                               * and height of the content, without `padding`.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.padding
+                                               */
+                                              padding?:
+                                                  | any[]
+                                                  | number
+                                                  | undefined;
+
+                                              /**
+                                               * Shadow color of the text block.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
+                                               */
+                                              shadowColor?: string | undefined;
+
+                                              /**
+                                               * Show blur of the text block.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
+                                               */
+                                              shadowBlur?: number | undefined;
+
+                                              /**
+                                               * Shadow X offset of the text block.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
+                                               */
+                                              shadowOffsetX?:
+                                                  | number
+                                                  | undefined;
+
+                                              /**
+                                               * Shadow Y offset of the text block.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
+                                               */
+                                              shadowOffsetY?:
+                                                  | number
+                                                  | undefined;
+
+                                              /**
+                                               * Width of the text block.
+                                               * It is the width of the text by default.
+                                               * In most cases, there is no need to specify it.
+                                               * You may want to use it in some cases like make
+                                               * simple table or using background image (see `backgroundColor`).
+                                               *
+                                               * Notice, `width` and `height` specifies the width
+                                               * and height of the content, without `padding`.
+                                               *
+                                               * `width` can also be percent string, like `'100%'`,
+                                               * which represents the percent of `contentWidth`
+                                               * (that is, the width without `padding`) of its
+                                               * container box.
+                                               * It is based on `contentWidth` because that each
+                                               * text fregment is layout based on the `content
+                                               * box`, where it makes no sense that calculating
+                                               * width based on `outerWith` in prectice.
+                                               *
+                                               * Notice, `width` and `height` only work when `rich`
+                                               * specified.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.width
+                                               */
+                                              width?:
+                                                  | number
+                                                  | string
+                                                  | undefined;
+
+                                              /**
+                                               * Height of the text block.
+                                               * It is the width of the text by default.
+                                               * You may want to use it in some cases like using
+                                               * background image (see `backgroundColor`).
+                                               *
+                                               * Notice, `width` and `height` specifies the width
+                                               * and height of the content, without `padding`.
+                                               *
+                                               * Notice, `width` and `height` only work when `rich`
+                                               * specified.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.height
+                                               */
+                                              height?:
+                                                  | number
+                                                  | string
+                                                  | undefined;
+
+                                              /**
+                                               * Storke color of the text.
+                                               *
+                                               * If set as `'auto'`, the color will assigned as
+                                               * visual color, such as series color.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
+                                               */
+                                              textBorderColor?:
+                                                  | string
+                                                  | undefined;
+
+                                              /**
+                                               * Storke line width of the text.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
+                                               */
+                                              textBorderWidth?:
+                                                  | number
+                                                  | undefined;
+
+                                              /**
+                                               * Shadow color of the text itself.
+                                               *
+                                               * @default
+                                               * "transparent"
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
+                                               */
+                                              textShadowColor?:
+                                                  | string
+                                                  | undefined;
+
+                                              /**
+                                               * Shadow blue of the text itself.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
+                                               */
+                                              textShadowBlur?:
+                                                  | number
+                                                  | undefined;
+
+                                              /**
+                                               * Shadow X offset of the text itself.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
+                                               */
+                                              textShadowOffsetX?:
+                                                  | number
+                                                  | undefined;
+
+                                              /**
+                                               * Shadow Y offset of the text itself.
+                                               *
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
+                                               */
+                                              textShadowOffsetY?:
+                                                  | number
+                                                  | undefined;
+                                          };
+                                      }
+                                    | undefined;
+                            }
+                          | undefined;
+
+                      /**
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle
+                       */
+                      itemStyle?:
+                          | {
+                                /**
+                                 * color.
+                                 *
+                                 * > Color can be represented in RGB, for example `'rgb(128,
+                                 * 128, 128)'`.
+                                 * RGBA can be used when you need alpha channel, for example
+                                 * `'rgba(128, 128, 128, 0.5)'`.
+                                 * You may also use hexadecimal format, for example `'#ccc'`.
+                                 * Gradient color and texture are also supported besides
+                                 * single colors.
+                                 * >
+                                 * > [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.itemStyle)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.color
+                                 */
+                                color?: EChartOption.Color | undefined;
+
+                                /**
+                                 * border color, whose format is similar to that of `color`.
+                                 *
+                                 * @default
+                                 * "#000"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.borderColor
+                                 */
+                                borderColor?: EChartOption.Color | undefined;
+
+                                /**
+                                 * border width. No border when it is set to be 0.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.borderWidth
+                                 */
+                                borderWidth?: number | undefined;
+
+                                /**
+                                 * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
+                                 * `'solid'` by default.
+                                 *
+                                 * @default
+                                 * "solid"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.borderType
+                                 */
+                                borderType?: string | undefined;
+
+                                /**
+                                 * Size of shadow blur.
+                                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                                 * `shadowOffsetY` to set shadow to component.
+                                 *
+                                 * For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.itemStyle)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.shadowBlur
+                                 */
+                                shadowBlur?: number | undefined;
+
+                                /**
+                                 * Shadow color. Support same format as `color`.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.shadowColor
+                                 */
+                                shadowColor?: EChartOption.Color | undefined;
+
+                                /**
+                                 * Offset distance on the horizontal direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.shadowOffsetX
+                                 */
+                                shadowOffsetX?: number | undefined;
+
+                                /**
+                                 * Offset distance on the vertical direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.shadowOffsetY
+                                 */
+                                shadowOffsetY?: number | undefined;
+
+                                /**
+                                 * Opacity of the component.
+                                 * Supports value from 0 to 1, and the component will not
+                                 * be drawn when set to 0.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.itemStyle.opacity
+                                 */
+                                opacity?: number | undefined;
+                            }
+                          | undefined;
+
+                      /**
+                       * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle
+                       */
+                      lineStyle?:
+                          | {
+                                /**
+                                 * The color of the edge in sankey graphs.
+                                 *
+                                 * @default
+                                 * "'#314656"
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.color
+                                 */
+                                color?: string | undefined;
+
+                                /**
+                                 * The opacity of the edge in sankey graph.
+                                 *
+                                 * @default
+                                 * 0.2
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.opacity
+                                 */
+                                opacity?: number | undefined;
+
+                                /**
+                                 * The curveness of the edge in sankey graph.
+                                 *
+                                 * @default
+                                 * 0.5
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.curveness
+                                 */
+                                curveness?: number | undefined;
+
+                                /**
+                                 * Size of shadow blur.
+                                 * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                                 * `shadowOffsetY` to set shadow to component.
+                                 *
+                                 * For example:
+                                 *
+                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.emphasis.lineStyle)
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.shadowBlur
+                                 */
+                                shadowBlur?: number | undefined;
+
+                                /**
+                                 * Shadow color. Support same format as `color`.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.shadowColor
+                                 */
+                                shadowColor?: string | undefined;
+
+                                /**
+                                 * Offset distance on the horizontal direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.shadowOffsetX
+                                 */
+                                shadowOffsetX?: number | undefined;
+
+                                /**
+                                 * Offset distance on the vertical direction of shadow.
+                                 *
+                                 * @see https://echarts.apache.org/en/option.html#series-sankey.emphasis.lineStyle.shadowOffsetY
+                                 */
+                                shadowOffsetY?: number | undefined;
+                            }
+                          | undefined;
+                  }
+                | undefined;
 
             /**
              * Data array of series, which can be a single data value, like:
@@ -2093,7 +2147,10 @@ declare namespace echarts {
              *
              * @see https://echarts.apache.org/en/option.html#series-sankey.data
              */
-            data?: Array<number | SeriesSankey.DataObject> | Array<Array<number | SeriesSankey.DataObject>> | undefined;
+            data?:
+                | Array<number | SeriesSankey.DataObject>
+                | Array<Array<number | SeriesSankey.DataObject>>
+                | undefined;
 
             /**
              * Equals to
@@ -2257,1595 +2314,1671 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle
                  */
-                itemStyle?: {
-                    /**
-                     * color. Color is taken from
-                     * [option.color Palette](https://echarts.apache.org/en/option.html#color)
-                     * by default.
-                     *
-                     * > Color can be represented in RGB, for example `'rgb(128,
-                     * 128, 128)'`.
-                     * RGBA can be used when you need alpha channel, for example
-                     * `'rgba(128, 128, 128, 0.5)'`.
-                     * You may also use hexadecimal format, for example `'#ccc'`.
-                     * Gradient color and texture are also supported besides
-                     * single colors.
-                     * >
-                     * > [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.itemStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.color
-                     */
-                    color?: EChartOption.Color | undefined;
+                itemStyle?:
+                    | {
+                          /**
+                           * color. Color is taken from
+                           * [option.color Palette](https://echarts.apache.org/en/option.html#color)
+                           * by default.
+                           *
+                           * > Color can be represented in RGB, for example `'rgb(128,
+                           * 128, 128)'`.
+                           * RGBA can be used when you need alpha channel, for example
+                           * `'rgba(128, 128, 128, 0.5)'`.
+                           * You may also use hexadecimal format, for example `'#ccc'`.
+                           * Gradient color and texture are also supported besides
+                           * single colors.
+                           * >
+                           * > [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.itemStyle)
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.color
+                           */
+                          color?: EChartOption.Color | undefined;
 
-                    /**
-                     * border color, whose format is similar to that of `color`.
-                     *
-                     * @default
-                     * "#000"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.borderColor
-                     */
-                    borderColor?: EChartOption.Color | undefined;
+                          /**
+                           * border color, whose format is similar to that of `color`.
+                           *
+                           * @default
+                           * "#000"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.borderColor
+                           */
+                          borderColor?: EChartOption.Color | undefined;
 
-                    /**
-                     * border width. No border when it is set to be 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.borderWidth
-                     */
-                    borderWidth?: number | undefined;
+                          /**
+                           * border width. No border when it is set to be 0.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.borderWidth
+                           */
+                          borderWidth?: number | undefined;
 
-                    /**
-                     * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
-                     * `'solid'` by default.
-                     *
-                     * @default
-                     * "solid"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.borderType
-                     */
-                    borderType?: string | undefined;
+                          /**
+                           * Border type, which can be `'solid'`, `'dashed'`, or `'dotted'`.
+                           * `'solid'` by default.
+                           *
+                           * @default
+                           * "solid"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.borderType
+                           */
+                          borderType?: string | undefined;
 
-                    /**
-                     * Size of shadow blur.
-                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                     * `shadowOffsetY` to set shadow to component.
-                     *
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.itemStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Size of shadow blur.
+                           * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                           * `shadowOffsetY` to set shadow to component.
+                           *
+                           * For example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.itemStyle)
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow color. Support same format as `color`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.shadowColor
-                     */
-                    shadowColor?: EChartOption.Color | undefined;
+                          /**
+                           * Shadow color. Support same format as `color`.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.shadowColor
+                           */
+                          shadowColor?: EChartOption.Color | undefined;
 
-                    /**
-                     * Offset distance on the horizontal direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * Offset distance on the horizontal direction of shadow.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Offset distance on the vertical direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Offset distance on the vertical direction of shadow.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * Opacity of the component.
-                     * Supports value from 0 to 1, and the component will not
-                     * be drawn when set to 0.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.opacity
-                     */
-                    opacity?: number | undefined;
-                } | undefined;
+                          /**
+                           * Opacity of the component.
+                           * Supports value from 0 to 1, and the component will not
+                           * be drawn when set to 0.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.itemStyle.opacity
+                           */
+                          opacity?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * The lable style of this node.
                  *
                  * @see https://echarts.apache.org/en/option.html#series-sankey.data.label
                  */
-                label?: {
-                    /**
-                     * Whether to show label.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.show
-                     */
-                    show?: boolean | undefined;
+                label?:
+                    | {
+                          /**
+                           * Whether to show label.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.show
+                           */
+                          show?: boolean | undefined;
 
-                    /**
-                     * Label position.
-                     *
-                     * **Followings are the options:**
-                     *
-                     * + \[x, y\]
-                     *
-                     * Use relative percentage, or absolute pixel values to
-                     * represent position of label relative to top-left corner
-                     * of bounding box. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
-                     *
-                     * + 'top'
-                     *
-                     * + 'left'
-                     * + 'right'
-                     * + 'bottom'
-                     * + 'inside'
-                     * + 'insideLeft'
-                     * + 'insideRight'
-                     * + 'insideTop'
-                     * + 'insideBottom'
-                     * + 'insideTopLeft'
-                     * + 'insideBottomLeft'
-                     * + 'insideTopRight'
-                     * + 'insideBottomRight'
-                     *
-                     * See:
-                     * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
-                     * .
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.position
-                     */
-                    position?: any[] | string | undefined;
+                          /**
+                           * Label position.
+                           *
+                           * **Followings are the options:**
+                           *
+                           * + \[x, y\]
+                           *
+                           * Use relative percentage, or absolute pixel values to
+                           * represent position of label relative to top-left corner
+                           * of bounding box. For example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
+                           *
+                           * + 'top'
+                           *
+                           * + 'left'
+                           * + 'right'
+                           * + 'bottom'
+                           * + 'inside'
+                           * + 'insideLeft'
+                           * + 'insideRight'
+                           * + 'insideTop'
+                           * + 'insideBottom'
+                           * + 'insideTopLeft'
+                           * + 'insideBottomLeft'
+                           * + 'insideTopRight'
+                           * + 'insideBottomRight'
+                           *
+                           * See:
+                           * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
+                           * .
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.position
+                           */
+                          position?: any[] | string | undefined;
 
-                    /**
-                     * Distance to the host graphic element.
-                     * Works when position is string value (like `'top'`、`'insideRight'`).
-                     *
-                     * See:
-                     * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
-                     * .
-                     *
-                     * @default
-                     * 5
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.distance
-                     */
-                    distance?: number | undefined;
+                          /**
+                           * Distance to the host graphic element.
+                           * Works when position is string value (like `'top'`、`'insideRight'`).
+                           *
+                           * See:
+                           * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
+                           * .
+                           *
+                           * @default
+                           * 5
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.distance
+                           */
+                          distance?: number | undefined;
 
-                    /**
-                     * Rotate label, from -90 degree to 90, positive value represents
-                     * rotate anti-clockwise.
-                     *
-                     * See:
-                     * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
-                     * .
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rotate
-                     */
-                    rotate?: number | undefined;
+                          /**
+                           * Rotate label, from -90 degree to 90, positive value represents
+                           * rotate anti-clockwise.
+                           *
+                           * See:
+                           * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
+                           * .
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rotate
+                           */
+                          rotate?: number | undefined;
 
-                    /**
-                     * Whether to move text slightly.
-                     * For example: `[30, 40]` means move `30` horizontally
-                     * and move `40` vertically.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.offset
-                     */
-                    offset?: any[] | undefined;
+                          /**
+                           * Whether to move text slightly.
+                           * For example: `[30, 40]` means move `30` horizontally
+                           * and move `40` vertically.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.offset
+                           */
+                          offset?: any[] | undefined;
 
-                    /**
-                     * text color.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * ""#fff""
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.color
-                     */
-                    color?: string | undefined;
+                          /**
+                           * text color.
+                           *
+                           * If set as `'auto'`, the color will assigned as visual
+                           * color, such as series color.
+                           *
+                           * @default
+                           * ""#fff""
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.color
+                           */
+                          color?: string | undefined;
 
-                    /**
-                     * font style
-                     *
-                     * Options are:
-                     *
-                     * + `'normal'`
-                     * + `'italic'`
-                     * + `'oblique'`
-                     *
-                     * @default
-                     * "normal"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.fontStyle
-                     */
-                    fontStyle?: string | undefined;
+                          /**
+                           * font style
+                           *
+                           * Options are:
+                           *
+                           * + `'normal'`
+                           * + `'italic'`
+                           * + `'oblique'`
+                           *
+                           * @default
+                           * "normal"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.fontStyle
+                           */
+                          fontStyle?: string | undefined;
 
-                    /**
-                     * font thick weight
-                     *
-                     * Options are:
-                     *
-                     * + `'normal'`
-                     * + `'bold'`
-                     * + `'bolder'`
-                     * + `'lighter'`
-                     * + 100 | 200 | 300 | 400...
-                     *
-                     * @default
-                     * "normal"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.fontWeight
-                     */
-                    fontWeight?: string | number | undefined;
+                          /**
+                           * font thick weight
+                           *
+                           * Options are:
+                           *
+                           * + `'normal'`
+                           * + `'bold'`
+                           * + `'bolder'`
+                           * + `'lighter'`
+                           * + 100 | 200 | 300 | 400...
+                           *
+                           * @default
+                           * "normal"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.fontWeight
+                           */
+                          fontWeight?: string | number | undefined;
 
-                    /**
-                     * font family
-                     *
-                     * Can also be 'serif' , 'monospace', ...
-                     *
-                     * @default
-                     * "sans-serif"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.fontFamily
-                     */
-                    fontFamily?: string | undefined;
+                          /**
+                           * font family
+                           *
+                           * Can also be 'serif' , 'monospace', ...
+                           *
+                           * @default
+                           * "sans-serif"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.fontFamily
+                           */
+                          fontFamily?: string | undefined;
 
-                    /**
-                     * font size
-                     *
-                     * @default
-                     * 12
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.fontSize
-                     */
-                    fontSize?: number | undefined;
+                          /**
+                           * font size
+                           *
+                           * @default
+                           * 12
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.fontSize
+                           */
+                          fontSize?: number | undefined;
 
-                    /**
-                     * Horizontal alignment of text, automatic by default.
-                     *
-                     * Options are:
-                     *
-                     * + `'left'`
-                     * + `'center'`
-                     * + `'right'`
-                     *
-                     * If `align` is not set in `rich`, `align` in parent level
-                     * will be used. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.align
-                     */
-                    align?: string | undefined;
+                          /**
+                           * Horizontal alignment of text, automatic by default.
+                           *
+                           * Options are:
+                           *
+                           * + `'left'`
+                           * + `'center'`
+                           * + `'right'`
+                           *
+                           * If `align` is not set in `rich`, `align` in parent level
+                           * will be used. For example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.align
+                           */
+                          align?: string | undefined;
 
-                    /**
-                     * Vertical alignment of text, automatic by default.
-                     *
-                     * Options are:
-                     *
-                     * + `'top'`
-                     * + `'middle'`
-                     * + `'bottom'`
-                     *
-                     * If `verticalAlign` is not set in `rich`, `verticalAlign`
-                     * in parent level will be used. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.verticalAlign
-                     */
-                    verticalAlign?: string | undefined;
+                          /**
+                           * Vertical alignment of text, automatic by default.
+                           *
+                           * Options are:
+                           *
+                           * + `'top'`
+                           * + `'middle'`
+                           * + `'bottom'`
+                           *
+                           * If `verticalAlign` is not set in `rich`, `verticalAlign`
+                           * in parent level will be used. For example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.verticalAlign
+                           */
+                          verticalAlign?: string | undefined;
 
-                    /**
-                     * Line height of the text fregment.
-                     *
-                     * If `lineHeight` is not set in `rich`, `lineHeight` in
-                     * parent level will be used. For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.lineHeight
-                     */
-                    lineHeight?: number | undefined;
+                          /**
+                           * Line height of the text fregment.
+                           *
+                           * If `lineHeight` is not set in `rich`, `lineHeight` in
+                           * parent level will be used. For example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.lineHeight
+                           */
+                          lineHeight?: number | undefined;
 
-                    /**
-                     * Background color of the text fregment.
-                     *
-                     * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
-                     *
-                     * Or image can be used, for example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
-                     *
-                     * `width` or `height` can be specified when using background
-                     * image, or auto adapted by default.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.backgroundColor
-                     */
-                    backgroundColor?: object | string | undefined;
+                          /**
+                           * Background color of the text fregment.
+                           *
+                           * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
+                           *
+                           * Or image can be used, for example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
+                           *
+                           * `width` or `height` can be specified when using background
+                           * image, or auto adapted by default.
+                           *
+                           * If set as `'auto'`, the color will assigned as visual
+                           * color, such as series color.
+                           *
+                           * @default
+                           * "transparent"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.backgroundColor
+                           */
+                          backgroundColor?: object | string | undefined;
 
-                    /**
-                     * Border color of the text fregment.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.borderColor
-                     */
-                    borderColor?: string | undefined;
+                          /**
+                           * Border color of the text fregment.
+                           *
+                           * If set as `'auto'`, the color will assigned as visual
+                           * color, such as series color.
+                           *
+                           * @default
+                           * "transparent"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.borderColor
+                           */
+                          borderColor?: string | undefined;
 
-                    /**
-                     * Border width of the text fregment.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.borderWidth
-                     */
-                    borderWidth?: number | undefined;
+                          /**
+                           * Border width of the text fregment.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.borderWidth
+                           */
+                          borderWidth?: number | undefined;
 
-                    /**
-                     * Border radius of the text fregment.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.borderRadius
-                     */
-                    borderRadius?: number | undefined;
+                          /**
+                           * Border radius of the text fregment.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.borderRadius
+                           */
+                          borderRadius?: number | undefined;
 
-                    /**
-                     * Padding of the text fregment, for example:
-                     *
-                     * + `padding: [3, 4, 5, 6]`: represents padding of `[top,
-                     * right, bottom, left]`.
-                     * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
-                     * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
-                     *
-                     * Notice, `width` and `height` specifies the width and
-                     * height of the content, without `padding`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.padding
-                     */
-                    padding?: any[] | number | undefined;
+                          /**
+                           * Padding of the text fregment, for example:
+                           *
+                           * + `padding: [3, 4, 5, 6]`: represents padding of `[top,
+                           * right, bottom, left]`.
+                           * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
+                           * + `padding: [3, 4]`: represents `padding: [3, 4, 3, 4]`.
+                           *
+                           * Notice, `width` and `height` specifies the width and
+                           * height of the content, without `padding`.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.padding
+                           */
+                          padding?: any[] | number | undefined;
 
-                    /**
-                     * Shadow color of the text block.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.shadowColor
-                     */
-                    shadowColor?: string | undefined;
+                          /**
+                           * Shadow color of the text block.
+                           *
+                           * @default
+                           * "transparent"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.shadowColor
+                           */
+                          shadowColor?: string | undefined;
 
-                    /**
-                     * Show blur of the text block.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Show blur of the text block.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow X offset of the text block.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * Shadow X offset of the text block.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Shadow Y offset of the text block.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
+                          /**
+                           * Shadow Y offset of the text block.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
 
-                    /**
-                     * Width of the text block.
-                     * It is the width of the text by default.
-                     * In most cases, there is no need to specify it.
-                     * You may want to use it in some cases like make simple
-                     * table or using background image (see `backgroundColor`).
-                     *
-                     * Notice, `width` and `height` specifies the width and
-                     * height of the content, without `padding`.
-                     *
-                     * `width` can also be percent string, like `'100%'`, which
-                     * represents the percent of `contentWidth` (that is, the
-                     * width without `padding`) of its container box.
-                     * It is based on `contentWidth` because that each text
-                     * fregment is layout based on the `content box`, where
-                     * it makes no sense that calculating width based on `outerWith`
-                     * in prectice.
-                     *
-                     * Notice, `width` and `height` only work when `rich` specified.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.width
-                     */
-                    width?: number | string | undefined;
+                          /**
+                           * Width of the text block.
+                           * It is the width of the text by default.
+                           * In most cases, there is no need to specify it.
+                           * You may want to use it in some cases like make simple
+                           * table or using background image (see `backgroundColor`).
+                           *
+                           * Notice, `width` and `height` specifies the width and
+                           * height of the content, without `padding`.
+                           *
+                           * `width` can also be percent string, like `'100%'`, which
+                           * represents the percent of `contentWidth` (that is, the
+                           * width without `padding`) of its container box.
+                           * It is based on `contentWidth` because that each text
+                           * fregment is layout based on the `content box`, where
+                           * it makes no sense that calculating width based on `outerWith`
+                           * in prectice.
+                           *
+                           * Notice, `width` and `height` only work when `rich` specified.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.width
+                           */
+                          width?: number | string | undefined;
 
-                    /**
-                     * Height of the text block.
-                     * It is the width of the text by default.
-                     * You may want to use it in some cases like using background
-                     * image (see `backgroundColor`).
-                     *
-                     * Notice, `width` and `height` specifies the width and
-                     * height of the content, without `padding`.
-                     *
-                     * Notice, `width` and `height` only work when `rich` specified.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.height
-                     */
-                    height?: number | string | undefined;
+                          /**
+                           * Height of the text block.
+                           * It is the width of the text by default.
+                           * You may want to use it in some cases like using background
+                           * image (see `backgroundColor`).
+                           *
+                           * Notice, `width` and `height` specifies the width and
+                           * height of the content, without `padding`.
+                           *
+                           * Notice, `width` and `height` only work when `rich` specified.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.height
+                           */
+                          height?: number | string | undefined;
 
-                    /**
-                     * Storke color of the text.
-                     *
-                     * If set as `'auto'`, the color will assigned as visual
-                     * color, such as series color.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textBorderColor
-                     */
-                    textBorderColor?: string | undefined;
+                          /**
+                           * Storke color of the text.
+                           *
+                           * If set as `'auto'`, the color will assigned as visual
+                           * color, such as series color.
+                           *
+                           * @default
+                           * "transparent"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textBorderColor
+                           */
+                          textBorderColor?: string | undefined;
 
-                    /**
-                     * Storke line width of the text.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textBorderWidth
-                     */
-                    textBorderWidth?: number | undefined;
+                          /**
+                           * Storke line width of the text.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textBorderWidth
+                           */
+                          textBorderWidth?: number | undefined;
 
-                    /**
-                     * Shadow color of the text itself.
-                     *
-                     * @default
-                     * "transparent"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textShadowColor
-                     */
-                    textShadowColor?: string | undefined;
+                          /**
+                           * Shadow color of the text itself.
+                           *
+                           * @default
+                           * "transparent"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textShadowColor
+                           */
+                          textShadowColor?: string | undefined;
 
-                    /**
-                     * Shadow blue of the text itself.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textShadowBlur
-                     */
-                    textShadowBlur?: number | undefined;
+                          /**
+                           * Shadow blue of the text itself.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textShadowBlur
+                           */
+                          textShadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow X offset of the text itself.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textShadowOffsetX
-                     */
-                    textShadowOffsetX?: number | undefined;
+                          /**
+                           * Shadow X offset of the text itself.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textShadowOffsetX
+                           */
+                          textShadowOffsetX?: number | undefined;
 
-                    /**
-                     * Shadow Y offset of the text itself.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textShadowOffsetY
-                     */
-                    textShadowOffsetY?: number | undefined;
+                          /**
+                           * Shadow Y offset of the text itself.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.textShadowOffsetY
+                           */
+                          textShadowOffsetY?: number | undefined;
 
-                    /**
-                     * "Rich text styles" can be defined in this `rich` property.
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
-                     *
-                     * For more details, see
-                     * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
-                     * please.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich
-                     */
-                    rich?: {
-                        /**
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E
-                         */
-                        [userStyle: string]: {
-                            /**
-                             * text color.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * ""#fff""
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.color
-                             */
-                            color?: string | undefined;
+                          /**
+                           * "Rich text styles" can be defined in this `rich` property.
+                           * For example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label)
+                           *
+                           * For more details, see
+                           * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
+                           * please.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich
+                           */
+                          rich?:
+                              | {
+                                    /**
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E
+                                     */
+                                    [userStyle: string]: {
+                                        /**
+                                         * text color.
+                                         *
+                                         * If set as `'auto'`, the color will assigned as
+                                         * visual color, such as series color.
+                                         *
+                                         * @default
+                                         * ""#fff""
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.color
+                                         */
+                                        color?: string | undefined;
 
-                            /**
-                             * font style
-                             *
-                             * Options are:
-                             *
-                             * + `'normal'`
-                             * + `'italic'`
-                             * + `'oblique'`
-                             *
-                             * @default
-                             * "normal"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
-                             */
-                            fontStyle?: string | undefined;
+                                        /**
+                                         * font style
+                                         *
+                                         * Options are:
+                                         *
+                                         * + `'normal'`
+                                         * + `'italic'`
+                                         * + `'oblique'`
+                                         *
+                                         * @default
+                                         * "normal"
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
+                                         */
+                                        fontStyle?: string | undefined;
 
-                            /**
-                             * font thick weight
-                             *
-                             * Options are:
-                             *
-                             * + `'normal'`
-                             * + `'bold'`
-                             * + `'bolder'`
-                             * + `'lighter'`
-                             * + 100 | 200 | 300 | 400...
-                             *
-                             * @default
-                             * "normal"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
-                             */
-                            fontWeight?: string | number | undefined;
+                                        /**
+                                         * font thick weight
+                                         *
+                                         * Options are:
+                                         *
+                                         * + `'normal'`
+                                         * + `'bold'`
+                                         * + `'bolder'`
+                                         * + `'lighter'`
+                                         * + 100 | 200 | 300 | 400...
+                                         *
+                                         * @default
+                                         * "normal"
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
+                                         */
+                                        fontWeight?:
+                                            | string
+                                            | number
+                                            | undefined;
 
-                            /**
-                             * font family
-                             *
-                             * Can also be 'serif' , 'monospace', ...
-                             *
-                             * @default
-                             * "sans-serif"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
-                             */
-                            fontFamily?: string | undefined;
+                                        /**
+                                         * font family
+                                         *
+                                         * Can also be 'serif' , 'monospace', ...
+                                         *
+                                         * @default
+                                         * "sans-serif"
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
+                                         */
+                                        fontFamily?: string | undefined;
 
-                            /**
-                             * font size
-                             *
-                             * @default
-                             * 12
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
-                             */
-                            fontSize?: number | undefined;
+                                        /**
+                                         * font size
+                                         *
+                                         * @default
+                                         * 12
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
+                                         */
+                                        fontSize?: number | undefined;
 
-                            /**
-                             * Horizontal alignment of text, automatic by default.
-                             *
-                             * Options are:
-                             *
-                             * + `'left'`
-                             * + `'center'`
-                             * + `'right'`
-                             *
-                             * If `align` is not set in `rich`, `align` in parent
-                             * level will be used. For example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.align
-                             */
-                            align?: string | undefined;
+                                        /**
+                                         * Horizontal alignment of text, automatic by default.
+                                         *
+                                         * Options are:
+                                         *
+                                         * + `'left'`
+                                         * + `'center'`
+                                         * + `'right'`
+                                         *
+                                         * If `align` is not set in `rich`, `align` in parent
+                                         * level will be used. For example:
+                                         *
+                                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.align
+                                         */
+                                        align?: string | undefined;
 
-                            /**
-                             * Vertical alignment of text, automatic by default.
-                             *
-                             * Options are:
-                             *
-                             * + `'top'`
-                             * + `'middle'`
-                             * + `'bottom'`
-                             *
-                             * If `verticalAlign` is not set in `rich`, `verticalAlign`
-                             * in parent level will be used. For example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
-                             */
-                            verticalAlign?: string | undefined;
+                                        /**
+                                         * Vertical alignment of text, automatic by default.
+                                         *
+                                         * Options are:
+                                         *
+                                         * + `'top'`
+                                         * + `'middle'`
+                                         * + `'bottom'`
+                                         *
+                                         * If `verticalAlign` is not set in `rich`, `verticalAlign`
+                                         * in parent level will be used. For example:
+                                         *
+                                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
+                                         */
+                                        verticalAlign?: string | undefined;
 
-                            /**
-                             * Line height of the text fregment.
-                             *
-                             * If `lineHeight` is not set in `rich`, `lineHeight`
-                             * in parent level will be used. For example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
-                             */
-                            lineHeight?: number | undefined;
+                                        /**
+                                         * Line height of the text fregment.
+                                         *
+                                         * If `lineHeight` is not set in `rich`, `lineHeight`
+                                         * in parent level will be used. For example:
+                                         *
+                                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
+                                         */
+                                        lineHeight?: number | undefined;
 
-                            /**
-                             * Background color of the text fregment.
-                             *
-                             * Can be color string, like `'#123234'`, `'red'`,
-                             * `rgba(0,23,11,0.3)'`.
-                             *
-                             * Or image can be used, for example:
-                             *
-                             * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E)
-                             *
-                             * `width` or `height` can be specified when using
-                             * background image, or auto adapted by default.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
-                             */
-                            backgroundColor?: object | string | undefined;
+                                        /**
+                                         * Background color of the text fregment.
+                                         *
+                                         * Can be color string, like `'#123234'`, `'red'`,
+                                         * `rgba(0,23,11,0.3)'`.
+                                         *
+                                         * Or image can be used, for example:
+                                         *
+                                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                         *
+                                         * `width` or `height` can be specified when using
+                                         * background image, or auto adapted by default.
+                                         *
+                                         * If set as `'auto'`, the color will assigned as
+                                         * visual color, such as series color.
+                                         *
+                                         * @default
+                                         * "transparent"
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
+                                         */
+                                        backgroundColor?:
+                                            | object
+                                            | string
+                                            | undefined;
 
-                            /**
-                             * Border color of the text fregment.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
-                             */
-                            borderColor?: string | undefined;
+                                        /**
+                                         * Border color of the text fregment.
+                                         *
+                                         * If set as `'auto'`, the color will assigned as
+                                         * visual color, such as series color.
+                                         *
+                                         * @default
+                                         * "transparent"
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
+                                         */
+                                        borderColor?: string | undefined;
 
-                            /**
-                             * Border width of the text fregment.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
-                             */
-                            borderWidth?: number | undefined;
+                                        /**
+                                         * Border width of the text fregment.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
+                                         */
+                                        borderWidth?: number | undefined;
 
-                            /**
-                             * Border radius of the text fregment.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
-                             */
-                            borderRadius?: number | undefined;
+                                        /**
+                                         * Border radius of the text fregment.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
+                                         */
+                                        borderRadius?: number | undefined;
 
-                            /**
-                             * Padding of the text fregment, for example:
-                             *
-                             * + `padding: [3, 4, 5, 6]`: represents padding
-                             * of `[top, right, bottom, left]`.
-                             * + `padding: 4`: represents `padding: [4, 4, 4,
-                             * 4]`.
-                             * + `padding: [3, 4]`: represents `padding: [3,
-                             * 4, 3, 4]`.
-                             *
-                             * Notice, `width` and `height` specifies the width
-                             * and height of the content, without `padding`.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.padding
-                             */
-                            padding?: any[] | number | undefined;
+                                        /**
+                                         * Padding of the text fregment, for example:
+                                         *
+                                         * + `padding: [3, 4, 5, 6]`: represents padding
+                                         * of `[top, right, bottom, left]`.
+                                         * + `padding: 4`: represents `padding: [4, 4, 4,
+                                         * 4]`.
+                                         * + `padding: [3, 4]`: represents `padding: [3,
+                                         * 4, 3, 4]`.
+                                         *
+                                         * Notice, `width` and `height` specifies the width
+                                         * and height of the content, without `padding`.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.padding
+                                         */
+                                        padding?: any[] | number | undefined;
 
-                            /**
-                             * Shadow color of the text block.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
-                             */
-                            shadowColor?: string | undefined;
+                                        /**
+                                         * Shadow color of the text block.
+                                         *
+                                         * @default
+                                         * "transparent"
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
+                                         */
+                                        shadowColor?: string | undefined;
 
-                            /**
-                             * Show blur of the text block.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
-                             */
-                            shadowBlur?: number | undefined;
+                                        /**
+                                         * Show blur of the text block.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
+                                         */
+                                        shadowBlur?: number | undefined;
 
-                            /**
-                             * Shadow X offset of the text block.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
-                             */
-                            shadowOffsetX?: number | undefined;
+                                        /**
+                                         * Shadow X offset of the text block.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
+                                         */
+                                        shadowOffsetX?: number | undefined;
 
-                            /**
-                             * Shadow Y offset of the text block.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
-                             */
-                            shadowOffsetY?: number | undefined;
+                                        /**
+                                         * Shadow Y offset of the text block.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
+                                         */
+                                        shadowOffsetY?: number | undefined;
 
-                            /**
-                             * Width of the text block.
-                             * It is the width of the text by default.
-                             * In most cases, there is no need to specify it.
-                             * You may want to use it in some cases like make
-                             * simple table or using background image (see `backgroundColor`).
-                             *
-                             * Notice, `width` and `height` specifies the width
-                             * and height of the content, without `padding`.
-                             *
-                             * `width` can also be percent string, like `'100%'`,
-                             * which represents the percent of `contentWidth`
-                             * (that is, the width without `padding`) of its
-                             * container box.
-                             * It is based on `contentWidth` because that each
-                             * text fregment is layout based on the `content
-                             * box`, where it makes no sense that calculating
-                             * width based on `outerWith` in prectice.
-                             *
-                             * Notice, `width` and `height` only work when `rich`
-                             * specified.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.width
-                             */
-                            width?: number | string | undefined;
+                                        /**
+                                         * Width of the text block.
+                                         * It is the width of the text by default.
+                                         * In most cases, there is no need to specify it.
+                                         * You may want to use it in some cases like make
+                                         * simple table or using background image (see `backgroundColor`).
+                                         *
+                                         * Notice, `width` and `height` specifies the width
+                                         * and height of the content, without `padding`.
+                                         *
+                                         * `width` can also be percent string, like `'100%'`,
+                                         * which represents the percent of `contentWidth`
+                                         * (that is, the width without `padding`) of its
+                                         * container box.
+                                         * It is based on `contentWidth` because that each
+                                         * text fregment is layout based on the `content
+                                         * box`, where it makes no sense that calculating
+                                         * width based on `outerWith` in prectice.
+                                         *
+                                         * Notice, `width` and `height` only work when `rich`
+                                         * specified.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.width
+                                         */
+                                        width?: number | string | undefined;
 
-                            /**
-                             * Height of the text block.
-                             * It is the width of the text by default.
-                             * You may want to use it in some cases like using
-                             * background image (see `backgroundColor`).
-                             *
-                             * Notice, `width` and `height` specifies the width
-                             * and height of the content, without `padding`.
-                             *
-                             * Notice, `width` and `height` only work when `rich`
-                             * specified.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.height
-                             */
-                            height?: number | string | undefined;
+                                        /**
+                                         * Height of the text block.
+                                         * It is the width of the text by default.
+                                         * You may want to use it in some cases like using
+                                         * background image (see `backgroundColor`).
+                                         *
+                                         * Notice, `width` and `height` specifies the width
+                                         * and height of the content, without `padding`.
+                                         *
+                                         * Notice, `width` and `height` only work when `rich`
+                                         * specified.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.height
+                                         */
+                                        height?: number | string | undefined;
 
-                            /**
-                             * Storke color of the text.
-                             *
-                             * If set as `'auto'`, the color will assigned as
-                             * visual color, such as series color.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
-                             */
-                            textBorderColor?: string | undefined;
+                                        /**
+                                         * Storke color of the text.
+                                         *
+                                         * If set as `'auto'`, the color will assigned as
+                                         * visual color, such as series color.
+                                         *
+                                         * @default
+                                         * "transparent"
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
+                                         */
+                                        textBorderColor?: string | undefined;
 
-                            /**
-                             * Storke line width of the text.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
-                             */
-                            textBorderWidth?: number | undefined;
+                                        /**
+                                         * Storke line width of the text.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
+                                         */
+                                        textBorderWidth?: number | undefined;
 
-                            /**
-                             * Shadow color of the text itself.
-                             *
-                             * @default
-                             * "transparent"
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
-                             */
-                            textShadowColor?: string | undefined;
+                                        /**
+                                         * Shadow color of the text itself.
+                                         *
+                                         * @default
+                                         * "transparent"
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
+                                         */
+                                        textShadowColor?: string | undefined;
 
-                            /**
-                             * Shadow blue of the text itself.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
-                             */
-                            textShadowBlur?: number | undefined;
+                                        /**
+                                         * Shadow blue of the text itself.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
+                                         */
+                                        textShadowBlur?: number | undefined;
 
-                            /**
-                             * Shadow X offset of the text itself.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
-                             */
-                            textShadowOffsetX?: number | undefined;
+                                        /**
+                                         * Shadow X offset of the text itself.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
+                                         */
+                                        textShadowOffsetX?: number | undefined;
 
-                            /**
-                             * Shadow Y offset of the text itself.
-                             *
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
-                             */
-                            textShadowOffsetY?: number | undefined;
-                        };
-                    } | undefined;
-                } | undefined;
+                                        /**
+                                         * Shadow Y offset of the text itself.
+                                         *
+                                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
+                                         */
+                                        textShadowOffsetY?: number | undefined;
+                                    };
+                                }
+                              | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis
                  */
-                emphasis?: {
-                    /**
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle
-                     */
-                    itemStyle?: {
-                        /**
-                         * color.
-                         *
-                         * > Color can be represented in RGB, for example `'rgb(128,
-                         * 128, 128)'`.
-                         * RGBA can be used when you need alpha channel, for
-                         * example `'rgba(128, 128, 128, 0.5)'`.
-                         * You may also use hexadecimal format, for example
-                         * `'#ccc'`.
-                         * Gradient color and texture are also supported besides
-                         * single colors.
-                         * >
-                         * > [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.itemStyle)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.color
-                         */
-                        color?: EChartOption.Color | undefined;
+                emphasis?:
+                    | {
+                          /**
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle
+                           */
+                          itemStyle?:
+                              | {
+                                    /**
+                                     * color.
+                                     *
+                                     * > Color can be represented in RGB, for example `'rgb(128,
+                                     * 128, 128)'`.
+                                     * RGBA can be used when you need alpha channel, for
+                                     * example `'rgba(128, 128, 128, 0.5)'`.
+                                     * You may also use hexadecimal format, for example
+                                     * `'#ccc'`.
+                                     * Gradient color and texture are also supported besides
+                                     * single colors.
+                                     * >
+                                     * > [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.itemStyle)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.color
+                                     */
+                                    color?: EChartOption.Color | undefined;
 
-                        /**
-                         * border color, whose format is similar to that of
-                         * `color`.
-                         *
-                         * @default
-                         * "#000"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.borderColor
-                         */
-                        borderColor?: EChartOption.Color | undefined;
+                                    /**
+                                     * border color, whose format is similar to that of
+                                     * `color`.
+                                     *
+                                     * @default
+                                     * "#000"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.borderColor
+                                     */
+                                    borderColor?:
+                                        | EChartOption.Color
+                                        | undefined;
 
-                        /**
-                         * border width. No border when it is set to be 0.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.borderWidth
-                         */
-                        borderWidth?: number | undefined;
+                                    /**
+                                     * border width. No border when it is set to be 0.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.borderWidth
+                                     */
+                                    borderWidth?: number | undefined;
 
-                        /**
-                         * Border type, which can be `'solid'`, `'dashed'`,
-                         * or `'dotted'`. `'solid'` by default.
-                         *
-                         * @default
-                         * "solid"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.borderType
-                         */
-                        borderType?: string | undefined;
+                                    /**
+                                     * Border type, which can be `'solid'`, `'dashed'`,
+                                     * or `'dotted'`. `'solid'` by default.
+                                     *
+                                     * @default
+                                     * "solid"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.borderType
+                                     */
+                                    borderType?: string | undefined;
 
-                        /**
-                         * Size of shadow blur.
-                         * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                         * `shadowOffsetY` to set shadow to component.
-                         *
-                         * For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.itemStyle)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.shadowBlur
-                         */
-                        shadowBlur?: number | undefined;
+                                    /**
+                                     * Size of shadow blur.
+                                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                                     * `shadowOffsetY` to set shadow to component.
+                                     *
+                                     * For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.itemStyle)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.shadowBlur
+                                     */
+                                    shadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow color. Support same format as `color`.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.shadowColor
-                         */
-                        shadowColor?: EChartOption.Color | undefined;
+                                    /**
+                                     * Shadow color. Support same format as `color`.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.shadowColor
+                                     */
+                                    shadowColor?:
+                                        | EChartOption.Color
+                                        | undefined;
 
-                        /**
-                         * Offset distance on the horizontal direction of shadow.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.shadowOffsetX
-                         */
-                        shadowOffsetX?: number | undefined;
+                                    /**
+                                     * Offset distance on the horizontal direction of shadow.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.shadowOffsetX
+                                     */
+                                    shadowOffsetX?: number | undefined;
 
-                        /**
-                         * Offset distance on the vertical direction of shadow.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.shadowOffsetY
-                         */
-                        shadowOffsetY?: number | undefined;
+                                    /**
+                                     * Offset distance on the vertical direction of shadow.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.shadowOffsetY
+                                     */
+                                    shadowOffsetY?: number | undefined;
 
-                        /**
-                         * Opacity of the component.
-                         * Supports value from 0 to 1, and the component will
-                         * not be drawn when set to 0.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.opacity
-                         */
-                        opacity?: number | undefined;
-                    } | undefined;
+                                    /**
+                                     * Opacity of the component.
+                                     * Supports value from 0 to 1, and the component will
+                                     * not be drawn when set to 0.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.itemStyle.opacity
+                                     */
+                                    opacity?: number | undefined;
+                                }
+                              | undefined;
 
-                    /**
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label
-                     */
-                    label?: {
-                        /**
-                         * Whether to show label.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.show
-                         */
-                        show?: boolean | undefined;
+                          /**
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label
+                           */
+                          label?:
+                              | {
+                                    /**
+                                     * Whether to show label.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.show
+                                     */
+                                    show?: boolean | undefined;
 
-                        /**
-                         * Label position.
-                         *
-                         * **Followings are the options:**
-                         *
-                         * + \[x, y\]
-                         *
-                         * Use relative percentage, or absolute pixel values
-                         * to represent position of label relative to top-left
-                         * corner of bounding box. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
-                         *
-                         * + 'top'
-                         *
-                         * + 'left'
-                         * + 'right'
-                         * + 'bottom'
-                         * + 'inside'
-                         * + 'insideLeft'
-                         * + 'insideRight'
-                         * + 'insideTop'
-                         * + 'insideBottom'
-                         * + 'insideTopLeft'
-                         * + 'insideBottomLeft'
-                         * + 'insideTopRight'
-                         * + 'insideBottomRight'
-                         *
-                         * See:
-                         * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
-                         * .
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.position
-                         */
-                        position?: any[] | string | undefined;
+                                    /**
+                                     * Label position.
+                                     *
+                                     * **Followings are the options:**
+                                     *
+                                     * + \[x, y\]
+                                     *
+                                     * Use relative percentage, or absolute pixel values
+                                     * to represent position of label relative to top-left
+                                     * corner of bounding box. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
+                                     *
+                                     * + 'top'
+                                     *
+                                     * + 'left'
+                                     * + 'right'
+                                     * + 'bottom'
+                                     * + 'inside'
+                                     * + 'insideLeft'
+                                     * + 'insideRight'
+                                     * + 'insideTop'
+                                     * + 'insideBottom'
+                                     * + 'insideTopLeft'
+                                     * + 'insideBottomLeft'
+                                     * + 'insideTopRight'
+                                     * + 'insideBottomRight'
+                                     *
+                                     * See:
+                                     * [label position](https://echarts.apache.org/examples/en/view.html?c=doc-example/label-position)
+                                     * .
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.position
+                                     */
+                                    position?: any[] | string | undefined;
 
-                        /**
-                         * Distance to the host graphic element.
-                         * Works when position is string value (like `'top'`、`'insideRight'`).
-                         *
-                         * See:
-                         * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
-                         * .
-                         *
-                         * @default
-                         * 5
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.distance
-                         */
-                        distance?: number | undefined;
+                                    /**
+                                     * Distance to the host graphic element.
+                                     * Works when position is string value (like `'top'`、`'insideRight'`).
+                                     *
+                                     * See:
+                                     * [label position](https://echarts.apache.org/examples/en/editor.html?c=doc-example/label-position)
+                                     * .
+                                     *
+                                     * @default
+                                     * 5
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.distance
+                                     */
+                                    distance?: number | undefined;
 
-                        /**
-                         * Rotate label, from -90 degree to 90, positive value
-                         * represents rotate anti-clockwise.
-                         *
-                         * See:
-                         * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
-                         * .
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rotate
-                         */
-                        rotate?: number | undefined;
+                                    /**
+                                     * Rotate label, from -90 degree to 90, positive value
+                                     * represents rotate anti-clockwise.
+                                     *
+                                     * See:
+                                     * [label rotation](https://echarts.apache.org/examples/en/editor.html?c=bar-label-rotation)
+                                     * .
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rotate
+                                     */
+                                    rotate?: number | undefined;
 
-                        /**
-                         * Whether to move text slightly.
-                         * For example: `[30, 40]` means move `30` horizontally
-                         * and move `40` vertically.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.offset
-                         */
-                        offset?: any[] | undefined;
+                                    /**
+                                     * Whether to move text slightly.
+                                     * For example: `[30, 40]` means move `30` horizontally
+                                     * and move `40` vertically.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.offset
+                                     */
+                                    offset?: any[] | undefined;
 
-                        /**
-                         * text color.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * ""#fff""
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.color
-                         */
-                        color?: string | undefined;
+                                    /**
+                                     * text color.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * ""#fff""
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.color
+                                     */
+                                    color?: string | undefined;
 
-                        /**
-                         * font style
-                         *
-                         * Options are:
-                         *
-                         * + `'normal'`
-                         * + `'italic'`
-                         * + `'oblique'`
-                         *
-                         * @default
-                         * "normal"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.fontStyle
-                         */
-                        fontStyle?: string | undefined;
+                                    /**
+                                     * font style
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'normal'`
+                                     * + `'italic'`
+                                     * + `'oblique'`
+                                     *
+                                     * @default
+                                     * "normal"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.fontStyle
+                                     */
+                                    fontStyle?: string | undefined;
 
-                        /**
-                         * font thick weight
-                         *
-                         * Options are:
-                         *
-                         * + `'normal'`
-                         * + `'bold'`
-                         * + `'bolder'`
-                         * + `'lighter'`
-                         * + 100 | 200 | 300 | 400...
-                         *
-                         * @default
-                         * "normal"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.fontWeight
-                         */
-                        fontWeight?: string | number | undefined;
+                                    /**
+                                     * font thick weight
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'normal'`
+                                     * + `'bold'`
+                                     * + `'bolder'`
+                                     * + `'lighter'`
+                                     * + 100 | 200 | 300 | 400...
+                                     *
+                                     * @default
+                                     * "normal"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.fontWeight
+                                     */
+                                    fontWeight?: string | number | undefined;
 
-                        /**
-                         * font family
-                         *
-                         * Can also be 'serif' , 'monospace', ...
-                         *
-                         * @default
-                         * "sans-serif"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.fontFamily
-                         */
-                        fontFamily?: string | undefined;
+                                    /**
+                                     * font family
+                                     *
+                                     * Can also be 'serif' , 'monospace', ...
+                                     *
+                                     * @default
+                                     * "sans-serif"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.fontFamily
+                                     */
+                                    fontFamily?: string | undefined;
 
-                        /**
-                         * font size
-                         *
-                         * @default
-                         * 12
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.fontSize
-                         */
-                        fontSize?: number | undefined;
+                                    /**
+                                     * font size
+                                     *
+                                     * @default
+                                     * 12
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.fontSize
+                                     */
+                                    fontSize?: number | undefined;
 
-                        /**
-                         * Horizontal alignment of text, automatic by default.
-                         *
-                         * Options are:
-                         *
-                         * + `'left'`
-                         * + `'center'`
-                         * + `'right'`
-                         *
-                         * If `align` is not set in `rich`, `align` in parent
-                         * level will be used. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.align
-                         */
-                        align?: string | undefined;
+                                    /**
+                                     * Horizontal alignment of text, automatic by default.
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'left'`
+                                     * + `'center'`
+                                     * + `'right'`
+                                     *
+                                     * If `align` is not set in `rich`, `align` in parent
+                                     * level will be used. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.align
+                                     */
+                                    align?: string | undefined;
 
-                        /**
-                         * Vertical alignment of text, automatic by default.
-                         *
-                         * Options are:
-                         *
-                         * + `'top'`
-                         * + `'middle'`
-                         * + `'bottom'`
-                         *
-                         * If `verticalAlign` is not set in `rich`, `verticalAlign`
-                         * in parent level will be used. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.verticalAlign
-                         */
-                        verticalAlign?: string | undefined;
+                                    /**
+                                     * Vertical alignment of text, automatic by default.
+                                     *
+                                     * Options are:
+                                     *
+                                     * + `'top'`
+                                     * + `'middle'`
+                                     * + `'bottom'`
+                                     *
+                                     * If `verticalAlign` is not set in `rich`, `verticalAlign`
+                                     * in parent level will be used. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.verticalAlign
+                                     */
+                                    verticalAlign?: string | undefined;
 
-                        /**
-                         * Line height of the text fregment.
-                         *
-                         * If `lineHeight` is not set in `rich`, `lineHeight`
-                         * in parent level will be used. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.lineHeight
-                         */
-                        lineHeight?: number | undefined;
+                                    /**
+                                     * Line height of the text fregment.
+                                     *
+                                     * If `lineHeight` is not set in `rich`, `lineHeight`
+                                     * in parent level will be used. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.lineHeight
+                                     */
+                                    lineHeight?: number | undefined;
 
-                        /**
-                         * Background color of the text fregment.
-                         *
-                         * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
-                         *
-                         * Or image can be used, for example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
-                         *
-                         * `width` or `height` can be specified when using background
-                         * image, or auto adapted by default.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.backgroundColor
-                         */
-                        backgroundColor?: object | string | undefined;
+                                    /**
+                                     * Background color of the text fregment.
+                                     *
+                                     * Can be color string, like `'#123234'`, `'red'`, `rgba(0,23,11,0.3)'`.
+                                     *
+                                     * Or image can be used, for example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
+                                     *
+                                     * `width` or `height` can be specified when using background
+                                     * image, or auto adapted by default.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.backgroundColor
+                                     */
+                                    backgroundColor?:
+                                        | object
+                                        | string
+                                        | undefined;
 
-                        /**
-                         * Border color of the text fregment.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.borderColor
-                         */
-                        borderColor?: string | undefined;
+                                    /**
+                                     * Border color of the text fregment.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.borderColor
+                                     */
+                                    borderColor?: string | undefined;
 
-                        /**
-                         * Border width of the text fregment.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.borderWidth
-                         */
-                        borderWidth?: number | undefined;
+                                    /**
+                                     * Border width of the text fregment.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.borderWidth
+                                     */
+                                    borderWidth?: number | undefined;
 
-                        /**
-                         * Border radius of the text fregment.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.borderRadius
-                         */
-                        borderRadius?: number | undefined;
+                                    /**
+                                     * Border radius of the text fregment.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.borderRadius
+                                     */
+                                    borderRadius?: number | undefined;
 
-                        /**
-                         * Padding of the text fregment, for example:
-                         *
-                         * + `padding: [3, 4, 5, 6]`: represents padding of
-                         * `[top, right, bottom, left]`.
-                         * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
-                         * + `padding: [3, 4]`: represents `padding: [3, 4,
-                         * 3, 4]`.
-                         *
-                         * Notice, `width` and `height` specifies the width
-                         * and height of the content, without `padding`.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.padding
-                         */
-                        padding?: any[] | number | undefined;
+                                    /**
+                                     * Padding of the text fregment, for example:
+                                     *
+                                     * + `padding: [3, 4, 5, 6]`: represents padding of
+                                     * `[top, right, bottom, left]`.
+                                     * + `padding: 4`: represents `padding: [4, 4, 4, 4]`.
+                                     * + `padding: [3, 4]`: represents `padding: [3, 4,
+                                     * 3, 4]`.
+                                     *
+                                     * Notice, `width` and `height` specifies the width
+                                     * and height of the content, without `padding`.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.padding
+                                     */
+                                    padding?: any[] | number | undefined;
 
-                        /**
-                         * Shadow color of the text block.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.shadowColor
-                         */
-                        shadowColor?: string | undefined;
+                                    /**
+                                     * Shadow color of the text block.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.shadowColor
+                                     */
+                                    shadowColor?: string | undefined;
 
-                        /**
-                         * Show blur of the text block.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.shadowBlur
-                         */
-                        shadowBlur?: number | undefined;
+                                    /**
+                                     * Show blur of the text block.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.shadowBlur
+                                     */
+                                    shadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow X offset of the text block.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.shadowOffsetX
-                         */
-                        shadowOffsetX?: number | undefined;
+                                    /**
+                                     * Shadow X offset of the text block.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.shadowOffsetX
+                                     */
+                                    shadowOffsetX?: number | undefined;
 
-                        /**
-                         * Shadow Y offset of the text block.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.shadowOffsetY
-                         */
-                        shadowOffsetY?: number | undefined;
+                                    /**
+                                     * Shadow Y offset of the text block.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.shadowOffsetY
+                                     */
+                                    shadowOffsetY?: number | undefined;
 
-                        /**
-                         * Width of the text block.
-                         * It is the width of the text by default.
-                         * In most cases, there is no need to specify it.
-                         * You may want to use it in some cases like make simple
-                         * table or using background image (see `backgroundColor`).
-                         *
-                         * Notice, `width` and `height` specifies the width
-                         * and height of the content, without `padding`.
-                         *
-                         * `width` can also be percent string, like `'100%'`,
-                         * which represents the percent of `contentWidth` (that
-                         * is, the width without `padding`) of its container
-                         * box.
-                         * It is based on `contentWidth` because that each text
-                         * fregment is layout based on the `content box`, where
-                         * it makes no sense that calculating width based on
-                         * `outerWith` in prectice.
-                         *
-                         * Notice, `width` and `height` only work when `rich`
-                         * specified.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.width
-                         */
-                        width?: number | string | undefined;
+                                    /**
+                                     * Width of the text block.
+                                     * It is the width of the text by default.
+                                     * In most cases, there is no need to specify it.
+                                     * You may want to use it in some cases like make simple
+                                     * table or using background image (see `backgroundColor`).
+                                     *
+                                     * Notice, `width` and `height` specifies the width
+                                     * and height of the content, without `padding`.
+                                     *
+                                     * `width` can also be percent string, like `'100%'`,
+                                     * which represents the percent of `contentWidth` (that
+                                     * is, the width without `padding`) of its container
+                                     * box.
+                                     * It is based on `contentWidth` because that each text
+                                     * fregment is layout based on the `content box`, where
+                                     * it makes no sense that calculating width based on
+                                     * `outerWith` in prectice.
+                                     *
+                                     * Notice, `width` and `height` only work when `rich`
+                                     * specified.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.width
+                                     */
+                                    width?: number | string | undefined;
 
-                        /**
-                         * Height of the text block.
-                         * It is the width of the text by default.
-                         * You may want to use it in some cases like using background
-                         * image (see `backgroundColor`).
-                         *
-                         * Notice, `width` and `height` specifies the width
-                         * and height of the content, without `padding`.
-                         *
-                         * Notice, `width` and `height` only work when `rich`
-                         * specified.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.height
-                         */
-                        height?: number | string | undefined;
+                                    /**
+                                     * Height of the text block.
+                                     * It is the width of the text by default.
+                                     * You may want to use it in some cases like using background
+                                     * image (see `backgroundColor`).
+                                     *
+                                     * Notice, `width` and `height` specifies the width
+                                     * and height of the content, without `padding`.
+                                     *
+                                     * Notice, `width` and `height` only work when `rich`
+                                     * specified.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.height
+                                     */
+                                    height?: number | string | undefined;
 
-                        /**
-                         * Storke color of the text.
-                         *
-                         * If set as `'auto'`, the color will assigned as visual
-                         * color, such as series color.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textBorderColor
-                         */
-                        textBorderColor?: string | undefined;
+                                    /**
+                                     * Storke color of the text.
+                                     *
+                                     * If set as `'auto'`, the color will assigned as visual
+                                     * color, such as series color.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textBorderColor
+                                     */
+                                    textBorderColor?: string | undefined;
 
-                        /**
-                         * Storke line width of the text.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textBorderWidth
-                         */
-                        textBorderWidth?: number | undefined;
+                                    /**
+                                     * Storke line width of the text.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textBorderWidth
+                                     */
+                                    textBorderWidth?: number | undefined;
 
-                        /**
-                         * Shadow color of the text itself.
-                         *
-                         * @default
-                         * "transparent"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textShadowColor
-                         */
-                        textShadowColor?: string | undefined;
+                                    /**
+                                     * Shadow color of the text itself.
+                                     *
+                                     * @default
+                                     * "transparent"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textShadowColor
+                                     */
+                                    textShadowColor?: string | undefined;
 
-                        /**
-                         * Shadow blue of the text itself.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textShadowBlur
-                         */
-                        textShadowBlur?: number | undefined;
+                                    /**
+                                     * Shadow blue of the text itself.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textShadowBlur
+                                     */
+                                    textShadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow X offset of the text itself.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textShadowOffsetX
-                         */
-                        textShadowOffsetX?: number | undefined;
+                                    /**
+                                     * Shadow X offset of the text itself.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textShadowOffsetX
+                                     */
+                                    textShadowOffsetX?: number | undefined;
 
-                        /**
-                         * Shadow Y offset of the text itself.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textShadowOffsetY
-                         */
-                        textShadowOffsetY?: number | undefined;
+                                    /**
+                                     * Shadow Y offset of the text itself.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.textShadowOffsetY
+                                     */
+                                    textShadowOffsetY?: number | undefined;
 
-                        /**
-                         * "Rich text styles" can be defined in this `rich`
-                         * property. For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
-                         *
-                         * For more details, see
-                         * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
-                         * please.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich
-                         */
-                        rich?: {
-                            /**
-                             * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E
-                             */
-                            [userStyle: string]: {
-                                /**
-                                 * text color.
-                                 *
-                                 * If set as `'auto'`, the color will assigned
-                                 * as visual color, such as series color.
-                                 *
-                                 * @default
-                                 * ""#fff""
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.color
-                                 */
-                                color?: string | undefined;
+                                    /**
+                                     * "Rich text styles" can be defined in this `rich`
+                                     * property. For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label)
+                                     *
+                                     * For more details, see
+                                     * [Rich Text](https://echarts.apache.org/en/option.htmltutorial.html#Rich%20Text)
+                                     * please.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich
+                                     */
+                                    rich?:
+                                        | {
+                                              /**
+                                               * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E
+                                               */
+                                              [userStyle: string]: {
+                                                  /**
+                                                   * text color.
+                                                   *
+                                                   * If set as `'auto'`, the color will assigned
+                                                   * as visual color, such as series color.
+                                                   *
+                                                   * @default
+                                                   * ""#fff""
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.color
+                                                   */
+                                                  color?: string | undefined;
 
-                                /**
-                                 * font style
-                                 *
-                                 * Options are:
-                                 *
-                                 * + `'normal'`
-                                 * + `'italic'`
-                                 * + `'oblique'`
-                                 *
-                                 * @default
-                                 * "normal"
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
-                                 */
-                                fontStyle?: string | undefined;
+                                                  /**
+                                                   * font style
+                                                   *
+                                                   * Options are:
+                                                   *
+                                                   * + `'normal'`
+                                                   * + `'italic'`
+                                                   * + `'oblique'`
+                                                   *
+                                                   * @default
+                                                   * "normal"
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontStyle
+                                                   */
+                                                  fontStyle?:
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * font thick weight
-                                 *
-                                 * Options are:
-                                 *
-                                 * + `'normal'`
-                                 * + `'bold'`
-                                 * + `'bolder'`
-                                 * + `'lighter'`
-                                 * + 100 | 200 | 300 | 400...
-                                 *
-                                 * @default
-                                 * "normal"
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
-                                 */
-                                fontWeight?: string | number | undefined;
+                                                  /**
+                                                   * font thick weight
+                                                   *
+                                                   * Options are:
+                                                   *
+                                                   * + `'normal'`
+                                                   * + `'bold'`
+                                                   * + `'bolder'`
+                                                   * + `'lighter'`
+                                                   * + 100 | 200 | 300 | 400...
+                                                   *
+                                                   * @default
+                                                   * "normal"
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontWeight
+                                                   */
+                                                  fontWeight?:
+                                                      | string
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * font family
-                                 *
-                                 * Can also be 'serif' , 'monospace', ...
-                                 *
-                                 * @default
-                                 * "sans-serif"
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
-                                 */
-                                fontFamily?: string | undefined;
+                                                  /**
+                                                   * font family
+                                                   *
+                                                   * Can also be 'serif' , 'monospace', ...
+                                                   *
+                                                   * @default
+                                                   * "sans-serif"
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontFamily
+                                                   */
+                                                  fontFamily?:
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * font size
-                                 *
-                                 * @default
-                                 * 12
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
-                                 */
-                                fontSize?: number | undefined;
+                                                  /**
+                                                   * font size
+                                                   *
+                                                   * @default
+                                                   * 12
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.fontSize
+                                                   */
+                                                  fontSize?: number | undefined;
 
-                                /**
-                                 * Horizontal alignment of text, automatic by
-                                 * default.
-                                 *
-                                 * Options are:
-                                 *
-                                 * + `'left'`
-                                 * + `'center'`
-                                 * + `'right'`
-                                 *
-                                 * If `align` is not set in `rich`, `align`
-                                 * in parent level will be used.
-                                 * For example:
-                                 *
-                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.align
-                                 */
-                                align?: string | undefined;
+                                                  /**
+                                                   * Horizontal alignment of text, automatic by
+                                                   * default.
+                                                   *
+                                                   * Options are:
+                                                   *
+                                                   * + `'left'`
+                                                   * + `'center'`
+                                                   * + `'right'`
+                                                   *
+                                                   * If `align` is not set in `rich`, `align`
+                                                   * in parent level will be used.
+                                                   * For example:
+                                                   *
+                                                   * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.align
+                                                   */
+                                                  align?: string | undefined;
 
-                                /**
-                                 * Vertical alignment of text, automatic by
-                                 * default.
-                                 *
-                                 * Options are:
-                                 *
-                                 * + `'top'`
-                                 * + `'middle'`
-                                 * + `'bottom'`
-                                 *
-                                 * If `verticalAlign` is not set in `rich`,
-                                 * `verticalAlign` in parent level will be used.
-                                 * For example:
-                                 *
-                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
-                                 */
-                                verticalAlign?: string | undefined;
+                                                  /**
+                                                   * Vertical alignment of text, automatic by
+                                                   * default.
+                                                   *
+                                                   * Options are:
+                                                   *
+                                                   * + `'top'`
+                                                   * + `'middle'`
+                                                   * + `'bottom'`
+                                                   *
+                                                   * If `verticalAlign` is not set in `rich`,
+                                                   * `verticalAlign` in parent level will be used.
+                                                   * For example:
+                                                   *
+                                                   * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.verticalAlign
+                                                   */
+                                                  verticalAlign?:
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * Line height of the text fregment.
-                                 *
-                                 * If `lineHeight` is not set in `rich`, `lineHeight`
-                                 * in parent level will be used.
-                                 * For example:
-                                 *
-                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
-                                 */
-                                lineHeight?: number | undefined;
+                                                  /**
+                                                   * Line height of the text fregment.
+                                                   *
+                                                   * If `lineHeight` is not set in `rich`, `lineHeight`
+                                                   * in parent level will be used.
+                                                   * For example:
+                                                   *
+                                                   * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.lineHeight
+                                                   */
+                                                  lineHeight?:
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Background color of the text fregment.
-                                 *
-                                 * Can be color string, like `'#123234'`, `'red'`,
-                                 * `rgba(0,23,11,0.3)'`.
-                                 *
-                                 * Or image can be used, for example:
-                                 *
-                                 * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
-                                 *
-                                 * `width` or `height` can be specified when
-                                 * using background image, or auto adapted by
-                                 * default.
-                                 *
-                                 * If set as `'auto'`, the color will assigned
-                                 * as visual color, such as series color.
-                                 *
-                                 * @default
-                                 * "transparent"
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
-                                 */
-                                backgroundColor?: object | string | undefined;
+                                                  /**
+                                                   * Background color of the text fregment.
+                                                   *
+                                                   * Can be color string, like `'#123234'`, `'red'`,
+                                                   * `rgba(0,23,11,0.3)'`.
+                                                   *
+                                                   * Or image can be used, for example:
+                                                   *
+                                                   * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E)
+                                                   *
+                                                   * `width` or `height` can be specified when
+                                                   * using background image, or auto adapted by
+                                                   * default.
+                                                   *
+                                                   * If set as `'auto'`, the color will assigned
+                                                   * as visual color, such as series color.
+                                                   *
+                                                   * @default
+                                                   * "transparent"
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.backgroundColor
+                                                   */
+                                                  backgroundColor?:
+                                                      | object
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * Border color of the text fregment.
-                                 *
-                                 * If set as `'auto'`, the color will assigned
-                                 * as visual color, such as series color.
-                                 *
-                                 * @default
-                                 * "transparent"
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
-                                 */
-                                borderColor?: string | undefined;
+                                                  /**
+                                                   * Border color of the text fregment.
+                                                   *
+                                                   * If set as `'auto'`, the color will assigned
+                                                   * as visual color, such as series color.
+                                                   *
+                                                   * @default
+                                                   * "transparent"
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderColor
+                                                   */
+                                                  borderColor?:
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * Border width of the text fregment.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
-                                 */
-                                borderWidth?: number | undefined;
+                                                  /**
+                                                   * Border width of the text fregment.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderWidth
+                                                   */
+                                                  borderWidth?:
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Border radius of the text fregment.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
-                                 */
-                                borderRadius?: number | undefined;
+                                                  /**
+                                                   * Border radius of the text fregment.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.borderRadius
+                                                   */
+                                                  borderRadius?:
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Padding of the text fregment, for example:
-                                 *
-                                 * + `padding: [3, 4, 5, 6]`: represents padding
-                                 * of `[top, right, bottom, left]`.
-                                 * + `padding: 4`: represents `padding: [4,
-                                 * 4, 4, 4]`.
-                                 * + `padding: [3, 4]`: represents `padding:
-                                 * [3, 4, 3, 4]`.
-                                 *
-                                 * Notice, `width` and `height` specifies the
-                                 * width and height of the content, without
-                                 * `padding`.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.padding
-                                 */
-                                padding?: any[] | number | undefined;
+                                                  /**
+                                                   * Padding of the text fregment, for example:
+                                                   *
+                                                   * + `padding: [3, 4, 5, 6]`: represents padding
+                                                   * of `[top, right, bottom, left]`.
+                                                   * + `padding: 4`: represents `padding: [4,
+                                                   * 4, 4, 4]`.
+                                                   * + `padding: [3, 4]`: represents `padding:
+                                                   * [3, 4, 3, 4]`.
+                                                   *
+                                                   * Notice, `width` and `height` specifies the
+                                                   * width and height of the content, without
+                                                   * `padding`.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.padding
+                                                   */
+                                                  padding?:
+                                                      | any[]
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Shadow color of the text block.
-                                 *
-                                 * @default
-                                 * "transparent"
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
-                                 */
-                                shadowColor?: string | undefined;
+                                                  /**
+                                                   * Shadow color of the text block.
+                                                   *
+                                                   * @default
+                                                   * "transparent"
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowColor
+                                                   */
+                                                  shadowColor?:
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * Show blur of the text block.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
-                                 */
-                                shadowBlur?: number | undefined;
+                                                  /**
+                                                   * Show blur of the text block.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowBlur
+                                                   */
+                                                  shadowBlur?:
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Shadow X offset of the text block.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
-                                 */
-                                shadowOffsetX?: number | undefined;
+                                                  /**
+                                                   * Shadow X offset of the text block.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetX
+                                                   */
+                                                  shadowOffsetX?:
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Shadow Y offset of the text block.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
-                                 */
-                                shadowOffsetY?: number | undefined;
+                                                  /**
+                                                   * Shadow Y offset of the text block.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.shadowOffsetY
+                                                   */
+                                                  shadowOffsetY?:
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Width of the text block.
-                                 * It is the width of the text by default.
-                                 * In most cases, there is no need to specify
-                                 * it.
-                                 * You may want to use it in some cases like
-                                 * make simple table or using background image
-                                 * (see `backgroundColor`).
-                                 *
-                                 * Notice, `width` and `height` specifies the
-                                 * width and height of the content, without
-                                 * `padding`.
-                                 *
-                                 * `width` can also be percent string, like
-                                 * `'100%'`, which represents the percent of
-                                 * `contentWidth` (that is, the width without
-                                 * `padding`) of its container box.
-                                 * It is based on `contentWidth` because that
-                                 * each text fregment is layout based on the
-                                 * `content box`, where it makes no sense that
-                                 * calculating width based on `outerWith` in
-                                 * prectice.
-                                 *
-                                 * Notice, `width` and `height` only work when
-                                 * `rich` specified.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.width
-                                 */
-                                width?: number | string | undefined;
+                                                  /**
+                                                   * Width of the text block.
+                                                   * It is the width of the text by default.
+                                                   * In most cases, there is no need to specify
+                                                   * it.
+                                                   * You may want to use it in some cases like
+                                                   * make simple table or using background image
+                                                   * (see `backgroundColor`).
+                                                   *
+                                                   * Notice, `width` and `height` specifies the
+                                                   * width and height of the content, without
+                                                   * `padding`.
+                                                   *
+                                                   * `width` can also be percent string, like
+                                                   * `'100%'`, which represents the percent of
+                                                   * `contentWidth` (that is, the width without
+                                                   * `padding`) of its container box.
+                                                   * It is based on `contentWidth` because that
+                                                   * each text fregment is layout based on the
+                                                   * `content box`, where it makes no sense that
+                                                   * calculating width based on `outerWith` in
+                                                   * prectice.
+                                                   *
+                                                   * Notice, `width` and `height` only work when
+                                                   * `rich` specified.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.width
+                                                   */
+                                                  width?:
+                                                      | number
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * Height of the text block.
-                                 * It is the width of the text by default.
-                                 * You may want to use it in some cases like
-                                 * using background image (see `backgroundColor`).
-                                 *
-                                 * Notice, `width` and `height` specifies the
-                                 * width and height of the content, without
-                                 * `padding`.
-                                 *
-                                 * Notice, `width` and `height` only work when
-                                 * `rich` specified.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.height
-                                 */
-                                height?: number | string | undefined;
+                                                  /**
+                                                   * Height of the text block.
+                                                   * It is the width of the text by default.
+                                                   * You may want to use it in some cases like
+                                                   * using background image (see `backgroundColor`).
+                                                   *
+                                                   * Notice, `width` and `height` specifies the
+                                                   * width and height of the content, without
+                                                   * `padding`.
+                                                   *
+                                                   * Notice, `width` and `height` only work when
+                                                   * `rich` specified.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.height
+                                                   */
+                                                  height?:
+                                                      | number
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * Storke color of the text.
-                                 *
-                                 * If set as `'auto'`, the color will assigned
-                                 * as visual color, such as series color.
-                                 *
-                                 * @default
-                                 * "transparent"
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
-                                 */
-                                textBorderColor?: string | undefined;
+                                                  /**
+                                                   * Storke color of the text.
+                                                   *
+                                                   * If set as `'auto'`, the color will assigned
+                                                   * as visual color, such as series color.
+                                                   *
+                                                   * @default
+                                                   * "transparent"
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderColor
+                                                   */
+                                                  textBorderColor?:
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * Storke line width of the text.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
-                                 */
-                                textBorderWidth?: number | undefined;
+                                                  /**
+                                                   * Storke line width of the text.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textBorderWidth
+                                                   */
+                                                  textBorderWidth?:
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Shadow color of the text itself.
-                                 *
-                                 * @default
-                                 * "transparent"
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
-                                 */
-                                textShadowColor?: string | undefined;
+                                                  /**
+                                                   * Shadow color of the text itself.
+                                                   *
+                                                   * @default
+                                                   * "transparent"
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowColor
+                                                   */
+                                                  textShadowColor?:
+                                                      | string
+                                                      | undefined;
 
-                                /**
-                                 * Shadow blue of the text itself.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
-                                 */
-                                textShadowBlur?: number | undefined;
+                                                  /**
+                                                   * Shadow blue of the text itself.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowBlur
+                                                   */
+                                                  textShadowBlur?:
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Shadow X offset of the text itself.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
-                                 */
-                                textShadowOffsetX?: number | undefined;
+                                                  /**
+                                                   * Shadow X offset of the text itself.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetX
+                                                   */
+                                                  textShadowOffsetX?:
+                                                      | number
+                                                      | undefined;
 
-                                /**
-                                 * Shadow Y offset of the text itself.
-                                 *
-                                 * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
-                                 */
-                                textShadowOffsetY?: number | undefined;
-                            };
-                        } | undefined;
-                    } | undefined;
-                } | undefined;
+                                                  /**
+                                                   * Shadow Y offset of the text itself.
+                                                   *
+                                                   * @see https://echarts.apache.org/en/option.html#series-sankey.data.emphasis.label.rich.%3Cuser%20defined%20style%20name%3E.textShadowOffsetY
+                                                   */
+                                                  textShadowOffsetY?:
+                                                      | number
+                                                      | undefined;
+                                              };
+                                          }
+                                        | undefined;
+                                }
+                              | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * tooltip settings in this series data.
@@ -3886,139 +4019,145 @@ declare namespace echarts {
                  *
                  * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle
                  */
-                lineStyle?: {
-                    /**
-                     * The color of the edge in sankey graphs.
-                     *
-                     * @default
-                     * "'#314656"
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.color
-                     */
-                    color?: string | undefined;
+                lineStyle?:
+                    | {
+                          /**
+                           * The color of the edge in sankey graphs.
+                           *
+                           * @default
+                           * "'#314656"
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.color
+                           */
+                          color?: string | undefined;
 
-                    /**
-                     * The opacity of the edge in sankey graph.
-                     *
-                     * @default
-                     * 0.2
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.opacity
-                     */
-                    opacity?: number | undefined;
+                          /**
+                           * The opacity of the edge in sankey graph.
+                           *
+                           * @default
+                           * 0.2
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.opacity
+                           */
+                          opacity?: number | undefined;
 
-                    /**
-                     * The curveness of the edge in sankey graph.
-                     *
-                     * @default
-                     * 0.5
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.curveness
-                     */
-                    curveness?: number | undefined;
+                          /**
+                           * The curveness of the edge in sankey graph.
+                           *
+                           * @default
+                           * 0.5
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.curveness
+                           */
+                          curveness?: number | undefined;
 
-                    /**
-                     * Size of shadow blur.
-                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                     * `shadowOffsetY` to set shadow to component.
-                     *
-                     * For example:
-                     *
-                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.links.lineStyle)
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.shadowBlur
-                     */
-                    shadowBlur?: number | undefined;
+                          /**
+                           * Size of shadow blur.
+                           * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                           * `shadowOffsetY` to set shadow to component.
+                           *
+                           * For example:
+                           *
+                           * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.links.lineStyle)
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.shadowBlur
+                           */
+                          shadowBlur?: number | undefined;
 
-                    /**
-                     * Shadow color. Support same format as `color`.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.shadowColor
-                     */
-                    shadowColor?: string | undefined;
+                          /**
+                           * Shadow color. Support same format as `color`.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.shadowColor
+                           */
+                          shadowColor?: string | undefined;
 
-                    /**
-                     * Offset distance on the horizontal direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.shadowOffsetX
-                     */
-                    shadowOffsetX?: number | undefined;
+                          /**
+                           * Offset distance on the horizontal direction of shadow.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.shadowOffsetX
+                           */
+                          shadowOffsetX?: number | undefined;
 
-                    /**
-                     * Offset distance on the vertical direction of shadow.
-                     *
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.shadowOffsetY
-                     */
-                    shadowOffsetY?: number | undefined;
-                } | undefined;
+                          /**
+                           * Offset distance on the vertical direction of shadow.
+                           *
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.links.lineStyle.shadowOffsetY
+                           */
+                          shadowOffsetY?: number | undefined;
+                      }
+                    | undefined;
 
                 /**
                  * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis
                  */
-                emphasis?: {
-                    /**
-                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle
-                     */
-                    lineStyle?: {
-                        /**
-                         * The color of the edge in sankey graphs.
-                         *
-                         * @default
-                         * "'#314656"
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.color
-                         */
-                        color?: string | undefined;
+                emphasis?:
+                    | {
+                          /**
+                           * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle
+                           */
+                          lineStyle?:
+                              | {
+                                    /**
+                                     * The color of the edge in sankey graphs.
+                                     *
+                                     * @default
+                                     * "'#314656"
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.color
+                                     */
+                                    color?: string | undefined;
 
-                        /**
-                         * The opacity of the edge in sankey graph.
-                         *
-                         * @default
-                         * 0.2
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.opacity
-                         */
-                        opacity?: number | undefined;
+                                    /**
+                                     * The opacity of the edge in sankey graph.
+                                     *
+                                     * @default
+                                     * 0.2
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.opacity
+                                     */
+                                    opacity?: number | undefined;
 
-                        /**
-                         * The curveness of the edge in sankey graph.
-                         *
-                         * @default
-                         * 0.5
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.curveness
-                         */
-                        curveness?: number | undefined;
+                                    /**
+                                     * The curveness of the edge in sankey graph.
+                                     *
+                                     * @default
+                                     * 0.5
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.curveness
+                                     */
+                                    curveness?: number | undefined;
 
-                        /**
-                         * Size of shadow blur.
-                         * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
-                         * `shadowOffsetY` to set shadow to component.
-                         *
-                         * For example:
-                         *
-                         * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.links.emphasis.lineStyle)
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.shadowBlur
-                         */
-                        shadowBlur?: number | undefined;
+                                    /**
+                                     * Size of shadow blur.
+                                     * This attribute should be used along with `shadowColor`,`shadowOffsetX`,
+                                     * `shadowOffsetY` to set shadow to component.
+                                     *
+                                     * For example:
+                                     *
+                                     * [see doc](https://echarts.apache.org/en/option.html#series-sankey.sankey.links.emphasis.lineStyle)
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.shadowBlur
+                                     */
+                                    shadowBlur?: number | undefined;
 
-                        /**
-                         * Shadow color. Support same format as `color`.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.shadowColor
-                         */
-                        shadowColor?: string | undefined;
+                                    /**
+                                     * Shadow color. Support same format as `color`.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.shadowColor
+                                     */
+                                    shadowColor?: string | undefined;
 
-                        /**
-                         * Offset distance on the horizontal direction of shadow.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.shadowOffsetX
-                         */
-                        shadowOffsetX?: number | undefined;
+                                    /**
+                                     * Offset distance on the horizontal direction of shadow.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.shadowOffsetX
+                                     */
+                                    shadowOffsetX?: number | undefined;
 
-                        /**
-                         * Offset distance on the vertical direction of shadow.
-                         *
-                         * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.shadowOffsetY
-                         */
-                        shadowOffsetY?: number | undefined;
-                    } | undefined;
-                } | undefined;
+                                    /**
+                                     * Offset distance on the vertical direction of shadow.
+                                     *
+                                     * @see https://echarts.apache.org/en/option.html#series-sankey.links.emphasis.lineStyle.shadowOffsetY
+                                     */
+                                    shadowOffsetY?: number | undefined;
+                                }
+                              | undefined;
+                      }
+                    | undefined;
             }
         }
     }

@@ -1,5 +1,10 @@
-declare function throng(startOrOptions: throng.WorkerCallback | throng.Options): Promise<void>;
-declare function throng(workers: throng.WorkerCount, start: throng.WorkerCallback): Promise<void>;
+declare function throng(
+    startOrOptions: throng.WorkerCallback | throng.Options,
+): Promise<void>;
+declare function throng(
+    workers: throng.WorkerCount,
+    start: throng.WorkerCallback,
+): Promise<void>;
 declare namespace throng {
     type WorkerCount = number | string;
     type WorkerCallback = (id: number, disconnect: () => void) => void;

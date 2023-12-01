@@ -1,10 +1,18 @@
-import { ComponentClass, ElementType, FocusEvent, KeyboardEvent, ReactElement } from "react";
+import {
+    ComponentClass,
+    ElementType,
+    FocusEvent,
+    KeyboardEvent,
+    ReactElement,
+} from "react";
 import { AutoFocus, ReactWidgetsCommonDropdownProps } from "./CommonProps";
 
 declare namespace DateTimePicker {
     type Open = false | "date" | "time";
 
-    interface DateTimePickerProps extends ReactWidgetsCommonDropdownProps, AutoFocus {
+    interface DateTimePickerProps
+        extends ReactWidgetsCommonDropdownProps,
+            AutoFocus {
         /**
          * Set the culture of the DateTimePicker, passed to the configured localizer.
          */
@@ -88,7 +96,11 @@ declare namespace DateTimePicker {
          * parsing yourself. When parse is unspecified and the format prop is a String parse will
          * automatically use that format as its default
          */
-        parse?: ((str: string) => Date | undefined) | string[] | string | undefined;
+        parse?:
+            | ((str: string) => Date | undefined)
+            | string[]
+            | string
+            | undefined;
         /**
          * The starting and lowest level view the calendar can navigate down to.
          */
@@ -201,6 +213,7 @@ declare namespace DateTimePicker {
     }
 }
 
-interface DateTimePickerClass extends ComponentClass<DateTimePicker.DateTimePickerProps> {}
+interface DateTimePickerClass
+    extends ComponentClass<DateTimePicker.DateTimePickerProps> {}
 declare var DateTimePicker: DateTimePickerClass;
 export = DateTimePicker;

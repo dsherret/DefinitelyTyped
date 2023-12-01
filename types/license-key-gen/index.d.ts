@@ -13,4 +13,7 @@ export interface licenseData {
 }
 export function createLicense(licenseData: licenseData): object;
 
-export function validateLicense(licenseData: licenseData, serial: string): object;
+export function validateLicense(
+    licenseData: licenseData,
+    serial: string,
+): object;

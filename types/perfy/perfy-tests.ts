@@ -6,7 +6,7 @@ perfy.start("loop-stuff");
 const result = perfy.end("loop-stuff");
 console.log(result.time);
 
-perfy.exec("async-stuff", done => {
+perfy.exec("async-stuff", (done) => {
     const result = done();
     console.log(result.time);
 });
@@ -15,11 +15,11 @@ function syncOp() {
     // some code
 }
 const syncResult = perfy.exec(syncOp);
-perfy.exec(done => {
+perfy.exec((done) => {
     const result = done();
 });
 
-perfy.exec("async-op", done => {
+perfy.exec("async-op", (done) => {
     // a-sync operation
     done();
     perfy.exists("async-op"); // —> true (saved)
@@ -27,7 +27,11 @@ perfy.exec("async-op", done => {
 
 perfy.start("metric-1");
 const metric1Result = perfy.end("metric-1");
-console.log(`${metric1Result.seconds} sec, ${metric1Result.milliseconds.toFixed(3)} ms.`);
+console.log(
+    `${metric1Result.seconds} sec, ${metric1Result.milliseconds.toFixed(
+        3,
+    )} ms.`,
+);
 console.log(metric1Result.time + " sec. ");
 
 perfy.start("metric-2").count();
@@ -41,7 +45,7 @@ perfy.exists("metric-3"); // $ExpectType boolean
 perfy.destroyAll().count(); // $ExpectType number
 
 perfy
-    .exec("async-op", done => {
+    .exec("async-op", (done) => {
         const result = done();
         perfy.count();
     })

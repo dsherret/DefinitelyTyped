@@ -33,7 +33,9 @@ export function frac(double: number): number;
  *
  * console.log(doubleUtils.decompose(Math.PI))
  */
-export function decompose(double: number): [sign: number, exp: number, frac: number];
+export function decompose(
+    double: number,
+): [sign: number, exp: number, frac: number];
 /**
  * Print the number as a bit string.
  *

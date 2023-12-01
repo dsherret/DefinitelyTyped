@@ -8,7 +8,7 @@ function isMetrics(v: { [metricName: string]: number }) {}
 //
 // .setGeolocation
 //
-describe("mock geolocation", function() {
+describe("mock geolocation", function () {
     it("sets the geolocation to Tokyo, Japan and then resets it", () => {
         browser
             .setGeolocation({
@@ -25,16 +25,19 @@ describe("mock geolocation", function() {
 
     it("tests different ways of using setGeolocation", () => {
         // with all parameters
-        browser.setGeolocation({
-            latitude: 35.689487,
-            longitude: 139.691706,
-            accuracy: 100,
-        }, function(result) {
-            isNightwatchAPI(this);
-            // without any parameter (resets the geolocation)
-            this.setGeolocation();
-            console.log(result.value);
-        });
+        browser.setGeolocation(
+            {
+                latitude: 35.689487,
+                longitude: 139.691706,
+                accuracy: 100,
+            },
+            function (result) {
+                isNightwatchAPI(this);
+                // without any parameter (resets the geolocation)
+                this.setGeolocation();
+                console.log(result.value);
+            },
+        );
 
         // with only latitude and longitude
         browser.setGeolocation({
@@ -62,35 +65,37 @@ describe("mock geolocation", function() {
 //
 // .captureNetworkRequests
 //
-describe("capture network requests", function() {
-    it(
-        "captures and logs network requests as they occur",
-        function(this: ExtendDescribeThis<{ requestCount: number }>) {
-            this.requestCount = 1;
-            browser
-                .captureNetworkRequests((requestParams) => {
-                    console.log("Request Number:", this.requestCount!++);
-                    console.log("Request URL:", requestParams.request.url);
-                    console.log("Request method:", requestParams.request.method);
-                    console.log("Request headers:", requestParams.request.headers);
-                })
-                .navigateTo("https://www.google.com");
-        },
-    );
+describe("capture network requests", function () {
+    it("captures and logs network requests as they occur", function (this: ExtendDescribeThis<{
+        requestCount: number;
+    }>) {
+        this.requestCount = 1;
+        browser
+            .captureNetworkRequests((requestParams) => {
+                console.log("Request Number:", this.requestCount!++);
+                console.log("Request URL:", requestParams.request.url);
+                console.log("Request method:", requestParams.request.method);
+                console.log("Request headers:", requestParams.request.headers);
+            })
+            .navigateTo("https://www.google.com");
+    });
 
     it("tests different ways of using captureNetworkRequests", () => {
         // with all parameters
-        browser.captureNetworkRequests((requestParams) => {
-            console.log("Request URL:", requestParams.request.url);
-            console.log("Request method:", requestParams.request.method);
-            console.log("Request headers:", requestParams.request.headers);
-        }, function(result) {
-            isNightwatchAPI(this);
-            // without any parameter
-            // @ts-expect-error
-            this.captureNetworkRequests();
-            console.log(result.value);
-        });
+        browser.captureNetworkRequests(
+            (requestParams) => {
+                console.log("Request URL:", requestParams.request.url);
+                console.log("Request method:", requestParams.request.method);
+                console.log("Request headers:", requestParams.request.headers);
+            },
+            function (result) {
+                isNightwatchAPI(this);
+                // without any parameter
+                // @ts-expect-error
+                this.captureNetworkRequests();
+                console.log(result.value);
+            },
+        );
     });
 
     it("tests captureNetworkRequests with async", async () => {
@@ -103,8 +108,8 @@ describe("capture network requests", function() {
 //
 // .mockNetworkResponse
 //
-describe("mock network response", function() {
-    it("intercepts the request made to Google search and mocks its response", function() {
+describe("mock network response", function () {
+    it("intercepts the request made to Google search and mocks its response", function () {
         browser
             .mockNetworkResponse("https://www.google.com/", {
                 status: 200,
@@ -119,19 +124,23 @@ describe("mock network response", function() {
 
     it("tests different ways of using mockNetworkResponse", () => {
         // with all parameters
-        browser.mockNetworkResponse("https://www.google.com/", {
-            status: 200,
-            headers: {
-                "Content-Type": "UTF-8",
+        browser.mockNetworkResponse(
+            "https://www.google.com/",
+            {
+                status: 200,
+                headers: {
+                    "Content-Type": "UTF-8",
+                },
+                body: "Hello there!",
             },
-            body: "Hello there!",
-        }, function(result) {
-            isNightwatchAPI(this);
-            // without any parameter (invalid)
-            // @ts-expect-error
-            this.mockNetworkResponse();
-            console.log(result.value);
-        });
+            function (result) {
+                isNightwatchAPI(this);
+                // without any parameter (invalid)
+                // @ts-expect-error
+                this.mockNetworkResponse();
+                console.log(result.value);
+            },
+        );
 
         // with no response
         browser.mockNetworkResponse("https://www.google.com/");
@@ -146,7 +155,9 @@ describe("mock network response", function() {
     });
 
     it("tests mockNetworkResponse with async", async () => {
-        const result = await browser.mockNetworkResponse("https://www.google.com/");
+        const result = await browser.mockNetworkResponse(
+            "https://www.google.com/",
+        );
 
         isNull(result);
     });
@@ -155,8 +166,8 @@ describe("mock network response", function() {
 //
 // .setDeviceDimensions
 //
-describe("modify device dimensions", function() {
-    it("modifies the device dimensions and then resets it", function() {
+describe("modify device dimensions", function () {
+    it("modifies the device dimensions and then resets it", function () {
         browser
             .setDeviceDimensions({
                 width: 400,
@@ -173,17 +184,20 @@ describe("modify device dimensions", function() {
 
     it("tests different ways of using setDeviceDimensions", () => {
         // with all parameters
-        browser.setDeviceDimensions({
-            width: 400,
-            height: 600,
-            deviceScaleFactor: 50,
-            mobile: true,
-        }, function(result) {
-            isNightwatchAPI(this);
-            // without any parameter (resets the dimensions)
-            this.setDeviceDimensions();
-            console.log(result.value);
-        });
+        browser.setDeviceDimensions(
+            {
+                width: 400,
+                height: 600,
+                deviceScaleFactor: 50,
+                mobile: true,
+            },
+            function (result) {
+                isNightwatchAPI(this);
+                // without any parameter (resets the dimensions)
+                this.setDeviceDimensions();
+                console.log(result.value);
+            },
+        );
 
         // with only width and deviceScaleFactor
         browser.setDeviceDimensions({
@@ -207,8 +221,8 @@ describe("modify device dimensions", function() {
 //
 // .getPerformanceMetrics
 //
-describe("collect performance metrics", function() {
-    it("enables the metrics collection, does some stuff and collects the metrics", function() {
+describe("collect performance metrics", function () {
+    it("enables the metrics collection, does some stuff and collects the metrics", function () {
         browser
             .enablePerformanceMetrics()
             .navigateTo("https://www.google.com")
@@ -222,7 +236,7 @@ describe("collect performance metrics", function() {
 
     it("tests different ways of using getPerformanceMetrics", () => {
         // with all parameters
-        browser.getPerformanceMetrics(function(result) {
+        browser.getPerformanceMetrics(function (result) {
             isNightwatchAPI(this);
             // without any parameter
             this.getPerformanceMetrics();
@@ -249,8 +263,8 @@ describe("collect performance metrics", function() {
 //
 // .enablePerformanceMetrics
 //
-describe("collect performance metrics", function() {
-    it("enables the metrics collection, does some stuff and collects the metrics", function() {
+describe("collect performance metrics", function () {
+    it("enables the metrics collection, does some stuff and collects the metrics", function () {
         browser
             .enablePerformanceMetrics()
             .navigateTo("https://www.google.com")
@@ -264,7 +278,7 @@ describe("collect performance metrics", function() {
 
     it("tests different ways of using enablePerformanceMetrics", () => {
         // with all parameters
-        browser.enablePerformanceMetrics(false, function(result) {
+        browser.enablePerformanceMetrics(false, function (result) {
             isNightwatchAPI(this);
             // without any parameter
             this.enablePerformanceMetrics();
@@ -284,8 +298,8 @@ describe("collect performance metrics", function() {
 //
 // .takeHeapSnapshot
 //
-describe("take heap snapshot", function() {
-    it("takes heap snapshot and saves it as snap.heapsnapshot file", function() {
+describe("take heap snapshot", function () {
+    it("takes heap snapshot and saves it as snap.heapsnapshot file", function () {
         browser
             .navigateTo("https://www.google.com")
             .takeHeapSnapshot("./snap.heapsnapshot");
@@ -293,7 +307,7 @@ describe("take heap snapshot", function() {
 
     it("tests different ways of using takeHeapSnapshot", () => {
         // with all parameters
-        browser.takeHeapSnapshot("snap.heapsnapshot", function(result) {
+        browser.takeHeapSnapshot("snap.heapsnapshot", function (result) {
             isNightwatchAPI(this);
             // without any parameter
             this.takeHeapSnapshot();
@@ -319,31 +333,34 @@ describe("take heap snapshot", function() {
 //
 // .captureBrowserConsoleLogs
 //
-describe("capture console events", function() {
-    it("captures and logs console.log event", function() {
+describe("capture console events", function () {
+    it("captures and logs console.log event", function () {
         browser
             .captureBrowserConsoleLogs((event) => {
                 console.log(event.type, event.timestamp, event.args[0].value);
             })
             .navigateTo("https://www.google.com")
-            .executeScript(function() {
+            .executeScript(function () {
                 console.log("here");
             }, []);
     });
 
     it("tests different ways of using captureBrowserConsoleLogs", () => {
         // with all parameters
-        browser.captureBrowserConsoleLogs((event) => {
-            console.log(event.type, event.timestamp, event.args[0].value);
-            // @ts-expect-error
-            console.log(event.context, event.stackTrace);
-        }, function(result) {
-            isNightwatchAPI(this);
-            // without any parameter
-            // @ts-expect-error
-            this.captureBrowserConsoleLogs();
-            console.log(result.value);
-        });
+        browser.captureBrowserConsoleLogs(
+            (event) => {
+                console.log(event.type, event.timestamp, event.args[0].value);
+                // @ts-expect-error
+                console.log(event.context, event.stackTrace);
+            },
+            function (result) {
+                isNightwatchAPI(this);
+                // without any parameter
+                // @ts-expect-error
+                this.captureBrowserConsoleLogs();
+                console.log(result.value);
+            },
+        );
     });
 
     it("tests captureBrowserConsoleLogs with async", async () => {
@@ -356,8 +373,8 @@ describe("capture console events", function() {
 //
 // .captureBrowserExceptions
 //
-describe("catch browser exceptions", function() {
-    it("captures the js exceptions thrown in the browser", async function() {
+describe("catch browser exceptions", function () {
+    it("captures the js exceptions thrown in the browser", async function () {
         await browser.captureBrowserExceptions((event) => {
             console.log(">>> Exception:", event);
         });
@@ -365,25 +382,38 @@ describe("catch browser exceptions", function() {
         await browser.navigateTo("https://duckduckgo.com/");
 
         const searchBoxElement = await browser.findElement("input[name=q]");
-        await browser.executeScript(function(_searchBoxElement) {
-            // @ts-expect-error
-            _searchBoxElement.setAttribute("onclick", "throw new Error(\"Hello world!\")");
-        }, [searchBoxElement]);
+        await browser.executeScript(
+            function (_searchBoxElement) {
+                // @ts-expect-error
+                _searchBoxElement.setAttribute(
+                    "onclick",
+                    'throw new Error("Hello world!")',
+                );
+            },
+            [searchBoxElement],
+        );
 
         await browser.elementIdClick(searchBoxElement.getId());
     });
 
     it("tests different ways of using captureBrowserExceptions", () => {
         // with all parameters
-        browser.captureBrowserExceptions((event) => {
-            console.log(">>> Exception:", event.timestamp, event.exceptionDetails);
-        }, function(result) {
-            isNightwatchAPI(this);
-            // without any parameter
-            // @ts-expect-error
-            this.captureBrowserExceptions();
-            console.log(result.value);
-        });
+        browser.captureBrowserExceptions(
+            (event) => {
+                console.log(
+                    ">>> Exception:",
+                    event.timestamp,
+                    event.exceptionDetails,
+                );
+            },
+            function (result) {
+                isNightwatchAPI(this);
+                // without any parameter
+                // @ts-expect-error
+                this.captureBrowserExceptions();
+                console.log(result.value);
+            },
+        );
     });
 
     it("tests captureBrowserExceptions with async", async () => {

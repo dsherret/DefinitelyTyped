@@ -22,8 +22,17 @@ export type resultType =
 export type sandboxType = {
     [key in string]: string;
 };
-export type callback = (payloadValue: any, type: "value" | "property", fullPayload: any) => void;
-export type otherCallback = (value: any, path: string, parent: object, parentPropertyName: any) => boolean;
+export type callback = (
+    payloadValue: any,
+    type: "value" | "property",
+    fullPayload: any,
+) => void;
+export type otherCallback = (
+    value: any,
+    path: string,
+    parent: object,
+    parentPropertyName: any,
+) => boolean;
 
 export interface options {
     path?: pathType | undefined;

@@ -28,12 +28,14 @@ declare namespace SESTransport {
         /**
          * The raw email message itself. The message has to meet the following criteria:   The message has to contain a header and a body, separated by a blank line.   All of the required header fields must be present in the message.   Each part of a multipart MIME message must be formatted properly.   Attachments must be of a content type that Amazon SES supports. For a list on unsupported content types, see Unsupported Attachment Types in the Amazon SES Developer Guide.   The entire message must be base64-encoded.   If any of the MIME parts in your message contain content that is outside of the 7-bit ASCII character range, we highly recommend that you encode that content. For more information, see Sending Raw Email in the Amazon SES Developer Guide.   Per RFC 5321, the maximum length of each line of text, including the &lt;CRLF&gt;, must not exceed 1,000 characters.
          */
-        RawMessage?: {
-            /**
-             * The raw data of the message. This data needs to base64-encoded if you are accessing Amazon SES directly through the HTTPS interface. If you are accessing Amazon SES using an AWS SDK, the SDK takes care of the base 64-encoding for you. In all cases, the client must ensure that the message format complies with Internet email standards regarding email header fields, MIME types, and MIME encoding. The To:, CC:, and BCC: headers in the raw message can contain a group list. If you are using SendRawEmail with sending authorization, you can include X-headers in the raw message to specify the "Source," "From," and "Return-Path" addresses. For more information, see the documentation for SendRawEmail.   Do not include these X-headers in the DKIM signature, because they are removed by Amazon SES before sending the email.  For more information, go to the Amazon SES Developer Guide.
-             */
-            Data: Buffer | Uint8Array | {} | string;
-        } | undefined;
+        RawMessage?:
+            | {
+                  /**
+                   * The raw data of the message. This data needs to base64-encoded if you are accessing Amazon SES directly through the HTTPS interface. If you are accessing Amazon SES using an AWS SDK, the SDK takes care of the base 64-encoding for you. In all cases, the client must ensure that the message format complies with Internet email standards regarding email header fields, MIME types, and MIME encoding. The To:, CC:, and BCC: headers in the raw message can contain a group list. If you are using SendRawEmail with sending authorization, you can include X-headers in the raw message to specify the "Source," "From," and "Return-Path" addresses. For more information, see the documentation for SendRawEmail.   Do not include these X-headers in the DKIM signature, because they are removed by Amazon SES before sending the email.  For more information, go to the Amazon SES Developer Guide.
+                   */
+                  Data: Buffer | Uint8Array | {} | string;
+              }
+            | undefined;
         /**
          * This parameter is used only for sending authorization. It is the ARN of the identity that is associated with the sending authorization policy that permits you to specify a particular "From" address in the header of the raw email. Instead of using this parameter, you can use the X-header X-SES-FROM-ARN in the raw message of the email. If you use both the FromArn parameter and the corresponding X-header, Amazon SES uses the value of the FromArn parameter.  For information about when to use this parameter, see the description of SendRawEmail in this guide, or see the Amazon SES Developer Guide.
          */
@@ -51,15 +53,15 @@ declare namespace SESTransport {
          */
         Tags?:
             | Array<{
-                /**
-                 * The name of the tag. The name must:   This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).   Contain less than 256 characters.
-                 */
-                Name: string;
-                /**
-                 * The value of the tag. The value must:   This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).   Contain less than 256 characters.
-                 */
-                Value: string;
-            }>
+                  /**
+                   * The name of the tag. The name must:   This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).   Contain less than 256 characters.
+                   */
+                  Name: string;
+                  /**
+                   * The value of the tag. The value must:   This value can only contain ASCII letters (a-z, A-Z), numbers (0-9), underscores (_), or dashes (-).   Contain less than 256 characters.
+                   */
+                  Value: string;
+              }>
             | undefined;
         /**
          * The name of the configuration set to use when you send an email using SendRawEmail.
@@ -89,7 +91,10 @@ declare namespace SESTransport {
     }
 }
 
-declare class SESTransport extends EventEmitter implements Transport<SESTransport.SentMessageInfo> {
+declare class SESTransport
+    extends EventEmitter
+    implements Transport<SESTransport.SentMessageInfo>
+{
     options: SESTransport.Options;
 
     logger: shared.Logger;
@@ -106,12 +111,10 @@ declare class SESTransport extends EventEmitter implements Transport<SESTranspor
     sendingRateTTL: number | null;
     rateInterval: number;
     rateMessages: Array<{ ts: number; pending: boolean }>;
-    pending: Array<
-        {
-            mail: Mail<SESTransport.SentMessageInfo>;
-            callback(err: Error | null, info: SESTransport.SentMessageInfo): void;
-        }
-    >;
+    pending: Array<{
+        mail: Mail<SESTransport.SentMessageInfo>;
+        callback(err: Error | null, info: SESTransport.SentMessageInfo): void;
+    }>;
     idling: boolean;
 
     constructor(options: SESTransport.Options);
@@ -119,7 +122,10 @@ declare class SESTransport extends EventEmitter implements Transport<SESTranspor
     /** Schedules a sending of a message */
     send(
         mail: MailMessage<SESTransport.SentMessageInfo>,
-        callback: (err: Error | null, info: SESTransport.SentMessageInfo) => void,
+        callback: (
+            err: Error | null,
+            info: SESTransport.SentMessageInfo,
+        ) => void,
     ): void;
 
     /** Returns true if there are free slots in the queue */

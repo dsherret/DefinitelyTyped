@@ -44,8 +44,13 @@ declare function getFilterValuesFromGrid(
         preserveExpressions?: boolean;
     },
 ): Record<string, any>;
-declare function updateFilterFields(grid: Grid, filterValues: Record<string, any>): void;
-declare function evaluateFilterExpressions(filterValues: Record<string, any>): any;
+declare function updateFilterFields(
+    grid: Grid,
+    filterValues: Record<string, any>,
+): void;
+declare function evaluateFilterExpressions(
+    filterValues: Record<string, any>,
+): any;
 type VisualizationFilter = import("./VisualizationFilter");
 type Visualization = import("./Visualization");
 type Field = import("@nginstack/engine/lib/classdef/Field");

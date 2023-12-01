@@ -8,7 +8,15 @@ import { Status, Template, TemplateObject } from "./template";
 export = Gauge;
 declare namespace Gauge {
     type TemplateEntry = string | TemplateObject;
-    export { Options, Plumbing, TemplateEntry, ThemeName, ThemeObject, ThemeOpts, Themes };
+    export {
+        Options,
+        Plumbing,
+        TemplateEntry,
+        ThemeName,
+        ThemeObject,
+        ThemeOpts,
+        Themes,
+    };
 }
 
 /**

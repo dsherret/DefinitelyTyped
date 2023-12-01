@@ -1,6 +1,10 @@
 import { PureComponent, Requireable, Validator } from "react";
 import { IndexRange } from "../../index";
-import { CellMeasurerCacheInterface, KeyMapper, MeasuredCellParent } from "./CellMeasurer";
+import {
+    CellMeasurerCacheInterface,
+    KeyMapper,
+    MeasuredCellParent,
+} from "./CellMeasurer";
 import { GridCellRenderer } from "./Grid";
 /**
  * Specifies the number of miliseconds during which to disable pointer events while a scroll is in progress.
@@ -10,7 +14,11 @@ export const DEFAULT_SCROLLING_RESET_TIME_INTERVAL = 150;
 
 export type OnCellsRenderedCallback = (params: IndexRange) => void;
 
-export type OnScrollCallback = (params: { clientHeight: number; scrollHeight: number; scrollTop: number }) => void;
+export type OnScrollCallback = (params: {
+    clientHeight: number;
+    scrollHeight: number;
+    scrollTop: number;
+}) => void;
 
 export type MasonryCellProps = {
     index: number;
@@ -103,7 +111,10 @@ export class Masonry extends PureComponent<MasonryProps, MasonryState> {
 
     recomputeCellPositions(): void;
 
-    static getDerivedStateFromProps(nextProps: MasonryProps, prevState: MasonryState): MasonryState | null;
+    static getDerivedStateFromProps(
+        nextProps: MasonryProps,
+        prevState: MasonryState,
+    ): MasonryState | null;
 }
 
 export default Masonry;
@@ -136,4 +147,6 @@ export type Positioner = ((index: number) => Position) & {
     reset: (params: resetParams) => void;
 };
 
-export const createCellPositioner: (params: createCellPositionerParams) => Positioner;
+export const createCellPositioner: (
+    params: createCellPositionerParams,
+) => Positioner;

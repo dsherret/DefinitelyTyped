@@ -2,20 +2,18 @@ import gulp = require("gulp");
 import plumber = require("gulp-plumber");
 
 // default behavior
-gulp.src("./src/*.ext")
-    .pipe(plumber())
-    .pipe(gulp.dest("./dist"));
+gulp.src("./src/*.ext").pipe(plumber()).pipe(gulp.dest("./dist"));
 
 // error handler function
 gulp.src("./src/*.ext")
-    .pipe(plumber((error) => {
-        console.log(error);
-    }))
+    .pipe(
+        plumber((error) => {
+            console.log(error);
+        }),
+    )
     .pipe(gulp.dest("./dist"));
 
-gulp.src("./src/*.ext")
-    .pipe(plumber({}))
-    .pipe(gulp.dest("./dist"));
+gulp.src("./src/*.ext").pipe(plumber({})).pipe(gulp.dest("./dist"));
 
 gulp.src("./src/*.ext")
     .pipe(plumber({ inherit: false }))

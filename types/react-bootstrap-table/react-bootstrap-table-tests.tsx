@@ -45,15 +45,18 @@ interface Product {
     inStockStatus?: number | undefined;
     sales?: number | undefined;
 }
-const products: Product[] = [{
-    id: 1,
-    name: "Item name 1",
-    price: 100,
-}, {
-    id: 2,
-    name: "Item name 2",
-    price: 100,
-}];
+const products: Product[] = [
+    {
+        id: 1,
+        name: "Item name 1",
+        price: 100,
+    },
+    {
+        id: 2,
+        name: "Item name 2",
+        price: 100,
+    },
+];
 
 type JobType = "A" | "B" | "C" | "D";
 interface Job {
@@ -78,8 +81,22 @@ interface ExtendedJob {
     datetime: Date;
 }
 const extendedJobs = [
-    { id: 1, name: "Item name 1", type1: "A", type2: "B", active: "N", datetime: "2001-12-28T14:57:00" },
-    { id: 2, name: "Item name 2", type1: "A", type2: "B", active: "Y", datetime: "2002-12-28T14:57:00" },
+    {
+        id: 1,
+        name: "Item name 1",
+        type1: "A",
+        type2: "B",
+        active: "N",
+        datetime: "2001-12-28T14:57:00",
+    },
+    {
+        id: 2,
+        name: "Item name 2",
+        type1: "A",
+        type2: "B",
+        active: "Y",
+        datetime: "2002-12-28T14:57:00",
+    },
 ];
 
 const inStockStatus = {
@@ -89,16 +106,34 @@ const inStockStatus = {
 
 // It's a data format example.
 function priceFormatter(cell: number, row: Product) {
-    return "<i class=\"glyphicon glyphicon-usd\"></i> " + cell;
+    return '<i class="glyphicon glyphicon-usd"></i> ' + cell;
 }
 
 render(
-    <BootstrapTable data={products} striped={true} hover={true} ignoreSinglePage>
-        <TableHeaderColumn dataField="id" isKey={true} dataAlign="center" dataSort={true}>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="name" dataSort={true} editable={{ type: "textarea", rows: 10 }}>
+    <BootstrapTable
+        data={products}
+        striped={true}
+        hover={true}
+        ignoreSinglePage
+    >
+        <TableHeaderColumn
+            dataField="id"
+            isKey={true}
+            dataAlign="center"
+            dataSort={true}
+        >
+            Product ID
+        </TableHeaderColumn>
+        <TableHeaderColumn
+            dataField="name"
+            dataSort={true}
+            editable={{ type: "textarea", rows: 10 }}
+        >
             Product Name
         </TableHeaderColumn>
-        <TableHeaderColumn dataField="price" dataFormat={priceFormatter}>Product Price</TableHeaderColumn>
+        <TableHeaderColumn dataField="price" dataFormat={priceFormatter}>
+            Product Price
+        </TableHeaderColumn>
     </BootstrapTable>,
     document.getElementById("app"),
 );
@@ -118,14 +153,22 @@ class SelectFilterWithDefaultValue extends React.Component {
     render() {
         return (
             <BootstrapTable data={products}>
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="quality"
                     filterFormatted
                     dataFormat={enumFormatter}
                     formatExtraData={qualityType}
-                    filter={{ type: "SelectFilter", options: qualityType, defaultValue: 1 }}
+                    filter={{
+                        type: "SelectFilter",
+                        options: qualityType,
+                        defaultValue: 1,
+                    }}
                 >
                     Product Quality
                 </TableHeaderColumn>
@@ -138,11 +181,22 @@ class TextFilterWithCondition extends React.Component {
     render() {
         return (
             <BootstrapTable data={products}>
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name" filter={{ type: "TextFilter", delay: 1000, condition: "eq" }}>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    dataField="name"
+                    filter={{
+                        type: "TextFilter",
+                        delay: 1000,
+                        condition: "eq",
+                    }}
+                >
                     Product Name
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -153,13 +207,19 @@ interface CustomFilterParams {
     textNOK: string;
 }
 function getCustomFilter(
-    filterHandler: (parameters?: CustomFilterParameters<CustomFilterParams>, type?: "CustomFilter") => void,
+    filterHandler: (
+        parameters?: CustomFilterParameters<CustomFilterParams>,
+        type?: "CustomFilter",
+    ) => void,
     customFilterParameters: CustomFilterParameters<CustomFilterParams>,
 ) {
     return <div />;
 }
 
-function customFilterCallback(cell: any, callbackParameters: CustomFilterParams) {
+function customFilterCallback(
+    cell: any,
+    callbackParameters: CustomFilterParams,
+) {
     return true;
 }
 
@@ -175,9 +235,15 @@ class CustomFilterTable extends React.Component {
         };
         return (
             <BootstrapTable data={products}>
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="isInStock" filter={filter}>Product Is In Stock</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="isInStock" filter={filter}>
+                    Product Is In Stock
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -207,9 +273,15 @@ class RemotePropsDefault extends React.Component {
                     },
                 }}
             >
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="isInStock" filter={filter}>Product Is In Stock</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="isInStock" filter={filter}>
+                    Product Is In Stock
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -239,9 +311,15 @@ class RemotePropsSpecified extends React.Component {
                     },
                 }}
             >
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="isInStock" filter={filter}>Product Is In Stock</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="isInStock" filter={filter}>
+                    Product Is In Stock
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -258,13 +336,16 @@ class RemoteBool extends React.Component {
             },
         };
         return (
-            <BootstrapTable
-                data={products}
-                remote
-            >
-                <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="isInStock" filter={filter}>Product Is In Stock</TableHeaderColumn>
+            <BootstrapTable data={products} remote>
+                <TableHeaderColumn dataField="id" isKey>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="isInStock" filter={filter}>
+                    Product Is In Stock
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -275,8 +356,12 @@ class RemoteBool extends React.Component {
  */
 const tdAttrExample = (
     <BootstrapTable data={products} search>
-        <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="name" tdAttr={{ "data-attr": "test" }}>Product Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="id" isKey>
+            Product ID
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="name" tdAttr={{ "data-attr": "test" }}>
+            Product Name
+        </TableHeaderColumn>
         <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
     </BootstrapTable>
 );
@@ -286,8 +371,12 @@ const tdAttrExample = (
  */
 const tdStyleExample = (
     <BootstrapTable data={products} search>
-        <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="name" tdStyle={{ whiteSpace: "normal" }}>Product Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="id" isKey>
+            Product ID
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="name" tdStyle={{ whiteSpace: "normal" }}>
+            Product Name
+        </TableHeaderColumn>
         <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
     </BootstrapTable>
 );
@@ -297,8 +386,12 @@ const tdStyleExample = (
  */
 const thStyleExample = (
     <BootstrapTable data={products} search>
-        <TableHeaderColumn dataField="id" isKey>Product ID</TableHeaderColumn>
-        <TableHeaderColumn dataField="name" thStyle={{ fontWeight: "lighter" }}>Product Name</TableHeaderColumn>
+        <TableHeaderColumn dataField="id" isKey>
+            Product ID
+        </TableHeaderColumn>
+        <TableHeaderColumn dataField="name" thStyle={{ fontWeight: "lighter" }}>
+            Product Name
+        </TableHeaderColumn>
         <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
     </BootstrapTable>
 );
@@ -310,15 +403,51 @@ class ColumnHeaderSpanComplex extends React.Component {
     render() {
         const options: Options = { exportCSVSeparator: "##" };
         return (
-            <BootstrapTable data={products} insertRow deleteRow exportCSV options={options}>
-                <TableHeaderColumn row={0} rowSpan={2} dataField="id" isKey={true}>ID</TableHeaderColumn>
-                <TableHeaderColumn row={0} colSpan={3} dataSort csvHeader="Product" headerAlign="right">
+            <BootstrapTable
+                data={products}
+                insertRow
+                deleteRow
+                exportCSV
+                options={options}
+            >
+                <TableHeaderColumn
+                    row={0}
+                    rowSpan={2}
+                    dataField="id"
+                    isKey={true}
+                >
+                    ID
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    row={0}
+                    colSpan={3}
+                    dataSort
+                    csvHeader="Product"
+                    headerAlign="right"
+                >
                     Product
                 </TableHeaderColumn>
-                <TableHeaderColumn row={1} dataField="name" width="175" dataAlign="center">name</TableHeaderColumn>
-                <TableHeaderColumn row={1} dataField="price" dataSort>price</TableHeaderColumn>
-                <TableHeaderColumn row={1} dataField="coupon" width="70">Coupon</TableHeaderColumn>
-                <TableHeaderColumn row={0} csvHeader="In stock" rowSpan={2} dataField="status" export={false}>
+                <TableHeaderColumn
+                    row={1}
+                    dataField="name"
+                    width="175"
+                    dataAlign="center"
+                >
+                    name
+                </TableHeaderColumn>
+                <TableHeaderColumn row={1} dataField="price" dataSort>
+                    price
+                </TableHeaderColumn>
+                <TableHeaderColumn row={1} dataField="coupon" width="70">
+                    Coupon
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    row={0}
+                    csvHeader="In stock"
+                    rowSpan={2}
+                    dataField="status"
+                    export={false}
+                >
                     In stock
                 </TableHeaderColumn>
                 <TableHeaderColumn
@@ -329,8 +458,21 @@ class ColumnHeaderSpanComplex extends React.Component {
                 >
                     Customer
                 </TableHeaderColumn>
-                <TableHeaderColumn row={1} csvHeader="name" dataField="customer">name</TableHeaderColumn>
-                <TableHeaderColumn row={1} csvHeader="order" dataField="order" dataSort>order</TableHeaderColumn>
+                <TableHeaderColumn
+                    row={1}
+                    csvHeader="name"
+                    dataField="customer"
+                >
+                    name
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    row={1}
+                    csvHeader="order"
+                    dataField="order"
+                    dataSort
+                >
+                    order
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -352,7 +494,8 @@ class PaginationTable extends React.Component {
     renderShowsTotal = (start: number, to: number, total: number) => {
         return (
             <p style={{ color: "blue" }}>
-                From {start} to {to}, totals is {total}&nbsp;&nbsp;(its a customize text)
+                From {start} to {to}, totals is {total}&nbsp;&nbsp;(its a
+                customize text)
             </p>
         );
     };
@@ -362,16 +505,20 @@ class PaginationTable extends React.Component {
             onPageChange: this.onPageChange,
             onSizePerPageList: this.sizePerPageListChange,
             page: 2, // which page you want to show as default
-            sizePerPageList: [{
-                text: "5",
-                value: 5,
-            }, {
-                text: "10",
-                value: 10,
-            }, {
-                text: "All",
-                value: products.length,
-            }], // you can change the dropdown list for size per page
+            sizePerPageList: [
+                {
+                    text: "5",
+                    value: 5,
+                },
+                {
+                    text: "10",
+                    value: 10,
+                },
+                {
+                    text: "All",
+                    value: products.length,
+                },
+            ], // you can change the dropdown list for size per page
             sizePerPage: 5, // which size per page you want to locate as default
             pageStartIndex: 0, // where to start counting the pages
             paginationSize: 3, // the pagination bar size.
@@ -394,9 +541,15 @@ class PaginationTable extends React.Component {
 
         return (
             <BootstrapTable data={products} pagination={true} options={options}>
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -421,9 +574,15 @@ class BlurToEscapeTable extends React.Component {
                 condensed={true}
                 bordered={false}
             >
-                <TableHeaderColumn width="150px" dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <TableHeaderColumn width="150px" dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -437,7 +596,10 @@ class BlurToEscapeTable extends React.Component {
  */
 class EditCellClassNameTable extends React.Component {
     jobNameValidator = (value: string) => {
-        const response: EditValidatorObject = { isValid: true, notification: { type: "success", msg: "", title: "" } };
+        const response: EditValidatorObject = {
+            isValid: true,
+            notification: { type: "success", msg: "", title: "" },
+        };
         if (!value) {
             response.isValid = false;
             response.notification.type = "error";
@@ -512,8 +674,15 @@ class EditCellClassNameTable extends React.Component {
         };
 
         return (
-            <BootstrapTable data={jobs} cellEdit={cellEditProp} insertRow={true} options={options}>
-                <TableHeaderColumn dataField="id" isKey={true} editable={false}>Job ID</TableHeaderColumn>
+            <BootstrapTable
+                data={jobs}
+                cellEdit={cellEditProp}
+                insertRow={true}
+                options={options}
+            >
+                <TableHeaderColumn dataField="id" isKey={true} editable={false}>
+                    Job ID
+                </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="status"
                     editable={{ validator: this.jobStatusValidator }}
@@ -524,16 +693,25 @@ class EditCellClassNameTable extends React.Component {
                 </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="name"
-                    editable={{ type: "textarea", validator: this.jobNameValidator }}
+                    editable={{
+                        type: "textarea",
+                        validator: this.jobNameValidator,
+                    }}
                     editColumnClassName="editing-jobsname-class"
                     invalidEditColumnClassName="invalid-jobsname-class"
                 >
                     Job Name
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="type" editable={{ type: "select", options: { values: jobTypes } }}>
+                <TableHeaderColumn
+                    dataField="type"
+                    editable={{ type: "select", options: { values: jobTypes } }}
+                >
                     Job Type
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="active" editable={{ type: "checkbox", options: { values: "Y:N" } }}>
+                <TableHeaderColumn
+                    dataField="active"
+                    editable={{ type: "checkbox", options: { values: "Y:N" } }}
+                >
                     Active
                 </TableHeaderColumn>
             </BootstrapTable>
@@ -571,7 +749,9 @@ class MultiSortAndFiltering extends React.Component {
 
     onFilterChange = (filter: FilterData) => {
         Object.keys(filter).forEach((column) => {
-            console.log(`Filtering ${column}: ${JSON.stringify(filter[column])}`);
+            console.log(
+                `Filtering ${column}: ${JSON.stringify(filter[column])}`,
+            );
         });
     };
 
@@ -579,16 +759,23 @@ class MultiSortAndFiltering extends React.Component {
         this.idRef.cleanFiltered();
     };
 
-    afterColumnFilter = (filterConds: readonly FilterData[], result: readonly Product[]) => {
+    afterColumnFilter = (
+        filterConds: readonly FilterData[],
+        result: readonly Product[],
+    ) => {
         console.log("Filter Conditions: ");
         filterConds.forEach((filterCond: FilterData) => {
             Object.keys(filterCond).forEach((fieldName: string) =>
-                console.log(`Filter column = ${fieldName}, Filter value = ${filterCond[fieldName]}`)
+                console.log(
+                    `Filter column = ${fieldName}, Filter value = ${filterCond[fieldName]}`,
+                ),
             );
         });
         console.log("Result is:");
         for (const resultItem of result) {
-            console.log(`Product: ${resultItem.id}, ${resultItem.name}, ${resultItem.price}`);
+            console.log(
+                `Product: ${resultItem.id}, ${resultItem.name}, ${resultItem.price}`,
+            );
         }
     };
 
@@ -597,28 +784,35 @@ class MultiSortAndFiltering extends React.Component {
         colInfos: ReadonlyArray<ColumnDescription<Product>>,
         multiColumnSearch: boolean,
     ) => {
-        this.setState({ data: products.filter((product) => product.name = searchText) });
+        this.setState({
+            data: products.filter((product) => (product.name = searchText)),
+        });
     };
 
     afterSearch = (searchText: string, result: readonly Product[]) => {
         console.log(`Your search text is ${searchText}`);
         console.log("Result is:");
         for (const resultItem of result) {
-            console.log(`Product: ${resultItem.id}, ${resultItem.name}, ${resultItem.price}`);
+            console.log(
+                `Product: ${resultItem.id}, ${resultItem.name}, ${resultItem.price}`,
+            );
         }
     };
 
     getNameCaret = (direction: SortOrder | null, fieldName: string) =>
-        (direction === "asc")
-            ? <span>up</span>
-            : (direction === "desc")
-            ? <span>down</span>
-            : <span>up/down</span>;
+        direction === "asc" ? (
+            <span>up</span>
+        ) : direction === "desc" ? (
+            <span>down</span>
+        ) : (
+            <span>up/down</span>
+        );
 
     revertSortFunc = (a: Product, b: Product, order: SortOrder) =>
-        (order === "desc") ? a.price - b.price : b.price - a.price;
+        order === "desc" ? a.price - b.price : b.price - a.price;
 
-    customSortStyle = (order: SortOrder, dataField: string) => (order === "desc") ? "sort-desc" : "sort-asc";
+    customSortStyle = (order: SortOrder, dataField: string) =>
+        order === "desc" ? "sort-desc" : "sort-asc";
 
     render() {
         const options: Options<Product> = {
@@ -634,7 +828,9 @@ class MultiSortAndFiltering extends React.Component {
         };
         return (
             <div>
-                <button className="btn ben-default" onClick={this.cleanSort}>Clean</button>
+                <button className="btn ben-default" onClick={this.cleanSort}>
+                    Clean
+                </button>
                 <BootstrapTable
                     data={this.state.data}
                     options={options}
@@ -666,7 +862,11 @@ class MultiSortAndFiltering extends React.Component {
                     <TableHeaderColumn
                         dataField="price"
                         sortFunc={this.revertSortFunc}
-                        filter={{ type: "NumberFilter", options: [10, 50, 100], numberComparators: [">=", "<=", "="] }}
+                        filter={{
+                            type: "NumberFilter",
+                            options: [10, 50, 100],
+                            numberComparators: [">=", "<=", "="],
+                        }}
                     >
                         Product Price
                     </TableHeaderColumn>
@@ -681,7 +881,13 @@ class MultiSortAndFiltering extends React.Component {
  * @see https://github.com/AllenFang/react-bootstrap-table/blob/master/examples/js/sort/custom-sort-with-extra-data-table.js
  */
 class CustomSortWithExtraDataTable extends React.Component {
-    sortByName = (a: any, b: any, order: SortOrder, field: string, enumObject: any) => {
+    sortByName = (
+        a: any,
+        b: any,
+        order: SortOrder,
+        field: string,
+        enumObject: any,
+    ) => {
         if (order === "desc") {
             if (enumObject[a[field]] > enumObject[b[field]]) {
                 return -1;
@@ -701,8 +907,12 @@ class CustomSortWithExtraDataTable extends React.Component {
     render() {
         return (
             <BootstrapTable data={products}>
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="quality"
                     dataFormat={enumFormatter}
@@ -731,13 +941,24 @@ class CustomPagination extends React.Component {
                 currSizePerPage={props.sizePerPage.toString()}
             />
             <div>
-                <button onClick={() => props.changeSizePerPage(25)} className="btn btn-default">
+                <button
+                    onClick={() => props.changeSizePerPage(25)}
+                    className="btn btn-default"
+                >
                     Click to force size per page as 25
                 </button>
-                <button onClick={() => props.toggleDropDown()} className="btn btn-default">
+                <button
+                    onClick={() => props.toggleDropDown()}
+                    className="btn btn-default"
+                >
                     Click to force toggle dropdown
                 </button>
-                <button onClick={() => props.changePage(3)} className="btn btn-default">Jump to page 3</button>
+                <button
+                    onClick={() => props.changePage(3)}
+                    className="btn btn-default"
+                >
+                    Jump to page 3
+                </button>
             </div>
         </div>
     );
@@ -768,7 +989,9 @@ class CustomModal extends React.Component {
     ) => {
         const newRow: { [field: string]: string } = {};
         columns.forEach((column, i) => {
-            newRow[column.field] = (this.refs[column.field] as HTMLInputElement).value;
+            newRow[column.field] = (
+                this.refs[column.field] as HTMLInputElement
+            ).value;
         }, this);
         onSave(newRow);
     };
@@ -784,20 +1007,17 @@ class CustomModal extends React.Component {
             <h2 style={{ color: "red" }}>Custom Insert Modal</h2>
             <div>
                 {columns.map((column, i) => {
-                    const {
-                        editable,
-                        format,
-                        field,
-                        name,
-                        hiddenOnInsert,
-                    } = column;
+                    const { editable, format, field, name, hiddenOnInsert } =
+                        column;
 
                     if (hiddenOnInsert) {
                         return null;
                     }
-                    const error = validateState[field]
-                        ? <span className="help-block bg-danger">{validateState[field]}</span>
-                        : null;
+                    const error = validateState[field] ? (
+                        <span className="help-block bg-danger">
+                            {validateState[field]}
+                        </span>
+                    ) : null;
                     return (
                         <div className="form-group" key={field}>
                             <label>{name} :</label>
@@ -808,8 +1028,13 @@ class CustomModal extends React.Component {
                 })}
             </div>
             <div>
-                <button className="btn btn-danger" onClick={onModalClose}>Leave</button>
-                <button className="btn btn-success" onClick={(e) => this.handleSaveBtnClick(columns, onSave)}>
+                <button className="btn btn-danger" onClick={onModalClose}>
+                    Leave
+                </button>
+                <button
+                    className="btn btn-success"
+                    onClick={(e) => this.handleSaveBtnClick(columns, onSave)}
+                >
                     Confirm
                 </button>
             </div>
@@ -822,9 +1047,15 @@ class CustomModal extends React.Component {
         };
         return (
             <BootstrapTable data={products} options={options} insertRow>
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -834,7 +1065,10 @@ class CustomModal extends React.Component {
  * Custom Insert Modal Fields, both as a custom component and as custom fields.
  * @see https://github.com/AllenFang/react-bootstrap-table/blob/master/examples/js/custom/insert-modal/custom-insert-modal-field.js
  */
-class SalesRadioField extends React.Component<{ editorClass: string; ignoreEditable: boolean }> {
+class SalesRadioField extends React.Component<{
+    editorClass: string;
+    ignoreEditable: boolean;
+}> {
     yes: HTMLInputElement | null;
     no: HTMLInputElement | null;
 
@@ -853,7 +1087,8 @@ class SalesRadioField extends React.Component<{ editorClass: string; ignoreEdita
                         type="radio"
                         name="optradio"
                         value="Yes"
-                    />Yes
+                    />
+                    Yes
                 </label>
                 <label className="radio-inline">
                     <input
@@ -863,7 +1098,8 @@ class SalesRadioField extends React.Component<{ editorClass: string; ignoreEdita
                         type="radio"
                         name="optradio"
                         value="No"
-                    />No
+                    />
+                    No
                 </label>
             </div>
         );
@@ -877,7 +1113,15 @@ class CustomInsertModalFieldTable extends React.Component {
         ignoreEditable: boolean,
     ) => {
         const seqId = products.length;
-        return <input type="text" {...attr} disabled value={seqId} className={`${editorClass}`} />;
+        return (
+            <input
+                type="text"
+                {...attr}
+                disabled
+                value={seqId}
+                className={`${editorClass}`}
+            />
+        );
     };
 
     customNameField = (
@@ -890,7 +1134,11 @@ class CustomInsertModalFieldTable extends React.Component {
         const fruits = ["banana", "apple", "orange", "tomato", "strawberries"];
         return (
             <select className={`${editorClass}`} {...attr}>
-                {fruits.map(name => <option key={name} value={name}>{name}</option>)}
+                {fruits.map((name) => (
+                    <option key={name} value={name}>
+                        {name}
+                    </option>
+                ))}
             </select>
         );
     };
@@ -902,22 +1150,40 @@ class CustomInsertModalFieldTable extends React.Component {
         ignoreEditable: boolean,
         defaultValue: any,
     ) => {
-        return <SalesRadioField ref={attr.ref} editorClass={editorClass} ignoreEditable={ignoreEditable} />;
+        return (
+            <SalesRadioField
+                ref={attr.ref}
+                editorClass={editorClass}
+                ignoreEditable={ignoreEditable}
+            />
+        );
     };
 
     render() {
         return (
             <BootstrapTable ref="table" data={products} insertRow={true}>
-                <TableHeaderColumn dataField="id" isKey={true} customInsertEditor={{ getElement: this.customKeyField }}>
+                <TableHeaderColumn
+                    dataField="id"
+                    isKey={true}
+                    customInsertEditor={{ getElement: this.customKeyField }}
+                >
                     Product ID
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="name" customInsertEditor={{ getElement: this.customNameField }}>
+                <TableHeaderColumn
+                    dataField="name"
+                    customInsertEditor={{ getElement: this.customNameField }}
+                >
                     Product Name
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="sales" customInsertEditor={{ getElement: this.customSaleField }}>
+                <TableHeaderColumn
+                    dataField="sales"
+                    customInsertEditor={{ getElement: this.customSaleField }}
+                >
                     On Sales?
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -934,11 +1200,15 @@ interface MyCustomBodyProps {
     validateState: { [dataField: string]: string };
     ignoreEditable: boolean;
 }
-class MyCustomBody extends React.Component<MyCustomBodyProps> implements ModalBodyInterface<Product> {
+class MyCustomBody
+    extends React.Component<MyCustomBodyProps>
+    implements ModalBodyInterface<Product>
+{
     getFieldValue() {
         const newRow: Partial<Product> = {};
         this.props.columns.forEach((column, i) => {
-            newRow[column.field] = (this.refs[column.field] as HTMLInputElement).value as number & string;
+            newRow[column.field] = (this.refs[column.field] as HTMLInputElement)
+                .value as number & string;
         }, this);
         return newRow as Product;
     }
@@ -961,13 +1231,19 @@ class MyCustomBody extends React.Component<MyCustomBodyProps> implements ModalBo
                         if (hiddenOnInsert) {
                             return null;
                         }
-                        const error = validateState[field]
-                            ? <span className="help-block bg-danger">{validateState[field]}</span>
-                            : null;
+                        const error = validateState[field] ? (
+                            <span className="help-block bg-danger">
+                                {validateState[field]}
+                            </span>
+                        ) : null;
                         return (
                             <div className="form-group" key={field}>
                                 <label>{name}</label>
-                                <input ref={field} type="text" defaultValue={""} />
+                                <input
+                                    ref={field}
+                                    type="text"
+                                    defaultValue={""}
+                                />
                                 {error}
                             </div>
                         );
@@ -1028,9 +1304,15 @@ class DefaultCustomInsertModalHeaderFooterTable extends React.Component {
         };
         return (
             <BootstrapTable data={products} options={options} insertRow={true}>
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -1048,7 +1330,10 @@ class DefaultCustomInsertModalHeaderFooterTable extends React.Component {
  * @see https://github.com/AllenFang/react-bootstrap-table/blob/master/examples/js/custom/csv-button/default-custom-csv-button.js
  * @see https://github.com/AllenFang/react-bootstrap-table/blob/master/examples/js/manipulation/del-row-custom-confirm.js
  */
-class MySearchField extends React.Component<SearchFieldProps> implements SearchFieldInterface {
+class MySearchField
+    extends React.Component<SearchFieldProps>
+    implements SearchFieldInterface
+{
     field: SearchField | null;
 
     getValue() {
@@ -1105,7 +1390,10 @@ class CustomButtonGroup extends React.Component {
         />
     );
 
-    createShowSelectedOnlyButton = (onClick: (e: React.MouseEvent<{}>) => void, showSelected: boolean) => (
+    createShowSelectedOnlyButton = (
+        onClick: (e: React.MouseEvent<{}>) => void,
+        showSelected: boolean,
+    ) => (
         <ShowSelectedOnlyButton
             showAllText="Show All"
             showOnlySelectText="Show Selected"
@@ -1137,10 +1425,7 @@ class CustomButtonGroup extends React.Component {
     );
 
     createCustomClearSearch = (onClick: (e: React.MouseEvent<{}>) => void) => (
-        <button
-            className="btn btn-success"
-            onClick={onClick}
-        >
+        <button className="btn btn-success" onClick={onClick}>
             Clear Search
         </button>
     );
@@ -1148,9 +1433,7 @@ class CustomButtonGroup extends React.Component {
     createCustomSearchPanel = (props: SearchPanelProps) => (
         <div>
             <div className="input-group">
-                <span className="input-group-btn">
-                    {props.clearBtn}
-                </span>
+                <span className="input-group-btn">{props.clearBtn}</span>
             </div>
             {props.searchField}
         </div>
@@ -1169,7 +1452,11 @@ class CustomButtonGroup extends React.Component {
 
     customConfirm = (next: () => void, dropRowKeys: readonly number[]) => {
         const dropRowKeysStr = dropRowKeys.join(",");
-        if (confirm(`(It's a custom confirm)Are you sure you want to delete ${dropRowKeysStr}?`)) {
+        if (
+            confirm(
+                `(It's a custom confirm)Are you sure you want to delete ${dropRowKeysStr}?`,
+            )
+        ) {
             next();
         }
     };
@@ -1203,9 +1490,15 @@ class CustomButtonGroup extends React.Component {
                 exportCSV={true}
                 search={true}
             >
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -1232,10 +1525,11 @@ class ExpandRowExample extends React.Component<{}, { expanding: number[] }> {
 
     expandComponent = (row: any) => <div>You expanded the row.</div>;
 
-    expandColumnComponent = ({ isExpandableRow, isExpanded }: ExpandColumnComponentProps) => {
-        const content = isExpandableRow
-            ? (isExpanded ? "(-)" : "(+)")
-            : " ";
+    expandColumnComponent = ({
+        isExpandableRow,
+        isExpanded,
+    }: ExpandColumnComponentProps) => {
+        const content = isExpandableRow ? (isExpanded ? "(-)" : "(+)") : " ";
         return <div>{content}</div>;
     };
 
@@ -1243,13 +1537,23 @@ class ExpandRowExample extends React.Component<{}, { expanding: number[] }> {
         if (isExpand) {
             this.setState({ expanding: [...this.state.expanding] });
         } else {
-            this.setState({ expanding: [...this.state.expanding.filter(id => id !== rowKey)] });
+            this.setState({
+                expanding: [
+                    ...this.state.expanding.filter((id) => id !== rowKey),
+                ],
+            });
         }
     };
 
-    onSelectAll = (isSelected: boolean) => isSelected ? products.map(row => row.id) : [];
+    onSelectAll = (isSelected: boolean) =>
+        isSelected ? products.map((row) => row.id) : [];
 
-    onSelect = (row: Product, isSelected: boolean, e: React.MouseEvent<any>, rowIndex: number) => {
+    onSelect = (
+        row: Product,
+        isSelected: boolean,
+        e: React.MouseEvent<any>,
+        rowIndex: number,
+    ) => {
         const rowStr = `id: "${row.id}", name: ${row.name}, price: ${row.price}`;
         console.log(e);
         alert(`Selected: ${isSelected}, rowIndex: ${rowIndex}, row: ${rowStr}`);
@@ -1263,8 +1567,8 @@ class ExpandRowExample extends React.Component<{}, { expanding: number[] }> {
                 id={"checkbox" + props.rowIndex}
                 checked={props.checked}
                 disabled={props.disabled}
-                onChange={e => props.onChange(e, props.rowIndex)}
-                ref={input => {
+                onChange={(e) => props.onChange(e, props.rowIndex)}
+                ref={(input) => {
                     if (input) {
                         input.indeterminate = props.indeterminate;
                     }
@@ -1278,7 +1582,9 @@ class ExpandRowExample extends React.Component<{}, { expanding: number[] }> {
 
     selectedRowClass = (row: Product, isSelect: boolean) =>
         isSelect
-            ? ((row.id >= 3) ? "bigger-than-three-select-row" : "less-than-three-select-row")
+            ? row.id >= 3
+                ? "bigger-than-three-select-row"
+                : "less-than-three-select-row"
             : "";
 
     render() {
@@ -1290,18 +1596,22 @@ class ExpandRowExample extends React.Component<{}, { expanding: number[] }> {
             onExpand: this.handleExpand,
             expandParentClass: "custom-expand-parent",
             expandBodyClass: (row, rowIndex, isExpanding) => {
-                return (!isExpanding)
+                return !isExpanding
                     ? "current-is-hidden"
-                    : (rowIndex > 1)
-                    ? "custom-expand-body-1"
-                    : "custom-expand-body-0";
+                    : rowIndex > 1
+                      ? "custom-expand-body-1"
+                      : "custom-expand-body-0";
             },
         };
         const selectRow: SelectRow<Product> = {
             mode: "checkbox",
             bgColor: (row: Product, isSelect: boolean) =>
                 isSelect
-                    ? ((row.id < 2) ? "blue" : ((row.id < 4) ? "red" : "yellow"))
+                    ? row.id < 2
+                        ? "blue"
+                        : row.id < 4
+                          ? "red"
+                          : "yellow"
                     : null,
             clickToSelect: true, // click to select, default is false
             clickToExpand: true, // click to expand row, default is false
@@ -1332,9 +1642,15 @@ class ExpandRowExample extends React.Component<{}, { expanding: number[] }> {
                 autoCollapse={{ sort: true, search: true, filter: true }}
                 selectRow={selectRow}
             >
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name" expandable={false}>Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="price" expandable={false}>Product Price</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name" expandable={false}>
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="price" expandable={false}>
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -1365,9 +1681,15 @@ class MouseEventTable extends React.Component {
 
         return (
             <BootstrapTable data={products} options={options}>
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -1396,15 +1718,26 @@ class HideOnInsertTable extends React.Component {
         };
         return (
             <BootstrapTable data={jobs} insertRow={true} options={options}>
-                <TableHeaderColumn dataField="id" isKey={true} autoValue>Job ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name" hiddenOnInsert>Job Name</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey={true} autoValue>
+                    Job ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name" hiddenOnInsert>
+                    Job Name
+                </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="type"
-                    editable={{ type: "select", options: { values: jobTypes }, readOnly: true }}
+                    editable={{
+                        type: "select",
+                        options: { values: jobTypes },
+                        readOnly: true,
+                    }}
                 >
                     Job Type
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="active" editable={{ type: "checkbox", options: { values: "Y:N" } }}>
+                <TableHeaderColumn
+                    dataField="active"
+                    editable={{ type: "checkbox", options: { values: "Y:N" } }}
+                >
                     Active
                 </TableHeaderColumn>
             </BootstrapTable>
@@ -1421,7 +1754,8 @@ class HideOnInsertTable extends React.Component {
 class EditTypeTable extends React.Component {
     formatType = (cell: string) => `TYPE_${cell}`;
 
-    jobTypes = (row: ExtendedJob) => (row.id > 2) ? ["A", "B"] : ["B", "C", "D", "E"];
+    jobTypes = (row: ExtendedJob) =>
+        row.id > 2 ? ["A", "B"] : ["B", "C", "D", "E"];
 
     handleAddRowWithSyncError = () => {
         return "Sorry, There's some error happend";
@@ -1442,34 +1776,60 @@ class EditTypeTable extends React.Component {
             onAddRow: this.handleAddRowWithSyncError,
         };
         return (
-            <BootstrapTable data={extendedJobs} cellEdit={cellEditProp} options={options} insertRow={true}>
-                <TableHeaderColumn dataField="id" isKey={true}>Job ID</TableHeaderColumn>
+            <BootstrapTable
+                data={extendedJobs}
+                cellEdit={cellEditProp}
+                options={options}
+                insertRow={true}
+            >
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Job ID
+                </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="name"
-                    editable={{ type: "textarea", attrs, defaultValue: "Default Job Name" }}
+                    editable={{
+                        type: "textarea",
+                        attrs,
+                        defaultValue: "Default Job Name",
+                    }}
                 >
                     Job Name
                 </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="type1"
                     dataFormat={this.formatType}
-                    editable={{ type: "select", options: { values: jobTypes }, defaultValue: "C" }}
+                    editable={{
+                        type: "select",
+                        options: { values: jobTypes },
+                        defaultValue: "C",
+                    }}
                 >
                     Job Type1
                 </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="type2"
-                    editable={{ type: "select", options: { values: this.jobTypes }, defaultValue: "A" }}
+                    editable={{
+                        type: "select",
+                        options: { values: this.jobTypes },
+                        defaultValue: "A",
+                    }}
                 >
                     Job Type2
                 </TableHeaderColumn>
                 <TableHeaderColumn
                     dataField="active"
-                    editable={{ type: "checkbox", options: { values: "Y:N" }, defaultValue: "N" }}
+                    editable={{
+                        type: "checkbox",
+                        options: { values: "Y:N" },
+                        defaultValue: "N",
+                    }}
                 >
                     Active
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="datetime" editable={{ type: "datetime", defaultValue: new Date() }}>
+                <TableHeaderColumn
+                    dataField="datetime"
+                    editable={{ type: "datetime", defaultValue: new Date() }}
+                >
                     Date Time
                 </TableHeaderColumn>
             </BootstrapTable>
@@ -1488,13 +1848,22 @@ class ActiveFormatter extends React.Component<{ active: boolean }> {
 }
 
 export default class ReactColumnFormatTable extends React.Component {
-    activeFormatter = (cell: boolean, row: ExtendedJob) => <ActiveFormatter active={cell} />;
+    activeFormatter = (cell: boolean, row: ExtendedJob) => (
+        <ActiveFormatter active={cell} />
+    );
     render() {
         return (
             <BootstrapTable data={extendedJobs}>
-                <TableHeaderColumn dataField="id" isKey={true} hidden={true}>Job ID</TableHeaderColumn>
+                <TableHeaderColumn dataField="id" isKey={true} hidden={true}>
+                    Job ID
+                </TableHeaderColumn>
                 <TableHeaderColumn dataField="name">Job Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="active" dataFormat={this.activeFormatter}>Active</TableHeaderColumn>
+                <TableHeaderColumn
+                    dataField="active"
+                    dataFormat={this.activeFormatter}
+                >
+                    Active
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -1505,18 +1874,40 @@ export default class ReactColumnFormatTable extends React.Component {
  * @see https://github.com/AllenFang/react-bootstrap-table/blob/master/examples/js/column-format/extra-data-column-format-table.js
  */
 class ExtraDataColumnFormatTable extends React.Component {
-    enumFormatter = (cell: number, row: Product, enumObject: { [id: number]: string }) => enumObject[cell];
+    enumFormatter = (
+        cell: number,
+        row: Product,
+        enumObject: { [id: number]: string },
+    ) => enumObject[cell];
     render() {
         return (
             <BootstrapTable data={products}>
-                <TableHeaderColumn dataField="id" isKey={true} dataAlign="center">Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name" headerAlign="center" dataAlign="right">
+                <TableHeaderColumn
+                    dataField="id"
+                    isKey={true}
+                    dataAlign="center"
+                >
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    dataField="name"
+                    headerAlign="center"
+                    dataAlign="right"
+                >
                     Product Name
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="quality" dataFormat={enumFormatter} formatExtraData={qualityType}>
+                <TableHeaderColumn
+                    dataField="quality"
+                    dataFormat={enumFormatter}
+                    formatExtraData={qualityType}
+                >
                     Product Quality
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="inStock" dataFormat={enumFormatter} formatExtraData={inStockStatus}>
+                <TableHeaderColumn
+                    dataField="inStock"
+                    dataFormat={enumFormatter}
+                    formatExtraData={inStockStatus}
+                >
                     Product Stock Status
                 </TableHeaderColumn>
             </BootstrapTable>
@@ -1529,7 +1920,12 @@ class ExtraDataColumnFormatTable extends React.Component {
  * @see https://github.com/AllenFang/react-bootstrap-table/blob/master/examples/js/column/column-title-table.js
  */
 class ColumnAlignTable extends React.Component {
-    customTitle = (cell: number, row: any, rowIndex: number, colIndex: number) => `${row.name} for ${cell}`;
+    customTitle = (
+        cell: number,
+        row: any,
+        rowIndex: number,
+        colIndex: number,
+    ) => `${row.name} for ${cell}`;
 
     render() {
         const options: Options<Product> = {
@@ -1541,13 +1937,26 @@ class ColumnAlignTable extends React.Component {
         };
         return (
             <BootstrapTable data={products} options={options}>
-                <TableHeaderColumn dataField="id" isKey={true} columnTitle={this.customTitle}>
+                <TableHeaderColumn
+                    dataField="id"
+                    isKey={true}
+                    columnTitle={this.customTitle}
+                >
                     Product ID
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="name" width="50%" headerTitle={false} columnTitle={true}>
+                <TableHeaderColumn
+                    dataField="name"
+                    width="50%"
+                    headerTitle={false}
+                    columnTitle={true}
+                >
                     Product Name
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="price" columnTitle="Hard code string" headerText="Custom Title">
+                <TableHeaderColumn
+                    dataField="price"
+                    columnTitle="Hard code string"
+                    headerText="Custom Title"
+                >
                     Product Price
                 </TableHeaderColumn>
             </BootstrapTable>
@@ -1570,7 +1979,11 @@ class FooterTable extends React.Component {
                     align: "right",
                     formatter: (tableData: Array<{ price: number }>) => {
                         let label = 0;
-                        for (let i = 0, tableDataLen = tableData.length; i < tableDataLen; i++) {
+                        for (
+                            let i = 0, tableDataLen = tableData.length;
+                            i < tableDataLen;
+                            i++
+                        ) {
                             label += tableData[i].price;
                         }
                         return <strong>{label}</strong>;
@@ -1581,10 +1994,23 @@ class FooterTable extends React.Component {
 
         return (
             <div>
-                <BootstrapTable data={products} footerData={footerData} footer pagination search keyBoardNav>
-                    <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                    <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                    <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                <BootstrapTable
+                    data={products}
+                    footerData={footerData}
+                    footer
+                    pagination
+                    search
+                    keyBoardNav
+                >
+                    <TableHeaderColumn dataField="id" isKey={true}>
+                        Product ID
+                    </TableHeaderColumn>
+                    <TableHeaderColumn dataField="name">
+                        Product Name
+                    </TableHeaderColumn>
+                    <TableHeaderColumn dataField="price">
+                        Product Price
+                    </TableHeaderColumn>
                 </BootstrapTable>
             </div>
         );
@@ -1619,10 +2045,20 @@ class CustomStyleNavTable extends React.Component {
             enterToExpand: false,
         };
         return (
-            <BootstrapTable data={products} keyBoardNav={keyBoardNav} cellEdit={cellEdit}>
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name">Product Name</TableHeaderColumn>
-                <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+            <BootstrapTable
+                data={products}
+                keyBoardNav={keyBoardNav}
+                cellEdit={cellEdit}
+            >
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="name">
+                    Product Name
+                </TableHeaderColumn>
+                <TableHeaderColumn dataField="price">
+                    Product Price
+                </TableHeaderColumn>
             </BootstrapTable>
         );
     }
@@ -1653,11 +2089,19 @@ class TrClassStringTable extends React.Component {
                 bodyContainerClass="my-body-container-class"
                 trClassName="tr-string-example"
             >
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name" columnClassName="td-column-string-example">
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    dataField="name"
+                    columnClassName="td-column-string-example"
+                >
                     Product Name
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="price" className="td-header-string-example">
+                <TableHeaderColumn
+                    dataField="price"
+                    className="td-header-string-example"
+                >
                     Product Price
                 </TableHeaderColumn>
             </BootstrapTable>
@@ -1674,21 +2118,43 @@ class TrClassStringTable extends React.Component {
 class TrClassFunctionTable extends React.Component {
     headerColumnClassNameFormat = () => "th-string-example";
 
-    columnClassNameFormat = (fieldValue: string | number, row: Product, rowIdx: number, colIdx: number) =>
-        rowIdx % 2 === 0 ? "td-column-function-even-example" : "td-column-function-odd-example";
+    columnClassNameFormat = (
+        fieldValue: string | number,
+        row: Product,
+        rowIdx: number,
+        colIdx: number,
+    ) =>
+        rowIdx % 2 === 0
+            ? "td-column-function-even-example"
+            : "td-column-function-odd-example";
 
-    trClassFormat = (rowData: readonly Product[], rIndex: number) => rIndex % 3 === 0 ? "tr-function-example" : "";
+    trClassFormat = (rowData: readonly Product[], rIndex: number) =>
+        rIndex % 3 === 0 ? "tr-function-example" : "";
 
-    trStyle = (row: Product, rowIndex: number) => ({ backgroundColor: "#FFFAFA" });
+    trStyle = (row: Product, rowIndex: number) => ({
+        backgroundColor: "#FFFAFA",
+    });
 
     render() {
         return (
-            <BootstrapTable data={products} trClassName={this.trClassFormat} trStyle={this.trStyle}>
-                <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                <TableHeaderColumn dataField="name" className={this.headerColumnClassNameFormat}>
+            <BootstrapTable
+                data={products}
+                trClassName={this.trClassFormat}
+                trStyle={this.trStyle}
+            >
+                <TableHeaderColumn dataField="id" isKey={true}>
+                    Product ID
+                </TableHeaderColumn>
+                <TableHeaderColumn
+                    dataField="name"
+                    className={this.headerColumnClassNameFormat}
+                >
                     Product Name
                 </TableHeaderColumn>
-                <TableHeaderColumn dataField="price" columnClassName={this.columnClassNameFormat}>
+                <TableHeaderColumn
+                    dataField="price"
+                    columnClassName={this.columnClassNameFormat}
+                >
                     Product Price
                 </TableHeaderColumn>
             </BootstrapTable>
@@ -1745,7 +2211,10 @@ class AllFilters extends React.Component {
             cell = new Date(cell);
         }
 
-        return `${("0" + cell.getDate()).slice(-2)}/${("0" + (cell.getMonth() + 1)).slice(-2)}/${cell.getFullYear()}`;
+        return `${("0" + cell.getDate()).slice(-2)}/${(
+            "0" +
+            (cell.getMonth() + 1)
+        ).slice(-2)}/${cell.getFullYear()}`;
     };
 
     render() {
@@ -1755,14 +2224,22 @@ class AllFilters extends React.Component {
                 <TableHeaderColumn dataField="id" isKey={true}>
                     Product ID
                     <br />
-                    <a onClick={this.handlerClickCleanFiltered} style={{ cursor: "pointer" }}>clear filters</a>
+                    <a
+                        onClick={this.handlerClickCleanFiltered}
+                        style={{ cursor: "pointer" }}
+                    >
+                        clear filters
+                    </a>
                 </TableHeaderColumn>
                 <TableHeaderColumn
                     ref={(node) => {
                         this.name1 = node;
                     }}
                     dataField="name"
-                    filter={{ type: "TextFilter", placeholder: "Please enter a value" }}
+                    filter={{
+                        type: "TextFilter",
+                        placeholder: "Please enter a value",
+                    }}
                 >
                     Product Name
                 </TableHeaderColumn>
@@ -1771,7 +2248,10 @@ class AllFilters extends React.Component {
                         this.name2 = node;
                     }}
                     dataField="name"
-                    filter={{ type: "RegexFilter", placeholder: "Please enter a regex" }}
+                    filter={{
+                        type: "RegexFilter",
+                        placeholder: "Please enter a regex",
+                    }}
                 >
                     Product Name
                 </TableHeaderColumn>
@@ -1829,7 +2309,10 @@ class ProgrammaticallyArrayFilter extends React.Component {
     /* Filtering passing an array of values */
     handleBtnClick = () => {
         this.table.handleFilterData({
-            name: { type: "ArrayFilter", value: ["Item name 3", "Item name 4"] },
+            name: {
+                type: "ArrayFilter",
+                value: ["Item name 3", "Item name 4"],
+            },
             price: { type: "ArrayFilter", value: [2100, 2104] },
         });
     };
@@ -1837,18 +2320,30 @@ class ProgrammaticallyArrayFilter extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.handleBtnClick} className="btn btn-default">Click to apply text filter</button>
+                <button
+                    onClick={this.handleBtnClick}
+                    className="btn btn-default"
+                >
+                    Click to apply text filter
+                </button>
                 <BootstrapTable
                     ref={(node) => {
                         this.table = node;
                     }}
                     data={products}
                 >
-                    <TableHeaderColumn dataField="id" isKey={true}>Product ID</TableHeaderColumn>
-                    <TableHeaderColumn dataField="name" filter={{ type: "TextFilter", delay: 1000 }}>
+                    <TableHeaderColumn dataField="id" isKey={true}>
+                        Product ID
+                    </TableHeaderColumn>
+                    <TableHeaderColumn
+                        dataField="name"
+                        filter={{ type: "TextFilter", delay: 1000 }}
+                    >
                         Product Name
                     </TableHeaderColumn>
-                    <TableHeaderColumn dataField="price">Product Price</TableHeaderColumn>
+                    <TableHeaderColumn dataField="price">
+                        Product Price
+                    </TableHeaderColumn>
                 </BootstrapTable>
             </div>
         );

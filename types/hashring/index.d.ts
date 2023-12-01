@@ -26,13 +26,13 @@ declare namespace HashRing {
          *
          * Set this to `hash_ring` if you want to use 3.
          */
-        "compatibility": "hash_ring" | "ketama";
+        compatibility: "hash_ring" | "ketama";
 
         /**
          * The amount of replicas per server.
          * Defaults to 4.
          */
-        "replicas": number;
+        replicas: number;
 
         /**
          * We use a simple LRU cache

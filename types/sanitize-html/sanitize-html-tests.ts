@@ -58,7 +58,7 @@ sanitize.defaults.selfClosing; // $ExpectType string[]
 
 sanitize.options.allowedClasses; // $ExpectType { [index: string]: boolean | (string | RegExp)[]; } | undefined
 
-const unsafe = "<div><script>alert(\"hello\");</script></div>";
+const unsafe = '<div><script>alert("hello");</script></div>';
 
 let safe = sanitize(unsafe, options);
 

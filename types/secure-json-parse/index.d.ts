@@ -5,6 +5,10 @@ export interface ParseOptions {
     constructorAction?: "error" | "remove" | undefined;
 }
 
-export function parse(input: string, reviver?: Reviver, options?: ParseOptions): any;
+export function parse(
+    input: string,
+    reviver?: Reviver,
+    options?: ParseOptions,
+): any;
 export function safeParse(input: string, reviver?: Reviver): any;
 export function scan(input: any, options?: ParseOptions): void;

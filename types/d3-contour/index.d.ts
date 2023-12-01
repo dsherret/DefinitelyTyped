@@ -1,6 +1,9 @@
 // Last module patch version validated against: 3.0.1
 
-import { ThresholdCountGenerator, ThresholdNumberArrayGenerator } from "d3-array";
+import {
+    ThresholdCountGenerator,
+    ThresholdNumberArrayGenerator,
+} from "d3-array";
 import { MultiPolygon } from "geojson";
 
 /**
@@ -71,7 +74,9 @@ export interface Contours {
     /**
      * Returns the current threshold generator, which by default implements Sturges’ formula.
      */
-    thresholds(): ThresholdCountGenerator<number> | ThresholdNumberArrayGenerator<number>;
+    thresholds():
+        | ThresholdCountGenerator<number>
+        | ThresholdNumberArrayGenerator<number>;
     /**
      * Sets the threshold generator to the specified function or array and returns this contour generator.
      * Thresholds are defined as an array of values [x0, x1, …].
@@ -81,7 +86,11 @@ export interface Contours {
      * If a count is specified instead of an array of thresholds, then the input values’ extent will be uniformly divided into approximately count bins; see d3.ticks.
      */
     thresholds(
-        thresholds: number | number[] | ThresholdCountGenerator<number> | ThresholdNumberArrayGenerator<number>,
+        thresholds:
+            | number
+            | number[]
+            | ThresholdCountGenerator<number>
+            | ThresholdNumberArrayGenerator<number>,
     ): this;
 }
 
@@ -180,7 +189,9 @@ export interface ContourDensity<Datum = [number, number]> {
     /**
      * Returns the current threshold generator, which by default generates about twenty nicely-rounded density thresholds.
      */
-    thresholds(): ThresholdCountGenerator<number> | ThresholdNumberArrayGenerator<number>;
+    thresholds():
+        | ThresholdCountGenerator<number>
+        | ThresholdNumberArrayGenerator<number>;
     /**
      * Sets the threshold generator to the specified function or array and returns this contour generator.
      * Thresholds are defined as an array of values [x0, x1, …].
@@ -191,7 +202,11 @@ export interface ContourDensity<Datum = [number, number]> {
      * If a count is specified instead of an array of thresholds, then approximately count uniformly-spaced nicely-rounded thresholds will be generated; see d3.ticks.
      */
     thresholds(
-        thresholds: number | number[] | ThresholdCountGenerator<number> | ThresholdNumberArrayGenerator<number>,
+        thresholds:
+            | number
+            | number[]
+            | ThresholdCountGenerator<number>
+            | ThresholdNumberArrayGenerator<number>,
     ): this;
 
     /**
@@ -219,4 +234,6 @@ export interface ContourDensity<Datum = [number, number]> {
  * match the data type used for the generic Datum.
  */
 // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-export function contourDensity<Datum = [number, number]>(): ContourDensity<Datum>;
+export function contourDensity<
+    Datum = [number, number],
+>(): ContourDensity<Datum>;

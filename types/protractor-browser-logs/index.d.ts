@@ -16,8 +16,14 @@ declare namespace browserLogs {
         INFO: matchPredicateFunction;
         LOG: matchPredicateFunction;
 
-        or(a: matchPredicateFunction, b: matchPredicateFunction): matchPredicateFunction;
-        and(a: matchPredicateFunction, b: matchPredicateFunction): matchPredicateFunction;
+        or(
+            a: matchPredicateFunction,
+            b: matchPredicateFunction,
+        ): matchPredicateFunction;
+        and(
+            a: matchPredicateFunction,
+            b: matchPredicateFunction,
+        ): matchPredicateFunction;
         reset(): void;
         logs(): Entry[];
         verify(): void;

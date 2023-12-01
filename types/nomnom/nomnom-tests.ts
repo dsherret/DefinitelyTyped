@@ -32,19 +32,19 @@ var extras = opts2._; // get an array of the unmatched, positional args
 
 var parser = nomnom;
 
-function runBrowser(url: string): void {
-}
+function runBrowser(url: string): void {}
 
-function runSanity(filename: string): void {
-}
+function runSanity(filename: string): void {}
 
-parser.command("browser")
-    .callback(opts => {
+parser
+    .command("browser")
+    .callback((opts) => {
         runBrowser(opts.url);
     })
     .help("run browser tests");
 
-parser.command("sanity")
+parser
+    .command("sanity")
     .option("outfile", {
         abbr: "o",
         help: "file to write results to",
@@ -54,7 +54,7 @@ parser.command("sanity")
         default: "config.json",
         help: "json manifest of tests to run",
     })
-    .callback(opts => {
+    .callback((opts) => {
         runSanity(opts.filename);
     })
     .help("run the sanity tests");
@@ -79,7 +79,8 @@ var opts3 = nomnom
             flag: true,
             help: "Print debugging info",
         },
-    }).parse();
+    })
+    .parse();
 
 nomnom.option("debug", {
     abbr: "d",
@@ -95,7 +96,7 @@ nomnom.option("config", {
 });
 
 nomnom.option("count", {
-    callback: count => {
+    callback: (count) => {
         if (count != parseInt(count)) {
             return "count must be an integer";
         }

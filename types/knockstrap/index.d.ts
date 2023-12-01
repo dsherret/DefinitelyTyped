@@ -9,7 +9,7 @@ interface KnockoutUtils {
 interface KnockoutTemplateSources {
     stringTemplate: {
         prototype: KnockstrapStringTemplate;
-        new(template: string): KnockstrapStringTemplate;
+        new (template: string): KnockstrapStringTemplate;
     };
 }
 
@@ -20,7 +20,7 @@ interface KnockstrapStringTemplate extends KnockoutTemplateSourcesDomElement {
 interface KnockoutStatic {
     stringTemplateEngine: {
         prototype: KnockstrapStringTemplateEngine;
-        new(): KnockstrapStringTemplateEngine;
+        new (): KnockstrapStringTemplateEngine;
         instance: KnockstrapStringTemplateEngine;
     };
 }
@@ -83,7 +83,8 @@ interface KnockstrapDefaultsTemplateBase {
     templateEngine: KnockstrapStringTemplateEngine;
 }
 
-interface KnockstrapCarouselDefaultsControlsTemplate extends KnockstrapDefaultsTemplateBase {
+interface KnockstrapCarouselDefaultsControlsTemplate
+    extends KnockstrapDefaultsTemplateBase {
     dataConverter(value: any): KnockstrapCarouselDefaultsIdDataConverted;
 }
 
@@ -91,15 +92,18 @@ interface KnockstrapCarouselDefaultsIdDataConverted {
     id: KnockoutComputed<string>;
 }
 
-interface KnockstrapCarouselDefaultsIndicatorsTemplate extends KnockstrapDefaultsTemplateBase {
+interface KnockstrapCarouselDefaultsIndicatorsTemplate
+    extends KnockstrapDefaultsTemplateBase {
     dataConverter(value: any): KnockstrapCarouselDefaultsIdItemsDataConverted;
 }
 
-interface KnockstrapCarouselDefaultsIdItemsDataConverted extends KnockstrapCarouselDefaultsIdDataConverted {
+interface KnockstrapCarouselDefaultsIdItemsDataConverted
+    extends KnockstrapCarouselDefaultsIdDataConverted {
     items: any;
 }
 
-interface KnockstrapCarouselDefaultsItemTemplate extends KnockstrapDefaultsTemplateBase {
+interface KnockstrapCarouselDefaultsItemTemplate
+    extends KnockstrapDefaultsTemplateBase {
     converter(value: any): any;
 }
 
@@ -126,7 +130,8 @@ interface KnockstrapModalDefaultsAttributes {
     role: string;
 }
 
-interface KnockstrapModalDefaultsFooterTemplate extends KnockstrapDefaultsTemplateBase {
+interface KnockstrapModalDefaultsFooterTemplate
+    extends KnockstrapDefaultsTemplateBase {
     data: KnockstrapModalDefaultsFooterData;
 }
 

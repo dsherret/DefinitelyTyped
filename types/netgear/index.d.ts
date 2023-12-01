@@ -21,7 +21,21 @@ declare namespace NetgearRouter {
     }
 
     type Band = "2.4G" | "5G" | "5G1";
-    type Channel = "Auto" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9" | "10" | "11" | "12" | "13";
+    type Channel =
+        | "Auto"
+        | "1"
+        | "2"
+        | "3"
+        | "4"
+        | "5"
+        | "6"
+        | "7"
+        | "8"
+        | "9"
+        | "10"
+        | "11"
+        | "12"
+        | "13";
 
     interface Log {
         string: string;
@@ -189,9 +203,7 @@ declare class NetgearRouter {
     getSmartConnectEnabled(): Promise<boolean>;
     setSmartConnectEnabled(enabled: boolean): Promise<void>;
     getCurrentDeviceBandwidth(): Promise<string>;
-    getCurrentBandwidthByMAC(
-        mac: string,
-    ): Promise<{
+    getCurrentBandwidthByMAC(mac: string): Promise<{
         currentDeviceUpBandwidth: string;
         currentDeviceDownBandwidth: string;
     }>;
@@ -211,7 +223,10 @@ declare class NetgearRouter {
     /**
      * Get router information without need for credentials.
      */
-    getCurrentSetting(host?: string, timeout?: number): Promise<NetgearRouter.Settings>;
+    getCurrentSetting(
+        host?: string,
+        timeout?: number,
+    ): Promise<NetgearRouter.Settings>;
     getParentalControlEnableStatus(): Promise<boolean>;
     getQoSEnableStatus(): Promise<boolean>;
     getBlockDeviceEnableStatus(): Promise<boolean>;
@@ -244,7 +259,10 @@ declare class NetgearRouter {
      * @param maxUplinkBandwidth - maximum uplink bandwidth (Mb/s).
      * @param maxDownlinkBandwidth - maximum downlink bandwidth (Mb/s).
      */
-    setBandwidthControlOptions(maxUplinkBandwidth: number, maxDownlinkBandwidth: number): Promise<void>;
+    setBandwidthControlOptions(
+        maxUplinkBandwidth: number,
+        maxDownlinkBandwidth: number,
+    ): Promise<void>;
     getBandwidthControlOptions(): Promise<{
         newUplinkBandwidth: number;
         newDownlinkBandwidth: number;
@@ -252,11 +270,19 @@ declare class NetgearRouter {
     }>;
     logout(): Promise<void>;
 
-    getWifiChannels(band?: NetgearRouter.Band): Promise<NetgearRouter.Channel[]>;
-    setWifiChannel(channel: NetgearRouter.Channel, mode: NetgearRouter.Band): Promise<true>;
+    getWifiChannels(
+        band?: NetgearRouter.Band,
+    ): Promise<NetgearRouter.Channel[]>;
+    setWifiChannel(
+        channel: NetgearRouter.Channel,
+        mode: NetgearRouter.Band,
+    ): Promise<true>;
 
     setBlockDeviceEnable(enabled: boolean): Promise<true>;
-    setBlockDevice(macAddress: string, action: "Block" | "Allow"): Promise<true>;
+    setBlockDevice(
+        macAddress: string,
+        action: "Block" | "Allow",
+    ): Promise<true>;
     getInfo(): Promise<NetgearRouter.Info>;
 
     getAttachedDevices(): Promise<NetgearRouter.Device[]>;

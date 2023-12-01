@@ -48,7 +48,7 @@ mp.observe_property("test", "number", (name, value) => {
     // $ExpectType number | undefined
     value = value;
 });
-mp.observe_property("test", "none", name => {});
+mp.observe_property("test", "none", (name) => {});
 // @ts-expect-error
 mp.observe_property("test", "none", (name, value) => {});
 // @ts-expect-error

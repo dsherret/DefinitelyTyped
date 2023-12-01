@@ -22,7 +22,7 @@ type Cl5 = browserBundleMin.Client;
 const c = client(); // $ExpectType Client
 client({ resource: "foo" }); // $ExpectType Client
 client({ resource: new Element("foo") }); // $ExpectType Client
-client({ resource: async cb => {} }); // $ExpectType Client
+client({ resource: async (cb) => {} }); // $ExpectType Client
 client({ credentials: { username: "foo" } }); // $ExpectType Client
 client({ credentials: { password: "foo" } }); // $ExpectType Client
 client({ credentials: async (cb, mech) => {} }); // $ExpectType Client

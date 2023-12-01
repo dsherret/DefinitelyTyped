@@ -31,7 +31,10 @@ export function colorDifference(foreground: Color, background: Color): boolean;
  * @param background Background color
  * @returns The brightness difference, which must be over 125
  */
-export function colorBrightnessDifference(foreground: Color, background: Color): boolean;
+export function colorBrightnessDifference(
+    foreground: Color,
+    background: Color,
+): boolean;
 
 /**
  * Gets the total luminance from a color.

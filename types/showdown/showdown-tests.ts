@@ -12,14 +12,20 @@ var markdownToShowdownExt = {
     regex: /markdown/g,
     replace: "showdown",
 };
-var commaExt: showdown.FilterExtension = { type: "output", filter: text => text.replace(",", "") };
+var commaExt: showdown.FilterExtension = {
+    type: "output",
+    filter: (text) => text.replace(",", ""),
+};
 var myExt: showdown.ShowdownExtension = {
     type: "lang",
     filter: (text, converter) => {
         return text.replace("#", "*");
     },
 };
-var someExtArray: showdown.ShowdownExtension[] = [markdownToShowdownExt, commaExt];
+var someExtArray: showdown.ShowdownExtension[] = [
+    markdownToShowdownExt,
+    commaExt,
+];
 var listenToCodeBlocksExt = {
     type: "listener",
     listeners: {
@@ -44,7 +50,9 @@ showdown.extension("listen-ext", listenToCodeBlocksExt);
 showdown.extension("combinedExt", () => [combinedExt]);
 
 var preloadedExtensions = ["my-ext"],
-    extensionsConverter = new showdown.Converter({ extensions: preloadedExtensions });
+    extensionsConverter = new showdown.Converter({
+        extensions: preloadedExtensions,
+    });
 
 var preloadedMultipleExtensions = [
         "my-ext",
@@ -52,30 +60,38 @@ var preloadedMultipleExtensions = [
         () => [markdownToShowdownExt],
         () => commaExt,
     ],
-    multipleExtensionsConverter = new showdown.Converter({ extensions: preloadedMultipleExtensions });
+    multipleExtensionsConverter = new showdown.Converter({
+        extensions: preloadedMultipleExtensions,
+    });
 
 var configuredConverter = new showdown.Converter();
-configuredConverter.addExtension({
-    type: "output",
-    filter(text: string) {
-        return text.replace(" ", "_");
-    },
-}, "myext");
-
-configuredConverter.addExtension([
-    {
-        type: "lang",
-        filter: (text, converter) => {
-            return text.replace("#", "*");
-        },
-    },
+configuredConverter.addExtension(
     {
         type: "output",
-        filter: (text, converter) => {
-            return text.replace("p", "span");
+        filter(text: string) {
+            return text.replace(" ", "_");
         },
     },
-], "myext");
+    "myext",
+);
+
+configuredConverter.addExtension(
+    [
+        {
+            type: "lang",
+            filter: (text, converter) => {
+                return text.replace("#", "*");
+            },
+        },
+        {
+            type: "output",
+            filter: (text, converter) => {
+                return text.replace("p", "span");
+            },
+        },
+    ],
+    "myext",
+);
 
 console.log(showdown.helper);
 
@@ -100,15 +116,18 @@ configuredConverter.addExtension([combinedExt]);
 configuredConverter.addExtension(() => markdownToShowdownExt);
 configuredConverter.removeExtension(combinedExt);
 configuredConverter.addExtension(() => [listenToCodeBlocksExt, combinedExt]);
-configuredConverter.listen("unescapeSpecialChars.after", (evtName, text) => `"${text}"`);
+configuredConverter.listen(
+    "unescapeSpecialChars.after",
+    (evtName, text) => `"${text}"`,
+);
 
-showdown.extension("myExt", function() {
+showdown.extension("myExt", function () {
     var matches: string[] = [];
     return [
         {
             type: "lang",
             regex: /%start%([^]+?)%end%/gi,
-            replace: function(s: string, match: string) {
+            replace: function (s: string, match: string) {
                 matches.push(match);
                 var n = matches.length - 1;
                 return "%PLACEHOLDER" + n + "%";
@@ -116,9 +135,9 @@ showdown.extension("myExt", function() {
         },
         {
             type: "output",
-            filter: function(text) {
+            filter: function (text) {
                 for (var i = 0; i < matches.length; ++i) {
-                    var pat = "<p>%PLACEHOLDER" + i + "% *<\/p>";
+                    var pat = "<p>%PLACEHOLDER" + i + "% *</p>";
                     text = text.replace(new RegExp(pat, "gi"), matches[i]);
                 }
                 // reset array

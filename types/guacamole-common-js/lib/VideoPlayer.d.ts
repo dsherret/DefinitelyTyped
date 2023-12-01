@@ -44,7 +44,11 @@ export class VideoPlayer {
      * reading from the given stream, or null if support for the given mimetype
      * is absent.
      */
-    static getInstance(stream: InputStream, layer: VisibleLayer, mimetype: MimeType): VideoPlayer | null;
+    static getInstance(
+        stream: InputStream,
+        layer: VisibleLayer,
+        mimetype: MimeType,
+    ): VideoPlayer | null;
 
     /**
      * Notifies this Guacamole.VideoPlayer that all video up to the current

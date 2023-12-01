@@ -43,13 +43,15 @@ export interface BenchmarkProps {
     /** Default is `10000`. */
     timeout?: number;
     /** Default is `BenchmarkType.MOUNT`. */
-    type?: typeof BenchmarkType[keyof typeof BenchmarkType];
+    type?: (typeof BenchmarkType)[keyof typeof BenchmarkType];
 }
 
 export interface BenchmarkRef {
     start: () => void;
 }
 
-declare const Benchmark: ForwardRefExoticComponent<BenchmarkProps & RefAttributes<BenchmarkRef>>;
+declare const Benchmark: ForwardRefExoticComponent<
+    BenchmarkProps & RefAttributes<BenchmarkRef>
+>;
 
 export default Benchmark;

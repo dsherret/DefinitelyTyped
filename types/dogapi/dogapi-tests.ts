@@ -10,7 +10,11 @@ dogapi.initialize({
     api_key: "b",
     app_key: "c",
 });
-dogapi.event.create("", "", (err: Error | null, res: dogapi.EventCreateResponse) => {});
+dogapi.event.create(
+    "",
+    "",
+    (err: Error | null, res: dogapi.EventCreateResponse) => {},
+);
 dogapi.event.create(
     "",
     "",

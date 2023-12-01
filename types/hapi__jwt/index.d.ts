@@ -179,7 +179,14 @@ declare namespace hapiJwt {
         /**
          * The key method to be used for jwt verification.
          */
-        keys: string | string[] | Buffer | Key | Key[] | NoAlgorithm[] | ((param: any) => string);
+        keys:
+            | string
+            | string[]
+            | Buffer
+            | Key
+            | Key[]
+            | NoAlgorithm[]
+            | ((param: any) => string);
         /**
          * Object to determine how key contents are verified beyond key signature. Set to false to do no verification.
          */
@@ -200,7 +207,11 @@ declare namespace hapiJwt {
          * @param h the response toolkit.
          */
         validate:
-            | ((artifacts: Artifacts, request: Request, h: ResponseToolkit) => Promise<ValidationResult> | never)
+            | ((
+                  artifacts: Artifacts,
+                  request: Request,
+                  h: ResponseToolkit,
+              ) => Promise<ValidationResult> | never)
             | false;
     }
 
@@ -243,7 +254,10 @@ declare namespace hapiJwt {
         nonce?: string | undefined;
     }
 
-    type Secret = string | Buffer | { key: string | Buffer; algorithm: SupportedAlgorithm | NoAlgorithm };
+    type Secret =
+        | string
+        | Buffer
+        | { key: string | Buffer; algorithm: SupportedAlgorithm | NoAlgorithm };
 
     interface GenerateOptions {
         /**
@@ -337,7 +351,11 @@ declare namespace hapiJwt {
          * @param secret object, string or buffer that creates signature.
          * @param options optional configuration object.
          */
-        generate: (payload: Payload, secret: Secret, options?: GenerateOptions) => string;
+        generate: (
+            payload: Payload,
+            secret: Secret,
+            options?: GenerateOptions,
+        ) => string;
         /**
          * Returns an object of a decoded token in the format of artifacts. This does not verify the token, it only decodes it.
          *
@@ -352,7 +370,11 @@ declare namespace hapiJwt {
          * @param secret object, string or buffer that creates signature.
          * @param options optional configuration object.
          */
-        verify: (artifacts: Artifacts, secret: Secret, options?: VerifyTokenOptions) => void | never;
+        verify: (
+            artifacts: Artifacts,
+            secret: Secret,
+            options?: VerifyTokenOptions,
+        ) => void | never;
         /**
          * A function that will complete if the signature is valid or throw an error if invalid. This does not do verification on the payload.
          * An expired token will not throw an error if the signature is valid.
@@ -368,7 +390,10 @@ declare namespace hapiJwt {
          * @param artifacts object of decoded token in artifacts format..
          * @param options optional configuration object.
          */
-        verifyPayload: (artifacts: Artifacts, options?: VerifyTokenOptions) => void | never;
+        verifyPayload: (
+            artifacts: Artifacts,
+            options?: VerifyTokenOptions,
+        ) => void | never;
         /**
          * A function that will complete if iat and exp verification pass and throw an error if verification fails. This is a subset of verifyPayload for only iat and exp.
          *
@@ -376,7 +401,11 @@ declare namespace hapiJwt {
          * @param options optional configuration object.
          * @param nowSec integer that represents the current time in JavaScript epoch format (with msecs). When evaluated the msecs are truncated, not rounded.
          */
-        verifyTime: (artifacts: Artifacts, options?: TimeOptions, nowSec?: number) => void | never;
+        verifyTime: (
+            artifacts: Artifacts,
+            options?: TimeOptions,
+            nowSec?: number,
+        ) => void | never;
 
         signature: {
             /**
@@ -386,7 +415,11 @@ declare namespace hapiJwt {
              * @param algorithm string containing an accepted algorithm to be used.
              * @param key string that represents the signature.
              */
-            generate: (value: string, algorithm: SupportedAlgorithm | NoAlgorithm, key: string) => string | never;
+            generate: (
+                value: string,
+                algorithm: SupportedAlgorithm | NoAlgorithm,
+                key: string,
+            ) => string | never;
             /**
              * Function to verify a signature using a supported algorithm.
              *
@@ -394,7 +427,11 @@ declare namespace hapiJwt {
              * @param algorithm string containing an accepted algorithm to be used.
              * @param key string signature to be verify.
              */
-            verify: (raw: RawToken, algorithm: SupportedAlgorithm | NoAlgorithm, key: string) => boolean | never;
+            verify: (
+                raw: RawToken,
+                algorithm: SupportedAlgorithm | NoAlgorithm,
+                key: string,
+            ) => boolean | never;
         };
     }
 

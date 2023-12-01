@@ -2,7 +2,10 @@
  * The name for a factory consists of a namespace and the name of a specific
  * type within that namespace, like `'service:session'`.
  */
-export type FullName<Type extends string = string, Name extends string = string> = `${Type}:${Name}`;
+export type FullName<
+    Type extends string = string,
+    Name extends string = string,
+> = `${Type}:${Name}`;
 
 /**
  * A type registry for the DI system, which other participants in the DI system
@@ -61,8 +64,10 @@ type ValidName<Type extends ValidType> = keyof DIRegistry[Type] & string;
 type ResolveFactoryManager<
     Type extends string,
     Name extends string,
-> = DIRegistry[Type][Name] extends infer RegistryEntry ? RegistryEntry extends object ? FactoryManager<RegistryEntry>
-    : FactoryManager<object> | undefined
+> = DIRegistry[Type][Name] extends infer RegistryEntry
+    ? RegistryEntry extends object
+        ? FactoryManager<RegistryEntry>
+        : FactoryManager<object> | undefined
     : never;
 
 /**
@@ -100,7 +105,11 @@ export default interface Owner {
     // factory, not needing `create` if `options.instantiate` is `false`, etc.)
     // but doing so will require rationalizing Ember's own internals and may
     // need a full Ember RFC.
-    register(fullName: FullName, factory: Factory<object> | object, options?: RegisterOptions): void;
+    register(
+        fullName: FullName,
+        factory: Factory<object> | object,
+        options?: RegisterOptions,
+    ): void;
 
     /**
      * Given a fullName of the form `'type:name'`, like `'route:application'`,
@@ -170,7 +179,9 @@ export type KnownForTypeResult<Type extends string> = {
  */
 export interface Resolver {
     resolve: (name: string) => Factory<object> | object | undefined;
-    knownForType?: <Type extends string>(type: Type) => KnownForTypeResult<Type>;
+    knownForType?: <Type extends string>(
+        type: Type,
+    ) => KnownForTypeResult<Type>;
     lookupDescription?: (fullName: FullName) => string;
     makeToString?: (factory: Factory<object>, fullName: FullName) => string;
     normalize?: (fullName: FullName) => string;

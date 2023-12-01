@@ -1,15 +1,24 @@
-import { AuthCredentials, Plugin, Request, ServerStateCookieOptions } from "@hapi/hapi";
+import {
+    AuthCredentials,
+    Plugin,
+    Request,
+    ServerStateCookieOptions,
+} from "@hapi/hapi";
 
 declare module "@hapi/hapi" {
     interface ServerAuth {
-        strategy(name: string, scheme: "cookie", options?: hapiAuthCookie.Options): void;
+        strategy(
+            name: string,
+            scheme: "cookie",
+            options?: hapiAuthCookie.Options,
+        ): void;
     }
 
     interface PluginSpecificConfiguration {
         cookie?:
             | {
-                redirectTo?: boolean | undefined;
-            }
+                  redirectTo?: boolean | undefined;
+              }
             | undefined;
     }
 
@@ -28,7 +37,10 @@ declare namespace hapiAuthCookie {
         isValid: boolean;
         credentials?: AuthCredentials | undefined;
     }
-    type ValidateFunction = (request?: Request, session?: object) => Promise<ValidateResponse>;
+    type ValidateFunction = (
+        request?: Request,
+        session?: object,
+    ) => Promise<ValidateResponse>;
     type RedirectToFunction = (request?: Request) => string;
 
     /**

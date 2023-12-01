@@ -4,7 +4,11 @@ export class AxiosErrorGroomer {
      * @param includeResponseData default true, false redacts response data
      * @param includeQueryData default true, false redacts query string data
      */
-    constructor(includeRequestData?: boolean, includeResponseData?: boolean, includeQueryData?: boolean);
+    constructor(
+        includeRequestData?: boolean,
+        includeResponseData?: boolean,
+        includeQueryData?: boolean,
+    );
 
     includeRequestData(flag: boolean): void;
     includeResponseData(flag: boolean): void;

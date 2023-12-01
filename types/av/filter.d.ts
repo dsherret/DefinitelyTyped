@@ -8,9 +8,7 @@ declare namespace AV {
         process(buffer: TypedArray): void;
     }
 
-    class VolumeFilter extends Filter {
-    }
+    class VolumeFilter extends Filter {}
 
-    class BalanceFilter extends Filter {
-    }
+    class BalanceFilter extends Filter {}
 }

@@ -5,7 +5,9 @@ export namespace Runner {
 
     function createSession(): Session;
 
-    function run(statements: Array<{ statement: string; parameters: any[] }>): void;
+    function run(
+        statements: Array<{ statement: string; parameters: any[] }>,
+    ): void;
 
     function toObject(results: Result[]): any[][];
 }

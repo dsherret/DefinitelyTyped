@@ -10,7 +10,10 @@ declare module "mongoose" {
     }
 
     export interface SequenceDocument extends Document {
-        setNext(sequenceId: string, callback: (err: any, res: SequenceDocument) => void): void;
+        setNext(
+            sequenceId: string,
+            callback: (err: any, res: SequenceDocument) => void,
+        ): void;
     }
 
     export interface SequenceSchema extends Schema {
@@ -20,7 +23,10 @@ declare module "mongoose" {
         ): this;
 
         // overload for the default mongoose plugin function
-        plugin(plugin: (schema: Schema, options?: Object) => void, opts?: Object): this;
+        plugin(
+            plugin: (schema: Schema, options?: Object) => void,
+            opts?: Object,
+        ): this;
     }
 }
 

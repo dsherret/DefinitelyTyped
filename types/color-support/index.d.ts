@@ -20,7 +20,10 @@ interface ColorSupportResult {
     has16m: boolean;
 }
 
-type ColorSupport = (options?: ColorSupportOptions, obj?: ColorSupportResult) => false | ColorSupportResult;
+type ColorSupport = (
+    options?: ColorSupportOptions,
+    obj?: ColorSupportResult,
+) => false | ColorSupportResult;
 
 declare var colorSupport: ColorSupport;
 

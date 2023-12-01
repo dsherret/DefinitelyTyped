@@ -227,7 +227,7 @@ ctx.toDataURL({
     height: 50,
     destWidth: 100,
     destHeight: 100,
-}).then(dataURL => {
+}).then((dataURL) => {
     ctx.drawImage(dataURL, 0, 0);
     ctx.draw();
 });
@@ -258,7 +258,7 @@ my.createSelectorQuery()
     .boundingClientRect()
     .selectViewport()
     .scrollOffset()
-    .exec(ret => {
+    .exec((ret) => {
         my.alert({
             content: JSON.stringify(ret, null, 2),
         });
@@ -279,7 +279,7 @@ my.setCanPullDown({ canPullDown: true });
 
 my.chooseImage({
     count: 2,
-    success: res => {
+    success: (res) => {
         res.apFilePaths[0];
     },
 });
@@ -305,7 +305,7 @@ my.saveImage({
 
 my.getImageInfo({
     src: "image/api.png",
-    success: res => {
+    success: (res) => {
         res.height;
         res.orientation;
         res.path;
@@ -334,7 +334,7 @@ my.clearStorageSync();
 
 my.saveFile({
     apFilePath: "",
-    success: res => {
+    success: (res) => {
         res.apFilePath;
     },
 });
@@ -342,7 +342,7 @@ my.saveFile({
 my.getFileInfo({
     apFilePath: "",
     digestAlgorithm: "sha1",
-    success: res => {
+    success: (res) => {
         res.digest;
         res.size;
     },
@@ -350,14 +350,14 @@ my.getFileInfo({
 
 my.getSavedFileInfo({
     apFilePath: "",
-    success: resu => {
+    success: (resu) => {
         resu.size;
         resu.createTime;
     },
 });
 
 my.getSavedFileList({
-    success: res => {
+    success: (res) => {
         res.fileList;
     },
 });
@@ -380,7 +380,7 @@ my.uploadFile({
     fileType: "image",
     fileName: "file",
     filePath: "...",
-    success: res => {
+    success: (res) => {
         my.alert({
             content: "Upload success",
         });
@@ -449,7 +449,7 @@ my.getNetworkType({
 });
 
 my.getClipboard({
-    success: res => {
+    success: (res) => {
         res.text;
     },
 });
@@ -518,14 +518,14 @@ my.addPhoneContact({
     title: "Developer",
     email: "liuhuo01@miniprogram.com",
     url: "www.miniprogram.com",
-    success: res => {
+    success: (res) => {
         res.success;
     },
 });
 
 my.showAuthGuide({
     authType: "LBS",
-    success: res => {
+    success: (res) => {
         res.shown;
     },
 });
@@ -558,7 +558,7 @@ my.navigateBackMiniProgram({
 
 my.getAuthCode({
     scopes: ["USER_ID", "USER_NICKNAME", "USER_AVATAR"],
-    success: res => {
+    success: (res) => {
         my.alert({
             content: res.authCode,
         });
@@ -566,20 +566,20 @@ my.getAuthCode({
 });
 
 my.getOpenUserInfo({
-    success: res => {
+    success: (res) => {
         res.response;
     },
 });
 
 my.tradePay({
     tradeNO: "201711152100110410533667792", // get the tradeNo from the server first
-    success: res => {
+    success: (res) => {
         res.resultCode;
         my.alert({
             content: JSON.stringify(res),
         });
     },
-    fail: res => {
+    fail: (res) => {
         my.alert({
             content: JSON.stringify(res),
         });
@@ -587,24 +587,25 @@ my.tradePay({
 });
 
 my.signContract({
-    signStr: "https://openauth.xxx.com/authentication.htm?authId=FBF16F91-28FB-47EC-B9BE-27B285C23CD3",
-    success: res => {
+    signStr:
+        "https://openauth.xxx.com/authentication.htm?authId=FBF16F91-28FB-47EC-B9BE-27B285C23CD3",
+    success: (res) => {
         my.alert({
             content: JSON.stringify(res),
         });
     },
-    fail: res => {
+    fail: (res) => {
         my.alert({
             content: JSON.stringify(res),
         });
     },
 });
 
-my.onMemoryWarning(arg => arg.level);
+my.onMemoryWarning((arg) => arg.level);
 
 my.offMemoryWarning();
 
-my.offMemoryWarning(arg => arg.level);
+my.offMemoryWarning((arg) => arg.level);
 
 my.hideBackHome();
 

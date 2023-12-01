@@ -9,4 +9,8 @@ import type { Options } from "./minify";
  * @param [userOptions] - (optional) object that may contain an `img` key with an object of options
  * @async
  */
-export default function(name: string, data: string, userOptions?: Pick<Options, "img">): Promise<string>;
+export default function (
+    name: string,
+    data: string,
+    userOptions?: Pick<Options, "img">,
+): Promise<string>;

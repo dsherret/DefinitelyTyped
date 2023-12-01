@@ -1,6 +1,13 @@
 export type CldrData = Record<string, any>;
 
-export type TimeUnit = "second" | "minute" | "hour" | "day" | "week" | "month" | "year";
+export type TimeUnit =
+    | "second"
+    | "minute"
+    | "hour"
+    | "day"
+    | "week"
+    | "month"
+    | "year";
 export type PluralRule = "zero" | "one" | "two" | "few" | "many" | "other";
 export type RbnfGroupName = "SpelloutRules" | "OrdinalRules";
 
@@ -32,18 +39,18 @@ export interface TwitterCldr {
     get_data(): CldrData;
 
     DateTimeFormatter: {
-        new(): {
+        new (): {
             format(
                 date: Date,
                 options:
                     | {
-                        format?: "date" | "time";
-                        type?: "full" | "long" | "medium" | "short";
-                    }
+                          format?: "date" | "time";
+                          type?: "full" | "long" | "medium" | "short";
+                      }
                     | {
-                        format: "additional";
-                        type: string;
-                    },
+                          format: "additional";
+                          type: string;
+                      },
             ): string;
         };
 
@@ -51,44 +58,44 @@ export interface TwitterCldr {
     };
 
     TimespanFormatter: {
-        new(): {
+        new (): {
             format(
                 timeSpanSeconds: number,
                 options?:
                     | {
-                        unit?: TimeUnit;
-                        approximate?: boolean;
-                    }
+                          unit?: TimeUnit;
+                          approximate?: boolean;
+                      }
                     | {
-                        direction: "none";
-                        unit?: TimeUnit;
-                        approximate?: boolean;
-                        type?: "short" | "abbreviated";
-                    },
+                          direction: "none";
+                          unit?: TimeUnit;
+                          approximate?: boolean;
+                          type?: "short" | "abbreviated";
+                      },
             ): string;
         };
     };
 
     DecimalFormatter: {
-        new(): {
+        new (): {
             format(num: number, options?: { precision?: number }): string;
         };
     };
 
     ShortDecimalFormatter: {
-        new(): {
+        new (): {
             format(num: number, options?: { precision?: number }): string;
         };
     };
 
     LongDecimalFormatter: {
-        new(): {
+        new (): {
             format(num: number, options?: { precision?: number }): string;
         };
     };
 
     CurrencyFormatter: {
-        new(): {
+        new (): {
             format(
                 num: number,
                 options?: {
@@ -100,7 +107,7 @@ export interface TwitterCldr {
     };
 
     PercentFormatter: {
-        new(): {
+        new (): {
             format(num: number, options?: { precision?: number }): string;
         };
     };
@@ -117,7 +124,7 @@ export interface TwitterCldr {
 
     /** Rule-Based Number Formatting */
     RBNF: {
-        new(): {
+        new (): {
             format(num: number, group: RbnfGroupName, ruleset: string): string;
             group_names(): RbnfGroupName[];
             rule_set_names_for_group(group: RbnfGroupName): string[];
@@ -125,7 +132,10 @@ export interface TwitterCldr {
     };
 
     Bidi: {
-        from_string(str: string, options: { direction: "LTR" | "RTL" }): BidiString;
+        from_string(
+            str: string,
+            options: { direction: "LTR" | "RTL" },
+        ): BidiString;
     };
 
     PostalCodes: {
@@ -150,7 +160,7 @@ export interface TwitterCldr {
     };
 
     BreakIterator: {
-        new(
+        new (
             locale: string,
             options?: {
                 use_uli_exceptions: boolean;

@@ -9,7 +9,10 @@ export interface Options {
 /** A transform stream that turns newline separated json into a stream of javascript values. */
 export class Parser extends Transform {
     // inherited (must re-declare since this is a class)
-    on(event: "close" | "end" | "pause" | "readable" | "resume", listener: () => void): this;
+    on(
+        event: "close" | "end" | "pause" | "readable" | "resume",
+        listener: () => void,
+    ): this;
     // added 'invalid-line'
     on(event: "error" | "invalid-line", listener: (err: Error) => void): this;
     // changed
@@ -21,7 +24,10 @@ export class Parser extends Transform {
 /** A transform stream that turns javascript values into a stream of newline separated json. */
 export class Stringifier extends Transform {
     // inherited (must re-declare since this is a class)
-    on(event: "close" | "end" | "pause" | "readable" | "resume", listener: () => void): this;
+    on(
+        event: "close" | "end" | "pause" | "readable" | "resume",
+        listener: () => void,
+    ): this;
     on(event: "error", listener: (err: Error) => void): this;
     // changed
     on(event: "data", listener: (data: any) => void): this;

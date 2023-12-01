@@ -10,14 +10,16 @@ app.use(slashes());
 app.use(slashes(false));
 
 // With additional options defined inline...
-app.use(slashes(true, {
-    base: "/blog",
-    code: 302,
-    headers: {
-        "Cache-Control": "public",
-        "Accpet": "application/json",
-    },
-}));
+app.use(
+    slashes(true, {
+        base: "/blog",
+        code: 302,
+        headers: {
+            "Cache-Control": "public",
+            Accpet: "application/json",
+        },
+    }),
+);
 
 // Defining an options object and referencing
 // it in the constructor...
@@ -26,7 +28,7 @@ var options: slashes.Options = {
     code: 302,
     headers: {
         "Cache-Control": "public",
-        "Accpet": "application/json",
+        Accpet: "application/json",
     },
 };
 app.use(slashes(true, options));
@@ -42,6 +44,6 @@ var options: slashes.Options = {
 var options: slashes.Options = {
     headers: {
         "Cache-Control": "public",
-        "Accpet": "application/json",
+        Accpet: "application/json",
     },
 };

@@ -9,7 +9,10 @@ export interface ddpReactiveDocumentSettings {
 }
 
 export class ddpReactiveDocument<T> {
-    constructor(ddpReactiveCollectionInstance: ddpReactiveCollection<T>, settings?: ddpReactiveDocumentSettings);
+    constructor(
+        ddpReactiveCollectionInstance: ddpReactiveCollection<T>,
+        settings?: ddpReactiveDocumentSettings,
+    );
     /**
      * Returns reactive reduce.
      */

@@ -36,7 +36,10 @@ import {
  * const childData = environment.lookup(childSelector).data;
  * ```
  */
-export function getSingularSelector(fragment: ReaderFragment, item: unknown): SingularReaderSelector;
+export function getSingularSelector(
+    fragment: ReaderFragment,
+    item: unknown,
+): SingularReaderSelector;
 
 /**
  * Given the result `items` from a parent that fetched `fragment`, creates a
@@ -44,9 +47,15 @@ export function getSingularSelector(fragment: ReaderFragment, item: unknown): Si
  * items. This is similar to `getSingularSelector` but for "plural" fragments that
  * expect an array of results and therefore return an array of selectors.
  */
-export function getPluralSelector(fragment: ReaderFragment, items: unknown[]): PluralReaderSelector;
+export function getPluralSelector(
+    fragment: ReaderFragment,
+    items: unknown[],
+): PluralReaderSelector;
 
-export function getSelector(fragment: ReaderFragment, item: unknown | unknown[]): ReaderSelector;
+export function getSelector(
+    fragment: ReaderFragment,
+    item: unknown | unknown[],
+): ReaderSelector;
 
 /**
  * Given a mapping of keys -> results and a mapping of keys -> fragments,
@@ -73,7 +82,10 @@ export function getDataIDsFromObject(
     object: { [key: string]: any },
 ): { [key: string]: DataID | DataID[] };
 
-export function getDataIDsFromFragment(fragment: ReaderFragment, item: unknown | unknown[]): DataID | DataID[];
+export function getDataIDsFromFragment(
+    fragment: ReaderFragment,
+    item: unknown | unknown[],
+): DataID | DataID[];
 
 /**
  * Given a mapping of keys -> results and a mapping of keys -> fragments,
@@ -88,18 +100,30 @@ export function getVariablesFromObject(
     object: { [key: string]: any },
 ): Variables;
 
-export function getVariablesFromFragment(fragment: ReaderFragment, item: unknown | unknown[]): Variables;
+export function getVariablesFromFragment(
+    fragment: ReaderFragment,
+    item: unknown | unknown[],
+): Variables;
 
-export function getVariablesFromSingularFragment(fragment: ReaderFragment, item: unknown): Variables;
+export function getVariablesFromSingularFragment(
+    fragment: ReaderFragment,
+    item: unknown,
+): Variables;
 
-export function getVariablesFromPluralFragment(fragment: ReaderFragment, items: unknown[]): Variables;
+export function getVariablesFromPluralFragment(
+    fragment: ReaderFragment,
+    items: unknown[],
+): Variables;
 
 /**
  * Determine if two selectors are equal (represent the same selection). Note
  * that this function returns `false` when the two queries/fragments are
  * different objects, even if they select the same fields.
  */
-export function areEqualSelectors(thisSelector: SingularReaderSelector, thatSelector: SingularReaderSelector): boolean;
+export function areEqualSelectors(
+    thisSelector: SingularReaderSelector,
+    thatSelector: SingularReaderSelector,
+): boolean;
 
 export function createReaderSelector(
     fragment: ReaderFragment,

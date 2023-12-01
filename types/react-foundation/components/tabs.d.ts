@@ -9,7 +9,9 @@ import { FlexboxPropTypes } from "../utils";
  * @returns {Object}
  */
 export declare const Tabs: React.FunctionComponent<TabsProps>;
-export interface TabsProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLUListElement> {
+export interface TabsProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLUListElement> {
     isVertical?: boolean | undefined;
 }
 /**
@@ -19,7 +21,9 @@ export interface TabsProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLUL
  * @returns {Object}
  */
 export declare const TabItem: React.FunctionComponent<TabItemProps>;
-export interface TabItemProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLLIElement> {
+export interface TabItemProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLLIElement> {
     isActive?: boolean | undefined;
 }
 /**
@@ -29,7 +33,9 @@ export interface TabItemProps extends FlexboxPropTypes, React.HTMLAttributes<HTM
  * @returns {Object}
  */
 export declare const TabsContent: React.FunctionComponent<TabsContentProps>;
-export interface TabsContentProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface TabsContentProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     isActive?: boolean | undefined;
     isVertical?: boolean | undefined;
 }
@@ -40,6 +46,8 @@ export interface TabsContentProps extends FlexboxPropTypes, React.HTMLAttributes
  * @returns {Object}
  */
 export declare const TabPanel: React.FunctionComponent<TabPanelProps>;
-export interface TabPanelProps extends FlexboxPropTypes, React.HTMLAttributes<HTMLDivElement> {
+export interface TabPanelProps
+    extends FlexboxPropTypes,
+        React.HTMLAttributes<HTMLDivElement> {
     isActive?: boolean | undefined;
 }

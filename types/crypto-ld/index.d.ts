@@ -3,7 +3,10 @@ export class CryptoLD {
 
     use(keyPairLib: LDKeyPair): void;
 
-    generate(options?: { type: string; controller?: string }): Promise<LDKeyPair>;
+    generate(options?: {
+        type: string;
+        controller?: string;
+    }): Promise<LDKeyPair>;
 
     from(serialized: object): Promise<LDKeyPair>;
 
@@ -31,7 +34,15 @@ export class CryptoLD {
 }
 
 export class LDKeyPair {
-    constructor({ id, controller, revoked }?: { id?: string; controller?: string; revoked?: string });
+    constructor({
+        id,
+        controller,
+        revoked,
+    }?: {
+        id?: string;
+        controller?: string;
+        revoked?: string;
+    });
 
     static generate(/* options */): Promise<LDKeyPair>;
 
@@ -47,7 +58,13 @@ export class LDKeyPair {
 
     static from(options?: object): Promise<LDKeyPair>;
 
-    export({ publicKey, privateKey }: { publicKey: boolean; privateKey: boolean }): object;
+    export({
+        publicKey,
+        privateKey,
+    }: {
+        publicKey: boolean;
+        privateKey: boolean;
+    }): object;
 
     fingerprint(): string;
 
@@ -55,7 +72,17 @@ export class LDKeyPair {
         verified: boolean;
     };
 
-    signer(): { sign: ({ data }: { data: Uint8Array }) => Promise<string | Uint8Array> };
+    signer(): {
+        sign: ({ data }: { data: Uint8Array }) => Promise<string | Uint8Array>;
+    };
 
-    verifier(): { verify: ({ data, signature }: { data: Uint8Array; signature: Uint8Array }) => Promise<boolean> };
+    verifier(): {
+        verify: ({
+            data,
+            signature,
+        }: {
+            data: Uint8Array;
+            signature: Uint8Array;
+        }) => Promise<boolean>;
+    };
 }

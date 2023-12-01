@@ -33,7 +33,10 @@ export function createCustomColorsHOC<T extends string[]>(
  * @param colorContextName - Context/place where color is being used e.g: background, text etc...
  * @param colorSlug - Slug of the color.
  */
-export function getColorClassName(colorContextName: string, colorSlug: string): string;
+export function getColorClassName(
+    colorContextName: string,
+    colorSlug: string,
+): string;
 export function getColorClassName(
     colorContextName: string | undefined,
     colorSlug: string | undefined,

@@ -10,7 +10,11 @@ const options = [
     },
 ];
 
-const calculatePosition: VueSelectProps["calculatePosition"] = (dropdownList, component, { top, left, width }) => {
+const calculatePosition: VueSelectProps["calculatePosition"] = (
+    dropdownList,
+    component,
+    { top, left, width },
+) => {
     dropdownList.style.top = top;
     dropdownList.style.left = left;
     dropdownList.style.width = width;
@@ -36,15 +40,12 @@ new Vue({
             }
             return "";
         },
-        optionConsumer(option: any) {
-        },
+        optionConsumer(option: any) {},
         optionToOption(option: any) {
             return option;
         },
-        onValChange(val: any) {
-        },
-        onVoidTab() {
-        },
+        onValChange(val: any) {},
+        onVoidTab() {},
         onSearch(search: string, loading: (b: boolean) => void) {
             loading(true);
         },

@@ -103,31 +103,29 @@ export interface DataRecipientBrandMetaData {
      * Data Recipient Brand logo URI
      */
     logoUri: string;
-    softwareProducts?:
-        | Array<{
-            /**
-             * Software product logo URI
-             */
-            logoUri: string;
-            /**
-             * Description of the software product
-             */
-            softwareProductDescription?: string | null;
-            /**
-             * Unique id of the Data Recipient software product issued by the CDR Register
-             */
-            softwareProductId: string;
-            /**
-             * Name of the software product
-             */
-            softwareProductName: string;
-            /**
-             * Software Product status in the CDR Register
-             */
-            status: "ACTIVE" | "INACTIVE" | "REMOVED";
-            [k: string]: unknown;
-        }>
-        | null;
+    softwareProducts?: Array<{
+        /**
+         * Software product logo URI
+         */
+        logoUri: string;
+        /**
+         * Description of the software product
+         */
+        softwareProductDescription?: string | null;
+        /**
+         * Unique id of the Data Recipient software product issued by the CDR Register
+         */
+        softwareProductId: string;
+        /**
+         * Name of the software product
+         */
+        softwareProductName: string;
+        /**
+         * Software Product status in the CDR Register
+         */
+        status: "ACTIVE" | "INACTIVE" | "REMOVED";
+        [k: string]: unknown;
+    }> | null;
     /**
      * Data Recipient Brand status in the CDR Register
      */
@@ -245,7 +243,16 @@ export interface LegalEntityDetail {
     /**
      * Legal organisation type
      */
-    organisationType?: ("SOLE_TRADER" | "COMPANY" | "PARTNERSHIP" | "TRUST" | "GOVERNMENT_ENTITY" | "OTHER") | null;
+    organisationType?:
+        | (
+              | "SOLE_TRADER"
+              | "COMPANY"
+              | "PARTNERSHIP"
+              | "TRUST"
+              | "GOVERNMENT_ENTITY"
+              | "OTHER"
+          )
+        | null;
     /**
      * Country of registeration (if the company is registered outside Australia)
      */
@@ -436,7 +443,16 @@ export interface RegisterDataHolderBrand {
         /**
          * Legal organisation type
          */
-        organisationType?: ("SOLE_TRADER" | "COMPANY" | "PARTNERSHIP" | "TRUST" | "GOVERNMENT_ENTITY" | "OTHER") | null;
+        organisationType?:
+            | (
+                  | "SOLE_TRADER"
+                  | "COMPANY"
+                  | "PARTNERSHIP"
+                  | "TRUST"
+                  | "GOVERNMENT_ENTITY"
+                  | "OTHER"
+              )
+            | null;
         /**
          * Country of registeration (if the company is registered outside Australia)
          */
@@ -502,52 +518,48 @@ export interface RegisterDataRecipient {
      * CDR Register issued human readable unique number given to Data Recipients upon accreditation
      */
     accreditationNumber: string;
-    dataRecipientBrands?:
-        | Array<{
+    dataRecipientBrands?: Array<{
+        /**
+         * Data Recipient Brand name
+         */
+        brandName: string;
+        /**
+         * Unique id of the Data Recipient brand issued by the CDR Register
+         */
+        dataRecipientBrandId: string;
+        /**
+         * Data Recipient Brand logo URI
+         */
+        logoUri: string;
+        softwareProducts?: Array<{
             /**
-             * Data Recipient Brand name
-             */
-            brandName: string;
-            /**
-             * Unique id of the Data Recipient brand issued by the CDR Register
-             */
-            dataRecipientBrandId: string;
-            /**
-             * Data Recipient Brand logo URI
+             * Software product logo URI
              */
             logoUri: string;
-            softwareProducts?:
-                | Array<{
-                    /**
-                     * Software product logo URI
-                     */
-                    logoUri: string;
-                    /**
-                     * Description of the software product
-                     */
-                    softwareProductDescription?: string | null;
-                    /**
-                     * Unique id of the Data Recipient software product issued by the CDR Register
-                     */
-                    softwareProductId: string;
-                    /**
-                     * Name of the software product
-                     */
-                    softwareProductName: string;
-                    /**
-                     * Software Product status in the CDR Register
-                     */
-                    status: "ACTIVE" | "INACTIVE" | "REMOVED";
-                    [k: string]: unknown;
-                }>
-                | null;
             /**
-             * Data Recipient Brand status in the CDR Register
+             * Description of the software product
+             */
+            softwareProductDescription?: string | null;
+            /**
+             * Unique id of the Data Recipient software product issued by the CDR Register
+             */
+            softwareProductId: string;
+            /**
+             * Name of the software product
+             */
+            softwareProductName: string;
+            /**
+             * Software Product status in the CDR Register
              */
             status: "ACTIVE" | "INACTIVE" | "REMOVED";
             [k: string]: unknown;
-        }>
-        | null;
+        }> | null;
+        /**
+         * Data Recipient Brand status in the CDR Register
+         */
+        status: "ACTIVE" | "INACTIVE" | "REMOVED";
+        [k: string]: unknown;
+    }> | null;
     /**
      * The date/time that the Legal Entity was last updated in the CDR Register
      */
@@ -889,7 +901,14 @@ export interface ResponseRegisterDataHolderBrandList {
              * Legal organisation type
              */
             organisationType?:
-                | ("SOLE_TRADER" | "COMPANY" | "PARTNERSHIP" | "TRUST" | "GOVERNMENT_ENTITY" | "OTHER")
+                | (
+                      | "SOLE_TRADER"
+                      | "COMPANY"
+                      | "PARTNERSHIP"
+                      | "TRUST"
+                      | "GOVERNMENT_ENTITY"
+                      | "OTHER"
+                  )
                 | null;
             /**
              * Country of registeration (if the company is registered outside Australia)
@@ -967,52 +986,48 @@ export interface ResponseRegisterDataRecipientList {
          * CDR Register issued human readable unique number given to Data Recipients upon accreditation
          */
         accreditationNumber: string;
-        dataRecipientBrands?:
-            | Array<{
+        dataRecipientBrands?: Array<{
+            /**
+             * Data Recipient Brand name
+             */
+            brandName: string;
+            /**
+             * Unique id of the Data Recipient brand issued by the CDR Register
+             */
+            dataRecipientBrandId: string;
+            /**
+             * Data Recipient Brand logo URI
+             */
+            logoUri: string;
+            softwareProducts?: Array<{
                 /**
-                 * Data Recipient Brand name
-                 */
-                brandName: string;
-                /**
-                 * Unique id of the Data Recipient brand issued by the CDR Register
-                 */
-                dataRecipientBrandId: string;
-                /**
-                 * Data Recipient Brand logo URI
+                 * Software product logo URI
                  */
                 logoUri: string;
-                softwareProducts?:
-                    | Array<{
-                        /**
-                         * Software product logo URI
-                         */
-                        logoUri: string;
-                        /**
-                         * Description of the software product
-                         */
-                        softwareProductDescription?: string | null;
-                        /**
-                         * Unique id of the Data Recipient software product issued by the CDR Register
-                         */
-                        softwareProductId: string;
-                        /**
-                         * Name of the software product
-                         */
-                        softwareProductName: string;
-                        /**
-                         * Software Product status in the CDR Register
-                         */
-                        status: "ACTIVE" | "INACTIVE" | "REMOVED";
-                        [k: string]: unknown;
-                    }>
-                    | null;
                 /**
-                 * Data Recipient Brand status in the CDR Register
+                 * Description of the software product
+                 */
+                softwareProductDescription?: string | null;
+                /**
+                 * Unique id of the Data Recipient software product issued by the CDR Register
+                 */
+                softwareProductId: string;
+                /**
+                 * Name of the software product
+                 */
+                softwareProductName: string;
+                /**
+                 * Software Product status in the CDR Register
                  */
                 status: "ACTIVE" | "INACTIVE" | "REMOVED";
                 [k: string]: unknown;
-            }>
-            | null;
+            }> | null;
+            /**
+             * Data Recipient Brand status in the CDR Register
+             */
+            status: "ACTIVE" | "INACTIVE" | "REMOVED";
+            [k: string]: unknown;
+        }> | null;
         /**
          * The date/time that the Legal Entity was last updated in the CDR Register
          */

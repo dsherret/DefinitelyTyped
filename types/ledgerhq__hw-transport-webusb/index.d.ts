@@ -1,5 +1,9 @@
 /// <reference types="node" />
-import Transport, { DescriptorEvent, Observer, Subscription } from "@ledgerhq/hw-transport";
+import Transport, {
+    DescriptorEvent,
+    Observer,
+    Subscription,
+} from "@ledgerhq/hw-transport";
 
 declare class TransportWebUSB extends Transport {
     constructor(device: string);

@@ -50,7 +50,10 @@ declare class UnityIndicatorProperties {
 }
 
 interface UnityMessagingIndicator {
-    showIndicator(name: string, indicatorProperties: UnityIndicatorProperties): any;
+    showIndicator(
+        name: string,
+        indicatorProperties: UnityIndicatorProperties,
+    ): any;
     clearIndicator(name: string): any;
     clearIndicators(): any;
 

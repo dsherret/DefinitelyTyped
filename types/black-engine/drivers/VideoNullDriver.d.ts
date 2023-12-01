@@ -14,9 +14,13 @@ export class VideoNullDriver {
     protected mGlobalAlpha: number;
     protected mStageRenderer: Renderer;
     protected mRendererMap: {
-        [x: string]: new() => Renderer;
+        [x: string]: new () => Renderer;
     };
-    render(gameObject: GameObject, renderTexture?: CanvasRenderTexture, customTransform?: Matrix): void;
+    render(
+        gameObject: GameObject,
+        renderTexture?: CanvasRenderTexture,
+        customTransform?: Matrix,
+    ): void;
     getRenderer(type: string, owner: GameObject): Renderer;
     private __saveSession;
     private __restoreSession;

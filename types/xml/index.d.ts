@@ -16,9 +16,9 @@ declare namespace xml {
         declaration?:
             | boolean
             | {
-                encoding?: string | undefined;
-                standalone?: string | undefined;
-            }
+                  encoding?: string | undefined;
+                  standalone?: string | undefined;
+              }
             | undefined;
     }
 
@@ -51,6 +51,9 @@ declare function xml(
     xmlObject: xml.XmlObject | xml.XmlObject[],
     options: { stream: true } & xml.Option,
 ): NodeJS.ReadableStream;
-declare function xml(xmlObject?: xml.XmlObject | xml.XmlObject[], options?: boolean | string | xml.Option): string;
+declare function xml(
+    xmlObject?: xml.XmlObject | xml.XmlObject[],
+    options?: boolean | string | xml.Option,
+): string;
 
 export = xml;

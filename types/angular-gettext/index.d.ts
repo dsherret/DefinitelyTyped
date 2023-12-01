@@ -44,7 +44,10 @@ declare module "angular" {
              *                   - Keys: Singular English strings (as defined in the source files)
              *                   - Values: Either a single string for signular-only strings or an array of plural forms.
              */
-            setStrings(language: string, strings: { [key: string]: string | string[] }): void;
+            setStrings(
+                language: string,
+                strings: { [key: string]: string | string[] },
+            ): void;
 
             /** Get the correct pluralized (but untranslated) string for the value of n. */
             getStringForm(string: string, n: number): string;
@@ -57,7 +60,13 @@ declare module "angular" {
             getString(string: string, scope?: any, context?: string): string;
 
             /** Translate a plural string with the given context. */
-            getPlural(n: number, string: string, stringPlural: string, scope?: any, context?: string): string;
+            getPlural(
+                n: number,
+                string: string,
+                stringPlural: string,
+                scope?: any,
+                context?: string,
+            ): string;
 
             /** Load a set of translation strings from a given URL.This should be a JSON catalog generated with grunt-angular-gettext. More details https://angular-gettext.rocketeer.be/dev-guide/lazy-loading/ */
             loadRemote(url: string): ng.IHttpPromise<any>;

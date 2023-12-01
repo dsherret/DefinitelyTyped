@@ -51,7 +51,7 @@ function testAssign() {
 }
 
 function testOnError() {
-    Ember.onerror = error => {
+    Ember.onerror = (error) => {
         fetch("/report-error", {
             method: "POST",
             body: JSON.stringify({
@@ -80,7 +80,7 @@ function testDefineProperty() {
     Ember.defineProperty(
         contact,
         "fullName",
-        Ember.computed("firstName", "lastName", function() {
+        Ember.computed("firstName", "lastName", function () {
             return `${this.firstName} ${this.lastName}`;
         }),
     );
@@ -128,5 +128,10 @@ declare const fileList: FileList;
     Ember.assign({ a: "hello" }, { b: 6 }, { a: true }).a; // $ExpectType boolean
     // @ts-expect-error
     Ember.assign({ a: "hello" }, "", { a: true }).a;
-    Ember.assign({ d: ["gobias industries"] }, { a: "hello" }, { b: 6 }, { a: true }).d; // $ExpectType string[]
+    Ember.assign(
+        { d: ["gobias industries"] },
+        { a: "hello" },
+        { b: 6 },
+        { a: true },
+    ).d; // $ExpectType string[]
 })();

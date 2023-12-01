@@ -23,7 +23,10 @@ export class Reader extends Transform {
     constructor(opts?: TransformOptions);
 
     addListener(event: "format", listener: (format: Format) => void): this;
-    addListener(event: "chunk", listener: (unknownChunk: UnknownChunk) => void): this;
+    addListener(
+        event: "chunk",
+        listener: (unknownChunk: UnknownChunk) => void,
+    ): this;
     addListener(event: string, listener: (...args: any[]) => void): this;
 
     on(event: "format", listener: (format: Format) => void): this;

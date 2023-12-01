@@ -117,7 +117,11 @@ export class Matrix3 {
      * @param targetDirection - Specifies the desired world space direction the object should look at.
      * @param localUp - Specifies the up direction in the local space of the object.
      */
-    lookAt(localForward: Vector3, targetDirection: Vector3, localUp: Vector3): this;
+    lookAt(
+        localForward: Vector3,
+        targetDirection: Vector3,
+        localUp: Vector3,
+    ): this;
 
     /**
      * Transposes this matrix.
@@ -158,7 +162,10 @@ export class Matrix3 {
      * @param result - An object with unitary and diagonal properties which are matrices onto which to store the result.
      * @return An object with unitary and diagonal properties which are matrices onto which to store the result.
      */
-    eigenDecomposition(result: { unitary: Matrix3; diagonal: Matrix3 }): { unitary: Matrix3; diagonal: Matrix3 };
+    eigenDecomposition(result: { unitary: Matrix3; diagonal: Matrix3 }): {
+        unitary: Matrix3;
+        diagonal: Matrix3;
+    };
 
     /**
      * Finds the largest off-diagonal term and then creates a matrix

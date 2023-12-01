@@ -3,5 +3,8 @@ interface ResolveResponseOptions {
     itemEntryPoints?: string[];
 }
 
-declare function resolveResponse(response: any, options?: ResolveResponseOptions): any;
+declare function resolveResponse(
+    response: any,
+    options?: ResolveResponseOptions,
+): any;
 export = resolveResponse;

@@ -12,6 +12,10 @@ interface Options {
     maxFontSize?: number;
 }
 
-declare function drawMultilineText(ctx: CanvasRenderingContext2D, text: string, opts?: Options): number;
+declare function drawMultilineText(
+    ctx: CanvasRenderingContext2D,
+    text: string,
+    opts?: Options,
+): number;
 
 export = drawMultilineText;

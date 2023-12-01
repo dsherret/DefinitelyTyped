@@ -27,9 +27,7 @@ class Test extends React.Component {
         return (
             <div>
                 <Alert />
-                <Alert
-                    {...config}
-                />
+                <Alert {...config} />
             </div>
         );
     }

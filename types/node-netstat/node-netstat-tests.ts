@@ -3,9 +3,17 @@ import { Stream } from "stream";
 
 const mockLine =
     "tcp6       0      0  ffff::ffff:ffff:.00000 ffff::ffff:ffff:.00000 ESTABLISHED 000000 000000    000      0 0x000 0x00000000";
-const mockLineHandlerCallback: nodeNetstat.LineHandler = _ => false;
+const mockLineHandlerCallback: nodeNetstat.LineHandler = (_) => false;
 
-nodeNetstat({ watch: true, sync: true, limit: 2, filter: { protocol: "tcp", local: { port: 3306 } } }, () => false);
+nodeNetstat(
+    {
+        watch: true,
+        sync: true,
+        limit: 2,
+        filter: { protocol: "tcp", local: { port: 3306 } },
+    },
+    () => false,
+);
 
 nodeNetstat.commands; // $ExpectType Commands
 nodeNetstat.commands.linux; // $ExpectType Command

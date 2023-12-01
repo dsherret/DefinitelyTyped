@@ -9,5 +9,8 @@ declare module "leaflet" {
         constructor(options?: ResponsivePopupOptions, source?: Layer);
     }
 
-    function responsivePopup(options?: ResponsivePopupOptions, source?: Layer): ResponsivePopup;
+    function responsivePopup(
+        options?: ResponsivePopupOptions,
+        source?: Layer,
+    ): ResponsivePopup;
 }

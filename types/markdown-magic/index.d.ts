@@ -14,9 +14,11 @@ declare namespace markdownMagic {
         /**
          * Custom commands to transform block contents, see transforms & custom transforms sections below.
          */
-        transforms?: {
-            [name: string]: TransformFunction;
-        } | undefined;
+        transforms?:
+            | {
+                  [name: string]: TransformFunction;
+              }
+            | undefined;
         /**
          * Change output path of new content. Default behavior is replacing the original file
          */

@@ -7,7 +7,10 @@ import {
 
 declare class BnetStrategy extends OAuth2Strategy {
     constructor(options: BnetStrategy.StrategyOptions, verify: VerifyFunction);
-    constructor(options: BnetStrategy.StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: BnetStrategy.StrategyOptionsWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
 }
 
 declare namespace BnetStrategy {

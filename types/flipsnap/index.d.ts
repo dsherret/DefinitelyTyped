@@ -68,9 +68,21 @@ interface FlipsnapOptions {
 }
 
 interface HTMLElement {
-    addEventListener(type: "fstouchstart", listener: (ev: Event) => any, useCapture?: boolean): void;
-    addEventListener(type: "fstouchmove", listener: (ev: FlipsnapTouchMoveEvent) => any, useCapture?: boolean): void;
-    addEventListener(type: "fstouchend", listener: (ev: FlipsnapTouchEndEvent) => any, useCapture?: boolean): void;
+    addEventListener(
+        type: "fstouchstart",
+        listener: (ev: Event) => any,
+        useCapture?: boolean,
+    ): void;
+    addEventListener(
+        type: "fstouchmove",
+        listener: (ev: FlipsnapTouchMoveEvent) => any,
+        useCapture?: boolean,
+    ): void;
+    addEventListener(
+        type: "fstouchend",
+        listener: (ev: FlipsnapTouchEndEvent) => any,
+        useCapture?: boolean,
+    ): void;
 }
 
 interface FlipsnapTouchMoveEvent extends Event {

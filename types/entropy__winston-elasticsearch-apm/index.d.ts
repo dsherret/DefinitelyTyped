@@ -8,7 +8,8 @@ declare class ElasticsearchApm extends TransportStream {
 }
 
 declare namespace ElasticsearchApm {
-    interface ElasticsearchApmOptions extends TransportStream.TransportStreamOptions {
+    interface ElasticsearchApmOptions
+        extends TransportStream.TransportStreamOptions {
         apm: typeof Agent;
     }
 }

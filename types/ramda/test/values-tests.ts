@@ -1,6 +1,6 @@
 import * as R from "ramda";
 
-(() => {
+() => {
     interface A {
         a: string;
         b: string;
@@ -25,8 +25,8 @@ import * as R from "ramda";
         { a: "this object is of type B", c: 8 },
     ];
 
-    d.forEach(item => {
+    d.forEach((item) => {
         // $ExpectType (string | number)[]
         const v = R.values(item);
     });
-});
+};

@@ -13,7 +13,7 @@ export interface Library {
      * @param funcs hash of [retType, [...argType], opts?: {abi?, async?, varargs?}]
      * @param lib hash that will be extended
      */
-    new(libFile: string, funcs?: { [key: string]: any[] }, lib?: object): any;
+    new (libFile: string, funcs?: { [key: string]: any[] }, lib?: object): any;
 
     /**
      * @param libFile name of library
@@ -44,7 +44,7 @@ export interface Function extends ref.Type {
 
 /** Creates and returns a type for a C function pointer. */
 export const Function: {
-    new(retType: ref.Type | string, argTypes: any[], abi?: number): Function;
+    new (retType: ref.Type | string, argTypes: any[], abi?: number): Function;
     (retType: ref.Type | string, argTypes: any[], abi?: number): Function;
 };
 
@@ -60,8 +60,18 @@ export interface ForeignFunction {
  * execution.
  */
 export const ForeignFunction: {
-    new(ptr: Buffer, retType: ref.Type | string, argTypes: any[], abi?: number): ForeignFunction;
-    (ptr: Buffer, retType: ref.Type | string, argTypes: any[], abi?: number): ForeignFunction;
+    new (
+        ptr: Buffer,
+        retType: ref.Type | string,
+        argTypes: any[],
+        abi?: number,
+    ): ForeignFunction;
+    (
+        ptr: Buffer,
+        retType: ref.Type | string,
+        argTypes: any[],
+        abi?: number,
+    ): ForeignFunction;
 };
 
 export interface VariadicForeignFunction {
@@ -87,8 +97,18 @@ export interface VariadicForeignFunction {
  * contain the same ffi_type argument signature.
  */
 export const VariadicForeignFunction: {
-    new(ptr: Buffer, ret: ref.Type | string, fixedArgs: any[], abi?: number): VariadicForeignFunction;
-    (ptr: Buffer, ret: ref.Type | string, fixedArgs: any[], abi?: number): VariadicForeignFunction;
+    new (
+        ptr: Buffer,
+        ret: ref.Type | string,
+        fixedArgs: any[],
+        abi?: number,
+    ): VariadicForeignFunction;
+    (
+        ptr: Buffer,
+        ret: ref.Type | string,
+        fixedArgs: any[],
+        abi?: number,
+    ): VariadicForeignFunction;
 };
 
 export interface DynamicLibrary {
@@ -119,7 +139,7 @@ export const DynamicLibrary: {
         RTLD_DEFAUL: Buffer;
     };
 
-    new(path?: string, mode?: number): DynamicLibrary;
+    new (path?: string, mode?: number): DynamicLibrary;
     (path?: string, mode?: number): DynamicLibrary;
 };
 
@@ -129,8 +149,8 @@ export const DynamicLibrary: {
  * accept C callback functions.
  */
 export interface Callback {
-    new(retType: any, argTypes: any[], abi: number, fn: any): Buffer;
-    new(retType: any, argTypes: any[], fn: any): Buffer;
+    new (retType: any, argTypes: any[], abi: number, fn: any): Buffer;
+    new (retType: any, argTypes: any[], fn: any): Buffer;
     (retType: any, argTypes: any[], abi: number, fn: any): Buffer;
     (retType: any, argTypes: any[], fn: any): Buffer;
 }
@@ -143,7 +163,12 @@ export const ffiType: {
 };
 
 export function CIF(retType: any, types: any[], abi?: any): Buffer;
-export function CIF_var(retType: any, types: any[], numFixedArgs: number, abi?: any): Buffer;
+export function CIF_var(
+    retType: any,
+    types: any[],
+    numFixedArgs: number,
+    abi?: any,
+): Buffer;
 export const HAS_OBJC: boolean;
 export const FFI_TYPES: { [key: string]: Buffer };
 export const FFI_OK: number;

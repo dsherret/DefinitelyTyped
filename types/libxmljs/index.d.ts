@@ -48,11 +48,20 @@ interface ParserOptions {
 }
 
 export function parseXml(source: string, options?: ParserOptions): Document;
-export function parseXmlString(source: string, options?: ParserOptions): Document;
+export function parseXmlString(
+    source: string,
+    options?: ParserOptions,
+): Document;
 
 export function parseHtml(source: string, options?: ParserOptions): Document;
-export function parseHtmlString(source: string, options?: ParserOptions): Document;
-export function parseHtmlFragment(source: string, options?: ParserOptions): Document;
+export function parseHtmlString(
+    source: string,
+    options?: ParserOptions,
+): Document;
+export function parseHtmlFragment(
+    source: string,
+    options?: ParserOptions,
+): Document;
 
 export function memoryUsage(): number;
 export function nodeCount(): number;
@@ -117,12 +126,14 @@ export class Node {
      * Serializes the node to a string. The string will contain all contents of the node formatted as XML and can be used to print the node.
      */
     toString(
-        format?: boolean | {
-            declaration: boolean;
-            selfCloseEmpty: boolean;
-            whitespace: boolean;
-            type: "xml" | "html" | "xhtml";
-        },
+        format?:
+            | boolean
+            | {
+                  declaration: boolean;
+                  selfCloseEmpty: boolean;
+                  whitespace: boolean;
+                  type: "xml" | "html" | "xhtml";
+              },
     ): string;
     text(): string;
     text(newText: string): this;
@@ -158,7 +169,10 @@ export class Element extends Node {
     get(xpath: string, ns_uri?: string): Element | null;
     get(xpath: string, namespaces: StringMap): Element | null;
 
-    defineNamespace(prefixOrHref: string, hrefInCaseOfPrefix?: string): Namespace;
+    defineNamespace(
+        prefixOrHref: string,
+        hrefInCaseOfPrefix?: string,
+    ): Namespace;
 
     namespace(): Namespace | null;
     namespace(newNamespace: Namespace): this;

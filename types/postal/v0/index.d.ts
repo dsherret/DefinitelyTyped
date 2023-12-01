@@ -15,7 +15,10 @@ interface ISubscriptionDefinition {
     withConstraints(predicates: Function[]): ISubscriptionDefinition;
 
     withContext(context: any): ISubscriptionDefinition;
-    withDebounce(milliseconds: number, immediate: boolean): ISubscriptionDefinition;
+    withDebounce(
+        milliseconds: number,
+        immediate: boolean,
+    ): ISubscriptionDefinition;
     withDelay(milliseconds: number): ISubscriptionDefinition;
     withThrottle(milliseconds: number): ISubscriptionDefinition;
 }
@@ -32,7 +35,10 @@ interface IEnvelope {
 
 interface IChannelDefinition {
     subscribe(topic: string): ISubscriptionDefinition;
-    subscribe(topic: string, callback: (data: any, envelope: IEnvelope) => void): ISubscriptionDefinition;
+    subscribe(
+        topic: string,
+        callback: (data: any, envelope: IEnvelope) => void,
+    ): ISubscriptionDefinition;
 
     publish(topic: string, data?: any): void;
     publish(envelope: IEnvelope): void;
@@ -48,7 +54,10 @@ interface IPostalUtils {
 interface IPostal {
     channel(name?: string): IChannelDefinition;
 
-    linkChannels(sources: IEnvelope | IEnvelope[], destinations: IEnvelope | IEnvelope[]): ISubscriptionDefinition[];
+    linkChannels(
+        sources: IEnvelope | IEnvelope[],
+        destinations: IEnvelope | IEnvelope[],
+    ): ISubscriptionDefinition[];
 
     utils: IPostalUtils;
 

@@ -10,7 +10,9 @@ declare namespace fx {
 
     type Value = string | number | string[] | number[];
 
-    type Result<T_VAL extends Value> = T_VAL extends string | number ? number : number[];
+    type Result<T_VAL extends Value> = T_VAL extends string | number
+        ? number
+        : number[];
 
     interface Wrapper<T_VAL extends Value> {
         convert: (opts?: Options) => Result<T_VAL>;
@@ -25,7 +27,7 @@ declare namespace fx {
          * If fx(val) is called as a function, it returns a wrapped object that can be used OO-style
          */
         <T_VAL extends Value>(val: T_VAL): Wrapper<T_VAL>;
-        new<T_VAL extends Value>(val: T_VAL): Wrapper<T_VAL>;
+        new <T_VAL extends Value>(val: T_VAL): Wrapper<T_VAL>;
 
         /**
          * Current version
@@ -53,7 +55,10 @@ declare namespace fx {
         /**
          * Converts a value from one currency to another
          */
-        convert: <T_VAL extends Value>(val: T_VAL, opts?: Options) => Result<T_VAL>;
+        convert: <T_VAL extends Value>(
+            val: T_VAL,
+            opts?: Options,
+        ) => Result<T_VAL>;
     }
 }
 

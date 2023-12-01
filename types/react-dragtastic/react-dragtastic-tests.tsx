@@ -1,11 +1,18 @@
 import * as React from "react";
-import { DragComponent, Draggable, DragState, Droppable } from "react-dragtastic";
+import {
+    DragComponent,
+    Draggable,
+    DragState,
+    Droppable,
+} from "react-dragtastic";
 
 class DraggableZone extends React.Component {
     render() {
         return (
             <Draggable id="unique-id" type="apple">
-                {dragState => <div {...dragState.events}>I'm a draggable zone</div>}
+                {(dragState) => (
+                    <div {...dragState.events}>I'm a draggable zone</div>
+                )}
             </Draggable>
         );
     }
@@ -15,7 +22,9 @@ class DroppableZone extends React.Component {
     render() {
         return (
             <Droppable accepts="apple">
-                {dragState => <div {...dragState.events}>I'm a droppable zone</div>}
+                {(dragState) => (
+                    <div {...dragState.events}>I'm a droppable zone</div>
+                )}
             </Droppable>
         );
     }
@@ -25,7 +34,7 @@ class DragComponentWrapper extends React.Component {
     render() {
         return (
             <DragComponent for="unique-id">
-                {dragState => (
+                {(dragState) => (
                     <div
                         style={{
                             position: "fixed",
@@ -46,9 +55,14 @@ class CompWithDragState extends React.Component {
     render() {
         return (
             <DragState>
-                {dragState => (
-                    <div style={{ background: dragState.isDragging ? "red" : "blue" }}>
-                        I always render, and have access to the global dragState.
+                {(dragState) => (
+                    <div
+                        style={{
+                            background: dragState.isDragging ? "red" : "blue",
+                        }}
+                    >
+                        I always render, and have access to the global
+                        dragState.
                     </div>
                 )}
             </DragState>

@@ -15,11 +15,13 @@ podiumObject.registerEvent({
 
 podiumObject.registerEvent("event1");
 
-podiumObject.on("event1", function(update) { // Way 1
+podiumObject.on("event1", function (update) {
+    // Way 1
     console.log("inside autonomous listener without name! data:", update);
 });
 
-const listener1 = function() { // normal function object
+const listener1 = function () {
+    // normal function object
     console.log("listener1 called");
 };
 podiumObject.on("event1", listener1); // Way 2

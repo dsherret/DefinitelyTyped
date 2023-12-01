@@ -61,7 +61,7 @@ function nodemailer_test() {
 
         // setup email data with unicode symbols
         const mailOptions: Mail.Options = {
-            from: "\"Fred Foo 👻\" <foo@blurdybloop.com>", // sender address
+            from: '"Fred Foo 👻" <foo@blurdybloop.com>', // sender address
             to: "bar@blurdybloop.com, baz@blurdybloop.com", // list of receivers
             subject: "Hello ✔", // Subject line
             text: "Hello world?", // plain text body
@@ -70,19 +70,25 @@ function nodemailer_test() {
         };
 
         // send mail with defined transport object
-        transporter.sendMail(mailOptions, (err, info: SMTPTransport.SentMessageInfo) => {
-            if (err) {
-                console.log(err);
-                return;
-            }
-            console.log(info.accepted, info.rejected, info.pending);
-            console.log("Message sent: %s", info.messageId);
-            // Preview only available when sending through an Ethereal account
-            console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+        transporter.sendMail(
+            mailOptions,
+            (err, info: SMTPTransport.SentMessageInfo) => {
+                if (err) {
+                    console.log(err);
+                    return;
+                }
+                console.log(info.accepted, info.rejected, info.pending);
+                console.log("Message sent: %s", info.messageId);
+                // Preview only available when sending through an Ethereal account
+                console.log(
+                    "Preview URL: %s",
+                    nodemailer.getTestMessageUrl(info),
+                );
 
-            // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@blurdybloop.com>
-            // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-        });
+                // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@blurdybloop.com>
+                // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+            },
+        );
     });
 }
 
@@ -129,7 +135,7 @@ function message_more_advanced_fields_test() {
 
     const htmlstream = fs.createReadStream("content.html");
     const transport = nodemailer.createTransport();
-    transport.sendMail({ html: htmlstream }, err => {
+    transport.sendMail({ html: htmlstream }, (err) => {
         if (err) {
             // check if htmlstream is still open and close it to clean up
         }
@@ -194,10 +200,11 @@ function message_attachments_test() {
             },
             {
                 // use pregenerated MIME node
-                raw: "Content-Type: text/plain\r\n" // tslint:disable-line prefer-template
-                    + "Content-Disposition: attachment;\r\n"
-                    + "\r\n"
-                    + "Hello world!",
+                raw:
+                    "Content-Type: text/plain\r\n" + // tslint:disable-line prefer-template
+                    "Content-Disposition: attachment;\r\n" +
+                    "\r\n" +
+                    "Hello world!",
             },
         ],
     };
@@ -221,8 +228,12 @@ function message_alternatives_test() {
 
 function message_address_object_test() {
     const message: Mail.Options = {
-        to: "foobar@blurdybloop.com, \"Ноде Майлер\" <bar@blurdybloop.com>, \"Name, User\" <baz@blurdybloop.com>",
-        cc: ["foobar@blurdybloop.com", "\"Ноде Майлер\" <bar@blurdybloop.com>", "\"Name, User\" <baz@blurdybloop.com>"],
+        to: 'foobar@blurdybloop.com, "Ноде Майлер" <bar@blurdybloop.com>, "Name, User" <baz@blurdybloop.com>',
+        cc: [
+            "foobar@blurdybloop.com",
+            '"Ноде Майлер" <bar@blurdybloop.com>',
+            '"Name, User" <baz@blurdybloop.com>',
+        ],
         bcc: [
             "foobar@blurdybloop.com",
             {
@@ -238,7 +249,8 @@ function message_address_object_test() {
 // Send a REQUEST event as a string
 
 function message_calendar_request_test() {
-    const content = "BEGIN:VCALENDAR\r\nPRODID:-//ACME/DesktopCalendar//EN\r\nMETHOD:REQUEST\r\n...";
+    const content =
+        "BEGIN:VCALENDAR\r\nPRODID:-//ACME/DesktopCalendar//EN\r\nMETHOD:REQUEST\r\n...";
 
     const message: Mail.Options = {
         from: "sender@example.com",
@@ -287,7 +299,7 @@ function message_calendar_cancel_test() {
 
 function message_embedded_images_test() {
     const message: Mail.Options = {
-        html: "Embedded image: <img src=\"cid:unique@nodemailer.com\"/>",
+        html: 'Embedded image: <img src="cid:unique@nodemailer.com"/>',
         attachments: [
             {
                 filename: "image.png",
@@ -357,7 +369,11 @@ function message_custom_headers_test() {
 function message_multiple_rows_with_the_same_key_test() {
     const message: Mail.Options = {
         headers: {
-            "x-my-key": ["value for row 1", "value for row 2", "value for row 3"],
+            "x-my-key": [
+                "value for row 1",
+                "value for row 2",
+                "value for row 3",
+            ],
         },
     };
 }
@@ -367,7 +383,8 @@ function message_multiple_rows_with_the_same_key_test() {
 function message_prepared_headers_test() {
     const message: Mail.Options = {
         headers: {
-            "x-processed": "a really long header or value with non-ascii characters 👮",
+            "x-processed":
+                "a really long header or value with non-ascii characters 👮",
             "x-unprocessed": {
                 prepared: true,
                 value: "a really long header or value with non-ascii characters 👮",
@@ -577,7 +594,7 @@ function oauth2_token_handling_test() {
 
 function oauth2_token_update_test() {
     const transporter = nodemailer.createTransport();
-    transporter.on("token", token => {
+    transporter.on("token", (token) => {
         console.log("A new access token was generated");
         console.log("User: %s", token.user);
         console.log("Access Token: %s", token.accessToken);
@@ -779,37 +796,68 @@ async function custom_auth_async_test() {
 
             customAuth: {
                 // can create multiple handlers
-                "x-login": async ctx => {
+                "x-login": async (ctx) => {
                     // This custom method implements AUTH LOGIN even though Nodemailer supports it natively.
                     // AUTH LOGIN mechanism includes multiple steps, so it's great for a demo nevertheless
 
-                    console.log("Performing custom authentication for %s", ctx.auth.credentials.user);
-                    console.log("Supported extensions: %s", ctx.extensions.join(", "));
-                    console.log("Supported auth methods: %s", ctx.authMethods.join(", "));
+                    console.log(
+                        "Performing custom authentication for %s",
+                        ctx.auth.credentials.user,
+                    );
+                    console.log(
+                        "Supported extensions: %s",
+                        ctx.extensions.join(", "),
+                    );
+                    console.log(
+                        "Supported auth methods: %s",
+                        ctx.authMethods.join(", "),
+                    );
 
                     if (ctx.authMethods.indexOf("LOGIN") === -1) {
                         console.log("Server does not support AUTH LOGIN");
                         throw new Error("Can not log in");
                     }
-                    console.log("AUTH LOGIN is supported, proceeding with login...");
+                    console.log(
+                        "AUTH LOGIN is supported, proceeding with login...",
+                    );
 
                     let cmd;
 
                     cmd = await ctx.sendCommand("AUTH LOGIN");
                     if (cmd.status !== 334) {
                         // expecting '334 VXNlcm5hbWU6'
-                        throw new Error("Invalid login sequence while waiting for \"334 VXNlcm5hbWU6\"");
+                        throw new Error(
+                            'Invalid login sequence while waiting for "334 VXNlcm5hbWU6"',
+                        );
                     }
 
-                    console.log("Sending username: %s", ctx.auth.credentials.user);
-                    cmd = await ctx.sendCommand(Buffer.from(ctx.auth.credentials.user, "utf-8").toString("base64"));
+                    console.log(
+                        "Sending username: %s",
+                        ctx.auth.credentials.user,
+                    );
+                    cmd = await ctx.sendCommand(
+                        Buffer.from(
+                            ctx.auth.credentials.user,
+                            "utf-8",
+                        ).toString("base64"),
+                    );
                     if (cmd.status !== 334) {
                         // expecting '334 UGFzc3dvcmQ6'
-                        throw new Error("Invalid login sequence while waiting for \"334 UGFzc3dvcmQ6\"");
+                        throw new Error(
+                            'Invalid login sequence while waiting for "334 UGFzc3dvcmQ6"',
+                        );
                     }
 
-                    console.log("Sending password: %s", "*".repeat(ctx.auth.credentials.pass.length));
-                    cmd = await ctx.sendCommand(Buffer.from(ctx.auth.credentials.pass, "utf-8").toString("base64"));
+                    console.log(
+                        "Sending password: %s",
+                        "*".repeat(ctx.auth.credentials.pass.length),
+                    );
+                    cmd = await ctx.sendCommand(
+                        Buffer.from(
+                            ctx.auth.credentials.pass,
+                            "utf-8",
+                        ).toString("base64"),
+                    );
                     if (cmd.status < 200 || cmd.status >= 300) {
                         // expecting a 235 response, just in case allow everything in 2xx range
                         throw new Error("User failed to authenticate");
@@ -855,19 +903,30 @@ async function custom_auth_cb_test() {
 
             customAuth: {
                 // can create multiple handlers
-                "x-login": ctx => {
+                "x-login": (ctx) => {
                     // This custom method implements AUTH LOGIN even though Nodemailer supports it natively.
                     // AUTH LOGIN mechanism includes multiple steps, so it's great for a demo nevertheless
 
-                    console.log("Performing custom authentication for %s", ctx.auth.credentials.user);
-                    console.log("Supported extensions: %s", ctx.extensions.join(", "));
-                    console.log("Supported auth methods: %s", ctx.authMethods.join(", "));
+                    console.log(
+                        "Performing custom authentication for %s",
+                        ctx.auth.credentials.user,
+                    );
+                    console.log(
+                        "Supported extensions: %s",
+                        ctx.extensions.join(", "),
+                    );
+                    console.log(
+                        "Supported auth methods: %s",
+                        ctx.authMethods.join(", "),
+                    );
 
                     if (ctx.authMethods.indexOf("LOGIN") === -1) {
                         console.log("Server does not support AUTH LOGIN");
                         return ctx.reject(new Error("Can not log in"));
                     }
-                    console.log("AUTH LOGIN is supported, proceeding with login...");
+                    console.log(
+                        "AUTH LOGIN is supported, proceeding with login...",
+                    );
 
                     ctx.sendCommand("AUTH LOGIN", (err, cmd) => {
                         if (err) {
@@ -876,34 +935,60 @@ async function custom_auth_cb_test() {
 
                         if (cmd.status !== 334) {
                             // expecting '334 VXNlcm5hbWU6'
-                            return ctx.reject("Invalid login sequence while waiting for \"334 VXNlcm5hbWU6\"");
+                            return ctx.reject(
+                                'Invalid login sequence while waiting for "334 VXNlcm5hbWU6"',
+                            );
                         }
 
-                        console.log("Sending username: %s", ctx.auth.credentials.user);
+                        console.log(
+                            "Sending username: %s",
+                            ctx.auth.credentials.user,
+                        );
                         ctx.sendCommand(
-                            Buffer.from(ctx.auth.credentials.user, "utf-8").toString("base64"),
+                            Buffer.from(
+                                ctx.auth.credentials.user,
+                                "utf-8",
+                            ).toString("base64"),
                             (err, cmd) => {
                                 if (err) {
                                     return ctx.reject(err);
                                 }
                                 if (cmd.status !== 334) {
                                     // expecting '334 UGFzc3dvcmQ6'
-                                    return ctx.reject("Invalid login sequence while waiting for \"334 UGFzc3dvcmQ6\"");
+                                    return ctx.reject(
+                                        'Invalid login sequence while waiting for "334 UGFzc3dvcmQ6"',
+                                    );
                                 }
 
-                                console.log("Sending password: %s", "*".repeat(ctx.auth.credentials.pass.length));
+                                console.log(
+                                    "Sending password: %s",
+                                    "*".repeat(
+                                        ctx.auth.credentials.pass.length,
+                                    ),
+                                );
                                 ctx.sendCommand(
-                                    Buffer.from(ctx.auth.credentials.pass, "utf-8").toString("base64"),
+                                    Buffer.from(
+                                        ctx.auth.credentials.pass,
+                                        "utf-8",
+                                    ).toString("base64"),
                                     (err, cmd) => {
                                         if (err) {
                                             return ctx.reject(err);
                                         }
-                                        if (cmd.status < 200 || cmd.status >= 300) {
+                                        if (
+                                            cmd.status < 200 ||
+                                            cmd.status >= 300
+                                        ) {
                                             // expecting a 235 response, just in case allow everything in 2xx range
-                                            return ctx.reject("User failed to authenticate");
+                                            return ctx.reject(
+                                                "User failed to authenticate",
+                                            );
                                         }
 
-                                        console.log("User authenticated! (%s)", cmd.response);
+                                        console.log(
+                                            "User authenticated! (%s)",
+                                            cmd.response,
+                                        );
 
                                         // all checks passed
                                         return ctx.resolve();
@@ -1050,7 +1135,7 @@ function stream_buffer_unix_newlines_test() {
         streamTransport: true,
         newline: "unix",
         buffer: true,
-        normalizeHeaderKey: key => key.toUpperCase(),
+        normalizeHeaderKey: (key) => key.toUpperCase(),
     });
     transporter.sendMail(
         {
@@ -1102,7 +1187,10 @@ function json_test() {
 function plugin_compile_test() {
     const transporter = nodemailer.createTransport();
 
-    function plugin(mail: typeof transporter.MailMessage, callback: (err?: Error | null) => void) {
+    function plugin(
+        mail: typeof transporter.MailMessage,
+        callback: (err?: Error | null) => void,
+    ) {
         // if mail.data.html is a file or an url, it is returned as a Buffer
         mail.resolveContent(mail.data, "html", (err, html) => {
             if (err) {
@@ -1115,7 +1203,11 @@ function plugin_compile_test() {
     }
 
     transporter.use("compile", (mail, callback) => {
-        if (!mail.data.text && mail.data.html && typeof mail.data.html === "string") {
+        if (
+            !mail.data.text &&
+            mail.data.html &&
+            typeof mail.data.html === "string"
+        ) {
             mail.data.text = mail.data.html.replace(/<[^>]*>/g, " ");
         }
         callback();
@@ -1189,7 +1281,10 @@ function plugin_transport_example_test() {
         name = "minimal";
         version = "0.1.0";
         constructor(options: Options) {}
-        send(mail: MailMessage, callback: (err: Error | null, info: any) => void): void {
+        send(
+            mail: MailMessage,
+            callback: (err: Error | null, info: any) => void,
+        ): void {
             const input = mail.message.createReadStream();
             input.pipe(process.stdout);
             input.on("end", () => {
@@ -1244,12 +1339,14 @@ function dkim_sign_multiple_keys_test() {
                 {
                     domainName: "example.com",
                     keySelector: "2017",
-                    privateKey: "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBg...",
+                    privateKey:
+                        "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBg...",
                 },
                 {
                     domainName: "example.com",
                     keySelector: "2016",
-                    privateKey: "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBg...",
+                    privateKey:
+                        "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBg...",
                 },
             ],
             cacheDir: false,
@@ -1317,24 +1414,28 @@ function dkim_specific_header_key_test() {
 
 function smtp_connection_test() {
     const connection = new SMTPConnection();
-    connection.connect(err => {
+    connection.connect((err) => {
         if (err) throw err;
-        connection.login({ user: "user", pass: "pass" }, err => {
+        connection.login({ user: "user", pass: "pass" }, (err) => {
             if (err) throw err;
-            connection.send({ from: "a@example.com", to: "b@example.net" }, "message", (err, info) => {
-                if (err) {
-                    const code: string = err.code || "???";
-                    const response: string = err.response || "???";
-                    const responseCode: number = err.responseCode || 0;
-                    const command: string = err.command || "???";
-                    throw err;
-                }
-                connection.reset(() => {
-                    if (err) throw err;
-                    connection.quit();
-                    connection.close();
-                });
-            });
+            connection.send(
+                { from: "a@example.com", to: "b@example.net" },
+                "message",
+                (err, info) => {
+                    if (err) {
+                        const code: string = err.code || "???";
+                        const response: string = err.response || "???";
+                        const responseCode: number = err.responseCode || 0;
+                        const command: string = err.command || "???";
+                        throw err;
+                    }
+                    connection.reset(() => {
+                        if (err) throw err;
+                        connection.quit();
+                        connection.close();
+                    });
+                },
+            );
         });
     });
 }
@@ -1343,24 +1444,28 @@ function smtp_connection_test() {
 
 function lmtp_connection_test() {
     const connection = new SMTPConnection({ lmtp: true });
-    connection.connect(err => {
+    connection.connect((err) => {
         if (err) throw err;
-        connection.login({ user: "user", pass: "pass" }, err => {
+        connection.login({ user: "user", pass: "pass" }, (err) => {
             if (err) throw err;
-            connection.send({ from: "a@example.com", to: "b@example.net" }, "message", (err, info) => {
-                if (err) {
-                    const code: string = err.code || "???";
-                    const response: string = err.response || "???";
-                    const responseCode: number = err.responseCode || 0;
-                    const command: string = err.command || "???";
-                    throw err;
-                }
-                connection.reset(() => {
-                    if (err) throw err;
-                    connection.quit();
-                    connection.close();
-                });
-            });
+            connection.send(
+                { from: "a@example.com", to: "b@example.net" },
+                "message",
+                (err, info) => {
+                    if (err) {
+                        const code: string = err.code || "???";
+                        const response: string = err.response || "???";
+                        const responseCode: number = err.responseCode || 0;
+                        const command: string = err.command || "???";
+                        throw err;
+                    }
+                    connection.reset(() => {
+                        if (err) throw err;
+                        connection.quit();
+                        connection.close();
+                    });
+                },
+            );
         });
     });
 }
@@ -1392,11 +1497,15 @@ async function mailcomposer_build_promise_test() {
 
 // addressparser
 
-function isAddress(addressOrGroup: addressparser.AddressOrGroup): addressOrGroup is addressparser.Address {
+function isAddress(
+    addressOrGroup: addressparser.AddressOrGroup,
+): addressOrGroup is addressparser.Address {
     return (addressOrGroup as addressparser.Address).address !== undefined;
 }
 
-function isGroup(addressOrGroup: addressparser.AddressOrGroup): addressOrGroup is addressparser.Group {
+function isGroup(
+    addressOrGroup: addressparser.AddressOrGroup,
+): addressOrGroup is addressparser.Group {
     return (addressOrGroup as addressparser.Group).group !== undefined;
 }
 
@@ -1545,13 +1654,23 @@ function mime_funcs_test() {
 
     mimeFuncs.encodeWord("See on õhin test");
     mimeFuncs.encodeWord("See on õhin test", "B");
-    mimeFuncs.encodeWords("метель\" вьюга", "Q", 52);
-    mimeFuncs.encodeWords("Jõgeva Jõgeva Jõgeva mugeva Jõgeva Jõgeva Jõgeva Jõgeva Jõgeva", "Q", 16);
-    mimeFuncs.encodeWords("õõõõõ õõõõõ õõõõõ mugeva õõõõõ õõõõõ õõõõõ õõõõõ Jõgeva", "B", 30);
+    mimeFuncs.encodeWords('метель" вьюга', "Q", 52);
+    mimeFuncs.encodeWords(
+        "Jõgeva Jõgeva Jõgeva mugeva Jõgeva Jõgeva Jõgeva Jõgeva Jõgeva",
+        "Q",
+        16,
+    );
+    mimeFuncs.encodeWords(
+        "õõõõõ õõõõõ õõõõõ mugeva õõõõõ õõõõõ õõõõõ õõõõõ Jõgeva",
+        "B",
+        30,
+    );
 
     mimeFuncs.buildHeaderParam("title", "this is just a title", 500);
 
-    const parsedHeader = mimeFuncs.parseHeaderValue("content-disposition: attachment; filename=filename");
+    const parsedHeader = mimeFuncs.parseHeaderValue(
+        "content-disposition: attachment; filename=filename",
+    );
     console.log(parsedHeader.params.filename);
 
     mimeFuncs.buildHeaderValue({
@@ -1573,7 +1692,7 @@ function mime_funcs_test() {
 
 function mime_node_test() {
     const mb = new MimeNode("text/plain", {
-        normalizeHeaderKey: key => key.toUpperCase(),
+        normalizeHeaderKey: (key) => key.toUpperCase(),
     });
 
     const child = mb.createChild("multipart/mixed");
@@ -1607,7 +1726,7 @@ function mime_node_test() {
         const msgAsString: string = msg.toString();
     });
 
-    mb.processFunc(input => {
+    mb.processFunc((input) => {
         const isReadable: boolean = input.readable;
         return input;
     });
@@ -1643,7 +1762,11 @@ function shared_getLogger_test() {
     const options = shared.parseConnectionUrl(
         "smtps://user:pass@localhost:123?tls.rejectUnauthorized=false&name=horizon",
     );
-    console.log(options.secure, options.auth!.user, options.tls!.rejectUnauthorized);
+    console.log(
+        options.secure,
+        options.auth!.user,
+        options.tls!.rejectUnauthorized,
+    );
 }
 
 function shared_resolveContent_string_test() {
@@ -1659,7 +1782,9 @@ function shared_resolveContent_string_test() {
         }
     });
 
-    shared.resolveContent(mail.data, "html").then(value => console.log(value));
+    shared
+        .resolveContent(mail.data, "html")
+        .then((value) => console.log(value));
 }
 
 function shared_resolveContent_buffer_test() {
@@ -1675,7 +1800,9 @@ function shared_resolveContent_buffer_test() {
         }
     });
 
-    shared.resolveContent(mail.data, "html").then(value => console.log(value));
+    shared
+        .resolveContent(mail.data, "html")
+        .then((value) => console.log(value));
 }
 
 function shared_assign_test() {

@@ -433,7 +433,14 @@ export type CurrencyType =
     | "ZMW"
     | "BTC";
 
-export type DayOfWeekType = "SUN" | "MON" | "TUE" | "WED" | "THU" | "FRI" | "SAT";
+export type DayOfWeekType =
+    | "SUN"
+    | "MON"
+    | "TUE"
+    | "WED"
+    | "THU"
+    | "FRI"
+    | "SAT";
 
 export type CardBrandType =
     | "JCB"
@@ -459,7 +466,10 @@ export type DiscountType =
     | "VARIABLE_PERCENTAGE"
     | "UNKNOWN_DISCOUNT";
 
-export type DiscountApplicationScopeType = "ORDER" | "LINE_ITEM" | "OTHER_DISCOUNT_SCOPE";
+export type DiscountApplicationScopeType =
+    | "ORDER"
+    | "LINE_ITEM"
+    | "OTHER_DISCOUNT_SCOPE";
 
 export type CustomerSourceType =
     | "OTHER"
@@ -500,7 +510,13 @@ export type ActivityStatusType = "ACTIVE" | "INACTIVE";
 
 export type FulfillmentType = "PICKUP" | "SHIPMENT";
 
-export type FulfillmentStateType = "PROPOSED" | "RESERVED" | "PREPARED" | "COMPLETED" | "CANCELED" | "FAILED";
+export type FulfillmentStateType =
+    | "PROPOSED"
+    | "RESERVED"
+    | "PREPARED"
+    | "COMPLETED"
+    | "CANCELED"
+    | "FAILED";
 
 export type InventoryType = "PHYSICAL_COUNT" | "ADJUSTMENT" | "TRANSFER";
 
@@ -1909,7 +1925,9 @@ export class CatalogCustomAttributeDefinition {
     /**
      * Populated when `type` is set to `SELECTION`, unset otherwise.
      */
-    selection_config?: CatalogCustomAttributeDefinitionSelectionConfig | undefined;
+    selection_config?:
+        | CatalogCustomAttributeDefinitionSelectionConfig
+        | undefined;
     /**
      * The number of custom attributes that reference this custom attribute definition.
      * Set by the server in response to a ListCatalog request with `include_counts` set to `true`.
@@ -1953,7 +1971,9 @@ export class CatalogCustomAttributeDefinitionSelectionConfig {
     /**
      * The set of valid `CatalogCustomAttributeSelections`. Up to a maximum of 100 selections can be defined. Can be modified.
      */
-    allowed_selections?: CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection[] | undefined;
+    allowed_selections?:
+        | CatalogCustomAttributeDefinitionSelectionConfigCustomAttributeSelection[]
+        | undefined;
 }
 
 /**
@@ -2182,12 +2202,16 @@ export class CatalogInfoResponseLimits {
      * The maximum number of modifier list IDs to be enabled that may be included in a single
      * `/v2/catalog/update-item-modifier-lists` request.
      */
-    update_item_modifier_lists_max_modifier_lists_to_enable?: number | undefined;
+    update_item_modifier_lists_max_modifier_lists_to_enable?:
+        | number
+        | undefined;
     /**
      * The maximum number of modifier list IDs to be disabled that may be included in a single
      * `/v2/catalog/update-item-modifier-lists` request.
      */
-    update_item_modifier_lists_max_modifier_lists_to_disable?: number | undefined;
+    update_item_modifier_lists_max_modifier_lists_to_disable?:
+        | number
+        | undefined;
 }
 
 /**
@@ -2247,7 +2271,13 @@ export class CatalogItem {
      * Only items of product type `REGULAR` or `APPOINTMENTS_SERVICE` may be created by this API; items with other product
      * types are read-only. See [CatalogItemProductType](#type-catalogitemproducttype) for possible values
      */
-    product_type?: "REGULAR" | "GIFT_CARD" | "APPOINTMENTS_SERVICE" | "RETAIL_ITEM" | "RESTAURANT_ITEM" | undefined;
+    product_type?:
+        | "REGULAR"
+        | "GIFT_CARD"
+        | "APPOINTMENTS_SERVICE"
+        | "RETAIL_ITEM"
+        | "RESTAURANT_ITEM"
+        | undefined;
     /**
      * If `false`, the Square Point of Sale app will present the `CatalogItem`'s details screen immediately, allowing
      * the merchant to choose `CatalogModifier`s before adding the item to the cart. This is the default behavior.
@@ -2598,7 +2628,9 @@ export class CatalogObject {
      * Custom attribute values are intended to store additional information about a catalog object or associations with
      * an entity in another system. Do not use custom attributes to store any sensitive information (personally identifiable information, card details, etc.).
      */
-    custom_attribute_values?: Record<string, CatalogCustomAttributeValue> | undefined;
+    custom_attribute_values?:
+        | Record<string, CatalogCustomAttributeValue>
+        | undefined;
     /**
      * The Connect v1 IDs for this object at each location where it is present, where they differ from the object's Connect V2 ID.
      * The field will only be present for objects that have been created or modified by legacy APIs.
@@ -2686,7 +2718,9 @@ export class CatalogObject {
     /**
      * Structured data for a `CatalogCustomAttributeDefinition`, set for CatalogObjects of type `CUSTOM_ATTRIBUTE_DEFINITION`.
      */
-    custom_attribute_definition_data?: CatalogCustomAttributeDefinition | undefined;
+    custom_attribute_definition_data?:
+        | CatalogCustomAttributeDefinition
+        | undefined;
     /**
      * Structured data for a `CatalogQuickAmountsSettings`, set for CatalogObjects of type `QUICK_AMOUNTS_SETTINGS`.
      */
@@ -2874,7 +2908,9 @@ export class CatalogQuery {
     /**
      * A query expression to return items that have any of the given modifier list (as identified by the corresponding `CatalogModifierList`s IDs) enabled.
      */
-    items_for_modifier_list_query?: CatalogQueryItemsForModifierList | undefined;
+    items_for_modifier_list_query?:
+        | CatalogQueryItemsForModifierList
+        | undefined;
     /**
      * A query expression to return items that contains the specified item options (as identified the corresponding `CatalogItemOption` IDs).
      */
@@ -2882,7 +2918,9 @@ export class CatalogQuery {
     /**
      * A query expression to return item variations (of the `CatalogItemVariation` that contain all of the specified `CatalogItemOption` IDs.
      */
-    item_variations_for_item_option_values_query?: CatalogQueryItemVariationsForItemOptionValues | undefined;
+    item_variations_for_item_option_values_query?:
+        | CatalogQueryItemVariationsForItemOptionValues
+        | undefined;
 }
 
 export class CatalogQueryCustomAttributeUsage {
@@ -8143,7 +8181,9 @@ export class OrderFulfillmentPickupDetails {
     /**
      * Specific details for curbside pickup. Can only be populated if `is_curbside_pickup` is true.
      */
-    curbside_pickup_details?: OrderFulfillmentPickupDetailsCurbsidePickupDetails | undefined;
+    curbside_pickup_details?:
+        | OrderFulfillmentPickupDetailsCurbsidePickupDetails
+        | undefined;
 }
 
 /**
@@ -11534,7 +11574,13 @@ export class Tender {
     /**
      * The type of tender, such as `CARD` or `CASH`. See [TenderType](#type-tendertype) for possible values.
      */
-    type: "CARD" | "CASH" | "THIRD_PARTY_CARD" | "SQUARE_GIFT_CARD" | "NO_SALE" | "OTHER";
+    type:
+        | "CARD"
+        | "CASH"
+        | "THIRD_PARTY_CARD"
+        | "SQUARE_GIFT_CARD"
+        | "NO_SALE"
+        | "OTHER";
     /**
      * The details of the card tender. This value is present only if the value of `type` is `CARD`.
      */
@@ -11572,7 +11618,13 @@ export class TenderCardDetails {
      * The method used to enter the card's details for the transaction.
      * See [TenderCardDetailsEntryMethod](#type-tendercarddetailsentrymethod) for possible values.
      */
-    entry_method?: "SWIPED" | "KEYED" | "EMV" | "ON_FILE" | "CONTACTLESS" | undefined;
+    entry_method?:
+        | "SWIPED"
+        | "KEYED"
+        | "EMV"
+        | "ON_FILE"
+        | "CONTACTLESS"
+        | undefined;
 }
 
 /**
@@ -12486,13 +12538,17 @@ export class CatalogApi {
      * @note ListCatalog does not return deleted catalog items. To retrieve deleted catalog items, use SearchCatalogObjects
      * and set `include_deleted_objects` to `true`.
      */
-    batchDeleteCatalogObjects(...args: any[]): Promise<BatchDeleteCatalogObjectsResponse>;
+    batchDeleteCatalogObjects(
+        ...args: any[]
+    ): Promise<BatchDeleteCatalogObjectsResponse>;
     /**
      * Returns a set of objects based on the provided ID. Each [CatalogItem](#type-catalogitem) returned in the set includes all of
      * its child information including: all of its [CatalogItemVariation](#type-catalogitemvariation) objects, references to its
      * [CatalogModifierList](#type-catalogmodifierlist) objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
      */
-    batchRetrieveCatalogObjects(...args: any[]): Promise<BatchRetrieveCatalogObjectsResponse>;
+    batchRetrieveCatalogObjects(
+        ...args: any[]
+    ): Promise<BatchRetrieveCatalogObjectsResponse>;
     /**
      * Creates or updates up to 10,000 target objects based on the provided list of objects. The target objects are grouped into
      * batches and each batch is inserted/updated in an all-or-nothing manner. If an object within a batch is malformed in some way,
@@ -12500,7 +12556,9 @@ export class CatalogApi {
      * the same request may still succeed. Each batch may contain up to 1,000 objects, and batches will be processed in order as long
      * as the total object count for the request (items, variations, modifier lists, discounts, and taxes) is no more than 10,000.
      */
-    batchUpsertCatalogObjects(...args: any[]): Promise<BatchUpsertCatalogObjectsResponse>;
+    batchUpsertCatalogObjects(
+        ...args: any[]
+    ): Promise<BatchUpsertCatalogObjectsResponse>;
     /**
      * Returns information about the Square Catalog API, such as batch size limits for `BatchUpsertCatalogObjects`.
      */
@@ -12527,7 +12585,9 @@ export class CatalogApi {
      * [CatalogItemVariation](#type-catalogitemvariation) children, references to its [CatalogModifierList](#type-catalogmodifierlist)
      * objects, and the ids of any [CatalogTax](#type-catalogtax) objects that apply to it.
      */
-    retrieveCatalogObject(...args: any[]): Promise<RetrieveCatalogObjectResponse>;
+    retrieveCatalogObject(
+        ...args: any[]
+    ): Promise<RetrieveCatalogObjectResponse>;
     /**
      * Queries the targeted catalog using a variety of query types: [CatalogQuerySortedAttribute](#type-catalogquerysortedattribute),
      * [CatalogQueryExact](#type-catalogqueryexact), [CatalogQueryRange](#type-catalogqueryrange),
@@ -12543,7 +12603,9 @@ export class CatalogApi {
      * Updates the [CatalogModifierList](#type-catalogmodifierlist) objects that apply to the targeted
      * [CatalogItem](#type-catalogitem) without having to perform an upsert on the entire item.
      */
-    updateItemModifierLists(...args: any[]): Promise<UpdateItemModifierListsResponse>;
+    updateItemModifierLists(
+        ...args: any[]
+    ): Promise<UpdateItemModifierListsResponse>;
     /**
      * Updates the [CatalogTax](#type-catalogtax) objects that apply to the targeted [CatalogItem](#type-catalogitem)
      * without having to perform an upsert on the entire item.
@@ -12565,7 +12627,10 @@ export class CheckoutApi {
      * Links a `checkoutId` to a `checkout_page_url` that customers will be directed to in order to provide their payment
      * information using a payment processing workflow hosted on connect.squareup.com.
      */
-    createCheckout(locationId: string, body: CreateCheckoutRequest): Promise<CreateCheckoutResponse>;
+    createCheckout(
+        locationId: string,
+        body: CreateCheckoutRequest,
+    ): Promise<CreateCheckoutResponse>;
 }
 
 // @todo describe methods
@@ -12584,12 +12649,17 @@ export class CustomersApi {
      * Creates a new customer for a business, which can have associated cards on file. You must provide at least one of the
      * following values in your request to this endpoint: `given_name`. `family_name`, `company_name`, `email_address`,`phone_number`.
      */
-    createCustomer(body: CreateCustomerRequest): Promise<CreateCustomerResponse>;
+    createCustomer(
+        body: CreateCustomerRequest,
+    ): Promise<CreateCustomerResponse>;
     /**
      * Adds a card on file to an existing customer. As with charges, calls to `CreateCustomerCard` are idempotent.
      * Multiple calls with the same card nonce return the same card record that was created with the provided nonce during the _first_ call.
      */
-    createCustomerCard(customerId: string, body: CreateCustomerCardRequest): Promise<CreateCustomerCardResponse>;
+    createCustomerCard(
+        customerId: string,
+        body: CreateCustomerCardRequest,
+    ): Promise<CreateCustomerCardResponse>;
     /**
      * Deletes a customer from a business, along with any linked cards on file.
      * When two profiles are merged into a single profile, that profile is assigned a new `customer_id`.
@@ -12599,7 +12669,10 @@ export class CustomersApi {
     /**
      * Removes a card on file from a customer.
      */
-    deleteCustomerCard(customerId: string, cardId: string): Promise<DeleteCustomerCardResponse>;
+    deleteCustomerCard(
+        customerId: string,
+        cardId: string,
+    ): Promise<DeleteCustomerCardResponse>;
     /**
      * Lists a business's customers.
      */
@@ -12666,7 +12739,9 @@ export class InventoryApi {
      * Results are paginated and sorted in ascending order according their `occurred_at` timestamp (oldest first).
      * BatchRetrieveInventoryChanges is a catch-all query endpoint for queries that cannot be handled by other, simpler endpoints.
      */
-    batchRetrieveInventoryChanges(...args: any[]): Promise<BatchRetrieveInventoryChangesResponse>;
+    batchRetrieveInventoryChanges(
+        ...args: any[]
+    ): Promise<BatchRetrieveInventoryChangesResponse>;
     /**
      * Returns current counts for the provided [CatalogObject](#type-catalogobject)s at the requested [Location](#type-location)s.
      * Results are paginated and sorted in descending order according to their `calculated_at` timestamp (newest first).
@@ -12674,11 +12749,15 @@ export class InventoryApi {
      * the most recent change) are returned. This allows clients to perform a "sync" operation, for example in response to
      * receiving a Webhook notification.
      */
-    batchRetrieveInventoryCounts(...args: any[]): Promise<BatchRetrieveInventoryCountsResponse>;
+    batchRetrieveInventoryCounts(
+        ...args: any[]
+    ): Promise<BatchRetrieveInventoryCountsResponse>;
     /**
      * Returns the [InventoryAdjustment](#type-inventoryadjustment) object with the provided `adjustment_id`.
      */
-    retrieveInventoryAdjustment(...args: any[]): Promise<RetrieveInventoryAdjustmentResponse>;
+    retrieveInventoryAdjustment(
+        ...args: any[]
+    ): Promise<RetrieveInventoryAdjustmentResponse>;
     /**
      * Returns a set of physical counts and inventory adjustments for the provided [CatalogObject](#type-catalogobject) at the
      * requested [Location](#type-location)s. Results are paginated and sorted in descending order according to their
@@ -12686,16 +12765,22 @@ export class InventoryApi {
      * This endpoint is useful when displaying recent changes for a specific item. For more sophisticated queries,
      * use a batch endpoint.
      */
-    retrieveInventoryChanges(...args: any[]): Promise<RetrieveInventoryChangesResponse>;
+    retrieveInventoryChanges(
+        ...args: any[]
+    ): Promise<RetrieveInventoryChangesResponse>;
     /**
      * Retrieves the current calculated stock count for a given [CatalogObject](#type-catalogobject) at a given set
      * of [Location](#type-location)s. Responses are paginated and unsorted. For more sophisticated queries, use a batch endpoint.
      */
-    retrieveInventoryCount(...args: any[]): Promise<RetrieveInventoryCountResponse>;
+    retrieveInventoryCount(
+        ...args: any[]
+    ): Promise<RetrieveInventoryCountResponse>;
     /**
      * Returns the [InventoryPhysicalCount](#type-inventoryphysicalcount) object with the provided `physical_count_id`.
      */
-    retrieveInventoryPhysicalCount(...args: any[]): Promise<RetrieveInventoryPhysicalCountResponse>;
+    retrieveInventoryPhysicalCount(
+        ...args: any[]
+    ): Promise<RetrieveInventoryPhysicalCountResponse>;
 }
 
 export class LaborApi {
@@ -12800,7 +12885,10 @@ export class LocationsApi {
     /**
      * Updates a location.
      */
-    updateLocation(locationId: string, body: Location): Promise<UpdateLocationResponse>;
+    updateLocation(
+        locationId: string,
+        body: Location,
+    ): Promise<UpdateLocationResponse>;
 }
 
 // @todo describe methods
@@ -12853,7 +12941,10 @@ export class OAuthApi {
      * ``` Authorization: Client APPLICATION_SECRET ```  Replace `APPLICATION_SECRET`
      * with the application secret on the Credentials page in the [application dashboard](https://connect.squareup.com/apps).
      */
-    renewToken(clientId: string, body: RenewTokenRequest): Promise<RenewTokenResponse>;
+    renewToken(
+        clientId: string,
+        body: RenewTokenRequest,
+    ): Promise<RenewTokenResponse>;
     /**
      * Revokes an access token generated with the OAuth flow. If an account has more than one OAuth access token for
      * your application, this endpoint revokes all of them, regardless of which token you specify. When an OAuth access
@@ -12875,11 +12966,15 @@ export class OrdersApi {
      * Retrieves a set of [Order](#type-order)s by their IDs.
      * If a given Order ID does not exist, the ID is ignored instead of generating an error.
      */
-    batchRetrieveOrders(body: BatchRetrieveOrdersRequest): Promise<BatchRetrieveOrdersResponse>;
+    batchRetrieveOrders(
+        body: BatchRetrieveOrdersRequest,
+    ): Promise<BatchRetrieveOrdersResponse>;
     /**
      * Calculates an [Order](#type-order).
      */
-    calculateOrder(body: CalculateOrderRequest): Promise<CalculateOrderResponse>;
+    calculateOrder(
+        body: CalculateOrderRequest,
+    ): Promise<CalculateOrderResponse>;
     /**
      * Creates an [Order](#type-order) that can then be referenced as `order_id` in a request to the [Charge](#endpoint-charge)
      * endpoint. Orders specify products for purchase, along with discounts, taxes, and other settings to apply to the purchase.
@@ -12923,7 +13018,10 @@ export class OrdersApi {
      * To pay for an order, please refer to the [Pay for Orders](/orders-api/pay-for-orders) guide.
      * To learn more about the Orders API, see the [Orders API Overview](/orders-api/what-it-does).
      */
-    updateOrder(orderId: string, body: UpdateOrderRequest): Promise<UpdateOrderResponse>;
+    updateOrder(
+        orderId: string,
+        body: UpdateOrderRequest,
+    ): Promise<UpdateOrderResponse>;
 }
 
 export class PaymentsApi {
@@ -12986,7 +13084,9 @@ export class RefundsApi {
     /**
      * Retrieves a list of refunds for the account making the request. Max results per page: 100.
      */
-    listPaymentRefunds(params: ListPaymentRefundsRequest): Promise<ListPaymentRefundsResponse>;
+    listPaymentRefunds(
+        params: ListPaymentRefundsRequest,
+    ): Promise<ListPaymentRefundsResponse>;
     /**
      * Refunds a payment. You can refund the entire payment amount or a  portion of it.
      * For more information, see [Payments and Refunds Overview](/payments-api/overview).
@@ -13017,7 +13117,10 @@ export class TransactionsApi {
      * Captures a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a `delay_capture` value of `true`.
      * See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe for more information.
      */
-    captureTransaction(locationId: string, transactionId: string): Promise<CaptureTransactionResponse>;
+    captureTransaction(
+        locationId: string,
+        transactionId: string,
+    ): Promise<CaptureTransactionResponse>;
     /**
      * Charges a card represented by a card nonce or a customer's card on file.
      * @deprecated recommend using [CreatePayment](#endpoint-payments-createpayment) Your request to this endpoint must
@@ -13036,7 +13139,11 @@ export class TransactionsApi {
      * @note Card-present transactions with Interac credit cards **cannot be refunded using the Connect API**.
      * Interac transactions must refunded in-person (e.g., dipping the card using POS app).
      */
-    createRefund(locationId: string, transactionId: string, body: CreateRefundRequest): Promise<CreateRefundResponse>;
+    createRefund(
+        locationId: string,
+        transactionId: string,
+        body: CreateRefundRequest,
+    ): Promise<CreateRefundResponse>;
     /**
      * Lists refunds for one of a business's locations.
      * @deprecated recommend using [SearchOrders](#endpoint-orders-searchorders) In addition to full or partial tender
@@ -13044,23 +13151,35 @@ export class TransactionsApi {
      * Point of Sale applications. Refunds with a `status` of `PENDING` are not currently included in this endpoint's response.
      * Max results per [page](#paginatingresults): 50.
      */
-    listRefunds(locationId: string, params: ListRefundsRequest): Promise<ListRefundsResponse>;
+    listRefunds(
+        locationId: string,
+        params: ListRefundsRequest,
+    ): Promise<ListRefundsResponse>;
     /**
      * Lists transactions for a particular location.
      * @deprecated recommend using [SearchOrders](#endpoint-orders-searchorders) Transactions include payment information
      * from sales and exchanges and refund information from returns and exchanges.
      * Max results per [page](#paginatingresults): 50.
      */
-    listTransactions(locationId: string, params: ListTransactionsRequest): Promise<ListTransactionsResponse>;
+    listTransactions(
+        locationId: string,
+        params: ListTransactionsRequest,
+    ): Promise<ListTransactionsResponse>;
     /**
      * Retrieves details for a single transaction.
      * @deprecated recommend using [BatchRetrieveOrders](#endpoint-batchretrieveorders).
      */
-    retrieveTransaction(locationId: string, transactionId: string): Promise<RetrieveTransactionResponse>;
+    retrieveTransaction(
+        locationId: string,
+        transactionId: string,
+    ): Promise<RetrieveTransactionResponse>;
     /**
      * Cancels a transaction that was created with the [Charge](#endpoint-transactions-charge) endpoint with a
      * `delay_capture` value of `true`. See the [Delay Capture of Funds](/transactions-api/cookbook/delay-capture) recipe
      * for more information.
      */
-    voidTransaction(locationId: string, transactionId: string): Promise<VoidTransactionResponse>;
+    voidTransaction(
+        locationId: string,
+        transactionId: string,
+    ): Promise<VoidTransactionResponse>;
 }

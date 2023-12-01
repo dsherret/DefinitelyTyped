@@ -42,7 +42,11 @@ export interface StoryAPI {
      * // Returns all 'forest'-tagged Passage objects, sorted by their titles
      * Story.lookup("tags", "forest");
      */
-    lookup(propertyName: string, searchValue: string | number, sortProperty?: string): Passage[];
+    lookup(
+        propertyName: string,
+        searchValue: string | number,
+        sortProperty?: string,
+    ): Passage[];
 
     /**
      * Returns an array of Passage objects which passed the test implemented by the given filter function or
@@ -53,7 +57,10 @@ export interface StoryAPI {
      * If not given, the Passage object's title property is used.
      * @since 2.11.0
      */
-    lookupWith(filter: (p: Passage) => boolean, sortProperty?: string): Passage[];
+    lookupWith(
+        filter: (p: Passage) => boolean,
+        sortProperty?: string,
+    ): Passage[];
 }
 
 export {};

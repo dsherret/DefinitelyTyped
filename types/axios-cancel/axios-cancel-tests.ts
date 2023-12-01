@@ -3,12 +3,9 @@ import axiosCancel from "axios-cancel";
 
 axiosCancel(axios); // $ExpectType void
 
-axios.get(
-    "https://jsonplaceholder.typicode.com/users",
-    {
-        requestId: "test id",
-    },
-);
+axios.get("https://jsonplaceholder.typicode.com/users", {
+    requestId: "test id",
+});
 
 axios.cancel("test id"); // $ExpectType void
 

@@ -19,7 +19,10 @@ export default class Shevy {
     h5: RhythmProperties;
     h6: RhythmProperties;
 
-    body: Pick<RhythmProperties, Exclude<keyof RhythmProperties, "marginBottom">>;
+    body: Pick<
+        RhythmProperties,
+        Exclude<keyof RhythmProperties, "marginBottom">
+    >;
 
     content: RhythmProperties;
 

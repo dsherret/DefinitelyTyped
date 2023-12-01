@@ -30,31 +30,31 @@ describe("jasminewd", () => {
             return promise;
         });
 
-        it("should be able to use DoneFn", done => {
+        it("should be able to use DoneFn", (done) => {
             promise.then(done, done.fail);
         });
 
-        fit("should be able to use DoneFn", done => {
+        fit("should be able to use DoneFn", (done) => {
             promise.then(done, done.fail);
         });
 
-        xit("should be able to use DoneFn", done => {
+        xit("should be able to use DoneFn", (done) => {
             promise.then(done, done.fail);
         });
 
-        beforeEach(done => {
+        beforeEach((done) => {
             promise.then(done, done.fail);
         });
 
-        afterEach(done => {
+        afterEach((done) => {
             promise.then(done, done.fail);
         });
 
-        beforeAll(done => {
+        beforeAll((done) => {
             promise.then(done, done.fail);
         });
 
-        afterAll(done => {
+        afterAll((done) => {
             promise.then(done, done.fail);
         });
     });
@@ -97,9 +97,14 @@ describe("jasminewd", () => {
             expect(expectedNumber).toBeGreaterThan(expectedNumber);
             expect(expectedNumber).toBeGreaterThan(expectedPromiseNumber);
             expect(expectedNumber).toBeGreaterThanOrEqual(expectedNumber);
-            expect(expectedNumber).toBeGreaterThanOrEqual(expectedPromiseNumber);
+            expect(expectedNumber).toBeGreaterThanOrEqual(
+                expectedPromiseNumber,
+            );
             expect(expectedNumber).toBeCloseTo(expectedNumber, expectedNumber);
-            expect(expectedPromiseNumber).toBeCloseTo(expectationFailOutputAny, expectedNumber);
+            expect(expectedPromiseNumber).toBeCloseTo(
+                expectationFailOutputAny,
+                expectedNumber,
+            );
             expect(expectedAny).toThrow(expectationFailOutputAny);
             expect(expectedAny).toThrowError(expectedString);
             expect(expectedAny).toThrowError(expectedRegExp);
@@ -135,7 +140,7 @@ describe("jasminewd", () => {
                     return {
                         compare(actual: any, expected: void) {
                             return {
-                                pass: (actual.isDisplayed() as Promise<boolean>),
+                                pass: actual.isDisplayed() as Promise<boolean>,
                             };
                         },
                     };

@@ -133,7 +133,13 @@ export type bytes = number[];
 /**
  * JavaScript value representable with JSON.
  */
-export type JSONValue = null | boolean | number | string | JSONArray | JSONObject;
+export type JSONValue =
+    | null
+    | boolean
+    | number
+    | string
+    | JSONArray
+    | JSONObject;
 
 /**
  * Array representable with JSON.

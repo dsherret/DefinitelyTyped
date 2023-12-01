@@ -16,11 +16,15 @@ maki.spritesheet[4]; // $ExpectType SpriteSheet
 
 const files: string[] = [];
 
-files.forEach(fileName => {
+files.forEach((fileName) => {
     maki.layouts.all.forEach((icon: IconName) => {
-        fs.readFile(`${__dirname}/icons/${icon}-11.svg`, "utf8", (err, file) => {
-            console.log(file);
-        });
+        fs.readFile(
+            `${__dirname}/icons/${icon}-11.svg`,
+            "utf8",
+            (err, file) => {
+                console.log(file);
+            },
+        );
     });
 });
 

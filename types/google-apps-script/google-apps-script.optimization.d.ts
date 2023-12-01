@@ -22,7 +22,10 @@ declare namespace GoogleAppsScript {
          *     constraint.setCoefficient('x', 2);
          */
         interface LinearOptimizationConstraint {
-            setCoefficient(variableName: string, coefficient: number): LinearOptimizationConstraint;
+            setCoefficient(
+                variableName: string,
+                coefficient: number,
+            ): LinearOptimizationConstraint;
         }
         /**
          * The engine used to model and solve a linear program. The example below solves the following
@@ -77,14 +80,21 @@ declare namespace GoogleAppsScript {
          *     }
          */
         interface LinearOptimizationEngine {
-            addConstraint(lowerBound: number, upperBound: number): LinearOptimizationConstraint;
+            addConstraint(
+                lowerBound: number,
+                upperBound: number,
+            ): LinearOptimizationConstraint;
             addConstraints(
                 lowerBounds: number[],
                 upperBounds: number[],
                 variableNames: string[][],
                 coefficients: number[][],
             ): LinearOptimizationEngine;
-            addVariable(name: string, lowerBound: number, upperBound: number): LinearOptimizationEngine;
+            addVariable(
+                name: string,
+                lowerBound: number,
+                upperBound: number,
+            ): LinearOptimizationEngine;
             addVariable(
                 name: string,
                 lowerBound: number,
@@ -107,7 +117,10 @@ declare namespace GoogleAppsScript {
             ): LinearOptimizationEngine;
             setMaximization(): LinearOptimizationEngine;
             setMinimization(): LinearOptimizationEngine;
-            setObjectiveCoefficient(variableName: string, coefficient: number): LinearOptimizationEngine;
+            setObjectiveCoefficient(
+                variableName: string,
+                coefficient: number,
+            ): LinearOptimizationEngine;
             solve(): LinearOptimizationSolution;
             solve(seconds: number): LinearOptimizationSolution;
         }

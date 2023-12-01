@@ -1,4 +1,8 @@
-import { CompressionAlgorithm, EventName, WebSocket } from "k6/experimental/websockets";
+import {
+    CompressionAlgorithm,
+    EventName,
+    WebSocket,
+} from "k6/experimental/websockets";
 import { CookieJar } from "k6/http";
 
 //
@@ -84,7 +88,7 @@ ws.ping(5);
 // @ts-expect-error
 ws.onmessage = "lorem";
 ws.onmessage = () => {};
-ws.onmessage = event => {};
+ws.onmessage = (event) => {};
 
 //
 // WebSocket.onopen
@@ -109,7 +113,7 @@ ws.onclose = () => {};
 // @ts-expect-error
 ws.onerror = "lorem";
 ws.onerror = () => {};
-ws.onerror = event => {};
+ws.onerror = (event) => {};
 
 //
 // WebSocket.onping

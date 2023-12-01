@@ -4,10 +4,8 @@ function main() {
     const user = KiiUser.userWithUsername("name", "password");
 
     user.register({
-        success(user: KiiUser) {
-        },
-        failure(user: KiiUser, message: string) {
-        },
+        success(user: KiiUser) {},
+        failure(user: KiiUser, message: string) {},
     });
 
     user.register({
@@ -15,11 +13,10 @@ function main() {
         failure: (user: KiiUser, message: string) => 456,
     });
 
-    user.register()
-        .then((user: KiiUser) => {
-        });
+    user.register().then((user: KiiUser) => {});
 
-    user.pushInstallation().getMqttEndpoint("")
+    user.pushInstallation()
+        .getMqttEndpoint("")
         .then((endpoint: KiiCloud.KiiMqttEndpoint) => {
             endpoint.installationID;
         });
@@ -27,8 +24,10 @@ function main() {
     user.setLocale("en");
     const locale: string = user.getLocale();
 
-    const anotherUser: KiiUser = KiiUserBuilder
-        .builderWithIdentifier("id", "password")
+    const anotherUser: KiiUser = KiiUserBuilder.builderWithIdentifier(
+        "id",
+        "password",
+    )
         .setEmailAddress("mail@example.org")
         .build();
 
@@ -39,13 +38,16 @@ function main() {
     const query = KiiQuery.queryWithClause(clause3);
 
     bucket.executeQuery(query, {
-        success: (query: KiiQuery, results: KiiObject[], nextQuery: KiiQuery) => {
-        },
-        failure: (bucket: KiiBucket, message: string) => {
-        },
+        success: (
+            query: KiiQuery,
+            results: KiiObject[],
+            nextQuery: KiiQuery,
+        ) => {},
+        failure: (bucket: KiiBucket, message: string) => {},
     });
 
-    bucket.executeQuery<KiiObject>(query)
+    bucket
+        .executeQuery<KiiObject>(query)
         .then((params: [KiiQuery, KiiObject[], KiiQuery]) => {
             const [query, results, nextQuery] = params;
         });
@@ -65,35 +67,27 @@ function main() {
             anErrorString: string,
             addMembersArray: KiiUser[],
             removeMembersArray: KiiUser[],
-        ) => {
-        },
+        ) => {},
     });
 
     Kii.authenticateAsThing("thing id", "password", {
         success: (thingAuthContext: KiiThingContext) => {
             thingAuthContext.bucketWithName("");
         },
-        failure: (error) => {
-        },
-    })
-        .then((thingAuthContext: KiiThingContext) => {
-        });
+        failure: (error) => {},
+    }).then((thingAuthContext: KiiThingContext) => {});
 
     Kii.authenticateAsThingWithToken("thing id", "token", {
         success: (thingAuthContext: KiiThingContext) => {
             thingAuthContext.bucketWithName("");
         },
-        failure: (error) => {
-        },
-    })
-        .then((thingAuthContext: KiiThingContext) => {
-        });
+        failure: (error) => {},
+    }).then((thingAuthContext: KiiThingContext) => {});
 
-    KiiThing.loadWithVendorThingID("thing ID")
-        .then((thing) => {
-            const isOnline: boolean = thing.isOnline();
-            const onlineStatusModifiedAt: Date = thing.getOnlineStatusModifiedAt();
-        });
+    KiiThing.loadWithVendorThingID("thing ID").then((thing) => {
+        const isOnline: boolean = thing.isOnline();
+        const onlineStatusModifiedAt: Date = thing.getOnlineStatusModifiedAt();
+    });
 
     const error = KiiErrorParser.parse("");
 

@@ -3,9 +3,23 @@
 declare namespace Inputmask {
     type Range = { start: string; end: string } | [string, string];
 
-    type PositionCaretOnClick = "none" | "lvp" | "radixFocus" | "select" | "ignore";
+    type PositionCaretOnClick =
+        | "none"
+        | "lvp"
+        | "radixFocus"
+        | "select"
+        | "ignore";
 
-    type InputMode = "verbatim" | "none" | "text" | "decimal" | "numeric" | "tel" | "search" | "email" | "url";
+    type InputMode =
+        | "verbatim"
+        | "none"
+        | "text"
+        | "decimal"
+        | "numeric"
+        | "tel"
+        | "search"
+        | "email"
+        | "url";
 
     type Casing = "upper" | "lower" | "title";
 
@@ -60,7 +74,11 @@ declare namespace Inputmask {
         /**
          * The mask to use.
          */
-        mask?: string | string[] | ((opts: Options) => string | string[]) | undefined;
+        mask?:
+            | string
+            | string[]
+            | ((opts: Options) => string | string[])
+            | undefined;
         /**
          * Use a regular expression as a mask. When using shorthands be aware that you need to double escape or use
          * String.raw with a string literal.
@@ -141,35 +159,46 @@ declare namespace Inputmask {
          */
         onKeyDown?:
             | ((
-                event: KeyboardEvent,
-                buffer: string[],
-                caretPos: { begin: number; end: number },
-                opts: Options,
-            ) => void)
+                  event: KeyboardEvent,
+                  buffer: string[],
+                  caretPos: { begin: number; end: number },
+                  opts: Options,
+              ) => void)
             | undefined;
         /**
          * Executes before masking the initial value to allow preprocessing of the initial value.
          */
-        onBeforeMask?: ((initialValue: string, opts: Options) => string) | undefined;
+        onBeforeMask?:
+            | ((initialValue: string, opts: Options) => string)
+            | undefined;
         /**
          * This callback allows for preprocessing the pasted value before actually handling the value for masking.
          * This can be useful for stripping away some characters before processing. You can also disable pasting
          * a value by returning false in the `onBeforePaste` call.
          */
-        onBeforePaste?: ((pastedValue: string, opts: Options) => string) | undefined;
+        onBeforePaste?:
+            | ((pastedValue: string, opts: Options) => string)
+            | undefined;
         /**
          * Executes before writing to the masked element. Use this to do some extra processing of the input. This can
          * be useful when implementing an alias, ex. decimal alias, autofill the digits when leaving the inputfield.
          */
         onBeforeWrite?:
-            | ((event: KeyboardEvent, buffer: string[], caretPos: number, opts: Options) => CommandObject)
+            | ((
+                  event: KeyboardEvent,
+                  buffer: string[],
+                  caretPos: number,
+                  opts: Options,
+              ) => CommandObject)
             | undefined;
         /**
          * Executes after unmasking to allow post-processing of the unmaskedvalue.
          *
          * @returns New unmasked value
          */
-        onUnMask?: ((maskedValue: string, unmaskedValue: string) => string) | undefined;
+        onUnMask?:
+            | ((maskedValue: string, unmaskedValue: string) => string)
+            | undefined;
         /**
          * Shows the mask when the input gets focus.
          *
@@ -268,15 +297,15 @@ declare namespace Inputmask {
          */
         postValidation?:
             | ((
-                buffer: string[],
-                pos: number,
-                char: string,
-                currentResult: boolean,
-                opts: Options,
-                maskset: any,
-                strict: boolean,
-                fromCheckval: boolean,
-            ) => boolean | CommandObject)
+                  buffer: string[],
+                  pos: number,
+                  char: string,
+                  currentResult: boolean,
+                  opts: Options,
+                  maskset: any,
+                  strict: boolean,
+                  fromCheckval: boolean,
+              ) => boolean | CommandObject)
             | undefined;
         /**
          * Hook to preValidate the input. Useful for validating regardless of the definition.
@@ -288,15 +317,15 @@ declare namespace Inputmask {
          */
         preValidation?:
             | ((
-                buffer: string[],
-                pos: number,
-                char: string,
-                isSelection: boolean,
-                opts: Options,
-                maskset: any,
-                caretPos: { begin: number; end: number },
-                strict: boolean,
-            ) => boolean | CommandObject)
+                  buffer: string[],
+                  pos: number,
+                  char: string,
+                  isSelection: boolean,
+                  opts: Options,
+                  maskset: any,
+                  caretPos: { begin: number; end: number },
+                  strict: boolean,
+              ) => boolean | CommandObject)
             | undefined;
         /**
          * The `staticDefinitionSymbol` option is used to indicate that the static entries in the mask can match a
@@ -547,8 +576,8 @@ declare namespace Inputmask {
          */
         definitions?:
             | {
-                [key: string]: Definition;
-            }
+                  [key: string]: Definition;
+              }
             | undefined;
         /**
          * Enable/disable prefilling of the year.
@@ -588,7 +617,9 @@ declare namespace Inputmask {
          *
          * @param el Element selector, a single element or an array of elements.
          */
-        mask(selectorOrElement: string | HTMLElement | ArrayLike<HTMLElement>): Instance;
+        mask(
+            selectorOrElement: string | HTMLElement | ArrayLike<HTMLElement>,
+        ): Instance;
         /**
          * Get an option on an existing inputmask.
          *
@@ -702,13 +733,13 @@ declare namespace Inputmask {
          * @param maskOrAlias A mask pattern or a reference to a predefined alias.
          * @param opts Mask options.
          */
-        new(maskOrAlias: string, opts?: Options): Instance;
+        new (maskOrAlias: string, opts?: Options): Instance;
         /**
          * Creates a new Inputmask instance.
          *
          * @param opts Mask options.
          */
-        new(opts?: Options): Instance;
+        new (opts?: Options): Instance;
 
         /**
          * Extends the default inputmask options.
@@ -740,7 +771,9 @@ declare namespace Inputmask {
         /**
          * Remove the inputmask.
          */
-        remove(selectorOrElement: string | HTMLElement | ArrayLike<HTMLElement>): void;
+        remove(
+            selectorOrElement: string | HTMLElement | ArrayLike<HTMLElement>,
+        ): void;
         /**
          * The setvalue functionality is to set a value to the inputmask like you would do with jQuery.val, BUT it will
          * trigger the internal event used by the inputmask always, whatever the case. This is particular usefull when
@@ -749,7 +782,10 @@ declare namespace Inputmask {
          * However when setting the value with jQuery.val there is none of the events triggered in that case. The
          * setvalue functionality does this for you.
          */
-        setValue(selectorOrElement: string | HTMLElement | ArrayLike<HTMLElement>, value: string): void;
+        setValue(
+            selectorOrElement: string | HTMLElement | ArrayLike<HTMLElement>,
+            value: string,
+        ): void;
         /**
          * Unmask a given value against the mask.
          *
@@ -822,7 +858,11 @@ declare global {
          * When extra options are set the mask is automatically reapplied, unless you pas true for the `noremask`
          * argument.
          */
-        inputmask(method: "option", opts: Inputmask.Options, noremask?: boolean): Inputmask.Instance;
+        inputmask(
+            method: "option",
+            opts: Inputmask.Options,
+            noremask?: boolean,
+        ): Inputmask.Instance;
         /**
          * Remove the inputmask.
          */
@@ -846,7 +886,10 @@ declare global {
          * @param maskOrAlias A mask pattern or a reference to a predefined alias.
          * @param opts Mask options.
          */
-        inputmask(maskOrAlias: string, opts?: Inputmask.Options): Inputmask.Instance;
+        inputmask(
+            maskOrAlias: string,
+            opts?: Inputmask.Options,
+        ): Inputmask.Instance;
         /**
          * Creates a new Inputmask instance.
          *

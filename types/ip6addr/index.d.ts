@@ -35,7 +35,10 @@ export function compare(addr1: string | Addr, addr2: string | Addr): number;
 
 export function compareCIDR(cidr1: string | CIDR, cidr2: string | CIDR): number;
 
-export function createAddrRange(begin: string | Addr, end: string | Addr): AddrRange;
+export function createAddrRange(
+    begin: string | Addr,
+    end: string | Addr,
+): AddrRange;
 
 export function createCIDR(addr: string | Addr, len?: number): CIDR;
 

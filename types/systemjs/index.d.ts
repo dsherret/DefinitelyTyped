@@ -13,7 +13,11 @@ declare const System: {
      * https://github.com/systemjs/systemjs#extras).
      */
     register(dependencies: string[], declare: System.DeclareFn): void;
-    register(name: string, dependencies: string[], declare: System.DeclareFn): void;
+    register(
+        name: string,
+        dependencies: string[],
+        declare: System.DeclareFn,
+    ): void;
 
     /**
      * Resolve any moduleId to its full URL. For a moduleId that is in the import map, this will resolve
@@ -66,7 +70,10 @@ declare const System: {
 
 declare namespace System {
     // eslint-disable-next-line @definitelytyped/no-unnecessary-generics
-    type ImportFn = <T extends Module>(moduleId: string, parentUrl?: string) => Promise<T>;
+    type ImportFn = <T extends Module>(
+        moduleId: string,
+        parentUrl?: string,
+    ) => Promise<T>;
 
     type DeclareFn = (_export: ExportFn, _context: Context) => Declare;
     interface Declare {

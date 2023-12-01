@@ -40,7 +40,7 @@ export class SimpleQueue {
     next(): void;
 } // Class SimpleQueue
 
-export default function(options?: Options): Database;
+export default function (options?: Options): Database;
 
 export class Database implements Options {
     odbc: ODBC;
@@ -53,7 +53,10 @@ export class Database implements Options {
     constructor(options?: Options);
 
     open(connStr: string | ConnStr): Promise<ODBCConnection>;
-    open(connStr: string | ConnStr, cb: (err: Error, conn?: ODBCConnection) => void): void;
+    open(
+        connStr: string | ConnStr,
+        cb: (err: Error, conn?: ODBCConnection) => void,
+    ): void;
 
     openSync(connStr: string | ConnStr): boolean;
 
@@ -62,17 +65,40 @@ export class Database implements Options {
 
     closeSync(): boolean;
 
-    query(query: string, params: any[], cb: (err: Error, res: any[]) => void): void;
-    query(query: string | { sql: string; params: any[] }, cb: (err: Error, res: any[]) => void): void;
-    query(query: string | { sql: string; params: any[] }, params?: any[]): Promise<any[]>;
+    query(
+        query: string,
+        params: any[],
+        cb: (err: Error, res: any[]) => void,
+    ): void;
+    query(
+        query: string | { sql: string; params: any[] },
+        cb: (err: Error, res: any[]) => void,
+    ): void;
+    query(
+        query: string | { sql: string; params: any[] },
+        params?: any[],
+    ): Promise<any[]>;
 
-    queryResult(query: string, params: any[], cb: (err: Error, res: ODBCResult) => void): void;
-    queryResult(query: string | { sql: string; params: any[] }, cb: (err: Error, res: ODBCResult) => void): void;
+    queryResult(
+        query: string,
+        params: any[],
+        cb: (err: Error, res: ODBCResult) => void,
+    ): void;
+    queryResult(
+        query: string | { sql: string; params: any[] },
+        cb: (err: Error, res: ODBCResult) => void,
+    ): void;
     queryResult(query: string, params?: any[]): Promise<ODBCResult>;
 
-    queryResultSync(query: string | { sql: string; params: any[] }, params?: any[]): ODBCResult;
+    queryResultSync(
+        query: string | { sql: string; params: any[] },
+        params?: any[],
+    ): ODBCResult;
 
-    querySync(query: string | { sql: string; params: any[] }, params?: any[]): any[];
+    querySync(
+        query: string | { sql: string; params: any[] },
+        params?: any[],
+    ): any[];
 
     queryStream(sql: string, params: any[]): any; // TODO: add types from stream
 
@@ -172,7 +198,10 @@ export class ODBCStatement {
 
     _bindSync(ary: any[]): void;
 
-    execute(params: any[], cb: (err: Error, result: any[], outparams: any) => void): void; // TODO: type of outparams is unknown
+    execute(
+        params: any[],
+        cb: (err: Error, result: any[], outparams: any) => void,
+    ): void; // TODO: type of outparams is unknown
     execute(cb: (err: Error, result: any[], outparams: any) => void): void;
     execute(params: any[]): Promise<{ result: any[]; outparams: any }>;
 
@@ -200,18 +229,34 @@ export class ODBCResult {
     moreResultsSync(): any[];
     closeSync(): void;
     getColumnMetadataSync(): any[];
-    fetchAll(option: object, cb: (err: Error, data: any[], noOfColumns?: number) => void): void;
+    fetchAll(
+        option: object,
+        cb: (err: Error, data: any[], noOfColumns?: number) => void,
+    ): void;
 } // Class ODBCResult
 
 export function getElapsedTime(): string;
 
 export function debug(x: boolean): void;
 
-export function open(connStr: string | ConnStr, options: Options, cb: (err: Error, db: Database) => void): void;
-export function open(connStr: string | ConnStr, cb: (err: Error, db: Database) => void): void;
-export function open(connStr: string | ConnStr, options?: Options): Promise<Database>;
+export function open(
+    connStr: string | ConnStr,
+    options: Options,
+    cb: (err: Error, db: Database) => void,
+): void;
+export function open(
+    connStr: string | ConnStr,
+    cb: (err: Error, db: Database) => void,
+): void;
+export function open(
+    connStr: string | ConnStr,
+    options?: Options,
+): Promise<Database>;
 
-export function openSync(connStr: string | ConnStr, options?: Options): Database;
+export function openSync(
+    connStr: string | ConnStr,
+    options?: Options,
+): Database;
 
 export function close(db: Database): void;
 

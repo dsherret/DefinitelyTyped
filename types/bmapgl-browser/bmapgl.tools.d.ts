@@ -36,7 +36,11 @@ declare namespace BMapGL {
         setCursor(cursor: string): string;
         getCursor(): string;
         toString(): string;
-        onmarkend: (event: { type: string; target: any; marker: Marker }) => void;
+        onmarkend: (event: {
+            type: string;
+            target: any;
+            marker: Marker;
+        }) => void;
     }
     interface PushpinToolOptions {
         icon?: Icon | undefined;
@@ -48,16 +52,24 @@ declare namespace BMapGL {
         open(): boolean;
         close(): void;
         toString(): string;
-        ondrawend: (
-            event: { type: string; target: any; points: Point[]; polylines: Polyline[]; distance: number },
-        ) => void;
+        ondrawend: (event: {
+            type: string;
+            target: any;
+            points: Point[];
+            polylines: Polyline[];
+            distance: number;
+        }) => void;
     }
     class DragAndZoomTool {
         constructor(map: Map, opts?: DragAndZoomToolOptions);
         open(): boolean;
         close(): void;
         toString(): string;
-        ondrawend: (event: { type: string; target: any; bounds: Bounds[] }) => void;
+        ondrawend: (event: {
+            type: string;
+            target: any;
+            bounds: Bounds[];
+        }) => void;
     }
     interface DragAndZoomToolOptions {
         zoomType?: ZoomType | undefined;

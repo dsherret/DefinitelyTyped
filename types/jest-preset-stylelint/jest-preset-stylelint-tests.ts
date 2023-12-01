@@ -33,7 +33,8 @@ testRule({
                     column: 1,
                 },
                 {
-                    message: "expected 'MyOtherClass' to be kebab case: 'my-other-class'",
+                    message:
+                        "expected 'MyOtherClass' to be kebab case: 'my-other-class'",
                     line: 2,
                     column: 1,
                 },

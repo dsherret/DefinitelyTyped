@@ -27,8 +27,14 @@ declare class Blackjack extends EventEmitter {
 }
 
 interface Blackjack {
-    on<u extends keyof BlackjackEvents>(event: u, listener: BlackjackEvents[u]): this;
-    emit<u extends keyof BlackjackEvents>(event: u, listener: BlackjackEvents[u]): boolean;
+    on<u extends keyof BlackjackEvents>(
+        event: u,
+        listener: BlackjackEvents[u],
+    ): this;
+    emit<u extends keyof BlackjackEvents>(
+        event: u,
+        listener: BlackjackEvents[u],
+    ): boolean;
 }
 
 interface Player {
@@ -50,7 +56,13 @@ interface Table {
 }
 
 interface BlackjackEvents {
-    end: (result: { state: string; bet: number; winnings: number; player: Player; dealer: Player }) => void;
+    end: (result: {
+        state: string;
+        bet: number;
+        winnings: number;
+        player: Player;
+        dealer: Player;
+    }) => void;
 }
 
 interface Card {

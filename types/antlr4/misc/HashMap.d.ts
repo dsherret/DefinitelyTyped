@@ -3,7 +3,10 @@ export default class HashMap {
     readonly hashFunction: (a: any) => number;
     readonly equalsFunction: (a: any, b: any) => boolean;
 
-    constructor(hashFunction?: (a: any) => number, equalsFunction?: (a: any, b: any) => boolean);
+    constructor(
+        hashFunction?: (a: any) => number,
+        equalsFunction?: (a: any, b: any) => boolean,
+    );
 
     set(key: string, value: any): any;
 

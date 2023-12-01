@@ -160,8 +160,12 @@ declare namespace CbClient {
         limit?: number | undefined;
     }
 
-    interface QueryOptionsWithName extends CollectionOptionsWithName, QueryOptions {}
-    interface QueryOptionsWithID extends CollectionOptionsWithID, QueryOptions {}
+    interface QueryOptionsWithName
+        extends CollectionOptionsWithName,
+            QueryOptions {}
+    interface QueryOptionsWithID
+        extends CollectionOptionsWithID,
+            QueryOptions {}
 
     interface Query {
         SELECTCOLUMNS?: string[] | undefined;

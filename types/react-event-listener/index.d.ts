@@ -1,32 +1,58 @@
 import React = require("react");
 
-export interface EventOptions extends Pick<AddEventListenerOptions, "capture" | "passive"> {}
+export interface EventOptions
+    extends Pick<AddEventListenerOptions, "capture" | "passive"> {}
 
 export function withOptions<T, TThis = any>(
     handler: (this: TThis, ev: T) => any,
     options: EventOptions,
 ): (this: TThis, ev: T) => any;
 
-export type EventListenerThisType<T extends EventTarget | WindowEventTargets> = T extends keyof Window ? Window[T] : T;
+export type EventListenerThisType<T extends EventTarget | WindowEventTargets> =
+    T extends keyof Window ? Window[T] : T;
 
-export type OnErrorEventHandlerArgs = OnErrorEventHandlerNonNull extends (...args: infer A) => any ? A : [];
+export type OnErrorEventHandlerArgs = OnErrorEventHandlerNonNull extends (
+    ...args: infer A
+) => any
+    ? A
+    : [];
 
-export interface EventListenerProps<T extends EventTarget | WindowEventTargets> {
+export interface EventListenerProps<
+    T extends EventTarget | WindowEventTargets,
+> {
     // Global events
     onPointerCancel?(this: EventListenerThisType<T>, ev: PointerEvent): any;
-    onPointerCancelCapture?(this: EventListenerThisType<T>, ev: PointerEvent): any;
+    onPointerCancelCapture?(
+        this: EventListenerThisType<T>,
+        ev: PointerEvent,
+    ): any;
     onPointerDown?(this: EventListenerThisType<T>, ev: PointerEvent): any;
-    onPointerDownCapture?(this: EventListenerThisType<T>, ev: PointerEvent): any;
+    onPointerDownCapture?(
+        this: EventListenerThisType<T>,
+        ev: PointerEvent,
+    ): any;
     onPointerEnter?(this: EventListenerThisType<T>, ev: PointerEvent): any;
-    onPointerEnterCapture?(this: EventListenerThisType<T>, ev: PointerEvent): any;
+    onPointerEnterCapture?(
+        this: EventListenerThisType<T>,
+        ev: PointerEvent,
+    ): any;
     onPointerLeave?(this: EventListenerThisType<T>, ev: PointerEvent): any;
-    onPointerLeaveCapture?(this: EventListenerThisType<T>, ev: PointerEvent): any;
+    onPointerLeaveCapture?(
+        this: EventListenerThisType<T>,
+        ev: PointerEvent,
+    ): any;
     onPointerMove?(this: EventListenerThisType<T>, ev: PointerEvent): any;
-    onPointerMoveCapture?(this: EventListenerThisType<T>, ev: PointerEvent): any;
+    onPointerMoveCapture?(
+        this: EventListenerThisType<T>,
+        ev: PointerEvent,
+    ): any;
     onPointerOut?(this: EventListenerThisType<T>, ev: PointerEvent): any;
     onPointerOutCapture?(this: EventListenerThisType<T>, ev: PointerEvent): any;
     onPointerOver?(this: EventListenerThisType<T>, ev: PointerEvent): any;
-    onPointerOverCapture?(this: EventListenerThisType<T>, ev: PointerEvent): any;
+    onPointerOverCapture?(
+        this: EventListenerThisType<T>,
+        ev: PointerEvent,
+    ): any;
     onPointerUp?(this: EventListenerThisType<T>, ev: PointerEvent): any;
     onPointerUpCapture?(this: EventListenerThisType<T>, ev: PointerEvent): any;
     onWheel?(this: EventListenerThisType<T>, ev: WheelEvent): any;
@@ -38,7 +64,10 @@ export interface EventListenerProps<T extends EventTarget | WindowEventTargets> 
     onBeforePrint?(this: EventListenerThisType<T>, ev: Event): any;
     onBeforePrintCapture?(this: EventListenerThisType<T>, ev: Event): any;
     onBeforeUnload?(this: EventListenerThisType<T>, ev: BeforeUnloadEvent): any;
-    onBeforeUnloadCapture?(this: EventListenerThisType<T>, ev: BeforeUnloadEvent): any;
+    onBeforeUnloadCapture?(
+        this: EventListenerThisType<T>,
+        ev: BeforeUnloadEvent,
+    ): any;
     onBlur?(this: EventListenerThisType<T>, ev: FocusEvent): any;
     onBlurCapture?(this: EventListenerThisType<T>, ev: FocusEvent): any;
     onCanPlay?(this: EventListenerThisType<T>, ev: Event): any;
@@ -50,15 +79,30 @@ export interface EventListenerProps<T extends EventTarget | WindowEventTargets> 
     onClick?(this: EventListenerThisType<T>, ev: MouseEvent): any;
     onClickCapture?(this: EventListenerThisType<T>, ev: MouseEvent): any;
     onCompassNeedsCalibration?(this: EventListenerThisType<T>, ev: Event): any;
-    onCompassNeedsCalibrationCapture?(this: EventListenerThisType<T>, ev: Event): any;
+    onCompassNeedsCalibrationCapture?(
+        this: EventListenerThisType<T>,
+        ev: Event,
+    ): any;
     onContextMenu?(this: EventListenerThisType<T>, ev: PointerEvent): any;
-    onContextMenuCapture?(this: EventListenerThisType<T>, ev: PointerEvent): any;
+    onContextMenuCapture?(
+        this: EventListenerThisType<T>,
+        ev: PointerEvent,
+    ): any;
     onDblClick?(this: EventListenerThisType<T>, ev: MouseEvent): any;
     onDblClickCapture?(this: EventListenerThisType<T>, ev: MouseEvent): any;
     onDeviceMotion?(this: EventListenerThisType<T>, ev: DeviceMotionEvent): any;
-    onDeviceMotionCapture?(this: EventListenerThisType<T>, ev: DeviceMotionEvent): any;
-    onDeviceOrientation?(this: EventListenerThisType<T>, ev: DeviceOrientationEvent): any;
-    onDeviceOrientationCapture?(this: EventListenerThisType<T>, ev: DeviceOrientationEvent): any;
+    onDeviceMotionCapture?(
+        this: EventListenerThisType<T>,
+        ev: DeviceMotionEvent,
+    ): any;
+    onDeviceOrientation?(
+        this: EventListenerThisType<T>,
+        ev: DeviceOrientationEvent,
+    ): any;
+    onDeviceOrientationCapture?(
+        this: EventListenerThisType<T>,
+        ev: DeviceOrientationEvent,
+    ): any;
     onDrag?(this: EventListenerThisType<T>, ev: DragEvent): any;
     onDragCapture?(this: EventListenerThisType<T>, ev: DragEvent): any;
     onDragEnd?(this: EventListenerThisType<T>, ev: DragEvent): any;
@@ -79,12 +123,21 @@ export interface EventListenerProps<T extends EventTarget | WindowEventTargets> 
     onEmptiedCapture?(this: EventListenerThisType<T>, ev: Event): any;
     onEnded?(this: EventListenerThisType<T>, ev: Event): any;
     onEndedCapture?(this: EventListenerThisType<T>, ev: Event): any;
-    onError?(this: EventListenerThisType<T>, ...args: OnErrorEventHandlerArgs): any;
-    onErrorCapture?(this: EventListenerThisType<T>, ...args: OnErrorEventHandlerArgs): any;
+    onError?(
+        this: EventListenerThisType<T>,
+        ...args: OnErrorEventHandlerArgs
+    ): any;
+    onErrorCapture?(
+        this: EventListenerThisType<T>,
+        ...args: OnErrorEventHandlerArgs
+    ): any;
     onFocus?(this: EventListenerThisType<T>, ev: FocusEvent): any;
     onFocusCapture?(this: EventListenerThisType<T>, ev: FocusEvent): any;
     onHashChange?(this: EventListenerThisType<T>, ev: HashChangeEvent): any;
-    onHashChangeCapture?(this: EventListenerThisType<T>, ev: HashChangeEvent): any;
+    onHashChangeCapture?(
+        this: EventListenerThisType<T>,
+        ev: HashChangeEvent,
+    ): any;
     onInput?(this: EventListenerThisType<T>, ev: Event): any;
     onInputCapture?(this: EventListenerThisType<T>, ev: Event): any;
     onKeyDown?(this: EventListenerThisType<T>, ev: KeyboardEvent): any;
@@ -126,9 +179,15 @@ export interface EventListenerProps<T extends EventTarget | WindowEventTargets> 
     onOrientationChange?(this: EventListenerThisType<T>, ev: Event): any;
     onOrientationChangeCapture?(this: EventListenerThisType<T>, ev: Event): any;
     onPageHide?(this: EventListenerThisType<T>, ev: PageTransitionEvent): any;
-    onPageHideCapture?(this: EventListenerThisType<T>, ev: PageTransitionEvent): any;
+    onPageHideCapture?(
+        this: EventListenerThisType<T>,
+        ev: PageTransitionEvent,
+    ): any;
     onPageShow?(this: EventListenerThisType<T>, ev: PageTransitionEvent): any;
-    onPageShowCapture?(this: EventListenerThisType<T>, ev: PageTransitionEvent): any;
+    onPageShowCapture?(
+        this: EventListenerThisType<T>,
+        ev: PageTransitionEvent,
+    ): any;
     onPause?(this: EventListenerThisType<T>, ev: Event): any;
     onPauseCapture?(this: EventListenerThisType<T>, ev: Event): any;
     onPlay?(this: EventListenerThisType<T>, ev: Event): any;
@@ -142,7 +201,10 @@ export interface EventListenerProps<T extends EventTarget | WindowEventTargets> 
     onRateChange?(this: EventListenerThisType<T>, ev: Event): any;
     onRateChangeCapture?(this: EventListenerThisType<T>, ev: Event): any;
     onReadyStateChange?(this: EventListenerThisType<T>, ev: ProgressEvent): any;
-    onReadyStateChangeCapture?(this: EventListenerThisType<T>, ev: ProgressEvent): any;
+    onReadyStateChangeCapture?(
+        this: EventListenerThisType<T>,
+        ev: ProgressEvent,
+    ): any;
     onReset?(this: EventListenerThisType<T>, ev: Event): any;
     onResetCapture?(this: EventListenerThisType<T>, ev: Event): any;
     onResize?(this: EventListenerThisType<T>, ev: UIEvent): any;
@@ -188,8 +250,10 @@ export interface EventListenerProps<T extends EventTarget | WindowEventTargets> 
     target: T;
 }
 
-export type WindowEventTargets = { [K in keyof Window]: Window[K] extends EventTarget ? K : never }[keyof Window];
+export type WindowEventTargets = {
+    [K in keyof Window]: Window[K] extends EventTarget ? K : never;
+}[keyof Window];
 
-export default class EventListener<T extends EventTarget | WindowEventTargets>
-    extends React.PureComponent<EventListenerProps<T>>
-{}
+export default class EventListener<
+    T extends EventTarget | WindowEventTargets,
+> extends React.PureComponent<EventListenerProps<T>> {}

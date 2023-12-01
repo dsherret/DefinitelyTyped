@@ -1,6 +1,11 @@
 /// <reference types="node" />
 
-import { CloudWatchLogsDecodedData, CloudWatchLogsHandler, CloudWatchLogsLogEvent, ScheduledHandler } from "aws-lambda";
+import {
+    CloudWatchLogsDecodedData,
+    CloudWatchLogsHandler,
+    CloudWatchLogsLogEvent,
+    ScheduledHandler,
+} from "aws-lambda";
 
 import { gunzipSync } from "zlib";
 
@@ -39,6 +44,8 @@ const scheduledHandler: ScheduledHandler = async (event, context, callback) => {
     callback(new Error());
 };
 
-const scheduledHandlerWithDetails: ScheduledHandler<{ status: string }> = async (event, context, callback) => {
+const scheduledHandlerWithDetails: ScheduledHandler<{
+    status: string;
+}> = async (event, context, callback) => {
     const eventDetail: { status: string } = event.detail;
 };

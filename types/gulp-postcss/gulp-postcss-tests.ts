@@ -6,19 +6,19 @@ const postCssPlugins: any[] = [];
 declare const sass: { stringify: unknown; parse: unknown };
 
 gulp.task("postCss1", () => {
-    return gulp.src("./src/*.css")
-        .pipe(postcss())
-        .pipe(gulp.dest("./dest"));
+    return gulp.src("./src/*.css").pipe(postcss()).pipe(gulp.dest("./dest"));
 });
 
 gulp.task("postCss2", () => {
-    return gulp.src("./src/*.css")
+    return gulp
+        .src("./src/*.css")
         .pipe(postcss(postCssPlugins))
         .pipe(gulp.dest("./dest"));
 });
 
 gulp.task("postCss3", () => {
-    return gulp.src("in.sss")
+    return gulp
+        .src("in.sss")
         .pipe(postcss(postCssPlugins, { parser: sass }))
         .pipe(gulp.dest("out"));
 });
@@ -35,7 +35,8 @@ gulp.task("postCss4", () => {
             },
         };
     }
-    return gulp.src("./src/*.css")
+    return gulp
+        .src("./src/*.css")
         .pipe(postcss(callback))
         .pipe(gulp.dest("./dest"));
 });

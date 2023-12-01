@@ -5,15 +5,17 @@ export interface LogglyBulkOptions extends LogglyOptions {
     userAgent?: string | undefined;
     useTagHeader?: boolean | undefined;
     isBulk?: boolean | undefined;
-    bufferOptions?: {
-        size: number;
-        retriesInMilliSeconds: number;
-    } | undefined;
+    bufferOptions?:
+        | {
+              size: number;
+              retriesInMilliSeconds: number;
+          }
+        | undefined;
     networkErrorsOnConsole?: boolean | undefined;
 }
 
 export interface LogglyBulkConstructor {
-    new(options: LogglyBulkOptions): LogglyInstance;
+    new (options: LogglyBulkOptions): LogglyInstance;
 }
 
 export const Loggly: LogglyBulkConstructor;

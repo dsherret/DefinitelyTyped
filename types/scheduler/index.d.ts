@@ -1,5 +1,7 @@
 // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
-export type FrameCallbackType = (didTimeout: boolean) => FrameCallbackType | void;
+export type FrameCallbackType = (
+    didTimeout: boolean,
+) => FrameCallbackType | void;
 export interface CallbackNode {
     callback: FrameCallbackType;
     priorityLevel: number;
@@ -13,7 +15,10 @@ export const unstable_UserBlockingPriority = 2;
 export const unstable_NormalPriority = 3;
 export const unstable_IdlePriority = 5;
 export const unstable_LowPriority = 4;
-export function unstable_runWithPriority<T>(priorityLevel: number, eventHandler: () => T): T;
+export function unstable_runWithPriority<T>(
+    priorityLevel: number,
+    eventHandler: () => T,
+): T;
 export function unstable_scheduleCallback(
     priorityLevel: number,
     callback: FrameCallbackType,
@@ -21,7 +26,9 @@ export function unstable_scheduleCallback(
 ): CallbackNode;
 export function unstable_next<T>(eventHandler: () => T): T;
 export function unstable_cancelCallback(callbackNode: CallbackNode): void;
-export function unstable_wrapCallback(callback: FrameCallbackType): () => FrameCallbackType;
+export function unstable_wrapCallback(
+    callback: FrameCallbackType,
+): () => FrameCallbackType;
 export function unstable_getCurrentPriorityLevel(): number;
 export function unstable_shouldYield(): boolean;
 export function unstable_continueExecution(): void;

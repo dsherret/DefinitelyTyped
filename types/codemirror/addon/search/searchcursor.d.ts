@@ -10,7 +10,11 @@ declare module "../../" {
          *          or can be left off to default to the start of the document
          *  `caseFold`: This is only relevant when matching a string. IT will cause the search to be case-insenstive
          */
-        getSearchCursor(query: string | RegExp, start?: Position, caseFold?: boolean): SearchCursor;
+        getSearchCursor(
+            query: string | RegExp,
+            start?: Position,
+            caseFold?: boolean,
+        ): SearchCursor;
     }
 
     interface SearchCursor {

@@ -1,6 +1,7 @@
 import * as React from "react";
 
-export interface ModalImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
+export interface ModalImageProps
+    extends React.ImgHTMLAttributes<HTMLImageElement> {
     /* The small image to display */
     small: string;
 

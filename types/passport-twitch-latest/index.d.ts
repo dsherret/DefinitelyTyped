@@ -5,20 +5,32 @@ import * as PassportOauth2 from "passport-oauth2";
 export class Strategy extends PassportOauth2 {
     // Disabling this tslint rule as unifying the signatures makes the callback function default to inferring the
     // longest callback which breaks the example config. See: https://github.com/Microsoft/TypeScript/issues/16867
-    constructor(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: StrategyOptionsWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
     // tslint:disable-next-line unified-signatures
-    constructor(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequestResults);
+    constructor(
+        options: StrategyOptionsWithRequest,
+        verify: VerifyFunctionWithRequestResults,
+    );
     constructor(options: StrategyOptions, verify: VerifyFunction);
     // tslint:disable-next-line unified-signatures
     constructor(options: StrategyOptions, verify: VerifyFunctionWithResults);
 
-    userProfile(accessToken: string, done: (err?: Error | null, profile?: TwitchProfile) => void): void;
+    userProfile(
+        accessToken: string,
+        done: (err?: Error | null, profile?: TwitchProfile) => void,
+    ): void;
     authorize(
         strategy: string | string[],
         options: AuthenticateOptions,
         callback?: (...args: any[]) => any,
     ): AuthenticateRet;
-    authorize(strategy: string | string[], callback?: (...args: any[]) => any): AuthenticateRet;
+    authorize(
+        strategy: string | string[],
+        callback?: (...args: any[]) => any,
+    ): AuthenticateRet;
     authenticate(req: e.Request, options?: AuthenticateOptions): void;
 }
 
@@ -26,7 +38,10 @@ export class OAuth2Strategy extends Strategy {}
 
 export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<T>;
 
-export type StrategyOptions = Optional<PassportOauth2.StrategyOptions, "authorizationURL" | "tokenURL">;
+export type StrategyOptions = Optional<
+    PassportOauth2.StrategyOptions,
+    "authorizationURL" | "tokenURL"
+>;
 export type StrategyOptionsWithRequest = Optional<
     PassportOauth2.StrategyOptionsWithRequest,
     "authorizationURL" | "tokenURL"

@@ -14,11 +14,7 @@ declare class PostMessageStream extends Duplex {
         targetWindow?: Window | undefined;
     });
 
-    _write(
-        data: any,
-        _encoding: BufferEncoding,
-        cb: () => void,
-    ): void;
+    _write(data: any, _encoding: BufferEncoding, cb: () => void): void;
 }
 
 export = PostMessageStream;

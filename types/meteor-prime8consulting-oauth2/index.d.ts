@@ -94,7 +94,10 @@ declare namespace OAuth2Server {
             response_type: string,
             scope: string[],
             state: string,
-            callback: (err: Meteor.Error, authCodeGrantResult: AuthCodeGrantResult) => void,
+            callback: (
+                err: Meteor.Error,
+                authCodeGrantResult: AuthCodeGrantResult,
+            ) => void,
         ): void;
     }
 

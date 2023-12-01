@@ -1,6 +1,19 @@
-import { ASN1HEX, b64toBA, b64tohex, KEYUTIL, KJUR, RSAKey, X509, X509CRL } from "jsrsasign";
+import {
+    ASN1HEX,
+    b64toBA,
+    b64tohex,
+    KEYUTIL,
+    KJUR,
+    RSAKey,
+    X509,
+    X509CRL,
+} from "jsrsasign";
 
-const ec = new KJUR.crypto.ECDSA({ curve: "secp256r1", pub: "1a2b3c", prv: "1a2b3c" });
+const ec = new KJUR.crypto.ECDSA({
+    curve: "secp256r1",
+    pub: "1a2b3c",
+    prv: "1a2b3c",
+});
 ec.generateKeyPairHex();
 ec.getPublicKeyXYHex();
 ec.generatePublicKeyHex();
@@ -39,7 +52,8 @@ b64toBA("ZXhhbXBsZQ=="); // $ExpectType number[]
 b64tohex("ZXhhbXBsZQ=="); // $ExpectType string
 
 const pemPublicKey = "74657374206365727469666963617465";
-const pemCert = "A1UECBMFVG9reW8xEDAOBgNVBAcTB0NodW8ta3UxETAPBgNVBAoTCEZyYW5rNERE";
+const pemCert =
+    "A1UECBMFVG9reW8xEDAOBgNVBAcTB0NodW8ta3UxETAPBgNVBAoTCEZyYW5rNERE";
 const PEM_CERTIFICATE = `-----BEGIN CERTIFICATE-----
 MIIFtTCCA52gAwIBAgIJAO0cq2lJPZZJMA0GCSqGSIb3DQEBBQUAMEUxCzAJBgNV
 BAYTAkFVMRMwEQYDVQQIEwpTb21lLVN0YXRlMSEwHwYDVQQKExhJbnRlcm5ldCBX
@@ -75,10 +89,18 @@ R5M5azDV1CIhIeOTiPA/mq5fL1UrgVbB+IATIsUAQfuWivDyoeu96LB/QswyHAWG
 -----END CERTIFICATE-----
 `;
 
-KJUR.jws.JWS.sign(null, { alg: "HS256" }, "payload", undefined, { utf8: "123abc" });
+KJUR.jws.JWS.sign(null, { alg: "HS256" }, "payload", undefined, {
+    utf8: "123abc",
+});
 KJUR.jws.JWS.sign(null, { alg: "HS256" }, "payload", undefined, "123abc");
 KJUR.jws.JWS.sign(null, { alg: "HS256" }, "payload", pemPublicKey, "123abc");
-KJUR.jws.JWS.sign(null, { alg: "HS256" }, "payload", { b64: "ZXhhbXBsZQ==" }, "123abc");
+KJUR.jws.JWS.sign(
+    null,
+    { alg: "HS256" },
+    "payload",
+    { b64: "ZXhhbXBsZQ==" },
+    "123abc",
+);
 
 KJUR.jws.JWS.verifyJWT("", new RSAKey(), {});
 KJUR.jws.JWS.verifyJWT("", "", {});
@@ -129,11 +151,17 @@ const tbscert = new KJUR.asn1.x509.TBSCertificate({
         },
         {
             extname: "cRLDistributionPoints",
-            array: [{ dpname: { full: [{ uri: "http://example.com/a1.crl" }] } }],
+            array: [
+                { dpname: { full: [{ uri: "http://example.com/a1.crl" }] } },
+            ],
         },
     ],
 });
-new KJUR.asn1.x509.Certificate({ tbsobj: tbscert, sigalg: "SHA256withRSA", cakey: "------BEGIN..." });
+new KJUR.asn1.x509.Certificate({
+    tbsobj: tbscert,
+    sigalg: "SHA256withRSA",
+    cakey: "------BEGIN...",
+});
 
 // ASN1HEX
 ASN1HEX.checkStrictDER("0203012345");

@@ -3,7 +3,11 @@
 import { Readable } from "stream";
 
 export class Directory implements Iterable<string> {
-    constructor(path: string, contents?: Record<string, HrxItem>, comment?: string | null);
+    constructor(
+        path: string,
+        contents?: Record<string, HrxItem>,
+        comment?: string | null,
+    );
     readonly path: string;
     readonly contents: Record<string, HrxItem>;
     readonly comment?: string;
@@ -31,14 +35,22 @@ export class File {
 export type HrxItem = File | Directory;
 
 export class ParseProblem extends Error {
-    constructor(message: string, position: { line: number; col: number }, details?: Record<string, unknown>);
+    constructor(
+        message: string,
+        position: { line: number; col: number },
+        details?: Record<string, unknown>,
+    );
     readonly line: number;
     readonly col: number;
     readonly details: {};
 }
 
 export class LexicalProblem extends Error {
-    constructor(message: string, line: number, details?: { path?: string; [key: string]: unknown });
+    constructor(
+        message: string,
+        line: number,
+        details?: { path?: string; [key: string]: unknown },
+    );
     readonly line: number;
     readonly details: {
         path?: string;

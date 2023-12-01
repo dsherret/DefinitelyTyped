@@ -38,7 +38,7 @@ var toplevel_ast = UglifyJS.parse(code, {});
 
 var toplevel: UglifyJS.AST_Toplevel = null;
 const files = ["file1", "file2"];
-files.forEach(function(file) {
+files.forEach(function (file) {
     var code = fs.readFileSync(file, "utf8");
     toplevel = UglifyJS.parse(code, {
         filename: file,

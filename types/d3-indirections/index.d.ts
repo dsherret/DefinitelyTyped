@@ -128,7 +128,8 @@ interface Resource<T extends ResourceType> {
 /**
  * Response from a GET resource by UID request.
  */
-interface ResourceByUidResponse<T extends ResourceType = "unknown"> extends ResponseBase {
+interface ResourceByUidResponse<T extends ResourceType = "unknown">
+    extends ResponseBase {
     result: Resource<T>;
 }
 

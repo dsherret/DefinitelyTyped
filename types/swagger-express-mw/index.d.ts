@@ -36,4 +36,7 @@ export { Config, ConnectMiddleware } from "swagger-node-runner";
  *
  * @see @link{https://github.com/apigee-127/swagger-express|Github}
  */
-export function create(config: Config, cb: (err: Error | undefined, runner: ConnectMiddleware) => void): void;
+export function create(
+    config: Config,
+    cb: (err: Error | undefined, runner: ConnectMiddleware) => void,
+): void;

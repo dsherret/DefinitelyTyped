@@ -27,7 +27,10 @@ new kdTree(points, distance, ["x", "wrongField"]);
 // @ts-expect-error
 tree.nearest({ x: 5, notY: 5 }, 2);
 
-const wrongDistanceComparison = (a: { notX: number; notY: number }, b: { notX: number; notY: number }) => {
+const wrongDistanceComparison = (
+    a: { notX: number; notY: number },
+    b: { notX: number; notY: number },
+) => {
     return Math.pow(a.notX - b.notX, 2) + Math.pow(a.notY - b.notY, 2);
 };
 

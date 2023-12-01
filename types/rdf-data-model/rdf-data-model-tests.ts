@@ -2,7 +2,8 @@ import * as DataFactory from "rdf-data-model";
 import * as RDF from "rdf-js";
 
 function test_datafactory() {
-    const namedNode: RDF.NamedNode = DataFactory.namedNode("http://example.org");
+    const namedNode: RDF.NamedNode =
+        DataFactory.namedNode("http://example.org");
 
     const blankNode1: RDF.BlankNode = DataFactory.blankNode("b1");
     const blankNode2: RDF.BlankNode = DataFactory.blankNode();
@@ -16,7 +17,7 @@ function test_datafactory() {
     const defaultGraph1: RDF.DefaultGraph = DataFactory.defaultGraphInstance;
     const defaultGraph2: RDF.DefaultGraph = DataFactory.defaultGraph();
 
-    const term: RDF.Term = <any> {};
+    const term: RDF.Term = <any>{};
     const triple: RDF.Quad = DataFactory.triple(term, term, term);
     const quad: RDF.Quad = DataFactory.quad(term, term, term, term);
 }

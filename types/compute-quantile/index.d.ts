@@ -1,7 +1,11 @@
 /**
  * Computes a quantile for a numeric array.
  */
-declare function quantile(array: ArrayLike<number>, quantile: number, options?: quantile.Options): number;
+declare function quantile(
+    array: ArrayLike<number>,
+    quantile: number,
+    options?: quantile.Options,
+): number;
 
 declare namespace quantile {
     interface Options {

@@ -1,5 +1,4 @@
-window.plugins.OneSignal
-    .startInit("YOUR_APPID")
+window.plugins.OneSignal.startInit("YOUR_APPID")
     .handleNotificationReceived((jsonData) => {
         console.log("Notification received:\n" + JSON.stringify(jsonData));
     })
@@ -13,12 +12,16 @@ window.plugins.OneSignal
     })
     .endInit();
 
-window.plugins.OneSignal.promptForPushNotificationsWithUserResponse((accepted) => {
-    console.log("User accepted notifications: " + accepted);
-});
+window.plugins.OneSignal.promptForPushNotificationsWithUserResponse(
+    (accepted) => {
+        console.log("User accepted notifications: " + accepted);
+    },
+);
 
 window.plugins.OneSignal.addPermissionObserver((state) => {
-    console.log("Notification permission state changed: " + JSON.stringify(state));
+    console.log(
+        "Notification permission state changed: " + JSON.stringify(state),
+    );
 });
 
 window.plugins.OneSignal.addSubscriptionObserver((state) => {
@@ -49,11 +52,15 @@ window.plugins.OneSignal.getIds((ids) => {
         contents: { en: "message body" },
         include_player_ids: [ids.userId],
     };
-    window.plugins.OneSignal.postNotification(notificationObj, (successResponse) => {
-        console.log("Notification Post Success:", successResponse);
-    }, (failedResponse) => {
-        console.log("Notification Post Failed: ", failedResponse);
-    });
+    window.plugins.OneSignal.postNotification(
+        notificationObj,
+        (successResponse) => {
+            console.log("Notification Post Success:", successResponse);
+        },
+        (failedResponse) => {
+            console.log("Notification Post Failed: ", failedResponse);
+        },
+    );
 });
 
 window.plugins.OneSignal.clearOneSignalNotifications();

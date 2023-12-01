@@ -52,5 +52,7 @@ export class Settings {
     /**
      * Processing parameters received from the user. Substitution default values
      */
-    getSettings(userSetting: Record<string, number | string | boolean>): FlipSetting;
+    getSettings(
+        userSetting: Record<string, number | string | boolean>,
+    ): FlipSetting;
 }

@@ -15,7 +15,9 @@ declare function serveStatic<R extends http.ServerResponse>(
 
 declare namespace serveStatic {
     var mime: typeof m;
-    interface ServeStaticOptions<R extends http.ServerResponse = http.ServerResponse> {
+    interface ServeStaticOptions<
+        R extends http.ServerResponse = http.ServerResponse,
+    > {
         /**
          * Enable or disable accepting ranged requests, defaults to true.
          * Disabling this will not send Accept-Ranges and ignore the contents of the Range request header.
@@ -95,7 +97,11 @@ declare namespace serveStatic {
     }
 
     interface RequestHandler<R extends http.ServerResponse> {
-        (request: http.IncomingMessage, response: R, next: (err?: HttpError) => void): any;
+        (
+            request: http.IncomingMessage,
+            response: R,
+            next: (err?: HttpError) => void,
+        ): any;
     }
 
     interface RequestHandlerConstructor<R extends http.ServerResponse> {

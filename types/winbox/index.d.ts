@@ -34,8 +34,16 @@ interface WinBox {
     fullscreen(state?: boolean): WinBox;
     // eslint-disable-next-line @typescript-eslint/no-invalid-void-type
     close(force?: boolean): boolean | void;
-    move(x?: string | number, y?: string | number, skipUpdate?: boolean): WinBox;
-    resize(w?: string | number, h?: string | number, skipUpdate?: boolean): WinBox;
+    move(
+        x?: string | number,
+        y?: string | number,
+        skipUpdate?: boolean,
+    ): WinBox;
+    resize(
+        w?: string | number,
+        h?: string | number,
+        skipUpdate?: boolean,
+    ): WinBox;
     addClass(classname: string): WinBox;
     removeClass(classname: string): WinBox;
 }
@@ -43,8 +51,8 @@ declare namespace WinBox {
     interface WinBoxConstructor {
         (title: string, params?: Params): WinBox;
         (params: Params): WinBox;
-        new(title: string, params?: Params): WinBox;
-        new(params: Params): WinBox;
+        new (title: string, params?: Params): WinBox;
+        new (params: Params): WinBox;
     }
 
     interface Params {
@@ -75,7 +83,9 @@ declare namespace WinBox {
         onclose?: ((this: WinBox, force?: boolean) => boolean) | undefined;
         onfocus?: ((this: WinBox) => void) | undefined;
         onblur?: ((this: WinBox) => void) | undefined;
-        onresize?: ((this: WinBox, width: number, height: number) => void) | undefined;
+        onresize?:
+            | ((this: WinBox, width: number, height: number) => void)
+            | undefined;
         onmove?: ((this: WinBox, x: number, y: number) => void) | undefined;
     }
 
@@ -104,13 +114,17 @@ declare namespace WinBox {
         onclose?: ((this: WinBox, force?: boolean) => boolean) | undefined;
         onfocus?: ((this: WinBox) => void) | undefined;
         onblur?: ((this: WinBox) => void) | undefined;
-        onresize?: ((this: WinBox, width: number, height: number) => void) | undefined;
+        onresize?:
+            | ((this: WinBox, width: number, height: number) => void)
+            | undefined;
         onmove?: ((this: WinBox, x: number, y: number) => void) | undefined;
     }
 }
 
 declare const WinBox: WinBox.WinBoxConstructor & {
-    new: ((title: string, params?: WinBox.Params) => WinBox) | ((params: WinBox.Params) => WinBox);
+    new:
+        | ((title: string, params?: WinBox.Params) => WinBox)
+        | ((params: WinBox.Params) => WinBox);
 };
 
 export = WinBox;

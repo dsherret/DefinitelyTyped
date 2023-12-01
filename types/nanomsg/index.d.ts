@@ -36,17 +36,7 @@ export type SocketType =
 
 export type Domain = 1 | 2;
 
-export type Protocol =
-    | 16
-    | 32
-    | 33
-    | 48
-    | 49
-    | 80
-    | 81
-    | 98
-    | 99
-    | 112;
+export type Protocol = 16 | 32 | 33 | 48 | 49 | 80 | 81 | 98 | 99 | 112;
 
 export interface SocketEvents {
     data(data: Buffer): void;
@@ -55,19 +45,42 @@ export interface SocketEvents {
 }
 
 export interface SocketEventEmitter {
-    addListener<E extends keyof SocketEvents>(event: E, listener: SocketEvents[E]): this;
+    addListener<E extends keyof SocketEvents>(
+        event: E,
+        listener: SocketEvents[E],
+    ): this;
     on<E extends keyof SocketEvents>(event: E, listener: SocketEvents[E]): this;
-    once<E extends keyof SocketEvents>(event: E, listener: SocketEvents[E]): this;
-    prependListener<E extends keyof SocketEvents>(event: E, listener: SocketEvents[E]): this;
-    prependOnceListener<E extends keyof SocketEvents>(event: E, listener: SocketEvents[E]): this;
+    once<E extends keyof SocketEvents>(
+        event: E,
+        listener: SocketEvents[E],
+    ): this;
+    prependListener<E extends keyof SocketEvents>(
+        event: E,
+        listener: SocketEvents[E],
+    ): this;
+    prependOnceListener<E extends keyof SocketEvents>(
+        event: E,
+        listener: SocketEvents[E],
+    ): this;
 
-    off<E extends keyof SocketEvents>(event: E, listener: SocketEvents[E]): this;
+    off<E extends keyof SocketEvents>(
+        event: E,
+        listener: SocketEvents[E],
+    ): this;
     removeAllListeners(event?: keyof SocketEvents): this;
-    removeListener<E extends keyof SocketEvents>(event: E, listener: SocketEvents[E]): this;
+    removeListener<E extends keyof SocketEvents>(
+        event: E,
+        listener: SocketEvents[E],
+    ): this;
 
-    emit<E extends keyof SocketEvents>(event: E, ...args: Parameters<SocketEvents[E]>): boolean;
+    emit<E extends keyof SocketEvents>(
+        event: E,
+        ...args: Parameters<SocketEvents[E]>
+    ): boolean;
     eventNames(): Array<keyof SocketEvents>;
-    rawListeners<E extends keyof SocketEvents>(event: E): Array<SocketEvents[E]>;
+    rawListeners<E extends keyof SocketEvents>(
+        event: E,
+    ): Array<SocketEvents[E]>;
     listeners<E extends keyof SocketEvents>(event: E): Array<SocketEvents[E]>;
     listenerCount(event: keyof SocketEvents): number;
 
@@ -75,7 +88,7 @@ export interface SocketEventEmitter {
     setMaxListeners(maxListeners: number): this;
 }
 
-export class Socket extends (EventEmitter as new() => SocketEventEmitter) {
+export class Socket extends (EventEmitter as new () => SocketEventEmitter) {
     type: SocketType;
     af_domain: Domain;
     protocol: Protocol;

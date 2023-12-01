@@ -8,15 +8,14 @@ declare namespace GoogleAdsScripts {
             getCampaign(): Campaign;
         }
 
-        interface AdGroupMobileAppIterator extends Base.Iterator<AdGroupMobileApp> {}
+        interface AdGroupMobileAppIterator
+            extends Base.Iterator<AdGroupMobileApp> {}
 
         interface AdGroupMobileAppSelector
-            extends
-                Base.Selector<AdGroupMobileAppIterator>,
+            extends Base.Selector<AdGroupMobileAppIterator>,
                 Base.SelectorForDateRange,
                 Base.SelectorOrderBy,
                 Base.SelectorWithCondition,
-                Base.SelectorWithLimit
-        {}
+                Base.SelectorWithLimit {}
     }
 }

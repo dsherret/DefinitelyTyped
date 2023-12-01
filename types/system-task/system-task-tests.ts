@@ -8,7 +8,7 @@ const REQUIREASYNCEPROCESS = true;
 const DEMOASSET = {
     name: "DEMO ASSET",
     async execute(message: string) {
-        return new Promise<void>(res => {
+        return new Promise<void>((res) => {
             setTimeout(() => {
                 console.log(`Done with ${message}`);
                 res();
@@ -17,7 +17,11 @@ const DEMOASSET = {
     },
 };
 
-const logMethod = (messageType: string, message: string, detailMessage?: any) => {
+const logMethod = (
+    messageType: string,
+    message: string,
+    detailMessage?: any,
+) => {
     console.log(messageType, message, detailMessage);
 };
 
@@ -64,7 +68,17 @@ task.start();
         },
     ];
     for (const testCase of testCases) {
-        await SyncProcess(testCase.testItems, testCase.testExecuteAsyncCall, testCase.testTask, testCase.testErrors);
-        await AsyncProcess(testCase.testItems, testCase.testExecuteAsyncCall, testCase.testTask, testCase.testErrors);
+        await SyncProcess(
+            testCase.testItems,
+            testCase.testExecuteAsyncCall,
+            testCase.testTask,
+            testCase.testErrors,
+        );
+        await AsyncProcess(
+            testCase.testItems,
+            testCase.testExecuteAsyncCall,
+            testCase.testTask,
+            testCase.testErrors,
+        );
     }
 })();

@@ -25,7 +25,11 @@ declare namespace Knockback {
     }
 
     class ViewModel extends Destroyable {
-        constructor(model?: Backbone.Model, options?: ViewModelOptions, viewModel?: ViewModel);
+        constructor(
+            model?: Backbone.Model,
+            options?: ViewModelOptions,
+            viewModel?: ViewModel,
+        );
         shareOptions(): ViewModelOptions;
         extend(source: any);
         model(): Backbone.Model;
@@ -46,7 +50,11 @@ declare namespace Knockback {
     }
 
     class Factory {
-        static useOptionsOrCreate(options: FactoryOptions, obj: any, owner_path: string);
+        static useOptionsOrCreate(
+            options: FactoryOptions,
+            obj: any,
+            owner_path: string,
+        );
 
         constructor(parent_factory: any);
         hasPath(path: string): boolean;
@@ -57,16 +65,27 @@ declare namespace Knockback {
     }
 
     class Store extends Destroyable {
-        static useOptionsOrCreate(options: StoreOptions, obj: any, observable: KnockoutObservable<any>);
+        static useOptionsOrCreate(
+            options: StoreOptions,
+            obj: any,
+            observable: KnockoutObservable<any>,
+        );
 
         constructor(model: Backbone.Model, options: StoreOptions);
         clear();
-        register(obj: Backbone.Model, observable: KnockoutObservable<any>, options: StoreOptions);
+        register(
+            obj: Backbone.Model,
+            observable: KnockoutObservable<any>,
+            options: StoreOptions,
+        );
         findOrCreate(obj: Backbone.Model, options: StoreOptions);
     }
 
     class DefaultObservable extends Destroyable {
-        constructor(targetObservable: KnockoutObservable<any>, defaultValue: any);
+        constructor(
+            targetObservable: KnockoutObservable<any>,
+            defaultValue: any,
+        );
         setToDefault();
     }
 
@@ -132,7 +151,9 @@ declare namespace Knockback {
         shareOptions(): CollectionOptions;
         filters(id: any): Backbone.Model;
         filters(ids: any[]): CollectionObservable;
-        filters(iterator: (element: Backbone.Model) => boolean): CollectionObservable;
+        filters(
+            iterator: (element: Backbone.Model) => boolean,
+        ): CollectionObservable;
         comparator(comparatorFunction: any);
         sortAttribute(attr: string);
         viewModelByModel(model: Backbone.Model): ViewModel;
@@ -156,7 +177,13 @@ declare namespace Knockback {
         valueType(observable: KnockoutObservable<any>): any;
         pathJoin(path1: string, path2: string): string;
         optionsPathJoin(options: any, path: string): any;
-        inferCreator(value: any, factory: Factory, path: string, owner: any, key: string);
+        inferCreator(
+            value: any,
+            factory: Factory,
+            path: string,
+            owner: any,
+            key: string,
+        );
         createFromDefaultCreator(obj: any, options?: any);
         hasModelSignature(obj: any): boolean;
         hasCollectionSignature(obj: any): boolean;
@@ -186,16 +213,32 @@ declare namespace Knockback {
             /** the viewModel */
             vm?: ViewModel,
         ): KnockoutObservable<any>;
-        viewModel(model?: Backbone.Model, options?: any): KnockoutObservable<any>;
-        defaultObservable(targetObservable: KnockoutObservable<any>, defaultValue: any): KnockoutObservable<any>;
-        formattedObservable(format: string, args: any[]): KnockoutObservable<any>;
-        formattedObservable(format: KnockoutObservable<any>, args: any[]): KnockoutObservable<any>;
+        viewModel(
+            model?: Backbone.Model,
+            options?: any,
+        ): KnockoutObservable<any>;
+        defaultObservable(
+            targetObservable: KnockoutObservable<any>,
+            defaultValue: any,
+        ): KnockoutObservable<any>;
+        formattedObservable(
+            format: string,
+            args: any[],
+        ): KnockoutObservable<any>;
+        formattedObservable(
+            format: KnockoutObservable<any>,
+            args: any[],
+        ): KnockoutObservable<any>;
         localizedObservable(data: any, options: any): KnockoutObservable<any>;
         release(object: any, pre_release?: () => void);
         releaseKeys(object: any);
         releaseOnNodeRemove(viewmodel: ViewModel, node: Element);
         renderTemplate(template: string, viewModel: ViewModel, options: any);
-        renderAutoReleasedTemplate(template: string, viewModel: ViewModel, options: any);
+        renderAutoReleasedTemplate(
+            template: string,
+            viewModel: ViewModel,
+            options: any,
+        );
         applyBindings(viewModel: ViewModel, node?: Element);
     }
 

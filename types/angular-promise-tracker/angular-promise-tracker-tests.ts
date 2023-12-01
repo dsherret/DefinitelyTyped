@@ -20,15 +20,21 @@ angular.module("promise-tracker-tests", []).run([
         const trackingCount: number = trackerWithOptions.trackingCount();
         trackerWithOptions.cancel();
 
-        const createdPromise: angular.IDeferred<void> = trackerWithOptions.createPromise();
+        const createdPromise: angular.IDeferred<void> =
+            trackerWithOptions.createPromise();
 
         const promiseToAdd = $q.defer().promise;
-        const addedPromise: angular.IDeferred<void> = trackerWithOptions.addPromise(promiseToAdd);
+        const addedPromise: angular.IDeferred<void> =
+            trackerWithOptions.addPromise(promiseToAdd);
 
         const trackerWithSomeOptions = promiseTracker({ activationDelay: 500 });
 
         $http.post("/foo", {}, {});
         $http.post("/foo", {}, { tracker: trackerWithOptions });
-        $http.post("/foo", {}, { tracker: [trackerWithoutOptions, trackerWithOptions] });
+        $http.post(
+            "/foo",
+            {},
+            { tracker: [trackerWithoutOptions, trackerWithOptions] },
+        );
     },
 ]);

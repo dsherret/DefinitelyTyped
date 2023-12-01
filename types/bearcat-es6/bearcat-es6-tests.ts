@@ -18,13 +18,16 @@ bearcat.start(() => {
     bearcat.getModel("testSubId");
     bearcat.getRoute("testId", "controllerEntry");
 
-    const applicationContext: bearcat.ApplicationContext = bearcat.getApplicationContext(); // $ExpectType ApplicationContext
+    const applicationContext: bearcat.ApplicationContext =
+        bearcat.getApplicationContext(); // $ExpectType ApplicationContext
     applicationContext.init();
     applicationContext.setStartupDate(Date.now());
     applicationContext.getStartupDate(); // $ExpectType number
     applicationContext.getResource("/a/c/b"); // $ExpectType object
     applicationContext.getConfigLocations(); // $ExpectType string[]
-    applicationContext.addBeanFactoryPostProcessor({ postProcessBeanFactory: EF });
+    applicationContext.addBeanFactoryPostProcessor({
+        postProcessBeanFactory: EF,
+    });
     applicationContext.getBeanFactoryProcessors(); // $ExpectType BeanPostProcessor[]
     applicationContext.refresh();
     applicationContext.refresh(() => {});
@@ -58,7 +61,8 @@ bearcat.start(() => {
     applicationContext.getHotPath();
     applicationContext.getBase();
 
-    const asyncScriptLoader: bearcat.AsyncScriptLoader = applicationContext.getAsyncScriptLoader(); // $ExpectType AsyncScriptLoader
+    const asyncScriptLoader: bearcat.AsyncScriptLoader =
+        applicationContext.getAsyncScriptLoader(); // $ExpectType AsyncScriptLoader
     asyncScriptLoader.getLoadBeans();
     asyncScriptLoader.load(["abc"], () => {});
     asyncScriptLoader.save("/a/b", {});
@@ -69,15 +73,18 @@ bearcat.start(() => {
     asyncScriptLoader.get("/a/b", []);
     asyncScriptLoader.setApplicationContext(applicationContext);
 
-    const bootStrapLoader: bearcat.BootStrapLoader = applicationContext.getBootStrapLoader(); // $ExpectType BootStrapLoader
+    const bootStrapLoader: bearcat.BootStrapLoader =
+        applicationContext.getBootStrapLoader(); // $ExpectType BootStrapLoader
     bootStrapLoader.load(["a"]);
 
-    const resourceLoader: bearcat.ResourceLoader = applicationContext.getResourceLoader(); // $ExpectType ResourceLoader
+    const resourceLoader: bearcat.ResourceLoader =
+        applicationContext.getResourceLoader(); // $ExpectType ResourceLoader
     resourceLoader.addLoadPath("./");
     resourceLoader.getConfigLoader();
     resourceLoader.load("./a");
 
-    const beanFactory: bearcat.BeanFactory = applicationContext.getBeanFactory(); // $ExpectType BeanFactory
+    const beanFactory: bearcat.BeanFactory =
+        applicationContext.getBeanFactory(); // $ExpectType BeanFactory
     const beanFactorySame = bearcat.getBeanFactory(); // $ExpectType BeanFactory
     if (beanFactory !== beanFactorySame) {
         return; // should not run here!
@@ -114,7 +121,8 @@ bearcat.start(() => {
     beanFactory.setTableModelMap("tId", {});
     beanFactory.getModelDefinitionByTable("tId");
 
-    const moduleFactory: bearcat.ModuleFactory = applicationContext.getModuleFactory();
+    const moduleFactory: bearcat.ModuleFactory =
+        applicationContext.getModuleFactory();
     moduleFactory.define("mId", {});
     moduleFactory.require("mId");
 

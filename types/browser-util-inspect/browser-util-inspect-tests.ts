@@ -52,7 +52,12 @@ inspect();
 inspect(unknown); // $ExpectType string
 inspect(unknown, baseOptions.showHidden); // $ExpectType string
 inspect(unknown, baseOptions.showHidden, baseOptions.depth); // $ExpectType string
-inspect(unknown, baseOptions.showHidden, baseOptions.depth, exclusiveOptions.colors); // $ExpectType string
+inspect(
+    unknown,
+    baseOptions.showHidden,
+    baseOptions.depth,
+    exclusiveOptions.colors,
+); // $ExpectType string
 inspect(unknown, {}); // $ExpectType string
 inspect(unknown, baseOptions); // $ExpectType string
 // $ExpectType string

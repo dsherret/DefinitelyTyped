@@ -2,7 +2,10 @@
 
 import { Socket } from "net";
 
-export type FunctionsNames<T> = { [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never }[keyof T] & string;
+export type FunctionsNames<T> = {
+    [K in keyof T]: T[K] extends (...args: any[]) => any ? K : never;
+}[keyof T] &
+    string;
 export type ArgsType<T> = T extends (...args: infer A) => any ? A : never;
 export type UnPromise<T> = T extends Promise<infer R> ? R : T;
 export type MergePromise<T> = Promise<UnPromise<T>>;
@@ -90,7 +93,10 @@ export default class BeanstalkdClient {
      * @param event The event to listen on.
      * @param listeners Listeners for the event.
      */
-    on(event: "connect" | "drain" | "end" | "timeout", ...listeners: Array<() => void>): void;
+    on(
+        event: "connect" | "drain" | "end" | "timeout",
+        ...listeners: Array<() => void>
+    ): void;
     /**
      * The error event is triggered when an error occured on the connection.
      *
@@ -120,7 +126,14 @@ export default class BeanstalkdClient {
      */
     on(
         event: "lookup",
-        ...listeners: Array<(err: Error, address: string, family: string | number, host: string) => void>
+        ...listeners: Array<
+            (
+                err: Error,
+                address: string,
+                family: string | number,
+                host: string,
+            ) => void
+        >
     ): void;
 
     // #endregion
@@ -150,7 +163,12 @@ export default class BeanstalkdClient {
      * @param ttr Time-to-run of the job in seconds.
      * @param payload The job payload.
      */
-    put(priority: number, delay: number, ttr: number, payload?: string | Buffer): Promise<string>;
+    put(
+        priority: number,
+        delay: number,
+        ttr: number,
+        payload?: string | Buffer,
+    ): Promise<string>;
 
     /**
      * Peek at the data for the job at the top of the ready queue of the tube currently in use.
@@ -306,10 +324,16 @@ export default class BeanstalkdClient {
 }
 
 export interface BeanstalkdCaller {
-    call<K extends Exclude<FunctionsNames<BeanstalkdClient>, "on" | "unref" | "call">>(
+    call<
+        K extends Exclude<
+            FunctionsNames<BeanstalkdClient>,
+            "on" | "unref" | "call"
+        >,
+    >(
         fn: K,
         ...args: ArgsType<Required<BeanstalkdClient>[K]>
-    ): MergePromise<ReturnType<Required<BeanstalkdClient>[K]>> & BeanstalkdCaller;
+    ): MergePromise<ReturnType<Required<BeanstalkdClient>[K]>> &
+        BeanstalkdCaller;
 }
 
 export interface BeanstalkdProtocol {
@@ -325,8 +349,16 @@ export interface BeanstalkdProtocol {
     buildreply(reply: string, args: any[]): Buffer;
     buildPut(args: any[]): Buffer;
 
-    parse(buffer: Buffer, key: string): [Buffer | null, BeanstalkdProtocolCommand | BeanstalkdProtocolReply | null];
-    parseCommand(buffer: Buffer): [Buffer | null, BeanstalkdProtocolCommand | null];
+    parse(
+        buffer: Buffer,
+        key: string,
+    ): [
+        Buffer | null,
+        BeanstalkdProtocolCommand | BeanstalkdProtocolReply | null,
+    ];
+    parseCommand(
+        buffer: Buffer,
+    ): [Buffer | null, BeanstalkdProtocolCommand | null];
     parseReply(buffer: Buffer): [Buffer | null, BeanstalkdProtocolReply | null];
 }
 
@@ -514,7 +546,12 @@ export interface BeanstalkdStats {
 
 export interface BasicReader {
     parseData(data: string): any;
-    handle(protocol: BeanstalkdProtocol, data: any, resolve: (data?: any) => void, reject: (err?: any) => any): Buffer;
+    handle(
+        protocol: BeanstalkdProtocol,
+        data: any,
+        resolve: (data?: any) => void,
+        reject: (err?: any) => any,
+    ): Buffer;
 }
 
 export interface YamlReader extends BasicReader {
@@ -526,5 +563,9 @@ export interface Writer {
 }
 
 export interface BasicWriter extends Writer {
-    handle(protocol: BeanstalkdProtocol, connection: Socket, ...args: any[]): Promise<any>;
+    handle(
+        protocol: BeanstalkdProtocol,
+        connection: Socket,
+        ...args: any[]
+    ): Promise<any>;
 }

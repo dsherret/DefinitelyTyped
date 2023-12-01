@@ -2,19 +2,7 @@ $.payment.cards.push({
     // Card type, as returned by $.payment.cardType.
     type: "mastercard",
     // Array of prefixes used to identify the card type.
-    patterns: [
-        51,
-        52,
-        53,
-        54,
-        55,
-        22,
-        23,
-        24,
-        25,
-        26,
-        27,
-    ],
+    patterns: [51, 52, 53, 54, 55, 22, 23, 24, 25, 26, 27],
     // Array of valid card number lengths.
     length: [16],
     // Array of valid card CVC lengths.

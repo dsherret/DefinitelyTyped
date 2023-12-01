@@ -16,7 +16,10 @@ gulp.task("default", () => {
                 },
                 transformFilename(file, hash) {
                     const ext = path.extname(file.path);
-                    return `${hash.substring(0, 5)}.${path.basename(file.path, ext)}${ext}`;
+                    return `${hash.substring(0, 5)}.${path.basename(
+                        file.path,
+                        ext,
+                    )}${ext}`;
                 },
             }),
         )

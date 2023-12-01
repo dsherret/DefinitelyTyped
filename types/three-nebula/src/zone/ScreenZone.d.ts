@@ -10,7 +10,12 @@ export default class ScreenZone extends Zone {
      * or
      * var lineZone = new ScreenZone(new Vector3D(0,0,0),new Vector3D(100,100,0));
      */
-    constructor(camera: THREE.Camera, renderer: THREE.WebGLRenderer, dis?: number, dir?: number | string);
+    constructor(
+        camera: THREE.Camera,
+        renderer: THREE.WebGLRenderer,
+        dis?: number,
+        dir?: number | string,
+    );
     /**
      * Returns true to indicate this is a ScreenZone.
      */

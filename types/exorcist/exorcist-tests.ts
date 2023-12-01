@@ -13,9 +13,9 @@ exorcist(fs.createWriteStream("./some.map"), "example.map", null, null, null); /
 exorcist(fs.createWriteStream("./some.map"));
 
 const stream = exorcist("path/to/file");
-stream.on("missing-map", missingMapMessage => {
+stream.on("missing-map", (missingMapMessage) => {
     missingMapMessage; // $ExpectType string
 });
-stream.on("error", err => {
+stream.on("error", (err) => {
     err; // $ExpectType Error
 });

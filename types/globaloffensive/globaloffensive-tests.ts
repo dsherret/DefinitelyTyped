@@ -6,7 +6,7 @@ const user = new SteamUser();
 
 type x = keyof typeof GlobalOffensive.GCConnectionStatus;
 
-user.on("debug", message => {
+user.on("debug", (message) => {
     console.log(message);
 });
 
@@ -31,8 +31,18 @@ csgo.on("connectedToGC", () => {
     csgo.requestLiveGameForUser(new SteamID("76561198814489169"));
 
     // with IDs (from link) and callback
-    csgo.inspectItem("76561198998693595", "24253228054", "5687567561993251583", console.log);
-    csgo.inspectItem(new SteamID("76561198998693595"), "24253228054", "5687567561993251583", console.log);
+    csgo.inspectItem(
+        "76561198998693595",
+        "24253228054",
+        "5687567561993251583",
+        console.log,
+    );
+    csgo.inspectItem(
+        new SteamID("76561198998693595"),
+        "24253228054",
+        "5687567561993251583",
+        console.log,
+    );
     // with link itself
     csgo.inspectItem(
         "steam://rungame/730/76561202255233023/+csgo_econ_action_preview%20S76561198998693595A24253228054D5687567561993251583",
@@ -54,11 +64,11 @@ csgo.on("connectedToGC", () => {
 
 // LISTENERS
 
-csgo.on("disconnectedFromGC", reason => {
+csgo.on("disconnectedFromGC", (reason) => {
     console.log("disconnected:", reason);
 });
 
-csgo.on("accountData", accountData => {
+csgo.on("accountData", (accountData) => {
     console.log("accountData:", accountData);
 });
 
@@ -73,7 +83,7 @@ csgo.on("matchList", (matches, data) => {
 
 csgo.on("inspectItemInfo", console.log);
 
-csgo.on("inspectItemTimedOut", assetid => {
+csgo.on("inspectItemTimedOut", (assetid) => {
     console.log(`inspect item timed out (${assetid})`);
 });
 
@@ -83,18 +93,21 @@ csgo.on("itemChanged", (oldItem, item) => {
     console.log(`item changed from ${oldItem} to ${item}`);
 });
 
-csgo.on("itemRemoved", item => {
+csgo.on("itemRemoved", (item) => {
     console.log(`item removed: ${item}`);
 });
 
 csgo.on("itemCustomizationNotification", (itemIds, notificationType) => {
-    itemIds.forEach(itemId => {
+    itemIds.forEach((itemId) => {
         console.log(`item customized (${itemId}) (${notificationType})`);
     });
 });
 
 csgo.on("itemCustomizationNotification", (itemIds, notificationType) => {
-    if (notificationType === GlobalOffensive.ItemCustomizationNotification.CasketInvFull) {
+    if (
+        notificationType ===
+        GlobalOffensive.ItemCustomizationNotification.CasketInvFull
+    ) {
         console.log(`Storage unit ${itemIds[0]} is full`);
     }
 });

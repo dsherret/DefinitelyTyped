@@ -1,7 +1,15 @@
-export function initialize(opts: { api_key: string; app_key: string; api_host?: string | undefined }): void;
+export function initialize(opts: {
+    api_key: string;
+    app_key: string;
+    api_host?: string | undefined;
+}): void;
 
 interface event {
-    create(title: string, text: string, callback: (err: Error | null, res: EventCreateResponse) => void): void;
+    create(
+        title: string,
+        text: string,
+        callback: (err: Error | null, res: EventCreateResponse) => void,
+    ): void;
     create(
         title: string,
         text: string,
@@ -34,7 +42,11 @@ interface event {
 export const event: event;
 
 interface metric {
-    send(metric: string, points: number | number[], callback: (err: Error | null, res: "ok") => void): void;
+    send(
+        metric: string,
+        points: number | number[],
+        callback: (err: Error | null, res: "ok") => void,
+    ): void;
     send(
         metric: string,
         points: number | number[],

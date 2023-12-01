@@ -5,7 +5,11 @@ import util = require("util");
 
 export default async () => {
     try {
-        const client = await Ari.connect("http://ari.js:8088", "user", "secret");
+        const client = await Ari.connect(
+            "http://ari.js:8088",
+            "user",
+            "secret",
+        );
 
         // Create new mailbox
         const mailbox = client.Mailbox("mwi-example");
@@ -19,21 +23,30 @@ export default async () => {
                         // Record message
                         const message = client.LiveRecording();
 
-                        message.once("RecordingFinished", async (event, newRecording) => {
-                            const playback = client.Playback();
-                            playback.once("PlaybackFinished", async (event, newPlayback) => {
-                                // Update MWI
-                                messages += 1;
-                                const opts = {
-                                    oldMessages: 0,
-                                    newMessages: messages,
-                                };
-                                await mailbox.update(opts);
-                                await channel.hangup();
-                            });
+                        message.once(
+                            "RecordingFinished",
+                            async (event, newRecording) => {
+                                const playback = client.Playback();
+                                playback.once(
+                                    "PlaybackFinished",
+                                    async (event, newPlayback) => {
+                                        // Update MWI
+                                        messages += 1;
+                                        const opts = {
+                                            oldMessages: 0,
+                                            newMessages: messages,
+                                        };
+                                        await mailbox.update(opts);
+                                        await channel.hangup();
+                                    },
+                                );
 
-                            await channel.play({ media: "sound:vm-msgsaved" }, playback);
-                        });
+                                await channel.play(
+                                    { media: "sound:vm-msgsaved" },
+                                    playback,
+                                );
+                            },
+                        );
 
                         const messageOptions = {
                             name: channel.id, // name parameter is required. See channels.json fixture file.
@@ -52,25 +65,38 @@ export default async () => {
                         const playback = client.Playback();
                         const lastMessage = recordings[recordings.length - 1];
 
-                        if (!lastMessage) return channel.play({ media: "sound:vm-nomore" }, playback);
+                        if (!lastMessage)
+                            return channel.play(
+                                { media: "sound:vm-nomore" },
+                                playback,
+                            );
 
-                        playback.once("PlaybackFinished", async (event, newPlayback) => {
-                            await lastMessage.deleteStored();
+                        playback.once(
+                            "PlaybackFinished",
+                            async (event, newPlayback) => {
+                                await lastMessage.deleteStored();
 
-                            // Remove MWI
-                            messages -= 1;
-                            const opts = {
-                                oldMessages: 0,
-                                newMessages: messages,
-                            };
-                            await mailbox.update(opts);
+                                // Remove MWI
+                                messages -= 1;
+                                const opts = {
+                                    oldMessages: 0,
+                                    newMessages: messages,
+                                };
+                                await mailbox.update(opts);
 
-                            const playback = client.Playback();
-                            await channel.play({ media: "sound:vm-next" }, playback);
-                        });
+                                const playback = client.Playback();
+                                await channel.play(
+                                    { media: "sound:vm-next" },
+                                    playback,
+                                );
+                            },
+                        );
 
                         const lastMessageOptions = {
-                            media: util.format("recording:%s", lastMessage.name),
+                            media: util.format(
+                                "recording:%s",
+                                lastMessage.name,
+                            ),
                         };
 
                         // Play the latest message

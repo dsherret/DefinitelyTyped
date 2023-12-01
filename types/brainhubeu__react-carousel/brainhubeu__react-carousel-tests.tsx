@@ -24,7 +24,11 @@ interface MyCarouselState {
 class MyCarousel extends React.Component<MyCarouselProps, MyCarouselState> {
     state = {
         value: 0,
-        slides: [<img key={1} alt="img-2" />, <img key={2} alt="img-2" />, <img key={3} alt="img-3" />],
+        slides: [
+            <img key={1} alt="img-2" />,
+            <img key={2} alt="img-2" />,
+            <img key={3} alt="img-3" />,
+        ],
     };
 
     handleChange = (value: number) => {

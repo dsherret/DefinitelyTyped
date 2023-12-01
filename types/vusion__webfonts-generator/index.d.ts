@@ -2,29 +2,36 @@
 
 import * as Handlebars from "handlebars";
 
-declare function WebfontsGenerator<T extends WebfontsGenerator.GeneratedFontTypes = "woff2" | "woff" | "eot">(
+declare function WebfontsGenerator<
+    T extends WebfontsGenerator.GeneratedFontTypes = "woff2" | "woff" | "eot",
+>(
     options: WebfontsGenerator.WebfontsGeneratorOptions<T>,
     done: (
         err: Error | undefined,
-        res: Pick<WebfontsGenerator.WebfontsGeneratorResult<T>, T | "generateCss" | "generateHtml">,
+        res: Pick<
+            WebfontsGenerator.WebfontsGeneratorResult<T>,
+            T | "generateCss" | "generateHtml"
+        >,
     ) => void,
 ): void;
 
 declare namespace WebfontsGenerator {
     type GeneratedFontTypes = "eot" | "svg" | "ttf" | "woff" | "woff2";
 
-    type CSSTemplateContext = WebfontsGeneratorOptions<any>["templateOptions"] & {
-        fontName: string;
-        src: string;
-        codepoints: { [name: string]: string };
-    };
+    type CSSTemplateContext =
+        WebfontsGeneratorOptions<any>["templateOptions"] & {
+            fontName: string;
+            src: string;
+            codepoints: { [name: string]: string };
+        };
 
-    type HTMLTemplateContext = WebfontsGeneratorOptions<any>["templateOptions"] & {
-        names?: string[];
-        fontName: string;
-        styles: string;
-        codepoints: WebfontsGeneratorOptions<any>["codepoints"];
-    };
+    type HTMLTemplateContext =
+        WebfontsGeneratorOptions<any>["templateOptions"] & {
+            names?: string[];
+            fontName: string;
+            styles: string;
+            codepoints: WebfontsGeneratorOptions<any>["codepoints"];
+        };
 
     interface TemplateOptions {
         /**
@@ -187,7 +194,9 @@ declare namespace WebfontsGenerator {
         writeFiles?: boolean;
     }
 
-    interface WebfontsGeneratorResult<T extends GeneratedFontTypes = GeneratedFontTypes> {
+    interface WebfontsGeneratorResult<
+        T extends GeneratedFontTypes = GeneratedFontTypes,
+    > {
         svg: string;
         ttf: Buffer;
         eot: Buffer;

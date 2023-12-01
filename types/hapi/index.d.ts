@@ -50,17 +50,19 @@ import {
  * {@link https://www.npmjs.com/package/semver version range string} which must match the registered
  *  plugin version.
  */
-export type Dependencies = string | string[] | {
-    [key: string]: string;
-};
+export type Dependencies =
+    | string
+    | string[]
+    | {
+          [key: string]: string;
+      };
 
 /**
  * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverregistrations)
  */
 
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface PluginsListRegistered {
-}
+export interface PluginsListRegistered {}
 
 /**
  * An object of the currently registered plugins where each key is a registered plugin name and the value is an
@@ -88,12 +90,10 @@ export interface PluginRegistered {
 }
 
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface PluginsStates {
-}
+export interface PluginsStates {}
 
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface PluginSpecificConfiguration {
-}
+export interface PluginSpecificConfiguration {}
 
 export interface PluginNameVersion {
     /**
@@ -144,10 +144,12 @@ export interface PluginBase<T> {
      * Allows defining semver requirements for node and hapi.
      * @default Allows all.
      */
-    requirements?: {
-        node?: string | undefined;
-        hapi?: string | undefined;
-    } | undefined;
+    requirements?:
+        | {
+              node?: string | undefined;
+              hapi?: string | undefined;
+          }
+        | undefined;
 
     /** once - (optional) if true, will only register the plugin once per server. If set, overrides the once option passed to server.register(). Defaults to no override. */
     once?: boolean | undefined;
@@ -169,15 +171,13 @@ export type Plugin<T> = PluginBase<T> & (PluginNameVersion | PluginPackage);
  * User extensible types user credentials.
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface UserCredentials {
-}
+export interface UserCredentials {}
 
 /**
  * User extensible types app credentials.
  */
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
-export interface AppCredentials {
-}
+export interface AppCredentials {}
 
 /**
  * User-extensible type for request.auth credentials.
@@ -258,7 +258,10 @@ export interface RequestEvents extends Podium {
      */
     on(criteria: "peek", listener: PeekListener): void;
 
-    on(criteria: "finish" | "disconnect", listener: (data: undefined) => void): void;
+    on(
+        criteria: "finish" | "disconnect",
+        listener: (data: undefined) => void,
+    ): void;
 
     /**
      * Access: read only and the public podium interface.
@@ -270,7 +273,10 @@ export interface RequestEvents extends Podium {
      */
     once(criteria: "peek", listener: PeekListener): void;
 
-    once(criteria: "finish" | "disconnect", listener: (data: undefined) => void): void;
+    once(
+        criteria: "finish" | "disconnect",
+        listener: (data: undefined) => void,
+    ): void;
 }
 
 /**
@@ -571,8 +577,12 @@ export interface Request extends Podium {
         source: string | object | null,
         options?: {
             variety?: string | undefined;
-            prepare?: ((response: ResponseObject) => Promise<ResponseObject>) | undefined;
-            marshal?: ((response: ResponseObject) => Promise<ResponseValue>) | undefined;
+            prepare?:
+                | ((response: ResponseObject) => Promise<ResponseObject>)
+                | undefined;
+            marshal?:
+                | ((response: ResponseObject) => Promise<ResponseValue>)
+                | undefined;
             close?: ((response: ResponseObject) => void) | undefined;
         },
     ): ResponseObject;
@@ -587,7 +597,10 @@ export interface Request extends Podium {
      * @return void
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-requestlogtags-data)
      */
-    log(tags: string | string[], data?: string | object | (() => string | object)): void;
+    log(
+        tags: string | string[],
+        data?: string | object | (() => string | object),
+    ): void;
 
     /**
      * Changes the request method before the router begins processing the request where:
@@ -782,7 +795,17 @@ export interface ResponseObject extends Podium {
      * @return Return value: the current response object.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-responseencodingencoding)
      */
-    encoding(encoding: "ascii" | "utf8" | "utf16le" | "ucs2" | "base64" | "latin1" | "binary" | "hex"): ResponseObject;
+    encoding(
+        encoding:
+            | "ascii"
+            | "utf8"
+            | "utf16le"
+            | "ucs2"
+            | "base64"
+            | "latin1"
+            | "binary"
+            | "hex",
+    ): ResponseObject;
 
     /**
      * Sets the representation entity tag where:
@@ -794,7 +817,10 @@ export interface ResponseObject extends Podium {
      * @return Return value: the current response object.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-responseetagtag-options)
      */
-    etag(tag: string, options?: { weak: boolean; vary: boolean }): ResponseObject;
+    etag(
+        tag: string,
+        options?: { weak: boolean; vary: boolean },
+    ): ResponseObject;
 
     /**
      * Sets an HTTP header where:
@@ -808,7 +834,11 @@ export interface ResponseObject extends Podium {
      *  @return Return value: the current response object.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-responseheadername-value-options)
      */
-    header(name: string, value: string, options?: ResponseObjectHeaderOptions): ResponseObject;
+    header(
+        name: string,
+        value: string,
+        options?: ResponseObjectHeaderOptions,
+    ): ResponseObject;
 
     /**
      * Sets the HTTP 'Location' header where:
@@ -852,7 +882,11 @@ export interface ResponseObject extends Podium {
      * @return Return value: the current response object.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-responsestatename-value-options)
      */
-    state(name: string, value: object | string, options?: ServerStateCookieOptions): ResponseObject;
+    state(
+        name: string,
+        value: object | string,
+        options?: ServerStateCookieOptions,
+    ): ResponseObject;
 
     /**
      * Sets a string suffix when the response is process via JSON.stringify() where:
@@ -1050,9 +1084,11 @@ export interface ResponseToolkit {
      * it should be used as the return value (but may be customize using the response methods).
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-hentityoptions)
      */
-    entity(
-        options?: { etag?: string | undefined; modified?: string | undefined; vary?: boolean | undefined },
-    ): ResponseObject | undefined;
+    entity(options?: {
+        etag?: string | undefined;
+        modified?: string | undefined;
+        vary?: boolean | undefined;
+    }): ResponseObject | undefined;
 
     /**
      * Redirects the client to the specified uri. Same as calling h.response().redirect(uri).
@@ -1079,7 +1115,11 @@ export interface ResponseToolkit {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-hstatename-value-options)
      */
-    state(name: string, value: string | object, options?: ServerStateCookieOptions): void;
+    state(
+        name: string,
+        value: string | object,
+        options?: ServerStateCookieOptions,
+    ): void;
 
     /**
      * Used by the [authentication] method to indicate authentication failed and pass back the credentials received where:
@@ -1213,24 +1253,24 @@ export interface RouteOptionsAccess {
  * * otherwise - a string with the value of the 'Cache-Control' header when caching is disabled.
  * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionscache)
  */
-export type RouteOptionsCache =
-    & {
-        privacy?: "default" | "public" | "private" | undefined;
-        statuses?: number[] | undefined;
-        otherwise?: string | undefined;
-    }
-    & (
-        {
-            expiresIn?: number | undefined;
-            expiresAt?: undefined;
-        } | {
-            expiresIn?: undefined;
-            expiresAt?: string | undefined;
-        } | {
-            expiresIn?: undefined;
-            expiresAt?: undefined;
-        }
-    );
+export type RouteOptionsCache = {
+    privacy?: "default" | "public" | "private" | undefined;
+    statuses?: number[] | undefined;
+    otherwise?: string | undefined;
+} & (
+    | {
+          expiresIn?: number | undefined;
+          expiresAt?: undefined;
+      }
+    | {
+          expiresIn?: undefined;
+          expiresAt?: string | undefined;
+      }
+    | {
+          expiresIn?: undefined;
+          expiresAt?: undefined;
+      }
+);
 
 /**
  * Default value: false (no CORS headers).
@@ -1326,7 +1366,9 @@ export interface RouteOptionsPayload {
      * An object where each key is a content-encoding name and each value is an object with the desired decoder settings. Note that encoder settings are set in compression.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionspayloadcompression)
      */
-    compression?: Util.Dictionary<PayloadCompressionDecoderSettings> | undefined;
+    compression?:
+        | Util.Dictionary<PayloadCompressionDecoderSettings>
+        | undefined;
 
     /**
      * Default value: 'application/json'.
@@ -1361,9 +1403,12 @@ export interface RouteOptionsPayload {
      * * * * payload - the processed part payload.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionspayloadmultipart)
      */
-    multipart?: false | {
-        output: PayloadOutput | "annotated";
-    } | undefined;
+    multipart?:
+        | false
+        | {
+              output: PayloadOutput | "annotated";
+          }
+        | undefined;
 
     /**
      * Default value: 'data'.
@@ -1423,7 +1468,10 @@ export type RouteOptionsPreArray = RouteOptionsPreAllOptions[];
 /**
  * For context [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionspre)
  */
-export type RouteOptionsPreAllOptions = RouteOptionsPreObject | RouteOptionsPreObject[] | Lifecycle.Method;
+export type RouteOptionsPreAllOptions =
+    | RouteOptionsPreObject
+    | RouteOptionsPreObject[]
+    | Lifecycle.Method;
 
 /**
  * An object with:
@@ -1460,7 +1508,10 @@ export type RouteOptionsResponseSchema =
     | boolean
     | ValidationObject
     | Schema
-    | ((value: object | Buffer | string, options: ValidationOptions) => Promise<any>);
+    | ((
+          value: object | Buffer | string,
+          options: ValidationOptions,
+      ) => Promise<any>);
 
 /**
  * Processing rules for the outgoing response.
@@ -1591,34 +1642,43 @@ export interface RouteOptionsSecureObject {
     /**
      * hsts - controls the 'Strict-Transport-Security' header
      */
-    hsts?: boolean | number | {
-        /**
-         * the max-age portion of the header, as a number. Default is 15768000.
-         */
-        maxAge: number;
-        /**
-         * a boolean specifying whether to add the includeSubDomains flag to the header.
-         */
-        includeSubdomains: boolean;
-        /**
-         * a boolean specifying whether to add the 'preload' flag (used to submit domains inclusion in Chrome's HTTP Strict Transport Security (HSTS) preload list) to the header.
-         */
-        preload: boolean;
-    } | undefined;
+    hsts?:
+        | boolean
+        | number
+        | {
+              /**
+               * the max-age portion of the header, as a number. Default is 15768000.
+               */
+              maxAge: number;
+              /**
+               * a boolean specifying whether to add the includeSubDomains flag to the header.
+               */
+              includeSubdomains: boolean;
+              /**
+               * a boolean specifying whether to add the 'preload' flag (used to submit domains inclusion in Chrome's HTTP Strict Transport Security (HSTS) preload list) to the header.
+               */
+              preload: boolean;
+          }
+        | undefined;
     /**
      * controls the 'X-Frame-Options' header
      */
-    xframe?: true | "deny" | "sameorigin" | {
-        /**
-         * an object for specifying the 'allow-from' rule,
-         */
-        rule: "deny" | "sameorigin" | "allow-from";
-        /**
-         * when rule is 'allow-from' this is used to form the rest of the header, otherwise this field is ignored. If rule is 'allow-from' but source is unset, the rule will be automatically changed
-         * to 'sameorigin'.
-         */
-        source: string;
-    } | undefined;
+    xframe?:
+        | true
+        | "deny"
+        | "sameorigin"
+        | {
+              /**
+               * an object for specifying the 'allow-from' rule,
+               */
+              rule: "deny" | "sameorigin" | "allow-from";
+              /**
+               * when rule is 'allow-from' this is used to form the rest of the header, otherwise this field is ignored. If rule is 'allow-from' but source is unset, the rule will be automatically changed
+               * to 'sameorigin'.
+               */
+              source: string;
+          }
+        | undefined;
     /**
      * boolean that controls the 'X-XSS-PROTECTION' header for Internet Explorer. Defaults to true which sets the header to equal '1; mode=block'.
      * Note: this setting can create a security vulnerability in versions of Internet Exploere below 8, as well as unpatched versions of IE8. See here and here for more information. If you actively
@@ -1738,8 +1798,7 @@ export type RouteCompressionEncoderSettings = object;
  * Empty interface to allow for user-defined augmentations.
  */
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface RouteOptionsApp {
-}
+export interface RouteOptionsApp {}
 
 /**
  * Each route can be customized to change the default behavior of the request lifecycle.
@@ -1825,8 +1884,8 @@ export interface RouteOptions {
      */
     ext?:
         | {
-            [key in RouteRequestExtType]?: RouteExtObject | RouteExtObject[];
-        }
+              [key in RouteRequestExtType]?: RouteExtObject | RouteExtObject[];
+          }
         | undefined;
 
     /**
@@ -1835,9 +1894,11 @@ export interface RouteOptions {
      * * relativeTo - determines the folder relative paths are resolved against.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsfiles)
      */
-    files?: {
-        relativeTo: string;
-    } | undefined;
+    files?:
+        | {
+              relativeTo: string;
+          }
+        | undefined;
 
     /**
      * Default value: none.
@@ -1891,9 +1952,11 @@ export interface RouteOptions {
      * collect - if true, request-level logs (both internal and application) are collected and accessible via request.logs.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionslog)
      */
-    log?: {
-        collect: boolean;
-    } | undefined;
+    log?:
+        | {
+              collect: boolean;
+          }
+        | undefined;
 
     /**
      * Default value: none.
@@ -1955,10 +2018,12 @@ export interface RouteOptions {
      * errors. Defaults to 'error' (return a Bad Request (400) error response).
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionsstate)
      */
-    state?: {
-        parse?: boolean | undefined;
-        failAction?: Lifecycle.FailAction | undefined;
-    } | undefined;
+    state?:
+        | {
+              parse?: boolean | undefined;
+              failAction?: Lifecycle.FailAction | undefined;
+          }
+        | undefined;
 
     /**
      * Default value: none.
@@ -1973,19 +2038,21 @@ export interface RouteOptions {
      * Timeouts for processing durations.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-routeoptionstimeout)
      */
-    timeout?: {
-        /**
-         * Response timeout in milliseconds. Sets the maximum time allowed for the server to respond to an incoming request before giving up and responding with a Service Unavailable (503) error
-         * response.
-         */
-        server?: boolean | number | undefined;
+    timeout?:
+        | {
+              /**
+               * Response timeout in milliseconds. Sets the maximum time allowed for the server to respond to an incoming request before giving up and responding with a Service Unavailable (503) error
+               * response.
+               */
+              server?: boolean | number | undefined;
 
-        /**
-         * Default value: none (use node default of 2 minutes).
-         * By default, node sockets automatically timeout after 2 minutes. Use this option to override this behavior. Set to false to disable socket timeouts.
-         */
-        socket?: boolean | number | undefined;
-    } | undefined;
+              /**
+               * Default value: none (use node default of 2 minutes).
+               * By default, node sockets automatically timeout after 2 minutes. Use this option to override this behavior. Set to false to disable socket timeouts.
+               */
+              socket?: boolean | number | undefined;
+          }
+        | undefined;
 
     /**
      * Default value: { headers: true, params: true, query: true, payload: true, failAction: 'error' }.
@@ -2017,11 +2084,13 @@ export type ServerAuthSchemeOptions = object;
  * @param server - a reference to the server object the scheme is added to.
  * @param options - (optional) the scheme options argument passed to server.auth.strategy() when instantiation a strategy.
  */
-export type ServerAuthScheme = (server: Server, options?: ServerAuthSchemeOptions) => ServerAuthSchemeObject;
+export type ServerAuthScheme = (
+    server: Server,
+    options?: ServerAuthSchemeOptions,
+) => ServerAuthSchemeObject;
 
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface ServerAuthSchemeObjectApi {
-}
+export interface ServerAuthSchemeObjectApi {}
 
 /**
  * The scheme method must return an object with the following
@@ -2076,12 +2145,14 @@ export interface ServerAuthSchemeObject {
      * An object with the following keys:
      * * payload
      */
-    options?: {
-        /**
-         * if true, requires payload validation as part of the scheme and forbids routes from disabling payload auth validation. Defaults to false.
-         */
-        payload?: boolean | undefined;
-    } | undefined;
+    options?:
+        | {
+              /**
+               * if true, requires payload validation as part of the scheme and forbids routes from disabling payload auth validation. Defaults to false.
+               */
+              payload?: boolean | undefined;
+          }
+        | undefined;
 }
 
 /**
@@ -2089,8 +2160,7 @@ export interface ServerAuthSchemeObject {
  * For reference [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverauthdefaultoptions)
  */
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface ServerAuthConfig extends RouteOptionsAccess {
-}
+export interface ServerAuthConfig extends RouteOptionsAccess {}
 
 export interface ServerAuth {
     /**
@@ -2211,7 +2281,9 @@ export interface ServerCache {
      * @return Catbox Policy.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-servercacheoptions)
      */
-    <T, O extends CachePolicyOptions<T> = CachePolicyOptions<T>>(options: O): Policy<T, O>;
+    <T, O extends CachePolicyOptions<T> = CachePolicyOptions<T>>(
+        options: O,
+    ): Policy<T, O>;
 
     /**
      * Provisions a server cache as described in server.cache where:
@@ -2229,7 +2301,10 @@ export interface ServerCache {
  * a podium emitter object.
  * For context [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-servereventevents)
  */
-export type ServerEventsApplication = string | ServerEventsApplicationObject | Podium;
+export type ServerEventsApplication =
+    | string
+    | ServerEventsApplicationObject
+    | Podium;
 
 /**
  * Object that it will be used in Event
@@ -2290,7 +2365,11 @@ export interface ServerEventCriteria<T> {
      * * * tags - a tag string or array of tag strings.
      * * * all - if true, all tags must be present for the event update to match the subscription. Defaults to false (at least one matching tag).
      */
-    filter?: string | string[] | { tags: string | string[]; all?: boolean | undefined } | undefined;
+    filter?:
+        | string
+        | string[]
+        | { tags: string | string[]; all?: boolean | undefined }
+        | undefined;
     /**
      * if true, and the data object passed to server.event.emit() is an array, the listener method is called with each array element passed as a separate argument. This should only be used
      * when the emitted data structure is known and predictable. Defaults to the event registration option (which defaults to false).
@@ -2331,8 +2410,15 @@ export interface RequestEvent {
     error: object;
 }
 
-export type LogEventHandler = (event: LogEvent, tags: { [key: string]: true }) => void;
-export type RequestEventHandler = (request: Request, event: RequestEvent, tags: { [key: string]: true }) => void;
+export type LogEventHandler = (
+    event: LogEvent,
+    tags: { [key: string]: true },
+) => void;
+export type RequestEventHandler = (
+    request: Request,
+    event: RequestEvent,
+    tags: { [key: string]: true },
+) => void;
 export type ResponseEventHandler = (request: Request) => void;
 export type RouteEventHandler = (route: RequestRoute) => void;
 export type StartEventHandler = () => void;
@@ -2382,17 +2468,35 @@ export interface ServerEvents extends Podium {
      * See ['start' event](https://github.com/hapijs/hapi/blob/master/API.md#-start-event)
      * See ['stop' event](https://github.com/hapijs/hapi/blob/master/API.md#-stop-event)
      */
-    on(criteria: "log" | ServerEventCriteria<"log">, listener: LogEventHandler): void;
+    on(
+        criteria: "log" | ServerEventCriteria<"log">,
+        listener: LogEventHandler,
+    ): void;
 
-    on(criteria: "request" | ServerEventCriteria<"request">, listener: RequestEventHandler): void;
+    on(
+        criteria: "request" | ServerEventCriteria<"request">,
+        listener: RequestEventHandler,
+    ): void;
 
-    on(criteria: "response" | ServerEventCriteria<"response">, listener: ResponseEventHandler): void;
+    on(
+        criteria: "response" | ServerEventCriteria<"response">,
+        listener: ResponseEventHandler,
+    ): void;
 
-    on(criteria: "route" | ServerEventCriteria<"route">, listener: RouteEventHandler): void;
+    on(
+        criteria: "route" | ServerEventCriteria<"route">,
+        listener: RouteEventHandler,
+    ): void;
 
-    on(criteria: "start" | ServerEventCriteria<"start">, listener: StartEventHandler): void;
+    on(
+        criteria: "start" | ServerEventCriteria<"start">,
+        listener: StartEventHandler,
+    ): void;
 
-    on(criteria: "stop" | ServerEventCriteria<"stop">, listener: StopEventHandler): void;
+    on(
+        criteria: "stop" | ServerEventCriteria<"stop">,
+        listener: StopEventHandler,
+    ): void;
 
     /**
      * Same as calling [server.events.on()](https://github.com/hapijs/hapi/blob/master/API.md#server.events.on()) with the count option set to 1.
@@ -2404,17 +2508,35 @@ export interface ServerEvents extends Podium {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-servereventsoncecriteria-listener)
      */
-    once(criteria: "log" | ServerEventCriteria<"log">, listener: LogEventHandler): void;
+    once(
+        criteria: "log" | ServerEventCriteria<"log">,
+        listener: LogEventHandler,
+    ): void;
 
-    once(criteria: "request" | ServerEventCriteria<"request">, listener: RequestEventHandler): void;
+    once(
+        criteria: "request" | ServerEventCriteria<"request">,
+        listener: RequestEventHandler,
+    ): void;
 
-    once(criteria: "response" | ServerEventCriteria<"response">, listener: ResponseEventHandler): void;
+    once(
+        criteria: "response" | ServerEventCriteria<"response">,
+        listener: ResponseEventHandler,
+    ): void;
 
-    once(criteria: "route" | ServerEventCriteria<"route">, listener: RouteEventHandler): void;
+    once(
+        criteria: "route" | ServerEventCriteria<"route">,
+        listener: RouteEventHandler,
+    ): void;
 
-    once(criteria: "start" | ServerEventCriteria<"start">, listener: StartEventHandler): void;
+    once(
+        criteria: "start" | ServerEventCriteria<"start">,
+        listener: StartEventHandler,
+    ): void;
 
-    once(criteria: "stop" | ServerEventCriteria<"stop">, listener: StopEventHandler): void;
+    once(
+        criteria: "stop" | ServerEventCriteria<"stop">,
+        listener: StopEventHandler,
+    ): void;
 
     /**
      * Same as calling server.events.on() with the count option set to 1.
@@ -2455,7 +2577,11 @@ export interface ServerEvents extends Podium {
  * For context [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverextevents)
  * For context [See docs](https://github.com/hapijs/hapi/blob/master/API.md#request-lifecycle)
  */
-export type ServerExtType = "onPreStart" | "onPostStart" | "onPreStop" | "onPostStop";
+export type ServerExtType =
+    | "onPreStart"
+    | "onPostStart"
+    | "onPreStop"
+    | "onPostStop";
 export type RouteRequestExtType =
     | "onPreAuth"
     | "onCredentials"
@@ -2464,9 +2590,7 @@ export type RouteRequestExtType =
     | "onPostHandler"
     | "onPreResponse";
 
-export type ServerRequestExtType =
-    | RouteRequestExtType
-    | "onRequest";
+export type ServerRequestExtType = RouteRequestExtType | "onRequest";
 
 /**
  * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverextevents)
@@ -2678,22 +2802,24 @@ export interface ServerInjectOptions extends Shot.RequestOptions {
     /**
      * Authentication bypass options.
      */
-    auth?: {
-        /**
-         * The authentication strategy name matching the provided credentials.
-         */
-        strategy: string;
-        /**
-         * The credentials are used to bypass the default authentication strategies,
-         * and are validated directly as if they were received via an authentication scheme.
-         */
-        credentials: AuthCredentials;
-        /**
-         * The artifacts are used to bypass the default authentication strategies,
-         * and are validated directly as if they were received via an authentication scheme. Defaults to no artifacts.
-         */
-        artifacts?: object | undefined;
-    } | undefined;
+    auth?:
+        | {
+              /**
+               * The authentication strategy name matching the provided credentials.
+               */
+              strategy: string;
+              /**
+               * The credentials are used to bypass the default authentication strategies,
+               * and are validated directly as if they were received via an authentication scheme.
+               */
+              credentials: AuthCredentials;
+              /**
+               * The artifacts are used to bypass the default authentication strategies,
+               * and are validated directly as if they were received via an authentication scheme. Defaults to no artifacts.
+               */
+              artifacts?: object | undefined;
+          }
+        | undefined;
     /**
      * sets the initial value of request.app, defaults to {}.
      */
@@ -2804,10 +2930,12 @@ export interface ServerMethodConfigurationObject {
     options?: ServerMethodOptions | undefined;
 }
 
-export type CacheProvider<T extends ClientOptions = ClientOptions> = EnginePrototype<any> | {
-    constructor: EnginePrototype<any>;
-    options?: T | undefined;
-};
+export type CacheProvider<T extends ClientOptions = ClientOptions> =
+    | EnginePrototype<any>
+    | {
+          constructor: EnginePrototype<any>;
+          options?: T | undefined;
+      };
 
 /**
  * hapi uses catbox for its cache implementation which includes support for common storage solutions (e.g. Redis,
@@ -2847,8 +2975,7 @@ export interface ServerOptionsCompression {
  * Empty interface to allow for custom augmentation.
  */
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface ServerOptionsApp {
-}
+export interface ServerOptionsApp {}
 
 /**
  * The server options control the behavior of the server object. Note that the options object is deeply cloned
@@ -2899,7 +3026,11 @@ export interface ServerOptions {
      * * * other options passed to the catbox strategy used. Other options are only passed to catbox when engine above is a class or function and ignored if engine is a catbox engine object).
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serveroptionscache)
      */
-    cache?: CacheProvider | ServerOptionsCache | ServerOptionsCache[] | undefined;
+    cache?:
+        | CacheProvider
+        | ServerOptionsCache
+        | ServerOptionsCache[]
+        | undefined;
 
     /**
      * Default value: { minBytes: 1024 }.
@@ -2918,10 +3049,13 @@ export interface ServerOptions {
      * or request to ['error']. To turn off all output set the log or request to false. To display all server logs, set the log or request to '*'. To disable all debug information, set debug to
      * false.
      */
-    debug?: false | {
-        log?: string[] | false | undefined;
-        request?: string[] | false | undefined;
-    } | undefined;
+    debug?:
+        | false
+        | {
+              log?: string[] | false | undefined;
+              request?: string[] | false | undefined;
+          }
+        | undefined;
 
     /**
      * Default value: the operating system hostname and if not available, to 'localhost'.
@@ -2945,27 +3079,29 @@ export interface ServerOptions {
      * * maxRssBytes - maximum process RSS size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).
      * * maxEventLoopDelay - maximum event loop delay duration in milliseconds over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).
      */
-    load?: {
-        /** the frequency of sampling in milliseconds. When set to 0, the other load options are ignored. Defaults to 0 (no sampling). */
-        sampleInterval?: number | undefined;
+    load?:
+        | {
+              /** the frequency of sampling in milliseconds. When set to 0, the other load options are ignored. Defaults to 0 (no sampling). */
+              sampleInterval?: number | undefined;
 
-        /**
-         * Max concurrent requests.
-         */
-        concurrent?: number | undefined;
+              /**
+               * Max concurrent requests.
+               */
+              concurrent?: number | undefined;
 
-        /** maximum V8 heap size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit). */
-        maxHeapUsedBytes?: number | undefined;
-        /**
-         * maximum process RSS size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).
-         */
-        maxRssBytes?: number | undefined;
-        /**
-         * maximum event loop delay duration in milliseconds over which incoming requests are rejected with an HTTP Server Timeout (503) response.
-         * Defaults to 0 (no limit).
-         */
-        maxEventLoopDelay?: number | undefined;
-    } | undefined;
+              /** maximum V8 heap size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit). */
+              maxHeapUsedBytes?: number | undefined;
+              /**
+               * maximum process RSS size over which incoming requests are rejected with an HTTP Server Timeout (503) response. Defaults to 0 (no limit).
+               */
+              maxRssBytes?: number | undefined;
+              /**
+               * maximum event loop delay duration in milliseconds over which incoming requests are rejected with an HTTP Server Timeout (503) response.
+               * Defaults to 0 (no limit).
+               */
+              maxEventLoopDelay?: number | undefined;
+          }
+        | undefined;
 
     /**
      * Default value: none.
@@ -2999,10 +3135,12 @@ export interface ServerOptions {
      * * isCaseSensitive - determines whether the paths '/example' and '/EXAMPLE' are considered different resources. Defaults to true.
      * * stripTrailingSlash - removes trailing slashes on incoming paths. Defaults to false.
      */
-    router?: {
-        isCaseSensitive?: boolean | undefined;
-        stripTrailingSlash?: boolean | undefined;
-    } | undefined;
+    router?:
+        | {
+              isCaseSensitive?: boolean | undefined;
+              stripTrailingSlash?: boolean | undefined;
+          }
+        | undefined;
 
     /**
      * Default value: none.
@@ -3024,14 +3162,22 @@ export interface ServerOptions {
      */
     // TODO I am not sure if I need to use all the server.state() definition (like the default value) OR only the options below. The v16 use "any" here.
     // state?: ServerStateCookieOptions;
-    state?: {
-        strictHeader?: boolean | undefined;
-        ignoreErrors?: boolean | undefined;
-        isSecure?: boolean | undefined;
-        isHttpOnly?: boolean | undefined;
-        isSameSite?: false | "Strict" | "Lax" | undefined;
-        encoding?: "none" | "base64" | "base64json" | "form" | "iron" | undefined;
-    } | undefined;
+    state?:
+        | {
+              strictHeader?: boolean | undefined;
+              ignoreErrors?: boolean | undefined;
+              isSecure?: boolean | undefined;
+              isHttpOnly?: boolean | undefined;
+              isSameSite?: false | "Strict" | "Lax" | undefined;
+              encoding?:
+                  | "none"
+                  | "base64"
+                  | "base64json"
+                  | "form"
+                  | "iron"
+                  | undefined;
+          }
+        | undefined;
 
     /**
      * Default value: none.
@@ -3048,13 +3194,15 @@ export interface ServerOptions {
     /**
      * Query parameter configuration.
      */
-    query?: {
-        /**
-         * the method must return an object where each key is a parameter and matching value is the parameter value.
-         * If the method throws, the error is used as the response or returned when `request.setUrl` is called.
-         */
-        parser(raw: Util.Dictionary<string>): Util.Dictionary<any>;
-    } | undefined;
+    query?:
+        | {
+              /**
+               * the method must return an object where each key is a parameter and matching value is the parameter value.
+               * If the method throws, the error is used as the response or returned when `request.setUrl` is called.
+               */
+              parser(raw: Util.Dictionary<string>): Util.Dictionary<any>;
+          }
+        | undefined;
 }
 
 /**
@@ -3115,16 +3263,18 @@ export interface ServerRegisterOptions {
     /**
      * modifiers applied to each route added by the plugin:
      */
-    routes?: {
-        /**
-         * string added as prefix to any route path (must begin with '/'). If a plugin registers a child plugin the prefix is passed on to the child or is added in front of the child-specific prefix.
-         */
-        prefix: string;
-        /**
-         * virtual host string (or array of strings) applied to every route. The outer-most vhost overrides the any nested configuration.
-         */
-        vhost?: string | string[] | undefined;
-    } | undefined;
+    routes?:
+        | {
+              /**
+               * string added as prefix to any route path (must begin with '/'). If a plugin registers a child plugin the prefix is passed on to the child or is added in front of the child-specific prefix.
+               */
+              prefix: string;
+              /**
+               * virtual host string (or array of strings) applied to every route. The outer-most vhost overrides the any nested configuration.
+               */
+              vhost?: string | string[] | undefined;
+          }
+        | undefined;
 }
 
 /**
@@ -3152,8 +3302,8 @@ export interface ServerRegisterPluginObject<T> extends ServerRegisterOptions {
     options?: T | undefined;
 }
 
-export interface ServerRegisterPluginObjectArray<T, U, V, W, X, Y, Z> extends
-    Array<
+export interface ServerRegisterPluginObjectArray<T, U, V, W, X, Y, Z>
+    extends Array<
         | ServerRegisterPluginObject<T>
         | ServerRegisterPluginObject<U>
         | ServerRegisterPluginObject<V>
@@ -3162,8 +3312,7 @@ export interface ServerRegisterPluginObjectArray<T, U, V, W, X, Y, Z> extends
         | ServerRegisterPluginObject<Y>
         | ServerRegisterPluginObject<Z>
         | undefined
-    >
-{
+    > {
     0: ServerRegisterPluginObject<T>;
     1?: ServerRegisterPluginObject<U> | undefined;
     2?: ServerRegisterPluginObject<V> | undefined;
@@ -3174,8 +3323,7 @@ export interface ServerRegisterPluginObjectArray<T, U, V, W, X, Y, Z> extends
 }
 
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface HandlerDecorations {
-}
+export interface HandlerDecorations {}
 
 /**
  * A route configuration object or an array of configuration objects where each object contains:
@@ -3205,7 +3353,11 @@ export interface ServerRoute {
      * (only when an exact match was not found, and any match with a specific method will be given a higher priority over a wildcard match). Can be assigned an array of methods which has the same
      * result as adding the same route with different methods manually.
      */
-    method: Util.HTTP_METHODS_PARTIAL | Util.HTTP_METHODS_PARTIAL[] | string | string[];
+    method:
+        | Util.HTTP_METHODS_PARTIAL
+        | Util.HTTP_METHODS_PARTIAL[]
+        | string
+        | string[];
 
     /**
      * (optional) a domain string or an array of domain strings for limiting the route to only requests with a matching host header field. Matching is done against the hostname part of the header
@@ -3275,10 +3427,12 @@ export interface ServerStateCookieOptions {
      *  * integrity - algorithm options. Defaults to require('iron').defaults.integrity.
      *  * password - password used for HMAC key generation (must be at least 32 characters long).
      */
-    sign?: {
-        integrity?: SealOptionsSub | undefined;
-        password: string;
-    } | undefined;
+    sign?:
+        | {
+              integrity?: SealOptionsSub | undefined;
+              password: string;
+          }
+        | undefined;
     /** password used for 'iron' encoding (must be at least 32 characters long). */
     password?: string | undefined;
     /** options for 'iron' encoding. Defaults to require('iron').defaults. */
@@ -3379,11 +3533,9 @@ export type DecorationMethod<T> = (this: T, ...args: any[]) => any;
  * An empty interface to allow typings of custom plugin properties.
  */
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface PluginProperties {
-}
+export interface PluginProperties {}
 
-export interface ServerMethods extends Util.Dictionary<ServerMethod> {
-}
+export interface ServerMethods extends Util.Dictionary<ServerMethod> {}
 
 export type DecorateName = string | symbol;
 
@@ -3622,7 +3774,10 @@ export class Server {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverdecoderencoding-decoder)
      */
-    decoder(encoding: string, decoder: (options: PayloadCompressionDecoderSettings) => zlib.Gunzip): void;
+    decoder(
+        encoding: string,
+        decoder: (options: PayloadCompressionDecoderSettings) => zlib.Gunzip,
+    ): void;
 
     /**
      * Extends various framework interfaces with custom methods where:
@@ -3649,7 +3804,9 @@ export class Server {
     decorate(
         type: "request",
         property: DecorateName,
-        method: (existing: (...args: any[]) => any) => (request: Request) => DecorationMethod<Request>,
+        method: (
+            existing: (...args: any[]) => any,
+        ) => (request: Request) => DecorationMethod<Request>,
         options: { apply: true; extend: true },
     ): void;
     decorate(
@@ -3667,7 +3824,9 @@ export class Server {
     decorate(
         type: "toolkit",
         property: DecorateName,
-        method: (existing: (...args: any[]) => any) => DecorationMethod<ResponseToolkit>,
+        method: (
+            existing: (...args: any[]) => any,
+        ) => DecorationMethod<ResponseToolkit>,
         options: { apply?: boolean | undefined; extend: true },
     ): void;
     decorate(
@@ -3701,7 +3860,10 @@ export class Server {
      * The method does not provide version dependency which should be implemented using npm peer dependencies.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverdependencydependencies-after)
      */
-    dependency(dependencies: Dependencies, after?: (server: Server) => Promise<void>): void;
+    dependency(
+        dependencies: Dependencies,
+        after?: (server: Server) => Promise<void>,
+    ): void;
 
     /**
      * Registers a custom content encoding compressor to extend the built-in support for 'gzip' and 'deflate' where:
@@ -3711,7 +3873,10 @@ export class Server {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverencoderencoding-encoder)
      */
-    encoder(encoding: string, encoder: (options: RouteCompressionEncoderSettings) => zlib.Gzip): void;
+    encoder(
+        encoding: string,
+        encoder: (options: RouteCompressionEncoderSettings) => zlib.Gzip,
+    ): void;
 
     /**
      * Used within a plugin to expose a property via server.plugins[name] where:
@@ -3768,8 +3933,16 @@ export class Server {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverextevent-method-options)
      */
-    ext(event: ServerExtType, method: ServerExtPointFunction, options?: ServerExtOptions): void;
-    ext(event: ServerRequestExtType, method: Lifecycle.Method, options?: ServerExtOptions): void;
+    ext(
+        event: ServerExtType,
+        method: ServerExtPointFunction,
+        options?: ServerExtOptions,
+    ): void;
+    ext(
+        event: ServerRequestExtType,
+        method: Lifecycle.Method,
+        options?: ServerExtOptions,
+    ): void;
 
     /**
      * Initializes the server (starts the caches, finalizes plugin registration) but does not start listening on the connection port.
@@ -3820,7 +3993,9 @@ export class Server {
      * * request - the request object.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-await-serverinjectoptions)
      */
-    inject(options: string | ServerInjectOptions): Promise<ServerInjectResponse>;
+    inject(
+        options: string | ServerInjectOptions,
+    ): Promise<ServerInjectResponse>;
 
     /**
      * Logs server events that cannot be associated with a specific request. When called the server emits a 'log' event which can be used by other listeners or plugins to record the information or
@@ -3833,7 +4008,11 @@ export class Server {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverlogtags-data-timestamp)
      */
-    log(tags: string | string[], data?: string | object | (() => any), timestamp?: number): void;
+    log(
+        tags: string | string[],
+        data?: string | object | (() => any),
+        timestamp?: number,
+    ): void;
 
     /**
      * Looks up a route configuration where:
@@ -3851,7 +4030,11 @@ export class Server {
      * @return Return value: the route information if found, otherwise null.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-servermatchmethod-path-host)
      */
-    match(method: Util.HTTP_METHODS, path: string, host?: string): RequestRoute | null;
+    match(
+        method: Util.HTTP_METHODS,
+        path: string,
+        host?: string,
+    ): RequestRoute | null;
 
     /**
      * Registers a server method where:
@@ -3873,7 +4056,11 @@ export class Server {
      *     the cache for a given key. - stats - an object with cache statistics, see catbox for stats documentation.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-servermethodname-method-options)
      */
-    method(name: string, method: ServerMethod, options?: ServerMethodOptions): void;
+    method(
+        name: string,
+        method: ServerMethod,
+        options?: ServerMethodOptions,
+    ): void;
 
     /**
      * Registers a server method function as described in server.method() using a configuration object where:
@@ -3884,7 +4071,11 @@ export class Server {
      * @return Return value: none.
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-servermethodmethods)
      */
-    method(methods: ServerMethodConfigurationObject | ServerMethodConfigurationObject[]): void;
+    method(
+        methods:
+            | ServerMethodConfigurationObject
+            | ServerMethodConfigurationObject[],
+    ): void;
 
     /**
      * Sets the path prefix used to locate static resources (files and view templates) when relative paths are used where:
@@ -3915,15 +4106,24 @@ export class Server {
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-await-serverregisterplugins-options)
      */
     /* eslint-disable-next-line @definitelytyped/no-unnecessary-generics */
-    register<T>(plugin: ServerRegisterPluginObject<T>, options?: ServerRegisterOptions): Promise<void>;
+    register<T>(
+        plugin: ServerRegisterPluginObject<T>,
+        options?: ServerRegisterOptions,
+    ): Promise<void>;
     /* eslint-disable-next-line @definitelytyped/no-unnecessary-generics */
     register<T, U, V, W, X, Y, Z>(
         plugins: ServerRegisterPluginObjectArray<T, U, V, W, X, Y, Z>,
         options?: ServerRegisterOptions,
     ): Promise<void>;
-    register(plugins: Array<ServerRegisterPluginObject<any>>, options?: ServerRegisterOptions): Promise<void>;
+    register(
+        plugins: Array<ServerRegisterPluginObject<any>>,
+        options?: ServerRegisterOptions,
+    ): Promise<void>;
     /* tslint:disable-next-line:unified-signatures */
-    register(plugins: Plugin<any> | Array<Plugin<any>>, options?: ServerRegisterOptions): Promise<void>;
+    register(
+        plugins: Plugin<any> | Array<Plugin<any>>,
+        options?: ServerRegisterOptions,
+    ): Promise<void>;
 
     /**
      * Adds a route where:
@@ -3965,7 +4165,10 @@ export class Server {
      * [See docs](https://github.com/hapijs/hapi/blob/master/API.md#-serverrulesprocessor-options)
      */
     rules(
-        processor: (rules: object, info: { method: string; path: string; vhost?: string | undefined }) => object,
+        processor: (
+            rules: object,
+            info: { method: string; path: string; vhost?: string | undefined },
+        ) => object,
         options?: { validate: object },
     ): void; // TODO needs implementation
 
@@ -4025,8 +4228,7 @@ export class Server {
  *  User-extensible type for application specific state.
  */
 /* eslint-disable-next-line @typescript-eslint/no-empty-interface */
-export interface ApplicationState {
-}
+export interface ApplicationState {}
 
 export type PeekListener = (chunk: string, encoding: string) => void;
 
@@ -4034,7 +4236,10 @@ export namespace Json {
     /**
      * @see {@link https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#The_replacer_parameter}
      */
-    type StringifyReplacer = ((key: string, value: any) => any) | Array<(string | number)> | undefined;
+    type StringifyReplacer =
+        | ((key: string, value: any) => any)
+        | Array<string | number>
+        | undefined;
 
     /**
      * Any value greater than 10 is truncated.
@@ -4066,7 +4271,11 @@ export namespace Lifecycle {
      * * h - the response toolkit the handler must call to set a response and return control back to the framework.
      * * err - an error object availble only when the method is used as a failAction value.
      */
-    type Method = (request: Request, h: ResponseToolkit, err?: Error) => ReturnValue;
+    type Method = (
+        request: Request,
+        h: ResponseToolkit,
+        err?: Error,
+    ) => ReturnValue;
 
     /**
      * Each lifecycle method must return a value or a promise that resolves into a value. If a lifecycle method returns
@@ -4082,12 +4291,12 @@ export namespace Lifecycle {
      * - a promise object that resolve to any of the above values
      * For more info please [See docs](https://github.com/hapijs/hapi/blob/master/API.md#lifecycle-methods)
      */
-    type ReturnValue = ReturnValueTypes | (Promise<ReturnValueTypes>);
+    type ReturnValue = ReturnValueTypes | Promise<ReturnValueTypes>;
     type ReturnValueTypes =
         | (null | string | number | boolean)
-        | (Buffer)
+        | Buffer
         | (Error | Boom)
-        | (stream.Stream)
+        | stream.Stream
         | (object | object[])
         | symbol
         | ResponseToolkit;
@@ -4112,7 +4321,13 @@ export namespace Util {
         [key: string]: T;
     }
 
-    type HTTP_METHODS_PARTIAL_LOWERCASE = "get" | "post" | "put" | "patch" | "delete" | "options";
+    type HTTP_METHODS_PARTIAL_LOWERCASE =
+        | "get"
+        | "post"
+        | "put"
+        | "patch"
+        | "delete"
+        | "options";
     type HTTP_METHODS_PARTIAL =
         | "GET"
         | "POST"

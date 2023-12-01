@@ -7,6 +7,9 @@ export interface BreadcrumbItemProps extends ReactLIAttr {
     href?: LinkProps["href"] | undefined;
 }
 
-declare const BreadcrumbItem: ForwardRefReturn<HTMLLIElement, BreadcrumbItemProps>;
+declare const BreadcrumbItem: ForwardRefReturn<
+    HTMLLIElement,
+    BreadcrumbItemProps
+>;
 
 export default BreadcrumbItem;

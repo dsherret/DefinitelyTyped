@@ -16,7 +16,10 @@ export class DocumentClient {
     /**
      * Creates a DynamoDB document client with a set of configuration options.
      */
-    constructor(options?: DocumentClient.DocumentClientOptions & DynamoDB.Types.ClientConfiguration);
+    constructor(
+        options?: DocumentClient.DocumentClientOptions &
+            DynamoDB.Types.ClientConfiguration,
+    );
 
     /**
      * Creates a set of elements inferring the type of set from the type of the first element. Amazon DynamoDB currently supports the number sets, string sets, and binary sets. For more information about DynamoDB data types see the documentation on the Amazon DynamoDB Data Model.
@@ -30,21 +33,30 @@ export class DocumentClient {
      */
     batchGet(
         params: DocumentClient.BatchGetItemInput,
-        callback?: (err: AWSError, data: DocumentClient.BatchGetItemOutput) => void,
+        callback?: (
+            err: AWSError,
+            data: DocumentClient.BatchGetItemOutput,
+        ) => void,
     ): Request<DocumentClient.BatchGetItemOutput, AWSError>;
     /**
      * Puts or deletes multiple items in one or more tables by delegating to AWS.DynamoDB.batchWriteItem().
      */
     batchWrite(
         params: DocumentClient.BatchWriteItemInput,
-        callback?: (err: AWSError, data: DocumentClient.BatchWriteItemOutput) => void,
+        callback?: (
+            err: AWSError,
+            data: DocumentClient.BatchWriteItemOutput,
+        ) => void,
     ): Request<DocumentClient.BatchWriteItemOutput, AWSError>;
     /**
      * Deletes a single item in a table by primary key by delegating to AWS.DynamoDB.deleteItem().
      */
     delete(
         params: DocumentClient.DeleteItemInput,
-        callback?: (err: AWSError, data: DocumentClient.DeleteItemOutput) => void,
+        callback?: (
+            err: AWSError,
+            data: DocumentClient.DeleteItemOutput,
+        ) => void,
     ): Request<DocumentClient.DeleteItemOutput, AWSError>;
     /**
      * Returns a set of attributes for the item with the given primary key by delegating to AWS.DynamoDB.getItem().
@@ -79,7 +91,10 @@ export class DocumentClient {
      */
     update(
         params: DocumentClient.UpdateItemInput,
-        callback?: (err: AWSError, data: DocumentClient.UpdateItemOutput) => void,
+        callback?: (
+            err: AWSError,
+            data: DocumentClient.UpdateItemOutput,
+        ) => void,
     ): Request<DocumentClient.UpdateItemOutput, AWSError>;
 
     /**
@@ -87,7 +102,10 @@ export class DocumentClient {
      */
     transactGet(
         params: DocumentClient.TransactGetItemsInput,
-        callback?: (err: AWSError, data: DocumentClient.TransactGetItemsOutput) => void,
+        callback?: (
+            err: AWSError,
+            data: DocumentClient.TransactGetItemsOutput,
+        ) => void,
     ): Request<DocumentClient.TransactGetItemsOutput, AWSError>;
 
     /**
@@ -95,7 +113,10 @@ export class DocumentClient {
      */
     transactWrite(
         params: DocumentClient.TransactWriteItemsInput,
-        callback?: (err: AWSError, data: DocumentClient.TransactWriteItemsOutput) => void,
+        callback?: (
+            err: AWSError,
+            data: DocumentClient.TransactWriteItemsOutput,
+        ) => void,
     ): Request<DocumentClient.TransactWriteItemsOutput, AWSError>;
 }
 
@@ -231,7 +252,8 @@ export namespace DocumentClient {
          */
         TargetTrackingScalingPolicyConfiguration?: AutoScalingTargetTrackingScalingPolicyConfigurationDescription;
     }
-    export type AutoScalingPolicyDescriptionList = AutoScalingPolicyDescription[];
+    export type AutoScalingPolicyDescriptionList =
+        AutoScalingPolicyDescription[];
     export type AutoScalingPolicyName = string;
     export interface AutoScalingPolicyUpdate {
         /**
@@ -418,7 +440,12 @@ export namespace DocumentClient {
         BackupSizeBytes?: BackupSizeBytes;
     }
     export type BackupType = "USER" | "SYSTEM" | "AWS_BACKUP" | string;
-    export type BackupTypeFilter = "USER" | "SYSTEM" | "AWS_BACKUP" | "ALL" | string;
+    export type BackupTypeFilter =
+        | "USER"
+        | "SYSTEM"
+        | "AWS_BACKUP"
+        | "ALL"
+        | string;
     export type BackupsInputLimit = number;
     export interface BatchExecuteStatementInput {
         /**
@@ -670,7 +697,13 @@ export namespace DocumentClient {
     export type ContributorInsightsAction = "ENABLE" | "DISABLE" | string;
     export type ContributorInsightsRule = string;
     export type ContributorInsightsRuleList = ContributorInsightsRule[];
-    export type ContributorInsightsStatus = "ENABLING" | "ENABLED" | "DISABLING" | "DISABLED" | "FAILED" | string;
+    export type ContributorInsightsStatus =
+        | "ENABLING"
+        | "ENABLED"
+        | "DISABLING"
+        | "DISABLED"
+        | "FAILED"
+        | string;
     export type ContributorInsightsSummaries = ContributorInsightsSummary[];
     export interface ContributorInsightsSummary {
         /**
@@ -1017,8 +1050,7 @@ export namespace DocumentClient {
          */
         FailureException?: FailureException;
     }
-    export interface DescribeEndpointsRequest {
-    }
+    export interface DescribeEndpointsRequest {}
     export interface DescribeEndpointsResponse {
         /**
          * List of endpoints.
@@ -1093,8 +1125,7 @@ export namespace DocumentClient {
          */
         KinesisDataStreamDestinations?: KinesisDataStreamDestinations;
     }
-    export interface DescribeLimitsInput {
-    }
+    export interface DescribeLimitsInput {}
     export interface DescribeLimitsOutput {
         /**
          * The maximum total read capacity units that your account allows you to provision across all of your tables in this Region.
@@ -1147,7 +1178,13 @@ export namespace DocumentClient {
         /** */
         TimeToLiveDescription?: TimeToLiveDescription;
     }
-    export type DestinationStatus = "ENABLING" | "ACTIVE" | "DISABLING" | "DISABLED" | "ENABLE_FAILED" | string;
+    export type DestinationStatus =
+        | "ENABLING"
+        | "ACTIVE"
+        | "DISABLING"
+        | "DISABLED"
+        | "ENABLE_FAILED"
+        | string;
     export type Double = number;
     export interface Endpoint {
         /**
@@ -1225,7 +1262,9 @@ export namespace DocumentClient {
          */
         ConsumedCapacity?: ConsumedCapacityMultiple;
     }
-    export type ExpectedAttributeMap = { [key: string]: ExpectedAttributeValue };
+    export type ExpectedAttributeMap = {
+        [key: string]: ExpectedAttributeValue;
+    };
     export interface ExpectedAttributeValue {
         /**
          * Represents the data for the expected attribute. Each attribute value is described as a name-value pair. The name is the data type, and the value is the data itself. For more information, see Data Types in the Amazon DynamoDB Developer Guide.
@@ -1482,7 +1521,8 @@ export namespace DocumentClient {
         IndexName?: IndexName;
         ProvisionedWriteCapacityAutoScalingUpdate?: AutoScalingSettingsUpdate;
     }
-    export type GlobalSecondaryIndexAutoScalingUpdateList = GlobalSecondaryIndexAutoScalingUpdate[];
+    export type GlobalSecondaryIndexAutoScalingUpdateList =
+        GlobalSecondaryIndexAutoScalingUpdate[];
     export interface GlobalSecondaryIndexDescription {
         /**
          * The name of the global secondary index.
@@ -1521,7 +1561,8 @@ export namespace DocumentClient {
          */
         IndexArn?: String;
     }
-    export type GlobalSecondaryIndexDescriptionList = GlobalSecondaryIndexDescription[];
+    export type GlobalSecondaryIndexDescriptionList =
+        GlobalSecondaryIndexDescription[];
     export interface GlobalSecondaryIndexInfo {
         /**
          * The name of the global secondary index.
@@ -1604,14 +1645,26 @@ export namespace DocumentClient {
          */
         ProvisionedWriteCapacityAutoScalingSettingsUpdate?: AutoScalingSettingsUpdate;
     }
-    export type GlobalTableGlobalSecondaryIndexSettingsUpdateList = GlobalTableGlobalSecondaryIndexSettingsUpdate[];
+    export type GlobalTableGlobalSecondaryIndexSettingsUpdateList =
+        GlobalTableGlobalSecondaryIndexSettingsUpdate[];
     export type GlobalTableList = GlobalTable[];
-    export type GlobalTableStatus = "CREATING" | "ACTIVE" | "DELETING" | "UPDATING" | string;
+    export type GlobalTableStatus =
+        | "CREATING"
+        | "ACTIVE"
+        | "DELETING"
+        | "UPDATING"
+        | string;
     export type ImportArn = string;
     export type ImportEndTime = Date;
     export type ImportNextToken = string;
     export type ImportStartTime = Date;
-    export type ImportStatus = "IN_PROGRESS" | "COMPLETED" | "CANCELLING" | "CANCELLED" | "FAILED" | string;
+    export type ImportStatus =
+        | "IN_PROGRESS"
+        | "COMPLETED"
+        | "CANCELLING"
+        | "CANCELLED"
+        | "FAILED"
+        | string;
     export interface ImportSummary {
         /**
          *  The Amazon Resource Number (ARN) corresponding to the import request.
@@ -1759,7 +1812,12 @@ export namespace DocumentClient {
     }
     export type ImportedItemCount = number;
     export type IndexName = string;
-    export type IndexStatus = "CREATING" | "UPDATING" | "DELETING" | "ACTIVE" | string;
+    export type IndexStatus =
+        | "CREATING"
+        | "UPDATING"
+        | "DELETING"
+        | "ACTIVE"
+        | string;
     export type InputCompressionType = "GZIP" | "ZSTD" | "NONE" | string;
     export type InputFormat = "DYNAMODB_JSON" | "ION" | "CSV" | string;
     export interface InputFormatOptions {
@@ -1770,7 +1828,9 @@ export namespace DocumentClient {
     }
     export type Integer = number;
     export type IntegerObject = number;
-    export type ItemCollectionKeyAttributeMap = { [key: string]: AttributeValue };
+    export type ItemCollectionKeyAttributeMap = {
+        [key: string]: AttributeValue;
+    };
     export interface ItemCollectionMetrics {
         /**
          * The partition key value of the item collection. This value is the same as the partition key value of the item.
@@ -1782,9 +1842,12 @@ export namespace DocumentClient {
         SizeEstimateRangeGB?: ItemCollectionSizeEstimateRange;
     }
     export type ItemCollectionMetricsMultiple = ItemCollectionMetrics[];
-    export type ItemCollectionMetricsPerTable = { [key: string]: ItemCollectionMetricsMultiple };
+    export type ItemCollectionMetricsPerTable = {
+        [key: string]: ItemCollectionMetricsMultiple;
+    };
     export type ItemCollectionSizeEstimateBound = number;
-    export type ItemCollectionSizeEstimateRange = ItemCollectionSizeEstimateBound[];
+    export type ItemCollectionSizeEstimateRange =
+        ItemCollectionSizeEstimateBound[];
     export type ItemCount = number;
     export type ItemList = AttributeMap[];
     export interface ItemResponse {
@@ -2092,7 +2155,8 @@ export namespace DocumentClient {
          */
         IndexArn?: String;
     }
-    export type LocalSecondaryIndexDescriptionList = LocalSecondaryIndexDescription[];
+    export type LocalSecondaryIndexDescriptionList =
+        LocalSecondaryIndexDescription[];
     export interface LocalSecondaryIndexInfo {
         /**
          * Represents the name of the local secondary index.
@@ -2406,7 +2470,8 @@ export namespace DocumentClient {
          */
         ReplicaStatus?: ReplicaStatus;
     }
-    export type ReplicaAutoScalingDescriptionList = ReplicaAutoScalingDescription[];
+    export type ReplicaAutoScalingDescriptionList =
+        ReplicaAutoScalingDescription[];
     export interface ReplicaAutoScalingUpdate {
         /**
          * The Region where the replica exists.
@@ -2486,7 +2551,8 @@ export namespace DocumentClient {
         IndexName?: IndexName;
         ProvisionedReadCapacityAutoScalingUpdate?: AutoScalingSettingsUpdate;
     }
-    export type ReplicaGlobalSecondaryIndexAutoScalingUpdateList = ReplicaGlobalSecondaryIndexAutoScalingUpdate[];
+    export type ReplicaGlobalSecondaryIndexAutoScalingUpdateList =
+        ReplicaGlobalSecondaryIndexAutoScalingUpdate[];
     export interface ReplicaGlobalSecondaryIndexDescription {
         /**
          * The name of the global secondary index.
@@ -2497,7 +2563,8 @@ export namespace DocumentClient {
          */
         ProvisionedThroughputOverride?: ProvisionedThroughputOverride;
     }
-    export type ReplicaGlobalSecondaryIndexDescriptionList = ReplicaGlobalSecondaryIndexDescription[];
+    export type ReplicaGlobalSecondaryIndexDescriptionList =
+        ReplicaGlobalSecondaryIndexDescription[];
     export type ReplicaGlobalSecondaryIndexList = ReplicaGlobalSecondaryIndex[];
     export interface ReplicaGlobalSecondaryIndexSettingsDescription {
         /**
@@ -2525,7 +2592,8 @@ export namespace DocumentClient {
          */
         ProvisionedWriteCapacityAutoScalingSettings?: AutoScalingSettingsDescription;
     }
-    export type ReplicaGlobalSecondaryIndexSettingsDescriptionList = ReplicaGlobalSecondaryIndexSettingsDescription[];
+    export type ReplicaGlobalSecondaryIndexSettingsDescriptionList =
+        ReplicaGlobalSecondaryIndexSettingsDescription[];
     export interface ReplicaGlobalSecondaryIndexSettingsUpdate {
         /**
          * The name of the global secondary index. The name must be unique among all other indexes on this table.
@@ -2540,7 +2608,8 @@ export namespace DocumentClient {
          */
         ProvisionedReadCapacityAutoScalingSettingsUpdate?: AutoScalingSettingsUpdate;
     }
-    export type ReplicaGlobalSecondaryIndexSettingsUpdateList = ReplicaGlobalSecondaryIndexSettingsUpdate[];
+    export type ReplicaGlobalSecondaryIndexSettingsUpdateList =
+        ReplicaGlobalSecondaryIndexSettingsUpdate[];
     export type ReplicaList = Replica[];
     export interface ReplicaSettingsDescription {
         /**
@@ -2744,8 +2813,17 @@ export namespace DocumentClient {
     }
     export type ReturnConsumedCapacity = "INDEXES" | "TOTAL" | "NONE" | string;
     export type ReturnItemCollectionMetrics = "SIZE" | "NONE" | string;
-    export type ReturnValue = "NONE" | "ALL_OLD" | "UPDATED_OLD" | "ALL_NEW" | "UPDATED_NEW" | string;
-    export type ReturnValuesOnConditionCheckFailure = "ALL_OLD" | "NONE" | string;
+    export type ReturnValue =
+        | "NONE"
+        | "ALL_OLD"
+        | "UPDATED_OLD"
+        | "ALL_NEW"
+        | "UPDATED_NEW"
+        | string;
+    export type ReturnValuesOnConditionCheckFailure =
+        | "ALL_OLD"
+        | "NONE"
+        | string;
     export type S3Bucket = string;
     export type S3BucketOwner = string;
     export interface S3BucketSource {
@@ -2798,7 +2876,13 @@ export namespace DocumentClient {
          */
         KMSMasterKeyId?: KMSMasterKeyId;
     }
-    export type SSEStatus = "ENABLING" | "ENABLED" | "DISABLING" | "DISABLED" | "UPDATING" | string;
+    export type SSEStatus =
+        | "ENABLING"
+        | "ENABLED"
+        | "DISABLING"
+        | "DISABLED"
+        | "UPDATING"
+        | string;
     export type SSEType = "AES256" | "KMS" | string;
     export type ScalarAttributeType = "S" | "N" | "B" | string;
     export interface ScanInput {
@@ -2889,7 +2973,12 @@ export namespace DocumentClient {
     export type ScanSegment = number;
     export type ScanTotalSegments = number;
     export type SecondaryIndexesCapacityMap = { [key: string]: Capacity };
-    export type Select = "ALL_ATTRIBUTES" | "ALL_PROJECTED_ATTRIBUTES" | "SPECIFIC_ATTRIBUTES" | "COUNT" | string;
+    export type Select =
+        | "ALL_ATTRIBUTES"
+        | "ALL_PROJECTED_ATTRIBUTES"
+        | "SPECIFIC_ATTRIBUTES"
+        | "COUNT"
+        | string;
     export interface SourceTableDetails {
         /**
          * The name of the table for which the backup was created.
@@ -2962,7 +3051,12 @@ export namespace DocumentClient {
          */
         StreamViewType?: StreamViewType;
     }
-    export type StreamViewType = "NEW_IMAGE" | "OLD_IMAGE" | "NEW_AND_OLD_IMAGES" | "KEYS_ONLY" | string;
+    export type StreamViewType =
+        | "NEW_IMAGE"
+        | "OLD_IMAGE"
+        | "NEW_AND_OLD_IMAGES"
+        | "KEYS_ONLY"
+        | string;
     export type String = string;
     export type StringAttributeValue = string;
     export type StringSetAttributeValue = StringAttributeValue[];
@@ -3167,7 +3261,12 @@ export namespace DocumentClient {
          */
         AttributeName: TimeToLiveAttributeName;
     }
-    export type TimeToLiveStatus = "ENABLING" | "DISABLING" | "ENABLED" | "DISABLED" | string;
+    export type TimeToLiveStatus =
+        | "ENABLING"
+        | "DISABLING"
+        | "ENABLED"
+        | "DISABLED"
+        | string;
     export interface TransactGetItem {
         /**
          * Contains the primary key that identifies the item to get, together with the name of the table that contains the item, and optionally the specific attributes of the item to retrieve.

@@ -59,6 +59,6 @@ export class Girl extends Vehicle {
     }
 
     tired(): boolean {
-        return (this.fatigueLevel >= this.MAX_FATIGUE);
+        return this.fatigueLevel >= this.MAX_FATIGUE;
     }
 }

@@ -66,7 +66,11 @@ export interface ChoiceRuleSimple extends ChoiceRuleComparison {
     Comment?: string;
 }
 
-export type ChoiceRule = ChoiceRuleSimple | ChoiceRuleNot | ChoiceRuleAnd | ChoiceRuleOr;
+export type ChoiceRule =
+    | ChoiceRuleSimple
+    | ChoiceRuleNot
+    | ChoiceRuleAnd
+    | ChoiceRuleOr;
 
 /**
  * The Choice State (identified by "Type":"Choice") adds branching logic to a state machine.

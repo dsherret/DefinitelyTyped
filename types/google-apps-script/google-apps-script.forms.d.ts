@@ -65,8 +65,7 @@ declare namespace GoogleAppsScript {
          *     checkboxGridItem.setValidation(checkboxGridValidation);
          */
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface CheckboxGridValidation {
-        }
+        interface CheckboxGridValidation {}
         /**
          * A DataValidationBuilder for a CheckboxGridValidation.
          *
@@ -286,7 +285,11 @@ declare namespace GoogleAppsScript {
          *     item.setTitle('How long can you hold your breath?');
          */
         interface DurationItem {
-            createResponse(hours: Integer, minutes: Integer, seconds: Integer): ItemResponse;
+            createResponse(
+                hours: Integer,
+                minutes: Integer,
+                seconds: Integer,
+            ): ItemResponse;
             duplicate(): DurationItem;
             getGeneralFeedback(): QuizFeedback;
             getHelpText(): string;
@@ -524,8 +527,7 @@ declare namespace GoogleAppsScript {
          *     gridItem.setValidation(gridValidation);
          */
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface GridValidation {
-        }
+        interface GridValidation {}
         /**
          * A DataValidationBuilder for a GridValidation.
          *
@@ -698,7 +700,10 @@ declare namespace GoogleAppsScript {
             createChoice(value: string): Choice;
             createChoice(value: string, isCorrect: boolean): Choice;
             createChoice(value: string, navigationItem: PageBreakItem): Choice;
-            createChoice(value: string, navigationType: PageNavigationType): Choice;
+            createChoice(
+                value: string,
+                navigationType: PageNavigationType,
+            ): Choice;
             createResponse(response: string): ItemResponse;
             duplicate(): ListItem;
             getChoices(): Choice[];
@@ -739,7 +744,10 @@ declare namespace GoogleAppsScript {
             createChoice(value: string): Choice;
             createChoice(value: string, isCorrect: boolean): Choice;
             createChoice(value: string, navigationItem: PageBreakItem): Choice;
-            createChoice(value: string, navigationType: PageNavigationType): Choice;
+            createChoice(
+                value: string,
+                navigationType: PageNavigationType,
+            ): Choice;
             createResponse(response: string): ItemResponse;
             duplicate(): MultipleChoiceItem;
             getChoices(): Choice[];
@@ -848,7 +856,9 @@ declare namespace GoogleAppsScript {
             setPoints(points: Integer): ParagraphTextItem;
             setRequired(enabled: boolean): ParagraphTextItem;
             setTitle(title: string): ParagraphTextItem;
-            setValidation(validation: ParagraphTextValidation): ParagraphTextItem;
+            setValidation(
+                validation: ParagraphTextValidation,
+            ): ParagraphTextItem;
         }
         /**
          * A DataValidation for a ParagraphTextItem.
@@ -861,8 +871,7 @@ declare namespace GoogleAppsScript {
          *     paragraphTextItem.setValidation(paragraphtextValidation);
          */
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface ParagraphTextValidation {
-        }
+        interface ParagraphTextValidation {}
         /**
          * A DataValidationBuilder for a ParagraphTextValidation.
          *
@@ -875,12 +884,24 @@ declare namespace GoogleAppsScript {
          *     paragraphTextItem.setValidation(paragraphtextValidation);
          */
         interface ParagraphTextValidationBuilder {
-            requireTextContainsPattern(pattern: string): ParagraphTextValidationBuilder;
-            requireTextDoesNotContainPattern(pattern: string): ParagraphTextValidationBuilder;
-            requireTextDoesNotMatchPattern(pattern: string): ParagraphTextValidationBuilder;
-            requireTextLengthGreaterThanOrEqualTo(number: Integer): ParagraphTextValidationBuilder;
-            requireTextLengthLessThanOrEqualTo(number: Integer): ParagraphTextValidationBuilder;
-            requireTextMatchesPattern(pattern: string): ParagraphTextValidationBuilder;
+            requireTextContainsPattern(
+                pattern: string,
+            ): ParagraphTextValidationBuilder;
+            requireTextDoesNotContainPattern(
+                pattern: string,
+            ): ParagraphTextValidationBuilder;
+            requireTextDoesNotMatchPattern(
+                pattern: string,
+            ): ParagraphTextValidationBuilder;
+            requireTextLengthGreaterThanOrEqualTo(
+                number: Integer,
+            ): ParagraphTextValidationBuilder;
+            requireTextLengthLessThanOrEqualTo(
+                number: Integer,
+            ): ParagraphTextValidationBuilder;
+            requireTextMatchesPattern(
+                pattern: string,
+            ): ParagraphTextValidationBuilder;
             build(): ParagraphTextValidation;
             setHelpText(text: string): ParagraphTextValidationBuilder;
         }
@@ -1017,8 +1038,7 @@ declare namespace GoogleAppsScript {
          *     textItem.setValidation(textValidation);
          */
         // eslint-disable-next-line @typescript-eslint/no-empty-interface
-        interface TextValidation {
-        }
+        interface TextValidation {}
         /**
          * A DataValidationBuilder for a TextValidation.
          *
@@ -1031,21 +1051,39 @@ declare namespace GoogleAppsScript {
          */
         interface TextValidationBuilder {
             requireNumber(): TextValidationBuilder;
-            requireNumberBetween(start: number, end: number): TextValidationBuilder;
+            requireNumberBetween(
+                start: number,
+                end: number,
+            ): TextValidationBuilder;
             requireNumberEqualTo(number: number): TextValidationBuilder;
             requireNumberGreaterThan(number: number): TextValidationBuilder;
-            requireNumberGreaterThanOrEqualTo(number: number): TextValidationBuilder;
+            requireNumberGreaterThanOrEqualTo(
+                number: number,
+            ): TextValidationBuilder;
             requireNumberLessThan(number: number): TextValidationBuilder;
-            requireNumberLessThanOrEqualTo(number: number): TextValidationBuilder;
-            requireNumberNotBetween(start: number, end: number): TextValidationBuilder;
+            requireNumberLessThanOrEqualTo(
+                number: number,
+            ): TextValidationBuilder;
+            requireNumberNotBetween(
+                start: number,
+                end: number,
+            ): TextValidationBuilder;
             requireNumberNotEqualTo(number: number): TextValidationBuilder;
             requireTextContainsPattern(pattern: string): TextValidationBuilder;
-            requireTextDoesNotContainPattern(pattern: string): TextValidationBuilder;
-            requireTextDoesNotMatchPattern(pattern: string): TextValidationBuilder;
+            requireTextDoesNotContainPattern(
+                pattern: string,
+            ): TextValidationBuilder;
+            requireTextDoesNotMatchPattern(
+                pattern: string,
+            ): TextValidationBuilder;
             requireTextIsEmail(): TextValidationBuilder;
             requireTextIsUrl(): TextValidationBuilder;
-            requireTextLengthGreaterThanOrEqualTo(number: Integer): TextValidationBuilder;
-            requireTextLengthLessThanOrEqualTo(number: Integer): TextValidationBuilder;
+            requireTextLengthGreaterThanOrEqualTo(
+                number: Integer,
+            ): TextValidationBuilder;
+            requireTextLengthLessThanOrEqualTo(
+                number: Integer,
+            ): TextValidationBuilder;
             requireTextMatchesPattern(pattern: string): TextValidationBuilder;
             requireWholeNumber(): TextValidationBuilder;
             build(): TextValidation;

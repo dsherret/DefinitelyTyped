@@ -37,7 +37,8 @@ export namespace Azure.ServiceBus {
         timeoutIntervalInS?: number | undefined;
     }
 
-    export interface ReceiveSubscriptionMessageOptions extends ReceiveQueueMessageOptions {}
+    export interface ReceiveSubscriptionMessageOptions
+        extends ReceiveQueueMessageOptions {}
 
     interface IBrokerPropertiesResponse {
         readonly DeliveryCount: number;
@@ -152,21 +153,25 @@ export namespace Azure.ServiceBus {
         pushChannel: string;
         readonly expiredPushChannel?: string | undefined;
         tags?: string[] | undefined;
-        templates?: {
-            [name: string]: {
-                body: string;
-                headers?: any;
-                expiry?: string | undefined;
-                tags?: string[] | undefined;
-            };
-        } | undefined;
-        secondaryTile?: {
-            [titleId: string]: {
-                pushChannel: string;
-                tags?: string[] | undefined;
-                templates?: any;
-            };
-        } | undefined;
+        templates?:
+            | {
+                  [name: string]: {
+                      body: string;
+                      headers?: any;
+                      expiry?: string | undefined;
+                      tags?: string[] | undefined;
+                  };
+              }
+            | undefined;
+        secondaryTile?:
+            | {
+                  [titleId: string]: {
+                      pushChannel: string;
+                      tags?: string[] | undefined;
+                      templates?: any;
+                  };
+              }
+            | undefined;
     }
 
     export interface Response {
@@ -214,9 +219,11 @@ export namespace Azure.ServiceBus {
                 title: string;
                 published: DateString;
                 updated: DateString;
-                author?: {
-                    name: string;
-                } | undefined;
+                author?:
+                    | {
+                          name: string;
+                      }
+                    | undefined;
                 link: string;
             };
             CreatedAt: DateString;
@@ -247,7 +254,8 @@ export namespace Azure.ServiceBus {
         export const DeadLetterMessageCount = "d2p1:DeadLetterMessageCount";
         export const ScheduledMessageCount = "d2p1:ScheduledMessageCount";
         export const TransferMessageCount = "d2p1:TransferMessageCount";
-        export const TransferDeadLetterMessageCount = "d2p1:TransferDeadLetterMessageCount";
+        export const TransferDeadLetterMessageCount =
+            "d2p1:TransferDeadLetterMessageCount";
 
         export interface Topic extends ExtendedBase {
             AccessedAt: DateString;
@@ -338,23 +346,20 @@ export namespace Azure.ServiceBus {
      * Options interfaces with all properties as optional
      */
     export type BrokerProperties = Partial<IBrokerProperties>;
-    export type BrokerPropertiesResponse =
-        & IBrokerPropertiesResponse
-        & Partial<IBrokerProperties>;
+    export type BrokerPropertiesResponse = IBrokerPropertiesResponse &
+        Partial<IBrokerProperties>;
     export type CreateQueueOptions = Partial<IQueueOptions>;
     export type CreateTopicOptions = Partial<ICreateTopicOptions>;
-    export type CreateTopicIfNotExistsOptions = Partial<
-        ICreateTopicIfNotExistsOptions
-    >;
+    export type CreateTopicIfNotExistsOptions =
+        Partial<ICreateTopicIfNotExistsOptions>;
     export type CreateSubscriptionOptions = Partial<ICreateSubscriptionOptions>;
     export type ListSubscriptionsOptions = Partial<PaginationOptions>;
     export type ListRulesOptions = Partial<PaginationOptions>;
     export type ListTopicsOptions = Partial<PaginationOptions>;
     export type ListQueuesOptions = Partial<PaginationOptions>;
     export type CreateRuleOptions = Partial<ICreateRuleOptions>;
-    export type CreateNotificationHubOptions = Partial<
-        ICreateNotificationHubOptions
-    >;
+    export type CreateNotificationHubOptions =
+        Partial<ICreateNotificationHubOptions>;
     export type ListNotificationHubsOptions = Partial<PaginationOptions>;
 
     export type MessageOrName = Message | string;

@@ -42,7 +42,16 @@ export type Icon =
     | "tiles"
     | "filter"
     | "account";
-export type IconSize = "xxs" | "xs" | "sm" | "md" | "lg" | "xl" | "xxl" | "xl3" | "xl4";
+export type IconSize =
+    | "xxs"
+    | "xs"
+    | "sm"
+    | "md"
+    | "lg"
+    | "xl"
+    | "xxl"
+    | "xl3"
+    | "xl4";
 export type TypographySize = "extra-small" | "small" | "regular" | "big";
 export type IconColor =
     | "greenPrimary"
@@ -59,7 +68,15 @@ export type IconColor =
     | "yellowSecondary"
     | "bluePrimary"
     | "blueSecondary";
-export type Color = "primary" | "secondary" | "light" | "dark" | "info" | "success" | "warning" | "danger";
+export type Color =
+    | "primary"
+    | "secondary"
+    | "light"
+    | "dark"
+    | "info"
+    | "success"
+    | "warning"
+    | "danger";
 
 export interface Breadcrumb {
     link: string;

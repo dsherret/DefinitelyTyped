@@ -90,7 +90,12 @@ declare namespace GorillaEngine.UI {
         canAddSlices: boolean;
         canRemoveSlices: boolean;
         snapSlicesToGrid: boolean;
-        zoom: { start: number; end: number; dragToZoomFactor: number; dragToZoomEnabled: boolean };
+        zoom: {
+            start: number;
+            end: number;
+            dragToZoomFactor: number;
+            dragToZoomEnabled: boolean;
+        };
         addModulation(modulation: Partial<Modulation>): Modulation;
         removeModulation(modulation: Partial<Modulation>): void;
         grid: Partial<{

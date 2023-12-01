@@ -83,10 +83,19 @@ const config: CracoConfig = {
     plugins: [
         {
             plugin: {
-                overrideCracoConfig: ({ cracoConfig, pluginOptions, context: { env, paths } }) => {
+                overrideCracoConfig: ({
+                    cracoConfig,
+                    pluginOptions,
+                    context: { env, paths },
+                }) => {
                     return cracoConfig;
                 },
-                overrideWebpackConfig: ({ webpackConfig, cracoConfig, pluginOptions, context: { env, paths } }) => {
+                overrideWebpackConfig: ({
+                    webpackConfig,
+                    cracoConfig,
+                    pluginOptions,
+                    context: { env, paths },
+                }) => {
                     return webpackConfig;
                 },
                 overrideDevServerConfig: ({
@@ -129,16 +138,24 @@ const matchedLoaders = getLoaders({}, matchesLessLoader);
 const isRemoveLoaders = removeLoaders({}, matchesLessLoader);
 
 // $ExpectType { isAdded: boolean; }
-const isAddBeforeLoader = addBeforeLoader({}, matchesLessLoader, { loader: "postcss-loader" });
+const isAddBeforeLoader = addBeforeLoader({}, matchesLessLoader, {
+    loader: "postcss-loader",
+});
 
 // $ExpectType { isAdded: boolean; addedCount: number; }
-const isAddBeforeLoaders = addBeforeLoaders({}, matchesLessLoader, { loader: "postcss-loader" });
+const isAddBeforeLoaders = addBeforeLoaders({}, matchesLessLoader, {
+    loader: "postcss-loader",
+});
 
 // $ExpectType { isAdded: boolean; }
-const isAddAfterLoader = addAfterLoader({}, matchesLessLoader, { loader: "postcss-loader" });
+const isAddAfterLoader = addAfterLoader({}, matchesLessLoader, {
+    loader: "postcss-loader",
+});
 
 // $ExpectType { isAdded: boolean; addedCount: number; }
-const isAddAfterLoaders = addAfterLoaders({}, matchesLessLoader, { loader: "postcss-loader" });
+const isAddAfterLoaders = addAfterLoaders({}, matchesLessLoader, {
+    loader: "postcss-loader",
+});
 
 class DemoPlugin extends WebpackPlugin {
     constructor() {
@@ -212,4 +229,8 @@ const webpackDevConfig = createWebpackDevConfig({}, {}, { verbose: true });
 const webpackProdConfig = createWebpackProdConfig({}, {}, { verbose: true });
 
 // $ExpectType (proxy: ProxyConfigArray | undefined, allowedHost: string) => Configuration
-const devServerConfigProviderProxy = createDevServerConfigProviderProxy({}, {}, { verbose: true });
+const devServerConfigProviderProxy = createDevServerConfigProviderProxy(
+    {},
+    {},
+    { verbose: true },
+);

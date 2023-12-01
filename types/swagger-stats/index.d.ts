@@ -5,7 +5,12 @@
 import { Server } from "@hapi/hapi";
 import { RequestHandler } from "express";
 import { FastifyInstance } from "fastify";
-import { IncomingHttpHeaders, IncomingMessage, OutgoingHttpHeaders, ServerResponse } from "http";
+import {
+    IncomingHttpHeaders,
+    IncomingMessage,
+    OutgoingHttpHeaders,
+    ServerResponse,
+} from "http";
 import * as PromClient from "prom-client";
 
 export type SWStats = Partial<{
@@ -82,7 +87,11 @@ export type SWStats = Partial<{
      * - res - response
      * - rrr - Request Response Record (RRR)
      */
-    onResponseFinish: (req: IncomingMessage, res: ServerResponse, rrr: RequestResponseRecord) => void;
+    onResponseFinish: (
+        req: IncomingMessage,
+        res: ServerResponse,
+        rrr: RequestResponseRecord,
+    ) => void;
     /**
      * Enable Basic authentication.
      *
@@ -99,7 +108,11 @@ export type SWStats = Partial<{
      * - password - password
      * Must return true if user authenticated, false if not.
      */
-    onAuthenticate: (req: IncomingMessage, username: string, password: string) => boolean | Promise<boolean>;
+    onAuthenticate: (
+        req: IncomingMessage,
+        username: string,
+        password: string,
+    ) => boolean | Promise<boolean>;
     /**
      * If authentication is enabled, max age of the session, in seconds.
      *
@@ -303,7 +316,9 @@ export interface CoreStats {
     timeline?: TimelineStats | undefined;
     lasterrors?: RequestResponseRecord[] | undefined;
     longestreq?: RequestResponseRecord[] | undefined;
-    apidefs?: Record<string, Record<HTTPMethod, APIOperationDefinition>> | undefined;
+    apidefs?:
+        | Record<string, Record<HTTPMethod, APIOperationDefinition>>
+        | undefined;
     apistats?: Record<string, Record<HTTPMethod, ReqResStats>> | undefined;
     errors?: ErrorsStats | undefined;
     apiop?: Record<string, Record<HTTPMethod, APIOperationStats>> | undefined;

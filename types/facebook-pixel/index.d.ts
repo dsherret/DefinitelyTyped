@@ -29,21 +29,66 @@ declare namespace facebook.Pixel {
             parameters: facebook.Pixel.ViewContentParameters,
             option?: EventIDOptions,
         ): void;
-        (eventType: string, eventName: string, parameters: ViewContentParameters, option?: EventIDOptions): void;
-        (eventType: string, eventName: string, parameters: SearchParameters, option?: EventIDOptions): void;
-        (eventType: string, eventName: string, parameters: AddToCartParameters, option?: EventIDOptions): void;
-        (eventType: string, eventName: string, parameters: AddToWishlistParameters, option?: EventIDOptions): void;
-        (eventType: string, eventName: string, parameters: InitiateCheckoutParameters, option?: EventIDOptions): void;
-        (eventType: string, eventName: string, parameters: AddPaymentInfoParameters, option?: EventIDOptions): void;
-        (eventType: string, eventName: string, parameters: PurchaseParameters, option?: EventIDOptions): void;
-        (eventType: string, eventName: string, parameters: LeadParameters, option?: EventIDOptions): void;
+        (
+            eventType: string,
+            eventName: string,
+            parameters: ViewContentParameters,
+            option?: EventIDOptions,
+        ): void;
+        (
+            eventType: string,
+            eventName: string,
+            parameters: SearchParameters,
+            option?: EventIDOptions,
+        ): void;
+        (
+            eventType: string,
+            eventName: string,
+            parameters: AddToCartParameters,
+            option?: EventIDOptions,
+        ): void;
+        (
+            eventType: string,
+            eventName: string,
+            parameters: AddToWishlistParameters,
+            option?: EventIDOptions,
+        ): void;
+        (
+            eventType: string,
+            eventName: string,
+            parameters: InitiateCheckoutParameters,
+            option?: EventIDOptions,
+        ): void;
+        (
+            eventType: string,
+            eventName: string,
+            parameters: AddPaymentInfoParameters,
+            option?: EventIDOptions,
+        ): void;
+        (
+            eventType: string,
+            eventName: string,
+            parameters: PurchaseParameters,
+            option?: EventIDOptions,
+        ): void;
+        (
+            eventType: string,
+            eventName: string,
+            parameters: LeadParameters,
+            option?: EventIDOptions,
+        ): void;
         (
             eventType: string,
             eventName: string,
             parameters: CompleteRegistrationParameters,
             option?: EventIDOptions,
         ): void;
-        (eventType: string, eventName: string, parameters: CustomParameters, option?: EventIDOptions): void;
+        (
+            eventType: string,
+            eventName: string,
+            parameters: CustomParameters,
+            option?: EventIDOptions,
+        ): void;
 
         (
             eventType: string,
@@ -74,9 +119,9 @@ declare namespace facebook.Pixel {
         content_category?: string | undefined;
         contents?:
             | Array<{
-                id: string;
-                quantity: number;
-            }>
+                  id: string;
+                  quantity: number;
+              }>
             | undefined;
     }
 
@@ -153,7 +198,8 @@ declare namespace facebook.Pixel {
 
 // For Facebook Tag API using Dynamic Product Ads
 declare namespace facebook.Pixel.DPA {
-    interface ViewContentParameters extends facebook.Pixel.ViewContentParameters {
+    interface ViewContentParameters
+        extends facebook.Pixel.ViewContentParameters {
         content_type: string;
         content_ids: string[];
     }

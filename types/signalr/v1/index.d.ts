@@ -38,7 +38,11 @@ interface SignalR {
 
     log(msg: string, logging: boolean): void;
     isCrossDomain(url: string): boolean;
-    changeState(connection: SignalR, expectedState: number, newState: number): boolean;
+    changeState(
+        connection: SignalR,
+        expectedState: number,
+        newState: number,
+    ): boolean;
     isDisconnecting(connection: SignalR): boolean;
 
     // createHubProxy(hubName: string): SignalR;
@@ -46,7 +50,10 @@ interface SignalR {
     start(): JQueryPromise<any>;
     start(callback: () => void): JQueryPromise<any>;
     start(settings: ConnectionSettings): JQueryPromise<any>;
-    start(settings: ConnectionSettings, callback: () => void): JQueryPromise<any>;
+    start(
+        settings: ConnectionSettings,
+        callback: () => void,
+    ): JQueryPromise<any>;
 
     send(data: string): void;
     stop(async?: boolean, notifyServer?: boolean): void;
@@ -84,7 +91,15 @@ interface HubConnection extends SignalR {
     // (url?: string, queryString?: any, logging?: boolean): HubConnection;
     proxies: any;
     transport: { name: string; supportsKeepAlive: () => boolean };
-    received(callback: (data: { Id: any; Method: any; Hub: any; State: any; Args: any }) => void): HubConnection;
+    received(
+        callback: (data: {
+            Id: any;
+            Method: any;
+            Hub: any;
+            State: any;
+            Args: any;
+        }) => void,
+    ): HubConnection;
     createHubProxy(hubName: string): HubProxy;
 }
 

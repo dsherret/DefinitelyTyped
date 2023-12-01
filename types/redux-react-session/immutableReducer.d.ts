@@ -3,4 +3,7 @@ import { SessionState } from "./reducer";
 
 export const initialState: SessionState;
 export default immutableReducer;
-declare function immutableReducer(state: SessionState, action: Action): SessionState;
+declare function immutableReducer(
+    state: SessionState,
+    action: Action,
+): SessionState;

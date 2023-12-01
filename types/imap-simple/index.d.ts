@@ -38,15 +38,24 @@ export class ImapSimple extends EventEmitter {
     imap: Imap; // https://github.com/chadxz/imap-simple/blob/master/lib/imapSimple.js#L22
 
     /** Open a mailbox, calling the provided callback with signature (err, boxName), or resolves the returned promise with boxName. */
-    openBox(boxName: string, callback: (err: Error, boxName: string) => void): void;
+    openBox(
+        boxName: string,
+        callback: (err: Error, boxName: string) => void,
+    ): void;
     openBox(boxName: string): Promise<string>;
 
     /** Create a mailbox, calling the provided callback with signature (err, boxName), or resolves the returned promise with boxName. */
-    addBox(boxName: string, callback: (err: Error, boxName: string) => void): void;
+    addBox(
+        boxName: string,
+        callback: (err: Error, boxName: string) => void,
+    ): void;
     addBox(boxName: string): Promise<string>;
 
     /** Delete a mailbox, calling the provided callback with signature (err, boxName), or resolves the returned promise with boxName. */
-    delBox(boxName: string, callback: (err: Error, boxName: string) => void): void;
+    delBox(
+        boxName: string,
+        callback: (err: Error, boxName: string) => void,
+    ): void;
     delBox(boxName: string): Promise<string>;
 
     /** Returns the full list of mailboxes (folders). Upon success, either the provided callback will be called with signature (err, boxes), or the returned promise will be resolved with boxes. Boxes is the exact object returned from the node-imap getBoxes() result. */
@@ -59,33 +68,63 @@ export class ImapSimple extends EventEmitter {
         fetchOptions: Imap.FetchOptions,
         callback: (err: Error, messages: Message[]) => void,
     ): void;
-    search(searchCriteria: any[], fetchOptions: Imap.FetchOptions): Promise<Message[]>;
+    search(
+        searchCriteria: any[],
+        fetchOptions: Imap.FetchOptions,
+    ): Promise<Message[]>;
 
     /** Close the connection to the imap server. */
     end(): void;
 
     /** Downloads part data (which is either part of the message body, or an attachment). Upon success, either the provided callback will be called with signature (err, data), or the returned promise will be resolved with data. The data will be automatically decoded based on its encoding. If the encoding of the part is not supported, an error will occur. */
-    getPartData(message: Message, part: any, callback: (err: Error, data: any) => void): void;
+    getPartData(
+        message: Message,
+        part: any,
+        callback: (err: Error, data: any) => void,
+    ): void;
     getPartData(message: Message, part: any): Promise<any>;
 
     /** Adds the provided label(s) to the specified message(s). source corresponds to a node-imap MessageSource which specifies the messages to be moved. label is either a string or array of strings indicating the labels to add. When completed, either calls the provided callback with signature (err), or resolves the returned promise. */
-    addMessageLabel(source: string | string[], label: string | string[], callback: (err: Error) => void): void;
-    addMessageLabel(source: string | string[], label: string | string[]): Promise<void>;
+    addMessageLabel(
+        source: string | string[],
+        label: string | string[],
+        callback: (err: Error) => void,
+    ): void;
+    addMessageLabel(
+        source: string | string[],
+        label: string | string[],
+    ): Promise<void>;
 
     /** Appends the argument message to the currently open mailbox or another mailbox. Message is a RFC-822 compatible MIME message. Valid options are mailbox, flags and date. When completed, either calls the provided callback with signature (err), or resolves the returned promise. */
-    append(message: any, options: Imap.AppendOptions, callback: (err: Error) => void): void;
+    append(
+        message: any,
+        options: Imap.AppendOptions,
+        callback: (err: Error) => void,
+    ): void;
     append(message: any, options: Imap.AppendOptions): Promise<void>;
 
     /** Moves the specified message(s) in the currently open mailbox to another mailbox. source corresponds to a node-imap MessageSource which specifies the messages to be moved. When completed, either calls the provided callback with signature (err), or resolves the returned promise. */
-    moveMessage(source: string | string[], boxName: string, callback: (err: Error) => void): void;
+    moveMessage(
+        source: string | string[],
+        boxName: string,
+        callback: (err: Error) => void,
+    ): void;
     moveMessage(source: string | string[], boxName: string): Promise<void>;
 
     /** Adds the provided flag(s) to the specified message(s). uid is the uid of the message you want to add the flag to or an array of uids. flag is either a string or array of strings indicating the flags to add. */
-    addFlags(source: number | number[], flag: string | string[], callback: (err: Error) => void): void;
+    addFlags(
+        source: number | number[],
+        flag: string | string[],
+        callback: (err: Error) => void,
+    ): void;
     addFlags(source: number | number[], flag: string | string[]): Promise<void>;
 
     /** Removes the provided flag(s) from the specified message(s). uid is the uid of the message you want to remove the flag from or an array of uids. flag is either a string or array of strings indicating the flags to remove. */
-    delFlags(uid: number | number[], flag: string | string[], callback: (err: Error) => void): void;
+    delFlags(
+        uid: number | number[],
+        flag: string | string[],
+        callback: (err: Error) => void,
+    ): void;
     delFlags(uid: number | number[], flag: string | string[]): Promise<void>;
 
     /** Deletes the specified message(s). uid is the uid of the message you want to add the flag to or an array of uids. */
@@ -106,7 +145,10 @@ export namespace errors {
 }
 
 /** Main entry point. Connect to an Imap server. */
-export function connect(options: ImapSimpleOptions, callback: (err: Error, connection: ImapSimple) => void): void;
+export function connect(
+    options: ImapSimpleOptions,
+    callback: (err: Error, connection: ImapSimple) => void,
+): void;
 export function connect(options: ImapSimpleOptions): Promise<ImapSimple>;
 
 /** Given the message.attributes.struct, retrieve a flattened array of parts objects that describe the structure of the different parts of the message's body. Useful for getting a simple list to iterate for the purposes of, for example, finding all attachments. */

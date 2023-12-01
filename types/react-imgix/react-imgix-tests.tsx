@@ -1,5 +1,12 @@
 import * as React from "react";
-import Imgix, { Background, buildURL, ImgixProvider, Picture, PublicConfigAPI, Source } from "react-imgix";
+import Imgix, {
+    Background,
+    buildURL,
+    ImgixProvider,
+    Picture,
+    PublicConfigAPI,
+    Source,
+} from "react-imgix";
 
 const ImgixTest = () => (
     <Imgix
@@ -35,14 +42,26 @@ const ImgixTest = () => (
 
 const PictureTest = () => (
     <Picture>
-        <Source src="https://.../image.png" width={400} htmlAttributes={{ media: "(min-width: 768px)" }} />
-        <Source src="https://.../image.png" width={200} htmlAttributes={{ media: "(min-width: 320px)" }} />
+        <Source
+            src="https://.../image.png"
+            width={400}
+            htmlAttributes={{ media: "(min-width: 768px)" }}
+        />
+        <Source
+            src="https://.../image.png"
+            width={200}
+            htmlAttributes={{ media: "(min-width: 320px)" }}
+        />
         <Imgix src="https://.../image.png" width={100} />
     </Picture>
 );
 
 const BackgroundTest = () => (
-    <Background src="https://.../image.png" imgixParams={{ w: 1920, h: 500 }} className="blog-title">
+    <Background
+        src="https://.../image.png"
+        imgixParams={{ w: 1920, h: 500 }}
+        className="blog-title"
+    >
         <h2>Blog Title</h2>
     </Background>
 );

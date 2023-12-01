@@ -18,7 +18,12 @@ pvutils.utilFromBase(new Uint8Array(0), 0).toFixed();
 pvutils.utilToBase(0, 0).byteLength;
 pvutils.utilToBase(0, 0, 0).byteLength;
 
-pvutils.utilConcatBuf(new ArrayBuffer(0), new ArrayBuffer(0), new ArrayBuffer(0), new ArrayBuffer(0)).byteLength;
+pvutils.utilConcatBuf(
+    new ArrayBuffer(0),
+    new ArrayBuffer(0),
+    new ArrayBuffer(0),
+    new ArrayBuffer(0),
+).byteLength;
 
 pvutils.utilDecodeTC().toFixed();
 

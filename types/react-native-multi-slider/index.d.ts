@@ -50,12 +50,14 @@ export interface MultiSliderProps {
      * Slip displacement If finger leaves the marker measures distance before responder cuts out and changes are no
      * longer registered, if not given marker will be active until pressed released.
      */
-    touchDimensions?: {
-        height: number;
-        width: number;
-        borderRadius: number;
-        slipDisplacement: number;
-    } | undefined;
+    touchDimensions?:
+        | {
+              height: number;
+              width: number;
+              borderRadius: number;
+              slipDisplacement: number;
+          }
+        | undefined;
 
     customMarker?: React.ComponentType<MarkerProps> | undefined;
 

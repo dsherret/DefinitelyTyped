@@ -23,7 +23,11 @@ export interface AESCBC {
     (): AESCBC;
     encrypt: (messagebuf: Buffer, passwordstr: string) => Buffer;
     decrypt: (encbuf: Buffer, passwordstr: string) => Buffer;
-    encryptCipherkey: (messagebuf: Buffer, cipherkeybuf: Buffer, ivbuf: Buffer) => Buffer;
+    encryptCipherkey: (
+        messagebuf: Buffer,
+        cipherkeybuf: Buffer,
+        ivbuf: Buffer,
+    ) => Buffer;
     decryptCipherkey: (encbuf: Buffer, cipherkeybuf: Buffer) => Buffer;
 }
 

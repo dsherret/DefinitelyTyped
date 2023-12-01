@@ -1,6 +1,14 @@
 import * as React from "react";
-import { AppRegistry, StyleSheet, Text, TouchableHighlight, View } from "react-native";
-import SignatureCapture, { SaveEventParams } from "react-native-signature-capture";
+import {
+    AppRegistry,
+    StyleSheet,
+    Text,
+    TouchableHighlight,
+    View,
+} from "react-native";
+import SignatureCapture, {
+    SaveEventParams,
+} from "react-native-signature-capture";
 
 class RNSignatureExample extends React.Component {
     private readonly signatureRef = React.createRef<SignatureCapture>();

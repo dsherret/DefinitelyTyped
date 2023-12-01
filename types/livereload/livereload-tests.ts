@@ -11,7 +11,9 @@ const liveReloadServer = createServer({
 // Listen for errors
 liveReloadServer.on("error", (err: NodeJS.ErrnoException) => {
     if (err.code === "EADDRINUSE") {
-        console.log("The port LiveReload wants to use is used by something else.");
+        console.log(
+            "The port LiveReload wants to use is used by something else.",
+        );
         process.exit(1);
     }
 });

@@ -21,7 +21,9 @@ declare namespace OO {
          * @throws {Error} If a parameter is invalid
          */
         register(
-            constructor: (ConstructorLike & { static: { name: string } }) | (ConstructorLike & { key: string }),
+            constructor:
+                | (ConstructorLike & { static: { name: string } })
+                | (ConstructorLike & { key: string }),
         ): void;
 
         /**
@@ -70,7 +72,7 @@ declare namespace OO {
     }
 
     interface FactoryConstructor {
-        new(): Factory;
+        new (): Factory;
         prototype: Factory;
         super: RegistryConstructor;
         /** @deprecated Use `super` instead */

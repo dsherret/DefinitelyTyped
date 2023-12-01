@@ -1,21 +1,21 @@
 {
-    "private": true,
-    "name": "@types/stremio-addon-sdk",
-    "version": "1.6.9999",
-    "projects": [
-        "https://github.com/Stremio/stremio-addon-sdk#readme"
-    ],
-    "devDependencies": {
-        "@types/stremio-addon-sdk": "workspace:."
+  "private": true,
+  "name": "@types/stremio-addon-sdk",
+  "version": "1.6.9999",
+  "projects": [
+    "https://github.com/Stremio/stremio-addon-sdk#readme"
+  ],
+  "devDependencies": {
+    "@types/stremio-addon-sdk": "workspace:."
+  },
+  "owners": [
+    {
+      "name": "Sleeyax",
+      "githubUsername": "sleeyax"
     },
-    "owners": [
-        {
-            "name": "Sleeyax",
-            "githubUsername": "sleeyax"
-        },
-        {
-            "name": "Victor",
-            "githubUsername": "victorgveloso"
-        }
-    ]
+    {
+      "name": "Victor",
+      "githubUsername": "victorgveloso"
+    }
+  ]
 }

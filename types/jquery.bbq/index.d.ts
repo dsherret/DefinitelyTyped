@@ -112,7 +112,11 @@ declare global {
          * @name coerce (Boolean) If true, coerces any numbers or true, false, null, and undefined to their actual value. Defaults to false if omitted.
          * @name merge_mode An object representing the deserialized params string.
          */
-        querystring(url?: string, coerce?: boolean, merge_mode?: number): string;
+        querystring(
+            url?: string,
+            coerce?: boolean,
+            merge_mode?: number,
+        ): string;
 
         querystring(url?: string, coerce?: any, merge_mode?: number): string;
 
@@ -148,8 +152,13 @@ declare global {
 
         fragment(attr?: any, params?: any, merge_mode?: number): JQuery;
 
-        hashchange(eventData?: any, handler?: (eventObject: JQueryBbq.EventObject) => any): JQuery;
+        hashchange(
+            eventData?: any,
+            handler?: (eventObject: JQueryBbq.EventObject) => any,
+        ): JQuery;
 
-        hashchange(handler: (eventObject: JQueryBbq.EventObject) => any): JQuery;
+        hashchange(
+            handler: (eventObject: JQueryBbq.EventObject) => any,
+        ): JQuery;
     }
 }

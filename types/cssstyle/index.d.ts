@@ -4,7 +4,11 @@ export class CSSStyleDeclaration {
     item(index: number): string;
     getPropertyValue(name: string): string;
     getPropertyPriority(name: string): string;
-    setProperty(name: string, value: string | null, priority?: string | null): void;
+    setProperty(
+        name: string,
+        value: string | null,
+        priority?: string | null,
+    ): void;
     removeProperty(name: string): string;
 
     cssText: string;

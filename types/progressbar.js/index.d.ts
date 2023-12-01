@@ -65,7 +65,11 @@ declare namespace main {
          * @param [options] - Animation options. These options override the defaults given in initialization
          * @param [cb] - Callback function which is called after transition ends.
          */
-        animate(progress: number, options?: AnimationOptions, cb?: () => void): void;
+        animate(
+            progress: number,
+            options?: AnimationOptions,
+            cb?: () => void,
+        ): void;
 
         /**
          * @param progress = progress from 0 to 1.

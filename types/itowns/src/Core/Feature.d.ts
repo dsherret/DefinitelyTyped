@@ -10,7 +10,8 @@ export enum FEATURE_TYPES {
     POLYGON = 2,
 }
 
-export interface FeatureBuildingOptions { // TODO
+export interface FeatureBuildingOptions {
+    // TODO
     crs: string;
     structure?: "2d" | "3d";
     filteringExtent?: any; // Event | boolean
@@ -23,7 +24,8 @@ export interface FeatureBuildingOptions { // TODO
 
 type FeatureType = "point" | "line" | "polygon";
 
-export class FeatureGeometry { // TODO
+export class FeatureGeometry {
+    // TODO
     constructor(feature: Feature);
 
     extent?: Extent;
@@ -55,11 +57,9 @@ export class FeatureGeometry { // TODO
     updateExtent(): void;
 }
 
-declare class Feature { // TODO
-    constructor(
-        type: FeatureType,
-        collection: FeatureCollection,
-    );
+declare class Feature {
+    // TODO
+    constructor(type: FeatureType, collection: FeatureCollection);
 
     type: FeatureType;
     vertices: number[];
@@ -86,7 +86,8 @@ declare class Feature { // TODO
 
 export default Feature;
 
-export class FeatureCollection extends THREE.Object3D { // TODO
+export class FeatureCollection extends THREE.Object3D {
+    // TODO
     constructor(options: FeatureBuildingOptions | Layer);
 
     readonly isFeatureCollection: boolean;

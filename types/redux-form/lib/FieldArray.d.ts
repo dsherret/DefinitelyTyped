@@ -10,15 +10,21 @@ interface _BaseFieldArrayProps<P = {}, FieldValue = any> {
     rerenderOnEveryChange?: boolean | undefined;
 }
 
-export type BaseFieldArrayProps<P = {}, FieldValue = any> = (P | { props?: P }) & _BaseFieldArrayProps<P, FieldValue>;
+export type BaseFieldArrayProps<P = {}, FieldValue = any> = (
+    | P
+    | { props?: P }
+) &
+    _BaseFieldArrayProps<P, FieldValue>;
 
-export interface GenericFieldArray<FieldValue = any, P = {}> extends Component<BaseFieldArrayProps<P, FieldValue>> {
+export interface GenericFieldArray<FieldValue = any, P = {}>
+    extends Component<BaseFieldArrayProps<P, FieldValue>> {
     name: string;
     valid: boolean;
     getRenderedComponent(): Component<WrappedFieldArrayProps<FieldValue> & P>;
 }
 
-export class FieldArray<P = {}, FieldValue = any> extends Component<BaseFieldArrayProps<P, FieldValue>>
+export class FieldArray<P = {}, FieldValue = any>
+    extends Component<BaseFieldArrayProps<P, FieldValue>>
     implements GenericFieldArray<FieldValue, P>
 {
     name: string;

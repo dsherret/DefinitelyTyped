@@ -4,7 +4,10 @@
  * `whitelistObjectKeys`, but eventually keeping all the keys. Returns a tuple
  * of objects `[first, second]`.
  */
-declare function partitionObjectByKey(source: object, whitelist: Set<string>): [object, object];
+declare function partitionObjectByKey(
+    source: object,
+    whitelist: Set<string>,
+): [object, object];
 
 declare namespace partitionObjectByKey {}
 

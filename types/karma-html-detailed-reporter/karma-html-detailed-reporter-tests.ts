@@ -7,7 +7,11 @@ module.exports = (config: karma.Config) => {
         frameworks: ["jasmine"],
         reporters: ["progress", "htmlDetailed"],
         browsers: ["Chrome", "PhantomJS"],
-        plugins: ["karma-jasmine", "karma-chrome-launcher", "karma-html-detailed-reporter"],
+        plugins: [
+            "karma-jasmine",
+            "karma-chrome-launcher",
+            "karma-html-detailed-reporter",
+        ],
 
         // (test) configure the reporter
         htmlDetailed: {
@@ -23,5 +27,6 @@ module.exports = (config: karma.Config) => {
     });
 };
 
-const [factory, preprocessor] = karmaHtmlDetailedReporter["preprocessor:htmlDetailed"];
+const [factory, preprocessor] =
+    karmaHtmlDetailedReporter["preprocessor:htmlDetailed"];
 const [type, reporter] = karmaHtmlDetailedReporter["reporter:htmlDetailed"];

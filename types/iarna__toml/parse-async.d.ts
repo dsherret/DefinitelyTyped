@@ -1,5 +1,8 @@
 /** Asynchronously parse a TOML string and return a promise of the resulting object. */
-declare function parseAsync(str: string, opts?: parseAsync.Options): Promise<Record<string, any>>;
+declare function parseAsync(
+    str: string,
+    opts?: parseAsync.Options,
+): Promise<Record<string, any>>;
 
 declare namespace parseAsync {
     interface Options {

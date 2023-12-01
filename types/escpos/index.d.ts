@@ -11,10 +11,36 @@ export type QRCODE_LEVEL = "L" | "M" | "Q" | "H";
  * `I` = Italic
  * `U` = Underline
  */
-export type TXT_STYLE = "NORMAL" | "B" | "I" | "U" | "U2" | "BI" | "BIU" | "BIU2" | "BU" | "BU2" | "IU" | "IU2";
+export type TXT_STYLE =
+    | "NORMAL"
+    | "B"
+    | "I"
+    | "U"
+    | "U2"
+    | "BI"
+    | "BIU"
+    | "BIU2"
+    | "BU"
+    | "BU2"
+    | "IU"
+    | "IU2";
 
-export type MIME_TYPE = "image/png" | "image/jpg" | "image/jpeg" | "image/gif" | "image/bmp";
-export type BARCODE_TYPE = "UPC_A" | "UPC_E" | "EAN13" | "EAN8" | "CODE39" | "ITF" | "NW7" | "CODE93" | "CODE128";
+export type MIME_TYPE =
+    | "image/png"
+    | "image/jpg"
+    | "image/jpeg"
+    | "image/gif"
+    | "image/bmp";
+export type BARCODE_TYPE =
+    | "UPC_A"
+    | "UPC_E"
+    | "EAN13"
+    | "EAN8"
+    | "CODE39"
+    | "ITF"
+    | "NW7"
+    | "CODE93"
+    | "CODE128";
 
 /**
  * `LT` = Left
@@ -294,11 +320,17 @@ export class USB implements Adapter {
 }
 
 export class Serial implements Adapter {
-    constructor(port: number, options?: { baudRate: number; autoOpen: boolean });
+    constructor(
+        port: number,
+        options?: { baudRate: number; autoOpen: boolean },
+    );
 
     open(callback?: (error?: any) => void): Serial;
 
-    close(callback?: (error: any, device: Serial) => void, timeout?: number): Serial;
+    close(
+        callback?: (error: any, device: Serial) => void,
+        timeout?: number,
+    ): Serial;
 
     write(data: Buffer, callback: (error?: any) => void): Serial;
 }
@@ -325,13 +357,15 @@ export class Image {
     constructor(pixels: any);
 
     static load(url: string, callback?: (result: Image | Error) => void): void;
-    static load(url: string, type: MIME_TYPE, callback?: (result: Image | Error) => void): void;
+    static load(
+        url: string,
+        type: MIME_TYPE,
+        callback?: (result: Image | Error) => void,
+    ): void;
 
     size(): { width: number; height: number; colors: number };
 
-    toBitmap(
-        density?: number,
-    ): {
+    toBitmap(density?: number): {
         data: any;
         density: number;
     };
@@ -393,15 +427,17 @@ export class Printer {
     table(data: string[], encoding?: string): Printer;
 
     tableCustom(
-        data: {
-            text: string;
-            width: number;
-            align: "LEFT" | "CENTER" | "RIGHT";
-        } | {
-            text: string;
-            cols: number;
-            align: "LEFT" | "CENTER" | "RIGHT";
-        },
+        data:
+            | {
+                  text: string;
+                  width: number;
+                  align: "LEFT" | "CENTER" | "RIGHT";
+              }
+            | {
+                  text: string;
+                  cols: number;
+                  align: "LEFT" | "CENTER" | "RIGHT";
+              },
         encoding?: string,
     ): Printer;
 
@@ -480,7 +516,10 @@ export class Printer {
         size: number,
     ): Printer;
 
-    qrimage(content: string, callback?: (error: Error | null, printer?: Printer) => void): Printer;
+    qrimage(
+        content: string,
+        callback?: (error: Error | null, printer?: Printer) => void,
+    ): Printer;
     qrimage(
         content: string,
         options?: { type: string; mode: string },

@@ -1,6 +1,11 @@
 import { enGB } from "date-fns/locale";
 import Vue from "vue";
-import { DatePicker, DateRangePicker, END_DATE, START_DATE } from "vue-nice-dates";
+import {
+    DatePicker,
+    DateRangePicker,
+    END_DATE,
+    START_DATE,
+} from "vue-nice-dates";
 
 new Vue({
     el: "#app",

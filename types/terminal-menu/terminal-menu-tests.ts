@@ -24,7 +24,7 @@ menu.add("BACKUP DATA TO FLOPPY DISK");
 menu.add("RESTORE FROM FLOPPY DISK");
 menu.add("EXIT");
 
-menu.on("select", function(label: string) {
+menu.on("select", function (label: string) {
     menu.close();
     console.log("SELECTED: " + label);
 });
@@ -33,7 +33,7 @@ stdin.pipe(menu.createStream()).pipe(process.stdout);
 
 stdin.setRawMode(true);
 
-menu.on("close", function() {
+menu.on("close", function () {
     stdin.setRawMode(false);
     stdin.end();
 });

@@ -3,13 +3,13 @@ $.notify.addStyle("bootstrap", {
     classes: {
         base: {
             "font-weight": "bold",
-            "padding": "8px 15px 8px 14px",
+            padding: "8px 15px 8px 14px",
         },
         error: {
-            "color": "#B94A48",
+            color: "#B94A48",
         },
         info: {
-            "color": "#3A87AD",
+            color: "#3A87AD",
             "background-color": "#D9EDF7",
             "border-color": "#BCE8F1",
         },
@@ -17,15 +17,16 @@ $.notify.addStyle("bootstrap", {
 });
 
 $.notify.addStyle("foo", {
-    html: "<div>"
-        + "<div class='clearfix'>"
-        + "<div class='title' data-notify-html='title'/>"
-        + "<div class='buttons'>"
-        + "<button class='no'>Cancel</button>"
-        + "<button class='yes' data-notify-text='button'></button>"
-        + "</div>"
-        + "</div>"
-        + "</div>",
+    html:
+        "<div>" +
+        "<div class='clearfix'>" +
+        "<div class='title' data-notify-html='title'/>" +
+        "<div class='buttons'>" +
+        "<button class='no'>Cancel</button>" +
+        "<button class='yes' data-notify-text='button'></button>" +
+        "</div>" +
+        "</div>" +
+        "</div>",
 });
 
 $.notify.defaults({
@@ -48,10 +49,13 @@ $(".my-element").notify("Hello Box", {
     gap: 20,
 });
 
-$.notify({
-    title: "Would you like some Foo ?",
-    button: "Confirm",
-}, {
-    style: "foo",
-    clickToHide: false,
-});
+$.notify(
+    {
+        title: "Would you like some Foo ?",
+        button: "Confirm",
+    },
+    {
+        style: "foo",
+        clickToHide: false,
+    },
+);

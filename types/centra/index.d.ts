@@ -38,7 +38,10 @@ declare namespace Centra {
         header(key: string, value: string): this;
         header(headers: { [k: string]: string }): this;
         timeout(timeMs: number): this;
-        option<T extends keyof RequestOptions>(key: T, value: RequestOptions[T]): this;
+        option<T extends keyof RequestOptions>(
+            key: T,
+            value: RequestOptions[T],
+        ): this;
         stream(): this;
         compress(): this;
         send(): Promise<Response>;

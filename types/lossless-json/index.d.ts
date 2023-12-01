@@ -3,7 +3,11 @@
  * @param options.circularRefs enable circularRefs (default is true)
  * @return New/current config
  */
-export function config({ circularRefs }?: { circularRefs?: boolean | undefined }): { circularRefs: boolean };
+export function config({
+    circularRefs,
+}?: {
+    circularRefs?: boolean | undefined;
+}): { circularRefs: boolean };
 /**
  * The LosslessJSON.parse() method parses a string as JSON, optionally transforming
  * the value produced by parsing.
@@ -19,7 +23,10 @@ export function config({ circularRefs }?: { circularRefs?: boolean | undefined }
  * @throws Throws a SyntaxError exception if the string to parse is not valid JSON.
  */
 
-export function parse(text: string, reviver?: (key: string, value: any) => any): any;
+export function parse(
+    text: string,
+    reviver?: (key: string, value: any) => any,
+): any;
 /**
  * The LosslessJSON.stringify() method converts a JavaScript value to a JSON string,
  * optionally replacing values if a replacer function is specified, or

@@ -68,7 +68,7 @@ manager = new TradeOfferManager({
 
 manager.setCookies(["a=b"]);
 manager.setCookies(["a=b"], "123");
-manager.setCookies(["a=b"], e => {
+manager.setCookies(["a=b"], (e) => {
     if (e) {
         throw e;
     }
@@ -77,7 +77,7 @@ manager.setCookies(["a=b"], e => {
 manager.shutdown();
 
 manager.parentalUnlock("123");
-manager.parentalUnlock("123", e => {
+manager.parentalUnlock("123", (e) => {
     if (e) {
         throw e;
     }
@@ -94,32 +94,51 @@ manager.getOffer("123", (err, offer: TradeOffer) => {
     }
 });
 
-manager.getOffers(TradeOfferManager.EOfferFilter.ActiveOnly, (err, sent: TradeOffer[], received: TradeOffer[]) => {
-});
+manager.getOffers(
+    TradeOfferManager.EOfferFilter.ActiveOnly,
+    (err, sent: TradeOffer[], received: TradeOffer[]) => {},
+);
 
-manager.getOffers(TradeOfferManager.EOfferFilter.ActiveOnly, new Date(), (err, sent, received) => {
-});
+manager.getOffers(
+    TradeOfferManager.EOfferFilter.ActiveOnly,
+    new Date(),
+    (err, sent, received) => {},
+);
 
-manager.getInventoryContents(440, 2, true, (err, inventory: CEconItem[], currencies: CEconItem[]) => {
-});
+manager.getInventoryContents(
+    440,
+    2,
+    true,
+    (err, inventory: CEconItem[], currencies: CEconItem[]) => {},
+);
 
-manager.getUserInventoryContents("123", 440, 2, true, (err, inventory: CEconItem[], currencies: CEconItem[]) => {
-});
+manager.getUserInventoryContents(
+    "123",
+    440,
+    2,
+    true,
+    (err, inventory: CEconItem[], currencies: CEconItem[]) => {},
+);
 
-manager.loadInventory(440, 2, true, (err, inventory, currencies) => {
-});
+manager.loadInventory(440, 2, true, (err, inventory, currencies) => {});
 
-manager.loadUserInventory("123", 440, 2, true, (err, inventory, currencies) => {
-});
+manager.loadUserInventory(
+    "123",
+    440,
+    2,
+    true,
+    (err, inventory, currencies) => {},
+);
 
-manager.getOfferToken((err, token: string) => {
-});
+manager.getOfferToken((err, token: string) => {});
 
-manager.getOffersContainingItem(item, true, (err, sent: TradeOffer[], received: TradeOffer[]) => {
-});
+manager.getOffersContainingItem(
+    item,
+    true,
+    (err, sent: TradeOffer[], received: TradeOffer[]) => {},
+);
 
-manager.getOffersContainingItem(item, (err, sent, received) => {
-});
+manager.getOffersContainingItem(item, (err, sent, received) => {});
 
 manager.doPoll();
 
@@ -131,11 +150,9 @@ offer.isGlitched();
 offer.data("a");
 offer.data("a", "b");
 
-offer.getPartnerInventoryContents(440, 2, (err, inventory, currencies) => {
-});
+offer.getPartnerInventoryContents(440, 2, (err, inventory, currencies) => {});
 
-offer.loadPartnerInventory(440, 2, (err, inventory, currencies) => {
-});
+offer.loadPartnerInventory(440, 2, (err, inventory, currencies) => {});
 
 // $ExpectType boolean
 offer.addMyItem(item);
@@ -168,8 +185,7 @@ offer.setMessage("a");
 
 offer.setToken("a");
 
-offer.getUserDetails((err, me, them) => {
-});
+offer.getUserDetails((err, me, them) => {});
 
 offer.send((err, status) => {
     // $ExpectType EResult | undefined
@@ -180,7 +196,7 @@ offer.send((err, status) => {
 
 offer.send();
 
-offer.cancel(err => {
+offer.cancel((err) => {
     // $ExpectType EResultError | null
     err;
     // $ExpectType EResult | undefined
@@ -189,7 +205,7 @@ offer.cancel(err => {
 
 offer.cancel();
 
-offer.decline(err => {
+offer.decline((err) => {
     // $ExpectType EResultError | null
     err;
     // $ExpectType EResult | undefined
@@ -220,7 +236,7 @@ offer.duplicate();
 // $ExpectType TradeOffer
 offer.counter();
 
-offer.update(err => {
+offer.update((err) => {
     // $ExpectType EResultError | null
     err;
     // $ExpectType EResult | undefined
@@ -237,12 +253,17 @@ offer.getReceivedItems((err, items) => {
     err;
 });
 
-offer.getExchangeDetails(false, (err, status, tradeInitTime, receivedItems, sentItems) => {
-    // $ExpectType Error | null
-    err;
-});
+offer.getExchangeDetails(
+    false,
+    (err, status, tradeInitTime, receivedItems, sentItems) => {
+        // $ExpectType Error | null
+        err;
+    },
+);
 
-offer.getExchangeDetails((err, status, tradeInitTime, receivedItems, sentItems) => {
-    // $ExpectType Error | null
-    err;
-});
+offer.getExchangeDetails(
+    (err, status, tradeInitTime, receivedItems, sentItems) => {
+        // $ExpectType Error | null
+        err;
+    },
+);

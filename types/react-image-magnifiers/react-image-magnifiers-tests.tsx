@@ -34,7 +34,9 @@ export const MagnifierExample3 = () => (
     />
 );
 
-export const GlassMagnifierExample1 = () => <GlassMagnifier imageSrc="./image.jpg" />;
+export const GlassMagnifierExample1 = () => (
+    <GlassMagnifier imageSrc="./image.jpg" />
+);
 
 export const GlassMagnifierExample2 = () => (
     <GlassMagnifier
@@ -57,7 +59,9 @@ export const GlassMagnifierExample3 = () => (
     />
 );
 
-export const SideBySideMagnifierExample1 = () => <SideBySideMagnifier imageSrc="./image.jpg" />;
+export const SideBySideMagnifierExample1 = () => (
+    <SideBySideMagnifier imageSrc="./image.jpg" />
+);
 
 export const SideBySideMagnifierExample2 = () => (
     <SideBySideMagnifier
@@ -80,7 +84,9 @@ export const SideBySideMagnifierExample2 = () => (
     />
 );
 
-export const PictureInPictureMagnifierExample1 = () => <PictureInPictureMagnifier imageSrc="./image.jpg" />;
+export const PictureInPictureMagnifierExample1 = () => (
+    <PictureInPictureMagnifier imageSrc="./image.jpg" />
+);
 
 export const PictureInPictureMagnifierExample2 = () => (
     <PictureInPictureMagnifier

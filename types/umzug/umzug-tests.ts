@@ -8,10 +8,12 @@ someVar = umzug;
 
 umzug.up().then((migrations: Umzug.Migration[]) => null);
 
-umzug.execute({
-    migrations: ["some-id", "some-other-id"],
-    method: "up",
-}).then((migrations: Umzug.Migration[]) => null);
+umzug
+    .execute({
+        migrations: ["some-id", "some-other-id"],
+        method: "up",
+    })
+    .then((migrations: Umzug.Migration[]) => null);
 
 umzug.pending().then((migrations: Umzug.Migration[]) => null);
 
@@ -19,25 +21,33 @@ umzug.executed().then((migrations: Umzug.Migration[]) => null);
 
 umzug.up().then((migrations: Umzug.Migration[]) => null);
 
-umzug.up({ to: "20141101203500-task" }).then((migrations: Umzug.Migration[]) => null);
+umzug
+    .up({ to: "20141101203500-task" })
+    .then((migrations: Umzug.Migration[]) => null);
 
-umzug.up({ migrations: ["20141101203500-task", "20141101203501-task-2"] }).then((migrations: Umzug.Migration[]) =>
-    null
-);
+umzug
+    .up({ migrations: ["20141101203500-task", "20141101203501-task-2"] })
+    .then((migrations: Umzug.Migration[]) => null);
 
 umzug.up("20141101203500-task").then((migrations: Umzug.Migration[]) => null); // Runs just the passed migration
-umzug.up(["20141101203500-task", "20141101203501-task-2"]).then((migrations: Umzug.Migration[]) => null);
+umzug
+    .up(["20141101203500-task", "20141101203501-task-2"])
+    .then((migrations: Umzug.Migration[]) => null);
 
 umzug.down().then((migrations: Umzug.Migration[]) => null);
 
-umzug.down({ to: "20141031080000-task" }).then((migrations: Umzug.Migration[]) => null);
+umzug
+    .down({ to: "20141031080000-task" })
+    .then((migrations: Umzug.Migration[]) => null);
 
-umzug.down({ migrations: ["20141101203500-task", "20141101203501-task-2"] }).then((migrations: Umzug.Migration[]) =>
-    null
-);
+umzug
+    .down({ migrations: ["20141101203500-task", "20141101203501-task-2"] })
+    .then((migrations: Umzug.Migration[]) => null);
 
 umzug.down("20141101203500-task").then((migrations: Umzug.Migration[]) => null);
-umzug.down(["20141101203500-task", "20141101203501-task-2"]).then((migrations: Umzug.Migration[]) => null);
+umzug
+    .down(["20141101203500-task", "20141101203501-task-2"])
+    .then((migrations: Umzug.Migration[]) => null);
 
 umzug.down({ to: 0 }).then((migrations: Umzug.Migration[]) => null);
 
@@ -125,7 +135,10 @@ new Umzug({
     },
 });
 
-const mongodb = new MongoDB.Db(new MongoDB.MongoClient("host", { localPort: 21017 }), "database");
+const mongodb = new MongoDB.Db(
+    new MongoDB.MongoClient("host", { localPort: 21017 }),
+    "database",
+);
 
 new Umzug({
     // The storage.

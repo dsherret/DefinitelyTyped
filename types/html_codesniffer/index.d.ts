@@ -15,7 +15,13 @@ export const WARNING = 2;
  * @param code Unique code for the message.
  * @param [data] Extra data to store for the message.
  */
-export function addMessage(type: number, element: Element, msg: string, code: string, data?: MessageData): void;
+export function addMessage(
+    type: number,
+    element: Element,
+    msg: string,
+    code: string,
+    data?: MessageData,
+): void;
 
 /**
  * Returns all the messages for the last run.
@@ -62,7 +68,11 @@ export const lang: string;
  * @param standard The name of the standard to load.
  * @param callback The function to call once the standard is loaded.
  */
-export function loadStandard(standard: string, callback: Callback, failCallback?: FailCallback): void;
+export function loadStandard(
+    standard: string,
+    callback: Callback,
+    failCallback?: FailCallback,
+): void;
 
 /**
  * Loads the specified standard and run the sniffs.
@@ -150,7 +160,10 @@ export namespace Util {
      *
      * @param element An element with style.
      */
-    function style(element: Element, pseudo?: string | null): CSSStyleDeclaration;
+    function style(
+        element: Element,
+        pseudo?: string | null,
+    ): CSSStyleDeclaration;
 
     /**
      * Return true if an element is hidden visually.
@@ -222,7 +235,10 @@ export namespace Util {
      * @param element The parent element to search.
      * @param selector Optional selector to pass to
      */
-    function getAllElements(element: Element, selector: string): ArrayLike<Element>;
+    function getAllElements(
+        element: Element,
+        selector: string,
+    ): ArrayLike<Element>;
 
     /**
      * Returns true if the passed child is contained by the passed parent.
@@ -233,7 +249,10 @@ export namespace Util {
      * @param parent The parent element or document.
      * @param child The child.
      */
-    function contains(parent: Element | Document, child: Element | DocumentType): boolean;
+    function contains(
+        parent: Element | Document,
+        child: Element | DocumentType,
+    ): boolean;
 
     /**
      * Returns true if the table passed is a layout table.
@@ -330,7 +349,10 @@ export namespace Util {
      * @param [includeAlt=true] Include alt text from images.
      * @returns The text contents.
      */
-    function getElementTextContent(element: Element, includeAlt?: boolean): string;
+    function getElementTextContent(
+        element: Element,
+        includeAlt?: boolean,
+    ): string;
 
     /**
      * Find a parent node matching a selector.
@@ -410,7 +432,11 @@ export namespace Util {
      * @param [tagName=null] Only match this tag. If null, match any. Not case-sensitive.
      * @param [immediate=false] Only match if the tag in tagName is the immediately preceding non-whitespace node.
      */
-    function getPreviousSiblingElement(element: Node, tagName?: string, immediate?: boolean): ChildNode | null;
+    function getPreviousSiblingElement(
+        element: Node,
+        tagName?: string,
+        immediate?: boolean,
+    ): ChildNode | null;
 
     /**
      * Get the next sibling element.
@@ -425,7 +451,11 @@ export namespace Util {
      * @param [tagName=null]  Only match this tag. If null, match any. Not case-sensitive.
      * @param [immediate=false] Only match if the tag in tagName is the immediately following non-whitespace node.
      */
-    function getNextSiblingElement(element: Node, tagName?: string, immediate?: boolean): ChildNode | null;
+    function getNextSiblingElement(
+        element: Node,
+        tagName?: string,
+        immediate?: boolean,
+    ): ChildNode | null;
 
     /**
      * Get the text content of a DOM node.
@@ -483,5 +513,12 @@ export namespace Util {
         headers: string;
     }
 
-    type DocumentType = "html5" | "xhtml5" | "xhtml11" | "xhtml10" | "html401" | "html40" | "";
+    type DocumentType =
+        | "html5"
+        | "xhtml5"
+        | "xhtml11"
+        | "xhtml10"
+        | "html401"
+        | "html40"
+        | "";
 }

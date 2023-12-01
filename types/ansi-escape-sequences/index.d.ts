@@ -76,10 +76,7 @@ export function styles(styles: Style | readonly Style[]): string;
  * > ansi.format('[green bold]{what?}')
  * '\u001b[32;1mwhat?\u001b[0m'
  */
-export function format(
-    str: string,
-    styles?: Style | readonly Style[],
-): string;
+export function format(str: string, styles?: Style | readonly Style[]): string;
 
 /**
  * cursor-related sequences

@@ -7,7 +7,9 @@ import WatchMissingNodeModulesPlugin = require("react-dev-utils/WatchMissingNode
 
 // @ts-expect-error
 new InterpolateHtmlPlugin(HtmlWebpackPlugin, { PUBLIC_URL: 0 });
-const plugin1 = new InterpolateHtmlPlugin(HtmlWebpackPlugin, { PUBLIC_URL: "" });
+const plugin1 = new InterpolateHtmlPlugin(HtmlWebpackPlugin, {
+    PUBLIC_URL: "",
+});
 
 // @ts-expect-error
 new InlineChunkHtmlPlugin({}, [/runtime/]);

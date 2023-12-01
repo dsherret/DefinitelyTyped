@@ -1,12 +1,19 @@
 import { ConfigBase, ConfigurationOptions } from "./config-base";
-import { ConfigurationServiceApiVersions, ConfigurationServicePlaceholders } from "./config_service_placeholders";
+import {
+    ConfigurationServiceApiVersions,
+    ConfigurationServicePlaceholders,
+} from "./config_service_placeholders";
 
 export class Config extends ConfigBase {
     /**
      * Creates a new configuration object.
      * This is the object that passes option data along to service requests, including credentials, security, region information, and some service specific settings.
      */
-    constructor(options?: ConfigurationOptions & ConfigurationServicePlaceholders & APIVersions);
+    constructor(
+        options?: ConfigurationOptions &
+            ConfigurationServicePlaceholders &
+            APIVersions,
+    );
     /**
      * Loads configuration data from a JSON file into this config object.
      * Loading configuration will reset all existing configuration on the object.
@@ -14,7 +21,9 @@ export class Config extends ConfigBase {
      *
      * @param {string} path - the path relative to your process's current working directory to load configuration from.
      */
-    loadFromPath(path: string): Config & ConfigurationServicePlaceholders & APIVersions;
+    loadFromPath(
+        path: string,
+    ): Config & ConfigurationServicePlaceholders & APIVersions;
     /**
      * Updates the current configuration object with new options.
      *
@@ -22,7 +31,9 @@ export class Config extends ConfigBase {
      * @param {boolean} allowUnknownKeys - Whether unknown keys can be set on the configuration object.
      */
     update(
-        options: ConfigurationOptions & ConfigurationServicePlaceholders & APIVersions & { [key: string]: any },
+        options: ConfigurationOptions &
+            ConfigurationServicePlaceholders &
+            APIVersions & { [key: string]: any },
         allowUnknownKeys: true,
     ): void;
     /**
@@ -32,12 +43,16 @@ export class Config extends ConfigBase {
      * @param {boolean} allowUnknownKeys - Defaults to false. Whether unknown keys can be set on the configuration object.
      */
     update(
-        options: ConfigurationOptions & ConfigurationServicePlaceholders & APIVersions,
+        options: ConfigurationOptions &
+            ConfigurationServicePlaceholders &
+            APIVersions,
         allowUnknownKeys?: false,
     ): void;
 }
 
-export type GlobalConfigInstance = Config & ConfigurationServicePlaceholders & APIVersions;
+export type GlobalConfigInstance = Config &
+    ConfigurationServicePlaceholders &
+    APIVersions;
 
 export interface APIVersions {
     /**

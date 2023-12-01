@@ -1,7 +1,13 @@
 import * as React from "react";
-import { ReactAttr, ReactInputAttr, SizingProps } from "../../../typings/shared";
+import {
+    ReactAttr,
+    ReactInputAttr,
+    SizingProps,
+} from "../../../typings/shared";
 
-interface InheritedProps extends Omit<ReactInputAttr, "placeholder">, SizingProps {}
+interface InheritedProps
+    extends Omit<ReactInputAttr, "placeholder">,
+        SizingProps {}
 
 /**
  * @deprecated

@@ -22,9 +22,10 @@ interface ProxyTargetDetailed {
     secureProtocol?: string | undefined;
 }
 
-declare class Server<TIncomingMessage = http.IncomingMessage, TServerResponse = http.ServerResponse>
-    extends events.EventEmitter
-{
+declare class Server<
+    TIncomingMessage = http.IncomingMessage,
+    TServerResponse = http.ServerResponse,
+> extends events.EventEmitter {
     /**
      * Creates the proxy server with specified options.
      * @param options - Config object passed to the proxy
@@ -64,7 +65,10 @@ declare class Server<TIncomingMessage = http.IncomingMessage, TServerResponse = 
      * @param port - Port to listen on
      * @param hostname - The hostname to listen on
      */
-    listen(port: number, hostname?: string): Server<TIncomingMessage, TServerResponse>;
+    listen(
+        port: number,
+        hostname?: string,
+    ): Server<TIncomingMessage, TServerResponse>;
 
     /**
      * A function that closes the inner webserver and stops listening on given port
@@ -77,7 +81,10 @@ declare class Server<TIncomingMessage = http.IncomingMessage, TServerResponse = 
      * @returns Proxy object with handlers for `ws` and `web` requests
      */
     // tslint:disable:no-unnecessary-generics
-    static createProxyServer<TIncomingMessage = http.IncomingMessage, TServerResponse = http.ServerResponse>(
+    static createProxyServer<
+        TIncomingMessage = http.IncomingMessage,
+        TServerResponse = http.ServerResponse,
+    >(
         options?: Server.ServerOptions,
     ): Server<TIncomingMessage, TServerResponse>;
 
@@ -87,7 +94,10 @@ declare class Server<TIncomingMessage = http.IncomingMessage, TServerResponse = 
      * @returns Proxy object with handlers for `ws` and `web` requests
      */
     // tslint:disable:no-unnecessary-generics
-    static createServer<TIncomingMessage = http.IncomingMessage, TServerResponse = http.ServerResponse>(
+    static createServer<
+        TIncomingMessage = http.IncomingMessage,
+        TServerResponse = http.ServerResponse,
+    >(
         options?: Server.ServerOptions,
     ): Server<TIncomingMessage, TServerResponse>;
 
@@ -97,38 +107,110 @@ declare class Server<TIncomingMessage = http.IncomingMessage, TServerResponse = 
      * @returns Proxy object with handlers for `ws` and `web` requests
      */
     // tslint:disable:no-unnecessary-generics
-    static createProxy<TIncomingMessage = http.IncomingMessage, TServerResponse = http.ServerResponse>(
+    static createProxy<
+        TIncomingMessage = http.IncomingMessage,
+        TServerResponse = http.ServerResponse,
+    >(
         options?: Server.ServerOptions,
     ): Server<TIncomingMessage, TServerResponse>;
 
     addListener(event: string, listener: () => void): this;
     on(event: string, listener: () => void): this;
-    on(event: "error", listener: Server.ErrorCallback<Error, TIncomingMessage, TServerResponse>): this;
-    on(event: "start", listener: Server.StartCallback<TIncomingMessage, TServerResponse>): this;
+    on(
+        event: "error",
+        listener: Server.ErrorCallback<
+            Error,
+            TIncomingMessage,
+            TServerResponse
+        >,
+    ): this;
+    on(
+        event: "start",
+        listener: Server.StartCallback<TIncomingMessage, TServerResponse>,
+    ): this;
     on(
         event: "proxyReq",
-        listener: Server.ProxyReqCallback<http.ClientRequest, TIncomingMessage, TServerResponse>,
+        listener: Server.ProxyReqCallback<
+            http.ClientRequest,
+            TIncomingMessage,
+            TServerResponse
+        >,
     ): this;
-    on(event: "proxyRes", listener: Server.ProxyResCallback<TIncomingMessage, TServerResponse>): this;
-    on(event: "proxyReqWs", listener: Server.ProxyReqWsCallback<http.ClientRequest, TIncomingMessage>): this;
-    on(event: "econnreset", listener: Server.EconnresetCallback<Error, TIncomingMessage, TServerResponse>): this;
-    on(event: "end", listener: Server.EndCallback<TIncomingMessage, TServerResponse>): this;
+    on(
+        event: "proxyRes",
+        listener: Server.ProxyResCallback<TIncomingMessage, TServerResponse>,
+    ): this;
+    on(
+        event: "proxyReqWs",
+        listener: Server.ProxyReqWsCallback<
+            http.ClientRequest,
+            TIncomingMessage
+        >,
+    ): this;
+    on(
+        event: "econnreset",
+        listener: Server.EconnresetCallback<
+            Error,
+            TIncomingMessage,
+            TServerResponse
+        >,
+    ): this;
+    on(
+        event: "end",
+        listener: Server.EndCallback<TIncomingMessage, TServerResponse>,
+    ): this;
     on(event: "open", listener: Server.OpenCallback): this;
     on(event: "close", listener: Server.CloseCallback<TIncomingMessage>): this;
 
     once(event: string, listener: () => void): this;
-    once(event: "error", listener: Server.ErrorCallback<Error, TIncomingMessage, TServerResponse>): this;
-    once(event: "start", listener: Server.StartCallback<TIncomingMessage, TServerResponse>): this;
+    once(
+        event: "error",
+        listener: Server.ErrorCallback<
+            Error,
+            TIncomingMessage,
+            TServerResponse
+        >,
+    ): this;
+    once(
+        event: "start",
+        listener: Server.StartCallback<TIncomingMessage, TServerResponse>,
+    ): this;
     once(
         event: "proxyReq",
-        listener: Server.ProxyReqCallback<http.ClientRequest, TIncomingMessage, TServerResponse>,
+        listener: Server.ProxyReqCallback<
+            http.ClientRequest,
+            TIncomingMessage,
+            TServerResponse
+        >,
     ): this;
-    once(event: "proxyRes", listener: Server.ProxyResCallback<TIncomingMessage, TServerResponse>): this;
-    once(event: "proxyReqWs", listener: Server.ProxyReqWsCallback<http.ClientRequest, TIncomingMessage>): this;
-    once(event: "econnreset", listener: Server.EconnresetCallback<Error, TIncomingMessage, TServerResponse>): this;
-    once(event: "end", listener: Server.EndCallback<TIncomingMessage, TServerResponse>): this;
+    once(
+        event: "proxyRes",
+        listener: Server.ProxyResCallback<TIncomingMessage, TServerResponse>,
+    ): this;
+    once(
+        event: "proxyReqWs",
+        listener: Server.ProxyReqWsCallback<
+            http.ClientRequest,
+            TIncomingMessage
+        >,
+    ): this;
+    once(
+        event: "econnreset",
+        listener: Server.EconnresetCallback<
+            Error,
+            TIncomingMessage,
+            TServerResponse
+        >,
+    ): this;
+    once(
+        event: "end",
+        listener: Server.EndCallback<TIncomingMessage, TServerResponse>,
+    ): this;
     once(event: "open", listener: Server.OpenCallback): this;
-    once(event: "close", listener: Server.CloseCallback<TIncomingMessage>): this;
+    once(
+        event: "close",
+        listener: Server.CloseCallback<TIncomingMessage>,
+    ): this;
     removeListener(event: string, listener: () => void): this;
     removeAllListeners(event?: string): this;
     getMaxListeners(): number;
@@ -178,9 +260,17 @@ declare namespace Server {
         /** Rewrites the location protocol on (301 / 302 / 307 / 308) redirects to 'http' or 'https'.Default: null. */
         protocolRewrite?: string | undefined;
         /** rewrites domain of set-cookie headers. */
-        cookieDomainRewrite?: false | string | { [oldDomain: string]: string } | undefined;
+        cookieDomainRewrite?:
+            | false
+            | string
+            | { [oldDomain: string]: string }
+            | undefined;
         /** rewrites path of set-cookie headers. Default: false */
-        cookiePathRewrite?: false | string | { [oldPath: string]: string } | undefined;
+        cookiePathRewrite?:
+            | false
+            | string
+            | { [oldPath: string]: string }
+            | undefined;
         /** object with extra headers to be added to target requests. */
         headers?: { [header: string]: string } | undefined;
         /** Timeout (in milliseconds) when proxy receives no response from target. Default: 120000 (2 minutes) */
@@ -195,7 +285,10 @@ declare namespace Server {
         buffer?: stream.Stream | undefined;
     }
 
-    type StartCallback<TIncomingMessage = http.IncomingMessage, TServerResponse = http.ServerResponse> = (
+    type StartCallback<
+        TIncomingMessage = http.IncomingMessage,
+        TServerResponse = http.ServerResponse,
+    > = (
         req: TIncomingMessage,
         res: TServerResponse,
         target: ProxyTargetUrl,
@@ -204,13 +297,24 @@ declare namespace Server {
         TClientRequest = http.ClientRequest,
         TIncomingMessage = http.IncomingMessage,
         TServerResponse = http.ServerResponse,
-    > = (proxyReq: TClientRequest, req: TIncomingMessage, res: TServerResponse, options: ServerOptions) => void;
-    type ProxyResCallback<TIncomingMessage = http.IncomingMessage, TServerResponse = http.ServerResponse> = (
+    > = (
+        proxyReq: TClientRequest,
+        req: TIncomingMessage,
+        res: TServerResponse,
+        options: ServerOptions,
+    ) => void;
+    type ProxyResCallback<
+        TIncomingMessage = http.IncomingMessage,
+        TServerResponse = http.ServerResponse,
+    > = (
         proxyRes: TIncomingMessage,
         req: TIncomingMessage,
         res: TServerResponse,
     ) => void;
-    type ProxyReqWsCallback<TClientRequest = http.ClientRequest, TIncomingMessage = http.IncomingMessage> = (
+    type ProxyReqWsCallback<
+        TClientRequest = http.ClientRequest,
+        TIncomingMessage = http.IncomingMessage,
+    > = (
         proxyReq: TClientRequest,
         req: TIncomingMessage,
         socket: net.Socket,
@@ -227,7 +331,10 @@ declare namespace Server {
         res: TServerResponse,
         target: ProxyTargetUrl,
     ) => void;
-    type EndCallback<TIncomingMessage = http.IncomingMessage, TServerResponse = http.ServerResponse> = (
+    type EndCallback<
+        TIncomingMessage = http.IncomingMessage,
+        TServerResponse = http.ServerResponse,
+    > = (
         req: TIncomingMessage,
         res: TServerResponse,
         proxyRes: TIncomingMessage,
@@ -238,13 +345,16 @@ declare namespace Server {
         proxySocket: net.Socket,
         proxyHead: any,
     ) => void;
-    type ErrorCallback<TError = Error, TIncomingMessage = http.IncomingMessage, TServerResponse = http.ServerResponse> =
-        (
-            err: TError,
-            req: TIncomingMessage,
-            res: TServerResponse | net.Socket,
-            target?: ProxyTargetUrl,
-        ) => void;
+    type ErrorCallback<
+        TError = Error,
+        TIncomingMessage = http.IncomingMessage,
+        TServerResponse = http.ServerResponse,
+    > = (
+        err: TError,
+        req: TIncomingMessage,
+        res: TServerResponse | net.Socket,
+        target?: ProxyTargetUrl,
+    ) => void;
 }
 
 export = Server;

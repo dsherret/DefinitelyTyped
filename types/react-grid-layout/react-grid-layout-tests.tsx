@@ -22,7 +22,7 @@ class DefaultGridTest extends React.Component {
                 verticalCompact={true}
                 isBounded={true}
                 allowOverlap={true}
-                onDropDragOver={e => false}
+                onDropDragOver={(e) => false}
                 resizeHandles={["e"]}
                 resizeHandle={<div />}
             >
@@ -70,7 +70,12 @@ class ResponsiveGridTestWithCustomBreakpoints extends React.Component {
         };
 
         return (
-            <Responsive layouts={layouts} width={800} breakpoints={{ lg: 468, sm: 0 }} cols={{ lg: 12, sm: 6 }}>
+            <Responsive
+                layouts={layouts}
+                width={800}
+                breakpoints={{ lg: 468, sm: 0 }}
+                cols={{ lg: 12, sm: 6 }}
+            >
                 <div key="1">a</div>
                 <div key="2">b</div>
                 <div key="3">c</div>

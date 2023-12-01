@@ -59,7 +59,9 @@ declare global {
              */
             invocationContext: any;
         }
-        interface ErrorWithInvocationContext extends MQTTError, WithInvocationContext {}
+        interface ErrorWithInvocationContext
+            extends MQTTError,
+                WithInvocationContext {}
         interface OnSubscribeSuccessParams extends WithInvocationContext {
             grantedQos: Qos;
         }
@@ -296,7 +298,12 @@ declare global {
              * @param path - the path on the host to connect to - only used if host is not a URI. Default: '/mqtt'.
              * @param clientId - the Messaging client identifier, between 1 and 23 characters in length.
              */
-            constructor(host: string, port: number, path: string, clientId: string); // tslint:disable-line unified-signatures (these cannot actually be neatly unified)
+            constructor(
+                host: string,
+                port: number,
+                path: string,
+                clientId: string,
+            ); // tslint:disable-line unified-signatures (these cannot actually be neatly unified)
 
             /**
              * @param host - the address of the messaging server as a DNS name or dotted decimal IP address.
@@ -373,7 +380,12 @@ declare global {
              * message has been published.
              * @throws {InvalidState} if the client is not connected.
              */
-            send(topic: string, payload: string | ArrayBuffer, qos?: Qos, retained?: boolean): void;
+            send(
+                topic: string,
+                payload: string | ArrayBuffer,
+                qos?: Qos,
+                retained?: boolean,
+            ): void;
 
             /**
              * Subscribe for messages, request receipt of a copy of messages sent to the destinations described by the
@@ -392,7 +404,10 @@ declare global {
              * @param unsubscribeOptions - used to control the subscription
              * @throws {InvalidState} if the client is not in connected state.
              */
-            unsubscribe(filter: string, unsubcribeOptions?: UnsubscribeOptions): void;
+            unsubscribe(
+                filter: string,
+                unsubcribeOptions?: UnsubscribeOptions,
+            ): void;
         }
 
         type TypedArray =

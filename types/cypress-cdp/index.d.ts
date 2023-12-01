@@ -12,10 +12,12 @@ declare global {
             type RdpCommandNames = keyof RdpCommands;
 
             type CdpCommandFnParams<RdpCommandName extends RdpCommandNames> =
-                RdpCommands[RdpCommandName]["paramsType"][number] extends never ? Record<string, never>
+                RdpCommands[RdpCommandName]["paramsType"][number] extends never
+                    ? Record<string, never>
                     : RdpCommands[RdpCommandName]["paramsType"][number];
-            type CdpCommandFnReturnType<RdpCommandName extends RdpCommandNames> =
-                RdpCommands[RdpCommandName]["returnType"];
+            type CdpCommandFnReturnType<
+                RdpCommandName extends RdpCommandNames,
+            > = RdpCommands[RdpCommandName]["returnType"];
             interface CdpCommandFnOptions {
                 log: LogConfig;
             }

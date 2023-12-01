@@ -1,5 +1,7 @@
 // tslint:disable-next-line:use-default-type-parameter
-declare function slice(source: ReadableStream | ReadableStreamReader<any> | SliceSource): SliceSource;
+declare function slice(
+    source: ReadableStream | ReadableStreamReader<any> | SliceSource,
+): SliceSource;
 
 interface SliceChunk {
     value: Uint8Array;

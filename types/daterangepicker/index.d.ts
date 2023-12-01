@@ -3,17 +3,18 @@ import moment = require("moment");
 
 declare global {
     interface JQuery {
-        daterangepicker:
-            & ((
-                options?: daterangepicker.Options,
-                callback?: daterangepicker.DataRangePickerCallback,
-            ) => JQuery)
-            & { defaultOptions?: daterangepicker.Options | undefined };
+        daterangepicker: ((
+            options?: daterangepicker.Options,
+            callback?: daterangepicker.DataRangePickerCallback,
+        ) => JQuery) & { defaultOptions?: daterangepicker.Options | undefined };
         data(key: "daterangepicker"): daterangepicker | undefined;
 
         on(
             events: daterangepicker.DatepickerEvents,
-            handler: (event: Event, picker: daterangepicker.DateRangePicker) => void,
+            handler: (
+                event: Event,
+                picker: daterangepicker.DateRangePicker,
+            ) => void,
         ): JQuery;
     }
 }
@@ -35,7 +36,11 @@ declare class daterangepicker {
 }
 
 declare namespace daterangepicker {
-    type DataRangePickerCallback = (start: moment.Moment, end: moment.Moment, label: string | null) => void;
+    type DataRangePickerCallback = (
+        start: moment.Moment,
+        end: moment.Moment,
+        label: string | null,
+    ) => void;
 
     type DateOrString = string | moment.Moment | Date;
 
@@ -217,11 +222,16 @@ declare namespace daterangepicker {
         /**
          * A function that is passed each date in the two calendars before they are displayed, and may return true or false to indicate whether that date should be available for selection or not.
          */
-        isInvalidDate?(startDate: DateOrString, endDate?: DateOrString): boolean;
+        isInvalidDate?(
+            startDate: DateOrString,
+            endDate?: DateOrString,
+        ): boolean;
         /**
          * A function that is passed each date in the two calendars before they are displayed, and may return a string or array of CSS class names to apply to that date's calendar cell.
          */
-        isCustomDate?(date: DateOrString): string | string[] | false | undefined;
+        isCustomDate?(
+            date: DateOrString,
+        ): string | string[] | false | undefined;
         /**
          * Indicates whether the date range picker should automatically update the value of an < input > element it's attached to at initialization and when the selected dates change.
          */

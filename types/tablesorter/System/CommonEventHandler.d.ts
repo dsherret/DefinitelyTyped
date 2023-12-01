@@ -10,5 +10,7 @@ export interface CommonEventHandler<TElement = HTMLElement> {
      * @param eventArgs
      * An object that contains event data.
      */
-    (eventArgs: JQuery.TriggeredEvent<TElement, null, TElement, TElement>): void;
+    (
+        eventArgs: JQuery.TriggeredEvent<TElement, null, TElement, TElement>,
+    ): void;
 }

@@ -35,7 +35,11 @@ export interface StrategyOptionsWithRequest extends _StrategyOptionsBase {
     passReqToCallback: true;
 }
 
-export type VerifyCallback = (error?: Error | null, user?: object, info?: object) => void;
+export type VerifyCallback = (
+    error?: Error | null,
+    user?: object,
+    info?: object,
+) => void;
 
 export type VerifyFunction = (
     accessToken: string,
@@ -55,7 +59,10 @@ export type VerifyFunctionWithRequest = (
 ) => void;
 
 export class Strategy {
-    constructor(options: StrategyOptionsWithRequest, verify: VerifyFunctionWithRequest);
+    constructor(
+        options: StrategyOptionsWithRequest,
+        verify: VerifyFunctionWithRequest,
+    );
     constructor(options: StrategyOptions, verify: VerifyFunction);
 
     name: string;

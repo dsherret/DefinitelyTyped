@@ -105,7 +105,11 @@ declare namespace SlowDown {
          * Function to execute the first time the limit is reached within `windowMs`.
          * Default: `(req, res, opts) => {}`
          */
-        onLimitReached?(req: RequestWithSlowDown, res: express.Response, optionsUsed: Options): void;
+        onLimitReached?(
+            req: RequestWithSlowDown,
+            res: express.Response,
+            optionsUsed: Options,
+        ): void;
 
         /**
          * The storage to use when persisting request attempts. By default, the MemoryStore is used.

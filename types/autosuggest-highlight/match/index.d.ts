@@ -20,6 +20,10 @@ interface Options {
     requireMatchAll?: boolean;
 }
 
-declare function match(text: string, query: string, options?: Options): Array<[number, number]>;
+declare function match(
+    text: string,
+    query: string,
+    options?: Options,
+): Array<[number, number]>;
 
 export = match;

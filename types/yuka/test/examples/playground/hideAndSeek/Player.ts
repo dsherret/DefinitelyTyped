@@ -62,13 +62,17 @@ export class Player extends MovingEntity {
 
             if (obstacle instanceof CustomObstacle) {
                 // first check bounding volumes for intersection
-                const squaredDistance = this.position.squaredDistanceTo(obstacle.position);
+                const squaredDistance = this.position.squaredDistanceTo(
+                    obstacle.position,
+                );
                 const range = this.boundingRadius + obstacle.boundingRadius;
 
-                if (squaredDistance <= (range * range)) {
+                if (squaredDistance <= range * range) {
                     // compute AABB in world space for obstacle
 
-                    aabb.copy(obstacle.geometry.aabb).applyMatrix4(obstacle.worldMatrix);
+                    aabb.copy(obstacle.geometry.aabb).applyMatrix4(
+                        obstacle.worldMatrix,
+                    );
 
                     // enhance the AABB with the bounding radius of the player
 
@@ -85,19 +89,27 @@ export class Player extends MovingEntity {
                     if (ray.intersectAABB(aabb, intersectionPoint) !== null) {
                         // derive normal vector
 
-                        aabb.getNormalFromSurfacePoint(intersectionPoint, intersectionNormal);
+                        aabb.getNormalFromSurfacePoint(
+                            intersectionPoint,
+                            intersectionNormal,
+                        );
 
                         // compute reflection vector
 
-                        reflectionVector.copy(ray.direction).reflect(intersectionNormal);
+                        reflectionVector
+                            .copy(ray.direction)
+                            .reflect(intersectionNormal);
 
                         // compute new velocity vector
 
                         const speed = this.getSpeed();
 
-                        this.velocity.addVectors(ray.direction, reflectionVector).normalize();
+                        this.velocity
+                            .addVectors(ray.direction, reflectionVector)
+                            .normalize();
 
-                        const f = 1 - Math.abs(intersectionNormal.dot(ray.direction));
+                        const f =
+                            1 - Math.abs(intersectionNormal.dot(ray.direction));
 
                         this.velocity.multiplyScalar(speed * f);
                     }

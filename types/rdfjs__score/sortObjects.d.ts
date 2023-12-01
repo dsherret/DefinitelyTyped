@@ -7,7 +7,9 @@ interface SortArgs<T> {
     score: ScoreCb;
 }
 
-declare function sortObjects(arg: SortArgs<{ term: Term }>): Array<{ term: Term }>;
+declare function sortObjects(
+    arg: SortArgs<{ term: Term }>,
+): Array<{ term: Term }>;
 declare function sortObjects<T>(
     arg: SortArgs<T> & {
         termCallback: (obj: T) => Term;

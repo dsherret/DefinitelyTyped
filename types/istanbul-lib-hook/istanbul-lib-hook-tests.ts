@@ -35,6 +35,9 @@ unhookRunInThisContext();
 unloadRequireCache(matcher);
 
 hookRunInContext(matcher, transformer, {});
-hookRunInContext(matcher, transformer, { verbose: true, coverageVariable: "__cov__" });
+hookRunInContext(matcher, transformer, {
+    verbose: true,
+    coverageVariable: "__cov__",
+});
 
 unhookRunInContext();

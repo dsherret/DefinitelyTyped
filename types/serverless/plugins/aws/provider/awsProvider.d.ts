@@ -11,7 +11,11 @@ declare namespace Aws {
         enableLocalInstallationFallback?: boolean | undefined;
         variablesResolutionMode?: "20210219" | "20210326" | undefined;
         unresolvedVariablesNotificationMode?: "warn" | "error" | undefined;
-        deprecationNotificationMode?: "warn" | "warn:summary" | "error" | undefined;
+        deprecationNotificationMode?:
+            | "warn"
+            | "warn:summary"
+            | "error"
+            | undefined;
         disabledDeprecations?: string[] | undefined;
         configValidationMode?: "warn" | "error" | "off" | undefined;
         provider: Provider;
@@ -126,11 +130,18 @@ declare namespace Aws {
     interface ApiGateway {
         restApiId?: string | undefined;
         restApiRootResourceId?: string | undefined;
-        restApiResources?: {
-            [key: string]: string;
-        } | undefined;
+        restApiResources?:
+            | {
+                  [key: string]: string;
+              }
+            | undefined;
         websocketApiId?: any;
-        apiKeySourceType?: "HEADER" | "AUTHORIZER" | "header" | "authorizer" | undefined;
+        apiKeySourceType?:
+            | "HEADER"
+            | "AUTHORIZER"
+            | "header"
+            | "authorizer"
+            | undefined;
         minimumCompressionSize?: number | string | undefined;
         description?: string | undefined;
         binaryMediaTypes?: string[] | undefined;
@@ -155,10 +166,12 @@ declare namespace Aws {
         userPoolClientId: string;
         userPoolDomain: string;
         allowUnauthenticated?: boolean | undefined;
-        requestExtraParams?: {
-            prompt?: string | undefined;
-            redirect?: boolean | undefined;
-        } | undefined;
+        requestExtraParams?:
+            | {
+                  prompt?: string | undefined;
+                  redirect?: boolean | undefined;
+              }
+            | undefined;
         scope?: string | undefined;
         sessionCookieName?: string | undefined;
         sessionTimeout?: number | string | undefined;
@@ -174,10 +187,12 @@ declare namespace Aws {
         tokenEndpoint: string;
         userInfoEndpoint: string;
         allowUnauthenticated?: boolean | undefined;
-        requestExtraParams?: {
-            prompt?: string | undefined;
-            redirect?: boolean | undefined;
-        } | undefined;
+        requestExtraParams?:
+            | {
+                  prompt?: string | undefined;
+                  redirect?: boolean | undefined;
+              }
+            | undefined;
         scope?: string | undefined;
         sessionCookieName?: string | undefined;
         sessionTimeout?: number | string | undefined;
@@ -235,9 +250,11 @@ declare namespace Aws {
     interface IamRoleStatement {
         Effect: "Allow" | "Deny";
         Sid?: string | undefined;
-        Condition?: {
-            [key: string]: any;
-        } | undefined;
+        Condition?:
+            | {
+                  [key: string]: any;
+              }
+            | undefined;
         Action?: string | string[] | { [key: string]: any } | undefined;
         NotAction?: string | string[] | { [key: string]: any } | undefined;
         Resource?: string | string[] | { [key: string]: any } | undefined;
@@ -249,9 +266,11 @@ declare namespace Aws {
         Principal?: string | string[] | { [key: string]: any } | undefined;
         Action?: string | string[] | { [key: string]: any } | undefined;
         Resource?: string | string[] | { [key: string]: any } | undefined;
-        Condition?: {
-            [key: string]: any;
-        } | undefined;
+        Condition?:
+            | {
+                  [key: string]: any;
+              }
+            | undefined;
     }
 
     interface Vpc {
@@ -372,7 +391,10 @@ declare namespace Aws {
     interface HttpApiEvent {
         method: string;
         path: string;
-        authorizer?: NamedHttpApiEventAuthorizer | IdRefHttpApiEventAuthorizer | undefined;
+        authorizer?:
+            | NamedHttpApiEventAuthorizer
+            | IdRefHttpApiEventAuthorizer
+            | undefined;
     }
 
     interface WebsocketAuthorizer {
@@ -758,9 +780,11 @@ declare namespace Aws {
     interface Output {
         Description?: string | undefined;
         Value?: any;
-        Export?: {
-            Name: any;
-        } | undefined;
+        Export?:
+            | {
+                  Name: any;
+              }
+            | undefined;
         Condition?: any;
     }
 
@@ -803,7 +827,10 @@ declare class Aws {
         service: string,
         method: string,
         params?: {},
-        options?: { useCache?: boolean | undefined; region?: string | undefined },
+        options?: {
+            useCache?: boolean | undefined;
+            region?: string | undefined;
+        },
     ): Promise<any>;
 }
 

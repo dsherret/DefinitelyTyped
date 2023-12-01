@@ -34,12 +34,21 @@ export class OAuth2 {
         scope?: string | undefined;
         state?: string | undefined;
     }): string;
-    refreshToken(code: string, callback?: (err: Error, tokenResponse: TokenResponse) => void): Promise<TokenResponse>;
-    requestToken(code: string, callback?: (err: Error, tokenResponse: TokenResponse) => void): Promise<TokenResponse>;
+    refreshToken(
+        code: string,
+        callback?: (err: Error, tokenResponse: TokenResponse) => void,
+    ): Promise<TokenResponse>;
+    requestToken(
+        code: string,
+        callback?: (err: Error, tokenResponse: TokenResponse) => void,
+    ): Promise<TokenResponse>;
     authenticate(
         username: string,
         password: string,
         callback?: (err: Error, tokenResponse: TokenResponse) => void,
     ): Promise<TokenResponse>;
-    revokeToken(accessToken: string, callback?: (err: Error) => void): Promise<undefined>;
+    revokeToken(
+        accessToken: string,
+        callback?: (err: Error) => void,
+    ): Promise<undefined>;
 }

@@ -7,7 +7,11 @@ import * as _ from "underscore";
  */
 
 var joesUserId = "1234";
-Roles.addUsersToRoles(joesUserId, ["manage-team", "schedule-game"], "manchester-united.com");
+Roles.addUsersToRoles(
+    joesUserId,
+    ["manage-team", "schedule-game"],
+    "manchester-united.com",
+);
 Roles.addUsersToRoles(joesUserId, ["player", "goalie"], "real-madrid.com");
 
 Roles.userIsInRole(joesUserId, "manage-team", "manchester-united.com"); // => true
@@ -20,7 +24,11 @@ Roles.addUsersToRoles(bobsUserId, ["manage-team", "schedule-game"]);
 // internal representation - no groups
 // user.roles = ['manage-team','schedule-game']
 
-Roles.addUsersToRoles(joesUserId, ["manage-team", "schedule-game"], "manchester-united.com");
+Roles.addUsersToRoles(
+    joesUserId,
+    ["manage-team", "schedule-game"],
+    "manchester-united.com",
+);
 Roles.addUsersToRoles(joesUserId, ["player", "goalie"], "real-madrid.com");
 // internal representation - groups
 // NOTE: MongoDB uses periods to represent hierarchy so periods in group names
@@ -35,12 +43,20 @@ Meteor.roles.find({});
 
 var users = [
     { name: "Normal User", email: "normal@example.com", roles: [] },
-    { name: "View-Secrets User", email: "view@example.com", roles: ["view-secrets"] },
-    { name: "Manage-Users User", email: "manage@example.com", roles: ["manage-users"] },
+    {
+        name: "View-Secrets User",
+        email: "view@example.com",
+        roles: ["view-secrets"],
+    },
+    {
+        name: "Manage-Users User",
+        email: "manage@example.com",
+        roles: ["manage-users"],
+    },
     { name: "Admin User", email: "admin@example.com", roles: ["admin"] },
 ];
 
-_.each(users, function(user) {
+_.each(users, function (user) {
     var id: string;
 
     id = Accounts.createUser({
@@ -59,7 +75,7 @@ _.each(users, function(user) {
 // server/publish.js
 
 // Give authorized users access to sensitive data by group
-Meteor.publish("secrets", function(group: string) {
+Meteor.publish("secrets", function (group: string) {
     if (Roles.userIsInRole(this.userId, ["view-secrets", "admin"], group)) {
         //        return Meteor.secrets.find({group: group});
     } else {
@@ -69,7 +85,7 @@ Meteor.publish("secrets", function(group: string) {
     }
 });
 
-Accounts.validateNewUser(function(user: Meteor.User) {
+Accounts.validateNewUser(function (user: Meteor.User) {
     var loggedInUser = Meteor.user();
 
     if (Roles.userIsInRole(loggedInUser, ["admin", "manage-users"])) {
@@ -89,12 +105,16 @@ Meteor.methods({
      * @param {String} targetUserId _id of user to delete
      * @param {String} group Company to update permissions for
      */
-    deleteUser: function(targetUserId: string, group: string) {
+    deleteUser: function (targetUserId: string, group: string) {
         var loggedInUser = Meteor.user();
 
         if (
-            !loggedInUser
-            || !Roles.userIsInRole(loggedInUser, ["manage-users", "support-staff"], group)
+            !loggedInUser ||
+            !Roles.userIsInRole(
+                loggedInUser,
+                ["manage-users", "support-staff"],
+                group,
+            )
         ) {
             throw new Meteor.Error("403", "Access denied");
         }
@@ -116,12 +136,20 @@ Meteor.methods({
      * @param {Array} roles User's new permissions
      * @param {String} group Company to update permissions for
      */
-    updateRoles: function(targetUserId: string, roles: string[], group: string) {
+    updateRoles: function (
+        targetUserId: string,
+        roles: string[],
+        group: string,
+    ) {
         var loggedInUser = Meteor.user();
 
         if (
-            !loggedInUser
-            || !Roles.userIsInRole(loggedInUser, ["manage-users", "support-staff"], group)
+            !loggedInUser ||
+            !Roles.userIsInRole(
+                loggedInUser,
+                ["manage-users", "support-staff"],
+                group,
+            )
         ) {
             throw new Meteor.Error("403", "Access denied");
         }

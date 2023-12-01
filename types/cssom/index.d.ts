@@ -129,7 +129,11 @@ export class CSSStyleDeclaration {
     getPropertyPriority(name: string): string;
     getPropertyValue(name: string): string;
     removeProperty(name: string): string;
-    setProperty(name: string, value: string | null, priority?: string | null): void;
+    setProperty(
+        name: string,
+        value: string | null,
+        priority?: string | null,
+    ): void;
 
     [index: number]: string;
 }

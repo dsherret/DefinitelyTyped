@@ -22,7 +22,11 @@ declare namespace cors {
          * the koa context object. It may return a string or a promise that
          * will resolve with a string.
          */
-        origin?: ((ctx: Koa.Context) => string) | ((ctx: Koa.Context) => PromiseLike<string>) | string | undefined;
+        origin?:
+            | ((ctx: Koa.Context) => string)
+            | ((ctx: Koa.Context) => PromiseLike<string>)
+            | string
+            | undefined;
 
         /**
          * `Access-Control-Allow-Methods`, default is

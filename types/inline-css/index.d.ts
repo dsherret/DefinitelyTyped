@@ -13,7 +13,10 @@ export = InlineCss;
  * inlineCss(html, options)
  *     .then((html) => { console.log(html); });
  */
-declare function InlineCss(html: string, options: InlineCss.Options): Promise<string>;
+declare function InlineCss(
+    html: string,
+    options: InlineCss.Options,
+): Promise<string>;
 
 declare namespace InlineCss {
     interface Options extends CheerioParserOptions {
@@ -102,5 +105,8 @@ declare namespace InlineCss {
         end: string;
     }
 
-    type CheerioParserOptions = Exclude<Parameters<typeof cheerio["load"]>[1], undefined>;
+    type CheerioParserOptions = Exclude<
+        Parameters<(typeof cheerio)["load"]>[1],
+        undefined
+    >;
 }

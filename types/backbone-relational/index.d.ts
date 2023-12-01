@@ -118,7 +118,10 @@ declare module "backbone" {
 
         removeModelScope(scope): void;
 
-        addSubModels(subModelTypes: RelationalModel, superModelType: RelationalModel): void;
+        addSubModels(
+            subModelTypes: RelationalModel,
+            superModelType: RelationalModel,
+        ): void;
 
         setupSuperModel(modelType: RelationalModel): void;
 
@@ -128,7 +131,10 @@ declare module "backbone" {
 
         processOrphanRelations(): void;
 
-        retroFitRelation(relation: RelationalModel, create: boolean): Collection;
+        retroFitRelation(
+            relation: RelationalModel,
+            create: boolean,
+        ): Collection;
 
         getCollection(type: RelationalModel, create: boolean): Collection;
 
@@ -151,7 +157,9 @@ declare module "backbone" {
         update(model: RelationalModel): void;
 
         // tslint:disable-next-line use-default-type-parameter
-        unregister(type: RelationalModel | Collection | typeof RelationalModel): void;
+        unregister(
+            type: RelationalModel | Collection | typeof RelationalModel,
+        ): void;
 
         reset(): void;
     }

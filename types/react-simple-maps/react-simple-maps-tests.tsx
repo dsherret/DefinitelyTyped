@@ -1,5 +1,11 @@
 import * as React from "react";
-import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "react-simple-maps";
+import {
+    ComposableMap,
+    Geographies,
+    Geography,
+    Marker,
+    ZoomableGroup,
+} from "react-simple-maps";
 
 const Map = () => (
     <ComposableMap
@@ -57,7 +63,8 @@ const Map = () => (
                                 },
                             }}
                         />
-                    ))}
+                    ))
+                }
             </Geographies>
             <Marker coordinates={[1, 1]}>
                 <circle cx={0} cy={0} r={5} style={{ fill: "#D13913" }} />

@@ -6,14 +6,13 @@ const Example: React.FunctionComponent = () => (
         <MailchimpSubscribe
             render={(hooks) => (
                 <>
-                    {hooks.status === "error"
-                        && <span>hooks.message</span>}
-                    {hooks.status === "sending"
-                        && <span>Sending!</span>}
-                    {hooks.status === "success"
-                        && <span>It's been sent! {hooks.message}</span>}
+                    {hooks.status === "error" && <span>hooks.message</span>}
+                    {hooks.status === "sending" && <span>Sending!</span>}
+                    {hooks.status === "success" && (
+                        <span>It's been sent! {hooks.message}</span>
+                    )}
                     <form
-                        onSubmit={e => {
+                        onSubmit={(e) => {
                             e.preventDefault();
                             hooks.subscribe({ EMAIL: "8675309@aol.com" });
                         }}
@@ -25,7 +24,7 @@ const Example: React.FunctionComponent = () => (
         <MailchimpSubscribe<any>
             render={(hooks) => (
                 <form
-                    onSubmit={e => {
+                    onSubmit={(e) => {
                         e.preventDefault();
                         hooks.subscribe({ myArbitraryData: "is here!" });
                     }}
@@ -36,7 +35,7 @@ const Example: React.FunctionComponent = () => (
         <MailchimpSubscribe<NameFormFields>
             render={(hooks) => (
                 <form
-                    onSubmit={e => {
+                    onSubmit={(e) => {
                         e.preventDefault();
                         hooks.subscribe({
                             FNAME: "大",

@@ -59,7 +59,7 @@ declare module "leaflet" {
     }
 
     interface LabelStatic extends ClassStatic {
-        new(options?: LabelOptions): Label;
+        new (options?: LabelOptions): Label;
     }
 
     const Label: LabelStatic;

@@ -4,11 +4,16 @@
 
 // some helpers
 const toSafeArray = <T>(...items: T[]): SafeArray<T> => {
-    const dict: Scripting.Dictionary<number, T> = new ActiveXObject("Scripting.Dictionary");
+    const dict: Scripting.Dictionary<number, T> = new ActiveXObject(
+        "Scripting.Dictionary",
+    );
     items.forEach((x, index) => dict.Add(index, x));
     return dict.Items();
 };
-const inCollection = <T = any>(collection: { Item(index: any): T }, index: string | number): T | undefined => {
+const inCollection = <T = any>(
+    collection: { Item(index: any): T },
+    index: string | number,
+): T | undefined => {
     let item: T | undefined;
     try {
         item = collection.Item(index);
@@ -38,9 +43,14 @@ newBook.SaveAs("allsales.xls");
 // create or replace a worksheet -- https://msdn.microsoft.com/en-us/vba/excel-vba/articles/create-or-replace-a-worksheet
 const newOrExistingWorksheet = () => {
     const mySheetName = "Sheet4";
-    let mySheet = inCollection<Excel.Worksheet>(newBook.Worksheets, mySheetName);
+    let mySheet = inCollection<Excel.Worksheet>(
+        newBook.Worksheets,
+        mySheetName,
+    );
     if (!mySheet) {
-        WScript.Echo(`The sheet named "${mySheetName} doesn't exist, but will be created.`);
+        WScript.Echo(
+            `The sheet named "${mySheetName} doesn't exist, but will be created.`,
+        );
         mySheet = app.Worksheets.Add() as Excel.Worksheet;
         mySheet.Name = mySheetName;
     }
@@ -57,7 +67,8 @@ const replaceWorksheet = () => {
 };
 
 // referencing multiple sheets -- https://msdn.microsoft.com/VBA/Excel-VBA/articles/sheets-object-excel
-const moveMultipleSheets = () => app.Worksheets(toSafeArray<string | number>(1, "Sheet2")).Move(4);
+const moveMultipleSheets = () =>
+    app.Worksheets(toSafeArray<string | number>(1, "Sheet2")).Move(4);
 
 // sort worksheets alphanumerically by name -- https://msdn.microsoft.com/en-us/vba/excel-vba/articles/sort-worksheets-alphanumerically-by-name
 const sortSheetsTabName = () => {
@@ -79,7 +90,8 @@ const fillCellsFromAbove = () => {
     app.ScreenUpdating = false;
     const columnA = app.Columns(1);
     try {
-        columnA.SpecialCells(Excel.XlCellType.xlCellTypeBlanks).Formula = "=R[-1]C";
+        columnA.SpecialCells(Excel.XlCellType.xlCellTypeBlanks).Formula =
+            "=R[-1]C";
         columnA.Value = columnA.Value;
     } catch (error) {}
     app.ScreenUpdating = true;
@@ -88,11 +100,15 @@ const fillCellsFromAbove = () => {
 // hide and unhide columns -- https://msdn.microsoft.com/en-us/vba/excel-vba/articles/hide-and-unhide-columns
 const setColumnVisibility = (visible: boolean) => {
     const book = app.Workbooks(1);
-    const sheet = inCollection<Excel.Worksheet | Excel.Chart | Excel.DialogSheet>(book.Worksheets, "Sheet1");
+    const sheet = inCollection<
+        Excel.Worksheet | Excel.Chart | Excel.DialogSheet
+    >(book.Worksheets, "Sheet1");
     if (!sheet) return;
 
     // search the four columns for any constants
-    const checkWithin = (sheet as Excel.Worksheet).Range("A1:D1").SpecialCells(Excel.XlCellType.xlCellTypeConstants);
+    const checkWithin = (sheet as Excel.Worksheet)
+        .Range("A1:D1")
+        .SpecialCells(Excel.XlCellType.xlCellTypeConstants);
 
     let find = checkWithin.Find("X");
     if (!find) return;
@@ -110,25 +126,35 @@ const setColumnVisibility = (visible: boolean) => {
     const wks = app.ActiveSheet as Excel.Worksheet;
 
     // highlight active cell
-    ActiveXObject.on(wks, "SelectionChange", ["Target"], function(this: Excel.Worksheet, prm) {
-        app.ScreenUpdating = false;
-        // clear the color of all the cells
-        this.Cells.Interior.ColorIndex = 0;
-        // highlight the actie cell
-        prm.Target.Interior.ColorIndex = 8;
-        app.ScreenUpdating = true;
-    });
+    ActiveXObject.on(
+        wks,
+        "SelectionChange",
+        ["Target"],
+        function (this: Excel.Worksheet, prm) {
+            app.ScreenUpdating = false;
+            // clear the color of all the cells
+            this.Cells.Interior.ColorIndex = 0;
+            // highlight the actie cell
+            prm.Target.Interior.ColorIndex = 8;
+            app.ScreenUpdating = true;
+        },
+    );
 
     // highlight entire row and column that contain active cell
-    ActiveXObject.on(wks, "SelectionChange", ["Target"], function(this: Excel.Worksheet, prm) {
-        if (prm.Target.Cells.Count > 1) return;
-        app.ScreenUpdating = false;
-        // clear the color of all the cells in the row and column of the active cell
-        this.Cells.Interior.ColorIndex = 0;
-        prm.Target.EntireRow.Interior.ColorIndex = 8;
-        prm.Target.EntireColumn.Interior.ColorIndex = 8;
-        app.ScreenUpdating = true;
-    });
+    ActiveXObject.on(
+        wks,
+        "SelectionChange",
+        ["Target"],
+        function (this: Excel.Worksheet, prm) {
+            if (prm.Target.Cells.Count > 1) return;
+            app.ScreenUpdating = false;
+            // clear the color of all the cells in the row and column of the active cell
+            this.Cells.Interior.ColorIndex = 0;
+            prm.Target.EntireRow.Interior.ColorIndex = 8;
+            prm.Target.EntireColumn.Interior.ColorIndex = 8;
+            app.ScreenUpdating = true;
+        },
+    );
 }
 
 // referencing cells -- https://msdn.microsoft.com/en-us/vba/excel-vba/articles/reference-cells-and-ranges
@@ -159,7 +185,8 @@ const setColumnVisibility = (visible: boolean) => {
     }
 
     // relative to other cells
-    wks.Cells(1, 1).Font.Underline = Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
+    wks.Cells(1, 1).Font.Underline =
+        Excel.XlUnderlineStyle.xlUnderlineStyleDouble;
 
     // using a Range object
     const rng = wks.Cells("A1:D5");
@@ -228,13 +255,16 @@ const setColumnVisibility = (visible: boolean) => {
     // working with 3-D ranges -- https://msdn.microsoft.com/en-us/vba/excel-vba/articles/working-with-3-d-ranges
     app.Sheets(toSafeArray("Sheet2", "Sheet3", "Sheet4")).Select();
     app.Range("A1:H1").Select();
-    (app.Selection as Excel.Range).Borders(Excel.XlBordersIndex.xlEdgeBottom).LineStyle = Excel.XlLineStyle.xlDouble;
+    (app.Selection as Excel.Range).Borders(
+        Excel.XlBordersIndex.xlEdgeBottom,
+    ).LineStyle = Excel.XlLineStyle.xlDouble;
 
     // alternatively, use FillAcrossSheets to fill formatting and data across sheets
     const book = app.ActiveWorkbook;
     const wks2 = book.Worksheets("Sheet2");
     const rng = wks2.Range("A1:H1");
-    rng.Borders(Excel.XlBordersIndex.xlEdgeBottom).LineStyle = Excel.XlLineStyle.xlDouble;
+    rng.Borders(Excel.XlBordersIndex.xlEdgeBottom).LineStyle =
+        Excel.XlLineStyle.xlDouble;
     book.Sheets.FillAcrossSheets(rng);
 }
 
@@ -242,39 +272,55 @@ const setColumnVisibility = (visible: boolean) => {
 {
     const book = app.Workbooks(1);
 
-    ActiveXObject.on(book, "SheetChange", ["Sh", "Target"], function(this, prm) {
-        const EvalRange = (this.ActiveSheet as Excel.Worksheet).Range("A1:B20");
+    ActiveXObject.on(
+        book,
+        "SheetChange",
+        ["Sh", "Target"],
+        function (this, prm) {
+            const EvalRange = (this.ActiveSheet as Excel.Worksheet).Range(
+                "A1:B20",
+            );
 
-        // If the cell where the value was entered is not in the defined range, if the value pasted is larger than a single cell, or if no value was entered in the cell, then exit the macro
-        if (
-            (app.Intersect(prm.Target, EvalRange) == null)
-            || (prm.Target.Cells.Count > 1)
-            // VBA has a function called IsEmpty; not sure what the equivalent is in Javascript
-        ) return;
+            // If the cell where the value was entered is not in the defined range, if the value pasted is larger than a single cell, or if no value was entered in the cell, then exit the macro
+            if (
+                app.Intersect(prm.Target, EvalRange) == null ||
+                prm.Target.Cells.Count > 1
+                // VBA has a function called IsEmpty; not sure what the equivalent is in Javascript
+            )
+                return;
 
-        // If the value entered already exists in the defined range on the current worksheet, undo and exit
-        if (app.WorksheetFunction.CountIf(EvalRange, prm.Target.Value()) > 1) {
-            app.EnableEvents = false;
-            app.Undo();
-            app.EnableEvents = true;
-            return;
-        }
+            // If the value entered already exists in the defined range on the current worksheet, undo and exit
+            if (
+                app.WorksheetFunction.CountIf(EvalRange, prm.Target.Value()) > 1
+            ) {
+                app.EnableEvents = false;
+                app.Undo();
+                app.EnableEvents = true;
+                return;
+            }
 
-        // const enumerator = new Enumerator<Excel.Worksheet | Excel.Chart | Excel.DialogSheet>(book.Worksheets);
-        const enumerator = new Enumerator(book.Worksheets);
-        enumerator.moveFirst();
-        while (!enumerator.atEnd()) {
-            const wks = enumerator.item();
-            if (wks.Name === prm.Target.Name) continue;
+            // const enumerator = new Enumerator<Excel.Worksheet | Excel.Chart | Excel.DialogSheet>(book.Worksheets);
+            const enumerator = new Enumerator(book.Worksheets);
+            enumerator.moveFirst();
+            while (!enumerator.atEnd()) {
+                const wks = enumerator.item();
+                if (wks.Name === prm.Target.Name) continue;
 
-            // If the value entered already exists in the defined range on the current worksheet, undo the entry.
-            if (app.WorksheetFunction.CountIf(wks.Range("A1:B20"), prm.Target.Value()) === 0) continue;
+                // If the value entered already exists in the defined range on the current worksheet, undo the entry.
+                if (
+                    app.WorksheetFunction.CountIf(
+                        wks.Range("A1:B20"),
+                        prm.Target.Value(),
+                    ) === 0
+                )
+                    continue;
 
-            app.EnableEvents = false;
-            app.Undo();
-            app.EnableEvents = true;
-        }
-    });
+                app.EnableEvents = false;
+                app.Undo();
+                app.EnableEvents = true;
+            }
+        },
+    );
 }
 
 // add a unique list of values to a combobox -- https://msdn.microsoft.com/en-us/vba/excel-vba/articles/add-a-unique-list-of-values-to-a-combo-box
@@ -283,12 +329,25 @@ const setColumnVisibility = (visible: boolean) => {
         // using the AdvancedFilter property
         const book = app.ThisWorkbook;
         const sheet = book.Worksheets("Sheet1");
-        const dataRange = sheet.Range("A1", sheet.Range("A100").End(Excel.XlDirection.xlUp));
-        dataRange.AdvancedFilter(Excel.XlFilterAction.xlFilterCopy, undefined, sheet.Range("L1"), true);
-        const data = sheet.Range("L2", sheet.Range("L100").End(Excel.XlDirection.xlUp)).Value() as SafeArray;
-        sheet.Range("L1", sheet.Range("L100").End(Excel.XlDirection.xlUp)).ClearContents();
+        const dataRange = sheet.Range(
+            "A1",
+            sheet.Range("A100").End(Excel.XlDirection.xlUp),
+        );
+        dataRange.AdvancedFilter(
+            Excel.XlFilterAction.xlFilterCopy,
+            undefined,
+            sheet.Range("L1"),
+            true,
+        );
+        const data = sheet
+            .Range("L2", sheet.Range("L100").End(Excel.XlDirection.xlUp))
+            .Value() as SafeArray;
+        sheet
+            .Range("L1", sheet.Range("L100").End(Excel.XlDirection.xlUp))
+            .ClearContents();
 
-        const combobox = sheet.OLEObjects("ComboBox1").Object as MSForms.ComboBox;
+        const combobox = sheet.OLEObjects("ComboBox1")
+            .Object as MSForms.ComboBox;
         combobox.Clear();
         ActiveXObject.set(combobox, "List", [], data);
         combobox.ListIndex = -1;
@@ -297,14 +356,18 @@ const setColumnVisibility = (visible: boolean) => {
     {
         // using a Dictionary
         const sheet = app.ThisWorkbook.Sheets("Sheet2") as Excel.Worksheet;
-        const data = sheet.Range("A2", sheet.Range("A100").End(Excel.XlDirection.xlUp)).Value2 as SafeArray;
+        const data = sheet.Range(
+            "A2",
+            sheet.Range("A100").End(Excel.XlDirection.xlUp),
+        ).Value2 as SafeArray;
         const arr = new VBArray(data).toArray();
         const dict = new ActiveXObject("Scripting.Dictionary");
         for (const x of arr) {
             ActiveXObject.set(dict, "Item", [x], true);
         }
 
-        const combobox = sheet.OLEObjects("ComboBox1").Object as MSForms.ComboBox;
+        const combobox = sheet.OLEObjects("ComboBox1")
+            .Object as MSForms.ComboBox;
         combobox.Clear();
 
         // iterate over keys using Enumerator
@@ -330,7 +393,9 @@ const setColumnVisibility = (visible: boolean) => {
         // Loop through the data points for the subsequent two years
         for (let i = 1; i <= 24; i++) {
             // Move the reference for the sparkline group over one cell
-            oSparkGroup.ModifySourceData(wks.Range(oSparkGroup.SourceData).Offset(0, 1).Address());
+            oSparkGroup.ModifySourceData(
+                wks.Range(oSparkGroup.SourceData).Offset(0, 1).Address(),
+            );
             WScript.Sleep(1000);
         }
     }

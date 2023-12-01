@@ -6,7 +6,9 @@ export interface FeedbackProps {
     feedbackTimeout?: number | undefined;
 }
 
-export interface CopyProps extends Omit<ReactButtonAttr, "aria-live">, FeedbackProps {}
+export interface CopyProps
+    extends Omit<ReactButtonAttr, "aria-live">,
+        FeedbackProps {}
 
 declare const Copy: React.FC<CopyProps>;
 

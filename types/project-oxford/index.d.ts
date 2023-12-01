@@ -36,7 +36,10 @@ export declare class FaceAPI {
      * @param  {string[]} candidateFaces    - Array of faceIds to use as candidates
      * @return {Promise}                    - Promise resolving with the resulting JSON
      */
-    public similar(sourceFaceId: string, candidateFacesIds: string[]): Promise<FaceResponses.Similar>;
+    public similar(
+        sourceFaceId: string,
+        candidateFacesIds: string[],
+    ): Promise<FaceResponses.Similar>;
 
     /**
      * Divides candidate faces into groups based on face similarity using faceIds.
@@ -65,7 +68,10 @@ export declare class FaceAPI {
      * @param  {string[]} faces     - Array of faceIds to use
      * @return {Promise}            - Promise resolving with the resulting JSON
      */
-    public identify(faceIDs: string[], options: Options.Identify): Promise<FaceResponses.Identify[]>;
+    public identify(
+        faceIDs: string[],
+        options: Options.Identify,
+    ): Promise<FaceResponses.Identify[]>;
 
     /**
      * Analyzes two faces and determine whether they are from the same person.
@@ -99,7 +105,9 @@ export declare class VisionAPI {
      * @param  {boolean} options.Categories     - Image categorization; taxonomy defined in documentation.
      * @return {Promise}                        - Promise resolving with the resulting JSON
      */
-    public analyzeImage(options: Options.Analyze): Promise<VisionResponses.Analyze>;
+    public analyzeImage(
+        options: Options.Analyze,
+    ): Promise<VisionResponses.Analyze>;
 
     /**
      * Generate a thumbnail image to the user-specified width and height. By default, the
@@ -143,7 +151,11 @@ export declare class PersonGroup {
      * @param  {string} userData            - User-provided data attached to the group. The size limit is 16KB.
      * @return {Promise}                    - Promise resolving with the resulting JSON
      */
-    public create(personGroupId: string, name: string, userData: string): Promise<void>;
+    public create(
+        personGroupId: string,
+        name: string,
+        userData: string,
+    ): Promise<void>;
 
     /**
      * Deletes an existing person group.
@@ -159,7 +171,9 @@ export declare class PersonGroup {
      * @param  {string} personGroupId       - Name of person group to get
      * @return {Promise}                    - Promise resolving with the resulting JSON
      */
-    public get(personGroupId: string): Promise<PersonGroupResponses.PersonGroup>;
+    public get(
+        personGroupId: string,
+    ): Promise<PersonGroupResponses.PersonGroup>;
 
     /**
      * Retrieves the training status of a person group. Training is triggered by the Train PersonGroup API.
@@ -169,7 +183,9 @@ export declare class PersonGroup {
      * @param  {string} personGroupId       - Name of person group to get
      * @return {Promise}                    - Promise resolving with the resulting JSON
      */
-    public trainingStatus(personGroupId: string): Promise<PersonGroupResponses.TrainingStatus>;
+    public trainingStatus(
+        personGroupId: string,
+    ): Promise<PersonGroupResponses.TrainingStatus>;
 
     /**
      * Starts a person group training.
@@ -180,7 +196,9 @@ export declare class PersonGroup {
      * @param  {string} personGroupId       - Name of person group to get
      * @return {Promise}                    - Promise resolving with the resulting JSON
      */
-    public trainingStart(personGroupId: string): Promise<PersonGroupResponses.TrainingStatus>;
+    public trainingStart(
+        personGroupId: string,
+    ): Promise<PersonGroupResponses.TrainingStatus>;
 
     /**
      * Updates an existing person group's display name and userData.
@@ -190,7 +208,11 @@ export declare class PersonGroup {
      * @param  {string} userData            - User-provided data attached to the group. The size limit is 16KB.
      * @return {Promise}                    - Promise resolving with the resulting JSON
      */
-    public update(personGroupId: string, name: string, userData: string): Promise<void>;
+    public update(
+        personGroupId: string,
+        name: string,
+        userData: string,
+    ): Promise<void>;
 
     /**
      * Lists all person groups in the current subscription.
@@ -211,7 +233,12 @@ export declare class Person {
      * @param {string} userData          - Optional. Attach user data to person's face. The maximum length is 1024.
      * @return {Promise}                 - Promise resolving with the resulting JSON
      */
-    public addFace(personGroupId: string, personId: string, faceId: string, userData?: string): Promise<void>;
+    public addFace(
+        personGroupId: string,
+        personId: string,
+        faceId: string,
+        userData?: string,
+    ): Promise<void>;
 
     /**
      * Deletes a face from a person.
@@ -221,7 +248,11 @@ export declare class Person {
      * @param {string} faceId            - The ID of the face to be deleted.
      * @return {Promise}                 - Promise resolving with the resulting JSON
      */
-    public deleteFace(personGroupId: string, personId: string, faceId: string): Promise<void>;
+    public deleteFace(
+        personGroupId: string,
+        personId: string,
+        faceId: string,
+    ): Promise<void>;
 
     /**
      * Updates a face for a person.
@@ -232,7 +263,12 @@ export declare class Person {
      * @param {string} userData          - Optional. Attach user data to person's face. The maximum length is 1024.
      * @return {Promise}                 - Promise resolving with the resulting JSON
      */
-    public updateFace(personGroupId: string, personId: string, faceId: string, userData: string): Promise<void>;
+    public updateFace(
+        personGroupId: string,
+        personId: string,
+        faceId: string,
+        userData: string,
+    ): Promise<void>;
 
     /**
      * Get a face for a person.
@@ -242,7 +278,11 @@ export declare class Person {
      * @param {string} faceId            - The ID of the face to get.
      * @return {Promise}                 - Promise resolving with the resulting JSON
      */
-    public getFace(personGroupId: string, personId: string, faceId: string): Promise<PersonResponses.Face>;
+    public getFace(
+        personGroupId: string,
+        personId: string,
+        faceId: string,
+    ): Promise<PersonResponses.Face>;
 
     /**
      * Creates a new person in a specified person group for identification.
@@ -278,7 +318,10 @@ export declare class Person {
      * @param {string} personId          - The target person to get.
      * @return {Promise}                 - Promise resolving with the resulting JSON
      */
-    public get(personGroupId: string, personId: string): Promise<PersonResponses.Person>;
+    public get(
+        personGroupId: string,
+        personId: string,
+    ): Promise<PersonResponses.Person>;
 
     /**
      * Updates a person's information.
@@ -363,160 +406,170 @@ declare namespace FaceResponses {
     }
 
     interface FaceLandmarks {
-        "pupilLeft": point;
-        "pupilRight": point;
-        "noseTip": point;
-        "mouthLeft": point;
-        "mouthRight": point;
-        "eyebrowLeftOuter": point;
-        "eyebrowLeftInner": point;
-        "eyeLeftOuter": point;
-        "eyeLeftTop": point;
-        "eyeLeftBottom": point;
-        "eyeLeftInner": point;
-        "eyebrowRightInner": point;
-        "eyebrowRightOuter": point;
-        "eyeRightInner": point;
-        "eyeRightTop": point;
-        "eyeRightBottom": point;
-        "eyeRightOuter": point;
-        "noseRootLeft": point;
-        "noseRootRight": point;
-        "noseLeftAlarTop": point;
-        "noseRightAlarTop": point;
-        "noseLeftAlarOutTip": point;
-        "noseRightAlarOutTip": point;
-        "upperLipTop": point;
-        "upperLipBottom": point;
-        "underLipTop": point;
-        "underLipBottom": point;
+        pupilLeft: point;
+        pupilRight: point;
+        noseTip: point;
+        mouthLeft: point;
+        mouthRight: point;
+        eyebrowLeftOuter: point;
+        eyebrowLeftInner: point;
+        eyeLeftOuter: point;
+        eyeLeftTop: point;
+        eyeLeftBottom: point;
+        eyeLeftInner: point;
+        eyebrowRightInner: point;
+        eyebrowRightOuter: point;
+        eyeRightInner: point;
+        eyeRightTop: point;
+        eyeRightBottom: point;
+        eyeRightOuter: point;
+        noseRootLeft: point;
+        noseRootRight: point;
+        noseLeftAlarTop: point;
+        noseRightAlarTop: point;
+        noseLeftAlarOutTip: point;
+        noseRightAlarOutTip: point;
+        upperLipTop: point;
+        upperLipBottom: point;
+        underLipTop: point;
+        underLipBottom: point;
     }
 
     interface Attributes {
-        "headPose": { "pitch": number; "roll": number; "yaw": number };
-        "gender": string;
-        "age": number;
+        headPose: { pitch: number; roll: number; yaw: number };
+        gender: string;
+        age: number;
     }
 
     export interface Detect {
-        "faceId": string;
-        "faceRectangle": FaceRectangle;
-        "faceLandmarks": FaceLandmarks;
-        "attributes": Attributes;
+        faceId: string;
+        faceRectangle: FaceRectangle;
+        faceLandmarks: FaceLandmarks;
+        attributes: Attributes;
     }
 
     export interface Similar {
-        "faceIds": string[];
+        faceIds: string[];
     }
 
     export interface Grouping {
-        "groups": string[];
-        "messyGroup": string[];
+        groups: string[];
+        messyGroup: string[];
     }
 
     export interface Identify {
-        "faceId": string;
-        "candidates": [{
-            personId: string;
-            confidence: number;
-        }];
+        faceId: string;
+        candidates: [
+            {
+                personId: string;
+                confidence: number;
+            },
+        ];
     }
 
     export interface Verify {
-        "isIdentical": boolean;
-        "confidence": number;
+        isIdentical: boolean;
+        confidence: number;
     }
 }
 
 declare namespace PersonGroupResponses {
     export interface PersonGroup {
-        "personGroupId": string;
-        "name": string;
-        "userData": string;
+        personGroupId: string;
+        name: string;
+        userData: string;
     }
 
     export interface TrainingStatus {
-        "personGroupId": string;
-        "status": string;
-        "startTime": string;
-        "endTime": string;
+        personGroupId: string;
+        status: string;
+        startTime: string;
+        endTime: string;
     }
 }
 
 declare namespace PersonResponses {
     export interface Create {
-        "personId": string;
+        personId: string;
     }
 
     export interface Person {
-        "personId": string;
-        "faceIds": string[];
-        "name": string;
-        "userData": string;
+        personId: string;
+        faceIds: string[];
+        name: string;
+        userData: string;
     }
 
     export interface Face {
-        "faceId": string;
-        "userData": string;
+        faceId: string;
+        userData: string;
     }
 }
 
 declare namespace VisionResponses {
     export interface Analyze {
-        "categories": [{
-            "name": string;
-            "score": number;
-        }];
-        "adult": {
-            "isAdultContent": boolean;
-            "isRacyContent": boolean;
-            "adultScore": number;
-            "racyScore": number;
-        };
-        "requestId": string;
-        "metadata": {
-            "width": number;
-            "height": number;
-            "format": string;
-        };
-        "faces": [
+        categories: [
             {
-                "age": number;
-                "gender": string;
-                "faceRectangle": {
-                    "left": number;
-                    "top": number;
-                    "width": number;
-                    "height": number;
+                name: string;
+                score: number;
+            },
+        ];
+        adult: {
+            isAdultContent: boolean;
+            isRacyContent: boolean;
+            adultScore: number;
+            racyScore: number;
+        };
+        requestId: string;
+        metadata: {
+            width: number;
+            height: number;
+            format: string;
+        };
+        faces: [
+            {
+                age: number;
+                gender: string;
+                faceRectangle: {
+                    left: number;
+                    top: number;
+                    width: number;
+                    height: number;
                 };
             },
         ];
-        "color": {
-            "dominantColorForeground": string;
-            "dominantColorBackground": string;
-            "dominantColors": string[];
-            "accentColor": string;
-            "isBWImg": boolean;
+        color: {
+            dominantColorForeground: string;
+            dominantColorBackground: string;
+            dominantColors: string[];
+            accentColor: string;
+            isBWImg: boolean;
         };
-        "imageType": {
-            "clipArtType": number;
-            "lineDrawingType": number;
+        imageType: {
+            clipArtType: number;
+            lineDrawingType: number;
         };
     }
 
     export interface Ocr {
-        "language": string;
-        "textAngle": number;
-        "orientation": string;
-        "regions": [{
-            "boundingBox": string;
-            "lines": [{
-                "boundingBox": string;
-                "words": [{
-                    "boundingBox": string;
-                    "text": string;
-                }];
-            }];
-        }];
+        language: string;
+        textAngle: number;
+        orientation: string;
+        regions: [
+            {
+                boundingBox: string;
+                lines: [
+                    {
+                        boundingBox: string;
+                        words: [
+                            {
+                                boundingBox: string;
+                                text: string;
+                            },
+                        ];
+                    },
+                ];
+            },
+        ];
     }
 }

@@ -24,9 +24,13 @@ declare namespace BrowserBunyan {
         css?: Partial<ConsoleFormattedStreamStyle> | undefined;
     }
 
-    type ConsoleFormattedStream = new(options?: ConsoleFormattedStreamOptions) => NodeJS.WritableStream;
+    type ConsoleFormattedStream = new (
+        options?: ConsoleFormattedStreamOptions,
+    ) => NodeJS.WritableStream;
 
-    type ConsoleRawStream = new(options?: ConsoleFormattedStreamOptions) => NodeJS.WritableStream;
+    type ConsoleRawStream = new (
+        options?: ConsoleFormattedStreamOptions,
+    ) => NodeJS.WritableStream;
 }
 
 type BrowserBunyan = typeof bunyan & {

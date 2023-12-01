@@ -10,15 +10,15 @@ declare var $: any;
 // Tests based on the Jest website
 jest.unmock("../sum");
 
-describe("sum", function() {
-    it("adds 1 + 2 to equal 3", function() {
+describe("sum", function () {
+    it("adds 1 + 2 to equal 3", function () {
         var sum: (a: number, b: number) => number = require("../sum");
         expect(sum(1, 2)).toBe(3);
     });
 });
 
-describe("fetchCurrentUser", function() {
-    it("calls the callback when $.ajax requests are finished", function() {
+describe("fetchCurrentUser", function () {
+    it("calls the callback when $.ajax requests are finished", function () {
         var $ = require("jquery");
         var fetchCurrentUser = require("../fetchCurrentUser");
 
@@ -30,14 +30,14 @@ describe("fetchCurrentUser", function() {
         // callback
         $.ajax.mock.calls[0 /*first call*/][0 /*first argument*/].success({
             firstName: "Bobby",
-            lastName: "\");DROP TABLE Users;--",
+            lastName: '");DROP TABLE Users;--',
         });
 
         // And finally we assert that this emulated call by `$.ajax` incurred a
         // call back into the mock function we provided as a callback
         expect(callback.mock.calls[0 /*first call*/][0 /*first arg*/]).toEqual({
             loggedIn: true,
-            fullName: "Bobby \");DROP TABLE Users;--",
+            fullName: 'Bobby ");DROP TABLE Users;--',
         });
     });
 });
@@ -45,13 +45,14 @@ describe("fetchCurrentUser", function() {
 // unmock is the recommended approach for unmocking...
 jest.unmock("../displayUser.js");
 
-describe("displayUser", function() {
-    it("displays a user after a click", function() {
+describe("displayUser", function () {
+    it("displays a user after a click", function () {
         // Set up our document body
-        document.body.innerHTML = "<div>"
-            + "  <span id=\"username\" />"
-            + "  <button id=\"button\" />"
-            + "</div>";
+        document.body.innerHTML =
+            "<div>" +
+            '  <span id="username" />' +
+            '  <button id="button" />' +
+            "</div>";
 
         var displayUser = require.requireActual("../displayUser");
         var $ = require("jquery");
@@ -59,7 +60,7 @@ describe("displayUser", function() {
 
         // Tell the fetchCurrentUser mock function to automatically invoke
         // its callback with some data
-        fetchCurrentUser.mockImplementation(function(cb: Function) {
+        fetchCurrentUser.mockImplementation(function (cb: Function) {
             cb({
                 loggedIn: true,
                 fullName: "Johnny Cash",
@@ -77,8 +78,8 @@ describe("displayUser", function() {
 });
 
 jest.unmock("../CheckboxWithLabel.js");
-describe("CheckboxWithLabel", function() {
-    it("changes the text after click", function() {
+describe("CheckboxWithLabel", function () {
+    it("changes the text after click", function () {
         var React = require("react/addons");
         var CheckboxWithLabel = require("../CheckboxWithLabel.js");
         var TestUtils = React.addons.TestUtils;
@@ -109,80 +110,82 @@ describe("CheckboxWithLabel", function() {
 });
 
 jest.runAllTicks();
-xdescribe("Hooks and Suits", function() {
+xdescribe("Hooks and Suits", function () {
     let tested: boolean;
 
-    beforeEach(function() {
+    beforeEach(function () {
         tested = false;
     });
 
-    afterEach(function() {
+    afterEach(function () {
         tested = true;
     });
 
-    test("tested", function() {
+    test("tested", function () {
         expect(tested).toBeTruthy();
         expect(tested).not.toBeFalsy();
     });
 
-    fit("tested", function() {
+    fit("tested", function () {
         expect(tested).toBeDefined();
         expect(tested).not.toBeUndefined();
     });
 
-    xit("expect null to be null", function() {
+    xit("expect null to be null", function () {
         expect(null).toBeNull();
     });
 });
 
-describe("compartion", function() {
+describe("compartion", function () {
     var sum: (a: number, b: number) => number = require.requireMock("../sum");
 
-    it("compares is 7 + 2 greater than 3", function() {
+    it("compares is 7 + 2 greater than 3", function () {
         expect(sum(7, 2)).toBeGreaterThan(3);
     });
 
-    it("compares is 2 + 7 greater than or equal to 3", function() {
+    it("compares is 2 + 7 greater than or equal to 3", function () {
         expect(sum(2, 7)).toBeGreaterThanOrEqual(3);
     });
 
-    it("compares is 3 less than 3 + 4", function() {
+    it("compares is 3 less than 3 + 4", function () {
         expect(3).toBeLessThan(sum(3, 4));
     });
 
-    it("compares is 3 less than or equal to 4 + 3", function() {
+    it("compares is 3 less than or equal to 4 + 3", function () {
         expect(3).toBeLessThanOrEqual(sum(4, 3));
     });
 
-    it("works sanely with simple decimals", function() {
+    it("works sanely with simple decimals", function () {
         expect(0.2 + 0.1).toBeCloseTo(0.3, 5);
     });
 });
 
-describe("toThrow API", function() {
+describe("toThrow API", function () {
     function throwTypeError(): void {
         throw new TypeError("toThrow Definition was out of date");
     }
 
-    it("throws", function() {
+    it("throws", function () {
         expect(throwTypeError()).toThrow();
     });
 
-    it("throws TypeError", function() {
+    it("throws TypeError", function () {
         expect(throwTypeError()).toThrowError(TypeError);
     });
 
-    it("throws 'Definition was out of date'", function() {
+    it("throws 'Definition was out of date'", function () {
         expect(throwTypeError()).toThrowError(/Definition was out of date/);
     });
 
-    it("throws 'toThorow Definition was out of date'", function() {
-        expect(throwTypeError()).toThrowError("toThrow Definition was out of date");
+    it("throws 'toThorow Definition was out of date'", function () {
+        expect(throwTypeError()).toThrowError(
+            "toThrow Definition was out of date",
+        );
     });
 });
 
-describe("missing tests", function() {
-    it("creates closures", function() {
+describe("missing tests", function () {
+    it("creates closures", function () {
         class Closure<T> {
             private arg: T;
 
@@ -209,7 +212,7 @@ describe("missing tests", function() {
         expect(jest.isMockFunction(spy)).toBeTruthy();
     });
 
-    it("tests all mising Mocks functionality", function() {
+    it("tests all mising Mocks functionality", function () {
         type FruitsGetter = () => string[];
         let mock: jest.Mock<FruitsGetter> = jest.fn<FruitsGetter>();
         mock.mockImplementationOnce(() => ["Orange", "Apple", "Plum"]);
@@ -226,29 +229,33 @@ describe("missing tests", function() {
         expect(thisMock()).toBe(this);
     });
 
-    it("creates snapshoter", function() {
-        jest.disableAutomock().mock("./render", () => jest.fn((): string => "{Link to: \"facebook\"}"), {
-            virtual: true,
-        });
+    it("creates snapshoter", function () {
+        jest.disableAutomock().mock(
+            "./render",
+            () => jest.fn((): string => '{Link to: "facebook"}'),
+            {
+                virtual: true,
+            },
+        );
         const render: () => string = require("./render");
         expect(render()).toMatch(/Link/);
         jest.enableAutomock();
     });
 
-    it("runs only pending timers", function() {
+    it("runs only pending timers", function () {
         jest.useRealTimers();
         setTimeout(() => expect(1).not.toEqual(0), 3000);
         jest.runOnlyPendingTimers().runTimersToTime(300);
     });
 
-    it("runs all timers", function() {
+    it("runs all timers", function () {
         jest.clearAllTimers();
         jest.useFakeTimers();
         setTimeout(() => expect(0).not.toEqual(1), 3000);
         jest.runAllTimers();
     });
 
-    it("cleares cache", function() {
+    it("cleares cache", function () {
         const sum1 = require("../sum");
         jest.resetModules();
         const sum2 = require("../sum");
@@ -256,14 +263,18 @@ describe("missing tests", function() {
     });
 });
 
-describe("toMatchSnapshot", function() {
-    it("compares snapshots", function() {
-        expect({ type: "a", props: { href: "https://www.facebook.com/" }, children: ["Facebook"] }).toMatchSnapshot();
+describe("toMatchSnapshot", function () {
+    it("compares snapshots", function () {
+        expect({
+            type: "a",
+            props: { href: "https://www.facebook.com/" },
+            children: ["Facebook"],
+        }).toMatchSnapshot();
     });
 });
 
-describe("toThrowErrorMatchingSnapshot", function() {
-    it("compares snapshots", function() {
+describe("toThrowErrorMatchingSnapshot", function () {
+    it("compares snapshots", function () {
         expect(() => {
             throw new Error("descriptiton");
         }).toThrowErrorMatchingSnapshot();
@@ -280,7 +291,9 @@ function testInstances() {
 }
 
 function testMockImplementation() {
-    var mockFn = jest.fn<Function>().mockImplementation(function(scalar: number): number {
+    var mockFn = jest.fn<Function>().mockImplementation(function (
+        scalar: number,
+    ): number {
         return 42 + scalar;
     });
 
@@ -295,7 +308,7 @@ function testMockImplementation() {
 }
 
 // Test from jest Docs: <http://facebook.github.io/jest/docs/manual-mocks.html#content>
-describe("genMockFromModule", function() {
+describe("genMockFromModule", function () {
     // Interfaces:
     interface MockFiles {
         [index: string]: string;
@@ -355,7 +368,7 @@ describe("genMockFromModule", function() {
 
     describe("listFilesInDirectorySync", () => {
         const MOCK_FILE_INFO: MockFiles = {
-            "/path/to/file1.js": "console.log(\"file1 contents\");",
+            "/path/to/file1.js": 'console.log("file1 contents");',
             "/path/to/file2.txt": "file2 contents",
         };
 
@@ -365,7 +378,9 @@ describe("genMockFromModule", function() {
         });
 
         it("includes all files in the directory in the summary", () => {
-            const FileSummarizer: (dir: string) => string[] = require("../FileSummarizer");
+            const FileSummarizer: (
+                dir: string,
+            ) => string[] = require("../FileSummarizer");
             const fileSummary = FileSummarizer("/path/to");
 
             expect(fileSummary.length).toBe(2);
@@ -376,7 +391,7 @@ describe("genMockFromModule", function() {
 /**
  * Pass strictNullChecks
  */
-describe("strictNullChecks", function() {
+describe("strictNullChecks", function () {
     it("does not complain when using done callback", (done) => {
         done();
     });

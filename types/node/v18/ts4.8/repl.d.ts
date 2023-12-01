@@ -91,7 +91,10 @@ declare module "repl" {
          * - `repl.REPL_MODE_STRICT` - evaluates expressions in strict mode. This is equivalent to
          *   prefacing every repl statement with `'use strict'`.
          */
-        replMode?: typeof REPL_MODE_SLOPPY | typeof REPL_MODE_STRICT | undefined;
+        replMode?:
+            | typeof REPL_MODE_SLOPPY
+            | typeof REPL_MODE_STRICT
+            | undefined;
         /**
          * Stop evaluating the current piece of code when `SIGINT` is received, i.e. `Ctrl+C` is
          * pressed. This cannot be used together with a custom `eval` function.
@@ -286,7 +289,10 @@ declare module "repl" {
          * @param keyword The command keyword (_without_ a leading `.` character).
          * @param cmd The function to invoke when the command is processed.
          */
-        defineCommand(keyword: string, cmd: REPLCommandAction | REPLCommand): void;
+        defineCommand(
+            keyword: string,
+            cmd: REPLCommandAction | REPLCommand,
+        ): void;
         /**
          * The `replServer.displayPrompt()` method readies the REPL instance for input
          * from the user, printing the configured `prompt` to a new line in the `output`and resuming the `input` to accept new input.
@@ -318,7 +324,10 @@ declare module "repl" {
          * @param historyPath the path to the history file
          * @param callback called when history writes are ready or upon error
          */
-        setupHistory(path: string, callback: (err: Error | null, repl: this) => void): void;
+        setupHistory(
+            path: string,
+            callback: (err: Error | null, repl: this) => void,
+        ): void;
         /**
          * events.EventEmitter
          * 1. close - inherited from `readline.Interface`
@@ -371,7 +380,10 @@ declare module "repl" {
         once(event: "SIGTSTP", listener: () => void): this;
         once(event: "exit", listener: () => void): this;
         once(event: "reset", listener: (context: Context) => void): this;
-        prependListener(event: string, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
         prependListener(event: "close", listener: () => void): this;
         prependListener(event: "line", listener: (input: string) => void): this;
         prependListener(event: "pause", listener: () => void): this;
@@ -380,17 +392,29 @@ declare module "repl" {
         prependListener(event: "SIGINT", listener: () => void): this;
         prependListener(event: "SIGTSTP", listener: () => void): this;
         prependListener(event: "exit", listener: () => void): this;
-        prependListener(event: "reset", listener: (context: Context) => void): this;
-        prependOnceListener(event: string, listener: (...args: any[]) => void): this;
+        prependListener(
+            event: "reset",
+            listener: (context: Context) => void,
+        ): this;
+        prependOnceListener(
+            event: string,
+            listener: (...args: any[]) => void,
+        ): this;
         prependOnceListener(event: "close", listener: () => void): this;
-        prependOnceListener(event: "line", listener: (input: string) => void): this;
+        prependOnceListener(
+            event: "line",
+            listener: (input: string) => void,
+        ): this;
         prependOnceListener(event: "pause", listener: () => void): this;
         prependOnceListener(event: "resume", listener: () => void): this;
         prependOnceListener(event: "SIGCONT", listener: () => void): this;
         prependOnceListener(event: "SIGINT", listener: () => void): this;
         prependOnceListener(event: "SIGTSTP", listener: () => void): this;
         prependOnceListener(event: "exit", listener: () => void): this;
-        prependOnceListener(event: "reset", listener: (context: Context) => void): this;
+        prependOnceListener(
+            event: "reset",
+            listener: (context: Context) => void,
+        ): this;
     }
     /**
      * A flag passed in the REPL options. Evaluates expressions in sloppy mode.
